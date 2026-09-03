@@ -30,6 +30,7 @@ export type ProgresIgil = {
   sesi: SesiModul[];
   jawabanKuis: Record<string, Record<string, string>>;
   xpTotal: number;
+  tokenIgil: number;
 };
 
 export type BarisPeringkat = {
@@ -65,6 +66,7 @@ function progresKosong(): ProgresIgil {
     sesi: [],
     jawabanKuis: {},
     xpTotal: 0,
+    tokenIgil: 0,
   };
 }
 
@@ -93,6 +95,7 @@ export function bacaProgres(): ProgresIgil {
         : [],
       jawabanKuis: data.jawabanKuis ?? {},
       xpTotal: typeof data.xpTotal === "number" ? data.xpTotal : 0,
+      tokenIgil: typeof data.tokenIgil === "number" ? data.tokenIgil : 0,
     };
   } catch {
     return progresKosong();
@@ -210,4 +213,12 @@ export function susunPeringkatNasional(
   return [...PERINGKAT_NASIONAL_DASAR, pengguna]
     .sort((a, b) => b.xp - a.xp)
     .slice(0, 20);
+}
+
+export function tambahTokenIgil(jumlah: number): number {
+  if (jumlah <= 0) return bacaProgres().tokenIgil;
+  const data = bacaProgres();
+  data.tokenIgil += jumlah;
+  simpanProgres(data);
+  return data.tokenIgil;
 }

@@ -974,3 +974,21 @@ export const DATA_KURIKULUM: Record<string, Record<string, string[]>> = {
 };
 
 export const DAFTAR_KELAS = Object.keys(DATA_KURIKULUM);
+
+export const OPSI_LAINNYA = "LAINNYA";
+
+export function daftarMapelUnik(): string[] {
+  const nama = new Set<string>();
+  for (const mapelKelas of Object.values(DATA_KURIKULUM)) {
+    for (const mapel of Object.keys(mapelKelas)) nama.add(mapel);
+  }
+  return [...nama].sort((a, b) => a.localeCompare(b, "id"));
+}
+
+export function daftarMateriUntukMapel(mapel: string): string[] {
+  const materi = new Set<string>();
+  for (const mapelKelas of Object.values(DATA_KURIKULUM)) {
+    for (const bab of mapelKelas[mapel] ?? []) materi.add(bab);
+  }
+  return [...materi];
+}

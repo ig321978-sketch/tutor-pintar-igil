@@ -8,7 +8,7 @@ import { Menu, X } from "lucide-react";
 const MENU = [
   { href: "/tutor", label: "🤖 AI Tutor" },
   { href: "/ruang-belajar", label: "📚 Ruang Belajar" },
-  { href: "/laboratorium", label: "🧪 Laboratorium Praktikum" },
+  { href: "/simulasi-praktikum", label: "🧪 Simulasi Praktikum" },
   { href: "/rapor", label: "📊 Rapor Siswa" },
   { href: "/ranking", label: "🏆 Ranking Nasional" },
 ] as const;
