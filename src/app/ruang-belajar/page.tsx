@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { useEffect, useMemo, useState } from "react";
-import { BookOpen, Sparkles } from "lucide-react";
+import { Sparkles } from "lucide-react";
 import PageShell from "@/components/PageShell";
 import PilihGuru from "@/components/PilihGuru";
 import { type KelaminGuru } from "@/lib/guru";
@@ -10,16 +10,21 @@ import { DATA_KURIKULUM, DAFTAR_KELAS } from "@/lib/kurikulum";
 import { bacaProgres, simpanProfil, type SesiModul } from "@/lib/progres";
 import { kelasKotak, kelasLabel, kelasTombolUtama } from "@/lib/tema";
 
+const OPSI_MAPEL_LAIN = "LAIN NYA (ketik judul Mata Pelajaran)";
+const OPSI_MATERI_LAIN = "LAIN NYA (ketik judul materi)";
+
 export default function RuangBelajarPage() {
   const [nama, setNama] = useState("");
   const [kelas, setKelas] = useState("3 SD");
   const [kota, setKota] = useState("Jakarta");
-  const [mapel, setMapel] = useState(
+  const [pilihanMapel, setPilihanMapel] = useState(
     () => Object.keys(DATA_KURIKULUM["3 SD"] ?? {})[0] ?? "",
   );
-  const [materi, setMateri] = useState(
+  const [mapelManual, setMapelManual] = useState("");
+  const [pilihanMateri, setPilihanMateri] = useState(
     () => DATA_KURIKULUM["3 SD"]?.[Object.keys(DATA_KURIKULUM["3 SD"] ?? {})[0] ?? ""]?.[0] ?? "",
   );
+  const [materiManual, setMateriManual] = useState("");
   const [guruKelamin, setGuruKelamin] = useState<KelaminGuru>("wanita");
   const [sesiAktif, setSesiAktif] = useState<SesiModul[]>([]);
 
@@ -28,9 +33,16 @@ export default function RuangBelajarPage() {
     [kelas],
   );
   const daftarMateri = useMemo(
-    () => DATA_KURIKULUM[kelas]?.[mapel] ?? [],
-    [kelas, mapel],
+    () =>
+      pilihanMapel === OPSI_MAPEL_LAIN
+        ? []
+        : (DATA_KURIKULUM[kelas]?.[pilihanMapel] ?? []),
+    [kelas, pilihanMapel],
   );
+  const mapel =
+    pilihanMapel === OPSI_MAPEL_LAIN ? mapelManual : pilihanMapel;
+  const materi =
+    pilihanMateri === OPSI_MATERI_LAIN ? materiManual : pilihanMateri;
 
   useEffect(() => {
     const data = bacaProgres();
@@ -42,16 +54,22 @@ export default function RuangBelajarPage() {
   }, []);
 
   useEffect(() => {
-    if (!daftarMapel.includes(mapel)) {
-      setMapel(daftarMapel[0] ?? "");
+    if (pilihanMapel === OPSI_MAPEL_LAIN) return;
+    if (!daftarMapel.includes(pilihanMapel)) {
+      setPilihanMapel(daftarMapel[0] ?? "");
     }
-  }, [daftarMapel, mapel]);
+  }, [daftarMapel, pilihanMapel]);
 
   useEffect(() => {
-    if (!daftarMateri.includes(materi)) {
-      setMateri(daftarMateri[0] ?? "");
+    if (pilihanMapel === OPSI_MAPEL_LAIN) {
+      setPilihanMateri(OPSI_MATERI_LAIN);
+      return;
     }
-  }, [daftarMateri, materi]);
+    if (pilihanMateri === OPSI_MATERI_LAIN) return;
+    if (!daftarMateri.includes(pilihanMateri)) {
+      setPilihanMateri(daftarMateri[0] ?? OPSI_MATERI_LAIN);
+    }
+  }, [daftarMateri, pilihanMapel, pilihanMateri]);
 
   const tautanMulai = () => {
     const query = new URLSearchParams({
@@ -145,29 +163,48 @@ export default function RuangBelajarPage() {
 
       <section className="mt-8 rounded-3xl border border-[#1C01A5]/15 bg-white p-6 shadow-sm">
         <h2 className="mb-4 text-lg font-extrabold text-[#1C01A5]">Pilih mata pelajaran</h2>
-        <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
-          {daftarMapel.map((item) => (
-            <button
-              key={item}
-              type="button"
-              onClick={() => setMapel(item)}
-              className={`rounded-2xl border px-4 py-3 text-left font-bold transition-all ${
-                mapel === item
-                  ? "border-[#1C01A5] bg-[#1C01A5] text-white"
-                  : "border-[#1C01A5]/15 bg-white text-[#1C01A5] hover:border-[#F0AB00] hover:text-[#F0AB00]"
-              }`}
-            >
-              <BookOpen className="mb-2 h-4 w-4" />
-              {item}
-            </button>
-          ))}
+        <div>
+          <label className={kelasLabel}>Mata pelajaran</label>
+          <select
+            value={pilihanMapel}
+            onChange={(e) => {
+              const nilai = e.target.value;
+              setPilihanMapel(nilai);
+              if (nilai === OPSI_MAPEL_LAIN) {
+                setPilihanMateri(OPSI_MATERI_LAIN);
+              }
+            }}
+            className={kelasKotak}
+          >
+            {daftarMapel.map((item) => (
+              <option key={item} value={item}>
+                {item}
+              </option>
+            ))}
+            <option value={OPSI_MAPEL_LAIN}>{OPSI_MAPEL_LAIN}</option>
+          </select>
+          {pilihanMapel === OPSI_MAPEL_LAIN ? (
+            <input
+              value={mapelManual}
+              onChange={(e) => setMapelManual(e.target.value)}
+              placeholder="Ketik judul Mata Pelajaran"
+              className={`${kelasKotak} mt-3`}
+            />
+          ) : null}
         </div>
 
         <div className="mt-6">
           <label className={kelasLabel}>Materi pembahasan</label>
           <select
-            value={daftarMateri.includes(materi) ? materi : (daftarMateri[0] ?? "")}
-            onChange={(e) => setMateri(e.target.value)}
+            value={
+              pilihanMapel === OPSI_MAPEL_LAIN
+                ? OPSI_MATERI_LAIN
+                : pilihanMateri
+            }
+            onChange={(e) => {
+              setPilihanMateri(e.target.value);
+              if (e.target.value !== OPSI_MATERI_LAIN) setMateriManual("");
+            }}
             className={kelasKotak}
           >
             {daftarMateri.map((item) => (
@@ -175,7 +212,16 @@ export default function RuangBelajarPage() {
                 {item}
               </option>
             ))}
+            <option value={OPSI_MATERI_LAIN}>{OPSI_MATERI_LAIN}</option>
           </select>
+          {pilihanMateri === OPSI_MATERI_LAIN ? (
+            <input
+              value={materiManual}
+              onChange={(e) => setMateriManual(e.target.value)}
+              placeholder="Ketik judul materi"
+              className={`${kelasKotak} mt-3`}
+            />
+          ) : null}
         </div>
 
         <div className="mt-6">

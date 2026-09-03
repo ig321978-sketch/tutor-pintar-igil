@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useEffect, useMemo, useRef, useState } from "react";
+import Link from "next/link";
 import { useSearchParams } from "next/navigation";
 import PilihGuru from "@/components/PilihGuru";
 import {
@@ -943,13 +944,12 @@ export default function TutorAI() {
             <p className="max-w-2xl mx-auto text-slate-600 text-lg mb-8">
               Ketik judul materi atau unggah halaman buku. $IGIL menyusun penjelasan mendalam, sketsa doodle, dan soal-soal latihan — lalu membacakannya untukmu.
             </p>
-            <button
-              type="button"
-              onClick={() => setIsMulai(true)}
+            <Link
+              href="/ruang-belajar"
               className={`${kelasTombolUtama} px-8 py-4 rounded-full font-extrabold text-lg shadow-lg shadow-[#1C01A5]/25 mx-auto flex items-center gap-2 mt-4`}
             >
               Mulai Belajar Sekarang <ArrowRight className="w-5 h-5 text-white" />
-            </button>
+            </Link>
           </section>
         </div>
       ) : !hasilData ? (
