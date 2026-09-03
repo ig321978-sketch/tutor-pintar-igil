@@ -938,10 +938,10 @@ export default function TutorAI() {
             </p>
             <h1 className="text-5xl md:text-7xl font-extrabold tracking-tight mb-6 leading-tight text-[#1C01A5]">
               Ubah Waktu Belajarmu <br className="hidden md:block" />
-              <span className="text-[#F0AB00]">Menjadi Hadiah Nyata</span>
+              <span className="text-[#F0AB00]">Menjadi Beasiswa Instan</span>
             </h1>
             <p className="max-w-2xl mx-auto text-slate-600 text-lg mb-8">
-              Ketik materi atau pindai halaman buku. $IGIL menyusun penjelasan mendalam, sketsa doodle, dan 5 soal latihan — lalu membacakannya untukmu.
+              Ketik judul materi atau unggah halaman buku. $IGIL menyusun penjelasan mendalam, sketsa doodle, dan soal-soal latihan — lalu membacakannya untukmu.
             </p>
             <button
               type="button"
@@ -1012,7 +1012,7 @@ export default function TutorAI() {
                         : "text-[#1C01A5] hover:text-[#1C01A5]"
                     }`}
                   >
-                    <Keyboard className="w-5 h-5" /> Ketik Manual
+                    <Keyboard className="w-5 h-5" /> Ketik Judul Materi
                   </button>
                   <button
                     type="button"
@@ -1023,7 +1023,7 @@ export default function TutorAI() {
                         : "text-[#1C01A5] hover:text-[#1C01A5]"
                     }`}
                   >
-                    <Camera className="w-5 h-5" /> Pindai Buku
+                    <Camera className="w-5 h-5" /> Unggah Halaman Buku
                   </button>
                 </div>
               </div>
