@@ -158,6 +158,13 @@ function ekstrakGambar(gambar: unknown): Part | null {
   };
 }
 
+function ekstrakDaftarGambar(gambar: unknown): Part[] {
+  const daftar = Array.isArray(gambar) ? gambar : gambar ? [gambar] : [];
+  return daftar
+    .map((item) => ekstrakGambar(item))
+    .filter((item): item is Part => item !== null);
+}
+
 export async function POST(req: Request) {
   try {
     let body: PermintaanTutor;
@@ -174,7 +181,7 @@ export async function POST(req: Request) {
     const mapel = sebagaiTeks(body.mapel, "Umum");
     const materi = sebagaiTeks(body.materi, "Materi hari ini");
     const ajuan = sebagaiTeks(body.ajuan);
-    const bagianGambar = ekstrakGambar(body.gambar);
+    const daftarGambar = ekstrakDaftarGambar(body.gambar);
 
     const apiKey = process.env.GEMINI_API_KEY;
     if (!apiKey) {
@@ -197,7 +204,7 @@ export async function POST(req: Request) {
         },
       });
 
-      const konteksFoto = bagianGambar
+      const konteksFoto = daftarGambar.length > 0
         ? "Siswa mungkin merujuk foto halaman buku yang dilampirkan. Gunakan foto itu sebagai konteks jika relevan."
         : "";
 
@@ -229,8 +236,7 @@ ${instruksiHitungan}
 Kembalikan persis kunci: sapaan, panduanLangkah, caraKurikulum, trikBimbel, dorongan.
 `.trim();
 
-      const bagianAjuan: Part[] = [];
-      if (bagianGambar) bagianAjuan.push(bagianGambar);
+      const bagianAjuan: Part[] = [...daftarGambar];
       bagianAjuan.push({ text: promptAjuan });
 
       const resultAjuan = await modelAjuan.generateContent(bagianAjuan);
@@ -269,8 +275,8 @@ Kembalikan persis kunci: sapaan, panduanLangkah, caraKurikulum, trikBimbel, doro
       },
     });
 
-    const instruksiMateri = bagianGambar
-      ? `Tugas: Analisis foto halaman buku pelajaran yang dilampirkan. Baca tulisan, judul bab, rumus, gambar, dan soal di halaman tersebut. Deteksi topik utamanya, lalu buat modul belajar PREMIUM untuk ${nama} (Kelas ${kelas}) berdasarkan isi halaman buku itu. Jika mapel/materi teks tersedia (${mapel} / ${materi}), gunakan sebagai petunjuk tambahan, tetapi prioritas utama adalah isi foto.`
+    const instruksiMateri = daftarGambar.length > 0
+      ? `Tugas: Analisis foto halaman buku pelajaran yang dilampirkan (${daftarGambar.length} halaman). Baca tulisan, judul bab, rumus, gambar, dan soal di semua halaman tersebut. Deteksi topik utamanya, lalu buat modul belajar PREMIUM untuk ${nama} (Kelas ${kelas}) berdasarkan isi halaman buku itu. Jika mapel/materi teks tersedia (${mapel} / ${materi}), gunakan sebagai petunjuk tambahan, tetapi prioritas utama adalah isi foto.`
       : `Tugas: Buat modul belajar PREMIUM untuk ${nama} (Kelas ${kelas}) mata pelajaran ${mapel} materi ${materi}.`;
 
     const promptText = `
@@ -307,8 +313,7 @@ STANDAR KONTEN:
 Kembalikan persis kunci: sapaan, penjelasan, sketsaDeskripsi, sketsaSisipan1, sketsaSisipan2, svgCode, pertanyaan, kunciJawaban, motivasi.
 `.trim();
 
-    const bagian: Part[] = [];
-    if (bagianGambar) bagian.push(bagianGambar);
+    const bagian: Part[] = [...daftarGambar];
     bagian.push({ text: promptText });
 
     const result = await model.generateContent(bagian);

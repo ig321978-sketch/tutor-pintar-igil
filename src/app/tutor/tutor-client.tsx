@@ -2,15 +2,14 @@
 
 import React, { useEffect, useMemo, useRef, useState } from "react";
 import Link from "next/link";
-import { useSearchParams } from "next/navigation";
-import PilihGuru from "@/components/PilihGuru";
+import { useRouter, useSearchParams } from "next/navigation";
 import {
   buatUcapanGuru,
   normalisasiKelaminGuru,
   profilGuru,
   type KelaminGuru,
 } from "@/lib/guru";
-import { DATA_KURIKULUM, DAFTAR_KELAS, OPSI_LAIN_NYA } from "@/lib/kurikulum";
+import { DATA_KURIKULUM, OPSI_LAIN_NYA } from "@/lib/kurikulum";
 import { hurufKunci } from "@/lib/kuis";
 import {
   bacaProgres,
@@ -19,26 +18,17 @@ import {
   catatSesiModul,
   simpanProfil,
 } from "@/lib/progres";
-import { kelasInput, kelasLabel, kelasTombolUtama } from "@/lib/tema";
+import { kelasTombolUtama } from "@/lib/tema";
 import {
   ArrowLeft,
   ArrowRight,
-  BookOpen,
-  Camera,
-  FileText,
-  GraduationCap,
-  Keyboard,
   Loader2,
   MessageCircleQuestionMark,
   Mic,
   Pause,
-  PenLine,
   Play,
   Send,
-  Sparkles,
   Square,
-  UploadCloud,
-  User,
   Volume2,
 } from "lucide-react";
 
@@ -199,10 +189,10 @@ function buatMesinRekamSuara(): MesinRekamSuara | null {
   return Konstruktor ? new Konstruktor() : null;
 }
 
+const KUNCI_HALAMAN_BUKU = "igil-halaman-buku-v1";
 const LAJU_BICARA = 0.92;
 const KARAKTER_PER_DETIK = 13 * LAJU_BICARA;
 const INTERVAL_KETIK_MS = Math.max(32, Math.round(1000 / KARAKTER_PER_DETIK));
-const BATAS_UKURAN_BYTE = 5 * 1024 * 1024;
 const BATAS_POTONGAN_UCAPAN = 120;
 const INTERVAL_JAGA_SUARA_MS = 8000;
 const INTERVAL_WASPADA_SUARA_MS = 1600;
@@ -256,34 +246,8 @@ function pecahTeksUcapan(teks: string, batas = BATAS_POTONGAN_UCAPAN): string[] 
   return potongan;
 }
 
-function kompresGambar(file: File): Promise<string> {
-  return new Promise((selesai, gagal) => {
-    const reader = new FileReader();
-    reader.onerror = () => gagal(new Error("Gagal membaca berkas."));
-    reader.onload = () => {
-      const gambar = new Image();
-      gambar.onload = () => {
-        const batas = 1280;
-        const rasio = Math.min(1, batas / Math.max(gambar.width, gambar.height));
-        const kanvas = document.createElement("canvas");
-        kanvas.width = Math.max(1, Math.round(gambar.width * rasio));
-        kanvas.height = Math.max(1, Math.round(gambar.height * rasio));
-        const ctx = kanvas.getContext("2d");
-        if (!ctx) {
-          selesai(reader.result as string);
-          return;
-        }
-        ctx.drawImage(gambar, 0, 0, kanvas.width, kanvas.height);
-        selesai(kanvas.toDataURL("image/jpeg", 0.78));
-      };
-      gambar.onerror = () => selesai(reader.result as string);
-      gambar.src = reader.result as string;
-    };
-    reader.readAsDataURL(file);
-  });
-}
-
 export default function TutorAI() {
+  const router = useRouter();
   const params = useSearchParams();
   const [isMulai, setIsMulai] = useState(false);
   const [nama, setNama] = useState("");
@@ -294,8 +258,7 @@ export default function TutorAI() {
   const [mapelManual, setMapelManual] = useState("");
   const [pilihanBab, setPilihanBab] = useState("");
   const [babManual, setBabManual] = useState("");
-  const [gambarBase64, setGambarBase64] = useState<string | null>(null);
-  const [sedangSeret, setSedangSeret] = useState(false);
+  const [gambarHalaman, setGambarHalaman] = useState<string[]>([]);
   const [isLoading, setIsLoading] = useState(false);
   const [hasilData, setHasilData] = useState<ModulTutor | null>(null);
   const [statusPemutar, setStatusPemutar] = useState<StatusPemutar>("siaga");
@@ -319,7 +282,7 @@ export default function TutorAI() {
   const sedangMemutarRef = useRef(false);
   const terakhirBicaraRef = useRef(0);
   const pakaiBatasKataRef = useRef(false);
-  const inputBerkasRef = useRef<HTMLInputElement | null>(null);
+  const sudahGenerateRef = useRef(false);
   const pengenalSuaraRef = useRef<MesinRekamSuara | null>(null);
   const transkripFinalRef = useRef("");
   const doodleAbortRef = useRef<AbortController | null>(null);
@@ -362,6 +325,18 @@ export default function TutorAI() {
     setGuruKelamin(normalisasiKelaminGuru(guruQ));
     if (modeQ === "gambar" || modeQ === "teks") setModeInput(modeQ);
     if (params.get("mulai") === "1") setIsMulai(true);
+    try {
+      const mentah = window.sessionStorage.getItem(KUNCI_HALAMAN_BUKU);
+      if (mentah) {
+        const daftar = JSON.parse(mentah) as unknown;
+        if (Array.isArray(daftar)) {
+          setGambarHalaman(daftar.filter((item) => typeof item === "string"));
+        }
+        window.sessionStorage.removeItem(KUNCI_HALAMAN_BUKU);
+      }
+    } catch {
+      window.sessionStorage.removeItem(KUNCI_HALAMAN_BUKU);
+    }
     // Prefill sekali dari URL / profil, lalu siswa bisa ganti manual.
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
@@ -533,25 +508,6 @@ export default function TutorAI() {
     setStatusPemutar("siaga");
   };
 
-  const tanganiBerkas = async (file: File | undefined) => {
-    if (!file) return;
-    if (!file.type.startsWith("image/")) {
-      setPesanGalat("Berkas harus berupa gambar PNG atau JPG.");
-      return;
-    }
-    if (file.size > BATAS_UKURAN_BYTE) {
-      setPesanGalat("Ukuran foto maksimal 5MB.");
-      return;
-    }
-    setPesanGalat("");
-    const hasil = await kompresGambar(file);
-    setGambarBase64(hasil);
-  };
-
-  const tanganiUnggahGambar = (e: React.ChangeEvent<HTMLInputElement>) => {
-    void tanganiBerkas(e.target.files?.[0]);
-  };
-
   const muatIlustrasiDoodle = async (modul: ModulTutor) => {
     doodleAbortRef.current?.abort();
     const pengontrol = new AbortController();
@@ -616,7 +572,7 @@ export default function TutorAI() {
         setPesanGalat("Mohon isi Materi Pembahasan.");
         return;
       }
-    } else if (!gambarBase64) {
+    } else if (gambarHalaman.length === 0) {
       setPesanGalat("Mohon unggah foto halaman buku terlebih dahulu.");
       return;
     }
@@ -641,7 +597,7 @@ export default function TutorAI() {
           kelas,
           mapel: modeInput === "teks" ? mapel : "Berdasarkan Buku",
           materi: modeInput === "teks" ? bab : "Analisis AI",
-          gambar: modeInput === "gambar" ? gambarBase64 : null,
+          gambar: modeInput === "gambar" ? gambarHalaman : null,
         }),
       });
       const data = (await respons.json()) as {
@@ -674,6 +630,33 @@ export default function TutorAI() {
     setIsLoading(false);
   };
 
+  useEffect(() => {
+    if (params.get("mulai") !== "1" || sudahGenerateRef.current || hasilData) {
+      return;
+    }
+    if (modeInput === "teks") {
+      if (!nama.trim() || !mapel.trim() || !bab.trim()) return;
+    } else if (!nama.trim() || gambarHalaman.length === 0) {
+      return;
+    }
+    sudahGenerateRef.current = true;
+    void tanganiBuatModul();
+    // Prefill selesai dulu, lalu generate sekali.
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [nama, mapel, bab, modeInput, gambarHalaman]);
+
+  useEffect(() => {
+    if (params.get("mulai") !== "1" || modeInput !== "gambar" || hasilData) {
+      return;
+    }
+    const timer = window.setTimeout(() => {
+      if (!sudahGenerateRef.current && gambarHalaman.length === 0) {
+        setPesanGalat("Mohon unggah foto halaman buku terlebih dahulu.");
+      }
+    }, 500);
+    return () => window.clearTimeout(timer);
+  }, [modeInput, gambarHalaman, hasilData, params]);
+
   const tanganiAjuanPertanyaan = async () => {
     if (!teksAjuan.trim()) {
       setPesanAjuan("Tuliskan pertanyaanmu terlebih dahulu.");
@@ -693,7 +676,7 @@ export default function TutorAI() {
           kelas,
           mapel: modeInput === "teks" ? mapel : "Berdasarkan Buku",
           materi: modeInput === "teks" ? bab : "Analisis AI",
-          gambar: modeInput === "gambar" ? gambarBase64 : null,
+          gambar: modeInput === "gambar" ? gambarHalaman : null,
           ajuan: teksAjuan.trim(),
         }),
       });
@@ -921,6 +904,7 @@ export default function TutorAI() {
     setPesanAjuan("");
     setTeksAnimasi("");
     setJawabanKuis({});
+    router.push("/ruang-belajar");
   };
 
   return (
@@ -946,242 +930,32 @@ export default function TutorAI() {
             </p>
             <Link
               href="/ruang-belajar"
-              className={`${kelasTombolUtama} px-8 py-4 rounded-full font-extrabold text-lg shadow-lg shadow-[#1C01A5]/25 mx-auto flex items-center gap-2 mt-4`}
+              className={`${kelasTombolUtama} px-8 py-4 rounded-full font-extrabold text-lg shadow-lg shadow-[#1C01A5]/25 mx-auto mt-4 flex items-center justify-center gap-2 text-center`}
             >
               Mulai Belajar Sekarang <ArrowRight className="w-5 h-5 text-white" />
             </Link>
           </section>
         </div>
       ) : !hasilData ? (
-        <div className="animate-in fade-in zoom-in-95 duration-500 max-w-3xl mx-auto px-4 pt-4 pb-20">
-          <div className="bg-white rounded-3xl shadow-xl border-2 border-[#1C01A5]/15 p-8">
-            <div className="space-y-6">
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                <div>
-                  <label className={kelasLabel}>Nama Siswa</label>
-                  <div className="relative">
-                    <User className="absolute left-4 top-3.5 w-5 h-5 text-[#1C01A5]" />
-                    <input
-                      type="text"
-                      value={nama}
-                      onChange={(e) => setNama(e.target.value)}
-                      placeholder="Nama panggilan"
-                      className={kelasInput}
-                    />
-                  </div>
-                </div>
-                <div>
-                  <label className={kelasLabel}>Jenjang Kelas</label>
-                  <div className="relative">
-                    <GraduationCap className="absolute left-4 top-3.5 w-5 h-5 text-[#1C01A5]" />
-                    <select
-                      value={kelas}
-                      onChange={(e) => setKelas(e.target.value)}
-                      className={`${kelasInput} appearance-none cursor-pointer`}
-                    >
-                      {DAFTAR_KELAS.map((k) => (
-                        <option key={k} value={k}>
-                          Kelas {k}
-                        </option>
-                      ))}
-                    </select>
-                  </div>
-                </div>
-              </div>
-
-              <PilihGuru
-                kelas={kelas}
-                nilai={guruKelamin}
-                onGanti={(kelamin) => {
-                  setGuruKelamin(kelamin);
-                  simpanProfil({ guruKelamin: kelamin });
-                }}
-              />
-
-              <div className="mt-2">
-                <label className="block text-sm font-bold text-[#1C01A5] mb-3">
-                  Pilih Sumber Materi Pembelajaran
-                </label>
-                <div className="flex p-1 bg-[#F0AB00]/15 rounded-2xl">
-                  <button
-                    type="button"
-                    onClick={() => setModeInput("teks")}
-                    className={`flex-1 flex items-center justify-center gap-2 py-3 rounded-xl font-bold transition-all ${
-                      modeInput === "teks"
-                        ? "bg-[#1C01A5] text-white shadow-sm"
-                        : "text-[#1C01A5] hover:text-[#1C01A5]"
-                    }`}
-                  >
-                    <Keyboard className="w-5 h-5" /> Ketik Judul Materi
-                  </button>
-                  <button
-                    type="button"
-                    onClick={() => setModeInput("gambar")}
-                    className={`flex-1 flex items-center justify-center gap-2 py-3 rounded-xl font-bold transition-all ${
-                      modeInput === "gambar"
-                        ? "bg-[#1C01A5] text-white shadow-sm"
-                        : "text-[#1C01A5] hover:text-[#1C01A5]"
-                    }`}
-                  >
-                    <Camera className="w-5 h-5" /> Unggah Halaman Buku
-                  </button>
-                </div>
-              </div>
-
-              {modeInput === "teks" ? (
-                <div className="space-y-6 animate-in slide-in-from-left-4 duration-300">
-                  <div>
-                    <label className={kelasLabel}>Mata Pelajaran</label>
-                    <div className="relative">
-                      <BookOpen className="absolute left-4 top-3.5 w-5 h-5 text-[#1C01A5]" />
-                      <select
-                        value={pilihanMapel}
-                        onChange={(e) => {
-                          const nilai = e.target.value;
-                          setPilihanMapel(nilai);
-                          if (nilai === OPSI_LAIN_NYA) {
-                            setPilihanBab(OPSI_LAIN_NYA);
-                          } else {
-                            setMapelManual("");
-                          }
-                        }}
-                        className={`${kelasInput} appearance-none cursor-pointer`}
-                      >
-                        {daftarMapel.map((m) => (
-                          <option key={m} value={m}>
-                            {m}
-                          </option>
-                        ))}
-                        <option value={OPSI_LAIN_NYA}>{OPSI_LAIN_NYA}</option>
-                      </select>
-                    </div>
-                    {pilihanMapel === OPSI_LAIN_NYA ? (
-                      <div className="relative mt-3">
-                        <PenLine className="absolute left-4 top-3.5 w-5 h-5 text-[#1C01A5]" />
-                        <input
-                          type="text"
-                          value={mapelManual}
-                          onChange={(e) => setMapelManual(e.target.value)}
-                          placeholder="Ketik nama mata pelajaran..."
-                          className={kelasInput}
-                        />
-                      </div>
-                    ) : null}
-                  </div>
-                  <div>
-                    <label className={kelasLabel}>Materi Pembahasan</label>
-                    <div className="relative">
-                      <FileText className="absolute left-4 top-3.5 w-5 h-5 text-[#1C01A5]" />
-                      <select
-                        value={pilihanBab}
-                        onChange={(e) => {
-                          setPilihanBab(e.target.value);
-                          if (e.target.value !== OPSI_LAIN_NYA) setBabManual("");
-                        }}
-                        className={`${kelasInput} appearance-none cursor-pointer`}
-                      >
-                        {daftarBab.map((b) => (
-                          <option key={b} value={b}>
-                            {b}
-                          </option>
-                        ))}
-                        <option value={OPSI_LAIN_NYA}>{OPSI_LAIN_NYA}</option>
-                      </select>
-                    </div>
-                    {pilihanBab === OPSI_LAIN_NYA ? (
-                      <div className="relative mt-3">
-                        <PenLine className="absolute left-4 top-3.5 w-5 h-5 text-[#1C01A5]" />
-                        <input
-                          type="text"
-                          value={babManual}
-                          onChange={(e) => setBabManual(e.target.value)}
-                          placeholder="Ketik topik materi secara bebas..."
-                          className={kelasInput}
-                        />
-                      </div>
-                    ) : null}
-                  </div>
-                </div>
-              ) : (
-                <div className="space-y-4 animate-in slide-in-from-right-4 duration-300">
-                  <label className="block text-sm font-bold text-[#1C01A5]">
-                    Unggah Halaman Buku Pelajaran
-                  </label>
-                  <button
-                    type="button"
-                    onClick={() => inputBerkasRef.current?.click()}
-                    onDragOver={(e) => {
-                      e.preventDefault();
-                      setSedangSeret(true);
-                    }}
-                    onDragLeave={() => setSedangSeret(false)}
-                    onDrop={(e) => {
-                      e.preventDefault();
-                      setSedangSeret(false);
-                      void tanganiBerkas(e.dataTransfer.files?.[0]);
-                    }}
-                    className={`flex flex-col items-center justify-center w-full h-48 border-2 border-dashed rounded-2xl cursor-pointer transition-colors relative overflow-hidden ${
-                      sedangSeret
-                        ? "border-[#F0AB00] bg-white"
-                        : "border-[#1C01A5]/30 bg-white hover:bg-white"
-                    }`}
-                  >
-                    {gambarBase64 ? (
-                      <img
-                        src={gambarBase64}
-                        alt="Pratinjau halaman buku"
-                        className="absolute inset-0 w-full h-full object-cover opacity-60"
-                      />
-                    ) : null}
-                    <div className="flex flex-col items-center justify-center pt-5 pb-6 relative z-10 bg-white/70 w-full h-full">
-                      <UploadCloud className="w-10 h-10 text-[#1C01A5] mb-3" />
-                      <p className="mb-2 text-sm text-slate-600 font-bold">
-                        <span className="text-[#1C01A5]">Klik untuk mengunggah</span> atau seret foto kemari
-                      </p>
-                      <p className="text-xs text-slate-500 font-medium">
-                        PNG, JPG, atau JPEG (Maks. 5MB)
-                      </p>
-                    </div>
-                  </button>
-                  <input
-                    ref={inputBerkasRef}
-                    type="file"
-                    className="hidden"
-                    accept="image/png, image/jpeg, image/jpg"
-                    onChange={tanganiUnggahGambar}
-                  />
-                  {gambarBase64 ? (
-                    <p className="text-sm text-[#1C01A5] font-bold text-center">
-                      Foto buku siap dianalisis AI
-                    </p>
-                  ) : null}
-                </div>
-              )}
-
-              {pesanGalat ? (
-                <p className="text-sm font-semibold text-rose-600 bg-rose-50 border border-rose-100 rounded-xl px-4 py-3">
-                  {pesanGalat}
-                </p>
-              ) : null}
-
-              <button
-                type="button"
-                onClick={() => void tanganiBuatModul()}
-                disabled={isLoading}
-                className={`w-full ${kelasTombolUtama} py-4 rounded-xl font-extrabold text-lg mt-2 flex justify-center items-center gap-2 shadow-lg shadow-[#1C01A5]/25`}
+        <div className="animate-in fade-in duration-500 max-w-xl mx-auto px-4 pt-16 pb-20 text-center">
+          {pesanGalat ? (
+            <div className="rounded-3xl border-2 border-rose-100 bg-rose-50 p-8">
+              <p className="font-semibold text-rose-600">{pesanGalat}</p>
+              <Link
+                href="/ruang-belajar"
+                className={`${kelasTombolUtama} mt-6 inline-flex items-center justify-center rounded-xl px-6 py-3 font-extrabold`}
               >
-                {isLoading ? (
-                  <>
-                    <Loader2 className="w-6 h-6 animate-spin" /> Menyusun Modul Cerdas...
-                  </>
-                ) : (
-                  <>
-                    Mulai Pembelajaran Pintar <Sparkles className="w-5 h-5" />
-                  </>
-                )}
-              </button>
+                Kembali ke Ruang Belajar
+              </Link>
             </div>
-          </div>
+          ) : (
+            <div className="rounded-3xl border-2 border-[#1C01A5]/15 bg-white p-8 shadow-xl">
+              <Loader2 className="mx-auto h-10 w-10 animate-spin text-[#1C01A5]" />
+              <p className="mt-4 text-lg font-extrabold text-[#1C01A5]">
+                Menyusun modul cerdas...
+              </p>
+            </div>
+          )}
         </div>
       ) : (
         <div className="max-w-4xl mx-auto px-4 pt-6 pb-20 animate-in slide-in-from-bottom-10 duration-700">
