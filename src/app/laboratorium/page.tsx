@@ -49,11 +49,13 @@ const PRAKTIKUM = [
 export default function LaboratoriumPage() {
   const [nama, setNama] = useState("Siswa");
   const [kelas, setKelas] = useState("8 SMP");
+  const [guru, setGuru] = useState("wanita");
 
   useEffect(() => {
     const profil = bacaProgres().profil;
     if (profil.nama) setNama(profil.nama);
     if (profil.kelas) setKelas(profil.kelas);
+    if (profil.guruKelamin) setGuru(profil.guruKelamin);
   }, []);
 
   return (
@@ -70,6 +72,7 @@ export default function LaboratoriumPage() {
             materi: item.judul,
             mode: "teks",
             mulai: "1",
+            guru,
           });
           return (
             <article

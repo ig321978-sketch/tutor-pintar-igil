@@ -2,7 +2,15 @@
 
 import React, { useEffect, useMemo, useRef, useState } from "react";
 import { useSearchParams } from "next/navigation";
+import PilihGuru from "@/components/PilihGuru";
+import {
+  buatUcapanGuru,
+  normalisasiKelaminGuru,
+  profilGuru,
+  type KelaminGuru,
+} from "@/lib/guru";
 import { DATA_KURIKULUM, DAFTAR_KELAS, OPSI_LAIN_NYA } from "@/lib/kurikulum";
+import { hurufKunci } from "@/lib/kuis";
 import {
   bacaProgres,
   catatEvaluasiTambahan,
@@ -53,6 +61,7 @@ type ModulTutor = {
   sketsaSisipan2?: string;
   svgCode: string;
   pertanyaan: string;
+  kunciJawaban?: string[];
   motivasi: string;
   gambarUtama?: string | null;
   gambarSisipan?: GambarSisipan[];
@@ -193,23 +202,57 @@ const LAJU_BICARA = 0.92;
 const KARAKTER_PER_DETIK = 13 * LAJU_BICARA;
 const INTERVAL_KETIK_MS = Math.max(32, Math.round(1000 / KARAKTER_PER_DETIK));
 const BATAS_UKURAN_BYTE = 5 * 1024 * 1024;
+const BATAS_POTONGAN_UCAPAN = 120;
+const INTERVAL_JAGA_SUARA_MS = 8000;
+const INTERVAL_WASPADA_SUARA_MS = 1600;
 
-function pilihSuaraIndonesia(): SpeechSynthesisVoice | null {
-  if (typeof window === "undefined") return null;
-  const daftar = window.speechSynthesis.getVoices();
-  return (
-    daftar.find((suara) => suara.lang.toLowerCase().startsWith("id")) ?? null
-  );
+type JenisPotonganSuara = "sapaan" | "penjelasan" | "sisa";
+
+type PotonganSuara = {
+  teks: string;
+  ucapan: SpeechSynthesisUtterance;
+  jenis: JenisPotonganSuara;
+  offset: number;
+  teksPenjelasan: string;
+  percobaan: number;
+};
+
+function buatUcapan(teks: string, guruKelas: string, kelamin: KelaminGuru) {
+  return buatUcapanGuru(teks, profilGuru(guruKelas, kelamin));
 }
 
-function buatUcapan(teks: string): SpeechSynthesisUtterance {
-  const ucapan = new SpeechSynthesisUtterance(teks);
-  ucapan.lang = "id-ID";
-  ucapan.rate = LAJU_BICARA;
-  ucapan.pitch = 1;
-  const suara = pilihSuaraIndonesia();
-  if (suara) ucapan.voice = suara;
-  return ucapan;
+function pecahTeksUcapan(teks: string, batas = BATAS_POTONGAN_UCAPAN): string[] {
+  const bersih = teks.replace(/\s+/g, " ").trim();
+  if (!bersih) return [];
+  if (bersih.length <= batas) return [bersih];
+
+  const potongan: string[] = [];
+  const bagian = bersih.split(/(?<=[.!?…;:])\s+/);
+  let buffer = "";
+
+  const simpanPotong = (nilai: string) => {
+    const isi = nilai.trim();
+    if (isi) potongan.push(isi);
+  };
+
+  for (const item of bagian) {
+    const calon = buffer ? `${buffer} ${item}` : item;
+    if (calon.length <= batas) {
+      buffer = calon;
+      continue;
+    }
+    if (buffer) simpanPotong(buffer);
+    if (item.length <= batas) {
+      buffer = item;
+      continue;
+    }
+    for (let i = 0; i < item.length; i += batas) {
+      simpanPotong(item.slice(i, i + batas));
+    }
+    buffer = "";
+  }
+  if (buffer) simpanPotong(buffer);
+  return potongan;
 }
 
 function kompresGambar(file: File): Promise<string> {
@@ -244,6 +287,7 @@ export default function TutorAI() {
   const [isMulai, setIsMulai] = useState(false);
   const [nama, setNama] = useState("");
   const [kelas, setKelas] = useState("3 SD");
+  const [guruKelamin, setGuruKelamin] = useState<KelaminGuru>("wanita");
   const [modeInput, setModeInput] = useState<ModeInput>("teks");
   const [pilihanMapel, setPilihanMapel] = useState("");
   const [mapelManual, setMapelManual] = useState("");
@@ -268,6 +312,11 @@ export default function TutorAI() {
   const timerKetikRef = useRef<number | null>(null);
   const indeksKetikRef = useRef(0);
   const jagaSuaraRef = useRef<number | null>(null);
+  const waspadaSuaraRef = useRef<number | null>(null);
+  const antrianSuaraRef = useRef<PotonganSuara[]>([]);
+  const indeksAntrianRef = useRef(0);
+  const sedangMemutarRef = useRef(false);
+  const terakhirBicaraRef = useRef(0);
   const pakaiBatasKataRef = useRef(false);
   const inputBerkasRef = useRef<HTMLInputElement | null>(null);
   const pengenalSuaraRef = useRef<MesinRekamSuara | null>(null);
@@ -305,9 +354,11 @@ export default function TutorAI() {
     const namaQ = params.get("nama") || profil.nama;
     const kelasQ = params.get("kelas") || profil.kelas || "3 SD";
     const modeQ = params.get("mode");
+    const guruQ = params.get("guru") || profil.guruKelamin;
     kelasTargetRef.current = kelasQ;
     if (namaQ) setNama(namaQ);
     setKelas(kelasQ);
+    setGuruKelamin(normalisasiKelaminGuru(guruQ));
     if (modeQ === "gambar" || modeQ === "teks") setModeInput(modeQ);
     if (params.get("mulai") === "1") setIsMulai(true);
     // Prefill sekali dari URL / profil, lalu siswa bisa ganti manual.
@@ -390,6 +441,7 @@ export default function TutorAI() {
       window.speechSynthesis.cancel();
       if (timerKetikRef.current) window.clearInterval(timerKetikRef.current);
       if (jagaSuaraRef.current) window.clearInterval(jagaSuaraRef.current);
+      if (waspadaSuaraRef.current) window.clearInterval(waspadaSuaraRef.current);
       pengenalSuaraRef.current?.abort();
       doodleAbortRef.current?.abort();
     };
@@ -407,6 +459,10 @@ export default function TutorAI() {
       window.clearInterval(jagaSuaraRef.current);
       jagaSuaraRef.current = null;
     }
+    if (waspadaSuaraRef.current) {
+      window.clearInterval(waspadaSuaraRef.current);
+      waspadaSuaraRef.current = null;
+    }
   };
 
   const mulaiKetikDari = (teks: string, mulaiDari: number) => {
@@ -422,16 +478,52 @@ export default function TutorAI() {
     }, INTERVAL_KETIK_MS);
   };
 
+  const bicaraPotonganSaatIni = () => {
+    const indeks = indeksAntrianRef.current;
+    const item = antrianSuaraRef.current[indeks];
+    if (!item) {
+      sedangMemutarRef.current = false;
+      hentikanJagaSuara();
+      setStatusPemutar("siaga");
+      return;
+    }
+
+    const ucapan = buatUcapan(item.teks, kelas, guruKelamin);
+    ucapan.onstart = item.ucapan.onstart;
+    ucapan.onboundary = item.ucapan.onboundary;
+    ucapan.onend = item.ucapan.onend;
+    ucapan.onerror = item.ucapan.onerror;
+    item.ucapan = ucapan;
+    item.percobaan += 1;
+    terakhirBicaraRef.current = Date.now();
+    window.speechSynthesis.speak(ucapan);
+  };
+
   const mulaiJagaSuara = () => {
     hentikanJagaSuara();
     jagaSuaraRef.current = window.setInterval(() => {
+      if (!sedangMemutarRef.current) return;
       if (!window.speechSynthesis.speaking || window.speechSynthesis.paused) return;
       window.speechSynthesis.pause();
       window.speechSynthesis.resume();
-    }, 12000);
+    }, INTERVAL_JAGA_SUARA_MS);
+
+    waspadaSuaraRef.current = window.setInterval(() => {
+      if (!sedangMemutarRef.current) return;
+      if (window.speechSynthesis.paused || window.speechSynthesis.speaking) return;
+      if (Date.now() - terakhirBicaraRef.current < 2500) return;
+      const item = antrianSuaraRef.current[indeksAntrianRef.current];
+      if (item && item.percobaan >= 3) {
+        indeksAntrianRef.current += 1;
+      }
+      bicaraPotonganSaatIni();
+    }, INTERVAL_WASPADA_SUARA_MS);
   };
 
   const resetPemutar = () => {
+    sedangMemutarRef.current = false;
+    antrianSuaraRef.current = [];
+    indeksAntrianRef.current = 0;
     window.speechSynthesis.cancel();
     hentikanKetik();
     hentikanJagaSuara();
@@ -560,7 +652,7 @@ export default function TutorAI() {
       if (data.berhasil && data.data) {
         setHasilData(data.data);
         setJawabanKuis({});
-        simpanProfil({ nama, kelas });
+        simpanProfil({ nama, kelas, guruKelamin });
         const sesi = catatSesiModul({
           nama,
           kelas,
@@ -568,6 +660,7 @@ export default function TutorAI() {
           materi: modeInput === "teks" ? bab : "Analisis AI",
           mode: modeInput,
           catatanEvaluasi: data.data.motivasi,
+          kunciJawaban: data.data.kunciJawaban,
         });
         setSesiAktifId(sesi.id);
         void muatIlustrasiDoodle(data.data);
@@ -643,6 +736,7 @@ export default function TutorAI() {
 
     window.speechSynthesis.cancel();
     hentikanJagaSuara();
+    sedangMemutarRef.current = false;
     setStatusPemutar("siaga");
     setPesanAjuan("");
     transkripFinalRef.current = teksAjuan.trim() ? `${teksAjuan.trim()} ` : "";
@@ -692,7 +786,12 @@ export default function TutorAI() {
     if (!hasilData) return;
 
     if (statusPemutar === "jeda") {
-      window.speechSynthesis.resume();
+      sedangMemutarRef.current = true;
+      if (window.speechSynthesis.paused) {
+        window.speechSynthesis.resume();
+      } else if (!window.speechSynthesis.speaking) {
+        bicaraPotonganSaatIni();
+      }
       mulaiKetikDari(hasilData.penjelasan, indeksKetikRef.current);
       mulaiJagaSuara();
       setStatusPemutar("memutar");
@@ -701,47 +800,94 @@ export default function TutorAI() {
 
     resetPemutar();
     setTeksAnimasi("");
+    sedangMemutarRef.current = true;
     setStatusPemutar("memutar");
+
+    const antrian: PotonganSuara[] = [];
+    const masukkan = (
+      teks: string,
+      jenis: JenisPotonganSuara,
+      teksPenjelasan = hasilData.penjelasan,
+    ) => {
+      let cariDari = 0;
+      for (const potong of pecahTeksUcapan(teks)) {
+        const posisi = teks.indexOf(potong, cariDari);
+        const offset = posisi >= 0 ? posisi : cariDari;
+        antrian.push({
+          teks: potong,
+          ucapan: buatUcapan(potong, kelas, guruKelamin),
+          jenis,
+          offset,
+          teksPenjelasan,
+          percobaan: 0,
+        });
+        cariDari = offset + potong.length;
+      }
+    };
+
+    masukkan(hasilData.sapaan, "sapaan");
+    masukkan(hasilData.penjelasan, "penjelasan");
+    masukkan(`${hasilData.pertanyaan}. ${hasilData.motivasi}`, "sisa");
+
+    antrian.forEach((item, indeks) => {
+      item.ucapan.onstart = () => {
+        if (item.jenis !== "penjelasan") return;
+        const sudahMulai = antrian
+          .slice(0, indeks)
+          .some((lalu) => lalu.jenis === "penjelasan");
+        if (!sudahMulai) {
+          pakaiBatasKataRef.current = false;
+          mulaiKetikDari(item.teksPenjelasan, 0);
+        }
+      };
+
+      item.ucapan.onboundary = (peristiwa) => {
+        if (item.jenis !== "penjelasan") return;
+        if (peristiwa.name !== "word" && peristiwa.name !== "sentence") return;
+        pakaiBatasKataRef.current = true;
+        const panjang = peristiwa.charLength ?? 1;
+        const indeksTeks = Math.min(
+          item.teksPenjelasan.length,
+          item.offset + peristiwa.charIndex + panjang,
+        );
+        indeksKetikRef.current = indeksTeks;
+        setTeksAnimasi(item.teksPenjelasan.slice(0, indeksTeks));
+      };
+
+      item.ucapan.onend = () => {
+        if (!sedangMemutarRef.current) return;
+        if (item.jenis === "penjelasan") {
+          const selesaiPenjelasan = antrian
+            .slice(indeks + 1)
+            .every((lanjut) => lanjut.jenis !== "penjelasan");
+          if (selesaiPenjelasan) {
+            hentikanKetik();
+            setTeksAnimasi(item.teksPenjelasan);
+            indeksKetikRef.current = item.teksPenjelasan.length;
+          }
+        }
+        indeksAntrianRef.current = indeks + 1;
+        bicaraPotonganSaatIni();
+      };
+
+      item.ucapan.onerror = (peristiwa) => {
+        if (peristiwa.error === "canceled" || peristiwa.error === "interrupted") {
+          return;
+        }
+        if (!sedangMemutarRef.current) return;
+        indeksAntrianRef.current = indeks + 1;
+        bicaraPotonganSaatIni();
+      };
+    });
+
+    antrianSuaraRef.current = antrian;
+    indeksAntrianRef.current = 0;
     mulaiJagaSuara();
-
-    const ucapSapaan = buatUcapan(hasilData.sapaan);
-    const ucapPenjelasan = buatUcapan(hasilData.penjelasan);
-    const ucapSisa = buatUcapan(`${hasilData.pertanyaan}. ${hasilData.motivasi}`);
-
-    ucapPenjelasan.onstart = () => {
-      pakaiBatasKataRef.current = false;
-      mulaiKetikDari(hasilData.penjelasan, 0);
-    };
-
-    ucapPenjelasan.onboundary = (peristiwa) => {
-      if (peristiwa.name !== "word" && peristiwa.name !== "sentence") return;
-      pakaiBatasKataRef.current = true;
-      const panjang = peristiwa.charLength ?? 1;
-      const indeks = Math.min(
-        hasilData.penjelasan.length,
-        peristiwa.charIndex + panjang,
-      );
-      indeksKetikRef.current = indeks;
-      setTeksAnimasi(hasilData.penjelasan.slice(0, indeks));
-    };
-
-    ucapPenjelasan.onend = () => {
-      hentikanKetik();
-      setTeksAnimasi(hasilData.penjelasan);
-      indeksKetikRef.current = hasilData.penjelasan.length;
-    };
-
-    ucapSisa.onend = () => {
-      hentikanJagaSuara();
-      setStatusPemutar("siaga");
-    };
-
-    window.speechSynthesis.speak(ucapSapaan);
-    window.speechSynthesis.speak(ucapPenjelasan);
-    window.speechSynthesis.speak(ucapSisa);
+    bicaraPotonganSaatIni();
   };
 
   const jedaSuara = () => {
+    sedangMemutarRef.current = false;
     window.speechSynthesis.pause();
     hentikanKetik();
     hentikanJagaSuara();
@@ -757,8 +903,12 @@ export default function TutorAI() {
   };
 
   const pilihJawabanKuis = (nomor: number, pilihan: string) => {
+    if (jawabanKuis[String(nomor)]) return;
+    const kunci = hurufKunci(hasilData?.kunciJawaban, nomor);
     setJawabanKuis((sebelum) => ({ ...sebelum, [String(nomor)]: pilihan }));
-    if (sesiAktifId) catatJawabanKuis(sesiAktifId, nomor, pilihan);
+    if (sesiAktifId) {
+      catatJawabanKuis(sesiAktifId, nomor, pilihan, kunci === pilihan);
+    }
   };
 
   const kembaliKeMenu = () => {
@@ -838,6 +988,15 @@ export default function TutorAI() {
                   </div>
                 </div>
               </div>
+
+              <PilihGuru
+                kelas={kelas}
+                nilai={guruKelamin}
+                onGanti={(kelamin) => {
+                  setGuruKelamin(kelamin);
+                  simpanProfil({ guruKelamin: kelamin });
+                }}
+              />
 
               <div className="mt-2">
                 <label className="block text-sm font-bold text-[#1C01A5] mb-3">
@@ -1236,21 +1395,29 @@ export default function TutorAI() {
                   .filter(Boolean)
                   .map((soal, indeks) => {
                     const nomor = indeks + 1;
+                    const pilihan = jawabanKuis[String(nomor)];
+                    const kunci = hurufKunci(hasilData.kunciJawaban, nomor);
+                    const sudahJawab = Boolean(pilihan);
+                    const benar = sudahJawab && pilihan === kunci;
                     return (
                       <div key={`soal-${nomor}`}>
                         <p className="whitespace-pre-wrap">{soal}</p>
                         <div className="mt-3 flex flex-wrap gap-2">
                           {["A", "B", "C", "D"].map((huruf) => {
-                            const aktif = jawabanKuis[String(nomor)] === huruf;
+                            const aktif = pilihan === huruf;
+                            const tampilKunci = sudahJawab && huruf === kunci;
                             return (
                               <button
                                 key={huruf}
                                 type="button"
                                 onClick={() => pilihJawabanKuis(nomor, huruf)}
+                                disabled={sudahJawab}
                                 className={`rounded-xl border-2 px-4 py-2 text-sm font-extrabold ${
-                                  aktif
-                                    ? "border-[#1C01A5] bg-[#1C01A5] text-white"
-                                    : "border-[#1C01A5]/20 bg-white text-[#1C01A5] hover:border-[#F0AB00]"
+                                  tampilKunci
+                                    ? "border-emerald-600 bg-emerald-600 text-white"
+                                    : aktif
+                                      ? "border-rose-600 bg-rose-600 text-white"
+                                      : "border-[#1C01A5]/20 bg-white text-[#1C01A5] hover:border-[#F0AB00] disabled:opacity-60"
                                 }`}
                               >
                                 {huruf}
@@ -1258,11 +1425,24 @@ export default function TutorAI() {
                             );
                           })}
                         </div>
+                        {sudahJawab ? (
+                          <p
+                            className={`mt-2 text-sm font-extrabold ${
+                              benar ? "text-emerald-700" : "text-rose-700"
+                            }`}
+                          >
+                            {benar
+                              ? "Benar. Jawabanmu tepat."
+                              : kunci
+                                ? `Salah. Jawaban yang benar adalah ${kunci}.`
+                                : "Jawaban tersimpan. Kunci soal belum tersedia untuk modul ini."}
+                          </p>
+                        ) : null}
                       </div>
                     );
                   })}
                 <p className="text-xs font-semibold text-slate-500">
-                  Pilih jawabanmu. Kunci tidak ditampilkan. Ketepatan di Rapor dihitung dari soal yang sudah dijawab.
+                  Pilih satu jawaban. Hasil dicek langsung. Ketepatan di Rapor dihitung dari jawaban yang benar.
                 </p>
               </div>
             </div>

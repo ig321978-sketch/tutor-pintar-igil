@@ -1,9 +1,12 @@
 export type ModeBelajar = "teks" | "gambar";
 
+import type { KelaminGuru } from "@/lib/guru";
+
 export type ProfilSiswa = {
   nama: string;
   kelas: string;
   kota: string;
+  guruKelamin: KelaminGuru;
 };
 
 export type SesiModul = {
@@ -17,6 +20,8 @@ export type SesiModul = {
   xp: number;
   kuisTotal: number;
   kuisDijawab: number;
+  kuisBenar: number;
+  kunciJawaban: string[];
   catatanEvaluasi: string;
 };
 
@@ -56,7 +61,7 @@ export const PERINGKAT_NASIONAL_DASAR: BarisPeringkat[] = [
 
 function progresKosong(): ProgresIgil {
   return {
-    profil: { nama: "", kelas: "3 SD", kota: "Jakarta" },
+    profil: { nama: "", kelas: "3 SD", kota: "Jakarta", guruKelamin: "wanita" },
     sesi: [],
     jawabanKuis: {},
     xpTotal: 0,
@@ -77,7 +82,15 @@ export function bacaProgres(): ProgresIgil {
       ...progresKosong(),
       ...data,
       profil: { ...progresKosong().profil, ...data.profil },
-      sesi: Array.isArray(data.sesi) ? data.sesi : [],
+      sesi: Array.isArray(data.sesi)
+        ? data.sesi.map((sesi) => ({
+            ...sesi,
+            kuisBenar: typeof sesi.kuisBenar === "number" ? sesi.kuisBenar : 0,
+            kunciJawaban: Array.isArray(sesi.kunciJawaban)
+              ? sesi.kunciJawaban
+              : [],
+          }))
+        : [],
       jawabanKuis: data.jawabanKuis ?? {},
       xpTotal: typeof data.xpTotal === "number" ? data.xpTotal : 0,
     };
@@ -105,6 +118,7 @@ export function catatSesiModul(opsi: {
   materi: string;
   mode: ModeBelajar;
   catatanEvaluasi: string;
+  kunciJawaban?: string[];
 }): SesiModul {
   const data = bacaProgres();
   const sesi: SesiModul = {
@@ -118,6 +132,8 @@ export function catatSesiModul(opsi: {
     xp: 80,
     kuisTotal: 5,
     kuisDijawab: 0,
+    kuisBenar: 0,
+    kunciJawaban: opsi.kunciJawaban ?? [],
     catatanEvaluasi: opsi.catatanEvaluasi,
   };
   data.sesi.unshift(sesi);
@@ -132,6 +148,7 @@ export function catatJawabanKuis(
   sesiId: string,
   nomorSoal: number,
   pilihan: string,
+  benar = false,
 ): ProgresIgil {
   const data = bacaProgres();
   const kunciSesi = data.jawabanKuis[sesiId] ?? {};
@@ -143,8 +160,9 @@ export function catatJawabanKuis(
   if (sesi) {
     sesi.kuisDijawab = Object.keys(kunciSesi).length;
     if (!sudahAda) {
-      sesi.xp += 8;
-      data.xpTotal += 8;
+      sesi.xp += benar ? 16 : 8;
+      data.xpTotal += benar ? 16 : 8;
+      if (benar) sesi.kuisBenar += 1;
     }
   }
 
@@ -166,8 +184,12 @@ export function ringkasanRapor(data: ProgresIgil = bacaProgres()) {
   const totalModul = data.sesi.length;
   const totalKuis = data.sesi.reduce((jumlah, sesi) => jumlah + sesi.kuisDijawab, 0);
   const totalSoal = data.sesi.reduce((jumlah, sesi) => jumlah + sesi.kuisTotal, 0);
+  const totalBenar = data.sesi.reduce(
+    (jumlah, sesi) => jumlah + (sesi.kuisBenar ?? 0),
+    0,
+  );
   const ketepatan =
-    totalSoal === 0 ? 0 : Math.round((totalKuis / totalSoal) * 100);
+    totalKuis === 0 ? 0 : Math.round((totalBenar / totalKuis) * 100);
   const catatan = data.sesi
     .map((sesi) => sesi.catatanEvaluasi)
     .filter((isi) => isi.trim())

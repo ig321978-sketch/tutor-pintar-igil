@@ -2,8 +2,10 @@
 
 import Link from "next/link";
 import { useEffect, useMemo, useState } from "react";
-import { BookOpen, Camera, Keyboard, Sparkles } from "lucide-react";
+import { BookOpen, Sparkles } from "lucide-react";
 import PageShell from "@/components/PageShell";
+import PilihGuru from "@/components/PilihGuru";
+import { type KelaminGuru } from "@/lib/guru";
 import { DATA_KURIKULUM, DAFTAR_KELAS } from "@/lib/kurikulum";
 import { bacaProgres, simpanProfil, type SesiModul } from "@/lib/progres";
 import { kelasKotak, kelasLabel, kelasTombolUtama } from "@/lib/tema";
@@ -12,8 +14,13 @@ export default function RuangBelajarPage() {
   const [nama, setNama] = useState("");
   const [kelas, setKelas] = useState("3 SD");
   const [kota, setKota] = useState("Jakarta");
-  const [mapel, setMapel] = useState("");
-  const [materi, setMateri] = useState("");
+  const [mapel, setMapel] = useState(
+    () => Object.keys(DATA_KURIKULUM["3 SD"] ?? {})[0] ?? "",
+  );
+  const [materi, setMateri] = useState(
+    () => DATA_KURIKULUM["3 SD"]?.[Object.keys(DATA_KURIKULUM["3 SD"] ?? {})[0] ?? ""]?.[0] ?? "",
+  );
+  const [guruKelamin, setGuruKelamin] = useState<KelaminGuru>("wanita");
   const [sesiAktif, setSesiAktif] = useState<SesiModul[]>([]);
 
   const daftarMapel = useMemo(
@@ -30,6 +37,7 @@ export default function RuangBelajarPage() {
     if (data.profil.nama) setNama(data.profil.nama);
     if (data.profil.kelas) setKelas(data.profil.kelas);
     if (data.profil.kota) setKota(data.profil.kota);
+    if (data.profil.guruKelamin) setGuruKelamin(data.profil.guruKelamin);
     setSesiAktif(data.sesi.slice(0, 4));
   }, []);
 
@@ -45,17 +53,16 @@ export default function RuangBelajarPage() {
     }
   }, [daftarMateri, materi]);
 
-  const tautanSesi = (mode: "teks" | "gambar") => {
+  const tautanMulai = () => {
     const query = new URLSearchParams({
       nama: nama.trim() || "Siswa",
       kelas,
-      mode,
+      mode: "teks",
       mulai: "1",
+      mapel,
+      materi,
+      guru: guruKelamin,
     });
-    if (mode === "teks") {
-      query.set("mapel", mapel);
-      query.set("materi", materi);
-    }
     return `/tutor?${query.toString()}`;
   };
 
@@ -64,13 +71,14 @@ export default function RuangBelajarPage() {
       nama: nama.trim() || "Siswa",
       kelas,
       kota: kota.trim() || "Indonesia",
+      guruKelamin,
     });
   };
 
   return (
     <PageShell
       judul="📚 Ruang Belajar"
-      subjudul="Pilih mata pelajaran, lihat materi yang sedang aktif, lalu mulai sesi baru lewat ketikan atau pindai halaman buku."
+      subjudul="Pilih mata pelajaran, pilih guru pengajar, lalu mulai sesi belajar langsung di halaman Tutor."
     >
       <section className="grid gap-6 lg:grid-cols-[1.1fr_0.9fr]">
         <div className="rounded-3xl border border-[#1C01A5]/15 bg-white p-6 shadow-sm">
@@ -158,7 +166,7 @@ export default function RuangBelajarPage() {
         <div className="mt-6">
           <label className={kelasLabel}>Materi pembahasan</label>
           <select
-            value={materi}
+            value={daftarMateri.includes(materi) ? materi : (daftarMateri[0] ?? "")}
             onChange={(e) => setMateri(e.target.value)}
             className={kelasKotak}
           >
@@ -170,27 +178,27 @@ export default function RuangBelajarPage() {
           </select>
         </div>
 
-        <div className="mt-6 grid gap-3 sm:grid-cols-2">
+        <div className="mt-6">
+          <PilihGuru
+            kelas={kelas}
+            nilai={guruKelamin}
+            onGanti={setGuruKelamin}
+          />
+        </div>
+
+        <div className="mt-6">
           <Link
-            href={tautanSesi("teks")}
+            href={tautanMulai()}
             onClick={simpanProfilSesi}
-            className={`${kelasTombolUtama} flex items-center justify-center gap-2 rounded-xl px-4 py-3 text-center font-extrabold shadow-md shadow-[#1C01A5]/20`}
+            className={`${kelasTombolUtama} flex items-center justify-center gap-2 rounded-xl px-6 py-4 text-center text-lg font-extrabold tracking-wide shadow-md shadow-[#1C01A5]/20`}
           >
-            <Keyboard className="h-5 w-5" />
-            Mulai ketik manual
-          </Link>
-          <Link
-            href={tautanSesi("gambar")}
-            onClick={simpanProfilSesi}
-            className="flex items-center justify-center gap-2 rounded-xl border-2 border-[#F0AB00] bg-[#F0AB00] px-4 py-3 text-center font-extrabold text-[#1C01A5] hover:bg-[#e09e00]"
-          >
-            <Camera className="h-5 w-5" />
-            Pindai buku foto
+            <Sparkles className="h-5 w-5" />
+            MULAI PEMBELAJARAN
           </Link>
         </div>
         <p className="mt-3 flex items-center gap-2 text-sm text-slate-500">
           <Sparkles className="h-4 w-4 text-[#F0AB00]" />
-          Sesi akan dibuka di AI Tutor. Pemutar audio dan pemindai gambar tetap tersedia.
+          Tombol ini membuka AI Tutor. Pindai buku dan pemutar suara guru tetap tersedia di halaman Tutor.
         </p>
       </section>
     </PageShell>

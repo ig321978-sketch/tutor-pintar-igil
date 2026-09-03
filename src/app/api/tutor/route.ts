@@ -5,6 +5,7 @@ import {
   type Part,
   type Schema,
 } from "@google/generative-ai";
+import { parseKunciJawaban } from "@/lib/kuis";
 
 export const maxDuration = 60;
 
@@ -25,6 +26,7 @@ type ModulTutor = {
   sketsaSisipan2: string;
   svgCode: string;
   pertanyaan: string;
+  kunciJawaban: string[];
   motivasi: string;
 };
 
@@ -49,6 +51,7 @@ const SKEMA_MODUL: Schema = {
     sketsaSisipan2: { type: SchemaType.STRING },
     svgCode: { type: SchemaType.STRING },
     pertanyaan: { type: SchemaType.STRING },
+    kunciJawaban: { type: SchemaType.STRING },
     motivasi: { type: SchemaType.STRING },
   },
   required: [
@@ -59,6 +62,7 @@ const SKEMA_MODUL: Schema = {
     "sketsaSisipan2",
     "svgCode",
     "pertanyaan",
+    "kunciJawaban",
     "motivasi",
   ],
 };
@@ -288,7 +292,7 @@ STANDAR KONTEN:
 6. svgCode: cadangan doodle SVG sketsa tangan (viewBox 0 0 400 220), kertas krem, garis tinta agak bergelombang, aksen teal dan amber. Bukan clipart kekanak-kanakan. Tanpa kutip ganda.
 7. pertanyaan: TEPAT 5 soal dalam SATU string panjang, dipisah \\n\\n.
    Komposisi wajib: 3 soal Standar + 2 soal HOTS.
-   DILARANG KERAS menuliskan label 'Kunci Jawaban: A/B/C/D', huruf jawaban, pembahasan, atau trik di dalam field pertanyaan. Siswa tidak boleh melihat kunci secara sekilas.
+   DILARANG menuliskan label kunci, huruf jawaban, atau pembahasan di dalam field pertanyaan.
    Format tiap soal HANYA memuat tiga bagian ini:
    [Soal X - Tipe: Standar/HOTS]
    Narasi pertanyaan yang menantang...
@@ -296,9 +300,11 @@ STANDAR KONTEN:
    B) ...
    C) ...
    D) ...
-8. motivasi: satu kalimat motivasi kuat untuk ${nama}.
+8. kunciJawaban: SATU string berisi 5 huruf A/B/C/D sesuai urutan soal, dipisah koma. Contoh: A,C,B,D,A
+   Setiap huruf HARUS cocok dengan opsi yang benar pada soal terkait.
+9. motivasi: satu kalimat motivasi kuat untuk ${nama}.
 
-Kembalikan persis kunci: sapaan, penjelasan, sketsaDeskripsi, sketsaSisipan1, sketsaSisipan2, svgCode, pertanyaan, motivasi.
+Kembalikan persis kunci: sapaan, penjelasan, sketsaDeskripsi, sketsaSisipan1, sketsaSisipan2, svgCode, pertanyaan, kunciJawaban, motivasi.
 `.trim();
 
     const bagian: Part[] = [];
@@ -332,6 +338,7 @@ Kembalikan persis kunci: sapaan, penjelasan, sketsaDeskripsi, sketsaSisipan1, sk
         dataJson.pertanyaan,
         "Latihan soal sedang disusun...",
       ),
+      kunciJawaban: parseKunciJawaban(dataJson.kunciJawaban),
       motivasi: sebagaiTeks(dataJson.motivasi, "Terus semangat belajar!"),
     };
 

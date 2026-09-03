@@ -47,7 +47,7 @@ export default function RaporSiswaPage() {
         />
         <KartuStat
           ikon={<Target className="h-5 w-5" />}
-          label="Ketepatan pengerjaan"
+          label="Ketepatan jawaban"
           nilai={`${ringkas.ketepatan}%`}
         />
         <KartuStat
@@ -98,7 +98,7 @@ export default function RaporSiswaPage() {
                   <div>
                     <p className="font-bold text-[#1C01A5]">{sesi.materi}</p>
                     <p className="text-sm text-slate-500">
-                      {sesi.mapel} · {sesi.mode === "gambar" ? "Pindai buku" : "Ketik manual"}
+                      {sesi.mapel} · {sesi.kuisBenar ?? 0}/{sesi.kuisDijawab} benar
                     </p>
                   </div>
                   <span className="shrink-0 text-sm font-extrabold text-[#F0AB00]">
