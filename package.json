@@ -2,6 +2,7 @@
   "name": "igil-web",
   "version": "0.1.0",
   "private": true,
+  "description": "$IGIL Next.js EdTech app",
   "engines": {
     "node": ">=20.9.0"
   },
