@@ -8,6 +8,30 @@ import {
 } from "@/lib/guru";
 import { kelasLabel } from "@/lib/tema";
 
+async function putarContohChirp(guru: ReturnType<typeof pasanganGuru>[number], kelas: string) {
+  const respons = await fetch("/api/tts", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({
+      teks: guru.sapaanContoh,
+      kelamin: guru.kelamin === "pria" ? "male" : "female",
+      kelas,
+    }),
+  });
+  const data = (await respons.json()) as {
+    berhasil?: boolean;
+    cadangan?: boolean;
+    mime?: string;
+    audioBase64?: string;
+  };
+  if (!data.berhasil || data.cadangan || !data.audioBase64) {
+    putarContohSuaraGuru(guru);
+    return;
+  }
+  const audio = new Audio(`data:${data.mime || "audio/mpeg"};base64,${data.audioBase64}`);
+  await audio.play();
+}
+
 type PropsPilihGuru = {
   kelas: string;
   nilai: KelaminGuru;
@@ -43,7 +67,11 @@ export default function PilihGuru({ kelas, nilai, onGanti }: PropsPilihGuru) {
               </button>
               <button
                 type="button"
-                onClick={() => putarContohSuaraGuru(guru)}
+                onClick={() => {
+                  void putarContohChirp(guru, kelas).catch(() => {
+                    putarContohSuaraGuru(guru);
+                  });
+                }}
                 className="mt-3 inline-flex items-center gap-2 rounded-xl border border-[#F0AB00] bg-[#F0AB00] px-3 py-2 text-sm font-extrabold text-[#1C01A5] hover:bg-[#e09e00]"
               >
                 <Volume2 className="h-4 w-4" />

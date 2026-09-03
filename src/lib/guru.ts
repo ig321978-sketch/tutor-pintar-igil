@@ -73,6 +73,21 @@ const GURU_PER_JENJANG: Record<JenjangGuru, Record<KelaminGuru, ProfilGuru>> = {
   },
 };
 
+export function suaraChirpGuru(
+  kelas: string,
+  kelamin: KelaminGuru,
+): string {
+  const jenjang = jenjangGuru(kelas);
+  if (kelamin === "pria") {
+    if (jenjang === "SMA") return "id-ID-Chirp3-HD-Fenrir";
+    if (jenjang === "SMP") return "id-ID-Chirp3-HD-Puck";
+    return "id-ID-Chirp3-HD-Charon";
+  }
+  if (jenjang === "SMA") return "id-ID-Chirp3-HD-Zephyr";
+  if (jenjang === "SMP") return "id-ID-Chirp3-HD-Kore";
+  return "id-ID-Chirp3-HD-Aoede";
+}
+
 export function jenjangGuru(kelas: string): JenjangGuru {
   const k = kelas.toUpperCase();
   if (/\b(10|11|12|SMA|SMK)\b/.test(k)) return "SMA";

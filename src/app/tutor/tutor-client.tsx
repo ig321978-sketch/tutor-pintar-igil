@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useEffect, useMemo, useRef, useState } from "react";
+import React, { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import Link from "next/link";
 import { useRouter, useSearchParams } from "next/navigation";
 import {
@@ -19,6 +19,11 @@ import {
   simpanProfil,
 } from "@/lib/progres";
 import { kelasTombolUtama } from "@/lib/tema";
+import { pecahTokenNaskah, skalaWaktuKata, type KataWaktu } from "@/lib/tts";
+import GambarDoodle, { type GambarSisipan } from "@/components/GambarDoodle";
+import NaskahSinkron from "@/components/NaskahSinkron";
+import PemutarAudioGuru, { indeksKataAktif } from "@/components/PemutarAudioGuru";
+import PilihGuru from "@/components/PilihGuru";
 import {
   ArrowLeft,
   ArrowRight,
@@ -35,15 +40,6 @@ import {
 type ModeInput = "teks" | "gambar";
 type StatusPemutar = "siaga" | "memutar" | "jeda";
 
-type UkuranDoodle = "kecil" | "sedang" | "lebar";
-
-type GambarSisipan = {
-  setelahParagraf: number;
-  src: string;
-  alt: string;
-  ukuran: UkuranDoodle;
-};
-
 type ModulTutor = {
   sapaan: string;
   penjelasan: string;
@@ -59,44 +55,6 @@ type ModulTutor = {
 };
 
 type StatusDoodle = "siaga" | "memuat" | "siap" | "gagal";
-
-function kelasLebarDoodle(ukuran: UkuranDoodle): string {
-  if (ukuran === "kecil") return "max-w-[220px] md:max-w-[260px]";
-  if (ukuran === "sedang") return "max-w-md";
-  return "max-w-3xl";
-}
-
-function GambarDoodle({
-  src,
-  alt,
-  ukuran,
-  keterangan,
-}: {
-  src: string;
-  alt: string;
-  ukuran: UkuranDoodle;
-  keterangan?: string;
-}) {
-  return (
-    <figure
-      className={`relative mx-auto w-full ${kelasLebarDoodle(ukuran)} rotate-[-0.4deg]`}
-    >
-      <div className="rounded-2xl border-2 border-dashed border-[#1C01A5]/20 bg-[#fbf6ea] p-2.5 shadow-inner">
-        {/* eslint-disable-next-line @next/next/no-img-element */}
-        <img
-          src={src}
-          alt={alt}
-          className="w-full rounded-xl object-cover"
-        />
-      </div>
-      {keterangan ? (
-        <figcaption className="mt-3 text-center text-sm font-medium italic text-slate-500">
-          {keterangan}
-        </figcaption>
-      ) : null}
-    </figure>
-  );
-}
 
 function NaskahBergambar({
   teksPenuh,
@@ -286,6 +244,12 @@ export default function TutorAI() {
   const pengenalSuaraRef = useRef<MesinRekamSuara | null>(null);
   const transkripFinalRef = useRef("");
   const doodleAbortRef = useRef<AbortController | null>(null);
+  const urlAudioRef = useRef<string | null>(null);
+  const sudahAutoPutarRef = useRef(false);
+  const [srcAudio, setSrcAudio] = useState<string | null>(null);
+  const [kataWaktu, setKataWaktu] = useState<KataWaktu[]>([]);
+  const [indeksKata, setIndeksKata] = useState(-1);
+  const [modeChirp, setModeChirp] = useState(false);
 
   const daftarMapel = useMemo(
     () => (DATA_KURIKULUM[kelas] ? Object.keys(DATA_KURIKULUM[kelas]) : []),
@@ -300,13 +264,22 @@ export default function TutorAI() {
     pilihanMapel === OPSI_LAIN_NYA ? mapelManual : pilihanMapel;
   const bab = pilihanBab === OPSI_LAIN_NYA ? babManual : pilihanBab;
 
+  const offsetKataSapaan = hasilData
+    ? pecahTokenNaskah(hasilData.sapaan).length
+    : 0;
+  const indeksKataPenjelasan = indeksKata - offsetKataSapaan;
   const progresKetik = hasilData
-    ? Math.min(
-        100,
-        Math.round(
-          (teksAnimasi.length / Math.max(hasilData.penjelasan.length, 1)) * 100,
-        ),
-      )
+    ? modeChirp && kataWaktu.length > 0
+      ? Math.min(
+          100,
+          Math.round(((Math.max(indeksKata, 0) + 1) / kataWaktu.length) * 100),
+        )
+      : Math.min(
+          100,
+          Math.round(
+            (teksAnimasi.length / Math.max(hasilData.penjelasan.length, 1)) * 100,
+          ),
+        )
     : 0;
 
   const sudahPrefillMapel = useRef(false);
@@ -420,6 +393,7 @@ export default function TutorAI() {
       if (waspadaSuaraRef.current) window.clearInterval(waspadaSuaraRef.current);
       pengenalSuaraRef.current?.abort();
       doodleAbortRef.current?.abort();
+      if (urlAudioRef.current) URL.revokeObjectURL(urlAudioRef.current);
     };
   }, []);
 
@@ -505,6 +479,14 @@ export default function TutorAI() {
     hentikanJagaSuara();
     pakaiBatasKataRef.current = false;
     indeksKetikRef.current = 0;
+    if (urlAudioRef.current) {
+      URL.revokeObjectURL(urlAudioRef.current);
+      urlAudioRef.current = null;
+    }
+    setSrcAudio(null);
+    setKataWaktu([]);
+    setIndeksKata(-1);
+    setModeChirp(false);
     setStatusPemutar("siaga");
   };
 
@@ -721,7 +703,7 @@ export default function TutorAI() {
     window.speechSynthesis.cancel();
     hentikanJagaSuara();
     sedangMemutarRef.current = false;
-    setStatusPemutar("siaga");
+    setStatusPemutar(modeChirp && srcAudio ? "jeda" : "siaga");
     setPesanAjuan("");
     transkripFinalRef.current = teksAjuan.trim() ? `${teksAjuan.trim()} ` : "";
 
@@ -766,23 +748,8 @@ export default function TutorAI() {
     }
   };
 
-  const mulaiSuara = () => {
+  const mulaiAntrianCadangan = () => {
     if (!hasilData) return;
-
-    if (statusPemutar === "jeda") {
-      sedangMemutarRef.current = true;
-      if (window.speechSynthesis.paused) {
-        window.speechSynthesis.resume();
-      } else if (!window.speechSynthesis.speaking) {
-        bicaraPotonganSaatIni();
-      }
-      mulaiKetikDari(hasilData.penjelasan, indeksKetikRef.current);
-      mulaiJagaSuara();
-      setStatusPemutar("memutar");
-      return;
-    }
-
-    resetPemutar();
     setTeksAnimasi("");
     sedangMemutarRef.current = true;
     setStatusPemutar("memutar");
@@ -870,6 +837,71 @@ export default function TutorAI() {
     bicaraPotonganSaatIni();
   };
 
+  const putarDariAwal = async (kelaminSuara: KelaminGuru = guruKelamin) => {
+    if (!hasilData) return;
+    resetPemutar();
+    const naskah = `${hasilData.sapaan} ${hasilData.penjelasan}`.replace(/\s+/g, " ").trim();
+    try {
+      const respons = await fetch("/api/tts", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          teks: naskah,
+          kelamin: kelaminSuara === "pria" ? "male" : "female",
+          kelas,
+        }),
+      });
+      const data = (await respons.json()) as {
+        berhasil?: boolean;
+        cadangan?: boolean;
+        mime?: string;
+        audioBase64?: string;
+        kata?: KataWaktu[];
+      };
+      if (data.berhasil && data.audioBase64 && !data.cadangan) {
+        const biner = Uint8Array.from(atob(data.audioBase64), (c) =>
+          c.charCodeAt(0),
+        );
+        const url = URL.createObjectURL(
+          new Blob([biner], { type: data.mime || "audio/mpeg" }),
+        );
+        urlAudioRef.current = url;
+        setSrcAudio(url);
+        setKataWaktu(data.kata ?? []);
+        setModeChirp(true);
+        sedangMemutarRef.current = true;
+        setStatusPemutar("memutar");
+        return;
+      }
+    } catch {
+      // jatuh ke cadangan browser
+    }
+    mulaiAntrianCadangan();
+  };
+
+  const mulaiSuara = () => {
+    if (!hasilData) return;
+
+    if (statusPemutar === "jeda") {
+      sedangMemutarRef.current = true;
+      if (modeChirp) {
+        setStatusPemutar("memutar");
+        return;
+      }
+      if (window.speechSynthesis.paused) {
+        window.speechSynthesis.resume();
+      } else if (!window.speechSynthesis.speaking) {
+        bicaraPotonganSaatIni();
+      }
+      mulaiKetikDari(hasilData.penjelasan, indeksKetikRef.current);
+      mulaiJagaSuara();
+      setStatusPemutar("memutar");
+      return;
+    }
+
+    void putarDariAwal();
+  };
+
   const jedaSuara = () => {
     sedangMemutarRef.current = false;
     window.speechSynthesis.pause();
@@ -883,6 +915,7 @@ export default function TutorAI() {
     if (hasilData) {
       setTeksAnimasi(hasilData.penjelasan);
       indeksKetikRef.current = hasilData.penjelasan.length;
+      setIndeksKata(pecahTokenNaskah(`${hasilData.sapaan} ${hasilData.penjelasan}`).length - 1);
     }
   };
 
@@ -895,9 +928,57 @@ export default function TutorAI() {
     }
   };
 
+  const padaWaktuAudio = useCallback(
+    (detik: number) => {
+      setIndeksKata(indeksKataAktif(kataWaktu, detik));
+    },
+    [kataWaktu],
+  );
+
+  const padaDurasiAudio = useCallback((detik: number) => {
+    setKataWaktu((sebelum) => {
+      if (sebelum.length === 0) return sebelum;
+      const terakhir = sebelum[sebelum.length - 1]?.selesai ?? 0;
+      return skalaWaktuKata(sebelum, terakhir, detik);
+    });
+  }, []);
+
+  const padaSelesaiAudio = useCallback(() => {
+    sedangMemutarRef.current = false;
+    setStatusPemutar("siaga");
+    if (hasilData) {
+      setTeksAnimasi(hasilData.penjelasan);
+      setIndeksKata(
+        pecahTokenNaskah(`${hasilData.sapaan} ${hasilData.penjelasan}`).length - 1,
+      );
+    }
+  }, [hasilData]);
+
+  const gantiGuru = (kelamin: KelaminGuru) => {
+    setGuruKelamin(kelamin);
+    simpanProfil({
+      nama: nama || bacaProgres().profil.nama,
+      kelas,
+      guruKelamin: kelamin,
+    });
+    if (hasilData) {
+      sudahAutoPutarRef.current = true;
+      void putarDariAwal(kelamin);
+    }
+  };
+
+  useEffect(() => {
+    if (!hasilData || sudahAutoPutarRef.current) return;
+    sudahAutoPutarRef.current = true;
+    void putarDariAwal();
+    // Auto-putar sekali saat modul baru siap.
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [hasilData]);
+
   const kembaliKeMenu = () => {
     hentikanRekamSuara();
     resetPemutar();
+    sudahAutoPutarRef.current = false;
     setHasilData(null);
     setHasilAjuan(null);
     setTeksAjuan("");
@@ -928,6 +1009,13 @@ export default function TutorAI() {
             <p className="w-full text-slate-600 text-lg mb-8">
               Ketik judul materi atau unggah halaman buku. $IGIL menyusun penjelasan mendalam, sketsa doodle, dan soal-soal latihan — lalu membacakannya untukmu.
             </p>
+            <div className="mb-8 text-left">
+              <PilihGuru
+                kelas={kelas}
+                nilai={guruKelamin}
+                onGanti={gantiGuru}
+              />
+            </div>
             <Link
               href="/ruang-belajar"
               className={`${kelasTombolUtama} px-8 py-4 rounded-full font-extrabold text-lg shadow-lg shadow-[#1C01A5]/25 mx-auto mt-4 flex items-center justify-center gap-2 text-center`}
@@ -1013,6 +1101,20 @@ export default function TutorAI() {
                 style={{ width: `${progresKetik}%` }}
               />
             </div>
+            <PemutarAudioGuru
+              src={srcAudio}
+              memutar={modeChirp && statusPemutar === "memutar"}
+              padaWaktu={padaWaktuAudio}
+              padaDurasi={padaDurasiAudio}
+              padaSelesai={padaSelesaiAudio}
+            />
+            <div className="mt-4 text-left">
+              <PilihGuru
+                kelas={kelas}
+                nilai={guruKelamin}
+                onGanti={gantiGuru}
+              />
+            </div>
           </div>
 
           <div className="bg-white rounded-3xl shadow-xl border-2 border-[#1C01A5]/15 p-8 space-y-8">
@@ -1047,7 +1149,14 @@ export default function TutorAI() {
               ) : null}
             </div>
             <div className="min-h-[150px] text-xl font-medium leading-loose text-slate-700">
-              {teksAnimasi === "" && statusPemutar === "siaga" ? (
+              {modeChirp ? (
+                <NaskahSinkron
+                  teksPenuh={hasilData.penjelasan}
+                  indeksKata={indeksKataPenjelasan}
+                  sedangMemutar={statusPemutar === "memutar"}
+                  gambarSisipan={hasilData.gambarSisipan ?? []}
+                />
+              ) : teksAnimasi === "" && statusPemutar === "siaga" ? (
                 <span className="italic text-slate-400">
                   Tekan tombol Play (▶) di atas untuk mendengarkan dan memunculkan teks penjelasan...
                 </span>
