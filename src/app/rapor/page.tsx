@@ -92,7 +92,7 @@ export default function RaporSiswaPage() {
         )}
       </section>
 
-      <section className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+      <section className="grid gap-4">
         <KartuStat
           ikon={<BookOpen className="h-5 w-5" />}
           label="Total modul"
@@ -115,7 +115,7 @@ export default function RaporSiswaPage() {
         />
       </section>
 
-      <section className="mt-8 grid gap-6 lg:grid-cols-2">
+      <section className="mt-8 grid gap-6">
         <div className="rounded-3xl border border-[#1C01A5]/15 bg-white p-6 shadow-sm">
           <h2 className="mb-4 text-lg font-extrabold text-[#1C01A5]">
             Catatan evaluasi Tutor AI

@@ -18,7 +18,7 @@ export default function PilihGuru({ kelas, nilai, onGanti }: PropsPilihGuru) {
   return (
     <div>
       <p className={kelasLabel}>Pilih guru pengajar</p>
-      <div className="grid gap-3 sm:grid-cols-2">
+      <div className="grid gap-3">
         {pasanganGuru(kelas).map((guru) => {
           const aktif = nilai === guru.kelamin;
           return (

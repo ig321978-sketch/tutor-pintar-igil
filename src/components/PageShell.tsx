@@ -11,7 +11,7 @@ export default function PageShell({
 }) {
   return (
     <main className="flex-1 bg-white text-slate-700">
-      <div className="mx-auto max-w-6xl px-4 py-8 sm:py-10">
+      <div className="w-full px-2 py-8 sm:py-10">
         <p className="mb-2 text-xs font-extrabold uppercase tracking-[0.2em] text-[#F0AB00]">
           $IGIL · Kurikulum Merdeka
         </p>
@@ -19,7 +19,7 @@ export default function PageShell({
           {judul}
         </h1>
         {subjudul ? (
-          <p className="mt-3 max-w-3xl text-base text-slate-600">{subjudul}</p>
+          <p className="mt-3 text-base text-slate-600">{subjudul}</p>
         ) : null}
         <div className="mt-8">{children}</div>
       </div>

@@ -118,7 +118,7 @@ export default function SimulasiPraktikumPage() {
       judul="🧪 Simulasi Praktikum"
       subjudul="PREMIUM - isi saldo token untuk menjalankan simulasi dan praktikum"
     >
-      <div className="mb-6 flex flex-wrap items-center justify-between gap-3 rounded-3xl border-2 border-[#F0AB00] bg-[#FFF8E8] px-5 py-4">
+      <div className="mb-6 flex items-center justify-between gap-3 rounded-3xl border-2 border-[#F0AB00] bg-[#FFF8E8] px-3 py-4">
         <p className="text-lg font-extrabold text-[#1C01A5]">
           Halo {nama}! Yuk eksperimen dengan aman.
         </p>
@@ -272,7 +272,7 @@ export default function SimulasiPraktikumPage() {
           <h2 className="mb-4 text-xl font-extrabold text-[#1C01A5]">
             Bahan simulasi dari dunia
           </h2>
-          <div className="grid gap-4 sm:grid-cols-2">
+          <div className="grid gap-4">
             {bahan.map((item) => (
               <a
                 key={item.url}

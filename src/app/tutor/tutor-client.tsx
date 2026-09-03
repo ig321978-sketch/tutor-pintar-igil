@@ -909,7 +909,7 @@ export default function TutorAI() {
 
   return (
     <main className="flex-1 bg-white text-slate-700 font-sans selection:bg-[#F0AB00]/40 selection:text-[#1C01A5]">
-      <div className="mx-auto flex max-w-6xl justify-end px-4 pt-4">
+      <div className="flex w-full justify-end px-2 pt-4">
         <div className="rounded-full border border-[#F0AB00]/40 bg-[#F0AB00]/20 px-4 py-2 text-sm font-bold text-[#1C01A5] shadow-sm">
           Kurikulum Merdeka ✦ Mode Multimodal
         </div>
@@ -917,7 +917,7 @@ export default function TutorAI() {
 
       {!isMulai ? (
         <div className="animate-in fade-in duration-700">
-          <section className="max-w-5xl mx-auto px-4 sm:px-6 pt-12 pb-20 text-center">
+          <section className="w-full px-2 pt-12 pb-20 text-center">
             <p className="text-[#1C01A5] font-bold uppercase tracking-[0.2em] mb-4">
               Tutor AI Kurikulum KEMDIKBUD
             </p>
@@ -925,7 +925,7 @@ export default function TutorAI() {
               Ubah Waktu Belajarmu <br className="hidden md:block" />
               <span className="text-[#F0AB00]">Menjadi Beasiswa Instan</span>
             </h1>
-            <p className="max-w-2xl mx-auto text-slate-600 text-lg mb-8">
+            <p className="w-full text-slate-600 text-lg mb-8">
               Ketik judul materi atau unggah halaman buku. $IGIL menyusun penjelasan mendalam, sketsa doodle, dan soal-soal latihan — lalu membacakannya untukmu.
             </p>
             <Link
@@ -937,7 +937,7 @@ export default function TutorAI() {
           </section>
         </div>
       ) : !hasilData ? (
-        <div className="animate-in fade-in duration-500 max-w-xl mx-auto px-4 pt-16 pb-20 text-center">
+        <div className="animate-in fade-in duration-500 w-full px-2 pt-16 pb-20 text-center">
           {pesanGalat ? (
             <div className="rounded-3xl border-2 border-rose-100 bg-rose-50 p-8">
               <p className="font-semibold text-rose-600">{pesanGalat}</p>
@@ -958,7 +958,7 @@ export default function TutorAI() {
           )}
         </div>
       ) : (
-        <div className="max-w-4xl mx-auto px-4 pt-6 pb-20 animate-in slide-in-from-bottom-10 duration-700">
+        <div className="w-full px-2 pt-6 pb-20 animate-in slide-in-from-bottom-10 duration-700">
           <div className="bg-[#1C01A5] text-white rounded-2xl shadow-xl shadow-[#1C01A5]/20 p-4 sm:p-5 mb-6">
             <div className="flex flex-col sm:flex-row justify-between items-center gap-4">
               <button

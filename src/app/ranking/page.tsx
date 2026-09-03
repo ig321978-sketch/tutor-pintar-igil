@@ -41,7 +41,7 @@ export default function RankingNasionalPage() {
       </div>
 
       <div className="overflow-x-auto overflow-hidden rounded-3xl border border-[#1C01A5]/15 bg-white shadow-sm">
-        <div className="grid grid-cols-[64px_1fr_1fr_100px] gap-2 bg-[#1C01A5] px-4 py-3 text-xs font-extrabold uppercase tracking-wider text-white sm:px-6">
+        <div className="grid grid-cols-[64px_1fr_1fr_100px] gap-2 bg-[#1C01A5] px-2 py-3 text-xs font-extrabold uppercase tracking-wider text-white">
           <span>Rank</span>
           <span>Nama siswa</span>
           <span>Kota / daerah</span>
@@ -53,7 +53,7 @@ export default function RankingNasionalPage() {
             return (
               <li
                 key={`${baris.nama}-${baris.kota}`}
-                className={`grid grid-cols-[64px_1fr_1fr_100px] items-center gap-2 border-t border-[#1C01A5]/10 px-4 py-3 sm:px-6 ${
+                className={`grid grid-cols-[64px_1fr_1fr_100px] items-center gap-2 border-t border-[#1C01A5]/10 px-2 py-3 ${
                   baris.milikPengguna ? "bg-[#F0AB00]/15" : "bg-white"
                 }`}
               >

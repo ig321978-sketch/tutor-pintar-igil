@@ -23,7 +23,7 @@ export default function Navbar() {
 
   return (
     <header className="sticky top-0 z-40 border-b border-[#1C01A5]/10 bg-white">
-      <nav className="mx-auto flex max-w-6xl items-center justify-between gap-4 px-4 py-3">
+      <nav className="flex w-full items-center justify-between gap-4 px-2 py-3">
         <Link
           href="/ruang-belajar"
           className="shrink-0 text-xl font-extrabold tracking-tight text-[#1C01A5]"
@@ -62,7 +62,7 @@ export default function Navbar() {
       </nav>
 
       {terbuka ? (
-        <div className="space-y-1 border-t border-[#1C01A5]/10 bg-white px-4 py-3 lg:hidden">
+        <div className="space-y-1 border-t border-[#1C01A5]/10 bg-white px-2 py-3 lg:hidden">
           {MENU.map((item) => {
             const aktif = tautanAktif(pathname, item.href);
             return (

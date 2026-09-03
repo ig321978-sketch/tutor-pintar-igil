@@ -184,10 +184,10 @@ export default function RuangBelajarPage() {
       judul="📚 Ruang Belajar"
       subjudul="Pilih sumber pembelajaran, pilih guru pengajar, lalu mulai sesi belajar di halaman Tutor."
     >
-      <section className="grid gap-6 lg:grid-cols-[1.1fr_0.9fr]">
+      <section className="grid gap-6">
         <div className="rounded-3xl border border-[#1C01A5]/15 bg-white p-6 shadow-sm">
           <h2 className="mb-4 text-lg font-extrabold text-[#1C01A5]">Profil sesi</h2>
-          <div className="grid gap-4 sm:grid-cols-3">
+          <div className="grid gap-4">
             <div>
               <label className={kelasLabel}>Nama Siswa</label>
               <input
@@ -387,7 +387,7 @@ export default function RuangBelajarPage() {
               }}
             />
             {halamanBuku.length > 0 ? (
-              <div className="grid grid-cols-2 sm:grid-cols-3 gap-3">
+              <div className="grid gap-3">
                 {halamanBuku.map((src, indeks) => (
                   <div key={`${indeks}-${src.slice(-12)}`} className="relative">
                     {/* eslint-disable-next-line @next/next/no-img-element */}
