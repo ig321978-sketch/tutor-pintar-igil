@@ -19,11 +19,12 @@ import {
   simpanProfil,
 } from "@/lib/progres";
 import { kelasTombolUtama } from "@/lib/tema";
+import { indeksKartuAktif } from "@/lib/konsep-materi";
 import { pecahTokenNaskah, skalaWaktuKata, type KataWaktu } from "@/lib/tts";
 import GambarDoodle, { type GambarSisipan } from "@/components/GambarDoodle";
-import NaskahSinkron from "@/components/NaskahSinkron";
 import PemutarAudioGuru, { indeksKataAktif } from "@/components/PemutarAudioGuru";
 import PilihGuru from "@/components/PilihGuru";
+import RingkasanKonsep from "@/components/RingkasanKonsep";
 import {
   ArrowLeft,
   ArrowRight,
@@ -55,64 +56,7 @@ type ModulTutor = {
 };
 
 type StatusDoodle = "siaga" | "memuat" | "siap" | "gagal";
-
-function NaskahBergambar({
-  teksPenuh,
-  teksTerlihat,
-  gambarSisipan,
-  sedangMengetik,
-}: {
-  teksPenuh: string;
-  teksTerlihat: string;
-  gambarSisipan: GambarSisipan[];
-  sedangMengetik: boolean;
-}) {
-  const paragraf = teksPenuh.split("\n\n");
-  const elemen: React.ReactNode[] = [];
-  let offset = 0;
-
-  for (let i = 0; i < paragraf.length; i += 1) {
-    const isi = paragraf[i];
-    const mulai = offset;
-    const akhir = mulai + isi.length;
-    offset = akhir + 2;
-
-    if (teksTerlihat.length <= mulai) break;
-
-    const panjangTerlihat = Math.max(
-      0,
-      Math.min(isi.length, teksTerlihat.length - mulai),
-    );
-    const paragrafSelesai = teksTerlihat.length >= akhir;
-    const kursorDiSini =
-      sedangMengetik &&
-      teksTerlihat.length >= mulai &&
-      teksTerlihat.length < akhir;
-
-    elemen.push(
-      <p key={`paragraf-${i}`} className="whitespace-pre-wrap">
-        {isi.slice(0, panjangTerlihat)}
-        {kursorDiSini ? (
-          <span className="ml-1 inline-block h-5 w-2 animate-pulse bg-[#F0AB00]" />
-        ) : null}
-      </p>,
-    );
-
-    const sisipan = gambarSisipan.find((item) => item.setelahParagraf === i + 1);
-    if (sisipan && paragrafSelesai && sisipan.src) {
-      elemen.push(
-        <GambarDoodle
-          key={`doodle-${i}`}
-          src={sisipan.src}
-          alt={sisipan.alt}
-          ukuran={sisipan.ukuran}
-        />,
-      );
-    }
-  }
-
-  return <div className="space-y-6">{elemen}</div>;
-}
+type TahapBelajar = "konsep" | "latihan";
 
 type PanduanAjuan = {
   sapaan: string;
@@ -219,6 +163,9 @@ export default function TutorAI() {
   const [gambarHalaman, setGambarHalaman] = useState<string[]>([]);
   const [isLoading, setIsLoading] = useState(false);
   const [hasilData, setHasilData] = useState<ModulTutor | null>(null);
+  const [tahapBelajar, setTahapBelajar] = useState<TahapBelajar>("konsep");
+  const [sesiMapel, setSesiMapel] = useState("");
+  const [sesiMateri, setSesiMateri] = useState("");
   const [statusPemutar, setStatusPemutar] = useState<StatusPemutar>("siaga");
   const [teksAnimasi, setTeksAnimasi] = useState("");
   const [pesanGalat, setPesanGalat] = useState("");
@@ -268,6 +215,9 @@ export default function TutorAI() {
     ? pecahTokenNaskah(hasilData.sapaan).length
     : 0;
   const indeksKataPenjelasan = indeksKata - offsetKataSapaan;
+  const kartuAktif = hasilData
+    ? indeksKartuAktif(hasilData.penjelasan, indeksKataPenjelasan)
+    : 0;
   const progresKetik = hasilData
     ? modeChirp && kataWaktu.length > 0
       ? Math.min(
@@ -568,6 +518,9 @@ export default function TutorAI() {
     setTeksAjuan("");
     setPesanAjuan("");
     setTeksAnimasi("");
+    setTahapBelajar("konsep");
+    setSesiMapel("");
+    setSesiMateri("");
     resetPemutar();
 
     try {
@@ -591,6 +544,8 @@ export default function TutorAI() {
       if (data.berhasil && data.data) {
         setHasilData(data.data);
         setJawabanKuis({});
+        setSesiMapel(modeInput === "teks" ? mapel : "Berdasarkan Buku");
+        setSesiMateri(modeInput === "teks" ? bab : "Analisis halaman buku");
         simpanProfil({ nama, kelas, guruKelamin });
         const sesi = catatSesiModul({
           nama,
@@ -985,6 +940,9 @@ export default function TutorAI() {
     setPesanAjuan("");
     setTeksAnimasi("");
     setJawabanKuis({});
+    setTahapBelajar("konsep");
+    setSesiMapel("");
+    setSesiMateri("");
     router.push("/ruang-belajar");
   };
 
@@ -1007,7 +965,7 @@ export default function TutorAI() {
               <span className="text-[#F0AB00]">Menjadi Beasiswa Instan</span>
             </h1>
             <p className="w-full text-slate-600 text-lg mb-8">
-              Ketik judul materi atau unggah halaman buku. $IGIL menyusun penjelasan mendalam, sketsa doodle, dan soal-soal latihan — lalu membacakannya untukmu.
+              Ketik judul materi atau unggah halaman buku. $IGIL menampilkan peta konsep dan kartu ringkasan dulu, baru membuka soal latihan untuk menambang token.
             </p>
             <div className="mb-8 text-left">
               <PilihGuru
@@ -1118,57 +1076,88 @@ export default function TutorAI() {
           </div>
 
           <div className="bg-white rounded-3xl shadow-xl border-2 border-[#1C01A5]/15 p-8 space-y-8">
-            <div className="text-2xl font-extrabold text-[#1C01A5] border-b border-[#1C01A5]/15 pb-4">
-              {hasilData.sapaan}
+            <div className="flex flex-wrap gap-2">
+              <span
+                className={`rounded-full px-4 py-1.5 text-xs font-extrabold uppercase tracking-wider ${
+                  tahapBelajar === "konsep"
+                    ? "bg-[#F0AB00] text-[#1C01A5]"
+                    : "bg-[#1C01A5]/10 text-[#1C01A5]/70"
+                }`}
+              >
+                1 · Konsep
+              </span>
+              <span
+                className={`rounded-full px-4 py-1.5 text-xs font-extrabold uppercase tracking-wider ${
+                  tahapBelajar === "latihan"
+                    ? "bg-[#F0AB00] text-[#1C01A5]"
+                    : "bg-[#1C01A5]/10 text-[#1C01A5]/70"
+                }`}
+              >
+                2 · Soal latihan
+              </span>
             </div>
-            <div className="relative">
-              {hasilData.gambarUtama ? (
-                <GambarDoodle
-                  src={hasilData.gambarUtama}
-                  alt={hasilData.sketsaDeskripsi || "Sketsa doodle materi"}
-                  ukuran="lebar"
-                />
-              ) : (
-                <figure className="rounded-2xl border-2 border-dashed border-[#1C01A5]/20 bg-[#fbf6ea] p-4 text-center shadow-inner">
-                  <div
-                    className="mx-auto max-w-xl"
-                    dangerouslySetInnerHTML={{ __html: hasilData.svgCode }}
+            {tahapBelajar === "konsep" ? (
+              <div className="relative">
+                {hasilData.gambarUtama ? (
+                  <GambarDoodle
+                    src={hasilData.gambarUtama}
+                    alt={hasilData.sketsaDeskripsi || "Sketsa doodle materi"}
+                    ukuran="lebar"
                   />
-                  <figcaption className="mt-4 text-sm font-medium italic text-slate-500">
-                    {statusDoodle === "memuat"
-                      ? "Menggambar sketsa doodle materi..."
-                      : hasilData.sketsaDeskripsi}
-                  </figcaption>
-                </figure>
-              )}
-              {statusDoodle === "memuat" && !hasilData.gambarUtama ? (
-                <div className="mt-3 flex items-center justify-center gap-2 text-sm font-semibold text-[#1C01A5]">
-                  <Loader2 className="h-4 w-4 animate-spin" />
-                  Menggambar sketsa doodle...
-                </div>
-              ) : null}
-            </div>
-            <div className="min-h-[150px] text-xl font-medium leading-loose text-slate-700">
-              {modeChirp ? (
-                <NaskahSinkron
-                  teksPenuh={hasilData.penjelasan}
-                  indeksKata={indeksKataPenjelasan}
-                  sedangMemutar={statusPemutar === "memutar"}
-                  gambarSisipan={hasilData.gambarSisipan ?? []}
-                />
-              ) : teksAnimasi === "" && statusPemutar === "siaga" ? (
-                <span className="italic text-slate-400">
-                  Tekan tombol Play (▶) di atas untuk mendengarkan dan memunculkan teks penjelasan...
-                </span>
-              ) : (
-                <NaskahBergambar
-                  teksPenuh={hasilData.penjelasan}
-                  teksTerlihat={teksAnimasi}
-                  gambarSisipan={hasilData.gambarSisipan ?? []}
-                  sedangMengetik={statusPemutar === "memutar"}
-                />
-              )}
-            </div>
+                ) : (
+                  <figure className="rounded-2xl border-2 border-dashed border-[#1C01A5]/20 bg-[#fbf6ea] p-4 text-center shadow-inner">
+                    <div
+                      className="mx-auto max-w-xl"
+                      dangerouslySetInnerHTML={{ __html: hasilData.svgCode }}
+                    />
+                    <figcaption className="mt-4 text-sm font-medium italic text-slate-500">
+                      {statusDoodle === "memuat"
+                        ? "Menggambar sketsa doodle materi..."
+                        : hasilData.sketsaDeskripsi}
+                    </figcaption>
+                  </figure>
+                )}
+                {statusDoodle === "memuat" && !hasilData.gambarUtama ? (
+                  <div className="mt-3 flex items-center justify-center gap-2 text-sm font-semibold text-[#1C01A5]">
+                    <Loader2 className="h-4 w-4 animate-spin" />
+                    Menggambar sketsa doodle...
+                  </div>
+                ) : null}
+              </div>
+            ) : null}
+
+            {tahapBelajar === "konsep" ? (
+              <RingkasanKonsep
+                materi={sesiMateri || (modeInput === "teks" ? bab : "Analisis halaman buku")}
+                mapel={sesiMapel || (modeInput === "teks" ? mapel : "Berdasarkan Buku")}
+                penjelasan={hasilData.penjelasan}
+                sapaan={hasilData.sapaan}
+                kartuAktif={kartuAktif}
+              />
+            ) : (
+              <div className="rounded-[2rem] border-2 border-[#1C01A5]/15 bg-gradient-to-br from-[#EEE9FF] via-white to-[#FFF8E8] p-5 sm:p-6">
+                <p className="text-xs font-extrabold uppercase tracking-[0.2em] text-[#F0AB00]">
+                  Langkah 2 · Tambang token dari soal
+                </p>
+                <h2 className="mt-2 text-2xl font-black text-[#1C01A5] sm:text-3xl">
+                  {sesiMateri || (modeInput === "teks" ? bab : "Latihan dari buku")}
+                </h2>
+                <p className="mt-2 text-sm font-bold text-[#1C01A5]/70">
+                  Konsep sudah dibuka. Kerjakan 5 soal, lalu lihat rapor.
+                </p>
+                <button
+                  type="button"
+                  onClick={() => {
+                    setTahapBelajar("konsep");
+                    window.scrollTo({ top: 0, behavior: "smooth" });
+                  }}
+                  className="mt-4 inline-flex items-center gap-2 rounded-xl border-2 border-[#1C01A5]/20 bg-white px-4 py-2 text-sm font-extrabold text-[#1C01A5] hover:border-[#F0AB00]"
+                >
+                  <ArrowLeft className="h-4 w-4" />
+                  Lihat peta konsep lagi
+                </button>
+              </div>
+            )}
 
             <div className="p-6 bg-white rounded-2xl border-2 border-[#1C01A5]/20 space-y-4">
               <label className="flex items-center gap-2 text-sm font-extrabold tracking-wide text-[#1C01A5]">
@@ -1264,6 +1253,22 @@ export default function TutorAI() {
               ) : null}
             </div>
 
+            {tahapBelajar === "konsep" ? (
+              <button
+                type="button"
+                onClick={() => {
+                  setTahapBelajar("latihan");
+                  window.scrollTo({ top: 0, behavior: "smooth" });
+                }}
+                className={`${kelasTombolUtama} flex w-full items-center justify-center gap-2 rounded-2xl px-6 py-4 text-lg font-extrabold shadow-lg shadow-[#1C01A5]/20`}
+              >
+                Aku sudah paham · Kerjakan soal
+                <ArrowRight className="h-5 w-5 text-[#F0AB00]" />
+              </button>
+            ) : null}
+
+            {tahapBelajar === "latihan" ? (
+            <div className="space-y-8">
             <div className="p-6 bg-[#FFF8E8] rounded-2xl border border-[#F0AB00]/40 shadow-sm">
               <div className="text-[#1C01A5] font-extrabold mb-4 flex items-center gap-2">
                 <span>Latihan Soal</span>
@@ -1333,6 +1338,8 @@ export default function TutorAI() {
               <span className="text-2xl">✨</span>
               <div>{hasilData.motivasi}</div>
             </div>
+            </div>
+            ) : null}
           </div>
         </div>
       )}

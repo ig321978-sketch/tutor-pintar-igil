@@ -291,7 +291,7 @@ ATURAN MUTLAK:
 
 STANDAR KONTEN:
 1. sapaan: sapaan penyemangat yang antusias, menyebut nama ${nama}.
-2. penjelasan: 3 sampai 4 paragraf SANGAT MENDALAM. Gunakan storytelling, analogi sehari-hari, dan contoh konkret sesuai jenjang ${kelas}. Pisahkan paragraf dengan \\n\\n.
+  2. penjelasan: TEPAT 4 paragraf singkat bergaya infografis, BUKAN esai panjang. Setiap paragraf WAJIB diawali judul pendek 3-6 kata, lalu titik, lalu 1-2 kalimat analogi anak yang konkret sesuai jenjang ${kelas}. JANGAN paragraf narasi panjang. Pisahkan paragraf dengan \\n\\n.
 3. sketsaDeskripsi: SATU kalimat visual scene doodle UTAMA (hero) di atas naskah. Fokus objek atau adegan (contoh: barisan kursi bioskop, tangga, planet). Gaya jurnal/sketsa tangan, cocok anak sampai remaja, BUKAN kartun bayi. Jangan sebut kertas, buku catatan, atau gaya gambar.
 4. sketsaSisipan1: SATU kalimat visual doodle analogi konkret untuk disisipkan setelah paragraf 1.
 5. sketsaSisipan2: SATU kalimat visual doodle detail/contoh berbeda untuk disisipkan di tengah naskah. Harus beda dari sketsa utama dan sisipan 1.
