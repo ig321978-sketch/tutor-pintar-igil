@@ -27,7 +27,6 @@ import PemutarAudioGuru, {
   indeksKataAktif,
   type KontrolPemutarGuru,
 } from "@/components/PemutarAudioGuru";
-import PilihGuru from "@/components/PilihGuru";
 import RingkasanKonsep from "@/components/RingkasanKonsep";
 import {
   ArrowLeft,
@@ -963,19 +962,6 @@ export default function TutorAI() {
     }
   }, [hasilData]);
 
-  const gantiGuru = (kelamin: KelaminGuru) => {
-    setGuruKelamin(kelamin);
-    simpanProfil({
-      nama: nama || bacaProgres().profil.nama,
-      kelas,
-      guruKelamin: kelamin,
-    });
-    if (hasilData) {
-      sudahSiapAudioRef.current = false;
-      void putarDariAwal(kelamin);
-    }
-  };
-
   useEffect(() => {
     if (!hasilData || sudahSiapAudioRef.current) return;
     sudahSiapAudioRef.current = true;
@@ -1114,13 +1100,6 @@ export default function TutorAI() {
               padaDurasi={padaDurasiAudio}
               padaSelesai={padaSelesaiAudio}
             />
-            <div className="mt-4 text-left">
-              <PilihGuru
-                kelas={kelas}
-                nilai={guruKelamin}
-                onGanti={gantiGuru}
-              />
-            </div>
           </div>
 
           <div className="bg-white rounded-3xl shadow-xl border-2 border-[#1C01A5]/15 p-8 space-y-8">
