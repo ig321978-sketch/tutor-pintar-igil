@@ -8,6 +8,7 @@ import {
   Sparkles,
   Star,
   Target,
+  Volume2,
 } from "lucide-react";
 import { kartuTanpaNaskah, susunKonsepMateri } from "@/lib/konsep-materi";
 import type { GambarSisipan } from "@/components/GambarDoodle";
@@ -160,6 +161,12 @@ export default function RingkasanKonsep({
             {ringkas ? "Kartu materi" : "Kartu pembahasan"}
           </h3>
         </div>
+        {ringkas ? (
+          <p className="mb-4 flex items-start gap-2 text-sm font-semibold leading-snug text-[#1C01A5]/75">
+            <Volume2 className="mt-0.5 h-4 w-4 shrink-0 text-[#F0AB00]" />
+            Kartu ini singkat. Putar Tutor Suara untuk mendengar uraian lengkap tiap kartu.
+          </p>
+        ) : null}
         {ringkas ? (
           <div className="grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-4">
             {kartu.map((item, indeks) => {

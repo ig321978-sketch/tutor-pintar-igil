@@ -119,12 +119,15 @@ function bersihkanDanParseJson(mentah: string): Record<string, unknown> {
 function instruksiPenjelasan(kelas: string, namaDepan: string): string {
   const jenjang = jenjangGuru(kelas);
   if (jenjang === "SD") {
-    return `2. penjelasan: TEPAT 8 sampai 10 KARTU MATERI. Bukan esai panjang. Jangan menumpuk banyak kalimat di satu kartu. Pecah topik menjadi BANYAK sub-topik konkret yang berbeda. Setiap kartu SATU blok dipisah \\n\\n, format wajib:
-Judul kartu 2-8 kata.
-Subjudul SATU kalimat pendek (maks 16 kata).
-Contoh pecahan HANYA jika materinya Mengenal Kitab Suci (blok terpisah, bukan satu baris):
-Arti Kitab Suci.\\nBuku suci yang menjadi pedoman hidup umat beragama.\\n\\nAgama yang sah di Indonesia.\\nEnam agama yang diakui negara di Indonesia.\\n\\nKitab Suci Umat Islam.\\nAl-Qur'an adalah kitab suci umat Islam.\\n\\nKitab Suci Umat Kristen.\\nAlkitab adalah kitab suci umat Kristen.\\n\\nKitab Suci Umat Buddha.\\nTripitaka adalah kitab suci umat Buddha.\\n\\nKitab Suci Umat Hindu.\\nWeda adalah kitab suci umat Hindu.\\n\\nKitab Suci Umat Konghucu.\\nSishu Wujing adalah kitab suci umat Konghucu.\\n\\nManfaat Belajar Kitab Suci.\\nBelajar kitab suci menuntun sikap hormat dan hidup damai.
-Untuk mapel lain, pecah dengan pola serupa: arti, jenis atau bagian, contoh konkret, perbandingan, dan manfaat. Sesuaikan jenjang ${kelas} dan Kurikulum Merdeka. Jika menyebut nama siswa, HANYA ${namaDepan}. DILARANG pujian berlebihan.`;
+    return `2. penjelasan: TEPAT 8 sampai 10 KARTU MATERI untuk anak SD. Pecah topik menjadi BANYAK sub-topik konkret. Setiap kartu SATU blok dipisah \\n\\n, format wajib tiga bagian:
+Baris 1: judul kartu 2-8 kata, diakhiri titik.
+Baris 2: subjudul visual SATU kalimat pendek (maks 16 kata), diakhiri titik. Hanya ini yang tampil di kartu.
+Lalu 4-6 kalimat URAIAN LISAN yang hangat, seperti guru SD bercerita: arti sederhana, contoh sehari-hari, analogi, dan kenapa penting. Kalimat pendek, mudah disimak. Uraian ini HANYA untuk VOICE, jangan merapatkan semuanya ke subjudul.
+Contoh SATU kartu jika materi kitab suci:
+Kitab Suci Umat Islam.
+Al-Qur'an adalah kitab suci umat Islam.
+Al-Qur'an dibaca umat Islam setiap hari. Isinya menuntun ${namaDepan} jujur dan berbuat baik. Bayangkan seperti peta yang menunjukkan jalan pulang yang aman. Karena itu Al-Qur'an dijaga dan dihormati.
+Untuk kartu lain, pecah dengan pola serupa: arti, agama yang diakui, kitab tiap agama, manfaat. Jangan menyalin contoh jika topiknya berbeda. Sesuaikan jenjang ${kelas} dan Kurikulum Merdeka. Jika menyebut nama, HANYA ${namaDepan}. DILARANG pujian berlebihan.`;
   }
 
   const kepadatan =
@@ -135,7 +138,7 @@ Untuk mapel lain, pecah dengan pola serupa: arti, jenis atau bagian, contoh konk
   return `2. penjelasan: TEPAT 6 KARTU PEMBAHASAN untuk jenjang ${jenjang} (${kelas}). Setiap kartu SATU blok dipisah \\n\\n.
 Baris pertama: judul pembahasan 2-8 kata, diakhiri titik.
 Lalu langsung uraian naskah LENGKAP dan BERBOBOT (${kepadatan}).
-DILARANG subjudul singkat. DILARANG kartu flashcard 1 kalimat. DILARANG mengulang judul sebagai sub-bab.
+Uraian ini WAJIB tampil di kartu DAN dibacakan VOICE. DILARANG subjudul singkat. DILARANG kartu flashcard 1 kalimat. DILARANG mengulang judul sebagai sub-bab.
 Jika menyebut nama siswa, HANYA ${namaDepan}. DILARANG pujian berlebihan. Sesuaikan Kurikulum Merdeka.`;
 }
 
