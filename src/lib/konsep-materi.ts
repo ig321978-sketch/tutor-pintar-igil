@@ -1,9 +1,11 @@
+import { adalahBarisRumus } from "@/lib/format-naskah";
 import { jenjangGuru } from "@/lib/guru";
 import { pecahTokenNaskah } from "@/lib/tts";
 
 export type KartuKonsep = {
   judul: string;
   isi: string;
+  naskah: string;
   warna: string;
 };
 
@@ -41,18 +43,22 @@ export function judulDariTeks(teks: string): string {
 }
 
 function naskahDariTeks(teks: string, judul: string, ringkas: boolean): string {
-  const sumber = teks
-    .replace(judul, " ")
-    .replace(/^\d+[.)]\s*/gm, "")
-    .replace(/^[:.\-–\s]+/, "")
-    .trim();
+  const baris = teks
+    .split(/\n+/)
+    .map((item) => item.trim())
+    .filter(Boolean);
+  const isi =
+    baris[0] && judulDariTeks(baris[0]) === judul ? baris.slice(1) : baris;
+
   if (ringkas) {
-    const satu = potongKalimat(sumber || teks, 1);
-    const kata = satu.split(/\s+/).slice(0, 18).join(" ");
-    return kata.length > 2 ? kata : judul;
+    const rumus = isi.filter((item) => adalahBarisRumus(item));
+    const visual =
+      isi.find((item) => !adalahBarisRumus(item)) ?? potongKalimat(teks, 1);
+    const kata = visual.split(/\s+/).slice(0, 18).join(" ");
+    return [kata.length > 2 ? kata : judul, ...rumus].filter(Boolean).join("\n");
   }
-  const uraian = potongKalimat(sumber || teks, 10);
-  return uraian.length > 2 ? uraian : sumber || teks;
+
+  return isi.join("\n") || teks.trim();
 }
 
 function pecahSumber(penjelasan: string): string[] {
@@ -63,7 +69,7 @@ function pecahSumber(penjelasan: string): string[] {
   if (paragraf.length >= 3) return paragraf.slice(0, JUMLAH_KARTU_MAKS);
 
   const kalimat = penjelasan
-    .split(/(?<=[.!?…])\s+/)
+    .split(/\n+|(?<=[.!?…])\s+/)
     .map((item) => item.trim())
     .filter(Boolean);
   if (kalimat.length >= 3) {
@@ -71,7 +77,18 @@ function pecahSumber(penjelasan: string): string[] {
     const ukuran = Math.ceil(kalimat.length / kelompok);
     const hasil: string[] = [];
     for (let i = 0; i < kalimat.length && hasil.length < JUMLAH_KARTU_MAKS; i += ukuran) {
-      hasil.push(kalimat.slice(i, i + ukuran).join(" "));
+      const bagian = kalimat.slice(i, i + ukuran);
+      hasil.push(
+        bagian
+          .map((item, indeks) => {
+            if (indeks === 0) return item;
+            return adalahBarisRumus(item) || adalahBarisRumus(bagian[indeks - 1] ?? "")
+              ? `\n${item}`
+              : ` ${item}`;
+          })
+          .join("")
+          .trim(),
+      );
     }
     return hasil;
   }
@@ -88,9 +105,11 @@ export function susunKonsepMateri(
   const sumber = pecahSumber(penjelasan);
   const kartu = sumber.map((isi, indeks) => {
     const judul = judulDariTeks(isi);
+    const naskah = naskahDariTeks(isi, judul, false);
     return {
       judul,
-      isi: naskahDariTeks(isi, judul, ringkas),
+      isi: ringkas ? naskahDariTeks(isi, judul, true) : naskah,
+      naskah,
       warna: WARNA_KARTU[indeks % WARNA_KARTU.length],
     };
   });

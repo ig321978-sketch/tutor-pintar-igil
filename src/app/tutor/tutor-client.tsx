@@ -30,6 +30,7 @@ import PemutarAudioGuru, {
 } from "@/components/PemutarAudioGuru";
 import PemutarTutorMengambang from "@/components/PemutarTutorMengambang";
 import RingkasanKonsep from "@/components/RingkasanKonsep";
+import TeksNaskah from "@/components/TeksNaskah";
 import {
   ArrowLeft,
   ArrowRight,
@@ -1366,18 +1367,14 @@ export default function TutorAI() {
                     <p className="text-xs font-bold uppercase tracking-wider text-[#C48800] mb-2">
                       Panduan Langkah Demi Langkah
                     </p>
-                    <div className="text-slate-700 font-medium whitespace-pre-wrap leading-relaxed">
-                      {hasilAjuan.panduanLangkah}
-                    </div>
+                    <TeksNaskah teks={hasilAjuan.panduanLangkah} />
                   </div>
                   {hasilAjuan.caraKurikulum ? (
                     <div className="p-4 rounded-xl bg-white border border-[#1C01A5]/15">
                       <p className="text-sm font-extrabold text-[#1C01A5] mb-2">
                         Cara Resmi Kurikulum Merdeka
                       </p>
-                      <div className="text-slate-700 whitespace-pre-wrap leading-relaxed">
-                        {hasilAjuan.caraKurikulum}
-                      </div>
+                      <TeksNaskah teks={hasilAjuan.caraKurikulum} />
                     </div>
                   ) : null}
                   {hasilAjuan.trikBimbel ? (
@@ -1385,9 +1382,7 @@ export default function TutorAI() {
                       <p className="text-sm font-extrabold text-[#C48800] mb-2">
                         Trik Cepat Bimbel
                       </p>
-                      <div className="text-slate-700 whitespace-pre-wrap leading-relaxed">
-                        {hasilAjuan.trikBimbel}
-                      </div>
+                      <TeksNaskah teks={hasilAjuan.trikBimbel} />
                     </div>
                   ) : null}
                   <p className="text-sm font-bold text-[#1C01A5] italic">

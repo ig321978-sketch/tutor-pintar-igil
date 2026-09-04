@@ -117,19 +117,35 @@ function bersihkanDanParseJson(mentah: string): Record<string, unknown> {
   }
 }
 
+function aturanAngkaNaskah(): string {
+  return `ANGKA DAN BENTUK NASKAH:
+- Jika menyebut bilangan, pecahan, rumus, persentase, suhu, atau hitungan, WAJIB tulis ANGKA ARAB (1, 2, 3) dan simbol matematika. Contoh benar: 2 + 3 = 5. Contoh salah: dua tambah tiga sama dengan lima.
+- Rumus atau contoh hitung diletakkan di BARIS SENDIRI, jangan disambung ke cerita.
+- Uraian (penjelasan): tulis beberapa kalimat utuh, terurai, mudah dipahami. DILARANG meratakan semua jadi satu kalimat datar.
+- Bukan uraian (judul, fakta singkat, rumus): biarkan plain text pendek.
+- DILARANG mengeja angka menjadi kata jika yang dimaksud adalah bilangan.`;
+}
+
 function instruksiPenjelasan(kelas: string, namaDepan: string): string {
   const jenjang = jenjangGuru(kelas);
   if (jenjang === "SD") {
-    return `2. penjelasan: TEPAT 8 sampai 10 KARTU MATERI untuk anak SD. Pecah topik menjadi BANYAK sub-topik konkret. Setiap kartu SATU blok dipisah \\n\\n, format wajib tiga bagian:
-Baris 1: judul kartu 2-8 kata, diakhiri titik.
-Baris 2: subjudul visual SATU kalimat pendek (maks 16 kata), diakhiri titik. Hanya ini yang tampil di kartu.
-Lalu 4-6 kalimat URAIAN LISAN yang hangat, seperti guru SD bercerita: arti sederhana, contoh sehari-hari, analogi, dan kenapa penting. Kalimat pendek, mudah disimak. Uraian ini HANYA untuk VOICE, jangan merapatkan semuanya ke subjudul.
-DILARANG menulis label seperti Judul, Subjudul, Uraian, Kartu 1, VOICE, JSON, pause, atau kurung siku. Hanya kalimat Indonesia yang siap dibaca keras. DILARANG menyalin instruksi ini ke naskah.
+    return `2. penjelasan: TEPAT 8 sampai 10 KARTU MATERI untuk anak SD. Pecah topik menjadi BANYAK sub-topik konkret. Setiap kartu SATU blok dipisah \\n\\n, format wajib:
+Baris 1: judul kartu 2-8 kata, diakhiri titik. Plain text, bukan uraian.
+Baris 2: subjudul visual SATU kalimat pendek (maks 16 kata), diakhiri titik. Hanya ini yang tampil di kartu kecil.
+Lalu uraian 4-6 kalimat yang hangat, seperti guru SD bercerita: arti sederhana, contoh sehari-hari, analogi, dan kenapa penting. Kalimat pendek. Jika ada hitungan atau rumus, tulis ANGKA di baris sendiri.
+${aturanAngkaNaskah()}
+DILARANG menulis label seperti Judul, Subjudul, Uraian, Kartu 1, VOICE, JSON, pause, atau kurung siku. DILARANG menyalin instruksi ini ke naskah.
 Contoh SATU kartu jika materi kitab suci:
 Kitab Suci Umat Islam.
 Al-Qur'an adalah kitab suci umat Islam.
 Al-Qur'an dibaca umat Islam setiap hari. Isinya menuntun ${namaDepan} jujur dan berbuat baik. Bayangkan seperti peta yang menunjukkan jalan pulang yang aman. Karena itu Al-Qur'an dijaga dan dihormati.
-Untuk kartu lain, pecah dengan pola serupa: arti, agama yang diakui, kitab tiap agama, manfaat. Jangan menyalin contoh jika topiknya berbeda. Sesuaikan jenjang ${kelas} dan Kurikulum Merdeka. Jika menyebut nama, HANYA ${namaDepan}. DILARANG pujian berlebihan.`;
+Contoh SATU kartu jika materi hitungan:
+Penjumlahan sampai 10.
+Gabungkan dua kelompok benda.
+Jika ada 4 kelereng lalu ditambah 3 kelereng, semuanya menjadi 7.
+4 + 3 = 7
+Hitung benda di kiri, lalu tambah benda di kanan. Angka membantu ${namaDepan} melihat hasilnya.
+Untuk kartu lain, pecah dengan pola serupa. Jangan menyalin contoh jika topiknya berbeda. Sesuaikan jenjang ${kelas} dan Kurikulum Merdeka. Jika menyebut nama, HANYA ${namaDepan}. DILARANG pujian berlebihan.`;
   }
 
   const kepadatan =
@@ -138,10 +154,14 @@ Untuk kartu lain, pecah dengan pola serupa: arti, agama yang diakui, kitab tiap 
       : "5-7 kalimat berbobot setara SMP: definisi jelas, alasan atau cara kerja, contoh remaja, dan dampak atau manfaatnya. Bahasa tegas dan jelas, bukan flashcard SD.";
 
   return `2. penjelasan: TEPAT 6 KARTU PEMBAHASAN untuk jenjang ${jenjang} (${kelas}). Setiap kartu SATU blok dipisah \\n\\n.
-Baris pertama: judul pembahasan 2-8 kata, diakhiri titik.
-Lalu langsung uraian naskah LENGKAP dan BERBOBOT (${kepadatan}).
+Baris pertama: judul pembahasan 2-8 kata, diakhiri titik. Plain text.
+Lalu naskah LENGKAP dan BERBOBOT (${kepadatan}).
+Jika isi kartu adalah uraian, pecah menjadi beberapa kalimat/paragraf. Jika hanya rumus atau fakta singkat, biarkan plain text.
+Rumus WAJIB baris sendiri dengan ANGKA, misalnya:
+2x + 3 = 11
+${aturanAngkaNaskah()}
 Uraian ini WAJIB tampil di kartu DAN dibacakan VOICE. DILARANG subjudul singkat. DILARANG kartu flashcard 1 kalimat. DILARANG mengulang judul sebagai sub-bab.
-DILARANG label Judul/Uraian/Kartu, kata Inggris meta, pause, atau kurung siku. Hanya kalimat Indonesia yang siap dibaca keras.
+DILARANG label Judul/Uraian/Kartu, kata Inggris meta, pause, atau kurung siku.
 Jika menyebut nama siswa, HANYA ${namaDepan}. DILARANG pujian berlebihan. Sesuaikan Kurikulum Merdeka.`;
 }
 
@@ -254,7 +274,7 @@ ATURAN MUTLAK PEMBELAJARAN:
 1. DILARANG KERAS memberi jawaban akhir, kunci pilihan A/B/C/D, nilai numerik hasil akhir, atau kalimat seperti 'jadi jawabannya adalah'.
 2. Jika siswa meminta kunci instan, tolak dengan ramah lalu alihkan ke langkah nalar.
 3. Respons HANYA 1 objek JSON murni. DILARANG kutip ganda (") di dalam nilai teks. Gunakan kutip tunggal (').
-4. panduanLangkah: struktur Penyelesaian Langkah Demi Langkah (Step-by-Step Guidance) bernomor, merangsang nalar kritis. Pisahkan langkah dengan \\n\\n.
+4. panduanLangkah: struktur Penyelesaian Langkah Demi Langkah (Step-by-Step Guidance) bernomor, merangsang nalar kritis. Pisahkan langkah dengan \\n\\n. Jika langkah berupa uraian, tulis beberapa kalimat. Jika hanya rumus atau perintah singkat, biarkan plain text. Bilangan dan rumus WAJIB ANGKA ARAB dan simbol (contoh: 2x + 3 = 11), jangan dieja menjadi kata.
 ${instruksiHitungan}
 5. sapaan: SATU kalimat pendek. Sebut HANYA nama depan ${namaDepan}. Sertakan TEPAT SATU kata pujian dari: Pintar, Cerdas, Baik, Rajin, Soleh, Semangat, Hebat. DILARANG pujian panjang, julukan berlebihan, atau nama lengkap. Contoh: 'Halo ${namaDepan}, Pintar.'
 6. dorongan: satu kalimat yang mendorong siswa menyelesaikan sendiri, tanpa membocorkan kunci, tanpa pujian berlebihan.

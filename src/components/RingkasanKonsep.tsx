@@ -12,6 +12,7 @@ import {
 } from "lucide-react";
 import { kartuTanpaNaskah, susunKonsepMateri } from "@/lib/konsep-materi";
 import type { GambarSisipan } from "@/components/GambarDoodle";
+import TeksNaskah from "@/components/TeksNaskah";
 
 const IKON = [Lightbulb, Compass, Target, Star];
 
@@ -164,7 +165,7 @@ export default function RingkasanKonsep({
         {ringkas ? (
           <p className="mb-4 flex items-start gap-2 text-sm font-semibold leading-snug text-[#1C01A5]/75">
             <Volume2 className="mt-0.5 h-4 w-4 shrink-0 text-[#F0AB00]" />
-            Kartu ini singkat. Putar Tutor Suara untuk mendengar uraian lengkap tiap kartu.
+            Kartu ini singkat. Uraian lengkap ada di naskah di bawah, dan bisa didengar lewat Tutor Suara.
           </p>
         ) : null}
         {ringkas ? (
@@ -193,9 +194,7 @@ export default function RingkasanKonsep({
                   <h4 className="mt-1 text-sm font-black leading-snug text-[#1C01A5] sm:text-base">
                     {item.judul}
                   </h4>
-                  <p className="mt-1 text-xs font-medium leading-snug text-slate-600 sm:text-sm">
-                    {item.isi}
-                  </p>
+                  <TeksNaskah teks={item.isi} ringkas className="mt-1" />
                 </article>
               );
             })}
@@ -228,9 +227,7 @@ export default function RingkasanKonsep({
                     <h4 className="text-lg font-black leading-snug text-[#1C01A5] sm:text-xl">
                       {item.judul}
                     </h4>
-                    <p className="mt-2 text-sm font-medium leading-relaxed text-slate-700 sm:text-base">
-                      {item.isi}
-                    </p>
+                    <TeksNaskah teks={item.isi} className="mt-2" />
                   </div>
                 </article>
               );
@@ -238,6 +235,33 @@ export default function RingkasanKonsep({
           </div>
         )}
       </div>
+
+      {ringkas ? (
+        <div>
+          <div className="mb-4 flex items-center gap-2">
+            <BookOpen className="h-5 w-5 text-[#1C01A5]" />
+            <h3 className="text-xl font-extrabold text-[#1C01A5]">Naskah penjelasan</h3>
+          </div>
+          <div className="space-y-4">
+            {kartu.map((item, indeks) => (
+              <article
+                key={`naskah-${item.judul}-${indeks}`}
+                className={`rounded-3xl border-2 p-5 ${item.warna} ${
+                  kartuAktif === indeks ? "ring-4 ring-[#1C01A5]/25" : ""
+                }`}
+              >
+                <p className="text-[10px] font-extrabold uppercase tracking-wider text-[#1C01A5]/70">
+                  Kartu {indeks + 1}
+                </p>
+                <h4 className="mt-1 text-lg font-black leading-snug text-[#1C01A5]">
+                  {item.judul}
+                </h4>
+                <TeksNaskah teks={item.naskah} className="mt-2" />
+              </article>
+            ))}
+          </div>
+        </div>
+      ) : null}
     </section>
   );
 }
