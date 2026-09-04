@@ -6,7 +6,7 @@ import { BookOpen, Sparkles, UploadCloud, X } from "lucide-react";
 import PageShell from "@/components/PageShell";
 import PilihGuru from "@/components/PilihGuru";
 import { type KelaminGuru } from "@/lib/guru";
-import { DATA_KURIKULUM, DAFTAR_KELAS } from "@/lib/kurikulum";
+import { DATA_KURIKULUM, DAFTAR_KELAS, daftarMapelUntukKelas, labelJenjangKelas } from "@/lib/kurikulum";
 import { bacaProgres, simpanProfil, type SesiModul } from "@/lib/progres";
 import { kelasKotak, kelasLabel, kelasTombolUtama } from "@/lib/tema";
 
@@ -67,7 +67,7 @@ export default function RuangBelajarPage() {
   const [sesiAktif, setSesiAktif] = useState<SesiModul[]>([]);
 
   const daftarMapel = useMemo(
-    () => Object.keys(DATA_KURIKULUM[kelas] ?? {}),
+    () => daftarMapelUntukKelas(kelas),
     [kelas],
   );
   const daftarMateri = useMemo(
@@ -206,7 +206,7 @@ export default function RuangBelajarPage() {
               >
                 {DAFTAR_KELAS.map((item) => (
                   <option key={item} value={item}>
-                    Kelas {item}
+                    {labelJenjangKelas(item)}
                   </option>
                 ))}
               </select>

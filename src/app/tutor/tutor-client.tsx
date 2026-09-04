@@ -9,7 +9,7 @@ import {
   profilGuru,
   type KelaminGuru,
 } from "@/lib/guru";
-import { DATA_KURIKULUM, OPSI_LAIN_NYA } from "@/lib/kurikulum";
+import { DATA_KURIKULUM, OPSI_LAIN_NYA, daftarMapelUntukKelas } from "@/lib/kurikulum";
 import { hurufKunci } from "@/lib/kuis";
 import {
   bacaProgres,
@@ -205,7 +205,7 @@ export default function TutorAI() {
   const [durasiAudio, setDurasiAudio] = useState(0);
 
   const daftarMapel = useMemo(
-    () => (DATA_KURIKULUM[kelas] ? Object.keys(DATA_KURIKULUM[kelas]) : []),
+    () => daftarMapelUntukKelas(kelas),
     [kelas],
   );
   const daftarBab = useMemo(() => {
