@@ -1,4 +1,5 @@
 import { GoogleGenAI } from "@google/genai";
+import { buatKlienGemini } from "@/lib/klien-gemini";
 import { JUMLAH_KARTU_MAKS, susunKonsepMateri, UKURAN_BATCH_DOODLE } from "@/lib/konsep-materi";
 
 export type UkuranDoodle = "kecil" | "sedang" | "lebar";
@@ -126,7 +127,6 @@ async function hasilkanDenganCadangan(
 }
 
 export async function buatPaketDoodle(opsi: {
-  apiKey: string;
   kelas: string;
   mapel: string;
   materi: string;
@@ -135,7 +135,7 @@ export async function buatPaketDoodle(opsi: {
   offset?: number;
   batas?: number;
 }): Promise<{ gambarUtama: string | null; gambarSisipan: GambarSisipan[] }> {
-  const ai = new GoogleGenAI({ apiKey: opsi.apiKey });
+  const ai = buatKlienGemini();
   const kartu = susunKonsepMateri(opsi.materi, opsi.penjelasan, opsi.kelas).kartu;
   const rencana = rencanakanSisipan(
     kartu.length,

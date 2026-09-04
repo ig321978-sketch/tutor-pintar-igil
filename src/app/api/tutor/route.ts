@@ -1,13 +1,9 @@
 import { NextResponse } from "next/server";
-import {
-  GoogleGenerativeAI,
-  SchemaType,
-  type Part,
-  type Schema,
-} from "@google/generative-ai";
+import { Type, type Part, type Schema } from "@google/genai";
 import { parseKunciJawaban } from "@/lib/kuis";
 import { jenjangGuru } from "@/lib/guru";
 import { mapelHitungan } from "@/lib/mapel-hitungan";
+import { hasilkanJsonGemini, pesanGalatGemini } from "@/lib/klien-gemini";
 import { bersihkanLabelNaskah } from "@/lib/naskah-lisan";
 import { kerangkaNaskahBuku, subbabBukuSiswa } from "@/lib/subbab-buku-siswa";
 import { gantiNamaLengkapKeDepan, namaDepanSiswa, pilihKataPujian, sapaanTutorRingkas } from "@/lib/nama-siswa";
@@ -47,16 +43,16 @@ const SVG_CADANGAN =
   "<svg viewBox='0 0 400 220' xmlns='http://www.w3.org/2000/svg'><rect width='400' height='220' fill='#fbf6ea'/><path d='M12 48 Q200 42 388 50' stroke='#d7eee9' fill='none' stroke-width='1'/><path d='M10 92 Q210 86 390 94' stroke='#d7eee9' fill='none' stroke-width='1'/><path d='M14 136 Q190 142 386 134' stroke='#d7eee9' fill='none' stroke-width='1'/><path d='M18 180 Q220 174 384 182' stroke='#d7eee9' fill='none' stroke-width='1'/><path d='M78 158 Q86 96 132 78 Q168 66 186 102 Q198 148 154 168 Q108 184 78 158' fill='none' stroke='#0f766e' stroke-width='2.4' stroke-linecap='round'/><path d='M118 118 Q138 108 156 126' fill='none' stroke='#f59e0b' stroke-width='2' stroke-linecap='round'/><path d='M232 74 L238 166 L318 158 L304 68 Z' fill='none' stroke='#0f766e' stroke-width='2.2' stroke-linecap='round' stroke-linejoin='round'/><path d='M248 92 Q270 88 292 96' fill='none' stroke='#f59e0b' stroke-width='1.8'/><path d='M252 118 Q276 112 296 122' fill='none' stroke='#0f766e' stroke-width='1.6'/><path d='M338 48 Q348 38 360 52 Q348 58 338 48' fill='none' stroke='#f59e0b' stroke-width='1.8' stroke-linecap='round'/></svg>";
 
 const SKEMA_MODUL: Schema = {
-  type: SchemaType.OBJECT,
+  type: Type.OBJECT,
   properties: {
-    sapaan: { type: SchemaType.STRING },
-    curriculum_view: { type: SchemaType.STRING },
-    global_best_view: { type: SchemaType.STRING },
-    sketsaKartu: { type: SchemaType.STRING },
-    svgCode: { type: SchemaType.STRING },
-    pertanyaan: { type: SchemaType.STRING },
-    kunciJawaban: { type: SchemaType.STRING },
-    motivasi: { type: SchemaType.STRING },
+    sapaan: { type: Type.STRING },
+    curriculum_view: { type: Type.STRING },
+    global_best_view: { type: Type.STRING },
+    sketsaKartu: { type: Type.STRING },
+    svgCode: { type: Type.STRING },
+    pertanyaan: { type: Type.STRING },
+    kunciJawaban: { type: Type.STRING },
+    motivasi: { type: Type.STRING },
   },
   required: [
     "sapaan",
@@ -71,13 +67,13 @@ const SKEMA_MODUL: Schema = {
 };
 
 const SKEMA_AJUAN: Schema = {
-  type: SchemaType.OBJECT,
+  type: Type.OBJECT,
   properties: {
-    sapaan: { type: SchemaType.STRING },
-    panduanLangkah: { type: SchemaType.STRING },
-    caraKurikulum: { type: SchemaType.STRING },
-    trikBimbel: { type: SchemaType.STRING },
-    dorongan: { type: SchemaType.STRING },
+    sapaan: { type: Type.STRING },
+    panduanLangkah: { type: Type.STRING },
+    caraKurikulum: { type: Type.STRING },
+    trikBimbel: { type: Type.STRING },
+    dorongan: { type: Type.STRING },
   },
   required: [
     "sapaan",
@@ -298,26 +294,8 @@ export async function POST(req: Request) {
     const ajuan = sebagaiTeks(body.ajuan);
     const daftarGambar = ekstrakDaftarGambar(body.gambar);
 
-    const apiKey = process.env.GEMINI_API_KEY;
-    if (!apiKey) {
-      return NextResponse.json(
-        { berhasil: false, pesan: "Kunci API kosong!" },
-        { status: 500 },
-      );
-    }
-
-    const genAI = new GoogleGenerativeAI(apiKey);
-
     if (ajuan) {
       const soalHitungan = mapelHitungan(mapel, `${materi} ${ajuan}`);
-      const modelAjuan = genAI.getGenerativeModel({
-        model: "gemini-3.5-flash-lite",
-        generationConfig: {
-          responseMimeType: "application/json",
-          responseSchema: SKEMA_AJUAN,
-          maxOutputTokens: 4096,
-        },
-      });
 
       const konteksFoto = daftarGambar.length > 0
         ? "Siswa mungkin merujuk foto halaman buku yang dilampirkan. Gunakan foto itu sebagai konteks jika relevan."
@@ -354,8 +332,12 @@ Kembalikan persis kunci: sapaan, panduanLangkah, caraKurikulum, trikBimbel, doro
       const bagianAjuan: Part[] = [...daftarGambar];
       bagianAjuan.push({ text: promptAjuan });
 
-      const resultAjuan = await modelAjuan.generateContent(bagianAjuan);
-      const dataJsonAjuan = bersihkanDanParseJson(resultAjuan.response.text());
+      const textAjuan = await hasilkanJsonGemini({
+        parts: bagianAjuan,
+        schema: SKEMA_AJUAN,
+        maxOutputTokens: 4096,
+      });
+      const dataJsonAjuan = bersihkanDanParseJson(textAjuan);
 
       const dataAjuan: PanduanAjuan = {
         sapaan: sapaanTutorRingkas(
@@ -380,15 +362,6 @@ Kembalikan persis kunci: sapaan, panduanLangkah, caraKurikulum, trikBimbel, doro
         data: dataAjuan,
       });
     }
-
-    const model = genAI.getGenerativeModel({
-      model: "gemini-3.5-flash-lite",
-      generationConfig: {
-        responseMimeType: "application/json",
-        responseSchema: SKEMA_MODUL,
-        maxOutputTokens: 16384,
-      },
-    });
 
     const instruksiMateri = daftarGambar.length > 0
       ? `Tugas: Analisis foto halaman buku pelajaran yang dilampirkan (${daftarGambar.length} halaman). Baca tulisan, judul bab, rumus, gambar, dan soal di semua halaman tersebut. Deteksi topik utamanya, lalu buat modul DUA SUDUT PANDANG (curriculum_view + global_best_view) untuk ${namaDepan} (Kelas ${kelas}) berdasarkan isi halaman buku itu. Jika mapel/materi teks tersedia (${mapel} / ${materi}), gunakan sebagai petunjuk tambahan, tetapi prioritas utama adalah isi foto.`
@@ -429,8 +402,11 @@ Kembalikan persis kunci: sapaan, curriculum_view, global_best_view, sketsaKartu,
     const bagian: Part[] = [...daftarGambar];
     bagian.push({ text: promptText });
 
-    const result = await model.generateContent(bagian);
-    const text = result.response.text();
+    const text = await hasilkanJsonGemini({
+      parts: bagian,
+      schema: SKEMA_MODUL,
+      maxOutputTokens: 16384,
+    });
     const dataJson = bersihkanDanParseJson(text);
 
     const kurikulum = amanNaskahModul(
@@ -460,11 +436,9 @@ Kembalikan persis kunci: sapaan, curriculum_view, global_best_view, sketsaKartu,
 
     return NextResponse.json({ berhasil: true, data: dataAman });
   } catch (error: unknown) {
-    const pesan =
-      error instanceof Error ? error.message : "Kesalahan tidak diketahui";
     console.error("EROR SISTEM:", error);
     return NextResponse.json(
-      { berhasil: false, pesan: `EROR DARI GOOGLE: ${pesan}` },
+      { berhasil: false, pesan: pesanGalatGemini(error) },
       { status: 500 },
     );
   }

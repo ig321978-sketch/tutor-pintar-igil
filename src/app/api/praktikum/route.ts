@@ -1,25 +1,22 @@
 import { NextResponse } from "next/server";
-import {
-  GoogleGenerativeAI,
-  SchemaType,
-  type Schema,
-} from "@google/generative-ai";
+import { Type, type Schema } from "@google/genai";
+import { hasilkanJsonGemini, pesanGalatGemini } from "@/lib/klien-gemini";
 import { cariBahanSimulasi } from "@/lib/simulasi-global";
 import { supabaseServer } from "@/lib/supabase";
 
 export const maxDuration = 60;
 
 const SKEMA: Schema = {
-  type: SchemaType.OBJECT,
+  type: Type.OBJECT,
   properties: {
-    aman: { type: SchemaType.BOOLEAN },
-    berhasil: { type: SchemaType.BOOLEAN },
-    judul: { type: SchemaType.STRING },
-    langkah: { type: SchemaType.STRING },
-    yangDiamati: { type: SchemaType.STRING },
-    umpanBalik: { type: SchemaType.STRING },
-    kataKunci: { type: SchemaType.STRING },
-    token: { type: SchemaType.NUMBER },
+    aman: { type: Type.BOOLEAN },
+    berhasil: { type: Type.BOOLEAN },
+    judul: { type: Type.STRING },
+    langkah: { type: Type.STRING },
+    yangDiamati: { type: Type.STRING },
+    umpanBalik: { type: Type.STRING },
+    kataKunci: { type: Type.STRING },
+    token: { type: Type.NUMBER },
   },
   required: [
     "aman",
@@ -103,24 +100,6 @@ export async function POST(req: Request) {
       );
     }
 
-    const apiKey = process.env.GEMINI_API_KEY;
-    if (!apiKey) {
-      return NextResponse.json(
-        { berhasil: false, pesan: "Kunci API kosong." },
-        { status: 500 },
-      );
-    }
-
-    const genAI = new GoogleGenerativeAI(apiKey);
-    const model = genAI.getGenerativeModel({
-      model: "gemini-3.5-flash-lite",
-      generationConfig: {
-        responseMimeType: "application/json",
-        responseSchema: SKEMA,
-        maxOutputTokens: 4096,
-      },
-    });
-
     const prompt = `
 Kamu adalah asisten laboratorium $IGIL untuk anak sekolah Indonesia. Bahasa ramah anak.
 
@@ -148,8 +127,12 @@ ATURAN NILAI:
 Kembalikan JSON dengan kunci: aman, berhasil, judul, langkah, yangDiamati, umpanBalik, kataKunci, token.
 `.trim();
 
-    const result = await model.generateContent(prompt);
-    const data = parseJson(result.response.text());
+    const text = await hasilkanJsonGemini({
+      parts: [{ text: prompt }],
+      schema: SKEMA,
+      maxOutputTokens: 4096,
+    });
+    const data = parseJson(text);
 
     const aman = yaTidak(data.aman);
     let lulus = yaTidak(data.berhasil) && aman;
@@ -201,10 +184,9 @@ Kembalikan JSON dengan kunci: aman, berhasil, judul, langkah, yangDiamati, umpan
       bahan,
     });
   } catch (error: unknown) {
-    const pesan = error instanceof Error ? error.message : "Kesalahan tidak diketahui";
     console.error("PRAKTIKUM:", error);
     return NextResponse.json(
-      { berhasil: false, pesan: `Gagal menjalankan praktikum: ${pesan}` },
+      { berhasil: false, pesan: pesanGalatGemini(error) },
       { status: 500 },
     );
   }

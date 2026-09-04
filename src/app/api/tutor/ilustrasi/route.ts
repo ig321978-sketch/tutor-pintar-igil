@@ -35,16 +35,7 @@ export async function POST(req: Request) {
       );
     }
 
-    const apiKey = process.env.GEMINI_API_KEY;
-    if (!apiKey) {
-      return NextResponse.json(
-        { berhasil: false, pesan: "Kunci API kosong!" },
-        { status: 500 },
-      );
-    }
-
     const paket = await buatPaketDoodle({
-      apiKey,
       kelas: sebagaiTeks(body.kelas, "SD"),
       mapel: sebagaiTeks(body.mapel, "Umum"),
       materi: sebagaiTeks(body.materi, "Materi hari ini"),
