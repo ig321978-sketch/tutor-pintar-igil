@@ -2,7 +2,7 @@
 
 import { useRouter } from "next/navigation";
 import { useEffect, useMemo, useRef, useState } from "react";
-import { Sparkles, UploadCloud, X } from "lucide-react";
+import { BookOpen, Sparkles, UploadCloud, X } from "lucide-react";
 import PageShell from "@/components/PageShell";
 import PilihGuru from "@/components/PilihGuru";
 import { type KelaminGuru } from "@/lib/guru";
@@ -251,20 +251,21 @@ export default function RuangBelajarPage() {
         <h2 className="mb-4 text-lg font-extrabold text-[#1C01A5]">
           Pilih sumber pembelajaran
         </h2>
-        <div className="flex p-1 bg-[#F0AB00]/15 rounded-2xl">
+        <div className="flex flex-col gap-2 rounded-2xl bg-[#F0AB00]/15 p-1">
           <button
             type="button"
             onClick={() => {
               setSumber("kurikulum");
               setPesanGalat("");
             }}
-            className={`flex-1 py-3 rounded-xl font-extrabold uppercase tracking-wide transition-all ${
+            className={`flex w-full items-center justify-center gap-2 rounded-xl px-3 py-3 text-sm font-extrabold uppercase tracking-wide transition-all sm:text-base ${
               sumber === "kurikulum"
                 ? "bg-[#1C01A5] text-white shadow-sm"
                 : "text-[#1C01A5] hover:text-[#1C01A5]"
             }`}
           >
-            Materi Kurikulum Merdeka
+            <BookOpen className="h-5 w-5 shrink-0" />
+            <span>Materi Kurikulum Merdeka</span>
           </button>
           <button
             type="button"
@@ -272,13 +273,14 @@ export default function RuangBelajarPage() {
               setSumber("unggah");
               setPesanGalat("");
             }}
-            className={`flex-1 py-3 rounded-xl font-extrabold uppercase tracking-wide transition-all ${
+            className={`flex w-full items-center justify-center gap-2 rounded-xl px-3 py-3 text-sm font-extrabold uppercase tracking-wide transition-all sm:text-base ${
               sumber === "unggah"
                 ? "bg-[#1C01A5] text-white shadow-sm"
                 : "text-[#1C01A5] hover:text-[#1C01A5]"
             }`}
           >
-            Unggah Halaman Buku
+            <UploadCloud className="h-5 w-5 shrink-0" />
+            <span>Unggah Halaman Buku</span>
           </button>
         </div>
 
