@@ -20,6 +20,7 @@ import {
 } from "@/lib/progres";
 import { kelasTombolUtama } from "@/lib/tema";
 import { indeksKartuAktif } from "@/lib/konsep-materi";
+import { naskahLisan, naskahTutorUntukSuara } from "@/lib/naskah-lisan";
 import { pecahTokenNaskah, skalaWaktuKata, type KataWaktu } from "@/lib/tts";
 import GambarDoodle, { type GambarSisipan } from "@/components/GambarDoodle";
 import PemutarAudioGuru, { indeksKataAktif } from "@/components/PemutarAudioGuru";
@@ -96,7 +97,6 @@ const LAJU_BICARA = 0.92;
 const KARAKTER_PER_DETIK = 13 * LAJU_BICARA;
 const INTERVAL_KETIK_MS = Math.max(32, Math.round(1000 / KARAKTER_PER_DETIK));
 const BATAS_POTONGAN_UCAPAN = 120;
-const INTERVAL_JAGA_SUARA_MS = 8000;
 const INTERVAL_WASPADA_SUARA_MS = 1600;
 
 type JenisPotonganSuara = "sapaan" | "penjelasan" | "sisa";
@@ -401,13 +401,6 @@ export default function TutorAI() {
 
   const mulaiJagaSuara = () => {
     hentikanJagaSuara();
-    jagaSuaraRef.current = window.setInterval(() => {
-      if (!sedangMemutarRef.current) return;
-      if (!window.speechSynthesis.speaking || window.speechSynthesis.paused) return;
-      window.speechSynthesis.pause();
-      window.speechSynthesis.resume();
-    }, INTERVAL_JAGA_SUARA_MS);
-
     waspadaSuaraRef.current = window.setInterval(() => {
       if (!sedangMemutarRef.current) return;
       if (window.speechSynthesis.paused || window.speechSynthesis.speaking) return;
@@ -731,9 +724,8 @@ export default function TutorAI() {
       }
     };
 
-    masukkan(hasilData.sapaan, "sapaan");
-    masukkan(hasilData.penjelasan, "penjelasan");
-    masukkan(`${hasilData.pertanyaan}. ${hasilData.motivasi}`, "sisa");
+    masukkan(naskahLisan(hasilData.sapaan), "sapaan");
+    masukkan(naskahLisan(hasilData.penjelasan), "penjelasan");
 
     antrian.forEach((item, indeks) => {
       item.ucapan.onstart = () => {
@@ -795,7 +787,7 @@ export default function TutorAI() {
   const putarDariAwal = async (kelaminSuara: KelaminGuru = guruKelamin) => {
     if (!hasilData) return;
     resetPemutar();
-    const naskah = `${hasilData.sapaan} ${hasilData.penjelasan}`.replace(/\s+/g, " ").trim();
+    const naskah = naskahTutorUntukSuara(hasilData.sapaan, hasilData.penjelasan);
     try {
       const respons = await fetch("/api/tts", {
         method: "POST",
@@ -818,7 +810,7 @@ export default function TutorAI() {
           c.charCodeAt(0),
         );
         const url = URL.createObjectURL(
-          new Blob([biner], { type: data.mime || "audio/mpeg" }),
+          new Blob([biner], { type: data.mime || "audio/wav" }),
         );
         urlAudioRef.current = url;
         setSrcAudio(url);

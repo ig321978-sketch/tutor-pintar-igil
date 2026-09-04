@@ -1,11 +1,13 @@
 import { NextResponse } from "next/server";
-import { namaSuaraChirp, sintesisChirp, ttsSiapDipakai } from "@/lib/google-tts";
-import { ambilCacheTts, kunciCacheTts, simpanCacheTts } from "@/lib/tts-cache";
 import {
-  normalisasiKelaminTts,
-  perkiraanDurasiMp3,
-  waktuKataDariDurasi,
-} from "@/lib/tts";
+  durasiWavDetik,
+  namaSuaraChirp,
+  sintesisChirp,
+  ttsSiapDipakai,
+} from "@/lib/google-tts";
+import { naskahLisan } from "@/lib/naskah-lisan";
+import { ambilCacheTts, kunciCacheTts, simpanCacheTts } from "@/lib/tts-cache";
+import { normalisasiKelaminTts, waktuKataDariDurasi } from "@/lib/tts";
 
 export const maxDuration = 60;
 
@@ -27,7 +29,11 @@ export async function POST(req: Request) {
         : typeof body.naskah === "string"
           ? body.naskah
           : "";
-    const naskah = teks.replace(/\s+/g, " ").trim();
+    const naskah = teks
+      .split(/\n\n+/)
+      .map((item) => naskahLisan(item))
+      .filter(Boolean)
+      .join("\n\n");
     if (!naskah) {
       return NextResponse.json(
         { berhasil: false, cadangan: true, pesan: "Naskah kosong." },
@@ -42,11 +48,11 @@ export async function POST(req: Request) {
 
     const cache = await ambilCacheTts(kunci);
     if (cache) {
-      const durasi = cache.meta.durasiDetik || perkiraanDurasiMp3(cache.audio.length);
+      const durasi = cache.meta.durasiDetik || durasiWavDetik(cache.audio);
       return NextResponse.json({
         berhasil: true,
         sumber: "cache",
-        mime: cache.meta.mime || "audio/mpeg",
+        mime: cache.meta.mime || "audio/wav",
         audioBase64: cache.audio.toString("base64"),
         durasiDetik: durasi,
         suara,
@@ -64,16 +70,16 @@ export async function POST(req: Request) {
 
     try {
       const audio = await sintesisChirp(naskah, suara);
-      const durasi = perkiraanDurasiMp3(audio.length);
+      const durasi = durasiWavDetik(audio);
       await simpanCacheTts(kunci, audio, {
-        mime: "audio/mpeg",
+        mime: "audio/wav",
         durasiDetik: durasi,
         suara,
       });
       return NextResponse.json({
         berhasil: true,
         sumber: "google",
-        mime: "audio/mpeg",
+        mime: "audio/wav",
         audioBase64: audio.toString("base64"),
         durasiDetik: durasi,
         suara,

@@ -15,19 +15,25 @@ type MetaCache = {
   suara: string;
 };
 
+async function unduhBerkas(jalur: string) {
+  const supabase = supabaseServer();
+  if (!supabase) return null;
+  const hasil = await supabase.storage.from(EMBER).download(jalur);
+  if (hasil.error || !hasil.data) return null;
+  return hasil.data;
+}
+
 export async function ambilCacheTts(
   kunci: string,
 ): Promise<{ audio: Buffer; meta: MetaCache } | null> {
-  const supabase = supabaseServer();
-  if (!supabase) return null;
-
-  const audio = await supabase.storage.from(EMBER).download(`${kunci}.mp3`);
-  const meta = await supabase.storage.from(EMBER).download(`${kunci}.json`);
-  if (audio.error || meta.error || !audio.data || !meta.data) return null;
+  const metaBlob = await unduhBerkas(`${kunci}.json`);
+  const audioBlob =
+    (await unduhBerkas(`${kunci}.wav`)) ?? (await unduhBerkas(`${kunci}.mp3`));
+  if (!metaBlob || !audioBlob) return null;
 
   try {
-    const isiMeta = JSON.parse(await meta.data.text()) as MetaCache;
-    const buffer = Buffer.from(await audio.data.arrayBuffer());
+    const isiMeta = JSON.parse(await metaBlob.text()) as MetaCache;
+    const buffer = Buffer.from(await audioBlob.arrayBuffer());
     if (!buffer.length) return null;
     return { audio: buffer, meta: isiMeta };
   } catch {
@@ -43,17 +49,18 @@ export async function simpanCacheTts(
   const supabase = supabaseServer();
   if (!supabase) return;
 
-  const unggahAudio = supabase.storage.from(EMBER).upload(`${kunci}.mp3`, audio, {
-    contentType: meta.mime,
-    upsert: true,
-  });
-  const unggahMeta = supabase.storage.from(EMBER).upload(
-    `${kunci}.json`,
-    JSON.stringify(meta),
-    { contentType: "application/json", upsert: true },
-  );
-
-  const [a, b] = await Promise.all([unggahAudio, unggahMeta]);
+  const ekstensi = meta.mime.includes("wav") ? "wav" : "mp3";
+  const [a, b] = await Promise.all([
+    supabase.storage.from(EMBER).upload(`${kunci}.${ekstensi}`, audio, {
+      contentType: meta.mime,
+      upsert: true,
+    }),
+    supabase.storage.from(EMBER).upload(
+      `${kunci}.json`,
+      JSON.stringify(meta),
+      { contentType: "application/json", upsert: true },
+    ),
+  ]);
   if (a.error) console.error("Cache TTS audio:", a.error.message);
   if (b.error) console.error("Cache TTS meta:", b.error.message);
 }

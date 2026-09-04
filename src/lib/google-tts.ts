@@ -2,7 +2,10 @@ import { GoogleAuth } from "google-auth-library";
 import { suaraChirpGuru } from "@/lib/guru";
 import type { KelaminTts } from "@/lib/tts";
 
-const BATAS_KARAKTER = 3600;
+const BATAS_KARAKTER = 900;
+const LAJU_BICARA = 0.92;
+const SAMPLE_RATE = 24000;
+const JEDA_ANTAR_BLOK_MS = 420;
 
 export function namaSuaraChirp(
   kelamin: KelaminTts,
@@ -48,12 +51,8 @@ async function tokenAkses(): Promise<string> {
   return hasil.token;
 }
 
-function potongNaskah(teks: string): string[] {
-  const bersih = teks.replace(/\s+/g, " ").trim();
-  if (!bersih) return [];
-  if (bersih.length <= BATAS_KARAKTER) return [bersih];
-
-  const bagian = bersih.split(/(?<=[.!?…])\s+/);
+function pecahKalimat(teks: string): string[] {
+  const bagian = teks.split(/(?<=[.!?…])\s+/).map((item) => item.trim()).filter(Boolean);
   const hasil: string[] = [];
   let buffer = "";
   for (const kalimat of bagian) {
@@ -74,6 +73,45 @@ function potongNaskah(teks: string): string[] {
   }
   if (buffer) hasil.push(buffer);
   return hasil;
+}
+
+export function potongNaskah(teks: string): string[] {
+  const blok = teks
+    .split(/\n\n+/)
+    .map((item) => item.replace(/\s+/g, " ").trim())
+    .filter(Boolean);
+  const sumber = blok.length > 0 ? blok : [teks.replace(/\s+/g, " ").trim()].filter(Boolean);
+  return sumber.flatMap((item) =>
+    item.length <= BATAS_KARAKTER ? [item] : pecahKalimat(item),
+  );
+}
+
+function bungkusWav(pcm: Buffer, sampleRate = SAMPLE_RATE): Buffer {
+  const header = Buffer.alloc(44);
+  header.write("RIFF", 0);
+  header.writeUInt32LE(36 + pcm.length, 4);
+  header.write("WAVE", 8);
+  header.write("fmt ", 12);
+  header.writeUInt32LE(16, 16);
+  header.writeUInt16LE(1, 20);
+  header.writeUInt16LE(1, 22);
+  header.writeUInt32LE(sampleRate, 24);
+  header.writeUInt32LE(sampleRate * 2, 28);
+  header.writeUInt16LE(2, 32);
+  header.writeUInt16LE(16, 34);
+  header.write("data", 36);
+  header.writeUInt32LE(pcm.length, 40);
+  return Buffer.concat([header, pcm]);
+}
+
+function sunyiPcm(milidetik: number, sampleRate = SAMPLE_RATE): Buffer {
+  const sampel = Math.round((sampleRate * milidetik) / 1000);
+  return Buffer.alloc(sampel * 2);
+}
+
+export function durasiWavDetik(wav: Buffer, sampleRate = SAMPLE_RATE): number {
+  const pcm = Math.max(0, wav.length - 44);
+  return Math.max(0.4, pcm / (sampleRate * 2));
 }
 
 async function sintesisSatu(
@@ -98,8 +136,9 @@ async function sintesisSatu(
           name: suara,
         },
         audioConfig: {
-          audioEncoding: "MP3",
-          speakingRate: 0.94,
+          audioEncoding: "LINEAR16",
+          sampleRateHertz: SAMPLE_RATE,
+          speakingRate: LAJU_BICARA,
         },
       }),
     },
@@ -131,9 +170,11 @@ export async function sintesisChirp(
   if (potongan.length === 0) {
     throw new Error("Naskah kosong.");
   }
-  const audio: Buffer[] = [];
-  for (const bagian of potongan) {
-    audio.push(await sintesisSatu(bagian, suara, token));
+
+  const pcm: Buffer[] = [];
+  for (let i = 0; i < potongan.length; i += 1) {
+    if (i > 0) pcm.push(sunyiPcm(JEDA_ANTAR_BLOK_MS));
+    pcm.push(await sintesisSatu(potongan[i], suara, token));
   }
-  return Buffer.concat(audio);
+  return bungkusWav(Buffer.concat(pcm));
 }
