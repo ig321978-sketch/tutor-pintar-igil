@@ -450,6 +450,7 @@ export default function TutorAI() {
       susunKonsepMateri(
         modeInput === "teks" ? bab : "Analisis AI",
         modul.penjelasan,
+        kelas,
       ).kartu.length,
       JUMLAH_KARTU_MAKS,
     );
@@ -1156,6 +1157,7 @@ export default function TutorAI() {
               <RingkasanKonsep
                 materi={sesiMateri || (modeInput === "teks" ? bab : "Analisis halaman buku")}
                 mapel={sesiMapel || (modeInput === "teks" ? mapel : "Berdasarkan Buku")}
+                kelas={kelas}
                 penjelasan={hasilData.penjelasan}
                 sapaan={hasilData.sapaan}
                 kartuAktif={kartuAktif}

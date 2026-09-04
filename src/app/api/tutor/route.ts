@@ -6,6 +6,7 @@ import {
   type Schema,
 } from "@google/generative-ai";
 import { parseKunciJawaban } from "@/lib/kuis";
+import { jenjangGuru } from "@/lib/guru";
 import { gantiNamaLengkapKeDepan, namaDepanSiswa, pilihKataPujian, sapaanTutorRingkas } from "@/lib/nama-siswa";
 
 export const maxDuration = 60;
@@ -113,6 +114,29 @@ function bersihkanDanParseJson(mentah: string): Record<string, unknown> {
     const diperbaiki = teks.replace(/,\s*([}\]])/g, "$1");
     return JSON.parse(diperbaiki) as Record<string, unknown>;
   }
+}
+
+function instruksiPenjelasan(kelas: string, namaDepan: string): string {
+  const jenjang = jenjangGuru(kelas);
+  if (jenjang === "SD") {
+    return `2. penjelasan: TEPAT 8 sampai 10 KARTU MATERI. Bukan esai panjang. Jangan menumpuk banyak kalimat di satu kartu. Pecah topik menjadi BANYAK sub-topik konkret yang berbeda. Setiap kartu SATU blok dipisah \\n\\n, format wajib:
+Judul kartu 2-8 kata.
+Subjudul SATU kalimat pendek (maks 16 kata).
+Contoh pecahan HANYA jika materinya Mengenal Kitab Suci (blok terpisah, bukan satu baris):
+Arti Kitab Suci.\\nBuku suci yang menjadi pedoman hidup umat beragama.\\n\\nAgama yang sah di Indonesia.\\nEnam agama yang diakui negara di Indonesia.\\n\\nKitab Suci Umat Islam.\\nAl-Qur'an adalah kitab suci umat Islam.\\n\\nKitab Suci Umat Kristen.\\nAlkitab adalah kitab suci umat Kristen.\\n\\nKitab Suci Umat Buddha.\\nTripitaka adalah kitab suci umat Buddha.\\n\\nKitab Suci Umat Hindu.\\nWeda adalah kitab suci umat Hindu.\\n\\nKitab Suci Umat Konghucu.\\nSishu Wujing adalah kitab suci umat Konghucu.\\n\\nManfaat Belajar Kitab Suci.\\nBelajar kitab suci menuntun sikap hormat dan hidup damai.
+Untuk mapel lain, pecah dengan pola serupa: arti, jenis atau bagian, contoh konkret, perbandingan, dan manfaat. Sesuaikan jenjang ${kelas} dan Kurikulum Merdeka. Jika menyebut nama siswa, HANYA ${namaDepan}. DILARANG pujian berlebihan.`;
+  }
+
+  const kepadatan =
+    jenjang === "SMA"
+      ? "6-8 kalimat padat setara SMA: definisi akurat, mekanisme atau nalar, contoh, aplikasi, dan miskonsepsi yang harus dihindari. Bahasa analitis, jangan kekanak-kanakan."
+      : "5-7 kalimat berbobot setara SMP: definisi jelas, alasan atau cara kerja, contoh remaja, dan dampak atau manfaatnya. Bahasa tegas dan jelas, bukan flashcard SD.";
+
+  return `2. penjelasan: TEPAT 6 KARTU PEMBAHASAN untuk jenjang ${jenjang} (${kelas}). Setiap kartu SATU blok dipisah \\n\\n.
+Baris pertama: judul pembahasan 2-8 kata, diakhiri titik.
+Lalu langsung uraian naskah LENGKAP dan BERBOBOT (${kepadatan}).
+DILARANG subjudul singkat. DILARANG kartu flashcard 1 kalimat. DILARANG mengulang judul sebagai sub-bab.
+Jika menyebut nama siswa, HANYA ${namaDepan}. DILARANG pujian berlebihan. Sesuaikan Kurikulum Merdeka.`;
 }
 
 function pulihkanParagraf(nilai: unknown, cadangan: string): string {
@@ -287,12 +311,7 @@ ATURAN MUTLAK:
 
 STANDAR KONTEN:
 1. sapaan: SATU kalimat pendek untuk dibaca suara. Sebut HANYA nama depan ${namaDepan}. Sertakan TEPAT SATU kata pujian dari: Pintar, Cerdas, Baik, Rajin, Soleh, Semangat, Hebat. DILARANG pujian panjang, julukan berlebihan, atau nama lengkap. Contoh: 'Halo ${namaDepan}, Pintar.'
-2. penjelasan: TEPAT 8 sampai 10 KARTU MATERI. Bukan esai panjang. Jangan menumpuk banyak kalimat di satu kartu. Pecah topik menjadi BANYAK sub-topik konkret yang berbeda. Setiap kartu SATU blok dipisah \\n\\n, format wajib:
-Judul kartu 2-8 kata.
-Subjudul SATU kalimat pendek (maks 16 kata).
-Contoh pecahan HANYA jika materinya Mengenal Kitab Suci (blok terpisah, bukan satu baris):
-Arti Kitab Suci.\\nBuku suci yang menjadi pedoman hidup umat beragama.\\n\\nAgama yang sah di Indonesia.\\nEnam agama yang diakui negara di Indonesia.\\n\\nKitab Suci Umat Islam.\\nAl-Qur'an adalah kitab suci umat Islam.\\n\\nKitab Suci Umat Kristen.\\nAlkitab adalah kitab suci umat Kristen.\\n\\nKitab Suci Umat Buddha.\\nTripitaka adalah kitab suci umat Buddha.\\n\\nKitab Suci Umat Hindu.\\nWeda adalah kitab suci umat Hindu.\\n\\nKitab Suci Umat Konghucu.\\nSishu Wujing adalah kitab suci umat Konghucu.\\n\\nManfaat Belajar Kitab Suci.\\nBelajar kitab suci menuntun sikap hormat dan hidup damai.
-Untuk mapel lain, pecah dengan pola serupa: arti, jenis atau bagian, contoh konkret, perbandingan, dan manfaat. Sesuaikan jenjang ${kelas} dan Kurikulum Merdeka. Jika menyebut nama siswa, HANYA ${namaDepan}. DILARANG pujian berlebihan.
+${instruksiPenjelasan(kelas, namaDepan)}
 3. sketsaKartu: TEPAT sama jumlahnya dengan kartu di penjelasan. Setiap blok SATU kalimat visual doodle kecil (satu benda atau adegan mini), dipisah \\n\\n, urutan sama dengan kartu. Semua sketsa HARUS berbeda. Tanpa teks tertulis di gambar.
 4. svgCode: cadangan doodle SVG sketsa tangan (viewBox 0 0 400 220), kertas krem, garis tinta navy #1C01A5 saja. Tanpa kutip ganda.
 5. pertanyaan: TEPAT 5 soal dalam SATU string panjang, dipisah \\n\\n.

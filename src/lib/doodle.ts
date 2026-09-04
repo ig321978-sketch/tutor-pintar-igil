@@ -136,7 +136,7 @@ export async function buatPaketDoodle(opsi: {
   batas?: number;
 }): Promise<{ gambarUtama: string | null; gambarSisipan: GambarSisipan[] }> {
   const ai = new GoogleGenAI({ apiKey: opsi.apiKey });
-  const kartu = susunKonsepMateri(opsi.materi, opsi.penjelasan).kartu;
+  const kartu = susunKonsepMateri(opsi.materi, opsi.penjelasan, opsi.kelas).kartu;
   const rencana = rencanakanSisipan(
     kartu.length,
     opsi.offset ?? 0,

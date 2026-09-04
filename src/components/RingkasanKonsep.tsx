@@ -9,7 +9,7 @@ import {
   Star,
   Target,
 } from "lucide-react";
-import { susunKonsepMateri } from "@/lib/konsep-materi";
+import { kartuTanpaNaskah, susunKonsepMateri } from "@/lib/konsep-materi";
 import type { GambarSisipan } from "@/components/GambarDoodle";
 
 const IKON = [Lightbulb, Compass, Target, Star];
@@ -30,12 +30,14 @@ function MiniDoodle({
   src?: string;
   alt: string;
   memuat: boolean;
-  ukuran?: "peta" | "kartu";
+  ukuran?: "peta" | "kartu" | "uraian";
 }) {
   const kotak =
     ukuran === "peta"
       ? "h-12 w-12 sm:h-14 sm:w-14"
-      : "mx-auto h-28 w-28 sm:h-32 sm:w-32";
+      : ukuran === "uraian"
+        ? "h-20 w-20 shrink-0 sm:h-24 sm:w-24"
+        : "mx-auto h-28 w-28 sm:h-32 sm:w-32";
   return (
     <div
       className={`relative shrink-0 overflow-hidden rounded-2xl border-2 border-[#1C01A5]/15 bg-[#fbf6ea] shadow-inner ${kotak}`}
@@ -59,6 +61,7 @@ function MiniDoodle({
 export default function RingkasanKonsep({
   materi,
   mapel,
+  kelas = "3 SD",
   penjelasan,
   sapaan,
   kartuAktif,
@@ -67,13 +70,15 @@ export default function RingkasanKonsep({
 }: {
   materi: string;
   mapel: string;
+  kelas?: string;
   penjelasan: string;
   sapaan: string;
   kartuAktif: number;
   gambarSisipan?: GambarSisipan[];
   doodleMemuat?: boolean;
 }) {
-  const { ideUtama, kartu } = susunKonsepMateri(materi, penjelasan);
+  const { ideUtama, kartu } = susunKonsepMateri(materi, penjelasan, kelas);
+  const ringkas = kartuTanpaNaskah(kelas);
 
   return (
     <section className="space-y-8">
@@ -85,7 +90,8 @@ export default function RingkasanKonsep({
           {ideUtama}
         </h2>
         <p className="mt-2 text-sm font-bold text-[#1C01A5]/70">
-          {mapel} · Infografis, peta pikiran, dan kartu materi
+          {mapel} · Infografis, peta pikiran, dan{" "}
+          {ringkas ? "kartu materi" : "kartu pembahasan"}
         </p>
         <p className="mt-4 text-lg font-semibold text-slate-700">{sapaan}</p>
       </div>
@@ -150,40 +156,80 @@ export default function RingkasanKonsep({
       <div>
         <div className="mb-4 flex items-center gap-2">
           <BookOpen className="h-5 w-5 text-[#1C01A5]" />
-          <h3 className="text-xl font-extrabold text-[#1C01A5]">Kartu materi</h3>
+          <h3 className="text-xl font-extrabold text-[#1C01A5]">
+            {ringkas ? "Kartu materi" : "Kartu pembahasan"}
+          </h3>
         </div>
-        <div className="grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-4">
-          {kartu.map((item, indeks) => {
-            const Ikon = IKON[indeks % IKON.length];
-            const doodle = doodleKartu(gambarSisipan, indeks);
-            return (
-              <article
-                key={`kartu-${item.judul}-${indeks}`}
-                className={`flex flex-col rounded-3xl border-2 p-4 text-center shadow-sm ${item.warna} ${
-                  kartuAktif === indeks ? "ring-4 ring-[#1C01A5]/25" : ""
-                }`}
-              >
-                <MiniDoodle
-                  src={doodle?.src}
-                  alt={doodle?.alt || item.judul}
-                  memuat={doodleMemuat && !doodle?.src}
-                />
-                <div className="mt-3 flex items-center justify-center gap-1.5">
-                  <Ikon className="h-3.5 w-3.5 text-[#1C01A5]" />
-                  <p className="text-[10px] font-extrabold uppercase tracking-wider text-[#1C01A5]/70">
-                    Kartu {indeks + 1}
+        {ringkas ? (
+          <div className="grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-4">
+            {kartu.map((item, indeks) => {
+              const Ikon = IKON[indeks % IKON.length];
+              const doodle = doodleKartu(gambarSisipan, indeks);
+              return (
+                <article
+                  key={`kartu-${item.judul}-${indeks}`}
+                  className={`flex flex-col rounded-3xl border-2 p-4 text-center shadow-sm ${item.warna} ${
+                    kartuAktif === indeks ? "ring-4 ring-[#1C01A5]/25" : ""
+                  }`}
+                >
+                  <MiniDoodle
+                    src={doodle?.src}
+                    alt={doodle?.alt || item.judul}
+                    memuat={doodleMemuat && !doodle?.src}
+                  />
+                  <div className="mt-3 flex items-center justify-center gap-1.5">
+                    <Ikon className="h-3.5 w-3.5 text-[#1C01A5]" />
+                    <p className="text-[10px] font-extrabold uppercase tracking-wider text-[#1C01A5]/70">
+                      Kartu {indeks + 1}
+                    </p>
+                  </div>
+                  <h4 className="mt-1 text-sm font-black leading-snug text-[#1C01A5] sm:text-base">
+                    {item.judul}
+                  </h4>
+                  <p className="mt-1 text-xs font-medium leading-snug text-slate-600 sm:text-sm">
+                    {item.isi}
                   </p>
-                </div>
-                <h4 className="mt-1 text-sm font-black leading-snug text-[#1C01A5] sm:text-base">
-                  {item.judul}
-                </h4>
-                <p className="mt-1 text-xs font-medium leading-snug text-slate-600 sm:text-sm">
-                  {item.isi}
-                </p>
-              </article>
-            );
-          })}
-        </div>
+                </article>
+              );
+            })}
+          </div>
+        ) : (
+          <div className="grid gap-4">
+            {kartu.map((item, indeks) => {
+              const Ikon = IKON[indeks % IKON.length];
+              const doodle = doodleKartu(gambarSisipan, indeks);
+              return (
+                <article
+                  key={`kartu-${item.judul}-${indeks}`}
+                  className={`flex gap-4 rounded-3xl border-2 p-5 shadow-sm ${item.warna} ${
+                    kartuAktif === indeks ? "ring-4 ring-[#1C01A5]/25" : ""
+                  }`}
+                >
+                  <MiniDoodle
+                    src={doodle?.src}
+                    alt={doodle?.alt || item.judul}
+                    memuat={doodleMemuat && !doodle?.src}
+                    ukuran="uraian"
+                  />
+                  <div className="min-w-0 flex-1">
+                    <div className="mb-1 flex items-center gap-2">
+                      <Ikon className="h-4 w-4 shrink-0 text-[#1C01A5]" />
+                      <p className="text-xs font-extrabold uppercase tracking-wider text-[#1C01A5]/70">
+                        Kartu {indeks + 1}
+                      </p>
+                    </div>
+                    <h4 className="text-lg font-black leading-snug text-[#1C01A5] sm:text-xl">
+                      {item.judul}
+                    </h4>
+                    <p className="mt-2 text-sm font-medium leading-relaxed text-slate-700 sm:text-base">
+                      {item.isi}
+                    </p>
+                  </div>
+                </article>
+              );
+            })}
+          </div>
+        )}
       </div>
     </section>
   );

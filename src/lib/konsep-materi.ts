@@ -1,3 +1,4 @@
+import { jenjangGuru } from "@/lib/guru";
 import { pecahTokenNaskah } from "@/lib/tts";
 
 export type KartuKonsep = {
@@ -8,6 +9,10 @@ export type KartuKonsep = {
 
 export const JUMLAH_KARTU_MAKS = 10;
 export const UKURAN_BATCH_DOODLE = 4;
+
+export function kartuTanpaNaskah(kelas: string): boolean {
+  return jenjangGuru(kelas) === "SD";
+}
 
 const WARNA_KARTU = [
   "bg-[#FFF4CC] border-[#F0AB00]",
@@ -35,12 +40,19 @@ export function judulDariTeks(teks: string): string {
   return kata.length > 2 ? kata : "Ide penting";
 }
 
-function subjudulDariTeks(teks: string, judul: string): string {
-  const sisa = teks.replace(judul, "").replace(/^[:.\-–]\s*/, "").trim();
-  const sumber = sisa || teks.replace(judul, "").trim() || teks;
-  const satu = potongKalimat(sumber, 1);
-  const kata = satu.split(/\s+/).slice(0, 18).join(" ");
-  return kata.length > 2 ? kata : judul;
+function naskahDariTeks(teks: string, judul: string, ringkas: boolean): string {
+  const sumber = teks
+    .replace(judul, " ")
+    .replace(/^\d+[.)]\s*/gm, "")
+    .replace(/^[:.\-–\s]+/, "")
+    .trim();
+  if (ringkas) {
+    const satu = potongKalimat(sumber || teks, 1);
+    const kata = satu.split(/\s+/).slice(0, 18).join(" ");
+    return kata.length > 2 ? kata : judul;
+  }
+  const uraian = potongKalimat(sumber || teks, 10);
+  return uraian.length > 2 ? uraian : sumber || teks;
 }
 
 function pecahSumber(penjelasan: string): string[] {
@@ -70,13 +82,15 @@ function pecahSumber(penjelasan: string): string[] {
 export function susunKonsepMateri(
   materi: string,
   penjelasan: string,
+  kelas = "3 SD",
 ): { ideUtama: string; kartu: KartuKonsep[] } {
+  const ringkas = kartuTanpaNaskah(kelas);
   const sumber = pecahSumber(penjelasan);
   const kartu = sumber.map((isi, indeks) => {
     const judul = judulDariTeks(isi);
     return {
       judul,
-      isi: subjudulDariTeks(isi, judul),
+      isi: naskahDariTeks(isi, judul, ringkas),
       warna: WARNA_KARTU[indeks % WARNA_KARTU.length],
     };
   });
