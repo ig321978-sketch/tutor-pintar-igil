@@ -86,15 +86,35 @@ const KATA_ABAI = new Set([
   "disini",
 ]);
 
+/** Mapel Kurikulum Merdeka yang punya lab virtual PhET. */
+export const MAPEL_SIMULASI = [
+  "Matematika",
+  "Ilmu Pengetahuan Alam dan Sosial (IPAS)",
+  "Ilmu Pengetahuan Alam",
+  "Fisika",
+  "Kimia",
+  "Biologi",
+  "Geografi",
+] as const;
+
 const PETA_TOPIK: Array<[RegExp, string]> = [
   [/matematika|bilangan|pecahan|pengukuran|bangun|perkalian|pembagian|luas|volume/, "math number fraction geometry area multiplication"],
-  [/\bipa\b|ipas|ilmu pengetahuan|pengetahuan alam/, "science matter force gravity circuit atom plant"],
+  [/\bipa\b|ipas|ilmu pengetahuan alam|pengetahuan alam/, "science matter force gravity circuit atom plant"],
   [/fisika|gaya|gerak|energi|listrik|magnet|gelombang/, "physics force motion energy circuit magnet gravity wave"],
   [/kimia|zat|atom|molekul|larutan|asam|basa|ph/, "chemistry atom molecule acid base ph states of matter"],
   [/biologi|sel|tumbuhan|hewan|makhluk/, "biology cell molecule"],
   [/geografi|bumi|planet|tata surya|orbit/, "earth gravity orbit planet"],
-  [/sosiologi|antropologi|sejarah|ekonomi|ppkn|pancasila/, ""],
 ];
+
+export function mapelPunyaSimulasi(mapel: string): boolean {
+  const rendah = mapel.trim().toLowerCase();
+  return MAPEL_SIMULASI.some((nama) => nama.toLowerCase() === rendah);
+}
+
+export function daftarMapelSimulasi(semuaMapel: string[]): string[] {
+  const ada = new Set(semuaMapel);
+  return MAPEL_SIMULASI.filter((nama) => ada.has(nama));
+}
 
 function kata(teks: string): string[] {
   return teks
@@ -273,6 +293,7 @@ export async function cariBahanSimulasi(query: string): Promise<BahanSimulasi[]>
       item,
       skor: skorCocok(`${item.judul} ${item.ringkasan}`, perluasQuery(q)),
     }))
+    .filter((baris) => baris.skor > 0)
     .sort((a, b) => b.skor - a.skor)
     .map((baris) => baris.item);
 

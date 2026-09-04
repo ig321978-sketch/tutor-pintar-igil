@@ -1,7 +1,7 @@
 import { NextResponse } from "next/server";
 import { Type, type Schema } from "@google/genai";
 import { hasilkanJsonGemini, MODEL_GEMINI_RUTIN, pesanGalatGemini } from "@/lib/klien-gemini";
-import { cariBahanSimulasi } from "@/lib/simulasi-global";
+import { cariBahanSimulasi, mapelPunyaSimulasi } from "@/lib/simulasi-global";
 import { supabaseServer } from "@/lib/supabase";
 import { kreditTokenIgil } from "@/lib/kuota-interaksi";
 
@@ -78,6 +78,17 @@ export async function POST(req: Request) {
     if (!mapel || !materi) {
       return NextResponse.json(
         { berhasil: false, pesan: "Pilih mata pelajaran dan materi dulu ya." },
+        { status: 400 },
+      );
+    }
+
+    if (!mapelPunyaSimulasi(mapel)) {
+      return NextResponse.json(
+        {
+          berhasil: false,
+          pesan:
+            "Mapel itu belum punya simulasi lab. Pilih Matematika, IPAS, IPA, Fisika, Kimia, Biologi, atau Geografi.",
+        },
         { status: 400 },
       );
     }

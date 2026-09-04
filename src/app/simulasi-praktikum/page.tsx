@@ -3,14 +3,13 @@
 import { useEffect, useMemo, useRef, useState } from "react";
 import { Eye, ExternalLink, FlaskConical, Play, Sparkles } from "lucide-react";
 import PageShell from "@/components/PageShell";
-import {
-  daftarMapelUnik,
-  daftarMateriUntukMapel,
-  OPSI_LAINNYA,
-} from "@/lib/kurikulum";
+import { daftarMapelUnik, daftarMateriUntukMapel, OPSI_LAINNYA } from "@/lib/kurikulum";
 import { bacaProgres, tambahTokenIgil } from "@/lib/progres";
 import { kelasKotak, kelasLabel, kelasTombolUtama } from "@/lib/tema";
-import type { BahanSimulasi } from "@/lib/simulasi-global";
+import {
+  daftarMapelSimulasi,
+  type BahanSimulasi,
+} from "@/lib/simulasi-global";
 
 type Evaluasi = {
   lulus: boolean;
@@ -22,12 +21,11 @@ type Evaluasi = {
 };
 
 export default function SimulasiPraktikumPage() {
-  const daftarMapel = useMemo(() => daftarMapelUnik(), []);
+  const daftarMapel = useMemo(() => daftarMapelSimulasi(daftarMapelUnik()), []);
   const [nama, setNama] = useState("Siswa");
   const [kelas, setKelas] = useState("3 SD");
   const [saldo, setSaldo] = useState(0);
   const [pilihanMapel, setPilihanMapel] = useState(daftarMapel[0] ?? "");
-  const [mapelManual, setMapelManual] = useState("");
   const [pilihanMateri, setPilihanMateri] = useState("");
   const [materiManual, setMateriManual] = useState("");
   const [ide, setIde] = useState("");
@@ -38,9 +36,9 @@ export default function SimulasiPraktikumPage() {
   const [sudahCari, setSudahCari] = useState(false);
   const hasilRef = useRef<HTMLElement | null>(null);
 
-  const mapel = pilihanMapel === OPSI_LAINNYA ? mapelManual : pilihanMapel;
+  const mapel = pilihanMapel;
   const daftarMateri = useMemo(
-    () => (pilihanMapel === OPSI_LAINNYA ? [] : daftarMateriUntukMapel(pilihanMapel)),
+    () => daftarMateriUntukMapel(pilihanMapel),
     [pilihanMapel],
   );
   const materi = pilihanMateri === OPSI_LAINNYA ? materiManual : pilihanMateri;
@@ -53,19 +51,15 @@ export default function SimulasiPraktikumPage() {
   }, []);
 
   useEffect(() => {
-    if (pilihanMapel === OPSI_LAINNYA) {
-      setPilihanMateri(OPSI_LAINNYA);
-      return;
-    }
     if (!daftarMateri.includes(pilihanMateri) && pilihanMateri !== OPSI_LAINNYA) {
       setPilihanMateri(daftarMateri[0] ?? OPSI_LAINNYA);
     }
-  }, [daftarMateri, pilihanMapel, pilihanMateri]);
+  }, [daftarMateri, pilihanMateri]);
 
   const kirim = async (pratinjau: boolean) => {
     setPesan("");
     if (!mapel.trim() || !materi.trim()) {
-      setPesan("Pilih mata pelajaran dan materi dulu, atau ketik di LAINNYA.");
+      setPesan("Pilih mata pelajaran dan materi dulu ya.");
       return;
     }
     if (!pratinjau && ide.trim().length < 8) {
@@ -151,16 +145,10 @@ export default function SimulasiPraktikumPage() {
                   {item}
                 </option>
               ))}
-              <option value={OPSI_LAINNYA}>{OPSI_LAINNYA}</option>
             </select>
-            {pilihanMapel === OPSI_LAINNYA ? (
-              <input
-                value={mapelManual}
-                onChange={(e) => setMapelManual(e.target.value)}
-                placeholder="Ketik disini"
-                className={`${kelasKotak} mt-3 text-lg`}
-              />
-            ) : null}
+            <p className="mt-2 text-sm font-medium text-slate-500">
+              Hanya mapel yang punya simulasi PhET: matematika dan sains.
+            </p>
           </div>
 
           <div>
@@ -283,8 +271,8 @@ export default function SimulasiPraktikumPage() {
           </p>
           {bahan.length === 0 ? (
             <p className="rounded-3xl border border-[#1C01A5]/15 bg-white p-5 font-semibold text-slate-600">
-              Belum ketemu simulasi yang cocok. Coba ganti mapel ke IPA/IPAS, Fisika,
-              Kimia, atau Matematika.
+              Belum ketemu simulasi yang cocok untuk materi ini. Coba bab lain di mapel
+              yang sama, atau tulis ide praktikum di kotak atas.
             </p>
           ) : (
             <div className="grid gap-4">
