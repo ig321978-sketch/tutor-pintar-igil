@@ -1,6 +1,8 @@
+import { terapkanBabBukuSiswa } from "@/lib/bab-buku-siswa";
 import { perluasKurikulumMerdeka } from "@/lib/mapel-kurikulum-merdeka";
 
-export const OPSI_LAIN_NYA = "LAIN NYA (ketik manual)";
+export const OPSI_LAINNYA = "LAINNYA (ketik disini)";
+export const OPSI_LAIN_NYA = OPSI_LAINNYA;
 
 const DATA_INTI_KURIKULUM: Record<string, Record<string, string[]>> = {
   "1 SD": {
@@ -975,7 +977,9 @@ const DATA_INTI_KURIKULUM: Record<string, Record<string, string[]>> = {
   },
 };
 
-export const DATA_KURIKULUM = perluasKurikulumMerdeka(DATA_INTI_KURIKULUM);
+export const DATA_KURIKULUM = terapkanBabBukuSiswa(
+  perluasKurikulumMerdeka(DATA_INTI_KURIKULUM),
+);
 
 export const DAFTAR_KELAS = Object.keys(DATA_KURIKULUM);
 
@@ -984,8 +988,6 @@ export { labelJenjangKelas } from "@/lib/mapel-kurikulum-merdeka";
 export function daftarMapelUntukKelas(kelas: string): string[] {
   return Object.keys(DATA_KURIKULUM[kelas] ?? {});
 }
-
-export const OPSI_LAINNYA = "LAINNYA";
 
 export function daftarMapelUnik(): string[] {
   const nama = new Set<string>();

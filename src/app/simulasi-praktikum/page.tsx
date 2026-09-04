@@ -151,7 +151,7 @@ export default function SimulasiPraktikumPage() {
               <input
                 value={mapelManual}
                 onChange={(e) => setMapelManual(e.target.value)}
-                placeholder="Ketik nama mata pelajaran"
+                placeholder="Ketik disini"
                 className={`${kelasKotak} mt-3 text-lg`}
               />
             ) : null}
@@ -178,7 +178,7 @@ export default function SimulasiPraktikumPage() {
               <input
                 value={materiManual}
                 onChange={(e) => setMateriManual(e.target.value)}
-                placeholder="Ketik judul materi"
+                placeholder="Ketik disini"
                 className={`${kelasKotak} mt-3 text-lg`}
               />
             ) : null}

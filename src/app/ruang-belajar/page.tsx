@@ -6,12 +6,18 @@ import { BookOpen, Sparkles, UploadCloud, X } from "lucide-react";
 import PageShell from "@/components/PageShell";
 import PilihGuru from "@/components/PilihGuru";
 import { type KelaminGuru } from "@/lib/guru";
-import { DATA_KURIKULUM, DAFTAR_KELAS, daftarMapelUntukKelas, labelJenjangKelas } from "@/lib/kurikulum";
+import {
+  DATA_KURIKULUM,
+  DAFTAR_KELAS,
+  OPSI_LAINNYA,
+  daftarMapelUntukKelas,
+  labelJenjangKelas,
+} from "@/lib/kurikulum";
 import { bacaProgres, simpanProfil, type SesiModul } from "@/lib/progres";
 import { kelasKotak, kelasLabel, kelasTombolUtama } from "@/lib/tema";
 
-const OPSI_MAPEL_LAIN = "LAIN NYA (ketik judul Mata Pelajaran)";
-const OPSI_MATERI_LAIN = "LAIN NYA (ketik judul materi)";
+const OPSI_MAPEL_LAIN = OPSI_LAINNYA;
+const OPSI_MATERI_LAIN = OPSI_LAINNYA;
 const KUNCI_HALAMAN_BUKU = "igil-halaman-buku-v1";
 const BATAS_HALAMAN = 6;
 const BATAS_UKURAN_BYTE = 5 * 1024 * 1024;
@@ -310,7 +316,7 @@ export default function RuangBelajarPage() {
                 <input
                   value={mapelManual}
                   onChange={(e) => setMapelManual(e.target.value)}
-                  placeholder="Ketik judul Mata Pelajaran"
+                  placeholder="Ketik disini"
                   className={`${kelasKotak} mt-3`}
                 />
               ) : null}
@@ -341,7 +347,7 @@ export default function RuangBelajarPage() {
                 <input
                   value={materiManual}
                   onChange={(e) => setMateriManual(e.target.value)}
-                  placeholder="Ketik judul materi"
+                  placeholder="Ketik disini"
                   className={`${kelasKotak} mt-3`}
                 />
               ) : null}
