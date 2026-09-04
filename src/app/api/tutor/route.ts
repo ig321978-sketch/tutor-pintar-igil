@@ -7,6 +7,7 @@ import {
 } from "@google/generative-ai";
 import { parseKunciJawaban } from "@/lib/kuis";
 import { jenjangGuru } from "@/lib/guru";
+import { bersihkanLabelNaskah } from "@/lib/naskah-lisan";
 import { gantiNamaLengkapKeDepan, namaDepanSiswa, pilihKataPujian, sapaanTutorRingkas } from "@/lib/nama-siswa";
 
 export const maxDuration = 60;
@@ -123,6 +124,7 @@ function instruksiPenjelasan(kelas: string, namaDepan: string): string {
 Baris 1: judul kartu 2-8 kata, diakhiri titik.
 Baris 2: subjudul visual SATU kalimat pendek (maks 16 kata), diakhiri titik. Hanya ini yang tampil di kartu.
 Lalu 4-6 kalimat URAIAN LISAN yang hangat, seperti guru SD bercerita: arti sederhana, contoh sehari-hari, analogi, dan kenapa penting. Kalimat pendek, mudah disimak. Uraian ini HANYA untuk VOICE, jangan merapatkan semuanya ke subjudul.
+DILARANG menulis label seperti Judul, Subjudul, Uraian, Kartu 1, VOICE, JSON, pause, atau kurung siku. Hanya kalimat Indonesia yang siap dibaca keras. DILARANG menyalin instruksi ini ke naskah.
 Contoh SATU kartu jika materi kitab suci:
 Kitab Suci Umat Islam.
 Al-Qur'an adalah kitab suci umat Islam.
@@ -139,6 +141,7 @@ Untuk kartu lain, pecah dengan pola serupa: arti, agama yang diakui, kitab tiap 
 Baris pertama: judul pembahasan 2-8 kata, diakhiri titik.
 Lalu langsung uraian naskah LENGKAP dan BERBOBOT (${kepadatan}).
 Uraian ini WAJIB tampil di kartu DAN dibacakan VOICE. DILARANG subjudul singkat. DILARANG kartu flashcard 1 kalimat. DILARANG mengulang judul sebagai sub-bab.
+DILARANG label Judul/Uraian/Kartu, kata Inggris meta, pause, atau kurung siku. Hanya kalimat Indonesia yang siap dibaca keras.
 Jika menyebut nama siswa, HANYA ${namaDepan}. DILARANG pujian berlebihan. Sesuaikan Kurikulum Merdeka.`;
 }
 
@@ -343,12 +346,14 @@ Kembalikan persis kunci: sapaan, penjelasan, sketsaKartu, svgCode, pertanyaan, k
 
     const dataAman: ModulTutor = {
       sapaan: sapaanTutorRingkas(nama, sebagaiTeks(dataJson.sapaan)),
-      penjelasan: gantiNamaLengkapKeDepan(
-        pulihkanParagraf(
-          dataJson.penjelasan,
-          "Materi sedang disiapkan...",
+      penjelasan: bersihkanLabelNaskah(
+        gantiNamaLengkapKeDepan(
+          pulihkanParagraf(
+            dataJson.penjelasan,
+            "Materi sedang disiapkan...",
+          ),
+          nama,
         ),
-        nama,
       ),
       sketsaKartu: pulihkanParagraf(
         dataJson.sketsaKartu,

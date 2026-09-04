@@ -46,7 +46,10 @@ export async function POST(req: Request) {
     const kelas = typeof body.kelas === "string" ? body.kelas : "3 SD";
     const awalSaja = body.awalSaja === true;
     const suara = namaSuaraChirp(kelamin, kelas);
-    const kunci = kunciCacheTts(suara, awalSaja ? `awal\n${naskah}` : naskah);
+    const kunci = kunciCacheTts(
+      suara,
+      `${awalSaja ? "awal" : "penuh"}\nlisan-v3\n${naskah}`,
+    );
 
     const cache = await ambilCacheTts(kunci);
     if (cache) {

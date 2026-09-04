@@ -19,7 +19,7 @@ import {
   simpanProfil,
 } from "@/lib/progres";
 import { kelasTombolUtama } from "@/lib/tema";
-import { indeksKartuAktif, JUMLAH_KARTU_MAKS, susunKonsepMateri, UKURAN_BATCH_DOODLE } from "@/lib/konsep-materi";
+import { indeksKartuAktif, JUMLAH_KARTU_MAKS, kartuTanpaNaskah, susunKonsepMateri, UKURAN_BATCH_DOODLE } from "@/lib/konsep-materi";
 import { gantiNamaLengkapKeDepan, sapaanTutorRingkas } from "@/lib/nama-siswa";
 import { naskahLisan, naskahTutorUntukSuara } from "@/lib/naskah-lisan";
 import { pecahTokenNaskah, skalaWaktuKata, type KataWaktu } from "@/lib/tts";
@@ -754,7 +754,13 @@ export default function TutorAI() {
     };
 
     masukkan(naskahLisan(hasilData.sapaan, nama), "sapaan");
-    masukkan(naskahLisan(hasilData.penjelasan, nama), "penjelasan");
+    masukkan(
+      naskahTutorUntukSuara("", hasilData.penjelasan, nama, {
+        buangSubjudulVisual: kartuTanpaNaskah(kelas),
+        tanpaSapaan: true,
+      }),
+      "penjelasan",
+    );
 
     antrian.forEach((item, indeks) => {
       item.ucapan.onstart = () => {
@@ -860,6 +866,7 @@ export default function TutorAI() {
       hasilData.sapaan,
       hasilData.penjelasan,
       nama,
+      { buangSubjudulVisual: kartuTanpaNaskah(kelas) },
     );
     try {
       const respons = await fetch("/api/tts", {
@@ -1081,6 +1088,7 @@ export default function TutorAI() {
       hasilData.sapaan,
       hasilData.penjelasan,
       nama,
+      { buangSubjudulVisual: kartuTanpaNaskah(kelas) },
     );
     const durasiEst =
       durasiAudio > 0 ? durasiAudio : naskah.length / KARAKTER_PER_DETIK;

@@ -117,12 +117,21 @@ export function potongNaskahAwal(teks: string): string {
   return potongNaskah(teks, BATAS_AWAL)[0] ?? "";
 }
 
-function keMarkup(teks: string): string {
-  return teks
+function keSsml(teks: string): string {
+  const paragraf = teks
     .split(/\n\n+/)
     .map((item) => item.replace(/\s+/g, " ").trim())
-    .filter(Boolean)
-    .join(" [pause] ");
+    .filter(Boolean);
+  const isi = paragraf
+    .map((item) => {
+      const aman = item
+        .replace(/&/g, "dan")
+        .replace(/</g, " ")
+        .replace(/>/g, " ");
+      return `<p>${aman}</p>`;
+    })
+    .join('<break time="350ms"/>');
+  return `<speak>${isi}</speak>`;
 }
 
 export function pcmDariAudioGoogle(buf: Buffer): Buffer {
@@ -193,7 +202,7 @@ async function petaBatas<T, R>(
 }
 
 async function panggilSintesis(
-  input: { markup?: string; text?: string },
+  input: { ssml?: string; text?: string },
   suara: string,
   token: string,
 ): Promise<{ ok: boolean; audio?: Buffer; status?: string; pesan?: string; kuota?: boolean }> {
@@ -249,12 +258,13 @@ async function sintesisSatu(
   suara: string,
   token: string,
 ): Promise<Buffer> {
-  const markup = keMarkup(teks);
-  const utama = await panggilSintesis({ markup }, suara, token);
+  const ssml = keSsml(teks);
+  const utama = await panggilSintesis({ ssml }, suara, token);
+  const teksPolos = teks.replace(/\s+/g, " ").trim();
   const hasil =
     utama.ok || utama.kuota
       ? utama
-      : await panggilSintesis({ text: markup.replace(/\[pause(?: short| long)?\]/g, " ") }, suara, token);
+      : await panggilSintesis({ text: teksPolos }, suara, token);
   if (!hasil.ok || !hasil.audio) {
     const galat = new Error(`${hasil.status || "ERROR"}: ${hasil.pesan || "Sintesis Chirp gagal."}`);
     (galat as Error & { kuota?: boolean }).kuota = Boolean(hasil.kuota);
