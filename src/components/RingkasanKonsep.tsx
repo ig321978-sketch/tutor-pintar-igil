@@ -92,8 +92,7 @@ export default function RingkasanKonsep({
           {ideUtama}
         </h2>
         <p className="mt-2 text-sm font-bold text-[#1C01A5]/70">
-          {mapel} · Infografis, peta pikiran, dan{" "}
-          {ringkas ? "kartu materi" : "kartu pembahasan"}
+          {mapel} · Mengikuti uraian buku siswa Kurikulum Merdeka
         </p>
         <p className="mt-4 text-lg font-semibold text-slate-700">{sapaan}</p>
       </div>
@@ -165,7 +164,7 @@ export default function RingkasanKonsep({
         {ringkas ? (
           <p className="mb-4 flex items-start gap-2 text-sm font-semibold leading-snug text-[#1C01A5]/75">
             <Volume2 className="mt-0.5 h-4 w-4 shrink-0 text-[#F0AB00]" />
-            Kartu ini singkat. Uraian lengkap ada di naskah di bawah, dan bisa didengar lewat Tutor Suara.
+            Kartu ini singkat, sesuai subbab buku siswa. Uraian lengkap ada di naskah di bawah, dan bisa didengar lewat Tutor Suara.
           </p>
         ) : null}
         {ringkas ? (
@@ -240,7 +239,9 @@ export default function RingkasanKonsep({
         <div>
           <div className="mb-4 flex items-center gap-2">
             <BookOpen className="h-5 w-5 text-[#1C01A5]" />
-            <h3 className="text-xl font-extrabold text-[#1C01A5]">Naskah penjelasan</h3>
+            <h3 className="text-xl font-extrabold text-[#1C01A5]">
+              Naskah buku siswa
+            </h3>
           </div>
           <div className="space-y-4">
             {kartu.map((item, indeks) => (

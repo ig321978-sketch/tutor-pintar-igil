@@ -8,6 +8,7 @@ import {
 import { parseKunciJawaban } from "@/lib/kuis";
 import { jenjangGuru } from "@/lib/guru";
 import { bersihkanLabelNaskah } from "@/lib/naskah-lisan";
+import { kerangkaNaskahBuku, subbabBukuSiswa } from "@/lib/subbab-buku-siswa";
 import { gantiNamaLengkapKeDepan, namaDepanSiswa, pilihKataPujian, sapaanTutorRingkas } from "@/lib/nama-siswa";
 
 export const maxDuration = 60;
@@ -126,26 +127,47 @@ function aturanAngkaNaskah(): string {
 - DILARANG mengeja angka menjadi kata jika yang dimaksud adalah bilangan.`;
 }
 
-function instruksiPenjelasan(kelas: string, namaDepan: string): string {
-  const jenjang = jenjangGuru(kelas);
-  if (jenjang === "SD") {
-    return `2. penjelasan: TEPAT 8 sampai 10 KARTU MATERI untuk anak SD. Pecah topik menjadi BANYAK sub-topik konkret. Setiap kartu SATU blok dipisah \\n\\n, format wajib:
-Baris 1: judul kartu 2-8 kata, diakhiri titik. Plain text, bukan uraian.
-Baris 2: subjudul visual SATU kalimat pendek (maks 16 kata), diakhiri titik. Hanya ini yang tampil di kartu kecil.
-Lalu uraian 4-6 kalimat yang hangat, seperti guru SD bercerita: arti sederhana, contoh sehari-hari, analogi, dan kenapa penting. Kalimat pendek. Jika ada hitungan atau rumus, tulis ANGKA di baris sendiri.
+function alurUraianBuku(namaDepan: string): string {
+  return `BENTUK NASKAH seperti uraian buku siswa Kurikulum Merdeka (Pusat Perbukuan), BUKAN cerita analogi bebas:
+- Setiap kartu = SATU subbab buku. Isi kartu harus mengajarkan konsep subbab itu (istilah, cara, contoh jenis yang sama), ditulis ulang dengan bahasa tutor.
+- Alur tiap kartu: (1) buka dengan situasi atau pengamatan kontekstual 1-2 kalimat, (2) uraian konsep terurai, (3) contoh konkret, (4) rumus atau lambang di baris sendiri jika ada, (5) tutup dengan ajakan nalar singkat.
+- DILARANG menyalin kalimat, tokoh, atau latihan dari buku. DILARANG label Ayo Mengamati, Ayo Berlatih, Judul, Subjudul, Kartu, VOICE, JSON, pause, atau kurung siku.
+- DILARANG kartu tema bebas di luar subbab, misalnya analogi tangga jika subbabnya penjumlahan sampai 100.
 ${aturanAngkaNaskah()}
-DILARANG menulis label seperti Judul, Subjudul, Uraian, Kartu 1, VOICE, JSON, pause, atau kurung siku. DILARANG menyalin instruksi ini ke naskah.
-Contoh SATU kartu jika materi kitab suci:
-Kitab Suci Umat Islam.
-Al-Qur'an adalah kitab suci umat Islam.
-Al-Qur'an dibaca umat Islam setiap hari. Isinya menuntun ${namaDepan} jujur dan berbuat baik. Bayangkan seperti peta yang menunjukkan jalan pulang yang aman. Karena itu Al-Qur'an dijaga dan dihormati.
-Contoh SATU kartu jika materi hitungan:
-Penjumlahan sampai 10.
-Gabungkan dua kelompok benda.
-Jika ada 4 kelereng lalu ditambah 3 kelereng, semuanya menjadi 7.
-4 + 3 = 7
-Hitung benda di kiri, lalu tambah benda di kanan. Angka membantu ${namaDepan} melihat hasilnya.
-Untuk kartu lain, pecah dengan pola serupa. Jangan menyalin contoh jika topiknya berbeda. Sesuaikan jenjang ${kelas} dan Kurikulum Merdeka. Jika menyebut nama, HANYA ${namaDepan}. DILARANG pujian berlebihan.`;
+Jika menyebut nama, HANYA ${namaDepan}. DILARANG pujian berlebihan.`;
+}
+
+function instruksiPenjelasan(
+  kelas: string,
+  namaDepan: string,
+  mapel: string,
+  materi: string,
+): string {
+  const jenjang = jenjangGuru(kelas);
+  const kerangka = kerangkaNaskahBuku(kelas, mapel, materi);
+  const subbab = subbabBukuSiswa(kelas, mapel, materi);
+  const jumlah =
+    subbab.length > 0
+      ? `TEPAT ${subbab.length}`
+      : jenjang === "SD"
+        ? "TEPAT 6 sampai 8"
+        : "TEPAT 6";
+
+  if (jenjang === "SD") {
+    return `2. penjelasan: ${jumlah} KARTU MATERI, satu kartu satu subbab buku siswa. Setiap kartu SATU blok dipisah \\n\\n:
+Baris 1: judul subbab 2-8 kata, diakhiri titik. Plain text.
+Baris 2: keterangan visual SATU kalimat pendek (maks 16 kata), diakhiri titik. Hanya ini yang tampil di kartu kecil.
+Lalu uraian lengkap seperti buku siswa: 4-7 kalimat, bahasa ${kelas}, konsep akurat.
+${kerangka}
+${alurUraianBuku(namaDepan)}
+Contoh SATU kartu jika subbabnya Penjumlahan bilangan cacah sampai 100:
+Penjumlahan sampai 100.
+Gabungkan dua bilangan menjadi jumlah.
+Di kantin, ${namaDepan} membeli 36 kue lalu menambah 27 kue.
+36 + 27 = 63
+Jumlahkan satuan dulu, lalu puluhan. Jika satuan lebih dari 9, simpan 1 ke puluhan.
+Coba pikirkan: berapa hasil 48 + 15?
+Untuk kartu lain, ikuti subbab kerangka, jangan menyalin contoh ini jika subbabnya berbeda.`;
   }
 
   const kepadatan =
@@ -153,16 +175,12 @@ Untuk kartu lain, pecah dengan pola serupa. Jangan menyalin contoh jika topiknya
       ? "6-8 kalimat padat setara SMA: definisi akurat, mekanisme atau nalar, contoh, aplikasi, dan miskonsepsi yang harus dihindari. Bahasa analitis, jangan kekanak-kanakan."
       : "5-7 kalimat berbobot setara SMP: definisi jelas, alasan atau cara kerja, contoh remaja, dan dampak atau manfaatnya. Bahasa tegas dan jelas, bukan flashcard SD.";
 
-  return `2. penjelasan: TEPAT 6 KARTU PEMBAHASAN untuk jenjang ${jenjang} (${kelas}). Setiap kartu SATU blok dipisah \\n\\n.
-Baris pertama: judul pembahasan 2-8 kata, diakhiri titik. Plain text.
-Lalu naskah LENGKAP dan BERBOBOT (${kepadatan}).
-Jika isi kartu adalah uraian, pecah menjadi beberapa kalimat/paragraf. Jika hanya rumus atau fakta singkat, biarkan plain text.
-Rumus WAJIB baris sendiri dengan ANGKA, misalnya:
-2x + 3 = 11
-${aturanAngkaNaskah()}
-Uraian ini WAJIB tampil di kartu DAN dibacakan VOICE. DILARANG subjudul singkat. DILARANG kartu flashcard 1 kalimat. DILARANG mengulang judul sebagai sub-bab.
-DILARANG label Judul/Uraian/Kartu, kata Inggris meta, pause, atau kurung siku.
-Jika menyebut nama siswa, HANYA ${namaDepan}. DILARANG pujian berlebihan. Sesuaikan Kurikulum Merdeka.`;
+  return `2. penjelasan: ${jumlah} KARTU PEMBAHASAN untuk jenjang ${jenjang} (${kelas}). Setiap kartu SATU blok dipisah \\n\\n.
+Baris pertama: judul subbab 2-8 kata, diakhiri titik. Plain text.
+Lalu naskah LENGKAP (${kepadatan}).
+${kerangka}
+${alurUraianBuku(namaDepan)}
+Uraian ini WAJIB tampil di kartu DAN dibacakan VOICE. DILARANG flashcard 1 kalimat.`;
 }
 
 function pulihkanParagraf(nilai: unknown, cadangan: string): string {
@@ -323,7 +341,7 @@ Kembalikan persis kunci: sapaan, panduanLangkah, caraKurikulum, trikBimbel, doro
 
     const instruksiMateri = daftarGambar.length > 0
       ? `Tugas: Analisis foto halaman buku pelajaran yang dilampirkan (${daftarGambar.length} halaman). Baca tulisan, judul bab, rumus, gambar, dan soal di semua halaman tersebut. Deteksi topik utamanya, lalu buat modul belajar PREMIUM untuk ${namaDepan} (Kelas ${kelas}) berdasarkan isi halaman buku itu. Jika mapel/materi teks tersedia (${mapel} / ${materi}), gunakan sebagai petunjuk tambahan, tetapi prioritas utama adalah isi foto.`
-      : `Tugas: Buat modul belajar PREMIUM untuk ${namaDepan} (Kelas ${kelas}) mata pelajaran ${mapel} materi ${materi}.`;
+      : `Tugas: Buat modul belajar untuk ${namaDepan} (Kelas ${kelas}) mata pelajaran ${mapel} materi ${materi}, mengikuti isi dan alur uraian buku siswa Kurikulum Merdeka Pusat Perbukuan untuk bab itu.`;
 
     const promptText = `
 Kamu adalah Tutor $IGIL, guru privat EdTech Indonesia yang hangat, cerdas, dan presisi.
@@ -337,7 +355,7 @@ ATURAN MUTLAK:
 
 STANDAR KONTEN:
 1. sapaan: SATU kalimat pendek untuk dibaca suara. Sebut HANYA nama depan ${namaDepan}. Sertakan TEPAT SATU kata pujian dari: Pintar, Cerdas, Baik, Rajin, Soleh, Semangat, Hebat. DILARANG pujian panjang, julukan berlebihan, atau nama lengkap. Contoh: 'Halo ${namaDepan}, Pintar.'
-${instruksiPenjelasan(kelas, namaDepan)}
+${instruksiPenjelasan(kelas, namaDepan, mapel, materi)}
 3. sketsaKartu: TEPAT sama jumlahnya dengan kartu di penjelasan. Setiap blok SATU kalimat visual doodle kecil (satu benda atau adegan mini), dipisah \\n\\n, urutan sama dengan kartu. Semua sketsa HARUS berbeda. Tanpa teks tertulis di gambar.
 4. svgCode: cadangan doodle SVG sketsa tangan (viewBox 0 0 400 220), kertas krem, garis tinta navy #1C01A5 saja. Tanpa kutip ganda.
 5. pertanyaan: TEPAT 5 soal dalam SATU string panjang, dipisah \\n\\n.

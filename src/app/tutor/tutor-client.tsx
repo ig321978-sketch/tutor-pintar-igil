@@ -508,20 +508,33 @@ export default function TutorAI() {
   const tanganiBuatModul = async () => {
     if (!nama.trim()) {
       setPesanGalat("Kapten, mohon isi Nama Siswa terlebih dahulu.");
+      sudahGenerateRef.current = false;
       return;
     }
 
+    const mapelKirim =
+      modeInput === "teks"
+        ? (params.get("mapel") || mapel).trim()
+        : "Berdasarkan Buku";
+    const materiKirim =
+      modeInput === "teks"
+        ? (params.get("materi") || bab).trim()
+        : "Analisis AI";
+
     if (modeInput === "teks") {
-      if (!mapel.trim()) {
+      if (!mapelKirim) {
         setPesanGalat("Mohon isi Mata Pelajaran.");
+        sudahGenerateRef.current = false;
         return;
       }
-      if (!bab.trim()) {
+      if (!materiKirim) {
         setPesanGalat("Mohon isi Materi Pembahasan.");
+        sudahGenerateRef.current = false;
         return;
       }
     } else if (gambarHalaman.length === 0) {
       setPesanGalat("Mohon unggah foto halaman buku terlebih dahulu.");
+      sudahGenerateRef.current = false;
       return;
     }
 
@@ -546,8 +559,8 @@ export default function TutorAI() {
         body: JSON.stringify({
           nama,
           kelas,
-          mapel: modeInput === "teks" ? mapel : "Berdasarkan Buku",
-          materi: modeInput === "teks" ? bab : "Analisis AI",
+          mapel: mapelKirim,
+          materi: modeInput === "teks" ? materiKirim : "Analisis AI",
           gambar: modeInput === "gambar" ? gambarHalaman : null,
         }),
       });
@@ -564,14 +577,14 @@ export default function TutorAI() {
           penjelasan: gantiNamaLengkapKeDepan(data.data.penjelasan, nama),
         });
         setJawabanKuis({});
-        setSesiMapel(modeInput === "teks" ? mapel : "Berdasarkan Buku");
-        setSesiMateri(modeInput === "teks" ? bab : "Analisis halaman buku");
+        setSesiMapel(mapelKirim);
+        setSesiMateri(modeInput === "teks" ? materiKirim : "Analisis halaman buku");
         simpanProfil({ nama, kelas, guruKelamin });
         const sesi = catatSesiModul({
           nama,
           kelas,
-          mapel: modeInput === "teks" ? mapel : "Berdasarkan Buku",
-          materi: modeInput === "teks" ? bab : "Analisis AI",
+          mapel: mapelKirim,
+          materi: materiKirim,
           mode: modeInput,
           catatanEvaluasi: data.data.motivasi,
           kunciJawaban: data.data.kunciJawaban,
@@ -587,12 +600,22 @@ export default function TutorAI() {
     setIsLoading(false);
   };
 
+  const kunciSesiMulai = `${params.get("mulai")}|${params.get("mapel")}|${params.get("materi")}|${params.get("r")}`;
+
+  useEffect(() => {
+    if (params.get("mulai") !== "1") return;
+    sudahGenerateRef.current = false;
+    setHasilData(null);
+  }, [kunciSesiMulai, params]);
+
   useEffect(() => {
     if (params.get("mulai") !== "1" || sudahGenerateRef.current || hasilData) {
       return;
     }
     if (modeInput === "teks") {
-      if (!nama.trim() || !mapel.trim() || !bab.trim()) return;
+      const mapelSiap = (params.get("mapel") || mapel).trim();
+      const materiSiap = (params.get("materi") || bab).trim();
+      if (!nama.trim() || !mapelSiap || !materiSiap) return;
     } else if (!nama.trim() || gambarHalaman.length === 0) {
       return;
     }
@@ -600,7 +623,7 @@ export default function TutorAI() {
     void tanganiBuatModul();
     // Prefill selesai dulu, lalu generate sekali.
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [nama, mapel, bab, modeInput, gambarHalaman]);
+  }, [nama, mapel, bab, modeInput, gambarHalaman, kunciSesiMulai, hasilData]);
 
   useEffect(() => {
     if (params.get("mulai") !== "1" || modeInput !== "gambar" || hasilData) {

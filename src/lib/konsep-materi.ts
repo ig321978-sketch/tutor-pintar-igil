@@ -37,7 +37,8 @@ export function judulDariTeks(teks: string): string {
   const tanpaNomor = calon
     .replace(/^\d+[.)]\s*/, "")
     .replace(/^kartu\s*\d+\s*[:.\-–]\s*/i, "");
-  const potong = tanpaNomor.split(/[.!?…:]/, 1)[0]?.trim() ?? "Ide penting";
+  const potong =
+    tanpaNomor.split(/(?<!\d)[.!?…](?!\d)|:/, 1)[0]?.trim() ?? "Ide penting";
   const kata = potong.split(/\s+/).slice(0, 8).join(" ");
   return kata.length > 2 ? kata : "Ide penting";
 }
