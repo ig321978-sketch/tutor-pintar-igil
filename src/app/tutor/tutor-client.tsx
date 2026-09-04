@@ -28,6 +28,7 @@ import PemutarAudioGuru, {
   indeksKataAktif,
   type KontrolPemutarGuru,
 } from "@/components/PemutarAudioGuru";
+import PemutarTutorMengambang from "@/components/PemutarTutorMengambang";
 import RingkasanKonsep from "@/components/RingkasanKonsep";
 import {
   ArrowLeft,
@@ -35,11 +36,7 @@ import {
   Loader2,
   MessageCircleQuestionMark,
   Mic,
-  Pause,
-  Play,
   Send,
-  Square,
-  Volume2,
 } from "lucide-react";
 
 type ModeInput = "teks" | "gambar";
@@ -201,6 +198,8 @@ export default function TutorAI() {
   const [kataWaktu, setKataWaktu] = useState<KataWaktu[]>([]);
   const [indeksKata, setIndeksKata] = useState(-1);
   const [modeChirp, setModeChirp] = useState(false);
+  const [waktuAudio, setWaktuAudio] = useState(0);
+  const [durasiAudio, setDurasiAudio] = useState(0);
 
   const daftarMapel = useMemo(
     () => (DATA_KURIKULUM[kelas] ? Object.keys(DATA_KURIKULUM[kelas]) : []),
@@ -221,19 +220,6 @@ export default function TutorAI() {
   const indeksKataPenjelasan = indeksKata - offsetKataSapaan;
   const kartuAktif = hasilData
     ? indeksKartuAktif(hasilData.penjelasan, indeksKataPenjelasan)
-    : 0;
-  const progresKetik = hasilData
-    ? modeChirp && kataWaktu.length > 0
-      ? Math.min(
-          100,
-          Math.round(((Math.max(indeksKata, 0) + 1) / kataWaktu.length) * 100),
-        )
-      : Math.min(
-          100,
-          Math.round(
-            (teksAnimasi.length / Math.max(hasilData.penjelasan.length, 1)) * 100,
-          ),
-        )
     : 0;
 
   const sudahPrefillMapel = useRef(false);
@@ -435,6 +421,8 @@ export default function TutorAI() {
     setIndeksKata(-1);
     setModeChirp(false);
     setStatusPemutar("siaga");
+    setWaktuAudio(0);
+    setDurasiAudio(0);
     kelaminAudioRef.current = null;
     muatAudioPromiseRef.current = null;
     sudahSiapAudioRef.current = false;
@@ -851,6 +839,7 @@ export default function TutorAI() {
           mime?: string;
           audioBase64?: string;
           kata?: KataWaktu[];
+          durasiDetik?: number;
         };
         if (data.berhasil && data.audioBase64 && !data.cadangan) {
           const biner = Uint8Array.from(atob(data.audioBase64), (c) =>
@@ -864,6 +853,11 @@ export default function TutorAI() {
           kelaminAudioRef.current = kelaminSuara;
           setSrcAudio(url);
           setKataWaktu(data.kata ?? []);
+          const durasiChirp =
+            typeof data.durasiDetik === "number" && data.durasiDetik > 0
+              ? data.durasiDetik
+              : data.kata?.[data.kata.length - 1]?.selesai;
+          if (durasiChirp) setDurasiAudio(durasiChirp);
           setModeChirp(true);
           return true;
         }
@@ -925,10 +919,25 @@ export default function TutorAI() {
       return;
     }
 
+    if (
+      waktuAudio > 0.4 &&
+      durasiAudio > 0 &&
+      waktuAudio < durasiAudio - 0.4 &&
+      modeChirp &&
+      urlAudioRef.current
+    ) {
+      sedangMemutarRef.current = true;
+      setModeChirp(true);
+      setStatusPemutar("memutar");
+      void pemutarRef.current?.lanjutkan();
+      return;
+    }
+
     if (audioChirpSiap()) {
       sedangMemutarRef.current = true;
       setModeChirp(true);
       setStatusPemutar("memutar");
+      setWaktuAudio(0);
       void pemutarRef.current
         ?.mainkanDariAwal(urlAudioRef.current)
         .catch(() => {
@@ -949,13 +958,41 @@ export default function TutorAI() {
     setStatusPemutar("jeda");
   };
 
-  const hentikanSuara = () => {
-    resetPemutar();
-    if (hasilData) {
-      setTeksAnimasi(hasilData.penjelasan);
-      indeksKetikRef.current = hasilData.penjelasan.length;
-      setIndeksKata(pecahTokenNaskah(`${hasilData.sapaan} ${hasilData.penjelasan}`).length - 1);
+  const toggleSuara = () => {
+    if (!hasilData) return;
+    if (statusPemutar === "memutar") {
+      jedaSuara();
+      return;
     }
+    mulaiSuara();
+  };
+
+  const cariUlangSuara = (detik: number) => {
+    if (detik >= waktuAudio - 0.05) return;
+    const aman = Math.max(0, detik);
+    setWaktuAudio(aman);
+    if (modeChirp && urlAudioRef.current) {
+      pemutarRef.current?.cariKe(aman);
+      setIndeksKata(indeksKataAktif(kataWaktu, aman));
+      return;
+    }
+    if (!hasilData) return;
+    const naskah = naskahTutorUntukSuara(
+      hasilData.sapaan,
+      hasilData.penjelasan,
+      nama,
+    );
+    const durasiEst =
+      durasiAudio > 0 ? durasiAudio : naskah.length / KARAKTER_PER_DETIK;
+    const rasio = durasiEst > 0 ? aman / durasiEst : 0;
+    const indeks = Math.floor(
+      pecahTokenNaskah(naskah).length * Math.min(1, rasio),
+    );
+    setIndeksKata(indeks);
+    indeksKetikRef.current = Math.floor(
+      hasilData.penjelasan.length * Math.min(1, rasio),
+    );
+    setTeksAnimasi(hasilData.penjelasan.slice(0, indeksKetikRef.current));
   };
 
   const pilihJawabanKuis = (nomor: number, pilihan: string) => {
@@ -969,12 +1006,14 @@ export default function TutorAI() {
 
   const padaWaktuAudio = useCallback(
     (detik: number) => {
+      setWaktuAudio(detik);
       setIndeksKata(indeksKataAktif(kataWaktu, detik));
     },
     [kataWaktu],
   );
 
   const padaDurasiAudio = useCallback((detik: number) => {
+    setDurasiAudio(detik);
     setKataWaktu((sebelum) => {
       if (sebelum.length === 0) return sebelum;
       const terakhir = sebelum[sebelum.length - 1]?.selesai ?? 0;
@@ -985,13 +1024,14 @@ export default function TutorAI() {
   const padaSelesaiAudio = useCallback(() => {
     sedangMemutarRef.current = false;
     setStatusPemutar("siaga");
+    setWaktuAudio((sebelum) => (durasiAudio > 0 ? durasiAudio : sebelum));
     if (hasilData) {
       setTeksAnimasi(hasilData.penjelasan);
       setIndeksKata(
         pecahTokenNaskah(`${hasilData.sapaan} ${hasilData.penjelasan}`).length - 1,
       );
     }
-  }, [hasilData]);
+  }, [durasiAudio, hasilData]);
 
   useEffect(() => {
     if (!hasilData || sudahSiapAudioRef.current) return;
@@ -1068,7 +1108,8 @@ export default function TutorAI() {
           )}
         </div>
       ) : (
-        <div className="w-full px-2 pt-6 pb-20 animate-in slide-in-from-bottom-10 duration-700">
+        <>
+        <div className="w-full px-2 pt-6 pb-32 animate-in slide-in-from-bottom-10 duration-700">
           <div className="mb-6">
             <button
               type="button"
@@ -1077,59 +1118,6 @@ export default function TutorAI() {
             >
               <ArrowLeft className="w-5 h-5" /> Ganti Materi
             </button>
-            <div className="bg-[#1C01A5] text-white rounded-2xl shadow-xl shadow-[#1C01A5]/20 p-4 sm:p-5">
-            <div className="flex flex-wrap items-center justify-center gap-3 sm:justify-end">
-              <div className="flex items-center gap-2 text-[#F0AB00]">
-                <Volume2 className="h-4 w-4 shrink-0" />
-                <span className="text-xs font-bold uppercase tracking-wider sm:text-sm">
-                  Putar Tutor Suara
-                </span>
-              </div>
-              <div className="flex items-center gap-2">
-                  {statusPemutar !== "memutar" ? (
-                    <button
-                      type="button"
-                      onClick={mulaiSuara}
-                      className="bg-[#F0AB00] text-[#1C01A5] p-3 rounded-full hover:bg-[#e09e00] transition-all shadow-md"
-                      title={statusPemutar === "jeda" ? "Lanjutkan" : "Putar"}
-                    >
-                      <Play className="w-5 h-5 fill-current" />
-                    </button>
-                  ) : (
-                    <button
-                      type="button"
-                      onClick={jedaSuara}
-                      className="bg-[#F0AB00]/70 text-[#1C01A5] p-3 rounded-full hover:bg-[#F0AB00]/50 transition-all shadow-md"
-                      title="Jeda"
-                    >
-                      <Pause className="w-5 h-5 fill-current" />
-                    </button>
-                  )}
-                  <button
-                    type="button"
-                    onClick={hentikanSuara}
-                    className="bg-rose-500 text-white p-3 rounded-full hover:bg-rose-400 transition-all shadow-md"
-                    title="Stop"
-                  >
-                    <Square className="w-5 h-5 fill-current" />
-                  </button>
-              </div>
-            </div>
-            <div className="mt-4 h-1.5 w-full bg-white/20 rounded-full overflow-hidden">
-              <div
-                className="h-full bg-[#F0AB00] transition-[width] duration-150"
-                style={{ width: `${progresKetik}%` }}
-              />
-            </div>
-            <PemutarAudioGuru
-              ref={pemutarRef}
-              src={srcAudio}
-              memutar={modeChirp && statusPemutar === "memutar"}
-              padaWaktu={padaWaktuAudio}
-              padaDurasi={padaDurasiAudio}
-              padaSelesai={padaSelesaiAudio}
-            />
-            </div>
           </div>
 
           <div className="bg-white rounded-3xl shadow-xl border-2 border-[#1C01A5]/15 p-8 space-y-8">
@@ -1372,6 +1360,22 @@ export default function TutorAI() {
             ) : null}
           </div>
         </div>
+        <PemutarAudioGuru
+          ref={pemutarRef}
+          src={srcAudio}
+          memutar={modeChirp && statusPemutar === "memutar"}
+          padaWaktu={padaWaktuAudio}
+          padaDurasi={padaDurasiAudio}
+          padaSelesai={padaSelesaiAudio}
+        />
+        <PemutarTutorMengambang
+          memutar={statusPemutar === "memutar"}
+          waktu={waktuAudio}
+          durasi={durasiAudio}
+          padaToggle={toggleSuara}
+          padaUlang={cariUlangSuara}
+        />
+        </>
       )}
     </main>
   );

@@ -15,6 +15,7 @@ export type KontrolPemutarGuru = {
   mainkanDariAwal: (url?: string | null) => Promise<void>;
   lanjutkan: () => Promise<void>;
   jeda: () => void;
+  cariKe: (detik: number) => void;
 };
 
 async function mainkanElemen(el: HTMLAudioElement): Promise<void> {
@@ -66,6 +67,12 @@ const PemutarAudioGuru = forwardRef<KontrolPemutarGuru, Props>(
         },
         jeda: () => {
           audioRef.current?.pause();
+        },
+        cariKe: (detik: number) => {
+          const el = audioRef.current;
+          if (!el) return;
+          const batas = Number.isFinite(el.duration) ? el.duration : detik;
+          el.currentTime = Math.max(0, Math.min(detik, batas));
         },
       }),
       [src],
