@@ -1038,24 +1038,23 @@ export default function TutorAI() {
         </div>
       ) : (
         <div className="w-full px-2 pt-6 pb-20 animate-in slide-in-from-bottom-10 duration-700">
-          <div className="bg-[#1C01A5] text-white rounded-2xl shadow-xl shadow-[#1C01A5]/20 p-4 sm:p-5 mb-6">
-            <div className="flex flex-col sm:flex-row justify-between items-center gap-4">
-              <button
-                type="button"
-                onClick={kembaliKeMenu}
-                className="flex items-center gap-2 text-[#F0AB00] font-bold hover:text-white transition-colors"
-              >
-                <ArrowLeft className="w-5 h-5" /> Ganti Materi
-              </button>
-
-              <div className="flex items-center gap-4">
-                <div className="hidden sm:flex items-center gap-2 text-[#F0AB00]">
-                  <Volume2 className="w-4 h-4" />
-                  <span className="text-xs font-bold uppercase tracking-wider">
-                    Tutor Suara
-                  </span>
-                </div>
-                <div className="flex items-center gap-2">
+          <div className="mb-6">
+            <button
+              type="button"
+              onClick={kembaliKeMenu}
+              className="mb-2 flex items-center gap-2 text-[#1C01A5] font-bold hover:text-[#F0AB00] transition-colors"
+            >
+              <ArrowLeft className="w-5 h-5" /> Ganti Materi
+            </button>
+            <div className="bg-[#1C01A5] text-white rounded-2xl shadow-xl shadow-[#1C01A5]/20 p-4 sm:p-5">
+            <div className="flex flex-wrap items-center justify-center gap-3 sm:justify-end">
+              <div className="flex items-center gap-2 text-[#F0AB00]">
+                <Volume2 className="h-4 w-4 shrink-0" />
+                <span className="text-xs font-bold uppercase tracking-wider sm:text-sm">
+                  Putar Tutor Suara
+                </span>
+              </div>
+              <div className="flex items-center gap-2">
                   {statusPemutar !== "memutar" ? (
                     <button
                       type="button"
@@ -1083,7 +1082,6 @@ export default function TutorAI() {
                   >
                     <Square className="w-5 h-5 fill-current" />
                   </button>
-                </div>
               </div>
             </div>
             <div className="mt-4 h-1.5 w-full bg-white/20 rounded-full overflow-hidden">
@@ -1100,6 +1098,7 @@ export default function TutorAI() {
               padaDurasi={padaDurasiAudio}
               padaSelesai={padaSelesaiAudio}
             />
+            </div>
           </div>
 
           <div className="bg-white rounded-3xl shadow-xl border-2 border-[#1C01A5]/15 p-8 space-y-8">
