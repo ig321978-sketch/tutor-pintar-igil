@@ -1,7 +1,7 @@
 "use client";
 
-import { useEffect, useMemo, useState } from "react";
-import { Eye, FlaskConical, Play, Sparkles } from "lucide-react";
+import { useEffect, useMemo, useRef, useState } from "react";
+import { Eye, ExternalLink, FlaskConical, Play, Sparkles } from "lucide-react";
 import PageShell from "@/components/PageShell";
 import {
   daftarMapelUnik,
@@ -35,6 +35,8 @@ export default function SimulasiPraktikumPage() {
   const [memuat, setMemuat] = useState<"pratinjau" | "jalankan" | null>(null);
   const [bahan, setBahan] = useState<BahanSimulasi[]>([]);
   const [evaluasi, setEvaluasi] = useState<Evaluasi | null>(null);
+  const [sudahCari, setSudahCari] = useState(false);
+  const hasilRef = useRef<HTMLElement | null>(null);
 
   const mapel = pilihanMapel === OPSI_LAINNYA ? mapelManual : pilihanMapel;
   const daftarMateri = useMemo(
@@ -100,12 +102,16 @@ export default function SimulasiPraktikumPage() {
       }
 
       setBahan(data.bahan ?? []);
+      if (pratinjau) setSudahCari(true);
       if (!pratinjau && data.evaluasi) {
         setEvaluasi(data.evaluasi);
         if (data.evaluasi.lulus && data.evaluasi.token > 0) {
           setSaldo(tambahTokenIgil(data.evaluasi.token));
         }
       }
+      requestAnimationFrame(() => {
+        hasilRef.current?.scrollIntoView({ behavior: "smooth", block: "start" });
+      });
     } catch {
       setPesan("Koneksi terputus. Coba beberapa saat lagi.");
     } finally {
@@ -267,36 +273,59 @@ export default function SimulasiPraktikumPage() {
         </section>
       ) : null}
 
-      {bahan.length > 0 ? (
-        <section className="mt-8">
-          <h2 className="mb-4 text-xl font-extrabold text-[#1C01A5]">
-            Bahan simulasi dari dunia
+      {sudahCari || bahan.length > 0 ? (
+        <section ref={hasilRef} id="hasil-simulasi" className="mt-8 scroll-mt-24">
+          <h2 className="mb-2 text-xl font-extrabold text-[#1C01A5]">
+            Simulasi interaktif
           </h2>
-          <div className="grid gap-4">
-            {bahan.map((item) => (
-              <a
-                key={item.url}
-                href={item.url}
-                target="_blank"
-                rel="noreferrer"
-                className="rounded-3xl border border-[#1C01A5]/15 bg-white p-5 shadow-sm hover:border-[#F0AB00]"
-              >
-                <p className="text-xs font-bold uppercase tracking-wider text-[#F0AB00]">
-                  {item.sumber}
-                </p>
-                <p className="mt-2 font-extrabold text-[#1C01A5]">{item.judul}</p>
-                <p className="mt-2 text-sm text-slate-600">{item.ringkasan}</p>
-                {item.jenis === "simulasi" ? (
-                  <iframe
-                    title={item.judul}
-                    src={item.url}
-                    className="mt-4 h-56 w-full rounded-2xl border border-[#1C01A5]/10"
-                    loading="lazy"
-                  />
-                ) : null}
-              </a>
-            ))}
-          </div>
+          <p className="mb-4 text-sm font-medium text-slate-600">
+            Tetap di halaman ini. Mainkan simulasi di kotak bawah, atau buka layar penuh.
+          </p>
+          {bahan.length === 0 ? (
+            <p className="rounded-3xl border border-[#1C01A5]/15 bg-white p-5 font-semibold text-slate-600">
+              Belum ketemu simulasi yang cocok. Coba ganti mapel ke IPA/IPAS, Fisika,
+              Kimia, atau Matematika.
+            </p>
+          ) : (
+            <div className="grid gap-4">
+              {bahan.map((item) => (
+                <article
+                  key={item.url}
+                  className="rounded-3xl border border-[#1C01A5]/15 bg-white p-5 shadow-sm"
+                >
+                  <p className="text-xs font-bold uppercase tracking-wider text-[#F0AB00]">
+                    {item.sumber}
+                  </p>
+                  <p className="mt-2 font-extrabold text-[#1C01A5]">{item.judul}</p>
+                  <p className="mt-2 text-sm text-slate-600">{item.ringkasan}</p>
+                  {item.jenis === "simulasi" ? (
+                    <iframe
+                      title={item.judul}
+                      src={item.url}
+                      className="mt-4 h-[28rem] w-full rounded-2xl border border-[#1C01A5]/10 bg-slate-50"
+                      loading="lazy"
+                      allowFullScreen
+                    />
+                  ) : (
+                    <img
+                      src={item.url}
+                      alt={item.judul}
+                      className="mt-4 max-h-72 w-full rounded-2xl object-cover"
+                    />
+                  )}
+                  <a
+                    href={item.url}
+                    target="_blank"
+                    rel="noreferrer"
+                    className="mt-4 inline-flex items-center gap-2 text-sm font-extrabold text-[#1C01A5] hover:text-[#F0AB00]"
+                  >
+                    <ExternalLink className="h-4 w-4" />
+                    Buka layar penuh
+                  </a>
+                </article>
+              ))}
+            </div>
+          )}
         </section>
       ) : null}
     </PageShell>
