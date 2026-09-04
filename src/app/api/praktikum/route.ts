@@ -1,8 +1,9 @@
 import { NextResponse } from "next/server";
 import { Type, type Schema } from "@google/genai";
-import { hasilkanJsonGemini, pesanGalatGemini } from "@/lib/klien-gemini";
+import { hasilkanJsonGemini, MODEL_GEMINI_RUTIN, pesanGalatGemini } from "@/lib/klien-gemini";
 import { cariBahanSimulasi } from "@/lib/simulasi-global";
 import { supabaseServer } from "@/lib/supabase";
+import { kreditTokenIgil } from "@/lib/kuota-interaksi";
 
 export const maxDuration = 60;
 
@@ -131,6 +132,7 @@ Kembalikan JSON dengan kunci: aman, berhasil, judul, langkah, yangDiamati, umpan
       parts: [{ text: prompt }],
       schema: SKEMA,
       maxOutputTokens: 4096,
+      model: MODEL_GEMINI_RUTIN,
     });
     const data = parseJson(text);
 
@@ -166,6 +168,8 @@ Kembalikan JSON dengan kunci: aman, berhasil, judul, langkah, yangDiamati, umpan
         });
         if (error) {
           console.error("Supabase penambangan:", error.message);
+        } else {
+          await kreditTokenIgil(nama, kelas, token, true);
         }
       }
     }

@@ -17,6 +17,7 @@ import {
   catatJawabanKuis,
   catatSesiModul,
   simpanProfil,
+  tetapkanTokenIgil,
 } from "@/lib/progres";
 import { kelasTombolUtama } from "@/lib/tema";
 import { indeksKartuAktif, JUMLAH_KARTU_MAKS, kartuTanpaNaskah, susunKonsepMateri, UKURAN_BATCH_DOODLE } from "@/lib/konsep-materi";
@@ -38,6 +39,7 @@ import TeksNaskah from "@/components/TeksNaskah";
 import {
   ArrowLeft,
   ArrowRight,
+  Coins,
   Loader2,
   MessageCircleQuestionMark,
   Mic,
@@ -70,6 +72,13 @@ type PanduanAjuan = {
   caraKurikulum: string;
   trikBimbel: string;
   dorongan: string;
+};
+
+type StatusKuotaUi = {
+  batasGratis: number;
+  sisaGratis: number;
+  biayaToken: number;
+  saldoToken: number;
 };
 
 type MesinRekamSuara = {
@@ -178,6 +187,8 @@ export default function TutorAI() {
   const [isLoadingAjuan, setIsLoadingAjuan] = useState(false);
   const [hasilAjuan, setHasilAjuan] = useState<PanduanAjuan | null>(null);
   const [pesanAjuan, setPesanAjuan] = useState("");
+  const [kuotaAjuan, setKuotaAjuan] = useState<StatusKuotaUi | null>(null);
+  const [dariCache, setDariCache] = useState(false);
   const [sedangRekam, setSedangRekam] = useState(false);
   const [statusDoodle, setStatusDoodle] = useState<StatusDoodle>("siaga");
   const [sesiAktifId, setSesiAktifId] = useState<string | null>(null);
@@ -569,6 +580,7 @@ export default function TutorAI() {
     setSesiMapel("");
     setSesiMateri("");
     setSudutPandang("kurikulum");
+    setDariCache(false);
     resetPemutar();
 
     try {
@@ -586,10 +598,12 @@ export default function TutorAI() {
       const data = (await respons.json()) as {
         berhasil?: boolean;
         pesan?: string;
+        dariCache?: boolean;
         data?: ModulTutor;
       };
 
       if (data.berhasil && data.data) {
+        setDariCache(Boolean(data.dariCache));
         const kurikulum = gantiNamaLengkapKeDepan(
           data.data.curriculum_view || data.data.penjelasan,
           nama,
@@ -620,6 +634,7 @@ export default function TutorAI() {
           kunciJawaban: data.data.kunciJawaban,
         });
         setSesiAktifId(sesi.id);
+        void muatKuota();
         void muatIlustrasiDoodle(data.data);
       } else {
         setPesanGalat(data.pesan || "Modul gagal disusun.");
@@ -667,7 +682,23 @@ export default function TutorAI() {
     return () => window.clearTimeout(timer);
   }, [modeInput, gambarHalaman, hasilData, params]);
 
-  const tanganiAjuanPertanyaan = async () => {
+  const muatKuota = async () => {
+    if (!nama.trim()) return;
+    try {
+      const respons = await fetch(
+        `/api/tutor?nama=${encodeURIComponent(nama)}&kelas=${encodeURIComponent(kelas)}`,
+      );
+      const data = (await respons.json()) as {
+        berhasil?: boolean;
+        kuota?: StatusKuotaUi;
+      };
+      if (data.berhasil && data.kuota) setKuotaAjuan(data.kuota);
+    } catch {
+      /* kuota tampil saat pertanyaan dikirim */
+    }
+  };
+
+  const tanganiAjuanPertanyaan = async (pakaiToken = false) => {
     if (!teksAjuan.trim()) {
       setPesanAjuan("Tuliskan pertanyaanmu terlebih dahulu.");
       return;
@@ -688,13 +719,23 @@ export default function TutorAI() {
           materi: modeInput === "teks" ? bab : "Analisis AI",
           gambar: modeInput === "gambar" ? gambarHalaman : null,
           ajuan: teksAjuan.trim(),
+          pakaiToken,
         }),
       });
       const data = (await respons.json()) as {
         berhasil?: boolean;
         pesan?: string;
+        kode?: string;
+        kuota?: StatusKuotaUi;
         data?: PanduanAjuan;
       };
+
+      if (data.kuota) {
+        setKuotaAjuan(data.kuota);
+        if (pakaiToken && typeof data.kuota.saldoToken === "number") {
+          tetapkanTokenIgil(data.kuota.saldoToken);
+        }
+      }
 
       if (data.berhasil && data.data) {
         setHasilAjuan({
@@ -1322,6 +1363,11 @@ export default function TutorAI() {
                 2 · Soal latihan
               </span>
             </div>
+            {dariCache ? (
+              <p className="rounded-2xl border border-[#1C01A5]/15 bg-[#EEE9FF] px-4 py-3 text-sm font-bold text-[#1C01A5]">
+                Materi dua perspektif dimuat dari cache Supabase, tanpa memanggil Gemini ulang.
+              </p>
+            ) : null}
             {tahapBelajar === "konsep" ? (
               <RingkasanKonsep
                 materi={sesiMateri || (modeInput === "teks" ? bab : "Analisis halaman buku")}
@@ -1369,6 +1415,19 @@ export default function TutorAI() {
               <p className="text-sm text-slate-600">
                 Apakah ada yang ingin ditanyakan?...
               </p>
+              {dariCache ? (
+                <p className="text-xs font-bold text-[#1C01A5]/70">
+                  Materi ini dimuat dari perpustakaan $IGIL, tanpa memanggil AI ulang.
+                </p>
+              ) : null}
+              {kuotaAjuan ? (
+                <p className="flex flex-wrap items-center gap-2 text-xs font-extrabold text-[#1C01A5]">
+                  <Coins className="h-4 w-4 text-[#F0AB00]" />
+                  Tanya gratis hari ini: {kuotaAjuan.sisaGratis}/{kuotaAjuan.batasGratis}
+                  <span className="font-bold text-[#1C01A5]/50">·</span>
+                  Token $IGIL: {kuotaAjuan.saldoToken}
+                </p>
+              ) : null}
               <div className="relative">
                 <textarea
                   value={teksAjuan}
@@ -1402,8 +1461,11 @@ export default function TutorAI() {
               ) : null}
               <button
                 type="button"
-                onClick={() => void tanganiAjuanPertanyaan()}
-                disabled={isLoadingAjuan}
+                onClick={() => void tanganiAjuanPertanyaan(false)}
+                disabled={
+                  isLoadingAjuan ||
+                  Boolean(kuotaAjuan && kuotaAjuan.sisaGratis <= 0)
+                }
                 className={`w-full ${kelasTombolUtama} py-3 rounded-xl font-extrabold flex justify-center items-center gap-2 shadow-md shadow-[#1C01A5]/20`}
               >
                 {isLoadingAjuan ? (
@@ -1416,6 +1478,16 @@ export default function TutorAI() {
                   </>
                 )}
               </button>
+              {kuotaAjuan && kuotaAjuan.sisaGratis <= 0 ? (
+                <button
+                  type="button"
+                  onClick={() => void tanganiAjuanPertanyaan(true)}
+                  disabled={isLoadingAjuan || kuotaAjuan.saldoToken < kuotaAjuan.biayaToken}
+                  className="w-full rounded-xl border-2 border-[#F0AB00] bg-[#FFF8E8] py-3 font-extrabold text-[#C48800] disabled:opacity-50"
+                >
+                  Tukar {kuotaAjuan.biayaToken} token untuk 1 sesi tambahan
+                </button>
+              ) : null}
 
               {hasilAjuan ? (
                 <div className="bg-white rounded-2xl border border-[#1C01A5]/15 p-5 space-y-4">

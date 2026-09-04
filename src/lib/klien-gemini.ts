@@ -3,12 +3,25 @@ import { GoogleGenAI, type Part, type Schema } from "@google/genai";
 
 export type { Part, Schema };
 
-export const MODEL_GEMINI_TEKS =
-  process.env.GEMINI_MODEL?.trim() || "gemini-3.6-flash";
+export const MODEL_GEMINI_MATERI =
+  process.env.GEMINI_MODEL_MATERI?.trim() ||
+  process.env.GEMINI_MODEL?.trim() ||
+  "gemini-3.6-flash";
 
-const MODEL_CADANGAN_TEKS = [
+export const MODEL_GEMINI_RUTIN =
+  process.env.GEMINI_MODEL_RUTIN?.trim() || "gemini-3.5-flash-lite";
+
+export const MODEL_GEMINI_TEKS = MODEL_GEMINI_MATERI;
+
+const MODEL_CADANGAN_MATERI = [
   "gemini-3.6-flash",
   "gemini-3.5-flash",
+  "gemini-2.5-flash-lite",
+];
+
+const MODEL_CADANGAN_RUTIN = [
+  "gemini-3.5-flash-lite",
+  "gemini-3.6-flash",
   "gemini-2.5-flash-lite",
 ];
 
@@ -90,7 +103,10 @@ export function pesanGalatGemini(error: unknown): string {
 }
 
 function daftarModel(awal: string): string[] {
-  return [awal, ...MODEL_CADANGAN_TEKS.filter((nama) => nama !== awal)];
+  const cadangan = /lite/i.test(awal)
+    ? MODEL_CADANGAN_RUTIN
+    : MODEL_CADANGAN_MATERI;
+  return [awal, ...cadangan.filter((nama) => nama !== awal)];
 }
 
 function jenisGalat(error: unknown): "model" | "kuota" | "api" | "lain" {
@@ -254,7 +270,7 @@ async function denganCadanganJalur(
   ].filter((item, indeks, daftar): item is string =>
     Boolean(item) && daftar.indexOf(item) === indeks,
   );
-  const models = daftarModel(model || MODEL_GEMINI_TEKS);
+  const models = daftarModel(model || MODEL_GEMINI_RUTIN);
   let terakhir: unknown = new Error("Google AI tidak merespons.");
   let vertexApiMati = false;
 
@@ -369,17 +385,19 @@ export async function hasilkanJsonGemini(opsi: {
     opsi.parts,
     opsi.schema,
     opsi.maxOutputTokens ?? 8192,
-    opsi.model,
+    opsi.model ?? MODEL_GEMINI_RUTIN,
   );
 }
 
 export async function hasilkanTeksGemini(
   prompt: string,
   maxOutputTokens = 4096,
+  model?: string,
 ): Promise<string> {
   return denganCadanganJalur(
     [{ text: prompt }],
     undefined,
     maxOutputTokens,
+    model ?? MODEL_GEMINI_RUTIN,
   );
 }

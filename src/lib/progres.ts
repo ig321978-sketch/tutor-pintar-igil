@@ -222,3 +222,17 @@ export function tambahTokenIgil(jumlah: number): number {
   simpanProgres(data);
   return data.tokenIgil;
 }
+
+export function kurangiTokenIgil(jumlah: number): number {
+  const data = bacaProgres();
+  data.tokenIgil = Math.max(0, data.tokenIgil - Math.max(0, jumlah));
+  simpanProgres(data);
+  return data.tokenIgil;
+}
+
+export function tetapkanTokenIgil(jumlah: number): number {
+  const data = bacaProgres();
+  data.tokenIgil = Math.max(0, Math.floor(jumlah));
+  simpanProgres(data);
+  return data.tokenIgil;
+}
