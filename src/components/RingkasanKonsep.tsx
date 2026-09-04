@@ -5,12 +5,14 @@ import {
   Compass,
   Lightbulb,
   Loader2,
+  Pencil,
   Sparkles,
   Star,
   Target,
   Volume2,
 } from "lucide-react";
 import { kartuTanpaNaskah, susunKonsepMateri } from "@/lib/konsep-materi";
+import { mapelHitungan } from "@/lib/mapel-hitungan";
 import type { GambarSisipan } from "@/components/GambarDoodle";
 import TeksNaskah from "@/components/TeksNaskah";
 
@@ -81,6 +83,7 @@ export default function RingkasanKonsep({
 }) {
   const { ideUtama, kartu } = susunKonsepMateri(materi, penjelasan, kelas);
   const ringkas = kartuTanpaNaskah(kelas);
+  const hitungan = mapelHitungan(mapel, materi);
 
   return (
     <section className="space-y-8">
@@ -166,6 +169,11 @@ export default function RingkasanKonsep({
             <Volume2 className="mt-0.5 h-4 w-4 shrink-0 text-[#F0AB00]" />
             Kartu ini singkat, sesuai subbab buku siswa. Uraian lengkap ada di naskah di bawah, dan bisa didengar lewat Tutor Suara.
           </p>
+        ) : hitungan ? (
+          <p className="mb-4 flex items-start gap-2 text-sm font-semibold leading-snug text-[#1C01A5]/75">
+            <Pencil className="mt-0.5 h-4 w-4 shrink-0 text-[#F0AB00]" />
+            Setelah uraian ada contoh soal dan latihan, plus kunci untuk dicek sendiri.
+          </p>
         ) : null}
         {ringkas ? (
           <div className="grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-4">
@@ -243,6 +251,12 @@ export default function RingkasanKonsep({
               Naskah buku siswa
             </h3>
           </div>
+          {hitungan ? (
+            <p className="mb-4 flex items-start gap-2 text-sm font-semibold leading-snug text-[#1C01A5]/75">
+              <Pencil className="mt-0.5 h-4 w-4 shrink-0 text-[#F0AB00]" />
+              Setelah uraian ada contoh soal dan latihan, plus kunci untuk dicek sendiri.
+            </p>
+          ) : null}
           <div className="space-y-4">
             {kartu.map((item, indeks) => (
               <article

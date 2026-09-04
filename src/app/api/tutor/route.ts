@@ -7,6 +7,7 @@ import {
 } from "@google/generative-ai";
 import { parseKunciJawaban } from "@/lib/kuis";
 import { jenjangGuru } from "@/lib/guru";
+import { mapelHitungan } from "@/lib/mapel-hitungan";
 import { bersihkanLabelNaskah } from "@/lib/naskah-lisan";
 import { kerangkaNaskahBuku, subbabBukuSiswa } from "@/lib/subbab-buku-siswa";
 import { gantiNamaLengkapKeDepan, namaDepanSiswa, pilihKataPujian, sapaanTutorRingkas } from "@/lib/nama-siswa";
@@ -87,13 +88,6 @@ function sebagaiTeks(nilai: unknown, cadangan = ""): string {
   return typeof nilai === "string" ? nilai.trim() : cadangan;
 }
 
-function mapelHitungan(mapel: string, materi: string): boolean {
-  const gabungan = `${mapel} ${materi}`.toLowerCase();
-  return /matematika|fisika|kimia|ipa\b|hitung|aljabar|geometri|statistika/.test(
-    gabungan,
-  );
-}
-
 function bersihkanDanParseJson(mentah: string): Record<string, unknown> {
   let teks = mentah
     .replace(/```json/gi, "")
@@ -127,13 +121,36 @@ function aturanAngkaNaskah(): string {
 - DILARANG mengeja angka menjadi kata jika yang dimaksud adalah bilangan.`;
 }
 
-function alurUraianBuku(namaDepan: string): string {
+function aturanContohSoal(hitungan: boolean, kelas: string): string {
+  if (!hitungan) {
+    return `CONTOH SOAL: setelah uraian, tulis 1 pertanyaan nalar singkat setara buku siswa (bukan pilihan ganda). Tidak wajib kunci angka.`;
+  }
+
+  return `CONTOH SOAL HITUNGAN (wajib di SETIAP kartu, setelah uraian), gaya latihan buku siswa Kemendikbudristek:
+Tulis blok berikut di baris sendiri, tanpa pilihan A/B/C/D, DAN TETAP dalam kartu subbab yang sama (jangan pisah \\n\\n sebelum Contoh/Latihan/Kunci):
+Contoh
+Soal cerita 1-2 kalimat, tingkat ${kelas}.
+Langkah singkat.
+Hasil ANGKA di baris sendiri.
+
+Latihan
+1) Soal cerita atau hitungan baru, beda angka dari contoh.
+2) Soal kedua, setara numerasi Kurikulum Merdeka.
+
+Kunci
+1) hasil atau langkah singkat
+2) hasil atau langkah singkat
+Soal WAJIB improvisasi AI, DILARANG menyalin soal buku. DILARANG memakai angka/soal yang sama dengan field pertanyaan kuis.`;
+}
+
+function alurUraianBuku(namaDepan: string, hitungan: boolean, kelas: string): string {
   return `BENTUK NASKAH seperti uraian buku siswa Kurikulum Merdeka (Pusat Perbukuan), BUKAN cerita analogi bebas:
 - Setiap kartu = SATU subbab buku. Isi kartu harus mengajarkan konsep subbab itu (istilah, cara, contoh jenis yang sama), ditulis ulang dengan bahasa tutor.
-- Alur tiap kartu: (1) buka dengan situasi atau pengamatan kontekstual 1-2 kalimat, (2) uraian konsep terurai, (3) contoh konkret, (4) rumus atau lambang di baris sendiri jika ada, (5) tutup dengan ajakan nalar singkat.
+- Alur tiap kartu: (1) buka dengan situasi atau pengamatan kontekstual 1-2 kalimat, (2) uraian konsep terurai, (3) contoh konkret, (4) rumus atau lambang di baris sendiri jika ada, (5) contoh soal dan latihan.
 - DILARANG menyalin kalimat, tokoh, atau latihan dari buku. DILARANG label Ayo Mengamati, Ayo Berlatih, Judul, Subjudul, Kartu, VOICE, JSON, pause, atau kurung siku.
 - DILARANG kartu tema bebas di luar subbab, misalnya analogi tangga jika subbabnya penjumlahan sampai 100.
 ${aturanAngkaNaskah()}
+${aturanContohSoal(hitungan, kelas)}
 Jika menyebut nama, HANYA ${namaDepan}. DILARANG pujian berlebihan.`;
 }
 
@@ -146,6 +163,7 @@ function instruksiPenjelasan(
   const jenjang = jenjangGuru(kelas);
   const kerangka = kerangkaNaskahBuku(kelas, mapel, materi);
   const subbab = subbabBukuSiswa(kelas, mapel, materi);
+  const hitungan = mapelHitungan(mapel, materi);
   const jumlah =
     subbab.length > 0
       ? `TEPAT ${subbab.length}`
@@ -159,14 +177,21 @@ Baris 1: judul subbab 2-8 kata, diakhiri titik. Plain text.
 Baris 2: keterangan visual SATU kalimat pendek (maks 16 kata), diakhiri titik. Hanya ini yang tampil di kartu kecil.
 Lalu uraian lengkap seperti buku siswa: 4-7 kalimat, bahasa ${kelas}, konsep akurat.
 ${kerangka}
-${alurUraianBuku(namaDepan)}
+${alurUraianBuku(namaDepan, hitungan, kelas)}
 Contoh SATU kartu jika subbabnya Penjumlahan bilangan cacah sampai 100:
 Penjumlahan sampai 100.
 Gabungkan dua bilangan menjadi jumlah.
 Di kantin, ${namaDepan} membeli 36 kue lalu menambah 27 kue.
-36 + 27 = 63
 Jumlahkan satuan dulu, lalu puluhan. Jika satuan lebih dari 9, simpan 1 ke puluhan.
-Coba pikirkan: berapa hasil 48 + 15?
+Contoh
+Ada 36 kue, lalu ditambah 27 kue. Berapa jumlahnya?
+36 + 27 = 63
+Latihan
+1) Ada 48 pensil, ditambah 15 pensil. Berapa semuanya?
+2) 52 + 17 = ...
+Kunci
+1) 63
+2) 69
 Untuk kartu lain, ikuti subbab kerangka, jangan menyalin contoh ini jika subbabnya berbeda.`;
   }
 
@@ -179,7 +204,7 @@ Untuk kartu lain, ikuti subbab kerangka, jangan menyalin contoh ini jika subbabn
 Baris pertama: judul subbab 2-8 kata, diakhiri titik. Plain text.
 Lalu naskah LENGKAP (${kepadatan}).
 ${kerangka}
-${alurUraianBuku(namaDepan)}
+${alurUraianBuku(namaDepan, hitungan, kelas)}
 Uraian ini WAJIB tampil di kartu DAN dibacakan VOICE. DILARANG flashcard 1 kalimat.`;
 }
 

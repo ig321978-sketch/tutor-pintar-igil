@@ -35,7 +35,7 @@ const KATA_ANGKA: Record<string, string> = {
 const POLA_RUMUS =
   /(?:\d+(?:[.,]\d+)?\s*[+\-−×x÷/=<>^]|[+\-−×÷=]\s*\d|\d+\s*[/÷]\s*\d|\d+\s*%|\d+[a-zA-Z]\b|[²³√π∞])/i;
 
-export type JenisBlokNaskah = "plain" | "uraian" | "rumus";
+export type JenisBlokNaskah = "plain" | "uraian" | "rumus" | "soal" | "kunci";
 
 export type BlokNaskah = {
   jenis: JenisBlokNaskah;
@@ -58,10 +58,22 @@ export function adalahBarisRumus(teks: string): boolean {
   return pulih !== rapat && POLA_RUMUS.test(pulih);
 }
 
+export function adalahJudulBlokSoal(teks: string): boolean {
+  return /^(contoh|latihan|kunci)\b/i.test(teks.replace(/\s+/g, " ").trim());
+}
+
+export function adalahNomorSoal(teks: string): boolean {
+  return /^\d+[).]\s+\S/.test(teks.replace(/\s+/g, " ").trim());
+}
+
+export function adalahBarisLatihan(teks: string): boolean {
+  return adalahJudulBlokSoal(teks) || adalahNomorSoal(teks);
+}
+
 export function adalahUraian(teks: string): boolean {
   const rapat = teks.replace(/\s+/g, " ").trim();
   if (!rapat) return false;
-  if (adalahBarisRumus(rapat)) return false;
+  if (adalahBarisRumus(rapat) || adalahBarisLatihan(rapat)) return false;
   const kalimat = pecahKalimat(rapat);
   return kalimat.length >= 3 || rapat.length >= 140;
 }
@@ -169,9 +181,19 @@ export function pecahNaskahTampil(teks: string): BlokNaskah[] {
 
   const sumber = baris.length > 0 ? baris : [teks.trim()].filter(Boolean);
   const hasil: BlokNaskah[] = [];
+  let modeSoal: "soal" | "kunci" | null = null;
 
   for (const item of sumber) {
     const tampil = pulihkanAngkaTampil(item);
+    if (/^kunci\b/i.test(item.trim())) modeSoal = "kunci";
+    else if (/^(contoh|latihan)\b/i.test(item.trim())) modeSoal = "soal";
+
+    if (adalahJudulBlokSoal(item) || adalahNomorSoal(item)) {
+      const jenis =
+        modeSoal === "kunci" || /^kunci\b/i.test(item.trim()) ? "kunci" : "soal";
+      hasil.push({ jenis, teks: tampil });
+      continue;
+    }
     if (adalahBarisRumus(tampil) || adalahBarisRumus(item)) {
       hasil.push({ jenis: "rumus", teks: tampil });
       continue;

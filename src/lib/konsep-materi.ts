@@ -1,4 +1,4 @@
-import { adalahBarisRumus } from "@/lib/format-naskah";
+import { adalahBarisLatihan, adalahBarisRumus } from "@/lib/format-naskah";
 import { jenjangGuru } from "@/lib/guru";
 import { pecahTokenNaskah } from "@/lib/tts";
 
@@ -52,9 +52,14 @@ function naskahDariTeks(teks: string, judul: string, ringkas: boolean): string {
     baris[0] && judulDariTeks(baris[0]) === judul ? baris.slice(1) : baris;
 
   if (ringkas) {
-    const rumus = isi.filter((item) => adalahBarisRumus(item));
+    const rumus: string[] = [];
+    for (const item of isi) {
+      if (adalahBarisLatihan(item)) break;
+      if (adalahBarisRumus(item)) rumus.push(item);
+    }
     const visual =
-      isi.find((item) => !adalahBarisRumus(item)) ?? potongKalimat(teks, 1);
+      isi.find((item) => !adalahBarisRumus(item) && !adalahBarisLatihan(item)) ??
+      potongKalimat(teks, 1);
     const kata = visual.split(/\s+/).slice(0, 18).join(" ");
     return [kata.length > 2 ? kata : judul, ...rumus].filter(Boolean).join("\n");
   }
@@ -67,7 +72,21 @@ function pecahSumber(penjelasan: string): string[] {
     .split(/\n\n+/)
     .map((item) => item.trim())
     .filter(Boolean);
-  if (paragraf.length >= 3) return paragraf.slice(0, JUMLAH_KARTU_MAKS);
+
+  const digabung: string[] = [];
+  for (const item of paragraf) {
+    const barisPertama = item.split("\n")[0]?.trim() ?? "";
+    if (
+      digabung.length > 0 &&
+      (adalahBarisLatihan(barisPertama) || adalahBarisRumus(barisPertama))
+    ) {
+      digabung[digabung.length - 1] += `\n${item}`;
+      continue;
+    }
+    digabung.push(item);
+  }
+
+  if (digabung.length >= 3) return digabung.slice(0, JUMLAH_KARTU_MAKS);
 
   const kalimat = penjelasan
     .split(/\n+|(?<=[.!?…])\s+/)

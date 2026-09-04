@@ -4,7 +4,7 @@ import {
 } from "@/lib/nama-siswa";
 
 const LABEL_BARIS =
-  /^(judul(?:\s+kartu)?|subjudul(?:\s+visual)?|uraian(?:\s+lisan)?|naskah(?:\s+lisan)?|kartu\s*\d+|baris\s*\d+|visual|voice|teks(?:\s+kartu)?|contoh(?:\s+kartu)?)\s*[:.\-–]\s*/i;
+  /^(judul(?:\s+kartu)?|subjudul(?:\s+visual)?|uraian(?:\s+lisan)?|naskah(?:\s+lisan)?|kartu\s*\d+|baris\s*\d+|visual|voice|teks(?:\s+kartu)?|contoh\s+kartu)\s*[:.\-–]\s*/i;
 
 function pecahKalimatSederhana(teks: string): string[] {
   return teks
@@ -109,6 +109,10 @@ export function naskahLisan(teks: string, nama = ""): string {
   return aman;
 }
 
+function buangBlokKunci(blok: string): string {
+  return blok.replace(/\nKunci\b[\s\S]*$/i, "").trim();
+}
+
 export function naskahTutorUntukSuara(
   sapaan: string,
   penjelasan: string,
@@ -118,9 +122,10 @@ export function naskahTutorUntukSuara(
   const kartu = penjelasan
     .split(/\n\n+/)
     .map((item) => {
+      const tanpaKunci = buangBlokKunci(item);
       const isi = opsi?.buangSubjudulVisual
-        ? buangSubjudulVisualKartu(item)
-        : item;
+        ? buangSubjudulVisualKartu(tanpaKunci)
+        : tanpaKunci;
       return naskahLisan(isi, nama);
     })
     .filter(Boolean);
