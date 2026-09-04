@@ -6,6 +6,7 @@ import {
   type Schema,
 } from "@google/generative-ai";
 import { parseKunciJawaban } from "@/lib/kuis";
+import { gantiNamaLengkapKeDepan, namaDepanSiswa, pilihKataPujian, sapaanTutorRingkas } from "@/lib/nama-siswa";
 
 export const maxDuration = 60;
 
@@ -177,6 +178,7 @@ export async function POST(req: Request) {
       );
     }
     const nama = sebagaiTeks(body.nama, "Siswa");
+    const namaDepan = namaDepanSiswa(nama);
     const kelas = sebagaiTeks(body.kelas, "SD");
     const mapel = sebagaiTeks(body.mapel, "Umum");
     const materi = sebagaiTeks(body.materi, "Materi hari ini");
@@ -218,7 +220,7 @@ export async function POST(req: Request) {
    - trikBimbel: isi string kosong.`;
 
       const promptAjuan = `
-Kamu adalah Tutor $IGIL. Siswa ${nama} (Kelas ${kelas}) sedang belajar ${mapel}, materi ${materi}.
+Kamu adalah Tutor $IGIL. Siswa ${namaDepan} (Kelas ${kelas}) sedang belajar ${mapel}, materi ${materi}.
 ${konteksFoto}
 
 Pertanyaan siswa (dari ketikan atau rekaman suara):
@@ -230,8 +232,8 @@ ATURAN MUTLAK PEMBELAJARAN:
 3. Respons HANYA 1 objek JSON murni. DILARANG kutip ganda (") di dalam nilai teks. Gunakan kutip tunggal (').
 4. panduanLangkah: struktur Penyelesaian Langkah Demi Langkah (Step-by-Step Guidance) bernomor, merangsang nalar kritis. Pisahkan langkah dengan \\n\\n.
 ${instruksiHitungan}
-5. sapaan: sapaan singkat yang hangat, menyebut ${nama}.
-6. dorongan: satu kalimat yang mendorong siswa menyelesaikan sendiri, tanpa membocorkan kunci.
+5. sapaan: SATU kalimat pendek. Sebut HANYA nama depan ${namaDepan}. Sertakan TEPAT SATU kata pujian dari: Pintar, Cerdas, Baik, Rajin, Soleh, Semangat, Hebat. DILARANG pujian panjang, julukan berlebihan, atau nama lengkap. Contoh: 'Halo ${namaDepan}, Pintar.'
+6. dorongan: satu kalimat yang mendorong siswa menyelesaikan sendiri, tanpa membocorkan kunci, tanpa pujian berlebihan.
 
 Kembalikan persis kunci: sapaan, panduanLangkah, caraKurikulum, trikBimbel, dorongan.
 `.trim();
@@ -243,9 +245,9 @@ Kembalikan persis kunci: sapaan, panduanLangkah, caraKurikulum, trikBimbel, doro
       const dataJsonAjuan = bersihkanDanParseJson(resultAjuan.response.text());
 
       const dataAjuan: PanduanAjuan = {
-        sapaan: sebagaiTeks(
-          dataJsonAjuan.sapaan,
-          `Bagus ${nama}, mari kita telusuri pelan-pelan.`,
+        sapaan: sapaanTutorRingkas(
+          nama,
+          sebagaiTeks(dataJsonAjuan.sapaan),
         ),
         panduanLangkah: pulihkanParagraf(
           dataJsonAjuan.panduanLangkah,
@@ -276,8 +278,8 @@ Kembalikan persis kunci: sapaan, panduanLangkah, caraKurikulum, trikBimbel, doro
     });
 
     const instruksiMateri = daftarGambar.length > 0
-      ? `Tugas: Analisis foto halaman buku pelajaran yang dilampirkan (${daftarGambar.length} halaman). Baca tulisan, judul bab, rumus, gambar, dan soal di semua halaman tersebut. Deteksi topik utamanya, lalu buat modul belajar PREMIUM untuk ${nama} (Kelas ${kelas}) berdasarkan isi halaman buku itu. Jika mapel/materi teks tersedia (${mapel} / ${materi}), gunakan sebagai petunjuk tambahan, tetapi prioritas utama adalah isi foto.`
-      : `Tugas: Buat modul belajar PREMIUM untuk ${nama} (Kelas ${kelas}) mata pelajaran ${mapel} materi ${materi}.`;
+      ? `Tugas: Analisis foto halaman buku pelajaran yang dilampirkan (${daftarGambar.length} halaman). Baca tulisan, judul bab, rumus, gambar, dan soal di semua halaman tersebut. Deteksi topik utamanya, lalu buat modul belajar PREMIUM untuk ${namaDepan} (Kelas ${kelas}) berdasarkan isi halaman buku itu. Jika mapel/materi teks tersedia (${mapel} / ${materi}), gunakan sebagai petunjuk tambahan, tetapi prioritas utama adalah isi foto.`
+      : `Tugas: Buat modul belajar PREMIUM untuk ${namaDepan} (Kelas ${kelas}) mata pelajaran ${mapel} materi ${materi}.`;
 
     const promptText = `
 Kamu adalah Tutor $IGIL, guru privat EdTech Indonesia yang hangat, cerdas, dan presisi.
@@ -290,8 +292,8 @@ ATURAN MUTLAK:
 3. svgCode WAJIB SVG valid. Semua atribut memakai kutip tunggal. Jangan pakai kutip ganda di SVG.
 
 STANDAR KONTEN:
-1. sapaan: sapaan penyemangat yang antusias, menyebut nama ${nama}.
-2. penjelasan: TEPAT 4 paragraf singkat bergaya infografis, BUKAN esai panjang. Setiap paragraf WAJIB diawali judul pendek 3-6 kata, lalu titik, lalu 1-2 kalimat analogi anak yang konkret sesuai jenjang ${kelas}. JANGAN paragraf narasi panjang. Pisahkan paragraf dengan \\n\\n.
+1. sapaan: SATU kalimat pendek untuk dibaca suara. Sebut HANYA nama depan ${namaDepan}. Sertakan TEPAT SATU kata pujian dari: Pintar, Cerdas, Baik, Rajin, Soleh, Semangat, Hebat. DILARANG pujian panjang, julukan berlebihan, atau nama lengkap. Contoh: 'Halo ${namaDepan}, Pintar.'
+2. penjelasan: TEPAT 4 paragraf singkat bergaya infografis, BUKAN esai panjang. Setiap paragraf WAJIB diawali judul pendek 3-6 kata, lalu titik, lalu 1-2 kalimat analogi anak yang konkret sesuai jenjang ${kelas}. JANGAN paragraf narasi panjang. Pisahkan paragraf dengan \\n\\n. Jika menyebut nama siswa, HANYA ${namaDepan}. DILARANG pujian berlebihan.
 3. sketsaDeskripsi: SATU kalimat visual scene doodle UTAMA (hero) di atas naskah. Fokus objek atau adegan (contoh: barisan kursi bioskop, tangga, planet). Gaya jurnal/sketsa tangan, cocok anak sampai remaja, BUKAN kartun bayi. Jangan sebut kertas, buku catatan, atau gaya gambar.
 4. sketsaSisipan1: SATU kalimat visual doodle analogi konkret untuk disisipkan setelah paragraf 1.
 5. sketsaSisipan2: SATU kalimat visual doodle detail/contoh berbeda untuk disisipkan di tengah naskah. Harus beda dari sketsa utama dan sisipan 1.
@@ -308,7 +310,7 @@ STANDAR KONTEN:
    D) ...
 8. kunciJawaban: SATU string berisi 5 huruf A/B/C/D sesuai urutan soal, dipisah koma. Contoh: A,C,B,D,A
    Setiap huruf HARUS cocok dengan opsi yang benar pada soal terkait.
-9. motivasi: satu kalimat motivasi kuat untuk ${nama}.
+9. motivasi: SATU kata pujian umum untuk ${namaDepan} dari: Pintar, Cerdas, Baik, Rajin, Soleh, Semangat, Hebat. Bukan kalimat panjang.
 
 Kembalikan persis kunci: sapaan, penjelasan, sketsaDeskripsi, sketsaSisipan1, sketsaSisipan2, svgCode, pertanyaan, kunciJawaban, motivasi.
 `.trim();
@@ -321,10 +323,13 @@ Kembalikan persis kunci: sapaan, penjelasan, sketsaDeskripsi, sketsaSisipan1, sk
     const dataJson = bersihkanDanParseJson(text);
 
     const dataAman: ModulTutor = {
-      sapaan: sebagaiTeks(dataJson.sapaan, `Halo ${nama}, semangat belajar!`),
-      penjelasan: pulihkanParagraf(
-        dataJson.penjelasan,
-        "Materi sedang disiapkan...",
+      sapaan: sapaanTutorRingkas(nama, sebagaiTeks(dataJson.sapaan)),
+      penjelasan: gantiNamaLengkapKeDepan(
+        pulihkanParagraf(
+          dataJson.penjelasan,
+          "Materi sedang disiapkan...",
+        ),
+        nama,
       ),
       sketsaDeskripsi: sebagaiTeks(
         dataJson.sketsaDeskripsi,
@@ -344,7 +349,7 @@ Kembalikan persis kunci: sapaan, penjelasan, sketsaDeskripsi, sketsaSisipan1, sk
         "Latihan soal sedang disusun...",
       ),
       kunciJawaban: parseKunciJawaban(dataJson.kunciJawaban),
-      motivasi: sebagaiTeks(dataJson.motivasi, "Terus semangat belajar!"),
+      motivasi: pilihKataPujian(sebagaiTeks(dataJson.motivasi, namaDepan)),
     };
 
     return NextResponse.json({ berhasil: true, data: dataAman });

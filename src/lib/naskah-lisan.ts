@@ -1,6 +1,12 @@
+import {
+  gantiNamaLengkapKeDepan,
+  sapaanTutorRingkas,
+} from "@/lib/nama-siswa";
+
 /** Ubah naskah pelajaran menjadi teks yang lebih aman dibaca keras. */
-export function naskahLisan(teks: string): string {
-  return teks
+export function naskahLisan(teks: string, nama = ""): string {
+  const amanNama = nama ? gantiNamaLengkapKeDepan(teks, nama) : teks;
+  return amanNama
     .replace(/\$IGIL/gi, "igil")
     .replace(/\bIGIL\b/g, "igil")
     .replace(/[–—]/g, " ")
@@ -21,9 +27,11 @@ export function naskahLisan(teks: string): string {
 export function naskahTutorUntukSuara(
   sapaan: string,
   penjelasan: string,
+  nama = "",
 ): string {
-  const blok = [sapaan, ...penjelasan.split(/\n\n+/)]
-    .map((item) => naskahLisan(item))
+  const sapaanAman = nama ? sapaanTutorRingkas(nama, sapaan) : sapaan;
+  const blok = [sapaanAman, ...penjelasan.split(/\n\n+/)]
+    .map((item) => naskahLisan(item, nama))
     .filter(Boolean);
   return blok.join("\n\n");
 }

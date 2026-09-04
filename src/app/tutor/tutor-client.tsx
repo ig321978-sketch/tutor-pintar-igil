@@ -20,6 +20,7 @@ import {
 } from "@/lib/progres";
 import { kelasTombolUtama } from "@/lib/tema";
 import { indeksKartuAktif } from "@/lib/konsep-materi";
+import { gantiNamaLengkapKeDepan, sapaanTutorRingkas } from "@/lib/nama-siswa";
 import { naskahLisan, naskahTutorUntukSuara } from "@/lib/naskah-lisan";
 import { pecahTokenNaskah, skalaWaktuKata, type KataWaktu } from "@/lib/tts";
 import GambarDoodle, { type GambarSisipan } from "@/components/GambarDoodle";
@@ -543,7 +544,11 @@ export default function TutorAI() {
       };
 
       if (data.berhasil && data.data) {
-        setHasilData(data.data);
+        setHasilData({
+          ...data.data,
+          sapaan: sapaanTutorRingkas(nama, data.data.sapaan),
+          penjelasan: gantiNamaLengkapKeDepan(data.data.penjelasan, nama),
+        });
         setJawabanKuis({});
         setSesiMapel(modeInput === "teks" ? mapel : "Berdasarkan Buku");
         setSesiMateri(modeInput === "teks" ? bab : "Analisis halaman buku");
@@ -625,7 +630,10 @@ export default function TutorAI() {
       };
 
       if (data.berhasil && data.data) {
-        setHasilAjuan(data.data);
+        setHasilAjuan({
+          ...data.data,
+          sapaan: sapaanTutorRingkas(nama, data.data.sapaan),
+        });
         if (sesiAktifId && data.data.dorongan) {
           catatEvaluasiTambahan(sesiAktifId, data.data.dorongan);
         }
@@ -732,8 +740,8 @@ export default function TutorAI() {
       }
     };
 
-    masukkan(naskahLisan(hasilData.sapaan), "sapaan");
-    masukkan(naskahLisan(hasilData.penjelasan), "penjelasan");
+    masukkan(naskahLisan(hasilData.sapaan, nama), "sapaan");
+    masukkan(naskahLisan(hasilData.penjelasan, nama), "penjelasan");
 
     antrian.forEach((item, indeks) => {
       item.ucapan.onstart = () => {
@@ -802,7 +810,11 @@ export default function TutorAI() {
     if (audioChirpSiap(kelaminSuara)) return true;
     if (muatAudioPromiseRef.current) return muatAudioPromiseRef.current;
 
-    const naskah = naskahTutorUntukSuara(hasilData.sapaan, hasilData.penjelasan);
+    const naskah = naskahTutorUntukSuara(
+      hasilData.sapaan,
+      hasilData.penjelasan,
+      nama,
+    );
     const permintaan = (async () => {
       try {
         const respons = await fetch("/api/tts", {
