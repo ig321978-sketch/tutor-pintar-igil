@@ -1,5 +1,6 @@
 import { NextResponse } from "next/server";
 import { buatPaketDoodle } from "@/lib/doodle";
+import { UKURAN_BATCH_DOODLE } from "@/lib/konsep-materi";
 
 export const maxDuration = 60;
 
@@ -8,14 +9,18 @@ type PermintaanIlustrasi = {
   mapel?: unknown;
   materi?: unknown;
   penjelasan?: unknown;
-  sketsaDeskripsi?: unknown;
-  sketsaSisipan1?: unknown;
-  sketsaSisipan2?: unknown;
-  sketsaSisipan3?: unknown;
+  sketsaKartu?: unknown;
+  offset?: unknown;
+  batas?: unknown;
 };
 
 function sebagaiTeks(nilai: unknown, cadangan = ""): string {
   return typeof nilai === "string" ? nilai.trim() : cadangan;
+}
+
+function sebagaiAngka(nilai: unknown, cadangan: number): number {
+  const angka = typeof nilai === "number" ? nilai : Number(nilai);
+  return Number.isFinite(angka) ? Math.max(0, Math.floor(angka)) : cadangan;
 }
 
 export async function POST(req: Request) {
@@ -44,10 +49,9 @@ export async function POST(req: Request) {
       mapel: sebagaiTeks(body.mapel, "Umum"),
       materi: sebagaiTeks(body.materi, "Materi hari ini"),
       penjelasan: sebagaiTeks(body.penjelasan),
-      sketsaUtama: sebagaiTeks(body.sketsaDeskripsi),
-      sketsaSisipan1: sebagaiTeks(body.sketsaSisipan1),
-      sketsaSisipan2: sebagaiTeks(body.sketsaSisipan2),
-      sketsaSisipan3: sebagaiTeks(body.sketsaSisipan3),
+      sketsaKartu: sebagaiTeks(body.sketsaKartu),
+      offset: sebagaiAngka(body.offset, 0),
+      batas: sebagaiAngka(body.batas, UKURAN_BATCH_DOODLE),
     });
 
     return NextResponse.json({

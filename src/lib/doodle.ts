@@ -1,4 +1,5 @@
 import { GoogleGenAI } from "@google/genai";
+import { JUMLAH_KARTU_MAKS, susunKonsepMateri, UKURAN_BATCH_DOODLE } from "@/lib/konsep-materi";
 
 export type UkuranDoodle = "kecil" | "sedang" | "lebar";
 
@@ -47,12 +48,23 @@ Scene to draw: ${opsi.scene}
 Hard rules: Draw the scene directly on the paper. Do NOT draw a notebook, open book, spiral binding, page border, or picture-in-picture frame. NO written text, letters, numbers, captions, watermarks, logos, speech-bubble words, or UI chrome. NOT photoreal, NOT 3D CGI, NOT clipart, NOT vector icons, NOT babyish mascots, NOT glossy cartoon. It must look like a skilled student sketched the scene itself in a journal.`;
 }
 
+export function pecahSketsaKartu(teks: string): string[] {
+  return teks
+    .split(/\n\n+/)
+    .map((item) => item.trim())
+    .filter(Boolean);
+}
+
 export function rencanakanSisipan(
   jumlahParagraf: number,
+  offset = 0,
+  batas = UKURAN_BATCH_DOODLE,
 ): { setelahParagraf: number; ukuran: UkuranDoodle }[] {
-  const jumlah = Math.min(Math.max(jumlahParagraf, 1), 4);
-  return Array.from({ length: jumlah }, (_, indeks) => ({
-    setelahParagraf: indeks + 1,
+  const total = Math.min(Math.max(jumlahParagraf, 1), JUMLAH_KARTU_MAKS);
+  const mulai = Math.min(Math.max(offset, 0), total);
+  const akhir = Math.min(total, mulai + Math.max(batas, 1));
+  return Array.from({ length: Math.max(0, akhir - mulai) }, (_, indeks) => ({
+    setelahParagraf: mulai + indeks + 1,
     ukuran: "kecil" as const,
   }));
 }
@@ -119,39 +131,37 @@ export async function buatPaketDoodle(opsi: {
   mapel: string;
   materi: string;
   penjelasan: string;
-  sketsaUtama: string;
-  sketsaSisipan1: string;
-  sketsaSisipan2: string;
-  sketsaSisipan3?: string;
+  sketsaKartu?: string;
+  offset?: number;
+  batas?: number;
 }): Promise<{ gambarUtama: string | null; gambarSisipan: GambarSisipan[] }> {
   const ai = new GoogleGenAI({ apiKey: opsi.apiKey });
-  const paragraf = opsi.penjelasan.split("\n\n").filter((p) => p.trim());
-  const rencana = rencanakanSisipan(paragraf.length);
+  const kartu = susunKonsepMateri(opsi.materi, opsi.penjelasan).kartu;
+  const rencana = rencanakanSisipan(
+    kartu.length,
+    opsi.offset ?? 0,
+    opsi.batas ?? UKURAN_BATCH_DOODLE,
+  );
+  const daftarSketsa = pecahSketsaKartu(opsi.sketsaKartu ?? "");
 
-  const sceneKartu = [
-    opsi.sketsaUtama ||
-      `A tiny one-object doodle of the main idea of ${opsi.mapel}: ${opsi.materi}`,
-    opsi.sketsaSisipan1 ||
-      `A tiny everyday analogy doodle for ${opsi.materi}`,
-    opsi.sketsaSisipan2 ||
-      `A tiny doodle of one important detail from ${opsi.materi}`,
-    opsi.sketsaSisipan3 ||
-      `A tiny doodle that wraps up why ${opsi.materi} matters in daily life`,
-  ];
-
-  const tugasKartu = rencana.map((item, indeks) =>
-    hasilkanDenganCadangan(
+  const tugasKartu = rencana.map((item) => {
+    const indeks = item.setelahParagraf - 1;
+    const judul = kartu[indeks]?.judul || opsi.materi;
+    const scene =
+      daftarSketsa[indeks] ||
+      `A tiny one-object doodle illustrating ${judul} for ${opsi.mapel}: ${opsi.materi}`;
+    return hasilkanDenganCadangan(
       ai,
       promptDoodle({
         kelas: opsi.kelas,
         mapel: opsi.mapel,
         materi: opsi.materi,
-        scene: sceneKartu[indeks] ?? sceneKartu[0],
+        scene,
         peran: "kartu",
       }),
       rasioUntuk(item.ukuran, "kartu"),
-    ),
-  );
+    );
+  });
 
   const sumberKartu = await Promise.all(tugasKartu);
 
@@ -160,10 +170,11 @@ export async function buatPaketDoodle(opsi: {
     if (!src) return;
     const item = rencana[indeks];
     if (!item) return;
+    const judul = kartu[item.setelahParagraf - 1]?.judul || opsi.materi;
     gambarSisipan.push({
       setelahParagraf: item.setelahParagraf,
       src,
-      alt: `Doodle kartu ${opsi.materi}`,
+      alt: `Doodle ${judul}`,
       ukuran: "kecil",
     });
   });

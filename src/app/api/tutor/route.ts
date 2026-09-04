@@ -22,10 +22,7 @@ type PermintaanTutor = {
 type ModulTutor = {
   sapaan: string;
   penjelasan: string;
-  sketsaDeskripsi: string;
-  sketsaSisipan1: string;
-  sketsaSisipan2: string;
-  sketsaSisipan3: string;
+  sketsaKartu: string;
   svgCode: string;
   pertanyaan: string;
   kunciJawaban: string[];
@@ -48,10 +45,7 @@ const SKEMA_MODUL: Schema = {
   properties: {
     sapaan: { type: SchemaType.STRING },
     penjelasan: { type: SchemaType.STRING },
-    sketsaDeskripsi: { type: SchemaType.STRING },
-    sketsaSisipan1: { type: SchemaType.STRING },
-    sketsaSisipan2: { type: SchemaType.STRING },
-    sketsaSisipan3: { type: SchemaType.STRING },
+    sketsaKartu: { type: SchemaType.STRING },
     svgCode: { type: SchemaType.STRING },
     pertanyaan: { type: SchemaType.STRING },
     kunciJawaban: { type: SchemaType.STRING },
@@ -60,10 +54,7 @@ const SKEMA_MODUL: Schema = {
   required: [
     "sapaan",
     "penjelasan",
-    "sketsaDeskripsi",
-    "sketsaSisipan1",
-    "sketsaSisipan2",
-    "sketsaSisipan3",
+    "sketsaKartu",
     "svgCode",
     "pertanyaan",
     "kunciJawaban",
@@ -296,13 +287,15 @@ ATURAN MUTLAK:
 
 STANDAR KONTEN:
 1. sapaan: SATU kalimat pendek untuk dibaca suara. Sebut HANYA nama depan ${namaDepan}. Sertakan TEPAT SATU kata pujian dari: Pintar, Cerdas, Baik, Rajin, Soleh, Semangat, Hebat. DILARANG pujian panjang, julukan berlebihan, atau nama lengkap. Contoh: 'Halo ${namaDepan}, Pintar.'
-2. penjelasan: TEPAT 4 paragraf DETAIL bergaya infografis. Bukan esai kaku, tapi LEBIH PANJANG dan lengkap dari ringkasan singkat. Setiap paragraf WAJIB diawali judul pendek 3-6 kata, lalu titik. Lalu 4-6 kalimat: arti/definisi sederhana, contoh konkret sehari-hari, analogi anak yang jelas, dan kenapa ide itu penting sesuai jenjang ${kelas}. Pisahkan paragraf dengan \\n\\n. Jika menyebut nama siswa, HANYA ${namaDepan}. DILARANG pujian berlebihan.
-3. sketsaDeskripsi: SATU kalimat visual doodle KECIL satu objek untuk kartu 1. Fokus benda atau adegan mini, bukan poster lebar.
-4. sketsaSisipan1: SATU kalimat visual doodle kecil untuk kartu 2, analogi konkret yang berbeda.
-5. sketsaSisipan2: SATU kalimat visual doodle kecil untuk kartu 3, detail penting yang berbeda.
-6. sketsaSisipan3: SATU kalimat visual doodle kecil untuk kartu 4, penutup makna/manfaat. Harus beda dari sketsa lain.
-7. svgCode: cadangan doodle SVG sketsa tangan (viewBox 0 0 400 220), kertas krem, garis tinta navy #1C01A5 saja. Tanpa kutip ganda.
-8. pertanyaan: TEPAT 5 soal dalam SATU string panjang, dipisah \\n\\n.
+2. penjelasan: TEPAT 8 sampai 10 KARTU MATERI. Bukan esai panjang. Jangan menumpuk banyak kalimat di satu kartu. Pecah topik menjadi BANYAK sub-topik konkret yang berbeda. Setiap kartu SATU blok dipisah \\n\\n, format wajib:
+Judul kartu 2-8 kata.
+Subjudul SATU kalimat pendek (maks 16 kata).
+Contoh pecahan HANYA jika materinya Mengenal Kitab Suci (blok terpisah, bukan satu baris):
+Arti Kitab Suci.\\nBuku suci yang menjadi pedoman hidup umat beragama.\\n\\nAgama yang sah di Indonesia.\\nEnam agama yang diakui negara di Indonesia.\\n\\nKitab Suci Umat Islam.\\nAl-Qur'an adalah kitab suci umat Islam.\\n\\nKitab Suci Umat Kristen.\\nAlkitab adalah kitab suci umat Kristen.\\n\\nKitab Suci Umat Buddha.\\nTripitaka adalah kitab suci umat Buddha.\\n\\nKitab Suci Umat Hindu.\\nWeda adalah kitab suci umat Hindu.\\n\\nKitab Suci Umat Konghucu.\\nSishu Wujing adalah kitab suci umat Konghucu.\\n\\nManfaat Belajar Kitab Suci.\\nBelajar kitab suci menuntun sikap hormat dan hidup damai.
+Untuk mapel lain, pecah dengan pola serupa: arti, jenis atau bagian, contoh konkret, perbandingan, dan manfaat. Sesuaikan jenjang ${kelas} dan Kurikulum Merdeka. Jika menyebut nama siswa, HANYA ${namaDepan}. DILARANG pujian berlebihan.
+3. sketsaKartu: TEPAT sama jumlahnya dengan kartu di penjelasan. Setiap blok SATU kalimat visual doodle kecil (satu benda atau adegan mini), dipisah \\n\\n, urutan sama dengan kartu. Semua sketsa HARUS berbeda. Tanpa teks tertulis di gambar.
+4. svgCode: cadangan doodle SVG sketsa tangan (viewBox 0 0 400 220), kertas krem, garis tinta navy #1C01A5 saja. Tanpa kutip ganda.
+5. pertanyaan: TEPAT 5 soal dalam SATU string panjang, dipisah \\n\\n.
    Komposisi wajib: 3 soal Standar + 2 soal HOTS.
    DILARANG menuliskan label kunci, huruf jawaban, atau pembahasan di dalam field pertanyaan.
    Format tiap soal HANYA memuat tiga bagian ini:
@@ -312,11 +305,11 @@ STANDAR KONTEN:
    B) ...
    C) ...
    D) ...
-9. kunciJawaban: SATU string berisi 5 huruf A/B/C/D sesuai urutan soal, dipisah koma. Contoh: A,C,B,D,A
+6. kunciJawaban: SATU string berisi 5 huruf A/B/C/D sesuai urutan soal, dipisah koma. Contoh: A,C,B,D,A
    Setiap huruf HARUS cocok dengan opsi yang benar pada soal terkait.
-10. motivasi: SATU kata pujian umum untuk ${namaDepan} dari: Pintar, Cerdas, Baik, Rajin, Soleh, Semangat, Hebat. Bukan kalimat panjang.
+7. motivasi: SATU kata pujian umum untuk ${namaDepan} dari: Pintar, Cerdas, Baik, Rajin, Soleh, Semangat, Hebat. Bukan kalimat panjang.
 
-Kembalikan persis kunci: sapaan, penjelasan, sketsaDeskripsi, sketsaSisipan1, sketsaSisipan2, sketsaSisipan3, svgCode, pertanyaan, kunciJawaban, motivasi.
+Kembalikan persis kunci: sapaan, penjelasan, sketsaKartu, svgCode, pertanyaan, kunciJawaban, motivasi.
 `.trim();
 
     const bagian: Part[] = [...daftarGambar];
@@ -335,21 +328,9 @@ Kembalikan persis kunci: sapaan, penjelasan, sketsaDeskripsi, sketsaSisipan1, sk
         ),
         nama,
       ),
-      sketsaDeskripsi: sebagaiTeks(
-        dataJson.sketsaDeskripsi,
+      sketsaKartu: pulihkanParagraf(
+        dataJson.sketsaKartu,
         "Sketsa doodle materi ini",
-      ),
-      sketsaSisipan1: sebagaiTeks(
-        dataJson.sketsaSisipan1,
-        "Doodle analogi sehari-hari untuk materi ini",
-      ),
-      sketsaSisipan2: sebagaiTeks(
-        dataJson.sketsaSisipan2,
-        "Doodle detail penting dari materi ini",
-      ),
-      sketsaSisipan3: sebagaiTeks(
-        dataJson.sketsaSisipan3,
-        "Doodle manfaat materi ini dalam kehidupan sehari-hari",
       ),
       svgCode: amankanSvg(dataJson.svgCode),
       pertanyaan: pulihkanParagraf(

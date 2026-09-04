@@ -19,7 +19,7 @@ import {
   simpanProfil,
 } from "@/lib/progres";
 import { kelasTombolUtama } from "@/lib/tema";
-import { indeksKartuAktif } from "@/lib/konsep-materi";
+import { indeksKartuAktif, JUMLAH_KARTU_MAKS, susunKonsepMateri, UKURAN_BATCH_DOODLE } from "@/lib/konsep-materi";
 import { gantiNamaLengkapKeDepan, sapaanTutorRingkas } from "@/lib/nama-siswa";
 import { naskahLisan, naskahTutorUntukSuara } from "@/lib/naskah-lisan";
 import { pecahTokenNaskah, skalaWaktuKata, type KataWaktu } from "@/lib/tts";
@@ -48,10 +48,7 @@ type StatusPemutar = "siaga" | "memutar" | "jeda";
 type ModulTutor = {
   sapaan: string;
   penjelasan: string;
-  sketsaDeskripsi: string;
-  sketsaSisipan1?: string;
-  sketsaSisipan2?: string;
-  sketsaSisipan3?: string;
+  sketsaKartu?: string;
   svgCode: string;
   pertanyaan: string;
   kunciJawaban?: string[];
@@ -449,47 +446,66 @@ export default function TutorAI() {
     doodleAbortRef.current = pengontrol;
     setStatusDoodle("memuat");
 
+    const jumlahKartu = Math.min(
+      susunKonsepMateri(
+        modeInput === "teks" ? bab : "Analisis AI",
+        modul.penjelasan,
+      ).kartu.length,
+      JUMLAH_KARTU_MAKS,
+    );
+    let terkumpul: GambarSisipan[] = [];
+
     try {
-      const respons = await fetch("/api/tutor/ilustrasi", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        signal: pengontrol.signal,
-        body: JSON.stringify({
-          kelas,
-          mapel: modeInput === "teks" ? mapel : "Berdasarkan Buku",
-          materi: modeInput === "teks" ? bab : "Analisis AI",
-          penjelasan: modul.penjelasan,
-          sketsaDeskripsi: modul.sketsaDeskripsi,
-          sketsaSisipan1: modul.sketsaSisipan1,
-          sketsaSisipan2: modul.sketsaSisipan2,
-          sketsaSisipan3: modul.sketsaSisipan3,
-        }),
-      });
-      const data = (await respons.json()) as {
-        berhasil?: boolean;
-        gambarUtama?: string | null;
-        gambarSisipan?: GambarSisipan[];
-      };
+      for (let offset = 0; offset < jumlahKartu; offset += UKURAN_BATCH_DOODLE) {
+        if (pengontrol.signal.aborted) return;
 
-      if (pengontrol.signal.aborted) return;
+        const respons = await fetch("/api/tutor/ilustrasi", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          signal: pengontrol.signal,
+          body: JSON.stringify({
+            kelas,
+            mapel: modeInput === "teks" ? mapel : "Berdasarkan Buku",
+            materi: modeInput === "teks" ? bab : "Analisis AI",
+            penjelasan: modul.penjelasan,
+            sketsaKartu: modul.sketsaKartu,
+            offset,
+            batas: UKURAN_BATCH_DOODLE,
+          }),
+        });
+        const data = (await respons.json()) as {
+          berhasil?: boolean;
+          gambarUtama?: string | null;
+          gambarSisipan?: GambarSisipan[];
+        };
 
-      if (data.berhasil && (data.gambarUtama || (data.gambarSisipan?.length ?? 0) > 0)) {
-        setHasilData((sebelum) =>
-          sebelum
-            ? {
-                ...sebelum,
-                gambarUtama: data.gambarUtama ?? null,
-                gambarSisipan: data.gambarSisipan ?? [],
-              }
-            : sebelum,
-        );
-        setStatusDoodle("siap");
-      } else {
-        setStatusDoodle("gagal");
+        if (pengontrol.signal.aborted) return;
+
+        if (data.berhasil && (data.gambarSisipan?.length ?? 0) > 0) {
+          const peta = new Map<number, GambarSisipan>();
+          for (const item of terkumpul) peta.set(item.setelahParagraf, item);
+          for (const item of data.gambarSisipan ?? []) {
+            peta.set(item.setelahParagraf, item);
+          }
+          terkumpul = [...peta.values()].sort(
+            (a, b) => a.setelahParagraf - b.setelahParagraf,
+          );
+          setHasilData((sebelum) =>
+            sebelum
+              ? {
+                  ...sebelum,
+                  gambarUtama: terkumpul[0]?.src ?? data.gambarUtama ?? null,
+                  gambarSisipan: terkumpul,
+                }
+              : sebelum,
+          );
+        }
       }
+
+      setStatusDoodle(terkumpul.length > 0 ? "siap" : "gagal");
     } catch (error) {
       if (error instanceof DOMException && error.name === "AbortError") return;
-      setStatusDoodle("gagal");
+      setStatusDoodle(terkumpul.length > 0 ? "siap" : "gagal");
     }
   };
 
