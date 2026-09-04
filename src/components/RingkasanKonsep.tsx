@@ -2,7 +2,7 @@
 
 import {
   BookOpen,
-  Compass,
+  ClipboardList,
   Globe2,
   Lightbulb,
   Loader2,
@@ -10,11 +10,17 @@ import {
   School,
   Sparkles,
   Star,
+  Compass,
   Target,
   Volume2,
 } from "lucide-react";
 import { kartuTanpaNaskah, susunKonsepMateri } from "@/lib/konsep-materi";
 import { mapelHitungan } from "@/lib/mapel-hitungan";
+import {
+  LABEL_TINGKAT,
+  susunSilabusMerdeka,
+  type TingkatSilabus,
+} from "@/lib/silabus-merdeka";
 import {
   LABEL_SUDUT,
   type SudutPandangMateri,
@@ -29,12 +35,6 @@ function doodleKartu(
   indeks: number,
 ): GambarSisipan | undefined {
   return gambarSisipan?.find((item) => item.setelahParagraf === indeks + 1);
-}
-
-function cuplikanKartu(teks: string, batas = 10): string {
-  const bersih = teks.replace(/\n+/g, " ").trim();
-  const kata = bersih.split(/\s+/).filter(Boolean).slice(0, batas).join(" ");
-  return kata.length > 2 ? kata : bersih;
 }
 
 function LencanaSuara({ tampil }: { tampil: boolean }) {
@@ -56,14 +56,12 @@ function MiniDoodle({
   src?: string;
   alt: string;
   memuat: boolean;
-  ukuran?: "peta" | "kartu" | "uraian";
+  ukuran?: "kartu" | "uraian";
 }) {
   const kotak =
-    ukuran === "peta"
-      ? "h-12 w-12 sm:h-14 sm:w-14"
-      : ukuran === "uraian"
-        ? "h-20 w-20 shrink-0 sm:h-24 sm:w-24"
-        : "mx-auto h-28 w-28 sm:h-32 sm:w-32";
+    ukuran === "uraian"
+      ? "h-20 w-20 shrink-0 sm:h-24 sm:w-24"
+      : "mx-auto h-28 w-28 sm:h-32 sm:w-32";
   return (
     <div
       className={`relative shrink-0 overflow-hidden rounded-2xl border-2 border-[#1C01A5]/15 bg-[#fbf6ea] shadow-inner ${kotak}`}
@@ -81,6 +79,23 @@ function MiniDoodle({
         </div>
       )}
     </div>
+  );
+}
+
+function LencanaTingkat({ tingkat }: { tingkat: TingkatSilabus }) {
+  const label = LABEL_TINGKAT[tingkat];
+  const gaya =
+    tingkat === "baik"
+      ? "bg-emerald-600 text-white"
+      : tingkat === "cukup"
+        ? "bg-[#F0AB00] text-[#1C01A5]"
+        : "bg-rose-600 text-white";
+  return (
+    <span
+      className={`shrink-0 rounded-full px-3 py-1 text-[11px] font-black uppercase tracking-wider ${gaya}`}
+    >
+      {label.teks}
+    </span>
   );
 }
 
@@ -116,6 +131,7 @@ export default function RingkasanKonsep({
   mapel,
   kelas = "3 SD",
   penjelasan,
+  naskahKurikulum,
   sapaan,
   kartuAktif,
   gambarSisipan,
@@ -128,6 +144,7 @@ export default function RingkasanKonsep({
   mapel: string;
   kelas?: string;
   penjelasan: string;
+  naskahKurikulum?: string;
   sapaan: string;
   kartuAktif: number;
   gambarSisipan?: GambarSisipan[];
@@ -141,6 +158,14 @@ export default function RingkasanKonsep({
   const hitungan = mapelHitungan(mapel, materi);
   const label = LABEL_SUDUT[sudutPandang];
   const global = sudutPandang === "global";
+  const silabus = susunSilabusMerdeka({
+    kelas,
+    mapel,
+    materi,
+    naskahKurikulum: naskahKurikulum || penjelasan,
+  });
+  const kerangka = silabus.filter((item) => item.kelompok === "kerangka");
+  const materiPokok = silabus.filter((item) => item.kelompok === "materi");
 
   return (
     <section className="space-y-8">
@@ -188,69 +213,78 @@ export default function RingkasanKonsep({
 
       <div>
         <div className="mb-4 flex items-center gap-2">
-          <Sparkles className="h-5 w-5 text-[#F0AB00]" />
-          <h3 className="text-xl font-extrabold text-[#1C01A5]">Peta pikiran</h3>
+          <ClipboardList className="h-5 w-5 text-[#F0AB00]" />
+          <h3 className="text-xl font-extrabold text-[#1C01A5]">Silabus</h3>
         </div>
-
-        <div className="rounded-[2rem] border-2 border-[#1C01A5]/15 bg-[#F8F6FF] p-4 sm:p-6">
-          <div className="mx-auto mb-5 flex max-w-xs flex-col items-center justify-center rounded-[2rem] bg-[#F0AB00] px-4 py-4 text-center shadow-lg shadow-[#F0AB00]/40">
-            <p className="text-[10px] font-extrabold uppercase tracking-wider text-[#1C01A5]/70">
-              {label.pendek}
-            </p>
-            <p className="text-sm font-black leading-snug text-[#1C01A5] sm:text-base">
-              {ideUtama}
-            </p>
-          </div>
-          <div className="grid grid-cols-2 gap-3 md:grid-cols-4">
-            {kartu.map((item, indeks) => {
-              const Ikon = IKON[indeks % IKON.length];
-              return (
-                <div
-                  key={`peta-${item.judul}-${indeks}`}
-                  className={`rounded-2xl border-2 px-3 py-3 text-center ${item.warna} ${
-                    kartuAktif === indeks ? "ring-4 ring-[#1C01A5]/30" : ""
-                  }`}
-                >
-                  <Ikon className="mx-auto mb-1 h-4 w-4 text-[#1C01A5]" />
-                  <LencanaSuara tampil={sedangMemutar && kartuAktif === indeks} />
-                  <p className="text-xs font-extrabold leading-tight text-[#1C01A5] sm:text-sm">
-                    {item.judul}
-                  </p>
-                  <p className="mt-1 text-[10px] font-semibold leading-snug text-[#1C01A5]/70 sm:text-xs">
-                    {cuplikanKartu(item.isi)}
-                  </p>
-                </div>
-              );
-            })}
-          </div>
-        </div>
-      </div>
-
-      <div>
-        <div className="mb-4 flex items-center gap-2">
-          <Target className="h-5 w-5 text-[#F0AB00]" />
-          <h3 className="text-xl font-extrabold text-[#1C01A5]">Alur infografis</h3>
-        </div>
-        <div className="grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-4">
-          {kartu.map((item, indeks) => (
-            <div
-              key={`alur-${item.judul}-${indeks}`}
-              className={`relative rounded-2xl border-2 px-3 py-4 text-center ${item.warna} ${
-                kartuAktif === indeks ? "ring-4 ring-[#1C01A5]/25" : ""
+        <p className="mb-4 text-sm font-semibold text-[#1C01A5]/75">
+          Komponen utama Kurikulum Merdeka Kemendikbudristek. Skor:{" "}
+          <span className="font-black text-rose-600">Merah = Kurang</span>
+          {" · "}
+          <span className="font-black text-[#C48800]">Kuning = Cukup</span>
+          {" · "}
+          <span className="font-black text-emerald-700">Hijau = Baik</span>
+        </p>
+        <div className="space-y-3">
+          {kerangka.map((item) => (
+            <article
+              key={item.id}
+              className={`flex items-start justify-between gap-3 rounded-2xl border-2 px-4 py-3 ${
+                item.tingkat === "baik"
+                  ? "border-emerald-300 bg-emerald-50"
+                  : item.tingkat === "cukup"
+                    ? "border-[#F0AB00]/70 bg-[#FFF8E8]"
+                    : "border-rose-300 bg-rose-50"
               }`}
             >
-              <p className="mx-auto mb-2 flex h-8 w-8 items-center justify-center rounded-full bg-[#1C01A5] text-sm font-black text-white">
-                {indeks + 1}
-              </p>
-              <p className="text-sm font-extrabold leading-snug text-[#1C01A5]">
-                {item.judul}
-              </p>
-              <p className="mt-1 text-[10px] font-semibold leading-snug text-[#1C01A5]/65">
-                {cuplikanKartu(item.isi, 8)}
-              </p>
-            </div>
+              <div className="min-w-0">
+                <p className="text-[10px] font-extrabold uppercase tracking-[0.16em] text-[#1C01A5]/55">
+                  Komponen utama
+                </p>
+                <h4 className="mt-0.5 text-base font-black text-[#1C01A5]">
+                  {item.judul}
+                </h4>
+                <p className="mt-1 text-sm font-semibold leading-snug text-[#1C01A5]/75">
+                  {item.keterangan}
+                </p>
+              </div>
+              <LencanaTingkat tingkat={item.tingkat} />
+            </article>
           ))}
         </div>
+        {materiPokok.length > 0 ? (
+          <div className="mt-5">
+            <p className="mb-3 text-xs font-extrabold uppercase tracking-[0.18em] text-[#1C01A5]/55">
+              Materi pokok · tujuan subbab buku siswa
+            </p>
+            <div className="grid gap-3 sm:grid-cols-2">
+              {materiPokok.map((item, indeks) => (
+                <article
+                  key={item.id}
+                  className={`flex items-start justify-between gap-3 rounded-2xl border-2 px-4 py-3 ${
+                    item.tingkat === "baik"
+                      ? "border-emerald-300 bg-emerald-50"
+                      : item.tingkat === "cukup"
+                        ? "border-[#F0AB00]/70 bg-[#FFF8E8]"
+                        : "border-rose-300 bg-rose-50"
+                  }`}
+                >
+                  <div className="min-w-0">
+                    <p className="text-[10px] font-extrabold uppercase tracking-wider text-[#1C01A5]/50">
+                      {indeks + 1}
+                    </p>
+                    <h4 className="text-sm font-black leading-snug text-[#1C01A5] sm:text-base">
+                      {item.judul}
+                    </h4>
+                    <p className="mt-1 text-xs font-semibold leading-snug text-[#1C01A5]/70">
+                      {item.keterangan}
+                    </p>
+                  </div>
+                  <LencanaTingkat tingkat={item.tingkat} />
+                </article>
+              ))}
+            </div>
+          </div>
+        ) : null}
       </div>
 
       <div>

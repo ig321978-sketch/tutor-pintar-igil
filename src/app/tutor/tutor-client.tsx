@@ -1298,7 +1298,7 @@ export default function TutorAI() {
               <span className="text-[#F0AB00]">Menjadi Beasiswa Instan</span>
             </h1>
             <p className="w-full text-slate-600 text-lg mb-8">
-              Ketik judul materi atau unggah halaman buku. $IGIL menampilkan peta konsep dan kartu ringkasan dulu, baru membuka soal latihan untuk menambang token.
+              Ketik judul materi atau unggah halaman buku. $IGIL menampilkan silabus Kurikulum Merdeka dan kartu ringkasan dulu, baru membuka soal latihan untuk menambang token.
             </p>
             <Link
               href="/ruang-belajar"
@@ -1374,6 +1374,9 @@ export default function TutorAI() {
                 mapel={sesiMapel || (modeInput === "teks" ? mapel : "Berdasarkan Buku")}
                 kelas={kelas}
                 penjelasan={penjelasanAktif}
+                naskahKurikulum={
+                  hasilData.curriculum_view || hasilData.penjelasan
+                }
                 sapaan={hasilData.sapaan}
                 kartuAktif={kartuAktif}
                 gambarSisipan={hasilData.gambarSisipan}
@@ -1402,7 +1405,7 @@ export default function TutorAI() {
                   className="mt-4 inline-flex items-center gap-2 rounded-xl border-2 border-[#1C01A5]/20 bg-white px-4 py-2 text-sm font-extrabold text-[#1C01A5] hover:border-[#F0AB00]"
                 >
                   <ArrowLeft className="h-4 w-4" />
-                  Lihat peta konsep lagi
+                  Lihat silabus lagi
                 </button>
               </div>
             )}
