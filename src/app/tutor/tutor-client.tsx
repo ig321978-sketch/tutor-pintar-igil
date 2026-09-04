@@ -40,7 +40,7 @@ import {
 } from "lucide-react";
 
 type ModeInput = "teks" | "gambar";
-type StatusPemutar = "siaga" | "memutar" | "jeda";
+type StatusPemutar = "siaga" | "menyiapkan" | "memutar" | "jeda";
 
 type ModulTutor = {
   sapaan: string;
@@ -191,7 +191,10 @@ export default function TutorAI() {
   const doodleAbortRef = useRef<AbortController | null>(null);
   const urlAudioRef = useRef<string | null>(null);
   const kelaminAudioRef = useRef<KelaminGuru | null>(null);
-  const muatAudioPromiseRef = useRef<Promise<boolean> | null>(null);
+  const muatAwalPromiseRef = useRef<Promise<boolean> | null>(null);
+  const muatPenuhPromiseRef = useRef<Promise<boolean> | null>(null);
+  const audioLengkapRef = useRef(false);
+  const waktuAudioRef = useRef(0);
   const pemutarRef = useRef<KontrolPemutarGuru | null>(null);
   const sudahSiapAudioRef = useRef(false);
   const [srcAudio, setSrcAudio] = useState<string | null>(null);
@@ -423,8 +426,11 @@ export default function TutorAI() {
     setStatusPemutar("siaga");
     setWaktuAudio(0);
     setDurasiAudio(0);
+    waktuAudioRef.current = 0;
     kelaminAudioRef.current = null;
-    muatAudioPromiseRef.current = null;
+    muatAwalPromiseRef.current = null;
+    muatPenuhPromiseRef.current = null;
+    audioLengkapRef.current = false;
     sudahSiapAudioRef.current = false;
   };
 
@@ -810,69 +816,128 @@ export default function TutorAI() {
   const audioChirpSiap = (kelaminSuara: KelaminGuru = guruKelamin) =>
     Boolean(urlAudioRef.current && kelaminAudioRef.current === kelaminSuara);
 
-  const siapkanAudioGuru = async (
-    kelaminSuara: KelaminGuru = guruKelamin,
+  const pasangAudioChirp = (
+    data: {
+      mime?: string;
+      audioBase64: string;
+      kata?: KataWaktu[];
+      durasiDetik?: number;
+    },
+    kelaminSuara: KelaminGuru,
+    lengkap: boolean,
+  ) => {
+    const biner = Uint8Array.from(atob(data.audioBase64), (c) =>
+      c.charCodeAt(0),
+    );
+    const url = URL.createObjectURL(
+      new Blob([biner], { type: data.mime || "audio/wav" }),
+    );
+    const urlLama = urlAudioRef.current;
+    urlAudioRef.current = url;
+    kelaminAudioRef.current = kelaminSuara;
+    audioLengkapRef.current = lengkap;
+    if (urlLama) URL.revokeObjectURL(urlLama);
+    setSrcAudio(url);
+    setKataWaktu(data.kata ?? []);
+    const durasiChirp =
+      typeof data.durasiDetik === "number" && data.durasiDetik > 0
+        ? data.durasiDetik
+        : data.kata?.[data.kata.length - 1]?.selesai;
+    if (durasiChirp) setDurasiAudio(durasiChirp);
+    setModeChirp(true);
+    if (sedangMemutarRef.current) {
+      void pemutarRef.current?.mainkanDari(url, waktuAudioRef.current);
+    }
+    return url;
+  };
+
+  const mintaAudioChirp = async (
+    kelaminSuara: KelaminGuru,
+    awalSaja: boolean,
   ): Promise<boolean> => {
     if (!hasilData) return false;
-    if (audioChirpSiap(kelaminSuara)) return true;
-    if (muatAudioPromiseRef.current) return muatAudioPromiseRef.current;
-
     const naskah = naskahTutorUntukSuara(
       hasilData.sapaan,
       hasilData.penjelasan,
       nama,
     );
-    const permintaan = (async () => {
-      try {
-        const respons = await fetch("/api/tts", {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({
-            teks: naskah,
-            kelamin: kelaminSuara === "pria" ? "male" : "female",
-            kelas,
-          }),
-        });
-        const data = (await respons.json()) as {
-          berhasil?: boolean;
-          cadangan?: boolean;
-          mime?: string;
-          audioBase64?: string;
-          kata?: KataWaktu[];
-          durasiDetik?: number;
-        };
-        if (data.berhasil && data.audioBase64 && !data.cadangan) {
-          const biner = Uint8Array.from(atob(data.audioBase64), (c) =>
-            c.charCodeAt(0),
-          );
-          const url = URL.createObjectURL(
-            new Blob([biner], { type: data.mime || "audio/wav" }),
-          );
-          if (urlAudioRef.current) URL.revokeObjectURL(urlAudioRef.current);
-          urlAudioRef.current = url;
-          kelaminAudioRef.current = kelaminSuara;
-          setSrcAudio(url);
-          setKataWaktu(data.kata ?? []);
-          const durasiChirp =
-            typeof data.durasiDetik === "number" && data.durasiDetik > 0
-              ? data.durasiDetik
-              : data.kata?.[data.kata.length - 1]?.selesai;
-          if (durasiChirp) setDurasiAudio(durasiChirp);
-          setModeChirp(true);
-          return true;
-        }
-      } catch {
-        // jatuh ke cadangan browser
+    try {
+      const respons = await fetch("/api/tts", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          teks: naskah,
+          kelamin: kelaminSuara === "pria" ? "male" : "female",
+          kelas,
+          awalSaja,
+        }),
+      });
+      const data = (await respons.json()) as {
+        berhasil?: boolean;
+        cadangan?: boolean;
+        mime?: string;
+        audioBase64?: string;
+        kata?: KataWaktu[];
+        durasiDetik?: number;
+      };
+      if (awalSaja && audioLengkapRef.current && audioChirpSiap(kelaminSuara)) {
+        return true;
       }
-      return false;
-    })();
+      if (data.berhasil && data.audioBase64 && !data.cadangan) {
+        pasangAudioChirp(
+          {
+            mime: data.mime,
+            audioBase64: data.audioBase64,
+            kata: data.kata,
+            durasiDetik: data.durasiDetik,
+          },
+          kelaminSuara,
+          !awalSaja,
+        );
+        return true;
+      }
+    } catch {
+      // Chirp belum siap
+    }
+    return false;
+  };
 
-    muatAudioPromiseRef.current = permintaan;
+  const siapkanAudioAwal = async (
+    kelaminSuara: KelaminGuru = guruKelamin,
+  ): Promise<boolean> => {
+    if (!hasilData) return false;
+    if (audioChirpSiap(kelaminSuara)) return true;
+    if (muatAwalPromiseRef.current) return muatAwalPromiseRef.current;
+    const permintaan = mintaAudioChirp(kelaminSuara, true);
+    muatAwalPromiseRef.current = permintaan;
     try {
       return await permintaan;
     } finally {
-      muatAudioPromiseRef.current = null;
+      muatAwalPromiseRef.current = null;
     }
+  };
+
+  const siapkanAudioPenuh = async (
+    kelaminSuara: KelaminGuru = guruKelamin,
+  ): Promise<boolean> => {
+    if (!hasilData) return false;
+    if (audioLengkapRef.current && audioChirpSiap(kelaminSuara)) return true;
+    if (muatPenuhPromiseRef.current) return muatPenuhPromiseRef.current;
+    const permintaan = mintaAudioChirp(kelaminSuara, false);
+    muatPenuhPromiseRef.current = permintaan;
+    try {
+      return await permintaan;
+    } finally {
+      muatPenuhPromiseRef.current = null;
+    }
+  };
+
+  const siapkanAudioGuru = async (
+    kelaminSuara: KelaminGuru = guruKelamin,
+  ): Promise<boolean> => {
+    const awal = await siapkanAudioAwal(kelaminSuara);
+    void siapkanAudioPenuh(kelaminSuara);
+    return awal;
   };
 
   const putarDariAwal = async (kelaminSuara: KelaminGuru = guruKelamin) => {
@@ -883,8 +948,21 @@ export default function TutorAI() {
 
     const siap = audioChirpSiap(kelaminSuara)
       ? true
-      : await siapkanAudioGuru(kelaminSuara);
-    if (siap) {
+      : await siapkanAudioAwal(kelaminSuara);
+    void siapkanAudioPenuh(kelaminSuara);
+    if (siap && urlAudioRef.current) {
+      sedangMemutarRef.current = true;
+      setModeChirp(true);
+      setStatusPemutar("memutar");
+      try {
+        await pemutarRef.current?.mainkanDariAwal(urlAudioRef.current);
+        return;
+      } catch {
+        // coba naskah penuh dulu, baru cadangan browser
+      }
+    }
+    const penuh = await siapkanAudioPenuh(kelaminSuara);
+    if (penuh && urlAudioRef.current) {
       sedangMemutarRef.current = true;
       setModeChirp(true);
       setStatusPemutar("memutar");
@@ -900,6 +978,7 @@ export default function TutorAI() {
 
   const mulaiSuara = () => {
     if (!hasilData) return;
+    if (statusPemutar === "menyiapkan") return;
 
     if (statusPemutar === "jeda") {
       sedangMemutarRef.current = true;
@@ -938,6 +1017,8 @@ export default function TutorAI() {
       setModeChirp(true);
       setStatusPemutar("memutar");
       setWaktuAudio(0);
+      waktuAudioRef.current = 0;
+      void siapkanAudioPenuh();
       void pemutarRef.current
         ?.mainkanDariAwal(urlAudioRef.current)
         .catch(() => {
@@ -946,7 +1027,25 @@ export default function TutorAI() {
       return;
     }
 
-    void putarDariAwal();
+    setStatusPemutar("menyiapkan");
+    void (async () => {
+      const siap = await siapkanAudioAwal();
+      if (siap && urlAudioRef.current) {
+        sedangMemutarRef.current = true;
+        setModeChirp(true);
+        setStatusPemutar("memutar");
+        setWaktuAudio(0);
+        waktuAudioRef.current = 0;
+        void siapkanAudioPenuh();
+        try {
+          await pemutarRef.current?.mainkanDariAwal(urlAudioRef.current);
+          return;
+        } catch {
+          // lanjut ke naskah penuh
+        }
+      }
+      await putarDariAwal();
+    })();
   };
 
   const jedaSuara = () => {
@@ -971,6 +1070,7 @@ export default function TutorAI() {
     if (detik >= waktuAudio - 0.05) return;
     const aman = Math.max(0, detik);
     setWaktuAudio(aman);
+    waktuAudioRef.current = aman;
     if (modeChirp && urlAudioRef.current) {
       pemutarRef.current?.cariKe(aman);
       setIndeksKata(indeksKataAktif(kataWaktu, aman));
@@ -1006,6 +1106,7 @@ export default function TutorAI() {
 
   const padaWaktuAudio = useCallback(
     (detik: number) => {
+      waktuAudioRef.current = detik;
       setWaktuAudio(detik);
       setIndeksKata(indeksKataAktif(kataWaktu, detik));
     },
@@ -1022,6 +1123,23 @@ export default function TutorAI() {
   }, []);
 
   const padaSelesaiAudio = useCallback(() => {
+    if (!audioLengkapRef.current) {
+      sedangMemutarRef.current = true;
+      setStatusPemutar("menyiapkan");
+      void siapkanAudioPenuh().then((ok) => {
+        if (ok && urlAudioRef.current) {
+          setStatusPemutar("memutar");
+          void pemutarRef.current?.mainkanDari(
+            urlAudioRef.current,
+            waktuAudioRef.current,
+          );
+          return;
+        }
+        sedangMemutarRef.current = false;
+        setStatusPemutar("siaga");
+      });
+      return;
+    }
     sedangMemutarRef.current = false;
     setStatusPemutar("siaga");
     setWaktuAudio((sebelum) => (durasiAudio > 0 ? durasiAudio : sebelum));
@@ -1037,7 +1155,7 @@ export default function TutorAI() {
     if (!hasilData || sudahSiapAudioRef.current) return;
     sudahSiapAudioRef.current = true;
     void siapkanAudioGuru();
-    // Siapkan audio Chirp saat modul siap, agar Play langsung berbunyi.
+    // Siapkan potongan awal Chirp dulu, lalu naskah penuh di belakang.
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [hasilData]);
 
@@ -1374,6 +1492,7 @@ export default function TutorAI() {
           durasi={durasiAudio}
           padaToggle={toggleSuara}
           padaUlang={cariUlangSuara}
+          menyiapkan={statusPemutar === "menyiapkan"}
         />
         </>
       )}

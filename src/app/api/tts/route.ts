@@ -2,6 +2,7 @@ import { NextResponse } from "next/server";
 import {
   durasiWavDetik,
   namaSuaraChirp,
+  potongNaskahAwal,
   sintesisChirp,
   ttsSiapDipakai,
 } from "@/lib/google-tts";
@@ -9,7 +10,7 @@ import { naskahLisan } from "@/lib/naskah-lisan";
 import { ambilCacheTts, kunciCacheTts, simpanCacheTts } from "@/lib/tts-cache";
 import { normalisasiKelaminTts, waktuKataDariDurasi } from "@/lib/tts";
 
-export const maxDuration = 60;
+export const maxDuration = 120;
 
 export async function POST(req: Request) {
   try {
@@ -43,8 +44,9 @@ export async function POST(req: Request) {
 
     const kelamin = normalisasiKelaminTts(body.kelamin ?? body.gender);
     const kelas = typeof body.kelas === "string" ? body.kelas : "3 SD";
+    const awalSaja = body.awalSaja === true;
     const suara = namaSuaraChirp(kelamin, kelas);
-    const kunci = kunciCacheTts(suara, naskah);
+    const kunci = kunciCacheTts(suara, awalSaja ? `awal\n${naskah}` : naskah);
 
     const cache = await ambilCacheTts(kunci);
     if (cache) {
@@ -56,7 +58,10 @@ export async function POST(req: Request) {
         audioBase64: cache.audio.toString("base64"),
         durasiDetik: durasi,
         suara,
-        kata: waktuKataDariDurasi(naskah, durasi),
+        kata: waktuKataDariDurasi(
+          awalSaja ? potongNaskahAwal(naskah) : naskah,
+          durasi,
+        ),
       });
     }
 
@@ -69,7 +74,7 @@ export async function POST(req: Request) {
     }
 
     try {
-      const audio = await sintesisChirp(naskah, suara);
+      const audio = await sintesisChirp(naskah, suara, { awalSaja });
       const durasi = durasiWavDetik(audio);
       await simpanCacheTts(kunci, audio, {
         mime: "audio/wav",
@@ -83,7 +88,10 @@ export async function POST(req: Request) {
         audioBase64: audio.toString("base64"),
         durasiDetik: durasi,
         suara,
-        kata: waktuKataDariDurasi(naskah, durasi),
+        kata: waktuKataDariDurasi(
+          awalSaja ? potongNaskahAwal(naskah) : naskah,
+          durasi,
+        ),
       });
     } catch (error: unknown) {
       const pesan = error instanceof Error ? error.message : "Sintesis gagal.";

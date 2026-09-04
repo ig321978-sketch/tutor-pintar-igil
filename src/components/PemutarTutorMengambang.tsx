@@ -1,7 +1,7 @@
 "use client";
 
 import { useRef } from "react";
-import { Pause, Play } from "lucide-react";
+import { Loader2, Pause, Play } from "lucide-react";
 
 export function formatDurasi(detik: number): string {
   if (!Number.isFinite(detik) || detik < 0) return "0:00";
@@ -17,6 +17,7 @@ export default function PemutarTutorMengambang({
   padaToggle,
   padaUlang,
   disabled = false,
+  menyiapkan = false,
 }: {
   memutar: boolean;
   waktu: number;
@@ -24,6 +25,7 @@ export default function PemutarTutorMengambang({
   padaToggle: () => void;
   padaUlang: (detik: number) => void;
   disabled?: boolean;
+  menyiapkan?: boolean;
 }) {
   const jalurRef = useRef<HTMLDivElement | null>(null);
   const batasGeserRef = useRef(0);
@@ -53,10 +55,18 @@ export default function PemutarTutorMengambang({
           onClick={padaToggle}
           disabled={disabled}
           className="flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-[#F0AB00] text-[#1C01A5] shadow-md transition-all hover:bg-[#e09e00] disabled:opacity-50"
-          title={memutar ? "Jeda" : "Putar"}
-          aria-label={memutar ? "Jeda tutor suara" : "Putar tutor suara"}
+          title={menyiapkan ? "Menyiapkan" : memutar ? "Jeda" : "Putar"}
+          aria-label={
+            menyiapkan
+              ? "Menyiapkan tutor suara"
+              : memutar
+                ? "Jeda tutor suara"
+                : "Putar tutor suara"
+          }
         >
-          {memutar ? (
+          {menyiapkan ? (
+            <Loader2 className="h-5 w-5 animate-spin" />
+          ) : memutar ? (
             <Pause className="h-5 w-5 fill-current" />
           ) : (
             <Play className="h-5 w-5 fill-current" />

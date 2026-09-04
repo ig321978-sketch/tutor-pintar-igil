@@ -2,10 +2,12 @@ import { GoogleAuth } from "google-auth-library";
 import { suaraChirpGuru } from "@/lib/guru";
 import type { KelaminTts } from "@/lib/tts";
 
-const BATAS_KARAKTER = 900;
-const LAJU_BICARA = 0.92;
+const BATAS_KARAKTER = 4500;
+const BATAS_AWAL = 1100;
+const LAJU_BICARA = 1;
 const SAMPLE_RATE = 24000;
-const JEDA_ANTAR_BLOK_MS = 420;
+const JEDA_ANTAR_BLOK_MS = 160;
+const PARALEL_SINTESIS = 3;
 
 export function namaSuaraChirp(
   kelamin: KelaminTts,
@@ -51,23 +53,26 @@ async function tokenAkses(): Promise<string> {
   return hasil.token;
 }
 
-function pecahKalimat(teks: string): string[] {
-  const bagian = teks.split(/(?<=[.!?…])\s+/).map((item) => item.trim()).filter(Boolean);
+function pecahKalimat(teks: string, batas: number): string[] {
+  const bagian = teks
+    .split(/(?<=[.!?…])\s+/)
+    .map((item) => item.trim())
+    .filter(Boolean);
   const hasil: string[] = [];
   let buffer = "";
   for (const kalimat of bagian) {
     const calon = buffer ? `${buffer} ${kalimat}` : kalimat;
-    if (calon.length <= BATAS_KARAKTER) {
+    if (calon.length <= batas) {
       buffer = calon;
       continue;
     }
     if (buffer) hasil.push(buffer);
-    if (kalimat.length <= BATAS_KARAKTER) {
+    if (kalimat.length <= batas) {
       buffer = kalimat;
       continue;
     }
-    for (let i = 0; i < kalimat.length; i += BATAS_KARAKTER) {
-      hasil.push(kalimat.slice(i, i + BATAS_KARAKTER));
+    for (let i = 0; i < kalimat.length; i += batas) {
+      hasil.push(kalimat.slice(i, i + batas));
     }
     buffer = "";
   }
@@ -75,15 +80,68 @@ function pecahKalimat(teks: string): string[] {
   return hasil;
 }
 
-export function potongNaskah(teks: string): string[] {
+function kemasParagraf(sumber: string[], batas: number): string[] {
+  const hasil: string[] = [];
+  let buffer = "";
+  for (const item of sumber) {
+    const calon = buffer ? `${buffer}\n\n${item}` : item;
+    if (calon.length <= batas) {
+      buffer = calon;
+      continue;
+    }
+    if (buffer) hasil.push(buffer);
+    if (item.length <= batas) {
+      buffer = item;
+      continue;
+    }
+    hasil.push(...pecahKalimat(item, batas));
+    buffer = "";
+  }
+  if (buffer) hasil.push(buffer);
+  return hasil;
+}
+
+export function potongNaskah(teks: string, batas = BATAS_KARAKTER): string[] {
   const blok = teks
     .split(/\n\n+/)
     .map((item) => item.replace(/\s+/g, " ").trim())
     .filter(Boolean);
-  const sumber = blok.length > 0 ? blok : [teks.replace(/\s+/g, " ").trim()].filter(Boolean);
-  return sumber.flatMap((item) =>
-    item.length <= BATAS_KARAKTER ? [item] : pecahKalimat(item),
-  );
+  const sumber =
+    blok.length > 0
+      ? blok
+      : [teks.replace(/\s+/g, " ").trim()].filter(Boolean);
+  return kemasParagraf(sumber, batas);
+}
+
+export function potongNaskahAwal(teks: string): string {
+  return potongNaskah(teks, BATAS_AWAL)[0] ?? "";
+}
+
+function keMarkup(teks: string): string {
+  return teks
+    .split(/\n\n+/)
+    .map((item) => item.replace(/\s+/g, " ").trim())
+    .filter(Boolean)
+    .join(" [pause] ");
+}
+
+export function pcmDariAudioGoogle(buf: Buffer): Buffer {
+  if (buf.length < 12 || buf.toString("ascii", 0, 4) !== "RIFF") {
+    return buf;
+  }
+
+  let offset = 12;
+  while (offset + 8 <= buf.length) {
+    const id = buf.toString("ascii", offset, offset + 4);
+    const size = buf.readUInt32LE(offset + 4);
+    const isi = offset + 8;
+    if (id === "data") {
+      return buf.subarray(isi, Math.min(buf.length, isi + size));
+    }
+    offset = isi + size + (size % 2);
+  }
+
+  return buf.subarray(Math.min(44, buf.length));
 }
 
 function bungkusWav(pcm: Buffer, sampleRate = SAMPLE_RATE): Buffer {
@@ -110,15 +168,35 @@ function sunyiPcm(milidetik: number, sampleRate = SAMPLE_RATE): Buffer {
 }
 
 export function durasiWavDetik(wav: Buffer, sampleRate = SAMPLE_RATE): number {
-  const pcm = Math.max(0, wav.length - 44);
-  return Math.max(0.4, pcm / (sampleRate * 2));
+  const pcm = pcmDariAudioGoogle(wav);
+  return Math.max(0.4, pcm.length / (sampleRate * 2));
 }
 
-async function sintesisSatu(
-  teks: string,
+async function petaBatas<T, R>(
+  daftar: T[],
+  batas: number,
+  kerja: (item: T, indeks: number) => Promise<R>,
+): Promise<R[]> {
+  const hasil = new Array<R>(daftar.length);
+  let berikutnya = 0;
+  const pekerja = async () => {
+    while (berikutnya < daftar.length) {
+      const indeks = berikutnya;
+      berikutnya += 1;
+      hasil[indeks] = await kerja(daftar[indeks], indeks);
+    }
+  };
+  await Promise.all(
+    Array.from({ length: Math.min(batas, daftar.length) }, () => pekerja()),
+  );
+  return hasil;
+}
+
+async function panggilSintesis(
+  input: { markup?: string; text?: string },
   suara: string,
   token: string,
-): Promise<Buffer> {
+): Promise<{ ok: boolean; audio?: Buffer; status?: string; pesan?: string; kuota?: boolean }> {
   const proyek = process.env.GOOGLE_CLOUD_PROJECT_ID ?? "";
   const respons = await fetch(
     "https://texttospeech.googleapis.com/v1/text:synthesize",
@@ -130,7 +208,7 @@ async function sintesisSatu(
         "x-goog-user-project": proyek,
       },
       body: JSON.stringify({
-        input: { text: teks },
+        input,
         voice: {
           languageCode: "id-ID",
           name: suara,
@@ -139,6 +217,7 @@ async function sintesisSatu(
           audioEncoding: "LINEAR16",
           sampleRateHertz: SAMPLE_RATE,
           speakingRate: LAJU_BICARA,
+          effectsProfileId: ["handset-class-device"],
         },
       }),
     },
@@ -151,30 +230,62 @@ async function sintesisSatu(
 
   if (!respons.ok || !data.audioContent) {
     const status = data.error?.status || String(respons.status);
-    const pesan = data.error?.message || "Sintesis Chirp gagal.";
-    const galat = new Error(`${status}: ${pesan}`);
-    (galat as Error & { kuota?: boolean }).kuota =
-      respons.status === 429 || status === "RESOURCE_EXHAUSTED";
-    throw galat;
+    return {
+      ok: false,
+      status,
+      pesan: data.error?.message || "Sintesis Chirp gagal.",
+      kuota: respons.status === 429 || status === "RESOURCE_EXHAUSTED",
+    };
   }
 
-  return Buffer.from(data.audioContent, "base64");
+  return {
+    ok: true,
+    audio: pcmDariAudioGoogle(Buffer.from(data.audioContent, "base64")),
+  };
+}
+
+async function sintesisSatu(
+  teks: string,
+  suara: string,
+  token: string,
+): Promise<Buffer> {
+  const markup = keMarkup(teks);
+  const utama = await panggilSintesis({ markup }, suara, token);
+  const hasil =
+    utama.ok || utama.kuota
+      ? utama
+      : await panggilSintesis({ text: markup.replace(/\[pause(?: short| long)?\]/g, " ") }, suara, token);
+  if (!hasil.ok || !hasil.audio) {
+    const galat = new Error(`${hasil.status || "ERROR"}: ${hasil.pesan || "Sintesis Chirp gagal."}`);
+    (galat as Error & { kuota?: boolean }).kuota = Boolean(hasil.kuota);
+    throw galat;
+  }
+  return hasil.audio;
 }
 
 export async function sintesisChirp(
   teks: string,
   suara: string,
+  opsi?: { awalSaja?: boolean },
 ): Promise<Buffer> {
   const token = await tokenAkses();
-  const potongan = potongNaskah(teks);
+  const potongan = opsi?.awalSaja
+    ? [potongNaskahAwal(teks)].filter(Boolean)
+    : potongNaskah(teks);
   if (potongan.length === 0) {
     throw new Error("Naskah kosong.");
   }
 
+  const pcmPotong = await petaBatas(
+    potongan,
+    PARALEL_SINTESIS,
+    (item) => sintesisSatu(item, suara, token),
+  );
+
   const pcm: Buffer[] = [];
-  for (let i = 0; i < potongan.length; i += 1) {
+  for (let i = 0; i < pcmPotong.length; i += 1) {
     if (i > 0) pcm.push(sunyiPcm(JEDA_ANTAR_BLOK_MS));
-    pcm.push(await sintesisSatu(potongan[i], suara, token));
+    pcm.push(pcmPotong[i]);
   }
   return bungkusWav(Buffer.concat(pcm));
 }

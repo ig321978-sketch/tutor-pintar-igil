@@ -13,29 +13,33 @@ type Props = {
 
 export type KontrolPemutarGuru = {
   mainkanDariAwal: (url?: string | null) => Promise<void>;
+  mainkanDari: (url: string, detik?: number) => Promise<void>;
   lanjutkan: () => Promise<void>;
   jeda: () => void;
   cariKe: (detik: number) => void;
 };
 
+async function siapkanElemen(el: HTMLAudioElement): Promise<void> {
+  if (el.readyState >= HTMLMediaElement.HAVE_FUTURE_DATA) return;
+  await new Promise<void>((selesai, gagal) => {
+    const siap = () => {
+      el.removeEventListener("canplay", siap);
+      el.removeEventListener("error", rusak);
+      selesai();
+    };
+    const rusak = () => {
+      el.removeEventListener("canplay", siap);
+      el.removeEventListener("error", rusak);
+      gagal(new Error("Audio gagal dimuat."));
+    };
+    el.addEventListener("canplay", siap);
+    el.addEventListener("error", rusak);
+    el.load();
+  });
+}
+
 async function mainkanElemen(el: HTMLAudioElement): Promise<void> {
-  if (el.readyState < HTMLMediaElement.HAVE_FUTURE_DATA) {
-    await new Promise<void>((selesai, gagal) => {
-      const siap = () => {
-        el.removeEventListener("canplay", siap);
-        el.removeEventListener("error", rusak);
-        selesai();
-      };
-      const rusak = () => {
-        el.removeEventListener("canplay", siap);
-        el.removeEventListener("error", rusak);
-        gagal(new Error("Audio gagal dimuat."));
-      };
-      el.addEventListener("canplay", siap);
-      el.addEventListener("error", rusak);
-      el.load();
-    });
-  }
+  await siapkanElemen(el);
   await el.play();
 }
 
@@ -59,6 +63,18 @@ const PemutarAudioGuru = forwardRef<KontrolPemutarGuru, Props>(
           }
           el.currentTime = 0;
           await mainkanElemen(el);
+        },
+        mainkanDari: async (url, detik = 0) => {
+          const el = audioRef.current;
+          if (!el || !url) return;
+          if (el.src !== url) {
+            el.src = url;
+            el.load();
+          }
+          await siapkanElemen(el);
+          const batas = Number.isFinite(el.duration) ? el.duration : detik;
+          el.currentTime = Math.max(0, Math.min(detik, batas));
+          await el.play();
         },
         lanjutkan: async () => {
           const el = audioRef.current;
