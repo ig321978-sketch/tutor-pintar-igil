@@ -1,0 +1,15 @@
+---
+description: Deploy every user-requested change to igiligil.xyz immediately
+alwaysApply: true
+---
+
+# Deploy to igiligil.xyz immediately
+
+After finishing any change, addition, or removal the user requested:
+
+1. Commit only the relevant files. Never commit `.env`, secrets, or `supabase/.temp/`.
+2. Fast-forward or merge into `master` and push `origin/master` so Vercel updates https://www.igiligil.xyz and https://igiligil.xyz.
+3. Verify the live page (hard refresh if the CDN is stale) before saying it is online.
+4. Do not wait for the user to ask for commit, push, or deploy.
+
+Do not force-push `master`.

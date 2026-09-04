@@ -959,13 +959,6 @@ export default function TutorAI() {
             <p className="w-full text-slate-600 text-lg mb-8">
               Ketik judul materi atau unggah halaman buku. $IGIL menampilkan peta konsep dan kartu ringkasan dulu, baru membuka soal latihan untuk menambang token.
             </p>
-            <div className="mb-8 text-left">
-              <PilihGuru
-                kelas={kelas}
-                nilai={guruKelamin}
-                onGanti={gantiGuru}
-              />
-            </div>
             <Link
               href="/ruang-belajar"
               className={`${kelasTombolUtama} px-8 py-4 rounded-full font-extrabold text-lg shadow-lg shadow-[#1C01A5]/25 mx-auto mt-4 flex items-center justify-center gap-2 text-center`}
