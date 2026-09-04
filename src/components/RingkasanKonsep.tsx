@@ -4,11 +4,13 @@ import {
   BookOpen,
   Compass,
   Lightbulb,
+  Loader2,
   Sparkles,
   Star,
   Target,
 } from "lucide-react";
 import { susunKonsepMateri } from "@/lib/konsep-materi";
+import type { GambarSisipan } from "@/components/GambarDoodle";
 
 const IKON = [Lightbulb, Compass, Target, Star];
 
@@ -37,18 +39,64 @@ function posisiCabang(
   ][indeks] ?? { top: "50%", left: "50%" };
 }
 
+function doodleKartu(
+  gambarSisipan: GambarSisipan[] | undefined,
+  indeks: number,
+): GambarSisipan | undefined {
+  return gambarSisipan?.find((item) => item.setelahParagraf === indeks + 1);
+}
+
+function MiniDoodle({
+  src,
+  alt,
+  memuat,
+  ukuran = "kartu",
+}: {
+  src?: string;
+  alt: string;
+  memuat: boolean;
+  ukuran?: "peta" | "kartu";
+}) {
+  const kotak =
+    ukuran === "peta"
+      ? "h-12 w-12 sm:h-14 sm:w-14"
+      : "h-20 w-20 shrink-0 sm:h-24 sm:w-24";
+  return (
+    <div
+      className={`relative shrink-0 overflow-hidden rounded-2xl border-2 border-[#1C01A5]/15 bg-[#fbf6ea] shadow-inner ${kotak}`}
+    >
+      {src ? (
+        // eslint-disable-next-line @next/next/no-img-element
+        <img src={src} alt={alt} className="h-full w-full object-cover" />
+      ) : memuat ? (
+        <div className="flex h-full w-full items-center justify-center">
+          <Loader2 className="h-5 w-5 animate-spin text-[#1C01A5]" />
+        </div>
+      ) : (
+        <div className="flex h-full w-full items-center justify-center text-[#1C01A5]/40">
+          <Sparkles className="h-6 w-6" />
+        </div>
+      )}
+    </div>
+  );
+}
+
 export default function RingkasanKonsep({
   materi,
   mapel,
   penjelasan,
   sapaan,
   kartuAktif,
+  gambarSisipan,
+  doodleMemuat = false,
 }: {
   materi: string;
   mapel: string;
   penjelasan: string;
   sapaan: string;
   kartuAktif: number;
+  gambarSisipan?: GambarSisipan[];
+  doodleMemuat?: boolean;
 }) {
   const { ideUtama, kartu } = susunKonsepMateri(materi, penjelasan);
 
@@ -62,7 +110,7 @@ export default function RingkasanKonsep({
           {ideUtama}
         </h2>
         <p className="mt-2 text-sm font-bold text-[#1C01A5]/70">
-          {mapel} · Infografis sebelum soal latihan
+          {mapel} · Infografis, peta pikiran, dan kartu pembahasan
         </p>
         <p className="mt-4 text-lg font-semibold text-slate-700">{sapaan}</p>
       </div>
@@ -81,6 +129,7 @@ export default function RingkasanKonsep({
           </div>
           {kartu.map((item, indeks) => {
             const Ikon = IKON[indeks % IKON.length];
+            const doodle = doodleKartu(gambarSisipan, indeks);
             return (
               <div key={`peta-hp-${item.judul}-${indeks}`} className="flex gap-3">
                 <div className="flex w-6 flex-col items-center">
@@ -88,15 +137,23 @@ export default function RingkasanKonsep({
                   <div className="h-3 w-3 rounded-full bg-[#1C01A5]" />
                 </div>
                 <div
-                  className={`flex-1 rounded-2xl border-2 px-4 py-3 ${item.warna} ${
+                  className={`flex flex-1 items-center gap-3 rounded-2xl border-2 px-3 py-3 ${item.warna} ${
                     kartuAktif === indeks ? "ring-4 ring-[#1C01A5]/30" : ""
                   }`}
                 >
-                  <div className="mb-1 flex items-center gap-2">
-                    <Ikon className="h-4 w-4 text-[#1C01A5]" />
-                    <p className="text-sm font-extrabold text-[#1C01A5]">
-                      {item.judul}
-                    </p>
+                  <MiniDoodle
+                    src={doodle?.src}
+                    alt={doodle?.alt || item.judul}
+                    memuat={doodleMemuat && !doodle?.src}
+                    ukuran="peta"
+                  />
+                  <div className="min-w-0">
+                    <div className="mb-1 flex items-center gap-2">
+                      <Ikon className="h-4 w-4 shrink-0 text-[#1C01A5]" />
+                      <p className="text-sm font-extrabold text-[#1C01A5]">
+                        {item.judul}
+                      </p>
+                    </div>
                   </div>
                 </div>
               </div>
@@ -135,10 +192,11 @@ export default function RingkasanKonsep({
           {kartu.map((item, indeks) => {
             const titik = posisiCabang(kartu.length, indeks);
             const Ikon = IKON[indeks % IKON.length];
+            const doodle = doodleKartu(gambarSisipan, indeks);
             return (
               <div
                 key={`peta-${item.judul}-${indeks}`}
-                className="absolute z-10 w-[150px] -translate-x-1/2 -translate-y-1/2"
+                className="absolute z-10 w-[170px] -translate-x-1/2 -translate-y-1/2"
                 style={{ top: titik.top, left: titik.left }}
               >
                 <div
@@ -146,6 +204,14 @@ export default function RingkasanKonsep({
                     kartuAktif === indeks ? "scale-105 ring-4 ring-[#1C01A5]/30" : ""
                   }`}
                 >
+                  <div className="mx-auto mb-2">
+                    <MiniDoodle
+                      src={doodle?.src}
+                      alt={doodle?.alt || item.judul}
+                      memuat={doodleMemuat && !doodle?.src}
+                      ukuran="peta"
+                    />
+                  </div>
                   <Ikon className="mx-auto mb-1 h-4 w-4 text-[#1C01A5]" />
                   <p className="text-xs font-extrabold leading-tight text-[#1C01A5]">
                     {item.judul}
@@ -159,12 +225,37 @@ export default function RingkasanKonsep({
 
       <div>
         <div className="mb-4 flex items-center gap-2">
+          <Target className="h-5 w-5 text-[#F0AB00]" />
+          <h3 className="text-xl font-extrabold text-[#1C01A5]">Alur infografis</h3>
+        </div>
+        <div className="grid grid-cols-2 gap-3 lg:grid-cols-4">
+          {kartu.map((item, indeks) => (
+            <div
+              key={`alur-${item.judul}-${indeks}`}
+              className={`relative rounded-2xl border-2 px-3 py-4 text-center ${item.warna} ${
+                kartuAktif === indeks ? "ring-4 ring-[#1C01A5]/25" : ""
+              }`}
+            >
+              <p className="mx-auto mb-2 flex h-8 w-8 items-center justify-center rounded-full bg-[#1C01A5] text-sm font-black text-white">
+                {indeks + 1}
+              </p>
+              <p className="text-sm font-extrabold leading-snug text-[#1C01A5]">
+                {item.judul}
+              </p>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      <div>
+        <div className="mb-4 flex items-center gap-2">
           <BookOpen className="h-5 w-5 text-[#1C01A5]" />
-          <h3 className="text-xl font-extrabold text-[#1C01A5]">Kartu ringkasan</h3>
+          <h3 className="text-xl font-extrabold text-[#1C01A5]">Kartu pembahasan</h3>
         </div>
         <div className="grid gap-4 sm:grid-cols-2">
           {kartu.map((item, indeks) => {
             const Ikon = IKON[indeks % IKON.length];
+            const doodle = doodleKartu(gambarSisipan, indeks);
             return (
               <article
                 key={`kartu-${item.judul}-${indeks}`}
@@ -172,16 +263,25 @@ export default function RingkasanKonsep({
                   kartuAktif === indeks ? "ring-4 ring-[#1C01A5]/25" : ""
                 }`}
               >
-                <div className="mb-3 flex h-12 w-12 items-center justify-center rounded-2xl bg-white text-[#1C01A5] shadow-sm">
-                  <Ikon className="h-6 w-6" />
+                <div className="mb-4 flex items-start gap-3">
+                  <MiniDoodle
+                    src={doodle?.src}
+                    alt={doodle?.alt || item.judul}
+                    memuat={doodleMemuat && !doodle?.src}
+                  />
+                  <div className="min-w-0">
+                    <div className="mb-2 flex h-10 w-10 items-center justify-center rounded-2xl bg-white text-[#1C01A5] shadow-sm">
+                      <Ikon className="h-5 w-5" />
+                    </div>
+                    <p className="text-xs font-extrabold uppercase tracking-wider text-[#1C01A5]/70">
+                      Kartu {indeks + 1}
+                    </p>
+                    <h4 className="mt-1 text-xl font-black leading-snug text-[#1C01A5]">
+                      {item.judul}
+                    </h4>
+                  </div>
                 </div>
-                <p className="text-xs font-extrabold uppercase tracking-wider text-[#1C01A5]/70">
-                  Kartu {indeks + 1}
-                </p>
-                <h4 className="mt-1 text-xl font-black text-[#1C01A5]">
-                  {item.judul}
-                </h4>
-                <p className="mt-2 text-base font-medium leading-relaxed text-slate-700">
+                <p className="text-base font-medium leading-relaxed text-slate-700">
                   {item.isi}
                 </p>
               </article>
@@ -189,7 +289,6 @@ export default function RingkasanKonsep({
           })}
         </div>
       </div>
-
     </section>
   );
 }

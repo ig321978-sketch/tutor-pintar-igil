@@ -13,7 +13,7 @@ const WARNA_KARTU = [
   "bg-[#FFE4EC] border-rose-300",
 ];
 
-function potongKalimat(teks: string, batas = 2): string {
+function potongKalimat(teks: string, batas = 8): string {
   const bagian = teks
     .split(/(?<=[.!?…])\s+/)
     .map((item) => item.trim())
@@ -64,7 +64,7 @@ export function susunKonsepMateri(
     const sisa = isi.replace(judul, "").replace(/^[:.\-–]\s*/, "").trim();
     return {
       judul,
-      isi: potongKalimat(sisa || isi, 2),
+      isi: potongKalimat(sisa || isi, 8),
       warna: WARNA_KARTU[indeks % WARNA_KARTU.length],
     };
   });

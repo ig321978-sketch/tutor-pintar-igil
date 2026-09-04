@@ -11,6 +11,7 @@ type PermintaanIlustrasi = {
   sketsaDeskripsi?: unknown;
   sketsaSisipan1?: unknown;
   sketsaSisipan2?: unknown;
+  sketsaSisipan3?: unknown;
 };
 
 function sebagaiTeks(nilai: unknown, cadangan = ""): string {
@@ -46,6 +47,7 @@ export async function POST(req: Request) {
       sketsaUtama: sebagaiTeks(body.sketsaDeskripsi),
       sketsaSisipan1: sebagaiTeks(body.sketsaSisipan1),
       sketsaSisipan2: sebagaiTeks(body.sketsaSisipan2),
+      sketsaSisipan3: sebagaiTeks(body.sketsaSisipan3),
     });
 
     return NextResponse.json({

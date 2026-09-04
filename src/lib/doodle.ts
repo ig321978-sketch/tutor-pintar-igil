@@ -14,13 +14,15 @@ const MODEL_CADANGAN = "gemini-3.1-flash-image";
 
 function gayaDoodle(kelas: string): string {
   const k = kelas.toUpperCase();
+  const tinta =
+    "monochrome navy ink only (#1C01A5), cream paper, no other colors, no teal, no amber, no yellow, no rainbow";
   if (/\b(10|11|12|SMA|SMK)\b/.test(k)) {
-    return "teen sketchbook doodle, slightly messy confident ink lines, muted teal and amber colored pencil, witty educational, cool enough for a 16-year-old, not childish, not kawaii baby";
+    return `teen sketchbook doodle, slightly messy confident ink lines, ${tinta}, witty educational, cool enough for a 16-year-old, not childish, not kawaii baby`;
   }
   if (/\b(7|8|9|SMP)\b/.test(k)) {
-    return "middle-school notebook doodle, energetic but neat ink, teal and amber colored pencil, fun and clever, not babyish";
+    return `middle-school notebook doodle, energetic but neat ink, ${tinta}, fun and clever, not babyish`;
   }
-  return "friendly educational doodle for elementary students, hand-drawn marker and colored pencil, teal and amber, cute but not toddler or baby cartoon";
+  return `friendly educational doodle for elementary students, hand-drawn marker, ${tinta}, cute but not toddler or baby cartoon`;
 }
 
 export function promptDoodle(opsi: {
@@ -28,16 +30,18 @@ export function promptDoodle(opsi: {
   mapel: string;
   materi: string;
   scene: string;
-  peran: "hero" | "sisipan";
+  peran: "hero" | "sisipan" | "kartu";
 }): string {
   const komposisi =
     opsi.peran === "hero"
       ? "Wide landscape composition filling the frame, one clear main scene, like a hand-drawn chapter opener in a student journal."
-      : "Focused smaller scene of one analogy or object, like a doodle drawn in the margin of a notebook.";
+      : opsi.peran === "kartu"
+        ? "Tight square thumbnail. One simple object or tiny scene centered with lots of cream margin. Sized to sit in a small infographic card, not a wide poster."
+        : "Focused smaller scene of one analogy or object, like a doodle drawn in the margin of a notebook.";
 
   return `Create a single hand-drawn doodle sketch illustration.
 Audience: Indonesian students, class ${opsi.kelas}, subject ${opsi.mapel}, topic ${opsi.materi}.
-Style: ${gayaDoodle(opsi.kelas)}. Flat cream paper background with faint paper grain. Slightly wobbly ink contours, colored pencil fills, graphite shading. Accent colors only: teal #0d9488 and amber #f59e0b, plus cream and graphite gray.
+Style: ${gayaDoodle(opsi.kelas)}. Flat cream paper background with faint paper grain. Slightly wobbly ink contours and graphite shading. ONE COLOR ONLY: navy ink #1C01A5 on cream paper. No teal, no amber, no extra accent colors.
 ${komposisi}
 Scene to draw: ${opsi.scene}
 Hard rules: Draw the scene directly on the paper. Do NOT draw a notebook, open book, spiral binding, page border, or picture-in-picture frame. NO written text, letters, numbers, captions, watermarks, logos, speech-bubble words, or UI chrome. NOT photoreal, NOT 3D CGI, NOT clipart, NOT vector icons, NOT babyish mascots, NOT glossy cartoon. It must look like a skilled student sketched the scene itself in a journal.`;
@@ -46,28 +50,15 @@ Hard rules: Draw the scene directly on the paper. Do NOT draw a notebook, open b
 export function rencanakanSisipan(
   jumlahParagraf: number,
 ): { setelahParagraf: number; ukuran: UkuranDoodle }[] {
-  if (jumlahParagraf <= 1) {
-    return [{ setelahParagraf: 1, ukuran: "sedang" }];
-  }
-  if (jumlahParagraf === 2) {
-    return [
-      { setelahParagraf: 1, ukuran: "sedang" },
-      { setelahParagraf: 2, ukuran: "kecil" },
-    ];
-  }
-  if (jumlahParagraf === 3) {
-    return [
-      { setelahParagraf: 1, ukuran: "sedang" },
-      { setelahParagraf: 2, ukuran: "kecil" },
-    ];
-  }
-  return [
-    { setelahParagraf: 1, ukuran: "sedang" },
-    { setelahParagraf: 3, ukuran: "kecil" },
-  ];
+  const jumlah = Math.min(Math.max(jumlahParagraf, 1), 4);
+  return Array.from({ length: jumlah }, (_, indeks) => ({
+    setelahParagraf: indeks + 1,
+    ukuran: "kecil" as const,
+  }));
 }
 
-function rasioUntuk(ukuran: UkuranDoodle, peran: "hero" | "sisipan"): string {
+function rasioUntuk(ukuran: UkuranDoodle, peran: "hero" | "sisipan" | "kartu"): string {
+  if (peran === "kartu") return "1:1";
   if (peran === "hero") return "16:9";
   if (ukuran === "kecil") return "1:1";
   return "4:3";
@@ -131,64 +122,54 @@ export async function buatPaketDoodle(opsi: {
   sketsaUtama: string;
   sketsaSisipan1: string;
   sketsaSisipan2: string;
+  sketsaSisipan3?: string;
 }): Promise<{ gambarUtama: string | null; gambarSisipan: GambarSisipan[] }> {
   const ai = new GoogleGenAI({ apiKey: opsi.apiKey });
   const paragraf = opsi.penjelasan.split("\n\n").filter((p) => p.trim());
   const rencana = rencanakanSisipan(paragraf.length);
 
-  const sceneUtama =
+  const sceneKartu = [
     opsi.sketsaUtama ||
-    `A doodle that captures the main idea of ${opsi.mapel}: ${opsi.materi}`;
-  const sceneSisipan = [
+      `A tiny one-object doodle of the main idea of ${opsi.mapel}: ${opsi.materi}`,
     opsi.sketsaSisipan1 ||
-      `A concrete everyday analogy doodle for ${opsi.materi}`,
+      `A tiny everyday analogy doodle for ${opsi.materi}`,
     opsi.sketsaSisipan2 ||
-      `A close-up doodle of one important detail from ${opsi.materi}`,
+      `A tiny doodle of one important detail from ${opsi.materi}`,
+    opsi.sketsaSisipan3 ||
+      `A tiny doodle that wraps up why ${opsi.materi} matters in daily life`,
   ];
 
-  const tugasHero = hasilkanDenganCadangan(
-    ai,
-    promptDoodle({
-      kelas: opsi.kelas,
-      mapel: opsi.mapel,
-      materi: opsi.materi,
-      scene: sceneUtama,
-      peran: "hero",
-    }),
-    rasioUntuk("lebar", "hero"),
-  );
-
-  const tugasSisipan = rencana.map((item, indeks) =>
+  const tugasKartu = rencana.map((item, indeks) =>
     hasilkanDenganCadangan(
       ai,
       promptDoodle({
         kelas: opsi.kelas,
         mapel: opsi.mapel,
         materi: opsi.materi,
-        scene: sceneSisipan[indeks] ?? sceneSisipan[0],
-        peran: "sisipan",
+        scene: sceneKartu[indeks] ?? sceneKartu[0],
+        peran: "kartu",
       }),
-      rasioUntuk(item.ukuran, "sisipan"),
+      rasioUntuk(item.ukuran, "kartu"),
     ),
   );
 
-  const [gambarUtama, ...sumberSisipan] = await Promise.all([
-    tugasHero,
-    ...tugasSisipan,
-  ]);
+  const sumberKartu = await Promise.all(tugasKartu);
 
   const gambarSisipan: GambarSisipan[] = [];
-  sumberSisipan.forEach((src, indeks) => {
+  sumberKartu.forEach((src, indeks) => {
     if (!src) return;
     const item = rencana[indeks];
     if (!item) return;
     gambarSisipan.push({
       setelahParagraf: item.setelahParagraf,
       src,
-      alt: `Sketsa doodle ${opsi.materi}`,
-      ukuran: item.ukuran,
+      alt: `Doodle kartu ${opsi.materi}`,
+      ukuran: "kecil",
     });
   });
 
-  return { gambarUtama, gambarSisipan };
+  return {
+    gambarUtama: gambarSisipan[0]?.src ?? null,
+    gambarSisipan,
+  };
 }

@@ -23,7 +23,7 @@ import { indeksKartuAktif } from "@/lib/konsep-materi";
 import { gantiNamaLengkapKeDepan, sapaanTutorRingkas } from "@/lib/nama-siswa";
 import { naskahLisan, naskahTutorUntukSuara } from "@/lib/naskah-lisan";
 import { pecahTokenNaskah, skalaWaktuKata, type KataWaktu } from "@/lib/tts";
-import GambarDoodle, { type GambarSisipan } from "@/components/GambarDoodle";
+import { type GambarSisipan } from "@/components/GambarDoodle";
 import PemutarAudioGuru, {
   indeksKataAktif,
   type KontrolPemutarGuru,
@@ -51,6 +51,7 @@ type ModulTutor = {
   sketsaDeskripsi: string;
   sketsaSisipan1?: string;
   sketsaSisipan2?: string;
+  sketsaSisipan3?: string;
   svgCode: string;
   pertanyaan: string;
   kunciJawaban?: string[];
@@ -461,6 +462,7 @@ export default function TutorAI() {
           sketsaDeskripsi: modul.sketsaDeskripsi,
           sketsaSisipan1: modul.sketsaSisipan1,
           sketsaSisipan2: modul.sketsaSisipan2,
+          sketsaSisipan3: modul.sketsaSisipan3,
         }),
       });
       const data = (await respons.json()) as {
@@ -1135,42 +1137,14 @@ export default function TutorAI() {
               </span>
             </div>
             {tahapBelajar === "konsep" ? (
-              <div className="relative">
-                {hasilData.gambarUtama ? (
-                  <GambarDoodle
-                    src={hasilData.gambarUtama}
-                    alt={hasilData.sketsaDeskripsi || "Sketsa doodle materi"}
-                    ukuran="lebar"
-                  />
-                ) : (
-                  <figure className="rounded-2xl border-2 border-dashed border-[#1C01A5]/20 bg-[#fbf6ea] p-4 text-center shadow-inner">
-                    <div
-                      className="mx-auto max-w-xl"
-                      dangerouslySetInnerHTML={{ __html: hasilData.svgCode }}
-                    />
-                    <figcaption className="mt-4 text-sm font-medium italic text-slate-500">
-                      {statusDoodle === "memuat"
-                        ? "Menggambar sketsa doodle materi..."
-                        : hasilData.sketsaDeskripsi}
-                    </figcaption>
-                  </figure>
-                )}
-                {statusDoodle === "memuat" && !hasilData.gambarUtama ? (
-                  <div className="mt-3 flex items-center justify-center gap-2 text-sm font-semibold text-[#1C01A5]">
-                    <Loader2 className="h-4 w-4 animate-spin" />
-                    Menggambar sketsa doodle...
-                  </div>
-                ) : null}
-              </div>
-            ) : null}
-
-            {tahapBelajar === "konsep" ? (
               <RingkasanKonsep
                 materi={sesiMateri || (modeInput === "teks" ? bab : "Analisis halaman buku")}
                 mapel={sesiMapel || (modeInput === "teks" ? mapel : "Berdasarkan Buku")}
                 penjelasan={hasilData.penjelasan}
                 sapaan={hasilData.sapaan}
                 kartuAktif={kartuAktif}
+                gambarSisipan={hasilData.gambarSisipan}
+                doodleMemuat={statusDoodle === "memuat"}
               />
             ) : (
               <div className="rounded-[2rem] border-2 border-[#1C01A5]/15 bg-gradient-to-br from-[#EEE9FF] via-white to-[#FFF8E8] p-5 sm:p-6">
