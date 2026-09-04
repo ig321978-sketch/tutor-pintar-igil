@@ -63,7 +63,7 @@ export function adalahJudulBlokSoal(teks: string): boolean {
 }
 
 export function adalahNomorSoal(teks: string): boolean {
-  return /^\d+[).]\s+\S/.test(teks.replace(/\s+/g, " ").trim());
+  return /^\d+\)\s+\S/.test(teks.replace(/\s+/g, " ").trim());
 }
 
 export function adalahBarisLatihan(teks: string): boolean {

@@ -67,7 +67,7 @@ function naskahDariTeks(teks: string, judul: string, ringkas: boolean): string {
   return isi.join("\n") || teks.trim();
 }
 
-function pecahSumber(penjelasan: string): string[] {
+export function pecahBlokKartu(penjelasan: string): string[] {
   const paragraf = penjelasan
     .split(/\n\n+/)
     .map((item) => item.trim())
@@ -76,9 +76,15 @@ function pecahSumber(penjelasan: string): string[] {
   const digabung: string[] = [];
   for (const item of paragraf) {
     const barisPertama = item.split("\n")[0]?.trim() ?? "";
+    const sebelumnya = digabung[digabung.length - 1] ?? "";
+    const lanjutanSoal =
+      /\n(?:contoh|latihan|kunci)\b/i.test(`\n${sebelumnya}`) &&
+      (adalahBarisLatihan(barisPertama) || adalahBarisRumus(barisPertama));
     if (
       digabung.length > 0 &&
-      (adalahBarisLatihan(barisPertama) || adalahBarisRumus(barisPertama))
+      (adalahBarisLatihan(barisPertama) ||
+        adalahBarisRumus(barisPertama) ||
+        lanjutanSoal)
     ) {
       digabung[digabung.length - 1] += `\n${item}`;
       continue;
@@ -122,7 +128,7 @@ export function susunKonsepMateri(
   kelas = "3 SD",
 ): { ideUtama: string; kartu: KartuKonsep[] } {
   const ringkas = kartuTanpaNaskah(kelas);
-  const sumber = pecahSumber(penjelasan);
+  const sumber = pecahBlokKartu(penjelasan);
   const kartu = sumber.map((isi, indeks) => {
     const judul = judulDariTeks(isi);
     const naskah = naskahDariTeks(isi, judul, false);
@@ -144,10 +150,7 @@ export function indeksKartuAktif(
   penjelasan: string,
   indeksKataPenjelasan: number,
 ): number {
-  const paragraf = penjelasan
-    .split(/\n\n+/)
-    .map((item) => item.trim())
-    .filter(Boolean);
+  const paragraf = pecahBlokKartu(penjelasan);
   if (paragraf.length === 0 || indeksKataPenjelasan < 0) return 0;
 
   let offset = 0;

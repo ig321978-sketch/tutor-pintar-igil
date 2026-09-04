@@ -2,6 +2,7 @@ import {
   gantiNamaLengkapKeDepan,
   sapaanTutorRingkas,
 } from "@/lib/nama-siswa";
+import { pecahBlokKartu } from "@/lib/konsep-materi";
 
 const LABEL_BARIS =
   /^(judul(?:\s+kartu)?|subjudul(?:\s+visual)?|uraian(?:\s+lisan)?|naskah(?:\s+lisan)?|kartu\s*\d+|baris\s*\d+|visual|voice|teks(?:\s+kartu)?|contoh\s+kartu)\s*[:.\-–]\s*/i;
@@ -119,8 +120,7 @@ export function naskahTutorUntukSuara(
   nama = "",
   opsi?: { buangSubjudulVisual?: boolean; tanpaSapaan?: boolean },
 ): string {
-  const kartu = penjelasan
-    .split(/\n\n+/)
+  const kartu = pecahBlokKartu(penjelasan)
     .map((item) => {
       const tanpaKunci = buangBlokKunci(item);
       const isi = opsi?.buangSubjudulVisual

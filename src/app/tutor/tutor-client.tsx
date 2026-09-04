@@ -21,6 +21,10 @@ import {
 import { kelasTombolUtama } from "@/lib/tema";
 import { indeksKartuAktif, JUMLAH_KARTU_MAKS, kartuTanpaNaskah, susunKonsepMateri, UKURAN_BATCH_DOODLE } from "@/lib/konsep-materi";
 import { gantiNamaLengkapKeDepan, sapaanTutorRingkas } from "@/lib/nama-siswa";
+import {
+  pilihPenjelasanMateri,
+  type SudutPandangMateri,
+} from "@/lib/sudut-pandang";
 import { naskahLisan, naskahTutorUntukSuara } from "@/lib/naskah-lisan";
 import { pecahTokenNaskah, skalaWaktuKata, type KataWaktu } from "@/lib/tts";
 import { type GambarSisipan } from "@/components/GambarDoodle";
@@ -46,6 +50,8 @@ type StatusPemutar = "siaga" | "menyiapkan" | "memutar" | "jeda";
 type ModulTutor = {
   sapaan: string;
   penjelasan: string;
+  curriculum_view?: string;
+  global_best_view?: string;
   sketsaKartu?: string;
   svgCode: string;
   pertanyaan: string;
@@ -176,6 +182,7 @@ export default function TutorAI() {
   const [statusDoodle, setStatusDoodle] = useState<StatusDoodle>("siaga");
   const [sesiAktifId, setSesiAktifId] = useState<string | null>(null);
   const [jawabanKuis, setJawabanKuis] = useState<Record<string, string>>({});
+  const [sudutPandang, setSudutPandang] = useState<SudutPandangMateri>("kurikulum");
 
   const timerKetikRef = useRef<number | null>(null);
   const indeksKetikRef = useRef(0);
@@ -218,12 +225,15 @@ export default function TutorAI() {
     pilihanMapel === OPSI_LAIN_NYA ? mapelManual : pilihanMapel;
   const bab = pilihanBab === OPSI_LAIN_NYA ? babManual : pilihanBab;
 
+  const penjelasanAktif = hasilData
+    ? pilihPenjelasanMateri(hasilData, sudutPandang)
+    : "";
   const offsetKataSapaan = hasilData
     ? pecahTokenNaskah(hasilData.sapaan).length
     : 0;
   const indeksKataPenjelasan = indeksKata - offsetKataSapaan;
-  const kartuAktif = hasilData
-    ? indeksKartuAktif(hasilData.penjelasan, indeksKataPenjelasan)
+  const kartuAktif = penjelasanAktif
+    ? indeksKartuAktif(penjelasanAktif, indeksKataPenjelasan)
     : 0;
 
   const sudahPrefillMapel = useRef(false);
@@ -435,16 +445,24 @@ export default function TutorAI() {
     sudahSiapAudioRef.current = false;
   };
 
+  const gantiSudutPandang = (sudut: SudutPandangMateri) => {
+    if (sudut === sudutPandang) return;
+    resetPemutar();
+    setTeksAnimasi("");
+    setSudutPandang(sudut);
+  };
+
   const muatIlustrasiDoodle = async (modul: ModulTutor) => {
     doodleAbortRef.current?.abort();
     const pengontrol = new AbortController();
     doodleAbortRef.current = pengontrol;
     setStatusDoodle("memuat");
 
+    const naskahDoodle = pilihPenjelasanMateri(modul, "kurikulum");
     const jumlahKartu = Math.min(
       susunKonsepMateri(
         modeInput === "teks" ? bab : "Analisis AI",
-        modul.penjelasan,
+        naskahDoodle,
         kelas,
       ).kartu.length,
       JUMLAH_KARTU_MAKS,
@@ -463,7 +481,7 @@ export default function TutorAI() {
             kelas,
             mapel: modeInput === "teks" ? mapel : "Berdasarkan Buku",
             materi: modeInput === "teks" ? bab : "Analisis AI",
-            penjelasan: modul.penjelasan,
+            penjelasan: naskahDoodle,
             sketsaKartu: modul.sketsaKartu,
             offset,
             batas: UKURAN_BATCH_DOODLE,
@@ -550,6 +568,7 @@ export default function TutorAI() {
     setTahapBelajar("konsep");
     setSesiMapel("");
     setSesiMateri("");
+    setSudutPandang("kurikulum");
     resetPemutar();
 
     try {
@@ -571,11 +590,22 @@ export default function TutorAI() {
       };
 
       if (data.berhasil && data.data) {
+        const kurikulum = gantiNamaLengkapKeDepan(
+          data.data.curriculum_view || data.data.penjelasan,
+          nama,
+        );
+        const global = gantiNamaLengkapKeDepan(
+          data.data.global_best_view || kurikulum,
+          nama,
+        );
         setHasilData({
           ...data.data,
           sapaan: sapaanTutorRingkas(nama, data.data.sapaan),
-          penjelasan: gantiNamaLengkapKeDepan(data.data.penjelasan, nama),
+          penjelasan: kurikulum,
+          curriculum_view: kurikulum,
+          global_best_view: global,
         });
+        setSudutPandang("kurikulum");
         setJawabanKuis({});
         setSesiMapel(mapelKirim);
         setSesiMateri(modeInput === "teks" ? materiKirim : "Analisis halaman buku");
@@ -759,7 +789,7 @@ export default function TutorAI() {
     const masukkan = (
       teks: string,
       jenis: JenisPotonganSuara,
-      teksPenjelasan = hasilData.penjelasan,
+      teksPenjelasan = penjelasanAktif,
     ) => {
       let cariDari = 0;
       for (const potong of pecahTeksUcapan(teks)) {
@@ -779,7 +809,7 @@ export default function TutorAI() {
 
     masukkan(naskahLisan(hasilData.sapaan, nama), "sapaan");
     masukkan(
-      naskahTutorUntukSuara("", hasilData.penjelasan, nama, {
+      naskahTutorUntukSuara("", penjelasanAktif, nama, {
         buangSubjudulVisual: kartuTanpaNaskah(kelas),
         tanpaSapaan: true,
       }),
@@ -888,7 +918,7 @@ export default function TutorAI() {
     if (!hasilData) return false;
     const naskah = naskahTutorUntukSuara(
       hasilData.sapaan,
-      hasilData.penjelasan,
+      penjelasanAktif,
       nama,
       { buangSubjudulVisual: kartuTanpaNaskah(kelas) },
     );
@@ -1023,7 +1053,7 @@ export default function TutorAI() {
       } else if (!window.speechSynthesis.speaking) {
         bicaraPotonganSaatIni();
       }
-      mulaiKetikDari(hasilData.penjelasan, indeksKetikRef.current);
+      mulaiKetikDari(penjelasanAktif, indeksKetikRef.current);
       mulaiJagaSuara();
       setStatusPemutar("memutar");
       return;
@@ -1110,7 +1140,7 @@ export default function TutorAI() {
     if (!hasilData) return;
     const naskah = naskahTutorUntukSuara(
       hasilData.sapaan,
-      hasilData.penjelasan,
+      penjelasanAktif,
       nama,
       { buangSubjudulVisual: kartuTanpaNaskah(kelas) },
     );
@@ -1122,9 +1152,9 @@ export default function TutorAI() {
     );
     setIndeksKata(indeks);
     indeksKetikRef.current = Math.floor(
-      hasilData.penjelasan.length * Math.min(1, rasio),
+      penjelasanAktif.length * Math.min(1, rasio),
     );
-    setTeksAnimasi(hasilData.penjelasan.slice(0, indeksKetikRef.current));
+    setTeksAnimasi(penjelasanAktif.slice(0, indeksKetikRef.current));
   };
 
   const pilihJawabanKuis = (nomor: number, pilihan: string) => {
@@ -1176,12 +1206,12 @@ export default function TutorAI() {
     setStatusPemutar("siaga");
     setWaktuAudio((sebelum) => (durasiAudio > 0 ? durasiAudio : sebelum));
     if (hasilData) {
-      setTeksAnimasi(hasilData.penjelasan);
+      setTeksAnimasi(penjelasanAktif);
       setIndeksKata(
-        pecahTokenNaskah(`${hasilData.sapaan} ${hasilData.penjelasan}`).length - 1,
+        pecahTokenNaskah(`${hasilData.sapaan} ${penjelasanAktif}`).length - 1,
       );
     }
-  }, [durasiAudio, hasilData]);
+  }, [durasiAudio, hasilData, penjelasanAktif]);
 
   useEffect(() => {
     if (!hasilData || sudahSiapAudioRef.current) return;
@@ -1189,7 +1219,7 @@ export default function TutorAI() {
     void siapkanAudioGuru();
     // Siapkan potongan awal Chirp dulu, lalu naskah penuh di belakang.
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [hasilData]);
+  }, [hasilData, sudutPandang]);
 
   const kembaliKeMenu = () => {
     hentikanRekamSuara();
@@ -1204,6 +1234,7 @@ export default function TutorAI() {
     setTahapBelajar("konsep");
     setSesiMapel("");
     setSesiMateri("");
+    setSudutPandang("kurikulum");
     router.push("/ruang-belajar");
   };
 
@@ -1296,11 +1327,14 @@ export default function TutorAI() {
                 materi={sesiMateri || (modeInput === "teks" ? bab : "Analisis halaman buku")}
                 mapel={sesiMapel || (modeInput === "teks" ? mapel : "Berdasarkan Buku")}
                 kelas={kelas}
-                penjelasan={hasilData.penjelasan}
+                penjelasan={penjelasanAktif}
                 sapaan={hasilData.sapaan}
                 kartuAktif={kartuAktif}
                 gambarSisipan={hasilData.gambarSisipan}
                 doodleMemuat={statusDoodle === "memuat"}
+                sudutPandang={sudutPandang}
+                onGantiSudut={gantiSudutPandang}
+                sedangMemutar={statusPemutar === "memutar"}
               />
             ) : (
               <div className="rounded-[2rem] border-2 border-[#1C01A5]/15 bg-gradient-to-br from-[#EEE9FF] via-white to-[#FFF8E8] p-5 sm:p-6">
