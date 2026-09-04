@@ -101,6 +101,7 @@ export default function RuangBelajarPage() {
     if (pilihanMapel === OPSI_MAPEL_LAIN) return;
     if (!daftarMapel.includes(pilihanMapel)) {
       setPilihanMapel(daftarMapel[0] ?? "");
+      setPilihanMateri("");
     }
   }, [daftarMapel, pilihanMapel]);
 
@@ -110,7 +111,7 @@ export default function RuangBelajarPage() {
       return;
     }
     if (pilihanMateri === OPSI_MATERI_LAIN) return;
-    if (!daftarMateri.includes(pilihanMateri)) {
+    if (!pilihanMateri || !daftarMateri.includes(pilihanMateri)) {
       setPilihanMateri(daftarMateri[0] ?? OPSI_MATERI_LAIN);
     }
   }, [daftarMateri, pilihanMapel, pilihanMateri]);
@@ -301,6 +302,8 @@ export default function RuangBelajarPage() {
                   setPilihanMapel(nilai);
                   if (nilai === OPSI_MAPEL_LAIN) {
                     setPilihanMateri(OPSI_MATERI_LAIN);
+                  } else {
+                    setPilihanMateri("");
                   }
                 }}
                 className={kelasKotak}
