@@ -10,7 +10,7 @@ import {
   type KelaminGuru,
 } from "@/lib/guru";
 import { DATA_KURIKULUM, OPSI_LAIN_NYA, daftarMapelUntukKelas } from "@/lib/kurikulum";
-import { hurufKunci } from "@/lib/kuis";
+import { hurufKunci, pecahBankSoal, pecahBlokSoal } from "@/lib/kuis";
 import {
   bacaProgres,
   catatEvaluasiTambahan,
@@ -41,9 +41,11 @@ import {
   ArrowRight,
   Coins,
   Loader2,
+  Lock,
   MessageCircleQuestionMark,
   Mic,
   Send,
+  Unlock,
 } from "lucide-react";
 
 type ModeInput = "teks" | "gambar";
@@ -58,13 +60,15 @@ type ModulTutor = {
   svgCode: string;
   pertanyaan: string;
   kunciJawaban?: string[];
+  esai?: string;
+  kunciEsai?: string[];
   motivasi: string;
   gambarUtama?: string | null;
   gambarSisipan?: GambarSisipan[];
 };
 
 type StatusDoodle = "siaga" | "memuat" | "siap" | "gagal";
-type TahapBelajar = "konsep" | "latihan";
+type TahapBelajar = "konsep" | "latihan" | "ujian";
 
 type PanduanAjuan = {
   sapaan: string;
@@ -178,6 +182,7 @@ export default function TutorAI() {
   const [isLoading, setIsLoading] = useState(false);
   const [hasilData, setHasilData] = useState<ModulTutor | null>(null);
   const [tahapBelajar, setTahapBelajar] = useState<TahapBelajar>("konsep");
+  const [audioCompleted, setAudioCompleted] = useState(false);
   const [sesiMapel, setSesiMapel] = useState("");
   const [sesiMateri, setSesiMateri] = useState("");
   const [statusPemutar, setStatusPemutar] = useState<StatusPemutar>("siaga");
@@ -193,6 +198,8 @@ export default function TutorAI() {
   const [statusDoodle, setStatusDoodle] = useState<StatusDoodle>("siaga");
   const [sesiAktifId, setSesiAktifId] = useState<string | null>(null);
   const [jawabanKuis, setJawabanKuis] = useState<Record<string, string>>({});
+  const [drafEsai, setDrafEsai] = useState<Record<string, string>>({});
+  const [jawabanEsai, setJawabanEsai] = useState<Record<string, string>>({});
   const [sudutPandang, setSudutPandang] = useState<SudutPandangMateri>("kurikulum");
 
   const timerKetikRef = useRef<number | null>(null);
@@ -246,6 +253,20 @@ export default function TutorAI() {
   const kartuAktif = penjelasanAktif
     ? indeksKartuAktif(penjelasanAktif, indeksKataPenjelasan)
     : 0;
+  const bankSoal = useMemo(() => {
+    const pecah = pecahBankSoal(hasilData?.pertanyaan ?? "");
+    const esaiLangsung = pecahBlokSoal(hasilData?.esai ?? "");
+    return {
+      pilihanGanda: pecah.pilihanGanda,
+      esai: esaiLangsung.length > 0 ? esaiLangsung : pecah.esai,
+    };
+  }, [hasilData?.esai, hasilData?.pertanyaan]);
+
+  const bukaTahapSoal = (tahap: "latihan" | "ujian") => {
+    if (!audioCompleted) return;
+    setTahapBelajar(tahap);
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  };
 
   const sudahPrefillMapel = useRef(false);
   const sudahPrefillBab = useRef(false);
@@ -400,6 +421,7 @@ export default function TutorAI() {
       sedangMemutarRef.current = false;
       hentikanJagaSuara();
       setStatusPemutar("siaga");
+      setAudioCompleted(true);
       return;
     }
 
@@ -454,6 +476,7 @@ export default function TutorAI() {
     muatPenuhPromiseRef.current = null;
     audioLengkapRef.current = false;
     sudahSiapAudioRef.current = false;
+    setAudioCompleted(false);
   };
 
   const gantiSudutPandang = (sudut: SudutPandangMateri) => {
@@ -621,6 +644,9 @@ export default function TutorAI() {
         });
         setSudutPandang("kurikulum");
         setJawabanKuis({});
+        setDrafEsai({});
+        setJawabanEsai({});
+        setAudioCompleted(false);
         setSesiMapel(mapelKirim);
         setSesiMateri(modeInput === "teks" ? materiKirim : "Analisis halaman buku");
         simpanProfil({ nama, kelas, guruKelamin });
@@ -632,6 +658,9 @@ export default function TutorAI() {
           mode: modeInput,
           catatanEvaluasi: data.data.motivasi,
           kunciJawaban: data.data.kunciJawaban,
+          kuisTotal:
+            pecahBankSoal(data.data.pertanyaan).pilihanGanda.length +
+            pecahBlokSoal(data.data.esai ?? "").length,
         });
         setSesiAktifId(sesi.id);
         void muatKuota();
@@ -1207,6 +1236,16 @@ export default function TutorAI() {
     }
   };
 
+  const kirimJawabanEsai = (nomor: number) => {
+    const kunci = String(nomor);
+    const isi = (drafEsai[kunci] ?? "").trim();
+    if (!isi || jawabanEsai[kunci]) return;
+    setJawabanEsai((sebelum) => ({ ...sebelum, [kunci]: isi }));
+    if (sesiAktifId) {
+      catatJawabanKuis(sesiAktifId, 100 + nomor, isi, false);
+    }
+  };
+
   const padaWaktuAudio = useCallback(
     (detik: number) => {
       waktuAudioRef.current = detik;
@@ -1240,11 +1279,13 @@ export default function TutorAI() {
         }
         sedangMemutarRef.current = false;
         setStatusPemutar("siaga");
+        setAudioCompleted(true);
       });
       return;
     }
     sedangMemutarRef.current = false;
     setStatusPemutar("siaga");
+    setAudioCompleted(true);
     setWaktuAudio((sebelum) => (durasiAudio > 0 ? durasiAudio : sebelum));
     if (hasilData) {
       setTeksAnimasi(penjelasanAktif);
@@ -1272,6 +1313,9 @@ export default function TutorAI() {
     setPesanAjuan("");
     setTeksAnimasi("");
     setJawabanKuis({});
+    setDrafEsai({});
+    setJawabanEsai({});
+    setAudioCompleted(false);
     setTahapBelajar("konsep");
     setSesiMapel("");
     setSesiMateri("");
@@ -1344,7 +1388,9 @@ export default function TutorAI() {
 
           <div className="bg-white rounded-3xl shadow-xl border-2 border-[#1C01A5]/15 p-8 space-y-8">
             <div className="flex flex-wrap gap-2">
-              <span
+              <button
+                type="button"
+                onClick={() => setTahapBelajar("konsep")}
                 className={`rounded-full px-4 py-1.5 text-xs font-extrabold uppercase tracking-wider ${
                   tahapBelajar === "konsep"
                     ? "bg-[#F0AB00] text-[#1C01A5]"
@@ -1352,17 +1398,50 @@ export default function TutorAI() {
                 }`}
               >
                 1 · Konsep
-              </span>
-              <span
-                className={`rounded-full px-4 py-1.5 text-xs font-extrabold uppercase tracking-wider ${
+              </button>
+              <button
+                type="button"
+                onClick={() => bukaTahapSoal("latihan")}
+                disabled={!audioCompleted}
+                className={`inline-flex items-center gap-1.5 rounded-full px-4 py-1.5 text-xs font-extrabold uppercase tracking-wider disabled:cursor-not-allowed ${
                   tahapBelajar === "latihan"
                     ? "bg-[#F0AB00] text-[#1C01A5]"
-                    : "bg-[#1C01A5]/10 text-[#1C01A5]/70"
+                    : "bg-[#1C01A5]/10 text-[#1C01A5]/70 disabled:text-[#1C01A5]/40"
                 }`}
               >
+                {audioCompleted ? <Unlock className="h-3.5 w-3.5" /> : <Lock className="h-3.5 w-3.5" />}
                 2 · Soal latihan
-              </span>
+              </button>
+              <button
+                type="button"
+                onClick={() => bukaTahapSoal("ujian")}
+                disabled={!audioCompleted}
+                className={`inline-flex items-center gap-1.5 rounded-full px-4 py-1.5 text-xs font-extrabold uppercase tracking-wider disabled:cursor-not-allowed ${
+                  tahapBelajar === "ujian"
+                    ? "bg-[#F0AB00] text-[#1C01A5]"
+                    : "bg-[#1C01A5]/10 text-[#1C01A5]/70 disabled:text-[#1C01A5]/40"
+                }`}
+              >
+                {audioCompleted ? <Unlock className="h-3.5 w-3.5" /> : <Lock className="h-3.5 w-3.5" />}
+                3 · Soal ujian
+              </button>
             </div>
+            <p
+              className={`inline-flex items-start gap-2 rounded-2xl border px-4 py-3 text-sm font-bold ${
+                audioCompleted
+                  ? "border-emerald-200 bg-emerald-50 text-emerald-800"
+                  : "border-[#F0AB00]/50 bg-[#FFF8E8] text-[#1C01A5]"
+              }`}
+            >
+              {audioCompleted ? (
+                <Unlock className="mt-0.5 h-4 w-4 shrink-0" />
+              ) : (
+                <Lock className="mt-0.5 h-4 w-4 shrink-0" />
+              )}
+              {audioCompleted
+                ? "Sesi dengar selesai. Soal Latihan dan Soal Ujian sudah terbuka."
+                : "Dengarkan penjelasan guru sampai habis dulu. Soal Latihan dan Soal Ujian terkunci sebelum audio TTS selesai."}
+            </p>
             {dariCache ? (
               <p className="rounded-2xl border border-[#1C01A5]/15 bg-[#EEE9FF] px-4 py-3 text-sm font-bold text-[#1C01A5]">
                 Materi dua perspektif dimuat dari cache Supabase, tanpa memanggil Gemini ulang.
@@ -1388,13 +1467,17 @@ export default function TutorAI() {
             ) : (
               <div className="rounded-[2rem] border-2 border-[#1C01A5]/15 bg-gradient-to-br from-[#EEE9FF] via-white to-[#FFF8E8] p-5 sm:p-6">
                 <p className="text-xs font-extrabold uppercase tracking-[0.2em] text-[#F0AB00]">
-                  Langkah 2 · Tambang token dari soal
+                  {tahapBelajar === "latihan"
+                    ? "Langkah 2 · Soal latihan"
+                    : "Langkah 3 · Soal ujian"}
                 </p>
                 <h2 className="mt-2 text-2xl font-black text-[#1C01A5] sm:text-3xl">
                   {sesiMateri || (modeInput === "teks" ? bab : "Latihan dari buku")}
                 </h2>
                 <p className="mt-2 text-sm font-bold text-[#1C01A5]/70">
-                  Konsep sudah dibuka. Kerjakan 5 soal, lalu lihat rapor.
+                  {tahapBelajar === "latihan"
+                    ? "Kerjakan 10 soal pilihan ganda: 3 Reguler dan 7 HOTS."
+                    : "Kerjakan 3 soal uraian: 1 Reguler dan 2 HOTS."}
                 </p>
                 <button
                   type="button"
@@ -1525,34 +1608,50 @@ export default function TutorAI() {
             </div>
 
             {tahapBelajar === "konsep" ? (
-              <button
-                type="button"
-                onClick={() => {
-                  setTahapBelajar("latihan");
-                  window.scrollTo({ top: 0, behavior: "smooth" });
-                }}
-                className={`${kelasTombolUtama} flex w-full items-center justify-center gap-2 rounded-2xl px-6 py-4 text-lg font-extrabold shadow-lg shadow-[#1C01A5]/20`}
-              >
-                Aku sudah paham · Kerjakan soal
-                <ArrowRight className="h-5 w-5 text-[#F0AB00]" />
-              </button>
+              <div className="space-y-3">
+                <button
+                  type="button"
+                  onClick={() => bukaTahapSoal("latihan")}
+                  disabled={!audioCompleted}
+                  className={`${kelasTombolUtama} flex w-full items-center justify-center gap-2 rounded-2xl px-6 py-4 text-lg font-extrabold shadow-lg shadow-[#1C01A5]/20 disabled:cursor-not-allowed disabled:opacity-50`}
+                >
+                  {audioCompleted ? (
+                    <Unlock className="h-5 w-5 text-[#F0AB00]" />
+                  ) : (
+                    <Lock className="h-5 w-5 text-[#F0AB00]" />
+                  )}
+                  {audioCompleted
+                    ? "Aku sudah paham · Soal latihan"
+                    : "Terkunci · Selesaikan dengar penjelasan"}
+                  <ArrowRight className="h-5 w-5 text-[#F0AB00]" />
+                </button>
+                <button
+                  type="button"
+                  onClick={() => bukaTahapSoal("ujian")}
+                  disabled={!audioCompleted}
+                  className="flex w-full items-center justify-center gap-2 rounded-2xl border-2 border-[#1C01A5]/20 bg-white px-6 py-3 text-base font-extrabold text-[#1C01A5] disabled:cursor-not-allowed disabled:opacity-50"
+                >
+                  {audioCompleted ? (
+                    <Unlock className="h-4 w-4" />
+                  ) : (
+                    <Lock className="h-4 w-4" />
+                  )}
+                  Soal ujian
+                </button>
+              </div>
             ) : null}
 
             {tahapBelajar === "latihan" ? (
             <div className="space-y-8">
             <div className="p-6 bg-[#FFF8E8] rounded-2xl border border-[#F0AB00]/40 shadow-sm">
-              <div className="text-[#1C01A5] font-extrabold mb-4 flex items-center gap-2">
-                <span>Latihan Soal</span>
+              <div className="text-[#1C01A5] font-extrabold mb-4 flex flex-wrap items-center gap-2">
+                <span>Soal Latihan</span>
                 <span className="text-sm font-semibold text-[#C48800]">
-                  3 Standar · 2 HOTS · Trik Bimbel untuk hitungan
+                  10 pilihan ganda · 3 Reguler · 7 HOTS
                 </span>
               </div>
               <div className="space-y-6 text-slate-700 text-lg font-medium">
-                {hasilData.pertanyaan
-                  .split(/\n\n+/)
-                  .map((soal) => soal.trim())
-                  .filter(Boolean)
-                  .map((soal, indeks) => {
+                {bankSoal.pilihanGanda.map((soal, indeks) => {
                     const nomor = indeks + 1;
                     const pilihan = jawabanKuis[String(nomor)];
                     const kunci = hurufKunci(hasilData.kunciJawaban, nomor);
@@ -1600,9 +1699,78 @@ export default function TutorAI() {
                       </div>
                     );
                   })}
+                <button
+                  type="button"
+                  onClick={() => bukaTahapSoal("ujian")}
+                  className={`${kelasTombolUtama} flex w-full items-center justify-center gap-2 rounded-2xl px-6 py-3 text-base font-extrabold`}
+                >
+                  Lanjut ke soal ujian
+                  <ArrowRight className="h-5 w-5 text-[#F0AB00]" />
+                </button>
                 <p className="text-xs font-semibold text-slate-500">
                   Pilih satu jawaban. Hasil dicek langsung. Ketepatan di Rapor dihitung dari jawaban yang benar.
                 </p>
+              </div>
+            </div>
+            <div className="text-sm font-bold text-[#1C01A5] bg-white p-4 rounded-xl border-2 border-dashed border-[#F0AB00]/50 flex items-center gap-3 text-center justify-center">
+              <span className="text-2xl">✨</span>
+              <div>{hasilData.motivasi}</div>
+            </div>
+            </div>
+            ) : null}
+
+            {tahapBelajar === "ujian" ? (
+            <div className="space-y-8">
+            <div className="p-6 bg-[#EEE9FF] rounded-2xl border border-[#1C01A5]/20 shadow-sm">
+              <div className="text-[#1C01A5] font-extrabold mb-4 flex flex-wrap items-center gap-2">
+                <span>Soal Ujian</span>
+                <span className="text-sm font-semibold text-[#C48800]">
+                  3 uraian · 1 Reguler · 2 HOTS
+                </span>
+              </div>
+              <div className="space-y-6 text-slate-700 text-lg font-medium">
+                {bankSoal.esai.length === 0 ? (
+                  <p className="text-sm font-bold text-[#1C01A5]/70">
+                    Soal ujian belum tersedia di modul ini. Buka materi ulang agar bank soal baru disusun.
+                  </p>
+                ) : (
+                  bankSoal.esai.map((soal, indeks) => {
+                    const nomor = indeks + 1;
+                    const kunci = String(nomor);
+                    const sudahKirim = Boolean(jawabanEsai[kunci]);
+                    return (
+                      <div key={`esai-${nomor}`}>
+                        <p className="whitespace-pre-wrap">{soal}</p>
+                        <textarea
+                          value={sudahKirim ? jawabanEsai[kunci] : (drafEsai[kunci] ?? "")}
+                          onChange={(e) =>
+                            setDrafEsai((sebelum) => ({
+                              ...sebelum,
+                              [kunci]: e.target.value,
+                            }))
+                          }
+                          disabled={sudahKirim}
+                          rows={5}
+                          placeholder="Tulis uraianmu di sini..."
+                          className="mt-3 w-full rounded-xl border-2 border-[#1C01A5]/20 bg-white px-4 py-3 text-base font-medium text-slate-800 outline-none focus:border-[#F0AB00] disabled:bg-slate-50"
+                        />
+                        <button
+                          type="button"
+                          onClick={() => kirimJawabanEsai(nomor)}
+                          disabled={sudahKirim || !(drafEsai[kunci] ?? "").trim()}
+                          className="mt-3 rounded-xl bg-[#1C01A5] px-4 py-2 text-sm font-extrabold text-white disabled:opacity-50"
+                        >
+                          {sudahKirim ? "Jawaban tersimpan" : "Kirim uraian"}
+                        </button>
+                        {sudahKirim ? (
+                          <p className="mt-2 text-sm font-extrabold text-emerald-700">
+                            Jawaban tersimpan. Rubrik ujian dipakai di rapor, tanpa menampilkan kunci lengkap.
+                          </p>
+                        ) : null}
+                      </div>
+                    );
+                  })
+                )}
               </div>
             </div>
             <div className="text-sm font-bold text-[#1C01A5] bg-white p-4 rounded-xl border-2 border-dashed border-[#F0AB00]/50 flex items-center gap-3 text-center justify-center">

@@ -8,7 +8,7 @@ export function kunciMateriTutor(
   materi: string,
 ): string {
   const rapikan = (nilai: string) => nilai.trim().toLowerCase().replace(/\s+/g, " ");
-  return `${rapikan(kelas)}|${rapikan(mapel)}|${rapikan(materi)}`;
+  return `${rapikan(kelas)}|${rapikan(mapel)}|${rapikan(materi)}|soal:v2`;
 }
 
 export function tanggalWib(): string {

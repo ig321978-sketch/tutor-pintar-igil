@@ -122,6 +122,7 @@ export function catatSesiModul(opsi: {
   mode: ModeBelajar;
   catatanEvaluasi: string;
   kunciJawaban?: string[];
+  kuisTotal?: number;
 }): SesiModul {
   const data = bacaProgres();
   const sesi: SesiModul = {
@@ -133,7 +134,7 @@ export function catatSesiModul(opsi: {
     mode: opsi.mode,
     waktu: new Date().toISOString(),
     xp: 80,
-    kuisTotal: 5,
+    kuisTotal: opsi.kuisTotal ?? opsi.kunciJawaban?.length ?? 13,
     kuisDijawab: 0,
     kuisBenar: 0,
     kunciJawaban: opsi.kunciJawaban ?? [],

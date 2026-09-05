@@ -1,6 +1,12 @@
 import { NextResponse } from "next/server";
 import { Type, type Part, type Schema } from "@google/genai";
-import { parseKunciJawaban } from "@/lib/kuis";
+import {
+  kemasBankSoal,
+  kemasKunciBank,
+  pecahBankSoal,
+  pecahKunciBank,
+  pecahRubrikEsai,
+} from "@/lib/kuis";
 import { jenjangGuru } from "@/lib/guru";
 import { mapelHitungan } from "@/lib/mapel-hitungan";
 import { hasilkanJsonGemini, MODEL_GEMINI_MATERI, MODEL_GEMINI_RUTIN, pesanGalatGemini } from "@/lib/klien-gemini";
@@ -31,6 +37,8 @@ type ModulTutor = {
   svgCode: string;
   pertanyaan: string;
   kunciJawaban: string[];
+  esai: string;
+  kunciEsai: string[];
   motivasi: string;
 };
 
@@ -55,6 +63,8 @@ const SKEMA_MODUL: Schema = {
     svgCode: { type: Type.STRING },
     pertanyaan: { type: Type.STRING },
     kunciJawaban: { type: Type.STRING },
+    esai: { type: Type.STRING },
+    kunciEsai: { type: Type.STRING },
     motivasi: { type: Type.STRING },
   },
   required: [
@@ -65,6 +75,8 @@ const SKEMA_MODUL: Schema = {
     "svgCode",
     "pertanyaan",
     "kunciJawaban",
+    "esai",
+    "kunciEsai",
     "motivasi",
   ],
 };
@@ -293,6 +305,8 @@ function bentukModulTutor(
     svgCode?: unknown;
     pertanyaan?: unknown;
     kunciJawaban?: unknown;
+    esai?: unknown;
+    kunciEsai?: unknown;
     motivasi?: unknown;
   },
 ): ModulTutor {
@@ -302,6 +316,12 @@ function bentukModulTutor(
     nama,
   );
   const global = amanNaskahModul(bagian.global_best_view, kurikulum, nama);
+  const bank = pecahBankSoal(
+    pulihkanParagraf(bagian.pertanyaan, "Latihan soal sedang disusun..."),
+  );
+  const esaiLangsung = pulihkanParagraf(bagian.esai, "");
+  const kunci = pecahKunciBank(bagian.kunciJawaban);
+  const rubrikLangsung = pecahRubrikEsai(bagian.kunciEsai);
   return {
     sapaan: sapaanTutorRingkas(nama, sebagaiTeks(bagian.sapaan)),
     penjelasan: kurikulum,
@@ -312,11 +332,10 @@ function bentukModulTutor(
       "Sketsa doodle materi ini",
     ),
     svgCode: amankanSvg(bagian.svgCode),
-    pertanyaan: pulihkanParagraf(
-      bagian.pertanyaan,
-      "Latihan soal sedang disusun...",
-    ),
-    kunciJawaban: parseKunciJawaban(bagian.kunciJawaban),
+    pertanyaan: bank.pilihanGanda.join("\n\n") || "Latihan soal sedang disusun...",
+    kunciJawaban: kunci.huruf,
+    esai: esaiLangsung || bank.esai.join("\n\n"),
+    kunciEsai: rubrikLangsung.length > 0 ? rubrikLangsung : kunci.rubrik,
     motivasi: pilihKataPujian(sebagaiTeks(bagian.motivasi, namaDepanSiswa(nama))),
   };
 }
@@ -468,21 +487,27 @@ STANDAR KONTEN:
 ${instruksiPenjelasan(kelas, namaDepan, mapel, materi)}
 3. sketsaKartu: TEPAT sama jumlahnya dengan kartu di curriculum_view. Setiap blok SATU kalimat visual doodle kecil (satu benda atau adegan mini), dipisah \\n\\n, urutan sama dengan kartu. Semua sketsa HARUS berbeda. Tanpa teks tertulis di gambar.
 4. svgCode: cadangan doodle SVG sketsa tangan (viewBox 0 0 400 220), kertas krem, garis tinta navy #1C01A5 saja. Tanpa kutip ganda.
-5. pertanyaan: TEPAT 5 soal dalam SATU string panjang, dipisah \\n\\n.
-   Komposisi wajib: 3 soal Standar + 2 soal HOTS.
+5. pertanyaan: TEPAT 10 soal PILIHAN GANDA dalam SATU string panjang, dipisah \\n\\n.
+   Komposisi wajib berurutan: 3 soal Reguler (Soal 1-3) + 7 soal HOTS (Soal 4-10).
    DILARANG menuliskan label kunci, huruf jawaban, atau pembahasan di dalam field pertanyaan.
    Format tiap soal HANYA memuat tiga bagian ini:
-   [Soal X - Tipe: Standar/HOTS]
+   [Soal X - PG - Tipe: Reguler/HOTS]
    Narasi pertanyaan yang menantang...
    A) ...
    B) ...
    C) ...
    D) ...
-6. kunciJawaban: SATU string berisi 5 huruf A/B/C/D sesuai urutan soal, dipisah koma. Contoh: A,C,B,D,A
+6. kunciJawaban: SATU string berisi 10 huruf A/B/C/D sesuai urutan soal PG, dipisah koma. Contoh: A,C,B,D,A,B,C,D,A,B
    Setiap huruf HARUS cocok dengan opsi yang benar pada soal terkait.
-7. motivasi: SATU kata pujian umum untuk ${namaDepan} dari: Pintar, Cerdas, Baik, Rajin, Soleh, Semangat, Hebat. Bukan kalimat panjang.
+7. esai: TEPAT 3 soal URAIAN dalam SATU string, dipisah \\n\\n.
+   Komposisi wajib berurutan: 1 soal Reguler (Soal Esai 1) + 2 soal HOTS (Soal Esai 2-3).
+   DILARANG pilihan A/B/C/D. Format:
+   [Soal Esai X - Tipe: Reguler/HOTS]
+   Narasi perintah uraian 2-4 kalimat.
+8. kunciEsai: TEPAT 3 rubrik penilaian singkat (bukan esai siswa), dipisah \\n\\n, urutan sama dengan esai.
+9. motivasi: SATU kata pujian umum untuk ${namaDepan} dari: Pintar, Cerdas, Baik, Rajin, Soleh, Semangat, Hebat. Bukan kalimat panjang.
 
-Kembalikan persis kunci: sapaan, curriculum_view, global_best_view, sketsaKartu, svgCode, pertanyaan, kunciJawaban, motivasi.
+Kembalikan persis kunci: sapaan, curriculum_view, global_best_view, sketsaKartu, svgCode, pertanyaan, kunciJawaban, esai, kunciEsai, motivasi.
 `.trim();
 
     const bagian: Part[] = [...daftarGambar];
@@ -503,10 +528,11 @@ Kembalikan persis kunci: sapaan, curriculum_view, global_best_view, sketsaKartu,
         global_best_view: dataAman.global_best_view,
         sketsaKartu: dataAman.sketsaKartu,
         svgCode: dataAman.svgCode,
-        pertanyaan: dataAman.pertanyaan,
-        kunciJawaban: Array.isArray(dataAman.kunciJawaban)
-          ? dataAman.kunciJawaban.join(",")
-          : sebagaiTeks(dataJson.kunciJawaban),
+        pertanyaan: kemasBankSoal(dataAman.pertanyaan, dataAman.esai),
+        kunciJawaban: kemasKunciBank(
+          dataAman.kunciJawaban,
+          dataAman.kunciEsai.join("\n\n"),
+        ),
         motivasi: dataAman.motivasi,
       });
     }
