@@ -23,6 +23,21 @@ export type SesiModul = {
   kuisBenar: number;
   kunciJawaban: string[];
   catatanEvaluasi: string;
+  audioCompleted: boolean;
+  latihanSelesai: boolean;
+  jumlahLatihan: number;
+};
+
+export type RaporHarianTersimpan = {
+  tanggal: string;
+  skor: number;
+  predikat: string;
+  ringkasan: string;
+  pemahaman: string;
+  esai: string;
+  konsistensi: string;
+  sidik: string;
+  dariAi: boolean;
 };
 
 export type ProgresIgil = {
@@ -31,6 +46,7 @@ export type ProgresIgil = {
   jawabanKuis: Record<string, Record<string, string>>;
   xpTotal: number;
   tokenIgil: number;
+  raporHarian?: Record<string, RaporHarianTersimpan>;
 };
 
 export type BarisPeringkat = {
@@ -85,21 +101,53 @@ export function bacaProgres(): ProgresIgil {
       ...data,
       profil: { ...progresKosong().profil, ...data.profil },
       sesi: Array.isArray(data.sesi)
-        ? data.sesi.map((sesi) => ({
-            ...sesi,
-            kuisBenar: typeof sesi.kuisBenar === "number" ? sesi.kuisBenar : 0,
-            kunciJawaban: Array.isArray(sesi.kunciJawaban)
-              ? sesi.kunciJawaban
-              : [],
-          }))
+        ? data.sesi.map((sesi) => normalisasiSesi(sesi))
         : [],
       jawabanKuis: data.jawabanKuis ?? {},
       xpTotal: typeof data.xpTotal === "number" ? data.xpTotal : 0,
       tokenIgil: typeof data.tokenIgil === "number" ? data.tokenIgil : 0,
+      raporHarian: data.raporHarian ?? {},
     };
   } catch {
     return progresKosong();
   }
+}
+
+function normalisasiSesi(sesi: Partial<SesiModul> & { id?: string }): SesiModul {
+  const kunci = Array.isArray(sesi.kunciJawaban) ? sesi.kunciJawaban : [];
+  const jumlahLatihan =
+    typeof sesi.jumlahLatihan === "number" && sesi.jumlahLatihan > 0
+      ? sesi.jumlahLatihan
+      : kunci.length;
+  return {
+    id: sesi.id ?? `${Date.now()}`,
+    nama: sesi.nama ?? "",
+    kelas: sesi.kelas ?? "",
+    mapel: sesi.mapel ?? "",
+    materi: sesi.materi ?? "",
+    mode: sesi.mode === "gambar" ? "gambar" : "teks",
+    waktu: sesi.waktu ?? new Date().toISOString(),
+    xp: typeof sesi.xp === "number" ? sesi.xp : 0,
+    kuisTotal: typeof sesi.kuisTotal === "number" ? sesi.kuisTotal : 0,
+    kuisDijawab: typeof sesi.kuisDijawab === "number" ? sesi.kuisDijawab : 0,
+    kuisBenar: typeof sesi.kuisBenar === "number" ? sesi.kuisBenar : 0,
+    kunciJawaban: kunci,
+    catatanEvaluasi: sesi.catatanEvaluasi ?? "",
+    audioCompleted: Boolean(sesi.audioCompleted),
+    latihanSelesai: Boolean(sesi.latihanSelesai),
+    jumlahLatihan,
+  };
+}
+
+export function sesiSudahBelajar(sesi: SesiModul): boolean {
+  return Boolean(sesi.audioCompleted && sesi.latihanSelesai);
+}
+
+function jawabanLatihan(kunciSesi: Record<string, string>): number {
+  return Object.keys(kunciSesi).filter((nomor) => {
+    const nilai = Number(nomor);
+    return Number.isFinite(nilai) && nilai > 0 && nilai < 100;
+  }).length;
 }
 
 export function simpanProgres(data: ProgresIgil): void {
@@ -123,8 +171,10 @@ export function catatSesiModul(opsi: {
   catatanEvaluasi: string;
   kunciJawaban?: string[];
   kuisTotal?: number;
+  jumlahLatihan?: number;
 }): SesiModul {
   const data = bacaProgres();
+  const kunci = opsi.kunciJawaban ?? [];
   const sesi: SesiModul = {
     id: `${Date.now()}`,
     nama: opsi.nama,
@@ -134,11 +184,14 @@ export function catatSesiModul(opsi: {
     mode: opsi.mode,
     waktu: new Date().toISOString(),
     xp: 80,
-    kuisTotal: opsi.kuisTotal ?? opsi.kunciJawaban?.length ?? 13,
+    kuisTotal: opsi.kuisTotal ?? kunci.length,
     kuisDijawab: 0,
     kuisBenar: 0,
-    kunciJawaban: opsi.kunciJawaban ?? [],
+    kunciJawaban: kunci,
     catatanEvaluasi: opsi.catatanEvaluasi,
+    audioCompleted: false,
+    latihanSelesai: false,
+    jumlahLatihan: opsi.jumlahLatihan ?? kunci.length,
   };
   data.sesi.unshift(sesi);
   data.xpTotal += sesi.xp;
@@ -163,6 +216,10 @@ export function catatJawabanKuis(
   const sesi = data.sesi.find((item) => item.id === sesiId);
   if (sesi) {
     sesi.kuisDijawab = Object.keys(kunciSesi).length;
+    const dikerjakanLatihan = jawabanLatihan(kunciSesi);
+    if (sesi.jumlahLatihan > 0 && dikerjakanLatihan >= sesi.jumlahLatihan) {
+      sesi.latihanSelesai = true;
+    }
     if (!sudahAda) {
       sesi.xp += benar ? 16 : 8;
       data.xpTotal += benar ? 16 : 8;
@@ -182,6 +239,26 @@ export function catatEvaluasiTambahan(sesiId: string, catatan: string): void {
   sesi.xp += 20;
   data.xpTotal += 20;
   simpanProgres(data);
+}
+
+export function catatAudioSelesai(sesiId: string): ProgresIgil {
+  const data = bacaProgres();
+  const sesi = data.sesi.find((item) => item.id === sesiId);
+  if (sesi && !sesi.audioCompleted) {
+    sesi.audioCompleted = true;
+    simpanProgres(data);
+  }
+  return data;
+}
+
+export function simpanRaporHarian(
+  tanggal: string,
+  isi: RaporHarianTersimpan,
+): ProgresIgil {
+  const data = bacaProgres();
+  data.raporHarian = { ...(data.raporHarian ?? {}), [tanggal]: isi };
+  simpanProgres(data);
+  return data;
 }
 
 export function ringkasanRapor(data: ProgresIgil = bacaProgres()) {

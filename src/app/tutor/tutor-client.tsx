@@ -13,6 +13,7 @@ import { DATA_KURIKULUM, OPSI_LAIN_NYA, daftarMapelUntukKelas } from "@/lib/kuri
 import { hurufKunci, pecahBankSoal, pecahBlokSoal } from "@/lib/kuis";
 import {
   bacaProgres,
+  catatAudioSelesai,
   catatEvaluasiTambahan,
   catatJawabanKuis,
   catatSesiModul,
@@ -414,6 +415,11 @@ export default function TutorAI() {
     }, INTERVAL_KETIK_MS);
   };
 
+  const tandaiAudioSelesai = () => {
+    setAudioCompleted(true);
+    if (sesiAktifId) catatAudioSelesai(sesiAktifId);
+  };
+
   const bicaraPotonganSaatIni = () => {
     const indeks = indeksAntrianRef.current;
     const item = antrianSuaraRef.current[indeks];
@@ -421,7 +427,7 @@ export default function TutorAI() {
       sedangMemutarRef.current = false;
       hentikanJagaSuara();
       setStatusPemutar("siaga");
-      setAudioCompleted(true);
+      tandaiAudioSelesai();
       return;
     }
 
@@ -661,6 +667,7 @@ export default function TutorAI() {
           kuisTotal:
             pecahBankSoal(data.data.pertanyaan).pilihanGanda.length +
             pecahBlokSoal(data.data.esai ?? "").length,
+          jumlahLatihan: pecahBankSoal(data.data.pertanyaan).pilihanGanda.length,
         });
         setSesiAktifId(sesi.id);
         void muatKuota();
@@ -1279,13 +1286,13 @@ export default function TutorAI() {
         }
         sedangMemutarRef.current = false;
         setStatusPemutar("siaga");
-        setAudioCompleted(true);
+        tandaiAudioSelesai();
       });
       return;
     }
     sedangMemutarRef.current = false;
     setStatusPemutar("siaga");
-    setAudioCompleted(true);
+    tandaiAudioSelesai();
     setWaktuAudio((sebelum) => (durasiAudio > 0 ? durasiAudio : sebelum));
     if (hasilData) {
       setTeksAnimasi(penjelasanAktif);
@@ -1293,7 +1300,7 @@ export default function TutorAI() {
         pecahTokenNaskah(`${hasilData.sapaan} ${penjelasanAktif}`).length - 1,
       );
     }
-  }, [durasiAudio, hasilData, penjelasanAktif]);
+  }, [durasiAudio, hasilData, penjelasanAktif, tandaiAudioSelesai]);
 
   useEffect(() => {
     if (!hasilData || sudahSiapAudioRef.current) return;
