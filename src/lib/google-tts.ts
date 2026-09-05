@@ -226,7 +226,7 @@ async function panggilSintesis(
           audioEncoding: "LINEAR16",
           sampleRateHertz: SAMPLE_RATE,
           speakingRate: LAJU_BICARA,
-          effectsProfileId: ["handset-class-device"],
+          effectsProfileId: ["headphone-class-device"],
         },
       }),
     },

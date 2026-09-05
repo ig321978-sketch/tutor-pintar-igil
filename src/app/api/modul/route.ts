@@ -1,27 +1,15 @@
 import { after, NextResponse } from "next/server";
 import type { Part } from "@google/genai";
-import { askTutor } from "@/lib/ask-tutor";
 import { siapkanAudioModulPermanen } from "@/lib/audio-modul";
+import { topicIdMateri } from "@/lib/cache-materi-tutor";
 import { pesanGalatGemini } from "@/lib/klien-gemini";
-import { klaimInteraksiAi, statusKuota } from "@/lib/kuota-interaksi";
-import { ambilAtauBuatModul } from "@/lib/susun-modul-tutor";
+import {
+  ambilAtauBuatModul,
+  bentukModulTutor,
+  getModule,
+} from "@/lib/susun-modul-tutor";
 
 export const maxDuration = 120;
-
-type PermintaanTutor = {
-  nama?: unknown;
-  kelas?: unknown;
-  mapel?: unknown;
-  materi?: unknown;
-  gambar?: unknown;
-  ajuan?: unknown;
-  pakaiToken?: unknown;
-  riwayat?: unknown;
-};
-
-function sebagaiYa(nilai: unknown): boolean {
-  return nilai === true || nilai === "true" || nilai === 1;
-}
 
 function sebagaiTeks(nilai: unknown, cadangan = ""): string {
   return typeof nilai === "string" ? nilai.trim() : cadangan;
@@ -43,75 +31,60 @@ function ekstrakDaftarGambar(gambar: unknown): Part[] {
 
 export async function GET(req: Request) {
   const url = new URL(req.url);
+  const kelas = sebagaiTeks(url.searchParams.get("kelas"));
+  const mapel = sebagaiTeks(url.searchParams.get("mapel"));
+  const materi = sebagaiTeks(url.searchParams.get("materi"));
   const nama = sebagaiTeks(url.searchParams.get("nama"), "Siswa");
-  const kelas = sebagaiTeks(url.searchParams.get("kelas"), "SD");
-  const kuota = await statusKuota(nama, kelas);
-  return NextResponse.json({ berhasil: true, kuota });
+  if (!kelas || !mapel || !materi) {
+    return NextResponse.json(
+      { berhasil: false, pesan: "kelas, mapel, dan materi wajib diisi." },
+      { status: 400 },
+    );
+  }
+  const cache = await getModule(kelas, mapel, materi);
+  if (!cache) {
+    return NextResponse.json({
+      berhasil: true,
+      ada: false,
+      topicId: topicIdMateri(kelas, mapel, materi),
+    });
+  }
+  return NextResponse.json({
+    berhasil: true,
+    ada: true,
+    dariCache: true,
+    topicId: topicIdMateri(kelas, mapel, materi),
+    data: bentukModulTutor(nama, cache),
+  });
 }
 
 export async function POST(req: Request) {
   try {
-    let body: PermintaanTutor;
+    let body: Record<string, unknown>;
     try {
-      body = (await req.json()) as PermintaanTutor;
+      body = (await req.json()) as Record<string, unknown>;
     } catch {
       return NextResponse.json(
         { berhasil: false, pesan: "Request JSON tidak valid." },
         { status: 400 },
       );
     }
+
     const nama = sebagaiTeks(body.nama, "Siswa");
     const kelas = sebagaiTeks(body.kelas, "SD");
     const mapel = sebagaiTeks(body.mapel, "Umum");
     const materi = sebagaiTeks(body.materi, "Materi hari ini");
-    const ajuan = sebagaiTeks(body.ajuan);
-    const daftarGambar = ekstrakDaftarGambar(body.gambar);
-
-    if (ajuan) {
-      const klaim = await klaimInteraksiAi({
-        nama,
-        kelas,
-        pakaiToken: sebagaiYa(body.pakaiToken),
-      });
-      if (!klaim.ok) {
-        return NextResponse.json(
-          {
-            berhasil: false,
-            kode: klaim.kode,
-            pesan: klaim.pesan,
-            kuota: klaim.kuota,
-          },
-          { status: 429 },
-        );
-      }
-
-      const dataAjuan = await askTutor({
-        nama,
-        kelas,
-        mapel,
-        materi,
-        ajuan,
-        gambar: daftarGambar,
-        riwayat: body.riwayat,
-      });
-
-      return NextResponse.json({
-        berhasil: true,
-        mode: "ajuan",
-        data: dataAjuan,
-        kuota: klaim.kuota,
-      });
-    }
+    const gambar = ekstrakDaftarGambar(body.gambar);
 
     const hasil = await ambilAtauBuatModul({
       nama,
       kelas,
       mapel,
       materi,
-      gambar: daftarGambar,
+      gambar,
     });
 
-    if (!hasil.dariCache && daftarGambar.length === 0) {
+    if (!hasil.dariCache && gambar.length === 0) {
       after(() => {
         void siapkanAudioModulPermanen({
           kelas,
@@ -130,7 +103,7 @@ export async function POST(req: Request) {
       data: hasil.data,
     });
   } catch (error: unknown) {
-    console.error("EROR SISTEM:", error);
+    console.error("MODUL:", error);
     const pesan = pesanGalatGemini(error);
     const timeout = /waktu lebih lama|TIMEOUT_GEMINI|timeout/i.test(pesan);
     return NextResponse.json(

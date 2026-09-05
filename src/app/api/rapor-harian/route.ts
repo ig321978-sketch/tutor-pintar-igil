@@ -1,6 +1,11 @@
 import { NextResponse } from "next/server";
 import { Type, type Schema } from "@google/genai";
-import { hasilkanJsonGemini, MODEL_GEMINI_RUTIN, pesanGalatGemini } from "@/lib/klien-gemini";
+import {
+  BATAS_TOKEN_RUTIN,
+  hasilkanJsonGemini,
+  MODEL_GEMINI_EVALUASI,
+  pesanGalatGemini,
+} from "@/lib/klien-gemini";
 import { predikatDariSkor } from "@/lib/rapor-harian";
 
 export const maxDuration = 30;
@@ -156,8 +161,9 @@ pemahaman, esai, konsistensi: masing-masing 1-2 kalimat.
       const mentah = await hasilkanJsonGemini({
         parts: [{ text: prompt }],
         schema: SKEMA,
-        maxOutputTokens: 2048,
-        model: MODEL_GEMINI_RUTIN,
+        maxOutputTokens: BATAS_TOKEN_RUTIN,
+        model: MODEL_GEMINI_EVALUASI,
+        timeoutMs: 22_000,
       });
       const data = parseJson(mentah);
       const skor = Math.max(0, Math.min(100, Math.round(angka(data.skor, skorCadangan(bab)))));

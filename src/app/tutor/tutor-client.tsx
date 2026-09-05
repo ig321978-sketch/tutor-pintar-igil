@@ -79,6 +79,11 @@ type PanduanAjuan = {
   dorongan: string;
 };
 
+type JejakAjuan = {
+  tanya: string;
+  jawab: string;
+};
+
 type StatusKuotaUi = {
   batasGratis: number;
   sisaGratis: number;
@@ -192,6 +197,7 @@ export default function TutorAI() {
   const [teksAjuan, setTeksAjuan] = useState("");
   const [isLoadingAjuan, setIsLoadingAjuan] = useState(false);
   const [hasilAjuan, setHasilAjuan] = useState<PanduanAjuan | null>(null);
+  const [riwayatAjuan, setRiwayatAjuan] = useState<JejakAjuan[]>([]);
   const [pesanAjuan, setPesanAjuan] = useState("");
   const [kuotaAjuan, setKuotaAjuan] = useState<StatusKuotaUi | null>(null);
   const [dariCache, setDariCache] = useState(false);
@@ -602,6 +608,7 @@ export default function TutorAI() {
     setStatusDoodle("siaga");
     setHasilData(null);
     setHasilAjuan(null);
+    setRiwayatAjuan([]);
     setTeksAjuan("");
     setPesanAjuan("");
     setTeksAnimasi("");
@@ -756,6 +763,7 @@ export default function TutorAI() {
           gambar: modeInput === "gambar" ? gambarHalaman : null,
           ajuan: teksAjuan.trim(),
           pakaiToken,
+          riwayat: riwayatAjuan.slice(-5),
         }),
       });
       const data = (await respons.json()) as {
@@ -774,10 +782,14 @@ export default function TutorAI() {
       }
 
       if (data.berhasil && data.data) {
+        const tanya = teksAjuan.trim();
         setHasilAjuan({
           ...data.data,
           sapaan: sapaanTutorRingkas(nama, data.data.sapaan),
         });
+        setRiwayatAjuan((sebelum) =>
+          [...sebelum, { tanya, jawab: data.data?.panduanLangkah || "" }].slice(-5),
+        );
         if (sesiAktifId && data.data.dorongan) {
           catatEvaluasiTambahan(sesiAktifId, data.data.dorongan);
         }
@@ -1316,6 +1328,7 @@ export default function TutorAI() {
     sudahSiapAudioRef.current = false;
     setHasilData(null);
     setHasilAjuan(null);
+    setRiwayatAjuan([]);
     setTeksAjuan("");
     setPesanAjuan("");
     setTeksAnimasi("");

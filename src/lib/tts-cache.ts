@@ -7,6 +7,17 @@ export function kunciCacheTts(suara: string, teks: string): string {
     .digest("hex");
 }
 
+export function kunciNaskahTts(
+  suara: string,
+  naskahTubuh: string,
+  awalSaja: boolean,
+): string {
+  return kunciCacheTts(
+    suara,
+    `${awalSaja ? "awal" : "penuh"}\nlisan-v4-tubuh\n${naskahTubuh}`,
+  );
+}
+
 const EMBER = process.env.SUPABASE_TTS_BUCKET || "tts-cache";
 
 type MetaCache = {

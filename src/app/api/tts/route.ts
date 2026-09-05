@@ -7,7 +7,8 @@ import {
   ttsSiapDipakai,
 } from "@/lib/google-tts";
 import { naskahLisan } from "@/lib/naskah-lisan";
-import { ambilCacheTts, kunciCacheTts, simpanCacheTts } from "@/lib/tts-cache";
+import { potongSapaanNaskah } from "@/lib/audio-modul";
+import { ambilCacheTts, kunciNaskahTts, simpanCacheTts } from "@/lib/tts-cache";
 import { normalisasiKelaminTts, waktuKataDariDurasi } from "@/lib/tts";
 
 export const maxDuration = 120;
@@ -46,10 +47,8 @@ export async function POST(req: Request) {
     const kelas = typeof body.kelas === "string" ? body.kelas : "3 SD";
     const awalSaja = body.awalSaja === true;
     const suara = namaSuaraChirp(kelamin, kelas);
-    const kunci = kunciCacheTts(
-      suara,
-      `${awalSaja ? "awal" : "penuh"}\nlisan-v3\n${naskah}`,
-    );
+    const tubuh = potongSapaanNaskah(naskah);
+    const kunci = kunciNaskahTts(suara, tubuh, awalSaja);
 
     const cache = await ambilCacheTts(kunci);
     if (cache) {

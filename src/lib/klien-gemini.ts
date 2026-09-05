@@ -3,27 +3,48 @@ import { GoogleGenAI, type Part, type Schema } from "@google/genai";
 
 export type { Part, Schema };
 
-export const MODEL_GEMINI_MATERI =
-  process.env.GEMINI_MODEL_MATERI?.trim() ||
-  process.env.GEMINI_MODEL?.trim() ||
-  "gemini-3.6-flash";
+function modelProWajib(): string {
+  const kandidat = [
+    process.env.GEMINI_MODEL_MATERI,
+    process.env.GEMINI_MODEL,
+  ]
+    .map((nilai) => nilai?.trim())
+    .filter((nilai): nilai is string => Boolean(nilai));
+  const pro = kandidat.find(
+    (nama) => /pro/i.test(nama) && !/flash/i.test(nama),
+  );
+  return pro || "gemini-3.1-pro";
+}
 
-export const MODEL_GEMINI_RUTIN =
-  process.env.GEMINI_MODEL_RUTIN?.trim() || "gemini-3.5-flash-lite";
+function modelLiteWajib(): string {
+  const kandidat = process.env.GEMINI_MODEL_RUTIN?.trim();
+  if (kandidat && /lite|flash/i.test(kandidat) && !/pro/i.test(kandidat)) {
+    return kandidat;
+  }
+  return "gemini-3.5-flash-lite";
+}
 
+/** Generasi pertama modul: HANYA model Pro, tanpa fallback Flash. */
+export const MODEL_GEMINI_MATERI = modelProWajib();
+
+/** Chat harian + rapor: HANYA Flash-Lite. */
+export const MODEL_GEMINI_RUTIN = modelLiteWajib();
+export const MODEL_GEMINI_EVALUASI = MODEL_GEMINI_RUTIN;
 export const MODEL_GEMINI_TEKS = MODEL_GEMINI_MATERI;
 
 const MODEL_CADANGAN_MATERI = [
-  "gemini-3.6-flash",
-  "gemini-3.5-flash",
-  "gemini-2.5-flash-lite",
+  "gemini-3.1-pro",
+  "gemini-3-pro",
+  "gemini-2.5-pro",
 ];
 
 const MODEL_CADANGAN_RUTIN = [
   "gemini-3.5-flash-lite",
-  "gemini-3.6-flash",
   "gemini-2.5-flash-lite",
 ];
+
+export const BATAS_TOKEN_RUTIN = 2048;
+export const BATAS_RIWAYAT_AJUAN = 5;
 
 function bacaKredensialGoogleCloud(): Record<string, unknown> | null {
   const mentah = (
@@ -99,6 +120,9 @@ export function pesanGalatGemini(error: unknown): string {
   if (/RESOURCE_EXHAUSTED|429 Too Many Requests/i.test(mentah)) {
     return "Google AI sedang membatasi permintaan. Tunggu sebentar, lalu coba lagi.";
   }
+  if (/TIMEOUT_GEMINI|timeout|timed out|deadline/i.test(mentah)) {
+    return "Penyusunan memakan waktu lebih lama dari biasanya. Buka lagi materi yang sama; jika sudah tersimpan, tampil dari cache tanpa memanggil AI.";
+  }
   return mentah.replace(/^\[GoogleGenerativeAI Error\]:\s*/i, "").trim();
 }
 
@@ -111,6 +135,12 @@ function daftarModel(awal: string): string[] {
 
 function jenisGalat(error: unknown): "model" | "kuota" | "api" | "lain" {
   const teks = error instanceof Error ? error.message : String(error);
+  if (/thinkingConfig|thinking_config|unknown name thinking|invalid argument.*thinking/i.test(teks)) {
+    return "model";
+  }
+  if (/TIMEOUT_GEMINI|timeout|timed out|deadline/i.test(teks)) {
+    return "lain";
+  }
   if (/prepayment|RESOURCE_EXHAUSTED|429 Too Many Requests|quota/i.test(teks)) {
     return "kuota";
   }
@@ -191,12 +221,18 @@ function teksDariVertex(data: {
   return teks;
 }
 
+type OpsiPanggil = {
+  systemInstruction?: string;
+  thinking?: boolean;
+};
+
 async function panggilVertexKlasik(
   model: string,
   location: string,
   parts: Part[],
   schema?: Schema,
   maxOutputTokens = 8192,
+  opsi?: OpsiPanggil,
 ): Promise<string> {
   const { token, project } = await tokenGoogleCloud();
   const host =
@@ -211,10 +247,16 @@ async function panggilVertexKlasik(
       "Content-Type": "application/json",
     },
     body: JSON.stringify({
+      ...(opsi?.systemInstruction
+        ? { systemInstruction: { parts: [{ text: opsi.systemInstruction }] } }
+        : {}),
       contents: [{ role: "user", parts }],
       generationConfig: {
-        temperature: 0.7,
+        temperature: opsi?.thinking ? 0.35 : 0.7,
         maxOutputTokens,
+        ...(opsi?.thinking
+          ? { thinkingConfig: { thinkingBudget: 4096 } }
+          : {}),
         ...(schema
           ? {
               responseMimeType: "application/json",
@@ -242,14 +284,20 @@ async function panggilGemini(
   parts: Part[],
   schema?: Schema,
   maxOutputTokens = 8192,
+  opsi?: OpsiPanggil,
 ): Promise<string> {
   const response = await klien.models.generateContent({
     model,
     contents: [{ role: "user", parts }],
     config: {
+      systemInstruction: opsi?.systemInstruction,
       responseMimeType: schema ? "application/json" : undefined,
       responseSchema: schema,
       maxOutputTokens,
+      temperature: opsi?.thinking ? 0.35 : 0.7,
+      ...(opsi?.thinking
+        ? { thinkingConfig: { thinkingBudget: 4096 } }
+        : {}),
     },
   });
   const teks = response.text?.trim();
@@ -257,11 +305,27 @@ async function panggilGemini(
   return teks;
 }
 
+async function denganBatasWaktu<T>(janji: Promise<T>, timeoutMs?: number): Promise<T> {
+  if (!timeoutMs || timeoutMs <= 0) return janji;
+  let timer: ReturnType<typeof setTimeout> | undefined;
+  try {
+    return await Promise.race([
+      janji,
+      new Promise<T>((_, tolak) => {
+        timer = setTimeout(() => tolak(new Error("TIMEOUT_GEMINI")), timeoutMs);
+      }),
+    ]);
+  } finally {
+    if (timer) clearTimeout(timer);
+  }
+}
+
 async function denganCadanganJalur(
   parts: Part[],
   schema: Schema | undefined,
   maxOutputTokens: number,
   model?: string,
+  opsi?: OpsiPanggil & { timeoutMs?: number },
 ): Promise<string> {
   const lokasiKlasik = [
     process.env.GOOGLE_CLOUD_LOCATION?.trim(),
@@ -284,6 +348,7 @@ async function denganCadanganJalur(
             parts,
             schema,
             maxOutputTokens,
+            opsi,
           );
           console.info(
             `[gemini] sukses via=vertex-klasik lokasi=${location} model=${namaModel}`,
@@ -317,6 +382,7 @@ async function denganCadanganJalur(
           parts,
           schema,
           maxOutputTokens,
+          opsi,
         );
         console.info(`[gemini] sukses via=studio model=${namaModel}`);
         return teks;
@@ -352,6 +418,7 @@ async function denganCadanganJalur(
             parts,
             schema,
             maxOutputTokens,
+            opsi,
           );
           console.info(`[gemini] sukses via=vertex model=${namaModel}`);
           return teks;
@@ -380,12 +447,23 @@ export async function hasilkanJsonGemini(opsi: {
   schema: Schema;
   maxOutputTokens?: number;
   model?: string;
+  systemInstruction?: string;
+  thinking?: boolean;
+  timeoutMs?: number;
 }): Promise<string> {
-  return denganCadanganJalur(
-    opsi.parts,
-    opsi.schema,
-    opsi.maxOutputTokens ?? 8192,
-    opsi.model ?? MODEL_GEMINI_RUTIN,
+  return denganBatasWaktu(
+    denganCadanganJalur(
+      opsi.parts,
+      opsi.schema,
+      opsi.maxOutputTokens ?? 8192,
+      opsi.model ?? MODEL_GEMINI_RUTIN,
+      {
+        systemInstruction: opsi.systemInstruction,
+        thinking: opsi.thinking,
+        timeoutMs: opsi.timeoutMs,
+      },
+    ),
+    opsi.timeoutMs,
   );
 }
 

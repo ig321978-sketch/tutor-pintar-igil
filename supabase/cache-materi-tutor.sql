@@ -47,6 +47,18 @@ create table if not exists penukaran_sesi_ai (
   tanggal date not null
 );
 
+alter table cache_materi_tutor add column if not exists topic_id text;
+alter table cache_materi_tutor add column if not exists is_draft boolean not null default true;
+alter table cache_materi_tutor add column if not exists model_sumber text;
+alter table cache_materi_tutor add column if not exists audio_siap boolean not null default false;
+
+update cache_materi_tutor
+set topic_id = kunci
+where topic_id is null or topic_id = '';
+
+create unique index if not exists cache_materi_tutor_topic_id
+  on cache_materi_tutor (topic_id);
+
 alter table cache_materi_tutor enable row level security;
 alter table saldo_token_igil enable row level security;
 alter table kuota_interaksi_harian enable row level security;
