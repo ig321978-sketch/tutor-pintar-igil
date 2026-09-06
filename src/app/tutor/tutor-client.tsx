@@ -24,6 +24,8 @@ import { kelasTombolUtama } from "@/lib/tema";
 import { JUMLAH_KARTU_MAKS, kartuTanpaNaskah, susunKonsepMateri, UKURAN_BATCH_DOODLE } from "@/lib/konsep-materi";
 import {
   bacaModulLokal,
+  hapusModulLokal,
+  simpanModulLokal,
   simpanModulLokalPertama,
 } from "@/lib/cache-modul-lokal";
 import { kunciMateriTutor } from "@/lib/kunci-siswa";
@@ -765,6 +767,11 @@ export default function TutorAI() {
       if (cacheJson.berhasil && cacheJson.ada && cacheJson.data) {
         return cacheJson.data;
       }
+      if (cacheJson.berhasil && cacheJson.ada === false) {
+        hapusModulLokal(
+          kunciMateriTutor(kelasKirim, mapelKirim, materiKirim),
+        );
+      }
     } catch {
       const topicId = kunciMateriTutor(kelasKirim, mapelKirim, materiKirim);
       const lokal = bacaModulLokal<ModulTutor>(topicId);
@@ -887,7 +894,11 @@ export default function TutorAI() {
 
       if (data.berhasil && data.data) {
         if (modeInput === "teks") {
-          simpanModulLokalPertama(topicId, data.data);
+          if (data.dariCache) {
+            simpanModulLokalPertama(topicId, data.data);
+          } else {
+            simpanModulLokal(topicId, data.data);
+          }
         }
         terapkanModul(
           data.data,
