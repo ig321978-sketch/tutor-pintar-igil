@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import { useState } from "react";
+import EvaluasiSilabusAi from "@/components/EvaluasiSilabusAi";
 import PageShell from "@/components/PageShell";
 import type { DetailCacheMateri, IsiCacheMateri } from "@/lib/cache-materi-tutor";
 import { formatWaktuCache } from "@/lib/studio-kreator";
@@ -159,6 +160,14 @@ export default function StudioKreatorDetail({
 
       {meta ? (
         <>
+      <div className="mb-6">
+        <EvaluasiSilabusAi
+          kelas={meta.kelas}
+          mapel={meta.mapel}
+          materi={meta.materi}
+          naskahKurikulum={isi.curriculum_view}
+        />
+      </div>
       <div className="space-y-5">
         <KolomTeks
           label="Kurikulum Sekolah"
