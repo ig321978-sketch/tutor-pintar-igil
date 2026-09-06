@@ -180,6 +180,187 @@ export async function simpanCacheMateri(
   }
 }
 
+export type RingkasCacheMateri = {
+  kunci: string;
+  topicId: string;
+  kelas: string;
+  mapel: string;
+  materi: string;
+  modelSumber: string;
+  isDraft: boolean;
+  audioSiap: boolean;
+  updatedAt: string;
+};
+
+export type DetailCacheMateri = RingkasCacheMateri & IsiCacheMateri;
+
+function barisKeRingkas(data: {
+  kunci?: string | null;
+  topic_id?: string | null;
+  kelas?: string | null;
+  mapel?: string | null;
+  materi?: string | null;
+  model_sumber?: string | null;
+  is_draft?: boolean | null;
+  audio_siap?: boolean | null;
+  updated_at?: string | null;
+}): RingkasCacheMateri | null {
+  const kunci = data.kunci || data.topic_id;
+  if (!kunci) return null;
+  return {
+    kunci,
+    topicId: data.topic_id || kunci,
+    kelas: data.kelas ?? "",
+    mapel: data.mapel ?? "",
+    materi: data.materi ?? "",
+    modelSumber: data.model_sumber ?? "",
+    isDraft: data.is_draft !== false,
+    audioSiap: Boolean(data.audio_siap),
+    updatedAt: data.updated_at ?? "",
+  };
+}
+
+export async function daftarCacheMateri(): Promise<RingkasCacheMateri[]> {
+  const supabase = supabaseServer();
+  if (!supabase) return [];
+  const { data, error } = await supabase
+    .from("cache_materi_tutor")
+    .select(
+      "kunci, topic_id, kelas, mapel, materi, model_sumber, is_draft, audio_siap, updated_at",
+    )
+    .order("updated_at", { ascending: false })
+    .limit(200);
+  if (error) {
+    console.warn("[cache-materi] daftar:", error.message);
+    return [];
+  }
+  return (data ?? [])
+    .map((item) => barisKeRingkas(item))
+    .filter((item): item is RingkasCacheMateri => item !== null);
+}
+
+function barisKeIsiAdmin(data: {
+  curriculum_view?: string | null;
+  global_best_view?: string | null;
+  sketsa_kartu?: string | null;
+  svg_code?: string | null;
+  pertanyaan?: string | null;
+  kunci_jawaban?: string | null;
+  motivasi?: string | null;
+} | null): IsiCacheMateri | null {
+  if (!data) return null;
+  return {
+    curriculum_view: data.curriculum_view ?? "",
+    global_best_view: data.global_best_view ?? "",
+    sketsaKartu: data.sketsa_kartu ?? "",
+    svgCode: data.svg_code ?? "",
+    pertanyaan: data.pertanyaan ?? "",
+    kunciJawaban: data.kunci_jawaban ?? "",
+    motivasi: data.motivasi ?? "",
+  };
+}
+
+export function pecahKunciMateri(kunci: string): {
+  kelas: string;
+  mapel: string;
+  materi: string;
+} | null {
+  const bagian = kunci.split("|").map((nilai) => nilai.trim()).filter(Boolean);
+  if (bagian.length < 3) return null;
+  const materi =
+    bagian.length >= 4 ? bagian.slice(2, -1).join("|") : bagian[2];
+  if (!materi) return null;
+  return { kelas: bagian[0], mapel: bagian[1], materi };
+}
+
+export async function ambilDetailCacheMateri(
+  kunci: string,
+): Promise<DetailCacheMateri | null> {
+  const supabase = supabaseServer();
+  if (!supabase) return null;
+  const kolom =
+    "kunci, topic_id, kelas, mapel, materi, model_sumber, is_draft, audio_siap, updated_at, curriculum_view, global_best_view, sketsa_kartu, svg_code, pertanyaan, kunci_jawaban, motivasi";
+  const lewatTopic = await supabase
+    .from("cache_materi_tutor")
+    .select(kolom)
+    .eq("topic_id", kunci)
+    .maybeSingle();
+  const lewatKunci = lewatTopic.data
+    ? null
+    : await supabase
+        .from("cache_materi_tutor")
+        .select(kolom)
+        .eq("kunci", kunci)
+        .maybeSingle();
+  const data = lewatTopic.data ?? lewatKunci?.data ?? null;
+  const isi = barisKeIsiAdmin(data);
+  const ringkas = barisKeRingkas(data ?? {});
+  if (isi && ringkas) return { ...ringkas, ...isi };
+  return null;
+}
+
+export async function perbaruiCacheMateri(
+  kunci: string,
+  isi: IsiCacheMateri,
+): Promise<DetailCacheMateri | null> {
+  const supabase = supabaseServer();
+  if (!supabase) return null;
+  const payload = {
+    curriculum_view: isi.curriculum_view,
+    global_best_view: isi.global_best_view,
+    sketsa_kartu: isi.sketsaKartu,
+    svg_code: isi.svgCode,
+    pertanyaan: isi.pertanyaan,
+    kunci_jawaban: isi.kunciJawaban,
+    motivasi: isi.motivasi,
+    is_draft: true,
+    audio_siap: false,
+    updated_at: new Date().toISOString(),
+  };
+  const lewatKunci = await supabase
+    .from("cache_materi_tutor")
+    .update(payload)
+    .eq("kunci", kunci)
+    .select("kunci");
+  if (lewatKunci.error) {
+    console.warn("[cache-materi] perbarui:", lewatKunci.error.message);
+    return null;
+  }
+  if (!lewatKunci.data?.length) {
+    const lewatTopic = await supabase
+      .from("cache_materi_tutor")
+      .update(payload)
+      .eq("topic_id", kunci)
+      .select("kunci");
+    if (lewatTopic.error) {
+      console.warn("[cache-materi] perbarui topic:", lewatTopic.error.message);
+      return null;
+    }
+    if (!lewatTopic.data?.length) return null;
+  }
+  return ambilDetailCacheMateri(kunci);
+}
+
+export async function hapusCacheMateri(kunci: string): Promise<boolean> {
+  const supabase = supabaseServer();
+  if (!supabase) return false;
+  const lewatKunci = await supabase
+    .from("cache_materi_tutor")
+    .delete()
+    .eq("kunci", kunci);
+  const lewatTopic = await supabase
+    .from("cache_materi_tutor")
+    .delete()
+    .eq("topic_id", kunci);
+  if (lewatKunci.error) {
+    console.warn("[cache-materi] hapus:", lewatKunci.error.message);
+  }
+  if (lewatTopic.error) {
+    console.warn("[cache-materi] hapus topic:", lewatTopic.error.message);
+  }
+  return !lewatKunci.error && !lewatTopic.error;
+}
+
 export async function tandaiAudioModulSiap(
   kelas: string,
   mapel: string,
