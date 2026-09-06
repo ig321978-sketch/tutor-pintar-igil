@@ -26,6 +26,7 @@ import {
   type SudutPandangMateri,
 } from "@/lib/sudut-pandang";
 import type { GambarSisipan } from "@/components/GambarDoodle";
+import ModuleRenderer from "@/components/ModuleRenderer";
 import TeksNaskah from "@/components/TeksNaskah";
 
 const IKON = [Lightbulb, Compass, Target, Star];
@@ -382,7 +383,7 @@ export default function RingkasanKonsep({
                     <h4 className="text-lg font-black leading-snug text-[#1C01A5] sm:text-xl">
                       {item.judul}
                     </h4>
-                    <TeksNaskah teks={item.isi} className="mt-2" />
+                    <ModuleRenderer konten={item.isi} className="mt-2" />
                   </div>
                 </button>
               );
@@ -424,7 +425,7 @@ export default function RingkasanKonsep({
                 <h4 className="mt-1 text-lg font-black leading-snug text-[#1C01A5]">
                   {item.judul}
                 </h4>
-                <TeksNaskah teks={item.naskah} className="mt-2" />
+                <ModuleRenderer konten={item.naskah} className="mt-2" />
               </button>
             ))}
           </div>

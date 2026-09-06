@@ -1,4 +1,6 @@
 @import "tailwindcss";
+@import "katex/dist/katex.min.css";
+@plugin "@tailwindcss/typography";
 
 :root {
   --background: #ffffff;
@@ -20,4 +22,19 @@ body {
   background: #ffffff;
   color: var(--foreground);
   font-family: var(--font-geist-sans), Arial, Helvetica, sans-serif;
+}
+
+.igil-modul .katex-display {
+  margin: 1rem 0;
+  overflow-x: auto;
+  border-radius: 1rem;
+  border: 1px solid rgb(28 1 165 / 0.12);
+  background: rgb(255 255 255 / 0.82);
+  padding: 0.85rem 1rem;
+  text-align: center;
+}
+
+.igil-modul .katex-display > .katex {
+  display: inline-block;
+  max-width: 100%;
 }

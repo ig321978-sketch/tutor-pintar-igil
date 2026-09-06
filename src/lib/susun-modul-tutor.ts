@@ -81,6 +81,9 @@ Think step-by-step SEBELUM menulis JSON akhir:
 3) Susun dua perspektif: Uraian Kurikulum Nasional dan Uraian Global Best Practice. Judul subbab dan urutan WAJIB sama.
 4) Susun bank soal baku: 10 PG (3 Reguler + 7 HOTS) dan 3 Essay (1 Reguler + 2 HOTS).
 5) Baru keluarkan SATU objek JSON. Jangan keluarkan langkah berpikir ke pengguna.
+
+Saat menyusun materi, patuhi format berikut: 1. Gunakan paragraf mikro (2-3 kalimat). 2. WAJIB gunakan sintaks LaTeX untuk rumus matematika/sains ($$ untuk block/berdiri sendiri, $ untuk inline). Berikan keterangan variabel di bawah rumus. 3. Jika materi membutuhkan diagram, bagan, atau ilustrasi konsep, WAJIB buat kode text-based menggunakan sintaks blok kode mermaid. 4. Gunakan Markdown untuk penataan hierarki (Heading 2, Heading 3, List).
+Format itu berlaku DI DALAM nilai JSON (curriculum_view dan global_best_view), bukan di luar objek JSON. Respons tetap SATU objek JSON murni. Di mermaid dan SVG, pakai kutip tunggal, jangan kutip ganda.
 `.trim();
 
 const CONTOH_FEW_SHOT = `
@@ -104,12 +107,9 @@ function sebagaiTeks(nilai: unknown, cadangan = ""): string {
 }
 
 export function bersihkanDanParseJson(mentah: string): Record<string, unknown> {
-  let teks = mentah
-    .replace(/```json/gi, "")
-    .replace(/```[a-z]*/gi, "")
-    .replace(/```/g, "")
-    .replace(/[\r\n\t]+/g, " ")
-    .trim();
+  let teks = mentah.trim();
+  const bungkus = teks.match(/^```(?:json)?\s*([\s\S]*?)\s*```$/i);
+  if (bungkus?.[1]) teks = bungkus[1].trim();
 
   const awal = teks.indexOf("{");
   const akhir = teks.lastIndexOf("}");
@@ -122,7 +122,9 @@ export function bersihkanDanParseJson(mentah: string): Record<string, unknown> {
   try {
     return JSON.parse(teks) as Record<string, unknown>;
   } catch {
-    const diperbaiki = teks.replace(/,\s*([}\]])/g, "$1");
+    const diperbaiki = teks
+      .replace(/[\r\n\t]+/g, " ")
+      .replace(/,\s*([}\]])/g, "$1");
     return JSON.parse(diperbaiki) as Record<string, unknown>;
   }
 }
@@ -130,7 +132,7 @@ export function bersihkanDanParseJson(mentah: string): Record<string, unknown> {
 function aturanAngkaNaskah(): string {
   return `ANGKA DAN BENTUK NASKAH:
 - Jika menyebut bilangan, pecahan, rumus, persentase, suhu, atau hitungan, WAJIB tulis ANGKA ARAB (1, 2, 3) dan simbol matematika. Contoh benar: 2 + 3 = 5. Contoh salah: dua tambah tiga sama dengan lima.
-- Rumus atau contoh hitung diletakkan di BARIS SENDIRI, jangan disambung ke cerita.
+- Rumus atau contoh hitung diletakkan di BARIS SENDIRI dengan LaTeX: $$...$$ untuk rumus berdiri sendiri, $...$ untuk rumus di dalam kalimat. Beri keterangan variabel di bawah rumus block.
 - Uraian (penjelasan): tulis beberapa kalimat utuh, terurai, mudah dipahami. DILARANG meratakan semua jadi satu kalimat datar.
 - Bukan uraian (judul, fakta singkat, rumus): biarkan plain text pendek.
 - DILARANG mengeja angka menjadi kata jika yang dimaksud adalah bilangan.`;
@@ -347,9 +349,10 @@ ${instruksiMateri}
 ${CONTOH_FEW_SHOT}
 
 ATURAN MUTLAK:
-1. Respons HANYA 1 objek JSON murni. Tanpa markdown, tanpa kalimat pengantar, tanpa penutup.
+1. Respons HANYA 1 objek JSON murni. Tanpa kalimat pengantar, tanpa penutup. Markdown, LaTeX, dan mermaid HANYA boleh di dalam nilai curriculum_view dan global_best_view.
 2. DILARANG memakai tanda kutip ganda (") di dalam nilai teks JSON. Gunakan kutip tunggal (') jika perlu.
 3. svgCode WAJIB SVG valid. Semua atribut memakai kutip tunggal. Jangan pakai kutip ganda di SVG.
+4. Saat menyusun materi, patuhi format berikut: 1. Gunakan paragraf mikro (2-3 kalimat). 2. WAJIB gunakan sintaks LaTeX untuk rumus matematika/sains ($$ untuk block/berdiri sendiri, $ untuk inline). Berikan keterangan variabel di bawah rumus. 3. Jika materi membutuhkan diagram, bagan, atau ilustrasi konsep, WAJIB buat kode text-based menggunakan sintaks blok kode mermaid. 4. Gunakan Markdown untuk penataan hierarki (Heading 2, Heading 3, List).
 
 STANDAR KONTEN:
 1. sapaan: SATU kalimat pendek untuk dibaca suara. Sebut HANYA nama depan ${opsi.namaDepan}. Sertakan TEPAT SATU kata pujian dari: Pintar, Cerdas, Baik, Rajin, Soleh, Semangat, Hebat. DILARANG pujian panjang, julukan berlebihan, atau nama lengkap. Contoh: 'Halo ${opsi.namaDepan}, Pintar.'

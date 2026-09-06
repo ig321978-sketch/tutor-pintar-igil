@@ -62,6 +62,8 @@ export function naskahLisan(teks: string, nama = ""): string {
   aman = aman
     .replace(/[\u200B-\u200D\uFEFF]/g, "")
     .replace(/```[\s\S]*?```/g, " ")
+    .replace(/\$\$([\s\S]*?)\$\$/g, " $1 ")
+    .replace(/\$([^$\n]+)\$/g, " $1 ")
     .replace(/`+/g, "")
     .replace(/([)\d|])\s*\*\s*([(\d|\-−|])/g, "$1 × $2")
     .replace(/\*\*([^*]+)\*\*/g, "$1")

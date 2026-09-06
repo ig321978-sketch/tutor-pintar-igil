@@ -67,11 +67,24 @@ function naskahDariTeks(teks: string, judul: string, ringkas: boolean): string {
   return isi.join("\n") || teks.trim();
 }
 
-export function pecahBlokKartu(penjelasan: string): string[] {
-  const paragraf = penjelasan
+function pecahParagrafAman(teks: string): string[] {
+  const cadangan: string[] = [];
+  const tersimpan = teks.replace(/```[\s\S]*?```/g, (blok) => {
+    cadangan.push(blok);
+    return `§PAGAR${cadangan.length - 1}§`;
+  });
+  return tersimpan
     .split(/\n\n+/)
-    .map((item) => item.trim())
+    .map((item) =>
+      item
+        .replace(/§PAGAR(\d+)§/g, (_, indeks) => cadangan[Number(indeks)] ?? "")
+        .trim(),
+    )
     .filter(Boolean);
+}
+
+export function pecahBlokKartu(penjelasan: string): string[] {
+  const paragraf = pecahParagrafAman(penjelasan);
 
   const digabung: string[] = [];
   for (const item of paragraf) {
