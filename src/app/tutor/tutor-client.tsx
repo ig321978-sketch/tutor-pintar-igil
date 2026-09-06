@@ -53,18 +53,27 @@ import PemutarAudioGuru, {
   type KontrolPemutarGuru,
 } from "@/components/PemutarAudioGuru";
 import PemutarTutorMengambang from "@/components/PemutarTutorMengambang";
-import RingkasanKonsep from "@/components/RingkasanKonsep";
+import KartuBagianModul from "@/components/modul/KartuBagianModul";
+import PanelLatihanModul from "@/components/modul/PanelLatihanModul";
+import PanelMateriModul from "@/components/modul/PanelMateriModul";
+import PanelPraktikumModul from "@/components/modul/PanelPraktikumModul";
+import PanelSimulasiModul from "@/components/modul/PanelSimulasiModul";
+import PanelUjianModul from "@/components/modul/PanelUjianModul";
 import TeksNaskah from "@/components/TeksNaskah";
+import {
+  butuhNaskahAi,
+  daftarBagianModul,
+  type BagianIsi,
+  type BagianModul,
+} from "@/lib/bagian-modul";
 import {
   ArrowLeft,
   ArrowRight,
   Coins,
   Loader2,
-  Lock,
   MessageCircleQuestionMark,
   Mic,
   Send,
-  Unlock,
 } from "lucide-react";
 
 type ModeInput = "teks" | "gambar";
@@ -87,7 +96,7 @@ type ModulTutor = {
 };
 
 type StatusDoodle = "siaga" | "memuat" | "siap" | "gagal";
-type TahapBelajar = "konsep" | "latihan" | "ujian";
+type TahapBelajar = BagianModul;
 
 type PanduanAjuan = {
   sapaan: string;
@@ -245,7 +254,7 @@ export default function TutorAI() {
   const [gambarHalaman, setGambarHalaman] = useState<string[]>([]);
   const [isLoading, setIsLoading] = useState(false);
   const [hasilData, setHasilData] = useState<ModulTutor | null>(null);
-  const [tahapBelajar, setTahapBelajar] = useState<TahapBelajar>("konsep");
+  const [tahapBelajar, setTahapBelajar] = useState<TahapBelajar>("pilih");
   const [audioCompleted, setAudioCompleted] = useState(false);
   const [sesiMapel, setSesiMapel] = useState("");
   const [sesiMateri, setSesiMateri] = useState("");
@@ -334,11 +343,13 @@ export default function TutorAI() {
     };
   }, [hasilData?.esai, hasilData?.pertanyaan]);
 
-  const bukaTahapSoal = (tahap: "latihan" | "ujian") => {
-    if (!audioCompleted) return;
-    setTahapBelajar(tahap);
-    window.scrollTo({ top: 0, behavior: "smooth" });
-  };
+  const judulMapelSesi = teksQuery(
+    params.get("mapel"),
+    sesiMapel || (modeInput === "teks" ? mapel : "Berdasarkan Buku"),
+  );
+  const judulMateriSesi = sesiMateri || (modeInput === "teks" ? bab : "Analisis halaman buku");
+  const judulKelasSesi = teksQuery(params.get("kelas"), kelas);
+  const opsiBagian = daftarBagianModul(judulMapelSesi);
 
   const sudahPrefillMapel = useRef(false);
   const sudahPrefillBab = useRef(false);
@@ -833,7 +844,6 @@ export default function TutorAI() {
     setTeksAjuan("");
     setPesanAjuan("");
     setTeksAnimasi("");
-    setTahapBelajar("konsep");
     setSesiMapel("");
     setSesiMateri("");
     setSudutPandang("kurikulum");
@@ -915,6 +925,16 @@ export default function TutorAI() {
     setIsLoading(false);
   };
 
+  const bukaBagian = (bagian: BagianIsi) => {
+    setPesanGalat("");
+    setTahapBelajar(bagian);
+    if (butuhNaskahAi(bagian) && !hasilData && !isLoading) {
+      sudahGenerateRef.current = true;
+      void tanganiBuatModul();
+    }
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  };
+
   const kunciSesiMulai = `${params.get("mulai")}|${params.get("mapel")}|${params.get("materi")}|${params.get("r")}`;
 
   useEffect(() => {
@@ -924,22 +944,9 @@ export default function TutorAI() {
   }, [kunciSesiMulai, params]);
 
   useEffect(() => {
-    if (params.get("mulai") !== "1" || sudahGenerateRef.current || hasilData) {
-      return;
-    }
-    if (modeInput === "teks") {
-      const mapelSiap = (params.get("mapel") || mapel).trim();
-      const materiSiap = (params.get("materi") || bab).trim();
-      const kelasSiap = (params.get("kelas") || kelas).trim();
-      if (!nama.trim() || !mapelSiap || !materiSiap || !kelasSiap) return;
-    } else if (!nama.trim() || gambarHalaman.length === 0) {
-      return;
-    }
-    sudahGenerateRef.current = true;
-    void tanganiBuatModul();
-    // Prefill selesai dulu, lalu generate sekali.
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [nama, mapel, bab, modeInput, gambarHalaman, kunciSesiMulai, hasilData]);
+    if (params.get("mulai") !== "1") return;
+    setTahapBelajar("pilih");
+  }, [kunciSesiMulai, params]);
 
   useEffect(() => {
     if (params.get("mulai") !== "1" || modeInput !== "gambar" || hasilData) {
@@ -1516,14 +1523,14 @@ export default function TutorAI() {
   }, [durasiAudio, tandaiSegmenSelesai]);
 
   useEffect(() => {
-    if (!hasilData || sudahSiapAudioRef.current) return;
+    if (tahapBelajar !== "materi" || !hasilData || sudahSiapAudioRef.current) return;
     sudahSiapAudioRef.current = true;
     void (async () => {
       const siap = await siapkanAudioGuru();
       if (siap) void putarSegmen({ jenis: "sapaan" }, true);
     })();
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [hasilData, sudutPandang]);
+  }, [hasilData, tahapBelajar, sudutPandang]);
 
   const kembaliKeMenu = () => {
     hentikanRekamSuara();
@@ -1539,7 +1546,7 @@ export default function TutorAI() {
     setDrafEsai({});
     setJawabanEsai({});
     setAudioCompleted(false);
-    setTahapBelajar("konsep");
+    setTahapBelajar("pilih");
     setSesiMapel("");
     setSesiMateri("");
     setSudutPandang("kurikulum");
@@ -1575,43 +1582,6 @@ export default function TutorAI() {
             </Link>
           </section>
         </div>
-      ) : !hasilData ? (
-        <div className="animate-in fade-in duration-500 w-full px-2 pt-16 pb-20 text-center">
-          {pesanGalat ? (
-            <div className="rounded-3xl border-2 border-rose-100 bg-rose-50 p-8">
-              <p className="font-semibold text-rose-600">{pesanGalat}</p>
-              <div className="mt-6 flex flex-col items-center justify-center gap-3 sm:flex-row">
-                <button
-                  type="button"
-                  onClick={() => {
-                    sudahGenerateRef.current = true;
-                    void tanganiBuatModul();
-                  }}
-                  className={`${kelasTombolUtama} inline-flex items-center justify-center rounded-xl px-6 py-3 font-extrabold`}
-                >
-                  Coba susun lagi
-                </button>
-                <Link
-                  href="/ruang-belajar"
-                  className="inline-flex items-center justify-center rounded-xl border-2 border-[#1C01A5]/20 px-6 py-3 font-extrabold text-[#1C01A5]"
-                >
-                  Kembali ke Ruang Belajar
-                </Link>
-              </div>
-            </div>
-          ) : (
-            <div className="rounded-3xl border-2 border-[#1C01A5]/15 bg-white p-8 shadow-xl">
-              <Loader2 className="mx-auto h-10 w-10 animate-spin text-[#1C01A5]" />
-              <p className="mt-4 text-lg font-extrabold text-[#1C01A5]">
-                Menyusun modul cerdas...
-              </p>
-              <p className="mx-auto mt-2 max-w-md text-sm text-slate-500">
-                Penyusunan pertama bisa memakan waktu hingga 2 menit. Materi yang
-                sama berikutnya tampil dari cache, tanpa memanggil AI.
-              </p>
-            </div>
-          )}
-        </div>
       ) : (
         <>
         <div className="w-full px-2 pt-6 pb-32 animate-in slide-in-from-bottom-10 duration-700">
@@ -1623,95 +1593,108 @@ export default function TutorAI() {
             >
               <ArrowLeft className="w-5 h-5" /> Ganti Materi
             </button>
+            <p className="text-xs font-extrabold uppercase tracking-[0.18em] text-[#F0AB00]">
+              Modul belajar
+            </p>
+            <h1 className="mt-1 text-3xl font-black text-[#1C01A5]">
+              {judulMateriSesi}
+            </h1>
+            <p className="mt-1 text-sm font-bold text-[#1C01A5]/70">
+              {judulMapelSesi} · {judulKelasSesi}
+            </p>
           </div>
 
-          <div className="bg-white rounded-3xl shadow-xl border-2 border-[#1C01A5]/15 p-8 space-y-8">
-            <div className="flex flex-wrap gap-2">
-              <button
-                type="button"
-                onClick={() => setTahapBelajar("konsep")}
-                className={`rounded-full px-4 py-1.5 text-xs font-extrabold uppercase tracking-wider ${
-                  tahapBelajar === "konsep"
-                    ? "bg-[#F0AB00] text-[#1C01A5]"
-                    : "bg-[#1C01A5]/10 text-[#1C01A5]/70"
-                }`}
-              >
-                1 · Konsep
-              </button>
-              <button
-                type="button"
-                onClick={() => bukaTahapSoal("latihan")}
-                disabled={!audioCompleted}
-                className={`inline-flex items-center gap-1.5 rounded-full px-4 py-1.5 text-xs font-extrabold uppercase tracking-wider disabled:cursor-not-allowed ${
-                  tahapBelajar === "latihan"
-                    ? "bg-[#F0AB00] text-[#1C01A5]"
-                    : "bg-[#1C01A5]/10 text-[#1C01A5]/70 disabled:text-[#1C01A5]/40"
-                }`}
-              >
-                {audioCompleted ? <Unlock className="h-3.5 w-3.5" /> : <Lock className="h-3.5 w-3.5" />}
-                2 · Soal latihan
-              </button>
-              <button
-                type="button"
-                onClick={() => bukaTahapSoal("ujian")}
-                disabled={!audioCompleted}
-                className={`inline-flex items-center gap-1.5 rounded-full px-4 py-1.5 text-xs font-extrabold uppercase tracking-wider disabled:cursor-not-allowed ${
-                  tahapBelajar === "ujian"
-                    ? "bg-[#F0AB00] text-[#1C01A5]"
-                    : "bg-[#1C01A5]/10 text-[#1C01A5]/70 disabled:text-[#1C01A5]/40"
-                }`}
-              >
-                {audioCompleted ? <Unlock className="h-3.5 w-3.5" /> : <Lock className="h-3.5 w-3.5" />}
-                3 · Soal ujian
-              </button>
-            </div>
-            {tahapBelajar === "konsep" ? (
-              <RingkasanKonsep
-                materi={sesiMateri || (modeInput === "teks" ? bab : "Analisis halaman buku")}
-                mapel={teksQuery(
-                  params.get("mapel"),
-                  sesiMapel || (modeInput === "teks" ? mapel : "Berdasarkan Buku"),
-                )}
-                kelas={teksQuery(params.get("kelas"), kelas)}
-                penjelasan={penjelasanAktif}
-                sapaan={hasilData.sapaan}
-                kartuAktif={kartuAktif}
-                gambarSisipan={hasilData.gambarSisipan}
-                doodleMemuat={statusDoodle === "memuat"}
-                sudutPandang={sudutPandang}
-                onGantiSudut={gantiSudutPandang}
-                onPilihKartu={pilihKartuSuara}
-                sedangMemutar={statusPemutar === "memutar"}
-              />
-            ) : (
-              <div className="rounded-[2rem] border-2 border-[#1C01A5]/15 bg-gradient-to-br from-[#EEE9FF] via-white to-[#FFF8E8] p-5 sm:p-6">
-                <p className="text-xs font-extrabold uppercase tracking-[0.2em] text-[#F0AB00]">
-                  {tahapBelajar === "latihan"
-                    ? "Langkah 2 · Soal latihan"
-                    : "Langkah 3 · Soal ujian"}
-                </p>
-                <h2 className="mt-2 text-2xl font-black text-[#1C01A5] sm:text-3xl">
-                  {sesiMateri || (modeInput === "teks" ? bab : "Latihan dari buku")}
-                </h2>
-                <p className="mt-2 text-sm font-bold text-[#1C01A5]/70">
-                  {tahapBelajar === "latihan"
-                    ? "Kerjakan 10 soal pilihan ganda: 3 Reguler dan 7 HOTS."
-                    : "Kerjakan 3 soal uraian: 1 Reguler dan 2 HOTS."}
-                </p>
+          <div className="space-y-8">
+            <KartuBagianModul
+              daftar={opsiBagian}
+              aktif={tahapBelajar}
+              onPilih={bukaBagian}
+            />
+
+            {pesanGalat ? (
+              <div className="rounded-3xl border-2 border-rose-100 bg-rose-50 p-6 text-center">
+                <p className="font-semibold text-rose-600">{pesanGalat}</p>
                 <button
                   type="button"
                   onClick={() => {
-                    setTahapBelajar("konsep");
-                    window.scrollTo({ top: 0, behavior: "smooth" });
+                    sudahGenerateRef.current = true;
+                    void tanganiBuatModul();
                   }}
-                  className="mt-4 inline-flex items-center gap-2 rounded-xl border-2 border-[#1C01A5]/20 bg-white px-4 py-2 text-sm font-extrabold text-[#1C01A5] hover:border-[#F0AB00]"
+                  className={`${kelasTombolUtama} mt-4 inline-flex items-center justify-center rounded-xl px-6 py-3 font-extrabold`}
                 >
-                  <ArrowLeft className="h-4 w-4" />
-                  Kembali ke uraian materi
+                  Coba susun lagi
                 </button>
               </div>
-            )}
+            ) : null}
 
+            {isLoading && butuhNaskahAi(tahapBelajar) && !hasilData ? (
+              <div className="rounded-3xl border-2 border-[#1C01A5]/15 bg-white p-8 text-center shadow-xl">
+                <Loader2 className="mx-auto h-10 w-10 animate-spin text-[#1C01A5]" />
+                <p className="mt-4 text-lg font-extrabold text-[#1C01A5]">
+                  Menyusun bagian ini...
+                </p>
+              </div>
+            ) : null}
+
+            {tahapBelajar === "materi" && hasilData ? (
+              <PanelMateriModul
+                materi={judulMateriSesi}
+                mapel={judulMapelSesi}
+                kelas={judulKelasSesi}
+                sapaan={hasilData.sapaan}
+                naskah={penjelasanAktif}
+                doodleSrc={
+                  hasilData.gambarUtama || hasilData.gambarSisipan?.[0]?.src
+                }
+                doodleMemuat={statusDoodle === "memuat"}
+                sudutPandang={sudutPandang}
+                onGantiSudut={gantiSudutPandang}
+              />
+            ) : null}
+
+            {tahapBelajar === "simulasi" ? (
+              <PanelSimulasiModul
+                nama={nama}
+                kelas={judulKelasSesi}
+                mapel={judulMapelSesi}
+                materi={judulMateriSesi}
+              />
+            ) : null}
+
+            {tahapBelajar === "praktikum" ? (
+              <PanelPraktikumModul
+                nama={nama}
+                kelas={judulKelasSesi}
+                mapel={judulMapelSesi}
+                materi={judulMateriSesi}
+              />
+            ) : null}
+
+            {tahapBelajar === "latihan" && hasilData ? (
+              <PanelLatihanModul
+                soal={bankSoal.pilihanGanda}
+                kunciJawaban={hasilData.kunciJawaban}
+                jawaban={jawabanKuis}
+                motivasi={hasilData.motivasi}
+                onPilih={pilihJawabanKuis}
+                onLanjutUjian={() => bukaBagian("ujian")}
+              />
+            ) : null}
+
+            {tahapBelajar === "ujian" && hasilData ? (
+              <PanelUjianModul
+                soal={bankSoal.esai}
+                draf={drafEsai}
+                jawaban={jawabanEsai}
+                motivasi={hasilData.motivasi}
+                onDraf={(nomor, teks) =>
+                  setDrafEsai((sebelum) => ({ ...sebelum, [String(nomor)]: teks }))
+                }
+                onKirim={kirimJawabanEsai}
+              />
+            ) : null}
+
+            {tahapBelajar === "materi" && hasilData ? (
             <div className="p-6 bg-white rounded-2xl border-2 border-[#1C01A5]/20 space-y-4">
               <label className="flex items-center gap-2 text-sm font-extrabold tracking-wide text-[#1C01A5]">
                 <MessageCircleQuestionMark className="w-5 h-5" />
@@ -1819,178 +1802,6 @@ export default function TutorAI() {
                   </p>
                 </div>
               ) : null}
-            </div>
-
-            {tahapBelajar === "konsep" ? (
-              <div className="space-y-3">
-                <button
-                  type="button"
-                  onClick={() => bukaTahapSoal("latihan")}
-                  disabled={!audioCompleted}
-                  className={`${kelasTombolUtama} flex w-full items-center justify-center gap-2 rounded-2xl px-6 py-4 text-lg font-extrabold shadow-lg shadow-[#1C01A5]/20 disabled:cursor-not-allowed disabled:opacity-50`}
-                >
-                  {audioCompleted ? (
-                    <Unlock className="h-5 w-5 text-[#F0AB00]" />
-                  ) : (
-                    <Lock className="h-5 w-5 text-[#F0AB00]" />
-                  )}
-                  {audioCompleted
-                    ? "Aku sudah paham · Soal latihan"
-                    : "Terkunci · Selesaikan dengar penjelasan"}
-                  <ArrowRight className="h-5 w-5 text-[#F0AB00]" />
-                </button>
-                <button
-                  type="button"
-                  onClick={() => bukaTahapSoal("ujian")}
-                  disabled={!audioCompleted}
-                  className="flex w-full items-center justify-center gap-2 rounded-2xl border-2 border-[#1C01A5]/20 bg-white px-6 py-3 text-base font-extrabold text-[#1C01A5] disabled:cursor-not-allowed disabled:opacity-50"
-                >
-                  {audioCompleted ? (
-                    <Unlock className="h-4 w-4" />
-                  ) : (
-                    <Lock className="h-4 w-4" />
-                  )}
-                  Soal ujian
-                </button>
-              </div>
-            ) : null}
-
-            {tahapBelajar === "latihan" ? (
-            <div className="space-y-8">
-            <div className="p-6 bg-[#FFF8E8] rounded-2xl border border-[#F0AB00]/40 shadow-sm">
-              <div className="text-[#1C01A5] font-extrabold mb-4 flex flex-wrap items-center gap-2">
-                <span>Soal Latihan</span>
-                <span className="text-sm font-semibold text-[#C48800]">
-                  10 pilihan ganda · 3 Reguler · 7 HOTS
-                </span>
-              </div>
-              <div className="space-y-6 text-slate-700 text-lg font-medium">
-                {bankSoal.pilihanGanda.map((soal, indeks) => {
-                    const nomor = indeks + 1;
-                    const pilihan = jawabanKuis[String(nomor)];
-                    const kunci = hurufKunci(hasilData.kunciJawaban, nomor);
-                    const sudahJawab = Boolean(pilihan);
-                    const benar = sudahJawab && pilihan === kunci;
-                    return (
-                      <div key={`soal-${nomor}`}>
-                        <p className="whitespace-pre-wrap">{soal}</p>
-                        <div className="mt-3 flex flex-wrap gap-2">
-                          {["A", "B", "C", "D"].map((huruf) => {
-                            const aktif = pilihan === huruf;
-                            const tampilKunci = sudahJawab && huruf === kunci;
-                            return (
-                              <button
-                                key={huruf}
-                                type="button"
-                                onClick={() => pilihJawabanKuis(nomor, huruf)}
-                                disabled={sudahJawab}
-                                className={`rounded-xl border-2 px-4 py-2 text-sm font-extrabold ${
-                                  tampilKunci
-                                    ? "border-emerald-600 bg-emerald-600 text-white"
-                                    : aktif
-                                      ? "border-rose-600 bg-rose-600 text-white"
-                                      : "border-[#1C01A5]/20 bg-white text-[#1C01A5] hover:border-[#F0AB00] disabled:opacity-60"
-                                }`}
-                              >
-                                {huruf}
-                              </button>
-                            );
-                          })}
-                        </div>
-                        {sudahJawab ? (
-                          <p
-                            className={`mt-2 text-sm font-extrabold ${
-                              benar ? "text-emerald-700" : "text-rose-700"
-                            }`}
-                          >
-                            {benar
-                              ? "Benar. Jawabanmu tepat."
-                              : kunci
-                                ? `Salah. Jawaban yang benar adalah ${kunci}.`
-                                : "Jawaban tersimpan. Kunci soal belum tersedia untuk modul ini."}
-                          </p>
-                        ) : null}
-                      </div>
-                    );
-                  })}
-                <button
-                  type="button"
-                  onClick={() => bukaTahapSoal("ujian")}
-                  className={`${kelasTombolUtama} flex w-full items-center justify-center gap-2 rounded-2xl px-6 py-3 text-base font-extrabold`}
-                >
-                  Lanjut ke soal ujian
-                  <ArrowRight className="h-5 w-5 text-[#F0AB00]" />
-                </button>
-                <p className="text-xs font-semibold text-slate-500">
-                  Pilih satu jawaban. Hasil dicek langsung. Ketepatan di Rapor dihitung dari jawaban yang benar.
-                </p>
-              </div>
-            </div>
-            <div className="text-sm font-bold text-[#1C01A5] bg-white p-4 rounded-xl border-2 border-dashed border-[#F0AB00]/50 flex items-center gap-3 text-center justify-center">
-              <span className="text-2xl">✨</span>
-              <div>{hasilData.motivasi}</div>
-            </div>
-            </div>
-            ) : null}
-
-            {tahapBelajar === "ujian" ? (
-            <div className="space-y-8">
-            <div className="p-6 bg-[#EEE9FF] rounded-2xl border border-[#1C01A5]/20 shadow-sm">
-              <div className="text-[#1C01A5] font-extrabold mb-4 flex flex-wrap items-center gap-2">
-                <span>Soal Ujian</span>
-                <span className="text-sm font-semibold text-[#C48800]">
-                  3 uraian · 1 Reguler · 2 HOTS
-                </span>
-              </div>
-              <div className="space-y-6 text-slate-700 text-lg font-medium">
-                {bankSoal.esai.length === 0 ? (
-                  <p className="text-sm font-bold text-[#1C01A5]/70">
-                    Soal ujian belum tersedia di modul ini. Buka materi ulang agar bank soal baru disusun.
-                  </p>
-                ) : (
-                  bankSoal.esai.map((soal, indeks) => {
-                    const nomor = indeks + 1;
-                    const kunci = String(nomor);
-                    const sudahKirim = Boolean(jawabanEsai[kunci]);
-                    return (
-                      <div key={`esai-${nomor}`}>
-                        <p className="whitespace-pre-wrap">{soal}</p>
-                        <textarea
-                          value={sudahKirim ? jawabanEsai[kunci] : (drafEsai[kunci] ?? "")}
-                          onChange={(e) =>
-                            setDrafEsai((sebelum) => ({
-                              ...sebelum,
-                              [kunci]: e.target.value,
-                            }))
-                          }
-                          disabled={sudahKirim}
-                          rows={5}
-                          placeholder="Tulis uraianmu di sini..."
-                          className="mt-3 w-full rounded-xl border-2 border-[#1C01A5]/20 bg-white px-4 py-3 text-base font-medium text-slate-800 outline-none focus:border-[#F0AB00] disabled:bg-slate-50"
-                        />
-                        <button
-                          type="button"
-                          onClick={() => kirimJawabanEsai(nomor)}
-                          disabled={sudahKirim || !(drafEsai[kunci] ?? "").trim()}
-                          className="mt-3 rounded-xl bg-[#1C01A5] px-4 py-2 text-sm font-extrabold text-white disabled:opacity-50"
-                        >
-                          {sudahKirim ? "Jawaban tersimpan" : "Kirim uraian"}
-                        </button>
-                        {sudahKirim ? (
-                          <p className="mt-2 text-sm font-extrabold text-emerald-700">
-                            Jawaban tersimpan. Rubrik ujian dipakai di rapor, tanpa menampilkan kunci lengkap.
-                          </p>
-                        ) : null}
-                      </div>
-                    );
-                  })
-                )}
-              </div>
-            </div>
-            <div className="text-sm font-bold text-[#1C01A5] bg-white p-4 rounded-xl border-2 border-dashed border-[#F0AB00]/50 flex items-center gap-3 text-center justify-center">
-              <span className="text-2xl">✨</span>
-              <div>{hasilData.motivasi}</div>
-            </div>
             </div>
             ) : null}
           </div>

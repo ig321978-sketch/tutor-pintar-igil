@@ -25,12 +25,13 @@ body {
 }
 
 .igil-modul .katex-display {
-  margin: 1rem 0;
+  margin: 1.15rem 0;
   overflow-x: auto;
   border-radius: 1rem;
-  border: 1px solid rgb(28 1 165 / 0.12);
-  background: rgb(255 255 255 / 0.82);
-  padding: 0.85rem 1rem;
+  border: 2px solid rgb(28 1 165 / 0.18);
+  background: #fff8e8;
+  box-shadow: inset 0 0 0 1px rgb(240 171 0 / 0.25);
+  padding: 1rem 1.15rem;
   text-align: center;
 }
 

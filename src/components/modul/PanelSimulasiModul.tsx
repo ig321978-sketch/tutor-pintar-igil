@@ -1,0 +1,121 @@
+"use client";
+
+import { useEffect, useState } from "react";
+import { ExternalLink, Loader2 } from "lucide-react";
+import type { BahanSimulasi } from "@/lib/simulasi-global";
+
+export default function PanelSimulasiModul({
+  nama,
+  kelas,
+  mapel,
+  materi,
+}: {
+  nama: string;
+  kelas: string;
+  mapel: string;
+  materi: string;
+}) {
+  const [bahan, setBahan] = useState<BahanSimulasi[]>([]);
+  const [memuat, setMemuat] = useState(true);
+  const [pesan, setPesan] = useState("");
+
+  useEffect(() => {
+    let hidup = true;
+    setMemuat(true);
+    setPesan("");
+    void (async () => {
+      try {
+        const respons = await fetch("/api/praktikum", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            nama,
+            kelas,
+            mapel,
+            materi,
+            ide: "",
+            pratinjau: true,
+          }),
+        });
+        const data = (await respons.json()) as {
+          berhasil?: boolean;
+          pesan?: string;
+          bahan?: BahanSimulasi[];
+        };
+        if (!hidup) return;
+        if (!data.berhasil) {
+          setPesan(data.pesan || "Simulasi belum tersedia untuk bab ini.");
+          setBahan([]);
+          return;
+        }
+        setBahan(data.bahan ?? []);
+      } catch {
+        if (hidup) setPesan("Tidak bisa memuat simulasi PhET.");
+      } finally {
+        if (hidup) setMemuat(false);
+      }
+    })();
+    return () => {
+      hidup = false;
+    };
+  }, [nama, kelas, mapel, materi]);
+
+  if (memuat) {
+    return (
+      <div className="flex items-center justify-center gap-3 rounded-[2rem] border-2 border-[#1C01A5]/10 bg-white px-6 py-16">
+        <Loader2 className="h-6 w-6 animate-spin text-[#1C01A5]" />
+        <p className="font-extrabold text-[#1C01A5]">Mencari simulasi PhET...</p>
+      </div>
+    );
+  }
+
+  if (pesan || bahan.length === 0) {
+    return (
+      <p className="rounded-[2rem] border border-[#1C01A5]/15 bg-white p-6 font-semibold text-slate-600">
+        {pesan || "Belum ketemu simulasi yang cocok untuk materi ini."}
+      </p>
+    );
+  }
+
+  return (
+    <div className="grid gap-4">
+      {bahan.map((item) => (
+        <article
+          key={item.url}
+          className="rounded-3xl border border-[#1C01A5]/15 bg-white p-5 shadow-sm"
+        >
+          <p className="text-xs font-bold uppercase tracking-wider text-[#F0AB00]">
+            {item.sumber}
+          </p>
+          <p className="mt-2 font-extrabold text-[#1C01A5]">{item.judul}</p>
+          <p className="mt-2 text-sm text-slate-600">{item.ringkasan}</p>
+          {item.jenis === "simulasi" ? (
+            <iframe
+              title={item.judul}
+              src={item.url}
+              className="mt-4 h-[28rem] w-full rounded-2xl border border-[#1C01A5]/10 bg-slate-50"
+              loading="lazy"
+              allowFullScreen
+            />
+          ) : (
+            // eslint-disable-next-line @next/next/no-img-element
+            <img
+              src={item.url}
+              alt={item.judul}
+              className="mt-4 max-h-72 w-full rounded-2xl object-cover"
+            />
+          )}
+          <a
+            href={item.url}
+            target="_blank"
+            rel="noreferrer"
+            className="mt-4 inline-flex items-center gap-2 text-sm font-extrabold text-[#1C01A5] hover:text-[#F0AB00]"
+          >
+            <ExternalLink className="h-4 w-4" />
+            Buka layar penuh
+          </a>
+        </article>
+      ))}
+    </div>
+  );
+}
