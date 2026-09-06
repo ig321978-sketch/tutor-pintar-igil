@@ -46,12 +46,7 @@ export default function PanelSilabusModul({
   return (
     <div className="space-y-5">
       <p className="text-sm font-semibold text-[#1C01A5]/75">
-        Komponen utama Kurikulum Merdeka Kemendikbudristek. Skor:{" "}
-        <span className="font-black text-rose-600">Merah = Kurang</span>
-        {" · "}
-        <span className="font-black text-[#C48800]">Kuning = Cukup</span>
-        {" · "}
-        <span className="font-black text-emerald-700">Hijau = Baik</span>
+        Komponen utama Kurikulum Merdeka Kemendikbudristek.
       </p>
       <div className="space-y-3">
         {kerangka.map((item) => (
