@@ -107,59 +107,7 @@ export async function ambilCacheMateri(
     }
   }
 
-  for (const topicId of kandidat) {
-    const cadanganId = await supabase
-      .from("penambangan_igil")
-      .select("ide")
-      .eq("status", "CACHE_MATERI")
-      .eq("umpan_balik", topicId)
-      .order("created_at", { ascending: false })
-      .limit(1)
-      .maybeSingle();
-    const isiId = dariBarisCadangan(cadanganId.data?.ide);
-    if (isiId) return isiId;
-  }
-
-  const cadangan = await supabase
-    .from("penambangan_igil")
-    .select("ide")
-    .eq("status", "CACHE_MATERI")
-    .eq("kelas", kelas)
-    .eq("mapel", mapel)
-    .eq("materi", materi)
-    .order("created_at", { ascending: false })
-    .limit(1)
-    .maybeSingle();
-  if (cadangan.error) {
-    console.warn("[cache-materi] cadangan:", cadangan.error.message);
-  } else {
-    const isiTepat = dariBarisCadangan(cadangan.data?.ide);
-    if (isiTepat) return isiTepat;
-  }
-
-  const longgar = await supabase
-    .from("cache_materi_tutor")
-    .select(
-      `${kolom}, kunci, topic_id, kelas, mapel, materi`,
-    )
-    .ilike("materi", materi)
-    .limit(30);
-  if (longgar.error) {
-    console.warn("[cache-materi] longgar:", longgar.error.message);
-    return null;
-  }
-  const kelasR = rapikanKunci(kelas);
-  const materiR = rapikanKunci(materi);
-  const kunciSet = new Set(kandidat);
-  const cocok = (longgar.data ?? []).find((baris) => {
-    const kunci = baris.kunci || baris.topic_id;
-    if (kunci && kunciSet.has(kunci)) return true;
-    return (
-      rapikanKunci(baris.kelas ?? "") === kelasR &&
-      rapikanKunci(baris.materi ?? "") === materiR
-    );
-  });
-  return barisKeIsi(cocok ?? null);
+  return null;
 }
 
 export async function simpanCacheMateri(

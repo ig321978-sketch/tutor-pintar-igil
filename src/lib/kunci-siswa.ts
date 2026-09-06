@@ -23,12 +23,14 @@ export function kunciMapelTutor(mapel: string): string {
   return n;
 }
 
+export const VERSI_KUNCI_MATERI = "naskah:v3";
+
 export function kunciMateriTutor(
   kelas: string,
   mapel: string,
   materi: string,
 ): string {
-  return `${rapikanKunci(kelas)}|${kunciMapelTutor(mapel)}|${rapikanKunci(materi)}|soal:v2`;
+  return `${rapikanKunci(kelas)}|${kunciMapelTutor(mapel)}|${rapikanKunci(materi)}|${VERSI_KUNCI_MATERI}`;
 }
 
 export function kandidatKunciMateri(
@@ -49,7 +51,9 @@ export function kandidatKunciMateri(
     daftar.add("pendidikan agama dan budi pekerti");
     daftar.add("agama islam");
   }
-  return [...daftar].map((nama) => `${kelasR}|${nama}|${materiR}|soal:v2`);
+  return [...daftar].map(
+    (nama) => `${kelasR}|${nama}|${materiR}|${VERSI_KUNCI_MATERI}`,
+  );
 }
 
 export function tanggalWib(): string {

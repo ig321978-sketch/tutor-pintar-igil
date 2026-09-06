@@ -769,16 +769,6 @@ export default function TutorAI() {
     }
 
     const topicId = kunciMateriTutor(kelasKirim, mapelKirim, materiKirim);
-    if (modeInput === "teks") {
-      const lokal = bacaModulLokal<ModulTutor>(topicId);
-      if (lokal?.curriculum_view || lokal?.penjelasan) {
-        resetPemutar();
-        setTahapBelajar("konsep");
-        setPesanGalat("");
-        terapkanModul(lokal, true, mapelKirim, materiKirim, kelasKirim);
-        return;
-      }
-    }
 
     setPesanGalat("");
     setIsLoading(true);
@@ -805,25 +795,34 @@ export default function TutorAI() {
           mapel: mapelKirim,
           materi: materiKirim,
         });
-        const peek = await fetch(`/api/modul?${intip.toString()}`, {
-          cache: "no-store",
-        });
-        const cacheJson = (await peek.json()) as {
-          berhasil?: boolean;
-          ada?: boolean;
-          data?: ModulTutor;
-        };
-        if (cacheJson.berhasil && cacheJson.ada && cacheJson.data) {
-          simpanModulLokalPertama(topicId, cacheJson.data);
-          terapkanModul(
-            cacheJson.data,
-            true,
-            mapelKirim,
-            materiKirim,
-            kelasKirim,
-          );
-          setIsLoading(false);
-          return;
+        try {
+          const peek = await fetch(`/api/modul?${intip.toString()}`, {
+            cache: "no-store",
+          });
+          const cacheJson = (await peek.json()) as {
+            berhasil?: boolean;
+            ada?: boolean;
+            data?: ModulTutor;
+          };
+          if (cacheJson.berhasil && cacheJson.ada && cacheJson.data) {
+            simpanModulLokalPertama(topicId, cacheJson.data);
+            terapkanModul(
+              cacheJson.data,
+              true,
+              mapelKirim,
+              materiKirim,
+              kelasKirim,
+            );
+            setIsLoading(false);
+            return;
+          }
+        } catch {
+          const lokal = bacaModulLokal<ModulTutor>(topicId);
+          if (lokal?.curriculum_view || lokal?.penjelasan) {
+            terapkanModul(lokal, true, mapelKirim, materiKirim, kelasKirim);
+            setIsLoading(false);
+            return;
+          }
         }
       }
 
