@@ -21,7 +21,7 @@ import {
   tetapkanTokenIgil,
 } from "@/lib/progres";
 import { kelasTombolUtama } from "@/lib/tema";
-import { JUMLAH_KARTU_MAKS, kartuTanpaNaskah, pecahBlokKartu, susunKonsepMateri, UKURAN_BATCH_DOODLE } from "@/lib/konsep-materi";
+import { JUMLAH_KARTU_MAKS, kartuTanpaNaskah, susunKonsepMateri, UKURAN_BATCH_DOODLE } from "@/lib/konsep-materi";
 import {
   bacaModulLokal,
   simpanModulLokalPertama,
@@ -152,7 +152,7 @@ const BATAS_POTONGAN_UCAPAN = 120;
 const INTERVAL_WASPADA_SUARA_MS = 1600;
 
 type JenisPotonganSuara = "sapaan" | "penjelasan" | "sisa";
-type SegmenSuara = { jenis: "sapaan" } | { jenis: "kartu"; indeks: number };
+type SegmenSuara = { jenis: "sapaan" } | { jenis: "materi" };
 
 type CacheSegmenAudio = {
   url: string;
@@ -161,19 +161,15 @@ type CacheSegmenAudio = {
 };
 
 function kunciSegmen(segmen: SegmenSuara): string {
-  return segmen.jenis === "sapaan" ? "sapaan" : `kartu-${segmen.indeks}`;
+  return segmen.jenis;
 }
 
 function labelSegmenSuara(segmen: SegmenSuara): string {
-  return segmen.jenis === "sapaan" ? "Sapaan" : `Kartu ${segmen.indeks + 1}`;
+  return segmen.jenis === "sapaan" ? "Sapaan" : "Materi";
 }
 
-function semuaKartuSelesai(selesai: string[], jumlahKartu: number): boolean {
-  if (jumlahKartu <= 0) return selesai.includes("sapaan");
-  for (let i = 0; i < jumlahKartu; i += 1) {
-    if (!selesai.includes(`kartu-${i}`)) return false;
-  }
-  return true;
+function suaraMateriSelesai(selesai: string[]): boolean {
+  return selesai.includes("materi");
 }
 
 type PotonganSuara = {
@@ -327,14 +323,6 @@ export default function TutorAI() {
   const penjelasanAktif = hasilData
     ? pilihPenjelasanMateri(hasilData, sudutPandang)
     : "";
-  const blokKartu = useMemo(
-    () => (penjelasanAktif ? pecahBlokKartu(penjelasanAktif) : []),
-    [penjelasanAktif],
-  );
-  const jumlahKartuRef = useRef(0);
-  jumlahKartuRef.current = blokKartu.length;
-  const kartuAktif =
-    segmenSuara.jenis === "kartu" ? segmenSuara.indeks : -1;
   const bankSoal = useMemo(() => {
     const pecah = pecahBankSoal(hasilData?.pertanyaan ?? "");
     const esaiLangsung = pecahBlokSoal(hasilData?.esai ?? "");
@@ -527,7 +515,7 @@ export default function TutorAI() {
     const kunci = kunciSegmen(segmenSuaraRef.current);
     setSegmenSelesai((sebelum) => {
       const berikutnya = sebelum.includes(kunci) ? sebelum : [...sebelum, kunci];
-      if (semuaKartuSelesai(berikutnya, jumlahKartuRef.current)) {
+      if (suaraMateriSelesai(berikutnya)) {
         tandaiAudioSelesai();
       }
       return berikutnya;
@@ -1137,8 +1125,7 @@ export default function TutorAI() {
       return naskahSapaanUntukSuara(namaSesiRef.current, judulMapel, judulMateri);
     }
     if (!hasilData) return "";
-    const blok = blokKartu[segmen.indeks] ?? "";
-    return naskahKartuUntukSuara(blok, namaSesiRef.current, {
+    return naskahKartuUntukSuara(penjelasanAktif, namaSesiRef.current, {
       buangSubjudulVisual: kartuTanpaNaskah(kelas),
     });
   };
@@ -1346,16 +1333,9 @@ export default function TutorAI() {
     return ok;
   };
 
-  const prefetchKartu = (kelaminSuara: KelaminGuru = guruKelamin) => {
-    void (async () => {
-      for (let i = 0; i < blokKartu.length; i += 1) {
-        await mintaAudioSegmen(
-          { jenis: "kartu", indeks: i },
-          kelaminSuara,
-          false,
-        );
-      }
-    })();
+  const prefetchMateri = (kelaminSuara: KelaminGuru = guruKelamin) => {
+    if (!penjelasanAktif.trim()) return;
+    void mintaAudioSegmen({ jenis: "materi" }, kelaminSuara, false);
   };
 
   const siapkanAudioGuru = async (
@@ -1366,7 +1346,7 @@ export default function TutorAI() {
       kelaminSuara,
       true,
     );
-    prefetchKartu(kelaminSuara);
+    prefetchMateri(kelaminSuara);
     return awal;
   };
 
@@ -1443,20 +1423,6 @@ export default function TutorAI() {
     }
 
     void putarSegmen(segmenSuaraRef.current, true);
-  };
-
-  const pilihKartuSuara = (indeks: number) => {
-    if (!hasilData || indeks < 0 || indeks >= blokKartu.length) return;
-    const sama =
-      segmenSuaraRef.current.jenis === "kartu" &&
-      segmenSuaraRef.current.indeks === indeks;
-    if (sama && statusPemutar === "memutar") return;
-    if (sama && statusPemutar === "jeda") {
-      mulaiSuara();
-      return;
-    }
-    jedaSuara();
-    void putarSegmen({ jenis: "kartu", indeks }, true);
   };
 
   const jedaSuara = () => {
@@ -1553,21 +1519,10 @@ export default function TutorAI() {
   }, [isMulai, kunciSesiMulai, namaSesi, sudutPandang, params]);
 
   useEffect(() => {
-    if (tahapBelajar !== "materi" || !hasilData || blokKartu.length === 0) return;
-    void putarSegmen({ jenis: "kartu", indeks: 0 }, true);
+    if (tahapBelajar !== "materi" || !hasilData || !penjelasanAktif.trim()) return;
+    void putarSegmen({ jenis: "materi" }, true);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [hasilData, tahapBelajar, sudutPandang]);
-
-  useEffect(() => {
-    if (tahapBelajar !== "materi" || !hasilData) return;
-    if (statusPemutar !== "siaga") return;
-    const segmen = segmenSuaraRef.current;
-    if (segmen.jenis !== "kartu") return;
-    const berikutnya = segmen.indeks + 1;
-    if (berikutnya >= jumlahKartuRef.current) return;
-    void putarSegmen({ jenis: "kartu", indeks: berikutnya }, true);
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [hasilData, statusPemutar, tahapBelajar]);
 
   const kembaliKeMenu = () => {
     hentikanRekamSuara();
