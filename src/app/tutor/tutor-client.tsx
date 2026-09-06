@@ -216,6 +216,16 @@ function pecahTeksUcapan(teks: string, batas = BATAS_POTONGAN_UCAPAN): string[] 
   return potongan;
 }
 
+function teksQuery(nilai: string | null, cadangan = ""): string {
+  const mentah = (nilai ?? "").trim();
+  if (!mentah) return cadangan;
+  try {
+    return decodeURIComponent(mentah.replace(/\+/g, " ")).replace(/\s+/g, " ").trim();
+  } catch {
+    return mentah.replace(/\+/g, " ").replace(/\s+/g, " ").trim();
+  }
+}
+
 export default function TutorAI() {
   const router = useRouter();
   const params = useSearchParams();
@@ -334,7 +344,7 @@ export default function TutorAI() {
   useEffect(() => {
     const profil = bacaProgres().profil;
     const namaQ = params.get("nama") || profil.nama;
-    const kelasQ = params.get("kelas") || profil.kelas || "3 SD";
+    const kelasQ = teksQuery(params.get("kelas"), profil.kelas || "3 SD");
     const modeQ = params.get("mode");
     const guruQ = params.get("guru") || profil.guruKelamin;
     kelasTargetRef.current = kelasQ;
@@ -1599,8 +1609,11 @@ export default function TutorAI() {
             {tahapBelajar === "konsep" ? (
               <RingkasanKonsep
                 materi={sesiMateri || (modeInput === "teks" ? bab : "Analisis halaman buku")}
-                mapel={sesiMapel || (modeInput === "teks" ? mapel : "Berdasarkan Buku")}
-                kelas={kelas}
+                mapel={teksQuery(
+                  params.get("mapel"),
+                  sesiMapel || (modeInput === "teks" ? mapel : "Berdasarkan Buku"),
+                )}
+                kelas={teksQuery(params.get("kelas"), kelas)}
                 penjelasan={penjelasanAktif}
                 naskahKurikulum={
                   hasilData.curriculum_view || hasilData.penjelasan

@@ -185,7 +185,7 @@ export default function RingkasanKonsep({
           {ideUtama}
         </h2>
         <p className="mt-2 text-sm font-bold text-[#1C01A5]/70">
-          {mapel} · {label.ringkas}
+          {mapel} - {kelas} - {label.ringkas}
         </p>
         <p className="mt-4 text-lg font-semibold text-slate-700">{sapaan}</p>
 
