@@ -2,6 +2,7 @@ import { mapelPunyaSimulasi } from "@/lib/simulasi-global";
 
 export type BagianModul =
   | "pilih"
+  | "silabus"
   | "materi"
   | "simulasi"
   | "latihan"
@@ -13,8 +14,8 @@ export type BagianIsi = Exclude<BagianModul, "pilih">;
 export function daftarBagianModul(mapel: string): BagianIsi[] {
   const lab = mapelPunyaSimulasi(mapel);
   return lab
-    ? ["materi", "simulasi", "latihan", "praktikum", "ujian"]
-    : ["materi", "latihan", "ujian"];
+    ? ["silabus", "materi", "simulasi", "latihan", "praktikum", "ujian"]
+    : ["silabus", "materi", "latihan", "ujian"];
 }
 
 export function butuhNaskahAi(bagian: BagianModul): boolean {

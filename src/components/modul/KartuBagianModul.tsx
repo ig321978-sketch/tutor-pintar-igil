@@ -8,6 +8,7 @@ import {
   ClipboardList,
   FlaskConical,
   GraduationCap,
+  ListChecks,
   MonitorPlay,
 } from "lucide-react";
 import type { BagianIsi, BagianModul } from "@/lib/bagian-modul";
@@ -16,6 +17,12 @@ const META: Record<
   BagianIsi,
   { judul: string; ringkas: string; ikon: LucideIcon; warna: string }
 > = {
+  silabus: {
+    judul: "Silabus",
+    ringkas: "Komponen Kurikulum Merdeka dan materi pokok yang akan dipelajari",
+    ikon: ListChecks,
+    warna: "bg-[#F8F7FF] border-[#1C01A5]/30",
+  },
   materi: {
     judul: "Materi",
     ringkas: "Uraian, diagram, rumus, dan dua contoh soal tuntas",

@@ -57,6 +57,7 @@ import KartuBagianModul from "@/components/modul/KartuBagianModul";
 import PanelLatihanModul from "@/components/modul/PanelLatihanModul";
 import PanelMateriModul from "@/components/modul/PanelMateriModul";
 import PanelPraktikumModul from "@/components/modul/PanelPraktikumModul";
+import PanelSilabusModul from "@/components/modul/PanelSilabusModul";
 import PanelSimulasiModul from "@/components/modul/PanelSimulasiModul";
 import PanelUjianModul from "@/components/modul/PanelUjianModul";
 import TeksNaskah from "@/components/TeksNaskah";
@@ -1637,6 +1638,16 @@ export default function TutorAI() {
               aktif={tahapBelajar}
               onPilih={bukaBagian}
               isi={{
+                silabus: (
+                  <PanelSilabusModul
+                    kelas={judulKelasSesi}
+                    mapel={judulMapelSesi}
+                    materi={judulMateriSesi}
+                    naskahKurikulum={
+                      hasilData?.curriculum_view || hasilData?.penjelasan || ""
+                    }
+                  />
+                ),
                 materi: (
                   <>
                     {pesanGalat ? (
