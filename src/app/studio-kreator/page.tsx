@@ -58,7 +58,7 @@ export default function StudioKreatorPage() {
   return (
     <PageShell
       judul="🎨 Studio Kreator"
-      subjudul="Kelola cache modul AI: edit naskah tanpa memanggil Gemini, atau regenerate dari nol."
+      subjudul="Kelola cache modul AI: edit naskah atau hapus cache secara manual. Generate ulang hanya terjadi saat siswa menekan Memulai Pembelajaran."
     >
       <label className="mb-6 block">
         <span className="sr-only">Cari modul</span>

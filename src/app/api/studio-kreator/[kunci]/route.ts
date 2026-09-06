@@ -1,6 +1,7 @@
 import { NextResponse } from "next/server";
 import {
   ambilDetailCacheMateri,
+  hapusCacheMateri,
   perbaruiCacheMateri,
 } from "@/lib/cache-materi-tutor";
 import { isiDariBadanStudio, kunciRuteStudio } from "@/lib/studio-kreator";
@@ -67,4 +68,33 @@ export async function PATCH(
     );
   }
   return NextResponse.json({ berhasil: true, data, dariAi: false });
+}
+
+export async function DELETE(
+  _req: Request,
+  konteks: { params: Promise<{ kunci: string }> | { kunci: string } },
+) {
+  const kunci = await kunciRuteStudio(konteks.params);
+  if (!kunci) {
+    return NextResponse.json(
+      { berhasil: false, pesan: "Kunci modul wajib diisi." },
+      { status: 400 },
+    );
+  }
+
+  const ada = await ambilDetailCacheMateri(kunci);
+  if (!ada) {
+    return NextResponse.json(
+      { berhasil: true, terhapus: true, sudahKosong: true },
+    );
+  }
+
+  const terhapus = await hapusCacheMateri(kunci);
+  if (!terhapus) {
+    return NextResponse.json(
+      { berhasil: false, pesan: "Gagal menghapus cache modul di Supabase." },
+      { status: 500 },
+    );
+  }
+  return NextResponse.json({ berhasil: true, terhapus: true });
 }

@@ -7,7 +7,7 @@ import type { DetailCacheMateri, IsiCacheMateri } from "@/lib/cache-materi-tutor
 import { formatWaktuCache } from "@/lib/studio-kreator";
 import { kelasKotak, kelasLabel, kelasTombolUtama } from "@/lib/tema";
 
-type StatusAksi = "idle" | "simpan" | "regenerate";
+type StatusAksi = "idle" | "simpan" | "hapus";
 
 const KOSONG: IsiCacheMateri = {
   curriculum_view: "",
@@ -42,7 +42,7 @@ export default function StudioKreatorDetail({
   const [isi, setIsi] = useState<IsiCacheMateri>(awal ? isiDariDetail(awal) : KOSONG);
   const [aksi, setAksi] = useState<StatusAksi>("idle");
   const [pesan, setPesan] = useState("");
-  const [galat, setGalat] = useState(awal ? "" : "Cache modul tidak ditemukan.");
+  const [galat, setGalat] = useState("");
 
   const jalurApi = `/api/studio-kreator/${encodeURIComponent(kunci)}`;
 
@@ -79,29 +79,32 @@ export default function StudioKreatorDetail({
     }
   }
 
-  async function regenerateModul() {
+  async function hapusModul() {
     const yakin = window.confirm(
-      "Ini akan menghapus paksa baris cache modul di Supabase, lalu memanggil Gemini Pro untuk membuat versi baru dari nol. Proses ini memakai kuota AI dan tidak bisa dibatalkan. Lanjutkan?",
+      "Yakin ingin menghapus modul ini? Modul akan di-generate ulang oleh AI ketika diakses melalui tombol Memulai Pembelajaran.",
     );
     if (!yakin) return;
-    setAksi("regenerate");
+    setAksi("hapus");
     setPesan("");
     setGalat("");
     try {
-      const res = await fetch(`${jalurApi}/regenerate`, { method: "POST" });
+      const res = await fetch(jalurApi, { method: "DELETE" });
       const json = (await res.json()) as {
         berhasil?: boolean;
-        data?: DetailCacheMateri;
+        terhapus?: boolean;
         pesan?: string;
       };
       if (!res.ok || !json.berhasil) {
-        setGalat(json.pesan || "Gagal regenerate modul.");
+        setGalat(json.pesan || "Gagal menghapus cache modul.");
         return;
       }
-      if (json.data) terapkan(json.data);
-      setPesan("Modul baru dari Gemini Pro sudah menggantikan cache lama.");
+      setMeta(null);
+      setIsi(KOSONG);
+      setPesan(
+        "Modul berhasil dihapus. Cache kosong. Generate ulang terjadi saat siswa menekan Memulai Pembelajaran.",
+      );
     } catch {
-      setGalat("Tidak bisa memanggil regenerate AI.");
+      setGalat("Tidak bisa menghapus cache modul.");
     } finally {
       setAksi("idle");
     }
@@ -112,7 +115,7 @@ export default function StudioKreatorDetail({
   return (
     <PageShell
       judul="🎨 Detail Studio Kreator"
-      subjudul="Edit naskah cache secara manual, atau hapus cache lalu generate ulang dengan Gemini Pro."
+      subjudul="Edit naskah cache secara manual, atau hapus cache. Generate ulang hanya terjadi di alur Memulai Pembelajaran."
     >
       <Link
         href="/studio-kreator"
@@ -133,7 +136,15 @@ export default function StudioKreatorDetail({
             {formatWaktuCache(meta.updatedAt)}
           </p>
         </div>
-      ) : null}
+      ) : (
+        <div className="mb-6 rounded-3xl border border-dashed border-[#1C01A5]/25 bg-[#F8F7FF] px-5 py-8">
+          <p className="text-xl font-extrabold text-[#1C01A5]">Kosong / Belum Ada</p>
+          <p className="mt-2 font-semibold text-slate-600">
+            Cache modul ini belum ada. AI akan menyusun naskah saat siswa menekan
+            Memulai Pembelajaran di Ruang Belajar.
+          </p>
+        </div>
+      )}
 
       {galat ? (
         <p className="mb-4 rounded-2xl border border-rose-100 bg-rose-50 px-4 py-3 font-semibold text-rose-600">
@@ -146,6 +157,8 @@ export default function StudioKreatorDetail({
         </p>
       ) : null}
 
+      {meta ? (
+        <>
       <div className="space-y-5">
         <KolomTeks
           label="Kurikulum Sekolah"
@@ -202,20 +215,22 @@ export default function StudioKreatorDetail({
         <button
           type="button"
           onClick={() => void simpanPerubahan()}
-          disabled={sibuk || !meta}
+          disabled={sibuk}
           className={`${kelasTombolUtama} inline-flex items-center justify-center rounded-2xl px-5 py-4 text-lg font-extrabold shadow-lg shadow-[#1C01A5]/20`}
         >
           {aksi === "simpan" ? "Menyimpan..." : "Simpan Perubahan"}
         </button>
         <button
           type="button"
-          onClick={() => void regenerateModul()}
+          onClick={() => void hapusModul()}
           disabled={sibuk}
           className="inline-flex items-center justify-center rounded-2xl bg-rose-600 px-5 py-4 text-lg font-extrabold text-white shadow-lg shadow-rose-600/20 transition hover:bg-rose-700 disabled:opacity-70"
         >
-          {aksi === "regenerate" ? "Menghapus & generate ulang..." : "Regenerate Modul (AI)"}
+          {aksi === "hapus" ? "Menghapus cache..." : "Hapus Modul (Clear Cache)"}
         </button>
       </div>
+        </>
+      ) : null}
     </PageShell>
   );
 }
