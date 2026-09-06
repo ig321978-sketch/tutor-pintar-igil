@@ -96,6 +96,7 @@ type ModulTutor = {
   motivasi: string;
   gambarUtama?: string | null;
   gambarSisipan?: GambarSisipan[];
+  referensiUrl?: string;
 };
 
 type StatusDoodle = "siaga" | "memuat" | "siap" | "gagal";
@@ -1679,6 +1680,7 @@ export default function TutorAI() {
                         doodleMemuat={statusDoodle === "memuat"}
                         sudutPandang={sudutPandang}
                         onGantiSudut={gantiSudutPandang}
+                        referensiUrl={hasilData.referensiUrl}
                       />
                     ) : null}
                     {hasilData ? (

@@ -28,6 +28,7 @@ function isiDariDetail(data: DetailCacheMateri): IsiCacheMateri {
     pertanyaan: data.pertanyaan,
     kunciJawaban: data.kunciJawaban,
     motivasi: data.motivasi,
+    referensiUrl: data.referensiUrl,
   };
 }
 

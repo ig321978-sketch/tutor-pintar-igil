@@ -27,5 +27,6 @@ export function isiDariBadanStudio(body: Record<string, unknown>): IsiCacheMater
     pertanyaan: sebagaiTeksStudio(body.pertanyaan),
     kunciJawaban: sebagaiTeksStudio(body.kunciJawaban ?? body.kunci_jawaban),
     motivasi: sebagaiTeksStudio(body.motivasi),
+    referensiUrl: sebagaiTeksStudio(body.referensiUrl ?? body.referensi_url),
   };
 }

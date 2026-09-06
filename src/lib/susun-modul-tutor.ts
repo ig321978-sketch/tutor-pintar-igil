@@ -9,7 +9,7 @@ import {
 import { jenjangGuru } from "@/lib/guru";
 import { mapelHitungan } from "@/lib/mapel-hitungan";
 import {
-  hasilkanJsonGemini,
+  hasilkanJsonGeminiLengkap,
   MODEL_GEMINI_MATERI,
   pesanGalatGemini,
 } from "@/lib/klien-gemini";
@@ -40,6 +40,7 @@ export type ModulTutor = {
   esai: string;
   kunciEsai: string[];
   motivasi: string;
+  referensiUrl?: string;
 };
 
 export const SVG_CADANGAN =
@@ -95,19 +96,40 @@ Jika materi memerlukan ilustrasi geometris, diagram vektor fisika (seperti arah 
 - DILARANG script, onclick, atau tautan javascript.`;
 }
 
-export const INSTRUKSI_SISTEM_PRO = `
+export function instruksiPencarianKurikulum(opsi: {
+  materi: string;
+  mapel: string;
+  kelas: string;
+}): string {
+  return `Anda adalah AI Tutor ahli. Sebelum menyusun materi, Anda WAJIB menggunakan alat Google Search untuk mencari referensi aktual mengenai materi bab ${opsi.materi} untuk mata pelajaran ${opsi.mapel} jenjang ${opsi.kelas} berdasarkan Kurikulum Merdeka di Indonesia. Setelah mendapatkan hasil pencarian, sintesis dan tulis ulang informasi tersebut menggunakan bahasa Anda sendiri yang orisinal dan mudah dipahami.`;
+}
+
+export function instruksiSistemPro(opsi: {
+  materi: string;
+  mapel: string;
+  kelas: string;
+}): string {
+  return `${instruksiPencarianKurikulum(opsi)}
+
 Kamu adalah Tutor $IGIL. Bekerja dengan penalaran mendalam (deep reasoning).
 Think step-by-step SEBELUM menulis JSON akhir:
-1) Identifikasi kompetensi, istilah baku, dan urutan subbab Kurikulum Merdeka untuk kelas serta bab ini.
-2) Validasi fakta, rumus, dan contoh hitung. Tolak klaim yang tidak selaras buku siswa.
-3) Susun dua perspektif: Uraian Kurikulum Nasional dan Uraian Global Best Practice. Judul subbab dan urutan WAJIB sama.
-4) Susun bank soal baku: 10 PG (3 Reguler + 7 HOTS) dan 3 Essay (1 Reguler + 2 HOTS).
-5) Baru keluarkan SATU objek JSON. Jangan keluarkan langkah berpikir ke pengguna.
+1) Gunakan Google Search untuk merujuk sumber Kurikulum Merdeka terbaru (buku siswa, capaian pembelajaran, ATP) yang relevan.
+2) Identifikasi kompetensi, istilah baku, dan urutan subbab Kurikulum Merdeka untuk kelas serta bab ini.
+3) Validasi fakta, rumus, dan contoh hitung. Tolak klaim yang tidak selaras buku siswa.
+4) Susun dua perspektif: Uraian Kurikulum Nasional dan Uraian Global Best Practice. Judul subbab dan urutan WAJIB sama.
+5) Susun bank soal baku: 10 PG (3 Reguler + 7 HOTS) dan 3 Essay (1 Reguler + 2 HOTS).
+6) Baru keluarkan SATU objek JSON. Jangan keluarkan langkah berpikir ke pengguna.
 
-Saat menyusun materi, patuhi format berikut: 1. Gunakan paragraf mikro (2-3 kalimat). 2. WAJIB gunakan sintaks LaTeX untuk rumus matematika/sains ($$ untuk block/berdiri sendiri, $ untuk inline). Berikan keterangan variabel di bawah rumus. 3. Jika materi membutuhkan diagram, bagan, atau ilustrasi konsep, WAJIB buat kode text-based menggunakan sintaks blok kode mermaid. 4. Gunakan Markdown untuk penataan hierarki (Heading 2, Heading 3, List).
-Format itu berlaku DI DALAM nilai JSON (curriculum_view dan global_best_view), bukan di luar objek JSON. Respons tetap SATU objek JSON murni. Di mermaid dan SVG, pakai kutip tunggal, jangan kutip ganda.
-${aturanMermaidDanLatex()}
-`.trim();
+Saat menyusun materi, patuhi format berikut: 1. Gunakan paragraf mikro (2-3 kalimat). 2. WAJIB gunakan sintaks LaTeX untuk rumus matematika/sains ($$ untuk block/berdiri sendiri, $ untuk inline). Berikan keterangan variabel di bawah rumus. 3. Jika materi membutuhkan diagram, bagan, atau ilustrasi konsep, WAJIB buat kode text-based menggunakan sintaks blok kode mermaid. Jika Mermaid tidak cukup untuk ilustrasi geometris atau diagram vektor, WAJIB pakai blok kode SVG (\`\`\`svg). 4. Gunakan Markdown untuk penataan hierarki (Heading 2, Heading 3, List).
+Format itu berlaku DI DALAM nilai JSON (curriculum_view dan global_best_view), bukan di luar objek JSON. Respons tetap SATU objek JSON murni. Di mermaid dan SVG, pakai kutip tunggal, jangan kutip ganda. Jangan menyalin hasil pencarian mentah.
+${aturanMermaidDanLatex()}`;
+}
+
+export const INSTRUKSI_SISTEM_PRO = instruksiSistemPro({
+  materi: "bab ini",
+  mapel: "mata pelajaran terkait",
+  kelas: "jenjang siswa",
+});
 
 const CONTOH_FEW_SHOT = `
 CONTOH TEMPLAT JSON (ikuti struktur, JANGAN salin isinya):
@@ -308,6 +330,8 @@ export function bentukModulTutor(
     esai?: unknown;
     kunciEsai?: unknown;
     motivasi?: unknown;
+    referensiUrl?: unknown;
+    referensi_url?: unknown;
   },
 ): ModulTutor {
   const kurikulum = amanNaskahModul(
@@ -337,6 +361,7 @@ export function bentukModulTutor(
     esai: esaiLangsung || bank.esai.join("\n\n"),
     kunciEsai: rubrikLangsung.length > 0 ? rubrikLangsung : kunci.rubrik,
     motivasi: pilihKataPujian(sebagaiTeks(bagian.motivasi, namaDepanSiswa(nama))),
+    referensiUrl: sebagaiTeks(bagian.referensiUrl || bagian.referensi_url),
   };
 }
 
@@ -349,6 +374,7 @@ export function keIsiCache(data: ModulTutor): IsiCacheMateri {
     pertanyaan: kemasBankSoal(data.pertanyaan, data.esai),
     kunciJawaban: kemasKunciBank(data.kunciJawaban, data.kunciEsai.join("\n\n")),
     motivasi: data.motivasi,
+    referensiUrl: data.referensiUrl,
   };
 }
 
@@ -365,6 +391,12 @@ export function promptGenerasiModul(opsi: {
     : `Tugas: Buat modul belajar DUA SUDUT PANDANG untuk ${opsi.namaDepan} (Kelas ${opsi.kelas}) mata pelajaran ${opsi.mapel} materi ${opsi.materi}. curriculum_view selaras buku siswa Kurikulum Merdeka Pusat Perbukuan. global_best_view memakai pedagogi dunia (analogi, penjelasan sederhana, kerangka visual) tanpa menyalahi fakta kurikulum.`;
 
   return `
+${instruksiPencarianKurikulum({
+  materi: opsi.materi,
+  mapel: opsi.mapel,
+  kelas: opsi.kelas,
+})}
+
 Kamu adalah Tutor $IGIL, guru privat EdTech Indonesia yang hangat, cerdas, dan presisi.
 
 ${instruksiMateri}
@@ -433,17 +465,30 @@ export async function generateModuleFirstTime(opsi: {
     jumlahGambar: gambar.length,
   });
 
-  const text = await hasilkanJsonGemini({
+  const hasil = await hasilkanJsonGeminiLengkap({
     parts: [...gambar, { text: promptText }],
     schema: SKEMA_MODUL,
     maxOutputTokens: 16384,
     model: MODEL_GEMINI_MATERI,
-    systemInstruction: INSTRUKSI_SISTEM_PRO,
+    systemInstruction: instruksiSistemPro({
+      materi: opsi.materi,
+      mapel: opsi.mapel,
+      kelas: opsi.kelas,
+    }),
     thinking: false,
     timeoutCobaMs: 85_000,
+    googleSearch: true,
   });
-  const dataJson = bersihkanDanParseJson(text);
-  const dataAman = bentukModulTutor(opsi.nama, dataJson);
+  if (hasil.referensi.length) {
+    console.info(
+      `[materi] grounding ${hasil.referensi.length} tautan topic=${opsi.mapel}/${opsi.materi}`,
+    );
+  }
+  const dataJson = bersihkanDanParseJson(hasil.teks);
+  const dataAman = bentukModulTutor(opsi.nama, {
+    ...dataJson,
+    referensiUrl: hasil.referensi.join("\n"),
+  });
 
   if (gambar.length === 0) {
     const tersimpan = await simpanCacheMateri(
