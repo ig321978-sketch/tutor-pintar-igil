@@ -35,6 +35,7 @@ export function judulDariTeks(teks: string): string {
   const baris = teks.split("\n").map((item) => item.trim()).filter(Boolean);
   const calon = baris[0] || teks;
   const tanpaNomor = calon
+    .replace(/^#{1,6}\s+/, "")
     .replace(/^\d+[.)]\s*/, "")
     .replace(/^kartu\s*\d+\s*[:.\-–]\s*/i, "");
   const potong =
