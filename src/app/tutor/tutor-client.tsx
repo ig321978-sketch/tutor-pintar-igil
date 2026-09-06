@@ -274,6 +274,7 @@ export default function TutorAI() {
   const [drafEsai, setDrafEsai] = useState<Record<string, string>>({});
   const [jawabanEsai, setJawabanEsai] = useState<Record<string, string>>({});
   const [sudutPandang, setSudutPandang] = useState<SudutPandangMateri>("kurikulum");
+  const [indeksNaskahTerbuka, setIndeksNaskahTerbuka] = useState(-1);
 
   const timerKetikRef = useRef<number | null>(null);
   const indeksKetikRef = useRef(0);
@@ -350,6 +351,13 @@ export default function TutorAI() {
   const judulMateriSesi = sesiMateri || (modeInput === "teks" ? bab : "Analisis halaman buku");
   const judulKelasSesi = teksQuery(params.get("kelas"), kelas);
   const opsiBagian = daftarBagianModul(judulMapelSesi);
+  const kartuMateri = useMemo(
+    () =>
+      penjelasanAktif
+        ? susunKonsepMateri(judulMateriSesi, penjelasanAktif, judulKelasSesi).kartu
+        : [],
+    [judulKelasSesi, judulMateriSesi, penjelasanAktif],
+  );
 
   const sudahPrefillMapel = useRef(false);
   const sudahPrefillBab = useRef(false);
@@ -603,6 +611,8 @@ export default function TutorAI() {
   const gantiSudutPandang = (sudut: SudutPandangMateri) => {
     if (sudut === sudutPandang) return;
     resetPemutar();
+    sudahSiapAudioRef.current = false;
+    setIndeksNaskahTerbuka(-1);
     setTeksAnimasi("");
     setSudutPandang(sudut);
   };
@@ -703,6 +713,7 @@ export default function TutorAI() {
       global_best_view: global,
     });
     setSudutPandang("kurikulum");
+    setIndeksNaskahTerbuka(-1);
     setJawabanKuis({});
     setDrafEsai({});
     setJawabanEsai({});
@@ -927,6 +938,9 @@ export default function TutorAI() {
 
   const bukaBagian = (bagian: BagianIsi) => {
     setPesanGalat("");
+    if (bagian !== "materi") {
+      setIndeksNaskahTerbuka(-1);
+    }
     setTahapBelajar(bagian);
     if (butuhNaskahAi(bagian) && !hasilData && !isLoading) {
       sudahGenerateRef.current = true;
@@ -941,6 +955,7 @@ export default function TutorAI() {
     if (params.get("mulai") !== "1") return;
     sudahGenerateRef.current = false;
     setHasilData(null);
+    setIndeksNaskahTerbuka(-1);
   }, [kunciSesiMulai, params]);
 
   useEffect(() => {
@@ -1437,6 +1452,11 @@ export default function TutorAI() {
     void putarSegmen({ jenis: "kartu", indeks }, true);
   };
 
+  const pilihBagianNaskah = (indeks: number) => {
+    setIndeksNaskahTerbuka(indeks);
+    pilihKartuSuara(indeks);
+  };
+
   const jedaSuara = () => {
     sedangMemutarRef.current = false;
     pemutarRef.current?.jeda();
@@ -1550,6 +1570,7 @@ export default function TutorAI() {
     setSesiMapel("");
     setSesiMateri("");
     setSudutPandang("kurikulum");
+    setIndeksNaskahTerbuka(-1);
     router.push("/ruang-belajar");
   };
 
@@ -1642,13 +1663,18 @@ export default function TutorAI() {
                 mapel={judulMapelSesi}
                 kelas={judulKelasSesi}
                 sapaan={hasilData.sapaan}
-                naskah={penjelasanAktif}
+                kartu={kartuMateri}
+                kartuTerbuka={indeksNaskahTerbuka}
                 doodleSrc={
                   hasilData.gambarUtama || hasilData.gambarSisipan?.[0]?.src
                 }
                 doodleMemuat={statusDoodle === "memuat"}
                 sudutPandang={sudutPandang}
+                sedangMemutar={
+                  statusPemutar === "memutar" && segmenSuara.jenis === "kartu"
+                }
                 onGantiSudut={gantiSudutPandang}
+                onPilihKartu={pilihBagianNaskah}
               />
             ) : null}
 

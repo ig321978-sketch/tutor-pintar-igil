@@ -1,35 +1,47 @@
 "use client";
 
-import { Loader2, Sparkles } from "lucide-react";
+import { Loader2, Sparkles, Volume2 } from "lucide-react";
 import ModuleRenderer from "@/components/ModuleRenderer";
-import { pisahNaskahDanContoh } from "@/lib/contoh-soal-materi";
+import type { KartuKonsep } from "@/lib/konsep-materi";
 import {
   LABEL_SUDUT,
   type SudutPandangMateri,
 } from "@/lib/sudut-pandang";
+
+const WARNA = [
+  "bg-[#FFF4CC] border-[#F0AB00]",
+  "bg-[#E8E4FF] border-[#1C01A5]/40",
+  "bg-[#DDF7E8] border-emerald-400",
+  "bg-[#FFE4EC] border-rose-300",
+];
 
 export default function PanelMateriModul({
   materi,
   mapel,
   kelas,
   sapaan,
-  naskah,
+  kartu,
+  kartuTerbuka,
   doodleSrc,
   doodleMemuat,
   sudutPandang,
+  sedangMemutar = false,
   onGantiSudut,
+  onPilihKartu,
 }: {
   materi: string;
   mapel: string;
   kelas: string;
   sapaan: string;
-  naskah: string;
+  kartu: KartuKonsep[];
+  kartuTerbuka: number;
   doodleSrc?: string | null;
   doodleMemuat?: boolean;
   sudutPandang: SudutPandangMateri;
+  sedangMemutar?: boolean;
   onGantiSudut: (sudut: SudutPandangMateri) => void;
+  onPilihKartu: (indeks: number) => void;
 }) {
-  const { uraian, contoh } = pisahNaskahDanContoh(naskah);
   const label = LABEL_SUDUT[sudutPandang];
 
   return (
@@ -95,28 +107,46 @@ export default function PanelMateriModul({
         </div>
       </div>
 
-      <div className="rounded-[2rem] border-2 border-[#1C01A5]/10 bg-white p-5 sm:p-8">
-        <ModuleRenderer konten={uraian} />
-      </div>
-
-      {contoh.length > 0 ? (
-        <div className="space-y-4">
-          <h3 className="text-xl font-black text-[#1C01A5]">
-            Dua contoh soal tuntas
-          </h3>
-          {contoh.map((item, indeks) => (
-            <section
-              key={`${item.judul}-${indeks}`}
-              className="rounded-[1.5rem] border-2 border-[#F0AB00]/50 bg-[#FFF8E8] p-5"
+      <div key={sudutPandang} className="grid gap-3">
+        {kartu.map((item, indeks) => {
+          const terbuka = kartuTerbuka === indeks;
+          return (
+            <div
+              key={`${sudutPandang}-${item.judul}-${indeks}`}
+              className={`rounded-3xl border-2 p-5 shadow-sm ${item.warna || WARNA[indeks % WARNA.length]} ${
+                terbuka ? "ring-4 ring-[#1C01A5]/20" : ""
+              }`}
             >
-              <p className="text-[10px] font-extrabold uppercase tracking-[0.18em] text-[#C48800]">
-                Contoh {indeks + 1}
-              </p>
-              <ModuleRenderer konten={item.isi} className="mt-2" />
-            </section>
-          ))}
-        </div>
-      ) : null}
+              <button
+                type="button"
+                onClick={() => onPilihKartu(indeks)}
+                aria-pressed={terbuka}
+                className="flex w-full items-start justify-between gap-3 text-left"
+              >
+                <div>
+                  <p className="text-[10px] font-extrabold uppercase tracking-wider text-[#1C01A5]/60">
+                    Bagian {indeks + 1} · {label.pendek}
+                  </p>
+                  <h3 className="mt-1 text-lg font-black leading-snug text-[#1C01A5]">
+                    {item.judul}
+                  </h3>
+                </div>
+                {sedangMemutar && terbuka ? (
+                  <span className="inline-flex shrink-0 items-center gap-1 rounded-full bg-[#F0AB00] px-2 py-0.5 text-[10px] font-extrabold uppercase tracking-wider text-[#1C01A5]">
+                    <Volume2 className="h-3 w-3" />
+                    Dibacakan
+                  </span>
+                ) : null}
+              </button>
+              {terbuka ? (
+                <div className="mt-4 border-t border-[#1C01A5]/10 pt-4">
+                  <ModuleRenderer konten={item.naskah || item.isi} />
+                </div>
+              ) : null}
+            </div>
+          );
+        })}
+      </div>
     </article>
   );
 }
