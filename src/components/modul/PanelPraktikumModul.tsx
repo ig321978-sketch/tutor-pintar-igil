@@ -73,13 +73,8 @@ export default function PanelPraktikumModul({
 
   return (
     <div className="space-y-6">
-      <section className="rounded-[2rem] border-2 border-[#1C01A5]/15 bg-white p-6 sm:p-8">
-        <p className="text-xs font-extrabold uppercase tracking-[0.18em] text-[#F0AB00]">
-          Praktikum
-        </p>
-        <h2 className="mt-2 text-2xl font-black text-[#1C01A5]">
-          {materi}
-        </h2>
+      <div>
+        <h2 className="text-2xl font-black text-[#1C01A5]">{materi}</h2>
         <p className="mt-1 text-sm font-bold text-[#1C01A5]/70">
           {mapel} · {kelas}
         </p>
@@ -94,9 +89,7 @@ export default function PanelPraktikumModul({
           className={`${kelasKotak} min-h-32 resize-y text-lg`}
         />
         {pesan ? (
-          <p className="mt-4 rounded-2xl border border-rose-100 bg-rose-50 px-4 py-3 font-semibold text-rose-600">
-            {pesan}
-          </p>
+          <p className="mt-4 font-semibold text-rose-600">{pesan}</p>
         ) : null}
         <button
           type="button"
@@ -107,16 +100,10 @@ export default function PanelPraktikumModul({
           <Play className="h-5 w-5 fill-current" />
           {memuat ? "AI sedang menilai..." : "Jalankan praktikum"}
         </button>
-      </section>
+      </div>
 
       {evaluasi ? (
-        <section
-          className={`rounded-[2rem] border-2 p-6 sm:p-8 ${
-            evaluasi.lulus
-              ? "border-emerald-300 bg-emerald-50"
-              : "border-rose-200 bg-rose-50"
-          }`}
-        >
+        <div className="border-t border-[#1C01A5]/10 pt-6">
           <p className="text-sm font-extrabold uppercase tracking-wider text-[#1C01A5]">
             {evaluasi.lulus ? "Hasil: BERHASIL" : "Hasil: BELUM BERHASIL"}
           </p>
@@ -127,8 +114,8 @@ export default function PanelPraktikumModul({
             {evaluasi.umpanBalik}
           </p>
           {evaluasi.lulus ? (
-            <p className="mt-3 inline-flex items-center gap-2 rounded-full bg-[#F0AB00] px-4 py-2 font-extrabold text-[#1C01A5]">
-              <Sparkles className="h-4 w-4" />
+            <p className="mt-3 inline-flex items-center gap-2 font-extrabold text-[#1C01A5]">
+              <Sparkles className="h-4 w-4 text-[#F0AB00]" />
               +{evaluasi.token} token $IGIL ditambang
             </p>
           ) : (
@@ -148,7 +135,7 @@ export default function PanelPraktikumModul({
               {evaluasi.yangDiamati}
             </p>
           ) : null}
-        </section>
+        </div>
       ) : null}
     </div>
   );

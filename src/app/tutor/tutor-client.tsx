@@ -274,7 +274,6 @@ export default function TutorAI() {
   const [drafEsai, setDrafEsai] = useState<Record<string, string>>({});
   const [jawabanEsai, setJawabanEsai] = useState<Record<string, string>>({});
   const [sudutPandang, setSudutPandang] = useState<SudutPandangMateri>("kurikulum");
-  const [indeksNaskahTerbuka, setIndeksNaskahTerbuka] = useState(-1);
 
   const timerKetikRef = useRef<number | null>(null);
   const indeksKetikRef = useRef(0);
@@ -351,13 +350,6 @@ export default function TutorAI() {
   const judulMateriSesi = sesiMateri || (modeInput === "teks" ? bab : "Analisis halaman buku");
   const judulKelasSesi = teksQuery(params.get("kelas"), kelas);
   const opsiBagian = daftarBagianModul(judulMapelSesi);
-  const kartuMateri = useMemo(
-    () =>
-      penjelasanAktif
-        ? susunKonsepMateri(judulMateriSesi, penjelasanAktif, judulKelasSesi).kartu
-        : [],
-    [judulKelasSesi, judulMateriSesi, penjelasanAktif],
-  );
 
   const sudahPrefillMapel = useRef(false);
   const sudahPrefillBab = useRef(false);
@@ -611,8 +603,7 @@ export default function TutorAI() {
   const gantiSudutPandang = (sudut: SudutPandangMateri) => {
     if (sudut === sudutPandang) return;
     resetPemutar();
-    sudahSiapAudioRef.current = false;
-    setIndeksNaskahTerbuka(-1);
+    sudahSiapAudioRef.current = true;
     setTeksAnimasi("");
     setSudutPandang(sudut);
   };
@@ -713,7 +704,6 @@ export default function TutorAI() {
       global_best_view: global,
     });
     setSudutPandang("kurikulum");
-    setIndeksNaskahTerbuka(-1);
     setJawabanKuis({});
     setDrafEsai({});
     setJawabanEsai({});
@@ -940,13 +930,9 @@ export default function TutorAI() {
     if (tahapBelajar === bagian) {
       setPesanGalat("");
       setTahapBelajar("pilih");
-      setIndeksNaskahTerbuka(-1);
       return;
     }
     setPesanGalat("");
-    if (bagian !== "materi") {
-      setIndeksNaskahTerbuka(-1);
-    }
     setTahapBelajar(bagian);
     if (butuhNaskahAi(bagian) && !hasilData && !isLoading) {
       sudahGenerateRef.current = true;
@@ -966,7 +952,6 @@ export default function TutorAI() {
     sudahGenerateRef.current = false;
     sudahSiapAudioRef.current = false;
     setHasilData(null);
-    setIndeksNaskahTerbuka(-1);
   }, [kunciSesiMulai, params]);
 
   useEffect(() => {
@@ -1464,11 +1449,6 @@ export default function TutorAI() {
     void putarSegmen({ jenis: "kartu", indeks }, true);
   };
 
-  const pilihBagianNaskah = (indeks: number) => {
-    setIndeksNaskahTerbuka(indeks);
-    pilihKartuSuara(indeks);
-  };
-
   const jedaSuara = () => {
     sedangMemutarRef.current = false;
     pemutarRef.current?.jeda();
@@ -1562,6 +1542,23 @@ export default function TutorAI() {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [isMulai, kunciSesiMulai, nama, sudutPandang, params]);
 
+  useEffect(() => {
+    if (tahapBelajar !== "materi" || !hasilData || blokKartu.length === 0) return;
+    void putarSegmen({ jenis: "kartu", indeks: 0 }, true);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [hasilData, tahapBelajar, sudutPandang]);
+
+  useEffect(() => {
+    if (tahapBelajar !== "materi" || !hasilData) return;
+    if (statusPemutar !== "siaga") return;
+    const segmen = segmenSuaraRef.current;
+    if (segmen.jenis !== "kartu") return;
+    const berikutnya = segmen.indeks + 1;
+    if (berikutnya >= jumlahKartuRef.current) return;
+    void putarSegmen({ jenis: "kartu", indeks: berikutnya }, true);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [hasilData, statusPemutar, tahapBelajar]);
+
   const kembaliKeMenu = () => {
     hentikanRekamSuara();
     resetPemutar();
@@ -1580,7 +1577,6 @@ export default function TutorAI() {
     setSesiMapel("");
     setSesiMateri("");
     setSudutPandang("kurikulum");
-    setIndeksNaskahTerbuka(-1);
     router.push("/ruang-belajar");
   };
 
@@ -1672,24 +1668,18 @@ export default function TutorAI() {
                         mapel={judulMapelSesi}
                         kelas={judulKelasSesi}
                         sapaan={hasilData.sapaan}
-                        kartu={kartuMateri}
-                        kartuTerbuka={indeksNaskahTerbuka}
+                        naskah={penjelasanAktif}
                         doodleSrc={
                           hasilData.gambarUtama ||
                           hasilData.gambarSisipan?.[0]?.src
                         }
                         doodleMemuat={statusDoodle === "memuat"}
                         sudutPandang={sudutPandang}
-                        sedangMemutar={
-                          statusPemutar === "memutar" &&
-                          segmenSuara.jenis === "kartu"
-                        }
                         onGantiSudut={gantiSudutPandang}
-                        onPilihKartu={pilihBagianNaskah}
                       />
                     ) : null}
                     {hasilData ? (
-            <div className="mt-5 p-6 bg-white rounded-2xl border-2 border-[#1C01A5]/20 space-y-4">
+            <div className="mt-6 space-y-4 border-t border-[#1C01A5]/10 pt-5">
               <label className="flex items-center gap-2 text-sm font-extrabold tracking-wide text-[#1C01A5]">
                 <MessageCircleQuestionMark className="w-5 h-5" />
                 AJUKAN PERTANYAAN
@@ -1767,7 +1757,7 @@ export default function TutorAI() {
               ) : null}
 
               {hasilAjuan ? (
-                <div className="bg-white rounded-2xl border border-[#1C01A5]/15 p-5 space-y-4">
+                <div className="space-y-4 border-t border-[#1C01A5]/10 pt-4">
                   <p className="font-extrabold text-[#1C01A5]">{hasilAjuan.sapaan}</p>
                   <div>
                     <p className="text-xs font-bold uppercase tracking-wider text-[#C48800] mb-2">
@@ -1776,7 +1766,7 @@ export default function TutorAI() {
                     <TeksNaskah teks={hasilAjuan.panduanLangkah} />
                   </div>
                   {hasilAjuan.caraKurikulum ? (
-                    <div className="p-4 rounded-xl bg-white border border-[#1C01A5]/15">
+                    <div>
                       <p className="text-sm font-extrabold text-[#1C01A5] mb-2">
                         Cara Resmi Kurikulum Merdeka
                       </p>
@@ -1784,7 +1774,7 @@ export default function TutorAI() {
                     </div>
                   ) : null}
                   {hasilAjuan.trikBimbel ? (
-                    <div className="p-4 rounded-xl bg-[#FFF8E8] border border-[#F0AB00]/40">
+                    <div>
                       <p className="text-sm font-extrabold text-[#C48800] mb-2">
                         Trik Cepat Bimbel
                       </p>

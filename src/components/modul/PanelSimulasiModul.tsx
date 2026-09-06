@@ -62,7 +62,7 @@ export default function PanelSimulasiModul({
 
   if (memuat) {
     return (
-      <div className="flex items-center justify-center gap-3 rounded-[2rem] border-2 border-[#1C01A5]/10 bg-white px-6 py-16">
+      <div className="flex items-center justify-center gap-3 py-10">
         <Loader2 className="h-6 w-6 animate-spin text-[#1C01A5]" />
         <p className="font-extrabold text-[#1C01A5]">Mencari simulasi PhET...</p>
       </div>
@@ -71,18 +71,18 @@ export default function PanelSimulasiModul({
 
   if (pesan || bahan.length === 0) {
     return (
-      <p className="rounded-[2rem] border border-[#1C01A5]/15 bg-white p-6 font-semibold text-slate-600">
+      <p className="font-semibold text-slate-600">
         {pesan || "Belum ketemu simulasi yang cocok untuk materi ini."}
       </p>
     );
   }
 
   return (
-    <div className="grid gap-4">
-      {bahan.map((item) => (
-        <article
+    <div className="space-y-8">
+      {bahan.map((item, indeks) => (
+        <section
           key={item.url}
-          className="rounded-3xl border border-[#1C01A5]/15 bg-white p-5 shadow-sm"
+          className={indeks > 0 ? "border-t border-[#1C01A5]/10 pt-6" : ""}
         >
           <p className="text-xs font-bold uppercase tracking-wider text-[#F0AB00]">
             {item.sumber}
@@ -114,7 +114,7 @@ export default function PanelSimulasiModul({
             <ExternalLink className="h-4 w-4" />
             Buka layar penuh
           </a>
-        </article>
+        </section>
       ))}
     </div>
   );
