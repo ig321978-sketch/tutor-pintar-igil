@@ -5,7 +5,7 @@ export type TingkatSilabus = "kurang" | "cukup" | "baik";
 
 export type PoinSilabus = {
   id: string;
-  kelompok: "kerangka" | "materi";
+  kelompok: "kerangka";
   judul: string;
   keterangan: string;
   tingkat: TingkatSilabus;
@@ -72,6 +72,48 @@ function rataTingkat(daftar: TingkatSilabus[]): TingkatSilabus {
   return "kurang";
 }
 
+function jpDariNaskah(naskah: string): number | null {
+  const cocok = naskah.match(/(\d{1,3})\s*(?:jp|jam pelajaran)\b/i);
+  if (!cocok) return null;
+  const jp = Number(cocok[1]);
+  return Number.isFinite(jp) && jp > 0 ? jp : null;
+}
+
+function susunWaktuPembelajaran(opsi: {
+  jumlahTujuan: number;
+  jumlahKartu: number;
+  naskah: string;
+}): { keterangan: string; tingkat: TingkatSilabus } {
+  const jpNaskah = jpDariNaskah(opsi.naskah);
+  if (jpNaskah) {
+    const pertemuan = Math.max(1, Math.ceil(jpNaskah / 2));
+    return {
+      keterangan: `${jpNaskah} JP · ${pertemuan} pertemuan, sesuai alokasi pada naskah modul.`,
+      tingkat: "baik",
+    };
+  }
+  if (opsi.jumlahTujuan > 0) {
+    const jp = Math.max(4, opsi.jumlahTujuan * 2);
+    const pertemuan = Math.max(2, Math.ceil(jp / 2));
+    return {
+      keterangan: `${jp} JP · ${pertemuan} pertemuan, perkiraan dari ${opsi.jumlahTujuan} tujuan buku siswa.`,
+      tingkat: "baik",
+    };
+  }
+  if (opsi.jumlahKartu > 0) {
+    const jp = Math.max(4, opsi.jumlahKartu * 2);
+    const pertemuan = Math.max(2, Math.ceil(jp / 2));
+    return {
+      keterangan: `Sekitar ${jp} JP · ${pertemuan} pertemuan. Alokasi resmi bab ini belum terpetakan.`,
+      tingkat: "cukup",
+    };
+  }
+  return {
+    keterangan: "Waktu pembelajaran belum dapat ditentukan karena naskah bab belum tersedia.",
+    tingkat: "kurang",
+  };
+}
+
 export function susunSilabusMerdeka(opsi: {
   kelas: string;
   mapel: string;
@@ -93,7 +135,7 @@ export function susunSilabusMerdeka(opsi: {
     opsi.kelas.trim() && opsi.mapel.trim() && opsi.materi.trim(),
   );
 
-  const poinMateri: PoinSilabus[] = materiPokok.map((nama, indeks) => {
+  const poinMateri = materiPokok.map((nama) => {
     let terbaik = { skor: 0, naskah: "" };
     for (const item of kartu) {
       const skor = Math.max(
@@ -104,18 +146,12 @@ export function susunSilabusMerdeka(opsi: {
     }
     const tingkat =
       terbaik.skor < 0.4 ? "kurang" : tingkatKartu(terbaik.naskah);
-    return {
-      id: `materi-${indeks}`,
-      kelompok: "materi" as const,
-      judul: nama.replace(/\.$/, ""),
-      keterangan:
-        tingkat === "baik"
-          ? "Uraian, contoh, dan latihan sudah mengikuti subbab buku siswa."
-          : tingkat === "cukup"
-            ? "Konsep sudah muncul, tapi contoh atau latihan masih perlu dilengkapi."
-            : "Komponen ini belum tampak jelas di modul pembahasan.",
-      tingkat,
-    };
+    return { tingkat };
+  });
+  const waktu = susunWaktuPembelajaran({
+    jumlahTujuan: subbab.length,
+    jumlahKartu: kartu.length,
+    naskah: opsi.naskahKurikulum || naskahGabung,
   });
 
   const tingkatTujuan = rataTingkat(poinMateri.map((item) => item.tingkat));
@@ -167,6 +203,13 @@ export function susunSilabusMerdeka(opsi: {
       tingkat: tingkatTujuan,
     },
     {
+      id: "waktu",
+      kelompok: "kerangka",
+      judul: "Waktu Pembelajaran",
+      keterangan: waktu.keterangan,
+      tingkat: waktu.tingkat,
+    },
+    {
       id: "kegiatan",
       kelompok: "kerangka",
       judul: "Kegiatan pembelajaran",
@@ -202,5 +245,5 @@ export function susunSilabusMerdeka(opsi: {
     },
   ];
 
-  return [...kerangka, ...poinMateri];
+  return kerangka;
 }

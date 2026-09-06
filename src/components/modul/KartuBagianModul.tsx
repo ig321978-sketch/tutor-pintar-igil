@@ -10,7 +10,7 @@ const META: Record<
 > = {
   silabus: {
     judul: "Silabus",
-    ringkas: "Komponen Kurikulum Merdeka dan materi pokok yang akan dipelajari",
+    ringkas: "Komponen utama Kurikulum Merdeka yang akan dipelajari",
     gambar: "/kartu-modul/silabus.png",
   },
   materi: {
