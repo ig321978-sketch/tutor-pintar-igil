@@ -2,6 +2,10 @@
 
 import { useRef } from "react";
 import { Loader2, Pause, Play } from "lucide-react";
+import {
+  TINGKAT_PERLAMBAT,
+  type TingkatPerlambat,
+} from "@/lib/laju-suara";
 
 export function formatDurasi(detik: number): string {
   if (!Number.isFinite(detik) || detik < 0) return "0:00";
@@ -14,16 +18,20 @@ export default function PemutarTutorMengambang({
   memutar,
   waktu,
   durasi,
+  perlambat = 1,
   padaToggle,
   padaUlang,
+  padaPerlambat,
   disabled = false,
   menyiapkan = false,
 }: {
   memutar: boolean;
   waktu: number;
   durasi: number;
+  perlambat?: TingkatPerlambat;
   padaToggle: () => void;
   padaUlang: (detik: number) => void;
+  padaPerlambat?: (tingkat: TingkatPerlambat) => void;
   disabled?: boolean;
   menyiapkan?: boolean;
 }) {
@@ -72,6 +80,47 @@ export default function PemutarTutorMengambang({
             <Play className="h-5 w-5 fill-current" />
           )}
         </button>
+
+        <div className="flex shrink-0 flex-col items-center gap-0.5">
+          <span className="text-[9px] font-extrabold tracking-wider text-white/80">
+            PERLAMBAT
+          </span>
+          <div
+            className="flex rounded-full bg-white/10 p-0.5"
+            role="group"
+            aria-label="Perlambat suara tutor"
+          >
+            {TINGKAT_PERLAMBAT.map((tingkat) => {
+              const aktif = tingkat === perlambat;
+              return (
+                <button
+                  key={tingkat}
+                  type="button"
+                  onClick={() => padaPerlambat?.(tingkat)}
+                  disabled={disabled || !padaPerlambat}
+                  className={`min-w-8 rounded-full px-2 py-1 text-[11px] font-extrabold tabular-nums transition-colors disabled:opacity-50 ${
+                    aktif
+                      ? "bg-[#F0AB00] text-[#1C01A5]"
+                      : "text-white/85 hover:bg-white/10"
+                  }`}
+                  aria-pressed={aktif}
+                  title={
+                    tingkat === 1
+                      ? "Kecepatan normal"
+                      : `Perlambat ${tingkat} kali`
+                  }
+                  aria-label={
+                    tingkat === 1
+                      ? "Kecepatan normal 1x"
+                      : `Perlambat ${tingkat} kali`
+                  }
+                >
+                  {tingkat}x
+                </button>
+              );
+            })}
+          </div>
+        </div>
 
         <div className="min-w-0 flex-1">
           <div

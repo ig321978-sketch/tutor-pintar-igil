@@ -27,6 +27,12 @@ import {
   pilihPenjelasanMateri,
   type SudutPandangMateri,
 } from "@/lib/sudut-pandang";
+import {
+  bacaPerlambatVoice,
+  lajuPutarDariPerlambat,
+  simpanPerlambatVoice,
+  type TingkatPerlambat,
+} from "@/lib/laju-suara";
 import { naskahLisan, naskahTutorUntukSuara } from "@/lib/naskah-lisan";
 import { pecahTokenNaskah, skalaWaktuKata, type KataWaktu } from "@/lib/tts";
 import { type GambarSisipan } from "@/components/GambarDoodle";
@@ -134,8 +140,15 @@ type PotonganSuara = {
   percobaan: number;
 };
 
-function buatUcapan(teks: string, guruKelas: string, kelamin: KelaminGuru) {
-  return buatUcapanGuru(teks, profilGuru(guruKelas, kelamin));
+function buatUcapan(
+  teks: string,
+  guruKelas: string,
+  kelamin: KelaminGuru,
+  perlambat: TingkatPerlambat = 1,
+) {
+  const ucapan = buatUcapanGuru(teks, profilGuru(guruKelas, kelamin));
+  ucapan.rate = Math.max(0.1, Math.min(2, ucapan.rate / perlambat));
+  return ucapan;
 }
 
 function pecahTeksUcapan(teks: string, batas = BATAS_POTONGAN_UCAPAN): string[] {
@@ -236,6 +249,8 @@ export default function TutorAI() {
   const [modeChirp, setModeChirp] = useState(false);
   const [waktuAudio, setWaktuAudio] = useState(0);
   const [durasiAudio, setDurasiAudio] = useState(0);
+  const [perlambatVoice, setPerlambatVoice] = useState<TingkatPerlambat>(1);
+  const perlambatVoiceRef = useRef<TingkatPerlambat>(1);
 
   const daftarMapel = useMemo(
     () => daftarMapelUntukKelas(kelas),
@@ -390,6 +405,18 @@ export default function TutorAI() {
     };
   }, []);
 
+  useEffect(() => {
+    const tingkat = bacaPerlambatVoice();
+    perlambatVoiceRef.current = tingkat;
+    setPerlambatVoice(tingkat);
+  }, []);
+
+  const pilihPerlambatVoice = (tingkat: TingkatPerlambat) => {
+    perlambatVoiceRef.current = tingkat;
+    setPerlambatVoice(tingkat);
+    simpanPerlambatVoice(tingkat);
+  };
+
   const hentikanKetik = () => {
     if (timerKetikRef.current) {
       window.clearInterval(timerKetikRef.current);
@@ -418,7 +445,7 @@ export default function TutorAI() {
       indeksKetikRef.current = i;
       setTeksAnimasi(teks.slice(0, i));
       if (i >= teks.length) hentikanKetik();
-    }, INTERVAL_KETIK_MS);
+    }, INTERVAL_KETIK_MS * perlambatVoiceRef.current);
   };
 
   const tandaiAudioSelesai = () => {
@@ -437,7 +464,12 @@ export default function TutorAI() {
       return;
     }
 
-    const ucapan = buatUcapan(item.teks, kelas, guruKelamin);
+    const ucapan = buatUcapan(
+      item.teks,
+      kelas,
+      guruKelamin,
+      perlambatVoiceRef.current,
+    );
     ucapan.onstart = item.ucapan.onstart;
     ucapan.onboundary = item.ucapan.onboundary;
     ucapan.onend = item.ucapan.onend;
@@ -886,7 +918,12 @@ export default function TutorAI() {
         const offset = posisi >= 0 ? posisi : cariDari;
         antrian.push({
           teks: potong,
-          ucapan: buatUcapan(potong, kelas, guruKelamin),
+          ucapan: buatUcapan(
+            potong,
+            kelas,
+            guruKelamin,
+            perlambatVoiceRef.current,
+          ),
           jenis,
           offset,
           teksPenjelasan,
@@ -1805,6 +1842,7 @@ export default function TutorAI() {
           ref={pemutarRef}
           src={srcAudio}
           memutar={modeChirp && statusPemutar === "memutar"}
+          lajuPutar={lajuPutarDariPerlambat(perlambatVoice)}
           padaWaktu={padaWaktuAudio}
           padaDurasi={padaDurasiAudio}
           padaSelesai={padaSelesaiAudio}
@@ -1813,8 +1851,10 @@ export default function TutorAI() {
           memutar={statusPemutar === "memutar"}
           waktu={waktuAudio}
           durasi={durasiAudio}
+          perlambat={perlambatVoice}
           padaToggle={toggleSuara}
           padaUlang={cariUlangSuara}
+          padaPerlambat={pilihPerlambatVoice}
           menyiapkan={statusPemutar === "menyiapkan"}
         />
         </>

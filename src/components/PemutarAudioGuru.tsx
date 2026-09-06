@@ -6,6 +6,7 @@ import type { KataWaktu } from "@/lib/tts";
 type Props = {
   src: string | null;
   memutar: boolean;
+  lajuPutar?: number;
   padaWaktu: (detik: number) => void;
   padaSelesai: () => void;
   padaDurasi: (detik: number) => void;
@@ -38,17 +39,30 @@ async function siapkanElemen(el: HTMLAudioElement): Promise<void> {
   });
 }
 
-async function mainkanElemen(el: HTMLAudioElement): Promise<void> {
+function terapkanLaju(el: HTMLAudioElement, laju: number) {
+  const aman = Number.isFinite(laju) && laju > 0 ? laju : 1;
+  el.defaultPlaybackRate = aman;
+  el.playbackRate = aman;
+}
+
+async function mainkanElemen(
+  el: HTMLAudioElement,
+  laju = 1,
+): Promise<void> {
   await siapkanElemen(el);
+  terapkanLaju(el, laju);
   await el.play();
+  terapkanLaju(el, laju);
 }
 
 const PemutarAudioGuru = forwardRef<KontrolPemutarGuru, Props>(
   function PemutarAudioGuru(
-    { src, memutar, padaWaktu, padaSelesai, padaDurasi },
+    { src, memutar, lajuPutar = 1, padaWaktu, padaSelesai, padaDurasi },
     ref,
   ) {
     const audioRef = useRef<HTMLAudioElement | null>(null);
+    const lajuRef = useRef(lajuPutar);
+    lajuRef.current = lajuPutar;
 
     useImperativeHandle(
       ref,
@@ -62,7 +76,7 @@ const PemutarAudioGuru = forwardRef<KontrolPemutarGuru, Props>(
             el.load();
           }
           el.currentTime = 0;
-          await mainkanElemen(el);
+          await mainkanElemen(el, lajuRef.current);
         },
         mainkanDari: async (url, detik = 0) => {
           const el = audioRef.current;
@@ -74,12 +88,14 @@ const PemutarAudioGuru = forwardRef<KontrolPemutarGuru, Props>(
           await siapkanElemen(el);
           const batas = Number.isFinite(el.duration) ? el.duration : detik;
           el.currentTime = Math.max(0, Math.min(detik, batas));
+          terapkanLaju(el, lajuRef.current);
           await el.play();
+          terapkanLaju(el, lajuRef.current);
         },
         lanjutkan: async () => {
           const el = audioRef.current;
           if (!el) return;
-          await mainkanElemen(el);
+          await mainkanElemen(el, lajuRef.current);
         },
         jeda: () => {
           audioRef.current?.pause();
@@ -116,11 +132,18 @@ const PemutarAudioGuru = forwardRef<KontrolPemutarGuru, Props>(
 
     useEffect(() => {
       const el = audioRef.current;
+      if (!el) return;
+      terapkanLaju(el, lajuPutar);
+    }, [lajuPutar]);
+
+    useEffect(() => {
+      const el = audioRef.current;
       if (!el || !src) return;
       if (el.src !== src) {
         el.src = src;
         el.load();
       }
+      terapkanLaju(el, lajuRef.current);
       if (!memutar) {
         el.pause();
       }
