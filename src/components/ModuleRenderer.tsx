@@ -19,6 +19,7 @@ import {
   labelDariMermaid,
   mermaidSederhanaDariLabel,
 } from "@/lib/bersihkan-mermaid";
+import { bersihkanSumberSvg } from "@/lib/bersihkan-svg";
 import { rapikanNaskahModul } from "@/lib/rapikan-naskah-modul";
 import "katex/dist/katex.min.css";
 
@@ -141,6 +142,23 @@ function DiagramMermaid({ sumber }: { sumber: string }) {
   );
 }
 
+function DiagramSvg({ sumber }: { sumber: string }) {
+  const svg = useMemo(() => bersihkanSumberSvg(sumber), [sumber]);
+  if (!svg) {
+    return (
+      <p className="my-4 text-center text-sm font-medium text-slate-600">
+        Ilustrasi tidak dapat ditampilkan.
+      </p>
+    );
+  }
+  return (
+    <div
+      className="igil-diagram-svg not-prose my-4 flex justify-center overflow-x-auto"
+      dangerouslySetInnerHTML={{ __html: svg }}
+    />
+  );
+}
+
 function KodeModul({
   className,
   children,
@@ -153,6 +171,9 @@ function KodeModul({
   const teks = String(children ?? "").replace(/\n$/, "");
   if (bahasa === "mermaid") {
     return <DiagramMermaid sumber={teks} />;
+  }
+  if (bahasa === "svg") {
+    return <DiagramSvg sumber={teks} />;
   }
   return (
     <code className={className} {...props}>
@@ -190,15 +211,15 @@ export default function ModuleRenderer({
           pre({ children }) {
             const daftar = Children.toArray(children);
             const anak = daftar[0];
-            const hanyaMermaid =
+            const hanyaGambar =
               daftar.length === 1 &&
               isValidElement(anak) &&
-              /language-mermaid/.test(
+              /language-(mermaid|svg)/.test(
                 String(
                   (anak.props as { className?: string }).className || "",
                 ),
               );
-            if (hanyaMermaid) return <>{daftar}</>;
+            if (hanyaGambar) return <>{daftar}</>;
             return (
               <pre className="overflow-x-auto rounded-xl bg-[#1C01A5]/5 px-3 py-2 text-sm">
                 {children}

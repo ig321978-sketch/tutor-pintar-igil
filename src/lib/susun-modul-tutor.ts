@@ -87,7 +87,12 @@ ATURAN MERMAID (WAJIB, jika ada diagram):
 - DILARANG: sequenceDiagram, classDiagram, stateDiagram, gantt, pie, mindmap, subgraph, style, classDef, click, HTML, <br>, kutip ganda, tanda #, LaTeX, $, $$, \\, <, >, &.
 - DILARANG ID berisi spasi. Salah: Muatan positif --> Medan. Benar: A['Muatan positif'] --> B['Medan']
 - Rumus di label ditulis kata biasa, bukan LaTeX. Contoh: A['F = k q1 q2 / r2']
-- Maksimal 8 node. Tutup blok dengan pagar mermaid.`;
+- Maksimal 8 node. Tutup blok dengan pagar mermaid.
+
+ATURAN SVG (WAJIB, jika Mermaid tidak cukup):
+Jika materi memerlukan ilustrasi geometris, diagram vektor fisika (seperti arah gaya Coulomb), atau ilustrasi presisi lainnya yang tidak cocok menggunakan Mermaid, Anda WAJIB menghasilkannya menggunakan kode SVG murni. Bungkus kode SVG tersebut di dalam blok kode Markdown dengan label bahasa 'svg' (yaitu: \`\`\`svg ...kode... \`\`\`). Pastikan SVG menggunakan atribut viewBox agar responsif dan tidak menggunakan ukuran width/height statis yang kaku.
+- Di dalam JSON, semua atribut SVG memakai kutip tunggal, bukan kutip ganda. Contoh: <svg viewBox='0 0 400 240' xmlns='http://www.w3.org/2000/svg'>
+- DILARANG script, onclick, atau tautan javascript.`;
 }
 
 export const INSTRUKSI_SISTEM_PRO = `

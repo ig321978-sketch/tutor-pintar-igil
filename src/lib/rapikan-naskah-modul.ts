@@ -74,7 +74,16 @@ export function rapikanNaskahModul(teks: string): string {
   hasil = hasil.replace(/\\\(([\s\S]*?)\\\)/g, (_, isi: string) => `$${isi.trim()}$`);
   hasil = hasil.replace(/```\s*mermaid\b/gi, "```mermaid");
   hasil = hasil.replace(/~~~\s*mermaid\b/gi, "```mermaid");
+  hasil = hasil.replace(/```\s*svg\b/gi, "```svg");
+  hasil = hasil.replace(/~~~\s*svg\b/gi, "```svg");
   hasil = bungkusMermaidTelanjang(hasil);
+  hasil = hasil
+    .split(/(```[\s\S]*?```)/)
+    .map((chunk, indeks) => {
+      if (indeks % 2 === 1) return chunk;
+      return chunk.replace(/(<svg\b[\s\S]*?<\/svg>)/gi, "\n```svg\n$1\n```\n");
+    })
+    .join("");
   hasil = hasil
     .split(/(```[\s\S]*?```)/)
     .map((chunk, indeks) => {
