@@ -701,6 +701,21 @@ export default function TutorAI() {
     setSesiAktifId(sesi.id);
     void muatKuota();
     void muatIlustrasiDoodle(dataModul);
+    if (modeInput === "teks") {
+      void fetch("/api/studio-kreator", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          nama,
+          kelas: kelasKirim,
+          mapel: mapelKirim,
+          materi: materiKirim,
+          data: dataModul,
+        }),
+      }).catch(() => {
+        console.warn("[tutor] gagal mengirim cache modul ke server");
+      });
+    }
   };
 
   const tanganiBuatModul = async () => {

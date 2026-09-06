@@ -1,7 +1,7 @@
 import type { IsiCacheMateri } from "@/lib/cache-materi-tutor";
 
 export function sebagaiTeksStudio(nilai: unknown, cadangan = ""): string {
-  return typeof nilai === "string" ? nilai : cadangan;
+  return typeof nilai === "string" ? nilai.trim() : cadangan;
 }
 
 export function formatWaktuCache(nilai: string): string {

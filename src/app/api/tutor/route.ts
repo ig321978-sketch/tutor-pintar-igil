@@ -129,6 +129,7 @@ export async function POST(req: Request) {
       berhasil: true,
       dariCache: hasil.dariCache,
       topicId: hasil.topicId,
+      tersimpan: hasil.dariCache,
       data: hasil.data,
     });
   } catch (error: unknown) {

@@ -212,6 +212,11 @@ export async function simpanCacheMateri(
   if (!pertama.error) return true;
   if (pertama.error.code === "23505") return true;
   console.warn("[cache-materi] simpan tabel:", pertama.error.message);
+  const upsert = await supabase
+    .from("cache_materi_tutor")
+    .upsert(lengkap, { onConflict: "kunci" });
+  if (!upsert.error) return true;
+  console.warn("[cache-materi] upsert:", upsert.error.message);
   const ulang = await supabase.from("cache_materi_tutor").insert(dasar);
   if (!ulang.error || ulang.error.code === "23505") return true;
   console.warn("[cache-materi] simpan ulang:", ulang.error.message);
@@ -272,9 +277,20 @@ function barisKeRingkas(data: {
   };
 }
 
-export async function daftarCacheMateri(): Promise<RingkasCacheMateri[]> {
+export async function muatDaftarCacheAdmin(): Promise<{
+  siap: boolean;
+  daftar: RingkasCacheMateri[];
+  pesan: string;
+}> {
   const supabase = supabaseServer();
-  if (!supabase) return [];
+  if (!supabase) {
+    return {
+      siap: false,
+      daftar: [],
+      pesan:
+        "Supabase belum terhubung di server. Isi NEXT_PUBLIC_SUPABASE_URL dan NEXT_PUBLIC_SUPABASE_ANON_KEY (atau SUPABASE_SERVICE_ROLE_KEY) di Vercel, lalu redeploy.",
+    };
+  }
   const { data, error } = await supabase
     .from("cache_materi_tutor")
     .select(
@@ -284,11 +300,24 @@ export async function daftarCacheMateri(): Promise<RingkasCacheMateri[]> {
     .limit(200);
   if (error) {
     console.warn("[cache-materi] daftar:", error.message);
-    return [];
+    return {
+      siap: false,
+      daftar: [],
+      pesan: `Tabel cache_materi_tutor tidak bisa dibaca: ${error.message}`,
+    };
   }
-  return (data ?? [])
-    .map((item) => barisKeRingkas(item))
-    .filter((item): item is RingkasCacheMateri => item !== null);
+  return {
+    siap: true,
+    daftar: (data ?? [])
+      .map((item) => barisKeRingkas(item))
+      .filter((item): item is RingkasCacheMateri => item !== null),
+    pesan: "",
+  };
+}
+
+export async function daftarCacheMateri(): Promise<RingkasCacheMateri[]> {
+  const hasil = await muatDaftarCacheAdmin();
+  return hasil.daftar;
 }
 
 function barisKeIsiAdmin(data: {

@@ -11,6 +11,7 @@ export default function StudioKreatorPage() {
   const [daftar, setDaftar] = useState<RingkasCacheMateri[]>([]);
   const [cari, setCari] = useState("");
   const [pesan, setPesan] = useState("");
+  const [penyimpananSiap, setPenyimpananSiap] = useState(true);
   const [memuat, setMemuat] = useState(true);
 
   useEffect(() => {
@@ -22,11 +23,14 @@ export default function StudioKreatorPage() {
           berhasil?: boolean;
           daftar?: RingkasCacheMateri[];
           pesan?: string;
+          penyimpananSiap?: boolean;
         };
         if (!hidup) return;
-        if (!res.ok || !json.berhasil) {
+        setPenyimpananSiap(json.penyimpananSiap !== false);
+        if (json.pesan && json.penyimpananSiap === false) {
+          setPesan(json.pesan);
+        } else if (!res.ok && !json.berhasil) {
           setPesan(json.pesan || "Gagal memuat daftar cache modul.");
-          return;
         }
         setDaftar(json.daftar ?? []);
       } catch {
@@ -76,8 +80,9 @@ export default function StudioKreatorPage() {
         <p className="font-semibold text-slate-500">Memuat cache modul...</p>
       ) : tersaring.length === 0 ? (
         <p className="rounded-3xl border border-[#1C01A5]/15 bg-[#F8F7FF] px-6 py-8 font-semibold text-slate-600">
-          Belum ada cache modul. Buka AI Tutor sebagai siswa dulu agar baris
-          pertama tersimpan di Supabase.
+          {penyimpananSiap
+            ? "Belum ada cache modul. Cache tersimpan otomatis saat loading modul di AI Tutor selesai — tidak perlu menyimak VOICE sampai habis."
+            : "Server belum bisa menulis/membaca cache. Perbaiki koneksi Supabase, lalu buka AI Tutor sekali lagi."}
         </p>
       ) : (
         <ul className="space-y-3">
