@@ -13,6 +13,7 @@ import {
   MODEL_GEMINI_MATERI,
   pesanGalatGemini,
 } from "@/lib/klien-gemini";
+import { bersihkanDanParseJson } from "@/lib/parse-json-ai";
 import { bersihkanLabelNaskah } from "@/lib/naskah-lisan";
 import { kerangkaNaskahBuku, subbabBukuSiswa } from "@/lib/subbab-buku-siswa";
 import {
@@ -122,6 +123,7 @@ Think step-by-step SEBELUM menulis JSON akhir:
 
 Saat menyusun materi, patuhi format berikut: 1. Gunakan paragraf mikro (2-3 kalimat). 2. WAJIB gunakan sintaks LaTeX untuk rumus matematika/sains ($$ untuk block/berdiri sendiri, $ untuk inline). Berikan keterangan variabel di bawah rumus. 3. Jika materi membutuhkan diagram, bagan, atau ilustrasi konsep, WAJIB buat kode text-based menggunakan sintaks blok kode mermaid. Jika Mermaid tidak cukup untuk ilustrasi geometris atau diagram vektor, WAJIB pakai blok kode SVG (\`\`\`svg). 4. Gunakan Markdown untuk penataan hierarki (Heading 2, Heading 3, List).
 Format itu berlaku DI DALAM nilai JSON (curriculum_view dan global_best_view), bukan di luar objek JSON. Respons tetap SATU objek JSON murni. Di mermaid dan SVG, pakai kutip tunggal, jangan kutip ganda. Jangan menyalin hasil pencarian mentah.
+Di string JSON, setiap backslash LaTeX WAJIB digandakan. Contoh benar: $$F = k \\\\frac{q_1 q_2}{r^2}$$ dan $$\\\\vec{E}$$. DILARANG menulis \\vec atau \\frac tanpa digandakan.
 ${aturanMermaidDanLatex()}`;
 }
 
@@ -151,28 +153,7 @@ function sebagaiTeks(nilai: unknown, cadangan = ""): string {
   return typeof nilai === "string" ? nilai.trim() : cadangan;
 }
 
-export function bersihkanDanParseJson(mentah: string): Record<string, unknown> {
-  let teks = mentah.trim();
-  const bungkus = teks.match(/^```(?:json)?\s*([\s\S]*?)\s*```$/i);
-  if (bungkus?.[1]) teks = bungkus[1].trim();
-
-  const awal = teks.indexOf("{");
-  const akhir = teks.lastIndexOf("}");
-  if (awal === -1 || akhir === -1 || akhir <= awal) {
-    throw new Error("AI tidak menghasilkan format JSON.");
-  }
-
-  teks = teks.slice(awal, akhir + 1);
-
-  try {
-    return JSON.parse(teks) as Record<string, unknown>;
-  } catch {
-    const diperbaiki = teks
-      .replace(/[\r\n\t]+/g, " ")
-      .replace(/,\s*([}\]])/g, "$1");
-    return JSON.parse(diperbaiki) as Record<string, unknown>;
-  }
-}
+export { bersihkanDanParseJson };
 
 function aturanAngkaNaskah(): string {
   return `ANGKA DAN BENTUK NASKAH:
@@ -405,7 +386,7 @@ ${CONTOH_FEW_SHOT}
 
 ATURAN MUTLAK:
 1. Respons HANYA 1 objek JSON murni. Tanpa kalimat pengantar, tanpa penutup. Markdown, LaTeX, dan mermaid HANYA boleh di dalam nilai curriculum_view dan global_best_view.
-2. DILARANG memakai tanda kutip ganda (") di dalam nilai teks JSON. Gunakan kutip tunggal (') jika perlu.
+2. DILARANG memakai tanda kutip ganda (") di dalam nilai teks JSON. Gunakan kutip tunggal (') jika perlu. Setiap backslash LaTeX digandakan: \\\\frac \\\\vec \\\\times.
 3. svgCode WAJIB SVG valid. Semua atribut memakai kutip tunggal. Jangan pakai kutip ganda di SVG.
 4. Saat menyusun materi, patuhi format berikut: 1. Gunakan paragraf mikro (2-3 kalimat). 2. WAJIB gunakan sintaks LaTeX untuk rumus matematika/sains ($$ untuk block/berdiri sendiri, $ untuk inline). Berikan keterangan variabel di bawah rumus. 3. Jika materi membutuhkan diagram, bagan, atau ilustrasi konsep, WAJIB buat kode text-based menggunakan sintaks blok kode mermaid. 4. Gunakan Markdown untuk penataan hierarki (Heading 2, Heading 3, List). 5. Di AKHIR curriculum_view, setelah semua subbab, tulis TEPAT 2 contoh soal tuntas (bukan PG) berjudul 'Contoh soal 1' dan 'Contoh soal 2', masing-masing memuat Soal, Langkah penyelesaian, dan Jawaban.
 ${aturanMermaidDanLatex()}

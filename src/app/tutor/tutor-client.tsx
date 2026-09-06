@@ -48,6 +48,7 @@ import {
   naskahKartuUntukSuara,
   naskahSapaanUntukSuara,
 } from "@/lib/naskah-lisan";
+import { pecahKlipSuara } from "@/lib/klip-suara";
 import { pecahTokenNaskah, skalaWaktuKata, type KataWaktu } from "@/lib/tts";
 import { type GambarSisipan } from "@/components/GambarDoodle";
 import PemutarAudioGuru, {
@@ -162,6 +163,29 @@ type CacheSegmenAudio = {
   kata: KataWaktu[];
   durasi: number;
 };
+
+function kunciKlipAudio(teks: string, kelamin: KelaminGuru): string {
+  return `klip|${kelamin}|${teks}`;
+}
+
+function gabungKlipAudio(daftar: CacheSegmenAudio[]): {
+  kata: KataWaktu[];
+  durasi: number;
+} {
+  let jejak = 0;
+  const kata: KataWaktu[] = [];
+  for (const item of daftar) {
+    for (const potong of item.kata) {
+      kata.push({
+        teks: potong.teks,
+        mulai: potong.mulai + jejak,
+        selesai: potong.selesai + jejak,
+      });
+    }
+    jejak += item.durasi;
+  }
+  return { kata, durasi: jejak };
+}
 
 function kunciSegmen(segmen: SegmenSuara): string {
   return segmen.jenis;
@@ -308,6 +332,11 @@ export default function TutorAI() {
   const segmenSuaraRef = useRef<SegmenSuara>({ jenis: "sapaan" });
   const cacheSegmenRef = useRef<Map<string, CacheSegmenAudio>>(new Map());
   const muatSegmenRef = useRef<Map<string, Promise<boolean>>>(new Map());
+  const klipJanjiRef = useRef<Promise<CacheSegmenAudio | null>[]>([]);
+  const klipHasilRef = useRef<(CacheSegmenAudio | null)[]>([]);
+  const indeksKlipRef = useRef(0);
+  const offsetKlipRef = useRef(0);
+  const lanjutKlipRef = useRef<() => void>(() => {});
   const [segmenSelesai, setSegmenSelesai] = useState<string[]>([]);
 
   const daftarMapel = useMemo(
@@ -580,6 +609,11 @@ export default function TutorAI() {
     }
     cacheSegmenRef.current.clear();
     muatSegmenRef.current.clear();
+    klipJanjiRef.current = [];
+    klipHasilRef.current = [];
+    indeksKlipRef.current = 0;
+    offsetKlipRef.current = 0;
+    lanjutKlipRef.current = () => {};
     urlAudioRef.current = null;
     setSrcAudio(null);
     setKataWaktu([]);
@@ -1241,54 +1275,30 @@ export default function TutorAI() {
     bicaraPotonganSaatIni();
   };
 
-  const kunciCacheSegmen = (
-    segmen: SegmenSuara,
-    kelaminSuara: KelaminGuru,
-  ) =>
-    `${kunciSegmen(segmen)}|${sudutPandang}|${kelaminSuara}|${namaSesiRef.current}`;
-
   const pasangCacheSegmen = (item: CacheSegmenAudio, kelaminSuara: KelaminGuru) => {
     urlAudioRef.current = item.url;
     kelaminAudioRef.current = kelaminSuara;
     audioLengkapRef.current = true;
     setSrcAudio(item.url);
-    setKataWaktu(item.kata);
-    setDurasiAudio(item.durasi);
     setModeChirp(true);
   };
 
-  const mintaAudioSegmen = async (
-    segmen: SegmenSuara,
+  const mintaAudioTeks = async (
+    teks: string,
     kelaminSuara: KelaminGuru = guruKelamin,
-    pasang = true,
-  ): Promise<boolean> => {
-    if (!hasilData && segmen.jenis !== "sapaan") return false;
-    const kunci = kunciCacheSegmen(segmen, kelaminSuara);
+  ): Promise<CacheSegmenAudio | null> => {
+    const naskah = teks.trim();
+    if (!naskah) return null;
+    const kunci = kunciKlipAudio(naskah, kelaminSuara);
     const cached = cacheSegmenRef.current.get(kunci);
-    if (cached) {
-      if (pasang && kunciSegmen(segmenSuaraRef.current) === kunciSegmen(segmen)) {
-        pasangCacheSegmen(cached, kelaminSuara);
-      }
-      return true;
-    }
+    if (cached) return cached;
     const sedang = muatSegmenRef.current.get(kunci);
     if (sedang) {
-      const ok = await sedang;
-      const ulang = cacheSegmenRef.current.get(kunci);
-      if (
-        ok &&
-        ulang &&
-        pasang &&
-        kunciSegmen(segmenSuaraRef.current) === kunciSegmen(segmen)
-      ) {
-        pasangCacheSegmen(ulang, kelaminSuara);
-      }
-      return ok;
+      await sedang;
+      return cacheSegmenRef.current.get(kunci) ?? null;
     }
 
     const permintaan = (async () => {
-      const naskah = naskahDariSegmen(segmen);
-      if (!naskah) return false;
       try {
         const respons = await fetch("/api/tts", {
           method: "POST",
@@ -1333,33 +1343,24 @@ export default function TutorAI() {
 
     muatSegmenRef.current.set(kunci, permintaan);
     const ok = await permintaan;
-    const item = cacheSegmenRef.current.get(kunci);
-    if (
-      ok &&
-      item &&
-      pasang &&
-      kunciSegmen(segmenSuaraRef.current) === kunciSegmen(segmen)
-    ) {
-      pasangCacheSegmen(item, kelaminSuara);
+    return ok ? cacheSegmenRef.current.get(kunci) ?? null : null;
+  };
+
+  const prefetchKlipNaskah = (naskah: string, kelaminSuara: KelaminGuru = guruKelamin) => {
+    const klip = pecahKlipSuara(naskah);
+    for (const teks of klip) {
+      void mintaAudioTeks(teks, kelaminSuara);
     }
-    return ok;
   };
 
   const prefetchMateri = (kelaminSuara: KelaminGuru = guruKelamin) => {
     if (!penjelasanAktif.trim()) return;
-    void mintaAudioSegmen({ jenis: "materi" }, kelaminSuara, false);
-  };
-
-  const siapkanAudioGuru = async (
-    kelaminSuara: KelaminGuru = guruKelamin,
-  ): Promise<boolean> => {
-    const awal = await mintaAudioSegmen(
-      { jenis: "sapaan" },
+    prefetchKlipNaskah(
+      naskahKartuUntukSuara(penjelasanAktif, namaSesiRef.current, {
+        buangSubjudulVisual: kartuTanpaNaskah(kelas),
+      }),
       kelaminSuara,
-      true,
     );
-    prefetchMateri(kelaminSuara);
-    return awal;
   };
 
   const putarSegmen = async (
@@ -1373,24 +1374,97 @@ export default function TutorAI() {
     segmenSuaraRef.current = segmen;
     setSegmenSuara(segmen);
     setStatusPemutar("menyiapkan");
-    if (dariAwal) {
+
+    const naskah = naskahDariSegmen(segmen);
+    const klip = pecahKlipSuara(naskah);
+    const janji = klip.map((teks) => mintaAudioTeks(teks, guruKelamin));
+    klipJanjiRef.current = janji;
+    klipHasilRef.current = new Array(janji.length).fill(null);
+    janji.forEach((item, indeks) => {
+      void item.then((hasil) => {
+        klipHasilRef.current[indeks] = hasil;
+        const siap = klipHasilRef.current.filter(
+          (klipItem): klipItem is CacheSegmenAudio => Boolean(klipItem),
+        );
+        if (siap.length === 0) return;
+        const gabung = gabungKlipAudio(siap);
+        setKataWaktu(gabung.kata);
+        setDurasiAudio(gabung.durasi);
+      });
+    });
+
+    lanjutKlipRef.current = () => {
+      if (!sedangMemutarRef.current) return;
+      if (kunciSegmen(segmenSuaraRef.current) !== kunciSegmen(segmen)) return;
+      const berikutnya = indeksKlipRef.current + 1;
+      if (berikutnya >= janji.length) {
+        const total = klipHasilRef.current.reduce(
+          (jumlah, klipItem) => jumlah + (klipItem?.durasi ?? 0),
+          0,
+        );
+        sedangMemutarRef.current = false;
+        setStatusPemutar("siaga");
+        setWaktuAudio((sebelum) => (total > 0 ? total : sebelum));
+        tandaiSegmenSelesai();
+        return;
+      }
+      void (async () => {
+        const item = await janji[berikutnya];
+        if (!item || !sedangMemutarRef.current) {
+          if (!item) mulaiAntrianCadangan();
+          return;
+        }
+        if (kunciSegmen(segmenSuaraRef.current) !== kunciSegmen(segmen)) return;
+        indeksKlipRef.current = berikutnya;
+        offsetKlipRef.current = klipHasilRef.current
+          .slice(0, berikutnya)
+          .reduce((jumlah, klipItem) => jumlah + (klipItem?.durasi ?? 0), 0);
+        pasangCacheSegmen(item, guruKelamin);
+        try {
+          await pemutarRef.current?.mainkanDariAwal(item.url);
+        } catch {
+          mulaiAntrianCadangan();
+        }
+      })();
+    };
+
+    const targetWaktu = dariAwal ? 0 : waktuAudioRef.current;
+    let indeksAwal = 0;
+    let offsetAwal = 0;
+    if (!dariAwal && targetWaktu > 0.4) {
+      let jejak = 0;
+      for (let i = 0; i < klipHasilRef.current.length; i += 1) {
+        const durasiKlip = (await janji[i])?.durasi ?? 0;
+        if (targetWaktu < jejak + durasiKlip || i === janji.length - 1) {
+          indeksAwal = i;
+          offsetAwal = jejak;
+          break;
+        }
+        jejak += durasiKlip;
+      }
+    } else {
       setWaktuAudio(0);
       waktuAudioRef.current = 0;
     }
 
-    const siap = await mintaAudioSegmen(segmen, guruKelamin, true);
+    const pertama = await janji[indeksAwal];
     if (kunciSegmen(segmenSuaraRef.current) !== kunciSegmen(segmen)) return;
-    if (siap && urlAudioRef.current) {
+    if (pertama) {
+      indeksKlipRef.current = indeksAwal;
+      offsetKlipRef.current = offsetAwal;
+      pasangCacheSegmen(pertama, guruKelamin);
+      setKataWaktu(pertama.kata);
+      setDurasiAudio(pertama.durasi);
       sedangMemutarRef.current = true;
       setModeChirp(true);
       setStatusPemutar("memutar");
       try {
-        if (dariAwal) {
-          await pemutarRef.current?.mainkanDariAwal(urlAudioRef.current);
+        if (dariAwal || targetWaktu <= 0.4) {
+          await pemutarRef.current?.mainkanDariAwal(pertama.url);
         } else {
           await pemutarRef.current?.mainkanDari(
-            urlAudioRef.current,
-            waktuAudioRef.current,
+            pertama.url,
+            Math.max(0, targetWaktu - offsetAwal),
           );
         }
         return;
@@ -1460,6 +1534,23 @@ export default function TutorAI() {
     const aman = Math.max(0, detik);
     setWaktuAudio(aman);
     waktuAudioRef.current = aman;
+    if (modeChirp && klipHasilRef.current.some(Boolean)) {
+      let jejak = 0;
+      for (let i = 0; i < klipHasilRef.current.length; i += 1) {
+        const item = klipHasilRef.current[i];
+        if (!item) break;
+        const akhir = jejak + item.durasi;
+        if (aman < akhir || i === klipHasilRef.current.length - 1) {
+          indeksKlipRef.current = i;
+          offsetKlipRef.current = jejak;
+          pasangCacheSegmen(item, guruKelamin);
+          void pemutarRef.current?.mainkanDari(item.url, Math.max(0, aman - jejak));
+          setIndeksKata(indeksKataAktif(kataWaktu, aman));
+          return;
+        }
+        jejak = akhir;
+      }
+    }
     if (modeChirp && urlAudioRef.current) {
       pemutarRef.current?.cariKe(aman);
       setIndeksKata(indeksKataAktif(kataWaktu, aman));
@@ -1499,14 +1590,16 @@ export default function TutorAI() {
 
   const padaWaktuAudio = useCallback(
     (detik: number) => {
-      waktuAudioRef.current = detik;
-      setWaktuAudio(detik);
-      setIndeksKata(indeksKataAktif(kataWaktu, detik));
+      const global = offsetKlipRef.current + detik;
+      waktuAudioRef.current = global;
+      setWaktuAudio(global);
+      setIndeksKata(indeksKataAktif(kataWaktu, global));
     },
     [kataWaktu],
   );
 
   const padaDurasiAudio = useCallback((detik: number) => {
+    if (klipJanjiRef.current.length > 1) return;
     setDurasiAudio(detik);
     setKataWaktu((sebelum) => {
       if (sebelum.length === 0) return sebelum;
@@ -1516,11 +1609,8 @@ export default function TutorAI() {
   }, []);
 
   const padaSelesaiAudio = useCallback(() => {
-    sedangMemutarRef.current = false;
-    setStatusPemutar("siaga");
-    setWaktuAudio((sebelum) => (durasiAudio > 0 ? durasiAudio : sebelum));
-    tandaiSegmenSelesai();
-  }, [durasiAudio, tandaiSegmenSelesai]);
+    lanjutKlipRef.current();
+  }, []);
 
   useEffect(() => {
     if (!isMulai || params.get("mulai") !== "1" || !namaSesi.trim()) return;
@@ -1529,6 +1619,12 @@ export default function TutorAI() {
     void putarSegmen({ jenis: "sapaan" }, true);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [isMulai, kunciSesiMulai, namaSesi, sudutPandang, params]);
+
+  useEffect(() => {
+    if (!hasilData || !penjelasanAktif.trim()) return;
+    prefetchMateri();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [hasilData, sudutPandang, penjelasanAktif]);
 
   useEffect(() => {
     if (tahapBelajar !== "materi" || !hasilData || !penjelasanAktif.trim()) return;
