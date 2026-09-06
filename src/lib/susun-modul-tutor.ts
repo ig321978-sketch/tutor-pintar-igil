@@ -415,10 +415,8 @@ export async function generateModuleFirstTime(opsi: {
     maxOutputTokens: 16384,
     model: MODEL_GEMINI_MATERI,
     systemInstruction: INSTRUKSI_SISTEM_PRO,
-    thinking: true,
-    thinkingBudget: 1024,
-    timeoutMs: 165_000,
-    timeoutCobaMs: 70_000,
+    thinking: false,
+    timeoutCobaMs: 85_000,
   });
   const dataJson = bersihkanDanParseJson(text);
   const dataAman = bentukModulTutor(opsi.nama, dataJson);
