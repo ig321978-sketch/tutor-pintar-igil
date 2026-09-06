@@ -73,6 +73,23 @@ export const SKEMA_MODUL: Schema = {
   ],
 };
 
+function aturanMermaidDanLatex(): string {
+  return `ATURAN LATEX (WAJIB):
+- Rumus HANYA di dalam $...$ atau $$...$$. Jangan campur LaTeX ke dalam mermaid.
+- Perintah yang diizinkan: \\frac, \\sqrt, \\vec, \\hat, \\sum, \\int, \\cdot, \\times, \\pm, \\leq, \\geq, \\neq, \\approx, huruf Yunani (\\theta, \\pi, \\epsilon, \\mu, \\omega).
+- Indeks pakai _{1}, pangkat pakai ^{2}. Contoh benar: $$F = k \\frac{q_1 q_2}{r^2}$$
+- DILARANG menulis rumus mentah tanpa pembungkus dolar jika ada \\frac, _, atau ^.
+
+ATURAN MERMAID (WAJIB, jika ada diagram):
+- Hanya flowchart sederhana: baris pertama flowchart TD atau flowchart LR.
+- Setiap node: ID pendek tanpa spasi + label dalam kurung siku dan kutip tunggal. Contoh: A['Muatan q1']
+- Panah hanya --> . Label panah: A -->|gaya tarik| B
+- DILARANG: sequenceDiagram, classDiagram, stateDiagram, gantt, pie, mindmap, subgraph, style, classDef, click, HTML, <br>, kutip ganda, tanda #, LaTeX, $, $$, \\, <, >, &.
+- DILARANG ID berisi spasi. Salah: Muatan positif --> Medan. Benar: A['Muatan positif'] --> B['Medan']
+- Rumus di label ditulis kata biasa, bukan LaTeX. Contoh: A['F = k q1 q2 / r2']
+- Maksimal 8 node. Tutup blok dengan pagar mermaid.`;
+}
+
 export const INSTRUKSI_SISTEM_PRO = `
 Kamu adalah Tutor $IGIL. Bekerja dengan penalaran mendalam (deep reasoning).
 Think step-by-step SEBELUM menulis JSON akhir:
@@ -84,6 +101,7 @@ Think step-by-step SEBELUM menulis JSON akhir:
 
 Saat menyusun materi, patuhi format berikut: 1. Gunakan paragraf mikro (2-3 kalimat). 2. WAJIB gunakan sintaks LaTeX untuk rumus matematika/sains ($$ untuk block/berdiri sendiri, $ untuk inline). Berikan keterangan variabel di bawah rumus. 3. Jika materi membutuhkan diagram, bagan, atau ilustrasi konsep, WAJIB buat kode text-based menggunakan sintaks blok kode mermaid. 4. Gunakan Markdown untuk penataan hierarki (Heading 2, Heading 3, List).
 Format itu berlaku DI DALAM nilai JSON (curriculum_view dan global_best_view), bukan di luar objek JSON. Respons tetap SATU objek JSON murni. Di mermaid dan SVG, pakai kutip tunggal, jangan kutip ganda.
+${aturanMermaidDanLatex()}
 `.trim();
 
 const CONTOH_FEW_SHOT = `
@@ -353,6 +371,7 @@ ATURAN MUTLAK:
 2. DILARANG memakai tanda kutip ganda (") di dalam nilai teks JSON. Gunakan kutip tunggal (') jika perlu.
 3. svgCode WAJIB SVG valid. Semua atribut memakai kutip tunggal. Jangan pakai kutip ganda di SVG.
 4. Saat menyusun materi, patuhi format berikut: 1. Gunakan paragraf mikro (2-3 kalimat). 2. WAJIB gunakan sintaks LaTeX untuk rumus matematika/sains ($$ untuk block/berdiri sendiri, $ untuk inline). Berikan keterangan variabel di bawah rumus. 3. Jika materi membutuhkan diagram, bagan, atau ilustrasi konsep, WAJIB buat kode text-based menggunakan sintaks blok kode mermaid. 4. Gunakan Markdown untuk penataan hierarki (Heading 2, Heading 3, List). 5. Di AKHIR curriculum_view, setelah semua subbab, tulis TEPAT 2 contoh soal tuntas (bukan PG) berjudul 'Contoh soal 1' dan 'Contoh soal 2', masing-masing memuat Soal, Langkah penyelesaian, dan Jawaban.
+${aturanMermaidDanLatex()}
 
 STANDAR KONTEN:
 1. sapaan: SATU kalimat pendek untuk dibaca suara. Sebut HANYA nama depan ${opsi.namaDepan}. Sertakan TEPAT SATU kata pujian dari: Pintar, Cerdas, Baik, Rajin, Soleh, Semangat, Hebat. DILARANG pujian panjang, julukan berlebihan, atau nama lengkap. Contoh: 'Halo ${opsi.namaDepan}, Pintar.'

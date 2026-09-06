@@ -486,15 +486,17 @@ export function ucapkanRumusUntukSuara(teks: string): string {
 
   aman = aman
     .replace(
-      /(\d+(?:[.,]\d+)?|\))\s*\^\s*\{\s*([+-]?\d+)\s*\}/g,
+      /(\d+(?:[.,]\d+)?|\)|[A-Za-z])\s*\^\s*\{\s*([+-]?\d+)\s*\}/g,
       (_, dasar: string, pangkat: string) =>
         `${dasar}${ucapkanPangkatAngka(pangkat)}`,
     )
     .replace(
-      /(\d+(?:[.,]\d+)?|\))\s*\^\s*([+-]?\d+)/g,
+      /(\d+(?:[.,]\d+)?|\)|[A-Za-z])\s*\^\s*([+-]?\d+)/g,
       (_, dasar: string, pangkat: string) =>
         `${dasar}${ucapkanPangkatAngka(pangkat)}`,
     )
+    .replace(/\b([A-Za-z])_\{([^}]+)\}/g, "$1 $2 ")
+    .replace(/\b([A-Za-z])_(\d+)\b/g, "$1 $2 ")
     .replace(
       /(\d+(?:[.,]\d+)?)\s*[eE]\s*([+-]?\d+)/g,
       (_, dasar: string, pangkat: string) =>

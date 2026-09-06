@@ -5,6 +5,7 @@ import {
   isValidElement,
   useEffect,
   useId,
+  useMemo,
   useRef,
   useState,
   type ReactNode,
@@ -13,9 +14,16 @@ import ReactMarkdown from "react-markdown";
 import rehypeKatex from "rehype-katex";
 import remarkGfm from "remark-gfm";
 import remarkMath from "remark-math";
+import {
+  bersihkanSumberMermaid,
+  labelDariMermaid,
+  mermaidSederhanaDariLabel,
+} from "@/lib/bersihkan-mermaid";
+import { rapikanNaskahModul } from "@/lib/rapikan-naskah-modul";
 import "katex/dist/katex.min.css";
 
 let mermaidSiap = false;
+let nomorRender = 0;
 
 async function muatMermaid() {
   const mermaid = (await import("mermaid")).default;
@@ -24,7 +32,9 @@ async function muatMermaid() {
       startOnLoad: false,
       theme: "base",
       securityLevel: "strict",
-      fontFamily: "inherit",
+      htmlLabels: false,
+      suppressErrorRendering: true,
+      fontFamily: "ui-sans-serif, system-ui, sans-serif",
       themeVariables: {
         primaryColor: "#EEE9FF",
         primaryTextColor: "#1C01A5",
@@ -32,6 +42,19 @@ async function muatMermaid() {
         lineColor: "#1C01A5",
         secondaryColor: "#FFF8E8",
         tertiaryColor: "#ffffff",
+        fontFamily: "ui-sans-serif, system-ui, sans-serif",
+        fontSize: "16px",
+      },
+      flowchart: {
+        htmlLabels: false,
+        useMaxWidth: true,
+        wrappingWidth: 220,
+        nodeSpacing: 64,
+        rankSpacing: 72,
+        padding: 16,
+        diagramPadding: 12,
+        titleTopMargin: 20,
+        curve: "basis",
       },
     });
     mermaidSiap = true;
@@ -39,10 +62,35 @@ async function muatMermaid() {
   return mermaid;
 }
 
+async function gambarMermaid(idDasar: string, sumber: string) {
+  const mermaid = await muatMermaid();
+  const bersih = bersihkanSumberMermaid(sumber);
+  const agresif = bersihkanSumberMermaid(sumber, true);
+  const cadangan = mermaidSederhanaDariLabel(labelDariMermaid(agresif));
+  const percobaan = [bersih, agresif, cadangan];
+
+  for (const naskah of percobaan) {
+    nomorRender += 1;
+    const id = `${idDasar}${nomorRender}`;
+    try {
+      const { svg } = await mermaid.render(id, naskah);
+      if (svg && !/syntax error/i.test(svg)) return svg;
+    } catch {
+      continue;
+    }
+  }
+
+  throw new Error(cadangan);
+}
+
 function DiagramMermaid({ sumber }: { sumber: string }) {
   const wadah = useRef<HTMLDivElement>(null);
   const idUnik = useId().replace(/:/g, "");
-  const [galat, setGalat] = useState("");
+  const [galat, setGalat] = useState(false);
+  const labelCadangan = useMemo(
+    () => labelDariMermaid(bersihkanSumberMermaid(sumber, true)),
+    [sumber],
+  );
 
   useEffect(() => {
     let hidup = true;
@@ -51,30 +99,43 @@ function DiagramMermaid({ sumber }: { sumber: string }) {
 
     void (async () => {
       try {
-        const mermaid = await muatMermaid();
-        const { svg } = await mermaid.render(`igilMermaid${idUnik}`, naskah);
-        if (hidup && wadah.current) {
-          wadah.current.innerHTML = svg;
-          setGalat("");
+        const svg = await gambarMermaid(`igilMermaid${idUnik}`, naskah);
+        if (!hidup || !wadah.current) return;
+        wadah.current.innerHTML = svg;
+        const svgEl = wadah.current.querySelector("svg");
+        if (svgEl) {
+          svgEl.removeAttribute("height");
+          svgEl.style.maxWidth = "100%";
+          svgEl.style.height = "auto";
         }
+        setGalat(false);
       } catch {
-        if (hidup) setGalat("Diagram tidak dapat ditampilkan.");
+        if (hidup) setGalat(true);
       }
     })();
 
     return () => {
       hidup = false;
+      if (wadah.current) wadah.current.innerHTML = "";
     };
   }, [idUnik, sumber]);
 
   return (
-    <div className="not-prose my-4 overflow-x-auto rounded-2xl border border-[#1C01A5]/10 bg-white/80 p-3">
+    <div className="igil-diagram-mermaid not-prose my-4 overflow-x-auto rounded-2xl border border-[#1C01A5]/10 bg-white/80 p-3">
       {galat ? (
-        <pre className="whitespace-pre-wrap text-xs font-medium text-slate-600">
-          {sumber}
-        </pre>
+        labelCadangan.length ? (
+          <ol className="space-y-1.5 px-1 py-1 text-sm font-semibold text-[#1C01A5]">
+            {labelCadangan.map((item) => (
+              <li key={item}>{item}</li>
+            ))}
+          </ol>
+        ) : (
+          <p className="px-1 py-1 text-sm font-medium text-slate-600">
+            Diagram konsep tidak dapat ditampilkan.
+          </p>
+        )
       ) : (
-        <div ref={wadah} />
+        <div ref={wadah} className="flex justify-center" />
       )}
     </div>
   );
@@ -100,6 +161,13 @@ function KodeModul({
   );
 }
 
+const OPSI_KATEX = {
+  throwOnError: false,
+  strict: "ignore" as const,
+  output: "html" as const,
+  errorColor: "#475569",
+};
+
 export default function ModuleRenderer({
   konten,
   className = "",
@@ -107,7 +175,7 @@ export default function ModuleRenderer({
   konten: string;
   className?: string;
 }) {
-  const teks = konten.trim();
+  const teks = useMemo(() => rapikanNaskahModul(konten.trim()), [konten]);
   if (!teks) return null;
 
   return (
@@ -115,8 +183,8 @@ export default function ModuleRenderer({
       className={`igil-modul prose prose-blue max-w-none text-slate-700 prose-headings:font-black prose-headings:text-[#1C01A5] prose-p:leading-relaxed prose-p:my-3 prose-li:my-1 prose-strong:text-[#1C01A5] ${className}`}
     >
       <ReactMarkdown
-        remarkPlugins={[remarkMath, remarkGfm]}
-        rehypePlugins={[rehypeKatex]}
+        remarkPlugins={[[remarkMath, { singleDollarTextMath: true }], remarkGfm]}
+        rehypePlugins={[[rehypeKatex, OPSI_KATEX]]}
         components={{
           code: KodeModul,
           pre({ children }) {

@@ -4,6 +4,7 @@ import {
   sapaanVoiceTutor,
 } from "@/lib/nama-siswa";
 import { pecahBlokKartu } from "@/lib/konsep-materi";
+import { ucapkanLatexUntukSuara } from "@/lib/latex-ke-teks";
 import { ucapkanRumusUntukSuara } from "@/lib/naskah-suara-rumus";
 
 const LABEL_BARIS =
@@ -61,9 +62,9 @@ export function naskahLisan(teks: string, nama = ""): string {
 
   aman = aman
     .replace(/[\u200B-\u200D\uFEFF]/g, "")
-    .replace(/```[\s\S]*?```/g, " ")
-    .replace(/\$\$([\s\S]*?)\$\$/g, " $1 ")
-    .replace(/\$([^$\n]+)\$/g, " $1 ")
+    .replace(/```[\s\S]*?```/g, " ");
+  aman = ucapkanLatexUntukSuara(aman);
+  aman = aman
     .replace(/`+/g, "")
     .replace(/([)\d|])\s*\*\s*([(\d|\-−|])/g, "$1 × $2")
     .replace(/\*\*([^*]+)\*\*/g, "$1")
