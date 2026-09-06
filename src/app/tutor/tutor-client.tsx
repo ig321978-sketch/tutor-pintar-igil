@@ -22,6 +22,11 @@ import {
 } from "@/lib/progres";
 import { kelasTombolUtama } from "@/lib/tema";
 import { JUMLAH_KARTU_MAKS, kartuTanpaNaskah, pecahBlokKartu, susunKonsepMateri, UKURAN_BATCH_DOODLE } from "@/lib/konsep-materi";
+import {
+  bacaModulLokal,
+  simpanModulLokalPertama,
+} from "@/lib/cache-modul-lokal";
+import { kunciMateriTutor } from "@/lib/kunci-siswa";
 import { gantiNamaLengkapKeDepan, sapaanTutorRingkas } from "@/lib/nama-siswa";
 import {
   pilihPenjelasanMateri,
@@ -649,6 +654,55 @@ export default function TutorAI() {
     }
   };
 
+  const terapkanModul = (
+    dataModul: ModulTutor,
+    dariCacheModul: boolean,
+    mapelKirim: string,
+    materiKirim: string,
+    kelasKirim: string,
+  ) => {
+    setDariCache(dariCacheModul);
+    const kurikulum = gantiNamaLengkapKeDepan(
+      dataModul.curriculum_view || dataModul.penjelasan,
+      nama,
+    );
+    const global = gantiNamaLengkapKeDepan(
+      dataModul.global_best_view || kurikulum,
+      nama,
+    );
+    setHasilData({
+      ...dataModul,
+      sapaan: sapaanTutorRingkas(nama, dataModul.sapaan),
+      penjelasan: kurikulum,
+      curriculum_view: kurikulum,
+      global_best_view: global,
+    });
+    setSudutPandang("kurikulum");
+    setJawabanKuis({});
+    setDrafEsai({});
+    setJawabanEsai({});
+    setAudioCompleted(false);
+    setSesiMapel(mapelKirim);
+    setSesiMateri(modeInput === "teks" ? materiKirim : "Analisis halaman buku");
+    simpanProfil({ nama, kelas: kelasKirim, guruKelamin });
+    const sesi = catatSesiModul({
+      nama,
+      kelas: kelasKirim,
+      mapel: mapelKirim,
+      materi: materiKirim,
+      mode: modeInput,
+      catatanEvaluasi: dataModul.motivasi,
+      kunciJawaban: dataModul.kunciJawaban,
+      kuisTotal:
+        pecahBankSoal(dataModul.pertanyaan).pilihanGanda.length +
+        pecahBlokSoal(dataModul.esai ?? "").length,
+      jumlahLatihan: pecahBankSoal(dataModul.pertanyaan).pilihanGanda.length,
+    });
+    setSesiAktifId(sesi.id);
+    void muatKuota();
+    void muatIlustrasiDoodle(dataModul);
+  };
+
   const tanganiBuatModul = async () => {
     if (!nama.trim()) {
       setPesanGalat("Kapten, mohon isi Nama Siswa terlebih dahulu.");
@@ -656,6 +710,7 @@ export default function TutorAI() {
       return;
     }
 
+    const kelasKirim = (params.get("kelas") || kelas).trim();
     const mapelKirim =
       modeInput === "teks"
         ? (params.get("mapel") || mapel).trim()
@@ -682,6 +737,18 @@ export default function TutorAI() {
       return;
     }
 
+    const topicId = kunciMateriTutor(kelasKirim, mapelKirim, materiKirim);
+    if (modeInput === "teks") {
+      const lokal = bacaModulLokal<ModulTutor>(topicId);
+      if (lokal?.curriculum_view || lokal?.penjelasan) {
+        resetPemutar();
+        setTahapBelajar("konsep");
+        setPesanGalat("");
+        terapkanModul(lokal, true, mapelKirim, materiKirim, kelasKirim);
+        return;
+      }
+    }
+
     setPesanGalat("");
     setIsLoading(true);
     doodleAbortRef.current?.abort();
@@ -700,12 +767,41 @@ export default function TutorAI() {
     resetPemutar();
 
     try {
+      if (modeInput === "teks") {
+        const intip = new URLSearchParams({
+          nama,
+          kelas: kelasKirim,
+          mapel: mapelKirim,
+          materi: materiKirim,
+        });
+        const peek = await fetch(`/api/modul?${intip.toString()}`, {
+          cache: "no-store",
+        });
+        const cacheJson = (await peek.json()) as {
+          berhasil?: boolean;
+          ada?: boolean;
+          data?: ModulTutor;
+        };
+        if (cacheJson.berhasil && cacheJson.ada && cacheJson.data) {
+          simpanModulLokalPertama(topicId, cacheJson.data);
+          terapkanModul(
+            cacheJson.data,
+            true,
+            mapelKirim,
+            materiKirim,
+            kelasKirim,
+          );
+          setIsLoading(false);
+          return;
+        }
+      }
+
       const respons = await fetch("/api/tutor", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
           nama,
-          kelas,
+          kelas: kelasKirim,
           mapel: mapelKirim,
           materi: modeInput === "teks" ? materiKirim : "Analisis AI",
           gambar: modeInput === "gambar" ? gambarHalaman : null,
@@ -719,46 +815,16 @@ export default function TutorAI() {
       };
 
       if (data.berhasil && data.data) {
-        setDariCache(Boolean(data.dariCache));
-        const kurikulum = gantiNamaLengkapKeDepan(
-          data.data.curriculum_view || data.data.penjelasan,
-          nama,
+        if (modeInput === "teks") {
+          simpanModulLokalPertama(topicId, data.data);
+        }
+        terapkanModul(
+          data.data,
+          Boolean(data.dariCache),
+          mapelKirim,
+          materiKirim,
+          kelasKirim,
         );
-        const global = gantiNamaLengkapKeDepan(
-          data.data.global_best_view || kurikulum,
-          nama,
-        );
-        setHasilData({
-          ...data.data,
-          sapaan: sapaanTutorRingkas(nama, data.data.sapaan),
-          penjelasan: kurikulum,
-          curriculum_view: kurikulum,
-          global_best_view: global,
-        });
-        setSudutPandang("kurikulum");
-        setJawabanKuis({});
-        setDrafEsai({});
-        setJawabanEsai({});
-        setAudioCompleted(false);
-        setSesiMapel(mapelKirim);
-        setSesiMateri(modeInput === "teks" ? materiKirim : "Analisis halaman buku");
-        simpanProfil({ nama, kelas, guruKelamin });
-        const sesi = catatSesiModul({
-          nama,
-          kelas,
-          mapel: mapelKirim,
-          materi: materiKirim,
-          mode: modeInput,
-          catatanEvaluasi: data.data.motivasi,
-          kunciJawaban: data.data.kunciJawaban,
-          kuisTotal:
-            pecahBankSoal(data.data.pertanyaan).pilihanGanda.length +
-            pecahBlokSoal(data.data.esai ?? "").length,
-          jumlahLatihan: pecahBankSoal(data.data.pertanyaan).pilihanGanda.length,
-        });
-        setSesiAktifId(sesi.id);
-        void muatKuota();
-        void muatIlustrasiDoodle(data.data);
       } else {
         setPesanGalat(data.pesan || "Modul gagal disusun.");
       }
@@ -783,7 +849,8 @@ export default function TutorAI() {
     if (modeInput === "teks") {
       const mapelSiap = (params.get("mapel") || mapel).trim();
       const materiSiap = (params.get("materi") || bab).trim();
-      if (!nama.trim() || !mapelSiap || !materiSiap) return;
+      const kelasSiap = (params.get("kelas") || kelas).trim();
+      if (!nama.trim() || !mapelSiap || !materiSiap || !kelasSiap) return;
     } else if (!nama.trim() || gambarHalaman.length === 0) {
       return;
     }

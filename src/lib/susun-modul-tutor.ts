@@ -419,13 +419,18 @@ export async function generateModuleFirstTime(opsi: {
   const dataAman = bentukModulTutor(opsi.nama, dataJson);
 
   if (gambar.length === 0) {
-    await simpanCacheMateri(
+    const tersimpan = await simpanCacheMateri(
       opsi.kelas,
       opsi.mapel,
       opsi.materi,
       opsi.nama,
       keIsiCache(dataAman),
     );
+    if (!tersimpan) {
+      console.warn(
+        `[materi] generate Pro selesai tetapi cache gagal disimpan topic_id=${topicIdMateri(opsi.kelas, opsi.mapel, opsi.materi)}`,
+      );
+    }
   }
 
   return dataAman;
@@ -454,6 +459,17 @@ export async function ambilAtauBuatModul(opsi: {
 
   try {
     const data = await generateModuleFirstTime({ ...opsi, gambar });
+    if (gambar.length === 0) {
+      const cacheSetelah = await getModule(opsi.kelas, opsi.mapel, opsi.materi);
+      if (cacheSetelah) {
+        console.info(`[materi] pakai cache pertama topic_id=${topicId}`);
+        return {
+          data: bentukModulTutor(opsi.nama, cacheSetelah),
+          dariCache: true,
+          topicId,
+        };
+      }
+    }
     console.info(`[materi] cache miss, generate Pro topic_id=${topicId}`);
     return { data, dariCache: false, topicId };
   } catch (error) {

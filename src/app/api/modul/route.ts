@@ -9,6 +9,8 @@ import {
   getModule,
 } from "@/lib/susun-modul-tutor";
 
+export const dynamic = "force-dynamic";
+export const revalidate = 0;
 export const maxDuration = 120;
 
 function sebagaiTeks(nilai: unknown, cadangan = ""): string {

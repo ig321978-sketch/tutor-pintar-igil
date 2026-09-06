@@ -6,6 +6,8 @@ import { pesanGalatGemini } from "@/lib/klien-gemini";
 import { klaimInteraksiAi, statusKuota } from "@/lib/kuota-interaksi";
 import { ambilAtauBuatModul } from "@/lib/susun-modul-tutor";
 
+export const dynamic = "force-dynamic";
+export const revalidate = 0;
 export const maxDuration = 120;
 
 type PermintaanTutor = {
