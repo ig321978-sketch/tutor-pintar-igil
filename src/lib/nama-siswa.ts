@@ -45,6 +45,26 @@ export function sapaanTutorRingkas(nama: string, sapaanMentah = ""): string {
   return `Halo ${depan}, ${pujian}.`;
 }
 
+function judulSapaan(teks: string, cadangan: string): string {
+  return teks.replace(/\s+/g, " ").trim() || cadangan;
+}
+
+/** Sapaan VOICE pembuka: nama, mapel, dan judul bab. */
+export function sapaanVoiceTutor(
+  nama: string,
+  mapel = "",
+  materi = "",
+): string {
+  const depan = namaDepanSiswa(nama);
+  const judulMapel = judulSapaan(mapel, "materi ini");
+  const judulMateri = judulSapaan(materi, "pembahasan hari ini");
+  return [
+    `Hallo ${depan}, apa khabar?...`,
+    `Sudah siap belajar ${judulMapel} tentang ${judulMateri}?...`,
+    `Yuk kita mulai!!...`,
+  ].join("\n");
+}
+
 export function gantiNamaLengkapKeDepan(teks: string, nama: string): string {
   const lengkap = nama.trim();
   const depan = namaDepanSiswa(lengkap);

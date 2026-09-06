@@ -1,6 +1,7 @@
 import {
   gantiNamaLengkapKeDepan,
   sapaanTutorRingkas,
+  sapaanVoiceTutor,
 } from "@/lib/nama-siswa";
 import { pecahBlokKartu } from "@/lib/konsep-materi";
 import { ucapkanRumusUntukSuara } from "@/lib/naskah-suara-rumus";
@@ -116,8 +117,16 @@ function buangBlokKunci(blok: string): string {
   return blok.replace(/\nKunci\b[\s\S]*$/i, "").trim();
 }
 
-export function naskahSapaanUntukSuara(sapaan: string, nama = ""): string {
-  return naskahLisan(nama ? sapaanTutorRingkas(nama, sapaan) : sapaan, nama);
+export function naskahSapaanUntukSuara(
+  nama: string,
+  mapel = "",
+  materi = "",
+): string {
+  return sapaanVoiceTutor(nama, mapel, materi)
+    .split("\n")
+    .map((baris) => naskahLisan(baris.replace(/\.{2,}$/g, ""), nama))
+    .filter(Boolean)
+    .join("\n\n");
 }
 
 export function naskahKartuUntukSuara(

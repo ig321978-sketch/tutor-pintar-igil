@@ -27,7 +27,11 @@ import {
   simpanModulLokalPertama,
 } from "@/lib/cache-modul-lokal";
 import { kunciMateriTutor } from "@/lib/kunci-siswa";
-import { gantiNamaLengkapKeDepan, sapaanTutorRingkas } from "@/lib/nama-siswa";
+import {
+  gantiNamaLengkapKeDepan,
+  sapaanTutorRingkas,
+  sapaanVoiceTutor,
+} from "@/lib/nama-siswa";
 import {
   pilihPenjelasanMateri,
   type SudutPandangMateri,
@@ -680,9 +684,11 @@ export default function TutorAI() {
       dataModul.global_best_view || kurikulum,
       nama,
     );
+    const judulMateri =
+      modeInput === "teks" ? materiKirim : "Analisis halaman buku";
     setHasilData({
       ...dataModul,
-      sapaan: sapaanTutorRingkas(nama, dataModul.sapaan),
+      sapaan: sapaanVoiceTutor(nama, mapelKirim, judulMateri),
       penjelasan: kurikulum,
       curriculum_view: kurikulum,
       global_best_view: global,
@@ -1043,7 +1049,15 @@ export default function TutorAI() {
   const naskahDariSegmen = (segmen: SegmenSuara): string => {
     if (!hasilData) return "";
     if (segmen.jenis === "sapaan") {
-      return naskahSapaanUntukSuara(hasilData.sapaan, nama);
+      const judulMapel = teksQuery(
+        params.get("mapel"),
+        sesiMapel || (modeInput === "teks" ? mapel : "Berdasarkan Buku"),
+      );
+      const judulMateri = teksQuery(
+        params.get("materi"),
+        sesiMateri || (modeInput === "teks" ? bab : "Analisis halaman buku"),
+      );
+      return naskahSapaanUntukSuara(nama, judulMapel, judulMateri);
     }
     const blok = blokKartu[segmen.indeks] ?? "";
     return naskahKartuUntukSuara(blok, nama, {

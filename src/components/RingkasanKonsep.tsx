@@ -187,7 +187,9 @@ export default function RingkasanKonsep({
         <p className="mt-2 text-sm font-bold text-[#1C01A5]/70">
           {mapel} - {kelas} - {label.ringkas}
         </p>
-        <p className="mt-4 text-lg font-semibold text-slate-700">{sapaan}</p>
+        <p className="mt-4 whitespace-pre-line text-lg font-semibold text-slate-700">
+          {sapaan}
+        </p>
 
         <div className="mt-6 rounded-[1.5rem] border-2 border-[#1C01A5]/10 bg-white/80 p-2">
           <p className="mb-2 px-2 text-[10px] font-extrabold uppercase tracking-[0.18em] text-[#1C01A5]/55">
