@@ -42,12 +42,18 @@ export async function siapkanAudioModulPermanen(opsi: {
     naskahTubuhModul(opsi.curriculum_view, opsi.kelas),
     naskahTubuhModul(opsi.global_best_view, opsi.kelas),
   ].filter(Boolean);
+  const klip = naskah.flatMap((teks) =>
+    teks
+      .split(/\n\n+/)
+      .map((item) => item.trim())
+      .filter(Boolean),
+  );
   const suara: Array<{ kelamin: KelaminTts }> = [
     { kelamin: "female" },
     { kelamin: "male" },
   ];
 
-  for (const teks of naskah) {
+  for (const teks of klip) {
     for (const item of suara) {
       const namaSuara = namaSuaraChirp(item.kelamin, opsi.kelas);
       const kunci = kunciNaskahTts(namaSuara, teks, false);

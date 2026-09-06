@@ -18,6 +18,7 @@ export default function PemutarTutorMengambang({
   memutar,
   waktu,
   durasi,
+  labelSegmen = "Sapaan",
   perlambat = 1,
   padaToggle,
   padaUlang,
@@ -28,6 +29,7 @@ export default function PemutarTutorMengambang({
   memutar: boolean;
   waktu: number;
   durasi: number;
+  labelSegmen?: string;
   perlambat?: TingkatPerlambat;
   padaToggle: () => void;
   padaUlang: (detik: number) => void;
@@ -123,6 +125,9 @@ export default function PemutarTutorMengambang({
         </div>
 
         <div className="min-w-0 flex-1">
+          <p className="mb-0.5 truncate text-[10px] font-extrabold uppercase tracking-wider text-white/75">
+            {labelSegmen}
+          </p>
           <div
             ref={jalurRef}
             className="relative h-8 cursor-pointer touch-none select-none"

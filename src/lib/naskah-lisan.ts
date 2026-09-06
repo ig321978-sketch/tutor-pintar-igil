@@ -116,6 +116,21 @@ function buangBlokKunci(blok: string): string {
   return blok.replace(/\nKunci\b[\s\S]*$/i, "").trim();
 }
 
+export function naskahSapaanUntukSuara(sapaan: string, nama = ""): string {
+  return naskahLisan(nama ? sapaanTutorRingkas(nama, sapaan) : sapaan, nama);
+}
+
+export function naskahKartuUntukSuara(
+  blok: string,
+  nama = "",
+  opsi?: { buangSubjudulVisual?: boolean },
+): string {
+  return naskahTutorUntukSuara("", blok, nama, {
+    tanpaSapaan: true,
+    buangSubjudulVisual: opsi?.buangSubjudulVisual,
+  });
+}
+
 export function naskahTutorUntukSuara(
   sapaan: string,
   penjelasan: string,

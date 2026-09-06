@@ -21,7 +21,7 @@ import {
   tetapkanTokenIgil,
 } from "@/lib/progres";
 import { kelasTombolUtama } from "@/lib/tema";
-import { indeksKartuAktif, JUMLAH_KARTU_MAKS, kartuTanpaNaskah, susunKonsepMateri, UKURAN_BATCH_DOODLE } from "@/lib/konsep-materi";
+import { JUMLAH_KARTU_MAKS, kartuTanpaNaskah, pecahBlokKartu, susunKonsepMateri, UKURAN_BATCH_DOODLE } from "@/lib/konsep-materi";
 import { gantiNamaLengkapKeDepan, sapaanTutorRingkas } from "@/lib/nama-siswa";
 import {
   pilihPenjelasanMateri,
@@ -33,7 +33,10 @@ import {
   simpanPerlambatVoice,
   type TingkatPerlambat,
 } from "@/lib/laju-suara";
-import { naskahLisan, naskahTutorUntukSuara } from "@/lib/naskah-lisan";
+import {
+  naskahKartuUntukSuara,
+  naskahSapaanUntukSuara,
+} from "@/lib/naskah-lisan";
 import { pecahTokenNaskah, skalaWaktuKata, type KataWaktu } from "@/lib/tts";
 import { type GambarSisipan } from "@/components/GambarDoodle";
 import PemutarAudioGuru, {
@@ -130,6 +133,29 @@ const BATAS_POTONGAN_UCAPAN = 120;
 const INTERVAL_WASPADA_SUARA_MS = 1600;
 
 type JenisPotonganSuara = "sapaan" | "penjelasan" | "sisa";
+type SegmenSuara = { jenis: "sapaan" } | { jenis: "kartu"; indeks: number };
+
+type CacheSegmenAudio = {
+  url: string;
+  kata: KataWaktu[];
+  durasi: number;
+};
+
+function kunciSegmen(segmen: SegmenSuara): string {
+  return segmen.jenis === "sapaan" ? "sapaan" : `kartu-${segmen.indeks}`;
+}
+
+function labelSegmenSuara(segmen: SegmenSuara): string {
+  return segmen.jenis === "sapaan" ? "Sapaan" : `Kartu ${segmen.indeks + 1}`;
+}
+
+function semuaKartuSelesai(selesai: string[], jumlahKartu: number): boolean {
+  if (jumlahKartu <= 0) return selesai.includes("sapaan");
+  for (let i = 0; i < jumlahKartu; i += 1) {
+    if (!selesai.includes(`kartu-${i}`)) return false;
+  }
+  return true;
+}
 
 type PotonganSuara = {
   teks: string;
@@ -251,6 +277,11 @@ export default function TutorAI() {
   const [durasiAudio, setDurasiAudio] = useState(0);
   const [perlambatVoice, setPerlambatVoice] = useState<TingkatPerlambat>(1);
   const perlambatVoiceRef = useRef<TingkatPerlambat>(1);
+  const [segmenSuara, setSegmenSuara] = useState<SegmenSuara>({ jenis: "sapaan" });
+  const segmenSuaraRef = useRef<SegmenSuara>({ jenis: "sapaan" });
+  const cacheSegmenRef = useRef<Map<string, CacheSegmenAudio>>(new Map());
+  const muatSegmenRef = useRef<Map<string, Promise<boolean>>>(new Map());
+  const [segmenSelesai, setSegmenSelesai] = useState<string[]>([]);
 
   const daftarMapel = useMemo(
     () => daftarMapelUntukKelas(kelas),
@@ -268,13 +299,14 @@ export default function TutorAI() {
   const penjelasanAktif = hasilData
     ? pilihPenjelasanMateri(hasilData, sudutPandang)
     : "";
-  const offsetKataSapaan = hasilData
-    ? pecahTokenNaskah(hasilData.sapaan).length
-    : 0;
-  const indeksKataPenjelasan = indeksKata - offsetKataSapaan;
-  const kartuAktif = penjelasanAktif
-    ? indeksKartuAktif(penjelasanAktif, indeksKataPenjelasan)
-    : 0;
+  const blokKartu = useMemo(
+    () => (penjelasanAktif ? pecahBlokKartu(penjelasanAktif) : []),
+    [penjelasanAktif],
+  );
+  const jumlahKartuRef = useRef(0);
+  jumlahKartuRef.current = blokKartu.length;
+  const kartuAktif =
+    segmenSuara.jenis === "kartu" ? segmenSuara.indeks : -1;
   const bankSoal = useMemo(() => {
     const pecah = pecahBankSoal(hasilData?.pertanyaan ?? "");
     const esaiLangsung = pecahBlokSoal(hasilData?.esai ?? "");
@@ -453,6 +485,17 @@ export default function TutorAI() {
     if (sesiAktifId) catatAudioSelesai(sesiAktifId);
   };
 
+  const tandaiSegmenSelesai = () => {
+    const kunci = kunciSegmen(segmenSuaraRef.current);
+    setSegmenSelesai((sebelum) => {
+      const berikutnya = sebelum.includes(kunci) ? sebelum : [...sebelum, kunci];
+      if (semuaKartuSelesai(berikutnya, jumlahKartuRef.current)) {
+        tandaiAudioSelesai();
+      }
+      return berikutnya;
+    });
+  };
+
   const bicaraPotonganSaatIni = () => {
     const indeks = indeksAntrianRef.current;
     const item = antrianSuaraRef.current[indeks];
@@ -460,7 +503,7 @@ export default function TutorAI() {
       sedangMemutarRef.current = false;
       hentikanJagaSuara();
       setStatusPemutar("siaga");
-      tandaiAudioSelesai();
+      tandaiSegmenSelesai();
       return;
     }
 
@@ -503,10 +546,12 @@ export default function TutorAI() {
     hentikanJagaSuara();
     pakaiBatasKataRef.current = false;
     indeksKetikRef.current = 0;
-    if (urlAudioRef.current) {
-      URL.revokeObjectURL(urlAudioRef.current);
-      urlAudioRef.current = null;
+    for (const item of cacheSegmenRef.current.values()) {
+      URL.revokeObjectURL(item.url);
     }
+    cacheSegmenRef.current.clear();
+    muatSegmenRef.current.clear();
+    urlAudioRef.current = null;
     setSrcAudio(null);
     setKataWaktu([]);
     setIndeksKata(-1);
@@ -521,6 +566,9 @@ export default function TutorAI() {
     audioLengkapRef.current = false;
     sudahSiapAudioRef.current = false;
     setAudioCompleted(false);
+    setSegmenSelesai([]);
+    segmenSuaraRef.current = { jenis: "sapaan" };
+    setSegmenSuara({ jenis: "sapaan" });
   };
 
   const gantiSudutPandang = (sudut: SudutPandangMateri) => {
@@ -900,6 +948,17 @@ export default function TutorAI() {
     }
   };
 
+  const naskahDariSegmen = (segmen: SegmenSuara): string => {
+    if (!hasilData) return "";
+    if (segmen.jenis === "sapaan") {
+      return naskahSapaanUntukSuara(hasilData.sapaan, nama);
+    }
+    const blok = blokKartu[segmen.indeks] ?? "";
+    return naskahKartuUntukSuara(blok, nama, {
+      buangSubjudulVisual: kartuTanpaNaskah(kelas),
+    });
+  };
+
   const mulaiAntrianCadangan = () => {
     if (!hasilData) return;
     setTeksAnimasi("");
@@ -933,14 +992,13 @@ export default function TutorAI() {
       }
     };
 
-    masukkan(naskahLisan(hasilData.sapaan, nama), "sapaan");
-    masukkan(
-      naskahTutorUntukSuara("", penjelasanAktif, nama, {
-        buangSubjudulVisual: kartuTanpaNaskah(kelas),
-        tanpaSapaan: true,
-      }),
-      "penjelasan",
-    );
+    const segmen = segmenSuaraRef.current;
+    const naskah = naskahDariSegmen(segmen);
+    if (segmen.jenis === "sapaan") {
+      masukkan(naskah, "sapaan");
+    } else {
+      masukkan(naskah, "penjelasan", naskah);
+    }
 
     antrian.forEach((item, indeks) => {
       item.ucapan.onstart = () => {
@@ -999,162 +1057,165 @@ export default function TutorAI() {
     bicaraPotonganSaatIni();
   };
 
-  const audioChirpSiap = (kelaminSuara: KelaminGuru = guruKelamin) =>
-    Boolean(urlAudioRef.current && kelaminAudioRef.current === kelaminSuara);
-
-  const pasangAudioChirp = (
-    data: {
-      mime?: string;
-      audioBase64: string;
-      kata?: KataWaktu[];
-      durasiDetik?: number;
-    },
+  const kunciCacheSegmen = (
+    segmen: SegmenSuara,
     kelaminSuara: KelaminGuru,
-    lengkap: boolean,
-  ) => {
-    const biner = Uint8Array.from(atob(data.audioBase64), (c) =>
-      c.charCodeAt(0),
-    );
-    const url = URL.createObjectURL(
-      new Blob([biner], { type: data.mime || "audio/wav" }),
-    );
-    const urlLama = urlAudioRef.current;
-    urlAudioRef.current = url;
+  ) =>
+    `${kunciSegmen(segmen)}|${sudutPandang}|${kelaminSuara}`;
+
+  const pasangCacheSegmen = (item: CacheSegmenAudio, kelaminSuara: KelaminGuru) => {
+    urlAudioRef.current = item.url;
     kelaminAudioRef.current = kelaminSuara;
-    audioLengkapRef.current = lengkap;
-    if (urlLama) URL.revokeObjectURL(urlLama);
-    setSrcAudio(url);
-    setKataWaktu(data.kata ?? []);
-    const durasiChirp =
-      typeof data.durasiDetik === "number" && data.durasiDetik > 0
-        ? data.durasiDetik
-        : data.kata?.[data.kata.length - 1]?.selesai;
-    if (durasiChirp) setDurasiAudio(durasiChirp);
+    audioLengkapRef.current = true;
+    setSrcAudio(item.url);
+    setKataWaktu(item.kata);
+    setDurasiAudio(item.durasi);
     setModeChirp(true);
-    if (sedangMemutarRef.current) {
-      void pemutarRef.current?.mainkanDari(url, waktuAudioRef.current);
-    }
-    return url;
   };
 
-  const mintaAudioChirp = async (
-    kelaminSuara: KelaminGuru,
-    awalSaja: boolean,
+  const mintaAudioSegmen = async (
+    segmen: SegmenSuara,
+    kelaminSuara: KelaminGuru = guruKelamin,
+    pasang = true,
   ): Promise<boolean> => {
     if (!hasilData) return false;
-    const naskah = naskahTutorUntukSuara(
-      hasilData.sapaan,
-      penjelasanAktif,
-      nama,
-      { buangSubjudulVisual: kartuTanpaNaskah(kelas) },
-    );
-    try {
-      const respons = await fetch("/api/tts", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          teks: naskah,
-          kelamin: kelaminSuara === "pria" ? "male" : "female",
-          kelas,
-          awalSaja,
-        }),
-      });
-      const data = (await respons.json()) as {
-        berhasil?: boolean;
-        cadangan?: boolean;
-        mime?: string;
-        audioBase64?: string;
-        kata?: KataWaktu[];
-        durasiDetik?: number;
-      };
-      if (awalSaja && audioLengkapRef.current && audioChirpSiap(kelaminSuara)) {
-        return true;
+    const kunci = kunciCacheSegmen(segmen, kelaminSuara);
+    const cached = cacheSegmenRef.current.get(kunci);
+    if (cached) {
+      if (pasang && kunciSegmen(segmenSuaraRef.current) === kunciSegmen(segmen)) {
+        pasangCacheSegmen(cached, kelaminSuara);
       }
-      if (data.berhasil && data.audioBase64 && !data.cadangan) {
-        pasangAudioChirp(
-          {
-            mime: data.mime,
-            audioBase64: data.audioBase64,
-            kata: data.kata,
-            durasiDetik: data.durasiDetik,
-          },
-          kelaminSuara,
-          !awalSaja,
+      return true;
+    }
+    const sedang = muatSegmenRef.current.get(kunci);
+    if (sedang) {
+      const ok = await sedang;
+      const ulang = cacheSegmenRef.current.get(kunci);
+      if (
+        ok &&
+        ulang &&
+        pasang &&
+        kunciSegmen(segmenSuaraRef.current) === kunciSegmen(segmen)
+      ) {
+        pasangCacheSegmen(ulang, kelaminSuara);
+      }
+      return ok;
+    }
+
+    const permintaan = (async () => {
+      const naskah = naskahDariSegmen(segmen);
+      if (!naskah) return false;
+      try {
+        const respons = await fetch("/api/tts", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            teks: naskah,
+            kelamin: kelaminSuara === "pria" ? "male" : "female",
+            kelas,
+          }),
+        });
+        const data = (await respons.json()) as {
+          berhasil?: boolean;
+          cadangan?: boolean;
+          mime?: string;
+          audioBase64?: string;
+          kata?: KataWaktu[];
+          durasiDetik?: number;
+        };
+        if (!data.berhasil || !data.audioBase64 || data.cadangan) return false;
+        const biner = Uint8Array.from(atob(data.audioBase64), (c) =>
+          c.charCodeAt(0),
         );
+        const url = URL.createObjectURL(
+          new Blob([biner], { type: data.mime || "audio/wav" }),
+        );
+        const durasi =
+          typeof data.durasiDetik === "number" && data.durasiDetik > 0
+            ? data.durasiDetik
+            : data.kata?.[data.kata.length - 1]?.selesai ?? 0;
+        cacheSegmenRef.current.set(kunci, {
+          url,
+          kata: data.kata ?? [],
+          durasi,
+        });
         return true;
+      } catch {
+        return false;
+      } finally {
+        muatSegmenRef.current.delete(kunci);
       }
-    } catch {
-      // Chirp belum siap
+    })();
+
+    muatSegmenRef.current.set(kunci, permintaan);
+    const ok = await permintaan;
+    const item = cacheSegmenRef.current.get(kunci);
+    if (
+      ok &&
+      item &&
+      pasang &&
+      kunciSegmen(segmenSuaraRef.current) === kunciSegmen(segmen)
+    ) {
+      pasangCacheSegmen(item, kelaminSuara);
     }
-    return false;
+    return ok;
   };
 
-  const siapkanAudioAwal = async (
-    kelaminSuara: KelaminGuru = guruKelamin,
-  ): Promise<boolean> => {
-    if (!hasilData) return false;
-    if (audioChirpSiap(kelaminSuara)) return true;
-    if (muatAwalPromiseRef.current) return muatAwalPromiseRef.current;
-    const permintaan = mintaAudioChirp(kelaminSuara, true);
-    muatAwalPromiseRef.current = permintaan;
-    try {
-      return await permintaan;
-    } finally {
-      muatAwalPromiseRef.current = null;
-    }
-  };
-
-  const siapkanAudioPenuh = async (
-    kelaminSuara: KelaminGuru = guruKelamin,
-  ): Promise<boolean> => {
-    if (!hasilData) return false;
-    if (audioLengkapRef.current && audioChirpSiap(kelaminSuara)) return true;
-    if (muatPenuhPromiseRef.current) return muatPenuhPromiseRef.current;
-    const permintaan = mintaAudioChirp(kelaminSuara, false);
-    muatPenuhPromiseRef.current = permintaan;
-    try {
-      return await permintaan;
-    } finally {
-      muatPenuhPromiseRef.current = null;
-    }
+  const prefetchKartu = (kelaminSuara: KelaminGuru = guruKelamin) => {
+    void (async () => {
+      for (let i = 0; i < blokKartu.length; i += 1) {
+        await mintaAudioSegmen(
+          { jenis: "kartu", indeks: i },
+          kelaminSuara,
+          false,
+        );
+      }
+    })();
   };
 
   const siapkanAudioGuru = async (
     kelaminSuara: KelaminGuru = guruKelamin,
   ): Promise<boolean> => {
-    const awal = await siapkanAudioAwal(kelaminSuara);
-    void siapkanAudioPenuh(kelaminSuara);
+    const awal = await mintaAudioSegmen(
+      { jenis: "sapaan" },
+      kelaminSuara,
+      true,
+    );
+    prefetchKartu(kelaminSuara);
     return awal;
   };
 
-  const putarDariAwal = async (kelaminSuara: KelaminGuru = guruKelamin) => {
+  const putarSegmen = async (
+    segmen: SegmenSuara,
+    dariAwal = true,
+  ) => {
     if (!hasilData) return;
     window.speechSynthesis.cancel();
     hentikanKetik();
     hentikanJagaSuara();
+    segmenSuaraRef.current = segmen;
+    setSegmenSuara(segmen);
+    setStatusPemutar("menyiapkan");
+    if (dariAwal) {
+      setWaktuAudio(0);
+      waktuAudioRef.current = 0;
+    }
 
-    const siap = audioChirpSiap(kelaminSuara)
-      ? true
-      : await siapkanAudioAwal(kelaminSuara);
-    void siapkanAudioPenuh(kelaminSuara);
+    const siap = await mintaAudioSegmen(segmen, guruKelamin, true);
+    if (kunciSegmen(segmenSuaraRef.current) !== kunciSegmen(segmen)) return;
     if (siap && urlAudioRef.current) {
       sedangMemutarRef.current = true;
       setModeChirp(true);
       setStatusPemutar("memutar");
       try {
-        await pemutarRef.current?.mainkanDariAwal(urlAudioRef.current);
-        return;
-      } catch {
-        // coba naskah penuh dulu, baru cadangan browser
-      }
-    }
-    const penuh = await siapkanAudioPenuh(kelaminSuara);
-    if (penuh && urlAudioRef.current) {
-      sedangMemutarRef.current = true;
-      setModeChirp(true);
-      setStatusPemutar("memutar");
-      try {
-        await pemutarRef.current?.mainkanDariAwal(urlAudioRef.current);
+        if (dariAwal) {
+          await pemutarRef.current?.mainkanDariAwal(urlAudioRef.current);
+        } else {
+          await pemutarRef.current?.mainkanDari(
+            urlAudioRef.current,
+            waktuAudioRef.current,
+          );
+        }
         return;
       } catch {
         // cadangan browser
@@ -1179,7 +1240,7 @@ export default function TutorAI() {
       } else if (!window.speechSynthesis.speaking) {
         bicaraPotonganSaatIni();
       }
-      mulaiKetikDari(penjelasanAktif, indeksKetikRef.current);
+      mulaiKetikDari(naskahDariSegmen(segmenSuaraRef.current), indeksKetikRef.current);
       mulaiJagaSuara();
       setStatusPemutar("memutar");
       return;
@@ -1192,47 +1253,25 @@ export default function TutorAI() {
       modeChirp &&
       urlAudioRef.current
     ) {
-      sedangMemutarRef.current = true;
-      setModeChirp(true);
-      setStatusPemutar("memutar");
-      void pemutarRef.current?.lanjutkan();
+      void putarSegmen(segmenSuaraRef.current, false);
       return;
     }
 
-    if (audioChirpSiap()) {
-      sedangMemutarRef.current = true;
-      setModeChirp(true);
-      setStatusPemutar("memutar");
-      setWaktuAudio(0);
-      waktuAudioRef.current = 0;
-      void siapkanAudioPenuh();
-      void pemutarRef.current
-        ?.mainkanDariAwal(urlAudioRef.current)
-        .catch(() => {
-          void putarDariAwal();
-        });
+    void putarSegmen(segmenSuaraRef.current, true);
+  };
+
+  const pilihKartuSuara = (indeks: number) => {
+    if (!hasilData || indeks < 0 || indeks >= blokKartu.length) return;
+    const sama =
+      segmenSuaraRef.current.jenis === "kartu" &&
+      segmenSuaraRef.current.indeks === indeks;
+    if (sama && statusPemutar === "memutar") return;
+    if (sama && statusPemutar === "jeda") {
+      mulaiSuara();
       return;
     }
-
-    setStatusPemutar("menyiapkan");
-    void (async () => {
-      const siap = await siapkanAudioAwal();
-      if (siap && urlAudioRef.current) {
-        sedangMemutarRef.current = true;
-        setModeChirp(true);
-        setStatusPemutar("memutar");
-        setWaktuAudio(0);
-        waktuAudioRef.current = 0;
-        void siapkanAudioPenuh();
-        try {
-          await pemutarRef.current?.mainkanDariAwal(urlAudioRef.current);
-          return;
-        } catch {
-          // lanjut ke naskah penuh
-        }
-      }
-      await putarDariAwal();
-    })();
+    jedaSuara();
+    void putarSegmen({ jenis: "kartu", indeks }, true);
   };
 
   const jedaSuara = () => {
@@ -1264,12 +1303,7 @@ export default function TutorAI() {
       return;
     }
     if (!hasilData) return;
-    const naskah = naskahTutorUntukSuara(
-      hasilData.sapaan,
-      penjelasanAktif,
-      nama,
-      { buangSubjudulVisual: kartuTanpaNaskah(kelas) },
-    );
+    const naskah = naskahDariSegmen(segmenSuaraRef.current);
     const durasiEst =
       durasiAudio > 0 ? durasiAudio : naskah.length / KARAKTER_PER_DETIK;
     const rasio = durasiEst > 0 ? aman / durasiEst : 0;
@@ -1277,10 +1311,8 @@ export default function TutorAI() {
       pecahTokenNaskah(naskah).length * Math.min(1, rasio),
     );
     setIndeksKata(indeks);
-    indeksKetikRef.current = Math.floor(
-      penjelasanAktif.length * Math.min(1, rasio),
-    );
-    setTeksAnimasi(penjelasanAktif.slice(0, indeksKetikRef.current));
+    indeksKetikRef.current = Math.floor(naskah.length * Math.min(1, rasio));
+    setTeksAnimasi(naskah.slice(0, indeksKetikRef.current));
   };
 
   const pilihJawabanKuis = (nomor: number, pilihan: string) => {
@@ -1321,41 +1353,19 @@ export default function TutorAI() {
   }, []);
 
   const padaSelesaiAudio = useCallback(() => {
-    if (!audioLengkapRef.current) {
-      sedangMemutarRef.current = true;
-      setStatusPemutar("menyiapkan");
-      void siapkanAudioPenuh().then((ok) => {
-        if (ok && urlAudioRef.current) {
-          setStatusPemutar("memutar");
-          void pemutarRef.current?.mainkanDari(
-            urlAudioRef.current,
-            waktuAudioRef.current,
-          );
-          return;
-        }
-        sedangMemutarRef.current = false;
-        setStatusPemutar("siaga");
-        tandaiAudioSelesai();
-      });
-      return;
-    }
     sedangMemutarRef.current = false;
     setStatusPemutar("siaga");
-    tandaiAudioSelesai();
     setWaktuAudio((sebelum) => (durasiAudio > 0 ? durasiAudio : sebelum));
-    if (hasilData) {
-      setTeksAnimasi(penjelasanAktif);
-      setIndeksKata(
-        pecahTokenNaskah(`${hasilData.sapaan} ${penjelasanAktif}`).length - 1,
-      );
-    }
-  }, [durasiAudio, hasilData, penjelasanAktif, tandaiAudioSelesai]);
+    tandaiSegmenSelesai();
+  }, [durasiAudio, tandaiSegmenSelesai]);
 
   useEffect(() => {
     if (!hasilData || sudahSiapAudioRef.current) return;
     sudahSiapAudioRef.current = true;
-    void siapkanAudioGuru();
-    // Siapkan potongan awal Chirp dulu, lalu naskah penuh di belakang.
+    void (async () => {
+      const siap = await siapkanAudioGuru();
+      if (siap) void putarSegmen({ jenis: "sapaan" }, true);
+    })();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [hasilData, sudutPandang]);
 
@@ -1497,7 +1507,7 @@ export default function TutorAI() {
               )}
               {audioCompleted
                 ? "Sesi dengar selesai. Soal Latihan dan Soal Ujian sudah terbuka."
-                : "Dengarkan penjelasan guru sampai habis dulu. Soal Latihan dan Soal Ujian terkunci sebelum audio TTS selesai."}
+                : "Dengarkan sapaan, lalu ketuk setiap kartu pembahasan sampai habis. Soal Latihan dan Soal Ujian terbuka setelah semua kartu selesai didengar."}
             </p>
             {dariCache ? (
               <p className="rounded-2xl border border-[#1C01A5]/15 bg-[#EEE9FF] px-4 py-3 text-sm font-bold text-[#1C01A5]">
@@ -1519,6 +1529,7 @@ export default function TutorAI() {
                 doodleMemuat={statusDoodle === "memuat"}
                 sudutPandang={sudutPandang}
                 onGantiSudut={gantiSudutPandang}
+                onPilihKartu={pilihKartuSuara}
                 sedangMemutar={statusPemutar === "memutar"}
               />
             ) : (
@@ -1851,6 +1862,7 @@ export default function TutorAI() {
           memutar={statusPemutar === "memutar"}
           waktu={waktuAudio}
           durasi={durasiAudio}
+          labelSegmen={labelSegmenSuara(segmenSuara)}
           perlambat={perlambatVoice}
           padaToggle={toggleSuara}
           padaUlang={cariUlangSuara}

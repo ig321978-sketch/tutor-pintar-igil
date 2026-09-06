@@ -138,6 +138,7 @@ export default function RingkasanKonsep({
   doodleMemuat = false,
   sudutPandang = "kurikulum",
   onGantiSudut,
+  onPilihKartu,
   sedangMemutar = false,
 }: {
   materi: string;
@@ -151,6 +152,7 @@ export default function RingkasanKonsep({
   doodleMemuat?: boolean;
   sudutPandang?: SudutPandangMateri;
   onGantiSudut?: (sudut: SudutPandangMateri) => void;
+  onPilihKartu?: (indeks: number) => void;
   sedangMemutar?: boolean;
 }) {
   const { ideUtama, kartu } = susunKonsepMateri(materi, penjelasan, kelas);
@@ -294,10 +296,14 @@ export default function RingkasanKonsep({
             {ringkas ? "Kartu materi" : "Kartu pembahasan"}
           </h3>
         </div>
+        <p className="mb-4 flex items-start gap-2 text-sm font-semibold leading-snug text-[#1C01A5]/75">
+          <Volume2 className="mt-0.5 h-4 w-4 shrink-0 text-[#F0AB00]" />
+          Ketuk kartu untuk mendengar pembahasannya. Pemutar hanya membacakan kartu yang kamu pilih.
+        </p>
         {ringkas ? (
           <p className="mb-4 flex items-start gap-2 text-sm font-semibold leading-snug text-[#1C01A5]/75">
             <Volume2 className="mt-0.5 h-4 w-4 shrink-0 text-[#F0AB00]" />
-            Kartu ini singkat. Uraian {global ? "cara jenius" : "buku siswa"} ada di naskah di bawah, dan Tutor Suara membacakan sudut pandang yang sedang dipilih.
+            Kartu ini singkat. Uraian {global ? "cara jenius" : "buku siswa"} ada di naskah di bawah.
           </p>
         ) : hitungan ? (
           <p className="mb-4 flex items-start gap-2 text-sm font-semibold leading-snug text-[#1C01A5]/75">
@@ -311,11 +317,15 @@ export default function RingkasanKonsep({
               const Ikon = IKON[indeks % IKON.length];
               const doodle = doodleKartu(gambarSisipan, indeks);
               return (
-                <article
+                <button
                   key={`kartu-${item.judul}-${indeks}`}
-                  className={`flex flex-col rounded-3xl border-2 p-4 text-center shadow-sm ${item.warna} ${
+                  type="button"
+                  onClick={() => onPilihKartu?.(indeks)}
+                  className={`flex flex-col rounded-3xl border-2 p-4 text-center shadow-sm transition-all hover:brightness-[0.98] hover:shadow-md ${item.warna} ${
                     kartuAktif === indeks ? "ring-4 ring-[#1C01A5]/25" : ""
                   }`}
+                  aria-label={`Dengar kartu ${indeks + 1}: ${item.judul}`}
+                  aria-pressed={kartuAktif === indeks}
                 >
                   <MiniDoodle
                     src={doodle?.src}
@@ -333,7 +343,7 @@ export default function RingkasanKonsep({
                     {item.judul}
                   </h4>
                   <TeksNaskah teks={item.isi} ringkas className="mt-1" />
-                </article>
+                </button>
               );
             })}
           </div>
@@ -343,11 +353,15 @@ export default function RingkasanKonsep({
               const Ikon = IKON[indeks % IKON.length];
               const doodle = doodleKartu(gambarSisipan, indeks);
               return (
-                <article
+                <button
                   key={`kartu-${item.judul}-${indeks}`}
-                  className={`flex gap-4 rounded-3xl border-2 p-5 shadow-sm ${item.warna} ${
+                  type="button"
+                  onClick={() => onPilihKartu?.(indeks)}
+                  className={`flex gap-4 rounded-3xl border-2 p-5 text-left shadow-sm transition-all hover:brightness-[0.98] hover:shadow-md ${item.warna} ${
                     kartuAktif === indeks ? "ring-4 ring-[#1C01A5]/25" : ""
                   }`}
+                  aria-label={`Dengar kartu ${indeks + 1}: ${item.judul}`}
+                  aria-pressed={kartuAktif === indeks}
                 >
                   <MiniDoodle
                     src={doodle?.src}
@@ -368,7 +382,7 @@ export default function RingkasanKonsep({
                     </h4>
                     <TeksNaskah teks={item.isi} className="mt-2" />
                   </div>
-                </article>
+                </button>
               );
             })}
           </div>
@@ -391,11 +405,15 @@ export default function RingkasanKonsep({
           ) : null}
           <div className="space-y-4">
             {kartu.map((item, indeks) => (
-              <article
+              <button
                 key={`naskah-${item.judul}-${indeks}`}
-                className={`rounded-3xl border-2 p-5 ${item.warna} ${
+                type="button"
+                onClick={() => onPilihKartu?.(indeks)}
+                className={`w-full rounded-3xl border-2 p-5 text-left transition-all hover:brightness-[0.98] hover:shadow-md ${item.warna} ${
                   kartuAktif === indeks ? "ring-4 ring-[#1C01A5]/25" : ""
                 }`}
+                aria-label={`Dengar kartu ${indeks + 1}: ${item.judul}`}
+                aria-pressed={kartuAktif === indeks}
               >
                 <p className="flex flex-wrap items-center gap-2 text-[10px] font-extrabold uppercase tracking-wider text-[#1C01A5]/70">
                   Kartu {indeks + 1} · {label.pendek}
@@ -405,7 +423,7 @@ export default function RingkasanKonsep({
                   {item.judul}
                 </h4>
                 <TeksNaskah teks={item.naskah} className="mt-2" />
-              </article>
+              </button>
             ))}
           </div>
         </div>
