@@ -954,6 +954,7 @@ export default function TutorAI() {
   useEffect(() => {
     if (params.get("mulai") !== "1") return;
     sudahGenerateRef.current = false;
+    sudahSiapAudioRef.current = false;
     setHasilData(null);
     setIndeksNaskahTerbuka(-1);
   }, [kunciSesiMulai, params]);
@@ -1119,7 +1120,6 @@ export default function TutorAI() {
   };
 
   const naskahDariSegmen = (segmen: SegmenSuara): string => {
-    if (!hasilData) return "";
     if (segmen.jenis === "sapaan") {
       const judulMapel = teksQuery(
         params.get("mapel"),
@@ -1131,6 +1131,7 @@ export default function TutorAI() {
       );
       return naskahSapaanUntukSuara(nama, judulMapel, judulMateri);
     }
+    if (!hasilData) return "";
     const blok = blokKartu[segmen.indeks] ?? "";
     return naskahKartuUntukSuara(blok, nama, {
       buangSubjudulVisual: kartuTanpaNaskah(kelas),
@@ -1138,7 +1139,8 @@ export default function TutorAI() {
   };
 
   const mulaiAntrianCadangan = () => {
-    if (!hasilData) return;
+    const naskahAwal = naskahDariSegmen(segmenSuaraRef.current);
+    if (!hasilData && !naskahAwal) return;
     setTeksAnimasi("");
     sedangMemutarRef.current = true;
     setStatusPemutar("memutar");
@@ -1256,7 +1258,7 @@ export default function TutorAI() {
     kelaminSuara: KelaminGuru = guruKelamin,
     pasang = true,
   ): Promise<boolean> => {
-    if (!hasilData) return false;
+    if (!hasilData && segmen.jenis !== "sapaan") return false;
     const kunci = kunciCacheSegmen(segmen, kelaminSuara);
     const cached = cacheSegmenRef.current.get(kunci);
     if (cached) {
@@ -1367,7 +1369,7 @@ export default function TutorAI() {
     segmen: SegmenSuara,
     dariAwal = true,
   ) => {
-    if (!hasilData) return;
+    if (!hasilData && segmen.jenis !== "sapaan") return;
     window.speechSynthesis.cancel();
     hentikanKetik();
     hentikanJagaSuara();
@@ -1403,7 +1405,7 @@ export default function TutorAI() {
   };
 
   const mulaiSuara = () => {
-    if (!hasilData) return;
+    if (!hasilData && segmenSuaraRef.current.jenis !== "sapaan") return;
     if (statusPemutar === "menyiapkan") return;
 
     if (statusPemutar === "jeda") {
@@ -1467,7 +1469,7 @@ export default function TutorAI() {
   };
 
   const toggleSuara = () => {
-    if (!hasilData) return;
+    if (!hasilData && segmenSuaraRef.current.jenis !== "sapaan") return;
     if (statusPemutar === "memutar") {
       jedaSuara();
       return;
@@ -1485,7 +1487,7 @@ export default function TutorAI() {
       setIndeksKata(indeksKataAktif(kataWaktu, aman));
       return;
     }
-    if (!hasilData) return;
+    if (!hasilData && segmenSuaraRef.current.jenis !== "sapaan") return;
     const naskah = naskahDariSegmen(segmenSuaraRef.current);
     const durasiEst =
       durasiAudio > 0 ? durasiAudio : naskah.length / KARAKTER_PER_DETIK;
@@ -1543,14 +1545,12 @@ export default function TutorAI() {
   }, [durasiAudio, tandaiSegmenSelesai]);
 
   useEffect(() => {
-    if (tahapBelajar !== "materi" || !hasilData || sudahSiapAudioRef.current) return;
+    if (!isMulai || params.get("mulai") !== "1" || !nama.trim()) return;
+    if (sudahSiapAudioRef.current) return;
     sudahSiapAudioRef.current = true;
-    void (async () => {
-      const siap = await siapkanAudioGuru();
-      if (siap) void putarSegmen({ jenis: "sapaan" }, true);
-    })();
+    void putarSegmen({ jenis: "sapaan" }, true);
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [hasilData, tahapBelajar, sudutPandang]);
+  }, [isMulai, kunciSesiMulai, nama, sudutPandang, params]);
 
   const kembaliKeMenu = () => {
     hentikanRekamSuara();
