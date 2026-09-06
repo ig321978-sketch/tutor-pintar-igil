@@ -258,7 +258,6 @@ export default function TutorAI() {
   const [riwayatAjuan, setRiwayatAjuan] = useState<JejakAjuan[]>([]);
   const [pesanAjuan, setPesanAjuan] = useState("");
   const [kuotaAjuan, setKuotaAjuan] = useState<StatusKuotaUi | null>(null);
-  const [dariCache, setDariCache] = useState(false);
   const [sedangRekam, setSedangRekam] = useState(false);
   const [statusDoodle, setStatusDoodle] = useState<StatusDoodle>("siaga");
   const [sesiAktifId, setSesiAktifId] = useState<string | null>(null);
@@ -670,12 +669,11 @@ export default function TutorAI() {
 
   const terapkanModul = (
     dataModul: ModulTutor,
-    dariCacheModul: boolean,
+    _dariCacheModul: boolean,
     mapelKirim: string,
     materiKirim: string,
     kelasKirim: string,
   ) => {
-    setDariCache(dariCacheModul);
     const kurikulum = gantiNamaLengkapKeDepan(
       dataModul.curriculum_view || dataModul.penjelasan,
       nama,
@@ -839,7 +837,6 @@ export default function TutorAI() {
     setSesiMapel("");
     setSesiMateri("");
     setSudutPandang("kurikulum");
-    setDariCache(false);
     resetPemutar();
 
     try {
@@ -1668,27 +1665,6 @@ export default function TutorAI() {
                 3 · Soal ujian
               </button>
             </div>
-            <p
-              className={`inline-flex items-start gap-2 rounded-2xl border px-4 py-3 text-sm font-bold ${
-                audioCompleted
-                  ? "border-emerald-200 bg-emerald-50 text-emerald-800"
-                  : "border-[#F0AB00]/50 bg-[#FFF8E8] text-[#1C01A5]"
-              }`}
-            >
-              {audioCompleted ? (
-                <Unlock className="mt-0.5 h-4 w-4 shrink-0" />
-              ) : (
-                <Lock className="mt-0.5 h-4 w-4 shrink-0" />
-              )}
-              {audioCompleted
-                ? "Sesi dengar selesai. Soal Latihan dan Soal Ujian sudah terbuka."
-                : "Dengarkan sapaan, lalu ketuk setiap kartu pembahasan sampai habis. Soal Latihan dan Soal Ujian terbuka setelah semua kartu selesai didengar."}
-            </p>
-            {dariCache ? (
-              <p className="rounded-2xl border border-[#1C01A5]/15 bg-[#EEE9FF] px-4 py-3 text-sm font-bold text-[#1C01A5]">
-                Materi dua perspektif dimuat dari cache Supabase, tanpa memanggil Gemini ulang.
-              </p>
-            ) : null}
             {tahapBelajar === "konsep" ? (
               <RingkasanKonsep
                 materi={sesiMateri || (modeInput === "teks" ? bab : "Analisis halaman buku")}
@@ -1744,11 +1720,6 @@ export default function TutorAI() {
               <p className="text-sm text-slate-600">
                 Apakah ada yang ingin ditanyakan?...
               </p>
-              {dariCache ? (
-                <p className="text-xs font-bold text-[#1C01A5]/70">
-                  Materi ini dimuat dari perpustakaan $IGIL, tanpa memanggil AI ulang.
-                </p>
-              ) : null}
               {kuotaAjuan ? (
                 <p className="flex flex-wrap items-center gap-2 text-xs font-extrabold text-[#1C01A5]">
                   <Coins className="h-4 w-4 text-[#F0AB00]" />

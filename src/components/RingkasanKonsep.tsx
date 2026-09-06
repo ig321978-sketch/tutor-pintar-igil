@@ -5,7 +5,6 @@ import {
   Globe2,
   Lightbulb,
   Loader2,
-  Pencil,
   School,
   Sparkles,
   Star,
@@ -14,7 +13,6 @@ import {
   Volume2,
 } from "lucide-react";
 import { kartuTanpaNaskah, susunKonsepMateri } from "@/lib/konsep-materi";
-import { mapelHitungan } from "@/lib/mapel-hitungan";
 import {
   LABEL_SUDUT,
   type SudutPandangMateri,
@@ -133,7 +131,6 @@ export default function RingkasanKonsep({
 }) {
   const { ideUtama, kartu } = susunKonsepMateri(materi, penjelasan, kelas);
   const ringkas = kartuTanpaNaskah(kelas);
-  const hitungan = mapelHitungan(mapel, materi);
   const label = LABEL_SUDUT[sudutPandang];
   const global = sudutPandang === "global";
 
@@ -190,21 +187,6 @@ export default function RingkasanKonsep({
             {ringkas ? "Kartu materi" : "Kartu pembahasan"}
           </h3>
         </div>
-        <p className="mb-4 flex items-start gap-2 text-sm font-semibold leading-snug text-[#1C01A5]/75">
-          <Volume2 className="mt-0.5 h-4 w-4 shrink-0 text-[#F0AB00]" />
-          Ketuk kartu untuk mendengar pembahasannya. Pemutar hanya membacakan kartu yang kamu pilih.
-        </p>
-        {ringkas ? (
-          <p className="mb-4 flex items-start gap-2 text-sm font-semibold leading-snug text-[#1C01A5]/75">
-            <Volume2 className="mt-0.5 h-4 w-4 shrink-0 text-[#F0AB00]" />
-            Kartu ini singkat. Uraian {global ? "cara jenius" : "buku siswa"} ada di naskah di bawah.
-          </p>
-        ) : hitungan ? (
-          <p className="mb-4 flex items-start gap-2 text-sm font-semibold leading-snug text-[#1C01A5]/75">
-            <Pencil className="mt-0.5 h-4 w-4 shrink-0 text-[#F0AB00]" />
-            Setelah uraian ada contoh soal dan latihan, plus kunci untuk dicek sendiri.
-          </p>
-        ) : null}
         {ringkas ? (
           <div className="grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-4">
             {kartu.map((item, indeks) => {
@@ -291,12 +273,6 @@ export default function RingkasanKonsep({
               {global ? "Naskah cara jenius" : "Naskah buku siswa"}
             </h3>
           </div>
-          {hitungan ? (
-            <p className="mb-4 flex items-start gap-2 text-sm font-semibold leading-snug text-[#1C01A5]/75">
-              <Pencil className="mt-0.5 h-4 w-4 shrink-0 text-[#F0AB00]" />
-              Setelah uraian ada contoh soal dan latihan, plus kunci untuk dicek sendiri.
-            </p>
-          ) : null}
           <div className="space-y-4">
             {kartu.map((item, indeks) => (
               <button
