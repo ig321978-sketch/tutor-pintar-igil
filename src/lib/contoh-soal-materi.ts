@@ -3,7 +3,7 @@ export type ContohTuntas = {
   isi: string;
 };
 
-const POLA_AWAL = /^\s*#{0,3}\s*contoh\b/i;
+const POLA_AWAL = /^\s*#{0,3}\s*contoh\s+soal\b/i;
 
 export function pisahNaskahDanContoh(naskah: string): {
   uraian: string;
@@ -12,7 +12,7 @@ export function pisahNaskahDanContoh(naskah: string): {
   const teks = naskah.trim();
   if (!teks) return { uraian: "", contoh: [] };
 
-  const potongan = teks.split(/\n(?=#{0,3}\s*contoh\b)/i);
+  const potongan = teks.split(/\n(?=#{0,3}\s*contoh\s+soal\b)/i);
   const contoh: ContohTuntas[] = [];
   const sisa: string[] = [];
 
