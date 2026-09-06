@@ -11,7 +11,7 @@ import {
 
 export const dynamic = "force-dynamic";
 export const revalidate = 0;
-export const maxDuration = 120;
+export const maxDuration = 180;
 
 function sebagaiTeks(nilai: unknown, cadangan = ""): string {
   return typeof nilai === "string" ? nilai.trim() : cadangan;

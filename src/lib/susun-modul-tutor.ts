@@ -416,7 +416,9 @@ export async function generateModuleFirstTime(opsi: {
     model: MODEL_GEMINI_MATERI,
     systemInstruction: INSTRUKSI_SISTEM_PRO,
     thinking: true,
-    timeoutMs: 95_000,
+    thinkingBudget: 1024,
+    timeoutMs: 165_000,
+    timeoutCobaMs: 70_000,
   });
   const dataJson = bersihkanDanParseJson(text);
   const dataAman = bentukModulTutor(opsi.nama, dataJson);
@@ -476,6 +478,17 @@ export async function ambilAtauBuatModul(opsi: {
     console.info(`[materi] cache miss, generate Pro topic_id=${topicId}`);
     return { data, dariCache: false, topicId };
   } catch (error) {
+    if (gambar.length === 0) {
+      const cacheSetelahGalat = await getModule(opsi.kelas, opsi.mapel, opsi.materi);
+      if (cacheSetelahGalat) {
+        console.info(`[materi] cache setelah timeout topic_id=${topicId}`);
+        return {
+          data: bentukModulTutor(opsi.nama, cacheSetelahGalat),
+          dariCache: true,
+          topicId,
+        };
+      }
+    }
     throw new Error(pesanGalatGemini(error));
   }
 }

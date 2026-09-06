@@ -121,7 +121,7 @@ export function pesanGalatGemini(error: unknown): string {
     return "Google AI sedang membatasi permintaan. Tunggu sebentar, lalu coba lagi.";
   }
   if (/TIMEOUT_GEMINI|timeout|timed out|deadline/i.test(mentah)) {
-    return "Penyusunan memakan waktu lebih lama dari biasanya. Buka lagi materi yang sama; jika sudah tersimpan, tampil dari cache tanpa memanggil AI.";
+    return "Penyusunan memakan waktu lebih lama dari biasanya. Ketuk Coba susun lagi; jika sudah tersimpan, modul tampil dari cache tanpa memanggil AI.";
   }
   return mentah.replace(/^\[GoogleGenerativeAI Error\]:\s*/i, "").trim();
 }
@@ -224,7 +224,14 @@ function teksDariVertex(data: {
 type OpsiPanggil = {
   systemInstruction?: string;
   thinking?: boolean;
+  thinkingBudget?: number;
+  timeoutCobaMs?: number;
 };
+
+function anggaranPikir(opsi?: OpsiPanggil): number | undefined {
+  if (!opsi?.thinking) return undefined;
+  return opsi.thinkingBudget ?? 1024;
+}
 
 async function panggilVertexKlasik(
   model: string,
@@ -254,8 +261,8 @@ async function panggilVertexKlasik(
       generationConfig: {
         temperature: opsi?.thinking ? 0.35 : 0.7,
         maxOutputTokens,
-        ...(opsi?.thinking
-          ? { thinkingConfig: { thinkingBudget: 4096 } }
+        ...(anggaranPikir(opsi)
+          ? { thinkingConfig: { thinkingBudget: anggaranPikir(opsi) } }
           : {}),
         ...(schema
           ? {
@@ -295,8 +302,8 @@ async function panggilGemini(
       responseSchema: schema,
       maxOutputTokens,
       temperature: opsi?.thinking ? 0.35 : 0.7,
-      ...(opsi?.thinking
-        ? { thinkingConfig: { thinkingBudget: 4096 } }
+      ...(anggaranPikir(opsi)
+        ? { thinkingConfig: { thinkingBudget: anggaranPikir(opsi) } }
         : {}),
     },
   });
@@ -320,6 +327,14 @@ async function denganBatasWaktu<T>(janji: Promise<T>, timeoutMs?: number): Promi
   }
 }
 
+function batasPerCoba(opsi?: OpsiPanggil & { timeoutMs?: number }): number | undefined {
+  if (opsi?.timeoutCobaMs && opsi.timeoutCobaMs > 0) return opsi.timeoutCobaMs;
+  if (opsi?.timeoutMs && opsi.timeoutMs > 0) {
+    return Math.min(opsi.timeoutMs, 70_000);
+  }
+  return undefined;
+}
+
 async function denganCadanganJalur(
   parts: Part[],
   schema: Schema | undefined,
@@ -327,6 +342,7 @@ async function denganCadanganJalur(
   model?: string,
   opsi?: OpsiPanggil & { timeoutMs?: number },
 ): Promise<string> {
+  const batasCoba = batasPerCoba(opsi);
   const lokasiKlasik = [
     process.env.GOOGLE_CLOUD_LOCATION?.trim(),
     "us-central1",
@@ -342,13 +358,16 @@ async function denganCadanganJalur(
     for (const location of lokasiKlasik) {
       for (const namaModel of models) {
         try {
-          const teks = await panggilVertexKlasik(
-            namaModel,
-            location,
-            parts,
-            schema,
-            maxOutputTokens,
-            opsi,
+          const teks = await denganBatasWaktu(
+            panggilVertexKlasik(
+              namaModel,
+              location,
+              parts,
+              schema,
+              maxOutputTokens,
+              opsi,
+            ),
+            batasCoba,
           );
           console.info(
             `[gemini] sukses via=vertex-klasik lokasi=${location} model=${namaModel}`,
@@ -376,13 +395,16 @@ async function denganCadanganJalur(
   if (studio) {
     for (const namaModel of models) {
       try {
-        const teks = await panggilGemini(
-          studio,
-          namaModel,
-          parts,
-          schema,
-          maxOutputTokens,
-          opsi,
+        const teks = await denganBatasWaktu(
+          panggilGemini(
+            studio,
+            namaModel,
+            parts,
+            schema,
+            maxOutputTokens,
+            opsi,
+          ),
+          batasCoba,
         );
         console.info(`[gemini] sukses via=studio model=${namaModel}`);
         return teks;
@@ -412,13 +434,16 @@ async function denganCadanganJalur(
     for (const klien of klienVertexSemua()) {
       for (const namaModel of models) {
         try {
-          const teks = await panggilGemini(
-            klien,
-            namaModel,
-            parts,
-            schema,
-            maxOutputTokens,
-            opsi,
+          const teks = await denganBatasWaktu(
+            panggilGemini(
+              klien,
+              namaModel,
+              parts,
+              schema,
+              maxOutputTokens,
+              opsi,
+            ),
+            batasCoba,
           );
           console.info(`[gemini] sukses via=vertex model=${namaModel}`);
           return teks;
@@ -449,7 +474,9 @@ export async function hasilkanJsonGemini(opsi: {
   model?: string;
   systemInstruction?: string;
   thinking?: boolean;
+  thinkingBudget?: number;
   timeoutMs?: number;
+  timeoutCobaMs?: number;
 }): Promise<string> {
   return denganBatasWaktu(
     denganCadanganJalur(
@@ -460,7 +487,9 @@ export async function hasilkanJsonGemini(opsi: {
       {
         systemInstruction: opsi.systemInstruction,
         thinking: opsi.thinking,
+        thinkingBudget: opsi.thinkingBudget,
         timeoutMs: opsi.timeoutMs,
+        timeoutCobaMs: opsi.timeoutCobaMs,
       },
     ),
     opsi.timeoutMs,

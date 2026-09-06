@@ -734,6 +734,61 @@ export default function TutorAI() {
     }
   };
 
+  const intipModulTersimpan = async (
+    kelasKirim: string,
+    mapelKirim: string,
+    materiKirim: string,
+  ): Promise<ModulTutor | null> => {
+    try {
+      const intip = new URLSearchParams({
+        nama,
+        kelas: kelasKirim,
+        mapel: mapelKirim,
+        materi: materiKirim,
+      });
+      const peek = await fetch(`/api/modul?${intip.toString()}`, {
+        cache: "no-store",
+      });
+      const cacheJson = (await peek.json()) as {
+        berhasil?: boolean;
+        ada?: boolean;
+        data?: ModulTutor;
+      };
+      if (cacheJson.berhasil && cacheJson.ada && cacheJson.data) {
+        return cacheJson.data;
+      }
+    } catch {
+      const topicId = kunciMateriTutor(kelasKirim, mapelKirim, materiKirim);
+      const lokal = bacaModulLokal<ModulTutor>(topicId);
+      if (lokal?.curriculum_view || lokal?.penjelasan) return lokal;
+    }
+    return null;
+  };
+
+  const mintaSusunModul = async (
+    kelasKirim: string,
+    mapelKirim: string,
+    materiKirim: string,
+  ) => {
+    const respons = await fetch("/api/tutor", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        nama,
+        kelas: kelasKirim,
+        mapel: mapelKirim,
+        materi: modeInput === "teks" ? materiKirim : "Analisis AI",
+        gambar: modeInput === "gambar" ? gambarHalaman : null,
+      }),
+    });
+    return (await respons.json()) as {
+      berhasil?: boolean;
+      pesan?: string;
+      dariCache?: boolean;
+      data?: ModulTutor;
+    };
+  };
+
   const tanganiBuatModul = async () => {
     if (!nama.trim()) {
       setPesanGalat("Kapten, mohon isi Nama Siswa terlebih dahulu.");
@@ -789,60 +844,40 @@ export default function TutorAI() {
 
     try {
       if (modeInput === "teks") {
-        const intip = new URLSearchParams({
-          nama,
-          kelas: kelasKirim,
-          mapel: mapelKirim,
-          materi: materiKirim,
-        });
-        try {
-          const peek = await fetch(`/api/modul?${intip.toString()}`, {
-            cache: "no-store",
-          });
-          const cacheJson = (await peek.json()) as {
-            berhasil?: boolean;
-            ada?: boolean;
-            data?: ModulTutor;
-          };
-          if (cacheJson.berhasil && cacheJson.ada && cacheJson.data) {
-            simpanModulLokalPertama(topicId, cacheJson.data);
-            terapkanModul(
-              cacheJson.data,
-              true,
-              mapelKirim,
-              materiKirim,
-              kelasKirim,
-            );
-            setIsLoading(false);
-            return;
-          }
-        } catch {
-          const lokal = bacaModulLokal<ModulTutor>(topicId);
-          if (lokal?.curriculum_view || lokal?.penjelasan) {
-            terapkanModul(lokal, true, mapelKirim, materiKirim, kelasKirim);
-            setIsLoading(false);
-            return;
-          }
+        const cacheAwal = await intipModulTersimpan(
+          kelasKirim,
+          mapelKirim,
+          materiKirim,
+        );
+        if (cacheAwal) {
+          simpanModulLokalPertama(topicId, cacheAwal);
+          terapkanModul(cacheAwal, true, mapelKirim, materiKirim, kelasKirim);
+          setIsLoading(false);
+          return;
         }
       }
 
-      const respons = await fetch("/api/tutor", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          nama,
-          kelas: kelasKirim,
-          mapel: mapelKirim,
-          materi: modeInput === "teks" ? materiKirim : "Analisis AI",
-          gambar: modeInput === "gambar" ? gambarHalaman : null,
-        }),
-      });
-      const data = (await respons.json()) as {
-        berhasil?: boolean;
-        pesan?: string;
-        dariCache?: boolean;
-        data?: ModulTutor;
-      };
+      let data = await mintaSusunModul(kelasKirim, mapelKirim, materiKirim);
+
+      if (!(data.berhasil && data.data) && modeInput === "teks") {
+        const cacheSetelah = await intipModulTersimpan(
+          kelasKirim,
+          mapelKirim,
+          materiKirim,
+        );
+        if (cacheSetelah) {
+          simpanModulLokalPertama(topicId, cacheSetelah);
+          terapkanModul(
+            cacheSetelah,
+            true,
+            mapelKirim,
+            materiKirim,
+            kelasKirim,
+          );
+          setIsLoading(false);
+          return;
+        }
+      }
 
       if (data.berhasil && data.data) {
         if (modeInput === "teks") {
@@ -859,6 +894,25 @@ export default function TutorAI() {
         setPesanGalat(data.pesan || "Modul gagal disusun.");
       }
     } catch {
+      if (modeInput === "teks") {
+        const cacheJaringan = await intipModulTersimpan(
+          kelasKirim,
+          mapelKirim,
+          materiKirim,
+        );
+        if (cacheJaringan) {
+          simpanModulLokalPertama(topicId, cacheJaringan);
+          terapkanModul(
+            cacheJaringan,
+            true,
+            mapelKirim,
+            materiKirim,
+            kelasKirim,
+          );
+          setIsLoading(false);
+          return;
+        }
+      }
       setPesanGalat("Gagal terhubung ke server.");
     }
     setIsLoading(false);
@@ -1529,18 +1583,34 @@ export default function TutorAI() {
           {pesanGalat ? (
             <div className="rounded-3xl border-2 border-rose-100 bg-rose-50 p-8">
               <p className="font-semibold text-rose-600">{pesanGalat}</p>
-              <Link
-                href="/ruang-belajar"
-                className={`${kelasTombolUtama} mt-6 inline-flex items-center justify-center rounded-xl px-6 py-3 font-extrabold`}
-              >
-                Kembali ke Ruang Belajar
-              </Link>
+              <div className="mt-6 flex flex-col items-center justify-center gap-3 sm:flex-row">
+                <button
+                  type="button"
+                  onClick={() => {
+                    sudahGenerateRef.current = true;
+                    void tanganiBuatModul();
+                  }}
+                  className={`${kelasTombolUtama} inline-flex items-center justify-center rounded-xl px-6 py-3 font-extrabold`}
+                >
+                  Coba susun lagi
+                </button>
+                <Link
+                  href="/ruang-belajar"
+                  className="inline-flex items-center justify-center rounded-xl border-2 border-[#1C01A5]/20 px-6 py-3 font-extrabold text-[#1C01A5]"
+                >
+                  Kembali ke Ruang Belajar
+                </Link>
+              </div>
             </div>
           ) : (
             <div className="rounded-3xl border-2 border-[#1C01A5]/15 bg-white p-8 shadow-xl">
               <Loader2 className="mx-auto h-10 w-10 animate-spin text-[#1C01A5]" />
               <p className="mt-4 text-lg font-extrabold text-[#1C01A5]">
                 Menyusun modul cerdas...
+              </p>
+              <p className="mx-auto mt-2 max-w-md text-sm text-slate-500">
+                Penyusunan pertama bisa memakan waktu hingga 2 menit. Materi yang
+                sama berikutnya tampil dari cache, tanpa memanggil AI.
               </p>
             </div>
           )}
