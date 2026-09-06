@@ -100,7 +100,7 @@ export default function PemutarTutorMengambang({
                   type="button"
                   onClick={() => padaPerlambat?.(tingkat)}
                   disabled={disabled || !padaPerlambat}
-                  className={`min-w-8 rounded-full px-2 py-1 text-[11px] font-extrabold tabular-nums transition-colors disabled:opacity-50 ${
+                  className={`min-w-9 rounded-full px-2 py-1 text-[11px] font-extrabold tabular-nums transition-colors disabled:opacity-50 ${
                     aktif
                       ? "bg-[#F0AB00] text-[#1C01A5]"
                       : "text-white/85 hover:bg-white/10"

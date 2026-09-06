@@ -1,11 +1,12 @@
-export const TINGKAT_PERLAMBAT = [1, 2, 3] as const;
+export const TINGKAT_PERLAMBAT = [1, 1.5, 2] as const;
 export type TingkatPerlambat = (typeof TINGKAT_PERLAMBAT)[number];
 
-export const KUNCI_PERLAMBAT_VOICE = "igil-perlambat-voice-v1";
+export const KUNCI_PERLAMBAT_VOICE = "igil-perlambat-voice-v2";
 
 export function normalisasiTingkatPerlambat(nilai: unknown): TingkatPerlambat {
   const angka = Number(nilai);
-  if (angka === 2 || angka === 3) return angka;
+  if (angka === 1.5 || angka === 2) return angka;
+  if (angka === 3) return 2;
   return 1;
 }
 
