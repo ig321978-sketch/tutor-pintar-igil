@@ -3,10 +3,10 @@
 import {
   Children,
   isValidElement,
+  memo,
   useEffect,
   useId,
   useMemo,
-  useRef,
   useState,
   type ReactNode,
 } from "react";
@@ -84,9 +84,19 @@ async function gambarMermaid(idDasar: string, sumber: string) {
   throw new Error(cadangan);
 }
 
-function DiagramMermaid({ sumber }: { sumber: string }) {
-  const wadah = useRef<HTMLDivElement>(null);
+function rapihkanSvgMermaid(svg: string) {
+  return svg
+    .replace(/\sheight="[^"]*"/i, "")
+    .replace(/<svg\b/i, '<svg style="max-width:100%;height:auto"');
+}
+
+const DiagramMermaid = memo(function DiagramMermaid({
+  sumber,
+}: {
+  sumber: string;
+}) {
   const idUnik = useId().replace(/:/g, "");
+  const [svg, setSvg] = useState("");
   const [galat, setGalat] = useState(false);
   const labelCadangan = useMemo(
     () => labelDariMermaid(bersihkanSumberMermaid(sumber, true)),
@@ -100,15 +110,9 @@ function DiagramMermaid({ sumber }: { sumber: string }) {
 
     void (async () => {
       try {
-        const svg = await gambarMermaid(`igilMermaid${idUnik}`, naskah);
-        if (!hidup || !wadah.current) return;
-        wadah.current.innerHTML = svg;
-        const svgEl = wadah.current.querySelector("svg");
-        if (svgEl) {
-          svgEl.removeAttribute("height");
-          svgEl.style.maxWidth = "100%";
-          svgEl.style.height = "auto";
-        }
+        const hasil = await gambarMermaid(`igilMermaid${idUnik}`, naskah);
+        if (!hidup) return;
+        setSvg(rapihkanSvgMermaid(hasil));
         setGalat(false);
       } catch {
         if (hidup) setGalat(true);
@@ -117,7 +121,6 @@ function DiagramMermaid({ sumber }: { sumber: string }) {
 
     return () => {
       hidup = false;
-      if (wadah.current) wadah.current.innerHTML = "";
     };
   }, [idUnik, sumber]);
 
@@ -135,14 +138,19 @@ function DiagramMermaid({ sumber }: { sumber: string }) {
             Diagram konsep tidak dapat ditampilkan.
           </p>
         )
+      ) : svg ? (
+        <div
+          className="flex justify-center"
+          dangerouslySetInnerHTML={{ __html: svg }}
+        />
       ) : (
-        <div ref={wadah} className="flex justify-center" />
+        <div className="h-24" aria-hidden />
       )}
     </div>
   );
-}
+});
 
-function DiagramSvg({ sumber }: { sumber: string }) {
+const DiagramSvg = memo(function DiagramSvg({ sumber }: { sumber: string }) {
   const svg = useMemo(() => bersihkanSumberSvg(sumber), [sumber]);
   if (!svg) {
     return (
@@ -157,7 +165,7 @@ function DiagramSvg({ sumber }: { sumber: string }) {
       dangerouslySetInnerHTML={{ __html: svg }}
     />
   );
-}
+});
 
 function KodeModul({
   className,
@@ -182,6 +190,28 @@ function KodeModul({
   );
 }
 
+function PreModul({ children }: { children?: ReactNode }) {
+  const daftar = Children.toArray(children);
+  const anak = daftar[0];
+  const hanyaGambar =
+    daftar.length === 1 &&
+    isValidElement(anak) &&
+    /language-(mermaid|svg)/.test(
+      String((anak.props as { className?: string }).className || ""),
+    );
+  if (hanyaGambar) return <>{daftar}</>;
+  return (
+    <pre className="overflow-x-auto rounded-xl bg-[#1C01A5]/5 px-3 py-2 text-sm">
+      {children}
+    </pre>
+  );
+}
+
+const KOMPONEN_MARKDOWN = {
+  code: KodeModul,
+  pre: PreModul,
+};
+
 const OPSI_KATEX = {
   throwOnError: false,
   strict: "ignore" as const,
@@ -189,7 +219,7 @@ const OPSI_KATEX = {
   errorColor: "#475569",
 };
 
-export default function ModuleRenderer({
+function ModuleRenderer({
   konten,
   className = "",
 }: {
@@ -206,30 +236,12 @@ export default function ModuleRenderer({
       <ReactMarkdown
         remarkPlugins={[[remarkMath, { singleDollarTextMath: true }], remarkGfm]}
         rehypePlugins={[[rehypeKatex, OPSI_KATEX]]}
-        components={{
-          code: KodeModul,
-          pre({ children }) {
-            const daftar = Children.toArray(children);
-            const anak = daftar[0];
-            const hanyaGambar =
-              daftar.length === 1 &&
-              isValidElement(anak) &&
-              /language-(mermaid|svg)/.test(
-                String(
-                  (anak.props as { className?: string }).className || "",
-                ),
-              );
-            if (hanyaGambar) return <>{daftar}</>;
-            return (
-              <pre className="overflow-x-auto rounded-xl bg-[#1C01A5]/5 px-3 py-2 text-sm">
-                {children}
-              </pre>
-            );
-          },
-        }}
+        components={KOMPONEN_MARKDOWN}
       >
         {teks}
       </ReactMarkdown>
     </div>
   );
 }
+
+export default memo(ModuleRenderer);

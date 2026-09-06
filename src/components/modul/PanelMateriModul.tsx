@@ -1,5 +1,6 @@
 "use client";
 
+import { memo } from "react";
 import { Loader2, Sparkles } from "lucide-react";
 import ModuleRenderer from "@/components/ModuleRenderer";
 import { type SudutPandangMateri } from "@/lib/sudut-pandang";
@@ -17,7 +18,7 @@ function pecahReferensiUrl(nilai?: string): string[] {
   return hasil;
 }
 
-export default function PanelMateriModul({
+function PanelMateriModul({
   materi,
   sapaan,
   naskah,
@@ -122,3 +123,13 @@ export default function PanelMateriModul({
     </article>
   );
 }
+
+export default memo(PanelMateriModul, (sebelum, sekarang) => (
+  sebelum.materi === sekarang.materi &&
+  sebelum.sapaan === sekarang.sapaan &&
+  sebelum.naskah === sekarang.naskah &&
+  sebelum.doodleSrc === sekarang.doodleSrc &&
+  sebelum.doodleMemuat === sekarang.doodleMemuat &&
+  sebelum.sudutPandang === sekarang.sudutPandang &&
+  sebelum.referensiUrl === sekarang.referensiUrl
+));
