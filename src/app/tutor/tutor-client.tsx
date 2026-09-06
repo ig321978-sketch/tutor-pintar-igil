@@ -937,6 +937,12 @@ export default function TutorAI() {
   };
 
   const bukaBagian = (bagian: BagianIsi) => {
+    if (tahapBelajar === bagian) {
+      setPesanGalat("");
+      setTahapBelajar("pilih");
+      setIndeksNaskahTerbuka(-1);
+      return;
+    }
     setPesanGalat("");
     if (bagian !== "materi") {
       setIndeksNaskahTerbuka(-1);
@@ -946,7 +952,11 @@ export default function TutorAI() {
       sudahGenerateRef.current = true;
       void tanganiBuatModul();
     }
-    window.scrollTo({ top: 0, behavior: "smooth" });
+    window.setTimeout(() => {
+      document
+        .getElementById(`kartu-bagian-${bagian}`)
+        ?.scrollIntoView({ behavior: "smooth", block: "start" });
+    }, 50);
   };
 
   const kunciSesiMulai = `${params.get("mulai")}|${params.get("mapel")}|${params.get("materi")}|${params.get("r")}`;
@@ -1630,98 +1640,56 @@ export default function TutorAI() {
               daftar={opsiBagian}
               aktif={tahapBelajar}
               onPilih={bukaBagian}
-            />
-
-            {pesanGalat ? (
-              <div className="rounded-3xl border-2 border-rose-100 bg-rose-50 p-6 text-center">
-                <p className="font-semibold text-rose-600">{pesanGalat}</p>
-                <button
-                  type="button"
-                  onClick={() => {
-                    sudahGenerateRef.current = true;
-                    void tanganiBuatModul();
-                  }}
-                  className={`${kelasTombolUtama} mt-4 inline-flex items-center justify-center rounded-xl px-6 py-3 font-extrabold`}
-                >
-                  Coba susun lagi
-                </button>
-              </div>
-            ) : null}
-
-            {isLoading && butuhNaskahAi(tahapBelajar) && !hasilData ? (
-              <div className="rounded-3xl border-2 border-[#1C01A5]/15 bg-white p-8 text-center shadow-xl">
-                <Loader2 className="mx-auto h-10 w-10 animate-spin text-[#1C01A5]" />
-                <p className="mt-4 text-lg font-extrabold text-[#1C01A5]">
-                  Menyusun bagian ini...
-                </p>
-              </div>
-            ) : null}
-
-            {tahapBelajar === "materi" && hasilData ? (
-              <PanelMateriModul
-                materi={judulMateriSesi}
-                mapel={judulMapelSesi}
-                kelas={judulKelasSesi}
-                sapaan={hasilData.sapaan}
-                kartu={kartuMateri}
-                kartuTerbuka={indeksNaskahTerbuka}
-                doodleSrc={
-                  hasilData.gambarUtama || hasilData.gambarSisipan?.[0]?.src
-                }
-                doodleMemuat={statusDoodle === "memuat"}
-                sudutPandang={sudutPandang}
-                sedangMemutar={
-                  statusPemutar === "memutar" && segmenSuara.jenis === "kartu"
-                }
-                onGantiSudut={gantiSudutPandang}
-                onPilihKartu={pilihBagianNaskah}
-              />
-            ) : null}
-
-            {tahapBelajar === "simulasi" ? (
-              <PanelSimulasiModul
-                nama={nama}
-                kelas={judulKelasSesi}
-                mapel={judulMapelSesi}
-                materi={judulMateriSesi}
-              />
-            ) : null}
-
-            {tahapBelajar === "praktikum" ? (
-              <PanelPraktikumModul
-                nama={nama}
-                kelas={judulKelasSesi}
-                mapel={judulMapelSesi}
-                materi={judulMateriSesi}
-              />
-            ) : null}
-
-            {tahapBelajar === "latihan" && hasilData ? (
-              <PanelLatihanModul
-                soal={bankSoal.pilihanGanda}
-                kunciJawaban={hasilData.kunciJawaban}
-                jawaban={jawabanKuis}
-                motivasi={hasilData.motivasi}
-                onPilih={pilihJawabanKuis}
-                onLanjutUjian={() => bukaBagian("ujian")}
-              />
-            ) : null}
-
-            {tahapBelajar === "ujian" && hasilData ? (
-              <PanelUjianModul
-                soal={bankSoal.esai}
-                draf={drafEsai}
-                jawaban={jawabanEsai}
-                motivasi={hasilData.motivasi}
-                onDraf={(nomor, teks) =>
-                  setDrafEsai((sebelum) => ({ ...sebelum, [String(nomor)]: teks }))
-                }
-                onKirim={kirimJawabanEsai}
-              />
-            ) : null}
-
-            {tahapBelajar === "materi" && hasilData ? (
-            <div className="p-6 bg-white rounded-2xl border-2 border-[#1C01A5]/20 space-y-4">
+              isi={{
+                materi: (
+                  <>
+                    {pesanGalat ? (
+                      <div className="mb-4 rounded-2xl border-2 border-rose-100 bg-rose-50 p-5 text-center">
+                        <p className="font-semibold text-rose-600">{pesanGalat}</p>
+                        <button
+                          type="button"
+                          onClick={() => {
+                            sudahGenerateRef.current = true;
+                            void tanganiBuatModul();
+                          }}
+                          className={`${kelasTombolUtama} mt-4 inline-flex items-center justify-center rounded-xl px-6 py-3 font-extrabold`}
+                        >
+                          Coba susun lagi
+                        </button>
+                      </div>
+                    ) : null}
+                    {isLoading && !hasilData ? (
+                      <div className="rounded-2xl bg-white/80 p-8 text-center">
+                        <Loader2 className="mx-auto h-10 w-10 animate-spin text-[#1C01A5]" />
+                        <p className="mt-4 text-lg font-extrabold text-[#1C01A5]">
+                          Menyusun bagian ini...
+                        </p>
+                      </div>
+                    ) : null}
+                    {hasilData ? (
+                      <PanelMateriModul
+                        materi={judulMateriSesi}
+                        mapel={judulMapelSesi}
+                        kelas={judulKelasSesi}
+                        sapaan={hasilData.sapaan}
+                        kartu={kartuMateri}
+                        kartuTerbuka={indeksNaskahTerbuka}
+                        doodleSrc={
+                          hasilData.gambarUtama ||
+                          hasilData.gambarSisipan?.[0]?.src
+                        }
+                        doodleMemuat={statusDoodle === "memuat"}
+                        sudutPandang={sudutPandang}
+                        sedangMemutar={
+                          statusPemutar === "memutar" &&
+                          segmenSuara.jenis === "kartu"
+                        }
+                        onGantiSudut={gantiSudutPandang}
+                        onPilihKartu={pilihBagianNaskah}
+                      />
+                    ) : null}
+                    {hasilData ? (
+            <div className="mt-5 p-6 bg-white rounded-2xl border-2 border-[#1C01A5]/20 space-y-4">
               <label className="flex items-center gap-2 text-sm font-extrabold tracking-wide text-[#1C01A5]">
                 <MessageCircleQuestionMark className="w-5 h-5" />
                 AJUKAN PERTANYAAN
@@ -1829,7 +1797,106 @@ export default function TutorAI() {
                 </div>
               ) : null}
             </div>
-            ) : null}
+                    ) : null}
+                  </>
+                ),
+                simulasi: (
+                  <PanelSimulasiModul
+                    nama={nama}
+                    kelas={judulKelasSesi}
+                    mapel={judulMapelSesi}
+                    materi={judulMateriSesi}
+                  />
+                ),
+                praktikum: (
+                  <PanelPraktikumModul
+                    nama={nama}
+                    kelas={judulKelasSesi}
+                    mapel={judulMapelSesi}
+                    materi={judulMateriSesi}
+                  />
+                ),
+                latihan: (
+                  <>
+                    {pesanGalat ? (
+                      <div className="mb-4 rounded-2xl border-2 border-rose-100 bg-rose-50 p-5 text-center">
+                        <p className="font-semibold text-rose-600">{pesanGalat}</p>
+                        <button
+                          type="button"
+                          onClick={() => {
+                            sudahGenerateRef.current = true;
+                            void tanganiBuatModul();
+                          }}
+                          className={`${kelasTombolUtama} mt-4 inline-flex items-center justify-center rounded-xl px-6 py-3 font-extrabold`}
+                        >
+                          Coba susun lagi
+                        </button>
+                      </div>
+                    ) : null}
+                    {isLoading && !hasilData ? (
+                      <div className="rounded-2xl bg-white/80 p-8 text-center">
+                        <Loader2 className="mx-auto h-10 w-10 animate-spin text-[#1C01A5]" />
+                        <p className="mt-4 text-lg font-extrabold text-[#1C01A5]">
+                          Menyusun bagian ini...
+                        </p>
+                      </div>
+                    ) : null}
+                    {hasilData ? (
+                      <PanelLatihanModul
+                        soal={bankSoal.pilihanGanda}
+                        kunciJawaban={hasilData.kunciJawaban}
+                        jawaban={jawabanKuis}
+                        motivasi={hasilData.motivasi}
+                        onPilih={pilihJawabanKuis}
+                        onLanjutUjian={() => bukaBagian("ujian")}
+                      />
+                    ) : null}
+                  </>
+                ),
+                ujian: (
+                  <>
+                    {pesanGalat ? (
+                      <div className="mb-4 rounded-2xl border-2 border-rose-100 bg-rose-50 p-5 text-center">
+                        <p className="font-semibold text-rose-600">{pesanGalat}</p>
+                        <button
+                          type="button"
+                          onClick={() => {
+                            sudahGenerateRef.current = true;
+                            void tanganiBuatModul();
+                          }}
+                          className={`${kelasTombolUtama} mt-4 inline-flex items-center justify-center rounded-xl px-6 py-3 font-extrabold`}
+                        >
+                          Coba susun lagi
+                        </button>
+                      </div>
+                    ) : null}
+                    {isLoading && !hasilData ? (
+                      <div className="rounded-2xl bg-white/80 p-8 text-center">
+                        <Loader2 className="mx-auto h-10 w-10 animate-spin text-[#1C01A5]" />
+                        <p className="mt-4 text-lg font-extrabold text-[#1C01A5]">
+                          Menyusun bagian ini...
+                        </p>
+                      </div>
+                    ) : null}
+                    {hasilData ? (
+                      <PanelUjianModul
+                        soal={bankSoal.esai}
+                        draf={drafEsai}
+                        jawaban={jawabanEsai}
+                        motivasi={hasilData.motivasi}
+                        onDraf={(nomor, teks) =>
+                          setDrafEsai((sebelum) => ({
+                            ...sebelum,
+                            [String(nomor)]: teks,
+                          }))
+                        }
+                        onKirim={kirimJawabanEsai}
+                      />
+                    ) : null}
+                  </>
+                ),
+              }}
+            />
           </div>
         </div>
         <PemutarAudioGuru

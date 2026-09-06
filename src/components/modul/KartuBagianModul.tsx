@@ -1,17 +1,19 @@
 "use client";
 
+import type { ReactNode } from "react";
 import type { LucideIcon } from "lucide-react";
 import {
   BookOpen,
+  ChevronDown,
   ClipboardList,
   FlaskConical,
   GraduationCap,
   MonitorPlay,
 } from "lucide-react";
-import type { BagianModul } from "@/lib/bagian-modul";
+import type { BagianIsi, BagianModul } from "@/lib/bagian-modul";
 
 const META: Record<
-  Exclude<BagianModul, "pilih">,
+  BagianIsi,
   { judul: string; ringkas: string; ikon: LucideIcon; warna: string }
 > = {
   materi: {
@@ -49,34 +51,55 @@ const META: Record<
 export default function KartuBagianModul({
   daftar,
   aktif,
+  isi,
   onPilih,
 }: {
-  daftar: Array<Exclude<BagianModul, "pilih">>;
+  daftar: BagianIsi[];
   aktif: BagianModul;
-  onPilih: (bagian: Exclude<BagianModul, "pilih">) => void;
+  isi?: Partial<Record<BagianIsi, ReactNode>>;
+  onPilih: (bagian: BagianIsi) => void;
 }) {
   return (
     <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
       {daftar.map((id) => {
         const item = META[id];
         const Ikon = item.ikon;
-        const dipilih = aktif === id;
+        const terbuka = aktif === id;
         return (
-          <button
+          <article
             key={id}
-            type="button"
-            onClick={() => onPilih(id)}
-            aria-pressed={dipilih}
-            className={`rounded-3xl border-2 p-5 text-left shadow-sm transition hover:shadow-md ${item.warna} ${
-              dipilih ? "ring-4 ring-[#1C01A5]/20" : ""
+            id={`kartu-bagian-${id}`}
+            className={`rounded-3xl border-2 shadow-sm transition ${item.warna} ${
+              terbuka
+                ? "col-span-full ring-4 ring-[#1C01A5]/20"
+                : "hover:shadow-md"
             }`}
           >
-            <Ikon className="h-7 w-7 text-[#1C01A5]" />
-            <p className="mt-3 text-xl font-black text-[#1C01A5]">{item.judul}</p>
-            <p className="mt-1 text-sm font-semibold leading-snug text-[#1C01A5]/70">
-              {item.ringkas}
-            </p>
-          </button>
+            <button
+              type="button"
+              onClick={() => onPilih(id)}
+              aria-expanded={terbuka}
+              className="flex w-full items-start gap-3 p-5 text-left"
+            >
+              <Ikon className="mt-0.5 h-7 w-7 shrink-0 text-[#1C01A5]" />
+              <div className="min-w-0 flex-1">
+                <p className="text-xl font-black text-[#1C01A5]">{item.judul}</p>
+                <p className="mt-1 text-sm font-semibold leading-snug text-[#1C01A5]/70">
+                  {item.ringkas}
+                </p>
+              </div>
+              <ChevronDown
+                className={`mt-1 h-5 w-5 shrink-0 text-[#1C01A5]/60 transition-transform ${
+                  terbuka ? "rotate-180" : ""
+                }`}
+              />
+            </button>
+            {terbuka ? (
+              <div className="border-t border-[#1C01A5]/10 px-5 pb-5 pt-4">
+                {isi?.[id] ?? null}
+              </div>
+            ) : null}
+          </article>
         );
       })}
     </div>

@@ -45,8 +45,8 @@ export default function PanelMateriModul({
   const label = LABEL_SUDUT[sudutPandang];
 
   return (
-    <article className="space-y-6">
-      <div className="overflow-hidden rounded-[2rem] border-2 border-[#F0AB00]/50 bg-gradient-to-br from-[#FFF8E8] via-white to-[#EEE9FF]">
+    <article className="space-y-5">
+      <div className="overflow-hidden rounded-2xl border border-[#F0AB00]/40 bg-white/70">
         <div className="relative aspect-[16/7] bg-[#fbf6ea]">
           {doodleSrc ? (
             // eslint-disable-next-line @next/next/no-img-element
@@ -65,20 +65,17 @@ export default function PanelMateriModul({
             </div>
           )}
         </div>
-        <div className="p-5 sm:p-8">
-          <p className="text-xs font-extrabold uppercase tracking-[0.2em] text-[#F0AB00]">
-            Materi
-          </p>
-          <h2 className="mt-2 text-3xl font-black leading-tight text-[#1C01A5] sm:text-4xl">
+        <div className="p-4 sm:p-5">
+          <h2 className="text-2xl font-black leading-tight text-[#1C01A5]">
             {materi}
           </h2>
-          <p className="mt-2 text-sm font-bold text-[#1C01A5]/70">
+          <p className="mt-1 text-sm font-bold text-[#1C01A5]/70">
             {mapel} - {kelas} - {label.ringkas}
           </p>
-          <p className="mt-4 whitespace-pre-line text-lg font-semibold text-slate-700">
+          <p className="mt-3 whitespace-pre-line text-base font-semibold text-slate-700">
             {sapaan}
           </p>
-          <div className="mt-6 flex gap-2">
+          <div className="mt-4 flex gap-2">
             <button
               type="button"
               onClick={() => onGantiSudut("kurikulum")}
