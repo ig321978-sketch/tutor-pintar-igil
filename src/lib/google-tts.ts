@@ -7,7 +7,7 @@ const BATAS_AWAL = 1100;
 const LAJU_BICARA = 1;
 const SAMPLE_RATE = 24000;
 const JEDA_ANTAR_BLOK_MS = 160;
-const PARALEL_SINTESIS = 4;
+const PARALEL_SINTESIS = 3;
 
 export function namaSuaraChirp(
   kelamin: KelaminTts,
@@ -277,30 +277,6 @@ async function sintesisSatu(
     throw galat;
   }
   return hasil.audio;
-}
-
-export function gabungBerkasWav(daftar: Buffer[]): Buffer {
-  if (daftar.length === 0) throw new Error("Audio kosong.");
-  if (daftar.length === 1) {
-    const satu = daftar[0];
-    return satu.toString("ascii", 0, 4) === "RIFF"
-      ? satu
-      : bungkusWav(pcmDariAudioGoogle(satu));
-  }
-  const pcm: Buffer[] = [];
-  for (let i = 0; i < daftar.length; i += 1) {
-    if (i > 0) pcm.push(sunyiPcm(JEDA_ANTAR_BLOK_MS));
-    pcm.push(pcmDariAudioGoogle(daftar[i]));
-  }
-  return bungkusWav(Buffer.concat(pcm));
-}
-
-export async function jalankanParalel<T, R>(
-  daftar: T[],
-  batas: number,
-  kerja: (item: T, indeks: number) => Promise<R>,
-): Promise<R[]> {
-  return petaBatas(daftar, batas, kerja);
 }
 
 export async function sintesisChirp(

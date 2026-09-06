@@ -1,14 +1,11 @@
 import { NextResponse } from "next/server";
 import {
   durasiWavDetik,
-  gabungBerkasWav,
-  jalankanParalel,
   namaSuaraChirp,
   potongNaskahAwal,
   sintesisChirp,
   ttsSiapDipakai,
 } from "@/lib/google-tts";
-import { pecahKlipSuara } from "@/lib/klip-suara";
 import { naskahLisan } from "@/lib/naskah-lisan";
 import { ambilCacheTts, kunciNaskahTts, simpanCacheTts } from "@/lib/tts-cache";
 import { normalisasiKelaminTts, waktuKataDariDurasi } from "@/lib/tts";
@@ -51,18 +48,20 @@ export async function POST(req: Request) {
     const suara = namaSuaraChirp(kelamin, kelas);
     const kunci = kunciNaskahTts(suara, naskah, awalSaja);
 
-    const naskahPakai = awalSaja ? potongNaskahAwal(naskah) : naskah;
-    const cacheUtuh = await ambilCacheTts(kunci);
-    if (cacheUtuh) {
-      const durasi = cacheUtuh.meta.durasiDetik || durasiWavDetik(cacheUtuh.audio);
+    const cache = await ambilCacheTts(kunci);
+    if (cache) {
+      const durasi = cache.meta.durasiDetik || durasiWavDetik(cache.audio);
       return NextResponse.json({
         berhasil: true,
         sumber: "cache",
-        mime: cacheUtuh.meta.mime || "audio/wav",
-        audioBase64: cacheUtuh.audio.toString("base64"),
+        mime: cache.meta.mime || "audio/wav",
+        audioBase64: cache.audio.toString("base64"),
         durasiDetik: durasi,
         suara,
-        kata: waktuKataDariDurasi(naskahPakai, durasi),
+        kata: waktuKataDariDurasi(
+          awalSaja ? potongNaskahAwal(naskah) : naskah,
+          durasi,
+        ),
       });
     }
 
@@ -75,20 +74,7 @@ export async function POST(req: Request) {
     }
 
     try {
-      const klip = pecahKlipSuara(naskahPakai);
-      const audioKlip = await jalankanParalel(klip, 4, async (teks) => {
-        const kunciKlip = kunciNaskahTts(suara, teks, false);
-        const cacheKlip = await ambilCacheTts(kunciKlip);
-        if (cacheKlip) return cacheKlip.audio;
-        const audioBaru = await sintesisChirp(teks, suara);
-        await simpanCacheTts(kunciKlip, audioBaru, {
-          mime: "audio/wav",
-          durasiDetik: durasiWavDetik(audioBaru),
-          suara,
-        });
-        return audioBaru;
-      });
-      const audio = gabungBerkasWav(audioKlip);
+      const audio = await sintesisChirp(naskah, suara, { awalSaja });
       const durasi = durasiWavDetik(audio);
       await simpanCacheTts(kunci, audio, {
         mime: "audio/wav",
@@ -102,7 +88,10 @@ export async function POST(req: Request) {
         audioBase64: audio.toString("base64"),
         durasiDetik: durasi,
         suara,
-        kata: waktuKataDariDurasi(naskahPakai, durasi),
+        kata: waktuKataDariDurasi(
+          awalSaja ? potongNaskahAwal(naskah) : naskah,
+          durasi,
+        ),
       });
     } catch (error: unknown) {
       const pesan = error instanceof Error ? error.message : "Sintesis gagal.";

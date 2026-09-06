@@ -1,6 +1,5 @@
 import {
   durasiWavDetik,
-  jalankanParalel,
   namaSuaraChirp,
   sintesisChirp,
   ttsSiapDipakai,
@@ -54,24 +53,23 @@ export async function siapkanAudioModulPermanen(opsi: {
     { kelamin: "male" },
   ];
 
-  const tugas = klip.flatMap((teks) =>
-    suara.map((item) => ({ teks, kelamin: item.kelamin })),
-  );
-  await jalankanParalel(tugas, 4, async (item) => {
-    const namaSuara = namaSuaraChirp(item.kelamin, opsi.kelas);
-    const kunci = kunciNaskahTts(namaSuara, item.teks, false);
-    try {
-      const audio = await sintesisChirp(item.teks, namaSuara);
-      await simpanCacheTts(kunci, audio, {
-        mime: "audio/wav",
-        durasiDetik: durasiWavDetik(audio),
-        suara: namaSuara,
-      });
-    } catch (error) {
-      const pesan = error instanceof Error ? error.message : String(error);
-      console.warn("[audio-modul] gagal sintesis:", pesan.slice(0, 180));
+  for (const teks of klip) {
+    for (const item of suara) {
+      const namaSuara = namaSuaraChirp(item.kelamin, opsi.kelas);
+      const kunci = kunciNaskahTts(namaSuara, teks, false);
+      try {
+        const audio = await sintesisChirp(teks, namaSuara);
+        await simpanCacheTts(kunci, audio, {
+          mime: "audio/wav",
+          durasiDetik: durasiWavDetik(audio),
+          suara: namaSuara,
+        });
+      } catch (error) {
+        const pesan = error instanceof Error ? error.message : String(error);
+        console.warn("[audio-modul] gagal sintesis:", pesan.slice(0, 180));
+      }
     }
-  });
+  }
 
   await tandaiAudioModulSiap(opsi.kelas, opsi.mapel, opsi.materi);
 }
