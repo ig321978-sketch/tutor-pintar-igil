@@ -1628,7 +1628,7 @@ export default function TutorAI() {
               {judulMateriSesi}
             </h1>
             <p className="mt-1 text-sm font-bold text-[#1C01A5]/70">
-              {judulMapelSesi} · {judulKelasSesi}
+              {judulMapelSesi} · Kelas {judulKelasSesi}
             </p>
           </div>
 
@@ -1704,8 +1704,6 @@ export default function TutorAI() {
                     {hasilData ? (
                       <PanelMateriModul
                         materi={judulMateriSesi}
-                        mapel={judulMapelSesi}
-                        kelas={judulKelasSesi}
                         sapaan={hasilData.sapaan}
                         naskah={penjelasanAktif}
                         doodleSrc={

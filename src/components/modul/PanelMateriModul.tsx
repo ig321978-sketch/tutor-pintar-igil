@@ -2,15 +2,10 @@
 
 import { Loader2, Sparkles } from "lucide-react";
 import ModuleRenderer from "@/components/ModuleRenderer";
-import {
-  LABEL_SUDUT,
-  type SudutPandangMateri,
-} from "@/lib/sudut-pandang";
+import { type SudutPandangMateri } from "@/lib/sudut-pandang";
 
 export default function PanelMateriModul({
   materi,
-  mapel,
-  kelas,
   sapaan,
   naskah,
   doodleSrc,
@@ -19,8 +14,6 @@ export default function PanelMateriModul({
   onGantiSudut,
 }: {
   materi: string;
-  mapel: string;
-  kelas: string;
   sapaan: string;
   naskah: string;
   doodleSrc?: string | null;
@@ -28,7 +21,6 @@ export default function PanelMateriModul({
   sudutPandang: SudutPandangMateri;
   onGantiSudut: (sudut: SudutPandangMateri) => void;
 }) {
-  const label = LABEL_SUDUT[sudutPandang];
 
   return (
     <article className="space-y-5">
@@ -55,7 +47,7 @@ export default function PanelMateriModul({
           {materi}
         </h2>
         <p className="mt-1 text-sm font-bold text-[#1C01A5]/70">
-          {mapel} - {kelas} - {label.ringkas}
+          Mengikuti uraian buku siswa Kurikulum Merdeka
         </p>
         <p className="mt-3 whitespace-pre-line text-base font-semibold text-slate-700">
           {sapaan}
