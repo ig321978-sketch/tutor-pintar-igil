@@ -3,6 +3,7 @@ import {
   sapaanTutorRingkas,
 } from "@/lib/nama-siswa";
 import { pecahBlokKartu } from "@/lib/konsep-materi";
+import { ucapkanRumusUntukSuara } from "@/lib/naskah-suara-rumus";
 
 const LABEL_BARIS =
   /^(judul(?:\s+kartu)?|subjudul(?:\s+visual)?|uraian(?:\s+lisan)?|naskah(?:\s+lisan)?|kartu\s*\d+|baris\s*\d+|visual|voice|teks(?:\s+kartu)?|contoh\s+kartu)\s*[:.\-–]\s*/i;
@@ -61,14 +62,20 @@ export function naskahLisan(teks: string, nama = ""): string {
     .replace(/[\u200B-\u200D\uFEFF]/g, "")
     .replace(/```[\s\S]*?```/g, " ")
     .replace(/`+/g, "")
+    .replace(/([)\d|])\s*\*\s*([(\d|\-−|])/g, "$1 × $2")
     .replace(/\*\*([^*]+)\*\*/g, "$1")
     .replace(/__([^_]+)__/g, "$1")
-    .replace(/[_*#]+/g, " ")
+    .replace(/\*(?=[A-Za-z])([^*]+)\*/g, "$1")
     .replace(/\[([^\]]+)\]\([^)]+\)/g, "$1")
     .replace(/https?:\/\/\S+/gi, " ")
     .replace(/\[pause(?:\s+(?:short|long))?\]/gi, " ")
     .replace(/\[[^\]]*\]/g, " ")
-    .replace(/\((?:voice|visual|json|hanya untuk voice|card only)[^)]*\)/gi, " ")
+    .replace(/\((?:voice|visual|json|hanya untuk voice|card only)[^)]*\)/gi, " ");
+
+  aman = ucapkanRumusUntukSuara(aman);
+
+  aman = aman
+    .replace(/[_#]+/g, " ")
     .replace(/\b(?:VOICE|JSON|SSML|TTS|HOTS|NULL|UNDEFINED)\b/g, " ")
     .replace(/\$IGIL/gi, "igil")
     .replace(/\bIGIL\b/g, "igil")
@@ -91,18 +98,15 @@ export function naskahLisan(teks: string, nama = ""): string {
     .replace(/&/g, " dan ")
     .replace(/[–—]/g, " ")
     .replace(/(\d+)\s+(\d+)\s*\/\s*(\d+)/g, "$1 dan $2 per $3")
-    .replace(/(\d+)\s*\/\s*(\d+)/g, "$1 per $2")
-    .replace(/(?<![\d.,])-(\d+(?:[.,]\d+)?)/g, "minus $1")
+    .replace(/(?<![\d.,]|minus )-(\d+(?:[.,]\d+)?)/g, "minus $1")
     .replace(/(\d)\s*\+\s*(\d)/g, "$1 plus $2")
-    .replace(/×\s*/g, "kali ")
-    .replace(/\bx\s+(?=\d)/gi, "kali ")
-    .replace(/÷/g, " dibagi ")
     .replace(/=/g, " sama dengan ")
     .replace(/[\u{1F300}-\u{1FAFF}]/gu, " ")
     .replace(/[<>]/g, " ")
     .replace(/\n+/g, ". ")
     .replace(/[.]{2,}/g, ".")
     .replace(/\s+([,.;:!?…])/g, "$1")
+    .replace(/,{2,}/g, ",")
     .replace(/\s+/g, " ")
     .replace(/^[.\s]+/, "")
     .trim();
