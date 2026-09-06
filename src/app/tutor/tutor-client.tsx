@@ -1655,25 +1655,16 @@ export default function TutorAI() {
                         </button>
                       </div>
                     ) : null}
-                    {isLoading && !hasilData ? (
-                      <div className="rounded-2xl bg-white/80 p-8 text-center">
-                        <Loader2 className="mx-auto h-10 w-10 animate-spin text-[#1C01A5]" />
-                        <p className="mt-4 text-lg font-extrabold text-[#1C01A5]">
-                          Menyusun bagian ini...
-                        </p>
-                      </div>
-                    ) : (
-                      <PanelSilabusModul
-                        kelas={judulKelasSesi}
-                        mapel={judulMapelSesi}
-                        materi={judulMateriSesi}
-                        naskahKurikulum={
-                          hasilData?.curriculum_view ||
-                          hasilData?.penjelasan ||
-                          ""
-                        }
-                      />
-                    )}
+                    <PanelSilabusModul
+                      kelas={judulKelasSesi}
+                      mapel={judulMapelSesi}
+                      materi={judulMateriSesi}
+                      naskahKurikulum={
+                        hasilData?.curriculum_view ||
+                        hasilData?.penjelasan ||
+                        ""
+                      }
+                    />
                   </>
                 ),
                 materi: (
