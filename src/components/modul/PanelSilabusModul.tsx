@@ -57,12 +57,12 @@ export default function PanelSilabusModul({
         {kerangka.map((item) => (
           <article
             key={item.id}
-            className={`flex items-start justify-between gap-3 rounded-2xl border-2 px-4 py-3 ${
+            className={`flex items-start justify-between gap-3 rounded-none border border-black px-4 py-3 ${
               item.tingkat === "baik"
-                ? "border-emerald-300 bg-emerald-50"
+                ? "bg-emerald-50"
                 : item.tingkat === "cukup"
-                  ? "border-[#F0AB00]/70 bg-[#FFF8E8]"
-                  : "border-rose-300 bg-rose-50"
+                  ? "bg-[#FFF8E8]"
+                  : "bg-rose-50"
             }`}
           >
             <div className="min-w-0">
@@ -89,12 +89,12 @@ export default function PanelSilabusModul({
             {materiPokok.map((item, indeks) => (
               <article
                 key={item.id}
-                className={`flex items-start justify-between gap-3 rounded-2xl border-2 px-4 py-3 ${
+                className={`flex items-start justify-between gap-3 rounded-none border border-black px-4 py-3 ${
                   item.tingkat === "baik"
-                    ? "border-emerald-300 bg-emerald-50"
+                    ? "bg-emerald-50"
                     : item.tingkat === "cukup"
-                      ? "border-[#F0AB00]/70 bg-[#FFF8E8]"
-                      : "border-rose-300 bg-rose-50"
+                      ? "bg-[#FFF8E8]"
+                      : "bg-rose-50"
                 }`}
               >
                 <div className="min-w-0">
