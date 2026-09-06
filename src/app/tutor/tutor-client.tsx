@@ -355,10 +355,18 @@ export default function TutorAI() {
   const sudahPrefillMapel = useRef(false);
   const sudahPrefillBab = useRef(false);
   const kelasTargetRef = useRef<string | null>(null);
+  const namaDariProfilSesi = teksQuery(params.get("nama"), "");
+  const namaSesi = namaDariProfilSesi || nama;
+  const namaSesiRef = useRef(namaSesi);
+  namaSesiRef.current = namaSesi;
+
+  useEffect(() => {
+    if (namaDariProfilSesi) setNama(namaDariProfilSesi);
+  }, [namaDariProfilSesi]);
 
   useEffect(() => {
     const profil = bacaProgres().profil;
-    const namaQ = params.get("nama") || profil.nama;
+    const namaQ = namaDariProfilSesi || profil.nama;
     const kelasQ = teksQuery(params.get("kelas"), profil.kelas || "3 SD");
     const modeQ = params.get("mode");
     const guruQ = params.get("guru") || profil.guruKelamin;
@@ -687,19 +695,20 @@ export default function TutorAI() {
     materiKirim: string,
     kelasKirim: string,
   ) => {
+    const namaAktif = namaSesiRef.current;
     const kurikulum = gantiNamaLengkapKeDepan(
       dataModul.curriculum_view || dataModul.penjelasan,
-      nama,
+      namaAktif,
     );
     const global = gantiNamaLengkapKeDepan(
       dataModul.global_best_view || kurikulum,
-      nama,
+      namaAktif,
     );
     const judulMateri =
       modeInput === "teks" ? materiKirim : "Analisis halaman buku";
     setHasilData({
       ...dataModul,
-      sapaan: sapaanVoiceTutor(nama, mapelKirim, judulMateri),
+      sapaan: sapaanVoiceTutor(namaAktif, mapelKirim, judulMateri),
       penjelasan: kurikulum,
       curriculum_view: kurikulum,
       global_best_view: global,
@@ -711,9 +720,9 @@ export default function TutorAI() {
     setAudioCompleted(false);
     setSesiMapel(mapelKirim);
     setSesiMateri(modeInput === "teks" ? materiKirim : "Analisis halaman buku");
-    simpanProfil({ nama, kelas: kelasKirim, guruKelamin });
+    simpanProfil({ nama: namaAktif, kelas: kelasKirim, guruKelamin });
     const sesi = catatSesiModul({
-      nama,
+      nama: namaAktif,
       kelas: kelasKirim,
       mapel: mapelKirim,
       materi: materiKirim,
@@ -733,7 +742,7 @@ export default function TutorAI() {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
-          nama,
+          nama: namaAktif,
           kelas: kelasKirim,
           mapel: mapelKirim,
           materi: materiKirim,
@@ -752,7 +761,7 @@ export default function TutorAI() {
   ): Promise<ModulTutor | null> => {
     try {
       const intip = new URLSearchParams({
-        nama,
+        nama: namaSesiRef.current,
         kelas: kelasKirim,
         mapel: mapelKirim,
         materi: materiKirim,
@@ -785,7 +794,7 @@ export default function TutorAI() {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
-        nama,
+        nama: namaSesiRef.current,
         kelas: kelasKirim,
         mapel: mapelKirim,
         materi: modeInput === "teks" ? materiKirim : "Analisis AI",
@@ -801,7 +810,7 @@ export default function TutorAI() {
   };
 
   const tanganiBuatModul = async () => {
-    if (!nama.trim()) {
+    if (!namaSesiRef.current.trim()) {
       setPesanGalat("Kapten, mohon isi Nama Siswa terlebih dahulu.");
       sudahGenerateRef.current = false;
       return;
@@ -946,14 +955,14 @@ export default function TutorAI() {
     }, 50);
   };
 
-  const kunciSesiMulai = `${params.get("mulai")}|${params.get("mapel")}|${params.get("materi")}|${params.get("r")}`;
+  const kunciSesiMulai = `${params.get("mulai")}|${namaSesi}|${params.get("mapel")}|${params.get("materi")}|${params.get("r")}`;
 
   useEffect(() => {
     if (params.get("mulai") !== "1") return;
     sudahGenerateRef.current = false;
-    sudahSiapAudioRef.current = false;
+    resetPemutar();
     setHasilData(null);
-  }, [kunciSesiMulai, params]);
+  }, [kunciSesiMulai]);
 
   useEffect(() => {
     if (params.get("mulai") !== "1") return;
@@ -973,10 +982,10 @@ export default function TutorAI() {
   }, [modeInput, gambarHalaman, hasilData, params]);
 
   const muatKuota = async () => {
-    if (!nama.trim()) return;
+    if (!namaSesiRef.current.trim()) return;
     try {
       const respons = await fetch(
-        `/api/tutor?nama=${encodeURIComponent(nama)}&kelas=${encodeURIComponent(kelas)}`,
+        `/api/tutor?nama=${encodeURIComponent(namaSesiRef.current)}&kelas=${encodeURIComponent(kelas)}`,
       );
       const data = (await respons.json()) as {
         berhasil?: boolean;
@@ -1003,7 +1012,7 @@ export default function TutorAI() {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
-          nama,
+          nama: namaSesiRef.current,
           kelas,
           mapel: modeInput === "teks" ? mapel : "Berdasarkan Buku",
           materi: modeInput === "teks" ? bab : "Analisis AI",
@@ -1032,7 +1041,7 @@ export default function TutorAI() {
         const tanya = teksAjuan.trim();
         setHasilAjuan({
           ...data.data,
-          sapaan: sapaanTutorRingkas(nama, data.data.sapaan),
+          sapaan: sapaanTutorRingkas(namaSesiRef.current, data.data.sapaan),
         });
         setRiwayatAjuan((sebelum) =>
           [...sebelum, { tanya, jawab: data.data?.panduanLangkah || "" }].slice(-5),
@@ -1125,11 +1134,11 @@ export default function TutorAI() {
         params.get("materi"),
         sesiMateri || (modeInput === "teks" ? bab : "Analisis halaman buku"),
       );
-      return naskahSapaanUntukSuara(nama, judulMapel, judulMateri);
+      return naskahSapaanUntukSuara(namaSesiRef.current, judulMapel, judulMateri);
     }
     if (!hasilData) return "";
     const blok = blokKartu[segmen.indeks] ?? "";
-    return naskahKartuUntukSuara(blok, nama, {
+    return naskahKartuUntukSuara(blok, namaSesiRef.current, {
       buangSubjudulVisual: kartuTanpaNaskah(kelas),
     });
   };
@@ -1237,7 +1246,7 @@ export default function TutorAI() {
     segmen: SegmenSuara,
     kelaminSuara: KelaminGuru,
   ) =>
-    `${kunciSegmen(segmen)}|${sudutPandang}|${kelaminSuara}`;
+    `${kunciSegmen(segmen)}|${sudutPandang}|${kelaminSuara}|${namaSesiRef.current}`;
 
   const pasangCacheSegmen = (item: CacheSegmenAudio, kelaminSuara: KelaminGuru) => {
     urlAudioRef.current = item.url;
@@ -1536,12 +1545,12 @@ export default function TutorAI() {
   }, [durasiAudio, tandaiSegmenSelesai]);
 
   useEffect(() => {
-    if (!isMulai || params.get("mulai") !== "1" || !nama.trim()) return;
+    if (!isMulai || params.get("mulai") !== "1" || !namaSesi.trim()) return;
     if (sudahSiapAudioRef.current) return;
     sudahSiapAudioRef.current = true;
     void putarSegmen({ jenis: "sapaan" }, true);
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [isMulai, kunciSesiMulai, nama, sudutPandang, params]);
+  }, [isMulai, kunciSesiMulai, namaSesi, sudutPandang, params]);
 
   useEffect(() => {
     if (tahapBelajar !== "materi" || !hasilData || blokKartu.length === 0) return;
@@ -1820,7 +1829,7 @@ export default function TutorAI() {
                 ),
                 simulasi: (
                   <PanelSimulasiModul
-                    nama={nama}
+                    nama={namaSesi}
                     kelas={judulKelasSesi}
                     mapel={judulMapelSesi}
                     materi={judulMateriSesi}
@@ -1828,7 +1837,7 @@ export default function TutorAI() {
                 ),
                 praktikum: (
                   <PanelPraktikumModul
-                    nama={nama}
+                    nama={namaSesi}
                     kelas={judulKelasSesi}
                     mapel={judulMapelSesi}
                     materi={judulMateriSesi}
