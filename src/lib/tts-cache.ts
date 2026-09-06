@@ -14,7 +14,7 @@ export function kunciNaskahTts(
 ): string {
   return kunciCacheTts(
     suara,
-    `${awalSaja ? "awal" : "penuh"}\nlisan-v5-rumus\n${naskahTubuh}`,
+    `${awalSaja ? "awal" : "penuh"}\nlisan-v6-teks\n${naskahTubuh}`,
   );
 }
 

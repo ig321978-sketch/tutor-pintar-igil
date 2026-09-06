@@ -75,6 +75,7 @@ export function naskahLisan(teks: string, nama = ""): string {
   aman = ucapkanRumusUntukSuara(aman);
 
   aman = aman
+    .replace(/#\s*(\d+)/g, "nomor $1 ")
     .replace(/[_#]+/g, " ")
     .replace(/\b(?:VOICE|JSON|SSML|TTS|HOTS|NULL|UNDEFINED)\b/g, " ")
     .replace(/\$IGIL/gi, "igil")
@@ -93,16 +94,13 @@ export function naskahLisan(teks: string, nama = ""): string {
     .replace(/\byg\b/gi, "yang")
     .replace(/\bkm\/jam\b/gi, "kilometer per jam")
     .replace(/\bm\/s\b/gi, "meter per sekon")
-    .replace(/°\s*C\b/g, " derajat celcius")
-    .replace(/%/g, " persen")
     .replace(/&/g, " dan ")
     .replace(/[–—]/g, " ")
     .replace(/(\d+)\s+(\d+)\s*\/\s*(\d+)/g, "$1 dan $2 per $3")
     .replace(/(?<![\d.,]|minus )-(\d+(?:[.,]\d+)?)/g, "minus $1")
-    .replace(/(\d)\s*\+\s*(\d)/g, "$1 plus $2")
+    .replace(/(\d+(?:[.,]\d+)?)\s*\+\s*(\d+(?:[.,]\d+)?)/g, "$1 plus $2")
     .replace(/=/g, " sama dengan ")
     .replace(/[\u{1F300}-\u{1FAFF}]/gu, " ")
-    .replace(/[<>]/g, " ")
     .replace(/\n+/g, ". ")
     .replace(/[.]{2,}/g, ".")
     .replace(/\s+([,.;:!?…])/g, "$1")
