@@ -17,7 +17,11 @@ export function namaSuaraChirp(
 }
 
 function bacaKredensial(): Record<string, unknown> | null {
-  const mentah = process.env.GOOGLE_CLOUD_CREDENTIALS?.trim();
+  const mentah = (
+    process.env.GOOGLE_CLOUD_CREDENTIALS ||
+    process.env.GOOGLE_CREDENTIALS_JSON ||
+    ""
+  ).trim();
   if (!mentah) return null;
   try {
     if (mentah.startsWith("{")) {
@@ -33,7 +37,9 @@ function bacaKredensial(): Record<string, unknown> | null {
 
 export function ttsSiapDipakai(): boolean {
   return Boolean(
-    process.env.GOOGLE_CLOUD_PROJECT_ID?.trim() && bacaKredensial(),
+    (process.env.GOOGLE_CLOUD_PROJECT_ID?.trim() ||
+      bacaKredensial()?.project_id) &&
+      bacaKredensial(),
   );
 }
 
