@@ -1799,16 +1799,18 @@ export default function TutorAI() {
             <p className="text-[#1C01A5] font-bold uppercase tracking-[0.2em] mb-4">
               Tutor AI Kurikulum KEMDIKBUD
             </p>
-            <h1 className="text-5xl md:text-7xl font-extrabold tracking-tight mb-6 leading-tight text-[#1C01A5]">
-              Ubah Waktu Belajarmu <br className="hidden md:block" />
-              <span className="text-[#F0AB00]">Menjadi Beasiswa Instan</span>
-            </h1>
-            <p className="w-full text-slate-600 text-lg mb-8">
-              Ketik judul materi atau unggah halaman buku. $IGIL menampilkan uraian materi dulu, baru membuka soal latihan untuk menambang token.
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img
+              src="/super-hero-dapat-beasiswa.png"
+              alt="Super Hero Dapat Beasiswa"
+              className="mx-auto aspect-square w-full max-w-md rounded-none border border-black object-cover"
+            />
+            <p className="mt-6 text-2xl font-extrabold leading-snug text-[#1C01A5] md:text-3xl">
+              Belajar, Selesaikan Ujian, Dapatkan Poin Beasiswa.
             </p>
             <Link
               href="/ruang-belajar"
-              className={`${kelasTombolUtama} px-8 py-4 rounded-full font-extrabold text-lg shadow-lg shadow-[#1C01A5]/25 mx-auto mt-4 flex items-center justify-center gap-2 text-center`}
+              className={`${kelasTombolUtama} px-8 py-4 rounded-full font-extrabold text-lg shadow-lg shadow-[#1C01A5]/25 mx-auto mt-6 flex items-center justify-center gap-2 text-center`}
             >
               Mulai Belajar Sekarang <ArrowRight className="w-5 h-5 text-white" />
             </Link>
