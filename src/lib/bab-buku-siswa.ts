@@ -594,6 +594,16 @@ export const BAB_BUKU_SISWA: Record<string, Record<string, string[]>> = {
       "Bab 4: Jejak Bermedia Digital",
       "Bab 5: Pemanfaatan Perangkat Digital",
     ],
+    [PJOK]: [
+      "Bab 1: Permainan Bola Besar",
+      "Bab 2: Permainan Bola Kecil",
+      "Bab 3: Atletik",
+      "Bab 4: Senam",
+      "Bab 5: Aktivitas Ritmik",
+      "Bab 6: Aktivitas Air",
+      "Bab 7: Kebugaran Jasmani",
+      "Bab 8: NAPZA dan Kesehatan",
+    ],
   },
   "9 SMP": {
     [PAI]: [
@@ -609,10 +619,11 @@ export const BAB_BUKU_SISWA: Record<string, Record<string, string[]>> = {
       "Bab 10: Mengapresiasi Peradaban Pada Masa Syafawi dan India Mughal",
     ],
     "Pendidikan Pancasila": [
-      "Bab 1: Pancasila dalam Kehidupan Berbangsa dan Bernegara",
+      "Bab 1: Hubungan Pancasila dengan UUD NRI Tahun 1945, Bhinneka Tunggal Ika, dan NKRI",
       "Bab 2: Hak dan Kewajiban Warga Negara",
-      "Bab 3: Persatuan dalam Keberagaman",
-      "Bab 4: Bela Negara dan Ketahanan Nasional",
+      "Bab 3: Kemerdekaan Berpendapat Warga Negara pada Era Keterbukaan Informasi",
+      "Bab 4: Menjaga dan Melestarikan Tradisi, Kearifan Lokal, serta Budaya dalam Masyarakat Global",
+      "Bab 5: Menjaga Keutuhan Wilayah Negara Kesatuan Republik Indonesia",
     ],
     "Bahasa Indonesia": [
       "Bab 1: Demi Keluarga",
@@ -650,7 +661,7 @@ export const BAB_BUKU_SISWA: Record<string, Record<string, string[]>> = {
       "Chapter 5: Digital Life",
     ],
     Informatika: [
-      "Bab 1: Informatika SMP",
+      "Bab 1: Informatika dan Keterampilan Generik",
       "Bab 2: Berpikir Komputasional",
       "Bab 3: Teknologi Informasi dan Komunikasi",
       "Bab 4: Sistem Komputer",
@@ -659,6 +670,15 @@ export const BAB_BUKU_SISWA: Record<string, Record<string, string[]>> = {
       "Bab 7: Algoritma dan Pemrograman",
       "Bab 8: Dampak Sosial Informatika",
       "Bab 9: Praktik Lintas Bidang Informatika",
+    ],
+    [PJOK]: [
+      "Unit 1: Permainan Invasi — Sepak Bola",
+      "Unit 2: Permainan Net — Bola Voli",
+      "Unit 3: Aktivitas Bela Diri — Taekwondo",
+      "Unit 4: Aktivitas Senam Lantai",
+      "Unit 5: Aktivitas Gerak Berirama",
+      "Unit 6: Aktivitas Kebugaran untuk Kesehatan",
+      "Unit 7: Pengembangan Budaya Hidup Sehat",
     ],
   },
   "10 SMA": {

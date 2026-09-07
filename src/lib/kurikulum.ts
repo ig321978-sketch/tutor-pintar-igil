@@ -1,5 +1,9 @@
 import { terapkanBabBukuSiswa } from "@/lib/bab-buku-siswa";
-import { perluasKurikulumMerdeka } from "@/lib/mapel-kurikulum-merdeka";
+import {
+  daftarMapelResmi,
+  perluasKurikulumMerdeka,
+  saringKurikulumMerdeka,
+} from "@/lib/mapel-kurikulum-merdeka";
 
 export const OPSI_LAINNYA = "LAINNYA (ketik disini)";
 export const OPSI_LAIN_NYA = OPSI_LAINNYA;
@@ -37,11 +41,11 @@ const DATA_INTI_KURIKULUM: Record<string, Record<string, string[]>> = {
       "Bab 3: Kesehatan Diri",
       "Bab 4: Kebugaran Jasmani",
     ],
-    "Seni dan Budaya": [
+    "Seni Rupa": [
       "Bab 1: Menggambar dan Mewarnai",
-      "Bab 2: Menyanyi Lagu Anak",
-      "Bab 3: Gerak dan Tari",
-      "Bab 4: Kerajinan dari Bahan Alam",
+      "Bab 2: Motif Sederhana",
+      "Bab 3: Kolase",
+      "Bab 4: Karya Tiga Dimensi",
     ],
     "Bahasa Inggris": [
       "Bab 1: Greetings",
@@ -87,11 +91,11 @@ const DATA_INTI_KURIKULUM: Record<string, Record<string, string[]>> = {
       "Bab 3: Kebersihan Diri",
       "Bab 4: Senam Irama",
     ],
-    "Seni dan Budaya": [
+    "Seni Rupa": [
       "Bab 1: Menggambar Bentuk",
-      "Bab 2: Lagu Daerah",
-      "Bab 3: Tari Sederhana",
-      "Bab 4: Kolase dan Prakarya",
+      "Bab 2: Motif Daerah",
+      "Bab 3: Kolase dan Prakarya",
+      "Bab 4: Karya Dua Dimensi",
     ],
     "Bahasa Inggris": [
       "Bab 1: School Things",
@@ -144,11 +148,11 @@ const DATA_INTI_KURIKULUM: Record<string, Record<string, string[]>> = {
       "Bab 3: Pola Hidup Sehat",
       "Bab 4: Aktivitas di Alam",
     ],
-    "Seni dan Budaya": [
+    "Seni Rupa": [
       "Bab 1: Menggambar Ilustrasi",
-      "Bab 2: Ansambel Sederhana",
-      "Bab 3: Tari Kreasi",
-      "Bab 4: Kerajinan Tangan",
+      "Bab 2: Motif Nusantara",
+      "Bab 3: Kerajinan Tangan",
+      "Bab 4: Karya Kelas",
     ],
     "Bahasa Inggris": [
       "Bab 1: My Classroom",
@@ -201,11 +205,11 @@ const DATA_INTI_KURIKULUM: Record<string, Record<string, string[]>> = {
       "Bab 3: Senam Lantai",
       "Bab 4: Kesehatan dan Gizi",
     ],
-    "Seni dan Budaya": [
+    "Seni Rupa": [
       "Bab 1: Motif Nusantara",
-      "Bab 2: Lagu Wajib dan Daerah",
-      "Bab 3: Tari Tradisional",
-      "Bab 4: Karya Dua dan Tiga Dimensi",
+      "Bab 2: Karya Dua Dimensi",
+      "Bab 3: Karya Tiga Dimensi",
+      "Bab 4: Pameran Mini",
     ],
     "Bahasa Inggris": [
       "Bab 1: Describing People",
@@ -258,11 +262,11 @@ const DATA_INTI_KURIKULUM: Record<string, Record<string, string[]>> = {
       "Bab 3: Renang atau Aktivitas Air",
       "Bab 4: Pencegahan Penyakit",
     ],
-    "Seni dan Budaya": [
+    "Seni Rupa": [
       "Bab 1: Apresiasi Karya Seni",
-      "Bab 2: Komposisi Musik",
-      "Bab 3: Koreografi Sederhana",
-      "Bab 4: Desain Produk",
+      "Bab 2: Desain Produk",
+      "Bab 3: Karya Dua dan Tiga Dimensi",
+      "Bab 4: Pameran Kelas",
     ],
     "Bahasa Inggris": [
       "Bab 1: Descriptive Text",
@@ -327,11 +331,11 @@ const DATA_INTI_KURIKULUM: Record<string, Record<string, string[]>> = {
       "Bab 3: Pertolongan Pertama",
       "Bab 4: Gaya Hidup Aktif",
     ],
-    "Seni dan Budaya": [
+    "Seni Rupa": [
       "Bab 1: Pameran Karya",
-      "Bab 2: Pertunjukan Musik",
-      "Bab 3: Pertunjukan Tari",
-      "Bab 4: Portofolio Seni",
+      "Bab 2: Portofolio Seni",
+      "Bab 3: Karya Dua Dimensi",
+      "Bab 4: Karya Tiga Dimensi",
     ],
     "Bahasa Inggris": [
       "Bab 1: Procedure Text",
@@ -414,12 +418,6 @@ const DATA_INTI_KURIKULUM: Record<string, Record<string, string[]>> = {
       "Bab 3: Jaringan dan Internet",
       "Bab 4: Analisis Data",
     ],
-    "Seni Budaya": [
-      "Bab 1: Apresiasi Seni Rupa",
-      "Bab 2: Musik Nusantara",
-      "Bab 3: Tari Tradisional",
-      "Bab 4: Teater",
-    ],
     Prakarya: [
       "Bab 1: Kerajinan",
       "Bab 2: Rekayasa",
@@ -496,12 +494,6 @@ const DATA_INTI_KURIKULUM: Record<string, Record<string, string[]>> = {
       "Bab 3: Dampak Sosial Informatika",
       "Bab 4: Proyek Digital",
     ],
-    "Seni Budaya": [
-      "Bab 1: Seni Rupa Terapan",
-      "Bab 2: Ansambel Musik",
-      "Bab 3: Koreografi",
-      "Bab 4: Pemeranan",
-    ],
     Prakarya: [
       "Bab 1: Kerajinan Limbah",
       "Bab 2: Rekayasa Teknologi Tepat Guna",
@@ -528,10 +520,11 @@ const DATA_INTI_KURIKULUM: Record<string, Record<string, string[]>> = {
       "Bab 4: Siap Melanjutkan Pendidikan",
     ],
     "Pendidikan Pancasila": [
-      "Bab 1: Negara Kesatuan Republik Indonesia",
-      "Bab 2: Demokrasi Pancasila",
-      "Bab 3: Wawasan Nusantara",
-      "Bab 4: Belanegara",
+      "Bab 1: Hubungan Pancasila dengan UUD NRI Tahun 1945, Bhinneka Tunggal Ika, dan NKRI",
+      "Bab 2: Hak dan Kewajiban Warga Negara",
+      "Bab 3: Kemerdekaan Berpendapat Warga Negara pada Era Keterbukaan Informasi",
+      "Bab 4: Menjaga dan Melestarikan Tradisi, Kearifan Lokal, serta Budaya dalam Masyarakat Global",
+      "Bab 5: Menjaga Keutuhan Wilayah Negara Kesatuan Republik Indonesia",
     ],
     "Bahasa Indonesia": [
       "Bab 1: Teks Tanggapan",
@@ -577,12 +570,6 @@ const DATA_INTI_KURIKULUM: Record<string, Record<string, string[]>> = {
       "Bab 2: Keamanan Siber",
       "Bab 3: Kecerdasan Artifisial Dasar",
       "Bab 4: Proyek Akhir Informatika",
-    ],
-    "Seni Budaya": [
-      "Bab 1: Pameran Seni",
-      "Bab 2: Pertunjukan Musik",
-      "Bab 3: Pertunjukan Tari",
-      "Bab 4: Produksi Teater",
     ],
     Prakarya: [
       "Bab 1: Wirausaha Kerajinan",
@@ -634,11 +621,17 @@ const DATA_INTI_KURIKULUM: Record<string, Record<string, string[]>> = {
       "Bab 3: Recount Text",
       "Bab 4: Announcement",
     ],
-    Sejarah: [
-      "Bab 1: Manusia dan Sejarah",
-      "Bab 2: Penelitian Sejarah",
-      "Bab 3: Indonesia pada Masa Praaksara",
-      "Bab 4: Kerajaan Hindu-Buddha dan Islam",
+    "Ilmu Pengetahuan Alam": [
+      "Bab 1: Pengukuran dan Hakikat IPA",
+      "Bab 2: Makhluk Hidup dan Lingkungan",
+      "Bab 3: Zat dan Perubahannya",
+      "Bab 4: Energi, Gaya, dan Bumi",
+    ],
+    "Ilmu Pengetahuan Sosial": [
+      "Bab 1: Manusia, Tempat, dan Lingkungan",
+      "Bab 2: Interaksi Sosial",
+      "Bab 3: Aktivitas Ekonomi",
+      "Bab 4: Kehidupan Berbangsa",
     ],
     "Pendidikan Jasmani, Olahraga, dan Kesehatan": [
       "Bab 1: Permainan Bola Besar",
@@ -646,61 +639,17 @@ const DATA_INTI_KURIKULUM: Record<string, Record<string, string[]>> = {
       "Bab 3: Senam dan Ritmik",
       "Bab 4: Kesehatan dan Gizi",
     ],
-    "Seni dan Budaya": [
-      "Bab 1: Apresiasi Seni",
-      "Bab 2: Berkarya Seni Rupa",
-      "Bab 3: Musik",
-      "Bab 4: Tari atau Teater",
-    ],
     Informatika: [
       "Bab 1: Berpikir Komputasional",
       "Bab 2: Arsitektur Komputer",
       "Bab 3: Jaringan",
       "Bab 4: Analisis Data",
     ],
-    "Prakarya dan Kewirausahaan": [
-      "Bab 1: Peluang Usaha",
-      "Bab 2: Perencanaan Produk",
-      "Bab 3: Produksi",
-      "Bab 4: Pemasaran",
-    ],
-    Fisika: [
-      "Bab 1: Pengukuran",
-      "Bab 2: Gerak Lurus",
-      "Bab 3: Gerak Parabola dan Melingkar",
-      "Bab 4: Hukum Newton",
-      "Bab 5: Usaha dan Energi",
-    ],
-    Kimia: [
-      "Bab 1: Hakikat Ilmu Kimia",
-      "Bab 2: Struktur Atom",
-      "Bab 3: Ikatan Kimia",
-      "Bab 4: Stoikiometri",
-      "Bab 5: Larutan Elektrolit",
-    ],
-    Biologi: [
-      "Bab 1: Keanekaragaman Hayati",
-      "Bab 2: Virus",
-      "Bab 3: Klasifikasi Makhluk Hidup",
-      "Bab 4: Ekologi",
-    ],
-    Ekonomi: [
-      "Bab 1: Ilmu Ekonomi",
-      "Bab 2: Masalah Ekonomi",
-      "Bab 3: Permintaan dan Penawaran",
-      "Bab 4: Pasar",
-    ],
-    Geografi: [
-      "Bab 1: Pengetahuan Dasar Geografi",
-      "Bab 2: Peta dan Penginderaan Jauh",
-      "Bab 3: Dinamika Litosfer",
-      "Bab 4: Atmosfer dan Hidrosfer",
-    ],
-    Sosiologi: [
-      "Bab 1: Sosiologi sebagai Ilmu",
-      "Bab 2: Hubungan Sosial",
-      "Bab 3: Interaksi Sosial",
-      "Bab 4: Sosialisasi",
+    Prakarya: [
+      "Bab 1: Kerajinan",
+      "Bab 2: Rekayasa",
+      "Bab 3: Budidaya",
+      "Bab 4: Pengolahan",
     ],
     "Koding dan Kecerdasan Artifisial": [
       "Bab 1: Dasar Pemrograman",
@@ -764,10 +713,10 @@ const DATA_INTI_KURIKULUM: Record<string, Record<string, string[]>> = {
       "Bab 3: Kebugaran untuk Prestasi",
       "Bab 4: Kesehatan Reproduksi",
     ],
-    "Seni dan Budaya": [
+    "Seni Rupa": [
       "Bab 1: Kritik Seni",
       "Bab 2: Berkarya Mandiri",
-      "Bab 3: Pertunjukan",
+      "Bab 3: Pameran",
       "Bab 4: Portofolio Seni",
     ],
     Informatika: [
@@ -894,9 +843,9 @@ const DATA_INTI_KURIKULUM: Record<string, Record<string, string[]>> = {
       "Bab 3: Pencegahan Cedera",
       "Bab 4: Gaya Hidup Sehat Dewasa",
     ],
-    "Seni dan Budaya": [
+    "Seni Rupa": [
       "Bab 1: Pameran Akhir",
-      "Bab 2: Produksi Pertunjukan",
+      "Bab 2: Produksi Karya",
       "Bab 3: Manajemen Seni",
       "Bab 4: Portofolio Karier Seni",
     ],
@@ -977,8 +926,8 @@ const DATA_INTI_KURIKULUM: Record<string, Record<string, string[]>> = {
   },
 };
 
-export const DATA_KURIKULUM = terapkanBabBukuSiswa(
-  perluasKurikulumMerdeka(DATA_INTI_KURIKULUM),
+export const DATA_KURIKULUM = saringKurikulumMerdeka(
+  terapkanBabBukuSiswa(perluasKurikulumMerdeka(DATA_INTI_KURIKULUM)),
 );
 
 export const DAFTAR_KELAS = Object.keys(DATA_KURIKULUM);
@@ -986,7 +935,8 @@ export const DAFTAR_KELAS = Object.keys(DATA_KURIKULUM);
 export { labelJenjangKelas } from "@/lib/mapel-kurikulum-merdeka";
 
 export function daftarMapelUntukKelas(kelas: string): string[] {
-  return Object.keys(DATA_KURIKULUM[kelas] ?? {});
+  const ada = DATA_KURIKULUM[kelas] ?? {};
+  return daftarMapelResmi(kelas).filter((nama) => nama in ada);
 }
 
 export function daftarMapelUnik(): string[] {

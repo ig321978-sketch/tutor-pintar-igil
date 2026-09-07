@@ -312,7 +312,6 @@ export function perluasKurikulumMerdeka(
       hasil[kelas] = sisipkanSetelah(mapel, "Pendidikan Agama dan Budi Pekerti", AGAMA_SMA, {
         ...IPA_IPS_KELAS_10,
         ...SENI_SMA,
-        ...BAHASA_ASING,
       });
       continue;
     }
@@ -323,6 +322,126 @@ export function perluasKurikulumMerdeka(
     });
   }
 
+  return hasil;
+}
+
+const AGAMA_NAMA = [
+  "Pendidikan Agama dan Budi Pekerti",
+  ...Object.keys(AGAMA_SD),
+] as const;
+
+const SENI_PRAKARYA = [
+  "Seni Rupa",
+  "Seni Musik",
+  "Seni Tari",
+  "Seni Teater",
+  "Prakarya",
+] as const;
+
+const SENI_SMA_UMUM = [
+  "Seni Rupa",
+  "Seni Musik",
+  "Seni Tari",
+  "Seni Teater",
+] as const;
+
+/** Struktur mapel resmi Permendikbudristek 12/2024 + pilihan Koding/KA Permendikdasmen 13/2025. */
+export function daftarMapelResmi(kelas: string): string[] {
+  const nomor = Number.parseInt(kelas, 10);
+  const agama = [...AGAMA_NAMA];
+
+  if (kelas.endsWith(" SD")) {
+    const daftar = [
+      ...agama,
+      "Pendidikan Pancasila",
+      "Bahasa Indonesia",
+      "Matematika",
+    ];
+    if (nomor >= 3) daftar.push("Ilmu Pengetahuan Alam dan Sosial (IPAS)");
+    daftar.push(
+      "Pendidikan Jasmani, Olahraga, dan Kesehatan",
+      "Bahasa Inggris",
+      ...SENI_PRAKARYA,
+    );
+    if (nomor >= 5) {
+      daftar.push("Informatika", "Koding dan Kecerdasan Artifisial");
+    }
+    daftar.push("Muatan Lokal");
+    return daftar;
+  }
+
+  if (kelas.endsWith(" SMP")) {
+    return [
+      ...agama,
+      "Pendidikan Pancasila",
+      "Bahasa Indonesia",
+      "Matematika",
+      "Ilmu Pengetahuan Alam",
+      "Ilmu Pengetahuan Sosial",
+      "Bahasa Inggris",
+      "Pendidikan Jasmani, Olahraga, dan Kesehatan",
+      "Informatika",
+      ...SENI_PRAKARYA,
+      "Koding dan Kecerdasan Artifisial",
+      "Muatan Lokal",
+    ];
+  }
+
+  if (kelas.startsWith("10 ")) {
+    return [
+      ...agama,
+      "Pendidikan Pancasila",
+      "Bahasa Indonesia",
+      "Matematika",
+      "Ilmu Pengetahuan Alam",
+      "Ilmu Pengetahuan Sosial",
+      "Bahasa Inggris",
+      "Pendidikan Jasmani, Olahraga, dan Kesehatan",
+      "Informatika",
+      ...SENI_PRAKARYA,
+      "Koding dan Kecerdasan Artifisial",
+      "Muatan Lokal",
+    ];
+  }
+
+  return [
+    ...agama,
+    "Pendidikan Pancasila",
+    "Bahasa Indonesia",
+    "Matematika",
+    "Bahasa Inggris",
+    "Sejarah",
+    "Pendidikan Jasmani, Olahraga, dan Kesehatan",
+    ...SENI_SMA_UMUM,
+    "Fisika",
+    "Kimia",
+    "Biologi",
+    "Ekonomi",
+    "Geografi",
+    "Sosiologi",
+    "Antropologi",
+    "Informatika",
+    "Matematika Lanjutan",
+    ...Object.keys(PILIHAN_LANJUT_SMA),
+    "Prakarya dan Kewirausahaan",
+    ...Object.keys(BAHASA_ASING),
+    "Koding dan Kecerdasan Artifisial",
+    "Muatan Lokal",
+  ];
+}
+
+export function saringKurikulumMerdeka(
+  data: Record<string, Record<string, string[]>>,
+): Record<string, Record<string, string[]>> {
+  const hasil: Record<string, Record<string, string[]>> = {};
+  for (const [kelas, mapel] of Object.entries(data)) {
+    const resmi = daftarMapelResmi(kelas);
+    const tersaring: Record<string, string[]> = {};
+    for (const nama of resmi) {
+      if (mapel[nama]) tersaring[nama] = mapel[nama];
+    }
+    hasil[kelas] = tersaring;
+  }
   return hasil;
 }
 
