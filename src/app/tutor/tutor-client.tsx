@@ -13,6 +13,7 @@ import { DATA_KURIKULUM, OPSI_LAIN_NYA, daftarMapelUntukKelas } from "@/lib/kuri
 import { hurufKunci, pecahBankSoal } from "@/lib/kuis";
 import {
   bacaProgres,
+  cariSesiBab,
   catatAudioSelesai,
   catatEvaluasiTambahan,
   catatJawabanKuis,
@@ -66,6 +67,7 @@ import PanelSimulasiModul from "@/components/modul/PanelSimulasiModul";
 import PanelUjianModul from "@/components/modul/PanelUjianModul";
 import TeksNaskah from "@/components/TeksNaskah";
 import {
+  bagianWajibMateriTuntas,
   daftarBagianModul,
   type BagianIsi,
   type BagianModul,
@@ -302,6 +304,7 @@ export default function TutorAI() {
   const [pesanUjian, setPesanUjian] = useState("");
   const [tahapBelajar, setTahapBelajar] = useState<TahapBelajar>("pilih");
   const [audioCompleted, setAudioCompleted] = useState(false);
+  const [pesanKunci, setPesanKunci] = useState("");
   const [sesiMapel, setSesiMapel] = useState("");
   const [sesiMateri, setSesiMateri] = useState("");
   const [statusPemutar, setStatusPemutar] = useState<StatusPemutar>("siaga");
@@ -564,8 +567,35 @@ export default function TutorAI() {
     }, INTERVAL_KETIK_MS * perlambatVoiceRef.current);
   };
 
+  const pulihkanSesiBab = () => {
+    const namaAktif = namaSesiRef.current || namaSesi;
+    const mapelKirim = teksQuery(
+      params.get("mapel"),
+      modeInput === "teks" ? mapel : sesiMapel || "Berdasarkan Buku",
+    );
+    const materiKirim = teksQuery(
+      params.get("materi"),
+      modeInput === "teks" ? bab : sesiMateri || "Analisis halaman buku",
+    );
+    const kelasKirim = teksQuery(params.get("kelas"), kelas);
+    if (!namaAktif.trim() || !mapelKirim || !materiKirim) return null;
+    const sesiLama = cariSesiBab({
+      nama: namaAktif,
+      kelas: kelasKirim,
+      mapel: mapelKirim,
+      materi: materiKirim,
+    });
+    if (!sesiLama) return null;
+    sesiAktifIdRef.current = sesiLama.id;
+    setSesiAktifId(sesiLama.id);
+    if (sesiLama.audioCompleted) setAudioCompleted(true);
+    return sesiLama;
+  };
+
   const pastikanSesiAktif = () => {
     if (sesiAktifIdRef.current) return sesiAktifIdRef.current;
+    const sesiLama = pulihkanSesiBab();
+    if (sesiLama) return sesiLama.id;
     const sesi = catatSesiModul({
       nama: namaSesiRef.current || namaSesi,
       kelas: teksQuery(params.get("kelas"), kelas),
@@ -593,6 +623,7 @@ export default function TutorAI() {
 
   const tandaiAudioSelesai = () => {
     setAudioCompleted(true);
+    setPesanKunci("");
     catatAudioSelesai(pastikanSesiAktif());
   };
 
@@ -653,7 +684,6 @@ export default function TutorAI() {
     muatPenuhPromiseRef.current = null;
     audioLengkapRef.current = false;
     sudahSiapAudioRef.current = false;
-    setAudioCompleted(false);
     setSegmenSelesai([]);
     segmenSuaraRef.current = { jenis: "sapaan" };
     setSegmenSuara({ jenis: "sapaan" });
@@ -803,19 +833,22 @@ export default function TutorAI() {
     setSesiMateri(modeInput === "teks" ? materiKirim : "Analisis halaman buku");
     simpanProfil({ nama: namaAktif, kelas: kelasKirim, guruKelamin });
     if (!sesiAktifIdRef.current) {
-      const sesi = catatSesiModul({
-        nama: namaAktif,
-        kelas: kelasKirim,
-        mapel: mapelKirim,
-        materi: materiKirim,
-        mode: modeInput,
-        catatanEvaluasi: gabung.motivasi,
-        kunciJawaban: gabung.kunciJawaban,
-        kuisTotal: pecahBankSoal(gabung.pertanyaan).pilihanGanda.length + 3,
-        jumlahLatihan: pecahBankSoal(gabung.pertanyaan).pilihanGanda.length,
-      });
-      sesiAktifIdRef.current = sesi.id;
-      setSesiAktifId(sesi.id);
+      const sesiLama = pulihkanSesiBab();
+      if (!sesiLama) {
+        const sesi = catatSesiModul({
+          nama: namaAktif,
+          kelas: kelasKirim,
+          mapel: mapelKirim,
+          materi: materiKirim,
+          mode: modeInput,
+          catatanEvaluasi: gabung.motivasi,
+          kunciJawaban: gabung.kunciJawaban,
+          kuisTotal: pecahBankSoal(gabung.pertanyaan).pilihanGanda.length + 3,
+          jumlahLatihan: pecahBankSoal(gabung.pertanyaan).pilihanGanda.length,
+        });
+        sesiAktifIdRef.current = sesi.id;
+        setSesiAktifId(sesi.id);
+      }
     }
     void muatKuota();
     if (
@@ -1144,10 +1177,24 @@ export default function TutorAI() {
   const bukaBagian = (bagian: BagianIsi) => {
     if (tahapBelajar === bagian) {
       setPesanGalat("");
+      setPesanKunci("");
       setTahapBelajar("pilih");
       return;
     }
+    if (bagianWajibMateriTuntas(bagian) && !audioCompleted) {
+      setPesanKunci(
+        "Dengarkan audio di kartu Materi sampai tuntas dulu. Setelah itu kartu Simulasi, Latihan, Praktikum, dan Ujian bisa dibuka.",
+      );
+      setTahapBelajar("materi");
+      window.setTimeout(() => {
+        document
+          .getElementById("kartu-bagian-materi")
+          ?.scrollIntoView({ behavior: "smooth", block: "start" });
+      }, 50);
+      return;
+    }
     setPesanGalat("");
+    setPesanKunci("");
     setTahapBelajar(bagian);
     if (bagian === "latihan") {
       void muatBagianNaskah("latihan");
@@ -1176,6 +1223,26 @@ export default function TutorAI() {
     setSudutPandang(null);
     sesiAktifIdRef.current = null;
     naskahJalanRef.current.clear();
+    setSesiAktifId(null);
+    setAudioCompleted(false);
+    setPesanKunci("");
+    setTahapBelajar("pilih");
+    const mapelKirim = teksQuery(params.get("mapel"), "");
+    const materiKirim = teksQuery(params.get("materi"), "");
+    const kelasKirim = teksQuery(params.get("kelas"), kelas);
+    if (namaSesi.trim() && mapelKirim && materiKirim) {
+      const sesiLama = cariSesiBab({
+        nama: namaSesi,
+        kelas: kelasKirim,
+        mapel: mapelKirim,
+        materi: materiKirim,
+      });
+      if (sesiLama) {
+        sesiAktifIdRef.current = sesiLama.id;
+        setSesiAktifId(sesiLama.id);
+        if (sesiLama.audioCompleted) setAudioCompleted(true);
+      }
+    }
   }, [kunciSesiMulai]);
 
   useEffect(() => {
@@ -1706,6 +1773,7 @@ export default function TutorAI() {
     setStatusUjian("siaga");
     setPesanUjian("");
     setAudioCompleted(false);
+    setPesanKunci("");
     setTahapBelajar("pilih");
     setSesiMapel("");
     setSesiMateri("");
@@ -1768,10 +1836,23 @@ export default function TutorAI() {
             </p>
           </div>
 
+          {pesanKunci ? (
+            <div className="mb-4 rounded-2xl border-2 border-[#F0AB00] bg-[#F0AB00]/15 p-4 text-sm font-bold text-[#1C01A5]">
+              {pesanKunci}
+            </div>
+          ) : (
+            <p className="mb-4 text-sm font-bold text-[#1C01A5]/75">
+              {audioCompleted
+                ? "Audio Materi sudah tuntas. Kartu Simulasi, Latihan, Praktikum, dan Ujian bisa dibuka secara bebas."
+                : "Audio Materi wajib dituntaskan dulu. Kartu Simulasi, Latihan, Praktikum, dan Ujian masih terkunci."}
+            </p>
+          )}
+
           <div className="space-y-8">
             <KartuBagianModul
               daftar={opsiBagian}
               aktif={tahapBelajar}
+              materiTuntas={audioCompleted}
               onPilih={bukaBagian}
               isi={{
                 silabus: (

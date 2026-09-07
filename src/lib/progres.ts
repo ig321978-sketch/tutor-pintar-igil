@@ -155,6 +155,26 @@ export function sesiSudahBelajar(sesi: SesiModul): boolean {
   return Boolean(sesi.audioCompleted);
 }
 
+function samaTeks(a: string, b: string): boolean {
+  return a.trim().toLowerCase() === b.trim().toLowerCase();
+}
+
+export function cariSesiBab(opsi: {
+  nama: string;
+  kelas: string;
+  mapel: string;
+  materi: string;
+}): SesiModul | null {
+  const cocok = bacaProgres().sesi.filter(
+    (sesi) =>
+      samaTeks(sesi.nama, opsi.nama) &&
+      samaTeks(sesi.kelas, opsi.kelas) &&
+      samaTeks(sesi.mapel, opsi.mapel) &&
+      samaTeks(sesi.materi, opsi.materi),
+  );
+  return cocok.find((sesi) => sesi.audioCompleted) ?? cocok[0] ?? null;
+}
+
 function jawabanLatihan(kunciSesi: Record<string, string>): number {
   return Object.keys(kunciSesi).filter((nomor) => {
     const nilai = Number(nomor);

@@ -22,4 +22,13 @@ export function butuhNaskahAi(bagian: BagianModul): boolean {
   return bagian === "latihan";
 }
 
+export function bagianWajibMateriTuntas(bagian: BagianModul): boolean {
+  return (
+    bagian === "simulasi" ||
+    bagian === "latihan" ||
+    bagian === "praktikum" ||
+    bagian === "ujian"
+  );
+}
+
 export type BagianNaskah = "kurikulum" | "global" | "latihan";
