@@ -203,13 +203,6 @@ export default function StudioKreatorDetail({
           disabled={sibuk}
           onChange={(nilai) => setIsi((sekarang) => ({ ...sekarang, motivasi: nilai }))}
         />
-        <KolomTeks
-          label="Kode SVG (opsional)"
-          nilai={isi.svgCode}
-          tinggi="min-h-24"
-          disabled={sibuk}
-          onChange={(nilai) => setIsi((sekarang) => ({ ...sekarang, svgCode: nilai }))}
-        />
       </div>
 
       <div className="mt-8 flex flex-col gap-3 sm:flex-row">

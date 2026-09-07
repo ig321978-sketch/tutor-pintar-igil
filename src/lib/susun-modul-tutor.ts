@@ -44,9 +44,6 @@ export type ModulTutor = {
   referensiUrl?: string;
 };
 
-export const SVG_CADANGAN =
-  "<svg viewBox='0 0 400 220' xmlns='http://www.w3.org/2000/svg'><rect width='400' height='220' fill='#fbf6ea'/><path d='M12 48 Q200 42 388 50' stroke='#d7eee9' fill='none' stroke-width='1'/><path d='M10 92 Q210 86 390 94' stroke='#d7eee9' fill='none' stroke-width='1'/><path d='M14 136 Q190 142 386 134' stroke='#d7eee9' fill='none' stroke-width='1'/><path d='M18 180 Q220 174 384 182' stroke='#d7eee9' fill='none' stroke-width='1'/><path d='M78 158 Q86 96 132 78 Q168 66 186 102 Q198 148 154 168 Q108 184 78 158' fill='none' stroke='#0f766e' stroke-width='2.4' stroke-linecap='round'/><path d='M118 118 Q138 108 156 126' fill='none' stroke='#f59e0b' stroke-width='2' stroke-linecap='round'/><path d='M232 74 L238 166 L318 158 L304 68 Z' fill='none' stroke='#0f766e' stroke-width='2.2' stroke-linecap='round' stroke-linejoin='round'/><path d='M248 92 Q270 88 292 96' fill='none' stroke='#f59e0b' stroke-width='1.8'/><path d='M252 118 Q276 112 296 122' fill='none' stroke='#0f766e' stroke-width='1.6'/><path d='M338 48 Q348 38 360 52 Q348 58 338 48' fill='none' stroke='#f59e0b' stroke-width='1.8' stroke-linecap='round'/></svg>";
-
 export const SKEMA_MODUL: Schema = {
   type: Type.OBJECT,
   properties: {
@@ -91,10 +88,9 @@ ATURAN MERMAID (WAJIB, jika ada diagram):
 - Rumus di label ditulis kata biasa, bukan LaTeX. Contoh: A['F = k q1 q2 / r2']
 - Maksimal 8 node. Tutup blok dengan pagar mermaid.
 
-ATURAN SVG (WAJIB, jika Mermaid tidak cukup):
-Jika materi memerlukan ilustrasi geometris, diagram vektor fisika (seperti arah gaya Coulomb), atau ilustrasi presisi lainnya yang tidak cocok menggunakan Mermaid, Anda WAJIB menghasilkannya menggunakan kode SVG murni. Bungkus kode SVG tersebut di dalam blok kode Markdown dengan label bahasa 'svg' (yaitu: \`\`\`svg ...kode... \`\`\`). Pastikan SVG menggunakan atribut viewBox agar responsif dan tidak menggunakan ukuran width/height statis yang kaku.
-- Di dalam JSON, semua atribut SVG memakai kutip tunggal, bukan kutip ganda. Contoh: <svg viewBox='0 0 400 240' xmlns='http://www.w3.org/2000/svg'>
-- DILARANG script, onclick, atau tautan javascript.`;
+ATURAN DIAGRAM (WAJIB):
+- Diagram alur/bagan HANYA mermaid. Ilustrasi benda atau adegan HANYA lewat sketsaKartu (doodle gambar), bukan kode gambar.
+- DILARANG menulis blok \`\`\`svg, tag <svg>, atau teks di dalam gambar.`;
 }
 
 export function instruksiPencarianKurikulum(opsi: {
@@ -121,8 +117,8 @@ Think step-by-step SEBELUM menulis JSON akhir:
 5) Susun bank soal baku: 10 PG (3 Reguler + 7 HOTS) dan 3 Essay (1 Reguler + 2 HOTS).
 6) Baru keluarkan SATU objek JSON. Jangan keluarkan langkah berpikir ke pengguna.
 
-Saat menyusun materi, patuhi format berikut: 1. Gunakan paragraf mikro (2-3 kalimat). 2. WAJIB gunakan sintaks LaTeX untuk rumus matematika/sains ($$ untuk block/berdiri sendiri, $ untuk inline). Berikan keterangan variabel di bawah rumus. 3. Jika materi membutuhkan diagram, bagan, atau ilustrasi konsep, WAJIB buat kode text-based menggunakan sintaks blok kode mermaid. Jika Mermaid tidak cukup untuk ilustrasi geometris atau diagram vektor, WAJIB pakai blok kode SVG (\`\`\`svg). 4. Gunakan Markdown untuk penataan hierarki (Heading 2, Heading 3, List).
-Format itu berlaku DI DALAM nilai JSON (curriculum_view dan global_best_view), bukan di luar objek JSON. Respons tetap SATU objek JSON murni. Di mermaid dan SVG, pakai kutip tunggal, jangan kutip ganda. Jangan menyalin hasil pencarian mentah.
+Saat menyusun materi, patuhi format berikut: 1. Gunakan paragraf mikro (2-3 kalimat). 2. WAJIB gunakan sintaks LaTeX untuk rumus matematika/sains ($$ untuk block/berdiri sendiri, $ untuk inline). Berikan keterangan variabel di bawah rumus. 3. Jika materi membutuhkan diagram, bagan, atau alur konsep, WAJIB buat kode mermaid. DILARANG blok SVG atau tag <svg> di dalam naskah. 4. Gunakan Markdown untuk penataan hierarki (Heading 2, Heading 3, List).
+Format itu berlaku DI DALAM nilai JSON (curriculum_view dan global_best_view), bukan di luar objek JSON. Respons tetap SATU objek JSON murni. Di mermaid, pakai kutip tunggal, jangan kutip ganda. Jangan menyalin hasil pencarian mentah.
 Di string JSON, setiap backslash LaTeX WAJIB digandakan. Contoh benar: $$F = k \\\\frac{q_1 q_2}{r^2}$$ dan $$\\\\vec{E}$$. DILARANG menulis \\vec atau \\frac tanpa digandakan.
 ${aturanMermaidDanLatex()}`;
 }
@@ -140,7 +136,7 @@ CONTOH TEMPLAT JSON (ikuti struktur, JANGAN salin isinya):
   'curriculum_view': 'Menjumlah sampai 100.\\nAmati pensil di meja kelas.\\nUraian konsep penjumlahan sesuai buku siswa.\\n\\nMengurai puluhan dan satuan.\\nPuluhan adalah ikatan 10. Satuan adalah sisa.',
   'global_best_view': 'Menjumlah sampai 100.\\nBayangkan pensil diikat jadi bundel 10.\\n\\nMengurai puluhan dan satuan.\\nBundel = puluhan, sisa longgar = satuan.',
   'sketsaKartu': 'Meja dan tumpuk pensil.\\n\\nDua ikat puluhan dan sisa satuan.',
-  'svgCode': '<svg viewBox=''0 0 400 220'' xmlns=''http://www.w3.org/2000/svg''><rect width=''400'' height=''220'' fill=''#fbf6ea''/></svg>',
+  'svgCode': '',
   'pertanyaan': '[Soal 1 - PG - Tipe: Reguler]\\nAda 12 kelereng lalu bertambah 7. Jumlahnya?\\nA) 17\\nB) 18\\nC) 19\\nD) 20\\n\\n[Soal 2 - PG - Tipe: Reguler]\\n...\\n\\n[Soal 3 - PG - Tipe: Reguler]\\n...\\n\\n[Soal 4 - PG - Tipe: HOTS]\\n...\\n\\n(lanjut Soal 5-10 HOTS, format sama)',
   'kunciJawaban': 'A,C,B,D,A,B,C,D,A,B',
   'esai': '[Soal Esai 1 - Tipe: Reguler]\\nJelaskan cara mengurai 34 menjadi puluhan dan satuan.\\n\\n[Soal Esai 2 - Tipe: HOTS]\\nBandingkan dua cara menjumlah 28 + 15 dan pilih yang lebih efisien.\\n\\n[Soal Esai 3 - Tipe: HOTS]\\nBuat soal cerita sendiri lalu uraikan langkah penyelesaiannya.',
@@ -282,18 +278,14 @@ function amanNaskahModul(nilai: unknown, cadangan: string, nama: string): string
 }
 
 function amankanSvg(nilai: unknown): string {
-  let svg = typeof nilai === "string" ? nilai : SVG_CADANGAN;
-  svg = svg
+  if (typeof nilai !== "string" || !nilai.trim()) return "";
+  const svg = nilai
     .replace(/```svg/gi, "")
     .replace(/```/g, "")
     .replace(/[\r\n\t]+/g, " ")
     .replace(/"/g, "'")
     .trim();
-
-  if (!svg.toLowerCase().includes("<svg")) {
-    return SVG_CADANGAN;
-  }
-
+  if (!svg.toLowerCase().includes("<svg")) return "";
   return svg;
 }
 
@@ -387,15 +379,15 @@ ${CONTOH_FEW_SHOT}
 ATURAN MUTLAK:
 1. Respons HANYA 1 objek JSON murni. Tanpa kalimat pengantar, tanpa penutup. Markdown, LaTeX, dan mermaid HANYA boleh di dalam nilai curriculum_view dan global_best_view.
 2. DILARANG memakai tanda kutip ganda (") di dalam nilai teks JSON. Gunakan kutip tunggal (') jika perlu. Setiap backslash LaTeX digandakan: \\\\frac \\\\vec \\\\times.
-3. svgCode WAJIB SVG valid. Semua atribut memakai kutip tunggal. Jangan pakai kutip ganda di SVG.
-4. Saat menyusun materi, patuhi format berikut: 1. Gunakan paragraf mikro (2-3 kalimat). 2. WAJIB gunakan sintaks LaTeX untuk rumus matematika/sains ($$ untuk block/berdiri sendiri, $ untuk inline). Berikan keterangan variabel di bawah rumus. 3. Jika materi membutuhkan diagram, bagan, atau ilustrasi konsep, WAJIB buat kode text-based menggunakan sintaks blok kode mermaid. 4. Gunakan Markdown untuk penataan hierarki (Heading 2, Heading 3, List). 5. Di AKHIR curriculum_view, setelah semua subbab, tulis TEPAT 2 contoh soal tuntas (bukan PG) berjudul 'Contoh soal 1' dan 'Contoh soal 2', masing-masing memuat Soal, Langkah penyelesaian, dan Jawaban.
+3. svgCode HARUS string kosong. Jangan menulis kode SVG.
+4. Saat menyusun materi, patuhi format berikut: 1. Gunakan paragraf mikro (2-3 kalimat). 2. WAJIB gunakan sintaks LaTeX untuk rumus matematika/sains ($$ untuk block/berdiri sendiri, $ untuk inline). Berikan keterangan variabel di bawah rumus. 3. Jika materi membutuhkan diagram, bagan, atau alur konsep, WAJIB buat kode mermaid. DILARANG \`\`\`svg dan tag <svg>. 4. Gunakan Markdown untuk penataan hierarki (Heading 2, Heading 3, List). 5. Di AKHIR curriculum_view, setelah semua subbab, tulis TEPAT 2 contoh soal tuntas (bukan PG) berjudul 'Contoh soal 1' dan 'Contoh soal 2', masing-masing memuat Soal, Langkah penyelesaian, dan Jawaban.
 ${aturanMermaidDanLatex()}
 
 STANDAR KONTEN:
 1. sapaan: SATU kalimat pendek untuk dibaca suara. Sebut HANYA nama depan ${opsi.namaDepan}. Sertakan TEPAT SATU kata pujian dari: Pintar, Cerdas, Baik, Rajin, Soleh, Semangat, Hebat. DILARANG pujian panjang, julukan berlebihan, atau nama lengkap. Contoh: 'Halo ${opsi.namaDepan}, Pintar.'
 ${instruksiPenjelasan(opsi.kelas, opsi.namaDepan, opsi.mapel, opsi.materi)}
 3. sketsaKartu: TEPAT sama jumlahnya dengan kartu di curriculum_view. Setiap blok SATU kalimat visual doodle kecil (satu benda atau adegan mini), dipisah \\n\\n, urutan sama dengan kartu. Semua sketsa HARUS berbeda. Tanpa teks tertulis di gambar.
-4. svgCode: cadangan doodle SVG sketsa tangan (viewBox 0 0 400 220), kertas krem, garis tinta navy #1C01A5 saja. Tanpa kutip ganda.
+4. svgCode: string kosong. Ilustrasi hanya doodle dari sketsaKartu, bukan SVG.
 5. pertanyaan: TEPAT 10 soal PILIHAN GANDA dalam SATU string panjang, dipisah \\n\\n.
    Komposisi wajib berurutan: 3 soal Reguler (Soal 1-3) + 7 soal HOTS (Soal 4-10).
    DILARANG menuliskan label kunci, huruf jawaban, atau pembahasan di dalam field pertanyaan.

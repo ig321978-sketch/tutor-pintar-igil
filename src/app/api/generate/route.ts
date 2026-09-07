@@ -17,7 +17,7 @@ export async function POST(req: Request) {
       Topik/Materi: ${materi}.
 
       Tugas: Berikan sapaan, jelaskan materi dengan bahasa yang mudah dipahami sesuai umur/kelas, dan berikan 1 contoh soal beserta jawabannya.
-      Saat menyusun materi, patuhi format berikut: 1. Gunakan paragraf mikro (2-3 kalimat). 2. WAJIB gunakan sintaks LaTeX untuk rumus matematika/sains ($$ untuk block/berdiri sendiri, $ untuk inline). 3. Jika materi membutuhkan diagram, bagan, atau ilustrasi konsep, WAJIB buat kode mermaid atau blok kode SVG (\`\`\`svg). 4. Gunakan Markdown untuk penataan hierarki.
+      Saat menyusun materi, patuhi format berikut: 1. Gunakan paragraf mikro (2-3 kalimat). 2. WAJIB gunakan sintaks LaTeX untuk rumus matematika/sains ($$ untuk block/berdiri sendiri, $ untuk inline). 3. Jika materi membutuhkan diagram, bagan, atau alur konsep, WAJIB buat kode mermaid. DILARANG blok SVG. 4. Gunakan Markdown untuk penataan hierarki.
     `,
       4096,
       undefined,

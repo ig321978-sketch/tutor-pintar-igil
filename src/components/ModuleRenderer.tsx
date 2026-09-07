@@ -19,7 +19,6 @@ import {
   labelDariMermaid,
   mermaidSederhanaDariLabel,
 } from "@/lib/bersihkan-mermaid";
-import { bersihkanSumberSvg } from "@/lib/bersihkan-svg";
 import RumusKatex from "@/components/RumusKatex";
 
 let mermaidSiap = false;
@@ -149,23 +148,6 @@ const DiagramMermaid = memo(function DiagramMermaid({
   );
 });
 
-const DiagramSvg = memo(function DiagramSvg({ sumber }: { sumber: string }) {
-  const svg = useMemo(() => bersihkanSumberSvg(sumber), [sumber]);
-  if (!svg) {
-    return (
-      <p className="text-center text-sm font-medium text-slate-600">
-        Ilustrasi tidak dapat ditampilkan.
-      </p>
-    );
-  }
-  return (
-    <figure
-      className="igil-diagram-svg not-prose flex justify-center overflow-x-auto rounded-2xl border-2 border-[#1C01A5]/10 bg-white p-3"
-      dangerouslySetInnerHTML={{ __html: svg }}
-    />
-  );
-});
-
 function SegmenTampil({ segmen }: { segmen: SegmenTeks }) {
   if (segmen.jenis === "rumus") {
     return <RumusKatex latex={segmen.isi} />;
@@ -284,9 +266,6 @@ function BlokTampil({ blok, padat }: { blok: BlokNaskahModul; padat: boolean }) 
 
   if (blok.jenis === "mermaid") {
     return <DiagramMermaid sumber={blok.sumber} />;
-  }
-  if (blok.jenis === "svg") {
-    return <DiagramSvg sumber={blok.sumber} />;
   }
   if (blok.jenis === "kode") {
     return (

@@ -8,7 +8,6 @@ export type BlokNaskahModul =
   | { jenis: "rumus"; latex: string; keterangan?: string }
   | { jenis: "daftar"; berurutan: boolean; item: string[] }
   | { jenis: "mermaid"; sumber: string }
-  | { jenis: "svg"; sumber: string }
   | { jenis: "kode"; bahasa: string; sumber: string }
   | { jenis: "kotak"; gaya: GayaKotakBuku; judul: string; teks: string }
   | { jenis: "tabel"; header: string[]; baris: string[][] };
@@ -60,15 +59,13 @@ export function latexLayakSebagaiRumus(isi: string): boolean {
   );
 }
 
-function blokPagar(mentah: string): BlokNaskahModul {
+function blokPagar(mentah: string): BlokNaskahModul | null {
   const teks = mentah.trim();
   const cocok = /^(```|~~~)([^\n]*)\n?([\s\S]*?)\s*\1$/.exec(teks);
   const bahasa = (cocok?.[2] ?? "").trim().toLowerCase();
   const sumber = (cocok?.[3] ?? teks.replace(/^(```|~~~)|```$|~~~$/g, "")).trim();
+  if (bahasa === "svg" || /^<svg\b/i.test(sumber)) return null;
   if (bahasa === "mermaid") return { jenis: "mermaid", sumber };
-  if (bahasa === "svg" || /^<svg\b/i.test(sumber)) {
-    return { jenis: "svg", sumber };
-  }
   return { jenis: "kode", bahasa: bahasa || "teks", sumber };
 }
 
@@ -312,7 +309,8 @@ export function pecahBlokNaskahModul(mentah: string): BlokNaskahModul[] {
     if (!bagian) continue;
     const potong = bagian.trim();
     if (/^(```|~~~)/.test(potong)) {
-      blok.push(blokPagar(potong));
+      const pagar = blokPagar(potong);
+      if (pagar) blok.push(pagar);
       continue;
     }
     if (potong.startsWith("$$")) {
