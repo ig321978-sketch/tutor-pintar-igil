@@ -1,5 +1,9 @@
 import { NextResponse } from "next/server";
-import { elevenLabsSiapDipakai, sintesisElevenLabs } from "@/lib/elevenlabs-tts";
+import {
+  daftarRingkasSuaraEleven,
+  elevenLabsSiapDipakai,
+  sintesisElevenLabs,
+} from "@/lib/elevenlabs-tts";
 import { naskahLisan } from "@/lib/naskah-lisan";
 import { normalisasiKelaminTts, waktuKataDariDurasi } from "@/lib/tts";
 
@@ -66,7 +70,16 @@ export async function POST(req: Request) {
   }
 }
 
-export async function GET() {
+export async function GET(req: Request) {
+  const url = new URL(req.url);
+  if (url.searchParams.get("suara") === "1") {
+    const daftar = await daftarRingkasSuaraEleven();
+    return NextResponse.json({
+      berhasil: elevenLabsSiapDipakai(),
+      sumber: "elevenlabs",
+      ...daftar,
+    });
+  }
   return NextResponse.json({
     berhasil: elevenLabsSiapDipakai(),
     sumber: "elevenlabs",
