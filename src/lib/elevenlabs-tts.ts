@@ -1,3 +1,4 @@
+import { jenjangGuru, type JenjangGuru } from "@/lib/guru";
 import type { KelaminTts } from "@/lib/tts";
 
 const URL_DASAR = "https://api.elevenlabs.io/v1";
@@ -28,6 +29,86 @@ function kunciApiEleven(): string {
 
 function modelEleven(): string {
   return process.env.ELEVENLABS_MODEL?.trim() || MODEL_BAWAAN;
+}
+
+type SlotSuaraGuru = {
+  id: string;
+  namaPustaka: string;
+  guru: string;
+  peran: string;
+};
+
+const SUARA_PER_JENJANG: Record<
+  JenjangGuru,
+  Record<KelaminTts, SlotSuaraGuru>
+> = {
+  SD: {
+    female: {
+      id: "Xb7hH8MSUJpSbSDYk0k2",
+      namaPustaka: "Alice",
+      guru: "Bu Sari",
+      peran: "Guru SD yang sabar dan ceria, tempo pelan",
+    },
+    male: {
+      id: "IKne3meq5aSn9XLyUdCD",
+      namaPustaka: "Charlie",
+      guru: "Pak Budi",
+      peran: "Guru SD yang ramah dan semangat",
+    },
+  },
+  SMP: {
+    female: {
+      id: "XrExE9yKIg1WjnnlVkGX",
+      namaPustaka: "Matilda",
+      guru: "Bu Laila",
+      peran: "Guru SMP yang tegas, jelas, dan mendukung",
+    },
+    male: {
+      id: "onwK4e9ZLuTAKqWW03F9",
+      namaPustaka: "Daniel",
+      guru: "Pak Andra",
+      peran: "Guru SMP yang santai dan runtut",
+    },
+  },
+  SMA: {
+    female: {
+      id: "EXAVITQu4vr4xnSDxMaL",
+      namaPustaka: "Sarah",
+      guru: "Bu Maya",
+      peran: "Guru SMA yang analitis dan hangat",
+    },
+    male: {
+      id: "JBFqnCBsd6RMkjVDRZzb",
+      namaPustaka: "George",
+      guru: "Pak Dimas",
+      peran: "Guru SMA yang fokus dan profesional",
+    },
+  },
+};
+
+function slotSuaraGuru(kelas: string, kelamin: KelaminTts): SlotSuaraGuru {
+  return SUARA_PER_JENJANG[jenjangGuru(kelas)][kelamin];
+}
+
+function idSuaraDariEnv(kelas: string, kelamin: KelaminTts): string {
+  const jenjang = jenjangGuru(kelas);
+  const akhir = kelamin === "male" ? "PRIA" : "WANITA";
+  return (
+    process.env[`ELEVENLABS_VOICE_${jenjang}_${akhir}`]?.trim() ||
+    process.env[`ELEVENLABS_VOICE_${akhir}`]?.trim() ||
+    ""
+  );
+}
+
+function pengaturanSuaraJenjang(kelas: string) {
+  const jenjang = jenjangGuru(kelas);
+  if (jenjang === "SD") {
+    return { stability: 0.62, similarity_boost: 0.72, style: 0.22, speed: 0.88 };
+  }
+  if (jenjang === "SMP") {
+    return { stability: 0.55, similarity_boost: 0.74, style: 0.12, speed: 0.94 };
+  }
+  return { stability: 0.5, similarity_boost: 0.76, style: 0.08, speed: 0.98 };
 }
 
 function pecahKalimat(teks: string, batas: number): string[] {
@@ -132,7 +213,6 @@ export function durasiWavEleven(wav: Buffer, sampleRate = SAMPLE_RATE): number {
 }
 
 let cacheSuara: SuaraEleven[] | null = null;
-const sedangBuatSuara = new Map<KelaminTts, Promise<string>>();
 
 async function daftarSuaraEleven(
   kunci: string,
@@ -183,7 +263,11 @@ export async function daftarRingkasSuaraEleven(): Promise<{
   };
 }
 
-function skorSuaraMilik(suara: SuaraEleven, kelamin: KelaminTts): number {
+function skorSuaraMilik(
+  suara: SuaraEleven,
+  kelamin: KelaminTts,
+  jenjang: JenjangGuru,
+): number {
   const kategori = String(suara.category ?? "").toLowerCase();
   if (kategori === "premade" || kategori === "professional") return -1;
   const label = Object.values(suara.labels ?? {})
@@ -200,7 +284,16 @@ function skorSuaraMilik(suara: SuaraEleven, kelamin: KelaminTts): number {
       : /female|wanita|woman|perempuan/.test(nama);
   let skor = kategori === "generated" ? 40 : kategori === "cloned" ? 20 : 5;
   if (cocokKelamin) skor += 15;
-  if (/igil|guru|sari|budi|laila|andra|maya|dimas/.test(nama)) skor += 20;
+  const polaJenjang =
+    jenjang === "SD"
+      ? /sari|budi|sd|cerita|ceria/
+      : jenjang === "SMP"
+        ? /laila|andra|smp/
+        : /maya|dimas|sma|analitis/;
+  if (polaJenjang.test(nama) || new RegExp(`igil[-_ ]?${jenjang}`, "i").test(nama)) {
+    skor += 25;
+  }
+  if (/igil|guru/.test(nama)) skor += 8;
   if (/\bid\b|indonesia|indonesian/.test(`${nama} ${bahasa}`)) skor += 12;
   if (/narrat|teacher|educat|calm|warm|soft|friendly/.test(nama)) skor += 4;
   return skor;
@@ -209,108 +302,68 @@ function skorSuaraMilik(suara: SuaraEleven, kelamin: KelaminTts): number {
 function pilihSuaraMilik(
   daftar: SuaraEleven[],
   kelamin: KelaminTts,
+  jenjang: JenjangGuru,
 ): string | null {
   const terpilih = [...daftar]
-    .map((item) => ({ item, skor: skorSuaraMilik(item, kelamin) }))
+    .map((item) => ({ item, skor: skorSuaraMilik(item, kelamin, jenjang) }))
     .filter((item) => item.skor >= 20 && item.item.voice_id)
     .sort((a, b) => b.skor - a.skor)[0]?.item.voice_id;
   return terpilih ?? null;
 }
 
-const DESKRIPSI_GURU: Record<KelaminTts, { nama: string; deskripsi: string }> = {
-  female: {
-    nama: "IGIL Guru Wanita",
-    deskripsi:
-      "A warm, patient Indonesian female elementary school teacher, mid-thirties, clear diction, gentle and cheerful, native Bahasa Indonesia accent, suitable for classroom narration.",
-  },
-  male: {
-    nama: "IGIL Guru Pria",
-    deskripsi:
-      "A friendly, encouraging Indonesian male elementary school teacher, mid-thirties, clear diction, calm and energetic, native Bahasa Indonesia accent, suitable for classroom narration.",
-  },
-};
-
-const TEKS_CONTOH_SUARA =
-  "Hallo anak-anak, apa khabar? Hari ini kita belajar bersama dengan sabar dan ceria. Dengarkan baik-baik, ikuti langkahnya pelan-pelan, dan kamu pasti bisa memahami materinya sampai tuntas.";
-
-async function buatSuaraGuru(
-  kelamin: KelaminTts,
-  kunci: string,
-): Promise<string> {
-  const profil = DESKRIPSI_GURU[kelamin];
-  const desain = await fetch(`${URL_DASAR}/text-to-voice/design`, {
-    method: "POST",
-    headers: {
-      "content-type": "application/json",
-      "xi-api-key": kunci,
-    },
-    body: JSON.stringify({
-      voice_description: profil.deskripsi,
-      text: TEKS_CONTOH_SUARA,
-      auto_generate_text: false,
-      model_id: "eleven_multilingual_ttv_v2",
+export function klasifikasiSuaraGuruEleven(): Array<{
+  jenjang: JenjangGuru;
+  kelamin: KelaminTts;
+  guru: string;
+  peran: string;
+  pustaka: string;
+  id: string;
+}> {
+  return (["SD", "SMP", "SMA"] as JenjangGuru[]).flatMap((jenjang) =>
+    (["female", "male"] as KelaminTts[]).map((kelamin) => {
+      const slot = SUARA_PER_JENJANG[jenjang][kelamin];
+      return {
+        jenjang,
+        kelamin,
+        guru: slot.guru,
+        peran: slot.peran,
+        pustaka: slot.namaPustaka,
+        id: slot.id,
+      };
     }),
-  });
-  if (!desain.ok) {
-    throw new Error(
-      "Akun ElevenLabs gratis tidak bisa memakai suara perpustakaan lewat API. Buka https://elevenlabs.io/app/voice-lab , buat suara Guru Wanita dan Guru Pria lewat Voice Design, lalu isi ELEVENLABS_VOICE_WANITA dan ELEVENLABS_VOICE_PRIA dengan ID suara itu.",
-    );
-  }
-  const hasilDesain = (await desain.json()) as {
-    previews?: Array<{ generated_voice_id?: string }>;
-  };
-  const generatedId = hasilDesain.previews?.[0]?.generated_voice_id;
-  if (!generatedId) {
-    throw new Error("ElevenLabs tidak mengembalikan pratinjau suara guru.");
-  }
-  const simpan = await fetch(`${URL_DASAR}/text-to-voice`, {
-    method: "POST",
-    headers: {
-      "content-type": "application/json",
-      "xi-api-key": kunci,
-    },
-    body: JSON.stringify({
-      voice_name: profil.nama,
-      voice_description: profil.deskripsi,
-      generated_voice_id: generatedId,
-      labels: {
-        gender: kelamin === "male" ? "male" : "female",
-        language: "id",
-        accent: "indonesian",
-        use_case: "e-learning",
-      },
-    }),
-  });
-  if (!simpan.ok) {
-    throw new Error(await pesanGalatEleven(simpan));
-  }
-  const tersimpan = (await simpan.json()) as { voice_id?: string };
-  cacheSuara = null;
-  if (!tersimpan.voice_id) {
-    throw new Error("ElevenLabs gagal menyimpan suara guru.");
-  }
-  return tersimpan.voice_id;
+  );
 }
 
-export async function suaraElevenGuru(kelamin: KelaminTts): Promise<string> {
-  const paksa =
-    kelamin === "male"
-      ? process.env.ELEVENLABS_VOICE_PRIA?.trim()
-      : process.env.ELEVENLABS_VOICE_WANITA?.trim();
-  if (paksa) return paksa;
+export async function siapkanKeduaSuaraGuru(): Promise<{
+  wanita: string;
+  pria: string;
+}> {
+  return {
+    wanita: await suaraElevenGuru("female", "4 SD"),
+    pria: await suaraElevenGuru("male", "4 SD"),
+  };
+}
+
+export async function suaraElevenGuru(
+  kelamin: KelaminTts,
+  kelas = "3 SD",
+): Promise<string> {
+  const dariEnv = idSuaraDariEnv(kelas, kelamin);
+  if (dariEnv) return dariEnv;
   const kunci = kunciApiEleven();
-  if (!kunci) {
-    throw new Error("ELEVENLABS_API_KEY belum disetel.");
+  if (kunci) {
+    try {
+      const milik = pilihSuaraMilik(
+        await daftarSuaraEleven(kunci),
+        kelamin,
+        jenjangGuru(kelas),
+      );
+      if (milik) return milik;
+    } catch {
+      // pakai klasifikasi jenjang
+    }
   }
-  const milik = pilihSuaraMilik(await daftarSuaraEleven(kunci), kelamin);
-  if (milik) return milik;
-  const sedang = sedangBuatSuara.get(kelamin);
-  if (sedang) return sedang;
-  const buat = buatSuaraGuru(kelamin, kunci).finally(() => {
-    sedangBuatSuara.delete(kelamin);
-  });
-  sedangBuatSuara.set(kelamin, buat);
-  return buat;
+  return slotSuaraGuru(kelas, kelamin).id;
 }
 
 async function pesanGalatEleven(respons: Response): Promise<string> {
@@ -327,7 +380,7 @@ async function pesanGalatEleven(respons: Response): Promise<string> {
   }
   if (respons.status === 401) return "Kunci ElevenLabs tidak valid.";
   if (respons.status === 402) {
-    return "Akun ElevenLabs gratis tidak bisa memakai suara perpustakaan lewat API. Buat suara sendiri di Voice Design, lalu isi ELEVENLABS_VOICE_WANITA dan ELEVENLABS_VOICE_PRIA.";
+    return "Akun ElevenLabs gratis tidak bisa memakai suara perpustakaan lewat API. Buat 6 suara milik akun di Voice Design (SD/SMP/SMA × wanita/pria), lalu isi ELEVENLABS_VOICE_SD_WANITA sampai ELEVENLABS_VOICE_SMA_PRIA.";
   }
   return `ElevenLabs menolak permintaan (${respons.status}).`;
 }
@@ -336,6 +389,7 @@ async function sintesisSatu(
   teks: string,
   voiceId: string,
   kunci: string,
+  kelas: string,
   konteks?: { previous?: string; next?: string },
 ): Promise<Buffer> {
   const respons = await fetch(
@@ -351,11 +405,8 @@ async function sintesisSatu(
         text: teks,
         model_id: modelEleven(),
         voice_settings: {
-          stability: 0.55,
-          similarity_boost: 0.75,
-          style: 0.15,
+          ...pengaturanSuaraJenjang(kelas),
           use_speaker_boost: true,
-          speed: 0.96,
         },
         previous_text: konteks?.previous || undefined,
         next_text: konteks?.next || undefined,
@@ -371,19 +422,20 @@ async function sintesisSatu(
 export async function sintesisElevenLabs(
   teks: string,
   kelamin: KelaminTts,
+  kelas = "3 SD",
 ): Promise<{ audio: Buffer; mime: string; durasiDetik: number; suara: string }> {
   const kunci = kunciApiEleven();
   if (!kunci) {
     throw new Error("ELEVENLABS_API_KEY belum disetel.");
   }
-  const suara = await suaraElevenGuru(kelamin);
+  const suara = await suaraElevenGuru(kelamin, kelas);
   const potongan = potongNaskahEleven(teks);
   if (potongan.length === 0) {
     throw new Error("Naskah suara kosong.");
   }
   const pcmList: Buffer[] = [];
   for (let i = 0; i < potongan.length; i += 1) {
-    const audio = await sintesisSatu(potongan[i], suara, kunci, {
+    const audio = await sintesisSatu(potongan[i], suara, kunci, kelas, {
       previous: potongan[i - 1],
       next: potongan[i + 1],
     });

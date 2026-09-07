@@ -2,6 +2,8 @@ import { NextResponse } from "next/server";
 import {
   daftarRingkasSuaraEleven,
   elevenLabsSiapDipakai,
+  klasifikasiSuaraGuruEleven,
+  siapkanKeduaSuaraGuru,
   sintesisElevenLabs,
 } from "@/lib/elevenlabs-tts";
 import { naskahLisan } from "@/lib/naskah-lisan";
@@ -21,6 +23,15 @@ export async function POST(req: Request) {
         { berhasil: false, pesan: "Request tidak valid." },
         { status: 400 },
       );
+    }
+
+    if (body.siapkanGuru === true) {
+      const suara = await siapkanKeduaSuaraGuru();
+      return NextResponse.json({
+        berhasil: true,
+        sumber: "elevenlabs",
+        suara,
+      });
     }
 
     const teks =
@@ -52,7 +63,8 @@ export async function POST(req: Request) {
     }
 
     const kelamin = normalisasiKelaminTts(body.kelamin ?? body.gender);
-    const hasil = await sintesisElevenLabs(naskah, kelamin);
+    const kelas = typeof body.kelas === "string" ? body.kelas : "3 SD";
+    const hasil = await sintesisElevenLabs(naskah, kelamin, kelas);
     return NextResponse.json({
       berhasil: true,
       sumber: "elevenlabs",
@@ -83,5 +95,6 @@ export async function GET(req: Request) {
   return NextResponse.json({
     berhasil: elevenLabsSiapDipakai(),
     sumber: "elevenlabs",
+    klasifikasi: klasifikasiSuaraGuruEleven(),
   });
 }
