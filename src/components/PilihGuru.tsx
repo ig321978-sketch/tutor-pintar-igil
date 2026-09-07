@@ -48,7 +48,7 @@ export default function PilihGuru({ kelas, nilai, onGanti }: PropsPilihGuru) {
               className={`flex w-full items-center gap-4 rounded-2xl border-2 p-4 text-left transition-all ${
                 aktif
                   ? "border-[#1C01A5] bg-[#1C01A5]/5"
-                  : "border-[#1C01A5]/15 bg-white"
+                  : "border-[#1C01A5] bg-white"
               }`}
             >
               {/* eslint-disable-next-line @next/next/no-img-element */}

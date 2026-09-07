@@ -24,6 +24,56 @@ body {
   font-family: var(--font-geist-sans), Arial, Helvetica, sans-serif;
 }
 
+@layer base {
+  button,
+  [type="button"],
+  [type="submit"],
+  [type="reset"],
+  a.igil-tombol {
+    border-width: 2px;
+    border-style: solid;
+    border-color: currentColor;
+  }
+}
+
+button,
+[type="button"],
+[type="submit"],
+[type="reset"],
+a.igil-tombol {
+  transition:
+    transform 0.12s ease,
+    box-shadow 0.12s ease,
+    filter 0.12s ease,
+    background-color 0.15s ease,
+    border-color 0.15s ease;
+}
+
+button:hover:not(:disabled):not([aria-disabled="true"]),
+[type="button"]:hover:not(:disabled),
+[type="submit"]:hover:not(:disabled),
+a.igil-tombol:hover {
+  transform: translateY(-1px);
+}
+
+button:active:not(:disabled):not([aria-disabled="true"]),
+[type="button"]:active:not(:disabled),
+[type="submit"]:active:not(:disabled),
+a.igil-tombol:active {
+  transform: translateY(2px) scale(0.96);
+  filter: brightness(0.95);
+  box-shadow: 0 1px 0 rgb(22 1 122 / 0.28);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  button:hover:not(:disabled),
+  button:active:not(:disabled),
+  a.igil-tombol:hover,
+  a.igil-tombol:active {
+    transform: none;
+  }
+}
+
 .igil-buku {
   display: flex;
   flex-direction: column;

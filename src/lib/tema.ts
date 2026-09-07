@@ -14,4 +14,4 @@ export const kelasInput =
 export const kelasLabel = "block text-sm font-bold text-[#1C01A5] mb-2";
 
 export const kelasTombolUtama =
-  "bg-[#1C01A5] text-white hover:bg-[#16017a] transition-all disabled:opacity-70";
+  "igil-tombol bg-[#1C01A5] text-white border-2 border-[#F0AB00] hover:bg-[#16017a] transition-all disabled:opacity-70 disabled:pointer-events-none";

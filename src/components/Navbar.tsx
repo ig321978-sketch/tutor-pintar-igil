@@ -26,7 +26,7 @@ export default function Navbar() {
       <nav className="flex w-full items-center justify-between gap-4 px-2 py-3">
         <Link
           href="/ruang-belajar"
-          className="shrink-0 text-xl font-extrabold tracking-tight text-[#1C01A5]"
+          className="igil-tombol shrink-0 rounded-xl border-2 border-[#1C01A5] px-2 py-1 text-xl font-extrabold tracking-tight text-[#1C01A5]"
           onClick={() => setTerbuka(false)}
         >
           <span className="mr-1 text-[#F0AB00]">🎓</span>$IGIL
@@ -39,10 +39,10 @@ export default function Navbar() {
               <Link
                 key={item.href}
                 href={item.href}
-                className={`rounded-full px-3 py-2 text-sm font-bold transition-colors ${
+                className={`igil-tombol rounded-full px-3 py-2 text-sm font-bold transition-colors ${
                   aktif
-                    ? "bg-[#1C01A5] text-white"
-                    : "text-[#1C01A5] hover:bg-[#F0AB00]/15 hover:text-[#F0AB00]"
+                    ? "border-[#F0AB00] bg-[#1C01A5] text-white"
+                    : "border-[#1C01A5] text-[#1C01A5] hover:bg-[#F0AB00]/15 hover:text-[#F0AB00]"
                 }`}
               >
                 {item.label}
@@ -53,7 +53,7 @@ export default function Navbar() {
 
         <button
           type="button"
-          className="rounded-xl border border-[#1C01A5]/20 p-2 text-[#1C01A5] lg:hidden"
+          className="rounded-xl border-2 border-[#1C01A5] p-2 text-[#1C01A5] lg:hidden"
           onClick={() => setTerbuka((nilai) => !nilai)}
           aria-label={terbuka ? "Tutup menu" : "Buka menu"}
         >
@@ -70,10 +70,10 @@ export default function Navbar() {
                 key={item.href}
                 href={item.href}
                 onClick={() => setTerbuka(false)}
-                className={`block rounded-xl px-3 py-2 text-sm font-bold ${
+                className={`igil-tombol block rounded-xl px-3 py-2 text-sm font-bold ${
                   aktif
-                    ? "bg-[#1C01A5] text-white"
-                    : "text-[#1C01A5] hover:bg-[#F0AB00]/15"
+                    ? "border-[#F0AB00] bg-[#1C01A5] text-white"
+                    : "border-[#1C01A5] text-[#1C01A5] hover:bg-[#F0AB00]/15"
                 }`}
               >
                 {item.label}

@@ -66,7 +66,7 @@ export default function PemutarTutorMengambang({
           type="button"
           onClick={padaToggle}
           disabled={disabled}
-          className="flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-[#F0AB00] text-[#1C01A5] shadow-md transition-all hover:bg-[#e09e00] disabled:opacity-50"
+          className="flex h-12 w-12 shrink-0 items-center justify-center rounded-full border-2 border-[#1C01A5] bg-[#F0AB00] text-[#1C01A5] shadow-md transition-all hover:bg-[#e09e00] disabled:opacity-50"
           title={menyiapkan ? "Menyiapkan" : memutar ? "Jeda" : "Putar"}
           aria-label={
             menyiapkan
@@ -102,10 +102,10 @@ export default function PemutarTutorMengambang({
                   type="button"
                   onClick={() => padaPerlambat?.(tingkat)}
                   disabled={disabled || !padaPerlambat}
-                  className={`min-w-9 rounded-full px-2 py-1 text-[11px] font-extrabold tabular-nums transition-colors disabled:opacity-50 ${
+                  className={`min-w-9 rounded-full border-2 px-2 py-1 text-[11px] font-extrabold tabular-nums transition-colors disabled:opacity-50 ${
                     aktif
-                      ? "bg-[#F0AB00] text-[#1C01A5]"
-                      : "text-white/85 hover:bg-white/10"
+                      ? "border-[#1C01A5] bg-[#F0AB00] text-[#1C01A5]"
+                      : "border-white/70 text-white/85 hover:bg-white/10"
                   }`}
                   aria-pressed={aktif}
                   title={
