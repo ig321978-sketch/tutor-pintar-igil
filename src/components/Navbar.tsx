@@ -21,6 +21,8 @@ export default function Navbar() {
   const pathname = usePathname();
   const [terbuka, setTerbuka] = useState(false);
 
+  if (pathname.startsWith("/simulasi-embed")) return null;
+
   return (
     <header className="sticky top-0 z-40 border-b border-[#1C01A5]/10 bg-white">
       <nav className="flex w-full items-center justify-between gap-4 px-2 py-3">

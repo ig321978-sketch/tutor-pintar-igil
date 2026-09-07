@@ -58,7 +58,7 @@ export default function PanelSimulasiModul({
           onSelesai?.();
         }
       } catch {
-        if (hidup) setPesan("Tidak bisa memuat simulasi PhET.");
+        if (hidup) setPesan("Tidak bisa memuat simulasi interaktif.");
       } finally {
         if (hidup) setMemuat(false);
       }
@@ -72,7 +72,9 @@ export default function PanelSimulasiModul({
     return (
       <div className="flex items-center justify-center gap-3 py-10">
         <Loader2 className="h-6 w-6 animate-spin text-[#1C01A5]" />
-        <p className="font-extrabold text-[#1C01A5]">Mencari simulasi PhET...</p>
+        <p className="font-extrabold text-[#1C01A5]">
+          Mencari simulasi PhET, GeoGebra, dan Desmos...
+        </p>
       </div>
     );
   }
@@ -103,6 +105,7 @@ export default function PanelSimulasiModul({
               src={item.url}
               className="mt-4 h-[28rem] w-full rounded-2xl border border-[#1C01A5]/10 bg-slate-50"
               loading="lazy"
+              allow="fullscreen; autoplay; xr-spatial-tracking; clipboard-write"
               allowFullScreen
             />
           ) : (

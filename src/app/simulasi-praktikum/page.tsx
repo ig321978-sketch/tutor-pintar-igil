@@ -147,7 +147,7 @@ export default function SimulasiPraktikumPage() {
               ))}
             </select>
             <p className="mt-2 text-sm font-medium text-slate-500">
-              Hanya mapel yang punya simulasi PhET: matematika dan sains.
+              Hanya mapel lab: matematika dan sains. Sumber: PhET, GeoGebra, Desmos, Sketchfab.
             </p>
           </div>
 
@@ -292,6 +292,7 @@ export default function SimulasiPraktikumPage() {
                       src={item.url}
                       className="mt-4 h-[28rem] w-full rounded-2xl border border-[#1C01A5]/10 bg-slate-50"
                       loading="lazy"
+                      allow="fullscreen; autoplay; xr-spatial-tracking; clipboard-write"
                       allowFullScreen
                     />
                   ) : (

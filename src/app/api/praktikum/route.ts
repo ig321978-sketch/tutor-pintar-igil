@@ -133,7 +133,7 @@ ATURAN NILAI:
 - langkah: 4-6 langkah virtual bernomor, tanpa kutip ganda.
 - yangDiamati: apa yang siswa amati di simulasi.
 - umpanBalik: jika gagal, pesan membangun agar siswa mencoba lagi. Jika berhasil, pujian singkat plus apa yang dipelajari.
-- kataKunci: 3-6 kata Inggris untuk mencari simulasi PhET/NASA, contoh: states of matter gas.
+- kataKunci: 3-6 kata Inggris untuk mencari simulasi PhET, GeoGebra, Desmos, atau NASA, contoh: states of matter gas.
 - DILARANG kutip ganda di dalam nilai teks. Pakai kutip tunggal.
 
 Kembalikan JSON dengan kunci: aman, berhasil, judul, langkah, yangDiamati, umpanBalik, kataKunci, token.

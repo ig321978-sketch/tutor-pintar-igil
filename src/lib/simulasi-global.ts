@@ -248,6 +248,135 @@ function dariPhet(mentah: unknown, query: string): BahanSimulasi[] {
   return unik;
 }
 
+function dariGeoGebra(query: string): BahanSimulasi[] {
+  const rendah = query.toLowerCase();
+  const pilihan: Array<{
+    pola: RegExp;
+    app: string;
+    judul: string;
+    ringkasan: string;
+  }> = [
+    {
+      pola: /geometr|bangun datar|segitiga|sudut|pythagoras|lingkaran|simetri|sejajar/,
+      app: "geometry",
+      judul: "GeoGebra Geometry",
+      ringkasan: "Konstruksi geometri interaktif: titik, garis, sudut, dan bangun datar.",
+    },
+    {
+      pola: /3d|tiga dimensi|bangun ruang|volume|kubus|balok|kerucut|bola|limas/,
+      app: "3d",
+      judul: "GeoGebra 3D Calculator",
+      ringkasan: "Model 3D untuk bangun ruang, vektor, dan potongan bidang.",
+    },
+    {
+      pola: /peluang|statistika|probabilitas|sebaran|data|diagram/,
+      app: "probability",
+      judul: "GeoGebra Probability",
+      ringkasan: "Simulasi peluang, sebaran, dan eksperimen acak.",
+    },
+    {
+      pola: /aljabar|persamaan|fungsi|grafik|koordinat|matematika|pecahan|bilangan|luas|keliling/,
+      app: "graphing",
+      judul: "GeoGebra Graphing Calculator",
+      ringkasan: "Grafik fungsi, persamaan, dan koordinat dari GeoGebra Apps API.",
+    },
+  ];
+  const hasil: BahanSimulasi[] = [];
+  for (const item of pilihan) {
+    if (!item.pola.test(rendah)) continue;
+    hasil.push({
+      sumber: "GeoGebra Apps API",
+      judul: item.judul,
+      url: `/simulasi-embed/geogebra?app=${item.app}`,
+      jenis: "simulasi",
+      ringkasan: item.ringkasan,
+    });
+    if (hasil.length >= 2) break;
+  }
+  return hasil;
+}
+
+function dariDesmos(query: string): BahanSimulasi[] {
+  const rendah = query.toLowerCase();
+  const pilihan: Array<{
+    pola: RegExp;
+    app: string;
+    judul: string;
+    ringkasan: string;
+  }> = [
+    {
+      pola: /geometr|bangun datar|segitiga|sudut|lingkaran/,
+      app: "geometry",
+      judul: "Desmos Geometry",
+      ringkasan: "Laboratorium geometri Desmos dengan API key publik.",
+    },
+    {
+      pola: /3d|tiga dimensi|bangun ruang|volume/,
+      app: "3d",
+      judul: "Desmos 3D",
+      ringkasan: "Grafik dan model tiga dimensi dari Desmos API.",
+    },
+    {
+      pola: /hitung|kalkulator|operasi|pecahan|bilangan/,
+      app: "scientific",
+      judul: "Desmos Scientific",
+      ringkasan: "Kalkulator ilmiah interaktif untuk menghitung dan mengecek hasil.",
+    },
+    {
+      pola: /fungsi|grafik|persamaan|koordinat|aljabar|matematika/,
+      app: "graphing",
+      judul: "Desmos Graphing Calculator",
+      ringkasan: "Gambar grafik fungsi dan persamaan secara langsung.",
+    },
+  ];
+  const hasil: BahanSimulasi[] = [];
+  for (const item of pilihan) {
+    if (!item.pola.test(rendah)) continue;
+    hasil.push({
+      sumber: "Desmos API",
+      judul: item.judul,
+      url: `/simulasi-embed/desmos?app=${item.app}`,
+      jenis: "simulasi",
+      ringkasan: item.ringkasan,
+    });
+    if (hasil.length >= 1) break;
+  }
+  return hasil;
+}
+
+const TOLAK_SKETCHFAB = /gun|weapon|rifle|pistol|war|tank|anime|character|robot battle/i;
+
+function dariSketchfab(mentah: unknown, query: string): BahanSimulasi[] {
+  if (!mentah || typeof mentah !== "object") return [];
+  const daftar = (mentah as { results?: unknown[] }).results;
+  if (!Array.isArray(daftar)) return [];
+  const hasil: BahanSimulasi[] = [];
+  for (const baris of daftar) {
+    if (!baris || typeof baris !== "object") continue;
+    const item = baris as {
+      uid?: string;
+      name?: string;
+      description?: string;
+    };
+    const judul = item.name?.trim() ?? "";
+    const uid = item.uid?.trim() ?? "";
+    if (!judul || !uid || TOLAK_SKETCHFAB.test(judul)) continue;
+    const gabungan = `${judul} ${item.description ?? ""}`;
+    if (skorCocok(gabungan, query) === 0) continue;
+    hasil.push({
+      sumber: "Sketchfab 3D",
+      judul,
+      url: `https://sketchfab.com/models/${uid}/embed?autostart=0&ui_infos=0&ui_watermark=0`,
+      jenis: "simulasi",
+      ringkasan:
+        item.description?.replace(/<[^>]+>/g, "").slice(0, 140) ||
+        "Model 3D edukasi yang bisa diputar dan diperbesar.",
+    });
+    if (hasil.length >= 1) break;
+  }
+  return hasil;
+}
+
 function dariNasa(mentah: unknown): BahanSimulasi[] {
   if (!mentah || typeof mentah !== "object") return [];
   const koleksi = (mentah as { collection?: { items?: unknown[] } }).collection;
@@ -278,15 +407,24 @@ function dariNasa(mentah: unknown): BahanSimulasi[] {
 export async function cariBahanSimulasi(query: string): Promise<BahanSimulasi[]> {
   const q = query.trim() || "science lab";
   const enc = encodeURIComponent(perluasQuery(q));
+  const sketchQuery = encodeURIComponent(
+    `${perluasQuery(q)} educational science model`,
+  );
 
-  const [phet, nasa] = await Promise.all([
+  const [phet, nasa, sketchfab] = await Promise.all([
     ambilJson(
       "https://phet.colorado.edu/services/metadata/1.2/simulations?format=json&type=html",
     ),
     ambilJson(`https://images-api.nasa.gov/search?q=${enc}&media_type=image`),
+    ambilJson(
+      `https://api.sketchfab.com/v3/search?type=models&q=${sketchQuery}&categories=science-technology&count=8`,
+    ),
   ]);
 
   const phetCocok = dariPhet(phet, q);
+  const geoGebra = dariGeoGebra(q);
+  const desmos = dariDesmos(q);
+  const sketchCocok = dariSketchfab(sketchfab, q);
   const nasaCocok = dariNasa(nasa);
   const cadangan = [...PHET_CADANGAN]
     .map((item) => ({
@@ -298,8 +436,15 @@ export async function cariBahanSimulasi(query: string): Promise<BahanSimulasi[]>
     .map((baris) => baris.item);
 
   const gabungan: BahanSimulasi[] = [];
-  for (const item of [...phetCocok, ...cadangan, ...nasaCocok]) {
-    if (gabungan.length >= 4) break;
+  for (const item of [
+    ...phetCocok,
+    ...geoGebra,
+    ...desmos,
+    ...cadangan,
+    ...sketchCocok,
+    ...nasaCocok,
+  ]) {
+    if (gabungan.length >= 6) break;
     if (!gabungan.some((ada) => ada.url === item.url)) gabungan.push(item);
   }
   return gabungan;
