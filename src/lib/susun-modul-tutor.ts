@@ -25,10 +25,12 @@ import {
 } from "@/lib/nama-siswa";
 import {
   ambilCacheMateri,
+  gabungCacheMateri,
   simpanCacheMateri,
   topicIdMateri,
   type IsiCacheMateri,
 } from "@/lib/cache-materi-tutor";
+import { naskahMateriSiap } from "@/lib/sudut-pandang";
 
 export type ModulTutor = {
   sapaan: string;
@@ -308,27 +310,25 @@ export function bentukModulTutor(
     referensi_url?: unknown;
   },
 ): ModulTutor {
-  const kurikulum = amanNaskahModul(
-    bagian.curriculum_view || bagian.penjelasan,
-    "Materi sedang disiapkan...",
-    nama,
-  );
-  const global = amanNaskahModul(bagian.global_best_view, kurikulum, nama);
+  const kurikulumMentah = sebagaiTeks(bagian.curriculum_view || bagian.penjelasan);
+  const kurikulum = kurikulumMentah
+    ? amanNaskahModul(kurikulumMentah, "", nama)
+    : "";
+  const globalMentah = sebagaiTeks(bagian.global_best_view);
+  const global = globalMentah ? amanNaskahModul(globalMentah, "", nama) : "";
+  const pertanyaanMentah = pulihkanParagraf(bagian.pertanyaan, "");
   const bank = pecahBankSoal(
-    pulihkanParagraf(bagian.pertanyaan, "Latihan soal sedang disusun..."),
+    /sedang disusun/i.test(pertanyaanMentah) ? "" : pertanyaanMentah,
   );
   const kunci = pecahKunciBank(bagian.kunciJawaban);
   return {
     sapaan: sapaanTutorRingkas(nama, sebagaiTeks(bagian.sapaan)),
     penjelasan: kurikulum,
     curriculum_view: kurikulum,
-    global_best_view: global || kurikulum,
-    sketsaKartu: pulihkanParagraf(
-      bagian.sketsaKartu,
-      "Sketsa doodle materi ini",
-    ),
+    global_best_view: global,
+    sketsaKartu: pulihkanParagraf(bagian.sketsaKartu, ""),
     svgCode: amankanSvg(bagian.svgCode),
-    pertanyaan: bank.pilihanGanda.join("\n\n") || "Latihan soal sedang disusun...",
+    pertanyaan: bank.pilihanGanda.join("\n\n"),
     kunciJawaban: kunci.huruf,
     esai: "",
     kunciEsai: [],
@@ -409,6 +409,377 @@ ${instruksiPenjelasan(opsi.kelas, opsi.namaDepan, opsi.mapel, opsi.materi)}
 
 Kembalikan persis kunci: sapaan, curriculum_view, global_best_view, sketsaKartu, svgCode, pertanyaan, kunciJawaban, esai, kunciEsai, motivasi.
 `.trim();
+}
+
+export type BagianNaskahModul = "kurikulum" | "global" | "latihan";
+
+const SKEMA_KURIKULUM: Schema = {
+  type: Type.OBJECT,
+  properties: {
+    sapaan: { type: Type.STRING },
+    curriculum_view: { type: Type.STRING },
+    sketsaKartu: { type: Type.STRING },
+    svgCode: { type: Type.STRING },
+    motivasi: { type: Type.STRING },
+  },
+  required: ["sapaan", "curriculum_view", "sketsaKartu", "svgCode", "motivasi"],
+};
+
+const SKEMA_GLOBAL: Schema = {
+  type: Type.OBJECT,
+  properties: {
+    global_best_view: { type: Type.STRING },
+  },
+  required: ["global_best_view"],
+};
+
+const SKEMA_LATIHAN: Schema = {
+  type: Type.OBJECT,
+  properties: {
+    pertanyaan: { type: Type.STRING },
+    kunciJawaban: { type: Type.STRING },
+    motivasi: { type: Type.STRING },
+  },
+  required: ["pertanyaan", "kunciJawaban", "motivasi"],
+};
+
+function naskahLatihanSiap(teks?: string): boolean {
+  return pecahBankSoal(teks ?? "").pilihanGanda.length >= 4;
+}
+
+export function cachePunyaBagian(
+  cache: IsiCacheMateri | null,
+  bagian: BagianNaskahModul,
+): boolean {
+  if (!cache) return false;
+  if (bagian === "kurikulum") return naskahMateriSiap(cache.curriculum_view);
+  if (bagian === "global") return naskahMateriSiap(cache.global_best_view);
+  return naskahLatihanSiap(cache.pertanyaan);
+}
+
+function kerangkaJudulSubbab(kelas: string, mapel: string, materi: string): string {
+  const subbab = subbabBukuSiswa(kelas, mapel, materi);
+  if (subbab.length === 0) return kerangkaNaskahBuku(kelas, mapel, materi);
+  return `Urutan subbab buku siswa (wajib diikuti):\n${subbab
+    .map((nama, i) => `${i + 1}. ${nama}`)
+    .join("\n")}`;
+}
+
+function promptNaskahKurikulum(opsi: {
+  namaDepan: string;
+  kelas: string;
+  mapel: string;
+  materi: string;
+  adaGambar: boolean;
+  jumlahGambar: number;
+}): string {
+  const tugas = opsi.adaGambar
+    ? `Tugas: Analisis foto halaman buku pelajaran yang dilampirkan (${opsi.jumlahGambar} halaman). Deteksi topik utamanya, lalu tulis HANYA naskah kurikulum (curriculum_view) untuk ${opsi.namaDepan} (Kelas ${opsi.kelas}).`
+    : `Tugas: Tulis HANYA naskah kurikulum (curriculum_view) untuk ${opsi.namaDepan} (Kelas ${opsi.kelas}) mapel ${opsi.mapel} materi ${opsi.materi}.`;
+  return `
+${instruksiPencarianKurikulum({
+  materi: opsi.materi,
+  mapel: opsi.mapel,
+  kelas: opsi.kelas,
+})}
+
+Kamu adalah Tutor $IGIL. ${tugas}
+DILARANG menulis global_best_view, soal PG, atau esai. Hanya sapaan, curriculum_view, sketsaKartu, svgCode kosong, dan motivasi.
+
+ATURAN MUTLAK:
+1. Respons HANYA 1 objek JSON murni.
+2. DILARANG kutip ganda (") di dalam nilai teks. Setiap backslash LaTeX digandakan.
+3. svgCode HARUS string kosong.
+4. Paragraf mikro 2-3 kalimat. Rumus wajib LaTeX. Diagram HANYA mermaid. DILARANG SVG.
+5. Di AKHIR curriculum_view, setelah semua subbab, tulis TEPAT 2 contoh soal tuntas (bukan PG) berjudul 'Contoh soal 1' dan 'Contoh soal 2'.
+${aturanMermaidDanLatex()}
+
+1. sapaan: SATU kalimat pendek. Sebut HANYA nama depan ${opsi.namaDepan}. TEPAT SATU kata pujian dari: Pintar, Cerdas, Baik, Rajin, Soleh, Semangat, Hebat.
+${instruksiPenjelasan(opsi.kelas, opsi.namaDepan, opsi.mapel, opsi.materi).split("3. global_best_view:")[0]}
+2. sketsaKartu: TEPAT sama jumlahnya dengan kartu di curriculum_view. Setiap blok SATU kalimat visual doodle, dipisah \\n\\n.
+3. svgCode: string kosong.
+4. motivasi: SATU kata pujian dari: Pintar, Cerdas, Baik, Rajin, Soleh, Semangat, Hebat.
+
+Kembalikan persis kunci: sapaan, curriculum_view, sketsaKartu, svgCode, motivasi.
+`.trim();
+}
+
+function promptNaskahGlobal(opsi: {
+  namaDepan: string;
+  kelas: string;
+  mapel: string;
+  materi: string;
+  naskahKurikulum: string;
+}): string {
+  const acuan = naskahMateriSiap(opsi.naskahKurikulum)
+    ? `Judul kartu, jumlah kartu, dan urutan WAJIB sama persis dengan naskah kurikulum ini (jangan salin uraiannya):\n${opsi.naskahKurikulum.slice(0, 7000)}`
+    : kerangkaJudulSubbab(opsi.kelas, opsi.mapel, opsi.materi);
+  const jenjang = jenjangGuru(opsi.kelas);
+  const subbab = subbabBukuSiswa(opsi.kelas, opsi.mapel, opsi.materi);
+  const hitungan = mapelHitungan(opsi.mapel, opsi.materi);
+  const jumlah =
+    subbab.length > 0
+      ? `TEPAT ${subbab.length}`
+      : jenjang === "SD"
+        ? "TEPAT 6 sampai 8"
+        : "TEPAT 6";
+  const { kepala } = formatKartuDasar(jenjang, opsi.kelas, jumlah);
+  return `
+Kamu adalah Tutor $IGIL. Tulis HANYA naskah global_best_view untuk ${opsi.namaDepan} (Kelas ${opsi.kelas}) mapel ${opsi.mapel} materi ${opsi.materi}.
+DILARANG menulis curriculum_view, sapaan, sketsaKartu, soal PG, atau esai.
+
+${acuan}
+
+ATURAN MUTLAK:
+1. Respons HANYA 1 objek JSON murni { 'global_best_view': '...' }.
+2. DILARANG kutip ganda (") di dalam nilai teks. Setiap backslash LaTeX digandakan.
+3. Paragraf mikro. Rumus wajib LaTeX. Diagram HANYA mermaid. DILARANG SVG.
+${aturanMermaidDanLatex()}
+
+global_best_view: perspektif Standar Global. ${kepala}
+${alurUraianGlobal(opsi.namaDepan, hitungan, opsi.kelas)}
+Fakta tidak boleh menyalahi kurikulum. DILARANG menyebut Feynman atau esai panjang.
+`.trim();
+}
+
+function promptNaskahLatihan(opsi: {
+  namaDepan: string;
+  kelas: string;
+  mapel: string;
+  materi: string;
+}): string {
+  return `
+Kamu adalah Tutor $IGIL. Buat HANYA bank soal latihan pilihan ganda untuk ${opsi.namaDepan} (Kelas ${opsi.kelas}) mapel ${opsi.mapel} bab ${opsi.materi}.
+DILARANG menulis naskah materi, esai ujian, atau sudut pandang global.
+
+${kerangkaJudulSubbab(opsi.kelas, opsi.mapel, opsi.materi)}
+
+ATURAN MUTLAK:
+1. Respons HANYA 1 objek JSON murni.
+2. DILARANG kutip ganda (") di dalam nilai teks.
+3. pertanyaan: TEPAT 10 soal PILIHAN GANDA, dipisah \\n\\n.
+   Komposisi: 3 Reguler (Soal 1-3) + 7 HOTS (Soal 4-10).
+   DILARANG menuliskan kunci di dalam field pertanyaan.
+   Format tiap soal:
+   [Soal X - PG - Tipe: Reguler/HOTS]
+   Narasi pertanyaan...
+   A) ...
+   B) ...
+   C) ...
+   D) ...
+4. kunciJawaban: SATU string 10 huruf A/B/C/D dipisah koma. Contoh: A,C,B,D,A,B,C,D,A,B
+5. motivasi: SATU kata pujian dari: Pintar, Cerdas, Baik, Rajin, Soleh, Semangat, Hebat.
+
+Kembalikan persis kunci: pertanyaan, kunciJawaban, motivasi.
+`.trim();
+}
+
+async function simpanBagianCache(
+  opsi: {
+    nama: string;
+    kelas: string;
+    mapel: string;
+    materi: string;
+    gambar?: Part[];
+  },
+  isi: Partial<IsiCacheMateri>,
+): Promise<void> {
+  if ((opsi.gambar ?? []).length > 0) return;
+  const tersimpan = await gabungCacheMateri(
+    opsi.kelas,
+    opsi.mapel,
+    opsi.materi,
+    opsi.nama,
+    isi,
+    { tulisUlangSetelahHapus: true },
+  );
+  if (!tersimpan) {
+    console.warn(
+      `[materi] bagian cache gagal topic_id=${topicIdMateri(opsi.kelas, opsi.mapel, opsi.materi)}`,
+    );
+  }
+}
+
+export async function generateBagianModul(opsi: {
+  nama: string;
+  kelas: string;
+  mapel: string;
+  materi: string;
+  gambar?: Part[];
+  bagian: BagianNaskahModul;
+  naskahKurikulum?: string;
+}): Promise<ModulTutor> {
+  const namaDepan = namaDepanSiswa(opsi.nama);
+  const gambar = opsi.gambar ?? [];
+
+  if (opsi.bagian === "kurikulum") {
+    const hasil = await hasilkanJsonGeminiLengkap({
+      parts: [
+        ...gambar,
+        {
+          text: promptNaskahKurikulum({
+            namaDepan,
+            kelas: opsi.kelas,
+            mapel: opsi.mapel,
+            materi: opsi.materi,
+            adaGambar: gambar.length > 0,
+            jumlahGambar: gambar.length,
+          }),
+        },
+      ],
+      schema: SKEMA_KURIKULUM,
+      maxOutputTokens: 8192,
+      model: MODEL_GEMINI_MATERI,
+      systemInstruction: instruksiPencarianKurikulum({
+        materi: opsi.materi,
+        mapel: opsi.mapel,
+        kelas: opsi.kelas,
+      }),
+      thinking: false,
+      timeoutCobaMs: 70_000,
+      googleSearch: true,
+    });
+    const dataJson = bersihkanDanParseJson(hasil.teks);
+    const dataAman = bentukModulTutor(opsi.nama, {
+      ...dataJson,
+      referensiUrl: hasil.referensi.join("\n"),
+    });
+    await simpanBagianCache(opsi, {
+      curriculum_view: dataAman.curriculum_view,
+      sketsaKartu: dataAman.sketsaKartu,
+      svgCode: "",
+      motivasi: dataAman.motivasi,
+      referensiUrl: dataAman.referensiUrl,
+    });
+    return dataAman;
+  }
+
+  if (opsi.bagian === "global") {
+    const hasil = await hasilkanJsonGeminiLengkap({
+      parts: [
+        {
+          text: promptNaskahGlobal({
+            namaDepan,
+            kelas: opsi.kelas,
+            mapel: opsi.mapel,
+            materi: opsi.materi,
+            naskahKurikulum: opsi.naskahKurikulum ?? "",
+          }),
+        },
+      ],
+      schema: SKEMA_GLOBAL,
+      maxOutputTokens: 8192,
+      model: MODEL_GEMINI_MATERI,
+      thinking: false,
+      timeoutCobaMs: 70_000,
+      googleSearch: true,
+    });
+    const dataJson = bersihkanDanParseJson(hasil.teks);
+    const dataAman = bentukModulTutor(opsi.nama, dataJson);
+    await simpanBagianCache(opsi, {
+      global_best_view: dataAman.global_best_view,
+    });
+    return dataAman;
+  }
+
+  const hasil = await hasilkanJsonGeminiLengkap({
+    parts: [
+      {
+        text: promptNaskahLatihan({
+          namaDepan,
+          kelas: opsi.kelas,
+          mapel: opsi.mapel,
+          materi: opsi.materi,
+        }),
+      },
+    ],
+    schema: SKEMA_LATIHAN,
+    maxOutputTokens: 4096,
+    model: MODEL_GEMINI_RUTIN,
+    thinking: false,
+    timeoutCobaMs: 40_000,
+    googleSearch: false,
+  });
+  const dataJson = bersihkanDanParseJson(hasil.teks);
+  const dataAman = bentukModulTutor(opsi.nama, dataJson);
+  await simpanBagianCache(opsi, {
+    pertanyaan: dataAman.pertanyaan,
+    kunciJawaban: dataAman.kunciJawaban.join(","),
+    motivasi: dataAman.motivasi,
+  });
+  return dataAman;
+}
+
+export async function ambilAtauBuatBagianModul(opsi: {
+  nama: string;
+  kelas: string;
+  mapel: string;
+  materi: string;
+  gambar?: Part[];
+  bagian: BagianNaskahModul;
+}): Promise<{ data: ModulTutor; dariCache: boolean; topicId: string }> {
+  const gambar = opsi.gambar ?? [];
+  const topicId = topicIdMateri(opsi.kelas, opsi.mapel, opsi.materi);
+  let cache =
+    gambar.length === 0
+      ? await getModule(opsi.kelas, opsi.mapel, opsi.materi)
+      : null;
+  if (cachePunyaBagian(cache, opsi.bagian) && cache) {
+    console.info(`[materi] cache hit ${opsi.bagian} topic_id=${topicId}`);
+    return {
+      data: bentukModulTutor(opsi.nama, cache),
+      dariCache: true,
+      topicId,
+    };
+  }
+
+  try {
+    const data = await generateBagianModul({
+      ...opsi,
+      gambar,
+      naskahKurikulum: cache?.curriculum_view,
+    });
+    if (gambar.length === 0) {
+      const cacheSetelah = await getModule(opsi.kelas, opsi.mapel, opsi.materi);
+      if (cacheSetelah && cachePunyaBagian(cacheSetelah, opsi.bagian)) {
+        return {
+          data: bentukModulTutor(opsi.nama, cacheSetelah),
+          dariCache: true,
+          topicId,
+        };
+      }
+    }
+    console.info(`[materi] generate ${opsi.bagian} topic_id=${topicId}`);
+    const gabung = cache
+      ? bentukModulTutor(opsi.nama, {
+          ...cache,
+          ...data,
+          curriculum_view: data.curriculum_view || cache.curriculum_view,
+          global_best_view: data.global_best_view || cache.global_best_view,
+          pertanyaan: data.pertanyaan || cache.pertanyaan,
+          kunciJawaban: data.kunciJawaban.length
+            ? data.kunciJawaban.join(",")
+            : cache.kunciJawaban,
+        })
+      : data;
+    return { data: gabung, dariCache: false, topicId };
+  } catch (error) {
+    if (gambar.length === 0) {
+      const cacheSetelahGalat = await getModule(
+        opsi.kelas,
+        opsi.mapel,
+        opsi.materi,
+      );
+      if (cachePunyaBagian(cacheSetelahGalat, opsi.bagian) && cacheSetelahGalat) {
+        return {
+          data: bentukModulTutor(opsi.nama, cacheSetelahGalat),
+          dariCache: true,
+          topicId,
+        };
+      }
+    }
+    throw new Error(pesanGalatGemini(error));
+  }
 }
 
 export async function getModule(

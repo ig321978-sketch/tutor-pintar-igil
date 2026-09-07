@@ -1,8 +1,8 @@
 import { NextResponse } from "next/server";
 import {
   cacheModulSedangDihapus,
+  gabungCacheMateri,
   muatDaftarCacheAdmin,
-  simpanCacheMateri,
 } from "@/lib/cache-materi-tutor";
 import { isiDariBadanStudio, sebagaiTeksStudio } from "@/lib/studio-kreator";
 import { bentukModulTutor, keIsiCache } from "@/lib/susun-modul-tutor";
@@ -64,7 +64,11 @@ export async function POST(req: Request) {
     kunciJawaban: dariModul.kunciJawaban || isiManual.kunciJawaban,
     motivasi: dariModul.motivasi || isiManual.motivasi,
   };
-  if (!isi.curriculum_view.trim() || !isi.global_best_view.trim()) {
+  if (
+    !isi.curriculum_view.trim() &&
+    !isi.global_best_view.trim() &&
+    !isi.pertanyaan.trim()
+  ) {
     return NextResponse.json(
       { berhasil: false, pesan: "Naskah modul kosong, cache tidak disimpan." },
       { status: 400, headers: TANPA_CACHE },
@@ -84,7 +88,7 @@ export async function POST(req: Request) {
     );
   }
 
-  const tersimpan = await simpanCacheMateri(kelas, mapel, materi, nama, isi);
+  const tersimpan = await gabungCacheMateri(kelas, mapel, materi, nama, isi);
   if (!tersimpan) {
     return NextResponse.json(
       {

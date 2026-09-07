@@ -15,7 +15,7 @@ const META: Record<
   },
   materi: {
     judul: "Materi",
-    ringkas: "Uraian, diagram, rumus, dan dua contoh soal tuntas",
+    ringkas: "Pilih Mode Kurikulum atau Mode Global, lalu naskah dimuat",
     gambar: "/kartu-modul/materi.png",
   },
   simulasi: {
@@ -25,7 +25,7 @@ const META: Record<
   },
   latihan: {
     judul: "Latihan",
-    ringkas: "10 soal pilihan ganda: 3 reguler dan 7 HOTS",
+    ringkas: "10 soal pilihan ganda, dimuat saat kartu dibuka",
     gambar: "/kartu-modul/latihan.png",
   },
   praktikum: {
@@ -35,7 +35,7 @@ const META: Record<
   },
   ujian: {
     judul: "Ujian",
-    ringkas: "3 soal uraian: 1 reguler dan 2 HOTS",
+    ringkas: "3 soal uraian acak tanpa cache, beda setiap sesi",
     gambar: "/kartu-modul/ujian.png",
   },
 };

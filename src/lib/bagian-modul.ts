@@ -19,10 +19,7 @@ export function daftarBagianModul(mapel: string): BagianIsi[] {
 }
 
 export function butuhNaskahAi(bagian: BagianModul): boolean {
-  return (
-    bagian === "silabus" ||
-    bagian === "materi" ||
-    bagian === "latihan" ||
-    bagian === "ujian"
-  );
+  return bagian === "latihan";
 }
+
+export type BagianNaskah = "kurikulum" | "global" | "latihan";

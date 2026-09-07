@@ -3,7 +3,7 @@ import type { Part } from "@google/genai";
 import { askTutor } from "@/lib/ask-tutor";
 import { pesanGalatGemini } from "@/lib/klien-gemini";
 import { klaimInteraksiAi, statusKuota } from "@/lib/kuota-interaksi";
-import { ambilAtauBuatModul } from "@/lib/susun-modul-tutor";
+import { ambilAtauBuatBagianModul } from "@/lib/susun-modul-tutor";
 
 export const dynamic = "force-dynamic";
 export const revalidate = 0;
@@ -18,6 +18,7 @@ type PermintaanTutor = {
   ajuan?: unknown;
   pakaiToken?: unknown;
   riwayat?: unknown;
+  bagian?: unknown;
 };
 
 function sebagaiYa(nilai: unknown): boolean {
@@ -104,12 +105,24 @@ export async function POST(req: Request) {
       });
     }
 
-    const hasil = await ambilAtauBuatModul({
+    const bagian = sebagaiTeks(body.bagian);
+    if (bagian !== "kurikulum" && bagian !== "global" && bagian !== "latihan") {
+      return NextResponse.json(
+        {
+          berhasil: false,
+          pesan: "Pilih bagian naskah: kurikulum, global, atau latihan.",
+        },
+        { status: 400 },
+      );
+    }
+
+    const hasil = await ambilAtauBuatBagianModul({
       nama,
       kelas,
       mapel,
       materi,
       gambar: daftarGambar,
+      bagian,
     });
 
     return NextResponse.json({

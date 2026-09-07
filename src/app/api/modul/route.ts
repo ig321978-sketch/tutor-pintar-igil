@@ -2,6 +2,8 @@ import { NextResponse } from "next/server";
 import type { Part } from "@google/genai";
 import { topicIdMateri } from "@/lib/cache-materi-tutor";
 import { pesanGalatGemini } from "@/lib/klien-gemini";
+import { pecahBankSoal } from "@/lib/kuis";
+import { naskahMateriSiap } from "@/lib/sudut-pandang";
 import {
   ambilAtauBuatModul,
   bentukModulTutor,
@@ -43,11 +45,17 @@ export async function GET(req: Request) {
     );
   }
   const cache = await getModule(kelas, mapel, materi);
-  if (!cache) {
+  const adaKurikulum = naskahMateriSiap(cache?.curriculum_view);
+  const adaGlobal = naskahMateriSiap(cache?.global_best_view);
+  const adaLatihan = pecahBankSoal(cache?.pertanyaan ?? "").pilihanGanda.length >= 4;
+  if (!cache || (!adaKurikulum && !adaGlobal && !adaLatihan)) {
     return NextResponse.json(
       {
         berhasil: true,
         ada: false,
+        adaKurikulum: false,
+        adaGlobal: false,
+        adaLatihan: false,
         topicId: topicIdMateri(kelas, mapel, materi),
       },
       {
@@ -61,6 +69,9 @@ export async function GET(req: Request) {
     {
       berhasil: true,
       ada: true,
+      adaKurikulum,
+      adaGlobal,
+      adaLatihan,
       dariCache: true,
       topicId: topicIdMateri(kelas, mapel, materi),
       data: bentukModulTutor(nama, cache),

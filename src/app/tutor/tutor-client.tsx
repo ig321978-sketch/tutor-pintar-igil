@@ -35,6 +35,7 @@ import {
 } from "@/lib/nama-siswa";
 import {
   pilihPenjelasanMateri,
+  naskahMateriSiap,
   type SudutPandangMateri,
 } from "@/lib/sudut-pandang";
 import {
@@ -61,7 +62,6 @@ import PanelSimulasiModul from "@/components/modul/PanelSimulasiModul";
 import PanelUjianModul from "@/components/modul/PanelUjianModul";
 import TeksNaskah from "@/components/TeksNaskah";
 import {
-  butuhNaskahAi,
   daftarBagianModul,
   type BagianIsi,
   type BagianModul,
@@ -78,6 +78,46 @@ import {
 
 type ModeInput = "teks" | "gambar";
 type StatusPemutar = "siaga" | "menyiapkan" | "memutar" | "jeda";
+type StatusNaskah = "siaga" | "memuat" | "siap" | "galat";
+type BagianNaskah = "kurikulum" | "global" | "latihan";
+
+function gabungModulTutor(sebelum: ModulTutor | null, baru: ModulTutor): ModulTutor {
+  if (!sebelum) return baru;
+  return {
+    ...sebelum,
+    sapaan: baru.sapaan || sebelum.sapaan,
+    curriculum_view: naskahMateriSiap(baru.curriculum_view)
+      ? baru.curriculum_view
+      : sebelum.curriculum_view,
+    global_best_view: naskahMateriSiap(baru.global_best_view)
+      ? baru.global_best_view
+      : sebelum.global_best_view,
+    penjelasan: naskahMateriSiap(baru.curriculum_view)
+      ? baru.curriculum_view || baru.penjelasan
+      : sebelum.penjelasan,
+    sketsaKartu: baru.sketsaKartu?.trim() || sebelum.sketsaKartu,
+    svgCode: baru.svgCode || sebelum.svgCode,
+    pertanyaan: pecahBankSoal(baru.pertanyaan).pilihanGanda.length
+      ? baru.pertanyaan
+      : sebelum.pertanyaan,
+    kunciJawaban: baru.kunciJawaban?.length
+      ? baru.kunciJawaban
+      : sebelum.kunciJawaban,
+    motivasi: baru.motivasi || sebelum.motivasi,
+    referensiUrl: baru.referensiUrl || sebelum.referensiUrl,
+    gambarUtama: sebelum.gambarUtama ?? baru.gambarUtama,
+    gambarSisipan: sebelum.gambarSisipan?.length
+      ? sebelum.gambarSisipan
+      : baru.gambarSisipan,
+  };
+}
+
+function bagianNaskahSiap(modul: ModulTutor | null, bagian: BagianNaskah): boolean {
+  if (!modul) return false;
+  if (bagian === "kurikulum") return naskahMateriSiap(modul.curriculum_view);
+  if (bagian === "global") return naskahMateriSiap(modul.global_best_view);
+  return pecahBankSoal(modul.pertanyaan).pilihanGanda.length >= 4;
+}
 
 type ModulTutor = {
   sapaan: string;
@@ -249,8 +289,10 @@ export default function TutorAI() {
   const [pilihanBab, setPilihanBab] = useState("");
   const [babManual, setBabManual] = useState("");
   const [gambarHalaman, setGambarHalaman] = useState<string[]>([]);
-  const [isLoading, setIsLoading] = useState(false);
   const [hasilData, setHasilData] = useState<ModulTutor | null>(null);
+  const [statusKurikulum, setStatusKurikulum] = useState<StatusNaskah>("siaga");
+  const [statusGlobal, setStatusGlobal] = useState<StatusNaskah>("siaga");
+  const [statusLatihan, setStatusLatihan] = useState<StatusNaskah>("siaga");
   const [soalUjian, setSoalUjian] = useState<string[]>([]);
   const [statusUjian, setStatusUjian] = useState<"siaga" | "memuat" | "siap" | "galat">("siaga");
   const [pesanUjian, setPesanUjian] = useState("");
@@ -273,7 +315,7 @@ export default function TutorAI() {
   const [jawabanKuis, setJawabanKuis] = useState<Record<string, string>>({});
   const [drafEsai, setDrafEsai] = useState<Record<string, string>>({});
   const [jawabanEsai, setJawabanEsai] = useState<Record<string, string>>({});
-  const [sudutPandang, setSudutPandang] = useState<SudutPandangMateri>("kurikulum");
+  const [sudutPandang, setSudutPandang] = useState<SudutPandangMateri | null>(null);
 
   const timerKetikRef = useRef<number | null>(null);
   const indeksKetikRef = useRef(0);
@@ -285,6 +327,9 @@ export default function TutorAI() {
   const terakhirBicaraRef = useRef(0);
   const pakaiBatasKataRef = useRef(false);
   const sudahGenerateRef = useRef(false);
+  const hasilDataRef = useRef<ModulTutor | null>(null);
+  const sesiAktifIdRef = useRef<string | null>(null);
+  const naskahJalanRef = useRef<Set<BagianNaskah>>(new Set());
   const pengenalSuaraRef = useRef<MesinRekamSuara | null>(null);
   const transkripFinalRef = useRef("");
   const doodleAbortRef = useRef<AbortController | null>(null);
@@ -323,9 +368,10 @@ export default function TutorAI() {
     pilihanMapel === OPSI_LAIN_NYA ? mapelManual : pilihanMapel;
   const bab = pilihanBab === OPSI_LAIN_NYA ? babManual : pilihanBab;
 
-  const penjelasanAktif = hasilData
-    ? pilihPenjelasanMateri(hasilData, sudutPandang)
-    : "";
+  const penjelasanAktif =
+    hasilData && sudutPandang
+      ? pilihPenjelasanMateri(hasilData, sudutPandang)
+      : "";
   const bankSoal = useMemo(() => {
     const pecah = pecahBankSoal(hasilData?.pertanyaan ?? "");
     return {
@@ -348,6 +394,7 @@ export default function TutorAI() {
   const namaSesi = namaDariProfilSesi || nama;
   const namaSesiRef = useRef(namaSesi);
   namaSesiRef.current = namaSesi;
+  hasilDataRef.current = hasilData;
 
   useEffect(() => {
     if (namaDariProfilSesi) setNama(namaDariProfilSesi);
@@ -576,11 +623,11 @@ export default function TutorAI() {
   };
 
   const gantiSudutPandang = (sudut: SudutPandangMateri) => {
-    if (sudut === sudutPandang) return;
     resetPemutar();
     sudahSiapAudioRef.current = true;
     setTeksAnimasi("");
     setSudutPandang(sudut);
+    void muatBagianNaskah(sudut);
   };
 
   const muatIlustrasiDoodle = async (modul: ModulTutor) => {
@@ -590,6 +637,10 @@ export default function TutorAI() {
     setStatusDoodle("memuat");
 
     const naskahDoodle = pilihPenjelasanMateri(modul, "kurikulum");
+    if (!naskahMateriSiap(naskahDoodle)) {
+      setStatusDoodle("siaga");
+      return;
+    }
     const jumlahKartu = Math.min(
       susunKonsepMateri(
         modeInput === "teks" ? bab : "Analisis AI",
@@ -654,56 +705,71 @@ export default function TutorAI() {
     }
   };
 
-  const terapkanModul = (
+  const tetapkanStatusNaskah = (
+    bagian: BagianNaskah,
+    status: StatusNaskah,
+  ) => {
+    if (bagian === "kurikulum") setStatusKurikulum(status);
+    else if (bagian === "global") setStatusGlobal(status);
+    else setStatusLatihan(status);
+  };
+
+  const terapkanBagianModul = (
     dataModul: ModulTutor,
-    _dariCacheModul: boolean,
     mapelKirim: string,
     materiKirim: string,
     kelasKirim: string,
+    bagian: BagianNaskah,
   ) => {
     const namaAktif = namaSesiRef.current;
-    const kurikulum = gantiNamaLengkapKeDepan(
-      dataModul.curriculum_view || dataModul.penjelasan,
-      namaAktif,
-    );
-    const global = gantiNamaLengkapKeDepan(
-      dataModul.global_best_view || kurikulum,
-      namaAktif,
-    );
-    const judulMateri =
-      modeInput === "teks" ? materiKirim : "Analisis halaman buku";
-    setHasilData({
+    const gabung = gabungModulTutor(hasilDataRef.current, {
       ...dataModul,
-      sapaan: sapaanVoiceTutor(namaAktif, mapelKirim, judulMateri),
-      penjelasan: kurikulum,
-      curriculum_view: kurikulum,
-      global_best_view: global,
+      sapaan: sapaanVoiceTutor(
+        namaAktif,
+        mapelKirim,
+        modeInput === "teks" ? materiKirim : "Analisis halaman buku",
+      ),
+      curriculum_view: gantiNamaLengkapKeDepan(
+        dataModul.curriculum_view || "",
+        namaAktif,
+      ),
+      global_best_view: gantiNamaLengkapKeDepan(
+        dataModul.global_best_view || "",
+        namaAktif,
+      ),
+      penjelasan: gantiNamaLengkapKeDepan(
+        dataModul.curriculum_view || dataModul.penjelasan || "",
+        namaAktif,
+      ),
     });
-    setSudutPandang("kurikulum");
-    setJawabanKuis({});
-    setDrafEsai({});
-    setJawabanEsai({});
-    setSoalUjian([]);
-    setStatusUjian("siaga");
-    setPesanUjian("");
-    setAudioCompleted(false);
+    hasilDataRef.current = gabung;
+    setHasilData(gabung);
+    tetapkanStatusNaskah(bagian, "siap");
     setSesiMapel(mapelKirim);
     setSesiMateri(modeInput === "teks" ? materiKirim : "Analisis halaman buku");
     simpanProfil({ nama: namaAktif, kelas: kelasKirim, guruKelamin });
-    const sesi = catatSesiModul({
-      nama: namaAktif,
-      kelas: kelasKirim,
-      mapel: mapelKirim,
-      materi: materiKirim,
-      mode: modeInput,
-      catatanEvaluasi: dataModul.motivasi,
-      kunciJawaban: dataModul.kunciJawaban,
-      kuisTotal: pecahBankSoal(dataModul.pertanyaan).pilihanGanda.length + 3,
-      jumlahLatihan: pecahBankSoal(dataModul.pertanyaan).pilihanGanda.length,
-    });
-    setSesiAktifId(sesi.id);
+    if (!sesiAktifIdRef.current) {
+      const sesi = catatSesiModul({
+        nama: namaAktif,
+        kelas: kelasKirim,
+        mapel: mapelKirim,
+        materi: materiKirim,
+        mode: modeInput,
+        catatanEvaluasi: gabung.motivasi,
+        kunciJawaban: gabung.kunciJawaban,
+        kuisTotal: pecahBankSoal(gabung.pertanyaan).pilihanGanda.length + 3,
+        jumlahLatihan: pecahBankSoal(gabung.pertanyaan).pilihanGanda.length,
+      });
+      sesiAktifIdRef.current = sesi.id;
+      setSesiAktifId(sesi.id);
+    }
     void muatKuota();
-    void muatIlustrasiDoodle(dataModul);
+    if (bagian === "kurikulum" && naskahMateriSiap(gabung.curriculum_view)) {
+      void muatIlustrasiDoodle(gabung);
+    }
+    if (bagian === "latihan") {
+      setJawabanKuis({});
+    }
     if (modeInput === "teks") {
       void fetch("/api/studio-kreator", {
         method: "POST",
@@ -713,12 +779,13 @@ export default function TutorAI() {
           kelas: kelasKirim,
           mapel: mapelKirim,
           materi: materiKirim,
-          data: dataModul,
+          data: gabung,
         }),
       }).catch(() => {
         console.warn("[tutor] gagal mengirim cache modul ke server");
       });
     }
+    return gabung;
   };
 
   const intipModulTersimpan = async (
@@ -757,10 +824,11 @@ export default function TutorAI() {
     return null;
   };
 
-  const mintaSusunModul = async (
+  const mintaBagianNaskah = async (
     kelasKirim: string,
     mapelKirim: string,
     materiKirim: string,
+    bagian: BagianNaskah,
   ) => {
     const respons = await fetch("/api/tutor", {
       method: "POST",
@@ -771,6 +839,7 @@ export default function TutorAI() {
         mapel: mapelKirim,
         materi: modeInput === "teks" ? materiKirim : "Analisis AI",
         gambar: modeInput === "gambar" ? gambarHalaman : null,
+        bagian,
       }),
     });
     return (await respons.json()) as {
@@ -781,10 +850,10 @@ export default function TutorAI() {
     };
   };
 
-  const tanganiBuatModul = async () => {
+  const muatBagianNaskah = async (bagian: BagianNaskah) => {
     if (!namaSesiRef.current.trim()) {
       setPesanGalat("Kapten, mohon isi Nama Siswa terlebih dahulu.");
-      sudahGenerateRef.current = false;
+      tetapkanStatusNaskah(bagian, "galat");
       return;
     }
 
@@ -801,36 +870,35 @@ export default function TutorAI() {
     if (modeInput === "teks") {
       if (!mapelKirim) {
         setPesanGalat("Mohon isi Mata Pelajaran.");
-        sudahGenerateRef.current = false;
+        tetapkanStatusNaskah(bagian, "galat");
         return;
       }
       if (!materiKirim) {
         setPesanGalat("Mohon isi Materi Pembahasan.");
-        sudahGenerateRef.current = false;
+        tetapkanStatusNaskah(bagian, "galat");
         return;
       }
     } else if (gambarHalaman.length === 0) {
       setPesanGalat("Mohon unggah foto halaman buku terlebih dahulu.");
-      sudahGenerateRef.current = false;
+      tetapkanStatusNaskah(bagian, "galat");
       return;
     }
 
-    const topicId = kunciMateriTutor(kelasKirim, mapelKirim, materiKirim);
+    if (bagianNaskahSiap(hasilDataRef.current, bagian)) {
+      tetapkanStatusNaskah(bagian, "siap");
+      return;
+    }
+    if (naskahJalanRef.current.has(bagian)) return;
 
+    const topicId = kunciMateriTutor(kelasKirim, mapelKirim, materiKirim);
+    naskahJalanRef.current.add(bagian);
     setPesanGalat("");
-    setIsLoading(true);
-    doodleAbortRef.current?.abort();
-    setStatusDoodle("siaga");
-    setHasilData(null);
-    setHasilAjuan(null);
-    setRiwayatAjuan([]);
-    setTeksAjuan("");
-    setPesanAjuan("");
-    setTeksAnimasi("");
-    setSesiMapel("");
-    setSesiMateri("");
-    setSudutPandang("kurikulum");
-    resetPemutar();
+    tetapkanStatusNaskah(bagian, "memuat");
+
+    const selesai = (status: StatusNaskah) => {
+      naskahJalanRef.current.delete(bagian);
+      tetapkanStatusNaskah(bagian, status);
+    };
 
     try {
       if (modeInput === "teks") {
@@ -839,54 +907,64 @@ export default function TutorAI() {
           mapelKirim,
           materiKirim,
         );
-        if (cacheAwal) {
-          simpanModulLokalPertama(topicId, cacheAwal);
-          terapkanModul(cacheAwal, true, mapelKirim, materiKirim, kelasKirim);
-          setIsLoading(false);
+        if (cacheAwal && bagianNaskahSiap(cacheAwal, bagian)) {
+          const gabung = terapkanBagianModul(
+            cacheAwal,
+            mapelKirim,
+            materiKirim,
+            kelasKirim,
+            bagian,
+          );
+          simpanModulLokalPertama(topicId, gabung);
+          selesai("siap");
           return;
         }
       }
 
-      let data = await mintaSusunModul(kelasKirim, mapelKirim, materiKirim);
+      const data = await mintaBagianNaskah(
+        kelasKirim,
+        mapelKirim,
+        materiKirim,
+        bagian,
+      );
 
-      if (!(data.berhasil && data.data) && modeInput === "teks") {
+      if (data.berhasil && data.data && bagianNaskahSiap(data.data, bagian)) {
+        const gabung = terapkanBagianModul(
+          data.data,
+          mapelKirim,
+          materiKirim,
+          kelasKirim,
+          bagian,
+        );
+        if (modeInput === "teks") {
+          simpanModulLokal(topicId, gabung);
+        }
+        selesai("siap");
+        return;
+      }
+
+      if (modeInput === "teks") {
         const cacheSetelah = await intipModulTersimpan(
           kelasKirim,
           mapelKirim,
           materiKirim,
         );
-        if (cacheSetelah) {
-          simpanModulLokalPertama(topicId, cacheSetelah);
-          terapkanModul(
+        if (cacheSetelah && bagianNaskahSiap(cacheSetelah, bagian)) {
+          const gabung = terapkanBagianModul(
             cacheSetelah,
-            true,
             mapelKirim,
             materiKirim,
             kelasKirim,
+            bagian,
           );
-          setIsLoading(false);
+          simpanModulLokalPertama(topicId, gabung);
+          selesai("siap");
           return;
         }
       }
 
-      if (data.berhasil && data.data) {
-        if (modeInput === "teks") {
-          if (data.dariCache) {
-            simpanModulLokalPertama(topicId, data.data);
-          } else {
-            simpanModulLokal(topicId, data.data);
-          }
-        }
-        terapkanModul(
-          data.data,
-          Boolean(data.dariCache),
-          mapelKirim,
-          materiKirim,
-          kelasKirim,
-        );
-      } else {
-        setPesanGalat(data.pesan || "Modul gagal disusun.");
-      }
+      setPesanGalat(data.pesan || "Naskah gagal disusun.");
+      selesai("galat");
     } catch {
       if (modeInput === "teks") {
         const cacheJaringan = await intipModulTersimpan(
@@ -894,22 +972,22 @@ export default function TutorAI() {
           mapelKirim,
           materiKirim,
         );
-        if (cacheJaringan) {
-          simpanModulLokalPertama(topicId, cacheJaringan);
-          terapkanModul(
+        if (cacheJaringan && bagianNaskahSiap(cacheJaringan, bagian)) {
+          const gabung = terapkanBagianModul(
             cacheJaringan,
-            true,
             mapelKirim,
             materiKirim,
             kelasKirim,
+            bagian,
           );
-          setIsLoading(false);
+          simpanModulLokalPertama(topicId, gabung);
+          selesai("siap");
           return;
         }
       }
       setPesanGalat("Gagal terhubung ke server.");
+      selesai("galat");
     }
-    setIsLoading(false);
   };
 
   const muatUjianAcak = async () => {
@@ -962,9 +1040,8 @@ export default function TutorAI() {
     }
     setPesanGalat("");
     setTahapBelajar(bagian);
-    if (butuhNaskahAi(bagian) && !hasilData && !isLoading) {
-      sudahGenerateRef.current = true;
-      void tanganiBuatModul();
+    if (bagian === "latihan") {
+      void muatBagianNaskah("latihan");
     }
     if (bagian === "ujian") {
       void muatUjianAcak();
@@ -983,6 +1060,13 @@ export default function TutorAI() {
     sudahGenerateRef.current = false;
     resetPemutar();
     setHasilData(null);
+    hasilDataRef.current = null;
+    setStatusKurikulum("siaga");
+    setStatusGlobal("siaga");
+    setStatusLatihan("siaga");
+    setSudutPandang(null);
+    sesiAktifIdRef.current = null;
+    naskahJalanRef.current.clear();
   }, [kunciSesiMulai]);
 
   useEffect(() => {
@@ -1171,7 +1255,7 @@ export default function TutorAI() {
     segmen: SegmenSuara,
     kelaminSuara: KelaminGuru,
   ) =>
-    `${kunciSegmen(segmen)}|${sudutPandang}|${kelaminSuara}|${namaSesiRef.current}`;
+    `${kunciSegmen(segmen)}|${sudutPandang ?? "kurikulum"}|${kelaminSuara}|${namaSesiRef.current}`;
 
   const pasangCacheSegmen = (item: CacheSegmenAudio, kelaminSuara: KelaminGuru) => {
     urlAudioRef.current = item.url;
@@ -1324,7 +1408,11 @@ export default function TutorAI() {
     setTahapBelajar("pilih");
     setSesiMapel("");
     setSesiMateri("");
-    setSudutPandang("kurikulum");
+    setSudutPandang(null);
+    setStatusKurikulum("siaga");
+    setStatusGlobal("siaga");
+    setStatusLatihan("siaga");
+    sesiAktifIdRef.current = null;
     router.push("/ruang-belajar");
   };
 
@@ -1386,44 +1474,29 @@ export default function TutorAI() {
               onPilih={bukaBagian}
               isi={{
                 silabus: (
-                  <>
-                    {pesanGalat ? (
-                      <div className="mb-4 rounded-2xl border-2 border-rose-100 bg-rose-50 p-5 text-center">
-                        <p className="font-semibold text-rose-600">{pesanGalat}</p>
-                        <button
-                          type="button"
-                          onClick={() => {
-                            sudahGenerateRef.current = true;
-                            void tanganiBuatModul();
-                          }}
-                          className={`${kelasTombolUtama} mt-4 inline-flex items-center justify-center rounded-xl px-6 py-3 font-extrabold`}
-                        >
-                          Coba susun lagi
-                        </button>
-                      </div>
-                    ) : null}
-                    <PanelSilabusModul
-                      kelas={judulKelasSesi}
-                      mapel={judulMapelSesi}
-                      materi={judulMateriSesi}
-                      naskahKurikulum={
-                        hasilData?.curriculum_view ||
-                        hasilData?.penjelasan ||
-                        ""
-                      }
-                    />
-                  </>
+                  <PanelSilabusModul
+                    kelas={judulKelasSesi}
+                    mapel={judulMapelSesi}
+                    materi={judulMateriSesi}
+                    naskahKurikulum={
+                      hasilData?.curriculum_view ||
+                      hasilData?.penjelasan ||
+                      ""
+                    }
+                  />
                 ),
                 materi: (
                   <>
-                    {pesanGalat ? (
+                    {pesanGalat &&
+                    sudutPandang &&
+                    ((sudutPandang === "kurikulum" && statusKurikulum === "galat") ||
+                      (sudutPandang === "global" && statusGlobal === "galat")) ? (
                       <div className="mb-4 rounded-2xl border-2 border-rose-100 bg-rose-50 p-5 text-center">
                         <p className="font-semibold text-rose-600">{pesanGalat}</p>
                         <button
                           type="button"
                           onClick={() => {
-                            sudahGenerateRef.current = true;
-                            void tanganiBuatModul();
+                            void muatBagianNaskah(sudutPandang);
                           }}
                           className={`${kelasTombolUtama} mt-4 inline-flex items-center justify-center rounded-xl px-6 py-3 font-extrabold`}
                         >
@@ -1431,30 +1504,25 @@ export default function TutorAI() {
                         </button>
                       </div>
                     ) : null}
-                    {isLoading && !hasilData ? (
-                      <div className="rounded-2xl bg-white/80 p-8 text-center">
-                        <Loader2 className="mx-auto h-10 w-10 animate-spin text-[#1C01A5]" />
-                        <p className="mt-4 text-lg font-extrabold text-[#1C01A5]">
-                          Menyusun bagian ini...
-                        </p>
-                      </div>
-                    ) : null}
-                    {hasilData ? (
-                      <PanelMateriModul
-                        materi={judulMateriSesi}
-                        sapaan={hasilData.sapaan}
-                        naskah={penjelasanAktif}
-                        doodleSrc={
-                          hasilData.gambarUtama ||
-                          hasilData.gambarSisipan?.[0]?.src
-                        }
-                        doodleMemuat={statusDoodle === "memuat"}
-                        sudutPandang={sudutPandang}
-                        onGantiSudut={gantiSudutPandang}
-                        referensiUrl={hasilData.referensiUrl}
-                      />
-                    ) : null}
-                    {hasilData ? (
+                    <PanelMateriModul
+                      materi={judulMateriSesi}
+                      sapaan={hasilData?.sapaan ?? ""}
+                      naskah={penjelasanAktif}
+                      doodleSrc={
+                        hasilData?.gambarUtama ||
+                        hasilData?.gambarSisipan?.[0]?.src
+                      }
+                      doodleMemuat={statusDoodle === "memuat"}
+                      sudutPandang={sudutPandang}
+                      onGantiSudut={gantiSudutPandang}
+                      referensiUrl={hasilData?.referensiUrl}
+                      memuat={
+                        (sudutPandang === "kurikulum" &&
+                          statusKurikulum === "memuat") ||
+                        (sudutPandang === "global" && statusGlobal === "memuat")
+                      }
+                    />
+                    {naskahMateriSiap(penjelasanAktif) ? (
             <div className="mt-6 space-y-4 border-t border-[#1C01A5]/10 pt-5">
               <label className="flex items-center gap-2 text-sm font-extrabold tracking-wide text-[#1C01A5]">
                 <MessageCircleQuestionMark className="w-5 h-5" />
@@ -1584,14 +1652,13 @@ export default function TutorAI() {
                 ),
                 latihan: (
                   <>
-                    {pesanGalat ? (
+                    {pesanGalat && statusLatihan === "galat" ? (
                       <div className="mb-4 rounded-2xl border-2 border-rose-100 bg-rose-50 p-5 text-center">
                         <p className="font-semibold text-rose-600">{pesanGalat}</p>
                         <button
                           type="button"
                           onClick={() => {
-                            sudahGenerateRef.current = true;
-                            void tanganiBuatModul();
+                            void muatBagianNaskah("latihan");
                           }}
                           className={`${kelasTombolUtama} mt-4 inline-flex items-center justify-center rounded-xl px-6 py-3 font-extrabold`}
                         >
@@ -1599,20 +1666,20 @@ export default function TutorAI() {
                         </button>
                       </div>
                     ) : null}
-                    {isLoading && !hasilData ? (
+                    {statusLatihan === "memuat" ? (
                       <div className="rounded-2xl bg-white/80 p-8 text-center">
                         <Loader2 className="mx-auto h-10 w-10 animate-spin text-[#1C01A5]" />
                         <p className="mt-4 text-lg font-extrabold text-[#1C01A5]">
-                          Menyusun bagian ini...
+                          Menyusun soal latihan...
                         </p>
                       </div>
                     ) : null}
-                    {hasilData ? (
+                    {bankSoal.pilihanGanda.length > 0 && statusLatihan !== "memuat" ? (
                       <PanelLatihanModul
                         soal={bankSoal.pilihanGanda}
-                        kunciJawaban={hasilData.kunciJawaban}
+                        kunciJawaban={hasilData?.kunciJawaban}
                         jawaban={jawabanKuis}
-                        motivasi={hasilData.motivasi}
+                        motivasi={hasilData?.motivasi || "Semangat"}
                         onPilih={pilihJawabanKuis}
                         onLanjutUjian={() => bukaBagian("ujian")}
                       />
@@ -1621,30 +1688,7 @@ export default function TutorAI() {
                 ),
                 ujian: (
                   <>
-                    {pesanGalat ? (
-                      <div className="mb-4 rounded-2xl border-2 border-rose-100 bg-rose-50 p-5 text-center">
-                        <p className="font-semibold text-rose-600">{pesanGalat}</p>
-                        <button
-                          type="button"
-                          onClick={() => {
-                            sudahGenerateRef.current = true;
-                            void tanganiBuatModul();
-                          }}
-                          className={`${kelasTombolUtama} mt-4 inline-flex items-center justify-center rounded-xl px-6 py-3 font-extrabold`}
-                        >
-                          Coba susun lagi
-                        </button>
-                      </div>
-                    ) : null}
-                    {isLoading && !hasilData ? (
-                      <div className="rounded-2xl bg-white/80 p-8 text-center">
-                        <Loader2 className="mx-auto h-10 w-10 animate-spin text-[#1C01A5]" />
-                        <p className="mt-4 text-lg font-extrabold text-[#1C01A5]">
-                          Menyusun bagian ini...
-                        </p>
-                      </div>
-                    ) : null}
-                    {hasilData && statusUjian === "memuat" ? (
+                    {statusUjian === "memuat" ? (
                       <div className="rounded-2xl bg-white/80 p-8 text-center">
                         <Loader2 className="mx-auto h-10 w-10 animate-spin text-[#1C01A5]" />
                         <p className="mt-4 text-lg font-extrabold text-[#1C01A5]">
@@ -1652,7 +1696,7 @@ export default function TutorAI() {
                         </p>
                       </div>
                     ) : null}
-                    {hasilData && statusUjian === "galat" ? (
+                    {statusUjian === "galat" ? (
                       <div className="mb-4 rounded-2xl border-2 border-rose-100 bg-rose-50 p-5 text-center">
                         <p className="font-semibold text-rose-600">{pesanUjian}</p>
                         <button
@@ -1667,12 +1711,12 @@ export default function TutorAI() {
                         </button>
                       </div>
                     ) : null}
-                    {hasilData && statusUjian === "siap" ? (
+                    {statusUjian === "siap" ? (
                       <PanelUjianModul
                         soal={soalUjian}
                         draf={drafEsai}
                         jawaban={jawabanEsai}
-                        motivasi={hasilData.motivasi}
+                        motivasi={hasilData?.motivasi || "Semangat"}
                         onDraf={(nomor, teks) =>
                           setDrafEsai((sebelum) => ({
                             ...sebelum,

@@ -3,7 +3,7 @@
 import { memo } from "react";
 import { Loader2, Sparkles } from "lucide-react";
 import ModuleRenderer from "@/components/ModuleRenderer";
-import { type SudutPandangMateri } from "@/lib/sudut-pandang";
+import { LABEL_SUDUT, type SudutPandangMateri } from "@/lib/sudut-pandang";
 
 function pecahReferensiUrl(nilai?: string): string[] {
   if (!nilai?.trim()) return [];
@@ -27,17 +27,20 @@ function PanelMateriModul({
   sudutPandang,
   onGantiSudut,
   referensiUrl,
+  memuat,
 }: {
   materi: string;
   sapaan: string;
   naskah: string;
   doodleSrc?: string | null;
   doodleMemuat?: boolean;
-  sudutPandang: SudutPandangMateri;
+  sudutPandang: SudutPandangMateri | null;
   onGantiSudut: (sudut: SudutPandangMateri) => void;
   referensiUrl?: string;
+  memuat?: boolean;
 }) {
   const daftarPustaka = pecahReferensiUrl(referensiUrl);
+  const label = sudutPandang ? LABEL_SUDUT[sudutPandang] : null;
 
   return (
     <article className="space-y-5">
@@ -64,11 +67,13 @@ function PanelMateriModul({
           {materi}
         </h2>
         <p className="mt-1 text-sm font-bold text-[#1C01A5]/70">
-          Mengikuti uraian buku siswa Kurikulum Merdeka
+          {label?.ringkas ?? "Pilih Mode Kurikulum atau Mode Global untuk memuat naskah."}
         </p>
-        <p className="mt-3 whitespace-pre-line text-base font-semibold text-slate-700">
-          {sapaan}
-        </p>
+        {sapaan && sudutPandang ? (
+          <p className="mt-3 whitespace-pre-line text-base font-semibold text-slate-700">
+            {sapaan}
+          </p>
+        ) : null}
         <div className="mt-4 flex gap-2">
           <button
             type="button"
@@ -80,7 +85,7 @@ function PanelMateriModul({
                 : "bg-white text-[#1C01A5]"
             }`}
           >
-            Kurikulum Sekolah
+            Mode Kurikulum
           </button>
           <button
             type="button"
@@ -92,14 +97,31 @@ function PanelMateriModul({
                 : "bg-white text-[#1C01A5]"
             }`}
           >
-            Cara Jenius Dunia
+            Mode Global
           </button>
         </div>
       </div>
-      <div key={sudutPandang} className="border-t border-[#1C01A5]/10 pt-5">
-        <ModuleRenderer konten={naskah} className="mt-1" />
-      </div>
-      {daftarPustaka.length > 0 ? (
+      {memuat ? (
+        <div className="rounded-2xl bg-white/80 p-8 text-center">
+          <Loader2 className="mx-auto h-10 w-10 animate-spin text-[#1C01A5]" />
+          <p className="mt-4 text-lg font-extrabold text-[#1C01A5]">
+            {sudutPandang === "global"
+              ? "Menyusun naskah Mode Global..."
+              : "Menyusun naskah Mode Kurikulum..."}
+          </p>
+        </div>
+      ) : null}
+      {!memuat && sudutPandang && naskah ? (
+        <div key={sudutPandang} className="border-t border-[#1C01A5]/10 pt-5">
+          <ModuleRenderer konten={naskah} className="mt-1" />
+        </div>
+      ) : null}
+      {!memuat && !sudutPandang ? (
+        <p className="text-sm font-semibold text-[#1C01A5]/70">
+          Naskah belum dimuat. Klik salah satu mode di atas — hanya mode itu yang disusun, supaya lebih cepat.
+        </p>
+      ) : null}
+      {daftarPustaka.length > 0 && sudutPandang === "kurikulum" && naskah ? (
         <aside className="border-t border-[#1C01A5]/10 pt-4">
           <p className="text-xs font-extrabold uppercase tracking-wide text-[#1C01A5]/70">
             Sumber referensi
@@ -131,5 +153,6 @@ export default memo(PanelMateriModul, (sebelum, sekarang) => (
   sebelum.doodleSrc === sekarang.doodleSrc &&
   sebelum.doodleMemuat === sekarang.doodleMemuat &&
   sebelum.sudutPandang === sekarang.sudutPandang &&
-  sebelum.referensiUrl === sekarang.referensiUrl
+  sebelum.referensiUrl === sekarang.referensiUrl &&
+  sebelum.memuat === sekarang.memuat
 ));

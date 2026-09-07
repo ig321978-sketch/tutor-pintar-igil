@@ -144,21 +144,66 @@ function anonimkanNama(teks: string, nama: string): string {
   return teks.replace(new RegExp(`\\b${aman}\\b`, "gi"), "kamu");
 }
 
+function isiCacheKosong(): IsiCacheMateri {
+  return {
+    curriculum_view: "",
+    global_best_view: "",
+    sketsaKartu: "",
+    svgCode: "",
+    pertanyaan: "",
+    kunciJawaban: "",
+    motivasi: "",
+    referensiUrl: "",
+  };
+}
+
+function isiCachePunyaNaskah(isi: IsiCacheMateri): boolean {
+  return Boolean(
+    isi.curriculum_view.trim() ||
+      isi.global_best_view.trim() ||
+      isi.pertanyaan.trim(),
+  );
+}
+
+export function gabungIsiCache(
+  lama: IsiCacheMateri | null,
+  baru: Partial<IsiCacheMateri>,
+  tulisUlang = false,
+): IsiCacheMateri {
+  const dasar = lama ?? isiCacheKosong();
+  const pilih = (ada: string, masuk?: string) => {
+    const n = (masuk ?? "").trim();
+    if (!n) return ada;
+    if (tulisUlang || !ada.trim()) return n;
+    return ada;
+  };
+  return {
+    curriculum_view: pilih(dasar.curriculum_view, baru.curriculum_view),
+    global_best_view: pilih(dasar.global_best_view, baru.global_best_view),
+    sketsaKartu: pilih(dasar.sketsaKartu, baru.sketsaKartu),
+    svgCode: pilih(dasar.svgCode, baru.svgCode),
+    pertanyaan: pilih(dasar.pertanyaan, baru.pertanyaan),
+    kunciJawaban: pilih(dasar.kunciJawaban, baru.kunciJawaban),
+    motivasi: pilih(dasar.motivasi, baru.motivasi),
+    referensiUrl: pilih(dasar.referensiUrl ?? "", baru.referensiUrl),
+  };
+}
+
 function dariBarisCadangan(ide: unknown): IsiCacheMateri | null {
   if (typeof ide !== "string" || !ide.trim()) return null;
   try {
     const data = JSON.parse(ide) as Partial<IsiCacheMateri>;
-    if (!data.curriculum_view || !data.global_best_view) return null;
-    return {
-      curriculum_view: data.curriculum_view,
-      global_best_view: data.global_best_view,
+    const isi = gabungIsiCache(null, {
+      curriculum_view: data.curriculum_view ?? "",
+      global_best_view: data.global_best_view ?? "",
       sketsaKartu: data.sketsaKartu ?? "",
       svgCode: data.svgCode ?? "",
       pertanyaan: data.pertanyaan ?? "",
       kunciJawaban: data.kunciJawaban ?? "",
       motivasi: data.motivasi ?? "",
       referensiUrl: data.referensiUrl ?? "",
-    };
+    });
+    return isiCachePunyaNaskah(isi) ? isi : null;
   } catch {
     return null;
   }
@@ -214,18 +259,9 @@ function sebagaiBarisCache(data: unknown): {
 }
 
 function barisKeIsi(data: unknown): IsiCacheMateri | null {
-  const baris = sebagaiBarisCache(data);
-  if (!baris?.curriculum_view || !baris.global_best_view) return null;
-  return {
-    curriculum_view: baris.curriculum_view,
-    global_best_view: baris.global_best_view,
-    sketsaKartu: baris.sketsa_kartu ?? "",
-    svgCode: baris.svg_code ?? "",
-    pertanyaan: baris.pertanyaan ?? "",
-    kunciJawaban: baris.kunci_jawaban ?? "",
-    motivasi: baris.motivasi ?? "",
-    referensiUrl: baris.referensi_url ?? "",
-  };
+  const isi = barisKeIsiAdmin(data);
+  if (!isi || !isiCachePunyaNaskah(isi)) return null;
+  return isi;
 }
 
 export async function ambilCacheMateri(
@@ -275,6 +311,17 @@ export async function ambilCacheMateri(
   return null;
 }
 
+export async function gabungCacheMateri(
+  kelas: string,
+  mapel: string,
+  materi: string,
+  nama: string,
+  isi: Partial<IsiCacheMateri>,
+  opsi: OpsiSimpanCacheMateri = {},
+): Promise<boolean> {
+  return simpanCacheMateri(kelas, mapel, materi, nama, gabungIsiCache(null, isi), opsi);
+}
+
 export async function simpanCacheMateri(
   kelas: string,
   mapel: string,
@@ -296,20 +343,40 @@ export async function simpanCacheMateri(
   if (sedangDihapus && opsi.tulisUlangSetelahHapus) {
     await hapusTandaCacheModulHapus(kunciDaftar);
   }
-  const sudahAda = await ambilCacheMateri(kelas, mapel, materi);
-  if (sudahAda) return true;
-
-  const topicId = topicIdMateri(kelas, mapel, materi);
-  const payload: IsiCacheMateri = {
-    curriculum_view: anonimkanNama(isi.curriculum_view, nama),
-    global_best_view: anonimkanNama(isi.global_best_view, nama),
-    sketsaKartu: isi.sketsaKartu,
-    svgCode: isi.svgCode,
-    pertanyaan: naskahLatihanSaja(anonimkanNama(isi.pertanyaan, nama)),
-    kunciJawaban: kunciLatihanSaja(isi.kunciJawaban),
-    motivasi: isi.motivasi,
+  const masuk: IsiCacheMateri = {
+    curriculum_view: anonimkanNama(isi.curriculum_view ?? "", nama),
+    global_best_view: anonimkanNama(isi.global_best_view ?? "", nama),
+    sketsaKartu: isi.sketsaKartu ?? "",
+    svgCode: isi.svgCode ?? "",
+    pertanyaan: naskahLatihanSaja(anonimkanNama(isi.pertanyaan ?? "", nama)),
+    kunciJawaban: kunciLatihanSaja(isi.kunciJawaban ?? ""),
+    motivasi: isi.motivasi ?? "",
     referensiUrl: isi.referensiUrl ?? "",
   };
+  const sudahAda = await ambilCacheMateri(kelas, mapel, materi);
+  const payload = gabungIsiCache(
+    sudahAda,
+    masuk,
+    Boolean(opsi.tulisUlangSetelahHapus),
+  );
+  if (
+    sudahAda &&
+    sudahAda.curriculum_view === payload.curriculum_view &&
+    sudahAda.global_best_view === payload.global_best_view &&
+    sudahAda.sketsaKartu === payload.sketsaKartu &&
+    sudahAda.pertanyaan === payload.pertanyaan &&
+    sudahAda.kunciJawaban === payload.kunciJawaban
+  ) {
+    return true;
+  }
+
+  const topicId = topicIdMateri(kelas, mapel, materi);
+  if (sudahAda) {
+    for (const kunci of kunciDaftar) {
+      const diperbarui = await perbaruiCacheMateri(kunci, payload);
+      if (diperbarui) return true;
+    }
+  }
   const dasar = {
     kunci: topicId,
     kelas,
@@ -345,7 +412,10 @@ export async function simpanCacheMateri(
     pertama = await supabase.from("cache_materi_tutor").insert(barisLengkap);
   }
   if (!pertama.error) return true;
-  if (pertama.error.code === "23505") return true;
+  if (pertama.error.code === "23505") {
+    const bentrok = await perbaruiCacheMateri(topicId, payload);
+    if (bentrok) return true;
+  }
   console.warn("[cache-materi] simpan tabel:", pertama.error.message);
   const upsert = await supabase
     .from("cache_materi_tutor")

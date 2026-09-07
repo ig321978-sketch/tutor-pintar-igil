@@ -27,7 +27,12 @@ export function pilihPenjelasanMateri(
   sudut: SudutPandangMateri,
 ): string {
   if (sudut === "global") {
-    return (modul.global_best_view || modul.penjelasan).trim();
+    return (modul.global_best_view ?? "").trim();
   }
-  return (modul.curriculum_view || modul.penjelasan).trim();
+  return (modul.curriculum_view || modul.penjelasan || "").trim();
+}
+
+export function naskahMateriSiap(teks?: string): boolean {
+  const t = (teks ?? "").trim();
+  return t.length > 40 && !/sedang disiapkan|sedang disusun/i.test(t);
 }
