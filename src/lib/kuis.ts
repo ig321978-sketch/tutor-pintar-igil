@@ -103,6 +103,14 @@ export function pecahBankSoal(mentah: string): {
   return { pilihanGanda, esai };
 }
 
+export function naskahLatihanSaja(mentah: string): string {
+  return pecahBankSoal(mentah).pilihanGanda.join("\n\n");
+}
+
+export function kunciLatihanSaja(nilai: unknown): string {
+  return pecahKunciBank(nilai).huruf.join(",");
+}
+
 export function kemasKunciBank(huruf: string[], rubrik: string): string {
   const kunci = huruf.filter((item) => HURUF_SAH.has(item)).join(",");
   const isi = rubrik.trim();

@@ -2,9 +2,9 @@ import { supabaseServer } from "@/lib/supabase";
 import {
   kandidatKunciMateri,
   kunciMateriTutor,
-  rapikanKunci,
 } from "@/lib/kunci-siswa";
 import { namaDepanSiswa } from "@/lib/nama-siswa";
+import { naskahLatihanSaja, pecahBankSoal, kunciLatihanSaja } from "@/lib/kuis";
 
 export type IsiCacheMateri = {
   curriculum_view: string;
@@ -17,9 +17,121 @@ export type IsiCacheMateri = {
   referensiUrl?: string;
 };
 
+export type OpsiSimpanCacheMateri = {
+  tulisUlangSetelahHapus?: boolean;
+};
+
+const STATUS_CACHE_MATERI = "CACHE_MATERI";
+const STATUS_CACHE_HAPUS = "CACHE_HAPUS";
+
 const KOLOM_ISI_DASAR =
   "curriculum_view, global_best_view, sketsa_kartu, svg_code, pertanyaan, kunci_jawaban, motivasi";
 const KOLOM_ISI_CACHE = `${KOLOM_ISI_DASAR}, referensi_url`;
+
+function tabelBelumAda(error: { message?: string; code?: string } | null): boolean {
+  const pesan = error?.message ?? "";
+  return (
+    error?.code === "42P01" ||
+    /does not exist|schema cache|could not find the table/i.test(pesan)
+  );
+}
+
+export function daftarKunciDariKunciBaris(kunci: string): string[] {
+  const set = new Set<string>();
+  const mentah = kunci.trim();
+  if (mentah) set.add(mentah);
+  const pecah = pecahKunciMateri(mentah);
+  if (pecah) {
+    for (const id of kandidatKunciMateri(pecah.kelas, pecah.mapel, pecah.materi)) {
+      set.add(id);
+    }
+  }
+  return [...set];
+}
+
+async function tandaiCacheModulHapus(
+  kunciDaftar: string[],
+  meta?: { kelas: string; mapel: string; materi: string } | null,
+): Promise<void> {
+  const supabase = supabaseServer();
+  if (!supabase || kunciDaftar.length === 0) return;
+  const sekarang = new Date().toISOString();
+  const baris = kunciDaftar.map((kunci) => ({
+    kunci,
+    kelas: meta?.kelas ?? "",
+    mapel: meta?.mapel ?? "",
+    materi: meta?.materi ?? "",
+    dihapus_at: sekarang,
+  }));
+  const utama = await supabase
+    .from("cache_modul_hapus")
+    .upsert(baris, { onConflict: "kunci" });
+  if (!utama.error) return;
+  if (!tabelBelumAda(utama.error)) {
+    console.warn("[cache-materi] tanda hapus:", utama.error.message);
+  }
+  for (const kunci of kunciDaftar) {
+    const cadangan = await supabase.from("penambangan_igil").insert({
+      nama: "_hapus",
+      kelas: meta?.kelas ?? "",
+      mapel: meta?.mapel ?? "",
+      materi: meta?.materi ?? "",
+      ide: "",
+      token: 0,
+      status: STATUS_CACHE_HAPUS,
+      umpan_balik: kunci,
+    });
+    if (cadangan.error) {
+      console.warn("[cache-materi] tanda hapus cadangan:", cadangan.error.message);
+    }
+  }
+}
+
+async function hapusTandaCacheModulHapus(kunciDaftar: string[]): Promise<void> {
+  const supabase = supabaseServer();
+  if (!supabase || kunciDaftar.length === 0) return;
+  const utama = await supabase
+    .from("cache_modul_hapus")
+    .delete()
+    .in("kunci", kunciDaftar);
+  if (utama.error && !tabelBelumAda(utama.error)) {
+    console.warn("[cache-materi] buang tanda hapus:", utama.error.message);
+  }
+  const cadangan = await supabase
+    .from("penambangan_igil")
+    .delete()
+    .eq("status", STATUS_CACHE_HAPUS)
+    .in("umpan_balik", kunciDaftar);
+  if (cadangan.error) {
+    console.warn("[cache-materi] buang tanda hapus cadangan:", cadangan.error.message);
+  }
+}
+
+export async function cacheModulSedangDihapus(
+  kelas: string,
+  mapel: string,
+  materi: string,
+): Promise<boolean> {
+  const supabase = supabaseServer();
+  if (!supabase) return false;
+  const kunciDaftar = kandidatKunciMateri(kelas, mapel, materi);
+  const utama = await supabase
+    .from("cache_modul_hapus")
+    .select("kunci")
+    .in("kunci", kunciDaftar)
+    .limit(1);
+  if (utama.data && utama.data.length > 0) return true;
+  if (utama.error && !tabelBelumAda(utama.error)) {
+    console.warn("[cache-materi] cek hapus:", utama.error.message);
+  }
+  const cadangan = await supabase
+    .from("penambangan_igil")
+    .select("id")
+    .eq("status", STATUS_CACHE_HAPUS)
+    .in("umpan_balik", kunciDaftar)
+    .limit(1);
+  return Boolean(cadangan.data && cadangan.data.length > 0);
+}
 
 function kolomHilang(error: { message?: string } | null, kolom: string): boolean {
   return Boolean(error?.message && error.message.includes(kolom));
@@ -127,6 +239,7 @@ export async function ambilCacheMateri(
     return null;
   }
   const kandidat = kandidatKunciMateri(kelas, mapel, materi);
+  if (await cacheModulSedangDihapus(kelas, mapel, materi)) return null;
   let kolom = KOLOM_ISI_CACHE;
 
   for (const topicId of kandidat) {
@@ -168,11 +281,20 @@ export async function simpanCacheMateri(
   materi: string,
   nama: string,
   isi: IsiCacheMateri,
+  opsi: OpsiSimpanCacheMateri = {},
 ): Promise<boolean> {
   const supabase = supabaseServer();
   if (!supabase) {
     console.warn("[cache-materi] supabase belum terhubung; generate tidak tersimpan.");
     return false;
+  }
+  const kunciDaftar = kandidatKunciMateri(kelas, mapel, materi);
+  const sedangDihapus = await cacheModulSedangDihapus(kelas, mapel, materi);
+  if (sedangDihapus && !opsi.tulisUlangSetelahHapus) {
+    return true;
+  }
+  if (sedangDihapus && opsi.tulisUlangSetelahHapus) {
+    await hapusTandaCacheModulHapus(kunciDaftar);
   }
   const sudahAda = await ambilCacheMateri(kelas, mapel, materi);
   if (sudahAda) return true;
@@ -183,8 +305,8 @@ export async function simpanCacheMateri(
     global_best_view: anonimkanNama(isi.global_best_view, nama),
     sketsaKartu: isi.sketsaKartu,
     svgCode: isi.svgCode,
-    pertanyaan: anonimkanNama(isi.pertanyaan, nama),
-    kunciJawaban: isi.kunciJawaban,
+    pertanyaan: naskahLatihanSaja(anonimkanNama(isi.pertanyaan, nama)),
+    kunciJawaban: kunciLatihanSaja(isi.kunciJawaban),
     motivasi: isi.motivasi,
     referensiUrl: isi.referensiUrl ?? "",
   };
@@ -240,7 +362,7 @@ export async function simpanCacheMateri(
     materi,
     ide: JSON.stringify(payload),
     token: 0,
-    status: "CACHE_MATERI",
+    status: STATUS_CACHE_MATERI,
     umpan_balik: topicId,
   });
   if (cadangan.error) {
@@ -260,6 +382,8 @@ export type RingkasCacheMateri = {
   isDraft: boolean;
   audioSiap: boolean;
   updatedAt: string;
+  adaCacheMateri: boolean;
+  jumlahLatihan: number;
 };
 
 export type DetailCacheMateri = RingkasCacheMateri & IsiCacheMateri;
@@ -274,6 +398,8 @@ function barisKeRingkas(data: {
   is_draft?: boolean | null;
   audio_siap?: boolean | null;
   updated_at?: string | null;
+  curriculum_view?: string | null;
+  pertanyaan?: string | null;
 }): RingkasCacheMateri | null {
   const kunci = data.kunci || data.topic_id;
   if (!kunci) return null;
@@ -287,6 +413,8 @@ function barisKeRingkas(data: {
     isDraft: data.is_draft !== false,
     audioSiap: Boolean(data.audio_siap),
     updatedAt: data.updated_at ?? "",
+    adaCacheMateri: Boolean((data.curriculum_view ?? "").trim()),
+    jumlahLatihan: pecahBankSoal(data.pertanyaan ?? "").pilihanGanda.length,
   };
 }
 
@@ -307,7 +435,7 @@ export async function muatDaftarCacheAdmin(): Promise<{
   const { data, error } = await supabase
     .from("cache_materi_tutor")
     .select(
-      "kunci, topic_id, kelas, mapel, materi, model_sumber, is_draft, audio_siap, updated_at",
+      "kunci, topic_id, kelas, mapel, materi, model_sumber, is_draft, audio_siap, updated_at, curriculum_view, pertanyaan",
     )
     .order("updated_at", { ascending: false })
     .limit(200);
@@ -407,8 +535,8 @@ export async function perbaruiCacheMateri(
     global_best_view: isi.global_best_view,
     sketsa_kartu: isi.sketsaKartu,
     svg_code: isi.svgCode,
-    pertanyaan: isi.pertanyaan,
-    kunci_jawaban: isi.kunciJawaban,
+    pertanyaan: naskahLatihanSaja(isi.pertanyaan),
+    kunci_jawaban: kunciLatihanSaja(isi.kunciJawaban),
     motivasi: isi.motivasi,
     referensi_url: isi.referensiUrl ?? "",
     is_draft: true,
@@ -452,14 +580,42 @@ export async function perbaruiCacheMateri(
 export async function hapusCacheMateri(kunci: string): Promise<boolean> {
   const supabase = supabaseServer();
   if (!supabase) return false;
+  const detail = await ambilDetailCacheMateri(kunci);
+  const kunciSemua = new Set(daftarKunciDariKunciBaris(kunci));
+  if (detail) {
+    for (const id of kandidatKunciMateri(detail.kelas, detail.mapel, detail.materi)) {
+      kunciSemua.add(id);
+    }
+  }
+  const daftar = [...kunciSemua];
   const lewatKunci = await supabase
     .from("cache_materi_tutor")
     .delete()
-    .eq("kunci", kunci);
+    .in("kunci", daftar);
   const lewatTopic = await supabase
     .from("cache_materi_tutor")
     .delete()
-    .eq("topic_id", kunci);
+    .in("topic_id", daftar);
+  if (detail?.kelas && detail.mapel && detail.materi) {
+    const lewatIdentitas = await supabase
+      .from("cache_materi_tutor")
+      .delete()
+      .eq("kelas", detail.kelas)
+      .eq("mapel", detail.mapel)
+      .eq("materi", detail.materi);
+    if (lewatIdentitas.error) {
+      console.warn("[cache-materi] hapus identitas:", lewatIdentitas.error.message);
+    }
+  }
+  const cadangan = await supabase
+    .from("penambangan_igil")
+    .delete()
+    .eq("status", STATUS_CACHE_MATERI)
+    .in("umpan_balik", daftar);
+  if (cadangan.error) {
+    console.warn("[cache-materi] hapus cadangan:", cadangan.error.message);
+  }
+  await tandaiCacheModulHapus(daftar, detail);
   if (lewatKunci.error) {
     console.warn("[cache-materi] hapus:", lewatKunci.error.message);
   }

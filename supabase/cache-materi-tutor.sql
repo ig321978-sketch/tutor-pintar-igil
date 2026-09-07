@@ -88,3 +88,19 @@ create policy "api_all_penukaran_sesi"
   on penukaran_sesi_ai for all
   using (true)
   with check (true);
+
+create table if not exists cache_modul_hapus (
+  kunci text primary key,
+  kelas text,
+  mapel text,
+  materi text,
+  dihapus_at timestamptz not null default now()
+);
+
+alter table cache_modul_hapus enable row level security;
+
+drop policy if exists "api_all_cache_hapus" on cache_modul_hapus;
+create policy "api_all_cache_hapus"
+  on cache_modul_hapus for all
+  using (true)
+  with check (true);

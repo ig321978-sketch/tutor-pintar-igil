@@ -1,5 +1,6 @@
 import { NextResponse } from "next/server";
 import {
+  cacheModulSedangDihapus,
   muatDaftarCacheAdmin,
   simpanCacheMateri,
 } from "@/lib/cache-materi-tutor";
@@ -67,6 +68,19 @@ export async function POST(req: Request) {
     return NextResponse.json(
       { berhasil: false, pesan: "Naskah modul kosong, cache tidak disimpan." },
       { status: 400, headers: TANPA_CACHE },
+    );
+  }
+
+  const sedangDihapus = await cacheModulSedangDihapus(kelas, mapel, materi);
+  if (sedangDihapus) {
+    return NextResponse.json(
+      {
+        berhasil: true,
+        tersimpan: false,
+        dilewati: true,
+        pesan: "Cache modul ini sudah dihapus admin. Tidak ditulis ulang dari klien.",
+      },
+      { headers: TANPA_CACHE },
     );
   }
 

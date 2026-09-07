@@ -4,6 +4,7 @@ import Link from "next/link";
 import { useState } from "react";
 import PageShell from "@/components/PageShell";
 import type { DetailCacheMateri, IsiCacheMateri } from "@/lib/cache-materi-tutor";
+import { naskahLatihanSaja, kunciLatihanSaja } from "@/lib/kuis";
 import { formatWaktuCache } from "@/lib/studio-kreator";
 import { kelasKotak, kelasLabel, kelasTombolUtama } from "@/lib/tema";
 
@@ -60,7 +61,11 @@ export default function StudioKreatorDetail({
       const res = await fetch(jalurApi, {
         method: "PATCH",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(isi),
+        body: JSON.stringify({
+          ...isi,
+          pertanyaan: naskahLatihanSaja(isi.pertanyaan),
+          kunciJawaban: kunciLatihanSaja(isi.kunciJawaban),
+        }),
       });
       const json = (await res.json()) as {
         berhasil?: boolean;
@@ -82,7 +87,7 @@ export default function StudioKreatorDetail({
 
   async function hapusModul() {
     const yakin = window.confirm(
-      "Yakin ingin menghapus modul ini? Modul akan di-generate ulang oleh AI ketika diakses melalui tombol Memulai Pembelajaran.",
+      "Yakin ingin menghapus cache Materi dan cache Latihan modul ini? Cache tutor ikut terhapus. Website tidak akan menampilkan cache yang sudah dihapus. Ujian tetap acak tanpa cache.",
     );
     if (!yakin) return;
     setAksi("hapus");
@@ -102,7 +107,7 @@ export default function StudioKreatorDetail({
       setMeta(null);
       setIsi(KOSONG);
       setPesan(
-        "Modul berhasil dihapus. Cache kosong. Generate ulang terjadi saat siswa menekan Memulai Pembelajaran.",
+        "Cache Materi dan cache Latihan terhapus dari database dan tutor. Website tidak menampilkan cache ini lagi. Generate baru hanya jika siswa membuka Materi/Latihan.",
       );
     } catch {
       setGalat("Tidak bisa menghapus cache modul.");
@@ -116,7 +121,7 @@ export default function StudioKreatorDetail({
   return (
     <PageShell
       judul="🎨 Detail Studio Kreator"
-      subjudul="Edit naskah cache secara manual, atau hapus cache. Generate ulang hanya terjadi di alur Memulai Pembelajaran."
+      subjudul="Cache Materi dan cache Latihan tersimpan di database. Hapus di sini langsung menghapus cache tutor. Ujian acak tanpa cache."
     >
       <Link
         href="/studio-kreator"
@@ -160,49 +165,61 @@ export default function StudioKreatorDetail({
 
       {meta ? (
         <>
-      <div className="space-y-5">
-        <KolomTeks
-          label="Kurikulum Sekolah"
-          nilai={isi.curriculum_view}
-          tinggi="min-h-48"
-          disabled={sibuk}
-          onChange={(nilai) => setIsi((sekarang) => ({ ...sekarang, curriculum_view: nilai }))}
-        />
-        <KolomTeks
-          label="Cara Jenius Dunia"
-          nilai={isi.global_best_view}
-          tinggi="min-h-48"
-          disabled={sibuk}
-          onChange={(nilai) => setIsi((sekarang) => ({ ...sekarang, global_best_view: nilai }))}
-        />
-        <KolomTeks
-          label="Bank soal"
-          nilai={isi.pertanyaan}
-          tinggi="min-h-40"
-          disabled={sibuk}
-          onChange={(nilai) => setIsi((sekarang) => ({ ...sekarang, pertanyaan: nilai }))}
-        />
-        <KolomTeks
-          label="Kunci jawaban"
-          nilai={isi.kunciJawaban}
-          tinggi="min-h-32"
-          disabled={sibuk}
-          onChange={(nilai) => setIsi((sekarang) => ({ ...sekarang, kunciJawaban: nilai }))}
-        />
-        <KolomTeks
-          label="Sketsa kartu"
-          nilai={isi.sketsaKartu}
-          tinggi="min-h-32"
-          disabled={sibuk}
-          onChange={(nilai) => setIsi((sekarang) => ({ ...sekarang, sketsaKartu: nilai }))}
-        />
-        <KolomTeks
-          label="Motivasi"
-          nilai={isi.motivasi}
-          tinggi="min-h-24"
-          disabled={sibuk}
-          onChange={(nilai) => setIsi((sekarang) => ({ ...sekarang, motivasi: nilai }))}
-        />
+      <div className="space-y-8">
+        <section className="space-y-5">
+          <h2 className="text-lg font-black text-[#1C01A5]">Cache Materi</h2>
+          <p className="text-sm font-semibold text-slate-600">
+            Naskah Kurikulum Sekolah, Cara Jenius, dan sketsa doodle.
+          </p>
+          <KolomTeks
+            label="Kurikulum Sekolah"
+            nilai={isi.curriculum_view}
+            tinggi="min-h-48"
+            disabled={sibuk}
+            onChange={(nilai) => setIsi((sekarang) => ({ ...sekarang, curriculum_view: nilai }))}
+          />
+          <KolomTeks
+            label="Cara Jenius Dunia"
+            nilai={isi.global_best_view}
+            tinggi="min-h-48"
+            disabled={sibuk}
+            onChange={(nilai) => setIsi((sekarang) => ({ ...sekarang, global_best_view: nilai }))}
+          />
+          <KolomTeks
+            label="Sketsa kartu doodle"
+            nilai={isi.sketsaKartu}
+            tinggi="min-h-32"
+            disabled={sibuk}
+            onChange={(nilai) => setIsi((sekarang) => ({ ...sekarang, sketsaKartu: nilai }))}
+          />
+          <KolomTeks
+            label="Motivasi"
+            nilai={isi.motivasi}
+            tinggi="min-h-24"
+            disabled={sibuk}
+            onChange={(nilai) => setIsi((sekarang) => ({ ...sekarang, motivasi: nilai }))}
+          />
+        </section>
+        <section className="space-y-5">
+          <h2 className="text-lg font-black text-[#1C01A5]">Cache Latihan</h2>
+          <p className="text-sm font-semibold text-slate-600">
+            Bank soal pilihan ganda yang dipakai di Latihan. Ujian uraian tidak di-cache.
+          </p>
+          <KolomTeks
+            label="Bank soal pilihan ganda"
+            nilai={naskahLatihanSaja(isi.pertanyaan)}
+            tinggi="min-h-40"
+            disabled={sibuk}
+            onChange={(nilai) => setIsi((sekarang) => ({ ...sekarang, pertanyaan: nilai }))}
+          />
+          <KolomTeks
+            label="Kunci jawaban PG"
+            nilai={kunciLatihanSaja(isi.kunciJawaban)}
+            tinggi="min-h-24"
+            disabled={sibuk}
+            onChange={(nilai) => setIsi((sekarang) => ({ ...sekarang, kunciJawaban: nilai }))}
+          />
+        </section>
       </div>
 
       <div className="mt-8 flex flex-col gap-3 sm:flex-row">
@@ -220,7 +237,7 @@ export default function StudioKreatorDetail({
           disabled={sibuk}
           className="inline-flex items-center justify-center rounded-2xl bg-rose-600 px-5 py-4 text-lg font-extrabold text-white shadow-lg shadow-rose-600/20 transition hover:bg-rose-700 disabled:opacity-70"
         >
-          {aksi === "hapus" ? "Menghapus cache..." : "Hapus Modul (Clear Cache)"}
+          {aksi === "hapus" ? "Menghapus cache..." : "Hapus cache Materi & Latihan"}
         </button>
       </div>
         </>

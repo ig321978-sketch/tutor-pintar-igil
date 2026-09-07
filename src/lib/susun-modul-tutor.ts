@@ -1,16 +1,17 @@
 import { Type, type Part, type Schema } from "@google/genai";
 import {
-  kemasBankSoal,
-  kemasKunciBank,
+  kunciLatihanSaja,
+  naskahLatihanSaja,
   pecahBankSoal,
+  pecahBlokSoal,
   pecahKunciBank,
-  pecahRubrikEsai,
 } from "@/lib/kuis";
 import { jenjangGuru } from "@/lib/guru";
 import { mapelHitungan } from "@/lib/mapel-hitungan";
 import {
   hasilkanJsonGeminiLengkap,
   MODEL_GEMINI_MATERI,
+  MODEL_GEMINI_RUTIN,
   pesanGalatGemini,
 } from "@/lib/klien-gemini";
 import { bersihkanDanParseJson } from "@/lib/parse-json-ai";
@@ -316,9 +317,7 @@ export function bentukModulTutor(
   const bank = pecahBankSoal(
     pulihkanParagraf(bagian.pertanyaan, "Latihan soal sedang disusun..."),
   );
-  const esaiLangsung = pulihkanParagraf(bagian.esai, "");
   const kunci = pecahKunciBank(bagian.kunciJawaban);
-  const rubrikLangsung = pecahRubrikEsai(bagian.kunciEsai);
   return {
     sapaan: sapaanTutorRingkas(nama, sebagaiTeks(bagian.sapaan)),
     penjelasan: kurikulum,
@@ -331,8 +330,8 @@ export function bentukModulTutor(
     svgCode: amankanSvg(bagian.svgCode),
     pertanyaan: bank.pilihanGanda.join("\n\n") || "Latihan soal sedang disusun...",
     kunciJawaban: kunci.huruf,
-    esai: esaiLangsung || bank.esai.join("\n\n"),
-    kunciEsai: rubrikLangsung.length > 0 ? rubrikLangsung : kunci.rubrik,
+    esai: "",
+    kunciEsai: [],
     motivasi: pilihKataPujian(sebagaiTeks(bagian.motivasi, namaDepanSiswa(nama))),
     referensiUrl: sebagaiTeks(bagian.referensiUrl || bagian.referensi_url),
   };
@@ -344,8 +343,8 @@ export function keIsiCache(data: ModulTutor): IsiCacheMateri {
     global_best_view: data.global_best_view,
     sketsaKartu: data.sketsaKartu,
     svgCode: data.svgCode,
-    pertanyaan: kemasBankSoal(data.pertanyaan, data.esai),
-    kunciJawaban: kemasKunciBank(data.kunciJawaban, data.kunciEsai.join("\n\n")),
+    pertanyaan: naskahLatihanSaja(data.pertanyaan),
+    kunciJawaban: kunciLatihanSaja(data.kunciJawaban),
     motivasi: data.motivasi,
     referensiUrl: data.referensiUrl,
   };
@@ -470,6 +469,7 @@ export async function generateModuleFirstTime(opsi: {
       opsi.materi,
       opsi.nama,
       keIsiCache(dataAman),
+      { tulisUlangSetelahHapus: true },
     );
     if (!tersimpan) {
       console.warn(
@@ -531,4 +531,56 @@ export async function ambilAtauBuatModul(opsi: {
     }
     throw new Error(pesanGalatGemini(error));
   }
+}
+
+const SKEMA_UJIAN: Schema = {
+  type: Type.OBJECT,
+  properties: {
+    esai: { type: Type.STRING },
+  },
+  required: ["esai"],
+};
+
+export async function generateUjianAcak(opsi: {
+  nama: string;
+  kelas: string;
+  mapel: string;
+  materi: string;
+}): Promise<string[]> {
+  const namaDepan = namaDepanSiswa(opsi.nama);
+  const variasi = `${Date.now()}-${Math.random().toString(36).slice(2, 8)}`;
+  const teks = await hasilkanJsonGeminiLengkap({
+    parts: [
+      {
+        text: `Buat 3 soal uraian BARU untuk ujian ${opsi.mapel} bab ${opsi.materi} kelas ${opsi.kelas}. Siswa: ${namaDepan}.
+Soal HARUS berbeda setiap sesi. Kode variasi: ${variasi}.
+DILARANG mengulang soal cache atau contoh di naskah.
+Komposisi: 1 Reguler + 2 HOTS.
+Format SATU string 'esai', dipisah baris kosong:
+[Soal Esai 1 - Tipe: Reguler]
+Perintah uraian 2-4 kalimat.
+
+[Soal Esai 2 - Tipe: HOTS]
+...
+
+[Soal Esai 3 - Tipe: HOTS]
+...
+DILARANG pilihan A/B/C/D. DILARANG kutip ganda di JSON. Respons SATU objek JSON { 'esai': '...' }.`,
+      },
+    ],
+    schema: SKEMA_UJIAN,
+    maxOutputTokens: 2048,
+    model: MODEL_GEMINI_RUTIN,
+    thinking: false,
+    timeoutCobaMs: 25_000,
+    googleSearch: false,
+  });
+  const data = bersihkanDanParseJson(teks.teks) as { esai?: unknown };
+  const soal = pecahBlokSoal(
+    typeof data.esai === "string" ? data.esai : "",
+  ).slice(0, 3);
+  if (soal.length === 0) {
+    throw new Error("Ujian acak kosong.");
+  }
+  return soal;
 }

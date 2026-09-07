@@ -53,3 +53,7 @@ export function hapusModulLokal(topicId: string): void {
     // Abaikan kuota / JSON rusak.
   }
 }
+
+export function hapusModulLokalBanyak(topicIds: string[]): void {
+  for (const id of topicIds) hapusModulLokal(id);
+}

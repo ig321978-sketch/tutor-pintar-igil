@@ -58,7 +58,7 @@ export default function StudioKreatorPage() {
   return (
     <PageShell
       judul="🎨 Studio Kreator"
-      subjudul="Kelola cache modul AI: edit naskah atau hapus cache secara manual. Generate ulang hanya terjadi saat siswa menekan Memulai Pembelajaran."
+      subjudul="Kelola cache Materi dan cache Latihan dari database. Hapus cache di sini langsung menghapus cache tutor. Ujian dibuat acak tanpa cache."
     >
       <label className="mb-6 block">
         <span className="sr-only">Cari modul</span>
@@ -100,10 +100,16 @@ export default function StudioKreatorPage() {
                 </p>
                 <p className="mt-2 flex flex-wrap gap-2 text-xs font-bold uppercase tracking-wide">
                   <span className="rounded-full bg-[#1C01A5]/10 px-2 py-0.5 text-[#1C01A5]">
-                    {item.isDraft ? "Draf" : "Terbit"}
+                    Cache Materi{item.adaCacheMateri ? "" : " kosong"}
+                  </span>
+                  <span className="rounded-full bg-[#F0AB00]/20 px-2 py-0.5 text-[#1C01A5]">
+                    Cache Latihan {item.jumlahLatihan} soal
                   </span>
                   <span className="rounded-full bg-slate-100 px-2 py-0.5 text-slate-600">
-                    Voice nonaktif
+                    Ujian acak · tanpa cache
+                  </span>
+                  <span className="rounded-full bg-[#1C01A5]/10 px-2 py-0.5 text-[#1C01A5]">
+                    {item.isDraft ? "Draf" : "Terbit"}
                   </span>
                   <span className="rounded-full bg-slate-100 px-2 py-0.5 text-slate-600">
                     {item.modelSumber || "model tidak tercatat"}

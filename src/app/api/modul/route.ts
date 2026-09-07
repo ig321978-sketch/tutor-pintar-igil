@@ -44,19 +44,33 @@ export async function GET(req: Request) {
   }
   const cache = await getModule(kelas, mapel, materi);
   if (!cache) {
-    return NextResponse.json({
-      berhasil: true,
-      ada: false,
-      topicId: topicIdMateri(kelas, mapel, materi),
-    });
+    return NextResponse.json(
+      {
+        berhasil: true,
+        ada: false,
+        topicId: topicIdMateri(kelas, mapel, materi),
+      },
+      {
+        headers: {
+          "Cache-Control": "no-store, max-age=0",
+        },
+      },
+    );
   }
-  return NextResponse.json({
-    berhasil: true,
-    ada: true,
-    dariCache: true,
-    topicId: topicIdMateri(kelas, mapel, materi),
-    data: bentukModulTutor(nama, cache),
-  });
+  return NextResponse.json(
+    {
+      berhasil: true,
+      ada: true,
+      dariCache: true,
+      topicId: topicIdMateri(kelas, mapel, materi),
+      data: bentukModulTutor(nama, cache),
+    },
+    {
+      headers: {
+        "Cache-Control": "no-store, max-age=0",
+      },
+    },
+  );
 }
 
 export async function POST(req: Request) {
