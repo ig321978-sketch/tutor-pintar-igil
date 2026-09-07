@@ -142,13 +142,13 @@ ${cuplikan}
 
 Tugas: nilai holistik 0-100. JANGAN hanya memakai persentase pilihan ganda.
 Wajib menimbang:
-1) kedalaman pemahaman (ketepatan PG + kelengkapan dengar materi),
+1) kedalaman pemahaman (ketepatan PG),
 2) kualitas jawaban essay (kelengkapan, nalar, kesesuaian bab),
-3) konsistensi belajar (bab tuntas audio+latihan, tidak setengah jadi).
+3) konsistensi belajar (bab tuntas latihan, tidak setengah jadi).
 
 ATURAN SKOR:
 - 0-50 KURANG, 51-70 CUKUP, 71-90 BAIK, 91-100 SANGAT BAIK.
-- Jika siswa belum tuntas dengar ATAU belum merampungkan latihan pada sebagian besar bab, skor maksimal 70.
+- Jika siswa belum merampungkan latihan pada sebagian besar bab, skor maksimal 70.
 - Essay kosong atau sangat pendek menekan skor, meski PG bagus.
 - skor HARUS bilangan bulat 0 sampai 100.
 

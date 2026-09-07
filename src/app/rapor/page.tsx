@@ -260,7 +260,7 @@ export default function RaporSiswaPage() {
         ) : null}
         {!memuatRapor && !raporHarian && babHariIni.length === 0 ? (
           <p className="text-sm text-slate-600">
-            Belum ada aktivitas hari ini. Selesaikan dengar penjelasan dan Soal Latihan di AI Tutor.
+            Belum ada aktivitas hari ini. Selesaikan Soal Latihan di AI Tutor.
           </p>
         ) : null}
         {raporHarian ? (
