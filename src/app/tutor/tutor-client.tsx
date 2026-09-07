@@ -1456,7 +1456,7 @@ export default function TutorAI() {
         setPesanSuara("");
         return true;
       } catch {
-        setPesanSuara("Gagal terhubung ke suara Prosa.ai.");
+        setPesanSuara("Gagal terhubung ke suara ElevenLabs.");
         return false;
       } finally {
         muatSegmenRef.current.delete(kunci);

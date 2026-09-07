@@ -1,5 +1,5 @@
 import { NextResponse } from "next/server";
-import { prosaSiapDipakai, sintesisProsa } from "@/lib/prosa-tts";
+import { elevenLabsSiapDipakai, sintesisElevenLabs } from "@/lib/elevenlabs-tts";
 import { naskahLisan } from "@/lib/naskah-lisan";
 import { normalisasiKelaminTts, waktuKataDariDurasi } from "@/lib/tts";
 
@@ -37,40 +37,38 @@ export async function POST(req: Request) {
       );
     }
 
-    if (!prosaSiapDipakai()) {
+    if (!elevenLabsSiapDipakai()) {
       return NextResponse.json(
         {
           berhasil: false,
-          pesan: "Kunci Prosa.ai belum disetel. Isi PROSA_API_KEY.",
+          pesan: "Kunci ElevenLabs belum disetel. Isi ELEVENLABS_API_KEY.",
         },
         { status: 503 },
       );
     }
 
     const kelamin = normalisasiKelaminTts(body.kelamin ?? body.gender);
-    const hasil = await sintesisProsa(naskah, kelamin);
+    const hasil = await sintesisElevenLabs(naskah, kelamin);
     return NextResponse.json({
       berhasil: true,
-      sumber: "prosa",
+      sumber: "elevenlabs",
       mime: hasil.mime,
       audioBase64: hasil.audio.toString("base64"),
       durasiDetik: hasil.durasiDetik,
-      suara: hasil.model,
+      suara: hasil.suara,
       kata: waktuKataDariDurasi(naskah, hasil.durasiDetik),
     });
   } catch (error: unknown) {
-    const pesan = error instanceof Error ? error.message : "Sintesis Prosa gagal.";
-    console.error("TTS Prosa:", pesan);
-    return NextResponse.json(
-      { berhasil: false, pesan },
-      { status: 502 },
-    );
+    const pesan =
+      error instanceof Error ? error.message : "Sintesis ElevenLabs gagal.";
+    console.error("TTS ElevenLabs:", pesan);
+    return NextResponse.json({ berhasil: false, pesan }, { status: 502 });
   }
 }
 
 export async function GET() {
   return NextResponse.json({
-    berhasil: prosaSiapDipakai(),
-    sumber: "prosa",
+    berhasil: elevenLabsSiapDipakai(),
+    sumber: "elevenlabs",
   });
 }
