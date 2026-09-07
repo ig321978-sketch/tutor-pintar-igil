@@ -23,6 +23,45 @@ export function hurufKunci(kunci: string[] | undefined, nomor: number): string {
   return kunci?.[nomor - 1] ?? "";
 }
 
+const POLA_BARIS_PILIHAN =
+  /^\s*(?:\*\*)?([A-D])(?:\*\*)?\s*[).:\-–]\s*(.*)$/;
+
+export function pecahNaskahPilihanGanda(mentah: string): {
+  naskah: string;
+  pilihan: Record<"A" | "B" | "C" | "D", string>;
+} {
+  const pilihan: Record<"A" | "B" | "C" | "D", string> = {
+    A: "",
+    B: "",
+    C: "",
+    D: "",
+  };
+  const baris = mentah.replace(/\r\n/g, "\n").split("\n");
+  const indeksAwal = baris.findIndex((item) => POLA_BARIS_PILIHAN.test(item));
+  if (indeksAwal < 0) {
+    return { naskah: mentah.trim(), pilihan };
+  }
+
+  const naskah = baris
+    .slice(0, indeksAwal)
+    .join("\n")
+    .replace(/^\s*\[Soal[^\]]*\]\s*/i, "")
+    .trim();
+  let hurufAktif: "A" | "B" | "C" | "D" | "" = "";
+  for (const item of baris.slice(indeksAwal)) {
+    const cocok = item.match(POLA_BARIS_PILIHAN);
+    if (cocok && (cocok[1] === "A" || cocok[1] === "B" || cocok[1] === "C" || cocok[1] === "D")) {
+      hurufAktif = cocok[1];
+      pilihan[hurufAktif] = (cocok[2] ?? "").trim();
+      continue;
+    }
+    if (hurufAktif && item.trim()) {
+      pilihan[hurufAktif] = `${pilihan[hurufAktif]}\n${item.trim()}`.trim();
+    }
+  }
+  return { naskah, pilihan };
+}
+
 export function pecahBlokSoal(mentah: string): string[] {
   return mentah
     .split(/\n\n+/)

@@ -1,7 +1,7 @@
 "use client";
 
 import ModuleRenderer from "@/components/ModuleRenderer";
-import { hurufKunci } from "@/lib/kuis";
+import { hurufKunci, pecahNaskahPilihanGanda } from "@/lib/kuis";
 import { kelasTombolUtama } from "@/lib/tema";
 
 export default function PanelLatihanModul({
@@ -27,6 +27,7 @@ export default function PanelLatihanModul({
         const kunci = hurufKunci(kunciJawaban, nomor);
         const sudahJawab = Boolean(pilihan);
         const benar = sudahJawab && pilihan === kunci;
+        const { naskah, pilihan: naskahPilihan } = pecahNaskahPilihanGanda(item);
         return (
           <div
             key={`soal-${nomor}`}
@@ -35,27 +36,35 @@ export default function PanelLatihanModul({
             <p className="text-xs font-extrabold uppercase tracking-wider text-[#1C01A5]/50">
               Soal {nomor}
             </p>
-            <ModuleRenderer konten={item} className="mt-1" />
-            <div className="mt-3 flex flex-wrap gap-2">
-              {["A", "B", "C", "D"].map((huruf) => {
+            {naskah ? <ModuleRenderer konten={naskah} className="mt-1" /> : null}
+            <div className="mt-3 flex flex-col gap-2">
+              {(["A", "B", "C", "D"] as const).map((huruf) => {
                 const aktif = pilihan === huruf;
                 const tampilKunci = sudahJawab && huruf === kunci;
+                const teksPilihan = naskahPilihan[huruf];
                 return (
-                  <button
-                    key={huruf}
-                    type="button"
-                    onClick={() => onPilih(nomor, huruf)}
-                    disabled={sudahJawab}
-                    className={`rounded-xl border-2 px-4 py-2 text-sm font-extrabold ${
-                      tampilKunci
-                        ? "border-emerald-600 bg-emerald-600 text-white"
-                        : aktif
-                          ? "border-rose-600 bg-rose-600 text-white"
-                          : "border-[#1C01A5]/20 bg-white text-[#1C01A5] hover:border-[#F0AB00] disabled:opacity-60"
-                    }`}
-                  >
-                    {huruf}
-                  </button>
+                  <div key={huruf} className="flex items-start gap-3">
+                    <button
+                      type="button"
+                      onClick={() => onPilih(nomor, huruf)}
+                      disabled={sudahJawab}
+                      className={`mt-0.5 shrink-0 rounded-xl border-2 px-4 py-2 text-sm font-extrabold ${
+                        tampilKunci
+                          ? "border-emerald-600 bg-emerald-600 text-white"
+                          : aktif
+                            ? "border-rose-600 bg-rose-600 text-white"
+                            : "border-[#1C01A5]/20 bg-white text-[#1C01A5] hover:border-[#F0AB00] disabled:opacity-60"
+                      }`}
+                    >
+                      {huruf}
+                    </button>
+                    {teksPilihan ? (
+                      <ModuleRenderer
+                        konten={teksPilihan}
+                        className="min-w-0 flex-1 pt-1 text-slate-800 prose-p:my-0"
+                      />
+                    ) : null}
+                  </div>
                 );
               })}
             </div>
