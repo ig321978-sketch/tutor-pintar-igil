@@ -13,7 +13,12 @@ import {
   daftarMapelUntukKelas,
   labelJenjangKelas,
 } from "@/lib/kurikulum";
-import { bacaProgres, simpanProfil, type SesiModul } from "@/lib/progres";
+import {
+  bacaProgres,
+  sesiSudahBelajar,
+  simpanProfil,
+  type SesiModul,
+} from "@/lib/progres";
 import { kelasKotak, kelasLabel, kelasTombolUtama } from "@/lib/tema";
 
 const OPSI_MAPEL_LAIN = OPSI_LAINNYA;
@@ -245,7 +250,8 @@ export default function RuangBelajarPage() {
                 >
                   <p className="font-bold text-[#1C01A5]">{sesi.materi}</p>
                   <p className="text-sm text-slate-500">
-                    {sesi.mapel} · {sesi.kelas} · {sesi.kuisDijawab}/{sesi.kuisTotal} kuis
+                    {sesi.mapel} · {sesi.kelas} ·{" "}
+                    {sesiSudahBelajar(sesi) ? "Sudah Belajar" : "Belum Belajar"}
                   </p>
                 </li>
               ))}

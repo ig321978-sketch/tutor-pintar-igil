@@ -26,6 +26,11 @@ export type SesiModul = {
   audioCompleted: boolean;
   latihanSelesai: boolean;
   jumlahLatihan: number;
+  simulasiSelesai: boolean;
+  praktikumSelesai: boolean;
+  praktikumLulus: boolean;
+  ujianSelesai: boolean;
+  ujianDijawab: number;
 };
 
 export type RaporHarianTersimpan = {
@@ -33,9 +38,10 @@ export type RaporHarianTersimpan = {
   skor: number;
   predikat: string;
   ringkasan: string;
-  pemahaman: string;
-  esai: string;
-  konsistensi: string;
+  simulasi: string;
+  latihan: string;
+  praktikum: string;
+  ujian: string;
   sidik: string;
   dariAi: boolean;
 };
@@ -136,11 +142,17 @@ function normalisasiSesi(sesi: Partial<SesiModul> & { id?: string }): SesiModul 
     audioCompleted: Boolean(sesi.audioCompleted),
     latihanSelesai: Boolean(sesi.latihanSelesai),
     jumlahLatihan,
+    simulasiSelesai: Boolean(sesi.simulasiSelesai),
+    praktikumSelesai: Boolean(sesi.praktikumSelesai),
+    praktikumLulus: Boolean(sesi.praktikumLulus),
+    ujianSelesai: Boolean(sesi.ujianSelesai),
+    ujianDijawab:
+      typeof sesi.ujianDijawab === "number" ? sesi.ujianDijawab : 0,
   };
 }
 
 export function sesiSudahBelajar(sesi: SesiModul): boolean {
-  return Boolean(sesi.latihanSelesai);
+  return Boolean(sesi.audioCompleted);
 }
 
 function jawabanLatihan(kunciSesi: Record<string, string>): number {
@@ -148,6 +160,10 @@ function jawabanLatihan(kunciSesi: Record<string, string>): number {
     const nilai = Number(nomor);
     return Number.isFinite(nilai) && nilai > 0 && nilai < 100;
   }).length;
+}
+
+function jawabanUjian(kunciSesi: Record<string, string>): number {
+  return Object.keys(kunciSesi).filter((nomor) => Number(nomor) >= 100).length;
 }
 
 export function simpanProgres(data: ProgresIgil): void {
@@ -192,6 +208,11 @@ export function catatSesiModul(opsi: {
     audioCompleted: false,
     latihanSelesai: false,
     jumlahLatihan: opsi.jumlahLatihan ?? kunci.length,
+    simulasiSelesai: false,
+    praktikumSelesai: false,
+    praktikumLulus: false,
+    ujianSelesai: false,
+    ujianDijawab: 0,
   };
   data.sesi.unshift(sesi);
   data.xpTotal += sesi.xp;
@@ -217,8 +238,13 @@ export function catatJawabanKuis(
   if (sesi) {
     sesi.kuisDijawab = Object.keys(kunciSesi).length;
     const dikerjakanLatihan = jawabanLatihan(kunciSesi);
+    const dikerjakanUjian = jawabanUjian(kunciSesi);
     if (sesi.jumlahLatihan > 0 && dikerjakanLatihan >= sesi.jumlahLatihan) {
       sesi.latihanSelesai = true;
+    }
+    sesi.ujianDijawab = dikerjakanUjian;
+    if (dikerjakanUjian >= 3) {
+      sesi.ujianSelesai = true;
     }
     if (!sudahAda) {
       sesi.xp += benar ? 16 : 8;
@@ -248,6 +274,40 @@ export function catatAudioSelesai(sesiId: string): ProgresIgil {
     sesi.audioCompleted = true;
     simpanProgres(data);
   }
+  return data;
+}
+
+export function catatSimulasiSelesai(sesiId: string): ProgresIgil {
+  const data = bacaProgres();
+  const sesi = data.sesi.find((item) => item.id === sesiId);
+  if (sesi && !sesi.simulasiSelesai) {
+    sesi.simulasiSelesai = true;
+    sesi.xp += 10;
+    data.xpTotal += 10;
+    simpanProgres(data);
+  }
+  return data;
+}
+
+export function catatPraktikumSelesai(
+  sesiId: string,
+  lulus: boolean,
+  catatan = "",
+): ProgresIgil {
+  const data = bacaProgres();
+  const sesi = data.sesi.find((item) => item.id === sesiId);
+  if (!sesi) return data;
+  const baruLulus = lulus && !sesi.praktikumLulus;
+  sesi.praktikumSelesai = true;
+  if (lulus) sesi.praktikumLulus = true;
+  if (catatan.trim()) {
+    sesi.catatanEvaluasi = `${sesi.catatanEvaluasi}\n${catatan}`.trim();
+  }
+  if (baruLulus) {
+    sesi.xp += 20;
+    data.xpTotal += 20;
+  }
+  simpanProgres(data);
   return data;
 }
 

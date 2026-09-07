@@ -11,6 +11,7 @@ import {
   type ProgresIgil,
   type SesiModul,
 } from "@/lib/progres";
+import { mapelPunyaSimulasi } from "@/lib/simulasi-global";
 import {
   badgeRapor,
   sidikAktivitasHarian,
@@ -50,7 +51,7 @@ function jawabanEsai(kunci: Record<string, string>): string[] {
 }
 
 function alasanBelum(_sesi: SesiModul): string {
-  return "Belum merampungkan seluruh Soal Latihan.";
+  return "Belum menuntaskan audio materi sampai selesai.";
 }
 
 function susunBabHarian(data: ProgresIgil, hariIni: string) {
@@ -63,6 +64,12 @@ function susunBabHarian(data: ProgresIgil, hariIni: string) {
       materi: sesi.materi,
       audioCompleted: sesi.audioCompleted,
       latihanSelesai: sesi.latihanSelesai,
+      simulasiSelesai: sesi.simulasiSelesai,
+      praktikumSelesai: sesi.praktikumSelesai,
+      praktikumLulus: sesi.praktikumLulus,
+      ujianSelesai: sesi.ujianSelesai,
+      ujianDijawab: Math.max(sesi.ujianDijawab, jawabanEsai(kunci).length),
+      punyaLab: mapelPunyaSimulasi(sesi.mapel),
       sudahBelajar: sesiSudahBelajar(sesi),
       kuisBenar: sesi.kuisBenar,
       jumlahLatihan: sesi.jumlahLatihan,
@@ -93,7 +100,10 @@ export default function RaporSiswaPage() {
       bab.map((item) => ({
         id: item.id,
         audio: item.audioCompleted,
+        simulasi: item.simulasiSelesai,
         latihan: item.latihanSelesai,
+        praktikum: item.praktikumLulus,
+        ujian: item.ujianDijawab,
         benar: item.kuisBenar,
         esai: item.esai.length,
       })),
@@ -110,9 +120,10 @@ export default function RaporSiswaPage() {
         skor: cache.skor,
         predikat: badgeRapor(cache.skor).predikat,
         ringkasan: cache.ringkasan,
-        pemahaman: cache.pemahaman,
-        esai: cache.esai,
-        konsistensi: cache.konsistensi,
+        simulasi: cache.simulasi || "",
+        latihan: cache.latihan || "",
+        praktikum: cache.praktikum || "",
+        ujian: cache.ujian || "",
         sidik,
         dariAi: Boolean(cache.dariAi),
       });
@@ -138,9 +149,10 @@ export default function RaporSiswaPage() {
           skor?: number;
           predikat?: string;
           ringkasan?: string;
-          pemahaman?: string;
-          esai?: string;
-          konsistensi?: string;
+          simulasi?: string;
+          latihan?: string;
+          praktikum?: string;
+          ujian?: string;
           dariAi?: boolean;
         };
         if (!hasil.berhasil || typeof hasil.skor !== "number") {
@@ -152,9 +164,10 @@ export default function RaporSiswaPage() {
           skor: hasil.skor,
           predikat: badgeRapor(hasil.skor).predikat,
           ringkasan: hasil.ringkasan || "",
-          pemahaman: hasil.pemahaman || "",
-          esai: hasil.esai || "",
-          konsistensi: hasil.konsistensi || "",
+          simulasi: hasil.simulasi || "",
+          latihan: hasil.latihan || "",
+          praktikum: hasil.praktikum || "",
+          ujian: hasil.ujian || "",
           sidik,
           dariAi: Boolean(hasil.dariAi),
         };
@@ -211,7 +224,7 @@ export default function RaporSiswaPage() {
           </p>
         </div>
         <p className="mt-2 text-sm font-medium text-slate-600">
-          Status Sudah Belajar per bab jika seluruh Soal Latihan dirampungkan.
+          Status Sudah Belajar per bab jika audio materi didengar sampai tuntas, walaupun Latihan belum dikerjakan.
         </p>
         {babHariIni.length > 0 ? (
           <ul className="mt-4 space-y-2">
@@ -260,7 +273,7 @@ export default function RaporSiswaPage() {
         ) : null}
         {!memuatRapor && !raporHarian && babHariIni.length === 0 ? (
           <p className="text-sm text-slate-600">
-            Belum ada aktivitas hari ini. Selesaikan Soal Latihan di AI Tutor.
+            Belum ada aktivitas hari ini. Dengarkan naskah materi sampai selesai di AI Tutor.
           </p>
         ) : null}
         {raporHarian ? (
@@ -281,10 +294,11 @@ export default function RaporSiswaPage() {
               </p>
             </div>
             <p className="text-sm font-medium text-slate-700">{raporHarian.ringkasan}</p>
-            <div className="grid gap-3 sm:grid-cols-3">
-              <KartuAspek judul="Pemahaman" isi={raporHarian.pemahaman} />
-              <KartuAspek judul="Kualitas esai" isi={raporHarian.esai} />
-              <KartuAspek judul="Konsistensi" isi={raporHarian.konsistensi} />
+            <div className="grid gap-3 sm:grid-cols-2">
+              <KartuAspek judul="Simulasi" isi={raporHarian.simulasi} />
+              <KartuAspek judul="Latihan" isi={raporHarian.latihan} />
+              <KartuAspek judul="Praktikum" isi={raporHarian.praktikum} />
+              <KartuAspek judul="Ujian" isi={raporHarian.ujian} />
             </div>
             <p className="text-xs font-bold text-slate-500">
               0–50 Merah KURANG · 51–70 Kuning CUKUP · 71–90 Hijau BAIK · 91–100 Biru SANGAT BAIK

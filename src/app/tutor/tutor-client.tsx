@@ -16,7 +16,9 @@ import {
   catatAudioSelesai,
   catatEvaluasiTambahan,
   catatJawabanKuis,
+  catatPraktikumSelesai,
   catatSesiModul,
+  catatSimulasiSelesai,
   simpanProfil,
   tetapkanTokenIgil,
 } from "@/lib/progres";
@@ -562,9 +564,36 @@ export default function TutorAI() {
     }, INTERVAL_KETIK_MS * perlambatVoiceRef.current);
   };
 
+  const pastikanSesiAktif = () => {
+    if (sesiAktifIdRef.current) return sesiAktifIdRef.current;
+    const sesi = catatSesiModul({
+      nama: namaSesiRef.current || namaSesi,
+      kelas: teksQuery(params.get("kelas"), kelas),
+      mapel:
+        modeInput === "teks"
+          ? teksQuery(params.get("mapel"), mapel)
+          : sesiMapel || "Berdasarkan Buku",
+      materi:
+        modeInput === "teks"
+          ? teksQuery(params.get("materi"), bab)
+          : sesiMateri || "Analisis halaman buku",
+      mode: modeInput,
+      catatanEvaluasi: hasilDataRef.current?.motivasi || "",
+      kunciJawaban: hasilDataRef.current?.kunciJawaban,
+      kuisTotal:
+        pecahBankSoal(hasilDataRef.current?.pertanyaan ?? "").pilihanGanda
+          .length + 3,
+      jumlahLatihan: pecahBankSoal(hasilDataRef.current?.pertanyaan ?? "")
+        .pilihanGanda.length,
+    });
+    sesiAktifIdRef.current = sesi.id;
+    setSesiAktifId(sesi.id);
+    return sesi.id;
+  };
+
   const tandaiAudioSelesai = () => {
     setAudioCompleted(true);
-    if (sesiAktifId) catatAudioSelesai(sesiAktifId);
+    catatAudioSelesai(pastikanSesiAktif());
   };
 
   const tandaiSegmenSelesai = () => {
@@ -1913,6 +1942,7 @@ export default function TutorAI() {
                     kelas={judulKelasSesi}
                     mapel={judulMapelSesi}
                     materi={judulMateriSesi}
+                    onSelesai={() => catatSimulasiSelesai(pastikanSesiAktif())}
                   />
                 ),
                 praktikum: (
@@ -1921,6 +1951,9 @@ export default function TutorAI() {
                     kelas={judulKelasSesi}
                     mapel={judulMapelSesi}
                     materi={judulMateriSesi}
+                    onSelesai={(lulus, catatan) =>
+                      catatPraktikumSelesai(pastikanSesiAktif(), lulus, catatan)
+                    }
                   />
                 ),
                 latihan: (

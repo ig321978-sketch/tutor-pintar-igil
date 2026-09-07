@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { ExternalLink, Loader2 } from "lucide-react";
 import type { BahanSimulasi } from "@/lib/simulasi-global";
 
@@ -9,15 +9,18 @@ export default function PanelSimulasiModul({
   kelas,
   mapel,
   materi,
+  onSelesai,
 }: {
   nama: string;
   kelas: string;
   mapel: string;
   materi: string;
+  onSelesai?: () => void;
 }) {
   const [bahan, setBahan] = useState<BahanSimulasi[]>([]);
   const [memuat, setMemuat] = useState(true);
   const [pesan, setPesan] = useState("");
+  const sudahLapor = useRef(false);
 
   useEffect(() => {
     let hidup = true;
@@ -48,7 +51,12 @@ export default function PanelSimulasiModul({
           setBahan([]);
           return;
         }
-        setBahan(data.bahan ?? []);
+        const daftar = data.bahan ?? [];
+        setBahan(daftar);
+        if (daftar.length > 0 && !sudahLapor.current) {
+          sudahLapor.current = true;
+          onSelesai?.();
+        }
       } catch {
         if (hidup) setPesan("Tidak bisa memuat simulasi PhET.");
       } finally {

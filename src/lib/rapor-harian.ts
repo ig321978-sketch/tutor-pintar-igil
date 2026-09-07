@@ -14,9 +14,10 @@ export type IsiRaporHarian = {
   skor: number;
   predikat: PredikatRapor;
   ringkasan: string;
-  pemahaman: string;
-  esai: string;
-  konsistensi: string;
+  simulasi: string;
+  latihan: string;
+  praktikum: string;
+  ujian: string;
   sidik: string;
   dariAi: boolean;
 };

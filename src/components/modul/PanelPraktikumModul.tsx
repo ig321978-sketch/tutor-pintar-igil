@@ -19,11 +19,13 @@ export default function PanelPraktikumModul({
   kelas,
   mapel,
   materi,
+  onSelesai,
 }: {
   nama: string;
   kelas: string;
   mapel: string;
   materi: string;
+  onSelesai?: (lulus: boolean, catatan: string) => void;
 }) {
   const [ide, setIde] = useState("");
   const [pesan, setPesan] = useState("");
@@ -61,6 +63,7 @@ export default function PanelPraktikumModul({
         return;
       }
       setEvaluasi(data.evaluasi);
+      onSelesai?.(data.evaluasi.lulus, data.evaluasi.umpanBalik);
       if (data.evaluasi.lulus && data.evaluasi.token > 0) {
         tambahTokenIgil(data.evaluasi.token);
       }
