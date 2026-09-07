@@ -44,50 +44,73 @@ const SUARA_PER_JENJANG: Record<
 > = {
   SD: {
     female: {
-      id: "Xb7hH8MSUJpSbSDYk0k2",
-      namaPustaka: "Alice",
+      id: "52LXmmR0nGnIcDs1TL3f",
+      namaPustaka: "Anjani",
       guru: "Bu Sari",
       peran: "Guru SD yang sabar dan ceria, tempo pelan",
     },
     male: {
-      id: "IKne3meq5aSn9XLyUdCD",
-      namaPustaka: "Charlie",
+      id: "3rL9ZxRgBgIkh4tcbrEH",
+      namaPustaka: "Deden Cahya",
       guru: "Pak Budi",
       peran: "Guru SD yang ramah dan semangat",
     },
   },
   SMP: {
     female: {
-      id: "XrExE9yKIg1WjnnlVkGX",
-      namaPustaka: "Matilda",
+      id: "72DflCufZVT1v5PLdisE",
+      namaPustaka: "Lala",
       guru: "Bu Laila",
       peran: "Guru SMP yang tegas, jelas, dan mendukung",
     },
     male: {
-      id: "onwK4e9ZLuTAKqWW03F9",
-      namaPustaka: "Daniel",
+      id: "gP7FRCgEZ8Lr3rnyGgpw",
+      namaPustaka: "Andra",
       guru: "Pak Andra",
       peran: "Guru SMP yang santai dan runtut",
     },
   },
   SMA: {
     female: {
-      id: "EXAVITQu4vr4xnSDxMaL",
-      namaPustaka: "Sarah",
+      id: "U3dExJoUNcmTY5H6GMuG",
+      namaPustaka: "Maya",
       guru: "Bu Maya",
       peran: "Guru SMA yang analitis dan hangat",
     },
     male: {
-      id: "JBFqnCBsd6RMkjVDRZzb",
-      namaPustaka: "George",
+      id: "401JBh3qavLxL2CJfqvZ",
+      namaPustaka: "Wibowo",
       guru: "Pak Dimas",
       peran: "Guru SMA yang fokus dan profesional",
     },
   },
 };
 
+const SUARA_CADANGAN: Record<JenjangGuru, Record<KelaminTts, string>> = {
+  SD: {
+    female: "Xb7hH8MSUJpSbSDYk0k2",
+    male: "IKne3meq5aSn9XLyUdCD",
+  },
+  SMP: {
+    female: "XrExE9yKIg1WjnnlVkGX",
+    male: "onwK4e9ZLuTAKqWW03F9",
+  },
+  SMA: {
+    female: "EXAVITQu4vr4xnSDxMaL",
+    male: "JBFqnCBsd6RMkjVDRZzb",
+  },
+};
+
 function slotSuaraGuru(kelas: string, kelamin: KelaminTts): SlotSuaraGuru {
   return SUARA_PER_JENJANG[jenjangGuru(kelas)][kelamin];
+}
+
+function idSuaraCadangan(kelas: string, kelamin: KelaminTts): string {
+  return SUARA_CADANGAN[jenjangGuru(kelas)][kelamin];
+}
+
+function galatPustakaBerbayar(pesan: string): boolean {
+  return /library voices|free users|upgrade your subscription/i.test(pesan);
 }
 
 function idSuaraDariEnv(kelas: string, kelamin: KelaminTts): string {
@@ -286,10 +309,10 @@ function skorSuaraMilik(
   if (cocokKelamin) skor += 15;
   const polaJenjang =
     jenjang === "SD"
-      ? /sari|budi|sd|cerita|ceria/
+      ? /sari|budi|anjani|deden|lala|sd|cerita|ceria/
       : jenjang === "SMP"
-        ? /laila|andra|smp/
-        : /maya|dimas|sma|analitis/;
+        ? /laila|andra|anjani|smp/
+        : /maya|dimas|wibowo|bowo|sma|analitis/;
   if (polaJenjang.test(nama) || new RegExp(`igil[-_ ]?${jenjang}`, "i").test(nama)) {
     skor += 25;
   }
@@ -380,7 +403,7 @@ async function pesanGalatEleven(respons: Response): Promise<string> {
   }
   if (respons.status === 401) return "Kunci ElevenLabs tidak valid.";
   if (respons.status === 402) {
-    return "Akun ElevenLabs gratis tidak bisa memakai suara perpustakaan lewat API. Buat 6 suara milik akun di Voice Design (SD/SMP/SMA × wanita/pria), lalu isi ELEVENLABS_VOICE_SD_WANITA sampai ELEVENLABS_VOICE_SMA_PRIA.";
+    return "ElevenLabs menolak suara ini. Pastikan paket berbayar aktif, lalu isi ELEVENLABS_VOICE_SD_WANITA sampai ELEVENLABS_VOICE_SMA_PRIA dengan ID suara Indonesia.";
   }
   return `ElevenLabs menolak permintaan (${respons.status}).`;
 }
@@ -428,17 +451,29 @@ export async function sintesisElevenLabs(
   if (!kunci) {
     throw new Error("ELEVENLABS_API_KEY belum disetel.");
   }
-  const suara = await suaraElevenGuru(kelamin, kelas);
+  let suara = await suaraElevenGuru(kelamin, kelas);
   const potongan = potongNaskahEleven(teks);
   if (potongan.length === 0) {
     throw new Error("Naskah suara kosong.");
   }
   const pcmList: Buffer[] = [];
   for (let i = 0; i < potongan.length; i += 1) {
-    const audio = await sintesisSatu(potongan[i], suara, kunci, kelas, {
-      previous: potongan[i - 1],
-      next: potongan[i + 1],
-    });
+    let audio: Buffer;
+    try {
+      audio = await sintesisSatu(potongan[i], suara, kunci, kelas, {
+        previous: potongan[i - 1],
+        next: potongan[i + 1],
+      });
+    } catch (error) {
+      const pesan = error instanceof Error ? error.message : "";
+      const cadangan = idSuaraCadangan(kelas, kelamin);
+      if (!galatPustakaBerbayar(pesan) || cadangan === suara) throw error;
+      suara = cadangan;
+      audio = await sintesisSatu(potongan[i], suara, kunci, kelas, {
+        previous: potongan[i - 1],
+        next: potongan[i + 1],
+      });
+    }
     if (i > 0) pcmList.push(sunyiPcm(JEDA_ANTAR_BLOK_MS));
     pcmList.push(pcmDariWav(audio));
   }
