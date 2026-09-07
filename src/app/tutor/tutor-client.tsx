@@ -837,24 +837,47 @@ export default function TutorAI() {
     materiKirim: string,
     bagian: BagianNaskah,
   ) => {
-    const respons = await fetch("/api/tutor", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({
-        nama: namaSesiRef.current,
-        kelas: kelasKirim,
-        mapel: mapelKirim,
-        materi: modeInput === "teks" ? materiKirim : "Analisis AI",
-        gambar: modeInput === "gambar" ? gambarHalaman : null,
-        bagian,
-      }),
-    });
-    return (await respons.json()) as {
-      berhasil?: boolean;
-      pesan?: string;
-      dariCache?: boolean;
-      data?: ModulTutor;
-    };
+    try {
+      const respons = await fetch("/api/tutor", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        signal: AbortSignal.timeout(70_000),
+        body: JSON.stringify({
+          nama: namaSesiRef.current,
+          kelas: kelasKirim,
+          mapel: mapelKirim,
+          materi: modeInput === "teks" ? materiKirim : "Analisis AI",
+          gambar: modeInput === "gambar" ? gambarHalaman : null,
+          bagian,
+        }),
+      });
+      const teks = await respons.text();
+      try {
+        return JSON.parse(teks) as {
+          berhasil?: boolean;
+          pesan?: string;
+          dariCache?: boolean;
+          data?: ModulTutor;
+        };
+      } catch {
+        return {
+          berhasil: false,
+          pesan: respons.ok
+            ? "Respons server tidak terbaca. Ketuk Coba susun lagi."
+            : "Server memutus koneksi saat menyusun naskah. Ketuk Coba susun lagi.",
+        };
+      }
+    } catch (error) {
+      const timeout =
+        (error instanceof DOMException && error.name === "TimeoutError") ||
+        (error instanceof Error && /timeout|timed out|aborted/i.test(error.message));
+      return {
+        berhasil: false,
+        pesan: timeout
+          ? "Penyusunan naskah terlalu lama. Ketuk Coba susun lagi."
+          : "Gagal terhubung ke server. Periksa koneksi, lalu ketuk Coba susun lagi.",
+      };
+    }
   };
 
   const muatBagianNaskah = async (bagian: BagianNaskah) => {

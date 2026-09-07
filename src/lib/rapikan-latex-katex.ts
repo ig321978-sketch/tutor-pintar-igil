@@ -1,6 +1,7 @@
 /** Rapikan LaTeX agar KaTeX bisa merender array bertumpuk dari Gemini. */
 export function rapikanLatexKatex(latex: string): string {
   let hasil = latex.trim();
+  hasil = hasil.replace(/\\tris\b/g, "\\div");
   hasil = hasil.replace(
     /\\cancel\{([^{}]*)\}/g,
     "\\htmlClass{igil-cancel}{$1}",

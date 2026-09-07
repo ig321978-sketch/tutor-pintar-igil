@@ -13,7 +13,7 @@ function modelProWajib(): string {
   const pro = kandidat.find(
     (nama) => /pro/i.test(nama) && !/flash/i.test(nama),
   );
-  return pro || "gemini-3.1-pro";
+  return pro || "gemini-3.1-pro-preview";
 }
 
 function modelLiteWajib(): string {
@@ -33,6 +33,7 @@ export const MODEL_GEMINI_EVALUASI = MODEL_GEMINI_RUTIN;
 export const MODEL_GEMINI_TEKS = MODEL_GEMINI_MATERI;
 
 const MODEL_CADANGAN_MATERI = [
+  "gemini-3.1-pro-preview",
   "gemini-3.1-pro",
   "gemini-3-pro",
   "gemini-2.5-pro",
@@ -432,9 +433,9 @@ async function denganCadanganJalur(
 ): Promise<HasilGemini> {
   const batasCoba = batasPerCoba(opsi);
   const lokasiKlasik = [
+    "global",
     process.env.GOOGLE_CLOUD_LOCATION?.trim(),
     "us-central1",
-    "global",
   ].filter((item, indeks, daftar): item is string =>
     Boolean(item) && daftar.indexOf(item) === indeks,
   );

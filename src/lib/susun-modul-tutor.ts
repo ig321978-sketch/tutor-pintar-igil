@@ -504,6 +504,28 @@ Kembalikan persis kunci: sapaan, curriculum_view, sketsaKartu, svgCode, motivasi
 `.trim();
 }
 
+function judulKartuDariNaskah(naskah: string): string[] {
+  return naskah
+    .split(/\n\n+/)
+    .map((blok) => blok.split("\n")[0]?.replace(/^#+\s*/, "").trim() ?? "")
+    .filter((baris) => baris.length >= 4 && baris.length <= 80);
+}
+
+function acuanJudulGlobal(
+  kelas: string,
+  mapel: string,
+  materi: string,
+  naskahKurikulum: string,
+): string {
+  const dariKurikulum = judulKartuDariNaskah(naskahKurikulum);
+  const subbab = subbabBukuSiswa(kelas, mapel, materi);
+  const judul = dariKurikulum.length >= 3 ? dariKurikulum : subbab;
+  if (judul.length === 0) return kerangkaJudulSubbab(kelas, mapel, materi);
+  return `Judul kartu, jumlah, dan urutan WAJIB sama persis:\n${judul
+    .map((nama, i) => `${i + 1}. ${nama}`)
+    .join("\n")}\nJangan menyalin uraian kurikulum. Tulis analogi dan kerangka visual baru.`;
+}
+
 function promptNaskahGlobal(opsi: {
   namaDepan: string;
   kelas: string;
@@ -511,15 +533,21 @@ function promptNaskahGlobal(opsi: {
   materi: string;
   naskahKurikulum: string;
 }): string {
-  const acuan = naskahMateriSiap(opsi.naskahKurikulum)
-    ? `Judul kartu, jumlah kartu, dan urutan WAJIB sama persis dengan naskah kurikulum ini (jangan salin uraiannya):\n${opsi.naskahKurikulum.slice(0, 7000)}`
-    : kerangkaJudulSubbab(opsi.kelas, opsi.mapel, opsi.materi);
+  const acuan = acuanJudulGlobal(
+    opsi.kelas,
+    opsi.mapel,
+    opsi.materi,
+    opsi.naskahKurikulum,
+  );
   const jenjang = jenjangGuru(opsi.kelas);
+  const dariKurikulum = judulKartuDariNaskah(opsi.naskahKurikulum);
   const subbab = subbabBukuSiswa(opsi.kelas, opsi.mapel, opsi.materi);
   const hitungan = mapelHitungan(opsi.mapel, opsi.materi);
+  const jumlahKartu =
+    dariKurikulum.length >= 3 ? dariKurikulum.length : subbab.length;
   const jumlah =
-    subbab.length > 0
-      ? `TEPAT ${subbab.length}`
+    jumlahKartu > 0
+      ? `TEPAT ${jumlahKartu}`
       : jenjang === "SD"
         ? "TEPAT 6 sampai 8"
         : "TEPAT 6";
@@ -667,11 +695,12 @@ export async function generateBagianModul(opsi: {
         },
       ],
       schema: SKEMA_GLOBAL,
-      maxOutputTokens: 8192,
-      model: MODEL_GEMINI_MATERI,
+      maxOutputTokens: 6144,
+      model: MODEL_GEMINI_RUTIN,
       thinking: false,
-      timeoutCobaMs: 70_000,
-      googleSearch: true,
+      timeoutCobaMs: 25_000,
+      timeoutMs: 60_000,
+      googleSearch: false,
     });
     const dataJson = bersihkanDanParseJson(hasil.teks);
     const dataAman = bentukModulTutor(opsi.nama, dataJson);
