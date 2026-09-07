@@ -2,17 +2,25 @@
 
 import katex from "katex";
 import { useMemo } from "react";
+import { rapikanLatexKatex } from "@/lib/rapikan-latex-katex";
 
 const OPSI = {
   throwOnError: false,
   strict: "ignore" as const,
   output: "html" as const,
-  trust: false,
+  trust: (konteks: { command: string }) =>
+    konteks.command === "\\htmlClass" || konteks.command === "\\htmlStyle",
+  macros: {
+    "\\cancel": "\\htmlClass{igil-cancel}{#1}",
+  },
 };
 
 function htmlRumus(latex: string, display: boolean) {
   try {
-    return katex.renderToString(latex, { ...OPSI, displayMode: display });
+    return katex.renderToString(rapikanLatexKatex(latex), {
+      ...OPSI,
+      displayMode: display,
+    });
   } catch {
     return "";
   }

@@ -67,9 +67,15 @@ function bungkusLatexTelanjang(teks: string): string {
     .join("");
 }
 
+function buangSitiranPencarian(teks: string): string {
+  return teks
+    .replace(/\s*\[\d+(?:\s*,\s*\d+){0,8}\]/g, "")
+    .replace(/[ \t]{2,}/g, " ");
+}
+
 /** Rapikan keluaran Gemini agar KaTeX dan Mermaid bisa dirender. */
 export function rapikanNaskahModul(teks: string): string {
-  let hasil = teks.replace(/\r\n/g, "\n");
+  let hasil = buangSitiranPencarian(teks.replace(/\r\n/g, "\n"));
   hasil = hasil.replace(/\\\[([\s\S]*?)\\\]/g, (_, isi: string) => `\n$$\n${isi.trim()}\n$$\n`);
   hasil = hasil.replace(/\\\(([\s\S]*?)\\\)/g, (_, isi: string) => `$${isi.trim()}$`);
   hasil = hasil.replace(/```\s*mermaid\b/gi, "```mermaid");

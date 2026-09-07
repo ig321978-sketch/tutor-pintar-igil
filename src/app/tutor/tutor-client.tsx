@@ -1513,6 +1513,7 @@ export default function TutorAI() {
                         hasilData?.gambarSisipan?.[0]?.src
                       }
                       doodleMemuat={statusDoodle === "memuat"}
+                      gambarSisipan={hasilData?.gambarSisipan}
                       sudutPandang={sudutPandang}
                       onGantiSudut={gantiSudutPandang}
                       referensiUrl={hasilData?.referensiUrl}

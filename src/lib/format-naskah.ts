@@ -52,6 +52,11 @@ function pecahKalimat(teks: string): string[] {
 export function adalahBarisRumus(teks: string): boolean {
   const rapat = teks.replace(/\s+/g, " ").trim();
   if (!rapat) return false;
+  if (
+    /^\$+|\\begin\{(?:array|aligned|pmatrix|bmatrix|cases|gather)/.test(rapat)
+  ) {
+    return true;
+  }
   if (rapat.length > 80 && pecahKalimat(rapat).length >= 3) return false;
   if (POLA_RUMUS.test(rapat)) return true;
   const pulih = pulihkanAngkaTampil(rapat);

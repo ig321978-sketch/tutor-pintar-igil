@@ -3,6 +3,7 @@
 import { memo } from "react";
 import { Loader2, Sparkles } from "lucide-react";
 import ModuleRenderer from "@/components/ModuleRenderer";
+import { type GambarSisipan } from "@/components/GambarDoodle";
 import { LABEL_SUDUT, type SudutPandangMateri } from "@/lib/sudut-pandang";
 
 function pecahReferensiUrl(nilai?: string): string[] {
@@ -24,6 +25,7 @@ function PanelMateriModul({
   naskah,
   doodleSrc,
   doodleMemuat,
+  gambarSisipan,
   sudutPandang,
   onGantiSudut,
   referensiUrl,
@@ -34,6 +36,7 @@ function PanelMateriModul({
   naskah: string;
   doodleSrc?: string | null;
   doodleMemuat?: boolean;
+  gambarSisipan?: GambarSisipan[];
   sudutPandang: SudutPandangMateri | null;
   onGantiSudut: (sudut: SudutPandangMateri) => void;
   referensiUrl?: string;
@@ -113,7 +116,12 @@ function PanelMateriModul({
       ) : null}
       {!memuat && sudutPandang && naskah ? (
         <div key={sudutPandang} className="border-t border-[#1C01A5]/10 pt-5">
-          <ModuleRenderer konten={naskah} className="mt-1" />
+          <ModuleRenderer
+            konten={naskah}
+            className="mt-1"
+            gambarSisipan={gambarSisipan}
+            doodleMemuat={doodleMemuat}
+          />
         </div>
       ) : null}
       {!memuat && !sudutPandang ? (
@@ -152,6 +160,7 @@ export default memo(PanelMateriModul, (sebelum, sekarang) => (
   sebelum.naskah === sekarang.naskah &&
   sebelum.doodleSrc === sekarang.doodleSrc &&
   sebelum.doodleMemuat === sekarang.doodleMemuat &&
+  sebelum.gambarSisipan === sekarang.gambarSisipan &&
   sebelum.sudutPandang === sekarang.sudutPandang &&
   sebelum.referensiUrl === sekarang.referensiUrl &&
   sebelum.memuat === sekarang.memuat

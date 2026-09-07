@@ -1,3 +1,5 @@
+import { pecahBlokKartu } from "@/lib/konsep-materi";
+import { buangSubjudulVisualKartu } from "@/lib/naskah-lisan";
 import { rapikanNaskahModul } from "@/lib/rapikan-naskah-modul";
 
 export type GayaKotakBuku = "contoh" | "ingat" | "catatan" | "ayo";
@@ -43,6 +45,9 @@ function gayaKotak(nama: string): GayaKotakBuku {
 export function latexLayakSebagaiRumus(isi: string): boolean {
   const potong = isi.trim();
   if (!potong) return false;
+  if (/\\begin\{(?:array|aligned|pmatrix|bmatrix)\}/.test(potong)) {
+    return potong.length <= 900;
+  }
   if (potong.length > 280) return false;
   const perintah = potong.match(/\\[a-zA-Z]+/g)?.length ?? 0;
   const kataBiasa = potong
@@ -94,16 +99,17 @@ function mungkinJudul(teks: string): boolean {
   if (/^[-*+] /.test(t) || /^\d+[.)] /.test(t)) return false;
   if (/\$|https?:/i.test(t)) return false;
   if ((t.match(/[,;:]/g) ?? []).length > 1) return false;
-  const kata = t.replace(/[.:!?…]$/, "").split(/\s+/).filter(Boolean);
+  const tanpaRibuan = t.replace(/\d{1,3}(?:\.\d{3})+/g, "0");
+  const kata = tanpaRibuan.replace(/[.:!?…]$/, "").split(/\s+/).filter(Boolean);
   if (kata.length === 0 || kata.length > 10) return false;
   if (
-    /^(amati|hitung|jelaskan|bayangkan|pernahkah|jika|ketika|untuk|pada|dalam|sebuah|seorang|ada|ini|itu|kamu|mari|ayo|lihat|coba|seorang|pernah)\b/i.test(
+    /^(amati|hitung|jelaskan|bayangkan|pernahkah|jika|ketika|untuk|pada|dalam|sebuah|seorang|ada|ini|itu|kamu|mari|ayo|lihat|coba|seorang|pernah|hasil|langkah|penyelesaian|kunci)\b/i.test(
       t,
     )
   ) {
     return false;
   }
-  return (t.match(/[.!?]/g) ?? []).length <= 1;
+  return (tanpaRibuan.match(/[.!?]/g) ?? []).length <= 1;
 }
 
 function buangMarkupJudul(teks: string): string {
@@ -194,6 +200,17 @@ function pecahBarisAlur(baris: string[]): BlokNaskahModul[] {
     }
 
     tuangDaftar();
+    const kotakBaris = POLA_KOTAK.exec(item.replace(/\*+/g, "").trim());
+    if (kotakBaris) {
+      tuangParagraf();
+      hasil.push({
+        jenis: "kotak",
+        gaya: gayaKotak(kotakBaris[1]),
+        judul: kotakBaris[1].replace(/\s+/g, " ").trim(),
+        teks: (kotakBaris[2] || "").trim(),
+      });
+      continue;
+    }
     paragraf.push(item);
   }
 
@@ -220,7 +237,7 @@ function pecahAlurTeks(teks: string): BlokNaskahModul[] {
       const sisa = [kotakAwal[2], ...baris.slice(1)]
         .map((item) => item.trim())
         .filter(Boolean)
-        .join(" ");
+        .join("\n");
       hasil.push({
         jenis: "kotak",
         gaya: gayaKotak(kotakAwal[1]),
@@ -297,7 +314,10 @@ function promosiJudulImplisit(blok: BlokNaskahModul[]): BlokNaskahModul[] {
 }
 
 export function pecahBlokNaskahModul(mentah: string): BlokNaskahModul[] {
-  const teks = rapikanNaskahModul(mentah).trim();
+  const teks = pecahBlokKartu(rapikanNaskahModul(mentah), 0)
+    .map((blok) => buangSubjudulVisualKartu(blok))
+    .join("\n\n")
+    .trim();
   if (!teks) return [];
 
   const kasar = teks.split(

@@ -29,16 +29,33 @@ function buangLabelBaris(teks: string): string {
     .join("\n");
 }
 
-function buangSubjudulVisualKartu(blok: string): string {
+function adalahKeteranganVisual(teks: string): boolean {
+  const bersih = teks.replace(/[.!?…]$/, "").trim();
+  const kata = bersih.split(/\s+/).filter(Boolean);
+  if (kata.length === 0 || kata.length > 16) return false;
+  if (/\?$/.test(teks.trim())) return false;
+  if (
+    /^(contoh|latihan|kunci|di|karena|jumlah|bagian|hitung|jadi|penyelesaian|langkah|hasil)\b/i.test(
+      bersih,
+    )
+  ) {
+    return false;
+  }
+  return /^(seorang|sebuah|seekor|dua|satu|beberapa|sekelompok|anak|tabel|diagram|tumpuk|kelompok)/i.test(
+    bersih,
+  );
+}
+
+export function buangSubjudulVisualKartu(blok: string): string {
   const baris = blok
     .split(/\n/)
     .map((item) => item.trim())
     .filter(Boolean);
-  if (baris.length >= 3) {
+  if (baris.length >= 3 && adalahKeteranganVisual(baris[1])) {
     return [baris[0], ...baris.slice(2)].join("\n");
   }
   const kalimat = pecahKalimatSederhana(blok.replace(/\s+/g, " ").trim());
-  if (kalimat.length >= 4) {
+  if (kalimat.length >= 4 && adalahKeteranganVisual(kalimat[1])) {
     return [kalimat[0], ...kalimat.slice(2)].join(" ");
   }
   return blok;

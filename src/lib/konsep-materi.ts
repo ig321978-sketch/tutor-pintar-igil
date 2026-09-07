@@ -84,7 +84,7 @@ function pecahParagrafAman(teks: string): string[] {
     .filter(Boolean);
 }
 
-export function pecahBlokKartu(penjelasan: string): string[] {
+export function pecahBlokKartu(penjelasan: string, batas = JUMLAH_KARTU_MAKS): string[] {
   const paragraf = pecahParagrafAman(penjelasan);
 
   const digabung: string[] = [];
@@ -94,11 +94,15 @@ export function pecahBlokKartu(penjelasan: string): string[] {
     const lanjutanSoal =
       /\n(?:contoh|latihan|kunci)\b/i.test(`\n${sebelumnya}`) &&
       (adalahBarisLatihan(barisPertama) || adalahBarisRumus(barisPertama));
+    const lanjutanHasil =
+      /\$\$|\\begin\{(?:array|aligned)\}/.test(sebelumnya) &&
+      /^(hasil|langkah|penyelesaian)\s*:/i.test(barisPertama);
     if (
       digabung.length > 0 &&
       (adalahBarisLatihan(barisPertama) ||
         adalahBarisRumus(barisPertama) ||
-        lanjutanSoal)
+        lanjutanSoal ||
+        lanjutanHasil)
     ) {
       digabung[digabung.length - 1] += `\n${item}`;
       continue;
@@ -106,7 +110,9 @@ export function pecahBlokKartu(penjelasan: string): string[] {
     digabung.push(item);
   }
 
-  if (digabung.length >= 3) return digabung.slice(0, JUMLAH_KARTU_MAKS);
+  if (digabung.length >= 3) {
+    return batas > 0 ? digabung.slice(0, batas) : digabung;
+  }
 
   const kalimat = penjelasan
     .split(/\n+|(?<=[.!?…])\s+/)

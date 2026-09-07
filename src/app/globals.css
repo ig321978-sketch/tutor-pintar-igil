@@ -173,22 +173,13 @@ body {
   padding: 0 !important;
 }
 
-.igil-katex svg {
-  display: block !important;
-  position: absolute !important;
-  width: 100% !important;
-  height: inherit !important;
-  max-width: none !important;
-  max-height: none !important;
-  vertical-align: baseline !important;
+.igil-katex .katex svg {
+  max-width: none;
 }
 
-.igil-katex img {
-  display: inline !important;
-  max-width: none !important;
-  max-height: none !important;
-  min-width: 0 !important;
-  min-height: 0 !important;
+.igil-cancel {
+  text-decoration: line-through;
+  text-decoration-thickness: 2px;
 }
 
 .igil-diagram-mermaid svg {

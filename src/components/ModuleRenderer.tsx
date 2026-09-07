@@ -20,6 +20,8 @@ import {
   mermaidSederhanaDariLabel,
 } from "@/lib/bersihkan-mermaid";
 import RumusKatex from "@/components/RumusKatex";
+import GambarDoodle, { type GambarSisipan } from "@/components/GambarDoodle";
+import { Loader2 } from "lucide-react";
 
 let mermaidSiap = false;
 let nomorRender = 0;
@@ -256,7 +258,7 @@ function BlokTampil({ blok, padat }: { blok: BlokNaskahModul; padat: boolean }) 
           {blok.judul}
         </p>
         {blok.teks ? (
-          <p className="mt-1.5 text-[0.98rem] leading-7">
+          <p className="mt-1.5 whitespace-pre-line text-[0.98rem] leading-7">
             <TeksBuku teks={blok.teks} />
           </p>
         ) : null}
@@ -306,27 +308,57 @@ function ModuleRenderer({
   konten,
   className = "",
   padat = false,
+  gambarSisipan,
+  doodleMemuat = false,
 }: {
   konten: string;
   className?: string;
   padat?: boolean;
+  gambarSisipan?: GambarSisipan[];
+  doodleMemuat?: boolean;
 }) {
   const rapat =
     padat || /\bprose-p:my-0\b/.test(className);
   const blok = useMemo(() => pecahBlokNaskahModul(konten), [konten]);
   if (blok.length === 0) return null;
 
+  let indeksJudul = 0;
+
   return (
     <div
       className={`igil-buku ${rapat ? "igil-buku-padat" : ""} ${className}`}
     >
-      {blok.map((item, indeks) => (
-        <BlokTampil
-          key={`${item.jenis}-${indeks}`}
-          blok={item}
-          padat={rapat}
-        />
-      ))}
+      {blok.map((item, indeks) => {
+        const tampil = (
+          <BlokTampil
+            key={`${item.jenis}-${indeks}`}
+            blok={item}
+            padat={rapat}
+          />
+        );
+        if (item.jenis !== "judul" || item.tingkat > 3) return tampil;
+        indeksJudul += 1;
+        const doodle = gambarSisipan?.find(
+          (gambar) => gambar.setelahParagraf === indeksJudul,
+        );
+        if (!doodle && !doodleMemuat) return tampil;
+        return (
+          <div key={`${item.jenis}-${indeks}`} className="space-y-3">
+            <BlokTampil blok={item} padat={rapat} />
+            {doodle ? (
+              <GambarDoodle
+                src={doodle.src}
+                alt={doodle.alt}
+                ukuran={doodle.ukuran}
+              />
+            ) : doodleMemuat ? (
+              <div className="mx-auto flex h-28 w-28 items-center justify-center rounded-2xl border-2 border-dashed border-[#1C01A5]/20 bg-[#fbf6ea]">
+                <Loader2 className="h-6 w-6 animate-spin text-[#1C01A5]" />
+              </div>
+            ) : null}
+          </div>
+        );
+      })}
     </div>
   );
 }
