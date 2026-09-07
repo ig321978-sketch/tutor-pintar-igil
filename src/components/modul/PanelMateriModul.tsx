@@ -97,7 +97,7 @@ function PanelMateriModul({
         </div>
       </div>
       <div key={sudutPandang} className="border-t border-[#1C01A5]/10 pt-5">
-        <ModuleRenderer konten={naskah} />
+        <ModuleRenderer konten={naskah} className="mt-1" />
       </div>
       {daftarPustaka.length > 0 ? (
         <aside className="border-t border-[#1C01A5]/10 pt-4">

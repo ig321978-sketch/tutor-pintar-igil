@@ -36,7 +36,9 @@ export default function PanelLatihanModul({
             <p className="text-xs font-extrabold uppercase tracking-wider text-[#1C01A5]/50">
               Soal {nomor}
             </p>
-            {naskah ? <ModuleRenderer konten={naskah} className="mt-1" /> : null}
+            {naskah ? (
+              <ModuleRenderer konten={naskah} padat className="mt-1" />
+            ) : null}
             <div className="mt-3 flex flex-col gap-2">
               {(["A", "B", "C", "D"] as const).map((huruf) => {
                 const aktif = pilihan === huruf;
@@ -61,7 +63,8 @@ export default function PanelLatihanModul({
                     {teksPilihan ? (
                       <ModuleRenderer
                         konten={teksPilihan}
-                        className="min-w-0 flex-1 pt-1 text-slate-800 prose-p:my-0"
+                        padat
+                        className="min-w-0 flex-1 pt-1 text-slate-800"
                       />
                     ) : null}
                   </div>

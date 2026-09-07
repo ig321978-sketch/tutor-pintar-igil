@@ -1,27 +1,26 @@
 "use client";
 
 import {
-  Children,
-  isValidElement,
   memo,
   useEffect,
   useId,
   useMemo,
   useState,
-  type ReactNode,
 } from "react";
-import ReactMarkdown from "react-markdown";
-import rehypeKatex from "rehype-katex";
-import remarkGfm from "remark-gfm";
-import remarkMath from "remark-math";
+import {
+  pecahBlokNaskahModul,
+  pecahSegmenTeks,
+  type BlokNaskahModul,
+  type GayaKotakBuku,
+  type SegmenTeks,
+} from "@/lib/blok-naskah-modul";
 import {
   bersihkanSumberMermaid,
   labelDariMermaid,
   mermaidSederhanaDariLabel,
 } from "@/lib/bersihkan-mermaid";
 import { bersihkanSumberSvg } from "@/lib/bersihkan-svg";
-import { rapikanNaskahModul } from "@/lib/rapikan-naskah-modul";
-import "katex/dist/katex.min.css";
+import RumusKatex from "@/components/RumusKatex";
 
 let mermaidSiap = false;
 let nomorRender = 0;
@@ -125,7 +124,7 @@ const DiagramMermaid = memo(function DiagramMermaid({
   }, [idUnik, sumber]);
 
   return (
-    <div className="igil-diagram-mermaid not-prose my-4 overflow-x-auto rounded-2xl border border-[#1C01A5]/10 bg-white/80 p-3">
+    <figure className="igil-diagram-mermaid not-prose overflow-x-auto rounded-2xl border-2 border-[#1C01A5]/10 bg-white p-3">
       {galat ? (
         labelCadangan.length ? (
           <ol className="space-y-1.5 px-1 py-1 text-sm font-semibold text-[#1C01A5]">
@@ -146,7 +145,7 @@ const DiagramMermaid = memo(function DiagramMermaid({
       ) : (
         <div className="h-24" aria-hidden />
       )}
-    </div>
+    </figure>
   );
 });
 
@@ -154,92 +153,201 @@ const DiagramSvg = memo(function DiagramSvg({ sumber }: { sumber: string }) {
   const svg = useMemo(() => bersihkanSumberSvg(sumber), [sumber]);
   if (!svg) {
     return (
-      <p className="my-4 text-center text-sm font-medium text-slate-600">
+      <p className="text-center text-sm font-medium text-slate-600">
         Ilustrasi tidak dapat ditampilkan.
       </p>
     );
   }
   return (
-    <div
-      className="igil-diagram-svg not-prose my-4 flex justify-center overflow-x-auto"
+    <figure
+      className="igil-diagram-svg not-prose flex justify-center overflow-x-auto rounded-2xl border-2 border-[#1C01A5]/10 bg-white p-3"
       dangerouslySetInnerHTML={{ __html: svg }}
     />
   );
 });
 
-function KodeModul({
-  className,
-  children,
-  ...props
-}: {
-  className?: string;
-  children?: ReactNode;
-}) {
-  const bahasa = /language-([\w-]+)/.exec(className || "")?.[1];
-  const teks = String(children ?? "").replace(/\n$/, "");
-  if (bahasa === "mermaid") {
-    return <DiagramMermaid sumber={teks} />;
+function SegmenTampil({ segmen }: { segmen: SegmenTeks }) {
+  if (segmen.jenis === "rumus") {
+    return <RumusKatex latex={segmen.isi} />;
   }
-  if (bahasa === "svg") {
-    return <DiagramSvg sumber={teks} />;
+  if (segmen.jenis === "tebal") {
+    return <strong className="font-extrabold text-[#1C01A5]">{segmen.isi}</strong>;
   }
-  return (
-    <code className={className} {...props}>
-      {children}
-    </code>
-  );
-}
-
-function PreModul({ children }: { children?: ReactNode }) {
-  const daftar = Children.toArray(children);
-  const anak = daftar[0];
-  const hanyaGambar =
-    daftar.length === 1 &&
-    isValidElement(anak) &&
-    /language-(mermaid|svg)/.test(
-      String((anak.props as { className?: string }).className || ""),
+  if (segmen.jenis === "miring") {
+    return <em>{segmen.isi}</em>;
+  }
+  if (segmen.jenis === "kode") {
+    return (
+      <code className="rounded bg-[#1C01A5]/8 px-1 py-0.5 font-mono text-[0.95em]">
+        {segmen.isi}
+      </code>
     );
-  if (hanyaGambar) return <>{daftar}</>;
+  }
+  if (segmen.jenis === "tautan") {
+    return (
+      <a
+        href={segmen.url}
+        target="_blank"
+        rel="noreferrer"
+        className="font-semibold text-[#1C01A5] underline-offset-2 hover:underline"
+      >
+        {segmen.isi}
+      </a>
+    );
+  }
+  return <>{segmen.isi}</>;
+}
+
+function TeksBuku({ teks }: { teks: string }) {
+  const segmen = useMemo(() => pecahSegmenTeks(teks), [teks]);
   return (
-    <pre className="overflow-x-auto rounded-xl bg-[#1C01A5]/5 px-3 py-2 text-sm">
-      {children}
-    </pre>
+    <>
+      {segmen.map((item, indeks) => (
+        <SegmenTampil key={`${item.jenis}-${indeks}`} segmen={item} />
+      ))}
+    </>
   );
 }
 
-const KOMPONEN_MARKDOWN = {
-  code: KodeModul,
-  pre: PreModul,
+const GAYA_KOTAK: Record<GayaKotakBuku, string> = {
+  contoh:
+    "border-[#F0AB00] bg-[#FFF8E8] text-slate-800",
+  ingat:
+    "border-[#1C01A5] bg-[#EEE9FF] text-slate-800",
+  catatan:
+    "border-slate-300 bg-slate-50 text-slate-700",
+  ayo: "border-[#1C01A5] bg-white text-slate-800",
 };
 
-const OPSI_KATEX = {
-  throwOnError: false,
-  strict: "ignore" as const,
-  output: "html" as const,
-  errorColor: "#475569",
-};
+function BlokTampil({ blok, padat }: { blok: BlokNaskahModul; padat: boolean }) {
+  if (blok.jenis === "judul") {
+    const kelas =
+      blok.tingkat === 2
+        ? "igil-buku-judul text-xl sm:text-2xl"
+        : blok.tingkat === 3
+          ? "igil-buku-subjudul text-lg sm:text-xl"
+          : "text-base font-black text-[#1C01A5]";
+    const Tag = blok.tingkat === 2 ? "h2" : blok.tingkat === 3 ? "h3" : "h4";
+    return <Tag className={kelas}>{blok.teks}</Tag>;
+  }
+
+  if (blok.jenis === "paragraf") {
+    return (
+      <p className={padat ? "igil-buku-paragraf-padat" : "igil-buku-paragraf"}>
+        <TeksBuku teks={blok.teks} />
+      </p>
+    );
+  }
+
+  if (blok.jenis === "rumus") {
+    return (
+      <figure className={padat ? "igil-papan-rumus-padat" : "igil-papan-rumus"}>
+        <RumusKatex latex={blok.latex} display />
+        {blok.keterangan ? (
+          <figcaption>
+            <TeksBuku teks={blok.keterangan} />
+          </figcaption>
+        ) : null}
+      </figure>
+    );
+  }
+
+  if (blok.jenis === "daftar") {
+    const Tag = blok.berurutan ? "ol" : "ul";
+    return (
+      <Tag
+        className={`igil-buku-daftar ${blok.berurutan ? "list-decimal" : "list-disc"}`}
+      >
+        {blok.item.map((item, indeks) => (
+          <li key={`${item.slice(0, 24)}-${indeks}`}>
+            <TeksBuku teks={item} />
+          </li>
+        ))}
+      </Tag>
+    );
+  }
+
+  if (blok.jenis === "kotak") {
+    return (
+      <aside className={`igil-kotak-buku ${GAYA_KOTAK[blok.gaya]}`}>
+        <p className="text-[11px] font-black uppercase tracking-wider text-[#1C01A5]">
+          {blok.judul}
+        </p>
+        {blok.teks ? (
+          <p className="mt-1.5 text-[0.98rem] leading-7">
+            <TeksBuku teks={blok.teks} />
+          </p>
+        ) : null}
+      </aside>
+    );
+  }
+
+  if (blok.jenis === "mermaid") {
+    return <DiagramMermaid sumber={blok.sumber} />;
+  }
+  if (blok.jenis === "svg") {
+    return <DiagramSvg sumber={blok.sumber} />;
+  }
+  if (blok.jenis === "kode") {
+    return (
+      <pre className="overflow-x-auto rounded-2xl bg-[#1C01A5]/5 px-3 py-2 text-sm">
+        <code>{blok.sumber}</code>
+      </pre>
+    );
+  }
+  return (
+    <div className="overflow-x-auto rounded-2xl border border-[#1C01A5]/10">
+      <table className="w-full text-left text-sm">
+        <thead className="bg-[#EEE9FF] text-[#1C01A5]">
+          <tr>
+            {blok.header.map((sel) => (
+              <th key={sel} className="px-3 py-2 font-extrabold">
+                <TeksBuku teks={sel} />
+              </th>
+            ))}
+          </tr>
+        </thead>
+        <tbody>
+          {blok.baris.map((baris, indeks) => (
+            <tr key={baris.join("-")} className={indeks % 2 ? "bg-slate-50" : "bg-white"}>
+              {baris.map((sel, i) => (
+                <td key={`${sel}-${i}`} className="px-3 py-2">
+                  <TeksBuku teks={sel} />
+                </td>
+              ))}
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
+  );
+}
 
 function ModuleRenderer({
   konten,
   className = "",
+  padat = false,
 }: {
   konten: string;
   className?: string;
+  padat?: boolean;
 }) {
-  const teks = useMemo(() => rapikanNaskahModul(konten.trim()), [konten]);
-  if (!teks) return null;
+  const rapat =
+    padat || /\bprose-p:my-0\b/.test(className);
+  const blok = useMemo(() => pecahBlokNaskahModul(konten), [konten]);
+  if (blok.length === 0) return null;
 
   return (
     <div
-      className={`igil-modul prose prose-blue max-w-none text-slate-700 prose-headings:font-black prose-headings:text-[#1C01A5] prose-p:leading-relaxed prose-p:my-3 prose-li:my-1 prose-strong:text-[#1C01A5] ${className}`}
+      className={`igil-buku ${rapat ? "igil-buku-padat" : ""} ${className}`}
     >
-      <ReactMarkdown
-        remarkPlugins={[[remarkMath, { singleDollarTextMath: true }], remarkGfm]}
-        rehypePlugins={[[rehypeKatex, OPSI_KATEX]]}
-        components={KOMPONEN_MARKDOWN}
-      >
-        {teks}
-      </ReactMarkdown>
+      {blok.map((item, indeks) => (
+        <BlokTampil
+          key={`${item.jenis}-${indeks}`}
+          blok={item}
+          padat={rapat}
+        />
+      ))}
     </div>
   );
 }

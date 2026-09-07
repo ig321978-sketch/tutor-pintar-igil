@@ -36,7 +36,7 @@ export default function PanelUjianModul({
               <p className="text-xs font-extrabold uppercase tracking-wider text-[#1C01A5]/50">
                 Soal {nomor}
               </p>
-              <ModuleRenderer konten={item} className="mt-1" />
+              <ModuleRenderer konten={item} padat className="mt-1" />
               <textarea
                 value={sudahKirim ? jawaban[kunci] : (draf[kunci] ?? "")}
                 onChange={(e) => onDraf(nomor, e.target.value)}
