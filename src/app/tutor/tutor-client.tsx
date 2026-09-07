@@ -23,9 +23,9 @@ import {
 import { kelasTombolUtama } from "@/lib/tema";
 import { JUMLAH_KARTU_MAKS, kartuTanpaNaskah, susunKonsepMateri, UKURAN_BATCH_DOODLE } from "@/lib/konsep-materi";
 import {
+  bacaModulLokal,
   hapusModulLokalBanyak,
   simpanModulLokal,
-  simpanModulLokalPertama,
 } from "@/lib/cache-modul-lokal";
 import { kandidatKunciMateri, kunciMateriTutor } from "@/lib/kunci-siswa";
 import {
@@ -401,6 +401,10 @@ export default function TutorAI() {
   }, [namaDariProfilSesi]);
 
   useEffect(() => {
+    setIsMulai(params.get("mulai") === "1");
+  }, [params]);
+
+  useEffect(() => {
     const profil = bacaProgres().profil;
     const namaQ = namaDariProfilSesi || profil.nama;
     const kelasQ = teksQuery(params.get("kelas"), profil.kelas || "3 SD");
@@ -411,7 +415,6 @@ export default function TutorAI() {
     setKelas(kelasQ);
     setGuruKelamin(normalisasiKelaminGuru(guruQ));
     if (modeQ === "gambar" || modeQ === "teks") setModeInput(modeQ);
-    if (params.get("mulai") === "1") setIsMulai(true);
     try {
       const mentah = window.sessionStorage.getItem(KUNCI_HALAMAN_BUKU);
       if (mentah) {
@@ -764,7 +767,11 @@ export default function TutorAI() {
       setSesiAktifId(sesi.id);
     }
     void muatKuota();
-    if (bagian === "kurikulum" && naskahMateriSiap(gabung.curriculum_view)) {
+    if (
+      bagian === "kurikulum" &&
+      naskahMateriSiap(gabung.curriculum_view) &&
+      !(gabung.gambarSisipan?.length)
+    ) {
       void muatIlustrasiDoodle(gabung);
     }
     if (bagian === "latihan") {
@@ -886,11 +893,38 @@ export default function TutorAI() {
 
     if (bagianNaskahSiap(hasilDataRef.current, bagian)) {
       tetapkanStatusNaskah(bagian, "siap");
+      if (
+        bagian === "kurikulum" &&
+        !(hasilDataRef.current?.gambarSisipan?.length)
+      ) {
+        void muatIlustrasiDoodle(hasilDataRef.current);
+      }
       return;
     }
     if (naskahJalanRef.current.has(bagian)) return;
 
     const topicId = kunciMateriTutor(kelasKirim, mapelKirim, materiKirim);
+    const lokal = bacaModulLokal<ModulTutor>(topicId);
+    if (lokal && bagianNaskahSiap(lokal, bagian)) {
+      terapkanBagianModul(
+        lokal,
+        mapelKirim,
+        materiKirim,
+        kelasKirim,
+        bagian,
+      );
+      void intipModulTersimpan(kelasKirim, mapelKirim, materiKirim).then(
+        (server) => {
+          if (!server || !bagianNaskahSiap(server, bagian)) return;
+          const gabung = gabungModulTutor(hasilDataRef.current, server);
+          hasilDataRef.current = gabung;
+          setHasilData(gabung);
+          simpanModulLokal(topicId, gabung);
+        },
+      );
+      return;
+    }
+
     naskahJalanRef.current.add(bagian);
     setPesanGalat("");
     tetapkanStatusNaskah(bagian, "memuat");
@@ -915,7 +949,7 @@ export default function TutorAI() {
             kelasKirim,
             bagian,
           );
-          simpanModulLokalPertama(topicId, gabung);
+          simpanModulLokal(topicId, gabung);
           selesai("siap");
           return;
         }
@@ -957,7 +991,7 @@ export default function TutorAI() {
             kelasKirim,
             bagian,
           );
-          simpanModulLokalPertama(topicId, gabung);
+          simpanModulLokal(topicId, gabung);
           selesai("siap");
           return;
         }
@@ -980,7 +1014,7 @@ export default function TutorAI() {
             kelasKirim,
             bagian,
           );
-          simpanModulLokalPertama(topicId, gabung);
+          simpanModulLokal(topicId, gabung);
           selesai("siap");
           return;
         }
@@ -1068,6 +1102,42 @@ export default function TutorAI() {
     sesiAktifIdRef.current = null;
     naskahJalanRef.current.clear();
   }, [kunciSesiMulai]);
+
+  useEffect(() => {
+    if (params.get("mulai") !== "1" || modeInput !== "teks") return;
+    const kelasKirim = teksQuery(params.get("kelas"), kelas);
+    const mapelKirim = teksQuery(params.get("mapel"), "");
+    const materiKirim = teksQuery(params.get("materi"), "");
+    if (!mapelKirim || !materiKirim) return;
+
+    const topicId = kunciMateriTutor(kelasKirim, mapelKirim, materiKirim);
+    const tandaiSiap = (modul: ModulTutor) => {
+      if (naskahMateriSiap(modul.curriculum_view)) setStatusKurikulum("siap");
+      if (naskahMateriSiap(modul.global_best_view)) setStatusGlobal("siap");
+      if (pecahBankSoal(modul.pertanyaan).pilihanGanda.length >= 4) {
+        setStatusLatihan("siap");
+      }
+    };
+    const lokal = bacaModulLokal<ModulTutor>(topicId);
+    if (lokal) {
+      hasilDataRef.current = lokal;
+      setHasilData(lokal);
+      tandaiSiap(lokal);
+    }
+
+    let batal = false;
+    void intipModulTersimpan(kelasKirim, mapelKirim, materiKirim).then((data) => {
+      if (batal || !data) return;
+      const gabung = gabungModulTutor(hasilDataRef.current, data);
+      hasilDataRef.current = gabung;
+      setHasilData(gabung);
+      simpanModulLokal(topicId, gabung);
+      tandaiSiap(gabung);
+    });
+    return () => {
+      batal = true;
+    };
+  }, [kunciSesiMulai, modeInput]);
 
   useEffect(() => {
     if (params.get("mulai") !== "1") return;

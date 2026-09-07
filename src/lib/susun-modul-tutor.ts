@@ -591,7 +591,6 @@ async function simpanBagianCache(
     opsi.materi,
     opsi.nama,
     isi,
-    { tulisUlangSetelahHapus: true },
   );
   if (!tersimpan) {
     console.warn(

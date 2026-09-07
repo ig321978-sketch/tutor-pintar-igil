@@ -104,7 +104,7 @@ function PanelMateriModul({
           </button>
         </div>
       </div>
-      {memuat ? (
+      {memuat && !naskah ? (
         <div className="rounded-2xl bg-white/80 p-8 text-center">
           <Loader2 className="mx-auto h-10 w-10 animate-spin text-[#1C01A5]" />
           <p className="mt-4 text-lg font-extrabold text-[#1C01A5]">
@@ -114,7 +114,7 @@ function PanelMateriModul({
           </p>
         </div>
       ) : null}
-      {!memuat && sudutPandang && naskah ? (
+      {sudutPandang && naskah ? (
         <div key={sudutPandang} className="border-t border-[#1C01A5]/10 pt-5">
           <ModuleRenderer
             konten={naskah}
