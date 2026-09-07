@@ -1,6 +1,5 @@
-import { after, NextResponse } from "next/server";
+import { NextResponse } from "next/server";
 import type { Part } from "@google/genai";
-import { siapkanAudioModulPermanen } from "@/lib/audio-modul";
 import { topicIdMateri } from "@/lib/cache-materi-tutor";
 import { pesanGalatGemini } from "@/lib/klien-gemini";
 import {
@@ -85,18 +84,6 @@ export async function POST(req: Request) {
       materi,
       gambar,
     });
-
-    if (!hasil.dariCache && gambar.length === 0) {
-      after(() => {
-        void siapkanAudioModulPermanen({
-          kelas,
-          mapel,
-          materi,
-          curriculum_view: hasil.data.curriculum_view,
-          global_best_view: hasil.data.global_best_view,
-        });
-      });
-    }
 
     return NextResponse.json({
       berhasil: true,

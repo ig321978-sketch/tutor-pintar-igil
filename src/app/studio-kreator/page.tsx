@@ -102,8 +102,8 @@ export default function StudioKreatorPage() {
                   <span className="rounded-full bg-[#1C01A5]/10 px-2 py-0.5 text-[#1C01A5]">
                     {item.isDraft ? "Draf" : "Terbit"}
                   </span>
-                  <span className="rounded-full bg-[#F0AB00]/20 px-2 py-0.5 text-[#8A5A00]">
-                    {item.audioSiap ? "Audio siap" : "Audio belum"}
+                  <span className="rounded-full bg-slate-100 px-2 py-0.5 text-slate-600">
+                    Voice nonaktif
                   </span>
                   <span className="rounded-full bg-slate-100 px-2 py-0.5 text-slate-600">
                     {item.modelSumber || "model tidak tercatat"}

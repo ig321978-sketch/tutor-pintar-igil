@@ -36,11 +36,7 @@ function bacaKredensial(): Record<string, unknown> | null {
 }
 
 export function ttsSiapDipakai(): boolean {
-  return Boolean(
-    (process.env.GOOGLE_CLOUD_PROJECT_ID?.trim() ||
-      bacaKredensial()?.project_id) &&
-      bacaKredensial(),
-  );
+  return false;
 }
 
 async function tokenAkses(): Promise<string> {
@@ -208,55 +204,11 @@ async function petaBatas<T, R>(
 }
 
 async function panggilSintesis(
-  input: { ssml?: string; text?: string },
-  suara: string,
-  token: string,
+  _input?: { ssml?: string; text?: string },
+  _suara?: string,
+  _token?: string,
 ): Promise<{ ok: boolean; audio?: Buffer; status?: string; pesan?: string; kuota?: boolean }> {
-  const proyek = process.env.GOOGLE_CLOUD_PROJECT_ID ?? "";
-  const respons = await fetch(
-    "https://texttospeech.googleapis.com/v1/text:synthesize",
-    {
-      method: "POST",
-      headers: {
-        Authorization: `Bearer ${token}`,
-        "Content-Type": "application/json; charset=utf-8",
-        "x-goog-user-project": proyek,
-      },
-      body: JSON.stringify({
-        input,
-        voice: {
-          languageCode: "id-ID",
-          name: suara,
-        },
-        audioConfig: {
-          audioEncoding: "LINEAR16",
-          sampleRateHertz: SAMPLE_RATE,
-          speakingRate: LAJU_BICARA,
-          effectsProfileId: ["headphone-class-device"],
-        },
-      }),
-    },
-  );
-
-  const data = (await respons.json()) as {
-    audioContent?: string;
-    error?: { message?: string; status?: string };
-  };
-
-  if (!respons.ok || !data.audioContent) {
-    const status = data.error?.status || String(respons.status);
-    return {
-      ok: false,
-      status,
-      pesan: data.error?.message || "Sintesis Chirp gagal.",
-      kuota: respons.status === 429 || status === "RESOURCE_EXHAUSTED",
-    };
-  }
-
-  return {
-    ok: true,
-    audio: pcmDariAudioGoogle(Buffer.from(data.audioContent, "base64")),
-  };
+  throw new Error("Fitur suara dinonaktifkan.");
 }
 
 async function sintesisSatu(
@@ -280,28 +232,9 @@ async function sintesisSatu(
 }
 
 export async function sintesisChirp(
-  teks: string,
-  suara: string,
-  opsi?: { awalSaja?: boolean },
+  _teks?: string,
+  _suara?: string,
+  _opsi?: { awalSaja?: boolean },
 ): Promise<Buffer> {
-  const token = await tokenAkses();
-  const potongan = opsi?.awalSaja
-    ? [potongNaskahAwal(teks)].filter(Boolean)
-    : potongNaskah(teks);
-  if (potongan.length === 0) {
-    throw new Error("Naskah kosong.");
-  }
-
-  const pcmPotong = await petaBatas(
-    potongan,
-    PARALEL_SINTESIS,
-    (item) => sintesisSatu(item, suara, token),
-  );
-
-  const pcm: Buffer[] = [];
-  for (let i = 0; i < pcmPotong.length; i += 1) {
-    if (i > 0) pcm.push(sunyiPcm(JEDA_ANTAR_BLOK_MS));
-    pcm.push(pcmPotong[i]);
-  }
-  return bungkusWav(Buffer.concat(pcm));
+  throw new Error("Fitur suara dinonaktifkan.");
 }

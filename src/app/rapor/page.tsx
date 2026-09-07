@@ -49,13 +49,7 @@ function jawabanEsai(kunci: Record<string, string>): string[] {
     .filter((isi) => isi.trim());
 }
 
-function alasanBelum(sesi: SesiModul): string {
-  if (!sesi.audioCompleted && !sesi.latihanSelesai) {
-    return "Belum tuntas dengar penjelasan dan belum merampungkan latihan soal.";
-  }
-  if (!sesi.audioCompleted) {
-    return "Belum tuntas mendengarkan audio penjelasan sampai akhir.";
-  }
+function alasanBelum(_sesi: SesiModul): string {
   return "Belum merampungkan seluruh Soal Latihan.";
 }
 
@@ -217,7 +211,7 @@ export default function RaporSiswaPage() {
           </p>
         </div>
         <p className="mt-2 text-sm font-medium text-slate-600">
-          Status Sudah Belajar per bab hanya jika audio TTS tuntas dan seluruh Soal Latihan dirampungkan.
+          Status Sudah Belajar per bab jika seluruh Soal Latihan dirampungkan.
         </p>
         {babHariIni.length > 0 ? (
           <ul className="mt-4 space-y-2">

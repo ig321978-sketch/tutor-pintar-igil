@@ -147,8 +147,6 @@ export function buatUcapanGuru(
   return ucapan;
 }
 
-export function putarContohSuaraGuru(guru: ProfilGuru): void {
-  if (typeof window === "undefined") return;
-  window.speechSynthesis.cancel();
-  window.speechSynthesis.speak(buatUcapanGuru(guru.sapaanContoh, guru));
+export function putarContohSuaraGuru(_guru: ProfilGuru): void {
+  return;
 }

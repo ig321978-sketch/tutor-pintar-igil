@@ -140,7 +140,7 @@ function normalisasiSesi(sesi: Partial<SesiModul> & { id?: string }): SesiModul 
 }
 
 export function sesiSudahBelajar(sesi: SesiModul): boolean {
-  return Boolean(sesi.audioCompleted && sesi.latihanSelesai);
+  return Boolean(sesi.latihanSelesai);
 }
 
 function jawabanLatihan(kunciSesi: Record<string, string>): number {

@@ -470,16 +470,9 @@ export async function hapusCacheMateri(kunci: string): Promise<boolean> {
 }
 
 export async function tandaiAudioModulSiap(
-  kelas: string,
-  mapel: string,
-  materi: string,
+  _kelas?: string,
+  _mapel?: string,
+  _materi?: string,
 ): Promise<void> {
-  const supabase = supabaseServer();
-  if (!supabase) return;
-  const topicId = topicIdMateri(kelas, mapel, materi);
-  const { error } = await supabase
-    .from("cache_materi_tutor")
-    .update({ audio_siap: true, updated_at: new Date().toISOString() })
-    .eq("kunci", topicId);
-  if (error) console.warn("[cache-materi] audio_siap:", error.message);
+  return;
 }

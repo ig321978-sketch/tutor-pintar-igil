@@ -1,120 +1,19 @@
 import { NextResponse } from "next/server";
-import {
-  durasiWavDetik,
-  namaSuaraChirp,
-  potongNaskahAwal,
-  sintesisChirp,
-  ttsSiapDipakai,
-} from "@/lib/google-tts";
-import { naskahLisan } from "@/lib/naskah-lisan";
-import { ambilCacheTts, kunciNaskahTts, simpanCacheTts } from "@/lib/tts-cache";
-import { normalisasiKelaminTts, waktuKataDariDurasi } from "@/lib/tts";
 
-export const maxDuration = 120;
+export const dynamic = "force-dynamic";
 
-export async function POST(req: Request) {
-  try {
-    let body: Record<string, unknown>;
-    try {
-      body = (await req.json()) as Record<string, unknown>;
-    } catch {
-      return NextResponse.json(
-        { berhasil: false, cadangan: true, pesan: "Request tidak valid." },
-        { status: 400 },
-      );
-    }
-
-    const teks =
-      typeof body.teks === "string"
-        ? body.teks
-        : typeof body.naskah === "string"
-          ? body.naskah
-          : "";
-    const naskah = teks
-      .split(/\n\n+/)
-      .map((item) => naskahLisan(item))
-      .filter(Boolean)
-      .join("\n\n");
-    if (!naskah) {
-      return NextResponse.json(
-        { berhasil: false, cadangan: true, pesan: "Naskah kosong." },
-        { status: 400 },
-      );
-    }
-
-    const kelamin = normalisasiKelaminTts(body.kelamin ?? body.gender);
-    const kelas = typeof body.kelas === "string" ? body.kelas : "3 SD";
-    const awalSaja = body.awalSaja === true;
-    const suara = namaSuaraChirp(kelamin, kelas);
-    const kunci = kunciNaskahTts(suara, naskah, awalSaja);
-
-    const cache = await ambilCacheTts(kunci);
-    if (cache) {
-      const durasi = cache.meta.durasiDetik || durasiWavDetik(cache.audio);
-      return NextResponse.json({
-        berhasil: true,
-        sumber: "cache",
-        mime: cache.meta.mime || "audio/wav",
-        audioBase64: cache.audio.toString("base64"),
-        durasiDetik: durasi,
-        suara,
-        kata: waktuKataDariDurasi(
-          awalSaja ? potongNaskahAwal(naskah) : naskah,
-          durasi,
-        ),
-      });
-    }
-
-    if (!ttsSiapDipakai()) {
-      return NextResponse.json({
-        berhasil: false,
-        cadangan: true,
-        pesan: "Kredensial Google Cloud belum disetel. Memakai suara cadangan.",
-      });
-    }
-
-    try {
-      const audio = await sintesisChirp(naskah, suara, { awalSaja });
-      const durasi = durasiWavDetik(audio);
-      await simpanCacheTts(kunci, audio, {
-        mime: "audio/wav",
-        durasiDetik: durasi,
-        suara,
-      });
-      return NextResponse.json({
-        berhasil: true,
-        sumber: "google",
-        mime: "audio/wav",
-        audioBase64: audio.toString("base64"),
-        durasiDetik: durasi,
-        suara,
-        kata: waktuKataDariDurasi(
-          awalSaja ? potongNaskahAwal(naskah) : naskah,
-          durasi,
-        ),
-      });
-    } catch (error: unknown) {
-      const pesan = error instanceof Error ? error.message : "Sintesis gagal.";
-      const kuota = Boolean(
-        error && typeof error === "object" && "kuota" in error && error.kuota,
-      );
-      console.error("TTS Chirp:", pesan);
-      return NextResponse.json({
-        berhasil: false,
-        cadangan: true,
-        kuota,
-        pesan: kuota
-          ? "Kuota Google Cloud TTS habis. Memakai suara cadangan."
-          : "Gangguan Google Cloud TTS. Memakai suara cadangan.",
-      });
-    }
-  } catch (error: unknown) {
-    const pesan = error instanceof Error ? error.message : "Kesalahan tidak diketahui";
-    console.error("TTS:", error);
-    return NextResponse.json({
+/** Fitur voice dinonaktifkan. Jangan panggil Google TTS dari sini. */
+export async function POST() {
+  return NextResponse.json(
+    {
       berhasil: false,
-      cadangan: true,
-      pesan: `Gagal memproses TTS: ${pesan}`,
-    });
-  }
+      dinonaktifkan: true,
+      pesan: "Fitur suara dinonaktifkan.",
+    },
+    { status: 410 },
+  );
+}
+
+export async function GET() {
+  return POST();
 }

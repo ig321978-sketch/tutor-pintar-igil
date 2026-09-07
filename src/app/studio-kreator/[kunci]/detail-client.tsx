@@ -133,7 +133,7 @@ export default function StudioKreatorDetail({
           </p>
           <p className="mt-2 text-xs font-bold uppercase tracking-wide text-slate-500">
             {meta.modelSumber || "model tidak tercatat"} ·{" "}
-            {meta.audioSiap ? "audio siap" : "audio belum"} ·{" "}
+            voice nonaktif ·{" "}
             {formatWaktuCache(meta.updatedAt)}
           </p>
         </div>

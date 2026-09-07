@@ -76,7 +76,7 @@ function skorCadangan(bab: Array<Record<string, unknown>>): number {
       0,
     );
     skorEsai += Math.min(100, Math.round(panjang / 4));
-    if (ya(item.audioCompleted) && ya(item.latihanSelesai)) selesai += 1;
+    if (ya(item.latihanSelesai)) selesai += 1;
   }
   const ketepatan = totalPg === 0 ? 0 : (benarPg / totalPg) * 100;
   const esai = skorEsai / bab.length;
@@ -123,7 +123,7 @@ export async function POST(req: Request) {
     const cuplikan = bab
       .map((item) => {
         const status =
-          item.audioCompleted && item.latihanSelesai
+          item.latihanSelesai
             ? "Sudah Belajar"
             : "Belum lengkap";
         const esai = item.esai.length
