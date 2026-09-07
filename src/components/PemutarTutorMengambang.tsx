@@ -25,6 +25,7 @@ export default function PemutarTutorMengambang({
   padaPerlambat,
   disabled = false,
   menyiapkan = false,
+  catatan = "",
 }: {
   memutar: boolean;
   waktu: number;
@@ -36,6 +37,7 @@ export default function PemutarTutorMengambang({
   padaPerlambat?: (tingkat: TingkatPerlambat) => void;
   disabled?: boolean;
   menyiapkan?: boolean;
+  catatan?: string;
 }) {
   const jalurRef = useRef<HTMLDivElement | null>(null);
   const batasGeserRef = useRef(0);
@@ -126,7 +128,7 @@ export default function PemutarTutorMengambang({
 
         <div className="min-w-0 flex-1">
           <p className="mb-0.5 truncate text-[10px] font-extrabold uppercase tracking-wider text-white/75">
-            {labelSegmen}
+            {menyiapkan ? "Menyiapkan suara..." : labelSegmen}
           </p>
           <div
             ref={jalurRef}
@@ -172,8 +174,11 @@ export default function PemutarTutorMengambang({
               style={{ left: `${persen}%` }}
             />
           </div>
-          <div className="mt-0.5 flex justify-between text-[10px] font-bold tabular-nums text-white/80">
+          <div className="mt-0.5 flex justify-between gap-3 text-[10px] font-bold tabular-nums text-white/80">
             <span>{formatDurasi(waktu)}</span>
+            <span className="min-w-0 truncate font-semibold normal-nums text-white/70">
+              {catatan}
+            </span>
             <span>{formatDurasi(durasi)}</span>
           </div>
         </div>
