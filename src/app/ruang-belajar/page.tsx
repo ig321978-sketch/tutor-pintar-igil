@@ -13,12 +13,7 @@ import {
   daftarMapelUntukKelas,
   labelJenjangKelas,
 } from "@/lib/kurikulum";
-import {
-  bacaProgres,
-  sesiSudahBelajar,
-  simpanProfil,
-  type SesiModul,
-} from "@/lib/progres";
+import { bacaProgres, simpanProfil } from "@/lib/progres";
 import { kelasKotak, kelasLabel, kelasTombolUtama } from "@/lib/tema";
 
 const OPSI_MAPEL_LAIN = OPSI_LAINNYA;
@@ -75,7 +70,6 @@ export default function RuangBelajarPage() {
   const [sedangSeret, setSedangSeret] = useState(false);
   const [pesanGalat, setPesanGalat] = useState("");
   const [guruKelamin, setGuruKelamin] = useState<KelaminGuru>("wanita");
-  const [sesiAktif, setSesiAktif] = useState<SesiModul[]>([]);
 
   const daftarMapel = useMemo(
     () => daftarMapelUntukKelas(kelas),
@@ -99,7 +93,6 @@ export default function RuangBelajarPage() {
     if (data.profil.kelas) setKelas(data.profil.kelas);
     if (data.profil.kota) setKota(data.profil.kota);
     if (data.profil.guruKelamin) setGuruKelamin(data.profil.guruKelamin);
-    setSesiAktif(data.sesi.slice(0, 4));
   }, []);
 
   useEffect(() => {
@@ -233,30 +226,6 @@ export default function RuangBelajarPage() {
               />
             </div>
           </div>
-        </div>
-
-        <div className="rounded-3xl border border-[#F0AB00]/40 bg-[#FFF8E8] p-6">
-          <h2 className="mb-3 text-lg font-extrabold text-[#1C01A5]">Materi aktif</h2>
-          {sesiAktif.length === 0 ? (
-            <p className="text-sm text-slate-600">
-              Belum ada modul. Pilih sumber pembelajaran di bawah, lalu mulai sesi pertamamu.
-            </p>
-          ) : (
-            <ul className="space-y-3">
-              {sesiAktif.map((sesi) => (
-                <li
-                  key={sesi.id}
-                  className="rounded-2xl border border-[#1C01A5]/10 bg-white px-4 py-3"
-                >
-                  <p className="font-bold text-[#1C01A5]">{sesi.materi}</p>
-                  <p className="text-sm text-slate-500">
-                    {sesi.mapel} · {sesi.kelas} ·{" "}
-                    {sesiSudahBelajar(sesi) ? "Sudah Belajar" : "Belum Belajar"}
-                  </p>
-                </li>
-              ))}
-            </ul>
-          )}
         </div>
       </section>
 
