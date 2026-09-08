@@ -24,7 +24,7 @@ const META: Record<
   },
   simulasi: {
     judul: "Simulasi",
-    ringkas: "Simulasi PhET, GeoGebra, dan Desmos yang selaras mapel dan bab",
+    ringkas: "Mainkan lab, kerjakan misi, kirim bukti ke guru AI",
     gambar: "/kartu-modul/simulasi.png",
   },
   latihan: {

@@ -308,6 +308,7 @@ export default function TutorAI() {
   const [pesanUjian, setPesanUjian] = useState("");
   const [tahapBelajar, setTahapBelajar] = useState<TahapBelajar>("pilih");
   const [audioCompleted, setAudioCompleted] = useState(false);
+  const [simulasiLulus, setSimulasiLulus] = useState(false);
   const [pesanKunci, setPesanKunci] = useState("");
   const [sesiMapel, setSesiMapel] = useState("");
   const [sesiMateri, setSesiMateri] = useState("");
@@ -598,6 +599,7 @@ export default function TutorAI() {
     sesiAktifIdRef.current = sesiLama.id;
     setSesiAktifId(sesiLama.id);
     if (sesiLama.audioCompleted) setAudioCompleted(true);
+    if (sesiLama.simulasiSelesai) setSimulasiLulus(true);
     return sesiLama;
   };
 
@@ -1245,6 +1247,7 @@ export default function TutorAI() {
     naskahJalanRef.current.clear();
     setSesiAktifId(null);
     setAudioCompleted(false);
+    setSimulasiLulus(false);
     setPesanKunci("");
     setTahapBelajar("pilih");
     const mapelKirim = teksQuery(params.get("mapel"), "");
@@ -1261,6 +1264,7 @@ export default function TutorAI() {
         sesiAktifIdRef.current = sesiLama.id;
         setSesiAktifId(sesiLama.id);
         if (sesiLama.audioCompleted) setAudioCompleted(true);
+        if (sesiLama.simulasiSelesai) setSimulasiLulus(true);
       }
     }
   }, [kunciSesiMulai]);
@@ -1768,6 +1772,7 @@ export default function TutorAI() {
     setStatusUjian("siaga");
     setPesanUjian("");
     setAudioCompleted(false);
+    setSimulasiLulus(false);
     setPesanKunci("");
     setTahapBelajar("pilih");
     setSesiMapel("");
@@ -2023,7 +2028,12 @@ export default function TutorAI() {
                     kelas={judulKelasSesi}
                     mapel={judulMapelSesi}
                     materi={judulMateriSesi}
-                    onSelesai={() => catatSimulasiSelesai(pastikanSesiAktif())}
+                    sudahLulus={simulasiLulus}
+                    onSelesai={(lulus, catatan) => {
+                      if (!lulus) return;
+                      catatSimulasiSelesai(pastikanSesiAktif(), catatan);
+                      setSimulasiLulus(true);
+                    }}
                   />
                 ),
                 praktikum: (

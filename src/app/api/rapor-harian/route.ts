@@ -168,7 +168,7 @@ ATURAN SKOR:
 - Latihan diukur dari ketepatan pilihan ganda.
 - Ujian diukur dari kelengkapan dan kualitas uraian.
 - Praktikum: lulus lebih tinggi daripada hanya mencoba.
-- Simulasi: dihitung jika siswa sudah membuka/menjalankan simulasi bab itu.
+- Simulasi: dihitung jika siswa lulus misi lab plus bukti yang dinilai AI, bukan hanya membuka iframe.
 - skor HARUS bilangan bulat 0 sampai 100.
 
 Kembalikan JSON kunci: skor, ringkasan, simulasi, latihan, praktikum, ujian.
@@ -207,7 +207,7 @@ simulasi, latihan, praktikum, ujian: masing-masing 1-2 kalimat.
         predikat: predikatDariSkor(skor),
         ringkasan:
           "Penilaian sementara memakai rekam jejak harian karena AI belum merespons. Buka rapor lagi untuk penilaian holistik.",
-        simulasi: "Komponen simulasi dinilai dari apakah siswa sudah membuka simulasi bab.",
+        simulasi: "Komponen simulasi dinilai dari apakah siswa lulus misi lab dan bukti AI.",
         latihan: "Ketepatan soal latihan pilihan ganda dipakai sebagai dasar sementara.",
         praktikum: "Komponen praktikum dinilai dari percobaan ide dan hasil lulus/belum.",
         ujian: pesanGalatGemini(error),

@@ -297,15 +297,19 @@ export function catatAudioSelesai(sesiId: string): ProgresIgil {
   return data;
 }
 
-export function catatSimulasiSelesai(sesiId: string): ProgresIgil {
+export function catatSimulasiSelesai(sesiId: string, catatan = ""): ProgresIgil {
   const data = bacaProgres();
   const sesi = data.sesi.find((item) => item.id === sesiId);
-  if (sesi && !sesi.simulasiSelesai) {
+  if (!sesi) return data;
+  if (catatan.trim()) {
+    sesi.catatanEvaluasi = `${sesi.catatanEvaluasi}\n${catatan}`.trim();
+  }
+  if (!sesi.simulasiSelesai) {
     sesi.simulasiSelesai = true;
     sesi.xp += 10;
     data.xpTotal += 10;
-    simpanProgres(data);
   }
+  simpanProgres(data);
   return data;
 }
 
