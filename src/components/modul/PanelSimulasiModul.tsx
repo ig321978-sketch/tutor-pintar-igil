@@ -2,6 +2,7 @@
 
 import { useEffect, useRef, useState } from "react";
 import { Camera, ExternalLink, Loader2, Send, Sparkles } from "lucide-react";
+import { tambahTokenIgil } from "@/lib/progres";
 import type { BahanSimulasi } from "@/lib/simulasi-global";
 import { kelasKotak, kelasLabel, kelasTombolUtama } from "@/lib/tema";
 
@@ -14,6 +15,7 @@ type MisiSimulasi = {
 type EvaluasiSimulasi = {
   lulus: boolean;
   umpanBalik: string;
+  token: number;
 };
 
 function kunciCacheMisi(kelas: string, mapel: string, materi: string) {
@@ -241,8 +243,10 @@ export default function PanelSimulasiModul({
         setPesan(data.pesan || "Gagal menilai simulasi, silakan kirim lagi.");
         return;
       }
-      setEvaluasi(data.evaluasi);
+      const token = Number(data.evaluasi.token) || 0;
+      setEvaluasi({ ...data.evaluasi, token });
       if (data.evaluasi.lulus) {
+        if (token > 0) tambahTokenIgil(token);
         onSelesai?.(true, data.evaluasi.umpanBalik);
       }
     } catch {
@@ -370,6 +374,12 @@ export default function PanelSimulasiModul({
             {evaluasi?.umpanBalik ||
               "Kamu sudah menuntaskan misi simulasi bab ini."}
           </p>
+          {evaluasi?.lulus && evaluasi.token > 0 ? (
+            <p className="mt-3 inline-flex items-center gap-2 font-extrabold text-[#1C01A5]">
+              <Sparkles className="h-4 w-4 text-[#F0AB00]" />
+              +{evaluasi.token} token $IGIL ditambang
+            </p>
+          ) : null}
         </section>
       ) : misi ? (
         <section className="border-t border-[#1C01A5]/10 pt-6">

@@ -7,6 +7,8 @@ import {
   type Part,
 } from "@/lib/klien-gemini";
 import { cariBahanSimulasi, mapelPunyaSimulasi } from "@/lib/simulasi-global";
+import { kreditTokenIgil } from "@/lib/kuota-interaksi";
+import { supabaseServer } from "@/lib/supabase";
 import {
   buangTeksSampah,
   permintaanDibatalkan,
@@ -17,6 +19,7 @@ export const revalidate = 0;
 export const maxDuration = 60;
 
 const BATAS_GAMBAR = 2_000_000;
+const TOKEN_SIMULASI_LULUS = 10;
 
 const SKEMA_MISI: Schema = {
   type: Type.OBJECT,
@@ -186,9 +189,49 @@ Kembalikan JSON kunci: lulus, umpanBalik.
       if (!buktiCukup(bukti, Boolean(gambarPart))) lulus = false;
       if (buktiGenerik(bukti) && !gambarPart) lulus = false;
 
+      let token = 0;
+      if (lulus) {
+        const supabase = supabaseServer();
+        const ideSimulasi = `[simulasi] ${materi}`.slice(0, 200);
+        let sudahDitambang = false;
+        if (supabase) {
+          const { data: jejak } = await supabase
+            .from("penambangan_igil")
+            .select("id")
+            .eq("nama", nama)
+            .eq("kelas", kelas)
+            .eq("mapel", mapel)
+            .eq("materi", materi)
+            .eq("status", "BERHASIL")
+            .eq("ide", ideSimulasi)
+            .limit(1);
+          sudahDitambang = Boolean(jejak && jejak.length > 0);
+        }
+        if (!sudahDitambang) {
+          token = TOKEN_SIMULASI_LULUS;
+          if (supabase) {
+            const { error } = await supabase.from("penambangan_igil").insert({
+              nama,
+              kelas,
+              mapel,
+              materi,
+              ide: ideSimulasi,
+              token,
+              status: "BERHASIL",
+              umpan_balik: umpanBalik,
+            });
+            if (error) {
+              console.error("Supabase penambangan simulasi:", error.message);
+            } else {
+              await kreditTokenIgil(nama, kelas, token, true);
+            }
+          }
+        }
+      }
+
       return NextResponse.json({
         berhasil: true,
-        evaluasi: { lulus, umpanBalik },
+        evaluasi: { lulus, umpanBalik, token },
       });
     }
 
