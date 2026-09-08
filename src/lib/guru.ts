@@ -103,6 +103,15 @@ export function profilGuru(kelas: string, kelamin: KelaminGuru): ProfilGuru {
   return GURU_PER_JENJANG[jenjangGuru(kelas)][kelamin];
 }
 
+export function namaGuruTanpaGelar(nama: string): string {
+  return nama.replace(/^(bu|pak)\s+/i, "").trim() || nama;
+}
+
+export function naskahPerkenalanGuru(guru: ProfilGuru): string {
+  const panggilan = guru.kelamin === "wanita" ? "bu" : "pak";
+  return `Hallo, saya ${panggilan} guru ${namaGuruTanpaGelar(guru.nama)}`;
+}
+
 export function pasanganGuru(kelas: string): ProfilGuru[] {
   const jenjang = jenjangGuru(kelas);
   return [GURU_PER_JENJANG[jenjang].wanita, GURU_PER_JENJANG[jenjang].pria];

@@ -1,21 +1,62 @@
 import type { KelaminGuru } from "@/lib/guru";
+import {
+  ambilCacheAudioTts,
+  blobDariCacheAudio,
+  kunciCacheAudioTts,
+  simpanCacheAudioTts,
+} from "@/lib/cache-audio-tts-klien";
+import type { KataWaktu } from "@/lib/tts";
 
-type HasilAudioTts = {
+export type HasilAudioTts = {
   url: string;
   durasi: number;
   mime: string;
+  kata: KataWaktu[];
 };
 
-let elemenPendek: HTMLAudioElement | null = null;
-let urlPendek: string | null = null;
+const urlAktif = new Map<string, string>();
+const sedangDiminta = new Map<string, Promise<HasilAudioTts | null>>();
+
+function urlDariItem(
+  kunci: string,
+  item: { mime: string; audioBase64: string },
+): string {
+  const sudah = urlAktif.get(kunci);
+  if (sudah) return sudah;
+  const url = URL.createObjectURL(
+    blobDariCacheAudio({
+      mime: item.mime,
+      audioBase64: item.audioBase64,
+      durasiDetik: 0,
+      kata: [],
+    }),
+  );
+  urlAktif.set(kunci, url);
+  return url;
+}
 
 export async function mintaAudioTts(
   teks: string,
   kelamin: KelaminGuru,
   kelas = "3 SD",
+  opsi: { persist?: boolean } = {},
 ): Promise<HasilAudioTts | null> {
+  const persist = opsi.persist !== false;
   const naskah = teks.replace(/\s+/g, " ").trim();
   if (!naskah) return null;
+  const kunci = kunciCacheAudioTts(naskah, kelamin, kelas);
+  const cached = await ambilCacheAudioTts(kunci);
+  if (cached) {
+    return {
+      url: urlDariItem(kunci, cached),
+      durasi: cached.durasiDetik,
+      mime: cached.mime,
+      kata: cached.kata,
+    };
+  }
+  const menunggu = sedangDiminta.get(kunci);
+  if (menunggu) return menunggu;
+  const permintaan = (async (): Promise<HasilAudioTts | null> => {
   try {
     const respons = await fetch("/api/tts", {
       method: "POST",
@@ -32,35 +73,46 @@ export async function mintaAudioTts(
       mime?: string;
       audioBase64?: string;
       durasiDetik?: number;
+      kata?: KataWaktu[];
     };
     if (!data.berhasil || !data.audioBase64) return null;
-    const biner = Uint8Array.from(atob(data.audioBase64), (huruf) =>
-      huruf.charCodeAt(0),
-    );
-    return {
-      url: URL.createObjectURL(
-        new Blob([biner], { type: data.mime || "audio/wav" }),
-      ),
-      durasi:
+    const item = {
+      mime: data.mime || "audio/wav",
+      audioBase64: data.audioBase64,
+      durasiDetik:
         typeof data.durasiDetik === "number" && data.durasiDetik > 0
           ? data.durasiDetik
-          : 1,
-      mime: data.mime || "audio/wav",
+          : data.kata?.[data.kata.length - 1]?.selesai ?? 1,
+      kata: data.kata ?? [],
+    };
+    if (persist) {
+      await simpanCacheAudioTts(kunci, item);
+    }
+    return {
+      url: urlDariItem(kunci, item),
+      durasi: item.durasiDetik,
+      mime: item.mime,
+      kata: item.kata,
     };
   } catch {
     return null;
+  } finally {
+    sedangDiminta.delete(kunci);
   }
+  })();
+  sedangDiminta.set(kunci, permintaan);
+  return permintaan;
 }
+
+let elemenPendek: HTMLAudioElement | null = null;
 
 export async function putarTtsPendek(
   teks: string,
   kelamin: KelaminGuru,
   kelas = "3 SD",
 ): Promise<boolean> {
-  const hasil = await mintaAudioTts(teks, kelamin, kelas);
+  const hasil = await mintaAudioTts(teks, kelamin, kelas, { persist: true });
   if (!hasil) return false;
-  if (urlPendek) URL.revokeObjectURL(urlPendek);
-  urlPendek = hasil.url;
   if (!elemenPendek) {
     elemenPendek = new Audio();
     elemenPendek.preload = "auto";

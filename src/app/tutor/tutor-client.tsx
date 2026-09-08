@@ -51,6 +51,7 @@ import {
   naskahKartuUntukSuara,
   naskahSapaanUntukSuara,
 } from "@/lib/naskah-lisan";
+import { mintaAudioTts } from "@/lib/putar-tts-klien";
 import { pecahTokenNaskah, skalaWaktuKata, type KataWaktu } from "@/lib/tts";
 import { type GambarSisipan } from "@/components/GambarDoodle";
 import PemutarAudioGuru, {
@@ -288,7 +289,9 @@ export default function TutorAI() {
   const [isMulai, setIsMulai] = useState(() => params.get("mulai") === "1");
   const [nama, setNama] = useState("");
   const [kelas, setKelas] = useState("3 SD");
-  const [guruKelamin, setGuruKelamin] = useState<KelaminGuru>("wanita");
+  const [guruKelamin, setGuruKelamin] = useState<KelaminGuru>(() =>
+    normalisasiKelaminGuru(params.get("guru")),
+  );
   const [modeInput, setModeInput] = useState<ModeInput>("teks");
   const [pilihanMapel, setPilihanMapel] = useState("");
   const [mapelManual, setMapelManual] = useState("");
@@ -362,6 +365,7 @@ export default function TutorAI() {
   const cacheSegmenRef = useRef<Map<string, CacheSegmenAudio>>(new Map());
   const muatSegmenRef = useRef<Map<string, Promise<boolean>>>(new Map());
   const [segmenSelesai, setSegmenSelesai] = useState<string[]>([]);
+  const [lapisanDesktop, setLapisanDesktop] = useState(false);
 
   const daftarMapel = useMemo(
     () => daftarMapelUntukKelas(kelas),
@@ -1512,42 +1516,17 @@ export default function TutorAI() {
       const naskah = naskahDariSegmen(segmen);
       if (!naskah) return false;
       try {
-        const respons = await fetch("/api/tts", {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          signal: AbortSignal.timeout(90_000),
-          body: JSON.stringify({
-            teks: naskah,
-            kelamin: kelaminSuara === "pria" ? "male" : "female",
-            kelas,
-          }),
+        const hasil = await mintaAudioTts(naskah, kelaminSuara, kelas, {
+          persist: segmen.jenis === "sapaan",
         });
-        const data = (await respons.json()) as {
-          berhasil?: boolean;
-          pesan?: string;
-          mime?: string;
-          audioBase64?: string;
-          kata?: KataWaktu[];
-          durasiDetik?: number;
-        };
-        if (!data.berhasil || !data.audioBase64) {
-          setPesanSuara(data.pesan || "Gagal merender suara guru.");
+        if (!hasil) {
+          setPesanSuara("Gagal merender suara guru.");
           return false;
         }
-        const biner = Uint8Array.from(atob(data.audioBase64), (huruf) =>
-          huruf.charCodeAt(0),
-        );
-        const url = URL.createObjectURL(
-          new Blob([biner], { type: data.mime || "audio/wav" }),
-        );
-        const durasi =
-          typeof data.durasiDetik === "number" && data.durasiDetik > 0
-            ? data.durasiDetik
-            : data.kata?.[data.kata.length - 1]?.selesai ?? 0;
         cacheSegmenRef.current.set(kunci, {
-          url,
-          kata: data.kata ?? [],
-          durasi,
+          url: hasil.url,
+          kata: hasil.kata,
+          durasi: hasil.durasi,
         });
         setPesanSuara("");
         return true;
@@ -2126,6 +2105,7 @@ export default function TutorAI() {
           src={srcAudio}
           memutar={modeChirp && statusPemutar === "memutar"}
           lajuPutar={lajuPutarDariPerlambat(perlambatVoice)}
+          tanpaLiveCaption={lapisanDesktop && segmenSuara.jenis === "materi"}
           padaWaktu={padaWaktuAudio}
           padaDurasi={padaDurasiAudio}
           padaSelesai={padaSelesaiAudio}

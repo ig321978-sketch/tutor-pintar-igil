@@ -7,6 +7,7 @@ type Props = {
   src: string | null;
   memutar: boolean;
   lajuPutar?: number;
+  tanpaLiveCaption?: boolean;
   padaWaktu: (detik: number) => void;
   padaSelesai: () => void;
   padaDurasi: (detik: number) => void;
@@ -57,20 +58,133 @@ async function mainkanElemen(
 
 const PemutarAudioGuru = forwardRef<KontrolPemutarGuru, Props>(
   function PemutarAudioGuru(
-    { src, memutar, lajuPutar = 1, padaWaktu, padaSelesai, padaDurasi },
+    {
+      src,
+      memutar,
+      lajuPutar = 1,
+      tanpaLiveCaption = false,
+      padaWaktu,
+      padaSelesai,
+      padaDurasi,
+    },
     ref,
   ) {
     const audioRef = useRef<HTMLAudioElement | null>(null);
     const lajuRef = useRef(lajuPutar);
+    const srcRef = useRef(src);
+    const memutarRef = useRef(memutar);
+    const tanpaCaptionRef = useRef(tanpaLiveCaption);
+    const padaWaktuRef = useRef(padaWaktu);
+    const padaSelesaiRef = useRef(padaSelesai);
+    const padaDurasiRef = useRef(padaDurasi);
+    const ctxRef = useRef<AudioContext | null>(null);
+    const sumberRef = useRef<AudioBufferSourceNode | null>(null);
+    const bufferRef = useRef<AudioBuffer | null>(null);
+    const bufferUrlRef = useRef<string | null>(null);
+    const offsetRef = useRef(0);
+    const mulaiKonteksRef = useRef(0);
+    const frameRef = useRef(0);
+
     lajuRef.current = lajuPutar;
+    srcRef.current = src;
+    memutarRef.current = memutar;
+    tanpaCaptionRef.current = tanpaLiveCaption;
+    padaWaktuRef.current = padaWaktu;
+    padaSelesaiRef.current = padaSelesai;
+    padaDurasiRef.current = padaDurasi;
+
+    const hentikanSumber = () => {
+      if (sumberRef.current) {
+        sumberRef.current.onended = null;
+        try {
+          sumberRef.current.stop();
+        } catch {
+          // sudah berhenti
+        }
+        sumberRef.current.disconnect();
+        sumberRef.current = null;
+      }
+    };
+
+    const waktuKonteks = () => {
+      const ctx = ctxRef.current;
+      if (!ctx || !memutarRef.current) return offsetRef.current;
+      return (
+        offsetRef.current +
+        Math.max(0, ctx.currentTime - mulaiKonteksRef.current) * lajuRef.current
+      );
+    };
+
+    const jagaWaktu = () => {
+      if (!tanpaCaptionRef.current) return;
+      padaWaktuRef.current(waktuKonteks());
+      if (memutarRef.current) {
+        frameRef.current = window.requestAnimationFrame(jagaWaktu);
+      }
+    };
+
+    const buatKonteks = () => {
+      const Win = window as Window & {
+        webkitAudioContext?: typeof AudioContext;
+      };
+      return new (window.AudioContext || Win.webkitAudioContext)();
+    };
+
+    const muatBuffer = async (url: string): Promise<AudioBuffer> => {
+      if (bufferRef.current && bufferUrlRef.current === url) {
+        return bufferRef.current;
+      }
+      const ctx = ctxRef.current ?? buatKonteks();
+      ctxRef.current = ctx;
+      if (ctx.state === "suspended") await ctx.resume();
+      const respons = await fetch(url);
+      const biner = await respons.arrayBuffer();
+      const buffer = await ctx.decodeAudioData(biner.slice(0));
+      bufferRef.current = buffer;
+      bufferUrlRef.current = url;
+      padaDurasiRef.current(buffer.duration);
+      return buffer;
+    };
+
+    const mainkanKonteks = async (url: string, detik = 0) => {
+      const ctx = ctxRef.current ?? buatKonteks();
+      ctxRef.current = ctx;
+      if (ctx.state === "suspended") await ctx.resume();
+      const buffer = await muatBuffer(url);
+      hentikanSumber();
+      const aman = Math.max(0, Math.min(detik, buffer.duration));
+      const sumber = ctx.createBufferSource();
+      sumber.buffer = buffer;
+      sumber.playbackRate.value = lajuRef.current;
+      sumber.connect(ctx.destination);
+      sumber.onended = () => {
+        if (sumberRef.current !== sumber) return;
+        sumberRef.current = null;
+        offsetRef.current = buffer.duration;
+        padaWaktuRef.current(buffer.duration);
+        padaSelesaiRef.current();
+      };
+      sumberRef.current = sumber;
+      offsetRef.current = aman;
+      mulaiKonteksRef.current = ctx.currentTime;
+      sumber.start(0, aman);
+      window.cancelAnimationFrame(frameRef.current);
+      frameRef.current = window.requestAnimationFrame(jagaWaktu);
+    };
 
     useImperativeHandle(
       ref,
       () => ({
         mainkanDariAwal: async (url) => {
+          const sumber = url || srcRef.current;
+          if (!sumber) return;
+          if (tanpaCaptionRef.current) {
+            offsetRef.current = 0;
+            await mainkanKonteks(sumber, 0);
+            return;
+          }
           const el = audioRef.current;
-          const sumber = url || src;
-          if (!el || !sumber) return;
+          if (!el) return;
           if (el.src !== sumber) {
             el.src = sumber;
             el.load();
@@ -79,6 +193,10 @@ const PemutarAudioGuru = forwardRef<KontrolPemutarGuru, Props>(
           await mainkanElemen(el, lajuRef.current);
         },
         mainkanDari: async (url, detik = 0) => {
+          if (tanpaCaptionRef.current) {
+            await mainkanKonteks(url, detik);
+            return;
+          }
           const el = audioRef.current;
           if (!el || !url) return;
           if (el.src !== url) {
@@ -93,33 +211,52 @@ const PemutarAudioGuru = forwardRef<KontrolPemutarGuru, Props>(
           terapkanLaju(el, lajuRef.current);
         },
         lanjutkan: async () => {
+          if (tanpaCaptionRef.current) {
+            const url = srcRef.current;
+            if (!url) return;
+            await mainkanKonteks(url, offsetRef.current);
+            return;
+          }
           const el = audioRef.current;
           if (!el) return;
           await mainkanElemen(el, lajuRef.current);
         },
         jeda: () => {
+          if (tanpaCaptionRef.current) {
+            offsetRef.current = waktuKonteks();
+            hentikanSumber();
+            window.cancelAnimationFrame(frameRef.current);
+            return;
+          }
           audioRef.current?.pause();
         },
         cariKe: (detik: number) => {
+          if (tanpaCaptionRef.current) {
+            offsetRef.current = Math.max(0, detik);
+            if (memutarRef.current && srcRef.current) {
+              void mainkanKonteks(srcRef.current, offsetRef.current);
+            }
+            return;
+          }
           const el = audioRef.current;
           if (!el) return;
           const batas = Number.isFinite(el.duration) ? el.duration : detik;
           el.currentTime = Math.max(0, Math.min(detik, batas));
         },
       }),
-      [src],
+      [],
     );
 
     useEffect(() => {
       const el = audioRef.current;
       if (!el) return;
-      const saatWaktu = () => padaWaktu(el.currentTime);
+      const saatWaktu = () => padaWaktuRef.current(el.currentTime);
       const saatMeta = () => {
         if (Number.isFinite(el.duration) && el.duration > 0) {
-          padaDurasi(el.duration);
+          padaDurasiRef.current(el.duration);
         }
       };
-      const saatSelesai = () => padaSelesai();
+      const saatSelesai = () => padaSelesaiRef.current();
       el.addEventListener("timeupdate", saatWaktu);
       el.addEventListener("loadedmetadata", saatMeta);
       el.addEventListener("ended", saatSelesai);
@@ -128,15 +265,29 @@ const PemutarAudioGuru = forwardRef<KontrolPemutarGuru, Props>(
         el.removeEventListener("loadedmetadata", saatMeta);
         el.removeEventListener("ended", saatSelesai);
       };
-    }, [padaDurasi, padaSelesai, padaWaktu]);
+    }, []);
 
     useEffect(() => {
       const el = audioRef.current;
       if (!el) return;
       terapkanLaju(el, lajuPutar);
+      if (sumberRef.current) {
+        sumberRef.current.playbackRate.value = lajuPutar;
+      }
     }, [lajuPutar]);
 
     useEffect(() => {
+      if (tanpaLiveCaption) {
+        const el = audioRef.current;
+        if (el) {
+          el.pause();
+          el.removeAttribute("src");
+          el.load();
+        }
+        return;
+      }
+      hentikanSumber();
+      window.cancelAnimationFrame(frameRef.current);
       const el = audioRef.current;
       if (!el || !src) return;
       if (el.src !== src) {
@@ -147,13 +298,22 @@ const PemutarAudioGuru = forwardRef<KontrolPemutarGuru, Props>(
       if (!memutar) {
         el.pause();
       }
-    }, [memutar, src]);
+    }, [memutar, src, tanpaLiveCaption]);
+
+    useEffect(() => {
+      return () => {
+        hentikanSumber();
+        window.cancelAnimationFrame(frameRef.current);
+        void ctxRef.current?.close();
+      };
+    }, []);
 
     return (
       <audio
         ref={audioRef}
         preload="auto"
         playsInline
+        aria-hidden="true"
         className="sr-only"
       />
     );

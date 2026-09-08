@@ -1,12 +1,13 @@
 "use client";
 
-import { useEffect, useRef } from "react";
-import { type KelaminGuru } from "@/lib/guru";
-import { pasanganGuru } from "@/lib/guru";
-import { putarTtsPendek } from "@/lib/putar-tts-klien";
+import { useEffect } from "react";
+import {
+  naskahPerkenalanGuru,
+  pasanganGuru,
+  type KelaminGuru,
+} from "@/lib/guru";
+import { mintaAudioTts, putarTtsPendek } from "@/lib/putar-tts-klien";
 import { kelasLabel } from "@/lib/tema";
-
-const FRASA_PILIH_GURU = "Pilih Guru Pengajar";
 
 type PropsPilihGuru = {
   kelas: string;
@@ -21,21 +22,16 @@ export default function PilihGuru({
   onGanti,
   tanpaLabel = false,
 }: PropsPilihGuru) {
-  const sudahPutarAwal = useRef(false);
-  const kelasTerakhir = useRef(kelas);
-
   useEffect(() => {
-    if (sudahPutarAwal.current) return;
-    sudahPutarAwal.current = true;
-    void putarTtsPendek(FRASA_PILIH_GURU, nilai, kelas);
-  }, [kelas, nilai]);
-
-  useEffect(() => {
-    if (!sudahPutarAwal.current) return;
-    if (kelasTerakhir.current === kelas) return;
-    kelasTerakhir.current = kelas;
-    void putarTtsPendek(FRASA_PILIH_GURU, nilai, kelas);
-  }, [kelas, nilai]);
+    for (const guru of pasanganGuru(kelas)) {
+      void mintaAudioTts(
+        naskahPerkenalanGuru(guru),
+        guru.kelamin,
+        kelas,
+        { persist: true },
+      );
+    }
+  }, [kelas]);
 
   return (
     <div>
@@ -51,7 +47,11 @@ export default function PilihGuru({
               type="button"
               onClick={() => {
                 onGanti(guru.kelamin);
-                void putarTtsPendek(FRASA_PILIH_GURU, guru.kelamin, kelas);
+                void putarTtsPendek(
+                  naskahPerkenalanGuru(guru),
+                  guru.kelamin,
+                  kelas,
+                );
               }}
               className={`flex w-full items-center gap-4 rounded-2xl border-2 p-4 text-left transition-all ${
                 aktif
