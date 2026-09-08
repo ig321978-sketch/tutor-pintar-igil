@@ -5,7 +5,11 @@ import {
 } from "@/lib/nama-siswa";
 import { pecahBlokKartu } from "@/lib/konsep-materi";
 import { ucapkanLatexUntukSuara } from "@/lib/latex-ke-teks";
-import { ucapkanRumusUntukSuara } from "@/lib/naskah-suara-rumus";
+import {
+  ucapkanHurufVariabelTerisolasi,
+  ucapkanKeteranganKomponenRumus,
+  ucapkanRumusUntukSuara,
+} from "@/lib/naskah-suara-rumus";
 
 const LABEL_BARIS =
   /^(judul(?:\s+kartu)?|subjudul(?:\s+visual)?|uraian(?:\s+lisan)?|naskah(?:\s+lisan)?|kartu\s*\d+|baris\s*\d+|visual|voice|teks(?:\s+kartu)?|contoh\s+kartu)\s*[:.\-–]\s*/i;
@@ -81,6 +85,7 @@ export function naskahLisan(teks: string, nama = ""): string {
     .replace(/[\u200B-\u200D\uFEFF]/g, "")
     .replace(/```[\s\S]*?```/g, " ");
   aman = ucapkanLatexUntukSuara(aman);
+  aman = ucapkanKeteranganKomponenRumus(aman);
   aman = aman
     .replace(/`+/g, "")
     .replace(/([)\d|])\s*\*\s*([(\d|\-−|])/g, "$1 × $2")
@@ -90,7 +95,6 @@ export function naskahLisan(teks: string, nama = ""): string {
     .replace(/\[([^\]]+)\]\([^)]+\)/g, "$1")
     .replace(/https?:\/\/\S+/gi, " ")
     .replace(/\[pause(?:\s+(?:short|long))?\]/gi, " ")
-    .replace(/\[[^\]]*\]/g, " ")
     .replace(/\((?:voice|visual|json|hanya untuk voice|card only)[^)]*\)/gi, " ");
 
   aman = ucapkanRumusUntukSuara(aman);
@@ -122,8 +126,11 @@ export function naskahLisan(teks: string, nama = ""): string {
     .replace(/(\d+(?:[.,]\d+)?)\s*\+\s*(\d+(?:[.,]\d+)?)/g, "$1 plus $2")
     .replace(/=/g, " sama dengan ")
     .replace(/[\u{1F300}-\u{1FAFF}]/gu, " ")
-    .replace(/\n+/g, ". ")
+    .replace(/\n+/g, ". ");
+  aman = ucapkanHurufVariabelTerisolasi(aman);
+  aman = aman
     .replace(/[.]{2,}/g, ".")
+    .replace(/([.!?…])\s*\./g, "$1")
     .replace(/\s+([,.;:!?…])/g, "$1")
     .replace(/,{2,}/g, ",")
     .replace(/\s+/g, " ")

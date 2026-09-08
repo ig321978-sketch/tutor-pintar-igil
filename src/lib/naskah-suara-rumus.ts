@@ -278,10 +278,18 @@ function sepertinyaRumusKimia(token: string): boolean {
 
 function ucapkanKimiaDanReaksi(teks: string): string {
   return teks
-    .replace(/\((s)\)/gi, " padat ")
-    .replace(/\((l)\)/gi, " cair ")
-    .replace(/\((g)\)/gi, " gas ")
-    .replace(/\((aq)\)/gi, " larutan ")
+    .replace(/(?:[A-Z][a-z]?\d*)+\s*\((s)\)/g, (asal) =>
+      asal.replace(/\((s)\)/i, " padat "),
+    )
+    .replace(/(?:[A-Z][a-z]?\d*)+\s*\((l)\)/g, (asal) =>
+      asal.replace(/\((l)\)/i, " cair "),
+    )
+    .replace(/(?:[A-Z][a-z]?\d*)+\s*\((g)\)/g, (asal) =>
+      asal.replace(/\((g)\)/i, " gas "),
+    )
+    .replace(/(?:[A-Z][a-z]?\d*)+\s*\((aq)\)/gi, (asal) =>
+      asal.replace(/\((aq)\)/i, " larutan "),
+    )
     .replace(/\bpH\b/g, "p H")
     .replace(/\bpOH\b/g, "p o H")
     .replace(/\b[A-Z][A-Za-z0-9]+\b/g, (token) => {
@@ -446,6 +454,222 @@ function ucapkanPecahanUmum(teks: string): string {
   return hasil;
 }
 
+const HURUF_LISAN: Record<string, string> = {
+  a: "a",
+  b: "be",
+  c: "ce",
+  d: "de",
+  e: "e",
+  f: "ef",
+  g: "ge",
+  h: "ha",
+  i: "i",
+  j: "je",
+  k: "ka",
+  l: "el",
+  m: "em",
+  n: "en",
+  o: "o",
+  p: "pe",
+  q: "kyu",
+  r: "er",
+  s: "es",
+  t: "te",
+  u: "u",
+  v: "ve",
+  w: "we",
+  x: "eks",
+  y: "ye",
+  z: "zet",
+};
+
+const YUNANI_KATA =
+  "delta|alfa|beta|gamma|teta|omega|pi|sigma|miu|lambda|fi|rho|epsilon|ksi|tau|psi|khi|nu|eta|zeta|kappa|iota|upsilon";
+
+const SATUAN_KURUNG: Array<[RegExp, string]> = [
+  [/km\/jam|km\/h/gi, "kilometer per jam"],
+  [/m\/s(?:\^?2|²)|m\s+s\s+kuadrat/gi, "meter per sekon kuadrat"],
+  [/m\/s/gi, "meter per sekon"],
+  [/N\/kg/g, "newton per kilogram"],
+  [/N\/C/g, "newton per coulomb"],
+  [/N\/m\u00b2|N\/m2/g, "newton per meter kuadrat"],
+  [/kg\/m\u00b3|kg\/m3/gi, "kilogram per meter kubik"],
+  [/kJ\/mol/g, "kilojoule per mol"],
+  [/J\/mol/g, "joule per mol"],
+  [/mol\/L/gi, "mol per liter"],
+  [/g\/mol/gi, "gram per mol"],
+  [/m\/s/gi, "meter per sekon"],
+  [/°\s*C|℃/g, "derajat celcius"],
+  [/°\s*F|℉/g, "derajat fahrenheit"],
+  [/km\u00b2|km2/gi, "kilometer kuadrat"],
+  [/m\u00b2|m2/g, "meter kuadrat"],
+  [/m\u00b3|m3/g, "meter kubik"],
+  [/cm\u00b2|cm2/gi, "sentimeter kuadrat"],
+  [/cm\u00b3|cm3/gi, "sentimeter kubik"],
+  [/mmHg/g, "milimeter air raksa"],
+  [/kPa/g, "kilopascal"],
+  [/atm/g, "atmosfer"],
+  [/kcal/gi, "kilokalori"],
+  [/kJ/g, "kilojoule"],
+  [/eV/g, "elektronvolt"],
+  [/ppm/gi, "part per juta"],
+  [/mol/g, "mol"],
+  [/rad/gi, "radian"],
+  [/kg/gi, "kilogram"],
+  [/mg/gi, "miligram"],
+  [/km/gi, "kilometer"],
+  [/cm/gi, "sentimeter"],
+  [/mm/gi, "milimeter"],
+  [/nm/gi, "nanometer"],
+  [/ms/gi, "milidetik"],
+  [/kN/g, "kilonewton"],
+  [/kV/g, "kilovolt"],
+  [/kW/g, "kilowatt"],
+  [/Hz/g, "hertz"],
+  [/Pa/g, "pascal"],
+  [/[ΩΩ]/g, "ohm"],
+  [/°/g, "derajat"],
+  [/\bN\b/g, "newton"],
+  [/\bJ\b/g, "joule"],
+  [/\bW\b/g, "watt"],
+  [/\bV\b/g, "volt"],
+  [/\bA\b/g, "ampere"],
+  [/\bC\b/g, "coulomb"],
+  [/\bK\b/g, "kelvin"],
+  [/\bL\b/g, "liter"],
+  [/\bg\b/g, "gram"],
+  [/\bs\b/g, "sekon"],
+  [/\bm\b/g, "meter"],
+];
+
+function ucapkanIsiSatuan(mentah: string): string {
+  let isi = mentah.replace(/\\mathrm\s*\{([^{}]*)\}/g, "$1").trim();
+  if (!isi) return "";
+  for (const [pola, ganti] of SATUAN_KURUNG) {
+    isi = isi.replace(pola, ganti);
+  }
+  return isi.replace(/\s+/g, " ").trim();
+}
+
+export function ucapkanSatuanDalamKurung(teks: string): string {
+  return teks.replace(/[\(\[]\s*([^)\]]{1,24})\s*[\)\]]/g, (asal, isi: string, indeks: number, sumber: string) => {
+    const sebelum = sumber.slice(Math.max(0, indeks - 12), indeks);
+    const token = (sebelum.trim().split(/\s+/).pop() || "").replace(/[^A-Za-z0-9]/g, "");
+    if (
+      /^(s|l|g|aq)$/i.test(isi.trim()) &&
+      /^(?:[A-Z][a-z]?\d*)+$/.test(token)
+    ) {
+      return asal;
+    }
+    const ucapan = ucapkanIsiSatuan(isi);
+    if (!ucapan || ucapan === isi.replace(/\s+/g, " ").trim()) return asal;
+    return ` ${ucapan} `;
+  });
+}
+
+function ucapkanLambangVariabel(mentah: string): string {
+  const token = mentah.replace(/[_^]+/g, " ").replace(/\s+/g, " ").trim();
+  if (!token) return "";
+  return token
+    .split(" ")
+    .map((bagian) => {
+      const kecil = bagian.toLowerCase();
+      if (kecil.length === 1 && HURUF_LISAN[kecil]) return HURUF_LISAN[kecil];
+      return bagian;
+    })
+    .join(" ");
+}
+
+function kananAdalahMakna(kanan: string): boolean {
+  const bersih = kanan
+    .replace(/[\(\[][^)\]]*[\)\]]/g, " ")
+    .replace(/[,.;:]+$/g, "")
+    .trim();
+  if (!bersih) return false;
+  if (/^\d/.test(bersih)) return false;
+  if (/\b(per|kali|dibagi|pangkat|kuadrat|kubik)\b/i.test(bersih) && !/[A-Za-zÀ-ÿ]{5,}/.test(bersih)) {
+    return false;
+  }
+  const kata = bersih.split(/\s+/).filter(
+    (item) =>
+      /[A-Za-zÀ-ÿ]{4,}/.test(item) &&
+      !/^(per|kali|plus|minus|bagi|dibagi|pangkat|sama|dengan|akar|nilai|mutlak|kuadrat|kubik|dari|atau|yang|untuk)$/i.test(
+        item,
+      ),
+  );
+  return kata.length >= 1;
+}
+
+const POLA_LAMBANG = new RegExp(
+  String.raw`((?:(?:${YUNANI_KATA})\s+)?)([A-Za-z](?:\s+\d+|\s+[A-Za-z])?)`,
+  "i",
+);
+
+export function ucapkanKeteranganKomponenRumus(teks: string): string {
+  const baris = teks.split("\n").map((item) => {
+    let isi = item.replace(/^\s*[-*•]\s+/, "");
+    isi = isi.replace(
+      /^\s*(keterangan(?:\s+(?:rumus|variabel|lambang))?|notasi|variabel)\s*[:.\-–]?\s*/i,
+      "Keterangan rumus. ",
+    );
+    return isi;
+  });
+  let hasil = baris.join("\n");
+  hasil = hasil.replace(
+    /\bsatuan(?:nya)?\s+([A-Za-zµμ°0-9][A-Za-z0-9µμ°\/^²-]{0,12})/gi,
+    (_, satuan: string) => `satuan ${ucapkanIsiSatuan(satuan) || satuan}`,
+  );
+  hasil = ucapkanSatuanDalamKurung(hasil);
+  for (let i = 0; i < 8; i += 1) {
+    const polaPasangan = new RegExp(
+      String.raw`\b` + POLA_LAMBANG.source + String.raw`\s*[=:]\s*([^=\n]+)`,
+      "gi",
+    );
+    const berikutnya = hasil.replace(
+      polaPasangan,
+      (asal, yunani: string | undefined, huruf: string, kanan: string) => {
+        const potong = kanan.split(/\s+(?:dan|,)\s+(?=[A-Za-z]\s*[=:])/);
+        const kepala = potong[0] ?? kanan;
+        if (!kananAdalahMakna(kepala)) return asal;
+        const lambang = ucapkanLambangVariabel(`${yunani ?? ""} ${huruf}`);
+        const sisa = potong.slice(1).join(", ");
+        return sisa
+          ? `${lambang} adalah ${kepala.trim()}, ${sisa}`
+          : `${lambang} adalah ${kepala.trim()}`;
+      },
+    );
+    if (berikutnya === hasil) break;
+    hasil = berikutnya;
+  }
+  return hasil;
+}
+
+export function ucapkanHurufVariabelTerisolasi(teks: string): string {
+  const janganPecah = /^(di|ke|ya|si|bu|pa|om|nu|na|oh|uh|ih|eh|ph|sd|tk|hp|tv|wa|ri|pc|os|ai|ki|kd|jp|pg|ra|pk|rw|rt|ok|no|id)$/i;
+  const hurufVariabel = /^[FfmavstqrkxyzpnEIVBHWugcl]$/;
+  let hasil = teks.replace(/\b([A-Za-z])(\d+)\b/g, (_, huruf: string, angka: string) => {
+    const kecil = huruf.toLowerCase();
+    return `${HURUF_LISAN[kecil] ?? huruf} ${angka}`;
+  });
+  hasil = hasil.replace(/\b([A-Za-z]{2})\b/g, (asal) => {
+    if (janganPecah.test(asal)) return asal;
+    const [a, b] = asal.split("");
+    if (!hurufVariabel.test(a) || !hurufVariabel.test(b)) return asal;
+    const ha = HURUF_LISAN[a.toLowerCase()];
+    const hb = HURUF_LISAN[b.toLowerCase()];
+    if (!ha || !hb) return asal;
+    return `${ha} ${hb}`;
+  });
+  return hasil.replace(/\b([A-Za-z])\b/g, (huruf, _grup: string, indeks: number, sumber: string) => {
+    const kecil = huruf.toLowerCase();
+    const sesudah = sumber.slice(indeks + huruf.length, indeks + huruf.length + 3).toLowerCase();
+    const sebelum = sumber.slice(Math.max(0, indeks - 3), indeks).toLowerCase();
+    if (kecil === "p" && /^\s*h\b/.test(sesudah)) return huruf;
+    if (kecil === "h" && /p\s*$/.test(sebelum)) return huruf;
+    return HURUF_LISAN[kecil] ?? huruf;
+  });
+}
+
 export function ucapkanRumusUntukSuara(teks: string): string {
   let aman = teks;
   aman = ucapkanSingkatan(aman);
@@ -512,8 +736,9 @@ export function ucapkanRumusUntukSuara(teks: string): string {
     .replace(/\bx\s+(?=\d)/gi, "kali ")
     .replace(/(\d+(?:[.,]\d+)?)\s*\+\s*(?=\d|\()/g, "$1 plus ")
     .replace(/\)\s*\/\s*\(/g, ") dibagi (")
-    .replace(/\)\s*\/\s*(?=\d)/g, ") dibagi ")
+    .replace(/\)\s*\/\s*(?=\d|[A-Za-z])/g, ") dibagi ")
     .replace(/(\d(?:[.,]\d+)?)\s*\/\s*\(/g, "$1 dibagi (")
+    .replace(/([A-Za-z0-9)])\s*\/\s*(?=[A-Za-z(])/g, "$1 dibagi ")
     .replace(/(?<=\d)\s*\/\s*(?=\d)/g, " per ")
     .replace(/\(-(\d+(?:[.,]\d+)?)/g, "(minus $1")
     .replace(/(\d+)\.(\d{1,2})(?!\d)/g, "$1,$2")
@@ -521,7 +746,7 @@ export function ucapkanRumusUntukSuara(teks: string): string {
     .replace(/(?<=\d|kuadrat|kubik)\s*\)/g, ",");
 
   aman = ucapkanSatuan(aman);
-  return aman.replace(/\s+/g, " ").trim();
+  return aman.replace(/[^\S\n]+/g, " ").replace(/ *\n+/g, "\n").trim();
 }
 
 export const ucapkanTeksSpesifikUntukSuara = ucapkanRumusUntukSuara;

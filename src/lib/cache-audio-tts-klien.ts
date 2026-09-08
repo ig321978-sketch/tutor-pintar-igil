@@ -19,7 +19,7 @@ export function kunciCacheAudioTts(
   kelamin: string,
   kelas: string,
 ): string {
-  return `v1|${kelamin}|${kelas}|${teks.replace(/\s+/g, " ").trim()}`;
+  return `v2|${kelamin}|${kelas}|${teks.replace(/\s+/g, " ").trim()}`;
 }
 
 function bukaDb(): Promise<IDBDatabase | null> {
