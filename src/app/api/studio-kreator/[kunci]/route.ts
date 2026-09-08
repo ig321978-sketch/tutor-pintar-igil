@@ -54,7 +54,7 @@ export async function PATCH(
     return NextResponse.json(
       {
         berhasil: false,
-        pesan: "Kurikulum Sekolah dan Cara Jenius tidak boleh kosong.",
+        pesan: "Kurikulum Sekolah dan Trik Percepatan tidak boleh kosong.",
       },
       { status: 400 },
     );

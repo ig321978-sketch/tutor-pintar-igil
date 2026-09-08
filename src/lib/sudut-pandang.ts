@@ -8,6 +8,8 @@ export type NaskahDuaSudut = {
   global_best_view?: string;
 };
 
+export const TANDA_NASKAH_GLOBAL = "Cara cepat:";
+
 export const LABEL_SUDUT: Record<
   SudutPandangMateri,
   { pendek: string; panjang: string; ringkas: string }
@@ -15,12 +17,12 @@ export const LABEL_SUDUT: Record<
   kurikulum: {
     pendek: "Kurikulum Sekolah",
     panjang: "Perspektif Kurikulum Nasional",
-    ringkas: "Mengikuti uraian buku siswa Kurikulum Merdeka",
+    ringkas: "Pahami konsep lewat uraian buku siswa Kurikulum Merdeka",
   },
   global: {
-    pendek: "Cara Jenius Dunia",
-    panjang: "Perspektif Standar Global",
-    ringkas: "Analogi dan kerangka visual untuk memperdalam konsep",
+    pendek: "Trik Percepatan",
+    panjang: "Alat percepatan, bukan ulang konsep",
+    ringkas: "Trik, pola, dan cara cepat ala bimbel",
   },
 };
 
@@ -29,11 +31,17 @@ export function pilihPenjelasanMateri(
   sudut: SudutPandangMateri,
 ): string {
   if (sudut === "global") {
-    return (modul.global_best_view ?? "").trim();
+    const teks = (modul.global_best_view ?? "").trim();
+    return naskahGlobalSiap(teks) ? teks : "";
   }
   return (modul.curriculum_view || modul.penjelasan || "").trim();
 }
 
 export function naskahMateriSiap(teks?: string): boolean {
   return teksNaskahUtuh(teks, { min: 40 });
+}
+
+export function naskahGlobalSiap(teks?: string): boolean {
+  const naskah = (teks ?? "").trim();
+  return naskahMateriSiap(naskah) && naskah.includes(TANDA_NASKAH_GLOBAL);
 }

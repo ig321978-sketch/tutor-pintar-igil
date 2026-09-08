@@ -30,7 +30,7 @@ import {
   topicIdMateri,
   type IsiCacheMateri,
 } from "@/lib/cache-materi-tutor";
-import { naskahMateriSiap } from "@/lib/sudut-pandang";
+import { naskahGlobalSiap, naskahMateriSiap } from "@/lib/sudut-pandang";
 import {
   teksNaskahUtuh,
   tolakJikaDibatalkan,
@@ -120,7 +120,7 @@ Think step-by-step SEBELUM menulis JSON akhir:
 1) Gunakan Google Search untuk merujuk sumber Kurikulum Merdeka terbaru (buku siswa, capaian pembelajaran, ATP) yang relevan.
 2) Identifikasi kompetensi, istilah baku, dan urutan subbab Kurikulum Merdeka untuk kelas serta bab ini.
 3) Validasi fakta, rumus, dan contoh hitung. Tolak klaim yang tidak selaras buku siswa.
-4) Susun dua perspektif: Uraian Kurikulum Nasional dan Uraian Global Best Practice. Judul subbab dan urutan WAJIB sama.
+4) Susun dua perspektif yang ISI-nya WAJIB beda: curriculum_view = pahami konsep (buku siswa). global_best_view = alat percepatan/hack (trik hitung atau pola cepat), BUKAN analogi ulang konsep yang sama. Judul subbab dan urutan WAJIB sama.
 5) Susun bank soal baku: 10 PG (3 Reguler + 7 HOTS) dan 3 Essay (1 Reguler + 2 HOTS).
 6) Baru keluarkan SATU objek JSON. Jangan keluarkan langkah berpikir ke pengguna.
 
@@ -141,7 +141,7 @@ CONTOH TEMPLAT JSON (ikuti struktur, JANGAN salin isinya):
 {
   'sapaan': 'Halo kamu, Semangat.',
   'curriculum_view': 'Menjumlah sampai 100.\\nAmati pensil di meja kelas.\\nUraian konsep penjumlahan sesuai buku siswa.\\n\\nMengurai puluhan dan satuan.\\nPuluhan adalah ikatan 10. Satuan adalah sisa.',
-  'global_best_view': 'Menjumlah sampai 100.\\nBayangkan pensil diikat jadi bundel 10.\\n\\nMengurai puluhan dan satuan.\\nBundel = puluhan, sisa longgar = satuan.',
+  'global_best_view': 'Menjumlah sampai 100.\\nTambah puluhan dulu, baru satuan.\\nCara cepat:\\n27 + 15: 27 + 10 = 37, lalu 37 + 5 = 42.\\nKapan dipakai:\\nKalau satuan kecil. Jangan jika guru minta bersusun.\\nContoh cepat\\nSoal: 38 + 24.\\n38 + 20 = 58, 58 + 4 = 62.\\n62\\nLatihan\\n1) 46 + 27\\n2) 19 + 35\\nKunci\\n1) 73\\n2) 54',
   'sketsaKartu': 'Meja dan tumpuk pensil.\\n\\nDua ikat puluhan dan sisa satuan.',
   'svgCode': '',
   'pertanyaan': '[Soal 1 - PG - Tipe: Reguler]\\nAda 12 kelereng lalu bertambah 7. Jumlahnya?\\nA) 17\\nB) 18\\nC) 19\\nD) 20\\n\\n[Soal 2 - PG - Tipe: Reguler]\\n...\\n\\n[Soal 3 - PG - Tipe: Reguler]\\n...\\n\\n[Soal 4 - PG - Tipe: HOTS]\\n...\\n\\n(lanjut Soal 5-10 HOTS, format sama)',
@@ -202,17 +202,69 @@ ${aturanContohSoal(hitungan, kelas)}
 Jika menyebut nama, HANYA ${namaDepan}. DILARANG pujian berlebihan.`;
 }
 
+function aturanContohCepat(hitungan: boolean, kelas: string): string {
+  if (!hitungan) {
+    return `CONTOH CEPAT: setelah trik, tulis 1 kasus singkat: soal tempo, pola yang dipakai, hasil. Lalu Latihan 2 butir + Kunci. Bukan uraian konsep.`;
+  }
+  return `CONTOH CEPAT HITUNGAN (wajib di SETIAP kartu, setelah trik), gaya soal tempo bimbel:
+Tulis blok berikut di baris sendiri, tanpa pilihan A/B/C/D, DAN TETAP dalam kartu subbab yang sama (jangan pisah \\n\\n sebelum Contoh cepat/Latihan/Kunci):
+Contoh cepat
+Soal tempo 1 kalimat, tingkat ${kelas}, angka beda dari kurikulum.
+Langkah pintas 1-3 baris (bukan uraian konsep).
+Hasil ANGKA di baris sendiri.
+
+Latihan
+1) Soal tempo baru, beda angka.
+2) Soal kedua, sedikit jebakan (kapan trik TIDAK dipakai).
+
+Kunci
+1) hasil
+2) hasil atau 'pakai cara biasa karena ...'
+Soal WAJIB improvisasi AI. DILARANG menyalin soal buku atau field pertanyaan kuis.`;
+}
+
 function alurUraianGlobal(namaDepan: string, hitungan: boolean, kelas: string): string {
-  return `BENTUK NASKAH infografis Standar Global, ramah anak, BUKAN esai panjang:
-- Judul kartu SAMA dengan curriculum_view (subbab resmi), tetapi ISI berbeda: analogi dunia nyata + penjelasan sederhana + kerangka visual.
-- Alur tiap kartu: (1) analogi atau gambar mental 1 kalimat, (2) ide inti dijelaskan seolah mengajar teman, (3) kerangka visual singkat (bandingkan / sebab-akibat / bagian-keseluruhan / langkah), (4) rumus di baris sendiri jika ada, (5) contoh soal dan latihan.
+  const misi = hitungan
+    ? `ISI = alat percepatan hitung ala bimbel: trik, pola, rumus pintas, hack langkah. Bukan menjelaskan ulang konsep.`
+    : `ISI = alat percepatan: jembatan keledai, pola soal, pohon keputusan, cara bedakan opsi, hack ujian. Bukan menjelaskan ulang konsep.`;
+  const alur = hitungan
+    ? `- Alur tiap kartu: (1) janji percepatan 1 kalimat, (2) baris persis 'Cara cepat:' lalu langkah hack/trik (bukan definisi), (3) baris 'Kapan dipakai:' 1 syarat + 1 kapan JANGAN dipakai, (4) rumus pintas di baris sendiri jika ada, (5) Contoh cepat dan latihan tempo.`
+    : `- Alur tiap kartu: (1) janji percepatan 1 kalimat, (2) baris persis 'Cara cepat:' lalu pola/mnemonik/pohon keputusan, (3) baris 'Kapan dipakai:' plus 1 jebakan yang bikin lama, (4) Contoh cepat dan latihan tempo.`;
+  return `BENTUK NASKAH Mode Global = HACK PERCEPATAN, ramah anak, BUKAN esai dan BUKAN salinan kurikulum:
+- Judul kartu SAMA dengan curriculum_view (subbab resmi), tetapi ${misi}
+${alur}
+- Setiap kartu WAJIB memuat teks persis 'Cara cepat:' (dengan titik dua).
 - DILARANG menomori judul kartu dengan 1. 2. 3. di depan. Judul = nama subbab saja.
-- DILARANG memisah Contoh, Latihan, atau Kunci dengan baris kosong (\\n\\n). Tetap SATU blok kartu.
-- DILARANG menyalin curriculum_view kata demi kata. DILARANG menyebut nama teknik pedagogi. DILARANG paragraf esai 8+ kalimat.
-- Fakta, istilah baku (boleh dalam kurung), dan hasil hitung HARUS benar dan tidak menentang kurikulum.
+- DILARANG memisah Contoh cepat, Latihan, atau Kunci dengan baris kosong (\\n\\n). Tetap SATU blok kartu.
+- DILARANG menyalin curriculum_view. DILARANG analogi yang hanya mengulang uraian konsep dengan cerita. DILARANG menyebut Feynman, meta-metode, atau esai 8+ kalimat.
+- Fakta, istilah baku (boleh dalam kurung), dan hasil hitung HARUS benar. Jangan ajar shortcut yang menghasilkan jawaban salah.
 ${aturanAngkaNaskah()}
-${aturanContohSoal(hitungan, kelas)}
+${aturanContohCepat(hitungan, kelas)}
 Jika menyebut nama, HANYA ${namaDepan}. DILARANG pujian berlebihan.`;
+}
+
+function formatKartuPercepatan(
+  jenjang: string,
+  kelas: string,
+  jumlah: string,
+): { kepala: string } {
+  if (jenjang === "SD") {
+    return {
+      kepala: `${jumlah} KARTU PERCEPATAN, satu kartu satu subbab. Setiap kartu SATU blok dipisah \\n\\n:
+Baris 1: judul subbab 2-8 kata, diakhiri titik. Plain text.
+Baris 2: janji percepatan SATU kalimat pendek (maks 16 kata), diakhiri titik. Bukan analogi konsep.
+Lalu trik padat, bahasa ${kelas}, bukan esai.`,
+    };
+  }
+  const kepadatan =
+    jenjang === "SMA"
+      ? "4-6 kalimat padat setara SMA: trik, syarat pakai, jebakan. Bahasa analitis."
+      : "4-6 kalimat berbobot setara SMP: trik, syarat pakai, jebakan. Bukan flashcard SD.";
+  return {
+    kepala: `${jumlah} KARTU PERCEPATAN untuk jenjang ${jenjang} (${kelas}). Setiap kartu SATU blok dipisah \\n\\n.
+Baris pertama: judul subbab 2-8 kata, diakhiri titik. Plain text.
+Lalu naskah hack (${kepadatan}).`,
+  };
 }
 
 function formatKartuDasar(
@@ -258,16 +310,17 @@ function instruksiPenjelasan(
         ? "TEPAT 6 sampai 8"
         : "TEPAT 6";
   const { kepala } = formatKartuDasar(jenjang, kelas, jumlah);
+  const { kepala: kepalaGlobal } = formatKartuPercepatan(jenjang, kelas, jumlah);
 
   return `2. curriculum_view: perspektif Kurikulum Nasional. ${kepala}
 ${kerangka}
 ${alurUraianBuku(namaDepan, hitungan, kelas)}
 Istilah, urutan subbab, dan kompetensi HARUS selaras buku teks resmi Kemendikbudristek agar siswa siap ujian sekolah. DILARANG analogi bebas yang mengganti istilah baku. Di uraian, sapa dengan 'kamu'. Jangan mengulang nama siswa.
 
-3. global_best_view: perspektif Standar Global. ${kepala}
-JUMLAH KARTU, JUDUL SUBBAB, dan URUTAN SAMA PERSIS dengan curriculum_view. Bukan salinan kurikulum.
+3. global_best_view: alat percepatan Mode Global. ${kepalaGlobal}
+JUMLAH KARTU, JUDUL SUBBAB, dan URUTAN SAMA PERSIS dengan curriculum_view. ISI WAJIB beda: trik/hack, bukan analogi ulang konsep.
 ${alurUraianGlobal(namaDepan, hitungan, kelas)}
-Fakta tidak boleh menyalahi kurikulum; boleh menambah nama internasional dalam kurung. DILARANG menyebut Feynman, meta-metode, atau esai panjang. Bahasa ${kelas}, ramah anak, infografis.`;
+Fakta tidak boleh menyalahi kurikulum. DILARANG menyebut Feynman, meta-metode, atau esai panjang. Bahasa ${kelas}, padat, siap pakai di soal.`;
 }
 
 function pulihkanParagraf(nilai: unknown, cadangan: string): string {
@@ -364,7 +417,7 @@ export function promptGenerasiModul(opsi: {
 }): string {
   const instruksiMateri = opsi.adaGambar
     ? `Tugas: Analisis foto halaman buku pelajaran yang dilampirkan (${opsi.jumlahGambar} halaman). Baca tulisan, judul bab, rumus, gambar, dan soal di semua halaman tersebut. Deteksi topik utamanya, lalu buat modul DUA SUDUT PANDANG (curriculum_view + global_best_view) untuk ${opsi.namaDepan} (Kelas ${opsi.kelas}) berdasarkan isi halaman buku itu. Jika mapel/materi teks tersedia (${opsi.mapel} / ${opsi.materi}), gunakan sebagai petunjuk tambahan, tetapi prioritas utama adalah isi foto.`
-    : `Tugas: Buat modul belajar DUA SUDUT PANDANG untuk ${opsi.namaDepan} (Kelas ${opsi.kelas}) mata pelajaran ${opsi.mapel} materi ${opsi.materi}. curriculum_view selaras buku siswa Kurikulum Merdeka Pusat Perbukuan. global_best_view memakai pedagogi dunia (analogi, penjelasan sederhana, kerangka visual) tanpa menyalahi fakta kurikulum.`;
+    : `Tugas: Buat modul belajar DUA SUDUT PANDANG untuk ${opsi.namaDepan} (Kelas ${opsi.kelas}) mata pelajaran ${opsi.mapel} materi ${opsi.materi}. curriculum_view selaras buku siswa Kurikulum Merdeka Pusat Perbukuan untuk MEMAHAMI konsep. global_best_view adalah alat percepatan/hack (trik hitung atau pola cepat ala bimbel), BUKAN analogi yang mengulang konsep yang sama.`;
 
   return `
 ${instruksiPencarianKurikulum({
@@ -457,7 +510,7 @@ export function cachePunyaBagian(
 ): boolean {
   if (!cache) return false;
   if (bagian === "kurikulum") return naskahMateriSiap(cache.curriculum_view);
-  if (bagian === "global") return naskahMateriSiap(cache.global_best_view);
+  if (bagian === "global") return naskahGlobalSiap(cache.global_best_view);
   return naskahLatihanSiap(cache.pertanyaan);
 }
 
@@ -527,7 +580,7 @@ function acuanJudulGlobal(
   if (judul.length === 0) return kerangkaJudulSubbab(kelas, mapel, materi);
   return `Judul kartu, jumlah, dan urutan WAJIB sama persis:\n${judul
     .map((nama, i) => `${i + 1}. ${nama}`)
-    .join("\n")}\nJangan menyalin uraian kurikulum. Tulis analogi dan kerangka visual baru.`;
+    .join("\n")}\nJangan menyalin uraian kurikulum. Tulis trik percepatan baru, bukan analogi konsep.`;
 }
 
 function promptNaskahGlobal(opsi: {
@@ -555,9 +608,10 @@ function promptNaskahGlobal(opsi: {
       : jenjang === "SD"
         ? "TEPAT 6 sampai 8"
         : "TEPAT 6";
-  const { kepala } = formatKartuDasar(jenjang, opsi.kelas, jumlah);
+  const { kepala } = formatKartuPercepatan(jenjang, opsi.kelas, jumlah);
   return `
 Kamu adalah Tutor $IGIL. Tulis HANYA naskah global_best_view untuk ${opsi.namaDepan} (Kelas ${opsi.kelas}) mapel ${opsi.mapel} materi ${opsi.materi}.
+Ini Mode Global: alat percepatan/hack, BUKAN mengulang Mode Kurikulum dengan analogi.
 DILARANG menulis curriculum_view, sapaan, sketsaKartu, soal PG, atau esai.
 
 ${acuan}
@@ -568,7 +622,7 @@ ATURAN MUTLAK:
 3. Paragraf mikro. Rumus wajib LaTeX. Diagram HANYA mermaid. DILARANG SVG.
 ${aturanMermaidDanLatex()}
 
-global_best_view: perspektif Standar Global. ${kepala}
+global_best_view: alat percepatan Mode Global. ${kepala}
 ${alurUraianGlobal(opsi.namaDepan, hitungan, opsi.kelas)}
 Fakta tidak boleh menyalahi kurikulum. DILARANG menyebut Feynman atau esai panjang.
 `.trim();
@@ -724,7 +778,7 @@ export async function generateBagianModul(opsi: {
     pastikanTeksGeminiUtuh(hasil.teks);
     const dataJson = bersihkanDanParseJson(hasil.teks);
     const dataAman = bentukModulTutor(opsi.nama, dataJson);
-    if (!naskahMateriSiap(dataAman.global_best_view)) {
+    if (!naskahGlobalSiap(dataAman.global_best_view)) {
       throw new Error("Naskah global tidak utuh.");
     }
     await simpanBagianCache(opsi, {

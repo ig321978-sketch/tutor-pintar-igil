@@ -169,7 +169,7 @@ export default function StudioKreatorDetail({
         <section className="space-y-5">
           <h2 className="text-lg font-black text-[#1C01A5]">Cache Materi</h2>
           <p className="text-sm font-semibold text-slate-600">
-            Naskah Kurikulum Sekolah, Cara Jenius, dan sketsa doodle.
+            Naskah Kurikulum Sekolah, Trik Percepatan, dan sketsa doodle.
           </p>
           <KolomTeks
             label="Kurikulum Sekolah"
@@ -179,7 +179,7 @@ export default function StudioKreatorDetail({
             onChange={(nilai) => setIsi((sekarang) => ({ ...sekarang, curriculum_view: nilai }))}
           />
           <KolomTeks
-            label="Cara Jenius Dunia"
+            label="Trik Percepatan (Mode Global)"
             nilai={isi.global_best_view}
             tinggi="min-h-48"
             disabled={sibuk}

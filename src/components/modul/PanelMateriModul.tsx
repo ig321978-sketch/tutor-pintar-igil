@@ -70,7 +70,8 @@ function PanelMateriModul({
           {materi}
         </h2>
         <p className="mt-1 text-sm font-bold text-[#1C01A5]/70">
-          {label?.ringkas ?? "Pilih Mode Kurikulum atau Mode Global untuk memuat naskah."}
+          {label?.ringkas ??
+            "Pilih Mode Kurikulum (paham konsep) atau Mode Global (trik percepatan)."}
         </p>
         {sapaan && sudutPandang ? (
           <p className="mt-3 whitespace-pre-line text-base font-semibold text-slate-700">
@@ -111,7 +112,7 @@ function PanelMateriModul({
           <Loader2 className="mx-auto h-10 w-10 animate-spin text-[#1C01A5]" />
           <p className="mt-4 text-lg font-extrabold text-[#1C01A5]">
             {sudutPandang === "global"
-              ? "Menyusun naskah Mode Global..."
+              ? "Menyusun trik percepatan Mode Global..."
               : "Menyusun naskah Mode Kurikulum..."}
           </p>
         </div>
@@ -128,7 +129,7 @@ function PanelMateriModul({
       ) : null}
       {!memuat && !sudutPandang ? (
         <p className="text-sm font-semibold text-[#1C01A5]/70">
-          Naskah belum dimuat. Klik salah satu mode di atas — hanya mode itu yang disusun, supaya lebih cepat.
+          Naskah belum dimuat. Kurikulum untuk paham konsep, Global untuk trik percepatan.
         </p>
       ) : null}
       {daftarPustaka.length > 0 && sudutPandang === "kurikulum" && naskah ? (

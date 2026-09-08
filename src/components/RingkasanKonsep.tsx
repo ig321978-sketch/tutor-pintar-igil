@@ -144,7 +144,7 @@ export default function RingkasanKonsep({
         }`}
       >
         <p className="text-xs font-extrabold uppercase tracking-[0.2em] text-[#F0AB00]">
-          Langkah 1 · Pahami konsep dulu
+          {global ? "Langkah 1 · Alat percepatan" : "Langkah 1 · Pahami konsep dulu"}
         </p>
         <h2 className="mt-2 text-3xl font-black leading-tight text-[#1C01A5] sm:text-4xl">
           {ideUtama}
@@ -174,8 +174,8 @@ export default function RingkasanKonsep({
           </div>
           <p className="mt-3 px-2 text-sm font-semibold leading-snug text-[#1C01A5]/75">
             {global
-              ? "Cara Jenius Dunia memakai analogi dan kerangka visual, dengan fakta yang tetap selaras kurikulum."
-              : "Kurikulum Sekolah memakai istilah baku dan alur bab buku teks agar siap ujian di sekolah."}
+              ? "Mode Global memberi trik, pola, dan cara cepat ala bimbel. Bukan mengulang konsep Kurikulum."
+              : "Mode Kurikulum memakai istilah baku dan alur bab buku teks agar konsepnya dipahami dulu."}
           </p>
         </div>
       </div>

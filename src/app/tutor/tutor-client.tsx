@@ -38,6 +38,7 @@ import {
 } from "@/lib/nama-siswa";
 import {
   pilihPenjelasanMateri,
+  naskahGlobalSiap,
   naskahMateriSiap,
   type SudutPandangMateri,
 } from "@/lib/sudut-pandang";
@@ -97,7 +98,7 @@ function gabungModulTutor(sebelum: ModulTutor | null, baru: ModulTutor): ModulTu
     curriculum_view: naskahMateriSiap(baru.curriculum_view)
       ? baru.curriculum_view
       : sebelum.curriculum_view,
-    global_best_view: naskahMateriSiap(baru.global_best_view)
+    global_best_view: naskahGlobalSiap(baru.global_best_view)
       ? baru.global_best_view
       : sebelum.global_best_view,
     penjelasan: naskahMateriSiap(baru.curriculum_view)
@@ -123,7 +124,7 @@ function gabungModulTutor(sebelum: ModulTutor | null, baru: ModulTutor): ModulTu
 function bagianNaskahSiap(modul: ModulTutor | null, bagian: BagianNaskah): boolean {
   if (!modul) return false;
   if (bagian === "kurikulum") return naskahMateriSiap(modul.curriculum_view);
-  if (bagian === "global") return naskahMateriSiap(modul.global_best_view);
+  if (bagian === "global") return naskahGlobalSiap(modul.global_best_view);
   return pecahBankSoal(modul.pertanyaan).pilihanGanda.length >= 4;
 }
 
@@ -1279,7 +1280,7 @@ export default function TutorAI() {
     const topicId = kunciMateriTutor(kelasKirim, mapelKirim, materiKirim);
     const tandaiSiap = (modul: ModulTutor) => {
       if (naskahMateriSiap(modul.curriculum_view)) setStatusKurikulum("siap");
-      if (naskahMateriSiap(modul.global_best_view)) setStatusGlobal("siap");
+      if (naskahGlobalSiap(modul.global_best_view)) setStatusGlobal("siap");
       if (pecahBankSoal(modul.pertanyaan).pilihanGanda.length >= 4) {
         setStatusLatihan("siap");
       }
