@@ -12,9 +12,15 @@ type PropsPilihGuru = {
   kelas: string;
   nilai: KelaminGuru;
   onGanti: (kelamin: KelaminGuru) => void;
+  tanpaLabel?: boolean;
 };
 
-export default function PilihGuru({ kelas, nilai, onGanti }: PropsPilihGuru) {
+export default function PilihGuru({
+  kelas,
+  nilai,
+  onGanti,
+  tanpaLabel = false,
+}: PropsPilihGuru) {
   const sudahPutarAwal = useRef(false);
   const kelasTerakhir = useRef(kelas);
 
@@ -33,7 +39,9 @@ export default function PilihGuru({ kelas, nilai, onGanti }: PropsPilihGuru) {
 
   return (
     <div>
-      <p className={kelasLabel}>Pilih guru pengajar</p>
+      {tanpaLabel ? null : (
+        <p className={kelasLabel}>Pilih guru pengajar</p>
+      )}
       <div className="grid gap-3">
         {pasanganGuru(kelas).map((guru) => {
           const aktif = nilai === guru.kelamin;
