@@ -1,3 +1,5 @@
+import { teksNaskahUtuh } from "@/lib/validasi-naskah-ai";
+
 export type SudutPandangMateri = "kurikulum" | "global";
 
 export type NaskahDuaSudut = {
@@ -33,6 +35,5 @@ export function pilihPenjelasanMateri(
 }
 
 export function naskahMateriSiap(teks?: string): boolean {
-  const t = (teks ?? "").trim();
-  return t.length > 40 && !/sedang disiapkan|sedang disusun/i.test(t);
+  return teksNaskahUtuh(teks, { min: 40 });
 }

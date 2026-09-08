@@ -4,6 +4,7 @@ import { askTutor } from "@/lib/ask-tutor";
 import { pesanGalatGemini } from "@/lib/klien-gemini";
 import { klaimInteraksiAi, statusKuota } from "@/lib/kuota-interaksi";
 import { ambilAtauBuatBagianModul } from "@/lib/susun-modul-tutor";
+import { permintaanDibatalkan } from "@/lib/validasi-naskah-ai";
 
 export const dynamic = "force-dynamic";
 export const revalidate = 0;
@@ -116,6 +117,13 @@ export async function POST(req: Request) {
       );
     }
 
+    if (req.signal.aborted) {
+      return NextResponse.json(
+        { berhasil: false, pesan: "Permintaan dibatalkan." },
+        { status: 500 },
+      );
+    }
+
     const hasil = await ambilAtauBuatBagianModul({
       nama,
       kelas,
@@ -123,6 +131,7 @@ export async function POST(req: Request) {
       materi,
       gambar: daftarGambar,
       bagian,
+      signal: req.signal,
     });
 
     return NextResponse.json({
@@ -133,6 +142,12 @@ export async function POST(req: Request) {
       data: hasil.data,
     });
   } catch (error: unknown) {
+    if (permintaanDibatalkan(error) || req.signal.aborted) {
+      return NextResponse.json(
+        { berhasil: false, pesan: "Permintaan dibatalkan." },
+        { status: 500 },
+      );
+    }
     console.error("EROR SISTEM:", error);
     const pesan = pesanGalatGemini(error);
     const timeout = /waktu lebih lama|TIMEOUT_GEMINI|timeout/i.test(pesan);

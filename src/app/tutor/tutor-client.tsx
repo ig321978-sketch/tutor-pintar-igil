@@ -53,6 +53,7 @@ import {
 } from "@/lib/naskah-lisan";
 import { mintaAudioTts } from "@/lib/putar-tts-klien";
 import { pecahTokenNaskah, skalaWaktuKata, type KataWaktu } from "@/lib/tts";
+import { PESAN_GAGAL_SUSUN_MATERI } from "@/lib/validasi-naskah-ai";
 import { type GambarSisipan } from "@/components/GambarDoodle";
 import PemutarAudioGuru, {
   indeksKataAktif,
@@ -398,6 +399,10 @@ export default function TutorAI() {
   const judulMateriSesi = sesiMateri || (modeInput === "teks" ? bab : "Analisis halaman buku");
   const judulKelasSesi = teksQuery(params.get("kelas"), kelas);
   const opsiBagian = daftarBagianModul(judulMapelSesi);
+  const isGenerating =
+    statusKurikulum === "memuat" ||
+    statusGlobal === "memuat" ||
+    statusLatihan === "memuat";
 
   const sudahPrefillMapel = useRef(false);
   const sudahPrefillBab = useRef(false);
@@ -711,6 +716,7 @@ export default function TutorAI() {
   };
 
   const gantiSudutPandang = (sudut: SudutPandangMateri) => {
+    if (naskahJalanRef.current.size > 0) return;
     hentikanMateriSuara();
     sudahSiapAudioRef.current = true;
     setTeksAnimasi("");
@@ -1002,6 +1008,9 @@ export default function TutorAI() {
       return;
     }
 
+    if (naskahJalanRef.current.size > 0 && !naskahJalanRef.current.has(bagian)) {
+      return;
+    }
     if (bagianNaskahSiap(hasilDataRef.current, bagian)) {
       tetapkanStatusNaskah(bagian, "siap");
       if (
@@ -1109,7 +1118,7 @@ export default function TutorAI() {
         }
       }
 
-      setPesanGalat(data.pesan || "Naskah gagal disusun.");
+      setPesanGalat(PESAN_GAGAL_SUSUN_MATERI);
       selesai("galat");
     } catch {
       if (modeInput === "teks") {
@@ -1131,7 +1140,7 @@ export default function TutorAI() {
           return;
         }
       }
-      setPesanGalat("Gagal terhubung ke server.");
+      setPesanGalat(PESAN_GAGAL_SUSUN_MATERI);
       selesai("galat");
     }
   };
@@ -1179,6 +1188,13 @@ export default function TutorAI() {
   };
 
   const bukaBagian = (bagian: BagianIsi) => {
+    if (
+      statusKurikulum === "memuat" ||
+      statusGlobal === "memuat" ||
+      statusLatihan === "memuat"
+    ) {
+      return;
+    }
     if (tahapBelajar === bagian) {
       setPesanGalat("");
       setPesanKunci("");
@@ -1834,6 +1850,7 @@ export default function TutorAI() {
               daftar={opsiBagian}
               aktif={tahapBelajar}
               materiTuntas={audioCompleted}
+              mengunciKlik={isGenerating}
               onPilih={bukaBagian}
               isi={{
                 silabus: (
@@ -1854,7 +1871,10 @@ export default function TutorAI() {
                     sudutPandang &&
                     ((sudutPandang === "kurikulum" && statusKurikulum === "galat") ||
                       (sudutPandang === "global" && statusGlobal === "galat")) ? (
-                      <div className="mb-4 rounded-2xl border-2 border-rose-100 bg-rose-50 p-5 text-center">
+                      <div
+                        role="alert"
+                        className="mb-4 rounded-2xl border-2 border-rose-100 bg-rose-50 p-5 text-center"
+                      >
                         <p className="font-semibold text-rose-600">{pesanGalat}</p>
                         <button
                           type="button"
@@ -1881,9 +1901,8 @@ export default function TutorAI() {
                       onGantiSudut={gantiSudutPandang}
                       referensiUrl={hasilData?.referensiUrl}
                       memuat={
-                        (sudutPandang === "kurikulum" &&
-                          statusKurikulum === "memuat") ||
-                        (sudutPandang === "global" && statusGlobal === "memuat")
+                        statusKurikulum === "memuat" ||
+                        statusGlobal === "memuat"
                       }
                     />
                     {naskahMateriSiap(penjelasanAktif) ? (
@@ -2021,7 +2040,10 @@ export default function TutorAI() {
                 latihan: (
                   <>
                     {pesanGalat && statusLatihan === "galat" ? (
-                      <div className="mb-4 rounded-2xl border-2 border-rose-100 bg-rose-50 p-5 text-center">
+                      <div
+                        role="alert"
+                        className="mb-4 rounded-2xl border-2 border-rose-100 bg-rose-50 p-5 text-center"
+                      >
                         <p className="font-semibold text-rose-600">{pesanGalat}</p>
                         <button
                           type="button"
@@ -2110,6 +2132,17 @@ export default function TutorAI() {
           padaDurasi={padaDurasiAudio}
           padaSelesai={padaSelesaiAudio}
         />
+        {pesanGalat === PESAN_GAGAL_SUSUN_MATERI &&
+        (statusKurikulum === "galat" ||
+          statusGlobal === "galat" ||
+          statusLatihan === "galat") ? (
+          <div
+            role="alert"
+            className="fixed inset-x-0 bottom-24 z-40 mx-auto w-[min(36rem,calc(100%-1.5rem))] rounded-2xl border-2 border-rose-200 bg-rose-50 px-4 py-3 text-center text-sm font-extrabold text-rose-700 shadow-lg"
+          >
+            {PESAN_GAGAL_SUSUN_MATERI}
+          </div>
+        ) : null}
         <PemutarTutorMengambang
           memutar={statusPemutar === "memutar"}
           waktu={waktuAudio}

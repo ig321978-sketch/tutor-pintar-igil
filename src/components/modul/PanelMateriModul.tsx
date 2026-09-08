@@ -81,24 +81,26 @@ function PanelMateriModul({
           <button
             type="button"
             onClick={() => onGantiSudut("kurikulum")}
+            disabled={memuat}
             aria-pressed={sudutPandang === "kurikulum"}
             className={`flex-1 rounded-2xl px-3 py-3 text-sm font-extrabold ${
               sudutPandang === "kurikulum"
                 ? "bg-[#1C01A5] text-white"
                 : "bg-white text-[#1C01A5]"
-            }`}
+            } ${memuat ? "cursor-wait opacity-70" : ""}`}
           >
             Mode Kurikulum
           </button>
           <button
             type="button"
             onClick={() => onGantiSudut("global")}
+            disabled={memuat}
             aria-pressed={sudutPandang === "global"}
             className={`flex-1 rounded-2xl px-3 py-3 text-sm font-extrabold ${
               sudutPandang === "global"
                 ? "bg-[#1C01A5] text-white"
                 : "bg-white text-[#1C01A5]"
-            }`}
+            } ${memuat ? "cursor-wait opacity-70" : ""}`}
           >
             Mode Global
           </button>

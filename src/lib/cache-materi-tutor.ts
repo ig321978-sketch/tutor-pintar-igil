@@ -5,6 +5,7 @@ import {
 } from "@/lib/kunci-siswa";
 import { namaDepanSiswa } from "@/lib/nama-siswa";
 import { naskahLatihanSaja, pecahBankSoal, kunciLatihanSaja } from "@/lib/kuis";
+import { buangTeksSampah } from "@/lib/validasi-naskah-ai";
 
 export type IsiCacheMateri = {
   curriculum_view: string;
@@ -172,7 +173,7 @@ export function gabungIsiCache(
 ): IsiCacheMateri {
   const dasar = lama ?? isiCacheKosong();
   const pilih = (ada: string, masuk?: string) => {
-    const n = (masuk ?? "").trim();
+    const n = buangTeksSampah(masuk);
     if (!n) return ada;
     if (tulisUlang || !ada.trim()) return n;
     return ada;
@@ -359,6 +360,10 @@ export async function simpanCacheMateri(
     masuk,
     Boolean(opsi.tulisUlangSetelahHapus),
   );
+  if (!isiCachePunyaNaskah(payload)) {
+    console.warn("[cache-materi] naskah tidak utuh; tulis dilewati.");
+    return false;
+  }
   if (
     sudahAda &&
     sudahAda.curriculum_view === payload.curriculum_view &&

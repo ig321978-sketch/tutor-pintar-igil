@@ -146,6 +146,9 @@ function jenisGalat(error: unknown): "model" | "kuota" | "api" | "alat" | "lain"
   ) {
     return "alat";
   }
+  if (/PERMINTAAN_DIBATALKAN|AbortError|\baborted\b/i.test(teks)) {
+    return "lain";
+  }
   if (/TIMEOUT_GEMINI|timeout|timed out|deadline/i.test(teks)) {
     return "lain";
   }
@@ -235,6 +238,7 @@ type OpsiPanggil = {
   thinkingBudget?: number;
   timeoutCobaMs?: number;
   googleSearch?: boolean;
+  signal?: AbortSignal;
 };
 
 export type HasilGemini = {
@@ -308,12 +312,14 @@ async function panggilVertexKlasik(
       : `https://${location}-aiplatform.googleapis.com`;
   const url = `${host}/v1/projects/${project}/locations/${location}/publishers/google/models/${model}:generateContent`;
   const schemaAktif = skemaJikaTanpaCari(schema, opsi);
+  if (opsi?.signal?.aborted) throw new Error("PERMINTAAN_DIBATALKAN");
   const respons = await fetch(url, {
     method: "POST",
     headers: {
       Authorization: `Bearer ${token}`,
       "Content-Type": "application/json",
     },
+    signal: opsi?.signal,
     body: JSON.stringify({
       ...(opsi?.systemInstruction
         ? { systemInstruction: { parts: [{ text: opsi.systemInstruction }] } }
@@ -358,11 +364,13 @@ async function panggilGemini(
   maxOutputTokens = 8192,
   opsi?: OpsiPanggil,
 ): Promise<HasilGemini> {
+  if (opsi?.signal?.aborted) throw new Error("PERMINTAAN_DIBATALKAN");
   const schemaAktif = skemaJikaTanpaCari(schema, opsi);
   const response = await klien.models.generateContent({
     model,
     contents: [{ role: "user", parts }],
     config: {
+      abortSignal: opsi?.signal,
       systemInstruction: opsi?.systemInstruction,
       responseMimeType: schemaAktif ? "application/json" : undefined,
       responseSchema: schemaAktif,
@@ -388,31 +396,46 @@ async function panggilDenganCadanganAlat(
   timeoutMs?: number,
 ): Promise<HasilGemini> {
   try {
-    return await denganBatasWaktu(jalankan(opsi), timeoutMs);
+    return await denganBatasWaktu(jalankan(opsi), timeoutMs, opsi?.signal);
   } catch (error) {
     if (opsi?.googleSearch && jenisGalat(error) === "alat") {
       console.warn("[gemini] googleSearch ditolak, ulang tanpa alat");
       return await denganBatasWaktu(
         jalankan({ ...opsi, googleSearch: false }),
         timeoutMs,
+        opsi?.signal,
       );
     }
     throw error;
   }
 }
 
-async function denganBatasWaktu<T>(janji: Promise<T>, timeoutMs?: number): Promise<T> {
-  if (!timeoutMs || timeoutMs <= 0) return janji;
+async function denganBatasWaktu<T>(
+  janji: Promise<T>,
+  timeoutMs?: number,
+  signal?: AbortSignal,
+): Promise<T> {
+  if (signal?.aborted) throw new Error("PERMINTAAN_DIBATALKAN");
+  if ((!timeoutMs || timeoutMs <= 0) && !signal) return janji;
   let timer: ReturnType<typeof setTimeout> | undefined;
+  let lepasBatal: (() => void) | undefined;
   try {
     return await Promise.race([
       janji,
       new Promise<T>((_, tolak) => {
-        timer = setTimeout(() => tolak(new Error("TIMEOUT_GEMINI")), timeoutMs);
+        if (timeoutMs && timeoutMs > 0) {
+          timer = setTimeout(() => tolak(new Error("TIMEOUT_GEMINI")), timeoutMs);
+        }
+        if (signal) {
+          const saatBatal = () => tolak(new Error("PERMINTAAN_DIBATALKAN"));
+          signal.addEventListener("abort", saatBatal, { once: true });
+          lepasBatal = () => signal.removeEventListener("abort", saatBatal);
+        }
       }),
     ]);
   } finally {
     if (timer) clearTimeout(timer);
+    lepasBatal?.();
   }
 }
 
@@ -577,6 +600,7 @@ type OpsiHasilGemini = {
   timeoutMs?: number;
   timeoutCobaMs?: number;
   googleSearch?: boolean;
+  signal?: AbortSignal;
 };
 
 export async function hasilkanJsonGeminiLengkap(
@@ -595,9 +619,11 @@ export async function hasilkanJsonGeminiLengkap(
         timeoutMs: opsi.timeoutMs,
         timeoutCobaMs: opsi.timeoutCobaMs,
         googleSearch: opsi.googleSearch,
+        signal: opsi.signal,
       },
     ),
     opsi.timeoutMs,
+    opsi.signal,
   );
 }
 

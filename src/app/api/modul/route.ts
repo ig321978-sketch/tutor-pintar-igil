@@ -9,6 +9,7 @@ import {
   bentukModulTutor,
   getModule,
 } from "@/lib/susun-modul-tutor";
+import { permintaanDibatalkan } from "@/lib/validasi-naskah-ai";
 
 export const dynamic = "force-dynamic";
 export const revalidate = 0;
@@ -102,12 +103,20 @@ export async function POST(req: Request) {
     const materi = sebagaiTeks(body.materi, "Materi hari ini");
     const gambar = ekstrakDaftarGambar(body.gambar);
 
+    if (req.signal.aborted) {
+      return NextResponse.json(
+        { berhasil: false, pesan: "Permintaan dibatalkan." },
+        { status: 500 },
+      );
+    }
+
     const hasil = await ambilAtauBuatModul({
       nama,
       kelas,
       mapel,
       materi,
       gambar,
+      signal: req.signal,
     });
 
     return NextResponse.json({
@@ -117,6 +126,12 @@ export async function POST(req: Request) {
       data: hasil.data,
     });
   } catch (error: unknown) {
+    if (permintaanDibatalkan(error) || req.signal.aborted) {
+      return NextResponse.json(
+        { berhasil: false, pesan: "Permintaan dibatalkan." },
+        { status: 500 },
+      );
+    }
     console.error("MODUL:", error);
     const pesan = pesanGalatGemini(error);
     const timeout = /waktu lebih lama|TIMEOUT_GEMINI|timeout/i.test(pesan);

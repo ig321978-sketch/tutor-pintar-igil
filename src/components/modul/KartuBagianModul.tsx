@@ -49,12 +49,14 @@ export default function KartuBagianModul({
   aktif,
   isi,
   materiTuntas = false,
+  mengunciKlik = false,
   onPilih,
 }: {
   daftar: BagianIsi[];
   aktif: BagianModul;
   isi?: Partial<Record<BagianIsi, ReactNode>>;
   materiTuntas?: boolean;
+  mengunciKlik?: boolean;
   onPilih: (bagian: BagianIsi) => void;
 }) {
   return (
@@ -73,10 +75,14 @@ export default function KartuBagianModul({
           >
             <button
               type="button"
-              onClick={() => onPilih(id)}
+              onClick={() => {
+                if (terkunci || mengunciKlik) return;
+                onPilih(id);
+              }}
+              disabled={mengunciKlik}
               aria-expanded={terbuka}
-              aria-disabled={terkunci}
-              className="w-full text-left"
+              aria-disabled={terkunci || mengunciKlik}
+              className={`w-full text-left ${mengunciKlik ? "cursor-wait opacity-80" : ""}`}
             >
               <div className="relative aspect-[16/9] w-full bg-slate-100">
                 {/* eslint-disable-next-line @next/next/no-img-element */}

@@ -31,6 +31,10 @@ import {
   type IsiCacheMateri,
 } from "@/lib/cache-materi-tutor";
 import { naskahMateriSiap } from "@/lib/sudut-pandang";
+import {
+  teksNaskahUtuh,
+  tolakJikaDibatalkan,
+} from "@/lib/validasi-naskah-ai";
 
 export type ModulTutor = {
   sapaan: string;
@@ -602,6 +606,12 @@ Kembalikan persis kunci: pertanyaan, kunciJawaban, motivasi.
 `.trim();
 }
 
+function pastikanTeksGeminiUtuh(teks: string): void {
+  if (!teksNaskahUtuh(teks, { min: 20 })) {
+    throw new Error("Respons AI kosong, terpotong, atau mengandung galat.");
+  }
+}
+
 async function simpanBagianCache(
   opsi: {
     nama: string;
@@ -609,9 +619,11 @@ async function simpanBagianCache(
     mapel: string;
     materi: string;
     gambar?: Part[];
+    signal?: AbortSignal;
   },
   isi: Partial<IsiCacheMateri>,
 ): Promise<void> {
+  tolakJikaDibatalkan(opsi.signal);
   if ((opsi.gambar ?? []).length > 0) return;
   const tersimpan = await gabungCacheMateri(
     opsi.kelas,
@@ -635,6 +647,7 @@ export async function generateBagianModul(opsi: {
   gambar?: Part[];
   bagian: BagianNaskahModul;
   naskahKurikulum?: string;
+  signal?: AbortSignal;
 }): Promise<ModulTutor> {
   const namaDepan = namaDepanSiswa(opsi.nama);
   const gambar = opsi.gambar ?? [];
@@ -665,12 +678,17 @@ export async function generateBagianModul(opsi: {
       thinking: false,
       timeoutCobaMs: 70_000,
       googleSearch: true,
+      signal: opsi.signal,
     });
+    pastikanTeksGeminiUtuh(hasil.teks);
     const dataJson = bersihkanDanParseJson(hasil.teks);
     const dataAman = bentukModulTutor(opsi.nama, {
       ...dataJson,
       referensiUrl: hasil.referensi.join("\n"),
     });
+    if (!naskahMateriSiap(dataAman.curriculum_view)) {
+      throw new Error("Naskah kurikulum tidak utuh.");
+    }
     await simpanBagianCache(opsi, {
       curriculum_view: dataAman.curriculum_view,
       sketsaKartu: dataAman.sketsaKartu,
@@ -701,9 +719,14 @@ export async function generateBagianModul(opsi: {
       timeoutCobaMs: 25_000,
       timeoutMs: 60_000,
       googleSearch: false,
+      signal: opsi.signal,
     });
+    pastikanTeksGeminiUtuh(hasil.teks);
     const dataJson = bersihkanDanParseJson(hasil.teks);
     const dataAman = bentukModulTutor(opsi.nama, dataJson);
+    if (!naskahMateriSiap(dataAman.global_best_view)) {
+      throw new Error("Naskah global tidak utuh.");
+    }
     await simpanBagianCache(opsi, {
       global_best_view: dataAman.global_best_view,
     });
@@ -727,9 +750,14 @@ export async function generateBagianModul(opsi: {
     thinking: false,
     timeoutCobaMs: 40_000,
     googleSearch: false,
+    signal: opsi.signal,
   });
+  pastikanTeksGeminiUtuh(hasil.teks);
   const dataJson = bersihkanDanParseJson(hasil.teks);
   const dataAman = bentukModulTutor(opsi.nama, dataJson);
+  if (!naskahLatihanSiap(dataAman.pertanyaan)) {
+    throw new Error("Bank soal latihan tidak utuh.");
+  }
   await simpanBagianCache(opsi, {
     pertanyaan: dataAman.pertanyaan,
     kunciJawaban: dataAman.kunciJawaban.join(","),
@@ -745,6 +773,7 @@ export async function ambilAtauBuatBagianModul(opsi: {
   materi: string;
   gambar?: Part[];
   bagian: BagianNaskahModul;
+  signal?: AbortSignal;
 }): Promise<{ data: ModulTutor; dariCache: boolean; topicId: string }> {
   const gambar = opsi.gambar ?? [];
   const topicId = topicIdMateri(opsi.kelas, opsi.mapel, opsi.materi);
@@ -766,6 +795,7 @@ export async function ambilAtauBuatBagianModul(opsi: {
       ...opsi,
       gambar,
       naskahKurikulum: cache?.curriculum_view,
+      signal: opsi.signal,
     });
     if (gambar.length === 0) {
       const cacheSetelah = await getModule(opsi.kelas, opsi.mapel, opsi.materi);
@@ -824,6 +854,7 @@ export async function generateModuleFirstTime(opsi: {
   mapel: string;
   materi: string;
   gambar?: Part[];
+  signal?: AbortSignal;
 }): Promise<ModulTutor> {
   const namaDepan = namaDepanSiswa(opsi.nama);
   const gambar = opsi.gambar ?? [];
@@ -849,7 +880,9 @@ export async function generateModuleFirstTime(opsi: {
     thinking: false,
     timeoutCobaMs: 85_000,
     googleSearch: true,
+    signal: opsi.signal,
   });
+  pastikanTeksGeminiUtuh(hasil.teks);
   if (hasil.referensi.length) {
     console.info(
       `[materi] grounding ${hasil.referensi.length} tautan topic=${opsi.mapel}/${opsi.materi}`,
@@ -860,6 +893,13 @@ export async function generateModuleFirstTime(opsi: {
     ...dataJson,
     referensiUrl: hasil.referensi.join("\n"),
   });
+  if (
+    !naskahMateriSiap(dataAman.curriculum_view) &&
+    !naskahMateriSiap(dataAman.global_best_view)
+  ) {
+    throw new Error("Naskah modul tidak utuh.");
+  }
+  tolakJikaDibatalkan(opsi.signal);
 
   if (gambar.length === 0) {
     const tersimpan = await simpanCacheMateri(
@@ -886,6 +926,7 @@ export async function ambilAtauBuatModul(opsi: {
   mapel: string;
   materi: string;
   gambar?: Part[];
+  signal?: AbortSignal;
 }): Promise<{ data: ModulTutor; dariCache: boolean; topicId: string }> {
   const gambar = opsi.gambar ?? [];
   const topicId = topicIdMateri(opsi.kelas, opsi.mapel, opsi.materi);
