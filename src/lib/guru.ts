@@ -5,6 +5,7 @@ export type ProfilGuru = {
   kelamin: KelaminGuru;
   nama: string;
   peran: string;
+  gambar: string;
   sapaanContoh: string;
   nada: number;
   laju: number;
@@ -16,6 +17,7 @@ const GURU_PER_JENJANG: Record<JenjangGuru, Record<KelaminGuru, ProfilGuru>> = {
       kelamin: "wanita",
       nama: "Bu Sari",
       peran: "Guru SD yang sabar dan ceria",
+      gambar: "/guru/bu-sari.png",
       sapaanContoh:
         "Halo Nak, aku Bu Sari. Yuk kita belajar pelan-pelan, pasti kamu bisa.",
       nada: 1.15,
@@ -25,6 +27,7 @@ const GURU_PER_JENJANG: Record<JenjangGuru, Record<KelaminGuru, ProfilGuru>> = {
       kelamin: "pria",
       nama: "Pak Budi",
       peran: "Guru SD yang ramah dan semangat",
+      gambar: "/guru/pak-budi.png",
       sapaanContoh:
         "Halo Nak, aku Pak Budi. Ayo kita belajar bareng, pelan tapi mantap.",
       nada: 0.82,
@@ -36,6 +39,7 @@ const GURU_PER_JENJANG: Record<JenjangGuru, Record<KelaminGuru, ProfilGuru>> = {
       kelamin: "wanita",
       nama: "Bu Laila",
       peran: "Guru SMP yang tegas dan mendukung",
+      gambar: "/guru/bu-laila.png",
       sapaanContoh:
         "Hai, aku Bu Laila. Kita bahas materi ini langkah demi langkah ya.",
       nada: 1.08,
@@ -45,6 +49,7 @@ const GURU_PER_JENJANG: Record<JenjangGuru, Record<KelaminGuru, ProfilGuru>> = {
       kelamin: "pria",
       nama: "Pak Andra",
       peran: "Guru SMP yang santai dan jelas",
+      gambar: "/guru/pak-andra.png",
       sapaanContoh:
         "Hai, aku Pak Andra. Siap bahas materinya sampai kamu paham.",
       nada: 0.8,
@@ -56,6 +61,7 @@ const GURU_PER_JENJANG: Record<JenjangGuru, Record<KelaminGuru, ProfilGuru>> = {
       kelamin: "wanita",
       nama: "Bu Maya",
       peran: "Guru SMA yang analitis dan hangat",
+      gambar: "/guru/bu-maya.png",
       sapaanContoh:
         "Halo, aku Bu Maya. Kita bedah materinya dengan nalar yang rapi.",
       nada: 1.05,
@@ -65,6 +71,7 @@ const GURU_PER_JENJANG: Record<JenjangGuru, Record<KelaminGuru, ProfilGuru>> = {
       kelamin: "pria",
       nama: "Pak Dimas",
       peran: "Guru SMA yang runtut dan fokus",
+      gambar: "/guru/pak-dimas.png",
       sapaanContoh:
         "Halo, aku Pak Dimas. Kita susun pemahamannya sampai ke intinya.",
       nada: 0.78,

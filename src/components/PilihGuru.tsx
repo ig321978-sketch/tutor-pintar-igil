@@ -43,7 +43,7 @@ export default function PilihGuru({
           const aktif = nilai === guru.kelamin;
           return (
             <button
-              key={guru.kelamin}
+              key={guru.gambar}
               type="button"
               onClick={() => {
                 onGanti(guru.kelamin);
@@ -61,12 +61,8 @@ export default function PilihGuru({
             >
               {/* eslint-disable-next-line @next/next/no-img-element */}
               <img
-                src={
-                  guru.kelamin === "wanita"
-                    ? "/guru/guru-wanita.png"
-                    : "/guru/guru-pria.png"
-                }
-                alt=""
+                src={guru.gambar}
+                alt={guru.nama}
                 className="h-32 w-32 shrink-0 rounded-2xl object-cover"
               />
               <div className="min-w-0">
