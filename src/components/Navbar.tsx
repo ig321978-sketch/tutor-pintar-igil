@@ -28,7 +28,7 @@ export default function Navbar() {
       <nav className="flex w-full items-center justify-between gap-4 px-2 py-3">
         <Link
           href="/ruang-belajar"
-          className="igil-tombol shrink-0 rounded-xl border-2 border-[#1C01A5] px-2 py-1 text-xl font-extrabold tracking-tight text-[#1C01A5]"
+          className="igil-tanpa-tepi shrink-0 rounded-xl px-2 py-1 text-xl font-extrabold tracking-tight text-[#1C01A5]"
           onClick={() => setTerbuka(false)}
         >
           <span className="mr-1 text-[#F0AB00]">🎓</span>$IGIL

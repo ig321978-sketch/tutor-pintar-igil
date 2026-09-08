@@ -1823,7 +1823,7 @@ export default function TutorAI() {
             <button
               type="button"
               onClick={kembaliKeMenu}
-              className="mb-2 flex items-center gap-2 text-[#1C01A5] font-bold hover:text-[#F0AB00] transition-colors"
+              className="igil-tanpa-tepi mb-2 flex items-center gap-2 text-[#1C01A5] font-bold hover:text-[#F0AB00] transition-colors"
             >
               <ArrowLeft className="w-5 h-5" /> Ganti Materi
             </button>
