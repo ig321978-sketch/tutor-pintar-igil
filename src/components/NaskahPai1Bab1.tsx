@@ -7,6 +7,7 @@ import {
   TEKS_KARTU_HARAKAT,
   TEKS_KARTU_HIJAIYAH,
 } from "@/lib/naskah-resmi-pai-1-bab1";
+import LatihanSuaraHijaiyah from "@/components/LatihanSuaraHijaiyah";
 import { FATIHAH, HIJAIYAH_30 } from "@/lib/paket-lengkap-materi";
 
 const WARNA_HURUF = [
@@ -140,6 +141,7 @@ export default function NaskahPai1Bab1() {
             </article>
           ))}
         </div>
+        <LatihanSuaraHijaiyah />
       </KartuBingkai>
 
       <KartuBingkai>
