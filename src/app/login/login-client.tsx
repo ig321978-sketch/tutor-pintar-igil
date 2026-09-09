@@ -8,7 +8,8 @@ import { kelasKotak, kelasLabel, kelasTombolUtama } from "@/lib/tema";
 export default function LoginClient() {
   const router = useRouter();
   const params = useSearchParams();
-  const next = params.get("next") || "/admin";
+  const nextMentah = params.get("next") || "/tutor";
+  const next = nextMentah.startsWith("/") ? nextMentah : "/tutor";
   const [email, setEmail] = useState("");
   const [sandi, setSandi] = useState("");
   const [pesan, setPesan] = useState("");
@@ -33,12 +34,14 @@ export default function LoginClient() {
         setPesan(json.pesan || "Email atau kata sandi tidak valid.");
         return;
       }
-      if (next.startsWith("/admin") && !json.adalahAdmin) {
+      const tujuanAdmin =
+        next.startsWith("/admin") || next.startsWith("/studio-kreator");
+      if (tujuanAdmin && !json.adalahAdmin) {
         router.replace("/403");
         router.refresh();
         return;
       }
-      router.replace(next.startsWith("/") ? next : "/admin");
+      router.replace(next);
       router.refresh();
     } catch {
       setPesan("Tidak bisa menghubungi server. Coba lagi.");
@@ -50,7 +53,7 @@ export default function LoginClient() {
   return (
     <PageShell
       judul="Masuk"
-      subjudul="Masuk dengan akun yang dibuat di Supabase Auth. Dasbor Admin hanya untuk peran admin."
+      subjudul="Masuk dengan akun admin. Setelah masuk, Anda dapat membuka website dan Studio Kreator."
     >
       <form
         onSubmit={(e) => void kirim(e)}

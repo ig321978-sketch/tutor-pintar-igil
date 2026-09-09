@@ -12,40 +12,63 @@ function ruteAdmin(pathname: string): boolean {
   );
 }
 
-function ruteTerbukaSaatDitutup(pathname: string): boolean {
+function ruteMasuk(pathname: string): boolean {
   return (
     pathname === "/login" ||
     pathname.startsWith("/login/") ||
-    pathname === "/situs-ditutup" ||
     pathname.startsWith("/api/auth/")
   );
 }
 
+function ruteSitusDitutup(pathname: string): boolean {
+  return pathname === "/situs-ditutup" || pathname.startsWith("/situs-ditutup/");
+}
+
+function tanpaCache(response: NextResponse): NextResponse {
+  response.headers.set(
+    "Cache-Control",
+    "private, no-store, max-age=0, must-revalidate",
+  );
+  response.headers.set("CDN-Cache-Control", "no-store");
+  response.headers.set("Vercel-CDN-Cache-Control", "no-store");
+  response.headers.set("x-middleware-cache", "no-cache");
+  return response;
+}
+
 async function sesiAdmin(request: NextRequest) {
-  const awal = NextResponse.next({ request });
-  const { supabase, response } = supabaseAuthMiddleware(request, awal);
-  if (!supabase) {
-    return { admin: false, response, user: false };
+  const awal = tanpaCache(NextResponse.next({ request }));
+  const sesiMw = supabaseAuthMiddleware(request, awal);
+  if (!sesiMw.supabase) {
+    return { admin: false, response: sesiMw.response, user: false };
   }
   const {
     data: { user },
-  } = await supabase.auth.getUser();
+  } = await sesiMw.supabase.auth.getUser();
+  const response = tanpaCache(sesiMw.response);
   if (!user) {
     return { admin: false, response, user: false };
   }
-  const peran = await bacaPeranPengguna(supabase, user);
-  return { admin: adalahPeranAdmin(peran), response, user: true };
+  const peran = await bacaPeranPengguna(sesiMw.supabase, user);
+  return {
+    admin: adalahPeranAdmin(peran),
+    response,
+    user: true,
+  };
 }
 
 function tolakPublik(request: NextRequest) {
   const { pathname } = request.nextUrl;
   if (pathname.startsWith("/api/")) {
-    return NextResponse.json(
-      { berhasil: false, pesan: "Situs sementara ditutup." },
-      { status: 503 },
+    return tanpaCache(
+      NextResponse.json(
+        { berhasil: false, pesan: "Situs sementara ditutup." },
+        { status: 503 },
+      ),
     );
   }
-  return NextResponse.redirect(new URL("/situs-ditutup", request.url));
+  return tanpaCache(
+    NextResponse.redirect(new URL("/situs-ditutup", request.url)),
+  );
 }
 
 export async function middleware(request: NextRequest) {
@@ -53,11 +76,19 @@ export async function middleware(request: NextRequest) {
   const kunciPublik = situsHanyaAdmin();
 
   if (kunciPublik) {
-    if (ruteTerbukaSaatDitutup(pathname)) {
-      return NextResponse.next();
+    if (ruteMasuk(pathname)) {
+      return tanpaCache(NextResponse.next());
     }
     const sesi = await sesiAdmin(request);
-    if (sesi.admin) return sesi.response;
+    if (sesi.admin) {
+      if (ruteSitusDitutup(pathname)) {
+        return tanpaCache(NextResponse.redirect(new URL("/tutor", request.url)));
+      }
+      return sesi.response;
+    }
+    if (ruteSitusDitutup(pathname)) {
+      return tanpaCache(NextResponse.next());
+    }
     return tolakPublik(request);
   }
 
@@ -69,10 +100,10 @@ export async function middleware(request: NextRequest) {
   if (!sesi.user) {
     const login = new URL("/login", request.url);
     login.searchParams.set("next", pathname);
-    return NextResponse.redirect(login);
+    return tanpaCache(NextResponse.redirect(login));
   }
   if (!sesi.admin) {
-    return NextResponse.redirect(new URL("/403", request.url));
+    return tanpaCache(NextResponse.redirect(new URL("/403", request.url)));
   }
   return sesi.response;
 }

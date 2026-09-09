@@ -19,7 +19,10 @@ export function supabaseAuthMiddleware(
   const kredensial = kredensialPublik();
   if (!kredensial) return { supabase: null, response };
 
-  let outgoing = response;
+  const hasil: { supabase: SupabaseClient | null; response: NextResponse } = {
+    supabase: null,
+    response,
+  };
   const supabase = createServerClient(kredensial.url, kredensial.kunci, {
     cookies: {
       getAll() {
@@ -31,12 +34,19 @@ export function supabaseAuthMiddleware(
         cookiesToSet.forEach(({ name, value }) => {
           request.cookies.set(name, value);
         });
-        outgoing = NextResponse.next({ request });
+        const sebelumnya = hasil.response;
+        const outgoing = NextResponse.next({ request });
+        sebelumnya.headers.forEach((nilai, kunci) => {
+          if (kunci.toLowerCase() === "set-cookie") return;
+          outgoing.headers.set(kunci, nilai);
+        });
         cookiesToSet.forEach(({ name, value, options }) => {
           outgoing.cookies.set(name, value, options);
         });
+        hasil.response = outgoing;
       },
     },
   });
-  return { supabase, response: outgoing };
+  hasil.supabase = supabase;
+  return hasil;
 }

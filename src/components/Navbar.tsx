@@ -15,6 +15,12 @@ const MENU = [
   { href: "/ranking", label: "🏆 Ranking Nasional" },
 ] as const;
 
+const MENU_ADMIN = [
+  ...MENU,
+  { href: "/studio-kreator", label: "🛠️ Studio Kreator" },
+  { href: "/admin", label: "🛡️ Dasbor Admin" },
+] as const;
+
 function tautanAktif(pathname: string, href: string): boolean {
   return pathname === href || pathname.startsWith(`${href}/`);
 }
@@ -28,7 +34,7 @@ export default function Navbar() {
   if (pathname.startsWith("/simulasi-embed")) return null;
 
   const menu = adalahAdmin
-    ? [...MENU, { href: "/admin", label: "🛡️ Dasbor Admin" } as const]
+    ? MENU_ADMIN
     : situsHanyaAdmin()
       ? []
       : MENU;
@@ -36,7 +42,7 @@ export default function Navbar() {
   async function klikKeluar() {
     await keluar();
     setTerbuka(false);
-    router.push("/");
+    router.push(situsHanyaAdmin() ? "/login" : "/");
     router.refresh();
   }
 
@@ -44,7 +50,7 @@ export default function Navbar() {
     <header className="sticky top-0 z-40 border-b border-[#1C01A5]/10 bg-white">
       <nav className="flex w-full items-center justify-between gap-4 px-2 py-3">
         <Link
-          href="/ruang-belajar"
+          href={adalahAdmin || !situsHanyaAdmin() ? "/tutor" : "/login"}
           className="igil-tanpa-tepi shrink-0 rounded-xl px-2 py-1 text-xl font-extrabold tracking-tight text-[#1C01A5]"
           onClick={() => setTerbuka(false)}
         >

@@ -3,6 +3,16 @@ import PageShell from "@/components/PageShell";
 
 const PINTASAN = [
   {
+    href: "/tutor",
+    judul: "Website · AI Tutor",
+    isi: "Buka halaman belajar siswa untuk meninjau naskah dan alur tutor.",
+  },
+  {
+    href: "/ruang-belajar",
+    judul: "Website · Ruang Belajar",
+    isi: "Buka beranda ruang belajar seperti yang dilihat siswa.",
+  },
+  {
     href: "/studio-kreator",
     judul: "Studio Kreator",
     isi: "Sunting, kunci, atau hapus cache naskah materi dan latihan.",
