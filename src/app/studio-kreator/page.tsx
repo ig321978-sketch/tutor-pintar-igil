@@ -3,7 +3,7 @@
 import Link from "next/link";
 import { useEffect, useMemo, useState } from "react";
 import PageShell from "@/components/PageShell";
-import type { RingkasCacheMateri } from "@/lib/cache-materi-tutor";
+import type { RingkasCacheMateri } from "@/lib/jenis-cache-materi";
 import { formatWaktuCache } from "@/lib/studio-kreator";
 import { kelasKotak } from "@/lib/tema";
 

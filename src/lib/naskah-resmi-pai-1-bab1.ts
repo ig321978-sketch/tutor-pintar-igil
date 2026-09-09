@@ -1,4 +1,4 @@
-import type { IsiCacheMateri } from "@/lib/cache-materi-tutor";
+import type { IsiCacheMateri } from "@/lib/jenis-cache-materi";
 import { gabungNaskahDariEditor } from "@/lib/batas-naskah";
 import {
   FATIHAH,

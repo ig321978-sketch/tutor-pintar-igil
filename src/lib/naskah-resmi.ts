@@ -1,4 +1,4 @@
-import type { IsiCacheMateri } from "@/lib/cache-materi-tutor";
+import type { IsiCacheMateri } from "@/lib/jenis-cache-materi";
 import { kelasSatuSd } from "@/lib/infografis-kelas1";
 import { kunciMapelTutor, rapikanKunci } from "@/lib/kunci-siswa";
 import {

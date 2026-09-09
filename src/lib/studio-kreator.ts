@@ -1,4 +1,4 @@
-import type { IsiCacheMateri } from "@/lib/cache-materi-tutor";
+import type { IsiCacheMateri } from "@/lib/jenis-cache-materi";
 
 export function sebagaiTeksStudio(nilai: unknown, cadangan = ""): string {
   return typeof nilai === "string" ? nilai.trim() : cadangan;
