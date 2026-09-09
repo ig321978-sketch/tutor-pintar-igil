@@ -50,65 +50,62 @@ function IkonHarakat({
   warna: string;
 }) {
   return (
-    <svg
-      viewBox="0 0 120 150"
-      className="mx-auto h-32 w-28"
-      role="img"
-      aria-label={`Ikon harakat ${jenis}`}
-    >
-      <ellipse
-        cx="60"
-        cy="78"
-        rx="30"
-        ry="34"
-        fill="#ffffff"
-        stroke="#1C01A5"
-        strokeWidth="4"
-        strokeDasharray="7 6"
-      />
-      <text
-        x="60"
-        y="88"
-        textAnchor="middle"
-        fontSize="18"
-        fontWeight="800"
-        fill="#94A3B8"
-      >
-        huruf
-      </text>
-      {jenis === "fathah" ? (
-        <line
-          x1="38"
-          y1="32"
-          x2="90"
-          y2="14"
-          stroke={warna}
-          strokeWidth="10"
-          strokeLinecap="round"
-        />
-      ) : null}
-      {jenis === "kasrah" ? (
-        <line
-          x1="38"
-          y1="138"
-          x2="90"
-          y2="120"
-          stroke={warna}
-          strokeWidth="10"
-          strokeLinecap="round"
-        />
-      ) : null}
+    <div className="relative mx-auto h-36 w-28" role="img" aria-label={`Ikon harakat ${jenis}`}>
       {jenis === "dhammah" ? (
-        <path
-          d="M78 10c16 0 22 14 10 26c-8 8-20 4-22-8c2-12 14-18 26-14"
-          fill="none"
-          stroke={warna}
-          strokeWidth="10"
-          strokeLinecap="round"
-          strokeLinejoin="round"
-        />
+        <span
+          dir="rtl"
+          lang="ar"
+          className="font-arab pointer-events-none absolute left-1/2 top-1 z-10 -translate-x-1/2 text-4xl font-black leading-none sm:text-5xl"
+          style={{ color: warna }}
+        >
+          و
+        </span>
       ) : null}
-    </svg>
+      <svg viewBox="0 0 120 150" className="h-full w-full" aria-hidden>
+        <ellipse
+          cx="60"
+          cy="78"
+          rx="30"
+          ry="34"
+          fill="#ffffff"
+          stroke="#1C01A5"
+          strokeWidth="4"
+          strokeDasharray="7 6"
+        />
+        <text
+          x="60"
+          y="88"
+          textAnchor="middle"
+          fontSize="18"
+          fontWeight="800"
+          fill="#94A3B8"
+        >
+          huruf
+        </text>
+        {jenis === "fathah" ? (
+          <line
+            x1="38"
+            y1="32"
+            x2="90"
+            y2="14"
+            stroke={warna}
+            strokeWidth="10"
+            strokeLinecap="round"
+          />
+        ) : null}
+        {jenis === "kasrah" ? (
+          <line
+            x1="38"
+            y1="138"
+            x2="90"
+            y2="120"
+            stroke={warna}
+            strokeWidth="10"
+            strokeLinecap="round"
+          />
+        ) : null}
+      </svg>
+    </div>
   );
 }
 
