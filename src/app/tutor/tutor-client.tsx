@@ -1911,6 +1911,7 @@ export default function TutorAI() {
                       </div>
                     ) : null}
                     <PanelMateriModul
+                      mapel={judulMapelSesi}
                       materi={judulMateriSesi}
                       sapaan={hasilData?.sapaan ?? ""}
                       naskah={penjelasanAktif}

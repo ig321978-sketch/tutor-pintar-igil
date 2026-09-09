@@ -80,7 +80,7 @@ export async function GET(req: Request) {
       adaLatihan,
       dariCache: true,
       topicId: topicIdMateri(kelas, mapel, materi),
-      data: bentukModulTutor(nama, cache),
+      data: bentukModulTutor(nama, cache, { mapel, materi }),
     },
     {
       headers: {

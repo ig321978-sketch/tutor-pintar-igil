@@ -8,6 +8,10 @@ import {
   adalahNaskahInfografis,
   teksLisanInfografis,
 } from "@/lib/infografis-kelas1";
+import {
+  potongLengkap,
+  teksLisanDaftarLengkap,
+} from "@/lib/paket-lengkap-materi";
 import { ucapkanLatexUntukSuara } from "@/lib/latex-ke-teks";
 import {
   ucapkanHurufVariabelTerisolasi,
@@ -186,7 +190,8 @@ export function naskahTutorUntukSuara(
     );
     return [sapaanAman, lisan].filter(Boolean).join("\n\n");
   }
-  const kartu = pecahBlokKartu(penjelasan)
+  const { tubuh, lengkap } = potongLengkap(penjelasan);
+  const kartu = pecahBlokKartu(tubuh || penjelasan)
     .map((item) => {
       const tanpaKunci = buangBlokKunci(item);
       const isi = opsi?.buangSubjudulVisual
@@ -195,10 +200,13 @@ export function naskahTutorUntukSuara(
       return naskahLisan(isi, nama);
     })
     .filter(Boolean);
-  if (opsi?.tanpaSapaan) return kartu.join("\n\n");
+  const lisanLengkap = lengkap.length ? teksLisanDaftarLengkap(lengkap) : "";
+  if (opsi?.tanpaSapaan) {
+    return [...kartu, lisanLengkap].filter(Boolean).join("\n\n");
+  }
   const sapaanAman = naskahLisan(
     nama ? sapaanTutorRingkas(nama, sapaan) : sapaan,
     nama,
   );
-  return [sapaanAman, ...kartu].filter(Boolean).join("\n\n");
+  return [sapaanAman, ...kartu, lisanLengkap].filter(Boolean).join("\n\n");
 }

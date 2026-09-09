@@ -36,6 +36,10 @@ import {
 } from "@/lib/cache-materi-tutor";
 import { naskahGlobalSiap, naskahMateriSiap } from "@/lib/sudut-pandang";
 import {
+  instruksiPaketLengkap,
+  lengkapiNaskahMateri,
+} from "@/lib/paket-lengkap-materi";
+import {
   permintaanDibatalkan,
   teksNaskahUtuh,
   tolakJikaDibatalkan,
@@ -233,6 +237,7 @@ Isi: benda atau angka singkat
 Setiap baris = SATU subbab. Boleh Tengah: untuk konsep di tengah (sama banyak).
 ${misi}
 Panah lawan dipakai otomatis. Jangan tulis panah.
+Jika materi himpunan tetap (huruf, ayat, rukun, sila, doa), setelah baris infografis tulis blok LENGKAP berisi SEMUA anggotanya. DILARANG dst.
 Jika menyebut nama, HANYA ${namaDepan}.`;
 }
 
@@ -397,11 +402,13 @@ function instruksiPenjelasan(
   return `2. curriculum_view: perspektif Kurikulum Nasional. ${kepala}
 ${kerangka}
 ${alurUraianBuku(namaDepan, hitungan, kelas)}
+${instruksiPaketLengkap(mapel, materi)}
 Istilah, urutan subbab, dan kompetensi HARUS selaras buku teks resmi Kemendikbudristek agar siswa siap ujian sekolah. DILARANG analogi bebas yang mengganti istilah baku. Di uraian, sapa dengan 'kamu'. Jangan mengulang nama siswa.
 
 3. global_best_view: alat percepatan Mode Global. ${kepalaGlobal}
 JUMLAH KARTU, JUDUL SUBBAB, dan URUTAN SAMA PERSIS dengan curriculum_view. ISI WAJIB beda: trik/hack, bukan analogi ulang konsep.
 ${alurUraianGlobal(namaDepan, hitungan, kelas)}
+${instruksiPaketLengkap(mapel, materi)}
 Fakta tidak boleh menyalahi kurikulum. DILARANG menyebut Feynman, meta-metode, atau esai panjang. Bahasa ${kelas}, padat, siap pakai di soal.`;
 }
 
@@ -448,13 +455,24 @@ export function bentukModulTutor(
     referensiUrl?: unknown;
     referensi_url?: unknown;
   },
+  konteks?: { mapel?: string; materi?: string },
 ): ModulTutor {
   const kurikulumMentah = sebagaiTeks(bagian.curriculum_view || bagian.penjelasan);
   const kurikulum = kurikulumMentah
-    ? amanNaskahModul(kurikulumMentah, "", nama)
+    ? lengkapiNaskahMateri(
+        amanNaskahModul(kurikulumMentah, "", nama),
+        konteks?.mapel,
+        konteks?.materi,
+      )
     : "";
   const globalMentah = sebagaiTeks(bagian.global_best_view);
-  const global = globalMentah ? amanNaskahModul(globalMentah, "", nama) : "";
+  const global = globalMentah
+    ? lengkapiNaskahMateri(
+        amanNaskahModul(globalMentah, "", nama),
+        konteks?.mapel,
+        konteks?.materi,
+      )
+    : "";
   const pertanyaanMentah = pulihkanParagraf(bagian.pertanyaan, "");
   const bank = pecahBankSoal(
     /sedang disusun/i.test(pertanyaanMentah) ? "" : pertanyaanMentah,
@@ -730,6 +748,7 @@ ${kelas1 ? "" : aturanMermaidDanLatex()}
 
 global_best_view: alat percepatan Mode Global. ${kepala}
 ${alurUraianGlobal(opsi.namaDepan, hitungan, opsi.kelas)}
+${instruksiPaketLengkap(opsi.mapel, opsi.materi)}
 Fakta tidak boleh menyalahi kurikulum. DILARANG menyebut Feynman atau esai panjang.
 `.trim();
 }
@@ -868,10 +887,14 @@ export async function generateBagianModul(opsi: {
     }
     pastikanTeksGeminiUtuh(hasil.teks);
     const dataJson = bersihkanDanParseJson(hasil.teks);
-    const dataAman = bentukModulTutor(opsi.nama, {
-      ...dataJson,
-      referensiUrl: hasil.referensi.join("\n"),
-    });
+    const dataAman = bentukModulTutor(
+      opsi.nama,
+      {
+        ...dataJson,
+        referensiUrl: hasil.referensi.join("\n"),
+      },
+      { mapel: opsi.mapel, materi: opsi.materi },
+    );
     if (!naskahMateriSiap(dataAman.curriculum_view)) {
       throw new Error("Naskah kurikulum tidak utuh.");
     }
@@ -912,7 +935,10 @@ export async function generateBagianModul(opsi: {
     });
     pastikanTeksGeminiUtuh(hasil.teks);
     const dataJson = bersihkanDanParseJson(hasil.teks);
-    const dataAman = bentukModulTutor(opsi.nama, dataJson);
+    const dataAman = bentukModulTutor(opsi.nama, dataJson, {
+      mapel: opsi.mapel,
+      materi: opsi.materi,
+    });
     if (!naskahGlobalSiap(dataAman.global_best_view)) {
       throw new Error("Naskah global tidak utuh.");
     }
@@ -946,7 +972,10 @@ export async function generateBagianModul(opsi: {
   });
   pastikanTeksGeminiUtuh(hasil.teks);
   const dataJson = bersihkanDanParseJson(hasil.teks);
-  const dataAman = bentukModulTutor(opsi.nama, dataJson);
+  const dataAman = bentukModulTutor(opsi.nama, dataJson, {
+    mapel: opsi.mapel,
+    materi: opsi.materi,
+  });
   if (!naskahLatihanSiap(dataAman.pertanyaan)) {
     throw new Error("Bank soal latihan tidak utuh.");
   }
@@ -976,7 +1005,10 @@ export async function ambilAtauBuatBagianModul(opsi: {
   if (cachePunyaBagian(cache, opsi.bagian, opsi.kelas) && cache) {
     console.info(`[materi] cache hit ${opsi.bagian} topic_id=${topicId}`);
     return {
-      data: bentukModulTutor(opsi.nama, cache),
+      data: bentukModulTutor(opsi.nama, cache, {
+        mapel: opsi.mapel,
+        materi: opsi.materi,
+      }),
       dariCache: true,
       topicId,
     };
@@ -993,7 +1025,10 @@ export async function ambilAtauBuatBagianModul(opsi: {
       const cacheSetelah = await getModule(opsi.kelas, opsi.mapel, opsi.materi);
       if (cacheSetelah && cachePunyaBagian(cacheSetelah, opsi.bagian, opsi.kelas)) {
         return {
-          data: bentukModulTutor(opsi.nama, cacheSetelah),
+          data: bentukModulTutor(opsi.nama, cacheSetelah, {
+            mapel: opsi.mapel,
+            materi: opsi.materi,
+          }),
           dariCache: true,
           topicId,
         };
@@ -1001,16 +1036,20 @@ export async function ambilAtauBuatBagianModul(opsi: {
     }
     console.info(`[materi] generate ${opsi.bagian} topic_id=${topicId}`);
     const gabung = cache
-      ? bentukModulTutor(opsi.nama, {
-          ...cache,
-          ...data,
-          curriculum_view: data.curriculum_view || cache.curriculum_view,
-          global_best_view: data.global_best_view || cache.global_best_view,
-          pertanyaan: data.pertanyaan || cache.pertanyaan,
-          kunciJawaban: data.kunciJawaban.length
-            ? data.kunciJawaban.join(",")
-            : cache.kunciJawaban,
-        })
+      ? bentukModulTutor(
+          opsi.nama,
+          {
+            ...cache,
+            ...data,
+            curriculum_view: data.curriculum_view || cache.curriculum_view,
+            global_best_view: data.global_best_view || cache.global_best_view,
+            pertanyaan: data.pertanyaan || cache.pertanyaan,
+            kunciJawaban: data.kunciJawaban.length
+              ? data.kunciJawaban.join(",")
+              : cache.kunciJawaban,
+          },
+          { mapel: opsi.mapel, materi: opsi.materi },
+        )
       : data;
     return { data: gabung, dariCache: false, topicId };
   } catch (error) {
@@ -1022,7 +1061,10 @@ export async function ambilAtauBuatBagianModul(opsi: {
       );
       if (cachePunyaBagian(cacheSetelahGalat, opsi.bagian, opsi.kelas) && cacheSetelahGalat) {
         return {
-          data: bentukModulTutor(opsi.nama, cacheSetelahGalat),
+          data: bentukModulTutor(opsi.nama, cacheSetelahGalat, {
+            mapel: opsi.mapel,
+            materi: opsi.materi,
+          }),
           dariCache: true,
           topicId,
         };
@@ -1081,10 +1123,14 @@ export async function generateModuleFirstTime(opsi: {
     );
   }
   const dataJson = bersihkanDanParseJson(hasil.teks);
-  const dataAman = bentukModulTutor(opsi.nama, {
-    ...dataJson,
-    referensiUrl: hasil.referensi.join("\n"),
-  });
+  const dataAman = bentukModulTutor(
+    opsi.nama,
+    {
+      ...dataJson,
+      referensiUrl: hasil.referensi.join("\n"),
+    },
+    { mapel: opsi.mapel, materi: opsi.materi },
+  );
   if (
     !naskahMateriSiap(dataAman.curriculum_view) &&
     !naskahMateriSiap(dataAman.global_best_view)
@@ -1127,7 +1173,10 @@ export async function ambilAtauBuatModul(opsi: {
     if (cache) {
       console.info(`[materi] cache hit topic_id=${topicId}`);
       return {
-        data: bentukModulTutor(opsi.nama, cache),
+        data: bentukModulTutor(opsi.nama, cache, {
+        mapel: opsi.mapel,
+        materi: opsi.materi,
+      }),
         dariCache: true,
         topicId,
       };
@@ -1141,7 +1190,10 @@ export async function ambilAtauBuatModul(opsi: {
       if (cacheSetelah) {
         console.info(`[materi] pakai cache pertama topic_id=${topicId}`);
         return {
-          data: bentukModulTutor(opsi.nama, cacheSetelah),
+          data: bentukModulTutor(opsi.nama, cacheSetelah, {
+            mapel: opsi.mapel,
+            materi: opsi.materi,
+          }),
           dariCache: true,
           topicId,
         };
@@ -1155,7 +1207,10 @@ export async function ambilAtauBuatModul(opsi: {
       if (cacheSetelahGalat) {
         console.info(`[materi] cache setelah timeout topic_id=${topicId}`);
         return {
-          data: bentukModulTutor(opsi.nama, cacheSetelahGalat),
+          data: bentukModulTutor(opsi.nama, cacheSetelahGalat, {
+            mapel: opsi.mapel,
+            materi: opsi.materi,
+          }),
           dariCache: true,
           topicId,
         };

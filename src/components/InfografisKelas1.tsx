@@ -1,6 +1,7 @@
 "use client";
 
 import { BookOpen, School } from "lucide-react";
+import DaftarLengkapMateri from "@/components/DaftarLengkapMateri";
 import type { BarisInfografis, NaskahInfografis, SisiInfografis } from "@/lib/infografis-kelas1";
 
 const WARNA = [
@@ -82,6 +83,7 @@ function BarisPoster({ item, indeks }: { item: BarisInfografis; indeks: number }
 
 export default function InfografisKelas1({ data }: { data: NaskahInfografis }) {
   return (
+    <div className="space-y-5">
     <section className="overflow-hidden rounded-[2rem] border-4 border-[#1C01A5]/20 bg-[#FBF6EA] px-3 py-5 shadow-inner sm:px-5 sm:py-7">
       <header className="mb-6 flex items-center justify-center gap-3 text-center">
         <BookOpen className="hidden h-8 w-8 shrink-0 text-[#F0AB00] sm:block" />
@@ -96,5 +98,7 @@ export default function InfografisKelas1({ data }: { data: NaskahInfografis }) {
         ))}
       </div>
     </section>
+    {data.lengkap?.length ? <DaftarLengkapMateri data={data.lengkap} /> : null}
+    </div>
   );
 }

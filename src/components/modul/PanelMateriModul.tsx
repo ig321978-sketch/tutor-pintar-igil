@@ -20,6 +20,7 @@ function pecahReferensiUrl(nilai?: string): string[] {
 }
 
 function PanelMateriModul({
+  mapel = "",
   materi,
   sapaan,
   naskah,
@@ -31,6 +32,7 @@ function PanelMateriModul({
   referensiUrl,
   memuat,
 }: {
+  mapel?: string;
   materi: string;
   sapaan: string;
   naskah: string;
@@ -121,6 +123,8 @@ function PanelMateriModul({
         <div key={sudutPandang} className="border-t border-[#1C01A5]/10 pt-5">
           <ModuleRenderer
             konten={naskah}
+            mapel={mapel}
+            materi={materi}
             className="mt-1"
             gambarSisipan={gambarSisipan}
             doodleMemuat={doodleMemuat}
@@ -158,6 +162,7 @@ function PanelMateriModul({
 }
 
 export default memo(PanelMateriModul, (sebelum, sekarang) => (
+  sebelum.mapel === sekarang.mapel &&
   sebelum.materi === sekarang.materi &&
   sebelum.sapaan === sekarang.sapaan &&
   sebelum.naskah === sekarang.naskah &&

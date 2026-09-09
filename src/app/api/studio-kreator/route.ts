@@ -53,7 +53,7 @@ export async function POST(req: Request) {
     body.data && typeof body.data === "object"
       ? (body.data as Record<string, unknown>)
       : body;
-  const dariModul = keIsiCache(bentukModulTutor(nama, mentah));
+  const dariModul = keIsiCache(bentukModulTutor(nama, mentah, { mapel, materi }));
   const isiManual = isiDariBadanStudio(mentah);
   const isi = {
     curriculum_view: dariModul.curriculum_view || isiManual.curriculum_view,

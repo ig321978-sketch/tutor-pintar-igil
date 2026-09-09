@@ -22,7 +22,12 @@ import {
 import RumusKatex from "@/components/RumusKatex";
 import GambarDoodle, { type GambarSisipan } from "@/components/GambarDoodle";
 import InfografisKelas1 from "@/components/InfografisKelas1";
+import DaftarLengkapMateri from "@/components/DaftarLengkapMateri";
 import { parseInfografisKelas1 } from "@/lib/infografis-kelas1";
+import {
+  lengkapiNaskahMateri,
+  potongLengkap,
+} from "@/lib/paket-lengkap-materi";
 import { Loader2 } from "lucide-react";
 
 let mermaidSiap = false;
@@ -312,19 +317,28 @@ function ModuleRenderer({
   padat = false,
   gambarSisipan,
   doodleMemuat = false,
+  mapel = "",
+  materi = "",
 }: {
   konten: string;
   className?: string;
   padat?: boolean;
   gambarSisipan?: GambarSisipan[];
   doodleMemuat?: boolean;
+  mapel?: string;
+  materi?: string;
 }) {
   const rapat =
     padat || /\bprose-p:my-0\b/.test(className);
-  const infografis = useMemo(() => parseInfografisKelas1(konten), [konten]);
+  const naskah = useMemo(
+    () => lengkapiNaskahMateri(konten, mapel, materi),
+    [konten, mapel, materi],
+  );
+  const infografis = useMemo(() => parseInfografisKelas1(naskah), [naskah]);
+  const potong = useMemo(() => potongLengkap(naskah), [naskah]);
   const blok = useMemo(
-    () => (infografis ? [] : pecahBlokNaskahModul(konten)),
-    [konten, infografis],
+    () => (infografis ? [] : pecahBlokNaskahModul(potong.tubuh || naskah)),
+    [naskah, infografis, potong.tubuh],
   );
   if (infografis) {
     return (
@@ -333,7 +347,7 @@ function ModuleRenderer({
       </div>
     );
   }
-  if (blok.length === 0) return null;
+  if (blok.length === 0 && potong.lengkap.length === 0) return null;
 
   let indeksJudul = 0;
 
@@ -372,6 +386,11 @@ function ModuleRenderer({
           </div>
         );
       })}
+      {potong.lengkap.length > 0 ? (
+        <div className="mt-5">
+          <DaftarLengkapMateri data={potong.lengkap} />
+        </div>
+      ) : null}
     </div>
   );
 }

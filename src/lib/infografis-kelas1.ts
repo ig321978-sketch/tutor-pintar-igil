@@ -1,3 +1,9 @@
+import {
+  potongLengkap,
+  teksLisanDaftarLengkap,
+  type DaftarLengkapTampil,
+} from "@/lib/paket-lengkap-materi";
+
 export type SisiInfografis = {
   nama: string;
   artinya: string;
@@ -15,6 +21,7 @@ export type BarisInfografis = {
 export type NaskahInfografis = {
   judul: string;
   baris: BarisInfografis[];
+  lengkap?: DaftarLengkapTampil[];
 };
 
 export function kelasSatuSd(kelas: string): boolean {
@@ -38,8 +45,10 @@ function rapikan(nilai: string): string {
 }
 
 export function parseInfografisKelas1(teks: string): NaskahInfografis | null {
-  if (!adalahNaskahInfografis(teks)) return null;
-  const bersih = teks.replace(/^\uFEFF/, "").trim();
+  const { tubuh, lengkap } = potongLengkap(teks);
+  const sumber = tubuh || teks;
+  if (!adalahNaskahInfografis(sumber)) return null;
+  const bersih = sumber.replace(/^\uFEFF/, "").trim();
   const tanpaKepala = bersih.replace(/^INFOGRAFIS\s*/i, "").trim();
   const cocokJudul = /^Judul:\s*(.+)$/im.exec(tanpaKepala);
   const judul = rapikan(cocokJudul?.[1] ?? "");
@@ -98,6 +107,7 @@ export function parseInfografisKelas1(teks: string): NaskahInfografis | null {
   return {
     judul: judul || baris[0]?.judul || "Belajar bersama",
     baris,
+    lengkap: lengkap.length > 0 ? lengkap : undefined,
   };
 }
 
@@ -114,5 +124,8 @@ export function teksLisanInfografis(teks: string): string {
       if (kotak.isi) bagian.push(kotak.isi);
     }
   }
-  return bagian.filter(Boolean).join(" ");
+  const lisanLengkap = data.lengkap?.length
+    ? teksLisanDaftarLengkap(data.lengkap)
+    : "";
+  return [...bagian, lisanLengkap].filter(Boolean).join(" ");
 }
