@@ -120,7 +120,7 @@ export default function NaskahPai1Bab1() {
         <h4 className="text-center text-lg font-black tracking-wide text-[#1C01A5] sm:text-xl">
           A. Mengenal Huruf Hijaiyah
         </h4>
-        <p className="mt-4 text-center text-base font-semibold leading-relaxed text-slate-700">
+        <p className="mt-4 text-left text-base font-semibold leading-relaxed text-slate-700">
           {TEKS_KARTU_HIJAIYAH}
         </p>
         <p className="mt-5 text-center text-sm font-black uppercase tracking-wide text-[#1C01A5]/70">
