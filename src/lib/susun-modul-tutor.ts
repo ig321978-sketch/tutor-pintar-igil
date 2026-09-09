@@ -34,7 +34,7 @@ import {
   type IsiCacheMateri,
 } from "@/lib/cache-materi-tutor";
 import { naskahResmiJikaAda } from "@/lib/naskah-resmi";
-import { naskahKartuSdLayak } from "@/lib/naskah-kartu-sd";
+import { naskahKartuSdLayak, lengkapiVisualNaskahSd } from "@/lib/naskah-kartu-sd";
 import { naskahGlobalSiap, naskahMateriSiap } from "@/lib/sudut-pandang";
 import { instruksiPaketLengkap } from "@/lib/paket-lengkap-materi";
 import {
@@ -910,6 +910,15 @@ export async function generateBagianModul(opsi: {
     if (!naskahMateriSiap(dataAman.curriculum_view)) {
       throw new Error("Naskah kurikulum tidak utuh.");
     }
+    if (sd) {
+      dataAman = {
+        ...dataAman,
+        curriculum_view: lengkapiVisualNaskahSd(
+          dataAman.curriculum_view,
+          opsi.kelas,
+        ),
+      };
+    }
     if (sd && !naskahKartuSdLayak(dataAman.curriculum_view)) {
       console.warn("[materi] kartu SD tanpa visual, generate ulang");
       hasil = await panggilCepat();
@@ -923,6 +932,13 @@ export async function generateBagianModul(opsi: {
         },
         { mapel: opsi.mapel, materi: opsi.materi },
       );
+      dataAman = {
+        ...dataAman,
+        curriculum_view: lengkapiVisualNaskahSd(
+          dataAman.curriculum_view,
+          opsi.kelas,
+        ),
+      };
       if (!naskahMateriSiap(dataAman.curriculum_view) || !naskahKartuSdLayak(dataAman.curriculum_view)) {
         throw new Error("Naskah kartu pembahasan SD tidak utuh.");
       }
@@ -967,6 +983,15 @@ export async function generateBagianModul(opsi: {
     });
     if (!naskahGlobalSiap(dataAman.global_best_view)) {
       throw new Error("Naskah global tidak utuh.");
+    }
+    if (jenjangGuru(opsi.kelas) === "SD") {
+      dataAman = {
+        ...dataAman,
+        global_best_view: lengkapiVisualNaskahSd(
+          dataAman.global_best_view,
+          opsi.kelas,
+        ),
+      };
     }
     if (jenjangGuru(opsi.kelas) === "SD" && !naskahKartuSdLayak(dataAman.global_best_view)) {
       throw new Error("Naskah kartu pembahasan SD tidak utuh.");

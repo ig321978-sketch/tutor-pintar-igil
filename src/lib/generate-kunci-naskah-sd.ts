@@ -1,9 +1,11 @@
 import { daftarBabSd, type BabSd } from "@/lib/bab-buku-siswa";
 import {
   aturKunciNaskahMateri,
+  gabungCacheMateri,
   materiSedangTerkunci,
   topicIdMateri,
 } from "@/lib/cache-materi-tutor";
+import { lengkapiVisualNaskahSd } from "@/lib/naskah-kartu-sd";
 import { naskahResmiJikaAda } from "@/lib/naskah-resmi";
 import {
   cachePunyaBagian,
@@ -78,6 +80,16 @@ export async function generateDanKunciNaskahSd(opsi: {
     }
 
     if (sudahTerkunci) await kunciTopic(kelas, mapel, materi, false);
+
+    if (cache && (!kurOk || !globOk)) {
+      await gabungCacheMateri(kelas, mapel, materi, nama, {
+        curriculum_view: lengkapiVisualNaskahSd(cache.curriculum_view, kelas),
+        global_best_view: lengkapiVisualNaskahSd(cache.global_best_view, kelas),
+      });
+      cache = await getModule(kelas, mapel, materi);
+      kurOk = cachePunyaBagian(cache, "kurikulum", kelas);
+      globOk = cachePunyaBagian(cache, "global", kelas);
+    }
 
     if (!kurOk) {
       await generateBagianModul({

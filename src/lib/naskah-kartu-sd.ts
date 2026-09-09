@@ -7,6 +7,7 @@ import {
   parseInfografisKelas1,
   tampilkanBarisWebsite,
   adalahNaskahInfografis,
+  kelasSatuSd,
   type BarisInfografis,
 } from "@/lib/infografis-kelas1";
 import { pecahBlokKartu, judulDariTeks } from "@/lib/konsep-materi";
@@ -241,6 +242,60 @@ export function naskahKartuSdLayak(teks?: string): boolean {
   if (kartu.length < 2) return false;
   const visual = kartu.filter(kartuPunyaVisual);
   return visual.length >= Math.min(2, kartu.length);
+}
+
+function labelVisual(teks: string): string {
+  return teks.replace(/['"]/g, " ").replace(/\s+/g, " ").trim().slice(0, 28) || "konsep";
+}
+
+function visualCadanganKartu(kartu: KartuPembahasanSd, kelas1: boolean): string {
+  const judul = labelVisual(kartu.judul);
+  const isi = labelVisual(kartu.pengantar.split(/[.!?]/)[0] || kartu.judul);
+  if (kelas1) {
+    return `1. ${judul}
+Kiri: ${judul}
+Artinya: pahami
+Isi: ${isi}
+Kanan: Contoh
+Artinya: coba
+Isi: latihan singkat`;
+  }
+  return `\`\`\`mermaid
+flowchart LR
+A['${judul}'] --> B['contoh']
+B --> C['hasil']
+\`\`\``;
+}
+
+export function lengkapiVisualNaskahSd(naskah: string, kelas: string): string {
+  const mentah = (naskah ?? "").trim();
+  if (!mentah || naskahKartuSdLayak(mentah) || naskahTampilanPai1Bab1(mentah)) {
+    return mentah;
+  }
+  const kelas1 = kelasSatuSd(kelas);
+  if (/<<<BAGIAN\s+\d+/i.test(mentah)) {
+    const lengkap = mentah.replace(
+      /<<<BAGIAN\s+(\d+)\s*\|\s*([^>]+)>>>([\s\S]*?)<<<AKHIR BAGIAN\s+\1>>>/gi,
+      (utuh, nomor, judul, tubuh) => {
+        const kartu = kartuDariTubuh(String(judul).trim(), String(tubuh), Number(nomor) - 1);
+        if (kartuPunyaVisual(kartu)) return utuh;
+        return `<<<BAGIAN ${nomor} | ${String(judul).trim()}>>>\n${String(tubuh).trim()}\n${visualCadanganKartu(kartu, kelas1)}\n<<<AKHIR BAGIAN ${nomor}>>>`;
+      },
+    );
+    if (naskahKartuSdLayak(lengkap)) return lengkap;
+  }
+  const data = pecahKartuPembahasanSd(mentah);
+  if (data.kartu.length < 2) return mentah;
+  return data.kartu
+    .map((kartu, i) => {
+      const nomor = i + 1;
+      const visual = kartuPunyaVisual(kartu)
+        ? ""
+        : `\n${visualCadanganKartu(kartu, kelas1)}`;
+      const pengantar = kartu.pengantar ? `${kartu.pengantar}\n` : "";
+      return `<<<BAGIAN ${nomor} | ${kartu.kode}. ${kartu.judul}>>>\n${pengantar}${visual}\n<<<AKHIR BAGIAN ${nomor}>>>`;
+    })
+    .join("\n\n");
 }
 
 export function daftarPendekUntukGrid(item: string[]): boolean {
