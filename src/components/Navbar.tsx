@@ -5,6 +5,7 @@ import { usePathname, useRouter } from "next/navigation";
 import { useState } from "react";
 import { Menu, X } from "lucide-react";
 import { useUserRole } from "@/hooks/useUserRole";
+import { situsHanyaAdmin } from "@/lib/situs-hanya-admin";
 
 const MENU = [
   { href: "/tutor", label: "🤖 AI Tutor" },
@@ -28,7 +29,9 @@ export default function Navbar() {
 
   const menu = adalahAdmin
     ? [...MENU, { href: "/admin", label: "🛡️ Dasbor Admin" } as const]
-    : MENU;
+    : situsHanyaAdmin()
+      ? []
+      : MENU;
 
   async function klikKeluar() {
     await keluar();
