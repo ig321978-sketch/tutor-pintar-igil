@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import { useState } from "react";
+import EditorNaskahMateri from "@/components/EditorNaskahMateri";
 import PageShell from "@/components/PageShell";
 import type { DetailCacheMateri, IsiCacheMateri } from "@/lib/cache-materi-tutor";
 import { naskahLatihanSaja, kunciLatihanSaja } from "@/lib/kuis";
@@ -307,17 +308,15 @@ export default function StudioKreatorDetail({
           <p className="text-sm font-semibold text-slate-600">
             Naskah Kurikulum Sekolah, Trik Percepatan, dan sketsa doodle.
           </p>
-          <KolomTeks
+          <EditorNaskahMateri
             label="Kurikulum Sekolah"
             nilai={isi.curriculum_view}
-            tinggi="min-h-48"
             disabled={sibuk || terkunci}
             onChange={(nilai) => setIsi((sekarang) => ({ ...sekarang, curriculum_view: nilai }))}
           />
-          <KolomTeks
+          <EditorNaskahMateri
             label="Trik Percepatan (Mode Global)"
             nilai={isi.global_best_view}
-            tinggi="min-h-48"
             disabled={sibuk || terkunci}
             onChange={(nilai) => setIsi((sekarang) => ({ ...sekarang, global_best_view: nilai }))}
           />

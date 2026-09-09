@@ -24,7 +24,7 @@ function KotakSisi({
   warna: (typeof WARNA)[number];
 }) {
   return (
-    <div className={`min-w-0 flex-1 overflow-hidden rounded-2xl border-2 bg-white ${warna.tepi}`}>
+    <div className={`min-w-0 flex-1 rounded-2xl border-2 bg-white ${warna.tepi}`}>
       <p
         className={`px-3 py-2 text-center text-sm font-black tracking-wide text-white sm:text-base ${warna.kepala} ${adaHurufArab(sisi.nama) ? "font-arab" : "uppercase"}`}
         dir={adaHurufArab(sisi.nama) ? "rtl" : undefined}
@@ -52,6 +52,10 @@ function KotakSisi({
       ) : null}
     </div>
   );
+}
+
+function adalahJudulBab(judul: string): boolean {
+  return /^[A-Z]\.\s+\S/.test(judul.trim()) || /^LENGKAP:/i.test(judul.trim());
 }
 
 function BarisPoster({ item, indeks }: { item: BarisInfografis; indeks: number }) {
@@ -97,7 +101,7 @@ function BarisPoster({ item, indeks }: { item: BarisInfografis; indeks: number }
 export default function InfografisKelas1({ data }: { data: NaskahInfografis }) {
   return (
     <div className="space-y-5">
-    <section className="overflow-hidden rounded-[2rem] border-4 border-[#1C01A5]/20 bg-[#FBF6EA] px-3 py-5 shadow-inner sm:px-5 sm:py-7">
+    <section className="rounded-[2rem] border-4 border-[#1C01A5]/20 bg-[#FBF6EA] px-3 py-5 shadow-inner sm:px-5 sm:py-7">
       <header className="mb-6 flex items-center justify-center gap-3 text-center">
         <BookOpen className="hidden h-8 w-8 shrink-0 text-[#F0AB00] sm:block" />
         <h3
@@ -109,7 +113,18 @@ export default function InfografisKelas1({ data }: { data: NaskahInfografis }) {
       </header>
       <div className="space-y-5">
         {data.baris.map((item, indeks) => (
-          <BarisPoster key={`${item.nomor}-${item.judul}`} item={item} indeks={indeks} />
+          <div key={`${item.nomor}-${item.judul}`} className="space-y-3">
+            {adalahJudulBab(item.judul) ? (
+              <div className="flex items-center gap-2 pt-2">
+                <span className="h-px flex-1 bg-[#1C01A5]/30" />
+                <p className="rounded-full border-2 border-[#1C01A5] bg-white px-3 py-1 text-center text-xs font-black uppercase tracking-wide text-[#1C01A5]">
+                  Batas bagian · {item.judul}
+                </p>
+                <span className="h-px flex-1 bg-[#1C01A5]/30" />
+              </div>
+            ) : null}
+            <BarisPoster item={item} indeks={indeks} />
+          </div>
         ))}
       </div>
     </section>

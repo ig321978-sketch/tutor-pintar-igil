@@ -1,3 +1,4 @@
+import { buangPenandaBatasNaskah, adalahPenandaBatasNaskah } from "@/lib/batas-naskah";
 import {
   potongLengkap,
   teksLisanDaftarLengkap,
@@ -30,10 +31,10 @@ export function kelasSatuSd(kelas: string): boolean {
 }
 
 export function adalahNaskahInfografis(teks?: string): boolean {
-  const naskah = (teks ?? "").trim();
+  const naskah = buangPenandaBatasNaskah(teks).trim();
   if (naskah.length < 40) return false;
   if (!/^INFOGRAFIS\b/im.test(naskah)) return false;
-  return /^(?:\d{1,2})\.\s+\S+/m.test(naskah) && /^Kiri:\s+/im.test(naskah);
+  return /^(?:\d{1,3})\.\s+\S+/m.test(naskah) && /^Kiri:\s+/im.test(naskah);
 }
 
 function sisiKosong(): SisiInfografis {
@@ -45,19 +46,20 @@ function rapikan(nilai: string): string {
 }
 
 export function parseInfografisKelas1(teks: string): NaskahInfografis | null {
-  const { tubuh, lengkap } = potongLengkap(teks);
-  const sumber = tubuh || teks;
+  const tanpaPagar = buangPenandaBatasNaskah(teks);
+  const { tubuh, lengkap } = potongLengkap(tanpaPagar);
+  const sumber = tubuh || tanpaPagar;
   if (!adalahNaskahInfografis(sumber)) return null;
   const bersih = sumber.replace(/^\uFEFF/, "").trim();
   const tanpaKepala = bersih.replace(/^INFOGRAFIS\s*/i, "").trim();
   const cocokJudul = /^Judul:\s*(.+)$/im.exec(tanpaKepala);
   const judul = rapikan(cocokJudul?.[1] ?? "");
 
-  const potong = tanpaKepala.split(/^(?=\d{1,2}\.\s+)/m);
+  const potong = tanpaKepala.split(/^(?=\d{1,3}\.\s+)/m);
   const baris: BarisInfografis[] = [];
 
   for (const blok of potong) {
-    const kepala = /^(\d{1,2})\.\s+(.+)$/m.exec(blok.trim());
+    const kepala = /^(\d{1,3})\.\s+(.+)$/m.exec(blok.trim());
     if (!kepala) continue;
     const nomor = Number(kepala[1]);
     const judulBaris = rapikan(kepala[2].split("\n")[0] ?? "");
@@ -68,7 +70,7 @@ export function parseInfografisKelas1(teks: string): NaskahInfografis | null {
 
     for (const mentah of blok.split("\n").slice(1)) {
       const barisTeks = mentah.trim();
-      if (!barisTeks) continue;
+      if (!barisTeks || adalahPenandaBatasNaskah(barisTeks)) continue;
       const sisi = /^(Kiri|Kanan|Tengah):\s*(.*)$/i.exec(barisTeks);
       if (sisi) {
         aktif =
