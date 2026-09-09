@@ -42,7 +42,6 @@ import {
   naskahMateriSiap,
   type SudutPandangMateri,
 } from "@/lib/sudut-pandang";
-import { adalahNaskahInfografis, kelasSatuSd } from "@/lib/infografis-kelas1";
 import {
   bacaPerlambatVoice,
   lajuPutarDariPerlambat,
@@ -129,18 +128,10 @@ function bagianNaskahSiap(
 ): boolean {
   if (!modul) return false;
   if (bagian === "kurikulum") {
-    if (!naskahMateriSiap(modul.curriculum_view)) return false;
-    if (kelasSatuSd(kelasSiswa)) {
-      return adalahNaskahInfografis(modul.curriculum_view);
-    }
-    return true;
+    return naskahMateriSiap(modul.curriculum_view);
   }
   if (bagian === "global") {
-    if (!naskahGlobalSiap(modul.global_best_view)) return false;
-    if (kelasSatuSd(kelasSiswa)) {
-      return adalahNaskahInfografis(modul.global_best_view);
-    }
-    return true;
+    return naskahMateriSiap(modul.global_best_view);
   }
   return pecahBankSoal(modul.pertanyaan).pilihanGanda.length >= 4;
 }
@@ -1058,6 +1049,25 @@ export default function TutorAI() {
     if (naskahJalanRef.current.has(bagian)) return;
 
     const topicId = kunciMateriTutor(kelasKirim, mapelKirim, materiKirim);
+    if (modeInput === "teks") {
+      const dariServer = await intipModulTersimpan(
+        kelasKirim,
+        mapelKirim,
+        materiKirim,
+      );
+      if (dariServer && bagianNaskahSiap(dariServer, bagian, kelasKirim)) {
+        const gabung = terapkanBagianModul(
+          dariServer,
+          mapelKirim,
+          materiKirim,
+          kelasKirim,
+          bagian,
+        );
+        simpanModulLokal(topicId, gabung);
+        tetapkanStatusNaskah(bagian, "siap");
+        return;
+      }
+    }
     const lokal = bacaModulLokal<ModulTutor>(topicId);
     if (lokal && bagianNaskahSiap(lokal, bagian, kelasKirim)) {
       terapkanBagianModul(
@@ -1066,15 +1076,6 @@ export default function TutorAI() {
         materiKirim,
         kelasKirim,
         bagian,
-      );
-      void intipModulTersimpan(kelasKirim, mapelKirim, materiKirim).then(
-        (server) => {
-          if (!server || !bagianNaskahSiap(server, bagian, kelasKirim)) return;
-          const gabung = gabungModulTutor(hasilDataRef.current, server);
-          hasilDataRef.current = gabung;
-          setHasilData(gabung);
-          simpanModulLokal(topicId, gabung);
-        },
       );
       return;
     }

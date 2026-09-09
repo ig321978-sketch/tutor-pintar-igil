@@ -503,7 +503,7 @@ export async function simpanCacheMateri(
   const payload = gabungIsiCache(
     sudahAda,
     masuk,
-    Boolean(opsi.tulisUlangSetelahHapus),
+    false,
   );
   if (!isiCachePunyaNaskah(payload)) {
     console.warn("[cache-materi] naskah tidak utuh; tulis dilewati.");
@@ -818,7 +818,19 @@ export async function perbaruiCacheMateri(
     }
     if (!lewatTopic.data?.length) return null;
   }
-  return ambilDetailCacheMateri(kunci);
+  const detail = await ambilDetailCacheMateri(kunci);
+  if (detail) {
+    revalidateTag(tagCacheMateriTerkunci(detail.topicId), "max");
+    if (detail.kelas && detail.mapel && detail.materi) {
+      revalidateTag(
+        tagCacheMateriTerkunci(
+          topicIdMateri(detail.kelas, detail.mapel, detail.materi),
+        ),
+        "max",
+      );
+    }
+  }
+  return detail;
 }
 
 export async function hapusCacheMateri(kunci: string): Promise<boolean> {

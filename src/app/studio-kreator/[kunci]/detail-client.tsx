@@ -97,16 +97,40 @@ export default function StudioKreatorDetail({
     void aturKunciNaskah(true);
   }
 
+  async function muatNaskahTersimpan() {
+    const ulang = await fetch(jalurApi, { cache: "no-store" });
+    const detail = (await ulang.json()) as {
+      berhasil?: boolean;
+      data?: DetailCacheMateri;
+    };
+    if (detail.berhasil && detail.data) {
+      terapkan(detail.data);
+      return detail.data;
+    }
+    return null;
+  }
+
   async function generateDenganAi() {
     if (!meta) return;
-    const yakin = window.confirm(
-      "Generate dengan AI akan memanggil Gemini. Naskah yang sudah ada tidak ditimpa jika cache lengkap. Lanjutkan?",
-    );
-    if (!yakin) return;
     setAksi("generate");
     setPesan("");
     setGalat("");
     try {
+      const tersimpan = await muatNaskahTersimpan();
+      const naskahAda = Boolean(
+        tersimpan?.curriculum_view.trim() ||
+          tersimpan?.global_best_view.trim(),
+      );
+      if (naskahAda) {
+        setPesan(
+          "Menampilkan naskah yang sudah Anda simpan. Generate AI tidak menimpa suntingan.",
+        );
+        return;
+      }
+      const yakin = window.confirm(
+        "Belum ada naskah tersimpan. Generate dengan AI untuk mengisi modul kosong?",
+      );
+      if (!yakin) return;
       const res = await fetch("/api/modul", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
@@ -126,13 +150,8 @@ export default function StudioKreatorDetail({
         setGalat(json.pesan || "Gagal generate dengan AI.");
         return;
       }
-      const ulang = await fetch(jalurApi, { cache: "no-store" });
-      const detail = (await ulang.json()) as {
-        berhasil?: boolean;
-        data?: DetailCacheMateri;
-      };
-      if (detail.berhasil && detail.data) terapkan(detail.data);
-      setPesan("Generate AI selesai. Naskah dimuat ulang dari cache.");
+      await muatNaskahTersimpan();
+      setPesan("Generate AI selesai. Naskah dimuat dari cache yang tersimpan.");
     } catch {
       setGalat("Tidak bisa memanggil generate AI.");
     } finally {

@@ -1,6 +1,7 @@
 import { NextResponse } from "next/server";
 import type { Part } from "@google/genai";
 import {
+  ambilCacheMateriUntukSiswa,
   adalahGalatMateriTerkunci,
   materiSedangTerkunci,
   topicIdMateri,
@@ -8,8 +9,7 @@ import {
 import { responsMateriTerkunci } from "@/lib/respons-materi-terkunci";
 import { pesanGalatGemini } from "@/lib/klien-gemini";
 import { pecahBankSoal } from "@/lib/kuis";
-import { naskahGlobalSiap, naskahMateriSiap } from "@/lib/sudut-pandang";
-import { adalahNaskahInfografis, kelasSatuSd } from "@/lib/infografis-kelas1";
+import { naskahMateriSiap } from "@/lib/sudut-pandang";
 import {
   ambilAtauBuatModul,
   bentukModulTutor,
@@ -52,7 +52,9 @@ export async function GET(req: Request) {
     );
   }
   const terkunci = await materiSedangTerkunci(kelas, mapel, materi);
-  const cache = await getModule(kelas, mapel, materi);
+  const cache = terkunci
+    ? await ambilCacheMateriUntukSiswa(kelas, mapel, materi)
+    : await getModule(kelas, mapel, materi);
   const headerCache = terkunci
     ? {
         "Cache-Control":
@@ -61,12 +63,8 @@ export async function GET(req: Request) {
     : {
         "Cache-Control": "no-store, max-age=0",
       };
-  const adaKurikulum =
-    naskahMateriSiap(cache?.curriculum_view) &&
-    (!kelasSatuSd(kelas) || adalahNaskahInfografis(cache?.curriculum_view));
-  const adaGlobal =
-    naskahGlobalSiap(cache?.global_best_view) &&
-    (!kelasSatuSd(kelas) || adalahNaskahInfografis(cache?.global_best_view));
+  const adaKurikulum = naskahMateriSiap(cache?.curriculum_view);
+  const adaGlobal = naskahMateriSiap(cache?.global_best_view);
   const adaLatihan = pecahBankSoal(cache?.pertanyaan ?? "").pilihanGanda.length >= 4;
   if (!cache || (!adaKurikulum && !adaGlobal && !adaLatihan)) {
     return NextResponse.json(

@@ -28,7 +28,7 @@ import {
   sapaanTutorRingkas,
 } from "@/lib/nama-siswa";
 import {
-  ambilCacheMateriUntukSiswa,
+  ambilCacheMateri,
   gabungCacheMateri,
   GalatMateriTerkunci,
   materiSedangTerkunci,
@@ -613,14 +613,10 @@ export function cachePunyaBagian(
 ): boolean {
   if (!cache) return false;
   if (bagian === "kurikulum") {
-    if (!naskahMateriSiap(cache.curriculum_view)) return false;
-    if (kelasSatuSd(kelas)) return adalahNaskahInfografis(cache.curriculum_view);
-    return true;
+    return naskahMateriSiap(cache.curriculum_view);
   }
   if (bagian === "global") {
-    if (!naskahGlobalSiap(cache.global_best_view)) return false;
-    if (kelasSatuSd(kelas)) return adalahNaskahInfografis(cache.global_best_view);
-    return true;
+    return naskahMateriSiap(cache.global_best_view);
   }
   return naskahLatihanSiap(cache.pertanyaan);
 }
@@ -793,6 +789,25 @@ function pastikanTeksGeminiUtuh(teks: string): void {
   }
 }
 
+async function pakaiNaskahTersimpan(
+  opsi: { nama: string; kelas: string; mapel: string; materi: string },
+  cadangan: ModulTutor,
+): Promise<ModulTutor> {
+  const dariDb = await ambilCacheMateri(opsi.kelas, opsi.mapel, opsi.materi);
+  if (!dariDb) return cadangan;
+  return bentukModulTutor(
+    opsi.nama,
+    {
+      ...cadangan,
+      ...dariDb,
+      curriculum_view: dariDb.curriculum_view || cadangan.curriculum_view,
+      global_best_view: dariDb.global_best_view || cadangan.global_best_view,
+      pertanyaan: dariDb.pertanyaan || cadangan.pertanyaan,
+    },
+    { mapel: opsi.mapel, materi: opsi.materi },
+  );
+}
+
 async function simpanBagianCache(
   opsi: {
     nama: string;
@@ -832,6 +847,13 @@ export async function generateBagianModul(opsi: {
 }): Promise<ModulTutor> {
   const namaDepan = namaDepanSiswa(opsi.nama);
   const gambar = opsi.gambar ?? [];
+  const cacheAwal = await ambilCacheMateri(opsi.kelas, opsi.mapel, opsi.materi);
+  if (cachePunyaBagian(cacheAwal, opsi.bagian, opsi.kelas) && cacheAwal) {
+    return bentukModulTutor(opsi.nama, cacheAwal, {
+      mapel: opsi.mapel,
+      materi: opsi.materi,
+    });
+  }
 
   if (opsi.bagian === "kurikulum") {
     const sd = jenjangGuru(opsi.kelas) === "SD";
@@ -910,7 +932,7 @@ export async function generateBagianModul(opsi: {
       motivasi: dataAman.motivasi,
       referensiUrl: dataAman.referensiUrl,
     });
-    return dataAman;
+    return pakaiNaskahTersimpan(opsi, dataAman);
   }
 
   if (opsi.bagian === "global") {
@@ -950,7 +972,7 @@ export async function generateBagianModul(opsi: {
     await simpanBagianCache(opsi, {
       global_best_view: dataAman.global_best_view,
     });
-    return dataAman;
+    return pakaiNaskahTersimpan(opsi, dataAman);
   }
 
   const hasil = await hasilkanJsonGeminiLengkap({
@@ -986,7 +1008,7 @@ export async function generateBagianModul(opsi: {
     kunciJawaban: dataAman.kunciJawaban.join(","),
     motivasi: dataAman.motivasi,
   });
-  return dataAman;
+  return pakaiNaskahTersimpan(opsi, dataAman);
 }
 
 export async function ambilAtauBuatBagianModul(opsi: {
@@ -1041,18 +1063,18 @@ export async function ambilAtauBuatBagianModul(opsi: {
       }
     }
     console.info(`[materi] generate ${opsi.bagian} topic_id=${topicId}`);
-    const gabung = cache
+    const dariDb = await getModule(opsi.kelas, opsi.mapel, opsi.materi);
+    const andalan = dariDb ?? cache;
+    const gabung = andalan
       ? bentukModulTutor(
           opsi.nama,
           {
-            ...cache,
             ...data,
-            curriculum_view: data.curriculum_view || cache.curriculum_view,
-            global_best_view: data.global_best_view || cache.global_best_view,
-            pertanyaan: data.pertanyaan || cache.pertanyaan,
-            kunciJawaban: data.kunciJawaban.length
-              ? data.kunciJawaban.join(",")
-              : cache.kunciJawaban,
+            ...andalan,
+            curriculum_view: andalan.curriculum_view || data.curriculum_view,
+            global_best_view: andalan.global_best_view || data.global_best_view,
+            pertanyaan: andalan.pertanyaan || data.pertanyaan,
+            kunciJawaban: andalan.kunciJawaban || data.kunciJawaban.join(","),
           },
           { mapel: opsi.mapel, materi: opsi.materi },
         )
@@ -1085,7 +1107,7 @@ export async function getModule(
   mapel: string,
   materi: string,
 ): Promise<IsiCacheMateri | null> {
-  return ambilCacheMateriUntukSiswa(kelas, mapel, materi);
+  return ambilCacheMateri(kelas, mapel, materi);
 }
 
 export async function generateModuleFirstTime(opsi: {
@@ -1098,6 +1120,18 @@ export async function generateModuleFirstTime(opsi: {
 }): Promise<ModulTutor> {
   const namaDepan = namaDepanSiswa(opsi.nama);
   const gambar = opsi.gambar ?? [];
+  const sudahTersimpan = await ambilCacheMateri(opsi.kelas, opsi.mapel, opsi.materi);
+  if (
+    sudahTersimpan &&
+    naskahMateriSiap(
+      sudahTersimpan.curriculum_view || sudahTersimpan.global_best_view,
+    )
+  ) {
+    return bentukModulTutor(opsi.nama, sudahTersimpan, {
+      mapel: opsi.mapel,
+      materi: opsi.materi,
+    });
+  }
   const promptText = promptGenerasiModul({
     namaDepan,
     kelas: opsi.kelas,
