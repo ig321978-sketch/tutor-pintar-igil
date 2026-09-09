@@ -222,7 +222,7 @@ function alurKartuSd(
   const visual = kelas1
     ? `- Visual WAJIB infografis kotak (Kiri/Kanan, boleh Tengah) atau daftar LENGKAP. DILARANG mermaid.
 Format infografis di dalam kartu:
-1. NAMA BARIS
+1. NAMA KONSEP (bukan kata Kotak, Baris, atau Infografis)
 Kiri: NAMA KOTAK
 Artinya: 2-4 kata
 Isi: benda atau angka singkat

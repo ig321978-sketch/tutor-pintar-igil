@@ -63,6 +63,16 @@ function VisualBlok({ blok }: { blok: BlokNaskahModul }) {
   return <BlokTampil blok={blok} padat={false} />;
 }
 
+function judulBarisInfografis(judul: string, judulKartu: string): string {
+  const bersih = judul.trim();
+  if (!bersih) return "";
+  if (bersih.toLowerCase() === judulKartu.trim().toLowerCase()) return "";
+  if (/^(kotak|baris|infografis|poster|visual|gambar|diagram)$/i.test(bersih)) {
+    return "";
+  }
+  return bersih;
+}
+
 export default function NaskahKartuSd({
   konten,
   materi = "",
@@ -118,7 +128,7 @@ export default function NaskahKartuSd({
                     key={`${baris.nomor}-${baris.judul}-${i}`}
                     item={{
                       ...baris,
-                      judul: baris.judul === kartu.judul ? "" : baris.judul,
+                      judul: judulBarisInfografis(baris.judul, kartu.judul),
                     }}
                     indeks={indeks + i}
                   />
