@@ -21,6 +21,7 @@ export const TEKS_KARTU_FATIHAH =
 export const HARAKAT_PAI1_BAB1 = [
   {
     nama: "Fathah",
+    jenis: "fathah",
     lambang: "َ",
     uraian: 'Letaknya di atas huruf, bersuara "A".',
     contohArab: "بَ",
@@ -28,6 +29,7 @@ export const HARAKAT_PAI1_BAB1 = [
   },
   {
     nama: "Kasrah",
+    jenis: "kasrah",
     lambang: "ِ",
     uraian: 'Letaknya di bawah huruf, bersuara "I".',
     contohArab: "بِ",
@@ -35,6 +37,7 @@ export const HARAKAT_PAI1_BAB1 = [
   },
   {
     nama: "Dhammah",
+    jenis: "dhammah",
     lambang: "ُ",
     uraian: 'Letaknya di atas huruf berbentuk wau kecil, bersuara "U".',
     contohArab: "بُ",
@@ -98,17 +101,16 @@ function naskahKurikulum(): string {
       {
         nomor: 1,
         judul: "A. Mengenal Huruf Hijaiyah",
-        tubuh: TEKS_KARTU_HIJAIYAH,
+        tubuh: [
+          TEKS_KARTU_HIJAIYAH,
+          "",
+          formatBlokLengkap(
+            paketDari("hijaiyah-30", "30 Huruf Hijaiyah", "huruf", HIJAIYAH_30),
+          ),
+        ].join("\n"),
       },
       {
         nomor: 2,
-        judul: "30 Huruf Hijaiyah",
-        tubuh: formatBlokLengkap(
-          paketDari("hijaiyah-30", "30 Huruf Hijaiyah", "huruf", HIJAIYAH_30),
-        ),
-      },
-      {
-        nomor: 3,
         judul: "B. Mengenal Harakat",
         tubuh: [
           TEKS_KARTU_HARAKAT,
@@ -120,7 +122,7 @@ function naskahKurikulum(): string {
         ].join("\n"),
       },
       {
-        nomor: 4,
+        nomor: 3,
         judul: "C. Menghafal Surah Al-Fatihah",
         tubuh: [
           TEKS_KARTU_FATIHAH,

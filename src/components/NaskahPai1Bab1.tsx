@@ -21,9 +21,9 @@ const WARNA_HURUF = [
 ];
 
 const WARNA_HARAKAT = [
-  { kepala: "bg-[#1D4ED8]", tepi: "border-[#1D4ED8]", isi: "bg-[#EFF6FF]" },
-  { kepala: "bg-[#15803D]", tepi: "border-[#15803D]", isi: "bg-[#F0FDF4]" },
-  { kepala: "bg-[#7C3AED]", tepi: "border-[#7C3AED]", isi: "bg-[#F5F3FF]" },
+  { kepala: "bg-[#1D4ED8]", tepi: "border-[#1D4ED8]", isi: "bg-[#EFF6FF]", tinta: "#1D4ED8" },
+  { kepala: "bg-[#15803D]", tepi: "border-[#15803D]", isi: "bg-[#F0FDF4]", tinta: "#15803D" },
+  { kepala: "bg-[#7C3AED]", tepi: "border-[#7C3AED]", isi: "bg-[#F5F3FF]", tinta: "#7C3AED" },
 ];
 
 function KartuBingkai({
@@ -42,6 +42,76 @@ function KartuBingkai({
   );
 }
 
+function IkonHarakat({
+  jenis,
+  warna,
+}: {
+  jenis: (typeof HARAKAT_PAI1_BAB1)[number]["jenis"];
+  warna: string;
+}) {
+  return (
+    <svg
+      viewBox="0 0 120 150"
+      className="mx-auto h-32 w-28"
+      role="img"
+      aria-label={`Ikon harakat ${jenis}`}
+    >
+      <ellipse
+        cx="60"
+        cy="78"
+        rx="30"
+        ry="34"
+        fill="#ffffff"
+        stroke="#1C01A5"
+        strokeWidth="4"
+        strokeDasharray="7 6"
+      />
+      <text
+        x="60"
+        y="88"
+        textAnchor="middle"
+        fontSize="18"
+        fontWeight="800"
+        fill="#94A3B8"
+      >
+        huruf
+      </text>
+      {jenis === "fathah" ? (
+        <line
+          x1="38"
+          y1="32"
+          x2="90"
+          y2="14"
+          stroke={warna}
+          strokeWidth="10"
+          strokeLinecap="round"
+        />
+      ) : null}
+      {jenis === "kasrah" ? (
+        <line
+          x1="38"
+          y1="138"
+          x2="90"
+          y2="120"
+          stroke={warna}
+          strokeWidth="10"
+          strokeLinecap="round"
+        />
+      ) : null}
+      {jenis === "dhammah" ? (
+        <path
+          d="M78 10c16 0 22 14 10 26c-8 8-20 4-22-8c2-12 14-18 26-14"
+          fill="none"
+          stroke={warna}
+          strokeWidth="10"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+        />
+      ) : null}
+    </svg>
+  );
+}
+
 export default function NaskahPai1Bab1() {
   return (
     <div className="space-y-5">
@@ -56,13 +126,10 @@ export default function NaskahPai1Bab1() {
         <p className="mt-4 text-center text-base font-semibold leading-relaxed text-slate-700">
           {TEKS_KARTU_HIJAIYAH}
         </p>
-      </KartuBingkai>
-
-      <KartuBingkai>
-        <h4 className="text-center text-lg font-black tracking-wide text-[#1C01A5] sm:text-xl">
+        <p className="mt-5 text-center text-sm font-black uppercase tracking-wide text-[#1C01A5]/70">
           30 Huruf Hijaiyah
-        </h4>
-        <div className="mt-4 grid grid-cols-4 gap-2 sm:grid-cols-6">
+        </p>
+        <div className="mt-3 grid grid-cols-4 gap-2 sm:grid-cols-6">
           {HIJAIYAH_30.map((item, indeks) => (
             <article
               key={`${item.lambang}-${item.nama}`}
@@ -99,21 +166,21 @@ export default function NaskahPai1Bab1() {
                 className={`overflow-hidden rounded-2xl border-2 bg-white ${warna.tepi}`}
               >
                 <p className={`px-3 py-2 text-center text-sm font-black text-white ${warna.kepala}`}>
-                  {item.nama}{" "}
-                  <span dir="rtl" lang="ar" className="font-arab text-lg">
-                    ({item.lambang})
-                  </span>
+                  {item.nama}
                 </p>
-                <div className={`px-3 py-3 ${warna.isi}`}>
-                  <p className="text-center text-sm font-semibold text-slate-700">{item.uraian}</p>
+                <div className={`px-3 py-4 ${warna.isi}`}>
+                  <IkonHarakat jenis={item.jenis} warna={warna.tinta} />
+                  <p className="mt-2 text-center text-sm font-semibold text-slate-700">
+                    {item.uraian}
+                  </p>
                   <p
                     dir="rtl"
                     lang="ar"
-                    className="font-arab mt-3 text-center text-4xl font-black text-[#1C01A5]"
+                    className="font-arab mt-3 text-center text-5xl font-black leading-none text-[#1C01A5]"
                   >
                     {item.contohArab}
                   </p>
-                  <p className="mt-1 text-center text-sm font-extrabold text-slate-800">
+                  <p className="mt-2 text-center text-sm font-extrabold text-slate-800">
                     Contoh: {item.contohLatin}
                   </p>
                 </div>
