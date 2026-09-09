@@ -1,6 +1,7 @@
 import { NextResponse } from "next/server";
 import { aturKunciNaskahMateri } from "@/lib/cache-materi-tutor";
 import { kunciRuteStudio } from "@/lib/studio-kreator";
+import { responsJikaBukanAdmin } from "@/lib/supabase-auth";
 
 export const dynamic = "force-dynamic";
 export const revalidate = 0;
@@ -9,6 +10,8 @@ export async function PUT(
   req: Request,
   konteks: { params: Promise<{ kunci: string }> | { kunci: string } },
 ) {
+  const ditolak = await responsJikaBukanAdmin();
+  if (ditolak) return ditolak;
   const kunci = await kunciRuteStudio(konteks.params);
   if (!kunci) {
     return NextResponse.json(

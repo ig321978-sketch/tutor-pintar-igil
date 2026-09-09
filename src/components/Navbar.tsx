@@ -1,9 +1,10 @@
 "use client";
 
 import Link from "next/link";
-import { usePathname } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 import { useState } from "react";
 import { Menu, X } from "lucide-react";
+import { useUserRole } from "@/hooks/useUserRole";
 
 const MENU = [
   { href: "/tutor", label: "🤖 AI Tutor" },
@@ -19,9 +20,22 @@ function tautanAktif(pathname: string, href: string): boolean {
 
 export default function Navbar() {
   const pathname = usePathname();
+  const router = useRouter();
   const [terbuka, setTerbuka] = useState(false);
+  const { adalahAdmin, user, memuat, keluar } = useUserRole();
 
   if (pathname.startsWith("/simulasi-embed")) return null;
+
+  const menu = adalahAdmin
+    ? [...MENU, { href: "/admin", label: "🛡️ Dasbor Admin" } as const]
+    : MENU;
+
+  async function klikKeluar() {
+    await keluar();
+    setTerbuka(false);
+    router.push("/");
+    router.refresh();
+  }
 
   return (
     <header className="sticky top-0 z-40 border-b border-[#1C01A5]/10 bg-white">
@@ -35,7 +49,7 @@ export default function Navbar() {
         </Link>
 
         <div className="hidden items-center gap-1 lg:flex">
-          {MENU.map((item) => {
+          {menu.map((item) => {
             const aktif = tautanAktif(pathname, item.href);
             return (
               <Link
@@ -51,6 +65,22 @@ export default function Navbar() {
               </Link>
             );
           })}
+          {!memuat && user ? (
+            <button
+              type="button"
+              onClick={() => void klikKeluar()}
+              className="igil-tombol rounded-full border-[#1C01A5] px-3 py-2 text-sm font-bold text-[#1C01A5] hover:bg-[#F0AB00]/15"
+            >
+              Keluar
+            </button>
+          ) : !memuat ? (
+            <Link
+              href="/login"
+              className="igil-tombol rounded-full border-[#1C01A5] px-3 py-2 text-sm font-bold text-[#1C01A5] hover:bg-[#F0AB00]/15"
+            >
+              Masuk
+            </Link>
+          ) : null}
         </div>
 
         <button
@@ -65,7 +95,7 @@ export default function Navbar() {
 
       {terbuka ? (
         <div className="space-y-1 border-t border-[#1C01A5]/10 bg-white px-2 py-3 lg:hidden">
-          {MENU.map((item) => {
+          {menu.map((item) => {
             const aktif = tautanAktif(pathname, item.href);
             return (
               <Link
@@ -82,6 +112,23 @@ export default function Navbar() {
               </Link>
             );
           })}
+          {!memuat && user ? (
+            <button
+              type="button"
+              onClick={() => void klikKeluar()}
+              className="igil-tombol block w-full rounded-xl border-[#1C01A5] px-3 py-2 text-left text-sm font-bold text-[#1C01A5]"
+            >
+              Keluar
+            </button>
+          ) : !memuat ? (
+            <Link
+              href="/login"
+              onClick={() => setTerbuka(false)}
+              className="igil-tombol block rounded-xl border-[#1C01A5] px-3 py-2 text-sm font-bold text-[#1C01A5]"
+            >
+              Masuk
+            </Link>
+          ) : null}
         </div>
       ) : null}
     </header>

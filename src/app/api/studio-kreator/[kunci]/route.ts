@@ -7,12 +7,15 @@ import {
   perbaruiSuntinganAdmin,
 } from "@/lib/cache-materi-tutor";
 import { isiDariBadanStudio, kunciRuteStudio } from "@/lib/studio-kreator";
+import { responsJikaBukanAdmin } from "@/lib/supabase-auth";
 import { responsMateriTerkunci } from "@/lib/respons-materi-terkunci";
 
 export async function GET(
   _req: Request,
   konteks: { params: Promise<{ kunci: string }> | { kunci: string } },
 ) {
+  const ditolak = await responsJikaBukanAdmin();
+  if (ditolak) return ditolak;
   const kunci = await kunciRuteStudio(konteks.params);
   if (!kunci) {
     return NextResponse.json(
@@ -34,6 +37,8 @@ export async function PATCH(
   req: Request,
   konteks: { params: Promise<{ kunci: string }> | { kunci: string } },
 ) {
+  const ditolak = await responsJikaBukanAdmin();
+  if (ditolak) return ditolak;
   const kunci = await kunciRuteStudio(konteks.params);
   if (!kunci) {
     return NextResponse.json(
@@ -87,6 +92,8 @@ export async function DELETE(
   _req: Request,
   konteks: { params: Promise<{ kunci: string }> | { kunci: string } },
 ) {
+  const ditolak = await responsJikaBukanAdmin();
+  if (ditolak) return ditolak;
   const kunci = await kunciRuteStudio(konteks.params);
   if (!kunci) {
     return NextResponse.json(

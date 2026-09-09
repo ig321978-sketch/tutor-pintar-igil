@@ -9,6 +9,7 @@ import {
   muatDaftarCacheAdmin,
 } from "@/lib/cache-materi-tutor";
 import { responsMateriTerkunci } from "@/lib/respons-materi-terkunci";
+import { responsJikaBukanAdmin } from "@/lib/supabase-auth";
 import { isiDariBadanStudio, sebagaiTeksStudio } from "@/lib/studio-kreator";
 import { bentukModulTutor, keIsiCache } from "@/lib/susun-modul-tutor";
 
@@ -20,6 +21,8 @@ const TANPA_CACHE = {
 };
 
 export async function GET() {
+  const ditolak = await responsJikaBukanAdmin();
+  if (ditolak) return ditolak;
   const hasil = await muatDaftarCacheAdmin();
   return NextResponse.json(
     {

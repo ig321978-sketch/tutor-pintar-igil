@@ -27,7 +27,9 @@ export default function StudioKreatorPage() {
         };
         if (!hidup) return;
         setPenyimpananSiap(json.penyimpananSiap !== false);
-        if (json.pesan && json.penyimpananSiap === false) {
+        if (res.status === 401) {
+          setPesan("Unauthorized. Masuk sebagai admin untuk melihat data.");
+        } else if (json.pesan && json.penyimpananSiap === false) {
           setPesan(json.pesan);
         } else if (!res.ok && !json.berhasil) {
           setPesan(json.pesan || "Gagal memuat daftar cache modul.");
