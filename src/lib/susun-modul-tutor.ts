@@ -916,6 +916,7 @@ export async function generateBagianModul(opsi: {
         curriculum_view: lengkapiVisualNaskahSd(
           dataAman.curriculum_view,
           opsi.kelas,
+          { mapel: opsi.mapel, materi: opsi.materi },
         ),
       };
     }
@@ -937,6 +938,7 @@ export async function generateBagianModul(opsi: {
         curriculum_view: lengkapiVisualNaskahSd(
           dataAman.curriculum_view,
           opsi.kelas,
+          { mapel: opsi.mapel, materi: opsi.materi },
         ),
       };
       if (!naskahMateriSiap(dataAman.curriculum_view) || !naskahKartuSdLayak(dataAman.curriculum_view)) {
@@ -981,17 +983,18 @@ export async function generateBagianModul(opsi: {
       mapel: opsi.mapel,
       materi: opsi.materi,
     });
-    if (!naskahGlobalSiap(dataAman.global_best_view)) {
-      throw new Error("Naskah global tidak utuh.");
-    }
     if (jenjangGuru(opsi.kelas) === "SD") {
       dataAman = {
         ...dataAman,
         global_best_view: lengkapiVisualNaskahSd(
           dataAman.global_best_view,
           opsi.kelas,
+          { mapel: opsi.mapel, materi: opsi.materi, global: true },
         ),
       };
+    }
+    if (!naskahGlobalSiap(dataAman.global_best_view)) {
+      throw new Error("Naskah global tidak utuh.");
     }
     if (jenjangGuru(opsi.kelas) === "SD" && !naskahKartuSdLayak(dataAman.global_best_view)) {
       throw new Error("Naskah kartu pembahasan SD tidak utuh.");

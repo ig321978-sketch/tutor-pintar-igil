@@ -13,6 +13,7 @@ import {
 import { pecahBlokKartu, judulDariTeks } from "@/lib/konsep-materi";
 import { potongLengkap, type DaftarLengkapTampil } from "@/lib/paket-lengkap-materi";
 import { naskahTampilanPai1Bab1 } from "@/lib/naskah-resmi-pai-1-bab1";
+import { subbabBukuSiswa } from "@/lib/subbab-buku-siswa";
 
 export type KartuPembahasanSd = {
   kode: string;
@@ -248,14 +249,18 @@ function labelVisual(teks: string): string {
   return teks.replace(/['"]/g, " ").replace(/\s+/g, " ").trim().slice(0, 28) || "konsep";
 }
 
-function visualCadanganKartu(kartu: KartuPembahasanSd, kelas1: boolean): string {
+function visualCadanganKartu(
+  kartu: KartuPembahasanSd,
+  kelas1: boolean,
+  global = false,
+): string {
   const judul = labelVisual(kartu.judul);
   const isi = labelVisual(kartu.pengantar.split(/[.!?]/)[0] || kartu.judul);
   if (kelas1) {
     return `1. ${judul}
 Kiri: ${judul}
 Artinya: pahami
-Isi: ${isi}
+Isi: ${global ? `Cara cepat: ${isi}` : isi}
 Kanan: Contoh
 Artinya: coba
 Isi: latihan singkat`;
@@ -267,35 +272,76 @@ B --> C['hasil']
 \`\`\``;
 }
 
-export function lengkapiVisualNaskahSd(naskah: string, kelas: string): string {
+function bungkusKartuSd(
+  kartu: KartuPembahasanSd[],
+  kelas1: boolean,
+  global: boolean,
+): string {
+  return kartu
+    .map((item, i) => {
+      const nomor = i + 1;
+      const visual = kartuPunyaVisual(item)
+        ? ""
+        : `\n${visualCadanganKartu(item, kelas1, global)}`;
+      let pengantar = item.pengantar.trim();
+      if (global && pengantar && !pengantar.includes("Cara cepat:")) {
+        pengantar = `Cara cepat: ${pengantar}`;
+      } else if (global && !pengantar) {
+        pengantar = `Cara cepat: pahami ${item.judul}.`;
+      }
+      return `<<<BAGIAN ${nomor} | ${item.kode}. ${item.judul}>>>\n${pengantar}\n${visual}\n<<<AKHIR BAGIAN ${nomor}>>>`;
+    })
+    .join("\n\n");
+}
+
+export function lengkapiVisualNaskahSd(
+  naskah: string,
+  kelas: string,
+  opsi: { mapel?: string; materi?: string; global?: boolean } = {},
+): string {
   const mentah = (naskah ?? "").trim();
-  if (!mentah || naskahKartuSdLayak(mentah) || naskahTampilanPai1Bab1(mentah)) {
+  if (!mentah || naskahTampilanPai1Bab1(mentah)) return mentah;
+  const kelas1 = kelasSatuSd(kelas);
+  const global = Boolean(opsi.global);
+  if (!global && naskahKartuSdLayak(mentah)) return mentah;
+  if (global && naskahKartuSdLayak(mentah) && mentah.includes("Cara cepat:")) {
     return mentah;
   }
-  const kelas1 = kelasSatuSd(kelas);
+
   if (/<<<BAGIAN\s+\d+/i.test(mentah)) {
     const lengkap = mentah.replace(
       /<<<BAGIAN\s+(\d+)\s*\|\s*([^>]+)>>>([\s\S]*?)<<<AKHIR BAGIAN\s+\1>>>/gi,
       (utuh, nomor, judul, tubuh) => {
-        const kartu = kartuDariTubuh(String(judul).trim(), String(tubuh), Number(nomor) - 1);
-        if (kartuPunyaVisual(kartu)) return utuh;
-        return `<<<BAGIAN ${nomor} | ${String(judul).trim()}>>>\n${String(tubuh).trim()}\n${visualCadanganKartu(kartu, kelas1)}\n<<<AKHIR BAGIAN ${nomor}>>>`;
+        let isi = String(tubuh).trim();
+        const kartu = kartuDariTubuh(String(judul).trim(), isi, Number(nomor) - 1);
+        if (global && !isi.includes("Cara cepat:")) {
+          isi = `Cara cepat: ${kartu.pengantar || kartu.judul}.\n${isi}`;
+        }
+        if (kartuPunyaVisual(kartu)) {
+          return `<<<BAGIAN ${nomor} | ${String(judul).trim()}>>>\n${isi}\n<<<AKHIR BAGIAN ${nomor}>>>`;
+        }
+        return `<<<BAGIAN ${nomor} | ${String(judul).trim()}>>>\n${isi}\n${visualCadanganKartu(kartu, kelas1, global)}\n<<<AKHIR BAGIAN ${nomor}>>>`;
       },
     );
-    if (naskahKartuSdLayak(lengkap)) return lengkap;
+    if (naskahKartuSdLayak(lengkap) && (!global || lengkap.includes("Cara cepat:"))) {
+      return lengkap;
+    }
   }
-  const data = pecahKartuPembahasanSd(mentah);
-  if (data.kartu.length < 2) return mentah;
-  return data.kartu
-    .map((kartu, i) => {
-      const nomor = i + 1;
-      const visual = kartuPunyaVisual(kartu)
-        ? ""
-        : `\n${visualCadanganKartu(kartu, kelas1)}`;
-      const pengantar = kartu.pengantar ? `${kartu.pengantar}\n` : "";
-      return `<<<BAGIAN ${nomor} | ${kartu.kode}. ${kartu.judul}>>>\n${pengantar}${visual}\n<<<AKHIR BAGIAN ${nomor}>>>`;
-    })
-    .join("\n\n");
+
+  let data = pecahKartuPembahasanSd(mentah);
+  if (data.kartu.length < 2) {
+    const subbab = subbabBukuSiswa(kelas, opsi.mapel ?? "", opsi.materi ?? "");
+    const judulKartu =
+      subbab.length >= 2 ? subbab : ["Pahami konsep", "Contoh singkat"];
+    const paragraf = mentah.split(/\n{2,}/).map((item) => item.trim()).filter(Boolean);
+    data = {
+      judul: data.judul,
+      kartu: judulKartu.map((judul, i) =>
+        kartuDariTubuh(judul, paragraf[i] || paragraf[0] || mentah, i),
+      ),
+    };
+  }
+  return bungkusKartuSd(data.kartu, kelas1, global);
 }
 
 export function daftarPendekUntukGrid(item: string[]): boolean {

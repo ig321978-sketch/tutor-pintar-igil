@@ -83,8 +83,15 @@ export async function generateDanKunciNaskahSd(opsi: {
 
     if (cache && (!kurOk || !globOk)) {
       await gabungCacheMateri(kelas, mapel, materi, nama, {
-        curriculum_view: lengkapiVisualNaskahSd(cache.curriculum_view, kelas),
-        global_best_view: lengkapiVisualNaskahSd(cache.global_best_view, kelas),
+        curriculum_view: lengkapiVisualNaskahSd(cache.curriculum_view, kelas, {
+          mapel,
+          materi,
+        }),
+        global_best_view: lengkapiVisualNaskahSd(cache.global_best_view, kelas, {
+          mapel,
+          materi,
+          global: true,
+        }),
       });
       cache = await getModule(kelas, mapel, materi);
       kurOk = cachePunyaBagian(cache, "kurikulum", kelas);
