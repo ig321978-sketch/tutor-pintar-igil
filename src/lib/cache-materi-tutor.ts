@@ -11,6 +11,8 @@ import { namaDepanSiswa } from "@/lib/nama-siswa";
 import { naskahLatihanSaja, pecahBankSoal, kunciLatihanSaja } from "@/lib/kuis";
 import { buangTeksSampah } from "@/lib/validasi-naskah-ai";
 import { naskahBab1Utuh, naskahResmiJikaAda } from "@/lib/naskah-resmi";
+import { jenjangGuru } from "@/lib/guru";
+import { naskahKartuSdLayak } from "@/lib/naskah-kartu-sd";
 
 export const PESAN_MATERI_TERKUNCI =
   "Materi terkunci dan tidak dapat diubah";
@@ -230,17 +232,21 @@ function materiSetara(a: string, b: string): boolean {
 function naskahLamaAman(
   lama: IsiCacheMateri,
   payload: IsiCacheMateri,
+  kelas = "",
 ): boolean {
+  const sd = jenjangGuru(kelas) === "SD";
   if (
     lama.curriculum_view.trim() &&
     lama.curriculum_view !== payload.curriculum_view
   ) {
+    if (sd && !naskahKartuSdLayak(lama.curriculum_view)) return true;
     return false;
   }
   if (
     lama.global_best_view.trim() &&
     lama.global_best_view !== payload.global_best_view
   ) {
+    if (sd && !naskahKartuSdLayak(lama.global_best_view)) return true;
     return false;
   }
   return true;
@@ -857,7 +863,7 @@ export async function simpanCacheMateri(
     console.warn("[cache-materi] naskah tidak utuh; tulis dilewati.");
     return false;
   }
-  if (sudahAda && !naskahLamaAman(sudahAda, payload)) {
+  if (sudahAda && !naskahLamaAman(sudahAda, payload, kelas)) {
     console.warn("[cache-materi] naskah tersimpan dilindungi; tulis dilewati.");
     return true;
   }

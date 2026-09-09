@@ -34,6 +34,9 @@ yarn-error.log*
 .env*
 !.env.example
 
+# batch generate naskah SD
+scripts/naskah-sd-progress.json
+
 # vercel
 .vercel
 

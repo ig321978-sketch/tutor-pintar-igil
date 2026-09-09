@@ -1042,3 +1042,23 @@ export function terapkanBabBukuSiswa(
 
   return hasil;
 }
+
+export type BabSd = {
+  kelas: string;
+  mapel: string;
+  materi: string;
+};
+
+export function daftarBabSd(): BabSd[] {
+  const hasil: BabSd[] = [];
+  for (const kelas of ["1 SD", "2 SD", "3 SD", "4 SD", "5 SD", "6 SD"]) {
+    const mapelKelas = BAB_BUKU_SISWA[kelas];
+    if (!mapelKelas) continue;
+    for (const [mapel, bab] of Object.entries(mapelKelas)) {
+      for (const materi of bab) {
+        hasil.push({ kelas, mapel, materi });
+      }
+    }
+  }
+  return hasil;
+}

@@ -10,7 +10,8 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "eslint"
+    "lint": "eslint",
+    "naskah-sd": "node scripts/generate-kunci-naskah-sd.mjs"
   },
   "dependencies": {
     "@google/genai": "^2.20.0",
