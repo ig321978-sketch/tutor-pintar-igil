@@ -1,10 +1,13 @@
 import { NextResponse } from "next/server";
 import {
   ambilDetailCacheMateri,
+  adalahGalatMateriTerkunci,
   hapusCacheMateri,
+  materiTerkunciMenurutKunci,
   perbaruiCacheMateri,
 } from "@/lib/cache-materi-tutor";
 import { isiDariBadanStudio, kunciRuteStudio } from "@/lib/studio-kreator";
+import { responsMateriTerkunci } from "@/lib/respons-materi-terkunci";
 
 export async function GET(
   _req: Request,
@@ -49,6 +52,10 @@ export async function PATCH(
     );
   }
 
+  if (await materiTerkunciMenurutKunci(kunci)) {
+    return responsMateriTerkunci();
+  }
+
   const isi = isiDariBadanStudio(body);
   if (!isi.curriculum_view.trim() || !isi.global_best_view.trim()) {
     return NextResponse.json(
@@ -60,7 +67,13 @@ export async function PATCH(
     );
   }
 
-  const data = await perbaruiCacheMateri(kunci, isi);
+  let data;
+  try {
+    data = await perbaruiCacheMateri(kunci, isi);
+  } catch (error) {
+    if (adalahGalatMateriTerkunci(error)) return responsMateriTerkunci();
+    throw error;
+  }
   if (!data) {
     return NextResponse.json(
       { berhasil: false, pesan: "Gagal menyimpan perubahan ke cache modul." },
@@ -82,6 +95,10 @@ export async function DELETE(
     );
   }
 
+  if (await materiTerkunciMenurutKunci(kunci)) {
+    return responsMateriTerkunci();
+  }
+
   const ada = await ambilDetailCacheMateri(kunci);
   if (!ada) {
     return NextResponse.json(
@@ -89,7 +106,13 @@ export async function DELETE(
     );
   }
 
-  const terhapus = await hapusCacheMateri(kunci);
+  let terhapus = false;
+  try {
+    terhapus = await hapusCacheMateri(kunci);
+  } catch (error) {
+    if (adalahGalatMateriTerkunci(error)) return responsMateriTerkunci();
+    throw error;
+  }
   if (!terhapus) {
     return NextResponse.json(
       { berhasil: false, pesan: "Gagal menghapus cache modul di Supabase." },

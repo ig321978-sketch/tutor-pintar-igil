@@ -1,6 +1,11 @@
 import { NextResponse } from "next/server";
 import type { Part } from "@google/genai";
-import { topicIdMateri } from "@/lib/cache-materi-tutor";
+import {
+  adalahGalatMateriTerkunci,
+  materiSedangTerkunci,
+  topicIdMateri,
+} from "@/lib/cache-materi-tutor";
+import { responsMateriTerkunci } from "@/lib/respons-materi-terkunci";
 import { pesanGalatGemini } from "@/lib/klien-gemini";
 import { pecahBankSoal } from "@/lib/kuis";
 import { naskahGlobalSiap, naskahMateriSiap } from "@/lib/sudut-pandang";
@@ -46,7 +51,16 @@ export async function GET(req: Request) {
       { status: 400 },
     );
   }
+  const terkunci = await materiSedangTerkunci(kelas, mapel, materi);
   const cache = await getModule(kelas, mapel, materi);
+  const headerCache = terkunci
+    ? {
+        "Cache-Control":
+          "public, s-maxage=3600, stale-while-revalidate=86400",
+      }
+    : {
+        "Cache-Control": "no-store, max-age=0",
+      };
   const adaKurikulum =
     naskahMateriSiap(cache?.curriculum_view) &&
     (!kelasSatuSd(kelas) || adalahNaskahInfografis(cache?.curriculum_view));
@@ -63,11 +77,10 @@ export async function GET(req: Request) {
         adaGlobal: false,
         adaLatihan: false,
         topicId: topicIdMateri(kelas, mapel, materi),
+        isLocked: terkunci,
       },
       {
-        headers: {
-          "Cache-Control": "no-store, max-age=0",
-        },
+        headers: headerCache,
       },
     );
   }
@@ -79,13 +92,12 @@ export async function GET(req: Request) {
       adaGlobal,
       adaLatihan,
       dariCache: true,
+      isLocked: terkunci,
       topicId: topicIdMateri(kelas, mapel, materi),
       data: bentukModulTutor(nama, cache, { mapel, materi }),
     },
     {
-      headers: {
-        "Cache-Control": "no-store, max-age=0",
-      },
+      headers: headerCache,
     },
   );
 }
@@ -115,6 +127,10 @@ export async function POST(req: Request) {
       );
     }
 
+    if (await materiSedangTerkunci(kelas, mapel, materi)) {
+      return responsMateriTerkunci();
+    }
+
     const hasil = await ambilAtauBuatModul({
       nama,
       kelas,
@@ -131,6 +147,9 @@ export async function POST(req: Request) {
       data: hasil.data,
     });
   } catch (error: unknown) {
+    if (adalahGalatMateriTerkunci(error)) {
+      return responsMateriTerkunci();
+    }
     if (permintaanDibatalkan(error) || req.signal.aborted) {
       return NextResponse.json(
         { berhasil: false, pesan: "Permintaan dibatalkan." },

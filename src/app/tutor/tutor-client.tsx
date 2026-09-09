@@ -383,6 +383,7 @@ export default function TutorAI() {
   const [segmenSuara, setSegmenSuara] = useState<SegmenSuara>({ jenis: "sapaan" });
   const segmenSuaraRef = useRef<SegmenSuara>({ jenis: "sapaan" });
   const cacheSegmenRef = useRef<Map<string, CacheSegmenAudio>>(new Map());
+  const topikTerkunciRef = useRef<Set<string>>(new Set());
   const muatSegmenRef = useRef<Map<string, Promise<boolean>>>(new Map());
   const [segmenSelesai, setSegmenSelesai] = useState<string[]>([]);
   const [lapisanDesktop, setLapisanDesktop] = useState(false);
@@ -891,7 +892,12 @@ export default function TutorAI() {
     if (bagian === "latihan") {
       setJawabanKuis({});
     }
-    if (modeInput === "teks") {
+    if (
+      modeInput === "teks" &&
+      !topikTerkunciRef.current.has(
+        kunciMateriTutor(kelasKirim, mapelKirim, materiKirim),
+      )
+    ) {
       void fetch("/api/studio-kreator", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
@@ -921,14 +927,21 @@ export default function TutorAI() {
         mapel: mapelKirim,
         materi: materiKirim,
       });
+      const topicId = kunciMateriTutor(kelasKirim, mapelKirim, materiKirim);
       const peek = await fetch(`/api/modul?${intip.toString()}`, {
-        cache: "no-store",
+        cache: topikTerkunciRef.current.has(topicId)
+          ? "force-cache"
+          : "no-store",
       });
       const cacheJson = (await peek.json()) as {
         berhasil?: boolean;
         ada?: boolean;
+        isLocked?: boolean;
         data?: ModulTutor;
       };
+      if (cacheJson.isLocked) {
+        topikTerkunciRef.current.add(topicId);
+      }
       if (cacheJson.berhasil && cacheJson.ada && cacheJson.data) {
         return cacheJson.data;
       }
@@ -1138,7 +1151,7 @@ export default function TutorAI() {
         }
       }
 
-      setPesanGalat(PESAN_GAGAL_SUSUN_MATERI);
+      setPesanGalat(data.pesan || PESAN_GAGAL_SUSUN_MATERI);
       selesai("galat");
     } catch {
       if (modeInput === "teks") {

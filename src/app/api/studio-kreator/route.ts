@@ -1,9 +1,12 @@
 import { NextResponse } from "next/server";
 import {
+  adalahGalatMateriTerkunci,
   cacheModulSedangDihapus,
   gabungCacheMateri,
+  materiSedangTerkunci,
   muatDaftarCacheAdmin,
 } from "@/lib/cache-materi-tutor";
+import { responsMateriTerkunci } from "@/lib/respons-materi-terkunci";
 import { isiDariBadanStudio, sebagaiTeksStudio } from "@/lib/studio-kreator";
 import { bentukModulTutor, keIsiCache } from "@/lib/susun-modul-tutor";
 
@@ -75,6 +78,10 @@ export async function POST(req: Request) {
     );
   }
 
+  if (await materiSedangTerkunci(kelas, mapel, materi)) {
+    return responsMateriTerkunci();
+  }
+
   const sedangDihapus = await cacheModulSedangDihapus(kelas, mapel, materi);
   if (sedangDihapus) {
     return NextResponse.json(
@@ -88,7 +95,13 @@ export async function POST(req: Request) {
     );
   }
 
-  const tersimpan = await gabungCacheMateri(kelas, mapel, materi, nama, isi);
+  let tersimpan = false;
+  try {
+    tersimpan = await gabungCacheMateri(kelas, mapel, materi, nama, isi);
+  } catch (error) {
+    if (adalahGalatMateriTerkunci(error)) return responsMateriTerkunci();
+    throw error;
+  }
   if (!tersimpan) {
     return NextResponse.json(
       {

@@ -111,6 +111,15 @@ export default function StudioKreatorPage() {
                   <span className="rounded-full bg-[#1C01A5]/10 px-2 py-0.5 text-[#1C01A5]">
                     {item.isDraft ? "Draf" : "Terbit"}
                   </span>
+                  <span
+                    className={`rounded-full px-2 py-0.5 ${
+                      item.isLocked
+                        ? "bg-amber-100 text-amber-800"
+                        : "bg-emerald-50 text-emerald-700"
+                    }`}
+                  >
+                    {item.isLocked ? "🔒 Terkunci" : "🔓 Terbuka"}
+                  </span>
                   <span className="rounded-full bg-slate-100 px-2 py-0.5 text-slate-600">
                     {item.modelSumber || "model tidak tercatat"}
                   </span>

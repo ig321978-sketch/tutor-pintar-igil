@@ -3,6 +3,11 @@ import type { Part } from "@google/genai";
 import { askTutor } from "@/lib/ask-tutor";
 import { pesanGalatGemini } from "@/lib/klien-gemini";
 import { klaimInteraksiAi, statusKuota } from "@/lib/kuota-interaksi";
+import {
+  adalahGalatMateriTerkunci,
+  materiSedangTerkunci,
+} from "@/lib/cache-materi-tutor";
+import { responsMateriTerkunci } from "@/lib/respons-materi-terkunci";
 import { ambilAtauBuatBagianModul } from "@/lib/susun-modul-tutor";
 import { permintaanDibatalkan } from "@/lib/validasi-naskah-ai";
 
@@ -124,6 +129,10 @@ export async function POST(req: Request) {
       );
     }
 
+    if (await materiSedangTerkunci(kelas, mapel, materi)) {
+      return responsMateriTerkunci();
+    }
+
     const hasil = await ambilAtauBuatBagianModul({
       nama,
       kelas,
@@ -142,6 +151,9 @@ export async function POST(req: Request) {
       data: hasil.data,
     });
   } catch (error: unknown) {
+    if (adalahGalatMateriTerkunci(error)) {
+      return responsMateriTerkunci();
+    }
     if (permintaanDibatalkan(error) || req.signal.aborted) {
       return NextResponse.json(
         { berhasil: false, pesan: "Permintaan dibatalkan." },

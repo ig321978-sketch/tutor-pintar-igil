@@ -52,6 +52,7 @@ alter table cache_materi_tutor add column if not exists is_draft boolean not nul
 alter table cache_materi_tutor add column if not exists model_sumber text;
 alter table cache_materi_tutor add column if not exists audio_siap boolean not null default false;
 alter table cache_materi_tutor add column if not exists referensi_url text;
+alter table cache_materi_tutor add column if not exists is_locked boolean not null default false;
 
 update cache_materi_tutor
 set topic_id = kunci

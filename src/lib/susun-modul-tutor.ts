@@ -28,8 +28,10 @@ import {
   sapaanTutorRingkas,
 } from "@/lib/nama-siswa";
 import {
-  ambilCacheMateri,
+  ambilCacheMateriUntukSiswa,
   gabungCacheMateri,
+  GalatMateriTerkunci,
+  materiSedangTerkunci,
   simpanCacheMateri,
   topicIdMateri,
   type IsiCacheMateri,
@@ -1014,6 +1016,10 @@ export async function ambilAtauBuatBagianModul(opsi: {
     };
   }
 
+  if (await materiSedangTerkunci(opsi.kelas, opsi.mapel, opsi.materi)) {
+    throw new GalatMateriTerkunci();
+  }
+
   try {
     const data = await generateBagianModul({
       ...opsi,
@@ -1079,7 +1085,7 @@ export async function getModule(
   mapel: string,
   materi: string,
 ): Promise<IsiCacheMateri | null> {
-  return ambilCacheMateri(kelas, mapel, materi);
+  return ambilCacheMateriUntukSiswa(kelas, mapel, materi);
 }
 
 export async function generateModuleFirstTime(opsi: {
@@ -1181,6 +1187,10 @@ export async function ambilAtauBuatModul(opsi: {
         topicId,
       };
     }
+  }
+
+  if (await materiSedangTerkunci(opsi.kelas, opsi.mapel, opsi.materi)) {
+    throw new GalatMateriTerkunci();
   }
 
   try {
