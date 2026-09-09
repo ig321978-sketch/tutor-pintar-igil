@@ -25,7 +25,7 @@ function KartuItem({
       <div
         className={`flex flex-col items-center justify-center rounded-2xl border-2 px-2 py-3 ${warna}`}
       >
-        <p dir="rtl" lang="ar" className="text-3xl font-black leading-none text-[#1C01A5] sm:text-4xl">
+        <p dir="rtl" lang="ar" className="font-arab text-3xl font-black leading-none text-[#1C01A5] sm:text-4xl">
           {item.lambang}
         </p>
         <p className="mt-2 text-center text-xs font-extrabold uppercase tracking-wide text-slate-700">
@@ -44,10 +44,13 @@ function KartuItem({
           <p
             dir="rtl"
             lang="ar"
-            className="mt-2 text-right text-xl font-bold leading-relaxed text-[#1C01A5] sm:text-2xl"
+            className="font-arab mt-2 text-right text-xl font-bold leading-relaxed text-[#1C01A5] sm:text-2xl"
           >
             {item.lambang}
           </p>
+        ) : null}
+        {item.latin ? (
+          <p className="mt-2 text-sm font-extrabold text-slate-800">{item.latin}</p>
         ) : null}
         {item.artinya ? (
           <p className="mt-2 text-sm font-semibold text-slate-700">

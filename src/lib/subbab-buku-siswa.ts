@@ -5,6 +5,13 @@ const IPAS = "Ilmu Pengetahuan Alam dan Sosial (IPAS)";
 
 const SUBBAB_BUKU_SISWA: Record<string, Record<string, Record<string, string[]>>> = {
   "1 SD": {
+    [PAI]: {
+      "Bab 1: Aku Cinta Al-Qur’an": [
+        "A. Mengenal Huruf Hijaiyah",
+        "B. Mengenal Harakat",
+        "C. Menghafal Surah Al-Fatihah",
+      ],
+    },
     Matematika: {
       "Bab 1: Ayo Membilang sampai dengan 10": [
         "Membilang banyak benda sampai 10",

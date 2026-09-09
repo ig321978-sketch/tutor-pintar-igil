@@ -1,6 +1,7 @@
 export type ItemPaketLengkap = {
   lambang?: string;
   nama: string;
+  latin?: string;
   artinya?: string;
 };
 
@@ -18,7 +19,7 @@ export type DaftarLengkapTampil = {
   item: ItemPaketLengkap[];
 };
 
-const HIJAIYAH: ItemPaketLengkap[] = [
+export const HIJAIYAH: ItemPaketLengkap[] = [
   { lambang: "ا", nama: "Alif" },
   { lambang: "ب", nama: "Ba" },
   { lambang: "ت", nama: "Ta" },
@@ -46,43 +47,51 @@ const HIJAIYAH: ItemPaketLengkap[] = [
   { lambang: "ن", nama: "Nun" },
   { lambang: "و", nama: "Wau" },
   { lambang: "ه", nama: "Ha" },
+  { lambang: "ء", nama: "Hamzah" },
   { lambang: "ي", nama: "Ya" },
 ];
 
-const FATIHAH: ItemPaketLengkap[] = [
+export const FATIHAH: ItemPaketLengkap[] = [
   {
     lambang: "بِسْمِ اللَّهِ الرَّحْمَٰنِ الرَّحِيمِ",
     nama: "Ayat 1",
+    latin: "Bismillāhirraḥmānirraḥīm",
     artinya: "Dengan nama Allah Yang Maha Pengasih, Maha Penyayang.",
   },
   {
     lambang: "الْحَمْدُ لِلَّهِ رَبِّ الْعَالَمِينَ",
     nama: "Ayat 2",
+    latin: "Alḥamdulillāhi rabbil'ālamīn",
     artinya: "Segala puji bagi Allah, Tuhan semesta alam.",
   },
   {
     lambang: "الرَّحْمَٰنِ الرَّحِيمِ",
     nama: "Ayat 3",
+    latin: "Arraḥmānirraḥīm",
     artinya: "Yang Maha Pengasih, Maha Penyayang.",
   },
   {
     lambang: "مَالِكِ يَوْمِ الدِّينِ",
     nama: "Ayat 4",
+    latin: "Māliki yaumiddīn",
     artinya: "Pemilik hari pembalasan.",
   },
   {
     lambang: "إِيَّاكَ نَعْبُدُ وَإِيَّاكَ نَسْتَعِينُ",
     nama: "Ayat 5",
+    latin: "Iyyāka na'budu wa iyyāka nasta'īn",
     artinya: "Hanya kepada Engkau kami menyembah dan hanya kepada Engkau kami mohon pertolongan.",
   },
   {
     lambang: "اهْدِنَا الصِّرَاطَ الْمُسْتَقِيمَ",
     nama: "Ayat 6",
+    latin: "Ihdinaṣṣirāṭalmustaqīm",
     artinya: "Tunjukilah kami jalan yang lurus.",
   },
   {
     lambang: "صِرَاطَ الَّذِينَ أَنْعَمْتَ عَلَيْهِمْ غَيْرِ الْمَغْضُوبِ عَلَيْهِمْ وَلَا الضَّالِّينَ",
     nama: "Ayat 7",
+    latin: "Ṣirāṭallażīna an'amta 'alaihim ghairilmagḍūbi 'alaihim walāḍḍāllīn",
     artinya:
       "Yaitu jalan orang yang telah Engkau beri nikmat, bukan jalan orang yang dimurkai, dan bukan jalan orang yang sesat.",
   },
@@ -226,7 +235,7 @@ const PAKET: PaketLengkap[] = [
   },
   {
     id: "hijaiyah",
-    judul: "28 huruf hijaiyah",
+    judul: "29 huruf hijaiyah",
     jenis: "huruf",
     pola: /hijaiyah|huruf\s+arab|huruf\s+hijai|cinta al[-\s]?qur/i,
     item: HIJAIYAH,
@@ -421,8 +430,9 @@ export function cariPaketLengkap(mapel = "", materi = ""): PaketLengkap | null {
 export function formatBlokLengkap(paket: PaketLengkap): string {
   const baris = paket.item.map((item, i) => {
     const inti = [item.lambang, item.nama].filter(Boolean).join(" | ");
+    const latin = item.latin ? `\nLatin: ${item.latin}` : "";
     const arti = item.artinya ? `\nArtinya: ${item.artinya}` : "";
-    return `${i + 1}) ${inti}${arti}`;
+    return `${i + 1}) ${inti}${latin}${arti}`;
   });
   return `LENGKAP: ${paket.judul}\n${baris.join("\n")}`;
 }
@@ -486,6 +496,11 @@ export function parseBlokLengkap(teks: string): DaftarLengkapTampil | null {
     const t = baris.trim();
     if (!t) continue;
     if (/^LENGKAP:\s*/i.test(t)) break;
+    const latin = /^Latin:\s*(.+)$/i.exec(t);
+    if (latin && terakhir) {
+      terakhir.latin = latin[1].trim();
+      continue;
+    }
     const arti = /^Artinya:\s*(.+)$/i.exec(t);
     if (arti && terakhir) {
       terakhir.artinya = arti[1].trim();
@@ -538,6 +553,7 @@ export function teksLisanDaftarLengkap(
       for (const item of paket.item) {
         if (item.nama) bagian.push(item.nama);
         if (item.lambang && paket.jenis !== "huruf") bagian.push(item.lambang);
+        if (item.latin) bagian.push(item.latin);
         if (item.artinya) bagian.push(`Artinya ${item.artinya}`);
       }
       return bagian.filter(Boolean).join(". ");
@@ -549,7 +565,7 @@ export function teksLisanDaftarLengkap(
 export function instruksiPaketLengkap(mapel = "", materi = ""): string {
   const paket = cariSemuaPaketLengkap(mapel, materi);
   const umum =
-    "Jika materi punya himpunan tetap (28 huruf, 7 ayat, 5 sila, 6 rukun, 25 nabi, doa utuh), tulis SEMUA anggotanya. DILARANG meringkas dengan dst, selain itu, atau 19 huruf lainnya.";
+    "Jika materi punya himpunan tetap (29 huruf, 7 ayat, 5 sila, 6 rukun, 25 nabi, doa utuh), tulis SEMUA anggotanya. DILARANG meringkas dengan dst, selain itu, atau 19 huruf lainnya.";
   if (paket.length === 0) return umum;
   return `${umum}
 WAJIB salin blok LENGKAP berikut utuh di akhir naskah (jangan dikurangi):

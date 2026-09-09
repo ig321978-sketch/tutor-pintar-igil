@@ -9,6 +9,7 @@ import {
 import { namaDepanSiswa } from "@/lib/nama-siswa";
 import { naskahLatihanSaja, pecahBankSoal, kunciLatihanSaja } from "@/lib/kuis";
 import { buangTeksSampah } from "@/lib/validasi-naskah-ai";
+import { naskahBab1Utuh, naskahResmiJikaAda } from "@/lib/naskah-resmi";
 
 export const PESAN_MATERI_TERKUNCI =
   "Materi terkunci dan tidak dapat diubah";
@@ -563,23 +564,64 @@ function barisKeIsi(data: unknown): IsiCacheMateri | null {
   return isi;
 }
 
+async function unggahNaskahResmiJikaPerlu(
+  kelas: string,
+  mapel: string,
+  materi: string,
+  resmi: IsiCacheMateri,
+  kunciBaris: string,
+): Promise<void> {
+  try {
+    if (kunciBaris) {
+      await perbaruiCacheMateri(kunciBaris, resmi);
+      return;
+    }
+    await simpanCacheMateri(kelas, mapel, materi, "kamu", resmi, {
+      tulisUlangSetelahHapus: true,
+    });
+  } catch (error) {
+    if (!adalahGalatMateriTerkunci(error)) {
+      console.warn(
+        "[naskah-resmi] unggah:",
+        error instanceof Error ? error.message : error,
+      );
+    }
+  }
+}
+
 export async function ambilCacheMateri(
   kelas: string,
   mapel: string,
   materi: string,
 ): Promise<IsiCacheMateri | null> {
+  const resmi = naskahResmiJikaAda(kelas, mapel, materi);
   const supabase = supabaseServer();
   if (!supabase) {
-    console.warn("[cache-materi] supabase belum terhubung; cache dilewati.");
-    return null;
+    if (!resmi) {
+      console.warn("[cache-materi] supabase belum terhubung; cache dilewati.");
+    }
+    return resmi;
   }
-  if (await cacheModulSedangDihapus(kelas, mapel, materi)) return null;
+  if (await cacheModulSedangDihapus(kelas, mapel, materi)) return resmi;
   const semua = await ambilSemuaBarisCache(kelas, mapel, materi);
+  let dariDb: IsiCacheMateri | null = null;
+  let kunciBaris = semua[0] ? idBarisCache(semua[0]) : "";
   for (const row of semua) {
     const isi = barisKeIsi(row);
-    if (isi) return isi;
+    if (isi) {
+      dariDb = isi;
+      kunciBaris = idBarisCache(row) || kunciBaris;
+      break;
+    }
   }
-  return null;
+  if (resmi) {
+    if (!dariDb || !naskahBab1Utuh(dariDb.curriculum_view)) {
+      await unggahNaskahResmiJikaPerlu(kelas, mapel, materi, resmi, kunciBaris);
+      return resmi;
+    }
+    return dariDb;
+  }
+  return dariDb;
 }
 
 export async function gabungCacheMateri(
@@ -897,6 +939,34 @@ export async function ambilDetailCacheMateri(
   const data = lewatTopic.data ?? lewatKunci?.data ?? null;
   const isi = barisKeIsiAdmin(data);
   const ringkas = barisKeRingkas(sebagaiBarisCache(data) ?? {});
+  const pecah = pecahKunciMateri(kunci);
+  const resmi =
+    pecah && naskahResmiJikaAda(pecah.kelas, pecah.mapel, pecah.materi);
+  if (resmi) {
+    const dasar = ringkas ?? {
+      kunci,
+      topicId: kunci,
+      kelas: pecah.kelas,
+      mapel: pecah.mapel,
+      materi: pecah.materi,
+      modelSumber: "naskah-resmi",
+      isDraft: true,
+      isLocked: false,
+      audioSiap: false,
+      updatedAt: "",
+      adaCacheMateri: true,
+      jumlahLatihan: pecahBankSoal(resmi.pertanyaan).pilihanGanda.length,
+    };
+    if (!isi || !naskahBab1Utuh(isi.curriculum_view)) {
+      return {
+        ...dasar,
+        ...resmi,
+        adaCacheMateri: true,
+        jumlahLatihan: pecahBankSoal(resmi.pertanyaan).pilihanGanda.length,
+      };
+    }
+    return { ...dasar, ...isi };
+  }
   if (isi && ringkas) return { ...ringkas, ...isi };
   return null;
 }

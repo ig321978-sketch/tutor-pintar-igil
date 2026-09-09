@@ -36,6 +36,7 @@ import {
   topicIdMateri,
   type IsiCacheMateri,
 } from "@/lib/cache-materi-tutor";
+import { naskahResmiJikaAda } from "@/lib/naskah-resmi";
 import { naskahGlobalSiap, naskahMateriSiap } from "@/lib/sudut-pandang";
 import { instruksiPaketLengkap } from "@/lib/paket-lengkap-materi";
 import {
@@ -1094,7 +1095,10 @@ export async function getModule(
   mapel: string,
   materi: string,
 ): Promise<IsiCacheMateri | null> {
-  return ambilCacheMateri(kelas, mapel, materi);
+  return (
+    (await ambilCacheMateri(kelas, mapel, materi)) ??
+    naskahResmiJikaAda(kelas, mapel, materi)
+  );
 }
 
 export async function generateModuleFirstTime(opsi: {

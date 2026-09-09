@@ -2,6 +2,7 @@
 
 import { BookOpen, School } from "lucide-react";
 import DaftarLengkapMateri from "@/components/DaftarLengkapMateri";
+import { adaHurufArab } from "@/lib/huruf-arab";
 import type { BarisInfografis, NaskahInfografis, SisiInfografis } from "@/lib/infografis-kelas1";
 
 const WARNA = [
@@ -25,7 +26,9 @@ function KotakSisi({
   return (
     <div className={`min-w-0 flex-1 overflow-hidden rounded-2xl border-2 bg-white ${warna.tepi}`}>
       <p
-        className={`px-3 py-2 text-center text-sm font-black uppercase tracking-wide text-white sm:text-base ${warna.kepala}`}
+        className={`px-3 py-2 text-center text-sm font-black tracking-wide text-white sm:text-base ${warna.kepala} ${adaHurufArab(sisi.nama) ? "font-arab" : "uppercase"}`}
+        dir={adaHurufArab(sisi.nama) ? "rtl" : undefined}
+        lang={adaHurufArab(sisi.nama) ? "ar" : undefined}
       >
         {sisi.nama || "Kotak"}
       </p>
@@ -35,7 +38,15 @@ function KotakSisi({
         </p>
       ) : null}
       {sisi.isi ? (
-        <p className="px-3 py-3 text-center text-base font-bold leading-snug text-slate-800">
+        <p
+          className={`px-3 py-3 text-center font-bold leading-snug text-slate-800 ${
+            adaHurufArab(sisi.isi)
+              ? "font-arab text-4xl sm:text-5xl"
+              : "text-base"
+          }`}
+          dir={adaHurufArab(sisi.isi) ? "rtl" : undefined}
+          lang={adaHurufArab(sisi.isi) ? "ar" : undefined}
+        >
           {sisi.isi}
         </p>
       ) : null}
@@ -57,7 +68,9 @@ function BarisPoster({ item, indeks }: { item: BarisInfografis; indeks: number }
       </div>
       <div className="min-w-0 flex-1 space-y-2">
         {item.judul ? (
-          <p className="text-sm font-black uppercase tracking-wide text-[#1C01A5]">
+          <p
+            className={`text-sm font-black tracking-wide text-[#1C01A5] ${adaHurufArab(item.judul) ? "font-arab" : "uppercase"}`}
+          >
             {item.judul}
           </p>
         ) : null}
@@ -87,7 +100,9 @@ export default function InfografisKelas1({ data }: { data: NaskahInfografis }) {
     <section className="overflow-hidden rounded-[2rem] border-4 border-[#1C01A5]/20 bg-[#FBF6EA] px-3 py-5 shadow-inner sm:px-5 sm:py-7">
       <header className="mb-6 flex items-center justify-center gap-3 text-center">
         <BookOpen className="hidden h-8 w-8 shrink-0 text-[#F0AB00] sm:block" />
-        <h3 className="text-xl font-black uppercase leading-tight tracking-wide text-[#1C01A5] sm:text-2xl">
+        <h3
+          className={`text-xl font-black leading-tight tracking-wide text-[#1C01A5] sm:text-2xl ${adaHurufArab(data.judul) ? "font-arab" : "uppercase"}`}
+        >
           {data.judul}
         </h3>
         <School className="hidden h-8 w-8 shrink-0 text-[#1C01A5] sm:block" />

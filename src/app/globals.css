@@ -16,6 +16,7 @@
   --color-igil-action: #1c01a5;
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
+  --font-arab: var(--font-arab-naskh), "Noto Naskh Arabic", serif;
 }
 
 body {
