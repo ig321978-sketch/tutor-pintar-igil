@@ -5,7 +5,7 @@ import {
   materiSedangTerkunci,
   topicIdMateri,
 } from "@/lib/cache-materi-tutor";
-import { lengkapiVisualNaskahSd } from "@/lib/naskah-kartu-sd";
+import { lengkapiVisualNaskahSd, naskahKerangkaKartuSd } from "@/lib/naskah-kartu-sd";
 import { naskahResmiJikaAda } from "@/lib/naskah-resmi";
 import {
   cachePunyaBagian,
@@ -99,29 +99,68 @@ export async function generateDanKunciNaskahSd(opsi: {
     }
 
     if (!kurOk) {
-      await generateBagianModul({
-        nama,
-        kelas,
-        mapel,
-        materi,
-        bagian: "kurikulum",
-      });
+      try {
+        await generateBagianModul({
+          nama,
+          kelas,
+          mapel,
+          materi,
+          bagian: "kurikulum",
+        });
+      } catch (error) {
+        console.warn("[naskah-sd] kurikulum AI gagal, pakai kerangka kartu", error);
+        await gabungCacheMateri(kelas, mapel, materi, nama, {
+          curriculum_view: naskahKerangkaKartuSd(kelas, mapel, materi),
+        });
+      }
+      cache = await getModule(kelas, mapel, materi);
+      if (cache) {
+        cache = {
+          ...cache,
+          curriculum_view: lengkapiVisualNaskahSd(cache.curriculum_view, kelas, {
+            mapel,
+            materi,
+          }),
+        };
+        await gabungCacheMateri(kelas, mapel, materi, nama, {
+          curriculum_view: cache.curriculum_view,
+        });
+      }
       cache = await getModule(kelas, mapel, materi);
       kurOk = cachePunyaBagian(cache, "kurikulum", kelas);
       if (!kurOk) throw new Error("Naskah kurikulum kartu SD tidak utuh.");
     }
 
     if (!globOk) {
-      await generateBagianModul({
-        nama,
-        kelas,
-        mapel,
-        materi,
-        bagian: "global",
-        naskahKurikulum: cache?.curriculum_view,
-      });
+      try {
+        await generateBagianModul({
+          nama,
+          kelas,
+          mapel,
+          materi,
+          bagian: "global",
+          naskahKurikulum: cache?.curriculum_view,
+        });
+      } catch (error) {
+        console.warn("[naskah-sd] global AI gagal, pakai kerangka kartu", error);
+        await gabungCacheMateri(kelas, mapel, materi, nama, {
+          global_best_view: naskahKerangkaKartuSd(kelas, mapel, materi, true),
+        });
+      }
       cache = await getModule(kelas, mapel, materi);
       globOk = cachePunyaBagian(cache, "global", kelas);
+      if (!globOk && cache) {
+        const globalRapikan = lengkapiVisualNaskahSd(cache.global_best_view, kelas, {
+          mapel,
+          materi,
+          global: true,
+        });
+        await gabungCacheMateri(kelas, mapel, materi, nama, {
+          global_best_view: globalRapikan,
+        });
+        cache = await getModule(kelas, mapel, materi);
+        globOk = cachePunyaBagian(cache, "global", kelas);
+      }
       if (!globOk) throw new Error("Naskah global kartu SD tidak utuh.");
     }
 

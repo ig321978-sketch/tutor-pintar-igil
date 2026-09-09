@@ -344,6 +344,25 @@ export function lengkapiVisualNaskahSd(
   return bungkusKartuSd(data.kartu, kelas1, global);
 }
 
+export function naskahKerangkaKartuSd(
+  kelas: string,
+  mapel: string,
+  materi: string,
+  global = false,
+): string {
+  const subbab = subbabBukuSiswa(kelas, mapel, materi);
+  const judulKartu =
+    subbab.length >= 2 ? subbab : ["Pahami konsep", "Contoh singkat"];
+  const kartu = judulKartu.map((judul, i) =>
+    kartuDariTubuh(
+      judul,
+      `${global ? "Cara cepat: " : ""}Pelajari ${judul} lewat contoh di sekitar siswa.`,
+      i,
+    ),
+  );
+  return bungkusKartuSd(kartu, kelasSatuSd(kelas), global);
+}
+
 export function daftarPendekUntukGrid(item: string[]): boolean {
   if (item.length < 2 || item.length > 16) return false;
   return item.every((isi) => isi.replace(/\s+/g, " ").trim().length <= 42);
