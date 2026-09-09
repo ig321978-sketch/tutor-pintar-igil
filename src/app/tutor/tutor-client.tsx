@@ -38,7 +38,6 @@ import {
 } from "@/lib/nama-siswa";
 import {
   pilihPenjelasanMateri,
-  naskahGlobalSiap,
   naskahMateriSiap,
   type SudutPandangMateri,
 } from "@/lib/sudut-pandang";
@@ -92,16 +91,18 @@ type BagianNaskah = "kurikulum" | "global" | "latihan";
 
 function gabungModulTutor(sebelum: ModulTutor | null, baru: ModulTutor): ModulTutor {
   if (!sebelum) return baru;
+  const kurikulumBaru = (baru.curriculum_view ?? "").trim();
+  const globalBaru = (baru.global_best_view ?? "").trim();
   return {
     ...sebelum,
     sapaan: baru.sapaan || sebelum.sapaan,
-    curriculum_view: naskahMateriSiap(baru.curriculum_view)
+    curriculum_view: kurikulumBaru
       ? baru.curriculum_view
       : sebelum.curriculum_view,
-    global_best_view: naskahGlobalSiap(baru.global_best_view)
+    global_best_view: globalBaru
       ? baru.global_best_view
       : sebelum.global_best_view,
-    penjelasan: naskahMateriSiap(baru.curriculum_view)
+    penjelasan: kurikulumBaru
       ? baru.curriculum_view || baru.penjelasan
       : sebelum.penjelasan,
     sketsaKartu: baru.sketsaKartu?.trim() || sebelum.sketsaKartu,
@@ -128,10 +129,10 @@ function bagianNaskahSiap(
 ): boolean {
   if (!modul) return false;
   if (bagian === "kurikulum") {
-    return naskahMateriSiap(modul.curriculum_view);
+    return Boolean((modul.curriculum_view ?? "").trim());
   }
   if (bagian === "global") {
-    return naskahMateriSiap(modul.global_best_view);
+    return Boolean((modul.global_best_view ?? "").trim());
   }
   return pecahBankSoal(modul.pertanyaan).pilihanGanda.length >= 4;
 }
@@ -1310,27 +1311,30 @@ export default function TutorAI() {
 
     const topicId = kunciMateriTutor(kelasKirim, mapelKirim, materiKirim);
     const tandaiSiap = (modul: ModulTutor) => {
-      if (naskahMateriSiap(modul.curriculum_view)) setStatusKurikulum("siap");
-      if (naskahGlobalSiap(modul.global_best_view)) setStatusGlobal("siap");
+      if ((modul.curriculum_view ?? "").trim()) setStatusKurikulum("siap");
+      if ((modul.global_best_view ?? "").trim()) setStatusGlobal("siap");
       if (pecahBankSoal(modul.pertanyaan).pilihanGanda.length >= 4) {
         setStatusLatihan("siap");
       }
     };
     const lokal = bacaModulLokal<ModulTutor>(topicId);
-    if (lokal) {
-      hasilDataRef.current = lokal;
-      setHasilData(lokal);
-      tandaiSiap(lokal);
-    }
 
     let batal = false;
     void intipModulTersimpan(kelasKirim, mapelKirim, materiKirim).then((data) => {
-      if (batal || !data) return;
-      const gabung = gabungModulTutor(hasilDataRef.current, data);
-      hasilDataRef.current = gabung;
-      setHasilData(gabung);
-      simpanModulLokal(topicId, gabung);
-      tandaiSiap(gabung);
+      if (batal) return;
+      if (data) {
+        const gabung = gabungModulTutor(lokal, data);
+        hasilDataRef.current = gabung;
+        setHasilData(gabung);
+        simpanModulLokal(topicId, gabung);
+        tandaiSiap(gabung);
+        return;
+      }
+      if (lokal) {
+        hasilDataRef.current = lokal;
+        setHasilData(lokal);
+        tandaiSiap(lokal);
+      }
     });
     return () => {
       batal = true;

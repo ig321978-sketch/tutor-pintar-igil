@@ -1,8 +1,10 @@
 import { NextResponse } from "next/server";
 import {
+  ambilCacheMateri,
   adalahGalatMateriTerkunci,
   cacheModulSedangDihapus,
   gabungCacheMateri,
+  isiCachePunyaNaskah,
   materiSedangTerkunci,
   muatDaftarCacheAdmin,
 } from "@/lib/cache-materi-tutor";
@@ -80,6 +82,19 @@ export async function POST(req: Request) {
 
   if (await materiSedangTerkunci(kelas, mapel, materi)) {
     return responsMateriTerkunci();
+  }
+
+  const sudahTersimpan = await ambilCacheMateri(kelas, mapel, materi);
+  if (sudahTersimpan && isiCachePunyaNaskah(sudahTersimpan)) {
+    return NextResponse.json(
+      {
+        berhasil: true,
+        tersimpan: false,
+        dilewati: true,
+        pesan: "Naskah tersimpan tidak ditimpa dari klien.",
+      },
+      { headers: TANPA_CACHE },
+    );
   }
 
   const sedangDihapus = await cacheModulSedangDihapus(kelas, mapel, materi);

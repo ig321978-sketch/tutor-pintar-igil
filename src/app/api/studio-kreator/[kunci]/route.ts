@@ -4,7 +4,7 @@ import {
   adalahGalatMateriTerkunci,
   hapusCacheMateri,
   materiTerkunciMenurutKunci,
-  perbaruiCacheMateri,
+  perbaruiSuntinganAdmin,
 } from "@/lib/cache-materi-tutor";
 import { isiDariBadanStudio, kunciRuteStudio } from "@/lib/studio-kreator";
 import { responsMateriTerkunci } from "@/lib/respons-materi-terkunci";
@@ -57,11 +57,11 @@ export async function PATCH(
   }
 
   const isi = isiDariBadanStudio(body);
-  if (!isi.curriculum_view.trim() || !isi.global_best_view.trim()) {
+  if (!isi.curriculum_view.trim() && !isi.global_best_view.trim()) {
     return NextResponse.json(
       {
         berhasil: false,
-        pesan: "Kurikulum Sekolah dan Trik Percepatan tidak boleh kosong.",
+        pesan: "Naskah tidak boleh kosong.",
       },
       { status: 400 },
     );
@@ -69,7 +69,7 @@ export async function PATCH(
 
   let data;
   try {
-    data = await perbaruiCacheMateri(kunci, isi);
+    data = await perbaruiSuntinganAdmin(kunci, isi);
   } catch (error) {
     if (adalahGalatMateriTerkunci(error)) return responsMateriTerkunci();
     throw error;

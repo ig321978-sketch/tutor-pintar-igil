@@ -37,10 +37,7 @@ import {
   type IsiCacheMateri,
 } from "@/lib/cache-materi-tutor";
 import { naskahGlobalSiap, naskahMateriSiap } from "@/lib/sudut-pandang";
-import {
-  instruksiPaketLengkap,
-  lengkapiNaskahMateri,
-} from "@/lib/paket-lengkap-materi";
+import { instruksiPaketLengkap } from "@/lib/paket-lengkap-materi";
 import {
   permintaanDibatalkan,
   teksNaskahUtuh,
@@ -461,20 +458,10 @@ export function bentukModulTutor(
 ): ModulTutor {
   const kurikulumMentah = sebagaiTeks(bagian.curriculum_view || bagian.penjelasan);
   const kurikulum = kurikulumMentah
-    ? lengkapiNaskahMateri(
-        amanNaskahModul(kurikulumMentah, "", nama),
-        konteks?.mapel,
-        konteks?.materi,
-      )
+    ? amanNaskahModul(kurikulumMentah, "", nama)
     : "";
   const globalMentah = sebagaiTeks(bagian.global_best_view);
-  const global = globalMentah
-    ? lengkapiNaskahMateri(
-        amanNaskahModul(globalMentah, "", nama),
-        konteks?.mapel,
-        konteks?.materi,
-      )
-    : "";
+  const global = globalMentah ? amanNaskahModul(globalMentah, "", nama) : "";
   const pertanyaanMentah = pulihkanParagraf(bagian.pertanyaan, "");
   const bank = pecahBankSoal(
     /sedang disusun/i.test(pertanyaanMentah) ? "" : pertanyaanMentah,
@@ -609,14 +596,14 @@ function naskahLatihanSiap(teks?: string): boolean {
 export function cachePunyaBagian(
   cache: IsiCacheMateri | null,
   bagian: BagianNaskahModul,
-  kelas = "",
+  _kelas = "",
 ): boolean {
   if (!cache) return false;
   if (bagian === "kurikulum") {
-    return naskahMateriSiap(cache.curriculum_view);
+    return Boolean(cache.curriculum_view.trim());
   }
   if (bagian === "global") {
-    return naskahMateriSiap(cache.global_best_view);
+    return Boolean(cache.global_best_view.trim());
   }
   return naskahLatihanSiap(cache.pertanyaan);
 }
@@ -1123,9 +1110,8 @@ export async function generateModuleFirstTime(opsi: {
   const sudahTersimpan = await ambilCacheMateri(opsi.kelas, opsi.mapel, opsi.materi);
   if (
     sudahTersimpan &&
-    naskahMateriSiap(
-      sudahTersimpan.curriculum_view || sudahTersimpan.global_best_view,
-    )
+    (sudahTersimpan.curriculum_view.trim() ||
+      sudahTersimpan.global_best_view.trim())
   ) {
     return bentukModulTutor(opsi.nama, sudahTersimpan, {
       mapel: opsi.mapel,

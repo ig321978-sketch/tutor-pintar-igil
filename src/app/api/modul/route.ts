@@ -9,7 +9,6 @@ import {
 import { responsMateriTerkunci } from "@/lib/respons-materi-terkunci";
 import { pesanGalatGemini } from "@/lib/klien-gemini";
 import { pecahBankSoal } from "@/lib/kuis";
-import { naskahMateriSiap } from "@/lib/sudut-pandang";
 import {
   ambilAtauBuatModul,
   bentukModulTutor,
@@ -63,8 +62,8 @@ export async function GET(req: Request) {
     : {
         "Cache-Control": "no-store, max-age=0",
       };
-  const adaKurikulum = naskahMateriSiap(cache?.curriculum_view);
-  const adaGlobal = naskahMateriSiap(cache?.global_best_view);
+  const adaKurikulum = Boolean(cache?.curriculum_view?.trim());
+  const adaGlobal = Boolean(cache?.global_best_view?.trim());
   const adaLatihan = pecahBankSoal(cache?.pertanyaan ?? "").pilihanGanda.length >= 4;
   if (!cache || (!adaKurikulum && !adaGlobal && !adaLatihan)) {
     return NextResponse.json(

@@ -24,10 +24,7 @@ import GambarDoodle, { type GambarSisipan } from "@/components/GambarDoodle";
 import InfografisKelas1 from "@/components/InfografisKelas1";
 import DaftarLengkapMateri from "@/components/DaftarLengkapMateri";
 import { parseInfografisKelas1 } from "@/lib/infografis-kelas1";
-import {
-  lengkapiNaskahMateri,
-  potongLengkap,
-} from "@/lib/paket-lengkap-materi";
+import { potongLengkap } from "@/lib/paket-lengkap-materi";
 import { Loader2 } from "lucide-react";
 
 let mermaidSiap = false;
@@ -317,8 +314,8 @@ function ModuleRenderer({
   padat = false,
   gambarSisipan,
   doodleMemuat = false,
-  mapel = "",
-  materi = "",
+  mapel: _mapel = "",
+  materi: _materi = "",
 }: {
   konten: string;
   className?: string;
@@ -328,11 +325,13 @@ function ModuleRenderer({
   mapel?: string;
   materi?: string;
 }) {
+  void _mapel;
+  void _materi;
   const rapat =
     padat || /\bprose-p:my-0\b/.test(className);
   const naskah = useMemo(
-    () => lengkapiNaskahMateri(konten, mapel, materi),
-    [konten, mapel, materi],
+    () => (konten ?? "").trim(),
+    [konten],
   );
   const infografis = useMemo(() => parseInfografisKelas1(naskah), [naskah]);
   const potong = useMemo(() => potongLengkap(naskah), [naskah]);
