@@ -221,7 +221,6 @@ export function naskahPai1Bab1(): IsiCacheMateri {
     pertanyaan: naskahLatihan(),
     kunciJawaban: "B,C,B,C,A,B,C,B,C,C",
     motivasi: "Ayo cintai Al-Qur'an: kenali 30 hurufnya, baca dengan harakat, dan hafal Al-Fatihah.",
-    referensiUrl:
-      "https://buku.kemendikdasmen.go.id/katalog/pendidikan-agama-islam-dan-budi-pekerti-untuk-sd-kelas-i",
+    referensiUrl: "",
   };
 }

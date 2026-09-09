@@ -6,19 +6,6 @@ import ModuleRenderer from "@/components/ModuleRenderer";
 import { type GambarSisipan } from "@/components/GambarDoodle";
 import { LABEL_SUDUT, type SudutPandangMateri } from "@/lib/sudut-pandang";
 
-function pecahReferensiUrl(nilai?: string): string[] {
-  if (!nilai?.trim()) return [];
-  const seen = new Set<string>();
-  const hasil: string[] = [];
-  for (const potong of nilai.split(/[\n,]+/)) {
-    const url = potong.trim();
-    if (!/^https?:\/\//i.test(url) || seen.has(url)) continue;
-    seen.add(url);
-    hasil.push(url);
-  }
-  return hasil;
-}
-
 function PanelMateriModul({
   mapel = "",
   materi,
@@ -29,7 +16,6 @@ function PanelMateriModul({
   gambarSisipan,
   sudutPandang,
   onGantiSudut,
-  referensiUrl,
   memuat,
 }: {
   mapel?: string;
@@ -41,10 +27,8 @@ function PanelMateriModul({
   gambarSisipan?: GambarSisipan[];
   sudutPandang: SudutPandangMateri | null;
   onGantiSudut: (sudut: SudutPandangMateri) => void;
-  referensiUrl?: string;
   memuat?: boolean;
 }) {
-  const daftarPustaka = pecahReferensiUrl(referensiUrl);
   const label = sudutPandang ? LABEL_SUDUT[sudutPandang] : null;
 
   return (
@@ -136,27 +120,6 @@ function PanelMateriModul({
           Naskah belum dimuat. Kurikulum untuk paham konsep, Global untuk trik percepatan.
         </p>
       ) : null}
-      {daftarPustaka.length > 0 && sudutPandang === "kurikulum" && naskah ? (
-        <aside className="border-t border-[#1C01A5]/10 pt-4">
-          <p className="text-xs font-extrabold uppercase tracking-wide text-[#1C01A5]/70">
-            Sumber referensi
-          </p>
-          <ol className="mt-2 list-decimal space-y-1 pl-5 text-sm text-slate-600">
-            {daftarPustaka.map((url) => (
-              <li key={url}>
-                <a
-                  href={url}
-                  target="_blank"
-                  rel="noreferrer"
-                  className="break-all font-semibold text-[#1C01A5] underline-offset-2 hover:underline"
-                >
-                  {url.replace(/^https?:\/\//i, "")}
-                </a>
-              </li>
-            ))}
-          </ol>
-        </aside>
-      ) : null}
     </article>
   );
 }
@@ -170,6 +133,5 @@ export default memo(PanelMateriModul, (sebelum, sekarang) => (
   sebelum.doodleMemuat === sekarang.doodleMemuat &&
   sebelum.gambarSisipan === sekarang.gambarSisipan &&
   sebelum.sudutPandang === sekarang.sudutPandang &&
-  sebelum.referensiUrl === sekarang.referensiUrl &&
   sebelum.memuat === sekarang.memuat
 ));

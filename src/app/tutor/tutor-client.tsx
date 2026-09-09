@@ -1949,7 +1949,6 @@ export default function TutorAI() {
                       gambarSisipan={hasilData?.gambarSisipan}
                       sudutPandang={sudutPandang}
                       onGantiSudut={gantiSudutPandang}
-                      referensiUrl={hasilData?.referensiUrl}
                       memuat={
                         statusKurikulum === "memuat" ||
                         statusGlobal === "memuat"
