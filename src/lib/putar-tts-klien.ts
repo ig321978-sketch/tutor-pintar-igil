@@ -39,9 +39,10 @@ export async function mintaAudioTts(
   teks: string,
   kelamin: KelaminGuru,
   kelas = "3 SD",
-  opsi: { persist?: boolean } = {},
+  opsi: { persist?: boolean; hanyaCache?: boolean } = {},
 ): Promise<HasilAudioTts | null> {
   const persist = opsi.persist !== false;
+  const hanyaCache = opsi.hanyaCache === true;
   const naskah = teks.replace(/\s+/g, " ").trim();
   if (!naskah) return null;
   const kunci = kunciCacheAudioTts(naskah, kelamin, kelas);
@@ -56,6 +57,7 @@ export async function mintaAudioTts(
   }
   const menunggu = sedangDiminta.get(kunci);
   if (menunggu) return menunggu;
+  if (hanyaCache) return null;
   const permintaan = (async (): Promise<HasilAudioTts | null> => {
   try {
     const respons = await fetch("/api/tts", {
@@ -105,19 +107,56 @@ export async function mintaAudioTts(
 }
 
 let elemenPendek: HTMLAudioElement | null = null;
+let elemenSapaan: HTMLAudioElement | null = null;
+let sapaanDipesan = false;
 
-export async function putarTtsPendek(
+function pasangElemen(
+  el: HTMLAudioElement | null,
+  url: string,
+): HTMLAudioElement {
+  const audio = el ?? new Audio();
+  audio.preload = "auto";
+  if (audio.src !== url) audio.src = url;
+  return audio;
+}
+
+export async function siapkanAudioSapaan(
   teks: string,
   kelamin: KelaminGuru,
   kelas = "3 SD",
 ): Promise<boolean> {
   const hasil = await mintaAudioTts(teks, kelamin, kelas, { persist: true });
   if (!hasil) return false;
-  if (!elemenPendek) {
-    elemenPendek = new Audio();
-    elemenPendek.preload = "auto";
-  }
-  elemenPendek.src = hasil.url;
+  elemenSapaan = pasangElemen(elemenSapaan, hasil.url);
+  return true;
+}
+
+export function putarAudioSapaanSiap(): boolean {
+  if (!elemenSapaan?.src) return false;
+  sapaanDipesan = true;
+  void elemenSapaan.play().catch(() => {
+    sapaanDipesan = false;
+  });
+  return true;
+}
+
+export function sedangMemutarSapaan(): boolean {
+  if (sapaanDipesan) return true;
+  return Boolean(elemenSapaan && !elemenSapaan.paused && !elemenSapaan.ended);
+}
+
+export async function putarTtsPendek(
+  teks: string,
+  kelamin: KelaminGuru,
+  kelas = "3 SD",
+  opsi: { persist?: boolean; hanyaCache?: boolean } = {},
+): Promise<boolean> {
+  const hasil = await mintaAudioTts(teks, kelamin, kelas, {
+    persist: opsi.persist !== false,
+    hanyaCache: opsi.hanyaCache,
+  });
+  if (!hasil) return false;
+  elemenPendek = pasangElemen(elemenPendek, hasil.url);
   try {
     await elemenPendek.play();
     return true;

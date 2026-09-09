@@ -13,7 +13,12 @@ import {
   daftarMapelUntukKelas,
   labelJenjangKelas,
 } from "@/lib/kurikulum";
+import { naskahSapaanUntukSuara } from "@/lib/naskah-lisan";
 import { bacaProgres, simpanProfil } from "@/lib/progres";
+import {
+  putarAudioSapaanSiap,
+  siapkanAudioSapaan,
+} from "@/lib/putar-tts-klien";
 import { kelasKotak, kelasLabel, kelasTombolUtama } from "@/lib/tema";
 
 const OPSI_MAPEL_LAIN = OPSI_LAINNYA;
@@ -70,6 +75,7 @@ export default function RuangBelajarPage() {
   const [sedangSeret, setSedangSeret] = useState(false);
   const [pesanGalat, setPesanGalat] = useState("");
   const [guruKelamin, setGuruKelamin] = useState<KelaminGuru>("wanita");
+  const [menyiapkanSapaan, setMenyiapkanSapaan] = useState(false);
 
   const daftarMapel = useMemo(
     () => daftarMapelUntukKelas(kelas),
@@ -114,6 +120,26 @@ export default function RuangBelajarPage() {
     }
   }, [daftarMateri, pilihanMapel, pilihanMateri]);
 
+  const naskahSapaanSesi = () => {
+    const namaPakai = nama.trim() || "Siswa";
+    const judulMapel =
+      sumber === "kurikulum" ? mapel : "Berdasarkan Buku";
+    const judulMateri =
+      sumber === "kurikulum" ? materi : "Analisis halaman buku";
+    return naskahSapaanUntukSuara(namaPakai, judulMapel, judulMateri);
+  };
+
+  useEffect(() => {
+    if (sumber === "kurikulum" && (!mapel.trim() || !materi.trim())) return;
+    const naskah = naskahSapaanSesi();
+    const t = window.setTimeout(() => {
+      void siapkanAudioSapaan(naskah, guruKelamin, kelas);
+    }, 700);
+    return () => window.clearTimeout(t);
+    // naskahSapaanSesi follows the fields below
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [nama, kelas, guruKelamin, sumber, mapel, materi]);
+
   const tambahHalaman = async (berkas: FileList | File[] | null) => {
     if (!berkas || berkas.length === 0) return;
     const daftar = Array.from(berkas);
@@ -140,7 +166,7 @@ export default function RuangBelajarPage() {
     setHalamanBuku((sebelum) => [...sebelum, ...hasil]);
   };
 
-  const mulaiPembelajaran = () => {
+  const mulaiPembelajaran = async () => {
     if (sumber === "kurikulum") {
       if (!mapel.trim() || !materi.trim()) {
         setPesanGalat("Mohon isi mata pelajaran dan materi pembahasan.");
@@ -169,6 +195,20 @@ export default function RuangBelajarPage() {
       kota: kota.trim() || "Indonesia",
       guruKelamin,
     });
+
+    const naskah = naskahSapaanSesi();
+    const sudahSiap = putarAudioSapaanSiap();
+    if (!sudahSiap) {
+      setMenyiapkanSapaan(true);
+      try {
+        await siapkanAudioSapaan(naskah, guruKelamin, kelas);
+        putarAudioSapaanSiap();
+      } catch {
+        // Sapaan opsional: sesi tetap dibuka meski cache gagal diisi.
+      } finally {
+        setMenyiapkanSapaan(false);
+      }
+    }
 
     const query = new URLSearchParams({
       nama: nama.trim() || "Siswa",
@@ -426,11 +466,12 @@ export default function RuangBelajarPage() {
       <div className="mt-6">
         <button
           type="button"
-          onClick={mulaiPembelajaran}
-          className={`${kelasTombolUtama} flex w-full items-center justify-center gap-2 rounded-xl px-6 py-4 text-center text-lg font-extrabold tracking-wide shadow-md shadow-[#1C01A5]/20`}
+          onClick={() => void mulaiPembelajaran()}
+          disabled={menyiapkanSapaan}
+          className={`${kelasTombolUtama} flex w-full items-center justify-center gap-2 rounded-xl px-6 py-4 text-center text-lg font-extrabold tracking-wide shadow-md shadow-[#1C01A5]/20 disabled:opacity-70`}
         >
           <Sparkles className="h-5 w-5" />
-          MULAI PEMBELAJARAN
+          {menyiapkanSapaan ? "Menyiapkan sesi..." : "MULAI PEMBELAJARAN"}
         </button>
       </div>
       <p className="mt-3 flex items-center gap-2 text-sm text-slate-500">
