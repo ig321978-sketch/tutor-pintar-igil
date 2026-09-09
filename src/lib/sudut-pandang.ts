@@ -41,6 +41,10 @@ export function naskahMateriSiap(teks?: string): boolean {
   return teksNaskahUtuh(teks, { min: 40 });
 }
 
+export function naskahPunyaDiagram(teks?: string): boolean {
+  return /```\s*mermaid|flowchart\s+(TD|LR)/i.test(teks ?? "");
+}
+
 export function naskahGlobalSiap(teks?: string): boolean {
   const naskah = (teks ?? "").trim();
   return naskahMateriSiap(naskah) && naskah.includes(TANDA_NASKAH_GLOBAL);

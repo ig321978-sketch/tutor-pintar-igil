@@ -32,6 +32,7 @@ import {
 } from "@/lib/cache-materi-tutor";
 import { naskahGlobalSiap, naskahMateriSiap } from "@/lib/sudut-pandang";
 import {
+  permintaanDibatalkan,
   teksNaskahUtuh,
   tolakJikaDibatalkan,
 } from "@/lib/validasi-naskah-ai";
@@ -140,7 +141,7 @@ const CONTOH_FEW_SHOT = `
 CONTOH TEMPLAT JSON (ikuti struktur, JANGAN salin isinya):
 {
   'sapaan': 'Halo kamu, Semangat.',
-  'curriculum_view': 'Menjumlah sampai 100.\\nAmati pensil di meja kelas.\\nUraian konsep penjumlahan sesuai buku siswa.\\n\\nMengurai puluhan dan satuan.\\nPuluhan adalah ikatan 10. Satuan adalah sisa.',
+  'curriculum_view': 'Menjumlah sampai 100.\\nPensil diikat jadi bundel.\\n3 pensil ditambah 5 pensil jadi 8.\\n\\nMengurai puluhan dan satuan.\\nPuluhan adalah ikatan 10. Satuan adalah sisa.',
   'global_best_view': 'Menjumlah sampai 100.\\nTambah puluhan dulu, baru satuan.\\nCara cepat:\\n27 + 15: 27 + 10 = 37, lalu 37 + 5 = 42.\\nKapan dipakai:\\nKalau satuan kecil. Jangan jika guru minta bersusun.\\nContoh cepat\\nSoal: 38 + 24.\\n38 + 20 = 58, 58 + 4 = 62.\\n62\\nLatihan\\n1) 46 + 27\\n2) 19 + 35\\nKunci\\n1) 73\\n2) 54',
   'sketsaKartu': 'Meja dan tumpuk pensil.\\n\\nDua ikat puluhan dan sisa satuan.',
   'svgCode': '',
@@ -167,7 +168,24 @@ function aturanAngkaNaskah(): string {
 - DILARANG mengeja angka menjadi kata jika yang dimaksud adalah bilangan.`;
 }
 
+function aturanMermaidSd(): string {
+  return `DIAGRAM SD (WAJIB tiap kartu):
+- Satu blok mermaid flowchart TD atau LR, 3-6 node, kutip tunggal di label.
+- Contoh:
+\`\`\`mermaid
+flowchart LR
+A['3 apel'] --> B['ditambah 2']
+B --> C['5 apel']
+\`\`\`
+- DILARANG kutip ganda, LaTeX, HTML, atau lebih dari 6 node.`;
+}
+
 function aturanContohSoal(hitungan: boolean, kelas: string): string {
+  if (jenjangGuru(kelas) === "SD") {
+    return hitungan
+      ? `CONTOH SD: setelah diagram, 1 soal cerita sangat pendek + hasil angka. Lalu Latihan 1 butir + Kunci. Tetap dalam kartu yang sama, jangan pisah \\n\\n.`
+      : `CONTOH SD: setelah diagram, 1 pertanyaan lisan singkat. Tidak wajib kunci angka.`;
+  }
   if (!hitungan) {
     return `CONTOH SOAL: setelah uraian, tulis 1 pertanyaan nalar singkat setara buku siswa (bukan pilihan ganda). Tidak wajib kunci angka.`;
   }
@@ -190,6 +208,19 @@ Soal WAJIB improvisasi AI, DILARANG menyalin soal buku. DILARANG memakai angka/s
 }
 
 function alurUraianBuku(namaDepan: string, hitungan: boolean, kelas: string): string {
+  if (jenjangGuru(kelas) === "SD") {
+    return `BENTUK NASKAH SD = BUKU BERGAMBAR, bukan esai:
+- Anak SD belajar dari gambar, diagram, dan bagan. Teks hanya 2-3 kalimat lisan per kartu.
+- Setiap kartu = SATU subbab. Alur: (1) 1 kalimat situasi, (2) blok mermaid WAJIB, (3) 2-3 kalimat penjelasan, (4) daftar benda atau tabel 2-3 baris jika hitungan, (5) 1 contoh singkat.
+- DILARANG 5+ kalimat beruntun tanpa diagram. DILARANG kartu plain text saja.
+${aturanMermaidSd()}
+- DILARANG menyalin kalimat buku. DILARANG label Ayo Mengamati, Judul, Subjudul, Kartu, VOICE, JSON, pause, atau kurung siku.
+- DILARANG menomori judul kartu dengan 1. 2. 3. di depan. Judul = nama subbab saja.
+- DILARANG memisah Contoh, Latihan, atau Kunci dengan baris kosong (\\n\\n).
+${aturanAngkaNaskah()}
+${aturanContohSoal(hitungan, kelas)}
+Jika menyebut nama, HANYA ${namaDepan}. DILARANG pujian berlebihan.`;
+  }
   return `BENTUK NASKAH seperti uraian buku siswa Kurikulum Merdeka (Pusat Perbukuan), BUKAN cerita analogi bebas:
 - Setiap kartu = SATU subbab buku. Isi kartu harus mengajarkan konsep subbab itu (istilah, cara, contoh jenis yang sama), ditulis ulang dengan bahasa tutor.
 - Alur tiap kartu: (1) buka dengan situasi atau pengamatan kontekstual 1-2 kalimat, (2) uraian konsep terurai, (3) contoh konkret, (4) rumus atau lambang di baris sendiri jika ada, (5) contoh soal dan latihan.
@@ -230,9 +261,14 @@ function alurUraianGlobal(namaDepan: string, hitungan: boolean, kelas: string): 
   const alur = hitungan
     ? `- Alur tiap kartu: (1) janji percepatan 1 kalimat, (2) baris persis 'Cara cepat:' lalu langkah hack/trik (bukan definisi), (3) baris 'Kapan dipakai:' 1 syarat + 1 kapan JANGAN dipakai, (4) rumus pintas di baris sendiri jika ada, (5) Contoh cepat dan latihan tempo.`
     : `- Alur tiap kartu: (1) janji percepatan 1 kalimat, (2) baris persis 'Cara cepat:' lalu pola/mnemonik/pohon keputusan, (3) baris 'Kapan dipakai:' plus 1 jebakan yang bikin lama, (4) Contoh cepat dan latihan tempo.`;
+  const visualSd =
+    jenjangGuru(kelas) === "SD"
+      ? `- Untuk SD: sertakan SATU mermaid pendek per kartu (pola trik), lalu 2 kalimat. ${aturanMermaidSd()}`
+      : "";
   return `BENTUK NASKAH Mode Global = HACK PERCEPATAN, ramah anak, BUKAN esai dan BUKAN salinan kurikulum:
 - Judul kartu SAMA dengan curriculum_view (subbab resmi), tetapi ${misi}
 ${alur}
+${visualSd}
 - Setiap kartu WAJIB memuat teks persis 'Cara cepat:' (dengan titik dua).
 - DILARANG menomori judul kartu dengan 1. 2. 3. di depan. Judul = nama subbab saja.
 - DILARANG memisah Contoh cepat, Latihan, atau Kunci dengan baris kosong (\\n\\n). Tetap SATU blok kartu.
@@ -250,10 +286,10 @@ function formatKartuPercepatan(
 ): { kepala: string } {
   if (jenjang === "SD") {
     return {
-      kepala: `${jumlah} KARTU PERCEPATAN, satu kartu satu subbab. Setiap kartu SATU blok dipisah \\n\\n:
+      kepala: `${jumlah} KARTU PERCEPATAN BERGAMBAR, satu kartu satu subbab. Setiap kartu SATU blok dipisah \\n\\n:
 Baris 1: judul subbab 2-8 kata, diakhiri titik. Plain text.
-Baris 2: janji percepatan SATU kalimat pendek (maks 16 kata), diakhiri titik. Bukan analogi konsep.
-Lalu trik padat, bahasa ${kelas}, bukan esai.`,
+Baris 2: janji percepatan SATU kalimat pendek (maks 16 kata).
+Lalu Cara cepat + mermaid pendek + 2 kalimat, bahasa ${kelas}.`,
     };
   }
   const kepadatan =
@@ -274,11 +310,11 @@ function formatKartuDasar(
 ): { kepala: string; kepadatan: string } {
   if (jenjang === "SD") {
     return {
-      kepala: `${jumlah} KARTU INFOGRAFIS, satu kartu satu subbab buku siswa. Setiap kartu SATU blok dipisah \\n\\n:
+      kepala: `${jumlah} KARTU BERGAMBAR, satu kartu satu subbab. Setiap kartu SATU blok dipisah \\n\\n:
 Baris 1: judul subbab 2-8 kata, diakhiri titik. Plain text.
-Baris 2: keterangan visual SATU kalimat pendek (maks 16 kata), diakhiri titik. Hanya ini yang tampil di kartu kecil.
-Lalu uraian 3-5 kalimat, bahasa ${kelas}, infografis (bukan esai panjang).`,
-      kepadatan: `3-5 kalimat infografis setara ${kelas}`,
+Baris 2: keterangan gambar SATU kalimat (maks 16 kata) untuk doodle.
+Lalu 2-3 kalimat lisan + SATU blok mermaid. Bukan esai. Bahasa ${kelas}.`,
+      kepadatan: `2-3 kalimat plus diagram setara ${kelas}`,
     };
   }
   const kepadatan =
@@ -307,7 +343,7 @@ function instruksiPenjelasan(
     subbab.length > 0
       ? `TEPAT ${subbab.length}`
       : jenjang === "SD"
-        ? "TEPAT 6 sampai 8"
+        ? "TEPAT 4"
         : "TEPAT 6";
   const { kepala } = formatKartuDasar(jenjang, kelas, jumlah);
   const { kepala: kepalaGlobal } = formatKartuPercepatan(jenjang, kelas, jumlah);
@@ -530,17 +566,25 @@ function promptNaskahKurikulum(opsi: {
   adaGambar: boolean;
   jumlahGambar: number;
 }): string {
+  const sd = jenjangGuru(opsi.kelas) === "SD";
   const tugas = opsi.adaGambar
     ? `Tugas: Analisis foto halaman buku pelajaran yang dilampirkan (${opsi.jumlahGambar} halaman). Deteksi topik utamanya, lalu tulis HANYA naskah kurikulum (curriculum_view) untuk ${opsi.namaDepan} (Kelas ${opsi.kelas}).`
     : `Tugas: Tulis HANYA naskah kurikulum (curriculum_view) untuk ${opsi.namaDepan} (Kelas ${opsi.kelas}) mapel ${opsi.mapel} materi ${opsi.materi}.`;
+  const cari = sd
+    ? ""
+    : `${instruksiPencarianKurikulum({
+        materi: opsi.materi,
+        mapel: opsi.mapel,
+        kelas: opsi.kelas,
+      })}\n\n`;
+  const ekstraAkhir = sd
+    ? "5. Jangan menambah contoh soal terpisah di akhir naskah. Contoh sudah di dalam kartu."
+    : "5. Di AKHIR curriculum_view, setelah semua subbab, tulis TEPAT 2 contoh soal tuntas (bukan PG) berjudul 'Contoh soal 1' dan 'Contoh soal 2'.";
+  const sketsa = sd
+    ? "2. sketsaKartu: TEPAT sama jumlahnya dengan kartu. Setiap blok SATU adegan benda konkret (buah, pensil, kelereng), tanpa teks di gambar, dipisah \\n\\n."
+    : "2. sketsaKartu: TEPAT sama jumlahnya dengan kartu di curriculum_view. Setiap blok SATU kalimat visual doodle, dipisah \\n\\n.";
   return `
-${instruksiPencarianKurikulum({
-  materi: opsi.materi,
-  mapel: opsi.mapel,
-  kelas: opsi.kelas,
-})}
-
-Kamu adalah Tutor $IGIL. ${tugas}
+${cari}Kamu adalah Tutor $IGIL. ${tugas}
 DILARANG menulis global_best_view, soal PG, atau esai. Hanya sapaan, curriculum_view, sketsaKartu, svgCode kosong, dan motivasi.
 
 ATURAN MUTLAK:
@@ -548,12 +592,12 @@ ATURAN MUTLAK:
 2. DILARANG kutip ganda (") di dalam nilai teks. Setiap backslash LaTeX digandakan.
 3. svgCode HARUS string kosong.
 4. Paragraf mikro 2-3 kalimat. Rumus wajib LaTeX. Diagram HANYA mermaid. DILARANG SVG.
-5. Di AKHIR curriculum_view, setelah semua subbab, tulis TEPAT 2 contoh soal tuntas (bukan PG) berjudul 'Contoh soal 1' dan 'Contoh soal 2'.
-${aturanMermaidDanLatex()}
+${ekstraAkhir}
+${sd ? aturanMermaidSd() : aturanMermaidDanLatex()}
 
 1. sapaan: SATU kalimat pendek. Sebut HANYA nama depan ${opsi.namaDepan}. TEPAT SATU kata pujian dari: Pintar, Cerdas, Baik, Rajin, Soleh, Semangat, Hebat.
 ${instruksiPenjelasan(opsi.kelas, opsi.namaDepan, opsi.mapel, opsi.materi).split("3. global_best_view:")[0]}
-2. sketsaKartu: TEPAT sama jumlahnya dengan kartu di curriculum_view. Setiap blok SATU kalimat visual doodle, dipisah \\n\\n.
+${sketsa}
 3. svgCode: string kosong.
 4. motivasi: SATU kata pujian dari: Pintar, Cerdas, Baik, Rajin, Soleh, Semangat, Hebat.
 
@@ -606,7 +650,7 @@ function promptNaskahGlobal(opsi: {
     jumlahKartu > 0
       ? `TEPAT ${jumlahKartu}`
       : jenjang === "SD"
-        ? "TEPAT 6 sampai 8"
+        ? "TEPAT 4"
         : "TEPAT 6";
   const { kepala } = formatKartuPercepatan(jenjang, opsi.kelas, jumlah);
   return `
@@ -707,33 +751,59 @@ export async function generateBagianModul(opsi: {
   const gambar = opsi.gambar ?? [];
 
   if (opsi.bagian === "kurikulum") {
-    const hasil = await hasilkanJsonGeminiLengkap({
-      parts: [
-        ...gambar,
-        {
-          text: promptNaskahKurikulum({
-            namaDepan,
-            kelas: opsi.kelas,
-            mapel: opsi.mapel,
+    const sd = jenjangGuru(opsi.kelas) === "SD";
+    const partsKurikulum: Part[] = [
+      ...gambar,
+      {
+        text: promptNaskahKurikulum({
+          namaDepan,
+          kelas: opsi.kelas,
+          mapel: opsi.mapel,
+          materi: opsi.materi,
+          adaGambar: gambar.length > 0,
+          jumlahGambar: gambar.length,
+        }),
+      },
+    ];
+    const panggilCepat = () =>
+      hasilkanJsonGeminiLengkap({
+        parts: partsKurikulum,
+        schema: SKEMA_KURIKULUM,
+        maxOutputTokens: 4096,
+        model: MODEL_GEMINI_RUTIN,
+        thinking: false,
+        timeoutCobaMs: 28_000,
+        timeoutMs: 48_000,
+        googleSearch: false,
+        signal: opsi.signal,
+      });
+    let hasil;
+    if (sd) {
+      hasil = await panggilCepat();
+    } else {
+      try {
+        hasil = await hasilkanJsonGeminiLengkap({
+          parts: partsKurikulum,
+          schema: SKEMA_KURIKULUM,
+          maxOutputTokens: 8192,
+          model: MODEL_GEMINI_MATERI,
+          systemInstruction: instruksiPencarianKurikulum({
             materi: opsi.materi,
-            adaGambar: gambar.length > 0,
-            jumlahGambar: gambar.length,
+            mapel: opsi.mapel,
+            kelas: opsi.kelas,
           }),
-        },
-      ],
-      schema: SKEMA_KURIKULUM,
-      maxOutputTokens: 8192,
-      model: MODEL_GEMINI_MATERI,
-      systemInstruction: instruksiPencarianKurikulum({
-        materi: opsi.materi,
-        mapel: opsi.mapel,
-        kelas: opsi.kelas,
-      }),
-      thinking: false,
-      timeoutCobaMs: 70_000,
-      googleSearch: true,
-      signal: opsi.signal,
-    });
+          thinking: false,
+          timeoutCobaMs: 45_000,
+          timeoutMs: 90_000,
+          googleSearch: true,
+          signal: opsi.signal,
+        });
+      } catch (error) {
+        if (permintaanDibatalkan(error) || opsi.signal?.aborted) throw error;
+        console.warn("[materi] kurikulum Pro lambat, fallback flash");
+        hasil = await panggilCepat();
+      }
+    }
     pastikanTeksGeminiUtuh(hasil.teks);
     const dataJson = bersihkanDanParseJson(hasil.teks);
     const dataAman = bentukModulTutor(opsi.nama, {
@@ -767,11 +837,11 @@ export async function generateBagianModul(opsi: {
         },
       ],
       schema: SKEMA_GLOBAL,
-      maxOutputTokens: 6144,
+      maxOutputTokens: jenjangGuru(opsi.kelas) === "SD" ? 4096 : 6144,
       model: MODEL_GEMINI_RUTIN,
       thinking: false,
-      timeoutCobaMs: 25_000,
-      timeoutMs: 60_000,
+      timeoutCobaMs: jenjangGuru(opsi.kelas) === "SD" ? 28_000 : 25_000,
+      timeoutMs: jenjangGuru(opsi.kelas) === "SD" ? 48_000 : 60_000,
       googleSearch: false,
       signal: opsi.signal,
     });

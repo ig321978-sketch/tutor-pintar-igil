@@ -938,7 +938,7 @@ export default function TutorAI() {
       const respons = await fetch("/api/tutor", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        signal: AbortSignal.timeout(70_000),
+        signal: AbortSignal.timeout(120_000),
         body: JSON.stringify({
           nama: namaSesiRef.current,
           kelas: kelasKirim,

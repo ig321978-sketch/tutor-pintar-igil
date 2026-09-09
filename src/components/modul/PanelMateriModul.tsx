@@ -113,7 +113,7 @@ function PanelMateriModul({
           <p className="mt-4 text-lg font-extrabold text-[#1C01A5]">
             {sudutPandang === "global"
               ? "Menyusun trik percepatan Mode Global..."
-              : "Menyusun naskah Mode Kurikulum..."}
+              : "Menyusun naskah bergambar Mode Kurikulum..."}
           </p>
         </div>
       ) : null}
