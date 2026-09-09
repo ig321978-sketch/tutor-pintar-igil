@@ -45,7 +45,6 @@ export default function PilihGuru({
             <button
               key={guru.gambar}
               type="button"
-              aria-label={guru.nama}
               aria-pressed={aktif}
               onClick={() => {
                 onGanti(guru.kelamin);
@@ -55,7 +54,7 @@ export default function PilihGuru({
                   kelas,
                 );
               }}
-              className={`flex w-full items-center justify-center rounded-2xl border-2 p-4 transition-all ${
+              className={`flex w-full items-center gap-4 rounded-2xl border-2 p-4 text-left transition-all ${
                 aktif
                   ? "border-[#1C01A5] bg-[#1C01A5]/5"
                   : "border-[#1C01A5] bg-white"
@@ -67,7 +66,10 @@ export default function PilihGuru({
                 alt=""
                 className="h-32 w-32 shrink-0 rounded-2xl object-cover"
               />
-              <span className="sr-only">{guru.nama}</span>
+              <div className="min-w-0">
+                <p className="text-lg font-extrabold text-[#1C01A5]">{guru.nama}</p>
+                <p className="text-sm text-slate-600">{guru.peran}</p>
+              </div>
             </button>
           );
         })}
