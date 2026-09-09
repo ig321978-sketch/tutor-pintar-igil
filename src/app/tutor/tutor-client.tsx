@@ -31,6 +31,8 @@ import {
   simpanModulLokal,
 } from "@/lib/cache-modul-lokal";
 import { kandidatKunciMateri, kunciMateriTutor } from "@/lib/kunci-siswa";
+import { adalahPai1Bab1 } from "@/lib/naskah-resmi";
+import { naskahPai1Bab1 } from "@/lib/naskah-resmi-pai-1-bab1";
 import {
   gantiNamaLengkapKeDepan,
   sapaanTutorRingkas,
@@ -135,6 +137,22 @@ function bagianNaskahSiap(
     return Boolean((modul.global_best_view ?? "").trim());
   }
   return pecahBankSoal(modul.pertanyaan).pilihanGanda.length >= 4;
+}
+
+function modulDariNaskahPai1Bab1(): ModulTutor {
+  const isi = naskahPai1Bab1();
+  return {
+    sapaan: "",
+    penjelasan: isi.curriculum_view,
+    curriculum_view: isi.curriculum_view,
+    global_best_view: isi.global_best_view,
+    sketsaKartu: isi.sketsaKartu,
+    svgCode: isi.svgCode,
+    pertanyaan: isi.pertanyaan,
+    kunciJawaban: isi.kunciJawaban.split(",").map((item) => item.trim()),
+    motivasi: isi.motivasi,
+    referensiUrl: isi.referensiUrl,
+  };
 }
 
 type ModulTutor = {
@@ -744,7 +762,14 @@ export default function TutorAI() {
     setStatusDoodle("memuat");
 
     const naskahDoodle = pilihPenjelasanMateri(modul, "kurikulum");
-    if (!naskahMateriSiap(naskahDoodle)) {
+    if (
+      adalahPai1Bab1(
+        kelas,
+        modeInput === "teks" ? mapel : "Berdasarkan Buku",
+        modeInput === "teks" ? bab : "Analisis AI",
+      ) ||
+      !naskahMateriSiap(naskahDoodle)
+    ) {
       setStatusDoodle("siaga");
       return;
     }
@@ -878,7 +903,8 @@ export default function TutorAI() {
     if (
       bagian === "kurikulum" &&
       naskahMateriSiap(gabung.curriculum_view) &&
-      !(gabung.gambarSisipan?.length)
+      !(gabung.gambarSisipan?.length) &&
+      !adalahPai1Bab1(kelasKirim, mapelKirim, materiKirim)
     ) {
       void muatIlustrasiDoodle(gabung);
     }
@@ -1043,15 +1069,37 @@ export default function TutorAI() {
       if (
         bagian === "kurikulum" &&
         hasilDataRef.current &&
-        !(hasilDataRef.current.gambarSisipan?.length)
+        !(hasilDataRef.current.gambarSisipan?.length) &&
+        !adalahPai1Bab1(kelasKirim, mapelKirim, materiKirim)
       ) {
         void muatIlustrasiDoodle(hasilDataRef.current);
       }
       return;
     }
+    const topicId = kunciMateriTutor(kelasKirim, mapelKirim, materiKirim);
+    if (
+      modeInput === "teks" &&
+      adalahPai1Bab1(kelasKirim, mapelKirim, materiKirim)
+    ) {
+      const gabung = terapkanBagianModul(
+        modulDariNaskahPai1Bab1(),
+        mapelKirim,
+        materiKirim,
+        kelasKirim,
+        bagian,
+        true,
+      );
+      simpanModulLokal(topicId, gabung);
+      tetapkanStatusNaskah("kurikulum", "siap");
+      tetapkanStatusNaskah("global", "siap");
+      if (pecahBankSoal(gabung.pertanyaan).pilihanGanda.length >= 4) {
+        tetapkanStatusNaskah("latihan", "siap");
+      }
+      void intipModulTersimpan(kelasKirim, mapelKirim, materiKirim);
+      return;
+    }
     if (naskahJalanRef.current.has(bagian)) return;
 
-    const topicId = kunciMateriTutor(kelasKirim, mapelKirim, materiKirim);
     if (modeInput === "teks") {
       const dariServer = await intipModulTersimpan(
         kelasKirim,
@@ -1326,10 +1374,28 @@ export default function TutorAI() {
       }
     };
     const lokal = bacaModulLokal<ModulTutor>(topicId);
+    if (adalahPai1Bab1(kelasKirim, mapelKirim, materiKirim)) {
+      const gabung = gabungModulTutor(lokal, modulDariNaskahPai1Bab1());
+      hasilDataRef.current = gabung;
+      setHasilData(gabung);
+      simpanModulLokal(topicId, gabung);
+      tandaiSiap(gabung);
+    }
 
     let batal = false;
     void intipModulTersimpan(kelasKirim, mapelKirim, materiKirim).then((data) => {
       if (batal) return;
+      if (adalahPai1Bab1(kelasKirim, mapelKirim, materiKirim)) {
+        const gabung = gabungModulTutor(
+          data ?? lokal,
+          modulDariNaskahPai1Bab1(),
+        );
+        hasilDataRef.current = gabung;
+        setHasilData(gabung);
+        simpanModulLokal(topicId, gabung);
+        tandaiSiap(gabung);
+        return;
+      }
       if (data) {
         const gabung = gabungModulTutor(lokal, data);
         hasilDataRef.current = gabung;

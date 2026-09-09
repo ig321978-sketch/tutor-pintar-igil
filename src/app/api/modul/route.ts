@@ -14,6 +14,7 @@ import {
   bentukModulTutor,
   getModule,
 } from "@/lib/susun-modul-tutor";
+import { naskahResmiJikaAda } from "@/lib/naskah-resmi";
 import { permintaanDibatalkan } from "@/lib/validasi-naskah-ai";
 
 export const dynamic = "force-dynamic";
@@ -50,11 +51,14 @@ export async function GET(req: Request) {
       { status: 400 },
     );
   }
-  const terkunci = await materiSedangTerkunci(kelas, mapel, materi);
-  const cache = terkunci
-    ? await ambilCacheMateriUntukSiswa(kelas, mapel, materi)
-    : await getModule(kelas, mapel, materi);
-  const headerCache = terkunci
+  const resmi = naskahResmiJikaAda(kelas, mapel, materi);
+  const terkunci = Boolean(resmi) || (await materiSedangTerkunci(kelas, mapel, materi));
+  const cache = resmi
+    ? await getModule(kelas, mapel, materi)
+    : terkunci
+      ? await ambilCacheMateriUntukSiswa(kelas, mapel, materi)
+      : await getModule(kelas, mapel, materi);
+  const headerCache = terkunci && !resmi
     ? {
         "Cache-Control":
           "public, s-maxage=3600, stale-while-revalidate=86400",

@@ -37,6 +37,7 @@ import {
   type IsiCacheMateri,
 } from "@/lib/cache-materi-tutor";
 import { naskahResmiJikaAda } from "@/lib/naskah-resmi";
+import { naskahTampilanPai1Bab1 } from "@/lib/naskah-resmi-pai-1-bab1";
 import { naskahGlobalSiap, naskahMateriSiap } from "@/lib/sudut-pandang";
 import { instruksiPaketLengkap } from "@/lib/paket-lengkap-materi";
 import {
@@ -835,6 +836,13 @@ export async function generateBagianModul(opsi: {
 }): Promise<ModulTutor> {
   const namaDepan = namaDepanSiswa(opsi.nama);
   const gambar = opsi.gambar ?? [];
+  const naskahResmi = naskahResmiJikaAda(opsi.kelas, opsi.mapel, opsi.materi);
+  if (naskahResmi) {
+    return bentukModulTutor(opsi.nama, naskahResmi, {
+      mapel: opsi.mapel,
+      materi: opsi.materi,
+    });
+  }
   const cacheAwal = await getModule(opsi.kelas, opsi.mapel, opsi.materi);
   if (cachePunyaBagian(cacheAwal, opsi.bagian, opsi.kelas) && cacheAwal) {
     return bentukModulTutor(opsi.nama, cacheAwal, {
@@ -910,7 +918,11 @@ export async function generateBagianModul(opsi: {
     if (!naskahMateriSiap(dataAman.curriculum_view)) {
       throw new Error("Naskah kurikulum tidak utuh.");
     }
-    if (kelasSatuSd(opsi.kelas) && !adalahNaskahInfografis(dataAman.curriculum_view)) {
+    if (
+      kelasSatuSd(opsi.kelas) &&
+      !adalahNaskahInfografis(dataAman.curriculum_view) &&
+      !naskahTampilanPai1Bab1(dataAman.curriculum_view)
+    ) {
       throw new Error("Naskah infografis kelas 1 tidak utuh.");
     }
     await simpanBagianCache(opsi, {
@@ -954,7 +966,11 @@ export async function generateBagianModul(opsi: {
     if (!naskahGlobalSiap(dataAman.global_best_view)) {
       throw new Error("Naskah global tidak utuh.");
     }
-    if (kelasSatuSd(opsi.kelas) && !adalahNaskahInfografis(dataAman.global_best_view)) {
+    if (
+      kelasSatuSd(opsi.kelas) &&
+      !adalahNaskahInfografis(dataAman.global_best_view) &&
+      !naskahTampilanPai1Bab1(dataAman.global_best_view)
+    ) {
       throw new Error("Naskah infografis kelas 1 tidak utuh.");
     }
     await simpanBagianCache(opsi, {
@@ -1010,10 +1026,24 @@ export async function ambilAtauBuatBagianModul(opsi: {
 }): Promise<{ data: ModulTutor; dariCache: boolean; topicId: string }> {
   const gambar = opsi.gambar ?? [];
   const topicId = topicIdMateri(opsi.kelas, opsi.mapel, opsi.materi);
-  let cache =
-    gambar.length === 0
+  const naskahResmi = naskahResmiJikaAda(opsi.kelas, opsi.mapel, opsi.materi);
+  let cache = naskahResmi
+    ? await getModule(opsi.kelas, opsi.mapel, opsi.materi)
+    : gambar.length === 0
       ? await getModule(opsi.kelas, opsi.mapel, opsi.materi)
       : null;
+  if (naskahResmi) {
+    const isi = cache ?? naskahResmi;
+    console.info(`[materi] naskah resmi ${opsi.bagian} topic_id=${topicId}`);
+    return {
+      data: bentukModulTutor(opsi.nama, isi, {
+        mapel: opsi.mapel,
+        materi: opsi.materi,
+      }),
+      dariCache: true,
+      topicId,
+    };
+  }
   if (cachePunyaBagian(cache, opsi.bagian, opsi.kelas) && cache) {
     console.info(`[materi] cache hit ${opsi.bagian} topic_id=${topicId}`);
     return {
@@ -1198,7 +1228,8 @@ export async function ambilAtauBuatModul(opsi: {
 }): Promise<{ data: ModulTutor; dariCache: boolean; topicId: string }> {
   const gambar = opsi.gambar ?? [];
   const topicId = topicIdMateri(opsi.kelas, opsi.mapel, opsi.materi);
-  if (gambar.length === 0) {
+  const naskahResmi = naskahResmiJikaAda(opsi.kelas, opsi.mapel, opsi.materi);
+  if (gambar.length === 0 || naskahResmi) {
     const cache = await getModule(opsi.kelas, opsi.mapel, opsi.materi);
     if (cache) {
       console.info(`[materi] cache hit topic_id=${topicId}`);

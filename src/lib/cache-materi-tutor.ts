@@ -578,6 +578,9 @@ export async function ambilCacheMateriUntukSiswa(
   mapel: string,
   materi: string,
 ): Promise<IsiCacheMateri | null> {
+  if (naskahResmiJikaAda(kelas, mapel, materi)) {
+    return ambilCacheMateri(kelas, mapel, materi);
+  }
   const terkunci = await bacaStatusKunciDariBaris(kelas, mapel, materi);
   if (!terkunci) return ambilCacheMateri(kelas, mapel, materi);
   const topicId = topicIdMateri(kelas, mapel, materi);
@@ -640,29 +643,113 @@ function barisKeIsi(data: unknown): IsiCacheMateri | null {
   return isi;
 }
 
-async function unggahNaskahResmiJikaPerlu(
+function naskahResmiSamaDenganCache(
+  dariDb: IsiCacheMateri | null,
+  resmi: IsiCacheMateri,
+): boolean {
+  if (!dariDb || !naskahBab1Utuh(dariDb.curriculum_view)) return false;
+  return (
+    dariDb.curriculum_view === resmi.curriculum_view &&
+    dariDb.global_best_view === resmi.global_best_view &&
+    naskahLatihanSaja(dariDb.pertanyaan) === naskahLatihanSaja(resmi.pertanyaan) &&
+    kunciLatihanSaja(dariDb.kunciJawaban) === kunciLatihanSaja(resmi.kunciJawaban)
+  );
+}
+
+async function upsertNaskahResmiTerkunci(
+  kunciBaris: string,
   kelas: string,
   mapel: string,
   materi: string,
   resmi: IsiCacheMateri,
-  kunciBaris: string,
 ): Promise<void> {
-  try {
-    if (kunciBaris) {
-      await perbaruiCacheMateri(kunciBaris, resmi);
-      return;
+  const supabase = supabaseServer();
+  if (!supabase) return;
+  const topicId = topicIdMateri(kelas, mapel, materi);
+  const kunci = kunciBaris || topicId;
+  const sekarang = new Date().toISOString();
+  let payload: Record<string, unknown> = {
+    curriculum_view: resmi.curriculum_view,
+    global_best_view: resmi.global_best_view,
+    sketsa_kartu: resmi.sketsaKartu,
+    svg_code: resmi.svgCode,
+    pertanyaan: naskahLatihanSaja(resmi.pertanyaan),
+    kunci_jawaban: kunciLatihanSaja(resmi.kunciJawaban),
+    motivasi: resmi.motivasi,
+    referensi_url: resmi.referensiUrl ?? "",
+    kelas,
+    mapel,
+    materi,
+    is_draft: false,
+    is_locked: true,
+    model_sumber: "naskah-resmi",
+    audio_siap: false,
+    updated_at: sekarang,
+  };
+
+  const buangKolom = (nama: string) => {
+    const { [nama]: _buang, ...sisa } = payload;
+    void _buang;
+    payload = sisa;
+  };
+
+  const cobaUpdate = async (kolom: "kunci" | "topic_id", nilai: string) => {
+    let hasil = await supabase
+      .from("cache_materi_tutor")
+      .update(payload)
+      .eq(kolom, nilai)
+      .select("kunci");
+    for (const nama of ["referensi_url", "is_locked", "model_sumber", "is_draft"]) {
+      if (!kolomHilang(hasil.error, nama)) continue;
+      buangKolom(nama);
+      hasil = await supabase
+        .from("cache_materi_tutor")
+        .update(payload)
+        .eq(kolom, nilai)
+        .select("kunci");
     }
-    await simpanCacheMateri(kelas, mapel, materi, "kamu", resmi, {
-      tulisUlangSetelahHapus: true,
-    });
-  } catch (error) {
-    if (!adalahGalatMateriTerkunci(error)) {
-      console.warn(
-        "[naskah-resmi] unggah:",
-        error instanceof Error ? error.message : error,
-      );
+    if (hasil.error) {
+      console.warn("[naskah-resmi] kunci update:", hasil.error.message);
+      return false;
+    }
+    return Boolean(hasil.data?.length);
+  };
+
+  const tertulis =
+    (await cobaUpdate("kunci", kunci)) ||
+    (await cobaUpdate("topic_id", kunci)) ||
+    (kunci !== topicId && (await cobaUpdate("kunci", topicId)));
+
+  if (!tertulis) {
+    let sisipan: Record<string, unknown> = {
+      ...payload,
+      kunci: topicId,
+      topic_id: topicId,
+    };
+    let hasil = await supabase.from("cache_materi_tutor").insert(sisipan);
+    for (const nama of ["referensi_url", "is_locked", "model_sumber", "is_draft", "topic_id"]) {
+      if (!kolomHilang(hasil.error, nama)) continue;
+      const { [nama]: _buang, ...sisa } = sisipan;
+      void _buang;
+      sisipan = sisa;
+      hasil = await supabase.from("cache_materi_tutor").insert(sisipan);
+    }
+    if (hasil.error && hasil.error.code !== "23505") {
+      console.warn("[naskah-resmi] kunci sisipan:", hasil.error.message);
     }
   }
+
+  const semua = await ambilSemuaBarisCache(kelas, mapel, materi);
+  for (const row of semua) {
+    const id = idBarisCache(row);
+    if (!id) continue;
+    const kunciAlias = await supabase
+      .from("cache_materi_tutor")
+      .update({ is_locked: true, is_draft: false, updated_at: sekarang })
+      .eq("kunci", id);
+    if (kolomHilang(kunciAlias.error, "is_locked")) break;
+  }
+  revalidateSemuaTagMateri(kelas, mapel, materi, topicId);
 }
 
 export async function ambilCacheMateri(
@@ -684,16 +771,22 @@ export async function ambilCacheMateri(
     semua.length > 1
       ? await rapikanBarisCacheGanda(kelas, mapel, materi, semua)
       : semua[0] ?? null;
-  const dariDb = utama ? barisKeIsi(utama) : null;
+  const dariDb = utama ? barisKeIsiAdmin(utama) : null;
   const kunciBaris = utama ? idBarisCache(utama) : "";
   if (resmi) {
-    if (!dariDb || !naskahBab1Utuh(dariDb.curriculum_view)) {
-      await unggahNaskahResmiJikaPerlu(kelas, mapel, materi, resmi, kunciBaris);
-      return resmi;
+    const terkunci = Boolean(utama?.is_locked);
+    if (!naskahResmiSamaDenganCache(dariDb, resmi) || !terkunci) {
+      await upsertNaskahResmiTerkunci(
+        kunciBaris,
+        kelas,
+        mapel,
+        materi,
+        resmi,
+      );
     }
-    return dariDb;
+    return resmi;
   }
-  return dariDb;
+  return dariDb && isiCachePunyaNaskah(dariDb) ? dariDb : null;
 }
 
 export async function gabungCacheMateri(

@@ -4,11 +4,18 @@ import { askTutor } from "@/lib/ask-tutor";
 import { pesanGalatGemini } from "@/lib/klien-gemini";
 import { klaimInteraksiAi, statusKuota } from "@/lib/kuota-interaksi";
 import {
+  ambilCacheMateriUntukSiswa,
   adalahGalatMateriTerkunci,
   materiSedangTerkunci,
+  topicIdMateri,
 } from "@/lib/cache-materi-tutor";
 import { responsMateriTerkunci } from "@/lib/respons-materi-terkunci";
-import { ambilAtauBuatBagianModul } from "@/lib/susun-modul-tutor";
+import {
+  ambilAtauBuatBagianModul,
+  bentukModulTutor,
+  cachePunyaBagian,
+} from "@/lib/susun-modul-tutor";
+import { naskahResmiJikaAda } from "@/lib/naskah-resmi";
 import { permintaanDibatalkan } from "@/lib/validasi-naskah-ai";
 
 export const dynamic = "force-dynamic";
@@ -129,8 +136,24 @@ export async function POST(req: Request) {
       );
     }
 
-    if (await materiSedangTerkunci(kelas, mapel, materi)) {
-      return responsMateriTerkunci();
+    if (
+      (await materiSedangTerkunci(kelas, mapel, materi)) ||
+      naskahResmiJikaAda(kelas, mapel, materi)
+    ) {
+      const cache = await ambilCacheMateriUntukSiswa(kelas, mapel, materi);
+      if (cache && cachePunyaBagian(cache, bagian, kelas)) {
+        return NextResponse.json({
+          berhasil: true,
+          dariCache: true,
+          isLocked: true,
+          topicId: topicIdMateri(kelas, mapel, materi),
+          tersimpan: true,
+          data: bentukModulTutor(nama, cache, { mapel, materi }),
+        });
+      }
+      if (await materiSedangTerkunci(kelas, mapel, materi)) {
+        return responsMateriTerkunci();
+      }
     }
 
     const hasil = await ambilAtauBuatBagianModul({

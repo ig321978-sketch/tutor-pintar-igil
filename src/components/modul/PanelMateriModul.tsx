@@ -5,6 +5,8 @@ import { Loader2, Sparkles } from "lucide-react";
 import ModuleRenderer from "@/components/ModuleRenderer";
 import { type GambarSisipan } from "@/components/GambarDoodle";
 import { LABEL_SUDUT, type SudutPandangMateri } from "@/lib/sudut-pandang";
+import { adalahJudulPai1Bab1 } from "@/lib/naskah-resmi";
+import { naskahTampilanPai1Bab1 } from "@/lib/naskah-resmi-pai-1-bab1";
 
 function PanelMateriModul({
   mapel = "",
@@ -30,9 +32,12 @@ function PanelMateriModul({
   memuat?: boolean;
 }) {
   const label = sudutPandang ? LABEL_SUDUT[sudutPandang] : null;
+  const tanpaDoodle =
+    naskahTampilanPai1Bab1(naskah) || adalahJudulPai1Bab1(mapel, materi);
 
   return (
     <article className="space-y-5">
+      {tanpaDoodle ? null : (
       <div className="relative aspect-[16/7] overflow-hidden rounded-2xl bg-[#fbf6ea]">
         {doodleSrc ? (
           // eslint-disable-next-line @next/next/no-img-element
@@ -51,6 +56,7 @@ function PanelMateriModul({
           </div>
         )}
       </div>
+      )}
       <div>
         <h2 className="text-2xl font-black leading-tight text-[#1C01A5]">
           {materi}
