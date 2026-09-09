@@ -112,7 +112,7 @@ function IkonHarakat({
 export default function NaskahPai1Bab1() {
   return (
     <div className="space-y-5">
-      <h3 className="text-right text-xl font-black leading-tight text-[#1C01A5] sm:text-2xl">
+      <h3 className="text-left text-xl font-black leading-tight text-[#1C01A5] sm:text-2xl">
         {JUDUL_PAI1_BAB1}
       </h3>
 
