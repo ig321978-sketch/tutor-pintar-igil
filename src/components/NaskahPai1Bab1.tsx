@@ -3,7 +3,6 @@
 import type { ReactNode } from "react";
 import {
   HARAKAT_PAI1_BAB1,
-  JUDUL_PAI1_BAB1,
   TEKS_KARTU_FATIHAH,
   TEKS_KARTU_HARAKAT,
   TEKS_KARTU_HIJAIYAH,
@@ -112,10 +111,6 @@ function IkonHarakat({
 export default function NaskahPai1Bab1() {
   return (
     <div className="space-y-5">
-      <h3 className="text-left text-xl font-black leading-tight text-[#1C01A5] sm:text-2xl">
-        {JUDUL_PAI1_BAB1}
-      </h3>
-
       <KartuBingkai>
         <h4 className="text-center text-lg font-black tracking-wide text-[#1C01A5] sm:text-xl">
           A. Mengenal Huruf Hijaiyah

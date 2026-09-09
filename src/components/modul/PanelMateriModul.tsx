@@ -49,11 +49,6 @@ function PanelMateriModul({
         )}
       </div>
       )}
-      <div>
-        <h2 className="text-2xl font-black leading-tight text-[#1C01A5]">
-          {materi}
-        </h2>
-      </div>
       {memuat && !naskah ? (
         <div className="rounded-2xl bg-white/80 p-8 text-center">
           <Loader2 className="mx-auto h-10 w-10 animate-spin text-[#1C01A5]" />
@@ -63,7 +58,7 @@ function PanelMateriModul({
         </div>
       ) : null}
       {naskah ? (
-        <div className="border-t border-[#1C01A5]/10 pt-5">
+        <div className="pt-1">
           <ModuleRenderer
             konten={naskah}
             mapel={mapel}
@@ -72,6 +67,7 @@ function PanelMateriModul({
             className="mt-1"
             gambarSisipan={gambarSisipan}
             doodleMemuat={doodleMemuat}
+            sembunyikanJudulUtama
           />
         </div>
       ) : null}

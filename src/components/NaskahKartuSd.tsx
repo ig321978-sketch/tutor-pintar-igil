@@ -89,11 +89,6 @@ export default function NaskahKartuSd({
 
   return (
     <div className="space-y-5">
-      {data.judul && data.judul !== materi ? (
-        <h3 className="text-left text-xl font-black leading-tight text-[#1C01A5] sm:text-2xl">
-          {data.judul}
-        </h3>
-      ) : null}
       {data.kartu.map((kartu, indeks) => {
         const doodle = gambarSisipan?.find(
           (gambar) => gambar.setelahParagraf === indeks + 1,

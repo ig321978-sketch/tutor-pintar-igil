@@ -92,10 +92,17 @@ export function BarisPoster({ item, indeks }: { item: BarisInfografis; indeks: n
   );
 }
 
-export default function InfografisKelas1({ data }: { data: NaskahInfografis }) {
+export default function InfografisKelas1({
+  data,
+  tanpaJudul = false,
+}: {
+  data: NaskahInfografis;
+  tanpaJudul?: boolean;
+}) {
   return (
     <div className="space-y-5">
     <section className="rounded-[2rem] border-4 border-[#1C01A5]/20 bg-[#FBF6EA] px-3 py-5 shadow-inner sm:px-5 sm:py-7">
+      {tanpaJudul ? null : (
       <header className="mb-6 flex items-center justify-center gap-3 text-center">
         <BookOpen className="hidden h-8 w-8 shrink-0 text-[#F0AB00] sm:block" />
         <h3
@@ -105,6 +112,7 @@ export default function InfografisKelas1({ data }: { data: NaskahInfografis }) {
         </h3>
         <School className="hidden h-8 w-8 shrink-0 text-[#1C01A5] sm:block" />
       </header>
+      )}
       <div className="space-y-5">
         {data.baris.filter(tampilkanBarisWebsite).map((item, indeks) => (
           <BarisPoster key={`${item.nomor}-${item.judul}`} item={item} indeks={indeks} />

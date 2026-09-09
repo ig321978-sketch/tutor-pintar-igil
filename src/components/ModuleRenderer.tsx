@@ -13,7 +13,12 @@ import { naskahTampilanPai1Bab1 } from "@/lib/naskah-resmi-pai-1-bab1";
 import { adalahJudulPai1Bab1 } from "@/lib/naskah-resmi";
 import { potongLengkap } from "@/lib/paket-lengkap-materi";
 import { jenjangGuru } from "@/lib/guru";
+import { rapikanKunci } from "@/lib/kunci-siswa";
 import { Loader2 } from "lucide-react";
+
+function judulSamaDenganBab(judul: string, bab: string): boolean {
+  return Boolean(judul.trim() && bab.trim()) && rapikanKunci(judul) === rapikanKunci(bab);
+}
 
 function ModuleRenderer({
   konten,
@@ -24,6 +29,7 @@ function ModuleRenderer({
   mapel = "",
   materi = "",
   kelas = "",
+  sembunyikanJudulUtama = false,
 }: {
   konten: string;
   className?: string;
@@ -33,6 +39,7 @@ function ModuleRenderer({
   mapel?: string;
   materi?: string;
   kelas?: string;
+  sembunyikanJudulUtama?: boolean;
 }) {
   const rapat = padat || /\bprose-p:my-0\b/.test(className);
   const naskah = useMemo(() => (konten ?? "").trim(), [konten]);
@@ -79,7 +86,7 @@ function ModuleRenderer({
   if (infografis) {
     return (
       <div className={className}>
-        <InfografisKelas1 data={infografis} />
+        <InfografisKelas1 data={infografis} tanpaJudul={sembunyikanJudulUtama} />
       </div>
     );
   }
@@ -90,6 +97,13 @@ function ModuleRenderer({
   return (
     <div className={`igil-buku ${rapat ? "igil-buku-padat" : ""} ${className}`}>
       {blok.map((item, indeks) => {
+        if (
+          sembunyikanJudulUtama &&
+          item.jenis === "judul" &&
+          judulSamaDenganBab(item.teks, materi)
+        ) {
+          return null;
+        }
         const tampil = (
           <BlokTampil
             key={`${item.jenis}-${indeks}`}
