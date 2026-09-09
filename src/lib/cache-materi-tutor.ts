@@ -1,6 +1,7 @@
 import { revalidateTag, unstable_cache } from "next/cache";
 import { supabaseServer } from "@/lib/supabase";
 import {
+  identitasCacheMateri,
   kandidatKunciMateri,
   kunciMapelTutor,
   kunciMateriTutor,
@@ -218,10 +219,12 @@ function materiSetara(a: string, b: string): boolean {
   const rb = rapikanKunci(b);
   if (!ra || !rb) return false;
   if (ra === rb) return true;
+  const tanpaKutip = (nilai: string) => nilai.replace(/'/g, "");
+  if (tanpaKutip(ra) === tanpaKutip(rb)) return true;
   const pendek = ra.length <= rb.length ? ra : rb;
   const panjang = ra.length <= rb.length ? rb : ra;
-  if (pendek.length < 16) return false;
-  return panjang.includes(pendek);
+  if (pendek.length < 12) return false;
+  return panjang.includes(pendek) || tanpaKutip(panjang).includes(tanpaKutip(pendek));
 }
 
 function naskahLamaAman(
@@ -367,30 +370,100 @@ async function ambilSemuaBarisCache(
       supabase.from("cache_materi_tutor").select(kolom).in("kunci", kandidat),
     ),
   );
-  const potongMateri = materi.trim().replace(/[%_]/g, "").slice(0, 48);
-  if (potongMateri.length >= 8) {
-    const identitas = await selectBarisCache((kolom) =>
-      supabase
-        .from("cache_materi_tutor")
-        .select(kolom)
-        .ilike("kelas", kelas.trim())
-        .ilike("materi", `%${potongMateri}%`),
-    );
-    masuk(
-      identitas.filter((item) => {
-        const baris = sebagaiBarisCache(item);
-        return (
-          Boolean(baris) &&
-          mapelSetara(baris?.mapel ?? "", mapel) &&
-          materiSetara(baris?.materi ?? "", materi)
-        );
-      }),
-    );
-  }
+  const potongMateri = materi
+    .trim()
+    .replace(/[%_]/g, "")
+    .replace(/['’‘`´]/g, "%")
+    .slice(0, 48);
+  const identitas = await selectBarisCache((kolom) => {
+    let q = supabase
+      .from("cache_materi_tutor")
+      .select(kolom)
+      .ilike("kelas", kelas.trim());
+    if (potongMateri.length >= 8) {
+      q = q.ilike("materi", `%${potongMateri}%`);
+    }
+    return q.limit(80);
+  });
+  masuk(
+    identitas.filter((item) => {
+      const baris = sebagaiBarisCache(item);
+      return (
+        Boolean(baris) &&
+        mapelSetara(baris?.mapel ?? "", mapel) &&
+        materiSetara(baris?.materi ?? "", materi)
+      );
+    }),
+  );
 
   return [...kumpulan.values()].sort(
     (a, b) => waktuBaris(b.updated_at) - waktuBaris(a.updated_at),
   );
+}
+
+type BarisCache = NonNullable<ReturnType<typeof sebagaiBarisCache>>;
+
+function pilihBarisUtamaCache(
+  semua: BarisCache[],
+  kelas: string,
+  mapel: string,
+  materi: string,
+): BarisCache | null {
+  if (semua.length === 0) return null;
+  const kanonik = topicIdMateri(kelas, mapel, materi);
+  const skor = (row: BarisCache) => {
+    const isi = barisKeIsiAdmin(row);
+    let nilai = waktuBaris(row.updated_at);
+    if (row.is_locked) nilai += 1e15;
+    if (isi && isiCachePunyaNaskah(isi)) nilai += 1e13;
+    nilai += Math.min((isi?.curriculum_view.length ?? 0), 50_000);
+    if (idBarisCache(row) === kanonik) nilai += 1e9;
+    return nilai;
+  };
+  return [...semua].sort((a, b) => skor(b) - skor(a))[0] ?? null;
+}
+
+async function hapusBarisCacheGanda(
+  semua: BarisCache[],
+  simpanId: string,
+): Promise<void> {
+  const supabase = supabaseServer();
+  if (!supabase || !simpanId) return;
+  const buang = [
+    ...new Set(
+      semua.map((row) => idBarisCache(row)).filter((id) => id && id !== simpanId),
+    ),
+  ];
+  if (buang.length === 0) return;
+  const lewatKunci = await supabase
+    .from("cache_materi_tutor")
+    .delete()
+    .in("kunci", buang);
+  const lewatTopic = await supabase
+    .from("cache_materi_tutor")
+    .delete()
+    .in("topic_id", buang);
+  if (lewatKunci.error) {
+    console.warn("[cache-materi] hapus ganda:", lewatKunci.error.message);
+  }
+  if (lewatTopic.error) {
+    console.warn("[cache-materi] hapus ganda topic:", lewatTopic.error.message);
+  }
+}
+
+async function rapikanBarisCacheGanda(
+  kelas: string,
+  mapel: string,
+  materi: string,
+  semua?: BarisCache[],
+): Promise<BarisCache | null> {
+  const daftar = semua ?? (await ambilSemuaBarisCache(kelas, mapel, materi));
+  if (daftar.length === 0) return null;
+  if (daftar.length === 1) return daftar[0];
+  const utama = pilihBarisUtamaCache(daftar, kelas, mapel, materi);
+  if (!utama) return null;
+  await hapusBarisCacheGanda(daftar, idBarisCache(utama));
+  return utama;
 }
 
 async function bacaStatusKunciDariBaris(
@@ -428,7 +501,10 @@ export async function materiTerkunciMenurutKunci(
     .eq("kunci", kunci)
     .maybeSingle();
   if (kolomHilang(lewatKunci.error, "is_locked")) return false;
-  return Boolean(lewatKunci.data?.is_locked);
+  if (Boolean(lewatKunci.data?.is_locked)) return true;
+  const pecah = pecahKunciMateri(kunci);
+  if (!pecah) return false;
+  return bacaStatusKunciDariBaris(pecah.kelas, pecah.mapel, pecah.materi);
 }
 
 export async function aturKunciNaskahMateri(
@@ -604,16 +680,12 @@ export async function ambilCacheMateri(
   }
   if (await cacheModulSedangDihapus(kelas, mapel, materi)) return resmi;
   const semua = await ambilSemuaBarisCache(kelas, mapel, materi);
-  let dariDb: IsiCacheMateri | null = null;
-  let kunciBaris = semua[0] ? idBarisCache(semua[0]) : "";
-  for (const row of semua) {
-    const isi = barisKeIsi(row);
-    if (isi) {
-      dariDb = isi;
-      kunciBaris = idBarisCache(row) || kunciBaris;
-      break;
-    }
-  }
+  const utama =
+    semua.length > 1
+      ? await rapikanBarisCacheGanda(kelas, mapel, materi, semua)
+      : semua[0] ?? null;
+  const dariDb = utama ? barisKeIsi(utama) : null;
+  const kunciBaris = utama ? idBarisCache(utama) : "";
   if (resmi) {
     if (!dariDb || !naskahBab1Utuh(dariDb.curriculum_view)) {
       await unggahNaskahResmiJikaPerlu(kelas, mapel, materi, resmi, kunciBaris);
@@ -669,7 +741,18 @@ export async function simpanCacheMateri(
     motivasi: isi.motivasi ?? "",
     referensiUrl: isi.referensiUrl ?? "",
   };
-  const semua = await ambilSemuaBarisCache(kelas, mapel, materi);
+  const semuaMentah = await ambilSemuaBarisCache(kelas, mapel, materi);
+  const semua =
+    semuaMentah.length > 1
+      ? [
+          (await rapikanBarisCacheGanda(
+            kelas,
+            mapel,
+            materi,
+            semuaMentah,
+          )) ?? semuaMentah[0],
+        ].filter(Boolean)
+      : semuaMentah;
   const terbaru = semua.find((row) => {
     const isi = barisKeIsiAdmin(row);
     return isi && isiCachePunyaNaskah(isi);
@@ -859,11 +942,34 @@ export async function muatDaftarCacheAdmin(): Promise<{
       pesan: `Tabel cache_materi_tutor tidak bisa dibaca: ${error.message}`,
     };
   }
+  const ringkas = (data ?? [])
+    .map((item) => barisKeRingkas(item))
+    .filter((item): item is RingkasCacheMateri => item !== null);
+  const kelompok = new Map<string, RingkasCacheMateri[]>();
+  for (const item of ringkas) {
+    const id = identitasCacheMateri(item.kelas, item.mapel, item.materi);
+    const list = kelompok.get(id) ?? [];
+    list.push(item);
+    kelompok.set(id, list);
+  }
+  const daftar: RingkasCacheMateri[] = [];
+  for (const list of kelompok.values()) {
+    list.sort((a, b) => {
+      const skor = (x: RingkasCacheMateri) =>
+        (x.isLocked ? 1e12 : 0) +
+        (x.adaCacheMateri ? 1e10 : 0) +
+        x.jumlahLatihan * 1e6 +
+        (Date.parse(x.updatedAt || "") || 0);
+      return skor(b) - skor(a);
+    });
+    daftar.push(list[0]);
+    if (list.length > 1) {
+      await rapikanBarisCacheGanda(list[0].kelas, list[0].mapel, list[0].materi);
+    }
+  }
   return {
     siap: true,
-    daftar: (data ?? [])
-      .map((item) => barisKeRingkas(item))
-      .filter((item): item is RingkasCacheMateri => item !== null),
+    daftar,
     pesan: "",
   };
 }
@@ -1036,31 +1142,6 @@ export async function perbaruiCacheMateri(
   return detail;
 }
 
-function payloadBarisDariIsi(
-  kunci: string,
-  meta: { kelas: string; mapel: string; materi: string },
-  isi: IsiCacheMateri,
-): Record<string, unknown> {
-  return {
-    kunci,
-    topic_id: kunci,
-    kelas: meta.kelas,
-    mapel: meta.mapel,
-    materi: meta.materi,
-    curriculum_view: isi.curriculum_view,
-    global_best_view: isi.global_best_view,
-    sketsa_kartu: isi.sketsaKartu,
-    svg_code: isi.svgCode,
-    pertanyaan: naskahLatihanSaja(isi.pertanyaan),
-    kunci_jawaban: kunciLatihanSaja(isi.kunciJawaban),
-    motivasi: isi.motivasi,
-    referensi_url: isi.referensiUrl ?? "",
-    is_draft: true,
-    audio_siap: false,
-    updated_at: new Date().toISOString(),
-  };
-}
-
 export async function perbaruiSuntinganAdmin(
   kunci: string,
   isi: IsiCacheMateri,
@@ -1076,7 +1157,6 @@ export async function perbaruiSuntinganAdmin(
     materi: utama.materi,
   };
   const semua = await ambilSemuaBarisCache(meta.kelas, meta.mapel, meta.materi);
-  const sudah = new Set(semua.map((row) => idBarisCache(row)).filter(Boolean));
   for (const row of semua) {
     const id = idBarisCache(row);
     if (!id || id === kunci || id === utama.kunci || id === utama.topicId) {
@@ -1088,22 +1168,7 @@ export async function perbaruiSuntinganAdmin(
       if (!adalahGalatMateriTerkunci(error)) throw error;
     }
   }
-  for (const id of kandidatKunciMateri(meta.kelas, meta.mapel, meta.materi)) {
-    if (sudah.has(id) || id === kunci) continue;
-    const baris = payloadBarisDariIsi(id, meta, isi);
-    const tulis = await supabase
-      .from("cache_materi_tutor")
-      .upsert(baris, { onConflict: "kunci" });
-    if (tulis.error && kolomHilang(tulis.error, "referensi_url")) {
-      const { referensi_url: _buang, ...tanpaReferensi } = baris;
-      void _buang;
-      await supabase
-        .from("cache_materi_tutor")
-        .upsert(tanpaReferensi, { onConflict: "kunci" });
-    } else if (tulis.error) {
-      console.warn("[cache-materi] sinkron alias:", tulis.error.message);
-    }
-  }
+  await rapikanBarisCacheGanda(meta.kelas, meta.mapel, meta.materi, semua);
   revalidateSemuaTagMateri(meta.kelas, meta.mapel, meta.materi, utama.topicId);
   return ambilDetailCacheMateri(kunci);
 }

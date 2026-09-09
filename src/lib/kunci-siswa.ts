@@ -6,6 +6,8 @@ export function rapikanKunci(nilai: string): string {
   return nilai
     .trim()
     .toLowerCase()
+    .normalize("NFKC")
+    .replace(/[’‘ʻ`´]/g, "'")
     .replace(/\s+/g, " ")
     .replace(/\s*:\s*/g, ": ");
 }
@@ -16,7 +18,8 @@ export function kunciMapelTutor(mapel: string): string {
     n === "agama islam" ||
     n === "pai" ||
     n === "pendidikan agama islam" ||
-    n === "pendidikan agama islam dan budi pekerti"
+    n === "pendidikan agama islam dan budi pekerti" ||
+    n === "pendidikan agama dan budi pekerti"
   ) {
     return "pendidikan agama islam dan budi pekerti";
   }
@@ -25,12 +28,27 @@ export function kunciMapelTutor(mapel: string): string {
 
 export const VERSI_KUNCI_MATERI = "naskah:v3";
 
+export function identitasCacheMateri(
+  kelas: string,
+  mapel: string,
+  materi: string,
+): string {
+  return `${rapikanKunci(kelas)}|${kunciMapelTutor(mapel)}|${rapikanKunci(materi)}`;
+}
+
+function variasiTulisan(nilai: string): string[] {
+  const rapi = rapikanKunci(nilai);
+  const curly = rapi.replace(/'/g, "\u2019");
+  const mentah = nilai.trim().toLowerCase().replace(/\s+/g, " ");
+  return [...new Set([rapi, curly, mentah].filter(Boolean))];
+}
+
 export function kunciMateriTutor(
   kelas: string,
   mapel: string,
   materi: string,
 ): string {
-  return `${rapikanKunci(kelas)}|${kunciMapelTutor(mapel)}|${rapikanKunci(materi)}|${VERSI_KUNCI_MATERI}`;
+  return `${identitasCacheMateri(kelas, mapel, materi)}|${VERSI_KUNCI_MATERI}`;
 }
 
 export function kandidatKunciMateri(
@@ -39,21 +57,24 @@ export function kandidatKunciMateri(
   materi: string,
 ): string[] {
   const kelasR = rapikanKunci(kelas);
-  const materiR = rapikanKunci(materi);
   const mapelAsli = rapikanKunci(mapel);
-  const daftar = new Set<string>([mapelAsli, kunciMapelTutor(mapel)]);
+  const daftarMapel = new Set<string>([mapelAsli, kunciMapelTutor(mapel)]);
   if (
     mapelAsli.includes("agama") &&
     (mapelAsli.includes("islam") ||
       mapelAsli === "pendidikan agama dan budi pekerti")
   ) {
-    daftar.add("pendidikan agama islam dan budi pekerti");
-    daftar.add("pendidikan agama dan budi pekerti");
-    daftar.add("agama islam");
+    daftarMapel.add("pendidikan agama islam dan budi pekerti");
+    daftarMapel.add("pendidikan agama dan budi pekerti");
+    daftarMapel.add("agama islam");
   }
-  return [...daftar].map(
-    (nama) => `${kelasR}|${nama}|${materiR}|${VERSI_KUNCI_MATERI}`,
-  );
+  const hasil = new Set<string>();
+  for (const nama of daftarMapel) {
+    for (const judul of variasiTulisan(materi)) {
+      hasil.add(`${kelasR}|${nama}|${judul}|${VERSI_KUNCI_MATERI}`);
+    }
+  }
+  return [...hasil];
 }
 
 export function tanggalWib(): string {

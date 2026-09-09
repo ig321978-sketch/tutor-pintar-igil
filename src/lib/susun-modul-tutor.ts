@@ -835,7 +835,7 @@ export async function generateBagianModul(opsi: {
 }): Promise<ModulTutor> {
   const namaDepan = namaDepanSiswa(opsi.nama);
   const gambar = opsi.gambar ?? [];
-  const cacheAwal = await ambilCacheMateri(opsi.kelas, opsi.mapel, opsi.materi);
+  const cacheAwal = await getModule(opsi.kelas, opsi.mapel, opsi.materi);
   if (cachePunyaBagian(cacheAwal, opsi.bagian, opsi.kelas) && cacheAwal) {
     return bentukModulTutor(opsi.nama, cacheAwal, {
       mapel: opsi.mapel,
@@ -1111,7 +1111,7 @@ export async function generateModuleFirstTime(opsi: {
 }): Promise<ModulTutor> {
   const namaDepan = namaDepanSiswa(opsi.nama);
   const gambar = opsi.gambar ?? [];
-  const sudahTersimpan = await ambilCacheMateri(opsi.kelas, opsi.mapel, opsi.materi);
+  const sudahTersimpan = await getModule(opsi.kelas, opsi.mapel, opsi.materi);
   if (
     sudahTersimpan &&
     (sudahTersimpan.curriculum_view.trim() ||

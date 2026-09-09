@@ -827,6 +827,7 @@ export default function TutorAI() {
     materiKirim: string,
     kelasKirim: string,
     bagian: BagianNaskah,
+    dariCache = false,
   ) => {
     const namaAktif = namaSesiRef.current;
     const gabung = gabungModulTutor(hasilDataRef.current, {
@@ -886,6 +887,7 @@ export default function TutorAI() {
     }
     if (
       modeInput === "teks" &&
+      !dariCache &&
       !topikTerkunciRef.current.has(
         kunciMateriTutor(kelasKirim, mapelKirim, materiKirim),
       )
@@ -1063,6 +1065,7 @@ export default function TutorAI() {
           materiKirim,
           kelasKirim,
           bagian,
+          true,
         );
         simpanModulLokal(topicId, gabung);
         tetapkanStatusNaskah(bagian, "siap");
@@ -1077,6 +1080,7 @@ export default function TutorAI() {
         materiKirim,
         kelasKirim,
         bagian,
+        true,
       );
       return;
     }
@@ -1104,6 +1108,7 @@ export default function TutorAI() {
             materiKirim,
             kelasKirim,
             bagian,
+            true,
           );
           simpanModulLokal(topicId, gabung);
           selesai("siap");
@@ -1125,6 +1130,7 @@ export default function TutorAI() {
           materiKirim,
           kelasKirim,
           bagian,
+          Boolean(data.dariCache),
         );
         if (modeInput === "teks") {
           simpanModulLokal(topicId, gabung);
@@ -1146,6 +1152,7 @@ export default function TutorAI() {
             materiKirim,
             kelasKirim,
             bagian,
+            true,
           );
           simpanModulLokal(topicId, gabung);
           selesai("siap");
@@ -1169,6 +1176,7 @@ export default function TutorAI() {
             materiKirim,
             kelasKirim,
             bagian,
+            true,
           );
           simpanModulLokal(topicId, gabung);
           selesai("siap");
