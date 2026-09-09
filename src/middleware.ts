@@ -92,6 +92,10 @@ export async function middleware(request: NextRequest) {
     return tolakPublik(request);
   }
 
+  if (ruteSitusDitutup(pathname)) {
+    return tanpaCache(NextResponse.redirect(new URL("/tutor", request.url)));
+  }
+
   if (!ruteAdmin(pathname)) {
     return tanpaCache(NextResponse.next());
   }
