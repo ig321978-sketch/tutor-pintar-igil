@@ -16,6 +16,8 @@ import {
 } from "@/lib/susun-modul-tutor";
 import { naskahResmiJikaAda } from "@/lib/naskah-resmi";
 import { permintaanDibatalkan } from "@/lib/validasi-naskah-ai";
+import { jenjangGuru } from "@/lib/guru";
+import { naskahKartuSdLayak } from "@/lib/naskah-kartu-sd";
 
 export const dynamic = "force-dynamic";
 export const revalidate = 0;
@@ -66,8 +68,15 @@ export async function GET(req: Request) {
     : {
         "Cache-Control": "no-store, max-age=0",
       };
-  const adaKurikulum = Boolean(cache?.curriculum_view?.trim());
-  const adaGlobal = Boolean(cache?.global_best_view?.trim());
+  const sd = jenjangGuru(kelas) === "SD" && !resmi;
+  const kurikulumMentah = cache?.curriculum_view?.trim() ?? "";
+  const globalMentah = cache?.global_best_view?.trim() ?? "";
+  const adaKurikulum =
+    Boolean(kurikulumMentah) &&
+    (!sd || terkunci || naskahKartuSdLayak(kurikulumMentah));
+  const adaGlobal =
+    Boolean(globalMentah) &&
+    (!sd || terkunci || naskahKartuSdLayak(globalMentah));
   const adaLatihan = pecahBankSoal(cache?.pertanyaan ?? "").pilihanGanda.length >= 4;
   if (!cache || (!adaKurikulum && !adaGlobal && !adaLatihan)) {
     return NextResponse.json(
@@ -95,7 +104,15 @@ export async function GET(req: Request) {
       dariCache: true,
       isLocked: terkunci,
       topicId: topicIdMateri(kelas, mapel, materi),
-      data: bentukModulTutor(nama, cache, { mapel, materi }),
+      data: bentukModulTutor(
+        nama,
+        {
+          ...cache,
+          curriculum_view: adaKurikulum ? cache.curriculum_view : "",
+          global_best_view: adaGlobal ? cache.global_best_view : "",
+        },
+        { mapel, materi },
+      ),
     },
     {
       headers: headerCache,

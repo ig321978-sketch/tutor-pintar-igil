@@ -229,7 +229,7 @@ Isi: benda atau angka singkat
 Kanan: NAMA KOTAK
 Artinya: 2-4 kata
 Isi: benda atau angka singkat`
-    : `- Visual WAJIB salah satu: mermaid flowchart 3-6 node, tabel markdown 2-4 baris, atau daftar langkah pendek.
+    : `- Visual WAJIB di SETIAP kartu: mermaid flowchart 3-6 node ATAU tabel markdown 2-4 baris. Tanpa itu naskah DITOLAK.
 ${aturanMermaidSd()}`;
   return `BENTUK NASKAH SD = KARTU PER PEMBAHASAN, seperti Bab 1 PAI (bukan esai, bukan poster polos):
 Setiap subbab = SATU kartu dibungkus penanda:
@@ -239,7 +239,7 @@ Lalu visual supaya konsep rumit jadi mudah dipahami.
 <<<AKHIR BAGIAN 1>>>
 ${visual}
 - Kartu berikutnya B, C, dst. sesuai urutan subbab resmi.
-- DILARANG 5+ kalimat beruntun tanpa visual. DILARANG kartu teks polos.
+- DILARANG 5+ kalimat beruntun tanpa visual. DILARANG kartu teks polos. DILARANG hanya menyebut tabel/diagram tanpa menulis kodenya.
 - DILARANG menyalin kalimat buku. DILARANG label Ayo Mengamati, Judul, Subjudul, Kartu, VOICE, JSON, pause, atau kurung siku.
 ${aturanAngkaNaskah()}
 ${aturanContohSoal(hitungan, kelas)}
@@ -588,10 +588,16 @@ export function cachePunyaBagian(
 ): boolean {
   if (!cache) return false;
   if (bagian === "kurikulum") {
-    return Boolean(cache.curriculum_view.trim());
+    const naskah = cache.curriculum_view.trim();
+    if (!naskah) return false;
+    if (jenjangGuru(_kelas) === "SD") return naskahKartuSdLayak(naskah);
+    return true;
   }
   if (bagian === "global") {
-    return Boolean(cache.global_best_view.trim());
+    const naskah = cache.global_best_view.trim();
+    if (!naskah) return false;
+    if (jenjangGuru(_kelas) === "SD") return naskahKartuSdLayak(naskah);
+    return true;
   }
   return naskahLatihanSiap(cache.pertanyaan);
 }
@@ -892,8 +898,8 @@ export async function generateBagianModul(opsi: {
       }
     }
     pastikanTeksGeminiUtuh(hasil.teks);
-    const dataJson = bersihkanDanParseJson(hasil.teks);
-    const dataAman = bentukModulTutor(
+    let dataJson = bersihkanDanParseJson(hasil.teks);
+    let dataAman = bentukModulTutor(
       opsi.nama,
       {
         ...dataJson,
@@ -904,8 +910,22 @@ export async function generateBagianModul(opsi: {
     if (!naskahMateriSiap(dataAman.curriculum_view)) {
       throw new Error("Naskah kurikulum tidak utuh.");
     }
-    if (jenjangGuru(opsi.kelas) === "SD" && !naskahKartuSdLayak(dataAman.curriculum_view)) {
-      throw new Error("Naskah kartu pembahasan SD tidak utuh.");
+    if (sd && !naskahKartuSdLayak(dataAman.curriculum_view)) {
+      console.warn("[materi] kartu SD tanpa visual, generate ulang");
+      hasil = await panggilCepat();
+      pastikanTeksGeminiUtuh(hasil.teks);
+      dataJson = bersihkanDanParseJson(hasil.teks);
+      dataAman = bentukModulTutor(
+        opsi.nama,
+        {
+          ...dataJson,
+          referensiUrl: hasil.referensi.join("\n"),
+        },
+        { mapel: opsi.mapel, materi: opsi.materi },
+      );
+      if (!naskahMateriSiap(dataAman.curriculum_view) || !naskahKartuSdLayak(dataAman.curriculum_view)) {
+        throw new Error("Naskah kartu pembahasan SD tidak utuh.");
+      }
     }
     await simpanBagianCache(opsi, {
       curriculum_view: dataAman.curriculum_view,

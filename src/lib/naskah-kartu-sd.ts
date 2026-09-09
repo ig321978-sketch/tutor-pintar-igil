@@ -28,13 +28,10 @@ export type NaskahKartuSd = {
 };
 
 function hurufKode(indeks: number, judul: string): { kode: string; judul: string } {
-  const cocok = /^([A-H])\.\s*(.+)$/.exec(judul.trim());
-  if (cocok) {
-    return { kode: cocok[1], judul: cocok[2].replace(/\.$/, "").trim() };
-  }
+  const cocok = /^([A-Z])\.\s*(.+)$/.exec(judul.trim());
   return {
     kode: String.fromCharCode(65 + (indeks % 26)),
-    judul: judul.replace(/\.$/, "").trim(),
+    judul: (cocok ? cocok[2] : judul).replace(/\.$/, "").trim(),
   };
 }
 
@@ -138,12 +135,12 @@ function kartuDariTubuh(
 }
 
 function pecahJudulHuruf(teks: string): { judul: string; tubuh: string }[] {
-  const potong = teks.split(/^(?=(?:#{1,3}\s+)?[A-H]\.\s+\S)/m);
+  const potong = teks.split(/^(?=(?:#{1,3}\s+)?[A-Z]\.\s+\S)/m);
   const hasil: { judul: string; tubuh: string }[] = [];
   for (const blok of potong) {
     const isi = blok.trim();
     if (!isi) continue;
-    const kepala = /^(?:#{1,3}\s+)?([A-H]\.\s+.+)$/m.exec(isi);
+    const kepala = /^(?:#{1,3}\s+)?([A-Z]\.\s+.+)$/m.exec(isi);
     if (!kepala) {
       if (hasil.length === 0) hasil.push({ judul: judulDariTeks(isi), tubuh: isi });
       else hasil[hasil.length - 1].tubuh += `\n\n${isi}`;
@@ -226,18 +223,24 @@ export function pecahKartuPembahasanSd(
   };
 }
 
+function kartuPunyaVisual(item: KartuPembahasanSd): boolean {
+  if (item.infografis.length > 0 || item.lengkap.length > 0) return true;
+  return item.blok.some(
+    (blok) =>
+      blok.jenis === "mermaid" ||
+      blok.jenis === "tabel" ||
+      blok.jenis === "rumus",
+  );
+}
+
 export function naskahKartuSdLayak(teks?: string): boolean {
   const naskah = teks ?? "";
   if (naskahTampilanPai1Bab1(naskah)) return true;
   if (adalahNaskahInfografis(naskah)) return true;
   const { kartu } = pecahKartuPembahasanSd(naskah);
-  return kartu.some(
-    (item) =>
-      item.pengantar.length >= 12 ||
-      item.infografis.length > 0 ||
-      item.blok.length > 0 ||
-      item.lengkap.length > 0,
-  );
+  if (kartu.length < 2) return false;
+  const visual = kartu.filter(kartuPunyaVisual);
+  return visual.length >= Math.min(2, kartu.length);
 }
 
 export function daftarPendekUntukGrid(item: string[]): boolean {
