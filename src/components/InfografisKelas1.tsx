@@ -59,7 +59,7 @@ function KotakSisi({
   );
 }
 
-function BarisPoster({ item, indeks }: { item: BarisInfografis; indeks: number }) {
+export function BarisPoster({ item, indeks }: { item: BarisInfografis; indeks: number }) {
   const kiri = WARNA[indeks % WARNA.length];
   const kanan = WARNA[(indeks + 1) % WARNA.length];
   const tengah = WARNA[(indeks + 2) % WARNA.length];

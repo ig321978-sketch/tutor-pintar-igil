@@ -7,10 +7,7 @@ import {
   pecahKunciBank,
 } from "@/lib/kuis";
 import { jenjangGuru } from "@/lib/guru";
-import {
-  adalahNaskahInfografis,
-  kelasSatuSd,
-} from "@/lib/infografis-kelas1";
+import { kelasSatuSd } from "@/lib/infografis-kelas1";
 import { mapelHitungan } from "@/lib/mapel-hitungan";
 import {
   hasilkanJsonGeminiLengkap,
@@ -37,7 +34,7 @@ import {
   type IsiCacheMateri,
 } from "@/lib/cache-materi-tutor";
 import { naskahResmiJikaAda } from "@/lib/naskah-resmi";
-import { naskahTampilanPai1Bab1 } from "@/lib/naskah-resmi-pai-1-bab1";
+import { naskahKartuSdLayak } from "@/lib/naskah-kartu-sd";
 import { naskahGlobalSiap, naskahMateriSiap } from "@/lib/sudut-pandang";
 import { instruksiPaketLengkap } from "@/lib/paket-lengkap-materi";
 import {
@@ -216,48 +213,54 @@ Kunci
 Soal WAJIB improvisasi AI, DILARANG menyalin soal buku. DILARANG memakai angka/soal yang sama dengan field pertanyaan kuis.`;
 }
 
-function alurInfografisKelas1(namaDepan: string, percepatan: boolean): string {
-  const misi = percepatan
-    ? `Isi kotak = trik percepatan. Pada Isi, boleh mulai dengan Cara cepat: lalu 1 langkah pintas.`
-    : `Isi kotak = benda, angka, atau contoh sangat singkat. Bukan esai.`;
-  return `BENTUK NASKAH KELAS 1 SD = INFOGRAFIS POSTER, seperti bagan perbandingan berwarna.
-Tulis SATU blok INFOGRAFIS. DILARANG mermaid, DILARANG esai, DILARANG banyak paragraf lepas.
-Format persis, tanpa kutip ganda:
-
-INFOGRAFIS
-Judul: judul bab 3-8 kata.
-
+function alurKartuSd(
+  namaDepan: string,
+  hitungan: boolean,
+  kelas: string,
+  kelas1: boolean,
+): string {
+  const visual = kelas1
+    ? `- Visual WAJIB infografis kotak (Kiri/Kanan, boleh Tengah) atau daftar LENGKAP. DILARANG mermaid.
+Format infografis di dalam kartu:
 1. NAMA BARIS
 Kiri: NAMA KOTAK
 Artinya: 2-4 kata
 Isi: benda atau angka singkat
 Kanan: NAMA KOTAK
 Artinya: 2-4 kata
-Isi: benda atau angka singkat
+Isi: benda atau angka singkat`
+    : `- Visual WAJIB salah satu: mermaid flowchart 3-6 node, tabel markdown 2-4 baris, atau daftar langkah pendek.
+${aturanMermaidSd()}`;
+  return `BENTUK NASKAH SD = KARTU PER PEMBAHASAN, seperti Bab 1 PAI (bukan esai, bukan poster polos):
+Setiap subbab = SATU kartu dibungkus penanda:
+<<<BAGIAN 1 | A. Judul subbab>>>
+1-2 kalimat penjelasan singkat (maks 28 kata). Bukan esai.
+Lalu visual supaya konsep rumit jadi mudah dipahami.
+<<<AKHIR BAGIAN 1>>>
+${visual}
+- Kartu berikutnya B, C, dst. sesuai urutan subbab resmi.
+- DILARANG 5+ kalimat beruntun tanpa visual. DILARANG kartu teks polos.
+- DILARANG menyalin kalimat buku. DILARANG label Ayo Mengamati, Judul, Subjudul, Kartu, VOICE, JSON, pause, atau kurung siku.
+${aturanAngkaNaskah()}
+${aturanContohSoal(hitungan, kelas)}
+Jika menyebut nama, HANYA ${namaDepan}. DILARANG pujian berlebihan.`;
+}
 
-Setiap baris = SATU subbab. Boleh Tengah: untuk konsep di tengah (sama banyak).
-${misi}
-Panah lawan dipakai otomatis. Jangan tulis panah.
-Jika materi himpunan tetap (huruf, ayat, rukun, sila, doa), setelah baris infografis tulis blok LENGKAP berisi SEMUA anggotanya. DILARANG dst.
-Jika menyebut nama, HANYA ${namaDepan}.`;
+function alurInfografisKelas1(namaDepan: string, percepatan: boolean): string {
+  return alurKartuSd(namaDepan, false, "1 SD", true).replace(
+    "1-2 kalimat penjelasan singkat (maks 28 kata). Bukan esai.",
+    percepatan
+      ? "1 kalimat trik. Pada kotak Isi boleh mulai dengan Cara cepat: lalu 1 langkah pintas."
+      : "1-2 kalimat penjelasan singkat (maks 28 kata). Bukan esai.",
+  );
 }
 
 function alurUraianBuku(namaDepan: string, hitungan: boolean, kelas: string): string {
   if (kelasSatuSd(kelas)) {
-    return alurInfografisKelas1(namaDepan, false);
+    return alurKartuSd(namaDepan, hitungan, kelas, true);
   }
   if (jenjangGuru(kelas) === "SD") {
-    return `BENTUK NASKAH SD = BUKU BERGAMBAR, bukan esai:
-- Anak SD belajar dari gambar, diagram, dan bagan. Teks hanya 2-3 kalimat lisan per kartu.
-- Setiap kartu = SATU subbab. Alur: (1) 1 kalimat situasi, (2) blok mermaid WAJIB, (3) 2-3 kalimat penjelasan, (4) daftar benda atau tabel 2-3 baris jika hitungan, (5) 1 contoh singkat.
-- DILARANG 5+ kalimat beruntun tanpa diagram. DILARANG kartu plain text saja.
-${aturanMermaidSd()}
-- DILARANG menyalin kalimat buku. DILARANG label Ayo Mengamati, Judul, Subjudul, Kartu, VOICE, JSON, pause, atau kurung siku.
-- DILARANG menomori judul kartu dengan 1. 2. 3. di depan. Judul = nama subbab saja.
-- DILARANG memisah Contoh, Latihan, atau Kunci dengan baris kosong (\\n\\n).
-${aturanAngkaNaskah()}
-${aturanContohSoal(hitungan, kelas)}
-Jika menyebut nama, HANYA ${namaDepan}. DILARANG pujian berlebihan.`;
+    return alurKartuSd(namaDepan, hitungan, kelas, false);
   }
   return `BENTUK NASKAH seperti uraian buku siswa Kurikulum Merdeka (Pusat Perbukuan), BUKAN cerita analogi bebas:
 - Setiap kartu = SATU subbab buku. Isi kartu harus mengajarkan konsep subbab itu (istilah, cara, contoh jenis yang sama), ditulis ulang dengan bahasa tutor.
@@ -325,17 +328,9 @@ function formatKartuPercepatan(
   kelas: string,
   jumlah: string,
 ): { kepala: string } {
-  if (kelasSatuSd(kelas)) {
+  if (kelasSatuSd(kelas) || jenjang === "SD") {
     return {
-      kepala: `SATU naskah INFOGRAFIS percepatan, ${jumlah} baris. Isi kotak memuat Cara cepat.`,
-    };
-  }
-  if (jenjang === "SD") {
-    return {
-      kepala: `${jumlah} KARTU PERCEPATAN BERGAMBAR, satu kartu satu subbab. Setiap kartu SATU blok dipisah \\n\\n:
-Baris 1: judul subbab 2-8 kata, diakhiri titik. Plain text.
-Baris 2: janji percepatan SATU kalimat pendek (maks 16 kata).
-Lalu Cara cepat + mermaid pendek + 2 kalimat, bahasa ${kelas}.`,
+      kepala: `${jumlah} KARTU PERCEPATAN, satu kartu satu subbab, dibungkus <<<BAGIAN n | A. Judul>>>. Tiap kartu 1 kalimat trik + visual + teks Cara cepat:. Bahasa ${kelas}.`,
     };
   }
   const kepadatan =
@@ -354,19 +349,10 @@ function formatKartuDasar(
   kelas: string,
   jumlah: string,
 ): { kepala: string; kepadatan: string } {
-  if (kelasSatuSd(kelas)) {
+  if (kelasSatuSd(kelas) || jenjang === "SD") {
     return {
-      kepala: `SATU naskah INFOGRAFIS berisi ${jumlah} baris perbandingan. Bukan kartu paragraf.`,
-      kepadatan: `kotak Artinya dan Isi setara kelas 1 SD`,
-    };
-  }
-  if (jenjang === "SD") {
-    return {
-      kepala: `${jumlah} KARTU BERGAMBAR, satu kartu satu subbab. Setiap kartu SATU blok dipisah \\n\\n:
-Baris 1: judul subbab 2-8 kata, diakhiri titik. Plain text.
-Baris 2: keterangan gambar SATU kalimat (maks 16 kata) untuk doodle.
-Lalu 2-3 kalimat lisan + SATU blok mermaid. Bukan esai. Bahasa ${kelas}.`,
-      kepadatan: `2-3 kalimat plus diagram setara ${kelas}`,
+      kepala: `${jumlah} KARTU PEMBAHASAN, satu kartu satu subbab, dibungkus <<<BAGIAN n | A. Judul>>>. Tiap kartu 1-2 kalimat penjelasan plus infografis/diagram/tabel. Bahasa ${kelas}.`,
+      kepadatan: `teks singkat plus visual setara ${kelas}`,
     };
   }
   const kepadatan =
@@ -638,17 +624,17 @@ function promptNaskahKurikulum(opsi: {
         mapel: opsi.mapel,
         kelas: opsi.kelas,
       })}\n\n`;
-  const ekstraAkhir = kelas1
-    ? "5. curriculum_view HARUS diawali INFOGRAFIS lalu baris Kiri/Kanan/Artinya/Isi. DILARANG mermaid."
-    : sd
-      ? "5. Jangan menambah contoh soal terpisah di akhir naskah. Contoh sudah di dalam kartu."
-      : "5. Di AKHIR curriculum_view, setelah semua subbab, tulis TEPAT 2 contoh soal tuntas (bukan PG) berjudul 'Contoh soal 1' dan 'Contoh soal 2'.";
+  const ekstraAkhir = sd
+    ? "5. curriculum_view berisi beberapa <<<BAGIAN n | A. Judul>>> kartu pembahasan. Tiap kartu 1-2 kalimat plus visual. Jangan menambah contoh soal terpisah di akhir."
+    : "5. Di AKHIR curriculum_view, setelah semua subbab, tulis TEPAT 2 contoh soal tuntas (bukan PG) berjudul 'Contoh soal 1' dan 'Contoh soal 2'.";
   const sketsa = sd
-    ? "2. sketsaKartu: TEPAT sama jumlahnya dengan baris infografis atau kartu. Setiap blok SATU adegan benda konkret (buah, pensil, kelereng), tanpa teks di gambar, dipisah \\n\\n."
+    ? "2. sketsaKartu: TEPAT sama jumlahnya dengan kartu pembahasan. Setiap blok SATU adegan benda konkret, tanpa teks di gambar, dipisah \\n\\n."
     : "2. sketsaKartu: TEPAT sama jumlahnya dengan kartu di curriculum_view. Setiap blok SATU kalimat visual doodle, dipisah \\n\\n.";
   const aturanGambar = kelas1
-    ? "4. Naskah kelas 1 = infografis poster. DILARANG mermaid dan esai."
-    : "4. Paragraf mikro 2-3 kalimat. Rumus wajib LaTeX. Diagram HANYA mermaid. DILARANG SVG.";
+    ? "4. Naskah kelas 1 = kartu pembahasan plus infografis kotak. DILARANG mermaid dan esai."
+    : sd
+      ? "4. Naskah SD = kartu pembahasan plus diagram/tabel. Teks singkat. DILARANG esai."
+      : "4. Paragraf mikro 2-3 kalimat. Rumus wajib LaTeX. Diagram HANYA mermaid. DILARANG SVG.";
   return `
 ${cari}Kamu adalah Tutor $IGIL. ${tugas}
 DILARANG menulis global_best_view, soal PG, atau esai. Hanya sapaan, curriculum_view, sketsaKartu, svgCode kosong, dan motivasi.
@@ -918,12 +904,8 @@ export async function generateBagianModul(opsi: {
     if (!naskahMateriSiap(dataAman.curriculum_view)) {
       throw new Error("Naskah kurikulum tidak utuh.");
     }
-    if (
-      kelasSatuSd(opsi.kelas) &&
-      !adalahNaskahInfografis(dataAman.curriculum_view) &&
-      !naskahTampilanPai1Bab1(dataAman.curriculum_view)
-    ) {
-      throw new Error("Naskah infografis kelas 1 tidak utuh.");
+    if (jenjangGuru(opsi.kelas) === "SD" && !naskahKartuSdLayak(dataAman.curriculum_view)) {
+      throw new Error("Naskah kartu pembahasan SD tidak utuh.");
     }
     await simpanBagianCache(opsi, {
       curriculum_view: dataAman.curriculum_view,
@@ -966,12 +948,8 @@ export async function generateBagianModul(opsi: {
     if (!naskahGlobalSiap(dataAman.global_best_view)) {
       throw new Error("Naskah global tidak utuh.");
     }
-    if (
-      kelasSatuSd(opsi.kelas) &&
-      !adalahNaskahInfografis(dataAman.global_best_view) &&
-      !naskahTampilanPai1Bab1(dataAman.global_best_view)
-    ) {
-      throw new Error("Naskah infografis kelas 1 tidak utuh.");
+    if (jenjangGuru(opsi.kelas) === "SD" && !naskahKartuSdLayak(dataAman.global_best_view)) {
+      throw new Error("Naskah kartu pembahasan SD tidak utuh.");
     }
     await simpanBagianCache(opsi, {
       global_best_view: dataAman.global_best_view,

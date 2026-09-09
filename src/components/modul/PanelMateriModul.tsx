@@ -5,8 +5,7 @@ import { Loader2, Sparkles } from "lucide-react";
 import ModuleRenderer from "@/components/ModuleRenderer";
 import { type GambarSisipan } from "@/components/GambarDoodle";
 import { LABEL_SUDUT, type SudutPandangMateri } from "@/lib/sudut-pandang";
-import { adalahJudulPai1Bab1 } from "@/lib/naskah-resmi";
-import { naskahTampilanPai1Bab1 } from "@/lib/naskah-resmi-pai-1-bab1";
+import { jenjangGuru } from "@/lib/guru";
 
 function PanelMateriModul({
   mapel = "",
@@ -19,6 +18,7 @@ function PanelMateriModul({
   sudutPandang,
   onGantiSudut,
   memuat,
+  kelas = "",
 }: {
   mapel?: string;
   materi: string;
@@ -30,14 +30,14 @@ function PanelMateriModul({
   sudutPandang: SudutPandangMateri | null;
   onGantiSudut: (sudut: SudutPandangMateri) => void;
   memuat?: boolean;
+  kelas?: string;
 }) {
   const label = sudutPandang ? LABEL_SUDUT[sudutPandang] : null;
-  const tanpaDoodle =
-    naskahTampilanPai1Bab1(naskah) || adalahJudulPai1Bab1(mapel, materi);
+  const tanpaDoodleHero = Boolean(kelas) && jenjangGuru(kelas) === "SD";
 
   return (
     <article className="space-y-5">
-      {tanpaDoodle ? null : (
+      {tanpaDoodleHero ? null : (
       <div className="relative aspect-[16/7] overflow-hidden rounded-2xl bg-[#fbf6ea]">
         {doodleSrc ? (
           // eslint-disable-next-line @next/next/no-img-element
@@ -115,6 +115,7 @@ function PanelMateriModul({
             konten={naskah}
             mapel={mapel}
             materi={materi}
+            kelas={kelas}
             className="mt-1"
             gambarSisipan={gambarSisipan}
             doodleMemuat={doodleMemuat}
@@ -139,5 +140,6 @@ export default memo(PanelMateriModul, (sebelum, sekarang) => (
   sebelum.doodleMemuat === sekarang.doodleMemuat &&
   sebelum.gambarSisipan === sekarang.gambarSisipan &&
   sebelum.sudutPandang === sekarang.sudutPandang &&
-  sebelum.memuat === sekarang.memuat
+  sebelum.memuat === sekarang.memuat &&
+  sebelum.kelas === sekarang.kelas
 ));

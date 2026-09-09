@@ -2003,6 +2003,7 @@ export default function TutorAI() {
                       </div>
                     ) : null}
                     <PanelMateriModul
+                      kelas={judulKelasSesi}
                       mapel={judulMapelSesi}
                       materi={judulMateriSesi}
                       sapaan={hasilData?.sapaan ?? ""}
