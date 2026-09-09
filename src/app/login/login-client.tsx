@@ -3,8 +3,6 @@
 import { useRouter, useSearchParams } from "next/navigation";
 import { useState } from "react";
 import PageShell from "@/components/PageShell";
-import { adalahPeranAdmin, bacaPeranPengguna } from "@/lib/peran";
-import { supabaseBrowser } from "@/lib/supabase-browser";
 import { kelasKotak, kelasLabel, kelasTombolUtama } from "@/lib/tema";
 
 export default function LoginClient() {
@@ -21,17 +19,21 @@ export default function LoginClient() {
     setPesan("");
     setMemuat(true);
     try {
-      const supabase = supabaseBrowser();
-      const { data, error } = await supabase.auth.signInWithPassword({
-        email: email.trim(),
-        password: sandi,
+      const res = await fetch("/api/auth/masuk", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ email: email.trim(), password: sandi }),
       });
-      if (error || !data.user) {
-        setPesan(error?.message || "Email atau kata sandi tidak valid.");
+      const json = (await res.json()) as {
+        berhasil?: boolean;
+        pesan?: string;
+        adalahAdmin?: boolean;
+      };
+      if (!res.ok || !json.berhasil) {
+        setPesan(json.pesan || "Email atau kata sandi tidak valid.");
         return;
       }
-      const peran = await bacaPeranPengguna(supabase, data.user);
-      if (next.startsWith("/admin") && !adalahPeranAdmin(peran)) {
+      if (next.startsWith("/admin") && !json.adalahAdmin) {
         router.replace("/403");
         router.refresh();
         return;
@@ -39,7 +41,7 @@ export default function LoginClient() {
       router.replace(next.startsWith("/") ? next : "/admin");
       router.refresh();
     } catch {
-      setPesan("Supabase Auth belum terhubung. Periksa URL dan kunci anon.");
+      setPesan("Tidak bisa menghubungi server. Coba lagi.");
     } finally {
       setMemuat(false);
     }
