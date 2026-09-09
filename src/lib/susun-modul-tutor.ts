@@ -977,7 +977,7 @@ export async function generateBagianModul(opsi: {
     });
     pastikanTeksGeminiUtuh(hasil.teks);
     const dataJson = bersihkanDanParseJson(hasil.teks);
-    const dataAman = bentukModulTutor(opsi.nama, dataJson, {
+    let dataAman = bentukModulTutor(opsi.nama, dataJson, {
       mapel: opsi.mapel,
       materi: opsi.materi,
     });
