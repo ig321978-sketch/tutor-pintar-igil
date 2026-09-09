@@ -1055,22 +1055,30 @@ export default function TutorAI() {
       modeInput === "teks" &&
       adalahPai1Bab1(kelasKirim, mapelKirim, materiKirim)
     ) {
-      const gabung = terapkanBagianModul(
-        modulDariNaskahPai1Bab1(),
+      const dariServer = await intipModulTersimpan(
+        kelasKirim,
         mapelKirim,
         materiKirim,
-        kelasKirim,
-        bagian,
-        true,
       );
-      simpanModulLokal(topicId, gabung);
-      tetapkanStatusNaskah("kurikulum", "siap");
-      tetapkanStatusNaskah("global", "siap");
-      if (pecahBankSoal(gabung.pertanyaan).pilihanGanda.length >= 4) {
-        tetapkanStatusNaskah("latihan", "siap");
+      if (dariServer && bagianNaskahSiap(dariServer, bagian, kelasKirim)) {
+        const gabung = terapkanBagianModul(
+          dariServer,
+          mapelKirim,
+          materiKirim,
+          kelasKirim,
+          bagian,
+          true,
+        );
+        simpanModulLokal(topicId, gabung);
+        tetapkanStatusNaskah(bagian, "siap");
+        if (
+          bagian === "kurikulum" &&
+          !(gabung.gambarSisipan?.length)
+        ) {
+          void muatIlustrasiDoodle(gabung);
+        }
+        return;
       }
-      void intipModulTersimpan(kelasKirim, mapelKirim, materiKirim);
-      return;
     }
     if (naskahJalanRef.current.has(bagian)) return;
 
@@ -1352,28 +1360,9 @@ export default function TutorAI() {
       }
     };
     const lokal = bacaModulLokal<ModulTutor>(topicId);
-    if (adalahPai1Bab1(kelasKirim, mapelKirim, materiKirim)) {
-      const gabung = gabungModulTutor(lokal, modulDariNaskahPai1Bab1());
-      hasilDataRef.current = gabung;
-      setHasilData(gabung);
-      simpanModulLokal(topicId, gabung);
-      tandaiSiap(gabung);
-    }
-
     let batal = false;
     void intipModulTersimpan(kelasKirim, mapelKirim, materiKirim).then((data) => {
       if (batal) return;
-      if (adalahPai1Bab1(kelasKirim, mapelKirim, materiKirim)) {
-        const gabung = gabungModulTutor(
-          data ?? lokal,
-          modulDariNaskahPai1Bab1(),
-        );
-        hasilDataRef.current = gabung;
-        setHasilData(gabung);
-        simpanModulLokal(topicId, gabung);
-        tandaiSiap(gabung);
-        return;
-      }
       if (data) {
         const gabung = gabungModulTutor(lokal, data);
         hasilDataRef.current = gabung;
@@ -1386,6 +1375,13 @@ export default function TutorAI() {
         hasilDataRef.current = lokal;
         setHasilData(lokal);
         tandaiSiap(lokal);
+        return;
+      }
+      if (adalahPai1Bab1(kelasKirim, mapelKirim, materiKirim)) {
+        const gabung = modulDariNaskahPai1Bab1();
+        hasilDataRef.current = gabung;
+        setHasilData(gabung);
+        tandaiSiap(gabung);
       }
     });
     return () => {

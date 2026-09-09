@@ -14,6 +14,7 @@ import {
   bentukModulTutor,
   getModule,
 } from "@/lib/susun-modul-tutor";
+import { responsJikaBukanAdmin } from "@/lib/supabase-auth";
 import { naskahResmiJikaAda } from "@/lib/naskah-resmi";
 import { permintaanDibatalkan } from "@/lib/validasi-naskah-ai";
 import { jenjangGuru } from "@/lib/guru";
@@ -54,12 +55,10 @@ export async function GET(req: Request) {
     );
   }
   const resmi = naskahResmiJikaAda(kelas, mapel, materi);
-  const terkunci = Boolean(resmi) || (await materiSedangTerkunci(kelas, mapel, materi));
-  const cache = resmi
-    ? await getModule(kelas, mapel, materi)
-    : terkunci
-      ? await ambilCacheMateriUntukSiswa(kelas, mapel, materi)
-      : await getModule(kelas, mapel, materi);
+  const terkunci = await materiSedangTerkunci(kelas, mapel, materi);
+  const cache = terkunci
+    ? await ambilCacheMateriUntukSiswa(kelas, mapel, materi)
+    : await getModule(kelas, mapel, materi);
   const headerCache = terkunci && !resmi
     ? {
         "Cache-Control":
@@ -149,6 +148,12 @@ export async function POST(req: Request) {
       return responsMateriTerkunci();
     }
 
+    const forceRegenerate = body.forceRegenerate === true;
+    if (forceRegenerate) {
+      const ditolak = await responsJikaBukanAdmin();
+      if (ditolak) return ditolak;
+    }
+
     const hasil = await ambilAtauBuatModul({
       nama,
       kelas,
@@ -156,6 +161,7 @@ export async function POST(req: Request) {
       materi,
       gambar,
       signal: req.signal,
+      forceRegenerate,
     });
 
     return NextResponse.json({

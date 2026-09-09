@@ -15,7 +15,6 @@ import {
   bentukModulTutor,
   cachePunyaBagian,
 } from "@/lib/susun-modul-tutor";
-import { naskahResmiJikaAda } from "@/lib/naskah-resmi";
 import { permintaanDibatalkan } from "@/lib/validasi-naskah-ai";
 
 export const dynamic = "force-dynamic";
@@ -136,10 +135,7 @@ export async function POST(req: Request) {
       );
     }
 
-    if (
-      (await materiSedangTerkunci(kelas, mapel, materi)) ||
-      naskahResmiJikaAda(kelas, mapel, materi)
-    ) {
+    if (await materiSedangTerkunci(kelas, mapel, materi)) {
       const cache = await ambilCacheMateriUntukSiswa(kelas, mapel, materi);
       if (cache && cachePunyaBagian(cache, bagian, kelas)) {
         return NextResponse.json({
@@ -151,9 +147,7 @@ export async function POST(req: Request) {
           data: bentukModulTutor(nama, cache, { mapel, materi }),
         });
       }
-      if (await materiSedangTerkunci(kelas, mapel, materi)) {
-        return responsMateriTerkunci();
-      }
+      return responsMateriTerkunci();
     }
 
     const hasil = await ambilAtauBuatBagianModul({

@@ -5,6 +5,7 @@ import { useState } from "react";
 import EditorNaskahMateri from "@/components/EditorNaskahMateri";
 import PageShell from "@/components/PageShell";
 import type { DetailCacheMateri, IsiCacheMateri } from "@/lib/cache-materi-tutor";
+import { pecahKunciMateri } from "@/lib/cache-materi-tutor";
 import { naskahLatihanSaja, kunciLatihanSaja } from "@/lib/kuis";
 import { formatWaktuCache } from "@/lib/studio-kreator";
 import { kelasKotak, kelasLabel, kelasTombolUtama } from "@/lib/tema";
@@ -112,47 +113,54 @@ export default function StudioKreatorDetail({
   }
 
   async function generateDenganAi() {
-    if (!meta) return;
+    const ident = meta
+      ? { kelas: meta.kelas, mapel: meta.mapel, materi: meta.materi }
+      : pecahKunciMateri(kunci);
+    if (!ident) return;
+    if (terkunci) return;
+    const naskahAda = Boolean(
+      isi.curriculum_view.trim() ||
+        isi.global_best_view.trim() ||
+        meta?.curriculum_view.trim() ||
+        meta?.global_best_view.trim(),
+    );
+    const yakin = window.confirm(
+      naskahAda
+        ? "Naskah sudah ada. Generate ulang dengan AI akan menimpa naskah tersimpan. Lanjutkan?"
+        : "Belum ada naskah tersimpan. Generate dengan AI untuk mengisi modul kosong?",
+    );
+    if (!yakin) return;
     setAksi("generate");
     setPesan("");
     setGalat("");
     try {
-      const tersimpan = await muatNaskahTersimpan();
-      const naskahAda = Boolean(
-        tersimpan?.curriculum_view.trim() ||
-          tersimpan?.global_best_view.trim(),
-      );
-      if (naskahAda) {
-        setPesan(
-          "Menampilkan naskah yang sudah Anda simpan. Generate AI tidak menimpa suntingan.",
-        );
-        return;
-      }
-      const yakin = window.confirm(
-        "Belum ada naskah tersimpan. Generate dengan AI untuk mengisi modul kosong?",
-      );
-      if (!yakin) return;
       const res = await fetch("/api/modul", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
           nama: "Siswa",
-          kelas: meta.kelas,
-          mapel: meta.mapel,
-          materi: meta.materi,
+          kelas: ident.kelas,
+          mapel: ident.mapel,
+          materi: ident.materi,
+          forceRegenerate: true,
         }),
       });
       const json = (await res.json()) as {
         berhasil?: boolean;
         pesan?: string;
         terkunci?: boolean;
+        dariCache?: boolean;
       };
       if (!res.ok || !json.berhasil) {
         setGalat(json.pesan || "Gagal generate dengan AI.");
         return;
       }
       await muatNaskahTersimpan();
-      setPesan("Generate AI selesai. Naskah dimuat dari cache yang tersimpan.");
+      setPesan(
+        json.dariCache
+          ? "Generate selesai, tetapi server masih mengembalikan cache lama."
+          : "Generate AI selesai. Naskah baru tersimpan ke cache modul.",
+      );
     } catch {
       setGalat("Tidak bisa memanggil generate AI.");
     } finally {
@@ -277,9 +285,17 @@ export default function StudioKreatorDetail({
         <div className="mb-6 rounded-3xl border border-dashed border-[#1C01A5]/25 bg-[#F8F7FF] px-5 py-8">
           <p className="text-xl font-extrabold text-[#1C01A5]">Kosong / Belum Ada</p>
           <p className="mt-2 font-semibold text-slate-600">
-            Cache modul ini belum ada. AI akan menyusun naskah saat siswa menekan
-            Memulai Pembelajaran di Ruang Belajar.
+            Cache modul ini belum ada. Generate dengan AI di bawah, atau biarkan
+            siswa membuka Materi di Ruang Belajar.
           </p>
+          <button
+            type="button"
+            onClick={() => void generateDenganAi()}
+            disabled={sibuk}
+            className={`${kelasTombolUtama} mt-5 inline-flex items-center justify-center rounded-2xl px-5 py-3 font-extrabold disabled:cursor-not-allowed disabled:opacity-50`}
+          >
+            {aksi === "generate" ? "Menghubungi AI..." : "Generate dengan AI"}
+          </button>
         </div>
       )}
 

@@ -1,4 +1,4 @@
-const KUNCI = "igil-cache-modul-v3";
+const KUNCI = "igil-cache-modul-v4";
 
 export function bacaModulLokal<T>(topicId: string): T | null {
   if (typeof window === "undefined" || !topicId) return null;
