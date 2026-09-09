@@ -52,7 +52,9 @@ async function mainkanElemen(
 ): Promise<void> {
   await siapkanElemen(el);
   terapkanLaju(el, laju);
-  await el.play();
+  await el.play().catch((error) => {
+    void error;
+  });
   terapkanLaju(el, laju);
 }
 
@@ -207,7 +209,9 @@ const PemutarAudioGuru = forwardRef<KontrolPemutarGuru, Props>(
           const batas = Number.isFinite(el.duration) ? el.duration : detik;
           el.currentTime = Math.max(0, Math.min(detik, batas));
           terapkanLaju(el, lajuRef.current);
-          await el.play();
+          await el.play().catch((error) => {
+            void error;
+          });
           terapkanLaju(el, lajuRef.current);
         },
         lanjutkan: async () => {
@@ -277,17 +281,6 @@ const PemutarAudioGuru = forwardRef<KontrolPemutarGuru, Props>(
     }, [lajuPutar]);
 
     useEffect(() => {
-      if (tanpaLiveCaption) {
-        const el = audioRef.current;
-        if (el) {
-          el.pause();
-          el.removeAttribute("src");
-          el.load();
-        }
-        return;
-      }
-      hentikanSumber();
-      window.cancelAnimationFrame(frameRef.current);
       const el = audioRef.current;
       if (!el || !src) return;
       if (el.src !== src) {
@@ -295,10 +288,10 @@ const PemutarAudioGuru = forwardRef<KontrolPemutarGuru, Props>(
         el.load();
       }
       terapkanLaju(el, lajuRef.current);
-      if (!memutar) {
-        el.pause();
-      }
-    }, [memutar, src, tanpaLiveCaption]);
+      void el.play().catch((error) => {
+        void error;
+      });
+    }, [src]);
 
     useEffect(() => {
       return () => {
@@ -314,7 +307,7 @@ const PemutarAudioGuru = forwardRef<KontrolPemutarGuru, Props>(
         preload="auto"
         playsInline
         aria-hidden="true"
-        className="sr-only"
+        className="hidden sr-only"
       />
     );
   },
