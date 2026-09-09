@@ -19,7 +19,7 @@ const META: Record<
   },
   materi: {
     judul: "Materi",
-    ringkas: "Mode Kurikulum untuk paham konsep, Mode Global untuk trik percepatan",
+    ringkas: "Pelajari konsep bab lewat naskah bergambar",
     gambar: "/kartu-modul/materi.png",
   },
   simulasi: {

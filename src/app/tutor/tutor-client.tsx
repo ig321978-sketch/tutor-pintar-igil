@@ -411,10 +411,9 @@ export default function TutorAI() {
     pilihanMapel === OPSI_LAIN_NYA ? mapelManual : pilihanMapel;
   const bab = pilihanBab === OPSI_LAIN_NYA ? babManual : pilihanBab;
 
-  const penjelasanAktif =
-    hasilData && sudutPandang
-      ? pilihPenjelasanMateri(hasilData, sudutPandang)
-      : "";
+  const penjelasanAktif = hasilData
+    ? pilihPenjelasanMateri(hasilData, sudutPandang ?? "kurikulum")
+    : "";
   const bankSoal = useMemo(() => {
     const pecah = pecahBankSoal(hasilData?.pertanyaan ?? "");
     return {
@@ -728,31 +727,6 @@ export default function TutorAI() {
     segmenSuaraRef.current = { jenis: "sapaan" };
     setSegmenSuara({ jenis: "sapaan" });
     setPesanSuara("");
-  };
-
-  const hentikanMateriSuara = () => {
-    if (segmenSuaraRef.current.jenis !== "materi") return;
-    sedangMemutarRef.current = false;
-    pemutarRef.current?.jeda();
-    setStatusPemutar("siaga");
-    setWaktuAudio(0);
-    setDurasiAudio(0);
-    waktuAudioRef.current = 0;
-    setSrcAudio(null);
-    setKataWaktu([]);
-    setIndeksKata(-1);
-    urlAudioRef.current = null;
-    setModeChirp(false);
-    setPesanSuara("");
-  };
-
-  const gantiSudutPandang = (sudut: SudutPandangMateri) => {
-    if (naskahJalanRef.current.size > 0) return;
-    hentikanMateriSuara();
-    sudahSiapAudioRef.current = true;
-    setTeksAnimasi("");
-    setSudutPandang(sudut);
-    void muatBagianNaskah(sudut);
   };
 
   const muatIlustrasiDoodle = async (modul: ModulTutor) => {
@@ -1307,6 +1281,10 @@ export default function TutorAI() {
     setPesanGalat("");
     setPesanKunci("");
     setTahapBelajar(bagian);
+    if (bagian === "materi") {
+      setSudutPandang((sebelum) => sebelum ?? "kurikulum");
+      void muatBagianNaskah("kurikulum");
+    }
     if (bagian === "latihan") {
       void muatBagianNaskah("latihan");
     }
@@ -1588,8 +1566,8 @@ export default function TutorAI() {
       return naskahSapaanUntukSuara(namaSesiRef.current, judulMapel, judulMateri);
     }
     const data = hasilDataRef.current;
-    const sudut = sudutPandangRef.current;
-    if (!data || !sudut) return "";
+    const sudut = sudutPandangRef.current ?? "kurikulum";
+    if (!data) return "";
     return naskahKartuUntukSuara(
       pilihPenjelasanMateri(data, sudut),
       namaSesiRef.current,
@@ -1687,7 +1665,7 @@ export default function TutorAI() {
     dariAwal = true,
   ) => {
     if (segmen.jenis === "materi" && !naskahDariSegmen(segmen)) {
-      setPesanSuara("Pilih Mode Kurikulum atau Mode Global, lalu ketuk PLAY.");
+      setPesanSuara("Naskah materi belum siap. Buka kartu Materi, lalu ketuk PLAY.");
       setStatusPemutar("siaga");
       return;
     }
@@ -2006,7 +1984,6 @@ export default function TutorAI() {
                       kelas={judulKelasSesi}
                       mapel={judulMapelSesi}
                       materi={judulMateriSesi}
-                      sapaan={hasilData?.sapaan ?? ""}
                       naskah={penjelasanAktif}
                       doodleSrc={
                         hasilData?.gambarUtama ||
@@ -2014,8 +1991,6 @@ export default function TutorAI() {
                       }
                       doodleMemuat={statusDoodle === "memuat"}
                       gambarSisipan={hasilData?.gambarSisipan}
-                      sudutPandang={sudutPandang}
-                      onGantiSudut={gantiSudutPandang}
                       memuat={
                         statusKurikulum === "memuat" ||
                         statusGlobal === "memuat"
