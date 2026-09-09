@@ -4,6 +4,10 @@ import {
   sapaanVoiceTutor,
 } from "@/lib/nama-siswa";
 import { pecahBlokKartu } from "@/lib/konsep-materi";
+import {
+  adalahNaskahInfografis,
+  teksLisanInfografis,
+} from "@/lib/infografis-kelas1";
 import { ucapkanLatexUntukSuara } from "@/lib/latex-ke-teks";
 import {
   ucapkanHurufVariabelTerisolasi,
@@ -173,6 +177,15 @@ export function naskahTutorUntukSuara(
   nama = "",
   opsi?: { buangSubjudulVisual?: boolean; tanpaSapaan?: boolean },
 ): string {
+  if (adalahNaskahInfografis(penjelasan)) {
+    const lisan = teksLisanInfografis(penjelasan);
+    if (opsi?.tanpaSapaan) return lisan;
+    const sapaanAman = naskahLisan(
+      nama ? sapaanTutorRingkas(nama, sapaan) : sapaan,
+      nama,
+    );
+    return [sapaanAman, lisan].filter(Boolean).join("\n\n");
+  }
   const kartu = pecahBlokKartu(penjelasan)
     .map((item) => {
       const tanpaKunci = buangBlokKunci(item);

@@ -4,6 +4,7 @@ import { topicIdMateri } from "@/lib/cache-materi-tutor";
 import { pesanGalatGemini } from "@/lib/klien-gemini";
 import { pecahBankSoal } from "@/lib/kuis";
 import { naskahGlobalSiap, naskahMateriSiap } from "@/lib/sudut-pandang";
+import { adalahNaskahInfografis, kelasSatuSd } from "@/lib/infografis-kelas1";
 import {
   ambilAtauBuatModul,
   bentukModulTutor,
@@ -46,8 +47,12 @@ export async function GET(req: Request) {
     );
   }
   const cache = await getModule(kelas, mapel, materi);
-  const adaKurikulum = naskahMateriSiap(cache?.curriculum_view);
-  const adaGlobal = naskahGlobalSiap(cache?.global_best_view);
+  const adaKurikulum =
+    naskahMateriSiap(cache?.curriculum_view) &&
+    (!kelasSatuSd(kelas) || adalahNaskahInfografis(cache?.curriculum_view));
+  const adaGlobal =
+    naskahGlobalSiap(cache?.global_best_view) &&
+    (!kelasSatuSd(kelas) || adalahNaskahInfografis(cache?.global_best_view));
   const adaLatihan = pecahBankSoal(cache?.pertanyaan ?? "").pilihanGanda.length >= 4;
   if (!cache || (!adaKurikulum && !adaGlobal && !adaLatihan)) {
     return NextResponse.json(

@@ -21,6 +21,8 @@ import {
 } from "@/lib/bersihkan-mermaid";
 import RumusKatex from "@/components/RumusKatex";
 import GambarDoodle, { type GambarSisipan } from "@/components/GambarDoodle";
+import InfografisKelas1 from "@/components/InfografisKelas1";
+import { parseInfografisKelas1 } from "@/lib/infografis-kelas1";
 import { Loader2 } from "lucide-react";
 
 let mermaidSiap = false;
@@ -319,7 +321,18 @@ function ModuleRenderer({
 }) {
   const rapat =
     padat || /\bprose-p:my-0\b/.test(className);
-  const blok = useMemo(() => pecahBlokNaskahModul(konten), [konten]);
+  const infografis = useMemo(() => parseInfografisKelas1(konten), [konten]);
+  const blok = useMemo(
+    () => (infografis ? [] : pecahBlokNaskahModul(konten)),
+    [konten, infografis],
+  );
+  if (infografis) {
+    return (
+      <div className={className}>
+        <InfografisKelas1 data={infografis} />
+      </div>
+    );
+  }
   if (blok.length === 0) return null;
 
   let indeksJudul = 0;

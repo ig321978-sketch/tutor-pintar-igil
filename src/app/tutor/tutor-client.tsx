@@ -42,6 +42,7 @@ import {
   naskahMateriSiap,
   type SudutPandangMateri,
 } from "@/lib/sudut-pandang";
+import { adalahNaskahInfografis, kelasSatuSd } from "@/lib/infografis-kelas1";
 import {
   bacaPerlambatVoice,
   lajuPutarDariPerlambat,
@@ -121,10 +122,26 @@ function gabungModulTutor(sebelum: ModulTutor | null, baru: ModulTutor): ModulTu
   };
 }
 
-function bagianNaskahSiap(modul: ModulTutor | null, bagian: BagianNaskah): boolean {
+function bagianNaskahSiap(
+  modul: ModulTutor | null,
+  bagian: BagianNaskah,
+  kelasSiswa = "",
+): boolean {
   if (!modul) return false;
-  if (bagian === "kurikulum") return naskahMateriSiap(modul.curriculum_view);
-  if (bagian === "global") return naskahGlobalSiap(modul.global_best_view);
+  if (bagian === "kurikulum") {
+    if (!naskahMateriSiap(modul.curriculum_view)) return false;
+    if (kelasSatuSd(kelasSiswa)) {
+      return adalahNaskahInfografis(modul.curriculum_view);
+    }
+    return true;
+  }
+  if (bagian === "global") {
+    if (!naskahGlobalSiap(modul.global_best_view)) return false;
+    if (kelasSatuSd(kelasSiswa)) {
+      return adalahNaskahInfografis(modul.global_best_view);
+    }
+    return true;
+  }
   return pecahBankSoal(modul.pertanyaan).pilihanGanda.length >= 4;
 }
 
@@ -1014,7 +1031,7 @@ export default function TutorAI() {
     if (naskahJalanRef.current.size > 0 && !naskahJalanRef.current.has(bagian)) {
       return;
     }
-    if (bagianNaskahSiap(hasilDataRef.current, bagian)) {
+    if (bagianNaskahSiap(hasilDataRef.current, bagian, kelasKirim)) {
       tetapkanStatusNaskah(bagian, "siap");
       if (
         bagian === "kurikulum" &&
@@ -1029,7 +1046,7 @@ export default function TutorAI() {
 
     const topicId = kunciMateriTutor(kelasKirim, mapelKirim, materiKirim);
     const lokal = bacaModulLokal<ModulTutor>(topicId);
-    if (lokal && bagianNaskahSiap(lokal, bagian)) {
+    if (lokal && bagianNaskahSiap(lokal, bagian, kelasKirim)) {
       terapkanBagianModul(
         lokal,
         mapelKirim,
@@ -1039,7 +1056,7 @@ export default function TutorAI() {
       );
       void intipModulTersimpan(kelasKirim, mapelKirim, materiKirim).then(
         (server) => {
-          if (!server || !bagianNaskahSiap(server, bagian)) return;
+          if (!server || !bagianNaskahSiap(server, bagian, kelasKirim)) return;
           const gabung = gabungModulTutor(hasilDataRef.current, server);
           hasilDataRef.current = gabung;
           setHasilData(gabung);
@@ -1065,7 +1082,7 @@ export default function TutorAI() {
           mapelKirim,
           materiKirim,
         );
-        if (cacheAwal && bagianNaskahSiap(cacheAwal, bagian)) {
+        if (cacheAwal && bagianNaskahSiap(cacheAwal, bagian, kelasKirim)) {
           const gabung = terapkanBagianModul(
             cacheAwal,
             mapelKirim,
@@ -1086,7 +1103,7 @@ export default function TutorAI() {
         bagian,
       );
 
-      if (data.berhasil && data.data && bagianNaskahSiap(data.data, bagian)) {
+      if (data.berhasil && data.data && bagianNaskahSiap(data.data, bagian, kelasKirim)) {
         const gabung = terapkanBagianModul(
           data.data,
           mapelKirim,
@@ -1107,7 +1124,7 @@ export default function TutorAI() {
           mapelKirim,
           materiKirim,
         );
-        if (cacheSetelah && bagianNaskahSiap(cacheSetelah, bagian)) {
+        if (cacheSetelah && bagianNaskahSiap(cacheSetelah, bagian, kelasKirim)) {
           const gabung = terapkanBagianModul(
             cacheSetelah,
             mapelKirim,
@@ -1130,7 +1147,7 @@ export default function TutorAI() {
           mapelKirim,
           materiKirim,
         );
-        if (cacheJaringan && bagianNaskahSiap(cacheJaringan, bagian)) {
+        if (cacheJaringan && bagianNaskahSiap(cacheJaringan, bagian, kelasKirim)) {
           const gabung = terapkanBagianModul(
             cacheJaringan,
             mapelKirim,

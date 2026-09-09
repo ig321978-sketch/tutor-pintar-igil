@@ -7,6 +7,10 @@ import {
   pecahKunciBank,
 } from "@/lib/kuis";
 import { jenjangGuru } from "@/lib/guru";
+import {
+  adalahNaskahInfografis,
+  kelasSatuSd,
+} from "@/lib/infografis-kelas1";
 import { mapelHitungan } from "@/lib/mapel-hitungan";
 import {
   hasilkanJsonGeminiLengkap,
@@ -207,7 +211,35 @@ Kunci
 Soal WAJIB improvisasi AI, DILARANG menyalin soal buku. DILARANG memakai angka/soal yang sama dengan field pertanyaan kuis.`;
 }
 
+function alurInfografisKelas1(namaDepan: string, percepatan: boolean): string {
+  const misi = percepatan
+    ? `Isi kotak = trik percepatan. Pada Isi, boleh mulai dengan Cara cepat: lalu 1 langkah pintas.`
+    : `Isi kotak = benda, angka, atau contoh sangat singkat. Bukan esai.`;
+  return `BENTUK NASKAH KELAS 1 SD = INFOGRAFIS POSTER, seperti bagan perbandingan berwarna.
+Tulis SATU blok INFOGRAFIS. DILARANG mermaid, DILARANG esai, DILARANG banyak paragraf lepas.
+Format persis, tanpa kutip ganda:
+
+INFOGRAFIS
+Judul: judul bab 3-8 kata.
+
+1. NAMA BARIS
+Kiri: NAMA KOTAK
+Artinya: 2-4 kata
+Isi: benda atau angka singkat
+Kanan: NAMA KOTAK
+Artinya: 2-4 kata
+Isi: benda atau angka singkat
+
+Setiap baris = SATU subbab. Boleh Tengah: untuk konsep di tengah (sama banyak).
+${misi}
+Panah lawan dipakai otomatis. Jangan tulis panah.
+Jika menyebut nama, HANYA ${namaDepan}.`;
+}
+
 function alurUraianBuku(namaDepan: string, hitungan: boolean, kelas: string): string {
+  if (kelasSatuSd(kelas)) {
+    return alurInfografisKelas1(namaDepan, false);
+  }
   if (jenjangGuru(kelas) === "SD") {
     return `BENTUK NASKAH SD = BUKU BERGAMBAR, bukan esai:
 - Anak SD belajar dari gambar, diagram, dan bagan. Teks hanya 2-3 kalimat lisan per kartu.
@@ -261,6 +293,9 @@ function alurUraianGlobal(namaDepan: string, hitungan: boolean, kelas: string): 
   const alur = hitungan
     ? `- Alur tiap kartu: (1) janji percepatan 1 kalimat, (2) baris persis 'Cara cepat:' lalu langkah hack/trik (bukan definisi), (3) baris 'Kapan dipakai:' 1 syarat + 1 kapan JANGAN dipakai, (4) rumus pintas di baris sendiri jika ada, (5) Contoh cepat dan latihan tempo.`
     : `- Alur tiap kartu: (1) janji percepatan 1 kalimat, (2) baris persis 'Cara cepat:' lalu pola/mnemonik/pohon keputusan, (3) baris 'Kapan dipakai:' plus 1 jebakan yang bikin lama, (4) Contoh cepat dan latihan tempo.`;
+  if (kelasSatuSd(kelas)) {
+    return alurInfografisKelas1(namaDepan, true);
+  }
   const visualSd =
     jenjangGuru(kelas) === "SD"
       ? `- Untuk SD: sertakan SATU mermaid pendek per kartu (pola trik), lalu 2 kalimat. ${aturanMermaidSd()}`
@@ -284,6 +319,11 @@ function formatKartuPercepatan(
   kelas: string,
   jumlah: string,
 ): { kepala: string } {
+  if (kelasSatuSd(kelas)) {
+    return {
+      kepala: `SATU naskah INFOGRAFIS percepatan, ${jumlah} baris. Isi kotak memuat Cara cepat.`,
+    };
+  }
   if (jenjang === "SD") {
     return {
       kepala: `${jumlah} KARTU PERCEPATAN BERGAMBAR, satu kartu satu subbab. Setiap kartu SATU blok dipisah \\n\\n:
@@ -308,6 +348,12 @@ function formatKartuDasar(
   kelas: string,
   jumlah: string,
 ): { kepala: string; kepadatan: string } {
+  if (kelasSatuSd(kelas)) {
+    return {
+      kepala: `SATU naskah INFOGRAFIS berisi ${jumlah} baris perbandingan. Bukan kartu paragraf.`,
+      kepadatan: `kotak Artinya dan Isi setara kelas 1 SD`,
+    };
+  }
   if (jenjang === "SD") {
     return {
       kepala: `${jumlah} KARTU BERGAMBAR, satu kartu satu subbab. Setiap kartu SATU blok dipisah \\n\\n:
@@ -543,10 +589,19 @@ function naskahLatihanSiap(teks?: string): boolean {
 export function cachePunyaBagian(
   cache: IsiCacheMateri | null,
   bagian: BagianNaskahModul,
+  kelas = "",
 ): boolean {
   if (!cache) return false;
-  if (bagian === "kurikulum") return naskahMateriSiap(cache.curriculum_view);
-  if (bagian === "global") return naskahGlobalSiap(cache.global_best_view);
+  if (bagian === "kurikulum") {
+    if (!naskahMateriSiap(cache.curriculum_view)) return false;
+    if (kelasSatuSd(kelas)) return adalahNaskahInfografis(cache.curriculum_view);
+    return true;
+  }
+  if (bagian === "global") {
+    if (!naskahGlobalSiap(cache.global_best_view)) return false;
+    if (kelasSatuSd(kelas)) return adalahNaskahInfografis(cache.global_best_view);
+    return true;
+  }
   return naskahLatihanSiap(cache.pertanyaan);
 }
 
@@ -567,6 +622,7 @@ function promptNaskahKurikulum(opsi: {
   jumlahGambar: number;
 }): string {
   const sd = jenjangGuru(opsi.kelas) === "SD";
+  const kelas1 = kelasSatuSd(opsi.kelas);
   const tugas = opsi.adaGambar
     ? `Tugas: Analisis foto halaman buku pelajaran yang dilampirkan (${opsi.jumlahGambar} halaman). Deteksi topik utamanya, lalu tulis HANYA naskah kurikulum (curriculum_view) untuk ${opsi.namaDepan} (Kelas ${opsi.kelas}).`
     : `Tugas: Tulis HANYA naskah kurikulum (curriculum_view) untuk ${opsi.namaDepan} (Kelas ${opsi.kelas}) mapel ${opsi.mapel} materi ${opsi.materi}.`;
@@ -577,12 +633,17 @@ function promptNaskahKurikulum(opsi: {
         mapel: opsi.mapel,
         kelas: opsi.kelas,
       })}\n\n`;
-  const ekstraAkhir = sd
-    ? "5. Jangan menambah contoh soal terpisah di akhir naskah. Contoh sudah di dalam kartu."
-    : "5. Di AKHIR curriculum_view, setelah semua subbab, tulis TEPAT 2 contoh soal tuntas (bukan PG) berjudul 'Contoh soal 1' dan 'Contoh soal 2'.";
+  const ekstraAkhir = kelas1
+    ? "5. curriculum_view HARUS diawali INFOGRAFIS lalu baris Kiri/Kanan/Artinya/Isi. DILARANG mermaid."
+    : sd
+      ? "5. Jangan menambah contoh soal terpisah di akhir naskah. Contoh sudah di dalam kartu."
+      : "5. Di AKHIR curriculum_view, setelah semua subbab, tulis TEPAT 2 contoh soal tuntas (bukan PG) berjudul 'Contoh soal 1' dan 'Contoh soal 2'.";
   const sketsa = sd
-    ? "2. sketsaKartu: TEPAT sama jumlahnya dengan kartu. Setiap blok SATU adegan benda konkret (buah, pensil, kelereng), tanpa teks di gambar, dipisah \\n\\n."
+    ? "2. sketsaKartu: TEPAT sama jumlahnya dengan baris infografis atau kartu. Setiap blok SATU adegan benda konkret (buah, pensil, kelereng), tanpa teks di gambar, dipisah \\n\\n."
     : "2. sketsaKartu: TEPAT sama jumlahnya dengan kartu di curriculum_view. Setiap blok SATU kalimat visual doodle, dipisah \\n\\n.";
+  const aturanGambar = kelas1
+    ? "4. Naskah kelas 1 = infografis poster. DILARANG mermaid dan esai."
+    : "4. Paragraf mikro 2-3 kalimat. Rumus wajib LaTeX. Diagram HANYA mermaid. DILARANG SVG.";
   return `
 ${cari}Kamu adalah Tutor $IGIL. ${tugas}
 DILARANG menulis global_best_view, soal PG, atau esai. Hanya sapaan, curriculum_view, sketsaKartu, svgCode kosong, dan motivasi.
@@ -591,9 +652,9 @@ ATURAN MUTLAK:
 1. Respons HANYA 1 objek JSON murni.
 2. DILARANG kutip ganda (") di dalam nilai teks. Setiap backslash LaTeX digandakan.
 3. svgCode HARUS string kosong.
-4. Paragraf mikro 2-3 kalimat. Rumus wajib LaTeX. Diagram HANYA mermaid. DILARANG SVG.
+${aturanGambar}
 ${ekstraAkhir}
-${sd ? aturanMermaidSd() : aturanMermaidDanLatex()}
+${kelas1 ? "" : sd ? aturanMermaidSd() : aturanMermaidDanLatex()}
 
 1. sapaan: SATU kalimat pendek. Sebut HANYA nama depan ${opsi.namaDepan}. TEPAT SATU kata pujian dari: Pintar, Cerdas, Baik, Rajin, Soleh, Semangat, Hebat.
 ${instruksiPenjelasan(opsi.kelas, opsi.namaDepan, opsi.mapel, opsi.materi).split("3. global_best_view:")[0]}
@@ -653,6 +714,7 @@ function promptNaskahGlobal(opsi: {
         ? "TEPAT 4"
         : "TEPAT 6";
   const { kepala } = formatKartuPercepatan(jenjang, opsi.kelas, jumlah);
+  const kelas1 = kelasSatuSd(opsi.kelas);
   return `
 Kamu adalah Tutor $IGIL. Tulis HANYA naskah global_best_view untuk ${opsi.namaDepan} (Kelas ${opsi.kelas}) mapel ${opsi.mapel} materi ${opsi.materi}.
 Ini Mode Global: alat percepatan/hack, BUKAN mengulang Mode Kurikulum dengan analogi.
@@ -663,8 +725,8 @@ ${acuan}
 ATURAN MUTLAK:
 1. Respons HANYA 1 objek JSON murni { 'global_best_view': '...' }.
 2. DILARANG kutip ganda (") di dalam nilai teks. Setiap backslash LaTeX digandakan.
-3. Paragraf mikro. Rumus wajib LaTeX. Diagram HANYA mermaid. DILARANG SVG.
-${aturanMermaidDanLatex()}
+${kelas1 ? "3. Format INFOGRAFIS. Isi kotak memuat Cara cepat. DILARANG mermaid." : "3. Paragraf mikro. Rumus wajib LaTeX. Diagram HANYA mermaid. DILARANG SVG."}
+${kelas1 ? "" : aturanMermaidDanLatex()}
 
 global_best_view: alat percepatan Mode Global. ${kepala}
 ${alurUraianGlobal(opsi.namaDepan, hitungan, opsi.kelas)}
@@ -813,6 +875,9 @@ export async function generateBagianModul(opsi: {
     if (!naskahMateriSiap(dataAman.curriculum_view)) {
       throw new Error("Naskah kurikulum tidak utuh.");
     }
+    if (kelasSatuSd(opsi.kelas) && !adalahNaskahInfografis(dataAman.curriculum_view)) {
+      throw new Error("Naskah infografis kelas 1 tidak utuh.");
+    }
     await simpanBagianCache(opsi, {
       curriculum_view: dataAman.curriculum_view,
       sketsaKartu: dataAman.sketsaKartu,
@@ -850,6 +915,9 @@ export async function generateBagianModul(opsi: {
     const dataAman = bentukModulTutor(opsi.nama, dataJson);
     if (!naskahGlobalSiap(dataAman.global_best_view)) {
       throw new Error("Naskah global tidak utuh.");
+    }
+    if (kelasSatuSd(opsi.kelas) && !adalahNaskahInfografis(dataAman.global_best_view)) {
+      throw new Error("Naskah infografis kelas 1 tidak utuh.");
     }
     await simpanBagianCache(opsi, {
       global_best_view: dataAman.global_best_view,
@@ -905,7 +973,7 @@ export async function ambilAtauBuatBagianModul(opsi: {
     gambar.length === 0
       ? await getModule(opsi.kelas, opsi.mapel, opsi.materi)
       : null;
-  if (cachePunyaBagian(cache, opsi.bagian) && cache) {
+  if (cachePunyaBagian(cache, opsi.bagian, opsi.kelas) && cache) {
     console.info(`[materi] cache hit ${opsi.bagian} topic_id=${topicId}`);
     return {
       data: bentukModulTutor(opsi.nama, cache),
@@ -923,7 +991,7 @@ export async function ambilAtauBuatBagianModul(opsi: {
     });
     if (gambar.length === 0) {
       const cacheSetelah = await getModule(opsi.kelas, opsi.mapel, opsi.materi);
-      if (cacheSetelah && cachePunyaBagian(cacheSetelah, opsi.bagian)) {
+      if (cacheSetelah && cachePunyaBagian(cacheSetelah, opsi.bagian, opsi.kelas)) {
         return {
           data: bentukModulTutor(opsi.nama, cacheSetelah),
           dariCache: true,
@@ -952,7 +1020,7 @@ export async function ambilAtauBuatBagianModul(opsi: {
         opsi.mapel,
         opsi.materi,
       );
-      if (cachePunyaBagian(cacheSetelahGalat, opsi.bagian) && cacheSetelahGalat) {
+      if (cachePunyaBagian(cacheSetelahGalat, opsi.bagian, opsi.kelas) && cacheSetelahGalat) {
         return {
           data: bentukModulTutor(opsi.nama, cacheSetelahGalat),
           dariCache: true,
