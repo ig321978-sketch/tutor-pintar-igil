@@ -57,7 +57,6 @@ import PemutarAudioGuru, {
   indeksKataAktif,
   type KontrolPemutarGuru,
 } from "@/components/PemutarAudioGuru";
-import PemutarTutorMengambang from "@/components/PemutarTutorMengambang";
 import KartuBagianModul from "@/components/modul/KartuBagianModul";
 import PanelLatihanModul from "@/components/modul/PanelLatihanModul";
 import PanelMateriModul from "@/components/modul/PanelMateriModul";
@@ -1973,16 +1972,10 @@ export default function TutorAI() {
           src={srcAudio}
           memutar={modeChirp && statusPemutar === "memutar"}
           lajuPutar={lajuPutarDariPerlambat(perlambatVoice)}
+          tanpaLiveCaption
           padaWaktu={padaWaktuAudio}
           padaDurasi={padaDurasiAudio}
           padaSelesai={padaSelesaiAudio}
-        />
-        <PemutarTutorMengambang
-          memutar={statusPemutar === "memutar"}
-          waktu={waktuAudio}
-          durasi={durasiAudio}
-          padaToggle={() => undefined}
-          padaUlang={() => undefined}
         />
         {pesanGalat === PESAN_GAGAL_SUSUN_MATERI &&
         (statusKurikulum === "galat" ||

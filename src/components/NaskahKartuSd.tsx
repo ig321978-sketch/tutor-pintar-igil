@@ -4,6 +4,7 @@ import type { ReactNode } from "react";
 import { Loader2 } from "lucide-react";
 import { BarisPoster } from "@/components/InfografisKelas1";
 import DaftarLengkapMateri from "@/components/DaftarLengkapMateri";
+import LatihanSuaraHijaiyah from "@/components/LatihanSuaraHijaiyah";
 import GambarDoodle, { type GambarSisipan } from "@/components/GambarDoodle";
 import { BlokTampil, TeksBuku } from "@/components/BlokNaskahTampil";
 import {
@@ -142,6 +143,7 @@ export default function NaskahKartuSd({
                 <DaftarLengkapMateri data={kartu.lengkap} />
               </div>
             ) : null}
+            {/hijaiyah/i.test(kartu.judul) ? <LatihanSuaraHijaiyah /> : null}
           </KartuBingkai>
         );
       })}

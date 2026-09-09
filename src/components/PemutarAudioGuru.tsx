@@ -281,6 +281,17 @@ const PemutarAudioGuru = forwardRef<KontrolPemutarGuru, Props>(
     }, [lajuPutar]);
 
     useEffect(() => {
+      if (tanpaLiveCaption) {
+        const el = audioRef.current;
+        if (el) {
+          el.pause();
+          el.removeAttribute("src");
+          el.load();
+        }
+        return;
+      }
+      hentikanSumber();
+      window.cancelAnimationFrame(frameRef.current);
       const el = audioRef.current;
       if (!el || !src) return;
       if (el.src !== src) {
@@ -288,10 +299,10 @@ const PemutarAudioGuru = forwardRef<KontrolPemutarGuru, Props>(
         el.load();
       }
       terapkanLaju(el, lajuRef.current);
-      void el.play().catch((error) => {
-        void error;
-      });
-    }, [src]);
+      if (!memutar) {
+        el.pause();
+      }
+    }, [memutar, src, tanpaLiveCaption]);
 
     useEffect(() => {
       return () => {
