@@ -4,7 +4,10 @@ import type { SupabaseClient } from "@supabase/supabase-js";
 
 function kredensialPublik(): { url: string; kunci: string } | null {
   const url = process.env.NEXT_PUBLIC_SUPABASE_URL;
-  const kunci = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY;
+  const kunci =
+    process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY ||
+    process.env.SUPABASE_ANON_KEY ||
+    process.env.SUPABASE_SERVICE_ROLE_KEY;
   if (!url || !kunci) return null;
   return { url, kunci };
 }
