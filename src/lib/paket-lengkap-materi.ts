@@ -51,6 +51,12 @@ export const HIJAIYAH: ItemPaketLengkap[] = [
   { lambang: "ي", nama: "Ya" },
 ];
 
+export const HIJAIYAH_30: ItemPaketLengkap[] = [
+  ...HIJAIYAH.slice(0, 27),
+  { lambang: "لا", nama: "Lam-Alif" },
+  ...HIJAIYAH.slice(27),
+];
+
 export const FATIHAH: ItemPaketLengkap[] = [
   {
     lambang: "بِسْمِ اللَّهِ الرَّحْمَٰنِ الرَّحِيمِ",

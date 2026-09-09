@@ -22,8 +22,11 @@ import {
 import RumusKatex from "@/components/RumusKatex";
 import GambarDoodle, { type GambarSisipan } from "@/components/GambarDoodle";
 import InfografisKelas1 from "@/components/InfografisKelas1";
+import NaskahPai1Bab1 from "@/components/NaskahPai1Bab1";
 import DaftarLengkapMateri from "@/components/DaftarLengkapMateri";
 import { parseInfografisKelas1 } from "@/lib/infografis-kelas1";
+import { naskahTampilanPai1Bab1 } from "@/lib/naskah-resmi-pai-1-bab1";
+import { adalahJudulPai1Bab1 } from "@/lib/naskah-resmi";
 import { potongLengkap } from "@/lib/paket-lengkap-materi";
 import { Loader2 } from "lucide-react";
 
@@ -314,8 +317,8 @@ function ModuleRenderer({
   padat = false,
   gambarSisipan,
   doodleMemuat = false,
-  mapel: _mapel = "",
-  materi: _materi = "",
+  mapel = "",
+  materi = "",
 }: {
   konten: string;
   className?: string;
@@ -325,20 +328,35 @@ function ModuleRenderer({
   mapel?: string;
   materi?: string;
 }) {
-  void _mapel;
-  void _materi;
   const rapat =
     padat || /\bprose-p:my-0\b/.test(className);
   const naskah = useMemo(
     () => (konten ?? "").trim(),
     [konten],
   );
-  const infografis = useMemo(() => parseInfografisKelas1(naskah), [naskah]);
+  const pakaiKartuBab1 = useMemo(
+    () =>
+      naskahTampilanPai1Bab1(naskah) ||
+      (adalahJudulPai1Bab1(mapel, materi) &&
+        /Mengenal Huruf Hijaiyah/i.test(naskah)),
+    [naskah, mapel, materi],
+  );
+  const infografis = useMemo(
+    () => (pakaiKartuBab1 ? null : parseInfografisKelas1(naskah)),
+    [naskah, pakaiKartuBab1],
+  );
   const potong = useMemo(() => potongLengkap(naskah), [naskah]);
   const blok = useMemo(
-    () => (infografis ? [] : pecahBlokNaskahModul(potong.tubuh || naskah)),
-    [naskah, infografis, potong.tubuh],
+    () => (infografis || pakaiKartuBab1 ? [] : pecahBlokNaskahModul(potong.tubuh || naskah)),
+    [naskah, infografis, pakaiKartuBab1, potong.tubuh],
   );
+  if (pakaiKartuBab1) {
+    return (
+      <div className={className}>
+        <NaskahPai1Bab1 />
+      </div>
+    );
+  }
   if (infografis) {
     return (
       <div className={className}>

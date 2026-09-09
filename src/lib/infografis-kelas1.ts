@@ -116,10 +116,8 @@ export function parseInfografisKelas1(teks: string): NaskahInfografis | null {
 export function tampilkanBarisWebsite(item: BarisInfografis): boolean {
   const judul = item.judul.trim();
   if (/batas\s*bagian/i.test(judul)) return false;
-  if (/^C\.\s*Menghafal/i.test(judul)) return false;
-  if (/^(Hafal\s+)?Ayat\s+\d/i.test(judul)) return false;
   if (
-    /^(Alif|Ba|Ta|Tsa|Jim|Ha|Kha|Dal|Dzal|Ra|Zai|Sin|Syin|Shad|Dhad|Tha|Zha|Ain|Ghain|Fa|Qaf|Kaf|Lam|Mim|Nun|Wau|Hamzah|Ya)$/i.test(
+    /^(Alif|Ba|Ta|Tsa|Jim|Ha|Kha|Dal|Dzal|Ra|Zai|Sin|Syin|Shad|Dhad|Tha|Zha|Ain|Ghain|Fa|Qaf|Kaf|Lam|Mim|Nun|Wau|Hamzah|Ya|Lam-Alif)$/i.test(
       judul,
     )
   ) {

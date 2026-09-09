@@ -1,9 +1,46 @@
 import type { IsiCacheMateri } from "@/lib/cache-materi-tutor";
+import { gabungNaskahDariEditor } from "@/lib/batas-naskah";
 import {
+  FATIHAH,
   formatBlokLengkap,
-  HIJAIYAH,
+  HIJAIYAH_30,
   type PaketLengkap,
 } from "@/lib/paket-lengkap-materi";
+
+export const JUDUL_PAI1_BAB1 = "Bab 1: Aku Cinta Al-Qur'an";
+
+export const TEKS_KARTU_HIJAIYAH =
+  "Huruf Hijaiyah adalah huruf arab berjumlah 30 huruf yang digunakan di dalam Al-Qur'an.";
+
+export const TEKS_KARTU_HARAKAT =
+  "Supaya huruf hijaiyah bisa dibaca, kita membutuhkan harakat (tanda baca). Tiga harakat dasar yang harus kita ketahui:";
+
+export const TEKS_KARTU_FATIHAH =
+  "Surah Al-Fatihah adalah surah pertama dalam Al-Qur'an. Al-Fatihah artinya Pembukaan. Surah ini terdiri dari 7 ayat dan wajib dibaca setiap kita salat.";
+
+export const HARAKAT_PAI1_BAB1 = [
+  {
+    nama: "Fathah",
+    lambang: "َ",
+    uraian: 'Letaknya di atas huruf, bersuara "A".',
+    contohArab: "بَ",
+    contohLatin: "Ba",
+  },
+  {
+    nama: "Kasrah",
+    lambang: "ِ",
+    uraian: 'Letaknya di bawah huruf, bersuara "I".',
+    contohArab: "بِ",
+    contohLatin: "Bi",
+  },
+  {
+    nama: "Dhammah",
+    lambang: "ُ",
+    uraian: 'Letaknya di atas huruf berbentuk wau kecil, bersuara "U".',
+    contohArab: "بُ",
+    contohLatin: "Bu",
+  },
+] as const;
 
 function paketDari(
   id: string,
@@ -14,75 +51,87 @@ function paketDari(
   return { id, judul, jenis, pola: /./, item };
 }
 
-function naskahKurikulum(): string {
-  return `INFOGRAFIS
-Judul: Bab 1 Aku Cinta Al-Qur'an
-
-1. A. Mengenal Huruf Hijaiyah
-Kiri: Jumlah
-Artinya: 29 huruf
-Isi: Huruf di dalam Al-Qur'an disebut huruf Hijaiyah.
-Kanan: Nyanyi
-Artinya: Alif sampai Ya
-Isi: Yuk, bernyanyi lagu huruf hijaiyah!
-
-2. B. Mengenal Harakat
-Kiri: Kegunaan
-Artinya: tanda baca
-Isi: Supaya huruf hijaiyah bisa dibaca, kita membutuhkan harakat.
-Kanan: Dasar
-Artinya: tiga bunyi
-Isi: Fathah A, Kasrah I, dan Dhammah U.
-
-3. Fathah
-Kiri: Letak
-Artinya: di atas, bunyi A
-Isi: َ
-Kanan: Contoh
-Artinya: Ba
-Isi: بَ
-
-4. Kasrah
-Kiri: Letak
-Artinya: di bawah, bunyi I
-Isi: ِ
-Kanan: Contoh
-Artinya: Bi
-Isi: بِ
-
-5. Dhammah
-Kiri: Letak
-Artinya: wau kecil di atas, bunyi U
-Isi: ُ
-Kanan: Contoh
-Artinya: Bu
-Isi: بُ
-
-${formatBlokLengkap(paketDari("hijaiyah", "29 huruf hijaiyah", "huruf", HIJAIYAH))}`;
+export function naskahTampilanPai1Bab1(teks?: string): boolean {
+  const naskah = teks ?? "";
+  if (/\[Soal\s+\d+/i.test(naskah)) return false;
+  return (
+    /30 Huruf Hijaiyah/i.test(naskah) &&
+    /C\.\s*Menghafal Surah Al-Fatihah/i.test(naskah) &&
+    naskah.includes("لا") &&
+    naskah.includes("ء") &&
+    naskah.includes("ي") &&
+    naskah.includes("بِسْمِ")
+  );
 }
 
-function naskahPercepatan(): string {
-  return `INFOGRAFIS
-Judul: Cara cepat Aku Cinta Al-Qur'an
+export function teksLisanPai1Bab1(): string {
+  const huruf = HIJAIYAH_30.map((item) => item.nama).join(", ");
+  const harakat = HARAKAT_PAI1_BAB1.map(
+    (item) =>
+      `${item.nama}. ${item.uraian} Contoh ${item.contohLatin}.`,
+  ).join(" ");
+  const ayat = FATIHAH.map((item) => {
+    const bagian = [item.nama, item.latin, item.artinya ? `Artinya ${item.artinya}` : ""]
+      .filter(Boolean)
+      .join(". ");
+    return bagian;
+  }).join(" ");
+  return [
+    JUDUL_PAI1_BAB1,
+    "A. Mengenal Huruf Hijaiyah.",
+    TEKS_KARTU_HIJAIYAH,
+    "30 Huruf Hijaiyah.",
+    huruf,
+    "B. Mengenal Harakat.",
+    TEKS_KARTU_HARAKAT,
+    harakat,
+    "C. Menghafal Surah Al-Fatihah.",
+    TEKS_KARTU_FATIHAH,
+    ayat,
+  ].join(" ");
+}
 
-1. Ingat 29 huruf
-Kiri: Awal
-Artinya: Alif
-Isi: ا
-Kanan: Akhir
-Artinya: Ya
-Isi: ي
-
-2. Harakat A I U
-Kiri: Fathah A
-Artinya: di atas
-Isi: بَ
-Tengah: Kasrah I
-Artinya: di bawah
-Isi: بِ
-Kanan: Dhammah U
-Artinya: wau kecil
-Isi: بُ`;
+function naskahKurikulum(): string {
+  return gabungNaskahDariEditor({
+    kepala: `Judul: ${JUDUL_PAI1_BAB1}`,
+    bagian: [
+      {
+        nomor: 1,
+        judul: "A. Mengenal Huruf Hijaiyah",
+        tubuh: TEKS_KARTU_HIJAIYAH,
+      },
+      {
+        nomor: 2,
+        judul: "30 Huruf Hijaiyah",
+        tubuh: formatBlokLengkap(
+          paketDari("hijaiyah-30", "30 Huruf Hijaiyah", "huruf", HIJAIYAH_30),
+        ),
+      },
+      {
+        nomor: 3,
+        judul: "B. Mengenal Harakat",
+        tubuh: [
+          TEKS_KARTU_HARAKAT,
+          "",
+          ...HARAKAT_PAI1_BAB1.map(
+            (item, i) =>
+              `${i + 1}. ${item.nama} ( ${item.lambang} ): ${item.uraian} Contoh: ${item.contohArab} (${item.contohLatin})`,
+          ),
+        ].join("\n"),
+      },
+      {
+        nomor: 4,
+        judul: "C. Menghafal Surah Al-Fatihah",
+        tubuh: [
+          TEKS_KARTU_FATIHAH,
+          "",
+          formatBlokLengkap(
+            paketDari("fatihah", "7 ayat Surat Al-Fatihah", "ayat", FATIHAH),
+          ),
+        ].join("\n"),
+      },
+    ],
+  });
 }
 
 function naskahLatihan(): string {
@@ -95,10 +144,10 @@ D) Gambar
 
 [Soal 2 - PG - Tipe: Reguler]
 Jumlah huruf hijaiyah adalah...
-A) 26
-B) 27
-C) 28
-D) 29
+A) 28
+B) 29
+C) 30
+D) 31
 
 [Soal 3 - PG - Tipe: Reguler]
 Huruf hijaiyah yang pertama adalah...
@@ -158,20 +207,20 @@ D) Bermain`;
 }
 
 export function naskahPai1Bab1(): IsiCacheMateri {
+  const kurikulum = naskahKurikulum();
   return {
-    curriculum_view: naskahKurikulum(),
-    global_best_view: naskahPercepatan(),
+    curriculum_view: kurikulum,
+    global_best_view: kurikulum,
     sketsaKartu: [
       "Buku Al-Qur'an terbuka di meja anak.",
-      "Kartu huruf Arab berwarna-warni berjajar.",
-      "Anak menunjuk huruf Alif lalu huruf Ya.",
-      "Tiga tanda baca di atas dan bawah huruf Ba.",
-      "Anak bernyanyi sambil menunjuk huruf hijaiyah.",
+      "Tiga puluh kartu huruf hijaiyah termasuk lam-alif.",
+      "Tiga tanda baca fathah, kasrah, dan dhammah di huruf Ba.",
+      "Anak menghafal tujuh ayat Surah Al-Fatihah.",
     ].join("\n\n"),
     svgCode: "",
     pertanyaan: naskahLatihan(),
-    kunciJawaban: "B,D,B,C,A,B,C,B,C,C",
-    motivasi: "Ayo cintai Al-Qur'an: kenali hurufnya dan baca dengan harakat.",
+    kunciJawaban: "B,C,B,C,A,B,C,B,C,C",
+    motivasi: "Ayo cintai Al-Qur'an: kenali 30 hurufnya, baca dengan harakat, dan hafal Al-Fatihah.",
     referensiUrl:
       "https://buku.kemendikdasmen.go.id/katalog/pendidikan-agama-islam-dan-budi-pekerti-untuk-sd-kelas-i",
   };

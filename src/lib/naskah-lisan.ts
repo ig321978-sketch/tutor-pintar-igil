@@ -9,6 +9,10 @@ import {
   teksLisanInfografis,
 } from "@/lib/infografis-kelas1";
 import {
+  naskahTampilanPai1Bab1,
+  teksLisanPai1Bab1,
+} from "@/lib/naskah-resmi-pai-1-bab1";
+import {
   potongLengkap,
   teksLisanDaftarLengkap,
 } from "@/lib/paket-lengkap-materi";
@@ -181,6 +185,15 @@ export function naskahTutorUntukSuara(
   nama = "",
   opsi?: { buangSubjudulVisual?: boolean; tanpaSapaan?: boolean },
 ): string {
+  if (naskahTampilanPai1Bab1(penjelasan)) {
+    const lisan = teksLisanPai1Bab1();
+    if (opsi?.tanpaSapaan) return lisan;
+    const sapaanAman = naskahLisan(
+      nama ? sapaanTutorRingkas(nama, sapaan) : sapaan,
+      nama,
+    );
+    return [sapaanAman, lisan].filter(Boolean).join("\n\n");
+  }
   if (adalahNaskahInfografis(penjelasan)) {
     const lisan = teksLisanInfografis(penjelasan);
     if (opsi?.tanpaSapaan) return lisan;
