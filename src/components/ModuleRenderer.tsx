@@ -45,9 +45,8 @@ function ModuleRenderer({
   const naskah = useMemo(() => (konten ?? "").trim(), [konten]);
   const pakaiKartuBab1 = useMemo(
     () =>
-      naskahTampilanPai1Bab1(naskah) ||
-      (adalahJudulPai1Bab1(mapel, materi) &&
-        /Mengenal Huruf Hijaiyah/i.test(naskah)),
+      adalahJudulPai1Bab1(mapel, materi) ||
+      naskahTampilanPai1Bab1(naskah),
     [naskah, mapel, materi],
   );
   const pakaiKartuSd =

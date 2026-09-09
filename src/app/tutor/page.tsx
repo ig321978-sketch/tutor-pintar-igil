@@ -1,6 +1,8 @@
 import { Suspense } from "react";
 import TutorAI from "./tutor-client";
 
+export const dynamic = "force-dynamic";
+
 export default function HalamanTutor() {
   return (
     <Suspense

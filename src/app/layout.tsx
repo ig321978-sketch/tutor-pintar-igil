@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono, Noto_Naskh_Arabic } from "next/font/google";
+import BersihkanCacheKlien from "@/components/BersihkanCacheKlien";
 import Navbar from "@/components/Navbar";
 import "./globals.css";
 
@@ -33,6 +34,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
       className={`${geistSans.variable} ${geistMono.variable} ${notoNaskh.variable} h-full antialiased`}
     >
       <body className="flex min-h-full flex-col bg-white">
+        <BersihkanCacheKlien />
         <Navbar />
         {children}
       </body>

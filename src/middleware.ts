@@ -93,7 +93,7 @@ export async function middleware(request: NextRequest) {
   }
 
   if (!ruteAdmin(pathname)) {
-    return NextResponse.next();
+    return tanpaCache(NextResponse.next());
   }
 
   const sesi = await sesiAdmin(request);
