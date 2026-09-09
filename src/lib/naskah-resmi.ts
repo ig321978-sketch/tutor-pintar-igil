@@ -33,11 +33,12 @@ export function naskahResmiJikaAda(
 
 export function naskahBab1Utuh(teks?: string): boolean {
   const naskah = teks ?? "";
-  return (
-    naskah.includes("ء") &&
-    naskah.includes("ي") &&
-    naskah.includes("بِسْمِ اللَّهِ") &&
-    naskah.includes("INFOGRAFIS") &&
-    /29/.test(naskah)
-  );
+  if (!naskah.includes("INFOGRAFIS") || !/29/.test(naskah)) return false;
+  if (!naskah.includes("ء") || !naskah.includes("ي")) return false;
+  if (!naskah.includes("LENGKAP:")) return false;
+  if (/C\.\s*Menghafal/i.test(naskah)) return false;
+  if (/^\d+\.\s+Alif\s*$/m.test(naskah) && /^\d+\.\s+Ba\s*$/m.test(naskah)) {
+    return false;
+  }
+  return true;
 }

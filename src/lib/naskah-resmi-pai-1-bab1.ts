@@ -1,6 +1,5 @@
 import type { IsiCacheMateri } from "@/lib/cache-materi-tutor";
 import {
-  FATIHAH,
   formatBlokLengkap,
   HIJAIYAH,
   type PaketLengkap,
@@ -15,38 +14,7 @@ function paketDari(
   return { id, judul, jenis, pola: /./, item };
 }
 
-function barisHuruf(
-  nomor: number,
-  huruf: { lambang?: string; nama: string },
-): string {
-  return `${nomor}. ${huruf.nama}
-Kiri: Huruf Arab
-Isi: ${huruf.lambang ?? ""}
-Kanan: Latin
-Isi: ${huruf.nama}`;
-}
-
-function barisAyat(
-  nomor: number,
-  ayat: { lambang?: string; nama: string; latin?: string; artinya?: string },
-): string {
-  return `${nomor}. ${ayat.nama}
-Kiri: Arab
-Isi: ${ayat.lambang ?? ""}
-Tengah: Latin
-Isi: ${ayat.latin ?? ""}
-Kanan: Artinya
-Isi: ${ayat.artinya ?? ""}`;
-}
-
 function naskahKurikulum(): string {
-  const huruf = HIJAIYAH.map((item, i) => barisHuruf(i + 2, item)).join("\n\n");
-  const harakatAwal = 2 + HIJAIYAH.length;
-  const fatihahAwal = harakatAwal + 4;
-  const ayat = FATIHAH.map((item, i) =>
-    barisAyat(fatihahAwal + 1 + i, item),
-  ).join("\n\n");
-
   return `INFOGRAFIS
 Judul: Bab 1 Aku Cinta Al-Qur'an
 
@@ -58,9 +26,7 @@ Kanan: Nyanyi
 Artinya: Alif sampai Ya
 Isi: Yuk, bernyanyi lagu huruf hijaiyah!
 
-${huruf}
-
-${harakatAwal}. B. Mengenal Harakat
+2. B. Mengenal Harakat
 Kiri: Kegunaan
 Artinya: tanda baca
 Isi: Supaya huruf hijaiyah bisa dibaca, kita membutuhkan harakat.
@@ -68,7 +34,7 @@ Kanan: Dasar
 Artinya: tiga bunyi
 Isi: Fathah A, Kasrah I, dan Dhammah U.
 
-${harakatAwal + 1}. Fathah
+3. Fathah
 Kiri: Letak
 Artinya: di atas, bunyi A
 Isi: َ
@@ -76,7 +42,7 @@ Kanan: Contoh
 Artinya: Ba
 Isi: بَ
 
-${harakatAwal + 2}. Kasrah
+4. Kasrah
 Kiri: Letak
 Artinya: di bawah, bunyi I
 Isi: ِ
@@ -84,7 +50,7 @@ Kanan: Contoh
 Artinya: Bi
 Isi: بِ
 
-${harakatAwal + 3}. Dhammah
+5. Dhammah
 Kiri: Letak
 Artinya: wau kecil di atas, bunyi U
 Isi: ُ
@@ -92,29 +58,10 @@ Kanan: Contoh
 Artinya: Bu
 Isi: بُ
 
-${fatihahAwal}. C. Menghafal Surah Al-Fatihah
-Kiri: Arti nama
-Artinya: Pembukaan
-Isi: Surah pertama dalam Al-Qur'an. Terdiri dari 7 ayat.
-Kanan: Salat
-Artinya: wajib dibaca
-Isi: Kita membaca Al-Fatihah setiap salat, dimulai dari Bismillah.
-
-${ayat}
-
-${formatBlokLengkap(paketDari("hijaiyah", "29 huruf hijaiyah", "huruf", HIJAIYAH))}
-
-${formatBlokLengkap(paketDari("fatihah", "7 ayat Surat Al-Fatihah", "ayat", FATIHAH))}`;
+${formatBlokLengkap(paketDari("hijaiyah", "29 huruf hijaiyah", "huruf", HIJAIYAH))}`;
 }
 
 function naskahPercepatan(): string {
-  const ringkasAyat = FATIHAH.map((item, i) =>
-    barisAyat(i + 4, {
-      ...item,
-      nama: `Hafal ${item.nama}`,
-    }),
-  ).join("\n\n");
-
   return `INFOGRAFIS
 Judul: Cara cepat Aku Cinta Al-Qur'an
 
@@ -135,17 +82,7 @@ Artinya: di bawah
 Isi: بِ
 Kanan: Dhammah U
 Artinya: wau kecil
-Isi: بُ
-
-3. Al-Fatihah 7 ayat
-Kiri: Nama
-Artinya: Pembukaan
-Isi: Surat pertama, mulai Bismillah
-Kanan: Wajib
-Artinya: setiap salat
-Isi: 7 ayat, hafal urut dari ayat 1
-
-${ringkasAyat}`;
+Isi: بُ`;
 }
 
 function naskahLatihan(): string {
@@ -229,17 +166,12 @@ export function naskahPai1Bab1(): IsiCacheMateri {
       "Kartu huruf Arab berwarna-warni berjajar.",
       "Anak menunjuk huruf Alif lalu huruf Ya.",
       "Tiga tanda baca di atas dan bawah huruf Ba.",
-      "Anak salat sambil memegang mushaf kecil.",
-      "Pelangi tujuh warna seperti tujuh ayat.",
       "Anak bernyanyi sambil menunjuk huruf hijaiyah.",
-      "Bismillah tertulis indah di kartu pertama.",
-      "Hati kecil di samping mushaf Al-Qur'an.",
-      "Anak tersenyum setelah menghafal satu ayat.",
     ].join("\n\n"),
     svgCode: "",
     pertanyaan: naskahLatihan(),
     kunciJawaban: "B,D,B,C,A,B,C,B,C,C",
-    motivasi: "Ayo cintai Al-Qur'an: kenali hurufnya, baca dengan harakat, dan hafal Al-Fatihah.",
+    motivasi: "Ayo cintai Al-Qur'an: kenali hurufnya dan baca dengan harakat.",
     referensiUrl:
       "https://buku.kemendikdasmen.go.id/katalog/pendidikan-agama-islam-dan-budi-pekerti-untuk-sd-kelas-i",
   };

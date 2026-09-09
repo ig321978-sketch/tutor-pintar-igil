@@ -3,7 +3,12 @@
 import { BookOpen, School } from "lucide-react";
 import DaftarLengkapMateri from "@/components/DaftarLengkapMateri";
 import { adaHurufArab } from "@/lib/huruf-arab";
-import type { BarisInfografis, NaskahInfografis, SisiInfografis } from "@/lib/infografis-kelas1";
+import {
+  tampilkanBarisWebsite,
+  type BarisInfografis,
+  type NaskahInfografis,
+  type SisiInfografis,
+} from "@/lib/infografis-kelas1";
 
 const WARNA = [
   { kepala: "bg-[#1D4ED8]", tepi: "border-[#1D4ED8]", arti: "bg-[#DBEAFE]" },
@@ -54,45 +59,34 @@ function KotakSisi({
   );
 }
 
-function adalahJudulBab(judul: string): boolean {
-  return /^[A-Z]\.\s+\S/.test(judul.trim()) || /^LENGKAP:/i.test(judul.trim());
-}
-
 function BarisPoster({ item, indeks }: { item: BarisInfografis; indeks: number }) {
   const kiri = WARNA[indeks % WARNA.length];
   const kanan = WARNA[(indeks + 1) % WARNA.length];
   const tengah = WARNA[(indeks + 2) % WARNA.length];
 
   return (
-    <div className="flex items-stretch gap-2 sm:gap-3">
-      <div className="flex shrink-0 flex-col items-center pt-1">
-        <span className="flex h-9 w-9 items-center justify-center rounded-full bg-[#1C01A5] text-sm font-black text-white sm:h-10 sm:w-10 sm:text-base">
-          {item.nomor}
-        </span>
-      </div>
-      <div className="min-w-0 flex-1 space-y-2">
-        {item.judul ? (
-          <p
-            className={`text-sm font-black tracking-wide text-[#1C01A5] ${adaHurufArab(item.judul) ? "font-arab" : "uppercase"}`}
-          >
-            {item.judul}
-          </p>
+    <div className="min-w-0 space-y-2">
+      {item.judul ? (
+        <p
+          className={`text-sm font-black tracking-wide text-[#1C01A5] ${adaHurufArab(item.judul) ? "font-arab" : "uppercase"}`}
+        >
+          {item.judul}
+        </p>
+      ) : null}
+      <div className="flex flex-col items-stretch gap-2 sm:flex-row sm:items-center">
+        <KotakSisi sisi={item.kiri} warna={kiri} />
+        {item.tengah ? (
+          <>
+            <p className="text-center text-xl font-black text-[#1C01A5] sm:px-1">↔</p>
+            <KotakSisi sisi={item.tengah} warna={tengah} />
+          </>
         ) : null}
-        <div className="flex flex-col items-stretch gap-2 sm:flex-row sm:items-center">
-          <KotakSisi sisi={item.kiri} warna={kiri} />
-          {item.tengah ? (
-            <>
-              <p className="text-center text-xl font-black text-[#1C01A5] sm:px-1">↔</p>
-              <KotakSisi sisi={item.tengah} warna={tengah} />
-            </>
-          ) : null}
-          {item.kanan ? (
-            <>
-              <p className="text-center text-xl font-black text-[#1C01A5] sm:px-1">↔</p>
-              <KotakSisi sisi={item.kanan} warna={kanan} />
-            </>
-          ) : null}
-        </div>
+        {item.kanan ? (
+          <>
+            <p className="text-center text-xl font-black text-[#1C01A5] sm:px-1">↔</p>
+            <KotakSisi sisi={item.kanan} warna={kanan} />
+          </>
+        ) : null}
       </div>
     </div>
   );
@@ -112,19 +106,8 @@ export default function InfografisKelas1({ data }: { data: NaskahInfografis }) {
         <School className="hidden h-8 w-8 shrink-0 text-[#1C01A5] sm:block" />
       </header>
       <div className="space-y-5">
-        {data.baris.map((item, indeks) => (
-          <div key={`${item.nomor}-${item.judul}`} className="space-y-3">
-            {adalahJudulBab(item.judul) ? (
-              <div className="flex items-center gap-2 pt-2">
-                <span className="h-px flex-1 bg-[#1C01A5]/30" />
-                <p className="rounded-full border-2 border-[#1C01A5] bg-white px-3 py-1 text-center text-xs font-black uppercase tracking-wide text-[#1C01A5]">
-                  Batas bagian · {item.judul}
-                </p>
-                <span className="h-px flex-1 bg-[#1C01A5]/30" />
-              </div>
-            ) : null}
-            <BarisPoster item={item} indeks={indeks} />
-          </div>
+        {data.baris.filter(tampilkanBarisWebsite).map((item, indeks) => (
+          <BarisPoster key={`${item.nomor}-${item.judul}`} item={item} indeks={indeks} />
         ))}
       </div>
     </section>
