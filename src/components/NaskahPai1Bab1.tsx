@@ -22,11 +22,11 @@ const WARNA_HURUF = [
   "border-[#D97706] bg-[#FFFBEB]",
 ];
 
-const WARNA_HARAKAT = [
-  { kepala: "bg-[#1D4ED8]", tepi: "border-[#1D4ED8]", isi: "bg-[#EFF6FF]", tinta: "#1D4ED8" },
-  { kepala: "bg-[#15803D]", tepi: "border-[#15803D]", isi: "bg-[#F0FDF4]", tinta: "#15803D" },
-  { kepala: "bg-[#7C3AED]", tepi: "border-[#7C3AED]", isi: "bg-[#F5F3FF]", tinta: "#7C3AED" },
-];
+const SUARA_HARAKAT: Record<(typeof HARAKAT_PAI1_BAB1)[number]["jenis"], string> = {
+  fathah: "A",
+  kasrah: "I",
+  dhammah: "U",
+};
 
 function KartuBingkai({
   children,
@@ -41,73 +41,6 @@ function KartuBingkai({
     >
       {children}
     </section>
-  );
-}
-
-function IkonHarakat({
-  jenis,
-  warna,
-}: {
-  jenis: (typeof HARAKAT_PAI1_BAB1)[number]["jenis"];
-  warna: string;
-}) {
-  return (
-    <div className="relative mx-auto h-36 w-28" role="img" aria-label={`Ikon harakat ${jenis}`}>
-      {jenis === "dhammah" ? (
-        <span
-          dir="rtl"
-          lang="ar"
-          className="font-arab pointer-events-none absolute left-1/2 top-1 z-10 -translate-x-1/2 text-4xl font-black leading-none sm:text-5xl"
-          style={{ color: warna }}
-        >
-          و
-        </span>
-      ) : null}
-      <svg viewBox="0 0 120 150" className="h-full w-full" aria-hidden>
-        <ellipse
-          cx="60"
-          cy="78"
-          rx="30"
-          ry="34"
-          fill="#ffffff"
-          stroke="#1C01A5"
-          strokeWidth="4"
-          strokeDasharray="7 6"
-        />
-        <text
-          x="60"
-          y="88"
-          textAnchor="middle"
-          fontSize="18"
-          fontWeight="800"
-          fill="#94A3B8"
-        >
-          huruf
-        </text>
-        {jenis === "fathah" ? (
-          <line
-            x1="38"
-            y1="32"
-            x2="90"
-            y2="14"
-            stroke={warna}
-            strokeWidth="10"
-            strokeLinecap="round"
-          />
-        ) : null}
-        {jenis === "kasrah" ? (
-          <line
-            x1="38"
-            y1="138"
-            x2="90"
-            y2="120"
-            stroke={warna}
-            strokeWidth="10"
-            strokeLinecap="round"
-          />
-        ) : null}
-      </svg>
-    </div>
   );
 }
 
@@ -150,39 +83,39 @@ export default function NaskahPai1Bab1() {
         <h4 className="text-center text-lg font-black tracking-wide text-[#1C01A5] sm:text-xl">
           B. Mengenal Harakat
         </h4>
-        <p className="mt-4 text-base font-semibold leading-relaxed text-slate-700">
+        <p className="mt-4 text-left text-base font-semibold leading-relaxed text-slate-700">
           {TEKS_KARTU_HARAKAT}
         </p>
-        <div className="mt-4 grid gap-3 sm:grid-cols-3">
-          {HARAKAT_PAI1_BAB1.map((item, indeks) => {
-            const warna = WARNA_HARAKAT[indeks % WARNA_HARAKAT.length];
-            return (
-              <article
-                key={item.nama}
-                className={`overflow-hidden rounded-2xl border-2 bg-white ${warna.tepi}`}
+        <p className="mt-5 text-center text-sm font-black uppercase tracking-wide text-[#1C01A5]/70">
+          Tiga Harakat Dasar
+        </p>
+        <div className="mt-3 grid gap-2 sm:grid-cols-3">
+          {HARAKAT_PAI1_BAB1.map((item, indeks) => (
+            <article
+              key={item.nama}
+              className={`flex flex-col items-center rounded-2xl border-2 px-3 py-4 ${WARNA_HURUF[indeks % WARNA_HURUF.length]}`}
+            >
+              <p className="text-xs font-black uppercase tracking-wide text-[#1C01A5]">
+                {item.nama}
+              </p>
+              <p
+                dir="rtl"
+                lang="ar"
+                className="font-arab mt-3 text-5xl font-black leading-none text-[#1C01A5] sm:text-6xl"
               >
-                <p className={`px-3 py-2 text-center text-sm font-black text-white ${warna.kepala}`}>
-                  {item.nama}
-                </p>
-                <div className={`px-3 py-4 ${warna.isi}`}>
-                  <IkonHarakat jenis={item.jenis} warna={warna.tinta} />
-                  <p className="mt-2 text-center text-sm font-semibold text-slate-700">
-                    {item.uraian}
-                  </p>
-                  <p
-                    dir="rtl"
-                    lang="ar"
-                    className="font-arab mt-3 text-center text-5xl font-black leading-none text-[#1C01A5]"
-                  >
-                    {item.contohArab}
-                  </p>
-                  <p className="mt-2 text-center text-sm font-extrabold text-slate-800">
-                    Contoh: {item.contohLatin}
-                  </p>
-                </div>
-              </article>
-            );
-          })}
+                {item.contohArab}
+              </p>
+              <p className="mt-3 text-center text-xs font-extrabold uppercase tracking-wide text-slate-700">
+                {item.contohLatin}
+              </p>
+              <span className="mt-2 rounded-full border-2 border-[#1C01A5]/15 bg-white px-3 py-1 text-xs font-black tracking-wide text-[#1C01A5]">
+                Bersuara “{SUARA_HARAKAT[item.jenis]}”
+              </span>
+              <p className="mt-3 text-center text-sm font-semibold leading-snug text-slate-700">
+                {item.uraian}
+              </p>
+            </article>
+          ))}
         </div>
         <LatihanSuaraHarakat />
       </KartuBingkai>
