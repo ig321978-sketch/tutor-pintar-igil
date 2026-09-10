@@ -77,11 +77,13 @@ export default function NaskahPai1Bab1({
 }) {
   return (
     <div className="space-y-5">
-      <TombolVoiceMateriPai1 kelas={kelas} kelamin={kelamin} />
       <KartuBingkai>
         <h4 className="text-center text-lg font-black tracking-wide text-[#1C01A5] sm:text-xl">
           A. Mengenal Huruf Hijaiyah
         </h4>
+        <div className="mt-4">
+          <TombolVoiceMateriPai1 kelas={kelas} kelamin={kelamin} />
+        </div>
         <p className="mt-4 text-left text-base font-semibold leading-relaxed text-slate-700">
           {TEKS_KARTU_HIJAIYAH}
         </p>
