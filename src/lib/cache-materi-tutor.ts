@@ -538,6 +538,18 @@ export async function aturKunciNaskahMateri(
   kunci: string,
   terkunci: boolean,
 ): Promise<DetailCacheMateri | null> {
+  const pecahResmi = pecahKunciMateri(kunci);
+  if (
+    pecahResmi &&
+    naskahResmiJikaAda(pecahResmi.kelas, pecahResmi.mapel, pecahResmi.materi)
+  ) {
+    await pastikanNaskahResmiTerkunci(
+      pecahResmi.kelas,
+      pecahResmi.mapel,
+      pecahResmi.materi,
+    );
+    return ambilDetailCacheMateri(kunci);
+  }
   const supabase = supabaseServer();
   if (!supabase) return null;
   const payload = {
@@ -570,6 +582,15 @@ export async function aturKunciNaskahMateri(
     if (!lewatTopic.data?.length) return null;
   }
   const detail = await ambilDetailCacheMateri(kunci);
+  if (
+    detail?.kelas &&
+    detail.mapel &&
+    detail.materi &&
+    naskahResmiJikaAda(detail.kelas, detail.mapel, detail.materi)
+  ) {
+    await pastikanNaskahResmiTerkunci(detail.kelas, detail.mapel, detail.materi);
+    return ambilDetailCacheMateri(kunci);
+  }
   if (detail?.kelas && detail.mapel && detail.materi) {
     const semua = await ambilSemuaBarisCache(
       detail.kelas,

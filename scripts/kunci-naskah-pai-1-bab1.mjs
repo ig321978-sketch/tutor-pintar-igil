@@ -56,7 +56,18 @@ function cetakNaskahResmi() {
   return JSON.parse(teks.slice(jsonMulai));
 }
 
-const env = bacaEnv(resolve(akar, ".env.local"));
+function bacaEnvJikaAda(jalur) {
+  try {
+    return bacaEnv(jalur);
+  } catch {
+    return {};
+  }
+}
+
+const env = {
+  ...bacaEnvJikaAda(resolve(akar, ".env")),
+  ...bacaEnvJikaAda(resolve(akar, ".env.local")),
+};
 const url = env.NEXT_PUBLIC_SUPABASE_URL;
 const kunciLayanan =
   env.SUPABASE_SERVICE_ROLE_KEY || env.NEXT_PUBLIC_SUPABASE_ANON_KEY;
