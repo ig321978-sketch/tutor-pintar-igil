@@ -30,12 +30,25 @@ const SUARA_HARAKAT: Record<(typeof HARAKAT_PAI1_BAB1)[number]["jenis"], string>
 
 const INFO_HARAKAT: Record<
   (typeof HARAKAT_PAI1_BAB1)[number]["jenis"],
-  { subjudul: string; warnaTanda: string }
+  { subjudul: string }
 > = {
-  fathah: { subjudul: "garis di atas huruf", warnaTanda: "#DC2626" },
-  kasrah: { subjudul: "garis di bawah huruf", warnaTanda: "#16A34A" },
-  dhammah: { subjudul: "wau kecil di atas huruf", warnaTanda: "#EA580C" },
+  fathah: { subjudul: "garis di atas huruf" },
+  kasrah: { subjudul: "garis di bawah huruf" },
+  dhammah: { subjudul: "wau kecil di atas huruf" },
 };
+
+function HurufBaHarakat({ contohArab }: { contohArab: string }) {
+  return (
+    <span className="relative inline-block" dir="rtl" lang="ar">
+      <span className="font-arab text-5xl font-black leading-none text-[#DC2626] sm:text-6xl">
+        {contohArab}
+      </span>
+      <span className="font-arab pointer-events-none absolute inset-0 flex items-center justify-center text-5xl font-black leading-none text-[#1C01A5] sm:text-6xl">
+        ب
+      </span>
+    </span>
+  );
+}
 
 function KartuBingkai({
   children,
@@ -112,13 +125,8 @@ export default function NaskahPai1Bab1() {
               <p className="mt-1 text-center text-xs font-bold leading-snug text-[#1C01A5]/70">
                 {info.subjudul}
               </p>
-              <p
-                dir="rtl"
-                lang="ar"
-                className="font-arab mt-3 text-5xl font-black leading-none sm:text-6xl"
-                style={{ color: info.warnaTanda }}
-              >
-                {item.contohArab}
+              <p className="mt-3">
+                <HurufBaHarakat contohArab={item.contohArab} />
               </p>
               <p className="mt-3 text-center text-xs font-extrabold uppercase tracking-wide text-slate-700">
                 {item.contohLatin}
