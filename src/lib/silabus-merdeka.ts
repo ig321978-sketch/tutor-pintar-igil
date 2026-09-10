@@ -1,3 +1,4 @@
+import { pecahNaskahUntukEditor } from "@/lib/batas-naskah";
 import { susunKonsepMateri } from "@/lib/konsep-materi";
 import { subbabBukuSiswa } from "@/lib/subbab-buku-siswa";
 
@@ -49,17 +50,49 @@ function tumpangTindih(a: string, b: string): number {
   return sama / Math.min(kataA.size, kataB.size);
 }
 
+function adaContohDiNaskah(teks: string): boolean {
+  return /\bcontoh\b/i.test(teks);
+}
+
+function adaPraktikDiNaskah(teks: string): boolean {
+  return (
+    /LENGKAP:/i.test(teks) ||
+    /\b(latihan|quiz|soal)\b/i.test(teks) ||
+    /\[Soal\s+\d+/i.test(teks) ||
+    /\bhijaiyah\b/i.test(teks) ||
+    /\bharakat\b/i.test(teks) ||
+    /\bfatihah\b/i.test(teks)
+  );
+}
+
 function tingkatKartu(naskah: string): TingkatSilabus {
   const teks = naskah.trim();
   const panjang = teks.replace(/\s+/g, " ").length;
-  const adaContoh = /(?:^|\n)\s*contoh\b/i.test(teks);
-  const adaLatihan = /(?:^|\n)\s*latihan\b/i.test(teks);
-  const adaKunci = /(?:^|\n)\s*kunci\b/i.test(teks);
-  if (panjang < 60) return "kurang";
-  if (adaContoh && adaLatihan && adaKunci && panjang >= 140) return "baik";
-  if ((adaContoh || adaLatihan) && panjang >= 100) return "baik";
-  if (panjang >= 90) return "cukup";
+  const adaContoh = adaContohDiNaskah(teks);
+  const adaPraktik = adaPraktikDiNaskah(teks);
+  if (panjang < 50) return "kurang";
+  if ((adaContoh || adaPraktik) && panjang >= 80) return "baik";
+  if (panjang >= 120) return "baik";
+  if (panjang >= 70) return "cukup";
   return "kurang";
+}
+
+function kartuDariNaskah(
+  materi: string,
+  naskahKurikulum: string,
+  kelas: string,
+): { judul: string; naskah: string }[] {
+  const editor = pecahNaskahUntukEditor(naskahKurikulum);
+  if (editor.bagian.length >= 2) {
+    return editor.bagian.map((item) => ({
+      judul: item.judul,
+      naskah: item.tubuh,
+    }));
+  }
+  return susunKonsepMateri(materi, naskahKurikulum, kelas).kartu.map((item) => ({
+    judul: item.judul,
+    naskah: item.naskah,
+  }));
 }
 
 function rataTingkat(daftar: TingkatSilabus[]): TingkatSilabus {
@@ -119,18 +152,21 @@ export function susunSilabusMerdeka(opsi: {
   mapel: string;
   materi: string;
   naskahKurikulum: string;
+  naskahLatihan?: string;
 }): PoinSilabus[] {
-  const { ideUtama, kartu } = susunKonsepMateri(
-    opsi.materi,
-    opsi.naskahKurikulum,
-    opsi.kelas,
-  );
+  const kartu = kartuDariNaskah(opsi.materi, opsi.naskahKurikulum, opsi.kelas);
+  const ideUtama = opsi.materi.trim() || "Materi hari ini";
   const subbab = subbabBukuSiswa(opsi.kelas, opsi.mapel, opsi.materi);
   const materiPokok = subbab.length > 0 ? subbab : kartu.map((item) => item.judul);
-  const naskahGabung = kartu.map((item) => item.naskah).join("\n");
-  const adaContoh = /(?:^|\n)\s*contoh\b/i.test(naskahGabung);
-  const adaLatihan = /(?:^|\n)\s*latihan\b/i.test(naskahGabung);
-  const adaKunci = /(?:^|\n)\s*kunci\b/i.test(naskahGabung);
+  const naskahGabung = [
+    opsi.naskahKurikulum,
+    ...kartu.map((item) => item.naskah),
+    opsi.naskahLatihan ?? "",
+  ].join("\n");
+  const adaContoh = adaContohDiNaskah(naskahGabung);
+  const adaPraktik = adaPraktikDiNaskah(naskahGabung);
+  const adaKunci =
+    /\bkunci\b/i.test(naskahGabung) || /\[Soal\s+\d+/i.test(opsi.naskahLatihan ?? "");
   const identitasSiap = Boolean(
     opsi.kelas.trim() && opsi.mapel.trim() && opsi.materi.trim(),
   );
@@ -140,12 +176,12 @@ export function susunSilabusMerdeka(opsi: {
     for (const item of kartu) {
       const skor = Math.max(
         tumpangTindih(nama, item.judul),
-        tumpangTindih(nama, item.naskah.slice(0, 180)),
+        tumpangTindih(nama, item.naskah.slice(0, 280)),
       );
       if (skor > terbaik.skor) terbaik = { skor, naskah: item.naskah };
     }
     const tingkat =
-      terbaik.skor < 0.4 ? "kurang" : tingkatKartu(terbaik.naskah);
+      terbaik.skor < 0.28 ? "kurang" : tingkatKartu(terbaik.naskah);
     return { tingkat };
   });
   const waktu = susunWaktuPembelajaran({
@@ -156,9 +192,9 @@ export function susunSilabusMerdeka(opsi: {
 
   const tingkatTujuan = rataTingkat(poinMateri.map((item) => item.tingkat));
   const tingkatAsesmen =
-    adaContoh && adaLatihan && adaKunci
+    (adaContoh && adaPraktik) || (adaPraktik && adaKunci) || (adaContoh && adaKunci)
       ? "baik"
-      : adaContoh || adaLatihan
+      : adaContoh || adaPraktik
         ? "cukup"
         : "kurang";
   const tingkatKegiatan =
@@ -227,7 +263,7 @@ export function susunSilabusMerdeka(opsi: {
       judul: "Asesmen formatif",
       keterangan:
         tingkatAsesmen === "baik"
-          ? "Ada contoh, latihan, dan kunci sesuai asesmen Kurikulum Merdeka."
+          ? "Ada contoh, latihan/quiz, atau soal formatif sesuai Kurikulum Merdeka."
           : tingkatAsesmen === "cukup"
             ? "Ada sebagian asesmen, belum lengkap contoh–latihan–kunci."
             : "Belum ada asesmen formatif di naskah.",

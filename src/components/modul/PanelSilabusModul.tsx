@@ -28,17 +28,20 @@ export default function PanelSilabusModul({
   mapel,
   materi,
   naskahKurikulum,
+  naskahLatihan = "",
 }: {
   kelas: string;
   mapel: string;
   materi: string;
   naskahKurikulum: string;
+  naskahLatihan?: string;
 }) {
   const silabus = susunSilabusMerdeka({
     kelas,
     mapel,
     materi,
     naskahKurikulum,
+    naskahLatihan,
   });
   return (
     <div className="space-y-5">

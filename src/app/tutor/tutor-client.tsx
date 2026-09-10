@@ -1234,8 +1234,10 @@ export default function TutorAI() {
     setPesanGalat("");
     setPesanKunci("");
     setTahapBelajar(bagian);
-    if (bagian === "materi") {
-      setSudutPandang((sebelum) => sebelum ?? "kurikulum");
+    if (bagian === "silabus" || bagian === "materi") {
+      if (bagian === "materi") {
+        setSudutPandang((sebelum) => sebelum ?? "kurikulum");
+      }
       void muatBagianNaskah("kurikulum");
     }
     if (bagian === "latihan") {
@@ -1715,6 +1717,8 @@ export default function TutorAI() {
               materiTuntas
               mengunciKlik={isGenerating}
               menyusun={{
+                silabus:
+                  statusKurikulum === "memuat" || statusGlobal === "memuat",
                 materi:
                   statusKurikulum === "memuat" || statusGlobal === "memuat",
                 latihan: statusLatihan === "memuat",
@@ -1731,7 +1735,23 @@ export default function TutorAI() {
                     naskahKurikulum={
                       hasilData?.curriculum_view ||
                       hasilData?.penjelasan ||
-                      ""
+                      (adalahPai1Bab1(
+                        judulKelasSesi,
+                        judulMapelSesi,
+                        judulMateriSesi,
+                      )
+                        ? naskahPai1Bab1().curriculum_view
+                        : "")
+                    }
+                    naskahLatihan={
+                      hasilData?.pertanyaan ||
+                      (adalahPai1Bab1(
+                        judulKelasSesi,
+                        judulMapelSesi,
+                        judulMateriSesi,
+                      )
+                        ? naskahPai1Bab1().pertanyaan
+                        : "")
                     }
                   />
                 ),
