@@ -10,7 +10,7 @@ import {
 export const JUDUL_PAI1_BAB1 = "Bab 1: Aku Cinta Al-Qur'an";
 
 export const TEKS_KARTU_HIJAIYAH =
-  "Huruf Hijaiyah adalah huruf arab berjumlah 30 huruf yang digunakan di dalam Al-Qur'an.";
+  "Huruf Hijaiyah adalah huruf arab yang digunakan untuk menyusun ayat-ayat Al-Quran";
 
 export const TEKS_KARTU_HARAKAT =
   "Supaya huruf hijaiyah bisa dibaca, kita membutuhkan harakat (tanda baca). Tiga harakat dasar yang harus kita ketahui:";
