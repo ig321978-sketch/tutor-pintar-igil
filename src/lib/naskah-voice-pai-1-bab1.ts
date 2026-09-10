@@ -69,11 +69,12 @@ function cuplikanNyanyiHijaiyah(): CuplikanVoiceMateri[] {
   return NAMA_HIJAIYAH_NYANYI.map((nama, indeks) => {
     const nomor = indeks + 1;
     const terakhir = nomor === NAMA_HIJAIYAH_NYANYI.length;
+    const batasSepuluh = nomor % 10 === 0;
     return {
       teks: bersihkanNaskahLisanCerita(nama),
       jedaSetelahMs: terakhir
         ? 0
-        : nomor % 10 === 0
+        : batasSepuluh
           ? JEDA_KELOMPOK_10_KATA_MS
           : JEDA_KATA_VOICE_MS,
     };
