@@ -28,6 +28,15 @@ const SUARA_HARAKAT: Record<(typeof HARAKAT_PAI1_BAB1)[number]["jenis"], string>
   dhammah: "U",
 };
 
+const INFO_HARAKAT: Record<
+  (typeof HARAKAT_PAI1_BAB1)[number]["jenis"],
+  { subjudul: string; warnaTanda: string }
+> = {
+  fathah: { subjudul: "garis di atas huruf", warnaTanda: "#DC2626" },
+  kasrah: { subjudul: "garis di bawah huruf", warnaTanda: "#16A34A" },
+  dhammah: { subjudul: "wau kecil di atas huruf", warnaTanda: "#EA580C" },
+};
+
 function KartuBingkai({
   children,
   className = "",
@@ -90,7 +99,9 @@ export default function NaskahPai1Bab1() {
           Tiga Harakat Dasar
         </p>
         <div className="mt-3 grid gap-2 sm:grid-cols-3">
-          {HARAKAT_PAI1_BAB1.map((item, indeks) => (
+          {HARAKAT_PAI1_BAB1.map((item, indeks) => {
+            const info = INFO_HARAKAT[item.jenis];
+            return (
             <article
               key={item.nama}
               className={`flex flex-col items-center rounded-2xl border-2 px-3 py-4 ${WARNA_HURUF[indeks % WARNA_HURUF.length]}`}
@@ -98,10 +109,14 @@ export default function NaskahPai1Bab1() {
               <p className="text-xs font-black uppercase tracking-wide text-[#1C01A5]">
                 {item.nama}
               </p>
+              <p className="mt-1 text-center text-xs font-bold leading-snug text-[#1C01A5]/70">
+                {info.subjudul}
+              </p>
               <p
                 dir="rtl"
                 lang="ar"
-                className="font-arab mt-3 text-5xl font-black leading-none text-[#1C01A5] sm:text-6xl"
+                className="font-arab mt-3 text-5xl font-black leading-none sm:text-6xl"
+                style={{ color: info.warnaTanda }}
               >
                 {item.contohArab}
               </p>
@@ -115,7 +130,8 @@ export default function NaskahPai1Bab1() {
                 {item.uraian}
               </p>
             </article>
-          ))}
+            );
+          })}
         </div>
         <LatihanSuaraHarakat />
       </KartuBingkai>
