@@ -6,6 +6,7 @@ import { BarisPoster } from "@/components/InfografisKelas1";
 import DaftarLengkapMateri from "@/components/DaftarLengkapMateri";
 import LatihanSuaraHijaiyah from "@/components/LatihanSuaraHijaiyah";
 import LatihanSuaraHarakat from "@/components/LatihanSuaraHarakat";
+import LatihanSuaraFatihah from "@/components/LatihanSuaraFatihah";
 import GambarDoodle, { type GambarSisipan } from "@/components/GambarDoodle";
 import { BlokTampil, TeksBuku } from "@/components/BlokNaskahTampil";
 import {
@@ -146,6 +147,9 @@ export default function NaskahKartuSd({
             ) : null}
             {/hijaiyah/i.test(kartu.judul) ? <LatihanSuaraHijaiyah /> : null}
             {/harakat/i.test(kartu.judul) ? <LatihanSuaraHarakat /> : null}
+            {/fatihah|al-?fatihah/i.test(kartu.judul) ? (
+              <LatihanSuaraFatihah />
+            ) : null}
           </KartuBingkai>
         );
       })}
