@@ -31,8 +31,7 @@ import {
   simpanModulLokal,
 } from "@/lib/cache-modul-lokal";
 import { kandidatKunciMateri, kunciMateriTutor } from "@/lib/kunci-siswa";
-import { adalahPai1Bab1 } from "@/lib/naskah-resmi";
-import { naskahPai1Bab1 } from "@/lib/naskah-resmi-pai-1-bab1";
+import { naskahResmiJikaAda } from "@/lib/naskah-resmi";
 import {
   gantiNamaLengkapKeDepan,
   sapaanTutorRingkas,
@@ -133,8 +132,13 @@ function bagianNaskahSiap(
   return pecahBankSoal(modul.pertanyaan).pilihanGanda.length >= 4;
 }
 
-function modulDariNaskahPai1Bab1(): ModulTutor {
-  const isi = naskahPai1Bab1();
+function modulDariNaskahResmi(
+  kelas: string,
+  mapel: string,
+  materi: string,
+): ModulTutor | null {
+  const isi = naskahResmiJikaAda(kelas, mapel, materi);
+  if (!isi) return null;
   return {
     sapaan: "",
     penjelasan: isi.curriculum_view,
@@ -692,7 +696,7 @@ export default function TutorAI() {
 
     const naskahDoodle = pilihPenjelasanMateri(modul, "kurikulum");
     if (
-      adalahPai1Bab1(
+      naskahResmiJikaAda(
         kelas,
         modeInput === "teks" ? mapel : "Berdasarkan Buku",
         modeInput === "teks" ? bab : "Analisis AI",
@@ -833,7 +837,7 @@ export default function TutorAI() {
       bagian === "kurikulum" &&
       naskahMateriSiap(gabung.curriculum_view) &&
       !(gabung.gambarSisipan?.length) &&
-      !adalahPai1Bab1(kelasKirim, mapelKirim, materiKirim)
+      !naskahResmiJikaAda(kelasKirim, mapelKirim, materiKirim)
     ) {
       void muatIlustrasiDoodle(gabung);
     }
@@ -1002,7 +1006,7 @@ export default function TutorAI() {
         bagian === "kurikulum" &&
         hasilDataRef.current &&
         !(hasilDataRef.current.gambarSisipan?.length) &&
-        !adalahPai1Bab1(kelasKirim, mapelKirim, materiKirim)
+        !naskahResmiJikaAda(kelasKirim, mapelKirim, materiKirim)
       ) {
         void muatIlustrasiDoodle(hasilDataRef.current);
       }
@@ -1019,13 +1023,16 @@ export default function TutorAI() {
 
     const topicId = kunciMateriTutor(kelasKirim, mapelKirim, materiKirim);
     try {
-    if (
-      modeInput === "teks" &&
-      adalahPai1Bab1(kelasKirim, mapelKirim, materiKirim)
-    ) {
+    if (modeInput === "teks") {
+      const resmiAwal = modulDariNaskahResmi(
+        kelasKirim,
+        mapelKirim,
+        materiKirim,
+      );
+      if (resmiAwal) {
       void intipModulTersimpan(kelasKirim, mapelKirim, materiKirim);
       const gabung = terapkanBagianModul(
-        modulDariNaskahPai1Bab1(),
+        resmiAwal,
         mapelKirim,
         materiKirim,
         kelasKirim,
@@ -1035,6 +1042,7 @@ export default function TutorAI() {
       simpanModulLokal(topicId, gabung);
       selesai("siap");
       return;
+      }
     }
     if (modeInput === "teks") {
       const dariServer = await intipModulTersimpan(
@@ -1296,16 +1304,16 @@ export default function TutorAI() {
     };
     const lokal = bacaModulLokal<ModulTutor>(topicId);
     let batal = false;
-    if (adalahPai1Bab1(kelasKirim, mapelKirim, materiKirim)) {
-      const gabung = modulDariNaskahPai1Bab1();
-      hasilDataRef.current = gabung;
-      setHasilData(gabung);
-      simpanModulLokal(topicId, gabung);
-      tandaiSiap(gabung);
+    const resmiSesi = modulDariNaskahResmi(kelasKirim, mapelKirim, materiKirim);
+    if (resmiSesi) {
+      hasilDataRef.current = resmiSesi;
+      setHasilData(resmiSesi);
+      simpanModulLokal(topicId, resmiSesi);
+      tandaiSiap(resmiSesi);
     }
     void intipModulTersimpan(kelasKirim, mapelKirim, materiKirim).then((data) => {
       if (batal) return;
-      if (adalahPai1Bab1(kelasKirim, mapelKirim, materiKirim)) {
+      if (naskahResmiJikaAda(kelasKirim, mapelKirim, materiKirim)) {
         return;
       }
       if (data) {
@@ -1735,23 +1743,21 @@ export default function TutorAI() {
                     naskahKurikulum={
                       hasilData?.curriculum_view ||
                       hasilData?.penjelasan ||
-                      (adalahPai1Bab1(
+                      naskahResmiJikaAda(
                         judulKelasSesi,
                         judulMapelSesi,
                         judulMateriSesi,
-                      )
-                        ? naskahPai1Bab1().curriculum_view
-                        : "")
+                      )?.curriculum_view ||
+                      ""
                     }
                     naskahLatihan={
                       hasilData?.pertanyaan ||
-                      (adalahPai1Bab1(
+                      naskahResmiJikaAda(
                         judulKelasSesi,
                         judulMapelSesi,
                         judulMateriSesi,
-                      )
-                        ? naskahPai1Bab1().pertanyaan
-                        : "")
+                      )?.pertanyaan ||
+                      ""
                     }
                   />
                 ),

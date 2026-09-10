@@ -11,6 +11,11 @@ const SUBBAB_BUKU_SISWA: Record<string, Record<string, Record<string, string[]>>
         "B. Mengenal Harakat",
         "C. Menghafal Surah Al-Fatihah",
       ],
+      "Bab 2: Mengenal Rukun Iman": [
+        "A. Pengertian Iman",
+        "B. Mengenal Allah melalui Asmaul Husna",
+        "C. Iman yang Terlihat dalam Perbuatan",
+      ],
     },
     Matematika: {
       "Bab 1: Ayo Membilang sampai dengan 10": [

@@ -61,7 +61,10 @@ function adaPraktikDiNaskah(teks: string): boolean {
     /\[Soal\s+\d+/i.test(teks) ||
     /\bhijaiyah\b/i.test(teks) ||
     /\bharakat\b/i.test(teks) ||
-    /\bfatihah\b/i.test(teks)
+    /\bfatihah\b/i.test(teks) ||
+    /\biman\b/i.test(teks) ||
+    /\basmaul\b/i.test(teks) ||
+    /\brukun iman\b/i.test(teks)
   );
 }
 

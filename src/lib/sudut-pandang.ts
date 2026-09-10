@@ -1,4 +1,5 @@
 import { naskahTampilanPai1Bab1 } from "@/lib/naskah-resmi-pai-1-bab1";
+import { naskahTampilanPai1Bab2 } from "@/lib/naskah-resmi-pai-1-bab2";
 import { teksNaskahUtuh } from "@/lib/validasi-naskah-ai";
 
 export type SudutPandangMateri = "kurikulum" | "global";
@@ -48,6 +49,6 @@ export function naskahPunyaDiagram(teks?: string): boolean {
 
 export function naskahGlobalSiap(teks?: string): boolean {
   const naskah = (teks ?? "").trim();
-  if (naskahTampilanPai1Bab1(naskah)) return true;
+  if (naskahTampilanPai1Bab1(naskah) || naskahTampilanPai1Bab2(naskah)) return true;
   return naskahMateriSiap(naskah) && naskah.includes(TANDA_NASKAH_GLOBAL);
 }

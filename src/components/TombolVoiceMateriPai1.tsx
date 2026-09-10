@@ -12,6 +12,11 @@ import {
   cuplikanVoicePai1Bab1Fatihah,
   cuplikanVoicePai1Bab1Harakat,
 } from "@/lib/naskah-voice-pai-1-bab1";
+import {
+  cuplikanVoicePai1Bab2Amal,
+  cuplikanVoicePai1Bab2Asmaul,
+  cuplikanVoicePai1Bab2Iman,
+} from "@/lib/naskah-voice-pai-1-bab2";
 import { bacaProgres } from "@/lib/progres";
 import { kelasTombolUtama } from "@/lib/tema";
 import { normalisasiKelaminGuru, type KelaminGuru } from "@/lib/guru";
@@ -100,7 +105,7 @@ export default function TombolVoiceMateriPai1({
 }: {
   kelas?: string;
   kelamin?: KelaminGuru;
-  jenis?: "hijaiyah" | "harakat" | "fatihah";
+  jenis?: "hijaiyah" | "harakat" | "fatihah" | "iman" | "asmaul" | "amal";
 }) {
   const [memutar, setMemutar] = useState(false);
   const batalRef = useRef<AbortController | null>(null);
@@ -138,7 +143,13 @@ export default function TombolVoiceMateriPai1({
         ? cuplikanVoicePai1Bab1Harakat()
         : jenis === "fatihah"
           ? cuplikanVoicePai1Bab1Fatihah()
-          : cuplikanVoicePai1Bab1(guru);
+          : jenis === "iman"
+            ? cuplikanVoicePai1Bab2Iman()
+            : jenis === "asmaul"
+              ? cuplikanVoicePai1Bab2Asmaul()
+              : jenis === "amal"
+                ? cuplikanVoicePai1Bab2Amal()
+                : cuplikanVoicePai1Bab1(guru);
     const antrian = cuplikan.map((item) =>
       mintaAudioTts(item.teks, guru, kelasSuara, {
         persist: true,

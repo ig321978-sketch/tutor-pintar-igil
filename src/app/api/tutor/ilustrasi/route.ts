@@ -1,7 +1,7 @@
 import { NextResponse } from "next/server";
 import { buatPaketDoodle } from "@/lib/doodle";
 import { UKURAN_BATCH_DOODLE } from "@/lib/konsep-materi";
-import { adalahPai1Bab1 } from "@/lib/naskah-resmi";
+import { naskahResmiJikaAda } from "@/lib/naskah-resmi";
 
 export const maxDuration = 60;
 
@@ -39,7 +39,7 @@ export async function POST(req: Request) {
     const kelas = sebagaiTeks(body.kelas, "SD");
     const mapel = sebagaiTeks(body.mapel, "Umum");
     const materi = sebagaiTeks(body.materi, "Materi hari ini");
-    if (adalahPai1Bab1(kelas, mapel, materi)) {
+    if (naskahResmiJikaAda(kelas, mapel, materi)) {
       return NextResponse.json({
         berhasil: true,
         dariCache: true,

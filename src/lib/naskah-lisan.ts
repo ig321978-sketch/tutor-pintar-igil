@@ -13,6 +13,10 @@ import {
   teksLisanPai1Bab1,
 } from "@/lib/naskah-resmi-pai-1-bab1";
 import {
+  naskahTampilanPai1Bab2,
+  teksLisanPai1Bab2,
+} from "@/lib/naskah-resmi-pai-1-bab2";
+import {
   potongLengkap,
   teksLisanDaftarLengkap,
 } from "@/lib/paket-lengkap-materi";
@@ -211,6 +215,15 @@ export function naskahTutorUntukSuara(
 ): string {
   if (naskahTampilanPai1Bab1(penjelasan)) {
     const lisan = teksLisanPai1Bab1();
+    if (opsi?.tanpaSapaan) return lisan;
+    const sapaanAmanBab1 = naskahLisan(
+      nama ? sapaanTutorRingkas(nama, sapaan) : sapaan,
+      nama,
+    );
+    return [sapaanAmanBab1, lisan].filter(Boolean).join("\n\n");
+  }
+  if (naskahTampilanPai1Bab2(penjelasan)) {
+    const lisan = teksLisanPai1Bab2();
     if (opsi?.tanpaSapaan) return lisan;
     const sapaanAman = naskahLisan(
       nama ? sapaanTutorRingkas(nama, sapaan) : sapaan,

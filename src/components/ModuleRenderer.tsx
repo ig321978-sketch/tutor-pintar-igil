@@ -5,12 +5,14 @@ import { pecahBlokNaskahModul } from "@/lib/blok-naskah-modul";
 import GambarDoodle, { type GambarSisipan } from "@/components/GambarDoodle";
 import InfografisKelas1 from "@/components/InfografisKelas1";
 import NaskahPai1Bab1 from "@/components/NaskahPai1Bab1";
+import NaskahPai1Bab2 from "@/components/NaskahPai1Bab2";
 import NaskahKartuSd from "@/components/NaskahKartuSd";
 import DaftarLengkapMateri from "@/components/DaftarLengkapMateri";
 import { BlokTampil } from "@/components/BlokNaskahTampil";
 import { parseInfografisKelas1 } from "@/lib/infografis-kelas1";
 import { naskahTampilanPai1Bab1 } from "@/lib/naskah-resmi-pai-1-bab1";
-import { adalahJudulPai1Bab1 } from "@/lib/naskah-resmi";
+import { naskahTampilanPai1Bab2 } from "@/lib/naskah-resmi-pai-1-bab2";
+import { adalahJudulPai1Bab1, adalahJudulPai1Bab2 } from "@/lib/naskah-resmi";
 import { potongLengkap } from "@/lib/paket-lengkap-materi";
 import { jenjangGuru, type KelaminGuru } from "@/lib/guru";
 import { rapikanKunci } from "@/lib/kunci-siswa";
@@ -51,24 +53,44 @@ function ModuleRenderer({
       naskahTampilanPai1Bab1(naskah),
     [naskah, mapel, materi],
   );
+  const pakaiKartuBab2 = useMemo(
+    () =>
+      adalahJudulPai1Bab2(mapel, materi) ||
+      naskahTampilanPai1Bab2(naskah),
+    [naskah, mapel, materi],
+  );
   const pakaiKartuSd =
-    !pakaiKartuBab1 && !rapat && jenjangGuru(kelas || "1 SD") === "SD" && Boolean(kelas);
+    !pakaiKartuBab1 &&
+    !pakaiKartuBab2 &&
+    !rapat &&
+    jenjangGuru(kelas || "1 SD") === "SD" &&
+    Boolean(kelas);
   const infografis = useMemo(
-    () => (pakaiKartuBab1 || pakaiKartuSd ? null : parseInfografisKelas1(naskah)),
-    [naskah, pakaiKartuBab1, pakaiKartuSd],
+    () =>
+      pakaiKartuBab1 || pakaiKartuBab2 || pakaiKartuSd
+        ? null
+        : parseInfografisKelas1(naskah),
+    [naskah, pakaiKartuBab1, pakaiKartuBab2, pakaiKartuSd],
   );
   const potong = useMemo(() => potongLengkap(naskah), [naskah]);
   const blok = useMemo(
     () =>
-      infografis || pakaiKartuBab1 || pakaiKartuSd
+      infografis || pakaiKartuBab1 || pakaiKartuBab2 || pakaiKartuSd
         ? []
         : pecahBlokNaskahModul(potong.tubuh || naskah),
-    [naskah, infografis, pakaiKartuBab1, pakaiKartuSd, potong.tubuh],
+    [naskah, infografis, pakaiKartuBab1, pakaiKartuBab2, pakaiKartuSd, potong.tubuh],
   );
   if (pakaiKartuBab1) {
     return (
       <div className={className}>
         <NaskahPai1Bab1 kelas={kelas} kelamin={kelamin} />
+      </div>
+    );
+  }
+  if (pakaiKartuBab2) {
+    return (
+      <div className={className}>
+        <NaskahPai1Bab2 kelas={kelas} kelamin={kelamin} />
       </div>
     );
   }
