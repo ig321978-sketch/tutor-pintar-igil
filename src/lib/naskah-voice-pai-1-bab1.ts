@@ -1,4 +1,5 @@
 import type { KelaminGuru } from "@/lib/guru";
+import { bersihkanNaskahLisanCerita } from "@/lib/naskah-lisan";
 
 export const JEDA_PARAGRAF_VOICE_MS = 3_000;
 export const JEDA_NASKAH_VOICE_MS = 5_000;
@@ -8,6 +9,39 @@ export type CuplikanVoiceMateri = {
   jedaSetelahMs: number;
 };
 
+const NAMA_HIJAIYAH_NYANYI = [
+  "Alif",
+  "Ba",
+  "Ta",
+  "Tsa",
+  "Jim",
+  "Kha",
+  "Kho",
+  "Dal",
+  "Dzal",
+  "Ro",
+  "Zai",
+  "Sin",
+  "Syin",
+  "Shod",
+  "Dhod",
+  "Tho",
+  "Dzho",
+  "Ain",
+  "Ghin",
+  "Fa",
+  "Qof",
+  "Kaf",
+  "Lam",
+  "Mim",
+  "Nun",
+  "Wau",
+  "Ha",
+  "Lam Alif",
+  "Hamzah",
+  "Ya",
+];
+
 function sebutanGuru(kelamin: KelaminGuru): string {
   return kelamin === "pria" ? "Bapak Guru" : "Ibu Guru";
 }
@@ -15,7 +49,7 @@ function sebutanGuru(kelamin: KelaminGuru): string {
 function naskahVoicePai1Bab1(kelamin: KelaminGuru): string[][] {
   return [
     [
-      "Anak-anak, kalau kita masuk ke sekolah baru, pasti kita akan bertemu dengan banyak teman baru, kan? Nah, di dalam Al-Qur'an juga ada 30 teman baru yang ingin berkenalan dengan kalian!",
+      "Anak-anak, kalau kita masuk ke sekolah baru, pasti kita akan bertemu dengan banyak teman baru, kan? Nah, di dalam Al Quran juga ada 30 teman baru yang ingin berkenalan dengan kalian!",
       "Kumpulan teman baru ini namanya Huruf Hijaiyah. Bentuk mereka unik-unik dan lucu, lho.",
       "Coba lihat teman kita yang pertama. Bentuknya kurus dan berdiri tegak seperti pensil. Namanya adalah Alif.",
       "Sekarang lihat teman kita yang paling terakhir. Bentuknya melengkung seperti angsa yang sedang berenang. Namanya Ya.",
@@ -24,8 +58,9 @@ function naskahVoicePai1Bab1(kelamin: KelaminGuru): string[][] {
       `Coba bayangkan kalau di kelas ini semua anak wajahnya sama persis dan namanya sama semua, pasti ${sebutanGuru(kelamin)} bingung kan saat memanggil? Menurut kalian, kenapa ya 30 huruf Hijaiyah ini diciptakan oleh Allah dengan bentuk yang berbeda-beda?`,
     ],
     [
-      "Yuk, kita panggil nama teman-teman baru ini satu per satu! Mari bernyanyi lagu huruf hijaiyah bersama-sama sambil menunjuk hurufnya!..",
+      "Yuk, kita panggil nama teman-teman baru ini satu per satu! Mari bernyanyi lagu huruf hijaiyah bersama-sama sambil menunjuk hurufnya!",
     ],
+    [NAMA_HIJAIYAH_NYANYI.join(", ") + "."],
   ];
 }
 
@@ -40,7 +75,7 @@ export function cuplikanVoicePai1Bab1(
       const akhirSemua =
         akhirNaskah && indeksNaskah === naskah.length - 1;
       hasil.push({
-        teks,
+        teks: bersihkanNaskahLisanCerita(teks),
         jedaSetelahMs: akhirSemua
           ? 0
           : akhirNaskah

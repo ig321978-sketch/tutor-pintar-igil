@@ -18,8 +18,10 @@ export function kunciCacheAudioTts(
   teks: string,
   kelamin: string,
   kelas: string,
+  opsi?: { tanpaNotasi?: boolean },
 ): string {
-  return `v2|${kelamin}|${kelas}|${teks.replace(/\s+/g, " ").trim()}`;
+  const mode = opsi?.tanpaNotasi ? "cerita" : "rumus";
+  return `v3|${mode}|${kelamin}|${kelas}|${teks.replace(/\s+/g, " ").trim()}`;
 }
 
 function bukaDb(): Promise<IDBDatabase | null> {

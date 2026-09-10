@@ -39,13 +39,14 @@ export async function mintaAudioTts(
   teks: string,
   kelamin: KelaminGuru,
   kelas = "3 SD",
-  opsi: { persist?: boolean; hanyaCache?: boolean } = {},
+  opsi: { persist?: boolean; hanyaCache?: boolean; tanpaNotasi?: boolean } = {},
 ): Promise<HasilAudioTts | null> {
   const persist = opsi.persist !== false;
   const hanyaCache = opsi.hanyaCache === true;
+  const tanpaNotasi = opsi.tanpaNotasi === true;
   const naskah = teks.replace(/\s+/g, " ").trim();
   if (!naskah) return null;
-  const kunci = kunciCacheAudioTts(naskah, kelamin, kelas);
+  const kunci = kunciCacheAudioTts(naskah, kelamin, kelas, { tanpaNotasi });
   const cached = await ambilCacheAudioTts(kunci);
   if (cached) {
     return {
@@ -68,6 +69,7 @@ export async function mintaAudioTts(
         teks: naskah,
         kelamin: kelamin === "pria" ? "male" : "female",
         kelas,
+        tanpaNotasi,
       }),
     });
     const data = (await respons.json()) as {

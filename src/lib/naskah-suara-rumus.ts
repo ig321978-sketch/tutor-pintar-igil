@@ -645,7 +645,7 @@ export function ucapkanKeteranganKomponenRumus(teks: string): string {
 }
 
 export function ucapkanHurufVariabelTerisolasi(teks: string): string {
-  const janganPecah = /^(di|ke|ya|si|bu|pa|om|nu|na|oh|uh|ih|eh|ph|sd|tk|hp|tv|wa|ri|pc|os|ai|ki|kd|jp|pg|ra|pk|rw|rt|ok|no|id)$/i;
+  const janganPecah = /^(di|ke|ya|si|bu|pa|om|nu|na|oh|uh|ih|eh|ph|sd|tk|hp|tv|wa|ri|pc|os|ai|ki|kd|jp|pg|ra|ro|pk|rw|rt|ok|no|id|ba|ta|fa|ha)$/i;
   const hurufVariabel = /^[FfmavstqrkxyzpnEIVBHWugcl]$/;
   let hasil = teks.replace(/\b([A-Za-z])(\d+)\b/g, (_, huruf: string, angka: string) => {
     const kecil = huruf.toLowerCase();

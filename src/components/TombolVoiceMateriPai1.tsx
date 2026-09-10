@@ -99,7 +99,10 @@ export default function TombolVoiceMateriPai1({
     const kelasSuara = (kelas || profil.kelas || "1 SD").trim();
     const cuplikan = cuplikanVoicePai1Bab1(guru);
     const antrian = cuplikan.map((item) =>
-      mintaAudioTts(item.teks, guru, kelasSuara, { persist: true }),
+      mintaAudioTts(item.teks, guru, kelasSuara, {
+        persist: true,
+        tanpaNotasi: true,
+      }),
     );
     try {
       for (let i = 0; i < cuplikan.length; i += 1) {

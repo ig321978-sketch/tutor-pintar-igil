@@ -89,8 +89,32 @@ export function bersihkanLabelNaskah(teks: string): string {
     .join("\n\n");
 }
 
-export function naskahLisan(teks: string, nama = ""): string {
+export function bersihkanNaskahLisanCerita(teks: string): string {
+  return teks
+    .replace(/[\u200B-\u200D\uFEFF]/g, "")
+    .replace(/[\u0600-\u06FF\u0750-\u077F\u08A0-\u08FF\uFB50-\uFDFF\uFE70-\uFEFF]/g, " ")
+    .replace(/Al[-\s]?Qur['’`´]an/gi, "Al Quran")
+    .replace(/\bLAM-ALIF\b/gi, "Lam Alif")
+    .replace(/['’`´]\s*AIN\b/gi, "Ain")
+    .replace(/['’`´]\s*GHIN\b/gi, "Ghin")
+    .replace(/[“”„«»"'`´‘’]/g, "")
+    .replace(/[•·▪]/g, " ")
+    .replace(/[()[\]{}]/g, " ")
+    .replace(/!+\.+$/g, "!")
+    .replace(/\s*[-–—]\s*/g, " ")
+    .replace(/\s+/g, " ")
+    .trim();
+}
+
+export function naskahLisan(
+  teks: string,
+  nama = "",
+  opsi?: { tanpaNotasi?: boolean },
+): string {
   let aman = nama ? gantiNamaLengkapKeDepan(teks, nama) : teks;
+  if (opsi?.tanpaNotasi) {
+    return bersihkanNaskahLisanCerita(aman);
+  }
   aman = buangLabelBaris(aman);
 
   aman = aman
@@ -117,7 +141,7 @@ export function naskahLisan(teks: string, nama = ""): string {
     .replace(/\b(?:VOICE|JSON|SSML|TTS|HOTS|NULL|UNDEFINED)\b/g, " ")
     .replace(/\$IGIL/gi, "igil")
     .replace(/\bIGIL\b/g, "igil")
-    .replace(/Al[-\s]?Qur['’`]an/gi, "Alquran")
+    .replace(/Al[-\s]?Qur['’`]an/gi, "Al Quran")
     .replace(/\bQ\.?\s*S\.?\s*/gi, "surah ")
     .replace(/\bH\.?\s*R\.?\s*/gi, "hadis ")
     .replace(/(?<=\s)S\.?\s*A\.?\s*W\.?(?=\s|[.,!?…]|$)/gi, "salallahu alaihi wasalam")

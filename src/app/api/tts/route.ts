@@ -42,7 +42,9 @@ export async function POST(req: Request) {
           : "";
     const naskah = teks
       .split(/\n\n+/)
-      .map((item) => naskahLisan(item))
+      .map((item) =>
+        naskahLisan(item, "", { tanpaNotasi: body.tanpaNotasi === true }),
+      )
       .filter(Boolean)
       .join("\n\n");
     if (!naskah) {
