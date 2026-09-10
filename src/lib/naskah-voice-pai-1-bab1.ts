@@ -42,7 +42,40 @@ const NAMA_HIJAIYAH_NYANYI = [
   "Lam Alif",
   "Hamzah",
   "Ya",
-];
+] as const;
+
+const UCAPAN_HIJAIYAH_NYANYI: Record<(typeof NAMA_HIJAIYAH_NYANYI)[number], string> = {
+  Alif: "Alif",
+  Ba: "Baa",
+  Ta: "Taa",
+  Tsa: "Tsaa",
+  Jim: "Jim",
+  Kha: "Khaa",
+  Kho: "Khoo",
+  Dal: "Dal",
+  Dzal: "Dzal",
+  Ro: "Roo",
+  Zai: "Zai",
+  Sin: "Siin",
+  Syin: "Syiin",
+  Shod: "Shood",
+  Dhod: "Dhood",
+  Tho: "Thoo",
+  Dzho: "Dzhoo",
+  Ain: "Aain",
+  Ghin: "Ghiin",
+  Fa: "Faa",
+  Qof: "Qoof",
+  Kaf: "Kaaf",
+  Lam: "Laam",
+  Mim: "Miim",
+  Nun: "Nuun",
+  Wau: "Waau",
+  Ha: "Haa",
+  "Lam Alif": "Laam Alif",
+  Hamzah: "Hamzah",
+  Ya: "Yaa",
+};
 
 function sebutanGuru(kelamin: KelaminGuru): string {
   return kelamin === "pria" ? "Bapak Guru" : "Ibu Guru";
@@ -71,7 +104,7 @@ function cuplikanNyanyiHijaiyah(): CuplikanVoiceMateri[] {
     const terakhir = nomor === NAMA_HIJAIYAH_NYANYI.length;
     const batasSepuluh = nomor % 10 === 0;
     return {
-      teks: bersihkanNaskahLisanCerita(nama),
+      teks: UCAPAN_HIJAIYAH_NYANYI[nama],
       jedaSetelahMs: terakhir
         ? 0
         : batasSepuluh
