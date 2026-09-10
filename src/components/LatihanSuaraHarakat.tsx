@@ -54,7 +54,7 @@ export default function LatihanSuaraHarakat() {
   return (
     <div className="mt-6 space-y-4 border-t-2 border-[#1C01A5]/10 pt-5">
       <p className="text-base font-extrabold leading-relaxed text-[#1C01A5]">
-        Quiz:
+        QUIZ:
       </p>
       {SOAL.map((soal) => (
         <SoalRekamSuara
