@@ -5,8 +5,12 @@ import { Volume2 } from "lucide-react";
 import {
   hentikanAudioGuruAktif,
   mintaAudioTts,
+  saatHentiAudioGuru,
 } from "@/lib/putar-tts-klien";
-import { cuplikanVoicePai1Bab1 } from "@/lib/naskah-voice-pai-1-bab1";
+import {
+  cuplikanVoicePai1Bab1,
+  cuplikanVoicePai1Bab1Harakat,
+} from "@/lib/naskah-voice-pai-1-bab1";
 import { bacaProgres } from "@/lib/progres";
 import { kelasTombolUtama } from "@/lib/tema";
 import { normalisasiKelaminGuru, type KelaminGuru } from "@/lib/guru";
@@ -91,9 +95,11 @@ function adalahBatal(error: unknown): boolean {
 export default function TombolVoiceMateriPai1({
   kelas = "",
   kelamin,
+  jenis = "hijaiyah",
 }: {
   kelas?: string;
   kelamin?: KelaminGuru;
+  jenis?: "hijaiyah" | "harakat";
 }) {
   const [memutar, setMemutar] = useState(false);
   const batalRef = useRef<AbortController | null>(null);
@@ -105,7 +111,14 @@ export default function TombolVoiceMateriPai1({
   };
 
   useEffect(() => {
+    const lepas = saatHentiAudioGuru(() => {
+      if (!batalRef.current) return;
+      batalRef.current.abort();
+      batalRef.current = null;
+      setMemutar(false);
+    });
     return () => {
+      lepas();
       batalRef.current?.abort();
       batalRef.current = null;
     };
@@ -119,7 +132,10 @@ export default function TombolVoiceMateriPai1({
     const profil = bacaProgres().profil;
     const guru = normalisasiKelaminGuru(kelamin ?? profil.guruKelamin);
     const kelasSuara = (kelas || profil.kelas || "1 SD").trim();
-    const cuplikan = cuplikanVoicePai1Bab1(guru);
+    const cuplikan =
+      jenis === "harakat"
+        ? cuplikanVoicePai1Bab1Harakat()
+        : cuplikanVoicePai1Bab1(guru);
     const antrian = cuplikan.map((item) =>
       mintaAudioTts(item.teks, guru, kelasSuara, {
         persist: true,

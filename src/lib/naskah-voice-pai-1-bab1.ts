@@ -3,6 +3,8 @@ import { bersihkanNaskahLisanCerita } from "@/lib/naskah-lisan";
 
 export const JEDA_PARAGRAF_VOICE_MS = 3_000;
 export const JEDA_NASKAH_VOICE_MS = 5_000;
+export const JEDA_PARAGRAF_HARAKAT_MS = 2_000;
+export const JEDA_NASKAH_HARAKAT_MS = 3_000;
 
 export type CuplikanVoiceMateri = {
   teks: string;
@@ -34,10 +36,11 @@ function naskahVoiceCerita(kelamin: KelaminGuru): string[][] {
   ];
 }
 
-export function cuplikanVoicePai1Bab1(
-  kelamin: KelaminGuru,
+function cuplikanDariNaskah(
+  cerita: string[][],
+  jedaParagrafMs: number,
+  jedaNaskahMs: number,
 ): CuplikanVoiceMateri[] {
-  const cerita = naskahVoiceCerita(kelamin);
   const hasil: CuplikanVoiceMateri[] = [];
   cerita.forEach((paragraf, indeksNaskah) => {
     paragraf.forEach((teks, indeksParagraf) => {
@@ -48,10 +51,43 @@ export function cuplikanVoicePai1Bab1(
         jedaSetelahMs: akhirSemua
           ? 0
           : akhirNaskah
-            ? JEDA_NASKAH_VOICE_MS
-            : JEDA_PARAGRAF_VOICE_MS,
+            ? jedaNaskahMs
+            : jedaParagrafMs,
       });
     });
   });
   return hasil;
+}
+
+function naskahVoiceHarakat(): string[][] {
+  return [
+    [
+      'Anak-anak, teman-teman Hijaiyah kita ini ternyata sangat pemalu. Kalau tidak dipakaikan "pakaian ajaib", mereka cuma diam dan tidak mau bersuara. Pakaian ajaib ini namanya Harakat, artinya: tanda baca.',
+      "Ada 3 pakaian ajaib yang suka dipakai oleh huruf Hijaiyah. Yuk kita lihat apa yang terjadi kalau mereka memakainya!",
+      'Fathah, Si Topi Ajaib. Fathah itu letaknya di atas kepala huruf, persis seperti topi. Kalau huruf pakai topi ini, suaranya akan terbuka menjadi "A". Buka mulutmu lebar-lebar seperti mau makan es krim! "Aaaa!" Contoh: Huruf Ba dipakaikan topi Fathah, bunyinya ba.',
+      'Kasrah, Si Sepatu Roda. Kasrah letaknya selalu di bawah huruf, seperti sepatu. Kalau huruf pakai sepatu ini, suaranya ditarik ke bawah menjadi "I". Coba tarik bibirmu ke samping seperti orang tersenyum lebar! "Iiii!" Contoh: Huruf Ba dipakaikan sepatu Kasrah, bunyinya bi.',
+      'Dhammah, Si Dasi. Dhammah letaknya di atas huruf melingkar seperti dasi. Kalau huruf pakai dasi ini, suaranya jadi membulat menjadi "U". Majukan bibirmu seperti mau meniup gelembung sabun! "Uuuu!" Contoh: Huruf Ba dipakaikan dasi Dhammah, bunyinya bu.',
+    ],
+    [
+      "Anak-anak, apa yang terjadi kalau satu huruf, misalnya Ba, dipaksa memakai Topi dan Sepatu bersamaan? Kira-kira bingung tidak kita mendengarkan suaranya? Makanya, huruf itu hanya boleh memakai satu pakaian ajaib saja secara bergantian ya!",
+    ],
+  ];
+}
+
+export function cuplikanVoicePai1Bab1(
+  kelamin: KelaminGuru,
+): CuplikanVoiceMateri[] {
+  return cuplikanDariNaskah(
+    naskahVoiceCerita(kelamin),
+    JEDA_PARAGRAF_VOICE_MS,
+    JEDA_NASKAH_VOICE_MS,
+  );
+}
+
+export function cuplikanVoicePai1Bab1Harakat(): CuplikanVoiceMateri[] {
+  return cuplikanDariNaskah(
+    naskahVoiceHarakat(),
+    JEDA_PARAGRAF_HARAKAT_MS,
+    JEDA_NASKAH_HARAKAT_MS,
+  );
 }
