@@ -91,3 +91,42 @@ export function cuplikanVoicePai1Bab1Harakat(): CuplikanVoiceMateri[] {
     JEDA_NASKAH_HARAKAT_MS,
   );
 }
+
+const AYAT_FATIHAH_LISAN = [
+  "Bismillahirrahmanirrahim",
+  "Alhamdulillahi rabbil alamin",
+  "Arrahmanirrahim",
+  "Maliki yaumiddin",
+  "Iyyaka nabudu wa iyyaka nastain",
+  "Ihdinashshiratal mustaqim",
+  "Shiratal ladzina anamta alaihim ghairil maghdubi alaihim waladhdhallin",
+];
+
+function naskahVoiceFatihah(): string[][] {
+  return [
+    [
+      "Anak-anak, kalau kalian mau masuk ke rumah orang lain, apa yang pertama kali kalian lakukan? Pasti mengetuk pintu dan mengucapkan salam, kan? Tidak mungkin kita diam saja langsung masuk.",
+      "Nah, saat kita salat, kita itu sebenarnya sedang bertamu dan mengobrol dengan Allah. Untuk membuka pintu obrolan dengan Allah, kita harus mengetuknya dengan membaca Surah Al Fatihah.",
+      "Al Fatihah artinya Pembukaan. Surah ini adalah sapaan pertama kita kepada Allah.",
+      "Surah ini punya 7 ayat, ibarat 7 ketukan pintu yang sangat sopan.",
+      "Karena ini adalah sapaan pembuka, kita wajib membacanya setiap kali kita salat. Allah sangat senang kalau kita mengetuk pintu-Nya dengan Al Fatihah!",
+    ],
+    [
+      "Kalau ada orang yang salat, tapi dia lupa membaca Al Fatihah, kira-kira pintu obrolannya dengan Allah sudah terbuka atau masih tertutup ya? Terus, pesannya sampai tidak ke Allah?",
+      "Tidak saaampai. Tidak sampai ya. Nah berarti salatnya menjadi tidak?",
+      "Tidak sah.",
+    ],
+    [
+      "Yuk kita sama-sama membaca surat Al Fatihah bersama.",
+      ...AYAT_FATIHAH_LISAN,
+    ],
+  ];
+}
+
+export function cuplikanVoicePai1Bab1Fatihah(): CuplikanVoiceMateri[] {
+  return cuplikanDariNaskah(
+    naskahVoiceFatihah(),
+    JEDA_PARAGRAF_HARAKAT_MS,
+    JEDA_NASKAH_HARAKAT_MS,
+  );
+}

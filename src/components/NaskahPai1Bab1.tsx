@@ -166,6 +166,13 @@ export default function NaskahPai1Bab1({
         <h4 className="text-center text-lg font-black tracking-wide text-[#1C01A5] sm:text-xl">
           C. Menghafal Surah Al-Fatihah
         </h4>
+        <div className="mt-4">
+          <TombolVoiceMateriPai1
+            kelas={kelas}
+            kelamin={kelamin}
+            jenis="fatihah"
+          />
+        </div>
         <p className="mt-4 text-base font-semibold leading-relaxed text-slate-700">
           {TEKS_KARTU_FATIHAH}
         </p>

@@ -9,6 +9,7 @@ import {
 } from "@/lib/putar-tts-klien";
 import {
   cuplikanVoicePai1Bab1,
+  cuplikanVoicePai1Bab1Fatihah,
   cuplikanVoicePai1Bab1Harakat,
 } from "@/lib/naskah-voice-pai-1-bab1";
 import { bacaProgres } from "@/lib/progres";
@@ -99,7 +100,7 @@ export default function TombolVoiceMateriPai1({
 }: {
   kelas?: string;
   kelamin?: KelaminGuru;
-  jenis?: "hijaiyah" | "harakat";
+  jenis?: "hijaiyah" | "harakat" | "fatihah";
 }) {
   const [memutar, setMemutar] = useState(false);
   const batalRef = useRef<AbortController | null>(null);
@@ -135,7 +136,9 @@ export default function TombolVoiceMateriPai1({
     const cuplikan =
       jenis === "harakat"
         ? cuplikanVoicePai1Bab1Harakat()
-        : cuplikanVoicePai1Bab1(guru);
+        : jenis === "fatihah"
+          ? cuplikanVoicePai1Bab1Fatihah()
+          : cuplikanVoicePai1Bab1(guru);
     const antrian = cuplikan.map((item) =>
       mintaAudioTts(item.teks, guru, kelasSuara, {
         persist: true,
