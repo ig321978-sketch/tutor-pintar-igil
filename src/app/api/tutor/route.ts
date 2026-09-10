@@ -15,6 +15,7 @@ import {
   bentukModulTutor,
   cachePunyaBagian,
 } from "@/lib/susun-modul-tutor";
+import { naskahResmiJikaAda } from "@/lib/naskah-resmi";
 import { permintaanDibatalkan } from "@/lib/validasi-naskah-ai";
 
 export const dynamic = "force-dynamic";
@@ -133,6 +134,19 @@ export async function POST(req: Request) {
         { berhasil: false, pesan: "Permintaan dibatalkan." },
         { status: 500 },
       );
+    }
+
+    const resmi = naskahResmiJikaAda(kelas, mapel, materi);
+    if (resmi) {
+      await ambilCacheMateriUntukSiswa(kelas, mapel, materi);
+      return NextResponse.json({
+        berhasil: true,
+        dariCache: true,
+        isLocked: true,
+        topicId: topicIdMateri(kelas, mapel, materi),
+        tersimpan: true,
+        data: bentukModulTutor(nama, resmi, { mapel, materi }),
+      });
     }
 
     if (await materiSedangTerkunci(kelas, mapel, materi)) {

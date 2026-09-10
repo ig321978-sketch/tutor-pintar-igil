@@ -1023,30 +1023,18 @@ export default function TutorAI() {
       modeInput === "teks" &&
       adalahPai1Bab1(kelasKirim, mapelKirim, materiKirim)
     ) {
-      const dariServer = await intipModulTersimpan(
-        kelasKirim,
+      void intipModulTersimpan(kelasKirim, mapelKirim, materiKirim);
+      const gabung = terapkanBagianModul(
+        modulDariNaskahPai1Bab1(),
         mapelKirim,
         materiKirim,
+        kelasKirim,
+        bagian,
+        true,
       );
-      if (dariServer && bagianNaskahSiap(dariServer, bagian, kelasKirim)) {
-        const gabung = terapkanBagianModul(
-          dariServer,
-          mapelKirim,
-          materiKirim,
-          kelasKirim,
-          bagian,
-          true,
-        );
-        simpanModulLokal(topicId, gabung);
-        selesai("siap");
-        if (
-          bagian === "kurikulum" &&
-          !(gabung.gambarSisipan?.length)
-        ) {
-          void muatIlustrasiDoodle(gabung);
-        }
-        return;
-      }
+      simpanModulLokal(topicId, gabung);
+      selesai("siap");
+      return;
     }
     if (modeInput === "teks") {
       const dariServer = await intipModulTersimpan(
@@ -1308,8 +1296,18 @@ export default function TutorAI() {
     };
     const lokal = bacaModulLokal<ModulTutor>(topicId);
     let batal = false;
+    if (adalahPai1Bab1(kelasKirim, mapelKirim, materiKirim)) {
+      const gabung = modulDariNaskahPai1Bab1();
+      hasilDataRef.current = gabung;
+      setHasilData(gabung);
+      simpanModulLokal(topicId, gabung);
+      tandaiSiap(gabung);
+    }
     void intipModulTersimpan(kelasKirim, mapelKirim, materiKirim).then((data) => {
       if (batal) return;
+      if (adalahPai1Bab1(kelasKirim, mapelKirim, materiKirim)) {
+        return;
+      }
       if (data) {
         const gabung = gabungModulTutor(lokal, data);
         hasilDataRef.current = gabung;
@@ -1322,13 +1320,6 @@ export default function TutorAI() {
         hasilDataRef.current = lokal;
         setHasilData(lokal);
         tandaiSiap(lokal);
-        return;
-      }
-      if (adalahPai1Bab1(kelasKirim, mapelKirim, materiKirim)) {
-        const gabung = modulDariNaskahPai1Bab1();
-        hasilDataRef.current = gabung;
-        setHasilData(gabung);
-        tandaiSiap(gabung);
       }
     });
     return () => {

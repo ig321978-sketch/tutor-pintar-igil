@@ -51,6 +51,7 @@ export async function generateDanKunciNaskahSd(opsi: {
   try {
     if (naskahResmiJikaAda(kelas, mapel, materi)) {
       await getModule(kelas, mapel, materi);
+      await kunciTopic(kelas, mapel, materi, true);
       return {
         ...dasar,
         status: "resmi",

@@ -144,6 +144,18 @@ export async function POST(req: Request) {
       );
     }
 
+    const resmi = naskahResmiJikaAda(kelas, mapel, materi);
+    if (resmi) {
+      await getModule(kelas, mapel, materi);
+      return NextResponse.json({
+        berhasil: true,
+        dariCache: true,
+        isLocked: true,
+        topicId: topicIdMateri(kelas, mapel, materi),
+        data: bentukModulTutor(nama, resmi, { mapel, materi }),
+      });
+    }
+
     if (await materiSedangTerkunci(kelas, mapel, materi)) {
       return responsMateriTerkunci();
     }

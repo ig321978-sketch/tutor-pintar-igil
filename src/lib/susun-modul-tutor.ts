@@ -34,6 +34,7 @@ import {
   type IsiCacheMateri,
 } from "@/lib/cache-materi-tutor";
 import { naskahKartuSdLayak, lengkapiVisualNaskahSd } from "@/lib/naskah-kartu-sd";
+import { naskahResmiJikaAda } from "@/lib/naskah-resmi";
 import { naskahGlobalSiap, naskahMateriSiap } from "@/lib/sudut-pandang";
 import { instruksiPaketLengkap } from "@/lib/paket-lengkap-materi";
 import {
@@ -815,6 +816,21 @@ async function simpanBagianCache(
   }
 }
 
+function modulDariNaskahResmi(
+  nama: string,
+  kelas: string,
+  mapel: string,
+  materi: string,
+): { data: ModulTutor; dariCache: true; topicId: string } | null {
+  const resmi = naskahResmiJikaAda(kelas, mapel, materi);
+  if (!resmi) return null;
+  return {
+    data: bentukModulTutor(nama, resmi, { mapel, materi }),
+    dariCache: true,
+    topicId: topicIdMateri(kelas, mapel, materi),
+  };
+}
+
 export async function generateBagianModul(opsi: {
   nama: string;
   kelas: string;
@@ -825,6 +841,16 @@ export async function generateBagianModul(opsi: {
   naskahKurikulum?: string;
   signal?: AbortSignal;
 }): Promise<ModulTutor> {
+  const dariResmi = modulDariNaskahResmi(
+    opsi.nama,
+    opsi.kelas,
+    opsi.mapel,
+    opsi.materi,
+  );
+  if (dariResmi) {
+    await getModule(opsi.kelas, opsi.mapel, opsi.materi);
+    return dariResmi.data;
+  }
   const namaDepan = namaDepanSiswa(opsi.nama);
   const gambar = opsi.gambar ?? [];
   const cacheAwal = await getModule(opsi.kelas, opsi.mapel, opsi.materi);
@@ -1042,6 +1068,16 @@ export async function ambilAtauBuatBagianModul(opsi: {
   bagian: BagianNaskahModul;
   signal?: AbortSignal;
 }): Promise<{ data: ModulTutor; dariCache: boolean; topicId: string }> {
+  const dariResmi = modulDariNaskahResmi(
+    opsi.nama,
+    opsi.kelas,
+    opsi.mapel,
+    opsi.materi,
+  );
+  if (dariResmi) {
+    await getModule(opsi.kelas, opsi.mapel, opsi.materi);
+    return dariResmi;
+  }
   const gambar = opsi.gambar ?? [];
   const topicId = topicIdMateri(opsi.kelas, opsi.mapel, opsi.materi);
   const cache =
@@ -1141,6 +1177,16 @@ export async function generateModuleFirstTime(opsi: {
   signal?: AbortSignal;
   tulisUlang?: boolean;
 }): Promise<ModulTutor> {
+  const dariResmi = modulDariNaskahResmi(
+    opsi.nama,
+    opsi.kelas,
+    opsi.mapel,
+    opsi.materi,
+  );
+  if (dariResmi) {
+    await getModule(opsi.kelas, opsi.mapel, opsi.materi);
+    return dariResmi.data;
+  }
   const namaDepan = namaDepanSiswa(opsi.nama);
   const gambar = opsi.gambar ?? [];
   if (!opsi.tulisUlang) {
@@ -1231,6 +1277,16 @@ export async function ambilAtauBuatModul(opsi: {
   signal?: AbortSignal;
   forceRegenerate?: boolean;
 }): Promise<{ data: ModulTutor; dariCache: boolean; topicId: string }> {
+  const dariResmi = modulDariNaskahResmi(
+    opsi.nama,
+    opsi.kelas,
+    opsi.mapel,
+    opsi.materi,
+  );
+  if (dariResmi) {
+    await getModule(opsi.kelas, opsi.mapel, opsi.materi);
+    return dariResmi;
+  }
   const gambar = opsi.gambar ?? [];
   const topicId = topicIdMateri(opsi.kelas, opsi.mapel, opsi.materi);
   if (opsi.forceRegenerate) {
