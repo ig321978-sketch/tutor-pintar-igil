@@ -3,6 +3,7 @@
 import { memo } from "react";
 import { Loader2, Sparkles } from "lucide-react";
 import ModuleRenderer from "@/components/ModuleRenderer";
+import TungguNaskah from "@/components/modul/TungguNaskah";
 import { type GambarSisipan } from "@/components/GambarDoodle";
 import { jenjangGuru } from "@/lib/guru";
 
@@ -49,14 +50,7 @@ function PanelMateriModul({
         )}
       </div>
       )}
-      {memuat && !naskah ? (
-        <div className="rounded-2xl bg-white/80 p-8 text-center">
-          <Loader2 className="mx-auto h-10 w-10 animate-spin text-[#1C01A5]" />
-          <p className="mt-4 text-lg font-extrabold text-[#1C01A5]">
-            Menyusun naskah bergambar...
-          </p>
-        </div>
-      ) : null}
+      {memuat && !naskah ? <TungguNaskah /> : null}
       {naskah ? (
         <div className="pt-1">
           <ModuleRenderer

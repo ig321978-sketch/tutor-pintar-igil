@@ -7,6 +7,7 @@ import {
   type BagianIsi,
   type BagianModul,
 } from "@/lib/bagian-modul";
+import TungguNaskah, { TEKS_MENYUSUN_NASKAH } from "@/components/modul/TungguNaskah";
 
 const META: Record<
   BagianIsi,
@@ -50,6 +51,7 @@ export default function KartuBagianModul({
   isi,
   materiTuntas = false,
   mengunciKlik = false,
+  menyusun,
   onPilih,
 }: {
   daftar: BagianIsi[];
@@ -57,6 +59,7 @@ export default function KartuBagianModul({
   isi?: Partial<Record<BagianIsi, ReactNode>>;
   materiTuntas?: boolean;
   mengunciKlik?: boolean;
+  menyusun?: Partial<Record<BagianIsi, boolean>>;
   onPilih: (bagian: BagianIsi) => void;
 }) {
   return (
@@ -65,6 +68,7 @@ export default function KartuBagianModul({
         const item = META[id];
         const terbuka = aktif === id;
         const terkunci = bagianWajibMateriTuntas(id) && !materiTuntas;
+        const menunggu = Boolean(menyusun?.[id]);
         return (
           <article
             key={id}
@@ -98,6 +102,10 @@ export default function KartuBagianModul({
                       Terkunci
                     </span>
                   </div>
+                ) : menunggu ? (
+                  <div className="absolute inset-0 flex items-center justify-center bg-white/70">
+                    <TungguNaskah padat />
+                  </div>
                 ) : null}
               </div>
               <div className="flex items-start gap-3 p-4">
@@ -108,7 +116,9 @@ export default function KartuBagianModul({
                   <p className="mt-1 text-sm font-semibold leading-snug text-[#1C01A5]/70">
                     {terkunci
                       ? "Dengarkan audio Materi sampai tuntas untuk membuka kartu ini."
-                      : item.ringkas}
+                      : menunggu
+                        ? TEKS_MENYUSUN_NASKAH
+                        : item.ringkas}
                   </p>
                 </div>
                 {terkunci ? (

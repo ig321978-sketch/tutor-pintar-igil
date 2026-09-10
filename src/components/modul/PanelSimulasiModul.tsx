@@ -5,6 +5,7 @@ import { Camera, ExternalLink, Loader2, Send, Sparkles } from "lucide-react";
 import { tambahTokenIgil } from "@/lib/progres";
 import type { BahanSimulasi } from "@/lib/simulasi-global";
 import { kelasKotak, kelasLabel, kelasTombolUtama } from "@/lib/tema";
+import TungguNaskah from "@/components/modul/TungguNaskah";
 
 type MisiSimulasi = {
   misi: string;
@@ -77,6 +78,7 @@ export default function PanelSimulasiModul({
   materi,
   sudahLulus = false,
   onSelesai,
+  onMemuat,
 }: {
   nama: string;
   kelas: string;
@@ -84,6 +86,7 @@ export default function PanelSimulasiModul({
   materi: string;
   sudahLulus?: boolean;
   onSelesai?: (lulus: boolean, catatan: string) => void;
+  onMemuat?: (memuat: boolean) => void;
 }) {
   const [bahan, setBahan] = useState<BahanSimulasi[]>([]);
   const [misi, setMisi] = useState<MisiSimulasi | null>(null);
@@ -99,6 +102,14 @@ export default function PanelSimulasiModul({
   const inputGambarRef = useRef<HTMLInputElement>(null);
 
   const tuntas = sudahLulus || Boolean(evaluasi?.lulus);
+
+  useEffect(() => {
+    onMemuat?.(memuat);
+  }, [memuat, onMemuat]);
+
+  useEffect(() => {
+    return () => onMemuat?.(false);
+  }, [onMemuat]);
 
   useEffect(() => {
     let hidup = true;
@@ -258,16 +269,7 @@ export default function PanelSimulasiModul({
   };
 
   if (memuat) {
-    return (
-      <div className="flex items-center justify-center gap-3 py-10">
-        <Loader2 className="h-6 w-6 animate-spin text-[#1C01A5]" />
-        <p className="font-extrabold text-[#1C01A5]">
-          {sudahLulus
-            ? "Memuat lab simulasi..."
-            : "Menyusun misi dan mencari lab..."}
-        </p>
-      </div>
-    );
+    return <TungguNaskah />;
   }
 
   if (bahan.length === 0) {

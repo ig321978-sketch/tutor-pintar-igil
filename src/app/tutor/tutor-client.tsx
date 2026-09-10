@@ -64,6 +64,7 @@ import PanelPraktikumModul from "@/components/modul/PanelPraktikumModul";
 import PanelSilabusModul from "@/components/modul/PanelSilabusModul";
 import PanelSimulasiModul from "@/components/modul/PanelSimulasiModul";
 import PanelUjianModul from "@/components/modul/PanelUjianModul";
+import TungguNaskah from "@/components/modul/TungguNaskah";
 import TeksNaskah from "@/components/TeksNaskah";
 import {
   daftarBagianModul,
@@ -301,6 +302,7 @@ export default function TutorAI() {
   const [tahapBelajar, setTahapBelajar] = useState<TahapBelajar>("pilih");
   const [audioCompleted, setAudioCompleted] = useState(false);
   const [simulasiLulus, setSimulasiLulus] = useState(false);
+  const [simulasiMemuat, setSimulasiMemuat] = useState(false);
   const [pesanKunci, setPesanKunci] = useState("");
   const [sesiMapel, setSesiMapel] = useState("");
   const [sesiMateri, setSesiMateri] = useState("");
@@ -988,7 +990,10 @@ export default function TutorAI() {
       return;
     }
 
-    if (naskahJalanRef.current.size > 0 && !naskahJalanRef.current.has(bagian)) {
+    if (naskahJalanRef.current.has(bagian)) {
+      return;
+    }
+    if (naskahJalanRef.current.size > 0) {
       return;
     }
     if (bagianNaskahSiap(hasilDataRef.current, bagian, kelasKirim)) {
@@ -1003,7 +1008,17 @@ export default function TutorAI() {
       }
       return;
     }
+
+    naskahJalanRef.current.add(bagian);
+    setPesanGalat("");
+    tetapkanStatusNaskah(bagian, "memuat");
+    const selesai = (status: StatusNaskah) => {
+      naskahJalanRef.current.delete(bagian);
+      tetapkanStatusNaskah(bagian, status);
+    };
+
     const topicId = kunciMateriTutor(kelasKirim, mapelKirim, materiKirim);
+    try {
     if (
       modeInput === "teks" &&
       adalahPai1Bab1(kelasKirim, mapelKirim, materiKirim)
@@ -1023,7 +1038,7 @@ export default function TutorAI() {
           true,
         );
         simpanModulLokal(topicId, gabung);
-        tetapkanStatusNaskah(bagian, "siap");
+        selesai("siap");
         if (
           bagian === "kurikulum" &&
           !(gabung.gambarSisipan?.length)
@@ -1033,8 +1048,6 @@ export default function TutorAI() {
         return;
       }
     }
-    if (naskahJalanRef.current.has(bagian)) return;
-
     if (modeInput === "teks") {
       const dariServer = await intipModulTersimpan(
         kelasKirim,
@@ -1051,7 +1064,7 @@ export default function TutorAI() {
           true,
         );
         simpanModulLokal(topicId, gabung);
-        tetapkanStatusNaskah(bagian, "siap");
+        selesai("siap");
         return;
       }
     }
@@ -1065,20 +1078,11 @@ export default function TutorAI() {
         bagian,
         true,
       );
+      selesai("siap");
       return;
     }
 
-    naskahJalanRef.current.add(bagian);
-    setPesanGalat("");
-    tetapkanStatusNaskah(bagian, "memuat");
-
-    const selesai = (status: StatusNaskah) => {
-      naskahJalanRef.current.delete(bagian);
-      tetapkanStatusNaskah(bagian, status);
-    };
-
-    try {
-      if (modeInput === "teks") {
+    if (modeInput === "teks") {
         const cacheAwal = await intipModulTersimpan(
           kelasKirim,
           mapelKirim,
@@ -1710,6 +1714,13 @@ export default function TutorAI() {
               aktif={tahapBelajar}
               materiTuntas
               mengunciKlik={isGenerating}
+              menyusun={{
+                materi:
+                  statusKurikulum === "memuat" || statusGlobal === "memuat",
+                latihan: statusLatihan === "memuat",
+                ujian: statusUjian === "memuat",
+                simulasi: simulasiMemuat,
+              }}
               onPilih={bukaBagian}
               isi={{
                 silabus: (
@@ -1864,6 +1875,7 @@ export default function TutorAI() {
                     mapel={judulMapelSesi}
                     materi={judulMateriSesi}
                     sudahLulus={simulasiLulus}
+                    onMemuat={setSimulasiMemuat}
                     onSelesai={(lulus, catatan) => {
                       if (!lulus) return;
                       catatSimulasiSelesai(pastikanSesiAktif(), catatan);
@@ -1901,14 +1913,7 @@ export default function TutorAI() {
                         </button>
                       </div>
                     ) : null}
-                    {statusLatihan === "memuat" ? (
-                      <div className="rounded-2xl bg-white/80 p-8 text-center">
-                        <Loader2 className="mx-auto h-10 w-10 animate-spin text-[#1C01A5]" />
-                        <p className="mt-4 text-lg font-extrabold text-[#1C01A5]">
-                          Menyusun soal latihan...
-                        </p>
-                      </div>
-                    ) : null}
+                    {statusLatihan === "memuat" ? <TungguNaskah /> : null}
                     {bankSoal.pilihanGanda.length > 0 && statusLatihan !== "memuat" ? (
                       <PanelLatihanModul
                         soal={bankSoal.pilihanGanda}
@@ -1923,14 +1928,7 @@ export default function TutorAI() {
                 ),
                 ujian: (
                   <>
-                    {statusUjian === "memuat" ? (
-                      <div className="rounded-2xl bg-white/80 p-8 text-center">
-                        <Loader2 className="mx-auto h-10 w-10 animate-spin text-[#1C01A5]" />
-                        <p className="mt-4 text-lg font-extrabold text-[#1C01A5]">
-                          Menyusun soal ujian acak...
-                        </p>
-                      </div>
-                    ) : null}
+                    {statusUjian === "memuat" ? <TungguNaskah /> : null}
                     {statusUjian === "galat" ? (
                       <div className="mb-4 rounded-2xl border-2 border-rose-100 bg-rose-50 p-5 text-center">
                         <p className="font-semibold text-rose-600">{pesanUjian}</p>
