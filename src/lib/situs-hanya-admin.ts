@@ -1,3 +1,3 @@
 export function situsHanyaAdmin(): boolean {
-  return false;
+  return true;
 }

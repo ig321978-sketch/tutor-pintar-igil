@@ -3,6 +3,7 @@
 import { useRouter, useSearchParams } from "next/navigation";
 import { useState } from "react";
 import PageShell from "@/components/PageShell";
+import { situsHanyaAdmin } from "@/lib/situs-hanya-admin";
 import { kelasKotak, kelasLabel, kelasTombolUtama } from "@/lib/tema";
 
 export default function LoginClient() {
@@ -36,8 +37,8 @@ export default function LoginClient() {
       }
       const tujuanAdmin =
         next.startsWith("/admin") || next.startsWith("/studio-kreator");
-      if (tujuanAdmin && !json.adalahAdmin) {
-        router.replace("/403");
+      if (!json.adalahAdmin && (tujuanAdmin || situsHanyaAdmin())) {
+        router.replace(tujuanAdmin ? "/403" : "/situs-ditutup");
         router.refresh();
         return;
       }
