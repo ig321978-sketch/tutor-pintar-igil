@@ -10,7 +10,9 @@ import {
 import LatihanSuaraHijaiyah from "@/components/LatihanSuaraHijaiyah";
 import LatihanSuaraHarakat from "@/components/LatihanSuaraHarakat";
 import LatihanSuaraFatihah from "@/components/LatihanSuaraFatihah";
+import TombolVoiceMateriPai1 from "@/components/TombolVoiceMateriPai1";
 import { FATIHAH, HIJAIYAH_30 } from "@/lib/paket-lengkap-materi";
+import type { KelaminGuru } from "@/lib/guru";
 
 const WARNA_HURUF = [
   "border-[#1D4ED8] bg-[#EFF6FF]",
@@ -66,9 +68,16 @@ function KartuBingkai({
   );
 }
 
-export default function NaskahPai1Bab1() {
+export default function NaskahPai1Bab1({
+  kelas = "1 SD",
+  kelamin,
+}: {
+  kelas?: string;
+  kelamin?: KelaminGuru;
+}) {
   return (
     <div className="space-y-5">
+      <TombolVoiceMateriPai1 kelas={kelas} kelamin={kelamin} />
       <KartuBingkai>
         <h4 className="text-center text-lg font-black tracking-wide text-[#1C01A5] sm:text-xl">
           A. Mengenal Huruf Hijaiyah

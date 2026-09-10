@@ -5,7 +5,7 @@ import { Loader2, Sparkles } from "lucide-react";
 import ModuleRenderer from "@/components/ModuleRenderer";
 import TungguNaskah from "@/components/modul/TungguNaskah";
 import { type GambarSisipan } from "@/components/GambarDoodle";
-import { jenjangGuru } from "@/lib/guru";
+import { jenjangGuru, type KelaminGuru } from "@/lib/guru";
 
 function PanelMateriModul({
   mapel = "",
@@ -16,6 +16,7 @@ function PanelMateriModul({
   gambarSisipan,
   memuat,
   kelas = "",
+  kelamin,
 }: {
   mapel?: string;
   materi: string;
@@ -25,6 +26,7 @@ function PanelMateriModul({
   gambarSisipan?: GambarSisipan[];
   memuat?: boolean;
   kelas?: string;
+  kelamin?: KelaminGuru;
 }) {
   const tanpaDoodleHero = Boolean(kelas) && jenjangGuru(kelas) === "SD";
 
@@ -58,6 +60,7 @@ function PanelMateriModul({
             mapel={mapel}
             materi={materi}
             kelas={kelas}
+            kelamin={kelamin}
             className="mt-1"
             gambarSisipan={gambarSisipan}
             doodleMemuat={doodleMemuat}
@@ -77,5 +80,6 @@ export default memo(PanelMateriModul, (sebelum, sekarang) => (
   sebelum.doodleMemuat === sekarang.doodleMemuat &&
   sebelum.gambarSisipan === sekarang.gambarSisipan &&
   sebelum.memuat === sekarang.memuat &&
-  sebelum.kelas === sekarang.kelas
+  sebelum.kelas === sekarang.kelas &&
+  sebelum.kelamin === sekarang.kelamin
 ));

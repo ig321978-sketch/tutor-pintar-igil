@@ -109,6 +109,30 @@ export async function mintaAudioTts(
 let elemenPendek: HTMLAudioElement | null = null;
 let elemenSapaan: HTMLAudioElement | null = null;
 let sapaanDipesan = false;
+const pendengarHentiAudio = new Set<() => void>();
+
+export function saatHentiAudioGuru(fn: () => void): () => void {
+  pendengarHentiAudio.add(fn);
+  return () => {
+    pendengarHentiAudio.delete(fn);
+  };
+}
+
+export function hentikanAudioGuruAktif(): void {
+  sapaanDipesan = false;
+  if (elemenSapaan) {
+    elemenSapaan.pause();
+    elemenSapaan.currentTime = 0;
+  }
+  if (elemenPendek) {
+    elemenPendek.pause();
+    elemenPendek.currentTime = 0;
+  }
+  if (typeof window !== "undefined") {
+    window.speechSynthesis?.cancel();
+  }
+  for (const fn of pendengarHentiAudio) fn();
+}
 
 function pasangElemen(
   el: HTMLAudioElement | null,

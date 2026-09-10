@@ -12,7 +12,7 @@ import { parseInfografisKelas1 } from "@/lib/infografis-kelas1";
 import { naskahTampilanPai1Bab1 } from "@/lib/naskah-resmi-pai-1-bab1";
 import { adalahJudulPai1Bab1 } from "@/lib/naskah-resmi";
 import { potongLengkap } from "@/lib/paket-lengkap-materi";
-import { jenjangGuru } from "@/lib/guru";
+import { jenjangGuru, type KelaminGuru } from "@/lib/guru";
 import { rapikanKunci } from "@/lib/kunci-siswa";
 import { Loader2 } from "lucide-react";
 
@@ -30,6 +30,7 @@ function ModuleRenderer({
   materi = "",
   kelas = "",
   sembunyikanJudulUtama = false,
+  kelamin,
 }: {
   konten: string;
   className?: string;
@@ -40,6 +41,7 @@ function ModuleRenderer({
   materi?: string;
   kelas?: string;
   sembunyikanJudulUtama?: boolean;
+  kelamin?: KelaminGuru;
 }) {
   const rapat = padat || /\bprose-p:my-0\b/.test(className);
   const naskah = useMemo(() => (konten ?? "").trim(), [konten]);
@@ -66,7 +68,7 @@ function ModuleRenderer({
   if (pakaiKartuBab1) {
     return (
       <div className={className}>
-        <NaskahPai1Bab1 />
+        <NaskahPai1Bab1 kelas={kelas} kelamin={kelamin} />
       </div>
     );
   }

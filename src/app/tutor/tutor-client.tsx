@@ -49,7 +49,7 @@ import {
   type TingkatPerlambat,
 } from "@/lib/laju-suara";
 import { naskahSapaanUntukSuara } from "@/lib/naskah-lisan";
-import { mintaAudioTts, sedangMemutarSapaan } from "@/lib/putar-tts-klien";
+import { mintaAudioTts, saatHentiAudioGuru, sedangMemutarSapaan } from "@/lib/putar-tts-klien";
 import { skalaWaktuKata, type KataWaktu } from "@/lib/tts";
 import { PESAN_GAGAL_SUSUN_MATERI } from "@/lib/validasi-naskah-ai";
 import { type GambarSisipan } from "@/components/GambarDoodle";
@@ -1605,6 +1605,15 @@ export default function TutorAI() {
   }, [durasiAudio, tandaiSegmenSelesai]);
 
   useEffect(() => {
+    return saatHentiAudioGuru(() => {
+      pemutarRef.current?.jeda();
+      sedangMemutarRef.current = false;
+      setStatusPemutar("siaga");
+      setModeChirp(false);
+    });
+  }, []);
+
+  useEffect(() => {
     if (!isMulai || params.get("mulai") !== "1" || !namaSesi.trim()) return;
     if (sudahSiapAudioRef.current) return;
     sudahSiapAudioRef.current = true;
@@ -1770,6 +1779,7 @@ export default function TutorAI() {
                     ) : null}
                     <PanelMateriModul
                       kelas={judulKelasSesi}
+                      kelamin={guruKelamin}
                       mapel={judulMapelSesi}
                       materi={judulMateriSesi}
                       naskah={penjelasanAktif}
