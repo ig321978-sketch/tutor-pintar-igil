@@ -5,7 +5,7 @@ import {
   saringKurikulumMerdeka,
 } from "@/lib/mapel-kurikulum-merdeka";
 
-export const OPSI_LAINNYA = "LAINNYA (ketik disini)";
+export const OPSI_LAINNYA = "LAIN NYA (klik disini)";
 export const OPSI_LAIN_NYA = OPSI_LAINNYA;
 
 const DATA_INTI_KURIKULUM: Record<string, Record<string, string[]>> = {

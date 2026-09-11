@@ -16,6 +16,7 @@ import {
   naskahTampilanPai1Bab2,
   teksLisanPai1Bab2,
 } from "@/lib/naskah-resmi-pai-1-bab2";
+import { teksLisanResmiJikaAda } from "@/lib/naskah-resmi";
 import {
   potongLengkap,
   teksLisanDaftarLengkap,
@@ -230,6 +231,15 @@ export function naskahTutorUntukSuara(
       nama,
     );
     return [sapaanAman, lisan].filter(Boolean).join("\n\n");
+  }
+  const lisanResmi = teksLisanResmiJikaAda(penjelasan);
+  if (lisanResmi) {
+    if (opsi?.tanpaSapaan) return lisanResmi;
+    const sapaanAman = naskahLisan(
+      nama ? sapaanTutorRingkas(nama, sapaan) : sapaan,
+      nama,
+    );
+    return [sapaanAman, lisanResmi].filter(Boolean).join("\n\n");
   }
   if (adalahNaskahInfografis(penjelasan)) {
     const lisan = teksLisanInfografis(penjelasan);

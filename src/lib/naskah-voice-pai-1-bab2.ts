@@ -8,7 +8,7 @@ export type CuplikanVoiceMateri = {
   jedaSetelahMs: number;
 };
 
-function cuplikanDariNaskah(
+export function cuplikanDariNaskah(
   cerita: string[][],
   jedaParagrafMs: number,
   jedaNaskahMs: number,

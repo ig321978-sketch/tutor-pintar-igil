@@ -12,8 +12,7 @@ import {
 } from "@/lib/infografis-kelas1";
 import { pecahBlokKartu, judulDariTeks } from "@/lib/konsep-materi";
 import { potongLengkap, type DaftarLengkapTampil } from "@/lib/paket-lengkap-materi";
-import { naskahTampilanPai1Bab1 } from "@/lib/naskah-resmi-pai-1-bab1";
-import { naskahTampilanPai1Bab2 } from "@/lib/naskah-resmi-pai-1-bab2";
+import { naskahTampilanResmi } from "@/lib/naskah-resmi";
 import { subbabBukuSiswa } from "@/lib/subbab-buku-siswa";
 
 export type KartuPembahasanSd = {
@@ -238,7 +237,7 @@ function kartuPunyaVisual(item: KartuPembahasanSd): boolean {
 
 export function naskahKartuSdLayak(teks?: string): boolean {
   const naskah = teks ?? "";
-  if (naskahTampilanPai1Bab1(naskah) || naskahTampilanPai1Bab2(naskah)) return true;
+  if (naskahTampilanResmi(naskah)) return true;
   if (adalahNaskahInfografis(naskah)) return true;
   const { kartu } = pecahKartuPembahasanSd(naskah);
   if (kartu.length < 2) return false;
@@ -301,8 +300,7 @@ export function lengkapiVisualNaskahSd(
   opsi: { mapel?: string; materi?: string; global?: boolean } = {},
 ): string {
   const mentah = (naskah ?? "").trim();
-  if (!mentah || naskahTampilanPai1Bab1(mentah) || naskahTampilanPai1Bab2(mentah))
-    return mentah;
+  if (!mentah || naskahTampilanResmi(mentah)) return mentah;
   const kelas1 = kelasSatuSd(kelas);
   const global = Boolean(opsi.global);
   if (!global && naskahKartuSdLayak(mentah)) return mentah;

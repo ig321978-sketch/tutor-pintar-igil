@@ -11,6 +11,7 @@ import {
   cuplikanVoicePai1Bab1,
   cuplikanVoicePai1Bab1Fatihah,
   cuplikanVoicePai1Bab1Harakat,
+  type CuplikanVoiceMateri,
 } from "@/lib/naskah-voice-pai-1-bab1";
 import {
   cuplikanVoicePai1Bab2Amal,
@@ -102,10 +103,12 @@ export default function TombolVoiceMateriPai1({
   kelas = "",
   kelamin,
   jenis = "hijaiyah",
+  cuplikan,
 }: {
   kelas?: string;
   kelamin?: KelaminGuru;
   jenis?: "hijaiyah" | "harakat" | "fatihah" | "iman" | "asmaul" | "amal";
+  cuplikan?: CuplikanVoiceMateri[];
 }) {
   const [memutar, setMemutar] = useState(false);
   const batalRef = useRef<AbortController | null>(null);
@@ -138,8 +141,9 @@ export default function TombolVoiceMateriPai1({
     const profil = bacaProgres().profil;
     const guru = normalisasiKelaminGuru(kelamin ?? profil.guruKelamin);
     const kelasSuara = (kelas || profil.kelas || "1 SD").trim();
-    const cuplikan =
-      jenis === "harakat"
+    const antrianTeks =
+      cuplikan ??
+      (jenis === "harakat"
         ? cuplikanVoicePai1Bab1Harakat()
         : jenis === "fatihah"
           ? cuplikanVoicePai1Bab1Fatihah()
@@ -149,15 +153,15 @@ export default function TombolVoiceMateriPai1({
               ? cuplikanVoicePai1Bab2Asmaul()
               : jenis === "amal"
                 ? cuplikanVoicePai1Bab2Amal()
-                : cuplikanVoicePai1Bab1(guru);
-    const antrian = cuplikan.map((item) =>
+                : cuplikanVoicePai1Bab1(guru));
+    const antrian = antrianTeks.map((item) =>
       mintaAudioTts(item.teks, guru, kelasSuara, {
         persist: true,
         tanpaNotasi: true,
       }),
     );
     try {
-      for (let i = 0; i < cuplikan.length; i += 1) {
+      for (let i = 0; i < antrianTeks.length; i += 1) {
         if (kontrol.signal.aborted) return;
         const hasil = await antrian[i];
         if (kontrol.signal.aborted) return;
@@ -165,7 +169,7 @@ export default function TombolVoiceMateriPai1({
           await putarUrl(hasil.url, kontrol.signal);
         }
         if (kontrol.signal.aborted) return;
-        await jedaHening(cuplikan[i].jedaSetelahMs, kontrol.signal);
+        await jedaHening(antrianTeks[i].jedaSetelahMs, kontrol.signal);
       }
     } catch (error) {
       if (!adalahBatal(error)) {

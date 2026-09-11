@@ -16,6 +16,38 @@ const SUBBAB_BUKU_SISWA: Record<string, Record<string, Record<string, string[]>>
         "B. Mengenal Allah melalui Asmaul Husna",
         "C. Iman yang Terlihat dalam Perbuatan",
       ],
+      "Bab 3: Perilaku Terpuji (Akhlak Mulia)": [
+        "A. Membaca Basmalah dan Hamdalah",
+        "B. Sayang kepada Keluarga dan Teman",
+      ],
+      "Bab 4: Mengenal Bersuci (Thaharah)": [
+        "A. Arti Bersuci",
+        "B. Macam-Macam Bersuci",
+      ],
+      "Bab 5: Kisah Teladan Nabi Muhammad SAW": [
+        "A. Kelahiran Nabi Muhammad SAW",
+        "B. Sifat Jujur Nabi Muhammad SAW",
+      ],
+      "Bab 6: Mengenal Surah Al-Ikhlas": [
+        "A. Membaca dan Menghafal Surah Al-Ikhlas",
+        "B. Kandungan Surah Al-Ikhlas",
+      ],
+      "Bab 7: Rukun Islam": [
+        "A. Lima Pilar Rukun Islam",
+        "B. Menyanyikan Lagu Rukun Islam",
+      ],
+      "Bab 8: Bersyukur dan Berterima Kasih": [
+        "A. Mengucapkan Terima Kasih",
+        "B. Menjaga Lingkungan sebagai Syukur",
+      ],
+      "Bab 9: Tata Cara Berwudu": [
+        "A. Praktik Berwudu secara Tertib",
+        "B. Mengapa Wudu Harus Tertib",
+      ],
+      "Bab 10: Kisah Nabi Adam AS": [
+        "A. Nabi Adam Manusia dan Nabi Pertama",
+        "B. Pelajaran dari Kisah Nabi Adam",
+      ],
     },
     Matematika: {
       "Bab 1: Ayo Membilang sampai dengan 10": [

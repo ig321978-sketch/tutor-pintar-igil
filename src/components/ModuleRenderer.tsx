@@ -6,13 +6,19 @@ import GambarDoodle, { type GambarSisipan } from "@/components/GambarDoodle";
 import InfografisKelas1 from "@/components/InfografisKelas1";
 import NaskahPai1Bab1 from "@/components/NaskahPai1Bab1";
 import NaskahPai1Bab2 from "@/components/NaskahPai1Bab2";
+import NaskahPaiResmi from "@/components/NaskahPaiResmi";
 import NaskahKartuSd from "@/components/NaskahKartuSd";
 import DaftarLengkapMateri from "@/components/DaftarLengkapMateri";
 import { BlokTampil } from "@/components/BlokNaskahTampil";
 import { parseInfografisKelas1 } from "@/lib/infografis-kelas1";
 import { naskahTampilanPai1Bab1 } from "@/lib/naskah-resmi-pai-1-bab1";
 import { naskahTampilanPai1Bab2 } from "@/lib/naskah-resmi-pai-1-bab2";
-import { adalahJudulPai1Bab1, adalahJudulPai1Bab2 } from "@/lib/naskah-resmi";
+import {
+  adalahJudulPai1Bab1,
+  adalahJudulPai1Bab2,
+  cariModulPai1DariNaskah,
+  cariModulPai1Resmi,
+} from "@/lib/naskah-resmi";
 import { potongLengkap } from "@/lib/paket-lengkap-materi";
 import { jenjangGuru, type KelaminGuru } from "@/lib/guru";
 import { rapikanKunci } from "@/lib/kunci-siswa";
@@ -59,26 +65,43 @@ function ModuleRenderer({
       naskahTampilanPai1Bab2(naskah),
     [naskah, mapel, materi],
   );
+  const modulResmiLain = useMemo(() => {
+    if (pakaiKartuBab1 || pakaiKartuBab2) return null;
+    return cariModulPai1Resmi(materi) ?? cariModulPai1DariNaskah(naskah);
+  }, [pakaiKartuBab1, pakaiKartuBab2, materi, naskah]);
   const pakaiKartuSd =
     !pakaiKartuBab1 &&
     !pakaiKartuBab2 &&
+    !modulResmiLain &&
     !rapat &&
     jenjangGuru(kelas || "1 SD") === "SD" &&
     Boolean(kelas);
   const infografis = useMemo(
     () =>
-      pakaiKartuBab1 || pakaiKartuBab2 || pakaiKartuSd
+      pakaiKartuBab1 || pakaiKartuBab2 || modulResmiLain || pakaiKartuSd
         ? null
         : parseInfografisKelas1(naskah),
-    [naskah, pakaiKartuBab1, pakaiKartuBab2, pakaiKartuSd],
+    [naskah, pakaiKartuBab1, pakaiKartuBab2, modulResmiLain, pakaiKartuSd],
   );
   const potong = useMemo(() => potongLengkap(naskah), [naskah]);
   const blok = useMemo(
     () =>
-      infografis || pakaiKartuBab1 || pakaiKartuBab2 || pakaiKartuSd
+      infografis ||
+      pakaiKartuBab1 ||
+      pakaiKartuBab2 ||
+      modulResmiLain ||
+      pakaiKartuSd
         ? []
         : pecahBlokNaskahModul(potong.tubuh || naskah),
-    [naskah, infografis, pakaiKartuBab1, pakaiKartuBab2, pakaiKartuSd, potong.tubuh],
+    [
+      naskah,
+      infografis,
+      pakaiKartuBab1,
+      pakaiKartuBab2,
+      modulResmiLain,
+      pakaiKartuSd,
+      potong.tubuh,
+    ],
   );
   if (pakaiKartuBab1) {
     return (
@@ -91,6 +114,17 @@ function ModuleRenderer({
     return (
       <div className={className}>
         <NaskahPai1Bab2 kelas={kelas} kelamin={kelamin} />
+      </div>
+    );
+  }
+  if (modulResmiLain) {
+    return (
+      <div className={className}>
+        <NaskahPaiResmi
+          modul={modulResmiLain}
+          kelas={kelas}
+          kelamin={kelamin}
+        />
       </div>
     );
   }

@@ -9,6 +9,25 @@ import {
   naskahPai1Bab2,
   naskahTampilanPai1Bab2,
 } from "@/lib/naskah-resmi-pai-1-bab2";
+import { MODUL_PAI1_BAB3_10 } from "@/lib/modul-resmi-pai-1-bab3-10";
+import {
+  isiCacheDariModulResmi,
+  naskahTampilanModulResmi,
+  teksLisanModulResmi,
+  type ModulResmiPai,
+} from "@/lib/modul-resmi-pai";
+
+export function cariModulPai1Resmi(materi: string): ModulResmiPai | null {
+  const judul = normJudul(materi);
+  return MODUL_PAI1_BAB3_10.find((modul) => modul.pola.test(judul)) ?? null;
+}
+
+export function cariModulPai1DariNaskah(teks?: string): ModulResmiPai | null {
+  return (
+    MODUL_PAI1_BAB3_10.find((modul) => naskahTampilanModulResmi(modul, teks)) ??
+    null
+  );
+}
 
 function normJudul(nilai: string): string {
   return rapikanKunci(nilai).replace(/[’‘ʻ`´]/g, "'");
@@ -58,11 +77,23 @@ export function naskahResmiJikaAda(
 ): IsiCacheMateri | null {
   if (adalahPai1Bab1(kelas, mapel, materi)) return naskahPai1Bab1();
   if (adalahPai1Bab2(kelas, mapel, materi)) return naskahPai1Bab2();
-  return null;
+  if (!kelasSatuSd(kelas) || !adalahMapelPai(mapel)) return null;
+  const modul = cariModulPai1Resmi(materi);
+  return modul ? isiCacheDariModulResmi(modul) : null;
 }
 
 export function naskahTampilanResmi(teks?: string): boolean {
-  return naskahTampilanPai1Bab1(teks) || naskahTampilanPai1Bab2(teks);
+  if (naskahTampilanPai1Bab1(teks) || naskahTampilanPai1Bab2(teks)) return true;
+  return MODUL_PAI1_BAB3_10.some((modul) => naskahTampilanModulResmi(modul, teks));
+}
+
+export function teksLisanResmiJikaAda(teks?: string): string | null {
+  if (naskahTampilanPai1Bab1(teks)) return null;
+  if (naskahTampilanPai1Bab2(teks)) return null;
+  const modul = MODUL_PAI1_BAB3_10.find((item) =>
+    naskahTampilanModulResmi(item, teks),
+  );
+  return modul ? teksLisanModulResmi(modul) : null;
 }
 
 export function naskahBab1Utuh(teks?: string): boolean {
