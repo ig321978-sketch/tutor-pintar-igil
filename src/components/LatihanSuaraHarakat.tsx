@@ -1,6 +1,7 @@
 "use client";
 
 import SoalRekamSuara, { ucapanMemuatAlias } from "@/components/SoalRekamSuara";
+import { ID_KUIS_HARAKAT } from "@/lib/kuis-materi";
 
 function HurufArab({ huruf }: { huruf: string }) {
   return (
@@ -16,7 +17,7 @@ function HurufArab({ huruf }: { huruf: string }) {
 
 const SOAL = [
   {
-    id: "syin-kasrah",
+    id: ID_KUIS_HARAKAT[0],
     pertanyaan: (
       <>
         1. Jika huruf
@@ -27,7 +28,7 @@ const SOAL = [
     alias: ["syi", "shi", "sii", "syii", "shii", "si", "شِ"],
   },
   {
-    id: "qaf-dhammah",
+    id: ID_KUIS_HARAKAT[1],
     pertanyaan: (
       <>
         2. Jika huruf
@@ -38,7 +39,7 @@ const SOAL = [
     alias: ["qu", "qo", "quu", "qoo", "ku", "ko", "fu", "fo", "قُ", "ڧُ", "فُ"],
   },
   {
-    id: "ra-fathah",
+    id: ID_KUIS_HARAKAT[2],
     pertanyaan: (
       <>
         3. Jika huruf
@@ -59,6 +60,7 @@ export default function LatihanSuaraHarakat() {
       {SOAL.map((soal) => (
         <SoalRekamSuara
           key={soal.id}
+          id={soal.id}
           pertanyaan={soal.pertanyaan}
           periksa={(transkrip) => ucapanMemuatAlias(transkrip, [...soal.alias])}
           petunjuk="Ketuk Rekam suara, sebutkan bunyinya, lalu kirim jawaban."

@@ -4,6 +4,7 @@ import SoalRekamSuara, {
   normalisasiUcapan,
   ucapanMemuatAlias,
 } from "@/components/SoalRekamSuara";
+import { ID_KUIS_HIJAIYAH } from "@/lib/kuis-materi";
 import { HIJAIYAH_30 } from "@/lib/paket-lengkap-materi";
 
 type SoalHijaiyah = {
@@ -15,19 +16,19 @@ type SoalHijaiyah = {
 
 const SOAL: SoalHijaiyah[] = [
   {
-    id: "1-10",
+    id: ID_KUIS_HIJAIYAH[0],
     pertanyaan: "1. Sebutkan huruf hijaiyah ke-1 hingga ke-10:",
     dari: 0,
     sampai: 10,
   },
   {
-    id: "11-20",
+    id: ID_KUIS_HIJAIYAH[1],
     pertanyaan: "2. Sebutkan huruf hijaiyah ke 11 hingga ke 20:",
     dari: 10,
     sampai: 20,
   },
   {
-    id: "21-30",
+    id: ID_KUIS_HIJAIYAH[2],
     pertanyaan: "3. Sebutkan huruf hijaiyah ke 21 hingga ke 30:",
     dari: 20,
     sampai: 30,
@@ -90,6 +91,7 @@ export default function LatihanSuaraHijaiyah() {
       {SOAL.map((soal) => (
         <SoalRekamSuara
           key={soal.id}
+          id={soal.id}
           pertanyaan={soal.pertanyaan}
           periksa={(transkrip) => jawabanBenar(transkrip, soal.dari, soal.sampai)}
           petunjuk="Ketuk Rekam suara, sebutkan hurufnya, lalu kirim jawaban."

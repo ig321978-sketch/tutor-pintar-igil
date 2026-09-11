@@ -3,10 +3,11 @@
 import type { ReactNode } from "react";
 import { ChevronDown, Lock } from "lucide-react";
 import {
-  bagianWajibMateriTuntas,
+  bagianWajibKuisMateriTuntas,
   type BagianIsi,
   type BagianModul,
 } from "@/lib/bagian-modul";
+import { PESAN_KUNCI_KUIS_MATERI } from "@/lib/kuis-materi";
 import TungguNaskah, { TEKS_MENYUSUN_NASKAH } from "@/components/modul/TungguNaskah";
 
 const META: Record<
@@ -67,7 +68,7 @@ export default function KartuBagianModul({
       {daftar.map((id) => {
         const item = META[id];
         const terbuka = aktif === id;
-        const terkunci = bagianWajibMateriTuntas(id) && !materiTuntas;
+        const terkunci = bagianWajibKuisMateriTuntas(id) && !materiTuntas;
         const menunggu = Boolean(menyusun?.[id]);
         return (
           <article
@@ -83,7 +84,7 @@ export default function KartuBagianModul({
                 if (terkunci || mengunciKlik) return;
                 onPilih(id);
               }}
-              disabled={mengunciKlik}
+              disabled={mengunciKlik || terkunci}
               aria-expanded={terbuka}
               aria-disabled={terkunci || mengunciKlik}
               className={`w-full text-left ${mengunciKlik ? "cursor-wait opacity-80" : ""}`}
@@ -115,7 +116,7 @@ export default function KartuBagianModul({
                   </p>
                   <p className="mt-1 text-sm font-semibold leading-snug text-[#1C01A5]/70">
                     {terkunci
-                      ? "Dengarkan audio Materi sampai tuntas untuk membuka kartu ini."
+                      ? PESAN_KUNCI_KUIS_MATERI
                       : menunggu
                         ? TEKS_MENYUSUN_NASKAH
                         : item.ringkas}

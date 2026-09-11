@@ -101,7 +101,7 @@ function KartuPembahasan({
           </article>
         ))}
       </div>
-      <LatihanSuaraResmi soal={kartu.kuis} />
+      <LatihanSuaraResmi soal={kartu.kuis} idPrefix={doodleId} />
     </KartuBingkai>
   );
 }

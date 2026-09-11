@@ -17,6 +17,7 @@ import {
   catatAudioSelesai,
   catatEvaluasiTambahan,
   catatJawabanKuis,
+  catatKuisMateriBenar,
   catatPraktikumSelesai,
   catatSesiModul,
   catatSimulasiSelesai,
@@ -61,6 +62,7 @@ import PemutarAudioGuru, {
   indeksKataAktif,
   type KontrolPemutarGuru,
 } from "@/components/PemutarAudioGuru";
+import { KuisMateriProvider } from "@/components/KuisMateriContext";
 import KartuBagianModul from "@/components/modul/KartuBagianModul";
 import PanelLatihanModul from "@/components/modul/PanelLatihanModul";
 import PanelMateriModul from "@/components/modul/PanelMateriModul";
@@ -71,10 +73,16 @@ import PanelUjianModul from "@/components/modul/PanelUjianModul";
 import TungguNaskah from "@/components/modul/TungguNaskah";
 import TeksNaskah from "@/components/TeksNaskah";
 import {
+  bagianWajibKuisMateriTuntas,
   daftarBagianModul,
   type BagianIsi,
   type BagianModul,
 } from "@/lib/bagian-modul";
+import {
+  daftarIdKuisMateri,
+  kuisMateriSudahTuntas,
+  PESAN_KUNCI_KUIS_MATERI,
+} from "@/lib/kuis-materi";
 import {
   ArrowLeft,
   ArrowRight,
@@ -312,6 +320,7 @@ export default function TutorAI() {
   const [pesanUjian, setPesanUjian] = useState("");
   const [tahapBelajar, setTahapBelajar] = useState<TahapBelajar>("pilih");
   const [audioCompleted, setAudioCompleted] = useState(false);
+  const [kuisMateriSelesai, setKuisMateriSelesai] = useState<string[]>([]);
   const [simulasiLulus, setSimulasiLulus] = useState(false);
   const [simulasiMemuat, setSimulasiMemuat] = useState(false);
   const [pesanKunci, setPesanKunci] = useState("");
@@ -402,6 +411,19 @@ export default function TutorAI() {
   const judulKelasSesi = teksQuery(params.get("kelas"), kelas);
   const opsiBagian = daftarBagianModul(judulMapelSesi).filter((id) =>
     kunciPublik ? id !== "simulasi" && id !== "praktikum" : true,
+  );
+  const idKuisMateri = useMemo(
+    () =>
+      daftarIdKuisMateri(
+        teksQuery(params.get("kelas"), judulKelasSesi),
+        teksQuery(params.get("mapel"), judulMapelSesi),
+        teksQuery(params.get("materi"), judulMateriSesi),
+      ),
+    [judulKelasSesi, judulMapelSesi, judulMateriSesi, params],
+  );
+  const kuisMateriTuntas = kuisMateriSudahTuntas(
+    kuisMateriSelesai,
+    idKuisMateri,
   );
   const isGenerating =
     statusKurikulum === "memuat" ||
@@ -611,6 +633,7 @@ export default function TutorAI() {
     sesiAktifIdRef.current = sesiLama.id;
     setSesiAktifId(sesiLama.id);
     if (sesiLama.audioCompleted) setAudioCompleted(true);
+    setKuisMateriSelesai(sesiLama.kuisMateriSelesai ?? []);
     if (sesiLama.simulasiSelesai) setSimulasiLulus(true);
     return sesiLama;
   };
@@ -646,9 +669,16 @@ export default function TutorAI() {
 
   const tandaiAudioSelesai = () => {
     setAudioCompleted(true);
-    setPesanKunci("");
     catatAudioSelesai(pastikanSesiAktif());
   };
+
+  const tandaiKuisMateriBenar = useCallback((idKuis: string) => {
+    setKuisMateriSelesai((sebelum) =>
+      sebelum.includes(idKuis) ? sebelum : [...sebelum, idKuis],
+    );
+    catatKuisMateriBenar(pastikanSesiAktif(), idKuis);
+    setPesanKunci("");
+  }, []);
 
   const tandaiSegmenSelesai = () => {
     const kunci = kunciSegmen(segmenSuaraRef.current);
@@ -1243,12 +1273,22 @@ export default function TutorAI() {
     }
   };
 
+  useEffect(() => {
+    if (bagianWajibKuisMateriTuntas(tahapBelajar) && !kuisMateriTuntas) {
+      setTahapBelajar("pilih");
+    }
+  }, [tahapBelajar, kuisMateriTuntas]);
+
   const bukaBagian = (bagian: BagianIsi) => {
     if (
       statusKurikulum === "memuat" ||
       statusGlobal === "memuat" ||
       statusLatihan === "memuat"
     ) {
+      return;
+    }
+    if (bagianWajibKuisMateriTuntas(bagian) && !kuisMateriTuntas) {
+      setPesanKunci(PESAN_KUNCI_KUIS_MATERI);
       return;
     }
     if (tahapBelajar === bagian) {
@@ -1295,6 +1335,7 @@ export default function TutorAI() {
     naskahJalanRef.current.clear();
     setSesiAktifId(null);
     setAudioCompleted(false);
+    setKuisMateriSelesai([]);
     setSimulasiLulus(false);
     setPesanKunci("");
     setTahapBelajar("pilih");
@@ -1312,6 +1353,7 @@ export default function TutorAI() {
         sesiAktifIdRef.current = sesiLama.id;
         setSesiAktifId(sesiLama.id);
         if (sesiLama.audioCompleted) setAudioCompleted(true);
+        setKuisMateriSelesai(sesiLama.kuisMateriSelesai ?? []);
         if (sesiLama.simulasiSelesai) setSimulasiLulus(true);
       }
     }
@@ -1676,6 +1718,7 @@ export default function TutorAI() {
     setStatusUjian("siaga");
     setPesanUjian("");
     setAudioCompleted(false);
+    setKuisMateriSelesai([]);
     setSimulasiLulus(false);
     setPesanKunci("");
     setTahapBelajar("pilih");
@@ -1749,10 +1792,14 @@ export default function TutorAI() {
           ) : null}
 
           <div className="space-y-8">
+            <KuisMateriProvider
+              selesai={kuisMateriSelesai}
+              onBenar={tandaiKuisMateriBenar}
+            >
             <KartuBagianModul
               daftar={opsiBagian}
               aktif={tahapBelajar}
-              materiTuntas
+              materiTuntas={kuisMateriTuntas}
               mengunciKlik={isGenerating}
               menyusun={{
                 silabus:
@@ -2020,6 +2067,7 @@ export default function TutorAI() {
                 ),
               }}
             />
+            </KuisMateriProvider>
           </div>
         </div>
         <PemutarAudioGuru

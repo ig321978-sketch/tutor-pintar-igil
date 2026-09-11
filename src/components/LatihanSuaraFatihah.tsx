@@ -1,6 +1,7 @@
 "use client";
 
 import SoalRekamSuara from "@/components/SoalRekamSuara";
+import { ID_KUIS_FATIHAH } from "@/lib/kuis-materi";
 
 function rapikanLatin(teks: string): string {
   return teks
@@ -56,6 +57,7 @@ export default function LatihanSuaraFatihah() {
         QUIZ:
       </p>
       <SoalRekamSuara
+        id={ID_KUIS_FATIHAH}
         pertanyaan="Bacakan surat alfatihah secara lengkap!.."
         periksa={fatihahLengkap}
         petunjuk="Ketuk Rekam suara, bacakan surat Al-Fatihah lengkap, lalu kirim jawaban."

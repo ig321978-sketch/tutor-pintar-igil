@@ -5,8 +5,10 @@ import type { KuisSuaraResmi } from "@/lib/modul-resmi-pai";
 
 export default function LatihanSuaraResmi({
   soal,
+  idPrefix,
 }: {
   soal: KuisSuaraResmi[];
+  idPrefix: string;
 }) {
   if (soal.length === 0) return null;
   return (
@@ -14,9 +16,10 @@ export default function LatihanSuaraResmi({
       <p className="text-base font-extrabold leading-relaxed text-[#1C01A5]">
         QUIZ:
       </p>
-      {soal.map((item) => (
+      {soal.map((item, indeks) => (
         <SoalRekamSuara
           key={item.pertanyaan}
+          id={`${idPrefix}-${indeks}`}
           pertanyaan={item.pertanyaan}
           periksa={(transkrip) => ucapanMemuatAlias(transkrip, item.alias)}
           petunjuk="Ketuk Rekam suara, sebutkan jawabannya, lalu kirim."

@@ -24,6 +24,7 @@ export type SesiModul = {
   kunciJawaban: string[];
   catatanEvaluasi: string;
   audioCompleted: boolean;
+  kuisMateriSelesai: string[];
   latihanSelesai: boolean;
   jumlahLatihan: number;
   simulasiSelesai: boolean;
@@ -140,6 +141,9 @@ function normalisasiSesi(sesi: Partial<SesiModul> & { id?: string }): SesiModul 
     kunciJawaban: kunci,
     catatanEvaluasi: sesi.catatanEvaluasi ?? "",
     audioCompleted: Boolean(sesi.audioCompleted),
+    kuisMateriSelesai: Array.isArray(sesi.kuisMateriSelesai)
+      ? sesi.kuisMateriSelesai.filter((id): id is string => typeof id === "string")
+      : [],
     latihanSelesai: Boolean(sesi.latihanSelesai),
     jumlahLatihan,
     simulasiSelesai: Boolean(sesi.simulasiSelesai),
@@ -226,6 +230,7 @@ export function catatSesiModul(opsi: {
     kunciJawaban: kunci,
     catatanEvaluasi: opsi.catatanEvaluasi,
     audioCompleted: false,
+    kuisMateriSelesai: [],
     latihanSelesai: false,
     jumlahLatihan: opsi.jumlahLatihan ?? kunci.length,
     simulasiSelesai: false,
@@ -285,6 +290,16 @@ export function catatEvaluasiTambahan(sesiId: string, catatan: string): void {
   sesi.xp += 20;
   data.xpTotal += 20;
   simpanProgres(data);
+}
+
+export function catatKuisMateriBenar(sesiId: string, idKuis: string): ProgresIgil {
+  const data = bacaProgres();
+  const sesi = data.sesi.find((item) => item.id === sesiId);
+  if (sesi && idKuis && !sesi.kuisMateriSelesai.includes(idKuis)) {
+    sesi.kuisMateriSelesai = [...sesi.kuisMateriSelesai, idKuis];
+    simpanProgres(data);
+  }
+  return data;
 }
 
 export function catatAudioSelesai(sesiId: string): ProgresIgil {

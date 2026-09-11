@@ -2,6 +2,7 @@
 
 import { useRef, useState, type ReactNode } from "react";
 import { Loader2, Mic, Send } from "lucide-react";
+import { useKuisMateri } from "@/components/KuisMateriContext";
 import { kelasTombolUtama } from "@/lib/tema";
 
 type MesinRekam = {
@@ -48,17 +49,23 @@ export function ucapanMemuatAlias(transkrip: string, alias: string[]): boolean {
 }
 
 export default function SoalRekamSuara({
+  id,
   pertanyaan,
   periksa,
   petunjuk = "Ketuk Rekam suara, sebutkan jawabannya, lalu kirim.",
 }: {
+  id?: string;
   pertanyaan: ReactNode;
   periksa: (transkrip: string) => boolean;
   petunjuk?: string;
 }) {
+  const kuisMateri = useKuisMateri();
+  const sudahTuntas = Boolean(id && kuisMateri?.sudahBenar(id));
   const [transkrip, setTranskrip] = useState("");
   const [rekam, setRekam] = useState(false);
-  const [status, setStatus] = useState<StatusJawaban>(null);
+  const [status, setStatus] = useState<StatusJawaban>(
+    sudahTuntas ? "benar" : null,
+  );
   const [pesan, setPesan] = useState("");
   const mesinRef = useRef<MesinRekam | null>(null);
   const finalRef = useRef("");
@@ -129,7 +136,9 @@ export default function SoalRekamSuara({
       return;
     }
     setPesan("");
-    setStatus(periksa(transkrip) ? "benar" : "salah");
+    const benar = periksa(transkrip);
+    setStatus(benar ? "benar" : "salah");
+    if (benar && id) kuisMateri?.tandaiBenar(id);
   };
 
   return (

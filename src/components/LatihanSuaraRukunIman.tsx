@@ -1,20 +1,21 @@
 "use client";
 
 import SoalRekamSuara, { ucapanMemuatAlias } from "@/components/SoalRekamSuara";
+import { ID_KUIS_RUKUN_IMAN } from "@/lib/kuis-materi";
 
 const SOAL = [
   {
-    id: "arti-iman",
+    id: ID_KUIS_RUKUN_IMAN[0],
     pertanyaan: "1. Iman artinya apa?",
     alias: ["percaya", "yakin", "iman artinya percaya"],
   },
   {
-    id: "jumlah-rukun",
+    id: ID_KUIS_RUKUN_IMAN[1],
     pertanyaan: "2. Rukun Iman ada berapa?",
     alias: ["enam", "6", "enam perkara", "enam rukun"],
   },
   {
-    id: "rukun-pertama",
+    id: ID_KUIS_RUKUN_IMAN[2],
     pertanyaan: "3. Rukun Iman yang pertama iman kepada siapa?",
     alias: ["allah", "allah swt", "tuhan", "iman kepada allah"],
   },
@@ -29,6 +30,7 @@ export default function LatihanSuaraRukunIman() {
       {SOAL.map((soal) => (
         <SoalRekamSuara
           key={soal.id}
+          id={soal.id}
           pertanyaan={soal.pertanyaan}
           periksa={(transkrip) => ucapanMemuatAlias(transkrip, [...soal.alias])}
           petunjuk="Ketuk Rekam suara, sebutkan jawabannya, lalu kirim."
