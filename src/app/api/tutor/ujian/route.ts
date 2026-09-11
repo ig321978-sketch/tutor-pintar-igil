@@ -1,6 +1,7 @@
 import { NextResponse } from "next/server";
 import { pesanGalatGemini } from "@/lib/klien-gemini";
 import { generateUjianAcak } from "@/lib/susun-modul-tutor";
+import { tolakPublikSelainPai1 } from "@/lib/tolak-publik-selain-pai1";
 
 export const dynamic = "force-dynamic";
 export const revalidate = 0;
@@ -32,6 +33,8 @@ export async function POST(req: Request) {
         { status: 400 },
       );
     }
+    const ditolakPublik = await tolakPublikSelainPai1(kelas, mapel, materi);
+    if (ditolakPublik) return ditolakPublik;
 
     const soal = await generateUjianAcak({ nama, kelas, mapel, materi });
     return NextResponse.json({

@@ -2,6 +2,7 @@ import { NextResponse } from "next/server";
 import { buatPaketDoodle } from "@/lib/doodle";
 import { UKURAN_BATCH_DOODLE } from "@/lib/konsep-materi";
 import { naskahResmiJikaAda } from "@/lib/naskah-resmi";
+import { tolakPublikSelainPai1 } from "@/lib/tolak-publik-selain-pai1";
 
 export const maxDuration = 60;
 
@@ -39,6 +40,8 @@ export async function POST(req: Request) {
     const kelas = sebagaiTeks(body.kelas, "SD");
     const mapel = sebagaiTeks(body.mapel, "Umum");
     const materi = sebagaiTeks(body.materi, "Materi hari ini");
+    const ditolakPublik = await tolakPublikSelainPai1(kelas, mapel, materi);
+    if (ditolakPublik) return ditolakPublik;
     if (naskahResmiJikaAda(kelas, mapel, materi)) {
       return NextResponse.json({
         berhasil: true,

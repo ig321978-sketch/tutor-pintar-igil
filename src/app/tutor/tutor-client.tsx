@@ -32,6 +32,11 @@ import {
 } from "@/lib/cache-modul-lokal";
 import { kandidatKunciMateri, kunciMateriTutor } from "@/lib/kunci-siswa";
 import { naskahResmiJikaAda } from "@/lib/naskah-resmi";
+import { useUserRole } from "@/hooks/useUserRole";
+import {
+  PESAN_MATERI_TERKUNCI_PUBLIK,
+  situsHanyaAdmin,
+} from "@/lib/situs-hanya-admin";
 import {
   gantiNamaLengkapKeDepan,
   sapaanTutorRingkas,
@@ -284,6 +289,8 @@ function teksQuery(nilai: string | null, cadangan = ""): string {
 export default function TutorAI() {
   const router = useRouter();
   const params = useSearchParams();
+  const { adalahAdmin, memuat: memuatPeran } = useUserRole();
+  const kunciPublik = situsHanyaAdmin() && !adalahAdmin;
   const [isMulai, setIsMulai] = useState(() => params.get("mulai") === "1");
   const [nama, setNama] = useState("");
   const [kelas, setKelas] = useState("3 SD");
@@ -393,7 +400,9 @@ export default function TutorAI() {
   );
   const judulMateriSesi = sesiMateri || (modeInput === "teks" ? bab : "Analisis halaman buku");
   const judulKelasSesi = teksQuery(params.get("kelas"), kelas);
-  const opsiBagian = daftarBagianModul(judulMapelSesi);
+  const opsiBagian = daftarBagianModul(judulMapelSesi).filter((id) =>
+    kunciPublik ? id !== "simulasi" && id !== "praktikum" : true,
+  );
   const isGenerating =
     statusKurikulum === "memuat" ||
     statusGlobal === "memuat" ||
@@ -417,6 +426,22 @@ export default function TutorAI() {
   useEffect(() => {
     setIsMulai(params.get("mulai") === "1");
   }, [params]);
+
+  useEffect(() => {
+    if (memuatPeran || !kunciPublik) return;
+    if (params.get("mulai") !== "1") return;
+    const kelasQ = teksQuery(params.get("kelas"));
+    const mapelQ = teksQuery(params.get("mapel"));
+    const materiQ = teksQuery(params.get("materi"));
+    const modeQ = params.get("mode");
+    if (
+      modeQ === "gambar" ||
+      !naskahResmiJikaAda(kelasQ, mapelQ, materiQ)
+    ) {
+      setPesanKunci(PESAN_MATERI_TERKUNCI_PUBLIK);
+      router.replace("/ruang-belajar");
+    }
+  }, [kunciPublik, memuatPeran, params, router]);
 
   useEffect(() => {
     const profil = bacaProgres().profil;

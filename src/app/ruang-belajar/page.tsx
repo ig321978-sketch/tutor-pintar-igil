@@ -13,6 +13,12 @@ import {
   daftarMapelUntukKelas,
   labelJenjangKelas,
 } from "@/lib/kurikulum";
+import { useUserRole } from "@/hooks/useUserRole";
+import {
+  KELAS_TERBUKA_PUBLIK,
+  MAPEL_TERBUKA_PUBLIK,
+  situsHanyaAdmin,
+} from "@/lib/situs-hanya-admin";
 import { naskahSapaanUntukSuara } from "@/lib/naskah-lisan";
 import { bacaProgres, simpanProfil } from "@/lib/progres";
 import {
@@ -59,16 +65,25 @@ function kompresGambar(file: File): Promise<string> {
 export default function RuangBelajarPage() {
   const router = useRouter();
   const inputBerkasRef = useRef<HTMLInputElement | null>(null);
+  const { adalahAdmin } = useUserRole();
+  const kunciPublik = situsHanyaAdmin() && !adalahAdmin;
   const [nama, setNama] = useState("");
-  const [kelas, setKelas] = useState("3 SD");
+  const [kelas, setKelas] = useState(
+    situsHanyaAdmin() ? KELAS_TERBUKA_PUBLIK : "3 SD",
+  );
   const [kota, setKota] = useState("Jakarta");
   const [sumber, setSumber] = useState<SumberBelajar>("kurikulum");
-  const [pilihanMapel, setPilihanMapel] = useState(
-    () => Object.keys(DATA_KURIKULUM["3 SD"] ?? {})[0] ?? "",
+  const [pilihanMapel, setPilihanMapel] = useState(() =>
+    situsHanyaAdmin()
+      ? MAPEL_TERBUKA_PUBLIK
+      : (Object.keys(DATA_KURIKULUM["3 SD"] ?? {})[0] ?? ""),
   );
   const [mapelManual, setMapelManual] = useState("");
   const [pilihanMateri, setPilihanMateri] = useState(
-    () => DATA_KURIKULUM["3 SD"]?.[Object.keys(DATA_KURIKULUM["3 SD"] ?? {})[0] ?? ""]?.[0] ?? "",
+    () =>
+      DATA_KURIKULUM[KELAS_TERBUKA_PUBLIK]?.[MAPEL_TERBUKA_PUBLIK]?.[0] ??
+      DATA_KURIKULUM["3 SD"]?.[Object.keys(DATA_KURIKULUM["3 SD"] ?? {})[0] ?? ""]?.[0] ??
+      "",
   );
   const [materiManual, setMateriManual] = useState("");
   const [halamanBuku, setHalamanBuku] = useState<string[]>([]);
@@ -77,9 +92,13 @@ export default function RuangBelajarPage() {
   const [guruKelamin, setGuruKelamin] = useState<KelaminGuru>("wanita");
   const [menyiapkanSapaan, setMenyiapkanSapaan] = useState(false);
 
+  const daftarKelasTampil = kunciPublik ? [KELAS_TERBUKA_PUBLIK] : DAFTAR_KELAS;
   const daftarMapel = useMemo(
-    () => daftarMapelUntukKelas(kelas),
-    [kelas],
+    () =>
+      kunciPublik
+        ? [MAPEL_TERBUKA_PUBLIK]
+        : daftarMapelUntukKelas(kelas),
+    [kelas, kunciPublik],
   );
   const daftarMateri = useMemo(
     () =>
@@ -96,10 +115,16 @@ export default function RuangBelajarPage() {
   useEffect(() => {
     const data = bacaProgres();
     if (data.profil.nama) setNama(data.profil.nama);
-    if (data.profil.kelas) setKelas(data.profil.kelas);
+    if (kunciPublik) {
+      setKelas(KELAS_TERBUKA_PUBLIK);
+      setPilihanMapel(MAPEL_TERBUKA_PUBLIK);
+      setSumber("kurikulum");
+    } else if (data.profil.kelas) {
+      setKelas(data.profil.kelas);
+    }
     if (data.profil.kota) setKota(data.profil.kota);
     if (data.profil.guruKelamin) setGuruKelamin(data.profil.guruKelamin);
-  }, []);
+  }, [kunciPublik]);
 
   useEffect(() => {
     if (pilihanMapel === OPSI_MAPEL_LAIN) return;
@@ -167,6 +192,12 @@ export default function RuangBelajarPage() {
   };
 
   const mulaiPembelajaran = async () => {
+    if (kunciPublik && (sumber !== "kurikulum" || pilihanMapel === OPSI_MAPEL_LAIN)) {
+      setPesanGalat(
+        "Untuk publik, saat ini hanya materi Pendidikan Agama Islam dan Budi Pekerti Kelas 1 SD yang dapat dibuka.",
+      );
+      return;
+    }
     if (sumber === "kurikulum") {
       if (!mapel.trim() || !materi.trim()) {
         setPesanGalat("Mohon isi mata pelajaran dan materi pembahasan.");
@@ -227,7 +258,11 @@ export default function RuangBelajarPage() {
   return (
     <PageShell
       judul="📚 Ruang Belajar"
-      subjudul="Pilih sumber pembelajaran, pilih guru pengajar, lalu mulai sesi belajar di halaman Tutor."
+      subjudul={
+        kunciPublik
+          ? "Pratinjau publik: Pendidikan Agama Islam dan Budi Pekerti Kelas 1 SD. Materi lain tetap terkunci."
+          : "Pilih sumber pembelajaran, pilih guru pengajar, lalu mulai sesi belajar di halaman Tutor."
+      }
     >
       <section className="grid gap-6">
         <div className="rounded-3xl border border-[#1C01A5]/15 bg-white p-6 shadow-sm">
@@ -248,8 +283,9 @@ export default function RuangBelajarPage() {
                 value={kelas}
                 onChange={(e) => setKelas(e.target.value)}
                 className={kelasKotak}
+                disabled={kunciPublik}
               >
-                {DAFTAR_KELAS.map((item) => (
+                {daftarKelasTampil.map((item) => (
                   <option key={item} value={item}>
                     {labelJenjangKelas(item)}
                   </option>
@@ -288,21 +324,23 @@ export default function RuangBelajarPage() {
             <BookOpen className="h-5 w-5 shrink-0" />
             <span>Materi Kurikulum Merdeka</span>
           </button>
-          <button
-            type="button"
-            onClick={() => {
-              setSumber("unggah");
-              setPesanGalat("");
-            }}
-            className={`flex w-full items-center justify-center gap-2 rounded-xl px-3 py-3 text-sm font-extrabold uppercase tracking-wide transition-all sm:text-base ${
-              sumber === "unggah"
-                ? "bg-[#1C01A5] text-white shadow-sm"
-                : "text-[#1C01A5] hover:text-[#1C01A5]"
-            }`}
-          >
-            <UploadCloud className="h-5 w-5 shrink-0" />
-            <span>Unggah Halaman Buku</span>
-          </button>
+          {kunciPublik ? null : (
+            <button
+              type="button"
+              onClick={() => {
+                setSumber("unggah");
+                setPesanGalat("");
+              }}
+              className={`flex w-full items-center justify-center gap-2 rounded-xl px-3 py-3 text-sm font-extrabold uppercase tracking-wide transition-all sm:text-base ${
+                sumber === "unggah"
+                  ? "bg-[#1C01A5] text-white shadow-sm"
+                  : "text-[#1C01A5] hover:text-[#1C01A5]"
+              }`}
+            >
+              <UploadCloud className="h-5 w-5 shrink-0" />
+              <span>Unggah Halaman Buku</span>
+            </button>
+          )}
         </div>
 
         {sumber === "kurikulum" ? (
@@ -321,13 +359,16 @@ export default function RuangBelajarPage() {
                   }
                 }}
                 className={kelasKotak}
+                disabled={kunciPublik}
               >
                 {daftarMapel.map((item) => (
                   <option key={item} value={item}>
                     {item}
                   </option>
                 ))}
-                <option value={OPSI_MAPEL_LAIN}>{OPSI_MAPEL_LAIN}</option>
+                {kunciPublik ? null : (
+                  <option value={OPSI_MAPEL_LAIN}>{OPSI_MAPEL_LAIN}</option>
+                )}
               </select>
               {pilihanMapel === OPSI_MAPEL_LAIN ? (
                 <input
@@ -358,7 +399,9 @@ export default function RuangBelajarPage() {
                     {item}
                   </option>
                 ))}
-                <option value={OPSI_MATERI_LAIN}>{OPSI_MATERI_LAIN}</option>
+                {kunciPublik ? null : (
+                  <option value={OPSI_MATERI_LAIN}>{OPSI_MATERI_LAIN}</option>
+                )}
               </select>
               {pilihanMateri === OPSI_MATERI_LAIN ? (
                 <input

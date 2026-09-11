@@ -16,6 +16,7 @@ import {
 } from "@/lib/susun-modul-tutor";
 import { responsJikaBukanAdmin } from "@/lib/supabase-auth";
 import { naskahResmiJikaAda } from "@/lib/naskah-resmi";
+import { tolakPublikSelainPai1 } from "@/lib/tolak-publik-selain-pai1";
 import { permintaanDibatalkan } from "@/lib/validasi-naskah-ai";
 import { jenjangGuru } from "@/lib/guru";
 import { naskahKartuSdLayak } from "@/lib/naskah-kartu-sd";
@@ -54,6 +55,8 @@ export async function GET(req: Request) {
       { status: 400 },
     );
   }
+  const ditolakPublik = await tolakPublikSelainPai1(kelas, mapel, materi);
+  if (ditolakPublik) return ditolakPublik;
   const resmi = naskahResmiJikaAda(kelas, mapel, materi);
   const terkunci = await materiSedangTerkunci(kelas, mapel, materi);
   const cache = terkunci
@@ -136,6 +139,8 @@ export async function POST(req: Request) {
     const mapel = sebagaiTeks(body.mapel, "Umum");
     const materi = sebagaiTeks(body.materi, "Materi hari ini");
     const gambar = ekstrakDaftarGambar(body.gambar);
+    const ditolakPublik = await tolakPublikSelainPai1(kelas, mapel, materi);
+    if (ditolakPublik) return ditolakPublik;
 
     if (req.signal.aborted) {
       return NextResponse.json(

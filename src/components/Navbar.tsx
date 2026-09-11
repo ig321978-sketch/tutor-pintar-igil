@@ -21,6 +21,11 @@ const MENU_ADMIN = [
   { href: "/admin", label: "🛡️ Dasbor Admin" },
 ] as const;
 
+const MENU_PUBLIK_PAI1 = [
+  { href: "/tutor", label: "🤖 AI Tutor" },
+  { href: "/ruang-belajar", label: "📚 Ruang Belajar" },
+] as const;
+
 function tautanAktif(pathname: string, href: string): boolean {
   return pathname === href || pathname.startsWith(`${href}/`);
 }
@@ -36,7 +41,7 @@ export default function Navbar() {
   const menu = adalahAdmin
     ? MENU_ADMIN
     : situsHanyaAdmin()
-      ? []
+      ? MENU_PUBLIK_PAI1
       : MENU;
 
   async function klikKeluar() {
@@ -50,7 +55,7 @@ export default function Navbar() {
     <header className="sticky top-0 z-40 border-b border-[#1C01A5]/10 bg-white">
       <nav className="flex w-full items-center justify-between gap-4 px-2 py-3">
         <Link
-          href={adalahAdmin || !situsHanyaAdmin() ? "/tutor" : "/login"}
+          href="/tutor"
           className="igil-tanpa-tepi shrink-0 rounded-xl px-2 py-1 text-xl font-extrabold tracking-tight text-[#1C01A5]"
           onClick={() => setTerbuka(false)}
         >

@@ -13,15 +13,23 @@ export const metadata: Metadata = {
 export default function HalamanSitusDitutup() {
   return (
     <PageShell
-      judul="Situs sementara tidak tersedia"
-      subjudul="www.igiligil.xyz sedang dinonaktifkan untuk publik. Admin dapat masuk untuk membuka website."
+      judul="Materi ini masih dikunci"
+      subjudul="Publik saat ini hanya dapat membuka Pendidikan Agama Islam dan Budi Pekerti Kelas 1 SD. Materi dan fitur lain tetap terkunci."
     >
-      <Link
-        href="/login?next=/tutor"
-        className={`${kelasTombolUtama} igil-tombol inline-flex rounded-full px-5 py-3 text-sm font-bold`}
-      >
-        Masuk sebagai admin
-      </Link>
+      <div className="flex flex-wrap gap-3">
+        <Link
+          href="/ruang-belajar"
+          className={`${kelasTombolUtama} igil-tombol inline-flex rounded-full px-5 py-3 text-sm font-bold`}
+        >
+          Belajar PAI Kelas 1 SD
+        </Link>
+        <Link
+          href="/login?next=/tutor"
+          className="igil-tombol inline-flex rounded-full border-2 border-[#1C01A5] px-5 py-3 text-sm font-bold text-[#1C01A5]"
+        >
+          Masuk sebagai admin
+        </Link>
+      </div>
     </PageShell>
   );
 }

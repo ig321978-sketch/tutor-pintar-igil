@@ -1,6 +1,10 @@
 import { NextResponse, type NextRequest } from "next/server";
 import { adalahPeranAdmin, bacaPeranPengguna } from "@/lib/peran";
-import { situsHanyaAdmin } from "@/lib/situs-hanya-admin";
+import {
+  ruteApiPublikSaatTerkunci,
+  ruteHalamanPublikSaatTerkunci,
+  situsHanyaAdmin,
+} from "@/lib/situs-hanya-admin";
 import { supabaseAuthMiddleware } from "@/lib/supabase-edge";
 
 function ruteAdmin(pathname: string): boolean {
@@ -87,6 +91,12 @@ export async function middleware(request: NextRequest) {
       return sesi.response;
     }
     if (ruteSitusDitutup(pathname)) {
+      return tanpaCache(NextResponse.next());
+    }
+    if (
+      ruteHalamanPublikSaatTerkunci(pathname) ||
+      ruteApiPublikSaatTerkunci(pathname)
+    ) {
       return tanpaCache(NextResponse.next());
     }
     return tolakPublik(request);

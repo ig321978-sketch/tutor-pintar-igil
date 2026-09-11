@@ -3,6 +3,7 @@ import type { Part } from "@google/genai";
 import { askTutor } from "@/lib/ask-tutor";
 import { pesanGalatGemini } from "@/lib/klien-gemini";
 import { klaimInteraksiAi } from "@/lib/kuota-interaksi";
+import { tolakPublikSelainPai1 } from "@/lib/tolak-publik-selain-pai1";
 
 export const maxDuration = 30;
 
@@ -45,6 +46,8 @@ export async function POST(req: Request) {
     const mapel = sebagaiTeks(body.mapel, "Umum");
     const materi = sebagaiTeks(body.materi, "Materi hari ini");
     const ajuan = sebagaiTeks(body.ajuan);
+    const ditolakPublik = await tolakPublikSelainPai1(kelas, mapel, materi);
+    if (ditolakPublik) return ditolakPublik;
     if (!ajuan) {
       return NextResponse.json(
         { berhasil: false, pesan: "Pertanyaan siswa kosong." },

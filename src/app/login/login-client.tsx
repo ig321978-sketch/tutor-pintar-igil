@@ -37,8 +37,21 @@ export default function LoginClient() {
       }
       const tujuanAdmin =
         next.startsWith("/admin") || next.startsWith("/studio-kreator");
-      if (!json.adalahAdmin && (tujuanAdmin || situsHanyaAdmin())) {
-        router.replace(tujuanAdmin ? "/403" : "/situs-ditutup");
+      if (!json.adalahAdmin && tujuanAdmin) {
+        router.replace("/403");
+        router.refresh();
+        return;
+      }
+      if (
+        !json.adalahAdmin &&
+        situsHanyaAdmin() &&
+        (next.startsWith("/rapor") ||
+          next.startsWith("/ranking") ||
+          next.startsWith("/simulasi") ||
+          next.startsWith("/admin") ||
+          next.startsWith("/studio-kreator"))
+      ) {
+        router.replace("/ruang-belajar");
         router.refresh();
         return;
       }

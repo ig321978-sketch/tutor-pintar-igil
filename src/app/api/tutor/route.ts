@@ -16,6 +16,7 @@ import {
   cachePunyaBagian,
 } from "@/lib/susun-modul-tutor";
 import { naskahResmiJikaAda } from "@/lib/naskah-resmi";
+import { tolakPublikSelainPai1 } from "@/lib/tolak-publik-selain-pai1";
 import { permintaanDibatalkan } from "@/lib/validasi-naskah-ai";
 
 export const dynamic = "force-dynamic";
@@ -81,6 +82,8 @@ export async function POST(req: Request) {
     const materi = sebagaiTeks(body.materi, "Materi hari ini");
     const ajuan = sebagaiTeks(body.ajuan);
     const daftarGambar = ekstrakDaftarGambar(body.gambar);
+    const ditolakPublik = await tolakPublikSelainPai1(kelas, mapel, materi);
+    if (ditolakPublik) return ditolakPublik;
 
     if (ajuan) {
       const klaim = await klaimInteraksiAi({
