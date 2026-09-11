@@ -3,6 +3,7 @@
 import type { ReactNode } from "react";
 import LatihanSuaraResmi from "@/components/LatihanSuaraResmi";
 import TombolVoiceMateriPai1 from "@/components/TombolVoiceMateriPai1";
+import DoodleKartuAtasJudul from "@/components/DoodleKartuAtasJudul";
 import type { KartuModulResmi, ModulResmiPai } from "@/lib/modul-resmi-pai";
 import { cuplikanDariNaskah } from "@/lib/naskah-voice-pai-1-bab2";
 import type { KelaminGuru } from "@/lib/guru";
@@ -34,13 +35,16 @@ function KartuPembahasan({
   kartu,
   kelas,
   kelamin,
+  doodleId,
 }: {
   kartu: KartuModulResmi;
   kelas: string;
   kelamin?: KelaminGuru;
+  doodleId: string;
 }) {
   return (
     <KartuBingkai>
+      <DoodleKartuAtasJudul id={doodleId} alt={`Ilustrasi ${kartu.judul}`} />
       <h4 className="text-center text-lg font-black tracking-wide text-[#1C01A5] sm:text-xl">
         {kartu.judul}
       </h4>
@@ -119,6 +123,7 @@ export default function NaskahPaiResmi({
           kartu={kartu}
           kelas={kelas}
           kelamin={kelamin}
+          doodleId={`${modul.id}-${kartu.kode}`}
         />
       ))}
     </div>

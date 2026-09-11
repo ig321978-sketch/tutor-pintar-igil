@@ -12,6 +12,7 @@ import {
 import LatihanSuaraRukunIman from "@/components/LatihanSuaraRukunIman";
 import LatihanSuaraAsmaulHusna from "@/components/LatihanSuaraAsmaulHusna";
 import LatihanSuaraImanAmal from "@/components/LatihanSuaraImanAmal";
+import DoodleKartuAtasJudul from "@/components/DoodleKartuAtasJudul";
 import TombolVoiceMateriPai1 from "@/components/TombolVoiceMateriPai1";
 import type { KelaminGuru } from "@/lib/guru";
 
@@ -50,6 +51,10 @@ export default function NaskahPai1Bab2({
   return (
     <div className="space-y-5">
       <KartuBingkai>
+        <DoodleKartuAtasJudul
+          id="pai-1-bab2-A"
+          alt="Ilustrasi A. Pengertian Iman"
+        />
         <h4 className="text-center text-lg font-black tracking-wide text-[#1C01A5] sm:text-xl">
           A. Pengertian Iman
         </h4>
@@ -91,6 +96,10 @@ export default function NaskahPai1Bab2({
       </KartuBingkai>
 
       <KartuBingkai>
+        <DoodleKartuAtasJudul
+          id="pai-1-bab2-B"
+          alt="Ilustrasi B. Mengenal Allah melalui Asmaul Husna"
+        />
         <h4 className="text-center text-lg font-black tracking-wide text-[#1C01A5] sm:text-xl">
           B. Mengenal Allah melalui Asmaul Husna
         </h4>
@@ -139,6 +148,10 @@ export default function NaskahPai1Bab2({
       </KartuBingkai>
 
       <KartuBingkai>
+        <DoodleKartuAtasJudul
+          id="pai-1-bab2-C"
+          alt="Ilustrasi C. Iman yang Terlihat dalam Perbuatan"
+        />
         <h4 className="text-center text-lg font-black tracking-wide text-[#1C01A5] sm:text-xl">
           C. Iman yang Terlihat dalam Perbuatan
         </h4>

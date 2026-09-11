@@ -98,16 +98,8 @@ export default function NaskahKartuSd({
         );
         return (
           <KartuBingkai key={`${kartu.kode}-${kartu.judul}-${indeks}`}>
-            <h4 className="text-center text-lg font-black tracking-wide text-[#1C01A5] sm:text-xl">
-              {kartu.kode}. {kartu.judul}
-            </h4>
-            {kartu.pengantar ? (
-              <p className="mt-4 text-left text-base font-semibold leading-relaxed text-slate-700">
-                <TeksBuku teks={kartu.pengantar} />
-              </p>
-            ) : null}
             {doodle ? (
-              <div className="mt-4 flex justify-center">
+              <div className="mb-4 flex justify-center">
                 <GambarDoodle
                   src={doodle.src}
                   alt={doodle.alt || kartu.judul}
@@ -115,9 +107,17 @@ export default function NaskahKartuSd({
                 />
               </div>
             ) : doodleMemuat ? (
-              <div className="mx-auto mt-4 flex h-28 w-28 items-center justify-center rounded-2xl border-2 border-dashed border-[#1C01A5]/20 bg-[#fbf6ea]">
+              <div className="mx-auto mb-4 flex h-28 w-28 items-center justify-center rounded-2xl border-2 border-dashed border-[#1C01A5]/20 bg-[#fbf6ea]">
                 <Loader2 className="h-6 w-6 animate-spin text-[#1C01A5]" />
               </div>
+            ) : null}
+            <h4 className="text-center text-lg font-black tracking-wide text-[#1C01A5] sm:text-xl">
+              {kartu.kode}. {kartu.judul}
+            </h4>
+            {kartu.pengantar ? (
+              <p className="mt-4 text-left text-base font-semibold leading-relaxed text-slate-700">
+                <TeksBuku teks={kartu.pengantar} />
+              </p>
             ) : null}
             {kartu.infografis.length > 0 ? (
               <div className="mt-4 space-y-4">

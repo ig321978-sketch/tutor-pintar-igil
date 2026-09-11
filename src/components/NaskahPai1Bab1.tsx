@@ -10,6 +10,7 @@ import {
 import LatihanSuaraHijaiyah from "@/components/LatihanSuaraHijaiyah";
 import LatihanSuaraHarakat from "@/components/LatihanSuaraHarakat";
 import LatihanSuaraFatihah from "@/components/LatihanSuaraFatihah";
+import DoodleKartuAtasJudul from "@/components/DoodleKartuAtasJudul";
 import TombolVoiceMateriPai1 from "@/components/TombolVoiceMateriPai1";
 import { FATIHAH, HIJAIYAH_30 } from "@/lib/paket-lengkap-materi";
 import type { KelaminGuru } from "@/lib/guru";
@@ -78,6 +79,10 @@ export default function NaskahPai1Bab1({
   return (
     <div className="space-y-5">
       <KartuBingkai>
+        <DoodleKartuAtasJudul
+          id="pai-1-bab1-A"
+          alt="Ilustrasi A. Mengenal Huruf Hijaiyah"
+        />
         <h4 className="text-center text-lg font-black tracking-wide text-[#1C01A5] sm:text-xl">
           A. Mengenal Huruf Hijaiyah
         </h4>
@@ -113,6 +118,10 @@ export default function NaskahPai1Bab1({
       </KartuBingkai>
 
       <KartuBingkai>
+        <DoodleKartuAtasJudul
+          id="pai-1-bab1-B"
+          alt="Ilustrasi B. Mengenal Harakat"
+        />
         <h4 className="text-center text-lg font-black tracking-wide text-[#1C01A5] sm:text-xl">
           B. Mengenal Harakat
         </h4>
@@ -163,6 +172,10 @@ export default function NaskahPai1Bab1({
       </KartuBingkai>
 
       <KartuBingkai>
+        <DoodleKartuAtasJudul
+          id="pai-1-bab1-C"
+          alt="Ilustrasi C. Menghafal Surah Al-Fatihah"
+        />
         <h4 className="text-center text-lg font-black tracking-wide text-[#1C01A5] sm:text-xl">
           C. Menghafal Surah Al-Fatihah
         </h4>
