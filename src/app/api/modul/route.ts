@@ -4,6 +4,7 @@ import {
   ambilCacheMateriUntukSiswa,
   adalahGalatMateriTerkunci,
   materiSedangTerkunci,
+  pastikanNaskahResmiTerkunci,
   topicIdMateri,
 } from "@/lib/cache-materi-tutor";
 import { responsMateriTerkunci } from "@/lib/respons-materi-terkunci";
@@ -58,11 +59,33 @@ export async function GET(req: Request) {
   const ditolakPublik = await tolakPublikSelainPai1(kelas, mapel, materi);
   if (ditolakPublik) return ditolakPublik;
   const resmi = naskahResmiJikaAda(kelas, mapel, materi);
+  if (resmi) {
+    await pastikanNaskahResmiTerkunci(kelas, mapel, materi);
+    return NextResponse.json(
+      {
+        berhasil: true,
+        ada: true,
+        adaKurikulum: true,
+        adaGlobal: true,
+        adaLatihan: true,
+        dariCache: true,
+        isLocked: true,
+        topicId: topicIdMateri(kelas, mapel, materi),
+        data: bentukModulTutor(nama, resmi, { mapel, materi }),
+      },
+      {
+        headers: {
+          "Cache-Control":
+            "public, s-maxage=3600, stale-while-revalidate=86400",
+        },
+      },
+    );
+  }
   const terkunci = await materiSedangTerkunci(kelas, mapel, materi);
   const cache = terkunci
     ? await ambilCacheMateriUntukSiswa(kelas, mapel, materi)
     : await getModule(kelas, mapel, materi);
-  const headerCache = terkunci && !resmi
+  const headerCache = terkunci
     ? {
         "Cache-Control":
           "public, s-maxage=3600, stale-while-revalidate=86400",
@@ -151,7 +174,7 @@ export async function POST(req: Request) {
 
     const resmi = naskahResmiJikaAda(kelas, mapel, materi);
     if (resmi) {
-      await getModule(kelas, mapel, materi);
+      await pastikanNaskahResmiTerkunci(kelas, mapel, materi);
       return NextResponse.json({
         berhasil: true,
         dariCache: true,

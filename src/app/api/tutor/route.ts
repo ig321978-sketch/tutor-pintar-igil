@@ -7,6 +7,7 @@ import {
   ambilCacheMateriUntukSiswa,
   adalahGalatMateriTerkunci,
   materiSedangTerkunci,
+  pastikanNaskahResmiTerkunci,
   topicIdMateri,
 } from "@/lib/cache-materi-tutor";
 import { responsMateriTerkunci } from "@/lib/respons-materi-terkunci";
@@ -141,7 +142,7 @@ export async function POST(req: Request) {
 
     const resmi = naskahResmiJikaAda(kelas, mapel, materi);
     if (resmi) {
-      await ambilCacheMateriUntukSiswa(kelas, mapel, materi);
+      await pastikanNaskahResmiTerkunci(kelas, mapel, materi);
       return NextResponse.json({
         berhasil: true,
         dariCache: true,

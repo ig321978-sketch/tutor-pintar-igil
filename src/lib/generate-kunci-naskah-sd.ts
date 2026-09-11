@@ -3,6 +3,7 @@ import {
   aturKunciNaskahMateri,
   gabungCacheMateri,
   materiSedangTerkunci,
+  pastikanNaskahResmiTerkunci,
   topicIdMateri,
 } from "@/lib/cache-materi-tutor";
 import { lengkapiVisualNaskahSd, naskahKerangkaKartuSd } from "@/lib/naskah-kartu-sd";
@@ -50,7 +51,7 @@ export async function generateDanKunciNaskahSd(opsi: {
 
   try {
     if (naskahResmiJikaAda(kelas, mapel, materi)) {
-      await getModule(kelas, mapel, materi);
+      await pastikanNaskahResmiTerkunci(kelas, mapel, materi);
       await kunciTopic(kelas, mapel, materi, true);
       return {
         ...dasar,

@@ -898,6 +898,8 @@ export default function TutorAI() {
     mapelKirim: string,
     materiKirim: string,
   ): Promise<ModulTutor | null> => {
+    const dariResmi = modulDariNaskahResmi(kelasKirim, mapelKirim, materiKirim);
+    if (dariResmi) return dariResmi;
     try {
       const intip = new URLSearchParams({
         nama: namaSesiRef.current,
@@ -942,6 +944,10 @@ export default function TutorAI() {
     materiKirim: string,
     bagian: BagianNaskah,
   ) => {
+    const dariResmi = modulDariNaskahResmi(kelasKirim, mapelKirim, materiKirim);
+    if (dariResmi) {
+      return { berhasil: true, dariCache: true, data: dariResmi };
+    }
     try {
       const respons = await fetch("/api/tutor", {
         method: "POST",
@@ -1055,7 +1061,6 @@ export default function TutorAI() {
         materiKirim,
       );
       if (resmiAwal) {
-      void intipModulTersimpan(kelasKirim, mapelKirim, materiKirim);
       const gabung = terapkanBagianModul(
         resmiAwal,
         mapelKirim,
@@ -1335,12 +1340,12 @@ export default function TutorAI() {
       setHasilData(resmiSesi);
       simpanModulLokal(topicId, resmiSesi);
       tandaiSiap(resmiSesi);
+      return () => {
+        batal = true;
+      };
     }
     void intipModulTersimpan(kelasKirim, mapelKirim, materiKirim).then((data) => {
       if (batal) return;
-      if (naskahResmiJikaAda(kelasKirim, mapelKirim, materiKirim)) {
-        return;
-      }
       if (data) {
         const gabung = gabungModulTutor(lokal, data);
         hasilDataRef.current = gabung;
