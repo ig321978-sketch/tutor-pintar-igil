@@ -67,10 +67,17 @@ const SUBBAB_BUKU_SISWA: Record<string, Record<string, Record<string, string[]>>
         "Menjumlahkan sampai 10",
         "Mengisi evaluasi penjumlahan",
       ],
+      "Bab 3: Pengurangan sampai 10": [
+        "Mengambil sebagian dari sekelompok benda",
+        "Menulis pengurangan dengan angka",
+        "Mengurangi sampai 10",
+        "Mengisi evaluasi pengurangan",
+      ],
       "Bab 3: Pengurangan sampai dengan 10": [
         "Mengambil sebagian dari sekelompok benda",
         "Menulis pengurangan dengan angka",
         "Mengurangi sampai 10",
+        "Mengisi evaluasi pengurangan",
       ],
       "Bab 4: Mengenal Bentuk": [
         "Mendeskripsikan benda berdasarkan bentuk",

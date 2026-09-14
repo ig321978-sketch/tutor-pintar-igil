@@ -37,7 +37,7 @@ export const BAB_BUKU_SISWA: Record<string, Record<string, string[]>> = {
     Matematika: [
       "Bab 1: Ayo Berhitung!",
       "Bab 2: Penjumlahan sampai 10",
-      "Bab 3: Pengurangan sampai dengan 10",
+      "Bab 3: Pengurangan sampai 10",
       "Bab 4: Mengenal Bentuk",
       "Bab 5: Ayo Membilang sampai dengan 20",
       "Bab 6: Penjumlahan dan Pengurangan sampai dengan 20",
