@@ -927,27 +927,6 @@ export default function TutorAI() {
     if (bagian === "latihan") {
       setJawabanKuis({});
     }
-    if (
-      modeInput === "teks" &&
-      !dariCache &&
-      !topikTerkunciRef.current.has(
-        kunciMateriTutor(kelasKirim, mapelKirim, materiKirim),
-      )
-    ) {
-      void fetch("/api/studio-kreator", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          nama: namaAktif,
-          kelas: kelasKirim,
-          mapel: mapelKirim,
-          materi: materiKirim,
-          data: gabung,
-        }),
-      }).catch(() => {
-        console.warn("[tutor] gagal mengirim cache modul ke server");
-      });
-    }
     return gabung;
   };
 

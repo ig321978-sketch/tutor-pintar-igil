@@ -7,6 +7,7 @@ import {
   topicIdMateri,
 } from "@/lib/cache-materi-tutor";
 import { lengkapiVisualNaskahSd, naskahKerangkaKartuSd } from "@/lib/naskah-kartu-sd";
+import { OPSI_TULIS_CACHE_COMPOSER } from "@/lib/kebijakan-cache-naskah";
 import { naskahResmiJikaAda } from "@/lib/naskah-resmi";
 import {
   cachePunyaBagian,
@@ -84,17 +85,24 @@ export async function generateDanKunciNaskahSd(opsi: {
     if (sudahTerkunci) await kunciTopic(kelas, mapel, materi, false);
 
     if (cache && (!kurOk || !globOk)) {
-      await gabungCacheMateri(kelas, mapel, materi, nama, {
-        curriculum_view: lengkapiVisualNaskahSd(cache.curriculum_view, kelas, {
-          mapel,
-          materi,
-        }),
-        global_best_view: lengkapiVisualNaskahSd(cache.global_best_view, kelas, {
-          mapel,
-          materi,
-          global: true,
-        }),
-      });
+      await gabungCacheMateri(
+        kelas,
+        mapel,
+        materi,
+        nama,
+        {
+          curriculum_view: lengkapiVisualNaskahSd(cache.curriculum_view, kelas, {
+            mapel,
+            materi,
+          }),
+          global_best_view: lengkapiVisualNaskahSd(cache.global_best_view, kelas, {
+            mapel,
+            materi,
+            global: true,
+          }),
+        },
+        OPSI_TULIS_CACHE_COMPOSER,
+      );
       cache = await getModule(kelas, mapel, materi);
       kurOk = cachePunyaBagian(cache, "kurikulum", kelas);
       globOk = cachePunyaBagian(cache, "global", kelas);
@@ -108,12 +116,20 @@ export async function generateDanKunciNaskahSd(opsi: {
           mapel,
           materi,
           bagian: "kurikulum",
+          ...OPSI_TULIS_CACHE_COMPOSER,
         });
       } catch (error) {
         console.warn("[naskah-sd] kurikulum AI gagal, pakai kerangka kartu", error);
-        await gabungCacheMateri(kelas, mapel, materi, nama, {
-          curriculum_view: naskahKerangkaKartuSd(kelas, mapel, materi),
-        });
+        await gabungCacheMateri(
+          kelas,
+          mapel,
+          materi,
+          nama,
+          {
+            curriculum_view: naskahKerangkaKartuSd(kelas, mapel, materi),
+          },
+          OPSI_TULIS_CACHE_COMPOSER,
+        );
       }
       cache = await getModule(kelas, mapel, materi);
       if (cache) {
@@ -124,9 +140,16 @@ export async function generateDanKunciNaskahSd(opsi: {
             materi,
           }),
         };
-        await gabungCacheMateri(kelas, mapel, materi, nama, {
-          curriculum_view: cache.curriculum_view,
-        });
+        await gabungCacheMateri(
+          kelas,
+          mapel,
+          materi,
+          nama,
+          {
+            curriculum_view: cache.curriculum_view,
+          },
+          OPSI_TULIS_CACHE_COMPOSER,
+        );
       }
       cache = await getModule(kelas, mapel, materi);
       kurOk = cachePunyaBagian(cache, "kurikulum", kelas);
@@ -142,12 +165,20 @@ export async function generateDanKunciNaskahSd(opsi: {
           materi,
           bagian: "global",
           naskahKurikulum: cache?.curriculum_view,
+          ...OPSI_TULIS_CACHE_COMPOSER,
         });
       } catch (error) {
         console.warn("[naskah-sd] global AI gagal, pakai kerangka kartu", error);
-        await gabungCacheMateri(kelas, mapel, materi, nama, {
-          global_best_view: naskahKerangkaKartuSd(kelas, mapel, materi, true),
-        });
+        await gabungCacheMateri(
+          kelas,
+          mapel,
+          materi,
+          nama,
+          {
+            global_best_view: naskahKerangkaKartuSd(kelas, mapel, materi, true),
+          },
+          OPSI_TULIS_CACHE_COMPOSER,
+        );
       }
       cache = await getModule(kelas, mapel, materi);
       globOk = cachePunyaBagian(cache, "global", kelas);
@@ -157,9 +188,16 @@ export async function generateDanKunciNaskahSd(opsi: {
           materi,
           global: true,
         });
-        await gabungCacheMateri(kelas, mapel, materi, nama, {
-          global_best_view: globalRapikan,
-        });
+        await gabungCacheMateri(
+          kelas,
+          mapel,
+          materi,
+          nama,
+          {
+            global_best_view: globalRapikan,
+          },
+          OPSI_TULIS_CACHE_COMPOSER,
+        );
         cache = await getModule(kelas, mapel, materi);
         globOk = cachePunyaBagian(cache, "global", kelas);
       }
@@ -173,6 +211,7 @@ export async function generateDanKunciNaskahSd(opsi: {
         mapel,
         materi,
         bagian: "latihan",
+        ...OPSI_TULIS_CACHE_COMPOSER,
       });
       cache = await getModule(kelas, mapel, materi);
       latOk = cachePunyaBagian(cache, "latihan", kelas);

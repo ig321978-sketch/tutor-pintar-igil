@@ -16,6 +16,7 @@ import {
   bentukModulTutor,
   cachePunyaBagian,
 } from "@/lib/susun-modul-tutor";
+import { OPSI_TULIS_CACHE_PUBLIK } from "@/lib/kebijakan-cache-naskah";
 import { naskahResmiJikaAda } from "@/lib/naskah-resmi";
 import { tolakPublikSelainPai1 } from "@/lib/tolak-publik-selain-pai1";
 import { permintaanDibatalkan } from "@/lib/validasi-naskah-ai";
@@ -176,6 +177,7 @@ export async function POST(req: Request) {
       gambar: daftarGambar,
       bagian,
       signal: req.signal,
+      ...OPSI_TULIS_CACHE_PUBLIK,
     });
 
     return NextResponse.json({

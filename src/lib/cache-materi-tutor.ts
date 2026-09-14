@@ -16,6 +16,10 @@ import type { ModulTerbitPublik } from "@/lib/naskah-resmi";
 import { jenjangGuru } from "@/lib/guru";
 import { naskahKartuSdLayak } from "@/lib/naskah-kartu-sd";
 import {
+  bolehPerbaruiCacheNaskah,
+  type SumberTulisCacheNaskah,
+} from "@/lib/kebijakan-cache-naskah";
+import {
   type DetailCacheMateri,
   type IsiCacheMateri,
   type RingkasCacheMateri,
@@ -50,6 +54,9 @@ export function tagCacheMateriTerkunci(topicId: string): string {
 export type OpsiSimpanCacheMateri = {
   tulisUlangSetelahHapus?: boolean;
   tulisUlang?: boolean;
+  /** false / sumber "publik": generate situs tidak menimpa cache. */
+  tulisCache?: boolean;
+  sumber?: SumberTulisCacheNaskah;
 };
 
 const MODEL_SUMBER_STUDIO = "studio-kreator";
@@ -869,6 +876,12 @@ export async function simpanCacheMateri(
   isi: IsiCacheMateri,
   opsi: OpsiSimpanCacheMateri = {},
 ): Promise<boolean> {
+  if (!bolehPerbaruiCacheNaskah(opsi)) {
+    console.info(
+      `[cache-materi] generate publik; cache tidak diperbarui topic_id=${kunciMateriTutor(kelas, mapel, materi)}`,
+    );
+    return false;
+  }
   const supabase = supabaseServer();
   if (!supabase) {
     console.warn("[cache-materi] supabase belum terhubung; generate tidak tersimpan.");

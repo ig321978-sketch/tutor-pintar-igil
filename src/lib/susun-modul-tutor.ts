@@ -35,6 +35,10 @@ import {
 } from "@/lib/cache-materi-tutor";
 import { naskahKartuSdLayak, lengkapiVisualNaskahSd } from "@/lib/naskah-kartu-sd";
 import { naskahResmiJikaAda } from "@/lib/naskah-resmi";
+import {
+  bolehPerbaruiCacheNaskah,
+  type SumberTulisCacheNaskah,
+} from "@/lib/kebijakan-cache-naskah";
 import { naskahGlobalSiap, naskahMateriSiap } from "@/lib/sudut-pandang";
 import { instruksiPaketLengkap } from "@/lib/paket-lengkap-materi";
 import {
@@ -797,17 +801,26 @@ async function simpanBagianCache(
     materi: string;
     gambar?: Part[];
     signal?: AbortSignal;
+    tulisCache?: boolean;
+    sumber?: SumberTulisCacheNaskah;
   },
   isi: Partial<IsiCacheMateri>,
 ): Promise<void> {
   tolakJikaDibatalkan(opsi.signal);
   if ((opsi.gambar ?? []).length > 0) return;
+  if (!bolehPerbaruiCacheNaskah(opsi)) {
+    console.info(
+      `[materi] generate publik; cache tidak diperbarui topic_id=${topicIdMateri(opsi.kelas, opsi.mapel, opsi.materi)}`,
+    );
+    return;
+  }
   const tersimpan = await gabungCacheMateri(
     opsi.kelas,
     opsi.mapel,
     opsi.materi,
     opsi.nama,
     isi,
+    { tulisCache: opsi.tulisCache, sumber: opsi.sumber },
   );
   if (!tersimpan) {
     console.warn(
@@ -840,6 +853,8 @@ export async function generateBagianModul(opsi: {
   bagian: BagianNaskahModul;
   naskahKurikulum?: string;
   signal?: AbortSignal;
+  tulisCache?: boolean;
+  sumber?: SumberTulisCacheNaskah;
 }): Promise<ModulTutor> {
   const dariResmi = modulDariNaskahResmi(
     opsi.nama,
@@ -851,6 +866,7 @@ export async function generateBagianModul(opsi: {
     await getModule(opsi.kelas, opsi.mapel, opsi.materi);
     return dariResmi.data;
   }
+  opsi = { ...opsi, tulisCache: opsi.tulisCache === true };
   const namaDepan = namaDepanSiswa(opsi.nama);
   const gambar = opsi.gambar ?? [];
   const cacheAwal = await getModule(opsi.kelas, opsi.mapel, opsi.materi);
@@ -1067,6 +1083,8 @@ export async function ambilAtauBuatBagianModul(opsi: {
   gambar?: Part[];
   bagian: BagianNaskahModul;
   signal?: AbortSignal;
+  tulisCache?: boolean;
+  sumber?: SumberTulisCacheNaskah;
 }): Promise<{ data: ModulTutor; dariCache: boolean; topicId: string }> {
   const dariResmi = modulDariNaskahResmi(
     opsi.nama,
@@ -1106,6 +1124,7 @@ export async function ambilAtauBuatBagianModul(opsi: {
       gambar,
       naskahKurikulum: cache?.curriculum_view,
       signal: opsi.signal,
+      tulisCache: opsi.tulisCache === true,
     });
     if (gambar.length === 0) {
       const cacheSetelah = await getModule(opsi.kelas, opsi.mapel, opsi.materi);
@@ -1176,6 +1195,8 @@ export async function generateModuleFirstTime(opsi: {
   gambar?: Part[];
   signal?: AbortSignal;
   tulisUlang?: boolean;
+  tulisCache?: boolean;
+  sumber?: SumberTulisCacheNaskah;
 }): Promise<ModulTutor> {
   const dariResmi = modulDariNaskahResmi(
     opsi.nama,
@@ -1249,20 +1270,29 @@ export async function generateModuleFirstTime(opsi: {
   }
   tolakJikaDibatalkan(opsi.signal);
 
-  if (gambar.length === 0) {
+  if (gambar.length === 0 && opsi.tulisCache === true && bolehPerbaruiCacheNaskah(opsi)) {
     const tersimpan = await simpanCacheMateri(
       opsi.kelas,
       opsi.mapel,
       opsi.materi,
       opsi.nama,
       keIsiCache(dataAman),
-      { tulisUlangSetelahHapus: true, tulisUlang: Boolean(opsi.tulisUlang) },
+      {
+        tulisUlangSetelahHapus: true,
+        tulisUlang: Boolean(opsi.tulisUlang),
+        tulisCache: true,
+        sumber: opsi.sumber,
+      },
     );
     if (!tersimpan) {
       console.warn(
         `[materi] generate Pro selesai tetapi cache gagal disimpan topic_id=${topicIdMateri(opsi.kelas, opsi.mapel, opsi.materi)}`,
       );
     }
+  } else if (gambar.length === 0) {
+    console.info(
+      `[materi] generate publik; cache tidak diperbarui topic_id=${topicIdMateri(opsi.kelas, opsi.mapel, opsi.materi)}`,
+    );
   }
 
   return dataAman;
@@ -1276,6 +1306,8 @@ export async function ambilAtauBuatModul(opsi: {
   gambar?: Part[];
   signal?: AbortSignal;
   forceRegenerate?: boolean;
+  tulisCache?: boolean;
+  sumber?: SumberTulisCacheNaskah;
 }): Promise<{ data: ModulTutor; dariCache: boolean; topicId: string }> {
   const dariResmi = modulDariNaskahResmi(
     opsi.nama,

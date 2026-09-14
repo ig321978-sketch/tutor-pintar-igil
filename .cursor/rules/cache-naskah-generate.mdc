@@ -1,0 +1,12 @@
+---
+description: Generate naskah modul hanya memperbarui cache dari Composer atau Studio Kreator admin.
+alwaysApply: true
+---
+
+# Cache naskah modul
+
+Generate lewat instruksi Composer/skrip kunci naskah, atau lewat Studio Kreator di dashboard admin, **boleh** menulis dan menimpa cache (`tulisCache: true` / `sumber: "composer"` atau `"admin"`).
+
+Generate di situs publik (`/tutor`, `/api/tutor`, `/api/modul` tanpa sesi admin) **tidak boleh** menambah atau menimpa cache. Siswa tetap boleh melihat hasil generate sesi itu, tetapi baris `cache_materi_tutor` tidak berubah.
+
+Jangan kirim hasil generate publik ke `POST /api/studio-kreator`. Endpoint itu hanya untuk admin.

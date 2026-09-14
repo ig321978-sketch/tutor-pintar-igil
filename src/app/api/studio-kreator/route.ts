@@ -8,6 +8,7 @@ import {
   materiSedangTerkunci,
   muatDaftarCacheAdmin,
 } from "@/lib/cache-materi-tutor";
+import { OPSI_TULIS_CACHE_ADMIN } from "@/lib/kebijakan-cache-naskah";
 import { responsMateriTerkunci } from "@/lib/respons-materi-terkunci";
 import { responsJikaBukanAdmin } from "@/lib/supabase-auth";
 import { isiDariBadanStudio, sebagaiTeksStudio } from "@/lib/studio-kreator";
@@ -36,6 +37,9 @@ export async function GET() {
 }
 
 export async function POST(req: Request) {
+  const ditolak = await responsJikaBukanAdmin();
+  if (ditolak) return ditolak;
+
   let body: Record<string, unknown>;
   try {
     body = (await req.json()) as Record<string, unknown>;
@@ -115,7 +119,14 @@ export async function POST(req: Request) {
 
   let tersimpan = false;
   try {
-    tersimpan = await gabungCacheMateri(kelas, mapel, materi, nama, isi);
+    tersimpan = await gabungCacheMateri(
+      kelas,
+      mapel,
+      materi,
+      nama,
+      isi,
+      OPSI_TULIS_CACHE_ADMIN,
+    );
   } catch (error) {
     if (adalahGalatMateriTerkunci(error)) return responsMateriTerkunci();
     throw error;

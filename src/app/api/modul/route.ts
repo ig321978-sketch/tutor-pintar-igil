@@ -16,6 +16,10 @@ import {
   getModule,
 } from "@/lib/susun-modul-tutor";
 import { responsJikaBukanAdmin } from "@/lib/supabase-auth";
+import {
+  OPSI_TULIS_CACHE_ADMIN,
+  OPSI_TULIS_CACHE_PUBLIK,
+} from "@/lib/kebijakan-cache-naskah";
 import { naskahResmiJikaAda } from "@/lib/naskah-resmi";
 import { tolakPublikSelainPai1 } from "@/lib/tolak-publik-selain-pai1";
 import { permintaanDibatalkan } from "@/lib/validasi-naskah-ai";
@@ -202,12 +206,15 @@ export async function POST(req: Request) {
       gambar,
       signal: req.signal,
       forceRegenerate,
+      ...(forceRegenerate ? OPSI_TULIS_CACHE_ADMIN : OPSI_TULIS_CACHE_PUBLIK),
     });
 
     return NextResponse.json({
       berhasil: true,
       dariCache: hasil.dariCache,
       topicId: hasil.topicId,
+      tersimpan: hasil.dariCache || forceRegenerate,
+      perbaruiCache: forceRegenerate,
       data: hasil.data,
     });
   } catch (error: unknown) {
