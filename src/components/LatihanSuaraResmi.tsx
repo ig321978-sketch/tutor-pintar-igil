@@ -5,12 +5,24 @@ import SoalRekamSuara, { ucapanMemuatAlias } from "@/components/SoalRekamSuara";
 import type { KuisSuaraResmi } from "@/lib/modul-resmi-pai";
 import { aliasDariKuisSuara } from "@/lib/nilai-kuis-tulis";
 
+function pertanyaanTulisDariSoal(
+  soal: KuisSuaraResmi[],
+  cadangan?: string,
+): string {
+  if (cadangan?.trim()) return cadangan.trim();
+  const pertama = soal[0]?.pertanyaan.replace(/^\d+\.\s*/, "").trim();
+  if (pertama) return `Tuliskan jawaban: ${pertama}`;
+  return "Tuliskan jawaban dari materi kartu ini.";
+}
+
 export default function LatihanSuaraResmi({
   soal,
   idPrefix,
+  pertanyaan,
 }: {
   soal: KuisSuaraResmi[];
   idPrefix: string;
+  pertanyaan?: string;
 }) {
   return (
     <div className="mt-6 space-y-4 border-t-2 border-[#1C01A5]/10 pt-5">
@@ -33,6 +45,7 @@ export default function LatihanSuaraResmi({
       <KuisTulisKartu
         id={`${idPrefix}-tulis`}
         rapat
+        pertanyaan={pertanyaanTulisDariSoal(soal, pertanyaan)}
         alias={aliasDariKuisSuara(soal)}
         konteks={soal
           .map((item) => `${item.pertanyaan} ${item.alias.join(", ")}`)

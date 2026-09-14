@@ -50,9 +50,15 @@ export default function KuisTulisKartu({
   const sudah = Boolean(kuis?.sudahBenar(id));
   const [status, setStatus] = useState<StatusJawaban>(sudah ? "benar" : null);
   const [pesan, setPesan] = useState("");
+  const [cuplikan, setCuplikan] = useState("");
+
+  const simpanCuplikan = (data: string) => {
+    setCuplikan(adalahGambarJawaban(data) ? "tulisan tangan" : data.trim());
+  };
 
   const nilaiJawaban = async (data: string) => {
     setPesan("");
+    simpanCuplikan(data);
     if (jawabanTulisGenerik(data)) {
       setStatus("salah");
       return;
@@ -93,7 +99,7 @@ export default function KuisTulisKartu({
       <p className="text-base font-extrabold leading-relaxed text-[#1C01A5]">
         QUIZ TULIS:
       </p>
-      <p className="text-sm font-semibold leading-relaxed text-slate-700">
+      <p className="rounded-2xl border-2 border-[#1C01A5]/15 bg-[#F8F7FF] px-4 py-3 text-base font-extrabold leading-relaxed text-[#1C01A5]">
         {pertanyaan}
       </p>
       <p className="text-xs font-bold text-[#1C01A5]/70">
@@ -103,22 +109,32 @@ export default function KuisTulisKartu({
         disabled={status === "benar"}
         onSubmit={nilaiJawaban}
       />
-      <div className="flex flex-wrap items-center gap-2">
-        {status === "benar" ? (
-          <span className="rounded-full bg-emerald-600 px-4 py-2 text-sm font-black tracking-wide text-white">
+      {status === "benar" ? (
+        <div className="rounded-2xl border-4 border-emerald-600 bg-emerald-50 px-4 py-4">
+          <p className="text-2xl font-black tracking-wide text-emerald-700">
             BENAR
-          </span>
-        ) : null}
-        {status === "salah" ? (
-          <span className="rounded-full bg-rose-600 px-4 py-2 text-sm font-black tracking-wide text-white">
-            SALAH
-          </span>
-        ) : null}
-      </div>
+          </p>
+          {cuplikan ? (
+            <p className="mt-1 text-sm font-bold text-emerald-800">
+              Jawabanmu: {cuplikan}
+            </p>
+          ) : null}
+        </div>
+      ) : null}
       {status === "salah" ? (
-        <p className="text-sm font-semibold text-rose-700">
-          Jawaban belum tepat. Coba tulis atau ketik lagi.
-        </p>
+        <div className="rounded-2xl border-4 border-rose-600 bg-rose-50 px-4 py-4">
+          <p className="text-2xl font-black tracking-wide text-rose-700">
+            SALAH
+          </p>
+          {cuplikan ? (
+            <p className="mt-1 text-sm font-bold text-rose-800">
+              Jawabanmu: {cuplikan}
+            </p>
+          ) : null}
+          <p className="mt-2 text-sm font-semibold text-rose-700">
+            Jawaban belum tepat. Coba tulis atau ketik lagi.
+          </p>
+        </div>
       ) : null}
       {pesan ? (
         <p className="text-sm font-black text-rose-600">{pesan}</p>
