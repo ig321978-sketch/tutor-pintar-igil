@@ -2,10 +2,12 @@ import type { IsiCacheMateri } from "@/lib/jenis-cache-materi";
 import { kelasSatuSd } from "@/lib/infografis-kelas1";
 import { kunciMapelTutor, rapikanKunci } from "@/lib/kunci-siswa";
 import {
+  JUDUL_PAI1_BAB1,
   naskahPai1Bab1,
   naskahTampilanPai1Bab1,
 } from "@/lib/naskah-resmi-pai-1-bab1";
 import {
+  JUDUL_PAI1_BAB2,
   naskahPai1Bab2,
   naskahTampilanPai1Bab2,
 } from "@/lib/naskah-resmi-pai-1-bab2";
@@ -117,6 +119,28 @@ export function adalahPai1Bab2(
 ): boolean {
   if (!kelasSatuSd(kelas)) return false;
   return adalahJudulPai1Bab2(mapel, materi);
+}
+
+export type ModulTerbitPublik = {
+  kelas: string;
+  mapel: string;
+  materi: string;
+};
+
+export function daftarNaskahResmiPublik(): ModulTerbitPublik[] {
+  const pai = "Pendidikan Agama Islam dan Budi Pekerti";
+  return [
+    { kelas: "1 SD", mapel: pai, materi: JUDUL_PAI1_BAB1 },
+    { kelas: "1 SD", mapel: pai, materi: JUDUL_PAI1_BAB2 },
+    ...MODUL_PAI1_BAB3_10.map((modul) => ({
+      kelas: "1 SD",
+      mapel: pai,
+      materi: modul.judul,
+    })),
+    { kelas: "1 SD", mapel: "Matematika", materi: MODUL_MTK1_BAB1.judul },
+    { kelas: "1 SD", mapel: "Matematika", materi: MODUL_MTK1_BAB2.judul },
+    { kelas: "1 SD", mapel: "Matematika", materi: MODUL_MTK1_BAB3.judul },
+  ];
 }
 
 export function naskahResmiJikaAda(

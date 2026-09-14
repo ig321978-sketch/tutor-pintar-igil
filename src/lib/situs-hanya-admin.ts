@@ -1,4 +1,4 @@
-/** Mode terbatas: publik hanya boleh naskah resmi Kelas 1 SD yang sudah dikunci. Admin tetap membuka seluruh situs. */
+/** Mode terbatas: publik hanya boleh modul yang sudah terbit. Admin tetap membuka seluruh situs. */
 export function situsHanyaAdmin(): boolean {
   return true;
 }
@@ -9,7 +9,7 @@ export const MAPEL_TERBUKA_PUBLIK =
 export const MAPEL_TERBUKA_PUBLIK_LAIN = ["Matematika"] as const;
 
 export const PESAN_MATERI_TERKUNCI_PUBLIK =
-  "Untuk publik, saat ini hanya materi resmi Kelas 1 SD yang sudah dikunci yang dapat dibuka.";
+  "Untuk publik, saat ini hanya materi yang sudah terbit yang dapat dibuka.";
 
 export function daftarMapelTerbukaPublik(): string[] {
   return [MAPEL_TERBUKA_PUBLIK, ...MAPEL_TERBUKA_PUBLIK_LAIN];
@@ -65,6 +65,8 @@ export function ruteApiPublikSaatTerkunci(pathname: string): boolean {
     pathname === "/api/tutor" ||
     pathname.startsWith("/api/tutor/") ||
     pathname === "/api/modul" ||
+    pathname.startsWith("/api/modul/") ||
+    pathname === "/api/kuis-tulis" ||
     pathname === "/api/tts"
   );
 }

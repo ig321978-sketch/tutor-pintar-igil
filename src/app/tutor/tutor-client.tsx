@@ -456,13 +456,40 @@ export default function TutorAI() {
     const mapelQ = teksQuery(params.get("mapel"));
     const materiQ = teksQuery(params.get("materi"));
     const modeQ = params.get("mode");
-    if (
-      modeQ === "gambar" ||
-      !naskahResmiJikaAda(kelasQ, mapelQ, materiQ)
-    ) {
+    if (modeQ === "gambar") {
       setPesanKunci(PESAN_MATERI_TERKUNCI_PUBLIK);
       router.replace("/ruang-belajar");
+      return;
     }
+    if (naskahResmiJikaAda(kelasQ, mapelQ, materiQ)) return;
+    let hidup = true;
+    void (async () => {
+      try {
+        const intip = new URLSearchParams({
+          kelas: kelasQ,
+          mapel: mapelQ,
+          materi: materiQ,
+        });
+        const peek = await fetch(`/api/modul?${intip.toString()}`, {
+          cache: "no-store",
+        });
+        const json = (await peek.json()) as {
+          berhasil?: boolean;
+          ada?: boolean;
+          terkunci?: boolean;
+        };
+        if (!hidup) return;
+        if (peek.ok && json.berhasil && json.ada) return;
+      } catch {
+        /* jatuh ke kunci */
+      }
+      if (!hidup) return;
+      setPesanKunci(PESAN_MATERI_TERKUNCI_PUBLIK);
+      router.replace("/ruang-belajar");
+    })();
+    return () => {
+      hidup = false;
+    };
   }, [kunciPublik, memuatPeran, params, router]);
 
   useEffect(() => {

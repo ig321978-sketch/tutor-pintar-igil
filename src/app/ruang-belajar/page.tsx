@@ -17,10 +17,14 @@ import { useUserRole } from "@/hooks/useUserRole";
 import {
   KELAS_TERBUKA_PUBLIK,
   MAPEL_TERBUKA_PUBLIK,
-  daftarMapelTerbukaPublik,
+  PESAN_MATERI_TERKUNCI_PUBLIK,
   situsHanyaAdmin,
 } from "@/lib/situs-hanya-admin";
-import { naskahResmiJikaAda } from "@/lib/naskah-resmi";
+import { daftarNaskahResmiPublik } from "@/lib/naskah-resmi";
+import {
+  materiAdaDiDaftarTerbit,
+  type ModulTerbitPublik,
+} from "@/lib/modul-terbit-publik";
 import { naskahSapaanUntukSuara } from "@/lib/naskah-lisan";
 import { bacaProgres, simpanProfil } from "@/lib/progres";
 import {
@@ -93,23 +97,54 @@ export default function RuangBelajarPage() {
   const [pesanGalat, setPesanGalat] = useState("");
   const [guruKelamin, setGuruKelamin] = useState<KelaminGuru>("wanita");
   const [menyiapkanSapaan, setMenyiapkanSapaan] = useState(false);
-
-  const daftarKelasTampil = kunciPublik ? [KELAS_TERBUKA_PUBLIK] : DAFTAR_KELAS;
-  const daftarMapel = useMemo(
-    () =>
-      kunciPublik
-        ? daftarMapelTerbukaPublik()
-        : daftarMapelUntukKelas(kelas),
-    [kelas, kunciPublik],
+  const [daftarTerbit, setDaftarTerbit] = useState<ModulTerbitPublik[]>(
+    daftarNaskahResmiPublik(),
   );
+
+  useEffect(() => {
+    if (!kunciPublik) return;
+    let hidup = true;
+    void (async () => {
+      try {
+        const respons = await fetch("/api/modul/terbit", { cache: "no-store" });
+        const json = (await respons.json()) as {
+          berhasil?: boolean;
+          daftar?: ModulTerbitPublik[];
+        };
+        if (!hidup || !json.berhasil || !Array.isArray(json.daftar)) return;
+        if (json.daftar.length > 0) setDaftarTerbit(json.daftar);
+      } catch {
+        /* tetap pakai naskah resmi */
+      }
+    })();
+    return () => {
+      hidup = false;
+    };
+  }, [kunciPublik]);
+
+  const daftarKelasTampil = useMemo(() => {
+    if (!kunciPublik) return DAFTAR_KELAS;
+    const ada = new Set(daftarTerbit.map((item) => item.kelas));
+    const urut = DAFTAR_KELAS.filter((item) => ada.has(item));
+    const sisa = [...ada].filter((item) => !urut.includes(item)).sort();
+    return urut.length + sisa.length > 0 ? [...urut, ...sisa] : [KELAS_TERBUKA_PUBLIK];
+  }, [daftarTerbit, kunciPublik]);
+  const daftarMapel = useMemo(() => {
+    if (!kunciPublik) return daftarMapelUntukKelas(kelas);
+    const nama = new Set(
+      daftarTerbit
+        .filter((item) => item.kelas === kelas)
+        .map((item) => item.mapel),
+    );
+    return [...nama];
+  }, [daftarTerbit, kelas, kunciPublik]);
   const daftarMateri = useMemo(() => {
     if (pilihanMapel === OPSI_MAPEL_LAIN) return [];
-    const semua = DATA_KURIKULUM[kelas]?.[pilihanMapel] ?? [];
-    if (!kunciPublik) return semua;
-    return semua.filter((judul) =>
-      naskahResmiJikaAda(kelas, pilihanMapel, judul),
-    );
-  }, [kelas, pilihanMapel, kunciPublik]);
+    if (!kunciPublik) return DATA_KURIKULUM[kelas]?.[pilihanMapel] ?? [];
+    return daftarTerbit
+      .filter((item) => item.kelas === kelas && item.mapel === pilihanMapel)
+      .map((item) => item.materi);
+  }, [daftarTerbit, kelas, kunciPublik, pilihanMapel]);
   const mapel =
     pilihanMapel === OPSI_MAPEL_LAIN ? mapelManual : pilihanMapel;
   const materi =
@@ -119,7 +154,6 @@ export default function RuangBelajarPage() {
     const data = bacaProgres();
     if (data.profil.nama) setNama(data.profil.nama);
     if (kunciPublik) {
-      setKelas(KELAS_TERBUKA_PUBLIK);
       setSumber("kurikulum");
     } else if (data.profil.kelas) {
       setKelas(data.profil.kelas);
@@ -127,6 +161,13 @@ export default function RuangBelajarPage() {
     if (data.profil.kota) setKota(data.profil.kota);
     if (data.profil.guruKelamin) setGuruKelamin(data.profil.guruKelamin);
   }, [kunciPublik]);
+
+  useEffect(() => {
+    if (!kunciPublik) return;
+    if (!daftarKelasTampil.includes(kelas)) {
+      setKelas(daftarKelasTampil[0] ?? KELAS_TERBUKA_PUBLIK);
+    }
+  }, [daftarKelasTampil, kelas, kunciPublik]);
 
   useEffect(() => {
     if (pilihanMapel === OPSI_MAPEL_LAIN) return;
@@ -198,11 +239,9 @@ export default function RuangBelajarPage() {
       kunciPublik &&
       (sumber !== "kurikulum" ||
         pilihanMapel === OPSI_MAPEL_LAIN ||
-        !naskahResmiJikaAda(kelas, mapel, materi))
+        !materiAdaDiDaftarTerbit(kelas, mapel, materi, daftarTerbit))
     ) {
-      setPesanGalat(
-        "Untuk publik, saat ini hanya materi resmi Kelas 1 SD yang sudah dikunci yang dapat dibuka.",
-      );
+      setPesanGalat(PESAN_MATERI_TERKUNCI_PUBLIK);
       return;
     }
     if (sumber === "kurikulum") {
@@ -267,7 +306,7 @@ export default function RuangBelajarPage() {
       judul="📚 Ruang Belajar"
       subjudul={
         kunciPublik
-          ? "Pratinjau publik: materi resmi Kelas 1 SD yang sudah dikunci. Materi lain tetap terkunci."
+          ? "Pratinjau publik: semua materi yang sudah terbit dapat dibuka. Materi draf tetap terkunci."
           : "Pilih sumber pembelajaran, pilih guru pengajar, lalu mulai sesi belajar di halaman Tutor."
       }
     >
@@ -290,7 +329,6 @@ export default function RuangBelajarPage() {
                 value={kelas}
                 onChange={(e) => setKelas(e.target.value)}
                 className={kelasKotak}
-                disabled={kunciPublik}
               >
                 {daftarKelasTampil.map((item) => (
                   <option key={item} value={item}>

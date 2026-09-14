@@ -11,6 +11,8 @@ import { namaDepanSiswa } from "@/lib/nama-siswa";
 import { naskahLatihanSaja, pecahBankSoal, kunciLatihanSaja } from "@/lib/kuis";
 import { buangTeksSampah } from "@/lib/validasi-naskah-ai";
 import { naskahResmiJikaAda } from "@/lib/naskah-resmi";
+import { gabungModulTerbitPublik } from "@/lib/modul-terbit-publik";
+import type { ModulTerbitPublik } from "@/lib/naskah-resmi";
 import { jenjangGuru } from "@/lib/guru";
 import { naskahKartuSdLayak } from "@/lib/naskah-kartu-sd";
 import {
@@ -1119,6 +1121,13 @@ export async function muatDaftarCacheAdmin(): Promise<{
 export async function daftarCacheMateri(): Promise<RingkasCacheMateri[]> {
   const hasil = await muatDaftarCacheAdmin();
   return hasil.daftar;
+}
+
+export async function muatDaftarModulTerbitPublik(): Promise<
+  ModulTerbitPublik[]
+> {
+  const hasil = await muatDaftarCacheAdmin();
+  return gabungModulTerbitPublik(hasil.daftar);
 }
 
 function barisKeIsiAdmin(data: unknown): IsiCacheMateri | null {
