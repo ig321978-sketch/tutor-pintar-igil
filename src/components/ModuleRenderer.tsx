@@ -10,6 +10,7 @@ import NaskahPaiResmi from "@/components/NaskahPaiResmi";
 import NaskahMtk1Bab1 from "@/components/NaskahMtk1Bab1";
 import NaskahMtk1Bab2 from "@/components/NaskahMtk1Bab2";
 import NaskahMtk1Bab3 from "@/components/NaskahMtk1Bab3";
+import NaskahMtk1Bab4 from "@/components/NaskahMtk1Bab4";
 import NaskahKartuSd from "@/components/NaskahKartuSd";
 import DaftarLengkapMateri from "@/components/DaftarLengkapMateri";
 import { BlokTampil } from "@/components/BlokNaskahTampil";
@@ -20,6 +21,7 @@ import {
   adalahJudulMtk1Bab1,
   adalahJudulMtk1Bab2,
   adalahJudulMtk1Bab3,
+  adalahJudulMtk1Bab4,
   adalahJudulPai1Bab1,
   adalahJudulPai1Bab2,
   cariModulPai1DariNaskah,
@@ -91,13 +93,21 @@ function ModuleRenderer({
         /pengurangan\s+sampai(\s+dengan)?\s+10/i.test(naskah)),
     [naskah, mapel, materi],
   );
+  const pakaiKartuMtkBab4 = useMemo(
+    () =>
+      adalahJudulMtk1Bab4(mapel, materi) ||
+      (naskahTampilanResmi(naskah) &&
+        /mengenal\s+bentuk(\s+ruang)?/i.test(naskah)),
+    [naskah, mapel, materi],
+  );
   const modulResmiLain = useMemo(() => {
     if (
       pakaiKartuBab1 ||
       pakaiKartuBab2 ||
       pakaiKartuMtkBab1 ||
       pakaiKartuMtkBab2 ||
-      pakaiKartuMtkBab3
+      pakaiKartuMtkBab3 ||
+      pakaiKartuMtkBab4
     )
       return null;
     return cariModulPai1Resmi(materi) ?? cariModulPai1DariNaskah(naskah);
@@ -107,6 +117,7 @@ function ModuleRenderer({
     pakaiKartuMtkBab1,
     pakaiKartuMtkBab2,
     pakaiKartuMtkBab3,
+    pakaiKartuMtkBab4,
     materi,
     naskah,
   ]);
@@ -116,6 +127,7 @@ function ModuleRenderer({
     !pakaiKartuMtkBab1 &&
     !pakaiKartuMtkBab2 &&
     !pakaiKartuMtkBab3 &&
+    !pakaiKartuMtkBab4 &&
     !modulResmiLain &&
     !rapat &&
     jenjangGuru(kelas || "1 SD") === "SD" &&
@@ -127,6 +139,7 @@ function ModuleRenderer({
       pakaiKartuMtkBab1 ||
       pakaiKartuMtkBab2 ||
       pakaiKartuMtkBab3 ||
+      pakaiKartuMtkBab4 ||
       modulResmiLain ||
       pakaiKartuSd
         ? null
@@ -138,6 +151,7 @@ function ModuleRenderer({
       pakaiKartuMtkBab1,
       pakaiKartuMtkBab2,
       pakaiKartuMtkBab3,
+      pakaiKartuMtkBab4,
       modulResmiLain,
       pakaiKartuSd,
     ],
@@ -151,6 +165,7 @@ function ModuleRenderer({
       pakaiKartuMtkBab1 ||
       pakaiKartuMtkBab2 ||
       pakaiKartuMtkBab3 ||
+      pakaiKartuMtkBab4 ||
       modulResmiLain ||
       pakaiKartuSd
         ? []
@@ -163,6 +178,7 @@ function ModuleRenderer({
       pakaiKartuMtkBab1,
       pakaiKartuMtkBab2,
       pakaiKartuMtkBab3,
+      pakaiKartuMtkBab4,
       modulResmiLain,
       pakaiKartuSd,
       potong.tubuh,
@@ -200,6 +216,13 @@ function ModuleRenderer({
     return (
       <div className={className}>
         <NaskahMtk1Bab3 kelas={kelas} kelamin={kelamin} />
+      </div>
+    );
+  }
+  if (pakaiKartuMtkBab4) {
+    return (
+      <div className={className}>
+        <NaskahMtk1Bab4 kelas={kelas} kelamin={kelamin} />
       </div>
     );
   }

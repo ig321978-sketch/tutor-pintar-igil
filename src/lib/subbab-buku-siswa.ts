@@ -79,10 +79,17 @@ const SUBBAB_BUKU_SISWA: Record<string, Record<string, Record<string, string[]>>
         "Mengurangi sampai 10",
         "Mengisi evaluasi pengurangan",
       ],
+      "Bab 4: Mengenal Bentuk Ruang": [
+        "Membandingkan bentuk benda di kelas",
+        "Mengenali kubus, balok, bola, dan tabung",
+        "Meraba dan berburu bentuk ruang",
+        "Mengisi evaluasi bentuk ruang",
+      ],
       "Bab 4: Mengenal Bentuk": [
-        "Mendeskripsikan benda berdasarkan bentuk",
-        "Mengenali bangun datar sederhana",
-        "Menyusun dan mengurai bentuk bangun",
+        "Membandingkan bentuk benda di kelas",
+        "Mengenali kubus, balok, bola, dan tabung",
+        "Meraba dan berburu bentuk ruang",
+        "Mengisi evaluasi bentuk ruang",
       ],
       "Bab 5: Ayo Membilang sampai dengan 20": [
         "Membilang sampai 20",
