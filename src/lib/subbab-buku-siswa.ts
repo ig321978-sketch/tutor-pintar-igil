@@ -55,10 +55,17 @@ const SUBBAB_BUKU_SISWA: Record<string, Record<string, Record<string, string[]>>
         "Membaca dan menulis lambang bilangan 0 sampai 10",
         "Membandingkan banyak benda dan mengisi evaluasi",
       ],
+      "Bab 2: Penjumlahan sampai 10": [
+        "Menggabungkan dua kelompok benda",
+        "Menulis penjumlahan dengan angka",
+        "Menjumlahkan sampai 10",
+        "Mengisi evaluasi penjumlahan",
+      ],
       "Bab 2: Penjumlahan sampai dengan 10": [
         "Menggabungkan dua kelompok benda",
         "Menulis penjumlahan dengan angka",
         "Menjumlahkan sampai 10",
+        "Mengisi evaluasi penjumlahan",
       ],
       "Bab 3: Pengurangan sampai dengan 10": [
         "Mengambil sebagian dari sekelompok benda",

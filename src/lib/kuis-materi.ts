@@ -1,7 +1,9 @@
 import { kelasSatuSd } from "@/lib/infografis-kelas1";
 import { MODUL_MTK1_BAB1 } from "@/lib/modul-resmi-mtk-1-bab1";
+import { MODUL_MTK1_BAB2 } from "@/lib/modul-resmi-mtk-1-bab2";
 import {
   adalahMtk1Bab1,
+  adalahMtk1Bab2,
   adalahPai1Bab1,
   adalahPai1Bab2,
   cariModulPai1Resmi,
@@ -75,6 +77,13 @@ export function daftarIdKuisMateri(
     return MODUL_MTK1_BAB1.kartu.flatMap((kartu) =>
       kartu.kuis.map((_, indeks) =>
         idKuisKartuResmi(MODUL_MTK1_BAB1.id, kartu.kode, indeks),
+      ),
+    );
+  }
+  if (adalahMtk1Bab2(kelas, mapel, materi)) {
+    return MODUL_MTK1_BAB2.kartu.flatMap((kartu) =>
+      kartu.kuis.map((_, indeks) =>
+        idKuisKartuResmi(MODUL_MTK1_BAB2.id, kartu.kode, indeks),
       ),
     );
   }
