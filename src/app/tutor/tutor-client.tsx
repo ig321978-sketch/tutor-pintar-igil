@@ -72,6 +72,7 @@ import PanelSimulasiModul from "@/components/modul/PanelSimulasiModul";
 import PanelUjianModul from "@/components/modul/PanelUjianModul";
 import TungguNaskah from "@/components/modul/TungguNaskah";
 import TeksNaskah from "@/components/TeksNaskah";
+import KolomAjuanPertanyaan from "@/components/KolomAjuanPertanyaan";
 import {
   bagianWajibKuisMateriTuntas,
   daftarBagianModul,
@@ -1469,7 +1470,7 @@ export default function TutorAI() {
 
   const tanganiAjuanPertanyaan = async (pakaiToken = false) => {
     if (!teksAjuan.trim()) {
-      setPesanAjuan("Tuliskan pertanyaanmu terlebih dahulu.");
+      setPesanAjuan("Tuliskan atau rekam pertanyaanmu terlebih dahulu.");
       return;
     }
 
@@ -1911,7 +1912,7 @@ export default function TutorAI() {
                 AJUKAN PERTANYAAN
               </label>
               <p className="text-sm text-slate-600">
-                Apakah ada yang ingin ditanyakan?...
+                Apakah ada yang ingin ditanyakan? Ketik atau rekam suaranya.
               </p>
               {kuotaAjuan ? (
                 <p className="flex flex-wrap items-center gap-2 text-xs font-extrabold text-[#1C01A5]">
@@ -1921,15 +1922,11 @@ export default function TutorAI() {
                   Token $IGIL: {kuotaAjuan.saldoToken}
                 </p>
               ) : null}
-              <div className="relative">
-                <textarea
-                  value={teksAjuan}
-                  onChange={(e) => setTeksAjuan(e.target.value)}
-                  rows={4}
-                  placeholder="Ketik pertanyaan kamu disini."
-                  className="w-full bg-white border-2 border-[#1C01A5]/20 rounded-xl py-3 px-4 text-slate-800 outline-none font-medium focus:border-[#F0AB00] placeholder:text-slate-400 resize-y"
-                />
-              </div>
+              <KolomAjuanPertanyaan
+                teks={teksAjuan}
+                onTeks={setTeksAjuan}
+                disabled={isLoadingAjuan}
+              />
               {pesanAjuan ? (
                 <p className="text-sm font-semibold text-rose-600 bg-rose-50 border border-rose-100 rounded-xl px-4 py-3">
                   {pesanAjuan}
