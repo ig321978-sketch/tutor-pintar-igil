@@ -8,6 +8,7 @@ import { useKuisMateri } from "@/components/KuisMateriContext";
 import { MODUL_MTK1_BAB2 } from "@/lib/modul-resmi-mtk-1-bab2";
 import { cuplikanDariNaskah } from "@/lib/naskah-voice-pai-1-bab2";
 import { idKuisKartuResmi, idKuisTulisKartu } from "@/lib/kuis-materi";
+import { aliasDariKuisSuara, kumpulkanAlias } from "@/lib/nilai-kuis-tulis";
 import { bacaProgres } from "@/lib/progres";
 import type { KelaminGuru } from "@/lib/guru";
 
@@ -651,6 +652,12 @@ export default function NaskahMtk1Bab2({
         <KuisTulisKartu
           id={idKuisTulisKartu(MODUL_MTK1_BAB2.id, "D")}
           pertanyaan="Tuliskan satu penjumlahan, misalnya 2 + 3 = 5."
+          alias={kumpulkanAlias([
+            ...aliasDariKuisSuara(kartuD.kuis),
+            "2 + 3 = 5",
+            "2+3=5",
+          ])}
+          konteks={kartuD.pengantar}
         />
       </KartuBingkai>
     </div>

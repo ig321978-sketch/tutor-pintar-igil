@@ -3,6 +3,7 @@
 import KuisTulisKartu from "@/components/KuisTulisKartu";
 import SoalRekamSuara, { ucapanMemuatAlias } from "@/components/SoalRekamSuara";
 import type { KuisSuaraResmi } from "@/lib/modul-resmi-pai";
+import { aliasDariKuisSuara } from "@/lib/nilai-kuis-tulis";
 
 export default function LatihanSuaraResmi({
   soal,
@@ -29,7 +30,14 @@ export default function LatihanSuaraResmi({
           ))}
         </>
       ) : null}
-      <KuisTulisKartu id={`${idPrefix}-tulis`} rapat />
+      <KuisTulisKartu
+        id={`${idPrefix}-tulis`}
+        rapat
+        alias={aliasDariKuisSuara(soal)}
+        konteks={soal
+          .map((item) => `${item.pertanyaan} ${item.alias.join(", ")}`)
+          .join(" ")}
+      />
     </div>
   );
 }

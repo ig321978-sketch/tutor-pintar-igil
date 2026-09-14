@@ -14,6 +14,7 @@ import LatihanSuaraAsmaulHusna from "@/components/LatihanSuaraAsmaulHusna";
 import LatihanSuaraImanAmal from "@/components/LatihanSuaraImanAmal";
 import KuisTulisKartu from "@/components/KuisTulisKartu";
 import { idKuisTulisKartu } from "@/lib/kuis-materi";
+import { kumpulkanAlias } from "@/lib/nilai-kuis-tulis";
 import DoodleKartuAtasJudul from "@/components/DoodleKartuAtasJudul";
 import TombolVoiceMateriPai1 from "@/components/TombolVoiceMateriPai1";
 import type { KelaminGuru } from "@/lib/guru";
@@ -98,6 +99,15 @@ export default function NaskahPai1Bab2({
         <KuisTulisKartu
           id={idKuisTulisKartu("pai-1-bab2", "A")}
           pertanyaan="Tuliskan arti iman atau jumlah rukun iman."
+          alias={kumpulkanAlias([
+            "percaya",
+            "yakin",
+            "enam",
+            "6",
+            "allah",
+            ...RUKUN_IMAN_PAI1_BAB2.map((item) => item.nama),
+          ])}
+          konteks={TEKS_KARTU_IMAN}
         />
       </KartuBingkai>
 
@@ -154,6 +164,17 @@ export default function NaskahPai1Bab2({
         <KuisTulisKartu
           id={idKuisTulisKartu("pai-1-bab2", "B")}
           pertanyaan="Tuliskan satu Asmaul Husna dan artinya."
+          alias={kumpulkanAlias(
+            ASMAUL_HUSNA_PAI1_BAB2.flatMap((item) => [
+              item.latin,
+              item.arti,
+              "pengasih",
+              "penyayang",
+              "rahman",
+              "rahim",
+            ]),
+          )}
+          konteks={TEKS_KARTU_ASMAUL}
         />
       </KartuBingkai>
 
@@ -200,6 +221,17 @@ export default function NaskahPai1Bab2({
         <KuisTulisKartu
           id={idKuisTulisKartu("pai-1-bab2", "C")}
           pertanyaan="Tuliskan satu perbuatan yang menunjukkan iman."
+          alias={kumpulkanAlias([
+            "menolong",
+            "menyayangi",
+            "menghibur",
+            "membantu",
+            "berbagi",
+            "perbuatan",
+            "amal",
+            ...AMAL_IMAN_PAI1_BAB2.map((item) => item.nama),
+          ])}
+          konteks={TEKS_KARTU_AMAL}
         />
       </KartuBingkai>
     </div>

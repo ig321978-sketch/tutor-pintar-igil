@@ -8,6 +8,7 @@ import { useKuisMateri } from "@/components/KuisMateriContext";
 import { MODUL_MTK1_BAB1 } from "@/lib/modul-resmi-mtk-1-bab1";
 import { cuplikanDariNaskah } from "@/lib/naskah-voice-pai-1-bab2";
 import { idKuisKartuResmi, idKuisTulisKartu } from "@/lib/kuis-materi";
+import { aliasDariKuisSuara, kumpulkanAlias } from "@/lib/nilai-kuis-tulis";
 import { bacaProgres } from "@/lib/progres";
 import type { KelaminGuru } from "@/lib/guru";
 
@@ -676,6 +677,13 @@ export default function NaskahMtk1Bab1({
         <KuisTulisKartu
           id={idKuisTulisKartu(MODUL_MTK1_BAB1.id, "B")}
           pertanyaan="Tuliskan satu angka dan cara membacanya, misalnya 3 = tiga."
+          alias={kumpulkanAlias([
+            ...aliasDariKuisSuara(kartuB.kuis),
+            ...BARIS_ANGKA.flatMap((item) => [item.lambang, item.baca]),
+            "nol",
+            "0",
+          ])}
+          konteks={kartuB.pengantar}
         />
       </KartuBingkai>
 
@@ -759,6 +767,11 @@ export default function NaskahMtk1Bab1({
         <KuisTulisKartu
           id={idKuisTulisKartu(MODUL_MTK1_BAB1.id, "D")}
           pertanyaan="Tuliskan satu jawaban dari lembar evaluasi, misalnya 6 kupu-kupu."
+          alias={kumpulkanAlias([
+            ...aliasDariKuisSuara(kartuD.kuis),
+            "6 kupu-kupu",
+          ])}
+          konteks={kartuD.pengantar}
         />
       </KartuBingkai>
     </div>

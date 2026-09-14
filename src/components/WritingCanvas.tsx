@@ -6,7 +6,7 @@ import { kelasTombolUtama } from "@/lib/tema";
 export type ModeTulis = "canvas" | "keyboard";
 
 type WritingCanvasProps = {
-  onSubmit: (data: string) => void;
+  onSubmit: (data: string) => void | Promise<void>;
   disabled?: boolean;
 };
 
@@ -18,6 +18,7 @@ export default function WritingCanvas({
   const [teksKeyboard, setTeksKeyboard] = useState("");
   const [adaCoretan, setAdaCoretan] = useState(false);
   const [pesan, setPesan] = useState("");
+  const [mengirim, setMengirim] = useState(false);
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const sedangGambar = useRef(false);
   const titikTerakhir = useRef<{ x: number; y: number } | null>(null);
@@ -67,7 +68,7 @@ export default function WritingCanvas({
   };
 
   const mulaiGambar = (event: React.PointerEvent<HTMLCanvasElement>) => {
-    if (disabled) return;
+    if (disabled || mengirim) return;
     event.preventDefault();
     const kanvas = canvasRef.current;
     const ctx = kanvas?.getContext("2d");
@@ -111,16 +112,21 @@ export default function WritingCanvas({
     setPesan("");
   };
 
-  const kirimJawaban = () => {
-    if (disabled) return;
+  const kirimJawaban = async () => {
+    if (disabled || mengirim) return;
     if (inputMode === "canvas") {
       const kanvas = canvasRef.current;
       if (!kanvas || !adaCoretan) {
         setPesan("Gambar dulu di papan tulis, atau pilih mode Ketik Teks.");
         return;
       }
-      onSubmit(kanvas.toDataURL("image/png"));
       setPesan("");
+      setMengirim(true);
+      try {
+        await onSubmit(kanvas.toDataURL("image/png"));
+      } finally {
+        setMengirim(false);
+      }
       return;
     }
     const teks = teksKeyboard.trim();
@@ -128,8 +134,13 @@ export default function WritingCanvas({
       setPesan("Ketik jawaban dulu, atau pilih mode Tulis Tangan.");
       return;
     }
-    onSubmit(teks);
     setPesan("");
+    setMengirim(true);
+    try {
+      await onSubmit(teks);
+    } finally {
+      setMengirim(false);
+    }
   };
 
   return (
@@ -143,7 +154,7 @@ export default function WritingCanvas({
           type="button"
           role="tab"
           aria-selected={inputMode === "canvas"}
-          disabled={disabled}
+          disabled={disabled || mengirim}
           onClick={() => {
             setInputMode("canvas");
             setPesan("");
@@ -160,7 +171,7 @@ export default function WritingCanvas({
           type="button"
           role="tab"
           aria-selected={inputMode === "keyboard"}
-          disabled={disabled}
+          disabled={disabled || mengirim}
           onClick={() => {
             setInputMode("keyboard");
             setPesan("");
@@ -190,7 +201,7 @@ export default function WritingCanvas({
           </div>
           <button
             type="button"
-            disabled={disabled}
+            disabled={disabled || mengirim}
             onClick={hapusCoretan}
             className="rounded-xl border-2 border-[#1C01A5]/20 bg-white px-4 py-2 text-sm font-black text-[#1C01A5] hover:bg-[#F8F7FF]"
           >
@@ -200,7 +211,7 @@ export default function WritingCanvas({
       ) : (
         <textarea
           value={teksKeyboard}
-          disabled={disabled}
+          disabled={disabled || mengirim}
           onChange={(event) => {
             setTeksKeyboard(event.target.value);
             setPesan("");
@@ -216,11 +227,11 @@ export default function WritingCanvas({
 
       <button
         type="button"
-        disabled={disabled}
+        disabled={disabled || mengirim}
         onClick={kirimJawaban}
         className={`${kelasTombolUtama} rounded-xl px-4 py-2 text-sm font-black`}
       >
-        Kirim Jawaban
+        {mengirim ? "Menilai..." : "Kirim Jawaban"}
       </button>
       {pesan ? (
         <p className="text-sm font-black text-rose-600">{pesan}</p>

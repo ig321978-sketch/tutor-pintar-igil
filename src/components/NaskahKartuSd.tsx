@@ -14,6 +14,7 @@ import { BlokTampil, TeksBuku } from "@/components/BlokNaskahTampil";
 import {
   daftarPendekUntukGrid,
   pecahKartuPembahasanSd,
+  teksKonteksKartuSd,
 } from "@/lib/naskah-kartu-sd";
 import type { BlokNaskahModul } from "@/lib/blok-naskah-modul";
 
@@ -155,6 +156,7 @@ export default function NaskahKartuSd({
             <KuisTulisKartu
               id={idKuisTulisKartu("sd-kartu", `${kartu.kode}-${indeks}`)}
               pertanyaan={`Tuliskan jawaban atau kesimpulan dari kartu ${kartu.kode}. ${kartu.judul}`}
+              konteks={teksKonteksKartuSd(kartu)}
             />
           </KartuBingkai>
         );

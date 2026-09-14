@@ -8,6 +8,7 @@ import { useKuisMateri } from "@/components/KuisMateriContext";
 import { MODUL_MTK1_BAB3 } from "@/lib/modul-resmi-mtk-1-bab3";
 import { cuplikanDariNaskah } from "@/lib/naskah-voice-pai-1-bab2";
 import { idKuisKartuResmi, idKuisTulisKartu } from "@/lib/kuis-materi";
+import { aliasDariKuisSuara, kumpulkanAlias } from "@/lib/nilai-kuis-tulis";
 import { bacaProgres } from "@/lib/progres";
 import type { KelaminGuru } from "@/lib/guru";
 
@@ -601,6 +602,12 @@ export default function NaskahMtk1Bab3({
         <KuisTulisKartu
           id={idKuisTulisKartu(MODUL_MTK1_BAB3.id, "D")}
           pertanyaan="Tuliskan satu pengurangan, misalnya 4 - 1 = 3."
+          alias={kumpulkanAlias([
+            ...aliasDariKuisSuara(kartuD.kuis),
+            "4 - 1 = 3",
+            "4-1=3",
+          ])}
+          konteks={kartuD.pengantar}
         />
       </KartuBingkai>
     </div>

@@ -367,3 +367,39 @@ export function daftarPendekUntukGrid(item: string[]): boolean {
   if (item.length < 2 || item.length > 16) return false;
   return item.every((isi) => isi.replace(/\s+/g, " ").trim().length <= 42);
 }
+
+function teksDariBlokKartu(blok: BlokNaskahModul): string[] {
+  if (blok.jenis === "judul" || blok.jenis === "paragraf") return [blok.teks];
+  if (blok.jenis === "daftar") return blok.item;
+  if (blok.jenis === "kotak") return [blok.judul, blok.teks];
+  if (blok.jenis === "rumus") return [blok.keterangan ?? "", blok.latex];
+  if (blok.jenis === "tabel") return [...blok.header, ...blok.baris.flat()];
+  return [];
+}
+
+export function teksKonteksKartuSd(kartu: KartuPembahasanSd): string {
+  const sisi = (item?: { nama: string; artinya: string; isi: string }) =>
+    item ? [item.nama, item.artinya, item.isi] : [];
+  const potongan = [
+    kartu.judul,
+    kartu.pengantar,
+    ...kartu.infografis.flatMap((baris) => [
+      baris.judul,
+      ...sisi(baris.kiri),
+      ...sisi(baris.kanan),
+      ...sisi(baris.tengah),
+    ]),
+    ...kartu.blok.flatMap(teksDariBlokKartu),
+    ...kartu.lengkap.flatMap((paket) => [
+      paket.judul,
+      ...paket.item.flatMap((item) => [
+        item.nama,
+        item.latin ?? "",
+        item.artinya ?? "",
+      ]),
+    ]),
+  ]
+    .map((isi) => isi.replace(/\s+/g, " ").trim())
+    .filter(Boolean);
+  return potongan.join(" ").slice(0, 1500);
+}

@@ -15,6 +15,7 @@ import { idKuisTulisKartu } from "@/lib/kuis-materi";
 import DoodleKartuAtasJudul from "@/components/DoodleKartuAtasJudul";
 import TombolVoiceMateriPai1 from "@/components/TombolVoiceMateriPai1";
 import { FATIHAH, HIJAIYAH_30 } from "@/lib/paket-lengkap-materi";
+import { kumpulkanAlias } from "@/lib/nilai-kuis-tulis";
 import type { KelaminGuru } from "@/lib/guru";
 
 const WARNA_HURUF = [
@@ -120,6 +121,10 @@ export default function NaskahPai1Bab1({
         <KuisTulisKartu
           id={idKuisTulisKartu("pai-1-bab1", "A")}
           pertanyaan="Tuliskan nama huruf hijaiyah yang sudah kamu kenal."
+          alias={kumpulkanAlias(
+            HIJAIYAH_30.flatMap((item) => [item.nama, item.lambang]),
+          )}
+          konteks="Huruf hijaiyah: Alif, Ba, Ta, dan seterusnya sampai Ya."
         />
       </KartuBingkai>
 
@@ -178,6 +183,22 @@ export default function NaskahPai1Bab1({
         <KuisTulisKartu
           id={idKuisTulisKartu("pai-1-bab1", "B")}
           pertanyaan="Tuliskan nama harakat dan bunyinya (A, I, atau U)."
+          alias={kumpulkanAlias([
+            "fathah",
+            "kasrah",
+            "dhammah",
+            "dammah",
+            "fatah",
+            "a",
+            "i",
+            "u",
+            ...HARAKAT_PAI1_BAB1.map((item) => [
+              item.nama,
+              item.contohLatin,
+              item.contohArab,
+            ]),
+          ])}
+          konteks="Fathah bunyi A, Kasrah bunyi I, Dhammah bunyi U."
         />
       </KartuBingkai>
 
@@ -232,6 +253,18 @@ export default function NaskahPai1Bab1({
         <KuisTulisKartu
           id={idKuisTulisKartu("pai-1-bab1", "C")}
           pertanyaan="Tuliskan satu ayat atau arti singkat dari Surah Al-Fatihah."
+          alias={kumpulkanAlias(
+            FATIHAH.flatMap((item) => [
+              item.latin,
+              item.artinya,
+              item.lambang,
+              "bismillah",
+              "alhamdulillah",
+              "pengasih",
+              "penyayang",
+            ]),
+          )}
+          konteks={TEKS_KARTU_FATIHAH}
         />
       </KartuBingkai>
     </div>
