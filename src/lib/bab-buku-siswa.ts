@@ -39,7 +39,7 @@ export const BAB_BUKU_SISWA: Record<string, Record<string, string[]>> = {
       "Bab 2: Penjumlahan sampai 10",
       "Bab 3: Pengurangan sampai 10",
       "Bab 4: Mengenal Bentuk Ruang",
-      "Bab 5: Ayo Membilang sampai dengan 20",
+      "Bab 5: Bilangan yang Lebih Besar (11 sampai 20)",
       "Bab 6: Penjumlahan dan Pengurangan sampai dengan 20",
       "Bab 7: Mengukur Panjang Benda",
       "Bab 8: Mengenal Diagram",

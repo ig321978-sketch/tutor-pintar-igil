@@ -10,7 +10,7 @@ export const JUDUL_MTK1_BAB1_LAMA = "Bab 1: Ayo Membilang sampai dengan 10";
 export const MODUL_MTK1_BAB1: ModulResmiPai = {
   id: "mtk-1-bab1",
   judul: JUDUL_MTK1_BAB1,
-  pola: /ayo\s+berhitung|ayo\s+membilang|dunia\s+angka/,
+  pola: /ayo\s+berhitung|ayo\s+membilang\s+sampai(\s+dengan)?\s+10|dunia\s+angka/,
   motivasi:
     "Hore! Berhitung itu seru. Hitung benda di sekitarmu, mulai dari nol sampai lima.",
   kunciJawaban: "C,A,D,B,A,C,B,D,A,C",

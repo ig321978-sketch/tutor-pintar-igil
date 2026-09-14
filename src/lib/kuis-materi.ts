@@ -3,11 +3,13 @@ import { MODUL_MTK1_BAB1 } from "@/lib/modul-resmi-mtk-1-bab1";
 import { MODUL_MTK1_BAB2 } from "@/lib/modul-resmi-mtk-1-bab2";
 import { MODUL_MTK1_BAB3 } from "@/lib/modul-resmi-mtk-1-bab3";
 import { MODUL_MTK1_BAB4 } from "@/lib/modul-resmi-mtk-1-bab4";
+import { MODUL_MTK1_BAB5 } from "@/lib/modul-resmi-mtk-1-bab5";
 import {
   adalahMtk1Bab1,
   adalahMtk1Bab2,
   adalahMtk1Bab3,
   adalahMtk1Bab4,
+  adalahMtk1Bab5,
   adalahPai1Bab1,
   adalahPai1Bab2,
   cariModulPai1Resmi,
@@ -142,6 +144,18 @@ export function daftarIdKuisMateri(
       ),
       ...MODUL_MTK1_BAB4.kartu.map((kartu) =>
         idKuisTulisKartu(MODUL_MTK1_BAB4.id, kartu.kode),
+      ),
+    ];
+  }
+  if (adalahMtk1Bab5(kelas, mapel, materi)) {
+    return [
+      ...MODUL_MTK1_BAB5.kartu.flatMap((kartu) =>
+        kartu.kuis.map((_, indeks) =>
+          idKuisKartuResmi(MODUL_MTK1_BAB5.id, kartu.kode, indeks),
+        ),
+      ),
+      ...MODUL_MTK1_BAB5.kartu.map((kartu) =>
+        idKuisTulisKartu(MODUL_MTK1_BAB5.id, kartu.kode),
       ),
     ];
   }

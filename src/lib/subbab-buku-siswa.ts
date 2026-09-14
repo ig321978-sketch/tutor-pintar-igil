@@ -91,10 +91,17 @@ const SUBBAB_BUKU_SISWA: Record<string, Record<string, Record<string, string[]>>
         "Meraba dan berburu bentuk ruang",
         "Mengisi evaluasi bentuk ruang",
       ],
+      "Bab 5: Bilangan yang Lebih Besar (11 sampai 20)": [
+        "Menghitung lanjut setelah 10",
+        "Mengenali lambang dan nama angka 11 sampai 20",
+        "Mengurutkan maju dan mundur di sekolah dan di rumah",
+        "Mengisi evaluasi bilangan belasan",
+      ],
       "Bab 5: Ayo Membilang sampai dengan 20": [
-        "Membilang sampai 20",
-        "Puluhan dan satuan sampai 20",
-        "Membaca dan menulis bilangan sampai 20",
+        "Menghitung lanjut setelah 10",
+        "Mengenali lambang dan nama angka 11 sampai 20",
+        "Mengurutkan maju dan mundur di sekolah dan di rumah",
+        "Mengisi evaluasi bilangan belasan",
       ],
       "Bab 6: Penjumlahan dan Pengurangan sampai dengan 20": [
         "Penjumlahan sampai 20",
