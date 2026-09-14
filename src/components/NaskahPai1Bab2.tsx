@@ -12,6 +12,8 @@ import {
 import LatihanSuaraRukunIman from "@/components/LatihanSuaraRukunIman";
 import LatihanSuaraAsmaulHusna from "@/components/LatihanSuaraAsmaulHusna";
 import LatihanSuaraImanAmal from "@/components/LatihanSuaraImanAmal";
+import KuisTulisKartu from "@/components/KuisTulisKartu";
+import { idKuisTulisKartu } from "@/lib/kuis-materi";
 import DoodleKartuAtasJudul from "@/components/DoodleKartuAtasJudul";
 import TombolVoiceMateriPai1 from "@/components/TombolVoiceMateriPai1";
 import type { KelaminGuru } from "@/lib/guru";
@@ -93,6 +95,10 @@ export default function NaskahPai1Bab2({
           ))}
         </div>
         <LatihanSuaraRukunIman />
+        <KuisTulisKartu
+          id={idKuisTulisKartu("pai-1-bab2", "A")}
+          pertanyaan="Tuliskan arti iman atau jumlah rukun iman."
+        />
       </KartuBingkai>
 
       <KartuBingkai>
@@ -145,6 +151,10 @@ export default function NaskahPai1Bab2({
           ))}
         </div>
         <LatihanSuaraAsmaulHusna />
+        <KuisTulisKartu
+          id={idKuisTulisKartu("pai-1-bab2", "B")}
+          pertanyaan="Tuliskan satu Asmaul Husna dan artinya."
+        />
       </KartuBingkai>
 
       <KartuBingkai>
@@ -187,6 +197,10 @@ export default function NaskahPai1Bab2({
           ))}
         </div>
         <LatihanSuaraImanAmal />
+        <KuisTulisKartu
+          id={idKuisTulisKartu("pai-1-bab2", "C")}
+          pertanyaan="Tuliskan satu perbuatan yang menunjukkan iman."
+        />
       </KartuBingkai>
     </div>
   );

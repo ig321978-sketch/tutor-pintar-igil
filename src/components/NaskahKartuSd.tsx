@@ -1,6 +1,8 @@
 "use client";
 
 import type { ReactNode } from "react";
+import KuisTulisKartu from "@/components/KuisTulisKartu";
+import { idKuisTulisKartu } from "@/lib/kuis-materi";
 import { Loader2 } from "lucide-react";
 import { BarisPoster } from "@/components/InfografisKelas1";
 import DaftarLengkapMateri from "@/components/DaftarLengkapMateri";
@@ -150,6 +152,10 @@ export default function NaskahKartuSd({
             {/fatihah|al-?fatihah/i.test(kartu.judul) ? (
               <LatihanSuaraFatihah />
             ) : null}
+            <KuisTulisKartu
+              id={idKuisTulisKartu("sd-kartu", `${kartu.kode}-${indeks}`)}
+              pertanyaan={`Tuliskan jawaban atau kesimpulan dari kartu ${kartu.kode}. ${kartu.judul}`}
+            />
           </KartuBingkai>
         );
       })}

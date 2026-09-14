@@ -2,11 +2,12 @@
 
 import { useMemo, useState, type ReactNode } from "react";
 import LatihanSuaraResmi from "@/components/LatihanSuaraResmi";
+import KuisTulisKartu from "@/components/KuisTulisKartu";
 import TombolVoiceMateriPai1 from "@/components/TombolVoiceMateriPai1";
 import { useKuisMateri } from "@/components/KuisMateriContext";
 import { MODUL_MTK1_BAB1 } from "@/lib/modul-resmi-mtk-1-bab1";
 import { cuplikanDariNaskah } from "@/lib/naskah-voice-pai-1-bab2";
-import { idKuisKartuResmi } from "@/lib/kuis-materi";
+import { idKuisKartuResmi, idKuisTulisKartu } from "@/lib/kuis-materi";
 import { bacaProgres } from "@/lib/progres";
 import type { KelaminGuru } from "@/lib/guru";
 
@@ -672,6 +673,10 @@ export default function NaskahMtk1Bab1({
           </p>
         </article>
         <KuisMencocokkan />
+        <KuisTulisKartu
+          id={idKuisTulisKartu(MODUL_MTK1_BAB1.id, "B")}
+          pertanyaan="Tuliskan satu angka dan cara membacanya, misalnya 3 = tiga."
+        />
       </KartuBingkai>
 
       <KartuBingkai>
@@ -751,6 +756,10 @@ export default function NaskahMtk1Bab1({
           {kartuD.pengantar}
         </p>
         <LembarEvaluasiMtk1 />
+        <KuisTulisKartu
+          id={idKuisTulisKartu(MODUL_MTK1_BAB1.id, "D")}
+          pertanyaan="Tuliskan satu jawaban dari lembar evaluasi, misalnya 6 kupu-kupu."
+        />
       </KartuBingkai>
     </div>
   );

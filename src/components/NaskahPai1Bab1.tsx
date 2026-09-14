@@ -10,6 +10,8 @@ import {
 import LatihanSuaraHijaiyah from "@/components/LatihanSuaraHijaiyah";
 import LatihanSuaraHarakat from "@/components/LatihanSuaraHarakat";
 import LatihanSuaraFatihah from "@/components/LatihanSuaraFatihah";
+import KuisTulisKartu from "@/components/KuisTulisKartu";
+import { idKuisTulisKartu } from "@/lib/kuis-materi";
 import DoodleKartuAtasJudul from "@/components/DoodleKartuAtasJudul";
 import TombolVoiceMateriPai1 from "@/components/TombolVoiceMateriPai1";
 import { FATIHAH, HIJAIYAH_30 } from "@/lib/paket-lengkap-materi";
@@ -115,6 +117,10 @@ export default function NaskahPai1Bab1({
           ))}
         </div>
         <LatihanSuaraHijaiyah />
+        <KuisTulisKartu
+          id={idKuisTulisKartu("pai-1-bab1", "A")}
+          pertanyaan="Tuliskan nama huruf hijaiyah yang sudah kamu kenal."
+        />
       </KartuBingkai>
 
       <KartuBingkai>
@@ -169,6 +175,10 @@ export default function NaskahPai1Bab1({
           })}
         </div>
         <LatihanSuaraHarakat />
+        <KuisTulisKartu
+          id={idKuisTulisKartu("pai-1-bab1", "B")}
+          pertanyaan="Tuliskan nama harakat dan bunyinya (A, I, atau U)."
+        />
       </KartuBingkai>
 
       <KartuBingkai>
@@ -219,6 +229,10 @@ export default function NaskahPai1Bab1({
           ))}
         </div>
         <LatihanSuaraFatihah />
+        <KuisTulisKartu
+          id={idKuisTulisKartu("pai-1-bab1", "C")}
+          pertanyaan="Tuliskan satu ayat atau arti singkat dari Surah Al-Fatihah."
+        />
       </KartuBingkai>
     </div>
   );

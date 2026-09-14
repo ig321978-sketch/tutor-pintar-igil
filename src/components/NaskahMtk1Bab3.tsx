@@ -2,11 +2,12 @@
 
 import { useMemo, useState, type ReactNode } from "react";
 import LatihanSuaraResmi from "@/components/LatihanSuaraResmi";
+import KuisTulisKartu from "@/components/KuisTulisKartu";
 import TombolVoiceMateriPai1 from "@/components/TombolVoiceMateriPai1";
 import { useKuisMateri } from "@/components/KuisMateriContext";
 import { MODUL_MTK1_BAB3 } from "@/lib/modul-resmi-mtk-1-bab3";
 import { cuplikanDariNaskah } from "@/lib/naskah-voice-pai-1-bab2";
-import { idKuisKartuResmi } from "@/lib/kuis-materi";
+import { idKuisKartuResmi, idKuisTulisKartu } from "@/lib/kuis-materi";
 import { bacaProgres } from "@/lib/progres";
 import type { KelaminGuru } from "@/lib/guru";
 
@@ -597,6 +598,10 @@ export default function NaskahMtk1Bab3({
           {kartuD.pengantar}
         </p>
         <LembarEvaluasiMtk3 />
+        <KuisTulisKartu
+          id={idKuisTulisKartu(MODUL_MTK1_BAB3.id, "D")}
+          pertanyaan="Tuliskan satu pengurangan, misalnya 4 - 1 = 3."
+        />
       </KartuBingkai>
     </div>
   );

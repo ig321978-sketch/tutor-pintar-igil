@@ -2,11 +2,12 @@
 
 import { useMemo, useState, type ReactNode } from "react";
 import LatihanSuaraResmi from "@/components/LatihanSuaraResmi";
+import KuisTulisKartu from "@/components/KuisTulisKartu";
 import TombolVoiceMateriPai1 from "@/components/TombolVoiceMateriPai1";
 import { useKuisMateri } from "@/components/KuisMateriContext";
 import { MODUL_MTK1_BAB2 } from "@/lib/modul-resmi-mtk-1-bab2";
 import { cuplikanDariNaskah } from "@/lib/naskah-voice-pai-1-bab2";
-import { idKuisKartuResmi } from "@/lib/kuis-materi";
+import { idKuisKartuResmi, idKuisTulisKartu } from "@/lib/kuis-materi";
 import { bacaProgres } from "@/lib/progres";
 import type { KelaminGuru } from "@/lib/guru";
 
@@ -647,6 +648,10 @@ export default function NaskahMtk1Bab2({
           {kartuD.pengantar}
         </p>
         <LembarEvaluasiMtk2 />
+        <KuisTulisKartu
+          id={idKuisTulisKartu(MODUL_MTK1_BAB2.id, "D")}
+          pertanyaan="Tuliskan satu penjumlahan, misalnya 2 + 3 = 5."
+        />
       </KartuBingkai>
     </div>
   );

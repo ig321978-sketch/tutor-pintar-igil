@@ -67,41 +67,81 @@ export function idKuisKartuResmi(
   return `${modulId}-${kodeKartu}-${indeks}`;
 }
 
+export function idKuisTulisKartu(modulId: string, kodeKartu: string): string {
+  return `${modulId}-${kodeKartu}-tulis`;
+}
+
+export const ID_KUIS_TULIS_PAI1_BAB1 = [
+  idKuisTulisKartu("pai-1-bab1", "A"),
+  idKuisTulisKartu("pai-1-bab1", "B"),
+  idKuisTulisKartu("pai-1-bab1", "C"),
+] as const;
+
+export const ID_KUIS_TULIS_PAI1_BAB2 = [
+  idKuisTulisKartu("pai-1-bab2", "A"),
+  idKuisTulisKartu("pai-1-bab2", "B"),
+  idKuisTulisKartu("pai-1-bab2", "C"),
+] as const;
+
 export function daftarIdKuisMateri(
   kelas: string,
   mapel: string,
   materi: string,
 ): string[] {
   if (!naskahResmiJikaAda(kelas, mapel, materi)) return [];
-  if (adalahPai1Bab1(kelas, mapel, materi)) return [...ID_KUIS_PAI1_BAB1];
-  if (adalahPai1Bab2(kelas, mapel, materi)) return [...ID_KUIS_PAI1_BAB2];
+  if (adalahPai1Bab1(kelas, mapel, materi)) {
+    return [...ID_KUIS_PAI1_BAB1, ...ID_KUIS_TULIS_PAI1_BAB1];
+  }
+  if (adalahPai1Bab2(kelas, mapel, materi)) {
+    return [...ID_KUIS_PAI1_BAB2, ...ID_KUIS_TULIS_PAI1_BAB2];
+  }
   if (adalahMtk1Bab1(kelas, mapel, materi)) {
-    return MODUL_MTK1_BAB1.kartu.flatMap((kartu) =>
-      kartu.kuis.map((_, indeks) =>
-        idKuisKartuResmi(MODUL_MTK1_BAB1.id, kartu.kode, indeks),
+    return [
+      ...MODUL_MTK1_BAB1.kartu.flatMap((kartu) =>
+        kartu.kuis.map((_, indeks) =>
+          idKuisKartuResmi(MODUL_MTK1_BAB1.id, kartu.kode, indeks),
+        ),
       ),
-    );
+      ...MODUL_MTK1_BAB1.kartu.map((kartu) =>
+        idKuisTulisKartu(MODUL_MTK1_BAB1.id, kartu.kode),
+      ),
+    ];
   }
   if (adalahMtk1Bab2(kelas, mapel, materi)) {
-    return MODUL_MTK1_BAB2.kartu.flatMap((kartu) =>
-      kartu.kuis.map((_, indeks) =>
-        idKuisKartuResmi(MODUL_MTK1_BAB2.id, kartu.kode, indeks),
+    return [
+      ...MODUL_MTK1_BAB2.kartu.flatMap((kartu) =>
+        kartu.kuis.map((_, indeks) =>
+          idKuisKartuResmi(MODUL_MTK1_BAB2.id, kartu.kode, indeks),
+        ),
       ),
-    );
+      ...MODUL_MTK1_BAB2.kartu.map((kartu) =>
+        idKuisTulisKartu(MODUL_MTK1_BAB2.id, kartu.kode),
+      ),
+    ];
   }
   if (adalahMtk1Bab3(kelas, mapel, materi)) {
-    return MODUL_MTK1_BAB3.kartu.flatMap((kartu) =>
-      kartu.kuis.map((_, indeks) =>
-        idKuisKartuResmi(MODUL_MTK1_BAB3.id, kartu.kode, indeks),
+    return [
+      ...MODUL_MTK1_BAB3.kartu.flatMap((kartu) =>
+        kartu.kuis.map((_, indeks) =>
+          idKuisKartuResmi(MODUL_MTK1_BAB3.id, kartu.kode, indeks),
+        ),
       ),
-    );
+      ...MODUL_MTK1_BAB3.kartu.map((kartu) =>
+        idKuisTulisKartu(MODUL_MTK1_BAB3.id, kartu.kode),
+      ),
+    ];
   }
   if (!kelasSatuSd(kelas)) return [];
   const modul = cariModulPai1Resmi(materi);
   if (!modul) return [];
-  return modul.kartu.flatMap((kartu) =>
-    kartu.kuis.map((_, indeks) => idKuisKartuResmi(modul.id, kartu.kode, indeks)),
-  );
+  return [
+    ...modul.kartu.flatMap((kartu) =>
+      kartu.kuis.map((_, indeks) =>
+        idKuisKartuResmi(modul.id, kartu.kode, indeks),
+      ),
+    ),
+    ...modul.kartu.map((kartu) => idKuisTulisKartu(modul.id, kartu.kode)),
+  ];
 }
 
 export function kuisMateriSudahTuntas(
