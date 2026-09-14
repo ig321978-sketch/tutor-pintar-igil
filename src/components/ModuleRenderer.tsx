@@ -12,6 +12,11 @@ import NaskahMtk1Bab2 from "@/components/NaskahMtk1Bab2";
 import NaskahMtk1Bab3 from "@/components/NaskahMtk1Bab3";
 import NaskahMtk1Bab4 from "@/components/NaskahMtk1Bab4";
 import NaskahMtk1Bab5 from "@/components/NaskahMtk1Bab5";
+import NaskahMtk1Bab6 from "@/components/NaskahMtk1Bab6";
+import NaskahMtk1Bab7 from "@/components/NaskahMtk1Bab7";
+import NaskahMtk1Bab8 from "@/components/NaskahMtk1Bab8";
+import NaskahMtk1Bab9 from "@/components/NaskahMtk1Bab9";
+import NaskahMtk1Bab10 from "@/components/NaskahMtk1Bab10";
 import NaskahKartuSd from "@/components/NaskahKartuSd";
 import DaftarLengkapMateri from "@/components/DaftarLengkapMateri";
 import { BlokTampil } from "@/components/BlokNaskahTampil";
@@ -24,6 +29,11 @@ import {
   adalahJudulMtk1Bab3,
   adalahJudulMtk1Bab4,
   adalahJudulMtk1Bab5,
+  adalahJudulMtk1Bab6,
+  adalahJudulMtk1Bab7,
+  adalahJudulMtk1Bab8,
+  adalahJudulMtk1Bab9,
+  adalahJudulMtk1Bab10,
   adalahJudulPai1Bab1,
   adalahJudulPai1Bab2,
   cariModulPai1DariNaskah,
@@ -85,7 +95,8 @@ function ModuleRenderer({
   const pakaiKartuMtkBab2 = useMemo(
     () =>
       adalahJudulMtk1Bab2(mapel, materi) ||
-      (naskahTampilanResmi(naskah) && /penjumlahan\s+sampai/i.test(naskah)),
+      (naskahTampilanResmi(naskah) &&
+        /penjumlahan\s+sampai(\s+dengan)?\s+10/i.test(naskah)),
     [naskah, mapel, materi],
   );
   const pakaiKartuMtkBab3 = useMemo(
@@ -99,7 +110,8 @@ function ModuleRenderer({
     () =>
       adalahJudulMtk1Bab4(mapel, materi) ||
       (naskahTampilanResmi(naskah) &&
-        /mengenal\s+bentuk(\s+ruang)?/i.test(naskah)),
+        /mengenal\s+bentuk(\s+ruang)?/i.test(naskah) &&
+        !/bentuk\s+datar/i.test(naskah)),
     [naskah, mapel, materi],
   );
   const pakaiKartuMtkBab5 = useMemo(
@@ -111,66 +123,69 @@ function ModuleRenderer({
         )),
     [naskah, mapel, materi],
   );
+  const pakaiKartuMtkBab6 = useMemo(
+    () =>
+      adalahJudulMtk1Bab6(mapel, materi) ||
+      (naskahTampilanResmi(naskah) &&
+        /rumah angka|nilai tempat|puluhan dan satuan/i.test(naskah)),
+    [naskah, mapel, materi],
+  );
+  const pakaiKartuMtkBab7 = useMemo(
+    () =>
+      adalahJudulMtk1Bab7(mapel, materi) ||
+      (naskahTampilanResmi(naskah) &&
+        /trik hitung cepat|simpan di kepala/i.test(naskah)),
+    [naskah, mapel, materi],
+  );
+  const pakaiKartuMtkBab8 = useMemo(
+    () =>
+      adalahJudulMtk1Bab8(mapel, materi) ||
+      (naskahTampilanResmi(naskah) &&
+        /detektif pengukuran|mengukur panjang dan berat/i.test(naskah)),
+    [naskah, mapel, materi],
+  );
+  const pakaiKartuMtkBab9 = useMemo(
+    () =>
+      adalahJudulMtk1Bab9(mapel, materi) ||
+      (naskahTampilanResmi(naskah) && /bentuk datar/i.test(naskah)),
+    [naskah, mapel, materi],
+  );
+  const pakaiKartuMtkBab10 = useMemo(
+    () =>
+      adalahJudulMtk1Bab10(mapel, materi) ||
+      (naskahTampilanResmi(naskah) &&
+        /pola gambar dan diagram|bermain pola dan diagram/i.test(naskah)),
+    [naskah, mapel, materi],
+  );
+  const adaKartuMtk =
+    pakaiKartuMtkBab1 ||
+    pakaiKartuMtkBab2 ||
+    pakaiKartuMtkBab3 ||
+    pakaiKartuMtkBab4 ||
+    pakaiKartuMtkBab5 ||
+    pakaiKartuMtkBab6 ||
+    pakaiKartuMtkBab7 ||
+    pakaiKartuMtkBab8 ||
+    pakaiKartuMtkBab9 ||
+    pakaiKartuMtkBab10;
   const modulResmiLain = useMemo(() => {
-    if (
-      pakaiKartuBab1 ||
-      pakaiKartuBab2 ||
-      pakaiKartuMtkBab1 ||
-      pakaiKartuMtkBab2 ||
-      pakaiKartuMtkBab3 ||
-      pakaiKartuMtkBab4 ||
-      pakaiKartuMtkBab5
-    )
-      return null;
+    if (pakaiKartuBab1 || pakaiKartuBab2 || adaKartuMtk) return null;
     return cariModulPai1Resmi(materi) ?? cariModulPai1DariNaskah(naskah);
-  }, [
-    pakaiKartuBab1,
-    pakaiKartuBab2,
-    pakaiKartuMtkBab1,
-    pakaiKartuMtkBab2,
-    pakaiKartuMtkBab3,
-    pakaiKartuMtkBab4,
-    pakaiKartuMtkBab5,
-    materi,
-    naskah,
-  ]);
+  }, [pakaiKartuBab1, pakaiKartuBab2, adaKartuMtk, materi, naskah]);
   const pakaiKartuSd =
     !pakaiKartuBab1 &&
     !pakaiKartuBab2 &&
-    !pakaiKartuMtkBab1 &&
-    !pakaiKartuMtkBab2 &&
-    !pakaiKartuMtkBab3 &&
-    !pakaiKartuMtkBab4 &&
-    !pakaiKartuMtkBab5 &&
+    !adaKartuMtk &&
     !modulResmiLain &&
     !rapat &&
     jenjangGuru(kelas || "1 SD") === "SD" &&
     Boolean(kelas);
   const infografis = useMemo(
     () =>
-      pakaiKartuBab1 ||
-      pakaiKartuBab2 ||
-      pakaiKartuMtkBab1 ||
-      pakaiKartuMtkBab2 ||
-      pakaiKartuMtkBab3 ||
-      pakaiKartuMtkBab4 ||
-      pakaiKartuMtkBab5 ||
-      modulResmiLain ||
-      pakaiKartuSd
+      pakaiKartuBab1 || pakaiKartuBab2 || adaKartuMtk || modulResmiLain || pakaiKartuSd
         ? null
         : parseInfografisKelas1(naskah),
-    [
-      naskah,
-      pakaiKartuBab1,
-      pakaiKartuBab2,
-      pakaiKartuMtkBab1,
-      pakaiKartuMtkBab2,
-      pakaiKartuMtkBab3,
-      pakaiKartuMtkBab4,
-      pakaiKartuMtkBab5,
-      modulResmiLain,
-      pakaiKartuSd,
-    ],
+    [naskah, pakaiKartuBab1, pakaiKartuBab2, adaKartuMtk, modulResmiLain, pakaiKartuSd],
   );
   const potong = useMemo(() => potongLengkap(naskah), [naskah]);
   const blok = useMemo(
@@ -178,11 +193,7 @@ function ModuleRenderer({
       infografis ||
       pakaiKartuBab1 ||
       pakaiKartuBab2 ||
-      pakaiKartuMtkBab1 ||
-      pakaiKartuMtkBab2 ||
-      pakaiKartuMtkBab3 ||
-      pakaiKartuMtkBab4 ||
-      pakaiKartuMtkBab5 ||
+      adaKartuMtk ||
       modulResmiLain ||
       pakaiKartuSd
         ? []
@@ -192,11 +203,7 @@ function ModuleRenderer({
       infografis,
       pakaiKartuBab1,
       pakaiKartuBab2,
-      pakaiKartuMtkBab1,
-      pakaiKartuMtkBab2,
-      pakaiKartuMtkBab3,
-      pakaiKartuMtkBab4,
-      pakaiKartuMtkBab5,
+      adaKartuMtk,
       modulResmiLain,
       pakaiKartuSd,
       potong.tubuh,
@@ -248,6 +255,41 @@ function ModuleRenderer({
     return (
       <div className={className}>
         <NaskahMtk1Bab5 kelas={kelas} kelamin={kelamin} />
+      </div>
+    );
+  }
+  if (pakaiKartuMtkBab6) {
+    return (
+      <div className={className}>
+        <NaskahMtk1Bab6 kelas={kelas} kelamin={kelamin} />
+      </div>
+    );
+  }
+  if (pakaiKartuMtkBab7) {
+    return (
+      <div className={className}>
+        <NaskahMtk1Bab7 kelas={kelas} kelamin={kelamin} />
+      </div>
+    );
+  }
+  if (pakaiKartuMtkBab8) {
+    return (
+      <div className={className}>
+        <NaskahMtk1Bab8 kelas={kelas} kelamin={kelamin} />
+      </div>
+    );
+  }
+  if (pakaiKartuMtkBab9) {
+    return (
+      <div className={className}>
+        <NaskahMtk1Bab9 kelas={kelas} kelamin={kelamin} />
+      </div>
+    );
+  }
+  if (pakaiKartuMtkBab10) {
+    return (
+      <div className={className}>
+        <NaskahMtk1Bab10 kelas={kelas} kelamin={kelamin} />
       </div>
     );
   }
