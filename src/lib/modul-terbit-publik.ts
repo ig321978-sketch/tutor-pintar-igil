@@ -35,6 +35,7 @@ export function gabungModulTerbitPublik(
   }
   for (const item of cache) {
     if (!cacheLayakTerbitPublik(item)) continue;
+    if (naskahResmiJikaAda(item.kelas, item.mapel, item.materi)) continue;
     const id = identitasCacheMateri(item.kelas, item.mapel, item.materi);
     if (peta.has(id)) continue;
     peta.set(id, {
