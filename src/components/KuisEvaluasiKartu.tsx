@@ -1,7 +1,9 @@
 "use client";
 
 import { useState, type ReactNode } from "react";
+import HasilJawabanKuis from "@/components/HasilJawabanKuis";
 import { useKuisMateri } from "@/components/KuisMateriContext";
+import { kelasTombolHasilKuis, statusDariPilihan } from "@/lib/hasil-kuis";
 import { idKuisKartuResmi } from "@/lib/kuis-materi";
 
 export function KartuBingkai({ children }: { children: ReactNode }) {
@@ -31,9 +33,8 @@ export function KuisPilihan({
 }) {
   const kuis = useKuisMateri();
   const id = idDari(modulId, indeks);
-  const sudah = Boolean(kuis?.sudahBenar(id));
   const [pilih, setPilih] = useState("");
-  const status = sudah || pilih === benar ? "benar" : pilih ? "salah" : null;
+  const status = statusDariPilihan(pilih, benar);
 
   return (
     <article className="rounded-2xl border-2 border-[#1C01A5]/15 bg-[#F8F7FF] p-4">
@@ -47,25 +48,24 @@ export function KuisPilihan({
               setPilih(item.kode);
               if (item.kode === benar) kuis?.tandaiBenar(id);
             }}
-            className={`rounded-xl px-4 py-2 text-sm font-black ${
-              pilih === item.kode || (sudah && item.kode === benar)
-                ? item.kode === benar
-                  ? "bg-emerald-600 text-white"
-                  : "bg-rose-600 text-white"
-                : "bg-[#1C01A5] text-white hover:bg-[#16017a]"
-            }`}
+            className={`rounded-xl px-4 py-2 text-sm font-black ${kelasTombolHasilKuis(
+              pilih,
+              item.kode,
+              benar,
+              "bg-[#1C01A5] text-white hover:bg-[#16017a]",
+            )}`}
           >
             {item.kode}. {item.teks}
           </button>
         ))}
       </div>
-      {status === "benar" ? (
-        <p className="mt-2 text-sm font-black text-emerald-700">BENAR</p>
-      ) : status === "salah" ? (
-        <p className="mt-2 text-sm font-black text-rose-600">
-          Coba pilih jawaban yang lain.
-        </p>
-      ) : null}
+      <div className="mt-3">
+        <HasilJawabanKuis
+          status={status}
+          cuplikan={pilih || undefined}
+          pesanSalah="Coba pilih jawaban yang lain."
+        />
+      </div>
     </article>
   );
 }
@@ -85,9 +85,8 @@ export function KuisChip({
 }) {
   const kuis = useKuisMateri();
   const id = idDari(modulId, indeks);
-  const sudah = Boolean(kuis?.sudahBenar(id));
   const [pilih, setPilih] = useState("");
-  const status = sudah || pilih === benar ? "benar" : pilih ? "salah" : null;
+  const status = statusDariPilihan(pilih, benar);
 
   return (
     <article className="rounded-2xl border-2 border-[#1C01A5]/15 bg-[#FFFDF6] p-4">
@@ -101,23 +100,24 @@ export function KuisChip({
               setPilih(item);
               if (item === benar) kuis?.tandaiBenar(id);
             }}
-            className={`rounded-xl px-4 py-2 text-sm font-black ${
-              pilih === item || (sudah && item === benar)
-                ? item === benar
-                  ? "bg-emerald-600 text-white"
-                  : "bg-rose-600 text-white"
-                : "bg-[#1C01A5] text-white hover:bg-[#16017a]"
-            }`}
+            className={`rounded-xl px-4 py-2 text-sm font-black ${kelasTombolHasilKuis(
+              pilih,
+              item,
+              benar,
+              "bg-[#1C01A5] text-white hover:bg-[#16017a]",
+            )}`}
           >
             {item}
           </button>
         ))}
       </div>
-      {status === "benar" ? (
-        <p className="mt-2 text-sm font-black text-emerald-700">BENAR</p>
-      ) : status === "salah" ? (
-        <p className="mt-2 text-sm font-black text-rose-600">Coba jawaban lain.</p>
-      ) : null}
+      <div className="mt-3">
+        <HasilJawabanKuis
+          status={status}
+          cuplikan={pilih || undefined}
+          pesanSalah="Coba jawaban lain."
+        />
+      </div>
     </article>
   );
 }
@@ -158,11 +158,8 @@ export function KuisCocok({
           {kiriJudul}
         </p>
         {soal.map((item, indeks) => {
-          const id = idDari(modulId, indeksAwal + indeks);
-          const sudah = Boolean(kuis?.sudahBenar(id));
           const pilih = pasangan[indeks];
-          const status =
-            sudah || pilih === item.benar ? "benar" : pilih ? "salah" : null;
+          const status = statusDariPilihan(pilih ?? "", item.benar);
           return (
             <button
               key={item.teks}
@@ -179,9 +176,7 @@ export function KuisCocok({
               }`}
             >
               <span>{item.teks}</span>
-              <span className="float-right">
-                {sudah || pilih === item.benar ? item.benar : "•"}
-              </span>
+              <span className="float-right">{pilih || "•"}</span>
             </button>
           );
         })}

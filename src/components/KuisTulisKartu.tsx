@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import HasilJawabanKuis from "@/components/HasilJawabanKuis";
 import WritingCanvas from "@/components/WritingCanvas";
 import { useKuisMateri } from "@/components/KuisMateriContext";
 import {
@@ -47,8 +48,7 @@ export default function KuisTulisKartu({
   rapat?: boolean;
 }) {
   const kuis = useKuisMateri();
-  const sudah = Boolean(kuis?.sudahBenar(id));
-  const [status, setStatus] = useState<StatusJawaban>(sudah ? "benar" : null);
+  const [status, setStatus] = useState<StatusJawaban>(null);
   const [pesan, setPesan] = useState("");
   const [cuplikan, setCuplikan] = useState("");
 
@@ -109,33 +109,11 @@ export default function KuisTulisKartu({
         disabled={status === "benar"}
         onSubmit={nilaiJawaban}
       />
-      {status === "benar" ? (
-        <div className="rounded-2xl border-4 border-emerald-600 bg-emerald-50 px-4 py-4">
-          <p className="text-2xl font-black tracking-wide text-emerald-700">
-            BENAR
-          </p>
-          {cuplikan ? (
-            <p className="mt-1 text-sm font-bold text-emerald-800">
-              Jawabanmu: {cuplikan}
-            </p>
-          ) : null}
-        </div>
-      ) : null}
-      {status === "salah" ? (
-        <div className="rounded-2xl border-4 border-rose-600 bg-rose-50 px-4 py-4">
-          <p className="text-2xl font-black tracking-wide text-rose-700">
-            SALAH
-          </p>
-          {cuplikan ? (
-            <p className="mt-1 text-sm font-bold text-rose-800">
-              Jawabanmu: {cuplikan}
-            </p>
-          ) : null}
-          <p className="mt-2 text-sm font-semibold text-rose-700">
-            Jawaban belum tepat. Coba tulis atau ketik lagi.
-          </p>
-        </div>
-      ) : null}
+      <HasilJawabanKuis
+        status={status}
+        cuplikan={cuplikan}
+        pesanSalah="Jawaban belum tepat. Coba tulis atau ketik lagi."
+      />
       {pesan ? (
         <p className="text-sm font-black text-rose-600">{pesan}</p>
       ) : null}

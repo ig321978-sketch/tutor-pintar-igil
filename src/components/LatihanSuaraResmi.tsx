@@ -46,8 +46,9 @@ export default function LatihanSuaraResmi({
         id={`${idPrefix}-tulis`}
         rapat
         pertanyaan={pertanyaanTulisDariSoal(soal, pertanyaan)}
-        alias={aliasDariKuisSuara(soal)}
+        alias={soal[0]?.alias ?? aliasDariKuisSuara(soal)}
         konteks={soal
+          .slice(0, 1)
           .map((item) => `${item.pertanyaan} ${item.alias.join(", ")}`)
           .join(" ")}
       />

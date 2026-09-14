@@ -2,7 +2,9 @@
 
 import { useRef, useState, type ReactNode } from "react";
 import { Loader2, Mic, Send } from "lucide-react";
+import HasilJawabanKuis from "@/components/HasilJawabanKuis";
 import { useKuisMateri } from "@/components/KuisMateriContext";
+import { jawabanTulisMemuatAlias } from "@/lib/nilai-kuis-tulis";
 import { kelasTombolUtama } from "@/lib/tema";
 
 type MesinRekam = {
@@ -34,18 +36,13 @@ function buatMesinRekam(): MesinRekam | null {
 export function normalisasiUcapan(teks: string): string {
   return teks
     .toLowerCase()
-    .replace(/[^a-z\u0600-\u06FF\s'-]/gi, " ")
+    .replace(/[^a-z0-9\u0600-\u06FF\s'-]/gi, " ")
     .replace(/\s+/g, " ")
     .trim();
 }
 
 export function ucapanMemuatAlias(transkrip: string, alias: string[]): boolean {
-  const ucapan = normalisasiUcapan(transkrip);
-  if (!ucapan) return false;
-  return alias.some((nama) => {
-    const pola = nama.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
-    return new RegExp(`(?:^|\\s)${pola}(?:\\s|$)`, "i").test(ucapan);
-  });
+  return jawabanTulisMemuatAlias(transkrip, alias);
 }
 
 export default function SoalRekamSuara({
@@ -60,12 +57,9 @@ export default function SoalRekamSuara({
   petunjuk?: string;
 }) {
   const kuisMateri = useKuisMateri();
-  const sudahTuntas = Boolean(id && kuisMateri?.sudahBenar(id));
   const [transkrip, setTranskrip] = useState("");
   const [rekam, setRekam] = useState(false);
-  const [status, setStatus] = useState<StatusJawaban>(
-    sudahTuntas ? "benar" : null,
-  );
+  const [status, setStatus] = useState<StatusJawaban>(null);
   const [pesan, setPesan] = useState("");
   const mesinRef = useRef<MesinRekam | null>(null);
   const finalRef = useRef("");
@@ -171,16 +165,6 @@ export default function SoalRekamSuara({
           <Send className="h-5 w-5" />
           KIRIM JAWABAN
         </button>
-        {status === "benar" ? (
-          <span className="rounded-full bg-emerald-600 px-4 py-2 text-sm font-black tracking-wide text-white">
-            BENAR
-          </span>
-        ) : null}
-        {status === "salah" ? (
-          <span className="rounded-full bg-rose-600 px-4 py-2 text-sm font-black tracking-wide text-white">
-            SALAH
-          </span>
-        ) : null}
       </div>
       {transkrip ? (
         <p className="mt-3 rounded-xl bg-white px-3 py-2 text-sm font-semibold text-slate-700">
@@ -189,6 +173,13 @@ export default function SoalRekamSuara({
       ) : (
         <p className="mt-3 text-sm font-semibold text-slate-500">{petunjuk}</p>
       )}
+      <div className="mt-3">
+        <HasilJawabanKuis
+          status={status}
+          cuplikan={transkrip.trim() || undefined}
+          pesanSalah="Jawaban belum tepat. Rekam atau sebutkan lagi."
+        />
+      </div>
       {pesan ? (
         <p className="mt-2 text-sm font-bold text-rose-600">{pesan}</p>
       ) : null}

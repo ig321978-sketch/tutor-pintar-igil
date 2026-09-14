@@ -1,14 +1,16 @@
 "use client";
 
 import { useMemo, useState, type ReactNode } from "react";
+import HasilJawabanKuis from "@/components/HasilJawabanKuis";
 import LatihanSuaraResmi from "@/components/LatihanSuaraResmi";
 import KuisTulisKartu from "@/components/KuisTulisKartu";
 import TombolVoiceMateriPai1 from "@/components/TombolVoiceMateriPai1";
 import { useKuisMateri } from "@/components/KuisMateriContext";
+import { kelasTombolHasilKuis, statusDariPilihan } from "@/lib/hasil-kuis";
 import { MODUL_MTK1_BAB1 } from "@/lib/modul-resmi-mtk-1-bab1";
 import { cuplikanDariNaskah } from "@/lib/naskah-voice-pai-1-bab2";
 import { idKuisKartuResmi, idKuisTulisKartu } from "@/lib/kuis-materi";
-import { aliasDariKuisSuara, kumpulkanAlias } from "@/lib/nilai-kuis-tulis";
+import { kumpulkanAlias } from "@/lib/nilai-kuis-tulis";
 import { bacaProgres } from "@/lib/progres";
 import type { KelaminGuru } from "@/lib/guru";
 
@@ -73,10 +75,8 @@ function KuisMewarnaiAngka({
 }) {
   const kuis = useKuisMateri();
   const id = idEvaluasi(indeks);
-  const sudah = Boolean(kuis?.sudahBenar(id));
   const [pilih, setPilih] = useState("");
-  const status =
-    sudah || pilih === benar ? "benar" : pilih ? "salah" : null;
+  const status = statusDariPilihan(pilih, benar);
 
   return (
     <article className="rounded-2xl border-2 border-[#1C01A5]/15 bg-[#FFFDF6] p-4">
@@ -91,25 +91,24 @@ function KuisMewarnaiAngka({
               setPilih(angka);
               if (angka === benar) kuis?.tandaiBenar(id);
             }}
-            className={`rounded-xl px-4 py-2 text-sm font-black ${
-              pilih === angka || (sudah && angka === benar)
-                ? angka === benar
-                  ? "bg-emerald-600 text-white"
-                  : "bg-rose-600 text-white"
-                : "bg-[#1C01A5] text-white hover:bg-[#16017a]"
-            }`}
+            className={`rounded-xl px-4 py-2 text-sm font-black ${kelasTombolHasilKuis(
+              pilih,
+              angka,
+              benar,
+              "bg-[#1C01A5] text-white hover:bg-[#16017a]",
+            )}`}
           >
             {angka}
           </button>
         ))}
       </div>
-      {status === "benar" ? (
-        <p className="mt-2 text-sm font-black text-emerald-700">BENAR</p>
-      ) : status === "salah" ? (
-        <p className="mt-2 text-sm font-black text-rose-600">
-          Coba warnai angka yang lain.
-        </p>
-      ) : null}
+      <div className="mt-3">
+        <HasilJawabanKuis
+          status={status}
+          cuplikan={pilih || undefined}
+          pesanSalah="Coba warnai angka yang lain."
+        />
+      </div>
     </article>
   );
 }
@@ -127,12 +126,9 @@ function KuisTulisBilangan({
 }) {
   const kuis = useKuisMateri();
   const id = idEvaluasi(indeks);
-  const sudah = Boolean(kuis?.sudahBenar(id));
-  const [angka, setAngka] = useState(sudah ? angkaBenar : "");
-  const [nama, setNama] = useState(sudah ? namaBenar : "");
-  const [status, setStatus] = useState<"benar" | "salah" | null>(
-    sudah ? "benar" : null,
-  );
+  const [angka, setAngka] = useState("");
+  const [nama, setNama] = useState("");
+  const [status, setStatus] = useState<"benar" | "salah" | null>(null);
 
   const periksa = () => {
     const angkaOk = angka.trim() === angkaBenar;
@@ -176,13 +172,13 @@ function KuisTulisBilangan({
       >
         Periksa
       </button>
-      {status === "benar" ? (
-        <p className="mt-2 text-sm font-black text-emerald-700">BENAR</p>
-      ) : status === "salah" ? (
-        <p className="mt-2 text-sm font-black text-rose-600">
-          Cek lagi angka dan nama bilangannya.
-        </p>
-      ) : null}
+      <div className="mt-3">
+        <HasilJawabanKuis
+          status={status}
+          cuplikan={angka || nama ? `${angka} ${nama}`.trim() : undefined}
+          pesanSalah="Cek lagi angka dan nama bilangannya."
+        />
+      </div>
     </article>
   );
 }
@@ -200,11 +196,9 @@ function KuisBanding({
 }) {
   const kuis = useKuisMateri();
   const id = idEvaluasi(indeks);
-  const sudah = Boolean(kuis?.sudahBenar(id));
   const [pilih, setPilih] = useState("");
   const opsi = ["lebih banyak", "lebih sedikit", "sama banyak"] as const;
-  const status =
-    sudah || pilih === benar ? "benar" : pilih ? "salah" : null;
+  const status = statusDariPilihan(pilih, benar);
 
   return (
     <article className="rounded-2xl border-2 border-[#1C01A5]/15 bg-[#F0FDF4] p-4">
@@ -232,23 +226,24 @@ function KuisBanding({
               setPilih(item);
               if (item === benar) kuis?.tandaiBenar(id);
             }}
-            className={`rounded-xl px-3 py-2 text-sm font-black capitalize ${
-              pilih === item || (sudah && item === benar)
-                ? item === benar
-                  ? "bg-emerald-600 text-white"
-                  : "bg-rose-600 text-white"
-                : "bg-[#1C01A5] text-white hover:bg-[#16017a]"
-            }`}
+            className={`rounded-xl px-3 py-2 text-sm font-black capitalize ${kelasTombolHasilKuis(
+              pilih,
+              item,
+              benar,
+              "bg-[#1C01A5] text-white hover:bg-[#16017a]",
+            )}`}
           >
             {item}
           </button>
         ))}
       </div>
-      {status === "benar" ? (
-        <p className="mt-2 text-sm font-black text-emerald-700">BENAR</p>
-      ) : status === "salah" ? (
-        <p className="mt-2 text-sm font-black text-rose-600">Coba bandingkan lagi.</p>
-      ) : null}
+      <div className="mt-3">
+        <HasilJawabanKuis
+          status={status}
+          cuplikan={pilih || undefined}
+          pesanSalah="Coba bandingkan lagi."
+        />
+      </div>
     </article>
   );
 }
@@ -266,11 +261,8 @@ function KuisCerita({
 }) {
   const kuis = useKuisMateri();
   const id = idEvaluasi(indeks);
-  const sudah = Boolean(kuis?.sudahBenar(id));
-  const [jawab, setJawab] = useState(sudah ? benar : "");
-  const [status, setStatus] = useState<"benar" | "salah" | null>(
-    sudah ? "benar" : null,
-  );
+  const [jawab, setJawab] = useState("");
+  const [status, setStatus] = useState<"benar" | "salah" | null>(null);
 
   const periksa = () => {
     const isi = jawab.trim().toLowerCase();
@@ -302,11 +294,13 @@ function KuisCerita({
           Periksa
         </button>
       </div>
-      {status === "benar" ? (
-        <p className="mt-2 text-sm font-black text-emerald-700">BENAR</p>
-      ) : status === "salah" ? (
-        <p className="mt-2 text-sm font-black text-rose-600">Coba hitung lagi.</p>
-      ) : null}
+      <div className="mt-3">
+        <HasilJawabanKuis
+          status={status}
+          cuplikan={jawab.trim() || undefined}
+          pesanSalah="Coba hitung lagi."
+        />
+      </div>
     </article>
   );
 }
@@ -502,14 +496,8 @@ function KuisMencocokkan() {
       </p>
       {PASANGAN.map((item, indeks) => {
         const id = idKuisKartuResmi(MODUL_MTK1_BAB1.id, "B", indeks);
-        const sudah = Boolean(kuis?.sudahBenar(id));
-        const ketuk = pilihan[indeks];
-        const status =
-          sudah || ketuk === item.benar
-            ? "benar"
-            : ketuk
-              ? "salah"
-              : null;
+        const ketuk = pilihan[indeks] ?? "";
+        const status = statusDariPilihan(ketuk, item.benar);
         return (
           <article
             key={item.label}
@@ -526,25 +514,24 @@ function KuisMencocokkan() {
                     setPilihan((sebelum) => ({ ...sebelum, [indeks]: angka }));
                     if (angka === item.benar) kuis?.tandaiBenar(id);
                   }}
-                  className={`rounded-xl px-4 py-2 text-sm font-black ${
-                    ketuk === angka || (sudah && angka === item.benar)
-                      ? angka === item.benar
-                        ? "bg-emerald-600 text-white"
-                        : "bg-rose-600 text-white"
-                      : "bg-[#1C01A5] text-white hover:bg-[#16017a]"
-                  }`}
+                  className={`rounded-xl px-4 py-2 text-sm font-black ${kelasTombolHasilKuis(
+                    ketuk,
+                    angka,
+                    item.benar,
+                    "bg-[#1C01A5] text-white hover:bg-[#16017a]",
+                  )}`}
                 >
                   Angka {angka}
                 </button>
               ))}
             </div>
-            {status === "benar" ? (
-              <p className="mt-2 text-sm font-black text-emerald-700">BENAR</p>
-            ) : status === "salah" ? (
-              <p className="mt-2 text-sm font-black text-rose-600">
-                Coba angka yang lain.
-              </p>
-            ) : null}
+            <div className="mt-3">
+              <HasilJawabanKuis
+                status={status}
+                cuplikan={ketuk || undefined}
+                pesanSalah="Coba angka yang lain."
+              />
+            </div>
           </article>
         );
       })}
@@ -678,10 +665,8 @@ export default function NaskahMtk1Bab1({
           id={idKuisTulisKartu(MODUL_MTK1_BAB1.id, "B")}
           pertanyaan="Tuliskan satu angka dan cara membacanya, misalnya 3 = tiga."
           alias={kumpulkanAlias([
-            ...aliasDariKuisSuara(kartuB.kuis),
-            ...BARIS_ANGKA.flatMap((item) => [item.lambang, item.baca]),
-            "nol",
-            "0",
+            ...BARIS_ANGKA.map((item) => `${item.lambang} ${item.baca}`),
+            "0 nol",
           ])}
           konteks={kartuB.pengantar}
         />
@@ -768,8 +753,26 @@ export default function NaskahMtk1Bab1({
           id={idKuisTulisKartu(MODUL_MTK1_BAB1.id, "D")}
           pertanyaan="Tuliskan satu jawaban dari lembar evaluasi, misalnya 6 kupu-kupu."
           alias={kumpulkanAlias([
-            ...aliasDariKuisSuara(kartuD.kuis),
+            "6",
+            "enam",
             "6 kupu-kupu",
+            "8",
+            "delapan",
+            "8 es krim",
+            "4",
+            "empat",
+            "4 topi",
+            "7",
+            "tujuh",
+            "3",
+            "tiga",
+            "9",
+            "sembilan",
+            "lebih banyak",
+            "lebih sedikit",
+            "sama banyak",
+            "0",
+            "nol",
           ])}
           konteks={kartuD.pengantar}
         />

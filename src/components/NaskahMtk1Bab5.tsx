@@ -1,10 +1,12 @@
 "use client";
 
 import { useMemo, useState, type ReactNode } from "react";
+import HasilJawabanKuis from "@/components/HasilJawabanKuis";
 import LatihanSuaraResmi from "@/components/LatihanSuaraResmi";
 import KuisTulisKartu from "@/components/KuisTulisKartu";
 import TombolVoiceMateriPai1 from "@/components/TombolVoiceMateriPai1";
 import { useKuisMateri } from "@/components/KuisMateriContext";
+import { kelasTombolHasilKuis, statusDariPilihan } from "@/lib/hasil-kuis";
 import { MODUL_MTK1_BAB5 } from "@/lib/modul-resmi-mtk-1-bab5";
 import { cuplikanDariNaskah } from "@/lib/naskah-voice-pai-1-bab2";
 import { idKuisKartuResmi, idKuisTulisKartu } from "@/lib/kuis-materi";
@@ -172,9 +174,8 @@ function KuisIsiAngka({
 }) {
   const kuis = useKuisMateri();
   const id = idEvaluasi(indeks);
-  const sudah = Boolean(kuis?.sudahBenar(id));
   const [pilih, setPilih] = useState("");
-  const status = sudah || pilih === benar ? "benar" : pilih ? "salah" : null;
+  const status = statusDariPilihan(pilih, benar);
 
   return (
     <article className="rounded-2xl border-2 border-[#1C01A5]/15 bg-[#FFFDF6] p-4">
@@ -185,10 +186,12 @@ function KuisIsiAngka({
           className={`min-w-[3rem] rounded-xl border-2 border-dashed px-3 py-2 text-center ${
             status === "benar"
               ? "border-emerald-400 bg-emerald-50 text-emerald-800"
-              : "border-[#1C01A5]/30 bg-white"
+              : status === "salah"
+                ? "border-rose-300 bg-rose-50 text-rose-700"
+                : "border-[#1C01A5]/30 bg-white"
           }`}
         >
-          {sudah || pilih === benar ? benar : pilih || "...."}
+          {pilih || "...."}
         </span>
       </div>
       <div className="mt-3 flex flex-wrap gap-2">
@@ -200,25 +203,24 @@ function KuisIsiAngka({
               setPilih(angka);
               if (angka === benar) kuis?.tandaiBenar(id);
             }}
-            className={`rounded-xl px-4 py-2 text-sm font-black ${
-              pilih === angka || (sudah && angka === benar)
-                ? angka === benar
-                  ? "bg-emerald-600 text-white"
-                  : "bg-rose-600 text-white"
-                : "bg-[#1C01A5] text-white hover:bg-[#16017a]"
-            }`}
+            className={`rounded-xl px-4 py-2 text-sm font-black ${kelasTombolHasilKuis(
+              pilih,
+              angka,
+              benar,
+              "bg-[#1C01A5] text-white hover:bg-[#16017a]",
+            )}`}
           >
             {angka}
           </button>
         ))}
       </div>
-      {status === "benar" ? (
-        <p className="mt-2 text-sm font-black text-emerald-700">BENAR</p>
-      ) : status === "salah" ? (
-        <p className="mt-2 text-sm font-black text-rose-600">
-          Coba angka yang lain.
-        </p>
-      ) : null}
+      <div className="mt-3">
+        <HasilJawabanKuis
+          status={status}
+          cuplikan={pilih || undefined}
+          pesanSalah="Coba angka yang lain."
+        />
+      </div>
     </article>
   );
 }
@@ -236,9 +238,8 @@ function KuisPilihan({
 }) {
   const kuis = useKuisMateri();
   const id = idEvaluasi(indeks);
-  const sudah = Boolean(kuis?.sudahBenar(id));
   const [pilih, setPilih] = useState("");
-  const status = sudah || pilih === benar ? "benar" : pilih ? "salah" : null;
+  const status = statusDariPilihan(pilih, benar);
 
   return (
     <article className="rounded-2xl border-2 border-[#1C01A5]/15 bg-[#F8F7FF] p-4">
@@ -252,25 +253,24 @@ function KuisPilihan({
               setPilih(item.kode);
               if (item.kode === benar) kuis?.tandaiBenar(id);
             }}
-            className={`rounded-xl px-4 py-2 text-sm font-black ${
-              pilih === item.kode || (sudah && item.kode === benar)
-                ? item.kode === benar
-                  ? "bg-emerald-600 text-white"
-                  : "bg-rose-600 text-white"
-                : "bg-[#1C01A5] text-white hover:bg-[#16017a]"
-            }`}
+            className={`rounded-xl px-4 py-2 text-sm font-black ${kelasTombolHasilKuis(
+              pilih,
+              item.kode,
+              benar,
+              "bg-[#1C01A5] text-white hover:bg-[#16017a]",
+            )}`}
           >
             {item.kode}. {item.teks}
           </button>
         ))}
       </div>
-      {status === "benar" ? (
-        <p className="mt-2 text-sm font-black text-emerald-700">BENAR</p>
-      ) : status === "salah" ? (
-        <p className="mt-2 text-sm font-black text-rose-600">
-          Coba pilih jawaban yang lain.
-        </p>
-      ) : null}
+      <div className="mt-3">
+        <HasilJawabanKuis
+          status={status}
+          cuplikan={pilih || undefined}
+          pesanSalah="Coba pilih jawaban yang lain."
+        />
+      </div>
     </article>
   );
 }
@@ -305,11 +305,8 @@ function KuisCocokJumlah() {
           Gambar benda
         </p>
         {SOAL_COCOK.map((item, indeks) => {
-          const id = idEvaluasi(7 + indeks);
-          const sudah = Boolean(kuis?.sudahBenar(id));
           const pilih = pasangan[indeks];
-          const status =
-            sudah || pilih === item.benar ? "benar" : pilih ? "salah" : null;
+          const status = statusDariPilihan(pilih ?? "", item.benar);
           return (
             <button
               key={item.soal}
@@ -330,7 +327,7 @@ function KuisCocokJumlah() {
               </p>
               <p className="mt-1 flex items-center justify-between text-sm font-black">
                 <span>{item.soal}</span>
-                <span>{sudah || pilih === item.benar ? item.benar : "•"}</span>
+                <span>{pilih || "•"}</span>
               </p>
             </button>
           );
