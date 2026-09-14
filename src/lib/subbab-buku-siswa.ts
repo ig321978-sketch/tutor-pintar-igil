@@ -51,9 +51,9 @@ const SUBBAB_BUKU_SISWA: Record<string, Record<string, Record<string, string[]>>
     },
     Matematika: {
       "Bab 1: Ayo Berhitung!": [
-        "Menghitung banyak benda sampai 5",
-        "Membaca dan menulis lambang bilangan 0 sampai 5",
-        "Mencocokkan gambar benda ke angkanya",
+        "Menghitung banyak benda sampai 10",
+        "Membaca dan menulis lambang bilangan 0 sampai 10",
+        "Membandingkan banyak benda dan mengisi evaluasi",
       ],
       "Bab 2: Penjumlahan sampai dengan 10": [
         "Menggabungkan dua kelompok benda",

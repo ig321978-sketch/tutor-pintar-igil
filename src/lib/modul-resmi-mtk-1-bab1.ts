@@ -19,6 +19,7 @@ export const MODUL_MTK1_BAB1: ModulResmiPai = {
     "Lima apel berjajar dari satu sampai lima.",
     "Piring kosong artinya nol.",
     "Anak mengumpulkan pensil saat bermain detektif berhitung.",
+    "Anak mengisi lembar evaluasi: menghitung, menulis angka, dan membandingkan benda.",
   ],
   latihan: pg([
     `[Soal 1 - PG - Tipe: Reguler]
@@ -224,6 +225,100 @@ D) 3`,
         [
           "Di rumah, bantu ibu di dapur. Tolong ambilkan tiga jeruk, atau hitung ada berapa sendok di meja makan.",
           "Kalau anak menghitung dengan benar, berilah pujian atau pelukan hangat. Itu membuat hati berani berhitung lagi.",
+        ],
+      ],
+    },
+    {
+      kode: "D",
+      judul: "D. Lembar Evaluasi Siswa",
+      pengantar:
+        "Saatnya menunjukkan kemampuan berhitung sampai 10. Hitung benda, tulis lambang dan nama bilangan, bandingkan banyaknya, lalu jawab soal cerita.",
+      labelDaftar: "Empat Kelompok Soal",
+      kolom: 1,
+      item: [
+        {
+          nama: "Kelompok A",
+          singkat: "Menghitung dan mewarnai",
+          uraian:
+            "Hitung benda di dalam kotak, lalu pilih angka yang sesuai: kupu-kupu, es krim, dan topi.",
+          contoh: "6 kupu-kupu, 8 es krim, 4 topi.",
+        },
+        {
+          nama: "Kelompok B",
+          singkat: "Menulis lambang bilangan",
+          uraian:
+            "Hitung semangka, boneka, dan sepeda. Tulis angka dan nama bilangannya.",
+          contoh: "7 tujuh, 3 tiga, 9 sembilan.",
+        },
+        {
+          nama: "Kelompok C",
+          singkat: "Membandingkan banyak benda",
+          uraian:
+            "Bandingkan kotak kiri dan kanan. Pilih lebih banyak, lebih sedikit, atau sama banyak.",
+          contoh: "5 ikan lebih banyak dari 3 kepiting.",
+        },
+        {
+          nama: "Kelompok D",
+          singkat: "Tantangan penalaran",
+          uraian:
+            "Baca soal cerita pendek. Kosong artinya nol. Habis diambil semua juga artinya nol.",
+          contoh: "Susi tidak punya kelereng: 0. Jeruk habis diambil: 0.",
+        },
+      ],
+      kuis: [
+        {
+          pertanyaan: "1. Ada berapa kupu-kupu?",
+          alias: ["enam", "6", "angka 6"],
+        },
+        {
+          pertanyaan: "2. Ada berapa es krim?",
+          alias: ["delapan", "8", "angka 8"],
+        },
+        {
+          pertanyaan: "3. Ada berapa topi?",
+          alias: ["empat", "4", "angka 4"],
+        },
+        {
+          pertanyaan: "4. Tujuh semangka ditulis angka dan huruf apa?",
+          alias: ["7", "tujuh"],
+        },
+        {
+          pertanyaan: "5. Tiga boneka ditulis angka dan huruf apa?",
+          alias: ["3", "tiga"],
+        },
+        {
+          pertanyaan: "6. Sembilan sepeda ditulis angka dan huruf apa?",
+          alias: ["9", "sembilan"],
+        },
+        {
+          pertanyaan: "7. Lima ikan dibanding tiga kepiting?",
+          alias: ["lebih banyak", "banyak"],
+        },
+        {
+          pertanyaan: "8. Dua katak dibanding empat bebek?",
+          alias: ["lebih sedikit", "sedikit"],
+        },
+        {
+          pertanyaan: "9. Empat lebah dibanding empat kumbang?",
+          alias: ["sama banyak", "sama"],
+        },
+        {
+          pertanyaan: "10. Susi tidak punya kelereng. Jumlahnya?",
+          alias: ["nol", "0", "kosong"],
+        },
+        {
+          pertanyaan: "11. Tujuh jeruk diambil semua. Sisanya?",
+          alias: ["nol", "0", "habis"],
+        },
+      ],
+      voice: [
+        [
+          "Anak-anak, ini lembar evaluasi. Kita menghitung, menulis angka, membandingkan, lalu menjawab soal cerita.",
+          "Kelompok A: hitung kupu-kupu, es krim, dan topi, lalu pilih angkanya. Kelompok B: tulis lambang bilangan dan nama bilangannya.",
+        ],
+        [
+          "Kelompok C: bandingkan kotak kiri dan kanan. Pilih lebih banyak, lebih sedikit, atau sama banyak.",
+          "Kelompok D: kalau kantong kosong atau jeruk habis diambil semua, jawabannya nol. Semangat mengerjakan sampai tuntas!",
         ],
       ],
     },
