@@ -14,7 +14,7 @@ export default function HalamanSitusDitutup() {
   return (
     <PageShell
       judul="Materi ini masih dikunci"
-      subjudul="Publik saat ini hanya dapat membuka Pendidikan Agama Islam dan Budi Pekerti Kelas 1 SD. Materi dan fitur lain tetap terkunci."
+      subjudul="Publik saat ini hanya dapat membuka materi resmi Kelas 1 SD yang sudah dikunci. Materi dan fitur lain tetap terkunci."
     >
       <div className="flex flex-wrap gap-3">
         <Link

@@ -1,4 +1,4 @@
-/** Mode terbatas: publik hanya boleh PAI Kelas 1 SD. Admin tetap membuka seluruh situs. */
+/** Mode terbatas: publik hanya boleh naskah resmi Kelas 1 SD yang sudah dikunci. Admin tetap membuka seluruh situs. */
 export function situsHanyaAdmin(): boolean {
   return true;
 }
@@ -6,9 +6,14 @@ export function situsHanyaAdmin(): boolean {
 export const KELAS_TERBUKA_PUBLIK = "1 SD";
 export const MAPEL_TERBUKA_PUBLIK =
   "Pendidikan Agama Islam dan Budi Pekerti";
+export const MAPEL_TERBUKA_PUBLIK_LAIN = ["Matematika"] as const;
 
 export const PESAN_MATERI_TERKUNCI_PUBLIK =
-  "Untuk publik, saat ini hanya materi Pendidikan Agama Islam dan Budi Pekerti Kelas 1 SD yang dapat dibuka.";
+  "Untuk publik, saat ini hanya materi resmi Kelas 1 SD yang sudah dikunci yang dapat dibuka.";
+
+export function daftarMapelTerbukaPublik(): string[] {
+  return [MAPEL_TERBUKA_PUBLIK, ...MAPEL_TERBUKA_PUBLIK_LAIN];
+}
 
 export function adalahKelasTerbukaPublik(kelas: string): boolean {
   const k = kelas.trim();
@@ -31,8 +36,18 @@ export function adalahMapelPaiTerbuka(mapel: string): boolean {
   );
 }
 
+export function adalahMapelTerbukaPublik(mapel: string): boolean {
+  const n = mapel
+    .trim()
+    .toLowerCase()
+    .normalize("NFKC")
+    .replace(/[’‘ʻ`´]/g, "'")
+    .replace(/\s+/g, " ");
+  return adalahMapelPaiTerbuka(mapel) || n === "matematika";
+}
+
 export function materiTerbukaUntukPublik(kelas: string, mapel: string): boolean {
-  return adalahKelasTerbukaPublik(kelas) && adalahMapelPaiTerbuka(mapel);
+  return adalahKelasTerbukaPublik(kelas) && adalahMapelTerbukaPublik(mapel);
 }
 
 export function ruteHalamanPublikSaatTerkunci(pathname: string): boolean {

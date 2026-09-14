@@ -17,8 +17,10 @@ import { useUserRole } from "@/hooks/useUserRole";
 import {
   KELAS_TERBUKA_PUBLIK,
   MAPEL_TERBUKA_PUBLIK,
+  daftarMapelTerbukaPublik,
   situsHanyaAdmin,
 } from "@/lib/situs-hanya-admin";
+import { naskahResmiJikaAda } from "@/lib/naskah-resmi";
 import { naskahSapaanUntukSuara } from "@/lib/naskah-lisan";
 import { bacaProgres, simpanProfil } from "@/lib/progres";
 import {
@@ -96,17 +98,18 @@ export default function RuangBelajarPage() {
   const daftarMapel = useMemo(
     () =>
       kunciPublik
-        ? [MAPEL_TERBUKA_PUBLIK]
+        ? daftarMapelTerbukaPublik()
         : daftarMapelUntukKelas(kelas),
     [kelas, kunciPublik],
   );
-  const daftarMateri = useMemo(
-    () =>
-      pilihanMapel === OPSI_MAPEL_LAIN
-        ? []
-        : (DATA_KURIKULUM[kelas]?.[pilihanMapel] ?? []),
-    [kelas, pilihanMapel],
-  );
+  const daftarMateri = useMemo(() => {
+    if (pilihanMapel === OPSI_MAPEL_LAIN) return [];
+    const semua = DATA_KURIKULUM[kelas]?.[pilihanMapel] ?? [];
+    if (!kunciPublik) return semua;
+    return semua.filter((judul) =>
+      naskahResmiJikaAda(kelas, pilihanMapel, judul),
+    );
+  }, [kelas, pilihanMapel, kunciPublik]);
   const mapel =
     pilihanMapel === OPSI_MAPEL_LAIN ? mapelManual : pilihanMapel;
   const materi =
@@ -117,7 +120,6 @@ export default function RuangBelajarPage() {
     if (data.profil.nama) setNama(data.profil.nama);
     if (kunciPublik) {
       setKelas(KELAS_TERBUKA_PUBLIK);
-      setPilihanMapel(MAPEL_TERBUKA_PUBLIK);
       setSumber("kurikulum");
     } else if (data.profil.kelas) {
       setKelas(data.profil.kelas);
@@ -192,9 +194,14 @@ export default function RuangBelajarPage() {
   };
 
   const mulaiPembelajaran = async () => {
-    if (kunciPublik && (sumber !== "kurikulum" || pilihanMapel === OPSI_MAPEL_LAIN)) {
+    if (
+      kunciPublik &&
+      (sumber !== "kurikulum" ||
+        pilihanMapel === OPSI_MAPEL_LAIN ||
+        !naskahResmiJikaAda(kelas, mapel, materi))
+    ) {
       setPesanGalat(
-        "Untuk publik, saat ini hanya materi Pendidikan Agama Islam dan Budi Pekerti Kelas 1 SD yang dapat dibuka.",
+        "Untuk publik, saat ini hanya materi resmi Kelas 1 SD yang sudah dikunci yang dapat dibuka.",
       );
       return;
     }
@@ -260,7 +267,7 @@ export default function RuangBelajarPage() {
       judul="📚 Ruang Belajar"
       subjudul={
         kunciPublik
-          ? "Pratinjau publik: Pendidikan Agama Islam dan Budi Pekerti Kelas 1 SD. Materi lain tetap terkunci."
+          ? "Pratinjau publik: materi resmi Kelas 1 SD yang sudah dikunci. Materi lain tetap terkunci."
           : "Pilih sumber pembelajaran, pilih guru pengajar, lalu mulai sesi belajar di halaman Tutor."
       }
     >
@@ -359,7 +366,6 @@ export default function RuangBelajarPage() {
                   }
                 }}
                 className={kelasKotak}
-                disabled={kunciPublik}
               >
                 {daftarMapel.map((item) => (
                   <option key={item} value={item}>

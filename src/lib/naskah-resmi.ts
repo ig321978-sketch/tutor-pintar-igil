@@ -10,6 +10,7 @@ import {
   naskahTampilanPai1Bab2,
 } from "@/lib/naskah-resmi-pai-1-bab2";
 import { MODUL_PAI1_BAB3_10 } from "@/lib/modul-resmi-pai-1-bab3-10";
+import { MODUL_MTK1_BAB1 } from "@/lib/modul-resmi-mtk-1-bab1";
 import {
   isiCacheDariModulResmi,
   naskahTampilanModulResmi,
@@ -31,6 +32,10 @@ export function cariModulPai1DariNaskah(teks?: string): ModulResmiPai | null {
 
 function normJudul(nilai: string): string {
   return rapikanKunci(nilai).replace(/[’‘ʻ`´]/g, "'");
+}
+
+function adalahMapelMatematika(mapel: string): boolean {
+  return kunciMapelTutor(mapel) === "matematika";
 }
 
 function adalahMapelPai(mapel: string): boolean {
@@ -61,6 +66,20 @@ export function adalahPai1Bab1(
   return adalahJudulPai1Bab1(mapel, materi);
 }
 
+export function adalahJudulMtk1Bab1(mapel: string, materi: string): boolean {
+  if (!adalahMapelMatematika(mapel)) return false;
+  return /ayo\s+berhitung|ayo\s+membilang/.test(normJudul(materi));
+}
+
+export function adalahMtk1Bab1(
+  kelas: string,
+  mapel: string,
+  materi: string,
+): boolean {
+  if (!kelasSatuSd(kelas)) return false;
+  return adalahJudulMtk1Bab1(mapel, materi);
+}
+
 export function adalahPai1Bab2(
   kelas: string,
   mapel: string,
@@ -77,6 +96,9 @@ export function naskahResmiJikaAda(
 ): IsiCacheMateri | null {
   if (adalahPai1Bab1(kelas, mapel, materi)) return naskahPai1Bab1();
   if (adalahPai1Bab2(kelas, mapel, materi)) return naskahPai1Bab2();
+  if (adalahMtk1Bab1(kelas, mapel, materi)) {
+    return isiCacheDariModulResmi(MODUL_MTK1_BAB1);
+  }
   if (!kelasSatuSd(kelas) || !adalahMapelPai(mapel)) return null;
   const modul = cariModulPai1Resmi(materi);
   return modul ? isiCacheDariModulResmi(modul) : null;
@@ -84,12 +106,16 @@ export function naskahResmiJikaAda(
 
 export function naskahTampilanResmi(teks?: string): boolean {
   if (naskahTampilanPai1Bab1(teks) || naskahTampilanPai1Bab2(teks)) return true;
+  if (naskahTampilanModulResmi(MODUL_MTK1_BAB1, teks)) return true;
   return MODUL_PAI1_BAB3_10.some((modul) => naskahTampilanModulResmi(modul, teks));
 }
 
 export function teksLisanResmiJikaAda(teks?: string): string | null {
   if (naskahTampilanPai1Bab1(teks)) return null;
   if (naskahTampilanPai1Bab2(teks)) return null;
+  if (naskahTampilanModulResmi(MODUL_MTK1_BAB1, teks)) {
+    return teksLisanModulResmi(MODUL_MTK1_BAB1);
+  }
   const modul = MODUL_PAI1_BAB3_10.find((item) =>
     naskahTampilanModulResmi(item, teks),
   );

@@ -1,5 +1,7 @@
 import { kelasSatuSd } from "@/lib/infografis-kelas1";
+import { MODUL_MTK1_BAB1 } from "@/lib/modul-resmi-mtk-1-bab1";
 import {
+  adalahMtk1Bab1,
   adalahPai1Bab1,
   adalahPai1Bab2,
   cariModulPai1Resmi,
@@ -69,6 +71,13 @@ export function daftarIdKuisMateri(
   if (!naskahResmiJikaAda(kelas, mapel, materi)) return [];
   if (adalahPai1Bab1(kelas, mapel, materi)) return [...ID_KUIS_PAI1_BAB1];
   if (adalahPai1Bab2(kelas, mapel, materi)) return [...ID_KUIS_PAI1_BAB2];
+  if (adalahMtk1Bab1(kelas, mapel, materi)) {
+    return MODUL_MTK1_BAB1.kartu.flatMap((kartu) =>
+      kartu.kuis.map((_, indeks) =>
+        idKuisKartuResmi(MODUL_MTK1_BAB1.id, kartu.kode, indeks),
+      ),
+    );
+  }
   if (!kelasSatuSd(kelas)) return [];
   const modul = cariModulPai1Resmi(materi);
   if (!modul) return [];
