@@ -90,10 +90,10 @@ export const BAB_BUKU_SISWA: Record<string, Record<string, string[]>> = {
       "Bab 4: Membentuk dari Tanah Liat",
     ],
     "Seni Musik": [
-      "Bab 1: Bernyanyi Lagu Anak",
-      "Bab 2: Irama dan Birama",
-      "Bab 3: Permainan Alat Musik Sederhana",
-      "Bab 4: Ansambel Kelas",
+      "Bab 1: Bermain dengan Bunyi",
+      "Bab 2: Ketukan dan Irama",
+      "Bab 3: Bernyanyi Bersama",
+      "Bab 4: Mengenal Alat Musik Tradisional",
     ],
     "Seni Tari": [
       "Bab 1: Gerak Dasar Tari",

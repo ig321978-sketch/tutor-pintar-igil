@@ -32,11 +32,13 @@ import {
   adalahBindo1,
   adalahPjok1,
   adalahInggris1,
+  adalahMusik1,
   adalahPai1Bab1,
   adalahPai1Bab2,
   cariModulBindo1Resmi,
   cariModulPjok1Resmi,
   cariModulInggris1Resmi,
+  cariModulMusik1Resmi,
   cariModulPai1Resmi,
   naskahResmiJikaAda,
 } from "@/lib/naskah-resmi";
@@ -278,6 +280,10 @@ export function daftarIdKuisMateri(
   if (adalahInggris1(kelas, mapel, materi)) {
     const inggris = cariModulInggris1Resmi(materi);
     if (inggris) return idKuisDariModulResmi(inggris);
+  }
+  if (adalahMusik1(kelas, mapel, materi)) {
+    const musik = cariModulMusik1Resmi(materi);
+    if (musik) return idKuisDariModulResmi(musik);
   }
   if (!kelasSatuSd(kelas)) return [];
   const modul = cariModulPai1Resmi(materi);

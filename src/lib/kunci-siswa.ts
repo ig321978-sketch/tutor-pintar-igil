@@ -52,6 +52,9 @@ export function kunciMapelTutor(mapel: string): string {
   ) {
     return "bahasa inggris";
   }
+  if (n === "musik" || n === "seni musik" || n === "music") {
+    return "seni musik";
+  }
   return n;
 }
 
