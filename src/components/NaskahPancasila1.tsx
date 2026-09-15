@@ -64,11 +64,11 @@ function KepalaKartu({
 function GelembungTutur({
   nama,
   warna,
-  anak,
+  children,
 }: {
   nama: string;
   warna: string;
-  anak: ReactNode;
+  children: ReactNode;
 }) {
   return (
     <article className={`rounded-2xl border-2 px-4 py-3 ${warna}`}>
@@ -76,7 +76,7 @@ function GelembungTutur({
         {nama}
       </p>
       <div className="mt-1 space-y-2 text-sm font-semibold leading-relaxed text-slate-700">
-        {anak}
+        {children}
       </div>
     </article>
   );
