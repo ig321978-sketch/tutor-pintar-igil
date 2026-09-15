@@ -9,6 +9,11 @@ import { MODUL_MTK1_BAB7 } from "@/lib/modul-resmi-mtk-1-bab7";
 import { MODUL_MTK1_BAB8 } from "@/lib/modul-resmi-mtk-1-bab8";
 import { MODUL_MTK1_BAB9 } from "@/lib/modul-resmi-mtk-1-bab9";
 import { MODUL_MTK1_BAB10 } from "@/lib/modul-resmi-mtk-1-bab10";
+import { MODUL_PANCASILA1_BAB1 } from "@/lib/modul-resmi-pancasila-1-bab1";
+import { MODUL_PANCASILA1_BAB2 } from "@/lib/modul-resmi-pancasila-1-bab2";
+import { MODUL_PANCASILA1_BAB3 } from "@/lib/modul-resmi-pancasila-1-bab3";
+import { MODUL_PANCASILA1_BAB4 } from "@/lib/modul-resmi-pancasila-1-bab4";
+import type { ModulResmiPai } from "@/lib/modul-resmi-pai";
 import {
   adalahMtk1Bab1,
   adalahMtk1Bab2,
@@ -20,6 +25,10 @@ import {
   adalahMtk1Bab8,
   adalahMtk1Bab9,
   adalahMtk1Bab10,
+  adalahPancasila1Bab1,
+  adalahPancasila1Bab2,
+  adalahPancasila1Bab3,
+  adalahPancasila1Bab4,
   adalahPai1Bab1,
   adalahPai1Bab2,
   cariModulPai1Resmi,
@@ -83,6 +92,17 @@ export function idKuisKartuResmi(
 
 export function idKuisTulisKartu(modulId: string, kodeKartu: string): string {
   return `${modulId}-${kodeKartu}-tulis`;
+}
+
+function idKuisDariModulResmi(modul: ModulResmiPai): string[] {
+  return [
+    ...modul.kartu.flatMap((kartu) =>
+      kartu.kuis.map((_, indeks) =>
+        idKuisKartuResmi(modul.id, kartu.kode, indeks),
+      ),
+    ),
+    ...modul.kartu.map((kartu) => idKuisTulisKartu(modul.id, kartu.kode)),
+  ];
 }
 
 export const ID_KUIS_TULIS_PAI1_BAB1 = [
@@ -228,6 +248,18 @@ export function daftarIdKuisMateri(
         idKuisTulisKartu(MODUL_MTK1_BAB10.id, kartu.kode),
       ),
     ];
+  }
+  if (adalahPancasila1Bab1(kelas, mapel, materi)) {
+    return idKuisDariModulResmi(MODUL_PANCASILA1_BAB1);
+  }
+  if (adalahPancasila1Bab2(kelas, mapel, materi)) {
+    return idKuisDariModulResmi(MODUL_PANCASILA1_BAB2);
+  }
+  if (adalahPancasila1Bab3(kelas, mapel, materi)) {
+    return idKuisDariModulResmi(MODUL_PANCASILA1_BAB3);
+  }
+  if (adalahPancasila1Bab4(kelas, mapel, materi)) {
+    return idKuisDariModulResmi(MODUL_PANCASILA1_BAB4);
   }
   if (!kelasSatuSd(kelas)) return [];
   const modul = cariModulPai1Resmi(materi);

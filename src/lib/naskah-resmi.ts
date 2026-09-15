@@ -22,12 +22,23 @@ import { MODUL_MTK1_BAB7 } from "@/lib/modul-resmi-mtk-1-bab7";
 import { MODUL_MTK1_BAB8 } from "@/lib/modul-resmi-mtk-1-bab8";
 import { MODUL_MTK1_BAB9 } from "@/lib/modul-resmi-mtk-1-bab9";
 import { MODUL_MTK1_BAB10 } from "@/lib/modul-resmi-mtk-1-bab10";
+import { MODUL_PANCASILA1_BAB1 } from "@/lib/modul-resmi-pancasila-1-bab1";
+import { MODUL_PANCASILA1_BAB2 } from "@/lib/modul-resmi-pancasila-1-bab2";
+import { MODUL_PANCASILA1_BAB3 } from "@/lib/modul-resmi-pancasila-1-bab3";
+import { MODUL_PANCASILA1_BAB4 } from "@/lib/modul-resmi-pancasila-1-bab4";
 import {
   isiCacheDariModulResmi,
   naskahTampilanModulResmi,
   teksLisanModulResmi,
   type ModulResmiPai,
 } from "@/lib/modul-resmi-pai";
+
+export const MODUL_PANCASILA1_BAB1_4 = [
+  MODUL_PANCASILA1_BAB1,
+  MODUL_PANCASILA1_BAB2,
+  MODUL_PANCASILA1_BAB3,
+  MODUL_PANCASILA1_BAB4,
+] as const;
 
 export function cariModulPai1Resmi(materi: string): ModulResmiPai | null {
   const judul = normJudul(materi);
@@ -47,6 +58,16 @@ function normJudul(nilai: string): string {
 
 function adalahMapelMatematika(mapel: string): boolean {
   return kunciMapelTutor(mapel) === "matematika";
+}
+
+function adalahMapelPancasila(mapel: string): boolean {
+  const mapelR = kunciMapelTutor(mapel);
+  return (
+    mapelR === "pendidikan pancasila" ||
+    mapelR === "ppkn" ||
+    mapelR === "pkn" ||
+    mapelR === "pendidikan kewarganegaraan"
+  );
 }
 
 function adalahMapelPai(mapel: string): boolean {
@@ -235,6 +256,82 @@ export function adalahMtk1Bab10(
   return adalahJudulMtk1Bab10(mapel, materi);
 }
 
+export function cariModulPancasila1Resmi(materi: string): ModulResmiPai | null {
+  const judul = normJudul(materi);
+  return MODUL_PANCASILA1_BAB1_4.find((modul) => modul.pola.test(judul)) ?? null;
+}
+
+export function cariModulPancasila1DariNaskah(teks?: string): ModulResmiPai | null {
+  return (
+    MODUL_PANCASILA1_BAB1_4.find((modul) => naskahTampilanModulResmi(modul, teks)) ??
+    null
+  );
+}
+
+export function adalahJudulPancasila1Bab1(mapel: string, materi: string): boolean {
+  if (!adalahMapelPancasila(mapel)) return false;
+  return /aku dan teman-temanku|teman temanku|pelangi di kelasku/.test(
+    normJudul(materi),
+  );
+}
+
+export function adalahPancasila1Bab1(
+  kelas: string,
+  mapel: string,
+  materi: string,
+): boolean {
+  if (!kelasSatuSd(kelas)) return false;
+  return adalahJudulPancasila1Bab1(mapel, materi);
+}
+
+export function adalahJudulPancasila1Bab2(mapel: string, materi: string): boolean {
+  if (!adalahMapelPancasila(mapel)) return false;
+  return /aku patuh pada aturan|patuh pada aturan|sebab.?akibat aturan/.test(
+    normJudul(materi),
+  );
+}
+
+export function adalahPancasila1Bab2(
+  kelas: string,
+  mapel: string,
+  materi: string,
+): boolean {
+  if (!kelasSatuSd(kelas)) return false;
+  return adalahJudulPancasila1Bab2(mapel, materi);
+}
+
+export function adalahJudulPancasila1Bab3(mapel: string, materi: string): boolean {
+  if (!adalahMapelPancasila(mapel)) return false;
+  return /aku mengenal indonesia|mengenal indonesia|perisai pancasila/.test(
+    normJudul(materi),
+  );
+}
+
+export function adalahPancasila1Bab3(
+  kelas: string,
+  mapel: string,
+  materi: string,
+): boolean {
+  if (!kelasSatuSd(kelas)) return false;
+  return adalahJudulPancasila1Bab3(mapel, materi);
+}
+
+export function adalahJudulPancasila1Bab4(mapel: string, materi: string): boolean {
+  if (!adalahMapelPancasila(mapel)) return false;
+  return /aku dan lingkunganku|lingkunganku|aksi hijau wangi/.test(
+    normJudul(materi),
+  );
+}
+
+export function adalahPancasila1Bab4(
+  kelas: string,
+  mapel: string,
+  materi: string,
+): boolean {
+  if (!kelasSatuSd(kelas)) return false;
+  return adalahJudulPancasila1Bab4(mapel, materi);
+}
+
 export function adalahPai1Bab2(
   kelas: string,
   mapel: string,
@@ -270,6 +367,11 @@ export function daftarNaskahResmiPublik(): ModulTerbitPublik[] {
     { kelas: "1 SD", mapel: "Matematika", materi: MODUL_MTK1_BAB8.judul },
     { kelas: "1 SD", mapel: "Matematika", materi: MODUL_MTK1_BAB9.judul },
     { kelas: "1 SD", mapel: "Matematika", materi: MODUL_MTK1_BAB10.judul },
+    ...MODUL_PANCASILA1_BAB1_4.map((modul) => ({
+      kelas: "1 SD",
+      mapel: "Pendidikan Pancasila",
+      materi: modul.judul,
+    })),
   ];
 }
 
@@ -310,6 +412,18 @@ export function naskahResmiJikaAda(
   if (adalahMtk1Bab10(kelas, mapel, materi)) {
     return isiCacheDariModulResmi(MODUL_MTK1_BAB10);
   }
+  if (adalahPancasila1Bab1(kelas, mapel, materi)) {
+    return isiCacheDariModulResmi(MODUL_PANCASILA1_BAB1);
+  }
+  if (adalahPancasila1Bab2(kelas, mapel, materi)) {
+    return isiCacheDariModulResmi(MODUL_PANCASILA1_BAB2);
+  }
+  if (adalahPancasila1Bab3(kelas, mapel, materi)) {
+    return isiCacheDariModulResmi(MODUL_PANCASILA1_BAB3);
+  }
+  if (adalahPancasila1Bab4(kelas, mapel, materi)) {
+    return isiCacheDariModulResmi(MODUL_PANCASILA1_BAB4);
+  }
   if (!kelasSatuSd(kelas) || !adalahMapelPai(mapel)) return null;
   const modul = cariModulPai1Resmi(materi);
   return modul ? isiCacheDariModulResmi(modul) : null;
@@ -327,6 +441,9 @@ export function naskahTampilanResmi(teks?: string): boolean {
   if (naskahTampilanModulResmi(MODUL_MTK1_BAB8, teks)) return true;
   if (naskahTampilanModulResmi(MODUL_MTK1_BAB9, teks)) return true;
   if (naskahTampilanModulResmi(MODUL_MTK1_BAB10, teks)) return true;
+  if (MODUL_PANCASILA1_BAB1_4.some((modul) => naskahTampilanModulResmi(modul, teks))) {
+    return true;
+  }
   return MODUL_PAI1_BAB3_10.some((modul) => naskahTampilanModulResmi(modul, teks));
 }
 
@@ -363,6 +480,10 @@ export function teksLisanResmiJikaAda(teks?: string): string | null {
   if (naskahTampilanModulResmi(MODUL_MTK1_BAB10, teks)) {
     return teksLisanModulResmi(MODUL_MTK1_BAB10);
   }
+  const pancasila = MODUL_PANCASILA1_BAB1_4.find((item) =>
+    naskahTampilanModulResmi(item, teks),
+  );
+  if (pancasila) return teksLisanModulResmi(pancasila);
   const modul = MODUL_PAI1_BAB3_10.find((item) =>
     naskahTampilanModulResmi(item, teks),
   );

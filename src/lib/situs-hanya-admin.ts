@@ -6,7 +6,10 @@ export function situsHanyaAdmin(): boolean {
 export const KELAS_TERBUKA_PUBLIK = "1 SD";
 export const MAPEL_TERBUKA_PUBLIK =
   "Pendidikan Agama Islam dan Budi Pekerti";
-export const MAPEL_TERBUKA_PUBLIK_LAIN = ["Matematika"] as const;
+export const MAPEL_TERBUKA_PUBLIK_LAIN = [
+  "Matematika",
+  "Pendidikan Pancasila",
+] as const;
 
 export const PESAN_MATERI_TERKUNCI_PUBLIK =
   "Untuk publik, saat ini hanya materi yang sudah terbit yang dapat dibuka.";
@@ -43,7 +46,13 @@ export function adalahMapelTerbukaPublik(mapel: string): boolean {
     .normalize("NFKC")
     .replace(/[’‘ʻ`´]/g, "'")
     .replace(/\s+/g, " ");
-  return adalahMapelPaiTerbuka(mapel) || n === "matematika";
+  return (
+    adalahMapelPaiTerbuka(mapel) ||
+    n === "matematika" ||
+    n === "pendidikan pancasila" ||
+    n === "ppkn" ||
+    n === "pkn"
+  );
 }
 
 export function materiTerbukaUntukPublik(kelas: string, mapel: string): boolean {

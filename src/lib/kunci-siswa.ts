@@ -23,6 +23,9 @@ export function kunciMapelTutor(mapel: string): string {
   ) {
     return "pendidikan agama islam dan budi pekerti";
   }
+  if (n === "ppkn" || n === "pkn" || n === "pendidikan kewarganegaraan") {
+    return "pendidikan pancasila";
+  }
   return n;
 }
 
