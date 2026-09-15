@@ -29,8 +29,10 @@ import {
   adalahPancasila1Bab2,
   adalahPancasila1Bab3,
   adalahPancasila1Bab4,
+  adalahBindo1,
   adalahPai1Bab1,
   adalahPai1Bab2,
+  cariModulBindo1Resmi,
   cariModulPai1Resmi,
   naskahResmiJikaAda,
 } from "@/lib/naskah-resmi";
@@ -260,6 +262,10 @@ export function daftarIdKuisMateri(
   }
   if (adalahPancasila1Bab4(kelas, mapel, materi)) {
     return idKuisDariModulResmi(MODUL_PANCASILA1_BAB4);
+  }
+  if (adalahBindo1(kelas, mapel, materi)) {
+    const bindo = cariModulBindo1Resmi(materi);
+    if (bindo) return idKuisDariModulResmi(bindo);
   }
   if (!kelasSatuSd(kelas)) return [];
   const modul = cariModulPai1Resmi(materi);

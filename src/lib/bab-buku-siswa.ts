@@ -30,9 +30,9 @@ export const BAB_BUKU_SISWA: Record<string, Record<string, string[]>> = {
       "Bab 3: Awas Kuman!",
       "Bab 4: Aku Bisa!",
       "Bab 5: Teman Baru",
-      "Bab 6: Temanku Berbeda",
-      "Bab 7: Aku Ingin",
-      "Bab 8: Di Sekitar Rumah",
+      "Bab 6: Jangan Takut!",
+      "Bab 7: Rumah Kedua",
+      "Bab 8: Di Sekitar Kita",
     ],
     Matematika: [
       "Bab 1: Ayo Berhitung!",

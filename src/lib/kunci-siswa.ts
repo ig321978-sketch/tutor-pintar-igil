@@ -26,6 +26,14 @@ export function kunciMapelTutor(mapel: string): string {
   if (n === "ppkn" || n === "pkn" || n === "pendidikan kewarganegaraan") {
     return "pendidikan pancasila";
   }
+  if (
+    n === "bindo" ||
+    n === "b.indonesia" ||
+    n === "b indonesia" ||
+    n === "bahasa indonesia"
+  ) {
+    return "bahasa indonesia";
+  }
   return n;
 }
 
