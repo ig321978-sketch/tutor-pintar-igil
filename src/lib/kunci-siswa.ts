@@ -55,6 +55,9 @@ export function kunciMapelTutor(mapel: string): string {
   if (n === "musik" || n === "seni musik" || n === "music") {
     return "seni musik";
   }
+  if (n === "rupa" || n === "seni rupa" || n === "seni lukis") {
+    return "seni rupa";
+  }
   return n;
 }
 

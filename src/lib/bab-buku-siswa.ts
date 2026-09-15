@@ -84,10 +84,10 @@ export const BAB_BUKU_SISWA: Record<string, Record<string, string[]>> = {
       "Bab 4: Pengolahan Makanan",
     ],
     "Seni Rupa": [
-      "Bab 1: Menggambar Imajinatif",
-      "Bab 2: Mencetak Sederhana",
-      "Bab 3: Kolase",
-      "Bab 4: Membentuk dari Tanah Liat",
+      "Bab 1: Menari dengan Garis dan Warna",
+      "Bab 2: Cap Rumah Alam",
+      "Bab 3: Potong dan Tempel",
+      "Bab 4: Membuat Mainan dari Barang Bekas",
     ],
     "Seni Musik": [
       "Bab 1: Bermain dengan Bunyi",
