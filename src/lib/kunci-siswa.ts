@@ -34,6 +34,16 @@ export function kunciMapelTutor(mapel: string): string {
   ) {
     return "bahasa indonesia";
   }
+  if (
+    n === "pjok" ||
+    n === "penjas" ||
+    n === "penjaskes" ||
+    n === "pendidikan jasmani" ||
+    n === "pendidikan jasmani olahraga dan kesehatan" ||
+    n === "pendidikan jasmani, olahraga, dan kesehatan"
+  ) {
+    return "pendidikan jasmani, olahraga, dan kesehatan";
+  }
   return n;
 }
 
