@@ -48,10 +48,10 @@ const DATA_INTI_KURIKULUM: Record<string, Record<string, string[]>> = {
       "Bab 4: Karya Tiga Dimensi",
     ],
     "Bahasa Inggris": [
-      "Bab 1: Greetings",
-      "Bab 2: Numbers and Colors",
-      "Bab 3: Myself and My Family",
-      "Bab 4: Animals around Me",
+      "Unit 1: How Are You?",
+      "Unit 2: My School Things",
+      "Unit 3: Let's Count",
+      "Unit 4: Rainbow Colors",
     ],
     "Muatan Lokal": [
       "Bab 1: Bahasa Daerah",

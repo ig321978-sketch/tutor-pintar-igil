@@ -44,6 +44,14 @@ export function kunciMapelTutor(mapel: string): string {
   ) {
     return "pendidikan jasmani, olahraga, dan kesehatan";
   }
+  if (
+    n === "english" ||
+    n === "b.inggris" ||
+    n === "b inggris" ||
+    n === "bahasa inggris"
+  ) {
+    return "bahasa inggris";
+  }
   return n;
 }
 
