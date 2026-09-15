@@ -24,6 +24,12 @@ export const BAB_BUKU_SISWA: Record<string, Record<string, string[]>> = {
       "Bab 3: Indahnya Alam Ciptaan Tuhan",
       "Bab 4: Aku Mau Berbagi",
     ],
+    "Pendidikan Agama Katolik dan Budi Pekerti": [
+      "Bab 1: Diriku Ciptaan yang Istimewa",
+      "Bab 2: Rumahku, Gereja Kecilku",
+      "Bab 3: Menjaga Taman Firdaus Kita",
+      "Bab 4: Menjadi Sahabat Bagi Semua Orang",
+    ],
     "Pendidikan Pancasila": [
       "Bab 1: Aku dan Teman-Temanku",
       "Bab 2: Aku Patuh Pada Aturan",
