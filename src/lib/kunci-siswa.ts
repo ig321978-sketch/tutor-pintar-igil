@@ -58,6 +58,15 @@ export function kunciMapelTutor(mapel: string): string {
   if (n === "rupa" || n === "seni rupa" || n === "seni lukis") {
     return "seni rupa";
   }
+  if (
+    n === "pak" ||
+    n === "pa kristen" ||
+    n === "agama kristen" ||
+    n === "pendidikan agama kristen" ||
+    n === "pendidikan agama kristen dan budi pekerti"
+  ) {
+    return "pendidikan agama kristen dan budi pekerti";
+  }
   return n;
 }
 

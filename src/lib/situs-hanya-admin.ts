@@ -14,6 +14,7 @@ export const MAPEL_TERBUKA_PUBLIK_LAIN = [
   "Bahasa Inggris",
   "Seni Musik",
   "Seni Rupa",
+  "Pendidikan Agama Kristen dan Budi Pekerti",
 ] as const;
 
 export const PESAN_MATERI_TERKUNCI_PUBLIK =
@@ -72,7 +73,12 @@ export function adalahMapelTerbukaPublik(mapel: string): boolean {
     n === "music" ||
     n === "seni rupa" ||
     n === "rupa" ||
-    n === "seni lukis"
+    n === "seni lukis" ||
+    n === "pendidikan agama kristen dan budi pekerti" ||
+    n === "pendidikan agama kristen" ||
+    n === "agama kristen" ||
+    n === "pa kristen" ||
+    n === "pak"
   );
 }
 

@@ -18,6 +18,12 @@ export const BAB_BUKU_SISWA: Record<string, Record<string, string[]>> = {
       "Bab 9: Tata Cara Berwudu",
       "Bab 10: Kisah Nabi Adam AS",
     ],
+    "Pendidikan Agama Kristen dan Budi Pekerti": [
+      "Bab 1: Aku Unik, Aku Berharga",
+      "Bab 2: Keluargaku yang Pengasih",
+      "Bab 3: Indahnya Alam Ciptaan Tuhan",
+      "Bab 4: Aku Mau Berbagi",
+    ],
     "Pendidikan Pancasila": [
       "Bab 1: Aku dan Teman-Temanku",
       "Bab 2: Aku Patuh Pada Aturan",
