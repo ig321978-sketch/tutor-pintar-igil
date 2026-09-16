@@ -533,6 +533,116 @@ const INFOGRAFIS: Record<
     catatan:
       "Doa harus dibarengi usaha nyata. Nabi Nuh bekerja siang malam menebang pohon dan merakit kapal hingga selesai.",
   },
+  "pai-2-bab6-A": {
+    judul: "Indahnya Surah al-Asr",
+    kepala: ["Bagian", "Isi", "Makna untuk kita"],
+    baris: [
+      ["Nama surah", "Al-Asr = waktu / masa", "Surah ke-103, 3 ayat"],
+      ["Ciri khas", "Makkiyyah", "Diturunkan di Mekah"],
+      ["Puncak utama", "Hargai setiap detik", "Waktu yang lewat tidak kembali"],
+    ],
+    catatan:
+      "Bacalah ayat pertama: Wal Asr (Demi masa). Sambungkan hafalan hingga ayat ketiga dengan makhraj yang benar dan tartil!",
+  },
+  "pai-2-bab6-B": {
+    judul: "Empat kunci orang beruntung",
+    kepala: ["Kunci", "Perbuatan", "Contoh anak"],
+    baris: [
+      ["1 dan 2", "Beriman dan beramal salih", "Salat, belajar, bantu orang tua"],
+      ["3 dan 4", "Nasihat benar dan sabar", "Ingatkan teman dengan sopan"],
+      ["Berbalik arah", "Jangan sia-siakan waktu", "Game berlebih = rugi"],
+    ],
+    catatan:
+      "Manusia merugi kecuali yang beriman, beramal salih, serta saling menasihati dalam kebenaran dan kesabaran. Isi waktu dengan hal bermanfaat!",
+  },
+  "pai-2-bab7-A": {
+    judul: "Makhluk cahaya yang taat",
+    kepala: ["Pokok", "Fakta", "Ingat"],
+    baris: [
+      ["Bahan ciptaan", "Nur / cahaya", "Bukan tanah seperti manusia"],
+      ["Sifat utama", "Gaib, tanpa nafsu", "Tidak makan, tidak tidur, tidak lelah"],
+      ["Ketaatan", "Tidak pernah durhaka", "Rukun iman kedua"],
+    ],
+    catatan:
+      "Iman kepada malaikat adalah rukun iman yang kedua. Kita wajib percaya keberadaan mereka meskipun tidak bisa melihat wujudnya.",
+  },
+  "pai-2-bab7-B": {
+    judul: "Kartu tugas 10 malaikat",
+    kepala: ["Nama", "Tugas", "Untuk kita"],
+    baris: [
+      ["Jibril · Mikail", "Wahyu · rezeki dan hujan", "Syukuri ilmu dan makanan"],
+      ["Raqib · Atid", "Catat baik · catat buruk", "Jujur meski sendiri"],
+      ["Ridwan · Malik", "Pintu surga · pintu neraka", "Perbanyak amal salih"],
+    ],
+    catatan:
+      "Israfil meniup sangkakala, Izrail mencabut nyawa, Munkar dan Nakir bertanya di kubur. Karena selalu dicatat, yuk perbanyak amal salih!",
+  },
+  "pai-2-bab8-A": {
+    judul: "Bersih pangkal iman",
+    kepala: ["Bagian", "Contoh", "Hasil"],
+    baris: [
+      ["Bersih badan", "Mandi, gigi, kuku Jumat", "Bebas kotoran dan kuman"],
+      ["Bersih pakaian", "Baju suci, cuci sabun", "Layak untuk salat"],
+      ["Bersih tempat", "Sampah pada tempatnya", "Malaikat senang berkunjung"],
+    ],
+    catatan:
+      "Kebersihan itu sebagian dari iman. Allah Maha Indah dan sangat mencintai hamba-Nya yang pandai menjaga kebersihan.",
+  },
+  "pai-2-bab8-B": {
+    judul: "Roda hidup anak teratur",
+    kepala: ["Bagian", "Contoh", "Akibat baik"],
+    baris: [
+      ["Rapi di meja", "Buku dan alat pada tempatnya", "Tidak panik mencari barang"],
+      ["Teratur waktu", "Subuh, makan, tidur cukup", "Pikiran tenang"],
+      ["Karakter", "Rapikan mainan setelah dipakai", "Mandiri dan bertanggung jawab"],
+    ],
+    catatan:
+      "Merapikan kembali mainan setelah digunakan adalah tanda anak yang mandiri dan bertanggung jawab kepada rumahnya.",
+  },
+  "pai-2-bab9-A": {
+    judul: "Tangga bacaan dzikir",
+    kepala: ["Bacaan", "Lafal", "Arti"],
+    baris: [
+      ["Istighfar", "Astaghfirullahal Adzim", "Mohon ampun kepada Allah"],
+      ["Tasbih · Tahmid", "Subhanallah · Alhamdulillah, 33 kali", "Maha Suci · segala puji"],
+      ["Takbir", "Allahu Akbar, 33 kali", "Allah Maha Besar"],
+    ],
+    catatan:
+      "Dzikir artinya mengingat Allah. Berdzikir setelah salat fardhu membuat hati tenang, damai, dan dijaga oleh malaikat.",
+  },
+  "pai-2-bab9-B": {
+    judul: "Adab berdoa kepada Allah",
+    kepala: ["Bagian", "Isi", "Ingat"],
+    baris: [
+      ["Adab utama", "Kiblat, tangan di dada, khusyuk", "Jangan bermain atau menengok"],
+      ["Doa sapujagat", "Keselamatan dunia dan akhirat", "Minta yang terbaik"],
+      ["Doa orang tua", "Rabbighfirli wa liwalidayya", "Birrul walidain"],
+    ],
+    catatan:
+      'Allah berjanji: "Berdoalah kepada-Ku, niscaya akan Aku kabulkan." Jangan malas berdoa karena doa adalah senjata umat Islam.',
+  },
+  "pai-2-bab10-A": {
+    judul: "Dakwah Nabi Hud As.",
+    kepala: ["Pokok", "Fakta", "Hikmah"],
+    baris: [
+      ["Diutus kepada", "Kaum Ad yang besar dan kuat", "Ahli memahat istana batu"],
+      ["Penyakit hati", "Sombong, menyembah berhala", "Fisik tidak menolong jika ingkar"],
+      ["Akhlak unggul", "Santun walau dihina", "Tidak membalas dengan marah"],
+    ],
+    catatan:
+      "Kekuatan fisik dan kekayaan materi tidak ada gunanya di hadapan Allah jika hati dipenuhi kesombongan dan ingkar kepada kebenaran iman.",
+  },
+  "pai-2-bab10-B": {
+    judul: "Angin topan dahsyat",
+    kepala: ["Pokok", "Isi", "Makna"],
+    baris: [
+      ["Sifat tegas", "Menolak kemusyrikan", "Berani membela kebenaran"],
+      ["Azab Allah", "Kemarau, lalu angin dingin", "7 malam dan 8 hari"],
+      ["Akhir kisah", "Yang beriman selamat", "Istana sombong hancur"],
+    ],
+    catatan:
+      "Ketegasan membela kebenaran iman berbuah keselamatan. Tolak ajakan membolos atau menyontek dengan kata yang sopan tetapi tegas.",
+  },
 };
 
 function EvaluasiBab1({ modulId }: { modulId: string }) {
@@ -1010,12 +1120,431 @@ function EvaluasiBab5({ modulId }: { modulId: string }) {
   );
 }
 
+function EvaluasiBab6({ modulId }: { modulId: string }) {
+  return (
+    <div className="mt-5 space-y-5">
+      <h5 className="text-sm font-black uppercase tracking-wide text-[#1C01A5]">
+        A. Pilihan ganda
+      </h5>
+      <KuisPilihan
+        id={idEval(modulId, 0)}
+        soal="Berdasarkan pesan pokok Surah al-Asr, semua manusia berada dalam keadaan merugi di dunia dan akhirat, kecuali orang-orang yang..."
+        benar="B"
+        pilihan={[
+          { huruf: "A", teks: "Memiliki banyak harta benda dan mainan mahal." },
+          {
+            huruf: "B",
+            teks: "Beriman, beramal salih, serta saling menasihati dalam kebenaran dan kesabaran.",
+          },
+          { huruf: "C", teks: "Menghabiskan seluruh waktunya untuk tidur dan bermain." },
+        ]}
+      />
+      <KuisPilihan
+        id={idEval(modulId, 1)}
+        soal="Tindakan di bawah ini yang mencerminkan sikap menghargai waktu sebagai bentuk pengamalan Surah al-Asr adalah..."
+        benar="B"
+        pilihan={[
+          { huruf: "A", teks: "Menunda mengerjakan PR sekolah hingga larut malam." },
+          {
+            huruf: "B",
+            teks: "Membuat jadwal harian dan disiplin melaksanakannya (seperti waktu salat, belajar, dan bermain).",
+          },
+          {
+            huruf: "C",
+            teks: "Datang terlambat ke sekolah karena bangun kesiangan akibat menonton TV.",
+          },
+        ]}
+      />
+      <h5 className="text-sm font-black uppercase tracking-wide text-[#1C01A5]">
+        B. Benar atau salah beserta alasan
+      </h5>
+      <KuisBenarSalah
+        id={idEval(modulId, 2)}
+        soal="Saling menasihati sesama teman harus dilakukan dengan cara berteriak atau memarahi mereka di depan kelas agar mereka kapok."
+        benar="salah"
+        alasanBenar="menasihati harus sopan dan lembut, bukan memalukan teman di depan kelas"
+      />
+      <KuisBenarSalah
+        id={idEval(modulId, 3)}
+        soal="Menggunakan waktu muda untuk rajin menuntut ilmu adalah contoh amal salih yang menyelamatkan kita dari kerugian."
+        benar="benar"
+        alasanBenar="belajar adalah amal salih yang mengisi waktu dengan manfaat sesuai pesan al-Asr"
+      />
+      <h5 className="text-sm font-black uppercase tracking-wide text-[#1C01A5]">
+        C. Mencocokkan ayat dengan artinya
+      </h5>
+      <KuisJodoh
+        id={idEval(modulId, 4)}
+        soal="Tariklah garis lurus pada pasangan yang cocok."
+        pasangan={[
+          {
+            kiri: "Wal Asr",
+            kanan: [
+              "Kecuali orang-orang yang beriman.",
+              "Demi masa/waktu.",
+              "Dan mengerjakan kebajikan (amal salih).",
+            ],
+          },
+          {
+            kiri: "Illal ladziina aamanu",
+            kanan: [
+              "Kecuali orang-orang yang beriman.",
+              "Demi masa/waktu.",
+              "Dan mengerjakan kebajikan (amal salih).",
+            ],
+          },
+          {
+            kiri: "Wa amilu shalihat",
+            kanan: [
+              "Kecuali orang-orang yang beriman.",
+              "Demi masa/waktu.",
+              "Dan mengerjakan kebajikan (amal salih).",
+            ],
+          },
+        ]}
+        kunci={{
+          "Wal Asr": "Demi masa/waktu.",
+          "Illal ladziina aamanu": "Kecuali orang-orang yang beriman.",
+          "Wa amilu shalihat": "Dan mengerjakan kebajikan (amal salih).",
+        }}
+      />
+      <h5 className="text-sm font-black uppercase tracking-wide text-[#1C01A5]">
+        D. Esai pendek analisis
+      </h5>
+      <KuisIsian
+        id={idEval(modulId, 5)}
+        soal="Mengapa anak yang suka menunda-nunda pekerjaan baik (misalnya menunda salat atau menunda belajar) disebut sebagai orang yang merugi menurut perspektif Surah al-Asr? Jelaskan akibat buruknya secara logis!"
+        alias={["waktu", "rugi", "tidak kembali", "hilang", "menunda", "amal"]}
+      />
+    </div>
+  );
+}
+
+function EvaluasiBab7({ modulId }: { modulId: string }) {
+  return (
+    <div className="mt-5 space-y-5">
+      <h5 className="text-sm font-black uppercase tracking-wide text-[#1C01A5]">
+        A. Pilihan ganda
+      </h5>
+      <KuisPilihan
+        id={idEval(modulId, 0)}
+        soal="Iman kepada malaikat-malaikat Allah merupakan pilar rukun iman yang wajib diyakini oleh setiap muslim. Peta urutan Rukun Iman kepada malaikat adalah yang ke..."
+        benar="B"
+        pilihan={[
+          { huruf: "A", teks: "Kesatu" },
+          { huruf: "B", teks: "Kedua" },
+          { huruf: "C", teks: "Ketiga" },
+        ]}
+      />
+      <KuisPilihan
+        id={idEval(modulId, 1)}
+        soal="Setiap kali Nia hendak menyontek saat ujian, ia langsung membatalkan niat buruknya karena ingat bahwa ada malaikat yang selalu mencatat amal buruk manusia, yaitu Malaikat..."
+        benar="B"
+        pilihan={[
+          { huruf: "A", teks: "Raqib" },
+          { huruf: "B", teks: "Atid" },
+          { huruf: "C", teks: "Ridwan" },
+        ]}
+      />
+      <h5 className="text-sm font-black uppercase tracking-wide text-[#1C01A5]">
+        B. Benar atau salah beserta alasan
+      </h5>
+      <KuisBenarSalah
+        id={idEval(modulId, 2)}
+        soal="Malaikat Jibril bertugas menurunkan hujan dan membagikan rezeki berupa makanan dan kesehatan untuk seluruh makhluk hidup di bumi."
+        benar="salah"
+        alasanBenar="yang membagi rezeki dan hujan adalah Mikail; Jibril menyampaikan wahyu"
+      />
+      <KuisBenarSalah
+        id={idEval(modulId, 3)}
+        soal="Mengimani keberadaan Malaikat Munkar dan Nakir membuat kita rajin mempersiapkan diri dengan beribadah sebelum ajal tiba."
+        benar="benar"
+        alasanBenar="mereka akan bertanya di alam kubur, jadi kita siapkan amal dari sekarang"
+      />
+      <h5 className="text-sm font-black uppercase tracking-wide text-[#1C01A5]">
+        C. Mencocokkan nama dan tugas malaikat
+      </h5>
+      <KuisJodoh
+        id={idEval(modulId, 4)}
+        soal="Tariklah garis lurus pada pasangan yang cocok."
+        pasangan={[
+          {
+            kiri: "Malaikat Ridwan",
+            kanan: [
+              "Mencabut nyawa makhluk hidup.",
+              "Menjaga pintu surga yang indah.",
+              "Meniup terompet sangkakala hari kiamat.",
+            ],
+          },
+          {
+            kiri: "Malaikat Izrail",
+            kanan: [
+              "Mencabut nyawa makhluk hidup.",
+              "Menjaga pintu surga yang indah.",
+              "Meniup terompet sangkakala hari kiamat.",
+            ],
+          },
+          {
+            kiri: "Malaikat Israfil",
+            kanan: [
+              "Mencabut nyawa makhluk hidup.",
+              "Menjaga pintu surga yang indah.",
+              "Meniup terompet sangkakala hari kiamat.",
+            ],
+          },
+        ]}
+        kunci={{
+          "Malaikat Ridwan": "Menjaga pintu surga yang indah.",
+          "Malaikat Izrail": "Mencabut nyawa makhluk hidup.",
+          "Malaikat Israfil": "Meniup terompet sangkakala hari kiamat.",
+        }}
+      />
+      <h5 className="text-sm font-black uppercase tracking-wide text-[#1C01A5]">
+        D. Esai pendek analisis
+      </h5>
+      <KuisIsian
+        id={idEval(modulId, 5)}
+        soal="Bagaimana keyakinan iman kepada adanya Malaikat Raqib dan Atid dapat mengubah dan membentuk karakter perilaku seorang anak menjadi lebih jujur dan disiplin di sekolah, meskipun tidak sedang diawasi oleh guru? Jelaskan analisis logismu!"
+        alias={["catat", "jujur", "raqib", "atid", "amal", "diawasi"]}
+      />
+    </div>
+  );
+}
+
+function EvaluasiBab8({ modulId }: { modulId: string }) {
+  return (
+    <div className="mt-5 space-y-5">
+      <h5 className="text-sm font-black uppercase tracking-wide text-[#1C01A5]">
+        A. Pilihan ganda
+      </h5>
+      <KuisPilihan
+        id={idEval(modulId, 0)}
+        soal="Rasulullah SAW bersabda bahwa kebersihan adalah sebagian dari iman. Salah satu contoh perbuatan menjaga kebersihan pakaian yang tepat adalah..."
+        benar="B"
+        pilihan={[
+          { huruf: "A", teks: "Membiarkan baju seragam yang basah oleh keringat dipakai tidur." },
+          {
+            huruf: "B",
+            teks: "Segera mencuci baju yang kotor menggunakan sabun dan menggantinya dengan pakaian yang bersih dan suci.",
+          },
+          {
+            huruf: "C",
+            teks: "Menyemprotkan banyak parfum pada pakaian yang penuh lumpur agar tidak bau.",
+          },
+        ]}
+      />
+      <KuisPilihan
+        id={idEval(modulId, 1)}
+        soal="Manfaat utama yang dirasakan oleh seorang murid yang selalu menjaga kerapian meja belajarnya di kelas adalah..."
+        benar="B"
+        pilihan={[
+          { huruf: "A", teks: "Meja menjadi tempat bersembunyi yang aman." },
+          {
+            huruf: "B",
+            teks: "Suasana belajar menjadi sangat nyaman dan mudah menemukan alat tulis yang dibutuhkan tanpa panik.",
+          },
+          { huruf: "C", teks: "Guru akan memberikan nilai matematika seratus secara gratis." },
+        ]}
+      />
+      <h5 className="text-sm font-black uppercase tracking-wide text-[#1C01A5]">
+        B. Mengelompokkan perilaku
+      </h5>
+      <KuisJodoh
+        id={idEval(modulId, 2)}
+        soal="Beri tanda pada kolom yang sesuai: bersih dan rapi, atau tercela/berantakan."
+        pasangan={[
+          {
+            kiri: "Membuang kulit pisang di laci meja kelas.",
+            kanan: ["Bersih dan rapi", "Tercela / berantakan"],
+          },
+          {
+            kiri: "Menyusun sepatu di rak dengan teratur.",
+            kanan: ["Bersih dan rapi", "Tercela / berantakan"],
+          },
+          {
+            kiri: "Menggosok gigi sebelum tidur malam.",
+            kanan: ["Bersih dan rapi", "Tercela / berantakan"],
+          },
+        ]}
+        kunci={{
+          "Membuang kulit pisang di laci meja kelas.": "Tercela / berantakan",
+          "Menyusun sepatu di rak dengan teratur.": "Bersih dan rapi",
+          "Menggosok gigi sebelum tidur malam.": "Bersih dan rapi",
+        }}
+      />
+      <h5 className="text-sm font-black uppercase tracking-wide text-[#1C01A5]">
+        C. Esai pendek analisis
+      </h5>
+      <KuisIsian
+        id={idEval(modulId, 3)}
+        soal="Jelaskan mengapa hidup teratur (seperti tidur tepat waktu dan mengulang pelajaran) dapat membantu seorang siswa meraih prestasi yang baik di sekolah! Hubungkan dengan kedisiplinan diri!"
+        alias={["disiplin", "tidur", "belajar", "teratur", "prestasi", "tenang"]}
+      />
+    </div>
+  );
+}
+
+function EvaluasiBab9({ modulId }: { modulId: string }) {
+  return (
+    <div className="mt-5 space-y-5">
+      <h5 className="text-sm font-black uppercase tracking-wide text-[#1C01A5]">
+        A. Pilihan ganda
+      </h5>
+      <KuisPilihan
+        id={idEval(modulId, 0)}
+        soal="Arti dari bacaan dzikir kalimat tayyibah Istighfar (Astaghfirullahal Adzim) yang kita lafalkan setelah selesai salat fardhu adalah..."
+        benar="A"
+        pilihan={[
+          { huruf: "A", teks: "Aku memohon ampun kepada Allah Yang Maha Agung." },
+          { huruf: "B", teks: "Segala puji bagi Allah Tuhan semesta alam." },
+          { huruf: "C", teks: "Allah Maha Besar atas segala sesuatu." },
+        ]}
+      />
+      <KuisPilihan
+        id={idEval(modulId, 1)}
+        soal="Perhatikan sikap berikut: (1) Menadahkan tangan di depan dada, (2) Berteriak sekencang mungkin, (3) Menghadap kiblat dengan tenang. Di antara sikap tersebut yang termasuk adab berdoa yang santun adalah nomor..."
+        benar="B"
+        pilihan={[
+          { huruf: "A", teks: "(1) dan (2)" },
+          { huruf: "B", teks: "(1) dan (3)" },
+          { huruf: "C", teks: "(2) dan (3)" },
+        ]}
+      />
+      <h5 className="text-sm font-black uppercase tracking-wide text-[#1C01A5]">
+        B. Benar atau salah beserta alasan
+      </h5>
+      <KuisBenarSalah
+        id={idEval(modulId, 2)}
+        soal="Membaca doa kesembuhan dan keselamatan untuk orang tua merupakan wujud nyata laku anak yang berbakti (Birrul Walidain)."
+        benar="benar"
+        alasanBenar="mendoakan orang tua adalah bakti yang sangat dicintai Allah"
+      />
+      <KuisBenarSalah
+        id={idEval(modulId, 3)}
+        soal="Dzikir setelah salat fardhu hukumnya wajib dilakukan, sehingga jika ditinggalkan salatnya menjadi tidak sah."
+        benar="salah"
+        alasanBenar="dzikir sangat dianjurkan, tetapi salat tetap sah jika rukunnya lengkap"
+      />
+      <h5 className="text-sm font-black uppercase tracking-wide text-[#1C01A5]">
+        C. Melengkapi potongan doa orang tua
+      </h5>
+      <KuisIsian
+        id={idEval(modulId, 4)}
+        soal="Rabbighfir lii wa liwaalidayya warhamhumaa kamaa ........................ shaghiiraa."
+        alias={["rabbayani", "rabbayani shaghiira"]}
+      />
+    </div>
+  );
+}
+
+function EvaluasiBab10({ modulId }: { modulId: string }) {
+  return (
+    <div className="mt-5 space-y-5">
+      <h5 className="text-sm font-black uppercase tracking-wide text-[#1C01A5]">
+        A. Pilihan ganda
+      </h5>
+      <KuisPilihan
+        id={idEval(modulId, 0)}
+        soal="Meskipun kaum Ad menghina Nabi Hud As. dengan sebutan orang bodoh dan pembohong, Nabi Hud As. tetap membalas mereka dengan ucapan yang santun dan penuh nasihat baik. Sikap Nabi Hud As. ini mencontohkan sifat..."
+        benar="B"
+        pilihan={[
+          { huruf: "A", teks: "Takut kepada kekuatan fisik kaum Ad." },
+          {
+            huruf: "B",
+            teks: "Lemah lembut dan sabar dalam menyampaikan kebenaran agama.",
+          },
+          { huruf: "C", teks: "Pura-pura baik agar diberi hadiah uang." },
+        ]}
+      />
+      <KuisPilihan
+        id={idEval(modulId, 1)}
+        soal="Allah SWT membinasakan kaum Ad yang sombong dan durhaka dengan mengirimkan azab berupa bencana alam yaitu..."
+        benar="C"
+        pilihan={[
+          { huruf: "A", teks: "Banjir air bah yang menenggelamkan daratan." },
+          { huruf: "B", teks: "Hujan batu api dari langit yang sangat panas." },
+          {
+            huruf: "C",
+            teks: "Angin topan yang sangat dingin dan bertiup kencang selama tujuh malam delapan hari.",
+          },
+        ]}
+      />
+      <h5 className="text-sm font-black uppercase tracking-wide text-[#1C01A5]">
+        B. Benar atau salah beserta alasan
+      </h5>
+      <KuisBenarSalah
+        id={idEval(modulId, 2)}
+        soal="Kaum Ad selamat dari siksaan angin topan karena mereka memiliki tubuh yang sangat besar, kuat, dan berlindung di dalam benteng gunung batu."
+        benar="salah"
+        alasanBenar="kekuatan dan benteng batu tidak menolong orang sombong yang ingkar kepada Allah"
+      />
+      <KuisBenarSalah
+        id={idEval(modulId, 3)}
+        soal="Kita harus bersikap tegas untuk menolak dan menjauhi setiap ajakan teman yang mengarah pada perbuatan buruk atau dosa."
+        benar="benar"
+        alasanBenar="meneladani ketegasan Nabi Hud yang menolak kemusyrikan dan dosa"
+      />
+      <h5 className="text-sm font-black uppercase tracking-wide text-[#1C01A5]">
+        C. Mencocokkan pasangan sejarah
+      </h5>
+      <KuisJodoh
+        id={idEval(modulId, 4)}
+        soal="Tariklah garis lurus pada pasangan yang cocok."
+        pasangan={[
+          {
+            kiri: "Nabi Hud As.",
+            kanan: [
+              "Hancur binasa tersapu angin topan kedahsyatan azab.",
+              "Selamat dalam perlindungan Allah karena beriman.",
+              "Benda mati yang disembah secara salah oleh kaum kafir.",
+            ],
+          },
+          {
+            kiri: "Kaum Ad",
+            kanan: [
+              "Hancur binasa tersapu angin topan kedahsyatan azab.",
+              "Selamat dalam perlindungan Allah karena beriman.",
+              "Benda mati yang disembah secara salah oleh kaum kafir.",
+            ],
+          },
+          {
+            kiri: "Patung berhala",
+            kanan: [
+              "Hancur binasa tersapu angin topan kedahsyatan azab.",
+              "Selamat dalam perlindungan Allah karena beriman.",
+              "Benda mati yang disembah secara salah oleh kaum kafir.",
+            ],
+          },
+        ]}
+        kunci={{
+          "Nabi Hud As.": "Selamat dalam perlindungan Allah karena beriman.",
+          "Kaum Ad": "Hancur binasa tersapu angin topan kedahsyatan azab.",
+          "Patung berhala": "Benda mati yang disembah secara salah oleh kaum kafir.",
+        }}
+      />
+      <h5 className="text-sm font-black uppercase tracking-wide text-[#1C01A5]">
+        D. Esai pendek analisis
+      </h5>
+      <KuisIsian
+        id={idEval(modulId, 5)}
+        soal="Mengapa kekuatan tubuh yang kuat dan kecerdasan memahat bangunan mewah yang dimiliki kaum Ad menjadi tidak berharga sama sekali di hadapan Allah SWT? Jelaskan hubungannya dengan sifat sombong!"
+        alias={["sombong", "ingkar", "iman", "sia", "azab", "kekuatan"]}
+      />
+    </div>
+  );
+}
+
 function EvaluasiBab({ modul }: { modul: ModulResmiPai }) {
   if (modul.id === "pai-2-bab1") return <EvaluasiBab1 modulId={modul.id} />;
   if (modul.id === "pai-2-bab2") return <EvaluasiBab2 modulId={modul.id} />;
   if (modul.id === "pai-2-bab3") return <EvaluasiBab3 modulId={modul.id} />;
   if (modul.id === "pai-2-bab4") return <EvaluasiBab4 modulId={modul.id} />;
-  return <EvaluasiBab5 modulId={modul.id} />;
+  if (modul.id === "pai-2-bab5") return <EvaluasiBab5 modulId={modul.id} />;
+  if (modul.id === "pai-2-bab6") return <EvaluasiBab6 modulId={modul.id} />;
+  if (modul.id === "pai-2-bab7") return <EvaluasiBab7 modulId={modul.id} />;
+  if (modul.id === "pai-2-bab8") return <EvaluasiBab8 modulId={modul.id} />;
+  if (modul.id === "pai-2-bab9") return <EvaluasiBab9 modulId={modul.id} />;
+  return <EvaluasiBab10 modulId={modul.id} />;
 }
 
 export default function NaskahPai2({
