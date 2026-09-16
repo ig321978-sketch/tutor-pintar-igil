@@ -99,6 +99,20 @@ export function kunciMapelTutor(mapel: string): string {
   ) {
     return "pendidikan agama hindu dan budi pekerti";
   }
+  if (
+    n === "khonghucu" ||
+    n === "konghucu" ||
+    n === "pa khonghucu" ||
+    n === "pa konghucu" ||
+    n === "agama khonghucu" ||
+    n === "agama konghucu" ||
+    n === "pendidikan agama khonghucu" ||
+    n === "pendidikan agama konghucu" ||
+    n === "pendidikan agama khonghucu dan budi pekerti" ||
+    n === "pendidikan agama konghucu dan budi pekerti"
+  ) {
+    return "pendidikan agama khonghucu dan budi pekerti";
+  }
   return n;
 }
 

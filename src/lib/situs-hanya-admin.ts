@@ -18,6 +18,7 @@ export const MAPEL_TERBUKA_PUBLIK_LAIN = [
   "Pendidikan Agama Katolik dan Budi Pekerti",
   "Pendidikan Agama Buddha dan Budi Pekerti",
   "Pendidikan Agama Hindu dan Budi Pekerti",
+  "Pendidikan Agama Khonghucu dan Budi Pekerti",
 ] as const;
 
 export const PESAN_MATERI_TERKUNCI_PUBLIK =
@@ -101,7 +102,17 @@ export function adalahMapelTerbukaPublik(mapel: string): boolean {
     n === "pendidikan agama hindu" ||
     n === "agama hindu" ||
     n === "pa hindu" ||
-    n === "hindu"
+    n === "hindu" ||
+    n === "pendidikan agama khonghucu dan budi pekerti" ||
+    n === "pendidikan agama konghucu dan budi pekerti" ||
+    n === "pendidikan agama khonghucu" ||
+    n === "pendidikan agama konghucu" ||
+    n === "agama khonghucu" ||
+    n === "agama konghucu" ||
+    n === "pa khonghucu" ||
+    n === "pa konghucu" ||
+    n === "khonghucu" ||
+    n === "konghucu"
   );
 }
 
