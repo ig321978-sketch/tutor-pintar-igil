@@ -16,6 +16,7 @@ export const MAPEL_TERBUKA_PUBLIK_LAIN = [
   "Seni Rupa",
   "Pendidikan Agama Kristen dan Budi Pekerti",
   "Pendidikan Agama Katolik dan Budi Pekerti",
+  "Pendidikan Agama Buddha dan Budi Pekerti",
 ] as const;
 
 export const PESAN_MATERI_TERKUNCI_PUBLIK =
@@ -84,7 +85,17 @@ export function adalahMapelTerbukaPublik(mapel: string): boolean {
     n === "pendidikan agama katolik" ||
     n === "agama katolik" ||
     n === "pa katolik" ||
-    n === "katolik"
+    n === "katolik" ||
+    n === "pendidikan agama buddha dan budi pekerti" ||
+    n === "pendidikan agama buddha" ||
+    n === "pendidikan agama budha dan budi pekerti" ||
+    n === "pendidikan agama budha" ||
+    n === "agama buddha" ||
+    n === "agama budha" ||
+    n === "pa buddha" ||
+    n === "pa budha" ||
+    n === "buddha" ||
+    n === "budha"
   );
 }
 

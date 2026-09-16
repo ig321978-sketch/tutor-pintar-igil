@@ -76,6 +76,20 @@ export function kunciMapelTutor(mapel: string): string {
   ) {
     return "pendidikan agama katolik dan budi pekerti";
   }
+  if (
+    n === "buddha" ||
+    n === "budha" ||
+    n === "pa buddha" ||
+    n === "pa budha" ||
+    n === "agama buddha" ||
+    n === "agama budha" ||
+    n === "pendidikan agama buddha" ||
+    n === "pendidikan agama budha" ||
+    n === "pendidikan agama budha dan budi pekerti" ||
+    n === "pendidikan agama buddha dan budi pekerti"
+  ) {
+    return "pendidikan agama buddha dan budi pekerti";
+  }
   return n;
 }
 
