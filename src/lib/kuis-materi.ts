@@ -39,6 +39,7 @@ import {
   adalahBuddha1,
   adalahHindu1,
   adalahKhonghucu1,
+  adalahPai2,
   adalahPai1Bab1,
   adalahPai1Bab2,
   cariModulBindo1Resmi,
@@ -51,6 +52,7 @@ import {
   cariModulBuddha1Resmi,
   cariModulHindu1Resmi,
   cariModulKhonghucu1Resmi,
+  cariModulPai2Resmi,
   cariModulPai1Resmi,
   naskahResmiJikaAda,
 } from "@/lib/naskah-resmi";
@@ -320,6 +322,10 @@ export function daftarIdKuisMateri(
   if (adalahKhonghucu1(kelas, mapel, materi)) {
     const khonghucu = cariModulKhonghucu1Resmi(materi);
     if (khonghucu) return idKuisDariModulResmi(khonghucu);
+  }
+  if (adalahPai2(kelas, mapel, materi)) {
+    const pai2 = cariModulPai2Resmi(materi);
+    if (pai2) return idKuisDariModulResmi(pai2);
   }
   if (!kelasSatuSd(kelas)) return [];
   const modul = cariModulPai1Resmi(materi);

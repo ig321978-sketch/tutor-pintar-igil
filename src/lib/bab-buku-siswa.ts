@@ -143,7 +143,7 @@ export const BAB_BUKU_SISWA: Record<string, Record<string, string[]>> = {
       "Bab 1: Ayo Belajar Al-Qur’an",
       "Bab 2: Mari Mengenal Allah Swt.",
       "Bab 3: Ayo Berperilaku Terpuji",
-      "Bab 4: Alhamdulillah, Aku Bisa Salat",
+      "Bab 4: Alhamdulillah, Aku Bisa Wudu",
       "Bab 5: Asyiknya Belajar Kisah Nabi Nuh a.s.",
       "Bab 6: Senang Bisa Membaca Al-Qur’an",
       "Bab 7: Mari Mengenal Malaikat-Malaikat Allah",

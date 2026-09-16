@@ -30,6 +30,11 @@ export function kelasSatuSd(kelas: string): boolean {
   return /^1\s*SD\b/i.test(k) || /^kelas\s*1(\s+SD)?\b/i.test(k);
 }
 
+export function kelasDuaSd(kelas: string): boolean {
+  const k = kelas.trim();
+  return /^2\s*SD\b/i.test(k) || /^kelas\s*2(\s+SD)?\b/i.test(k);
+}
+
 export function adalahNaskahInfografis(teks?: string): boolean {
   const naskah = buangPenandaBatasNaskah(teks).trim();
   if (naskah.length < 40) return false;

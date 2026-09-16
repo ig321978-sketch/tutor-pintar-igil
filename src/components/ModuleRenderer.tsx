@@ -28,6 +28,7 @@ import NaskahKatolik1 from "@/components/NaskahKatolik1";
 import NaskahBuddha1 from "@/components/NaskahBuddha1";
 import NaskahHindu1 from "@/components/NaskahHindu1";
 import NaskahKhonghucu1 from "@/components/NaskahKhonghucu1";
+import NaskahPai2 from "@/components/NaskahPai2";
 import NaskahKartuSd from "@/components/NaskahKartuSd";
 import DaftarLengkapMateri from "@/components/DaftarLengkapMateri";
 import { BlokTampil } from "@/components/BlokNaskahTampil";
@@ -81,6 +82,9 @@ import {
   adalahJudulKhonghucu1,
   cariModulKhonghucu1DariNaskah,
   cariModulKhonghucu1Resmi,
+  adalahJudulPai2,
+  cariModulPai2DariNaskah,
+  cariModulPai2Resmi,
   adalahJudulPai1Bab1,
   adalahJudulPai1Bab2,
   cariModulPai1DariNaskah,
@@ -88,6 +92,7 @@ import {
   naskahTampilanResmi,
 } from "@/lib/naskah-resmi";
 import { potongLengkap } from "@/lib/paket-lengkap-materi";
+import { kelasDuaSd, kelasSatuSd } from "@/lib/infografis-kelas1";
 import { jenjangGuru, type KelaminGuru } from "@/lib/guru";
 import { rapikanKunci } from "@/lib/kunci-siswa";
 import { Loader2 } from "lucide-react";
@@ -275,6 +280,16 @@ function ModuleRenderer({
     }
     return cariModulKhonghucu1DariNaskah(naskah);
   }, [naskah, mapel, materi]);
+  const modulPai2 = useMemo(() => {
+    if (kelasSatuSd(kelas)) return null;
+    if (adalahJudulPai2(mapel, materi)) {
+      return cariModulPai2Resmi(materi);
+    }
+    if (kelasDuaSd(kelas)) {
+      return cariModulPai2DariNaskah(naskah);
+    }
+    return cariModulPai2DariNaskah(naskah);
+  }, [naskah, mapel, materi, kelas]);
   const adaKartuMtk =
     pakaiKartuMtkBab1 ||
     pakaiKartuMtkBab2 ||
@@ -287,9 +302,10 @@ function ModuleRenderer({
     pakaiKartuMtkBab9 ||
     pakaiKartuMtkBab10;
   const modulResmiLain = useMemo(() => {
+    if (kelasDuaSd(kelas) || modulPai2) return null;
     if (pakaiKartuBab1 || pakaiKartuBab2 || adaKartuMtk || modulPancasila || modulBindo || modulPjok || modulInggris || modulMusik || modulSeniRupa || modulKristen || modulKatolik || modulBuddha || modulHindu || modulKhonghucu) return null;
     return cariModulPai1Resmi(materi) ?? cariModulPai1DariNaskah(naskah);
-  }, [pakaiKartuBab1, pakaiKartuBab2, adaKartuMtk, modulPancasila, modulBindo, modulPjok, modulInggris, modulMusik, modulSeniRupa, modulKristen, modulKatolik, modulBuddha, modulHindu, modulKhonghucu, materi, naskah]);
+  }, [pakaiKartuBab1, pakaiKartuBab2, adaKartuMtk, modulPancasila, modulBindo, modulPjok, modulInggris, modulMusik, modulSeniRupa, modulKristen, modulKatolik, modulBuddha, modulHindu, modulKhonghucu, modulPai2, materi, naskah, kelas]);
   const pakaiKartuSd =
     !pakaiKartuBab1 &&
     !pakaiKartuBab2 &&
@@ -305,6 +321,7 @@ function ModuleRenderer({
     !modulBuddha &&
     !modulHindu &&
     !modulKhonghucu &&
+    !modulPai2 &&
     !modulResmiLain &&
     !rapat &&
     jenjangGuru(kelas || "1 SD") === "SD" &&
@@ -325,6 +342,7 @@ function ModuleRenderer({
       modulBuddha ||
       modulHindu ||
       modulKhonghucu ||
+      modulPai2 ||
       modulResmiLain ||
       pakaiKartuSd
         ? null
@@ -345,6 +363,7 @@ function ModuleRenderer({
       modulBuddha,
       modulHindu,
       modulKhonghucu,
+      modulPai2,
       modulResmiLain,
       pakaiKartuSd,
     ],
@@ -367,6 +386,7 @@ function ModuleRenderer({
       modulBuddha ||
       modulHindu ||
       modulKhonghucu ||
+      modulPai2 ||
       modulResmiLain ||
       pakaiKartuSd
         ? []
@@ -388,6 +408,7 @@ function ModuleRenderer({
       modulBuddha,
       modulHindu,
       modulKhonghucu,
+      modulPai2,
       modulResmiLain,
       pakaiKartuSd,
       potong.tubuh,
@@ -593,6 +614,17 @@ function ModuleRenderer({
         <NaskahKhonghucu1
           modul={modulKhonghucu}
           kelas={kelas}
+          kelamin={kelamin}
+        />
+      </div>
+    );
+  }
+  if (modulPai2) {
+    return (
+      <div className={className}>
+        <NaskahPai2
+          modul={modulPai2}
+          kelas={kelas || "2 SD"}
           kelamin={kelamin}
         />
       </div>

@@ -24,6 +24,7 @@ export type KartuModulResmi = {
   kolom?: 1 | 2 | 3;
   item: ItemKartuResmi[];
   kuis: KuisSuaraResmi[];
+  kuisTulis?: KuisSuaraResmi;
   voice: string[][];
 };
 
