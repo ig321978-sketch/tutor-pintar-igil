@@ -90,6 +90,15 @@ export function kunciMapelTutor(mapel: string): string {
   ) {
     return "pendidikan agama buddha dan budi pekerti";
   }
+  if (
+    n === "hindu" ||
+    n === "pa hindu" ||
+    n === "agama hindu" ||
+    n === "pendidikan agama hindu" ||
+    n === "pendidikan agama hindu dan budi pekerti"
+  ) {
+    return "pendidikan agama hindu dan budi pekerti";
+  }
   return n;
 }
 
