@@ -446,6 +446,94 @@ const INFOGRAFIS: Record<
     catatan:
       "Tokoh hewan dalam fabel mewakili sifat manusia. Ada yang rajin, cerdik, malas, atau sombong. Tugas kita meniru sifat baiknya!",
   },
+  "bindo-2-bab5-A": {
+    judul: "Dua pilar utama kalimat",
+    kepala: ["Pilar", "Pertanyaan", "Contoh"],
+    baris: [
+      ["Subjek (S)", "Siapa pelakunya?", "Ali, Nia, Made, kucing"],
+      ["Predikat (P)", "Apa yang dikerjakan?", "bermain, membaca, tidur"],
+      ["Rumus minimal", "S + P", "Nia membaca."],
+    ],
+    catatan:
+      "Kalimat minimal = subjek + predikat. Maknanya sudah bisa dipahami. Kalimat berita ditutup tanda titik.",
+  },
+  "bindo-2-bab5-B": {
+    judul: "Kalimat berita yang santun",
+    kepala: ["Bagian", "Aturan", "Contoh rukun"],
+    baris: [
+      ["Tanda titik", "Penutup kabar, bukan tanya", "Nia menolong Made."],
+      ["S + P jelas", "Tokoh dan tindakan terbaca", "Made berterima kasih."],
+      ["Keragaman", "Beda nama, sama menolong", "Kami bermain bersama."],
+    ],
+    catatan:
+      "Di kelas ada banyak nama dan bahasa. Kalimat berita yang rapi membuat semua teman paham saat kita saling menolong.",
+  },
+  "bindo-2-bab6-A": {
+    judul: "Anatomi indah puisi",
+    kepala: ["Bagian", "Arti", "Ingat"],
+    baris: [
+      ["Bait dan baris", "Kalimat pendek berbaris", "Dikelompokkan jadi bait"],
+      ["Deklamasi", "Intonasi, jeda, ekspresi", "Wajah ikut merasakan"],
+      ["Amanat", "Pesan cinta lingkungan", "Lestari ≠ gersang"],
+    ],
+    catatan:
+      "Lestari artinya tetap terjaga dan tidak rusak. Gersang artinya kering dan tidak subur.",
+  },
+  "bindo-2-bab6-B": {
+    judul: "Kata ganti di baris puisi",
+    kepala: ["Kata ganti", "Menggantikan", "Contoh bait"],
+    baris: [
+      ["Aku / ia", "Diri sendiri / Nia", "Nia menanam. Ia menyiram."],
+      ["Kami", "Pembicara dan teman", "Kami jaga sungai."],
+      ["Kita", "Semua termasuk pendengar", "Kita jaga hutan lestari."],
+    ],
+    catatan:
+      "Kata ganti menghemat pengulangan nama. Awal baris puisi tetap memakai huruf kapital.",
+  },
+  "bindo-2-bab7-A": {
+    judul: "Kunci fakta dan opini",
+    kepala: ["Jenis", "Ciri", "Contoh"],
+    baris: [
+      ["Fakta", "Nyata, ada bukti", "Layar HP memancarkan cahaya"],
+      ["Opini", "Pendapat atau perasaan", "Game ini paling seru di dunia"],
+      ["Saring", "Jangan percaya semua", "Ada fakta, opini, dan hoaks"],
+    ],
+    catatan:
+      "Saat membaca di internet, detektif informasi bertanya: ini bukti atau hanya perasaan penulis?",
+  },
+  "bindo-2-bab7-B": {
+    judul: "Tiga langkah akses aman",
+    kepala: ["Langkah", "Tindakan", "Ingat"],
+    baris: [
+      ["1. Izin", "Minta bimbingan guru", "Jangan menyala sendirian"],
+      ["2. Kata kunci", "Ketik yang dicari", "Cara lebah membuat madu"],
+      ["3. Catat", "Tulis fakta di buku", "Istirahatkan mata"],
+    ],
+    catatan:
+      "Mata bisa lelah jika menatap layar terlalu lama. Istirahat adalah bagian dari bijak digital.",
+  },
+  "bindo-2-bab8-A": {
+    judul: "Unsur dongeng Nusantara",
+    kepala: ["Unsur", "Isi", "Contoh"],
+    baris: [
+      ["Latar budaya", "Tempat, pakaian, adat", "Danau, desa, istana"],
+      ["Tokoh dan watak", "Bijaksana atau serakah", "Raja adil, raksasa iri"],
+      ["Hikmah", "Budi pekerti luhur", "Gotong royong, berbakti"],
+    ],
+    catatan:
+      "Legenda membantu kita mengenal asal-usul nama daerah sambil belajar nilai moral baik.",
+  },
+  "bindo-2-bab8-B": {
+    judul: "Kamus cerita istana",
+    kepala: ["Kata / jenis", "Arti", "Jangan tertukar"],
+    baris: [
+      ["Baginda", "Sebutan hormat raja", "Bukan nama sungai"],
+      ["Hikayat", "Cerita keluarga istana", "Beda dari fabel hewan"],
+      ["Legenda", "Asal-usul tempat nyata", "Beda dari hikayat istana"],
+    ],
+    catatan:
+      "Gotong royong adalah kerja bersama. Fabel tokohnya hewan. Legenda menjelaskan tempat. Hikayat berkisah di istana.",
+  },
 };
 
 function EvaluasiBab1({ modulId }: { modulId: string }) {
@@ -818,11 +906,355 @@ function EvaluasiBab4({ modulId }: { modulId: string }) {
   );
 }
 
+function EvaluasiBab5({ modulId }: { modulId: string }) {
+  return (
+    <div className="mt-5 space-y-5">
+      <h5 className="text-sm font-black uppercase tracking-wide text-[#1C01A5]">
+        A. Pilihan ganda
+      </h5>
+      <KuisPilihan
+        id={idEval(modulId, 0)}
+        soal="Kelinci melompat gembira. Kata yang menjadi subjek adalah..."
+        benar="B"
+        pilihan={[
+          { huruf: "A", teks: "Melompat" },
+          { huruf: "B", teks: "Kelinci" },
+          { huruf: "C", teks: "Gembira" },
+        ]}
+      />
+      <KuisPilihan
+        id={idEval(modulId, 1)}
+        soal="Ali menulis cerita. Predikat kalimat itu adalah..."
+        benar="C"
+        pilihan={[
+          { huruf: "A", teks: "Ali" },
+          { huruf: "B", teks: "Cerita" },
+          { huruf: "C", teks: "Menulis" },
+        ]}
+      />
+      <h5 className="text-sm font-black uppercase tracking-wide text-[#1C01A5]">
+        B. Benar atau salah beserta alasan
+      </h5>
+      <KuisBenarSalah
+        id={idEval(modulId, 2)}
+        soal="Sebuah kalimat berita yang lengkap wajib diakhiri dengan tanda tanya (?)."
+        benar="salah"
+        alasanBenar="kalimat berita diakhiri tanda titik, tanda tanya hanya untuk kalimat tanya"
+      />
+      <KuisBenarSalah
+        id={idEval(modulId, 3)}
+        soal='Kata "tidur" dan "sedih" bisa menduduki posisi predikat dalam kalimat dasar.'
+        benar="benar"
+        alasanBenar="predikat bisa berupa tindakan atau keadaan yang dialami subjek"
+      />
+      <h5 className="text-sm font-black uppercase tracking-wide text-[#1C01A5]">
+        C. Mencocokkan garis
+      </h5>
+      <KuisJodoh
+        id={idEval(modulId, 4)}
+        soal="Jodohkan bagian kalimat dengan contohnya."
+        pasangan={[
+          {
+            kiri: "Subjek (S)",
+            kanan: ["membaca, berlari, menari", "Ali, Nia, kucing", "tanda penutup berita"],
+          },
+          {
+            kiri: "Predikat (P)",
+            kanan: ["membaca, berlari, menari", "Ali, Nia, kucing", "tanda penutup berita"],
+          },
+          {
+            kiri: "Tanda titik (.)",
+            kanan: ["membaca, berlari, menari", "Ali, Nia, kucing", "tanda penutup berita"],
+          },
+        ]}
+        kunci={{
+          "Subjek (S)": "Ali, Nia, kucing",
+          "Predikat (P)": "membaca, berlari, menari",
+          "Tanda titik (.)": "tanda penutup berita",
+        }}
+      />
+      <h5 className="text-sm font-black uppercase tracking-wide text-[#1C01A5]">
+        D. Esai pendek analisis
+      </h5>
+      <KuisIsian
+        id={idEval(modulId, 5)}
+        soal="Mengapa kalimat yang punya subjek dan predikat yang jelas membantu kita berteman di kelas yang beragam? Jelaskan!"
+        alias={["paham", "jelas", "tolong", "teman", "rukun", "kabar"]}
+      />
+    </div>
+  );
+}
+
+function EvaluasiBab6({ modulId }: { modulId: string }) {
+  return (
+    <div className="mt-5 space-y-5">
+      <h5 className="text-sm font-black uppercase tracking-wide text-[#1C01A5]">
+        A. Pilihan ganda
+      </h5>
+      <KuisPilihan
+        id={idEval(modulId, 0)}
+        soal="Kosakata yang artinya tetap terjaga dan tidak rusak adalah..."
+        benar="B"
+        pilihan={[
+          { huruf: "A", teks: "Gersang" },
+          { huruf: "B", teks: "Lestari" },
+          { huruf: "C", teks: "Gundul" },
+        ]}
+      />
+      <KuisPilihan
+        id={idEval(modulId, 1)}
+        soal="Kumpulan beberapa baris pendek dalam puisi disebut..."
+        benar="B"
+        pilihan={[
+          { huruf: "A", teks: "Fakta" },
+          { huruf: "B", teks: "Bait" },
+          { huruf: "C", teks: "Hoaks" },
+        ]}
+      />
+      <h5 className="text-sm font-black uppercase tracking-wide text-[#1C01A5]">
+        B. Benar atau salah beserta alasan
+      </h5>
+      <KuisBenarSalah
+        id={idEval(modulId, 2)}
+        soal="Membaca puisi wajib dilakukan dengan suara yang sangat cepat dan datar seperti membaca daftar belanjaan."
+        benar="salah"
+        alasanBenar="puisi membutuhkan jeda, intonasi, dan penjiwaan perasaan"
+      />
+      <KuisBenarSalah
+        id={idEval(modulId, 3)}
+        soal="Puisi tentang hutan gundul biasanya mengandung amanat agar manusia berhenti menebang pohon sembarangan."
+        benar="benar"
+        alasanBenar="puisi alam rusak menyadarkan pembaca akan pelestarian lingkungan"
+      />
+      <h5 className="text-sm font-black uppercase tracking-wide text-[#1C01A5]">
+        C. Mencocokkan garis
+      </h5>
+      <KuisJodoh
+        id={idEval(modulId, 4)}
+        soal="Jodohkan kosakata puisi dengan maknanya."
+        pasangan={[
+          {
+            kiri: "Gersang",
+            kanan: [
+              "Cara membaca puisi dengan ekspresi",
+              "Tanah kering dan tidak subur",
+              "Alam tetap terjaga tidak rusak",
+            ],
+          },
+          {
+            kiri: "Lestari",
+            kanan: [
+              "Cara membaca puisi dengan ekspresi",
+              "Tanah kering dan tidak subur",
+              "Alam tetap terjaga tidak rusak",
+            ],
+          },
+          {
+            kiri: "Deklamasi",
+            kanan: [
+              "Cara membaca puisi dengan ekspresi",
+              "Tanah kering dan tidak subur",
+              "Alam tetap terjaga tidak rusak",
+            ],
+          },
+        ]}
+        kunci={{
+          Gersang: "Tanah kering dan tidak subur",
+          Lestari: "Alam tetap terjaga tidak rusak",
+          Deklamasi: "Cara membaca puisi dengan ekspresi",
+        }}
+      />
+      <h5 className="text-sm font-black uppercase tracking-wide text-[#1C01A5]">
+        D. Esai pendek analisis
+      </h5>
+      <KuisIsian
+        id={idEval(modulId, 5)}
+        soal="Mengapa deklamasi lebih tepat daripada membaca datar saat menyampaikan amanat puisi tentang bumi yang tercemar? Jelaskan!"
+        alias={["ekspresi", "jeda", "perasaan", "amanat", "prihatin", "nada"]}
+      />
+    </div>
+  );
+}
+
+function EvaluasiBab7({ modulId }: { modulId: string }) {
+  return (
+    <div className="mt-5 space-y-5">
+      <h5 className="text-sm font-black uppercase tracking-wide text-[#1C01A5]">
+        A. Pilihan ganda
+      </h5>
+      <KuisPilihan
+        id={idEval(modulId, 0)}
+        soal='"Aplikasi game ini adalah game terbaik di seluruh bumi." Kalimat itu termasuk...'
+        benar="B"
+        pilihan={[
+          { huruf: "A", teks: "Fakta" },
+          { huruf: "B", teks: "Opini" },
+          { huruf: "C", teks: "Legenda" },
+        ]}
+      />
+      <KuisPilihan
+        id={idEval(modulId, 1)}
+        soal="Kalimat kenyataan nyata yang memiliki bukti disebut kalimat..."
+        benar="A"
+        pilihan={[
+          { huruf: "A", teks: "Fakta" },
+          { huruf: "B", teks: "Opini" },
+          { huruf: "C", teks: "Hikayat" },
+        ]}
+      />
+      <h5 className="text-sm font-black uppercase tracking-wide text-[#1C01A5]">
+        B. Benar atau salah beserta alasan
+      </h5>
+      <KuisBenarSalah
+        id={idEval(modulId, 2)}
+        soal="Pernyataan 'Mata kita bisa lelah jika menatap layar gawai terlalu lama' adalah fakta kesehatan."
+        benar="benar"
+        alasanBenar="itu fakta medis yang terbukti pada tubuh manusia"
+      />
+      <KuisBenarSalah
+        id={idEval(modulId, 3)}
+        soal="Semua informasi, berita, dan video di internet pasti 100% fakta yang jujur."
+        benar="salah"
+        alasanBenar="di internet ada hoaks dan opini pribadi sehingga wajib disaring"
+      />
+      <h5 className="text-sm font-black uppercase tracking-wide text-[#1C01A5]">
+        C. Mencocokkan garis
+      </h5>
+      <KuisJodoh
+        id={idEval(modulId, 4)}
+        soal="Jodohkan kalimat digital dengan kategorinya."
+        pasangan={[
+          {
+            kiri: "Komputer adalah alat elektronik.",
+            kanan: ["Kalimat opini", "Kalimat fakta", "Kalimat tanya"],
+          },
+          {
+            kiri: "Warna casing gawai itu jelek sekali.",
+            kanan: ["Kalimat opini", "Kalimat fakta", "Kalimat tanya"],
+          },
+          {
+            kiri: "Internet memuat banyak informasi.",
+            kanan: ["Kalimat opini", "Kalimat fakta", "Kalimat tanya"],
+          },
+        ]}
+        kunci={{
+          "Komputer adalah alat elektronik.": "Kalimat fakta",
+          "Warna casing gawai itu jelek sekali.": "Kalimat opini",
+          "Internet memuat banyak informasi.": "Kalimat fakta",
+        }}
+      />
+      <h5 className="text-sm font-black uppercase tracking-wide text-[#1C01A5]">
+        D. Esai pendek analisis
+      </h5>
+      <KuisIsian
+        id={idEval(modulId, 5)}
+        soal="Mengapa Ali harus meminta izin guru dan menyaring tulisan di internet sebelum mencatat? Jelaskan analisismu!"
+        alias={["izin", "hoaks", "fakta", "opini", "aman", "saring", "guru"]}
+      />
+    </div>
+  );
+}
+
+function EvaluasiBab8({ modulId }: { modulId: string }) {
+  return (
+    <div className="mt-5 space-y-5">
+      <h5 className="text-sm font-black uppercase tracking-wide text-[#1C01A5]">
+        A. Pilihan ganda
+      </h5>
+      <KuisPilihan
+        id={idEval(modulId, 0)}
+        soal="Cerita rakyat yang mengisahkan asal-usul suatu tempat dinamakan..."
+        benar="B"
+        pilihan={[
+          { huruf: "A", teks: "Fabel" },
+          { huruf: "B", teks: "Legenda" },
+          { huruf: "C", teks: "Opini" },
+        ]}
+      />
+      <KuisPilihan
+        id={idEval(modulId, 1)}
+        soal="Raja yang membagikan padi secara adil saat kemarau mencontohkan nilai..."
+        benar="B"
+        pilihan={[
+          { huruf: "A", teks: "Serakah" },
+          { huruf: "B", teks: "Adil dan peduli rakyat" },
+          { huruf: "C", teks: "Iri hati" },
+        ]}
+      />
+      <h5 className="text-sm font-black uppercase tracking-wide text-[#1C01A5]">
+        B. Benar atau salah beserta alasan
+      </h5>
+      <KuisBenarSalah
+        id={idEval(modulId, 2)}
+        soal="Nilai gotong royong hanya ada di cerita modern dan tidak pernah diajarkan dongeng Nusantara."
+        benar="salah"
+        alasanBenar="gotong royong adalah nilai luhur yang sering diajarkan cerita rakyat"
+      />
+      <KuisBenarSalah
+        id={idEval(modulId, 3)}
+        soal="Latar tempat dalam dongeng legenda bisa berupa gunung, danau, atau desa yang ada di Indonesia."
+        benar="benar"
+        alasanBenar="legenda mengaitkan cerita dengan asal-usul tempat nyata di Nusantara"
+      />
+      <h5 className="text-sm font-black uppercase tracking-wide text-[#1C01A5]">
+        C. Mencocokkan garis
+      </h5>
+      <KuisJodoh
+        id={idEval(modulId, 4)}
+        soal="Jodohkan unsur cerita rakyat dengan definisinya."
+        pasangan={[
+          {
+            kiri: "Tokoh antagonis",
+            kanan: [
+              "Tempat atau waktu cerita",
+              "Pesan kebaikan atau amanat",
+              "Tokoh watak buruk pemicu masalah",
+            ],
+          },
+          {
+            kiri: "Latar cerita",
+            kanan: [
+              "Tempat atau waktu cerita",
+              "Pesan kebaikan atau amanat",
+              "Tokoh watak buruk pemicu masalah",
+            ],
+          },
+          {
+            kiri: "Hikmah cerita",
+            kanan: [
+              "Tempat atau waktu cerita",
+              "Pesan kebaikan atau amanat",
+              "Tokoh watak buruk pemicu masalah",
+            ],
+          },
+        ]}
+        kunci={{
+          "Tokoh antagonis": "Tokoh watak buruk pemicu masalah",
+          "Latar cerita": "Tempat atau waktu cerita",
+          "Hikmah cerita": "Pesan kebaikan atau amanat",
+        }}
+      />
+      <h5 className="text-sm font-black uppercase tracking-wide text-[#1C01A5]">
+        D. Esai pendek analisis
+      </h5>
+      <KuisIsian
+        id={idEval(modulId, 5)}
+        soal="Mengapa membaca dongeng Nusantara dinilai penting selain untuk hiburan? Jelaskan analisis kritismu!"
+        alias={["hikmah", "budi", "budaya", "gotong", "hormat", "jujur", "amanat"]}
+      />
+    </div>
+  );
+}
+
 function EvaluasiBab({ modul }: { modul: ModulResmiPai }) {
   if (modul.id === "bindo-2-bab1") return <EvaluasiBab1 modulId={modul.id} />;
   if (modul.id === "bindo-2-bab2") return <EvaluasiBab2 modulId={modul.id} />;
   if (modul.id === "bindo-2-bab3") return <EvaluasiBab3 modulId={modul.id} />;
-  return <EvaluasiBab4 modulId={modul.id} />;
+  if (modul.id === "bindo-2-bab4") return <EvaluasiBab4 modulId={modul.id} />;
+  if (modul.id === "bindo-2-bab5") return <EvaluasiBab5 modulId={modul.id} />;
+  if (modul.id === "bindo-2-bab6") return <EvaluasiBab6 modulId={modul.id} />;
+  if (modul.id === "bindo-2-bab7") return <EvaluasiBab7 modulId={modul.id} />;
+  return <EvaluasiBab8 modulId={modul.id} />;
 }
 
 export default function NaskahBindo2({

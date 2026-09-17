@@ -163,9 +163,9 @@ export const BAB_BUKU_SISWA: Record<string, Record<string, string[]>> = {
       "Bab 3: Berhati-hati di Jalan",
       "Bab 4: Keluargaku Kreatif",
       "Bab 5: Berteman dalam Keragaman",
-      "Bab 6: Bijak Memakai Uang",
-      "Bab 7: Sayang Lingkungan",
-      "Bab 8: Hobi yang Jadi Prestasi",
+      "Bab 6: Bijak Lingkungan",
+      "Bab 7: Bijak Digital",
+      "Bab 8: Cinta Budaya Nusantara",
     ],
     Matematika: [
       "Bab 1: Bilangan 1 Sampai dengan 1.000",

@@ -262,6 +262,224 @@ const PAKET: Record<string, PaketEvaluasiEkstra> = {
       },
     ],
   },
+  "bindo-2-bab5": {
+    garis: {
+      soal: "Tariklah garis untuk menjodohkan bagian kalimat ini dengan contoh konsep yang tepat!",
+      kiri: ["Subjek (S)", "Predikat (P)", "Tanda Titik (.)"],
+      kanan: [
+        "membaca, berlari, menari, tidur.",
+        "tanda baca penutup kalimat berita.",
+        "Ali, Nia, Kucing, Ibu Guru.",
+      ],
+      kunci: {
+        "Subjek (S)": "Ali, Nia, Kucing, Ibu Guru.",
+        "Predikat (P)": "membaca, berlari, menari, tidur.",
+        "Tanda Titik (.)": "tanda baca penutup kalimat berita.",
+      },
+    },
+    keranjang: {
+      soal: "Masukkan kata-kata di bawah ini ke dalam keranjang fungsi kalimat yang tepat!",
+      keranjang1: "SUBJEK (Tokoh/Pelaku)",
+      keranjang2: "PREDIKAT (Tindakan/Perbuatan)",
+      keping: [
+        { id: "made", label: "Made", wadah: "1" },
+        { id: "melompat", label: "Melompat", wadah: "2" },
+        { id: "burung", label: "Burung", wadah: "1" },
+        { id: "memasak", label: "Memasak", wadah: "2" },
+        { id: "joko", label: "Joko", wadah: "1" },
+      ],
+    },
+    urut: {
+      soal: "Susunlah 3 kejadian di sekolah ini agar menjadi alur berteman yang runtut!",
+      balok: [
+        "Nia melihat Made kebingungan karena penghapusnya hilang saat ujian.",
+        "Nia meminjamkan penghapus cadangannya kepada Made.",
+        "Made menerima penghapus itu dan mengucapkan terima kasih sambil tersenyum.",
+      ],
+    },
+    kanvas: {
+      soal: 'Lengkapi dengan tulisan tangan: "Tokoh atau pelaku tindakan dinamakan S - U - B - J - E - __ - __."',
+      alias: ["subjek", "k", "ek"],
+    },
+    detektif: [
+      {
+        soal: "Sebuah kalimat berita yang lengkap wajib diakhiri dengan menggunakan tanda tanya (?).",
+        benar: false,
+        alasan:
+          "Salah. Kalimat berita wajib diakhiri tanda titik. Tanda tanya hanya untuk kalimat tanya.",
+      },
+      {
+        soal: 'Kata "tidur" dan "sedih" bisa menduduki posisi sebagai predikat di dalam kalimat dasar.',
+        benar: true,
+        alasan:
+          "Benar. Predikat tidak hanya kata kerja aktif, tetapi juga bisa berupa keadaan yang dialami subjek.",
+      },
+    ],
+  },
+  "bindo-2-bab6": {
+    garis: {
+      soal: "Tariklah garis untuk menjodohkan kosakata puisi alam dengan maknanya yang tepat!",
+      kiri: ["Gersang", "Lestari", "Deklamasi"],
+      kanan: [
+        "Cara membaca puisi disertai gerak dan ekspresi.",
+        "Kondisi tanah yang kering, gundul, dan tidak subur.",
+        "Keadaan alam yang tetap terjaga baik dan tidak rusak.",
+      ],
+      kunci: {
+        Gersang: "Kondisi tanah yang kering, gundul, dan tidak subur.",
+        Lestari: "Keadaan alam yang tetap terjaga baik dan tidak rusak.",
+        Deklamasi: "Cara membaca puisi disertai gerak dan ekspresi.",
+      },
+    },
+    keranjang: {
+      soal: "Pilahlah kosakata ke keranjang makna suasana alam yang sesuai!",
+      keranjang1: "SUASANA ALAM INDAH (Positif)",
+      keranjang2: "SUASANA ALAM RUSAK (Negatif)",
+      keping: [
+        { id: "asri", label: "Asri", wadah: "1" },
+        { id: "gundul", label: "Gundul", wadah: "2" },
+        { id: "jernih", label: "Jernih", wadah: "1" },
+        { id: "tercemar", label: "Tercemar", wadah: "2" },
+        { id: "rindang", label: "Rindang", wadah: "1" },
+      ],
+    },
+    urut: {
+      soal: "Urutkan baris-baris puisi menanam pohon agar menjadi satu bait yang indah!",
+      balok: [
+        "Ku tanam bibit pohon ini di tanah yang subur.",
+        "Ku siram ia dengan air setiap pagi hari.",
+        "Kelak hijau daumu akan meneduhkan bumi.",
+      ],
+    },
+    kanvas: {
+      soal: 'Lengkapi dengan tulisan tangan: "Kumpulan beberapa baris pendek dalam puisi dinamakan B - A - I - __."',
+      alias: ["bait", "t"],
+    },
+    detektif: [
+      {
+        soal: "Membaca puisi wajib dilakukan dengan suara yang sangat cepat dan datar seperti membaca daftar belanjaan ibu.",
+        benar: false,
+        alasan:
+          "Salah. Membaca puisi membutuhkan jeda, intonasi tinggi-rendah, dan penjiwaan agar maknanya tersampaikan.",
+      },
+      {
+        soal: "Puisi yang menceritakan hutan gundul biasanya mengandung amanat agar manusia berhenti menebang pohon sembarangan.",
+        benar: true,
+        alasan:
+          "Benar. Puisi bertema alam rusak bertujuan menyadarkan pembaca akan pentingnya pelestarian lingkungan.",
+      },
+    ],
+  },
+  "bindo-2-bab7": {
+    garis: {
+      soal: "Tariklah garis untuk menjodohkan contoh kalimat digital ini dengan kategori yang tepat!",
+      kiri: [
+        "Komputer adalah alat elektronik.",
+        "Warna casing gawai itu jelek sekali.",
+        "Internet memuat banyak informasi.",
+      ],
+      kanan: [
+        "Kalimat Opini (Pendapat)",
+        "Kalimat Fakta tentang alat",
+        "Kalimat Fakta tentang internet",
+      ],
+      kunci: {
+        "Komputer adalah alat elektronik.": "Kalimat Fakta tentang alat",
+        "Warna casing gawai itu jelek sekali.": "Kalimat Opini (Pendapat)",
+        "Internet memuat banyak informasi.": "Kalimat Fakta tentang internet",
+      },
+    },
+    keranjang: {
+      soal: "Masukkan kalimat-kalimat ke keranjang jenis informasi yang benar!",
+      keranjang1: "FAKTA (Nyata & Terbukti)",
+      keranjang2: "OPINI (Pendapat/Perasaan)",
+      keping: [
+        { id: "baterai", label: "Baterai HP bisa habis", wadah: "1" },
+        { id: "asyik", label: "Menonton video di HP itu asyik", wadah: "2" },
+        { id: "keyboard", label: "Keyboard dipakai mengetik", wadah: "1" },
+        { id: "robot", label: "Robot itu menyeramkan", wadah: "2" },
+      ],
+    },
+    urut: {
+      soal: "Ali mencari informasi lebah di komputer sekolah. Susun 3 langkah agar prosesnya aman dan benar!",
+      balok: [
+        "Ali meminta izin dan bimbingan Ibu Guru sebelum menyalakan komputer sekolah.",
+        "Ali mengetik kata kunci 'Cara lebah membuat madu' di kolom pencarian.",
+        "Ali membaca teks fakta tentang lebah dan mencatat informasi penting di bukunya.",
+      ],
+    },
+    kanvas: {
+      soal: 'Lengkapi dengan tulisan tangan: "Pendapat atau penilaian pribadi dinamakan O - P - I - N - __."',
+      alias: ["opini", "i"],
+    },
+    detektif: [
+      {
+        soal: "Pernyataan 'Mata kita bisa lelah dan perih jika menatap layar gawai terlalu lama tanpa istirahat' adalah sebuah fakta kesehatan.",
+        benar: true,
+        alasan:
+          "Benar. Ini fakta medis yang sudah terbukti secara ilmiah pada tubuh manusia.",
+      },
+      {
+        soal: "Semua informasi, berita, dan video yang muncul di internet atau media sosial pasti 100% berupa fakta yang jujur.",
+        benar: false,
+        alasan:
+          "Salah. Di internet banyak informasi palsu atau opini pribadi, sehingga kita wajib menyaringnya dengan kritis.",
+      },
+    ],
+  },
+  "bindo-2-bab8": {
+    garis: {
+      soal: "Tariklah garis untuk menjodohkan unsur cerita rakyat dengan definisinya yang tepat!",
+      kiri: ["Tokoh Antagonis", "Latar Cerita", "Hikmah Cerita"],
+      kanan: [
+        "Tempat atau waktu terjadinya cerita rakyat.",
+        "Pesan kebaikan atau amanat moral bagi pembaca.",
+        "Tokoh yang wataknya buruk dan memicu masalah.",
+      ],
+      kunci: {
+        "Tokoh Antagonis": "Tokoh yang wataknya buruk dan memicu masalah.",
+        "Latar Cerita": "Tempat atau waktu terjadinya cerita rakyat.",
+        "Hikmah Cerita": "Pesan kebaikan atau amanat moral bagi pembaca.",
+      },
+    },
+    keranjang: {
+      soal: "Masukkan tokoh-tokoh cerita rakyat ke keranjang watak yang paling tepat!",
+      keranjang1: "WATAK BIJAKSANA & BAIK",
+      keranjang2: "WATAK SERAKAH & IRI HATI",
+      keping: [
+        { id: "pangeran", label: "Pangeran yang suka berbagi", wadah: "1" },
+        { id: "raksasa", label: "Raksasa yang merebut ladang", wadah: "2" },
+        { id: "petani", label: "Petani yang jujur", wadah: "1" },
+        { id: "penyihir", label: "Penyihir jahat", wadah: "2" },
+      ],
+    },
+    urut: {
+      soal: "Susun 3 peristiwa acak dari potongan legenda asal-usul desa agar alurnya padu!",
+      balok: [
+        "Di sebuah desa yang gersang, datanglah seorang pemuda pengembara yang sakti.",
+        "Sang Pemuda mencabut sebatang lidi ajaib yang tertancap di atas tanah.",
+        "Akibatnya, air memancar deras dari tanah dan membentuk sebuah danau yang indah.",
+      ],
+    },
+    kanvas: {
+      soal: 'Lengkapi dengan tulisan tangan: "Cerita istana, raja, dan pangeran dinamakan H - I - K - A - Y - __ - __."',
+      alias: ["hikayat", "at", "t"],
+    },
+    detektif: [
+      {
+        soal: "Nilai budi pekerti seperti gotong royong hanya ada di cerita modern dan tidak pernah diajarkan di dongeng tradisional Nusantara.",
+        benar: false,
+        alasan:
+          "Salah. Gotong royong adalah nilai luhur asli bangsa Indonesia yang paling sering diajarkan dalam cerita rakyat Nusantara.",
+      },
+      {
+        soal: "Latar tempat di dalam dongeng legenda bisa berupa area geografis nyata seperti gunung, danau, atau nama desa di Indonesia.",
+        benar: true,
+        alasan:
+          "Benar. Legenda sering mengaitkan cerita khayalan dengan asal-usul tempat nyata di bumi Nusantara.",
+      },
+    ],
+  },
 };
 
 function titikRelatif(
