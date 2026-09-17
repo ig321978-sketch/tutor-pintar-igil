@@ -17,6 +17,7 @@ export const MODUL_BINDO2_BAB1: ModulResmiPai = {
     "Anak di roda perasaan: senyum gembira, dada hangat, air mata, tinju mengepal.",
     "Detektif bahasa memperbaiki huruf kapital nama orang dan tempat.",
     "Anak mengerjakan evaluasi emosi, antonim, dan huruf kapital.",
+    "Anak menarik garis, menggeser keranjang emosi, mengurutkan cerita, dan menulis di kanvas.",
   ],
   latihan: pg([
     `[Soal 1 - PG - Tipe: HOTS]
@@ -222,6 +223,48 @@ D) Hanya tanda tanya.`,
         ],
         [
           "Gundah artinya sedih gelisah, bukan girang. Menyebut perasaan dengan kata santun menjaga kerukunan di kelas.",
+        ],
+      ],
+    },
+    {
+      kode: "D",
+      judul: "D. Kartu Evaluasi Ekstra",
+      pengantar:
+        "Tanpa keyboard. Tarik garis perasaan ke tanda tubuh, geser kata ke keranjang nyaman atau menantang, urutkan cerita Nia, coretkan huruf girang, lalu tekan BENAR atau SALAH.",
+      labelDaftar: "Tarik garis, keranjang, urutan, kanvas, detektif",
+      kolom: 1,
+      item: [
+        {
+          nama: "Permainan A sampai C",
+          singkat: "Garis, keranjang, urutan",
+          uraian:
+            "Gembira: senyum hangat. Sedih: air mata. Marah: tinju mengepal. Nyaman: gembira, bangga, girang. Menantang: sedih, marah. Urutan Nia: mainan rusak, sedih, lalu napas dan cerita tenang.",
+          contoh: "Tarik garis. Geser keranjang. Urutkan 1-2-3.",
+        },
+        {
+          nama: "Permainan D dan E",
+          singkat: "Kanvas dan detektif",
+          uraian:
+            "G-I-R-A-N-G adalah girang. Semua perasaan normal: benar. Memukul saat marah: salah.",
+          contoh: "Coretkan NG. BENAR lalu SALAH.",
+        },
+      ],
+      kuis: [
+        { pertanyaan: "Tarik garis perasaan?", alias: ["gembira", "sedih", "marah"] },
+        { pertanyaan: "Keranjang emosi?", alias: ["nyaman", "menantang"] },
+        { pertanyaan: "Urutan Nia?", alias: ["rusak", "sedih", "cerita"] },
+        { pertanyaan: "Semua perasaan normal?", alias: ["benar"] },
+        { pertanyaan: "Marah boleh memukul?", alias: ["salah"] },
+      ],
+      kuisTulis: {
+        pertanyaan: "Coretkan dua huruf terakhir G-I-R-A-__-__.",
+        alias: ["girang", "ng"],
+      },
+      voice: [
+        [
+          "Anak-anak, ini permainan tanpa keyboard. Tarik garis dari perasaan ke tanda tubuh. Geser kata ke keranjang nyaman atau menantang.",
+          "Urutkan cerita Nia dari mainan rusak sampai ia berbicara tenang. Coretkan huruf di kanvas untuk kata girang.",
+          "Lalu jadi detektif: semua perasaan normal itu benar. Memukul teman saat marah itu salah.",
         ],
       ],
     },

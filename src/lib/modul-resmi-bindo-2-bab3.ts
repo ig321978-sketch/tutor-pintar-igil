@@ -17,6 +17,7 @@ export const MODUL_BINDO2_BAB3: ModulResmiPai = {
     "Anak membaca rambu merah, kuning, dan biru di tepi jalan sekolah.",
     "Anak menelusuri denah: utara atas, toko di seberang puskesmas.",
     "Anak mengerjakan evaluasi rambu, denah, dan rute ke kantin.",
+    "Anak menarik garis warna rambu, menggeser larangan-petunjuk, mengurutkan menyeberang, dan menulis denah di kanvas.",
   ],
   latihan: pg([
     `[Soal 1 - PG - Tipe: HOTS]
@@ -216,6 +217,48 @@ D) Nama orang.`,
         ],
         [
           "Denah adalah gambar letak tempat. Tulis rute ke kantin dengan kata belok, lurus, dan melewati.",
+        ],
+      ],
+    },
+    {
+      kode: "D",
+      judul: "D. Kartu Evaluasi Ekstra",
+      pengantar:
+        "Tanpa keyboard. Tarik garis warna rambu, geser ke keranjang larangan atau petunjuk, urutkan cara menyeberang, coretkan huruf denah, lalu tekan BENAR atau SALAH.",
+      labelDaftar: "Tarik garis, keranjang, urutan, kanvas, detektif",
+      kolom: 1,
+      item: [
+        {
+          nama: "Permainan A sampai C",
+          singkat: "Garis, keranjang, urutan",
+          uraian:
+            "Merah larangan, kuning peringatan, biru petunjuk. P dicoret dan strip merah = larangan. Zebra dan rumah sakit = petunjuk. Menyeberang: berhenti, lihat kiri-kanan, lalu jalan di zebra.",
+          contoh: "Merah dilarang. Biru petunjuk. Lihat kiri-kanan.",
+        },
+        {
+          nama: "Permainan D dan E",
+          singkat: "Kanvas dan detektif",
+          uraian:
+            "D-E-N-A-H adalah denah. Rambu kuning bukan larangan lewat. Menyeberang sembarangan berbahaya.",
+          contoh: "Coretkan H. SALAH lalu BENAR.",
+        },
+      ],
+      kuis: [
+        { pertanyaan: "Tarik garis warna rambu?", alias: ["merah", "kuning", "biru"] },
+        { pertanyaan: "Keranjang rambu?", alias: ["larangan", "petunjuk"] },
+        { pertanyaan: "Urutan menyeberang?", alias: ["berhenti", "lihat", "zebra"] },
+        { pertanyaan: "Kuning artinya dilarang lewat?", alias: ["salah"] },
+        { pertanyaan: "Menyeberang sembarangan berbahaya?", alias: ["benar"] },
+      ],
+      kuisTulis: {
+        pertanyaan: "Coretkan huruf terakhir D-E-N-A-__.",
+        alias: ["denah", "h"],
+      },
+      voice: [
+        [
+          "Tanpa keyboard. Tarik garis dari warna rambu ke artinya. Geser rambu ke keranjang larangan atau petunjuk.",
+          "Urutkan menyeberang: berhenti, lihat kiri-kanan, lalu jalan di zebra. Coretkan huruf H untuk kata denah.",
+          "Detektif: rambu kuning bukan larangan lewat. Menyeberang sembarangan itu berbahaya dan benar disebut berbahaya.",
         ],
       ],
     },

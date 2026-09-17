@@ -17,6 +17,7 @@ export const MODUL_BINDO2_BAB2: ModulResmiPai = {
     "Anak membedakan kalimat tanya dan perintah saat cuci tangan.",
     "Anak mengajak teman: Ayo, kita bersihkan saluran air!",
     "Anak mengerjakan evaluasi tanda baca, ajakan, dan prosedur cuci tangan.",
+    "Anak menarik garis tanda baca, menggeser perintah-ajakan, mengurutkan cuci tangan, dan menulis di kanvas.",
   ],
   latihan: pg([
     `[Soal 1 - PG - Tipe: HOTS]
@@ -217,6 +218,48 @@ D) Tanpa kata kunci.`,
         ],
         [
           "Mengapa menanyakan alasan. Prosedur cuci tangan harus berurutan agar tangan benar-benar bersih.",
+        ],
+      ],
+    },
+    {
+      kode: "D",
+      judul: "D. Kartu Evaluasi Ekstra",
+      pengantar:
+        "Tanpa keyboard. Tarik garis jenis kalimat, geser ke keranjang perintah atau ajakan, urutkan cuci tangan, coretkan huruf Ayo, lalu tekan BENAR atau SALAH.",
+      labelDaftar: "Tarik garis, keranjang, urutan, kanvas, detektif",
+      kolom: 1,
+      item: [
+        {
+          nama: "Permainan A sampai C",
+          singkat: "Garis, keranjang, urutan",
+          uraian:
+            "Tanya memakai tanda tanya. Perintah dan ajakan memakai tanda seru. Ajakan punya Ayo atau Mari. Cuci tangan: basahi, gosok sabun, bilas keringkan.",
+          contoh: "Tanya ?. Ajakan Ayo. Urutan sabun.",
+        },
+        {
+          nama: "Permainan D dan E",
+          singkat: "Kanvas dan detektif",
+          uraian:
+            "A-Y-O adalah Ayo. Tutup keran itu perintah, bukan tanya. Ayo berolahraga adalah ajakan.",
+          contoh: "Coretkan O. SALAH lalu BENAR.",
+        },
+      ],
+      kuis: [
+        { pertanyaan: "Tarik garis kalimat?", alias: ["tanya", "perintah", "ajak"] },
+        { pertanyaan: "Keranjang perintah ajakan?", alias: ["perintah", "ajak"] },
+        { pertanyaan: "Urutan cuci tangan?", alias: ["basah", "sabun", "bilas"] },
+        { pertanyaan: "Tutup keran itu tanya?", alias: ["salah"] },
+        { pertanyaan: "Ayo olahraga ajakan?", alias: ["benar"] },
+      ],
+      kuisTulis: {
+        pertanyaan: "Coretkan huruf terakhir A-Y-__.",
+        alias: ["ayo", "o"],
+      },
+      voice: [
+        [
+          "Tanpa keyboard ya. Tarik garis dari jenis kalimat ke tandanya. Geser kalimat ke keranjang perintah atau ajakan.",
+          "Urutkan mencuci tangan: basahi, gosok sabun, lalu bilas. Coretkan huruf O untuk kata Ayo.",
+          "Detektif: tutup keran itu perintah, bukan tanya. Ayo berolahraga adalah ajakan yang benar.",
         ],
       ],
     },

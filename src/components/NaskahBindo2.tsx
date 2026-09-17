@@ -13,6 +13,7 @@ import { kumpulkanAlias } from "@/lib/nilai-kuis-tulis";
 import type { KartuModulResmi, ModulResmiPai } from "@/lib/modul-resmi-pai";
 import { cuplikanDariNaskah } from "@/lib/naskah-voice-pai-1-bab2";
 import type { KelaminGuru } from "@/lib/guru";
+import EvaluasiEkstraBindo2 from "@/components/EvaluasiEkstraBindo2";
 
 function KartuBingkai({ children }: { children: ReactNode }) {
   return (
@@ -833,7 +834,7 @@ export default function NaskahBindo2({
   kelas?: string;
   kelamin?: KelaminGuru;
 }) {
-  const [kartuA, kartuB, kartuC] = modul.kartu;
+  const [kartuA, kartuB, kartuC, kartuD] = modul.kartu;
   const aliasTulisC = kumpulkanAlias(kartuC.kuis.flatMap((item) => item.alias));
 
   return (
@@ -922,6 +923,49 @@ export default function NaskahBindo2({
           konteks={kartuC.pengantar}
         />
       </KartuBingkai>
+
+      {kartuD ? (
+        <KartuBingkai>
+          <DoodleKartuAtasJudul
+            id={`${modul.id}-D`}
+            folder="doodle-bindo"
+            alt={`Ilustrasi ${kartuD.judul}`}
+          />
+          <h4 className="mt-3 text-center text-lg font-black tracking-wide text-[#1C01A5] sm:text-xl">
+            {kartuD.judul}
+          </h4>
+          <p className="mt-1 text-center text-sm font-bold text-[#1C01A5]/70">
+            Bahasa Indonesia · Kelas 2 SD · {modul.judul}
+          </p>
+          <div className="mt-4">
+            <TombolVoiceMateriPai1
+              kelas={kelas}
+              kelamin={kelamin}
+              cuplikan={cuplikanDariNaskah(kartuD.voice, 2_000, 3_000)}
+            />
+          </div>
+          <p className="mt-4 text-left text-base font-semibold leading-relaxed text-slate-700">
+            {kartuD.pengantar}
+          </p>
+          <div className="mt-4 grid gap-3">
+            {kartuD.item.map((item) => (
+              <article
+                key={item.nama}
+                className="rounded-2xl border-2 border-[#1C01A5]/15 bg-[#F8F7FF] px-4 py-3"
+              >
+                <p className="text-xs font-black uppercase tracking-wide text-[#1C01A5]">
+                  {item.nama}
+                  {item.singkat ? ` · ${item.singkat}` : ""}
+                </p>
+                <p className="mt-2 text-sm font-semibold leading-relaxed text-slate-700">
+                  {item.uraian}
+                </p>
+              </article>
+            ))}
+          </div>
+          <EvaluasiEkstraBindo2 modulId={modul.id} />
+        </KartuBingkai>
+      ) : null}
     </div>
   );
 }

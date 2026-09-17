@@ -40,12 +40,14 @@ export default function KuisTulisKartu({
   alias = [],
   konteks = "",
   rapat = false,
+  hanyaKanvas = false,
 }: {
   id: string;
   pertanyaan?: string;
   alias?: string[];
   konteks?: string;
   rapat?: boolean;
+  hanyaKanvas?: boolean;
 }) {
   const kuis = useKuisMateri();
   const [status, setStatus] = useState<StatusJawaban>(null);
@@ -102,11 +104,18 @@ export default function KuisTulisKartu({
       <p className="rounded-2xl border-2 border-[#1C01A5]/15 bg-[#F8F7FF] px-4 py-3 text-base font-extrabold leading-relaxed text-[#1C01A5]">
         {pertanyaan}
       </p>
-      <p className="text-xs font-bold text-[#1C01A5]/70">
-        PC: pilih Ketik Teks. HP atau pena: pilih Tulis Tangan.
-      </p>
+      {hanyaKanvas ? (
+        <p className="text-xs font-bold text-[#1C01A5]/70">
+          Tidak ada keyboard. Coretkan huruf dengan jari atau mouse di kotak kanvas.
+        </p>
+      ) : (
+        <p className="text-xs font-bold text-[#1C01A5]/70">
+          PC: pilih Ketik Teks. HP atau pena: pilih Tulis Tangan.
+        </p>
+      )}
       <WritingCanvas
         disabled={status === "benar"}
+        hanyaKanvas={hanyaKanvas}
         onSubmit={nilaiJawaban}
       />
       <HasilJawabanKuis

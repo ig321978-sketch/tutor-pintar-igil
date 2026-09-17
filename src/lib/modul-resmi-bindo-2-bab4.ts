@@ -17,6 +17,7 @@ export const MODUL_BINDO2_BAB4: ModulResmiPai = {
     "Anak di kantin menukar uang dengan susu, belajar kata penjual dan harga.",
     "Anak mendengarkan fabel semut dan belalang, mencari amanat.",
     "Anak mengerjakan evaluasi jual beli, fabel, dan tanggapan santun Semut.",
+    "Anak menarik garis bagian fabel, menggeser protagonis-antagonis, mengurutkan kancil-harimau, dan menulis amanat di kanvas.",
   ],
   latihan: pg([
     `[Soal 1 - PG - Tipe: HOTS]
@@ -216,6 +217,48 @@ D) Denah.`,
         ],
         [
           "Fabel tokohnya hewan. Kura-kura gigih, kancil cerdik, kelinci sombong. Jawab Belalang dengan santun.",
+        ],
+      ],
+    },
+    {
+      kode: "D",
+      judul: "D. Kartu Evaluasi Ekstra",
+      pengantar:
+        "Tanpa keyboard. Tarik garis protagonis-latar-amanat, geser hewan ke keranjang baik atau pembuat masalah, urutkan kejar-kejaran kancil, coretkan huruf amanat, lalu tekan BENAR atau SALAH.",
+      labelDaftar: "Tarik garis, keranjang, urutan, kanvas, detektif",
+      kolom: 1,
+      item: [
+        {
+          nama: "Permainan A sampai C",
+          singkat: "Garis, keranjang, urutan",
+          uraian:
+            "Protagonis: pahlawan baik hati. Latar: hutan, sungai, padang. Amanat: pesan kebaikan. Baik: kancil, semut, merpati. Masalah: serigala, buaya. Urutan: harimau melihat, kancil bersembunyi, kancil selamat.",
+          contoh: "Amanat = pesan. Kancil baik. Harimau dulu.",
+        },
+        {
+          nama: "Permainan D dan E",
+          singkat: "Kanvas dan detektif",
+          uraian:
+            "A-M-A-N-A-T adalah amanat. Hiu terbang pakai balon boleh di fabel karena khayalan. Kancil tidak selalu antagonis.",
+          contoh: "Coretkan AT. BENAR lalu SALAH.",
+        },
+      ],
+      kuis: [
+        { pertanyaan: "Tarik garis fabel?", alias: ["protagonis", "latar", "amanat"] },
+        { pertanyaan: "Keranjang hewan?", alias: ["kancil", "serigala"] },
+        { pertanyaan: "Urutan kancil harimau?", alias: ["sungai", "gua", "selamat"] },
+        { pertanyaan: "Hiu boleh terbang di fabel?", alias: ["benar"] },
+        { pertanyaan: "Kancil selalu antagonis?", alias: ["salah"] },
+      ],
+      kuisTulis: {
+        pertanyaan: "Coretkan dua huruf terakhir A-M-A-N-__-__.",
+        alias: ["amanat", "at"],
+      },
+      voice: [
+        [
+          "Tanpa keyboard. Tarik garis dari protagonis, latar, dan amanat ke artinya. Geser hewan ke keranjang baik hati atau pembuat masalah.",
+          "Urutkan: harimau melihat kancil di sungai, kancil bersembunyi di gua, lalu kancil selamat. Coretkan huruf A dan T untuk kata amanat.",
+          "Detektif: di fabel, hiu boleh terbang dengan balon karena cerita khayalan. Kancil tidak selalu antagonis.",
         ],
       ],
     },

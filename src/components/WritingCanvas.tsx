@@ -8,11 +8,13 @@ export type ModeTulis = "canvas" | "keyboard";
 type WritingCanvasProps = {
   onSubmit: (data: string) => void | Promise<void>;
   disabled?: boolean;
+  hanyaKanvas?: boolean;
 };
 
 export default function WritingCanvas({
   onSubmit,
   disabled = false,
+  hanyaKanvas = false,
 }: WritingCanvasProps) {
   const [inputMode, setInputMode] = useState<ModeTulis>("canvas");
   const [teksKeyboard, setTeksKeyboard] = useState("");
@@ -117,7 +119,11 @@ export default function WritingCanvas({
     if (inputMode === "canvas") {
       const kanvas = canvasRef.current;
       if (!kanvas || !adaCoretan) {
-        setPesan("Gambar dulu di papan tulis, atau pilih mode Ketik Teks.");
+        setPesan(
+          hanyaKanvas
+            ? "Coretkan huruf di papan tulis dulu, lalu kirim."
+            : "Gambar dulu di papan tulis, atau pilih mode Ketik Teks.",
+        );
         return;
       }
       setPesan("");
@@ -145,6 +151,7 @@ export default function WritingCanvas({
 
   return (
     <div className="space-y-3">
+      {hanyaKanvas ? null : (
       <div
         role="tablist"
         aria-label="Pilih cara menjawab"
@@ -185,8 +192,9 @@ export default function WritingCanvas({
           ⌨️ Ketik Teks
         </button>
       </div>
+      )}
 
-      {inputMode === "canvas" ? (
+      {inputMode === "canvas" || hanyaKanvas ? (
         <div className="space-y-2">
           <div className="overflow-hidden rounded-2xl border-2 border-dashed border-[#1C01A5]/25 bg-[#FFFDF6]">
             <canvas
