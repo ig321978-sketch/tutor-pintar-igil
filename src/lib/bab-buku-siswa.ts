@@ -160,8 +160,8 @@ export const BAB_BUKU_SISWA: Record<string, Record<string, string[]>> = {
     "Bahasa Indonesia": [
       "Bab 1: Mengenal Perasaan",
       "Bab 2: Menjaga Kesehatan",
-      "Bab 3: Berhati-hati di Mana Saja",
-      "Bab 4: Keluargaku Unik",
+      "Bab 3: Berhati-hati di Jalan",
+      "Bab 4: Keluargaku Kreatif",
       "Bab 5: Berteman dalam Keragaman",
       "Bab 6: Bijak Memakai Uang",
       "Bab 7: Sayang Lingkungan",

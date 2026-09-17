@@ -30,6 +30,7 @@ import {
   adalahPancasila1Bab3,
   adalahPancasila1Bab4,
   adalahBindo1,
+  adalahBindo2,
   adalahPjok1,
   adalahInggris1,
   adalahMusik1,
@@ -43,6 +44,7 @@ import {
   adalahPai1Bab1,
   adalahPai1Bab2,
   cariModulBindo1Resmi,
+  cariModulBindo2Resmi,
   cariModulPjok1Resmi,
   cariModulInggris1Resmi,
   cariModulMusik1Resmi,
@@ -282,6 +284,10 @@ export function daftarIdKuisMateri(
   }
   if (adalahPancasila1Bab4(kelas, mapel, materi)) {
     return idKuisDariModulResmi(MODUL_PANCASILA1_BAB4);
+  }
+  if (adalahBindo2(kelas, mapel, materi)) {
+    const bindo2 = cariModulBindo2Resmi(materi);
+    if (bindo2) return idKuisDariModulResmi(bindo2);
   }
   if (adalahBindo1(kelas, mapel, materi)) {
     const bindo = cariModulBindo1Resmi(materi);

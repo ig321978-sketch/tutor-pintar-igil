@@ -19,6 +19,7 @@ import NaskahMtk1Bab9 from "@/components/NaskahMtk1Bab9";
 import NaskahMtk1Bab10 from "@/components/NaskahMtk1Bab10";
 import NaskahPancasila1 from "@/components/NaskahPancasila1";
 import NaskahBindo1 from "@/components/NaskahBindo1";
+import NaskahBindo2 from "@/components/NaskahBindo2";
 import NaskahPjok1 from "@/components/NaskahPjok1";
 import NaskahInggris1 from "@/components/NaskahInggris1";
 import NaskahMusik1 from "@/components/NaskahMusik1";
@@ -55,6 +56,9 @@ import {
   adalahJudulBindo1,
   cariModulBindo1DariNaskah,
   cariModulBindo1Resmi,
+  adalahJudulBindo2,
+  cariModulBindo2DariNaskah,
+  cariModulBindo2Resmi,
   adalahJudulPjok1,
   cariModulPjok1DariNaskah,
   cariModulPjok1Resmi,
@@ -221,11 +225,22 @@ function ModuleRenderer({
     return cariModulPancasila1DariNaskah(naskah);
   }, [naskah, mapel, materi]);
   const modulBindo = useMemo(() => {
+    if (kelasDuaSd(kelas)) return null;
     if (adalahJudulBindo1(mapel, materi)) {
       return cariModulBindo1Resmi(materi);
     }
     return cariModulBindo1DariNaskah(naskah);
-  }, [naskah, mapel, materi]);
+  }, [naskah, mapel, materi, kelas]);
+  const modulBindo2 = useMemo(() => {
+    if (kelasSatuSd(kelas)) return null;
+    if (adalahJudulBindo2(mapel, materi)) {
+      return cariModulBindo2Resmi(materi);
+    }
+    if (kelasDuaSd(kelas)) {
+      return cariModulBindo2DariNaskah(naskah);
+    }
+    return cariModulBindo2DariNaskah(naskah);
+  }, [naskah, mapel, materi, kelas]);
   const modulPjok = useMemo(() => {
     if (adalahJudulPjok1(mapel, materi)) {
       return cariModulPjok1Resmi(materi);
@@ -302,10 +317,10 @@ function ModuleRenderer({
     pakaiKartuMtkBab9 ||
     pakaiKartuMtkBab10;
   const modulResmiLain = useMemo(() => {
-    if (kelasDuaSd(kelas) || modulPai2) return null;
+    if (kelasDuaSd(kelas) || modulPai2 || modulBindo2) return null;
     if (pakaiKartuBab1 || pakaiKartuBab2 || adaKartuMtk || modulPancasila || modulBindo || modulPjok || modulInggris || modulMusik || modulSeniRupa || modulKristen || modulKatolik || modulBuddha || modulHindu || modulKhonghucu) return null;
     return cariModulPai1Resmi(materi) ?? cariModulPai1DariNaskah(naskah);
-  }, [pakaiKartuBab1, pakaiKartuBab2, adaKartuMtk, modulPancasila, modulBindo, modulPjok, modulInggris, modulMusik, modulSeniRupa, modulKristen, modulKatolik, modulBuddha, modulHindu, modulKhonghucu, modulPai2, materi, naskah, kelas]);
+  }, [pakaiKartuBab1, pakaiKartuBab2, adaKartuMtk, modulPancasila, modulBindo, modulBindo2, modulPjok, modulInggris, modulMusik, modulSeniRupa, modulKristen, modulKatolik, modulBuddha, modulHindu, modulKhonghucu, modulPai2, materi, naskah, kelas]);
   const pakaiKartuSd =
     !pakaiKartuBab1 &&
     !pakaiKartuBab2 &&
@@ -322,6 +337,7 @@ function ModuleRenderer({
     !modulHindu &&
     !modulKhonghucu &&
     !modulPai2 &&
+    !modulBindo2 &&
     !modulResmiLain &&
     !rapat &&
     jenjangGuru(kelas || "1 SD") === "SD" &&
@@ -343,6 +359,7 @@ function ModuleRenderer({
       modulHindu ||
       modulKhonghucu ||
       modulPai2 ||
+      modulBindo2 ||
       modulResmiLain ||
       pakaiKartuSd
         ? null
@@ -364,6 +381,7 @@ function ModuleRenderer({
       modulHindu,
       modulKhonghucu,
       modulPai2,
+      modulBindo2,
       modulResmiLain,
       pakaiKartuSd,
     ],
@@ -387,6 +405,7 @@ function ModuleRenderer({
       modulHindu ||
       modulKhonghucu ||
       modulPai2 ||
+      modulBindo2 ||
       modulResmiLain ||
       pakaiKartuSd
         ? []
@@ -409,6 +428,7 @@ function ModuleRenderer({
       modulHindu,
       modulKhonghucu,
       modulPai2,
+      modulBindo2,
       modulResmiLain,
       pakaiKartuSd,
       potong.tubuh,
@@ -624,6 +644,17 @@ function ModuleRenderer({
       <div className={className}>
         <NaskahPai2
           modul={modulPai2}
+          kelas={kelas || "2 SD"}
+          kelamin={kelamin}
+        />
+      </div>
+    );
+  }
+  if (modulBindo2) {
+    return (
+      <div className={className}>
+        <NaskahBindo2
+          modul={modulBindo2}
           kelas={kelas || "2 SD"}
           kelamin={kelamin}
         />
