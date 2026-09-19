@@ -682,6 +682,226 @@ const PAKET: Record<string, PaketEvaluasiEkstra> = {
       },
     ],
   },
+  "mtk-2-bab5": {
+    garis: {
+      soal: "Tariklah garis menggunakan jari untuk menjodohkan bentuk pembagian dengan pengurangan berulangnya yang benar!",
+      kiri: ["8 : 4", "4 : 4", "9 : 3"],
+      kanan: [
+        "4 - 4 = 0 (Pengurangan 1 kali)",
+        "8 - 4 - 4 = 0 (Pengurangan 2 kali)",
+        "9 - 3 - 3 - 3 = 0 (Pengurangan 3 kali)",
+      ],
+      kunci: {
+        "8 : 4": "8 - 4 - 4 = 0 (Pengurangan 2 kali)",
+        "4 : 4": "4 - 4 = 0 (Pengurangan 1 kali)",
+        "9 : 3": "9 - 3 - 3 - 3 = 0 (Pengurangan 3 kali)",
+      },
+    },
+    keranjang: {
+      soal: "Geser dan masukkan kepingan pembagian ke keranjang hasil akhir yang benar!",
+      keranjang1: "HASIL AKHIRNYA 3",
+      keranjang2: "HASIL AKHIRNYA 4",
+      keping: [
+        { id: "enam2", label: "6 : 2", wadah: "1" },
+        { id: "delapan2", label: "8 : 2", wadah: "2" },
+        { id: "duabelas4", label: "12 : 4", wadah: "1" },
+        { id: "enambelas4", label: "16 : 4", wadah: "2" },
+      ],
+    },
+    urut: {
+      soal: "Susunlah 3 kalimat acak agar membentuk alur soal cerita pembagian yang logis!",
+      balok: [
+        "Tono memiliki 15 butir kelereng di dalam kantongnya.",
+        "Ia ingin membagikan seluruh kelereng itu secara adil kepada 5 orang temannya.",
+        "Berapa banyak kelereng yang diterima oleh masing-masing temannya?",
+      ],
+    },
+    kanvas: {
+      soal: 'Nia memiliki 20 buah buku. Ia menyusun buku-buku tersebut ke dalam 2 rak secara sama banyak. Jumlah buku di setiap rak adalah __ - 0.',
+      alias: ["10", "1"],
+    },
+    detektif: [
+      {
+        soal: "Operasi pembagian 15 : 5 = 3 artinya angka 15 dikurangi angka 3 secara berulang sebanyak 5 kali.",
+        benar: false,
+        alasan:
+          "Salah. 15 : 5 artinya angka 15 dikurangi angka 5 secara berulang sebanyak 3 kali: 15 - 5 - 5 - 5 = 0.",
+      },
+      {
+        soal: "Setiap bilangan cacah (kecuali 0) jika dibagi dengan angka 1, maka hasil akhirnya adalah bilangan itu sendiri.",
+        benar: true,
+        alasan:
+          "Benar. Membagi dengan 1 artinya seluruh benda dimasukkan ke dalam 1 wadah tunggal, sehingga isinya tidak berubah.",
+      },
+    ],
+  },
+  "mtk-2-bab6": {
+    garis: {
+      soal: "Tariklah garis untuk menjodohkan jenis benda dengan satuan panjang standar yang paling cocok digunakan!",
+      kiri: [
+        "Panjang pensil tulis baru",
+        "Panjang halaman sekolah",
+        "Tinggi lemari kelas",
+      ],
+      kanan: [
+        "Satuan Meter (m) — halaman sekolah",
+        "Satuan Sentimeter (cm)",
+        "Satuan Meter (m) — tinggi lemari",
+      ],
+      kunci: {
+        "Panjang pensil tulis baru": "Satuan Sentimeter (cm)",
+        "Panjang halaman sekolah": "Satuan Meter (m) — halaman sekolah",
+        "Tinggi lemari kelas": "Satuan Meter (m) — tinggi lemari",
+      },
+    },
+    keranjang: {
+      soal: "Kategorikan alat ukur ke dalam keranjang jenis alat ukur yang tepat!",
+      keranjang1: "ALAT UKUR BAKU (Standar/Pasti)",
+      keranjang2: "ALAT UKUR TIDAK BAKU (Berubah-ubah)",
+      keping: [
+        { id: "penggaris", label: "Penggaris cm", wadah: "1" },
+        { id: "jengkal", label: "Jengkal Tangan", wadah: "2" },
+        { id: "meteran", label: "Meteran Pita", wadah: "1" },
+        { id: "langkah", label: "Langkah Kaki", wadah: "2" },
+      ],
+    },
+    urut: {
+      soal: "Urutkan balok benda dari yang memiliki ukuran paling pendek hingga yang paling panjang!",
+      balok: [
+        "Klip kertas logam sepanjang 3 cm.",
+        "Krayon menggambar sepanjang 8 cm.",
+        "Penghapus papan tulis sepanjang 15 cm.",
+      ],
+    },
+    kanvas: {
+      soal: 'Tahukah kamu? Panjang 1 Meter itu sama nilainya dengan 1 - 0 - __ Sentimeter.',
+      alias: ["100", "0"],
+    },
+    detektif: [
+      {
+        soal: "Jika kita mulai mengukur panjang sebuah buku dari angka 1 pada penggaris dan ujung kanannya berakhir di angka 6, maka panjang buku tersebut adalah 6 cm.",
+        benar: false,
+        alasan:
+          "Salah. Karena tidak dimulai dari angka 0, panjangnya harus dihitung selisihnya: 6 - 1 = 5 cm.",
+      },
+      {
+        soal: "Mengukur panjang meja kelas menggunakan meteran kain akan menghasilkan angka yang sama meskipun diukur oleh orang yang berbeda.",
+        benar: true,
+        alasan:
+          "Benar. Karena meteran kain adalah alat ukur baku standar nasional dan internasional.",
+      },
+    ],
+  },
+  "mtk-2-bab7": {
+    garis: {
+      soal: "Tariklah garis untuk menjodohkan benda di bawah ini dengan satuan berat standar yang paling tepat!",
+      kiri: [
+        "Sebungkus biskuit kecil",
+        "Berat badan anak kelas 2",
+        "Sekantung besar pupuk",
+      ],
+      kanan: [
+        "Satuan Kilogram (kg) — berat badan",
+        "Satuan Gram (g)",
+        "Satuan Kilogram (kg) — pupuk",
+      ],
+      kunci: {
+        "Sebungkus biskuit kecil": "Satuan Gram (g)",
+        "Berat badan anak kelas 2": "Satuan Kilogram (kg) — berat badan",
+        "Sekantung besar pupuk": "Satuan Kilogram (kg) — pupuk",
+      },
+    },
+    keranjang: {
+      soal: "Masukkan nama-nama benda ke dalam keranjang perkiraan berat yang sesuai!",
+      keranjang1: "LEBIH COCOK DENGAN GRAM (Ringan)",
+      keranjang2: "LEBIH COCOK DENGAN KILOGRAM (Berat)",
+      keping: [
+        { id: "semangka", label: "Semangka", wadah: "2" },
+        { id: "penghapus", label: "Penghapus", wadah: "1" },
+        { id: "sepeda", label: "Sepeda", wadah: "2" },
+        { id: "permen", label: "Sebutir Permen", wadah: "1" },
+      ],
+    },
+    urut: {
+      soal: "Urutkan balok benda dari yang memiliki massa/berat paling ringan hingga yang paling berat!",
+      balok: [
+        "Selembar kapas kosmetik seberat 5 gram.",
+        "Buah pisang seberat 200 gram.",
+        "Buah pepaya besar seberat 2 kilogram.",
+      ],
+    },
+    kanvas: {
+      soal: 'Ibu membeli 3 kg tepung terigu dan 2 kg gula pasir. Total berat belanjaan Ibu adalah __ kilogram.',
+      alias: ["5"],
+    },
+    detektif: [
+      {
+        soal: "Benda yang ukurannya besar sudah pasti selalu lebih berat daripada benda yang ukurannya kecil ketika ditimbang.",
+        benar: false,
+        alasan:
+          "Salah. Contohnya sebuah balon gas yang besar bisa jauh lebih ringan daripada sebuah batu kerikil kecil yang padat keras.",
+      },
+      {
+        soal: "Timbangan digital akan langsung menampilkan angka berat benda berupa tulisan lampu di layarnya secara otomatis.",
+        benar: true,
+        alasan:
+          "Benar. Timbangan digital menggunakan sensor elektronik untuk memunculkan angka secara pasti dan akurat.",
+      },
+    ],
+  },
+  "mtk-2-bab8": {
+    garis: {
+      soal: "Perhatikan data diagram pensil: Kelompok Merah 3 pensil, Kelompok Biru 5 pensil. Tariklah garis untuk menjodohkan pertanyaan data dengan jawaban angka yang tepat!",
+      kiri: [
+        "Jumlah pensil Kelompok Merah",
+        "Jumlah pensil Kelompok Biru",
+        "Total seluruh pensil warna",
+      ],
+      kanan: ["5 buah pensil", "3 buah pensil", "8 buah pensil"],
+      kunci: {
+        "Jumlah pensil Kelompok Merah": "3 buah pensil",
+        "Jumlah pensil Kelompok Biru": "5 buah pensil",
+        "Total seluruh pensil warna": "8 buah pensil",
+      },
+    },
+    keranjang: {
+      soal: "Perhatikan diagram hewan: Kucing 4 ekor, Burung 2 ekor. Geser pernyataan data ke keranjang kebenaran yang tepat!",
+      keranjang1: "PERNYATAAN DATA YANG BENAR",
+      keranjang2: "PERNYATAAN DATA YANG SALAH",
+      keping: [
+        { id: "kucing4", label: "Jumlah kucing ada 4 ekor", wadah: "1" },
+        { id: "burunglebih", label: "Burung lebih banyak dari kucing", wadah: "2" },
+        { id: "burung2", label: "Jumlah burung ada 2 ekor", wadah: "1" },
+        { id: "total6", label: "Total seluruh hewan ada 6 ekor", wadah: "1" },
+      ],
+    },
+    urut: {
+      soal: "Urutkan jenis buku dari yang memiliki jumlah paling sedikit hingga yang paling banyak di dalam kelas!",
+      balok: [
+        "Buku Gambar (2 buah).",
+        "Buku Sains (3 buah).",
+        "Buku Cerita (5 buah).",
+      ],
+    },
+    kanvas: {
+      soal: 'Analisis data diagram mainan: Mobil-mobilan 4 gambar, Boneka 3 gambar. Jumlah anak yang memilih mainan mobil-mobilan adalah sebanyak __ anak.',
+      alias: ["4"],
+    },
+    detektif: [
+      {
+        soal: "Dalam diagram gambar, jika baris gambar mainan robot lebih pendek daripada baris gambar mainan bola, artinya mainan robot lebih banyak jumlahnya daripada bola.",
+        benar: false,
+        alasan:
+          "Salah. Baris gambar yang lebih pendek menunjukkan jumlah data yang lebih sedikit, bukan lebih banyak.",
+      },
+      {
+        soal: "Diagram gambar sangat membantu kita untuk membandingkan mana data yang paling banyak dan mana data yang paling sedikit secara cepat hanya dengan melihat gambar.",
+        benar: true,
+        alasan:
+          "Benar. Visual piktogram dirancang untuk menyederhanakan data angka menjadi grafik visual yang mudah dibaca anak-anak.",
+      },
+    ],
+  },
 };
 
 function titikRelatif(

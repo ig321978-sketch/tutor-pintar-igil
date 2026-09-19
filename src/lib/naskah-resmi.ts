@@ -32,7 +32,11 @@ import {
   MODUL_BINDO2_BAB1_8,
   MODUL_BINDO2_BAB5_8,
 } from "@/lib/modul-resmi-bindo-2";
-import { MODUL_MTK2_BAB1_4 } from "@/lib/modul-resmi-mtk-2";
+import {
+  MODUL_MTK2_BAB1_4,
+  MODUL_MTK2_BAB1_8,
+  MODUL_MTK2_BAB5_8,
+} from "@/lib/modul-resmi-mtk-2";
 import { MODUL_PJOK1_BAB1_4 } from "@/lib/modul-resmi-pjok-1";
 import { MODUL_INGGRIS1_BAB1_4 } from "@/lib/modul-resmi-inggris-1";
 import { MODUL_MUSIK1_BAB1_4 } from "@/lib/modul-resmi-musik-1";
@@ -59,7 +63,7 @@ export const MODUL_PANCASILA1_BAB1_4 = [
 
 export { MODUL_BINDO1_BAB1_8 };
 export { MODUL_BINDO2_BAB1_4, MODUL_BINDO2_BAB1_8, MODUL_BINDO2_BAB5_8 };
-export { MODUL_MTK2_BAB1_4 };
+export { MODUL_MTK2_BAB1_4, MODUL_MTK2_BAB1_8, MODUL_MTK2_BAB5_8 };
 export { MODUL_PJOK1_BAB1_4 };
 export { MODUL_INGGRIS1_BAB1_4 };
 export { MODUL_MUSIK1_BAB1_4 };
@@ -459,12 +463,12 @@ export function adalahBindo2(
 
 export function cariModulMtk2Resmi(materi: string): ModulResmiPai | null {
   const judul = normJudul(materi);
-  return MODUL_MTK2_BAB1_4.find((modul) => modul.pola.test(judul)) ?? null;
+  return MODUL_MTK2_BAB1_8.find((modul) => modul.pola.test(judul)) ?? null;
 }
 
 export function cariModulMtk2DariNaskah(teks?: string): ModulResmiPai | null {
   return (
-    MODUL_MTK2_BAB1_4.find((modul) => naskahTampilanModulResmi(modul, teks)) ??
+    MODUL_MTK2_BAB1_8.find((modul) => naskahTampilanModulResmi(modul, teks)) ??
     null
   );
 }
@@ -778,7 +782,7 @@ export function daftarNaskahResmiPublik(): ModulTerbitPublik[] {
       mapel: "Bahasa Indonesia",
       materi: modul.judul,
     })),
-    ...MODUL_MTK2_BAB1_4.map((modul) => ({
+    ...MODUL_MTK2_BAB1_8.map((modul) => ({
       kelas: "2 SD",
       mapel: "Matematika",
       materi: modul.judul,
@@ -978,7 +982,7 @@ export function naskahTampilanResmi(teks?: string): boolean {
   if (MODUL_BINDO2_BAB1_8.some((modul) => naskahTampilanModulResmi(modul, teks))) {
     return true;
   }
-  if (MODUL_MTK2_BAB1_4.some((modul) => naskahTampilanModulResmi(modul, teks))) {
+  if (MODUL_MTK2_BAB1_8.some((modul) => naskahTampilanModulResmi(modul, teks))) {
     return true;
   }
   if (MODUL_PJOK1_BAB1_4.some((modul) => naskahTampilanModulResmi(modul, teks))) {
@@ -1055,7 +1059,7 @@ export function teksLisanResmiJikaAda(teks?: string): string | null {
     naskahTampilanModulResmi(item, teks),
   );
   if (bindo2) return teksLisanModulResmi(bindo2);
-  const mtk2 = MODUL_MTK2_BAB1_4.find((item) =>
+  const mtk2 = MODUL_MTK2_BAB1_8.find((item) =>
     naskahTampilanModulResmi(item, teks),
   );
   if (mtk2) return teksLisanModulResmi(mtk2);

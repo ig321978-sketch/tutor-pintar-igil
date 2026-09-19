@@ -438,6 +438,94 @@ const INFOGRAFIS: Record<
     ],
     catatan: "Urutan jumlah sisi dari sedikit: lingkaran, segitiga, segiempat. Sudut segitiga ada 3.",
   },
+  "mtk-2-bab5-A": {
+    judul: "Logika bagi adil cerdik",
+    kepala: ["Bagian", "Arti", "Contoh"],
+    baris: [
+      ["Berbagi adil", "Pengurangan berulang sampai habis", "6 cokelat, 3 teman"],
+      ["Contoh nyata", "Kurangi 3 sampai sisa 0", "6 - 3 - 3 = 0"],
+      ["Kalimat", "Yang dibagi : pembagi = hasil", "6 : 3 = 2"],
+    ],
+    catatan:
+      "Hasil pembagian menunjukkan berapa kali pengurangan terjadi sampai bendanya habis menjadi 0.",
+  },
+  "mtk-2-bab5-B": {
+    judul: "Hasil sama, bagi satu, cerita",
+    kepala: ["Bentuk", "Pengurangan", "Hasil"],
+    baris: [
+      ["6 : 2 / 12 : 4", "6-2-2-2 / 12-4-4-4", "3"],
+      ["8 : 2 / 16 : 4", "Kurangi 2 atau 4 sampai 0", "4"],
+      ["15 : 1 / 20 : 2", "Satu wadah / dua rak", "15 / 10"],
+    ],
+    catatan:
+      "15 : 5 artinya 15 dikurangi 5 sebanyak 3 kali. Bagi 1, isinya tidak berubah.",
+  },
+  "mtk-2-bab6-A": {
+    judul: "Penggaris pintar kita",
+    kepala: ["Satuan", "Dipakai untuk", "Contoh"],
+    baris: [
+      ["Sentimeter (cm)", "Benda pendek atau kecil", "Pensil, penghapus, buku"],
+      ["Meter (m)", "Benda panjang atau luar kelas", "Papan tulis, pintu, kelas"],
+      ["Mulai dari 0", "Ujung kiri benda di angka nol", "Bukan ujung plastik"],
+    ],
+    catatan:
+      "Sejajarkan ujung paling kiri benda tepat pada angka 0. Angka di ujung kanan adalah panjang aslinya.",
+  },
+  "mtk-2-bab6-B": {
+    judul: "Alat baku dan 100 cm",
+    kepala: ["Jenis", "Contoh", "Hasil ukur"],
+    baris: [
+      ["Alat baku", "Penggaris cm, meteran pita", "Sama di seluruh dunia"],
+      ["Tidak baku", "Jengkal tangan, langkah kaki", "Berubah-ubah"],
+      ["Konversi", "1 meter = 100 sentimeter", "Klip 3, krayon 8, papan 15"],
+    ],
+    catatan:
+      "Jika mulai dari angka 1 sampai 6, panjangnya 6 - 1 = 5 cm, bukan 6 cm.",
+  },
+  "mtk-2-bab7-A": {
+    judul: "Dunia timbangan pintar",
+    kepala: ["Satuan", "Dipakai untuk", "Contoh"],
+    baris: [
+      ["Gram (g)", "Benda ringan", "Garam, permen, selembar roti"],
+      ["Kilogram (kg)", "Benda berat", "Beras, semangka, berat badan"],
+      ["Hubungan", "1 kg = 1.000 g", "Jarum menunjuk angka berat"],
+    ],
+    catatan:
+      "Jika jarum menunjuk 3 saat semangka ditaruh, beratnya 3 kilogram. 2 kg = 2.000 g.",
+  },
+  "mtk-2-bab7-B": {
+    judul: "Ringan, berat, dan digital",
+    kepala: ["Kelompok", "Contoh", "Ingat"],
+    baris: [
+      ["Lebih cocok gram", "Penghapus, sebutir permen", "Ringan"],
+      ["Lebih cocok kg", "Semangka, sepeda", "Berat"],
+      ["Digital", "Angka muncul di layar", "3 kg + 2 kg = 5 kg"],
+    ],
+    catatan:
+      "Benda besar belum tentu lebih berat. Balon gas besar bisa lebih ringan daripada batu kecil.",
+  },
+  "mtk-2-bab8-A": {
+    judul: "Kunci membaca piktogram",
+    kepala: ["Bagian", "Arti", "Contoh"],
+    baris: [
+      ["Data gambar", "Satu ikon = satu jumlah", "Simbol buah atau pensil"],
+      ["Data kelas", "Hitung banyak gambar", "Apel 4, pisang 2"],
+      ["Analisis", "Baris terpanjang paling banyak", "Apel lebih disukai"],
+    ],
+    catatan:
+      "Selisih anak yang suka apel dan pisang adalah 2. Namanya diagram gambar atau piktogram.",
+  },
+  "mtk-2-bab8-B": {
+    judul: "Membandingkan dan menjumlah",
+    kepala: ["Data", "Gambar", "Angka"],
+    baris: [
+      ["Pensil merah / biru", "3 ikon / 5 ikon", "3, 5, total 8"],
+      ["Kucing / burung", "4 ikon / 2 ikon", "4, 2, total 6"],
+      ["Buku gambar-sains-cerita", "2 / 3 / 5", "Urutan 2, 3, 5"],
+    ],
+    catatan:
+      "Baris lebih pendek artinya lebih sedikit. Empat gambar mobil berarti 4 anak.",
+  },
 };
 
 function EvaluasiBab1({ modulId }: { modulId: string }) {
@@ -759,11 +847,331 @@ function EvaluasiBab4({ modulId }: { modulId: string }) {
   );
 }
 
+function EvaluasiBab5({ modulId }: { modulId: string }) {
+  return (
+    <div className="mt-5 space-y-5">
+      <h5 className="text-sm font-black uppercase tracking-wide text-[#1C01A5]">
+        A. Pilihan ganda
+      </h5>
+      <KuisPilihan
+        id={idEval(modulId, 0)}
+        soal="12 - 4 - 4 - 4 = 0 ditulis pembagian..."
+        benar="B"
+        pilihan={[
+          { huruf: "A", teks: "4 : 12" },
+          { huruf: "B", teks: "12 : 4" },
+          { huruf: "C", teks: "12 : 3 wajib saja" },
+        ]}
+      />
+      <KuisPilihan
+        id={idEval(modulId, 1)}
+        soal="10 : 2 = 5 dalam pengurangan berulang adalah..."
+        benar="B"
+        pilihan={[
+          { huruf: "A", teks: "10 - 5 - 5 = 0" },
+          { huruf: "B", teks: "10 - 2 - 2 - 2 - 2 - 2 = 0" },
+          { huruf: "C", teks: "2 - 2 - 2 = 0" },
+        ]}
+      />
+      <h5 className="text-sm font-black uppercase tracking-wide text-[#1C01A5]">
+        B. Benar atau salah beserta alasan
+      </h5>
+      <KuisBenarSalah
+        id={idEval(modulId, 2)}
+        soal="Operasi 15 : 5 = 3 artinya angka 15 dikurangi angka 3 secara berulang sebanyak 5 kali."
+        benar="salah"
+        alasanBenar="15 dikurangi 5 sebanyak 3 kali sampai habis"
+      />
+      <KuisBenarSalah
+        id={idEval(modulId, 3)}
+        soal="Setiap bilangan cacah kecuali 0 jika dibagi 1, hasilnya adalah bilangan itu sendiri."
+        benar="benar"
+        alasanBenar="seluruh benda masuk satu wadah sehingga isinya tidak berubah"
+      />
+      <h5 className="text-sm font-black uppercase tracking-wide text-[#1C01A5]">
+        C. Mencocokkan garis
+      </h5>
+      <KuisJodoh
+        id={idEval(modulId, 4)}
+        soal="Jodohkan bentuk pembagian dengan pengurangan berulangnya."
+        pasangan={[
+          {
+            kiri: "8 : 4",
+            kanan: ["4 - 4 = 0", "8 - 4 - 4 = 0", "9 - 3 - 3 - 3 = 0"],
+          },
+          {
+            kiri: "4 : 4",
+            kanan: ["4 - 4 = 0", "8 - 4 - 4 = 0", "9 - 3 - 3 - 3 = 0"],
+          },
+          {
+            kiri: "9 : 3",
+            kanan: ["4 - 4 = 0", "8 - 4 - 4 = 0", "9 - 3 - 3 - 3 = 0"],
+          },
+        ]}
+        kunci={{
+          "8 : 4": "8 - 4 - 4 = 0",
+          "4 : 4": "4 - 4 = 0",
+          "9 : 3": "9 - 3 - 3 - 3 = 0",
+        }}
+      />
+      <h5 className="text-sm font-black uppercase tracking-wide text-[#1C01A5]">
+        D. Esai pendek analisis
+      </h5>
+      <KuisIsian
+        id={idEval(modulId, 5)}
+        soal="Mengapa hasil pembagian menunjukkan berapa kali pengurangan terjadi sampai habis?"
+        alias={["kurang", "habis", "nol", "kali", "berulang"]}
+      />
+    </div>
+  );
+}
+
+function EvaluasiBab6({ modulId }: { modulId: string }) {
+  return (
+    <div className="mt-5 space-y-5">
+      <h5 className="text-sm font-black uppercase tracking-wide text-[#1C01A5]">
+        A. Pilihan ganda
+      </h5>
+      <KuisPilihan
+        id={idEval(modulId, 0)}
+        soal="Penghapus diukur dari angka 0, ujung kanan di angka 4. Panjangnya..."
+        benar="B"
+        pilihan={[
+          { huruf: "A", teks: "0 cm" },
+          { huruf: "B", teks: "4 cm" },
+          { huruf: "C", teks: "5 cm" },
+        ]}
+      />
+      <KuisPilihan
+        id={idEval(modulId, 1)}
+        soal="Singkatan satuan ukuran standar sentimeter adalah..."
+        benar="B"
+        pilihan={[
+          { huruf: "A", teks: "m" },
+          { huruf: "B", teks: "cm" },
+          { huruf: "C", teks: "kg" },
+        ]}
+      />
+      <h5 className="text-sm font-black uppercase tracking-wide text-[#1C01A5]">
+        B. Benar atau salah beserta alasan
+      </h5>
+      <KuisBenarSalah
+        id={idEval(modulId, 2)}
+        soal="Jika kita mulai mengukur buku dari angka 1 dan ujung kanan di angka 6, panjangnya 6 cm."
+        benar="salah"
+        alasanBenar="tidak mulai dari 0 sehingga panjangnya 6 - 1 = 5 cm"
+      />
+      <KuisBenarSalah
+        id={idEval(modulId, 3)}
+        soal="Mengukur meja memakai meteran kain menghasilkan angka yang sama meskipun diukur orang berbeda."
+        benar="benar"
+        alasanBenar="meteran kain adalah alat ukur baku standar"
+      />
+      <h5 className="text-sm font-black uppercase tracking-wide text-[#1C01A5]">
+        C. Mencocokkan garis
+      </h5>
+      <KuisJodoh
+        id={idEval(modulId, 4)}
+        soal="Jodohkan benda dengan satuan panjang yang paling cocok."
+        pasangan={[
+          {
+            kiri: "Panjang pensil tulis baru",
+            kanan: ["Satuan Sentimeter (cm)", "Satuan Meter (m)"],
+          },
+          {
+            kiri: "Panjang halaman sekolah",
+            kanan: ["Satuan Sentimeter (cm)", "Satuan Meter (m)"],
+          },
+          {
+            kiri: "Tinggi lemari kelas",
+            kanan: ["Satuan Sentimeter (cm)", "Satuan Meter (m)"],
+          },
+        ]}
+        kunci={{
+          "Panjang pensil tulis baru": "Satuan Sentimeter (cm)",
+          "Panjang halaman sekolah": "Satuan Meter (m)",
+          "Tinggi lemari kelas": "Satuan Meter (m)",
+        }}
+      />
+      <h5 className="text-sm font-black uppercase tracking-wide text-[#1C01A5]">
+        D. Esai pendek analisis
+      </h5>
+      <KuisIsian
+        id={idEval(modulId, 5)}
+        soal="Mengapa kita mulai mengukur dari angka 0, bukan dari ujung plastik penggaris?"
+        alias={["nol", "0", "benar", "panjang", "ujung"]}
+      />
+    </div>
+  );
+}
+
+function EvaluasiBab7({ modulId }: { modulId: string }) {
+  return (
+    <div className="mt-5 space-y-5">
+      <h5 className="text-sm font-black uppercase tracking-wide text-[#1C01A5]">
+        A. Pilihan ganda
+      </h5>
+      <KuisPilihan
+        id={idEval(modulId, 0)}
+        soal="Benda mana yang lebih membutuhkan satuan kilogram saat ditimbang?"
+        benar="B"
+        pilihan={[
+          { huruf: "A", teks: "Sebutir telur ayam" },
+          { huruf: "B", teks: "Sekarung beras yang besar" },
+          { huruf: "C", teks: "Sebutir permen" },
+        ]}
+      />
+      <KuisPilihan
+        id={idEval(modulId, 1)}
+        soal="2 kilogram jika diubah ke gram sama dengan..."
+        benar="B"
+        pilihan={[
+          { huruf: "A", teks: "2 gram" },
+          { huruf: "B", teks: "2.000 gram" },
+          { huruf: "C", teks: "200 gram" },
+        ]}
+      />
+      <h5 className="text-sm font-black uppercase tracking-wide text-[#1C01A5]">
+        B. Benar atau salah beserta alasan
+      </h5>
+      <KuisBenarSalah
+        id={idEval(modulId, 2)}
+        soal="Benda yang ukurannya besar sudah pasti selalu lebih berat daripada benda yang kecil."
+        benar="salah"
+        alasanBenar="balon gas besar bisa lebih ringan daripada batu kerikil kecil"
+      />
+      <KuisBenarSalah
+        id={idEval(modulId, 3)}
+        soal="Timbangan digital langsung menampilkan angka berat berupa tulisan lampu di layar."
+        benar="benar"
+        alasanBenar="sensor elektronik memunculkan angka secara akurat"
+      />
+      <h5 className="text-sm font-black uppercase tracking-wide text-[#1C01A5]">
+        C. Mencocokkan garis
+      </h5>
+      <KuisJodoh
+        id={idEval(modulId, 4)}
+        soal="Jodohkan benda dengan satuan berat yang paling tepat."
+        pasangan={[
+          {
+            kiri: "Sebungkus biskuit kecil",
+            kanan: ["Satuan Gram (g)", "Satuan Kilogram (kg)"],
+          },
+          {
+            kiri: "Berat badan anak kelas 2",
+            kanan: ["Satuan Gram (g)", "Satuan Kilogram (kg)"],
+          },
+          {
+            kiri: "Sekantung besar pupuk",
+            kanan: ["Satuan Gram (g)", "Satuan Kilogram (kg)"],
+          },
+        ]}
+        kunci={{
+          "Sebungkus biskuit kecil": "Satuan Gram (g)",
+          "Berat badan anak kelas 2": "Satuan Kilogram (kg)",
+          "Sekantung besar pupuk": "Satuan Kilogram (kg)",
+        }}
+      />
+      <h5 className="text-sm font-black uppercase tracking-wide text-[#1C01A5]">
+        D. Esai pendek analisis
+      </h5>
+      <KuisIsian
+        id={idEval(modulId, 5)}
+        soal="Mengapa 1 kilogram sama dengan 1.000 gram?"
+        alias={["seribu", "1000", "1.000", "lebih besar", "berat"]}
+      />
+    </div>
+  );
+}
+
+function EvaluasiBab8({ modulId }: { modulId: string }) {
+  return (
+    <div className="mt-5 space-y-5">
+      <h5 className="text-sm font-black uppercase tracking-wide text-[#1C01A5]">
+        A. Pilihan ganda
+      </h5>
+      <KuisPilihan
+        id={idEval(modulId, 0)}
+        soal="Apel 4 gambar, pisang 2 gambar. Selisih jumlah anak yang menyukainya adalah..."
+        benar="B"
+        pilihan={[
+          { huruf: "A", teks: "6" },
+          { huruf: "B", teks: "2" },
+          { huruf: "C", teks: "4" },
+        ]}
+      />
+      <KuisPilihan
+        id={idEval(modulId, 1)}
+        soal="Cara menyajikan data memakai lambang gambar dinamakan diagram..."
+        benar="B"
+        pilihan={[
+          { huruf: "A", teks: "garis wajib" },
+          { huruf: "B", teks: "gambar atau piktogram" },
+          { huruf: "C", teks: "lingkaran" },
+        ]}
+      />
+      <h5 className="text-sm font-black uppercase tracking-wide text-[#1C01A5]">
+        B. Benar atau salah beserta alasan
+      </h5>
+      <KuisBenarSalah
+        id={idEval(modulId, 2)}
+        soal="Jika baris gambar robot lebih pendek daripada baris bola, artinya robot lebih banyak."
+        benar="salah"
+        alasanBenar="baris lebih pendek menunjukkan jumlah yang lebih sedikit"
+      />
+      <KuisBenarSalah
+        id={idEval(modulId, 3)}
+        soal="Diagram gambar membantu membandingkan data paling banyak dan paling sedikit dengan cepat."
+        benar="benar"
+        alasanBenar="visual piktogram menyederhanakan angka menjadi gambar yang mudah dibaca"
+      />
+      <h5 className="text-sm font-black uppercase tracking-wide text-[#1C01A5]">
+        C. Mencocokkan garis
+      </h5>
+      <KuisJodoh
+        id={idEval(modulId, 4)}
+        soal="Jodohkan pertanyaan data pensil dengan jawaban angkanya."
+        pasangan={[
+          {
+            kiri: "Jumlah pensil Kelompok Merah",
+            kanan: ["3 buah pensil", "5 buah pensil", "8 buah pensil"],
+          },
+          {
+            kiri: "Jumlah pensil Kelompok Biru",
+            kanan: ["3 buah pensil", "5 buah pensil", "8 buah pensil"],
+          },
+          {
+            kiri: "Total seluruh pensil warna",
+            kanan: ["3 buah pensil", "5 buah pensil", "8 buah pensil"],
+          },
+        ]}
+        kunci={{
+          "Jumlah pensil Kelompok Merah": "3 buah pensil",
+          "Jumlah pensil Kelompok Biru": "5 buah pensil",
+          "Total seluruh pensil warna": "8 buah pensil",
+        }}
+      />
+      <h5 className="text-sm font-black uppercase tracking-wide text-[#1C01A5]">
+        D. Esai pendek analisis
+      </h5>
+      <KuisIsian
+        id={idEval(modulId, 5)}
+        soal="Mengapa baris gambar yang paling panjang berarti jumlah datanya paling banyak?"
+        alias={["gambar", "banyak", "ikon", "panjang", "hitung"]}
+      />
+    </div>
+  );
+}
+
 function EvaluasiBab({ modul }: { modul: ModulResmiPai }) {
   if (modul.id === "mtk-2-bab1") return <EvaluasiBab1 modulId={modul.id} />;
   if (modul.id === "mtk-2-bab2") return <EvaluasiBab2 modulId={modul.id} />;
   if (modul.id === "mtk-2-bab3") return <EvaluasiBab3 modulId={modul.id} />;
-  return <EvaluasiBab4 modulId={modul.id} />;
+  if (modul.id === "mtk-2-bab4") return <EvaluasiBab4 modulId={modul.id} />;
+  if (modul.id === "mtk-2-bab5") return <EvaluasiBab5 modulId={modul.id} />;
+  if (modul.id === "mtk-2-bab6") return <EvaluasiBab6 modulId={modul.id} />;
+  if (modul.id === "mtk-2-bab7") return <EvaluasiBab7 modulId={modul.id} />;
+  return <EvaluasiBab8 modulId={modul.id} />;
 }
 
 export default function NaskahMtk2({
