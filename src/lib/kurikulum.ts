@@ -79,10 +79,10 @@ const DATA_INTI_KURIKULUM: Record<string, Record<string, string[]>> = {
       "Bab 4: Menulis Kalimat Sederhana",
     ],
     Matematika: [
-      "Bab 1: Bilangan 1 sampai 100",
-      "Bab 2: Operasi Hitung",
-      "Bab 3: Pengukuran Waktu dan Uang",
-      "Bab 4: Pola dan Bangun",
+      "Bab 1: Bilangan Cacah sampai 100",
+      "Bab 2: Penjumlahan dan Pengurangan Bersusun",
+      "Bab 3: Fondasi Perkalian Dasar",
+      "Bab 4: Geometri Bangun Datar",
       "Bab 5: Data Sederhana",
     ],
     "Pendidikan Jasmani, Olahraga, dan Kesehatan": [

@@ -480,6 +480,208 @@ const PAKET: Record<string, PaketEvaluasiEkstra> = {
       },
     ],
   },
+  "mtk-2-bab1": {
+    garis: {
+      soal: "Tariklah garis untuk menjodohkan bilangan dengan nilai tempatnya yang tepat!",
+      kiri: [
+        "Angka 5 pada bilangan 152",
+        "Angka 2 pada bilangan 152",
+        "Angka 1 pada bilangan 152",
+      ],
+      kanan: [
+        "Ratusan (Nilainya 100)",
+        "Puluhan (Nilainya 50)",
+        "Satuan (Nilainya 2)",
+      ],
+      kunci: {
+        "Angka 5 pada bilangan 152": "Puluhan (Nilainya 50)",
+        "Angka 2 pada bilangan 152": "Satuan (Nilainya 2)",
+        "Angka 1 pada bilangan 152": "Ratusan (Nilainya 100)",
+      },
+    },
+    keranjang: {
+      soal: "Masukkan bilangan ke keranjang perbandingan yang benar!",
+      keranjang1: "LEBIH BESAR DARI 50 (> 50)",
+      keranjang2: "LEBIH KECIL DARI 50 (< 50)",
+      keping: [
+        { id: "tujuh2", label: "72", wadah: "1" },
+        { id: "empat1", label: "14", wadah: "2" },
+        { id: "delapan9", label: "89", wadah: "1" },
+        { id: "tiga5", label: "35", wadah: "2" },
+        { id: "enam0", label: "60", wadah: "1" },
+      ],
+    },
+    urut: {
+      soal: "Geser kotak angka dari atas ke bawah agar urut dari yang terkecil hingga terbesar!",
+      balok: ["112", "128", "145"],
+    },
+    kanvas: {
+      soal: 'Lengkapi dengan tulisan tangan: "Lambang seratus dua puluh empat adalah 1 - 2 - __."',
+      alias: ["124", "4"],
+    },
+    detektif: [
+      {
+        soal: "Bilangan 168 nilainya lebih kecil daripada 162 karena angka 8 lebih besar dari 2.",
+        benar: false,
+        alasan:
+          "Salah. Bandingkan dari ratusan, puluhan, baru satuan. 168 dan 162 sama ratusan serta puluhannya, satuan 8 lebih besar, jadi 168 > 162.",
+      },
+      {
+        soal: "Bentuk panjang dari bilangan 190 adalah 100 + 90 + 0.",
+        benar: true,
+        alasan:
+          "Benar. Nilai ratusannya 100, puluhannya 90, dan satuannya 0.",
+      },
+    ],
+  },
+  "mtk-2-bab2": {
+    garis: {
+      soal: "Tariklah garis untuk menjodohkan operasi bersusun dengan hasil akhirnya yang benar!",
+      kiri: ["34 + 25", "48 + 15", "52 - 14"],
+      kanan: [
+        "59 (Tanpa menyimpan)",
+        "63 (Dengan menyimpan 1)",
+        "38 (Dengan meminjam 1)",
+      ],
+      kunci: {
+        "34 + 25": "59 (Tanpa menyimpan)",
+        "48 + 15": "63 (Dengan menyimpan 1)",
+        "52 - 14": "38 (Dengan meminjam 1)",
+      },
+    },
+    keranjang: {
+      soal: "Kategorikan soal ke keranjang metode pengerjaan yang tepat!",
+      keranjang1: "HARUS MENYIMPAN ATAU MEMINJAM",
+      keranjang2: "TANPA MENYIMPAN ATAU MEMINJAM",
+      keping: [
+        { id: "tambah2518", label: "25 + 18", wadah: "1" },
+        { id: "kurang4312", label: "43 - 12", wadah: "2" },
+        { id: "kurang6115", label: "61 - 15", wadah: "1" },
+        { id: "tambah3254", label: "32 + 54", wadah: "2" },
+      ],
+    },
+    urut: {
+      soal: "Susun kalimat cerita agar menjadi alur soal penjumlahan yang logis!",
+      balok: [
+        "Di dalam kulkas rumah, Ali sudah memiliki 24 buah apel.",
+        "Ali membeli lagi 15 buah apel di pasar swalayan.",
+        "Berapa jumlah seluruh buah apel yang dimiliki Ali sekarang?",
+      ],
+    },
+    kanvas: {
+      soal: 'Selesaikan di kanvas: "Hasil 67 + 23 adalah __ - 0."',
+      alias: ["90", "9"],
+    },
+    detektif: [
+      {
+        soal: "Saat menghitung 30 - 7, kita tidak bisa langsung mengurangkan 0 dengan 7, sehingga harus meminjam 1 puluhan dari angka 3.",
+        benar: true,
+        alasan:
+          "Benar. Karena 0 lebih kecil dari 7, pinjam agar menjadi 10 - 7 = 3.",
+      },
+      {
+        soal: "Hasil dari 88 - 45 adalah 43.",
+        benar: true,
+        alasan:
+          "Benar. Satuan 8 - 5 = 3, puluhan 8 - 4 = 4, hasilnya 43.",
+      },
+    ],
+  },
+  "mtk-2-bab3": {
+    garis: {
+      soal: "Tariklah garis untuk menjodohkan bentuk perkalian dengan penjumlahan berulangnya!",
+      kiri: ["2 × 6", "3 × 4", "4 × 2"],
+      kanan: ["6 + 6", "4 + 4 + 4", "2 + 2 + 2 + 2"],
+      kunci: {
+        "2 × 6": "6 + 6",
+        "3 × 4": "4 + 4 + 4",
+        "4 × 2": "2 + 2 + 2 + 2",
+      },
+    },
+    keranjang: {
+      soal: "Geser kepingan perkalian ke keranjang hasil total yang benar!",
+      keranjang1: "HASIL AKHIRNYA 12",
+      keranjang2: "HASIL AKHIRNYA 10",
+      keping: [
+        { id: "tiga4", label: "3 × 4", wadah: "1" },
+        { id: "dua5", label: "2 × 5", wadah: "2" },
+        { id: "empat3", label: "4 × 3", wadah: "1" },
+        { id: "lima2", label: "5 × 2", wadah: "2" },
+      ],
+    },
+    urut: {
+      soal: "Urutkan balok perkalian dari hasil paling kecil hingga paling besar!",
+      balok: ["2 × 3", "3 × 3", "4 × 3"],
+    },
+    kanvas: {
+      soal: '5 kucing, tiap kucing 4 kaki. Jumlah seluruh kaki adalah __ - 0.',
+      alias: ["20", "2"],
+    },
+    detektif: [
+      {
+        soal: "Bentuk perkalian 5 × 1 memiliki arti penjumlahan berulang 5 + 5 + 5 + 5 + 5.",
+        benar: false,
+        alasan:
+          "Salah. 5 × 1 artinya lima wadah berisi 1, ditulis 1+1+1+1+1. Hasilnya sama 5, maknanya berbeda.",
+      },
+      {
+        soal: "Setiap bilangan cacah yang dikalikan dengan 0, hasil akhirnya pasti selalu 0.",
+        benar: true,
+        alasan:
+          "Benar. Jika tidak ada isi di dalam kotak sebanyak apa pun, total bendanya tetap nol.",
+      },
+    ],
+  },
+  "mtk-2-bab4": {
+    garis: {
+      soal: "Tariklah garis untuk menjodohkan bangun datar dengan ciri fisiknya yang tepat!",
+      kiri: ["Segitiga", "Lingkaran", "Segiempat"],
+      kanan: [
+        "Memiliki 4 garis sisi dan 4 titik sudut.",
+        "Memiliki 3 garis sisi dan 3 titik sudut.",
+        "Memiliki 1 sisi melengkung bundar dan 0 sudut.",
+      ],
+      kunci: {
+        Segitiga: "Memiliki 3 garis sisi dan 3 titik sudut.",
+        Lingkaran: "Memiliki 1 sisi melengkung bundar dan 0 sudut.",
+        Segiempat: "Memiliki 4 garis sisi dan 4 titik sudut.",
+      },
+    },
+    keranjang: {
+      soal: "Masukkan benda nyata ke keranjang bentuk datar yang sesuai!",
+      keranjang1: "SEGIEMPAT (4 Sisi)",
+      keranjang2: "LINGKARAN (0 Sudut)",
+      keping: [
+        { id: "koin", label: "Uang Koin", wadah: "2" },
+        { id: "papan", label: "Papan Tulis", wadah: "1" },
+        { id: "roda", label: "Roda Mobil", wadah: "2" },
+        { id: "buku", label: "Buku Tulis", wadah: "1" },
+        { id: "jam", label: "Jam Dinding", wadah: "2" },
+      ],
+    },
+    urut: {
+      soal: "Urutkan nama bangun dari yang jumlah sisinya paling sedikit hingga paling banyak!",
+      balok: ["Lingkaran", "Segitiga", "Segiempat"],
+    },
+    kanvas: {
+      soal: 'Jumlah sudut pojok pada bangun datar segitiga adalah __.',
+      alias: ["3"],
+    },
+    detektif: [
+      {
+        soal: "Permukaan selembar kertas kalender berbentuk segiempat karena memiliki empat garis pembatas lurus yang saling menyambung.",
+        benar: true,
+        alasan:
+          "Benar. Sisi kertas kalender berjumlah 4, maka termasuk jenis segiempat.",
+      },
+      {
+        soal: "Bangun datar segitiga bisa memiliki sisi melengkung seperti busur panah.",
+        benar: false,
+        alasan:
+          "Salah. Segitiga harus dibentuk oleh 3 garis lurus yang saling bertemu di tiga titik sudut.",
+      },
+    ],
+  },
 };
 
 function titikRelatif(
