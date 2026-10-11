@@ -10,41 +10,41 @@ export const MODUL_MTK2_BAB1: ModulResmiPai = {
   id: "mtk-2-bab1",
   judul: JUDUL_MTK2_BAB1,
   pola:
-    /bilangan cacah sampai 100|desa angka|kakek tono|ikat( menjadi)? puluhan|nilai tempat puluhan|bilangan 1 sampai( dengan)? 1.?000|bilangan 1 sampai 100|rumah tinggal angka/,
+    /bilangan cacah sampai 100|desa angka|kakek tono|ikat( menjadi)? puluhan|nilai tempat puluhan|bilangan 1 sampai( dengan)? 1.?000|bilangan 1 sampai 100|rumah tinggal angka|ayo menghitung sampai 100|dunia angka sampai 100/,
   motivasi:
-    "Hore! Kamu sudah bisa hitung sampai 100. Tiap 10 jadi 1 puluhan. 25 = 2 puluhan + 5 satuan.",
+    "Hore! Berhitung sampai 100 itu seru. Hitung sepuluh-sepuluh dulu, lalu hitung sisanya.",
   kunciJawaban: "B,B,C,B,B,B,A,C,B,A",
   sketsaKartu: [
-    "Anak menghitung apel Kakek Tono dengan mengikat tiap 10 apel.",
-    "Angka 25 masuk rumah puluhan dan rumah satuan.",
-    "Anak menghitung jeruk: 2 ikat dan 4 sisa.",
-    "Anak memasangkan angka, mengurutkan, dan menulis 25.",
+    "Ali dan Nia menghitung apel dan jeruk di taman sekolah, sepuluh-sepuluh dulu.",
+    "Anak melihat gambar benda, lalu menulis angka 10, 20, 25, dan 100.",
+    "Anak mengumpulkan pensil di kelas dan jeruk di dapur sesuai jumlah yang disebut.",
+    "Anak mengisi lembar evaluasi: menghitung, menulis nama bilangan, dan membandingkan.",
   ],
   latihan: pg([
     `[Soal 1 - PG - Tipe: Reguler]
-1 ikat berisi 10 disebut...
-A) 1 Satuan
-B) 1 Puluhan
-C) 10 Puluhan
-D) 2 Puluhan`,
+10 apel disebut...
+A) 1 satuan
+B) 1 puluhan
+C) 10 puluhan
+D) 2 puluhan`,
     `[Soal 2 - PG - Tipe: Reguler]
-Pada angka 25, angka 2 menempati tempat...
-A) Satuan, nilainya 2
-B) Puluhan, nilainya 20
-C) Ratusan, nilainya 200
-D) Puluhan, nilainya 2`,
+25 = 20 + 5. Angka 20 disebut...
+A) 2 satuan
+B) 2 puluhan
+C) 2 ratusan
+D) 25 satuan`,
     `[Soal 3 - PG - Tipe: Reguler]
-Ada 2 ikat jeruk dan 4 jeruk sisa. Jumlahnya...
+Ada 10 jeruk, 10 jeruk, dan 4 jeruk lagi. Jumlahnya...
 A) 14
 B) 6
 C) 24
 D) 42`,
     `[Soal 4 - PG - Tipe: HOTS]
-Angka 100 terdiri dari...
-A) 10 puluhan dan 10 satuan
-B) 1 ratusan, 0 puluhan, dan 0 satuan
-C) 100 puluhan
-D) 1 satuan saja`,
+Angka 100 dibaca...
+A) Sepuluh
+B) Seratus
+C) Sepuluh puluh
+D) Satu`,
     `[Soal 5 - PG - Tipe: Reguler]
 Cara membaca 37 adalah...
 A) Tiga tujuh
@@ -70,11 +70,11 @@ B) Lima puluh delapan
 C) Delapan puluh lima
 D) Delapan puluh`,
     `[Soal 9 - PG - Tipe: HOTS]
-Mengapa kita ikat tiap 10 benda?
+Mengapa kita hitung sepuluh-sepuluh jika bendanya banyak?
 A) Supaya bendanya kelihatan lebih banyak
 B) Agar menghitung cepat tanpa menghitung satu per satu
 C) Karena satuan lebih besar dari puluhan
-D) Karena angka 100 tidak punya rumah`,
+D) Karena angka 100 tidak bisa dihitung`,
     `[Soal 10 - PG - Tipe: Reguler]
 Cara membaca 62 adalah...
 A) Enam puluh dua
@@ -85,181 +85,204 @@ D) Enam puluh`,
   kartu: [
     {
       kode: "A",
-      judul: "A. Hitung Apel Kakek Tono",
+      judul: "A. Dialog di Taman Sekolah",
       pengantar:
-        "🎒 Kita ke Desa Angka. 🌟 Belajar angka 21 sampai 100. 🗺️ Kakek Tono punya banyak apel 🍎. Yuk hitung bersama!",
-      labelDaftar: "Target, cerita, dan ikat puluhan",
+        "Saat jam istirahat, Ali dan Nia duduk di dekat pohon rindang. Dulu mereka menghitung 4 apel. Hari ini apel dan jeruknya lebih banyak, jadi mereka hitung sepuluh-sepuluh dulu.",
+      labelDaftar: "Percakapan Ali dan Nia",
       kolom: 1,
       item: [
         {
-          nama: "🌟 Hari ini kita belajar",
-          singkat: "21 sampai 100",
+          nama: "Ali membawa apel",
+          singkat: "Dua puluh lima apel",
           uraian:
-            "🎯 Aku bisa menulis angka 21 sampai 100. 🎯 Aku bisa lihat mana puluhan dan mana satuan.",
-          contoh: "25 = 2 puluhan + 5 satuan.",
+            "Ali mengeluarkan apel dari kotaknya. Ia menghitung: sepuluh, sepuluh, lima. Ada dua puluh lima apel!",
+          contoh: "Sepuluh... sepuluh... lima! Ada 25 apel.",
         },
         {
-          nama: "🗺️ Apel Kakek Tono",
-          singkat: "Lebih dari 20",
+          nama: "Nia membawa jeruk",
+          singkat: "Dua puluh empat jeruk",
           uraian:
-            "Apel Kakek banyak. Lebih dari 20. Kalau dihitung satu-satu, lama sekali.",
-          contoh: "Kita bantu Kakek hitung lebih cepat.",
-        },
-        {
-          nama: "🪵 Ikat tiap 10",
-          singkat: "1 ikat = 1 puluhan",
-          uraian:
-            "Ikat tiap 10 benda. 🥢 1 ikat = 10 = 1 puluhan. 🥢 2 ikat = 20 = 2 puluhan. Sisa yang kurang dari 10 = satuan.",
-          contoh: "1 ikat = 1 puluhan.",
+            "Nia menghitung jeruknya: sepuluh, sepuluh, empat. Ada dua puluh empat jeruk. Berhitung tetap seru dan mudah.",
+          contoh: "Sepuluh... sepuluh... empat! Ada 24 jeruk.",
         },
       ],
       kuis: [
         {
-          pertanyaan: "1 ikat berisi 10 disebut apa?",
-          alias: ["puluhan", "satu puluhan", "1 puluhan"],
+          pertanyaan: "1. Ada berapa apel milik Ali?",
+          alias: ["25", "dua puluh lima", "dua puluh lima apel", "25 apel"],
+        },
+        {
+          pertanyaan: "2. Ada berapa jeruk milik Nia?",
+          alias: ["24", "dua puluh empat", "dua puluh empat jeruk", "24 jeruk"],
+        },
+        {
+          pertanyaan: "3. Kalau bendanya banyak, Ali dan Nia menghitung bagaimana?",
+          alias: ["sepuluh", "sepuluh-sepuluh", "puluh", "puluhan"],
         },
       ],
-      kuisTulis: {
-        pertanyaan: "2 ikat berisi 20 disebut ... puluhan.",
-        alias: ["2", "dua", "2 puluhan", "dua puluhan"],
-      },
       voice: [
         [
-          "Hari ini kita ke Desa Angka. Kita belajar angka 21 sampai 100.",
-          "Kakek Tono punya banyak apel. Lebih dari 20. Susah dihitung satu-satu.",
-          "Rahasianya: ikat tiap 10. Satu ikat disebut satu puluhan. Dua ikat disebut dua puluhan.",
+          "Anak-anak, kita ke taman sekolah saat jam istirahat. Ali dan Nia duduk di dekat pohon rindang sambil membuka bekal.",
+          "Ali berkata, Nia, dulu apelku cuma empat. Sekarang lebih banyak! Yuk hitung sepuluh-sepuluh dulu.",
+          "Sepuluh. Sepuluh. Lima. Ada dua puluh lima apel!",
+        ],
+        [
+          "Sekarang gantian. Nia membawa jeruk. Sepuluh. Sepuluh. Empat. Ada dua puluh empat jeruk. Hore! Berhitung itu tetap seru dan mudah.",
         ],
       ],
     },
     {
       kode: "B",
-      judul: "B. Rumah Angka 25",
+      judul: "B. Infografis Dunia Angka",
       pengantar:
-        "🏠 Angka punya 2 rumah. Kiri = puluhan. Kanan = satuan. Pada 25: angka 2 nilainya 20, angka 5 nilainya 5.",
-      labelDaftar: "Rumah 25 dan angka 100",
+        "Setiap tumpukan benda punya angka dan cara membacanya. Sepuluh benda disebut satu puluhan. Yang kurang dari sepuluh disebut satuan.",
+      labelDaftar: "Kamus Mini Angka",
       kolom: 1,
       item: [
         {
-          nama: "🏠 Rumah kiri",
-          singkat: "Puluhan",
-          uraian: "Angka di kiri = puluhan. Pada 25, angka 2 nilainya 20. 🪵🪵 Dua ikat.",
-          contoh: "Angka 2 pada 25 = 20.",
-        },
-        {
-          nama: "🥢 Rumah kanan",
-          singkat: "Satuan",
+          nama: "Sepuluh, dua puluh, dua puluh lima",
+          singkat: "10, 20, 25",
           uraian:
-            "Angka di kanan = satuan. Pada 25, angka 5 nilainya 5. 🥢 Lima batang. Jadi 20 + 5 = 25.",
-          contoh: "Angka 5 pada 25 = 5.",
+            "10 apel dibaca sepuluh. 20 apel dibaca dua puluh. 25 apel dibaca dua puluh lima. 25 artinya 20 tambah 5.",
+          contoh: "🍎×10 + 🍎×10 + 🍎×5 = 25 = DUA PULUH LIMA",
         },
         {
-          nama: "💡 Angka 100",
-          singkat: "Tiga angka",
-          uraian: "100 punya 3 angka. Itu 1 ratusan, 0 puluhan, dan 0 satuan.",
-          contoh: "100 = 1 ratusan.",
+          nama: "Seratus",
+          singkat: "100",
+          uraian:
+            "Kalau ada 10 kelompok yang masing-masing 10, jumlahnya 100. Dibaca seratus.",
+          contoh: "10 + 10 + 10 + 10 + 10 + 10 + 10 + 10 + 10 + 10 = 100 = SERATUS",
         },
       ],
       kuis: [
         {
-          pertanyaan: "Pada angka 25, angka 2 ada di rumah mana? Nilainya berapa?",
-          alias: ["puluhan", "20", "dua puluh"],
+          pertanyaan: "1. Sepuluh apel cocok dengan angka berapa?",
+          alias: ["10", "sepuluh", "angka 10"],
+        },
+        {
+          pertanyaan: "2. Dua puluh lima apel cocok dengan angka berapa?",
+          alias: ["25", "dua puluh lima", "angka 25"],
+        },
+        {
+          pertanyaan: "3. Seratus cocok dengan angka berapa?",
+          alias: ["100", "seratus", "angka 100"],
         },
       ],
-      kuisTulis: {
-        pertanyaan: "Bagaimana cara membaca 25?",
-        alias: ["dua puluh lima", "25", "2 puluhan 5 satuan"],
-      },
       voice: [
         [
-          "Angka punya dua rumah. Kiri puluhan. Kanan satuan.",
-          "Lihat angka 25. Angka 2 di kiri, nilainya 20. Angka 5 di kanan, nilainya 5. Dibaca dua puluh lima.",
-          "Angka 100 punya tiga angka. Satu ratusan, nol puluhan, nol satuan.",
+          "Anak-anak, selamat datang di dunia angka. Sepuluh apel dibaca sepuluh. Dua puluh apel dibaca dua puluh. Dua puluh lima apel dibaca dua puluh lima.",
+          "Sepuluh benda disebut satu puluhan. Yang kurang dari sepuluh disebut satuan. Jadi 25 itu 2 puluhan dan 5 satuan.",
+        ],
+        [
+          "Kalau ada sepuluh kelompok, tiap kelompok sepuluh, jumlahnya seratus. Seratus ditulis 100. Jangan lupa, seratus juga penting!",
         ],
       ],
     },
     {
       kode: "C",
-      judul: "C. Ayo Berlatih",
+      judul: "C. Berhitung di Sekolah dan di Rumah",
       pengantar:
-        "🕵️‍♂️ Hitung jeruk 🍊. ✍️ Jodohkan 37, 62, dan 85. 🧩 Isi 49 dan 71. 🎭 Lalu pilih perasaanmu.",
-      labelDaftar: "Jeruk, pasangkan, kotak, jurnal",
-      kolom: 1,
+        "Berhitung makin kuat kalau dipraktikkan. Di sekolah kita jadi detektif benda. Di rumah kita membantu ibu menghitung di dapur.",
+      labelDaftar: "Dua Tempat Berlatih",
+      kolom: 2,
       item: [
         {
-          nama: "🕵️‍♂️ Hitung jeruk",
-          singkat: "2 ikat + 4 sisa",
-          uraian: "Tiap 10 jeruk = 1 ikat. Ada 2 ikat dan 4 sisa. Jumlahnya 24.",
-          contoh: "2 puluhan + 4 satuan = 24.",
+          nama: "Detektif Berhitung di Kelas",
+          singkat: "Untuk guru",
+          uraian:
+            "Guru membagi siswa 3 sampai 4 anak. Guru menyebut angka, misalnya tunjukkan angka 25. Kelompok membuat 2 kelompok 10 pensil, lalu 5 pensil lagi. Yang paling tepat dan cepat mendapat bintang.",
+          contoh: "Kumpulkan 25 pensil: 10, 10, dan 5.",
         },
         {
-          nama: "✍️ Jodohkan dan 🧩 isi kotak",
-          singkat: "37, 62, 85, 49, 71",
+          nama: "Bantu Ibu di Dapur",
+          singkat: "Untuk orang tua",
           uraian:
-            "37 = tiga puluh tujuh. 62 = enam puluh dua. 85 = delapan puluh lima. 49 = 4 puluhan + 9 satuan. 71 = 7 puluhan + 1 satuan.",
-          contoh: "49 = 4 puluhan + 9 satuan.",
-        },
-        {
-          nama: "🎭 Perasaanku",
-          singkat: "Pilih wajah",
-          uraian:
-            "😀 Aku sudah paham. 😐 Mau latihan lagi. 😢 Butuh bantuan. Kamu hebat!",
-          contoh: "Pilih satu wajah.",
+            "Ajak anak ke dapur. Minta anak mengambil jeruk atau sendok dengan jumlah tertentu, dihitung sepuluh-sepuluh. Puji atau peluk setelah menghitung benar.",
+          contoh: "Tolong ambil 30 jeruk: 10, 10, dan 10.",
         },
       ],
       kuis: [
-        { pertanyaan: "2 ikat + 4 sisa jeruk sama dengan berapa?", alias: ["24", "dua puluh empat"] },
-        { pertanyaan: "37 dibaca apa?", alias: ["tiga puluh tujuh"] },
-        { pertanyaan: "62 dibaca apa?", alias: ["enam puluh dua"] },
-        { pertanyaan: "85 dibaca apa?", alias: ["delapan puluh lima"] },
-        { pertanyaan: "49 terdiri dari berapa puluhan?", alias: ["4", "empat", "empat puluhan"] },
-        { pertanyaan: "71 terdiri dari berapa satuan?", alias: ["1", "satu", "satu satuan"] },
+        {
+          pertanyaan: "1. Di kelas, siswa mencari benda sesuai apa yang disebut guru?",
+          alias: ["angka", "bilangan", "jumlah"],
+        },
+        {
+          pertanyaan: "2. Guru meminta kumpulkan 25 pensil. Itu 10, 10, dan berapa lagi?",
+          alias: ["5", "lima", "lima pensil"],
+        },
+        {
+          pertanyaan: "3. Setelah anak menghitung benar, orang tua sebaiknya memberi apa?",
+          alias: ["pujian", "pelukan", "pujian atau pelukan", "peluk", "memuji"],
+        },
       ],
       voice: [
-        ["Hitung jeruk. Dua ikat dan empat sisa. Jumlahnya 24. Dua puluh empat."],
         [
-          "37 tiga puluh tujuh. 62 enam puluh dua. 85 delapan puluh lima. 49 itu 4 puluhan dan 9 satuan. 71 itu 7 puluhan dan 1 satuan.",
+          "Di sekolah, kita bermain Detektif Berhitung. Guru menyebut sebuah angka. Kelompok mencari benda sebanyak angka itu. Misalnya, tunjukkan angka dua puluh lima. Kumpulkan sepuluh, sepuluh, dan lima pensil.",
+          "Kelompok yang menghitung paling tepat dan cepat mendapat bintang penghargaan.",
+        ],
+        [
+          "Di rumah, bantu ibu di dapur. Tolong ambilkan tiga puluh jeruk. Hitung sepuluh, sepuluh, sepuluh.",
+          "Kalau anak menghitung dengan benar, berilah pujian atau pelukan hangat.",
         ],
       ],
     },
     {
       kode: "D",
-      judul: "D. Mainkan Lagi",
+      judul: "D. Lembar Evaluasi Siswa",
       pengantar:
-        "✍️ Tarik garis 37, 62, 85. 🏠 Masukkan ikat ke kiri, sisa ke kanan. Urutkan 24, 49, 71. Tulis 25.",
-      labelDaftar: "Garis, keranjang, urutan, tulis, detektif",
+        "Saatnya menunjukkan kemampuan berhitung sampai 100. Hitung benda, tulis lambang dan nama bilangan, bandingkan banyaknya, lalu jawab soal cerita.",
+      labelDaftar: "Empat Kelompok Soal",
       kolom: 1,
       item: [
         {
-          nama: "✍️ Main A sampai C",
-          singkat: "Garis, rumah, urutan",
+          nama: "Kelompok A",
+          singkat: "Menghitung dan mewarnai",
           uraian:
-            "Jodohkan angka dengan cara bacanya. Ikat masuk rumah puluhan. Sisa masuk rumah satuan. Urutkan dari yang kecil.",
-          contoh: "24, lalu 49, lalu 71.",
+            "Hitung benda di dalam kotak, lalu pilih angkanya: jeruk, apel, dan pensil.",
+          contoh: "24 jeruk, 25 apel, 30 pensil.",
         },
         {
-          nama: "🏆 Main D dan E",
-          singkat: "Tulis dan detektif",
+          nama: "Kelompok B",
+          singkat: "Menulis lambang bilangan",
+          uraian: "Tulis angka dan nama bilangannya: 25, 37, dan 62.",
+          contoh: "25 dua puluh lima, 37 tiga puluh tujuh, 62 enam puluh dua.",
+        },
+        {
+          nama: "Kelompok C",
+          singkat: "Membandingkan banyak benda",
           uraian:
-            "Tulis 25. Lalu pilih BENAR atau SALAH. 🏆 Kamu hebat! Sampai jumpa di petualangan berikutnya.",
-          contoh: "Dua puluh lima = 25.",
+            "Bandingkan kotak kiri dan kanan. Pilih lebih banyak, lebih sedikit, atau sama banyak.",
+          contoh: "25 apel lebih banyak dari 20 jeruk.",
+        },
+        {
+          nama: "Kelompok D",
+          singkat: "Tantangan penalaran",
+          uraian:
+            "Baca soal cerita pendek. Ali punya 20 kelereng lalu dapat 5. Seratus stiker ditulis 100.",
+          contoh: "20 + 5 = 25. 100 dibaca seratus.",
         },
       ],
       kuis: [
-        { pertanyaan: "37 dibaca?", alias: ["tiga puluh tujuh"] },
-        { pertanyaan: "2 ikat ke rumah mana?", alias: ["puluhan"] },
-        { pertanyaan: "Urutan 24 49 71?", alias: ["24", "49", "71"] },
-        { pertanyaan: "100 punya 1 ratusan?", alias: ["benar"] },
-        { pertanyaan: "Angka 2 pada 25 nilainya 2?", alias: ["salah"] },
+        { pertanyaan: "1. Ada berapa jeruk?", alias: ["24", "dua puluh empat"] },
+        { pertanyaan: "2. Ada berapa apel?", alias: ["25", "dua puluh lima"] },
+        { pertanyaan: "3. Ada berapa pensil?", alias: ["30", "tiga puluh"] },
+        { pertanyaan: "4. Dua puluh lima ditulis angka dan huruf apa?", alias: ["25", "dua puluh lima"] },
+        { pertanyaan: "5. Tiga puluh tujuh ditulis angka dan huruf apa?", alias: ["37", "tiga puluh tujuh"] },
+        { pertanyaan: "6. Enam puluh dua ditulis angka dan huruf apa?", alias: ["62", "enam puluh dua"] },
+        { pertanyaan: "7. Dua puluh lima apel dibanding dua puluh jeruk?", alias: ["lebih banyak", "banyak"] },
+        { pertanyaan: "8. Dua puluh apel dibanding tiga puluh tujuh jeruk?", alias: ["lebih sedikit", "sedikit"] },
+        { pertanyaan: "9. Dua puluh lima apel dibanding dua puluh lima jeruk?", alias: ["sama banyak", "sama"] },
+        { pertanyaan: "10. Ali punya 20 kelereng, lalu dapat 5. Jumlahnya?", alias: ["25", "dua puluh lima"] },
+        { pertanyaan: "11. Seratus stiker ditulis angka berapa?", alias: ["100", "seratus"] },
       ],
-      kuisTulis: {
-        pertanyaan: "Tulis lambang dua puluh lima.",
-        alias: ["25", "dua puluh lima"],
-      },
       voice: [
         [
-          "Tarik garis dari angka ke cara bacanya. Masukkan ikat ke rumah puluhan. Masukkan sisa ke rumah satuan.",
-          "Urutkan 24, 49, lalu 71. Tulis angka 25.",
-          "Angka 100 punya satu ratusan. Angka 2 pada 25 nilainya 20. Kamu hebat!",
+          "Anak-anak, ini lembar evaluasi. Kita menghitung, menulis angka, membandingkan, lalu menjawab soal cerita.",
+          "Kelompok A: hitung jeruk, apel, dan pensil, lalu pilih angkanya. Kelompok B: tulis lambang bilangan dan nama bilangannya.",
+        ],
+        [
+          "Kelompok C: bandingkan kotak kiri dan kanan. Pilih lebih banyak, lebih sedikit, atau sama banyak.",
+          "Kelompok D: dua puluh tambah lima sama dengan dua puluh lima. Seratus ditulis 100. Semangat mengerjakan sampai tuntas!",
         ],
       ],
     },

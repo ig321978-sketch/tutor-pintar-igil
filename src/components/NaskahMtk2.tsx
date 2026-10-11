@@ -14,6 +14,7 @@ import type { KartuModulResmi, ModulResmiPai } from "@/lib/modul-resmi-pai";
 import { cuplikanDariNaskah } from "@/lib/naskah-voice-pai-1-bab2";
 import type { KelaminGuru } from "@/lib/guru";
 import EvaluasiEkstraBindo2 from "@/components/EvaluasiEkstraBindo2";
+import NaskahMtk2Bab1 from "@/components/NaskahMtk2Bab1";
 
 function KartuBingkai({ children }: { children: ReactNode }) {
   return (
@@ -32,154 +33,12 @@ function DoodleKartuMtk2({
   kode: string;
   judul: string;
 }) {
-  if (modulId === "mtk-2-bab1") return null;
   return (
     <DoodleKartuAtasJudul
       id={`${modulId}-${kode}`}
       folder="doodle-mtk"
       alt={`Ilustrasi ${judul}`}
     />
-  );
-}
-
-const EMOJI_MTK2_BAB1: Record<string, string> = {
-  A: "🎒🍎",
-  B: "🏠🪵",
-  C: "🕵️‍♂️🍊",
-  D: "🏆✍️",
-};
-
-function BarisJeruk({ jumlah, sisa }: { jumlah: number; sisa?: boolean }) {
-  return (
-    <div
-      className={`flex flex-wrap gap-1 rounded-2xl px-3 py-2 ${
-        sisa ? "bg-[#FFF8E8]" : "border-2 border-dashed border-[#F0AB00] bg-[#FFF8E8]"
-      }`}
-    >
-      {Array.from({ length: jumlah }, (_, i) => (
-        <span key={i} className="text-lg" aria-hidden>
-          🍊
-        </span>
-      ))}
-    </div>
-  );
-}
-
-function HiasanDesaAngkaA() {
-  return (
-    <div className="mt-4 rounded-2xl border-2 border-[#F0AB00] bg-[#FFF8E8] px-4 py-3 text-center">
-      <p className="text-3xl" aria-hidden>
-        🎒 🍎
-      </p>
-      <p className="mt-1 text-sm font-black uppercase tracking-wide text-[#1C01A5]">
-        Desa Angka
-      </p>
-      <p className="mt-1 text-sm font-semibold text-slate-700">Hitung apel 21 sampai 100</p>
-    </div>
-  );
-}
-
-function HiasanDesaAngkaB() {
-  return (
-    <div className="mt-4 overflow-hidden rounded-2xl border-4 border-[#F0AB00]">
-      <p className="bg-[#1C01A5] px-3 py-2 text-center text-xs font-black uppercase tracking-wide text-white">
-        🏠 Rumah nilai tempat 25
-      </p>
-      <div className="grid gap-0 sm:grid-cols-2">
-        <div className="border-b-2 border-[#F0AB00] bg-[#FFF7ED] px-4 py-4 sm:border-b-0 sm:border-r-2">
-          <p className="text-xs font-black uppercase tracking-wide text-[#92400E]">
-            Rumah puluhan · kiri
-          </p>
-          <p className="mt-2 text-3xl" aria-hidden>
-            🪵 🪵
-          </p>
-          <p className="mt-2 text-4xl font-black text-[#1C01A5]">2</p>
-          <p className="text-sm font-bold text-slate-700">2 ikat = nilai 20</p>
-        </div>
-        <div className="bg-[#F0FDF4] px-4 py-4">
-          <p className="text-xs font-black uppercase tracking-wide text-[#166534]">
-            Rumah satuan · kanan
-          </p>
-          <p className="mt-2 text-3xl" aria-hidden>
-            🥢 🥢 🥢 🥢 🥢
-          </p>
-          <p className="mt-2 text-4xl font-black text-[#1C01A5]">5</p>
-          <p className="text-sm font-bold text-slate-700">5 batang = nilai 5</p>
-        </div>
-      </div>
-      <div className="border-t-4 border-[#F0AB00] bg-[#FEF3C7] px-3 py-3 text-center">
-        <p className="text-lg font-black text-[#1C01A5]">25 = dua puluh lima</p>
-        <p className="mt-1 text-sm font-semibold text-slate-700">20 + 5 = 25</p>
-      </div>
-    </div>
-  );
-}
-
-function HiasanDesaAngkaC() {
-  return (
-    <div className="mt-4 space-y-3">
-      <div className="rounded-2xl border-2 border-[#F0AB00] bg-white px-4 py-3">
-        <p className="text-sm font-black text-[#1C01A5]">
-          🕵️‍♂️ Hitung jeruk · tiap 10 = 1 ikat
-        </p>
-        <div className="mt-3 space-y-2">
-          <div className="flex flex-wrap items-center gap-2">
-            <BarisJeruk jumlah={10} />
-            <p className="text-xs font-black text-[#1C01A5]">= 1 Puluhan</p>
-          </div>
-          <div className="flex flex-wrap items-center gap-2">
-            <BarisJeruk jumlah={10} />
-            <p className="text-xs font-black text-[#1C01A5]">= 1 Puluhan</p>
-          </div>
-          <div className="flex flex-wrap items-center gap-2">
-            <BarisJeruk jumlah={4} sisa />
-            <p className="text-xs font-black text-[#C48800]">= 4 Satuan</p>
-          </div>
-        </div>
-        <p className="mt-3 text-sm font-black text-[#1C01A5]">
-          🍊 2 puluhan + 4 satuan = 24 · dua puluh empat
-        </p>
-      </div>
-    </div>
-  );
-}
-
-function JurnalPerasaanDesaAngka() {
-  const [pilih, setPilih] = useState("");
-  const wajah = [
-    { id: "seru", ikon: "😀", teks: "Aku sudah paham!" },
-    { id: "bingung", ikon: "😐", teks: "Mau latihan lagi." },
-    { id: "susah", ikon: "😢", teks: "Butuh bantuan." },
-  ];
-  return (
-    <div className="mt-5 rounded-2xl border-2 border-[#F0AB00] bg-[#FFF8E8] px-4 py-4">
-      <p className="text-sm font-black text-[#1C01A5]">🎭 Jurnal Perasaanku</p>
-      <p className="mt-1 text-sm font-semibold text-slate-700">
-        Bagaimana perasaanmu hari ini? Ketuk satu wajah.
-      </p>
-      <div className="mt-3 grid gap-2">
-        {wajah.map((item) => (
-          <button
-            key={item.id}
-            type="button"
-            onClick={() => setPilih(item.id)}
-            className={`rounded-2xl border-2 px-3 py-3 text-left text-sm font-bold ${
-              pilih === item.id
-                ? "border-[#F0AB00] bg-[#1C01A5] text-white"
-                : "border-[#1C01A5]/15 bg-white text-[#1C01A5]"
-            }`}
-          >
-            <span className="mr-2 text-2xl" aria-hidden>
-              {item.ikon}
-            </span>
-            {item.teks}
-          </button>
-        ))}
-      </div>
-      <p className="mt-4 rounded-2xl bg-[#1C01A5] px-4 py-3 text-sm font-bold text-white">
-        🏆 Hore! Kamu sudah bisa hitung sampai 100. Kamu hebat!
-      </p>
-    </div>
   );
 }
 
@@ -518,26 +377,6 @@ const INFOGRAFIS: Record<
     catatan: string;
   }
 > = {
-  "mtk-2-bab1-A": {
-    judul: "🪵 Ikat tiap 10",
-    kepala: ["🥢 Ikat", "Isi", "Nama"],
-    baris: [
-      ["🥢 1 ikat", "10 batang", "1 Puluhan"],
-      ["🥢🥢 2 ikat", "20 batang", "2 Puluhan"],
-      ["🪵 + 🥢", "25", "Dua puluh lima"],
-    ],
-    catatan: "Tiap 10 = 1 puluhan. Sisa yang kurang dari 10 = satuan.",
-  },
-  "mtk-2-bab1-B": {
-    judul: "🏠 Rumah angka 25",
-    kepala: ["🏠 Rumah", "🪵 Isi", "Nilai"],
-    baris: [
-      ["Puluhan (kiri)", "🪵🪵 2 ikat", "2 = 20"],
-      ["Satuan (kanan)", "🥢🥢🥢🥢🥢 5 batang", "5 = 5"],
-      ["Gabungan", "🏠 25", "Dua puluh lima"],
-    ],
-    catatan: "💡 100 punya 3 angka: 1 ratusan, 0 puluhan, 0 satuan.",
-  },
   "mtk-2-bab2-A": {
     judul: "Jalan bersusun matematika",
     kepala: ["Langkah", "Aturan", "Ingat"],
@@ -687,97 +526,6 @@ const INFOGRAFIS: Record<
       "Baris lebih pendek artinya lebih sedikit. Empat gambar mobil berarti 4 anak.",
   },
 };
-
-function EvaluasiBab1({ modulId }: { modulId: string }) {
-  return (
-    <div className="mt-5 space-y-5">
-      <HiasanDesaAngkaC />
-      <h5 className="text-sm font-black uppercase tracking-wide text-[#1C01A5]">
-        ✍️ A. Pilihan ganda
-      </h5>
-      <KuisPilihan
-        id={idEval(modulId, 0)}
-        soal="Pada angka 25, angka 2 menempati rumah... "
-        benar="B"
-        pilihan={[
-          { huruf: "A", teks: "Satuan, nilainya 2" },
-          { huruf: "B", teks: "Puluhan, nilainya 20" },
-          { huruf: "C", teks: "Ratusan, nilainya 200" },
-        ]}
-      />
-      <KuisPilihan
-        id={idEval(modulId, 1)}
-        soal="🍊 Ada 2 ikat jeruk dan 4 jeruk sisa. Jumlahnya..."
-        benar="C"
-        pilihan={[
-          { huruf: "A", teks: "14" },
-          { huruf: "B", teks: "6" },
-          { huruf: "C", teks: "24" },
-        ]}
-      />
-      <h5 className="text-sm font-black uppercase tracking-wide text-[#1C01A5]">
-        🧩 B. Benar atau salah beserta alasan
-      </h5>
-      <KuisBenarSalah
-        id={idEval(modulId, 2)}
-        soal="💡 Angka 100 punya 3 angka: 1 ratusan, 0 puluhan, dan 0 satuan."
-        benar="benar"
-        alasanBenar="seratus ratusan puluhan satuan nol"
-      />
-      <KuisBenarSalah
-        id={idEval(modulId, 3)}
-        soal="🥢 1 ikat berisi 10 disebut 1 satuan."
-        benar="salah"
-        alasanBenar="sepuluh yang diikat disebut satu puluhan bukan satuan"
-      />
-      <h5 className="text-sm font-black uppercase tracking-wide text-[#1C01A5]">
-        ✍️ C. Mencocokkan garis
-      </h5>
-      <KuisJodoh
-        id={idEval(modulId, 4)}
-        soal="✍️ Jodohkan angka dengan cara bacanya."
-        pasangan={[
-          {
-            kiri: "37",
-            kanan: ["Enam puluh dua", "Tiga puluh tujuh", "Delapan puluh lima"],
-          },
-          {
-            kiri: "62",
-            kanan: ["Enam puluh dua", "Tiga puluh tujuh", "Delapan puluh lima"],
-          },
-          {
-            kiri: "85",
-            kanan: ["Enam puluh dua", "Tiga puluh tujuh", "Delapan puluh lima"],
-          },
-        ]}
-        kunci={{
-          "37": "Tiga puluh tujuh",
-          "62": "Enam puluh dua",
-          "85": "Delapan puluh lima",
-        }}
-      />
-      <h5 className="text-sm font-black uppercase tracking-wide text-[#1C01A5]">
-        🧩 D. Esai pendek dan kotak misteri
-      </h5>
-      <KuisIsian
-        id={idEval(modulId, 5)}
-        soal="Mengapa kita ikat tiap 10 benda?"
-        alias={["cepat", "puluhan", "sepuluh", "ikat", "kelompok"]}
-      />
-      <KuisIsian
-        id={idEval(modulId, 6)}
-        soal="🧩 49 = ...... puluhan + ...... satuan. Tulis kedua angkanya."
-        alias={["4", "9", "empat", "sembilan"]}
-      />
-      <KuisIsian
-        id={idEval(modulId, 7)}
-        soal="🧩 71 = ...... puluhan + ...... satuan. Tulis kedua angkanya."
-        alias={["7", "1", "tujuh", "satu"]}
-      />
-      <JurnalPerasaanDesaAngka />
-    </div>
-  );
-}
 
 function EvaluasiBab2({ modulId }: { modulId: string }) {
   return (
@@ -1336,7 +1084,6 @@ function EvaluasiBab8({ modulId }: { modulId: string }) {
 }
 
 function EvaluasiBab({ modul }: { modul: ModulResmiPai }) {
-  if (modul.id === "mtk-2-bab1") return <EvaluasiBab1 modulId={modul.id} />;
   if (modul.id === "mtk-2-bab2") return <EvaluasiBab2 modulId={modul.id} />;
   if (modul.id === "mtk-2-bab3") return <EvaluasiBab3 modulId={modul.id} />;
   if (modul.id === "mtk-2-bab4") return <EvaluasiBab4 modulId={modul.id} />;
@@ -1355,6 +1102,9 @@ export default function NaskahMtk2({
   kelas?: string;
   kelamin?: KelaminGuru;
 }) {
+  if (modul.id === "mtk-2-bab1") {
+    return <NaskahMtk2Bab1 kelas={kelas} kelamin={kelamin} />;
+  }
   const [kartuA, kartuB, kartuC, kartuD] = modul.kartu;
   const aliasTulisC = kumpulkanAlias(kartuC.kuis.flatMap((item) => item.alias));
 
@@ -1365,11 +1115,6 @@ export default function NaskahMtk2({
         return (
           <KartuBingkai key={kartu.kode}>
             <DoodleKartuMtk2 modulId={modul.id} kode={kartu.kode} judul={kartu.judul} />
-            {EMOJI_MTK2_BAB1[kartu.kode] ? (
-              <p className="text-center text-4xl" aria-hidden>
-                {EMOJI_MTK2_BAB1[kartu.kode]}
-              </p>
-            ) : null}
             <h4 className="mt-3 text-center text-lg font-black tracking-wide text-[#1C01A5] sm:text-xl">
               {kartu.judul}
             </h4>
@@ -1386,8 +1131,6 @@ export default function NaskahMtk2({
             <p className="mt-4 text-left text-base font-semibold leading-relaxed text-slate-700">
               {kartu.pengantar}
             </p>
-            {modul.id === "mtk-2-bab1" && kartu.kode === "A" ? <HiasanDesaAngkaA /> : null}
-            {modul.id === "mtk-2-bab1" && kartu.kode === "B" ? <HiasanDesaAngkaB /> : null}
             {info ? (
               <InfografisTabel
                 judul={info.judul}
@@ -1419,11 +1162,6 @@ export default function NaskahMtk2({
 
       <KartuBingkai>
         <DoodleKartuMtk2 modulId={modul.id} kode="C" judul={kartuC.judul} />
-        {EMOJI_MTK2_BAB1.C && modul.id === "mtk-2-bab1" ? (
-          <p className="text-center text-4xl" aria-hidden>
-            {EMOJI_MTK2_BAB1.C}
-          </p>
-        ) : null}
         <h4 className="mt-3 text-center text-lg font-black tracking-wide text-[#1C01A5] sm:text-xl">
           {kartuC.judul}
         </h4>
@@ -1452,11 +1190,6 @@ export default function NaskahMtk2({
       {kartuD ? (
         <KartuBingkai>
           <DoodleKartuMtk2 modulId={modul.id} kode="D" judul={kartuD.judul} />
-          {EMOJI_MTK2_BAB1.D && modul.id === "mtk-2-bab1" ? (
-            <p className="text-center text-4xl" aria-hidden>
-              {EMOJI_MTK2_BAB1.D}
-            </p>
-          ) : null}
           <h4 className="mt-3 text-center text-lg font-black tracking-wide text-[#1C01A5] sm:text-xl">
             {kartuD.judul}
           </h4>
