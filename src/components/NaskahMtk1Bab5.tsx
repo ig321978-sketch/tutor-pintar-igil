@@ -361,8 +361,6 @@ function LembarEvaluasiMtk5() {
       new Date(),
     ),
   );
-  const [bukaKunci, setBukaKunci] = useState(false);
-
   return (
     <div className="mt-5 space-y-5">
       <div className="grid gap-3 rounded-2xl border-2 border-dashed border-[#1C01A5]/25 bg-[#FFFDF6] p-4 sm:grid-cols-3">
@@ -498,31 +496,6 @@ function LembarEvaluasiMtk5() {
         <KuisCocokJumlah />
       </section>
 
-      <div className="rounded-2xl border-2 border-[#F0AB00] bg-[#FFF8E8] p-4">
-        <button
-          type="button"
-          onClick={() => setBukaKunci((sebelum) => !sebelum)}
-          className="text-sm font-black text-[#1C01A5]"
-        >
-          {bukaKunci
-            ? "Sembunyikan kunci jawaban"
-            : "Lihat kunci jawaban (guru & orang tua)"}
-        </button>
-        {bukaKunci ? (
-          <ul className="mt-3 space-y-1 text-sm font-semibold text-slate-700">
-            <li>
-              Kelompok A: (1) 13, (2) 16, (3) 18, (4) 15 — urutan maju 13 dan
-              16, mundur 18 dan 15
-            </li>
-            <li>
-              Kelompok B: (1) B. 15, (2) A. Empat belas, (3) B. 14
-            </li>
-            <li>
-              Kelompok C: 11 apel = 11, 14 bintang = 14, 16 pensil = 16
-            </li>
-          </ul>
-        ) : null}
-      </div>
     </div>
   );
 }

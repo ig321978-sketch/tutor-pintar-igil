@@ -185,8 +185,6 @@ function LembarEvaluasiKotakKembar() {
   const [tanggal, setTanggal] = useState(
     new Intl.DateTimeFormat("en-CA", { timeZone: "Asia/Jakarta" }).format(new Date()),
   );
-  const [bukaKunci, setBukaKunci] = useState(false);
-
   return (
     <div className="mt-5 space-y-5">
       <div className="grid gap-3 rounded-2xl border-2 border-dashed border-[#1C01A5]/25 bg-[#FFFDF6] p-4 sm:grid-cols-2">
@@ -326,21 +324,6 @@ function LembarEvaluasiKotakKembar() {
         />
       </section>
 
-      <div className="rounded-2xl border-2 border-[#F0AB00] bg-[#FFF8E8] p-4">
-        <button
-          type="button"
-          onClick={() => setBukaKunci((sebelum) => !sebelum)}
-          className="text-sm font-black text-[#1C01A5]"
-        >
-          {bukaKunci ? "Sembunyikan kunci jawaban" : "Lihat kunci jawaban (guru & orang tua)"}
-        </button>
-        {bukaKunci ? (
-          <ul className="mt-3 space-y-1 text-sm font-semibold text-slate-700">
-            <li>A: (1) B 3 × 1, (2) C 5 × 2, (3) A 3 × 5, (4) B 4+4+4+4+4, (5) B total sama 12</li>
-            <li>B: (6) 5 × 7, (7) 8, (8) 1B dan 2A, (9) 16, (10) 2 × 4 dan 4 × 2</li>
-          </ul>
-        ) : null}
-      </div>
     </div>
   );
 }

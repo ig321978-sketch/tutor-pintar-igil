@@ -201,8 +201,6 @@ function LembarEvaluasiBungkusUnik() {
   const [tanggal, setTanggal] = useState(
     new Intl.DateTimeFormat("en-CA", { timeZone: "Asia/Jakarta" }).format(new Date()),
   );
-  const [bukaKunci, setBukaKunci] = useState(false);
-
   return (
     <div className="mt-5 space-y-5">
       <div className="grid gap-3 rounded-2xl border-2 border-dashed border-[#1C01A5]/25 bg-[#FFFDF6] p-4 sm:grid-cols-2">
@@ -320,21 +318,6 @@ function LembarEvaluasiBungkusUnik() {
         />
       </section>
 
-      <div className="rounded-2xl border-2 border-[#F0AB00] bg-[#FFF8E8] p-4">
-        <button
-          type="button"
-          onClick={() => setBukaKunci((sebelum) => !sebelum)}
-          className="text-sm font-black text-[#1C01A5]"
-        >
-          {bukaKunci ? "Sembunyikan kunci jawaban" : "Lihat kunci jawaban (guru & orang tua)"}
-        </button>
-        {bukaKunci ? (
-          <ul className="mt-3 space-y-1 text-sm font-semibold text-slate-700">
-            <li>A: (1) B hanya koin, (2) A dua segitiga, (3) C segitiga, (4) B 3 dan 3, (5) A segi empat</li>
-            <li>B: (6) lingkaran, (7) 1 dan 4, (8) 1B dan 2A, (9) segitiga, (10) 10 sudut</li>
-          </ul>
-        ) : null}
-      </div>
     </div>
   );
 }

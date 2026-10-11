@@ -219,8 +219,6 @@ function LembarEvaluasiMtk3() {
       new Date(),
     ),
   );
-  const [bukaKunci, setBukaKunci] = useState(false);
-
   return (
     <div className="mt-5 space-y-5">
       <div className="grid gap-3 rounded-2xl border-2 border-dashed border-[#1C01A5]/25 bg-[#FFFDF6] p-4 sm:grid-cols-3">
@@ -336,27 +334,6 @@ function LembarEvaluasiMtk3() {
         <KuisCocokKurang />
       </section>
 
-      <div className="rounded-2xl border-2 border-[#F0AB00] bg-[#FFF8E8] p-4">
-        <button
-          type="button"
-          onClick={() => setBukaKunci((sebelum) => !sebelum)}
-          className="text-sm font-black text-[#1C01A5]"
-        >
-          {bukaKunci
-            ? "Sembunyikan kunci jawaban"
-            : "Lihat kunci jawaban (guru & orang tua)"}
-        </button>
-        {bukaKunci ? (
-          <ul className="mt-3 space-y-1 text-sm font-semibold text-slate-700">
-            <li>Kelompok A: (1) 4 ➖ 1 ＝ 3, (2) 6 ➖ 3 ＝ 3, (3) 5 ➖ 2 ＝ 3</li>
-            <li>
-              Kelompok B: (1) B. 5, (2) A. 5 buah, (3) C. 0 (karena habis
-              dimakan semua)
-            </li>
-            <li>Kelompok C: 9 ➖ 5 ＝ 4, 6 ➖ 4 ＝ 2, 10 ➖ 3 ＝ 7</li>
-          </ul>
-        ) : null}
-      </div>
     </div>
   );
 }

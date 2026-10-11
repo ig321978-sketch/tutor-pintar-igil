@@ -185,8 +185,6 @@ function LembarEvaluasiAliNia() {
   const [tanggal, setTanggal] = useState(
     new Intl.DateTimeFormat("en-CA", { timeZone: "Asia/Jakarta" }).format(new Date()),
   );
-  const [bukaKunci, setBukaKunci] = useState(false);
-
   return (
     <div className="mt-5 space-y-5">
       <div className="grid gap-3 rounded-2xl border-2 border-dashed border-[#1C01A5]/25 bg-[#FFFDF6] p-4 sm:grid-cols-2">
@@ -367,21 +365,6 @@ function LembarEvaluasiAliNia() {
         />
       </section>
 
-      <div className="rounded-2xl border-2 border-[#F0AB00] bg-[#FFF8E8] p-4">
-        <button
-          type="button"
-          onClick={() => setBukaKunci((sebelum) => !sebelum)}
-          className="text-sm font-black text-[#1C01A5]"
-        >
-          {bukaKunci ? "Sembunyikan kunci jawaban" : "Lihat kunci jawaban (guru & orang tua)"}
-        </button>
-        {bukaKunci ? (
-          <ul className="mt-3 space-y-1 text-sm font-semibold text-slate-700">
-            <li>A: (1) C 5 robot, (2) A 4 pensil, (3) B 6, (4) A 5 mobil, (5) B 6 + 0 = 6</li>
-            <li>B: (6) plus atau ditambah, (7) 7, (8) 7 dan 9, (9) 9, (10) 8</li>
-          </ul>
-        ) : null}
-      </div>
     </div>
   );
 }
