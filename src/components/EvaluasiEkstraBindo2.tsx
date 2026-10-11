@@ -482,7 +482,7 @@ const PAKET: Record<string, PaketEvaluasiEkstra> = {
   },
   "mtk-2-bab1": {
     garis: {
-      soal: "Tarik garis dari kotak angka menuju cara membaca yang benar!",
+      soal: "✍️ Tarik garis dari kotak angka menuju cara membaca yang benar!",
       kiri: ["37", "62", "85"],
       kanan: [
         "Enam puluh dua",
@@ -496,28 +496,28 @@ const PAKET: Record<string, PaketEvaluasiEkstra> = {
       },
     },
     keranjang: {
-      soal: "Masukkan ke rumah nilai tempat yang benar!",
-      keranjang1: "RUMAH PULUHAN (kiri)",
-      keranjang2: "RUMAH SATUAN (kanan)",
+      soal: "🏠 Masukkan ke rumah nilai tempat yang benar!",
+      keranjang1: "🏠🪵 RUMAH PULUHAN (kiri)",
+      keranjang2: "🏠🥢 RUMAH SATUAN (kanan)",
       keping: [
-        { id: "dua-ikat", label: "2 ikat sedotan", wadah: "1" },
-        { id: "lima-batang", label: "5 batang sedotan", wadah: "2" },
-        { id: "empat-ikat", label: "4 ikat jeruk", wadah: "1" },
-        { id: "sembilan-sisa", label: "9 sisa jeruk", wadah: "2" },
-        { id: "tujuh-ikat", label: "7 ikat apel", wadah: "1" },
+        { id: "dua-ikat", label: "🪵 2 ikat sedotan", wadah: "1" },
+        { id: "lima-batang", label: "🥢 5 batang sedotan", wadah: "2" },
+        { id: "empat-ikat", label: "🍊 4 ikat jeruk", wadah: "1" },
+        { id: "sembilan-sisa", label: "🍊 9 sisa jeruk", wadah: "2" },
+        { id: "tujuh-ikat", label: "🍎 7 ikat apel", wadah: "1" },
       ],
     },
     urut: {
-      soal: "Geser kotak angka dari atas ke bawah agar urut dari yang terkecil hingga terbesar!",
+      soal: "🧩 Geser kotak angka dari atas ke bawah agar urut dari yang terkecil hingga terbesar!",
       balok: ["24", "49", "71"],
     },
     kanvas: {
-      soal: 'Lengkapi dengan tulisan tangan: "Lambang dua puluh lima adalah __."',
+      soal: '✍️ Lengkapi dengan tulisan tangan: "Lambang dua puluh lima adalah __."',
       alias: ["25", "dua puluh lima"],
     },
     detektif: [
       {
-        soal: "Angka 100 adalah bilangan cacah tiga angka yang pertama, terdiri dari 1 ratusan, 0 puluhan, dan 0 satuan.",
+        soal: "💡 Angka 100 adalah bilangan cacah tiga angka yang pertama, terdiri dari 1 ratusan, 0 puluhan, dan 0 satuan.",
         benar: true,
         alasan:
           "Benar. 100 punya tiga angka: 1 di ratusan, lalu 0 puluhan dan 0 satuan.",

@@ -87,29 +87,29 @@ D) Enam puluh`,
       kode: "A",
       judul: "A. Membantu Kakek Tono di Desa Angka",
       pengantar:
-        "Target hari ini: membilang dan menulis 21 sampai 100, lalu menentukan puluhan dan satuan. Kakek Tono baru panen apel. Apelnya lebih dari 20. Yuk bantu Kakek menghitung cepat sampai 100!",
+        "🎒 Berpetualang di Desa Angka. 🌟 Target hari ini: membilang dan menulis 21 sampai 100, lalu menentukan puluhan dan satuan. 🗺️ Kakek Tono baru panen apel. Apelnya lebih dari 20. Yuk bantu Kakek menghitung cepat sampai 100!",
       labelDaftar: "Target, cerita apersepsi, dan ikat puluhan",
       kolom: 1,
       item: [
         {
-          nama: "Target belajarku hari ini",
+          nama: "🌟 Target belajarku hari ini",
           singkat: "21 sampai 100",
           uraian:
-            "Aku bisa membilang dan menuliskan angka dari 21 sampai 100 dengan tepat. Aku juga bisa menentukan nilai tempat puluhan dan satuan suatu bilangan.",
+            "🎯 Aku bisa membilang dan menuliskan angka dari 21 sampai 100 dengan tepat. 🎯 Aku juga bisa menentukan nilai tempat puluhan dan satuan suatu bilangan.",
           contoh: "Aku bisa menulis 25 dan tahu 2 puluhan + 5 satuan.",
         },
         {
-          nama: "Cerita Kakek Tono",
+          nama: "🗺️ Cerita Kakek Tono",
           singkat: "Apel lebih dari 20",
           uraian:
-            "Kakek Tono memanen apel di kebun Desa Angka. Keranjangnya penuh apel merah. Kakek bingung karena jumlahnya lebih dari 20. Duh, bagaimana menghitung apel sebanyak ini dengan cepat?",
+            "Kakek Tono memanen apel di kebun Desa Angka. Keranjangnya penuh apel merah 🍎. Kakek bingung karena jumlahnya lebih dari 20. Duh, bagaimana menghitung apel sebanyak ini dengan cepat?",
           contoh: "Yuk bantu Kakek menghitung sampai 100!",
         },
         {
-          nama: "Rahasia ikat puluhan",
+          nama: "🪵 Rahasia ikat puluhan",
           singkat: "Setiap 10 jadi 1 ikat",
           uraian:
-            "Jangan hitung satu per satu sampai lelah. Kelompokkan setiap 10 benda. 1 ikat sedotan 10 batang = 1 puluhan. 2 ikat = 20 batang = 2 puluhan. Sisa yang belum sampai 10 disebut satuan.",
+            "Jangan hitung satu per satu sampai lelah. Kelompokkan setiap 10 benda. 🥢 1 ikat sedotan 10 batang = 1 puluhan. 🥢 2 ikat = 20 batang = 2 puluhan. Sisa yang belum sampai 10 disebut satuan.",
           contoh: "1 ikat = 10 = 1 puluhan. 2 ikat = 20 = 2 puluhan.",
         },
       ],
@@ -135,26 +135,26 @@ D) Enam puluh`,
       kode: "B",
       judul: "B. Rumah Nilai Tempat Puluhan dan Satuan",
       pengantar:
-        "Setiap angka punya rumah agar tidak tertukar. Rumah puluhan di kiri, rumah satuan di kanan. Pada 25: angka 2 nilainya 20, angka 5 nilainya 5. Dibaca dua puluh lima.",
+        "🏠 Setiap angka punya rumah agar tidak tertukar. Rumah puluhan di kiri, rumah satuan di kanan. Pada 25: angka 2 nilainya 20, angka 5 nilainya 5. Dibaca dua puluh lima.",
       labelDaftar: "Rumah 25 dan angka 100",
       kolom: 1,
       item: [
         {
-          nama: "Rumah puluhan di kiri",
+          nama: "🏠 Rumah puluhan di kiri",
           singkat: "Nilainya puluhan",
           uraian:
-            "Angka di kiri menempati rumah puluhan. Pada 25, angka 2 ada di rumah puluhan. Dua ikat sedotan artinya nilainya 20.",
+            "Angka di kiri menempati rumah puluhan. Pada 25, angka 2 ada di rumah puluhan. 🪵🪵 Dua ikat sedotan artinya nilainya 20.",
           contoh: "Angka 2 pada 25 = 20.",
         },
         {
-          nama: "Rumah satuan di kanan",
+          nama: "🥢 Rumah satuan di kanan",
           singkat: "Nilainya tetap",
           uraian:
-            "Angka di kanan menempati rumah satuan. Pada 25, angka 5 ada di rumah satuan. Lima batang sedotan artinya nilainya 5. 20 + 5 = 25.",
+            "Angka di kanan menempati rumah satuan. Pada 25, angka 5 ada di rumah satuan. 🥢🥢🥢🥢🥢 Lima batang sedotan artinya nilainya 5. 20 + 5 = 25.",
           contoh: "Angka 5 pada 25 = 5.",
         },
         {
-          nama: "Tahukah kamu: angka 100",
+          nama: "💡 Tahukah kamu: angka 100",
           singkat: "1 ratusan",
           uraian:
             "Angka 100 adalah bilangan cacah tiga angka yang pertama. 100 terdiri dari 1 ratusan, 0 puluhan, dan 0 satuan.",
@@ -183,29 +183,29 @@ D) Enam puluh`,
       kode: "C",
       judul: "C. Lembar Evaluasi Siswa",
       pengantar:
-        "Jadi detektif angka: lingkari jeruk setiap 10. 2 ikat + 4 sisa = 24, dua puluh empat. Jodohkan 37, 62, dan 85. Isi 49 dan 71. Lalu lingkari perasaanmu hari ini.",
+        "🕵️‍♂️ Jadi detektif angka: lingkari jeruk 🍊 setiap 10. 2 ikat + 4 sisa = 24, dua puluh empat. ✍️ Jodohkan 37, 62, dan 85. 🧩 Isi 49 dan 71. 🎭 Lalu lingkari perasaanmu hari ini.",
       labelDaftar: "Detektif jeruk, pasangkan, kotak misteri, jurnal",
       kolom: 1,
       item: [
         {
-          nama: "Detektif jeruk Kakek Tono",
+          nama: "🕵️‍♂️ Detektif jeruk Kakek Tono",
           singkat: "2 puluhan + 4 satuan",
           uraian:
-            "Lingkari setiap 10 jeruk. Ada 2 ikat puluhan dan 4 sisa satuan. Total jeruk Kakek 24, dibaca dua puluh empat.",
+            "Lingkari setiap 10 jeruk 🍊. Ada 2 ikat puluhan dan 4 sisa satuan. Total jeruk Kakek 24, dibaca dua puluh empat.",
           contoh: "2 puluhan + 4 satuan = 24.",
         },
         {
-          nama: "Pasangkan dan kotak misteri",
+          nama: "✍️ Pasangkan angka dan 🧩 kotak misteri",
           singkat: "37, 62, 85, 49, 71",
           uraian:
             "37 = tiga puluh tujuh. 62 = enam puluh dua. 85 = delapan puluh lima. 49 = 4 puluhan + 9 satuan. 71 = 7 puluhan + 1 satuan.",
           contoh: "49 = 4 + 9 satuan. 71 = 7 + 1 satuan.",
         },
         {
-          nama: "Jurnal perasaanku",
+          nama: "🎭 Jurnal perasaanku",
           singkat: "Refleksi",
           uraian:
-            "Bagaimana perasaanmu di Desa Angka hari ini? Seru, aku sudah paham. Sedikit bingung, mau latihan lagi. Atau susah, butuh bantuan tutor. Kamu hebat dan pantang menyerah!",
+            "Bagaimana perasaanmu di Desa Angka hari ini? 😀 Seru banget, aku sudah paham! 😐 Sedikit bingung, mau latihan lagi. 😢 Susah, butuh bantuan tutor. Kamu hebat dan pantang menyerah!",
           contoh: "Hore! Kakek Tono sudah tertolong.",
         },
       ],
@@ -230,22 +230,22 @@ D) Enam puluh`,
       kode: "D",
       judul: "D. Kartu Evaluasi Ekstra",
       pengantar:
-        "Tanpa keyboard. Tarik garis cara baca 37, 62, 85. Masukkan ikat ke rumah puluhan dan batang ke rumah satuan. Urutkan 24, 49, 71. Coretkan 25. Lalu tekan BENAR atau SALAH.",
+        "✍️ Tanpa keyboard. Tarik garis cara baca 37, 62, 85. 🏠 Masukkan ikat ke rumah puluhan dan batang ke rumah satuan. Urutkan 24, 49, 71. Coretkan 25. Lalu tekan BENAR atau SALAH.",
       labelDaftar: "Tarik garis, keranjang, urutan, kanvas, detektif",
       kolom: 1,
       item: [
         {
-          nama: "Permainan A sampai C",
+          nama: "✍️ Permainan A sampai C",
           singkat: "Garis, keranjang, urutan",
           uraian:
-            "37 = tiga puluh tujuh. 62 = enam puluh dua. 85 = delapan puluh lima. Dua ikat masuk rumah puluhan. Lima batang masuk rumah satuan. Urutan: 24, 49, 71.",
+            "37 = tiga puluh tujuh. 62 = enam puluh dua. 85 = delapan puluh lima. 🪵 Dua ikat masuk rumah puluhan. 🥢 Lima batang masuk rumah satuan. Urutan: 24, 49, 71.",
           contoh: "2 ikat = puluhan. 5 batang = satuan.",
         },
         {
-          nama: "Permainan D, E, dan pesan tutor",
+          nama: "🏆 Pesan tutor dan permainan D-E",
           singkat: "Kanvas dan detektif",
           uraian:
-            "Coretkan 25 untuk dua puluh lima. 100 = 1 ratusan, 0 puluhan, 0 satuan. Angka 2 pada 25 nilainya 20, bukan 2. Kamu anak hebat. Sampai jumpa di petualangan berikutnya!",
+            "Coretkan 25 untuk dua puluh lima. 💡 100 = 1 ratusan, 0 puluhan, 0 satuan. Angka 2 pada 25 nilainya 20, bukan 2. 🏆 Hore! Kamu sudah berhasil membantu Kakek Tono. Kamu anak yang hebat dan pantang menyerah!",
           contoh: "Coretkan 25. BENAR lalu SALAH.",
         },
       ],
