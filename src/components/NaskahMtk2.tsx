@@ -15,6 +15,7 @@ import { cuplikanDariNaskah } from "@/lib/naskah-voice-pai-1-bab2";
 import type { KelaminGuru } from "@/lib/guru";
 import EvaluasiEkstraBindo2 from "@/components/EvaluasiEkstraBindo2";
 import NaskahMtk2Bab1 from "@/components/NaskahMtk2Bab1";
+import NaskahMtk2Bab2 from "@/components/NaskahMtk2Bab2";
 
 function KartuBingkai({ children }: { children: ReactNode }) {
   return (
@@ -1104,6 +1105,9 @@ export default function NaskahMtk2({
 }) {
   if (modul.id === "mtk-2-bab1") {
     return <NaskahMtk2Bab1 kelas={kelas} kelamin={kelamin} />;
+  }
+  if (modul.id === "mtk-2-bab2") {
+    return <NaskahMtk2Bab2 kelas={kelas} kelamin={kelamin} />;
   }
   const [kartuA, kartuB, kartuC, kartuD] = modul.kartu;
   const aliasTulisC = kumpulkanAlias(kartuC.kuis.flatMap((item) => item.alias));

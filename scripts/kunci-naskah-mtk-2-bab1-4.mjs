@@ -57,6 +57,7 @@ function judulAlias(materi) {
   if (/penjumlahan dan pengurangan bersusun/i.test(materi)) {
     tambahan.push("Bab 2: Cara Berhitung");
     tambahan.push("Bab 2: Operasi Hitung");
+    tambahan.push("Bab 2: Pesta Permen Sani");
   }
   if (/fondasi perkalian dasar/i.test(materi)) {
     tambahan.push("Bab 3: Waktu dan Durasi");

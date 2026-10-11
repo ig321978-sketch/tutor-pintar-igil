@@ -10,251 +10,263 @@ export const MODUL_MTK2_BAB2: ModulResmiPai = {
   id: "mtk-2-bab2",
   judul: JUDUL_MTK2_BAB2,
   pola:
-    /penjumlahan dan pengurangan bersusun|jalan bersusun matematika|cara berhitung|operasi hitung/,
+    /penjumlahan dan pengurangan bersusun|pesta permen sani|hitung bersusun trik kantong|cara berhitung|operasi hitung/,
   motivasi:
-    "Sejajarkan satuan di bawah satuan. Hitung dari kanan. Jika jumlah ≥ 10, simpan 1. Jika atas lebih kecil, pinjam 1 dari kiri.",
-  kunciJawaban: "B,B,B,B,B,A,C,B,A,B",
+    "Hore! Kamu sudah membantu Sani di pesta permen. Sejajarkan kantong dengan kantong, eceran dengan eceran. Hitung dari kanan dulu.",
+  kunciJawaban: "B,B,A,B,A,A,A,B,A,A",
   sketsaKartu: [
-    "Anak menuliskan 27 + 5 bersusun dan menyimpan 1.",
-    "Anak meminjam puluhan pada 42 - 15.",
-    "Anak mengerjakan evaluasi simpan dan pinjam.",
-    "Anak menarik garis 34+25, menggeser 25+18, mengurutkan cerita apel, dan menulis 90.",
+    "Sani membawa 2 kantong dan 4 permen eceran, lalu Adi menambah 1 kantong dan 3 eceran.",
+    "Sani menjumlahkan 24 + 13 bersusun menjadi 37, lalu mengurangkan 15 untuk Lani.",
+    "Anak menjadi kasir toko permen: 42 + 26 dan 58 - 34.",
+    "Anak mengisi lembar evaluasi tantangan para juara tentang hitung bersusun.",
   ],
   latihan: pg([
     `[Soal 1 - PG - Tipe: HOTS]
-27 + 5 bersusun: satuan kanan dan yang disimpan ke kiri adalah...
-A) 2 dan simpan 1
-B) 2 dan simpan 1 puluhan
-C) 12 tanpa simpan
-D) 32 tanpa hitung kanan`,
+Siti menulis 35 + 23 bersusun dan mendapat 52. Kesalahan Siti...
+A) Siti salah menghitung 3 + 2
+B) Siti menghitung dari kolom kiri (kantong) dulu, lalu salah menulis hasil eceran
+C) Hasil Siti sudah benar
+D) Siti lupa menulis tanda plus`,
     `[Soal 2 - PG - Tipe: HOTS]
-42 - 15 = ...
-A) 37
-B) 27
-C) 57
-D) 33`,
-    `[Soal 3 - PG - Tipe: HOTS]
-Saat 30 - 7 kita harus meminjam 1 puluhan dari angka 3. Pernyataan ini...
-A) Salah.
-B) Benar; 0 lebih kecil dari 7, jadi 10 - 7 = 3.
-C) Benar hanya untuk penjumlahan.
-D) 3 langsung dikurangi 7.`,
-    `[Soal 4 - PG - Tipe: HOTS]
-88 - 45 = 43. Pernyataan ini...
-A) Salah.
-B) Benar; 8-5=3 dan 8-4=4.
-C) Hasilnya 133.
-D) Wajib meminjam.`,
-    `[Soal 5 - PG - Tipe: Reguler]
-34 + 25 tanpa menyimpan hasilnya...
-A) 49
-B) 59
-C) 69
-D) 39`,
-    `[Soal 6 - PG - Tipe: Reguler]
-48 + 15 dengan menyimpan 1 hasilnya...
-A) 63
-B) 53
-C) 33
-D) 73`,
-    `[Soal 7 - PG - Tipe: Reguler]
-52 - 14 dengan meminjam 1 hasilnya...
-A) 48
-B) 42
+Beni memberi 12 permen ke Dayu, sisanya 25. Permen Beni mula-mula...
+A) 13
+B) 37
 C) 38
-D) 66`,
-    `[Soal 8 - PG - Tipe: Reguler]
-67 + 23 = ...
-A) 80
-B) 90
-C) 89
-D) 70`,
+D) 27`,
+    `[Soal 3 - PG - Tipe: HOTS]
+Sebuah bilangan ditambah 21 hasilnya 65. Bilangan itu...
+A) 44
+B) 86
+C) 45
+D) 54`,
+    `[Soal 4 - PG - Tipe: MOTS]
+46 permen cokelat ditambah 32 permen stroberi. Jumlah seluruhnya...
+A) 74
+B) 78
+C) 14
+D) 68`,
+    `[Soal 5 - PG - Tipe: HOTS]
+Kotak A: 12 + 34. Kotak B: 98 - 53. Pernyataan yang benar...
+A) Hasil Kotak A lebih besar daripada Kotak B
+B) Hasil Kotak A lebih kecil daripada Kotak B
+C) Hasil Kotak A sama besar dengan Kotak B
+D) Kedua kotak tidak bisa dihitung`,
+    `[Soal 6 - PG - Tipe: LOTS]
+75 dikurangi 41 secara bersusun hasilnya...
+A) 34
+B) 36
+C) 24
+D) 44`,
+    `[Soal 7 - PG - Tipe: HOTS]
+Lani punya 56 permen. Edo diberi 12, Tono diberi 23. Sisa permen Lani...
+A) 21
+B) 33
+C) 44
+D) 11`,
+    `[Soal 8 - PG - Tipe: HOTS]
+Grafik permen Sani: jam 07.00 ada 48, jam 08.00 ada 36, jam 09.00 ada 24. Setiap jam berkurang...
+A) 10
+B) 12
+C) 8
+D) 15`,
     `[Soal 9 - PG - Tipe: HOTS]
-Mengapa kita selalu mulai dari satuan di kanan?
-A) Karena jika perlu simpan atau pinjam, hasilnya menumpang ke puluhan di kiri.
-B) Supaya kiri selesai dulu.
-C) Karena puluhan tidak dihitung.
-D) Karena titik harus di kanan.`,
-    `[Soal 10 - PG - Tipe: Reguler]
-25 + 18 harus...
-A) Tanpa menyimpan
-B) Menyimpan, karena 5+8=13
-C) Meminjam
-D) Tidak boleh bersusun`,
+Bersusun: bintang dan 7, ditambah 2 dan matahari, hasil 89. Nilai bintang dan matahari...
+A) 6 dan 2
+B) 5 dan 3
+C) 8 dan 9
+D) 7 dan 2`,
+    `[Soal 10 - PG - Tipe: HOTS]
+Riko punya 45 permen, beli 14, lalu bungkus tiap 10 ke kantong. Kantong dan sisa eceran...
+A) 5 kantong dan 9 eceran
+B) 4 kantong dan 9 eceran
+C) 5 kantong dan 4 eceran
+D) 6 kantong dan 0 eceran`,
   ]),
   kartu: [
     {
       kode: "A",
-      judul: "A. Trik Bersusun Simpan dan Pinjam",
+      judul: "A. Dialog Pesta Permen Sani",
       pengantar:
-        "Infografis jalan bersusun: sejajarkan satuan dan puluhan, hitung dari kanan, simpan jika jumlah ≥ 10, pinjam jika atas lebih kecil.",
-      labelDaftar: "Sejajar, kanan dulu, simpan, pinjam",
+        "🗺️ Sani bawa 2 kantong dan 4 permen eceran ke sekolah. Adi memberi 1 kantong dan 3 eceran lagi.",
+      labelDaftar: "Target dan cerita apersepsi",
       kolom: 1,
       item: [
         {
-          nama: "Sejajarkan",
-          singkat: "Satuan di bawah satuan",
+          nama: "🌟 Target belajarku hari ini",
+          singkat: "Bersusun pendek",
           uraian:
-            "Tulis angka lurus ke bawah. Satuan lurus satuan, puluhan lurus puluhan. Jangan geser ke kiri atau kanan.",
-          contoh: "27 di atas, 5 di bawah satuan.",
+            "🎯 Aku bisa menjumlahkan dua bilangan dengan cara bersusun pendek. 🎯 Aku bisa mengurangkan dua bilangan dengan cara bersusun pendek.",
+          contoh: "Sejajarkan, hitung dari kanan.",
         },
         {
-          nama: "Hitung dari kanan",
-          singkat: "Kamar satuan dulu",
+          nama: "🗺️ Berbagi permen dengan teman",
+          singkat: "24 + 13 dan 37 - 15",
           uraian:
-            "Selalu mulai dari kanan. 27 + 5: 7 + 5 = 12. Tulis 2 di satuan, simpan 1 puluhan ke atas kiri. Puluhan: 2 + 0 + 1 = 3. Hasil 32.",
-          contoh: "27 + 5: satuan 2, simpan 1.",
-        },
-        {
-          nama: "Pinjam jika kurang",
-          singkat: "Ambil 1 dari kiri",
-          uraian:
-            "Jika angka atas lebih kecil, pinjam 1 puluhan. 42 - 15: 2 tidak cukup dikurangi 5, pinjam jadi 12 - 5 = 7. Puluhan 3 - 1 = 2. Hasil 27.",
-          contoh: "42 - 15 = 27.",
+            "Sani punya 24 permen. Adi menambah 13. Lalu Sani memberi 15 kepada Lani. Bagaimana menghitung total dan sisa dengan cepat?",
+          contoh: "Yuk bantu Sani dengan hitung bersusun trik kantong!",
         },
       ],
       kuis: [
         {
-          pertanyaan:
-            "Jika kamu menghitung bersusun 27 + 5, berapakah hasil satuan di kanan dan berapa puluhan yang kamu simpan ke atas kiri?",
-          alias: ["2", "1", "simpan"],
+          pertanyaan: "1. Sani membawa berapa kantong besar ke sekolah?",
+          alias: ["2", "dua", "2 kantong"],
+        },
+        {
+          pertanyaan: "2. Adi memberi Sani berapa permen eceran?",
+          alias: ["3", "tiga", "3 eceran"],
+        },
+        {
+          pertanyaan: "3. 1 kantong besar berisi berapa permen?",
+          alias: ["10", "sepuluh", "10 permen"],
         },
       ],
-      kuisTulis: {
-        pertanyaan: "Hitunglah hasil pengurangan bersusun 42 - 15 =",
-        alias: ["27"],
-      },
       voice: [
         [
-          "Anak-anak yang hebat, menumpuk mainan ke bawah itu seru. Begitu juga menjumlahkan atau mengurangkan angka besar dengan bersusun pendek.",
-          "Aturan emas: sejajarkan. Satuan di bawah satuan, puluhan di bawah puluhan. Kerjakan dari kanan. Jika 8 + 5 = 13, tulis 3, simpan 1 ke kiri.",
-          "Kalau atas lebih kecil dari bawah, pinjam 1 puluhan dari tetangga kiri agar angka atas menjadi besar dan bisa dikurangi!",
+          "Hari ini pesta permen Sani. Ingat, 1 kantong besar berisi 10 permen. Sani membawa 2 kantong dan 4 permen eceran. Adi memberi 1 kantong dan 3 eceran.",
+          "Sani ingin membagi permen kepada Lani. Yuk, kita bantu Sani menghitung dengan hitung bersusun trik kantong!",
         ],
       ],
     },
     {
       kode: "B",
-      judul: "B. Tanpa Menyimpan dan Dengan Menyimpan",
+      judul: "B. Infografis Hitung Bersusun",
       pengantar:
-        "Infografis dua jenis: tanpa simpan/pinjam jika tiap kamar cukup, dan dengan simpan/pinjam jika satuan lebih dari 9 atau atas lebih kecil.",
-      labelDaftar: "Tanpa simpan, dengan simpan, soal cerita",
+        "🛍️ Sejajarkan kantong dengan kantong, eceran dengan eceran. 🍬 Hitung dari kanan dulu, baru ke kiri.",
+      labelDaftar: "Penjumlahan dan pengurangan bersusun",
       kolom: 1,
       item: [
         {
-          nama: "Tanpa menyimpan",
-          singkat: "Tiap kamar cukup",
+          nama: "➕ Penjumlahan bersusun",
+          singkat: "24 + 13 = 37",
           uraian:
-            "34 + 25: 4+5=9, 3+2=5, hasil 59. 43 - 12: 3-2=1, 4-1=3, hasil 31. 32 + 54 dan 88 - 45 juga tanpa pinjam.",
-          contoh: "34 + 25 = 59.",
+            "Permen Sani 24. Dari Adi 13. Eceran 4 + 3 = 7. Kantong 2 + 1 = 3. Hasil 37. Dibaca tiga puluh tujuh.",
+          contoh: "24 + 13 = 37.",
         },
         {
-          nama: "Harus simpan atau pinjam",
-          singkat: "Satuan penuh atau kurang",
+          nama: "➖ Pengurangan bersusun",
+          singkat: "37 - 15 = 22",
           uraian:
-            "48 + 15: 8+5=13, simpan 1, hasil 63. 25 + 18 sama. 52 - 14 dan 61 - 15 harus meminjam. 30 - 7: 0 pinjam jadi 10.",
-          contoh: "48 + 15 = 63. 52 - 14 = 38.",
+            "Total 37. Diberi ke Lani 15. Eceran 7 - 5 = 2. Kantong 3 - 1 = 2. Sisa 22. Dibaca dua puluh dua.",
+          contoh: "37 - 15 = 22.",
         },
         {
-          nama: "Soal cerita apel",
-          singkat: "Awal, tambah, tanya",
+          nama: "💡 Rahasia sukses",
+          singkat: "Dari kanan dulu",
           uraian:
-            "Ali sudah punya 24 apel. Ia membeli lagi 15. Berapa seluruhnya? 24 + 15 = 39. Cerita selalu: yang sudah ada, yang ditambah, lalu pertanyaan.",
-          contoh: "24 + 15 = 39 apel.",
+            "Selalu hitung dari kotak paling kanan (permen eceran/satuan), baru bergeser ke kiri (kantong besar/puluhan).",
+          contoh: "Kanan dulu, baru kiri.",
         },
       ],
       kuis: [
         {
-          pertanyaan: "34 + 25 perlu menyimpan atau tidak? Berapa hasilnya?",
-          alias: ["tidak", "tanpa", "59"],
+          pertanyaan: "1. 24 ditambah 13 sama dengan berapa?",
+          alias: ["37", "tiga puluh tujuh"],
+        },
+        {
+          pertanyaan: "2. 37 dikurangi 15 sama dengan berapa?",
+          alias: ["22", "dua puluh dua"],
+        },
+        {
+          pertanyaan: "3. Kita harus mulai menghitung dari sisi mana?",
+          alias: ["kanan", "eceran", "satuan", "paling kanan"],
         },
       ],
-      kuisTulis: {
-        pertanyaan: "Hasil 67 + 23 adalah...",
-        alias: ["90"],
-      },
       voice: [
         [
-          "Tidak semua soal harus menyimpan. Jika satuan belum sampai 10 dan atas cukup dikurangi, kerjakan lurus.",
-          "Kalau satuan 8 + 5, wajib simpan. Kalau 0 - 7, wajib pinjam.",
-          "Soal cerita: mulai dari yang sudah dimiliki, lalu yang bertambah, baru ditanya jumlahnya.",
+          "Untuk menjumlahkan, sejajarkan kantong dengan kantong, eceran dengan eceran. Empat ditambah tiga sama dengan tujuh. Dua ditambah satu sama dengan tiga. Hasilnya 37.",
+          "Sekarang kurangkan. Tujuh kurang lima sama dengan dua. Tiga kurang satu sama dengan dua. Sisa permen Sani 22.",
+        ],
+        [
+          "Rahasia sukses: selalu hitung dari kotak paling kanan, yaitu permen eceran, baru bergeser ke kiri, yaitu kantong besar. Jangan terbalik!",
         ],
       ],
     },
     {
       kode: "C",
-      judul: "C. Lembar Evaluasi Siswa",
+      judul: "C. Menjadi Kasir Toko Permen",
       pengantar:
-        "Pilih satuan 27+5 dan hasil 42-15, tentukan benar-salah 30-7 serta 88-45, jodohkan 34+25, 48+15, 52-14, lalu jelaskan mengapa mulai dari kanan.",
-      labelDaftar: "Pilihan, benar-salah, mencocokkan, dan esai",
+        "🕵️‍♂️ Bantu Sani menghitung pesanan. Soal A: 42 + 26. Soal B: 58 - 34. Isi dari kolom eceran dulu.",
+      labelDaftar: "Aktivitas terbimbing dan jurnal",
       kolom: 1,
       item: [
         {
-          nama: "Kelompok A dan B",
-          singkat: "Simpan dan pinjam",
+          nama: "🕵️‍♂️ Aktivitas 1",
+          singkat: "42 + 26 dan 58 - 34",
           uraian:
-            "27+5: satuan 2, simpan 1. 42-15=27. 30-7 harus pinjam. 88-45=43 tanpa pinjam.",
-          contoh: "32. 27. Pinjam. 43.",
+            "42 + 26: eceran 2 + 6 = 8, kantong 4 + 2 = 6, hasil 68. 58 - 34: eceran 8 - 4 = 4, kantong 5 - 3 = 2, hasil 24.",
+          contoh: "68 dan 24.",
         },
         {
-          nama: "Kelompok C dan D",
-          singkat: "Hasil dan cerita",
+          nama: "🎭 Jurnal perasaanku",
+          singkat: "Pilih wajah",
           uraian:
-            "34+25=59. 48+15=63. 52-14=38. 67+23=90. Mulai dari kanan supaya simpan/pinjam tertata.",
-          contoh: "59. 63. 38. 90.",
+            "😀 Mudah sekali, aku langsung bisa! 😐 Butuh latihan sedikit lagi agar teliti. 😢 Masih bingung urutan kanan-kirinya.",
+          contoh: "Pilih satu wajah.",
         },
       ],
       kuis: [
-        { pertanyaan: "27+5 satuan dan simpan?", alias: ["2", "1"] },
-        { pertanyaan: "42-15?", alias: ["27"] },
-        { pertanyaan: "30-7 pinjam?", alias: ["benar"] },
-        { pertanyaan: "88-45=43?", alias: ["benar"] },
-        { pertanyaan: "34+25?", alias: ["59"] },
-        { pertanyaan: "Mengapa dari kanan?", alias: ["simpan", "pinjam", "puluhan"] },
+        {
+          pertanyaan: "1. 42 ditambah 26 sama dengan berapa?",
+          alias: ["68", "enam puluh delapan"],
+        },
+        {
+          pertanyaan: "2. 58 dikurangi 34 sama dengan berapa?",
+          alias: ["24", "dua puluh empat"],
+        },
+        {
+          pertanyaan: "3. Kolom mana yang diisi lebih dulu?",
+          alias: ["eceran", "kanan", "satuan", "permen eceran"],
+        },
       ],
       voice: [
-        ["27 + 5: tulis 2, simpan 1. 42 - 15 = 27."],
-        ["Sejajarkan dulu. Hitung satuan, baru puluhan."],
+        [
+          "Yuk jadi kasir toko permen. Soal A: 4 kantong dan 2 eceran ditambah 2 kantong dan 6 eceran. Dua tambah enam sama dengan delapan. Empat tambah dua sama dengan enam. Hasil 68.",
+          "Soal B: 5 kantong dan 8 eceran dikurangi 3 kantong dan 4 eceran. Delapan kurang empat sama dengan empat. Lima kurang tiga sama dengan dua. Hasil 24.",
+        ],
       ],
     },
     {
       kode: "D",
-      judul: "D. Kartu Evaluasi Ekstra",
+      judul: "D. Lembar Evaluasi Siswa",
       pengantar:
-        "Tanpa keyboard. Tarik garis hasil bersusun, geser soal ke keranjang simpan/pinjam, urutkan cerita apel Ali, coretkan angka 9 pada 90, lalu tekan BENAR atau SALAH.",
-      labelDaftar: "Tarik garis, keranjang, urutan, kanvas, detektif",
+        "📝 Tantangan para juara! Hitung bersusun permen Siti, Beni, Lani, Edo, Tono, dan Riko.",
+      labelDaftar: "Evaluasi pilihan ganda dan isian",
       kolom: 1,
       item: [
         {
-          nama: "Permainan A sampai C",
-          singkat: "Garis, keranjang, urutan",
+          nama: "🍓 Bagian A",
+          singkat: "Pilihan ganda",
           uraian:
-            "34+25=59 tanpa simpan. 48+15=63 simpan 1. 52-14=38 pinjam 1. Harus simpan/pinjam: 25+18, 61-15. Tanpa: 43-12, 32+54. Cerita: 24 apel, beli 15, berapa seluruhnya?",
-          contoh: "59. 63. 38.",
+            "Siti salah karena hitung dari kiri. Beni mula-mula 37. Misteri 44. Meja 78. Kotak A 46 lebih besar dari Kotak B 45.",
+          contoh: "Siti salah dari kiri. Beni 37.",
         },
         {
-          nama: "Permainan D dan E",
-          singkat: "Kanvas dan detektif",
+          nama: "✏️ Bagian B",
+          singkat: "Isian singkat",
           uraian:
-            "67+23=90, coretkan 9. 30-7 harus pinjam. 88-45=43.",
-          contoh: "Coretkan 9. BENAR lalu BENAR.",
+            "75 - 41 = 34. Sisa Lani 21. Grafik berkurang 12. Bintang 6 dan matahari 2. Riko 5 kantong dan 9 eceran.",
+          contoh: "34, 21, 12.",
         },
       ],
       kuis: [
-        { pertanyaan: "Tarik garis hasil?", alias: ["59", "63", "38"] },
-        { pertanyaan: "Keranjang simpan pinjam?", alias: ["25", "43"] },
-        { pertanyaan: "Urutan cerita apel?", alias: ["24", "15", "berapa"] },
-        { pertanyaan: "30-7 pinjam?", alias: ["benar"] },
-        { pertanyaan: "88-45=43?", alias: ["benar"] },
+        { pertanyaan: "1. Kesalahan Siti pada 35 + 23?", alias: ["kiri", "kantong", "eceran"] },
+        { pertanyaan: "2. Permen Beni mula-mula jika sisa 25 setelah beri 12?", alias: ["37"] },
+        { pertanyaan: "3. Bilangan yang ditambah 21 hasilnya 65?", alias: ["44"] },
+        { pertanyaan: "4. 46 ditambah 32?", alias: ["78"] },
+        { pertanyaan: "5. 12 + 34 dibanding 98 - 53?", alias: ["lebih besar", "besar", "a"] },
+        { pertanyaan: "6. 75 dikurangi 41?", alias: ["34"] },
+        { pertanyaan: "7. Sisa permen Lani setelah beri Edo 12 dan Tono 23?", alias: ["21"] },
+        { pertanyaan: "8. Setiap jam permen Sani berkurang berapa?", alias: ["12", "dua belas"] },
+        { pertanyaan: "9. Nilai bintang pada 🌟7 + 2☀️ = 89?", alias: ["6"] },
+        { pertanyaan: "10. 45 + 14 jadi berapa kantong besar?", alias: ["5", "lima"] },
       ],
-      kuisTulis: {
-        pertanyaan: "Coretkan angka depan __ - 0 dari hasil 67 + 23.",
-        alias: ["90", "9"],
-      },
       voice: [
         [
-          "Tanpa keyboard. Tarik garis 34+25 ke 59, 48+15 ke 63, 52-14 ke 38. Geser 25+18 ke keranjang harus menyimpan.",
-          "Urutkan: Ali punya 24 apel, membeli 15, lalu ditanya jumlahnya. Coretkan 9 untuk hasil 90.",
-          "Detektif: 30-7 harus pinjam. 88-45 memang 43.",
+          "Ini lembar evaluasi tantangan para juara. Siti salah karena menghitung dari kiri. Beni mula-mula 37. Bilangan misteri 44. Empat puluh enam ditambah tiga puluh dua sama dengan 78.",
+          "Dua belas ditambah tiga puluh empat sama dengan 46. Sembilan puluh delapan kurang lima puluh tiga sama dengan 45. Jadi kotak A lebih besar.",
+        ],
+        [
+          "Tujuh puluh lima kurang empat puluh satu sama dengan 34. Sisa Lani 21. Grafik berkurang 12 setiap jam. Bintang 6, matahari 2. Riko membuat 5 kantong, sisa 9 eceran.",
         ],
       ],
     },
