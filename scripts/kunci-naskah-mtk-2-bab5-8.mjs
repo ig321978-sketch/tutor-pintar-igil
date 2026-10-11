@@ -58,6 +58,7 @@ function judulAlias(materi) {
     tambahan.push("Bab 6: Panjang");
   }
   if (/pengukuran berat standar/i.test(materi)) {
+    tambahan.push("Bab 7: Timbangan Toko Permen");
     tambahan.push("Bab 7: Tabel dan Grafik");
   }
   if (/diagram gambar sederhana/i.test(materi)) {

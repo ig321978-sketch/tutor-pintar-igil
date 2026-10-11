@@ -10,251 +10,260 @@ export const MODUL_MTK2_BAB7: ModulResmiPai = {
   id: "mtk-2-bab7",
   judul: JUDUL_MTK2_BAB7,
   pola:
-    /pengukuran berat standar|dunia timbangan|satuan g dan kg|tabel dan grafik|mengenal satuan g/,
+    /pengukuran berat standar|timbangan toko permen|dunia timbangan|satuan g dan kg|tabel dan grafik|mengenal satuan g/,
   motivasi:
-    "Gram untuk benda ringan, kilogram untuk benda berat. 1 kg = 1.000 g. Jarum timbangan menunjuk angka. Besar belum tentu berat.",
-  kunciJawaban: "B,B,S,B,B,A,C,B,A,B",
+    "Hore! Kamu sudah membantu Sani menimbang bahan permen. g untuk benda ringan, kg untuk benda berat. 1 kg = 1.000 g. Besar belum tentu lebih berat.",
+  kunciJawaban: "C,A,B,A,A,A,A,A,A,A",
   sketsaKartu: [
-    "Anak melihat jarum timbangan menunjuk 3 kg.",
-    "Anak menimbang garam dalam gram dan beras dalam kilogram.",
-    "Anak mengerjakan evaluasi satuan berat.",
-    "Anak menarik garis biskuit-badan-pupuk, menggeser semangka atau permen, mengurutkan 5 g-200 g-2 kg, dan menulis 5.",
+    "Paman membawa kantong gula berat dan bungkus garam enteng ke meja Sani.",
+    "Timbangan menunjuk angka. g untuk benda ringan, kg untuk benda berat. 1 kg = 1.000 g.",
+    "Anak menjadi petugas timbang: lolipop dan cokelat pakai g, karung dan badan pakai kg.",
+    "Anak mengisi lembar evaluasi tantangan para juara tentang pengukuran berat.",
   ],
   latihan: pg([
     `[Soal 1 - PG - Tipe: HOTS]
-Yang lebih butuh satuan kilogram saat ditimbang adalah...
-A) Sebutir telur ayam
-B) Sekarung beras yang besar
-C) Sebutir permen
-D) Selembar roti`,
+Paket Siti dan Paket Dayu sama-sama 1 kg, tetapi kotak Siti lebih besar. Beni bilang Siti lebih berat. Pendapat yang tepat...
+A) Benar, karena benda besar selalu lebih berat
+B) Salah, Dayu lebih berat karena kotak kayu lebih keras
+C) Salah, keduanya sama berat karena timbangannya 1 kg
+D) Benar jika plastik lebih ringan`,
     `[Soal 2 - PG - Tipe: HOTS]
-2 kilogram sama dengan ... gram.
-A) 2
-B) 2.000
-C) 200
-D) 20`,
+Semangka 4 kg dipotong tepat di tengah. Berat satu potongan...
+A) 2 kg
+B) 8 kg
+C) 200 g
+D) 4 kg`,
     `[Soal 3 - PG - Tipe: HOTS]
-Benda yang ukurannya besar sudah pasti lebih berat daripada benda kecil. Pernyataan ini...
-A) Benar.
-B) Salah; balon besar bisa lebih ringan daripada batu kecil.
-C) Benar jika keduanya buah.
-D) Harus memakai cm.`,
-    `[Soal 4 - PG - Tipe: HOTS]
-Timbangan digital menampilkan angka berat di layar secara otomatis. Pernyataan ini...
-A) Salah.
-B) Benar; sensor elektronik memunculkan angka akurat.
-C) Benar hanya jarum.
-D) Hasilnya selalu 0.`,
-    `[Soal 5 - PG - Tipe: Reguler]
-Sebungkus biskuit kecil paling cocok dengan satuan...
-A) Kilogram
-B) Gram
-C) Meter
-D) Sentimeter`,
-    `[Soal 6 - PG - Tipe: Reguler]
-Berat badan anak kelas 2 dan sekantung pupuk paling cocok dengan...
-A) Kilogram
-B) Gram saja
-C) cm
-D) Piktogram`,
-    `[Soal 7 - PG - Tipe: Reguler]
-3 kg tepung + 2 kg gula = ... kg.
-A) 1
-B) 6
-C) 5
-D) 32`,
-    `[Soal 8 - PG - Tipe: Reguler]
-Urutan dari ringan: kapas 5 g, pisang 200 g, pepaya 2 kg adalah...
-A) 2 kg, 200 g, 5 g
-B) 5 g, 200 g, 2 kg
-C) 200 g, 5 g, 2 kg
-D) 5 g, 2 kg, 200 g`,
+(1) Jeruk 150 g. (2) Ayam 2 kg. (3) Penghapus kecil 5 kg. Mana yang tidak masuk akal?
+A) Nomor (1) saja
+B) Nomor (3) saja
+C) Nomor (2) dan (3)
+D) Semuanya salah`,
+    `[Soal 4 - PG - Tipe: MOTS]
+Adonan stroberi 600 g digabung adonan susu 300 g. Totalnya...
+A) 900 gram
+B) 300 gram
+C) 90 gram
+D) 600 gram`,
+    `[Soal 5 - PG - Tipe: HOTS]
+Lani 2 kg, Mita 1 kg lebih 500 g, Dodi 2.500 g. Urutan dari yang paling ringan...
+A) Mita, Lani, Dodi
+B) Lani, Mita, Dodi
+C) Dodi, Lani, Mita
+D) Mita, Dodi, Lani`,
+    `[Soal 6 - PG - Tipe: LOTS]
+2.000 gram diubah ke kilogram...
+A) 2
+B) 20
+C) 200
+D) 2.000`,
+    `[Soal 7 - PG - Tipe: HOTS]
+Cokelat 850 g, diambil 200 g lalu 350 g. Sisanya...
+A) 300
+B) 650
+C) 500
+D) 150`,
+    `[Soal 8 - PG - Tipe: HOTS]
+Klip kertas pakai gram, karung beras pakai kilogram. Pasangan yang tepat...
+A) 1B 2A
+B) 1A 2B
+C) Keduanya A
+D) Keduanya B`,
     `[Soal 9 - PG - Tipe: HOTS]
-Mengapa 1 kilogram sama dengan 1.000 gram?
-A) Karena kilogram adalah satuan berat yang lebih besar, isinya seribu gram.
-B) Supaya sama dengan 100 cm.
-C) Karena jarum selalu 3.
-D) Karena telur lebih berat dari beras.`,
-    `[Soal 10 - PG - Tipe: Reguler]
-Jika jarum timbangan menunjuk 3 saat semangka ditaruh, beratnya...
-A) 3 gram
-B) 3 kilogram
-C) 3 cm
+Wadah 100 g diisi permen 400 g. Berat di timbangan...
+A) 500
+B) 400
+C) 100
 D) 300`,
+    `[Soal 10 - PG - Tipe: HOTS]
+Keranjang plus mangga 7 kg, keranjang kosong 1 kg. Berat bersih mangga...
+A) 6
+B) 8
+C) 7
+D) 1`,
   ]),
   kartu: [
     {
       kode: "A",
-      judul: "A. Membaca Timbangan",
+      judul: "A. Dialog Kantong Gula yang Bocor",
       pengantar:
-        "Infografis dunia timbangan: gram untuk benda ringan, kilogram untuk benda berat. 1 kg = 1.000 g. Jarum menunjuk angka berat.",
-      labelDaftar: "Gram, kilogram, jarum timbangan",
+        "🗺️ Paman membawa kantong gula yang berat dan bungkus garam yang enteng. Sani ingin tahu berat pastinya di timbangan.",
+      labelDaftar: "Target dan cerita apersepsi",
       kolom: 1,
       item: [
         {
-          nama: "Satuan gram",
-          singkat: "Untuk benda ringan",
+          nama: "🌟 Target belajarku hari ini",
+          singkat: "Timbang dengan benar",
           uraian:
-            "Gram ditulis g. Cocok untuk garam, permen, selembar roti, telur, biskuit kecil, penghapus.",
-          contoh: "Permen diukur dengan g.",
+            "🎯 Aku bisa mengenal timbangan sebagai alat ukur berat baku. 🎯 Aku bisa membedakan satuan g dan kg serta hubungannya.",
+          contoh: "Jarum timbangan menunjuk angka berat.",
         },
         {
-          nama: "Satuan kilogram",
-          singkat: "Untuk benda berat",
+          nama: "🗺️ Kantong gula yang bocor",
+          singkat: "Gula berat, garam enteng",
           uraian:
-            "Kilogram ditulis kg. Cocok untuk karung beras, semangka, berat badan, pupuk, sepeda. Sekarung beras butuh kg, telur cukup g.",
-          contoh: "Beras dan semangka: kg.",
-        },
-        {
-          nama: "Hubungan 1.000",
-          singkat: "1 kg = 1.000 g",
-          uraian:
-            "2 kg = 2.000 g. Jarum timbangan berputar menunjuk angka. Semangka di angka 3 berarti 3 kilogram.",
-          contoh: "2 kg = 2.000 g.",
+            "Kantong gula terasa mantap dan berat. Bungkus garam terasa sangat enteng. Paman mengeluarkan timbangan bermangkuk dan berjarum.",
+          contoh: "Yuk bantu Sani menimbang bahan permen!",
         },
       ],
       kuis: [
         {
-          pertanyaan:
-            "Benda mana yang lebih membutuhkan satuan kilogram saat ditimbang, sebutir telur ayam atau sekarung beras yang besar?",
-          alias: ["beras", "karung", "kilogram"],
+          pertanyaan: "1. Benda mana yang terasa lebih berat di tangan Sani?",
+          alias: ["gula", "kantong gula", "gula pasir"],
+        },
+        {
+          pertanyaan: "2. Benda mana yang terasa enteng?",
+          alias: ["garam", "bungkus garam", "garam halus"],
+        },
+        {
+          pertanyaan: "3. Alat besi yang dikeluarkan Paman namanya apa?",
+          alias: ["timbangan", "timbang"],
         },
       ],
-      kuisTulis: {
-        pertanyaan: "2 kilogram jika diubah ke gram sama dengan ... gram.",
-        alias: ["2000", "2.000", "2 000"],
-      },
       voice: [
         [
-          "Sahabat kecil kelas 2, di pasar jeruk ditumpuk di wadah besi lalu jarum berputar menunjuk angka. Itu namanya timbangan.",
-          "Benda ringan diukur dengan gram, ditulis g. Benda berat diukur dengan kilogram, ditulis kg.",
-          "Satu kilogram sama dengan seribu gram. Jika jarum menunjuk 3, semangka itu 3 kilogram.",
+          "Paman membawa kantong gula pasir dan bungkus garam. Kantong gula terasa berat, bungkus garam terasa enteng.",
+          "Paman mengeluarkan timbangan bermangkuk dan berjarum. Yuk, kita bantu Sani menimbang bahan permen!",
         ],
       ],
     },
     {
       kode: "B",
-      judul: "B. Ringan, Berat, dan Timbangan Digital",
+      judul: "B. Infografis Timbangan Gram dan Kilogram",
       pengantar:
-        "Infografis keranjang gram vs kilogram. Besar belum tentu berat. Timbangan digital menampilkan angka di layar.",
-      labelDaftar: "Ringan, berat, digital, jumlah belanja",
+        "⚖️ Jangan hanya mengira dengan tangan. Pakai timbangan. Jarum menunjuk angka berat. g untuk benda ringan, kg untuk benda berat. 1 kg = 1.000 g.",
+      labelDaftar: "Alat baku dan satuan berat",
       kolom: 1,
       item: [
         {
-          nama: "Lebih cocok gram",
-          singkat: "Penghapus dan permen",
+          nama: "⚖️ Mengenal timbangan",
+          singkat: "Jarum menunjuk angka",
           uraian:
-            "Penghapus dan sebutir permen ringan. Semangka dan sepeda berat, lebih cocok kilogram.",
-          contoh: "Permen: g. Sepeda: kg.",
+            "Benda ditaruh di atas timbangan. Jarum berputar ke sebuah angka. Angka itu adalah berat benda.",
+          contoh: "Angka jarum = berat.",
         },
         {
-          nama: "Besar belum berat",
-          singkat: "Balon vs batu",
+          nama: "🍬 Gram dan kilogram",
+          singkat: "g ringan, kg berat",
           uraian:
-            "Balon gas besar bisa lebih ringan daripada batu kerikil kecil yang padat. Jangan tebak dari ukuran saja.",
-          contoh: "Besar ≠ berat.",
+            "Gram (g) untuk permen, garam kecil, kertas. Kilogram (kg) untuk karung gula, keranjang apel, berat badan.",
+          contoh: "Permen = g. Karung = kg.",
         },
         {
-          nama: "Digital dan jumlah",
-          singkat: "Layar angka, 3+2=5",
+          nama: "🏃‍♂️ Rumus lompatan berat",
+          singkat: "1 kg = 1.000 g",
           uraian:
-            "Timbangan digital memakai sensor elektronik. Ibu beli 3 kg tepung dan 2 kg gula: total 5 kg. Urutan ringan: kapas 5 g, pisang 200 g, pepaya 2 kg.",
-          contoh: "3 + 2 = 5 kg.",
+            "Seribu benda seberat 1 gram sama dengan 1 kilogram. g dan kg bersahabat erat.",
+          contoh: "1 kg = 1.000 g.",
         },
       ],
       kuis: [
         {
-          pertanyaan: "Mengapa balon besar bisa lebih ringan daripada batu kecil?",
-          alias: ["padat", "gas", "ringan", "berat"],
+          pertanyaan: "1. Satuan untuk benda ringan ditulis singkat apa?",
+          alias: ["g", "gram"],
+        },
+        {
+          pertanyaan: "2. Satuan untuk benda berat ditulis singkat apa?",
+          alias: ["kg", "kilogram"],
+        },
+        {
+          pertanyaan: "3. 1 kilogram sama dengan berapa gram?",
+          alias: ["1000", "1.000", "seribu"],
         },
       ],
-      kuisTulis: {
-        pertanyaan: "3 kg tepung + 2 kg gula = ... kg.",
-        alias: ["5"],
-      },
       voice: [
         [
-          "Penghapus dan permen ke keranjang gram. Semangka dan sepeda ke kilogram.",
-          "Balon besar bisa lebih ringan daripada batu kecil. Jangan tebak dari ukuran saja.",
-          "Timbangan digital menampilkan angka di layar. Tiga ditambah dua sama dengan lima kilogram.",
+          "Jangan hanya mengira dengan tangan. Pakai timbangan. Jarum menunjuk angka berat. Gram untuk benda ringan, kilogram untuk benda berat.",
+          "Satu kilogram sama dengan seribu gram.",
         ],
       ],
     },
     {
       kode: "C",
-      judul: "C. Lembar Evaluasi Siswa",
+      judul: "C. Petugas Timbang Toko",
       pengantar:
-        "Pilih karung beras dan 2.000 g, tentukan benar-salah ukuran vs berat serta timbangan digital, jodohkan biskuit-badan-pupuk, lalu jelaskan 1 kg = 1.000 g.",
-      labelDaftar: "Pilihan, benar-salah, mencocokkan, dan esai",
+        "🕵️‍♂️ Tempel stiker g atau kg. Lolipop 50 dan cokelat 100 pakai g. Karung 25 dan badan Riko 28 pakai kg.",
+      labelDaftar: "Aktivitas terbimbing dan jurnal",
       kolom: 1,
       item: [
         {
-          nama: "Kelompok A dan B",
-          singkat: "Satuan dan konversi",
+          nama: "🕵️‍♂️ Aktivitas 1",
+          singkat: "A g, B kg, C g, D kg",
           uraian:
-            "Beras butuh kg. 2 kg = 2.000 g. Besar belum tentu berat. Timbangan digital menampilkan angka.",
-          contoh: "Beras. 2.000. Digital.",
+            "Benda ringan dipegang anak: A dan C, satuannya g. Benda diangkat dua tangan: B dan D, satuannya kg.",
+          contoh: "50 g. 25 kg. 100 g. 28 kg.",
         },
         {
-          nama: "Kelompok C dan D",
-          singkat: "Pasangan dan jumlah",
+          nama: "🎭 Jurnal perasaanku",
+          singkat: "Pilih wajah",
           uraian:
-            "Biskuit: g. Badan dan pupuk: kg. 3+2=5 kg. Urutan 5 g, 200 g, 2 kg.",
-          contoh: "g. kg. 5.",
+            "😀 Sangat seru, aku tahu kenapa benda besar bisa terasa berat! 😐 Sedikit bingung menghitung nol pada gram. 😢 Masih tertukar menulis g dan kg.",
+          contoh: "Pilih satu wajah.",
         },
       ],
       kuis: [
-        { pertanyaan: "Telur atau beras untuk kg?", alias: ["beras"] },
-        { pertanyaan: "2 kg = ... g?", alias: ["2000", "2.000"] },
-        { pertanyaan: "Besar selalu lebih berat?", alias: ["salah"] },
-        { pertanyaan: "Timbangan digital otomatis?", alias: ["benar"] },
-        { pertanyaan: "Biskuit satuan?", alias: ["gram", "g"] },
-        { pertanyaan: "Mengapa 1 kg = 1.000 g?", alias: ["seribu", "lebih besar"] },
+        {
+          pertanyaan: "1. Lolipop mini 50 memakai satuan apa?",
+          alias: ["g", "gram"],
+        },
+        {
+          pertanyaan: "2. Karung tepung 25 memakai satuan apa?",
+          alias: ["kg", "kilogram"],
+        },
+        {
+          pertanyaan: "3. 1 kg sama dengan berapa g?",
+          alias: ["1000", "1.000", "seribu"],
+        },
       ],
       voice: [
-        ["Karung beras butuh kilogram. Dua kilogram sama dengan dua ribu gram."],
-        ["Besar belum tentu berat. Timbangan digital menampilkan angka."],
+        [
+          "Yuk jadi petugas timbang. Lolipop lima puluh dan cokelat seratus pakai gram. Karung dua puluh lima dan badan Riko dua puluh delapan pakai kilogram.",
+          "Benda ringan dipegang anak memakai g. Benda yang diangkat dua tangan memakai kg.",
+        ],
       ],
     },
     {
       kode: "D",
-      judul: "D. Kartu Evaluasi Ekstra",
+      judul: "D. Lembar Evaluasi Siswa",
       pengantar:
-        "Tanpa keyboard. Tarik garis biskuit-badan-pupuk, geser semangka atau permen, urutkan 5 g-200 g-2 kg, coretkan 5, lalu tekan BENAR atau SALAH.",
-      labelDaftar: "Tarik garis, keranjang, urutan, kanvas, detektif",
+        "📝 Tantangan para juara! Bandingkan paket 1 kg, potong semangka, dan baca label gram-kilogram. Besar belum tentu lebih berat.",
+      labelDaftar: "Evaluasi pilihan ganda dan isian",
       kolom: 1,
       item: [
         {
-          nama: "Permainan A sampai C",
-          singkat: "Garis, keranjang, urutan",
+          nama: "🍓 Bagian A",
+          singkat: "Pilihan ganda",
           uraian:
-            "Biskuit: g. Badan: kg. Pupuk: kg. Gram: penghapus, permen. Kilogram: semangka, sepeda. Urutan: kapas 5 g, pisang 200 g, pepaya 2 kg.",
-          contoh: "g. Permen. 5 g dulu.",
+            "Kedua paket 1 kg sama berat. Setengah semangka 2 kg. Penghapus 5 kg tidak masuk akal. 600+300=900. Mita 1.500 g paling ringan.",
+          contoh: "Sama 1 kg. 2 kg. 900 g.",
         },
         {
-          nama: "Permainan D dan E",
-          singkat: "Kanvas dan detektif",
+          nama: "✏️ Bagian B",
+          singkat: "Isian singkat",
           uraian:
-            "3+2=5 kg, coretkan 5. Besar belum tentu berat. Timbangan digital menampilkan angka di layar.",
-          contoh: "Coretkan 5. SALAH lalu BENAR.",
+            "2.000 g = 2 kg. Sisa cokelat 300 g. Klip = g, karung = kg. Wadah plus permen 500 g. Mangga bersih 6 kg.",
+          contoh: "2. 300. 500. 6.",
         },
       ],
       kuis: [
-        { pertanyaan: "Tarik garis satuan berat?", alias: ["gram", "kilogram"] },
-        { pertanyaan: "Keranjang ringan atau berat?", alias: ["permen", "semangka"] },
-        { pertanyaan: "Urutan 5 g 200 g 2 kg?", alias: ["5", "200", "2"] },
-        { pertanyaan: "Besar selalu lebih berat?", alias: ["salah"] },
-        { pertanyaan: "Timbangan digital otomatis?", alias: ["benar"] },
+        { pertanyaan: "1. Dua paket 1 kg, apakah yang lebih besar lebih berat?", alias: ["sama", "salah"] },
+        { pertanyaan: "2. Semangka 4 kg dipotong dua, satu potong?", alias: ["2"] },
+        { pertanyaan: "3. Penghapus 5 kg masuk akal?", alias: ["tidak", "3"] },
+        { pertanyaan: "4. 600 g + 300 g?", alias: ["900"] },
+        { pertanyaan: "5. Paket paling ringan?", alias: ["mita"] },
+        { pertanyaan: "6. 2.000 gram sama dengan berapa kg?", alias: ["2"] },
+        { pertanyaan: "7. 850 potong 200 lalu 350, sisa?", alias: ["300"] },
+        { pertanyaan: "8. Klip dan karung beras, pasangannya?", alias: ["1b"] },
+        { pertanyaan: "9. Wadah 100 g plus permen 400 g?", alias: ["500"] },
+        { pertanyaan: "10. Total 7 kg, keranjang 1 kg, mangga bersih?", alias: ["6"] },
       ],
-      kuisTulis: {
-        pertanyaan: "Coretkan total __ kilogram belanja Ibu.",
-        alias: ["5"],
-      },
       voice: [
         [
-          "Tanpa keyboard. Tarik garis biskuit ke gram, badan dan pupuk ke kilogram. Geser penghapus ke gram, semangka ke kilogram.",
-          "Urutkan kapas 5 gram, pisang 200 gram, pepaya 2 kilogram. Coretkan 5 untuk total belanja.",
-          "Detektif: besar belum tentu berat. Timbangan digital menampilkan angka di layar.",
+          "Ini lembar evaluasi tantangan para juara. Dua paket satu kilogram sama berat. Setengah semangka empat kilogram adalah dua kilogram. Penghapus lima kilogram tidak masuk akal.",
+          "Enam ratus tambah tiga ratus sama dengan sembilan ratus. Mita seribu lima ratus gram paling ringan, lalu Lani, lalu Dodi.",
+        ],
+        [
+          "Dua ribu gram sama dengan dua kilogram. Sisa cokelat tiga ratus gram. Klip memakai gram, karung memakai kilogram. Wadah plus permen lima ratus. Mangga bersih enam kilogram.",
         ],
       ],
     },
