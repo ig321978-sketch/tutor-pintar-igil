@@ -482,7 +482,7 @@ const PAKET: Record<string, PaketEvaluasiEkstra> = {
   },
   "mtk-2-bab1": {
     garis: {
-      soal: "✍️ Tarik garis dari kotak angka menuju cara membaca yang benar!",
+      soal: "✍️ Jodohkan angka dengan cara bacanya!",
       kiri: ["37", "62", "85"],
       kanan: [
         "Enam puluh dua",
@@ -496,37 +496,35 @@ const PAKET: Record<string, PaketEvaluasiEkstra> = {
       },
     },
     keranjang: {
-      soal: "🏠 Masukkan ke rumah nilai tempat yang benar!",
-      keranjang1: "🏠🪵 RUMAH PULUHAN (kiri)",
-      keranjang2: "🏠🥢 RUMAH SATUAN (kanan)",
+      soal: "🏠 Masukkan ke rumah yang benar!",
+      keranjang1: "🏠🪵 PULUHAN (kiri)",
+      keranjang2: "🏠🥢 SATUAN (kanan)",
       keping: [
-        { id: "dua-ikat", label: "🪵 2 ikat sedotan", wadah: "1" },
-        { id: "lima-batang", label: "🥢 5 batang sedotan", wadah: "2" },
+        { id: "dua-ikat", label: "🪵 2 ikat", wadah: "1" },
+        { id: "lima-batang", label: "🥢 5 batang", wadah: "2" },
         { id: "empat-ikat", label: "🍊 4 ikat jeruk", wadah: "1" },
         { id: "sembilan-sisa", label: "🍊 9 sisa jeruk", wadah: "2" },
         { id: "tujuh-ikat", label: "🍎 7 ikat apel", wadah: "1" },
       ],
     },
     urut: {
-      soal: "🧩 Geser kotak angka dari atas ke bawah agar urut dari yang terkecil hingga terbesar!",
+      soal: "🧩 Urutkan dari yang paling kecil!",
       balok: ["24", "49", "71"],
     },
     kanvas: {
-      soal: '✍️ Lengkapi dengan tulisan tangan: "Lambang dua puluh lima adalah __."',
+      soal: "✍️ Tulis angka dua puluh lima.",
       alias: ["25", "dua puluh lima"],
     },
     detektif: [
       {
-        soal: "💡 Angka 100 adalah bilangan cacah tiga angka yang pertama, terdiri dari 1 ratusan, 0 puluhan, dan 0 satuan.",
+        soal: "💡 Angka 100 punya 3 angka: 1 ratusan, 0 puluhan, dan 0 satuan.",
         benar: true,
-        alasan:
-          "Benar. 100 punya tiga angka: 1 di ratusan, lalu 0 puluhan dan 0 satuan.",
+        alasan: "Benar. 100 = 1 ratusan, 0 puluhan, 0 satuan.",
       },
       {
-        soal: "Pada bilangan 25, angka 2 menempati rumah satuan sehingga nilainya 2.",
+        soal: "Pada angka 25, angka 2 ada di rumah satuan. Nilainya 2.",
         benar: false,
-        alasan:
-          "Salah. Angka 2 ada di rumah puluhan di kiri, jadi nilainya 20. Angka 5 yang di kanan adalah satuan.",
+        alasan: "Salah. Angka 2 ada di kiri, rumah puluhan. Nilainya 20.",
       },
     ],
   },

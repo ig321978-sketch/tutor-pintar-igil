@@ -23,6 +23,25 @@ function KartuBingkai({ children }: { children: ReactNode }) {
   );
 }
 
+function DoodleKartuMtk2({
+  modulId,
+  kode,
+  judul,
+}: {
+  modulId: string;
+  kode: string;
+  judul: string;
+}) {
+  if (modulId === "mtk-2-bab1") return null;
+  return (
+    <DoodleKartuAtasJudul
+      id={`${modulId}-${kode}`}
+      folder="doodle-mtk"
+      alt={`Ilustrasi ${judul}`}
+    />
+  );
+}
+
 const EMOJI_MTK2_BAB1: Record<string, string> = {
   A: "🎒🍎",
   B: "🏠🪵",
@@ -48,24 +67,14 @@ function BarisJeruk({ jumlah, sisa }: { jumlah: number; sisa?: boolean }) {
 
 function HiasanDesaAngkaA() {
   return (
-    <div className="mt-4 space-y-3">
-      <div className="rounded-2xl border-2 border-[#F0AB00] bg-[#FFF8E8] px-4 py-3 text-center">
-        <p className="text-3xl" aria-hidden>
-          🎒
-        </p>
-        <p className="mt-1 text-sm font-black uppercase tracking-wide text-[#1C01A5]">
-          Berpetualang di Desa Angka
-        </p>
-      </div>
-      <div className="rounded-2xl border-2 border-[#1C01A5]/15 bg-[#F8F7FF] px-4 py-3">
-        <p className="text-sm font-black text-[#1C01A5]">🌟 Target Belajarku Hari Ini</p>
-        <p className="mt-2 text-sm font-semibold text-slate-700">
-          🎯 Aku bisa membilang dan menuliskan angka dari 21 sampai 100 dengan tepat.
-        </p>
-        <p className="mt-1 text-sm font-semibold text-slate-700">
-          🎯 Aku bisa menentukan nilai tempat puluhan dan satuan suatu bilangan.
-        </p>
-      </div>
+    <div className="mt-4 rounded-2xl border-2 border-[#F0AB00] bg-[#FFF8E8] px-4 py-3 text-center">
+      <p className="text-3xl" aria-hidden>
+        🎒 🍎
+      </p>
+      <p className="mt-1 text-sm font-black uppercase tracking-wide text-[#1C01A5]">
+        Desa Angka
+      </p>
+      <p className="mt-1 text-sm font-semibold text-slate-700">Hitung apel 21 sampai 100</p>
     </div>
   );
 }
@@ -100,9 +109,7 @@ function HiasanDesaAngkaB() {
       </div>
       <div className="border-t-4 border-[#F0AB00] bg-[#FEF3C7] px-3 py-3 text-center">
         <p className="text-lg font-black text-[#1C01A5]">25 = dua puluh lima</p>
-        <p className="mt-1 text-sm font-semibold text-slate-700">
-          💡 100 = 1 ratusan + 0 puluhan + 0 satuan
-        </p>
+        <p className="mt-1 text-sm font-semibold text-slate-700">20 + 5 = 25</p>
       </div>
     </div>
   );
@@ -113,7 +120,7 @@ function HiasanDesaAngkaC() {
     <div className="mt-4 space-y-3">
       <div className="rounded-2xl border-2 border-[#F0AB00] bg-white px-4 py-3">
         <p className="text-sm font-black text-[#1C01A5]">
-          🕵️‍♂️ Detektif Angka · lingkari setiap 10 jeruk
+          🕵️‍♂️ Hitung jeruk · tiap 10 = 1 ikat
         </p>
         <div className="mt-3 space-y-2">
           <div className="flex flex-wrap items-center gap-2">
@@ -140,15 +147,15 @@ function HiasanDesaAngkaC() {
 function JurnalPerasaanDesaAngka() {
   const [pilih, setPilih] = useState("");
   const wajah = [
-    { id: "seru", ikon: "😀", teks: "Seru banget, aku sudah paham!" },
-    { id: "bingung", ikon: "😐", teks: "Sedikit bingung, mau latihan lagi." },
-    { id: "susah", ikon: "😢", teks: "Susah, butuh bantuan tutor." },
+    { id: "seru", ikon: "😀", teks: "Aku sudah paham!" },
+    { id: "bingung", ikon: "😐", teks: "Mau latihan lagi." },
+    { id: "susah", ikon: "😢", teks: "Butuh bantuan." },
   ];
   return (
     <div className="mt-5 rounded-2xl border-2 border-[#F0AB00] bg-[#FFF8E8] px-4 py-4">
       <p className="text-sm font-black text-[#1C01A5]">🎭 Jurnal Perasaanku</p>
       <p className="mt-1 text-sm font-semibold text-slate-700">
-        Bagaimana perasaanmu setelah belajar di Desa Angka hari ini? Ketuk salah satu wajah.
+        Bagaimana perasaanmu hari ini? Ketuk satu wajah.
       </p>
       <div className="mt-3 grid gap-2">
         {wajah.map((item) => (
@@ -170,8 +177,7 @@ function JurnalPerasaanDesaAngka() {
         ))}
       </div>
       <p className="mt-4 rounded-2xl bg-[#1C01A5] px-4 py-3 text-sm font-bold text-white">
-        🏆 Pesan Tutor: Hore! Kamu sudah berhasil membantu Kakek Tono hari ini. Kamu anak yang hebat
-        dan pantang menyerah. Sampai jumpa di petualangan matematika berikutnya!
+        🏆 Hore! Kamu sudah bisa hitung sampai 100. Kamu hebat!
       </p>
     </div>
   );
@@ -513,26 +519,24 @@ const INFOGRAFIS: Record<
   }
 > = {
   "mtk-2-bab1-A": {
-    judul: "🪵 Ikat menjadi puluhan",
+    judul: "🪵 Ikat tiap 10",
     kepala: ["🥢 Ikat", "Isi", "Nama"],
     baris: [
       ["🥢 1 ikat", "10 batang", "1 Puluhan"],
       ["🥢🥢 2 ikat", "20 batang", "2 Puluhan"],
       ["🪵 + 🥢", "25", "Dua puluh lima"],
     ],
-    catatan:
-      "🌟 Target: membilang 21 sampai 100. Setiap 10 benda diikat jadi 1 puluhan. Sisa yang belum 10 disebut satuan.",
+    catatan: "Tiap 10 = 1 puluhan. Sisa yang kurang dari 10 = satuan.",
   },
   "mtk-2-bab1-B": {
-    judul: "🏠 Rumah nilai tempat 25",
+    judul: "🏠 Rumah angka 25",
     kepala: ["🏠 Rumah", "🪵 Isi", "Nilai"],
     baris: [
       ["Puluhan (kiri)", "🪵🪵 2 ikat", "2 = 20"],
       ["Satuan (kanan)", "🥢🥢🥢🥢🥢 5 batang", "5 = 5"],
       ["Gabungan", "🏠 25", "Dua puluh lima"],
     ],
-    catatan:
-      "💡 Angka 100 adalah bilangan cacah tiga angka yang pertama: 1 ratusan, 0 puluhan, dan 0 satuan.",
+    catatan: "💡 100 punya 3 angka: 1 ratusan, 0 puluhan, 0 satuan.",
   },
   "mtk-2-bab2-A": {
     judul: "Jalan bersusun matematika",
@@ -703,7 +707,7 @@ function EvaluasiBab1({ modulId }: { modulId: string }) {
       />
       <KuisPilihan
         id={idEval(modulId, 1)}
-        soal="🍊 Jeruk Kakek Tono: 2 ikat puluhan dan 4 sisa satuan. Totalnya..."
+        soal="🍊 Ada 2 ikat jeruk dan 4 jeruk sisa. Jumlahnya..."
         benar="C"
         pilihan={[
           { huruf: "A", teks: "14" },
@@ -716,22 +720,22 @@ function EvaluasiBab1({ modulId }: { modulId: string }) {
       </h5>
       <KuisBenarSalah
         id={idEval(modulId, 2)}
-        soal="💡 Angka 100 adalah bilangan cacah tiga angka yang pertama, terdiri dari 1 ratusan, 0 puluhan, dan 0 satuan."
+        soal="💡 Angka 100 punya 3 angka: 1 ratusan, 0 puluhan, dan 0 satuan."
         benar="benar"
         alasanBenar="seratus ratusan puluhan satuan nol"
       />
       <KuisBenarSalah
         id={idEval(modulId, 3)}
-        soal="🥢 1 ikat sedotan berisi 10 batang disebut 1 satuan."
+        soal="🥢 1 ikat berisi 10 disebut 1 satuan."
         benar="salah"
-        alasanBenar="sepuluh batang yang diikat disebut satu puluhan bukan satuan"
+        alasanBenar="sepuluh yang diikat disebut satu puluhan bukan satuan"
       />
       <h5 className="text-sm font-black uppercase tracking-wide text-[#1C01A5]">
         ✍️ C. Mencocokkan garis
       </h5>
       <KuisJodoh
         id={idEval(modulId, 4)}
-        soal="✍️ Tarik garis dari kotak angka menuju cara membaca yang benar."
+        soal="✍️ Jodohkan angka dengan cara bacanya."
         pasangan={[
           {
             kiri: "37",
@@ -757,7 +761,7 @@ function EvaluasiBab1({ modulId }: { modulId: string }) {
       </h5>
       <KuisIsian
         id={idEval(modulId, 5)}
-        soal="Mengapa kita mengikat benda setiap 10 buah saat membantu Kakek Tono menghitung sampai 100? Jelaskan!"
+        soal="Mengapa kita ikat tiap 10 benda?"
         alias={["cepat", "puluhan", "sepuluh", "ikat", "kelompok"]}
       />
       <KuisIsian
@@ -1360,11 +1364,7 @@ export default function NaskahMtk2({
         const info = INFOGRAFIS[`${modul.id}-${kartu.kode}`];
         return (
           <KartuBingkai key={kartu.kode}>
-            <DoodleKartuAtasJudul
-              id={`${modul.id}-${kartu.kode}`}
-              folder="doodle-mtk"
-              alt={`Ilustrasi ${kartu.judul}`}
-            />
+            <DoodleKartuMtk2 modulId={modul.id} kode={kartu.kode} judul={kartu.judul} />
             {EMOJI_MTK2_BAB1[kartu.kode] ? (
               <p className="text-center text-4xl" aria-hidden>
                 {EMOJI_MTK2_BAB1[kartu.kode]}
@@ -1418,11 +1418,7 @@ export default function NaskahMtk2({
       })}
 
       <KartuBingkai>
-        <DoodleKartuAtasJudul
-          id={`${modul.id}-C`}
-          folder="doodle-mtk"
-          alt={`Ilustrasi ${kartuC.judul}`}
-        />
+        <DoodleKartuMtk2 modulId={modul.id} kode="C" judul={kartuC.judul} />
         {EMOJI_MTK2_BAB1.C && modul.id === "mtk-2-bab1" ? (
           <p className="text-center text-4xl" aria-hidden>
             {EMOJI_MTK2_BAB1.C}
@@ -1455,11 +1451,7 @@ export default function NaskahMtk2({
 
       {kartuD ? (
         <KartuBingkai>
-          <DoodleKartuAtasJudul
-            id={`${modul.id}-D`}
-            folder="doodle-mtk"
-            alt={`Ilustrasi ${kartuD.judul}`}
-          />
+          <DoodleKartuMtk2 modulId={modul.id} kode="D" judul={kartuD.judul} />
           {EMOJI_MTK2_BAB1.D && modul.id === "mtk-2-bab1" ? (
             <p className="text-center text-4xl" aria-hidden>
               {EMOJI_MTK2_BAB1.D}

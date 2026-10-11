@@ -12,17 +12,17 @@ export const MODUL_MTK2_BAB1: ModulResmiPai = {
   pola:
     /bilangan cacah sampai 100|desa angka|kakek tono|ikat( menjadi)? puluhan|nilai tempat puluhan|bilangan 1 sampai( dengan)? 1.?000|bilangan 1 sampai 100|rumah tinggal angka/,
   motivasi:
-    "Hore! Kamu sudah membantu Kakek Tono di Desa Angka. Ikat setiap 10 jadi 1 puluhan. 25 = 2 puluhan + 5 satuan. Pantang menyerah!",
+    "Hore! Kamu sudah bisa hitung sampai 100. Tiap 10 jadi 1 puluhan. 25 = 2 puluhan + 5 satuan.",
   kunciJawaban: "B,B,C,B,B,B,A,C,B,A",
   sketsaKartu: [
-    "Kakek Tono kebingungan memegang keranjang penuh apel merah di kebun Desa Angka.",
-    "Anak mengikat sedotan setiap 10 batang, lalu menaruh 2 ikat di rumah puluhan dan 5 batang di rumah satuan untuk angka 25.",
-    "Anak melingkari jeruk per 10, menjodohkan 37-62-85, dan mengisi 49 serta 71.",
-    "Anak menarik garis cara baca, menggeser puluhan atau satuan, mengurutkan 24-49-71, dan menulis 25.",
+    "Anak menghitung apel Kakek Tono dengan mengikat tiap 10 apel.",
+    "Angka 25 masuk rumah puluhan dan rumah satuan.",
+    "Anak menghitung jeruk: 2 ikat dan 4 sisa.",
+    "Anak memasangkan angka, mengurutkan, dan menulis 25.",
   ],
   latihan: pg([
     `[Soal 1 - PG - Tipe: Reguler]
-1 ikat sedotan berisi 10 batang disebut...
+1 ikat berisi 10 disebut...
 A) 1 Satuan
 B) 1 Puluhan
 C) 10 Puluhan
@@ -34,7 +34,7 @@ B) Puluhan, nilainya 20
 C) Ratusan, nilainya 200
 D) Puluhan, nilainya 2`,
     `[Soal 3 - PG - Tipe: Reguler]
-Jeruk Kakek Tono: 2 ikat puluhan dan 4 sisa satuan. Total jeruknya...
+Ada 2 ikat jeruk dan 4 jeruk sisa. Jumlahnya...
 A) 14
 B) 6
 C) 24
@@ -70,7 +70,7 @@ B) Lima puluh delapan
 C) Delapan puluh lima
 D) Delapan puluh`,
     `[Soal 9 - PG - Tipe: HOTS]
-Mengapa kita mengikat benda setiap 10 buah saat menghitung sampai 100?
+Mengapa kita ikat tiap 10 benda?
 A) Supaya bendanya kelihatan lebih banyak
 B) Agar menghitung cepat tanpa menghitung satu per satu
 C) Karena satuan lebih besar dari puluhan
@@ -85,128 +85,125 @@ D) Enam puluh`,
   kartu: [
     {
       kode: "A",
-      judul: "A. Membantu Kakek Tono di Desa Angka",
+      judul: "A. Hitung Apel Kakek Tono",
       pengantar:
-        "🎒 Berpetualang di Desa Angka. 🌟 Target hari ini: membilang dan menulis 21 sampai 100, lalu menentukan puluhan dan satuan. 🗺️ Kakek Tono baru panen apel. Apelnya lebih dari 20. Yuk bantu Kakek menghitung cepat sampai 100!",
-      labelDaftar: "Target, cerita apersepsi, dan ikat puluhan",
+        "🎒 Kita ke Desa Angka. 🌟 Belajar angka 21 sampai 100. 🗺️ Kakek Tono punya banyak apel 🍎. Yuk hitung bersama!",
+      labelDaftar: "Target, cerita, dan ikat puluhan",
       kolom: 1,
       item: [
         {
-          nama: "🌟 Target belajarku hari ini",
+          nama: "🌟 Hari ini kita belajar",
           singkat: "21 sampai 100",
           uraian:
-            "🎯 Aku bisa membilang dan menuliskan angka dari 21 sampai 100 dengan tepat. 🎯 Aku juga bisa menentukan nilai tempat puluhan dan satuan suatu bilangan.",
-          contoh: "Aku bisa menulis 25 dan tahu 2 puluhan + 5 satuan.",
+            "🎯 Aku bisa menulis angka 21 sampai 100. 🎯 Aku bisa lihat mana puluhan dan mana satuan.",
+          contoh: "25 = 2 puluhan + 5 satuan.",
         },
         {
-          nama: "🗺️ Cerita Kakek Tono",
-          singkat: "Apel lebih dari 20",
+          nama: "🗺️ Apel Kakek Tono",
+          singkat: "Lebih dari 20",
           uraian:
-            "Kakek Tono memanen apel di kebun Desa Angka. Keranjangnya penuh apel merah 🍎. Kakek bingung karena jumlahnya lebih dari 20. Duh, bagaimana menghitung apel sebanyak ini dengan cepat?",
-          contoh: "Yuk bantu Kakek menghitung sampai 100!",
+            "Apel Kakek banyak. Lebih dari 20. Kalau dihitung satu-satu, lama sekali.",
+          contoh: "Kita bantu Kakek hitung lebih cepat.",
         },
         {
-          nama: "🪵 Rahasia ikat puluhan",
-          singkat: "Setiap 10 jadi 1 ikat",
+          nama: "🪵 Ikat tiap 10",
+          singkat: "1 ikat = 1 puluhan",
           uraian:
-            "Jangan hitung satu per satu sampai lelah. Kelompokkan setiap 10 benda. 🥢 1 ikat sedotan 10 batang = 1 puluhan. 🥢 2 ikat = 20 batang = 2 puluhan. Sisa yang belum sampai 10 disebut satuan.",
-          contoh: "1 ikat = 10 = 1 puluhan. 2 ikat = 20 = 2 puluhan.",
+            "Ikat tiap 10 benda. 🥢 1 ikat = 10 = 1 puluhan. 🥢 2 ikat = 20 = 2 puluhan. Sisa yang kurang dari 10 = satuan.",
+          contoh: "1 ikat = 1 puluhan.",
         },
       ],
       kuis: [
         {
-          pertanyaan: "1 ikat sedotan berisi 10 batang disebut apa?",
+          pertanyaan: "1 ikat berisi 10 disebut apa?",
           alias: ["puluhan", "satu puluhan", "1 puluhan"],
         },
       ],
       kuisTulis: {
-        pertanyaan: "2 ikat sedotan berisi 20 batang disebut ... puluhan.",
+        pertanyaan: "2 ikat berisi 20 disebut ... puluhan.",
         alias: ["2", "dua", "2 puluhan", "dua puluhan"],
       },
       voice: [
         [
-          "Halo anak-anak hebat kelas 2! Hari ini kita berpetualang di Desa Angka. Targetnya: membilang dan menulis 21 sampai 100, lalu menentukan puluhan dan satuan.",
-          "Lihat Kakek Tono. Beliau baru panen apel. Keranjangnya penuh apel merah. Kakek bingung karena apelnya lebih dari 20. Duh, bagaimana menghitung yang banyak ini dengan cepat?",
-          "Rahasianya: ikat menjadi puluhan! Setiap 10 benda jadi 1 ikat. 1 ikat 10 batang disebut 1 puluhan. 2 ikat 20 batang disebut 2 puluhan. Yuk bantu Kakek Tono!",
+          "Hari ini kita ke Desa Angka. Kita belajar angka 21 sampai 100.",
+          "Kakek Tono punya banyak apel. Lebih dari 20. Susah dihitung satu-satu.",
+          "Rahasianya: ikat tiap 10. Satu ikat disebut satu puluhan. Dua ikat disebut dua puluhan.",
         ],
       ],
     },
     {
       kode: "B",
-      judul: "B. Rumah Nilai Tempat Puluhan dan Satuan",
+      judul: "B. Rumah Angka 25",
       pengantar:
-        "🏠 Setiap angka punya rumah agar tidak tertukar. Rumah puluhan di kiri, rumah satuan di kanan. Pada 25: angka 2 nilainya 20, angka 5 nilainya 5. Dibaca dua puluh lima.",
+        "🏠 Angka punya 2 rumah. Kiri = puluhan. Kanan = satuan. Pada 25: angka 2 nilainya 20, angka 5 nilainya 5.",
       labelDaftar: "Rumah 25 dan angka 100",
       kolom: 1,
       item: [
         {
-          nama: "🏠 Rumah puluhan di kiri",
-          singkat: "Nilainya puluhan",
-          uraian:
-            "Angka di kiri menempati rumah puluhan. Pada 25, angka 2 ada di rumah puluhan. 🪵🪵 Dua ikat sedotan artinya nilainya 20.",
+          nama: "🏠 Rumah kiri",
+          singkat: "Puluhan",
+          uraian: "Angka di kiri = puluhan. Pada 25, angka 2 nilainya 20. 🪵🪵 Dua ikat.",
           contoh: "Angka 2 pada 25 = 20.",
         },
         {
-          nama: "🥢 Rumah satuan di kanan",
-          singkat: "Nilainya tetap",
+          nama: "🥢 Rumah kanan",
+          singkat: "Satuan",
           uraian:
-            "Angka di kanan menempati rumah satuan. Pada 25, angka 5 ada di rumah satuan. 🥢🥢🥢🥢🥢 Lima batang sedotan artinya nilainya 5. 20 + 5 = 25.",
+            "Angka di kanan = satuan. Pada 25, angka 5 nilainya 5. 🥢 Lima batang. Jadi 20 + 5 = 25.",
           contoh: "Angka 5 pada 25 = 5.",
         },
         {
-          nama: "💡 Tahukah kamu: angka 100",
-          singkat: "1 ratusan",
-          uraian:
-            "Angka 100 adalah bilangan cacah tiga angka yang pertama. 100 terdiri dari 1 ratusan, 0 puluhan, dan 0 satuan.",
-          contoh: "100 = 1 ratusan + 0 puluhan + 0 satuan.",
+          nama: "💡 Angka 100",
+          singkat: "Tiga angka",
+          uraian: "100 punya 3 angka. Itu 1 ratusan, 0 puluhan, dan 0 satuan.",
+          contoh: "100 = 1 ratusan.",
         },
       ],
       kuis: [
         {
-          pertanyaan: "Pada angka 25, angka 2 menempati rumah apa dan nilainya berapa?",
+          pertanyaan: "Pada angka 25, angka 2 ada di rumah mana? Nilainya berapa?",
           alias: ["puluhan", "20", "dua puluh"],
         },
       ],
       kuisTulis: {
-        pertanyaan: "Tuliskan cara membaca 25.",
+        pertanyaan: "Bagaimana cara membaca 25?",
         alias: ["dua puluh lima", "25", "2 puluhan 5 satuan"],
       },
       voice: [
         [
-          "Setiap angka punya rumah. Rumah puluhan di kiri, rumah satuan di kanan. Lihat angka 25.",
-          "Angka 2 di rumah puluhan, dua ikat sedotan, nilainya 20. Angka 5 di rumah satuan, lima batang, nilainya 5. Dibaca dua puluh lima.",
-          "Tahukah kamu? Angka 100 adalah bilangan cacah tiga angka yang pertama. 100 terdiri dari 1 ratusan, 0 puluhan, dan 0 satuan.",
+          "Angka punya dua rumah. Kiri puluhan. Kanan satuan.",
+          "Lihat angka 25. Angka 2 di kiri, nilainya 20. Angka 5 di kanan, nilainya 5. Dibaca dua puluh lima.",
+          "Angka 100 punya tiga angka. Satu ratusan, nol puluhan, nol satuan.",
         ],
       ],
     },
     {
       kode: "C",
-      judul: "C. Lembar Evaluasi Siswa",
+      judul: "C. Ayo Berlatih",
       pengantar:
-        "🕵️‍♂️ Jadi detektif angka: lingkari jeruk 🍊 setiap 10. 2 ikat + 4 sisa = 24, dua puluh empat. ✍️ Jodohkan 37, 62, dan 85. 🧩 Isi 49 dan 71. 🎭 Lalu lingkari perasaanmu hari ini.",
-      labelDaftar: "Detektif jeruk, pasangkan, kotak misteri, jurnal",
+        "🕵️‍♂️ Hitung jeruk 🍊. ✍️ Jodohkan 37, 62, dan 85. 🧩 Isi 49 dan 71. 🎭 Lalu pilih perasaanmu.",
+      labelDaftar: "Jeruk, pasangkan, kotak, jurnal",
       kolom: 1,
       item: [
         {
-          nama: "🕵️‍♂️ Detektif jeruk Kakek Tono",
-          singkat: "2 puluhan + 4 satuan",
-          uraian:
-            "Lingkari setiap 10 jeruk 🍊. Ada 2 ikat puluhan dan 4 sisa satuan. Total jeruk Kakek 24, dibaca dua puluh empat.",
+          nama: "🕵️‍♂️ Hitung jeruk",
+          singkat: "2 ikat + 4 sisa",
+          uraian: "Tiap 10 jeruk = 1 ikat. Ada 2 ikat dan 4 sisa. Jumlahnya 24.",
           contoh: "2 puluhan + 4 satuan = 24.",
         },
         {
-          nama: "✍️ Pasangkan angka dan 🧩 kotak misteri",
+          nama: "✍️ Jodohkan dan 🧩 isi kotak",
           singkat: "37, 62, 85, 49, 71",
           uraian:
             "37 = tiga puluh tujuh. 62 = enam puluh dua. 85 = delapan puluh lima. 49 = 4 puluhan + 9 satuan. 71 = 7 puluhan + 1 satuan.",
-          contoh: "49 = 4 + 9 satuan. 71 = 7 + 1 satuan.",
+          contoh: "49 = 4 puluhan + 9 satuan.",
         },
         {
-          nama: "🎭 Jurnal perasaanku",
-          singkat: "Refleksi",
+          nama: "🎭 Perasaanku",
+          singkat: "Pilih wajah",
           uraian:
-            "Bagaimana perasaanmu di Desa Angka hari ini? 😀 Seru banget, aku sudah paham! 😐 Sedikit bingung, mau latihan lagi. 😢 Susah, butuh bantuan tutor. Kamu hebat dan pantang menyerah!",
-          contoh: "Hore! Kakek Tono sudah tertolong.",
+            "😀 Aku sudah paham. 😐 Mau latihan lagi. 😢 Butuh bantuan. Kamu hebat!",
+          contoh: "Pilih satu wajah.",
         },
       ],
       kuis: [
@@ -218,35 +215,33 @@ D) Enam puluh`,
         { pertanyaan: "71 terdiri dari berapa satuan?", alias: ["1", "satu", "satu satuan"] },
       ],
       voice: [
+        ["Hitung jeruk. Dua ikat dan empat sisa. Jumlahnya 24. Dua puluh empat."],
         [
-          "Jadi detektif angka. Lingkari jeruk setiap 10. Ada 2 ikat puluhan dan 4 satuan. Total 24, dua puluh empat.",
-        ],
-        [
-          "Pasangkan: 37 tiga puluh tujuh, 62 enam puluh dua, 85 delapan puluh lima. 49 = 4 puluhan + 9 satuan. 71 = 7 puluhan + 1 satuan. Hore, Kakek Tono sudah tertolong!",
+          "37 tiga puluh tujuh. 62 enam puluh dua. 85 delapan puluh lima. 49 itu 4 puluhan dan 9 satuan. 71 itu 7 puluhan dan 1 satuan.",
         ],
       ],
     },
     {
       kode: "D",
-      judul: "D. Kartu Evaluasi Ekstra",
+      judul: "D. Mainkan Lagi",
       pengantar:
-        "✍️ Tanpa keyboard. Tarik garis cara baca 37, 62, 85. 🏠 Masukkan ikat ke rumah puluhan dan batang ke rumah satuan. Urutkan 24, 49, 71. Coretkan 25. Lalu tekan BENAR atau SALAH.",
-      labelDaftar: "Tarik garis, keranjang, urutan, kanvas, detektif",
+        "✍️ Tarik garis 37, 62, 85. 🏠 Masukkan ikat ke kiri, sisa ke kanan. Urutkan 24, 49, 71. Tulis 25.",
+      labelDaftar: "Garis, keranjang, urutan, tulis, detektif",
       kolom: 1,
       item: [
         {
-          nama: "✍️ Permainan A sampai C",
-          singkat: "Garis, keranjang, urutan",
+          nama: "✍️ Main A sampai C",
+          singkat: "Garis, rumah, urutan",
           uraian:
-            "37 = tiga puluh tujuh. 62 = enam puluh dua. 85 = delapan puluh lima. 🪵 Dua ikat masuk rumah puluhan. 🥢 Lima batang masuk rumah satuan. Urutan: 24, 49, 71.",
-          contoh: "2 ikat = puluhan. 5 batang = satuan.",
+            "Jodohkan angka dengan cara bacanya. Ikat masuk rumah puluhan. Sisa masuk rumah satuan. Urutkan dari yang kecil.",
+          contoh: "24, lalu 49, lalu 71.",
         },
         {
-          nama: "🏆 Pesan tutor dan permainan D-E",
-          singkat: "Kanvas dan detektif",
+          nama: "🏆 Main D dan E",
+          singkat: "Tulis dan detektif",
           uraian:
-            "Coretkan 25 untuk dua puluh lima. 💡 100 = 1 ratusan, 0 puluhan, 0 satuan. Angka 2 pada 25 nilainya 20, bukan 2. 🏆 Hore! Kamu sudah berhasil membantu Kakek Tono. Kamu anak yang hebat dan pantang menyerah!",
-          contoh: "Coretkan 25. BENAR lalu SALAH.",
+            "Tulis 25. Lalu pilih BENAR atau SALAH. 🏆 Kamu hebat! Sampai jumpa di petualangan berikutnya.",
+          contoh: "Dua puluh lima = 25.",
         },
       ],
       kuis: [
@@ -257,14 +252,14 @@ D) Enam puluh`,
         { pertanyaan: "Angka 2 pada 25 nilainya 2?", alias: ["salah"] },
       ],
       kuisTulis: {
-        pertanyaan: "Coretkan lambang dua puluh lima.",
+        pertanyaan: "Tulis lambang dua puluh lima.",
         alias: ["25", "dua puluh lima"],
       },
       voice: [
         [
-          "Tanpa keyboard. Tarik garis 37 ke tiga puluh tujuh, 62 ke enam puluh dua, 85 ke delapan puluh lima.",
-          "Masukkan 2 ikat ke rumah puluhan, 5 batang ke rumah satuan. Urutkan 24, 49, lalu 71. Coretkan 25.",
-          "Detektif: 100 = 1 ratusan, 0 puluhan, 0 satuan. Angka 2 pada 25 nilainya 20. Kamu hebat dan pantang menyerah!",
+          "Tarik garis dari angka ke cara bacanya. Masukkan ikat ke rumah puluhan. Masukkan sisa ke rumah satuan.",
+          "Urutkan 24, 49, lalu 71. Tulis angka 25.",
+          "Angka 100 punya satu ratusan. Angka 2 pada 25 nilainya 20. Kamu hebat!",
         ],
       ],
     },
