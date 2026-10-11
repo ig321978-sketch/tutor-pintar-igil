@@ -10,61 +10,60 @@ export const JUDUL_MTK1_BAB1_LAMA = "Bab 1: Ayo Membilang sampai dengan 10";
 export const MODUL_MTK1_BAB1: ModulResmiPai = {
   id: "mtk-1-bab1",
   judul: JUDUL_MTK1_BAB1,
-  pola: /ayo\s+berhitung|ayo\s+membilang\s+sampai(\s+dengan)?\s+10|dunia\s+angka/,
+  pola: /ayo\s+berhitung|ayo\s+membilang\s+sampai(\s+dengan)?\s+10|dunia\s+angka|bekal ali|apel dan donat/,
   motivasi:
-    "Hore! Berhitung itu seru. Hitung benda di sekitarmu, mulai dari nol sampai lima.",
-  kunciJawaban: "C,A,D,B,A,C,B,D,A,C",
+    "Hore! Kamu sudah membantu Ali dan Nia menghitung bekal. Apel Ali ada 4. Donat Nia ada 3. Piring kosong artinya nol.",
+  kunciJawaban: "B,A,D,B,A,C,B,D,A,C",
   sketsaKartu: [
-    "Ali dan Nia menghitung apel dan donat di taman sekolah.",
-    "Lima apel berjajar dari satu sampai lima.",
-    "Piring kosong artinya nol.",
-    "Anak mengumpulkan pensil saat bermain detektif berhitung.",
-    "Anak mengisi lembar evaluasi: menghitung, menulis angka, dan membandingkan benda.",
+    "Ali dan Nia membuka bekal apel dan donat di taman sekolah.",
+    "Ali memisahkan tumpukan apel dari satu sampai lima, piring kosong artinya nol.",
+    "Anak menghitung 4 apel Ali dan 3 donat Nia, lalu menulis angkanya.",
+    "Anak mengisi lembar kerja tantangan para juara tentang berhitung sampai 10.",
   ],
   latihan: pg([
-    `[Soal 1 - PG - Tipe: Reguler]
-Perhatikan gambar burung: lima ekor burung. Ada berapa banyak jumlah burung di atas?
-A) 3
-B) 4
-C) 5
-D) 2`,
-    `[Soal 2 - PG - Tipe: Reguler]
-Nia memiliki kotak pensil kosong. Tidak ada pensil sama sekali di dalamnya. Lambang bilangan yang tepat untuk kotak pensil Nia adalah...
+    `[Soal 1 - PG - Tipe: HOTS]
+Ali punya 4 apel. Nia punya 3 donat. Siapa yang bekalnya lebih banyak?
+A) Nia
+B) Ali
+C) Bekal mereka sama banyak
+D) Tidak bisa dihitung`,
+    `[Soal 2 - PG - Tipe: LOTS]
+Kotak pensil Nia kosong. Tidak ada pensil sama sekali. Lambang bilangannya...
 A) 0
 B) 1
 C) 2
 D) 5`,
-    `[Soal 3 - PG - Tipe: Reguler]
-Ali mengeluarkan empat apel dari kotak bekal. Lambang bilangan yang tepat adalah...
+    `[Soal 3 - PG - Tipe: MOTS]
+Ali mengeluarkan empat apel dari kotak bekal. Lambang bilangannya...
 A) 2
 B) 3
 C) 5
 D) 4`,
-    `[Soal 4 - PG - Tipe: Reguler]
-Nia menghitung donat: satu, dua, tiga. Jumlah donat Nia adalah...
+    `[Soal 4 - PG - Tipe: LOTS]
+Nia menghitung donat: satu, dua, tiga. Jumlah donat Nia...
 A) 2
 B) 3
 C) 4
 D) 1`,
-    `[Soal 5 - PG - Tipe: Reguler]
+    `[Soal 5 - PG - Tipe: LOTS]
 Gambar 🍎🍎 artinya bilangan...
 A) 2
 B) 3
 C) 4
 D) 5`,
-    `[Soal 6 - PG - Tipe: Reguler]
+    `[Soal 6 - PG - Tipe: LOTS]
 Cara membaca angka 5 adalah...
 A) Empat
 B) Tiga
 C) Lima
 D) Satu`,
-    `[Soal 7 - PG - Tipe: Reguler]
+    `[Soal 7 - PG - Tipe: MOTS]
 Jika piringmu kosong, tidak ada buah sama sekali, itu artinya...
 A) Satu
 B) Nol
 C) Dua
 D) Lima`,
-    `[Soal 8 - PG - Tipe: Reguler]
+    `[Soal 8 - PG - Tipe: LOTS]
 Tiga balon cocok dengan angka...
 A) 2
 B) 4
@@ -86,50 +85,44 @@ D) 3`,
   kartu: [
     {
       kode: "A",
-      judul: "A. Dialog di Taman Sekolah",
-      pengantar:
-        "Saat jam istirahat, Ali dan Nia duduk di dekat pohon rindang sambil membuka bekal. Mereka belajar berhitung dari benda yang dibawa.",
-      labelDaftar: "Percakapan Ali dan Nia",
+      judul: "A. Dialog Bekal di Taman",
+      pengantar: "🗺️ Ali dan Nia istirahat di taman. Mereka membuka bekal apel dan donat.",
+      labelDaftar: "Target dan cerita apersepsi",
       kolom: 1,
       item: [
         {
-          nama: "Ali membawa apel",
-          singkat: "Empat apel merah",
+          nama: "🌟 Target belajarku hari ini",
+          singkat: "Nol sampai sepuluh",
           uraian:
-            "Ali mengeluarkan apel dari kotaknya, lalu menghitung bersama Nia: satu, dua, tiga, empat. Ada empat apel!",
-          contoh: "Satu... dua... tiga... empat!",
+            "🎯 Aku bisa menghitung banyak benda dari nol sampai sepuluh. 🎯 Aku bisa menulis lambang bilangan dan membacanya.",
+          contoh: "Hitung benda, tulis angkanya, baca namanya.",
         },
         {
-          nama: "Nia membawa donat",
-          singkat: "Tiga kue donat",
+          nama: "🗺️ Bekal di taman sekolah",
+          singkat: "Apel Ali dan donat Nia",
           uraian:
-            "Nia meminta Ali membantu menghitung donat di piring: satu, dua, tiga. Berhitung terasa seru dan mudah.",
-          contoh: "Satu... dua... tiga!",
+            "Ali membawa apel merah dari ibu. Nia membawa donat. Kalau dihitung satu per satu, Ali punya empat apel. Nia punya tiga donat. Yuk bantu mereka menghitung bekal!",
+          contoh: "Yuk bantu Ali dan Nia menghitung bekal!",
         },
       ],
       kuis: [
         {
-          pertanyaan: "1. Ada berapa apel milik Ali?",
+          pertanyaan: "1. Siapa yang punya apel merah?",
+          alias: ["ali"],
+        },
+        {
+          pertanyaan: "2. Ada berapa apel milik Ali?",
           alias: ["empat", "4", "empat apel", "ada empat"],
         },
         {
-          pertanyaan: "2. Ada berapa donat milik Nia?",
+          pertanyaan: "3. Ada berapa donat milik Nia?",
           alias: ["tiga", "3", "tiga donat", "ada tiga"],
-        },
-        {
-          pertanyaan: "3. Berhitung itu rasanya apa menurut Ali?",
-          alias: ["seru", "mudah", "seru dan mudah", "asyik", "menyenangkan"],
         },
       ],
       voice: [
         [
-          "Anak-anak, kita pergi ke taman bermain sekolah saat jam istirahat. Ali dan Nia duduk di dekat pohon rindang sambil membuka bekal.",
-          "Ali berkata, Nia, lihat deh! Ibuku membawakan buah apel merah yang manis sekali. Ali mengeluarkan beberapa apel dari kotaknya.",
-          "Nia bertanya, ada berapa banyak buah apelmu? Kamu bisa menghitungnya tidak? Ali menjawab, tentu saja bisa! Yuk, kita hitung sama-sama.",
-          "Satu. Dua. Tiga. Empat. Ada empat apel!",
-        ],
-        [
-          "Sekarang gantian. Nia membawa kue donat. Satu. Dua. Tiga. Hore! Berhitung itu seru dan mudah sekali.",
+          "Hari ini kita ke taman sekolah. Ali dan Nia membuka bekal. Ali membawa apel merah. Nia membawa donat.",
+          "Kalau dihitung satu per satu, Ali punya empat apel. Nia punya tiga donat. Yuk, kita bantu mereka menghitung bekal!",
         ],
       ],
     },
@@ -137,23 +130,30 @@ D) 3`,
       kode: "B",
       judul: "B. Infografis Dunia Angka",
       pengantar:
-        "Setiap tumpukan benda punya lambang bilangan dan cara membacanya. Ikuti titik-titik dari satu sampai lima, lalu kenali nol jika piring kosong.",
-      labelDaftar: "Kamus Mini Angka",
+        "🍎 Trik cepat Ali: hitung benda satu per satu, lalu tulis angkanya. 1 apel dibaca satu. 2 apel dibaca dua. Piring kosong disebut nol.",
+      labelDaftar: "Lambang bilangan dan cara membaca",
       kolom: 1,
       item: [
         {
-          nama: "Satu sampai lima",
+          nama: "🍎 Hitung dari satu sampai lima",
           singkat: "1 SATU sampai 5 LIMA",
           uraian:
-            "Satu apel dibaca satu. Dua apel dibaca dua. Tiga apel dibaca tiga. Empat apel dibaca empat. Lima apel dibaca lima.",
-          contoh: "🍎🍎🍎 = 3 = TIGA",
+            "🍎 1 apel = 1 = satu. 🍎🍎 2 apel = 2 = dua. 🍎🍎🍎 3 apel = 3 = tiga. 🍎🍎🍎🍎 4 apel = 4 = empat. 🍎🍎🍎🍎🍎 5 apel = 5 = lima.",
+          contoh: "1 apel = satu.",
         },
         {
-          nama: "Nol",
-          singkat: "0 NOL",
+          nama: "📦 Contoh apel Ali",
+          singkat: "4 = empat",
           uraian:
-            "Jika piringmu kosong, tidak ada buah sama sekali, itu artinya nol. Nol bukan hilang, tetapi belum ada benda yang dihitung.",
-          contoh: "Piring kosong = 0 = NOL",
+            "Ada 4 apel milik Ali. Ditulis 4. Dibaca empat.",
+          contoh: "4 apel = empat.",
+        },
+        {
+          nama: "💡 Tahukah kamu",
+          singkat: "Piring kosong = 0",
+          uraian:
+            "Jika piringmu kosong, tidak ada buah sama sekali, itu artinya nol.",
+          contoh: "Piring kosong = 0.",
         },
       ],
       kuis: [
@@ -172,153 +172,101 @@ D) 3`,
       ],
       voice: [
         [
-          "Anak-anak, selamat datang di dunia angka. Satu apel dibaca satu. Dua apel dibaca dua. Tiga apel dibaca tiga.",
-          "Empat apel dibaca empat. Lima apel dibaca lima. Ikuti titik-titik angka supaya tangan kita terbiasa menulis lambangnya.",
+          "Trik cepat Ali: hitung benda satu per satu, lalu tulis angkanya. Satu apel dibaca satu. Dua apel dibaca dua. Tiga apel dibaca tiga.",
+          "Empat apel dibaca empat. Lima apel dibaca lima.",
         ],
         [
-          "Kalau piringmu kosong, tidak ada buah sama sekali, itu artinya nol. Nol adalah angka untuk tidak ada benda. Jangan lupa, nol juga penting!",
+          "Lihat bekal Ali. Ada 4 apel. Ditulis 4. Dibaca empat.",
+          "Tahukah kamu? Kalau piringmu kosong, tidak ada buah sama sekali, itu artinya nol.",
         ],
       ],
     },
     {
       kode: "C",
-      judul: "C. Berhitung di Sekolah dan di Rumah",
+      judul: "C. Membantu Ali Menghitung",
       pengantar:
-        "Berhitung makin kuat kalau dipraktikkan. Di sekolah kita jadi detektif benda. Di rumah kita membantu ibu menghitung di dapur.",
-      labelDaftar: "Dua Tempat Berlatih",
-      kolom: 2,
+        "🕵️‍♂️ Lihat bekal yang sudah rapi. Ada 4 apel milik Ali dan 3 donat milik Nia. Hitung bendanya, lalu tulis angkanya.",
+      labelDaftar: "Aktivitas terbimbing dan jurnal",
+      kolom: 1,
       item: [
         {
-          nama: "Detektif Berhitung di Kelas",
-          singkat: "Untuk guru",
+          nama: "🕵️‍♂️ Aktivitas 1",
+          singkat: "4 apel dan 3 donat",
           uraian:
-            "Guru membagi siswa 3 sampai 4 anak. Guru menyebut angka, misalnya tunjukkan angka 6. Kelompok mencari benda sebanyak itu, lalu meletakkannya di meja. Yang paling tepat dan cepat mendapat bintang.",
-          contoh: "Kumpulkan 6 pensil di atas meja.",
+            "Ada 4 apel milik Ali. Ada 3 donat milik Nia. Lambang apel Ali 4. Dibaca empat.",
+          contoh: "4 apel Ali, 3 donat Nia.",
         },
         {
-          nama: "Bantu Ibu di Dapur",
-          singkat: "Untuk orang tua",
+          nama: "🎭 Jurnal perasaanku",
+          singkat: "Pilih wajah",
           uraian:
-            "Ajak anak ke dapur. Minta anak mengambil benda dengan jumlah tertentu, lalu puji atau peluk setelah menghitung dengan benar.",
-          contoh: "Tolong ambilkan 3 jeruk di kulkas.",
+            "😀 Seru banget, aku sudah paham! 😐 Sedikit bingung, mau latihan lagi. 😢 Susah, butuh bantuan tutor kembali.",
+          contoh: "Pilih satu wajah.",
         },
       ],
       kuis: [
         {
-          pertanyaan: "1. Di kelas, siswa mencari benda sesuai apa yang disebut guru?",
-          alias: ["angka", "bilangan", "jumlah", "angka acak"],
+          pertanyaan: "1. Ada berapa apel milik Ali?",
+          alias: ["4", "empat", "empat apel"],
         },
         {
-          pertanyaan: "2. Ibu meminta kakak mengambil berapa jeruk?",
-          alias: ["tiga", "3", "tiga jeruk", "tiga buah"],
+          pertanyaan: "2. Ada berapa donat milik Nia?",
+          alias: ["3", "tiga", "tiga donat"],
         },
         {
-          pertanyaan: "3. Setelah anak menghitung benar, orang tua sebaiknya memberi apa?",
-          alias: ["pujian", "pelukan", "pujian atau pelukan", "peluk", "memuji"],
+          pertanyaan: "3. Lambang bilangan empat apel Ali?",
+          alias: ["4", "empat"],
         },
       ],
       voice: [
         [
-          "Di sekolah, kita bermain Detektif Berhitung. Guru menyebut sebuah angka. Kelompok mencari benda sebanyak angka itu. Misalnya, tunjukkan angka enam, kumpulkan enam pensil.",
-          "Kelompok yang menghitung paling tepat dan cepat mendapat bintang penghargaan.",
-        ],
-        [
-          "Di rumah, bantu ibu di dapur. Tolong ambilkan tiga jeruk, atau hitung ada berapa sendok di meja makan.",
-          "Kalau anak menghitung dengan benar, berilah pujian atau pelukan hangat. Itu membuat hati berani berhitung lagi.",
+          "Yuk bantu Ali dan Nia. Ada 4 apel milik Ali dan 3 donat milik Nia. Apel Ali ada 4. Donat Nia ada 3.",
+          "Lambang apel Ali 4. Dibaca empat.",
         ],
       ],
     },
     {
       kode: "D",
-      judul: "D. Lembar Evaluasi Siswa",
+      judul: "D. Lembar Kerja Siswa",
       pengantar:
-        "Saatnya menunjukkan kemampuan berhitung sampai 10. Hitung benda, tulis lambang dan nama bilangan, bandingkan banyaknya, lalu jawab soal cerita.",
-      labelDaftar: "Empat Kelompok Soal",
+        "📝 Tantangan para juara! Hitung apel, donat, dan benda milik Ali, Nia, Susi, Edo, dan ibu.",
+      labelDaftar: "LKS pilihan ganda dan isian",
       kolom: 1,
       item: [
         {
-          nama: "Kelompok A",
-          singkat: "Menghitung dan mewarnai",
+          nama: "🍓 Bagian A",
+          singkat: "Pilihan ganda",
           uraian:
-            "Hitung benda di dalam kotak, lalu pilih angka yang sesuai: kupu-kupu, es krim, dan topi.",
-          contoh: "6 kupu-kupu, 8 es krim, 4 topi.",
+            "Ali 4 apel lebih banyak dari Nia 3 donat. Nia butuh 3 donat lagi agar jadi 5. Misteri Ali 4. Kupu-kupu 6. Edo salah: piring kosong artinya 0.",
+          contoh: "Ali lebih banyak. Edo salah.",
         },
         {
-          nama: "Kelompok B",
-          singkat: "Menulis lambang bilangan",
+          nama: "✏️ Bagian B",
+          singkat: "Isian singkat",
           uraian:
-            "Hitung semangka, boneka, dan sepeda. Tulis angka dan nama bilangannya.",
-          contoh: "7 tujuh, 3 tiga, 9 sembilan.",
-        },
-        {
-          nama: "Kelompok C",
-          singkat: "Membandingkan banyak benda",
-          uraian:
-            "Bandingkan kotak kiri dan kanan. Pilih lebih banyak, lebih sedikit, atau sama banyak.",
-          contoh: "5 ikan lebih banyak dari 3 kepiting.",
-        },
-        {
-          nama: "Kelompok D",
-          singkat: "Tantangan penalaran",
-          uraian:
-            "Baca soal cerita pendek. Kosong artinya nol. Habis diambil semua juga artinya nol.",
-          contoh: "Susi tidak punya kelereng: 0. Jeruk habis diambil: 0.",
+            "Lima = 5. Donat Nia 3. Tangga 3 dan 5. Dua apel = 2. Sisa jeruk 0.",
+          contoh: "5, 3, 0.",
         },
       ],
       kuis: [
-        {
-          pertanyaan: "1. Ada berapa kupu-kupu?",
-          alias: ["enam", "6", "angka 6"],
-        },
-        {
-          pertanyaan: "2. Ada berapa es krim?",
-          alias: ["delapan", "8", "angka 8"],
-        },
-        {
-          pertanyaan: "3. Ada berapa topi?",
-          alias: ["empat", "4", "angka 4"],
-        },
-        {
-          pertanyaan: "4. Tujuh semangka ditulis angka dan huruf apa?",
-          alias: ["7", "tujuh"],
-        },
-        {
-          pertanyaan: "5. Tiga boneka ditulis angka dan huruf apa?",
-          alias: ["3", "tiga"],
-        },
-        {
-          pertanyaan: "6. Sembilan sepeda ditulis angka dan huruf apa?",
-          alias: ["9", "sembilan"],
-        },
-        {
-          pertanyaan: "7. Lima ikan dibanding tiga kepiting?",
-          alias: ["lebih banyak", "banyak"],
-        },
-        {
-          pertanyaan: "8. Dua katak dibanding empat bebek?",
-          alias: ["lebih sedikit", "sedikit"],
-        },
-        {
-          pertanyaan: "9. Empat lebah dibanding empat kumbang?",
-          alias: ["sama banyak", "sama"],
-        },
-        {
-          pertanyaan: "10. Susi tidak punya kelereng. Jumlahnya?",
-          alias: ["nol", "0", "kosong"],
-        },
-        {
-          pertanyaan: "11. Tujuh jeruk diambil semua. Sisanya?",
-          alias: ["nol", "0", "habis"],
-        },
+        { pertanyaan: "1. Siapa yang bekalnya lebih banyak, Ali atau Nia?", alias: ["ali"] },
+        { pertanyaan: "2. Nia ingin 5 donat. Sekarang ada 2. Berapa yang masih kurang?", alias: ["3", "tiga"] },
+        { pertanyaan: "3. Angka misteri Ali di antara 3 dan 5?", alias: ["4", "empat"] },
+        { pertanyaan: "4. Ada berapa kupu-kupu?", alias: ["6", "enam"] },
+        { pertanyaan: "5. Piring kosong artinya angka berapa?", alias: ["0", "nol"] },
+        { pertanyaan: "6. Lima ditulis angka berapa?", alias: ["5"] },
+        { pertanyaan: "7. Nia menghitung donat satu dua tiga. Angkanya?", alias: ["3", "tiga"] },
+        { pertanyaan: "8. Kotak A pada tangga 1 2 A 4 B 6?", alias: ["3", "tiga"] },
+        { pertanyaan: "9. Dua apel ditulis angka berapa?", alias: ["2", "dua"] },
+        { pertanyaan: "10. Tujuh jeruk diambil semua. Sisanya?", alias: ["0", "nol"] },
       ],
       voice: [
         [
-          "Anak-anak, ini lembar evaluasi. Kita menghitung, menulis angka, membandingkan, lalu menjawab soal cerita.",
-          "Kelompok A: hitung kupu-kupu, es krim, dan topi, lalu pilih angkanya. Kelompok B: tulis lambang bilangan dan nama bilangannya.",
+          "Ini lembar kerja tantangan para juara. Hitung apel dan donat. Ali 4 apel. Nia 3 donat. Ali lebih banyak.",
+          "Nia ingin 5 donat, sekarang ada 2, jadi kurang 3. Misteri Ali 4. Kupu-kupu ada 6. Edo salah, piring kosong artinya nol.",
         ],
         [
-          "Kelompok C: bandingkan kotak kiri dan kanan. Pilih lebih banyak, lebih sedikit, atau sama banyak.",
-          "Kelompok D: kalau kantong kosong atau jeruk habis diambil semua, jawabannya nol. Semangat mengerjakan sampai tuntas!",
+          "Lima ditulis 5. Donat Nia 3. Tangga angka 3 dan 5. Dua apel ditulis 2. Tujuh jeruk diambil semua, sisanya nol.",
         ],
       ],
     },
