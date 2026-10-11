@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="512" height="512" viewBox="0 0 512 512">
+  <rect width="512" height="512" fill="#1C01A5"/>
+  <text
+    x="256"
+    y="267.051008"
+    text-anchor="middle"
+    font-family="Arial Black, Arial, Helvetica, sans-serif"
+    font-size="241"
+    font-weight="900"
+    fill="#F0AB00"
+  >$</text>
+  <text
+    x="256"
+    y="419.4304"
+    text-anchor="middle"
+    font-family="Arial Black, Arial, Helvetica, sans-serif"
+    font-size="70"
+    font-weight="900"
+    fill="#FFFFFF"
+    letter-spacing="10"
+  >IGIL</text>
+</svg>

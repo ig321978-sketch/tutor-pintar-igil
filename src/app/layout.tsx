@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { Geist, Geist_Mono, Noto_Naskh_Arabic } from "next/font/google";
 import BersihkanCacheKlien from "@/components/BersihkanCacheKlien";
 import Navbar from "@/components/Navbar";
@@ -25,6 +25,24 @@ export const metadata: Metadata = {
   title: "$IGIL · Tutor AI Kurikulum Merdeka",
   description:
     "Ruang belajar, tutor AI, rapor, dan ranking nasional untuk siswa Kurikulum Merdeka.",
+  applicationName: "IGIL",
+  icons: {
+    icon: [
+      { url: "/favicon.ico", sizes: "32x32" },
+      { url: "/icon-192.png", sizes: "192x192", type: "image/png" },
+      { url: "/icon-512.png", sizes: "512x512", type: "image/png" },
+    ],
+    apple: [{ url: "/apple-touch-icon.png", sizes: "180x180" }],
+  },
+  appleWebApp: {
+    capable: true,
+    title: "IGIL",
+    statusBarStyle: "black-translucent",
+  },
+};
+
+export const viewport: Viewport = {
+  themeColor: "#1C01A5",
 };
 
 export default function RootLayout({ children }: LayoutProps<"/">) {

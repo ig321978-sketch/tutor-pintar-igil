@@ -120,13 +120,25 @@ export function materiTerbukaUntukPublik(kelas: string, mapel: string): boolean 
   return adalahKelasTerbukaPublik(kelas) && adalahMapelTerbukaPublik(mapel);
 }
 
+export function ruteAsetIkonPublik(pathname: string): boolean {
+  return (
+    pathname === "/manifest.webmanifest" ||
+    pathname === "/manifest" ||
+    pathname === "/icon" ||
+    pathname.startsWith("/icon/") ||
+    pathname === "/apple-icon" ||
+    pathname.startsWith("/apple-icon/")
+  );
+}
+
 export function ruteHalamanPublikSaatTerkunci(pathname: string): boolean {
   return (
     pathname === "/" ||
     pathname === "/tutor" ||
     pathname.startsWith("/tutor/") ||
     pathname === "/ruang-belajar" ||
-    pathname.startsWith("/ruang-belajar/")
+    pathname.startsWith("/ruang-belajar/") ||
+    ruteAsetIkonPublik(pathname)
   );
 }
 
