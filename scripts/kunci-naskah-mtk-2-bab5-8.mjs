@@ -62,6 +62,7 @@ function judulAlias(materi) {
     tambahan.push("Bab 7: Tabel dan Grafik");
   }
   if (/diagram gambar sederhana/i.test(materi)) {
+    tambahan.push("Bab 8: Papan Prestasi Sani");
     tambahan.push("Bab 8: Banyaknya Air");
   }
   return tambahan;

@@ -10,252 +10,260 @@ export const MODUL_MTK2_BAB8: ModulResmiPai = {
   id: "mtk-2-bab8",
   judul: JUDUL_MTK2_BAB8,
   pola:
-    /diagram gambar sederhana|membaca piktogram|kunci membaca piktogram|banyaknya air|mengumpulkan dan membaca data/,
+    /diagram gambar sederhana|papan prestasi sani|membaca piktogram|kunci membaca piktogram|banyaknya air|mengumpulkan dan membaca data/,
   motivasi:
-    "Piktogram memakai gambar. Baris terpanjang = paling banyak. Apel 4, pisang 2, selisih 2. Pensil merah 3 + biru 5 = 8.",
-  kunciJawaban: "B,B,S,B,B,A,C,B,A,B",
+    "Hore! Kamu sudah membantu Lani membaca papan stiker Sani. Jangan hanya hitung gambar. Kalikan jumlah gambar dengan nilai kunci. 3 🍬 × 10 = 30.",
+  kunciJawaban: "B,A,B,A,B,A,A,A,A,A",
   sketsaKartu: [
-    "Anak menghitung 4 gambar apel dan 2 gambar pisang.",
-    "Anak membandingkan baris diagram pensil merah dan biru.",
-    "Anak mengerjakan evaluasi membaca piktogram.",
-    "Anak menarik garis 3-5-8, menggeser pernyataan kucing-burung, mengurutkan buku 2-3-5, dan menulis 4.",
+    "Sani menempel stiker permen di papan penjualan tiga hari.",
+    "Setiap 🍬 bernilai 10. Senin 30, Selasa 50, Rabu 20.",
+    "Anak membaca diagram donat: cokelat 4 × 5 = 20, stroberi 2 × 5 = 10.",
+    "Anak mengisi lembar evaluasi tantangan para juara tentang piktogram.",
   ],
   latihan: pg([
     `[Soal 1 - PG - Tipe: HOTS]
-Apel 4 gambar, pisang 2 gambar. Selisihnya...
-A) 6
-B) 2
-C) 4
-D) 8`,
-    `[Soal 2 - PG - Tipe: HOTS]
-Cara menyajikan data memakai lambang gambar dinamakan diagram...
-A) garis wajib
-B) gambar atau piktogram
-C) batang hanya
-D) lingkaran`,
-    `[Soal 3 - PG - Tipe: HOTS]
-Jika baris robot lebih pendek daripada baris bola, robot lebih banyak. Pernyataan ini...
-A) Benar.
-B) Salah; baris lebih pendek artinya lebih sedikit.
-C) Benar jika ikonnya besar.
-D) Harus dihitung dengan kg.`,
-    `[Soal 4 - PG - Tipe: HOTS]
-Diagram gambar membantu membandingkan data paling banyak dan paling sedikit dengan cepat. Pernyataan ini...
-A) Salah.
-B) Benar; visual piktogram memudahkan anak membaca.
-C) Benar hanya jika ada angka.
-D) Diagram selalu salah.`,
-    `[Soal 5 - PG - Tipe: Reguler]
-Kelompok merah 3 pensil, biru 5 pensil. Jumlah merah adalah...
-A) 5
-B) 3
-C) 8
-D) 2`,
-    `[Soal 6 - PG - Tipe: Reguler]
-Total pensil merah dan biru adalah...
-A) 8
-B) 3
-C) 5
-D) 15`,
-    `[Soal 7 - PG - Tipe: Reguler]
-Kucing 4, burung 2. Total hewan...
-A) 4
-B) 2
+Siti 5 stiker, Dayu 3 stiker, kunci 1 🔵 = 2. Selisih kelereng asli Siti dan Dayu...
+A) 2
+B) 4
 C) 6
 D) 8`,
-    `[Soal 8 - PG - Tipe: Reguler]
-Urutan buku dari sedikit: gambar 2, sains 3, cerita 5 adalah...
-A) 5, 3, 2
-B) 2, 3, 5
-C) 3, 2, 5
-D) 2, 5, 3`,
-    `[Soal 9 - PG - Tipe: HOTS]
-Mengapa baris terpanjang berarti paling banyak?
-A) Karena setiap gambar mewakili satu data, jadi baris lebih panjang berisi lebih banyak gambar.
-B) Supaya warnanya lebih cerah.
-C) Karena apel selalu menang.
-D) Karena penggaris mulai dari 1.`,
-    `[Soal 10 - PG - Tipe: Reguler]
-Mobil-mobilan 4 gambar. Jumlah anak yang memilihnya...
-A) 3
+    `[Soal 2 - PG - Tipe: HOTS]
+Beni 4 stiker dan Dayu 3 stiker digabung, kunci 1 🔵 = 2. Total kelereng...
+A) 14
+B) 7
+C) 20
+D) 5`,
+    `[Soal 3 - PG - Tipe: HOTS]
+Udin bilang kelereng Siti ada 5 karena stikernya 5. Pendapat yang tepat...
+A) Benar, stiker Siti memang 5
+B) Salah, 5 × 2 = 10
+C) Salah, 5 + 2 = 7
+D) Benar jika kunci diabaikan`,
+    `[Soal 4 - PG - Tipe: MOTS]
+4 stiker balon, kunci 1 🎈 = 10. Total balon asli...
+A) 40
+B) 14
+C) 4
+D) 10`,
+    `[Soal 5 - PG - Tipe: HOTS]
+3 bintang. Kunci A = 5 poin hasilnya 15. Kunci B = 10 poin. Nilai baru...
+A) Tetap 15
+B) 30
+C) 13
+D) 8`,
+    `[Soal 6 - PG - Tipe: LOTS]
+Jumat 4 stiker es krim, kunci 1 🍦 = 5. Terjual...
+A) 20
 B) 4
-C) 7
-D) 2`,
+C) 9
+D) 5`,
+    `[Soal 7 - PG - Tipe: HOTS]
+Hari paling ramai dan jumlah aslinya...
+A) Sabtu 30
+B) Jumat 20
+C) Kamis 10
+D) Sabtu 6`,
+    `[Soal 8 - PG - Tipe: HOTS]
+Kamis 10 cone, Sabtu 30 cone. Pasangan yang tepat...
+A) 1B 2A
+B) 1A 2B
+C) Keduanya A
+D) Keduanya B`,
+    `[Soal 9 - PG - Tipe: HOTS]
+20 mobil asli, 1 🚗 = 5. Stiker yang harus ditempel...
+A) 4
+B) 5
+C) 20
+D) 25`,
+    `[Soal 10 - PG - Tipe: HOTS]
+3 🍬 jumlah aslinya 30. Nilai kunci 1 🍬...
+A) 10
+B) 30
+C) 3
+D) 27`,
   ]),
   kartu: [
     {
       kode: "A",
-      judul: "A. Membaca Jumlah pada Piktogram",
+      judul: "A. Dialog Catatan Rahasia di Lemari Toko",
       pengantar:
-        "Infografis kunci piktogram: data disajikan dengan simbol gambar. Apel 4 ikon, pisang 2 ikon. Baris terpanjang paling banyak.",
-      labelDaftar: "Gambar, data kelas, analisis baris",
+        "🗺️ Sani menempel stiker permen di papan penjualan. Lani heran: bagaimana tahu jumlah aslinya jika isinya gambar semua?",
+      labelDaftar: "Target dan cerita apersepsi",
       kolom: 1,
       item: [
         {
-          nama: "Apa itu piktogram",
-          singkat: "Diagram gambar",
+          nama: "🌟 Target belajarku hari ini",
+          singkat: "Baca piktogram",
           uraian:
-            "Setiap jumlah diwakili satu ikon. Daripada bertanya satu-satu, kita susun jawaban ke diagram gambar.",
-          contoh: "Satu gambar = satu anak.",
+            "🎯 Aku bisa membaca data dalam diagram gambar sederhana. 🎯 Aku bisa menghitung jumlah asli dari nilai kunci gambar.",
+          contoh: "Lihat kotak kunci di bawah papan.",
         },
         {
-          nama: "Data buah kesukaan",
-          singkat: "Apel 4, pisang 2",
+          nama: "🗺️ Catatan rahasia di lemari toko",
+          singkat: "Stiker permen di papan",
           uraian:
-            "Baris apel punya 4 gambar, artinya 4 anak suka apel. Baris pisang 2 gambar. Apel lebih banyak disukai.",
-          contoh: "4 apel. 2 pisang.",
-        },
-        {
-          nama: "Selisih dan nama",
-          singkat: "4 - 2 = 2",
-          uraian:
-            "Selisih anak yang suka apel dan pisang adalah 2. Cara ini dinamakan diagram gambar atau piktogram.",
-          contoh: "Selisih 2. Namanya piktogram.",
+            "Sani bosan menulis angka. Ia menempel stiker 🍬 di nama hari. Rahasianya ada di kotak petunjuk bawah papan.",
+          contoh: "Yuk bantu Lani membaca papan stiker Sani!",
         },
       ],
       kuis: [
         {
-          pertanyaan:
-            "Berdasarkan diagram buah kesukaan, berapa selisih jumlah anak yang menyukai apel dengan yang menyukai pisang?",
-          alias: ["2", "dua"],
+          pertanyaan: "1. Sani menempel gambar apa di papan toko?",
+          alias: ["permen", "stiker", "stiker permen", "🍬"],
+        },
+        {
+          pertanyaan: "2. Siapa yang heran melihat papan stiker?",
+          alias: ["lani"],
+        },
+        {
+          pertanyaan: "3. Rahasia jumlah asli ada di kotak apa?",
+          alias: ["kunci", "petunjuk", "keterangan", "kotak kunci"],
         },
       ],
-      kuisTulis: {
-        pertanyaan:
-          "Cara menyajikan data menggunakan lambang gambar dinamakan diagram ...",
-        alias: ["gambar", "piktogram"],
-      },
       voice: [
         [
-          "Anak-anak kelas 2 yang hebat menganalisis, mainan apa yang paling banyak dimiliki teman sekelas? Kita kumpulkan jawabannya ke diagram gambar atau piktogram.",
-          "Setiap jumlah diwakili satu ikon. Baris apel punya 4 gambar, artinya 4 anak suka apel. Pisang hanya 2 gambar.",
-          "Kita tahu cepat bahwa apel lebih banyak disukai. Membaca diagram gambar itu seru seperti melihat galeri foto!",
+          "Toko permen Sani buka tiga hari. Sani menempel stiker permen di papan, bukan hanya menulis angka.",
+          "Lani heran bagaimana tahu jumlah aslinya. Sani bilang rahasianya ada di kotak petunjuk bawah papan. Yuk kita bantu Lani!",
         ],
       ],
     },
     {
       kode: "B",
-      judul: "B. Membandingkan dan Menjumlah Data",
+      judul: "B. Infografis Papan Prestasi Sani",
       pengantar:
-        "Infografis pensil 3 dan 5, hewan 4 dan 2, buku 2-3-5, mainan 4. Baris pendek = lebih sedikit. Total = jumlah semua gambar.",
-      labelDaftar: "Pensil, hewan, buku, total",
+        "📊 Diagram gambar memakai simbol. Jangan hanya hitung stiker. Kalikan jumlah gambar dengan nilai kunci. Senin 3 × 10 = 30.",
+      labelDaftar: "Kunci simbol dan cara hitung",
       kolom: 1,
       item: [
         {
-          nama: "Kelompok pensil",
-          singkat: "3, 5, dan 8",
+          nama: "📊 Mengenal piktogram",
+          singkat: "Data jadi gambar",
           uraian:
-            "Merah 3 pensil. Biru 5 pensil. Total 8. Biru lebih banyak. Jangan tertukar angka 3 dan 5.",
-          contoh: "3 + 5 = 8.",
+            "Diagram gambar menyajikan data dengan simbol supaya rapi dan mudah dibaca anak-anak.",
+          contoh: "Stiker 🍬 di baris hari.",
         },
         {
-          nama: "Hewan dan buku",
-          singkat: "Benar-salah data",
+          nama: "🔑 Kotak kunci",
+          singkat: "1 🍬 = 10",
           uraian:
-            "Kucing 4, burung 2, total 6. Burung tidak lebih banyak dari kucing. Buku: gambar 2, sains 3, cerita 5. Urutan sedikit ke banyak: 2, 3, 5.",
-          contoh: "Kucing 4. Cerita 5.",
+            "Cari kotak kunci di bawah diagram. Setiap 1 🍬 bernilai 10 butir permen asli.",
+          contoh: "Lihat keterangan dulu.",
         },
         {
-          nama: "Mainan dan aturan baris",
-          singkat: "4 mobil, pendek = sedikit",
+          nama: "✍️ Baris × kunci",
+          singkat: "3 × 10 = 30",
           uraian:
-            "Mobil-mobilan 4 gambar = 4 anak. Jika baris robot lebih pendek dari bola, robot lebih sedikit, bukan lebih banyak.",
-          contoh: "4 anak. Pendek = sedikit.",
+            "Senin 3 stiker = 30. Selasa 5 stiker = 50. Rabu 2 stiker = 20. Jika kuncinya berubah, hasilnya juga berubah.",
+          contoh: "Jumlah gambar × nilai kunci.",
         },
       ],
       kuis: [
         {
-          pertanyaan: "Jika baris robot lebih pendek dari bola, siapa yang lebih banyak?",
-          alias: ["bola", "sedikit", "pendek"],
+          pertanyaan: "1. Senin ada 3 stiker, kunci 10, jumlah aslinya?",
+          alias: ["30"],
+        },
+        {
+          pertanyaan: "2. Selasa ada 5 stiker, kunci 10, jumlah aslinya?",
+          alias: ["50"],
+        },
+        {
+          pertanyaan: "3. Cara hitungnya jumlah gambar dikali apa?",
+          alias: ["kunci", "10", "nilai kunci"],
         },
       ],
-      kuisTulis: {
-        pertanyaan: "Mobil-mobilan 4 gambar. Jumlah anak yang memilihnya adalah...",
-        alias: ["4"],
-      },
       voice: [
         [
-          "Pensil merah tiga, biru lima, total delapan. Kucing empat, burung dua, total enam.",
-          "Urutkan buku dari yang paling sedikit: gambar dua, sains tiga, cerita lima.",
-          "Baris lebih pendek artinya lebih sedikit. Empat gambar mobil berarti empat anak.",
+          "Diagram gambar memakai stiker. Jangan hanya menghitung gambar. Lihat kotak kunci di bawah. Setiap permen bernilai sepuluh.",
+          "Senin tiga kali sepuluh sama dengan tiga puluh. Selasa lima puluh. Rabu dua puluh.",
         ],
       ],
     },
     {
       kode: "C",
-      judul: "C. Lembar Evaluasi Siswa",
+      judul: "C. Detektif Diagram Donat",
       pengantar:
-        "Pilih selisih 2 dan nama piktogram, tentukan benar-salah baris pendek serta manfaat diagram, jodohkan 3-5-8, lalu jelaskan mengapa baris terpanjang paling banyak.",
-      labelDaftar: "Pilihan, benar-salah, mencocokkan, dan esai",
+        "🕵️‍♂️ Baca stok donat dapur. Kunci: 1 🍩 = 5. Cokelat 4 gambar, stroberi 2 gambar. Kalikan baris dengan kunci.",
+      labelDaftar: "Aktivitas terbimbing dan jurnal",
       kolom: 1,
       item: [
         {
-          nama: "Kelompok A dan B",
-          singkat: "Baca dan nama",
+          nama: "🕵️‍♂️ Aktivitas 1",
+          singkat: "Cokelat 20, stroberi 10",
           uraian:
-            "Selisih apel-pisang = 2. Namanya diagram gambar. Baris pendek = sedikit. Diagram membantu membandingkan cepat.",
-          contoh: "2. Piktogram. Sedikit.",
+            "Cokelat: 4 × 5 = 20. Stroberi: 2 × 5 = 10. Jumlah gambar dikali nilai kunci.",
+          contoh: "4 × 5 = 20. 2 × 5 = 10.",
         },
         {
-          nama: "Kelompok C dan D",
-          singkat: "Angka dan urutan",
+          nama: "🎭 Jurnal perasaanku",
+          singkat: "Pilih wajah",
           uraian:
-            "Merah 3, biru 5, total 8. Kucing+burung=6. Buku 2, 3, 5. Mobil 4.",
-          contoh: "3. 8. 4.",
+            "😀 Sangat asyik, gambar kecil punya arti angka besar! 😐 Sedikit bingung jika kuncinya bukan 10. 😢 Sering lupa melihat kotak kunci.",
+          contoh: "Pilih satu wajah.",
         },
       ],
       kuis: [
-        { pertanyaan: "Selisih apel dan pisang?", alias: ["2"] },
-        { pertanyaan: "Nama diagram gambar?", alias: ["gambar", "piktogram"] },
-        { pertanyaan: "Baris pendek = lebih banyak?", alias: ["salah"] },
-        { pertanyaan: "Diagram membantu banding?", alias: ["benar"] },
-        { pertanyaan: "Pensil merah?", alias: ["3"] },
-        { pertanyaan: "Mengapa baris panjang = banyak?", alias: ["gambar", "banyak"] },
+        {
+          pertanyaan: "1. Gambar donat cokelat ada berapa?",
+          alias: ["4", "empat"],
+        },
+        {
+          pertanyaan: "2. Jumlah asli donat cokelat?",
+          alias: ["20"],
+        },
+        {
+          pertanyaan: "3. Jumlah asli donat stroberi?",
+          alias: ["10"],
+        },
       ],
       voice: [
-        ["Selisih dua. Namanya diagram gambar atau piktogram."],
-        ["Baris pendek artinya lebih sedikit. Total pensil delapan."],
+        [
+          "Yuk baca diagram donat. Setiap donat bernilai lima. Cokelat empat gambar, empat kali lima sama dengan dua puluh.",
+          "Stroberi dua gambar, dua kali lima sama dengan sepuluh.",
+        ],
       ],
     },
     {
       kode: "D",
-      judul: "D. Kartu Evaluasi Ekstra",
+      judul: "D. Lembar Evaluasi Siswa",
       pengantar:
-        "Tanpa keyboard. Tarik garis 3-5-8, geser pernyataan kucing-burung, urutkan buku 2-3-5, coretkan 4, lalu tekan BENAR atau SALAH.",
-      labelDaftar: "Tarik garis, keranjang, urutan, kanvas, detektif",
+        "📝 Tantangan para juara! Baca kunci 🔵 = 2 dan 🍦 = 5. Kalikan dulu, baru bandingkan atau jumlahkan.",
+      labelDaftar: "Evaluasi pilihan ganda dan isian",
       kolom: 1,
       item: [
         {
-          nama: "Permainan A sampai C",
-          singkat: "Garis, keranjang, urutan",
+          nama: "🍓 Bagian A",
+          singkat: "Pilihan ganda",
           uraian:
-            "Merah 3, biru 5, total 8. Benar: kucing 4, burung 2, total 6. Salah: burung lebih banyak. Urutan buku: gambar 2, sains 3, cerita 5.",
-          contoh: "3. Benar. 2 dulu.",
+            "Siti 10, Dayu 6, selisih 4. Beni plus Dayu 14. Udin salah, 5 × 2 = 10. Empat balon × 10 = 40. Tiga bintang × 10 = 30.",
+          contoh: "Kalikan dulu dengan kunci.",
         },
         {
-          nama: "Permainan D dan E",
-          singkat: "Kanvas dan detektif",
+          nama: "✏️ Bagian B",
+          singkat: "Isian singkat",
           uraian:
-            "4 gambar mobil = 4 anak, coretkan 4. Baris pendek bukan lebih banyak. Diagram membantu membandingkan cepat.",
-          contoh: "Coretkan 4. SALAH lalu BENAR.",
+            "Jumat 20. Sabtu paling ramai 30. Kamis = B, Sabtu = A. 20 mobil butuh 4 stiker. Kunci Lani 10.",
+          contoh: "20. Sabtu 30. 4. 10.",
         },
       ],
       kuis: [
-        { pertanyaan: "Tarik garis 3 5 8?", alias: ["3", "5", "8"] },
-        { pertanyaan: "Keranjang benar atau salah?", alias: ["4", "burung"] },
-        { pertanyaan: "Urutan buku 2 3 5?", alias: ["2", "3", "5"] },
-        { pertanyaan: "Baris pendek = lebih banyak?", alias: ["salah"] },
-        { pertanyaan: "Diagram membantu banding?", alias: ["benar"] },
+        { pertanyaan: "1. Selisih kelereng Siti dan Dayu?", alias: ["4"] },
+        { pertanyaan: "2. Gabungan Beni dan Dayu?", alias: ["14"] },
+        { pertanyaan: "3. Kelereng asli Siti, 5 stiker kunci 2?", alias: ["10"] },
+        { pertanyaan: "4. 4 balon, kunci 10?", alias: ["40"] },
+        { pertanyaan: "5. 3 bintang, kunci 10?", alias: ["30"] },
+        { pertanyaan: "6. Jumat 4 stiker, kunci 5?", alias: ["20"] },
+        { pertanyaan: "7. Hari paling ramai?", alias: ["sabtu", "30"] },
+        { pertanyaan: "8. Kamis dan Sabtu, pasangannya?", alias: ["1b"] },
+        { pertanyaan: "9. 20 mobil, 1 stiker = 5, berapa stiker?", alias: ["4"] },
+        { pertanyaan: "10. 3 gambar jumlah 30, kunci 1 gambar?", alias: ["10"] },
       ],
-      kuisTulis: {
-        pertanyaan: "Coretkan jumlah anak yang memilih mobil-mobilan.",
-        alias: ["4"],
-      },
       voice: [
         [
-          "Tanpa keyboard. Tarik garis merah ke 3, biru ke 5, total ke 8. Geser kucing 4 ke benar, burung lebih banyak ke salah.",
-          "Urutkan buku gambar 2, sains 3, cerita 5. Coretkan 4 untuk mobil-mobilan.",
-          "Detektif: baris pendek artinya lebih sedikit. Diagram gambar membantu membandingkan cepat.",
+          "Ini lembar evaluasi tantangan para juara. Satu kelereng biru bernilai dua. Siti sepuluh, Dayu enam, selisih empat. Beni plus Dayu empat belas.",
+          "Udin salah, lima dikali dua sama dengan sepuluh. Empat balon kali sepuluh sama dengan empat puluh. Tiga bintang kali sepuluh sama dengan tiga puluh.",
+        ],
+        [
+          "Jumat empat kali lima sama dengan dua puluh. Sabtu paling ramai tiga puluh. Kamis sepuluh, Sabtu tiga puluh. Dua puluh mobil butuh empat stiker. Kunci Lani sepuluh.",
         ],
       ],
     },
