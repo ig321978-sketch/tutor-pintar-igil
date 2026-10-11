@@ -62,6 +62,7 @@ function judulAlias(materi) {
   if (/fondasi perkalian dasar/i.test(materi)) {
     tambahan.push("Bab 3: Waktu dan Durasi");
     tambahan.push("Bab 3: Pengukuran Waktu dan Uang");
+    tambahan.push("Bab 3: Kotak Permen Kembar");
   }
   if (/geometri bangun datar/i.test(materi)) {
     tambahan.push("Bab 4: Penjumlahan Bersusun");

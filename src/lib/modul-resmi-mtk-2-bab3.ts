@@ -10,251 +10,263 @@ export const MODUL_MTK2_BAB3: ModulResmiPai = {
   id: "mtk-2-bab3",
   judul: JUDUL_MTK2_BAB3,
   pola:
-    /fondasi perkalian|penjumlahan berulang|kotak x isi|waktu dan durasi|pengukuran waktu dan uang/,
+    /fondasi perkalian|penjumlahan berulang|kotak permen kembar|kotak x isi|waktu dan durasi|pengukuran waktu dan uang/,
   motivasi:
-    "Perkalian = penjumlahan berulang. 3 x 2 artinya 2 + 2 + 2. Kotak dulu, baru isi. Kali 0 hasilnya 0.",
-  kunciJawaban: "B,B,S,B,B,A,C,B,A,B",
+    "Hore! Kamu sudah membantu Sani. Perkalian adalah penjumlahan berulang angka kembar. 3 piring × 2 permen = 6.",
+  kunciJawaban: "B,C,A,B,B,A,A,A,A,A",
   sketsaKartu: [
-    "Anak menghitung 3 piring berisi 2 donat menjadi 3 x 2.",
-    "Anak mengubah 4 x 3 menjadi 3 + 3 + 3 + 3.",
-    "Anak mengerjakan evaluasi perkalian dan penjumlahan berulang.",
-    "Anak menarik garis 2x6, menggeser hasil 12 atau 10, mengurutkan 2x3-3x3-4x3, dan menulis 20.",
+    "Sani memasukkan 2 permen ke masing-masing 3 piring untuk tamu ulang tahun.",
+    "Tiga piring berisi 2 permen diubah menjadi 3 × 2 = 6.",
+    "Anak menjadi detektif: 4 kantong berisi 4 permen menjadi 4 × 4 = 16.",
+    "Anak mengisi lembar evaluasi tantangan para juara tentang perkalian dasar.",
   ],
   latihan: pg([
     `[Soal 1 - PG - Tipe: HOTS]
-5 + 5 + 5 + 5 ditulis perkalian...
-A) 5 x 5
-B) 4 x 5
-C) 5 x 4 wajib saja
-D) 9 x 1`,
+Adi minum obat 3 kali sehari, tiap kali 1 tablet. Beni menulis 1 × 3. Tulisan Beni...
+A) Tepat, karena totalnya 3 tablet
+B) Salah, seharusnya 3 × 1 karena ada 3 waktu minum yang masing-masing 1 tablet
+C) Salah, seharusnya 3 + 3 + 3
+D) Perkalian tidak boleh dipakai`,
     `[Soal 2 - PG - Tipe: HOTS]
-4 x 3 dalam penjumlahan berulang adalah...
-A) 4 + 3
-B) 3 + 3 + 3 + 3
-C) 4 + 4 + 4 + 4 + 4
-D) 12 + 12`,
+Siti punya 12 permen dibagi rata ke kantong. Kombinasi yang SALAH dan tidak menghasilkan 12...
+A) 4 kantong × 3 permen
+B) 6 kantong × 2 permen
+C) 5 kantong × 2 permen
+D) 3 kantong × 4 permen`,
     `[Soal 3 - PG - Tipe: HOTS]
-5 x 1 artinya 5 + 5 + 5 + 5 + 5. Pernyataan ini...
-A) Benar.
-B) Salah; 5 x 1 = 1 + 1 + 1 + 1 + 1.
-C) Benar karena hasilnya 5.
-D) Perkalian tidak punya arti.`,
-    `[Soal 4 - PG - Tipe: HOTS]
-Setiap bilangan dikalikan 0 hasilnya 0. Pernyataan ini...
-A) Salah.
-B) Benar; kotak tanpa isi tetap nol.
-C) Benar hanya 1 x 0.
-D) Hasilnya 1.`,
-    `[Soal 5 - PG - Tipe: Reguler]
-3 piring, tiap piring 2 donat. Perkaliannya...
-A) 2 x 3 wajib saja
-B) 3 x 2 = 6
-C) 5 x 1
-D) 3 + 2`,
-    `[Soal 6 - PG - Tipe: Reguler]
-2 x 6 sama dengan...
-A) 6 + 6
-B) 2 + 2 + 2 + 2 + 2 + 2 + 2
-C) 12 + 2
-D) 6 x 6`,
-    `[Soal 7 - PG - Tipe: Reguler]
-5 kucing, tiap kucing 4 kaki. Jumlah kaki...
-A) 9
-B) 16
-C) 20
-D) 4`,
-    `[Soal 8 - PG - Tipe: Reguler]
-Hasil 3 x 4 dan 4 x 3 adalah...
-A) Beda 12 dan 7
-B) Sama 12, arti susunannya beda
-C) 0
-D) 34`,
+Tiga kantong sama banyak jumlahnya 15. Kalimat perkalian yang tepat...
+A) 3 × 5 = 15
+B) 5 × 3 = 15
+C) 15 × 3 = 5
+D) 3 + 15 = 18`,
+    `[Soal 4 - PG - Tipe: MOTS]
+Lani beli 5 bungkus, tiap bungkus 4 permen. Penjumlahan berulang yang tepat...
+A) 5 + 5 + 5 + 5
+B) 4 + 4 + 4 + 4 + 4
+C) 5 + 4
+D) 4 + 5`,
+    `[Soal 5 - PG - Tipe: HOTS]
+Meja hijau 2 × 6. Meja biru 4 × 3. Pernyataan yang tepat...
+A) Permen meja hijau lebih banyak
+B) Cerita berbeda, tetapi total permennya sama banyak
+C) Bentuk perkalian dan susunan piring sama persis
+D) Meja biru lebih banyak`,
+    `[Soal 6 - PG - Tipe: LOTS]
+7 + 7 + 7 + 7 + 7 = 35 ditulis perkalian...
+A) 5 × 7 = 35
+B) 7 × 5 wajib saja
+C) 7 × 7 = 35
+D) 5 + 7 = 12`,
+    `[Soal 7 - PG - Tipe: HOTS]
+Dodi punya 2 kantong. 10 cokelat dan 6 stroberi dibagi rata. Isi tiap kantong...
+A) 8
+B) 10
+C) 6
+D) 16`,
+    `[Soal 8 - PG - Tipe: HOTS]
+5 anak masing-masing 4 permen, dan 4 bungkus masing-masing 5 permen. Pasangan yang tepat...
+A) Kisah 1 = 5 × 4, kisah 2 = 4 × 5
+B) Keduanya 4 × 5
+C) Keduanya 5 × 4
+D) Kisah 1 = 4 × 5, kisah 2 = 5 × 4`,
     `[Soal 9 - PG - Tipe: HOTS]
-Mengapa rumusnya kotak dikali isi, bukan sebaliknya?
-A) Supaya kita tahu berapa wadah dan berapa benda di tiap wadah.
-B) Supaya hasil selalu 0.
-C) Supaya tidak perlu menjumlah.
-D) Supaya lingkaran jadi segitiga.`,
-    `[Soal 10 - PG - Tipe: Reguler]
-Urutan hasil dari kecil: 3x3, 2x3, 4x3 adalah...
-A) 4x3, 3x3, 2x3
-B) 2x3, 3x3, 4x3
-C) 3x3, 4x3, 2x3
-D) Semuanya 9`,
+Riko punya 3 kantong berisi 6. Satu kantong bolong, 2 permen hilang. Sisa permen aman...
+A) 16
+B) 18
+C) 14
+D) 12`,
+    `[Soal 10 - PG - Tipe: HOTS]
+Dua bentuk perkalian berbeda yang hasilnya 8...
+A) 2 × 4 dan 4 × 2
+B) 3 × 3 dan 2 × 2
+C) 8 + 0 dan 4 + 4
+D) 5 × 3 dan 2 × 6`,
   ]),
   kartu: [
     {
       kode: "A",
-      judul: "A. Arti Simbol Perkalian",
+      judul: "A. Dialog Tamu Ulang Tahun Sani",
       pengantar:
-        "Infografis logika perkalian: kotak dikali isi. 3 piring berisi 2 donat = 2+2+2 = 3 x 2 = 6. Hasil 2 x 3 sama, arti susunannya beda.",
-      labelDaftar: "Kotak, isi, penjumlahan berulang",
+        "🗺️ Tiga sahabat Sani datang bermain. Sani menyiapkan 3 piring, tiap piring 2 permen.",
+      labelDaftar: "Target dan cerita apersepsi",
       kolom: 1,
       item: [
         {
-          nama: "Penjumlahan berulang",
-          singkat: "Jalan pintas hitung sama",
+          nama: "🌟 Target belajarku hari ini",
+          singkat: "Perkalian angka kembar",
           uraian:
-            "Perkalian adalah jalan pintas menjumlahkan benda yang jumlahnya sama berulang-ulang. 5+5+5+5 = 4 x 5.",
-          contoh: "4 x 5 = 5+5+5+5.",
+            "🎯 Aku bisa memahami perkalian sebagai penjumlahan berulang angka yang sama. 🎯 Aku bisa mengubah cerita permen menjadi kalimat perkalian.",
+          contoh: "Wadah × isi = total.",
         },
         {
-          nama: "Kotak dikali isi",
-          singkat: "Wadah dulu, benda kemudian",
+          nama: "🗺️ Tamu ulang tahun Sani",
+          singkat: "3 piring × 2 permen",
           uraian:
-            "Kotak = piring, kantong, atau wadah. Isi = banyak benda di dalamnya. 3 piring, tiap piring 2 donat: 3 x 2 = 2+2+2 = 6.",
-          contoh: "3 x 2 = 6 donat.",
-        },
-        {
-          nama: "Hasil sama, arti beda",
-          singkat: "3 x 2 dan 2 x 3",
-          uraian:
-            "3 x 2 = 2+2+2. 2 x 3 = 3+3. Hasilnya sama 6, tetapi susunan bendanya berbeda. Tulis sesuai cerita.",
-          contoh: "3 x 2 ≠ arti 2 x 3, hasil sama.",
+            "Sani menghitung 2 + 2 + 2. Kalau tamunya banyak, menambah terus melelahkan. Ada trik cepat untuk angka kembar.",
+          contoh: "Yuk bantu Sani melihat trik angka kembar!",
         },
       ],
       kuis: [
         {
-          pertanyaan:
-            "Jika ada penjumlahan berulang 5 + 5 + 5 + 5, bagaimana menulisnya dalam bentuk perkalian yang tepat?",
-          alias: ["4 x 5", "4 kali 5", "empat kali lima"],
+          pertanyaan: "1. Ada berapa sahabat Sani yang datang bermain?",
+          alias: ["3", "tiga", "tiga sahabat"],
+        },
+        {
+          pertanyaan: "2. Tiap piring Sani berisi berapa permen?",
+          alias: ["2", "dua", "dua permen"],
+        },
+        {
+          pertanyaan: "3. Sani menghitung dengan cara apa sebelum tahu perkalian?",
+          alias: ["tambah", "ditambah", "penjumlahan", "dua ditambah dua"],
         },
       ],
-      kuisTulis: {
-        pertanyaan: "Ubah 4 x 3 menjadi penjumlahan berulang.",
-        alias: ["3 + 3 + 3 + 3", "3+3+3+3"],
-      },
       voice: [
         [
-          "Anak-anak kelas 2 yang hebat, perkalian itu jalan pintas menjumlahkan benda yang jumlahnya sama berulang-ulang.",
-          "Rumus sakti: kotak dikali isi. Kotak adalah wadahnya. Isi adalah benda di dalamnya. Tiga piring, tiap piring dua donat: 2 + 2 + 2. Kita tulis 3 dikali 2 sama dengan 6.",
-          "Ingat wadahnya dulu, baru isinya!",
+          "Hari ini tiga sahabat Sani datang bermain. Sani menyiapkan tiga piring kecil. Tiap piring diisi dua permen.",
+          "Sani menghitung dua ditambah dua, lalu ditambah dua lagi. Kalau tamunya banyak, menambah terus melelahkan. Yuk, kita bantu Sani melihat trik angka kembar!",
         ],
       ],
     },
     {
       kode: "B",
-      judul: "B. Hasil 12, Hasil 10, dan Kali Nol",
+      judul: "B. Infografis Kotak Permen Kembar",
       pengantar:
-        "Infografis hasil sama: 3x4 dan 4x3 = 12. 2x5 dan 5x2 = 10. Kali 1 artinya isi satu. Kali 0 artinya tidak ada isi.",
-      labelDaftar: "Hasil 12, hasil 10, kali 0 dan 1",
+        "🍽️ 2 + 2 + 2 = 6. Angka 2 muncul 3 kali. Penjumlahan berulang angka kembar disebut perkalian: 3 × 2 = 6.",
+      labelDaftar: "Penjumlahan berulang dan rumus wadah kali isi",
       kolom: 1,
       item: [
         {
-          nama: "Keluarga 12 dan 10",
-          singkat: "Pasangan yang hasilnya sama",
+          nama: "🍽️ Penjumlahan berulang",
+          singkat: "2 + 2 + 2 = 6",
           uraian:
-            "3 x 4 = 4+4+4 = 12. 4 x 3 = 3+3+3+3 = 12. 2 x 5 = 5+5 = 10. 5 x 2 = 2+2+2+2+2 = 10.",
-          contoh: "3 x 4 = 12. 2 x 5 = 10.",
+            "Tiga piring, tiap piring 2 permen. Angka 2 ditulis berulang 3 kali. Namanya perkalian.",
+          contoh: "2 + 2 + 2 = 6.",
         },
         {
-          nama: "Kali satu",
-          singkat: "Isi satu di tiap kotak",
+          nama: "✍️ Rumus kotak rahasia",
+          singkat: "3 × 2 = 6",
           uraian:
-            "5 x 1 artinya lima kotak, tiap kotak isinya 1: 1+1+1+1+1. Bukan 5+5+5+5+5. Hasilnya 5, maknanya berbeda.",
-          contoh: "5 x 1 = 1+1+1+1+1.",
+            "Jumlah wadah atau piring dikali isi permen per piring. 3 × 2 = 6. Dibaca tiga dikali dua sama dengan enam.",
+          contoh: "Wadah × isi = total.",
         },
         {
-          nama: "Kali nol",
-          singkat: "Tidak ada isi",
+          nama: "⚠️ Posisi tidak boleh terbalik",
+          singkat: "3 × 2 berbeda dengan 2 × 3",
           uraian:
-            "Berapa pun kotaknya, jika isinya 0, total benda tetap 0. 7 x 0 = 0. 0 x 4 = 0. Lima kucing kali 4 kaki = 20.",
-          contoh: "5 x 4 = 20 kaki.",
+            "3 × 2 artinya 3 piring berisi 2. 2 × 3 artinya 2 piring berisi 3. Total sama 6, tetapi ceritanya berbeda.",
+          contoh: "Cerita berbeda, total bisa sama.",
         },
       ],
       kuis: [
         {
-          pertanyaan: "5 x 1 ditulis penjumlahan berulang bagaimana?",
-          alias: ["1 + 1 + 1 + 1 + 1", "satu"],
+          pertanyaan: "1. 2 + 2 + 2 ditulis perkalian berapa?",
+          alias: ["3 × 2", "3x2", "3 kali 2", "tiga dikali dua"],
+        },
+        {
+          pertanyaan: "2. 3 × 2 artinya ada berapa piring?",
+          alias: ["3", "tiga", "3 piring"],
+        },
+        {
+          pertanyaan: "3. 3 × 2 dan 2 × 3 hasilnya sama, tetapi ceritanya?",
+          alias: ["berbeda", "beda", "tidak sama", "lain"],
         },
       ],
-      kuisTulis: {
-        pertanyaan: "5 kucing, tiap kucing 4 kaki. Jumlah seluruh kaki adalah...",
-        alias: ["20"],
-      },
       voice: [
         [
-          "Beberapa perkalian punya hasil sama. 3 kali 4 dan 4 kali 3 sama-sama 12, tetapi ceritanya beda.",
-          "5 kali 1 bukan lima ditambah lima berkali-kali. Isinya satu, diulang lima kali.",
-          "Kalau dikali nol, kotaknya kosong. Tidak ada benda. Hasilnya selalu nol. Lima kucing, empat kaki: dua puluh.",
+          "Lihat tiga piring Sani. Dua ditambah dua ditambah dua sama dengan enam. Angka dua muncul tiga kali. Itu perkalian. Tiga dikali dua sama dengan enam.",
+          "Rumus kotak rahasia: jumlah wadah dikali isi tiap wadah. Tiga piring kali dua permen sama dengan enam.",
+        ],
+        [
+          "Hati-hati. Tiga kali dua artinya tiga piring berisi dua. Dua kali tiga artinya dua piring berisi tiga. Totalnya sama enam, tetapi ceritanya berbeda.",
         ],
       ],
     },
     {
       kode: "C",
-      judul: "C. Lembar Evaluasi Siswa",
+      judul: "C. Detektif Kantong Hadiah",
       pengantar:
-        "Pilih 4x5 dari 5+5+5+5 dan 3+3+3+3 dari 4x3, tentukan benar-salah 5x1 serta kali 0, jodohkan 2x6 3x4 4x2, lalu jelaskan rumus kotak kali isi.",
-      labelDaftar: "Pilihan, benar-salah, mencocokkan, dan esai",
+        "🕵️‍♂️ Ada 4 kantong. Tiap kantong berisi 4 permen. Hitung angka kembar, jumlah kantong, lalu tulis penjumlahan dan perkaliannya.",
+      labelDaftar: "Aktivitas terbimbing dan jurnal",
       kolom: 1,
       item: [
         {
-          nama: "Kelompok A dan B",
-          singkat: "Ubah bentuk",
+          nama: "🕵️‍♂️ Aktivitas 1",
+          singkat: "4 × 4 = 16",
           uraian:
-            "5+5+5+5 = 4x5. 4x3 = 3+3+3+3. 5x1 bukan 5+5+5+5+5. Kali 0 hasilnya 0.",
-          contoh: "4x5. 3+3+3+3. 0.",
+            "Angka kembar 4. Kantong ada 4. 4 + 4 + 4 + 4 = 16. Perkalian 4 × 4 = 16.",
+          contoh: "4 × 4 = 16.",
         },
         {
-          nama: "Kelompok C dan D",
-          singkat: "Pasangan dan kaki",
+          nama: "🎭 Jurnal perasaanku",
+          singkat: "Pilih wajah",
           uraian:
-            "2x6=6+6. 3x4=4+4+4. 4x2=2+2+2+2. 5x4=20. Urutan hasil: 6, 9, 12.",
-          contoh: "6+6. 20 kaki.",
+            "😀 Seru banget, ternyata perkalian itu mudah! 😐 Sedikit bingung membedakan angka depan dan belakang. 😢 Masih butuh bantuan menulis lambang perkalian.",
+          contoh: "Pilih satu wajah.",
         },
       ],
       kuis: [
-        { pertanyaan: "5+5+5+5 perkalian?", alias: ["4 x 5", "4"] },
-        { pertanyaan: "4x3 penjumlahan?", alias: ["3 + 3 + 3 + 3"] },
-        { pertanyaan: "5x1 = 5+5+5+5+5?", alias: ["salah"] },
-        { pertanyaan: "Kali 0 hasil 0?", alias: ["benar"] },
-        { pertanyaan: "3 piring 2 donat?", alias: ["3 x 2", "6"] },
-        { pertanyaan: "Mengapa kotak dulu?", alias: ["wadah", "isi", "cerita"] },
+        {
+          pertanyaan: "1. Angka kembar pada kantong hadiah berapa?",
+          alias: ["4", "empat"],
+        },
+        {
+          pertanyaan: "2. Ada berapa kantong seluruhnya?",
+          alias: ["4", "empat", "4 kantong"],
+        },
+        {
+          pertanyaan: "3. 4 kantong berisi 4 permen sama dengan berapa?",
+          alias: ["16", "enam belas"],
+        },
       ],
       voice: [
-        ["4 kali 5 artinya lima dijumlah empat kali."],
-        ["Kali nol hasilnya nol. Tulis sesuai wadah dan isi."],
+        [
+          "Yuk jadi detektif kantong hadiah. Ada empat kantong. Tiap kantong berisi empat permen. Angka kembarnya empat. Kantongnya ada empat.",
+          "Empat ditambah empat ditambah empat ditambah empat sama dengan enam belas. Perkaliannya empat dikali empat sama dengan enam belas.",
+        ],
       ],
     },
     {
       kode: "D",
-      judul: "D. Kartu Evaluasi Ekstra",
+      judul: "D. Lembar Evaluasi Siswa",
       pengantar:
-        "Tanpa keyboard. Tarik garis 2x6, 3x4, 4x2, geser ke keranjang 12 atau 10, urutkan 2x3-3x3-4x3, coretkan 2 pada 20, lalu tekan BENAR atau SALAH.",
-      labelDaftar: "Tarik garis, keranjang, urutan, kanvas, detektif",
+        "📝 Tantangan para juara! Ubah cerita obat, kantong, dan piring Sani, Siti, Lani, Dodi, serta Riko menjadi perkalian.",
+      labelDaftar: "Evaluasi pilihan ganda dan isian",
       kolom: 1,
       item: [
         {
-          nama: "Permainan A sampai C",
-          singkat: "Garis, keranjang, urutan",
+          nama: "🍓 Bagian A",
+          singkat: "Pilihan ganda",
           uraian:
-            "2x6=6+6. 3x4=4+4+4. 4x2=2+2+2+2. Hasil 12: 3x4, 4x3. Hasil 10: 2x5, 5x2. Urutan: 2x3=6, 3x3=9, 4x3=12.",
-          contoh: "6+6. 12. 2x3 dulu.",
+            "Obat Adi 3 × 1. Kombinasi salah 5 × 2. Tiga kantong 15 adalah 3 × 5. Lani 4+4+4+4+4. Meja hijau dan biru totalnya sama.",
+          contoh: "3 × 1. 5 × 2 salah.",
         },
         {
-          nama: "Permainan D dan E",
-          singkat: "Kanvas dan detektif",
+          nama: "✏️ Bagian B",
+          singkat: "Isian singkat",
           uraian:
-            "5x4=20, coretkan 2. 5x1 bukan 5+5+5+5+5. Kali 0 hasilnya 0.",
-          contoh: "Coretkan 2. SALAH lalu BENAR.",
+            "5 × 7 = 35. Tiap kantong Dodi 8. Kisah 1 = B, kisah 2 = A. Sisa Riko 16. Dua bentuk 2 × 4 dan 4 × 2.",
+          contoh: "5 × 7, 8, 16.",
         },
       ],
       kuis: [
-        { pertanyaan: "Tarik garis perkalian?", alias: ["6 + 6", "4 + 4 + 4"] },
-        { pertanyaan: "Keranjang 12 atau 10?", alias: ["3 x 4", "2 x 5"] },
-        { pertanyaan: "Urutan 6 9 12?", alias: ["2 x 3", "3 x 3", "4 x 3"] },
-        { pertanyaan: "5x1 = lima ditambah lima?", alias: ["salah"] },
-        { pertanyaan: "Kali 0 hasil 0?", alias: ["benar"] },
+        { pertanyaan: "1. Obat 3 kali sehari 1 tablet ditulis perkalian?", alias: ["3 × 1", "3x1", "3 kali 1"] },
+        { pertanyaan: "2. Kombinasi yang tidak menghasilkan 12?", alias: ["5 × 2", "5x2", "10"] },
+        { pertanyaan: "3. Tiga kantong sama banyak jumlah 15?", alias: ["3 × 5", "3x5"] },
+        { pertanyaan: "4. 5 bungkus berisi 4, penjumlahan berulangnya?", alias: ["4 + 4 + 4 + 4 + 4"] },
+        { pertanyaan: "5. 2 × 6 dan 4 × 3 totalnya?", alias: ["sama", "sama banyak", "12"] },
+        { pertanyaan: "6. 7 + 7 + 7 + 7 + 7 ditulis perkalian?", alias: ["5 × 7", "5x7"] },
+        { pertanyaan: "7. Isi tiap kantong Dodi?", alias: ["8", "delapan"] },
+        { pertanyaan: "8. 5 anak masing-masing 4, perkaliannya?", alias: ["5 × 4", "5x4"] },
+        { pertanyaan: "9. 3 kantong isi 6, hilang 2, sisa?", alias: ["16"] },
+        { pertanyaan: "10. Dua perkalian berbeda yang hasilnya 8?", alias: ["2 × 4", "4 × 2", "1 × 8", "8 × 1"] },
       ],
-      kuisTulis: {
-        pertanyaan: "Coretkan angka depan __ - 0 dari jumlah kaki 5 x 4.",
-        alias: ["20", "2"],
-      },
       voice: [
         [
-          "Tanpa keyboard. Tarik garis 2x6 ke 6+6, 3x4 ke 4+4+4, 4x2 ke 2+2+2+2. Geser 3x4 ke hasil 12, 2x5 ke hasil 10.",
-          "Urutkan 2x3, 3x3, 4x3. Coretkan 2 untuk dua puluh kaki kucing.",
-          "Detektif: 5x1 bukan lima ditambah lima. Kali nol selalu nol.",
+          "Ini lembar evaluasi tantangan para juara. Obat Adi tiga kali satu tablet, ditulis 3 kali 1. Lima kantong kali dua tidak sama dengan 12. Tiga kantong jumlah 15 artinya 3 kali 5.",
+          "Lani lima bungkus berisi empat, jadi empat ditambah berulang lima kali. Dua kali enam dan empat kali tiga totalnya sama 12.",
+        ],
+        [
+          "Tujuh ditambah lima kali sama dengan 5 kali 7. Kantong Dodi masing-masing 8. Lima anak kali empat, empat bungkus kali lima. Sisa Riko 16. Dua bentuk untuk 8: 2 kali 4 dan 4 kali 2.",
         ],
       ],
     },
