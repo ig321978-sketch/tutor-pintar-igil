@@ -9,6 +9,7 @@ import { MODUL_MTK2_BAB8 } from "@/lib/modul-resmi-mtk-2-bab8";
 import { MODUL_MTK2_BAB9 } from "@/lib/modul-resmi-mtk-2-bab9";
 import { MODUL_MTK2_BAB10 } from "@/lib/modul-resmi-mtk-2-bab10";
 import { MODUL_MTK2_BAB11 } from "@/lib/modul-resmi-mtk-2-bab11";
+import { MODUL_MTK2_BAB12 } from "@/lib/modul-resmi-mtk-2-bab12";
 import type { ModulResmiPai } from "@/lib/modul-resmi-pai";
 
 export const MODUL_MTK2_BAB1_8: readonly ModulResmiPai[] = [
@@ -23,6 +24,7 @@ export const MODUL_MTK2_BAB1_8: readonly ModulResmiPai[] = [
   MODUL_MTK2_BAB9,
   MODUL_MTK2_BAB10,
   MODUL_MTK2_BAB11,
+  MODUL_MTK2_BAB12,
 ];
 
 export const MODUL_MTK2_BAB1_4 = MODUL_MTK2_BAB1_8.slice(0, 4);
@@ -30,3 +32,4 @@ export const MODUL_MTK2_BAB5_8 = MODUL_MTK2_BAB1_8.slice(4, 8);
 export const MODUL_MTK2_BAB9_SATU = [MODUL_MTK2_BAB9] as const;
 export const MODUL_MTK2_BAB10_SATU = [MODUL_MTK2_BAB10] as const;
 export const MODUL_MTK2_BAB11_SATU = [MODUL_MTK2_BAB11] as const;
+export const MODUL_MTK2_BAB12_SATU = [MODUL_MTK2_BAB12] as const;
