@@ -87,6 +87,7 @@ const DATA_INTI_KURIKULUM: Record<string, Record<string, string[]>> = {
       "Bab 6: Pengukuran Panjang Standar",
       "Bab 7: Pengukuran Berat Standar",
       "Bab 8: Diagram Gambar Sederhana",
+      "Bab 9: Penjumlahan dan Pengurangan",
     ],
     "Pendidikan Jasmani, Olahraga, dan Kesehatan": [
       "Bab 1: Gerak Dasar Manipulatif",
