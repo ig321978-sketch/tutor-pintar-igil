@@ -10,279 +10,265 @@ export const MODUL_MTK2_BAB1: ModulResmiPai = {
   id: "mtk-2-bab1",
   judul: JUDUL_MTK2_BAB1,
   pola:
-    /bilangan cacah sampai 100|desa angka|kakek tono|ikat( menjadi)? puluhan|nilai tempat puluhan|bilangan 1 sampai( dengan)? 1.?000|bilangan 1 sampai 100|rumah tinggal angka|ayo menghitung sampai 100|dunia angka sampai 100/,
+    /bilangan cacah sampai 100|kantong permen sani|permen ulang tahun|desa angka|kakek tono|ikat( menjadi)? puluhan|nilai tempat puluhan|bilangan 1 sampai( dengan)? 1.?000|bilangan 1 sampai 100|rumah tinggal angka|ayo menghitung sampai 100/,
   motivasi:
-    "Hore! Berhitung sampai 100 itu seru. Hitung sepuluh-sepuluh dulu, lalu hitung sisanya.",
-  kunciJawaban: "B,B,C,B,B,B,A,C,B,A",
+    "Hore! Kamu sudah membantu Sani merapikan permen. 1 kantong besar = 10 permen = 1 puluhan. Permen di luar kantong = satuan.",
+  kunciJawaban: "B,A,B,A,B,B,C,A,C,B",
   sketsaKartu: [
-    "Ali dan Nia menghitung apel dan jeruk di taman sekolah, sepuluh-sepuluh dulu.",
-    "Anak melihat gambar benda, lalu menulis angka 10, 20, 25, dan 100.",
-    "Anak mengumpulkan pensil di kelas dan jeruk di dapur sesuai jumlah yang disebut.",
-    "Anak mengisi lembar evaluasi: menghitung, menulis nama bilangan, dan membandingkan.",
+    "Sani menghitung tumpukan permen ulang tahun di atas meja.",
+    "Sani memasukkan setiap 10 permen ke kantong besar, sisanya di luar.",
+    "Anak menghitung 3 kantong besar dan 2 permen eceran milik Sani.",
+    "Anak mengisi lembar kerja tantangan para juara tentang puluhan dan satuan.",
   ],
   latihan: pg([
-    `[Soal 1 - PG - Tipe: Reguler]
-10 apel disebut...
-A) 1 satuan
-B) 1 puluhan
-C) 10 puluhan
-D) 2 puluhan`,
-    `[Soal 2 - PG - Tipe: Reguler]
-25 = 20 + 5. Angka 20 disebut...
-A) 2 satuan
-B) 2 puluhan
-C) 2 ratusan
-D) 25 satuan`,
-    `[Soal 3 - PG - Tipe: Reguler]
-Ada 10 jeruk, 10 jeruk, dan 4 jeruk lagi. Jumlahnya...
-A) 14
-B) 6
-C) 24
-D) 42`,
-    `[Soal 4 - PG - Tipe: HOTS]
-Angka 100 dibaca...
-A) Sepuluh
-B) Seratus
-C) Sepuluh puluh
-D) Satu`,
-    `[Soal 5 - PG - Tipe: Reguler]
-Cara membaca 37 adalah...
-A) Tiga tujuh
-B) Tiga puluh tujuh
-C) Tujuh puluh tiga
-D) Tiga puluh`,
-    `[Soal 6 - PG - Tipe: Reguler]
-49 = ... puluhan + ... satuan
-A) 9 puluhan + 4 satuan
-B) 4 puluhan + 9 satuan
-C) 49 puluhan + 0 satuan
-D) 4 satuan + 9 puluhan`,
-    `[Soal 7 - PG - Tipe: Reguler]
-71 terdiri dari...
-A) 7 puluhan + 1 satuan
-B) 1 puluhan + 7 satuan
-C) 71 satuan saja
-D) 7 satuan`,
-    `[Soal 8 - PG - Tipe: Reguler]
-Cara membaca 85 adalah...
-A) Delapan lima
-B) Lima puluh delapan
-C) Delapan puluh lima
-D) Delapan puluh`,
+    `[Soal 1 - PG - Tipe: HOTS]
+Siti punya 4 kantong besar dan 3 permen di luar. Dayu punya 3 kantong besar dan 14 permen di luar. Siapa yang permennya paling banyak?
+A) Siti
+B) Dayu
+C) Permen mereka sama banyak
+D) Tidak bisa dihitung`,
+    `[Soal 2 - PG - Tipe: HOTS]
+Beni ingin 75 permen. Sekarang ada beberapa kantong besar dan 5 permen di luar. Berapa kantong besar yang dibutuhkan agar jumlahnya 75?
+A) 7 Kantong
+B) 5 Kantong
+C) 2 Kantong
+D) 6 Kantong`,
+    `[Soal 3 - PG - Tipe: HOTS]
+Angka Sani ada di antara 60 dan 70. Jika jumlah kantong dan permen eceran digabung hasilnya 9. Angkanya...
+A) 69
+B) 63
+C) 36
+D) 72`,
+    `[Soal 4 - PG - Tipe: MOTS]
+Toni punya 8 kantong besar dan 7 permen eceran. Jumlah permen Toni...
+A) 78
+B) 87
+C) 80
+D) 17`,
+    `[Soal 5 - PG - Tipe: HOTS]
+Edo menulis: 82 permen = 2 kantong puluhan dan 8 permen satuan. Pernyataan Edo...
+A) Benar, karena angka 2 ditulis di depan angka 8 jika dibalik
+B) Salah, seharusnya 8 kantong puluhan dan 2 permen satuan di luar
+C) Salah, seharusnya 80 kantong puluhan dan 2 permen satuan di luar
+D) Benar, karena 2 + 8 = 10`,
+    `[Soal 6 - PG - Tipe: LOTS]
+Sani punya permen sebanyak "sembilan puluh satu". Lambang angkanya...
+A) 19
+B) 91
+C) 90
+D) 81`,
+    `[Soal 7 - PG - Tipe: HOTS]
+Permen Lani lebih dari 45, kurang dari 50, dan satuan angkanya genap. Jumlah yang mungkin...
+A) 47 atau 49
+B) 46 atau 47
+C) 46 atau 48
+D) 45 atau 50`,
+    `[Soal 8 - PG - Tipe: HOTS]
+Tangga angka Sani meloncat 10: 20, 30, kotak A, 50, kotak B, 70. Isi kotak A dan B...
+A) 40 dan 60
+B) 35 dan 55
+C) 45 dan 65
+D) 30 dan 50`,
     `[Soal 9 - PG - Tipe: HOTS]
-Mengapa kita hitung sepuluh-sepuluh jika bendanya banyak?
-A) Supaya bendanya kelihatan lebih banyak
-B) Agar menghitung cepat tanpa menghitung satu per satu
-C) Karena satuan lebih besar dari puluhan
-D) Karena angka 100 tidak bisa dihitung`,
-    `[Soal 10 - PG - Tipe: Reguler]
-Cara membaca 62 adalah...
-A) Enam puluh dua
-B) Dua puluh enam
-C) Enam dua
-D) Enam puluh`,
+Kartu angka 4 dan 7. Bilangan paling besar dan paling kecil adalah...
+A) 47 dan 74
+B) 44 dan 77
+C) 74 dan 47
+D) 47 dan 44`,
+    `[Soal 10 - PG - Tipe: HOTS]
+Riko punya 100 permen. Sudah masuk 9 kantong besar. Sisa permen eceran di luar...
+A) 1
+B) 10
+C) 9
+D) 0`,
   ]),
   kartu: [
     {
       kode: "A",
-      judul: "A. Dialog di Taman Sekolah",
+      judul: "A. Dialog Permen Ulang Tahun",
       pengantar:
-        "Saat jam istirahat, Ali dan Nia duduk di dekat pohon rindang. Dulu mereka menghitung 4 apel. Hari ini apel dan jeruknya lebih banyak, jadi mereka hitung sepuluh-sepuluh dulu.",
-      labelDaftar: "Percakapan Ali dan Nia",
+        "🌟 Target hari ini: menghitung benda dari 21 sampai 100 dengan cepat, lalu memisahkan puluhan dan satuan. 🗺️ Sani baru ulang tahun. Di meja ada banyak permen dari paman.",
+      labelDaftar: "Target dan cerita apersepsi",
       kolom: 1,
       item: [
         {
-          nama: "Ali membawa apel",
-          singkat: "Dua puluh lima apel",
+          nama: "🌟 Target belajarku hari ini",
+          singkat: "21 sampai 100",
           uraian:
-            "Ali mengeluarkan apel dari kotaknya. Ia menghitung: sepuluh, sepuluh, lima. Ada dua puluh lima apel!",
-          contoh: "Sepuluh... sepuluh... lima! Ada 25 apel.",
+            "🎯 Aku bisa menghitung banyak benda dari 21 sampai 100 dengan cepat. 🎯 Aku bisa memisahkan kelompok puluhan dan satuan dengan tepat.",
+          contoh: "Hitung cepat, pisahkan puluhan dan satuan.",
         },
         {
-          nama: "Nia membawa jeruk",
-          singkat: "Dua puluh empat jeruk",
+          nama: "🗺️ Berbagi permen ulang tahun",
+          singkat: "Permen pemberian paman",
           uraian:
-            "Nia menghitung jeruknya: sepuluh, sepuluh, empat. Ada dua puluh empat jeruk. Berhitung tetap seru dan mudah.",
-          contoh: "Sepuluh... sepuluh... empat! Ada 24 jeruk.",
+            "Sani ingin menghitung semua permennya. Kalau dihitung satu per satu dari angka 1, melelahkan dan mudah salah. Bagaimana cara menghitung yang banyak ini dengan cepat dan rapi?",
+          contoh: "Yuk bantu Sani membungkus permen ke dalam kantong!",
         },
       ],
       kuis: [
         {
-          pertanyaan: "1. Ada berapa apel milik Ali?",
-          alias: ["25", "dua puluh lima", "dua puluh lima apel", "25 apel"],
+          pertanyaan: "1. Siapa yang punya banyak permen ulang tahun?",
+          alias: ["sani"],
         },
         {
-          pertanyaan: "2. Ada berapa jeruk milik Nia?",
-          alias: ["24", "dua puluh empat", "dua puluh empat jeruk", "24 jeruk"],
+          pertanyaan: "2. Mengapa Sani bingung menghitung permennya?",
+          alias: ["banyak", "satu per satu", "lelah", "salah", "melelahkan"],
         },
         {
-          pertanyaan: "3. Kalau bendanya banyak, Ali dan Nia menghitung bagaimana?",
-          alias: ["sepuluh", "sepuluh-sepuluh", "puluh", "puluhan"],
+          pertanyaan: "3. Kita akan memasukkan setiap 10 permen ke dalam apa?",
+          alias: ["kantong", "kantong besar", "plastik"],
         },
       ],
       voice: [
         [
-          "Anak-anak, kita ke taman sekolah saat jam istirahat. Ali dan Nia duduk di dekat pohon rindang sambil membuka bekal.",
-          "Ali berkata, Nia, dulu apelku cuma empat. Sekarang lebih banyak! Yuk hitung sepuluh-sepuluh dulu.",
-          "Sepuluh. Sepuluh. Lima. Ada dua puluh lima apel!",
-        ],
-        [
-          "Sekarang gantian. Nia membawa jeruk. Sepuluh. Sepuluh. Empat. Ada dua puluh empat jeruk. Hore! Berhitung itu tetap seru dan mudah.",
+          "Hari ini kita bantu Sani. Targetnya: menghitung benda dari 21 sampai 100 dengan cepat, lalu memisahkan puluhan dan satuan.",
+          "Sani baru ulang tahun. Di atas meja ada banyak permen pemberian paman. Kalau dihitung satu per satu, melelahkan dan mudah salah.",
+          "Sani bertanya, bagaimana cara menghitung permen yang banyak ini dengan cepat dan rapi? Yuk, kita bantu Sani membungkus permen ke dalam kantong!",
         ],
       ],
     },
     {
       kode: "B",
-      judul: "B. Infografis Dunia Angka",
+      judul: "B. Infografis Kantong Permen",
       pengantar:
-        "Setiap tumpukan benda punya angka dan cara membacanya. Sepuluh benda disebut satu puluhan. Yang kurang dari sepuluh disebut satuan.",
-      labelDaftar: "Kamus Mini Angka",
+        "🍬 Trik cepat Sani: bungkus setiap 10 permen. 🛍️ 1 kantong besar berisi 10 permen disebut 1 puluhan. Permen sisa di luar kantong disebut satuan.",
+      labelDaftar: "Kantong besar dan permen eceran",
       kolom: 1,
       item: [
         {
-          nama: "Sepuluh, dua puluh, dua puluh lima",
-          singkat: "10, 20, 25",
+          nama: "🍬 Bungkus setiap 10 permen",
+          singkat: "1 kantong = 1 puluhan",
           uraian:
-            "10 apel dibaca sepuluh. 20 apel dibaca dua puluh. 25 apel dibaca dua puluh lima. 25 artinya 20 tambah 5.",
-          contoh: "🍎×10 + 🍎×10 + 🍎×5 = 25 = DUA PULUH LIMA",
+            "🛍️ 1 kantong besar = 10 permen = 1 puluhan. 🛍️🛍️ 2 kantong = 20 permen = 2 puluhan. 🛍️🛍️🛍️ 3 kantong = 30 permen = 3 puluhan. Permen sisa yang kurang dari 10 diletakkan di luar sebagai satuan.",
+          contoh: "1 kantong besar = 1 puluhan.",
         },
         {
-          nama: "Seratus",
-          singkat: "100",
+          nama: "📦 Kantong besar dan permen di luar",
+          singkat: "25 = dua puluh lima",
           uraian:
-            "Kalau ada 10 kelompok yang masing-masing 10, jumlahnya 100. Dibaca seratus.",
-          contoh: "10 + 10 + 10 + 10 + 10 + 10 + 10 + 10 + 10 + 10 = 100 = SERATUS",
+            "Ada 2 kantong besar dan 5 permen di luar. Di kantong nilainya 20. Di luar nilainya 5. Ditulis 25. Dibaca dua puluh lima.",
+          contoh: "2 kantong + 5 permen = 25.",
+        },
+        {
+          nama: "💡 Tahukah kamu",
+          singkat: "10 kantong = 100",
+          uraian:
+            "Jika Sani mempunyai tepat 10 kantong besar berisi permen, semua permennya berjumlah 100.",
+          contoh: "10 kantong besar = 100.",
         },
       ],
       kuis: [
         {
-          pertanyaan: "1. Sepuluh apel cocok dengan angka berapa?",
-          alias: ["10", "sepuluh", "angka 10"],
+          pertanyaan: "1. 1 kantong besar berisi 10 permen disebut apa?",
+          alias: ["puluhan", "satu puluhan", "1 puluhan"],
         },
         {
-          pertanyaan: "2. Dua puluh lima apel cocok dengan angka berapa?",
-          alias: ["25", "dua puluh lima", "angka 25"],
+          pertanyaan: "2. 2 kantong besar dan 5 permen di luar sama dengan berapa?",
+          alias: ["25", "dua puluh lima"],
         },
         {
-          pertanyaan: "3. Seratus cocok dengan angka berapa?",
-          alias: ["100", "seratus", "angka 100"],
+          pertanyaan: "3. 10 kantong besar berisi berapa permen?",
+          alias: ["100", "seratus"],
         },
       ],
       voice: [
         [
-          "Anak-anak, selamat datang di dunia angka. Sepuluh apel dibaca sepuluh. Dua puluh apel dibaca dua puluh. Dua puluh lima apel dibaca dua puluh lima.",
-          "Sepuluh benda disebut satu puluhan. Yang kurang dari sepuluh disebut satuan. Jadi 25 itu 2 puluhan dan 5 satuan.",
+          "Trik cepat Sani: bungkus setiap 10 permen ke dalam 1 kantong besar. Satu kantong besar disebut 1 puluhan. Dua kantong disebut 2 puluhan. Tiga kantong disebut 3 puluhan.",
+          "Kalau ada permen sisa yang tidak sampai 10, biarkan di luar kantong. Itu satuan, atau permen eceran.",
         ],
         [
-          "Kalau ada sepuluh kelompok, tiap kelompok sepuluh, jumlahnya seratus. Seratus ditulis 100. Jangan lupa, seratus juga penting!",
+          "Lihat meja Sani. Ada 2 kantong besar dan 5 permen di luar. Nilainya 20 tambah 5. Ditulis 25. Dibaca dua puluh lima.",
+          "Tahukah kamu? Kalau Sani punya tepat 10 kantong besar, semua permennya berjumlah 100.",
         ],
       ],
     },
     {
       kode: "C",
-      judul: "C. Berhitung di Sekolah dan di Rumah",
+      judul: "C. Membantu Sani Menghitung",
       pengantar:
-        "Berhitung makin kuat kalau dipraktikkan. Di sekolah kita jadi detektif benda. Di rumah kita membantu ibu menghitung di dapur.",
-      labelDaftar: "Dua Tempat Berlatih",
-      kolom: 2,
+        "🕵️‍♂️ Lihat permen Sani yang sudah rapi. Ada 3 kantong besar dan 2 permen di luar. Hitung puluhan, satuan, lalu tulis angkanya.",
+      labelDaftar: "Aktivitas terbimbing dan jurnal",
+      kolom: 1,
       item: [
         {
-          nama: "Detektif Berhitung di Kelas",
-          singkat: "Untuk guru",
+          nama: "🕵️‍♂️ Aktivitas 1",
+          singkat: "3 kantong dan 2 permen",
           uraian:
-            "Guru membagi siswa 3 sampai 4 anak. Guru menyebut angka, misalnya tunjukkan angka 25. Kelompok membuat 2 kelompok 10 pensil, lalu 5 pensil lagi. Yang paling tepat dan cepat mendapat bintang.",
-          contoh: "Kumpulkan 25 pensil: 10, 10, dan 5.",
+            "Ada 3 kantong besar. Ada 2 permen di luar. Itu 3 puluhan dan 2 satuan. Lambangnya 32. Dibaca tiga puluh dua.",
+          contoh: "3 kantong + 2 permen = 32.",
         },
         {
-          nama: "Bantu Ibu di Dapur",
-          singkat: "Untuk orang tua",
+          nama: "🎭 Jurnal perasaanku",
+          singkat: "Pilih wajah",
           uraian:
-            "Ajak anak ke dapur. Minta anak mengambil jeruk atau sendok dengan jumlah tertentu, dihitung sepuluh-sepuluh. Puji atau peluk setelah menghitung benar.",
-          contoh: "Tolong ambil 30 jeruk: 10, 10, dan 10.",
+            "😀 Seru banget, aku sudah paham! 😐 Sedikit bingung, mau latihan lagi. 😢 Susah, butuh bantuan tutor kembali.",
+          contoh: "Pilih satu wajah.",
         },
       ],
       kuis: [
         {
-          pertanyaan: "1. Di kelas, siswa mencari benda sesuai apa yang disebut guru?",
-          alias: ["angka", "bilangan", "jumlah"],
+          pertanyaan: "1. Ada berapa kantong besar Sani?",
+          alias: ["3", "tiga", "3 puluhan", "tiga puluhan"],
         },
         {
-          pertanyaan: "2. Guru meminta kumpulkan 25 pensil. Itu 10, 10, dan berapa lagi?",
-          alias: ["5", "lima", "lima pensil"],
+          pertanyaan: "2. Ada berapa permen di luar kantong?",
+          alias: ["2", "dua", "2 satuan", "dua satuan"],
         },
         {
-          pertanyaan: "3. Setelah anak menghitung benar, orang tua sebaiknya memberi apa?",
-          alias: ["pujian", "pelukan", "pujian atau pelukan", "peluk", "memuji"],
+          pertanyaan: "3. 3 kantong besar dan 2 permen di luar sama dengan berapa?",
+          alias: ["32", "tiga puluh dua"],
         },
       ],
       voice: [
         [
-          "Di sekolah, kita bermain Detektif Berhitung. Guru menyebut sebuah angka. Kelompok mencari benda sebanyak angka itu. Misalnya, tunjukkan angka dua puluh lima. Kumpulkan sepuluh, sepuluh, dan lima pensil.",
-          "Kelompok yang menghitung paling tepat dan cepat mendapat bintang penghargaan.",
-        ],
-        [
-          "Di rumah, bantu ibu di dapur. Tolong ambilkan tiga puluh jeruk. Hitung sepuluh, sepuluh, sepuluh.",
-          "Kalau anak menghitung dengan benar, berilah pujian atau pelukan hangat.",
+          "Yuk bantu Sani. Ada 3 kantong besar dan 2 permen di luar. Kantong besar ada 3, itu 3 puluhan. Permen di luar ada 2, itu 2 satuan.",
+          "Lambang bilangannya 32. Dibaca tiga puluh dua.",
         ],
       ],
     },
     {
       kode: "D",
-      judul: "D. Lembar Evaluasi Siswa",
+      judul: "D. Lembar Kerja Siswa",
       pengantar:
-        "Saatnya menunjukkan kemampuan berhitung sampai 100. Hitung benda, tulis lambang dan nama bilangan, bandingkan banyaknya, lalu jawab soal cerita.",
-      labelDaftar: "Empat Kelompok Soal",
+        "📝 Tantangan para juara! Hitung kantong besar dan permen eceran milik Siti, Dayu, Beni, Toni, Edo, Lani, dan Riko.",
+      labelDaftar: "LKS pilihan ganda dan isian",
       kolom: 1,
       item: [
         {
-          nama: "Kelompok A",
-          singkat: "Menghitung dan mewarnai",
+          nama: "🍓 Bagian A",
+          singkat: "Pilihan ganda",
           uraian:
-            "Hitung benda di dalam kotak, lalu pilih angkanya: jeruk, apel, dan pensil.",
-          contoh: "24 jeruk, 25 apel, 30 pensil.",
+            "Siti 43, Dayu 44. Beni butuh 7 kantong untuk 75. Misteri Sani 63. Toni 78. Edo salah: 82 itu 8 kantong dan 2 satuan.",
+          contoh: "Dayu lebih banyak. Toni 78.",
         },
         {
-          nama: "Kelompok B",
-          singkat: "Menulis lambang bilangan",
-          uraian: "Tulis angka dan nama bilangannya: 25, 37, dan 62.",
-          contoh: "25 dua puluh lima, 37 tiga puluh tujuh, 62 enam puluh dua.",
-        },
-        {
-          nama: "Kelompok C",
-          singkat: "Membandingkan banyak benda",
+          nama: "✏️ Bagian B",
+          singkat: "Isian singkat",
           uraian:
-            "Bandingkan kotak kiri dan kanan. Pilih lebih banyak, lebih sedikit, atau sama banyak.",
-          contoh: "25 apel lebih banyak dari 20 jeruk.",
-        },
-        {
-          nama: "Kelompok D",
-          singkat: "Tantangan penalaran",
-          uraian:
-            "Baca soal cerita pendek. Ali punya 20 kelereng lalu dapat 5. Seratus stiker ditulis 100.",
-          contoh: "20 + 5 = 25. 100 dibaca seratus.",
+            "Sembilan puluh satu = 91. Lani 46 atau 48. Tangga 40 dan 60. Kartu 74 dan 47. Sisa 10 permen dari 100.",
+          contoh: "91, 46 atau 48, 10.",
         },
       ],
       kuis: [
-        { pertanyaan: "1. Ada berapa jeruk?", alias: ["24", "dua puluh empat"] },
-        { pertanyaan: "2. Ada berapa apel?", alias: ["25", "dua puluh lima"] },
-        { pertanyaan: "3. Ada berapa pensil?", alias: ["30", "tiga puluh"] },
-        { pertanyaan: "4. Dua puluh lima ditulis angka dan huruf apa?", alias: ["25", "dua puluh lima"] },
-        { pertanyaan: "5. Tiga puluh tujuh ditulis angka dan huruf apa?", alias: ["37", "tiga puluh tujuh"] },
-        { pertanyaan: "6. Enam puluh dua ditulis angka dan huruf apa?", alias: ["62", "enam puluh dua"] },
-        { pertanyaan: "7. Dua puluh lima apel dibanding dua puluh jeruk?", alias: ["lebih banyak", "banyak"] },
-        { pertanyaan: "8. Dua puluh apel dibanding tiga puluh tujuh jeruk?", alias: ["lebih sedikit", "sedikit"] },
-        { pertanyaan: "9. Dua puluh lima apel dibanding dua puluh lima jeruk?", alias: ["sama banyak", "sama"] },
-        { pertanyaan: "10. Ali punya 20 kelereng, lalu dapat 5. Jumlahnya?", alias: ["25", "dua puluh lima"] },
-        { pertanyaan: "11. Seratus stiker ditulis angka berapa?", alias: ["100", "seratus"] },
+        { pertanyaan: "1. Siapa yang permennya paling banyak, Siti atau Dayu?", alias: ["dayu"] },
+        { pertanyaan: "2. Beni butuh berapa kantong besar untuk 75 permen jika sisa 5?", alias: ["7", "tujuh"] },
+        { pertanyaan: "3. Angka misteri Sani antara 60 dan 70, jumlah digit 9?", alias: ["63"] },
+        { pertanyaan: "4. 8 kantong dan 7 permen eceran sama dengan berapa?", alias: ["78"] },
+        { pertanyaan: "5. 82 permen artinya berapa kantong puluhan?", alias: ["8", "delapan"] },
+        { pertanyaan: "6. Sembilan puluh satu ditulis angka berapa?", alias: ["91"] },
+        { pertanyaan: "7. Permen Lani yang mungkin?", alias: ["46", "48"] },
+        { pertanyaan: "8. Kotak A pada tangga 20 30 A 50 B 70?", alias: ["40"] },
+        { pertanyaan: "9. Kartu 4 dan 7, bilangan paling besar?", alias: ["74"] },
+        { pertanyaan: "10. 9 kantong dari 100, sisa permen eceran?", alias: ["10", "sepuluh"] },
       ],
       voice: [
         [
-          "Anak-anak, ini lembar evaluasi. Kita menghitung, menulis angka, membandingkan, lalu menjawab soal cerita.",
-          "Kelompok A: hitung jeruk, apel, dan pensil, lalu pilih angkanya. Kelompok B: tulis lambang bilangan dan nama bilangannya.",
+          "Ini lembar kerja tantangan para juara. Hitung kantong besar dan permen di luar. Siti 4 kantong dan 3 permen. Dayu 3 kantong dan 14 permen. Dayu lebih banyak.",
+          "Beni ingin 75, sisa 5 permen, jadi butuh 7 kantong. Misteri Sani 63. Toni 78. Edo salah, 82 itu 8 kantong dan 2 satuan.",
         ],
         [
-          "Kelompok C: bandingkan kotak kiri dan kanan. Pilih lebih banyak, lebih sedikit, atau sama banyak.",
-          "Kelompok D: dua puluh tambah lima sama dengan dua puluh lima. Seratus ditulis 100. Semangat mengerjakan sampai tuntas!",
+          "Sembilan puluh satu ditulis 91. Permen Lani 46 atau 48. Tangga angka 40 dan 60. Kartu 4 dan 7 jadi 74 atau 47. Sisa dari 100 setelah 9 kantong adalah 10 permen.",
         ],
       ],
     },

@@ -52,6 +52,7 @@ function judulAlias(materi) {
     tambahan.push("Bab 1: Bilangan 1 Sampai dengan 1.000");
     tambahan.push("Bab 1: Bilangan 1 sampai 100");
     tambahan.push("Bab 1: Berpetualang di Desa Angka");
+    tambahan.push("Bab 1: Kantong Permen Sani");
   }
   if (/penjumlahan dan pengurangan bersusun/i.test(materi)) {
     tambahan.push("Bab 2: Cara Berhitung");
