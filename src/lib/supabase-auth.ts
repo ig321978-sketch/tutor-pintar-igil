@@ -2,16 +2,11 @@ import { createServerClient } from "@supabase/ssr";
 import { cookies } from "next/headers";
 import { NextResponse } from "next/server";
 import type { SupabaseClient, User } from "@supabase/supabase-js";
+import { kredensialSupabasePublik } from "@/lib/kredensial-supabase";
 import { adalahPeranAdmin, bacaPeranPengguna } from "@/lib/peran";
 
 function kredensialPublik(): { url: string; kunci: string } | null {
-  const url = process.env.NEXT_PUBLIC_SUPABASE_URL;
-  const kunci =
-    process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY ||
-    process.env.SUPABASE_ANON_KEY ||
-    process.env.SUPABASE_SERVICE_ROLE_KEY;
-  if (!url || !kunci) return null;
-  return { url, kunci };
+  return kredensialSupabasePublik();
 }
 
 export async function supabaseAuthServer(): Promise<SupabaseClient | null> {
@@ -45,9 +40,13 @@ export async function sesiPenggunaSaatIni(): Promise<{
   if (!supabase) {
     return { user: null, peran: null, adalahAdmin: false };
   }
-  const {
-    data: { user },
-  } = await supabase.auth.getUser();
+  let user: User | null = null;
+  try {
+    const hasil = await supabase.auth.getUser();
+    user = hasil.data.user;
+  } catch {
+    return { user: null, peran: null, adalahAdmin: false };
+  }
   if (!user) {
     return { user: null, peran: null, adalahAdmin: false };
   }

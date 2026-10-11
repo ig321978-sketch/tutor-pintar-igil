@@ -45,19 +45,23 @@ async function sesiAdmin(request: NextRequest) {
   if (!sesiMw.supabase) {
     return { admin: false, response: sesiMw.response, user: false };
   }
-  const {
-    data: { user },
-  } = await sesiMw.supabase.auth.getUser();
-  const response = tanpaCache(sesiMw.response);
-  if (!user) {
-    return { admin: false, response, user: false };
+  try {
+    const {
+      data: { user },
+    } = await sesiMw.supabase.auth.getUser();
+    const response = tanpaCache(sesiMw.response);
+    if (!user) {
+      return { admin: false, response, user: false };
+    }
+    const peran = await bacaPeranPengguna(sesiMw.supabase, user);
+    return {
+      admin: adalahPeranAdmin(peran),
+      response,
+      user: true,
+    };
+  } catch {
+    return { admin: false, response: tanpaCache(sesiMw.response), user: false };
   }
-  const peran = await bacaPeranPengguna(sesiMw.supabase, user);
-  return {
-    admin: adalahPeranAdmin(peran),
-    response,
-    user: true,
-  };
 }
 
 function tolakPublik(request: NextRequest) {

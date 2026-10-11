@@ -2,14 +2,10 @@ import { createServerClient, type CookieOptions } from "@supabase/ssr";
 import { NextResponse, type NextRequest } from "next/server";
 import type { SupabaseClient } from "@supabase/supabase-js";
 
+import { kredensialSupabasePublik } from "@/lib/kredensial-supabase";
+
 function kredensialPublik(): { url: string; kunci: string } | null {
-  const url = process.env.NEXT_PUBLIC_SUPABASE_URL;
-  const kunci =
-    process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY ||
-    process.env.SUPABASE_ANON_KEY ||
-    process.env.SUPABASE_SERVICE_ROLE_KEY;
-  if (!url || !kunci) return null;
-  return { url, kunci };
+  return kredensialSupabasePublik();
 }
 
 export function supabaseAuthMiddleware(

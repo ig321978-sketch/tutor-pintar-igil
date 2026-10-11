@@ -1,4 +1,5 @@
 import { NextResponse } from "next/server";
+import { pesanGalatAuthSupabase } from "@/lib/kredensial-supabase";
 import { adalahPeranAdmin, bacaPeranPengguna } from "@/lib/peran";
 import { supabaseAuthServer } from "@/lib/supabase-auth";
 
@@ -35,15 +36,28 @@ export async function POST(req: Request) {
     );
   }
 
-  const { data, error } = await supabase.auth.signInWithPassword({
-    email,
-    password,
-  });
-  if (error || !data.user) {
-    const pesan = /invalid login|invalid credentials/i.test(error?.message ?? "")
-      ? "Email atau kata sandi tidak valid."
-      : error?.message || "Email atau kata sandi tidak valid.";
-    return NextResponse.json({ berhasil: false, pesan }, { status: 401 });
+  let data: { user?: { id: string } | null } | null = null;
+  let error: { message?: string } | null = null;
+  try {
+    const hasil = await supabase.auth.signInWithPassword({
+      email,
+      password,
+    });
+    data = hasil.data;
+    error = hasil.error;
+  } catch (galat) {
+    error = {
+      message: galat instanceof Error ? galat.message : "fetch failed",
+    };
+  }
+  if (error || !data?.user) {
+    const jaringan = /fetch failed|failed to fetch|enotfound|getaddrinfo/i.test(
+      error?.message ?? "",
+    );
+    return NextResponse.json(
+      { berhasil: false, pesan: pesanGalatAuthSupabase(error) },
+      { status: jaringan ? 503 : 401 },
+    );
   }
 
   const peran = await bacaPeranPengguna(supabase, data.user);
