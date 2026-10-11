@@ -54,6 +54,7 @@ function judulAlias(materi) {
     tambahan.push("Bab 5: Data Sederhana");
   }
   if (/pengukuran panjang standar/i.test(materi)) {
+    tambahan.push("Bab 6: Pita Kantong Permen");
     tambahan.push("Bab 6: Panjang");
   }
   if (/pengukuran berat standar/i.test(materi)) {

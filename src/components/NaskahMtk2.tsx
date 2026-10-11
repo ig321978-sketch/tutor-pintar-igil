@@ -19,6 +19,7 @@ import NaskahMtk2Bab2 from "@/components/NaskahMtk2Bab2";
 import NaskahMtk2Bab3 from "@/components/NaskahMtk2Bab3";
 import NaskahMtk2Bab4 from "@/components/NaskahMtk2Bab4";
 import NaskahMtk2Bab5 from "@/components/NaskahMtk2Bab5";
+import NaskahMtk2Bab6 from "@/components/NaskahMtk2Bab6";
 
 function KartuBingkai({ children }: { children: ReactNode }) {
   return (
@@ -1120,6 +1121,9 @@ export default function NaskahMtk2({
   }
   if (modul.id === "mtk-2-bab5") {
     return <NaskahMtk2Bab5 kelas={kelas} kelamin={kelamin} />;
+  }
+  if (modul.id === "mtk-2-bab6") {
+    return <NaskahMtk2Bab6 kelas={kelas} kelamin={kelamin} />;
   }
   const [kartuA, kartuB, kartuC, kartuD] = modul.kartu;
   const aliasTulisC = kumpulkanAlias(kartuC.kuis.flatMap((item) => item.alias));

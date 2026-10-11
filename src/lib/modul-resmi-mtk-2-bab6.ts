@@ -10,251 +10,260 @@ export const MODUL_MTK2_BAB6: ModulResmiPai = {
   id: "mtk-2-bab6",
   judul: JUDUL_MTK2_BAB6,
   pola:
-    /pengukuran panjang standar|penggaris pintar|satuan cm dan m|bab 6: panjang|mengenal satuan cm/,
+    /pengukuran panjang standar|pita kantong permen|penggaris pintar|satuan cm dan m|bab 6: panjang|mengenal satuan cm/,
   motivasi:
-    "cm untuk benda pendek, m untuk benda panjang. Ukur dari angka 0, bukan ujung penggaris. 1 m = 100 cm. Penggaris adalah alat baku.",
-  kunciJawaban: "B,B,S,B,B,A,C,B,A,B",
+    "Hore! Kamu sudah membantu Sani mengukur pita. Mulai dari angka 0, bukan ujung plastik. cm untuk benda pendek, m untuk benda panjang. 1 m = 100 cm.",
+  kunciJawaban: "B,A,B,B,C,A,A,A,A,A",
   sketsaKartu: [
-    "Anak menyejajarkan pensil pada angka 0 penggaris.",
-    "Anak memilih cm untuk pensil dan m untuk papan tulis.",
-    "Anak mengerjakan evaluasi satuan dan cara ukur.",
-    "Anak menarik garis pensil-halaman, menggeser penggaris atau jengkal, mengurutkan 3-8-15 cm, dan menulis 100.",
+    "Sani ingin memotong pita merah dengan penggaris agar kantong permen cantik.",
+    "Ukur dari angka 0. Pita 0 sampai 5 berarti 5 cm. 1 m = 100 cm.",
+    "Anak menjadi detektif: Stik A dari 0, Stik B tidak dari 0 jadi dihitung selisih.",
+    "Anak mengisi lembar evaluasi tantangan para juara tentang pengukuran panjang.",
   ],
   latihan: pg([
     `[Soal 1 - PG - Tipe: HOTS]
-Penghapus diukur dari 0, ujung kanan di angka 4. Panjangnya...
-A) 0 cm
-B) 4 cm
-C) 5 cm
-D) 14 cm`,
+Edo mengukur pensil dari angka 3 sampai 10, lalu bilang 10 cm. Pendapat yang tepat...
+A) Benar, karena ujung akhir di angka 10
+B) Salah, panjangnya 7 cm karena 10 dikurangi 3
+C) Salah, seharusnya 13 cm
+D) Benar jika penggaris rusak`,
     `[Soal 2 - PG - Tipe: HOTS]
-Singkatan sentimeter adalah...
-A) m
-B) cm
-C) kg
-D) g`,
+Pita 1 meter dipotong sama rata untuk 2 kotak kado, habis tanpa sisa. Tiap kotak mendapat...
+A) 50 cm
+B) 5 cm
+C) 200 cm
+D) 100 cm`,
     `[Soal 3 - PG - Tipe: HOTS]
-Buku diukur dari angka 1 sampai 6, panjangnya 6 cm. Pernyataan ini...
-A) Benar.
-B) Salah; 6 - 1 = 5 cm.
-C) Benar jika penggaris rusak.
-D) Harus memakai meter.`,
-    `[Soal 4 - PG - Tipe: HOTS]
-Meteran kain menghasilkan angka sama meski diukur orang berbeda. Pernyataan ini...
-A) Salah.
-B) Benar; meteran adalah alat ukur baku.
-C) Benar hanya jengkal.
-D) Hasilnya selalu beda.`,
-    `[Soal 5 - PG - Tipe: Reguler]
-Pensil tulis baru paling cocok diukur dengan...
-A) Meter
-B) Sentimeter
-C) Kilogram
-D) Jengkal wajib`,
-    `[Soal 6 - PG - Tipe: Reguler]
-Halaman sekolah dan tinggi lemari paling cocok dengan...
-A) Meter
-B) Gram
-C) cm saja
-D) Langkah kaki wajib`,
-    `[Soal 7 - PG - Tipe: Reguler]
-1 meter sama dengan...
-A) 10 cm
-B) 12 cm
-C) 100 cm
-D) 1.000 cm`,
-    `[Soal 8 - PG - Tipe: Reguler]
-Urutan dari pendek: klip 3 cm, krayon 8 cm, penghapus papan 15 cm adalah...
-A) 15, 8, 3
-B) 3, 8, 15
-C) 8, 3, 15
-D) 3, 15, 8`,
+(1) Permen karet 2 cm. (2) Lemari 2 m. (3) Penggaris guru 1 cm. Mana yang tidak masuk akal?
+A) Nomor (1) saja
+B) Nomor (3) saja
+C) Nomor (2) dan (3)
+D) Semuanya salah`,
+    `[Soal 4 - PG - Tipe: MOTS]
+Pita 45 cm digabung pita 30 cm. Totalnya...
+A) 15 cm
+B) 75 cm
+C) 70 cm
+D) 85 cm`,
+    `[Soal 5 - PG - Tipe: HOTS]
+Siti 120 cm, Dayu 1 m lebih 15 cm, Beni 118 cm. Urutan dari yang paling tinggi...
+A) Siti, Dayu, Beni
+B) Dayu, Siti, Beni
+C) Siti, Beni, Dayu
+D) Beni, Siti, Dayu`,
+    `[Soal 6 - PG - Tipe: LOTS]
+3 meter diubah ke sentimeter...
+A) 300
+B) 30
+C) 103
+D) 3`,
+    `[Soal 7 - PG - Tipe: HOTS]
+Pita 90 cm, potong 25 cm lalu 35 cm. Sisanya...
+A) 30
+B) 50
+C) 60
+D) 10`,
+    `[Soal 8 - PG - Tipe: HOTS]
+Permen koin diukur penggaris kecil, lingkar perut diukur meteran rol. Pasangan yang tepat...
+A) 1B 2A
+B) 1A 2B
+C) Keduanya A
+D) Keduanya B`,
     `[Soal 9 - PG - Tipe: HOTS]
-Mengapa kita mulai dari angka 0, bukan ujung plastik penggaris?
-A) Supaya angka di ujung kanan benda adalah panjang yang benar.
-B) Supaya penggaris tidak patah.
-C) Karena 1 selalu awal.
-D) Karena meter lebih pendek.`,
-    `[Soal 10 - PG - Tipe: Reguler]
-Jengkal tangan termasuk alat ukur...
-A) Baku
-B) Tidak baku, berubah-ubah
-C) Satuan kg
-D) Piktogram`,
+Penggaris 30 cm ditempel 3 kali penuh sepanjang meja. Panjang meja...
+A) 90
+B) 30
+C) 33
+D) 60`,
+    `[Soal 10 - PG - Tipe: HOTS]
+Lilin 20 cm berkurang 3 cm tiap 10 menit. Setelah 20 menit sisanya...
+A) 14
+B) 17
+C) 6
+D) 23`,
   ]),
   kartu: [
     {
       kode: "A",
-      judul: "A. Membaca Penggaris dengan Akurat",
+      judul: "A. Dialog Menghias Kantong Permen",
       pengantar:
-        "Infografis penggaris pintar: cm untuk benda pendek, m untuk benda panjang. Sejajarkan ujung kiri benda pada angka 0, bukan ujung penggaris.",
-      labelDaftar: "cm, m, aturan ukur dari nol",
+        "🗺️ Sani ingin memotong pita merah dengan penggaris, supaya tidak kependekan atau kepanjangan.",
+      labelDaftar: "Target dan cerita apersepsi",
       kolom: 1,
       item: [
         {
-          nama: "Satuan sentimeter",
-          singkat: "Untuk benda pendek",
+          nama: "🌟 Target belajarku hari ini",
+          singkat: "Ukur dengan penggaris",
           uraian:
-            "Sentimeter ditulis cm. Cocok untuk pensil, penghapus, buku. Jika penghapus dari 0 sampai 4, panjangnya 4 cm.",
-          contoh: "Penghapus = 4 cm.",
+            "🎯 Aku bisa mengukur panjang benda memakai penggaris dengan cara yang benar. 🎯 Aku bisa mengenal satuan cm dan m serta hubungannya.",
+          contoh: "Mulai dari angka 0.",
         },
         {
-          nama: "Satuan meter",
-          singkat: "Untuk benda panjang",
+          nama: "🗺️ Menghias kantong permen",
+          singkat: "Pita dan penggaris",
           uraian:
-            "Meter ditulis m. Cocok untuk papan tulis, tinggi pintu, panjang kelas, halaman sekolah, tinggi lemari.",
-          contoh: "Papan tulis diukur dengan m.",
-        },
-        {
-          nama: "Mulai dari nol",
-          singkat: "Bukan ujung plastik",
-          uraian:
-            "Ujung kiri benda lurus dengan angka 0. Angka di ujung kanan adalah panjangnya. Jika mulai dari 1 sampai 6, panjang = 6-1 = 5 cm.",
-          contoh: "Selalu dari 0.",
+            "Sani punya gulungan pita. Kalau dipotong asal-asalan, pitanya bisa kependekan atau terbuang. Di meja ada penggaris berisi angka berurutan.",
+          contoh: "Yuk bantu Sani mengukur pita dengan tepat!",
         },
       ],
       kuis: [
         {
-          pertanyaan:
-            "Jika Ali mengukur penghapus dan ujung kanannya menunjuk angka 4 pada penggaris yang dimulai dari 0, berapa panjang penghapus Ali?",
-          alias: ["4", "empat", "4 cm"],
+          pertanyaan: "1. Sani ingin menghias kantong permen memakai apa?",
+          alias: ["pita", "pita merah"],
+        },
+        {
+          pertanyaan: "2. Alat ukur yang dilihat Sani di meja apa?",
+          alias: ["penggaris", "penggaris panjang"],
+        },
+        {
+          pertanyaan: "3. Satuan panjang di penggaris disebut apa?",
+          alias: ["cm", "sentimeter", "senti"],
         },
       ],
-      kuisTulis: {
-        pertanyaan: "Singkatan satuan ukuran standar sentimeter adalah...",
-        alias: ["cm"],
-      },
       voice: [
         [
-          "Anak-anak kelas 2 yang teliti, jengkal tangan kita bisa berbeda-beda. Sekarang kita pakai alat ukur standar: penggaris dan meteran.",
-          "Satuan kecil dinamakan sentimeter, ditulis cm, untuk pensil atau buku. Benda panjang seperti papan tulis memakai meter, ditulis m.",
-          "Rahasianya: ujung kiri benda lurus dengan angka 0. Angka di ujung kanan itulah panjang aslinya!",
+          "Toko permen Sani ramai. Sani ingin menghias kantong besar dengan pita merah. Kalau dipotong asal-asalan, pitanya bisa kependekan atau kepanjangan.",
+          "Di meja ada penggaris berisi angka berurutan. Yuk, kita bantu Sani mengukur pita dengan tepat!",
         ],
       ],
     },
     {
       kode: "B",
-      judul: "B. Alat Baku dan 100 Sentimeter",
+      judul: "B. Infografis Penggaris dan Meteran",
       pengantar:
-        "Infografis alat baku vs tidak baku. Penggaris dan meteran pita pasti. Jengkal dan langkah kaki berubah-ubah. 1 m = 100 cm.",
-      labelDaftar: "Baku, tidak baku, konversi, urutan",
+        "📏 Benda pendek diukur dengan penggaris, satuannya sentimeter atau cm. Benda sangat panjang diukur dengan meteran, satuannya meter atau m. 1 m = 100 cm.",
+      labelDaftar: "Cara ukur dari nol dan satuan m",
       kolom: 1,
       item: [
         {
-          nama: "Alat ukur baku",
-          singkat: "Hasilnya sama",
+          nama: "📏 Mengenal sentimeter",
+          singkat: "Penggaris = cm",
           uraian:
-            "Penggaris cm dan meteran pita hasilnya sama meskipun diukur orang berbeda. Itulah standar nasional dan internasional.",
-          contoh: "Penggaris. Meteran pita.",
+            "Untuk pita, pensil, atau buku, pakai penggaris. Satuan di penggaris disebut sentimeter, ditulis cm.",
+          contoh: "Pita Sani 5 cm.",
         },
         {
-          nama: "Alat tidak baku",
-          singkat: "Berubah-ubah",
+          nama: "🕵️‍♂️ Trik angka 0",
+          singkat: "Mulai dari nol",
           uraian:
-            "Jengkal tangan dan langkah kaki beda tiap orang. Semester satu kita sudah mencobanya. Sekarang kita pilih yang baku.",
-          contoh: "Jengkal. Langkah kaki.",
+            "Ujung kiri benda pas di angka 0, bukan di ujung plastik. Tempel lurus. Angka di ujung kanan adalah panjangnya.",
+          contoh: "Dari 0 sampai 5 = 5 cm.",
         },
         {
-          nama: "Satu meter",
-          singkat: "Sama dengan 100 cm",
+          nama: "🏃‍♂️ Mengenal meter",
+          singkat: "1 m = 100 cm",
           uraian:
-            "1 m = 100 cm. Klip 3 cm, krayon 8 cm, penghapus papan 15 cm. Urutan pendek ke panjang: 3, 8, 15.",
-          contoh: "1 m = 100 cm.",
+            "Ruangan atau pintu diukur dengan meteran. Satuannya meter, ditulis m. 1 meter sama dengan 100 sentimeter.",
+          contoh: "100 penggaris 1 cm = 1 m.",
         },
       ],
       kuis: [
         {
-          pertanyaan: "Penggaris termasuk alat baku atau tidak baku? Mengapa?",
-          alias: ["baku", "standar", "sama"],
+          pertanyaan: "1. Pita dari 0 sampai 5 panjangnya berapa cm?",
+          alias: ["5", "lima", "5 cm"],
+        },
+        {
+          pertanyaan: "2. 1 meter sama dengan berapa sentimeter?",
+          alias: ["100", "seratus"],
+        },
+        {
+          pertanyaan: "3. Pengukuran yang benar dimulai dari angka berapa?",
+          alias: ["0", "nol"],
         },
       ],
-      kuisTulis: {
-        pertanyaan: "1 meter sama dengan ... sentimeter.",
-        alias: ["100"],
-      },
       voice: [
         [
-          "Penggaris dan meteran pita adalah alat baku. Angkanya sama di seluruh dunia.",
-          "Jengkal dan langkah kaki berubah-ubah. Jangan dipakai untuk ukuran resmi.",
-          "Satu meter sama dengan seratus sentimeter. Urutkan benda dari yang paling pendek.",
+          "Benda pendek diukur dengan penggaris. Satuannya sentimeter, ditulis cm. Ujung kiri benda harus pas di angka nol, bukan di ujung plastik.",
+          "Pita dari nol sampai lima berarti lima sentimeter. Benda sangat panjang memakai meteran. Satu meter sama dengan seratus sentimeter.",
         ],
       ],
     },
     {
       kode: "C",
-      judul: "C. Lembar Evaluasi Siswa",
+      judul: "C. Detektif Ukuran Stik",
       pengantar:
-        "Pilih panjang 4 cm dan singkatan cm, tentukan benar-salah ukur dari 1 serta meteran kain, jodohkan pensil-halaman-lemari, lalu jelaskan mengapa mulai dari 0.",
-      labelDaftar: "Pilihan, benar-salah, mencocokkan, dan esai",
+        "🕵️‍♂️ Baca Stik A yang mulai dari 0, lalu Stik B yang ujung kirinya meleset. Panjang Stik B dihitung dari selisih angkanya.",
+      labelDaftar: "Aktivitas terbimbing dan jurnal",
       kolom: 1,
       item: [
         {
-          nama: "Kelompok A dan B",
-          singkat: "Baca penggaris",
+          nama: "🕵️‍♂️ Aktivitas 1",
+          singkat: "Stik A 12 cm, Stik B 10 cm",
           uraian:
-            "Dari 0 sampai 4 = 4 cm. Singkatan cm. Dari 1 sampai 6 = 5 cm. Meteran kain baku.",
-          contoh: "4 cm. cm. 5 cm.",
+            "Stik A: kiri 0, kanan 12, panjang 12 cm. Stik B: kiri 2, kanan 12, selisih 10 cm.",
+          contoh: "Kalau tidak dari 0, kurangi ujung kanan dengan ujung kiri.",
         },
         {
-          nama: "Kelompok C dan D",
-          singkat: "Satuan dan urutan",
+          nama: "🎭 Jurnal perasaanku",
+          singkat: "Pilih wajah",
           uraian:
-            "Pensil: cm. Halaman dan lemari: m. 1 m = 100 cm. Urutan 3, 8, 15 cm.",
-          contoh: "cm. m. 100.",
+            "😀 Sangat seru, mau mengukur barang di kamar! 😐 Sedikit bingung membedakan cm dan m. 😢 Masih sering lupa mulai dari angka 0.",
+          contoh: "Pilih satu wajah.",
         },
       ],
       kuis: [
-        { pertanyaan: "Penghapus 0 sampai 4?", alias: ["4"] },
-        { pertanyaan: "Singkatan sentimeter?", alias: ["cm"] },
-        { pertanyaan: "Dari 1 sampai 6 = 6 cm?", alias: ["salah", "5"] },
-        { pertanyaan: "Meteran kain baku?", alias: ["benar"] },
-        { pertanyaan: "Pensil satuan?", alias: ["cm"] },
-        { pertanyaan: "Mengapa dari 0?", alias: ["benar", "panjang", "nol"] },
+        {
+          pertanyaan: "1. Panjang Stik A yang mulai dari 0 berapa cm?",
+          alias: ["12", "dua belas"],
+        },
+        {
+          pertanyaan: "2. Ujung kiri Stik B berada di angka berapa?",
+          alias: ["2", "dua"],
+        },
+        {
+          pertanyaan: "3. Panjang Stik B yang dihitung selisih berapa cm?",
+          alias: ["10", "sepuluh"],
+        },
       ],
       voice: [
-        ["Mulai dari nol. Empat sentimeter. Singkatan cm."],
-        ["Satu meter sama dengan seratus sentimeter."],
+        [
+          "Yuk jadi detektif ukuran. Stik A ujung kiri di nol, ujung kanan di dua belas, jadi dua belas sentimeter.",
+          "Stik B ujung kiri di dua, ujung kanan di dua belas. Karena tidak mulai dari nol, panjangnya selisih: dua belas kurang dua sama dengan sepuluh sentimeter.",
+        ],
       ],
     },
     {
       kode: "D",
-      judul: "D. Kartu Evaluasi Ekstra",
+      judul: "D. Lembar Evaluasi Siswa",
       pengantar:
-        "Tanpa keyboard. Tarik garis satuan pensil-halaman-lemari, geser penggaris atau jengkal, urutkan 3-8-15 cm, coretkan 0 pada 100, lalu tekan BENAR atau SALAH.",
-      labelDaftar: "Tarik garis, keranjang, urutan, kanvas, detektif",
+        "📝 Tantangan para juara! Ukur pensil Edo, pita Sani, dan meja Riko. Ingat: mulai dari 0, dan 1 m = 100 cm.",
+      labelDaftar: "Evaluasi pilihan ganda dan isian",
       kolom: 1,
       item: [
         {
-          nama: "Permainan A sampai C",
-          singkat: "Garis, keranjang, urutan",
+          nama: "🍓 Bagian A",
+          singkat: "Pilihan ganda",
           uraian:
-            "Pensil: cm. Halaman sekolah: m. Lemari: m. Baku: penggaris, meteran pita. Tidak baku: jengkal, langkah. Urutan: klip 3, krayon 8, penghapus 15.",
-          contoh: "cm. Baku. 3 dulu.",
+            "Edo 10-3=7. Pita 1 m untuk 2 kotak = 50 cm. Penggaris guru 1 cm tidak masuk akal. 45+30=75. Siti 120, Beni 118, Dayu 115.",
+          contoh: "Selisih. 1 m = 100 cm.",
         },
         {
-          nama: "Permainan D dan E",
-          singkat: "Kanvas dan detektif",
+          nama: "✏️ Bagian B",
+          singkat: "Isian singkat",
           uraian:
-            "1 m = 100 cm, coretkan 0. Ukur dari 1 sampai 6 bukan 6 cm. Meteran kain hasilnya sama.",
-          contoh: "Coretkan 0. SALAH lalu BENAR.",
+            "3 m = 300 cm. Sisa pita Lani 30. Permen koin pakai penggaris, perut pakai meteran. Meja 90 cm. Lilin sisa 14 cm.",
+          contoh: "300. 30. 90. 14.",
         },
       ],
       kuis: [
-        { pertanyaan: "Tarik garis satuan?", alias: ["cm", "meter"] },
-        { pertanyaan: "Keranjang baku?", alias: ["penggaris", "jengkal"] },
-        { pertanyaan: "Urutan 3 8 15?", alias: ["3", "8", "15"] },
-        { pertanyaan: "Dari 1 sampai 6 = 6 cm?", alias: ["salah"] },
-        { pertanyaan: "Meteran kain sama?", alias: ["benar"] },
+        { pertanyaan: "1. Pensil dari 3 sampai 10 panjangnya?", alias: ["7"] },
+        { pertanyaan: "2. Pita 1 m dibagi 2 kotak, tiap kotak?", alias: ["50"] },
+        { pertanyaan: "3. Ukuran mana yang tidak masuk akal?", alias: ["penggaris", "1 cm", "3"] },
+        { pertanyaan: "4. 45 cm + 30 cm?", alias: ["75"] },
+        { pertanyaan: "5. Urutan tinggi Siti, Dayu, Beni?", alias: ["siti", "beni", "dayu"] },
+        { pertanyaan: "6. 3 meter sama dengan berapa cm?", alias: ["300"] },
+        { pertanyaan: "7. 90 potong 25 lalu 35, sisa?", alias: ["30"] },
+        { pertanyaan: "8. Permen koin dan lingkar perut, pasangannya?", alias: ["1b", "2a"] },
+        { pertanyaan: "9. Penggaris 30 cm tiga kali, meja?", alias: ["90"] },
+        { pertanyaan: "10. Lilin 20 cm, 20 menit, sisa?", alias: ["14"] },
       ],
-      kuisTulis: {
-        pertanyaan: "Coretkan angka terakhir 1 - 0 - __ sentimeter.",
-        alias: ["100", "0"],
-      },
       voice: [
         [
-          "Tanpa keyboard. Tarik garis pensil ke cm, halaman dan lemari ke meter. Geser penggaris ke baku, jengkal ke tidak baku.",
-          "Urutkan klip 3 cm, krayon 8 cm, penghapus 15 cm. Coretkan 0 untuk seratus sentimeter.",
-          "Detektif: mulai dari 1 sampai 6 berarti 5 cm. Meteran kain hasilnya sama.",
+          "Ini lembar evaluasi tantangan para juara. Pensil dari tiga sampai sepuluh panjangnya tujuh. Satu meter dibagi dua kotak sama dengan lima puluh sentimeter. Penggaris guru satu sentimeter tidak masuk akal.",
+          "Empat puluh lima tambah tiga puluh sama dengan tujuh puluh lima. Siti seratus dua puluh, Beni seratus delapan belas, Dayu seratus lima belas.",
+        ],
+        [
+          "Tiga meter sama dengan tiga ratus sentimeter. Sisa pita Lani tiga puluh. Permen koin memakai penggaris, perut memakai meteran. Meja Riko sembilan puluh. Lilin sisa empat belas.",
         ],
       ],
     },
