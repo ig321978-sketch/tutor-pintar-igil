@@ -10,252 +10,260 @@ export const MODUL_MTK2_BAB4: ModulResmiPai = {
   id: "mtk-2-bab4",
   judul: JUDUL_MTK2_BAB4,
   pola:
-    /geometri bangun datar|karakter bangun datar|identifikasi segitiga|penjumlahan bersusun|pola dan bangun/,
+    /geometri bangun datar|bungkus permen unik|karakter bangun datar|identifikasi segitiga|penjumlahan bersusun|pola dan bangun/,
   motivasi:
-    "Segitiga 3 sisi 3 sudut. Segiempat 4 sisi 4 sudut. Lingkaran 1 sisi lengkung, 0 sudut. Pizza, papan tulis, roda.",
-  kunciJawaban: "B,B,B,S,B,A,C,B,A,B",
+    "Hore! Kamu sudah membantu Sani mengelompokkan bungkus permen. Segitiga 3 sisi 3 sudut. Segi empat 4 sisi 4 sudut. Lingkaran 1 sisi, 0 sudut.",
+  kunciJawaban: "B,A,C,B,A,A,A,A,A,A",
   sketsaKartu: [
-    "Anak memegang pizza segitiga, papan tulis segiempat, dan koin lingkaran.",
-    "Anak menghitung sisi dan sudut tiap bangun.",
-    "Anak mengerjakan evaluasi ciri bangun datar.",
-    "Anak menarik garis ciri, menggeser koin-buku, mengurutkan lingkaran-segitiga-segiempat, dan menulis 3.",
+    "Paman membawa toples permen: kotak, lolipop lancip, dan koin bundar.",
+    "Sani memisahkan segi empat, segitiga, dan lingkaran menurut sisi dan sudut.",
+    "Anak menjadi detektif garis tepi: hitung sisi dan sudut dua bungkus misteri.",
+    "Anak mengisi lembar evaluasi tantangan para juara tentang bangun datar.",
   ],
   latihan: pg([
     `[Soal 1 - PG - Tipe: HOTS]
-Jumlah sudut pojok dan sisi lingkaran adalah...
-A) 1 sudut, 3 sisi
-B) 0 sudut, 1 sisi lengkung
-C) 4 sudut, 4 sisi
-D) 3 sudut, 3 sisi`,
+Beni menggelindingkan permen kotak, lolipop, dan koin. Ia bilang semua bisa menggelinding mulus. Pendapat Beni...
+A) Benar, karena beratnya sama
+B) Salah, hanya permen koin (lingkaran) yang menggelinding mulus karena tidak punya sudut
+C) Salah, hanya permen cokelat yang menggelinding
+D) Semua permen punya sudut`,
     `[Soal 2 - PG - Tipe: HOTS]
-Bangun dengan 3 sisi garis lurus dinamakan...
-A) Lingkaran
-B) Segitiga
-C) Segiempat
-D) Ratusan`,
+Siti memotong kertas segi empat diagonal dari pojok ke pojok. Potongannya menjadi...
+A) Dua buah bangun segitiga
+B) Dua buah bangun segi empat yang lebih kecil
+C) Satu buah bangun lingkaran
+D) Tetap satu segi empat`,
     `[Soal 3 - PG - Tipe: HOTS]
-Permukaan kertas kalender berbentuk segiempat karena 4 garis lurus. Pernyataan ini...
-A) Salah.
-B) Benar; 4 sisi lurus termasuk segiempat.
-C) Benar hanya jika bundar.
-D) Kalender adalah lingkaran.`,
-    `[Soal 4 - PG - Tipe: HOTS]
-Segitiga bisa punya sisi melengkung seperti busur. Pernyataan ini...
-A) Benar.
-B) Salah; segitiga wajib 3 garis lurus yang bertemu di 3 sudut.
-C) Benar jika pizza.
-D) Segitiga sama dengan lingkaran.`,
-    `[Soal 5 - PG - Tipe: Reguler]
-Segiempat memiliki...
-A) 3 sisi 3 sudut
-B) 4 sisi 4 sudut
-C) 0 sudut
-D) 1 sisi lengkung`,
-    `[Soal 6 - PG - Tipe: Reguler]
-Uang koin dan roda mobil termasuk...
+Jumlah sisi ditambah jumlah sudut = 6. Pojokan sama banyak dengan sisinya. Bangun itu...
+A) Lingkaran
+B) Segi empat
+C) Segitiga
+D) Tidak ada`,
+    `[Soal 4 - PG - Tipe: MOTS]
+Cetakan kue berbentuk atap rumah. Jumlah sisi dan sudutnya...
+A) 4 sisi dan 4 sudut
+B) 3 sisi dan 3 sudut
+C) 1 sisi dan 0 sudut
+D) 2 sisi dan 2 sudut`,
+    `[Soal 5 - PG - Tipe: HOTS]
+Dodi menempel dua segitiga sama pada satu sisi miring. Bangun baru yang terbentuk...
+A) Segi empat
+B) Lingkaran
+C) Tetap satu segitiga besar
+D) Tidak terbentuk bangun`,
+    `[Soal 6 - PG - Tipe: LOTS]
+Bangun yang punya 1 sisi melingkar dan 0 sudut dinamakan...
 A) Lingkaran
 B) Segitiga
-C) Segiempat
-D) Puluhan`,
-    `[Soal 7 - PG - Tipe: Reguler]
-Papan tulis dan buku tulis termasuk...
-A) Lingkaran
-B) Segitiga
-C) Segiempat
-D) Bait`,
-    `[Soal 8 - PG - Tipe: Reguler]
-Urutan jumlah sisi dari sedikit ke banyak...
-A) Segiempat, segitiga, lingkaran
-B) Lingkaran, segitiga, segiempat
-C) Segitiga, lingkaran, segiempat
-D) Semua 4 sisi`,
+C) Segi empat
+D) Persegi`,
+    `[Soal 7 - PG - Tipe: HOTS]
+Ubin kotak, roda gerobak, penggaris segitiga, buku persegi panjang. Yang termasuk segi empat...
+A) Nomor 1 dan 4
+B) Nomor 2 dan 3
+C) Nomor 1 dan 2
+D) Nomor 3 dan 4`,
+    `[Soal 8 - PG - Tipe: HOTS]
+4 sudut sisinya tegak lurus berpasangan dengan segi empat. 3 sudut berpasangan dengan segitiga. Pasangan yang tepat...
+A) 1B dan 2A
+B) 1A dan 2B
+C) Keduanya A
+D) Keduanya B`,
     `[Soal 9 - PG - Tipe: HOTS]
-Mengapa roda sepeda tidak disebut segiempat?
-A) Karena sisinya lengkung dan tidak punya pojok lancip.
-B) Karena warnanya hitam.
-C) Karena ada 4 sudut tersembunyi.
-D) Karena terbuat dari karet.`,
-    `[Soal 10 - PG - Tipe: Reguler]
-Potongan pizza biasanya menyerupai...
-A) Segiempat
-B) Segitiga
-C) Lingkaran utuh wajib
-D) Titik`,
+Pagar segi empat dari stik, 1 stik patah. Sisa stik membentuk...
+A) Segitiga
+B) Lingkaran
+C) Tetap segi empat
+D) Garis lurus`,
+    `[Soal 10 - PG - Tipe: HOTS]
+Dinding punya 2 bungkus segitiga dan 1 bungkus segi empat. Total sudut...
+A) 10
+B) 8
+C) 7
+D) 6`,
   ]),
   kartu: [
     {
       kode: "A",
-      judul: "A. Segitiga, Segiempat, dan Lingkaran",
+      judul: "A. Dialog Oleh-oleh Permen dari Paman",
       pengantar:
-        "Infografis karakter bangun datar: segitiga 3 sisi 3 sudut, segiempat 4 sisi 4 sudut, lingkaran 1 sisi lengkung 0 sudut. Pizza, televisi, roda.",
-      labelDaftar: "Sisi, sudut, detektif sekitar",
+        "🗺️ Paman membawa toples permen untuk Sani. Bungkusnya ada yang kotak, lancip, dan bundar.",
+      labelDaftar: "Target dan cerita apersepsi",
       kolom: 1,
       item: [
         {
-          nama: "Segitiga",
-          singkat: "3 sisi, 3 pojok",
+          nama: "🌟 Target belajarku hari ini",
+          singkat: "Sisi dan sudut",
           uraian:
-            "Dibatasi 3 garis lurus yang bertemu di 3 titik sudut. Potongan pizza sering berbentuk segitiga. Tidak boleh ada sisi melengkung.",
-          contoh: "Pizza: 3 sisi lurus.",
+            "🎯 Aku bisa mengenal segitiga, segi empat, dan lingkaran dari benda di sekitarku. 🎯 Aku bisa menghitung jumlah sisi dan sudut dengan tepat.",
+          contoh: "Hitung garis tepi dan pojokan.",
         },
         {
-          nama: "Segiempat",
-          singkat: "4 sisi, 4 pojok",
+          nama: "🗺️ Oleh-oleh permen dari paman",
+          singkat: "Kotak, lolipop, koin",
           uraian:
-            "Ada 4 garis lurus dan 4 titik sudut. Papan tulis, permukaan televisi, buku, dan kertas kalender termasuk segiempat.",
-          contoh: "Papan tulis: 4 sisi.",
-        },
-        {
-          nama: "Lingkaran",
-          singkat: "Lengkung, tanpa pojok",
-          uraian:
-            "Satu sisi melengkung yang bertemu bundar. Tidak ada sudut lancip. Roda sepeda, uang koin, dan jam dinding berbentuk lingkaran.",
-          contoh: "Koin: 0 sudut.",
+            "Ada bungkus kotak kaku, ada yang lancip seperti atap, ada yang melingkar. Ada yang punya pojokan tajam, ada yang tidak.",
+          contoh: "Yuk bantu Sani mengelompokkan menurut bentuk pinggirannya!",
         },
       ],
       kuis: [
         {
-          pertanyaan:
-            "Berapakah jumlah sudut pojok dan jumlah garis sisi yang dimiliki bangun datar lingkaran?",
-          alias: ["0", "nol", "1", "satu", "lengkung"],
+          pertanyaan: "1. Siapa yang membawa toples permen untuk Sani?",
+          alias: ["paman"],
+        },
+        {
+          pertanyaan: "2. Bungkus permen cokelat bentuknya seperti apa?",
+          alias: ["kotak", "segi empat", "kaku"],
+        },
+        {
+          pertanyaan: "3. Permen koin bentuknya seperti apa?",
+          alias: ["lingkaran", "bundar", "melingkar", "bulat"],
         },
       ],
-      kuisTulis: {
-        pertanyaan:
-          "Bangun datar yang memiliki 3 buah sisi garis lurus dinamakan bangun ...",
-        alias: ["segitiga"],
-      },
       voice: [
         [
-          "Anak-anak kelas 2 yang kreatif, mari melihat dunia dengan kacamata arsitek. Permukaan rata punya bentuk datar yang unik.",
-          "Jika garisnya ada 3 dan pojoknya 3, namanya segitiga. Kalau sisinya 4 lurus dan pojoknya 4, namanya segiempat, seperti papan tulis.",
-          "Ada bentuk tanpa pojok lancip, sisinya melengkung bertemu. Itu lingkaran, seperti koin atau jam dinding. Yuk, kita kelompokkan!",
+          "Hari ini paman membawa toples permen untuk Sani. Ada bungkus kotak, ada yang lancip seperti atap rumah, ada yang bundar seperti koin.",
+          "Sani meraba pinggirannya. Ada yang punya pojokan tajam, ada yang tidak. Yuk, kita bantu Sani mengelompokkan permen menurut bentuk pinggirannya!",
         ],
       ],
     },
     {
       kode: "B",
-      judul: "B. Detektif Benda di Sekitar",
+      judul: "B. Infografis Bungkus Permen Unik",
       pengantar:
-        "Infografis detektif sekitar: koin, roda, jam ke keranjang lingkaran. Papan tulis dan buku ke segiempat. Urutkan dari sisi paling sedikit.",
-      labelDaftar: "Benda nyata, jumlah sisi, sudut",
+        "📐 Sisi adalah garis tepi. Sudut adalah pojokan lancip. Segi empat 4 sisi 4 sudut. Segitiga 3 sisi 3 sudut. Lingkaran 1 sisi, 0 sudut.",
+      labelDaftar: "Sisi, sudut, dan tiga kelompok bangun",
       kolom: 1,
       item: [
         {
-          nama: "Benda lingkaran",
-          singkat: "Tidak punya pojok",
+          nama: "🟥 Segi empat",
+          singkat: "4 sisi dan 4 sudut",
           uraian:
-            "Uang koin, roda mobil, dan jam dinding punya sisi lengkung. Masuk keranjang lingkaran, 0 sudut.",
-          contoh: "Koin dan roda: lingkaran.",
+            "Seperti bungkus cokelat batang atau ubin. Ada garis atas, bawah, kiri, dan kanan. 4 sisi dan 4 sudut.",
+          contoh: "Kotak = 4 sisi, 4 sudut.",
         },
         {
-          nama: "Benda segiempat",
-          singkat: "Empat garis lurus",
+          nama: "🔺 Segitiga",
+          singkat: "3 sisi dan 3 sudut",
           uraian:
-            "Papan tulis dan buku tulis punya 4 sisi. Kertas kalender juga. Jangan tertukar dengan pizza yang biasanya segitiga.",
-          contoh: "Buku: segiempat.",
+            "Seperti atap rumah atau potongan pizza. Ada garis miring kanan, miring kiri, dan alas. 3 sisi dan 3 sudut.",
+          contoh: "Atap = 3 sisi, 3 sudut.",
         },
         {
-          nama: "Urutan jumlah sisi",
-          singkat: "Sedikit ke banyak",
+          nama: "🟡 Lingkaran",
+          singkat: "1 sisi, 0 sudut",
           uraian:
-            "Lingkaran 1 sisi lengkung, segitiga 3 sisi, segiempat 4 sisi. Jumlah sudut segitiga adalah 3.",
-          contoh: "Lingkaran, segitiga, segiempat.",
+            "Seperti permen koin atau roda. Melingkar penuh tanpa putus. 1 sisi melingkar dan tidak punya sudut.",
+          contoh: "Koin = 1 sisi, 0 sudut.",
         },
       ],
       kuis: [
         {
-          pertanyaan: "Masuk keranjang manakah uang koin dan papan tulis?",
-          alias: ["lingkaran", "segiempat", "koin", "papan"],
+          pertanyaan: "1. Segi empat punya berapa sisi dan sudut?",
+          alias: ["4", "empat"],
+        },
+        {
+          pertanyaan: "2. Segitiga punya berapa sisi?",
+          alias: ["3", "tiga"],
+        },
+        {
+          pertanyaan: "3. Lingkaran punya berapa sudut?",
+          alias: ["0", "nol", "tidak punya", "tidak ada"],
         },
       ],
-      kuisTulis: {
-        pertanyaan: "Jumlah sudut pojok pada segitiga adalah...",
-        alias: ["3", "tiga"],
-      },
       voice: [
         [
-          "Jadi detektif di rumah. Lihat jam, koin, dan roda: semuanya lingkaran.",
-          "Lihat buku dan papan tulis: empat sisi, itu segiempat.",
-          "Urutkan dari sisi paling sedikit: lingkaran, segitiga, segiempat. Sudut segitiga ada tiga.",
+          "Sisi adalah garis tepi bungkus. Sudut adalah pojokan lancip. Segi empat punya empat sisi dan empat sudut. Segitiga punya tiga sisi dan tiga sudut.",
+          "Lingkaran punya satu sisi melingkar dan tidak punya sudut. Jangan sampai tertukar ya!",
         ],
       ],
     },
     {
       kode: "C",
-      judul: "C. Lembar Evaluasi Siswa",
+      judul: "C. Detektif Garis Tepi",
       pengantar:
-        "Pilih 0 sudut lingkaran dan nama segitiga, tentukan benar-salah kalender serta sisi lengkung, jodohkan ciri ketiga bangun, lalu jelaskan mengapa roda bukan segiempat.",
-      labelDaftar: "Pilihan, benar-salah, mencocokkan, dan esai",
+        "🕵️‍♂️ Hitung garis tepi dan pojokan dua bungkus misteri. Bungkus A seperti atap. Bungkus B seperti kotak.",
+      labelDaftar: "Aktivitas terbimbing dan jurnal",
       kolom: 1,
       item: [
         {
-          nama: "Kelompok A dan B",
-          singkat: "Ciri tiga bangun",
+          nama: "🕵️‍♂️ Aktivitas 1",
+          singkat: "Segitiga dan segi empat",
           uraian:
-            "Lingkaran: 0 sudut, 1 sisi lengkung. 3 sisi lurus = segitiga. Kalender = segiempat. Segitiga tidak boleh sisi busur.",
-          contoh: "0 sudut. Segitiga. 4 sisi.",
+            "Bungkus A: 3 sisi, 3 sudut, segitiga. Bungkus B: 4 sisi, 4 sudut, segi empat.",
+          contoh: "A segitiga, B segi empat.",
         },
         {
-          nama: "Kelompok C dan D",
-          singkat: "Benda dan urutan",
+          nama: "🎭 Jurnal perasaanku",
+          singkat: "Pilih wajah",
           uraian:
-            "Koin dan roda: lingkaran. Buku dan papan: segiempat. Urutan sisi: 1, 3, 4. Roda lengkung, bukan 4 sudut.",
-          contoh: "Lingkaran. Segiempat. 3 sudut.",
+            "😀 Seru sekali, sekarang aku tahu nama pojokan bangun datar! 😐 Sedikit bingung menghitung sisi pada lingkaran. 😢 Masih butuh bantuan membedakan sisi dan sudut.",
+          contoh: "Pilih satu wajah.",
         },
       ],
       kuis: [
-        { pertanyaan: "Sudut dan sisi lingkaran?", alias: ["0", "1"] },
-        { pertanyaan: "3 sisi lurus namanya?", alias: ["segitiga"] },
-        { pertanyaan: "Kalender segiempat?", alias: ["benar"] },
-        { pertanyaan: "Segitiga sisi busur?", alias: ["salah"] },
-        { pertanyaan: "Koin bentuknya?", alias: ["lingkaran"] },
-        { pertanyaan: "Mengapa roda bukan segiempat?", alias: ["lengkung", "sudut", "pojok"] },
+        {
+          pertanyaan: "1. Bungkus A yang seperti atap punya berapa sisi?",
+          alias: ["3", "tiga"],
+        },
+        {
+          pertanyaan: "2. Bungkus B yang seperti kotak punya berapa sudut?",
+          alias: ["4", "empat"],
+        },
+        {
+          pertanyaan: "3. Bungkus A dinamakan bangun apa?",
+          alias: ["segitiga"],
+        },
       ],
       voice: [
-        ["Lingkaran tidak punya pojok. Segitiga tiga sisi lurus."],
-        ["Kalender empat sisi. Roda melengkung."],
+        [
+          "Yuk jadi detektif garis tepi. Bungkus A seperti atap: tiga sisi dan tiga sudut. Namanya segitiga.",
+          "Bungkus B seperti kotak: empat sisi dan empat sudut. Namanya segi empat.",
+        ],
       ],
     },
     {
       kode: "D",
-      judul: "D. Kartu Evaluasi Ekstra",
+      judul: "D. Lembar Evaluasi Siswa",
       pengantar:
-        "Tanpa keyboard. Tarik garis ciri bangun, geser koin atau buku ke keranjang, urutkan lingkaran-segitiga-segiempat, coretkan angka 3, lalu tekan BENAR atau SALAH.",
-      labelDaftar: "Tarik garis, keranjang, urutan, kanvas, detektif",
+        "📝 Tantangan para juara! Kenali sisi dan sudut bungkus Sani, Siti, Beni, Dodi, dan Riko.",
+      labelDaftar: "Evaluasi pilihan ganda dan isian",
       kolom: 1,
       item: [
         {
-          nama: "Permainan A sampai C",
-          singkat: "Garis, keranjang, urutan",
+          nama: "🍓 Bagian A",
+          singkat: "Pilihan ganda",
           uraian:
-            "Segitiga: 3 sisi 3 sudut. Lingkaran: 1 sisi lengkung 0 sudut. Segiempat: 4 sisi 4 sudut. Lingkaran: koin, roda, jam. Segiempat: papan, buku. Urutan: lingkaran, segitiga, segiempat.",
-          contoh: "3 sudut. Koin. Lingkaran dulu.",
+            "Hanya koin yang menggelinding. Potong diagonal jadi 2 segitiga. Teka-teki 6 adalah segitiga. Cetakan atap 3 sisi 3 sudut. Dua segitiga menempel jadi segi empat.",
+          contoh: "Lingkaran menggelinding. Potong jadi 2 segitiga.",
         },
         {
-          nama: "Permainan D dan E",
-          singkat: "Kanvas dan detektif",
+          nama: "✏️ Bagian B",
+          singkat: "Isian singkat",
           uraian:
-            "Sudut segitiga = 3. Kalender adalah segiempat. Segitiga tidak boleh sisi busur.",
-          contoh: "Coretkan 3. BENAR lalu SALAH.",
+            "1 sisi 0 sudut = lingkaran. Ubin dan buku = 1 dan 4. Pasangan 1B 2A. Sisa stik = segitiga. Total sudut 10.",
+          contoh: "Lingkaran, 1 dan 4, 10.",
         },
       ],
       kuis: [
-        { pertanyaan: "Tarik garis ciri bangun?", alias: ["segitiga", "lingkaran", "segiempat"] },
-        { pertanyaan: "Keranjang koin atau buku?", alias: ["koin", "buku"] },
-        { pertanyaan: "Urutan jumlah sisi?", alias: ["lingkaran", "segitiga", "segiempat"] },
-        { pertanyaan: "Kalender segiempat?", alias: ["benar"] },
-        { pertanyaan: "Segitiga sisi busur?", alias: ["salah"] },
+        { pertanyaan: "1. Permen mana yang menggelinding mulus?", alias: ["koin", "lingkaran"] },
+        { pertanyaan: "2. Potong segi empat diagonal jadi bangun apa?", alias: ["segitiga", "dua segitiga"] },
+        { pertanyaan: "3. Sisi plus sudut = 6, pojokan sama dengan sisi?", alias: ["segitiga"] },
+        { pertanyaan: "4. Cetakan atap punya berapa sisi?", alias: ["3", "tiga"] },
+        { pertanyaan: "5. Dua segitiga menempel jadi bangun apa?", alias: ["segi empat", "segiempat"] },
+        { pertanyaan: "6. 1 sisi melingkar 0 sudut namanya?", alias: ["lingkaran"] },
+        { pertanyaan: "7. Ubin kotak dan buku termasuk kelompok apa?", alias: ["segi empat", "1", "4"] },
+        { pertanyaan: "8. 4 sudut tegak lurus namanya?", alias: ["segi empat", "b"] },
+        { pertanyaan: "9. Segi empat kehilangan 1 stik jadi?", alias: ["segitiga"] },
+        { pertanyaan: "10. 2 segitiga dan 1 segi empat total sudut?", alias: ["10", "sepuluh"] },
       ],
-      kuisTulis: {
-        pertanyaan: "Coretkan jumlah sudut segitiga: __.",
-        alias: ["3"],
-      },
       voice: [
         [
-          "Tanpa keyboard. Tarik garis segitiga, lingkaran, dan segiempat ke cirinya. Geser koin ke lingkaran, buku ke segiempat.",
-          "Urutkan lingkaran, segitiga, segiempat. Coretkan 3 untuk sudut segitiga.",
-          "Detektif: kalender empat sisi. Segitiga tidak boleh sisi melengkung.",
+          "Ini lembar evaluasi tantangan para juara. Hanya permen koin yang menggelinding mulus. Potong kertas segi empat diagonal jadi dua segitiga. Teka-teki sisi tambah sudut enam adalah segitiga.",
+          "Cetakan atap punya tiga sisi tiga sudut. Dua segitiga menempel jadi segi empat.",
+        ],
+        [
+          "Satu sisi melingkar tanpa sudut namanya lingkaran. Ubin dan buku termasuk segi empat. Empat sudut tegak lurus itu segi empat. Tiga sudut itu segitiga. Sisa stik jadi segitiga. Total sudut Sani sepuluh.",
         ],
       ],
     },

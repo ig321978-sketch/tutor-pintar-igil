@@ -67,6 +67,7 @@ function judulAlias(materi) {
   if (/geometri bangun datar/i.test(materi)) {
     tambahan.push("Bab 4: Penjumlahan Bersusun");
     tambahan.push("Bab 4: Pola dan Bangun");
+    tambahan.push("Bab 4: Bungkus Permen Unik");
   }
   return tambahan;
 }
