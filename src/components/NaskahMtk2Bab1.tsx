@@ -14,6 +14,8 @@ import { kumpulkanAlias } from "@/lib/nilai-kuis-tulis";
 import { bacaProgres } from "@/lib/progres";
 import type { KelaminGuru } from "@/lib/guru";
 
+export const SLOT_AJUAN_SEBELUM_KARTU_D = "igil-slot-ajuan-sebelum-kartu-d";
+
 function KartuBingkai({ children }: { children: ReactNode }) {
   return (
     <section className="rounded-[1.75rem] border-4 border-[#1C01A5]/15 bg-white px-4 py-5 shadow-sm sm:px-6 sm:py-6">
@@ -707,13 +709,15 @@ export default function NaskahMtk2Bab1({
           {kartuC.pengantar}
         </p>
         <AktivitasSani />
-        <JurnalPermenSani />
         <LatihanSuaraResmi
           soal={kartuC.kuis}
           idPrefix={`${modul.id}-${kartuC.kode}`}
           hanyaKanvas
         />
+        <JurnalPermenSani />
       </KartuBingkai>
+
+      <div id={SLOT_AJUAN_SEBELUM_KARTU_D} />
 
       <KartuBingkai>
         <p className="text-center text-4xl" aria-hidden>

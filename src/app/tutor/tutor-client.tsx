@@ -1,6 +1,7 @@
 "use client";
 
-import React, { useCallback, useEffect, useMemo, useRef, useState } from "react";
+import React, { useCallback, useEffect, useLayoutEffect, useMemo, useRef, useState } from "react";
+import { createPortal } from "react-dom";
 import Link from "next/link";
 import { useRouter, useSearchParams } from "next/navigation";
 import {
@@ -73,6 +74,7 @@ import PanelUjianModul from "@/components/modul/PanelUjianModul";
 import TungguNaskah from "@/components/modul/TungguNaskah";
 import TeksNaskah from "@/components/TeksNaskah";
 import KolomAjuanPertanyaan from "@/components/KolomAjuanPertanyaan";
+import { SLOT_AJUAN_SEBELUM_KARTU_D } from "@/components/NaskahMtk2Bab1";
 import {
   bagianWajibKuisMateriTuntas,
   daftarBagianModul,
@@ -336,6 +338,7 @@ export default function TutorAI() {
   const [riwayatAjuan, setRiwayatAjuan] = useState<JejakAjuan[]>([]);
   const [pesanAjuan, setPesanAjuan] = useState("");
   const [kuotaAjuan, setKuotaAjuan] = useState<StatusKuotaUi | null>(null);
+  const [slotAjuan, setSlotAjuan] = useState<HTMLElement | null>(null);
   const [statusDoodle, setStatusDoodle] = useState<StatusDoodle>("siaga");
   const [sesiAktifId, setSesiAktifId] = useState<string | null>(null);
   const [jawabanKuis, setJawabanKuis] = useState<Record<string, string>>({});
@@ -441,6 +444,10 @@ export default function TutorAI() {
   hasilDataRef.current = hasilData;
   const sudutPandangRef = useRef<SudutPandangMateri | null>(sudutPandang);
   sudutPandangRef.current = sudutPandang;
+
+  useLayoutEffect(() => {
+    setSlotAjuan(document.getElementById(SLOT_AJUAN_SEBELUM_KARTU_D));
+  }, [penjelasanAktif, tahapBelajar]);
 
   useEffect(() => {
     if (namaDariProfilSesi) setNama(namaDariProfilSesi);
@@ -1884,7 +1891,8 @@ export default function TutorAI() {
                         statusGlobal === "memuat"
                       }
                     />
-                    {naskahMateriSiap(penjelasanAktif) ? (
+                    {naskahMateriSiap(penjelasanAktif) ? (() => {
+            const blokAjuan = (
             <div className="mt-6 space-y-4 border-t border-[#1C01A5]/10 pt-5">
               <label className="flex items-center gap-2 text-sm font-extrabold tracking-wide text-[#1C01A5]">
                 <MessageCircleQuestionMark className="w-5 h-5" />
@@ -1972,7 +1980,9 @@ export default function TutorAI() {
                 </div>
               ) : null}
             </div>
-                    ) : null}
+            );
+            return slotAjuan ? createPortal(blokAjuan, slotAjuan) : blokAjuan;
+          })() : null}
                   </>
                 ),
                 simulasi: (
