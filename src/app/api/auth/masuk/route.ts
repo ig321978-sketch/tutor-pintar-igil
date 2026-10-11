@@ -1,4 +1,5 @@
 import { NextResponse } from "next/server";
+import type { User } from "@supabase/supabase-js";
 import { pesanGalatAuthSupabase } from "@/lib/kredensial-supabase";
 import { adalahPeranAdmin, bacaPeranPengguna } from "@/lib/peran";
 import { supabaseAuthServer } from "@/lib/supabase-auth";
@@ -36,21 +37,21 @@ export async function POST(req: Request) {
     );
   }
 
-  let data: { user?: { id: string } | null } | null = null;
+  let user: User | null = null;
   let error: { message?: string } | null = null;
   try {
     const hasil = await supabase.auth.signInWithPassword({
       email,
       password,
     });
-    data = hasil.data;
+    user = hasil.data.user;
     error = hasil.error;
   } catch (galat) {
     error = {
       message: galat instanceof Error ? galat.message : "fetch failed",
     };
   }
-  if (error || !data?.user) {
+  if (error || !user) {
     const jaringan = /fetch failed|failed to fetch|enotfound|getaddrinfo/i.test(
       error?.message ?? "",
     );
@@ -60,7 +61,7 @@ export async function POST(req: Request) {
     );
   }
 
-  const peran = await bacaPeranPengguna(supabase, data.user);
+  const peran = await bacaPeranPengguna(supabase, user);
   return NextResponse.json({
     berhasil: true,
     peran,
