@@ -87,7 +87,7 @@ D) 0`,
       kode: "A",
       judul: "A. Dialog Permen Ulang Tahun",
       pengantar:
-        "🌟 Target hari ini: menghitung benda dari 21 sampai 100 dengan cepat, lalu memisahkan puluhan dan satuan. 🗺️ Sani baru ulang tahun. Di meja ada banyak permen dari paman.",
+        "🗺️ Sani baru ulang tahun. Di meja ada banyak permen dari paman.",
       labelDaftar: "Target dan cerita apersepsi",
       kolom: 1,
       item: [
@@ -122,8 +122,7 @@ D) 0`,
       ],
       voice: [
         [
-          "Hari ini kita bantu Sani. Targetnya: menghitung benda dari 21 sampai 100 dengan cepat, lalu memisahkan puluhan dan satuan.",
-          "Sani baru ulang tahun. Di atas meja ada banyak permen pemberian paman. Kalau dihitung satu per satu, melelahkan dan mudah salah.",
+          "Hari ini kita bantu Sani. Sani baru ulang tahun. Di atas meja ada banyak permen pemberian paman. Kalau dihitung satu per satu, melelahkan dan mudah salah.",
           "Sani bertanya, bagaimana cara menghitung permen yang banyak ini dengan cepat dan rapi? Yuk, kita bantu Sani membungkus permen ke dalam kantong!",
         ],
       ],

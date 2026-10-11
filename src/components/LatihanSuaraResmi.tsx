@@ -19,10 +19,12 @@ export default function LatihanSuaraResmi({
   soal,
   idPrefix,
   pertanyaan,
+  hanyaKanvas = false,
 }: {
   soal: KuisSuaraResmi[];
   idPrefix: string;
   pertanyaan?: string;
+  hanyaKanvas?: boolean;
 }) {
   return (
     <div className="mt-6 space-y-4 border-t-2 border-[#1C01A5]/10 pt-5">
@@ -45,6 +47,7 @@ export default function LatihanSuaraResmi({
       <KuisTulisKartu
         id={`${idPrefix}-tulis`}
         rapat
+        hanyaKanvas={hanyaKanvas}
         pertanyaan={pertanyaanTulisDariSoal(soal, pertanyaan)}
         alias={soal[0]?.alias ?? aliasDariKuisSuara(soal)}
         konteks={soal

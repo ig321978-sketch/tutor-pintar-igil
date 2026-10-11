@@ -554,9 +554,6 @@ export default function NaskahMtk2Bab1({
         <h4 className="mt-3 text-center text-lg font-black tracking-wide text-[#1C01A5] sm:text-xl">
           {kartuA.judul}
         </h4>
-        <p className="mt-1 text-center text-sm font-bold text-[#1C01A5]/70">
-          Matematika · Bab 1: Kantong Permen Sani
-        </p>
         <div className="mt-4">
           <TombolVoiceMateriPai1
             kelas={kelas}
@@ -603,7 +600,11 @@ export default function NaskahMtk2Bab1({
             Yuk, kita bantu Sani membungkus permen-permen ini ke dalam kantong!
           </p>
         </div>
-        <LatihanSuaraResmi soal={kartuA.kuis} idPrefix={`${modul.id}-${kartuA.kode}`} />
+        <LatihanSuaraResmi
+          soal={kartuA.kuis}
+          idPrefix={`${modul.id}-${kartuA.kode}`}
+          hanyaKanvas
+        />
       </KartuBingkai>
 
       <KartuBingkai>
@@ -684,6 +685,7 @@ export default function NaskahMtk2Bab1({
           pertanyaan="Tuliskan satu contoh, misalnya 25 = dua puluh lima."
           alias={kumpulkanAlias(["10 puluhan", "25 dua puluh lima", "100 seratus"])}
           konteks={kartuB.pengantar}
+          hanyaKanvas
         />
       </KartuBingkai>
 
@@ -706,7 +708,11 @@ export default function NaskahMtk2Bab1({
         </p>
         <AktivitasSani />
         <JurnalPermenSani />
-        <LatihanSuaraResmi soal={kartuC.kuis} idPrefix={`${modul.id}-${kartuC.kode}`} />
+        <LatihanSuaraResmi
+          soal={kartuC.kuis}
+          idPrefix={`${modul.id}-${kartuC.kode}`}
+          hanyaKanvas
+        />
       </KartuBingkai>
 
       <KartuBingkai>
@@ -732,6 +738,7 @@ export default function NaskahMtk2Bab1({
         <LembarKerjaSani />
         <KuisTulisKartu
           id={idKuisTulisKartu(MODUL_MTK2_BAB1.id, "D")}
+          hanyaKanvas
           pertanyaan="Tuliskan satu jawaban dari LKS, misalnya 78 atau Dayu."
           alias={kumpulkanAlias([
             "dayu",
