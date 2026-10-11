@@ -227,7 +227,7 @@ D) 3`,
     },
     {
       kode: "D",
-      judul: "D. Lembar Kerja Siswa",
+      judul: "D. Lembar Evaluasi Siswa",
       pengantar:
         "📝 Tantangan para juara! Hitung apel, donat, dan benda milik Ali, Nia, Susi, Edo, dan ibu.",
       labelDaftar: "LKS pilihan ganda dan isian",

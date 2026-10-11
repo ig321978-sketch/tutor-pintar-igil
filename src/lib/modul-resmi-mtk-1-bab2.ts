@@ -10,60 +10,60 @@ export const JUDUL_MTK1_BAB2_LAMA = "Bab 2: Penjumlahan sampai dengan 10";
 export const MODUL_MTK1_BAB2: ModulResmiPai = {
   id: "mtk-1-bab2",
   judul: JUDUL_MTK1_BAB2,
-  pola: /penjumlahan\s+sampai(\s+dengan)?\s+10/,
+  pola: /penjumlahan\s+sampai(\s+dengan)?\s+10|robot ali|kotak gabung/,
   motivasi:
-    "Hore! Menjumlahkan itu menggabungkan. Satukan dua kelompok benda, lalu hitung semuanya sampai 10.",
+    "Hore! Kamu sudah membantu Ali dan Nia menggabungkan robot. 3 robot ditambah 2 robot sama dengan 5. Menjumlahkan itu menggabungkan.",
   kunciJawaban: "C,A,D,B,A,C,B,A,D,C",
   sketsaKartu: [
-    "Ali dan Nia menggabungkan robot di ruang tengah rumah.",
-    "Tiga mobil merah digabung dengan dua mobil biru menjadi lima mobil.",
-    "Anak menuangkan stik dari dua kantong ke satu wadah besar.",
-    "Anak mengisi lembar evaluasi: menjumlahkan benda, memilih jawaban, dan mencocokkan hasil.",
+    "Ali dan Nia menggabungkan robot kotak merah dan kotak biru di ruang tengah.",
+    "Tiga mobil digabung dengan dua mobil menjadi lima, plus artinya ditambah.",
+    "Anak menghitung 3 robot dan 2 robot, lalu menulis 3 + 2 = 5.",
+    "Anak mengisi lembar evaluasi tantangan para juara tentang penjumlahan sampai 10.",
   ],
   latihan: pg([
-    `[Soal 1 - PG - Tipe: Reguler]
+    `[Soal 1 - PG - Tipe: HOTS]
 Di kotak merah ada 3 robot. Di kotak biru ada 2 robot. Setelah digabung, jumlah robot adalah...
 A) 4
 B) 3
 C) 5
 D) 2`,
-    `[Soal 2 - PG - Tipe: Reguler]
+    `[Soal 2 - PG - Tipe: LOTS]
 Tanda ➕ dalam matematika disebut...
 A) Plus atau ditambah
 B) Kurang
 C) Kali
 D) Bagi`,
-    `[Soal 3 - PG - Tipe: Reguler]
+    `[Soal 3 - PG - Tipe: LOTS]
 Tanda ＝ dalam matematika disebut...
 A) Plus
 B) Ditambah
 C) Kurang
 D) Sama dengan`,
-    `[Soal 4 - PG - Tipe: Reguler]
+    `[Soal 4 - PG - Tipe: MOTS]
 Kantong A berisi 4 stik. Kantong B berisi 3 stik. Setelah dituang ke Kantong C, jumlahnya...
 A) 6
 B) 7
 C) 8
 D) 5`,
-    `[Soal 5 - PG - Tipe: Reguler]
+    `[Soal 5 - PG - Tipe: LOTS]
 Dua biskuit ditambah tiga biskuit sama dengan...
 A) 5
 B) 4
 C) 6
 D) 3`,
-    `[Soal 6 - PG - Tipe: Reguler]
+    `[Soal 6 - PG - Tipe: LOTS]
 Hasil dari 5 ➕ 2 adalah...
 A) 6
 B) 8
 C) 7
 D) 9`,
-    `[Soal 7 - PG - Tipe: Reguler]
+    `[Soal 7 - PG - Tipe: MOTS]
 Ali punya 4 pensil warna. Nia memberi 3 pensil lagi. Jumlah pensil Ali sekarang...
 A) 6
 B) 7
 C) 8
 D) 5`,
-    `[Soal 8 - PG - Tipe: Reguler]
+    `[Soal 8 - PG - Tipe: HOTS]
 Ibu membeli 6 jeruk. Ayah membawa 0 jeruk. Total jeruk di rumah adalah...
 A) 6
 B) 0
@@ -85,25 +85,25 @@ D) 9`,
   kartu: [
     {
       kode: "A",
-      judul: "A. Dialog di Ruang Tengah",
+      judul: "A. Dialog Robot di Ruang Tengah",
       pengantar:
-        "Di ruang tengah rumah Ali, Ali dan Nia belajar bersama di atas karpet. Mereka mengelompokkan robot, lalu menggabungkannya menjadi satu kotak besar.",
-      labelDaftar: "Percakapan Ali dan Nia",
+        "🗺️ Ali dan Nia bermain robot di ruang tengah. Mereka menggabungkan kotak merah dan kotak biru.",
+      labelDaftar: "Target dan cerita apersepsi",
       kolom: 1,
       item: [
         {
-          nama: "Kotak merah dan kotak biru",
-          singkat: "3 robot dan 2 robot",
+          nama: "🌟 Target belajarku hari ini",
+          singkat: "Penjumlahan sampai 10",
           uraian:
-            "Di kotak merah ada 3 robot. Di kotak biru ada 2 robot. Kalau semua robot digabung ke kotak besar, jumlahnya bertambah.",
-          contoh: "3 robot ditambah 2 robot.",
+            "🎯 Aku bisa menggabungkan dua kelompok benda sampai 10. 🎯 Aku bisa menulis penjumlahan dengan tanda ➕ dan ＝.",
+          contoh: "Gabungkan, tulis ➕ dan ＝.",
         },
         {
-          nama: "Menggabungkan artinya menjumlahkan",
-          singkat: "3 ➕ 2 ＝ 5",
+          nama: "🗺️ Menggabungkan robot",
+          singkat: "3 robot dan 2 robot",
           uraian:
-            "Setelah digabung, mereka menghitung: satu, dua, tiga, empat, lima. Totalnya 5 robot. Menjumlahkan itu menggabungkan benda.",
-          contoh: "3 ➕ 2 ＝ 5",
+            "Di kotak merah ada 3 robot. Di kotak biru ada 2 robot. Kalau digabung ke satu kotak besar, jumlahnya bertambah. Menjumlahkan itu menggabungkan benda.",
+          contoh: "Yuk bantu Ali dan Nia menggabungkan robot!",
         },
       ],
       kuis: [
@@ -117,24 +117,13 @@ D) 9`,
         },
         {
           pertanyaan: "3. Menjumlahkan itu artinya apa?",
-          alias: [
-            "menggabungkan",
-            "gabung",
-            "menggabungkan benda",
-            "menggabung",
-            "menyatukan",
-          ],
+          alias: ["menggabungkan", "gabung", "menggabungkan benda", "menggabung", "menyatukan"],
         },
       ],
       voice: [
         [
-          "Anak-anak, kita ke ruang tengah rumah Ali. Ali dan Nia belajar bersama di atas karpet.",
-          "Ali berkata, Nia, aku sedang mengelompokkan mainan robotku. Di kotak merah ada tiga robot, dan di kotak biru ada dua robot.",
-          "Nia menjawab, wah, kalau semua robot itu digabungkan dan dimasukkan ke dalam satu kotak besar, jumlahnya jadi bertambah banyak ya, Ali?",
-        ],
-        [
-          "Ali berkata, iya, betul! Mari kita hitung bersama setelah digabung. Satu, dua, tiga, empat, lima! Sekarang totalnya ada lima robot!",
-          "Nia berkata, hebat! Jadi, tiga robot ditambah dua robot sama dengan lima robot. Menjumlahkan itu ternyata cuma menggabungkan benda ya!",
+          "Hari ini kita ke ruang tengah rumah Ali. Ali dan Nia mengelompokkan robot. Di kotak merah ada 3 robot. Di kotak biru ada 2 robot.",
+          "Kalau semua robot digabung ke satu kotak besar, jumlahnya bertambah. Yuk, kita bantu mereka menggabungkan robot!",
         ],
       ],
     },
@@ -142,23 +131,30 @@ D) 9`,
       kode: "B",
       judul: "B. Infografis Kotak Gabung",
       pengantar:
-        "Dua kelompok benda digabung menjadi satu kelompok besar. Tanda plus artinya ditambah. Tanda sama dengan menunjukkan hasilnya.",
-      labelDaftar: "Kenalan dengan Simbol Matematika",
+        "🚗 Trik cepat Ali: gabungkan dua kelompok benda. ➕ disebut plus atau ditambah. ＝ disebut sama dengan. 3 mobil ditambah 2 mobil sama dengan 5.",
+      labelDaftar: "Kantong gabung dan simbol matematika",
       kolom: 1,
       item: [
         {
-          nama: "Kotak gabung mobil",
+          nama: "🚗 Gabungkan dua kelompok",
           singkat: "3 ➕ 2 ＝ 5",
           uraian:
-            "Tiga mobil digabung dengan dua mobil menjadi satu kelompok besar: lima mobil.",
-          contoh: "🚗🚗🚗 ➕ 🚗🚗 ＝ 🚗🚗🚗🚗🚗",
+            "🚗🚗🚗 3 mobil. 🚗🚗 2 mobil. Digabung menjadi 5 mobil. Ditulis 3 ➕ 2 ＝ 5.",
+          contoh: "3 ➕ 2 ＝ 5",
         },
         {
-          nama: "Simbol plus dan sama dengan",
+          nama: "📦 Contoh robot Ali",
+          singkat: "3 + 2 = 5",
+          uraian:
+            "Ada 3 robot merah dan 2 robot biru. Digabung nilainya 5. Ditulis 3 ➕ 2 ＝ 5.",
+          contoh: "3 robot + 2 robot = 5.",
+        },
+        {
+          nama: "💡 Tahukah kamu",
           singkat: "➕ dan ＝",
           uraian:
-            "Tanda plus disebut plus atau ditambah. Tanda sama dengan disebut sama dengan. Bisa ditulis dengan angka: 3 ➕ 2 ＝ 5.",
-          contoh: "3 ➕ 2 ＝ 5",
+            "Tanda plus disebut plus atau ditambah. Tanda sama dengan disebut sama dengan. Ditambah nol hasilnya tetap.",
+          contoh: "6 ➕ 0 ＝ 6.",
         },
       ],
       kuis: [
@@ -171,71 +167,62 @@ D) 9`,
           alias: ["plus", "ditambah", "plus atau ditambah", "tambah"],
         },
         {
-          pertanyaan: "3. Tanda sama dengan disebut apa?",
-          alias: ["sama dengan", "sama", "hasil"],
+          pertanyaan: "3. Empat stik ditambah tiga stik sama dengan berapa?",
+          alias: ["tujuh", "7", "tujuh stik"],
         },
       ],
       voice: [
         [
-          "Anak-anak, selamat datang di kotak gabung. Lihat tiga mobil. Lalu lihat dua mobil. Kalau digabung, menjadi satu kelompok besar: lima mobil.",
-          "Tiga ditambah dua sama dengan lima. Menjumlahkan artinya menggabungkan dua kelompok menjadi satu.",
+          "Trik cepat Ali: gabungkan dua kelompok benda. Tiga mobil ditambah dua mobil sama dengan lima mobil.",
+          "Tanda plus disebut plus atau ditambah. Tanda sama dengan disebut sama dengan.",
         ],
         [
-          "Sekarang kenalan dengan simbol matematika. Tanda plus disebut plus atau ditambah. Tanda sama dengan disebut sama dengan.",
-          "Kita bisa menulisnya dengan angka: tiga plus dua sama dengan lima.",
+          "Lihat robot Ali. Ada 3 robot merah dan 2 robot biru. Digabung jadi 5. Ditulis 3 plus 2 sama dengan 5.",
+          "Tahukah kamu? Kalau ditambah nol, hasilnya tetap. Enam ditambah nol tetap enam.",
         ],
       ],
     },
     {
       kode: "C",
-      judul: "C. Penjumlahan di Sekolah dan di Rumah",
+      judul: "C. Membantu Ali Menjumlahkan",
       pengantar:
-        "Penjumlahan makin kuat kalau dipraktikkan. Di sekolah kita bermain Kantong Ajaib. Di rumah kita menjumlahkan camilan di piring.",
-      labelDaftar: "Dua Tempat Berlatih",
-      kolom: 2,
+        "🕵️‍♂️ Lihat robot yang sudah rapi. Ada 3 robot di kotak merah dan 2 robot di kotak biru. Gabungkan, lalu tulis hasilnya.",
+      labelDaftar: "Aktivitas terbimbing dan jurnal",
+      kolom: 1,
       item: [
         {
-          nama: "Kantong Ajaib Penjumlahan",
-          singkat: "Untuk guru",
+          nama: "🕵️‍♂️ Aktivitas 1",
+          singkat: "3 robot dan 2 robot",
           uraian:
-            "Dua siswa mengisi Kantong A dan Kantong B, lalu menuang isinya ke Kantong C. Seluruh kelas menghitung hasil gabungannya.",
-          contoh: "4 stik ➕ 3 stik ＝ 7 stik.",
+            "Ada 3 robot merah. Ada 2 robot biru. Digabung jadi 5. Ditulis 3 ➕ 2 ＝ 5. Dibaca lima.",
+          contoh: "3 + 2 = 5.",
         },
         {
-          nama: "Camilan Tambah-Tambahan",
-          singkat: "Untuk orang tua",
+          nama: "🎭 Jurnal perasaanku",
+          singkat: "Pilih wajah",
           uraian:
-            "Letakkan 2 biskuit di kiri piring dan 3 biskuit di kanan. Anak menghitung, lalu menggabungkannya di tengah sambil mengucapkan kalimat matematika.",
-          contoh: "Dua biskuit ditambah tiga biskuit sama dengan lima biskuit!",
+            "😀 Seru banget, aku sudah paham! 😐 Sedikit bingung, mau latihan lagi. 😢 Susah, butuh bantuan tutor kembali.",
+          contoh: "Pilih satu wajah.",
         },
       ],
       kuis: [
         {
-          pertanyaan: "1. Empat stik ditambah tiga stik sama dengan berapa?",
-          alias: ["tujuh", "7", "tujuh stik"],
+          pertanyaan: "1. Ada berapa robot di kotak merah?",
+          alias: ["3", "tiga", "tiga robot"],
         },
         {
-          pertanyaan: "2. Dua biskuit ditambah tiga biskuit sama dengan berapa?",
-          alias: ["lima", "5", "lima biskuit"],
+          pertanyaan: "2. Ada berapa robot di kotak biru?",
+          alias: ["2", "dua", "dua robot"],
         },
         {
-          pertanyaan: "3. Nama kegiatan penjumlahan di rumah apa?",
-          alias: [
-            "camilan tambah-tambahan",
-            "camilan",
-            "tambah-tambahan",
-            "camilan tambahan",
-          ],
+          pertanyaan: "3. 3 robot ditambah 2 robot sama dengan berapa?",
+          alias: ["5", "lima", "lima robot"],
         },
       ],
       voice: [
         [
-          "Di sekolah, kita bermain Kantong Ajaib Penjumlahan. Siswa pertama mengisi Kantong A dengan empat stik. Siswa kedua mengisi Kantong B dengan tiga stik.",
-          "Lalu keduanya menuang isi kantong ke Kantong C. Seluruh kelas menghitung bersama: empat ditambah tiga sama dengan tujuh.",
-        ],
-        [
-          "Di rumah, bermain Camilan Tambah-Tambahan. Letakkan dua biskuit di kiri piring dan tiga biskuit di kanan.",
-          "Anak menghitung masing-masing, lalu menggabungkannya di tengah. Dua biskuit ditambah tiga biskuit sama dengan lima biskuit. Setelah itu, camilannya boleh dimakan sebagai hadiah.",
+          "Yuk bantu Ali. Ada 3 robot di kotak merah dan 2 robot di kotak biru. Robot merah ada 3. Robot biru ada 2.",
+          "Digabung jadi 5. Ditulis 3 plus 2 sama dengan 5. Dibaca lima.",
         ],
       ],
     },
@@ -243,77 +230,44 @@ D) 9`,
       kode: "D",
       judul: "D. Lembar Evaluasi Siswa",
       pengantar:
-        "Saatnya menunjukkan kemampuan penjumlahan sampai 10. Hitung dan jumlahkan benda, pilih jawaban yang benar, lalu cocokkan hasil penjumlahannya.",
-      labelDaftar: "Tiga Kelompok Soal",
+        "📝 Tantangan para juara! Jumlahkan robot, pensil, jeruk, dan benda milik Ali, Nia, Edo, dan ibu.",
+      labelDaftar: "Evaluasi pilihan ganda dan isian",
       kolom: 1,
       item: [
         {
-          nama: "Kelompok A",
-          singkat: "Hitung dan jumlahkan",
-          uraian:
-            "Hitung benda di setiap kotak, lalu tulis angka dan hasil penjumlahannya.",
-          contoh: "2 ➕ 3 ＝ 5, 4 ➕ 2 ＝ 6, 1 ➕ 4 ＝ 5.",
-        },
-        {
-          nama: "Kelompok B",
+          nama: "🍓 Bagian A",
           singkat: "Pilihan ganda",
           uraian:
-            "Pilih satu jawaban yang paling benar: 5 ➕ 2, pensil warna Ali, dan jeruk ditambah nol.",
-          contoh: "5 ➕ 2 ＝ 7. Enam ditambah nol tetap enam.",
+            "3 robot + 2 robot = 5. Ali butuh 4 pensil agar 4 + 3 = 7. Misteri 3 + 3 = 6. Lima mobil. Edo salah: 6 + 0 = 6.",
+          contoh: "5 robot. Edo salah.",
         },
         {
-          nama: "Kelompok C",
-          singkat: "Menghubungkan garis",
+          nama: "✏️ Bagian B",
+          singkat: "Isian singkat",
           uraian:
-            "Cocokkan soal penjumlahan dengan angka hasilnya yang benar.",
-          contoh: "3 ➕ 3 ＝ 6, 4 ➕ 5 ＝ 9, 7 ➕ 1 ＝ 8.",
+            "Plus atau ditambah. 5 + 2 = 7. Tangga 7 dan 9. 4 + 5 = 9. 7 + 1 = 8.",
+          contoh: "7, 9, 8.",
         },
       ],
       kuis: [
-        {
-          pertanyaan: "1. Dua apel ditambah tiga apel sama dengan berapa?",
-          alias: ["lima", "5", "2 + 3 = 5"],
-        },
-        {
-          pertanyaan: "2. Empat kupu-kupu ditambah dua kupu-kupu sama dengan berapa?",
-          alias: ["enam", "6", "4 + 2 = 6"],
-        },
-        {
-          pertanyaan: "3. Satu es krim ditambah empat es krim sama dengan berapa?",
-          alias: ["lima", "5", "1 + 4 = 5"],
-        },
-        {
-          pertanyaan: "4. Hasil 5 ditambah 2 adalah?",
-          alias: ["tujuh", "7", "b"],
-        },
-        {
-          pertanyaan: "5. Empat pensil ditambah tiga pensil sama dengan berapa?",
-          alias: ["tujuh", "7", "b"],
-        },
-        {
-          pertanyaan: "6. Enam jeruk ditambah nol jeruk sama dengan berapa?",
-          alias: ["enam", "6", "c"],
-        },
-        {
-          pertanyaan: "7. Tiga ditambah tiga sama dengan berapa?",
-          alias: ["enam", "6"],
-        },
-        {
-          pertanyaan: "8. Empat ditambah lima sama dengan berapa?",
-          alias: ["sembilan", "9"],
-        },
-        {
-          pertanyaan: "9. Tujuh ditambah satu sama dengan berapa?",
-          alias: ["delapan", "8"],
-        },
+        { pertanyaan: "1. 3 robot ditambah 2 robot sama dengan berapa?", alias: ["5", "lima"] },
+        { pertanyaan: "2. Ali ingin 7 pensil. Nia beri 3. Berapa pensil Ali dari awal?", alias: ["4", "empat"] },
+        { pertanyaan: "3. Hasil 3 ditambah 3?", alias: ["6", "enam"] },
+        { pertanyaan: "4. Tiga mobil ditambah dua mobil?", alias: ["5", "lima"] },
+        { pertanyaan: "5. Enam ditambah nol sama dengan berapa?", alias: ["6", "enam"] },
+        { pertanyaan: "6. Tanda plus disebut apa?", alias: ["plus", "ditambah", "tambah"] },
+        { pertanyaan: "7. Hasil 5 ditambah 2?", alias: ["7", "tujuh"] },
+        { pertanyaan: "8. Kotak A pada tangga 5 6 A 8 B 10?", alias: ["7", "tujuh"] },
+        { pertanyaan: "9. Empat ditambah lima?", alias: ["9", "sembilan"] },
+        { pertanyaan: "10. Tujuh kupu-kupu ditambah satu?", alias: ["8", "delapan"] },
       ],
       voice: [
         [
-          "Anak-anak, ini lembar evaluasi Bab 2. Kita menjumlahkan benda, memilih jawaban, lalu mencocokkan hasilnya.",
-          "Kelompok A: hitung benda di kiri dan kanan, lalu tulis angka penjumlahannya. Kelompok B: pilih satu jawaban yang paling benar.",
+          "Ini lembar evaluasi tantangan para juara. Jumlahkan robot dan pensil. Tiga robot ditambah dua robot sama dengan lima. Ali ingin 7 pensil, Nia beri 3, jadi Ali punya 4 dari awal.",
+          "Misteri 3 ditambah 3 sama dengan 6. Tiga mobil ditambah dua mobil sama dengan 5. Edo salah, 6 ditambah 0 tetap 6.",
         ],
         [
-          "Kelompok C: cocokkan soal penjumlahan dengan angka hasilnya. Ingat, ditambah nol hasilnya tetap. Semangat mengerjakan sampai tuntas!",
+          "Tanda plus disebut plus atau ditambah. Lima ditambah dua sama dengan 7. Tangga angka 7 dan 9. Empat ditambah lima sama dengan 9. Tujuh ditambah satu sama dengan 8.",
         ],
       ],
     },

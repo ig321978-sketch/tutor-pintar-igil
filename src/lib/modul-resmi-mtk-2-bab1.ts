@@ -228,7 +228,7 @@ D) 0`,
     },
     {
       kode: "D",
-      judul: "D. Lembar Kerja Siswa",
+      judul: "D. Lembar Evaluasi Siswa",
       pengantar:
         "📝 Tantangan para juara! Hitung kantong besar dan permen eceran milik Siti, Dayu, Beni, Toni, Edo, Lani, dan Riko.",
       labelDaftar: "LKS pilihan ganda dan isian",
