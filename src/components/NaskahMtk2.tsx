@@ -359,24 +359,26 @@ const INFOGRAFIS: Record<
   }
 > = {
   "mtk-2-bab1-A": {
-    judul: "Rumah tinggal angka",
-    kepala: ["Kamar", "Posisi", "Contoh 147"],
+    judul: "Ikat menjadi puluhan",
+    kepala: ["Ikat", "Isi", "Nama"],
     baris: [
-      ["Satuan", "Paling kanan, nilai tetap", "7 = 7"],
-      ["Puluhan", "Tengah, ditambah satu nol", "4 = 40"],
-      ["Ratusan", "Paling kiri, dua nol", "1 = 100"],
+      ["1 ikat sedotan", "10 batang", "1 Puluhan"],
+      ["2 ikat sedotan", "20 batang", "2 Puluhan"],
+      ["2 ikat + 5 batang", "25", "Dua puluh lima"],
     ],
-    catatan: "147 dibaca seratus empat puluh tujuh. Bentuk panjang: 147 = 100 + 40 + 7.",
+    catatan:
+      "Target: membilang 21 sampai 100. Setiap 10 benda diikat jadi 1 puluhan. Sisa yang belum 10 disebut satuan.",
   },
   "mtk-2-bab1-B": {
-    judul: "Bandingkan dari kiri",
-    kepala: ["Langkah", "Yang dilihat", "Contoh"],
+    judul: "Rumah nilai tempat 25",
+    kepala: ["Rumah", "Isi", "Nilai"],
     baris: [
-      ["1. Ratusan", "Nilai paling besar", "168 dan 162 sama 1"],
-      ["2. Puluhan", "Jika ratusan sama", "Keduanya 6"],
-      ["3. Satuan", "Penentu terakhir", "8 > 2 jadi 168 > 162"],
+      ["Puluhan (kiri)", "2 ikat sedotan", "2 = 20"],
+      ["Satuan (kanan)", "5 batang sedotan", "5 = 5"],
+      ["Gabungan", "25", "Dua puluh lima"],
     ],
-    catatan: "72, 89, 60 lebih besar dari 50. 14 dan 35 lebih kecil. Urutan naik: 112, 128, 145.",
+    catatan:
+      "Angka 100 adalah bilangan cacah tiga angka yang pertama: 1 ratusan, 0 puluhan, dan 0 satuan.",
   },
   "mtk-2-bab2-A": {
     judul: "Jalan bersusun matematika",
@@ -536,22 +538,22 @@ function EvaluasiBab1({ modulId }: { modulId: string }) {
       </h5>
       <KuisPilihan
         id={idEval(modulId, 0)}
-        soal="Pada angka 85, angka yang menempati kamar satuan paling kanan adalah..."
+        soal="Pada angka 25, angka 2 menempati rumah... "
         benar="B"
         pilihan={[
-          { huruf: "A", teks: "8" },
-          { huruf: "B", teks: "5" },
-          { huruf: "C", teks: "80" },
+          { huruf: "A", teks: "Satuan, nilainya 2" },
+          { huruf: "B", teks: "Puluhan, nilainya 20" },
+          { huruf: "C", teks: "Ratusan, nilainya 200" },
         ]}
       />
       <KuisPilihan
         id={idEval(modulId, 1)}
-        soal="Bentuk panjang 139 adalah..."
-        benar="B"
+        soal="Jeruk Kakek Tono: 2 ikat puluhan dan 4 sisa satuan. Totalnya..."
+        benar="C"
         pilihan={[
-          { huruf: "A", teks: "1 + 3 + 9" },
-          { huruf: "B", teks: "100 + 30 + 9" },
-          { huruf: "C", teks: "10 + 39" },
+          { huruf: "A", teks: "14" },
+          { huruf: "B", teks: "6" },
+          { huruf: "C", teks: "24" },
         ]}
       />
       <h5 className="text-sm font-black uppercase tracking-wide text-[#1C01A5]">
@@ -559,49 +561,59 @@ function EvaluasiBab1({ modulId }: { modulId: string }) {
       </h5>
       <KuisBenarSalah
         id={idEval(modulId, 2)}
-        soal="Bilangan 168 nilainya lebih kecil daripada 162 karena angka 8 lebih besar dari 2."
-        benar="salah"
-        alasanBenar="bandingkan dari ratusan puluhan satuan, 168 lebih besar dari 162"
+        soal="Angka 100 adalah bilangan cacah tiga angka yang pertama, terdiri dari 1 ratusan, 0 puluhan, dan 0 satuan."
+        benar="benar"
+        alasanBenar="seratus ratusan puluhan satuan nol"
       />
       <KuisBenarSalah
         id={idEval(modulId, 3)}
-        soal="Bentuk panjang dari 190 adalah 100 + 90 + 0."
-        benar="benar"
-        alasanBenar="ratusan seratus, puluhan sembilan puluh, satuan nol"
+        soal="1 ikat sedotan berisi 10 batang disebut 1 satuan."
+        benar="salah"
+        alasanBenar="sepuluh batang yang diikat disebut satu puluhan bukan satuan"
       />
       <h5 className="text-sm font-black uppercase tracking-wide text-[#1C01A5]">
         C. Mencocokkan garis
       </h5>
       <KuisJodoh
         id={idEval(modulId, 4)}
-        soal="Jodohkan angka pada 152 dengan kamar nilai tempatnya."
+        soal="Tarik garis dari kotak angka menuju cara membaca yang benar."
         pasangan={[
           {
-            kiri: "Angka 5 pada 152",
-            kanan: ["Ratusan nilainya 100", "Puluhan nilainya 50", "Satuan nilainya 2"],
+            kiri: "37",
+            kanan: ["Enam puluh dua", "Tiga puluh tujuh", "Delapan puluh lima"],
           },
           {
-            kiri: "Angka 2 pada 152",
-            kanan: ["Ratusan nilainya 100", "Puluhan nilainya 50", "Satuan nilainya 2"],
+            kiri: "62",
+            kanan: ["Enam puluh dua", "Tiga puluh tujuh", "Delapan puluh lima"],
           },
           {
-            kiri: "Angka 1 pada 152",
-            kanan: ["Ratusan nilainya 100", "Puluhan nilainya 50", "Satuan nilainya 2"],
+            kiri: "85",
+            kanan: ["Enam puluh dua", "Tiga puluh tujuh", "Delapan puluh lima"],
           },
         ]}
         kunci={{
-          "Angka 5 pada 152": "Puluhan nilainya 50",
-          "Angka 2 pada 152": "Satuan nilainya 2",
-          "Angka 1 pada 152": "Ratusan nilainya 100",
+          "37": "Tiga puluh tujuh",
+          "62": "Enam puluh dua",
+          "85": "Delapan puluh lima",
         }}
       />
       <h5 className="text-sm font-black uppercase tracking-wide text-[#1C01A5]">
-        D. Esai pendek analisis
+        D. Esai pendek dan kotak misteri
       </h5>
       <KuisIsian
         id={idEval(modulId, 5)}
-        soal="Mengapa kita membandingkan dua bilangan dari kamar ratusan dulu, bukan dari satuan? Jelaskan!"
-        alias={["ratusan", "besar", "kiri", "nilai", "puluhan"]}
+        soal="Mengapa kita mengikat benda setiap 10 buah saat membantu Kakek Tono menghitung sampai 100? Jelaskan!"
+        alias={["cepat", "puluhan", "sepuluh", "ikat", "kelompok"]}
+      />
+      <KuisIsian
+        id={idEval(modulId, 6)}
+        soal="49 = ...... puluhan + ...... satuan. Tulis kedua angkanya."
+        alias={["4", "9", "empat", "sembilan"]}
+      />
+      <KuisIsian
+        id={idEval(modulId, 7)}
+        soal="71 = ...... puluhan + ...... satuan. Tulis kedua angkanya."
+        alias={["7", "1", "tujuh", "satu"]}
       />
     </div>
   );

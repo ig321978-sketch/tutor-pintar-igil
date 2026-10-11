@@ -10,173 +10,172 @@ export const MODUL_MTK2_BAB1: ModulResmiPai = {
   id: "mtk-2-bab1",
   judul: JUDUL_MTK2_BAB1,
   pola:
-    /bilangan cacah sampai 100|rumah tinggal angka|nilai tempat ratusan|bilangan 1 sampai( dengan)? 1.?000|bilangan 1 sampai 100/,
+    /bilangan cacah sampai 100|desa angka|kakek tono|ikat( menjadi)? puluhan|nilai tempat puluhan|bilangan 1 sampai( dengan)? 1.?000|bilangan 1 sampai 100|rumah tinggal angka/,
   motivasi:
-    "Angka punya tiga kamar: satuan kanan, puluhan tengah, ratusan kiri. 147 = 100 + 40 + 7. Bandingkan dari kiri dulu.",
-  kunciJawaban: "B,B,S,B,B,A,C,B,A,B",
+    "Hore! Kamu sudah membantu Kakek Tono di Desa Angka. Ikat setiap 10 jadi 1 puluhan. 25 = 2 puluhan + 5 satuan. Pantang menyerah!",
+  kunciJawaban: "B,B,C,B,B,B,A,C,B,A",
   sketsaKartu: [
-    "Anak memasukkan kelereng ke kamar satuan, puluhan, dan ratusan.",
-    "Anak membandingkan 168 dan 162 dari ratusan ke satuan.",
-    "Anak mengerjakan evaluasi nilai tempat dan urutan bilangan.",
-    "Anak menarik garis 152, menggeser >50, mengurutkan 112-128-145, dan menulis 124.",
+    "Kakek Tono kebingungan memegang keranjang penuh apel merah di kebun Desa Angka.",
+    "Anak mengikat sedotan setiap 10 batang, lalu menaruh 2 ikat di rumah puluhan dan 5 batang di rumah satuan untuk angka 25.",
+    "Anak melingkari jeruk per 10, menjodohkan 37-62-85, dan mengisi 49 serta 71.",
+    "Anak menarik garis cara baca, menggeser puluhan atau satuan, mengurutkan 24-49-71, dan menulis 25.",
   ],
   latihan: pg([
-    `[Soal 1 - PG - Tipe: HOTS]
-Pada angka 85, angka yang menempati kamar satuan paling kanan adalah...
-A) 8
-B) 5
-C) 80
-D) 85`,
-    `[Soal 2 - PG - Tipe: HOTS]
-Bentuk panjang 139 adalah...
-A) 1 + 3 + 9
-B) 100 + 30 + 9
-C) 10 + 39
-D) 139 + 0`,
-    `[Soal 3 - PG - Tipe: HOTS]
-168 lebih kecil dari 162 karena 8 lebih besar dari 2. Pernyataan ini...
-A) Benar.
-B) Salah; bandingkan ratusan, puluhan, lalu satuan. 168 > 162.
-C) Benar hanya di satuan.
-D) Kedua bilangan sama.`,
+    `[Soal 1 - PG - Tipe: Reguler]
+1 ikat sedotan berisi 10 batang disebut...
+A) 1 Satuan
+B) 1 Puluhan
+C) 10 Puluhan
+D) 2 Puluhan`,
+    `[Soal 2 - PG - Tipe: Reguler]
+Pada angka 25, angka 2 menempati tempat...
+A) Satuan, nilainya 2
+B) Puluhan, nilainya 20
+C) Ratusan, nilainya 200
+D) Puluhan, nilainya 2`,
+    `[Soal 3 - PG - Tipe: Reguler]
+Jeruk Kakek Tono: 2 ikat puluhan dan 4 sisa satuan. Total jeruknya...
+A) 14
+B) 6
+C) 24
+D) 42`,
     `[Soal 4 - PG - Tipe: HOTS]
-190 = 100 + 90 + 0. Pernyataan ini...
-A) Salah.
-B) Benar; ratusan 100, puluhan 90, satuan 0.
-C) Benar hanya 100 + 90.
-D) Satuan wajib 9.`,
+Angka 100 terdiri dari...
+A) 10 puluhan dan 10 satuan
+B) 1 ratusan, 0 puluhan, dan 0 satuan
+C) 100 puluhan
+D) 1 satuan saja`,
     `[Soal 5 - PG - Tipe: Reguler]
-Angka 1 pada 152 menempati kamar...
-A) Satuan
-B) Ratusan
-C) Puluhan
-D) Ribuan`,
+Cara membaca 37 adalah...
+A) Tiga tujuh
+B) Tiga puluh tujuh
+C) Tujuh puluh tiga
+D) Tiga puluh`,
     `[Soal 6 - PG - Tipe: Reguler]
-Lambang seratus dua puluh empat adalah...
-A) 124
-B) 142
-C) 214
-D) 421`,
+49 = ... puluhan + ... satuan
+A) 9 puluhan + 4 satuan
+B) 4 puluhan + 9 satuan
+C) 49 puluhan + 0 satuan
+D) 4 satuan + 9 puluhan`,
     `[Soal 7 - PG - Tipe: Reguler]
-Urutan dari kecil ke besar: 145, 112, 128 adalah...
-A) 145, 128, 112
-B) 128, 112, 145
-C) 112, 128, 145
-D) 145, 112, 128`,
+71 terdiri dari...
+A) 7 puluhan + 1 satuan
+B) 1 puluhan + 7 satuan
+C) 71 satuan saja
+D) 7 satuan`,
     `[Soal 8 - PG - Tipe: Reguler]
-72 dibanding 50 adalah...
-A) Lebih kecil
-B) Lebih besar
-C) Sama
-D) Bukan bilangan`,
+Cara membaca 85 adalah...
+A) Delapan lima
+B) Lima puluh delapan
+C) Delapan puluh lima
+D) Delapan puluh`,
     `[Soal 9 - PG - Tipe: HOTS]
-Mengapa kita membandingkan dari kamar ratusan dulu?
-A) Karena nilai ratusan paling besar, baru puluhan, baru satuan.
-B) Supaya cepat tebak.
-C) Karena satuan selalu menang.
-D) Karena nol tidak dihitung.`,
+Mengapa kita mengikat benda setiap 10 buah saat menghitung sampai 100?
+A) Supaya bendanya kelihatan lebih banyak
+B) Agar menghitung cepat tanpa menghitung satu per satu
+C) Karena satuan lebih besar dari puluhan
+D) Karena angka 100 tidak punya rumah`,
     `[Soal 10 - PG - Tipe: Reguler]
-147 dibaca...
-A) Seratus empat puluh tujuh
-B) Empat belas tujuh
-C) Seribu empat puluh tujuh
-D) Empat puluh tujuh`,
+Cara membaca 62 adalah...
+A) Enam puluh dua
+B) Dua puluh enam
+C) Enam dua
+D) Enam puluh`,
   ]),
   kartu: [
     {
       kode: "A",
-      judul: "A. Rumah Ratusan, Puluhan, dan Satuan",
+      judul: "A. Membantu Kakek Tono di Desa Angka",
       pengantar:
-        "Infografis rumah tinggal angka: satuan paling kanan, puluhan di tengah, ratusan paling kiri. 147 = 100 + 40 + 7, dibaca seratus empat puluh tujuh.",
-      labelDaftar: "Satuan, puluhan, ratusan, bentuk panjang",
+        "Target hari ini: membilang dan menulis 21 sampai 100, lalu menentukan puluhan dan satuan. Kakek Tono baru panen apel. Apelnya lebih dari 20. Yuk bantu Kakek menghitung cepat sampai 100!",
+      labelDaftar: "Target, cerita apersepsi, dan ikat puluhan",
       kolom: 1,
       item: [
         {
-          nama: "Kamar satuan",
-          singkat: "Paling kanan, nilainya tetap",
+          nama: "Target belajarku hari ini",
+          singkat: "21 sampai 100",
           uraian:
-            "Angka paling kanan menempati kamar satuan. Nilainya tetap. Pada 147, angka 7 nilainya 7. Pada 85, satuan adalah 5.",
-          contoh: "85: satuan = 5.",
+            "Aku bisa membilang dan menuliskan angka dari 21 sampai 100 dengan tepat. Aku juga bisa menentukan nilai tempat puluhan dan satuan suatu bilangan.",
+          contoh: "Aku bisa menulis 25 dan tahu 2 puluhan + 5 satuan.",
         },
         {
-          nama: "Kamar puluhan dan ratusan",
-          singkat: "Tengah dan kiri",
+          nama: "Cerita Kakek Tono",
+          singkat: "Apel lebih dari 20",
           uraian:
-            "Puluhan di tengah: angka 4 pada 147 nilainya 40. Ratusan paling kiri: angka 1 nilainya 100. Setiap 10 satuan jadi 1 puluhan, setiap 10 puluhan jadi 1 ratusan.",
-          contoh: "147 = 1 ratusan, 4 puluhan, 7 satuan.",
+            "Kakek Tono memanen apel di kebun Desa Angka. Keranjangnya penuh apel merah. Kakek bingung karena jumlahnya lebih dari 20. Duh, bagaimana menghitung apel sebanyak ini dengan cepat?",
+          contoh: "Yuk bantu Kakek menghitung sampai 100!",
         },
         {
-          nama: "Bentuk panjang",
-          singkat: "Jumlahkan nilai kamar",
+          nama: "Rahasia ikat puluhan",
+          singkat: "Setiap 10 jadi 1 ikat",
           uraian:
-            "Tuliskan nilai tiap kamar lalu jumlahkan. 147 = 100 + 40 + 7. 139 = 100 + 30 + 9. 190 = 100 + 90 + 0.",
-          contoh: "139 = 100 + 30 + 9.",
+            "Jangan hitung satu per satu sampai lelah. Kelompokkan setiap 10 benda. 1 ikat sedotan 10 batang = 1 puluhan. 2 ikat = 20 batang = 2 puluhan. Sisa yang belum sampai 10 disebut satuan.",
+          contoh: "1 ikat = 10 = 1 puluhan. 2 ikat = 20 = 2 puluhan.",
         },
       ],
       kuis: [
         {
-          pertanyaan:
-            "Jika ada angka 85, angka manakah yang bertindak sebagai satuan dan menempati kamar paling kanan?",
-          alias: ["5", "lima"],
+          pertanyaan: "1 ikat sedotan berisi 10 batang disebut apa?",
+          alias: ["puluhan", "satu puluhan", "1 puluhan"],
         },
       ],
       kuisTulis: {
-        pertanyaan: "Tuliskan bentuk panjang dari bilangan 139. 139 = ... + ... + ...",
-        alias: ["100 + 30 + 9", "100+30+9", "100 +30 +9"],
+        pertanyaan: "2 ikat sedotan berisi 20 batang disebut ... puluhan.",
+        alias: ["2", "dua", "2 puluhan", "dua puluhan"],
       },
       voice: [
         [
-          "Halo anak-anak hebat kelas 2 yang cerdas! Bayangkan 147 kelereng berserakan. Agar rapi, kita buatkan rumah dengan tiga kamar.",
-          "Setiap 10 kelereng masuk kantong kecil, itu puluhan. Setiap 10 kantong jadi kotak besar, itu ratusan. Angka kanan: satuan, nilainya tetap. Angka tengah: puluhan, diberi satu nol. Angka kiri: ratusan, diberi dua nol.",
-          "Jadi 147 artinya 1 ratusan, 4 puluhan, dan 7 satuan. Dibaca seratus empat puluh tujuh!",
+          "Halo anak-anak hebat kelas 2! Hari ini kita berpetualang di Desa Angka. Targetnya: membilang dan menulis 21 sampai 100, lalu menentukan puluhan dan satuan.",
+          "Lihat Kakek Tono. Beliau baru panen apel. Keranjangnya penuh apel merah. Kakek bingung karena apelnya lebih dari 20. Duh, bagaimana menghitung yang banyak ini dengan cepat?",
+          "Rahasianya: ikat menjadi puluhan! Setiap 10 benda jadi 1 ikat. 1 ikat 10 batang disebut 1 puluhan. 2 ikat 20 batang disebut 2 puluhan. Yuk bantu Kakek Tono!",
         ],
       ],
     },
     {
       kode: "B",
-      judul: "B. Membandingkan dan Mengurutkan",
+      judul: "B. Rumah Nilai Tempat Puluhan dan Satuan",
       pengantar:
-        "Infografis perbandingan: lihat ratusan dulu, lalu puluhan, lalu satuan. Tanda lebih besar, lebih kecil, dan sama dengan. Urutkan dari kecil ke besar.",
-      labelDaftar: "Lebih besar, lebih kecil, urutan",
+        "Setiap angka punya rumah agar tidak tertukar. Rumah puluhan di kiri, rumah satuan di kanan. Pada 25: angka 2 nilainya 20, angka 5 nilainya 5. Dibaca dua puluh lima.",
+      labelDaftar: "Rumah 25 dan angka 100",
       kolom: 1,
       item: [
         {
-          nama: "Dari kiri dulu",
-          singkat: "Ratusan, puluhan, satuan",
+          nama: "Rumah puluhan di kiri",
+          singkat: "Nilainya puluhan",
           uraian:
-            "Jangan hanya melihat satuan. 168 dan 162 sama ratusannya. Puluhannya sama 6. Satuan 8 lebih besar dari 2, jadi 168 > 162.",
-          contoh: "168 > 162.",
+            "Angka di kiri menempati rumah puluhan. Pada 25, angka 2 ada di rumah puluhan. Dua ikat sedotan artinya nilainya 20.",
+          contoh: "Angka 2 pada 25 = 20.",
         },
         {
-          nama: "Lebih dari 50",
-          singkat: "Bandingkan dengan 50",
+          nama: "Rumah satuan di kanan",
+          singkat: "Nilainya tetap",
           uraian:
-            "72, 89, dan 60 lebih besar dari 50. 14 dan 35 lebih kecil dari 50. Lihat puluhan: 7 puluhan lebih dari 5 puluhan.",
-          contoh: "72 > 50. 14 < 50.",
+            "Angka di kanan menempati rumah satuan. Pada 25, angka 5 ada di rumah satuan. Lima batang sedotan artinya nilainya 5. 20 + 5 = 25.",
+          contoh: "Angka 5 pada 25 = 5.",
         },
         {
-          nama: "Urutan naik",
-          singkat: "Kecil ke besar",
+          nama: "Tahukah kamu: angka 100",
+          singkat: "1 ratusan",
           uraian:
-            "Susun dari yang paling kecil. 112, lalu 128, lalu 145. Semua ratusannya 1, jadi lihat puluhan: 1, 2, lalu 4.",
-          contoh: "112, 128, 145.",
+            "Angka 100 adalah bilangan cacah tiga angka yang pertama. 100 terdiri dari 1 ratusan, 0 puluhan, dan 0 satuan.",
+          contoh: "100 = 1 ratusan + 0 puluhan + 0 satuan.",
         },
       ],
       kuis: [
         {
-          pertanyaan: "Manakah yang lebih besar, 168 atau 162? Mengapa?",
-          alias: ["168", "delapan", "satuan"],
+          pertanyaan: "Pada angka 25, angka 2 menempati rumah apa dan nilainya berapa?",
+          alias: ["puluhan", "20", "dua puluh"],
         },
       ],
       kuisTulis: {
-        pertanyaan: "Lambang bilangan dari seratus dua puluh empat adalah...",
-        alias: ["124"],
+        pertanyaan: "Tuliskan cara membaca 25.",
+        alias: ["dua puluh lima", "25", "2 puluhan 5 satuan"],
       },
       voice: [
         [
-          "Saat membandingkan, jangan tertipu satuan yang kelihatan besar. Mulai dari kamar kiri.",
-          "168 lebih besar dari 162 karena satuannya 8, padahal ratusan dan puluhannya sama.",
-          "Mengurutkan sama caranya: kecil di depan, besar di belakang. 112, 128, 145.",
+          "Setiap angka punya rumah. Rumah puluhan di kiri, rumah satuan di kanan. Lihat angka 25.",
+          "Angka 2 di rumah puluhan, dua ikat sedotan, nilainya 20. Angka 5 di rumah satuan, lima batang, nilainya 5. Dibaca dua puluh lima.",
+          "Tahukah kamu? Angka 100 adalah bilangan cacah tiga angka yang pertama. 100 terdiri dari 1 ratusan, 0 puluhan, dan 0 satuan.",
         ],
       ],
     },
@@ -184,43 +183,54 @@ D) Empat puluh tujuh`,
       kode: "C",
       judul: "C. Lembar Evaluasi Siswa",
       pengantar:
-        "Pilih satuan 85 dan bentuk panjang 139, tentukan benar-salah 168 lawan 162 serta 190, jodohkan nilai tempat 152, lalu jelaskan mengapa membandingkan dari ratusan.",
-      labelDaftar: "Pilihan, benar-salah, mencocokkan, dan esai",
+        "Jadi detektif angka: lingkari jeruk setiap 10. 2 ikat + 4 sisa = 24, dua puluh empat. Jodohkan 37, 62, dan 85. Isi 49 dan 71. Lalu lingkari perasaanmu hari ini.",
+      labelDaftar: "Detektif jeruk, pasangkan, kotak misteri, jurnal",
       kolom: 1,
       item: [
         {
-          nama: "Kelompok A dan B",
-          singkat: "Kamar dan bentuk panjang",
+          nama: "Detektif jeruk Kakek Tono",
+          singkat: "2 puluhan + 4 satuan",
           uraian:
-            "Satuan 85 = 5. 139 = 100 + 30 + 9. 168 lebih besar dari 162. 190 = 100 + 90 + 0.",
-          contoh: "5. 100+30+9. 168 > 162.",
+            "Lingkari setiap 10 jeruk. Ada 2 ikat puluhan dan 4 sisa satuan. Total jeruk Kakek 24, dibaca dua puluh empat.",
+          contoh: "2 puluhan + 4 satuan = 24.",
         },
         {
-          nama: "Kelompok C dan D",
-          singkat: "152 dan urutan",
+          nama: "Pasangkan dan kotak misteri",
+          singkat: "37, 62, 85, 49, 71",
           uraian:
-            "Pada 152: 1 ratusan, 5 puluhan, 2 satuan. 124 = seratus dua puluh empat. Bandingkan dari kiri karena nilainya paling besar.",
-          contoh: "Ratusan 1. Urutan 112-128-145.",
+            "37 = tiga puluh tujuh. 62 = enam puluh dua. 85 = delapan puluh lima. 49 = 4 puluhan + 9 satuan. 71 = 7 puluhan + 1 satuan.",
+          contoh: "49 = 4 + 9 satuan. 71 = 7 + 1 satuan.",
+        },
+        {
+          nama: "Jurnal perasaanku",
+          singkat: "Refleksi",
+          uraian:
+            "Bagaimana perasaanmu di Desa Angka hari ini? Seru, aku sudah paham. Sedikit bingung, mau latihan lagi. Atau susah, butuh bantuan tutor. Kamu hebat dan pantang menyerah!",
+          contoh: "Hore! Kakek Tono sudah tertolong.",
         },
       ],
       kuis: [
-        { pertanyaan: "Satuan 85?", alias: ["5"] },
-        { pertanyaan: "Bentuk panjang 139?", alias: ["100", "30", "9"] },
-        { pertanyaan: "168 lebih kecil dari 162?", alias: ["salah"] },
-        { pertanyaan: "190 = 100+90+0?", alias: ["benar"] },
-        { pertanyaan: "1 pada 152?", alias: ["ratusan"] },
-        { pertanyaan: "Mengapa dari ratusan?", alias: ["besar", "kiri", "nilai"] },
+        { pertanyaan: "2 ikat + 4 sisa jeruk sama dengan berapa?", alias: ["24", "dua puluh empat"] },
+        { pertanyaan: "37 dibaca apa?", alias: ["tiga puluh tujuh"] },
+        { pertanyaan: "62 dibaca apa?", alias: ["enam puluh dua"] },
+        { pertanyaan: "85 dibaca apa?", alias: ["delapan puluh lima"] },
+        { pertanyaan: "49 terdiri dari berapa puluhan?", alias: ["4", "empat", "empat puluhan"] },
+        { pertanyaan: "71 terdiri dari berapa satuan?", alias: ["1", "satu", "satu satuan"] },
       ],
       voice: [
-        ["Satuan 85 adalah 5. 139 = 100 + 30 + 9."],
-        ["Bandingkan dari ratusan. 168 lebih besar dari 162."],
+        [
+          "Jadi detektif angka. Lingkari jeruk setiap 10. Ada 2 ikat puluhan dan 4 satuan. Total 24, dua puluh empat.",
+        ],
+        [
+          "Pasangkan: 37 tiga puluh tujuh, 62 enam puluh dua, 85 delapan puluh lima. 49 = 4 puluhan + 9 satuan. 71 = 7 puluhan + 1 satuan. Hore, Kakek Tono sudah tertolong!",
+        ],
       ],
     },
     {
       kode: "D",
       judul: "D. Kartu Evaluasi Ekstra",
       pengantar:
-        "Tanpa keyboard. Tarik garis nilai tempat 152, geser bilangan ke keranjang >50 atau <50, urutkan 112-128-145, coretkan angka 4 pada 124, lalu tekan BENAR atau SALAH.",
+        "Tanpa keyboard. Tarik garis cara baca 37, 62, 85. Masukkan ikat ke rumah puluhan dan batang ke rumah satuan. Urutkan 24, 49, 71. Coretkan 25. Lalu tekan BENAR atau SALAH.",
       labelDaftar: "Tarik garis, keranjang, urutan, kanvas, detektif",
       kolom: 1,
       item: [
@@ -228,33 +238,33 @@ D) Empat puluh tujuh`,
           nama: "Permainan A sampai C",
           singkat: "Garis, keranjang, urutan",
           uraian:
-            "152: 5 puluhan, 2 satuan, 1 ratusan. Lebih dari 50: 72, 89, 60. Kurang dari 50: 14, 35. Urutan: 112, 128, 145.",
-          contoh: "1 ratusan. 72 > 50. 112 dulu.",
+            "37 = tiga puluh tujuh. 62 = enam puluh dua. 85 = delapan puluh lima. Dua ikat masuk rumah puluhan. Lima batang masuk rumah satuan. Urutan: 24, 49, 71.",
+          contoh: "2 ikat = puluhan. 5 batang = satuan.",
         },
         {
-          nama: "Permainan D dan E",
+          nama: "Permainan D, E, dan pesan tutor",
           singkat: "Kanvas dan detektif",
           uraian:
-            "124: coretkan 4. 168 tidak lebih kecil dari 162. 190 = 100 + 90 + 0.",
-          contoh: "Coretkan 4. SALAH lalu BENAR.",
+            "Coretkan 25 untuk dua puluh lima. 100 = 1 ratusan, 0 puluhan, 0 satuan. Angka 2 pada 25 nilainya 20, bukan 2. Kamu anak hebat. Sampai jumpa di petualangan berikutnya!",
+          contoh: "Coretkan 25. BENAR lalu SALAH.",
         },
       ],
       kuis: [
-        { pertanyaan: "Tarik garis 152?", alias: ["ratusan", "puluhan", "satuan"] },
-        { pertanyaan: "Keranjang 50?", alias: ["72", "14"] },
-        { pertanyaan: "Urutan 112 128 145?", alias: ["112", "128", "145"] },
-        { pertanyaan: "168 lebih kecil 162?", alias: ["salah"] },
-        { pertanyaan: "190 bentuk panjang?", alias: ["benar"] },
+        { pertanyaan: "37 dibaca?", alias: ["tiga puluh tujuh"] },
+        { pertanyaan: "2 ikat ke rumah mana?", alias: ["puluhan"] },
+        { pertanyaan: "Urutan 24 49 71?", alias: ["24", "49", "71"] },
+        { pertanyaan: "100 punya 1 ratusan?", alias: ["benar"] },
+        { pertanyaan: "Angka 2 pada 25 nilainya 2?", alias: ["salah"] },
       ],
       kuisTulis: {
-        pertanyaan: "Coretkan angka terakhir 1 - 2 - __.",
-        alias: ["124", "4"],
+        pertanyaan: "Coretkan lambang dua puluh lima.",
+        alias: ["25", "dua puluh lima"],
       },
       voice: [
         [
-          "Tanpa keyboard. Tarik garis angka 5, 2, dan 1 pada 152 ke kamarnya. Geser 72 ke lebih besar dari 50, 14 ke lebih kecil.",
-          "Urutkan 112, 128, lalu 145. Coretkan 4 untuk seratus dua puluh empat.",
-          "Detektif: 168 lebih besar dari 162. 190 = 100 + 90 + 0.",
+          "Tanpa keyboard. Tarik garis 37 ke tiga puluh tujuh, 62 ke enam puluh dua, 85 ke delapan puluh lima.",
+          "Masukkan 2 ikat ke rumah puluhan, 5 batang ke rumah satuan. Urutkan 24, 49, lalu 71. Coretkan 25.",
+          "Detektif: 100 = 1 ratusan, 0 puluhan, 0 satuan. Angka 2 pada 25 nilainya 20. Kamu hebat dan pantang menyerah!",
         ],
       ],
     },

@@ -482,55 +482,51 @@ const PAKET: Record<string, PaketEvaluasiEkstra> = {
   },
   "mtk-2-bab1": {
     garis: {
-      soal: "Tariklah garis untuk menjodohkan bilangan dengan nilai tempatnya yang tepat!",
-      kiri: [
-        "Angka 5 pada bilangan 152",
-        "Angka 2 pada bilangan 152",
-        "Angka 1 pada bilangan 152",
-      ],
+      soal: "Tarik garis dari kotak angka menuju cara membaca yang benar!",
+      kiri: ["37", "62", "85"],
       kanan: [
-        "Ratusan (Nilainya 100)",
-        "Puluhan (Nilainya 50)",
-        "Satuan (Nilainya 2)",
+        "Enam puluh dua",
+        "Tiga puluh tujuh",
+        "Delapan puluh lima",
       ],
       kunci: {
-        "Angka 5 pada bilangan 152": "Puluhan (Nilainya 50)",
-        "Angka 2 pada bilangan 152": "Satuan (Nilainya 2)",
-        "Angka 1 pada bilangan 152": "Ratusan (Nilainya 100)",
+        "37": "Tiga puluh tujuh",
+        "62": "Enam puluh dua",
+        "85": "Delapan puluh lima",
       },
     },
     keranjang: {
-      soal: "Masukkan bilangan ke keranjang perbandingan yang benar!",
-      keranjang1: "LEBIH BESAR DARI 50 (> 50)",
-      keranjang2: "LEBIH KECIL DARI 50 (< 50)",
+      soal: "Masukkan ke rumah nilai tempat yang benar!",
+      keranjang1: "RUMAH PULUHAN (kiri)",
+      keranjang2: "RUMAH SATUAN (kanan)",
       keping: [
-        { id: "tujuh2", label: "72", wadah: "1" },
-        { id: "empat1", label: "14", wadah: "2" },
-        { id: "delapan9", label: "89", wadah: "1" },
-        { id: "tiga5", label: "35", wadah: "2" },
-        { id: "enam0", label: "60", wadah: "1" },
+        { id: "dua-ikat", label: "2 ikat sedotan", wadah: "1" },
+        { id: "lima-batang", label: "5 batang sedotan", wadah: "2" },
+        { id: "empat-ikat", label: "4 ikat jeruk", wadah: "1" },
+        { id: "sembilan-sisa", label: "9 sisa jeruk", wadah: "2" },
+        { id: "tujuh-ikat", label: "7 ikat apel", wadah: "1" },
       ],
     },
     urut: {
       soal: "Geser kotak angka dari atas ke bawah agar urut dari yang terkecil hingga terbesar!",
-      balok: ["112", "128", "145"],
+      balok: ["24", "49", "71"],
     },
     kanvas: {
-      soal: 'Lengkapi dengan tulisan tangan: "Lambang seratus dua puluh empat adalah 1 - 2 - __."',
-      alias: ["124", "4"],
+      soal: 'Lengkapi dengan tulisan tangan: "Lambang dua puluh lima adalah __."',
+      alias: ["25", "dua puluh lima"],
     },
     detektif: [
       {
-        soal: "Bilangan 168 nilainya lebih kecil daripada 162 karena angka 8 lebih besar dari 2.",
-        benar: false,
-        alasan:
-          "Salah. Bandingkan dari ratusan, puluhan, baru satuan. 168 dan 162 sama ratusan serta puluhannya, satuan 8 lebih besar, jadi 168 > 162.",
-      },
-      {
-        soal: "Bentuk panjang dari bilangan 190 adalah 100 + 90 + 0.",
+        soal: "Angka 100 adalah bilangan cacah tiga angka yang pertama, terdiri dari 1 ratusan, 0 puluhan, dan 0 satuan.",
         benar: true,
         alasan:
-          "Benar. Nilai ratusannya 100, puluhannya 90, dan satuannya 0.",
+          "Benar. 100 punya tiga angka: 1 di ratusan, lalu 0 puluhan dan 0 satuan.",
+      },
+      {
+        soal: "Pada bilangan 25, angka 2 menempati rumah satuan sehingga nilainya 2.",
+        benar: false,
+        alasan:
+          "Salah. Angka 2 ada di rumah puluhan di kiri, jadi nilainya 20. Angka 5 yang di kanan adalah satuan.",
       },
     ],
   },
