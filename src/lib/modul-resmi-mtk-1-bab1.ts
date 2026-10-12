@@ -10,263 +10,250 @@ export const JUDUL_MTK1_BAB1_LAMA = "Bab 1: Ayo Berhitung!";
 export const MODUL_MTK1_BAB1: ModulResmiPai = {
   id: "mtk-1-bab1",
   judul: JUDUL_MTK1_BAB1,
-  pola: /ayo\s+berhitung|ayo\s+membilang\s+sampai(\s+dengan)?\s+10\b|permen warna-warni sani/,
+  pola: /ayo\s+berhitung|ayo\s+membilang\s+sampai(\s+dengan)?\s+10\b|piknik buah rara|rara dan bimo|permen warna-warni sani/,
   motivasi:
-    "Hore! Kamu sudah membantu Sani menghitung permen warna-warni sampai 10. Hitung, bandingkan, lalu cari pasangan angkanya.",
-  kunciJawaban: "B,B,A,B,A,B,B,B,B,B",
+    "Hore! Kamu sudah piknik bersama Rara, Bimo, dan Miko. Hitung buahnya satu per satu, tulis angkanya, lalu bandingkan jumlahnya.",
+  kunciJawaban: "B,C,A,B,A,B,B,A,A,B",
   sketsaKartu: [
-    "Paman membuka kotak kayu berisi permen merah, hijau, dan biru untuk Sani.",
-    "Sani membandingkan 4 permen merah dan 2 permen hijau, lalu mengurai 5 permen biru.",
-    "Anak menghitung 6 permen dan 4 permen hijau, lalu membagi 4 permen sama rata.",
-    "Anak mengisi lembar kerja tantangan juara membilang sampai 10.",
+    "Rara dan Bimo piknik di taman, menghitung apel, jeruk, pisang, dan stroberi bersama Miko.",
+    "Tangga bilangan 1 sampai 10, mulut ikan untuk tanda lebih besar, dan kereta bilangan.",
+    "Toko angka mini dengan kartu angka, benda hitung, dan dua wadah.",
+    "Lembar kerja tantangan juara membilang dan membandingkan sampai 10.",
   ],
   latihan: pg([
-    `[Soal 1 - PG - Tipe: HOTS]
-Sani menghitung 5 permen dan berkata: "Satu, dua, tiga, lima! Ada 5 permen!" Angka berapa yang lupa diucapkan?
-A) Angka 2
-B) Angka 4
-C) Angka 3`,
-    `[Soal 2 - PG - Tipe: HOTS]
-Siti punya 6 permen dan ingin membaginya sama banyak kepada dua adik. Pembagian yang adil adalah...
-A) 4 dan 2
-B) 3 dan 3
-C) 5 dan 1`,
+    `[Soal 1 - PG - Tipe: LOTS]
+Di piring ada 7 ikan. Berapa jumlah ikannya?
+A) 6
+B) 7
+C) 8`,
+    `[Soal 2 - PG - Tipe: LOTS]
+Ada 9 kue mangkuk. Lambang bilangan yang sesuai adalah...
+A) 6
+B) 8
+C) 9`,
     `[Soal 3 - PG - Tipe: HOTS]
-Mangkuk Sani ada 7 permen. Mangkuk Riko ada 4 permen. Agar sama banyak dengan Riko, Sani harus...
-A) Mengeluarkan 3 permen
-B) Menambahkan 3 permen
-C) Memindahkan semua permen Riko`,
-    `[Soal 4 - PG - Tipe: MOTS]
-Ada 8 permen hijau. Lambang angka dan nama bilangannya adalah...
-A) Angka 6 dibaca enam
-B) Angka 8 dibaca delapan
-C) Angka 7 dibaca tujuh`,
+Roket bilangan: 3, 4, titik, 6, 7. Angka yang hilang adalah...
+A) 5
+B) 2
+C) 8`,
+    `[Soal 4 - PG - Tipe: HOTS]
+Ada 6 ceri. Dina berkata, "Ada 5 ceri." Pernyataan yang tepat adalah...
+A) Dina benar, ada 5 ceri
+B) Dina salah, ada 6 ceri
+C) Dina benar, ada 6 ceri`,
     `[Soal 5 - PG - Tipe: HOTS]
-Hitung mundur: 7, 6, 5, bintang, 3. Angka pada bintang adalah...
-A) Angka 4
-B) Angka 2
-C) Angka 1`,
-    `[Soal 6 - PG - Tipe: LOTS]
-Dua kelompok yang jumlahnya persis sama disebut...
-A) Lebih banyak
-B) Sama banyak
-C) Lebih sedikit`,
+Bebek ada 4. Kelinci ada 6. Tanda yang tepat adalah...
+A) 4 < 6
+B) 4 > 6
+C) 4 = 6`,
+    `[Soal 6 - PG - Tipe: HOTS]
+Piring A ada 5 kue. Piring B ada 3 kue. Kue yang ditambahkan ke piring B agar sama banyak adalah...
+A) 1
+B) 2
+C) 3`,
     `[Soal 7 - PG - Tipe: HOTS]
-Aktivitas mundur: (2) 5, 4, 3, 2 dan (4) 4, 3, 2, 1. Nomor yang termasuk hitung mundur adalah...
-A) 1 dan 3
-B) 2 dan 4
-C) 1 dan 2`,
+Ada 8 kancing. Cara paling baik agar semua kancing dihitung satu kali adalah...
+A) Menghitung dengan sangat cepat
+B) Memindahkan kancing satu per satu sambil menghitung
+C) Menebak jumlah kancing`,
     `[Soal 8 - PG - Tipe: HOTS]
-Makin besar disebut hitung maju. Makin kecil disebut hitung mundur. Pasangannya...
-A) Kisah 1 huruf A, kisah 2 huruf B
-B) Kisah 1 huruf B, kisah 2 huruf A
-C) Kisah 1 huruf A, kisah 2 huruf A`,
+Kotak A ada 3 bintang, kotak C ada 5, kotak B ada 7. Urutan dari paling sedikit ke paling banyak adalah...
+A) A, C, B
+B) B, A, C
+C) C, A, B`,
     `[Soal 9 - PG - Tipe: HOTS]
-Pasangan angka 4. Kantong kiri berisi 1 permen. Kantong kanan harus berisi...
-A) 1 permen
-B) 3 permen
-C) 4 permen`,
+Kelompok pertama berjumlah 4. Kelompok kedua lebih banyak dan tidak lebih dari 10. Pilihan yang benar adalah...
+A) 4 < 6
+B) 4 > 6
+C) 4 = 11`,
     `[Soal 10 - PG - Tipe: HOTS]
-Kantong kuning: 4, 3, dan 2 permen. Jumlah seluruhnya...
-A) 7
-B) 9
-C) 10`,
+Rara punya 6 balon. Bimo punya 8 balon. Siapa yang lebih banyak, dan berapa selisihnya?
+A) Rara, selisih 2
+B) Bimo, selisih 2
+C) Bimo, selisih 4`,
   ]),
   kartu: [
     {
       kode: "A",
-      judul: "A. Permen Warna-Warni Sani",
+      judul: "A. Piknik Buah Rara dan Bimo",
       pengantar:
-        "🗺️ Paman datang membawa kotak hadiah besar untuk Sani. Di dalamnya ada permen manis berwarna-warni.",
-      labelDaftar: "Target dan cerita kotak mainan",
+        "Rara dan Bimo piknik di taman bersama Miko si Kucing. Mereka menghitung apel, jeruk, pisang, dan stroberi.",
+      labelDaftar: "Cerita piknik dan menghitung buah",
       kolom: 1,
       item: [
         {
-          nama: "🌟 Target belajarku hari ini",
+          nama: "Tujuan pembelajaran",
           singkat: "Membilang sampai 10",
           uraian:
-            "🎯 Aku bisa menghitung, membaca, dan menulis angka 1 sampai 10. 🎯 Aku bisa membandingkan banyak benda serta menghitung maju dan mundur. 🎯 Aku bisa menemukan pasangan bilangan pembentuk angka.",
-          contoh: "Hitung, bandingkan, lalu cari pasangannya.",
+            "Siswa dapat menghitung benda sampai 10, membaca dan menulis lambang 1 sampai 10, mencocokkan jumlah dengan lambangnya, serta membandingkan lebih banyak, lebih sedikit, atau sama banyak.",
+          contoh: "Hitung satu per satu, lalu tulis angkanya.",
         },
         {
-          nama: "🗺️ Kotak mainan dari Paman",
-          singkat: "Permen warna-warni",
+          nama: "Cerita piknik",
+          singkat: "Apel 3, pisang 4, jeruk 5",
           uraian:
-            "Saat kotak dibuka, ada permen merah di wadah plastik, permen hijau yang berkumpul rapi, dan permen biru di atas meja. Ada kelompok yang banyak dan ada yang sedikit.",
-          contoh: "Yuk bantu Sani menghitung dan memisahkan permen.",
+            "Tiga apel dibaca 3. Lima jeruk dibaca 5. Miko membawa 4 pisang. Urutannya 3, 4, 5. Jeruk lebih banyak daripada apel karena 5 > 3. Stroberi dan pisang sama-sama 4, jadi 4 = 4.",
+          contoh: "Jeruk lebih banyak. Stroberi dan pisang sama banyak.",
         },
       ],
       kuis: [
         {
-          pertanyaan: "1. Siapa yang membawa kotak hadiah untuk Sani?",
-          alias: ["paman"],
+          pertanyaan: "Di atas tikar ada tujuh mangga. Berapa jumlah mangganya?",
+          alias: ["tujuh", "7", "ada tujuh mangga"],
         },
         {
-          pertanyaan: "2. Siapa yang membuka kotak hadiah itu?",
-          alias: ["sani"],
-        },
-        {
-          pertanyaan: "3. Apa isi kotak hadiah Paman?",
-          alias: ["permen", "permen manis", "permen warna-warni"],
+          pertanyaan: "Tebalkan angka 3.",
+          alias: ["3", "tiga"],
         },
       ],
       voice: [
         [
-          "Hari ini Paman datang membawa sebuah kotak hadiah besar untuk Sani. Saat kotaknya dibuka, mata Sani takjub.",
-          "Ada permen merah di wadah plastik, permen hijau yang berkumpul rapi, dan permen biru di atas meja.",
-          "Sani berkata, wah, permennya banyak sekali. Warnanya beda-beda. Yuk, kita bantu Sani menghitung, mengurutkan, dan memisahkan permen ini.",
+          "Rara dan Bimo duduk di tikar piknik. Ada keranjang buah dan Miko si Kucing.",
+          "Rara menghitung tiga apel. Lambang bilangannya adalah 3. Bimo mengeluarkan lima jeruk. Miko membawa empat pisang.",
+          "Urutannya 3, 4, 5. Jeruk lebih banyak daripada apel, karena lima lebih besar daripada tiga. Stroberi dan pisang sama-sama empat.",
         ],
       ],
     },
     {
       kode: "B",
-      judul: "B. Empat Aturan Rahasia Permen Sani",
+      judul: "B. Ayo Mengenal Bilangan 1-10",
       pengantar:
-        "📐 Sebelum merapikan jajanan, kenali empat aturan: menghitung dan menulis, membandingkan, maju mundur, dan pasangan bilangan.",
-      labelDaftar: "Lambang, perbandingan, maju mundur, pasangan",
+        "Kenali jumlah, nama bilangan, dan lambangnya. Lalu cocokkan, urutkan, dan bandingkan.",
+      labelDaftar: "Infografis bilangan dan perbandingan",
       kolom: 1,
       item: [
         {
-          nama: "A. Menghitung, membaca, dan menulis",
-          singkat: "1 sampai 10",
+          nama: "Lambang 1 sampai 10",
+          singkat: "Satu sampai sepuluh",
           uraian:
-            "🍬 satu, 🍬🍬 dua, 🍬🍬🍬 tiga, sampai 10 permen dibaca sepuluh. Hitung sambil menunjuk, lalu tulis lambangnya.",
-          contoh: "5 permen dibaca lima.",
+            "Satu 1, dua 2, tiga 3, empat 4, lima 5, enam 6, tujuh 7, delapan 8, sembilan 9, sepuluh 10. Tunjuk benda satu per satu. Benda terakhir menunjukkan jumlah semuanya.",
+          contoh: "Enam ikan ditulis 6.",
         },
         {
-          nama: "B. Membandingkan banyak benda",
-          singkat: "4 lebih banyak dari 2",
+          nama: "Membandingkan jumlah",
+          singkat: "Lebih banyak, lebih sedikit, sama banyak",
           uraian:
-            "Wadah merah ada 4 permen. Wadah hijau ada 2 permen. 4 lebih banyak dari 2. 2 lebih sedikit dari 4.",
-          contoh: "Merah lebih banyak.",
-        },
-        {
-          nama: "C. Menghitung maju dan mundur",
-          singkat: "1 sampai 10 dan kembali",
-          uraian:
-            "Maju: 1, 2, 3, 4, 5, 6, 7, 8, 9, 10. Mundur: 10, 9, 8, 7, 6, 5, 4, 3, 2, 1.",
-          contoh: "Maju makin besar. Mundur makin kecil.",
-        },
-        {
-          nama: "D. Pasangan bilangan",
-          singkat: "5 = 3 dan 2",
-          uraian:
-            "5 permen biru dipecah menjadi 3 dan 2. Jika disatukan kembali, jumlahnya tetap 5.",
-          contoh: "3 dan 2 pasangan angka 5.",
+            "Ayam 5 lebih banyak daripada katak 3, jadi 5 > 3. Mobil 2 lebih sedikit daripada bola 4, jadi 2 < 4. Bunga dan stroberi sama-sama 3, jadi 3 = 3. Mulut tanda terbuka ke jumlah yang lebih banyak.",
+          contoh: "8 > 5, mulut terbuka ke arah 8.",
         },
       ],
       kuis: [
         {
-          pertanyaan: "1. Lima permen ditulis dengan lambang berapa?",
-          alias: ["5", "lima"],
+          pertanyaan: "Cocokkan kumbang, kue, dan balon dengan angka 2, 5, dan 7.",
+          alias: ["2", "5", "7"],
         },
         {
-          pertanyaan: "2. 4 permen merah dibanding 2 permen hijau. Merah lebih apa?",
-          alias: ["banyak", "lebih banyak"],
+          pertanyaan: "Susun gerbong dari bilangan paling kecil: 6, 4, 5, 2, 3.",
+          alias: ["2", "3", "4", "5", "6"],
         },
         {
-          pertanyaan: "3. Angka 3 dan 2 adalah pasangan dari angka berapa?",
-          alias: ["5", "lima"],
+          pertanyaan: "Keranjang mana yang buahnya paling banyak?",
+          alias: ["b", "keranjang b", "enam"],
+        },
+        {
+          pertanyaan: "Ada delapan burung di pohon. Sebutkan bilangan sebelum delapan.",
+          alias: ["tujuh", "7"],
         },
       ],
       voice: [
         [
-          "Aturan pertama: hitung permen satu per satu, baca namanya, lalu tulis lambangnya. Satu, dua, tiga, empat, lima, sampai sepuluh.",
-          "Aturan kedua: bandingkan dua kelompok. Empat permen merah lebih banyak dari dua permen hijau.",
+          "Ayo mengenal bilangan satu sampai sepuluh. Tunjuk benda satu per satu, lalu ucapkan bilangannya. Benda terakhir adalah jumlah semuanya.",
+          "Empat kupu-kupu dipasangkan dengan angka 4. Lima ayam lebih banyak daripada tiga katak. Dua mobil lebih sedikit daripada empat bola. Tiga bunga sama banyak dengan tiga stroberi.",
         ],
         [
-          "Aturan ketiga: hitung maju dari 1 sampai 10, angkanya makin besar. Hitung mundur dari 10 sampai 1, angkanya makin kecil.",
-          "Aturan keempat: 5 permen biru bisa dipecah menjadi 3 dan 2. Tiga dan dua adalah pasangan angka 5.",
+          "Dua kumbang ke angka 2. Lima kue ke angka 5. Tujuh balon ke angka 7. Kereta dari kecil: 2, 3, 4, 5, 6. Keranjang B paling banyak karena ada enam buah.",
+          "Bilangan sebelum delapan adalah tujuh. Tiga kura-kura lebih sedikit daripada lima kelinci, jadi 3 < 5.",
         ],
       ],
     },
     {
       kode: "C",
-      judul: "C. Detektif Permen Manis",
+      judul: "C. Toko Angka Mini",
       pengantar:
-        "🕵️‍♂️ Kelompok A ada 6 permen. Kelompok B ada 4 permen hijau. B lebih sedikit, dan 4 permen dibagi sama rata menjadi 2 dan 2.",
-      labelDaftar: "Aktivitas terbimbing dan jurnal",
+        "Rara membuka toko mainan. Ambil benda sesuai kartu angka, lalu bandingkan dua wadah.",
+      labelDaftar: "Permainan menghitung dan membandingkan",
       kolom: 1,
       item: [
         {
-          nama: "🕵️‍♂️ Aktivitas 1",
-          singkat: "6 dan 4 permen",
+          nama: "Cara bermain",
+          singkat: "Kartu, benda, dua wadah",
           uraian:
-            "Kelompok A ada 6 permen, dibaca enam. Kelompok B ada 4 permen hijau, lebih sedikit dari A. Empat permen diurai sama rata menjadi 2 dan 2.",
-          contoh: "6 enam, 4 sedikit, 2 dan 2.",
+            "Acak kartu angka. Baca bilangannya. Ambil benda satu per satu sesuai angka, lalu masukkan ke wadah. Ulangi untuk wadah kedua. Bandingkan, lalu tulis kedua angka dan tandanya.",
+          contoh: "Kartu 4 dan kartu 7 ditulis 4 < 7. Empat lebih sedikit daripada tujuh.",
         },
         {
-          nama: "🎭 Jurnal perasaanku",
-          singkat: "Pilih wajah",
+          nama: "Pendamping",
+          singkat: "Hitung sekali",
           uraian:
-            "😀 Seru sekali, sekarang aku sudah bisa menghitung maju mundur sampai angka 10. 😐 Sedikit bingung saat mencari pasangan angka yang nilainya besar. 😢 Aku masih butuh bantuan tutor untuk menulis lambang angka 6 sampai 10.",
-          contoh: "Pilih satu wajah.",
+            "Pindahkan benda satu per satu. Benda yang sudah dihitung diletakkan di dalam wadah agar tidak dihitung dua kali.",
+          contoh: "Wadah A 5 benda. Wadah B 3 benda. Wadah B lebih sedikit.",
         },
       ],
       kuis: [
         {
-          pertanyaan: "1. Kelompok A ada berapa permen?",
-          alias: ["6", "enam"],
+          pertanyaan: "Kartu angka 6. Baca bilangannya, lalu sebutkan bilangan setelahnya.",
+          alias: ["enam", "tujuh", "6", "7"],
         },
         {
-          pertanyaan: "2. Kantong B lebih banyak atau lebih sedikit daripada kantong A?",
-          alias: ["sedikit", "lebih sedikit"],
+          pertanyaan: "Wadah A ada 5 benda. Wadah B ada 3 benda. Wadah mana yang lebih sedikit?",
+          alias: ["wadah b", "b", "sedikit"],
         },
         {
-          pertanyaan: "3. Empat permen dibagi sama rata. Masing-masing kantong berisi berapa?",
-          alias: ["2", "dua", "2 dan 2"],
+          pertanyaan: "Ambil 8 benda. Tuliskan lambang bilangannya.",
+          alias: ["8", "delapan"],
         },
       ],
       voice: [
         [
-          "Ayo jadi detektif permen. Kelompok A ada enam permen. Dibaca enam.",
-          "Kelompok B ada empat permen hijau. Empat lebih sedikit dari enam. Jika empat dibagi sama rata, masing-masing kantong berisi dua.",
+          "Selamat datang di toko angka mini. Ambil satu kartu, baca angkanya, lalu ambil benda sebanyak angka itu.",
+          "Contoh: kartu 4 dan kartu 7. Empat lebih sedikit daripada tujuh, jadi 4 < 7.",
+          "Wadah A ada lima benda. Wadah B ada tiga benda. Wadah B lebih sedikit. Enam benda lebih banyak daripada empat benda.",
         ],
       ],
     },
     {
       kode: "D",
-      judul: "D. Lembar Kerja Siswa",
+      judul: "D. Poin Penting dan Lembar Kerja",
       pengantar:
-        "📝 Tantangan para juara! Bab 1 Ayo Membilang sampai dengan 10. Hitung dengan teliti, lalu tulis jawaban akhirmu.",
-      labelDaftar: "LKS pilihan ganda dan isian",
+        "Hitung satu per satu, tulis angkanya, lalu bandingkan jumlahnya. Ini tantangan para juara.",
+      labelDaftar: "Poin penting dan evaluasi",
       kolom: 1,
       item: [
         {
-          nama: "🍓 Bagian A",
-          singkat: "Lima pilihan ganda",
+          nama: "Poin penting",
+          singkat: "Hitung, tulis, bandingkan",
           uraian:
-            "Sani lupa angka 4. Enam permen dibagi 3 dan 3. Sani mengeluarkan 3 permen agar sama dengan Riko. Delapan permen dibaca delapan. Bintang pada 7, 6, 5, bintang, 3 adalah 4.",
-          contoh: "Jawaban B, B, A, B, A.",
+            "Tunjuk satu, sebut satu. Setiap benda hanya dihitung sekali. Bilangan terakhir adalah jumlah semua benda. Urutan 1 sampai 10. Lebih banyak berarti lebih besar. Lebih sedikit berarti lebih kecil. Sama banyak berarti jumlahnya sama. Mulut tanda terbuka ke bilangan yang lebih besar. Tanda sama dengan berarti kedua jumlah sama.",
+          contoh: "Hitung satu per satu, tulis angkanya, lalu bandingkan jumlahnya.",
         },
         {
-          nama: "✏️ Bagian B",
-          singkat: "Lima isian",
+          nama: "Lembar kerja",
+          singkat: "Sepuluh tantangan",
           uraian:
-            "Jumlah yang sama disebut sama banyak. Hitung mundur ada pada nomor 2 dan 4. Kisah makin besar berpasangan dengan B, makin kecil dengan A. Pasangan 4 dan 1 adalah 3. Total permen kuning 9.",
-          contoh: "Sama banyak, 2 dan 4, B dan A, 3, 9.",
+            "Ikan ada 7. Kue mangkuk ada 9. Angka hilang pada 3, 4, 5, 6, 7 adalah 5. Dina salah karena ceri ada 6. Tanda 4 dan 6 adalah kurang dari. Piring B perlu 2 kue lagi. Kancing dihitung dengan dipindahkan satu per satu. Urutan bintang dari sedikit adalah kotak A, C, lalu B. Kelompok 4 dibanding kelompok yang lebih banyak. Bimo punya lebih banyak balon, selisihnya 2.",
+          contoh: "Jawaban latihan: B, C, A, B, A, B, B, A, A, B.",
         },
       ],
       kuis: [
-        { pertanyaan: "1. Angka yang lupa diucapkan Sani?", alias: ["4", "empat", "b"] },
-        { pertanyaan: "2. Pembagian 6 permen yang adil?", alias: ["3 dan 3", "3", "b"] },
-        { pertanyaan: "3. Apa yang harus dilakukan Sani agar sama dengan Riko?", alias: ["mengeluarkan 3", "3", "a"] },
-        { pertanyaan: "4. Lambang untuk 8 permen hijau?", alias: ["8", "delapan", "b"] },
-        { pertanyaan: "5. Angka pada bintang di pola 7, 6, 5, bintang, 3?", alias: ["4", "empat", "a"] },
-        { pertanyaan: "6. Dua kelompok yang jumlahnya sama disebut apa?", alias: ["sama banyak"] },
-        { pertanyaan: "7. Nomor aktivitas hitung mundur?", alias: ["2 dan 4", "2, 4", "2 4"] },
-        { pertanyaan: "8. Kisah makin besar berpasangan dengan huruf apa?", alias: ["b", "hitung maju"] },
-        { pertanyaan: "9. Kantong kanan untuk pasangan angka 4 jika kiri berisi 1?", alias: ["3", "tiga"] },
-        { pertanyaan: "10. Jumlah 4, 3, dan 2 permen kuning?", alias: ["9", "sembilan"] },
+        { pertanyaan: "Berapa jumlah ikan?", alias: ["7", "tujuh", "b"] },
+        { pertanyaan: "Lambang bilangan untuk 9 kue mangkuk?", alias: ["9", "sembilan", "c"] },
+        { pertanyaan: "Angka yang hilang pada 3, 4, titik, 6, 7?", alias: ["5", "lima"] },
+        { pertanyaan: "Apakah Dina benar saat berkata ada 5 ceri?", alias: ["salah", "enam", "6"] },
+        { pertanyaan: "Tanda antara 4 dan 6?", alias: ["<", "4 < 6"] },
+        { pertanyaan: "Berapa kue yang ditambahkan agar sama banyak?", alias: ["2", "dua"] },
+        { pertanyaan: "Cara terbaik menghitung 8 kancing?", alias: ["b", "satu per satu"] },
+        { pertanyaan: "Urutan kotak dari bintang paling sedikit?", alias: ["a c b", "a, c, b"] },
+        { pertanyaan: "Tuliskan perbandingan kelompok 4 dengan kelompok yang lebih banyak.", alias: ["4 < 5", "4 < 6", "4 < 7", "4 < 8", "4 < 9", "4 < 10"] },
+        { pertanyaan: "Siapa yang balonnya lebih banyak, dan berapa selisihnya?", alias: ["bimo", "2", "dua"] },
       ],
       voice: [
         [
-          "Ini lembar kerja tantangan para juara. Sani lupa mengucapkan angka 4. Enam permen dibagi adil menjadi 3 dan 3.",
-          "Sani mengeluarkan 3 permen agar sama dengan Riko. Delapan permen dibaca delapan. Bintang pada hitung mundur adalah angka 4.",
+          "Poin penting. Tunjuk satu, sebut satu. Bilangan terakhir adalah jumlah semua benda. Urutannya satu sampai sepuluh.",
+          "Lebih banyak berarti lebih besar. Lebih sedikit berarti lebih kecil. Sama banyak berarti jumlahnya sama. Mulut tanda terbuka ke bilangan yang lebih besar.",
         ],
         [
-          "Jumlah yang sama disebut sama banyak. Hitung mundur ada pada nomor 2 dan 4.",
-          "Makin besar itu hitung maju, huruf B. Makin kecil itu hitung mundur, huruf A. Pasangan yang hilang adalah 3. Total permen kuning adalah 9.",
+          "Tujuh ikan. Sembilan kue. Angka yang hilang adalah 5. Dina salah, cerinya ada enam. Empat lebih sedikit daripada enam.",
+          "Tambahkan dua kue. Pindahkan kancing satu per satu. Urutan bintang dari sedikit: kotak A, C, lalu B. Bimo punya lebih banyak balon. Selisihnya dua.",
         ],
       ],
     },
