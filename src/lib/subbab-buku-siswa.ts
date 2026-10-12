@@ -81,10 +81,10 @@ const SUBBAB_BUKU_SISWA: Record<string, Record<string, Record<string, string[]>>
         "Poin penting dan lembar evaluasi",
       ],
       "Bab 5: Ayo Membilang sampai dengan 20": [
-        "Menghitung lanjut setelah 10",
-        "Mengenali lambang dan nama angka 11 sampai 20",
-        "Mengurutkan maju dan mundur di sekolah dan di rumah",
-        "Mengisi evaluasi bilangan belasan",
+        "Bendera kecil untuk lomba 17 Agustus",
+        "Rahasia angka 11 sampai 20",
+        "Pasar malam kemerdekaan",
+        "Poin penting dan lembar evaluasi",
       ],
       "Bab 6: Penjumlahan dan Pengurangan sampai dengan 20": [
         "Penjumlahan sampai 20",
