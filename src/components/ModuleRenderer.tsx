@@ -9,6 +9,7 @@ import NaskahPai1Bab2 from "@/components/NaskahPai1Bab2";
 import NaskahPaiResmi from "@/components/NaskahPaiResmi";
 import NaskahMtk1Bab1 from "@/components/NaskahMtk1Bab1";
 import NaskahMtk1Bab2 from "@/components/NaskahMtk1Bab2";
+import NaskahMtk1Bab3 from "@/components/NaskahMtk1Bab3";
 import NaskahMtk3Bab3 from "@/components/NaskahMtk3Bab3";
 import NaskahPancasila1 from "@/components/NaskahPancasila1";
 import NaskahBindo1 from "@/components/NaskahBindo1";
@@ -33,6 +34,7 @@ import { naskahTampilanPai1Bab2 } from "@/lib/naskah-resmi-pai-1-bab2";
 import {
   adalahJudulMtk1Bab1,
   adalahJudulMtk1Bab2,
+  adalahJudulMtk1Bab3,
   adalahJudulMtk3Bab3,
   adalahJudulPancasila1Bab1,
   adalahJudulPancasila1Bab2,
@@ -154,6 +156,17 @@ function ModuleRenderer({
           ))),
     [naskah, mapel, materi, kelas],
   );
+  const pakaiKartuMtkBab3 = useMemo(
+    () =>
+      !kelasDuaSd(kelas) &&
+      !kelasTigaSd(kelas) &&
+      (adalahJudulMtk1Bab3(mapel, materi) ||
+        (naskahTampilanResmi(naskah) &&
+          /pengurangan\s+sampai(\s+dengan)?\s+10\b|pesta ulang tahun yang hilang|toko roti miko/i.test(
+            naskah,
+          ))),
+    [naskah, mapel, materi, kelas],
+  );
   const modulPancasila = useMemo(() => {
     if (
       adalahJudulPancasila1Bab1(mapel, materi) ||
@@ -263,7 +276,7 @@ function ModuleRenderer({
     }
     return cariModulPai2DariNaskah(naskah);
   }, [naskah, mapel, materi, kelas]);
-  const adaKartuMtk = pakaiKartuMtkBab1 || pakaiKartuMtkBab2;
+  const adaKartuMtk = pakaiKartuMtkBab1 || pakaiKartuMtkBab2 || pakaiKartuMtkBab3;
   const modulResmiLain = useMemo(() => {
     if (kelasDuaSd(kelas) || modulPai2 || modulBindo2 || modulMtk2) return null;
     if (pakaiKartuBab1 || pakaiKartuBab2 || adaKartuMtk || modulPancasila || modulBindo || modulPjok || modulInggris || modulMusik || modulSeniRupa || modulKristen || modulKatolik || modulBuddha || modulHindu || modulKhonghucu) return null;
@@ -430,6 +443,13 @@ function ModuleRenderer({
     return (
       <div className={className}>
         <NaskahMtk1Bab2 kelas={kelas} kelamin={kelamin} />
+      </div>
+    );
+  }
+  if (pakaiKartuMtkBab3) {
+    return (
+      <div className={className}>
+        <NaskahMtk1Bab3 kelas={kelas} kelamin={kelamin} />
       </div>
     );
   }

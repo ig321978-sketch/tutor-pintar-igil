@@ -69,10 +69,10 @@ const SUBBAB_BUKU_SISWA: Record<string, Record<string, Record<string, string[]>>
         "Poin penting dan lembar evaluasi",
       ],
       "Bab 3: Pengurangan sampai dengan 10": [
-        "Mengambil sebagian dari sekelompok benda",
-        "Menulis pengurangan dengan angka",
-        "Mengurangi sampai 10",
-        "Mengisi evaluasi pengurangan",
+        "Pesta ulang tahun yang hilang",
+        "Ayo mengurangi",
+        "Toko roti Miko",
+        "Poin penting dan lembar evaluasi",
       ],
       "Bab 4: Mengenal Bentuk": [
         "Membandingkan bentuk benda di kelas",
