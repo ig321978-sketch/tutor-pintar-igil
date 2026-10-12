@@ -1,104 +1,44 @@
 "use client";
 
-import { useState, type ReactNode } from "react";
-import GambarDoodle from "@/components/GambarDoodle";
+import { useEffect, useMemo, useRef, useState, type ReactNode } from "react";
 import HasilJawabanKuis from "@/components/HasilJawabanKuis";
 import KuisTulisKartu from "@/components/KuisTulisKartu";
+import SoalRekamSuara from "@/components/SoalRekamSuara";
 import TombolVoiceMateriPai1 from "@/components/TombolVoiceMateriPai1";
-import SoalRekamSuara, { ucapanMemuatAlias } from "@/components/SoalRekamSuara";
+import WritingCanvas from "@/components/WritingCanvas";
 import { useKuisMateri } from "@/components/KuisMateriContext";
 import { SLOT_AJUAN_SEBELUM_KARTU_D } from "@/components/NaskahMtk2Bab1";
-import { kelasTombolHasilKuis, statusDariPilihan } from "@/lib/hasil-kuis";
-import { MODUL_MTK1_BAB2 } from "@/lib/modul-resmi-mtk-1-bab2";
-import { cuplikanDariNaskah } from "@/lib/naskah-voice-pai-1-bab2";
+import { kelasTombolHasilKuis, statusDariPilihan, type StatusJawabanKuis } from "@/lib/hasil-kuis";
 import { idKuisKartuResmi, idKuisTulisKartu } from "@/lib/kuis-materi";
-import { kumpulkanAlias } from "@/lib/nilai-kuis-tulis";
+import { MODUL_MTK1_BAB2 } from "@/lib/modul-resmi-mtk-1-bab2";
+import { jawabanTulisMemuatAlias, kumpulkanAlias } from "@/lib/nilai-kuis-tulis";
+import { cuplikanDariNaskah } from "@/lib/naskah-voice-pai-1-bab2";
+import { bacaProgres } from "@/lib/progres";
 import type { KelaminGuru } from "@/lib/guru";
-import type { KartuModulResmi } from "@/lib/modul-resmi-pai";
 
 const ID = MODUL_MTK1_BAB2.id;
 
-const WARNA_IKON = {
-  kuning: "#F5C400",
-  biru: "#2F6FED",
-  merah: "#E23B3B",
-  hitam: "#222222",
-} as const;
-
-function GambarIkon({
-  ikon,
-  warna,
-}: {
-  ikon: "kupu" | "balon" | "mobil";
-  warna: string;
-}) {
-  if (ikon === "kupu") {
-    return (
-      <svg viewBox="0 0 64 64" className="inline-block h-10 w-10" aria-hidden>
-        <path d="M30 30 C16 6 2 16 8 32 C12 42 24 40 30 32 Z" fill={warna} />
-        <path d="M34 30 C48 6 62 16 56 32 C52 42 40 40 34 32 Z" fill={warna} />
-        <path d="M30 36 C18 38 8 50 16 58 C26 62 32 48 32 40 Z" fill={warna} />
-        <path d="M34 36 C46 38 56 50 48 58 C38 62 32 48 32 40 Z" fill={warna} />
-        <ellipse cx="32" cy="38" rx="2.4" ry="14" fill="#1C01A5" />
-        <circle cx="32" cy="22" r="2.4" fill="#1C01A5" />
-        <path
-          d="M30 22 Q24 12 18 10 M34 22 Q40 12 46 10"
-          fill="none"
-          stroke="#1C01A5"
-          strokeWidth="1.6"
-          strokeLinecap="round"
-        />
-        <circle cx="18" cy="9" r="1.6" fill="#1C01A5" />
-        <circle cx="46" cy="9" r="1.6" fill="#1C01A5" />
-      </svg>
-    );
-  }
-  if (ikon === "balon") {
-    return (
-      <svg viewBox="0 0 48 80" className="inline-block h-12 w-8" aria-hidden>
-        <path
-          d="M24 4 C12 4 6 16 6 28 C6 42 14 52 22 54 L24 60 L26 54 C34 52 42 42 42 28 C42 16 36 4 24 4 Z"
-          fill={warna}
-        />
-        <ellipse cx="16" cy="18" rx="3" ry="6" fill="#fff" opacity="0.45" />
-        <path
-          d="M24 60 C30 66 18 70 24 76"
-          fill="none"
-          stroke="#1C01A5"
-          strokeWidth="1.6"
-          strokeLinecap="round"
-        />
-      </svg>
-    );
-  }
-  return (
-    <svg viewBox="0 0 64 36" className="inline-block h-8 w-12" aria-hidden>
-      <path d="M8 22 L14 12 H36 L46 22 H58 V28 H6 Z" fill={warna} />
-      <path d="M18 12 L24 6 H34 L38 12 Z" fill={warna} />
-      <circle cx="18" cy="28" r="4" fill="#1C01A5" />
-      <circle cx="48" cy="28" r="4" fill="#1C01A5" />
-      <circle cx="18" cy="28" r="1.6" fill="#fff" />
-      <circle cx="48" cy="28" r="1.6" fill="#fff" />
-    </svg>
-  );
+function idKuis(kode: string, indeks: number): string {
+  return idKuisKartuResmi(ID, kode, indeks);
 }
 
-function DeretIkon({
-  ikon,
-  warna,
-  jumlah,
-}: {
-  ikon: "kupu" | "balon" | "mobil";
-  warna: string;
-  jumlah: number;
-}) {
-  return (
-    <span className="inline-flex items-center gap-0.5 align-middle">
-      {Array.from({ length: jumlah }, (_, urut) => (
-        <GambarIkon key={urut} ikon={ikon} warna={warna} />
-      ))}
-    </span>
+function ucapanMemuat(transkrip: string, kelompok: string[][]): boolean {
+  return kelompok.every((alias) => jawabanTulisMemuatAlias(transkrip, alias));
+}
+
+function duaCaraDelapan(teks: string): boolean {
+  const padat = teks.toLowerCase().replace(/\s+/g, "");
+  const unik = new Set(
+    [...padat.matchAll(/(\d+)\+(\d+)=8/g)]
+      .map((temuan) => {
+        const kiri = Number(temuan[1]);
+        const kanan = Number(temuan[2]);
+        if (kiri + kanan !== 8 || kiri > 10 || kanan > 10) return "";
+        return [kiri, kanan].sort((a, b) => a - b).join("+");
+      })
+      .filter(Boolean),
   );
+  return unik.size >= 2;
 }
 
 function KartuBingkai({ children }: { children: ReactNode }) {
@@ -109,341 +49,621 @@ function KartuBingkai({ children }: { children: ReactNode }) {
   );
 }
 
-function kartuModul(kode: string): KartuModulResmi {
-  const ketemu = MODUL_MTK1_BAB2.kartu.find((item) => item.kode === kode);
-  if (!ketemu) throw new Error(`Kartu ${kode} tidak ada`);
-  return ketemu;
-}
-
-function Suara({ kode, indeks }: { kode: string; indeks: number }) {
-  const soal = kartuModul(kode).kuis[indeks];
+function Dialog({ nama, anak }: { nama: string; anak: string }) {
   return (
-    <div className="mt-4">
-      <SoalRekamSuara
-        id={idKuisKartuResmi(ID, kode, indeks)}
-        pertanyaan={soal?.pertanyaan ?? ""}
-        periksa={(transkrip) => ucapanMemuatAlias(transkrip, soal?.alias ?? [])}
-      />
-    </div>
-  );
-}
-
-function Kanvas({
-  id,
-  nomor,
-  visual,
-  instruksi,
-  alias,
-}: {
-  id: string;
-  nomor?: number;
-  visual?: ReactNode;
-  instruksi: string;
-  alias: string[];
-}) {
-  return (
-    <div className="mt-4 rounded-2xl border-2 border-dashed border-[#1C01A5]/25 bg-[#FFFDF6] p-4">
-      {nomor ? (
-        <p className="text-sm font-black text-[#1C01A5]">{nomor}. </p>
-      ) : null}
-      {visual ? <div className="mt-2 text-2xl leading-relaxed">{visual}</div> : null}
-      <KuisTulisKartu
-        id={id}
-        rapat
-        hanyaKanvas
-        pertanyaan={instruksi}
-        alias={kumpulkanAlias(alias)}
-        konteks={instruksi}
-      />
-    </div>
-  );
-}
-
-function Pilih({
-  id,
-  nomor,
-  soal,
-  pilihan,
-  benar,
-  anak,
-}: {
-  id?: string;
-  nomor?: number;
-  soal: string;
-  pilihan: { huruf: string; teks: string }[];
-  benar: string;
-  anak?: ReactNode;
-}) {
-  const kuis = useKuisMateri();
-  const [pilih, setPilih] = useState("");
-  const status = statusDariPilihan(pilih, benar);
-  return (
-    <article className="mt-4 rounded-2xl border-2 border-[#1C01A5]/15 bg-[#FFFDF6] p-4">
-      <p className="text-sm font-semibold leading-relaxed text-slate-700">
-        {nomor ? <span className="font-black text-[#1C01A5]">{nomor}. </span> : null}
-        {soal}
-      </p>
-      {anak ? <div className="mt-3 text-2xl leading-relaxed">{anak}</div> : null}
-      <div className="mt-3 grid gap-2">
-        {pilihan.map((item) => {
-          const label =
-            item.huruf.length === 1 && /[A-C]/.test(item.huruf)
-              ? `${item.huruf}. ${item.teks}`
-              : item.teks;
-          return (
-            <button
-              key={item.huruf}
-              type="button"
-              onClick={() => {
-                setPilih(item.huruf);
-                if (id && item.huruf === benar) kuis?.tandaiBenar(id);
-              }}
-              className={`rounded-xl px-3 py-2 text-left text-sm font-bold ${kelasTombolHasilKuis(
-                pilih,
-                item.huruf,
-                benar,
-                "bg-[#1C01A5] text-white hover:bg-[#16017a]",
-              )}`}
-            >
-              {label}
-            </button>
-          );
-        })}
-      </div>
-      <div className="mt-3">
-        <HasilJawabanKuis
-          status={status}
-          cuplikan={pilih || undefined}
-          pesanSalah="Coba hitung lagi bendanya."
-        />
-      </div>
-    </article>
-  );
-}
-
-function Kereta({ id }: { id: string }) {
-  const kuis = useKuisMateri();
-  const [isi, setIsi] = useState<number[]>([]);
-  const [status, setStatus] = useState<"benar" | "salah" | null>(null);
-  const kunci = [5, 6, 7];
-  const penuh = isi.length >= kunci.length;
-  const pilih = (angka: number) => {
-    if (penuh) return;
-    setIsi((sekarang) => [...sekarang, angka]);
-    setStatus(null);
-  };
-  const periksa = () => {
-    const ok = isi.length === kunci.length && isi.every((nilai, urut) => nilai === kunci[urut]);
-    setStatus(ok ? "benar" : "salah");
-    if (ok) kuis?.tandaiBenar(id);
-  };
-  const gerbong = [4, isi[0], isi[1], isi[2]];
-  return (
-    <article className="mt-4 rounded-2xl border-2 border-[#1C01A5]/15 bg-[#F8F7FF] p-4">
-      <p className="text-sm font-semibold leading-relaxed text-slate-700">
-        🚂 Susun gerbong kereta yang melompat maju dari angka 4 sebanyak 3 langkah!
-      </p>
-      <div className="mt-3 flex flex-wrap items-center gap-2 text-sm font-black text-[#1C01A5]">
-        {gerbong.map((nilai, urut) => (
-          <span key={urut} className="flex items-center gap-2">
-            {urut > 0 ? <span aria-hidden>→</span> : null}
-            <span className="rounded-xl border-2 border-[#F0AB00] bg-white px-3 py-2">
-              {nilai ?? "..."}
-            </span>
-          </span>
-        ))}
-      </div>
-      <div className="mt-3 flex flex-wrap gap-2">
-        {[5, 6, 7, 3, 8].map((angka) => (
-          <button
-            key={angka}
-            type="button"
-            onClick={() => pilih(angka)}
-            className="rounded-xl bg-[#1C01A5] px-4 py-2 text-sm font-black text-white hover:bg-[#16017a]"
-          >
-            {angka}
-          </button>
-        ))}
-        <button
-          type="button"
-          onClick={() => {
-            setIsi([]);
-            setStatus(null);
-          }}
-          className="rounded-xl border-2 border-[#1C01A5]/20 bg-white px-4 py-2 text-sm font-black text-[#1C01A5]"
-        >
-          Ulangi
-        </button>
-        <button
-          type="button"
-          onClick={periksa}
-          className="rounded-xl bg-[#F0AB00] px-4 py-2 text-sm font-black text-[#1C01A5]"
-        >
-          Periksa
-        </button>
-      </div>
-      <div className="mt-3">
-        <HasilJawabanKuis
-          status={status}
-          cuplikan={isi.join(" ") || undefined}
-          pesanSalah="Lompat maju satu per satu dari angka 4."
-        />
-      </div>
-    </article>
-  );
-}
-
-function Balon({ nama, anak }: { nama: string; anak: string }) {
-  return (
-    <article className="rounded-2xl border-2 border-[#1C01A5]/15 bg-[#F8F7FF] px-4 py-3">
-      <p className="text-xs font-black uppercase tracking-wide text-[#1C01A5]">{nama}</p>
-      <p className="mt-1 text-sm font-semibold leading-relaxed text-slate-700">{anak}</p>
-    </article>
-  );
-}
-
-function JudulKartu({ anak }: { anak: string }) {
-  return (
-    <h5 className="mt-5 text-left text-xl font-black text-[#1C01A5] first:mt-0 sm:text-2xl">
-      {anak}
-    </h5>
-  );
-}
-
-function InfografisTabel({
-  kepala,
-  baris,
-}: {
-  kepala: [string, string, string];
-  baris: Array<[string, string, string]>;
-}) {
-  return (
-    <div className="mt-4 overflow-hidden rounded-2xl border-4 border-[#F0AB00]">
-      <div className="grid grid-cols-3 bg-[#1C01A5] px-3 py-2 text-[10px] font-black uppercase tracking-wide text-white sm:text-xs">
-        {kepala.map((item) => (
-          <span key={item}>{item}</span>
-        ))}
-      </div>
-      {baris.map((isi, indeks) => (
-        <div
-          key={isi.join("|")}
-          className={`grid grid-cols-3 gap-2 border-t border-[#F0AB00]/40 px-3 py-3 text-sm font-bold leading-snug ${
-            indeks % 2 === 0 ? "bg-[#FFF7ED]" : "bg-[#F0FDF4]"
-          }`}
-        >
-          {isi.map((sel, urut) => (
-            <span key={`${indeks}-${urut}`}>{sel}</span>
-          ))}
-        </div>
-      ))}
-    </div>
-  );
-}
-
-function Poin({ anak }: { anak: string }) {
-  return (
-    <p className="mt-4 rounded-2xl bg-[#FFF8E8] px-4 py-3 text-sm font-extrabold leading-relaxed text-[#1C01A5]">
+    <p className="rounded-2xl bg-[#F8F7FF] px-4 py-3 text-sm font-semibold leading-relaxed text-slate-700">
+      <span className="font-black text-[#1C01A5]">{nama}: </span>
       {anak}
     </p>
   );
 }
 
-function LabelMini({ anak }: { anak: string }) {
-  return (
-    <p className="mt-5 text-xs font-black uppercase tracking-wide text-[#1C01A5]/70">{anak}</p>
-  );
+function Umpan({ status, teks }: { status: StatusJawabanKuis; teks: string }) {
+  if (status !== "benar") return null;
+  return <p className="mt-2 text-sm font-bold text-emerald-800">{teks}</p>;
 }
 
-function Dengar({
-  kode,
-  kelas,
-  kelamin,
+function Pilih({
+  id,
+  soal,
+  pilihan,
+  benar,
+  umpan,
+  salah,
+  visual,
+  onNilai,
 }: {
-  kode: string;
-  kelas: string;
-  kelamin?: KelaminGuru;
+  id: string;
+  soal: string;
+  pilihan: { huruf: string; teks: string }[];
+  benar: string;
+  umpan: string;
+  salah: string;
+  visual?: ReactNode;
+  onNilai?: (benar: boolean) => void;
 }) {
-  return (
-    <div className="mt-4">
-      <TombolVoiceMateriPai1
-        kelas={kelas}
-        kelamin={kelamin}
-        cuplikan={cuplikanDariNaskah(kartuModul(kode).voice, 2_000, 3_000)}
-      />
-    </div>
-  );
-}
-
-function JurnalCikoCika() {
+  const kuis = useKuisMateri();
   const [pilih, setPilih] = useState("");
-  const wajah = [
-    {
-      id: "senang",
-      ikon: "😃",
-      teks: "Senang Sekali — Belajar matematika seru seperti bermain game!",
-    },
-    {
-      id: "bingung",
-      ikon: "🤔",
-      teks: "Bingung — Aku masih butuh latihan melompat angka lagi.",
-    },
-    {
-      id: "bosan",
-      ikon: "😴",
-      teks: "Bosan — Aku ingin tantangan angka yang lebih besar!",
-    },
-  ];
+  const status = statusDariPilihan(pilih, benar);
   return (
-    <div className="mt-5 rounded-2xl border-2 border-[#F0AB00] bg-[#FFF8E8] px-4 py-4">
-      <p className="text-sm font-black text-[#1C01A5]">🎭 Jurnal Perasaanku</p>
-      <p className="mt-1 text-sm font-semibold leading-relaxed text-slate-700">
-        Bagaimana perasaanmu setelah belajar berhitung hari ini? Klik salah satu ikon ekspresi di
-        bawah ya!
-      </p>
+    <article className="rounded-2xl border-2 border-[#1C01A5]/15 bg-[#FFFDF6] p-4">
+      <p className="text-sm font-semibold leading-relaxed text-slate-700">{soal}</p>
+      {visual ? <div className="mt-3 text-2xl leading-relaxed">{visual}</div> : null}
       <div className="mt-3 grid gap-2">
-        {wajah.map((item) => (
+        {pilihan.map((item) => (
           <button
-            key={item.id}
+            key={item.huruf}
             type="button"
-            onClick={() => setPilih(item.id)}
-            className={`rounded-2xl border-2 px-3 py-3 text-left text-sm font-bold ${
-              pilih === item.id
-                ? "border-[#F0AB00] bg-[#1C01A5] text-white"
-                : "border-[#1C01A5]/15 bg-white text-[#1C01A5]"
-            }`}
+            onClick={() => {
+              setPilih(item.huruf);
+              const tepat = item.huruf === benar;
+              if (tepat) kuis?.tandaiBenar(id);
+              onNilai?.(tepat);
+            }}
+            className={`rounded-xl px-3 py-2 text-left text-sm font-bold ${kelasTombolHasilKuis(
+              pilih,
+              item.huruf,
+              benar,
+              "bg-[#1C01A5] text-white hover:bg-[#16017a]",
+            )}`}
           >
-            <span className="mr-2 text-2xl" aria-hidden>
-              {item.ikon}
-            </span>
-            {item.teks}
+            {item.huruf}. {item.teks}
           </button>
         ))}
       </div>
+      <div className="mt-3">
+        <HasilJawabanKuis status={status} cuplikan={pilih || undefined} pesanSalah={salah} />
+        <Umpan status={status} teks={umpan} />
+      </div>
+    </article>
+  );
+}
+
+function KuisCocok({
+  id,
+  soal,
+  baris,
+  umpan,
+  salah,
+}: {
+  id: string;
+  soal: string;
+  baris: { label: string; gambar: string; benar: string }[];
+  umpan: string;
+  salah: string;
+}) {
+  const kuis = useKuisMateri();
+  const pilihan = [...new Set(baris.map((item) => item.benar))];
+  const [pilih, setPilih] = useState<Record<string, string>>({});
+  const [status, setStatus] = useState<StatusJawabanKuis>(null);
+  const periksa = () => {
+    const ok = baris.every((item) => pilih[item.label] === item.benar);
+    setStatus(ok ? "benar" : "salah");
+    if (ok) kuis?.tandaiBenar(id);
+  };
+  return (
+    <article className="rounded-2xl border-2 border-[#1C01A5]/15 bg-[#FFF7ED] p-4">
+      <p className="text-sm font-semibold text-slate-700">{soal}</p>
+      <div className="mt-3 grid gap-3">
+        {baris.map((item) => (
+          <div key={item.label} className="rounded-xl bg-white px-3 py-3">
+            <p className="text-sm font-black text-[#1C01A5]">{item.label}</p>
+            <p className="text-2xl leading-relaxed">{item.gambar}</p>
+            <div className="mt-2 flex flex-wrap gap-2">
+              {pilihan.map((kalimat) => {
+                const terpilih = pilih[item.label] === kalimat;
+                const dasar = terpilih
+                  ? "bg-[#F0AB00] text-[#1C01A5]"
+                  : "bg-[#1C01A5] text-white hover:bg-[#16017a]";
+                return (
+                  <button
+                    key={kalimat}
+                    type="button"
+                    onClick={() => {
+                      setStatus(null);
+                      setPilih((lama) => ({ ...lama, [item.label]: kalimat }));
+                    }}
+                    className={`rounded-xl px-3 py-2 text-sm font-black ${
+                      status
+                        ? kelasTombolHasilKuis(pilih[item.label] ?? "", kalimat, item.benar, dasar)
+                        : dasar
+                    }`}
+                  >
+                    {kalimat}
+                  </button>
+                );
+              })}
+            </div>
+          </div>
+        ))}
+      </div>
+      <button
+        type="button"
+        onClick={periksa}
+        className="mt-3 rounded-xl bg-[#1C01A5] px-4 py-2 text-sm font-black text-white"
+      >
+        Periksa
+      </button>
+      <div className="mt-3">
+        <HasilJawabanKuis status={status} pesanSalah={salah} />
+        <Umpan status={status} teks={umpan} />
+      </div>
+    </article>
+  );
+}
+
+function SusunBalok() {
+  const kuis = useKuisMateri();
+  const pool = [
+    { kunci: "4", tampil: "4" },
+    { kunci: "=", tampil: "=" },
+    { kunci: "7", tampil: "7" },
+    { kunci: "+", tampil: "+" },
+    { kunci: "3", tampil: "3" },
+  ];
+  const [susun, setSusun] = useState<string[]>([]);
+  const [status, setStatus] = useState<StatusJawabanKuis>(null);
+  const sisa = pool.filter((item) => !susun.includes(item.kunci));
+  const periksa = () => {
+    const kalimat = susun.join("");
+    const ok = kalimat === "4+3=7" || kalimat === "3+4=7";
+    setStatus(ok ? "benar" : "salah");
+    if (ok) kuis?.tandaiBenar(idKuis("B", 1));
+  };
+  return (
+    <article className="rounded-2xl border-2 border-[#1C01A5]/15 bg-[#F8F7FF] p-4">
+      <p className="text-sm font-semibold text-slate-700">
+        Susun balok supaya jadi kalimat matematika yang benar.
+      </p>
+      <div className="mt-3 flex min-h-14 flex-wrap gap-2 rounded-xl bg-white px-3 py-3">
+        {susun.length === 0 ? (
+          <p className="text-sm font-bold text-slate-400">Ketuk balok untuk menyusun.</p>
+        ) : null}
+        {susun.map((kunci) => (
+          <span key={kunci} className="rounded-xl bg-[#1C01A5] px-3 py-2 text-sm font-black text-white">
+            {kunci}
+          </span>
+        ))}
+      </div>
+      <div className="mt-3 flex flex-wrap gap-2">
+        {sisa.map((item) => (
+          <button
+            key={item.kunci}
+            type="button"
+            onClick={() => {
+              setStatus(null);
+              setSusun((lama) => [...lama, item.kunci]);
+            }}
+            className="rounded-xl border-2 border-[#1C01A5]/20 bg-white px-3 py-2 text-sm font-black text-[#1C01A5]"
+          >
+            {item.tampil}
+          </button>
+        ))}
+      </div>
+      <div className="mt-3 flex gap-2">
+        <button
+          type="button"
+          onClick={() => {
+            setStatus(null);
+            setSusun((lama) => lama.slice(0, -1));
+          }}
+          className="rounded-xl border-2 border-[#1C01A5]/20 px-4 py-2 text-sm font-black text-[#1C01A5]"
+        >
+          Urungkan
+        </button>
+        <button
+          type="button"
+          onClick={periksa}
+          className="rounded-xl bg-[#1C01A5] px-4 py-2 text-sm font-black text-white"
+        >
+          Periksa
+        </button>
+      </div>
+      <div className="mt-3">
+        <HasilJawabanKuis status={status} pesanSalah="Susun lagi. Hasilnya harus 7." />
+        <Umpan status={status} teks="Benar! 4 + 3 = 7 dan 3 + 4 = 7 sama-sama benar." />
+      </div>
+    </article>
+  );
+}
+
+function DuaCaraDelapan() {
+  const kuis = useKuisMateri();
+  const [status, setStatus] = useState<StatusJawabanKuis>(null);
+  const [cuplikan, setCuplikan] = useState("");
+  const nilai = (data: string) => {
+    if (data.startsWith("data:image")) {
+      setStatus("salah");
+      setCuplikan("tulisan tangan");
+      return;
+    }
+    setCuplikan(data.trim());
+    const ok = duaCaraDelapan(data);
+    setStatus(ok ? "benar" : "salah");
+    if (ok) kuis?.tandaiBenar(idKuis("D", 4));
+  };
+  return (
+    <div className="space-y-3">
+      <p className="text-base font-extrabold text-[#1C01A5]">QUIZ TULIS:</p>
+      <p className="text-center text-lg font-black text-[#1C01A5]">⬜ + ⬜ = 8 &nbsp;&nbsp; ⬜ + ⬜ = 8</p>
+      <p className="rounded-2xl border-2 border-[#1C01A5]/15 bg-[#F8F7FF] px-4 py-3 text-base font-extrabold text-[#1C01A5]">
+        5. Tulis 2 cara berbeda untuk mendapatkan angka 8.
+      </p>
+      <WritingCanvas onSubmit={nilai} />
+      <HasilJawabanKuis
+        status={status}
+        cuplikan={cuplikan || undefined}
+        pesanSalah="Tulis dua kalimat yang berbeda, misalnya 4 + 4 = 8 dan 5 + 3 = 8."
+      />
+      <Umpan status={status} teks="Hebat! Ada banyak jalan menuju angka 8." />
     </div>
   );
 }
 
-function UcapanBintang() {
-  const [bintang, setBintang] = useState(false);
+function KapalHarta() {
+  const kuis = useKuisMateri();
+  const [tuang, setTuang] = useState(false);
+  const [jalur, setJalur] = useState({ tenang: false, badai: false });
+  const [teropong, setTeropong] = useState(false);
+  const [putar, setPutar] = useState(false);
+  const sudah = (indeks: number) => kuis?.sudahBenar(idKuis("C", indeks)) === true;
+  const permata = Math.max(
+    0,
+    (sudah(0) ? 1 : 0) +
+      (sudah(1) ? 2 : 0) +
+      (sudah(2) ? 3 : 0) +
+      (jalur.tenang ? 1 : 0) +
+      (jalur.badai ? 3 : 0) +
+      (sudah(3) ? 1 : 0) +
+      (kuis?.sudahBenar(idKuisTulisKartu(ID, "C")) ? 2 : 0) -
+      (teropong ? 1 : 0),
+  );
+  const gagal = () => setPutar(true);
+
   return (
-    <div className="rounded-2xl border-2 border-[#F0AB00] bg-[#FFF8E8] px-4 py-6 text-center">
-      <p className="text-2xl font-black text-[#1C01A5]">🎉 HORE! KAMU HEBAT! 🎉</p>
-      <p className="mt-3 text-sm font-semibold leading-relaxed text-slate-700">
-        Selamat! Kamu telah menyelesaikan Misi Bab 2 &quot;Penjumlahan sampai dengan 10&quot; dengan
-        baik! Kamu sekarang adalah Kapten Matematika!
+    <div className="mt-4 space-y-4">
+      <p className="text-sm font-semibold text-slate-700">
+        Kamu kapten kapal. Kepi memandu di atas tiang. Kapal berlayar kalau jawaban benar. Kumpulkan 10 permata.
       </p>
+      <p className={`text-center text-3xl ${putar ? "animate-spin" : ""}`} aria-hidden>
+        ⛵
+      </p>
+      <p className="text-center text-sm font-black text-[#1C01A5]">🗺️ 🏝️ Gabung · 🏝️ Simbol · 🏝️ Cerita · 🏝️ Tenang · 🏝️ Badai</p>
+      <p className="text-sm font-black text-[#1C01A5]">Permata {permata}/10 💎</p>
+      {putar ? (
+        <p className="text-sm font-semibold text-amber-800">Kapal berputar. Permatamu tetap aman. Coba lagi.</p>
+      ) : null}
+
+      <article className="rounded-2xl border-2 border-emerald-500 bg-emerald-50 px-4 py-4">
+        <p className="text-sm font-black text-[#166534]">Level 1 · Pulau Gabung</p>
+        <p className="mt-2 text-sm font-semibold text-slate-700">Ada 2 peti. Tarik keduanya ke kapal, lalu hitung koinnya.</p>
+        {tuang || sudah(0) ? (
+          <p className="mt-3 text-center text-2xl">🪙🪙🪙🪙🪙</p>
+        ) : (
+          <p className="mt-3 text-center text-2xl">🪙🪙 &nbsp; 🪙🪙🪙</p>
+        )}
+        {tuang || sudah(0) ? (
+          <p className="mt-2 text-sm font-bold text-[#1C01A5]">Satu… dua… tiga… empat… lima!</p>
+        ) : (
+          <button
+            type="button"
+            onClick={() => setTuang(true)}
+            className="mt-3 rounded-xl bg-[#1C01A5] px-4 py-2 text-sm font-black text-white"
+          >
+            Tuang kedua peti ke kapal
+          </button>
+        )}
+        {tuang || sudah(0) ? (
+          <div className="mt-3">
+            <Pilih
+              id={idKuis("C", 0)}
+              soal="Jadi berapa koin semuanya?"
+              benar="B"
+              umpan="Hebat! 2 + 3 = 5. Kamu mendapat 1 permata."
+              salah="Gabungkan, lalu hitung satu per satu."
+              pilihan={[
+                { huruf: "A", teks: "4" },
+                { huruf: "B", teks: "5" },
+                { huruf: "C", teks: "6" },
+              ]}
+              onNilai={(benar) => {
+                if (!benar) gagal();
+              }}
+            />
+          </div>
+        ) : null}
+      </article>
+
+      <article className="rounded-2xl border-2 border-amber-400 bg-amber-50 px-4 py-4">
+        <p className="text-sm font-black text-[#92400E]">Level 2 · Pulau Simbol</p>
+        <KuisTulisKartu
+          id={idKuis("C", 1)}
+          hanyaKanvas
+          rapat
+          pertanyaan="Tulis tanda + dan = supaya kalimatnya lengkap."
+          alias={kumpulkanAlias(["4 + 2 = 6", "4+2=6"])}
+          konteks="Empat tambah dua sama dengan enam."
+          visual={<p className="text-center text-2xl font-black text-[#1C01A5]">4 ⬜ 2 ⬜ 6</p>}
+          sesudahNilai={(benar) => {
+            if (!benar) gagal();
+          }}
+        />
+        {sudah(1) ? <p className="text-sm font-bold text-emerald-800">2 permata masuk ke kapal.</p> : null}
+      </article>
+
+      <article className="rounded-2xl border-2 border-rose-400 bg-rose-50 px-4 py-4">
+        <p className="text-sm font-black text-[#9F1239]">Level 3 · Pulau Cerita</p>
+        <Dialog nama="Putri duyung" anak="Aku punya 5 mutiara. Temanku memberi 4 mutiara lagi. Berapa mutiaraku sekarang?" />
+        <KuisTulisKartu
+          id={idKuis("C", 2)}
+          hanyaKanvas
+          rapat
+          pertanyaan="Tuliskan kalimat matematikanya dan hasilnya."
+          alias={kumpulkanAlias(["5 + 4 = 9", "5+4=9", "4 + 5 = 9", "4+5=9"])}
+          konteks="Lima tambah empat sama dengan sembilan."
+          visual={<p className="text-center text-2xl">⚪⚪⚪⚪⚪ + ⚪⚪⚪⚪</p>}
+          sesudahNilai={(benar) => {
+            if (!benar) gagal();
+          }}
+        />
+        {sudah(2) ? <p className="text-sm font-bold text-emerald-800">3 permata masuk ke kapal.</p> : null}
+      </article>
+
+      <article className="rounded-2xl border-2 border-sky-500 bg-sky-50 px-4 py-4">
+        <p className="text-sm font-black text-[#0C4A6E]">Persimpangan peta</p>
+        <p className="mt-2 text-sm font-semibold text-slate-700">
+          Laut tenang memberi soal mudah dan 1 permata. Laut badai memberi soal cerita dan 3 permata.
+        </p>
+        <div className="mt-3">
+          <Pilih
+            id={idKuis("C", 4)}
+            soal="🌤️ Laut tenang: 🐚 + 🐚🐚. Berapa jumlah kerangnya?"
+            benar="B"
+            umpan="Laut tenang dilalui. 2 + 1 = 3. Kamu mendapat 1 permata."
+            salah="Hitung kerang di kedua kelompok."
+            pilihan={[
+              { huruf: "A", teks: "2" },
+              { huruf: "B", teks: "3" },
+              { huruf: "C", teks: "4" },
+            ]}
+            onNilai={(benar) => {
+              if (benar) setJalur((lama) => ({ ...lama, tenang: true }));
+              else gagal();
+            }}
+          />
+        </div>
+        <div className="mt-4">
+          <KuisTulisKartu
+            id={idKuis("C", 4)}
+            hanyaKanvas
+            rapat
+            pertanyaan="⛈️ Laut badai: Bima punya 6 bendera. Raka menambah 3. Tuliskan hasilnya."
+            alias={kumpulkanAlias(["9", "sembilan", "6 + 3 = 9", "6+3=9"])}
+            konteks="Enam tambah tiga sama dengan sembilan."
+            visual={<p className="text-center text-2xl">🚩🚩🚩🚩🚩🚩 + 🚩🚩🚩</p>}
+            sesudahNilai={(benar) => {
+              if (benar) setJalur((lama) => ({ ...lama, badai: true }));
+              else gagal();
+            }}
+          />
+        </div>
+        {jalur.badai ? <p className="text-sm font-bold text-emerald-800">Laut badai dilalui. 3 permata masuk.</p> : null}
+      </article>
+
       <button
         type="button"
-        onClick={() => setBintang(true)}
-        className="mt-4 rounded-xl bg-[#F0AB00] px-4 py-2 text-sm font-black text-[#1C01A5]"
+        onClick={() => {
+          if (permata < 1 || teropong) return;
+          setTeropong(true);
+        }}
+        className="rounded-xl border-2 border-[#1C01A5]/20 bg-white px-4 py-2 text-sm font-black text-[#1C01A5]"
       >
-        Berikan Bintang 5
+        {teropong ? "Teropong sudah dipakai" : "Pakai teropong petunjuk · biaya 1 permata"}
       </button>
-      {bintang ? (
-        <p className="mt-3 text-2xl" aria-label="Lima bintang">
-          ⭐⭐⭐⭐⭐
+      {teropong ? (
+        <p className="rounded-xl bg-[#F8F7FF] px-3 py-2 text-center text-sm font-black text-[#1C01A5]">
+          0 – 1 – 2 – 3 – 4 – 5 – 6 – 7 – 8 – 9 – 10
         </p>
       ) : null}
+
+      <div className="border-t-2 border-[#1C01A5]/10 pt-4">
+        <p className="text-base font-extrabold text-[#1C01A5]">QUIZ:</p>
+        <p className="text-2xl">🪙🪙🪙🪙🪙🪙 &nbsp; 🪙🪙🪙</p>
+        <SoalRekamSuara
+          id={idKuis("C", 3)}
+          pertanyaan="Kalau dua peti digabung, ada berapa koin?"
+          periksa={(transkrip) => jawabanTulisMemuatAlias(transkrip, ["9", "sembilan"])}
+          petunjuk="Ucapkan jawabannya."
+          sesudahNilai={(benar) => {
+            if (!benar) gagal();
+          }}
+        />
+      </div>
+      <KuisTulisKartu
+        id={idKuisTulisKartu(ID, "C")}
+        hanyaKanvas
+        pertanyaan="Kapal sudah punya 7 permata. Tinggal butuh berapa lagi supaya jadi 10?"
+        alias={kumpulkanAlias(["3", "tiga"])}
+        konteks="Tujuh ditambah tiga sama dengan sepuluh."
+        visual={<p className="text-center text-2xl font-black text-[#1C01A5]">7 + ⬜ = 10</p>}
+        sesudahNilai={(benar) => {
+          if (!benar) gagal();
+        }}
+      />
+
+      <article className="rounded-2xl border-2 border-[#7C3AED]/30 bg-[#F5F3FF] px-4 py-3">
+        <p className="text-sm font-black text-[#5B21B6]">Mode berdua</p>
+        <p className="mt-2 text-sm font-semibold text-slate-700">
+          Dua kapten menggabungkan permata: 4 💎 + 6 💎 = 10 💎.
+        </p>
+      </article>
+
+      {permata >= 10 ? (
+        <div className="rounded-2xl border-2 border-[#F0AB00] bg-[#FFF8E8] px-4 py-4 text-center">
+          <p className="text-3xl" aria-hidden>
+            👑💎
+          </p>
+          <p className="mt-2 text-sm font-black text-[#1C01A5]">Peti Harta Raja Laut terbuka!</p>
+        </div>
+      ) : null}
+    </div>
+  );
+}
+
+function LembarEvaluasi() {
+  const kuis = useKuisMateri();
+  const profil = useMemo(() => bacaProgres().profil, []);
+  const [nama, setNama] = useState(profil.nama || "");
+  const [suaraPasar, setSuaraPasar] = useState(false);
+  const [tulisPasar, setTulisPasar] = useState(false);
+  const sudahPasar = useRef(false);
+  useEffect(() => {
+    if (sudahPasar.current || !suaraPasar || !tulisPasar) return;
+    sudahPasar.current = true;
+    kuis?.tandaiBenar(idKuis("D", 6));
+  }, [kuis, suaraPasar, tulisPasar]);
+  const skor = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9].filter((indeks) => kuis?.sudahBenar(idKuis("D", indeks))).length;
+  const lencana =
+    skor >= 9 ? "👑 Raja Laut Penjumlahan. Luar biasa! Kamu kapten paling hebat!"
+    : skor >= 6 ? "⛵ Pelaut Cerdas. Hebat! Sedikit lagi sampai ke harta karun!"
+    : "🐚 Kerang Pintar. Ayo berlayar lagi bersama Kepi, kamu pasti bisa!";
+
+  return (
+    <div className="mt-5 space-y-5">
+      <div className="grid gap-3 rounded-2xl border-2 border-dashed border-[#1C01A5]/25 bg-[#FFFDF6] p-4 sm:grid-cols-3">
+        <label className="text-xs font-black uppercase text-[#1C01A5]">
+          Nama
+          <input
+            value={nama}
+            onChange={(e) => setNama(e.target.value)}
+            className="mt-1 w-full rounded-xl border-2 border-[#1C01A5]/20 px-3 py-2 text-sm font-bold text-[#1C01A5]"
+          />
+        </label>
+        <p className="text-xs font-black uppercase text-[#1C01A5]">
+          Kelas
+          <span className="mt-1 block rounded-xl border-2 border-[#1C01A5]/20 px-3 py-2 text-sm">1</span>
+        </p>
+        <p className="text-xs font-black uppercase text-[#1C01A5]">
+          Skor
+          <span className="mt-1 block rounded-xl border-2 border-[#1C01A5]/20 px-3 py-2 text-sm">⭐ {skor} / 10</span>
+        </p>
+      </div>
+
+      <KuisTulisKartu
+        id={idKuis("D", 0)}
+        hanyaKanvas
+        pertanyaan="1. Tulis jumlah semua kue."
+        alias={kumpulkanAlias(["7", "tujuh"])}
+        konteks="Tiga kue ditambah empat kue sama dengan tujuh."
+        visual={<p className="text-center text-2xl">🧁🧁🧁 + 🧁🧁🧁🧁 = ⬜</p>}
+      />
+      <KuisTulisKartu
+        id={idKuis("D", 1)}
+        hanyaKanvas
+        pertanyaan="2. Ada 2 kupu-kupu. Datang 3 kupu-kupu lagi. Gambar jumlahnya dengan bulatan, lalu tulis kalimat matematikanya."
+        alias={kumpulkanAlias(["2 + 3 = 5", "2+3=5", "dua tambah tiga sama dengan lima"])}
+        konteks="Lima kupu-kupu. Dua tambah tiga sama dengan lima."
+        visual={<p className="text-center text-2xl">🦋🦋 + 🦋🦋🦋</p>}
+      />
+      <KuisTulisKartu
+        id={idKuis("D", 2)}
+        hanyaKanvas
+        pertanyaan="3. Angka berapa yang ada di dalam kotak?"
+        alias={kumpulkanAlias(["5", "lima"])}
+        konteks="Empat ditambah lima sama dengan sembilan."
+        visual={<p className="text-center text-2xl font-black text-[#1C01A5]">4 + ⬜ = 9</p>}
+      />
+      <div>
+        <p className="text-base font-extrabold text-[#1C01A5]">QUIZ:</p>
+        <p className="text-sm font-semibold text-slate-700">4. Raka berkata, “6 + 3 = 8!”</p>
+        <SoalRekamSuara
+          id={idKuis("D", 3)}
+          pertanyaan="Apakah Raka benar? Ucapkan Benar atau Salah, lalu sebutkan jawaban yang benar."
+          periksa={(transkrip) =>
+            ucapanMemuat(transkrip, [
+              ["salah", "tidak benar", "tidak tepat", "keliru"],
+              ["9", "sembilan"],
+            ])
+          }
+          petunjuk="Sebut salah, lalu sebut angka yang benar."
+        />
+      </div>
+      <DuaCaraDelapan />
+      <Pilih
+        id={idKuis("D", 5)}
+        soal="6. Timbangan kiri 3 + 4. Pilih kartu supaya timbangan seimbang."
+        benar="B"
+        umpan="Timbangannya seimbang. 3 + 4 = 7 dan 5 + 2 = 7."
+        salah="Hitung kedua sisi. Hasilnya harus sama."
+        visual={<p>⚖️ 3 + 4 &nbsp;&nbsp; ❓</p>}
+        pilihan={[
+          { huruf: "A", teks: "2 + 4" },
+          { huruf: "B", teks: "5 + 2" },
+          { huruf: "C", teks: "6 + 3" },
+        ]}
+      />
+      <div className="space-y-3">
+        <p className="text-sm font-semibold text-slate-700">
+          7. Ibu membeli 5 tomat dan 5 wortel. Berapa sayur yang dibeli Ibu semuanya?
+        </p>
+        <p className="text-2xl">🍅🍅🍅🍅🍅 + 🥕🥕🥕🥕🥕</p>
+        <KuisTulisKartu
+          id={`${ID}-D-pasar`}
+          hanyaKanvas
+          rapat
+          pertanyaan="Tulis kalimat matematikanya."
+          alias={kumpulkanAlias(["5 + 5 = 10", "5+5=10"])}
+          konteks="Lima tambah lima sama dengan sepuluh."
+          sesudahNilai={(benar) => {
+            if (benar) setTulisPasar(true);
+          }}
+        />
+        <SoalRekamSuara
+          id=""
+          pertanyaan="Ucapkan jumlah sayurnya."
+          periksa={(transkrip) => jawabanTulisMemuatAlias(transkrip, ["10", "sepuluh"])}
+          petunjuk="Sebutkan hasilnya."
+          sesudahNilai={(benar) => {
+            if (benar) setSuaraPasar(true);
+          }}
+        />
+      </div>
+      <KuisCocok
+        id={idKuis("D", 7)}
+        soal="8. Pasangkan kartu yang hasilnya sama."
+        baris={[
+          { label: "2 + 7", gambar: "2 + 7", benar: "4 + 5" },
+          { label: "1 + 5", gambar: "1 + 5", benar: "6 + 0" },
+          { label: "3 + 1", gambar: "3 + 1", benar: "2 + 2" },
+        ]}
+        umpan="Semua pasangan seimbang."
+        salah="Hitung setiap kartu, lalu cari hasil yang sama."
+      />
+      <KuisTulisKartu
+        id={idKuis("D", 8)}
+        hanyaKanvas
+        pertanyaan="9. Bus punya 10 kursi. Sudah ada 6 anak. Berapa anak lagi supaya bus penuh?"
+        alias={kumpulkanAlias(["4", "empat"])}
+        konteks="Sepuluh dikurangi enam, atau enam ditambah empat sama dengan sepuluh."
+        visual={<p className="text-center text-2xl">💺 × 10 · 👧👦 sudah 6</p>}
+      />
+      <div>
+        <p className="text-base font-extrabold text-[#1C01A5]">QUIZ:</p>
+        <p className="text-2xl">🐤🐤🐤 + 🐤🐤🐤🐤🐤</p>
+        <SoalRekamSuara
+          id={idKuis("D", 9)}
+          pertanyaan="Buat cerita pendek dari gambar ini, lalu sebutkan hasilnya."
+          periksa={(transkrip) =>
+            ucapanMemuat(transkrip, [
+              ["3", "tiga"],
+              ["5", "lima"],
+              ["8", "delapan"],
+            ])
+          }
+          petunjuk="Sebut kedua jumlah, lalu sebut hasilnya."
+        />
+      </div>
+      <p className="rounded-2xl bg-[#FFF8E8] px-4 py-3 text-sm font-extrabold text-[#1C01A5]">{lencana}</p>
     </div>
   );
 }
@@ -455,354 +675,238 @@ export default function NaskahMtk1Bab2({
   kelas?: string;
   kelamin?: KelaminGuru;
 }) {
+  const kartuA = MODUL_MTK1_BAB2.kartu[0];
+  const kartuB = MODUL_MTK1_BAB2.kartu[1];
+  const kartuC = MODUL_MTK1_BAB2.kartu[2];
+  const kartuD = MODUL_MTK1_BAB2.kartu[3];
+  const [kedip, setKedip] = useState(0);
+  const kuis = useKuisMateri();
+
   return (
-    <div className="space-y-5">
-      <KartuBingkai>
-        <GambarDoodle
-          src="/doodle-mtk/mtk-1-bab2-pembuka.jpg"
-          alt="Ciko dan Cika mengumpulkan apel di bawah pohon di taman buah"
-          ukuran="lebar"
-        />
-        <p className="mt-4 text-center text-sm font-semibold text-slate-700">
-          Petualangan Ciko dan Cika di taman buah.
-        </p>
-      </KartuBingkai>
-
+    <div className="space-y-6">
       <KartuBingkai>
         <p className="text-center text-4xl" aria-hidden>
-          👦🌳👧
+          🏖️🦀🐚
         </p>
-        <JudulKartu anak="Materi" />
-        <p className="mt-3 text-left text-base font-black text-[#1C01A5]">
-          🧺 Petualangan Ciko dan Cika di Taman Buah
-        </p>
-        <Dengar kode="A" kelas={kelas} kelamin={kelamin} />
-        <p className="mt-4 text-sm font-semibold leading-relaxed text-slate-700">
-          Ciko 👦, anak laki-laki berpakaian hijau yang aktif, dan Cika 👧, anak perempuan berkuncir
-          dua berpakaian merah yang teliti, sedang berpetualang di taman buah.
-        </p>
-        <p className="mt-3 text-3xl" aria-hidden>
-          👦🍎🍎🍎🍎 🧺 🍏🍏🍏👧
-        </p>
-        <p className="mt-2 text-sm font-semibold text-slate-700">
-          🧺 Keranjang piknik kayu yang besar. Di dalamnya ada 4 apel merah 🍎 di sisi kiri dan 3
-          apel hijau 🍏 di sisi kanan.
-        </p>
-        <div className="mt-3 space-y-2">
-          <Balon
-            nama="Ciko 👦"
-            anak="Cika! Lihat, aku menemukan 4 buah apel merah yang jatuh di bawah pohon! 🍎🍎🍎🍎"
-          />
-          <Balon
-            nama="Cika 👧"
-            anak="Wah, asyik! Aku juga menemukan 3 buah apel hijau di dekat semak-semak! 🍏🍏🍏"
-          />
-          <Balon
-            nama="Ciko 👦"
-            anak="Kalau kita kumpulkan semua ke dalam keranjang 🧺, sekarang jumlah apel kita jadi bertambah banyak, ya!"
-          />
-          <Balon nama="Cika 👧" anak="Benar! Mari kita hitung semuanya bersama-sama! ➕" />
+        <h4 className="mt-3 text-center text-lg font-black text-[#1C01A5] sm:text-xl">{kartuA.judul}</h4>
+        <p className="mt-1 text-center text-sm font-bold text-[#1C01A5]/70">Penjumlahan sampai dengan 10</p>
+        <div className="mt-4">
+          <TombolVoiceMateriPai1 kelas={kelas} kelamin={kelamin} cuplikan={cuplikanDariNaskah(kartuA.voice, 2_000, 3_000)} />
         </div>
-        <LabelMini anak="Kuis suara" />
-        <Suara kode="A" indeks={0} />
-        <Suara kode="A" indeks={1} />
-        <LabelMini anak="Kuis tulisan kanvas" />
-        <Kanvas
+        <div className="mt-4 rounded-2xl border-2 border-[#F0AB00] bg-[#FFF8E8] px-4 py-3">
+          <p className="text-sm font-black text-[#1C01A5]">Tujuan Pembelajaran</p>
+          <p className="mt-2 text-sm font-semibold text-slate-700">
+            Siswa bisa menggabungkan dua kelompok benda, memakai simbol + dan =, dan menyelesaikan soal cerita penjumlahan sampai 10.
+          </p>
+        </div>
+        <div className="mt-4 space-y-3">
+          <article className="rounded-2xl border-2 border-sky-300 bg-sky-50 px-4 py-3">
+            <p className="text-xs font-black uppercase text-[#0C4A6E]">Adegan 1 · Tiba di pantai</p>
+            <p className="mt-2 text-2xl">🌊 ⛱️ 🕊️ 🪣</p>
+            <p className="mt-2 text-sm font-semibold text-slate-700">Pantai biru, pasir kuning, dan payung merah putih. Tiga anak membawa ember.</p>
+          </article>
+          <Dialog nama="Lala" anak="Hore, kita sampai di pantai!" />
+          <Dialog nama="Bima" anak="Ayo kita cari kerang!" />
+          <Dialog nama="Kepi" anak="Cik-cik! Aku bantu cari, ya!" />
+          <article className="rounded-2xl border-2 border-amber-300 bg-amber-50 px-4 py-3">
+            <p className="text-xs font-black uppercase text-[#92400E]">Adegan 2 · Menggabungkan kerang</p>
+            <p className="mt-2 text-sm font-bold text-[#1C01A5]">Ember Lala 🐚🐚🐚</p>
+            <p className="text-sm font-bold text-[#1C01A5]">Ember Bima 🐚🐚</p>
+          </article>
+          <Dialog nama="Lala" anak="Kerangku ada 3." />
+          <Dialog nama="Bima" anak="Kerangku ada 2." />
+          <Dialog nama="Raka" anak="Kalau digabung, jadi berapa?" />
+          <p className="text-center text-sm font-bold text-[#1C01A5]">Satu, dua, tiga, empat, lima!</p>
+          <p className="text-center text-2xl font-black text-[#1C01A5]">🐚🐚🐚 + 🐚🐚 = 🐚🐚🐚🐚🐚</p>
+          <p className="text-center text-3xl font-black text-[#1C01A5]">3 + 2 = 5</p>
+          <Dialog nama="Kepi" anak="Jadi 5 kerang! Menggabungkan itu namanya menjumlahkan!" />
+          <article className="rounded-2xl border-2 border-[#7C3AED]/30 bg-[#F5F3FF] px-4 py-3">
+            <p className="text-xs font-black uppercase text-[#5B21B6]">Adegan 3 · Kenalan dengan simbol</p>
+            <p className="mt-2 text-center text-3xl font-black text-[#1C01A5]">➕ &nbsp; 🟰</p>
+          </article>
+          <Dialog nama="Raka" anak="Tanda silang itu apa?" />
+          <Dialog nama="Kepi" anak="Itu tanda tambah. Artinya digabung!" />
+          <Dialog nama="Raka" anak="Kalau dua garis itu?" />
+          <Dialog nama="Lala" anak="Itu tanda sama dengan. Artinya hasilnya!" />
+          <article className="rounded-2xl border-2 border-[#F0AB00] bg-[#FFF8E8] px-4 py-3">
+            <p className="text-xs font-black uppercase text-[#92400E]">Adegan 4 · Istana pasir</p>
+            <p className="mt-2 text-2xl">🏰 🚩🚩🚩🚩 + 🚩🚩🚩</p>
+          </article>
+          <Dialog nama="Bima" anak="Istanaku punya 4 bendera." />
+          <Dialog nama="Raka" anak="Aku tambah 3 bendera, ya!" />
+          <Dialog nama="Kepi" anak="Sekarang ada berapa bendera?" />
+          <p className="text-center text-sm font-bold text-[#1C01A5]">Lima… enam… tujuh!</p>
+          <p className="text-center text-3xl font-black text-[#1C01A5]">4 + 3 = 7</p>
+          <p className="rounded-2xl bg-[#F0FDF4] px-4 py-3 text-sm font-extrabold text-[#166534]">Horeee! Menjumlahkan itu seru!</p>
+        </div>
+        <div className="mt-6 border-t-2 border-[#1C01A5]/10 pt-5">
+          <p className="text-base font-extrabold text-[#1C01A5]">QUIZ:</p>
+          <p className="text-2xl">🦀🦀 + 🦀🦀🦀🦀</p>
+          <SoalRekamSuara
+            id={idKuis("A", 0)}
+            pertanyaan="Ada 2 kepiting, lalu datang 4 kepiting lagi. Jadi berapa semuanya?"
+            periksa={(transkrip) => jawabanTulisMemuatAlias(transkrip, ["6", "enam"])}
+            petunjuk="Ucapkan dengan keras."
+          />
+          {kuis?.sudahBenar(idKuis("A", 0)) ? (
+            <p className="text-sm font-bold text-emerald-800">Cik-cik! Kamu hebat!</p>
+          ) : null}
+        </div>
+        <KuisTulisKartu
           id={idKuisTulisKartu(ID, "A")}
+          hanyaKanvas
+          pertanyaan="Tulis jumlah semua kerang di kotak."
+          alias={kumpulkanAlias(["8", "delapan"])}
+          konteks="Lima kerang ditambah tiga kerang sama dengan delapan."
           visual={
-            <>
-              <DeretIkon ikon="kupu" warna={WARNA_IKON.kuning} jumlah={3} />
-              <span className="mx-2">➕</span>
-              <DeretIkon ikon="kupu" warna={WARNA_IKON.biru} jumlah={2} />
-            </>
+            <p className={`text-center text-2xl ${kedip >= 2 ? "animate-pulse" : ""}`}>
+              🐚🐚🐚🐚🐚 + 🐚🐚🐚 = ⬜
+            </p>
           }
-          instruksi="Ada 3 kupu-kupu kuning sedang hinggap. Lalu, datang lagi 2 kupu-kupu biru. Tuliskan angka total seluruh kupu-kupu pada kotak kanvas di bawah ini!"
-          alias={["5", "lima"]}
-        />
-        <Kanvas
-          id={`${ID}-A-plus`}
-          visual={
-            <>
-              <DeretIkon ikon="balon" warna={WARNA_IKON.merah} jumlah={5} />
-              <span className="mx-2">➕</span>
-              <DeretIkon ikon="balon" warna={WARNA_IKON.kuning} jumlah={2} />
-            </>
-          }
-          instruksi="Tuliskan lambang tanda tambah pada kotak pertama: 5 ... 2."
-          alias={["+", "tambah", "plus", "tanda tambah"]}
-        />
-        <Kanvas
-          id={`${ID}-A-hasil`}
-          visual={
-            <>
-              <DeretIkon ikon="balon" warna={WARNA_IKON.merah} jumlah={1} />
-              <span className="mx-1">5 ➕</span>
-              <DeretIkon ikon="balon" warna={WARNA_IKON.kuning} jumlah={1} />
-              <span className="mx-1">2 = ?</span>
-            </>
-          }
-          instruksi="Tuliskan hasil akhir 5 ditambah 2 pada kotak kanvas."
-          alias={["7", "tujuh"]}
+          sesudahNilai={(benar) => {
+            if (!benar) setKedip((lama) => lama + 1);
+          }}
         />
       </KartuBingkai>
 
       <KartuBingkai>
         <p className="text-center text-4xl" aria-hidden>
-          🍎➡️🤝
+          ➕🧺🦘
         </p>
-        <JudulKartu anak="Infografis" />
-        <p className="mt-3 text-left text-base font-black text-[#1C01A5]">
-          ⚡ Cara Kilat Menjumlah sampai 10
-        </p>
-        <Dengar kode="B" kelas={kelas} kelamin={kelamin} />
-        <p className="mt-4 text-sm font-semibold leading-relaxed text-slate-700">
-          Berikut adalah 3 cara mudah yang bisa kamu pilih untuk menjumlahkan bilangan.
-        </p>
-        <InfografisTabel
-          kepala={["Cara", "Contoh", "Hasil"]}
-          baris={[
-            [
-              "🍎 Hitung semua",
-              "🍊🍊🍊🍊 digabung 🍊🍊. Hitung 1, 2, 3, 4, 5, 6.",
-              "6",
-            ],
-            [
-              "➡️ Menghitung maju",
-              "5 + 3. Ingat 5 di kepala 🧠, siapkan 3 jari 🖐️. Hitung 6, 7, 8.",
-              "8",
-            ],
-            ["🤝 Pasangan bilangan", "6 dan 4 berteman membentuk 10.", "10"],
-          ]}
-        />
-        <LabelMini anak="Kuis permainan" />
-        <Pilih
-          id={idKuisKartuResmi(ID, "B", 0)}
-          soal="Tarik pilihan agar 7 berjumlah 10."
-          anak="7️⃣ ➕ ?"
-          pilihan={[
-            { huruf: "2", teks: "2" },
-            { huruf: "3", teks: "3" },
-            { huruf: "4", teks: "4" },
-          ]}
-          benar="3"
-        />
-        <Pilih
-          id={idKuisKartuResmi(ID, "B", 1)}
-          soal="Tarik pilihan agar 8 berjumlah 10."
-          anak="8️⃣ ➕ ?"
-          pilihan={[
-            { huruf: "2", teks: "2" },
-            { huruf: "5", teks: "5" },
-            { huruf: "1", teks: "1" },
-          ]}
-          benar="2"
-        />
-        <Pilih
-          id={idKuisKartuResmi(ID, "B", 2)}
-          soal="Tarik pilihan agar 5 berjumlah 10."
-          anak="5️⃣ ➕ ?"
-          pilihan={[
-            { huruf: "3", teks: "3" },
-            { huruf: "4", teks: "4" },
-            { huruf: "5", teks: "5" },
-          ]}
-          benar="5"
-        />
-        <Kereta id={idKuisKartuResmi(ID, "B", 3)} />
-        <Pilih
-          id={idKuisKartuResmi(ID, "B", 4)}
-          soal="Masukkan donat cokelat 🍩 dan donat stroberi 🍓 ke dalam satu kotak hantaran 📦 yang muat 9 donat. Manakah kombinasi yang benar?"
-          anak="📦 muat 9 donat"
-          pilihan={[
-            { huruf: "A", teks: "🍩🍩🍩🍩 cokelat dan 🍓🍓🍓🍓 stroberi." },
-            { huruf: "B", teks: "🍩🍩🍩🍩🍩🍩 cokelat dan 🍓🍓🍓 stroberi." },
-          ]}
-          benar="B"
-        />
-        <LabelMini anak="Kuis tulisan kanvas" />
-        <Kanvas
-          id={idKuisTulisKartu(ID, "B")}
-          visual="🔢 1 → 2 → 3 → 4 → 5 → 6 → 7 → 8 → 9 → 10"
-          instruksi="Gunakan cara menghitung maju! Mulai dari angka 6, lalu melompat maju 3 langkah. Tuliskan angka pemberhentian terakhirmu!"
-          alias={["9", "sembilan"]}
-        />
-        <Kanvas
-          id={`${ID}-B-pasangan`}
-          visual="🤝 8 bercabang menjadi 4 dan ⬜"
-          instruksi="Lengkapi pasangan bilangan berikut! Angka 4 dan angka berapa yang membentuk 8?"
-          alias={["4", "empat"]}
-        />
+        <h4 className="mt-3 text-center text-lg font-black text-[#1C01A5] sm:text-xl">{kartuB.judul}</h4>
+        <div className="mt-4">
+          <TombolVoiceMateriPai1 kelas={kelas} kelamin={kelamin} cuplikan={cuplikanDariNaskah(kartuB.voice, 2_000, 3_000)} />
+        </div>
+        <div className="mt-4 space-y-4">
+          <article className="rounded-2xl border-2 border-emerald-300 bg-emerald-50 px-4 py-3">
+            <p className="text-sm font-black text-[#166534]">Poin 1 · Menjumlahkan = menggabungkan</p>
+            <p className="mt-2 text-2xl">🍎🍎 + 🍎🍎🍎 = 🍎🍎🍎🍎🍎</p>
+            <p className="text-2xl font-black text-[#1C01A5]">2 + 3 = 5</p>
+            <p className="mt-2 text-sm font-semibold text-slate-700">2 dan 3 adalah benda yang digabung. + artinya digabung. = artinya hasilnya. 5 adalah jumlah semuanya.</p>
+            <p className="text-sm font-bold text-[#1C01A5]">Dibaca: dua tambah tiga sama dengan lima.</p>
+          </article>
+          <article className="rounded-2xl border-2 border-sky-300 bg-sky-50 px-4 py-3">
+            <p className="text-sm font-black text-[#0C4A6E]">Poin 2 · Hitung semua</p>
+            <p className="mt-2 text-2xl">⭐⭐⭐⭐ + ⭐⭐</p>
+            <p className="mt-2 text-sm font-semibold text-slate-700">Gabungkan, hitung 1 sampai 6. Angka terakhir adalah hasilnya. 4 + 2 = 6.</p>
+          </article>
+          <article className="rounded-2xl border-2 border-amber-300 bg-amber-50 px-4 py-3">
+            <p className="text-sm font-black text-[#92400E]">Poin 3 · Hitung lanjut, lompat kanguru</p>
+            <p className="mt-2 text-sm font-semibold text-slate-700">Simpan 5 di kepala. Lompat 3 kali: 6, 7, 8.</p>
+            <p className="mt-2 text-center text-sm font-black text-[#1C01A5]">0 – 1 – 2 – 3 – 4 – 5 ⤵️ 6 ⤵️ 7 ⤵️ 8 – 9 – 10</p>
+            <p className="text-2xl font-black text-[#1C01A5]">5 + 3 = 8</p>
+          </article>
+          <article className="rounded-2xl border-2 border-[#7C3AED]/30 bg-[#F5F3FF] px-4 py-3">
+            <p className="text-sm font-black text-[#5B21B6]">Poin 4 · Pakai jari</p>
+            <p className="mt-2 text-sm font-semibold text-slate-700">Angkat 6 jari, lalu 4 jari lagi. Semua jari terangkat. 6 + 4 = 10.</p>
+          </article>
+          <article className="rounded-2xl border-2 border-rose-300 bg-rose-50 px-4 py-3">
+            <p className="text-sm font-black text-[#9F1239]">Poin 5 · Dibalik, hasilnya tetap sama</p>
+            <p className="mt-2 text-2xl">🍩🍩🍩 + 🍩 = 4</p>
+            <p className="text-2xl">🍩 + 🍩🍩🍩 = 4</p>
+            <p className="text-sm font-semibold text-slate-700">3 + 1 = 4 dan 1 + 3 = 4. Mulai dari angka yang lebih besar supaya lebih cepat.</p>
+          </article>
+          <article className="rounded-2xl border-2 border-[#1C01A5]/15 bg-white px-4 py-3">
+            <p className="text-sm font-black text-[#1C01A5]">Poin 6 · Teman sepuluh</p>
+            <ul className="mt-2 space-y-1 text-sm font-bold text-slate-700">
+              <li>1 + 9 = 10</li>
+              <li>2 + 8 = 10</li>
+              <li>3 + 7 = 10</li>
+              <li>4 + 6 = 10</li>
+              <li>5 + 5 = 10</li>
+            </ul>
+          </article>
+          <article className="rounded-2xl border-2 border-[#0F766E] bg-[#F0FDFA] px-4 py-3">
+            <p className="text-sm font-black text-[#0F766E]">Poin 7 · Soal cerita</p>
+            <p className="mt-2 text-sm font-semibold text-slate-700">Lala punya 4 balon. Ibu memberi 2 balon lagi.</p>
+            <p className="mt-2 text-sm font-bold text-[#1C01A5]">Cari angka 4 dan 2. Kata “memberi lagi” berarti tambah. 4 + 2 = 6. Balon Lala sekarang ada 6.</p>
+            <p className="mt-2 text-sm font-semibold text-slate-700">Kata kunci tambah: digabung, ditambah, diberi lagi, datang lagi, semuanya, jumlahnya.</p>
+          </article>
+        </div>
+        <div className="mt-6 space-y-4">
+          <KuisCocok
+            id={idKuis("B", 0)}
+            soal="Cocokkan gambar dengan kalimat matematika yang benar."
+            baris={[
+              { label: "Ikan", gambar: "🐟🐟 + 🐟🐟🐟🐟🐟", benar: "2 + 5 = 7" },
+              { label: "Es krim", gambar: "🍦🍦🍦 + 🍦🍦🍦", benar: "3 + 3 = 6" },
+              { label: "Lebah", gambar: "🐝 + 🐝🐝🐝🐝🐝🐝🐝🐝", benar: "1 + 8 = 9" },
+            ]}
+            umpan="Cocok! Ikan 2 + 5 = 7, es krim 3 + 3 = 6, lebah 1 + 8 = 9."
+            salah="Hitung setiap gambar, lalu pilih kalimatnya."
+          />
+          <SusunBalok />
+          <Pilih
+            id={idKuis("B", 2)}
+            soal="Tiga kartu hasilnya sama. Ketuk kartu yang berbeda."
+            benar="C"
+            umpan="Kartu C hasilnya 9. Kartu yang lain hasilnya 8."
+            salah="Hitung setiap kartu. Cari yang hasilnya tidak sama."
+            pilihan={[
+              { huruf: "A", teks: "5 + 3" },
+              { huruf: "B", teks: "6 + 2" },
+              { huruf: "C", teks: "4 + 5" },
+              { huruf: "D", teks: "7 + 1" },
+            ]}
+          />
+          <div className="border-t-2 border-[#1C01A5]/10 pt-4">
+            <p className="text-base font-extrabold text-[#1C01A5]">QUIZ:</p>
+            <SoalRekamSuara
+              id={idKuis("B", 3)}
+              pertanyaan="Teman sepuluh dari angka 7 adalah berapa?"
+              periksa={(transkrip) => jawabanTulisMemuatAlias(transkrip, ["3", "tiga"])}
+              petunjuk="Ucapkan angkanya."
+            />
+          </div>
+          <KuisTulisKartu
+            id={idKuisTulisKartu(ID, "B")}
+            hanyaKanvas
+            pertanyaan="Bima punya 3 bola. Raka punya 5 bola. Tulis kalimat matematika dan hasilnya."
+            alias={kumpulkanAlias(["3 + 5 = 8", "3+5=8", "5 + 3 = 8", "5+3=8"])}
+            konteks="Tiga tambah lima sama dengan delapan."
+            visual={<p className="text-center text-2xl">⚽⚽⚽ + ⚽⚽⚽⚽⚽</p>}
+          />
+        </div>
       </KartuBingkai>
 
       <KartuBingkai>
         <p className="text-center text-4xl" aria-hidden>
-          🐸🪨🦟
+          🚢💎🦀
         </p>
-        <JudulKartu anak="Kegiatan" />
-        <p className="mt-3 text-left text-base font-black text-[#1C01A5]">🐸 Lompat Katak Ceria</p>
-        <Dengar kode="C" kelas={kelas} kelamin={kelamin} />
-        <GambarDoodle
-          src="/doodle-mtk/mtk-1-bab2-katak.jpg"
-          alt="Katak melompat di atas batu sungai menuju nyamuk"
-          ukuran="sedang"
-        />
-        <p className="mt-4 text-sm font-semibold leading-relaxed text-slate-700">
-          🎨 Siapkan kertas warna-warni yang ditulisi angka 1 sampai 10, lalu tempel di lantai
-          membentuk garis lurus seperti batu sungai 🪨.
-        </p>
-        <ol className="mt-3 list-decimal space-y-2 pl-5 text-sm font-semibold leading-relaxed text-slate-700">
-          <li>
-            📖 Orang tua atau guru membacakan cerita pendek. Contoh: &quot;Katak Ciko 🐸 sedang
-            berdiri di batu angka 5. Nyam nyam! Dia melihat 4 ekor nyamuk 🦟 di depannya dan ingin
-            melompat 4 kali untuk menangkapnya.&quot;
-          </li>
-          <li>
-            🦶 Anak menirukan gerakan katak dan melompat maju sebanyak 4 kali di atas kertas angka
-            sambil berhitung lantang: &quot;6, 7, 8, 9!&quot;
-          </li>
-          <li>🎯 Anak akan mendarat di angka 9.</li>
-        </ol>
-        <LabelMini anak="Kuis suara" />
-        <Suara kode="C" indeks={0} />
-        <Suara kode="C" indeks={1} />
-        <LabelMini anak="Kuis tulisan kanvas" />
-        <Kanvas
-          id={idKuisTulisKartu(ID, "C")}
-          visual="🐸 di atas angka 7"
-          instruksi="Katak melompat maju 2 kali lagi. Tuliskan hasilnya: 7 + 2 = ..."
-          alias={["9", "sembilan"]}
-        />
-        <Kanvas
-          id={`${ID}-C-langkah`}
-          visual="🐾 0 → 5 → 10"
-          instruksi="Berapa langkah lompatan katak dari angka 5 untuk mencapai angka 10? 5 + ... = 10"
-          alias={["5", "lima"]}
-        />
-      </KartuBingkai>
-
-      <KartuBingkai>
-        <p className="text-center text-4xl" aria-hidden>
-          🌟🔑
-        </p>
-        <JudulKartu anak="Point Penting" />
-        <Poin anak="🔑 Kata kunci: kalau ada kata datang lagi, membeli lagi, atau digabungkan, itu berarti soal penjumlahan (+)." />
-        <Poin anak="🧠 Trik kilat: selalu simpan angka yang lebih besar di dalam kepala agar jari tanganmu tidak lelah menghitung." />
-      </KartuBingkai>
-
-      <KartuBingkai>
-        <p className="text-center text-4xl" aria-hidden>
-          📝🌟
-        </p>
-        <h4 className="mt-3 text-left text-lg font-black tracking-wide text-[#1C01A5] sm:text-xl">
-          Lembar Evaluasi Siswa
-        </h4>
-        <Dengar kode="L" kelas={kelas} kelamin={kelamin} />
-        <p className="mt-4 text-sm font-semibold leading-relaxed text-slate-700">
-          Gunakan kanvas tulis tangan atau klik pilihan jawaban untuk menyelesaikan misi!
-        </p>
-        <Pilih
-          id={idKuisKartuResmi(ID, "L", 0)}
-          nomor={1}
-          soal="Di tempat parkir ada 3 mobil merah. Datang lagi beberapa mobil hitam hingga totalnya menjadi 5 mobil. Kalimat matematika yang benar adalah..."
-          anak={
-            <>
-              <DeretIkon ikon="mobil" warna={WARNA_IKON.merah} jumlah={3} /> merah ·{" "}
-              <DeretIkon ikon="mobil" warna={WARNA_IKON.hitam} jumlah={2} /> hitam
-            </>
-          }
-          pilihan={[
-            { huruf: "A", teks: "3 + 2 = 5" },
-            { huruf: "B", teks: "5 + 3 = 8" },
-            { huruf: "C", teks: "3 + 5 = 8" },
-          ]}
-          benar="A"
-        />
-        <Kanvas
-          id={idKuisKartuResmi(ID, "L", 1)}
-          nomor={2}
-          visual="⚖️ kanan 9 · kiri 5 dan 📦"
-          instruksi="Di sisi kanan timbangan ada angka 9. Di sisi kiri ada angka 5 dan sebuah kotak misteri agar timbangannya seimbang. Berapakah angka di dalam kotak misteri?"
-          alias={["4", "empat"]}
-        />
-        <Pilih
-          id={idKuisKartuResmi(ID, "L", 2)}
-          nomor={3}
-          soal="Boni ingin memasukkan permen rasa jeruk dan rasa apel ke dalam stoples sampai penuh tepat 10 permen. Pilihan mana yang tidak mungkin dipilih Boni?"
-          anak="🫙 kosong · muat 10 🍬"
-          pilihan={[
-            { huruf: "A", teks: "5 jeruk dan 5 apel" },
-            { huruf: "B", teks: "6 jeruk dan 4 apel" },
-            { huruf: "C", teks: "7 jeruk dan 4 apel" },
-          ]}
-          benar="C"
-        />
-        <Kanvas
-          id={idKuisKartuResmi(ID, "L", 3)}
-          nomor={4}
-          visual="🦆🦆🦆🦆 di air · 🌿🦆🦆🦆 di rumput"
-          instruksi="Lihat bebek-bebek lucu itu! Tuliskan total seluruh bebek yang akan berada di dalam kolam jika bebek di rumput ikut menceburkan diri!"
-          alias={["7", "tujuh"]}
-        />
-        <Kanvas
-          id={idKuisKartuResmi(ID, "L", 4)}
-          nomor={5}
-          visual="🚲🚲 · 🛺"
-          instruksi="Ciko memarkirkan 2 sepeda (masing-masing punya 2 roda) dan Cika membawa 1 becak (punya 3 roda). Hitunglah berapa jumlah semua roda kendaraan mereka!"
-          alias={["7", "tujuh"]}
-        />
-        <Pilih
-          id={idKuisKartuResmi(ID, "L", 5)}
-          nomor={6}
-          soal="Kamu melempar dadu pertama mendapat angka 3, lalu dadu kedua mendapat angka 2. Pion semula di angka 4. Di angka berapakah pionmu sekarang?"
-          anak="🎲 ular tangga · pion di angka 4"
-          pilihan={[
-            { huruf: "A", teks: "Angka 7" },
-            { huruf: "B", teks: "Angka 9" },
-            { huruf: "C", teks: "Angka 8" },
-          ]}
-          benar="B"
-        />
-        <Kanvas
-          id={idKuisKartuResmi(ID, "L", 6)}
-          nomor={7}
-          visual="🦋 sayap kiri ●●●●● · sayap kanan ●●●●●"
-          instruksi="Sayap kiri memiliki 5 bintik indah. Agar kupu-kupu bisa terbang seimbang, sayap kanan juga harus memiliki 5 bintik. Berapa total bintik kupu-kupu tersebut?"
-          alias={["10", "sepuluh"]}
-        />
-        <Pilih
-          id={idKuisKartuResmi(ID, "L", 7)}
-          nomor={8}
-          soal="Ibu membuat 6 potong roti isi. Ayah memakan 0 potong roti isi. Berapakah jumlah roti isi yang tersisa sekarang?"
-          anak="🥪🥪🥪🥪🥪🥪 di piring"
-          pilihan={[
-            { huruf: "A", teks: "0 potong" },
-            { huruf: "B", teks: "6 potong" },
-            { huruf: "C", teks: "7 potong" },
-          ]}
-          benar="B"
-        />
-        <Kanvas
-          id={idKuisKartuResmi(ID, "L", 8)}
-          nomor={9}
-          visual="👦 🧱🧱🧱🧱 · 👧 🧱🧱🧱🧱🧱"
-          instruksi="Jika mainan Ciko dan Cika ditumpuk menjadi satu menara tinggi, ada berapa kotak susunan menara tersebut?"
-          alias={["9", "sembilan"]}
-        />
-        <Kanvas
-          id={idKuisKartuResmi(ID, "L", 9)}
-          nomor={10}
-          visual="🔍 ? ➕ 3 = 10"
-          instruksi="Aku adalah sebuah angka. Jika aku ditambah dengan angka 3, hasilku menjadi 10. Angka berapakah aku?"
-          alias={["7", "tujuh"]}
-        />
-      </KartuBingkai>
-
-      <KartuBingkai>
-        <UcapanBintang />
-        <JurnalCikoCika />
+        <h4 className="mt-3 text-center text-lg font-black text-[#1C01A5] sm:text-xl">{kartuC.judul}</h4>
+        <div className="mt-4">
+          <TombolVoiceMateriPai1 kelas={kelas} kelamin={kelamin} cuplikan={cuplikanDariNaskah(kartuC.voice, 2_000, 3_000)} />
+        </div>
+        <KapalHarta />
       </KartuBingkai>
 
       <div id={SLOT_AJUAN_SEBELUM_KARTU_D} />
+
+      <KartuBingkai>
+        <p className="text-center text-4xl" aria-hidden>
+          🔑📝
+        </p>
+        <h4 className="mt-3 text-center text-lg font-black text-[#1C01A5] sm:text-xl">{kartuD.judul}</h4>
+        <div className="mt-4">
+          <TombolVoiceMateriPai1 kelas={kelas} kelamin={kelamin} cuplikan={cuplikanDariNaskah(kartuD.voice, 2_000, 3_000)} />
+        </div>
+        <ul className="mt-4 list-disc space-y-1 pl-5 text-sm font-semibold text-slate-700">
+          <li>Tambah artinya gabung.</li>
+          <li>Sama dengan artinya hasilnya.</li>
+          <li>Simpan yang besar, lompat yang kecil.</li>
+          <li>Dibalik tetap sama. 3 + 2 = 2 + 3.</li>
+          <li>Tambah nol, angkanya tetap. 5 + 0 = 5.</li>
+          <li>Cari angka, cari kata kunci, lalu hitung.</li>
+        </ul>
+        <LembarEvaluasi />
+        <KuisTulisKartu
+          id={idKuisTulisKartu(ID, "D")}
+          hanyaKanvas
+          pertanyaan="Tuliskan kalimat kunci: Tambah artinya gabung."
+          alias={kumpulkanAlias(["tambah artinya gabung"])}
+          konteks="Tambah artinya dua kelompok dijadikan satu."
+        />
+      </KartuBingkai>
     </div>
   );
 }

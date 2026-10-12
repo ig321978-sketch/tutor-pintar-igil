@@ -10,15 +10,15 @@ export const JUDUL_MTK1_BAB2_LAMA = "Bab 2: Penjumlahan sampai 10";
 export const MODUL_MTK1_BAB2: ModulResmiPai = {
   id: "mtk-1-bab2",
   judul: JUDUL_MTK1_BAB2,
-  pola: /penjumlahan\s+sampai(\s+dengan)?\s+10\b/,
+  pola: /penjumlahan\s+sampai(\s+dengan)?\s+10\b|piknik seru di pantai|kapal pengumpul harta/,
   motivasi:
-    "Hore! Kamu sudah menjumlah sampai 10 bersama Ciko dan Cika. Gabungkan benda, hitung maju, lalu cari pasangan angkanya.",
+    "Hore! Kamu piknik di pantai bersama Lala, Bima, Raka, dan Kepi. Gabungkan benda, tulis tanda tambah, lalu hitung sampai 10.",
   kunciJawaban: "A,B,C,B,B,B,B,B,B,B",
   sketsaKartu: [
-    "Ciko mengumpulkan 4 apel merah dan Cika mengumpulkan 3 apel hijau ke dalam keranjang.",
-    "Tiga cara menjumlah: hitung semua, hitung maju, dan pasangan bilangan sampai 10.",
-    "Katak Ciko melompat maju di atas kertas angka 1 sampai 10.",
-    "Anak menyelesaikan misi penjumlahan sampai 10.",
+    "Lala, Bima, dan Raka piknik di pantai, menggabungkan kerang dan bendera istana pasir bersama Kepi.",
+    "Tujuh cara menjumlah: gabungkan, hitung semua, lompat kanguru, jari, dibalik tetap sama, teman sepuluh, dan soal cerita.",
+    "Kapal pengumpul harta laut berlayar ke pulau gabung, pulau simbol, dan pulau cerita.",
+    "Poin penting dan lembar evaluasi penjumlahan sampai 10.",
   ],
   latihan: pg([
     `[Soal 1 - PG - Tipe: HOTS]
@@ -85,211 +85,222 @@ D) 13`,
   kartu: [
     {
       kode: "A",
-      judul: "A. Petualangan Ciko dan Cika di Taman Buah",
+      judul: "A. Piknik Seru di Pantai",
       pengantar:
-        "Ciko menemukan 4 apel merah. Cika menemukan 3 apel hijau. Keduanya digabung ke dalam keranjang.",
-      labelDaftar: "Menggabungkan dua kelompok benda",
+        "Lala, Bima, dan Raka tiba di pantai bersama Kepi. Mereka menggabungkan kerang dan bendera, lalu mengenal tanda + dan =.",
+      labelDaftar: "Menggabungkan kerang dan bendera di pantai",
       kolom: 1,
       item: [
         {
-          nama: "Naskah taman buah",
-          singkat: "4 apel merah dan 3 apel hijau",
+          nama: "Menggabungkan kerang",
+          singkat: "3 kerang ditambah 2 kerang",
           uraian:
-            "Ciko menemukan 4 apel merah di bawah pohon. Cika menemukan 3 apel hijau di dekat semak. Jika digabungkan, jumlah apel menjadi lebih banyak. 4 ditambah 3 sama dengan 7.",
+            "Ember Lala berisi 3 kerang. Ember Bima berisi 2 kerang. Keduanya dituang ke satu ember dan dihitung satu, dua, tiga, empat, lima. 3 ditambah 2 sama dengan 5.",
+          contoh: "3 + 2 = 5",
+        },
+        {
+          nama: "Tanda tambah dan sama dengan",
+          singkat: "Plus artinya digabung",
+          uraian:
+            "Tanda tambah artinya digabung. Tanda sama dengan artinya hasilnya.",
           contoh: "4 + 3 = 7",
         },
       ],
       kuis: [
         {
           pertanyaan:
-            "Halo Sahabat IGIL! Tadi Ciko punya 4 apel merah dan Cika punya 3 apel hijau. Jika digabungkan, sebutkan kata ajaib yang artinya membuat benda menjadi lebih banyak. Pilihannya penjumlahan atau pengurangan.",
-          alias: ["penjumlahan", "tambah", "plus"],
-        },
-        {
-          pertanyaan:
-            "Hitung keras-keras, berapa total seluruh apel yang ada di dalam keranjang Ciko dan Cika?",
-          alias: ["7", "tujuh"],
+            "Ada 2 kepiting, lalu datang 4 kepiting lagi. Jadi berapa semuanya?",
+          alias: ["6", "enam"],
         },
       ],
       voice: [
         [
-          "Ciko berkata: Cika! Lihat, aku menemukan 4 buah apel merah yang jatuh di bawah pohon!",
-          "Cika berkata: Wah, asyik! Aku juga menemukan 3 buah apel hijau di dekat semak-semak!",
-          "Ciko berkata: Kalau kita kumpulkan semua ke dalam keranjang, sekarang jumlah apel kita jadi bertambah banyak!",
-          "Cika berkata: Benar! Mari kita hitung semuanya bersama-sama!",
+          "Lala, Bima, dan Raka tiba di pantai. Ombak biru, pasir kuning, dan payung merah putih.",
+          "Lala punya 3 kerang. Bima punya 2 kerang. Digabung menjadi 5 kerang. Tiga tambah dua sama dengan lima.",
+          "Tanda tambah artinya digabung. Tanda sama dengan artinya hasilnya.",
+          "Istana pasir punya 4 bendera. Raka menambah 3 bendera. Empat tambah tiga sama dengan tujuh.",
         ],
       ],
     },
     {
       kode: "B",
-      judul: "B. Cara Kilat Menjumlah sampai 10",
+      judul: "B. Ayo Menjumlahkan!",
       pengantar:
-        "Ada tiga cara mudah: hitung semua, hitung maju, dan pasangan bilangan.",
-      labelDaftar: "Hitung semua, hitung maju, pasangan 10",
+        "Menjumlahkan artinya menggabungkan. Hitung semua, hitung lanjut, pakai jari, lalu cari teman sepuluh.",
+      labelDaftar: "Cara menjumlah sampai 10",
       kolom: 1,
       item: [
         {
           nama: "Hitung semua",
-          singkat: "4 jeruk ditambah 2 jeruk",
+          singkat: "4 bintang ditambah 2 bintang",
           uraian:
-            "Gabungkan dua kelompok lalu hitung dari angka 1. Contoh: 4 jeruk digabung 2 jeruk. Hitung 1, 2, 3, 4, 5, 6. Totalnya 6.",
+            "Gabungkan semua benda, lalu hitung dari satu. Empat tambah dua sama dengan enam.",
           contoh: "4 + 2 = 6",
         },
         {
-          nama: "Menghitung maju",
+          nama: "Hitung lanjut",
           singkat: "5 ditambah 3",
           uraian:
-            "Simpan angka yang besar di dalam hati, lalu hitung maju sebanyak angka yang kecil. Contoh: 5 ditambah 3. Ingat 5, lalu hitung 6, 7, 8. Hasilnya 8.",
+            "Simpan angka yang lebih besar, lalu lompat sebanyak angka yang kecil. Lima, lalu enam, tujuh, delapan.",
           contoh: "5 + 3 = 8",
         },
         {
-          nama: "Pasangan bilangan",
-          singkat: "6 dan 4 membentuk 10",
+          nama: "Teman sepuluh",
+          singkat: "7 dan 3",
           uraian:
-            "Dua angka kecil yang bersahabat membentuk angka 10. Contoh: 6 dan 4 berteman membentuk 10.",
-          contoh: "6 + 4 = 10",
+            "1 dengan 9, 2 dengan 8, 3 dengan 7, 4 dengan 6, dan 5 dengan 5. Semuanya berjumlah 10.",
+          contoh: "7 + 3 = 10",
         },
       ],
       kuis: [
         {
-          pertanyaan: "Angka berapa yang ditambah 7 menjadi 10? Pilihannya 2, 3, atau 4.",
+          pertanyaan: "Cocokkan gambar ikan, es krim, dan lebah dengan kalimat matematikanya.",
+          alias: ["2 + 5 = 7", "3 + 3 = 6", "1 + 8 = 9"],
+        },
+        {
+          pertanyaan: "Susun balok menjadi 4 tambah 3 sama dengan 7, atau 3 tambah 4 sama dengan 7.",
+          alias: ["4 + 3 = 7", "3 + 4 = 7"],
+        },
+        {
+          pertanyaan: "Kartu yang hasilnya berbeda adalah 4 tambah 5.",
+          alias: ["c", "4 + 5", "sembilan"],
+        },
+        {
+          pertanyaan: "Teman sepuluh dari angka 7 adalah berapa?",
           alias: ["3", "tiga"],
-        },
-        {
-          pertanyaan: "Angka berapa yang ditambah 8 menjadi 10? Pilihannya 2, 5, atau 1.",
-          alias: ["2", "dua"],
-        },
-        {
-          pertanyaan: "Angka berapa yang ditambah 5 menjadi 10? Pilihannya 3, 4, atau 5.",
-          alias: ["5", "lima"],
-        },
-        {
-          pertanyaan:
-            "Susun gerbong kereta yang melompat maju dari angka 4 sebanyak 3 langkah.",
-          alias: ["5", "6", "7"],
-        },
-        {
-          pertanyaan:
-            "Kotak hantaran muat 9 donat. Kombinasi yang benar adalah 6 donat cokelat dan 3 donat stroberi.",
-          alias: ["b", "6", "9"],
         },
       ],
       voice: [
         [
-          "Cara pertama, hitung semua. Empat jeruk digabung dua jeruk. Hitung satu, dua, tiga, empat, lima, enam. Totalnya enam.",
-          "Cara kedua, menghitung maju. Lima ditambah tiga. Ingat lima di kepala, lalu hitung enam, tujuh, delapan.",
-          "Cara ketiga, pasangan bilangan. Enam dan empat berteman membentuk sepuluh.",
+          "Menjumlahkan artinya menggabungkan dua kelompok menjadi satu.",
+          "Cara hitung semua: gabungkan, lalu hitung satu per satu. Angka terakhir adalah hasilnya.",
+          "Cara hitung lanjut: simpan angka besar, lalu lompat sebanyak angka kecil.",
+          "Dibalik, hasilnya tetap sama. Tiga tambah satu sama dengan satu tambah tiga.",
+          "Teman sepuluh: tujuh tambah tiga sama dengan sepuluh.",
         ],
       ],
     },
     {
       kode: "C",
-      judul: "C. Lompat Katak Ceria",
+      judul: "C. Kapal Pengumpul Harta Laut",
       pengantar:
-        "Katak Ciko berdiri di batu angka 5, lalu melompat maju 4 kali dan mendarat di angka 9.",
-      labelDaftar: "Melompat maju di garis angka",
+        "Jadilah kapten kapal. Kumpulkan permata di pulau gabung, pulau simbol, dan pulau cerita. Sepuluh permata membuka peti raja laut.",
+      labelDaftar: "Berlayar dan mengumpulkan permata",
       kolom: 1,
       item: [
         {
-          nama: "Permainan lompat katak",
-          singkat: "Dari 5 melompat 4 kali",
+          nama: "Tiga pulau",
+          singkat: "Gabung, simbol, dan cerita",
           uraian:
-            "Tempel kertas angka 1 sampai 10 di lantai. Katak berdiri di angka 5, melihat 4 nyamuk, lalu melompat 4 kali sambil berhitung 6, 7, 8, 9. Ia mendarat di angka 9.",
+            "Pulau gabung menghitung 2 koin ditambah 3 koin. Pulau simbol menulis 4 tambah 2 sama dengan 6. Pulau cerita menulis 5 tambah 4 sama dengan 9.",
           contoh: "5 + 4 = 9",
         },
-      ],
-      kuis: [
         {
-          pertanyaan:
-            "Saat bermain Lompat Katak Ceria, jika kamu berdiri di angka 3 dan harus melompat maju sebanyak 3 kali, sebutkan angka tempat kamu mendarat.",
-          alias: ["6", "enam"],
-        },
-        {
-          pertanyaan:
-            "Jika kamu melompat dari angka 2 dan mendarat di angka 7, apakah jumlah lompatanmu makin banyak atau makin sedikit?",
-          alias: ["makin banyak", "lebih banyak", "banyak"],
-        },
-      ],
-      voice: [
-        [
-          "Katak Ciko sedang berdiri di batu angka 5.",
-          "Nyam nyam! Dia melihat 4 ekor nyamuk di depannya dan ingin melompat 4 kali untuk menangkapnya.",
-          "Anak melompat sambil berhitung: enam, tujuh, delapan, sembilan.",
-          "Katak mendarat di angka 9.",
-        ],
-      ],
-    },
-    {
-      kode: "L",
-      judul: "L. Lembar Evaluasi Siswa",
-      pengantar:
-        "Selesaikan sepuluh misi penjumlahan sampai 10. Ada pilihan jawaban dan kotak kanvas.",
-      labelDaftar: "Evaluasi penjumlahan sampai 10",
-      kolom: 1,
-      item: [
-        {
-          nama: "Misi penjumlahan",
-          singkat: "Sepuluh soal",
+          nama: "Jalur laut",
+          singkat: "Laut tenang atau laut badai",
           uraian:
-            "Soal cerita mobil, timbangan, stoples permen, bebek, roda, ular tangga, sayap kupu-kupu, roti, menara mainan, dan teka-teki angka.",
-          contoh: "3 + 2 = 5",
+            "Laut tenang memberi soal mudah dan 1 permata. Laut badai memberi soal cerita dan 3 permata. Jawaban yang belum tepat membuat kapal berputar, tanpa kehilangan permata.",
+          contoh: "7 + 3 = 10",
         },
       ],
       kuis: [
         {
-          pertanyaan:
-            "Di tempat parkir ada 3 mobil merah. Datang lagi mobil hitam hingga totalnya 5. Kalimat matematika yang benar adalah 3 ditambah 2 sama dengan 5.",
-          alias: ["a", "3 + 2 = 5", "3+2=5"],
+          pertanyaan: "Dua peti koin, 2 dan 3, digabung menjadi berapa?",
+          alias: ["5", "lima"],
         },
         {
-          pertanyaan:
-            "Timbangan angka 9 seimbang. Sisi kiri ada 5 dan kotak misteri. Angka di kotak misteri adalah 4.",
-          alias: ["4", "empat"],
+          pertanyaan: "Lengkapi 4 tambah 2 sama dengan 6.",
+          alias: ["4 + 2 = 6", "4+2=6"],
         },
         {
-          pertanyaan:
-            "Stoples muat tepat 10 permen. Pilihan yang tidak mungkin adalah 7 jeruk dan 4 apel karena hasilnya 11.",
-          alias: ["c", "7", "11"],
+          pertanyaan: "5 mutiara ditambah 4 mutiara sama dengan berapa?",
+          alias: ["9", "sembilan", "5 + 4 = 9"],
         },
         {
-          pertanyaan:
-            "4 bebek di air dan 3 bebek di rumput ikut masuk kolam. Totalnya 7.",
-          alias: ["7", "tujuh"],
-        },
-        {
-          pertanyaan:
-            "2 sepeda masing-masing 2 roda dan 1 becak 3 roda. Jumlah roda adalah 7.",
-          alias: ["7", "tujuh"],
-        },
-        {
-          pertanyaan:
-            "Pion di angka 4, dadu 3 lalu dadu 2. Pion sekarang di angka 9.",
-          alias: ["b", "9", "sembilan"],
-        },
-        {
-          pertanyaan:
-            "Sayap kiri 5 bintik dan sayap kanan 5 bintik. Total bintik adalah 10.",
-          alias: ["10", "sepuluh"],
-        },
-        {
-          pertanyaan:
-            "Ibu membuat 6 roti. Ayah memakan 0 roti. Yang tersisa 6 potong.",
-          alias: ["b", "6", "enam"],
-        },
-        {
-          pertanyaan:
-            "Mainan Ciko 4 kotak ditumpuk dengan mainan Cika 5 kotak. Tinggi menara 9.",
+          pertanyaan: "Peti 6 koin digabung peti 3 koin. Ada berapa koin?",
           alias: ["9", "sembilan"],
         },
         {
           pertanyaan:
-            "Sebuah angka ditambah 3 hasilnya 10. Angka itu adalah 7.",
-          alias: ["7", "tujuh"],
+            "Pilih laut tenang, 2 tambah 1, atau laut badai, 6 tambah 3.",
+          alias: ["3", "tiga", "9", "sembilan"],
         },
       ],
       voice: [
         [
-          "Gunakan kanvas tulis tangan atau klik pilihan jawaban untuk menyelesaikan misi penjumlahan sampai 10.",
+          "Kamu menjadi kapten kapal. Kepi memandu dari tiang kapal.",
+          "Di pulau gabung, dua peti koin digabung lalu dihitung satu per satu.",
+          "Di pulau simbol, tulis tanda tambah dan sama dengan.",
+          "Di pulau cerita, lima mutiara ditambah empat mutiara menjadi sembilan.",
+          "Jika jawaban belum tepat, kapal hanya berputar. Permata tidak hilang. Kumpulkan 10 permata untuk membuka peti raja laut.",
+        ],
+      ],
+    },
+    {
+      kode: "D",
+      judul: "D. Poin Penting dan Lembar Evaluasi",
+      pengantar:
+        "Tambah artinya gabung. Sama dengan artinya hasilnya. Selesaikan sepuluh misi penjumlahan.",
+      labelDaftar: "Evaluasi penjumlahan sampai 10",
+      kolom: 1,
+      item: [
+        {
+          nama: "Kalimat kunci",
+          singkat: "Tambah artinya gabung",
+          uraian:
+            "Tambah artinya gabung. Sama dengan artinya hasilnya. Simpan yang besar, lompat yang kecil. Dibalik tetap sama. Tambah nol, angkanya tetap. Cari angka, cari kata kunci, lalu hitung.",
+          contoh: "5 + 0 = 5",
+        },
+      ],
+      kuis: [
+        {
+          pertanyaan: "Tiga kue ditambah empat kue. Berapa jumlah semuanya?",
+          alias: ["7", "tujuh"],
+        },
+        {
+          pertanyaan: "Dua kupu-kupu ditambah tiga kupu-kupu. Tuliskan kalimat matematikanya.",
+          alias: ["2 + 3 = 5", "2+3=5"],
+        },
+        {
+          pertanyaan: "Empat ditambah berapa sama dengan sembilan?",
+          alias: ["5", "lima"],
+        },
+        {
+          pertanyaan: "Raka berkata 6 tambah 3 sama dengan 8. Apakah Raka benar?",
+          alias: ["salah", "9", "sembilan"],
+        },
+        {
+          pertanyaan: "Tuliskan dua cara berbeda yang hasilnya 8.",
+          alias: ["4 + 4 = 8", "5 + 3 = 8", "6 + 2 = 8"],
+        },
+        {
+          pertanyaan: "Timbangan 3 tambah 4 seimbang dengan kartu yang mana?",
+          alias: ["b", "5 + 2", "7"],
+        },
+        {
+          pertanyaan: "Ibu membeli 5 tomat dan 5 wortel. Berapa sayur semuanya?",
+          alias: ["10", "sepuluh", "5 + 5 = 10"],
+        },
+        {
+          pertanyaan: "Pasangkan kartu yang hasilnya sama.",
+          alias: ["2 + 7", "4 + 5", "1 + 5", "6 + 0"],
+        },
+        {
+          pertanyaan: "Bus berisi 10 kursi dan sudah ada 6 anak. Berapa anak lagi supaya penuh?",
+          alias: ["4", "empat"],
+        },
+        {
+          pertanyaan: "Buat cerita dari 3 anak ayam ditambah 5 anak ayam, lalu sebutkan hasilnya.",
+          alias: ["8", "delapan", "3", "5"],
+        },
+      ],
+      voice: [
+        [
+          "Tambah artinya gabung. Sama dengan artinya hasilnya.",
+          "Simpan angka yang besar, lalu lompat sebanyak angka yang kecil.",
+          "Tiga tambah dua sama dengan dua tambah tiga.",
+          "Lima ditambah nol tetap lima.",
+          "Pada soal cerita, cari angkanya, cari kata kuncinya, lalu hitung.",
         ],
       ],
     },

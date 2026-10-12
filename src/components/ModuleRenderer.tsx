@@ -149,7 +149,9 @@ function ModuleRenderer({
       !kelasDuaSd(kelas) &&
       (adalahJudulMtk1Bab2(mapel, materi) ||
         (naskahTampilanResmi(naskah) &&
-          /penjumlahan\s+sampai(\s+dengan)?\s+10\b/i.test(naskah))),
+          /penjumlahan\s+sampai(\s+dengan)?\s+10\b|piknik seru di pantai|kapal pengumpul harta/i.test(
+            naskah,
+          ))),
     [naskah, mapel, materi, kelas],
   );
   const modulPancasila = useMemo(() => {

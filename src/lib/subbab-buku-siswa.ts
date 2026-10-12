@@ -63,10 +63,10 @@ const SUBBAB_BUKU_SISWA: Record<string, Record<string, Record<string, string[]>>
         "Poin penting dan lembar kerja",
       ],
       "Bab 2: Penjumlahan sampai dengan 10": [
-        "Menggabungkan dua kelompok benda",
-        "Tiga cara menjumlah sampai 10",
-        "Lompat katak dan kegiatan",
-        "Evaluasi penjumlahan",
+        "Piknik seru di pantai",
+        "Ayo menjumlahkan",
+        "Kapal pengumpul harta laut",
+        "Poin penting dan lembar evaluasi",
       ],
       "Bab 3: Pengurangan sampai dengan 10": [
         "Mengambil sebagian dari sekelompok benda",

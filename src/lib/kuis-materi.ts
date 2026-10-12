@@ -157,19 +157,7 @@ export function daftarIdKuisMateri(
     return idKuisDariModulResmi(MODUL_MTK3_BAB3);
   }
   if (adalahMtk1Bab2(kelas, mapel, materi)) {
-    const id = MODUL_MTK1_BAB2.id;
-    return [
-      ...MODUL_MTK1_BAB2.kartu.flatMap((kartu) =>
-        kartu.kuis.map((_, indeks) => idKuisKartuResmi(id, kartu.kode, indeks)),
-      ),
-      idKuisTulisKartu(id, "A"),
-      `${id}-A-plus`,
-      `${id}-A-hasil`,
-      idKuisTulisKartu(id, "B"),
-      `${id}-B-pasangan`,
-      idKuisTulisKartu(id, "C"),
-      `${id}-C-langkah`,
-    ];
+    return idKuisDariModulResmi(MODUL_MTK1_BAB2);
   }
   if (adalahPancasila1Bab1(kelas, mapel, materi)) {
     return idKuisDariModulResmi(MODUL_PANCASILA1_BAB1);
