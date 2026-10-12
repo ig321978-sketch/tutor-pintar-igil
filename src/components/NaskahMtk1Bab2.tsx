@@ -18,6 +18,89 @@ import type { KartuModulResmi } from "@/lib/modul-resmi-pai";
 
 const ID = MODUL_MTK1_BAB2.id;
 
+const WARNA_IKON = {
+  kuning: "#F5C400",
+  biru: "#2F6FED",
+  merah: "#E23B3B",
+  hitam: "#222222",
+} as const;
+
+function GambarIkon({
+  ikon,
+  warna,
+}: {
+  ikon: "kupu" | "balon" | "mobil";
+  warna: string;
+}) {
+  if (ikon === "kupu") {
+    return (
+      <svg viewBox="0 0 64 64" className="inline-block h-10 w-10" aria-hidden>
+        <path d="M30 30 C16 6 2 16 8 32 C12 42 24 40 30 32 Z" fill={warna} />
+        <path d="M34 30 C48 6 62 16 56 32 C52 42 40 40 34 32 Z" fill={warna} />
+        <path d="M30 36 C18 38 8 50 16 58 C26 62 32 48 32 40 Z" fill={warna} />
+        <path d="M34 36 C46 38 56 50 48 58 C38 62 32 48 32 40 Z" fill={warna} />
+        <ellipse cx="32" cy="38" rx="2.4" ry="14" fill="#1C01A5" />
+        <circle cx="32" cy="22" r="2.4" fill="#1C01A5" />
+        <path
+          d="M30 22 Q24 12 18 10 M34 22 Q40 12 46 10"
+          fill="none"
+          stroke="#1C01A5"
+          strokeWidth="1.6"
+          strokeLinecap="round"
+        />
+        <circle cx="18" cy="9" r="1.6" fill="#1C01A5" />
+        <circle cx="46" cy="9" r="1.6" fill="#1C01A5" />
+      </svg>
+    );
+  }
+  if (ikon === "balon") {
+    return (
+      <svg viewBox="0 0 48 80" className="inline-block h-12 w-8" aria-hidden>
+        <path
+          d="M24 4 C12 4 6 16 6 28 C6 42 14 52 22 54 L24 60 L26 54 C34 52 42 42 42 28 C42 16 36 4 24 4 Z"
+          fill={warna}
+        />
+        <ellipse cx="16" cy="18" rx="3" ry="6" fill="#fff" opacity="0.45" />
+        <path
+          d="M24 60 C30 66 18 70 24 76"
+          fill="none"
+          stroke="#1C01A5"
+          strokeWidth="1.6"
+          strokeLinecap="round"
+        />
+      </svg>
+    );
+  }
+  return (
+    <svg viewBox="0 0 64 36" className="inline-block h-8 w-12" aria-hidden>
+      <path d="M8 22 L14 12 H36 L46 22 H58 V28 H6 Z" fill={warna} />
+      <path d="M18 12 L24 6 H34 L38 12 Z" fill={warna} />
+      <circle cx="18" cy="28" r="4" fill="#1C01A5" />
+      <circle cx="48" cy="28" r="4" fill="#1C01A5" />
+      <circle cx="18" cy="28" r="1.6" fill="#fff" />
+      <circle cx="48" cy="28" r="1.6" fill="#fff" />
+    </svg>
+  );
+}
+
+function DeretIkon({
+  ikon,
+  warna,
+  jumlah,
+}: {
+  ikon: "kupu" | "balon" | "mobil";
+  warna: string;
+  jumlah: number;
+}) {
+  return (
+    <span className="inline-flex items-center gap-0.5 align-middle">
+      {Array.from({ length: jumlah }, (_, urut) => (
+        <GambarIkon key={urut} ikon={ikon} warna={warna} />
+      ))}
+    </span>
+  );
+}
+
 function KartuBingkai({ children }: { children: ReactNode }) {
   return (
     <section className="rounded-[1.75rem] border-4 border-[#1C01A5]/15 bg-white px-4 py-5 shadow-sm sm:px-6 sm:py-6">
@@ -426,19 +509,38 @@ export default function NaskahMtk1Bab2({
         <LabelMini anak="Kuis tulisan kanvas" />
         <Kanvas
           id={idKuisTulisKartu(ID, "A")}
-          visual="🟡🦋 🟡🦋 🟡🦋  ➕  🔵🦋 🔵🦋"
+          visual={
+            <>
+              <DeretIkon ikon="kupu" warna={WARNA_IKON.kuning} jumlah={3} />
+              <span className="mx-2">➕</span>
+              <DeretIkon ikon="kupu" warna={WARNA_IKON.biru} jumlah={2} />
+            </>
+          }
           instruksi="Ada 3 kupu-kupu kuning sedang hinggap. Lalu, datang lagi 2 kupu-kupu biru. Tuliskan angka total seluruh kupu-kupu pada kotak kanvas di bawah ini!"
           alias={["5", "lima"]}
         />
         <Kanvas
           id={`${ID}-A-plus`}
-          visual="🎈🎈🎈🎈🎈  ➕  🟡🎈🟡🎈"
+          visual={
+            <>
+              <DeretIkon ikon="balon" warna={WARNA_IKON.merah} jumlah={5} />
+              <span className="mx-2">➕</span>
+              <DeretIkon ikon="balon" warna={WARNA_IKON.kuning} jumlah={2} />
+            </>
+          }
           instruksi="Tuliskan lambang tanda tambah pada kotak pertama: 5 ... 2."
           alias={["+", "tambah", "plus", "tanda tambah"]}
         />
         <Kanvas
           id={`${ID}-A-hasil`}
-          visual="🎈 5  ➕  🎈 2  🟰  ?"
+          visual={
+            <>
+              <DeretIkon ikon="balon" warna={WARNA_IKON.merah} jumlah={1} />
+              <span className="mx-1">5 ➕</span>
+              <DeretIkon ikon="balon" warna={WARNA_IKON.kuning} jumlah={1} />
+              <span className="mx-1">2 = ?</span>
+            </>
+          }
           instruksi="Tuliskan hasil akhir 5 ditambah 2 pada kotak kanvas."
           alias={["7", "tujuh"]}
         />
@@ -602,7 +704,12 @@ export default function NaskahMtk1Bab2({
           id={idKuisKartuResmi(ID, "L", 0)}
           nomor={1}
           soal="Di tempat parkir ada 3 mobil merah. Datang lagi beberapa mobil hitam hingga totalnya menjadi 5 mobil. Kalimat matematika yang benar adalah..."
-          anak="🚗🚗🚗 merah · 🖤🚗🖤🚗 hitam"
+          anak={
+            <>
+              <DeretIkon ikon="mobil" warna={WARNA_IKON.merah} jumlah={3} /> merah ·{" "}
+              <DeretIkon ikon="mobil" warna={WARNA_IKON.hitam} jumlah={2} /> hitam
+            </>
+          }
           pilihan={[
             { huruf: "A", teks: "3 + 2 = 5" },
             { huruf: "B", teks: "5 + 3 = 8" },
