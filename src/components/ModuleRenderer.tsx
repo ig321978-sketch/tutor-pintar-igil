@@ -9,6 +9,7 @@ import NaskahPai1Bab2 from "@/components/NaskahPai1Bab2";
 import NaskahPaiResmi from "@/components/NaskahPaiResmi";
 import NaskahMtk1Bab1 from "@/components/NaskahMtk1Bab1";
 import NaskahMtk1Bab2 from "@/components/NaskahMtk1Bab2";
+import NaskahMtk3Bab3 from "@/components/NaskahMtk3Bab3";
 import NaskahPancasila1 from "@/components/NaskahPancasila1";
 import NaskahBindo1 from "@/components/NaskahBindo1";
 import NaskahBindo2 from "@/components/NaskahBindo2";
@@ -32,6 +33,7 @@ import { naskahTampilanPai1Bab2 } from "@/lib/naskah-resmi-pai-1-bab2";
 import {
   adalahJudulMtk1Bab1,
   adalahJudulMtk1Bab2,
+  adalahJudulMtk3Bab3,
   adalahJudulPancasila1Bab1,
   adalahJudulPancasila1Bab2,
   adalahJudulPancasila1Bab3,
@@ -84,7 +86,9 @@ import {
   naskahTampilanResmi,
 } from "@/lib/naskah-resmi";
 import { potongLengkap } from "@/lib/paket-lengkap-materi";
-import { kelasDuaSd, kelasSatuSd } from "@/lib/infografis-kelas1";
+import { kelasDuaSd, kelasSatuSd, kelasTigaSd } from "@/lib/infografis-kelas1";
+import { MODUL_MTK3_BAB3 } from "@/lib/modul-resmi-mtk-3-bab3";
+import { naskahTampilanModulResmi } from "@/lib/modul-resmi-pai";
 import { jenjangGuru, type KelaminGuru } from "@/lib/guru";
 import { rapikanKunci } from "@/lib/kunci-siswa";
 import { Loader2 } from "lucide-react";
@@ -186,6 +190,13 @@ function ModuleRenderer({
     }
     return cariModulMtk2DariNaskah(naskah);
   }, [naskah, mapel, materi, kelas]);
+  const pakaiKartuMtk3Bab3 = useMemo(
+    () =>
+      kelasTigaSd(kelas) &&
+      (adalahJudulMtk3Bab3(mapel, materi) ||
+        naskahTampilanModulResmi(MODUL_MTK3_BAB3, naskah)),
+    [naskah, mapel, materi, kelas],
+  );
   const modulPjok = useMemo(() => {
     if (adalahJudulPjok1(mapel, materi)) {
       return cariModulPjok1Resmi(materi);
@@ -396,6 +407,13 @@ function ModuleRenderer({
           kelas={kelas || "2 SD"}
           kelamin={kelamin}
         />
+      </div>
+    );
+  }
+  if (pakaiKartuMtk3Bab3) {
+    return (
+      <div className={className}>
+        <NaskahMtk3Bab3 kelas={kelas} kelamin={kelamin} />
       </div>
     );
   }

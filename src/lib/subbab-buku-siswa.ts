@@ -117,10 +117,10 @@ const SUBBAB_BUKU_SISWA: Record<string, Record<string, Record<string, string[]>>
         "Kalimat matematika pengurangan bilangan cacah",
       ],
       "Bab 3: Pengukuran Panjang dan Berat": [
-        "Pengukuran panjang dengan satuan baku",
-        "Hubungan antarsatuan baku panjang",
-        "Pengukuran berat dengan satuan baku",
-        "Hubungan antarsatuan baku berat",
+        "Alat ukur panjang dan penggaris dari angka 0",
+        "Tangga satuan panjang",
+        "Alat timbang dan jarum timbangan",
+        "Tangga satuan berat dan lembar kerja",
       ],
       "Bab 4: Unsur-Unsur Bangun Datar": [
         "Sisi pada bangun datar",
