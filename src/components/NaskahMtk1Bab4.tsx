@@ -234,6 +234,7 @@ function TulisBebas({
   pesanSalah,
   umpan,
   periksa,
+  sesudahBenar,
 }: {
   id: string;
   judul?: string;
@@ -242,20 +243,57 @@ function TulisBebas({
   pesanSalah: string;
   umpan: string;
   periksa: (teks: string) => boolean;
+  sesudahBenar?: () => void;
 }) {
   const kuis = useKuisMateri();
   const [status, setStatus] = useState<StatusJawabanKuis>(null);
   const [cuplikan, setCuplikan] = useState("");
-  const nilai = (data: string) => {
+  const nilai = async (data: string) => {
     if (data.startsWith("data:image")) {
-      setStatus("salah");
       setCuplikan("tulisan tangan");
+      try {
+        const respons = await fetch("/api/kuis-tulis", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            pertanyaan,
+            konteks: umpan,
+            alias: [],
+            jawaban: data,
+          }),
+        });
+        const json = (await respons.json()) as {
+          berhasil?: boolean;
+          benar?: boolean;
+          bacaan?: string;
+          pesan?: string;
+        };
+        if (!respons.ok || !json.berhasil) {
+          setStatus(null);
+          setCuplikan(json.pesan || "Gagal menilai. Kirim lagi.");
+          return;
+        }
+        const bacaan = typeof json.bacaan === "string" ? json.bacaan : "";
+        const ok = json.benar === true || (bacaan.length > 0 && periksa(bacaan));
+        if (bacaan) setCuplikan(bacaan);
+        setStatus(ok ? "benar" : "salah");
+        if (ok) {
+          kuis?.tandaiBenar(id);
+          sesudahBenar?.();
+        }
+      } catch {
+        setStatus(null);
+        setCuplikan("Gagal menilai. Kirim lagi.");
+      }
       return;
     }
     setCuplikan(data.trim());
     const ok = periksa(data);
     setStatus(ok ? "benar" : "salah");
-    if (ok) kuis?.tandaiBenar(id);
+    if (ok) {
+      kuis?.tandaiBenar(id);
+      sesudahBenar?.();
+    }
   };
   return (
     <div className="space-y-3">
@@ -361,7 +399,7 @@ function KartuA({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminGuru }) {
       <div className="mt-4">
         <KuisTulisKartu
           id={idKuisTulisKartu(ID, "A")}
-          pertanyaan="Gambarlah atap rumah Nenek, lalu ketik nama bentuknya. Bentuk itu punya 3 sisi."
+          pertanyaan="Gambarlah atap rumah Nenek, lalu tulis nama bentuknya. Bentuk itu punya 3 sisi."
           alias={["segitiga", "3 sisi", "tiga sisi"]}
           konteks="Atap rumah berbentuk segitiga dengan 3 sisi yang bertemu."
           visual={<p className="text-center text-4xl">🏠</p>}
@@ -676,8 +714,8 @@ function KotaBentuk({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminGuru 
         <TulisBebas
           id={idKuisTulisKartu(ID, "C")}
           visual={<p className="text-center text-3xl">🏠</p>}
-          pertanyaan="Gambarlah rumah sederhana, lalu ketik dua bentuknya: 1 persegi dan 1 segitiga."
-          pesanSalah="Ketik kedua namanya: persegi dan segitiga."
+          pertanyaan="Gambarlah rumah sederhana, lalu tulis dua bentuknya: 1 persegi dan 1 segitiga."
+          pesanSalah="Tulis kedua namanya di papan: persegi dan segitiga."
           umpan="Badan rumah persegi, atapnya segitiga."
           periksa={(teks) =>
             ucapanMemuat(teks, [
@@ -905,8 +943,8 @@ function LembarEvaluasi({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminG
         <TulisBebas
           id={idKuis("D", 4)}
           judul="5. Menggambar kreatif"
-          pertanyaan="Gambarlah benda di kelasmu yang berbentuk segi empat, lalu ketik nama bendanya."
-          pesanSalah="Ketik nama bendanya, misalnya buku, jendela, pintu, atau papan tulis."
+          pertanyaan="Gambarlah benda di kelasmu yang berbentuk segi empat, lalu tulis nama bendanya."
+          pesanSalah="Tulis nama bendanya di papan, misalnya buku, jendela, pintu, atau papan tulis."
           umpan="Benda itu punya 4 sisi."
           periksa={(teks) =>
             jawabanTulisMemuatAlias(teks, [
@@ -959,8 +997,8 @@ function LembarEvaluasi({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminG
           id={idKuis("D", 8)}
           judul="9. Menyusun bentuk"
           visual={<p className="text-center text-3xl">🔺 🔻</p>}
-          pertanyaan="Kamu punya 2 segitiga yang sama besar. Kalau digabung, bisa jadi bentuk apa? Ketik namanya."
-          pesanSalah="Ketik segi empat, persegi, atau jajar genjang."
+          pertanyaan="Kamu punya 2 segitiga yang sama besar. Kalau digabung, bisa jadi bentuk apa? Tulis namanya di papan."
+          pesanSalah="Tulis segi empat, persegi, atau jajar genjang."
           umpan="Dua segitiga bisa menjadi segi empat."
           periksa={(teks) =>
             jawabanTulisMemuatAlias(teks, ["segi empat", "persegi", "persegi panjang", "jajar genjang", "jajargenjang"])
@@ -970,18 +1008,17 @@ function LembarEvaluasi({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminG
           id={`${ID}-D-mainan`}
           judul="10. Mencipta mainan"
           visual={<p className="text-center text-3xl">🔺 🟦 ⚪</p>}
-          pertanyaan="Gambarlah mainan dari segitiga, segi empat, dan lingkaran. Lalu ketik ketiga nama bentuk itu."
-          pesanSalah="Ketik ketiga namanya: segitiga, segi empat, dan lingkaran."
+          pertanyaan="Gambarlah mainan dari segitiga, segi empat, dan lingkaran. Lalu tulis ketiga nama bentuk itu."
+          pesanSalah="Tulis ketiga namanya di papan: segitiga, segi empat, dan lingkaran."
           umpan="Mainanmu memakai ketiga keluarga bentuk."
-          periksa={(teks) => {
-            const ok = ucapanMemuat(teks, [
+          periksa={(teks) =>
+            ucapanMemuat(teks, [
               ["segitiga"],
               ["segi empat", "persegi", "persegi panjang"],
               ["lingkaran"],
-            ]);
-            if (ok) setGambarMainan(true);
-            return ok;
-          }}
+            ])
+          }
+          sesudahBenar={() => setGambarMainan(true)}
         />
         <SoalRekamSuara
           id=""

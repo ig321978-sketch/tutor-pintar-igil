@@ -40,7 +40,6 @@ export default function KuisTulisKartu({
   alias = [],
   konteks = "",
   rapat = false,
-  hanyaKanvas = false,
   visual,
   sesudahNilai,
 }: {
@@ -112,20 +111,15 @@ export default function KuisTulisKartu({
       <p className="rounded-2xl border-2 border-[#1C01A5]/15 bg-[#F8F7FF] px-4 py-3 text-base font-extrabold leading-relaxed text-[#1C01A5]">
         {pertanyaan}
       </p>
-      {hanyaKanvas ? null : (
-        <p className="text-xs font-bold text-[#1C01A5]/70">
-          PC: pilih Ketik Teks. HP atau pena: pilih Tulis Tangan.
-        </p>
-      )}
       <WritingCanvas
         disabled={status === "benar"}
-        hanyaKanvas={hanyaKanvas}
+        hanyaKanvas
         onSubmit={nilaiJawaban}
       />
       <HasilJawabanKuis
         status={status}
         cuplikan={cuplikan}
-        pesanSalah="Jawaban belum tepat. Coba tulis atau ketik lagi."
+        pesanSalah="Jawaban belum tepat. Coba tulis lagi di papan."
       />
       {pesan ? (
         <p className="text-sm font-black text-rose-600">{pesan}</p>

@@ -314,10 +314,40 @@ function DuaCaraEmpat() {
   const kuis = useKuisMateri();
   const [status, setStatus] = useState<StatusJawabanKuis>(null);
   const [cuplikan, setCuplikan] = useState("");
-  const nilai = (data: string) => {
+  const nilai = async (data: string) => {
     if (data.startsWith("data:image")) {
-      setStatus("salah");
       setCuplikan("tulisan tangan");
+      try {
+        const respons = await fetch("/api/kuis-tulis", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            pertanyaan: "Tulis 2 cara berbeda pengurangan yang hasilnya 4.",
+            konteks: "Benar hanya jika ada dua pengurangan berbeda yang hasilnya 4, misalnya 5 - 1 = 4 dan 6 - 2 = 4.",
+            alias: [],
+            jawaban: data,
+          }),
+        });
+        const json = (await respons.json()) as {
+          berhasil?: boolean;
+          benar?: boolean;
+          bacaan?: string;
+          pesan?: string;
+        };
+        if (!respons.ok || !json.berhasil) {
+          setStatus(null);
+          setCuplikan(json.pesan || "Gagal menilai. Kirim lagi.");
+          return;
+        }
+        const bacaan = typeof json.bacaan === "string" ? json.bacaan : "";
+        const ok = json.benar === true || (bacaan.length > 0 && duaCaraEmpat(bacaan));
+        if (bacaan) setCuplikan(bacaan);
+        setStatus(ok ? "benar" : "salah");
+        if (ok) kuis?.tandaiBenar(idKuis("D", 4));
+      } catch {
+        setStatus(null);
+        setCuplikan("Gagal menilai. Kirim lagi.");
+      }
       return;
     }
     setCuplikan(data.trim());
