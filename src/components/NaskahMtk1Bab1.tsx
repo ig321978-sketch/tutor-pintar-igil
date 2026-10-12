@@ -208,13 +208,77 @@ function Balon({ nama, anak }: { nama: string; anak: string }) {
   );
 }
 
-function Papan({ judul, children }: { judul: string; children: ReactNode }) {
+function InfografisTabel({
+  judul,
+  kepala,
+  baris,
+}: {
+  judul: string;
+  kepala: [string, string, string];
+  baris: Array<[string, string, string]>;
+}) {
   return (
-    <div className="mt-4 rounded-2xl border-2 border-[#1C01A5]/20 bg-[#F4F1FF] px-4 py-4">
-      <p className="text-center text-sm font-black tracking-wide text-[#1C01A5]">{judul}</p>
-      <div className="mt-3 space-y-2 text-sm font-semibold leading-relaxed text-slate-700">
-        {children}
+    <div className="overflow-hidden rounded-2xl border-4 border-[#F0AB00]">
+      <p className="bg-[#1C01A5] px-3 py-2 text-center text-xs font-black uppercase tracking-wide text-white sm:text-sm">
+        Infografis: {judul}
+      </p>
+      <div className="grid grid-cols-3 bg-[#16017a] px-3 py-2 text-[10px] font-black uppercase tracking-wide text-white sm:text-xs">
+        {kepala.map((item) => (
+          <span key={item}>{item}</span>
+        ))}
       </div>
+      {baris.map((isi, indeks) => (
+        <div
+          key={isi.join("|")}
+          className={`grid grid-cols-3 gap-2 border-t border-[#F0AB00]/40 px-3 py-3 text-sm font-bold leading-snug ${
+            indeks % 2 === 0 ? "bg-[#FFF7ED]" : "bg-[#F0FDF4]"
+          }`}
+        >
+          {isi.map((sel, urut) => (
+            <span key={`${indeks}-${urut}`}>{sel}</span>
+          ))}
+        </div>
+      ))}
+    </div>
+  );
+}
+
+function PanelDuaKolom({
+  judul,
+  kiri,
+  kanan,
+  kaki,
+}: {
+  judul: string;
+  kiri: { label: string; isi: string; angka: string; catatan: string };
+  kanan: { label: string; isi: string; angka: string; catatan: string };
+  kaki: string;
+}) {
+  return (
+    <div className="mt-4 overflow-hidden rounded-2xl border-4 border-[#1C01A5]/20">
+      <p className="bg-[#1C01A5] px-3 py-2 text-center text-xs font-black uppercase text-white">
+        {judul}
+      </p>
+      <div className="grid sm:grid-cols-2">
+        {[kiri, kanan].map((sisi, indeks) => (
+          <div
+            key={sisi.label}
+            className={`px-4 py-4 ${
+              indeks === 0
+                ? "border-b-2 border-[#1C01A5]/10 sm:border-b-0 sm:border-r-2"
+                : ""
+            }`}
+          >
+            <p className="text-xs font-black uppercase text-[#92400E]">{sisi.label}</p>
+            <p className="mt-2 text-2xl leading-relaxed">{sisi.isi}</p>
+            <p className="mt-1 text-4xl font-black text-[#1C01A5]">{sisi.angka}</p>
+            <p className="text-sm font-bold text-slate-700">{sisi.catatan}</p>
+          </div>
+        ))}
+      </div>
+      <p className="border-t-4 border-[#F0AB00] bg-[#FEF3C7] px-3 py-3 text-center text-sm font-black leading-relaxed text-[#1C01A5] sm:text-base">
+        {kaki}
+      </p>
     </div>
   );
 }
@@ -243,7 +307,7 @@ function Kepala({
       <p className="text-center text-4xl" aria-hidden>
         {ikon}
       </p>
-      <h4 className="mt-3 text-center text-lg font-black tracking-wide text-[#1C01A5] sm:text-xl">
+      <h4 className="mt-3 text-left text-lg font-black tracking-wide text-[#1C01A5] sm:text-xl">
         {kartu.judul}
       </h4>
       <div className="mt-4">
@@ -368,21 +432,33 @@ function SubBabA({ kelas, kelamin }: { kelas: string; kelamin?: KelaminGuru }) {
       </KartuBingkai>
 
       <KartuBingkai>
-        <p className="text-center text-sm font-black tracking-wide text-[#1C01A5]">
-          Kartu B · Infografis utama
-        </p>
-        <Papan judul="INFOGRAFIS RAHASIA ANGKA 1-10">
-          <p>🍎 1 = SATU · 🍏🍏 2 = DUA · 🍎🍎🍎 3 = TIGA</p>
-          <p>🍏🍏🍏🍏 4 = EMPAT · 🍎🍎🍎🍎🍎 5 = LIMA</p>
-          <p>
-            ⭐ Cara baku: hitung satu per satu sambil ditunjuk bendanya agar tidak ada yang
-            terlewat.
-          </p>
-          <p>
-            🚀 Trik kilat IGIL: kelompokkan per 2 benda. 🍎🍎 (dua) + 🍎🍎 (empat) + 🍎 (lima)
-            lebih cepat!
-          </p>
-        </Papan>
+        <InfografisTabel
+          judul="Rahasia Angka 1–10"
+          kepala={["Gambar", "Angka", "Dibaca"]}
+          baris={[
+            ["🍎", "1", "Satu"],
+            ["🍏🍏", "2", "Dua"],
+            ["🍎🍎🍎", "3", "Tiga"],
+            ["🍏🍏🍏🍏", "4", "Empat"],
+            ["🍎🍎🍎🍎🍎", "5", "Lima"],
+          ]}
+        />
+        <PanelDuaKolom
+          judul="Cara baku dan trik kilat"
+          kiri={{
+            label: "⭐ Cara baku",
+            isi: "👆🍎",
+            angka: "1",
+            catatan: "Hitung satu per satu sambil ditunjuk bendanya.",
+          }}
+          kanan={{
+            label: "🚀 Trik kilat",
+            isi: "🍎🍎",
+            angka: "2",
+            catatan: "Kelompokkan per 2 benda supaya lebih cepat.",
+          }}
+          kaki="🍎🍎 + 🍎🍎 + 🍎 = lima"
+        />
         <LabelMini anak="Kuis permainan" />
         <Pilih
           soal="Tarik garis dari jumlah stroberi ke angka yang pas!"
@@ -497,18 +573,30 @@ function SubBabB({ kelas, kelamin }: { kelas: string; kelamin?: KelaminGuru }) {
       </KartuBingkai>
 
       <KartuBingkai>
-        <Papan judul="INFOGRAFIS MEMBANDINGKAN BENDA">
-          <p>🍊🍊🍊🍊 lebih banyak daripada 🍊🍊. 4 jeruk lebih banyak dari 2 jeruk.</p>
-          <p>🍦 lebih sedikit daripada 🍦🍦🍦. 1 es krim lebih sedikit dari 3 es krim.</p>
-          <p>
-            ⭐ Cara baku: pasangkan satu-satu benda kiri ke kanan. Benda yang punya sisa berarti
-            lebih banyak.
-          </p>
-          <p>
-            🚀 Trik kilat: ubah gambar menjadi angka. Angka yang lebih jauh saat berhitung adalah
-            yang paling banyak.
-          </p>
-        </Papan>
+        <InfografisTabel
+          judul="Membandingkan Benda"
+          kepala={["Gambar", "Kata", "Artinya"]}
+          baris={[
+            ["🍊🍊🍊🍊", "Lebih banyak", "4 jeruk lebih banyak dari 2 jeruk"],
+            ["🍦", "Lebih sedikit", "1 es krim lebih sedikit dari 3 es krim"],
+          ]}
+        />
+        <PanelDuaKolom
+          judul="Cara membandingkan"
+          kiri={{
+            label: "⭐ Cara baku",
+            isi: "🍊🍊🍊🍊",
+            angka: "4",
+            catatan: "Pasangkan satu-satu. Yang punya sisa lebih banyak.",
+          }}
+          kanan={{
+            label: "🚀 Trik kilat",
+            isi: "🍦🍦🍦",
+            angka: "3",
+            catatan: "Ubah gambar jadi angka. Angka yang lebih jauh lebih banyak.",
+          }}
+          kaki="4 lebih banyak daripada 2"
+        />
         <Pilih
           soal="Tarik garis kata yang tepat: 🚗🚗🚗 ...... 🚗🚗🚗"
           pilihan={[
@@ -618,12 +706,30 @@ function SubBabC({ kelas, kelamin }: { kelas: string; kelamin?: KelaminGuru }) {
       </KartuBingkai>
 
       <KartuBingkai>
-        <Papan judul="INFOGRAFIS LOMPATAN ANGKA MAJU DAN MUNDUR">
-          <p>🏃 Hitung maju (makin besar): 1 → 2 → 3 → 4 → 5 → 6 → 7</p>
-          <p>🦘 Hitung mundur (makin kecil): 7 → 6 → 5 → 4 → 3 → 2 → 1</p>
-          <p>⭐ Cara baku: melompat satu-satu ke kanan untuk maju, ke kiri untuk mundur.</p>
-          <p>🚀 Trik kilat: bayangkan roket mau meluncur. 5, 4, 3, 2, 1, dorr!</p>
-        </Papan>
+        <InfografisTabel
+          judul="Lompatan Angka Maju dan Mundur"
+          kepala={["Arah", "Urutan", "Artinya"]}
+          baris={[
+            ["🏃 Maju", "1 → 2 → 3 → 4 → 5 → 6 → 7", "Makin besar"],
+            ["🦘 Mundur", "7 → 6 → 5 → 4 → 3 → 2 → 1", "Makin kecil"],
+          ]}
+        />
+        <PanelDuaKolom
+          judul="Cara melompat angka"
+          kiri={{
+            label: "⭐ Cara baku",
+            isi: "1 → 2 → 3",
+            angka: "→",
+            catatan: "Lompat satu-satu ke kanan untuk maju, ke kiri untuk mundur.",
+          }}
+          kanan={{
+            label: "🚀 Trik kilat",
+            isi: "5 4 3 2 1",
+            angka: "🚀",
+            catatan: "Bayangkan roket mau meluncur, lalu dorr!",
+          }}
+          kaki="5, 4, 3, 2, 1, dorr!"
+        />
         <Pilih
           soal="Lanjutkan kereta hitung maju: 5 → 6 → 7 → ?"
           pilihan={[
@@ -737,16 +843,27 @@ function SubBabD({ kelas, kelamin }: { kelas: string; kelamin?: KelaminGuru }) {
       </KartuBingkai>
 
       <KartuBingkai>
-        <Papan judul="INFOGRAFIS PASANGAN BILANGAN">
-          <p>Angka utama 5 bercabang menjadi pasangan 3 dan 2.</p>
-          <p>
-            ⭐ Cara baku: pisahkan 5 benda menjadi dua kelompok, tangan kiri dan tangan kanan.
-          </p>
-          <p>
-            🚀 Trik kilat: buka 5 jarimu. Tekuk 3 jari. Jari yang masih berdiri ada 2. Itulah
-            pasangannya!
-          </p>
-        </Papan>
+        <InfografisTabel
+          judul="Pasangan Bilangan"
+          kepala={["Angka utama", "Pasangan", "Cek"]}
+          baris={[["5", "3 dan 2", "3 + 2 = 5"]]}
+        />
+        <PanelDuaKolom
+          judul="Angka 5 bercabang"
+          kiri={{
+            label: "⭐ Cara baku",
+            isi: "🍬🍬🍬",
+            angka: "3",
+            catatan: "Tangan kiri memegang 3 benda.",
+          }}
+          kanan={{
+            label: "🚀 Trik kilat",
+            isi: "🍬🍬",
+            angka: "2",
+            catatan: "Buka 5 jari, tekuk 3. Yang berdiri tinggal 2.",
+          }}
+          kaki="5 = 3 + 2"
+        />
         <Pilih
           soal="Tarik garis pasangan angka yang jika digabungkan jumlahnya menjadi 4."
           pilihan={[
@@ -971,9 +1088,6 @@ export default function NaskahMtk1Bab1({
       <SubBabC kelas={kelas} kelamin={kelamin} />
       <SubBabD kelas={kelas} kelamin={kelamin} />
 
-      <p className="px-1 text-sm font-black uppercase tracking-wide text-[#1C01A5]">
-        Lembar evaluasi siswa
-      </p>
       <Evaluasi kelas={kelas} kelamin={kelamin} />
 
       <KartuBingkai>
