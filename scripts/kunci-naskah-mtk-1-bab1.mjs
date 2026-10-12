@@ -118,7 +118,7 @@ for (const item of daftar) {
     .select("kunci, topic_id, is_locked, model_sumber")
     .ilike("kelas", KELAS)
     .ilike("mapel", "%matematika%")
-    .ilike("materi", `%${potong.slice(0, 14)}%`);
+    .ilike("materi", `%${potong}%`);
 
   if (cari.error) {
     throw new Error(`Baca cache gagal (${MATERI}): ${cari.error.message}`);

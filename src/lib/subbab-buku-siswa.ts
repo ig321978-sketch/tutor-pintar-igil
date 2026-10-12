@@ -51,16 +51,16 @@ const SUBBAB_BUKU_SISWA: Record<string, Record<string, Record<string, string[]>>
     },
     Matematika: {
       "Bab 1: Ayo Membilang sampai dengan 10": [
-        "Menghitung, membaca, dan menulis bilangan",
-        "Membandingkan banyak benda",
-        "Menghitung maju dan mundur",
-        "Pasangan bilangan dan evaluasi",
+        "Kotak permen warna-warni Sani",
+        "Empat aturan menghitung sampai 10",
+        "Detektif permen manis",
+        "Lembar kerja tantangan juara",
       ],
       "Bab 1: Ayo Berhitung!": [
-        "Menghitung, membaca, dan menulis bilangan",
-        "Membandingkan banyak benda",
-        "Menghitung maju dan mundur",
-        "Pasangan bilangan dan evaluasi",
+        "Kotak permen warna-warni Sani",
+        "Empat aturan menghitung sampai 10",
+        "Detektif permen manis",
+        "Lembar kerja tantangan juara",
       ],
       "Bab 2: Penjumlahan sampai dengan 10": [
         "Menggabungkan dua kelompok benda",

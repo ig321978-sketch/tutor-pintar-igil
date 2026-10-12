@@ -134,7 +134,10 @@ function ModuleRenderer({
     () =>
       !kelasDuaSd(kelas) &&
       (adalahJudulMtk1Bab1(mapel, materi) ||
-        (naskahTampilanResmi(naskah) && /ayo\s+berhitung/i.test(naskah))),
+        (naskahTampilanResmi(naskah) &&
+          /ayo\s+berhitung|ayo\s+membilang\s+sampai(\s+dengan)?\s+10\b|permen warna-warni sani/i.test(
+            naskah,
+          ))),
     [naskah, mapel, materi, kelas],
   );
   const pakaiKartuMtkBab2 = useMemo(
