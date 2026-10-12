@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, type ReactNode } from "react";
+import GambarDoodle from "@/components/GambarDoodle";
 import HasilJawabanKuis from "@/components/HasilJawabanKuis";
 import KuisTulisKartu from "@/components/KuisTulisKartu";
 import TombolVoiceMateriPai1 from "@/components/TombolVoiceMateriPai1";
@@ -958,14 +959,21 @@ export default function NaskahMtk1Bab1({
         <p className="text-center text-sm font-black uppercase tracking-[0.16em] text-[#F0AB00]">
           Modul interaktif IGIL
         </p>
-        <h3 className="mt-2 text-center text-2xl font-black text-[#1C01A5]">
+        <div className="mt-4">
+          <GambarDoodle
+            src="/doodle-mtk/mtk-1-bab1-pembuka.jpg"
+            alt="Petualangan Kiko si monyet cerdik dan Zuzi si kelinci ceria di bawah pohon apel"
+            ukuran="lebar"
+          />
+        </div>
+        <h3 className="mt-4 text-center text-2xl font-black text-[#1C01A5]">
           Matematika Kelas 1 SD
         </h3>
         <p className="mt-2 text-center text-lg font-black text-[#1C01A5]">
           Bab 1: Ayo Membilang sampai dengan 10
         </p>
         <p className="mt-3 text-center text-sm font-semibold text-slate-700">
-          Petualangan Kiko si monyet cerdik 🐒 dan Zuzi si kelinci ceria 🐰.
+          Petualangan Kiko si monyet cerdik dan Zuzi si kelinci ceria.
         </p>
       </KartuBingkai>
 
