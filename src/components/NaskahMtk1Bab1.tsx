@@ -540,27 +540,31 @@ function MisiKebunAngka() {
         </p>
         <p className="mt-2 text-sm font-black text-[#1C01A5]">Kiko</p>
         <p className="text-sm font-semibold text-slate-700">“{misi.narasi}”</p>
-        {misi.angka ? (
-          <p
-            className={`mt-3 text-center text-6xl font-black text-[#1C01A5] ${kini.petunjuk >= 1 ? "kebun-goyang" : ""}`}
-          >
-            {misi.angka}
-            {kini.petunjuk >= 2 ? <span className="mx-auto mt-2 block h-2 w-2 rounded-full bg-[#1C01A5]" /> : null}
-          </p>
-        ) : null}
-        {misi.mode === "pilih" ? (
-          <div className="mt-3 grid gap-3 sm:grid-cols-2">
-            <div>
-              <p className="text-center text-xs font-black uppercase text-[#1C01A5]">Kelompok pertama</p>
+        {misi.mode === "kanvas" ? null : (
+          <>
+            {misi.angka ? (
+              <p
+                className={`mt-3 text-center text-6xl font-black text-[#1C01A5] ${kini.petunjuk >= 1 ? "kebun-goyang" : ""}`}
+              >
+                {misi.angka}
+                {kini.petunjuk >= 2 ? <span className="mx-auto mt-2 block h-2 w-2 rounded-full bg-[#1C01A5]" /> : null}
+              </p>
+            ) : null}
+            {misi.mode === "pilih" ? (
+              <div className="mt-3 grid gap-3 sm:grid-cols-2">
+                <div>
+                  <p className="text-center text-xs font-black uppercase text-[#1C01A5]">Kelompok pertama</p>
+                  <BendaPetak ikon={misi.ikon} jumlah={misi.jumlah} petunjuk={kini.petunjuk} />
+                </div>
+                <div>
+                  <p className="text-center text-xs font-black uppercase text-[#1C01A5]">Kelompok kedua</p>
+                  <BendaPetak ikon={misi.kananIkon ?? misi.ikon} jumlah={misi.kananJumlah ?? 0} petunjuk={kini.petunjuk} />
+                </div>
+              </div>
+            ) : (
               <BendaPetak ikon={misi.ikon} jumlah={misi.jumlah} petunjuk={kini.petunjuk} />
-            </div>
-            <div>
-              <p className="text-center text-xs font-black uppercase text-[#1C01A5]">Kelompok kedua</p>
-              <BendaPetak ikon={misi.kananIkon ?? misi.ikon} jumlah={misi.kananJumlah ?? 0} petunjuk={kini.petunjuk} />
-            </div>
-          </div>
-        ) : (
-          <BendaPetak ikon={misi.ikon} jumlah={misi.jumlah} petunjuk={kini.petunjuk} />
+            )}
+          </>
         )}
         {kini.petunjuk >= 3 ? (
           <p className="mt-3 rounded-xl bg-white px-3 py-2 text-sm font-bold text-[#1C01A5]">{misi.bersama}</p>
@@ -603,6 +607,7 @@ function MisiKebunAngka() {
             pertanyaan={misi.narasi}
             alias={kumpulkanAlias(misi.alias)}
             konteks={misi.bersama}
+            visual={<BendaPetak ikon={misi.ikon} jumlah={misi.jumlah} petunjuk={kini.petunjuk} />}
             sesudahNilai={(benar) => catat(aktif, benar)}
           />
         ) : null}
@@ -642,10 +647,6 @@ function MisiKebunAngka() {
       </ul>
       {bintang === 10 ? (
         <div className="rounded-2xl border-2 border-[#F0AB00] bg-[#FFF8E8] px-4 py-4">
-          <p className="text-center text-3xl" aria-hidden>
-            🌷🌼🌻🌺🌹🌸💐
-          </p>
-          <p className="mt-2 text-center text-sm font-black text-[#1C01A5]">Bunga pelangi tumbuh di kebun Kiko.</p>
           <KuisTulisKartu
             id={idKuisTulisKartu(MODUL_MTK1_BAB1.id, "C")}
             hanyaKanvas
@@ -653,6 +654,14 @@ function MisiKebunAngka() {
             pertanyaan="Tuliskan jumlah bintang kebun yang sudah kamu kumpulkan."
             alias={kumpulkanAlias(["10", "sepuluh"])}
             konteks="Sepuluh petak selesai. Bintang kebun ada 10."
+            visual={
+              <>
+                <p className="text-center text-3xl" aria-hidden>
+                  🌷🌼🌻🌺🌹🌸💐
+                </p>
+                <p className="mt-2 text-center text-sm font-black text-[#1C01A5]">Bunga pelangi tumbuh di kebun Kiko.</p>
+              </>
+            }
           />
         </div>
       ) : null}
@@ -717,16 +726,14 @@ function LembarKerja() {
         ]}
       />
 
-      <div>
-        <p className="mb-2 text-center text-lg font-black text-[#1C01A5]">🚀 3 - 4 - _ - 6 - 7</p>
-        <KuisTulisKartu
-          id={idKuis("D", 2)}
-          hanyaKanvas
-          pertanyaan="3. Tuliskan angka yang hilang pada roket bilangan."
-          alias={kumpulkanAlias(["5", "lima"])}
-          konteks="Urutan 3, 4, angka hilang, 6, 7. Jawabannya 5."
-        />
-      </div>
+      <KuisTulisKartu
+        id={idKuis("D", 2)}
+        hanyaKanvas
+        pertanyaan="3. Tuliskan angka yang hilang pada roket bilangan."
+        alias={kumpulkanAlias(["5", "lima"])}
+        konteks="Urutan 3, 4, angka hilang, 6, 7. Jawabannya 5."
+        visual={<p className="text-center text-lg font-black text-[#1C01A5]">🚀 3 - 4 - _ - 6 - 7</p>}
+      />
 
       <div className="rounded-2xl border-2 border-[#1C01A5]/15 bg-[#FFF1F2] p-4">
         <IkonUlang ikon="🍒" jumlah={6} />
@@ -746,37 +753,34 @@ function LembarKerja() {
         />
       </div>
 
-      <div>
-        <p className="mb-2 text-sm font-semibold text-slate-700">5. Lengkapi tanda perbandingan. Pilihan: &lt;, &gt;, atau =.</p>
-        <p className="mb-2 text-center text-lg font-black text-[#1C01A5]">🦆🦆🦆🦆 4 &nbsp;&nbsp; □ &nbsp;&nbsp; 6 🐇🐇🐇🐇🐇🐇</p>
-        <KuisTulisKartu
-          id={idKuis("D", 4)}
-          hanyaKanvas
-          pertanyaan="Tulis tanda <, >, atau = di antara 4 dan 6."
-          alias={kumpulkanAlias(["<", "4 < 6", "4<6"])}
-          konteks="Bebek 4 lebih sedikit daripada kelinci 6. Tandanya kurang dari."
-        />
-      </div>
+      <KuisTulisKartu
+        id={idKuis("D", 4)}
+        hanyaKanvas
+        pertanyaan="5. Lengkapi tanda perbandingan. Pilihan: <, >, atau =. Tulis tanda di antara 4 dan 6."
+        alias={kumpulkanAlias(["<", "4 < 6", "4<6"])}
+        konteks="Bebek 4 lebih sedikit daripada kelinci 6. Tandanya kurang dari."
+        visual={<p className="text-center text-lg font-black text-[#1C01A5]">🦆🦆🦆🦆 4 &nbsp;&nbsp; □ &nbsp;&nbsp; 6 🐇🐇🐇🐇🐇🐇</p>}
+      />
 
-      <div>
-        <div className="mb-2 grid gap-2 sm:grid-cols-2">
-          <p className="rounded-xl bg-[#FFF7ED] px-3 py-2 text-sm font-bold text-[#1C01A5]">
-            Piring A · 5
-            <IkonUlang ikon="🍪" jumlah={5} ukuran="text-xl" />
-          </p>
-          <p className="rounded-xl bg-[#F0FDF4] px-3 py-2 text-sm font-bold text-[#1C01A5]">
-            Piring B · 3
-            <IkonUlang ikon="🍪" jumlah={3} ukuran="text-xl" />
-          </p>
-        </div>
-        <KuisTulisKartu
-          id={idKuis("D", 5)}
-          hanyaKanvas
-          pertanyaan="6. Berapa kue yang harus ditambahkan ke Piring B agar sama banyak dengan Piring A?"
-          alias={kumpulkanAlias(["2", "dua", "tambah 2"])}
-          konteks="Piring A 5 kue. Piring B 3 kue. Tambahkan 2 kue."
-        />
-      </div>
+      <KuisTulisKartu
+        id={idKuis("D", 5)}
+        hanyaKanvas
+        pertanyaan="6. Berapa kue yang harus ditambahkan ke Piring B agar sama banyak dengan Piring A?"
+        alias={kumpulkanAlias(["2", "dua", "tambah 2"])}
+        konteks="Piring A 5 kue. Piring B 3 kue. Tambahkan 2 kue."
+        visual={
+          <div className="grid gap-2 sm:grid-cols-2">
+            <p className="rounded-xl bg-[#FFF7ED] px-3 py-2 text-sm font-bold text-[#1C01A5]">
+              Piring A · 5
+              <IkonUlang ikon="🍪" jumlah={5} ukuran="text-xl" />
+            </p>
+            <p className="rounded-xl bg-[#F0FDF4] px-3 py-2 text-sm font-bold text-[#1C01A5]">
+              Piring B · 3
+              <IkonUlang ikon="🍪" jumlah={3} ukuran="text-xl" />
+            </p>
+          </div>
+        }
+      />
 
       <KuisPilih
         id={idKuis("D", 6)}
@@ -887,19 +891,21 @@ export default function NaskahMtk1Bab1({
           <Dialog nama="Bimo" warna="border-[#2563EB]/20 bg-[#EFF6FF]">
             “Ada 3 apel. Lambang bilangannya adalah 3.”
           </Dialog>
-          <p
-            className="text-center text-7xl font-black text-transparent"
-            style={{ WebkitTextStroke: "3px #1C01A5" }}
-            aria-hidden
-          >
-            3
-          </p>
           <KuisTulisKartu
             id={idKuis("A", 1)}
             hanyaKanvas
             pertanyaan="Tebalkan angka berikut: 3"
             alias={kumpulkanAlias(["3", "tiga"])}
             konteks="Ada 3 apel. Lambang bilangannya 3."
+            visual={
+              <p
+                className="text-center text-7xl font-black text-transparent"
+                style={{ WebkitTextStroke: "3px #1C01A5" }}
+                aria-hidden
+              >
+                3
+              </p>
+            }
           />
           <article className="rounded-2xl border-2 border-[#F97316]/30 bg-[#FFF7ED] px-4 py-3">
             <p className="text-xs font-black uppercase text-[#9A3412]">Jeruk dari keranjang</p>
@@ -982,13 +988,13 @@ export default function NaskahMtk1Bab1({
             petunjuk="Dengarkan, hitung, lalu jawab dengan suara."
           />
         </div>
-        <IkonUlang ikon="⭐" jumlah={6} ukuran="text-3xl" />
         <KuisTulisKartu
           id={idKuisTulisKartu(MODUL_MTK1_BAB1.id, "A")}
           hanyaKanvas
           pertanyaan="Hitung bintang. Tuliskan lambang bilangannya."
           alias={kumpulkanAlias(["6", "enam"])}
           konteks="Ada 6 bintang. Lambangnya 6."
+          visual={<IkonUlang ikon="⭐" jumlah={6} ukuran="text-3xl" />}
         />
       </KartuBingkai>
 
@@ -1108,13 +1114,13 @@ export default function NaskahMtk1Bab1({
               petunjuk="Dengarkan, lalu jawab dengan suara."
             />
           </div>
-          <div className="text-center text-2xl">🐢 🐢 🐢 &nbsp;&nbsp; 🐰 🐰 🐰 🐰 🐰</div>
           <KuisTulisKartu
             id={idKuisTulisKartu(MODUL_MTK1_BAB1.id, "B")}
             hanyaKanvas
             pertanyaan="Tulis jumlah kura-kura, tanda < > atau =, lalu jumlah kelinci. Contoh: 3 < 5."
             alias={kumpulkanAlias(["3 < 5", "3<5", "tiga lebih sedikit daripada lima"])}
             konteks="Kura-kura 3. Kelinci 5. Tiga lebih sedikit daripada lima."
+            visual={<div className="text-center text-2xl">🐢 🐢 🐢 &nbsp;&nbsp; 🐰 🐰 🐰 🐰 🐰</div>}
           />
         </div>
       </KartuBingkai>

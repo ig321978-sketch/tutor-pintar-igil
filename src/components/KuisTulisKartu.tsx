@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, type ReactNode } from "react";
 import HasilJawabanKuis from "@/components/HasilJawabanKuis";
 import WritingCanvas from "@/components/WritingCanvas";
 import { useKuisMateri } from "@/components/KuisMateriContext";
@@ -41,6 +41,7 @@ export default function KuisTulisKartu({
   konteks = "",
   rapat = false,
   hanyaKanvas = false,
+  visual,
   sesudahNilai,
 }: {
   id: string;
@@ -49,6 +50,7 @@ export default function KuisTulisKartu({
   konteks?: string;
   rapat?: boolean;
   hanyaKanvas?: boolean;
+  visual?: ReactNode;
   sesudahNilai?: (benar: boolean) => void;
 }) {
   const kuis = useKuisMateri();
@@ -106,6 +108,7 @@ export default function KuisTulisKartu({
       <p className="text-base font-extrabold leading-relaxed text-[#1C01A5]">
         QUIZ TULIS:
       </p>
+      {visual ? <div>{visual}</div> : null}
       <p className="rounded-2xl border-2 border-[#1C01A5]/15 bg-[#F8F7FF] px-4 py-3 text-base font-extrabold leading-relaxed text-[#1C01A5]">
         {pertanyaan}
       </p>
