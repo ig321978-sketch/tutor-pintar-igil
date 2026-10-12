@@ -50,11 +50,13 @@ export default function SoalRekamSuara({
   pertanyaan,
   periksa,
   petunjuk = "Ketuk Rekam suara, sebutkan jawabannya, lalu kirim.",
+  sesudahNilai,
 }: {
   id?: string;
   pertanyaan: ReactNode;
   periksa: (transkrip: string) => boolean;
   petunjuk?: string;
+  sesudahNilai?: (benar: boolean) => void;
 }) {
   const kuisMateri = useKuisMateri();
   const [transkrip, setTranskrip] = useState("");
@@ -133,6 +135,7 @@ export default function SoalRekamSuara({
     const benar = periksa(transkrip);
     setStatus(benar ? "benar" : "salah");
     if (benar && id) kuisMateri?.tandaiBenar(id);
+    sesudahNilai?.(benar);
   };
 
   return (

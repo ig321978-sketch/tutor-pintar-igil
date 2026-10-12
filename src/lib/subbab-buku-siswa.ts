@@ -53,13 +53,13 @@ const SUBBAB_BUKU_SISWA: Record<string, Record<string, Record<string, string[]>>
       "Bab 1: Ayo Membilang sampai dengan 10": [
         "Piknik buah Rara dan Bimo",
         "Mengenal bilangan 1 sampai 10",
-        "Toko angka mini",
+        "Misi penjaga kebun angka",
         "Poin penting dan lembar kerja",
       ],
       "Bab 1: Ayo Berhitung!": [
         "Piknik buah Rara dan Bimo",
         "Mengenal bilangan 1 sampai 10",
-        "Toko angka mini",
+        "Misi penjaga kebun angka",
         "Poin penting dan lembar kerja",
       ],
       "Bab 2: Penjumlahan sampai dengan 10": [

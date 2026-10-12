@@ -41,6 +41,7 @@ export default function KuisTulisKartu({
   konteks = "",
   rapat = false,
   hanyaKanvas = false,
+  sesudahNilai,
 }: {
   id: string;
   pertanyaan?: string;
@@ -48,6 +49,7 @@ export default function KuisTulisKartu({
   konteks?: string;
   rapat?: boolean;
   hanyaKanvas?: boolean;
+  sesudahNilai?: (benar: boolean) => void;
 }) {
   const kuis = useKuisMateri();
   const [status, setStatus] = useState<StatusJawaban>(null);
@@ -63,12 +65,14 @@ export default function KuisTulisKartu({
     simpanCuplikan(data);
     if (jawabanTulisGenerik(data)) {
       setStatus("salah");
+      sesudahNilai?.(false);
       return;
     }
     if (!adalahGambarJawaban(data) && alias.length > 0) {
       const benar = jawabanTulisMemuatAlias(data, alias);
       setStatus(benar ? "benar" : "salah");
       if (benar) kuis?.tandaiBenar(id);
+      sesudahNilai?.(benar);
       return;
     }
     try {
@@ -80,6 +84,7 @@ export default function KuisTulisKartu({
       });
       setStatus(hasil.benar ? "benar" : "salah");
       if (hasil.benar) kuis?.tandaiBenar(id);
+      sesudahNilai?.(hasil.benar);
     } catch (error) {
       setStatus(null);
       setPesan(

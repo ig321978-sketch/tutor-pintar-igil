@@ -17,7 +17,7 @@ export const MODUL_MTK1_BAB1: ModulResmiPai = {
   sketsaKartu: [
     "Rara dan Bimo piknik di taman, menghitung apel, jeruk, pisang, dan stroberi bersama Miko.",
     "Tangga bilangan 1 sampai 10, mulut ikan untuk tanda lebih besar, dan kereta bilangan.",
-    "Toko angka mini dengan kartu angka, benda hitung, dan dua wadah.",
+    "Kiko menjaga sepuluh petak kebun angka: menghitung, membaca, menulis, dan membandingkan.",
     "Lembar kerja tantangan juara membilang dan membandingkan sampai 10.",
   ],
   latihan: pg([
@@ -168,46 +168,44 @@ C) Bimo, selisih 4`,
     },
     {
       kode: "C",
-      judul: "C. Toko Angka Mini",
+      judul: "C. Misi Penjaga Kebun Angka",
       pengantar:
-        "Rara membuka toko mainan. Ambil benda sesuai kartu angka, lalu bandingkan dua wadah.",
-      labelDaftar: "Permainan menghitung dan membandingkan",
+        "Bantu Kiko mengisi 10 petak kebun. Hijau untuk menghitung, biru untuk membaca, kuning untuk menulis, dan ungu untuk membandingkan.",
+      labelDaftar: "Sepuluh misi bilangan di kebun",
       kolom: 1,
       item: [
         {
-          nama: "Cara bermain",
-          singkat: "Kartu, benda, dua wadah",
+          nama: "Alur permainan",
+          singkat: "Pilih petak, jawab, dapat bintang",
           uraian:
-            "Acak kartu angka. Baca bilangannya. Ambil benda satu per satu sesuai angka, lalu masukkan ke wadah. Ulangi untuk wadah kedua. Bandingkan, lalu tulis kedua angka dan tandanya.",
-          contoh: "Kartu 4 dan kartu 7 ditulis 4 < 7. Empat lebih sedikit daripada tujuh.",
+            "Siswa memilih satu petak. Kiko membacakan misi. Jawaban benar mendapat 1 bintang kebun. Jawaban yang belum tepat mendapat petunjuk, tanpa kehilangan daun. Setelah 10 petak selesai, bunga pelangi tumbuh.",
+          contoh: "Lima bunga, bacaan delapan, lambang 6, dan kelompok lebah yang lebih banyak.",
         },
         {
-          nama: "Pendamping",
-          singkat: "Hitung sekali",
+          nama: "Daun ajaib",
+          singkat: "3, 2, atau 1 daun",
           uraian:
-            "Pindahkan benda satu per satu. Benda yang sudah dihitung diletakkan di dalam wadah agar tidak dihitung dua kali.",
-          contoh: "Wadah A 5 benda. Wadah B 3 benda. Wadah B lebih sedikit.",
+            "Jawaban pertama benar mendapat 3 daun ajaib. Benar setelah satu petunjuk mendapat 2 daun. Benar setelah dua petunjuk mendapat 1 daun. Belum tepat tidak mengurangi daun. Siswa boleh mencoba lagi.",
+          contoh: "Petunjuk: benda bergoyang, lalu muncul titik, lalu Kiko menghitung bersama.",
         },
       ],
       kuis: [
-        {
-          pertanyaan: "Kartu angka 6. Baca bilangannya, lalu sebutkan bilangan setelahnya.",
-          alias: ["enam", "tujuh", "6", "7"],
-        },
-        {
-          pertanyaan: "Wadah A ada 5 benda. Wadah B ada 3 benda. Wadah mana yang lebih sedikit?",
-          alias: ["wadah b", "b", "sedikit"],
-        },
-        {
-          pertanyaan: "Ambil 8 benda. Tuliskan lambang bilangannya.",
-          alias: ["8", "delapan"],
-        },
+        { pertanyaan: "Berapa jumlah bunga tulip?", alias: ["5", "lima"] },
+        { pertanyaan: "Bacalah bilangan 8.", alias: ["delapan", "8"] },
+        { pertanyaan: "Tuliskan lambang jumlah wortel.", alias: ["6", "enam"] },
+        { pertanyaan: "Kelompok lebah mana yang lebih banyak?", alias: ["kedua", "kelompok kedua"] },
+        { pertanyaan: "Berapa jumlah bunga matahari?", alias: ["3", "tiga"] },
+        { pertanyaan: "Bacalah bilangan 4.", alias: ["empat", "4"] },
+        { pertanyaan: "Tuliskan lambang jumlah stroberi.", alias: ["9", "sembilan"] },
+        { pertanyaan: "Kelompok anak ayam mana yang lebih banyak?", alias: ["pertama", "kelompok pertama"] },
+        { pertanyaan: "Berapa jumlah bintang di petak?", alias: ["10", "sepuluh"] },
+        { pertanyaan: "Bacalah bilangan 1.", alias: ["satu", "1"] },
       ],
       voice: [
         [
-          "Selamat datang di toko angka mini. Ambil satu kartu, baca angkanya, lalu ambil benda sebanyak angka itu.",
-          "Contoh: kartu 4 dan kartu 7. Empat lebih sedikit daripada tujuh, jadi 4 < 7.",
-          "Wadah A ada lima benda. Wadah B ada tiga benda. Wadah B lebih sedikit. Enam benda lebih banyak daripada empat benda.",
+          "Kiko menjaga kebun angka. Ada sepuluh petak dari rumah sampai piala.",
+          "Petak hijau untuk menghitung. Petak biru untuk membaca. Petak kuning untuk menulis. Petak ungu untuk membandingkan.",
+          "Jawaban benar mendapat satu bintang kebun. Jika belum tepat, Kiko memberi petunjuk. Daun tidak berkurang. Setelah sepuluh petak selesai, bunga pelangi tumbuh.",
         ],
       ],
     },
