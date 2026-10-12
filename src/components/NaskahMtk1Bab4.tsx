@@ -4,6 +4,7 @@ import { useEffect, useMemo, useRef, useState, type ReactNode } from "react";
 import HasilJawabanKuis from "@/components/HasilJawabanKuis";
 import KuisTulisKartu from "@/components/KuisTulisKartu";
 import SoalRekamSuara from "@/components/SoalRekamSuara";
+import GambarCerita from "@/components/GambarCerita";
 import TombolVoiceMateriPai1 from "@/components/TombolVoiceMateriPai1";
 import WritingCanvas from "@/components/WritingCanvas";
 import { useKuisMateri } from "@/components/KuisMateriContext";
@@ -335,6 +336,10 @@ function KartuA({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminGuru }) {
       <div className="mt-4 space-y-3">
         <article className="rounded-2xl border-2 border-[#F0AB00] bg-[#FFF8E8] px-4 py-3">
           <p className="text-xs font-black uppercase tracking-wide text-[#92400E]">Adegan 1 · Teras rumah Nenek</p>
+          <GambarCerita
+            src="/doodle-mtk/mtk-1-bab4-adegan-1.jpg"
+            alt="Rumah Nenek Ani beratap segitiga. Matahari bulat. Sasa dan Bimo berdiri di teras."
+          />
           <p className="mt-2 text-center text-4xl" aria-hidden>
             🏠 ☀️
           </p>
@@ -347,6 +352,7 @@ function KartuA({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminGuru }) {
         <Dialog nama="Nenek Ani" anak="Pintar! Itu namanya segitiga. Sisinya 3, sudutnya juga 3." />
         <article className="rounded-2xl border-2 border-[#E23B3B]/25 bg-[#FFF1F2] px-4 py-3">
           <p className="text-xs font-black uppercase text-[#9F1239]">Atap segitiga</p>
+          <GambarCerita src="/doodle-mtk/mtk-1-bab4-atap.jpg" alt="Atap rumah berbentuk segitiga dengan 3 sudut." />
           <p className="mt-2 text-center text-4xl" aria-hidden>
             🔺
           </p>
@@ -354,6 +360,10 @@ function KartuA({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminGuru }) {
         </article>
         <article className="rounded-2xl border-2 border-[#0284C7]/25 bg-[#F0F9FF] px-4 py-3">
           <p className="text-xs font-black uppercase tracking-wide text-[#0C4A6E]">Adegan 2 · Ruang tamu</p>
+          <GambarCerita
+            src="/doodle-mtk/mtk-1-bab4-adegan-2.jpg"
+            alt="Jam dinding bulat, pintu persegi panjang, dan bingkai foto persegi."
+          />
           <p className="mt-2 text-center text-4xl" aria-hidden>
             ⏰ 🚪 🖼️
           </p>
@@ -366,6 +376,7 @@ function KartuA({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminGuru }) {
         <Dialog nama="Nenek Ani" anak="Itu persegi panjang. Persegi dan persegi panjang sama-sama segi empat." />
         <article className="rounded-2xl border-2 border-[#7C3AED]/25 bg-[#F5F3FF] px-4 py-3">
           <p className="text-xs font-black uppercase tracking-wide text-[#5B21B6]">Adegan 3 · Dapur</p>
+          <GambarCerita src="/doodle-mtk/mtk-1-bab4-adegan-3.jpg" alt="Dadu berbentuk kubus dan kotak susu berbentuk balok." />
           <p className="mt-2 text-center text-4xl" aria-hidden>
             🎲 🧃
           </p>

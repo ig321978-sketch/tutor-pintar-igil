@@ -4,6 +4,7 @@ import { useMemo, useState, type ReactNode } from "react";
 import HasilJawabanKuis from "@/components/HasilJawabanKuis";
 import LatihanSuaraResmi from "@/components/LatihanSuaraResmi";
 import KuisTulisKartu from "@/components/KuisTulisKartu";
+import GambarCerita from "@/components/GambarCerita";
 import TombolVoiceMateriPai1 from "@/components/TombolVoiceMateriPai1";
 import { useKuisMateri } from "@/components/KuisMateriContext";
 import { SLOT_AJUAN_SEBELUM_KARTU_D } from "@/components/NaskahMtk2Bab1";
@@ -554,6 +555,7 @@ export default function NaskahMtk2Bab8({
             <p className="text-xs font-black uppercase tracking-wide text-[#9D174D]">
               🗺️ Cerita: Catatan Rahasia di Lemari Toko
             </p>
+            <GambarCerita src="/doodle-mtk/mtk-2-bab8-cerita.jpg" alt="Papan stiker permen: baris 3, 5, dan 2. Satu stiker sama dengan 10." />
             <p className="mt-2 text-sm font-semibold leading-relaxed text-slate-700">
               Toko Sani buka 3 hari. Sani bosan menulis angka, jadi ia menempel stiker 🍬 di papan nama hari.
               Lani heran bagaimana tahu jumlah aslinya.

@@ -4,6 +4,7 @@ import { useMemo, useState, type ReactNode } from "react";
 import HasilJawabanKuis from "@/components/HasilJawabanKuis";
 import LatihanSuaraResmi from "@/components/LatihanSuaraResmi";
 import KuisTulisKartu from "@/components/KuisTulisKartu";
+import GambarCerita from "@/components/GambarCerita";
 import TombolVoiceMateriPai1 from "@/components/TombolVoiceMateriPai1";
 import { useKuisMateri } from "@/components/KuisMateriContext";
 import { SLOT_AJUAN_SEBELUM_KARTU_D } from "@/components/NaskahMtk2Bab1";
@@ -565,6 +566,7 @@ export default function NaskahMtk2Bab14({
         <div className="mt-4 space-y-3">
           <article className="rounded-2xl border-2 border-[#DB2777]/20 bg-[#FDF2F8] px-4 py-3">
             <p className="text-xs font-black uppercase tracking-wide text-[#9D174D]">🗺️ Cerita: Kardus Paket Pengiriman</p>
+            <GambarCerita src="/doodle-mtk/mtk-2-bab14-cerita.jpg" alt="Paman membawa kardus kosong untuk paket permen." />
             <p className="mt-2 text-sm font-semibold leading-relaxed text-slate-700">
               Toko Permen Sani hari ini sibuk. Ada banyak pesanan dari luar kota. Permen tidak boleh dikirim begitu
               saja agar tidak hancur di jalan. Paman membawa banyak kardus kosong.

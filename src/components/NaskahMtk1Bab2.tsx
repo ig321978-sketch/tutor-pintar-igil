@@ -4,6 +4,7 @@ import { useEffect, useMemo, useRef, useState, type ReactNode } from "react";
 import HasilJawabanKuis from "@/components/HasilJawabanKuis";
 import KuisTulisKartu from "@/components/KuisTulisKartu";
 import SoalRekamSuara from "@/components/SoalRekamSuara";
+import GambarCerita from "@/components/GambarCerita";
 import TombolVoiceMateriPai1 from "@/components/TombolVoiceMateriPai1";
 import WritingCanvas from "@/components/WritingCanvas";
 import { useKuisMateri } from "@/components/KuisMateriContext";
@@ -751,6 +752,10 @@ export default function NaskahMtk1Bab2({
         <div className="mt-4 space-y-3">
           <article className="rounded-2xl border-2 border-[#0284C7]/25 bg-[#F0F9FF] px-4 py-3">
             <p className="text-xs font-black uppercase tracking-wide text-[#0C4A6E]">Adegan 1 · Tiba di pantai</p>
+            <GambarCerita
+              src="/doodle-mtk/mtk-1-bab2-adegan-1.jpg"
+              alt="Lala, Bima, dan Raka tiba di pantai membawa ember. Kepi si katak ikut berjalan."
+            />
             <p className="mt-2 text-center text-4xl" aria-hidden>
               🌊 ⛱️ 🕊️ 🪣
             </p>
@@ -761,6 +766,10 @@ export default function NaskahMtk1Bab2({
           <Dialog nama="Kepi" anak="Cik-cik! Aku bantu cari, ya!" />
           <article className="rounded-2xl border-2 border-[#F0AB00] bg-[#FFF8E8] px-4 py-3">
             <p className="text-xs font-black uppercase tracking-wide text-[#92400E]">Adegan 2 · Menggabungkan kerang</p>
+            <GambarCerita
+              src="/doodle-mtk/mtk-1-bab2-adegan-2.jpg"
+              alt="Ember Lala berisi 3 kerang. Ember Bima berisi 2 kerang."
+            />
             <div className="mt-2 grid gap-3 sm:grid-cols-2">
               <div>
                 <p className="text-xs font-black uppercase text-[#92400E]">Ember Lala</p>
@@ -783,6 +792,10 @@ export default function NaskahMtk1Bab2({
           <Dialog nama="Kepi" anak="Jadi 5 kerang! Menggabungkan itu namanya menjumlahkan!" />
           <article className="rounded-2xl border-2 border-[#7C3AED]/30 bg-[#F5F3FF] px-4 py-3">
             <p className="text-xs font-black uppercase text-[#5B21B6]">Adegan 3 · Kenalan dengan simbol</p>
+            <GambarCerita
+              src="/doodle-mtk/mtk-1-bab2-adegan-3.jpg"
+              alt="Tanda tambah dan tanda sama dengan di pasir pantai."
+            />
             <p className="mt-2 text-center text-3xl font-black text-[#1C01A5]">➕ &nbsp; 🟰</p>
           </article>
           <Dialog nama="Raka" anak="Tanda silang itu apa?" />
@@ -791,6 +804,10 @@ export default function NaskahMtk1Bab2({
           <Dialog nama="Lala" anak="Itu tanda sama dengan. Artinya hasilnya!" />
           <article className="rounded-2xl border-2 border-[#F0AB00] bg-[#FFF8E8] px-4 py-3">
             <p className="text-xs font-black uppercase tracking-wide text-[#92400E]">Adegan 4 · Istana pasir</p>
+            <GambarCerita
+              src="/doodle-mtk/mtk-1-bab2-adegan-4.jpg"
+              alt="Istana pasir punya 4 bendera. Di sampingnya ada 3 bendera lagi."
+            />
             <p className="mt-2 text-center text-3xl" aria-hidden>
               🏰
             </p>

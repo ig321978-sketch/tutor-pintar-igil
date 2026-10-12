@@ -4,6 +4,7 @@ import { useMemo, useState, type ReactNode } from "react";
 import HasilJawabanKuis from "@/components/HasilJawabanKuis";
 import LatihanSuaraResmi from "@/components/LatihanSuaraResmi";
 import KuisTulisKartu from "@/components/KuisTulisKartu";
+import GambarCerita from "@/components/GambarCerita";
 import TombolVoiceMateriPai1 from "@/components/TombolVoiceMateriPai1";
 import { useKuisMateri } from "@/components/KuisMateriContext";
 import { SLOT_AJUAN_SEBELUM_KARTU_D } from "@/components/NaskahMtk2Bab1";
@@ -620,6 +621,7 @@ export default function NaskahMtk2Bab13({
             <p className="text-xs font-black uppercase tracking-wide text-[#9D174D]">
               🗺️ Cerita: Memotong Kue Secara Adil
             </p>
+            <GambarCerita src="/doodle-mtk/mtk-2-bab13-cerita.jpg" alt="Satu kue bolu utuh yang belum dipotong." />
             <p className="mt-2 text-sm font-semibold leading-relaxed text-slate-700">
               Hari ini Toko Permen Sani merayakan ulang tahun yang kedua. Sani sudah menyiapkan 1 buah kue bolu
               cokelat yang besar dan utuh. Lani datang berkunjung, dan Sani ingin membagi kue itu.

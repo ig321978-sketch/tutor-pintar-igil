@@ -4,6 +4,7 @@ import { useMemo, useState, type ReactNode } from "react";
 import HasilJawabanKuis from "@/components/HasilJawabanKuis";
 import LatihanSuaraResmi from "@/components/LatihanSuaraResmi";
 import KuisTulisKartu from "@/components/KuisTulisKartu";
+import GambarCerita from "@/components/GambarCerita";
 import TombolVoiceMateriPai1 from "@/components/TombolVoiceMateriPai1";
 import { useKuisMateri } from "@/components/KuisMateriContext";
 import { SLOT_AJUAN_SEBELUM_KARTU_D } from "@/components/NaskahMtk2Bab1";
@@ -552,6 +553,7 @@ export default function NaskahMtk2Bab6({
             <p className="text-xs font-black uppercase tracking-wide text-[#9D174D]">
               🗺️ Cerita: Menghias Kantong Permen
             </p>
+            <GambarCerita src="/doodle-mtk/mtk-2-bab6-cerita.jpg" alt="Sani mengukur pita untuk menghias kantong permen." />
             <p className="mt-2 text-sm font-semibold leading-relaxed text-slate-700">
               Toko permen Sani ramai. Sani ingin menghias kantong besar dengan pita merah. Kalau dipotong
               asal-asalan, pitanya bisa kependekan atau terbuang sia-sia.

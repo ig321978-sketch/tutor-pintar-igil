@@ -4,6 +4,7 @@ import { useMemo, useState, type ReactNode } from "react";
 import HasilJawabanKuis from "@/components/HasilJawabanKuis";
 import LatihanSuaraResmi from "@/components/LatihanSuaraResmi";
 import KuisTulisKartu from "@/components/KuisTulisKartu";
+import GambarCerita from "@/components/GambarCerita";
 import TombolVoiceMateriPai1 from "@/components/TombolVoiceMateriPai1";
 import { useKuisMateri } from "@/components/KuisMateriContext";
 import { SLOT_AJUAN_SEBELUM_KARTU_D } from "@/components/NaskahMtk2Bab1";
@@ -603,6 +604,7 @@ export default function NaskahMtk2Bab9({
             <p className="text-xs font-black uppercase tracking-wide text-[#9D174D]">
               🗺️ Cerita: Dus Raksasa dari Truk Pusat
             </p>
+            <GambarCerita src="/doodle-mtk/mtk-2-bab9-cerita.jpg" alt="Truk membawa 3 dus, 4 kantong, dan 5 permen eceran." />
             <p className="mt-2 text-sm font-semibold leading-relaxed text-slate-700">
               Wah, Toko Permen Sani kedatangan truk besar dari pabrik pusat! Ingat: 1 Kantong = 10 permen.
               Aturan baru: 1 Dus Raksasa = 100 permen.

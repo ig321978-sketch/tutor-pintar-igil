@@ -4,6 +4,7 @@ import { useEffect, useMemo, useRef, useState, type ReactNode } from "react";
 import HasilJawabanKuis from "@/components/HasilJawabanKuis";
 import KuisTulisKartu from "@/components/KuisTulisKartu";
 import SoalRekamSuara from "@/components/SoalRekamSuara";
+import GambarCerita from "@/components/GambarCerita";
 import TombolVoiceMateriPai1 from "@/components/TombolVoiceMateriPai1";
 import WritingCanvas from "@/components/WritingCanvas";
 import { useKuisMateri } from "@/components/KuisMateriContext";
@@ -377,6 +378,10 @@ function HookPesta() {
   return (
     <article className="rounded-2xl border-2 border-[#16A34A]/25 bg-[#F0FDF4] px-4 py-3">
       <p className="text-xs font-black uppercase tracking-wide text-[#166534]">Cerita: Pesta Ulang Tahun yang Hilang</p>
+      <GambarCerita
+        src="/doodle-mtk/mtk-1-bab3-pesta.jpg"
+        alt="Pesta malam di rumah Nia. Ada 8 balon, kue, dan Miko si tikus berkacamata."
+      />
       <div className="mt-2 text-center">
         <IkonUlang ikon="🎈" jumlah={8} ukuran="text-3xl" />
       </div>
@@ -427,6 +432,7 @@ function KartuA({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminGuru }) {
         <Dialog nama="Miko" anak="Cik-cik! Delapan balon siap untuk pesta!" />
         <article className="rounded-2xl border-2 border-[#E23B3B]/25 bg-[#FFF1F2] px-4 py-3">
           <p className="text-xs font-black uppercase text-[#9F1239]">Delapan balon</p>
+          <GambarCerita src="/doodle-mtk/mtk-1-bab3-delapan.jpg" alt="Delapan balon berjajar dan angka 8." />
           <div className="mt-2 text-center">
             <IkonUlang ikon="🎈" jumlah={8} ukuran="text-3xl" />
           </div>
@@ -436,6 +442,10 @@ function KartuA({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminGuru }) {
         <Dialog nama="Miko" anak="Sekarang tinggal berapa, ya?" />
         <article className="rounded-2xl border-2 border-[#F97316]/30 bg-[#FFF7ED] px-4 py-3">
           <p className="text-xs font-black uppercase text-[#9A3412]">Balon yang tersisa</p>
+          <GambarCerita
+            src="/doodle-mtk/mtk-1-bab3-sisa.jpg"
+            alt="Lima balon masih terikat. Tiga balon terbang. 8 kurang 3 sama dengan 5."
+          />
           <div className="mt-2 text-center">
             <IkonUlang ikon="🎈" jumlah={5} ukuran="text-3xl" />
           </div>
@@ -448,6 +458,7 @@ function KartuA({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminGuru }) {
         <Dialog nama="Nia" anak="Kalau begitu, jumlahnya jadi lebih sedikit." />
         <article className="rounded-2xl border-2 border-[#7C3AED]/25 bg-[#F5F3FF] px-4 py-3">
           <p className="text-xs font-black uppercase text-[#5B21B6]">Tanda kurang</p>
+          <GambarCerita src="/doodle-mtk/mtk-1-bab3-kurang.jpg" alt="Miko menunjukkan tanda kurang." />
           <p className="mt-2 text-center text-4xl" aria-hidden>
             ➖
           </p>

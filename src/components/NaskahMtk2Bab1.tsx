@@ -4,6 +4,7 @@ import { useMemo, useState, type ReactNode } from "react";
 import HasilJawabanKuis from "@/components/HasilJawabanKuis";
 import LatihanSuaraResmi from "@/components/LatihanSuaraResmi";
 import KuisTulisKartu from "@/components/KuisTulisKartu";
+import GambarCerita from "@/components/GambarCerita";
 import TombolVoiceMateriPai1 from "@/components/TombolVoiceMateriPai1";
 import { useKuisMateri } from "@/components/KuisMateriContext";
 import { kelasTombolHasilKuis, statusDariPilihan } from "@/lib/hasil-kuis";
@@ -563,6 +564,7 @@ export default function NaskahMtk2Bab1({
             <p className="text-xs font-black uppercase tracking-wide text-[#9D174D]">
               🗺️ Cerita: Berbagi Permen Ulang Tahun
             </p>
+            <GambarCerita src="/doodle-mtk/mtk-2-bab1-cerita.jpg" alt="Sani melihat tumpukan permen ulang tahun yang sangat banyak." />
             <p className="mt-2 text-sm font-semibold leading-relaxed text-slate-700">
               Sani baru saja merayakan ulang tahun. Di atas meja, ada banyak sekali permen
               pemberian paman.
