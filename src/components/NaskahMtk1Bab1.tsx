@@ -208,21 +208,24 @@ function Balon({ nama, anak }: { nama: string; anak: string }) {
   );
 }
 
+function JudulKartu({ anak }: { anak: string }) {
+  return (
+    <h5 className="text-left text-xl font-black text-[#1C01A5] first:mt-0 mt-5 sm:text-2xl">
+      {anak}
+    </h5>
+  );
+}
+
 function InfografisTabel({
-  judul,
   kepala,
   baris,
 }: {
-  judul: string;
   kepala: [string, string, string];
   baris: Array<[string, string, string]>;
 }) {
   return (
-    <div className="overflow-hidden rounded-2xl border-4 border-[#F0AB00]">
-      <p className="bg-[#1C01A5] px-3 py-2 text-center text-xs font-black uppercase tracking-wide text-white sm:text-sm">
-        Infografis: {judul}
-      </p>
-      <div className="grid grid-cols-3 bg-[#16017a] px-3 py-2 text-[10px] font-black uppercase tracking-wide text-white sm:text-xs">
+    <div className="mt-4 overflow-hidden rounded-2xl border-4 border-[#F0AB00]">
+      <div className="grid grid-cols-3 bg-[#1C01A5] px-3 py-2 text-[10px] font-black uppercase tracking-wide text-white sm:text-xs">
         {kepala.map((item) => (
           <span key={item}>{item}</span>
         ))}
@@ -390,7 +393,7 @@ function SubBabA({ kelas, kelamin }: { kelas: string; kelamin?: KelaminGuru }) {
     <>
       <KartuBingkai>
         <Kepala kartu={kartu} kelas={kelas} kelamin={kelamin} ikon="🍓🐒🐰" />
-        <LabelMini anak="Kartu A · Naskah bergambar" />
+        <JudulKartu anak="Materi" />
         <p className="mt-2 text-sm font-semibold text-slate-700">
           Kiko 🐒 dan Zuzi 🐰 berdiri di bawah pohon apel besar. Di tanah ada apel merah ranum
           yang berjatuhan.
@@ -432,8 +435,8 @@ function SubBabA({ kelas, kelamin }: { kelas: string; kelamin?: KelaminGuru }) {
       </KartuBingkai>
 
       <KartuBingkai>
+        <JudulKartu anak="Infografis" />
         <InfografisTabel
-          judul="Rahasia Angka 1–10"
           kepala={["Gambar", "Angka", "Dibaca"]}
           baris={[
             ["🍎", "1", "Satu"],
@@ -502,9 +505,7 @@ function SubBabA({ kelas, kelamin }: { kelas: string; kelamin?: KelaminGuru }) {
       </KartuBingkai>
 
       <KartuBingkai>
-        <p className="text-center text-sm font-black tracking-wide text-[#1C01A5]">
-          Kartu C · Misi Kantong Rahasia Sani 🛍️
-        </p>
+        <JudulKartu anak="Kegiatan" />
         <p className="mt-3 text-sm font-semibold leading-relaxed text-slate-700">
           Siapkan 10 butir kelereng atau tutup botol di rumah. Tutor atau orang tua menyebutkan
           sebuah angka, dan anak memasukkan benda sebanyak itu ke dalam mangkuk sambil bernyanyi.
@@ -530,9 +531,7 @@ function SubBabA({ kelas, kelamin }: { kelas: string; kelamin?: KelaminGuru }) {
       </KartuBingkai>
 
       <KartuBingkai>
-        <p className="text-center text-sm font-black tracking-wide text-[#1C01A5]">
-          Kartu D · Poin penting
-        </p>
+        <JudulKartu anak="Point Penting" />
         <Poin anak="Menghitung itu seru! Selalu coret atau tandai benda yang sudah kamu hitung dengan pensilmu agar tidak dihitung dua kali!" />
       </KartuBingkai>
     </>
@@ -546,7 +545,7 @@ function SubBabB({ kelas, kelamin }: { kelas: string; kelamin?: KelaminGuru }) {
     <>
       <KartuBingkai>
         <Kepala kartu={kartu} kelas={kelas} kelamin={kelamin} ikon="🛍️🐒🐰" />
-        <LabelMini anak="Kartu A · Naskah bergambar" />
+        <JudulKartu anak="Materi" />
         <p className="mt-2 text-3xl" aria-hidden>
           🐒🍌🍌🍌🍌 🐰🥕🥕
         </p>
@@ -573,8 +572,8 @@ function SubBabB({ kelas, kelamin }: { kelas: string; kelamin?: KelaminGuru }) {
       </KartuBingkai>
 
       <KartuBingkai>
+        <JudulKartu anak="Infografis" />
         <InfografisTabel
-          judul="Membandingkan Benda"
           kepala={["Gambar", "Kata", "Artinya"]}
           baris={[
             ["🍊🍊🍊🍊", "Lebih banyak", "4 jeruk lebih banyak dari 2 jeruk"],
@@ -635,9 +634,7 @@ function SubBabB({ kelas, kelamin }: { kelas: string; kelamin?: KelaminGuru }) {
       </KartuBingkai>
 
       <KartuBingkai>
-        <p className="text-center text-sm font-black tracking-wide text-[#1C01A5]">
-          Kartu C · Detektif Tangan Timbangan ⚖️
-        </p>
+        <JudulKartu anak="Kegiatan" />
         <p className="mt-3 text-sm font-semibold leading-relaxed text-slate-700">
           Ambil mainan di tangan kanan sebanyak 5 buah, dan tangan kiri sebanyak 2 buah. Rasakan
           tangan yang memegang benda lebih banyak.
@@ -657,6 +654,7 @@ function SubBabB({ kelas, kelamin }: { kelas: string; kelamin?: KelaminGuru }) {
       </KartuBingkai>
 
       <KartuBingkai>
+        <JudulKartu anak="Point Penting" />
         <Poin anak="Ingat! Kata sama banyak hanya dipakai jika angka jumlah kedua benda kembar atau persis sama!" />
       </KartuBingkai>
     </>
@@ -670,7 +668,7 @@ function SubBabC({ kelas, kelamin }: { kelas: string; kelamin?: KelaminGuru }) {
     <>
       <KartuBingkai>
         <Kepala kartu={kartu} kelas={kelas} kelamin={kelamin} ikon="🏃🐒" />
-        <LabelMini anak="Kartu A · Naskah bergambar" />
+        <JudulKartu anak="Materi" />
         <p className="mt-2 text-sm font-semibold text-slate-700">
           Kiko berdiri di anak tangga paling bawah (angka 1), bersiap melompat naik ke atas pohon.
         </p>
@@ -706,8 +704,8 @@ function SubBabC({ kelas, kelamin }: { kelas: string; kelamin?: KelaminGuru }) {
       </KartuBingkai>
 
       <KartuBingkai>
+        <JudulKartu anak="Infografis" />
         <InfografisTabel
-          judul="Lompatan Angka Maju dan Mundur"
           kepala={["Arah", "Urutan", "Artinya"]}
           baris={[
             ["🏃 Maju", "1 → 2 → 3 → 4 → 5 → 6 → 7", "Makin besar"],
@@ -772,9 +770,7 @@ function SubBabC({ kelas, kelamin }: { kelas: string; kelamin?: KelaminGuru }) {
       </KartuBingkai>
 
       <KartuBingkai>
-        <p className="text-center text-sm font-black tracking-wide text-[#1C01A5]">
-          Kartu C · Kangaroo Melompat Tangga 🦘
-        </p>
+        <JudulKartu anak="Kegiatan" />
         <p className="mt-3 text-sm font-semibold leading-relaxed text-slate-700">
           Berdiri di lantai rumah. Lompat ke depan 3 kali sambil berhitung maju (1, 2, 3). Lalu
           melompat mundur ke belakang 3 kali sambil berhitung mundur (3, 2, 1).
@@ -794,6 +790,7 @@ function SubBabC({ kelas, kelamin }: { kelas: string; kelamin?: KelaminGuru }) {
       </KartuBingkai>
 
       <KartuBingkai>
+        <JudulKartu anak="Point Penting" />
         <Poin anak="Hitung maju itu seperti menambah mainan. Hitung mundur itu seperti mainanmu berkurang. Trik ini akan membantumu belajar penjumlahan nanti!" />
       </KartuBingkai>
     </>
@@ -807,7 +804,7 @@ function SubBabD({ kelas, kelamin }: { kelas: string; kelamin?: KelaminGuru }) {
     <>
       <KartuBingkai>
         <Kepala kartu={kartu} kelas={kelas} kelamin={kelamin} ikon="🧩🐰" />
-        <LabelMini anak="Kartu A · Naskah bergambar" />
+        <JudulKartu anak="Materi" />
         <p className="mt-2 text-sm font-semibold text-slate-700">
           Zuzi memegang 5 butir permen di mangkuk besar, lalu membaginya ke dua kantong kecil.
         </p>
@@ -843,8 +840,8 @@ function SubBabD({ kelas, kelamin }: { kelas: string; kelamin?: KelaminGuru }) {
       </KartuBingkai>
 
       <KartuBingkai>
+        <JudulKartu anak="Infografis" />
         <InfografisTabel
-          judul="Pasangan Bilangan"
           kepala={["Angka utama", "Pasangan", "Cek"]}
           baris={[["5", "3 dan 2", "3 + 2 = 5"]]}
         />
@@ -904,9 +901,7 @@ function SubBabD({ kelas, kelamin }: { kelas: string; kelamin?: KelaminGuru }) {
       </KartuBingkai>
 
       <KartuBingkai>
-        <p className="text-center text-sm font-black tracking-wide text-[#1C01A5]">
-          Kartu C · Misi Pecah Pasukan Kelereng 🔮
-        </p>
+        <JudulKartu anak="Kegiatan" />
         <p className="mt-3 text-sm font-semibold leading-relaxed text-slate-700">
           Ambil 6 butir kelereng atau batu kecil. Pecah menjadi dua kelompok, misalnya kiri 4 dan
           kanan 2.
@@ -926,6 +921,7 @@ function SubBabD({ kelas, kelamin }: { kelas: string; kelamin?: KelaminGuru }) {
       </KartuBingkai>
 
       <KartuBingkai>
+        <JudulKartu anak="Point Penting" />
         <Poin anak="Setiap angka punya banyak pasangan rahasia! Berlatihlah menekuk jari tangan untuk menemukan semua pasangan angka sampai 10 dengan cepat!" />
       </KartuBingkai>
     </>
