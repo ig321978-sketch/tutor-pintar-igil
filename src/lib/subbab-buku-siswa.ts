@@ -75,10 +75,10 @@ const SUBBAB_BUKU_SISWA: Record<string, Record<string, Record<string, string[]>>
         "Poin penting dan lembar evaluasi",
       ],
       "Bab 4: Mengenal Bentuk": [
-        "Membandingkan bentuk benda di kelas",
-        "Mengenali kubus, balok, bola, dan tabung",
-        "Meraba dan berburu bentuk ruang",
-        "Mengisi evaluasi bentuk ruang",
+        "Petualangan bentuk di rumah nenek",
+        "Kenalan dengan keluarga bentuk",
+        "Kota bentuk",
+        "Poin penting dan lembar evaluasi",
       ],
       "Bab 5: Ayo Membilang sampai dengan 20": [
         "Menghitung lanjut setelah 10",
