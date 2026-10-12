@@ -49,12 +49,28 @@ function KartuBingkai({ children }: { children: ReactNode }) {
   );
 }
 
+const WARNA_DIALOG: Record<string, string> = {
+  Lala: "border-[#DB2777]/20 bg-[#FDF2F8]",
+  Bima: "border-[#2563EB]/20 bg-[#EFF6FF]",
+  Raka: "border-[#7C3AED]/25 bg-[#F5F3FF]",
+  Kepi: "border-[#F0AB00] bg-[#FFF8E8]",
+};
+
 function Dialog({ nama, anak }: { nama: string; anak: string }) {
+  const warna = WARNA_DIALOG[nama] ?? "border-[#1C01A5]/15 bg-[#F8F7FF]";
   return (
-    <p className="rounded-2xl bg-[#F8F7FF] px-4 py-3 text-sm font-semibold leading-relaxed text-slate-700">
-      <span className="font-black text-[#1C01A5]">{nama}: </span>
-      {anak}
-    </p>
+    <article className={`rounded-2xl border-2 px-4 py-3 ${warna}`}>
+      <p className="text-xs font-black uppercase tracking-wide text-[#1C01A5]">{nama}</p>
+      <p className="mt-1 text-sm font-semibold leading-relaxed text-slate-700">{anak}</p>
+    </article>
+  );
+}
+
+function IkonUlang({ ikon, jumlah, ukuran = "text-2xl" }: { ikon: string; jumlah: number; ukuran?: string }) {
+  return (
+    <span className={`${ukuran} leading-relaxed tracking-tight`} aria-hidden>
+      {Array.from({ length: jumlah }, () => ikon).join(" ")}
+    </span>
   );
 }
 
@@ -683,42 +699,57 @@ export default function NaskahMtk1Bab2({
   const kuis = useKuisMateri();
 
   return (
-    <div className="space-y-6">
+    <div className="space-y-5">
       <KartuBingkai>
         <p className="text-center text-4xl" aria-hidden>
           🏖️🦀🐚
         </p>
-        <h4 className="mt-3 text-center text-lg font-black text-[#1C01A5] sm:text-xl">{kartuA.judul}</h4>
+        <h4 className="mt-3 text-center text-lg font-black tracking-wide text-[#1C01A5] sm:text-xl">{kartuA.judul}</h4>
         <p className="mt-1 text-center text-sm font-bold text-[#1C01A5]/70">Penjumlahan sampai dengan 10</p>
         <div className="mt-4">
           <TombolVoiceMateriPai1 kelas={kelas} kelamin={kelamin} cuplikan={cuplikanDariNaskah(kartuA.voice, 2_000, 3_000)} />
         </div>
         <div className="mt-4 rounded-2xl border-2 border-[#F0AB00] bg-[#FFF8E8] px-4 py-3">
           <p className="text-sm font-black text-[#1C01A5]">Tujuan Pembelajaran</p>
-          <p className="mt-2 text-sm font-semibold text-slate-700">
-            Siswa bisa menggabungkan dua kelompok benda, memakai simbol + dan =, dan menyelesaikan soal cerita penjumlahan sampai 10.
-          </p>
+          <p className="mt-2 text-sm font-semibold text-slate-700">Setelah belajar, siswa dapat:</p>
+          <ul className="mt-2 list-disc space-y-1 pl-5 text-sm font-semibold text-slate-700">
+            <li>Menggabungkan dua kelompok benda.</li>
+            <li>Memakai simbol + dan =.</li>
+            <li>Menyelesaikan soal cerita penjumlahan sampai 10.</li>
+          </ul>
         </div>
         <div className="mt-4 space-y-3">
-          <article className="rounded-2xl border-2 border-sky-300 bg-sky-50 px-4 py-3">
-            <p className="text-xs font-black uppercase text-[#0C4A6E]">Adegan 1 · Tiba di pantai</p>
-            <p className="mt-2 text-2xl">🌊 ⛱️ 🕊️ 🪣</p>
+          <article className="rounded-2xl border-2 border-[#0284C7]/25 bg-[#F0F9FF] px-4 py-3">
+            <p className="text-xs font-black uppercase tracking-wide text-[#0C4A6E]">Adegan 1 · Tiba di pantai</p>
+            <p className="mt-2 text-center text-4xl" aria-hidden>
+              🌊 ⛱️ 🕊️ 🪣
+            </p>
             <p className="mt-2 text-sm font-semibold text-slate-700">Pantai biru, pasir kuning, dan payung merah putih. Tiga anak membawa ember.</p>
           </article>
           <Dialog nama="Lala" anak="Hore, kita sampai di pantai!" />
           <Dialog nama="Bima" anak="Ayo kita cari kerang!" />
           <Dialog nama="Kepi" anak="Cik-cik! Aku bantu cari, ya!" />
-          <article className="rounded-2xl border-2 border-amber-300 bg-amber-50 px-4 py-3">
-            <p className="text-xs font-black uppercase text-[#92400E]">Adegan 2 · Menggabungkan kerang</p>
-            <p className="mt-2 text-sm font-bold text-[#1C01A5]">Ember Lala 🐚🐚🐚</p>
-            <p className="text-sm font-bold text-[#1C01A5]">Ember Bima 🐚🐚</p>
+          <article className="rounded-2xl border-2 border-[#F0AB00] bg-[#FFF8E8] px-4 py-3">
+            <p className="text-xs font-black uppercase tracking-wide text-[#92400E]">Adegan 2 · Menggabungkan kerang</p>
+            <div className="mt-2 grid gap-3 sm:grid-cols-2">
+              <div>
+                <p className="text-xs font-black uppercase text-[#92400E]">Ember Lala</p>
+                <IkonUlang ikon="🐚" jumlah={3} ukuran="text-3xl" />
+              </div>
+              <div>
+                <p className="text-xs font-black uppercase text-[#92400E]">Ember Bima</p>
+                <IkonUlang ikon="🐚" jumlah={2} ukuran="text-3xl" />
+              </div>
+            </div>
           </article>
           <Dialog nama="Lala" anak="Kerangku ada 3." />
           <Dialog nama="Bima" anak="Kerangku ada 2." />
           <Dialog nama="Raka" anak="Kalau digabung, jadi berapa?" />
           <p className="text-center text-sm font-bold text-[#1C01A5]">Satu, dua, tiga, empat, lima!</p>
-          <p className="text-center text-2xl font-black text-[#1C01A5]">🐚🐚🐚 + 🐚🐚 = 🐚🐚🐚🐚🐚</p>
-          <p className="text-center text-3xl font-black text-[#1C01A5]">3 + 2 = 5</p>
+          <p className="text-center text-2xl">
+            <IkonUlang ikon="🐚" jumlah={3} /> + <IkonUlang ikon="🐚" jumlah={2} /> = <IkonUlang ikon="🐚" jumlah={5} />
+          </p>
+          <p className="text-center text-4xl font-black text-[#1C01A5]">3 + 2 = 5</p>
           <Dialog nama="Kepi" anak="Jadi 5 kerang! Menggabungkan itu namanya menjumlahkan!" />
           <article className="rounded-2xl border-2 border-[#7C3AED]/30 bg-[#F5F3FF] px-4 py-3">
             <p className="text-xs font-black uppercase text-[#5B21B6]">Adegan 3 · Kenalan dengan simbol</p>
@@ -729,19 +760,26 @@ export default function NaskahMtk1Bab2({
           <Dialog nama="Raka" anak="Kalau dua garis itu?" />
           <Dialog nama="Lala" anak="Itu tanda sama dengan. Artinya hasilnya!" />
           <article className="rounded-2xl border-2 border-[#F0AB00] bg-[#FFF8E8] px-4 py-3">
-            <p className="text-xs font-black uppercase text-[#92400E]">Adegan 4 · Istana pasir</p>
-            <p className="mt-2 text-2xl">🏰 🚩🚩🚩🚩 + 🚩🚩🚩</p>
+            <p className="text-xs font-black uppercase tracking-wide text-[#92400E]">Adegan 4 · Istana pasir</p>
+            <p className="mt-2 text-center text-3xl" aria-hidden>
+              🏰
+            </p>
+            <p className="text-center text-2xl">
+              <IkonUlang ikon="🚩" jumlah={4} /> + <IkonUlang ikon="🚩" jumlah={3} />
+            </p>
           </article>
           <Dialog nama="Bima" anak="Istanaku punya 4 bendera." />
           <Dialog nama="Raka" anak="Aku tambah 3 bendera, ya!" />
           <Dialog nama="Kepi" anak="Sekarang ada berapa bendera?" />
           <p className="text-center text-sm font-bold text-[#1C01A5]">Lima… enam… tujuh!</p>
-          <p className="text-center text-3xl font-black text-[#1C01A5]">4 + 3 = 7</p>
+          <p className="text-center text-4xl font-black text-[#1C01A5]">4 + 3 = 7</p>
           <p className="rounded-2xl bg-[#F0FDF4] px-4 py-3 text-sm font-extrabold text-[#166534]">Horeee! Menjumlahkan itu seru!</p>
         </div>
         <div className="mt-6 border-t-2 border-[#1C01A5]/10 pt-5">
           <p className="text-base font-extrabold text-[#1C01A5]">QUIZ:</p>
-          <p className="text-2xl">🦀🦀 + 🦀🦀🦀🦀</p>
+          <p className="text-center text-2xl">
+            <IkonUlang ikon="🦀" jumlah={2} /> + <IkonUlang ikon="🦀" jumlah={4} />
+          </p>
           <SoalRekamSuara
             id={idKuis("A", 0)}
             pertanyaan="Ada 2 kepiting, lalu datang 4 kepiting lagi. Jadi berapa semuanya?"
@@ -773,21 +811,25 @@ export default function NaskahMtk1Bab2({
         <p className="text-center text-4xl" aria-hidden>
           ➕🧺🦘
         </p>
-        <h4 className="mt-3 text-center text-lg font-black text-[#1C01A5] sm:text-xl">{kartuB.judul}</h4>
+        <h4 className="mt-3 text-center text-lg font-black tracking-wide text-[#1C01A5] sm:text-xl">{kartuB.judul}</h4>
         <div className="mt-4">
           <TombolVoiceMateriPai1 kelas={kelas} kelamin={kelamin} cuplikan={cuplikanDariNaskah(kartuB.voice, 2_000, 3_000)} />
         </div>
         <div className="mt-4 space-y-4">
           <article className="rounded-2xl border-2 border-emerald-300 bg-emerald-50 px-4 py-3">
             <p className="text-sm font-black text-[#166534]">Poin 1 · Menjumlahkan = menggabungkan</p>
-            <p className="mt-2 text-2xl">🍎🍎 + 🍎🍎🍎 = 🍎🍎🍎🍎🍎</p>
+            <p className="mt-2 text-center text-2xl">
+              <IkonUlang ikon="🍎" jumlah={2} /> + <IkonUlang ikon="🍎" jumlah={3} /> = <IkonUlang ikon="🍎" jumlah={5} />
+            </p>
             <p className="text-2xl font-black text-[#1C01A5]">2 + 3 = 5</p>
             <p className="mt-2 text-sm font-semibold text-slate-700">2 dan 3 adalah benda yang digabung. + artinya digabung. = artinya hasilnya. 5 adalah jumlah semuanya.</p>
             <p className="text-sm font-bold text-[#1C01A5]">Dibaca: dua tambah tiga sama dengan lima.</p>
           </article>
           <article className="rounded-2xl border-2 border-sky-300 bg-sky-50 px-4 py-3">
             <p className="text-sm font-black text-[#0C4A6E]">Poin 2 · Hitung semua</p>
-            <p className="mt-2 text-2xl">⭐⭐⭐⭐ + ⭐⭐</p>
+            <p className="mt-2 text-center text-2xl">
+              <IkonUlang ikon="⭐" jumlah={4} /> + <IkonUlang ikon="⭐" jumlah={2} />
+            </p>
             <p className="mt-2 text-sm font-semibold text-slate-700">Gabungkan, hitung 1 sampai 6. Angka terakhir adalah hasilnya. 4 + 2 = 6.</p>
           </article>
           <article className="rounded-2xl border-2 border-amber-300 bg-amber-50 px-4 py-3">
@@ -802,8 +844,12 @@ export default function NaskahMtk1Bab2({
           </article>
           <article className="rounded-2xl border-2 border-rose-300 bg-rose-50 px-4 py-3">
             <p className="text-sm font-black text-[#9F1239]">Poin 5 · Dibalik, hasilnya tetap sama</p>
-            <p className="mt-2 text-2xl">🍩🍩🍩 + 🍩 = 4</p>
-            <p className="text-2xl">🍩 + 🍩🍩🍩 = 4</p>
+            <p className="mt-2 text-center text-2xl">
+              <IkonUlang ikon="🍩" jumlah={3} /> + <IkonUlang ikon="🍩" jumlah={1} /> = 4
+            </p>
+            <p className="text-center text-2xl">
+              <IkonUlang ikon="🍩" jumlah={1} /> + <IkonUlang ikon="🍩" jumlah={3} /> = 4
+            </p>
             <p className="text-sm font-semibold text-slate-700">3 + 1 = 4 dan 1 + 3 = 4. Mulai dari angka yang lebih besar supaya lebih cepat.</p>
           </article>
           <article className="rounded-2xl border-2 border-[#1C01A5]/15 bg-white px-4 py-3">
@@ -864,7 +910,11 @@ export default function NaskahMtk1Bab2({
             pertanyaan="Bima punya 3 bola. Raka punya 5 bola. Tulis kalimat matematika dan hasilnya."
             alias={kumpulkanAlias(["3 + 5 = 8", "3+5=8", "5 + 3 = 8", "5+3=8"])}
             konteks="Tiga tambah lima sama dengan delapan."
-            visual={<p className="text-center text-2xl">⚽⚽⚽ + ⚽⚽⚽⚽⚽</p>}
+            visual={
+              <p className="text-center text-2xl">
+                <IkonUlang ikon="⚽" jumlah={3} /> + <IkonUlang ikon="⚽" jumlah={5} />
+              </p>
+            }
           />
         </div>
       </KartuBingkai>
@@ -873,7 +923,7 @@ export default function NaskahMtk1Bab2({
         <p className="text-center text-4xl" aria-hidden>
           🚢💎🦀
         </p>
-        <h4 className="mt-3 text-center text-lg font-black text-[#1C01A5] sm:text-xl">{kartuC.judul}</h4>
+        <h4 className="mt-3 text-center text-lg font-black tracking-wide text-[#1C01A5] sm:text-xl">{kartuC.judul}</h4>
         <div className="mt-4">
           <TombolVoiceMateriPai1 kelas={kelas} kelamin={kelamin} cuplikan={cuplikanDariNaskah(kartuC.voice, 2_000, 3_000)} />
         </div>
@@ -886,7 +936,7 @@ export default function NaskahMtk1Bab2({
         <p className="text-center text-4xl" aria-hidden>
           🔑📝
         </p>
-        <h4 className="mt-3 text-center text-lg font-black text-[#1C01A5] sm:text-xl">{kartuD.judul}</h4>
+        <h4 className="mt-3 text-center text-lg font-black tracking-wide text-[#1C01A5] sm:text-xl">{kartuD.judul}</h4>
         <div className="mt-4">
           <TombolVoiceMateriPai1 kelas={kelas} kelamin={kelamin} cuplikan={cuplikanDariNaskah(kartuD.voice, 2_000, 3_000)} />
         </div>

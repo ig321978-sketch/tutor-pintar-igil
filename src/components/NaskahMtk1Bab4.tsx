@@ -12,7 +12,7 @@ import { kelasTombolHasilKuis, statusDariPilihan, type StatusJawabanKuis } from 
 import { idKuisKartuResmi, idKuisTulisKartu } from "@/lib/kuis-materi";
 import { MODUL_MTK1_BAB4 } from "@/lib/modul-resmi-mtk-1-bab4";
 import { jawabanTulisMemuatAlias } from "@/lib/nilai-kuis-tulis";
-import { cuplikanDariNaskah } from "@/lib/naskah-voice-pai-1-bab2";
+import { cuplikanDariNaskah, type CuplikanVoiceMateri } from "@/lib/naskah-voice-pai-1-bab2";
 import { bacaProgres } from "@/lib/progres";
 import type { KelaminGuru } from "@/lib/guru";
 
@@ -34,12 +34,57 @@ function KartuBingkai({ children }: { children: ReactNode }) {
   );
 }
 
+const WARNA_DIALOG: Record<string, string> = {
+  Sasa: "border-[#DB2777]/20 bg-[#FDF2F8]",
+  Bimo: "border-[#2563EB]/20 bg-[#EFF6FF]",
+  "Nenek Ani": "border-[#F0AB00] bg-[#FFF8E8]",
+  "Sasa dan Bimo": "border-[#16A34A]/25 bg-[#F0FDF4]",
+};
+
 function Dialog({ nama, anak }: { nama: string; anak: string }) {
+  const warna = WARNA_DIALOG[nama] ?? "border-[#1C01A5]/15 bg-[#F8F7FF]";
   return (
-    <p className="rounded-2xl bg-[#F8F7FF] px-4 py-3 text-sm font-semibold leading-relaxed text-slate-700">
-      <span className="font-black text-[#1C01A5]">{nama}: </span>
-      {anak}
-    </p>
+    <article className={`rounded-2xl border-2 px-4 py-3 ${warna}`}>
+      <p className="text-xs font-black uppercase tracking-wide text-[#1C01A5]">{nama}</p>
+      <p className="mt-1 text-sm font-semibold leading-relaxed text-slate-700">{anak}</p>
+    </article>
+  );
+}
+
+function IkonUlang({ ikon, jumlah, ukuran = "text-2xl" }: { ikon: string; jumlah: number; ukuran?: string }) {
+  return (
+    <span className={`${ukuran} leading-relaxed tracking-tight`} aria-hidden>
+      {Array.from({ length: jumlah }, () => ikon).join(" ")}
+    </span>
+  );
+}
+
+function KepalaKartu({
+  ikon,
+  judul,
+  anak,
+  kelas,
+  kelamin,
+  cuplikan,
+}: {
+  ikon: string;
+  judul: string;
+  anak?: string;
+  kelas?: string;
+  kelamin?: KelaminGuru;
+  cuplikan: CuplikanVoiceMateri[];
+}) {
+  return (
+    <>
+      <p className="text-center text-4xl" aria-hidden>
+        {ikon}
+      </p>
+      <h4 className="mt-3 text-center text-lg font-black tracking-wide text-[#1C01A5] sm:text-xl">{judul}</h4>
+      {anak ? <p className="mt-1 text-center text-sm font-bold text-[#1C01A5]/70">{anak}</p> : null}
+      <div className="mt-4">
+        <TombolVoiceMateriPai1 kelas={kelas} kelamin={kelamin} cuplikan={cuplikan} />
+      </div>
+    </>
   );
 }
 
@@ -232,39 +277,75 @@ function KartuA({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminGuru }) {
   const [suara, setSuara] = useState<StatusJawabanKuis>(null);
   return (
     <KartuBingkai>
-      <h3 className="text-xl font-black text-[#1C01A5]">{kartu.judul}</h3>
-      <p className="mt-2 text-sm font-semibold leading-relaxed text-slate-700">
-        Siswa mengamati benda di sekitarnya, lalu mengenali dan menamai segitiga, segi empat, lingkaran, kubus, dan balok.
-      </p>
-      <div className="mt-3">
-        <TombolVoiceMateriPai1 kelas={kelas} kelamin={kelamin} cuplikan={cuplikanDariNaskah(kartu.voice, 2000, 3000)} />
+      <KepalaKartu
+        ikon="🏠🔺🔍"
+        judul={kartu.judul}
+        anak="Mengenal Bentuk"
+        kelas={kelas}
+        kelamin={kelamin}
+        cuplikan={cuplikanDariNaskah(kartu.voice, 2_000, 3_000)}
+      />
+      <div className="mt-4 rounded-2xl border-2 border-[#F0AB00] bg-[#FFF8E8] px-4 py-3">
+        <p className="text-sm font-black text-[#1C01A5]">Tujuan Pembelajaran</p>
+        <p className="mt-2 text-sm font-semibold text-slate-700">Setelah belajar, siswa dapat:</p>
+        <ul className="mt-2 list-disc space-y-1 pl-5 text-sm font-semibold text-slate-700">
+          <li>Mengamati benda di sekitarnya.</li>
+          <li>Mengenali dan menamai segitiga, segi empat, dan lingkaran.</li>
+          <li>Mengenali dan menamai kubus dan balok.</li>
+        </ul>
       </div>
-      <div className="mt-4 rounded-[1.5rem] bg-gradient-to-br from-amber-100 via-yellow-50 to-orange-100 p-4">
-        <p className="text-sm font-black text-amber-800">Teras rumah Nenek 🔍</p>
-        <p className="mt-2 text-3xl" aria-hidden>🏠🔺 ☀️</p>
-      </div>
-      <div className="mt-4 grid gap-3">
+      <div className="mt-4 space-y-3">
+        <article className="rounded-2xl border-2 border-[#F0AB00] bg-[#FFF8E8] px-4 py-3">
+          <p className="text-xs font-black uppercase tracking-wide text-[#92400E]">Adegan 1 · Teras rumah Nenek</p>
+          <p className="mt-2 text-center text-4xl" aria-hidden>
+            🏠 ☀️
+          </p>
+          <p className="mt-2 text-sm font-semibold text-slate-700">Rumah kuning, atap segitiga merah, dan matahari bulat.</p>
+        </article>
         <Dialog nama="Nenek Ani" anak="Halo, Sasa! Halo, Bimo! Hari ini kita main detektif bentuk, yuk!" />
         <Dialog nama="Sasa" anak="Asyik! Apa itu bentuk, Nek?" />
         <Dialog nama="Nenek Ani" anak="Lihat atap rumah Nenek. Bentuknya apa?" />
         <Dialog nama="Bimo" anak="Ujungnya lancip! Sisinya ada 1, 2, 3!" />
         <Dialog nama="Nenek Ani" anak="Pintar! Itu namanya segitiga. Sisinya 3, sudutnya juga 3." />
-        <p className="rounded-2xl bg-rose-50 px-4 py-3 text-center text-2xl font-black text-rose-800">🔺 Segitiga · 3 sisi · 3 sudut</p>
+        <article className="rounded-2xl border-2 border-[#E23B3B]/25 bg-[#FFF1F2] px-4 py-3">
+          <p className="text-xs font-black uppercase text-[#9F1239]">Atap segitiga</p>
+          <p className="mt-2 text-center text-4xl" aria-hidden>
+            🔺
+          </p>
+          <p className="text-center text-sm font-black text-[#1C01A5]">3 sisi · 3 sudut</p>
+        </article>
+        <article className="rounded-2xl border-2 border-[#0284C7]/25 bg-[#F0F9FF] px-4 py-3">
+          <p className="text-xs font-black uppercase tracking-wide text-[#0C4A6E]">Adegan 2 · Ruang tamu</p>
+          <p className="mt-2 text-center text-4xl" aria-hidden>
+            ⏰ 🚪 🖼️
+          </p>
+        </article>
         <Dialog nama="Sasa" anak="Nek, jam dinding itu bulat! Tidak ada pojoknya." />
         <Dialog nama="Nenek Ani" anak="Betul! Itu lingkaran. Tidak punya sudut, bisa menggelinding." />
         <Dialog nama="Bimo" anak="Kalau bingkai foto ini, sisinya ada 4. Panjangnya sama semua!" />
         <Dialog nama="Nenek Ani" anak="Hebat! Itu persegi." />
         <Dialog nama="Sasa" anak="Pintu juga sisinya 4, tapi ada yang panjang, ada yang pendek." />
         <Dialog nama="Nenek Ani" anak="Itu persegi panjang. Persegi dan persegi panjang sama-sama segi empat." />
-        <p className="text-center text-3xl" aria-hidden>⏰ 🚪 🖼️</p>
+        <article className="rounded-2xl border-2 border-[#7C3AED]/25 bg-[#F5F3FF] px-4 py-3">
+          <p className="text-xs font-black uppercase tracking-wide text-[#5B21B6]">Adegan 3 · Dapur</p>
+          <p className="mt-2 text-center text-4xl" aria-hidden>
+            🎲 🧃
+          </p>
+        </article>
         <Dialog nama="Bimo" anak="Nek, dadu ini bisa dipegang. Tebal!" />
         <Dialog nama="Nenek Ani" anak="Benar. Dadu itu kubus. Semua sisinya persegi yang sama besar." />
         <Dialog nama="Sasa" anak="Kalau kotak susu? Bentuknya lebih panjang." />
         <Dialog nama="Nenek Ani" anak="Itu balok. Sisinya ada yang persegi panjang." />
         <Dialog nama="Sasa dan Bimo" anak="Yeay! Kita detektif bentuk!" />
-        <p className="text-sm font-bold text-amber-800">Lencana: Detektif Bentuk Datar dan Detektif Bangun Ruang.</p>
+        <p className="rounded-2xl bg-[#F0FDF4] px-4 py-3 text-sm font-extrabold text-[#166534]">
+          Lencana: Detektif Bentuk Datar dan Detektif Bangun Ruang.
+        </p>
       </div>
-      <div className="mt-4">
+      <div className="mt-6 border-t-2 border-[#1C01A5]/10 pt-5">
+        <p className="text-base font-extrabold text-[#1C01A5]">QUIZ:</p>
+        <p className="text-center text-4xl" aria-hidden>
+          ⏰
+        </p>
         <SoalRekamSuara
           id={idKuis("A", 0)}
           pertanyaan="Sasa melihat jam dinding di rumah Nenek. Jam itu bentuknya apa? Ayo sebutkan!"
@@ -295,22 +376,94 @@ function KartuB({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminGuru }) {
   const bentuk = ["Segitiga", "Lingkaran", "Kubus", "Balok"];
   return (
     <KartuBingkai>
-      <h3 className="text-xl font-black text-[#1C01A5]">{kartu.judul}</h3>
-      <div className="mt-3">
-        <TombolVoiceMateriPai1 kelas={kelas} kelamin={kelamin} cuplikan={cuplikanDariNaskah(kartu.voice, 2000, 3000)} />
+      <KepalaKartu
+        ikon="🔺🟦⚪"
+        judul={kartu.judul}
+        anak="Infografis: Kenalan dengan Keluarga Bentuk"
+        kelas={kelas}
+        kelamin={kelamin}
+        cuplikan={cuplikanDariNaskah(kartu.voice, 2_000, 3_000)}
+      />
+      <p className="mt-4 text-center text-sm font-black uppercase tracking-wide text-[#1C01A5]/70">Bentuk datar · pipih seperti kertas</p>
+      <div className="mt-3 overflow-hidden rounded-2xl border-4 border-[#F0AB00]">
+        <div className="grid grid-cols-3 bg-[#1C01A5] px-3 py-2 text-[10px] font-black uppercase text-white sm:text-xs">
+          <span>Bentuk</span>
+          <span>Sisi dan sudut</span>
+          <span>Contoh</span>
+        </div>
+        {[
+          ["🔺 Segitiga", "3 sisi, 3 sudut", "Atap, semangka"],
+          ["🟦 Segi empat", "4 sisi, 4 sudut", "Buku, pintu, papan tulis"],
+          ["⚪ Lingkaran", "0 sudut, bulat", "Koin, roda, piring"],
+        ].map((baris, i) => (
+          <div
+            key={baris[0]}
+            className={`grid grid-cols-3 items-center border-t border-[#F0AB00]/40 px-3 py-2 text-sm font-bold ${
+              i % 2 === 0 ? "bg-[#FFF7ED]" : "bg-[#F0FDF4]"
+            }`}
+          >
+            <span>{baris[0]}</span>
+            <span>{baris[1]}</span>
+            <span>{baris[2]}</span>
+          </div>
+        ))}
       </div>
-      <div className="mt-4 grid gap-3 text-sm font-semibold leading-relaxed text-slate-700">
-        <p className="rounded-2xl bg-sky-50 px-4 py-3">
-          Bentuk datar pipih seperti kertas. Segitiga: 3 sisi, 3 sudut, contoh atap dan semangka. Segi empat: 4 sisi, 4 sudut, contoh buku, pintu, dan papan tulis. Lingkaran: 0 sudut, bulat, contoh koin, roda, dan piring.
-        </p>
-        <p className="rounded-2xl bg-violet-50 px-4 py-3">
-          Bangun ruang tebal dan bisa dipegang. Kubus: 6 sisi, semua persegi sama besar, contoh dadu. Balok: 6 sisi, ada persegi panjang, contoh kotak susu, lemari, dan batu bata.
-        </p>
-        <p>Sentuh sisi segitiga satu per satu: 1, 2, 3. Segitiga = 3 sisi.</p>
-        <p>1 segitiga dan 1 persegi. Sisi segitiga 3, sisi persegi 4. 3 + 4 = 7.</p>
-        <p>Di meja ada dua dadu, satu kardus, satu bola, dan satu kotak susu. Kubusnya dua, yaitu kedua dadu.</p>
-        <p>2 persegi. Sudutnya 4 + 4 = 8.</p>
-        <p className="font-black text-[#1C01A5]">Rumus cepat: segitiga 3, segi empat 4, lingkaran 0 sudut, kubus dan balok 6 sisi.</p>
+      <p className="mt-4 text-center text-sm font-black uppercase tracking-wide text-[#1C01A5]/70">Bangun ruang · tebal, bisa dipegang</p>
+      <div className="mt-3 overflow-hidden rounded-2xl border-4 border-[#F0AB00]">
+        <div className="grid grid-cols-3 bg-[#1C01A5] px-3 py-2 text-[10px] font-black uppercase text-white sm:text-xs">
+          <span>Bentuk</span>
+          <span>Ciri</span>
+          <span>Contoh</span>
+        </div>
+        {[
+          ["🧊 Kubus", "6 sisi, semua persegi sama", "Dadu, rubik"],
+          ["📦 Balok", "6 sisi, ada persegi panjang", "Kotak susu, lemari, bata"],
+        ].map((baris, i) => (
+          <div
+            key={baris[0]}
+            className={`grid grid-cols-3 items-center border-t border-[#F0AB00]/40 px-3 py-2 text-sm font-bold ${
+              i % 2 === 0 ? "bg-[#F5F3FF]" : "bg-[#F0F9FF]"
+            }`}
+          >
+            <span>{baris[0]}</span>
+            <span>{baris[1]}</span>
+            <span>{baris[2]}</span>
+          </div>
+        ))}
+      </div>
+      <div className="mt-4 grid gap-3">
+        <article className="rounded-2xl border-2 border-[#E23B3B]/25 bg-[#FFF1F2] px-4 py-3">
+          <p className="text-sm font-black text-[#9F1239]">Menghitung sisi</p>
+          <p className="mt-2 text-center text-4xl" aria-hidden>
+            🔺
+          </p>
+          <p className="mt-2 text-sm font-semibold text-slate-700">Sentuh sisi segitiga satu per satu: 1, 2, 3. Segitiga = 3 sisi.</p>
+        </article>
+        <article className="rounded-2xl border-2 border-[#0284C7]/25 bg-[#F0F9FF] px-4 py-3">
+          <p className="text-sm font-black text-[#0C4A6E]">Menjumlahkan sisi</p>
+          <p className="mt-2 text-center text-3xl" aria-hidden>
+            🔺 + 🟦
+          </p>
+          <p className="mt-2 text-sm font-semibold text-slate-700">1 segitiga dan 1 persegi. Sisi segitiga 3, sisi persegi 4. 3 + 4 = 7.</p>
+        </article>
+        <article className="rounded-2xl border-2 border-[#F0AB00] bg-[#FFF8E8] px-4 py-3">
+          <p className="text-sm font-black text-[#92400E]">Menghitung benda</p>
+          <p className="mt-2 text-center text-3xl" aria-hidden>
+            🎲 🎲 📦 ⚽ 🧃
+          </p>
+          <p className="mt-2 text-sm font-semibold text-slate-700">Di meja ada dua dadu, satu kardus, satu bola, dan satu kotak susu. Kubusnya dua, yaitu kedua dadu.</p>
+        </article>
+        <article className="rounded-2xl border-2 border-[#7C3AED]/25 bg-[#F5F3FF] px-4 py-3">
+          <p className="text-sm font-black text-[#5B21B6]">Menghitung sudut</p>
+          <p className="mt-2 text-center text-3xl" aria-hidden>
+            🟦 🟦
+          </p>
+          <p className="mt-2 text-sm font-semibold text-slate-700">2 persegi. Sudutnya 4 + 4 = 8.</p>
+        </article>
+        <article className="rounded-2xl border-2 border-[#0F766E] bg-[#F0FDFA] px-4 py-4">
+          <p className="text-sm font-black text-[#0F766E]">Rumus cepat</p>
+          <p className="mt-2 text-sm font-semibold text-slate-700">Segitiga 3, segi empat 4, lingkaran 0 sudut, kubus dan balok 6 sisi.</p>
+        </article>
       </div>
       <div className="mt-4 grid gap-3">
         <KuisCocok
@@ -350,12 +503,18 @@ function KartuB({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminGuru }) {
           umpan="Bingkai foto pipih. Bentuknya persegi, bukan bangun ruang."
           salah="Bangun ruang tebal dan bisa dipegang."
         />
-        <SoalRekamSuara
-          id={idKuis("B", 3)}
-          pertanyaan="Hitung dengan suaramu! Ada 2 segitiga. Berapa jumlah semua sisinya?"
-          periksa={(transkrip) => jawabanTulisMemuatAlias(transkrip, ["enam", "6"])}
-          petunjuk="Ucapkan jumlah sisinya."
-        />
+        <div className="border-t-2 border-[#1C01A5]/10 pt-5">
+          <p className="text-base font-extrabold text-[#1C01A5]">QUIZ:</p>
+          <div className="text-center">
+            <IkonUlang ikon="🔺" jumlah={2} ukuran="text-3xl" />
+          </div>
+          <SoalRekamSuara
+            id={idKuis("B", 3)}
+            pertanyaan="Hitung dengan suaramu! Ada 2 segitiga. Berapa jumlah semua sisinya?"
+            periksa={(transkrip) => jawabanTulisMemuatAlias(transkrip, ["enam", "6"])}
+            petunjuk="Ucapkan jumlah sisinya."
+          />
+        </div>
         <KuisTulisKartu
           id={idKuisTulisKartu(ID, "B")}
           pertanyaan="Tuliskan angka jumlah sudut pada gambar ini."
@@ -426,13 +585,20 @@ function KotaBentuk({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminGuru 
   };
   return (
     <KartuBingkai>
-      <h3 className="text-xl font-black text-[#1C01A5]">{kartu.judul}</h3>
-      <p className="mt-2 text-sm font-semibold leading-relaxed text-slate-700">
-        Wali Kota Kelinci memakai topi di tanah hijau. Kota belum punya rumah. Bantulah dengan bentuk yang tepat.
-      </p>
-      <div className="mt-3">
-        <TombolVoiceMateriPai1 kelas={kelas} kelamin={kelamin} cuplikan={cuplikanDariNaskah(kartu.voice, 2000, 3000)} />
-      </div>
+      <KepalaKartu
+        ikon="🏙️🐰⭐"
+        judul={kartu.judul}
+        anak="Bangun kota dengan bentuk yang tepat"
+        kelas={kelas}
+        kelamin={kelamin}
+        cuplikan={cuplikanDariNaskah(kartu.voice, 2_000, 3_000)}
+      />
+      <article className="mt-4 rounded-2xl border-2 border-[#16A34A]/25 bg-[#F0FDF4] px-4 py-3">
+        <p className="text-xs font-black uppercase tracking-wide text-[#166534]">Cerita: Kota Bentuk</p>
+        <p className="mt-2 text-sm font-semibold leading-relaxed text-slate-700">
+          Wali Kota Kelinci memakai topi di tanah hijau. Kota belum punya rumah. Bantulah dengan bentuk yang tepat.
+        </p>
+      </article>
       <p className="mt-4 rounded-2xl bg-amber-50 px-4 py-3 text-lg font-black text-amber-900">Koin ⭐ {koin}</p>
       <p className="mt-2 text-sm font-semibold text-slate-600">
         Segitiga 1⭐, persegi 2⭐, lingkaran 1⭐, balok 3⭐. Bangunan yang tepat mendapat bonus 2⭐.
@@ -670,11 +836,15 @@ function LembarEvaluasi({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminG
   const kartu = MODUL_MTK1_BAB4.kartu[3];
   return (
     <KartuBingkai>
-      <h3 className="text-xl font-black text-[#1C01A5]">{kartu.judul}</h3>
-      <div className="mt-3">
-        <TombolVoiceMateriPai1 kelas={kelas} kelamin={kelamin} cuplikan={cuplikanDariNaskah(kartu.voice, 2000, 3000)} />
-      </div>
-      <ul className="mt-4 grid gap-2 text-sm font-semibold leading-relaxed text-slate-700">
+      <KepalaKartu
+        ikon="📝⭐"
+        judul={kartu.judul}
+        anak="Tantangan Para Juara · Mengenal Bentuk"
+        kelas={kelas}
+        kelamin={kelamin}
+        cuplikan={cuplikanDariNaskah(kartu.voice, 2_000, 3_000)}
+      />
+      <ul className="mt-4 list-disc space-y-1 pl-5 text-sm font-semibold text-slate-700">
         <li>Segitiga, tiga sisi, tiga sudut.</li>
         <li>Segi empat, empat sisi, empat sudut.</li>
         <li>Lingkaran bulat, tanpa sudut, bisa menggelinding.</li>
@@ -682,13 +852,24 @@ function LembarEvaluasi({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminG
         <li>Balok seperti kotak susu, lebih panjang.</li>
         <li>Sentuh setiap sisi sambil berhitung. Pipih berarti bentuk datar. Tebal berarti bangun ruang.</li>
       </ul>
-      <p className="mt-3 rounded-2xl bg-amber-50 px-4 py-3 text-sm font-bold text-amber-950">
+      <p className="mt-4 rounded-2xl bg-[#FFF8E8] px-4 py-3 text-sm font-extrabold text-[#1C01A5]">
         Tiga segitiga, empat segi empat. Bulat lingkaran, menggelinding cepat. Dadu itu kubus, kotak susu balok. Ayo cari bentuk, di sekitar pojok.
       </p>
-      <div className="mt-4 rounded-2xl bg-orange-50 px-4 py-3 text-sm font-bold text-orange-950">
-        <p>Nama: {nama || "____________"} · Kelas: 1 · Skor: {skor}/10</p>
-        <p className="mt-1">{lencana}</p>
+      <div className="mt-4 grid gap-3 rounded-2xl border-2 border-dashed border-[#1C01A5]/25 bg-[#FFFDF6] p-4 sm:grid-cols-3">
+        <p className="text-xs font-black uppercase text-[#1C01A5]">
+          Nama
+          <span className="mt-1 block rounded-xl border-2 border-[#1C01A5]/20 px-3 py-2 text-sm">{nama || "Siswa"}</span>
+        </p>
+        <p className="text-xs font-black uppercase text-[#1C01A5]">
+          Kelas
+          <span className="mt-1 block rounded-xl border-2 border-[#1C01A5]/20 px-3 py-2 text-sm">1</span>
+        </p>
+        <p className="text-xs font-black uppercase text-[#1C01A5]">
+          Skor
+          <span className="mt-1 block rounded-xl border-2 border-[#1C01A5]/20 px-3 py-2 text-sm">⭐ {skor} / 10</span>
+        </p>
       </div>
+      <p className="mt-3 rounded-2xl bg-[#F0FDF4] px-4 py-3 text-sm font-extrabold text-[#166534]">{lencana}</p>
       <div className="mt-4 grid gap-3">
         <SoalRekamSuara
           id={idKuis("D", 0)}
@@ -851,7 +1032,7 @@ export default function NaskahMtk1Bab4({
   kelamin?: KelaminGuru;
 }) {
   return (
-    <div className="grid gap-4">
+    <div className="space-y-5">
       <KartuA kelas={kelas} kelamin={kelamin} />
       <KartuB kelas={kelas} kelamin={kelamin} />
       <KotaBentuk kelas={kelas} kelamin={kelamin} />

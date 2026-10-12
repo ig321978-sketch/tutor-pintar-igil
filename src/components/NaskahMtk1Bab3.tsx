@@ -12,7 +12,7 @@ import { kelasTombolHasilKuis, statusDariPilihan, type StatusJawabanKuis } from 
 import { idKuisKartuResmi, idKuisTulisKartu } from "@/lib/kuis-materi";
 import { MODUL_MTK1_BAB3 } from "@/lib/modul-resmi-mtk-1-bab3";
 import { jawabanTulisMemuatAlias } from "@/lib/nilai-kuis-tulis";
-import { cuplikanDariNaskah } from "@/lib/naskah-voice-pai-1-bab2";
+import { cuplikanDariNaskah, type CuplikanVoiceMateri } from "@/lib/naskah-voice-pai-1-bab2";
 import { bacaProgres } from "@/lib/progres";
 import type { KelaminGuru } from "@/lib/guru";
 
@@ -49,12 +49,56 @@ function KartuBingkai({ children }: { children: ReactNode }) {
   );
 }
 
+const WARNA_DIALOG: Record<string, string> = {
+  Nia: "border-[#DB2777]/20 bg-[#FDF2F8]",
+  Fajar: "border-[#2563EB]/20 bg-[#EFF6FF]",
+  Miko: "border-[#F0AB00] bg-[#FFF8E8]",
+};
+
 function Dialog({ nama, anak }: { nama: string; anak: string }) {
+  const warna = WARNA_DIALOG[nama] ?? "border-[#1C01A5]/15 bg-[#F8F7FF]";
   return (
-    <p className="rounded-2xl bg-[#F8F7FF] px-4 py-3 text-sm font-semibold leading-relaxed text-slate-700">
-      <span className="font-black text-[#1C01A5]">{nama}: </span>
-      {anak}
-    </p>
+    <article className={`rounded-2xl border-2 px-4 py-3 ${warna}`}>
+      <p className="text-xs font-black uppercase tracking-wide text-[#1C01A5]">{nama}</p>
+      <p className="mt-1 text-sm font-semibold leading-relaxed text-slate-700">{anak}</p>
+    </article>
+  );
+}
+
+function IkonUlang({ ikon, jumlah, ukuran = "text-2xl" }: { ikon: string; jumlah: number; ukuran?: string }) {
+  return (
+    <span className={`${ukuran} leading-relaxed tracking-tight`} aria-hidden>
+      {Array.from({ length: jumlah }, () => ikon).join(" ")}
+    </span>
+  );
+}
+
+function KepalaKartu({
+  ikon,
+  judul,
+  anak,
+  kelas,
+  kelamin,
+  cuplikan,
+}: {
+  ikon: string;
+  judul: string;
+  anak?: string;
+  kelas?: string;
+  kelamin?: KelaminGuru;
+  cuplikan: CuplikanVoiceMateri[];
+}) {
+  return (
+    <>
+      <p className="text-center text-4xl" aria-hidden>
+        {ikon}
+      </p>
+      <h4 className="mt-3 text-center text-lg font-black tracking-wide text-[#1C01A5] sm:text-xl">{judul}</h4>
+      {anak ? <p className="mt-1 text-center text-sm font-bold text-[#1C01A5]/70">{anak}</p> : null}
+      <div className="mt-4">
+        <TombolVoiceMateriPai1 kelas={kelas} kelamin={kelamin} cuplikan={cuplikan} />
+      </div>
+    </>
   );
 }
 
@@ -301,24 +345,24 @@ function DuaCaraEmpat() {
 
 function HookPesta() {
   return (
-    <div className="rounded-[1.5rem] bg-gradient-to-br from-rose-100 via-amber-50 to-orange-100 p-4 text-slate-800">
-      <p className="text-sm font-black uppercase tracking-wide text-rose-700">Pesta Ulang Tahun yang Hilang</p>
-      <p className="mt-2 text-3xl" aria-hidden>
-        🎈🎈🎈🎈🎈🎈🎈🎈
-      </p>
-      <p className="mt-2 text-sm font-semibold leading-relaxed">
+    <article className="rounded-2xl border-2 border-[#16A34A]/25 bg-[#F0FDF4] px-4 py-3">
+      <p className="text-xs font-black uppercase tracking-wide text-[#166534]">Cerita: Pesta Ulang Tahun yang Hilang</p>
+      <div className="mt-2 text-center">
+        <IkonUlang ikon="🎈" jumlah={8} ukuran="text-3xl" />
+      </div>
+      <p className="mt-2 text-sm font-semibold leading-relaxed text-slate-700">
         Malam ini pesta di rumah Nia. Mejanya penuh kue, dindingnya penuh balon. Nia menghitung, &quot;Satu, dua, tiga, empat, lima, enam, tujuh… delapan!&quot;
       </p>
-      <p className="mt-2 text-sm font-semibold leading-relaxed">
+      <p className="mt-2 text-sm font-semibold leading-relaxed text-slate-700">
         Jendela terbuka. Angin masuk. Satu, dua, tiga balon lepas dan terbang ke langit malam.
       </p>
-      <p className="mt-2 text-sm font-semibold leading-relaxed">
+      <p className="mt-2 text-sm font-semibold leading-relaxed text-slate-700">
         Fajar terbelalak. &quot;Niaaa! Balonnya!&quot; Nia bertanya, &quot;Bagaimana caranya aku tahu sekarang tinggal berapa?&quot;
       </p>
-      <p className="mt-2 text-sm font-semibold leading-relaxed">
+      <p className="mt-2 text-sm font-semibold leading-relaxed text-slate-700">
         Dari balik kue muncul suara kecil, &quot;Cik-cik-cik!&quot; Miko si tikus berkacamata mengangkat satu jari. &quot;Ada rahasia, tapi kalian harus belajar mengurangi.&quot;
       </p>
-    </div>
+    </article>
   );
 }
 
@@ -328,37 +372,68 @@ function KartuA({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminGuru }) {
   const [suaraA, setSuaraA] = useState<StatusJawabanKuis>(null);
   return (
     <KartuBingkai>
-      <h3 className="text-xl font-black text-[#1C01A5]">{kartu.judul}</h3>
-      <div className="mt-3">
-        <TombolVoiceMateriPai1 kelas={kelas} kelamin={kelamin} cuplikan={cuplikanDariNaskah(kartu.voice, 2000, 3000)} />
+      <KepalaKartu
+        ikon="🎈🎂🐭"
+        judul={kartu.judul}
+        anak="Pengurangan sampai dengan 10"
+        kelas={kelas}
+        kelamin={kelamin}
+        cuplikan={cuplikanDariNaskah(kartu.voice, 2_000, 3_000)}
+      />
+      <div className="mt-4 rounded-2xl border-2 border-[#F0AB00] bg-[#FFF8E8] px-4 py-3">
+        <p className="text-sm font-black text-[#1C01A5]">Tujuan Pembelajaran</p>
+        <p className="mt-2 text-sm font-semibold text-slate-700">Setelah belajar, siswa dapat:</p>
+        <ul className="mt-2 list-disc space-y-1 pl-5 text-sm font-semibold text-slate-700">
+          <li>Mengurangi benda sampai 10.</li>
+          <li>Memakai tanda kurang dan sama dengan.</li>
+          <li>Menghitung sisa dengan hitung mundur.</li>
+          <li>Menyelesaikan soal cerita pengurangan.</li>
+        </ul>
       </div>
-      <div className="mt-4">
+      <div className="mt-4 space-y-3">
         <HookPesta />
-      </div>
-      <div className="mt-4 grid gap-3">
         <Dialog nama="Nia" anak="Wah, balonnya banyak sekali!" />
         <Dialog nama="Fajar" anak="Ayo hitung! Satu, dua, tiga, empat, lima, enam, tujuh… delapan!" />
         <Dialog nama="Miko" anak="Cik-cik! Delapan balon siap untuk pesta!" />
-        <p className="text-3xl" aria-hidden>🎈🎈🎈🎈🎈🎈🎈🎈</p>
+        <article className="rounded-2xl border-2 border-[#E23B3B]/25 bg-[#FFF1F2] px-4 py-3">
+          <p className="text-xs font-black uppercase text-[#9F1239]">Delapan balon</p>
+          <div className="mt-2 text-center">
+            <IkonUlang ikon="🎈" jumlah={8} ukuran="text-3xl" />
+          </div>
+        </article>
         <Dialog nama="Nia" anak="Aduh! Balonnya terbang!" />
         <Dialog nama="Fajar" anak="Ada 3 yang lepas!" />
         <Dialog nama="Miko" anak="Sekarang tinggal berapa, ya?" />
-        <p className="text-sm font-semibold text-slate-600">Balon yang tersisa: satu, dua, tiga, empat, lima.</p>
-        <p className="text-3xl" aria-hidden>🎈🎈🎈🎈🎈</p>
-        <p className="rounded-2xl bg-rose-50 px-4 py-3 text-center text-2xl font-black text-rose-800">8 - 3 = 5</p>
+        <article className="rounded-2xl border-2 border-[#F97316]/30 bg-[#FFF7ED] px-4 py-3">
+          <p className="text-xs font-black uppercase text-[#9A3412]">Balon yang tersisa</p>
+          <div className="mt-2 text-center">
+            <IkonUlang ikon="🎈" jumlah={5} ukuran="text-3xl" />
+          </div>
+          <p className="mt-2 text-sm font-semibold text-slate-700">Satu, dua, tiga, empat, lima.</p>
+        </article>
+        <p className="text-center text-4xl font-black text-[#1C01A5]">8 - 3 = 5</p>
         <Dialog nama="Miko" anak="Benar! Dulu 8, yang hilang 3, sisa 5." />
         <Dialog nama="Fajar" anak="Tanda satu garis itu apa?" />
         <Dialog nama="Miko" anak="Itu tanda kurang. Artinya diambil atau dipisahkan!" />
         <Dialog nama="Nia" anak="Kalau begitu, jumlahnya jadi lebih sedikit." />
-        <p className="text-center text-4xl" aria-hidden>➖ 📦</p>
+        <article className="rounded-2xl border-2 border-[#7C3AED]/25 bg-[#F5F3FF] px-4 py-3">
+          <p className="text-xs font-black uppercase text-[#5B21B6]">Tanda kurang</p>
+          <p className="mt-2 text-center text-4xl" aria-hidden>
+            ➖
+          </p>
+        </article>
         <Dialog nama="Fajar" anak="Aku makan 2 potong kue, ya!" />
         <Dialog nama="Miko" anak="Ayo hitung mundur dari 6: lima… empat!" />
-        <p className="rounded-2xl bg-amber-50 px-4 py-3 text-center text-2xl font-black text-amber-900">6 - 2 = 4</p>
+        <p className="text-center text-4xl font-black text-[#1C01A5]">6 - 2 = 4</p>
         <Dialog nama="Nia" anak="Ada 9 topi. Tamu mengambil 4 topi." />
         <Dialog nama="Miko" anak="Hitung mundur dari 9: delapan, tujuh, enam… lima!" />
-        <p className="rounded-2xl bg-sky-50 px-4 py-3 text-center text-2xl font-black text-sky-900">9 - 4 = 5</p>
+        <p className="text-center text-4xl font-black text-[#1C01A5]">9 - 4 = 5</p>
       </div>
-      <div className="mt-4">
+      <div className="mt-6 border-t-2 border-[#1C01A5]/10 pt-5">
+        <p className="text-base font-extrabold text-[#1C01A5]">QUIZ:</p>
+        <div className="text-center">
+          <IkonUlang ikon="🎈" jumlah={6} ukuran="text-3xl" />
+        </div>
         <SoalRekamSuara
           id={idKuis("A", 0)}
           pertanyaan="Ada 6 balon. Dua balon terbang. Sisa berapa? Ucapkan dengan keras!"
@@ -397,28 +472,53 @@ function KartuB({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminGuru }) {
   const kalimat = ["6 - 2 = 4", "4 - 1 = 3", "9 - 5 = 4"];
   return (
     <KartuBingkai>
-      <h3 className="text-xl font-black text-[#1C01A5]">{kartu.judul}</h3>
-      <div className="mt-3">
-        <TombolVoiceMateriPai1 kelas={kelas} kelamin={kelamin} cuplikan={cuplikanDariNaskah(kartu.voice, 2000, 3000)} />
-      </div>
-      <div className="mt-4 grid gap-3 text-sm font-semibold leading-relaxed text-slate-700">
-        <p className="rounded-2xl bg-orange-50 px-4 py-3">
-          <span className="font-black text-orange-800">Mengurangi = mengambil sebagian. </span>
-          🍊🍊🍊🍊🍊 dikurangi 🍊🍊 sama dengan 🍊🍊🍊. Lima kurang dua sama dengan tiga.
-        </p>
-        <p>5 jumlah awal. Tanda kurang artinya diambil. 2 yang keluar. Tanda sama dengan. 3 sisa.</p>
-        <p className="rounded-2xl bg-sky-50 px-4 py-3">
-          Semuanya 8 balon. Yang hilang 3. Sisa 5. Tanya dulu: semuanya berapa, yang hilang berapa, sisanya berapa?
-        </p>
-        <p>Cara 1, hitung yang tersisa. ⭐⭐⭐⭐⭐⭐⭐ dikurangi 3 bintang. Yang tidak dicoret ada 4. 7 - 3 = 4.</p>
-        <p>Cara 2, lompat mundur. Simpan 9, lompat 4 kali: 8, 7, 6, 5. 9 - 4 = 5.</p>
-        <p className="font-black tracking-wide text-[#1C01A5]">0 — 1 — 2 — 3 — 4 — 5 ← 6 ← 7 ← 8 ← 9 — 10</p>
-        <p>Cara 3, pakai jari. Angkat 8 jari, lipat 3, yang terbuka 5. 8 - 3 = 5.</p>
-        <p>
-          Soal cerita: Nia punya 7 balon, 3 terbang. Kata kunci terbang, hilang, diambil, dimakan, dipakai, diberikan, pecah, tersisa, tinggal. 7 - 3 = 4.
-        </p>
-        <p>Tambah dan kurang itu saudara. 5 + 3 = 8, jadi 8 - 3 = 5.</p>
-        <p>Kurang nol, angkanya tetap. 5 - 0 = 5. Tidak ada yang diambil.</p>
+      <KepalaKartu
+        ikon="➖🍊⭐"
+        judul={kartu.judul}
+        anak="Infografis: Ayo Mengenal Pengurangan"
+        kelas={kelas}
+        kelamin={kelamin}
+        cuplikan={cuplikanDariNaskah(kartu.voice, 2_000, 3_000)}
+      />
+      <div className="mt-4 space-y-3">
+        <article className="rounded-2xl border-2 border-[#F97316]/30 bg-[#FFF7ED] px-4 py-3">
+          <p className="text-sm font-black text-[#9A3412]">Mengurangi = mengambil sebagian</p>
+          <p className="mt-2 text-center text-2xl">
+            <IkonUlang ikon="🍊" jumlah={5} /> dikurangi <IkonUlang ikon="🍊" jumlah={2} /> sama dengan <IkonUlang ikon="🍊" jumlah={3} />
+          </p>
+          <p className="mt-2 text-sm font-semibold text-slate-700">Lima kurang dua sama dengan tiga.</p>
+          <p className="text-2xl font-black text-[#1C01A5]">5 - 2 = 3</p>
+        </article>
+        <article className="rounded-2xl border-2 border-[#0284C7]/25 bg-[#F0F9FF] px-4 py-3">
+          <p className="text-sm font-black text-[#0C4A6E]">Tanya dulu</p>
+          <p className="mt-2 text-sm font-semibold text-slate-700">
+            Semuanya 8 balon. Yang hilang 3. Sisa 5. Tanya dulu: semuanya berapa, yang hilang berapa, sisanya berapa?
+          </p>
+        </article>
+        <article className="rounded-2xl border-2 border-[#16A34A]/30 bg-[#F0FDF4] px-4 py-3">
+          <p className="text-sm font-black text-[#166534]">Cara 1 · Hitung yang tersisa</p>
+          <div className="mt-2 text-center">
+            <IkonUlang ikon="⭐" jumlah={7} />
+          </div>
+          <p className="mt-2 text-sm font-semibold text-slate-700">Dikurangi 3 bintang. Yang tidak dicoret ada 4. 7 - 3 = 4.</p>
+        </article>
+        <article className="rounded-2xl border-2 border-[#F0AB00] bg-[#FFF8E8] px-4 py-3">
+          <p className="text-sm font-black text-[#92400E]">Cara 2 · Lompat mundur</p>
+          <p className="mt-2 text-center text-sm font-black text-[#1C01A5]">0 — 1 — 2 — 3 — 4 — 5 ← 6 ← 7 ← 8 ← 9 — 10</p>
+          <p className="mt-2 text-sm font-semibold text-slate-700">Simpan 9, lompat 4 kali: 8, 7, 6, 5. 9 - 4 = 5.</p>
+        </article>
+        <article className="rounded-2xl border-2 border-[#7C3AED]/25 bg-[#F5F3FF] px-4 py-3">
+          <p className="text-sm font-black text-[#5B21B6]">Cara 3 · Pakai jari</p>
+          <p className="mt-2 text-sm font-semibold text-slate-700">Angkat 8 jari, lipat 3, yang terbuka 5. 8 - 3 = 5.</p>
+        </article>
+        <article className="rounded-2xl border-2 border-[#0F766E] bg-[#F0FDFA] px-4 py-3">
+          <p className="text-sm font-black text-[#0F766E]">Soal cerita</p>
+          <p className="mt-2 text-sm font-semibold text-slate-700">
+            Nia punya 7 balon, 3 terbang. Kata kunci terbang, hilang, diambil, dimakan, dipakai, diberikan, pecah, tersisa, tinggal. 7 - 3 = 4.
+          </p>
+          <p className="mt-2 text-sm font-semibold text-slate-700">Tambah dan kurang itu saudara. 5 + 3 = 8, jadi 8 - 3 = 5.</p>
+          <p className="mt-2 text-sm font-semibold text-slate-700">Kurang nol, angkanya tetap. 5 - 0 = 5. Tidak ada yang diambil.</p>
+        </article>
       </div>
       <div className="mt-4 grid gap-3">
         <KuisCocok
@@ -451,12 +551,15 @@ function KartuB({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminGuru }) {
           umpan="9 - 5 sisanya 4. Kartu lain sisanya 5."
           salah="Hitung sisa tiap kartu. Tiga kartu sisanya sama."
         />
-        <SoalRekamSuara
-          id={idKuis("B", 3)}
-          pertanyaan="Ada 10 permen. Kamu makan 4 permen. Sisa permenmu berapa? Ucapkan!"
-          periksa={(transkrip) => jawabanTulisMemuatAlias(transkrip, ["enam", "6"])}
-          petunjuk="Ucapkan sisa permennya."
-        />
+        <div className="border-t-2 border-[#1C01A5]/10 pt-5">
+          <p className="text-base font-extrabold text-[#1C01A5]">QUIZ:</p>
+          <SoalRekamSuara
+            id={idKuis("B", 3)}
+            pertanyaan="Ada 10 permen. Kamu makan 4 permen. Sisa permenmu berapa? Ucapkan!"
+            periksa={(transkrip) => jawabanTulisMemuatAlias(transkrip, ["enam", "6"])}
+            petunjuk="Ucapkan sisa permennya."
+          />
+        </div>
         <KuisTulisKartu
           id={idKuisTulisKartu(ID, "B")}
           pertanyaan="Fajar punya 8 kue. Ia memberi 5 kue ke temannya. Tulis kalimat matematika dan sisanya!"
@@ -492,13 +595,17 @@ function TokoRoti({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminGuru })
   const cabang = roti >= 10;
   return (
     <KartuBingkai>
-      <h3 className="text-xl font-black text-[#1C01A5]">{kartu.judul}</h3>
-      <p className="mt-2 text-sm font-semibold leading-relaxed text-slate-700">
-        Kamu menjaga toko roti. Setiap pelanggan membeli, hitung roti yang tersisa. Cabang baru terbuka kalau sisanya benar.
+      <KepalaKartu
+        ikon="🍞🏪🐭"
+        judul={kartu.judul}
+        anak="Setiap pelanggan membeli, hitung roti yang tersisa"
+        kelas={kelas}
+        kelamin={kelamin}
+        cuplikan={cuplikanDariNaskah(kartu.voice, 2_000, 3_000)}
+      />
+      <p className="mt-4 text-sm font-semibold leading-relaxed text-slate-700">
+        Kamu menjaga toko roti. Cabang baru terbuka kalau sisanya benar.
       </p>
-      <div className="mt-3">
-        <TombolVoiceMateriPai1 kelas={kelas} kelamin={kelamin} cuplikan={cuplikanDariNaskah(kartu.voice, 2000, 3000)} />
-      </div>
       <p className="mt-4 rounded-2xl bg-orange-50 px-4 py-3 text-lg font-black text-orange-900">
         Roti {roti}/10 {cabang ? "· Cabang Toko Miko terbuka 👨‍🍳" : ""}
       </p>
@@ -507,7 +614,9 @@ function TokoRoti({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminGuru })
         <article className="rounded-2xl border-2 border-emerald-200 bg-emerald-50/70 p-4">
           <p className="text-sm font-black text-emerald-950">Level 1 · Rak roti</p>
           <p className="mt-2 text-sm font-semibold text-emerald-950">Di rak ada 7 roti. Pelanggan membeli 3. Seret 3 roti ke keranjang.</p>
-          <p className="mt-2 text-2xl">{seret ? "🥐🥐🥐🥐" : "🥐🥐🥐🥐🥐🥐🥐"}</p>
+          <p className="mt-2 text-center text-2xl">
+            {seret ? <IkonUlang ikon="🥐" jumlah={4} /> : <IkonUlang ikon="🥐" jumlah={7} />}
+          </p>
           <button
             type="button"
             onClick={() => setSeret(true)}
@@ -653,11 +762,15 @@ function LembarEvaluasi({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminG
   const kalimatPasangan = ["6 - 2", "8 - 6", "10 - 8"];
   return (
     <KartuBingkai>
-      <h3 className="text-xl font-black text-[#1C01A5]">{kartu.judul}</h3>
-      <div className="mt-3">
-        <TombolVoiceMateriPai1 kelas={kelas} kelamin={kelamin} cuplikan={cuplikanDariNaskah(kartu.voice, 2000, 3000)} />
-      </div>
-      <ul className="mt-4 grid gap-2 text-sm font-semibold leading-relaxed text-slate-700">
+      <KepalaKartu
+        ikon="📝⭐"
+        judul={kartu.judul}
+        anak="Tantangan Para Juara · Pengurangan sampai dengan 10"
+        kelas={kelas}
+        kelamin={kelamin}
+        cuplikan={cuplikanDariNaskah(kartu.voice, 2_000, 3_000)}
+      />
+      <ul className="mt-4 list-disc space-y-1 pl-5 text-sm font-semibold text-slate-700">
         <li>Kurang artinya diambil atau dipisah. Benda yang hilang jadi lebih sedikit.</li>
         <li>Semuanya, yang diambil, lalu sisa.</li>
         <li>Hitung mundur dari yang besar. 9 - 4: delapan, tujuh, enam, lima.</li>
@@ -665,10 +778,23 @@ function LembarEvaluasi({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminG
         <li>Tambah dan kurang itu saudara. 5 + 3 = 8, jadi 8 - 3 = 5.</li>
         <li>Cari angka, cari kata kunci, lalu hitung mundur.</li>
       </ul>
-      <div className="mt-4 rounded-2xl bg-orange-50 px-4 py-3 text-sm font-bold text-orange-950">
-        <p>Nama: {nama || "____________"} · Kelas: 1 · Skor: {skor}/10</p>
-        <p className="mt-1">{lencana.nama}. {lencana.pesan}</p>
+      <div className="mt-4 grid gap-3 rounded-2xl border-2 border-dashed border-[#1C01A5]/25 bg-[#FFFDF6] p-4 sm:grid-cols-3">
+        <p className="text-xs font-black uppercase text-[#1C01A5]">
+          Nama
+          <span className="mt-1 block rounded-xl border-2 border-[#1C01A5]/20 px-3 py-2 text-sm">{nama || "Siswa"}</span>
+        </p>
+        <p className="text-xs font-black uppercase text-[#1C01A5]">
+          Kelas
+          <span className="mt-1 block rounded-xl border-2 border-[#1C01A5]/20 px-3 py-2 text-sm">1</span>
+        </p>
+        <p className="text-xs font-black uppercase text-[#1C01A5]">
+          Skor
+          <span className="mt-1 block rounded-xl border-2 border-[#1C01A5]/20 px-3 py-2 text-sm">⭐ {skor} / 10</span>
+        </p>
       </div>
+      <p className="mt-3 rounded-2xl bg-[#FFF8E8] px-4 py-3 text-sm font-extrabold text-[#1C01A5]">
+        {lencana.nama}. {lencana.pesan}
+      </p>
       <div className="mt-4 grid gap-3">
         <KuisTulisKartu
           id={idKuis("D", 0)}
@@ -776,7 +902,7 @@ export default function NaskahMtk1Bab3({
   kelamin?: KelaminGuru;
 }) {
   return (
-    <div className="grid gap-4">
+    <div className="space-y-5">
       <KartuA kelas={kelas} kelamin={kelamin} />
       <KartuB kelas={kelas} kelamin={kelamin} />
       <TokoRoti kelas={kelas} kelamin={kelamin} />
