@@ -99,8 +99,10 @@ const SUBBAB_BUKU_SISWA: Record<string, Record<string, Record<string, string[]>>
         "Poin penting dan lembar evaluasi",
       ],
       "Bab 8: Mengenal Diagram": [
-        "Mengumpulkan data sederhana",
-        "Membaca diagram gambar",
+        "Kantin sekolah yang berantakan",
+        "Ayo bikin diagram",
+        "Toko grosir Tupi",
+        "Poin penting dan lembar evaluasi",
       ],
     },
   },
