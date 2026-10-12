@@ -87,9 +87,10 @@ const SUBBAB_BUKU_SISWA: Record<string, Record<string, Record<string, string[]>>
         "Poin penting dan lembar evaluasi",
       ],
       "Bab 6: Penjumlahan dan Pengurangan sampai dengan 20": [
-        "Penjumlahan sampai 20",
-        "Pengurangan sampai 20",
-        "Soal cerita penjumlahan dan pengurangan",
+        "Misi penyelamatan anak kucing",
+        "Ayo hitung maju dan mundur",
+        "Menara penyelamat Toki",
+        "Poin penting dan lembar evaluasi",
       ],
       "Bab 7: Mengukur Panjang Benda": [
         "Membandingkan panjang benda",
