@@ -106,18 +106,21 @@ function Umpan({ status, teks }: { status: StatusJawabanKuis; teks: string }) {
 function Adegan({
   judul,
   warna,
-  gambar,
+  src,
+  alt,
   children,
 }: {
   judul: string;
   warna: string;
-  gambar?: ReactNode;
+  src: string;
+  alt: string;
   children: ReactNode;
 }) {
   return (
     <article className={`rounded-2xl border-2 px-4 py-3 ${warna}`}>
       <p className="text-xs font-black uppercase tracking-wide text-[#1C01A5]">{judul}</p>
-      {gambar ? <div className="mt-2 text-center text-2xl leading-relaxed">{gambar}</div> : null}
+      {/* eslint-disable-next-line @next/next/no-img-element */}
+      <img src={src} alt={alt} className="mt-3 w-full rounded-xl border border-[#1C01A5]/10 bg-[#fbf6ea] object-cover" />
       <div className="mt-3 space-y-2">{children}</div>
     </article>
   );
@@ -722,7 +725,12 @@ function KartuA({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminGuru }) {
         </ul>
       </div>
       <div className="mt-4 space-y-3">
-        <Adegan judul="Pagi di gang kampung" warna="border-rose-200 bg-rose-50" gambar="🎏 🇮🇩 🎵">
+        <Adegan
+          judul="Pagi di gang kampung"
+          warna="border-rose-200 bg-rose-50"
+          src="/doodle-mtk/mtk-1-bab5-pagi.jpg"
+          alt="Gang kampung berhias umbul-umbul. Bendera kecil mendarat di kaki Ojan, Pipit hinggap di pagar."
+        >
           <p className="text-sm font-semibold text-slate-700">
             Umbul-umbul merah putih berkibar. Satu bendera kecil terbang, lalu mendarat di kaki seorang anak.
           </p>
@@ -730,17 +738,32 @@ function KartuA({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminGuru }) {
           <Dialog nama="Ojan" anak="Dua puluh?! Aku cuma bisa menghitung sampai sepuluh…" />
           <Dialog nama="Pipit" anak="Jangan khawatir! Rahasianya adalah ikatan ajaib!" />
         </Adegan>
-        <Adegan judul="Adegan 1 · Tumpukan bendera berantakan" warna="border-sky-200 bg-sky-50" gambar={<IkonUlang ikon="🇮🇩" jumlah={8} />}>
+        <Adegan
+          judul="Adegan 1 · Tumpukan bendera berantakan"
+          warna="border-sky-200 bg-sky-50"
+          src="/doodle-mtk/mtk-1-bab5-adegan-1.jpg"
+          alt="Dimas menunjuk bendera yang berserakan di tikar, Ojan bingung, Pipit mengawasi."
+        >
           <Dialog nama="Dimas" anak="Satu, dua, tiga… eh, yang ini sudah belum, ya?" />
           <Dialog nama="Ojan" anak="Aku jadi bingung!" />
           <Dialog nama="Pipit" anak="Kalau berantakan, gampang salah. Ayo kita ikat setiap sepuluh!" />
         </Adegan>
-        <Adegan judul="Adegan 2 · Ikatan ajaib pertama" warna="border-amber-200 bg-amber-50" gambar="🎀 🇮🇩">
+        <Adegan
+          judul="Adegan 2 · Ikatan ajaib pertama"
+          warna="border-amber-200 bg-amber-50"
+          src="/doodle-mtk/mtk-1-bab5-adegan-2.jpg"
+          alt="Tari mengikat sepuluh bendera jadi satu ikatan dengan pita, Pipit memperhatikan."
+        >
           <Dialog nama="Tari" anak="Satu, dua, tiga… sembilan, sepuluh!" />
           <Dialog nama="Pipit" anak="Ikat! Sekarang ini 1 ikat isinya 10!" />
           <p className="rounded-xl bg-white px-3 py-2 text-sm font-black text-[#1C01A5]">🎀 1 ikat = 10 bendera = 1 puluhan</p>
         </Adegan>
-        <Adegan judul="Adegan 3 · Lahirnya angka belasan" warna="border-blue-200 bg-blue-50" gambar="🎀 🇮🇩 🇮🇩 🇮🇩">
+        <Adegan
+          judul="Adegan 3 · Lahirnya angka belasan"
+          warna="border-blue-200 bg-blue-50"
+          src="/doodle-mtk/mtk-1-bab5-adegan-3.jpg"
+          alt="Satu ikat bendera dan tiga bendera lepas, Ojan menunjuk, angkanya 13."
+        >
           <Dialog nama="Ojan" anak="Ada satu ikat dan tiga bendera lepas. Jadi berapa?" />
           <Dialog nama="Pipit" anak="Mulai dari sepuluh, lalu lanjut: sebelas, dua belas, tiga belas!" />
           <Dialog nama="Tari" anak="Jadi ada 13 bendera!" />
@@ -750,13 +773,23 @@ function KartuA({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminGuru }) {
           </p>
           <p className="text-sm font-semibold text-slate-700">Angka 1 artinya satu ikat. Angka 3 artinya tiga bendera lepas.</p>
         </Adegan>
-        <Adegan judul="Adegan 4 · Kata belas yang ajaib" warna="border-emerald-200 bg-emerald-50">
+        <Adegan
+          judul="Adegan 4 · Kata belas yang ajaib"
+          warna="border-emerald-200 bg-emerald-50"
+          src="/doodle-mtk/mtk-1-bab5-adegan-4.jpg"
+          alt="Papan tulis kampung berisi angka 11 sampai 19 dan kata belas. Dimas dan Tari melihatnya."
+        >
           <Dialog nama="Dimas" anak="Kok namanya pakai belas semua?" />
           <Dialog nama="Pipit" anak="Belas artinya sepuluh lebih sedikit. Tiga belas sama dengan sepuluh dan tiga." />
           <Dialog nama="Tari" anak="Tapi 11 bukan satu belas. Namanya sebelas!" />
           <Dialog nama="Pipit" anak="Betul! Sebelas itu angka istimewa." />
         </Adegan>
-        <Adegan judul="Adegan 5 · Dua ikat sama dengan dua puluh" warna="border-rose-200 bg-rose-50" gambar="🎀🎀 🎆">
+        <Adegan
+          judul="Adegan 5 · Dua ikat sama dengan dua puluh"
+          warna="border-rose-200 bg-rose-50"
+          src="/doodle-mtk/mtk-1-bab5-adegan-5.jpg"
+          alt="Dua ikat bendera, angka 20, Tari, Dimas, dan Ojan bersorak, kembang api di langit."
+        >
           <Dialog nama="Ojan" anak="Ikatan kedua sudah penuh!" />
           <Dialog nama="Pipit" anak="Dua ikat, lepasnya nol. Itu 20, dua puluh!" />
           <p className="text-center text-2xl font-black text-[#1C01A5]">🎀🎀 = 20</p>
