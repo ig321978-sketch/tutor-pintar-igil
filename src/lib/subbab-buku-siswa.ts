@@ -93,8 +93,10 @@ const SUBBAB_BUKU_SISWA: Record<string, Record<string, Record<string, string[]>>
         "Poin penting dan lembar evaluasi",
       ],
       "Bab 7: Mengukur Panjang Benda": [
-        "Membandingkan panjang benda",
-        "Mengukur panjang dengan satuan tidak baku",
+        "Pesta layang-layang di bukit",
+        "Ayo mengukur tanpa penggaris",
+        "Bengkel ukur Kodok",
+        "Poin penting dan lembar evaluasi",
       ],
       "Bab 8: Mengenal Diagram": [
         "Mengumpulkan data sederhana",
