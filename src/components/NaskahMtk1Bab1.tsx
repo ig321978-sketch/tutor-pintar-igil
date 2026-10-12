@@ -93,12 +93,14 @@ function Kanvas({
 
 function Pilih({
   id,
+  nomor,
   soal,
   pilihan,
   benar,
   anak,
 }: {
   id?: string;
+  nomor?: number;
   soal: string;
   pilihan: { huruf: string; teks: string }[];
   benar: string;
@@ -109,7 +111,12 @@ function Pilih({
   const status = statusDariPilihan(pilih, benar);
   return (
     <article className="mt-4 rounded-2xl border-2 border-[#1C01A5]/15 bg-[#FFFDF6] p-4">
-      <p className="text-sm font-semibold leading-relaxed text-slate-700">{soal}</p>
+      <p className="text-sm font-semibold leading-relaxed text-slate-700">
+        {nomor ? (
+          <span className="font-black text-[#1C01A5]">{nomor}. </span>
+        ) : null}
+        {soal}
+      </p>
       {anak ? <div className="mt-3 text-2xl leading-relaxed">{anak}</div> : null}
       <div className="mt-3 grid gap-2">
         {pilihan.map((item) => {
@@ -150,12 +157,14 @@ function Pilih({
 
 function Isian({
   id,
+  nomor,
   soal,
   cocok,
   anak,
   placeholder = "__________",
 }: {
   id?: string;
+  nomor?: number;
   soal: string;
   cocok: (teks: string) => boolean;
   anak?: ReactNode;
@@ -171,7 +180,12 @@ function Isian({
   };
   return (
     <article className="mt-4 rounded-2xl border-2 border-[#1C01A5]/15 bg-[#F8F7FF] p-4">
-      <p className="text-sm font-semibold leading-relaxed text-slate-700">{soal}</p>
+      <p className="text-sm font-semibold leading-relaxed text-slate-700">
+        {nomor ? (
+          <span className="font-black text-[#1C01A5]">{nomor}. </span>
+        ) : null}
+        {soal}
+      </p>
       {anak ? <div className="mt-3 text-2xl leading-relaxed">{anak}</div> : null}
       <div className="mt-3 flex flex-wrap items-center gap-2">
         <input
@@ -966,6 +980,7 @@ function Evaluasi({ kelas, kelamin }: { kelas: string; kelamin?: KelaminGuru }) 
       <LabelMini anak="Bagian A · Pilihan ganda" />
       <Pilih
         id={idEvaluasi(0)}
+        nomor={1}
         soal="Kiko menghitung 6 apel: satu, dua, tiga, lima, enam. Zuzi berkata ia salah melompat. Angka berapa yang lupa diucapkan Kiko?"
         anak="🍎🍎🍎🍎🍎🍎"
         pilihan={[
@@ -977,6 +992,7 @@ function Evaluasi({ kelas, kelamin }: { kelas: string; kelamin?: KelaminGuru }) 
       />
       <Pilih
         id={idEvaluasi(1)}
+        nomor={2}
         soal="Siti punya 6 permen dan ingin membaginya sama banyak kepada Kiko dan Zuzi sampai mangkuknya kosong. Pembagian yang paling adil adalah..."
         pilihan={[
           { huruf: "A", teks: "Kiko 4 permen, Zuzi 2 permen." },
@@ -987,6 +1003,7 @@ function Evaluasi({ kelas, kelamin }: { kelas: string; kelamin?: KelaminGuru }) 
       />
       <Pilih
         id={idEvaluasi(2)}
+        nomor={3}
         soal="Saku Beni ada 5 permen. Saku Dodi ada 3 permen. Beni ingin jumlahnya sama dengan Dodi. Apa yang harus Beni lakukan?"
         anak="Beni 🍬🍬🍬🍬🍬 · Dodi 🍬🍬🍬"
         pilihan={[
@@ -998,6 +1015,7 @@ function Evaluasi({ kelas, kelamin }: { kelas: string; kelamin?: KelaminGuru }) 
       />
       <Pilih
         id={idEvaluasi(3)}
+        nomor={4}
         soal="Berapa lambang angka dan nama bilangan untuk menara donat ini?"
         anak="🍩🍩🍩🍩🍩🍩🍩"
         pilihan={[
@@ -1009,6 +1027,7 @@ function Evaluasi({ kelas, kelamin }: { kelas: string; kelamin?: KelaminGuru }) 
       />
       <Pilih
         id={idEvaluasi(4)}
+        nomor={5}
         soal="Katak melompat mundur: 7 → 6 → 5 → bintang → 3. Angka apa yang menggantikan bintang?"
         pilihan={[
           { huruf: "A", teks: "Angka 4" },
@@ -1020,6 +1039,7 @@ function Evaluasi({ kelas, kelamin }: { kelas: string; kelamin?: KelaminGuru }) 
       <LabelMini anak="Bagian B · Isian kanvas" />
       <Isian
         id={idEvaluasi(5)}
+        nomor={6}
         soal="Kotak A ada 5 lemon, kotak B ada 2 lemon, kotak C ada 4 lemon. Tuliskan kotak yang isinya paling sedikit."
         anak="A 🍋🍋🍋🍋🍋 · B 🍋🍋 · C 🍋🍋🍋🍋"
         placeholder="Kotak ____"
@@ -1027,12 +1047,14 @@ function Evaluasi({ kelas, kelamin }: { kelas: string; kelamin?: KelaminGuru }) 
       />
       <Isian
         id={idEvaluasi(6)}
+        nomor={7}
         soal="Beni menghitung mundur dari 9: 9, 8, 7, 6. Tuliskan dua angka berikutnya."
         placeholder="____ dan ____"
         cocok={lanjutMundur}
       />
       <Isian
         id={idEvaluasi(7)}
+        nomor={8}
         soal="Angka utama 8. Satu pasangannya 5. Berapa angka pasangan yang hilang?"
         anak="8 = 5 + ?"
         placeholder="?"
@@ -1040,12 +1062,14 @@ function Evaluasi({ kelas, kelamin }: { kelas: string; kelamin?: KelaminGuru }) 
       />
       <Isian
         id={idEvaluasi(8)}
+        nomor={9}
         soal="Riko punya 4 roda. Satu mobil-mobilan butuh 4 roda. Berapa mobil yang bisa dibuat sampai roda habis?"
         placeholder="____ buah"
         cocok={(teks) => hanyaAngka(teks, 1)}
       />
       <Isian
         id={idEvaluasi(9)}
+        nomor={10}
         soal="Temukan dua angka pembentuk angka 7 yang selisihnya hanya satu, seperti angka berurutan."
         placeholder="____ dan ____"
         cocok={pasanganTujuh}
