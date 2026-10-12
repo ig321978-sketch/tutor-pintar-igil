@@ -4,8 +4,8 @@ function pg(soal: string[]): string {
   return soal.join("\n\n");
 }
 
-export const JUDUL_MTK1_BAB1 = "Bab 1: Ayo Berhitung!";
-export const JUDUL_MTK1_BAB1_LAMA = "Bab 1: Ayo Membilang sampai dengan 10";
+export const JUDUL_MTK1_BAB1 = "Bab 1: Ayo Membilang sampai dengan 10";
+export const JUDUL_MTK1_BAB1_LAMA = "Bab 1: Ayo Berhitung!";
 
 export const MODUL_MTK1_BAB1: ModulResmiPai = {
   id: "mtk-1-bab1",

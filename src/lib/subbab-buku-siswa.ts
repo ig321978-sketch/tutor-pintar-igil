@@ -50,17 +50,17 @@ const SUBBAB_BUKU_SISWA: Record<string, Record<string, Record<string, string[]>>
       ],
     },
     Matematika: {
-      "Bab 1: Ayo Berhitung!": [
+      "Bab 1: Ayo Membilang sampai dengan 10": [
         "Menghitung, membaca, dan menulis bilangan",
         "Membandingkan banyak benda",
         "Menghitung maju dan mundur",
         "Pasangan bilangan dan evaluasi",
       ],
-      "Bab 2: Penjumlahan sampai 10": [
-        "Menggabungkan dua kelompok benda",
-        "Menulis penjumlahan dengan angka",
-        "Menjumlahkan sampai 10",
-        "Mengisi evaluasi penjumlahan",
+      "Bab 1: Ayo Berhitung!": [
+        "Menghitung, membaca, dan menulis bilangan",
+        "Membandingkan banyak benda",
+        "Menghitung maju dan mundur",
+        "Pasangan bilangan dan evaluasi",
       ],
       "Bab 2: Penjumlahan sampai dengan 10": [
         "Menggabungkan dua kelompok benda",
@@ -68,23 +68,11 @@ const SUBBAB_BUKU_SISWA: Record<string, Record<string, Record<string, string[]>>
         "Menjumlahkan sampai 10",
         "Mengisi evaluasi penjumlahan",
       ],
-      "Bab 3: Pengurangan sampai 10": [
-        "Mengambil sebagian dari sekelompok benda",
-        "Menulis pengurangan dengan angka",
-        "Mengurangi sampai 10",
-        "Mengisi evaluasi pengurangan",
-      ],
       "Bab 3: Pengurangan sampai dengan 10": [
         "Mengambil sebagian dari sekelompok benda",
         "Menulis pengurangan dengan angka",
         "Mengurangi sampai 10",
         "Mengisi evaluasi pengurangan",
-      ],
-      "Bab 4: Mengenal Bentuk Ruang": [
-        "Membandingkan bentuk benda di kelas",
-        "Mengenali kubus, balok, bola, dan tabung",
-        "Meraba dan berburu bentuk ruang",
-        "Mengisi evaluasi bentuk ruang",
       ],
       "Bab 4: Mengenal Bentuk": [
         "Membandingkan bentuk benda di kelas",
@@ -92,72 +80,24 @@ const SUBBAB_BUKU_SISWA: Record<string, Record<string, Record<string, string[]>>
         "Meraba dan berburu bentuk ruang",
         "Mengisi evaluasi bentuk ruang",
       ],
-      "Bab 5: Bilangan yang Lebih Besar (11 sampai 20)": [
-        "Menghitung lanjut setelah 10",
-        "Mengenali lambang dan nama angka 11 sampai 20",
-        "Mengurutkan maju dan mundur di sekolah dan di rumah",
-        "Mengisi evaluasi bilangan belasan",
-      ],
       "Bab 5: Ayo Membilang sampai dengan 20": [
         "Menghitung lanjut setelah 10",
         "Mengenali lambang dan nama angka 11 sampai 20",
         "Mengurutkan maju dan mundur di sekolah dan di rumah",
         "Mengisi evaluasi bilangan belasan",
       ],
-      "Bab 6: Nilai Tempat (Puluhan dan Satuan)": [
-        "Mengikat puluhan dan sisa satuan",
-        "Membaca rumah angka puluhan dan satuan",
-        "Berlatih nilai tempat di sekolah dan di rumah",
-        "Mengisi evaluasi nilai tempat",
-      ],
       "Bab 6: Penjumlahan dan Pengurangan sampai dengan 20": [
         "Penjumlahan sampai 20",
         "Pengurangan sampai 20",
         "Soal cerita penjumlahan dan pengurangan",
       ],
-      "Bab 7: Penjumlahan dan Pengurangan sampai 20": [
-        "Trik hitung maju dan hitung mundur",
-        "Infografis penjumlahan dan pengurangan sampai 20",
-        "Tepuk angka dan hitung mundur mainan",
-        "Mengisi evaluasi sampai 20",
-      ],
-      "Bab 7: Penjumlahan dan Pengurangan sampai dengan 20": [
-        "Trik hitung maju dan hitung mundur",
-        "Infografis penjumlahan dan pengurangan sampai 20",
-        "Tepuk angka dan hitung mundur mainan",
-        "Mengisi evaluasi sampai 20",
-      ],
       "Bab 7: Mengukur Panjang Benda": [
         "Membandingkan panjang benda",
         "Mengukur panjang dengan satuan tidak baku",
       ],
-      "Bab 8: Mengukur Panjang dan Berat (Pengukuran)": [
-        "Membandingkan panjang dan berat",
-        "Alat ukur non-baku jengkal langkah depa",
-        "Berlatih jengkal dan timbangan tangan",
-        "Mengisi evaluasi pengukuran",
-      ],
-      "Bab 8: Mengukur Panjang dan Berat": [
-        "Membandingkan panjang dan berat",
-        "Alat ukur non-baku jengkal langkah depa",
-        "Berlatih jengkal dan timbangan tangan",
-        "Mengisi evaluasi pengukuran",
-      ],
       "Bab 8: Mengenal Diagram": [
         "Mengumpulkan data sederhana",
         "Membaca diagram gambar",
-      ],
-      "Bab 9: Mengenal Bentuk Datar": [
-        "Mengenali segiempat, segitiga, dan lingkaran",
-        "Membaca jumlah pojok bentuk datar",
-        "Menempel dan mencetak bentuk datar",
-        "Mengisi evaluasi bentuk datar",
-      ],
-      "Bab 10: Pola Gambar dan Diagram": [
-        "Melanjutkan pola gambar berulang",
-        "Membaca diagram gambar",
-        "Berlatih pola tepuk dan sendok garpu",
-        "Mengisi evaluasi pola dan diagram",
       ],
     },
   },

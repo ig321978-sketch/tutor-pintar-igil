@@ -140,7 +140,11 @@ export default function RuangBelajarPage() {
   }, [daftarTerbit, kelas, kunciPublik]);
   const daftarMateri = useMemo(() => {
     if (pilihanMapel === OPSI_MAPEL_LAIN) return [];
-    if (!kunciPublik) return DATA_KURIKULUM[kelas]?.[pilihanMapel] ?? [];
+    const buku = DATA_KURIKULUM[kelas]?.[pilihanMapel] ?? [];
+    if (!kunciPublik) return buku;
+    if (kelas === "1 SD" && pilihanMapel === "Matematika" && buku.length > 0) {
+      return buku;
+    }
     return daftarTerbit
       .filter((item) => item.kelas === kelas && item.mapel === pilihanMapel)
       .map((item) => item.materi);
