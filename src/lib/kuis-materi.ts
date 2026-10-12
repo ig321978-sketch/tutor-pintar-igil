@@ -1,5 +1,6 @@
 import { kelasSatuSd } from "@/lib/infografis-kelas1";
 import { MODUL_MTK1_BAB1 } from "@/lib/modul-resmi-mtk-1-bab1";
+import { MODUL_MTK1_BAB2 } from "@/lib/modul-resmi-mtk-1-bab2";
 import { MODUL_PANCASILA1_BAB1 } from "@/lib/modul-resmi-pancasila-1-bab1";
 import { MODUL_PANCASILA1_BAB2 } from "@/lib/modul-resmi-pancasila-1-bab2";
 import { MODUL_PANCASILA1_BAB3 } from "@/lib/modul-resmi-pancasila-1-bab3";
@@ -7,6 +8,7 @@ import { MODUL_PANCASILA1_BAB4 } from "@/lib/modul-resmi-pancasila-1-bab4";
 import type { ModulResmiPai } from "@/lib/modul-resmi-pai";
 import {
   adalahMtk1Bab1,
+  adalahMtk1Bab2,
   adalahPancasila1Bab1,
   adalahPancasila1Bab2,
   adalahPancasila1Bab3,
@@ -147,6 +149,21 @@ export function daftarIdKuisMateri(
       ...MODUL_MTK1_BAB1.kartu.map((kartu) =>
         idKuisTulisKartu(MODUL_MTK1_BAB1.id, kartu.kode),
       ),
+    ];
+  }
+  if (adalahMtk1Bab2(kelas, mapel, materi)) {
+    const id = MODUL_MTK1_BAB2.id;
+    return [
+      ...MODUL_MTK1_BAB2.kartu.flatMap((kartu) =>
+        kartu.kuis.map((_, indeks) => idKuisKartuResmi(id, kartu.kode, indeks)),
+      ),
+      idKuisTulisKartu(id, "A"),
+      `${id}-A-plus`,
+      `${id}-A-hasil`,
+      idKuisTulisKartu(id, "B"),
+      `${id}-B-pasangan`,
+      idKuisTulisKartu(id, "C"),
+      `${id}-C-langkah`,
     ];
   }
   if (adalahPancasila1Bab1(kelas, mapel, materi)) {

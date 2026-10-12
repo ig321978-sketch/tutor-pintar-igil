@@ -13,6 +13,7 @@ import {
 } from "@/lib/naskah-resmi-pai-1-bab2";
 import { MODUL_PAI1_BAB3_10 } from "@/lib/modul-resmi-pai-1-bab3-10";
 import { MODUL_MTK1_BAB1 } from "@/lib/modul-resmi-mtk-1-bab1";
+import { MODUL_MTK1_BAB2 } from "@/lib/modul-resmi-mtk-1-bab2";
 import { MODUL_PANCASILA1_BAB1 } from "@/lib/modul-resmi-pancasila-1-bab1";
 import { MODUL_PANCASILA1_BAB2 } from "@/lib/modul-resmi-pancasila-1-bab2";
 import { MODUL_PANCASILA1_BAB3 } from "@/lib/modul-resmi-pancasila-1-bab3";
@@ -182,6 +183,22 @@ export function adalahMtk1Bab1(
 ): boolean {
   if (!kelasSatuSd(kelas)) return false;
   return adalahJudulMtk1Bab1(mapel, materi);
+}
+
+export function adalahJudulMtk1Bab2(mapel: string, materi: string): boolean {
+  if (!adalahMapelMatematika(mapel)) return false;
+  const judul = normJudul(materi);
+  if (/pengurangan/.test(judul)) return false;
+  return /penjumlahan\s+sampai(\s+dengan)?\s+10\b/.test(judul);
+}
+
+export function adalahMtk1Bab2(
+  kelas: string,
+  mapel: string,
+  materi: string,
+): boolean {
+  if (!kelasSatuSd(kelas)) return false;
+  return adalahJudulMtk1Bab2(mapel, materi);
 }
 
 export function cariModulPancasila1Resmi(materi: string): ModulResmiPai | null {
@@ -639,6 +656,7 @@ export function daftarNaskahResmiPublik(): ModulTerbitPublik[] {
       materi: modul.judul,
     })),
     { kelas: "1 SD", mapel: "Matematika", materi: MODUL_MTK1_BAB1.judul },
+    { kelas: "1 SD", mapel: "Matematika", materi: MODUL_MTK1_BAB2.judul },
     ...MODUL_PANCASILA1_BAB1_4.map((modul) => ({
       kelas: "1 SD",
       mapel: "Pendidikan Pancasila",
@@ -706,6 +724,9 @@ export function naskahResmiJikaAda(
   if (adalahPai1Bab2(kelas, mapel, materi)) return naskahPai1Bab2();
   if (adalahMtk1Bab1(kelas, mapel, materi)) {
     return isiCacheDariModulResmi(MODUL_MTK1_BAB1);
+  }
+  if (adalahMtk1Bab2(kelas, mapel, materi)) {
+    return isiCacheDariModulResmi(MODUL_MTK1_BAB2);
   }
   if (adalahPancasila1Bab1(kelas, mapel, materi)) {
     return isiCacheDariModulResmi(MODUL_PANCASILA1_BAB1);
@@ -779,6 +800,7 @@ export function naskahResmiJikaAda(
 export function naskahTampilanResmi(teks?: string): boolean {
   if (naskahTampilanPai1Bab1(teks) || naskahTampilanPai1Bab2(teks)) return true;
   if (naskahTampilanModulResmi(MODUL_MTK1_BAB1, teks)) return true;
+  if (naskahTampilanModulResmi(MODUL_MTK1_BAB2, teks)) return true;
   if (MODUL_PANCASILA1_BAB1_4.some((modul) => naskahTampilanModulResmi(modul, teks))) {
     return true;
   }
@@ -829,6 +851,9 @@ export function teksLisanResmiJikaAda(teks?: string): string | null {
   if (naskahTampilanPai1Bab2(teks)) return null;
   if (naskahTampilanModulResmi(MODUL_MTK1_BAB1, teks)) {
     return teksLisanModulResmi(MODUL_MTK1_BAB1);
+  }
+  if (naskahTampilanModulResmi(MODUL_MTK1_BAB2, teks)) {
+    return teksLisanModulResmi(MODUL_MTK1_BAB2);
   }
   const pancasila = MODUL_PANCASILA1_BAB1_4.find((item) =>
     naskahTampilanModulResmi(item, teks),

@@ -64,9 +64,9 @@ const SUBBAB_BUKU_SISWA: Record<string, Record<string, Record<string, string[]>>
       ],
       "Bab 2: Penjumlahan sampai dengan 10": [
         "Menggabungkan dua kelompok benda",
-        "Menulis penjumlahan dengan angka",
-        "Menjumlahkan sampai 10",
-        "Mengisi evaluasi penjumlahan",
+        "Tiga cara menjumlah sampai 10",
+        "Lompat katak dan kegiatan",
+        "Evaluasi penjumlahan",
       ],
       "Bab 3: Pengurangan sampai dengan 10": [
         "Mengambil sebagian dari sekelompok benda",
