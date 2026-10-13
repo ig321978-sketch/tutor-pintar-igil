@@ -155,6 +155,13 @@ const SUBBAB_BUKU_SISWA: Record<string, Record<string, Record<string, string[]>>
         "Poin penting",
         "Lembar evaluasi siswa",
       ],
+      "Bab 15: Uang dan Pemecahan Masalah": [
+        "Meja uang Lala",
+        "Papan kasir",
+        "Warung Celi",
+        "Poin penting",
+        "Lembar evaluasi siswa",
+      ],
     },
   },
   "3 SD": {

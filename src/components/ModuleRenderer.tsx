@@ -21,6 +21,7 @@ import NaskahMtk1Bab11 from "@/components/NaskahMtk1Bab11";
 import NaskahMtk1Bab12 from "@/components/NaskahMtk1Bab12";
 import NaskahMtk1Bab13 from "@/components/NaskahMtk1Bab13";
 import NaskahMtk1Bab14 from "@/components/NaskahMtk1Bab14";
+import NaskahMtk1Bab15 from "@/components/NaskahMtk1Bab15";
 import NaskahMtk3Bab3 from "@/components/NaskahMtk3Bab3";
 import NaskahPancasila1 from "@/components/NaskahPancasila1";
 import NaskahBindo1 from "@/components/NaskahBindo1";
@@ -57,6 +58,7 @@ import {
   adalahJudulMtk1Bab12,
   adalahJudulMtk1Bab13,
   adalahJudulMtk1Bab14,
+  adalahJudulMtk1Bab15,
   adalahJudulMtk3Bab3,
   adalahJudulPancasila1Bab1,
   adalahJudulPancasila1Bab2,
@@ -292,6 +294,15 @@ function ModuleRenderer({
           /bengkel bentuk wulan|tupai kecil tupi/i.test(naskah))),
     [naskah, mapel, materi, kelas],
   );
+  const pakaiKartuMtkBab15 = useMemo(
+    () =>
+      !kelasDuaSd(kelas) &&
+      !kelasTigaSd(kelas) &&
+      (adalahJudulMtk1Bab15(mapel, materi) ||
+        (naskahTampilanResmi(naskah) &&
+          /warung celi|celengan babi kecil/i.test(naskah))),
+    [naskah, mapel, materi, kelas],
+  );
   const modulPancasila = useMemo(() => {
     if (
       adalahJudulPancasila1Bab1(mapel, materi) ||
@@ -402,7 +413,7 @@ function ModuleRenderer({
     return cariModulPai2DariNaskah(naskah);
   }, [naskah, mapel, materi, kelas]);
   const adaKartuMtk =
-    pakaiKartuMtkBab1 || pakaiKartuMtkBab2 || pakaiKartuMtkBab3 || pakaiKartuMtkBab4 || pakaiKartuMtkBab5 || pakaiKartuMtkBab6 || pakaiKartuMtkBab7 || pakaiKartuMtkBab8 || pakaiKartuMtkBab9 || pakaiKartuMtkBab10 || pakaiKartuMtkBab11 || pakaiKartuMtkBab12 || pakaiKartuMtkBab13 || pakaiKartuMtkBab14;
+    pakaiKartuMtkBab1 || pakaiKartuMtkBab2 || pakaiKartuMtkBab3 || pakaiKartuMtkBab4 || pakaiKartuMtkBab5 || pakaiKartuMtkBab6 || pakaiKartuMtkBab7 || pakaiKartuMtkBab8 || pakaiKartuMtkBab9 || pakaiKartuMtkBab10 || pakaiKartuMtkBab11 || pakaiKartuMtkBab12 || pakaiKartuMtkBab13 || pakaiKartuMtkBab14 || pakaiKartuMtkBab15;
   const modulResmiLain = useMemo(() => {
     if (kelasDuaSd(kelas) || modulPai2 || modulBindo2 || modulMtk2) return null;
     if (pakaiKartuBab1 || pakaiKartuBab2 || adaKartuMtk || modulPancasila || modulBindo || modulPjok || modulInggris || modulMusik || modulSeniRupa || modulKristen || modulKatolik || modulBuddha || modulHindu || modulKhonghucu) return null;
@@ -653,6 +664,13 @@ function ModuleRenderer({
     return (
       <div className={className}>
         <NaskahMtk1Bab14 kelas={kelas} kelamin={kelamin} />
+      </div>
+    );
+  }
+  if (pakaiKartuMtkBab15) {
+    return (
+      <div className={className}>
+        <NaskahMtk1Bab15 kelas={kelas} kelamin={kelamin} />
       </div>
     );
   }

@@ -192,3 +192,17 @@ export const TEMA_MTK1_BAB14: TemaMisi = {
   pertanyaanAkhir: "Tuliskan jumlah bintang bengkel yang sudah kamu kumpulkan.",
   konteksAkhir: "Sepuluh pesanan selesai. Bintang bengkel ada 10. Bengkel besar terbuka.",
 };
+
+export const TEMA_MTK1_BAB15: TemaMisi = {
+  pemandu: "Celi",
+  pengantar:
+    "Bantu Celi menyelesaikan 10 transaksi di warung. Pilih satu pos, dengarkan misinya, lalu jawab dengan suara, kanvas, atau pilihan.",
+  satuan: "Pos",
+  ikonAwal: "💰",
+  ikonAkhir: "🏅",
+  namaBintang: "Koin warung",
+  namaToken: "Kaca periksa",
+  ikonToken: "🔍",
+  pertanyaanAkhir: "Tuliskan jumlah koin warung yang sudah kamu kumpulkan.",
+  konteksAkhir: "Sepuluh transaksi selesai. Koin warung ada 10. Warung besar terbuka.",
+};
