@@ -301,9 +301,9 @@ a.igil-tombol:active {
   }
 
   .isi-modul-hp article article {
-    border-width: 0;
-    box-shadow: none;
-    padding-left: 0.35rem;
-    padding-right: 0.35rem;
+    border-style: solid;
+    border-width: 2px;
+    padding-left: 0.55rem;
+    padding-right: 0.55rem;
   }
 }
