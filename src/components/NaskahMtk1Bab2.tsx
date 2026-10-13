@@ -5,6 +5,7 @@ import HasilJawabanKuis from "@/components/HasilJawabanKuis";
 import KuisTulisKartu from "@/components/KuisTulisKartu";
 import SoalRekamSuara from "@/components/SoalRekamSuara";
 import GambarCerita from "@/components/GambarCerita";
+import TabelInfoGrafis from "@/components/TabelInfoGrafis";
 import TombolVoiceMateriPai1 from "@/components/TombolVoiceMateriPai1";
 import WritingCanvas from "@/components/WritingCanvas";
 import { useKuisMateri } from "@/components/KuisMateriContext";
@@ -862,6 +863,19 @@ export default function NaskahMtk1Bab2({
         <div className="mt-4">
           <TombolVoiceMateriPai1 kelas={kelas} kelamin={kelamin} cuplikan={cuplikanDariNaskah(kartuB.voice, 2_000, 3_000)} />
         </div>
+        <TabelInfoGrafis
+          judul="Infografis: Ayo Menjumlahkan"
+          kepala={["Gambar", "Kalimat", "Hasil"]}
+          baris={[
+            ["🍎🍎 + 🍎🍎🍎", "2 + 3", "5"],
+            ["⭐⭐⭐⭐ + ⭐⭐", "4 + 2", "6"],
+            ["5 lalu lompat 3", "5 + 3", "8"],
+            ["6 jari + 4 jari", "6 + 4", "10"],
+            ["🍩🍩🍩 + 🍩", "3 + 1", "4"],
+            ["🍩 + 🍩🍩🍩", "1 + 3", "4"],
+          ]}
+          kaki="Dibalik tetap sama. 3 + 1 = 1 + 3"
+        />
         <div className="mt-4 space-y-4">
           <article className="rounded-2xl border-2 border-emerald-300 bg-emerald-50 px-4 py-3">
             <p className="text-sm font-black text-[#166534]">Poin 1 · Menjumlahkan = menggabungkan</p>
@@ -882,7 +896,20 @@ export default function NaskahMtk1Bab2({
           <article className="rounded-2xl border-2 border-amber-300 bg-amber-50 px-4 py-3">
             <p className="text-sm font-black text-[#92400E]">Poin 3 · Hitung lanjut, lompat kanguru</p>
             <p className="mt-2 text-sm font-semibold text-slate-700">Simpan 5 di kepala. Lompat 3 kali: 6, 7, 8.</p>
-            <p className="mt-2 text-center text-sm font-black text-[#1C01A5]">0 – 1 – 2 – 3 – 4 – 5 ⤵️ 6 ⤵️ 7 ⤵️ 8 – 9 – 10</p>
+            <div className="mt-3 flex flex-wrap justify-center gap-1">
+              {["0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10"].map((angka) => (
+                <span
+                  key={angka}
+                  className={`rounded-full px-2 py-1 text-sm font-black ${
+                    angka === "6" || angka === "7" || angka === "8"
+                      ? "bg-[#1C01A5] text-white"
+                      : "bg-white text-[#1C01A5]"
+                  }`}
+                >
+                  {angka}
+                </span>
+              ))}
+            </div>
             <p className="text-2xl font-black text-[#1C01A5]">5 + 3 = 8</p>
           </article>
           <article className="rounded-2xl border-2 border-[#7C3AED]/30 bg-[#F5F3FF] px-4 py-3">
@@ -901,16 +928,30 @@ export default function NaskahMtk1Bab2({
           </article>
           <article className="rounded-2xl border-2 border-[#1C01A5]/15 bg-white px-4 py-3">
             <p className="text-sm font-black text-[#1C01A5]">Poin 6 · Teman sepuluh</p>
-            <ul className="mt-2 space-y-1 text-sm font-bold text-slate-700">
-              <li>1 + 9 = 10</li>
-              <li>2 + 8 = 10</li>
-              <li>3 + 7 = 10</li>
-              <li>4 + 6 = 10</li>
-              <li>5 + 5 = 10</li>
-            </ul>
+            <div className="mt-3 overflow-hidden rounded-2xl border-4 border-[#F0AB00]">
+              {[
+                ["1", "9"],
+                ["2", "8"],
+                ["3", "7"],
+                ["4", "6"],
+                ["5", "5"],
+              ].map(([kiri, kanan], indeks) => (
+                <div
+                  key={kiri}
+                  className={`grid grid-cols-3 items-center px-3 py-2 text-center ${
+                    indeks % 2 === 0 ? "bg-[#FFF7ED]" : "bg-[#F0FDF4]"
+                  }`}
+                >
+                  <span className="text-2xl font-black text-[#1C01A5]">{kiri}</span>
+                  <span className="text-2xl font-black text-[#1C01A5]">{kanan}</span>
+                  <span className="text-lg font-black text-[#92400E]">= 10</span>
+                </div>
+              ))}
+            </div>
           </article>
           <article className="rounded-2xl border-2 border-[#0F766E] bg-[#F0FDFA] px-4 py-3">
             <p className="text-sm font-black text-[#0F766E]">Poin 7 · Soal cerita</p>
+            <p className="mt-2 text-center text-2xl">🎈🎈🎈🎈 + 🎈🎈</p>
             <p className="mt-2 text-sm font-semibold text-slate-700">Lala punya 4 balon. Ibu memberi 2 balon lagi.</p>
             <p className="mt-2 text-sm font-bold text-[#1C01A5]">Cari angka 4 dan 2. Kata “memberi lagi” berarti tambah. 4 + 2 = 6. Balon Lala sekarang ada 6.</p>
             <p className="mt-2 text-sm font-semibold text-slate-700">Kata kunci tambah: digabung, ditambah, diberi lagi, datang lagi, semuanya, jumlahnya.</p>

@@ -558,6 +558,21 @@ export default function NaskahMtk2Bab5({
         <p className="mt-4 text-center text-sm font-black uppercase tracking-wide text-[#1C01A5]/70">
           Infografis: Kurangi Terus Sampai Habis
         </p>
+        <div className="mt-4 grid grid-cols-2 gap-2 sm:grid-cols-4">
+          {[
+            ["Ke-1", "9"],
+            ["Ke-2", "6"],
+            ["Ke-3", "3"],
+            ["Ke-4", "0"],
+          ].map(([putaran, sisa]) => (
+            <div key={putaran} className="rounded-2xl border-2 border-[#F0AB00] bg-[#FFF7ED] px-2 py-3 text-center">
+              <p className="text-xs font-black uppercase text-[#92400E]">{putaran}</p>
+              <p className="mt-1 text-xl">🍬🍬🍬</p>
+              <p className="text-xs font-bold text-slate-600">ambil 3</p>
+              <p className="text-lg font-black text-[#1C01A5]">sisa {sisa}</p>
+            </div>
+          ))}
+        </div>
         <div className="mt-4 overflow-hidden rounded-2xl border-4 border-[#F0AB00]">
           <div className="grid grid-cols-3 bg-[#1C01A5] px-3 py-2 text-center text-[10px] font-black uppercase text-white sm:text-xs">
             <span>Keliling</span>

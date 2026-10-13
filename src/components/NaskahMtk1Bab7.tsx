@@ -2,6 +2,7 @@
 
 import { useEffect, useMemo, useRef, useState, type ReactNode } from "react";
 import HasilJawabanKuis from "@/components/HasilJawabanKuis";
+import TabelInfoGrafis from "@/components/TabelInfoGrafis";
 import KuisTulisKartu from "@/components/KuisTulisKartu";
 import SoalRekamSuara from "@/components/SoalRekamSuara";
 import TombolVoiceMateriPai1 from "@/components/TombolVoiceMateriPai1";
@@ -601,6 +602,39 @@ function KartuB({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminGuru }) {
         kelamin={kelamin}
         cuplikan={cuplikanDariNaskah(kartu.voice, 2_000, 3_000)}
       />
+      <TabelInfoGrafis
+        judul="Infografis: Satuan tidak baku"
+        kepala={["Alat", "Cara", "Cocok untuk"]}
+        baris={[
+          ["🖐️ Jengkal", "Jempol sampai kelingking", "Pensil, buku"],
+          ["🙆 Depa", "Dua tangan dibuka", "Meja guru"],
+          ["👣 Langkah", "Satu langkah kaki", "Lorong"],
+          ["💪 Hasta", "Siku sampai ujung jari", "Pita"],
+          ["🥢 Lidi", "Satu batang", "Meja kecil"],
+          ["📎 Klip", "Satu klip", "Pensil"],
+        ]}
+        kaki="Rapat, lurus, dari ujung. Satu orang, satu alat."
+      />
+      <div className="mt-4 overflow-hidden rounded-2xl border-4 border-[#1C01A5]/20">
+        <p className="bg-[#1C01A5] px-3 py-2 text-center text-xs font-black uppercase text-white">
+          Membandingkan dengan alat yang sama
+        </p>
+        <div className="grid sm:grid-cols-2">
+          <div className="border-b-2 border-[#1C01A5]/10 px-4 py-4 sm:border-b-0 sm:border-r-2">
+            <p className="text-xs font-black uppercase text-[#92400E]">Pensil 7 klip</p>
+            <p className="mt-2 text-2xl">📎📎📎📎📎📎📎</p>
+            <p className="text-4xl font-black text-[#1C01A5]">7</p>
+          </div>
+          <div className="px-4 py-4">
+            <p className="text-xs font-black uppercase text-[#166534]">Pensil 4 klip</p>
+            <p className="mt-2 text-2xl">📎📎📎📎</p>
+            <p className="text-4xl font-black text-[#1C01A5]">4</p>
+          </div>
+        </div>
+        <p className="border-t-4 border-[#F0AB00] bg-[#FEF3C7] px-3 py-3 text-center text-lg font-black text-[#1C01A5]">
+          7 &gt; 4 · pensil 7 klip lebih panjang
+        </p>
+      </div>
       <div className="mt-4 space-y-3">
         <article className="rounded-2xl border-2 border-rose-200 bg-rose-50 px-4 py-3">
           <p className="text-sm font-black text-[#1C01A5]">Mata bisa tertipu</p>
@@ -632,7 +666,15 @@ function KartuB({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminGuru }) {
         <article className="rounded-2xl border-2 border-indigo-200 bg-indigo-50 px-4 py-3">
           <p className="text-sm font-black text-[#1C01A5]">Mengurutkan</p>
           <p className="mt-1 text-sm font-semibold text-slate-700">2, 4, 9, 7 diurutkan menjadi 2, 4, 7, 9.</p>
-          <p className="mt-1 text-sm font-black text-[#1C01A5]">Klip → pensil → penggaris → sapu</p>
+          <div className="mt-3 flex flex-wrap items-center justify-center gap-2">
+            {["📎 Klip", "✏️ Pensil", "📏 Penggaris", "🧹 Sapu"].map((benda, indeks) => (
+              <span key={benda} className="flex items-center gap-2">
+                <span className="rounded-full bg-white px-3 py-2 text-sm font-black text-[#1C01A5]">{benda}</span>
+                {indeks < 3 ? <span className="font-black text-[#F0AB00]">→</span> : null}
+              </span>
+            ))}
+          </div>
+          <p className="mt-2 text-sm font-black text-[#1C01A5]">Klip → pensil → penggaris → sapu</p>
         </article>
         <article className="rounded-2xl border-2 border-slate-200 bg-slate-50 px-4 py-3">
           <p className="text-sm font-black text-[#1C01A5]">Tebak, lalu ukur</p>

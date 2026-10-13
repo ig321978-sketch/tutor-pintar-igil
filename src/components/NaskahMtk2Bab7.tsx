@@ -575,6 +575,28 @@ export default function NaskahMtk2Bab7({
         <p className="mt-4 text-center text-sm font-black uppercase tracking-wide text-[#1C01A5]/70">
           Infografis: Gram dan Kilogram
         </p>
+        <div className="mt-4 overflow-hidden rounded-2xl border-4 border-[#1C01A5]/20">
+          <p className="bg-[#1C01A5] px-3 py-2 text-center text-xs font-black uppercase text-white">
+            Bandingkan dua kantong
+          </p>
+          <div className="grid sm:grid-cols-2">
+            <div className="border-b-2 border-[#1C01A5]/10 bg-[#FFF7ED] px-4 py-4 sm:border-b-0 sm:border-r-2">
+              <p className="text-xs font-black uppercase text-[#92400E]">Berat · kilogram</p>
+              <p className="mt-2 text-4xl">🛍️</p>
+              <p className="text-3xl font-black text-[#1C01A5]">kg</p>
+              <p className="text-sm font-bold text-slate-700">Karung gula, apel, badan</p>
+            </div>
+            <div className="bg-[#F0FDF4] px-4 py-4">
+              <p className="text-xs font-black uppercase text-[#166534]">Ringan · gram</p>
+              <p className="mt-2 text-4xl">🍬</p>
+              <p className="text-3xl font-black text-[#1C01A5]">g</p>
+              <p className="text-sm font-bold text-slate-700">Permen, garam, kertas</p>
+            </div>
+          </div>
+          <p className="border-t-4 border-[#F0AB00] bg-[#FEF3C7] px-3 py-3 text-center text-lg font-black text-[#1C01A5]">
+            1 kg = 1.000 g
+          </p>
+        </div>
         <div className="mt-4 overflow-hidden rounded-2xl border-4 border-[#F0AB00]">
           <div className="grid grid-cols-3 bg-[#1C01A5] px-3 py-2 text-center text-[10px] font-black uppercase text-white sm:text-xs">
             <span>Satuan</span>

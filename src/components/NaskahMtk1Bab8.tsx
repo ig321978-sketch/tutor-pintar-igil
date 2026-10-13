@@ -2,6 +2,7 @@
 
 import { useEffect, useMemo, useRef, useState, type ReactNode } from "react";
 import HasilJawabanKuis from "@/components/HasilJawabanKuis";
+import TabelInfoGrafis from "@/components/TabelInfoGrafis";
 import KuisTulisKartu from "@/components/KuisTulisKartu";
 import SoalRekamSuara from "@/components/SoalRekamSuara";
 import TombolVoiceMateriPai1 from "@/components/TombolVoiceMateriPai1";
@@ -645,6 +646,39 @@ function KartuB({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminGuru }) {
         kelas={kelas}
         kelamin={kelamin}
         cuplikan={cuplikanDariNaskah(kartu.voice, 2_000, 3_000)}
+      />
+      <div className="mt-4 overflow-hidden rounded-2xl border-4 border-[#F0AB00]">
+        <p className="bg-[#1C01A5] px-3 py-2 text-center text-xs font-black uppercase text-white">
+          Infografis: Diagram buah
+        </p>
+        {[
+          ["Apel", "🍎", 7],
+          ["Pisang", "🍌", 3],
+          ["Anggur", "🍇", 5],
+        ].map(([nama, ikon, jumlah], indeks) => (
+          <div
+            key={String(nama)}
+            className={`grid grid-cols-[5.5rem_1fr_2rem] items-center gap-2 border-t border-[#F0AB00]/40 px-3 py-3 ${
+              indeks % 2 === 0 ? "bg-[#FFF7ED]" : "bg-[#F0FDF4]"
+            }`}
+          >
+            <span className="text-sm font-black text-[#1C01A5]">{nama}</span>
+            <span className="text-xl leading-none">{String(ikon).repeat(Number(jumlah))}</span>
+            <span className="text-right text-lg font-black text-[#1C01A5]">{jumlah}</span>
+          </div>
+        ))}
+        <p className="border-t-4 border-[#F0AB00] bg-[#FEF3C7] px-3 py-3 text-center text-sm font-black text-[#1C01A5]">
+          Paling banyak apel 7. Paling sedikit pisang 3. Jumlah 15. Selisih 4.
+        </p>
+      </div>
+      <TabelInfoGrafis
+        kepala={["Baris", "Arti", "Jumlah"]}
+        baris={[
+          ["🐟 × 6 dan 🐢 × 4", "Ikan lebih banyak 2", "6 dan 4"],
+          ["🍪🍪🍪 · 1 gambar = 2", "3 × 2 biskuit", "6"],
+          ["🌻 × 5 dan 🌹 × 3", "Satu gambar = satu bunga", "5 dan 3"],
+        ]}
+        kaki="Satu jenis, satu baris. Lihat dulu, hitung kemudian."
       />
       <div className="mt-4 space-y-3">
         <article className="rounded-2xl border-2 border-emerald-200 bg-emerald-50 px-4 py-3">

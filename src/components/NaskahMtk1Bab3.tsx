@@ -5,6 +5,7 @@ import HasilJawabanKuis from "@/components/HasilJawabanKuis";
 import KuisTulisKartu from "@/components/KuisTulisKartu";
 import SoalRekamSuara from "@/components/SoalRekamSuara";
 import GambarCerita from "@/components/GambarCerita";
+import TabelInfoGrafis from "@/components/TabelInfoGrafis";
 import TombolVoiceMateriPai1 from "@/components/TombolVoiceMateriPai1";
 import WritingCanvas from "@/components/WritingCanvas";
 import { useKuisMateri } from "@/components/KuisMateriContext";
@@ -521,6 +522,19 @@ function KartuB({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminGuru }) {
         kelamin={kelamin}
         cuplikan={cuplikanDariNaskah(kartu.voice, 2_000, 3_000)}
       />
+      <TabelInfoGrafis
+        judul="Infografis: Ayo Mengenal Pengurangan"
+        kepala={["Gambar", "Kalimat", "Sisa"]}
+        baris={[
+          ["🍊🍊🍊🍊🍊 − 🍊🍊", "5 - 2", "3"],
+          ["⭐⭐⭐⭐⭐⭐⭐ − ⭐⭐⭐", "7 - 3", "4"],
+          ["🎈🎈🎈🎈🎈🎈🎈🎈 − 🎈🎈🎈", "8 - 3", "5"],
+          ["9 lalu mundur 4", "9 - 4", "5"],
+          ["8 jari, lipat 3", "8 - 3", "5"],
+          ["5, tidak ada yang diambil", "5 - 0", "5"],
+        ]}
+        kaki="Yang hilang diambil. Yang tinggal adalah sisa."
+      />
       <div className="mt-4 space-y-3">
         <article className="rounded-2xl border-2 border-[#F97316]/30 bg-[#FFF7ED] px-4 py-3">
           <p className="text-sm font-black text-[#9A3412]">Mengurangi = mengambil sebagian</p>
@@ -535,12 +549,26 @@ function KartuB({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminGuru }) {
           <p className="mt-2 text-sm font-semibold text-slate-700">
             Semuanya 8 balon. Yang hilang 3. Sisa 5. Tanya dulu: semuanya berapa, yang hilang berapa, sisanya berapa?
           </p>
+          <div className="mt-3 grid grid-cols-3 gap-2 text-center">
+            {[
+              ["8", "semuanya", "🎈"],
+              ["3", "hilang", "💨"],
+              ["5", "sisa", "🎈"],
+            ].map(([angka, nama, ikon]) => (
+              <div key={nama} className="rounded-xl bg-white px-2 py-2">
+                <p className="text-2xl">{ikon}</p>
+                <p className="text-2xl font-black text-[#1C01A5]">{angka}</p>
+                <p className="text-xs font-bold text-slate-600">{nama}</p>
+              </div>
+            ))}
+          </div>
         </article>
         <article className="rounded-2xl border-2 border-[#16A34A]/30 bg-[#F0FDF4] px-4 py-3">
           <p className="text-sm font-black text-[#166534]">Cara 1 · Hitung yang tersisa</p>
-          <div className="mt-2 text-center">
-            <IkonUlang ikon="⭐" jumlah={7} />
-          </div>
+          <p className="mt-2 text-center text-2xl">
+            <span>⭐⭐⭐⭐</span>
+            <span className="ml-2 text-slate-400 line-through">⭐⭐⭐</span>
+          </p>
           <p className="mt-2 text-sm font-semibold text-slate-700">Dikurangi 3 bintang. Yang tidak dicoret ada 4. 7 - 3 = 4.</p>
         </article>
         <article className="rounded-2xl border-2 border-[#F0AB00] bg-[#FFF8E8] px-4 py-3">

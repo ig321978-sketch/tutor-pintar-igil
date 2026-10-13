@@ -2,6 +2,7 @@
 
 import { useEffect, useMemo, useRef, useState, type ReactNode } from "react";
 import HasilJawabanKuis from "@/components/HasilJawabanKuis";
+import TabelInfoGrafis from "@/components/TabelInfoGrafis";
 import KuisTulisKartu from "@/components/KuisTulisKartu";
 import SoalRekamSuara from "@/components/SoalRekamSuara";
 import TombolVoiceMateriPai1 from "@/components/TombolVoiceMateriPai1";
@@ -654,6 +655,19 @@ function KartuB({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminGuru }) {
         kelamin={kelamin}
         cuplikan={cuplikanDariNaskah(kartu.voice, 2_000, 3_000)}
       />
+      <TabelInfoGrafis
+        judul="Infografis: Hitung maju dan mundur"
+        kepala={["Langkah", "Kalimat", "Hasil"]}
+        baris={[
+          ["12 lalu 13 14 15 16 17", "12 + 5", "17"],
+          ["18 mundur 6 kali", "18 - 6", "12"],
+          ["9 + 1 + 5", "9 + 6", "15"],
+          ["14 - 4 - 2", "14 - 6", "8"],
+          ["8 + 7 dan saudaranya", "15 - 7", "8"],
+          ["13 + 5 stiker", "13 + 5", "18"],
+        ]}
+        kaki="10 + 3 = 13 dan 16 - 3 = 13. Keduanya sama."
+      />
       <div className="mt-4 space-y-3">
         <article className="rounded-2xl border-2 border-sky-200 bg-sky-50 px-4 py-3">
           <p className="text-sm font-black text-[#1C01A5]">Hitung maju</p>
@@ -679,9 +693,10 @@ function KartuB({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminGuru }) {
                 key={angka}
                 type="button"
                 onClick={() => bacakan(`${angka} sama dengan ${pecah.replace("+", "ditambah")}`)}
-                className="rounded-xl bg-white px-3 py-2 text-left text-sm font-bold text-[#1C01A5]"
+                className="grid grid-cols-[3.5rem_1fr] items-center rounded-xl border-2 border-[#F0AB00] bg-white px-3 py-2 text-left"
               >
-                {angka} → {pecah}
+                <span className="text-2xl font-black text-[#1C01A5]">{angka}</span>
+                <span className="text-sm font-black text-[#92400E]">{pecah}</span>
               </button>
             ))}
           </div>
