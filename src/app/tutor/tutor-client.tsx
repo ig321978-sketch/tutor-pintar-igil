@@ -1297,10 +1297,9 @@ export default function TutorAI() {
       void muatUjianAcak();
     }
     window.setTimeout(() => {
-      const semua = document.querySelectorAll(`[data-kartu-bagian="${bagian}"]`);
-      const terlihat =
-        [...semua].find((el) => el.getClientRects().length > 0) ?? semua[0];
-      terlihat?.scrollIntoView({ behavior: "smooth", block: "start" });
+      document
+        .getElementById(`kartu-bagian-${bagian}`)
+        ?.scrollIntoView({ behavior: "smooth", block: "start" });
     }, 50);
   };
 

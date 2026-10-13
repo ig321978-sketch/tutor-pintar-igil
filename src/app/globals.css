@@ -287,23 +287,3 @@ a.igil-tombol:active {
   font-family: ui-sans-serif, system-ui, sans-serif !important;
   paint-order: stroke fill;
 }
-
-@media (max-width: 639px) {
-  .isi-modul-hp section {
-    border-width: 2px;
-    padding-left: 0.7rem;
-    padding-right: 0.7rem;
-  }
-
-  .isi-modul-hp section article {
-    padding-left: 0.55rem;
-    padding-right: 0.55rem;
-  }
-
-  .isi-modul-hp article article {
-    border-style: solid;
-    border-width: 2px;
-    padding-left: 0.55rem;
-    padding-right: 0.55rem;
-  }
-}
