@@ -13,12 +13,12 @@ export const MODUL_MTK3_BAB1: ModulResmiPai = {
   judul: JUDUL_MTK3_BAB1,
   pola: /bilangan sampai 10\.?000/,
   motivasi:
-    "Aldi, Naya, dan Fikri belajar membaca, membandingkan, dan mengurutkan bilangan sampai 10.000 bersama Panda Bulu di papan skor turnamen.",
-  kunciJawaban: "A,B,C,C,A,C,C,A,C,A",
+    "Aldi, Naya, dan Fikri belajar membaca, membandingkan, dan mengurutkan bilangan sampai 10.000 bersama panda Pandu.",
+  kunciJawaban: "A,B,C,C,A,C,C,A,D,A",
   sketsaKartu: [
-    "Aldi, Naya, dan Fikri membaca skor 4.725 di lapangan sekolah bersama Panda Bulu.",
+    "Aldi, Naya, dan Fikri membaca 4.725 bersama Pandu.",
     "Empat rumah angka: ribuan, ratusan, puluhan, dan satuan.",
-    "Bulu menjaga Menara Skor di stadion turnamen.",
+    "Pandu menjadi juri di papan skor kejuaraan.",
     "Poin penting dan lembar evaluasi bilangan sampai 10.000.",
   ],
   latihan: pg([
@@ -71,11 +71,11 @@ B) 7.999
 C) Keduanya sama
 D) Tidak bisa ditentukan`,
     `[Soal 9 - PG - Tipe: MOTS]
-Pada papan 3.⬜56, angka yang hilang ada di rumah ratusan dan angkanya 4. Skor lengkapnya...
-A) 3.256
-B) 3.356
-C) 3.456
-D) 3.556`,
+Pada papan 3.⬜56, petunjuknya rumah kosong. Angka yang hilang...
+A) 2
+B) 3
+C) 4
+D) 0`,
     `[Soal 10 - PG - Tipe: HOTS]
 Skor Biru 3.480, Merah 3.408, Hijau 3.840, Kuning 3.084. Juara pertama adalah...
 A) Hijau
@@ -88,8 +88,8 @@ D) Kuning`,
       kode: "A",
       judul: "A. Naskah Bergambar",
       pengantar:
-        "Aldi, Naya, Fikri, dan Panda Bulu membaca, membandingkan, lalu mengurutkan skor ribuan di lapangan sekolah.",
-      labelDaftar: "Empat adegan bilangan ribuan",
+        "Aldi, Naya, Fikri, dan panda Pandu membaca, membandingkan, lalu mengurutkan bilangan sampai 10.000.",
+      labelDaftar: "Lima adegan bilangan ribuan",
       kolom: 1,
       item: [
         {
@@ -120,6 +120,13 @@ D) Kuning`,
             "Skor 6.540, 2.180, 6.290, 9.050, dan 2.990 diurutkan 2.180, 2.990, 6.290, 6.540, 9.050. Kelompokkan ribuan dulu, lalu rapikan di dalam kelompok.",
           contoh: "Kecil ke besar atau besar ke kecil.",
         },
+        {
+          nama: "Bilangan dengan angka nol",
+          singkat: "Rumah kosong",
+          uraian:
+            "6.084 dibaca enam ribu delapan puluh empat. Angka nol menandai rumah kosong: tidak disebut, tetapi wajib ditulis. Tanpa nol, 6.084 berubah menjadi 684.",
+          contoh: "Nol tidak diucapkan, tetapi wajib ditulis.",
+        },
       ],
       kuis: [
         { pertanyaan: "Baca bilangan 3.568 dengan lengkap.", alias: ["tiga ribu lima ratus enam puluh delapan", "3568"] },
@@ -130,6 +137,8 @@ D) Kuning`,
         { pertanyaan: "Tulis simbol antara 4.086 dan 4.806.", alias: ["lebih kecil", "kurang dari"] },
         { pertanyaan: "Sebutkan yang paling kecil: 7.300, 3.700, 7.030.", alias: ["3700", "tiga ribu tujuh ratus"] },
         { pertanyaan: "Urutkan 5.482, 1.905, 8.040, 3.276 dari kecil ke besar.", alias: ["1905 3276 5482 8040"] },
+        { pertanyaan: "Baca 5.402 dan sebutkan rumah yang kosong.", alias: ["5402", "puluhan"] },
+        { pertanyaan: "Tulis tujuh ribu sembilan ratus lima dan sebutkan rumah yang kosong.", alias: ["7905", "puluhan"] },
         { pertanyaan: "Berapa nilai angka 4 pada 8.463?", alias: ["400"] },
         { pertanyaan: "Pasangkan 3.507, 9.270, dan 6.003 dengan bacaannya.", alias: ["tiga ribu lima ratus tujuh", "sembilan ribu dua ratus tujuh puluh", "enam ribu tiga"] },
         { pertanyaan: "Susun 7.040, 4.700, 7.400, 4.070 dari terkecil.", alias: ["4070", "4700", "7040", "7400"] },
@@ -148,7 +157,7 @@ D) Kuning`,
       kode: "B",
       judul: "B. Infografis",
       pengantar: "Cara membaca, memecah nilai tempat, membandingkan, dan mengurutkan bilangan sampai 10.000.",
-      labelDaftar: "Empat papan bilangan",
+      labelDaftar: "Lima papan bilangan",
       kolom: 1,
       item: [
         {
@@ -177,6 +186,13 @@ D) Kuning`,
           uraian: "5.208, 1.940, 5.080, dan 3.612 diurutkan 1.940, 3.612, 5.080, 5.208.",
           contoh: "Kelompokkan dulu, rapikan kemudian.",
         },
+        {
+          nama: "Bilangan dengan angka nol",
+          singkat: "Rumah yang tidak disebut",
+          uraian:
+            "4.050 dibaca empat ribu lima puluh. Ratusan dan satuan tidak disebut, jadi keduanya diisi nol. 6.084 dan 6.840 memakai angka yang sama, tetapi rumah angka 8 berbeda.",
+          contoh: "Rumah yang tidak disebut, isinya nol.",
+        },
       ],
       kuis: [
         { pertanyaan: "Baca bilangan 5.402.", alias: ["lima ribu empat ratus dua", "5402"] },
@@ -187,6 +203,8 @@ D) Kuning`,
         { pertanyaan: "Tulis simbol antara 3.908 dan 3.890.", alias: ["lebih besar"] },
         { pertanyaan: "Sebutkan yang paling kecil: 4.500, 4.050, 4.005.", alias: ["4005", "empat ribu lima"] },
         { pertanyaan: "Urutkan 2.760, 2.067, 2.670 dari kecil ke besar.", alias: ["2067 2670 2760"] },
+        { pertanyaan: "Baca 8.007 dan sebutkan rumah yang kosong.", alias: ["8007", "ratusan", "puluhan"] },
+        { pertanyaan: "Tulis sembilan ribu enam puluh.", alias: ["9060"] },
         { pertanyaan: "Manakah bacaan yang benar untuk 7.050?", alias: ["tujuh ribu lima puluh"] },
         { pertanyaan: "Pasangkan angka 6, 4, dan 8 pada 6.487 dengan nilainya.", alias: ["6000", "400", "80"] },
         { pertanyaan: "Susun 3.099, 9.003, 3.909, 9.300 dari terbesar.", alias: ["9300", "9003", "3909", "3099"] },
@@ -203,18 +221,17 @@ D) Kuning`,
     },
     {
       kode: "C",
-      judul: "C. Menara Skor Bulu",
-      pengantar:
-        "Siswa menjadi pencatat skor. Catatan yang benar menaikkan menara. Sepuluh pos selesai, sepuluh piala terkumpul, podium juara terbuka.",
-      labelDaftar: "Sepuluh pos menara skor",
+      judul: "C. Papan Skor Kejuaraan Pandu",
+      pengantar: "Siswa menjadi juri pencatat skor. Sepuluh pos selesai, sepuluh piala terkumpul.",
+      labelDaftar: "Sepuluh pos papan skor",
       kolom: 1,
       item: [
         {
           nama: "Catatan skor",
           singkat: "Baca, bandingkan, urutkan",
           uraian:
-            "Level membaca 4.827, membandingkan 3.462 dengan 3.426, mengurutkan lima skor, melengkapi 7.045, lalu memakai skor itu untuk mengurutkan papan penuh. Salah mencatat tidak mengurangi piala. Kumpulkan 10 piala.",
-          contoh: "Skor Level 4 dipakai lagi di Level 5.",
+            "Level 1 membaca 4.827. Level 2 memeriksa angka 6 pada 7.063, nilainya 60. Level 3 membandingkan 3.462 dengan 3.426. Level 4 mengurutkan lima skor. Level 5 memeriksa bahwa 6 ribu 0 ratus 8 puluh 4 sama dengan 6.084. Kumpulkan 10 piala.",
+          contoh: "Level 2 dan Level 5 soal yang berbeda.",
         },
       ],
       kuis: [
@@ -224,7 +241,7 @@ D) Kuning`,
         { pertanyaan: "Pasangkan 2.090, 5.701, dan 4.008 dengan bacaannya.", alias: ["dua ribu sembilan puluh", "lima ribu tujuh ratus satu", "empat ribu delapan"] },
         { pertanyaan: "Urutkan 4.560, 4.065, 4.650, 4.506 dari terkecil.", alias: ["4065 4506 4560 4650"] },
         { pertanyaan: "Periksa tiga pernyataan papan skor.", alias: ["benar", "salah"] },
-        { pertanyaan: "Pada 3.⬜56, angka di rumah ratusan yang berkilau adalah 4. Berapa angka yang hilang?", alias: ["4"] },
+        { pertanyaan: "Pada 3.056, angka di rumah kosong adalah berapa?", alias: ["0"] },
         { pertanyaan: "Mana skor terbesar: 5.009, 5.090, atau 5.900?", alias: ["5900"] },
         { pertanyaan: "Deret naik 250: 1.000, 1.250, 1.500, berikutnya?", alias: ["1750"] },
         { pertanyaan: "Ucapkan angka empat ribu sembilan ratus tiga puluh.", alias: ["4930", "empat ribu sembilan ratus tiga puluh"] },
@@ -253,7 +270,7 @@ D) Kuning`,
           contoh: "Kelompokkan dulu sebelum mengurutkan.",
         },
         {
-          nama: "Turnamen Bulu",
+          nama: "Kejuaraan Pandu",
           singkat: "Tiga langkah",
           uraian:
             "Hijau 3.840 juara pertama. Kuning 3.084 peringkat terakhir. Selisihnya 3.840 dikurangi 3.084 sama dengan 756.",
@@ -265,7 +282,7 @@ D) Kuning`,
         { pertanyaan: "Bagaimana membaca 5.037?", alias: ["lima ribu tiga puluh tujuh"] },
         { pertanyaan: "Ucapkan angka dari delapan ribu sembilan puluh.", alias: ["8090", "delapan ribu sembilan puluh"] },
         { pertanyaan: "Pada 3.764, apakah angka 6 bernilai 6?", alias: ["60"] },
-        { pertanyaan: "Pasangkan 4.829, 8.042, dan 2.984 dengan angka terbesarnya.", alias: ["ratusan 8", "ribuan 8", "puluhan 9"] },
+        { pertanyaan: "Pasangkan 4.829, 8.042, dan 2.984 dengan angka terbesarnya.", alias: ["satuan 9", "ribuan 8", "ratusan 9"] },
         { pertanyaan: "Urutkan 6.075, 6.750, 6.507, 6.705 dari terkecil.", alias: ["6075 6507 6705 6750"] },
         { pertanyaan: "Deret 4.200 – 4.400 – 4.600 – ⬜ – 5.000. Angka yang hilang?", alias: ["4800"] },
         { pertanyaan: "Susun 9.009, 9.900, 9.090, 9.099 dari terbesar.", alias: ["9900", "9099", "9090", "9009"] },

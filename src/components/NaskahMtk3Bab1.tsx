@@ -22,7 +22,11 @@ import {
   baca3568,
   baca4930,
   baca5402,
+  baca5402Rumah,
+  baca8007,
   baca8090,
+  bandingRumah,
+  kejuaraanPandu,
   lebihBesar5671,
   lebihBesar6521,
   nilaiTigaRatus,
@@ -33,10 +37,10 @@ import {
   pecah7916,
   pecah9123,
   pecah9406,
-  simbolBanding,
   tulis6293,
   tulis7905,
-  turnamenBulu,
+  tulis7905Rumah,
+  tulis9060,
   urutEvaluasi,
   urutKartuB,
   urutSub4,
@@ -70,14 +74,14 @@ const WARNA_DIALOG: Record<string, string> = {
   Aldi: "border-[#2563EB]/20 bg-[#EFF6FF]",
   Naya: "border-[#DB2777]/20 bg-[#FDF2F8]",
   Fikri: "border-[#16A34A]/20 bg-[#F0FDF4]",
-  Bulu: "border-teal-300 bg-teal-50",
+  Pandu: "border-amber-300 bg-amber-50",
 };
 
 const WAJAH_DIALOG: Record<string, string> = {
   Aldi: "👦",
   Naya: "👧",
   Fikri: "👦",
-  Bulu: "🐼",
+  Pandu: "🐼",
 };
 
 function Dialog({ nama, anak }: { nama: string; anak: string }) {
@@ -548,7 +552,7 @@ const RUMAH = [
 const BACAAN_A = ["Sembilan ribu dua ratus tujuh puluh", "Tiga ribu lima ratus tujuh", "Enam ribu tiga"];
 const NILAI_B = ["80", "6.000", "400"];
 const BACAAN_C = ["Lima ribu tujuh ratus satu", "Dua ribu sembilan puluh", "Empat ribu delapan"];
-const ANGKA_BESAR = ["Ratusan: 8", "Ribuan: 8", "Puluhan: 9"];
+const ANGKA_BESAR = ["Satuan: 9", "Ribuan: 8", "Ratusan: 9"];
 
 function KartuA({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminGuru }) {
   const kartu = MODUL_MTK3_BAB1.kartu[0];
@@ -557,13 +561,13 @@ function KartuA({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminGuru }) {
       <KepalaKartu
         ikon="👦👧🐼"
         judul={kartu.judul}
-        anak="Aldi, Naya, Fikri, dan Panda Bulu"
+        anak="Aldi, Naya, Fikri, dan Pandu"
         kelas={kelas}
         kelamin={kelamin}
         cuplikan={cuplikanKalimat(kartu.voice[0] ?? [])}
       />
       <p className="mt-3 text-center text-sm font-semibold text-slate-600">
-        Tujuan: membaca, menulis, membandingkan, dan mengurutkan bilangan sampai 10.000, serta memahami nilai tempat.
+        Tujuan: membaca, menulis, membandingkan, dan mengurutkan bilangan sampai 10.000; memahami nilai tempat; serta menjelaskan mengapa posisi angka mengubah nilainya.
       </p>
       <div className="mt-4 space-y-4">
         <Adegan
@@ -574,29 +578,29 @@ function KartuA({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminGuru }) {
           kelas={kelas}
           kelamin={kelamin}
           penjelasan={[
-            "Anak-anak, sampai sekarang kalian sudah bisa menghitung sampai 999. Sekarang kita naik satu tingkat lagi, sampai 10.000.",
-            "Bilangan ribuan punya empat angka. Angka paling kiri menunjukkan ribuan. Ayo kita baca bersama-sama!",
+            "Sampai kelas dua, kalian menghitung sampai sembilan ratus sembilan puluh sembilan. Sekarang kita masuk ke bilangan empat angka.",
+            "Bilangan empat angka punya aturan baca yang berbeda dari bilangan tiga angka. Mari kita perhatikan apa yang berubah.",
           ]}
           simbol={RUMAH}
         >
-          <Dialog nama="Aldi" anak="Naya, papan skor ini menulis 4.725 langkah. Itu dibaca apa?" />
-          <Dialog nama="Naya" anak="Empat ribu tujuh ratus dua puluh lima!" />
-          <Dialog nama="Fikri" anak="Kok bisa sepanjang itu?" />
-          <Dialog nama="Aldi" anak="Karena setiap angka punya nama rumahnya. 4 ribuan, 7 ratusan, 2 puluhan, 5 satuan." />
-          <Dialog nama="Bulu" anak="Ayo baca lengkap! Empat ribu tujuh ratus dua puluh lima!" />
-          <Dialog nama="Naya" anak="Ada titiknya juga, ya. Itu untuk apa?" />
-          <Dialog nama="Aldi" anak="Titik itu pemisah ribuan. Supaya angkanya mudah dibaca." />
-          <Dialog nama="Fikri" anak="Jadi 4.725 dan 4725 itu angka yang sama?" />
-          <Dialog nama="Bulu" anak="Sama! Titiknya cuma hiasan biar rapi!" />
+          <Dialog nama="Aldi" anak="Papan ini menulis 4.725. Menurutmu, bagaimana cara membacanya?" />
+          <Dialog nama="Fikri" anak="Empat, tujuh, dua, lima?" />
+          <Dialog nama="Naya" anak="Itu membaca angkanya satu per satu, bukan membaca bilangannya. Coba pikirkan: 4.725 itu lebih dekat ke 4.000 atau ke 5.000?" />
+          <Dialog nama="Fikri" anak="Lebih dekat ke 4.000. Berarti angka 4 itu ribuannya, ya?" />
+          <Dialog nama="Pandu" anak="Betul. Setiap angka punya nama rumahnya. Angka 4 di rumah ribuan, 7 di ratusan, 2 di puluhan, 5 di satuan." />
+          <Dialog nama="Aldi" anak="Jadi membacanya bertingkat: empat ribu, tujuh ratus, dua puluh, lima." />
+          <Dialog nama="Naya" anak="Perhatikan juga titiknya. 4.725 — titik itu memisahkan ribuan supaya tidak salah hitung." />
+          <Dialog nama="Fikri" anak="Kalau tidak ada titiknya, apakah bilangannya berbeda?" />
+          <Dialog nama="Pandu" anak="Bilangannya sama. Titik itu tanda baca, bukan angka." />
           <Papan anak="4.725 = 4 ribuan + 7 ratusan + 2 puluhan + 5 satuan" />
           <p className="text-center text-sm font-bold text-slate-700">Dibaca: empat ribu tujuh ratus dua puluh lima.</p>
-          <p className="text-sm font-black text-[#1C01A5]">Bilangan ribuan punya 4 angka. Baca dari kiri ke kanan sesuai nama rumahnya.</p>
+          <p className="text-sm font-black text-[#1C01A5]">Membaca bilangan empat angka berarti menyebutkan nama setiap rumahnya, bukan menyebut angkanya berurutan.</p>
           <KuisSuara
             id={idKuis("A", 0)}
-            pertanyaan="Baca bilangan 3.568 dengan lengkap!"
+            pertanyaan="Baca bilangan 3.568 dengan lengkap."
             periksa={baca3568}
-            petunjuk="Mulai dari kiri. Angka pertamanya ribuan."
-            benar="Bagus! Kamu sudah bisa baca bilangan ribuan!"
+            petunjuk="Angka pertama bukan tiga, melainkan tiga ribu."
+            benar="Bagus. Kamu sudah menyebut setiap rumahnya."
           />
           <TulisBebas
             id={idKuis("A", 1)}
@@ -620,35 +624,37 @@ function KartuA({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminGuru }) {
           kelas={kelas}
           kelamin={kelamin}
           penjelasan={[
-            "Setiap angka punya nilai asli dan nilai tempat. Angka 4 kalau berdiri di rumah satuan, nilainya cuma 4.",
-            "Tapi kalau berdiri di rumah ribuan, nilainya 4.000. Jauh sekali, kan? Ayo kita pelajari.",
+            "Sekarang pertanyaan yang lebih dalam. Mengapa angka yang sama bisa punya nilai berbeda? Jawabannya ada pada posisinya.",
+            "Mari kita selidiki bersama.",
           ]}
           simbol={RUMAH}
         >
-          <Dialog nama="Aldi" anak="Perhatikan angka 6.482. Berapa nilai angka 8?" />
-          <Dialog nama="Fikri" anak="Delapan?" />
-          <Dialog nama="Naya" anak="Cek rumahnya dulu! Angka 8 ada di puluhan. Jadi nilainya 80." />
-          <Dialog nama="Aldi" anak="Nah, itu bedanya nilai asli dan nilai tempat." />
-          <Dialog nama="Bulu" anak="Angka aslinya 8, tapi nilai tempatnya 80!" />
-          <Dialog nama="Fikri" anak="Kalau angka 4 di situ?" />
-          <Dialog nama="Naya" anak="Rumahnya ratusan. Jadi nilainya 400." />
-          <Dialog nama="Aldi" anak="Dan angka 6 di ribuan, nilainya 6.000." />
+          <Dialog nama="Fikri" anak="Pertanyaan saya: mengapa angka 8 pada 6.482 bernilai 80, bukan 8?" />
+          <Dialog nama="Aldi" anak="Karena ia ada di rumah puluhan." />
+          <Dialog nama="Fikri" anak="Tapi angka 8-nya tetap 8, kan?" />
+          <Dialog nama="Naya" anak="Justru itu pertanyaan yang bagus. Angka 8 itu tetap 8, tapi rumahnya membuat nilai totalnya berubah." />
+          <Dialog nama="Pandu" anak="Coba pikirkan seperti ini: satu puluhan itu isi sepuluh. Jadi rumah puluhan berarti angka itu dikalikan sepuluh." />
+          <Dialog nama="Aldi" anak="Berarti rumah ratusan dikali seratus?" />
+          <Dialog nama="Pandu" anak="Ya. Dan ribuan dikali seribu. Setiap pindah satu rumah ke kiri, nilainya sepuluh kali lipat." />
+          <Dialog nama="Fikri" anak="Ah, jadi bukan angkanya yang berubah, tapi pengalinya." />
+          <Dialog nama="Naya" anak="Itu sebabnya dua bilangan bisa punya angka yang persis sama tetapi nilainya berbeda jauh." />
           <Papan anak="6.482 = 6.000 + 400 + 80 + 2" />
           <p className="text-sm font-semibold text-slate-700">Setiap angka pindah satu rumah ke kiri, nilainya dikali 10.</p>
-          <p className="text-sm font-black text-[#1C01A5]">Nilai tempat tergantung posisinya. Rumah kiri selalu lebih besar.</p>
+          <p className="text-sm font-black text-[#1C01A5]">Nilai sebuah angka bergantung pada rumahnya, bukan pada angkanya sendiri.</p>
           <KuisSuara
             id={idKuis("A", 2)}
-            pertanyaan="Pada 5.374, berapa nilai angka tiga? Ucapkan!"
+            pertanyaan="Berapa nilai angka tiga pada 5.374? Jelaskan singkat alasannya."
             periksa={nilaiTigaRatus}
-            petunjuk="Lihat rumahnya dulu. Angka 3 ada di rumah apa?"
+            petunjuk="Cari rumahnya dulu. Rumah itu yang menentukan pengalinya."
+            benar="Tiga ratus, karena angka 3 ada di rumah ratusan."
           />
           <TulisBebas
             id={idKuis("A", 3)}
             judul="Pemecahan nilai tempat"
             visual={<Papan anak="7.916 = ⬜ + ⬜ + ⬜ + ⬜" />}
-            pertanyaan="Tulis pemecahan nilai tempatnya!"
+            pertanyaan="Tulis pemecahan nilai tempatnya, lalu beri nama setiap rumah di bawah angkanya."
             pesanSalah="Ribuan, ratusan, puluhan, lalu satuan."
-            bantuan="Rumahnya: ribuan 7.000, ratusan 900, puluhan 10, satuan 6."
+            bantuan="7.000 + 900 + 10 + 6. Rumahnya ribuan, ratusan, puluhan, satuan."
             umpan="7.000 + 900 + 10 + 6."
             periksa={pecah7916}
             alias={["7000 + 900 + 10 + 6", "tujuh ribu sembilan ratus sepuluh enam"]}
@@ -664,37 +670,38 @@ function KartuA({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminGuru }) {
           kelas={kelas}
           kelamin={kelamin}
           penjelasan={[
-            "Untuk membandingkan bilangan ribuan, kita lihat dari angka paling kiri dulu.",
-            "Kalau angka ribuan sudah beda, kita tidak perlu melihat angka lainnya. Kalau sama, baru kita lanjut ke ratusan, puluhan, lalu satuan.",
+            "Untuk membandingkan dua bilangan, kita tidak perlu memeriksa semua angkanya. Kita periksa dari yang paling besar nilainya.",
+            "Kalau sudah berbeda, pemeriksaan selesai di situ.",
           ]}
         >
-          <Dialog nama="Naya" anak="Merah 3.842, Biru 3.291. Mana yang menang?" />
-          <Dialog nama="Fikri" anak="Ribuan sama-sama 3! Bagaimana?" />
-          <Dialog nama="Aldi" anak="Kalau ribuan sama, lanjut ke ratusan. Merah 8, Biru 2." />
-          <Dialog nama="Naya" anak="8 lebih besar dari 2. Jadi Merah menang!" />
-          <Dialog nama="Bulu" anak="3.842 lebih besar dari 3.291! Merah juara!" />
-          <Dialog nama="Aldi" anak="Kalau ribuan sudah beda, kita berhenti di situ. Misal 8.000 dan 7.999, ya 8.000 yang lebih besar." />
-          <Dialog nama="Fikri" anak="Jadi 8.000 lebih besar dari 7.999 meskipun 7.999 punya banyak angka 9?" />
-          <Dialog nama="Naya" anak="Iya! Karena ribuannya berbeda." />
+          <Dialog nama="Naya" anak="Merah 3.842, Biru 3.291. Menurutmu mana yang menang?" />
+          <Dialog nama="Fikri" anak="Sama-sama 3.000-an. Jadi harus diperiksa lebih jauh, ya?" />
+          <Dialog nama="Aldi" anak="Betul. Ribuannya sama, jadi kita pindah ke rumah berikutnya: ratusan." />
+          <Dialog nama="Naya" anak="Merah ratusannya 8, Biru 2. Sudah berbeda. Pemeriksaan berhenti di sini." />
+          <Dialog nama="Pandu" anak="Perhatikan bahwa puluhan dan satuan tidak perlu diperiksa lagi. Sekali bertemu perbedaan, keputusannya sudah pasti." />
+          <Dialog nama="Fikri" anak="Jadi kalau 8.000 dan 7.999?" />
+          <Dialog nama="Aldi" anak="Ribuannya sudah berbeda: 8 dan 7. Jadi 8.000 lebih besar, walaupun 7.999 punya lebih banyak angka 9." />
+          <Dialog nama="Fikri" anak="Itu yang dulu membuat saya bingung. Ternyata rumah paling kiri yang menentukan." />
           <Papan anak="3.842 > 3.291 karena ratusan 8 lebih besar dari 2. 8.000 > 7.999 karena ribuannya beda." />
-          <p className="text-sm font-black text-[#1C01A5]">Bandingkan dari kiri. Ribuan dulu, baru ratusan, puluhan, satuan.</p>
+          <p className="text-sm font-black text-[#1C01A5]">Periksa dari rumah paling kiri. Begitu ada perbedaan, pemeriksaan berhenti.</p>
           <KuisSuara
             id={idKuis("A", 4)}
-            pertanyaan="Mana yang lebih besar, 5.671 atau 5.619? Ucapkan angkanya!"
+            pertanyaan="Mana yang lebih besar, 5.671 atau 5.619? Sebutkan bilangannya, lalu sebutkan rumah mana yang menentukan."
             periksa={lebihBesar5671}
-            petunjuk="Ribuan dan ratusan sama. Lihat puluhannya: 7 dan 1."
+            petunjuk="Ribuan dan ratusan masih sama. Pindah ke rumah berikutnya."
+            benar="Lima ribu enam ratus tujuh puluh satu. Rumah puluhan yang menentukan."
           />
           <TulisBebas
             id={idKuis("A", 5)}
             judul="Simbol perbandingan"
             visual={<Papan anak="[ 4.086 ] ⬜ [ 4.806 ]" />}
-            pertanyaan="Tulis simbol lebih besar, lebih kecil, atau sama dengan."
-            pesanSalah="Ribuan sama. Lihat ratusannya."
-            bantuan="Ratusan 0 dan 8 berkedip. 0 lebih kecil dari 8, jadi 4.086 lebih kecil."
-            umpan="4.086 lebih kecil dari 4.806."
-            periksa={(teks) => simbolBanding(teks, "<")}
-            alias={["lebih kecil", "kurang dari"]}
-            konteks="4.086 lebih kecil dari 4.806."
+            pertanyaan="Tulis simbol lebih besar, lebih kecil, atau sama dengan, lalu tulis rumah mana yang menentukan."
+            pesanSalah="Ribuan sama. Lihat ratusannya: 0 dan 8."
+            bantuan="4.086 lebih kecil. Rumah ratusan yang menentukan."
+            umpan="Lebih kecil, karena ratusan 0 dan 8."
+            periksa={(teks) => bandingRumah(teks, "<", "ratusan")}
+            alias={["lebih kecil", "ratusan"]}
+            konteks="4.086 lebih kecil dari 4.806. Rumah ratusan yang menentukan."
           />
         </Adegan>
 
@@ -706,23 +713,26 @@ function KartuA({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminGuru }) {
           kelas={kelas}
           kelamin={kelamin}
           penjelasan={[
-            "Mengurutkan bilangan artinya menyusun dari yang terkecil ke terbesar, atau sebaliknya.",
-            "Caranya, bandingkan angka ribuannya dulu, kelompokkan, lalu rapikan di dalam kelompok yang sama.",
+            "Mengurutkan beberapa bilangan sekaligus bukan pekerjaan yang sulit kalau kita tahu caranya. Jangan langsung membandingkan satu per satu.",
+            "Kelompokkan dulu berdasarkan ribuannya.",
           ]}
         >
-          <Dialog nama="Aldi" anak="Skornya: 6.540, 2.180, 6.290, 9.050, 2.990. Ayo urutkan dari terkecil!" />
-          <Dialog nama="Naya" anak="Kelompokkan dulu ribuannya. Yang 2.000-an ada dua, yang 6.000-an ada dua." />
-          <Dialog nama="Fikri" anak="Jadi 2.180 dan 2.990 dulu. Mana yang lebih kecil?" />
-          <Dialog nama="Naya" anak="2.180, karena ratusannya 1 lebih kecil dari 9." />
-          <Dialog nama="Aldi" anak="Lalu 6.290 dan 6.540, baru terakhir 9.050." />
+          <Dialog nama="Aldi" anak="Skornya: 6.540, 2.180, 6.290, 9.050, 2.990. Kita harus mengurutkan dari yang terkecil." />
+          <Dialog nama="Fikri" anak="Membandingkan lima bilangan sekaligus kelihatannya melelahkan." />
+          <Dialog nama="Naya" anak="Ada cara yang lebih hemat. Pisahkan dulu berdasarkan ribuannya. Yang ribuan 2 ada dua, yang ribuan 6 ada dua, yang ribuan 9 ada satu." />
+          <Dialog nama="Aldi" anak="Setelah terpisah, kita hanya perlu merapikan di dalam kelompok yang sama." />
+          <Dialog nama="Pandu" anak="Perhatikan hasilnya: masalah lima bilangan berubah jadi tiga masalah kecil. Dua di antaranya hanya berisi dua bilangan." />
+          <Dialog nama="Fikri" anak="Jadi 2.180 dan 2.990 diperiksa ratusannya: 1 dan 9." />
+          <Dialog nama="Naya" anak="2.180 lebih kecil. Lalu 6.290 dan 6.540 diperiksa ratusannya: 2 dan 5." />
+          <Dialog nama="Aldi" anak="Jadi 6.290 lebih kecil. Hasil akhirnya: 2.180, 2.990, 6.290, 6.540, 9.050." />
           <Papan anak="2.180 < 2.990 < 6.290 < 6.540 < 9.050" />
-          <Dialog nama="Bulu" anak="Urutannya rapi! Dari kecil ke besar!" />
-          <p className="text-sm font-black text-[#1C01A5]">Urutkan dengan mengelompokkan ribuan dulu, lalu rapikan di dalam kelompok.</p>
+          <p className="text-sm font-black text-[#1C01A5]">Mengelompokkan lebih dulu membuat pekerjaan besar menjadi beberapa pekerjaan kecil.</p>
           <KuisSuara
             id={idKuis("A", 6)}
-            pertanyaan="Dari 7.300, 3.700, dan 7.030, sebutkan angka yang paling kecil."
+            pertanyaan="Dari 7.300, 3.700, dan 7.030, sebutkan bilangan yang paling kecil, lalu sebutkan kelompok ribuan mana yang paling kecil."
             periksa={palingKecil3700}
-            petunjuk="Lihat angka ribuannya dulu. Mana yang paling kecil?"
+            petunjuk="Lihat rumah ribuannya dulu. Kelompok mana yang nilainya paling kecil?"
+            benar="Tiga ribu tujuh ratus. Kelompok 3.000-an."
           />
           <TulisBebas
             id={idKuis("A", 7)}
@@ -738,22 +748,66 @@ function KartuA({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminGuru }) {
           />
         </Adegan>
 
+        <Adegan
+          judul="Sub-bab 5 — Membaca bilangan yang mengandung angka nol"
+          warna="border-violet-200 bg-violet-50/70"
+          src="/doodle-mtk/mtk-3-bab1-sub5.jpg"
+          alt="Dua papan skor berdampingan. Satu rumah angka kosong berkedip pelan."
+          kelas={kelas}
+          kelamin={kelamin}
+          penjelasan={[
+            "Ada satu hal yang sering membuat siswa kelas tiga salah membaca, yaitu angka nol di tengah bilangan.",
+            "Mari kita selidiki mengapa angka nol di tengah tidak perlu disebutkan, padahal ia tetap penting.",
+          ]}
+        >
+          <Dialog nama="Fikri" anak="Saya menemukan dua bilangan yang angkanya sama tetapi berbeda: 6.084 dan 6.840." />
+          <Dialog nama="Aldi" anak="Kok bisa berbeda? Angkanya sama semua, kan?" />
+          <Dialog nama="Naya" anak="Coba periksa rumahnya. Pada 6.084, angka 8 ada di rumah puluhan. Pada 6.840, angka 8 ada di rumah ratusan." />
+          <Dialog nama="Fikri" anak="Jadi 8 bernilai 80 di yang pertama, dan 800 di yang kedua." />
+          <Dialog nama="Pandu" anak="Bagus. Sekarang pertanyaan berikutnya: bagaimana membaca angka nol pada 6.084?" />
+          <Dialog nama="Fikri" anak="Apakah dibaca enam ribu nol ratus delapan puluh empat?" />
+          <Dialog nama="Naya" anak="Tidak perlu. Angka nol menandai bahwa rumah itu kosong. Kita hanya menyebut rumah yang berisi." />
+          <Dialog nama="Aldi" anak="Jadi cukup enam ribu delapan puluh empat?" />
+          <Dialog nama="Pandu" anak="Betul. Tetapi hati-hati: meskipun tidak disebut, angka nol itu wajib ditulis. Tanpa angka nol, 6.084 berubah menjadi 684." />
+          <Papan anak={"6.084 dibaca enam ribu delapan puluh empat\n6.840 dibaca enam ribu delapan ratus empat puluh"} />
+          <p className="text-sm font-black text-[#1C01A5]">Angka nol menandai rumah kosong. Tidak disebut, tetapi wajib ditulis.</p>
+          <KuisSuara
+            id={idKuis("A", 8)}
+            pertanyaan="Baca bilangan 5.402, lalu sebutkan rumah mana yang kosong."
+            periksa={baca5402Rumah}
+            petunjuk="Periksa tiap rumah. Rumah mana yang berisi angka nol?"
+            benar="Lima ribu empat ratus dua. Rumah puluhan yang kosong."
+          />
+          <TulisBebas
+            id={idKuis("A", 9)}
+            judul="Tulis dan sebut rumah kosong"
+            visual={<Papan anak="tujuh ribu sembilan ratus lima" />}
+            pertanyaan="Tulis bilangan dari tujuh ribu sembilan ratus lima, lalu sebutkan rumah mana yang kosong."
+            pesanSalah="Puluhan tidak disebut, jadi rumah itu kosong. Angka nol tetap ditulis."
+            bantuan="7.905. Rumah puluhan yang kosong."
+            umpan="7.905. Rumah puluhan kosong."
+            periksa={tulis7905Rumah}
+            alias={["7905", "puluhan kosong"]}
+            konteks="7.905. Rumah puluhan yang kosong."
+          />
+        </Adegan>
+
         <Pilih
-          id={idKuis("A", 8)}
-          pertanyaan="1. Pada 8.463, berapa nilai angka 4?"
+          id={idKuis("A", 10)}
+          pertanyaan="1. Berapa nilai angka 4 pada 8.463, dan rumah apa yang membuatnya begitu?"
           visual={<Papan anak="8.463" />}
           pilihan={[
-            { huruf: "A", teks: "4" },
-            { huruf: "B", teks: "40" },
-            { huruf: "C", teks: "400" },
-            { huruf: "D", teks: "4.000" },
+            { huruf: "A", teks: "4, karena angkanya 4" },
+            { huruf: "B", teks: "40, karena ada di rumah puluhan" },
+            { huruf: "C", teks: "400, karena ada di rumah ratusan" },
+            { huruf: "D", teks: "4.000, karena ada di rumah ribuan" },
           ]}
           benar="C"
           umpan="Angka 4 ada di rumah ratusan, nilainya 400."
           salah="Lihat rumah angka 4. Bukan satuan."
         />
         <KuisCocok
-          id={idKuis("A", 9)}
+          id={idKuis("A", 11)}
           perintah="2. Pasangkan bilangan dengan cara bacanya."
           baris={[
             { kiri: "3.507", pilihan: BACAAN_A, benar: "Tiga ribu lima ratus tujuh" },
@@ -763,14 +817,14 @@ function KartuA({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminGuru }) {
           umpan="3.507 tiga ribu lima ratus tujuh. 9.270 sembilan ribu dua ratus tujuh puluh. 6.003 enam ribu tiga."
         />
         <SusunToken
-          id={idKuis("A", 10)}
+          id={idKuis("A", 12)}
           perintah="3. Susun dari yang terkecil ke terbesar."
           acak={["7.040", "4.700", "7.400", "4.070"]}
           benar={["4.070", "4.700", "7.040", "7.400"]}
           umpan="4.070, 4.700, 7.040, 7.400."
         />
         <KuisBenarSalah
-          id={idKuis("A", 11)}
+          id={idKuis("A", 13)}
           perintah="4. Detektif bilangan. Periksa tiga pernyataan."
           baris={[
             { teks: "Pada 5.728, angka 5 bernilai 5.000.", benar: true },
@@ -780,7 +834,7 @@ function KartuA({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminGuru }) {
           umpan="Benar, salah, benar. 8.000 lebih besar karena ribuannya 8."
         />
         <Pilih
-          id={idKuis("A", 12)}
+          id={idKuis("A", 14)}
           pertanyaan="5. Deret 2.500 – 3.000 – 3.500 – ⬜ – 4.500. Angka yang hilang adalah..."
           visual={<Papan anak="2.500 · 3.000 · 3.500 · ⬜ · 4.500" />}
           pilihan={[
@@ -907,9 +961,10 @@ function KartuB({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminGuru }) {
           <p className="text-sm font-black text-emerald-800">Trik: pindah satu rumah ke kiri, dikali sepuluh.</p>
           <KuisSuara
             id={idKuis("B", 2)}
-            pertanyaan="Pada 2.745, berapa nilai angka 7?"
+            pertanyaan="Berapa nilai angka 7 pada 2.745? Sebutkan juga nama rumahnya."
             periksa={nilaiTujuhRatus}
             petunjuk="Angka 7 ada di rumah ratusan."
+            benar="Tujuh ratus. Rumah ratusan."
           />
           <TulisBebas
             id={idKuis("B", 3)}
@@ -954,20 +1009,21 @@ function KartuB({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminGuru }) {
           <p className="text-sm font-black text-emerald-800">Trik: sama terus? Lanjut. Beda? Berhenti di situ.</p>
           <KuisSuara
             id={idKuis("B", 4)}
-            pertanyaan="Mana yang lebih besar, 6.512 atau 6.521?"
+            pertanyaan="Mana yang lebih besar, 6.512 atau 6.521? Sebutkan rumah yang menentukan."
             periksa={lebihBesar6521}
             petunjuk="Ribuan dan ratusan sama. Bandingkan puluhannya."
+            benar="Enam ribu lima ratus dua puluh satu. Rumah puluhan."
           />
           <TulisBebas
             id={idKuis("B", 5)}
             visual={<Papan anak="[ 3.908 ] ⬜ [ 3.890 ]" />}
-            pertanyaan="Tulis simbol yang tepat: lebih besar, lebih kecil, atau sama dengan."
-            pesanSalah="Puluhan 0 dan 9. Mana yang lebih besar?"
-            bantuan="3.908 lebih besar dari 3.890."
-            umpan="3.908 lebih besar."
-            periksa={(teks) => simbolBanding(teks, ">")}
-            alias={["lebih besar"]}
-            konteks="3.908 lebih besar dari 3.890."
+            pertanyaan="Tulis simbol yang tepat, lalu sebutkan rumah yang menentukan."
+            pesanSalah="Ribuan sama. Ratusan 9 dan 8 sudah berbeda, jadi pemeriksaan berhenti di situ."
+            bantuan="3.908 lebih besar. Rumah ratusan yang menentukan, karena 9 lebih besar dari 8."
+            umpan="Lebih besar. Rumah ratusan: 9 dan 8."
+            periksa={(teks) => bandingRumah(teks, ">", "ratusan")}
+            alias={["lebih besar", "ratusan"]}
+            konteks="3.908 lebih besar dari 3.890. Rumah ratusan yang menentukan."
           />
         </Adegan>
 
@@ -1011,8 +1067,51 @@ function KartuB({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminGuru }) {
           />
         </Adegan>
 
+        <Adegan
+          judul="Sub-bab 5 — Bilangan dengan angka nol"
+          warna="border-violet-200 bg-white"
+          src="/doodle-mtk/mtk-3-bab1-sub5.jpg"
+          alt="Dua bilangan dengan rumah kosong. Posisi angka delapan berbeda."
+          kelas={kelas}
+          kelamin={kelamin}
+          penjelasan={[
+            "Angka nol punya peran khusus. Ia menandai bahwa sebuah rumah kosong. Saat membaca, rumah kosong itu tidak disebut.",
+            "Namun saat menulis, angka nol wajib ada supaya setiap angka berdiri di rumah yang benar.",
+          ]}
+        >
+          <TabelInfoGrafis
+            judul="Dua bilangan, posisi berbeda"
+            kepala={["Bilangan", "Rumah", "Dibaca"]}
+            baris={[
+              ["6.084", "6 · 0 · 8 · 4", "Enam ribu delapan puluh empat"],
+              ["6.840", "6 · 8 · 4 · 0", "Enam ribu delapan ratus empat puluh"],
+            ]}
+          />
+          <p className="text-sm font-black text-[#1C01A5]">Contoh: bilangan apa yang dibaca empat ribu lima puluh?</p>
+          <Langkah butir={["Empat ribu: tulis 4 di ribuan.", "Lima puluh: tulis 5 di puluhan.", "Ratusan dan satuan tidak disebut, jadi keduanya 0. Hasilnya 4.050."]} />
+          <p className="text-sm font-black text-emerald-800">Trik: rumah yang tidak disebut, isinya nol.</p>
+          <KuisSuara
+            id={idKuis("B", 8)}
+            pertanyaan="Baca bilangan 8.007, lalu sebutkan rumah mana saja yang kosong."
+            periksa={baca8007}
+            petunjuk="Dua rumah di tengah berisi angka nol."
+            benar="Delapan ribu tujuh. Rumah ratusan dan puluhan yang kosong."
+          />
+          <TulisBebas
+            id={idKuis("B", 9)}
+            visual={<Papan anak="sembilan ribu enam puluh" />}
+            pertanyaan="Tulis bilangan dari sembilan ribu enam puluh."
+            pesanSalah="Ratusan dan satuan tidak disebut. Keduanya nol."
+            bantuan="9.060."
+            umpan="9.060."
+            periksa={tulis9060}
+            alias={["9060"]}
+            konteks="Sembilan ribu enam puluh ditulis 9.060."
+          />
+        </Adegan>
+
         <Pilih
-          id={idKuis("B", 8)}
+          id={idKuis("B", 10)}
           pertanyaan="1. Manakah bacaan yang benar untuk 7.050?"
           visual={<Papan anak="7.050" />}
           pilihan={[
@@ -1026,7 +1125,7 @@ function KartuB({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminGuru }) {
           salah="Lihat rumah puluhan, bukan ratusan."
         />
         <KuisCocok
-          id={idKuis("B", 9)}
+          id={idKuis("B", 11)}
           perintah="2. Pada 6.487, pasangkan setiap angka dengan nilainya."
           baris={[
             { kiri: "Angka 6", pilihan: NILAI_B, benar: "6.000" },
@@ -1036,14 +1135,14 @@ function KartuB({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminGuru }) {
           umpan="6 di ribuan bernilai 6.000. 4 di ratusan bernilai 400. 8 di puluhan bernilai 80."
         />
         <SusunToken
-          id={idKuis("B", 10)}
+          id={idKuis("B", 12)}
           perintah="3. Susun dari terbesar ke terkecil."
           acak={["3.099", "9.003", "3.909", "9.300"]}
           benar={["9.300", "9.003", "3.909", "3.099"]}
           umpan="9.300, 9.003, 3.909, 3.099."
         />
         <KuisBenarSalah
-          id={idKuis("B", 11)}
+          id={idKuis("B", 13)}
           perintah="4. Cek bilangan. Periksa tiga pernyataan."
           baris={[
             { teks: "Pada 4.506, angka 5 bernilai 500.", benar: true },
@@ -1053,7 +1152,7 @@ function KartuB({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminGuru }) {
           umpan="Benar, salah, salah. Sepuluh ribu lebih besar dari 9.999."
         />
         <Pilih
-          id={idKuis("B", 12)}
+          id={idKuis("B", 14)}
           pertanyaan="5. Ribuanku 5, ratusanku 0, puluhanku 7, satuanku 2. Aku bilangan..."
           pilihan={[
             { huruf: "A", teks: "5.072" },
@@ -1087,18 +1186,18 @@ function KartuC({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminGuru }) {
         kelas={kelas}
         kelamin={kelamin}
         cuplikan={cuplikanKalimat([
-          "Dalam permainan ini, kalian menjadi pencatat skor di turnamen besar. Setiap pemain punya skor ribuan.",
-          "Tugas kalian adalah membaca, membandingkan, dan mengurutkan skor dengan tepat. Kalau catatanmu benar, menara skor naik satu tingkat.",
-          "Ayo kita mulai!",
+          "Dalam permainan ini kalian menjadi juri pencatat skor kejuaraan. Setiap atlet punya skor ribuan.",
+          "Sebagai juri, tugas kalian bukan hanya menghitung, tetapi juga memastikan catatan skor benar. Kalau catatanmu keliru, atlet yang salah akan naik podium.",
+          "Ayo kita mulai bekerja!",
         ])}
       />
       <GambarDoodle
         src="/doodle-mtk/mtk-3-bab1-permainan.jpg"
-        alt="Stadion dengan papan skor raksasa, menara empat tingkat, dan panda di meja juri."
+        alt="Stadion kejuaraan. Pandu berdiri di meja juri dengan buku catatan."
         ukuran="lebar"
       />
       <PanduanIkon
-        judul="Simbol menara"
+        judul="Simbol kejuaraan"
         butir={[
           { ikon: "📋", teks: "Baca skor" },
           { ikon: "⚖️", teks: "Bandingkan" },
@@ -1108,26 +1207,27 @@ function KartuC({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminGuru }) {
         ]}
       />
       <div className="mt-4 space-y-2 text-sm font-semibold leading-relaxed text-slate-700">
-        <p>Kamu pencatat skor. Catatan yang benar menaikkan menara satu tingkat.</p>
-        <p>Level 1 membaca 4.827. Level 2 membandingkan 3.462 dan 3.426. Level 3 mengurutkan lima skor.</p>
-        <p>Level 4 melengkapi 7.0⬜5. Angka yang hilang ada di puluhan dan nilainya 40, jadi skornya 7.045.</p>
-        <p>Level 5 memakai 7.045 itu lagi, lalu mengurutkan papan yang lengkap. Salah di awal membuat urutan Level 5 ikut meleset.</p>
-        <p>Meja Pemula memakai skor yang lebih mudah, hadiahnya 1 piala. Meja Juara memakai skor empat angka, hadiahnya lebih besar.</p>
-        <p>Kaca Juri membantu melihat nilai tempat, tetapi mengurangi 1 piala. Berani tanpa bantuan menambah 1 piala.</p>
-        <p>Salah mencatat berarti pemain naik podium yang keliru. Papan berkedip: coba lagi. Piala tidak berkurang.</p>
-        <p>Mode berdua: pemain A membaca skor, pemain B menulis pemecahannya. Keduanya harus cocok sebelum menara naik.</p>
-        <p>Kumpulkan 10 piala untuk membuka Podium Juara dan mendapat lencana pencatat skor.</p>
+        <p>Kamu juri pencatat skor. Catatan yang benar menaikkan atlet ke podium yang tepat.</p>
+        <p>Level 1 membaca 4.827. Level 2 memeriksa angka 6 pada 7.063: nilainya 60 karena rumah puluhan.</p>
+        <p>Level 3 membandingkan 3.462 dan 3.426. Rumah puluhan yang menentukan.</p>
+        <p>Level 4 mengurutkan 2.180, 2.990, 6.290, 6.540, dan 9.050.</p>
+        <p>Level 5 memeriksa apakah “6 ribu 0 ratus 8 puluh 4” dan 6.084 adalah bilangan yang sama. Keduanya 6.084.</p>
+        <p>Meja Pemula memakai skor yang lebih langsung, hadiahnya 1 piala. Meja Kejuaraan memakai rumah kosong, hadiahnya 3 piala.</p>
+        <p>Kaca Juri memperlihatkan nilai tempat, biayanya 1 piala. Berani memutuskan sendiri menambah 1 piala.</p>
+        <p>Salah mencatat berarti atlet yang salah naik podium. Papan berkedip: coba lagi. Piala tidak berkurang.</p>
+        <p>Mode berdua: pemain A membaca skor, pemain B menulis pemecahan nilai tempatnya. Keduanya harus sama sebelum podium dikunci.</p>
+        <p>Papan ini sepuluh pos. Kumpulkan 10 piala untuk membuka Podium Juara dan mendapat lencana juri.</p>
       </div>
       <MisiPenjagaKebun
         misi={MISI_MTK3_BAB1}
         idMisi={(indeks) => idKuis("C", indeks)}
         idTulis={idKuisTulisKartu(ID, "C")}
         tema={TEMA_MTK3_BAB1}
-        penutup="Podium Juara terbuka. Bulu memasang lencana pencatat skor."
+        penutup="Podium Juara terbuka. Pandu memasang lencana juri."
         bunga="🏟️🏆🥇🐼"
       />
       <div className="mt-5 space-y-3">
-        <h5 className="text-center text-base font-black text-[#1C01A5]">Sepuluh soal menara</h5>
+        <h5 className="text-center text-base font-black text-[#1C01A5]">Sepuluh soal kejuaraan</h5>
         <Pilih
           id={idKuis("C", 10)}
           pertanyaan="1. Skor 6.305. Mana bacaan yang tepat?"
@@ -1181,21 +1281,21 @@ function KartuC({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminGuru }) {
             { teks: "7.099 lebih besar dari 7.909.", benar: false },
             { teks: "Angka nol di tengah tidak diucapkan saat membaca.", benar: true },
           ]}
-          umpan="Benar, salah, benar. 7.909 lebih besar karena puluhannya 9."
+          umpan="Benar, salah, benar. 7.909 lebih besar karena ratusannya 9, bukan karena puluhan."
         />
         <Pilih
           id={idKuis("C", 15)}
-          pertanyaan="6. Papan rusak 3.⬜56. Angka di rumah ratusan berkilau dan menunjukkan 4. Berapa angka yang hilang?"
-          visual={<Papan anak="3.⬜56  ·  ratusan berkilau: 4" />}
+          pertanyaan="6. Kartu skor rusak: 3.⬜56, dan petunjuknya rumah kosong. Berapa angka yang seharusnya ada di kotak?"
+          visual={<Papan anak="3.⬜56  ·  rumah kosong" />}
           pilihan={[
             { huruf: "A", teks: "2" },
             { huruf: "B", teks: "3" },
             { huruf: "C", teks: "4" },
-            { huruf: "D", teks: "5" },
+            { huruf: "D", teks: "0" },
           ]}
-          benar="C"
-          umpan="Rumah ratusan menunjukkan 4, jadi skornya 3.456."
-          salah="Angka yang berkilau itulah angka yang hilang."
+          benar="D"
+          umpan="Rumah kosong berarti angka nol. Skornya 3.056."
+          salah="Petunjuk rumah kosong menunjuk angka nol."
         />
         <Pilih
           id={idKuis("C", 16)}
@@ -1225,18 +1325,19 @@ function KartuC({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminGuru }) {
         />
         <KuisSuara
           id={idKuis("C", 18)}
-          pertanyaan="Pemain mendapat skor empat ribu sembilan ratus tiga puluh. Ucapkan angka itu."
+          pertanyaan="Ucapkan bilangan 4.930 dan sebutkan rumah yang kosong."
           periksa={baca4930}
-          petunjuk="Kamu boleh mengucapkan bacaannya atau menyebut 4.930."
+          petunjuk="Satuan pada 4.930 berisi angka nol."
+          benar="Empat ribu sembilan ratus tiga puluh. Rumah satuan yang kosong."
         />
         <TulisBebas
           id={idKuis("C", 19)}
           judul="Catatan papan skor"
           visual={<Papan anak="6.751 = ⬜ + ⬜ + ⬜ + ⬜" />}
-          pertanyaan="Tulis pemecahan nilai tempat dari 6.751!"
-          pesanSalah="Ribuan, ratusan, puluhan, satuan."
-          bantuan="6.000 + 700 + 50 + 1."
-          umpan="6.000 + 700 + 50 + 1."
+          pertanyaan="Tulis pemecahan nilai tempat dari 6.751, lalu beri nama setiap rumah."
+          pesanSalah="Sebutkan angkanya dan nama rumahnya."
+          bantuan="6.000 + 700 + 50 + 1. Rumah: ribuan, ratusan, puluhan, satuan."
+          umpan="6.000 + 700 + 50 + 1. Ribuan, ratusan, puluhan, satuan."
           periksa={pecah6751}
           alias={["6000 + 700 + 50 + 1", "enam ribu tujuh ratus lima puluh satu"]}
           konteks="6.751 = 6.000 + 700 + 50 + 1."
@@ -1257,13 +1358,13 @@ function LembarEvaluasi({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminG
     }
     return jumlahSkor;
   }, [kuis]);
-  const lencana = skor >= 9 ? "🥇 Pencatat Skor Ahli" : skor >= 6 ? "🏟️ Juri Cerdas" : "🐼 Sahabat Bulu";
+  const lencana = skor >= 9 ? "🥇 Juri Bilangan Ahli" : skor >= 6 ? "🏟️ Juri Muda Cerdas" : "🐼 Sahabat Pandu";
   const pesan =
     skor >= 9
-      ? "Luar biasa! Semua bilangan tepat!"
+      ? "Luar biasa! Catatanmu bisa dipertanggungjawabkan!"
       : skor >= 6
-        ? "Hebat! Sedikit lagi jadi pencatat ahli!"
-        : "Ayo berlatih lagi bersama Bulu, kamu pasti bisa!";
+        ? "Hebat! Sedikit lagi jadi juri ahli!"
+        : "Ayo selidiki lagi bersama Pandu, kamu pasti bisa!";
   return (
     <KartuBingkai latar="bg-rose-50/80">
       <KepalaKartu
@@ -1291,10 +1392,10 @@ function LembarEvaluasi({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminG
           id={idKuis("D", 0)}
           judul="1. Pemecahan nilai tempat"
           visual={<Papan anak="9.406 = ⬜ + ⬜ + ⬜ + ⬜" />}
-          pertanyaan="Tulis pemecahan nilai tempatnya lengkap!"
-          pesanSalah="Puluhan pada 9.406 adalah nol. Tetap tuliskan."
-          bantuan="9.000 + 400 + 0 + 6."
-          umpan="9.000 + 400 + 0 + 6."
+          pertanyaan="Tulis pemecahan nilai tempat 9.406, lalu sebutkan rumah mana yang kosong."
+          pesanSalah="Puluhan pada 9.406 kosong. Tetap tuliskan nolnya."
+          bantuan="9.000 + 400 + 0 + 6. Rumah puluhan yang kosong."
+          umpan="9.000 + 400 + 0 + 6. Rumah puluhan kosong."
           periksa={pecah9406}
           alias={["9000 + 400 + 0 + 6", "sembilan ribu empat ratus nol enam"]}
           konteks="9.406 = 9.000 + 400 + 0 + 6."
@@ -1315,16 +1416,17 @@ function LembarEvaluasi({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminG
         />
         <KuisSuara
           id={idKuis("D", 2)}
-          pertanyaan="Dengarkan: delapan ribu sembilan puluh. Ucapkan angkanya."
+          pertanyaan="Dengarkan delapan ribu sembilan puluh. Ucapkan bilangannya dan sebutkan rumah yang kosong."
           periksa={baca8090}
-          petunjuk="Kamu boleh mengucapkan bacaannya atau menyebut 8.090."
+          petunjuk="Dua rumah tidak disebut: ratusan dan satuan."
+          benar="Delapan ribu sembilan puluh. Rumah ratusan dan satuan yang kosong."
         />
         <Pilih
           id={idKuis("D", 3)}
           pertanyaan="4. Naya menulis: pada 3.764, angka 6 bernilai 6. Apakah Naya benar?"
           pilihan={[
             { huruf: "A", teks: "Benar, karena angkanya 6" },
-            { huruf: "B", teks: "Salah, seharusnya 60" },
+            { huruf: "B", teks: "Salah, seharusnya 60 karena berada di rumah puluhan" },
             { huruf: "C", teks: "Salah, seharusnya 600" },
             { huruf: "D", teks: "Salah, seharusnya 6.000" },
           ]}
@@ -1336,19 +1438,19 @@ function LembarEvaluasi({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminG
           id={idKuis("D", 4)}
           perintah="5. Pasangkan setiap bilangan dengan angka terbesar di dalamnya."
           baris={[
-            { kiri: "4.829", pilihan: ANGKA_BESAR, benar: "Ratusan: 8" },
+            { kiri: "4.829", pilihan: ANGKA_BESAR, benar: "Satuan: 9" },
             { kiri: "8.042", pilihan: ANGKA_BESAR, benar: "Ribuan: 8" },
-            { kiri: "2.984", pilihan: ANGKA_BESAR, benar: "Puluhan: 9" },
+            { kiri: "2.984", pilihan: ANGKA_BESAR, benar: "Ratusan: 9" },
           ]}
-          umpan="Pada 4.829 yang terbesar 8 di ratusan. Pada 8.042 yang terbesar 8 di ribuan. Pada 2.984 yang terbesar 9 di puluhan."
+          umpan="Angka terbesar pada 4.829 adalah 9 di satuan. Pada 8.042 adalah 8 di ribuan. Pada 2.984 adalah 9 di ratusan."
         />
         <TulisBebas
           id={idKuis("D", 5)}
           judul="6. Urutkan"
           visual={<Papan anak="6.075 · 6.750 · 6.507 · 6.705" />}
-          pertanyaan="Urutkan dari terkecil ke terbesar!"
-          pesanSalah="Ratusan dulu, baru puluhan."
-          bantuan="6.075, lalu 6.507, lalu 6.705, lalu 6.750."
+          pertanyaan="Urutkan dari terkecil ke terbesar, lalu tulis alasan singkat mengapa urutannya begitu."
+          pesanSalah="Ratusan dulu, baru puluhan. Tulis juga alasannya."
+          bantuan="6.075, 6.507, 6.705, 6.750, karena ratusan 0, lalu 5, lalu 7."
           umpan="6.075, 6.507, 6.705, 6.750."
           periksa={urutEvaluasi}
           alias={["6075 6507 6705 6750"]}
@@ -1383,13 +1485,13 @@ function LembarEvaluasi({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminG
         />
         <TulisBebas
           id={idKuis("D", 9)}
-          judul="10. Turnamen Bulu"
+          judul="10. Kejuaraan Pandu"
           visual={<Papan anak="Biru 3.480 · Merah 3.408 · Hijau 3.840 · Kuning 3.084" />}
-          pertanyaan="Tulis juara pertama, peringkat terakhir, dan selisih skor keduanya."
-          pesanSalah="Bandingkan ratusannya dulu, lalu kurangkan skor terkecil dari skor terbesar."
-          bantuan="Hijau 3.840 juara. Kuning 3.084 terakhir. Selisihnya 756."
-          umpan="Hijau juara, Kuning terakhir, selisih 756."
-          periksa={turnamenBulu}
+          pertanyaan="Siapa juara pertama dan rumah mana yang menentukan? Siapa peringkat terakhir dan rumah mana yang menentukan? Berapa selisih skor keduanya?"
+          pesanSalah="Bandingkan ratusannya dulu. Juara ratusannya 8, terakhir ratusannya 0, lalu kurangkan."
+          bantuan="Hijau 3.840 juara karena ratusan 8. Kuning 3.084 terakhir karena ratusan 0. Selisihnya 756."
+          umpan="Hijau juara, Kuning terakhir, rumah ratusan, selisih 756."
+          periksa={kejuaraanPandu}
           alias={["hijau", "kuning", "756", "3840", "3084"]}
           konteks="Hijau 3.840 juara, Kuning 3.084 terakhir, selisih 756."
         />
@@ -1405,18 +1507,12 @@ function LembarEvaluasi({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminG
       </div>
       <aside className="mt-5 rounded-2xl border-2 border-[#1C01A5]/15 bg-white px-4 py-4 text-sm font-semibold leading-relaxed text-slate-700">
         <p className="font-black text-[#1C01A5]">Catatan untuk guru</p>
-        <p className="mt-2">
-          Seluruh soal memakai bilangan sampai 10.000: membaca, menulis, nilai tempat, membandingkan, dan mengurutkan.
-        </p>
-        <p className="mt-2">
-          Kesalahan yang paling sering: mengabaikan angka nol, mengira banyak angka 9 selalu lebih besar, dan mengurutkan tanpa memeriksa ratusan.
-        </p>
-        <p className="mt-2">
-          Soal 6 dan 8 paling menantang karena empat bilangannya mirip. Soal 4 membedakan nilai asli dari nilai tempat. Soal 9 menilai alasan, bukan hanya simbol. Soal 10 punya tiga langkah: juara, peringkat terakhir, lalu selisih.
-        </p>
-        <p className="mt-2">
-          Gunakan kartu angka berwarna: ribuan biru tua, ratusan biru, puluhan kuning, satuan kuning muda. Minta anak menyusun angka itu, lalu menyebutkan nilai setiap angka.
-        </p>
+        <p className="mt-2">Soal memakai bilangan sampai 10.000: membaca, menulis, nilai tempat, membandingkan, dan mengurutkan.</p>
+        <p className="mt-2">Di kelas 3, maskot Pandu mengajukan pertanyaan lanjutan. Quiz meminta alasan, dan akhir adegan merumuskan kesimpulan.</p>
+        <p className="mt-2">Kesalahan yang paling sering: mengabaikan angka nol saat menulis dari bacaan, mengira banyak angka 9 selalu lebih besar, dan mengurutkan tanpa mengelompokkan ribuan lebih dulu.</p>
+        <p className="mt-2">Soal 1, 2, 4, dan 10 menyasar ketiganya. Pada soal 4, angka 6 yang disebut Naya benar, tetapi nilainya 60 karena rumah puluhan. Soal 6, 8, dan 9 menilai alasan, bukan hanya hasil.</p>
+        <p className="mt-2">Soal 10 tiga langkah: juara dan rumahnya, peringkat terakhir dan rumahnya, lalu selisih 3.840 − 3.084 = 756. Jika anak hanya menyelesaikan bagian pertama, minta ia membaca ulang dua bagian berikutnya.</p>
+        <p className="mt-2">Gunakan kartu angka berwarna: ribuan biru tua, ratusan biru, puluhan kuning, satuan kuning muda. Minta anak memindahkan satu kartu ke tiang lain dan memprediksi nilai barunya. Untuk angka nol, letakkan kartu kosong di satu tiang dan minta anak menjelaskan mengapa tiang itu tetap harus ada.</p>
       </aside>
     </KartuBingkai>
   );
@@ -1431,11 +1527,11 @@ export default function NaskahMtk3Bab1({
 }) {
   const poin = [
     "Empat angka: ribuan, ratusan, puluhan, satuan.",
-    "Makin ke kiri, makin besar. Sepuluh kali lipat.",
+    "Angkanya tetap, pengalinya yang berubah. Pindah satu rumah ke kiri sama dengan dikali sepuluh.",
     "Periksa dari kiri. Beda? Berhenti.",
     "Kelompokkan dulu, rapikan kemudian.",
-    "Nol di tengah tidak disebut. 6.084 dibaca enam ribu delapan puluh empat.",
-    "Titik itu pemisah ribuan, bukan koma.",
+    "Nol tidak diucapkan, tetapi wajib ditulis. 6.084, bukan 684.",
+    "Titik itu tanda baca, bukan angka. 4.725 sama dengan 4725.",
   ];
   return (
     <div className="space-y-5">
@@ -1448,15 +1544,15 @@ export default function NaskahMtk3Bab1({
         kelamin={kelamin}
         gambar={{
           src: "/doodle-mtk/mtk-3-bab1-poin.jpg",
-          alt: "Panda berdiri di papan kalimat kunci. Angka ribuan melayang membentuk menara.",
+          alt: "Panda Pandu membentangkan lima kartu kunci di depan papan skor.",
         }}
         cuplikan={cuplikanKalimat([
-          "Ini yang perlu kalian ingat. Bilangan ribuan punya empat angka: ribuan, ratusan, puluhan, satuan. Baca dari kiri ke kanan.",
-          "Untuk membandingkan, periksa dari kiri. Kalau sudah beda, berhenti di situ.",
-          "Untuk mengurutkan, kelompokkan dulu berdasarkan ribuannya.",
+          "Mari kita rumuskan apa yang sudah kita selidiki. Bilangan empat angka dibaca dengan menyebut setiap rumahnya. Posisi sebuah angka menentukan nilainya, dan setiap pindah satu rumah ke kiri berarti dikali sepuluh.",
+          "Untuk membandingkan, periksa dari rumah paling kiri dan berhenti begitu menemukan perbedaan. Untuk mengurutkan, kelompokkan dulu berdasarkan ribuannya.",
+          "Angka nol menandai rumah kosong: tidak diucapkan, tetapi wajib ditulis.",
         ])}
         poin={poin}
-        penutup="Empat rumah angka. Kiri lebih besar. Nol di tengah tidak disebut."
+        penutup="Empat rumah angka. Angkanya tetap, pengalinya yang berubah."
       />
       <LembarEvaluasi kelas={kelas} kelamin={kelamin} />
     </div>
