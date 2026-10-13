@@ -494,6 +494,266 @@ function KartuBeda() {
   );
 }
 
+function KartuA({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminGuru }) {
+  const kartu = MODUL_MTK1_BAB5.kartu[0];
+  const [suara, setSuara] = useState<StatusJawabanKuis>(null);
+  const [salahKanvas, setSalahKanvas] = useState(0);
+  return (
+    <KartuBingkai>
+      <KepalaKartu
+        ikon="🇮🇩🎀🐦"
+        judul={kartu.judul}
+        anak="Ayo Membilang sampai dengan 20"
+        kelas={kelas}
+        kelamin={kelamin}
+        cuplikan={cuplikanDariNaskah(kartu.voice, 2_000, 3_000)}
+      />
+      <div className="mt-4 rounded-2xl border-2 border-[#F0AB00] bg-[#FFF8E8] px-4 py-3">
+        <p className="text-sm font-black text-[#1C01A5]">Tujuan Pembelajaran</p>
+        <ul className="mt-2 list-disc space-y-1 pl-5 text-sm font-semibold text-slate-700">
+          <li>Membilang, membaca, dan menulis bilangan 11 sampai 20.</li>
+          <li>Mengenal puluhan dan satuan dengan mengelompokkan benda per sepuluh.</li>
+        </ul>
+      </div>
+      <div className="mt-4 space-y-3">
+        <Adegan
+          judul="Pagi di gang kampung"
+          warna="border-rose-200 bg-rose-50"
+          src="/doodle-mtk/mtk-1-bab5-pagi.jpg"
+          alt="Gang kampung berhias umbul-umbul. Bendera kecil mendarat di kaki Ojan, Pipit hinggap di pagar."
+        >
+          <p className="text-sm font-semibold text-slate-700">
+            Umbul-umbul merah putih berkibar. Satu bendera kecil terbang, lalu mendarat di kaki seorang anak.
+          </p>
+          <Dialog nama="Pak RT" anak="Anak-anak, tolong pasang bendera kecil di sepanjang pagar. Kita butuh dua puluh bendera!" />
+          <Dialog nama="Ojan" anak="Dua puluh?! Aku cuma bisa menghitung sampai sepuluh…" />
+          <Dialog nama="Pipit" anak="Jangan khawatir! Rahasianya adalah ikatan ajaib!" />
+        </Adegan>
+        <Adegan
+          judul="Adegan 1 · Tumpukan bendera berantakan"
+          warna="border-sky-200 bg-sky-50"
+          src="/doodle-mtk/mtk-1-bab5-adegan-1.jpg"
+          alt="Dimas menunjuk bendera yang berserakan di tikar, Ojan bingung, Pipit mengawasi."
+        >
+          <Dialog nama="Dimas" anak="Satu, dua, tiga… eh, yang ini sudah belum, ya?" />
+          <Dialog nama="Ojan" anak="Aku jadi bingung!" />
+          <Dialog nama="Pipit" anak="Kalau berantakan, gampang salah. Ayo kita ikat setiap sepuluh!" />
+        </Adegan>
+        <Adegan
+          judul="Adegan 2 · Ikatan ajaib pertama"
+          warna="border-amber-200 bg-amber-50"
+          src="/doodle-mtk/mtk-1-bab5-adegan-2.jpg"
+          alt="Tari mengikat sepuluh bendera jadi satu ikatan dengan pita, Pipit memperhatikan."
+        >
+          <Dialog nama="Tari" anak="Satu, dua, tiga… sembilan, sepuluh!" />
+          <Dialog nama="Pipit" anak="Ikat! Sekarang ini 1 ikat isinya 10!" />
+          <p className="rounded-xl bg-white px-3 py-2 text-sm font-black text-[#1C01A5]">🎀 1 ikat = 10 bendera = 1 puluhan</p>
+        </Adegan>
+        <Adegan
+          judul="Adegan 3 · Lahirnya angka belasan"
+          warna="border-blue-200 bg-blue-50"
+          src="/doodle-mtk/mtk-1-bab5-adegan-3.jpg"
+          alt="Satu ikat bendera dan tiga bendera lepas, Ojan menunjuk, angkanya 13."
+        >
+          <Dialog nama="Ojan" anak="Ada satu ikat dan tiga bendera lepas. Jadi berapa?" />
+          <Dialog nama="Pipit" anak="Mulai dari sepuluh, lalu lanjut: sebelas, dua belas, tiga belas!" />
+          <Dialog nama="Tari" anak="Jadi ada 13 bendera!" />
+          <p className="text-center text-3xl font-black">
+            <span className="text-blue-700">1</span>
+            <span className="text-amber-500">3</span>
+          </p>
+          <p className="text-sm font-semibold text-slate-700">Angka 1 artinya satu ikat. Angka 3 artinya tiga bendera lepas.</p>
+        </Adegan>
+        <Adegan
+          judul="Adegan 4 · Kata belas yang ajaib"
+          warna="border-emerald-200 bg-emerald-50"
+          src="/doodle-mtk/mtk-1-bab5-adegan-4.jpg"
+          alt="Papan tulis kampung berisi angka 11 sampai 19 dan kata belas. Dimas dan Tari melihatnya."
+        >
+          <Dialog nama="Dimas" anak="Kok namanya pakai belas semua?" />
+          <Dialog nama="Pipit" anak="Belas artinya sepuluh lebih sedikit. Tiga belas sama dengan sepuluh dan tiga." />
+          <Dialog nama="Tari" anak="Tapi 11 bukan satu belas. Namanya sebelas!" />
+          <Dialog nama="Pipit" anak="Betul! Sebelas itu angka istimewa." />
+        </Adegan>
+        <Adegan
+          judul="Adegan 5 · Dua ikat sama dengan dua puluh"
+          warna="border-rose-200 bg-rose-50"
+          src="/doodle-mtk/mtk-1-bab5-adegan-5.jpg"
+          alt="Dua ikat bendera, angka 20, Tari, Dimas, dan Ojan bersorak, kembang api di langit."
+        >
+          <Dialog nama="Ojan" anak="Ikatan kedua sudah penuh!" />
+          <Dialog nama="Pipit" anak="Dua ikat, lepasnya nol. Itu 20, dua puluh!" />
+          <p className="text-center text-2xl font-black text-[#1C01A5]">🎀🎀 = 20</p>
+          <Dialog nama="Semua" anak="Horeee! Bendera untuk 17 Agustus sudah siap! Merdeka!" />
+        </Adegan>
+      </div>
+      <div className="mt-6 border-t-2 border-[#1C01A5]/10 pt-5">
+        <p className="text-base font-extrabold text-[#1C01A5]">QUIZ:</p>
+        <p className="mt-2 text-center text-2xl">
+          🎀 <IkonUlang ikon="🇮🇩" jumlah={5} />
+        </p>
+        <SoalRekamSuara
+          id={idKuis("A", 0)}
+          pertanyaan="Ada satu ikat dan lima bendera lepas. Semuanya berapa? Ucapkan dengan keras!"
+          periksa={(transkrip) => jawabanTulisMemuatAlias(transkrip, ["lima belas", "15"])}
+          petunjuk="Sebutkan jumlah semuanya."
+          sesudahNilai={(benar) => setSuara(benar ? "benar" : "salah")}
+        />
+        {suara === "benar" ? <p className="mt-2 text-sm font-bold text-emerald-800">Cuit-cuit! Kamu hebat sekali!</p> : null}
+        {suara === "salah" ? (
+          <p className="mt-2 text-sm font-bold text-rose-800">Mulai dari sepuluh, lalu lanjut hitung bendera yang lepas.</p>
+        ) : null}
+      </div>
+      <div className="mt-4">
+        <KuisTulisKartu
+          id={idKuisTulisKartu(ID, "A")}
+          pertanyaan="Tulis angka banyaknya semua bendera!"
+          alias={["18", "delapan belas"]}
+          konteks="Satu ikat sepuluh bendera ditambah delapan bendera lepas sama dengan 18."
+          visual={
+            <p className="text-center text-2xl">
+              🎀 <IkonUlang ikon="🇮🇩" jumlah={8} ukuran="text-xl" />
+            </p>
+          }
+          sesudahNilai={(benar) => {
+            if (!benar) setSalahKanvas((jumlah) => jumlah + 1);
+          }}
+        />
+        {salahKanvas >= 2 ? (
+          <div className="mt-3 grid gap-2 sm:grid-cols-2">
+            <div className="rounded-xl border-2 border-blue-300 bg-blue-50 px-3 py-2 text-sm font-black text-blue-900">
+              Puluhan · 🎀 satu ikat
+            </div>
+            <div className="rounded-xl border-2 border-amber-300 bg-amber-50 px-3 py-2 text-sm font-black text-amber-950">
+              Satuan · delapan bendera lepas
+            </div>
+          </div>
+        ) : null}
+      </div>
+    </KartuBingkai>
+  );
+}
+
+function KartuB({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminGuru }) {
+  const kartu = MODUL_MTK1_BAB5.kartu[1];
+  const pilihanAngka = ["12", "19", "20"];
+  return (
+    <KartuBingkai>
+      <KepalaKartu
+        ikon="🎀🔢"
+        judul={kartu.judul}
+        anak="Infografis angka belasan"
+        kelas={kelas}
+        kelamin={kelamin}
+        cuplikan={cuplikanDariNaskah(kartu.voice, 2_000, 3_000)}
+      />
+      <div className="mt-4 space-y-4">
+        <article className="rounded-2xl border-2 border-[#F0AB00] bg-[#FFF8E8] px-4 py-3">
+          <p className="text-sm font-black text-[#1C01A5]">Kenali angka belasan</p>
+          <p className="mt-1 text-sm font-semibold text-slate-700">🎀 = 1 ikat isi 10. ● = 1 benda lepas.</p>
+          <div className="mt-3">
+            <TabelBelasan />
+          </div>
+        </article>
+        <article className="rounded-2xl border-2 border-blue-200 bg-blue-50 px-4 py-3">
+          <p className="text-sm font-black text-[#1C01A5]">Rumah nilai tempat · 16</p>
+          <div className="mt-3 grid grid-cols-2 gap-2 text-center">
+            <div className="rounded-xl border-2 border-blue-400 bg-white px-3 py-2">
+              <p className="text-xs font-black text-blue-800">Puluhan</p>
+              <p className="text-3xl font-black text-blue-700">1</p>
+              <p className="text-sm">🎀</p>
+            </div>
+            <div className="rounded-xl border-2 border-amber-400 bg-white px-3 py-2">
+              <p className="text-xs font-black text-amber-800">Satuan</p>
+              <p className="text-3xl font-black text-amber-600">6</p>
+              <p className="text-sm">●●●●●●</p>
+            </div>
+          </div>
+          <p className="mt-2 text-sm font-black text-[#1C01A5]">16 = 10 + 6. Rumah kiri untuk ikatan, rumah kanan untuk yang lepas.</p>
+        </article>
+        <article className="rounded-2xl border-2 border-sky-200 bg-sky-50 px-4 py-3">
+          <p className="text-sm font-black text-[#1C01A5]">Bingkai sepuluh</p>
+          <div className="mt-3 grid gap-2 sm:grid-cols-2">
+            <BingkaiTitik titik={10} />
+            <BingkaiTitik titik={3} />
+          </div>
+          <p className="mt-2 text-sm font-semibold text-slate-700">Bingkai penuh = 10. Titik di bingkai kedua = 3. 10 + 3 = 13.</p>
+        </article>
+        <article className="rounded-2xl border-2 border-violet-200 bg-violet-50 px-4 py-3">
+          <p className="text-sm font-black text-[#1C01A5]">Membilang lanjut</p>
+          <p className="mt-2 text-2xl">🎀 🍬🍬🍬🍬🍬🍬🍬</p>
+          <p className="mt-2 text-sm font-semibold text-slate-700">
+            Simpan 10 di kepala. Tunjuk permen: 11, 12, 13, 14, 15, 16, 17. Angka terakhir = 17.
+          </p>
+        </article>
+        <article className="rounded-2xl border-2 border-emerald-200 bg-emerald-50 px-4 py-3">
+          <p className="text-sm font-black text-[#1C01A5]">Pakai jari teman</p>
+          <p className="mt-2 text-2xl">🖐️🖐️ + ✋</p>
+          <p className="mt-2 text-sm font-semibold text-slate-700">Jari teman = 10. Jarimu = 4. Semuanya = 14.</p>
+        </article>
+        <article className="rounded-2xl border-2 border-amber-200 bg-[#FFF8E8] px-4 py-3">
+          <p className="text-sm font-black text-[#1C01A5]">Cara menulis angka belasan</p>
+          <p className="mt-2 text-center text-4xl font-black">
+            <span className="text-blue-700">1</span>
+            <span className="text-amber-500">4</span>
+          </p>
+          <p className="mt-2 text-sm font-semibold text-slate-700">
+            Tulis puluhan dulu, baru satuan. Empat belas ditulis 14, bukan 41. Tujuh belas ditulis 17, bukan 71.
+          </p>
+        </article>
+        <article className="rounded-2xl border-2 border-rose-200 bg-rose-50 px-4 py-3">
+          <p className="text-sm font-black text-[#1C01A5]">Garis bilangan 0–20</p>
+          <p className="mt-2 flex flex-wrap gap-1 text-sm font-black text-[#1C01A5]">
+            {Array.from({ length: 21 }, (_, angka) => (
+              <span key={angka}>{angka === 10 || angka === 20 ? `🚩${angka}` : angka}</span>
+            ))}
+          </p>
+          <p className="mt-2 text-sm font-semibold text-slate-700">
+            12 dan 19 puluhannya sama-sama 1. Satuannya 2 dan 9. 9 lebih besar, jadi 19 lebih besar dari 12.
+          </p>
+        </article>
+        <KuisCocok
+          id={idKuis("B", 0)}
+          perintah="Tarik garis dari gambar ke angka yang benar!"
+          baris={[
+            { kiri: "🎀 ●●", pilihan: pilihanAngka, benar: "12" },
+            { kiri: "🎀 ●●●●●●●●●", pilihan: pilihanAngka, benar: "19" },
+            { kiri: "🎀🎀", pilihan: pilihanAngka, benar: "20" },
+          ]}
+          umpan="Satu ikat dua lepas = 12. Satu ikat sembilan lepas = 19. Dua ikat = 20."
+        />
+        <SusunKereta />
+        <KartuBeda />
+        <div className="border-t-2 border-[#1C01A5]/10 pt-5">
+          <p className="text-base font-extrabold text-[#1C01A5]">QUIZ:</p>
+          <p className="mt-2 text-center text-4xl font-black">
+            <span className="text-blue-700">1</span>
+            <span className="text-amber-500">8</span>
+          </p>
+          <SoalRekamSuara
+            id={idKuis("B", 3)}
+            pertanyaan="Angka 18 punya berapa puluhan dan berapa satuan? Ucapkan!"
+            periksa={(transkrip) =>
+              ucapanMemuat(transkrip, [
+                ["satu puluhan", "1 puluhan", "satu ikat"],
+                ["delapan satuan", "8 satuan", "delapan"],
+              ])
+            }
+            petunjuk="Sebutkan puluhan dan satuannya."
+          />
+        </div>
+        <KuisTulisKartu
+          id={idKuisTulisKartu(ID, "B")}
+          pertanyaan="Tulis angka yang dibacakan Pipit: enam belas!"
+          alias={["16", "enam belas"]}
+          konteks="Enam belas ditulis 16. Empat satu, yaitu 61, salah."
+          visual={<p className="text-center text-3xl">🐦 16</p>}
+        />
+      </div>
+    </KartuBingkai>
+  );
+}
+
 function KartuC({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminGuru }) {
   const kartu = MODUL_MTK1_BAB5.kartu[2];
   return (
