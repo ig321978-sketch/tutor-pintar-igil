@@ -190,7 +190,7 @@ export default function TombolVoiceMateriPai1({
         if (memutar) hentikan();
         else void mulai();
       }}
-      className={`flex w-full items-center justify-center gap-2 rounded-2xl px-5 py-3 text-base font-extrabold transition-all ${
+      className={`flex w-full items-center justify-center gap-2 rounded-2xl px-3 py-3 text-center text-sm font-extrabold leading-snug transition-all sm:px-5 sm:text-base ${
         memutar
           ? "bg-slate-400 text-white border-2 border-slate-500 hover:bg-slate-500"
           : kelasTombolUtama
