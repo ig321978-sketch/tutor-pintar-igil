@@ -5,6 +5,7 @@ import { TEMA_MTK1_BAB5 } from "@/lib/tema-misi-mtk-1";
 
 import { useMemo, useState, type ReactNode } from "react";
 import HasilJawabanKuis from "@/components/HasilJawabanKuis";
+import KartuPoinPenting from "@/components/KartuPoinPenting";
 import KuisAkhirAdegan from "@/components/KuisAkhirAdegan";
 import KuisTulisKartu from "@/components/KuisTulisKartu";
 import SoalRekamSuara from "@/components/SoalRekamSuara";
@@ -870,18 +871,6 @@ function LembarEvaluasi({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminG
         kelamin={kelamin}
         cuplikan={cuplikanDariNaskah(kartu.voice, 2_000, 3_000)}
       />
-      <ul className="mt-4 list-disc space-y-1 pl-5 text-sm font-semibold text-slate-700">
-        <li>Sepuluh diikat jadi satu. 1 ikat = 10 = 1 puluhan.</li>
-        <li>Kiri puluhan, kanan satuan.</li>
-        <li>Belas artinya sepuluh lebih sedikit. Tiga belas = 10 + 3.</li>
-        <li>Simpan sepuluh, lalu lanjut hitung.</li>
-        <li>Tulis puluhan dulu. 14, bukan 41.</li>
-        <li>Dua ikat penuh = 20.</li>
-        <li>Puluhan sama? Lihat satuannya. 19 lebih besar dari 12.</li>
-      </ul>
-      <p className="mt-4 rounded-2xl bg-[#FFF8E8] px-4 py-3 text-sm font-black text-[#1C01A5]">
-        Tiga belasan, empat belasan. Dua ikat penuh, jadi dua puluh. Kiri puluhan, kanan satuan. Ayo hitung lagi, sampai merdeka!
-      </p>
       <div className="mt-4 grid gap-2 rounded-2xl border-2 border-dashed border-[#1C01A5]/30 px-4 py-3 sm:grid-cols-3">
         <p className="text-sm font-black text-[#1C01A5]">Nama: {nama}</p>
         <p className="text-sm font-black text-[#1C01A5]">Kelas: 1</p>
@@ -1041,6 +1030,21 @@ export default function NaskahMtk1Bab5({
       <KartuB kelas={kelas} kelamin={kelamin} />
       <KartuC kelas={kelas} kelamin={kelamin} />
       <div id={SLOT_AJUAN_SEBELUM_KARTU_D} />
+      <KartuPoinPenting
+        kelas={kelas}
+        kelamin={kelamin}
+        cuplikan={cuplikanDariNaskah(MODUL_MTK1_BAB5.kartu[3].voice, 2_000, 3_000)}
+        poin={[
+          "Sepuluh diikat jadi satu. 1 ikat = 10 = 1 puluhan.",
+          "Kiri puluhan, kanan satuan.",
+          "Belas artinya sepuluh lebih sedikit. Tiga belas = 10 + 3.",
+          "Simpan sepuluh, lalu lanjut hitung.",
+          "Tulis puluhan dulu. 14, bukan 41.",
+          "Dua ikat penuh = 20.",
+          "Puluhan sama? Lihat satuannya. 19 lebih besar dari 12.",
+        ]}
+        penutup="Tiga belasan, empat belasan. Dua ikat penuh, jadi dua puluh. Kiri puluhan, kanan satuan. Ayo hitung lagi, sampai merdeka!"
+      />
       <LembarEvaluasi kelas={kelas} kelamin={kelamin} />
     </div>
   );

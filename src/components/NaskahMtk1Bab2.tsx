@@ -5,6 +5,7 @@ import { TEMA_MTK1_BAB2 } from "@/lib/tema-misi-mtk-1";
 
 import { useMemo, useState, type ReactNode } from "react";
 import HasilJawabanKuis from "@/components/HasilJawabanKuis";
+import KartuPoinPenting from "@/components/KartuPoinPenting";
 import KuisAkhirAdegan from "@/components/KuisAkhirAdegan";
 import KuisTulisKartu from "@/components/KuisTulisKartu";
 import SoalRekamSuara from "@/components/SoalRekamSuara";
@@ -870,22 +871,29 @@ export default function NaskahMtk1Bab2({
 
       <div id={SLOT_AJUAN_SEBELUM_KARTU_D} />
 
+      <KartuPoinPenting
+        kelas={kelas}
+        kelamin={kelamin}
+        cuplikan={cuplikanDariNaskah(kartuD.voice, 2_000, 3_000)}
+        poin={[
+          "Tambah artinya gabung.",
+          "Sama dengan artinya hasilnya.",
+          "Simpan yang besar, lompat yang kecil.",
+          "Dibalik tetap sama. 3 + 2 = 2 + 3.",
+          "Tambah nol, angkanya tetap. 5 + 0 = 5.",
+          "Cari angka, cari kata kunci, lalu hitung.",
+        ]}
+        penutup="Kalimat kunci: Tambah artinya gabung."
+      />
+
       <KartuBingkai>
         <p className="text-center text-4xl" aria-hidden>
-          🔑📝
+          📝
         </p>
         <h4 className="mt-3 text-center text-lg font-black tracking-wide text-[#1C01A5] sm:text-xl">{kartuD.judul}</h4>
         <div className="mt-4">
           <TombolVoiceMateriPai1 kelas={kelas} kelamin={kelamin} cuplikan={cuplikanDariNaskah(kartuD.voice, 2_000, 3_000)} />
         </div>
-        <ul className="mt-4 list-disc space-y-1 pl-5 text-sm font-semibold text-slate-700">
-          <li>Tambah artinya gabung.</li>
-          <li>Sama dengan artinya hasilnya.</li>
-          <li>Simpan yang besar, lompat yang kecil.</li>
-          <li>Dibalik tetap sama. 3 + 2 = 2 + 3.</li>
-          <li>Tambah nol, angkanya tetap. 5 + 0 = 5.</li>
-          <li>Cari angka, cari kata kunci, lalu hitung.</li>
-        </ul>
         <LembarEvaluasi />
         <KuisTulisKartu
           id={idKuisTulisKartu(ID, "D")}

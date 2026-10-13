@@ -5,6 +5,7 @@ import { TEMA_MTK1_BAB4 } from "@/lib/tema-misi-mtk-1";
 
 import { useMemo, useState, type ReactNode } from "react";
 import HasilJawabanKuis from "@/components/HasilJawabanKuis";
+import KartuPoinPenting from "@/components/KartuPoinPenting";
 import KuisAkhirAdegan from "@/components/KuisAkhirAdegan";
 import KuisTulisKartu from "@/components/KuisTulisKartu";
 import SoalRekamSuara from "@/components/SoalRekamSuara";
@@ -779,17 +780,6 @@ function LembarEvaluasi({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminG
         kelamin={kelamin}
         cuplikan={cuplikanDariNaskah(kartu.voice, 2_000, 3_000)}
       />
-      <ul className="mt-4 list-disc space-y-1 pl-5 text-sm font-semibold text-slate-700">
-        <li>Segitiga, tiga sisi, tiga sudut.</li>
-        <li>Segi empat, empat sisi, empat sudut.</li>
-        <li>Lingkaran bulat, tanpa sudut, bisa menggelinding.</li>
-        <li>Kubus seperti dadu, semua sisinya sama.</li>
-        <li>Balok seperti kotak susu, lebih panjang.</li>
-        <li>Sentuh setiap sisi sambil berhitung. Pipih berarti bentuk datar. Tebal berarti bangun ruang.</li>
-      </ul>
-      <p className="mt-4 rounded-2xl bg-[#FFF8E8] px-4 py-3 text-sm font-extrabold text-[#1C01A5]">
-        Tiga segitiga, empat segi empat. Bulat lingkaran, menggelinding cepat. Dadu itu kubus, kotak susu balok. Ayo cari bentuk, di sekitar pojok.
-      </p>
       <div className="mt-4 grid gap-3 rounded-2xl border-2 border-dashed border-[#1C01A5]/25 bg-[#FFFDF6] p-4 sm:grid-cols-3">
         <p className="text-xs font-black uppercase text-[#1C01A5]">
           Nama
@@ -942,6 +932,20 @@ export default function NaskahMtk1Bab4({
       <KartuB kelas={kelas} kelamin={kelamin} />
       <KotaBentuk kelas={kelas} kelamin={kelamin} />
       <div id={SLOT_AJUAN_SEBELUM_KARTU_D} />
+      <KartuPoinPenting
+        kelas={kelas}
+        kelamin={kelamin}
+        cuplikan={cuplikanDariNaskah(MODUL_MTK1_BAB4.kartu[3].voice, 2_000, 3_000)}
+        poin={[
+          "Segitiga, tiga sisi, tiga sudut.",
+          "Segi empat, empat sisi, empat sudut.",
+          "Lingkaran bulat, tanpa sudut, bisa menggelinding.",
+          "Kubus seperti dadu, semua sisinya sama.",
+          "Balok seperti kotak susu, lebih panjang.",
+          "Sentuh setiap sisi sambil berhitung. Pipih berarti bentuk datar. Tebal berarti bangun ruang.",
+        ]}
+        penutup="Tiga segitiga, empat segi empat. Bulat lingkaran, menggelinding cepat. Dadu itu kubus, kotak susu balok. Ayo cari bentuk, di sekitar pojok."
+      />
       <LembarEvaluasi kelas={kelas} kelamin={kelamin} />
     </div>
   );

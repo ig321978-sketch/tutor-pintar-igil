@@ -5,6 +5,7 @@ import { TEMA_MTK1_BAB3 } from "@/lib/tema-misi-mtk-1";
 
 import { useMemo, useState, type ReactNode } from "react";
 import HasilJawabanKuis from "@/components/HasilJawabanKuis";
+import KartuPoinPenting from "@/components/KartuPoinPenting";
 import KuisAkhirAdegan from "@/components/KuisAkhirAdegan";
 import KuisTulisKartu from "@/components/KuisTulisKartu";
 import SoalRekamSuara from "@/components/SoalRekamSuara";
@@ -746,14 +747,6 @@ function LembarEvaluasi({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminG
         kelamin={kelamin}
         cuplikan={cuplikanDariNaskah(kartu.voice, 2_000, 3_000)}
       />
-      <ul className="mt-4 list-disc space-y-1 pl-5 text-sm font-semibold text-slate-700">
-        <li>Kurang artinya diambil atau dipisah. Benda yang hilang jadi lebih sedikit.</li>
-        <li>Semuanya, yang diambil, lalu sisa.</li>
-        <li>Hitung mundur dari yang besar. 9 - 4: delapan, tujuh, enam, lima.</li>
-        <li>Kurang nol, tetap sama. 7 - 0 = 7.</li>
-        <li>Tambah dan kurang itu saudara. 5 + 3 = 8, jadi 8 - 3 = 5.</li>
-        <li>Cari angka, cari kata kunci, lalu hitung mundur.</li>
-      </ul>
       <div className="mt-4 grid gap-3 rounded-2xl border-2 border-dashed border-[#1C01A5]/25 bg-[#FFFDF6] p-4 sm:grid-cols-3">
         <p className="text-xs font-black uppercase text-[#1C01A5]">
           Nama
@@ -903,6 +896,20 @@ export default function NaskahMtk1Bab3({
       <KartuB kelas={kelas} kelamin={kelamin} />
       <TokoRoti kelas={kelas} kelamin={kelamin} />
       <div id={SLOT_AJUAN_SEBELUM_KARTU_D} />
+      <KartuPoinPenting
+        kelas={kelas}
+        kelamin={kelamin}
+        cuplikan={cuplikanDariNaskah(MODUL_MTK1_BAB3.kartu[3].voice, 2_000, 3_000)}
+        poin={[
+          "Kurang artinya diambil atau dipisah. Benda yang hilang jadi lebih sedikit.",
+          "Semuanya, yang diambil, lalu sisa.",
+          "Hitung mundur dari yang besar. 9 - 4: delapan, tujuh, enam, lima.",
+          "Kurang nol, tetap sama. 7 - 0 = 7.",
+          "Tambah dan kurang itu saudara. 5 + 3 = 8, jadi 8 - 3 = 5.",
+          "Cari angka, cari kata kunci, lalu hitung mundur.",
+        ]}
+        penutup="Kalimat kunci: kurang artinya diambil atau dipisah."
+      />
       <LembarEvaluasi kelas={kelas} kelamin={kelamin} />
     </div>
   );

@@ -6,6 +6,7 @@ import { TEMA_MTK1_BAB7 } from "@/lib/tema-misi-mtk-1";
 import { useMemo, useState, type ReactNode } from "react";
 import HasilJawabanKuis from "@/components/HasilJawabanKuis";
 import TabelInfoGrafis from "@/components/TabelInfoGrafis";
+import KartuPoinPenting from "@/components/KartuPoinPenting";
 import KuisAkhirAdegan from "@/components/KuisAkhirAdegan";
 import KuisTulisKartu from "@/components/KuisTulisKartu";
 import SoalRekamSuara from "@/components/SoalRekamSuara";
@@ -864,18 +865,6 @@ function LembarEvaluasi({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminG
         kelamin={kelamin}
         cuplikan={cuplikanDariNaskah(kartu.voice, 2_000, 3_000)}
       />
-      <ul className="mt-4 list-disc space-y-1 pl-5 text-sm font-semibold text-slate-700">
-        <li>Mata boleh ragu, ukuran tidak.</li>
-        <li>Rapat, lurus, dari ujung.</li>
-        <li>Satu orang, satu alat.</li>
-        <li>Jengkal, langkah, dan depa bisa jadi penggaris.</li>
-        <li>Ratakan ujungnya dulu, baru bandingkan.</li>
-        <li>Tebak dulu, ukur kemudian.</li>
-        <li>Satuan tidak baku untuk membandingkan. Satuan baku untuk semua orang.</li>
-      </ul>
-      <p className="mt-4 rounded-2xl bg-[#FFF8E8] px-4 py-3 text-sm font-black text-[#1C01A5]">
-        Rapat, lurus, dari ujung. Satu tangan, satu ukuran, Kodok pun tersenyum!
-      </p>
       <div className="mt-4 grid gap-2 rounded-2xl border-2 border-dashed border-[#1C01A5]/30 px-4 py-3 sm:grid-cols-3">
         <p className="text-sm font-black text-[#1C01A5]">Nama: {nama}</p>
         <p className="text-sm font-black text-[#1C01A5]">Kelas: 1</p>
@@ -1019,6 +1008,21 @@ export default function NaskahMtk1Bab7({
       <KartuB kelas={kelas} kelamin={kelamin} />
       <KartuC kelas={kelas} kelamin={kelamin} />
       <div id={SLOT_AJUAN_SEBELUM_KARTU_D} />
+      <KartuPoinPenting
+        kelas={kelas}
+        kelamin={kelamin}
+        cuplikan={cuplikanDariNaskah(MODUL_MTK1_BAB7.kartu[3].voice, 2_000, 3_000)}
+        poin={[
+          "Mata boleh ragu, ukuran tidak.",
+          "Rapat, lurus, dari ujung.",
+          "Satu orang, satu alat.",
+          "Jengkal, langkah, dan depa bisa jadi penggaris.",
+          "Ratakan ujungnya dulu, baru bandingkan.",
+          "Tebak dulu, ukur kemudian.",
+          "Satuan tidak baku untuk membandingkan. Satuan baku untuk semua orang.",
+        ]}
+        penutup="Rapat, lurus, dari ujung. Satu tangan, satu ukuran, Kodok pun tersenyum!"
+      />
       <LembarEvaluasi kelas={kelas} kelamin={kelamin} />
     </div>
   );

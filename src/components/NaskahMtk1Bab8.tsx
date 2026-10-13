@@ -6,6 +6,7 @@ import { TEMA_MTK1_BAB8 } from "@/lib/tema-misi-mtk-1";
 import { useMemo, useState, type ReactNode } from "react";
 import HasilJawabanKuis from "@/components/HasilJawabanKuis";
 import TabelInfoGrafis from "@/components/TabelInfoGrafis";
+import KartuPoinPenting from "@/components/KartuPoinPenting";
 import KuisAkhirAdegan from "@/components/KuisAkhirAdegan";
 import KuisTulisKartu from "@/components/KuisTulisKartu";
 import SoalRekamSuara from "@/components/SoalRekamSuara";
@@ -885,18 +886,6 @@ function LembarEvaluasi({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminG
         kelamin={kelamin}
         cuplikan={cuplikanDariNaskah(kartu.voice, 2_000, 3_000)}
       />
-      <ul className="mt-4 list-disc space-y-1 pl-5 text-sm font-semibold text-slate-700">
-        <li>Satu jenis, satu kotak.</li>
-        <li>Satu gambar sama dengan satu benda.</li>
-        <li>Baris rapi, dari kiri ke kanan.</li>
-        <li>Baris terpanjang berarti paling banyak.</li>
-        <li>Jumlah semuanya ditambahkan. Selisihnya dikurangkan.</li>
-        <li>Selalu pakai judul.</li>
-        <li>Data harus benar dari awal.</li>
-      </ul>
-      <p className="mt-4 rounded-2xl bg-[#FFF8E8] px-4 py-3 text-sm font-black text-[#1C01A5]">
-        Satu jenis, satu kotak. Satu gambar, satu benda, Tupi pun tersenyum!
-      </p>
       <div className="mt-4 grid gap-2 rounded-2xl border-2 border-dashed border-[#1C01A5]/30 px-4 py-3 sm:grid-cols-3">
         <p className="text-sm font-black text-[#1C01A5]">Nama: {nama}</p>
         <p className="text-sm font-black text-[#1C01A5]">Kelas: 1</p>
@@ -1041,6 +1030,21 @@ export default function NaskahMtk1Bab8({
       <KartuB kelas={kelas} kelamin={kelamin} />
       <KartuC kelas={kelas} kelamin={kelamin} />
       <div id={SLOT_AJUAN_SEBELUM_KARTU_D} />
+      <KartuPoinPenting
+        kelas={kelas}
+        kelamin={kelamin}
+        cuplikan={cuplikanDariNaskah(MODUL_MTK1_BAB8.kartu[3].voice, 2_000, 3_000)}
+        poin={[
+          "Satu jenis, satu kotak.",
+          "Satu gambar sama dengan satu benda.",
+          "Baris rapi, dari kiri ke kanan.",
+          "Baris terpanjang berarti paling banyak.",
+          "Jumlah semuanya ditambahkan. Selisihnya dikurangkan.",
+          "Selalu pakai judul.",
+          "Data harus benar dari awal.",
+        ]}
+        penutup="Satu jenis, satu kotak. Satu gambar, satu benda, Tupi pun tersenyum!"
+      />
       <LembarEvaluasi kelas={kelas} kelamin={kelamin} />
     </div>
   );

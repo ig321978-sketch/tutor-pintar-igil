@@ -257,7 +257,7 @@ D) Sama banyak`,
     },
     {
       kode: "D",
-      judul: "D. Poin Penting dan Lembar Evaluasi",
+      judul: "E. Lembar Evaluasi Siswa",
       pengantar:
         "Satu jenis satu kotak. Satu gambar satu benda. Baris terpanjang berarti paling banyak.",
       labelDaftar: "Evaluasi mengenal diagram",

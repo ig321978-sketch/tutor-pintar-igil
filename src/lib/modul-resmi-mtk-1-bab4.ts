@@ -233,7 +233,7 @@ D) Balok`,
     },
     {
       kode: "D",
-      judul: "D. Poin Penting dan Lembar Evaluasi",
+      judul: "E. Lembar Evaluasi Siswa",
       pengantar:
         "Segitiga tiga sisi. Segi empat empat sisi. Lingkaran tanpa sudut. Kubus seperti dadu. Balok seperti kotak susu.",
       labelDaftar: "Evaluasi mengenal bentuk",

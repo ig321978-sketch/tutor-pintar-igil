@@ -265,7 +265,7 @@ D) 4 jengkal`,
     },
     {
       kode: "D",
-      judul: "D. Poin Penting dan Lembar Evaluasi",
+      judul: "E. Lembar Evaluasi Siswa",
       pengantar:
         "Mata boleh ragu, ukuran tidak. Rapat, lurus, dari ujung. Satu orang, satu alat.",
       labelDaftar: "Evaluasi mengukur panjang benda",

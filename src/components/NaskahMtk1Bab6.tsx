@@ -6,6 +6,7 @@ import { TEMA_MTK1_BAB6 } from "@/lib/tema-misi-mtk-1";
 import { useMemo, useState, type ReactNode } from "react";
 import HasilJawabanKuis from "@/components/HasilJawabanKuis";
 import TabelInfoGrafis from "@/components/TabelInfoGrafis";
+import KartuPoinPenting from "@/components/KartuPoinPenting";
 import KuisAkhirAdegan from "@/components/KuisAkhirAdegan";
 import KuisTulisKartu from "@/components/KuisTulisKartu";
 import SoalRekamSuara from "@/components/SoalRekamSuara";
@@ -918,18 +919,6 @@ function LembarEvaluasi({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminG
         kelamin={kelamin}
         cuplikan={cuplikanDariNaskah(kartu.voice, 2_000, 3_000)}
       />
-      <ul className="mt-4 list-disc space-y-1 pl-5 text-sm font-semibold text-slate-700">
-        <li>Tambah? Hitung maju. 12 + 5 berhenti di 17.</li>
-        <li>Kurang? Hitung mundur. 18 – 6 berhenti di 12.</li>
-        <li>Belasan selalu punya 10 di dalamnya. 14 = 10 + 4.</li>
-        <li>Kejar sepuluh dulu, sisanya gampang. 9 + 6 = 10 + 5 = 15.</li>
-        <li>Habiskan satuan dulu. 14 – 6 = 10 – 2 = 8.</li>
-        <li>Satu keluarga angka, tiga kalimat. 8 + 7 = 15, 15 – 7 = 8, 15 – 8 = 7.</li>
-        <li>Baca soal, cari kata kunci, lalu hitung.</li>
-      </ul>
-      <p className="mt-4 rounded-2xl bg-[#FFF8E8] px-4 py-3 text-sm font-black text-[#1C01A5]">
-        Maju ke kanan, mundur ke kiri. Pecah lewat sepuluh, Toki tersenyum lagi!
-      </p>
       <div className="mt-4 grid gap-2 rounded-2xl border-2 border-dashed border-[#1C01A5]/30 px-4 py-3 sm:grid-cols-3">
         <p className="text-sm font-black text-[#1C01A5]">Nama: {nama}</p>
         <p className="text-sm font-black text-[#1C01A5]">Kelas: 1</p>
@@ -1076,6 +1065,21 @@ export default function NaskahMtk1Bab6({
       <KartuB kelas={kelas} kelamin={kelamin} />
       <KartuC kelas={kelas} kelamin={kelamin} />
       <div id={SLOT_AJUAN_SEBELUM_KARTU_D} />
+      <KartuPoinPenting
+        kelas={kelas}
+        kelamin={kelamin}
+        cuplikan={cuplikanDariNaskah(MODUL_MTK1_BAB6.kartu[3].voice, 2_000, 3_000)}
+        poin={[
+          "Tambah? Hitung maju. 12 + 5 berhenti di 17.",
+          "Kurang? Hitung mundur. 18 – 6 berhenti di 12.",
+          "Belasan selalu punya 10 di dalamnya. 14 = 10 + 4.",
+          "Kejar sepuluh dulu, sisanya gampang. 9 + 6 = 10 + 5 = 15.",
+          "Habiskan satuan dulu. 14 – 6 = 10 – 2 = 8.",
+          "Satu keluarga angka, tiga kalimat. 8 + 7 = 15, 15 – 7 = 8, 15 – 8 = 7.",
+          "Baca soal, cari kata kunci, lalu hitung.",
+        ]}
+        penutup="Maju ke kanan, mundur ke kiri. Pecah lewat sepuluh, Toki tersenyum lagi!"
+      />
       <LembarEvaluasi kelas={kelas} kelamin={kelamin} />
     </div>
   );

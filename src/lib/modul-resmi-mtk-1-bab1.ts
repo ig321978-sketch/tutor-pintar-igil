@@ -247,7 +247,7 @@ C) Bimo, selisih 4`,
     },
     {
       kode: "D",
-      judul: "D. Poin Penting dan Lembar Kerja",
+      judul: "E. Lembar Evaluasi Siswa",
       pengantar:
         "Hitung satu per satu, tulis angkanya, lalu bandingkan jumlahnya. Ini tantangan para juara.",
       labelDaftar: "Poin penting dan evaluasi",

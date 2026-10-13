@@ -2,6 +2,7 @@
 
 import { useMemo, useState, type ReactNode } from "react";
 import HasilJawabanKuis from "@/components/HasilJawabanKuis";
+import KartuPoinPenting from "@/components/KartuPoinPenting";
 import KuisAkhirAdegan from "@/components/KuisAkhirAdegan";
 import KuisTulisKartu from "@/components/KuisTulisKartu";
 import SoalRekamSuara from "@/components/SoalRekamSuara";
@@ -1211,6 +1212,24 @@ export default function NaskahMtk1Bab1({
 
       <div id={SLOT_AJUAN_SEBELUM_KARTU_D} />
 
+      <KartuPoinPenting
+        kelas={kelas}
+        kelamin={kelamin}
+        cuplikan={cuplikanDariNaskah(kartuD.voice.slice(0, 1), 2_000, 3_000)}
+        poin={[
+          "Tunjuk satu, sebut satu. Setiap benda hanya dihitung sekali.",
+          "Bilangan terakhir yang disebut adalah jumlah semua benda.",
+          "Urutan bilangan adalah 1, 2, 3, 4, 5, 6, 7, 8, 9, 10.",
+          "Bilangan yang lebih jauh ke kanan pada urutan biasanya lebih besar.",
+          "Lebih banyak berarti jumlahnya lebih besar.",
+          "Lebih sedikit berarti jumlahnya lebih kecil.",
+          "Sama banyak berarti jumlah kedua kelompok sama.",
+          "Mulut tanda > atau < terbuka ke bilangan yang lebih besar.",
+          "Tanda = berarti kedua jumlah sama.",
+        ]}
+        penutup="Kalimat kunci: “Hitung satu per satu, tulis angkanya, lalu bandingkan jumlahnya.”"
+      />
+
       <KartuBingkai>
         <p className="text-center text-4xl" aria-hidden>
           📝⭐
@@ -1220,22 +1239,8 @@ export default function NaskahMtk1Bab1({
           Tantangan Para Juara · Ayo Membilang sampai dengan 10
         </p>
         <div className="mt-4">
-          <TombolVoiceMateriPai1 kelas={kelas} kelamin={kelamin} cuplikan={cuplikanDariNaskah(kartuD.voice, 2_000, 3_000)} />
+          <TombolVoiceMateriPai1 kelas={kelas} kelamin={kelamin} cuplikan={cuplikanDariNaskah(kartuD.voice.slice(1), 2_000, 3_000)} />
         </div>
-        <ul className="mt-4 list-disc space-y-1 pl-5 text-sm font-semibold text-slate-700">
-          <li>Tunjuk satu, sebut satu. Setiap benda hanya dihitung sekali.</li>
-          <li>Bilangan terakhir yang disebut adalah jumlah semua benda.</li>
-          <li>Urutan bilangan adalah 1, 2, 3, 4, 5, 6, 7, 8, 9, 10.</li>
-          <li>Bilangan yang lebih jauh ke kanan pada urutan biasanya lebih besar.</li>
-          <li>Lebih banyak berarti jumlahnya lebih besar.</li>
-          <li>Lebih sedikit berarti jumlahnya lebih kecil.</li>
-          <li>Sama banyak berarti jumlah kedua kelompok sama.</li>
-          <li>Mulut tanda &gt; atau &lt; terbuka ke bilangan yang lebih besar.</li>
-          <li>Tanda = berarti kedua jumlah sama.</li>
-        </ul>
-        <p className="mt-4 rounded-2xl bg-[#FFF8E8] px-4 py-3 text-sm font-extrabold text-[#1C01A5]">
-          Kalimat kunci: “Hitung satu per satu, tulis angkanya, lalu bandingkan jumlahnya.”
-        </p>
         <LembarKerja />
         <KuisTulisKartu
           id={idKuisTulisKartu(MODUL_MTK1_BAB1.id, "D")}

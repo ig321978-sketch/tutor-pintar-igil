@@ -249,7 +249,7 @@ D) 13`,
     },
     {
       kode: "D",
-      judul: "D. Poin Penting dan Lembar Evaluasi",
+      judul: "E. Lembar Evaluasi Siswa",
       pengantar:
         "Tambah artinya gabung. Sama dengan artinya hasilnya. Selesaikan sepuluh misi penjumlahan.",
       labelDaftar: "Evaluasi penjumlahan sampai 10",

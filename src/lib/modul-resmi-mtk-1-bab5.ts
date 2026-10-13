@@ -257,7 +257,7 @@ D) Tidak ada`,
     },
     {
       kode: "D",
-      judul: "D. Poin Penting dan Lembar Evaluasi",
+      judul: "E. Lembar Evaluasi Siswa",
       pengantar:
         "Sepuluh diikat jadi satu. Kiri puluhan, kanan satuan. Belas artinya sepuluh lebih sedikit. Dua ikat penuh sama dengan dua puluh.",
       labelDaftar: "Evaluasi membilang sampai 20",

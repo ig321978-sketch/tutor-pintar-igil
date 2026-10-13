@@ -273,7 +273,7 @@ D) 5`,
     },
     {
       kode: "D",
-      judul: "D. Poin Penting dan Lembar Evaluasi",
+      judul: "E. Lembar Evaluasi Siswa",
       pengantar:
         "Tambah dihitung maju. Kurang dihitung mundur. Belasan punya sepuluh di dalamnya. Kejar sepuluh dulu, lalu habiskan satuan.",
       labelDaftar: "Evaluasi hitung maju dan mundur sampai 20",

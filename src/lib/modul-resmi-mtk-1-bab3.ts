@@ -253,7 +253,7 @@ D) 12`,
     },
     {
       kode: "D",
-      judul: "D. Poin Penting dan Lembar Evaluasi",
+      judul: "E. Lembar Evaluasi Siswa",
       pengantar:
         "Kurang artinya diambil. Semuanya, yang diambil, lalu sisa. Selesaikan sepuluh misi pengurangan.",
       labelDaftar: "Evaluasi pengurangan sampai 10",
