@@ -31,6 +31,7 @@ import { MODUL_MTK3_BAB1 } from "@/lib/modul-resmi-mtk-3-bab1";
 import { MODUL_MTK3_BAB2 } from "@/lib/modul-resmi-mtk-3-bab2";
 import { MODUL_MTK3_PERKALIAN } from "@/lib/modul-resmi-mtk-3-perkalian";
 import { MODUL_MTK3_PEMBAGIAN } from "@/lib/modul-resmi-mtk-3-pembagian";
+import { MODUL_MTK3_PECAHAN } from "@/lib/modul-resmi-mtk-3-pecahan";
 import { MODUL_MTK3_BAB3 } from "@/lib/modul-resmi-mtk-3-bab3";
 import { MODUL_PANCASILA1_BAB1 } from "@/lib/modul-resmi-pancasila-1-bab1";
 import { MODUL_PANCASILA1_BAB2 } from "@/lib/modul-resmi-pancasila-1-bab2";
@@ -457,6 +458,20 @@ export function adalahMtk3Pembagian(
 ): boolean {
   if (!kelasTigaSd(kelas)) return false;
   return adalahJudulMtk3Pembagian(mapel, materi);
+}
+
+export function adalahJudulMtk3Pecahan(mapel: string, materi: string): boolean {
+  if (!adalahMapelMatematika(mapel)) return false;
+  return MODUL_MTK3_PECAHAN.pola.test(normJudul(materi));
+}
+
+export function adalahMtk3Pecahan(
+  kelas: string,
+  mapel: string,
+  materi: string,
+): boolean {
+  if (!kelasTigaSd(kelas)) return false;
+  return adalahJudulMtk3Pecahan(mapel, materi);
 }
 
 export function adalahJudulMtk3Bab3(mapel: string, materi: string): boolean {
@@ -946,6 +961,7 @@ export function daftarNaskahResmiPublik(): ModulTerbitPublik[] {
     { kelas: "3 SD", mapel: "Matematika", materi: MODUL_MTK3_BAB2.judul },
     { kelas: "3 SD", mapel: "Matematika", materi: MODUL_MTK3_PERKALIAN.judul },
     { kelas: "3 SD", mapel: "Matematika", materi: MODUL_MTK3_PEMBAGIAN.judul },
+    { kelas: "3 SD", mapel: "Matematika", materi: MODUL_MTK3_PECAHAN.judul },
     { kelas: "3 SD", mapel: "Matematika", materi: MODUL_MTK3_BAB3.judul },
     ...MODUL_PANCASILA1_BAB1_4.map((modul) => ({
       kelas: "1 SD",
@@ -1069,6 +1085,9 @@ export function naskahResmiJikaAda(
   if (adalahMtk3Pembagian(kelas, mapel, materi)) {
     return isiCacheDariModulResmi(MODUL_MTK3_PEMBAGIAN);
   }
+  if (adalahMtk3Pecahan(kelas, mapel, materi)) {
+    return isiCacheDariModulResmi(MODUL_MTK3_PECAHAN);
+  }
   if (adalahMtk3Bab3(kelas, mapel, materi)) {
     return isiCacheDariModulResmi(MODUL_MTK3_BAB3);
   }
@@ -1162,6 +1181,7 @@ export function naskahTampilanResmi(teks?: string): boolean {
   if (naskahTampilanModulResmi(MODUL_MTK3_BAB2, teks)) return true;
   if (naskahTampilanModulResmi(MODUL_MTK3_PERKALIAN, teks)) return true;
   if (naskahTampilanModulResmi(MODUL_MTK3_PEMBAGIAN, teks)) return true;
+  if (naskahTampilanModulResmi(MODUL_MTK3_PECAHAN, teks)) return true;
   if (naskahTampilanModulResmi(MODUL_MTK3_BAB3, teks)) return true;
   if (MODUL_PANCASILA1_BAB1_4.some((modul) => naskahTampilanModulResmi(modul, teks))) {
     return true;
@@ -1267,6 +1287,9 @@ export function teksLisanResmiJikaAda(teks?: string): string | null {
   }
   if (naskahTampilanModulResmi(MODUL_MTK3_PEMBAGIAN, teks)) {
     return teksLisanModulResmi(MODUL_MTK3_PEMBAGIAN);
+  }
+  if (naskahTampilanModulResmi(MODUL_MTK3_PECAHAN, teks)) {
+    return teksLisanModulResmi(MODUL_MTK3_PECAHAN);
   }
   if (naskahTampilanModulResmi(MODUL_MTK3_BAB3, teks)) {
     return teksLisanModulResmi(MODUL_MTK3_BAB3);

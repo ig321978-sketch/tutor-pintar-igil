@@ -205,9 +205,15 @@ const SUBBAB_BUKU_SISWA: Record<string, Record<string, Record<string, string[]>>
         "Poin penting",
         "Lembar evaluasi siswa",
       ],
-      "Bab 5: Penyajian Data dalam Tabel": [
-        "Mengurutkan dan membandingkan data",
-        "Menyajikan data dalam bentuk tabel",
+      "Bab 5: Pecahan Sederhana": [
+        "Pecahan setengah",
+        "Pecahan sepertiga",
+        "Pecahan seperempat",
+        "Pembilang dan penyebut",
+        "Membandingkan pecahan",
+        "Warung Potong Buah Ciko",
+        "Poin penting",
+        "Lembar evaluasi siswa",
       ],
     },
   },
