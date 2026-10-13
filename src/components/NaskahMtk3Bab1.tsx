@@ -1095,6 +1095,7 @@ function KartuC({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminGuru }) {
       <GambarDoodle
         src="/doodle-mtk/mtk-3-bab1-permainan.jpg"
         alt="Stadion dengan papan skor raksasa, menara empat tingkat, dan panda di meja juri."
+        ukuran="lebar"
       />
       <PanduanIkon
         judul="Simbol menara"
@@ -1280,6 +1281,7 @@ function LembarEvaluasi({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminG
       <GambarDoodle
         src="/doodle-mtk/mtk-3-bab1-evaluasi.jpg"
         alt="Meja ujian dengan pensil besar dan papan skor kecil. Panda mengangkat ibu jari."
+        ukuran="lebar"
       />
       <p className="mt-4 text-center text-sm font-black text-[#1C01A5]">
         {lencana} · {pesan}
