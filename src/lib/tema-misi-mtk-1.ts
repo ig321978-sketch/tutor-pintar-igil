@@ -164,3 +164,17 @@ export const TEMA_MTK1_BAB12: TemaMisi = {
   pertanyaanAkhir: "Tuliskan jumlah koin pasar yang sudah kamu kumpulkan.",
   konteksAkhir: "Sepuluh pos timbangan selesai. Koin pasar ada 10. Pasar besar Momo terbuka.",
 };
+
+export const TEMA_MTK1_BAB13: TemaMisi = {
+  pemandu: "Jago",
+  pengantar:
+    "Bantu Jago menjaga 10 pos di stasiun waktu. Pilih satu pos, dengarkan misinya, lalu jawab dengan suara, kanvas, atau pilihan.",
+  satuan: "Pos",
+  ikonAwal: "⏰",
+  ikonAkhir: "🏅",
+  namaBintang: "Lonceng",
+  namaToken: "Kaca waktu",
+  ikonToken: "🔍",
+  pertanyaanAkhir: "Tuliskan jumlah lonceng yang sudah kamu kumpulkan.",
+  konteksAkhir: "Sepuluh pos selesai. Lonceng ada 10. Menara jam besar terbuka.",
+};

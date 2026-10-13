@@ -141,6 +141,13 @@ const SUBBAB_BUKU_SISWA: Record<string, Record<string, Record<string, string[]>>
         "Poin penting",
         "Lembar evaluasi siswa",
       ],
+      "Bab 13: Waktu dan Durasi": [
+        "Rumah jam Ayu",
+        "Papan jam",
+        "Stasiun jam Jago",
+        "Poin penting",
+        "Lembar evaluasi siswa",
+      ],
     },
   },
   "3 SD": {
