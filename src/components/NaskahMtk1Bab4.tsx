@@ -3,7 +3,7 @@ import MisiPenjagaKebun from "@/components/MisiPenjagaKebun";
 import { MISI_MTK1_BAB4 } from "@/lib/misi-kebun-mtk-1";
 import { TEMA_MTK1_BAB4 } from "@/lib/tema-misi-mtk-1";
 
-import { useEffect, useMemo, useRef, useState, type ReactNode } from "react";
+import { useMemo, useState, type ReactNode } from "react";
 import HasilJawabanKuis from "@/components/HasilJawabanKuis";
 import KuisAkhirAdegan from "@/components/KuisAkhirAdegan";
 import KuisTulisKartu from "@/components/KuisTulisKartu";
@@ -753,9 +753,6 @@ function BandingBangun() {
 function LembarEvaluasi({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminGuru }) {
   const kuis = useKuisMateri();
   const nama = useMemo(() => bacaProgres().profil.nama.trim(), []);
-  const [gambarMainan, setGambarMainan] = useState(false);
-  const [suaraMainan, setSuaraMainan] = useState(false);
-  const sudahTandai = useRef(false);
   const skor = useMemo(() => {
     let jumlah = 0;
     for (let indeks = 0; indeks < 10; indeks += 1) {
@@ -771,11 +768,6 @@ function LembarEvaluasi({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminG
         : skor >= 5
           ? "Penjelajah Bentuk"
           : "Ayo Coba Lagi";
-  useEffect(() => {
-    if (!gambarMainan || !suaraMainan || sudahTandai.current) return;
-    sudahTandai.current = true;
-    kuis?.tandaiBenar(idKuis("D", 9));
-  }, [gambarMainan, suaraMainan, kuis]);
   const kartu = MODUL_MTK1_BAB4.kartu[3];
   return (
     <KartuBingkai>
@@ -898,60 +890,31 @@ function LembarEvaluasi({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminG
           petunjuk="Sebutkan bendanya dan alasannya."
         />
         <BandingBangun />
-        <TulisBebas
+        <Pilih
           id={idKuis("D", 8)}
-          judul="9. Menyusun bentuk"
-          visual={<p className="text-center text-3xl">🔺 🔻</p>}
-          pertanyaan="Kamu punya 2 segitiga yang sama besar. Kalau digabung, bisa jadi bentuk apa? Tulis namanya di papan."
-          pesanSalah="Tulis segi empat, persegi, atau jajar genjang."
+          pertanyaan="9. Kamu punya 2 segitiga yang sama besar. Kalau digabung, bisa jadi bentuk apa?"
+          visual={<p>🔺 🔻</p>}
+          pilihan={[
+            { huruf: "A", teks: "Lingkaran" },
+            { huruf: "B", teks: "Segi empat" },
+            { huruf: "C", teks: "Segitiga saja" },
+          ]}
+          benar="B"
           umpan="Dua segitiga bisa menjadi segi empat."
-          periksa={(teks) =>
-            jawabanTulisMemuatAlias(teks, ["segi empat", "persegi", "persegi panjang", "jajar genjang", "jajargenjang"])
-          }
+          salah="Gabungkan kedua segitiga pada salah satu sisinya."
         />
-        <TulisBebas
-          id={`${ID}-D-mainan`}
-          judul="10. Mencipta mainan"
-          visual={<p className="text-center text-3xl">🔺 🟦 ⚪</p>}
-          pertanyaan="Gambarlah mainan dari segitiga, segi empat, dan lingkaran. Lalu tulis ketiga nama bentuk itu."
-          pesanSalah="Tulis ketiga namanya di papan: segitiga, segi empat, dan lingkaran."
-          umpan="Mainanmu memakai ketiga keluarga bentuk."
-          periksa={(teks) =>
-            ucapanMemuat(teks, [
-              ["segitiga"],
-              ["segi empat", "persegi", "persegi panjang"],
-              ["lingkaran"],
-            ])
-          }
-          sesudahBenar={() => setGambarMainan(true)}
-        />
-        <SoalRekamSuara
-          id=""
-          pertanyaan="Ceritakan mainanmu. Kamu memakai berapa bentuk?"
-          periksa={(transkrip) =>
-            jawabanTulisMemuatAlias(transkrip, [
-              "3",
-              "tiga",
-              "4",
-              "empat",
-              "5",
-              "lima",
-              "6",
-              "enam",
-              "7",
-              "tujuh",
-              "8",
-              "delapan",
-              "9",
-              "sembilan",
-              "10",
-              "sepuluh",
-            ])
-          }
-          petunjuk="Sebutkan jumlah bentuknya."
-          sesudahNilai={(benar) => {
-            if (benar) setSuaraMainan(true);
-          }}
+        <Pilih
+          id={idKuis("D", 9)}
+          pertanyaan="10. Mainan memakai segitiga, segi empat, dan lingkaran. Ada berapa jenis bentuk?"
+          visual={<p>🔺 🟦 ⚪</p>}
+          pilihan={[
+            { huruf: "A", teks: "2" },
+            { huruf: "B", teks: "3" },
+            { huruf: "C", teks: "4" },
+          ]}
+          benar="B"
+          umpan="Tiga keluarga bentuk: segitiga, segi empat, dan lingkaran."
+          salah="Hitung jenis bentuk yang dipakai, bukan banyak potongannya."
         />
         <KuisTulisKartu
           id={idKuisTulisKartu(ID, "D")}

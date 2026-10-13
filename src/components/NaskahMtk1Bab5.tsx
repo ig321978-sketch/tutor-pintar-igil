@@ -3,7 +3,7 @@ import MisiPenjagaKebun from "@/components/MisiPenjagaKebun";
 import { MISI_MTK1_BAB5 } from "@/lib/misi-kebun-mtk-1";
 import { TEMA_MTK1_BAB5 } from "@/lib/tema-misi-mtk-1";
 
-import { useEffect, useMemo, useRef, useState, type ReactNode } from "react";
+import { useMemo, useState, type ReactNode } from "react";
 import HasilJawabanKuis from "@/components/HasilJawabanKuis";
 import KuisAkhirAdegan from "@/components/KuisAkhirAdegan";
 import KuisTulisKartu from "@/components/KuisTulisKartu";
@@ -843,12 +843,6 @@ function KartuC({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminGuru }) {
 function LembarEvaluasi({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminGuru }) {
   const kuis = useKuisMateri();
   const nama = useMemo(() => bacaProgres().profil.nama.trim() || "Siswa", []);
-  const [benderaTulis, setBenderaTulis] = useState(false);
-  const [benderaSuara, setBenderaSuara] = useState(false);
-  const [kartuTulis, setKartuTulis] = useState(false);
-  const [kartuTukar, setKartuTukar] = useState("");
-  const sudahBendera = useRef(false);
-  const sudahKartu = useRef(false);
   const skor = useMemo(() => {
     let jumlah = 0;
     for (let indeks = 0; indeks < 10; indeks += 1) {
@@ -864,16 +858,6 @@ function LembarEvaluasi({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminG
       : skor >= 6
         ? "Hebat! Sedikit lagi jadi pahlawan angka!"
         : "Ayo mengikat bendera lagi bersama Pipit, kamu pasti bisa!";
-  useEffect(() => {
-    if (!benderaTulis || !benderaSuara || sudahBendera.current) return;
-    sudahBendera.current = true;
-    kuis?.tandaiBenar(idKuis("D", 8));
-  }, [benderaTulis, benderaSuara, kuis]);
-  useEffect(() => {
-    if (!kartuTulis || kartuTukar !== "bukan" || sudahKartu.current) return;
-    sudahKartu.current = true;
-    kuis?.tandaiBenar(idKuis("D", 9));
-  }, [kartuTulis, kartuTukar, kuis]);
   const kartu = MODUL_MTK1_BAB5.kartu[3];
   const pasangan = ["Dua belas", "Dua puluh", "1 puluhan 5 satuan"];
   return (
@@ -922,24 +906,17 @@ function LembarEvaluasi({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminG
           alias={["17", "tujuh belas"]}
           periksa={(teks) => jawabanTulisMemuatAlias(teks, ["17", "tujuh belas"])}
         />
-        <TulisBebas
+        <Pilih
           id={idKuis("D", 1)}
-          judul="2. Rumah angka 19"
-          visual={<p className="text-center text-sm font-black text-[#1C01A5]">Puluhan 🟦 ⬜ · Satuan 🟨 ⬜</p>}
-          pertanyaan="Isi rumah nilai tempat angka 19. Tulis puluhan dan satuannya."
-          pesanSalah="Puluhan 1, satuan 9. Angkanya 19."
+          pertanyaan="2. Angka 19 punya rumah nilai tempat yang mana?"
+          pilihan={[
+            { huruf: "A", teks: "9 puluhan dan 1 satuan" },
+            { huruf: "B", teks: "1 puluhan dan 9 satuan" },
+            { huruf: "C", teks: "19 puluhan" },
+          ]}
+          benar="B"
           umpan="19 = 1 puluhan dan 9 satuan."
-          alias={["19", "sembilan belas"]}
-          konteks="Benar jika terbaca 19 atau puluhan 1 dan satuan 9. Angka 91 salah."
-          periksa={(teks) =>
-            jawabanTulisMemuatAlias(teks, ["19", "sembilan belas"]) ||
-            ucapanMemuat(teks, [
-              ["puluhan"],
-              ["1", "satu"],
-              ["satuan"],
-              ["9", "sembilan"],
-            ])
-          }
+          salah="Angka kiri adalah puluhan."
         />
         <div className="border-t-2 border-[#1C01A5]/10 pt-4">
           <p className="text-base font-extrabold text-[#1C01A5]">QUIZ:</p>
@@ -979,18 +956,17 @@ function LembarEvaluasi({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminG
           periksa={(transkrip) => jawabanTulisMemuatAlias(transkrip, ["tujuh belas", "17"])}
           petunjuk="Sebutkan angkanya."
         />
-        <TulisBebas
+        <Pilih
           id={idKuis("D", 5)}
-          judul="6. Gambar ikatannya"
-          pertanyaan="Gambarlah angka 14 dengan satu ikatan dan empat bulatan lepas."
-          pesanSalah="Gambar satu pita dan empat bulatan, atau tulis 14."
+          pertanyaan="6. Angka 14 digambar dengan ikatan dan bulatan lepas. Gambar yang benar?"
+          pilihan={[
+            { huruf: "A", teks: "1 ikat dan 4 bulatan lepas" },
+            { huruf: "B", teks: "4 ikat dan 1 bulatan lepas" },
+            { huruf: "C", teks: "14 ikat" },
+          ]}
+          benar="A"
           umpan="1 ikat + 4 bulatan = 14."
-          alias={["14", "empat belas"]}
-          konteks="Benar jika ada satu ikatan dan empat bulatan, atau tulisan 14."
-          periksa={(teks) =>
-            jawabanTulisMemuatAlias(teks, ["14", "empat belas"]) ||
-            (jawabanTulisMemuatAlias(teks, ["ikat", "pita"]) && jawabanTulisMemuatAlias(teks, ["4", "empat"]))
-          }
+          salah="Satu ikat berisi sepuluh. Sisanya adalah satuan."
         />
         <Pilih
           id={idKuis("D", 6)}
@@ -1014,64 +990,32 @@ function LembarEvaluasi({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminG
           ]}
           umpan="10 + 2 = dua belas. Dua ikat = dua puluh. 15 = 1 puluhan 5 satuan."
         />
-        <TulisBebas
-          id={`${ID}-D-bendera`}
-          judul="9. Cukupkah benderanya?"
-          visual={<p className="text-center text-2xl">🎀 <IkonUlang ikon="🇮🇩" jumlah={7} ukuran="text-xl" /></p>}
-          pertanyaan="Pagar punya 20 tiang. Tari membawa 1 ikat dan 7 bendera lepas. Tulis banyak bendera yang Tari bawa."
-          pesanSalah="1 ikat dan 7 lepas sama dengan 17."
-          umpan="Tari membawa 17 bendera."
-          alias={["17", "tujuh belas"]}
-          periksa={(teks) => jawabanTulisMemuatAlias(teks, ["17", "tujuh belas"])}
-          sesudahBenar={() => setBenderaTulis(true)}
+        <Pilih
+          id={idKuis("D", 8)}
+          pertanyaan="9. Pagar punya 20 tiang. Tari membawa 1 ikat dan 7 bendera lepas. Apakah benderanya cukup?"
+          visual={<p>🎀 dan 7 bendera lepas</p>}
+          pilihan={[
+            { huruf: "A", teks: "Cukup, karena ada 20" },
+            { huruf: "B", teks: "Tidak cukup, karena baru 17" },
+            { huruf: "C", teks: "Cukup, karena ada 27" },
+          ]}
+          benar="B"
+          umpan="1 ikat + 7 = 17. 17 belum sampai 20."
+          salah="Satu ikat adalah 10, ditambah 7 menjadi 17."
         />
-        <SoalRekamSuara
-          id=""
-          pertanyaan="Apakah bendera Tari cukup untuk 20 tiang? Ucapkan Cukup atau Tidak cukup."
-          periksa={(transkrip) => jawabanTulisMemuatAlias(transkrip, ["tidak cukup", "kurang"])}
-          petunjuk="20 tiang, benderanya 17."
-          sesudahNilai={(benar) => {
-            if (benar) setBenderaSuara(true);
-          }}
+        <Pilih
+          id={idKuis("D", 9)}
+          pertanyaan="10. Kartu [1] dan [8] disusun jadi angka belasan. Kalau ditukar, masih belasan?"
+          visual={<p>[ 1 ] [ 8 ]</p>}
+          pilihan={[
+            { huruf: "A", teks: "18, dan kalau ditukar tetap belasan" },
+            { huruf: "B", teks: "18, dan kalau ditukar jadi 81, bukan belasan" },
+            { huruf: "C", teks: "81, dan itu masih belasan" },
+          ]}
+          benar="B"
+          umpan="18 belasan. Ditukar jadi 81, bukan belasan lagi."
+          salah="Puluhan ditulis lebih dulu. 18 bukan 81."
         />
-        <TulisBebas
-          id={`${ID}-D-kartu`}
-          judul="10. Kartu angka ajaib"
-          visual={<p className="text-center text-3xl font-black text-[#1C01A5]">[ 1 ] [ 8 ]</p>}
-          pertanyaan="Susun kedua kartu jadi angka belasan. Tulis angkanya."
-          pesanSalah="Susun menjadi 18, bukan 81."
-          umpan="18 masih belasan."
-          alias={["18", "delapan belas"]}
-          konteks="Angka belasan dari kartu 1 dan 8 adalah 18. 81 bukan belasan."
-          periksa={(teks) => jawabanTulisMemuatAlias(teks, ["18", "delapan belas"])}
-          sesudahBenar={() => setKartuTulis(true)}
-        />
-        <article className="rounded-2xl border-2 border-[#1C01A5]/15 bg-[#FFFDF6] p-4">
-          <p className="text-sm font-semibold text-slate-700">Kalau kartunya ditukar, angkanya masih belasan atau tidak?</p>
-          <div className="mt-3 grid gap-2">
-            {[
-              ["masih", "Masih belasan"],
-              ["bukan", "Bukan belasan lagi"],
-            ].map(([kode, label]) => (
-              <button
-                key={kode}
-                type="button"
-                onClick={() => setKartuTukar(kode)}
-                className={`rounded-xl px-3 py-2 text-left text-sm font-bold ${
-                  kartuTukar === kode ? "bg-[#1C01A5] text-white" : "bg-white text-[#1C01A5] ring-2 ring-[#1C01A5]/15"
-                }`}
-              >
-                {label}
-              </button>
-            ))}
-          </div>
-          {kartuTukar === "masih" ? (
-            <p className="mt-2 text-sm font-bold text-rose-800">81 bukan belasan. Letak angka mengubah nilainya.</p>
-          ) : null}
-          {kartuTulis && kartuTukar === "bukan" ? (
-            <p className="mt-2 text-sm font-bold text-emerald-800">18 kalau ditukar jadi 81, bukan belasan lagi.</p>
-          ) : null}
-        </article>
         <KuisTulisKartu
           id={idKuisTulisKartu(ID, "D")}
           pertanyaan="Tulis kalimat kunci: Sepuluh diikat jadi satu."

@@ -3,7 +3,7 @@ import MisiPenjagaKebun from "@/components/MisiPenjagaKebun";
 import { MISI_MTK1_BAB6 } from "@/lib/misi-kebun-mtk-1";
 import { TEMA_MTK1_BAB6 } from "@/lib/tema-misi-mtk-1";
 
-import { useEffect, useMemo, useRef, useState, type ReactNode } from "react";
+import { useMemo, useState, type ReactNode } from "react";
 import HasilJawabanKuis from "@/components/HasilJawabanKuis";
 import TabelInfoGrafis from "@/components/TabelInfoGrafis";
 import KuisAkhirAdegan from "@/components/KuisAkhirAdegan";
@@ -894,12 +894,6 @@ function LembarEvaluasi({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminG
   const kuis = useKuisMateri();
   const kartu = MODUL_MTK1_BAB6.kartu[3];
   const nama = useMemo(() => bacaProgres().profil.nama.trim() || "Siswa", []);
-  const [tokoSuara, setTokoSuara] = useState(false);
-  const [tokoTulis, setTokoTulis] = useState(false);
-  const [kelerengSuara, setKelerengSuara] = useState(false);
-  const [kelerengTulis, setKelerengTulis] = useState(false);
-  const sudahToko = useRef(false);
-  const sudahKelereng = useRef(false);
   const skor = useMemo(() => {
     let jumlah = 0;
     for (let indeks = 0; indeks < 10; indeks += 1) {
@@ -914,16 +908,6 @@ function LembarEvaluasi({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminG
       : skor >= 6
         ? "Hebat! Sedikit lagi Toki bebas!"
         : "Ayo coba lagi bersama Toki, kamu pasti bisa!";
-  useEffect(() => {
-    if (!tokoSuara || !tokoTulis || sudahToko.current) return;
-    sudahToko.current = true;
-    kuis?.tandaiBenar(idKuis("D", 6));
-  }, [tokoSuara, tokoTulis, kuis]);
-  useEffect(() => {
-    if (!kelerengSuara || !kelerengTulis || sudahKelereng.current) return;
-    sudahKelereng.current = true;
-    kuis?.tandaiBenar(idKuis("D", 8));
-  }, [kelerengSuara, kelerengTulis, kuis]);
   return (
     <KartuBingkai>
       <KepalaKartu
@@ -975,15 +959,17 @@ function LembarEvaluasi({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminG
           alias={["12", "dua belas", "17-5=12"]}
           periksa={(teks) => jawabanTulisMemuatAlias(teks, ["12", "dua belas", "17 - 5 = 12", "17-5=12"])}
         />
-        <TulisBebas
+        <Pilih
           id={idKuis("D", 2)}
-          judul="3. Pecah angkanya"
-          visual={<p className="text-center text-3xl font-black text-[#1C01A5]">18</p>}
-          pertanyaan="Pecah angka 18 jadi dua bagian!"
-          pesanSalah="18 = 10 + 8."
+          pertanyaan="3. Pecahan angka 18 yang benar adalah?"
+          pilihan={[
+            { huruf: "A", teks: "10 + 8" },
+            { huruf: "B", teks: "10 + 9" },
+            { huruf: "C", teks: "8 + 8" },
+          ]}
+          benar="A"
           umpan="18 = 10 + 8."
-          konteks="Benar jika terbaca 10 dan 8, bukan 18 saja dan bukan 81."
-          periksa={pecahDelapanBelas}
+          salah="Delapan belas punya 1 puluhan dan 8 satuan."
         />
         <div className="border-t-2 border-[#1C01A5]/10 pt-4">
           <p className="text-base font-extrabold text-[#1C01A5]">QUIZ:</p>
@@ -995,15 +981,17 @@ function LembarEvaluasi({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminG
             petunjuk="Katakan salah, lalu sebutkan hasil yang benar."
           />
         </div>
-        <TulisBebas
+        <Pilih
           id={idKuis("D", 4)}
-          judul="5. Cara cepat ke sepuluh"
-          visual={<p className="text-center text-sm font-black text-[#1C01A5]">8 + ⬜ = 10, lalu 10 + ⬜ = ⬜</p>}
-          pertanyaan="Hitung 8 + 9 dengan cara kejar sepuluh. Tulis kedua langkahnya!"
-          pesanSalah="8 butuh 2 untuk jadi 10. Sisa dari 9 adalah 7."
-          umpan="8 + 2 = 10, lalu 10 + 7 = 17."
-          konteks="Benar jika kedua langkah terbaca: 8 + 2 = 10 dan 10 + 7 = 17."
-          periksa={kejarDelapanSembilan}
+          pertanyaan="5. Hitung 8 + 9 dengan cara kejar sepuluh. Langkah yang benar?"
+          pilihan={[
+            { huruf: "A", teks: "8 + 1 = 9, lalu 10 + 8 = 18" },
+            { huruf: "B", teks: "8 + 2 = 10, lalu 10 + 7 = 17" },
+            { huruf: "C", teks: "8 + 3 = 11, lalu 10 + 6 = 16" },
+          ]}
+          benar="B"
+          umpan="8 butuh 2 untuk jadi 10. Sisa dari 9 adalah 7. Hasilnya 17."
+          salah="Isi dulu sampai 10, lalu tambahkan sisanya."
         />
         <Pilih
           id={idKuis("D", 5)}
@@ -1017,73 +1005,51 @@ function LembarEvaluasi({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminG
           umpan="9 + 7 = 16 dan 15 + 1 = 16."
           salah="Hitung kedua sisi dulu."
         />
-        <TulisBebas
-          id={`${ID}-D-toko`}
-          judul="7. Harga di toko kue"
-          visual={<p className="text-center text-sm font-semibold text-slate-700">Donat 11 koin. Kue 16 koin. Naya punya 15 koin.</p>}
-          pertanyaan="Berapa koin lagi yang dibutuhkan untuk barang yang belum terbeli?"
-          pesanSalah="Kue harganya 16. Naya punya 15."
-          umpan="Butuh 1 koin lagi untuk kue."
-          alias={["1", "satu"]}
-          konteks="Yang kurang untuk kue adalah 1 koin, bukan 11 dan bukan 16."
-          periksa={(teks) => jawabanTulisMemuatAlias(teks, ["1", "satu"])}
-          sesudahBenar={() => setTokoTulis(true)}
+        <Pilih
+          id={idKuis("D", 6)}
+          pertanyaan="7. Donat 11 koin. Kue 16 koin. Naya punya 15 koin. Mana yang bisa dibeli?"
+          pilihan={[
+            { huruf: "A", teks: "Donat" },
+            { huruf: "B", teks: "Kue" },
+            { huruf: "C", teks: "Donat dan kue" },
+          ]}
+          benar="A"
+          umpan="15 cukup untuk donat 11, belum cukup untuk kue 16."
+          salah="Bandingkan 15 dengan harga masing-masing."
         />
-        <SoalRekamSuara
-          id=""
-          pertanyaan="7. Barang mana yang bisa dibeli Naya? Ucapkan donat atau kue."
-          periksa={(transkrip) => {
-            const n = normalisasiJawabanTulis(transkrip);
-            return n.includes("donat") && !n.includes("kue");
-          }}
-          petunjuk="Bandingkan 15 koin dengan harga donat dan kue."
-          sesudahNilai={(benar) => {
-            if (benar) setTokoSuara(true);
-          }}
-        />
-        <TulisBebas
+        <Pilih
           id={idKuis("D", 7)}
-          judul="8. Bikin dua cara"
-          pertanyaan="Tulis 2 cara berbeda supaya hasilnya 14. Satu tambah, satu kurang."
-          pesanSalah="Contoh bentuknya 7 + 7 = 14 dan 18 – 4 = 14."
-          umpan="Ada banyak jawaban. Yang penting satu tambah dan satu kurang, keduanya 14."
-          konteks="Benar jika ada penjumlahan dan pengurangan yang sama-sama menghasilkan 14."
-          periksa={duaCaraEmpatBelas}
-        />
-        <TulisBebas
-          id={`${ID}-D-kelereng`}
-          judul="9. Kelereng hilang"
-          visual={<p className="text-center text-sm font-semibold text-slate-700">17 kelereng, 9 jatuh ke selokan.</p>}
-          pertanyaan="Tulis kalimat matematikanya!"
-          pesanSalah="17 dikurangi 9."
-          umpan="17 – 9 = 8."
-          alias={["17-9=8"]}
-          konteks="17 kelereng dikurangi 9 sama dengan 8."
-          periksa={kelerengSisa}
-          sesudahBenar={() => setKelerengTulis(true)}
+          pertanyaan="8. Mana pasangan yang satu tambah dan satu kurang, keduanya hasilnya 14?"
+          pilihan={[
+            { huruf: "A", teks: "7 + 7 = 14 dan 18 - 4 = 14" },
+            { huruf: "B", teks: "7 + 7 = 14 dan 9 + 6 = 15" },
+            { huruf: "C", teks: "10 + 4 = 14 dan 8 + 6 = 14" },
+          ]}
+          benar="A"
+          umpan="Satu penjumlahan dan satu pengurangan, keduanya 14."
+          salah="Harus ada satu tambah dan satu kurang."
         />
         <SoalRekamSuara
-          id=""
-          pertanyaan="9. Sisanya berapa? Ucapkan jumlah kelereng yang masih ada."
+          id={idKuis("D", 8)}
+          pertanyaan="9. Ada 17 kelereng. Sebanyak 9 jatuh. Sisa berapa? Ucapkan jumlahnya."
           periksa={(transkrip) => {
             const n = normalisasiJawabanTulis(transkrip);
             if (n.includes("belas")) return false;
             return jawabanTulisMemuatAlias(transkrip, ["delapan", "8"]);
           }}
           petunjuk="Sebutkan sisa kelerengnya."
-          sesudahNilai={(benar) => {
-            if (benar) setKelerengSuara(true);
-          }}
         />
-        <TulisBebas
+        <Pilih
           id={idKuis("D", 9)}
-          judul="10. Soal dua langkah"
-          visual={<p className="text-center text-sm font-semibold text-slate-700">12 balon. Dibeli 5. Datang lagi 8.</p>}
-          pertanyaan="Berapa balon di toko sekarang? Tulis dua langkahnya!"
-          pesanSalah="Kurangi dulu, baru tambahkan kiriman baru."
-          umpan="12 – 5 = 7, lalu 7 + 8 = 15."
-          konteks="Langkah pertama 12 dikurangi 5 sama dengan 7. Langkah kedua 7 ditambah 8 sama dengan 15."
-          periksa={duaLangkahBalon}
+          pertanyaan="10. Toko punya 12 balon. Dibeli 5, lalu datang lagi 8. Sekarang ada berapa?"
+          pilihan={[
+            { huruf: "A", teks: "15" },
+            { huruf: "B", teks: "12" },
+            { huruf: "C", teks: "25" },
+          ]}
+          benar="A"
+          umpan="12 - 5 = 7, lalu 7 + 8 = 15."
+          salah="Kurangi dulu, baru tambahkan kiriman baru."
         />
         <KuisTulisKartu
           id={idKuisTulisKartu(ID, "D")}

@@ -3,7 +3,7 @@ import MisiPenjagaKebun from "@/components/MisiPenjagaKebun";
 import { MISI_MTK1_BAB8 } from "@/lib/misi-kebun-mtk-1";
 import { TEMA_MTK1_BAB8 } from "@/lib/tema-misi-mtk-1";
 
-import { useEffect, useMemo, useRef, useState, type ReactNode } from "react";
+import { useMemo, useState, type ReactNode } from "react";
 import HasilJawabanKuis from "@/components/HasilJawabanKuis";
 import TabelInfoGrafis from "@/components/TabelInfoGrafis";
 import KuisAkhirAdegan from "@/components/KuisAkhirAdegan";
@@ -860,12 +860,6 @@ function LembarEvaluasi({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminG
   const kuis = useKuisMateri();
   const kartu = MODUL_MTK1_BAB8.kartu[3];
   const nama = useMemo(() => bacaProgres().profil.nama.trim() || "Siswa", []);
-  const [kendaraanTulis, setKendaraanTulis] = useState(false);
-  const [kendaraanSuara, setKendaraanSuara] = useState(false);
-  const [warnaTulis, setWarnaTulis] = useState(false);
-  const [warnaSuara, setWarnaSuara] = useState(false);
-  const sudahKendaraan = useRef(false);
-  const sudahWarna = useRef(false);
   const skor = useMemo(() => {
     let jumlah = 0;
     for (let indeks = 0; indeks < 10; indeks += 1) {
@@ -880,16 +874,6 @@ function LembarEvaluasi({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminG
       : skor >= 6
         ? "Hebat! Sedikit lagi jadi manajer data!"
         : "Ayo bereskan gudang lagi bersama Tupi, kamu pasti bisa!";
-  useEffect(() => {
-    if (!kendaraanTulis || !kendaraanSuara || sudahKendaraan.current) return;
-    sudahKendaraan.current = true;
-    kuis?.tandaiBenar(idKuis("D", 6));
-  }, [kendaraanTulis, kendaraanSuara, kuis]);
-  useEffect(() => {
-    if (!warnaTulis || !warnaSuara || sudahWarna.current) return;
-    sudahWarna.current = true;
-    kuis?.tandaiBenar(idKuis("D", 9));
-  }, [warnaTulis, warnaSuara, kuis]);
   const kelompok = ["🥤 Minuman", "🍪 Makanan"];
   return (
     <KartuBingkai>
@@ -956,15 +940,17 @@ function LembarEvaluasi({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminG
             petunjuk="Kucing ada 4, ikan ada 3."
           />
         </div>
-        <TulisBebas
+        <Pilih
           id={idKuis("D", 3)}
-          judul="4. Susun diagramnya"
-          visual={<p className="text-center text-sm font-black text-[#1C01A5]">🍎 5 · 🍌 2 · 🍇 4</p>}
-          pertanyaan="Tulis judulnya, lalu tulis jumlah apel, pisang, dan anggur!"
-          pesanSalah="Tulis judul, misalnya buah, lalu angka 5, 2, dan 4."
+          pertanyaan="4. Apel 5, pisang 2, anggur 4. Diagram yang benar?"
+          pilihan={[
+            { huruf: "A", teks: "Buah: apel 5, pisang 2, anggur 4" },
+            { huruf: "B", teks: "Buah: apel 5, pisang 4, anggur 2" },
+            { huruf: "C", teks: "Hewan: apel 5, pisang 2, anggur 4" },
+          ]}
+          benar="A"
           umpan="Judulnya buah. Apel 5, pisang 2, anggur 4."
-          konteks="Diagram buah: apel lima, pisang dua, anggur empat. Harus ada judul atau nama buah."
-          periksa={buahDiagram}
+          salah="Judul mengikuti jenis bendanya, dan angkanya tidak ditukar."
         />
         <TulisBebas
           id={idKuis("D", 4)}
@@ -988,36 +974,23 @@ function LembarEvaluasi({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminG
           ]}
           umpan="Susu dan jus minuman. Biskuit dan roti makanan."
         />
-        <TulisBebas
-          id={`${ID}-D-kendaraan`}
-          judul="7. Kategori misterius"
-          visual={<p className="text-center text-sm font-black text-[#1C01A5]">🚗 4 · 🚌 2 · 🛵 5</p>}
-          pertanyaan="Tulis jumlah semua kendaraan!"
-          pesanSalah="Jumlahkan 4, 2, dan 5."
-          umpan="4 + 2 + 5 = 11."
-          alias={["11", "sebelas"]}
-          konteks="Empat mobil, dua bus, lima motor. Jumlahnya sebelas."
-          periksa={jawabSebelas}
-          sesudahBenar={() => setKendaraanTulis(true)}
-        />
         <SoalRekamSuara
-          id=""
-          pertanyaan="7. Kendaraan apa yang paling sedikit? Ucapkan jawabannya."
+          id={idKuis("D", 6)}
+          pertanyaan="7. Mobil 4, bus 2, motor 5. Kendaraan apa yang paling sedikit?"
           periksa={jawabBus}
           petunjuk="Baris yang paling pendek."
-          sesudahNilai={(benar) => {
-            if (benar) setKendaraanSuara(true);
-          }}
         />
-        <TulisBebas
+        <Pilih
           id={idKuis("D", 7)}
-          judul="8. Ubah ke tabel"
-          visual={<p className="text-center text-sm font-black text-[#1C01A5]">🧁 6 · 🍩 4</p>}
-          pertanyaan="Tulis jumlah cupcake dan donat!"
-          pesanSalah="Cupcake 6 dan donat 4."
+          pertanyaan="8. Diagram kue menunjukkan cupcake 6 dan donat 4. Tabel yang benar?"
+          pilihan={[
+            { huruf: "A", teks: "Cupcake 6, donat 4" },
+            { huruf: "B", teks: "Cupcake 4, donat 6" },
+            { huruf: "C", teks: "Cupcake 6, donat 6" },
+          ]}
+          benar="A"
           umpan="Cupcake 6. Donat 4."
-          konteks="Tabel kue: cupcake enam dan donat empat. Kedua angka harus ada."
-          periksa={kueTabel}
+          salah="Angka mengikuti jumlah ikonnya."
         />
         <Pilih
           id={idKuis("D", 8)}
@@ -1031,25 +1004,17 @@ function LembarEvaluasi({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminG
           umpan="4 × 2 = 8."
           salah="Kalikan jumlah ikon dengan 2."
         />
-        <TulisBebas
-          id={`${ID}-D-kelereng`}
-          judul="10. Rancang diagram sendiri"
-          visual={<p className="text-center text-sm font-black text-[#1C01A5]">🟥 Merah · 🟦 Biru · 🟩 Hijau</p>}
-          pertanyaan="Tulis tiga jumlah untuk merah, biru, dan hijau!"
-          pesanSalah="Tulis tiga angka, satu untuk setiap warna."
-          umpan="Tiga baris sudah punya jumlah."
-          konteks="Tiga warna kelereng. Jawaban benar jika ada tiga angka."
-          periksa={tigaWarna}
-          sesudahBenar={() => setWarnaTulis(true)}
-        />
-        <SoalRekamSuara
-          id=""
-          pertanyaan="10. Ucapkan warna yang paling banyak, lalu sebutkan selisihnya."
-          periksa={warnaPaling}
-          petunjuk="Sebut satu warna dan satu angka."
-          sesudahNilai={(benar) => {
-            if (benar) setWarnaSuara(true);
-          }}
+        <Pilih
+          id={idKuis("D", 9)}
+          pertanyaan="10. Merah paling banyak, hijau paling sedikit. Diagram yang benar?"
+          pilihan={[
+            { huruf: "A", teks: "Merah 5, biru 3, hijau 1" },
+            { huruf: "B", teks: "Hijau 5, biru 3, merah 1" },
+            { huruf: "C", teks: "Merah 2, biru 2, hijau 2" },
+          ]}
+          benar="A"
+          umpan="Merah 5 paling banyak. Hijau 1 paling sedikit."
+          salah="Yang paling banyak angkanya paling besar."
         />
         <KuisTulisKartu
           id={idKuisTulisKartu(ID, "D")}

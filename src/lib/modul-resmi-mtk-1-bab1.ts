@@ -277,7 +277,7 @@ C) Bimo, selisih 4`,
         { pertanyaan: "Berapa kue yang ditambahkan agar sama banyak?", alias: ["2", "dua"] },
         { pertanyaan: "Cara terbaik menghitung 8 kancing?", alias: ["b", "satu per satu"] },
         { pertanyaan: "Urutan kotak dari bintang paling sedikit?", alias: ["a c b", "a, c, b"] },
-        { pertanyaan: "Tuliskan perbandingan kelompok 4 dengan kelompok yang lebih banyak.", alias: ["4 < 5", "4 < 6", "4 < 7", "4 < 8", "4 < 9", "4 < 10"] },
+        { pertanyaan: "Kelompok pertama 4 dan kelompok kedua 6. Tanda yang benar?", alias: ["4 < 6", "4<6", "b"] },
         { pertanyaan: "Siapa yang balonnya lebih banyak, dan berapa selisihnya?", alias: ["bimo", "2", "dua"] },
       ],
       voice: [

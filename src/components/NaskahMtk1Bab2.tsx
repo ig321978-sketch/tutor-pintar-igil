@@ -3,7 +3,7 @@ import MisiPenjagaKebun from "@/components/MisiPenjagaKebun";
 import { MISI_MTK1_BAB2 } from "@/lib/misi-kebun-mtk-1";
 import { TEMA_MTK1_BAB2 } from "@/lib/tema-misi-mtk-1";
 
-import { useEffect, useMemo, useRef, useState, type ReactNode } from "react";
+import { useMemo, useState, type ReactNode } from "react";
 import HasilJawabanKuis from "@/components/HasilJawabanKuis";
 import KuisAkhirAdegan from "@/components/KuisAkhirAdegan";
 import KuisTulisKartu from "@/components/KuisTulisKartu";
@@ -366,17 +366,9 @@ function KapalHarta() {
 }
 
 function LembarEvaluasi() {
-  const kuis = useKuisMateri();
   const profil = useMemo(() => bacaProgres().profil, []);
   const [nama, setNama] = useState(profil.nama || "");
-  const [suaraPasar, setSuaraPasar] = useState(false);
-  const [tulisPasar, setTulisPasar] = useState(false);
-  const sudahPasar = useRef(false);
-  useEffect(() => {
-    if (sudahPasar.current || !suaraPasar || !tulisPasar) return;
-    sudahPasar.current = true;
-    kuis?.tandaiBenar(idKuis("D", 6));
-  }, [kuis, suaraPasar, tulisPasar]);
+  const kuis = useKuisMateri();
   const skor = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9].filter((indeks) => kuis?.sudahBenar(idKuis("D", indeks))).length;
   const lencana =
     skor >= 9 ? "👑 Raja Laut Penjumlahan. Luar biasa! Kamu kapten paling hebat!"
@@ -412,13 +404,18 @@ function LembarEvaluasi() {
         konteks="Tiga kue ditambah empat kue sama dengan tujuh."
         visual={<p className="text-center text-2xl">🧁🧁🧁 + 🧁🧁🧁🧁 = ⬜</p>}
       />
-      <KuisTulisKartu
+      <Pilih
         id={idKuis("D", 1)}
-        hanyaKanvas
-        pertanyaan="2. Ada 2 kupu-kupu. Datang 3 kupu-kupu lagi. Gambar jumlahnya dengan bulatan, lalu tulis kalimat matematikanya."
-        alias={kumpulkanAlias(["2 + 3 = 5", "2+3=5", "dua tambah tiga sama dengan lima"])}
-        konteks="Lima kupu-kupu. Dua tambah tiga sama dengan lima."
-        visual={<p className="text-center text-2xl">🦋🦋 + 🦋🦋🦋</p>}
+        soal="2. Ada 2 kupu-kupu. Datang 3 kupu-kupu lagi. Semuanya berapa?"
+        benar="B"
+        umpan="2 + 3 = 5."
+        salah="Hitung semua kupu-kupu."
+        visual={<p>🦋🦋 + 🦋🦋🦋</p>}
+        pilihan={[
+          { huruf: "A", teks: "4" },
+          { huruf: "B", teks: "5" },
+          { huruf: "C", teks: "6" },
+        ]}
       />
       <KuisTulisKartu
         id={idKuis("D", 2)}
@@ -443,7 +440,18 @@ function LembarEvaluasi() {
           petunjuk="Sebut salah, lalu sebut angka yang benar."
         />
       </div>
-      <DuaCaraDelapan />
+      <Pilih
+        id={idKuis("D", 4)}
+        soal="5. Mana pasangan yang keduanya hasilnya 8?"
+        benar="A"
+        umpan="4 + 4 = 8 dan 5 + 3 = 8. Dua cara yang berbeda."
+        salah="Kedua kalimat harus sama-sama menghasilkan 8."
+        pilihan={[
+          { huruf: "A", teks: "4 + 4 = 8 dan 5 + 3 = 8" },
+          { huruf: "B", teks: "4 + 4 = 8 dan 3 + 3 = 6" },
+          { huruf: "C", teks: "2 + 2 = 4 dan 6 + 2 = 8" },
+        ]}
+      />
       <Pilih
         id={idKuis("D", 5)}
         soal="6. Timbangan kiri 3 + 4. Pilih kartu supaya timbangan seimbang."
@@ -457,32 +465,19 @@ function LembarEvaluasi() {
           { huruf: "C", teks: "6 + 3" },
         ]}
       />
-      <div className="space-y-3">
-        <p className="text-sm font-semibold text-slate-700">
-          7. Ibu membeli 5 tomat dan 5 wortel. Berapa sayur yang dibeli Ibu semuanya?
-        </p>
-        <p className="text-2xl">🍅🍅🍅🍅🍅 + 🥕🥕🥕🥕🥕</p>
-        <KuisTulisKartu
-          id={`${ID}-D-pasar`}
-          hanyaKanvas
-          rapat
-          pertanyaan="Tulis kalimat matematikanya."
-          alias={kumpulkanAlias(["5 + 5 = 10", "5+5=10"])}
-          konteks="Lima tambah lima sama dengan sepuluh."
-          sesudahNilai={(benar) => {
-            if (benar) setTulisPasar(true);
-          }}
-        />
-        <SoalRekamSuara
-          id=""
-          pertanyaan="Ucapkan jumlah sayurnya."
-          periksa={(transkrip) => jawabanTulisMemuatAlias(transkrip, ["10", "sepuluh"])}
-          petunjuk="Sebutkan hasilnya."
-          sesudahNilai={(benar) => {
-            if (benar) setSuaraPasar(true);
-          }}
-        />
-      </div>
+      <Pilih
+        id={idKuis("D", 6)}
+        soal="7. Ibu membeli 5 tomat dan 5 wortel. Berapa sayur semuanya?"
+        benar="B"
+        umpan="5 + 5 = 10."
+        salah="Jumlahkan tomat dan wortel."
+        visual={<p>🍅🍅🍅🍅🍅 + 🥕🥕🥕🥕🥕</p>}
+        pilihan={[
+          { huruf: "A", teks: "8" },
+          { huruf: "B", teks: "10" },
+          { huruf: "C", teks: "55" },
+        ]}
+      />
       <KuisCocok
         id={idKuis("D", 7)}
         soal="8. Pasangkan kartu yang hasilnya sama."
@@ -494,13 +489,18 @@ function LembarEvaluasi() {
         umpan="Semua pasangan seimbang."
         salah="Hitung setiap kartu, lalu cari hasil yang sama."
       />
-      <KuisTulisKartu
+      <Pilih
         id={idKuis("D", 8)}
-        hanyaKanvas
-        pertanyaan="9. Bus punya 10 kursi. Sudah ada 6 anak. Berapa anak lagi supaya bus penuh?"
-        alias={kumpulkanAlias(["4", "empat"])}
-        konteks="Sepuluh dikurangi enam, atau enam ditambah empat sama dengan sepuluh."
-        visual={<p className="text-center text-2xl">💺 × 10 · 👧👦 sudah 6</p>}
+        soal="9. Bus punya 10 kursi. Sudah ada 6 anak. Berapa anak lagi supaya bus penuh?"
+        benar="B"
+        umpan="6 + 4 = 10. Perlu 4 anak lagi."
+        salah="Sepuluh dikurangi enam."
+        visual={<p>💺 × 10 · sudah 6 anak</p>}
+        pilihan={[
+          { huruf: "A", teks: "3" },
+          { huruf: "B", teks: "4" },
+          { huruf: "C", teks: "6" },
+        ]}
       />
       <div>
         <p className="text-base font-extrabold text-[#1C01A5]">QUIZ:</p>

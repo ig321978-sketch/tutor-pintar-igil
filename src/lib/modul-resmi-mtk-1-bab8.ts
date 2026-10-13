@@ -278,10 +278,10 @@ D) Sama banyak`,
         { pertanyaan: "Buat diagram apel 5, pisang 2, anggur 4.", alias: ["5", "2", "4"] },
         { pertanyaan: "Berapa selisih pensil 8 dan krayon 3?", alias: ["5", "lima"] },
         { pertanyaan: "Pasangkan susu, biskuit, jus, dan roti dengan kelompoknya.", alias: ["minuman", "makanan"] },
-        { pertanyaan: "Kendaraan paling sedikit apa, dan berapa jumlah semuanya?", alias: ["bus", "11"] },
+        { pertanyaan: "Kendaraan apa yang paling sedikit?", alias: ["bus"] },
         { pertanyaan: "Ubah cupcake 6 dan donat 4 menjadi tabel.", alias: ["6", "4"] },
         { pertanyaan: "Empat ikon susu, satu ikon sama dengan dua benda. Jumlah sebenarnya?", alias: ["8"] },
-        { pertanyaan: "Sebutkan warna kelereng yang paling banyak.", alias: ["merah", "biru", "hijau"] },
+        { pertanyaan: "Merah paling banyak dan hijau paling sedikit. Diagram mana yang benar?", alias: ["merah", "5"] },
       ],
       voice: [
         [

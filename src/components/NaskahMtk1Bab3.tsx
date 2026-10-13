@@ -3,7 +3,7 @@ import MisiPenjagaKebun from "@/components/MisiPenjagaKebun";
 import { MISI_MTK1_BAB3 } from "@/lib/misi-kebun-mtk-1";
 import { TEMA_MTK1_BAB3 } from "@/lib/tema-misi-mtk-1";
 
-import { useEffect, useMemo, useRef, useState, type ReactNode } from "react";
+import { useMemo, useState, type ReactNode } from "react";
 import HasilJawabanKuis from "@/components/HasilJawabanKuis";
 import KuisAkhirAdegan from "@/components/KuisAkhirAdegan";
 import KuisTulisKartu from "@/components/KuisTulisKartu";
@@ -721,9 +721,6 @@ function TokoRoti({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminGuru })
 function LembarEvaluasi({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminGuru }) {
   const kuis = useKuisMateri();
   const nama = useMemo(() => bacaProgres().profil.nama.trim(), []);
-  const [pasarTulis, setPasarTulis] = useState(false);
-  const [pasarSuara, setPasarSuara] = useState(false);
-  const sudahTandaiPasar = useRef(false);
   const skor = useMemo(() => {
     let jumlah = 0;
     for (let indeks = 0; indeks < 10; indeks += 1) {
@@ -737,11 +734,6 @@ function LembarEvaluasi({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminG
       : skor >= 6
         ? { nama: "Penjaga Rak Hebat", pesan: "Hebat! Sedikit lagi jadi kepala toko!" }
         : { nama: "Sahabat Miko", pesan: "Ayo jaga toko lagi bersama Miko, kamu pasti bisa!" };
-  useEffect(() => {
-    if (!pasarTulis || !pasarSuara || sudahTandaiPasar.current) return;
-    sudahTandaiPasar.current = true;
-    kuis?.tandaiBenar(idKuis("D", 6));
-  }, [pasarTulis, pasarSuara, kuis]);
   const kartu = MODUL_MTK1_BAB3.kartu[3];
   const kalimatPasangan = ["6 - 2", "8 - 6", "10 - 8"];
   return (
@@ -786,11 +778,18 @@ function LembarEvaluasi({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminG
           alias={["5", "lima"]}
           visual={<p className="text-2xl">🍬🍬🍬🍬🍬<span className="opacity-40 line-through">🍬🍬🍬🍬</span></p>}
         />
-        <KuisTulisKartu
+        <Pilih
           id={idKuis("D", 1)}
-          pertanyaan='2. Ada 7 balon. Sebanyak 4 balon meletus. Gambarlah bulatan untuk balon yang masih ada, lalu tulis kalimat matematikanya.'
-          alias={["7 - 4 = 3", "7-4=3"]}
-          visual={<p className="text-2xl">🎈🎈🎈 💥💥💥💥</p>}
+          pertanyaan="2. Ada 7 balon. Sebanyak 4 balon meletus. Sisa berapa?"
+          visual={<p>🎈🎈🎈 💥💥💥💥</p>}
+          pilihan={[
+            { huruf: "A", teks: "2" },
+            { huruf: "B", teks: "3" },
+            { huruf: "C", teks: "4" },
+          ]}
+          benar="B"
+          umpan="7 - 4 = 3."
+          salah="Hitung balon yang masih ada."
         />
         <KuisTulisKartu
           id={idKuis("D", 2)}
@@ -809,7 +808,18 @@ function LembarEvaluasi({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminG
           }
           petunjuk="Ucapkan Salah, lalu sebutkan lima."
         />
-        <DuaCaraEmpat />
+        <Pilih
+          id={idKuis("D", 4)}
+          pertanyaan="5. Mana pasangan yang keduanya hasilnya 4?"
+          pilihan={[
+            { huruf: "A", teks: "5 - 1 = 4 dan 6 - 2 = 4" },
+            { huruf: "B", teks: "5 - 1 = 4 dan 3 - 1 = 2" },
+            { huruf: "C", teks: "8 - 3 = 5 dan 7 - 2 = 5" },
+          ]}
+          benar="A"
+          umpan="5 - 1 = 4 dan 6 - 2 = 4. Dua cara yang berbeda."
+          salah="Kedua kalimat harus sama-sama menghasilkan 4."
+        />
         <Pilih
           id={idKuis("D", 5)}
           pertanyaan="6. Nia punya 6 stiker. Ia memberi 6 stiker ke Fajar. Berapa sisa stiker Nia?"
@@ -822,23 +832,18 @@ function LembarEvaluasi({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminG
           umpan="Semuanya habis. 6 - 6 = 0."
           salah="Nia memberi semua stikernya."
         />
-        <KuisTulisKartu
-          id={`${ID}-D-pasar`}
-          pertanyaan='7. Bu Tuti punya 10 bunga. Sebanyak 6 bunga sudah terjual. Tulis kalimat matematikanya.'
-          alias={["10 - 6 = 4", "10-6=4"]}
-          visual={<p className="text-2xl">🌷🌷🌷🌷🌷🌷🌷🌷🌷🌷</p>}
-          sesudahNilai={(benar) => {
-            if (benar) setPasarTulis(true);
-          }}
-        />
-        <SoalRekamSuara
-          id=""
-          pertanyaan="Ucapkan sisa bunga Bu Tuti."
-          periksa={(transkrip) => jawabanTulisMemuatAlias(transkrip, ["empat", "4"])}
-          petunjuk="Sebutkan sisanya."
-          sesudahNilai={(benar) => {
-            if (benar) setPasarSuara(true);
-          }}
+        <Pilih
+          id={idKuis("D", 6)}
+          pertanyaan="7. Bu Tuti punya 10 bunga. Sebanyak 6 bunga sudah terjual. Sisa berapa?"
+          visual={<p>🌷 × 10, terjual 6</p>}
+          pilihan={[
+            { huruf: "A", teks: "3" },
+            { huruf: "B", teks: "4" },
+            { huruf: "C", teks: "6" },
+          ]}
+          benar="B"
+          umpan="10 - 6 = 4."
+          salah="Sepuluh dikurangi enam."
         />
         <KuisCocok
           id={idKuis("D", 7)}
@@ -850,11 +855,18 @@ function LembarEvaluasi({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminG
           ]}
           umpan="10 - 6 dan 6 - 2 sama-sama 4. Pasangan lain sama-sama 2."
         />
-        <KuisTulisKartu
+        <Pilih
           id={idKuis("D", 8)}
-          pertanyaan="9. Ada 9 boneka dan 5 anak. Setiap anak mengambil 1 boneka. Berapa boneka yang tidak terambil? Tulis angkanya!"
-          alias={["4", "empat"]}
-          visual={<p className="text-2xl">🧸🧸🧸🧸🧸🧸🧸🧸🧸</p>}
+          pertanyaan="9. Ada 9 boneka dan 5 anak. Setiap anak mengambil 1 boneka. Berapa boneka yang tidak terambil?"
+          visual={<p>🧸 × 9 · anak 5</p>}
+          pilihan={[
+            { huruf: "A", teks: "3" },
+            { huruf: "B", teks: "4" },
+            { huruf: "C", teks: "5" },
+          ]}
+          benar="B"
+          umpan="9 - 5 = 4."
+          salah="Sembilan dikurangi lima."
         />
         <SoalRekamSuara
           id={idKuis("D", 9)}

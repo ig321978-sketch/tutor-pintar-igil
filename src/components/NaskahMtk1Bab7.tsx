@@ -3,7 +3,7 @@ import MisiPenjagaKebun from "@/components/MisiPenjagaKebun";
 import { MISI_MTK1_BAB7 } from "@/lib/misi-kebun-mtk-1";
 import { TEMA_MTK1_BAB7 } from "@/lib/tema-misi-mtk-1";
 
-import { useEffect, useMemo, useRef, useState, type ReactNode } from "react";
+import { useMemo, useState, type ReactNode } from "react";
 import HasilJawabanKuis from "@/components/HasilJawabanKuis";
 import TabelInfoGrafis from "@/components/TabelInfoGrafis";
 import KuisAkhirAdegan from "@/components/KuisAkhirAdegan";
@@ -839,9 +839,6 @@ function LembarEvaluasi({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminG
   const kuis = useKuisMateri();
   const kartu = MODUL_MTK1_BAB7.kartu[3];
   const nama = useMemo(() => bacaProgres().profil.nama.trim() || "Siswa", []);
-  const [papanTulis, setPapanTulis] = useState(false);
-  const [papanSuara, setPapanSuara] = useState(false);
-  const sudahPapan = useRef(false);
   const skor = useMemo(() => {
     let jumlah = 0;
     for (let indeks = 0; indeks < 10; indeks += 1) {
@@ -856,11 +853,6 @@ function LembarEvaluasi({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminG
       : skor >= 6
         ? "Hebat! Sedikit lagi jadi ahli ukur!"
         : "Ayo ukur lagi bersama Kodok, kamu pasti bisa!";
-  useEffect(() => {
-    if (!papanTulis || !papanSuara || sudahPapan.current) return;
-    sudahPapan.current = true;
-    kuis?.tandaiBenar(idKuis("D", 8));
-  }, [papanTulis, papanSuara, kuis]);
   const alatPas = ["📎 Klip kertas", "👣 Langkah kaki", "🖐️ Jengkal"];
   return (
     <KartuBingkai>
@@ -936,15 +928,17 @@ function LembarEvaluasi({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminG
           benar={["🥢 Lidi 1", "🖍️ Krayon 2", "📏 Penggaris 5", "🧹 Sapu 8"]}
           umpan="Lidi, krayon, penggaris, lalu sapu."
         />
-        <TulisBebas
+        <Pilih
           id={idKuis("D", 4)}
-          judul="5. Pilih alat ukur"
-          visual={<p className="text-center text-2xl">⚽</p>}
-          pertanyaan="Lapangan bola sangat luas. Tulis alat tidak baku yang paling tepat, lalu tulis alasan singkat."
-          pesanSalah="Pilih langkah atau depa, lalu tulis kenapa klip terlalu kecil."
-          umpan="Langkah atau depa, karena lapangannya panjang."
-          konteks="Benar jika menyebut langkah atau depa dan alasannya lapangan itu panjang atau luas."
-          periksa={alatLapangan}
+          pertanyaan="5. Lapangan bola sangat luas. Alat tidak baku yang paling tepat?"
+          pilihan={[
+            { huruf: "A", teks: "Klip kertas" },
+            { huruf: "B", teks: "Langkah kaki" },
+            { huruf: "C", teks: "Jengkal tangan" },
+          ]}
+          benar="B"
+          umpan="Lapangan panjang, jadi diukur dengan langkah."
+          salah="Klip dan jengkal terlalu kecil untuk lapangan."
         />
         <TulisBebas
           id={idKuis("D", 5)}
@@ -976,36 +970,29 @@ function LembarEvaluasi({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminG
           ]}
           umpan="Buku pakai klip. Lorong pakai langkah. Meja pakai jengkal."
         />
-        <TulisBebas
-          id={`${ID}-D-papan`}
-          judul="9. Papan kayu bengkel"
-          visual={<p className="text-center text-sm font-black text-[#1C01A5]">4 jengkal + 3 jengkal</p>}
-          pertanyaan="Tulis panjang papan sambungan semuanya!"
-          pesanSalah="Jumlahkan 4 dan 3."
+        <Pilih
+          id={idKuis("D", 8)}
+          pertanyaan="9. Papan 4 jengkal disambung papan 3 jengkal. Panjang semuanya?"
+          pilihan={[
+            { huruf: "A", teks: "6 jengkal" },
+            { huruf: "B", teks: "7 jengkal" },
+            { huruf: "C", teks: "8 jengkal" },
+          ]}
+          benar="B"
           umpan="4 + 3 = 7 jengkal."
-          alias={["7", "tujuh", "4+3=7"]}
-          konteks="Empat jengkal ditambah tiga jengkal sama dengan tujuh jengkal."
-          periksa={sambungPapan}
-          sesudahBenar={() => setPapanTulis(true)}
+          salah="Jumlahkan kedua papan."
         />
-        <SoalRekamSuara
-          id=""
-          pertanyaan="9. Ucapkan panjang papan sambungannya."
-          periksa={sambungPapan}
-          petunjuk="Sebutkan jumlah jengkalnya."
-          sesudahNilai={(benar) => {
-            if (benar) setPapanSuara(true);
-          }}
-        />
-        <TulisBebas
+        <Pilih
           id={idKuis("D", 9)}
-          judul="10. Pesta layang-layang"
-          visual={<p className="text-center text-sm font-black text-[#1C01A5]">A 6 jengkal. B 9 jengkal. C 4 jengkal.</p>}
-          pertanyaan="Siapa yang terpanjang, dan berapa jengkal bedanya dengan yang terpendek?"
-          pesanSalah="Yang terpanjang 9. Yang terpendek 4. Kurangkan keduanya."
-          umpan="B paling panjang. 9 – 4 = 5 jengkal."
-          konteks="Layang B atau 9 adalah yang terpanjang. Selisih dengan 4 adalah 5 jengkal."
-          periksa={layangDua}
+          pertanyaan="10. Layang A 6 jengkal, B 9 jengkal, C 4 jengkal. Siapa terpanjang, dan berapa bedanya dengan yang terpendek?"
+          pilihan={[
+            { huruf: "A", teks: "B, selisih 5 jengkal" },
+            { huruf: "B", teks: "A, selisih 2 jengkal" },
+            { huruf: "C", teks: "C, selisih 5 jengkal" },
+          ]}
+          benar="A"
+          umpan="B paling panjang. 9 - 4 = 5 jengkal."
+          salah="Cari yang paling panjang, lalu kurangi yang paling pendek."
         />
         <KuisTulisKartu
           id={idKuisTulisKartu(ID, "D")}

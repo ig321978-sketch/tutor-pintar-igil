@@ -257,7 +257,7 @@ D) Balok`,
         { pertanyaan: "Benda yang tidak menggelinding di lantai miring adalah kardus.", alias: ["kardus", "balok"] },
         { pertanyaan: "Apa yang sama dan beda dari dadu dan kotak susu?", alias: ["kubus", "balok"] },
         { pertanyaan: "Dua segitiga digabung bisa menjadi segi empat.", alias: ["segi empat", "persegi", "jajar genjang"] },
-        { pertanyaan: "Gambar mainan dari tiga keluarga bentuk, lalu sebutkan jumlahnya.", alias: ["tiga", "3"] },
+        { pertanyaan: "Mainan memakai segitiga, segi empat, dan lingkaran. Ada berapa jenis bentuk?", alias: ["tiga", "3"] },
       ],
       voice: [
         [

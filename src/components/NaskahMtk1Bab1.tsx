@@ -29,13 +29,6 @@ const BILANGAN = [
   { angka: 10, nama: "sepuluh", ikon: "★" },
 ];
 
-const ALIAS_LEBIH_DARI_EMPAT = [5, 6, 7, 8, 9, 10].flatMap((angka) => [
-  `4 < ${angka}`,
-  `4<${angka}`,
-  `${angka} > 4`,
-  `${angka}>4`,
-]);
-
 function KartuBingkai({ children }: { children: ReactNode }) {
   return (
     <section className="rounded-[1.75rem] border-4 border-[#1C01A5]/15 bg-white px-4 py-5 shadow-sm sm:px-6 sm:py-6">
@@ -770,24 +763,23 @@ function LembarKerja() {
         visual={<p className="text-center text-lg font-black text-[#1C01A5]">🦆🦆🦆🦆 4 &nbsp;&nbsp; □ &nbsp;&nbsp; 6 🐇🐇🐇🐇🐇🐇</p>}
       />
 
-      <KuisTulisKartu
+      <KuisPilih
         id={idKuis("D", 5)}
-        hanyaKanvas
-        pertanyaan="6. Berapa kue yang harus ditambahkan ke Piring B agar sama banyak dengan Piring A?"
-        alias={kumpulkanAlias(["2", "dua", "tambah 2"])}
-        konteks="Piring A 5 kue. Piring B 3 kue. Tambahkan 2 kue."
-        visual={
-          <div className="grid gap-2 sm:grid-cols-2">
-            <p className="rounded-xl bg-[#FFF7ED] px-3 py-2 text-sm font-bold text-[#1C01A5]">
-              Piring A · 5
-              <IkonUlang ikon="🍪" jumlah={5} ukuran="text-xl" />
-            </p>
-            <p className="rounded-xl bg-[#F0FDF4] px-3 py-2 text-sm font-bold text-[#1C01A5]">
-              Piring B · 3
-              <IkonUlang ikon="🍪" jumlah={3} ukuran="text-xl" />
-            </p>
-          </div>
+        soal="6. Piring A punya 5 kue. Piring B punya 3 kue. Berapa kue yang ditambahkan ke Piring B?"
+        benar="B"
+        umpanBenar="Tepat! 3 + 2 = 5. Tambahkan 2 kue."
+        pesanSalah="Hitung selisih 5 dan 3."
+        anak={
+          <span>
+            Piring A <IkonUlang ikon="🍪" jumlah={5} ukuran="text-xl" /> · Piring B{" "}
+            <IkonUlang ikon="🍪" jumlah={3} ukuran="text-xl" />
+          </span>
         }
+        pilihan={[
+          { huruf: "A", teks: "1" },
+          { huruf: "B", teks: "2" },
+          { huruf: "C", teks: "3" },
+        ]}
       />
 
       <KuisPilih
@@ -817,12 +809,17 @@ function LembarKerja() {
         pesanSalah="Hitung bintang setiap kotak. Mulai dari yang paling sedikit."
       />
 
-      <KuisTulisKartu
+      <KuisPilih
         id={idKuis("D", 8)}
-        hanyaKanvas
-        pertanyaan="9. Kelompok pertama berjumlah 4. Kelompok kedua lebih banyak, dan tidak lebih dari 10. Tuliskan kedua bilangan dan tandanya. Contoh: 4 < 6."
-        alias={kumpulkanAlias(ALIAS_LEBIH_DARI_EMPAT)}
-        konteks="Kelompok pertama 4. Kelompok kedua lebih besar dari 4 dan paling banyak 10."
+        soal="9. Kelompok pertama 4. Kelompok kedua 6. Mana kalimat yang benar?"
+        benar="B"
+        umpanBenar="Benar! 4 lebih sedikit daripada 6. 4 < 6."
+        pesanSalah="Kelompok kedua lebih banyak, jadi tandanya mengarah ke 6."
+        pilihan={[
+          { huruf: "A", teks: "4 > 6" },
+          { huruf: "B", teks: "4 < 6" },
+          { huruf: "C", teks: "4 = 6" },
+        ]}
       />
 
       <div className="rounded-2xl border-2 border-[#1C01A5]/15 bg-[#EFF6FF] p-4">

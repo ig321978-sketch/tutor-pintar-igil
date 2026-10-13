@@ -269,7 +269,7 @@ D) 13`,
           alias: ["7", "tujuh"],
         },
         {
-          pertanyaan: "Dua kupu-kupu ditambah tiga kupu-kupu. Tuliskan kalimat matematikanya.",
+          pertanyaan: "Dua kupu-kupu ditambah tiga kupu-kupu. Semuanya berapa?",
           alias: ["2 + 3 = 5", "2+3=5"],
         },
         {
@@ -281,7 +281,7 @@ D) 13`,
           alias: ["salah", "9", "sembilan"],
         },
         {
-          pertanyaan: "Tuliskan dua cara berbeda yang hasilnya 8.",
+          pertanyaan: "Mana pasangan yang keduanya hasilnya 8?",
           alias: ["4 + 4 = 8", "5 + 3 = 8", "6 + 2 = 8"],
         },
         {
