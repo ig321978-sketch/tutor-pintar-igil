@@ -18,7 +18,7 @@ import { kelasTombolHasilKuis, statusDariPilihan, type StatusJawabanKuis } from 
 import { idKuisKartuResmi, idKuisTulisKartu } from "@/lib/kuis-materi";
 import { MODUL_MTK1_BAB9 } from "@/lib/modul-resmi-mtk-1-bab9";
 import { jawabanTulisMemuatAlias, normalisasiJawabanTulis } from "@/lib/nilai-kuis-tulis";
-import { cuplikanDariNaskah, type CuplikanVoiceMateri } from "@/lib/naskah-voice-pai-1-bab2";
+import type { CuplikanVoiceMateri } from "@/lib/naskah-voice-pai-1-bab2";
 import { bacaProgres } from "@/lib/progres";
 import type { KelaminGuru } from "@/lib/guru";
 
@@ -130,6 +130,29 @@ function Papan({ anak }: { anak: string }) {
   );
 }
 
+function cuplikanKalimat(kalimat: string[]): CuplikanVoiceMateri[] {
+  return kalimat.map((teks, indeks) => ({
+    teks,
+    jedaSetelahMs: indeks === kalimat.length - 1 ? 0 : 1_200,
+  }));
+}
+
+function TombolPenjelasan({
+  kelas,
+  kelamin,
+  kalimat,
+}: {
+  kelas?: string;
+  kelamin?: KelaminGuru;
+  kalimat: string[];
+}) {
+  return (
+    <div className="mt-3">
+      <TombolVoiceMateriPai1 kelas={kelas} kelamin={kelamin} cuplikan={cuplikanKalimat(kalimat)} />
+    </div>
+  );
+}
+
 function KepalaKartu({
   ikon,
   judul,
@@ -143,7 +166,7 @@ function KepalaKartu({
   anak?: string;
   kelas?: string;
   kelamin?: KelaminGuru;
-  cuplikan: CuplikanVoiceMateri[];
+  cuplikan?: CuplikanVoiceMateri[];
 }) {
   return (
     <>
@@ -152,9 +175,11 @@ function KepalaKartu({
       </p>
       <h4 className="mt-3 text-center text-lg font-black tracking-wide text-[#1C01A5] sm:text-xl">{judul}</h4>
       {anak ? <p className="mt-1 text-center text-sm font-semibold text-slate-600">{anak}</p> : null}
-      <div className="mt-3 flex justify-center">
-        <TombolVoiceMateriPai1 kelas={kelas} kelamin={kelamin} cuplikan={cuplikan} />
-      </div>
+      {cuplikan && cuplikan.length > 0 ? (
+        <div className="mt-3">
+          <TombolVoiceMateriPai1 kelas={kelas} kelamin={kelamin} cuplikan={cuplikan} />
+        </div>
+      ) : null}
     </>
   );
 }
@@ -169,17 +194,24 @@ function Adegan({
   warna,
   src,
   alt,
+  kelas,
+  kelamin,
+  penjelasan,
   children,
 }: {
   judul: string;
   warna: string;
   src: string;
   alt: string;
+  kelas?: string;
+  kelamin?: KelaminGuru;
+  penjelasan: string[];
   children: ReactNode;
 }) {
   return (
     <article className={`rounded-2xl border-2 px-4 py-3 ${warna}`}>
       <p className="text-xs font-black uppercase tracking-wide text-[#1C01A5]">{judul}</p>
+      <TombolPenjelasan kelas={kelas} kelamin={kelamin} kalimat={penjelasan} />
       {/* eslint-disable-next-line @next/next/no-img-element */}
       <img src={src} alt={alt} className="mt-3 w-full rounded-xl border border-[#1C01A5]/10 bg-[#fbf6ea] object-cover" />
       <div className="mt-3 space-y-2">{children}</div>
@@ -518,9 +550,6 @@ function KartuA({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminGuru }) {
         ikon="👧👦🐢"
         judul={kartu.judul}
         anak="Sari, Bima, Danu, dan Kura di gudang sekolah"
-        kelas={kelas}
-        kelamin={kelamin}
-        cuplikan={cuplikanDariNaskah(kartu.voice, 2_000, 3_000)}
       />
       <div className="mt-4">
         <p className="text-sm font-black text-[#1C01A5]">Tujuan Pembelajaran</p>
@@ -536,6 +565,13 @@ function KartuA({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminGuru }) {
           warna="border-amber-200 bg-amber-50/40"
           src="/doodle-mtk/mtk-1-bab9-adegan-1.jpg"
           alt="Sari memegang papan 46. Empat ikat stik bertanda 10 dan enam stik lepas. Kura mengintip dari kardus."
+          kelas={kelas}
+          kelamin={kelamin}
+          penjelasan={[
+            "Di gudang sekolah, Sari menghitung stik es krim dan mendapat empat puluh enam.",
+            "Empat ikat isi sepuluh sama dengan empat puluh. Sisa enam stik. Jadi empat puluh tambah enam sama dengan empat puluh enam.",
+            "Angka empat di kiri artinya empat puluhan, bukan empat saja. Angka enam di kanan adalah satuan.",
+          ]}
         >
           <Dialog nama="Sari" anak="Bima, aku hitung stik es krim ini dapat 46." />
           <Dialog nama="Bima" anak="Halah, aku dapat 4 dan 6. Jadi 46? Atau 10?" />
@@ -566,6 +602,13 @@ function KartuA({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminGuru }) {
           warna="border-sky-200 bg-sky-50/50"
           src="/doodle-mtk/mtk-1-bab9-adegan-2.jpg"
           alt="Panggung kelas dengan kartu 27, 30, dan 90. Sari, Bima, dan Danu membaca. Kura menunjuk. Deret 10 sampai 100 di bawah."
+          kelas={kelas}
+          kelamin={kelamin}
+          penjelasan={[
+            "Anak-anak lomba membaca angka. Dua puluh tujuh dibaca dua puluh tujuh.",
+            "Angka tiga puluh dibaca tiga puluh saja, tanpa menyebut nol.",
+            "Angka yang berakhir nol dibaca sepuluh, dua puluh, sampai seratus. Belasan hanya untuk sebelas sampai sembilan belas.",
+          ]}
         >
           <Dialog nama="Danu" anak="Ayo lomba! Siapa yang bisa baca angka paling cepat dan benar?" />
           <Dialog nama="Bima" anak="Gampang! Dua puluh tujuh!" />
@@ -593,6 +636,13 @@ function KartuA({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminGuru }) {
           warna="border-emerald-200 bg-emerald-50/40"
           src="/doodle-mtk/mtk-1-bab9-adegan-3.jpg"
           alt="Dua keranjang kelereng berlabel 52 dan 57. Buaya berdiri di antara keduanya. Tulisan 52 kurang dari 57."
+          kelas={kelas}
+          kelamin={kelamin}
+          penjelasan={[
+            "Keranjang A ada lima puluh dua. Keranjang B ada lima puluh tujuh.",
+            "Puluhannya sama-sama lima, jadi kita lihat satuannya. Tujuh lebih besar dari dua.",
+            "Kalau puluhan beda, puluhan yang menentukan. Buaya selalu menghadap angka yang lebih besar.",
+          ]}
         >
           <Dialog nama="Bima" anak="Keranjang A ada 52. Keranjang B ada 57. Mana yang lebih banyak?" />
           <Dialog nama="Danu" anak="Puluhannya sama-sama 5! Jadi bagaimana?" />
@@ -623,6 +673,13 @@ function KartuA({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminGuru }) {
           warna="border-orange-200 bg-orange-50/40"
           src="/doodle-mtk/mtk-1-bab9-adegan-4.jpg"
           alt="Lapangan sekolah dengan petak 0, 25, 38, 40, dan 100. Sari di 25, Bima di 38, Danu di 40. Urutan 25 kurang dari 38 kurang dari 40."
+          kelas={kelas}
+          kelamin={kelamin}
+          penjelasan={[
+            "Sari berdiri di angka dua puluh lima. Bima di tiga puluh delapan. Danu di empat puluh.",
+            "Mengurutkan artinya menyusun dari yang paling kecil, bukan dari yang paling dekat.",
+            "Urutannya dua puluh lima, lalu tiga puluh delapan, lalu empat puluh.",
+          ]}
         >
           <Dialog nama="Sari" anak="Ayo main! Aku berdiri di angka 25." />
           <Dialog nama="Danu" anak="Aku di angka 40." />
@@ -649,6 +706,13 @@ function KartuA({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminGuru }) {
           warna="border-fuchsia-200 bg-fuchsia-50/40"
           src="/doodle-mtk/mtk-1-bab9-adegan-5.jpg"
           alt="Papan tulis menunjukkan 28 sama dengan 20 tambah 8, dan 82 sama dengan 80 tambah 2. Cermin memantulkan angka yang tertukar."
+          kelas={kelas}
+          kelamin={kelamin}
+          penjelasan={[
+            "Angka dua puluh delapan dan delapan puluh dua memakai angka yang sama, tetapi tempatnya bertukar.",
+            "Pada dua puluh delapan, angka dua bernilai dua puluh. Pada delapan puluh dua, angka dua hanya bernilai dua.",
+            "Menulis angka harus dari puluhan dulu. Jangan dibalik.",
+          ]}
         >
           <Dialog nama="Danu" anak="Sari, kenapa 28 dan 82 isinya angka yang sama tapi nilainya beda jauh?" />
           <Dialog nama="Bima" anak="Aku pernah salah tulis 82 jadi 28, dan Bu Guru bilang salah besar." />
@@ -748,13 +812,19 @@ function KartuB({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminGuru }) {
         ikon="🟦🟨🐊"
         judul={kartu.judul}
         anak="Empat papan infografis"
-        kelas={kelas}
-        kelamin={kelamin}
-        cuplikan={cuplikanDariNaskah(kartu.voice, 2_000, 3_000)}
       />
       <div className="mt-4 space-y-4">
         <article className="rounded-2xl border-2 border-[#F0AB00]/50 bg-[#FFFDF6] p-4">
           <h5 className="text-base font-black text-[#1C01A5]">Sub-bab 1 · Membaca dan Menulis Bilangan</h5>
+          <TombolPenjelasan
+            kelas={kelas}
+            kelamin={kelamin}
+            kalimat={[
+              "Rumah biru adalah puluhan. Rumah kuning adalah satuan.",
+              "Puluhan dikali sepuluh. Satuan dikali satu. Tulis puluhan dulu, baru satuan.",
+              "Tujuh puluh dua ditulis tujuh di puluhan dan dua di satuan. Angka sembilan puluh dibaca sembilan puluh, tanpa menyebut nol.",
+            ]}
+          />
           <TabelInfoGrafis
             judul="Rumah bilangan"
             kepala={["Bagian", "Cara", "Contoh 46"]}
@@ -780,6 +850,15 @@ function KartuB({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminGuru }) {
         </article>
         <article className="rounded-2xl border-2 border-[#F0AB00]/50 bg-[#FFFDF6] p-4">
           <h5 className="text-base font-black text-[#1C01A5]">Sub-bab 2 · Nilai Tempat</h5>
+          <TombolPenjelasan
+            kelas={kelas}
+            kelamin={kelamin}
+            kalimat={[
+              "Satu angka punya dua wajah. Wajah angkanya, dan wajah nilainya.",
+              "Angka lima pada lima puluh empat ada di rumah puluhan. Lima kali sepuluh sama dengan lima puluh, bukan lima.",
+              "Tujuh puluh dua sama dengan tujuh puluh ditambah dua.",
+            ]}
+          />
           <Papan anak="63 = 🟦 60 + 🟨 3" />
           <p className="mt-3 text-sm font-semibold text-slate-700">
             Angka 5 pada 54 ada di rumah puluhan. 5 × 10 = 50. Nilainya 50, bukan 5. 72 = 70 + 2.
@@ -805,6 +884,15 @@ function KartuB({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminGuru }) {
         </article>
         <article className="rounded-2xl border-2 border-[#F0AB00]/50 bg-[#FFFDF6] p-4">
           <h5 className="text-base font-black text-[#1C01A5]">Sub-bab 3 · Membandingkan Bilangan</h5>
+          <TombolPenjelasan
+            kelas={kelas}
+            kelamin={kelamin}
+            kalimat={[
+              "Kalau puluhan beda, lihat puluhannya. Yang lebih besar, itu pemenangnya.",
+              "Empat puluh enam lebih kecil dari enam puluh empat, karena puluhan empat lebih kecil dari puluhan enam.",
+              "Kalau puluhan sama, lanjut ke satuan. Tujuh puluh tiga lebih kecil dari tujuh puluh delapan.",
+            ]}
+          />
           <TabelInfoGrafis
             judul="Langkah buaya"
             kepala={["Situasi", "Cara", "Contoh"]}
@@ -834,6 +922,15 @@ function KartuB({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminGuru }) {
         </article>
         <article className="rounded-2xl border-2 border-[#F0AB00]/50 bg-[#FFFDF6] p-4">
           <h5 className="text-base font-black text-[#1C01A5]">Sub-bab 4 · Mengurutkan Bilangan</h5>
+          <TombolPenjelasan
+            kelas={kelas}
+            kelamin={kelamin}
+            kalimat={[
+              "Untuk mengurutkan, bandingkan puluhan dulu, lalu rapikan satuan di kelompok yang sama.",
+              "Lima puluh enam, tiga puluh delapan, tujuh puluh satu, dan empat puluh lima diurutkan menjadi tiga puluh delapan, empat puluh lima, lima puluh enam, tujuh puluh satu.",
+              "Kalau semua puluhannya sama, urutkan dari satuannya.",
+            ]}
+          />
           <p className="mt-2 text-sm font-semibold text-slate-700">
             Urutkan 56, 38, 71, 45 dari yang terkecil: bandingkan puluhan 3, 4, 5, 7. Hasilnya 38, 45, 56, 71.
             Kalau puluhannya sama, rapikan satuannya. 69, 64, 62, 60 dari yang terbesar.
@@ -924,7 +1021,12 @@ function KartuC({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminGuru }) {
         anak="Sepuluh pos pasar · merakit, membaca, menulis, membandingkan"
         kelas={kelas}
         kelamin={kelamin}
-        cuplikan={cuplikanDariNaskah(kartu.voice, 2_000, 3_000)}
+        cuplikan={cuplikanKalimat([
+          "Kamu menjadi penjaga gudang di Pasar Peci Seribu. Barang disimpan dalam peti isi sepuluh dan barang lepas.",
+          "Pembeli menyebut angka. Kamu merakit pesanan dari peti dan barang lepas. Salah rakit, pembeli menolak, lalu barang kembali ke rak.",
+          "Sepuluh pos menguji merakit, membaca label, membandingkan dagangan, dan mengurutkan pedagang.",
+          "Jawaban benar pertama mendapat tiga koin. Lentera periksa membantu melihat petunjuk, tetapi mengurangi koin. Sepuluh koin membuka gudang emas.",
+        ])}
       />
       <div className="mt-4 space-y-3 text-sm font-semibold leading-relaxed text-slate-700">
         <p>
@@ -975,7 +1077,11 @@ function LembarEvaluasi({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminG
         anak="Sepuluh soal bilangan sampai 100"
         kelas={kelas}
         kelamin={kelamin}
-        cuplikan={cuplikanDariNaskah(kartu.voice, 2_000, 3_000)}
+        cuplikan={cuplikanKalimat([
+          "Ini lembar evaluasi bilangan sampai seratus. Ada sepuluh soal.",
+          "Kamu mengisi nilai tempat, membaca angka, memeriksa alasan, memasangkan, membandingkan, dan mengurutkan.",
+          "Skor sembilan atau sepuluh, kamu Raja Puluhan dan Satuan. Skor enam sampai delapan, Penjaga Gudang Hebat. Di bawah itu, kamu Sahabat Kura.",
+        ])}
       />
       <div className="mt-4 grid gap-2 rounded-2xl border-2 border-dashed border-[#1C01A5]/30 px-4 py-3 sm:grid-cols-3">
         <p className="text-sm font-black text-[#1C01A5]">Nama: {nama}</p>
@@ -1125,7 +1231,16 @@ export default function NaskahMtk1Bab9({
       <KartuPoinPenting
         kelas={kelas}
         kelamin={kelamin}
-        cuplikan={cuplikanDariNaskah(MODUL_MTK1_BAB9.kartu[3].voice, 2_000, 3_000)}
+        cuplikan={cuplikanKalimat([
+          "Sepuluh diikat jadi satu puluhan.",
+          "Kiri puluhan, kanan satuan. Urutannya tidak boleh dibalik.",
+          "Angka di rumah puluhan bernilai sepuluh kali. Empat di puluhan sama dengan empat puluh.",
+          "Kalau puluhan beda, puluhan yang menang. Kalau puluhan sama, lihat satuannya.",
+          "Saat mengurutkan, urutkan puluhan dulu, lalu rapikan satuan.",
+          "Belasan hanya untuk sebelas sampai sembilan belas. Setelah itu pakai kata puluh.",
+          "Angka yang berakhir nol tidak usah disebut satuannya.",
+          "Angka yang sama di tempat yang beda punya nilai yang beda.",
+        ])}
         poin={[
           "Sepuluh diikat jadi satu puluhan.",
           "Kiri puluhan, kanan satuan.",
