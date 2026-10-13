@@ -10,14 +10,14 @@ export const JUDUL_MTK1_BAB7 = "Bab 7: Mengukur Panjang Benda";
 export const MODUL_MTK1_BAB7: ModulResmiPai = {
   id: "mtk-1-bab7",
   judul: JUDUL_MTK1_BAB7,
-  pola: /mengukur\s+panjang\s+benda|pesta layang-layang|bengkel ukur kodok/,
+  pola: /mengukur\s+panjang\s+benda|pesta layang-layang|bengkel ukur kodok|misi pesta layang/,
   motivasi:
     "Ari, Mila, dan Bima mengukur layang-layang bersama Kodok. Mereka memakai jengkal, langkah, dan depa, lalu membandingkan panjangnya.",
   kunciJawaban: "A,A,B,A,C,B,C,C,B,B",
   sketsaKartu: [
     "Ari, Mila, dan Bima mengukur benang layang-layang dengan jengkal Kodok di bukit.",
     "Satuan tidak baku, aturan mengukur, membandingkan, dan mengurutkan panjang.",
-    "Kiko menjaga sepuluh petak kebun ukur: alat yang pas, selisih panjang, dan urutan benda.",
+    "Kodok mengukur sepuluh tali layang-layang: alat yang pas, selisih panjang, dan urutan benda.",
     "Poin penting dan lembar evaluasi mengukur panjang benda.",
   ],
   latihan: pg([
@@ -175,35 +175,35 @@ D) 4 jengkal`,
     },
         {
       kode: "C",
-      judul: "C. Misi Penjaga Kebun Ukur",
+      judul: "C. Misi Pesta Layang-Layang",
       pengantar:
-        "Bantu Kiko mengisi 10 petak kebun mengukur. Hijau untuk menghitung, biru untuk membaca, kuning untuk menulis, dan ungu untuk membandingkan.",
-      labelDaftar: "Sepuluh misi ukur di kebun",
+        "Bantu Kodok mengukur 10 tali di pesta layang-layang. Hijau untuk menghitung, biru untuk membaca, kuning untuk menulis, dan ungu untuk membandingkan.",
+      labelDaftar: "Sepuluh tali ukur di bukit",
       kolom: 1,
       item: [
         {
           nama: "Alur permainan",
-          singkat: "Pilih petak, jawab, dapat bintang",
+          singkat: "Pilih tali, jawab, dapat bintang",
           uraian:
-            "Siswa memilih satu petak. Kiko menanyakan alat, selisih panjang, atau urutan benda. Jawaban benar mendapat 1 bintang kebun. Jawaban yang belum tepat mendapat petunjuk, tanpa kehilangan daun.",
+            "Siswa memilih satu tali layang. Kodok menanyakan alat, selisih panjang, atau urutan benda. Jawaban benar mendapat 1 bintang layang. Jawaban yang belum tepat mendapat petunjuk, tanpa kehilangan jengkal.",
           contoh: "Pensil 7 klip lebih panjang daripada pensil 4 klip. Lorong diukur dengan langkah. Selisih 7 dan 4 adalah 3.",
         },
         {
-          nama: "Daun ajaib",
-          singkat: "3, 2, atau 1 daun",
+          nama: "Jengkal ajaib",
+          singkat: "3, 2, atau 1 jengkal",
           uraian:
-            "Jawaban pertama benar mendapat 3 daun ajaib. Benar setelah satu petunjuk mendapat 2 daun. Benar setelah dua petunjuk mendapat 1 daun. Belum tepat tidak mengurangi daun. Siswa boleh mencoba lagi.",
+            "Jawaban pertama benar mendapat 3 jengkal ajaib. Benar setelah satu petunjuk mendapat 2 jengkal. Benar setelah dua petunjuk mendapat 1 jengkal. Belum tepat tidak mengurangi jengkal. Siswa boleh mencoba lagi.",
           contoh: "Rapat, lurus, dari ujung. Satu orang, satu alat.",
         },
       ],
       kuis: kuisDariMisi(MISI_MTK1_BAB7),
       voice: [
         [
-          "Kiko menjaga kebun ukur. Ada sepuluh petak dari rumah sampai piala.",
+          "Kodok mengukur tali di pesta layang-layang. Ada sepuluh tali dari bukit sampai langit.",
           "Pensil tujuh klip lebih panjang daripada pensil empat klip.",
           "Lorong panjang diukur dengan langkah kaki, bukan klip.",
           "Lima jengkal ditambah tiga jengkal sama dengan delapan. Tujuh kurang empat sama dengan tiga.",
-          "Jawaban benar mendapat satu bintang kebun. Jika belum tepat, Kiko memberi petunjuk. Daun tidak berkurang.",
+          "Jawaban benar mendapat satu bintang layang. Jika belum tepat, Kodok memberi petunjuk. Jengkal tidak berkurang.",
         ],
       ],
     },

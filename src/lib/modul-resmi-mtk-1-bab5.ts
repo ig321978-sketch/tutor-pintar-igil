@@ -10,14 +10,14 @@ export const JUDUL_MTK1_BAB5 = "Bab 5: Ayo Membilang sampai dengan 20";
 export const MODUL_MTK1_BAB5: ModulResmiPai = {
   id: "mtk-1-bab5",
   judul: JUDUL_MTK1_BAB5,
-  pola: /membilang\s+sampai(\s+dengan)?\s+20\b|bendera kecil untuk lomba|pasar malam kemerdekaan/,
+  pola: /membilang\s+sampai(\s+dengan)?\s+20\b|bendera kecil untuk lomba|pasar malam kemerdekaan|misi lomba bendera/,
   motivasi:
     "Tari, Dimas, dan Ojan menyiapkan dua puluh bendera kecil bersama Pipit. Sepuluh bendera diikat jadi satu puluhan.",
   kunciJawaban: "A,A,A,A,B,A,B,C,C,A",
   sketsaKartu: [
     "Tari, Dimas, dan Ojan mengikat bendera per sepuluh bersama Pipit untuk lomba 17 Agustus.",
     "Angka 11 sampai 20, rumah nilai tempat, bingkai sepuluh, dan garis bilangan.",
-    "Kiko menjaga sepuluh petak kebun belasan: puluhan, satuan, dan membandingkan sampai 20.",
+    "Pipit menemani sepuluh tiang lomba bendera: puluhan, satuan, dan membandingkan sampai 20.",
     "Poin penting dan lembar evaluasi membilang sampai 20.",
   ],
   latihan: pg([
@@ -175,35 +175,35 @@ D) Tidak ada`,
     },
         {
       kode: "C",
-      judul: "C. Misi Penjaga Kebun Belasan",
+      judul: "C. Misi Lomba Bendera",
       pengantar:
-        "Bantu Kiko mengisi 10 petak kebun belasan. Hijau untuk menghitung, biru untuk membaca, kuning untuk menulis, dan ungu untuk membandingkan.",
-      labelDaftar: "Sepuluh misi belasan di kebun",
+        "Bantu Pipit memasang bendera di 10 tiang lomba. Hijau untuk menghitung, biru untuk membaca, kuning untuk menulis, dan ungu untuk membandingkan.",
+      labelDaftar: "Sepuluh tiang belasan di lomba",
       kolom: 1,
       item: [
         {
           nama: "Alur permainan",
-          singkat: "Pilih petak, jawab, dapat bintang",
+          singkat: "Pilih tiang, jawab, dapat bintang",
           uraian:
-            "Siswa memilih satu petak. Kiko menanyakan gulungan sepuluh, satuan, dan perbandingan belasan. Jawaban benar mendapat 1 bintang kebun. Jawaban yang belum tepat mendapat petunjuk, tanpa kehilangan daun.",
+            "Siswa memilih satu tiang lomba. Pipit menanyakan gulungan sepuluh, satuan, dan perbandingan belasan. Jawaban benar mendapat 1 bintang bendera. Jawaban yang belum tepat mendapat petunjuk, tanpa kehilangan pita.",
           contoh: "10 + 4 = 14. 19 lebih besar dari 12. 16 cukup untuk boneka seharga 15, belum cukup untuk mobil seharga 19.",
         },
         {
-          nama: "Daun ajaib",
-          singkat: "3, 2, atau 1 daun",
+          nama: "Pita ajaib",
+          singkat: "3, 2, atau 1 pita",
           uraian:
-            "Jawaban pertama benar mendapat 3 daun ajaib. Benar setelah satu petunjuk mendapat 2 daun. Benar setelah dua petunjuk mendapat 1 daun. Belum tepat tidak mengurangi daun. Siswa boleh mencoba lagi.",
+            "Jawaban pertama benar mendapat 3 pita ajaib. Benar setelah satu petunjuk mendapat 2 pita. Benar setelah dua petunjuk mendapat 1 pita. Belum tepat tidak mengurangi pita. Siswa boleh mencoba lagi.",
           contoh: "Empat belas ditulis 14, bukan 41.",
         },
       ],
       kuis: kuisDariMisi(MISI_MTK1_BAB5),
       voice: [
         [
-          "Kiko menjaga kebun belasan. Ada sepuluh petak dari rumah sampai piala.",
+          "Pipit memasang bendera lomba. Ada sepuluh tiang dari gang sampai pagar.",
           "Satu gulungan sepuluh ditambah empat tiket lepas sama dengan empat belas.",
           "Sembilan belas lebih besar daripada dua belas karena satuannya lebih besar.",
           "Enam belas cukup untuk boneka seharga lima belas, belum cukup untuk mobil seharga sembilan belas.",
-          "Jawaban benar mendapat satu bintang kebun. Jika belum tepat, Kiko memberi petunjuk. Daun tidak berkurang.",
+          "Jawaban benar mendapat satu bintang bendera. Jika belum tepat, Pipit memberi petunjuk. Pita tidak berkurang.",
         ],
       ],
     },

@@ -11,14 +11,14 @@ export const JUDUL_MTK1_BAB3_LAMA = "Bab 3: Pengurangan sampai 10";
 export const MODUL_MTK1_BAB3: ModulResmiPai = {
   id: "mtk-1-bab3",
   judul: JUDUL_MTK1_BAB3,
-  pola: /pengurangan\s+sampai(\s+dengan)?\s+10\b|pesta ulang tahun yang hilang|toko roti miko/,
+  pola: /pengurangan\s+sampai(\s+dengan)?\s+10\b|pesta ulang tahun yang hilang|toko roti miko|misi pesta ulang tahun/,
   motivasi:
     "Malam pesta, balon Nia terbang. Bersama Fajar dan Miko, hitung yang hilang, lalu cari sisanya sampai 10.",
   kunciJawaban: "A,B,B,C,B,A,C,C,B,C",
   sketsaKartu: [
     "Nia dan Fajar di pesta ulang tahun. Delapan balon, tiga terbang, sisa lima. Miko si tikus menjelaskan tanda kurang.",
     "Cara mengurangi: hitung sisa, hitung mundur, pakai jari, dan saudara dari penjumlahan.",
-    "Kiko menjaga sepuluh petak kebun kurang: sisa, angka hilang, dan saudara dari penjumlahan.",
+    "Miko menjaga sepuluh meja pesta: sisa balon, angka hilang, dan saudara dari penjumlahan.",
     "Poin penting dan lembar evaluasi pengurangan sampai 10.",
   ],
   latihan: pg([
@@ -179,35 +179,35 @@ D) 12`,
     },
         {
       kode: "C",
-      judul: "C. Misi Penjaga Kebun Kurang",
+      judul: "C. Misi Pesta Ulang Tahun",
       pengantar:
-        "Bantu Kiko mengisi 10 petak kebun pengurangan. Hijau untuk menghitung, biru untuk membaca, kuning untuk menulis, dan ungu untuk membandingkan.",
-      labelDaftar: "Sepuluh misi kurang di kebun",
+        "Bantu Miko menjaga 10 meja pesta ulang tahun. Hijau untuk menghitung, biru untuk membaca, kuning untuk menulis, dan ungu untuk membandingkan.",
+      labelDaftar: "Sepuluh meja kurang di pesta",
       kolom: 1,
       item: [
         {
           nama: "Alur permainan",
-          singkat: "Pilih petak, jawab, dapat bintang",
+          singkat: "Pilih meja, jawab, dapat bintang",
           uraian:
-            "Siswa memilih satu petak. Kiko membacakan misi pengurangan. Jawaban benar mendapat 1 bintang kebun. Jawaban yang belum tepat mendapat petunjuk, tanpa kehilangan daun. Setelah 10 petak selesai, bunga kurang tumbuh.",
+            "Siswa memilih satu meja pesta. Miko membacakan misi pengurangan. Jawaban benar mendapat 1 bintang pesta. Jawaban yang belum tepat mendapat petunjuk, tanpa kehilangan balon. Setelah 10 meja selesai, pesta Nia rapi kembali.",
           contoh: "8 - 3 = 5. Angka hilang pada 8 - kotak = 5 adalah 3. 9 - 2 bukan 6.",
         },
         {
-          nama: "Daun ajaib",
-          singkat: "3, 2, atau 1 daun",
+          nama: "Balon ajaib",
+          singkat: "3, 2, atau 1 balon",
           uraian:
-            "Jawaban pertama benar mendapat 3 daun ajaib. Benar setelah satu petunjuk mendapat 2 daun. Benar setelah dua petunjuk mendapat 1 daun. Belum tepat tidak mengurangi daun. Siswa boleh mencoba lagi.",
-          contoh: "Petunjuk: benda bergoyang, lalu muncul titik, lalu Kiko menghitung bersama.",
+            "Jawaban pertama benar mendapat 3 balon ajaib. Benar setelah satu petunjuk mendapat 2 balon. Benar setelah dua petunjuk mendapat 1 balon. Belum tepat tidak mengurangi balon. Siswa boleh mencoba lagi.",
+          contoh: "Petunjuk: benda bergoyang, lalu muncul titik, lalu Miko menghitung bersama.",
         },
       ],
       kuis: kuisDariMisi(MISI_MTK1_BAB3),
       voice: [
         [
-          "Kiko menjaga kebun kurang. Ada sepuluh petak dari rumah sampai piala.",
+          "Miko menjaga pesta ulang tahun. Ada sepuluh meja dari kue sampai kado.",
           "Delapan balon dikurangi tiga, sisanya lima. Kurang nol, angkanya tetap.",
           "Angka yang hilang supaya delapan kurang kotak sama dengan lima adalah tiga.",
           "Sembilan kurang dua sama dengan tujuh, bukan enam. Karena empat tambah tiga sama dengan tujuh, tujuh kurang tiga kembali ke empat.",
-          "Jawaban benar mendapat satu bintang kebun. Jika belum tepat, Kiko memberi petunjuk. Daun tidak berkurang.",
+          "Jawaban benar mendapat satu bintang pesta. Jika belum tepat, Miko memberi petunjuk. Balon tidak berkurang.",
         ],
       ],
     },

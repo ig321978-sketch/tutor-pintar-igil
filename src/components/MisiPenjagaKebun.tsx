@@ -5,6 +5,7 @@ import KuisTulisKartu from "@/components/KuisTulisKartu";
 import SoalRekamSuara from "@/components/SoalRekamSuara";
 import { useKuisMateri } from "@/components/KuisMateriContext";
 import type { MisiPetak, WarnaPetak } from "@/lib/misi-kebun-mtk-1";
+import type { TemaMisi } from "@/lib/tema-misi-mtk-1";
 import { jawabanTulisMemuatAlias, kumpulkanAlias } from "@/lib/nilai-kuis-tulis";
 
 const PETAK_KEBUN = ["1️⃣", "2️⃣", "3️⃣", "4️⃣", "5️⃣", "6️⃣", "7️⃣", "8️⃣", "9️⃣", "🔟"];
@@ -54,12 +55,14 @@ export default function MisiPenjagaKebun({
   idMisi,
   idTulis,
   penutup,
+  tema,
   bunga = "🌷🌼🌻🌺🌹🌸💐",
 }: {
   misi: MisiPetak[];
   idMisi: (indeks: number) => string;
   idTulis: string;
   penutup: string;
+  tema: TemaMisi;
   bunga?: string;
 }) {
   const kuis = useKuisMateri();
@@ -111,12 +114,10 @@ export default function MisiPenjagaKebun({
         }
         .kebun-goyang { animation: kebun-goyang 1s ease-in-out infinite; display: inline-block; }
       `}</style>
-      <p className="text-sm font-semibold leading-relaxed text-slate-700">
-        Bantu Kiko mengisi 10 petak kebun. Pilih satu petak, dengarkan misinya, lalu jawab dengan suara, kanvas, atau pilihan.
-      </p>
+      <p className="text-sm font-semibold leading-relaxed text-slate-700">{tema.pengantar}</p>
       <div className="flex flex-wrap items-center justify-center gap-2">
         <span className="text-2xl" aria-hidden>
-          🏡
+          {tema.ikonAwal}
         </span>
         {PETAK_KEBUN.map((lambang, indeks) => {
           const selesai = jejak[indeks]?.selesai;
@@ -129,14 +130,14 @@ export default function MisiPenjagaKebun({
               className={`rounded-xl border-2 px-2 py-1 text-lg font-black ${
                 indeks === aktif ? "border-[#1C01A5] bg-[#1C01A5] text-white" : KELAS_PETAK[warna]
               }`}
-              aria-label={`Petak ${indeks + 1}${selesai ? ", selesai" : ""}`}
+              aria-label={`${tema.satuan} ${indeks + 1}${selesai ? ", selesai" : ""}`}
             >
               {selesai ? "⭐" : lambang}
             </button>
           );
         })}
         <span className={`text-2xl ${bintang === misi.length ? "" : "opacity-40"}`} aria-hidden>
-          🏆
+          {tema.ikonAkhir}
         </span>
       </div>
       <div className="flex flex-wrap gap-2 text-sm font-black text-[#1C01A5]">
@@ -146,13 +147,13 @@ export default function MisiPenjagaKebun({
         <span className="rounded-full bg-violet-100 px-3 py-1">Ungu · membandingkan</span>
       </div>
       <p className="text-sm font-bold text-[#1C01A5]">
-        Bintang kebun {bintang}/{misi.length} · Daun ajaib {daun} 🍃
+        {tema.namaBintang} {bintang}/{misi.length} · {tema.namaToken} {daun} {tema.ikonToken}
       </p>
       <article className={`rounded-2xl border-2 px-4 py-4 ${KELAS_PETAK[petak.warna]}`}>
         <p className="text-xs font-black uppercase tracking-wide text-[#1C01A5]">
-          Petak {aktif + 1} · {petak.warna} · {petak.misi}
+          {tema.satuan} {aktif + 1} · {petak.warna} · {petak.misi}
         </p>
-        <p className="mt-2 text-sm font-black text-[#1C01A5]">Kiko</p>
+        <p className="mt-2 text-sm font-black text-[#1C01A5]">{tema.pemandu}</p>
         <p className="text-sm font-semibold text-slate-700">“{petak.narasi}”</p>
         {petak.mode === "kanvas" ? null : (
           <>
@@ -192,14 +193,18 @@ export default function MisiPenjagaKebun({
           </>
         )}
         {kini.petunjuk >= 3 ? (
-          <p className="mt-3 rounded-xl bg-white px-3 py-2 text-sm font-bold text-[#1C01A5]">{petak.bersama}</p>
+          <p className="mt-3 rounded-xl bg-white px-3 py-2 text-sm font-bold text-[#1C01A5]">
+            {petak.bersama.replaceAll("Kiko", tema.pemandu)}
+          </p>
         ) : null}
         {kini.petunjuk > 0 && !kini.selesai ? (
-          <p className="mt-2 text-sm font-semibold text-amber-800">Belum tepat. Daunmu tetap aman. Coba lagi.</p>
+          <p className="mt-2 text-sm font-semibold text-amber-800">
+            Belum tepat. {tema.namaToken} tetap aman. Coba lagi.
+          </p>
         ) : null}
         {kini.selesai ? (
           <p className="mt-3 text-sm font-black text-emerald-800">
-            1 bintang kebun. Daun ajaib {kini.daun} {"🍃".repeat(kini.daun)}
+            1 {tema.namaBintang.toLowerCase()}. {tema.namaToken} {kini.daun} {tema.ikonToken.repeat(kini.daun)}
           </p>
         ) : (
           <button
@@ -265,10 +270,10 @@ export default function MisiPenjagaKebun({
         ) : null}
       </article>
       <ul className="list-disc space-y-1 pl-5 text-sm font-semibold text-slate-700">
-        <li>Jawaban pertama benar: 3 daun ajaib.</li>
-        <li>Benar setelah satu petunjuk: 2 daun ajaib.</li>
-        <li>Benar setelah dua petunjuk: 1 daun ajaib.</li>
-        <li>Belum tepat tidak mengurangi daun. Kamu boleh mencoba lagi.</li>
+        <li>Jawaban pertama benar: 3 {tema.namaToken.toLowerCase()}.</li>
+        <li>Benar setelah satu petunjuk: 2 {tema.namaToken.toLowerCase()}.</li>
+        <li>Benar setelah dua petunjuk: 1 {tema.namaToken.toLowerCase()}.</li>
+        <li>Belum tepat tidak mengurangi {tema.namaToken.toLowerCase()}. Kamu boleh mencoba lagi.</li>
       </ul>
       {bintang === misi.length ? (
         <div className="rounded-2xl border-2 border-[#F0AB00] bg-[#FFF8E8] px-4 py-4">
@@ -276,9 +281,9 @@ export default function MisiPenjagaKebun({
             id={idTulis}
             hanyaKanvas
             rapat
-            pertanyaan="Tuliskan jumlah bintang kebun yang sudah kamu kumpulkan."
+            pertanyaan={tema.pertanyaanAkhir}
             alias={kumpulkanAlias(["10", "sepuluh"])}
-            konteks="Sepuluh petak selesai. Bintang kebun ada 10."
+            konteks={tema.konteksAkhir}
             visual={
               <>
                 <p className="text-center text-3xl" aria-hidden>

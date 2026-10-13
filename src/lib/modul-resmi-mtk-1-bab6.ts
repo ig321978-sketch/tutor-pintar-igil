@@ -10,14 +10,14 @@ export const JUDUL_MTK1_BAB6 = "Bab 6: Penjumlahan dan Pengurangan sampai dengan
 export const MODUL_MTK1_BAB6: ModulResmiPai = {
   id: "mtk-1-bab6",
   judul: JUDUL_MTK1_BAB6,
-  pola: /penjumlahan\s+dan\s+pengurangan\s+sampai(\s+dengan)?\s+20\b|misi penyelamatan anak kucing|menara penyelamat toki/,
+  pola: /penjumlahan\s+dan\s+pengurangan\s+sampai(\s+dengan)?\s+20\b|misi penyelamatan anak kucing|menara penyelamat toki|selamatkan anak kucing/,
   motivasi:
     "Kiki, Bayu, dan Naya menyelamatkan anak kucing bersama Toki. Mereka menghitung maju, menghitung mundur, dan memecah angka belasan.",
   kunciJawaban: "A,A,B,A,B,C,A,B,C,B",
   sketsaKartu: [
     "Kiki, Bayu, dan Naya menyusun kursi untuk mencapai anak kucing di dahan, bersama Toki si penjaga jam.",
     "Hitung maju, hitung mundur, dekomposisi, dan keluarga angka sampai 20.",
-    "Kiko menjaga sepuluh petak kebun maju mundur sampai 20, termasuk keluarga angka dan kartu yang berbeda.",
+    "Toki menyusun sepuluh kursi penyelamatan: hitung maju, hitung mundur, dan keluarga angka sampai 20.",
     "Poin penting dan lembar evaluasi penjumlahan serta pengurangan sampai 20.",
   ],
   latihan: pg([
@@ -175,35 +175,35 @@ D) 5`,
     },
         {
       kode: "C",
-      judul: "C. Misi Penjaga Kebun Maju Mundur",
+      judul: "C. Misi Selamatkan Anak Kucing",
       pengantar:
-        "Bantu Kiko mengisi 10 petak kebun hitung maju dan mundur. Hijau untuk menghitung, biru untuk membaca, kuning untuk menulis, dan ungu untuk membandingkan.",
-      labelDaftar: "Sepuluh misi maju mundur di kebun",
+        "Bantu Toki menyusun 10 kursi untuk menyelamatkan anak kucing. Hijau untuk menghitung, biru untuk membaca, kuning untuk menulis, dan ungu untuk membandingkan.",
+      labelDaftar: "Sepuluh kursi hitung maju dan mundur",
       kolom: 1,
       item: [
         {
           nama: "Alur permainan",
-          singkat: "Pilih petak, jawab, dapat bintang",
+          singkat: "Pilih kursi, jawab, dapat bintang",
           uraian:
-            "Siswa memilih satu petak. Kiko memberi lompatan, keluarga angka, atau kartu yang hasilnya berbeda. Jawaban benar mendapat 1 bintang kebun. Jawaban yang belum tepat mendapat petunjuk, tanpa kehilangan daun.",
+            "Siswa memilih satu kursi. Toki memberi lompatan, keluarga angka, atau kartu yang hasilnya berbeda. Jawaban benar mendapat 1 bintang penyelamat. Jawaban yang belum tepat mendapat petunjuk, tanpa kehilangan detik.",
           contoh: "12 + 5 = 17. 8 + 7 = 15 maka 15 - 7 = 8. Kartu 16 - 2 hasilnya 14, bukan 13.",
         },
         {
-          nama: "Daun ajaib",
-          singkat: "3, 2, atau 1 daun",
+          nama: "Detik ajaib",
+          singkat: "3, 2, atau 1 detik",
           uraian:
-            "Jawaban pertama benar mendapat 3 daun ajaib. Benar setelah satu petunjuk mendapat 2 daun. Benar setelah dua petunjuk mendapat 1 daun. Belum tepat tidak mengurangi daun. Siswa boleh mencoba lagi.",
+            "Jawaban pertama benar mendapat 3 detik ajaib. Benar setelah satu petunjuk mendapat 2 detik. Benar setelah dua petunjuk mendapat 1 detik. Belum tepat tidak mengurangi detik. Siswa boleh mencoba lagi.",
           contoh: "17 - 9 melewati sepuluh: 17 - 7 - 2 = 8.",
         },
       ],
       kuis: kuisDariMisi(MISI_MTK1_BAB6),
       voice: [
         [
-          "Kiko menjaga kebun maju dan mundur. Ada sepuluh petak dari rumah sampai piala.",
+          "Toki menyusun kursi untuk menyelamatkan anak kucing. Ada sepuluh kursi dari halaman sampai dahan.",
           "Dari dua belas, lompat maju lima kali dan berhenti di tujuh belas.",
           "Kalau delapan tambah tujuh sama dengan lima belas, maka lima belas kurang tujuh sama dengan delapan.",
           "Sepuluh tambah tiga dan enam belas kurang tiga sama-sama tiga belas. Kartu enam belas kurang dua hasilnya empat belas.",
-          "Jawaban benar mendapat satu bintang kebun. Jika belum tepat, Kiko memberi petunjuk. Daun tidak berkurang.",
+          "Jawaban benar mendapat satu bintang penyelamat. Jika belum tepat, Toki memberi petunjuk. Detik tidak berkurang.",
         ],
       ],
     },

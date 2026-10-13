@@ -11,14 +11,14 @@ export const JUDUL_MTK1_BAB2_LAMA = "Bab 2: Penjumlahan sampai 10";
 export const MODUL_MTK1_BAB2: ModulResmiPai = {
   id: "mtk-1-bab2",
   judul: JUDUL_MTK1_BAB2,
-  pola: /penjumlahan\s+sampai(\s+dengan)?\s+10\b|piknik seru di pantai|kapal pengumpul harta/,
+  pola: /penjumlahan\s+sampai(\s+dengan)?\s+10\b|piknik seru di pantai|kapal pengumpul harta|misi piknik di pantai/,
   motivasi:
     "Hore! Kamu piknik di pantai bersama Lala, Bima, Raka, dan Kepi. Gabungkan benda, tulis tanda tambah, lalu hitung sampai 10.",
   kunciJawaban: "A,B,C,B,B,B,B,B,B,B",
   sketsaKartu: [
     "Lala, Bima, dan Raka piknik di pantai, menggabungkan kerang dan bendera istana pasir bersama Kepi.",
     "Tujuh cara menjumlah: gabungkan, hitung semua, lompat kanguru, jari, dibalik tetap sama, teman sepuluh, dan soal cerita.",
-    "Kiko menjaga sepuluh petak kebun tambah: menghitung, membaca, menulis, dan membandingkan.",
+    "Kepi menemani sepuluh pos piknik di pantai: menghitung, membaca, menulis, dan membandingkan.",
     "Poin penting dan lembar evaluasi penjumlahan sampai 10.",
   ],
   latihan: pg([
@@ -183,35 +183,35 @@ D) 13`,
     },
         {
       kode: "C",
-      judul: "C. Misi Penjaga Kebun Tambah",
+      judul: "C. Misi Piknik di Pantai",
       pengantar:
-        "Bantu Kiko mengisi 10 petak kebun penjumlahan. Hijau untuk menghitung, biru untuk membaca, kuning untuk menulis, dan ungu untuk membandingkan.",
-      labelDaftar: "Sepuluh misi tambah di kebun",
+        "Bantu Kepi mengisi 10 pos piknik di pantai. Hijau untuk menghitung, biru untuk membaca, kuning untuk menulis, dan ungu untuk membandingkan.",
+      labelDaftar: "Sepuluh pos tambah di pantai",
       kolom: 1,
       item: [
         {
           nama: "Alur permainan",
-          singkat: "Pilih petak, jawab, dapat bintang",
+          singkat: "Pilih pos, jawab, dapat bintang",
           uraian:
-            "Siswa memilih satu petak. Kiko membacakan misi penjumlahan. Jawaban benar mendapat 1 bintang kebun. Jawaban yang belum tepat mendapat petunjuk, tanpa kehilangan daun. Setelah 10 petak selesai, bunga tambah tumbuh.",
+            "Siswa memilih satu pos pantai. Kepi membacakan misi penjumlahan. Jawaban benar mendapat 1 bintang pantai. Jawaban yang belum tepat mendapat petunjuk, tanpa kehilangan kerang. Setelah 10 pos selesai, istana pasir Kepi selesai.",
           contoh: "4 + 3 = 7. Angka hilang pada 4 + kotak = 10 adalah 6. 5 + 3 bukan 7.",
         },
         {
-          nama: "Daun ajaib",
-          singkat: "3, 2, atau 1 daun",
+          nama: "Kerang ajaib",
+          singkat: "3, 2, atau 1 kerang",
           uraian:
-            "Jawaban pertama benar mendapat 3 daun ajaib. Benar setelah satu petunjuk mendapat 2 daun. Benar setelah dua petunjuk mendapat 1 daun. Belum tepat tidak mengurangi daun. Siswa boleh mencoba lagi.",
-          contoh: "Petunjuk: benda bergoyang, lalu muncul titik, lalu Kiko menghitung bersama.",
+            "Jawaban pertama benar mendapat 3 kerang ajaib. Benar setelah satu petunjuk mendapat 2 kerang. Benar setelah dua petunjuk mendapat 1 kerang. Belum tepat tidak mengurangi kerang. Siswa boleh mencoba lagi.",
+          contoh: "Petunjuk: benda bergoyang, lalu muncul titik, lalu Kepi menghitung bersama.",
         },
       ],
       kuis: kuisDariMisi(MISI_MTK1_BAB2),
       voice: [
         [
-          "Kiko menjaga kebun tambah. Ada sepuluh petak dari rumah sampai piala.",
-          "Petak hijau untuk menghitung. Petak biru untuk membaca. Petak kuning untuk menulis. Petak ungu untuk membandingkan.",
+          "Kepi menemani piknik di pantai. Ada sepuluh pos dari payung sampai istana pasir.",
+          "Pos hijau untuk menghitung. Pos biru untuk membaca. Pos kuning untuk menulis. Pos ungu untuk membandingkan.",
           "Empat tambah tiga sama dengan tujuh. Tambah nol, angkanya tetap. Angka yang hilang supaya empat tambah kotak sama dengan sepuluh adalah enam.",
           "Lima tambah tiga sama dengan delapan, bukan tujuh. Satu tambah sembilan sama dengan sembilan tambah satu.",
-          "Jawaban benar mendapat satu bintang kebun. Jika belum tepat, Kiko memberi petunjuk. Daun tidak berkurang.",
+          "Jawaban benar mendapat satu bintang pantai. Jika belum tepat, Kepi memberi petunjuk. Kerang tidak berkurang.",
         ],
       ],
     },

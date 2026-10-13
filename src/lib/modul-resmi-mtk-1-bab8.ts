@@ -10,14 +10,14 @@ export const JUDUL_MTK1_BAB8 = "Bab 8: Mengenal Diagram";
 export const MODUL_MTK1_BAB8: ModulResmiPai = {
   id: "mtk-1-bab8",
   judul: JUDUL_MTK1_BAB8,
-  pola: /mengenal\s+diagram|kantin sekolah yang berantakan|toko grosir tupi/,
+  pola: /mengenal\s+diagram|kantin sekolah yang berantakan|toko grosir tupi|bereskan kantin/,
   motivasi:
     "Sari, Adi, dan tupai Tupi membereskan kantin. Mereka mengelompokkan gelas, piring, dan sendok, lalu membacanya lewat diagram gambar.",
   kunciJawaban: "A,A,C,A,C,B,B,C,C,C",
   sketsaKartu: [
     "Sari dan Adi mengelompokkan gelas, piring, dan sendok bersama Tupi di kantin.",
     "Cara membuat dan membaca piktogram, lalu membandingkan dua baris.",
-    "Kiko menjaga sepuluh petak kebun diagram: jumlah, selisih, dan arti satu gambar.",
+    "Tupi merapikan sepuluh rak kantin: jumlah, selisih, dan arti satu gambar.",
     "Poin penting dan lembar evaluasi mengenal diagram.",
   ],
   latihan: pg([
@@ -175,35 +175,35 @@ D) Sama banyak`,
     },
         {
       kode: "C",
-      judul: "C. Misi Penjaga Kebun Diagram",
+      judul: "C. Misi Bereskan Kantin",
       pengantar:
-        "Bantu Kiko mengisi 10 petak kebun diagram. Hijau untuk menghitung, biru untuk membaca, kuning untuk menulis, dan ungu untuk membandingkan.",
-      labelDaftar: "Sepuluh misi diagram di kebun",
+        "Bantu Tupi merapikan 10 rak kantin. Hijau untuk menghitung, biru untuk membaca, kuning untuk menulis, dan ungu untuk membandingkan.",
+      labelDaftar: "Sepuluh rak diagram di kantin",
       kolom: 1,
       item: [
         {
           nama: "Alur permainan",
-          singkat: "Pilih petak, jawab, dapat bintang",
+          singkat: "Pilih rak, jawab, dapat bintang",
           uraian:
-            "Siswa memilih satu petak. Kiko menanyakan baris terpanjang, selisih, atau arti satu gambar. Jawaban benar mendapat 1 bintang kebun. Jawaban yang belum tepat mendapat petunjuk, tanpa kehilangan daun.",
+            "Siswa memilih satu rak kantin. Tupi menanyakan baris terpanjang, selisih, atau arti satu gambar. Jawaban benar mendapat 1 bintang kantin. Jawaban yang belum tepat mendapat petunjuk, tanpa kehilangan stiker.",
           contoh: "Apel 7 paling banyak. Jumlah 7 + 3 + 5 = 15. Selisih 4. Tiga gambar yang masing-masing mewakili 2 benda sama dengan 6.",
         },
         {
-          nama: "Daun ajaib",
-          singkat: "3, 2, atau 1 daun",
+          nama: "Stiker ajaib",
+          singkat: "3, 2, atau 1 stiker",
           uraian:
-            "Jawaban pertama benar mendapat 3 daun ajaib. Benar setelah satu petunjuk mendapat 2 daun. Benar setelah dua petunjuk mendapat 1 daun. Belum tepat tidak mengurangi daun. Siswa boleh mencoba lagi.",
+            "Jawaban pertama benar mendapat 3 stiker ajaib. Benar setelah satu petunjuk mendapat 2 stiker. Benar setelah dua petunjuk mendapat 1 stiker. Belum tepat tidak mengurangi stiker. Siswa boleh mencoba lagi.",
           contoh: "Satu jenis, satu baris. Satu gambar, satu benda, kecuali judulnya bilang lain.",
         },
       ],
       kuis: kuisDariMisi(MISI_MTK1_BAB8),
       voice: [
         [
-          "Kiko menjaga kebun diagram. Ada sepuluh petak dari rumah sampai piala.",
+          "Tupi membereskan kantin sekolah. Ada sepuluh rak dari gelas sampai diagram.",
           "Apel tujuh, pisang tiga, anggur lima. Yang paling banyak tujuh. Jumlah semuanya lima belas. Selisihnya empat.",
           "Ikan enam lebih banyak daripada kura-kura empat.",
           "Tiga gambar biskuit, dan satu gambar mewakili dua biskuit, jadi jumlahnya enam.",
-          "Jawaban benar mendapat satu bintang kebun. Jika belum tepat, Kiko memberi petunjuk. Daun tidak berkurang.",
+          "Jawaban benar mendapat satu bintang kantin. Jika belum tepat, Tupi memberi petunjuk. Stiker tidak berkurang.",
         ],
       ],
     },

@@ -1,6 +1,7 @@
 "use client";
 import MisiPenjagaKebun from "@/components/MisiPenjagaKebun";
 import { MISI_MTK1_BAB2 } from "@/lib/misi-kebun-mtk-1";
+import { TEMA_MTK1_BAB2 } from "@/lib/tema-misi-mtk-1";
 
 import { useEffect, useMemo, useRef, useState, type ReactNode } from "react";
 import HasilJawabanKuis from "@/components/HasilJawabanKuis";
@@ -356,8 +357,9 @@ function KapalHarta() {
       misi={MISI_MTK1_BAB2}
       idMisi={(indeks) => idKuis("C", indeks)}
       idTulis={idKuisTulisKartu(ID, "C")}
-      penutup="Bunga tambah tumbuh di kebun Kiko."
-      bunga="🐚🍎🎈⭐"
+      tema={TEMA_MTK1_BAB2}
+      penutup="Istana pasir Kepi selesai. Kerang ajaib berjejer di pantai."
+      bunga="🐚🦀🏖️🚩"
     />
   );
 }
@@ -813,11 +815,11 @@ export default function NaskahMtk1Bab2({
 
       <KartuBingkai>
         <p className="text-center text-4xl" aria-hidden>
-          🏡🌷🏆
+          🏖️🐚🏆
         </p>
         <h4 className="mt-3 text-center text-lg font-black tracking-wide text-[#1C01A5] sm:text-xl">{kartuC.judul}</h4>
         <p className="mt-1 text-center text-sm font-bold text-[#1C01A5]/70">
-          Sepuluh petak · menghitung, membaca, menulis, membandingkan
+          Sepuluh pos pantai · menghitung, membaca, menulis, membandingkan
         </p>
         <div className="mt-4">
           <TombolVoiceMateriPai1 kelas={kelas} kelamin={kelamin} cuplikan={cuplikanDariNaskah(kartuC.voice, 2_000, 3_000)} />

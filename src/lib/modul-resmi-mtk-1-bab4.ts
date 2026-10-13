@@ -10,14 +10,14 @@ export const JUDUL_MTK1_BAB4 = "Bab 4: Mengenal Bentuk";
 export const MODUL_MTK1_BAB4: ModulResmiPai = {
   id: "mtk-1-bab4",
   judul: JUDUL_MTK1_BAB4,
-  pola: /mengenal\s+bentuk\b|petualangan bentuk di rumah nenek|kota bentuk/,
+  pola: /mengenal\s+bentuk\b|petualangan bentuk di rumah nenek|kota bentuk|misi detektif bentuk/,
   motivasi:
     "Sasa dan Bimo menjadi detektif bentuk di rumah Nenek Ani. Mereka menamai segitiga, segi empat, lingkaran, kubus, dan balok.",
   kunciJawaban: "A,B,C,C,B,B,C,C,C,C",
   sketsaKartu: [
     "Sasa, Bimo, dan Nenek Ani mengamati atap segitiga, jam lingkaran, pintu segi empat, dadu kubus, dan kotak susu balok.",
     "Keluarga bentuk datar dan bangun ruang, plus cara menghitung sisi dan sudut.",
-    "Kiko menjaga sepuluh petak kebun bentuk: sisi, sudut, lingkaran, kubus, dan balok.",
+    "Nenek Ani menemani sepuluh ruang detektif bentuk: sisi, sudut, lingkaran, kubus, dan balok.",
     "Poin penting dan lembar evaluasi mengenal bentuk.",
   ],
   latihan: pg([
@@ -175,35 +175,35 @@ D) Balok`,
     },
         {
       kode: "C",
-      judul: "C. Misi Penjaga Kebun Bentuk",
+      judul: "C. Misi Detektif Bentuk",
       pengantar:
-        "Bantu Kiko mengisi 10 petak kebun bentuk. Hijau untuk menghitung, biru untuk membaca, kuning untuk menulis, dan ungu untuk membandingkan.",
-      labelDaftar: "Sepuluh misi bentuk di kebun",
+        "Bantu Nenek Ani memeriksa 10 ruang di rumah. Hijau untuk menghitung, biru untuk membaca, kuning untuk menulis, dan ungu untuk membandingkan.",
+      labelDaftar: "Sepuluh ruang bentuk di rumah Nenek",
       kolom: 1,
       item: [
         {
           nama: "Alur permainan",
-          singkat: "Pilih petak, jawab, dapat bintang",
+          singkat: "Pilih ruang, jawab, dapat lencana",
           uraian:
-            "Siswa memilih satu petak. Kiko menanyakan sisi, sudut, atau nama bentuk. Jawaban benar mendapat 1 bintang kebun. Jawaban yang belum tepat mendapat petunjuk, tanpa kehilangan daun.",
+            "Siswa memilih satu ruang rumah Nenek. Nenek Ani menanyakan sisi, sudut, atau nama bentuk. Jawaban benar mendapat 1 lencana detektif. Jawaban yang belum tepat mendapat petunjuk, tanpa kehilangan kaca.",
           contoh: "Segitiga 3 sisi. Roda adalah lingkaran. Dadu kubus punya 6 sisi. Kotak susu adalah balok.",
         },
         {
-          nama: "Daun ajaib",
-          singkat: "3, 2, atau 1 daun",
+          nama: "Kaca ajaib",
+          singkat: "3, 2, atau 1 kaca",
           uraian:
-            "Jawaban pertama benar mendapat 3 daun ajaib. Benar setelah satu petunjuk mendapat 2 daun. Benar setelah dua petunjuk mendapat 1 daun. Belum tepat tidak mengurangi daun. Siswa boleh mencoba lagi.",
-          contoh: "Petunjuk: benda bergoyang, lalu muncul titik, lalu Kiko menjelaskan bersama.",
+            "Jawaban pertama benar mendapat 3 kaca ajaib. Benar setelah satu petunjuk mendapat 2 kaca. Benar setelah dua petunjuk mendapat 1 kaca. Belum tepat tidak mengurangi kaca. Siswa boleh mencoba lagi.",
+          contoh: "Petunjuk: benda bergoyang, lalu muncul titik, lalu Nenek Ani menjelaskan bersama.",
         },
       ],
       kuis: kuisDariMisi(MISI_MTK1_BAB4),
       voice: [
         [
-          "Kiko menjaga kebun bentuk. Ada sepuluh petak dari rumah sampai piala.",
+          "Nenek Ani mengajak detektif bentuk. Ada sepuluh ruang dari teras sampai dapur.",
           "Segitiga punya tiga sisi dan tiga sudut. Segi empat punya empat sisi.",
           "Roda yang menggelinding adalah lingkaran. Atap rumah memakai segitiga, bukan lingkaran.",
           "Dadu adalah kubus dengan enam sisi. Kotak susu adalah balok.",
-          "Jawaban benar mendapat satu bintang kebun. Jika belum tepat, Kiko memberi petunjuk. Daun tidak berkurang.",
+          "Jawaban benar mendapat satu lencana detektif. Jika belum tepat, Nenek Ani memberi petunjuk. Kaca tidak berkurang.",
         ],
       ],
     },

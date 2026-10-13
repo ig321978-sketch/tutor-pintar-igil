@@ -1,6 +1,7 @@
 "use client";
 import MisiPenjagaKebun from "@/components/MisiPenjagaKebun";
 import { MISI_MTK1_BAB6 } from "@/lib/misi-kebun-mtk-1";
+import { TEMA_MTK1_BAB6 } from "@/lib/tema-misi-mtk-1";
 
 import { useEffect, useMemo, useRef, useState, type ReactNode } from "react";
 import HasilJawabanKuis from "@/components/HasilJawabanKuis";
@@ -789,9 +790,9 @@ function KartuC({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminGuru }) {
   return (
     <KartuBingkai>
       <KepalaKartu
-        ikon="🏡🌷🏆"
+        ikon="🐱🌳🏆"
         judul={kartu.judul}
-        anak="Sepuluh petak · menghitung, membaca, menulis, membandingkan"
+        anak="Sepuluh kursi penyelamatan · menghitung, membaca, menulis, membandingkan"
         kelas={kelas}
         kelamin={kelamin}
         cuplikan={cuplikanDariNaskah(kartu.voice, 2_000, 3_000)}
@@ -800,8 +801,9 @@ function KartuC({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminGuru }) {
         misi={MISI_MTK1_BAB6}
         idMisi={(indeks) => idKuis("C", indeks)}
         idTulis={idKuisTulisKartu(ID, "C")}
-        penutup="Bunga maju mundur tumbuh di kebun Kiko."
-        bunga="➕➖🦘⭐"
+        tema={TEMA_MTK1_BAB6}
+        penutup="Anak kucing turun dari dahan. Jam Toki berbunyi tepat."
+        bunga="🐱🌳⏰🪑"
       />
     </KartuBingkai>
   );
