@@ -195,10 +195,15 @@ const SUBBAB_BUKU_SISWA: Record<string, Record<string, Record<string, string[]>>
         "Poin penting",
         "Lembar evaluasi siswa",
       ],
-      "Bab 4: Unsur-Unsur Bangun Datar": [
-        "Sisi pada bangun datar",
-        "Sudut pada bidang datar",
-        "Garis tegak lurus dan garis sejajar",
+      "Bab 4: Pembagian": [
+        "Pembagian sama banyak",
+        "Pengurangan berulang",
+        "Pembagian tanpa sisa",
+        "Pembagian dengan sisa",
+        "Hubungan perkalian dan pembagian",
+        "Pesta Wortel Kelinci Putih",
+        "Poin penting",
+        "Lembar evaluasi siswa",
       ],
       "Bab 5: Penyajian Data dalam Tabel": [
         "Mengurutkan dan membandingkan data",

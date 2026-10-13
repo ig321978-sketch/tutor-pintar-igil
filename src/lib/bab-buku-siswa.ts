@@ -243,7 +243,7 @@ export const BAB_BUKU_SISWA: Record<string, Record<string, string[]>> = {
       "Bab 1: Bilangan sampai 10.000",
       "Bab 2: Penjumlahan dan Pengurangan sampai 10.000",
       "Bab 3: Perkalian sampai 100",
-      "Bab 4: Unsur-Unsur Bangun Datar",
+      "Bab 4: Pembagian",
       "Bab 5: Penyajian Data dalam Tabel",
     ],
     [IPAS]: [
