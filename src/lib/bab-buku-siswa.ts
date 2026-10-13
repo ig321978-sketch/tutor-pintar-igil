@@ -73,6 +73,13 @@ export const BAB_BUKU_SISWA: Record<string, Record<string, string[]>> = {
       "Bab 6: Penjumlahan dan Pengurangan sampai dengan 20",
       "Bab 7: Mengukur Panjang Benda",
       "Bab 8: Mengenal Diagram",
+      "Bab 9: Bilangan sampai 100",
+      "Bab 10: Penjumlahan dan Pengurangan sampai 100",
+      "Bab 11: Pola Bilangan dan Pola Gambar",
+      "Bab 12: Pengukuran Berat",
+      "Bab 13: Waktu dan Durasi",
+      "Bab 14: Bangun Datar dan Bangun Ruang",
+      "Bab 15: Uang dan Pemecahan Masalah",
     ],
     [PJOK]: [
       "Bab 1: Bergerak Itu Sehat!",
