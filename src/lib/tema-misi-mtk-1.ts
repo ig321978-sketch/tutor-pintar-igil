@@ -108,3 +108,17 @@ export const TEMA_MTK1_BAB8: TemaMisi = {
   pertanyaanAkhir: "Tuliskan jumlah bintang kantin yang sudah kamu kumpulkan.",
   konteksAkhir: "Sepuluh rak kantin rapi. Bintang kantin ada 10.",
 };
+
+export const TEMA_MTK1_BAB9: TemaMisi = {
+  pemandu: "Kura",
+  pengantar:
+    "Bantu Kura menjaga 10 pos di Pasar Peci Seribu. Pilih satu pos, dengarkan misinya, lalu jawab dengan suara, kanvas, atau pilihan.",
+  satuan: "Pos",
+  ikonAwal: "🏪",
+  ikonAkhir: "👳",
+  namaBintang: "Koin pasar",
+  namaToken: "Lentera periksa",
+  ikonToken: "🔦",
+  pertanyaanAkhir: "Tuliskan jumlah koin pasar yang sudah kamu kumpulkan.",
+  konteksAkhir: "Sepuluh pos pasar selesai. Koin pasar ada 10. Gudang emas terbuka.",
+};
