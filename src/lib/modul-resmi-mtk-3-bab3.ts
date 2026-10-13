@@ -9,7 +9,7 @@ export const JUDUL_MTK3_BAB3 = "Bab 3: Pengukuran Panjang dan Berat";
 export const MODUL_MTK3_BAB3: ModulResmiPai = {
   id: "mtk-3-bab3",
   judul: JUDUL_MTK3_BAB3,
-  pola: /pengukuran panjang dan berat/,
+  pola: /^bab 3: pengukuran panjang dan berat$/,
   motivasi:
     "Hore! Kamu sudah mengukur panjang dari angka 0 dan membaca timbangan. 1 m = 100 cm. 1 kg = 1.000 g.",
   kunciJawaban: "C,B,A,C,A",

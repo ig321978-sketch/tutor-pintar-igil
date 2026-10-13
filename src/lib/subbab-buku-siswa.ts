@@ -215,6 +215,16 @@ const SUBBAB_BUKU_SISWA: Record<string, Record<string, Record<string, string[]>>
         "Poin penting",
         "Lembar evaluasi siswa",
       ],
+      "Bab 6: Pengukuran Panjang dan Berat": [
+        "Satuan panjang",
+        "Satuan berat",
+        "Alat ukur",
+        "Konversi panjang",
+        "Konversi berat",
+        "Bengkel Kayu Tupai Kiki",
+        "Poin penting",
+        "Lembar evaluasi siswa",
+      ],
     },
   },
   "4 SD": {

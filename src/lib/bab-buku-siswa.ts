@@ -245,6 +245,7 @@ export const BAB_BUKU_SISWA: Record<string, Record<string, string[]>> = {
       "Bab 3: Perkalian sampai 100",
       "Bab 4: Pembagian",
       "Bab 5: Pecahan Sederhana",
+      "Bab 6: Pengukuran Panjang dan Berat",
     ],
     [IPAS]: [
       "Bab 1: Mari Kenali Hewan di Sekitar Kita",
