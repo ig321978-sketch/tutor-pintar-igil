@@ -10,7 +10,7 @@ export const MODUL_MTK2_BAB3: ModulResmiPai = {
   id: "mtk-2-bab3",
   judul: JUDUL_MTK2_BAB3,
   pola:
-    /fondasi perkalian|penjumlahan berulang|kotak permen kembar|kotak x isi|waktu dan durasi|pengukuran waktu dan uang/,
+    /fondasi perkalian|penjumlahan berulang|kotak permen kembar|kotak x isi|pengukuran waktu dan uang/,
   motivasi:
     "Hore! Kamu sudah membantu Sani. Perkalian adalah penjumlahan berulang angka kembar. 3 piring × 2 permen = 6.",
   kunciJawaban: "B,C,A,B,B,A,A,A,A,A",
