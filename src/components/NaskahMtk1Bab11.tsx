@@ -7,6 +7,7 @@ import { useMemo, useState, type ReactNode } from "react";
 import HasilJawabanKuis from "@/components/HasilJawabanKuis";
 import TabelInfoGrafis from "@/components/TabelInfoGrafis";
 import KartuPoinPenting from "@/components/KartuPoinPenting";
+import PanduanIkon, { type ButirIkon } from "@/components/PanduanIkon";
 import KuisTulisKartu from "@/components/KuisTulisKartu";
 import SoalRekamSuara from "@/components/SoalRekamSuara";
 import TombolVoiceMateriPai1 from "@/components/TombolVoiceMateriPai1";
@@ -94,11 +95,23 @@ const WARNA_DIALOG: Record<string, string> = {
   Biru: "border-[#F0AB00] bg-[#FFF8E8]",
 };
 
+const WAJAH_DIALOG: Record<string, string> = {
+  Maya: "👧",
+  Yoga: "👦",
+  Lita: "👧",
+  Biru: "🦜",
+};
+
 function Dialog({ nama, anak }: { nama: string; anak: string }) {
   const warna = WARNA_DIALOG[nama] ?? "border-[#1C01A5]/15 bg-[#F8F7FF]";
   return (
     <article className={`rounded-2xl border-2 px-4 py-3 ${warna}`}>
-      <p className="text-xs font-black uppercase tracking-wide text-[#1C01A5]">{nama}</p>
+      <p className="flex items-center gap-2 text-xs font-black uppercase tracking-wide text-[#1C01A5]">
+        <span className="text-2xl leading-none" aria-hidden>
+          {WAJAH_DIALOG[nama] ?? "💬"}
+        </span>
+        {nama}
+      </p>
       <p className="mt-1 text-sm font-semibold leading-relaxed text-slate-700">{anak}</p>
     </article>
   );
@@ -106,7 +119,7 @@ function Dialog({ nama, anak }: { nama: string; anak: string }) {
 
 function Papan({ anak }: { anak: string }) {
   return (
-    <p className="rounded-2xl border-2 border-[#F0AB00] bg-[#FFF8E8] px-3 py-3 text-center text-lg font-black leading-snug text-[#1C01A5]">
+    <p className="rounded-2xl border-2 border-[#F0AB00] bg-[#FFF8E8] px-3 py-4 text-center text-xl font-black leading-snug text-[#1C01A5] sm:text-2xl">
       {anak}
     </p>
   );
@@ -172,6 +185,7 @@ function Adegan({
   kelas,
   kelamin,
   penjelasan,
+  simbol,
   children,
 }: {
   judul: string;
@@ -181,12 +195,14 @@ function Adegan({
   kelas?: string;
   kelamin?: KelaminGuru;
   penjelasan: string[];
+  simbol?: ButirIkon[];
   children: ReactNode;
 }) {
   return (
     <article className={`rounded-2xl border-2 px-4 py-3 ${warna}`}>
       <p className="text-xs font-black uppercase tracking-wide text-[#1C01A5]">{judul}</p>
       <TombolPenjelasan kelas={kelas} kelamin={kelamin} kalimat={penjelasan} />
+      {simbol ? <PanduanIkon butir={simbol} /> : null}
       {/* eslint-disable-next-line @next/next/no-img-element */}
       <img src={src} alt={alt} className="mt-3 w-full rounded-xl border border-[#1C01A5]/10 bg-[#fbf6ea] object-cover" />
       <div className="mt-3 space-y-2">{children}</div>
@@ -562,6 +578,11 @@ function KartuA({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminGuru }) {
       <div className="mt-4 space-y-4">
         <Adegan
           judul="Sub-bab 1 · Mengenal Pola Berulang"
+          simbol={[
+            { ikon: "🔴", teks: "Warna 1" },
+            { ikon: "🟡", teks: "Warna 2" },
+            { ikon: "🔁", teks: "Ulangi lagi" },
+          ]}
           warna="border-amber-200 bg-amber-50/40"
           src="/doodle-mtk/mtk-1-bab11-sub1.jpg"
           alt="Tiga anak dan burung Biru melihat bendera yang bergantian warna di pagar sekolah."
@@ -575,7 +596,7 @@ function KartuA({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminGuru }) {
           <Dialog nama="Maya" anak="Lihat pagarnya. Warnanya teratur sekali." />
           <Dialog nama="Lita" anak="Merah, kuning. Merah, kuning. Terus begitu!" />
           <Dialog nama="Biru" anak="Merah, kuning! Merah, kuning!" />
-          <Papan anak="merah kuning | merah kuning | merah kuning" />
+          <Papan anak="🔴🟡 | 🔴🟡 | 🔴🟡" />
           <Dialog nama="Lita" anak="Bendera berikutnya merah, karena polanya mulai lagi dari awal." />
           <KuisSuara
             id={idKuis("A", 0)}
@@ -596,6 +617,11 @@ function KartuA({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminGuru }) {
         </Adegan>
         <Adegan
           judul="Sub-bab 2 · Menemukan Satuan Pengulangan"
+          simbol={[
+            { ikon: "1️⃣", teks: "Cari 1 putaran" },
+            { ikon: "📏", teks: "Hitung panjangnya" },
+            { ikon: "🔁", teks: "Lalu ulang" },
+          ]}
           warna="border-sky-200 bg-sky-50/50"
           src="/doodle-mtk/mtk-1-bab11-sub2.jpg"
           alt="Sembilan manik berpola dua gelap satu terang, diulang tiga kali, dengan kartu angka 3."
@@ -609,7 +635,7 @@ function KartuA({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminGuru }) {
           <Dialog nama="Maya" anak="Gelangku: biru, biru, hijau. Biru, biru, hijau." />
           <Dialog nama="Lita" anak="Satu putaran ada tiga manik. Dua biru, satu hijau." />
           <Dialog nama="Biru" anak="Tiga! Tiga!" />
-          <Papan anak="biru biru hijau | biru biru hijau | panjangnya 3" />
+          <Papan anak="🔵🔵🟢 | 🔵🔵🟢 | panjang 3" />
           <Dialog nama="Lita" anak="Manik ke-13 sama dengan manik pertama, karena 13 dibagi 3 bersisa 1." />
           <KuisSuara
             id={idKuis("A", 2)}
@@ -633,6 +659,11 @@ function KartuA({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminGuru }) {
         </Adegan>
         <Adegan
           judul="Sub-bab 3 · Melanjutkan Pola Gambar"
+          simbol={[
+            { ikon: "⭐", teks: "Lihat yang sudah ada" },
+            { ikon: "❓", teks: "Kotak berikutnya" },
+            { ikon: "🔁", teks: "Mulai dari awal" },
+          ]}
           warna="border-emerald-200 bg-emerald-50/40"
           src="/doodle-mtk/mtk-1-bab11-sub3.jpg"
           alt="Hiasan kertas berpola bintang, hati, hati, lalu dua kotak kosong."
@@ -646,7 +677,7 @@ function KartuA({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminGuru }) {
           <Dialog nama="Lita" anak="Hiasan pestaku: bintang, hati, hati. Aku tidak tahu yang berikutnya." />
           <Dialog nama="Maya" anak="Pengulangannya bintang, hati, hati." />
           <Dialog nama="Yoga" anak="Berarti yang berikutnya bintang!" />
-          <Papan anak="bintang hati hati | bintang hati hati | berikutnya hati hati" />
+          <Papan anak="⭐❤️❤️ | ⭐❤️❤️ | berikutnya ❤️❤️" />
           <KuisSuara
             id={idKuis("A", 4)}
             pertanyaan="Pola ikan besar, ikan kecil, ikan kecil. Setelah ikan kecil yang terakhir, hewan apa yang datang?"
@@ -669,6 +700,11 @@ function KartuA({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminGuru }) {
         </Adegan>
         <Adegan
           judul="Sub-bab 4 · Pola Bilangan"
+          simbol={[
+            { ikon: "⬆️", teks: "Naik tetap" },
+            { ikon: "⬇️", teks: "Turun tetap" },
+            { ikon: "🔁", teks: "Atau berulang" },
+          ]}
           warna="border-orange-200 bg-orange-50/40"
           src="/doodle-mtk/mtk-1-bab11-sub4.jpg"
           alt="Papan tulis menunjukkan 2 4 6 8 10 dengan tambah 2, dan 1 2 3 1 2 3."
@@ -681,7 +717,7 @@ function KartuA({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminGuru }) {
         >
           <Dialog nama="Maya" anak="Yang ini 2, 4, 6, 8. Yang ini 1, 2, 3, 1, 2, 3." />
           <Dialog nama="Lita" anak="Yang pertama naik 2 setiap langkah. Yang kedua kembali ke satu." />
-          <Papan anak="2, 4, 6, 8, 10 naik 2 · 20, 18, 16, 14 turun 2" />
+          <Papan anak="⬆️ 2 4 6 8 10 · ⬇️ 20 18 16 14" />
           <Dialog nama="Biru" anak="Turun! Turun!" />
           <KuisSuara
             id={idKuis("A", 6)}
@@ -702,6 +738,11 @@ function KartuA({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminGuru }) {
         </Adegan>
         <Adegan
           judul="Sub-bab 5 · Membuat Pola Sendiri"
+          simbol={[
+            { ikon: "🎨", teks: "Pilih bentuk" },
+            { ikon: "1️⃣", teks: "Tentukan urutan" },
+            { ikon: "🔒", teks: "Jangan diubah" },
+          ]}
           warna="border-fuchsia-200 bg-fuchsia-50/40"
           src="/doodle-mtk/mtk-1-bab11-sub5.jpg"
           alt="Yoga menstempel pola segitiga dan lingkaran yang diulang tiga kali."
@@ -714,7 +755,7 @@ function KartuA({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminGuru }) {
         >
           <Dialog nama="Maya" anak="Pilih dua bentuk, misalnya segitiga lalu lingkaran, lalu ulangi." />
           <Dialog nama="Lita" anak="Yang tiga bentuk juga boleh: bintang, hati, bunga." />
-          <Papan anak="bintang hati bunga | bintang hati bunga | bintang hati bunga" />
+          <Papan anak="⭐❤️🌸 | ⭐❤️🌸 | ⭐❤️🌸" />
           <KuisSuara
             id={idKuis("A", 8)}
             pertanyaan="Pola Lita: bintang, hati, bunga, dan di ujung ada bintang. Bentuk apa berikutnya?"
@@ -806,6 +847,13 @@ function KartuB({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminGuru }) {
       <div className="mt-4 space-y-4">
         <article className="rounded-2xl border-2 border-[#F0AB00]/50 bg-[#FFFDF6] p-4">
           <h5 className="text-base font-black text-[#1C01A5]">Sub-bab 1 · Apa Itu Pola?</h5>
+          <PanduanIkon
+            butir={[
+              { ikon: "🔴", teks: "Bagian pertama" },
+              { ikon: "🟡", teks: "Bagian kedua" },
+              { ikon: "🔁", teks: "Kembali ke awal" },
+            ]}
+          />
           <TombolPenjelasan
             kelas={kelas}
             kelamin={kelamin}
@@ -842,6 +890,13 @@ function KartuB({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminGuru }) {
         </article>
         <article className="rounded-2xl border-2 border-[#F0AB00]/50 bg-[#FFFDF6] p-4">
           <h5 className="text-base font-black text-[#1C01A5]">Sub-bab 2 · Panjang Pengulangan</h5>
+          <PanduanIkon
+            butir={[
+              { ikon: "🔵", teks: "Hitung 1 putaran" },
+              { ikon: "🟢", teks: "Sampai pola mulai lagi" },
+              { ikon: "3️⃣", teks: "Itu panjangnya" },
+            ]}
+          />
           <TombolPenjelasan
             kelas={kelas}
             kelamin={kelamin}
@@ -873,6 +928,13 @@ function KartuB({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminGuru }) {
         </article>
         <article className="rounded-2xl border-2 border-[#F0AB00]/50 bg-[#FFFDF6] p-4">
           <h5 className="text-base font-black text-[#1C01A5]">Sub-bab 3 · Melanjutkan Pola Gambar</h5>
+          <PanduanIkon
+            butir={[
+              { ikon: "⭐", teks: "Bentuk yang ada" },
+              { ikon: "❓", teks: "Kotak kosong" },
+              { ikon: "🔁", teks: "Lanjut dari awal" },
+            ]}
+          />
           <TombolPenjelasan
             kelas={kelas}
             kelamin={kelamin}
@@ -905,6 +967,13 @@ function KartuB({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminGuru }) {
         </article>
         <article className="rounded-2xl border-2 border-[#F0AB00]/50 bg-[#FFFDF6] p-4">
           <h5 className="text-base font-black text-[#1C01A5]">Sub-bab 4 · Pola Bilangan</h5>
+          <PanduanIkon
+            butir={[
+              { ikon: "⬆️", teks: "Selisih naik" },
+              { ikon: "⬇️", teks: "Selisih turun" },
+              { ikon: "🔁", teks: "Angka kembali" },
+            ]}
+          />
           <TombolPenjelasan
             kelas={kelas}
             kelamin={kelamin}
@@ -945,6 +1014,13 @@ function KartuB({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminGuru }) {
         </article>
         <article className="rounded-2xl border-2 border-[#F0AB00]/50 bg-[#FFFDF6] p-4">
           <h5 className="text-base font-black text-[#1C01A5]">Sub-bab 5 · Membuat Pola Sendiri</h5>
+          <PanduanIkon
+            butir={[
+              { ikon: "🎨", teks: "Pilih 2–3 bentuk" },
+              { ikon: "1️⃣", teks: "Urutan tetap" },
+              { ikon: "🔁", teks: "Ulangi beberapa kali" },
+            ]}
+          />
           <TombolPenjelasan
             kelas={kelas}
             kelamin={kelamin}
@@ -1056,6 +1132,15 @@ function KartuC({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminGuru }) {
         src="/doodle-mtk/mtk-1-bab11-pabrik.jpg"
         alt="Burung Biru memakai topi kecil terbang di atas ban berjalan pabrik manik."
       />
+      <PanduanIkon
+        judul="Simbol pabrik"
+        butir={[
+          { ikon: "🔵", teks: "Manik biru" },
+          { ikon: "🟢", teks: "Manik hijau" },
+          { ikon: "🔴", teks: "Manik merah" },
+          { ikon: "🔁", teks: "Ulangi polanya" },
+        ]}
+      />
       <div className="mt-4 space-y-3 text-sm font-semibold leading-relaxed text-slate-700">
         <p>Salah warna membuat ban berjalan berbalik, lalu kamu boleh mencoba lagi.</p>
         <p>
@@ -1120,6 +1205,15 @@ function LembarEvaluasi({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminG
       <p className="mt-3 text-sm font-black text-[#1C01A5]">
         {lencana}. {pesan}
       </p>
+      <PanduanIkon
+        judul="Simbol soal"
+        butir={[
+          { ikon: "🔴", teks: "Warna pola" },
+          { ikon: "🔁", teks: "Pengulangan" },
+          { ikon: "⬆️", teks: "Naik tetap" },
+          { ikon: "⬇️", teks: "Turun tetap" },
+        ]}
+      />
       <div className="mt-4 space-y-4">
         <TulisBebas
           id={idKuis("D", 0)}
@@ -1281,13 +1375,13 @@ export default function NaskahMtk1Bab11({
           "Pola buatan sendiri boleh bebas, asal urutannya tidak berubah.",
         ])}
         poin={[
-          "Pola itu bagian yang berulang.",
-          "Cari dulu satu pengulangan penuh.",
-          "Sudah sampai ujung? Mulai lagi dari awal.",
-          "Hitung posisinya di dalam putaran.",
-          "Pola angka: naik berapa, turun berapa?",
-          "Kalau angkanya kembali ke awal, itu pola berulang.",
-          "Bikin pola sendiri? Sekali pilih, jangan berubah.",
+          "🔁 Pola itu bagian yang berulang.",
+          "1️⃣ Cari dulu satu pengulangan penuh.",
+          "🔄 Sudah sampai ujung? Mulai lagi dari awal.",
+          "🔢 Hitung posisinya di dalam putaran.",
+          "⬆️ Pola angka: naik berapa, turun berapa?",
+          "🔁 Kalau angkanya kembali ke awal, itu pola berulang.",
+          "🔒 Bikin pola sendiri? Sekali pilih, jangan berubah.",
         ]}
         penutup="Cari satu pengulangan, lalu ulangi dari awal."
       />

@@ -7,6 +7,7 @@ import { useMemo, useState, type ReactNode } from "react";
 import HasilJawabanKuis from "@/components/HasilJawabanKuis";
 import TabelInfoGrafis from "@/components/TabelInfoGrafis";
 import KartuPoinPenting from "@/components/KartuPoinPenting";
+import PanduanIkon, { type ButirIkon } from "@/components/PanduanIkon";
 import KuisTulisKartu from "@/components/KuisTulisKartu";
 import SoalRekamSuara from "@/components/SoalRekamSuara";
 import TombolVoiceMateriPai1 from "@/components/TombolVoiceMateriPai1";
@@ -84,11 +85,23 @@ const WARNA_DIALOG: Record<string, string> = {
   Momo: "border-[#F0AB00] bg-[#FFF8E8]",
 };
 
+const WAJAH_DIALOG: Record<string, string> = {
+  Sasa: "👧",
+  Dito: "👦",
+  Beben: "👦",
+  Momo: "🐘",
+};
+
 function Dialog({ nama, anak }: { nama: string; anak: string }) {
   const warna = WARNA_DIALOG[nama] ?? "border-[#1C01A5]/15 bg-[#F8F7FF]";
   return (
     <article className={`rounded-2xl border-2 px-4 py-3 ${warna}`}>
-      <p className="text-xs font-black uppercase tracking-wide text-[#1C01A5]">{nama}</p>
+      <p className="flex items-center gap-2 text-xs font-black uppercase tracking-wide text-[#1C01A5]">
+        <span className="text-2xl leading-none" aria-hidden>
+          {WAJAH_DIALOG[nama] ?? "💬"}
+        </span>
+        {nama}
+      </p>
       <p className="mt-1 text-sm font-semibold leading-relaxed text-slate-700">{anak}</p>
     </article>
   );
@@ -96,7 +109,7 @@ function Dialog({ nama, anak }: { nama: string; anak: string }) {
 
 function Papan({ anak }: { anak: string }) {
   return (
-    <p className="rounded-2xl border-2 border-[#F0AB00] bg-[#FFF8E8] px-3 py-3 text-center text-lg font-black leading-snug text-[#1C01A5]">
+    <p className="rounded-2xl border-2 border-[#F0AB00] bg-[#FFF8E8] px-3 py-4 text-center text-xl font-black leading-snug text-[#1C01A5] sm:text-2xl">
       {anak}
     </p>
   );
@@ -162,6 +175,7 @@ function Adegan({
   kelas,
   kelamin,
   penjelasan,
+  simbol,
   children,
 }: {
   judul: string;
@@ -171,12 +185,14 @@ function Adegan({
   kelas?: string;
   kelamin?: KelaminGuru;
   penjelasan: string[];
+  simbol?: ButirIkon[];
   children: ReactNode;
 }) {
   return (
     <article className={`rounded-2xl border-2 px-4 py-3 ${warna}`}>
       <p className="text-xs font-black uppercase tracking-wide text-[#1C01A5]">{judul}</p>
       <TombolPenjelasan kelas={kelas} kelamin={kelamin} kalimat={penjelasan} />
+      {simbol ? <PanduanIkon butir={simbol} /> : null}
       {/* eslint-disable-next-line @next/next/no-img-element */}
       <img src={src} alt={alt} className="mt-3 w-full rounded-xl border border-[#1C01A5]/10 bg-[#fbf6ea] object-cover" />
       <div className="mt-3 space-y-2">{children}</div>
@@ -551,6 +567,11 @@ function KartuA({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminGuru }) {
       <div className="mt-4 space-y-4">
         <Adegan
           judul="Sub-bab 1 · Berat dan Ringan"
+          simbol={[
+            { ikon: "🪨", teks: "Berat, susah diangkat" },
+            { ikon: "🪶", teks: "Ringan, gampang" },
+            { ikon: "✋", teks: "Angkat dulu" },
+          ]}
           warna="border-amber-200 bg-amber-50/40"
           src="/doodle-mtk/mtk-1-bab12-sub1.jpg"
           alt="Dito dan Momo mengangkat karung beras. Sasa mengangkat kapas. Timbangan miring ke batu, bukan ke bulu."
@@ -564,7 +585,7 @@ function KartuA({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminGuru }) {
           <Dialog nama="Dito" anak="Beras ini berat sekali!" />
           <Dialog nama="Sasa" anak="Kotak kapas ini bisa kuangkat dengan satu tangan." />
           <Dialog nama="Momo" anak="Aku kuat! Karung beras ini bisa kuangkat." />
-          <Papan anak="Berat = susah diangkat · Ringan = gampang diangkat" />
+          <Papan anak="🪨 Berat = susah diangkat · 🪶 Ringan = gampang diangkat" />
           <KuisSuara
             id={idKuis("A", 0)}
             pertanyaan="Buku tebal dan selembar kertas. Mana yang lebih berat?"
@@ -573,7 +594,7 @@ function KartuA({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminGuru }) {
           />
           <TulisBebas
             id={idKuis("A", 1)}
-            visual={<Papan anak="Ringan = ? · Berat = ? · benda: batu, bulu, boneka" />}
+            visual={<Papan anak="🪶 Ringan = ? · 🪨 Berat = ? · 🪨 batu · 🪶 bulu · 🧸 boneka" />}
             pertanyaan="Tulis benda paling ringan dan benda paling berat. Contoh: ringan bulu, berat batu."
             pesanSalah="Bulu paling ringan. Batu paling berat."
             umpan="Ringan: bulu. Berat: batu."
@@ -590,6 +611,11 @@ function KartuA({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminGuru }) {
         </Adegan>
         <Adegan
           judul="Sub-bab 2 · Membandingkan Dua Benda"
+          simbol={[
+            { ikon: "🤲", teks: "Dua tangan" },
+            { ikon: "⬇️", teks: "Yang turun lebih berat" },
+            { ikon: "⚖️", teks: "Banyak belum tentu berat" },
+          ]}
           warna="border-sky-200 bg-sky-50/50"
           src="/doodle-mtk/mtk-1-bab12-sub2.jpg"
           alt="Timbangan miring ke semangka. Piring kiri berisi tiga apel."
@@ -603,7 +629,7 @@ function KartuA({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminGuru }) {
           <Dialog nama="Sasa" anak="Angkat dengan dua tangan, seperti timbangan." />
           <Dialog nama="Beben" anak="Tangan yang memegang semangka turun lebih rendah." />
           <Dialog nama="Momo" anak="Banyak belum tentu berat." />
-          <Papan anak="3 apel lebih ringan daripada 1 semangka" />
+          <Papan anak="🍎🍎🍎 lebih ringan · 🍉 lebih berat" />
           <KuisSuara
             id={idKuis("A", 2)}
             pertanyaan="Lima balon dan satu batu. Mana yang lebih berat?"
@@ -612,7 +638,7 @@ function KartuA({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminGuru }) {
           />
           <TulisBebas
             id={idKuis("A", 3)}
-            visual={<Papan anak="buku ? empat bulu" />}
+            visual={<Papan anak="📚 buku ? 🪶🪶🪶🪶 empat bulu" />}
             pertanyaan="Tulis mana yang lebih berat. Contoh: buku lebih berat."
             pesanSalah="Buku lebih berat daripada bulu."
             umpan="Buku lebih berat."
@@ -627,6 +653,11 @@ function KartuA({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminGuru }) {
         </Adegan>
         <Adegan
           judul="Sub-bab 3 · Satuan Kelereng"
+          simbol={[
+            { ikon: "📦", teks: "Benda di kiri" },
+            { ikon: "🔵", teks: "Kelereng di kanan" },
+            { ikon: "⚖️", teks: "Berhenti saat seimbang" },
+          ]}
           warna="border-emerald-200 bg-emerald-50/40"
           src="/doodle-mtk/mtk-1-bab12-sub3.jpg"
           alt="Timbangan seimbang. Penghapus di satu sisi, dan kartu angka 5 di samping kelereng."
@@ -640,7 +671,7 @@ function KartuA({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminGuru }) {
           <Dialog nama="Sasa" anak="Taruh penghapus di sisi kiri." />
           <Dialog nama="Dito" anak="Satu, dua, tiga, empat, lima. Seimbang!" />
           <Dialog nama="Momo" anak="Kelerengnya harus sama besar." />
-          <Papan anak="penghapus = 5 kelereng" />
+          <Papan anak="🧽 = 🔵🔵🔵🔵🔵 · 5 kelereng" />
           <KuisSuara
             id={idKuis("A", 4)}
             pertanyaan="Penggaris seimbang dengan 3 kelereng. Berapa beratnya? Sebutkan juga satuannya."
@@ -649,7 +680,7 @@ function KartuA({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminGuru }) {
           />
           <TulisBebas
             id={idKuis("A", 5)}
-            visual={<Papan anak="gunting seimbang dengan 7 kelereng" />}
+            visual={<Papan anak="✂️ seimbang · 🔵×7" />}
             pertanyaan="Tulis berat gunting dalam satuan kelereng."
             pesanSalah="Hitung sampai 7."
             umpan="Berat gunting 7 kelereng."
@@ -660,6 +691,11 @@ function KartuA({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminGuru }) {
         </Adegan>
         <Adegan
           judul="Sub-bab 4 · Satuan Genggaman"
+          simbol={[
+            { ikon: "🤏", teks: "Tangan kecil, lebih banyak" },
+            { ikon: "🖐️", teks: "Tangan besar, lebih sedikit" },
+            { ikon: "🔒", teks: "Jangan ganti tangan" },
+          ]}
           warna="border-orange-200 bg-orange-50/40"
           src="/doodle-mtk/mtk-1-bab12-sub4.jpg"
           alt="Tangan kecil bertanda 6 dan tangan besar bertanda 4. Momo membandingkan keduanya."
@@ -673,7 +709,7 @@ function KartuA({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminGuru }) {
           <Dialog nama="Beben" anak="Punyaku 6 genggam." />
           <Dialog nama="Dito" anak="Punyaku cuma 4 genggam. Kok beda?" />
           <Dialog nama="Sasa" anak="Tanganmu lebih besar, jadi isinya lebih banyak." />
-          <Papan anak="tangan kecil 6 genggam · tangan besar 4 genggam" />
+          <Papan anak="🤏 6 genggam · 🖐️ 4 genggam" />
           <KuisSuara
             id={idKuis("A", 6)}
             pertanyaan="Kalau tangannya berbeda, hasil genggamannya sama atau beda?"
@@ -685,7 +721,7 @@ function KartuA({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminGuru }) {
           />
           <TulisBebas
             id={idKuis("A", 7)}
-            visual={<Papan anak="Genggaman Sasa = 5 · tangan Beben lebih kecil" />}
+            visual={<Papan anak="🖐️ Sasa = 5 · 🤏 Beben lebih kecil" />}
             pertanyaan="Tulis angka genggaman Beben yang lebih besar dari 5, dan tulis lebih banyak."
             pesanSalah="Tangan yang lebih kecil butuh lebih banyak genggaman."
             umpan="Angkanya lebih besar dari 5."
@@ -696,6 +732,11 @@ function KartuA({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminGuru }) {
         </Adegan>
         <Adegan
           judul="Sub-bab 5 · Mengurutkan Berat"
+          simbol={[
+            { ikon: "1️⃣", teks: "Angka kecil = ringan" },
+            { ikon: "🔒", teks: "Satuan harus sama" },
+            { ikon: "🪜", teks: "Urut naik ke berat" },
+          ]}
           warna="border-fuchsia-200 bg-fuchsia-50/40"
           src="/doodle-mtk/mtk-1-bab12-sub5.jpg"
           alt="Botol bertanda 3, penggaris bertanda 5, dan buku bertanda 7."
@@ -709,7 +750,7 @@ function KartuA({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminGuru }) {
           <Dialog nama="Sasa" anak="Buku 7 kelereng. Botol 3 kelereng. Penggaris 5 kelereng." />
           <Dialog nama="Beben" anak="Tiga, lima, tujuh. Botol, penggaris, lalu buku." />
           <Dialog nama="Momo" anak="Kalau satuannya diganti, angkanya berubah. Urutannya tetap sama." />
-          <Papan anak="botol 3, penggaris 5, buku 7" />
+          <Papan anak="🧴 3 · 📐 5 · 📗 7" />
           <KuisSuara
             id={idKuis("A", 8)}
             pertanyaan="Boneka 4 kelereng, gelas 9 kelereng, krayon 6 kelereng. Mana yang paling berat?"
@@ -718,7 +759,7 @@ function KartuA({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminGuru }) {
           />
           <TulisBebas
             id={idKuis("A", 9)}
-            visual={<Papan anak="sendok 1 · apel 2 · kaus 5 · buku 8" />}
+            visual={<Papan anak="🥄 1 · 🍎 2 · 🧦 5 · 📕 8" />}
             pertanyaan="Tulis urutannya dari paling ringan ke paling berat."
             pesanSalah="Mulai dari angka 1."
             umpan="Sendok, apel, kaus, lalu buku."
@@ -731,10 +772,10 @@ function KartuA({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminGuru }) {
           id={idKuis("A", 10)}
           pertanyaan="1. Mana yang paling berat?"
           pilihan={[
-            { huruf: "A", teks: "Bulu" },
-            { huruf: "B", teks: "Batu" },
-            { huruf: "C", teks: "Balon" },
-            { huruf: "D", teks: "Daun" },
+            { huruf: "A", teks: "🪶 Bulu" },
+            { huruf: "B", teks: "🪨 Batu" },
+            { huruf: "C", teks: "🎈 Balon" },
+            { huruf: "D", teks: "🍃 Daun" },
           ]}
           benar="B"
           umpan="Batu padat dan susah diangkat."
@@ -744,17 +785,17 @@ function KartuA({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminGuru }) {
           id={idKuis("A", 11)}
           perintah="2. Pasangkan benda dengan beratnya."
           baris={[
-            { kiri: "Pensil", pilihan: berat, benar: "2 kelereng" },
-            { kiri: "Spons", pilihan: berat, benar: "6 kelereng" },
-            { kiri: "Buku tebal", pilihan: berat, benar: "11 kelereng" },
+            { kiri: "✏️ Pensil", pilihan: berat, benar: "2 kelereng" },
+            { kiri: "🧽 Spons", pilihan: berat, benar: "6 kelereng" },
+            { kiri: "📚 Buku tebal", pilihan: berat, benar: "11 kelereng" },
           ]}
           umpan="Pensil 2, spons 6, buku tebal 11."
         />
         <SusunToken
           id={idKuis("A", 12)}
           perintah="3. Susun dari paling ringan ke paling berat."
-          acak={["gelas 9", "kue 3", "buku 7", "kaus 4"]}
-          benar={["kue 3", "kaus 4", "buku 7", "gelas 9"]}
+          acak={["🥤 gelas 9", "🍪 kue 3", "📗 buku 7", "🧦 kaus 4"]}
+          benar={["🍪 kue 3", "🧦 kaus 4", "📗 buku 7", "🥤 gelas 9"]}
           umpan="3, 4, 7, lalu 9."
         />
         <KuisBenarSalah
@@ -800,6 +841,13 @@ function KartuB({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminGuru }) {
       <div className="mt-4 space-y-4">
         <article className="rounded-2xl border-2 border-[#F0AB00]/50 bg-[#FFFDF6] p-4">
           <h5 className="text-base font-black text-[#1C01A5]">Sub-bab 1 · Berat dan Ringan</h5>
+          <PanduanIkon
+            butir={[
+              { ikon: "🪨", teks: "Susah diangkat" },
+              { ikon: "🪶", teks: "Tidak terasa" },
+              { ikon: "👀", teks: "Besar belum tentu berat" },
+            ]}
+          />
           <TombolPenjelasan
             kelas={kelas}
             kelamin={kelamin}
@@ -842,6 +890,14 @@ function KartuB({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminGuru }) {
         </article>
         <article className="rounded-2xl border-2 border-[#F0AB00]/50 bg-[#FFFDF6] p-4">
           <h5 className="text-base font-black text-[#1C01A5]">Sub-bab 2 · Membandingkan Dua Benda</h5>
+          <PanduanIkon
+            butir={[
+              { ikon: ">", teks: "Lebih berat" },
+              { ikon: "<", teks: "Lebih ringan" },
+              { ikon: "=", teks: "Sama berat" },
+              { ikon: "🤲", teks: "Tangan yang turun" },
+            ]}
+          />
           <TombolPenjelasan
             kelas={kelas}
             kelamin={kelamin}
@@ -882,6 +938,13 @@ function KartuB({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminGuru }) {
         </article>
         <article className="rounded-2xl border-2 border-[#F0AB00]/50 bg-[#FFFDF6] p-4">
           <h5 className="text-base font-black text-[#1C01A5]">Sub-bab 3 · Mengukur dengan Kelereng</h5>
+          <PanduanIkon
+            butir={[
+              { ikon: "⚖️", teks: "Taruh benda" },
+              { ikon: "🔵", teks: "Tambah satu-satu" },
+              { ikon: "✅", teks: "Hitung saat seimbang" },
+            ]}
+          />
           <TombolPenjelasan
             kelas={kelas}
             kelamin={kelamin}
@@ -910,6 +973,13 @@ function KartuB({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminGuru }) {
         </article>
         <article className="rounded-2xl border-2 border-[#F0AB00]/50 bg-[#FFFDF6] p-4">
           <h5 className="text-base font-black text-[#1C01A5]">Sub-bab 4 · Mengukur dengan Genggaman</h5>
+          <PanduanIkon
+            butir={[
+              { ikon: "🤲", teks: "Satu genggaman" },
+              { ikon: "🔢", teks: "Hitung sampai habis" },
+              { ikon: "🔒", teks: "Tangan yang sama" },
+            ]}
+          />
           <TombolPenjelasan
             kelas={kelas}
             kelamin={kelamin}
@@ -938,6 +1008,13 @@ function KartuB({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminGuru }) {
         </article>
         <article className="rounded-2xl border-2 border-[#F0AB00]/50 bg-[#FFFDF6] p-4">
           <h5 className="text-base font-black text-[#1C01A5]">Sub-bab 5 · Mengurutkan Berat</h5>
+          <PanduanIkon
+            butir={[
+              { ikon: "🔢", teks: "Tulis angkanya" },
+              { ikon: "⬆️", teks: "Kecil ke besar" },
+              { ikon: "🔒", teks: "Satuan tidak dicampur" },
+            ]}
+          />
           <TombolPenjelasan
             kelas={kelas}
             kelamin={kelamin}
@@ -990,8 +1067,8 @@ function KartuB({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminGuru }) {
         <SusunToken
           id={idKuis("B", 12)}
           perintah="3. Susun dari paling ringan ke paling berat."
-          acak={["buku 11", "kaus 2", "gelas 8", "kue 5"]}
-          benar={["kaus 2", "kue 5", "gelas 8", "buku 11"]}
+          acak={["📗 buku 11", "🧦 kaus 2", "🥤 gelas 8", "🍪 kue 5"]}
+          benar={["🧦 kaus 2", "🍪 kue 5", "🥤 gelas 8", "📗 buku 11"]}
           umpan="2, 5, 8, lalu 11."
         />
         <KuisBenarSalah
@@ -1048,6 +1125,15 @@ function KartuC({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminGuru }) {
       <GambarDoodle
         src="/doodle-mtk/mtk-1-bab12-pasar.jpg"
         alt="Momo memakai celemek di belakang timbangan pasar, dengan mangkuk kelereng dan keranjang buah."
+      />
+      <PanduanIkon
+        judul="Simbol pasar"
+        butir={[
+          { ikon: "⚖️", teks: "Timbangan" },
+          { ikon: "🔵", teks: "Satuan kelereng" },
+          { ikon: "🖐️", teks: "Satuan genggaman" },
+          { ikon: "🪙", teks: "10 koin pasar" },
+        ]}
       />
       <div className="mt-4 space-y-3 text-sm font-semibold leading-relaxed text-slate-700">
         <p>Salah ukur membuat timbangan berbalik pelan, lalu kamu boleh mencoba lagi.</p>
@@ -1113,6 +1199,15 @@ function LembarEvaluasi({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminG
       <p className="mt-3 text-sm font-black text-[#1C01A5]">
         {lencana}. {pesan}
       </p>
+      <PanduanIkon
+        judul="Simbol soal"
+        butir={[
+          { ikon: "🪨", teks: "Lebih berat" },
+          { ikon: "🪶", teks: "Lebih ringan" },
+          { ikon: "🔵", teks: "Kelereng" },
+          { ikon: "🖐️", teks: "Genggaman" },
+        ]}
+      />
       <div className="mt-4 space-y-4">
         <TulisBebas
           id={idKuis("D", 0)}
@@ -1204,8 +1299,8 @@ function LembarEvaluasi({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminG
         <SusunToken
           id={idKuis("D", 7)}
           perintah="8. Susun dari paling berat ke paling ringan."
-          acak={["kue 5", "gelas 9", "kaus 3", "buku 7"]}
-          benar={["gelas 9", "buku 7", "kue 5", "kaus 3"]}
+          acak={["🍪 kue 5", "🥤 gelas 9", "🧦 kaus 3", "📗 buku 7"]}
+          benar={["🥤 gelas 9", "📗 buku 7", "🍪 kue 5", "🧦 kaus 3"]}
           umpan="9, 7, 5, lalu 3."
         />
         <div className="border-t-2 border-[#1C01A5]/10 pt-4">
@@ -1275,13 +1370,13 @@ export default function NaskahMtk1Bab12({
           "Satuan harus sama supaya adil. Angka kecil berarti paling ringan.",
         ])}
         poin={[
-          "Berat tidak bisa dilihat, harus diangkat.",
-          "Besar belum tentu berat.",
-          "Tangan yang turun, itu yang lebih berat.",
-          "Kelereng ditambah sampai seimbang.",
-          "Satu tangan, satu ukuran.",
-          "Satuan harus sama supaya adil.",
-          "Angka kecil berarti paling ringan.",
+          "✋ Berat tidak bisa dilihat, harus diangkat.",
+          "🎈 Besar belum tentu berat.",
+          "🤲 Tangan yang turun, itu yang lebih berat.",
+          "🔵 Kelereng ditambah sampai seimbang.",
+          "🖐️ Satu tangan, satu ukuran.",
+          "🔒 Satuan harus sama supaya adil.",
+          "1️⃣ Angka kecil berarti paling ringan.",
         ]}
         penutup="Angkat, timbang dengan satuan yang sama, lalu bandingkan."
       />

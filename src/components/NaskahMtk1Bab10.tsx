@@ -7,6 +7,7 @@ import { useMemo, useState, type ReactNode } from "react";
 import HasilJawabanKuis from "@/components/HasilJawabanKuis";
 import TabelInfoGrafis from "@/components/TabelInfoGrafis";
 import KartuPoinPenting from "@/components/KartuPoinPenting";
+import PanduanIkon, { type ButirIkon } from "@/components/PanduanIkon";
 import KuisTulisKartu from "@/components/KuisTulisKartu";
 import SoalRekamSuara from "@/components/SoalRekamSuara";
 import TombolVoiceMateriPai1 from "@/components/TombolVoiceMateriPai1";
@@ -105,11 +106,23 @@ const WARNA_DIALOG: Record<string, string> = {
   Kolu: "border-[#F0AB00] bg-[#FFF8E8]",
 };
 
+const WAJAH_DIALOG: Record<string, string> = {
+  Nia: "👧",
+  Rafi: "👦",
+  Tono: "👦",
+  Kolu: "🐨",
+};
+
 function Dialog({ nama, anak }: { nama: string; anak: string }) {
   const warna = WARNA_DIALOG[nama] ?? "border-[#1C01A5]/15 bg-[#F8F7FF]";
   return (
     <article className={`rounded-2xl border-2 px-4 py-3 ${warna}`}>
-      <p className="text-xs font-black uppercase tracking-wide text-[#1C01A5]">{nama}</p>
+      <p className="flex items-center gap-2 text-xs font-black uppercase tracking-wide text-[#1C01A5]">
+        <span className="text-2xl leading-none" aria-hidden>
+          {WAJAH_DIALOG[nama] ?? "💬"}
+        </span>
+        {nama}
+      </p>
       <p className="mt-1 text-sm font-semibold leading-relaxed text-slate-700">{anak}</p>
     </article>
   );
@@ -117,7 +130,7 @@ function Dialog({ nama, anak }: { nama: string; anak: string }) {
 
 function Papan({ anak }: { anak: string }) {
   return (
-    <p className="rounded-2xl border-2 border-[#F0AB00] bg-[#FFF8E8] px-3 py-3 text-center text-lg font-black leading-snug text-[#1C01A5]">
+    <p className="rounded-2xl border-2 border-[#F0AB00] bg-[#FFF8E8] px-3 py-4 text-center text-xl font-black leading-snug text-[#1C01A5] sm:text-2xl">
       {anak}
     </p>
   );
@@ -183,6 +196,7 @@ function Adegan({
   kelas,
   kelamin,
   penjelasan,
+  simbol,
   children,
 }: {
   judul: string;
@@ -192,12 +206,14 @@ function Adegan({
   kelas?: string;
   kelamin?: KelaminGuru;
   penjelasan: string[];
+  simbol?: ButirIkon[];
   children: ReactNode;
 }) {
   return (
     <article className={`rounded-2xl border-2 px-4 py-3 ${warna}`}>
       <p className="text-xs font-black uppercase tracking-wide text-[#1C01A5]">{judul}</p>
       <TombolPenjelasan kelas={kelas} kelamin={kelamin} kalimat={penjelasan} />
+      {simbol ? <PanduanIkon butir={simbol} /> : null}
       {/* eslint-disable-next-line @next/next/no-img-element */}
       <img src={src} alt={alt} className="mt-3 w-full rounded-xl border border-[#1C01A5]/10 bg-[#fbf6ea] object-cover" />
       <div className="mt-3 space-y-2">{children}</div>
@@ -549,6 +565,11 @@ function KartuA({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminGuru }) {
       <div className="mt-4 space-y-4">
         <Adegan
           judul="Sub-bab 1 · Penjumlahan Tanpa Menyimpan"
+          simbol={[
+            { ikon: "➕", teks: "Gabungkan" },
+            { ikon: "1️⃣", teks: "Satuan dulu" },
+            { ikon: "🔟", teks: "Lalu puluhan" },
+          ]}
           warna="border-amber-200 bg-amber-50/40"
           src="/doodle-mtk/mtk-1-bab10-sub1.jpg"
           alt="Nia membawa kotak 23 dan Rafi membawa kotak 14. Di meja tertulis 23 tambah 14 sama dengan 37."
@@ -563,7 +584,7 @@ function KartuA({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminGuru }) {
           <Dialog nama="Rafi" anak="Aku bawa 14 kelereng!" />
           <Dialog nama="Tono" anak="Kalau digabung, jadi berapa?" />
           <Dialog nama="Kolu" anak="Ayo simpan di rumah angka. Satuan dulu, ya!" />
-          <Papan anak="23 + 14 · satuan 3 + 4 = 7 · puluhan 2 + 1 = 3" />
+          <Papan anak="➕ 23 + 14 · 1️⃣ 3 + 4 = 7 · 🔟 2 + 1 = 3" />
           <Dialog nama="Nia" anak="Jadi 37!" />
           <Dialog nama="Kolu" anak="Tepat! Tidak ada yang disimpan, semua muat." />
           <div className="mt-3 border-t-2 border-[#F0AB00] pt-3">
@@ -588,6 +609,11 @@ function KartuA({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminGuru }) {
         </Adegan>
         <Adegan
           judul="Sub-bab 2 · Penjumlahan dengan Menyimpan"
+          simbol={[
+            { ikon: "🔟", teks: "Lebih dari 9" },
+            { ikon: "1️⃣", teks: "Simpan 1 ke atas" },
+            { ikon: "✏️", teks: "Tulis sisanya" },
+          ]}
           warna="border-sky-200 bg-sky-50/50"
           src="/doodle-mtk/mtk-1-bab10-sub2.jpg"
           alt="Kolu menunjuk hitungan 28 tambah 47 sama dengan 75, dengan angka simpanan 1 di atas."
@@ -602,7 +628,7 @@ function KartuA({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminGuru }) {
           <Dialog nama="Rafi" anak="Aku punya 47." />
           <Dialog nama="Tono" anak="Satuannya 8 + 7. Itu lebih dari sepuluh!" />
           <Dialog nama="Kolu" anak="Betul! Kita harus menyimpan." />
-          <Papan anak="8 + 7 = 15, tulis 5, simpan 1 · 1 + 2 + 4 = 7 · hasil 75" />
+          <Papan anak="🔟 8 + 7 = 15 · ✏️ tulis 5 · 1️⃣ simpan 1 · hasil 75" />
           <Dialog nama="Rafi" anak="Jadi 75!" />
           <Dialog nama="Nia" anak="Jangan lupa angka 1 yang kecil di atas, ya!" />
           <div className="mt-3 border-t-2 border-[#F0AB00] pt-3">
@@ -627,6 +653,11 @@ function KartuA({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminGuru }) {
         </Adegan>
         <Adegan
           judul="Sub-bab 3 · Pengurangan Tanpa Meminjam"
+          simbol={[
+            { ikon: "➖", teks: "Kurangi" },
+            { ikon: "✅", teks: "Bawah lebih kecil" },
+            { ikon: "🔟", teks: "Puluhan ikut kurang" },
+          ]}
           warna="border-emerald-200 bg-emerald-50/40"
           src="/doodle-mtk/mtk-1-bab10-sub3.jpg"
           alt="Rak bertanda 46 jeruk. Rafi membawa keranjang 23. Nia menulis 46 kurang 23 sama dengan 23."
@@ -640,7 +671,7 @@ function KartuA({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminGuru }) {
           <Dialog nama="Rafi" anak="Kolu, aku ambil 23 jeruk. Tadinya ada 46." />
           <Dialog nama="Tono" anak="Sisanya berapa?" />
           <Dialog nama="Nia" anak="Satuan di bawah 3, satuan di atas 6. Boleh dikurangi." />
-          <Papan anak="6 − 3 = 3 · 4 − 2 = 2 · sisa 23" />
+          <Papan anak="➖ 6 − 3 = 3 · 🔟 4 − 2 = 2 · sisa 23" />
           <Dialog nama="Rafi" anak="Sisa 23 jeruk!" />
           <Dialog nama="Kolu" anak="Yang kecil ada di bawah, jadi aman." />
           <div className="mt-3 border-t-2 border-[#F0AB00] pt-3">
@@ -665,6 +696,11 @@ function KartuA({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminGuru }) {
         </Adegan>
         <Adegan
           judul="Sub-bab 4 · Pengurangan dengan Meminjam"
+          simbol={[
+            { ikon: "🤝", teks: "Pinjam 1 puluhan" },
+            { ikon: "🔟", teks: "Satuan jadi +10" },
+            { ikon: "⬇️", teks: "Puluhan berkurang 1" },
+          ]}
           warna="border-orange-200 bg-orange-50/40"
           src="/doodle-mtk/mtk-1-bab10-sub4.jpg"
           alt="Papan tulis menunjukkan 52 kurang 28 sama dengan 24. Kolu terlihat bingung di gudang susu."
@@ -679,7 +715,7 @@ function KartuA({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminGuru }) {
           <Dialog nama="Nia" anak="2 − 8 tidak bisa." />
           <Dialog nama="Tono" anak="Kok bisa tidak bisa?" />
           <Dialog nama="Kolu" anak="Satuan di atas lebih kecil. Kita harus meminjam dari puluhan!" />
-          <Papan anak="12 − 8 = 4 · puluhan 4 − 2 = 2 · sisa 24" />
+          <Papan anak="🤝 12 − 8 = 4 · ⬇️ puluhan 4 − 2 = 2 · sisa 24" />
           <Dialog nama="Rafi" anak="Jadi sisa 24 kotak!" />
           <Dialog nama="Nia" anak="Kalau di atas lebih kecil, pinjam dulu. Lalu puluhan berkurang satu." />
           <div className="mt-3 border-t-2 border-[#F0AB00] pt-3">
@@ -704,6 +740,11 @@ function KartuA({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminGuru }) {
         </Adegan>
         <Adegan
           judul="Sub-bab 5 · Soal Cerita"
+          simbol={[
+            { ikon: "🔍", teks: "Cari angkanya" },
+            { ikon: "➕", teks: "Datang, dapat" },
+            { ikon: "➖", teks: "Jatuh, terjual" },
+          ]}
           warna="border-fuchsia-200 bg-fuchsia-50/40"
           src="/doodle-mtk/mtk-1-bab10-sub5.jpg"
           alt="Papan toko menunjukkan 38 tambah 45 sama dengan 83, dan 72 kurang 29 sama dengan 43."
@@ -717,7 +758,7 @@ function KartuA({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminGuru }) {
           <Dialog nama="Kolu" anak="Toko punya 38 jeruk. Pagi ini datang 45 jeruk. Berapa jeruk sekarang?" />
           <Dialog nama="Nia" anak="Datang berarti ditambah. Kalimatnya 38 + 45." />
           <Dialog nama="Rafi" anak="8 + 5 = 13. Simpan satu. Puluhannya 1 + 3 + 4 = 8. Jadi 83." />
-          <Papan anak="38 + 45 = 83 · 72 − 29 = 43" />
+          <Papan anak="➕ 38 + 45 = 83 · ➖ 72 − 29 = 43" />
           <Dialog nama="Kolu" anak="Cerita kedua: ada 72 apel. Sebanyak 29 terjual. Sisa berapa?" />
           <Dialog nama="Tono" anak="2 − 9 tidak bisa. Pinjam! 12 − 9 = 3. Lalu 6 − 2 = 4. Jadi 43." />
           <div className="mt-3 border-t-2 border-[#F0AB00] pt-3">
@@ -820,6 +861,13 @@ function KartuB({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminGuru }) {
       <div className="mt-4 space-y-4">
         <article className="rounded-2xl border-2 border-[#F0AB00]/50 bg-[#FFFDF6] p-4">
           <h5 className="text-base font-black text-[#1C01A5]">Sub-bab 1 · Menjumlah Tanpa Menyimpan</h5>
+          <PanduanIkon
+            butir={[
+              { ikon: "➕", teks: "Jumlahkan" },
+              { ikon: "👉", teks: "Mulai dari kanan" },
+              { ikon: "✅", teks: "Satuan muat di 1 kotak" },
+            ]}
+          />
           <TombolPenjelasan
             kelas={kelas}
             kelamin={kelamin}
@@ -859,6 +907,13 @@ function KartuB({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminGuru }) {
         </article>
         <article className="rounded-2xl border-2 border-[#F0AB00]/50 bg-[#FFFDF6] p-4">
           <h5 className="text-base font-black text-[#1C01A5]">Sub-bab 2 · Menjumlah dengan Menyimpan</h5>
+          <PanduanIkon
+            butir={[
+              { ikon: "🔟", teks: "Hasil 10 atau lebih" },
+              { ikon: "1️⃣", teks: "Angka kecil di atas" },
+              { ikon: "✏️", teks: "Tulis angka satunya" },
+            ]}
+          />
           <TombolPenjelasan
             kelas={kelas}
             kelamin={kelamin}
@@ -890,6 +945,13 @@ function KartuB({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminGuru }) {
         </article>
         <article className="rounded-2xl border-2 border-[#F0AB00]/50 bg-[#FFFDF6] p-4">
           <h5 className="text-base font-black text-[#1C01A5]">Sub-bab 3 · Mengurangi Tanpa Meminjam</h5>
+          <PanduanIkon
+            butir={[
+              { ikon: "➖", teks: "Atas dikurangi bawah" },
+              { ikon: "✅", teks: "Atas lebih besar" },
+              { ikon: "🔟", teks: "Puluhan ikut dikurangi" },
+            ]}
+          />
           <TombolPenjelasan
             kelas={kelas}
             kelamin={kelamin}
@@ -929,6 +991,13 @@ function KartuB({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminGuru }) {
         </article>
         <article className="rounded-2xl border-2 border-[#F0AB00]/50 bg-[#FFFDF6] p-4">
           <h5 className="text-base font-black text-[#1C01A5]">Sub-bab 4 · Mengurangi dengan Meminjam</h5>
+          <PanduanIkon
+            butir={[
+              { ikon: "🤝", teks: "Pinjam dulu" },
+              { ikon: "🔟", teks: "Satuan bertambah 10" },
+              { ikon: "⬇️", teks: "Puluhan kurang 1" },
+            ]}
+          />
           <TombolPenjelasan
             kelas={kelas}
             kelamin={kelamin}
@@ -960,6 +1029,13 @@ function KartuB({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminGuru }) {
         </article>
         <article className="rounded-2xl border-2 border-[#F0AB00]/50 bg-[#FFFDF6] p-4">
           <h5 className="text-base font-black text-[#1C01A5]">Sub-bab 5 · Soal Cerita</h5>
+          <PanduanIkon
+            butir={[
+              { ikon: "🔍", teks: "Cari dua angka" },
+              { ikon: "➕", teks: "Dapat, datang, beli" },
+              { ikon: "➖", teks: "Pergi, jatuh, terjual" },
+            ]}
+          />
           <TombolPenjelasan
             kelas={kelas}
             kelamin={kelamin}
@@ -1092,6 +1168,15 @@ function KartuC({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminGuru }) {
         </p>
         <p>Kumpulkan 10 roda gigi untuk membuka rel cepat dan menerima topi kepala stasiun.</p>
       </div>
+      <PanduanIkon
+        judul="Simbol stasiun"
+        butir={[
+          { ikon: "🚃", teks: "Gerbong puluhan" },
+          { ikon: "🚃", teks: "Gerbong satuan" },
+          { ikon: "1️⃣", teks: "Simpan atau pinjam 1" },
+          { ikon: "⚙️", teks: "10 roda gigi" },
+        ]}
+      />
       <MisiPenjagaKebun
         misi={MISI_MTK1_BAB10}
         idMisi={(indeks) => idKuis("C", indeks)}
@@ -1154,6 +1239,15 @@ function LembarEvaluasi({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminG
       <p className="mt-3 text-sm font-black text-[#1C01A5]">
         {lencana}. {pesan}
       </p>
+      <PanduanIkon
+        judul="Simbol soal"
+        butir={[
+          { ikon: "➕", teks: "Tambah" },
+          { ikon: "➖", teks: "Kurang" },
+          { ikon: "1️⃣", teks: "Simpan atau pinjam" },
+          { ikon: "🔍", teks: "Kata kunci cerita" },
+        ]}
+      />
       <div className="mt-4 space-y-4">
         <TulisBebas
           id={idKuis("D", 0)}
@@ -1307,14 +1401,14 @@ export default function NaskahMtk1Bab10({
           "Soal cerita: cari angka, cari kata kunci, tulis, lalu hitung. Terjual, jatuh, dan diberikan artinya kurang.",
         ])}
         poin={[
-          "Satuan dulu, puluhan kemudian.",
-          "Lebih dari sembilan? Simpan satu ke atas.",
-          "Simpanan kecil itu ikut dihitung.",
-          "Bawah lebih kecil? Boleh langsung kurang.",
-          "Bawah lebih besar? Pinjam dulu.",
-          "Sudah meminjam? Puluhan berkurang satu.",
-          "Cari angka, cari kata kunci, tulis, lalu hitung.",
-          "Terjual, jatuh, dan diberikan artinya kurang.",
+          "👉 Satuan dulu, puluhan kemudian.",
+          "1️⃣ Lebih dari sembilan? Simpan satu ke atas.",
+          "✏️ Simpanan kecil itu ikut dihitung.",
+          "✅ Bawah lebih kecil? Boleh langsung kurang.",
+          "🤝 Bawah lebih besar? Pinjam dulu.",
+          "⬇️ Sudah meminjam? Puluhan berkurang satu.",
+          "🔍 Cari angka, cari kata kunci, tulis, lalu hitung.",
+          "➖ Terjual, jatuh, dan diberikan artinya kurang.",
         ]}
         penutup="Satuan dulu, puluhan kemudian. Simpanan dan pinjaman tidak boleh dilupakan."
       />

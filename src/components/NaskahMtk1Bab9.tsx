@@ -7,6 +7,7 @@ import { useMemo, useState, type ReactNode } from "react";
 import HasilJawabanKuis from "@/components/HasilJawabanKuis";
 import TabelInfoGrafis from "@/components/TabelInfoGrafis";
 import KartuPoinPenting from "@/components/KartuPoinPenting";
+import PanduanIkon, { type ButirIkon } from "@/components/PanduanIkon";
 import KuisAkhirAdegan from "@/components/KuisAkhirAdegan";
 import KuisTulisKartu from "@/components/KuisTulisKartu";
 import SoalRekamSuara from "@/components/SoalRekamSuara";
@@ -112,11 +113,23 @@ const WARNA_DIALOG: Record<string, string> = {
   Kura: "border-[#F0AB00] bg-[#FFF8E8]",
 };
 
+const WAJAH_DIALOG: Record<string, string> = {
+  Sari: "👧",
+  Bima: "👦",
+  Danu: "👦",
+  Kura: "🐢",
+};
+
 function Dialog({ nama, anak }: { nama: string; anak: string }) {
   const warna = WARNA_DIALOG[nama] ?? "border-[#1C01A5]/15 bg-[#F8F7FF]";
   return (
     <article className={`rounded-2xl border-2 px-4 py-3 ${warna}`}>
-      <p className="text-xs font-black uppercase tracking-wide text-[#1C01A5]">{nama}</p>
+      <p className="flex items-center gap-2 text-xs font-black uppercase tracking-wide text-[#1C01A5]">
+        <span className="text-2xl leading-none" aria-hidden>
+          {WAJAH_DIALOG[nama] ?? "💬"}
+        </span>
+        {nama}
+      </p>
       <p className="mt-1 text-sm font-semibold leading-relaxed text-slate-700">{anak}</p>
     </article>
   );
@@ -124,7 +137,7 @@ function Dialog({ nama, anak }: { nama: string; anak: string }) {
 
 function Papan({ anak }: { anak: string }) {
   return (
-    <p className="rounded-2xl border-2 border-[#F0AB00] bg-[#FFF8E8] px-3 py-3 text-center text-lg font-black leading-snug text-[#1C01A5]">
+    <p className="rounded-2xl border-2 border-[#F0AB00] bg-[#FFF8E8] px-3 py-4 text-center text-xl font-black leading-snug text-[#1C01A5] sm:text-2xl">
       {anak}
     </p>
   );
@@ -197,6 +210,7 @@ function Adegan({
   kelas,
   kelamin,
   penjelasan,
+  simbol,
   children,
 }: {
   judul: string;
@@ -206,12 +220,14 @@ function Adegan({
   kelas?: string;
   kelamin?: KelaminGuru;
   penjelasan: string[];
+  simbol?: ButirIkon[];
   children: ReactNode;
 }) {
   return (
     <article className={`rounded-2xl border-2 px-4 py-3 ${warna}`}>
       <p className="text-xs font-black uppercase tracking-wide text-[#1C01A5]">{judul}</p>
       <TombolPenjelasan kelas={kelas} kelamin={kelamin} kalimat={penjelasan} />
+      {simbol ? <PanduanIkon butir={simbol} /> : null}
       {/* eslint-disable-next-line @next/next/no-img-element */}
       <img src={src} alt={alt} className="mt-3 w-full rounded-xl border border-[#1C01A5]/10 bg-[#fbf6ea] object-cover" />
       <div className="mt-3 space-y-2">{children}</div>
@@ -562,6 +578,11 @@ function KartuA({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminGuru }) {
       <div className="mt-4 space-y-4">
         <Adegan
           judul="Adegan 1 · Puluhan yang Hilang"
+          simbol={[
+            { ikon: "🟦", teks: "1 ikat = 10" },
+            { ikon: "🟨", teks: "1 lepas = 1" },
+            { ikon: "🔟", teks: "Puluhan di kiri" },
+          ]}
           warna="border-amber-200 bg-amber-50/40"
           src="/doodle-mtk/mtk-1-bab9-adegan-1.jpg"
           alt="Sari memegang papan 46. Empat ikat stik bertanda 10 dan enam stik lepas. Kura mengintip dari kardus."
@@ -599,6 +620,11 @@ function KartuA({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminGuru }) {
         </Adegan>
         <Adegan
           judul="Adegan 2 · Lomba Membaca Angka"
+          simbol={[
+            { ikon: "🔢", teks: "Baca puluhan dulu" },
+            { ikon: "0️⃣", teks: "Nol tidak disebut" },
+            { ikon: "🗣️", teks: "11–19 pakai belas" },
+          ]}
           warna="border-sky-200 bg-sky-50/50"
           src="/doodle-mtk/mtk-1-bab9-adegan-2.jpg"
           alt="Panggung kelas dengan kartu 27, 30, dan 90. Sari, Bima, dan Danu membaca. Kura menunjuk. Deret 10 sampai 100 di bawah."
@@ -633,6 +659,12 @@ function KartuA({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminGuru }) {
         </Adegan>
         <Adegan
           judul="Adegan 3 · Perang Tanda Buaya"
+          simbol={[
+            { ikon: "🐊", teks: "Mulut ke yang besar" },
+            { ikon: ">", teks: "Lebih besar" },
+            { ikon: "<", teks: "Lebih kecil" },
+            { ikon: "=", teks: "Sama banyak" },
+          ]}
           warna="border-emerald-200 bg-emerald-50/40"
           src="/doodle-mtk/mtk-1-bab9-adegan-3.jpg"
           alt="Dua keranjang kelereng berlabel 52 dan 57. Buaya berdiri di antara keduanya. Tulisan 52 kurang dari 57."
@@ -648,7 +680,7 @@ function KartuA({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminGuru }) {
           <Dialog nama="Danu" anak="Puluhannya sama-sama 5! Jadi bagaimana?" />
           <Dialog nama="Sari" anak="Kita lihat satuannya. 2 dan 7. Tujuh lebih besar!" />
           <Dialog nama="Kura" anak="Benar. Kalau puluhan sama, bandingkan satuannya. Kalau puluhan beda, puluhan yang menentukan." />
-          <Papan anak="52 < 57" />
+          <Papan anak="🐊 52 < 57" />
           <Dialog nama="Bima" anak="Jadi buaya selalu makan yang lebih banyak?" />
           <Dialog nama="Kura" anak="Selalu. Buaya tidak pernah salah pilih." />
           <KuisAkhirAdegan
@@ -670,6 +702,11 @@ function KartuA({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminGuru }) {
         </Adegan>
         <Adegan
           judul="Adegan 4 · Garis Bilangan Raksasa"
+          simbol={[
+            { ikon: "⬅️", teks: "Paling kecil" },
+            { ikon: "🔢", teks: "Puluhan dulu" },
+            { ikon: "➡️", teks: "Paling besar" },
+          ]}
           warna="border-orange-200 bg-orange-50/40"
           src="/doodle-mtk/mtk-1-bab9-adegan-4.jpg"
           alt="Lapangan sekolah dengan petak 0, 25, 38, 40, dan 100. Sari di 25, Bima di 38, Danu di 40. Urutan 25 kurang dari 38 kurang dari 40."
@@ -686,7 +723,7 @@ function KartuA({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminGuru }) {
           <Dialog nama="Bima" anak="Aku di angka 38. Siapa yang paling dekat dengan 25?" />
           <Dialog nama="Danu" anak="Aku! Karena 40 lebih jauh dari 25." />
           <Dialog nama="Kura" anak="Hati-hati. Untuk mengurutkan, kita lihat posisi dari yang paling kecil." />
-          <Papan anak="25 < 38 < 40" />
+          <Papan anak="⬅️ 25 < 38 < 40 ➡️" />
           <Dialog nama="Bima" anak="Jadi urutannya: Sari, aku, lalu Danu!" />
           <Dialog nama="Kura" anak="Tepat! Dari kecil ke besar." />
           <KuisAkhirAdegan
@@ -703,6 +740,11 @@ function KartuA({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminGuru }) {
         </Adegan>
         <Adegan
           judul="Adegan 5 · Rahasia Angka Terbalik"
+          simbol={[
+            { ikon: "2️⃣8️⃣", teks: "28 = 20 + 8" },
+            { ikon: "🪞", teks: "Jangan dibalik" },
+            { ikon: "8️⃣2️⃣", teks: "82 = 80 + 2" },
+          ]}
           warna="border-fuchsia-200 bg-fuchsia-50/40"
           src="/doodle-mtk/mtk-1-bab9-adegan-5.jpg"
           alt="Papan tulis menunjukkan 28 sama dengan 20 tambah 8, dan 82 sama dengan 80 tambah 2. Cermin memantulkan angka yang tertukar."
@@ -718,7 +760,7 @@ function KartuA({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminGuru }) {
           <Dialog nama="Bima" anak="Aku pernah salah tulis 82 jadi 28, dan Bu Guru bilang salah besar." />
           <Dialog nama="Sari" anak="Karena tempatnya bertukar!" />
           <Dialog nama="Kura" anak="Pada 28, angka 2 ada di rumah puluhan. Artinya 20. Pada 82, angka 2 ada di rumah satuan. Artinya cuma 2." />
-          <Papan anak="28 = 20 + 8 · 82 = 80 + 2" />
+          <Papan anak="🪞 28 = 20 + 8 · 82 = 80 + 2" />
           <Dialog nama="Danu" anak="Jadi satu angka pindah rumah, nilainya bisa berubah banyak!" />
           <Dialog nama="Kura" anak="Itu sebabnya menulis angka harus dari puluhan dulu. Jangan dibalik!" />
           <KuisAkhirAdegan
@@ -816,6 +858,13 @@ function KartuB({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminGuru }) {
       <div className="mt-4 space-y-4">
         <article className="rounded-2xl border-2 border-[#F0AB00]/50 bg-[#FFFDF6] p-4">
           <h5 className="text-base font-black text-[#1C01A5]">Sub-bab 1 · Membaca dan Menulis Bilangan</h5>
+          <PanduanIkon
+            butir={[
+              { ikon: "🟦", teks: "Rumah puluhan" },
+              { ikon: "🟨", teks: "Rumah satuan" },
+              { ikon: "✍️", teks: "Tulis kiri dulu" },
+            ]}
+          />
           <TombolPenjelasan
             kelas={kelas}
             kelamin={kelamin}
@@ -850,6 +899,13 @@ function KartuB({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminGuru }) {
         </article>
         <article className="rounded-2xl border-2 border-[#F0AB00]/50 bg-[#FFFDF6] p-4">
           <h5 className="text-base font-black text-[#1C01A5]">Sub-bab 2 · Nilai Tempat</h5>
+          <PanduanIkon
+            butir={[
+              { ikon: "5️⃣", teks: "Angka yang tertulis" },
+              { ikon: "🟦", teks: "× 10 kalau di kiri" },
+              { ikon: "🟨", teks: "× 1 kalau di kanan" },
+            ]}
+          />
           <TombolPenjelasan
             kelas={kelas}
             kelamin={kelamin}
@@ -884,6 +940,14 @@ function KartuB({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminGuru }) {
         </article>
         <article className="rounded-2xl border-2 border-[#F0AB00]/50 bg-[#FFFDF6] p-4">
           <h5 className="text-base font-black text-[#1C01A5]">Sub-bab 3 · Membandingkan Bilangan</h5>
+          <PanduanIkon
+            butir={[
+              { ikon: "🐊", teks: "Lihat puluhan dulu" },
+              { ikon: ">", teks: "Lebih besar" },
+              { ikon: "<", teks: "Lebih kecil" },
+              { ikon: "=", teks: "Sama" },
+            ]}
+          />
           <TombolPenjelasan
             kelas={kelas}
             kelamin={kelamin}
@@ -922,6 +986,13 @@ function KartuB({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminGuru }) {
         </article>
         <article className="rounded-2xl border-2 border-[#F0AB00]/50 bg-[#FFFDF6] p-4">
           <h5 className="text-base font-black text-[#1C01A5]">Sub-bab 4 · Mengurutkan Bilangan</h5>
+          <PanduanIkon
+            butir={[
+              { ikon: "1️⃣", teks: "Angka kecil di bawah" },
+              { ikon: "🪜", teks: "Naik ke yang besar" },
+              { ikon: "🔟", teks: "Puluhan yang menentukan" },
+            ]}
+          />
           <TombolPenjelasan
             kelas={kelas}
             kelamin={kelamin}
@@ -1037,6 +1108,15 @@ function KartuC({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminGuru }) {
         </p>
         <p>Kumpulkan 10 koin pasar untuk membuka gudang emas dan menerima topi pedagang.</p>
       </div>
+      <PanduanIkon
+        judul="Simbol pasar"
+        butir={[
+          { ikon: "📦", teks: "1 peti = 10" },
+          { ikon: "🍊", teks: "1 lepas = 1" },
+          { ikon: "🐊", teks: "Bandingkan puluhan" },
+          { ikon: "🪙", teks: "10 koin membuka gudang" },
+        ]}
+      />
       <MisiPenjagaKebun
         misi={MISI_MTK1_BAB9}
         idMisi={(indeks) => idKuis("C", indeks)}
@@ -1091,6 +1171,15 @@ function LembarEvaluasi({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminG
       <p className="mt-3 text-sm font-black text-[#1C01A5]">
         {lencana}. {pesan}
       </p>
+      <PanduanIkon
+        judul="Simbol soal"
+        butir={[
+          { ikon: "🟦", teks: "Puluhan" },
+          { ikon: "🟨", teks: "Satuan" },
+          { ikon: "🐊", teks: "Bandingkan" },
+          { ikon: "🪜", teks: "Urutkan" },
+        ]}
+      />
       <div className="mt-4 space-y-4">
         <TulisBebas
           id={idKuis("D", 0)}
@@ -1242,15 +1331,15 @@ export default function NaskahMtk1Bab9({
           "Angka yang sama di tempat yang beda punya nilai yang beda.",
         ])}
         poin={[
-          "Sepuluh diikat jadi satu puluhan.",
-          "Kiri puluhan, kanan satuan.",
-          "Angka di rumah puluhan bernilai 10 kali.",
-          "Puluhan beda? Puluhan yang menang.",
-          "Puluhan sama? Lihat satuannya.",
-          "Urutkan puluhan dulu, lalu rapikan satuan.",
-          "Belasan hanya 11 sampai 19.",
-          "Yang berakhir nol, tidak usah disebut satuannya.",
-          "Angka sama, tempat beda, nilai beda.",
+          "🟦 Sepuluh diikat jadi satu puluhan.",
+          "⬅️ Kiri puluhan, kanan satuan.",
+          "✖️ Angka di rumah puluhan bernilai 10 kali.",
+          "🐊 Puluhan beda? Puluhan yang menang.",
+          "🟨 Puluhan sama? Lihat satuannya.",
+          "🪜 Urutkan puluhan dulu, lalu rapikan satuan.",
+          "🗣️ Belasan hanya 11 sampai 19.",
+          "0️⃣ Yang berakhir nol, tidak usah disebut satuannya.",
+          "🪞 Angka sama, tempat beda, nilai beda.",
         ]}
         penutup="Sepuluh diikat jadi satu puluhan. Kiri puluhan, kanan satuan."
       />
