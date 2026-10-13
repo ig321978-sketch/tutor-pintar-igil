@@ -111,6 +111,54 @@ D) Tidak ada`,
           pertanyaan: "Ada satu ikat dan lima bendera lepas. Semuanya berapa?",
           alias: ["lima belas", "15"],
         },
+        {
+          pertanyaan: "Pak RT butuh berapa bendera?",
+          alias: ["20", "dua puluh"],
+        },
+        {
+          pertanyaan: "Tuliskan angka 20.",
+          alias: ["20", "dua puluh"],
+        },
+        {
+          pertanyaan: "Bendera diikat setiap berapa?",
+          alias: ["10", "sepuluh"],
+        },
+        {
+          pertanyaan: "Tuliskan angka sepuluh.",
+          alias: ["10", "sepuluh"],
+        },
+        {
+          pertanyaan: "Satu ikat isinya berapa bendera?",
+          alias: ["10", "sepuluh"],
+        },
+        {
+          pertanyaan: "Tuliskan 1 ikat = 10.",
+          alias: ["1 ikat = 10", "1ikat=10"],
+        },
+        {
+          pertanyaan: "Satu ikat dan tiga bendera lepas. Semuanya berapa?",
+          alias: ["13", "tiga belas"],
+        },
+        {
+          pertanyaan: "Tuliskan angka 13.",
+          alias: ["13", "tiga belas"],
+        },
+        {
+          pertanyaan: "Tiga belas sama dengan sepuluh dan berapa?",
+          alias: ["3", "tiga"],
+        },
+        {
+          pertanyaan: "Tuliskan nama angka 11.",
+          alias: ["sebelas"],
+        },
+        {
+          pertanyaan: "Dua ikat bendera sama dengan berapa?",
+          alias: ["20", "dua puluh"],
+        },
+        {
+          pertanyaan: "Tuliskan 2 ikat = 20.",
+          alias: ["2 ikat = 20", "2ikat=20"],
+        },
       ],
       voice: [
         [

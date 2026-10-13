@@ -113,6 +113,38 @@ D) 13`,
             "Ada 2 kepiting, lalu datang 4 kepiting lagi. Jadi berapa semuanya?",
           alias: ["6", "enam"],
         },
+        {
+          pertanyaan: "Lala, Bima, dan Raka tiba di pantai. Ada berapa anak?",
+          alias: ["3", "tiga"],
+        },
+        {
+          pertanyaan: "Tuliskan angka banyak anak itu.",
+          alias: ["3", "tiga"],
+        },
+        {
+          pertanyaan: "Lala punya 3 kerang. Bima punya 2 kerang. Semuanya berapa?",
+          alias: ["5", "lima"],
+        },
+        {
+          pertanyaan: "Tuliskan 3 + 2 = 5.",
+          alias: ["3 + 2 = 5", "3+2=5"],
+        },
+        {
+          pertanyaan: "Tanda tambah artinya apa?",
+          alias: ["digabung", "menggabungkan", "tambah"],
+        },
+        {
+          pertanyaan: "Tuliskan 2 + 1 = 3.",
+          alias: ["2 + 1 = 3", "2+1=3"],
+        },
+        {
+          pertanyaan: "Istana pasir punya 4 bendera, lalu ditambah 3. Berapa semuanya?",
+          alias: ["7", "tujuh"],
+        },
+        {
+          pertanyaan: "Tuliskan 4 + 3 = 7.",
+          alias: ["4 + 3 = 7", "4+3=7"],
+        },
       ],
       voice: [
         [

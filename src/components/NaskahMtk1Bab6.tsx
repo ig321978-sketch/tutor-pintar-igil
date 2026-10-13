@@ -6,6 +6,7 @@ import { TEMA_MTK1_BAB6 } from "@/lib/tema-misi-mtk-1";
 import { useEffect, useMemo, useRef, useState, type ReactNode } from "react";
 import HasilJawabanKuis from "@/components/HasilJawabanKuis";
 import TabelInfoGrafis from "@/components/TabelInfoGrafis";
+import KuisAkhirAdegan from "@/components/KuisAkhirAdegan";
 import KuisTulisKartu from "@/components/KuisTulisKartu";
 import SoalRekamSuara from "@/components/SoalRekamSuara";
 import TombolVoiceMateriPai1 from "@/components/TombolVoiceMateriPai1";
@@ -517,6 +518,16 @@ function KartuA({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminGuru }) {
           <Dialog nama="Bayu" anak="Wah, tingginya 18 kaki. Kita tidak bisa memanjat." />
           <Dialog nama="Naya" anak="Kalau kursi kita susun, kita bisa sampai!" />
           <Dialog nama="Toki" anak="Nama aku Toki! Jam ajaib ini membuat angka berjalan maju dan mundur!" />
+          <KuisAkhirAdegan
+            idSuara={idKuis("A", 1)}
+            idKanvas={idKuis("A", 2)}
+            pertanyaanSuara="Anak kucing ada di ketinggian berapa kaki?"
+            aliasSuara={["18", "delapan belas"]}
+            petunjukSuara="Ucapkan angkanya."
+            pertanyaanKanvas="Tuliskan angka 18."
+            aliasKanvas={["18", "delapan belas"]}
+            konteksKanvas="Anak kucing ada di angka 18."
+          />
         </Adegan>
         <Adegan
           judul="Adegan 1 · Menghitung ketinggian pohon"
@@ -531,6 +542,16 @@ function KartuA({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminGuru }) {
           <Dialog nama="Bayu" anak="Ada 6 langkah lagi!" />
           <p className="text-center text-sm font-black text-[#1C01A5]">12 → 13 → 14 → 15 → 16 → 17 → 18</p>
           <p className="text-center text-sm font-black text-[#1C01A5]">12 + 6 = 18</p>
+          <KuisAkhirAdegan
+            idSuara={idKuis("A", 3)}
+            idKanvas={idKuis("A", 4)}
+            pertanyaanSuara="Dari 12 sampai 18, ada berapa langkah?"
+            aliasSuara={["6", "enam"]}
+            petunjukSuara="Ucapkan angkanya."
+            pertanyaanKanvas="Tuliskan 12 + 6 = 18."
+            aliasKanvas={["12 + 6 = 18", "12+6=18"]}
+            konteksKanvas="Dua belas ditambah enam sama dengan delapan belas."
+          />
         </Adegan>
         <Adegan
           judul="Adegan 2 · Rahasia dekomposisi"
@@ -542,6 +563,16 @@ function KartuA({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminGuru }) {
           <Dialog nama="Naya" anak="Seperti ikatan dan yang lepas?" />
           <Dialog nama="Toki" anak="Tepat! 14 = 10 + 4. Sepuluh dan empat." />
           <p className="text-sm font-black text-[#1C01A5]">14 → 10 + 4. 17 → 10 + 7.</p>
+          <KuisAkhirAdegan
+            idSuara={idKuis("A", 5)}
+            idKanvas={idKuis("A", 6)}
+            pertanyaanSuara="Empat belas sama dengan sepuluh tambah berapa?"
+            aliasSuara={["4", "empat"]}
+            petunjukSuara="Ucapkan angkanya."
+            pertanyaanKanvas="Tuliskan 14 = 10 + 4."
+            aliasKanvas={["14 = 10 + 4", "14=10+4"]}
+            konteksKanvas="Empat belas dipecah jadi sepuluh dan empat."
+          />
         </Adegan>
         <Adegan
           judul="Adegan 3 · Kursi susun, hitung maju"
@@ -554,6 +585,16 @@ function KartuA({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminGuru }) {
           <Dialog nama="Bayu" anak="8 + 7… ayo mulai dari 8 dan hitung maju 7 kali!" />
           <Dialog nama="Semua" anak="Sembilan, sepuluh, sebelas, dua belas, tiga belas, empat belas, lima belas!" />
           <p className="text-center text-sm font-black text-[#1C01A5]">8 + 7 = 15</p>
+          <KuisAkhirAdegan
+            idSuara={idKuis("A", 7)}
+            idKanvas={idKuis("A", 8)}
+            pertanyaanSuara="Delapan kursi ditambah tujuh kursi. Semuanya berapa?"
+            aliasSuara={["15", "lima belas"]}
+            petunjukSuara="Ucapkan hasilnya."
+            pertanyaanKanvas="Tuliskan 8 + 7 = 15."
+            aliasKanvas={["8 + 7 = 15", "8+7=15"]}
+            konteksKanvas="Delapan ditambah tujuh sama dengan lima belas."
+          />
         </Adegan>
         <Adegan
           judul="Adegan 4 · Isi dulu ke sepuluh"
@@ -566,6 +607,16 @@ function KartuA({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminGuru }) {
           <Dialog nama="Bayu" anak="Sisanya 7 – 2 = 5." />
           <Dialog nama="Kiki" anak="Jadi 10 + 5 = 15!" />
           <p className="text-sm font-black text-[#1C01A5]">8 + 7 = 8 + 2 + 5 = 10 + 5 = 15</p>
+          <KuisAkhirAdegan
+            idSuara={idKuis("A", 9)}
+            idKanvas={idKuis("A", 10)}
+            pertanyaanSuara="Setelah diisi sampai sepuluh, sisa kursi yang ditambahkan berapa?"
+            aliasSuara={["5", "lima"]}
+            petunjukSuara="Ucapkan angkanya."
+            pertanyaanKanvas="Tuliskan 10 + 5 = 15."
+            aliasKanvas={["10 + 5 = 15", "10+5=15"]}
+            konteksKanvas="Sepuluh ditambah lima sama dengan lima belas."
+          />
         </Adegan>
         <Adegan
           judul="Adegan 5 · Kursi roboh, hitung mundur"
@@ -578,6 +629,16 @@ function KartuA({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminGuru }) {
           <Dialog nama="Bayu" anak="Hitung mundur dari 15! Empat belas, tiga belas, dua belas, sebelas!" />
           <Dialog nama="Kiki" anak="Sisa 11 kursi!" />
           <p className="text-center text-sm font-black text-[#1C01A5]">15 – 4 = 11</p>
+          <KuisAkhirAdegan
+            idSuara={idKuis("A", 11)}
+            idKanvas={idKuis("A", 12)}
+            pertanyaanSuara="Ada 15 kursi. Yang jatuh 4. Sisa berapa?"
+            aliasSuara={["11", "sebelas"]}
+            petunjukSuara="Ucapkan sisanya."
+            pertanyaanKanvas="Tuliskan 15 - 4 = 11."
+            aliasKanvas={["15 - 4 = 11", "15-4=11"]}
+            konteksKanvas="Lima belas dikurangi empat sama dengan sebelas."
+          />
         </Adegan>
         <Adegan
           judul="Adegan 6 · Dekomposisi untuk kurang"
@@ -590,6 +651,16 @@ function KartuA({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminGuru }) {
           <Dialog nama="Bayu" anak="10 – 3 = 7!" />
           <Dialog nama="Kiki" anak="Jadi 16 – 9 = 7!" />
           <p className="text-sm font-black text-[#1C01A5]">16 – 9 = 16 – 6 – 3 = 10 – 3 = 7</p>
+          <KuisAkhirAdegan
+            idSuara={idKuis("A", 13)}
+            idKanvas={idKuis("A", 14)}
+            pertanyaanSuara="Enam belas dikurangi sembilan. Hasilnya berapa?"
+            aliasSuara={["7", "tujuh"]}
+            petunjukSuara="Ucapkan hasilnya."
+            pertanyaanKanvas="Tuliskan 16 - 9 = 7."
+            aliasKanvas={["16 - 9 = 7", "16-9=7"]}
+            konteksKanvas="Enam belas dikurangi sembilan sama dengan tujuh."
+          />
         </Adegan>
         <Adegan
           judul="Adegan 7 · Anak kucing selamat"
@@ -602,6 +673,16 @@ function KartuA({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminGuru }) {
           <Dialog nama="Naya" anak="Hitung maju, hitung mundur, dan pecah angka!" />
           <Dialog nama="Toki" anak="Kalian hebat! Angka selalu bisa berjalan maju dan mundur!" />
           <Dialog nama="Semua" anak="Horeee! Anak kucing selamat!" />
+          <KuisAkhirAdegan
+            idSuara={idKuis("A", 15)}
+            idKanvas={idKuis("A", 16)}
+            pertanyaanSuara="Ada berapa cara yang dipakai: hitung maju, hitung mundur, dan pecah angka?"
+            aliasSuara={["3", "tiga"]}
+            petunjukSuara="Ucapkan angkanya."
+            pertanyaanKanvas="Tuliskan salah satu caranya: maju."
+            aliasKanvas={["maju", "hitung maju"]}
+            konteksKanvas="Salah satu caranya adalah hitung maju."
+          />
         </Adegan>
       </div>
       <div className="mt-6 border-t-2 border-[#1C01A5]/10 pt-5">

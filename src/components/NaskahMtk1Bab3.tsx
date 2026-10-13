@@ -5,6 +5,7 @@ import { TEMA_MTK1_BAB3 } from "@/lib/tema-misi-mtk-1";
 
 import { useEffect, useMemo, useRef, useState, type ReactNode } from "react";
 import HasilJawabanKuis from "@/components/HasilJawabanKuis";
+import KuisAkhirAdegan from "@/components/KuisAkhirAdegan";
 import KuisTulisKartu from "@/components/KuisTulisKartu";
 import SoalRekamSuara from "@/components/SoalRekamSuara";
 import GambarCerita from "@/components/GambarCerita";
@@ -441,6 +442,16 @@ function KartuA({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminGuru }) {
             <IkonUlang ikon="🎈" jumlah={8} ukuran="text-3xl" />
           </div>
         </article>
+        <KuisAkhirAdegan
+          idSuara={idKuis("A", 1)}
+          idKanvas={idKuis("A", 2)}
+          pertanyaanSuara="Berapa balon yang siap untuk pesta?"
+          aliasSuara={["8", "delapan"]}
+          petunjukSuara="Ucapkan angkanya."
+          pertanyaanKanvas="Tuliskan angka banyak balon itu."
+          aliasKanvas={["8", "delapan"]}
+          konteksKanvas="Ada 8 balon. Lambangnya 8."
+        />
         <Dialog nama="Nia" anak="Aduh! Balonnya terbang!" />
         <Dialog nama="Fajar" anak="Ada 3 yang lepas!" />
         <Dialog nama="Miko" anak="Sekarang tinggal berapa, ya?" />
@@ -457,6 +468,16 @@ function KartuA({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminGuru }) {
         </article>
         <p className="text-center text-4xl font-black text-[#1C01A5]">8 - 3 = 5</p>
         <Dialog nama="Miko" anak="Benar! Dulu 8, yang hilang 3, sisa 5." />
+        <KuisAkhirAdegan
+          idSuara={idKuis("A", 3)}
+          idKanvas={idKuis("A", 4)}
+          pertanyaanSuara="Dulu ada 8 balon. Yang lepas 3. Sisa berapa?"
+          aliasSuara={["5", "lima"]}
+          petunjukSuara="Ucapkan sisanya."
+          pertanyaanKanvas="Tuliskan 8 - 3 = 5."
+          aliasKanvas={["8 - 3 = 5", "8-3=5"]}
+          konteksKanvas="Delapan kurang tiga sama dengan lima."
+        />
         <Dialog nama="Fajar" anak="Tanda satu garis itu apa?" />
         <Dialog nama="Miko" anak="Itu tanda kurang. Artinya diambil atau dipisahkan!" />
         <Dialog nama="Nia" anak="Kalau begitu, jumlahnya jadi lebih sedikit." />
@@ -467,12 +488,42 @@ function KartuA({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminGuru }) {
             ➖
           </p>
         </article>
+        <KuisAkhirAdegan
+          idSuara={idKuis("A", 5)}
+          idKanvas={idKuis("A", 6)}
+          pertanyaanSuara="Tanda kurang artinya apa?"
+          aliasSuara={["diambil", "dipisahkan"]}
+          petunjukSuara="Ucapkan: diambil."
+          pertanyaanKanvas="Tuliskan tanda kurang."
+          aliasKanvas={["-", "kurang"]}
+          konteksKanvas="Tanda kurang artinya diambil atau dipisahkan."
+        />
         <Dialog nama="Fajar" anak="Aku makan 2 potong kue, ya!" />
         <Dialog nama="Miko" anak="Ayo hitung mundur dari 6: lima… empat!" />
         <p className="text-center text-4xl font-black text-[#1C01A5]">6 - 2 = 4</p>
+        <KuisAkhirAdegan
+          idSuara={idKuis("A", 7)}
+          idKanvas={idKuis("A", 8)}
+          pertanyaanSuara="Kue ada 6. Fajar makan 2. Sisa berapa?"
+          aliasSuara={["4", "empat"]}
+          petunjukSuara="Ucapkan sisanya."
+          pertanyaanKanvas="Tuliskan 6 - 2 = 4."
+          aliasKanvas={["6 - 2 = 4", "6-2=4"]}
+          konteksKanvas="Enam kue dikurangi dua sama dengan empat."
+        />
         <Dialog nama="Nia" anak="Ada 9 topi. Tamu mengambil 4 topi." />
         <Dialog nama="Miko" anak="Hitung mundur dari 9: delapan, tujuh, enam… lima!" />
         <p className="text-center text-4xl font-black text-[#1C01A5]">9 - 4 = 5</p>
+        <KuisAkhirAdegan
+          idSuara={idKuis("A", 9)}
+          idKanvas={idKuis("A", 10)}
+          pertanyaanSuara="Ada 9 topi. Tamu mengambil 4. Sisa berapa?"
+          aliasSuara={["5", "lima"]}
+          petunjukSuara="Ucapkan sisanya."
+          pertanyaanKanvas="Tuliskan 9 - 4 = 5."
+          aliasKanvas={["9 - 4 = 5", "9-4=5"]}
+          konteksKanvas="Sembilan topi dikurangi empat sama dengan lima."
+        />
       </div>
       <div className="mt-6 border-t-2 border-[#1C01A5]/10 pt-5">
         <p className="text-base font-extrabold text-[#1C01A5]">QUIZ:</p>

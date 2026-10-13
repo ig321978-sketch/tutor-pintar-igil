@@ -5,6 +5,7 @@ import { TEMA_MTK1_BAB5 } from "@/lib/tema-misi-mtk-1";
 
 import { useEffect, useMemo, useRef, useState, type ReactNode } from "react";
 import HasilJawabanKuis from "@/components/HasilJawabanKuis";
+import KuisAkhirAdegan from "@/components/KuisAkhirAdegan";
 import KuisTulisKartu from "@/components/KuisTulisKartu";
 import SoalRekamSuara from "@/components/SoalRekamSuara";
 import TombolVoiceMateriPai1 from "@/components/TombolVoiceMateriPai1";
@@ -529,6 +530,16 @@ function KartuA({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminGuru }) {
           <Dialog nama="Pak RT" anak="Anak-anak, tolong pasang bendera kecil di sepanjang pagar. Kita butuh dua puluh bendera!" />
           <Dialog nama="Ojan" anak="Dua puluh?! Aku cuma bisa menghitung sampai sepuluh…" />
           <Dialog nama="Pipit" anak="Jangan khawatir! Rahasianya adalah ikatan ajaib!" />
+          <KuisAkhirAdegan
+            idSuara={idKuis("A", 1)}
+            idKanvas={idKuis("A", 2)}
+            pertanyaanSuara="Pak RT butuh berapa bendera?"
+            aliasSuara={["20", "dua puluh"]}
+            petunjukSuara="Ucapkan angkanya."
+            pertanyaanKanvas="Tuliskan angka 20."
+            aliasKanvas={["20", "dua puluh"]}
+            konteksKanvas="Pagar butuh 20 bendera."
+          />
         </Adegan>
         <Adegan
           judul="Adegan 1 · Tumpukan bendera berantakan"
@@ -539,6 +550,16 @@ function KartuA({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminGuru }) {
           <Dialog nama="Dimas" anak="Satu, dua, tiga… eh, yang ini sudah belum, ya?" />
           <Dialog nama="Ojan" anak="Aku jadi bingung!" />
           <Dialog nama="Pipit" anak="Kalau berantakan, gampang salah. Ayo kita ikat setiap sepuluh!" />
+          <KuisAkhirAdegan
+            idSuara={idKuis("A", 3)}
+            idKanvas={idKuis("A", 4)}
+            pertanyaanSuara="Bendera diikat setiap berapa?"
+            aliasSuara={["10", "sepuluh"]}
+            petunjukSuara="Ucapkan angkanya."
+            pertanyaanKanvas="Tuliskan angka sepuluh."
+            aliasKanvas={["10", "sepuluh"]}
+            konteksKanvas="Setiap ikatan berisi 10 bendera."
+          />
         </Adegan>
         <Adegan
           judul="Adegan 2 · Ikatan ajaib pertama"
@@ -549,6 +570,16 @@ function KartuA({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminGuru }) {
           <Dialog nama="Tari" anak="Satu, dua, tiga… sembilan, sepuluh!" />
           <Dialog nama="Pipit" anak="Ikat! Sekarang ini 1 ikat isinya 10!" />
           <p className="rounded-xl bg-white px-3 py-2 text-sm font-black text-[#1C01A5]">🎀 1 ikat = 10 bendera = 1 puluhan</p>
+          <KuisAkhirAdegan
+            idSuara={idKuis("A", 5)}
+            idKanvas={idKuis("A", 6)}
+            pertanyaanSuara="Satu ikat isinya berapa bendera?"
+            aliasSuara={["10", "sepuluh"]}
+            petunjukSuara="Ucapkan angkanya."
+            pertanyaanKanvas="Tuliskan 1 ikat = 10."
+            aliasKanvas={["1 ikat = 10", "1ikat=10"]}
+            konteksKanvas="Satu ikatan sama dengan sepuluh bendera."
+          />
         </Adegan>
         <Adegan
           judul="Adegan 3 · Lahirnya angka belasan"
@@ -564,6 +595,16 @@ function KartuA({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminGuru }) {
             <span className="text-amber-500">3</span>
           </p>
           <p className="text-sm font-semibold text-slate-700">Angka 1 artinya satu ikat. Angka 3 artinya tiga bendera lepas.</p>
+          <KuisAkhirAdegan
+            idSuara={idKuis("A", 7)}
+            idKanvas={idKuis("A", 8)}
+            pertanyaanSuara="Satu ikat dan tiga bendera lepas. Semuanya berapa?"
+            aliasSuara={["13", "tiga belas"]}
+            petunjukSuara="Ucapkan angkanya."
+            pertanyaanKanvas="Tuliskan angka 13."
+            aliasKanvas={["13", "tiga belas"]}
+            konteksKanvas="Satu puluhan dan tiga satuan sama dengan 13."
+          />
         </Adegan>
         <Adegan
           judul="Adegan 4 · Kata belas yang ajaib"
@@ -575,6 +616,16 @@ function KartuA({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminGuru }) {
           <Dialog nama="Pipit" anak="Belas artinya sepuluh lebih sedikit. Tiga belas sama dengan sepuluh dan tiga." />
           <Dialog nama="Tari" anak="Tapi 11 bukan satu belas. Namanya sebelas!" />
           <Dialog nama="Pipit" anak="Betul! Sebelas itu angka istimewa." />
+          <KuisAkhirAdegan
+            idSuara={idKuis("A", 9)}
+            idKanvas={idKuis("A", 10)}
+            pertanyaanSuara="Tiga belas sama dengan sepuluh dan berapa?"
+            aliasSuara={["3", "tiga"]}
+            petunjukSuara="Ucapkan angkanya."
+            pertanyaanKanvas="Tuliskan nama angka 11."
+            aliasKanvas={["sebelas"]}
+            konteksKanvas="Angka 11 dibaca sebelas, bukan satu belas."
+          />
         </Adegan>
         <Adegan
           judul="Adegan 5 · Dua ikat sama dengan dua puluh"
@@ -586,6 +637,16 @@ function KartuA({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminGuru }) {
           <Dialog nama="Pipit" anak="Dua ikat, lepasnya nol. Itu 20, dua puluh!" />
           <p className="text-center text-2xl font-black text-[#1C01A5]">🎀🎀 = 20</p>
           <Dialog nama="Semua" anak="Horeee! Bendera untuk 17 Agustus sudah siap! Merdeka!" />
+          <KuisAkhirAdegan
+            idSuara={idKuis("A", 11)}
+            idKanvas={idKuis("A", 12)}
+            pertanyaanSuara="Dua ikat bendera sama dengan berapa?"
+            aliasSuara={["20", "dua puluh"]}
+            petunjukSuara="Ucapkan angkanya."
+            pertanyaanKanvas="Tuliskan 2 ikat = 20."
+            aliasKanvas={["2 ikat = 20", "2ikat=20"]}
+            konteksKanvas="Dua ikatan penuh sama dengan 20."
+          />
         </Adegan>
       </div>
       <div className="mt-6 border-t-2 border-[#1C01A5]/10 pt-5">

@@ -111,6 +111,62 @@ D) 4 jengkal`,
           pertanyaan: "Tali ini panjangnya berapa langkah?",
           alias: ["tujuh langkah", "7"],
         },
+        {
+          pertanyaan: "Siapa yang mengukur tanpa penggaris?",
+          alias: ["kodok"],
+        },
+        {
+          pertanyaan: "Tuliskan nama Kodok.",
+          alias: ["kodok"],
+        },
+        {
+          pertanyaan: "Kalau mau tahu yang sebenarnya, kita harus apa?",
+          alias: ["mengukur", "ukur"],
+        },
+        {
+          pertanyaan: "Tuliskan kata mengukur.",
+          alias: ["mengukur"],
+        },
+        {
+          pertanyaan: "Benang Ari panjangnya berapa jengkal?",
+          alias: ["7", "tujuh"],
+        },
+        {
+          pertanyaan: "Tuliskan angka 7.",
+          alias: ["7", "tujuh"],
+        },
+        {
+          pertanyaan: "Mila mengukur benang yang sama. Dia dapat berapa jengkal?",
+          alias: ["5", "lima"],
+        },
+        {
+          pertanyaan: "Tuliskan angka 1, karena pengukurnya harus satu orang.",
+          alias: ["1", "satu"],
+        },
+        {
+          pertanyaan: "Layang-layang yang paling panjang berapa jengkal?",
+          alias: ["8", "delapan"],
+        },
+        {
+          pertanyaan: "Tuliskan 3 < 5 < 8.",
+          alias: ["3 < 5 < 8", "3<5<8"],
+        },
+        {
+          pertanyaan: "Jalan menuju panggung berapa langkah Kodok?",
+          alias: ["10", "sepuluh"],
+        },
+        {
+          pertanyaan: "Tuliskan angka 10.",
+          alias: ["10", "sepuluh"],
+        },
+        {
+          pertanyaan: "Siapa pemilik layang-layang terpanjang?",
+          alias: ["mila"],
+        },
+        {
+          pertanyaan: "Tuliskan nama Mila.",
+          alias: ["mila"],
+        },
       ],
       voice: [
         [

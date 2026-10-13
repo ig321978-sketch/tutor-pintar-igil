@@ -111,6 +111,54 @@ D) Sama banyak`,
           pertanyaan: "Hewan apa yang paling banyak di diagram ini?",
           alias: ["kelinci"],
         },
+        {
+          pertanyaan: "Rahasia Tupi: apa yang dilakukan dulu?",
+          alias: ["kelompokkan", "kelompok"],
+        },
+        {
+          pertanyaan: "Tuliskan kata kelompokkan.",
+          alias: ["kelompokkan", "kelompok"],
+        },
+        {
+          pertanyaan: "Gelas dimasukkan ke kotak apa?",
+          alias: ["gelas"],
+        },
+        {
+          pertanyaan: "Tuliskan kata gelas.",
+          alias: ["gelas"],
+        },
+        {
+          pertanyaan: "Sendok ada berapa?",
+          alias: ["8", "delapan"],
+        },
+        {
+          pertanyaan: "Tuliskan angka banyak gelas.",
+          alias: ["6", "enam"],
+        },
+        {
+          pertanyaan: "Baris yang paling panjang adalah benda apa?",
+          alias: ["sendok"],
+        },
+        {
+          pertanyaan: "Setiap gambar sama dengan berapa benda? Tuliskan angkanya.",
+          alias: ["1", "satu"],
+        },
+        {
+          pertanyaan: "Benda apa yang paling sedikit?",
+          alias: ["piring"],
+        },
+        {
+          pertanyaan: "Tuliskan 8 - 4 = 4.",
+          alias: ["8 - 4 = 4", "8-4=4"],
+        },
+        {
+          pertanyaan: "Siapa yang mengajari Sari dan Adi?",
+          alias: ["tupi"],
+        },
+        {
+          pertanyaan: "Tuliskan nama Tupi.",
+          alias: ["tupi"],
+        },
       ],
       voice: [
         [

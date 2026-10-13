@@ -6,6 +6,7 @@ import { TEMA_MTK1_BAB8 } from "@/lib/tema-misi-mtk-1";
 import { useEffect, useMemo, useRef, useState, type ReactNode } from "react";
 import HasilJawabanKuis from "@/components/HasilJawabanKuis";
 import TabelInfoGrafis from "@/components/TabelInfoGrafis";
+import KuisAkhirAdegan from "@/components/KuisAkhirAdegan";
 import KuisTulisKartu from "@/components/KuisTulisKartu";
 import SoalRekamSuara from "@/components/SoalRekamSuara";
 import TombolVoiceMateriPai1 from "@/components/TombolVoiceMateriPai1";
@@ -547,6 +548,16 @@ function KartuA({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminGuru }) {
           <Dialog nama="Sari" anak="Bu Kantin pasti marah. Kita tidak tahu mau mulai dari mana." />
           <Dialog nama="Adi" anak="Ini terlalu banyak!" />
           <Dialog nama="Tupi" anak="Namaku Tupi! Rahasianya… kelompokkan dulu!" />
+          <KuisAkhirAdegan
+            idSuara={idKuis("A", 1)}
+            idKanvas={idKuis("A", 2)}
+            pertanyaanSuara="Rahasia Tupi: apa yang dilakukan dulu?"
+            aliasSuara={["kelompokkan", "kelompok"]}
+            petunjukSuara="Ucapkan: kelompokkan."
+            pertanyaanKanvas="Tuliskan kata kelompokkan."
+            aliasKanvas={["kelompokkan", "kelompok"]}
+            konteksKanvas="Benda yang berserakan dikelompokkan dulu."
+          />
         </Adegan>
         <Adegan
           judul="Adegan 1 · Mulai dari mana?"
@@ -558,6 +569,16 @@ function KartuA({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminGuru }) {
           <Dialog nama="Adi" anak="Jadi gelas ke kotak gelas?" />
           <Dialog nama="Sari" anak="Aku ambil gelas!" />
           <p className="text-sm font-black text-[#1C01A5]">Satu jenis, satu kotak.</p>
+          <KuisAkhirAdegan
+            idSuara={idKuis("A", 3)}
+            idKanvas={idKuis("A", 4)}
+            pertanyaanSuara="Gelas dimasukkan ke kotak apa?"
+            aliasSuara={["gelas"]}
+            petunjukSuara="Sebutkan nama kotaknya."
+            pertanyaanKanvas="Tuliskan kata gelas."
+            aliasKanvas={["gelas"]}
+            konteksKanvas="Gelas masuk ke kotak gelas."
+          />
         </Adegan>
         <Adegan
           judul="Adegan 2 · Menghitung kelompok"
@@ -568,6 +589,16 @@ function KartuA({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminGuru }) {
           <Dialog nama="Sari" anak="Gelas ada 6." />
           <Dialog nama="Adi" anak="Piring ada 4. Kalau ditanya yang paling banyak, aku masih harus hitung ulang." />
           <Dialog nama="Tupi" anak="Sendok ada 8. Ayo lihat cara yang lebih pintar." />
+          <KuisAkhirAdegan
+            idSuara={idKuis("A", 5)}
+            idKanvas={idKuis("A", 6)}
+            pertanyaanSuara="Sendok ada berapa?"
+            aliasSuara={["8", "delapan"]}
+            petunjukSuara="Ucapkan angkanya."
+            pertanyaanKanvas="Tuliskan angka banyak gelas."
+            aliasKanvas={["6", "enam"]}
+            konteksKanvas="Gelas ada 6."
+          />
         </Adegan>
         <Adegan
           judul="Adegan 3 · Rahasia piktogram"
@@ -579,6 +610,16 @@ function KartuA({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminGuru }) {
           <Dialog nama="Sari" anak="Aku bisa lihat langsung mana yang paling banyak!" />
           <Dialog nama="Adi" anak="Sendok! Barisannya paling panjang!" />
           <Dialog nama="Tupi" anak="Ini diagram gambar. Setiap gambar sama dengan satu benda." />
+          <KuisAkhirAdegan
+            idSuara={idKuis("A", 7)}
+            idKanvas={idKuis("A", 8)}
+            pertanyaanSuara="Baris yang paling panjang adalah benda apa?"
+            aliasSuara={["sendok"]}
+            petunjukSuara="Sebutkan nama bendanya."
+            pertanyaanKanvas="Setiap gambar sama dengan berapa benda? Tuliskan angkanya."
+            aliasKanvas={["1", "satu"]}
+            konteksKanvas="Satu gambar sama dengan satu benda."
+          />
         </Adegan>
         <Adegan
           judul="Adegan 4 · Menjawab pertanyaan"
@@ -590,6 +631,16 @@ function KartuA({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminGuru }) {
           <Dialog nama="Adi" anak="Piring! Barisannya paling pendek!" />
           <Dialog nama="Sari" anak="Sendok 8, piring 4. Selisihnya 4." />
           <p className="text-sm font-black text-[#1C01A5]">8 – 4 = 4</p>
+          <KuisAkhirAdegan
+            idSuara={idKuis("A", 9)}
+            idKanvas={idKuis("A", 10)}
+            pertanyaanSuara="Benda apa yang paling sedikit?"
+            aliasSuara={["piring"]}
+            petunjukSuara="Sebutkan nama bendanya."
+            pertanyaanKanvas="Tuliskan 8 - 4 = 4."
+            aliasKanvas={["8 - 4 = 4", "8-4=4"]}
+            konteksKanvas="Sendok 8 dikurangi piring 4 sama dengan 4."
+          />
         </Adegan>
         <Adegan
           judul="Adegan 5 · Kantin rapi kembali"
@@ -601,6 +652,16 @@ function KartuA({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminGuru }) {
           <Dialog nama="Sari" anak="Tupi!" />
           <Dialog nama="Tupi" anak="Kalau benda banyak dan berserakan, kelompokkan, lalu gambar!" />
           <Dialog nama="Semua" anak="Horeee! Kantin rapi!" />
+          <KuisAkhirAdegan
+            idSuara={idKuis("A", 11)}
+            idKanvas={idKuis("A", 12)}
+            pertanyaanSuara="Siapa yang mengajari Sari dan Adi?"
+            aliasSuara={["tupi"]}
+            petunjukSuara="Sebutkan namanya."
+            pertanyaanKanvas="Tuliskan nama Tupi."
+            aliasKanvas={["tupi"]}
+            konteksKanvas="Yang mengajari mereka adalah Tupi."
+          />
         </Adegan>
       </div>
       <div className="mt-6 border-t-2 border-[#1C01A5]/10 pt-5">

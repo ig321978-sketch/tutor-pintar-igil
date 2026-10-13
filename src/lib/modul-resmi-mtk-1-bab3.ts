@@ -112,6 +112,46 @@ D) 12`,
           pertanyaan: "Ada 6 balon. Dua balon terbang. Sisa berapa?",
           alias: ["4", "empat"],
         },
+        {
+          pertanyaan: "Berapa balon yang siap untuk pesta?",
+          alias: ["8", "delapan"],
+        },
+        {
+          pertanyaan: "Tuliskan angka banyak balon itu.",
+          alias: ["8", "delapan"],
+        },
+        {
+          pertanyaan: "Dulu ada 8 balon. Yang lepas 3. Sisa berapa?",
+          alias: ["5", "lima"],
+        },
+        {
+          pertanyaan: "Tuliskan 8 - 3 = 5.",
+          alias: ["8 - 3 = 5", "8-3=5"],
+        },
+        {
+          pertanyaan: "Tanda kurang artinya apa?",
+          alias: ["diambil", "dipisahkan"],
+        },
+        {
+          pertanyaan: "Tuliskan tanda kurang.",
+          alias: ["-", "kurang"],
+        },
+        {
+          pertanyaan: "Kue ada 6. Fajar makan 2. Sisa berapa?",
+          alias: ["4", "empat"],
+        },
+        {
+          pertanyaan: "Tuliskan 6 - 2 = 4.",
+          alias: ["6 - 2 = 4", "6-2=4"],
+        },
+        {
+          pertanyaan: "Ada 9 topi. Tamu mengambil 4. Sisa berapa?",
+          alias: ["5", "lima"],
+        },
+        {
+          pertanyaan: "Tuliskan 9 - 4 = 5.",
+          alias: ["9 - 4 = 5", "9-4=5"],
+        },
       ],
       voice: [
         [

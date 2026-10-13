@@ -105,6 +105,42 @@ C) Bimo, selisih 4`,
           pertanyaan: "Tebalkan angka 3.",
           alias: ["3", "tiga"],
         },
+        {
+          pertanyaan: "Ada berapa apel di piring?",
+          alias: ["3", "tiga"],
+        },
+        {
+          pertanyaan: "Ada berapa jeruk dari keranjang?",
+          alias: ["5", "lima"],
+        },
+        {
+          pertanyaan: "Tuliskan angka banyak jeruk.",
+          alias: ["5", "lima"],
+        },
+        {
+          pertanyaan: "Urutan dari yang paling sedikit: tiga, empat, lalu berapa?",
+          alias: ["5", "lima"],
+        },
+        {
+          pertanyaan: "Tuliskan urutan 3, 4, 5.",
+          alias: ["3, 4, 5", "3 4 5", "345"],
+        },
+        {
+          pertanyaan: "Mana yang lebih banyak, apel atau jeruk?",
+          alias: ["jeruk"],
+        },
+        {
+          pertanyaan: "Tuliskan 5 > 3.",
+          alias: ["5 > 3", "5>3", "lima lebih besar dari tiga"],
+        },
+        {
+          pertanyaan: "Stroberi dan pisang sama banyak. Masing-masing berapa?",
+          alias: ["4", "empat"],
+        },
+        {
+          pertanyaan: "Tuliskan 4 = 4.",
+          alias: ["4 = 4", "4=4", "empat sama dengan empat"],
+        },
       ],
       voice: [
         [

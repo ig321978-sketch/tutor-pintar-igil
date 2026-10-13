@@ -111,6 +111,70 @@ D) 5`,
           pertanyaan: "Mulai dari 13, hitung maju 4 langkah. Berhenti di angka berapa?",
           alias: ["tujuh belas", "17"],
         },
+        {
+          pertanyaan: "Anak kucing ada di ketinggian berapa kaki?",
+          alias: ["18", "delapan belas"],
+        },
+        {
+          pertanyaan: "Tuliskan angka 18.",
+          alias: ["18", "delapan belas"],
+        },
+        {
+          pertanyaan: "Dari 12 sampai 18, ada berapa langkah?",
+          alias: ["6", "enam"],
+        },
+        {
+          pertanyaan: "Tuliskan 12 + 6 = 18.",
+          alias: ["12 + 6 = 18", "12+6=18"],
+        },
+        {
+          pertanyaan: "Empat belas sama dengan sepuluh tambah berapa?",
+          alias: ["4", "empat"],
+        },
+        {
+          pertanyaan: "Tuliskan 14 = 10 + 4.",
+          alias: ["14 = 10 + 4", "14=10+4"],
+        },
+        {
+          pertanyaan: "Delapan kursi ditambah tujuh kursi. Semuanya berapa?",
+          alias: ["15", "lima belas"],
+        },
+        {
+          pertanyaan: "Tuliskan 8 + 7 = 15.",
+          alias: ["8 + 7 = 15", "8+7=15"],
+        },
+        {
+          pertanyaan: "Setelah diisi sampai sepuluh, sisa kursi yang ditambahkan berapa?",
+          alias: ["5", "lima"],
+        },
+        {
+          pertanyaan: "Tuliskan 10 + 5 = 15.",
+          alias: ["10 + 5 = 15", "10+5=15"],
+        },
+        {
+          pertanyaan: "Ada 15 kursi. Yang jatuh 4. Sisa berapa?",
+          alias: ["11", "sebelas"],
+        },
+        {
+          pertanyaan: "Tuliskan 15 - 4 = 11.",
+          alias: ["15 - 4 = 11", "15-4=11"],
+        },
+        {
+          pertanyaan: "Enam belas dikurangi sembilan. Hasilnya berapa?",
+          alias: ["7", "tujuh"],
+        },
+        {
+          pertanyaan: "Tuliskan 16 - 9 = 7.",
+          alias: ["16 - 9 = 7", "16-9=7"],
+        },
+        {
+          pertanyaan: "Ada berapa cara yang dipakai: hitung maju, hitung mundur, dan pecah angka?",
+          alias: ["3", "tiga"],
+        },
+        {
+          pertanyaan: "Tuliskan salah satu caranya: maju.",
+          alias: ["maju", "hitung maju"],
+        },
       ],
       voice: [
         [

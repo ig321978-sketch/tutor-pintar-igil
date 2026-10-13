@@ -5,6 +5,7 @@ import { TEMA_MTK1_BAB4 } from "@/lib/tema-misi-mtk-1";
 
 import { useEffect, useMemo, useRef, useState, type ReactNode } from "react";
 import HasilJawabanKuis from "@/components/HasilJawabanKuis";
+import KuisAkhirAdegan from "@/components/KuisAkhirAdegan";
 import KuisTulisKartu from "@/components/KuisTulisKartu";
 import SoalRekamSuara from "@/components/SoalRekamSuara";
 import GambarCerita from "@/components/GambarCerita";
@@ -361,6 +362,16 @@ function KartuA({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminGuru }) {
           </p>
           <p className="text-center text-sm font-black text-[#1C01A5]">3 sisi · 3 sudut</p>
         </article>
+        <KuisAkhirAdegan
+          idSuara={idKuis("A", 1)}
+          idKanvas={idKuis("A", 2)}
+          pertanyaanSuara="Atap rumah Nenek bentuknya apa?"
+          aliasSuara={["segitiga"]}
+          petunjukSuara="Sebutkan nama bentuknya."
+          pertanyaanKanvas="Atap itu punya berapa sisi? Tuliskan angkanya."
+          aliasKanvas={["3", "tiga"]}
+          konteksKanvas="Atap segitiga punya 3 sisi."
+        />
         <article className="rounded-2xl border-2 border-[#0284C7]/25 bg-[#F0F9FF] px-4 py-3">
           <p className="text-xs font-black uppercase tracking-wide text-[#0C4A6E]">Adegan 2 · Ruang tamu</p>
           <GambarCerita
@@ -377,6 +388,16 @@ function KartuA({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminGuru }) {
         <Dialog nama="Nenek Ani" anak="Hebat! Itu persegi." />
         <Dialog nama="Sasa" anak="Pintu juga sisinya 4, tapi ada yang panjang, ada yang pendek." />
         <Dialog nama="Nenek Ani" anak="Itu persegi panjang. Persegi dan persegi panjang sama-sama segi empat." />
+        <KuisAkhirAdegan
+          idSuara={idKuis("A", 3)}
+          idKanvas={idKuis("A", 4)}
+          pertanyaanSuara="Bingkai foto sisinya sama semua. Bentuknya apa?"
+          aliasSuara={["persegi"]}
+          petunjukSuara="Sebutkan nama bentuknya."
+          pertanyaanKanvas="Pintu punya berapa sisi? Tuliskan angkanya."
+          aliasKanvas={["4", "empat"]}
+          konteksKanvas="Pintu persegi panjang punya 4 sisi."
+        />
         <article className="rounded-2xl border-2 border-[#7C3AED]/25 bg-[#F5F3FF] px-4 py-3">
           <p className="text-xs font-black uppercase tracking-wide text-[#5B21B6]">Adegan 3 · Dapur</p>
           <GambarCerita src="/doodle-mtk/mtk-1-bab4-adegan-3.jpg" alt="Dadu berbentuk kubus dan kotak susu berbentuk balok." />
@@ -392,6 +413,16 @@ function KartuA({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminGuru }) {
         <p className="rounded-2xl bg-[#F0FDF4] px-4 py-3 text-sm font-extrabold text-[#166534]">
           Lencana: Detektif Bentuk Datar dan Detektif Bangun Ruang.
         </p>
+        <KuisAkhirAdegan
+          idSuara={idKuis("A", 5)}
+          idKanvas={idKuis("A", 6)}
+          pertanyaanSuara="Dadu bentuknya apa?"
+          aliasSuara={["kubus"]}
+          petunjukSuara="Sebutkan nama bentuknya."
+          pertanyaanKanvas="Kotak susu bentuknya apa? Tuliskan namanya."
+          aliasKanvas={["balok"]}
+          konteksKanvas="Kotak susu berbentuk balok."
+        />
       </div>
       <div className="mt-6 border-t-2 border-[#1C01A5]/10 pt-5">
         <p className="text-base font-extrabold text-[#1C01A5]">QUIZ:</p>

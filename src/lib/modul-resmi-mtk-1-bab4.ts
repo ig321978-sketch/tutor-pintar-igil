@@ -111,6 +111,30 @@ D) Balok`,
           pertanyaan: "Jam dinding di rumah Nenek bentuknya apa?",
           alias: ["lingkaran", "bulat"],
         },
+        {
+          pertanyaan: "Atap rumah Nenek bentuknya apa?",
+          alias: ["segitiga"],
+        },
+        {
+          pertanyaan: "Atap itu punya berapa sisi? Tuliskan angkanya.",
+          alias: ["3", "tiga"],
+        },
+        {
+          pertanyaan: "Bingkai foto sisinya sama semua. Bentuknya apa?",
+          alias: ["persegi"],
+        },
+        {
+          pertanyaan: "Pintu punya berapa sisi? Tuliskan angkanya.",
+          alias: ["4", "empat"],
+        },
+        {
+          pertanyaan: "Dadu bentuknya apa?",
+          alias: ["kubus"],
+        },
+        {
+          pertanyaan: "Kotak susu bentuknya apa? Tuliskan namanya.",
+          alias: ["balok"],
+        },
       ],
       voice: [
         [

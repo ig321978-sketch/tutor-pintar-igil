@@ -2,6 +2,7 @@
 
 import { useMemo, useState, type ReactNode } from "react";
 import HasilJawabanKuis from "@/components/HasilJawabanKuis";
+import KuisAkhirAdegan from "@/components/KuisAkhirAdegan";
 import KuisTulisKartu from "@/components/KuisTulisKartu";
 import SoalRekamSuara from "@/components/SoalRekamSuara";
 import TombolVoiceMateriPai1 from "@/components/TombolVoiceMateriPai1";
@@ -903,6 +904,12 @@ export default function NaskahMtk1Bab1({
           <Dialog nama="Bimo" warna="border-[#2563EB]/20 bg-[#EFF6FF]">
             “Ada 3 apel. Lambang bilangannya adalah 3.”
           </Dialog>
+          <KuisAkhirAdegan
+            idSuara={idKuis("A", 2)}
+            pertanyaanSuara="Ada berapa apel di piring?"
+            aliasSuara={["3", "tiga"]}
+            petunjukSuara="Ucapkan angkanya."
+          />
           <KuisTulisKartu
             id={idKuis("A", 1)}
             hanyaKanvas
@@ -933,6 +940,16 @@ export default function NaskahMtk1Bab1({
           <Dialog nama="Bimo" warna="border-[#2563EB]/20 bg-[#EFF6FF]">
             “Benar! Ada 5 jeruk.”
           </Dialog>
+          <KuisAkhirAdegan
+            idSuara={idKuis("A", 3)}
+            idKanvas={idKuis("A", 4)}
+            pertanyaanSuara="Ada berapa jeruk dari keranjang?"
+            aliasSuara={["5", "lima"]}
+            petunjukSuara="Ucapkan angkanya."
+            pertanyaanKanvas="Tuliskan angka banyak jeruk."
+            aliasKanvas={["5", "lima"]}
+            konteksKanvas="Jeruknya ada 5. Lambangnya 5."
+          />
           <article className="rounded-2xl border-2 border-[#F0AB00] bg-[#FFF8E8] px-4 py-3">
             <p className="text-xs font-black uppercase text-[#92400E]">Miko membawa pisang</p>
             <GambarCerita src="/doodle-mtk/mtk-1-bab1-pisang.jpg" alt="Miko si kucing di samping empat pisang dan angka 4." />
@@ -956,6 +973,16 @@ export default function NaskahMtk1Bab1({
           <Dialog nama="Rara" warna="border-[#DB2777]/20 bg-[#FDF2F8]">
             “Urutannya adalah 3, 4, 5.”
           </Dialog>
+          <KuisAkhirAdegan
+            idSuara={idKuis("A", 5)}
+            idKanvas={idKuis("A", 6)}
+            pertanyaanSuara="Urutan dari yang paling sedikit: tiga, empat, lalu berapa?"
+            aliasSuara={["5", "lima"]}
+            petunjukSuara="Sebutkan angka terakhir."
+            pertanyaanKanvas="Tuliskan urutan 3, 4, 5."
+            aliasKanvas={["3, 4, 5", "3 4 5", "345"]}
+            konteksKanvas="Apel 3, pisang 4, jeruk 5. Urutannya 3, 4, 5."
+          />
           <div className="grid gap-3 sm:grid-cols-2">
             <article className="rounded-2xl border-2 border-[#E23B3B]/25 bg-[#FFF1F2] px-4 py-3">
               <p className="text-xs font-black uppercase text-[#9F1239]">Piring kiri · apel</p>
@@ -980,6 +1007,16 @@ export default function NaskahMtk1Bab1({
             alt="Piring kiri tiga apel. Piring kanan lima jeruk. Lima lebih besar dari tiga."
           />
           <p className="text-center text-4xl font-black text-[#1C01A5]">5 &gt; 3</p>
+          <KuisAkhirAdegan
+            idSuara={idKuis("A", 7)}
+            idKanvas={idKuis("A", 8)}
+            pertanyaanSuara="Mana yang lebih banyak, apel atau jeruk?"
+            aliasSuara={["jeruk"]}
+            petunjukSuara="Sebutkan buah yang lebih banyak."
+            pertanyaanKanvas="Tuliskan 5 > 3."
+            aliasKanvas={["5 > 3", "5>3", "lima lebih besar dari tiga"]}
+            konteksKanvas="Lima jeruk lebih banyak daripada tiga apel. 5 > 3."
+          />
           <div className="grid gap-3 sm:grid-cols-2">
             <article className="rounded-2xl border-2 border-[#E11D48]/25 bg-[#FFF1F2] px-4 py-3">
               <p className="text-xs font-black uppercase text-[#9F1239]">Stroberi · 4</p>
@@ -1001,6 +1038,16 @@ export default function NaskahMtk1Bab1({
             alt="Empat stroberi dan empat pisang. Jumlahnya sama, empat sama dengan empat."
           />
           <p className="text-center text-4xl font-black text-[#1C01A5]">4 = 4</p>
+          <KuisAkhirAdegan
+            idSuara={idKuis("A", 9)}
+            idKanvas={idKuis("A", 10)}
+            pertanyaanSuara="Stroberi dan pisang sama banyak. Masing-masing berapa?"
+            aliasSuara={["4", "empat"]}
+            petunjukSuara="Ucapkan angkanya."
+            pertanyaanKanvas="Tuliskan 4 = 4."
+            aliasKanvas={["4 = 4", "4=4", "empat sama dengan empat"]}
+            konteksKanvas="Stroberi 4 dan pisang 4. Jumlahnya sama. 4 = 4."
+          />
           <p className="rounded-2xl bg-[#F0FDF4] px-4 py-3 text-sm font-extrabold text-[#166534]">
             Rara dan Bimo berhasil menghitung buah. Mereka juga dapat membaca, menulis, dan membandingkan bilangan.
           </p>

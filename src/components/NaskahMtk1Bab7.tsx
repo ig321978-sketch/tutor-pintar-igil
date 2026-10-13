@@ -6,6 +6,7 @@ import { TEMA_MTK1_BAB7 } from "@/lib/tema-misi-mtk-1";
 import { useEffect, useMemo, useRef, useState, type ReactNode } from "react";
 import HasilJawabanKuis from "@/components/HasilJawabanKuis";
 import TabelInfoGrafis from "@/components/TabelInfoGrafis";
+import KuisAkhirAdegan from "@/components/KuisAkhirAdegan";
 import KuisTulisKartu from "@/components/KuisTulisKartu";
 import SoalRekamSuara from "@/components/SoalRekamSuara";
 import TombolVoiceMateriPai1 from "@/components/TombolVoiceMateriPai1";
@@ -490,6 +491,16 @@ function KartuA({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminGuru }) {
           <Dialog nama="Bima" anak="Layang-layangku kalah jauh. Punyamu lebih tinggi." />
           <Dialog nama="Ari" anak="Itu cuma kelihatan begitu. Kamu berdiri jauh dari kami." />
           <Dialog nama="Kodok" anak="Namaku Kodok! Aku mengukur tanpa penggaris. Aku memakai tubuhku!" />
+          <KuisAkhirAdegan
+            idSuara={idKuis("A", 1)}
+            idKanvas={idKuis("A", 2)}
+            pertanyaanSuara="Siapa yang mengukur tanpa penggaris?"
+            aliasSuara={["kodok"]}
+            petunjukSuara="Sebutkan namanya."
+            pertanyaanKanvas="Tuliskan nama Kodok."
+            aliasKanvas={["kodok"]}
+            konteksKanvas="Yang mengukur dengan tubuhnya adalah Kodok."
+          />
         </Adegan>
         <Adegan
           judul="Adegan 1 · Masalah ketinggian"
@@ -502,6 +513,16 @@ function KartuA({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminGuru }) {
           <Dialog nama="Kodok" anak="Kalau mau tahu yang sebenarnya, kita harus mengukur." />
           <Dialog nama="Mila" anak="Tapi kita tidak bawa meteran…" />
           <p className="text-sm font-black text-[#1C01A5]">Mata bisa salah. Ukuran tidak.</p>
+          <KuisAkhirAdegan
+            idSuara={idKuis("A", 3)}
+            idKanvas={idKuis("A", 4)}
+            pertanyaanSuara="Kalau mau tahu yang sebenarnya, kita harus apa?"
+            aliasSuara={["mengukur", "ukur"]}
+            petunjukSuara="Ucapkan: mengukur."
+            pertanyaanKanvas="Tuliskan kata mengukur."
+            aliasKanvas={["mengukur"]}
+            konteksKanvas="Mata bisa tertipu. Kita harus mengukur."
+          />
         </Adegan>
         <Adegan
           judul="Adegan 2 · Kenalan dengan jengkal"
@@ -512,6 +533,16 @@ function KartuA({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminGuru }) {
           <Dialog nama="Kodok" anak="Dari ujung jempol ke ujung kelingking, namanya satu jengkal!" />
           <Dialog nama="Bima" anak="Jengkal katak kecil sekali!" />
           <Dialog nama="Mila" anak="Benang Ari 7 jengkal!" />
+          <KuisAkhirAdegan
+            idSuara={idKuis("A", 5)}
+            idKanvas={idKuis("A", 6)}
+            pertanyaanSuara="Benang Ari panjangnya berapa jengkal?"
+            aliasSuara={["7", "tujuh"]}
+            petunjukSuara="Ucapkan angkanya."
+            pertanyaanKanvas="Tuliskan angka 7."
+            aliasKanvas={["7", "tujuh"]}
+            konteksKanvas="Benang Ari panjangnya 7 jengkal."
+          />
         </Adegan>
         <Adegan
           judul="Adegan 3 · Kenapa hasilnya beda?"
@@ -525,6 +556,16 @@ function KartuA({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminGuru }) {
           <Dialog nama="Kodok" anak="Tangan Ari lebih panjang, jadi jengkalnya lebih sedikit." />
           <Dialog nama="Mila" anak="Harus pakai tangan yang sama dari awal sampai akhir!" />
           <p className="text-sm font-black text-[#1C01A5]">1 alat ukur, 1 orang pengukur.</p>
+          <KuisAkhirAdegan
+            idSuara={idKuis("A", 7)}
+            idKanvas={idKuis("A", 8)}
+            pertanyaanSuara="Mila mengukur benang yang sama. Dia dapat berapa jengkal?"
+            aliasSuara={["5", "lima"]}
+            petunjukSuara="Ucapkan angkanya."
+            pertanyaanKanvas="Tuliskan angka 1, karena pengukurnya harus satu orang."
+            aliasKanvas={["1", "satu"]}
+            konteksKanvas="Pakai 1 alat ukur dan 1 orang pengukur."
+          />
         </Adegan>
         <Adegan
           judul="Adegan 4 · Mengurutkan layang-layang"
@@ -535,6 +576,16 @@ function KartuA({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminGuru }) {
           <Dialog nama="Mila" anak="Yang kecil 3, yang sedang 5, yang besar 8." />
           <Dialog nama="Bima" anak="Tiga, lima, delapan. Kecil, sedang, besar!" />
           <p className="text-sm font-black text-[#1C01A5]">3 jengkal &lt; 5 jengkal &lt; 8 jengkal</p>
+          <KuisAkhirAdegan
+            idSuara={idKuis("A", 9)}
+            idKanvas={idKuis("A", 10)}
+            pertanyaanSuara="Layang-layang yang paling panjang berapa jengkal?"
+            aliasSuara={["8", "delapan"]}
+            petunjukSuara="Ucapkan angkanya."
+            pertanyaanKanvas="Tuliskan 3 < 5 < 8."
+            aliasKanvas={["3 < 5 < 8", "3<5<8"]}
+            konteksKanvas="Urutannya 3 jengkal, lalu 5, lalu 8."
+          />
         </Adegan>
         <Adegan
           judul="Adegan 5 · Langkah kaki Kodok"
@@ -545,6 +596,16 @@ function KartuA({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminGuru }) {
           <Dialog nama="Kodok" anak="Jalan menuju panggung aku ukur dengan langkah kaki!" />
           <Dialog nama="Bima" anak="Satu sampai sepuluh langkah!" />
           <Dialog nama="Ari" anak="Jaraknya 10 langkah Kodok." />
+          <KuisAkhirAdegan
+            idSuara={idKuis("A", 11)}
+            idKanvas={idKuis("A", 12)}
+            pertanyaanSuara="Jalan menuju panggung berapa langkah Kodok?"
+            aliasSuara={["10", "sepuluh"]}
+            petunjukSuara="Ucapkan angkanya."
+            pertanyaanKanvas="Tuliskan angka 10."
+            aliasKanvas={["10", "sepuluh"]}
+            konteksKanvas="Jaraknya 10 langkah Kodok."
+          />
         </Adegan>
         <Adegan
           judul="Adegan 6 · Festival dimulai"
@@ -555,6 +616,16 @@ function KartuA({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminGuru }) {
           <Dialog nama="Kodok" anak="Pemenangnya layang-layang terpanjang. Itu milik Mila!" />
           <Dialog nama="Bima" anak="Aku tidak menang, tapi aku sudah tahu rahasianya!" />
           <Dialog nama="Semua" anak="Horeee! Terima kasih, Kodok!" />
+          <KuisAkhirAdegan
+            idSuara={idKuis("A", 13)}
+            idKanvas={idKuis("A", 14)}
+            pertanyaanSuara="Siapa pemilik layang-layang terpanjang?"
+            aliasSuara={["mila"]}
+            petunjukSuara="Sebutkan namanya."
+            pertanyaanKanvas="Tuliskan nama Mila."
+            aliasKanvas={["mila"]}
+            konteksKanvas="Layang-layang terpanjang milik Mila."
+          />
         </Adegan>
       </div>
       <div className="mt-6 border-t-2 border-[#1C01A5]/10 pt-5">

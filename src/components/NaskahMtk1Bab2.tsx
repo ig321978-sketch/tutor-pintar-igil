@@ -5,6 +5,7 @@ import { TEMA_MTK1_BAB2 } from "@/lib/tema-misi-mtk-1";
 
 import { useEffect, useMemo, useRef, useState, type ReactNode } from "react";
 import HasilJawabanKuis from "@/components/HasilJawabanKuis";
+import KuisAkhirAdegan from "@/components/KuisAkhirAdegan";
 import KuisTulisKartu from "@/components/KuisTulisKartu";
 import SoalRekamSuara from "@/components/SoalRekamSuara";
 import GambarCerita from "@/components/GambarCerita";
@@ -571,6 +572,16 @@ export default function NaskahMtk1Bab2({
           <Dialog nama="Lala" anak="Hore, kita sampai di pantai!" />
           <Dialog nama="Bima" anak="Ayo kita cari kerang!" />
           <Dialog nama="Kepi" anak="Cik-cik! Aku bantu cari, ya!" />
+          <KuisAkhirAdegan
+            idSuara={idKuis("A", 1)}
+            idKanvas={idKuis("A", 2)}
+            pertanyaanSuara="Lala, Bima, dan Raka tiba di pantai. Ada berapa anak?"
+            aliasSuara={["3", "tiga"]}
+            petunjukSuara="Ucapkan angkanya."
+            pertanyaanKanvas="Tuliskan angka banyak anak itu."
+            aliasKanvas={["3", "tiga"]}
+            konteksKanvas="Ada 3 anak: Lala, Bima, dan Raka."
+          />
           <article className="rounded-2xl border-2 border-[#F0AB00] bg-[#FFF8E8] px-4 py-3">
             <p className="text-xs font-black uppercase tracking-wide text-[#92400E]">Adegan 2 · Menggabungkan kerang</p>
             <GambarCerita
@@ -597,6 +608,16 @@ export default function NaskahMtk1Bab2({
           </p>
           <p className="text-center text-4xl font-black text-[#1C01A5]">3 + 2 = 5</p>
           <Dialog nama="Kepi" anak="Jadi 5 kerang! Menggabungkan itu namanya menjumlahkan!" />
+          <KuisAkhirAdegan
+            idSuara={idKuis("A", 3)}
+            idKanvas={idKuis("A", 4)}
+            pertanyaanSuara="Lala punya 3 kerang. Bima punya 2 kerang. Semuanya berapa?"
+            aliasSuara={["5", "lima"]}
+            petunjukSuara="Ucapkan hasilnya."
+            pertanyaanKanvas="Tuliskan 3 + 2 = 5."
+            aliasKanvas={["3 + 2 = 5", "3+2=5"]}
+            konteksKanvas="Tiga kerang ditambah dua kerang sama dengan lima. 3 + 2 = 5."
+          />
           <article className="rounded-2xl border-2 border-[#7C3AED]/30 bg-[#F5F3FF] px-4 py-3">
             <p className="text-xs font-black uppercase text-[#5B21B6]">Adegan 3 · Kenalan dengan simbol</p>
             <GambarCerita
@@ -609,6 +630,16 @@ export default function NaskahMtk1Bab2({
           <Dialog nama="Kepi" anak="Itu tanda tambah. Artinya digabung!" />
           <Dialog nama="Raka" anak="Kalau dua garis itu?" />
           <Dialog nama="Lala" anak="Itu tanda sama dengan. Artinya hasilnya!" />
+          <KuisAkhirAdegan
+            idSuara={idKuis("A", 5)}
+            idKanvas={idKuis("A", 6)}
+            pertanyaanSuara="Tanda tambah artinya apa?"
+            aliasSuara={["digabung", "menggabungkan", "tambah"]}
+            petunjukSuara="Ucapkan: digabung."
+            pertanyaanKanvas="Tuliskan 2 + 1 = 3."
+            aliasKanvas={["2 + 1 = 3", "2+1=3"]}
+            konteksKanvas="Tanda tambah menggabungkan. Dua tambah satu sama dengan tiga."
+          />
           <article className="rounded-2xl border-2 border-[#F0AB00] bg-[#FFF8E8] px-4 py-3">
             <p className="text-xs font-black uppercase tracking-wide text-[#92400E]">Adegan 4 · Istana pasir</p>
             <GambarCerita
@@ -628,6 +659,16 @@ export default function NaskahMtk1Bab2({
           <p className="text-center text-sm font-bold text-[#1C01A5]">Lima… enam… tujuh!</p>
           <p className="text-center text-4xl font-black text-[#1C01A5]">4 + 3 = 7</p>
           <p className="rounded-2xl bg-[#F0FDF4] px-4 py-3 text-sm font-extrabold text-[#166534]">Horeee! Menjumlahkan itu seru!</p>
+          <KuisAkhirAdegan
+            idSuara={idKuis("A", 7)}
+            idKanvas={idKuis("A", 8)}
+            pertanyaanSuara="Istana pasir punya 4 bendera, lalu ditambah 3. Berapa semuanya?"
+            aliasSuara={["7", "tujuh"]}
+            petunjukSuara="Ucapkan hasilnya."
+            pertanyaanKanvas="Tuliskan 4 + 3 = 7."
+            aliasKanvas={["4 + 3 = 7", "4+3=7"]}
+            konteksKanvas="Empat bendera ditambah tiga bendera sama dengan tujuh."
+          />
         </div>
         <div className="mt-6 border-t-2 border-[#1C01A5]/10 pt-5">
           <p className="text-base font-extrabold text-[#1C01A5]">QUIZ:</p>
