@@ -10,12 +10,14 @@ export default function KartuPoinPenting({
   cuplikan,
   poin,
   penutup,
+  gambar,
 }: {
   kelas?: string;
   kelamin?: KelaminGuru;
   cuplikan: CuplikanVoiceMateri[];
   poin: string[];
   penutup?: string;
+  gambar?: { src: string; alt: string };
 }) {
   return (
     <section className="rounded-[1.75rem] border-4 border-[#1C01A5]/15 bg-white px-4 py-5 shadow-sm sm:px-6 sm:py-6">
@@ -25,6 +27,14 @@ export default function KartuPoinPenting({
       <h4 className="mt-3 text-center text-lg font-black tracking-wide text-[#1C01A5] sm:text-xl">
         D. Poin Penting
       </h4>
+      {gambar ? (
+        // eslint-disable-next-line @next/next/no-img-element
+        <img
+          src={gambar.src}
+          alt={gambar.alt}
+          className="mt-4 w-full rounded-xl border border-[#1C01A5]/10 bg-[#fbf6ea] object-cover"
+        />
+      ) : null}
       <div className="mt-4">
         <TombolVoiceMateriPai1 kelas={kelas} kelamin={kelamin} cuplikan={cuplikan} />
       </div>

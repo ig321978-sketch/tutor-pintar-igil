@@ -122,3 +122,17 @@ export const TEMA_MTK1_BAB9: TemaMisi = {
   pertanyaanAkhir: "Tuliskan jumlah koin pasar yang sudah kamu kumpulkan.",
   konteksAkhir: "Sepuluh pos pasar selesai. Koin pasar ada 10. Gudang emas terbuka.",
 };
+
+export const TEMA_MTK1_BAB10: TemaMisi = {
+  pemandu: "Kolu",
+  pengantar:
+    "Bantu Kolu menjalankan 10 pos di stasiun kereta barang. Pilih satu pos, dengarkan misinya, lalu jawab dengan suara, kanvas, atau pilihan.",
+  satuan: "Pos",
+  ikonAwal: "🚂",
+  ikonAkhir: "👮",
+  namaBintang: "Roda gigi",
+  namaToken: "Lampu sorot",
+  ikonToken: "🔦",
+  pertanyaanAkhir: "Tuliskan jumlah roda gigi yang sudah kamu kumpulkan.",
+  konteksAkhir: "Sepuluh pos stasiun selesai. Roda gigi ada 10. Rel cepat ekspres terbuka.",
+};

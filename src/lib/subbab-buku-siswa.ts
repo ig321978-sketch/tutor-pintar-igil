@@ -120,6 +120,13 @@ const SUBBAB_BUKU_SISWA: Record<string, Record<string, Record<string, string[]>>
         "Poin penting",
         "Lembar evaluasi siswa",
       ],
+      "Bab 10: Penjumlahan dan Pengurangan sampai 100": [
+        "Toko kelontong Kolu",
+        "Menjumlah, mengurangi, dan soal cerita",
+        "Ekspedisi kereta barang Kolu",
+        "Poin penting",
+        "Lembar evaluasi siswa",
+      ],
     },
   },
   "3 SD": {
