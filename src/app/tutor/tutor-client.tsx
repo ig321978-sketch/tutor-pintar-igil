@@ -36,6 +36,7 @@ import { kandidatKunciMateri, kunciMateriTutor } from "@/lib/kunci-siswa";
 import { naskahResmiJikaAda } from "@/lib/naskah-resmi";
 import { useUserRole } from "@/hooks/useUserRole";
 import {
+  adalahPilotMatematikaSd,
   PESAN_MATERI_TERKUNCI_PUBLIK,
   situsHanyaAdmin,
 } from "@/lib/situs-hanya-admin";
@@ -462,42 +463,11 @@ export default function TutorAI() {
     if (params.get("mulai") !== "1") return;
     const kelasQ = teksQuery(params.get("kelas"));
     const mapelQ = teksQuery(params.get("mapel"));
-    const materiQ = teksQuery(params.get("materi"));
     const modeQ = params.get("mode");
-    if (modeQ === "gambar") {
+    if (modeQ === "gambar" || !adalahPilotMatematikaSd(kelasQ, mapelQ)) {
       setPesanKunci(PESAN_MATERI_TERKUNCI_PUBLIK);
       router.replace("/ruang-belajar");
-      return;
     }
-    if (naskahResmiJikaAda(kelasQ, mapelQ, materiQ)) return;
-    let hidup = true;
-    void (async () => {
-      try {
-        const intip = new URLSearchParams({
-          kelas: kelasQ,
-          mapel: mapelQ,
-          materi: materiQ,
-        });
-        const peek = await fetch(`/api/modul?${intip.toString()}`, {
-          cache: "no-store",
-        });
-        const json = (await peek.json()) as {
-          berhasil?: boolean;
-          ada?: boolean;
-          terkunci?: boolean;
-        };
-        if (!hidup) return;
-        if (peek.ok && json.berhasil && json.ada) return;
-      } catch {
-        /* jatuh ke kunci */
-      }
-      if (!hidup) return;
-      setPesanKunci(PESAN_MATERI_TERKUNCI_PUBLIK);
-      router.replace("/ruang-belajar");
-    })();
-    return () => {
-      hidup = false;
-    };
   }, [kunciPublik, memuatPeran, params, router]);
 
   useEffect(() => {

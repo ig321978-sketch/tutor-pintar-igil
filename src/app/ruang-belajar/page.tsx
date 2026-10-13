@@ -15,16 +15,13 @@ import {
 } from "@/lib/kurikulum";
 import { useUserRole } from "@/hooks/useUserRole";
 import {
+  adalahPilotMatematikaSd,
+  KELAS_PILOT_SD,
   KELAS_TERBUKA_PUBLIK,
   MAPEL_TERBUKA_PUBLIK,
   PESAN_MATERI_TERKUNCI_PUBLIK,
   situsHanyaAdmin,
 } from "@/lib/situs-hanya-admin";
-import { daftarNaskahResmiPublik } from "@/lib/naskah-resmi";
-import {
-  materiAdaDiDaftarTerbit,
-  type ModulTerbitPublik,
-} from "@/lib/modul-terbit-publik";
 import { naskahSapaanUntukSuara } from "@/lib/naskah-lisan";
 import { bacaProgres, simpanProfil } from "@/lib/progres";
 import {
@@ -97,58 +94,24 @@ export default function RuangBelajarPage() {
   const [pesanGalat, setPesanGalat] = useState("");
   const [guruKelamin, setGuruKelamin] = useState<KelaminGuru>("wanita");
   const [menyiapkanSapaan, setMenyiapkanSapaan] = useState(false);
-  const [daftarTerbit, setDaftarTerbit] = useState<ModulTerbitPublik[]>(
-    daftarNaskahResmiPublik(),
-  );
-
-  useEffect(() => {
-    if (!kunciPublik) return;
-    let hidup = true;
-    void (async () => {
-      try {
-        const respons = await fetch("/api/modul/terbit", { cache: "no-store" });
-        const json = (await respons.json()) as {
-          berhasil?: boolean;
-          daftar?: ModulTerbitPublik[];
-        };
-        if (!hidup || !json.berhasil || !Array.isArray(json.daftar)) return;
-        if (json.daftar.length > 0) setDaftarTerbit(json.daftar);
-      } catch {
-        /* tetap pakai naskah resmi */
-      }
-    })();
-    return () => {
-      hidup = false;
-    };
-  }, [kunciPublik]);
 
   const daftarKelasTampil = useMemo(() => {
     if (!kunciPublik) return DAFTAR_KELAS;
-    const ada = new Set(daftarTerbit.map((item) => item.kelas));
-    const urut = DAFTAR_KELAS.filter((item) => ada.has(item));
-    const sisa = [...ada].filter((item) => !urut.includes(item)).sort();
-    return urut.length + sisa.length > 0 ? [...urut, ...sisa] : [KELAS_TERBUKA_PUBLIK];
-  }, [daftarTerbit, kunciPublik]);
+    return [...KELAS_PILOT_SD];
+  }, [kunciPublik]);
   const daftarMapel = useMemo(() => {
     if (!kunciPublik) return daftarMapelUntukKelas(kelas);
-    const nama = new Set(
-      daftarTerbit
-        .filter((item) => item.kelas === kelas)
-        .map((item) => item.mapel),
-    );
-    return [...nama];
-  }, [daftarTerbit, kelas, kunciPublik]);
+    return adalahPilotMatematikaSd(kelas, MAPEL_TERBUKA_PUBLIK)
+      ? [MAPEL_TERBUKA_PUBLIK]
+      : [];
+  }, [kelas, kunciPublik]);
   const daftarMateri = useMemo(() => {
     if (pilihanMapel === OPSI_MAPEL_LAIN) return [];
     const buku = DATA_KURIKULUM[kelas]?.[pilihanMapel] ?? [];
     if (!kunciPublik) return buku;
-    if (kelas === "1 SD" && pilihanMapel === "Matematika" && buku.length > 0) {
-      return buku;
-    }
-    return daftarTerbit
-      .filter((item) => item.kelas === kelas && item.mapel === pilihanMapel)
-      .map((item) => item.materi);
-  }, [daftarTerbit, kelas, kunciPublik, pilihanMapel]);
+    if (adalahPilotMatematikaSd(kelas, pilihanMapel)) return buku;
+    return [];
+  }, [kelas, kunciPublik, pilihanMapel]);
   const mapel =
     pilihanMapel === OPSI_MAPEL_LAIN ? mapelManual : pilihanMapel;
   const materi =
@@ -241,9 +204,7 @@ export default function RuangBelajarPage() {
   const mulaiPembelajaran = async () => {
     if (
       kunciPublik &&
-      (sumber !== "kurikulum" ||
-        pilihanMapel === OPSI_MAPEL_LAIN ||
-        !materiAdaDiDaftarTerbit(kelas, mapel, materi, daftarTerbit))
+      (sumber !== "kurikulum" || !adalahPilotMatematikaSd(kelas, mapel))
     ) {
       setPesanGalat(PESAN_MATERI_TERKUNCI_PUBLIK);
       return;
@@ -310,7 +271,7 @@ export default function RuangBelajarPage() {
       judul="📚 Ruang Belajar"
       subjudul={
         kunciPublik
-          ? "Pratinjau publik: semua materi yang sudah terbit dapat dibuka. Materi draf tetap terkunci."
+          ? "Pilot project: Matematika kelas 1 sampai 6 SD."
           : "Pilih sumber pembelajaran, pilih guru pengajar, lalu mulai sesi belajar di halaman Tutor."
       }
     >

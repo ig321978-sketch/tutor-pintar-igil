@@ -1,123 +1,47 @@
-/** Mode terbatas: publik hanya boleh modul yang sudah terbit. Admin tetap membuka seluruh situs. */
+/** Pilot publik: hanya Matematika kelas 1–6 SD. Admin tetap membuka seluruh situs. */
 export function situsHanyaAdmin(): boolean {
   return true;
 }
 
+export const KELAS_PILOT_SD = ["1 SD", "2 SD", "3 SD", "4 SD", "5 SD", "6 SD"] as const;
 export const KELAS_TERBUKA_PUBLIK = "1 SD";
-export const MAPEL_TERBUKA_PUBLIK =
-  "Pendidikan Agama Islam dan Budi Pekerti";
-export const MAPEL_TERBUKA_PUBLIK_LAIN = [
-  "Matematika",
-  "Pendidikan Pancasila",
-  "Bahasa Indonesia",
-  "Pendidikan Jasmani, Olahraga, dan Kesehatan",
-  "Bahasa Inggris",
-  "Seni Musik",
-  "Seni Rupa",
-  "Pendidikan Agama Kristen dan Budi Pekerti",
-  "Pendidikan Agama Katolik dan Budi Pekerti",
-  "Pendidikan Agama Buddha dan Budi Pekerti",
-  "Pendidikan Agama Hindu dan Budi Pekerti",
-  "Pendidikan Agama Khonghucu dan Budi Pekerti",
-] as const;
+export const MAPEL_TERBUKA_PUBLIK = "Matematika";
 
 export const PESAN_MATERI_TERKUNCI_PUBLIK =
-  "Untuk publik, saat ini hanya materi yang sudah terbit yang dapat dibuka.";
+  "Untuk publik, saat ini hanya modul Matematika kelas 1 sampai 6 SD yang dapat dibuka.";
 
 export function daftarMapelTerbukaPublik(): string[] {
-  return [MAPEL_TERBUKA_PUBLIK, ...MAPEL_TERBUKA_PUBLIK_LAIN];
+  return [MAPEL_TERBUKA_PUBLIK];
+}
+
+export function adalahKelasPilotSd(kelas: string): boolean {
+  const k = kelas.trim().toLowerCase().replace(/\s+/g, " ");
+  return /^(?:kelas\s+)?[1-6](?:\s+sd)?$/.test(k);
 }
 
 export function adalahKelasTerbukaPublik(kelas: string): boolean {
-  const k = kelas.trim();
-  return /^1\s*SD\b/i.test(k) || /^kelas\s*1(\s+SD)?\b/i.test(k);
+  return adalahKelasPilotSd(kelas);
 }
 
-export function adalahMapelPaiTerbuka(mapel: string): boolean {
+export function adalahMapelMatematika(mapel: string): boolean {
   const n = mapel
     .trim()
     .toLowerCase()
     .normalize("NFKC")
-    .replace(/[’‘ʻ`´]/g, "'")
     .replace(/\s+/g, " ");
-  return (
-    n === "pai" ||
-    n === "agama islam" ||
-    n === "pendidikan agama islam" ||
-    n === "pendidikan agama islam dan budi pekerti" ||
-    n === "pendidikan agama dan budi pekerti"
-  );
+  return n === "matematika" || n === "mtk" || n === "math" || n === "mathematics";
 }
 
 export function adalahMapelTerbukaPublik(mapel: string): boolean {
-  const n = mapel
-    .trim()
-    .toLowerCase()
-    .normalize("NFKC")
-    .replace(/[’‘ʻ`´]/g, "'")
-    .replace(/\s+/g, " ");
-  return (
-    adalahMapelPaiTerbuka(mapel) ||
-    n === "matematika" ||
-    n === "pendidikan pancasila" ||
-    n === "ppkn" ||
-    n === "pkn" ||
-    n === "bahasa indonesia" ||
-    n === "bindo" ||
-    n === "pendidikan jasmani, olahraga, dan kesehatan" ||
-    n === "pjok" ||
-    n === "penjas" ||
-    n === "penjaskes" ||
-    n === "bahasa inggris" ||
-    n === "english" ||
-    n === "b.inggris" ||
-    n === "b inggris" ||
-    n === "seni musik" ||
-    n === "musik" ||
-    n === "music" ||
-    n === "seni rupa" ||
-    n === "rupa" ||
-    n === "seni lukis" ||
-    n === "pendidikan agama kristen dan budi pekerti" ||
-    n === "pendidikan agama kristen" ||
-    n === "agama kristen" ||
-    n === "pa kristen" ||
-    n === "pak" ||
-    n === "pendidikan agama katolik dan budi pekerti" ||
-    n === "pendidikan agama katolik" ||
-    n === "agama katolik" ||
-    n === "pa katolik" ||
-    n === "katolik" ||
-    n === "pendidikan agama buddha dan budi pekerti" ||
-    n === "pendidikan agama buddha" ||
-    n === "pendidikan agama budha dan budi pekerti" ||
-    n === "pendidikan agama budha" ||
-    n === "agama buddha" ||
-    n === "agama budha" ||
-    n === "pa buddha" ||
-    n === "pa budha" ||
-    n === "buddha" ||
-    n === "budha" ||
-    n === "pendidikan agama hindu dan budi pekerti" ||
-    n === "pendidikan agama hindu" ||
-    n === "agama hindu" ||
-    n === "pa hindu" ||
-    n === "hindu" ||
-    n === "pendidikan agama khonghucu dan budi pekerti" ||
-    n === "pendidikan agama konghucu dan budi pekerti" ||
-    n === "pendidikan agama khonghucu" ||
-    n === "pendidikan agama konghucu" ||
-    n === "agama khonghucu" ||
-    n === "agama konghucu" ||
-    n === "pa khonghucu" ||
-    n === "pa konghucu" ||
-    n === "khonghucu" ||
-    n === "konghucu"
-  );
+  return adalahMapelMatematika(mapel);
+}
+
+export function adalahPilotMatematikaSd(kelas: string, mapel: string): boolean {
+  return adalahKelasPilotSd(kelas) && adalahMapelMatematika(mapel);
 }
 
 export function materiTerbukaUntukPublik(kelas: string, mapel: string): boolean {
-  return adalahKelasTerbukaPublik(kelas) && adalahMapelTerbukaPublik(mapel);
+  return adalahPilotMatematikaSd(kelas, mapel);
 }
 
 export function ruteAsetIkonPublik(pathname: string): boolean {
