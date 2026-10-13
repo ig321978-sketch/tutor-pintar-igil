@@ -136,3 +136,17 @@ export const TEMA_MTK1_BAB10: TemaMisi = {
   pertanyaanAkhir: "Tuliskan jumlah roda gigi yang sudah kamu kumpulkan.",
   konteksAkhir: "Sepuluh pos stasiun selesai. Roda gigi ada 10. Rel cepat ekspres terbuka.",
 };
+
+export const TEMA_MTK1_BAB11: TemaMisi = {
+  pemandu: "Biru",
+  pengantar:
+    "Bantu Biru menyelesaikan 10 pesanan di pabrik manik. Pilih satu pos, dengarkan misinya, lalu jawab dengan suara, kanvas, atau pilihan.",
+  satuan: "Pos",
+  ikonAwal: "🏭",
+  ikonAkhir: "🏅",
+  namaBintang: "Manik biru",
+  namaToken: "Kaca pembesar",
+  ikonToken: "🔍",
+  pertanyaanAkhir: "Tuliskan jumlah manik biru yang sudah kamu kumpulkan.",
+  konteksAkhir: "Sepuluh pesanan selesai. Manik biru ada 10. Pabrik otomatis terbuka.",
+};

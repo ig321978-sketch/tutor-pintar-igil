@@ -127,6 +127,13 @@ const SUBBAB_BUKU_SISWA: Record<string, Record<string, Record<string, string[]>>
         "Poin penting",
         "Lembar evaluasi siswa",
       ],
+      "Bab 11: Pola Bilangan dan Pola Gambar": [
+        "Pagar sekolah Biru",
+        "Papan pola gambar dan angka",
+        "Pabrik manik Biru",
+        "Poin penting",
+        "Lembar evaluasi siswa",
+      ],
     },
   },
   "3 SD": {

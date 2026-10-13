@@ -17,6 +17,7 @@ import NaskahMtk1Bab7 from "@/components/NaskahMtk1Bab7";
 import NaskahMtk1Bab8 from "@/components/NaskahMtk1Bab8";
 import NaskahMtk1Bab9 from "@/components/NaskahMtk1Bab9";
 import NaskahMtk1Bab10 from "@/components/NaskahMtk1Bab10";
+import NaskahMtk1Bab11 from "@/components/NaskahMtk1Bab11";
 import NaskahMtk3Bab3 from "@/components/NaskahMtk3Bab3";
 import NaskahPancasila1 from "@/components/NaskahPancasila1";
 import NaskahBindo1 from "@/components/NaskahBindo1";
@@ -49,6 +50,7 @@ import {
   adalahJudulMtk1Bab8,
   adalahJudulMtk1Bab9,
   adalahJudulMtk1Bab10,
+  adalahJudulMtk1Bab11,
   adalahJudulMtk3Bab3,
   adalahJudulPancasila1Bab1,
   adalahJudulPancasila1Bab2,
@@ -248,6 +250,15 @@ function ModuleRenderer({
           /toko kelontong kolu|ekspedisi kereta barang/i.test(naskah))),
     [naskah, mapel, materi, kelas],
   );
+  const pakaiKartuMtkBab11 = useMemo(
+    () =>
+      !kelasDuaSd(kelas) &&
+      !kelasTigaSd(kelas) &&
+      (adalahJudulMtk1Bab11(mapel, materi) ||
+        (naskahTampilanResmi(naskah) &&
+          /pabrik manik biru|burung beo biru/i.test(naskah))),
+    [naskah, mapel, materi, kelas],
+  );
   const modulPancasila = useMemo(() => {
     if (
       adalahJudulPancasila1Bab1(mapel, materi) ||
@@ -358,7 +369,7 @@ function ModuleRenderer({
     return cariModulPai2DariNaskah(naskah);
   }, [naskah, mapel, materi, kelas]);
   const adaKartuMtk =
-    pakaiKartuMtkBab1 || pakaiKartuMtkBab2 || pakaiKartuMtkBab3 || pakaiKartuMtkBab4 || pakaiKartuMtkBab5 || pakaiKartuMtkBab6 || pakaiKartuMtkBab7 || pakaiKartuMtkBab8 || pakaiKartuMtkBab9 || pakaiKartuMtkBab10;
+    pakaiKartuMtkBab1 || pakaiKartuMtkBab2 || pakaiKartuMtkBab3 || pakaiKartuMtkBab4 || pakaiKartuMtkBab5 || pakaiKartuMtkBab6 || pakaiKartuMtkBab7 || pakaiKartuMtkBab8 || pakaiKartuMtkBab9 || pakaiKartuMtkBab10 || pakaiKartuMtkBab11;
   const modulResmiLain = useMemo(() => {
     if (kelasDuaSd(kelas) || modulPai2 || modulBindo2 || modulMtk2) return null;
     if (pakaiKartuBab1 || pakaiKartuBab2 || adaKartuMtk || modulPancasila || modulBindo || modulPjok || modulInggris || modulMusik || modulSeniRupa || modulKristen || modulKatolik || modulBuddha || modulHindu || modulKhonghucu) return null;
@@ -581,6 +592,13 @@ function ModuleRenderer({
     return (
       <div className={className}>
         <NaskahMtk1Bab10 kelas={kelas} kelamin={kelamin} />
+      </div>
+    );
+  }
+  if (pakaiKartuMtkBab11) {
+    return (
+      <div className={className}>
+        <NaskahMtk1Bab11 kelas={kelas} kelamin={kelamin} />
       </div>
     );
   }
