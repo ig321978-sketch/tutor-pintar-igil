@@ -240,7 +240,7 @@ export const BAB_BUKU_SISWA: Record<string, Record<string, string[]>> = {
       "Bab 8: Sahabat dari Seberang",
     ],
     Matematika: [
-      "Bab 1: Bilangan Cacah sampai 1.000",
+      "Bab 1: Bilangan sampai 10.000",
       "Bab 2: Kalimat Matematika",
       "Bab 3: Pengukuran Panjang dan Berat",
       "Bab 4: Unsur-Unsur Bangun Datar",

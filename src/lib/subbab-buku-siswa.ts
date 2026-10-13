@@ -166,14 +166,14 @@ const SUBBAB_BUKU_SISWA: Record<string, Record<string, Record<string, string[]>>
   },
   "3 SD": {
     Matematika: {
-      "Bab 1: Bilangan Cacah sampai 1.000": [
-        "Bilangan dan lambang bilangan cacah sampai 1.000",
-        "Nilai tempat bilangan cacah sampai 1.000",
-        "Membandingkan dan mengurutkan bilangan cacah sampai 1.000",
-        "Penjumlahan bilangan cacah sampai 100",
-        "Pengurangan bilangan cacah sampai 100",
-        "Perkalian bilangan cacah sampai 100",
-        "Pembagian bilangan cacah sampai 100",
+      "Bab 1: Bilangan sampai 10.000": [
+        "Membaca bilangan ribuan",
+        "Nilai tempat ribuan sampai satuan",
+        "Membandingkan bilangan",
+        "Mengurutkan bilangan",
+        "Menara Skor Bulu",
+        "Poin penting",
+        "Lembar evaluasi siswa",
       ],
       "Bab 2: Kalimat Matematika": [
         "Kalimat matematika penjumlahan bilangan cacah",
