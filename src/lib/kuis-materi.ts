@@ -12,6 +12,7 @@ import { MODUL_MTK1_BAB10 } from "@/lib/modul-resmi-mtk-1-bab10";
 import { MODUL_MTK1_BAB11 } from "@/lib/modul-resmi-mtk-1-bab11";
 import { MODUL_MTK1_BAB12 } from "@/lib/modul-resmi-mtk-1-bab12";
 import { MODUL_MTK1_BAB13 } from "@/lib/modul-resmi-mtk-1-bab13";
+import { MODUL_MTK1_BAB14 } from "@/lib/modul-resmi-mtk-1-bab14";
 import { MODUL_MTK3_BAB3 } from "@/lib/modul-resmi-mtk-3-bab3";
 import { MODUL_PANCASILA1_BAB1 } from "@/lib/modul-resmi-pancasila-1-bab1";
 import { MODUL_PANCASILA1_BAB2 } from "@/lib/modul-resmi-pancasila-1-bab2";
@@ -32,6 +33,7 @@ import {
   adalahMtk1Bab11,
   adalahMtk1Bab12,
   adalahMtk1Bab13,
+  adalahMtk1Bab14,
   adalahMtk3Bab3,
   adalahPancasila1Bab1,
   adalahPancasila1Bab2,
@@ -213,6 +215,9 @@ export function daftarIdKuisMateri(
   }
   if (adalahMtk1Bab13(kelas, mapel, materi)) {
     return idKuisDariModulResmi(MODUL_MTK1_BAB13);
+  }
+  if (adalahMtk1Bab14(kelas, mapel, materi)) {
+    return idKuisDariModulResmi(MODUL_MTK1_BAB14);
   }
   if (adalahPancasila1Bab1(kelas, mapel, materi)) {
     return idKuisDariModulResmi(MODUL_PANCASILA1_BAB1);
