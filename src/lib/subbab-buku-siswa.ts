@@ -134,6 +134,13 @@ const SUBBAB_BUKU_SISWA: Record<string, Record<string, Record<string, string[]>>
         "Poin penting",
         "Lembar evaluasi siswa",
       ],
+      "Bab 12: Pengukuran Berat": [
+        "Halaman rumah Sasa",
+        "Papan timbangan",
+        "Pasar timbang Momo",
+        "Poin penting",
+        "Lembar evaluasi siswa",
+      ],
     },
   },
   "3 SD": {
