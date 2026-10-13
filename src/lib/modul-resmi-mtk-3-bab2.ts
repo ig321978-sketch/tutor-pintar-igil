@@ -13,280 +13,277 @@ export const MODUL_MTK3_BAB2: ModulResmiPai = {
   judul: JUDUL_MTK3_BAB2,
   pola: /penjumlahan dan pengurangan sampai 10\.?000/,
   motivasi:
-    "Rio, Sinta, dan Adit belajar menjumlahkan dan mengurangkan bilangan sampai 10.000 bersama Bunda Kiki di gudang beras.",
-  kunciJawaban: "A,B,A,A,B,C,B,B,A,A",
+    "Nisa, Farhan, dan Cinta belajar menjumlahkan dan mengurangkan bilangan sampai 10.000 bersama burung hantu Hulu di perpustakaan keliling.",
+  kunciJawaban: "A,B,A,B,A,C,B,A,A,A",
   sketsaKartu: [
-    "Rio, Sinta, dan Adit menghitung karung beras bersama koala Bunda Kiki.",
-    "Penjumlahan dan pengurangan bersusun, dengan simpanan dan pinjaman.",
-    "Bunda Kiki melepas truk ekspedisi dari gudang.",
+    "Nisa, Farhan, dan Cinta menyusun buku di empat rak bersama Hulu.",
+    "Simpanan pindah ke rak kiri. Pinjaman diambil dari rak yang masih berisi.",
+    "Hulu memberi stempel di meja perpustakaan keliling.",
     "Poin penting dan lembar evaluasi penjumlahan dan pengurangan.",
   ],
   latihan: pg([
-    `[Soal 1 - PG - Tipe: HOTS]
-6.786 + 2.458 sama dengan...
-A) 9.244
-B) 8.244
-C) 9.144
-D) 9.234`,
-    `[Soal 2 - PG - Tipe: MOTS]
-Pada 5.847 + 2.396, satuannya 7 + 6 = 13. Yang harus dilakukan...
-A) Buang angka 1
-B) Tulis 3, simpan 1 ke puluhan
-C) Tulis 13 langsung
-D) Balik posisi kedua bilangan`,
+    `[Soal 1 - PG - Tipe: MOTS]
+3.246 + 1.532 sama dengan...
+A) 4.778
+B) 4.768
+C) 4.878
+D) 5.778`,
+    `[Soal 2 - PG - Tipe: HOTS]
+Pada 1.508 + 2.697, satuan 8 + 7 = 15. Yang harus dilakukan...
+A) Tulis 15 di satuan
+B) Tulis 5, simpan 1 ke puluhan
+C) Tulis 1, simpan 5
+D) Lewati rumah satuan`,
     `[Soal 3 - PG - Tipe: HOTS]
-9.005 − 4.376 sama dengan...
-A) 4.629
-B) 4.639
-C) 4.729
-D) 5.629`,
+5.020 − 1.346 sama dengan...
+A) 3.674
+B) 3.774
+C) 4.674
+D) 3.684`,
     `[Soal 4 - PG - Tipe: HOTS]
-Sinta menulis 8.243 − 3.876 = 4.367. Pernyataannya...
-A) Benar
-B) Salah, seharusnya 4.477
-C) Salah, seharusnya 4.357
-D) Salah, seharusnya 5.367`,
-    `[Soal 5 - PG - Tipe: HOTS]
-⬜.250 + 3.480 = 9.730. Angka yang hilang...
-A) 5
-B) 6
-C) 7
-D) 8`,
+Farhan berkata, "Kalau hasilnya 12, tulis 12 di rumah itu." Apakah Farhan benar?
+A) Benar, 12 ditulis utuh
+B) Salah, tulis 2 dan simpan 1
+C) Salah, tulis 1 dan simpan 2
+D) Salah, rumah itu dikosongkan`,
+    `[Soal 5 - PG - Tipe: MOTS]
+7.865 − 2.431 sama dengan...
+A) 5.434
+B) 5.344
+C) 5.444
+D) 4.434`,
     `[Soal 6 - PG - Tipe: HOTS]
-2.⬜00 + 3.400 = 6.100. Angka yang hilang...
-A) 5
-B) 6
-C) 7
-D) 8`,
-    `[Soal 7 - PG - Tipe: MOTS]
-Soal mana yang tidak perlu menyimpan?
-A) 4.768 + 3.575
-B) 2.431 + 3.124
-C) 5.847 + 2.396
-D) 6.758 + 2.486`,
-    `[Soal 8 - PG - Tipe: MOTS]
-Muatan naik 400: 2.100 – 2.500 – 2.900 – ⬜. Berikutnya...
-A) 3.200
-B) 3.300
-C) 3.400
-D) 3.500`,
-    `[Soal 9 - PG - Tipe: MOTS]
-4.216 + 3.472 sama dengan...
-A) 7.688
-B) 7.588
-C) 7.678
-D) 8.688`,
+Pada 4.006 − 1.238, pinjaman berantai dimulai dari rumah...
+A) Puluhan
+B) Ratusan
+C) Ribuan
+D) Satuan`,
+    `[Soal 7 - PG - Tipe: HOTS]
+Deret naik 250: 2.000 – 2.250 – 2.500 – ⬜. Berikutnya...
+A) 2.650
+B) 2.750
+C) 2.700
+D) 3.000`,
+    `[Soal 8 - PG - Tipe: HOTS]
+8.045 − 2.617 sama dengan...
+A) 5.428
+B) 5.438
+C) 6.428
+D) 5.328`,
+    `[Soal 9 - PG - Tipe: HOTS]
+Mana yang lebih besar, 4.278 + 1.653 atau 6.312 − 2.748?
+A) 5.931
+B) 3.564
+C) Keduanya sama
+D) 6.312`,
     `[Soal 10 - PG - Tipe: HOTS]
-Gudang pagi 5.400 karung. Siang datang 2.750. Sore dikirim 4.150. Isi akhir dibanding pagi...
-A) Lebih sedikit
-B) Lebih banyak
-C) Sama
-D) Tidak bisa dihitung`,
+Rak 2.350, datang 1.475, lalu dipinjam 1.250. Sisa akhirnya...
+A) 2.575
+B) 3.825
+C) 2.755
+D) 1.475`,
   ]),
   kartu: [
     {
       kode: "A",
       judul: "A. Naskah Bergambar",
-      pengantar:
-        "Rio, Sinta, Adit, dan Bunda Kiki menjumlahkan, mengurangi, lalu menyelesaikan catatan gudang.",
-      labelDaftar: "Lima adegan hitung karung",
+      pengantar: "Nisa, Farhan, Cinta, dan Hulu menjumlahkan, mengurangi, lalu menyelesaikan catatan rak.",
+      labelDaftar: "Lima adegan rak buku",
       kolom: 1,
       item: [
         {
           nama: "Tanpa menyimpan",
           singkat: "Semua muat",
-          uraian: "2.435 + 3.142 = 5.577. Jumlah tiap rumah 9 atau kurang, jadi tidak ada simpanan.",
+          uraian: "2.431 + 3.256 = 5.687. Tiap rumah hasilnya masih satu angka, jadi tidak ada simpanan.",
           contoh: "Mulai dari satuan.",
         },
         {
           nama: "Dengan menyimpan",
           singkat: "Lebih dari sembilan",
-          uraian: "4.768 + 3.575 = 8.343. Simpanan 1 muncul tiga kali dan wajib dihitung.",
-          contoh: "Tulis satuan, simpan satu ke kiri.",
+          uraian: "2.476 + 1.358 = 3.834. Satuan 6 + 8 = 14, tulis 4, simpan 1.",
+          contoh: "Tulis sisa, simpan satu ke kiri.",
         },
         {
           nama: "Tanpa meminjam",
-          singkat: "Atas lebih besar",
-          uraian: "8.745 − 3.521 = 5.224. Semua angka atas lebih besar, jadi langsung dikurangi.",
-          contoh: "Tidak perlu meminjam.",
+          singkat: "Atas cukup",
+          uraian: "5.876 − 2.341 = 3.535. Semua angka atas cukup, jadi langsung dikurangi.",
+          contoh: "Tidak ada yang meminjam.",
         },
         {
           nama: "Dengan meminjam",
-          singkat: "Coret, kurang satu",
-          uraian: "5.342 − 1.876 = 3.466. Meminjam tiga kali. Rumah yang dipinjam berkurang satu.",
-          contoh: "Satu di kiri bernilai sepuluh di kanan.",
+          singkat: "Termasuk angka nol",
+          uraian: "5.346 − 2.178 = 3.168. Pada 4.203 − 1.578, puluhan 0 jadi pinjaman loncat ke ratusan. Hasilnya 2.625.",
+          contoh: "Pinjam satu, nilainya sepuluh.",
         },
         {
           nama: "Soal cerita",
-          singkat: "Empat langkah",
-          uraian:
-            "4.250 + 2.180 = 6.430, lalu 6.430 − 3.500 = 2.930. Datang artinya tambah. Dikirim, terjual, dan sisa artinya kurang.",
-          contoh: "Kerjakan berurutan.",
+          singkat: "Kata kunci dulu",
+          uraian: "2.350 + 1.475 = 3.825 karena buku datang. 4.260 − 1.085 = 3.175 karena buku dipinjam.",
+          contoh: "Datang berarti tambah. Sisa berarti kurang.",
         },
       ],
       kuis: [
-        { pertanyaan: "Pada 4.213 + 1.574, berapa 3 + 4?", alias: ["tujuh", "7"] },
-        { pertanyaan: "Berapa 5.124 + 3.451?", alias: ["8575"] },
-        { pertanyaan: "Pada 5.847 + 2.396, 7 + 6 = 13. Simpan berapa?", alias: ["satu", "1"] },
-        { pertanyaan: "Berapa 6.758 + 2.486?", alias: ["9244"] },
-        { pertanyaan: "Pada 9.876 − 4.253, berapa 6 − 3?", alias: ["tiga", "3"] },
-        { pertanyaan: "Berapa 7.948 − 3.617?", alias: ["4331"] },
-        { pertanyaan: "Pada 6.431 − 2.758, setelah meminjam angka ribuan jadi berapa?", alias: ["lima", "5"] },
-        { pertanyaan: "Berapa 7.203 − 3.468?", alias: ["3735"] },
-        { pertanyaan: "Kata dikirim artinya apa?", alias: ["dikurangi", "kurang"] },
-        { pertanyaan: "Gudang 6.800, terjual 2.450. Tulis kalimatnya.", alias: ["6800 - 2450 = 4350"] },
-        { pertanyaan: "Berapa 3.847 + 2.576?", alias: ["6423"] },
-        { pertanyaan: "Pasangkan 4.500 + 2.300, 7.200 − 2.400, dan 2.900 + 2.100.", alias: ["6800", "4800", "5000"] },
-        { pertanyaan: "Susun 3.400 + 2.200 = 5.600.", alias: ["3400", "2200", "5600"] },
-        { pertanyaan: "Periksa tiga pernyataan simpanan dan pinjaman.", alias: ["benar", "salah"] },
-        { pertanyaan: "⬜.500 + 2.300 = 7.800. Angka ribuan yang hilang?", alias: ["5"] },
+        { pertanyaan: "Berapa 1.324 + 2.451, dan dari rumah mana mulai?", alias: ["3775", "satuan"] },
+        { pertanyaan: "Tulis hasil 4.102 + 3.576.", alias: ["7678"] },
+        { pertanyaan: "Pada 3.685 + 1.247, satuan 5 + 7 = 12. Apa yang ditulis dan disimpan?", alias: ["2", "simpan", "1"] },
+        { pertanyaan: "Tulis hasil 1.508 + 2.697.", alias: ["4205"] },
+        { pertanyaan: "Berapa 6.749 − 2.315, dan apakah ada yang meminjam?", alias: ["4434", "tidak"] },
+        { pertanyaan: "Tulis hasil 8.964 − 3.521.", alias: ["5443"] },
+        { pertanyaan: "Berapa 7.245 − 3.168, dan rumah mana yang meminjam?", alias: ["4077", "satuan", "puluhan"] },
+        { pertanyaan: "Tulis hasil 5.020 − 1.346.", alias: ["3674", "pinjam"] },
+        { pertanyaan: "Rak 4.260, dipinjam 1.085. Berapa sisa?", alias: ["3175", "kurang"] },
+        { pertanyaan: "Pagi 1.864, siang datang 2.357. Berapa jumlahnya?", alias: ["4221", "tambah"] },
+        { pertanyaan: "Pada 2.476 + 1.358, berapa simpanan dari satuan?", alias: ["1"] },
+        { pertanyaan: "Pasangkan hitungan dengan hasilnya.", alias: ["3834", "3535", "2625"] },
+        { pertanyaan: "Susun jejak 2.476 + 1.358 dari satuan.", alias: ["tulis 4", "tulis 3", "tulis 8"] },
+        { pertanyaan: "Periksa tiga pernyataan hitungan.", alias: ["benar", "salah"] },
+        { pertanyaan: "3.⬜25 + 1.460 = 4.885. Angka yang hilang?", alias: ["4"] },
       ],
       voice: [
         [
-          "Untuk menjumlahkan bilangan ribuan, kita mulai dari satuan, lalu puluhan, ratusan, dan terakhir ribuan.",
-          "Kalau lebih dari sembilan, simpan satu ke kiri. Kalau angka bawah lebih besar, pinjam dari kiri.",
-          "Soal cerita diterjemahkan dulu: datang artinya tambah, dikirim artinya kurang.",
+          "Hari ini kita menghitung buku di perpustakaan keliling. Ada empat rak: ribuan, ratusan, puluhan, dan satuan.",
+          "Penjumlahan dan pengurangan dimulai dari rak kanan. Kalau lebih dari sembilan, sepuluh buku pindah ke kiri.",
+          "Kalau rak kanan kurang, pinjam satu ikat dari kiri. Satu ikat itu bernilai sepuluh.",
         ],
       ],
     },
     {
       kode: "B",
       judul: "B. Infografis",
-      pengantar: "Cara menjumlah, mengurangi, menyimpan, meminjam, dan menerjemahkan soal cerita.",
+      pengantar: "Intisari menyimpan, meminjam, dan memilih operasi pada soal cerita.",
       labelDaftar: "Lima papan hitung",
       kolom: 1,
       item: [
         {
           nama: "Tanpa menyimpan",
-          singkat: "Langsung tulis",
-          uraian: "3.241 + 4.536 = 7.777. Setiap rumah hasilnya 7.",
-          contoh: "Semua muat? Tidak usah simpan.",
+          singkat: "Tulis langsung",
+          uraian: "1.203 + 4.571 = 5.774. Tidak ada rumah yang hasilnya sepuluh atau lebih.",
+          contoh: "0 sampai 9, tulis saja.",
         },
         {
           nama: "Menyimpan",
-          singkat: "Simpanan dihitung",
-          uraian: "4.876 + 2.358 = 7.234. Simpanan 1 tiga kali.",
-          contoh: "Lebih dari sembilan? Simpan satu ke kiri.",
+          singkat: "Sisa dan simpanan",
+          uraian: "4.278 + 1.653 = 5.931. Satuan 11, tulis 1 simpan 1. Puluhan 13, tulis 3 simpan 1.",
+          contoh: "Yang ditulis bukan 11, melainkan 1.",
         },
         {
           nama: "Tanpa meminjam",
-          singkat: "Atas cukup",
-          uraian: "9.865 − 4.321 = 5.544.",
-          contoh: "Atas lebih besar? Boleh langsung kurang.",
+          singkat: "Kurangi biasa",
+          uraian: "7.865 − 2.431 = 5.434. Angka atas di setiap rumah lebih besar.",
+          contoh: "Cukup? Langsung kurang.",
         },
         {
-          nama: "Meminjam",
-          singkat: "Coret",
-          uraian: "6.253 − 2.487 = 3.766. Setelah meminjam, rumah kiri berkurang satu.",
-          contoh: "Bawah lebih besar? Pinjam.",
+          nama: "Meminjam melewati nol",
+          singkat: "Loncat ke kiri",
+          uraian: "8.045 − 2.617 = 5.428. Ratusan 0, jadi pinjaman datang dari ribuan.",
+          contoh: "Rumah 0 tidak bisa memberi pinjaman.",
         },
         {
-          nama: "Kata kunci",
-          singkat: "Baca dulu",
-          uraian: "3.450 − 1.280 = 2.170 karena kata dikirim. 5.600 + 2.150 = 7.750 karena kata datang.",
-          contoh: "Baca dulu, jangan langsung hitung.",
+          nama: "Soal cerita",
+          singkat: "Operasi dulu",
+          uraian: "3.480 − 1.265 = 2.215 karena terpakai. 2.146 + 1.853 = 3.999 karena dijumlahkan.",
+          contoh: "Baca kata kuncinya sebelum menghitung.",
         },
       ],
       kuis: [
-        { pertanyaan: "Berapa 5.123 + 2.415?", alias: ["7538", "tujuh ribu lima ratus tiga puluh delapan"] },
-        { pertanyaan: "Berapa 6.214 + 2.173?", alias: ["8387"] },
-        { pertanyaan: "Pada 6.437 + 2.285, 7 + 5 = 12. Berapa yang disimpan?", alias: ["satu", "1"] },
-        { pertanyaan: "Berapa 5.869 + 3.274?", alias: ["9143"] },
-        { pertanyaan: "Berapa 8.974 − 3.652?", alias: ["5322", "lima ribu tiga ratus dua puluh dua"] },
-        { pertanyaan: "Berapa 9.785 − 4.263?", alias: ["5522"] },
-        { pertanyaan: "Pada 7.412 − 3.859, setelah meminjam angka ribuan jadi berapa?", alias: ["enam", "6"] },
-        { pertanyaan: "Berapa 8.304 − 4.676?", alias: ["3628"] },
-        { pertanyaan: "Kata terjual artinya tambah atau kurang?", alias: ["kurang"] },
-        { pertanyaan: "Ada 5.600 karung, datang 2.150. Tulis kalimatnya.", alias: ["5600 + 2150 = 7750"] },
-        { pertanyaan: "Soal mana yang tidak perlu menyimpan?", alias: ["2431"] },
-        { pertanyaan: "Pasangkan soal dengan tekniknya.", alias: ["tanpa menyimpan", "tanpa meminjam", "dengan meminjam"] },
-        { pertanyaan: "Urutkan hasil 1.500, 5.500, 6.200, dan 8.500.", alias: ["1500", "5500", "6200", "8500"] },
-        { pertanyaan: "Periksa tiga pernyataan hitungan.", alias: ["benar", "salah"] },
-        { pertanyaan: "2.⬜00 + 3.400 = 6.100. Angka yang hilang?", alias: ["7"] },
+        { pertanyaan: "Berapa 2.314 + 1.625, dan dari rumah mana mulai?", alias: ["3939", "satuan"] },
+        { pertanyaan: "Tulis hasil 3.240 + 2.516.", alias: ["5756"] },
+        { pertanyaan: "Pada 2.609 + 3.184, satuan 9 + 4 = 13. Apa yang ditulis dan disimpan?", alias: ["3", "simpan", "1"] },
+        { pertanyaan: "Tulis hasil 2.847 + 1.365.", alias: ["4212"] },
+        { pertanyaan: "Berapa 9.578 − 4.236, dan apakah ada yang meminjam?", alias: ["5342", "tidak"] },
+        { pertanyaan: "Tulis hasil 6.489 − 1.253.", alias: ["5236"] },
+        { pertanyaan: "Berapa 8.045 − 2.617, dan rumah mana yang memberi pinjaman karena berisi 0?", alias: ["5428", "ratusan"] },
+        { pertanyaan: "Tulis hasil 4.006 − 1.238 dan rumah awal pinjamannya.", alias: ["2768", "ribuan"] },
+        { pertanyaan: "Rak A 2.146 dan rak B 1.853. Berapa jumlahnya?", alias: ["3999", "tambah"] },
+        { pertanyaan: "Ada 5.200 kartu, dibagikan 1.750. Berapa sisa?", alias: ["3450", "kurang"] },
+        { pertanyaan: "Angka 1 di satuan 4.278 + 1.653 berasal dari mana?", alias: ["11"] },
+        { pertanyaan: "Pasangkan hitungan dengan tekniknya.", alias: ["tanpa menyimpan", "menyimpan", "meminjam"] },
+        { pertanyaan: "Urutkan 2.768, 3.168, dan 5.434 dari kecil.", alias: ["2768", "3168", "5434"] },
+        { pertanyaan: "Periksa tiga pernyataan.", alias: ["benar", "salah"] },
+        { pertanyaan: "5.2⬜0 − 1.346 = 3.674. Angka yang hilang?", alias: ["0"] },
       ],
       voice: [
         [
-          "Jumlahkan dari satuan. Kalau setiap rumah hasilnya sembilan atau kurang, langsung tulis.",
-          "Kalau lebih dari sembilan, simpan satu ke kiri. Kalau bawah lebih besar, pinjam dan coret rumah kirinya.",
-          "Soal cerita: cari angka, cari kata kunci, tulis kalimat, lalu hitung.",
+          "Papan ini merangkum cara hitungnya. Mulai dari kanan.",
+          "Lebih dari sembilan: tulis angka satuannya, simpan satu ke kiri. Kurang dari angka bawah: pinjam satu dari kiri.",
+          "Pada soal cerita, tentukan tambah atau kurang sebelum menulis susunan.",
         ],
       ],
     },
     {
       kode: "C",
-      judul: "C. Ekspedisi Truk Gudang",
-      pengantar:
-        "Siswa menjadi kepala ekspedisi. Muatan bertambah dijumlahkan, muatan berkurang dikurangi. Sepuluh pos selesai, sepuluh truk terkumpul.",
-      labelDaftar: "Sepuluh pos ekspedisi",
+      judul: "C. Giliran Rak Hulu",
+      pengantar: "Siswa menjadi petugas rak. Sepuluh pos selesai, sepuluh stempel terkumpul.",
+      labelDaftar: "Sepuluh giliran rak",
       kolom: 1,
       item: [
         {
-          nama: "Transaksi muatan",
-          singkat: "Tambah atau kurang",
+          nama: "Catatan rak",
+          singkat: "Tambah, simpan, kurang, pinjam",
           uraian:
-            "Level 1 menjumlah 3.215 + 2.174 = 5.389. Level 2 menyimpan pada 4.867 + 3.459. Level 3 sisa 5.326. Level 4 sisa 2.756. Level 5: 3.500 + 2.750 = 6.250, lalu 6.250 − 4.200 = 2.050.",
-          contoh: "Salah hitung tidak mengurangi truk. Coba lagi.",
+            "Giliran 1 menjumlahkan 2.431 + 3.256. Giliran 2 menyimpan dari 14. Giliran 4 menghitung 5.346 − 2.178. Giliran 5 meminjam melewati nol pada 4.203. Kumpulkan 10 stempel.",
+          contoh: "Salah hitung boleh diulang. Stempel tidak berkurang.",
         },
       ],
       kuis: [
         ...kuisDariMisi(MISI_MTK3_BAB2),
-        { pertanyaan: "Berapa 4.216 + 3.472?", alias: ["7688"] },
-        { pertanyaan: "Pada 5.847 + 2.396, apa yang dilakukan dengan 13?", alias: ["simpan 1"] },
-        { pertanyaan: "Pasangkan 6.400 + 2.500, 8.700 − 3.100, dan 5.600 − 1.400.", alias: ["8900", "5600", "4200"] },
-        { pertanyaan: "Urutkan 9.200, 4.750, 6.800, 2.510, 8.140.", alias: ["2510", "4750", "6800", "8140", "9200"] },
-        { pertanyaan: "Periksa tiga pernyataan truk.", alias: ["benar", "salah"] },
-        { pertanyaan: "3.⬜00 + 4.200 = 7.500. Angka yang hilang?", alias: ["3"] },
-        { pertanyaan: "Berapa 9.005 − 4.376?", alias: ["4629"] },
-        { pertanyaan: "Deret naik 400: 2.100, 2.500, 2.900, berikutnya?", alias: ["3300"] },
-        { pertanyaan: "Berapa 5.200 + 3.100?", alias: ["8300", "delapan ribu tiga ratus"] },
-        { pertanyaan: "6.400 + 2.350, lalu dikirim 4.500. Tulis dua langkah.", alias: ["8750", "4250"] },
+        { pertanyaan: "Berapa 4.278 + 1.653?", alias: ["5931"] },
+        { pertanyaan: "Satuan 5 + 7 = 12. Apa yang dilakukan?", alias: ["tulis 2", "simpan 1"] },
+        { pertanyaan: "Pasangkan hitungan dengan hasilnya.", alias: ["5687", "3834", "3168"] },
+        { pertanyaan: "Urutkan 2.215, 2.625, 3.535, dan 4.221 dari kecil.", alias: ["2215", "2625", "3535", "4221"] },
+        { pertanyaan: "Periksa tiga pernyataan rak.", alias: ["benar", "salah"] },
+        { pertanyaan: "⬜ + 1.358 = 3.834. Bilangan yang hilang?", alias: ["2476"] },
+        { pertanyaan: "Berapa 7.003 − 2.456?", alias: ["4547"] },
+        { pertanyaan: "Deret 1.200, 2.450, 3.700, berikutnya?", alias: ["4950"] },
+        { pertanyaan: "Ucapkan hasil 6.004 − 2.578 dan rumah awal pinjamannya.", alias: ["3426", "ribuan"] },
+        { pertanyaan: "Tulis 4.278 + 1.653 dan berapa kali menyimpan.", alias: ["5931", "dua"] },
       ],
       voice: [
         [
-          "Kalian menjadi kepala ekspedisi. Truk datang membawa muatan, truk pergi mengirim muatan.",
-          "Kalau muatan bertambah, jumlahkan. Kalau berkurang, kurangi. Lebih dari sembilan, pindahkan ke bak sebelah. Kalau kurang, pinjam dari bak depan.",
-          "Sepuluh pos selesai, sepuluh truk terkumpul, rute ekspres terbuka.",
+          "Kalian menjadi petugas rak bersama Hulu. Buku yang masuk dijumlahkan. Buku yang dipinjam dikurangi.",
+          "Kalau satu rak lebih dari sembilan, sepuluh buku pindah ke rak kiri. Kalau rak kosong, pinjam dari rak yang masih berisi.",
+          "Sepuluh giliran selesai, sepuluh stempel terkumpul, meja pustakawan terbuka.",
         ],
       ],
     },
     {
       kode: "D",
       judul: "E. Lembar Evaluasi Siswa",
-      pengantar: "Sepuluh soal penjumlahan, pengurangan, dan soal cerita sampai 10.000.",
+      pengantar: "Sepuluh soal menyimpan, meminjam, dan soal cerita sampai 10.000.",
       labelDaftar: "Lembar evaluasi hitung",
       kolom: 1,
       item: [
         {
-          nama: "Simpanan dan pinjaman",
-          singkat: "Jejak hitung",
+          nama: "Simpan dan pinjam",
+          singkat: "Jejak dari kanan",
           uraian:
-            "5.748 + 3.276 = 9.024 dengan simpanan tiga kali. 6.786 + 2.458 = 9.244. 9.002 − 4.537 = 4.465. 8.243 − 3.876 = 4.367.",
-          contoh: "Simpanan dihitung. Rumah yang dipinjam dikurangi satu.",
+            "8.003 − 2.567 = 5.436, pinjaman dari ribuan. 3.756 + 2.845 = 6.601, menyimpan tiga kali. 2.476 + 1.358 menulis 3 di puluhan karena ada simpanan.",
+          contoh: "Simpanan dihitung. Rumah yang dipinjam berkurang satu.",
         },
         {
-          nama: "Gudang Bunda Kiki",
-          singkat: "Dua langkah",
-          uraian: "5.400 + 2.750 = 8.150. Lalu 8.150 − 4.150 = 4.000. Akhir hari lebih sedikit dari pagi.",
-          contoh: "Kerjakan siang dulu, baru sore.",
+          nama: "Catatan halte",
+          singkat: "Tiga langkah",
+          uraian: "3.480 + 1.265 = 4.745. Lalu 4.745 − 2.180 = 2.565. Selisih sumbangan dan pinjaman 2.180 − 1.265 = 915.",
+          contoh: "Satu langkah dulu, baru langkah berikutnya.",
         },
       ],
       kuis: [
-        { pertanyaan: "Berapa 5.748 + 3.276?", alias: ["9024"] },
-        { pertanyaan: "Berapa 6.786 + 2.458?", alias: ["9244"] },
-        { pertanyaan: "Bacalah 7.483.", alias: ["7483", "tujuh ribu empat ratus delapan puluh tiga"] },
-        { pertanyaan: "Apakah 8.243 − 3.876 = 4.367 benar?", alias: ["benar"] },
-        { pertanyaan: "Pasangkan teknik 4.216 + 3.472, 5.264 − 3.142, dan 7.324 − 4.568.", alias: ["tanpa menyimpan", "tanpa meminjam", "dengan meminjam"] },
-        { pertanyaan: "Berapa 9.002 − 4.537?", alias: ["4465"] },
-        { pertanyaan: "⬜.250 + 3.480 = 9.730. Angka yang hilang?", alias: ["6"] },
-        { pertanyaan: "Urutkan hasil 1.300, 5.700, 6.800, dan 8.200.", alias: ["1300", "5700", "6800", "8200"] },
-        { pertanyaan: "Kata dikirim artinya operasi apa?", alias: ["kurang", "dikurangi"] },
-        { pertanyaan: "Gudang 5.400, datang 2.750, dikirim 4.150. Tulis siang, akhir, dan bandingannya.", alias: ["8150", "4000", "sedikit"] },
+        { pertanyaan: "Tulis hasil 8.003 − 2.567 dan rumah awal pinjamannya.", alias: ["5436", "ribuan"] },
+        { pertanyaan: "Pada 2.476 + 1.358, apa yang ditulis di puluhan?", alias: ["3"] },
+        { pertanyaan: "Ada 5.200 kartu, dibagikan 1.750. Ucapkan sisa dan operasinya.", alias: ["3450", "kurang"] },
+        { pertanyaan: "Farhan menulis 12 di satuan. Apakah benar?", alias: ["2", "simpan"] },
+        { pertanyaan: "Pasangkan kata cerita dengan operasinya.", alias: ["tambah", "kurang"] },
+        { pertanyaan: "Tulis 3.756 + 2.845 dan berapa kali menyimpan.", alias: ["6601", "tiga"] },
+        { pertanyaan: "Deret 1.050, 2.300, 3.550, berikutnya?", alias: ["4800"] },
+        { pertanyaan: "Susun 6.601, 5.931, 4.547, dan 2.768 dari besar.", alias: ["6601", "5931", "4547", "2768"] },
+        { pertanyaan: "Mana lebih besar, 2.431 + 3.256 atau 5.876 − 2.341? Mengapa?", alias: ["5687", "ribuan"] },
+        { pertanyaan: "Setelah sumbangan, setelah dipinjam, dan selisih keduanya.", alias: ["4745", "2565", "915"] },
       ],
       voice: [
         [
-          "Saatnya kalian mengerjakan sendiri. Ada sepuluh soal penjumlahan dan pengurangan sampai 10.000.",
-          "Simpanan harus dihitung, dan setelah meminjam rumahnya harus dikurangi satu.",
-          "Jangan terburu-buru, dan periksa lagi jawabanmu.",
+          "Saatnya kalian bekerja sendiri seperti petugas rak. Ada sepuluh soal penjumlahan dan pengurangan sampai 10.000.",
+          "Sebagian soal meminta jejak menyimpan atau meminjam. Sebagian soal cerita. Untuk soal alasan, sebutkan mengapa hasil itu benar.",
+          "Ingat tiga hal: mulai dari satuan, simpanan wajib dihitung, dan rumah nol tidak bisa memberi pinjaman. Selamat bekerja!",
         ],
       ],
     },

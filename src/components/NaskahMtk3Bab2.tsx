@@ -17,21 +17,32 @@ import { idKuisKartuResmi, idKuisTulisKartu } from "@/lib/kuis-materi";
 import { MISI_MTK3_BAB2, TEMA_MTK3_BAB2 } from "@/lib/misi-mtk-3-bab2";
 import { MODUL_MTK3_BAB2 } from "@/lib/modul-resmi-mtk-3-bab2";
 import {
-  adaHasil,
-  artiKurang,
-  baca5322,
-  baca7483,
-  baca7538,
-  baca8300,
-  duaLangkahMuatan,
-  jawabEnam,
-  jawabLima,
-  jawabSatu,
-  jawabTiga,
-  jawabTujuh,
-  kalimatKurang,
-  kalimatTambah,
-  kasusGudang,
+  baca3775,
+  baca3939,
+  halteHulu,
+  jumlah3999,
+  jumlah4221,
+  lebih5687,
+  pinjam2768,
+  pinjam3426,
+  pinjam4077,
+  pinjam5428,
+  pinjam5436,
+  sisa3175,
+  sisa3450,
+  simpan5931,
+  simpan6601,
+  tanpaPinjam4434,
+  tanpaPinjam5342,
+  tulis3674,
+  tulis4205,
+  tulis4212,
+  tulis5443,
+  tulis5236,
+  tulis5756,
+  tulis7678,
+  tulisDuaSimpanSatu,
+  tulisTigaSimpanSatu,
 } from "@/lib/nilai-mtk-3-bab2";
 import type { CuplikanVoiceMateri } from "@/lib/naskah-voice-pai-1-bab2";
 import { bacaProgres } from "@/lib/progres";
@@ -59,17 +70,17 @@ function KartuBingkai({ children, latar = "bg-white" }: { children: ReactNode; l
 }
 
 const WARNA_DIALOG: Record<string, string> = {
-  Rio: "border-[#2563EB]/20 bg-[#EFF6FF]",
-  Sinta: "border-[#DB2777]/20 bg-[#FDF2F8]",
-  Adit: "border-[#16A34A]/20 bg-[#F0FDF4]",
-  "Bunda Kiki": "border-teal-300 bg-teal-50",
+  Nisa: "border-teal-300 bg-teal-50",
+  Farhan: "border-orange-300 bg-orange-50",
+  Cinta: "border-violet-300 bg-violet-50",
+  Hulu: "border-amber-300 bg-amber-50",
 };
 
 const WAJAH_DIALOG: Record<string, string> = {
-  Rio: "👦",
-  Sinta: "👧",
-  Adit: "👦",
-  "Bunda Kiki": "🐨",
+  Nisa: "👧",
+  Farhan: "👦",
+  Cinta: "👧",
+  Hulu: "🦉",
 };
 
 function Dialog({ nama, anak }: { nama: string; anak: string }) {
@@ -540,298 +551,283 @@ function Langkah({ butir }: { butir: string[] }) {
   );
 }
 
-const ARAH = [
-  { ikon: "🟡", teks: "Satuan dulu" },
-  { ikon: "🟨", teks: "Puluhan" },
-  { ikon: "🔵", teks: "Ratusan" },
-  { ikon: "🟦", teks: "Ribuan" },
-];
-
-const HASIL_A = ["4.800", "6.800", "5.000"];
-const TEKNIK = ["Kurang dengan meminjam", "Tambah tanpa menyimpan", "Kurang tanpa meminjam"];
-const HASIL_C = ["4.200", "8.900", "5.600"];
-const TEKNIK_EVAL = ["Kurang dengan meminjam", "Tambah tanpa menyimpan", "Kurang tanpa meminjam"];
+const HASIL_A = ["3.834", "3.535", "2.625"];
+const TEKNIK_B = ["Tanpa menyimpan", "Menyimpan", "Meminjam"];
+const HASIL_C = ["5.687", "3.834", "3.168"];
+const KATA_CERITA = ["Tambah", "Kurang"];
 
 function KartuA({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminGuru }) {
   const kartu = MODUL_MTK3_BAB2.kartu[0];
   return (
     <KartuBingkai>
       <KepalaKartu
-        ikon="👦👧🐨"
+        ikon="📚🦉"
         judul={kartu.judul}
-        anak="Rio, Sinta, Adit, dan Bunda Kiki"
+        anak="Empat rak buku · tambah, simpan, kurang, pinjam"
         kelas={kelas}
         kelamin={kelamin}
-        cuplikan={cuplikanKalimat(kartu.voice[0] ?? [])}
+        cuplikan={cuplikanKalimat(kartu.voice[0])}
       />
-      <p className="mt-3 text-center text-sm font-semibold text-slate-600">
-        Tujuan: menjumlahkan dan mengurangkan sampai 10.000, dengan atau tanpa menyimpan dan meminjam, lalu menyelesaikan soal cerita.
-      </p>
       <div className="mt-4 space-y-4">
         <Adegan
           judul="Sub-bab 1 — Penjumlahan tanpa menyimpan"
-          warna="border-sky-200 bg-sky-50/60"
+          warna="border-sky-200 bg-white"
           src="/doodle-mtk/mtk-3-bab2-sub1.jpg"
-          alt="Gudang beras dengan dua tumpukan karung. Rio memegang catatan dan Sinta memegang kalkulator mainan."
+          alt="Bus perpustakaan dan empat rak buku. Dua tumpukan buku belum ada yang tumpah."
           kelas={kelas}
           kelamin={kelamin}
           penjelasan={[
-            "Untuk menjumlahkan bilangan ribuan, kita mulai dari satuan, lalu puluhan, ratusan, dan terakhir ribuan.",
-            "Kalau jumlah di setiap rumah masih sembilan atau kurang, kita tidak perlu menyimpan apa pun. Langsung tulis hasilnya.",
+            "Penjumlahan bersusun dimulai dari kanan, dari rumah satuan.",
+            "Kalau jumlah satu rumah masih satu angka, tulis saja. Belum ada yang disimpan.",
           ]}
-          simbol={ARAH}
+          simbol={[
+            { ikon: "🟡", teks: "Satuan" },
+            { ikon: "🟨", teks: "Puluhan" },
+            { ikon: "🔵", teks: "Ratusan" },
+            { ikon: "🟦", teks: "Ribuan" },
+          ]}
         >
-          <Dialog nama="Bunda Kiki" anak="Rio, di gudang ada 2.435 karung beras. Datang lagi 3.142 karung." />
-          <Dialog nama="Rio" anak="Ayo hitung! Mulai dari satuan: 5 + 2 = 7." />
-          <Dialog nama="Sinta" anak="Puluhan: 3 + 4 = 7. Ratusan: 4 + 1 = 5." />
-          <Dialog nama="Adit" anak="Ribuan: 2 + 3 = 5." />
-          <Dialog nama="Rio" anak="Jadi 5.577 karung!" />
-          <Papan anak={"  2.435\n  3.142\n  ----- +\n  5.577"} />
-          <Dialog nama="Adit" anak="Tidak ada yang disimpan, ya?" />
-          <Dialog nama="Bunda Kiki" anak="Tidak ada! Semua muat di rumahnya masing-masing." />
-          <p className="text-sm font-black text-[#1C01A5]">Kalau jumlah tiap rumah 9 atau kurang, langsung tulis. Tidak perlu menyimpan.</p>
+          <Dialog nama="Nisa" anak="Dua kardus buku: 2.431 dan 3.256. Kita jumlahkan dari kanan." />
+          <Dialog nama="Farhan" anak="Ribuan dulu? 2 tambah 3 sama dengan 5." />
+          <Dialog nama="Cinta" anak="Coba satuan dulu. 1 tambah 6. Masih satu angka?" />
+          <Dialog nama="Farhan" anak="7. Muat di rak satuan." />
+          <Dialog nama="Hulu" anak="Kalau setiap rumah hasilnya masih satu angka, tidak ada yang disimpan." />
+          <Dialog nama="Nisa" anak="Puluhan 3 + 5 = 8. Ratusan 4 + 2 = 6. Ribuan 2 + 3 = 5." />
+          <Dialog nama="Cinta" anak="Jadi 5.687. Tidak ada buku yang pindah ke rak kiri." />
+          <Papan anak={"  2.431\n+ 3.256\n  -----\n  5.687"} />
+          <p className="text-sm font-black text-emerald-800">Kesimpulan: hasil 0 sampai 9 ditulis langsung. Tidak ada simpanan.</p>
           <KuisSuara
             id={idKuis("A", 0)}
-            pertanyaan="Pada 4.213 + 1.574, hitung satuannya dulu: 3 + 4. Berapa?"
-            periksa={jawabTujuh}
-            petunjuk="Tunjuk angka 3 dan 4, lalu hitung maju dari 3."
+            pertanyaan="Berapa hasil 1.324 + 2.451? Sebutkan juga dari rumah mana kamu mulai."
+            periksa={baca3775}
+            petunjuk="Jumlahkan dari satuan. Hasilnya tiga ribu tujuh ratus tujuh puluh lima."
+            benar="Tiga ribu tujuh ratus tujuh puluh lima. Mulai dari satuan."
           />
           <TulisBebas
             id={idKuis("A", 1)}
-            judul="Jumlah tanpa simpanan"
-            visual={<Papan anak={"  5.124\n  3.451\n  ----- +\n    ⬜"} />}
-            pertanyaan="Tulis jawabannya!"
-            pesanSalah="Mulai dari satuan: 4 + 1."
-            bantuan="Rumahnya: satuan 5, puluhan 7, ratusan 5, ribuan 8. Jadi 8.575."
-            umpan="8.575."
-            periksa={(teks) => adaHasil(teks, "8575")}
-            alias={["8575", "8.575"]}
-            konteks="5.124 + 3.451 = 8.575."
+            visual={<Papan anak={"  4.102\n+ 3.576"} />}
+            pertanyaan="Tulis hasilnya."
+            pesanSalah="Jumlahkan dari satuan. Tidak ada yang sepuluh atau lebih."
+            bantuan="2 + 6 = 8, 0 + 7 = 7, 1 + 5 = 6, 4 + 3 = 7."
+            umpan="Hasilnya 7.678."
+            periksa={tulis7678}
+            alias={["7678"]}
+            konteks="4.102 + 3.576 = 7.678."
           />
         </Adegan>
 
         <Adegan
           judul="Sub-bab 2 — Penjumlahan dengan menyimpan"
-          warna="border-indigo-200 bg-indigo-50/60"
+          warna="border-amber-200 bg-white"
           src="/doodle-mtk/mtk-3-bab2-sub2.jpg"
-          alt="Rumah satuan meluap. Balok 10 naik ke rumah sebelah dan meninggalkan angka kecil."
+          alt="Satu rak buku tumpah. Sepuluh buku diikat dan dipindah ke rak di sebelah kiri."
           kelas={kelas}
           kelamin={kelamin}
           penjelasan={[
-            "Kalau jumlah di satu rumah lebih dari sembilan, kita harus menyimpan. Satu puluhan dipindah ke rumah sebelah kiri.",
-            "Simpanan kecil itu ditulis di atas dan jangan lupa ikut dihitung!",
+            "Kalau jumlah satu rumah sepuluh atau lebih, tulis angka satuannya.",
+            "Sepuluhnya disimpan sebagai 1 di rumah sebelah kiri. Simpanan itu wajib dihitung.",
           ]}
         >
-          <Dialog nama="Sinta" anak="Ada 4.768 karung. Datang 3.575 karung lagi." />
-          <Dialog nama="Rio" anak="Satuannya: 8 + 5 = 13. Tulis 3, simpan 1!" />
-          <Dialog nama="Adit" anak="Jangan lupa simpanannya, ya." />
-          <Dialog nama="Sinta" anak="Puluhan: 1 + 6 + 7 = 14. Tulis 4, simpan 1!" />
-          <Dialog nama="Rio" anak="Ratusan: 1 + 7 + 5 = 13. Tulis 3, simpan 1!" />
-          <Dialog nama="Adit" anak="Ribuan: 1 + 4 + 3 = 8. Jadi 8.343!" />
-          <Papan anak={"   1 1 1\n  4.768\n  3.575\n  ----- +\n  8.343"} />
-          <Dialog nama="Bunda Kiki" anak="Simpanannya tiga kali! Kalian teliti sekali!" />
-          <p className="text-sm font-black text-[#1C01A5]">Lebih dari sembilan? Simpan satu ke kiri. Simpanan ikut dihitung.</p>
+          <Dialog nama="Farhan" anak="Satuan 6 + 8 = 14. Rak satuan cuma muat satu angka!" />
+          <Dialog nama="Nisa" anak="Tulis 4. Sepuluhnya jadi 1 di rak puluhan. Itu simpanan." />
+          <Dialog nama="Cinta" anak="Puluhan 7 + 5, ditambah simpanan 1, jadi 13. Tulis 3, simpan 1 lagi." />
+          <Dialog nama="Hulu" anak="Simpanan itu bukan angka baru. Itu sepuluh yang pindah ke kiri." />
+          <Dialog nama="Nisa" anak="Ratusan 4 + 3 + 1 = 8. Ribuan 2 + 1 = 3. Hasilnya 3.834." />
+          <Papan anak={"    1 1\n  2.476\n+ 1.358\n  -----\n  3.834"} />
+          <p className="text-sm font-black text-emerald-800">Kesimpulan: lebih dari sembilan, tulis sisa dan simpan 1 ke kiri.</p>
           <KuisSuara
             id={idKuis("A", 2)}
-            pertanyaan="Pada 5.847 + 2.396, satuannya 7 + 6 = 13. Simpan berapa ke puluhan?"
-            periksa={jawabSatu}
-            petunjuk="13 itu satu puluhan dan tiga satuan. Jadi simpanannya satu."
+            pertanyaan="Pada 3.685 + 1.247, satuan 5 + 7 = 12. Apa yang ditulis di satuan, dan berapa yang disimpan?"
+            periksa={tulisDuaSimpanSatu}
+            petunjuk="Jangan tulis 12 utuh. Sebutkan angka yang ditulis dan angka yang disimpan."
+            benar="Tulis 2, simpan 1."
           />
           <TulisBebas
             id={idKuis("A", 3)}
-            judul="Simpanan dan hasil"
-            visual={<Papan anak={"  1  1  1\n  6.758\n  2.486\n  ----- +\n    ⬜"} />}
-            pertanyaan="Tulis jawaban akhirnya!"
-            pesanSalah="8 + 6 = 14. Tulis 4, simpan 1."
-            bantuan="Simpanan dari satuan: 1, 1, dan 1. Hasilnya 9.244."
-            umpan="9.244."
-            periksa={(teks) => adaHasil(teks, "9244")}
-            alias={["9244", "9.244"]}
-            konteks="6.758 + 2.486 = 9.244. Simpanan 1, 1, 1."
+            visual={<Papan anak={"  1.508\n+ 2.697"} />}
+            pertanyaan="Tulis hasilnya. Ada simpanan di satuan, puluhan, dan ratusan."
+            pesanSalah="8 + 7 = 15. Tulis 5, simpan 1. Jangan lupakan simpanan berikutnya."
+            bantuan="Hasilnya 4.205."
+            umpan="1.508 + 2.697 = 4.205."
+            periksa={tulis4205}
+            alias={["4205"]}
+            konteks="1.508 + 2.697 = 4.205."
           />
         </Adegan>
 
         <Adegan
           judul="Sub-bab 3 — Pengurangan tanpa meminjam"
-          warna="border-amber-200 bg-amber-50/70"
+          warna="border-emerald-200 bg-white"
           src="/doodle-mtk/mtk-3-bab2-sub3.jpg"
-          alt="Dua baris bola. Baris atas lebih banyak. Truk kecil berdiri di depan gudang."
+          alt="Anak mengembalikan buku dari setiap rak. Setiap rak masih berisi cukup buku."
           kelas={kelas}
           kelamin={kelamin}
           penjelasan={[
-            "Untuk mengurangi, kita juga mulai dari satuan.",
-            "Kalau angka di atas lebih besar atau sama dengan angka di bawah, kita bisa langsung mengurangi. Tidak perlu meminjam.",
+            "Pengurangan juga dimulai dari satuan.",
+            "Kalau angka atas cukup, kurangkan saja. Belum ada yang meminjam.",
           ]}
         >
-          <Dialog nama="Bunda Kiki" anak="Gudang punya 8.745 karung. Dikirim 3.521 karung. Sisa berapa?" />
-          <Dialog nama="Rio" anak="Satuan: 5 − 1 = 4." />
-          <Dialog nama="Adit" anak="Puluhan: 4 − 2 = 2. Ratusan: 7 − 5 = 2." />
-          <Dialog nama="Sinta" anak="Ribuan: 8 − 3 = 5. Jadi 5.224!" />
-          <Dialog nama="Rio" anak="Aman! Semua angka atas lebih besar dari bawah." />
-          <Papan anak={"  8.745\n  3.521\n  ----- −\n  5.224"} />
-          <p className="text-sm font-black text-[#1C01A5]">Angka atas lebih besar? Boleh langsung kurang.</p>
+          <Dialog nama="Cinta" anak="Rak ada 5.876 buku. Yang dipinjam 2.341." />
+          <Dialog nama="Farhan" anak="Satuan 6 lebih besar dari 1. Tidak perlu pinjam?" />
+          <Dialog nama="Hulu" anak="Betul. Kalau angka atas cukup, kurangkan saja." />
+          <Dialog nama="Nisa" anak="6 − 1 = 5. 7 − 4 = 3. 8 − 3 = 5. 5 − 2 = 3." />
+          <Dialog nama="Cinta" anak="Sisa 3.535. Tidak ada rak yang pinjam." />
+          <Papan anak={"  5.876\n− 2.341\n  -----\n  3.535"} />
+          <p className="text-sm font-black text-emerald-800">Kesimpulan: angka atas cukup, langsung dikurangi.</p>
           <KuisSuara
             id={idKuis("A", 4)}
-            pertanyaan="Pada 9.876 − 4.253, hitung satuannya: 6 − 3. Berapa hasilnya?"
-            periksa={jawabTiga}
-            petunjuk="Hitung mundur dari 6 sebanyak 3 langkah."
+            pertanyaan="Berapa hasil 6.749 − 2.315? Sebutkan juga apakah ada rumah yang meminjam."
+            periksa={tanpaPinjam4434}
+            petunjuk="Semua angka atas cukup. Ucapkan hasilnya, lalu katakan tidak meminjam."
+            benar="Empat ribu empat ratus tiga puluh empat. Tidak meminjam."
           />
           <TulisBebas
             id={idKuis("A", 5)}
-            judul="Kurang tanpa pinjaman"
-            visual={<Papan anak={"  7.948\n  3.617\n  ----- −\n    ⬜"} />}
-            pertanyaan="Tulis jawabannya!"
-            pesanSalah="Satuan 8 − 7 = 1."
-            bantuan="Garis rumah: satuan 1, puluhan 3, ratusan 3, ribuan 4. Jadi 4.331."
-            umpan="4.331."
-            periksa={(teks) => adaHasil(teks, "4331")}
-            alias={["4331", "4.331"]}
-            konteks="7.948 − 3.617 = 4.331."
+            visual={<Papan anak={"  8.964\n− 3.521"} />}
+            pertanyaan="Tulis sisanya."
+            pesanSalah="Kurangi dari satuan. Tidak ada yang perlu pinjam."
+            bantuan="4 − 1 = 3, 6 − 2 = 4, 9 − 5 = 4, 8 − 3 = 5."
+            umpan="Sisanya 5.443."
+            periksa={tulis5443}
+            alias={["5443"]}
+            konteks="8.964 − 3.521 = 5.443."
           />
         </Adegan>
 
         <Adegan
           judul="Sub-bab 4 — Pengurangan dengan meminjam"
-          warna="border-rose-200 bg-rose-50/70"
+          warna="border-rose-200 bg-white"
           src="/doodle-mtk/mtk-3-bab2-sub4.jpg"
-          alt="Rumah puluhan menyerahkan kotak 10 ke rumah satuan. Angka puluhan dicoret dan ditulis lebih kecil."
+          alt="Satu rak kosong. Ikat buku dipinjam dari rak di sebelah kirinya."
           kelas={kelas}
           kelamin={kelamin}
           penjelasan={[
-            "Kadang angka di bawah lebih besar dari angka di atas. Kalau begitu, kita meminjam dari rumah sebelah kiri.",
-            "Satu dari rumah kiri bernilai sepuluh di rumah kanan. Dan jangan lupa: rumah yang dipinjam harus dikurangi satu!",
+            "Kalau angka atas lebih kecil, pinjam 1 dari rumah kiri. Pinjaman itu bernilai sepuluh.",
+            "Kalau rumah di kirinya berisi 0, pinjaman dilanjutkan ke rumah yang masih ada isinya.",
           ]}
         >
-          <Dialog nama="Bunda Kiki" anak="Gudang punya 5.342 karung. Harus dikirim 1.876. Sisa berapa?" />
-          <Dialog nama="Sinta" anak="Satuan: 2 − 6… tidak bisa!" />
-          <Dialog nama="Rio" anak="Pinjam dari puluhan! 2 jadi 12, puluhan 4 jadi 3." />
-          <Dialog nama="Adit" anak="12 − 6 = 6." />
-          <Dialog nama="Rio" anak="Puluhan: 3 − 7… tidak bisa lagi! Pinjam dari ratusan. 13 − 7 = 6." />
-          <Dialog nama="Sinta" anak="Ratusan: 2 − 8… tidak bisa! Pinjam lagi. 12 − 8 = 4." />
-          <Dialog nama="Adit" anak="Ribuan: 4 − 1 = 3. Jadi 3.466!" />
-          <Papan anak={"  4  12  13  12\n  5.342\n  1.876\n  ---------- −\n  3.466"} />
-          <Dialog nama="Bunda Kiki" anak="Meminjam tiga kali berturut-turut! Kalian hebat!" />
-          <p className="text-sm font-black text-[#1C01A5]">Bawah lebih besar? Pinjam. Setelah meminjam, rumah kiri berkurang satu.</p>
+          <Dialog nama="Farhan" anak="5.346 kurang 2.178. Satuan 6 lebih kecil dari 8!" />
+          <Dialog nama="Nisa" anak="Pinjam 1 dari puluhan. Puluhan 4 jadi 3. Satuan jadi 16. 16 − 8 = 8." />
+          <Dialog nama="Cinta" anak="Puluhan sekarang 3, bawahnya 7. Kurang lagi. Pinjam dari ratusan." />
+          <Dialog nama="Hulu" anak="Satu pinjaman bernilai sepuluh di rumah yang menerima." />
+          <Dialog nama="Nisa" anak="Ratusan 3 jadi 2, puluhan jadi 13. 13 − 7 = 6. Ratusan 2 − 1 = 1. Ribuan 5 − 2 = 3." />
+          <Dialog nama="Cinta" anak="Sisa 3.168. Sekarang lihat 4.203 − 1.578. Puluhannya 0." />
+          <Dialog nama="Hulu" anak="Nol tidak bisa memberi pinjaman. Pinjaman loncat ke ratusan. Hasilnya 2.625." />
+          <Papan anak={"  5.346 − 2.178 = 3.168\n  4.203 − 1.578 = 2.625"} />
+          <p className="text-sm font-black text-emerald-800">Kesimpulan: yang dipinjam berkurang satu. Rumah nol meneruskan pinjaman ke kiri.</p>
           <KuisSuara
             id={idKuis("A", 6)}
-            pertanyaan="Pada 6.431 − 2.758, angka 6 di atas sudah dicoret jadi 5. Setelah meminjam, angka ribuan jadi berapa?"
-            periksa={jawabLima}
-            petunjuk="Enam dipinjam satu, jadi tinggal lima."
+            pertanyaan="Berapa hasil 7.245 − 3.168? Sebutkan rumah yang meminjam."
+            periksa={pinjam4077}
+            petunjuk="Satuan dan puluhan sama-sama meminjam. Hasilnya empat ribu tujuh puluh tujuh."
+            benar="Empat ribu tujuh puluh tujuh. Satuan dan puluhan meminjam."
           />
           <TulisBebas
             id={idKuis("A", 7)}
-            judul="Kurang dengan pinjaman"
-            visual={<Papan anak={"  7.203\n  3.468\n  ----- −\n    ⬜"} />}
-            pertanyaan="Hitung dan tulis jawabannya!"
-            pesanSalah="Satuan 3 lebih kecil dari 8. Pinjam dulu."
-            bantuan="13 − 8 = 5, 9 − 6 = 3, 11 − 4 = 7, 6 − 3 = 3. Jadi 3.735."
-            umpan="3.735."
-            periksa={(teks) => adaHasil(teks, "3735")}
-            alias={["3735", "3.735"]}
-            konteks="7.203 − 3.468 = 3.735."
+            visual={<Papan anak={"  5.020\n− 1.346"} />}
+            pertanyaan="Tulis sisanya, lalu tulis kata pinjam."
+            pesanSalah="Puluhan 2 tidak cukup untuk 4, dan ratusan berisi 0. Pinjam dari ribuan."
+            bantuan="Hasilnya 3.674."
+            umpan="5.020 − 1.346 = 3.674. Ada pinjaman."
+            periksa={tulis3674}
+            alias={["3674 pinjam"]}
+            konteks="5.020 − 1.346 = 3.674."
           />
         </Adegan>
 
         <Adegan
           judul="Sub-bab 5 — Soal cerita"
-          warna="border-emerald-200 bg-emerald-50/70"
+          warna="border-violet-200 bg-white"
           src="/doodle-mtk/mtk-3-bab2-sub5.jpg"
-          alt="Kantor gudang. Bunda Kiki duduk dengan buku besar. Empat ikon langkah: kaca, kunci, pensil, dan sempoa."
+          alt="Kardus sumbangan tiba di halte buku, dan seorang anak meminjam satu buku."
           kelas={kelas}
           kelamin={kelamin}
           penjelasan={[
-            "Soal cerita harus diterjemahkan dulu jadi kalimat matematika. Ada empat langkah: cari angkanya, cari kata kuncinya, tulis kalimatnya, lalu hitung.",
-            "Kata seperti ditambah atau datang artinya tambah. Kata seperti dikirim, terjual, atau sisa artinya kurang.",
-          ]}
-          simbol={[
-            { ikon: "🔍", teks: "Cari angka" },
-            { ikon: "🔑", teks: "Kata kunci" },
-            { ikon: "✏️", teks: "Tulis" },
-            { ikon: "🧮", teks: "Hitung" },
+            "Pada soal cerita, baca kata kuncinya dulu.",
+            "Datang, jumlah, dan semua berarti tambah. Dipinjam, sisa, dan terpakai berarti kurang.",
           ]}
         >
-          <Dialog nama="Bunda Kiki" anak="Catatan hari ini: pagi ada 4.250 karung. Siang datang 2.180 karung. Sore dikirim 3.500 karung. Berapa sisa di gudang?" />
-          <Dialog nama="Rio" anak="Dua langkah! Pertama, jumlahkan yang datang dulu." />
-          <Dialog nama="Sinta" anak="4.250 + 2.180 = 6.430. Lalu dikurangi 3.500." />
-          <Dialog nama="Adit" anak="6.430 − 3.500 = 2.930." />
-          <Dialog nama="Rio" anak="Sisa 2.930 karung!" />
-          <Papan anak={"Langkah 1: 4.250 + 2.180 = 6.430\nLangkah 2: 6.430 − 3.500 = 2.930"} />
-          <Dialog nama="Bunda Kiki" anak="Bagus! Soal dua langkah harus dikerjakan berurutan." />
-          <p className="text-sm font-black text-[#1C01A5]">Soal cerita butuh empat langkah. Soal campuran dikerjakan berurutan.</p>
+          <Dialog nama="Nisa" anak="Pagi ini rak punya 2.350 buku. Sumbangan datang 1.475." />
+          <Dialog nama="Farhan" anak="Datang berarti tambah." />
+          <Dialog nama="Cinta" anak="Satuan 0 + 5 = 5. Puluhan 5 + 7 = 12. Tulis 2, simpan 1." />
+          <Dialog nama="Nisa" anak="Ratusan 3 + 4 + 1 = 8. Ribuan 2 + 1 = 3. Sekarang ada 3.825." />
+          <Dialog nama="Hulu" anak="Kata kuncinya yang memilih operasi. Baru setelah itu kita menghitung." />
+          <Papan anak={"2.350 + 1.475 = 3.825"} />
+          <p className="text-sm font-black text-emerald-800">Kesimpulan: tentukan tambah atau kurang sebelum menyusun hitungan.</p>
           <KuisSuara
             id={idKuis("A", 8)}
-            pertanyaan="Kata dikirim artinya ditambah atau dikurangi?"
-            periksa={artiKurang}
-            petunjuk="Kalau barang dikirim, barangnya pergi dari gudang. Jadi berkurang."
+            pertanyaan="Rak ada 4.260 buku. Dipinjam 1.085. Sebutkan sisanya dan operasinya."
+            periksa={sisa3175}
+            petunjuk="Dipinjam berarti kurang. Sisanya tiga ribu seratus tujuh puluh lima."
+            benar="Tiga ribu seratus tujuh puluh lima. Operasinya kurang."
           />
           <TulisBebas
             id={idKuis("A", 9)}
-            judul="Kalimat cerita"
-            visual={<Papan anak="Gudang punya 6.800 karung. Terjual 2.450 karung." />}
-            pertanyaan="Tulis kalimat matematikanya dan hasilnya!"
-            pesanSalah="Terjual artinya barangnya berkurang."
-            bantuan="Terjual = kurang. 6.800 − 2.450 = 4.350."
-            umpan="6.800 − 2.450 = 4.350."
-            periksa={(teks) => kalimatKurang(teks, "6800", "2450", "4350")}
-            alias={["6800 - 2450 = 4350", "6.800 − 2.450 = 4.350"]}
-            konteks="6.800 − 2.450 = 4.350."
+            visual={<Papan anak="Pagi 1.864 pengunjung. Siang datang 2.357." />}
+            pertanyaan="Tulis jumlahnya, dan tulis kata tambah."
+            pesanSalah="Datang berarti dijumlahkan. Jangan lupakan simpanannya."
+            bantuan="1.864 + 2.357 = 4.221."
+            umpan="Jumlahnya 4.221."
+            periksa={jumlah4221}
+            alias={["4221 tambah"]}
+            konteks="1.864 + 2.357 = 4.221."
           />
         </Adegan>
 
         <Pilih
           id={idKuis("A", 10)}
-          pertanyaan="1. Berapa 3.847 + 2.576?"
-          visual={<Papan anak={"   1 1 1\n  3.847\n  2.576\n  ----- +"} />}
+          pertanyaan="1. Pada 2.476 + 1.358, berapa yang disimpan dari satuan ke puluhan?"
+          visual={<Papan anak="6 + 8 = 14" />}
           pilihan={[
-            { huruf: "A", teks: "5.313" },
-            { huruf: "B", teks: "6.423" },
-            { huruf: "C", teks: "6.313" },
-            { huruf: "D", teks: "6.413" },
+            { huruf: "A", teks: "0, karena 14 masih muat" },
+            { huruf: "B", teks: "1, karena 14 berarti satu puluhan" },
+            { huruf: "C", teks: "4, karena itulah yang ditulis" },
+            { huruf: "D", teks: "6, karena angkanya 6" },
           ]}
           benar="B"
-          umpan="7 + 6 = 13, simpan 1. 1 + 4 + 7 = 12, simpan 1. 1 + 8 + 5 = 14, simpan 1. 1 + 3 + 2 = 6. Jadi 6.423."
-          salah="Jangan lupakan simpanan 1 di setiap rumah."
+          umpan="Yang ditulis 4. Yang disimpan 1."
+          salah="14 = 1 puluhan + 4 satuan."
         />
         <KuisCocok
           id={idKuis("A", 11)}
-          perintah="2. Pasangkan setiap hitungan dengan hasilnya."
+          perintah="2. Pasangkan hitungan dengan hasilnya."
           baris={[
-            { kiri: "4.500 + 2.300", pilihan: HASIL_A, benar: "6.800" },
-            { kiri: "7.200 − 2.400", pilihan: HASIL_A, benar: "4.800" },
-            { kiri: "2.900 + 2.100", pilihan: HASIL_A, benar: "5.000" },
+            { kiri: "2.476 + 1.358", pilihan: HASIL_A, benar: "3.834" },
+            { kiri: "5.876 − 2.341", pilihan: HASIL_A, benar: "3.535" },
+            { kiri: "4.203 − 1.578", pilihan: HASIL_A, benar: "2.625" },
           ]}
-          umpan="6.800, 4.800, dan 5.000. Ketiganya berbeda."
+          umpan="3.834 menyimpan. 3.535 tanpa pinjam. 2.625 meminjam melewati nol."
         />
         <SusunToken
           id={idKuis("A", 12)}
-          perintah="3. Susun supaya jadi kalimat yang benar."
-          acak={["5.600", "=", "3.400", "2.200", "+"]}
-          benar={["3.400", "+", "2.200", "=", "5.600"]}
-          umpan="3.400 + 2.200 = 5.600."
+          perintah="3. Susun jejak 2.476 + 1.358 dari satuan ke ribuan."
+          acak={["Ribuan: tulis 3", "Satuan: tulis 4, simpan 1", "Ratusan: tulis 8", "Puluhan: tulis 3, simpan 1"]}
+          benar={["Satuan: tulis 4, simpan 1", "Puluhan: tulis 3, simpan 1", "Ratusan: tulis 8", "Ribuan: tulis 3"]}
+          umpan="Dari kanan: tulis 4 simpan 1, tulis 3 simpan 1, tulis 8, tulis 3."
         />
         <KuisBenarSalah
           id={idKuis("A", 13)}
-          perintah="4. Detektif hitung. Periksa tiga pernyataan."
+          perintah="4. Detektif rak. Periksa tiga pernyataan."
           baris={[
-            { teks: "Hasil 4.750 + 2.380 perlu menyimpan.", benar: true },
-            { teks: "Hasil 8.500 − 3.240 perlu meminjam.", benar: false },
-            { teks: "Setelah meminjam, rumah kiri berkurang satu.", benar: true },
+            { teks: "Penjumlahan bersusun dimulai dari satuan.", benar: true },
+            { teks: "Jika 5 + 7 = 12, yang ditulis di satuan adalah 12.", benar: false },
+            { teks: "Pada 4.203 − 1.578, satuan harus meminjam.", benar: true },
           ]}
-          umpan="Benar, salah, benar. 5 + 8 = 13 jadi menyimpan. 8.500 − 3.240 semua angka atas lebih besar."
+          umpan="Benar, salah, benar. 12 ditulis sebagai 2, lalu simpan 1."
         />
         <Pilih
           id={idKuis("A", 14)}
-          pertanyaan="5. ⬜.500 + 2.300 = 7.800. Angka yang hilang adalah..."
-          visual={<Papan anak="⬜.500 + 2.300 = 7.800" />}
+          pertanyaan="5. 3.⬜25 + 1.460 = 4.885. Angka yang hilang adalah..."
+          visual={<Papan anak="3.⬜25 + 1.460 = 4.885" />}
           pilihan={[
-            { huruf: "A", teks: "4" },
-            { huruf: "B", teks: "5" },
-            { huruf: "C", teks: "6" },
-            { huruf: "D", teks: "7" },
+            { huruf: "A", teks: "2" },
+            { huruf: "B", teks: "3" },
+            { huruf: "C", teks: "4" },
+            { huruf: "D", teks: "5" },
           ]}
-          benar="B"
-          umpan="7.800 − 2.300 = 5.500. Angka ribuannya 5."
-          salah="Kurangkan 2.300 dari 7.800."
+          benar="C"
+          umpan="4.885 − 1.460 = 3.425. Angka ratusannya 4."
+          salah="Kurangkan 1.460 dari 4.885."
         />
         <KuisTulisKartu
           id={idKuisTulisKartu(ID, "A")}
@@ -847,282 +843,241 @@ function KartuA({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminGuru }) {
 function KartuB({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminGuru }) {
   const kartu = MODUL_MTK3_BAB2.kartu[1];
   return (
-    <KartuBingkai latar="bg-[#F8F7FF]">
+    <KartuBingkai latar="bg-sky-50/50">
       <KepalaKartu
-        ikon="📊"
+        ikon="📊🦉"
         judul={kartu.judul}
-        anak="Papan simpanan dan pinjaman"
+        anak="Papan hitung · contoh dan cara"
         kelas={kelas}
         kelamin={kelamin}
-        cuplikan={cuplikanKalimat(kartu.voice[0] ?? [])}
+        cuplikan={cuplikanKalimat(kartu.voice[0])}
       />
       <div className="mt-4 space-y-4">
         <Adegan
-          judul="Sub-bab 1 — Menjumlah tanpa menyimpan"
+          judul="Sub-bab 1 — Tanpa menyimpan"
           warna="border-sky-200 bg-white"
           src="/doodle-mtk/mtk-3-bab2-sub1.jpg"
-          alt="Empat rumah angka dengan panah dari kanan ke kiri, tanpa kotak simpanan."
+          alt="Empat rak berlabel dan dua tumpukan buku yang masih muat."
           kelas={kelas}
           kelamin={kelamin}
-          penjelasan={[
-            "Jumlahkan dari satuan. Kalau setiap rumah hasilnya sembilan atau kurang, kita langsung menulis hasilnya.",
-            "Tidak perlu menyimpan apa pun.",
-          ]}
-          simbol={ARAH}
+          penjelasan={["Jumlah 0 sampai 9 ditulis di rumahnya. Tidak ada simpanan."]}
         >
-          <p className="text-sm font-black text-[#1C01A5]">Contoh: 3.241 + 4.536</p>
-          <Langkah butir={["Satuan: 1 + 6 = 7.", "Puluhan: 4 + 3 = 7.", "Ratusan: 2 + 5 = 7.", "Ribuan: 3 + 4 = 7."]} />
-          <Papan anak="7.777" />
-          <p className="text-sm font-black text-emerald-800">Trik: semua muat? Tidak usah simpan.</p>
+          <p className="text-sm font-black text-[#1C01A5]">Contoh: 1.203 + 4.571</p>
+          <Langkah butir={["Satuan 3 + 1 = 4.", "Puluhan 0 + 7 = 7.", "Ratusan 2 + 5 = 7.", "Ribuan 1 + 4 = 5."]} />
+          <Papan anak="1.203 + 4.571 = 5.774" />
+          <p className="text-sm font-black text-emerald-800">Trik: masih satu angka? Tulis saja.</p>
           <KuisSuara
             id={idKuis("B", 0)}
-            pertanyaan="Berapa hasil 5.123 + 2.415?"
-            periksa={baca7538}
-            petunjuk="Jumlahkan dari satuan, lalu bacakan hasilnya."
+            pertanyaan="Berapa 2.314 + 1.625? Sebutkan rumah tempat kamu mulai."
+            periksa={baca3939}
+            petunjuk="Mulai dari satuan. Hasilnya tiga ribu sembilan ratus tiga puluh sembilan."
+            benar="Tiga ribu sembilan ratus tiga puluh sembilan. Mulai dari satuan."
           />
           <TulisBebas
             id={idKuis("B", 1)}
-            visual={<Papan anak="6.214 + 2.173 = ⬜" />}
-            pertanyaan="Tulis jawabannya!"
-            pesanSalah="4 + 3, 1 + 7, 2 + 1, 6 + 2."
-            bantuan="Hasilnya 8.387."
-            umpan="8.387."
-            periksa={(teks) => adaHasil(teks, "8387")}
-            alias={["8387"]}
-            konteks="6.214 + 2.173 = 8.387."
+            visual={<Papan anak="3.240 + 2.516" />}
+            pertanyaan="Tulis hasilnya."
+            pesanSalah="Tidak ada yang sepuluh atau lebih."
+            bantuan="0 + 6 = 6, 4 + 1 = 5, 2 + 5 = 7, 3 + 2 = 5."
+            umpan="Hasilnya 5.756."
+            periksa={tulis5756}
+            alias={["5756"]}
+            konteks="3.240 + 2.516 = 5.756."
           />
         </Adegan>
 
         <Adegan
-          judul="Sub-bab 2 — Menjumlah dengan menyimpan"
-          warna="border-indigo-200 bg-white"
+          judul="Sub-bab 2 — Menyimpan"
+          warna="border-amber-200 bg-white"
           src="/doodle-mtk/mtk-3-bab2-sub2.jpg"
-          alt="Balok 10 melompat ke kiri dan meninggalkan angka simpanan."
+          alt="Ikat sepuluh buku berpindah satu rak ke kiri."
           kelas={kelas}
           kelamin={kelamin}
-          penjelasan={[
-            "Kalau hasil satu rumah lebih dari sembilan, pecah jadi puluhan dan satuan.",
-            "Satuannya ditulis di bawah, puluhannya disimpan kecil di atas rumah sebelah kiri. Simpanan itu wajib ikut dihitung.",
-          ]}
+          penjelasan={["Lebih dari sembilan: tulis angka belakang, simpan 1 ke kiri."]}
         >
-          <p className="text-sm font-black text-[#1C01A5]">Contoh: 4.876 + 2.358</p>
-          <Langkah
-            butir={[
-              "Satuan: 6 + 8 = 14, tulis 4, simpan 1.",
-              "Puluhan: 1 + 7 + 5 = 13, tulis 3, simpan 1.",
-              "Ratusan: 1 + 8 + 3 = 12, tulis 2, simpan 1.",
-              "Ribuan: 1 + 4 + 2 = 7.",
-            ]}
-          />
-          <Papan anak={"   1 1 1\n  4.876\n  2.358\n  ----- +\n  7.234"} />
-          <p className="text-sm font-black text-emerald-800">Trik: lebih dari sembilan? Simpan satu ke kiri.</p>
+          <p className="text-sm font-black text-[#1C01A5]">Contoh: 4.278 + 1.653</p>
+          <Langkah butir={["8 + 3 = 11, tulis 1, simpan 1.", "7 + 5 + 1 = 13, tulis 3, simpan 1.", "2 + 6 + 1 = 9.", "4 + 1 = 5."]} />
+          <Papan anak="4.278 + 1.653 = 5.931" />
+          <p className="text-sm font-black text-emerald-800">Trik: yang ditulis bukan 11, melainkan 1.</p>
           <KuisSuara
             id={idKuis("B", 2)}
-            pertanyaan="Pada 6.437 + 2.285, satuannya 7 + 5 = 12. Berapa yang disimpan?"
-            periksa={jawabSatu}
-            petunjuk="12 adalah satu puluhan dan dua satuan."
+            pertanyaan="Pada 2.609 + 3.184, satuan 9 + 4 = 13. Apa yang ditulis, dan berapa yang disimpan?"
+            periksa={tulisTigaSimpanSatu}
+            petunjuk="Tulis angka satuannya, simpan puluhannya."
+            benar="Tulis 3, simpan 1."
           />
           <TulisBebas
             id={idKuis("B", 3)}
-            visual={<Papan anak="5.869 + 3.274 = ⬜" />}
-            pertanyaan="Tulis hasil akhirnya!"
-            pesanSalah="9 + 4 = 13. Tulis 3, simpan 1."
-            bantuan="Simpanan 1, 1, 1. Hasilnya 9.143."
-            umpan="9.143."
-            periksa={(teks) => adaHasil(teks, "9143")}
-            alias={["9143"]}
-            konteks="5.869 + 3.274 = 9.143."
+            visual={<Papan anak="2.847 + 1.365" />}
+            pertanyaan="Tulis hasilnya."
+            pesanSalah="Ada simpanan di satuan, puluhan, dan ratusan."
+            bantuan="Hasilnya 4.212."
+            umpan="2.847 + 1.365 = 4.212."
+            periksa={tulis4212}
+            alias={["4212"]}
+            konteks="2.847 + 1.365 = 4.212."
           />
         </Adegan>
 
         <Adegan
-          judul="Sub-bab 3 — Mengurangi tanpa meminjam"
-          warna="border-amber-200 bg-white"
+          judul="Sub-bab 3 — Tanpa meminjam"
+          warna="border-emerald-200 bg-white"
           src="/doodle-mtk/mtk-3-bab2-sub3.jpg"
-          alt="Dua baris bola. Baris atas lebih banyak dan sisa bola bersinar."
+          alt="Buku keluar dari rak yang masih berisi cukup."
           kelas={kelas}
           kelamin={kelamin}
-          penjelasan={[
-            "Untuk mengurangi, mulai dari satuan.",
-            "Kalau angka di atas lebih besar atau sama dengan angka di bawah, kita bisa langsung mengurangi tanpa meminjam.",
-          ]}
+          penjelasan={["Angka atas cukup? Kurangi dari kanan. Tidak ada pinjaman."]}
         >
-          <p className="text-sm font-black text-[#1C01A5]">Contoh: 9.865 − 4.321</p>
-          <Langkah butir={["Satuan: 5 − 1 = 4.", "Puluhan: 6 − 2 = 4.", "Ratusan: 8 − 3 = 5.", "Ribuan: 9 − 4 = 5."]} />
-          <Papan anak="5.544" />
-          <p className="text-sm font-black text-emerald-800">Trik: atas lebih besar? Boleh langsung kurang.</p>
+          <p className="text-sm font-black text-[#1C01A5]">Contoh: 7.865 − 2.431</p>
+          <Langkah butir={["5 − 1 = 4.", "6 − 3 = 3.", "8 − 4 = 4.", "7 − 2 = 5."]} />
+          <Papan anak="7.865 − 2.431 = 5.434" />
+          <p className="text-sm font-black text-emerald-800">Trik: cukup? Langsung kurang.</p>
           <KuisSuara
             id={idKuis("B", 4)}
-            pertanyaan="Berapa hasil 8.974 − 3.652?"
-            periksa={baca5322}
-            petunjuk="Semua angka atas lebih besar. Kurangkan dari satuan."
+            pertanyaan="Berapa 9.578 − 4.236? Apakah ada yang meminjam?"
+            periksa={tanpaPinjam5342}
+            petunjuk="Ucapkan hasilnya, lalu katakan tidak meminjam."
+            benar="Lima ribu tiga ratus empat puluh dua. Tidak meminjam."
           />
           <TulisBebas
             id={idKuis("B", 5)}
-            visual={<Papan anak="9.785 − 4.263 = ⬜" />}
-            pertanyaan="Tulis jawabannya!"
-            pesanSalah="5 − 3 = 2."
-            bantuan="Hasilnya 5.522."
-            umpan="5.522."
-            periksa={(teks) => adaHasil(teks, "5522")}
-            alias={["5522"]}
-            konteks="9.785 − 4.263 = 5.522."
+            visual={<Papan anak="6.489 − 1.253" />}
+            pertanyaan="Tulis sisanya."
+            pesanSalah="Semua angka atas lebih besar."
+            bantuan="9 − 3 = 6, 8 − 5 = 3, 4 − 2 = 2, 6 − 1 = 5."
+            umpan="Sisanya 5.236."
+            periksa={tulis5236}
+            alias={["5236"]}
+            konteks="6.489 − 1.253 = 5.236."
           />
         </Adegan>
 
         <Adegan
-          judul="Sub-bab 4 — Mengurangi dengan meminjam"
+          judul="Sub-bab 4 — Meminjam melewati nol"
           warna="border-rose-200 bg-white"
           src="/doodle-mtk/mtk-3-bab2-sub4.jpg"
-          alt="Rumah kiri menyerahkan kotak 10. Angka kiri dicoret menjadi lebih kecil."
+          alt="Rak tengah kosong, pinjaman datang dari rak paling kiri."
           kelas={kelas}
           kelamin={kelamin}
-          penjelasan={[
-            "Kalau angka di bawah lebih besar, kita pinjam satu dari rumah sebelah kiri. Satu di rumah kiri bernilai sepuluh di rumah kanan.",
-            "Setelah meminjam, rumah kiri dikurangi satu dan diberi tanda coret.",
-          ]}
+          penjelasan={["Rumah yang berisi 0 tidak bisa memberi pinjaman. Lanjutkan ke kiri."]}
         >
-          <p className="text-sm font-black text-[#1C01A5]">Contoh: 6.253 − 2.487</p>
-          <Langkah
-            butir={[
-              "Satuan 3 lebih kecil dari 7. Pinjam, 13 − 7 = 6.",
-              "Puluhan 4 lebih kecil dari 8. Pinjam, 14 − 8 = 6.",
-              "Ratusan 1 lebih kecil dari 4. Pinjam, 11 − 4 = 7.",
-              "Ribuan: 5 − 2 = 3.",
-            ]}
-          />
-          <Papan anak={"  5  11  14  13\n  6.253\n  2.487\n  ---------- −\n  3.766"} />
-          <p className="text-sm font-black text-emerald-800">Trik: bawah lebih besar? Pinjam. Coret, kurang satu.</p>
+          <p className="text-sm font-black text-[#1C01A5]">Contoh: 8.045 − 2.617</p>
+          <Langkah butir={["Satuan 5 pinjam. Puluhan 4 jadi 3, satuan 15 − 7 = 8.", "Puluhan 3 − 1 = 2.", "Ratusan 0, jadi pinjam dari ribuan. 10 − 6 = 4.", "Ribuan 7 − 2 = 5."]} />
+          <Papan anak="8.045 − 2.617 = 5.428" />
+          <p className="text-sm font-black text-emerald-800">Trik: rumah 0 meneruskan pinjaman.</p>
           <KuisSuara
             id={idKuis("B", 6)}
-            pertanyaan="Pada 7.412 − 3.859, angka 7 sudah dicoret jadi 6. Setelah meminjam, angka ribuan jadi berapa?"
-            periksa={jawabEnam}
-            petunjuk="Tujuh dipinjam satu, jadi tinggal enam."
+            pertanyaan="Berapa 8.045 − 2.617? Sebutkan rumah kosong yang harus meminjam."
+            periksa={pinjam5428}
+            petunjuk="Ratusan kosong, jadi sebutkan ratusan dan hasilnya."
+            benar="Lima ribu empat ratus dua puluh delapan. Ratusan meminjam dari ribuan."
           />
           <TulisBebas
             id={idKuis("B", 7)}
-            visual={<Papan anak="8.304 − 4.676 = ⬜" />}
-            pertanyaan="Hitung dan tulis jawabannya!"
-            pesanSalah="Satuan 4 lebih kecil dari 6. Pinjam dulu."
-            bantuan="14 − 6 = 8, 9 − 7 = 2, 12 − 6 = 6, 7 − 4 = 3. Jadi 3.628."
-            umpan="3.628."
-            periksa={(teks) => adaHasil(teks, "3628")}
-            alias={["3628"]}
-            konteks="8.304 − 4.676 = 3.628."
+            visual={<Papan anak="4.006 − 1.238" />}
+            pertanyaan="Tulis sisanya, lalu tulis rumah awal pinjamannya: ribuan."
+            pesanSalah="Puluhan dan ratusan berisi 0. Pinjaman dimulai dari ribuan."
+            bantuan="Hasilnya 2.768."
+            umpan="4.006 − 1.238 = 2.768. Pinjam dari ribuan."
+            periksa={pinjam2768}
+            alias={["2768 ribuan"]}
+            konteks="4.006 − 1.238 = 2.768."
           />
         </Adegan>
 
         <Adegan
           judul="Sub-bab 5 — Soal cerita"
-          warna="border-emerald-200 bg-white"
+          warna="border-violet-200 bg-white"
           src="/doodle-mtk/mtk-3-bab2-sub5.jpg"
-          alt="Empat ikon langkah berjajar dengan nomor besar."
+          alt="Dua catatan di meja: buku terpakai dan buku yang dijumlahkan."
           kelas={kelas}
           kelamin={kelamin}
-          penjelasan={[
-            "Soal cerita perlu diterjemahkan. Empat langkahnya: cari angka, cari kata kunci, tulis kalimat matematika, lalu hitung.",
-            "Hapalkan kata kunci tambah dan kata kunci kurang.",
-          ]}
+          penjelasan={["Pilih operasi dari kata kunci, baru hitung dari satuan."]}
         >
-          <div className="grid gap-2 sm:grid-cols-2">
-            <div className="rounded-xl bg-emerald-50 px-3 py-3">
-              <p className="text-sm font-black text-emerald-800">Kata kunci tambah</p>
-              <p className="mt-1 text-sm font-semibold text-slate-700">datang, ditambah, diberi lagi, masuk, jumlahkan, semuanya</p>
-            </div>
-            <div className="rounded-xl bg-rose-50 px-3 py-3">
-              <p className="text-sm font-black text-rose-800">Kata kunci kurang</p>
-              <p className="mt-1 text-sm font-semibold text-slate-700">dikirim, terjual, dipakai, sisa, tinggal, berkurang</p>
-            </div>
-          </div>
-          <p className="text-sm font-black text-[#1C01A5]">Contoh: gudang punya 3.450 karung. Dikirim 1.280 karung.</p>
-          <Langkah
-            butir={[
-              "Angka: 3.450 dan 1.280.",
-              "Kata kunci dikirim artinya kurang.",
-              "Kalimat: 3.450 − 1.280.",
-              "Hitung: 2.170. Sisa 2.170 karung.",
-            ]}
-          />
-          <p className="text-sm font-black text-emerald-800">Trik: baca dulu, jangan langsung hitung.</p>
+          <p className="text-sm font-black text-[#1C01A5]">Contoh: ada 3.480 pensil, terpakai 1.265. Sisa?</p>
+          <Langkah butir={["Terpakai berarti kurang.", "0 pinjam, 10 − 5 = 5.", "7 − 6 = 1. 4 − 2 = 2. 3 − 1 = 2."]} />
+          <Papan anak="3.480 − 1.265 = 2.215" />
+          <p className="text-sm font-black text-emerald-800">Trik: baca kata kerjanya dulu.</p>
           <KuisSuara
             id={idKuis("B", 8)}
-            pertanyaan="Kata terjual artinya tambah atau kurang?"
-            periksa={artiKurang}
-            petunjuk="Barang yang terjual pergi dari gudang."
+            pertanyaan="Rak A 2.146 buku, rak B 1.853 buku. Sebutkan jumlahnya dan operasinya."
+            periksa={jumlah3999}
+            petunjuk="Dua rak digabung berarti tambah. Hasilnya tiga ribu sembilan ratus sembilan puluh sembilan."
+            benar="Tiga ribu sembilan ratus sembilan puluh sembilan. Operasinya tambah."
           />
           <TulisBebas
             id={idKuis("B", 9)}
-            visual={<Papan anak="Ada 5.600 karung. Datang 2.150 karung lagi." />}
-            pertanyaan="Tulis kalimat matematika dan hasilnya!"
-            pesanSalah="Datang artinya bertambah."
-            bantuan="5.600 + 2.150 = 7.750."
-            umpan="5.600 + 2.150 = 7.750."
-            periksa={(teks) => kalimatTambah(teks, "5600", "2150", "7750")}
-            alias={["5600 + 2150 = 7750"]}
-            konteks="5.600 + 2.150 = 7.750."
+            visual={<Papan anak="5.200 kartu dibagikan 1.750." />}
+            pertanyaan="Tulis sisanya, dan tulis kata kurang."
+            pesanSalah="Dibagikan berarti pengurangan. Ratusan berisi 2, puluhan berisi 0."
+            bantuan="5.200 − 1.750 = 3.450."
+            umpan="Sisanya 3.450."
+            periksa={sisa3450}
+            alias={["3450 kurang"]}
+            konteks="5.200 − 1.750 = 3.450."
           />
         </Adegan>
 
         <Pilih
           id={idKuis("B", 10)}
-          pertanyaan="1. Soal mana yang tidak perlu menyimpan?"
+          pertanyaan="1. Angka 1 yang ditulis di satuan pada 4.278 + 1.653 berasal dari..."
+          visual={<Papan anak="8 + 3 = 11" />}
           pilihan={[
-            { huruf: "A", teks: "4.768 + 3.575" },
-            { huruf: "B", teks: "2.431 + 3.124" },
-            { huruf: "C", teks: "5.847 + 2.396" },
-            { huruf: "D", teks: "6.758 + 2.486" },
+            { huruf: "A", teks: "Simpanan dari puluhan" },
+            { huruf: "B", teks: "Sisa dari 11, yaitu angka 1" },
+            { huruf: "C", teks: "Angka ribuan" },
+            { huruf: "D", teks: "Hasil peminjaman" },
           ]}
           benar="B"
-          umpan="1 + 4 = 5, 3 + 2 = 5, 4 + 1 = 5, 2 + 3 = 5. Semua 9 atau kurang."
-          salah="Cek jumlah setiap rumah. Kalau ada yang 10 atau lebih, harus menyimpan."
+          umpan="11 ditulis 1, simpanan 1 naik ke puluhan."
+          salah="Lihat satuan dulu: 8 + 3."
         />
         <KuisCocok
           id={idKuis("B", 11)}
-          perintah="2. Pasangkan soal dengan tekniknya."
+          perintah="2. Pasangkan hitungan dengan tekniknya."
           baris={[
-            { kiri: "3.214 + 4.560", pilihan: TEKNIK, benar: "Tambah tanpa menyimpan" },
-            { kiri: "7.845 − 3.612", pilihan: TEKNIK, benar: "Kurang tanpa meminjam" },
-            { kiri: "5.234 − 2.876", pilihan: TEKNIK, benar: "Kurang dengan meminjam" },
+            { kiri: "2.431 + 3.256", pilihan: TEKNIK_B, benar: "Tanpa menyimpan" },
+            { kiri: "2.476 + 1.358", pilihan: TEKNIK_B, benar: "Menyimpan" },
+            { kiri: "5.346 − 2.178", pilihan: TEKNIK_B, benar: "Meminjam" },
           ]}
-          umpan="3.214 + 4.560 tanpa simpanan. 7.845 − 3.612 tanpa pinjaman. 5.234 − 2.876 perlu pinjaman karena 4 lebih kecil dari 6."
+          umpan="Yang pertama muat semua. Yang kedua menyimpan. Yang ketiga meminjam."
         />
         <SusunToken
           id={idKuis("B", 12)}
-          perintah="3. Susun gerbong dari hasil terkecil ke terbesar."
-          acak={["4.000 + 4.500", "8.000 − 6.500", "9.000 − 2.800", "3.400 + 2.100"]}
-          benar={["8.000 − 6.500", "3.400 + 2.100", "9.000 − 2.800", "4.000 + 4.500"]}
-          umpan="Hasilnya 1.500, 5.500, 6.200, lalu 8.500."
-          salah="Hitung tiap gerbong dulu: 1.500, 5.500, 6.200, 8.500."
+          perintah="3. Susun hasil ini dari yang terkecil."
+          acak={["5.434", "2.768", "3.168"]}
+          benar={["2.768", "3.168", "5.434"]}
+          umpan="2.768, lalu 3.168, lalu 5.434."
         />
         <KuisBenarSalah
           id={idKuis("B", 13)}
-          perintah="4. Periksa tiga pernyataan."
+          perintah="4. Cek papan."
           baris={[
-            { teks: "Pada 6.251 − 2.478, angka 6 menjadi 5.", benar: true },
-            { teks: "5.400 + 3.700 = 9.100 tanpa menyimpan.", benar: false },
-            { teks: "Hasil 9.999 − 4.999 = 5.000.", benar: true },
+            { teks: "Menyimpan 1 berarti sepuluh pindah ke rumah kiri.", benar: true },
+            { teks: "Jika angka atas lebih kecil, kurangi tanpa meminjam.", benar: false },
+            { teks: "Kata sisa pada soal cerita berarti pengurangan.", benar: true },
           ]}
-          umpan="Benar, salah, benar. 4 + 7 = 11, jadi 5.400 + 3.700 perlu menyimpan."
+          umpan="Benar, salah, benar. Angka atas yang lebih kecil harus meminjam."
         />
         <Pilih
           id={idKuis("B", 14)}
-          pertanyaan="5. 2.⬜00 + 3.400 = 6.100. Angka yang hilang adalah..."
-          visual={<Papan anak="2.⬜00 + 3.400 = 6.100" />}
+          pertanyaan="5. 5.2⬜0 − 1.346 = 3.674. Angka yang hilang adalah..."
+          visual={<Papan anak="5.2⬜0 − 1.346 = 3.674" />}
           pilihan={[
-            { huruf: "A", teks: "5" },
-            { huruf: "B", teks: "6" },
-            { huruf: "C", teks: "7" },
-            { huruf: "D", teks: "8" },
+            { huruf: "A", teks: "0" },
+            { huruf: "B", teks: "2" },
+            { huruf: "C", teks: "4" },
+            { huruf: "D", teks: "5" },
           ]}
-          benar="C"
-          umpan="6.100 − 3.400 = 2.700. Angka ratusannya 7."
-          salah="Kurangkan 3.400 dari 6.100."
+          benar="A"
+          umpan="3.674 + 1.346 = 5.020. Angka puluhannya 0."
+          salah="Jumlahkan 3.674 dan 1.346 untuk menemukan bilangan atasnya."
         />
         <KuisTulisKartu
           id={idKuisTulisKartu(ID, "B")}
-          pertanyaan="Tulis kalimat kunci: Bawah lebih besar, pinjam dari kiri."
+          pertanyaan="Tulis kalimat kunci: Kurang tidak cukup, pinjam satu dari kiri."
           alias={["pinjam", "kiri"]}
-          konteks="Bawah lebih besar, pinjam dari kiri."
+          konteks="Kurang tidak cukup, pinjam satu dari kiri."
         />
       </div>
     </KartuBingkai>
@@ -1134,162 +1089,159 @@ function KartuC({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminGuru }) {
   return (
     <KartuBingkai latar="bg-amber-50/40">
       <KepalaKartu
-        ikon="🚚🐨"
+        ikon="🔖🦉"
         judul={kartu.judul}
-        anak="Sepuluh pos · tambah, simpan, kurang, pinjam"
+        anak="Sepuluh giliran · stempel rak"
         kelas={kelas}
         kelamin={kelamin}
-        cuplikan={cuplikanKalimat([
-          "Dalam permainan ini, kalian menjadi kepala ekspedisi. Truk datang membawa muatan, truk pergi mengirim muatan.",
-          "Kalau muatan bertambah, kalian menjumlahkan. Kalau muatan berkurang, kalian mengurangi. Kalau lebih dari sembilan, pindahkan ke bak sebelah. Kalau kurang, pinjam dari bak depan.",
-          "Ayo berangkat!",
-        ])}
+        cuplikan={cuplikanKalimat(kartu.voice[0])}
       />
       <GambarDoodle
         src="/doodle-mtk/mtk-3-bab2-permainan.jpg"
-        alt="Jalan raya, truk besar, gudang, dan koala berpeci di pos pemeriksaan."
+        alt="Burung hantu di meja perpustakaan keliling, memegang stempel. Rak buku dan bus di belakangnya."
         ukuran="lebar"
       />
       <PanduanIkon
-        judul="Simbol ekspedisi"
+        judul="Simbol rak"
         butir={[
-          { ikon: "📦", teks: "Muatan datang" },
+          { ikon: "📚", teks: "Buku masuk" },
           { ikon: "📌", teks: "Simpan" },
-          { ikon: "🚚", teks: "Muatan pergi" },
-          { ikon: "🔄", teks: "Pinjam" },
-          { ikon: "👷", teks: "Kepala ekspedisi" },
+          { ikon: "📖", teks: "Buku dipinjam" },
+          { ikon: "🔄", teks: "Pinjam rumah" },
+          { ikon: "🦉", teks: "Hulu" },
         ]}
       />
       <div className="mt-4 space-y-2 text-sm font-semibold leading-relaxed text-slate-700">
-        <p>Kamu kepala ekspedisi. Muatan bertambah dijumlahkan. Muatan berkurang dikurangi. Hasil benar, truk boleh berangkat.</p>
-        <p>Level 1: 3.215 + 2.174. Level 2: 4.867 + 3.459, satuan meluap jadi simpan 1. Level 3: 8.542 − 3.216.</p>
-        <p>Level 4: 7.324 − 4.568, satuan kurang jadi pinjam. Level 5: 3.500 + 2.750 = 6.250, lalu 6.250 − 4.200 = 2.050.</p>
-        <p>Jalan Tol soalnya langsung, hadiahnya 1 truk. Jalan Pegunungan soalnya bertingkat, hadiahnya lebih besar.</p>
-        <p>Lampu Sorot membantu melihat muatan, tetapi mengurangi 1 truk. Berani tanpa bantuan menambah 1 truk.</p>
-        <p>Salah hitung berarti peti hilang di jalan. Palang terbuka lagi dan kamu boleh mengulang. Truk tidak berkurang.</p>
+        <p>Kamu petugas rak. Buku masuk dijumlahkan. Buku keluar dikurangi. Catatan benar mendapat stempel.</p>
+        <p>Level 1: 2.431 + 3.256. Level 2: 6 + 8 = 14, tulis 4 simpan 1. Level 3: 5.876 − 2.341, tanpa meminjam.</p>
+        <p>Level 4: 5.346 − 2.178. Level 5: pada 4.203 − 1.578, puluhan 0 jadi pinjaman loncat ke ratusan.</p>
+        <p>Meja pemula soalnya langsung, hadiahnya 1 stempel. Meja halte soalnya bertingkat, hadiahnya lebih besar.</p>
+        <p>Kaca rak membantu melihat rumah angka, tetapi mengurangi 1 stempel. Berani tanpa kaca menambah 1 stempel.</p>
+        <p>Salah hitung tidak mengurangi stempel. Rak berkedip, lalu kamu boleh mengulang.</p>
         <p>Mode berdua: pemain A menghitung tambah, pemain B menghitung kurang. Keduanya harus bertemu di angka yang sama.</p>
-        <p>Kumpulkan 10 truk untuk membuka Rute Ekspres dan mendapat topi kepala ekspedisi.</p>
+        <p>Kumpulkan 10 stempel untuk membuka meja pustakawan.</p>
       </div>
       <MisiPenjagaKebun
         misi={MISI_MTK3_BAB2}
         idMisi={(indeks) => idKuis("C", indeks)}
         idTulis={idKuisTulisKartu(ID, "C")}
         tema={TEMA_MTK3_BAB2}
-        penutup="Rute Ekspres terbuka. Bunda Kiki memasang topi kepala ekspedisi."
-        bunga="🚚📦👷🐨"
+        penutup="Meja pustakawan terbuka. Hulu memasang lencana petugas rak."
+        bunga="📚📌📖🦉"
       />
       <div className="mt-5 space-y-3">
-        <h5 className="text-center text-base font-black text-[#1C01A5]">Sepuluh soal ekspedisi</h5>
+        <h5 className="text-center text-base font-black text-[#1C01A5]">Sepuluh soal giliran rak</h5>
         <Pilih
           id={idKuis("C", 10)}
-          pertanyaan="1. Truk punya 4.216 peti, datang 3.472 peti lagi. Berapa totalnya?"
+          pertanyaan="1. Berapa 4.278 + 1.653?"
           pilihan={[
-            { huruf: "A", teks: "7.688" },
-            { huruf: "B", teks: "7.588" },
-            { huruf: "C", teks: "7.678" },
-            { huruf: "D", teks: "8.688" },
+            { huruf: "A", teks: "5.931" },
+            { huruf: "B", teks: "5.831" },
+            { huruf: "C", teks: "5.941" },
+            { huruf: "D", teks: "6.931" },
           ]}
           benar="A"
-          umpan="6 + 2 = 8, 1 + 7 = 8, 2 + 4 = 6, 4 + 3 = 7. Jadi 7.688."
-          salah="Jumlahkan dari satuan. Tidak ada yang disimpan."
+          umpan="Satuan dan puluhan menyimpan. Hasilnya 5.931."
+          salah="Jangan lupakan dua simpanan."
         />
         <Pilih
           id={idKuis("C", 11)}
-          pertanyaan="2. Pada 5.847 + 2.396, satuannya 7 + 6 = 13. Apa yang harus dilakukan?"
+          pertanyaan="2. Satuan 5 + 7 = 12. Apa yang harus dilakukan?"
           pilihan={[
-            { huruf: "A", teks: "Buang angka 1" },
-            { huruf: "B", teks: "Tulis 3, simpan 1 ke puluhan" },
-            { huruf: "C", teks: "Tulis 13 langsung" },
-            { huruf: "D", teks: "Balik posisi kedua bilangan" },
+            { huruf: "A", teks: "Tulis 12 di satuan" },
+            { huruf: "B", teks: "Tulis 2, simpan 1 ke puluhan" },
+            { huruf: "C", teks: "Tulis 1, simpan 2" },
+            { huruf: "D", teks: "Tidak menjumlah satuan" },
           ]}
           benar="B"
-          umpan="Tulis 3 di satuan, simpan 1 ke puluhan."
-          salah="13 tidak bisa ditulis utuh di satu rumah."
+          umpan="12 tidak muat di satu rumah. Tulis 2, simpan 1."
+          salah="Pisahkan sepuluh dan sisanya."
         />
         <KuisCocok
           id={idKuis("C", 12)}
           perintah="3. Pasangkan hitungan dengan hasilnya."
           baris={[
-            { kiri: "6.400 + 2.500", pilihan: HASIL_C, benar: "8.900" },
-            { kiri: "8.700 − 3.100", pilihan: HASIL_C, benar: "5.600" },
-            { kiri: "5.600 − 1.400", pilihan: HASIL_C, benar: "4.200" },
+            { kiri: "2.431 + 3.256", pilihan: HASIL_C, benar: "5.687" },
+            { kiri: "2.476 + 1.358", pilihan: HASIL_C, benar: "3.834" },
+            { kiri: "5.346 − 2.178", pilihan: HASIL_C, benar: "3.168" },
           ]}
-          umpan="8.900, 5.600, dan 4.200."
+          umpan="5.687, 3.834, dan 3.168."
         />
         <SusunToken
           id={idKuis("C", 13)}
-          perintah="4. Susun muatan dari yang terkecil ke terbesar."
-          acak={["9.200", "4.750", "6.800", "2.510", "8.140"]}
-          benar={["2.510", "4.750", "6.800", "8.140", "9.200"]}
-          umpan="2.510, 4.750, 6.800, 8.140, 9.200."
+          perintah="4. Susun sisa buku dari yang terkecil."
+          acak={["4.221", "2.625", "2.215", "3.535"]}
+          benar={["2.215", "2.625", "3.535", "4.221"]}
+          umpan="2.215, 2.625, 3.535, 4.221."
         />
         <KuisBenarSalah
           id={idKuis("C", 14)}
-          perintah="5. Cek truk."
+          perintah="5. Cek catatan Hulu."
           baris={[
-            { teks: "Pada 8.241 − 3.876, angka 8 menjadi 7.", benar: true },
-            { teks: "5.300 + 2.900 tidak perlu menyimpan.", benar: false },
-            { teks: "Pada 4.512 − 2.867, satuan menjadi 12.", benar: true },
+            { teks: "2.431 + 3.256 tidak menyimpan.", benar: true },
+            { teks: "4.203 − 1.578 bisa dikerjakan tanpa meminjam.", benar: false },
+            { teks: "Kata sisa berarti pengurangan.", benar: true },
           ]}
-          umpan="Benar, salah, benar. 3 + 9 = 12, jadi perlu menyimpan."
+          umpan="Benar, salah, benar. 3 lebih kecil dari 8, jadi satuan meminjam."
         />
         <Pilih
           id={idKuis("C", 15)}
-          pertanyaan="6. 3.⬜00 + 4.200 = 7.500. Angka yang hilang adalah..."
-          visual={<Papan anak="3.⬜00 + 4.200 = 7.500" />}
+          pertanyaan="6. ⬜ + 1.358 = 3.834. Bilangan yang hilang adalah..."
+          visual={<Papan anak="⬜ + 1.358 = 3.834" />}
           pilihan={[
-            { huruf: "A", teks: "2" },
-            { huruf: "B", teks: "3" },
-            { huruf: "C", teks: "4" },
-            { huruf: "D", teks: "5" },
+            { huruf: "A", teks: "2.476" },
+            { huruf: "B", teks: "2.486" },
+            { huruf: "C", teks: "1.476" },
+            { huruf: "D", teks: "2.576" },
           ]}
-          benar="B"
-          umpan="7.500 − 4.200 = 3.300. Angka ratusannya 3."
-          salah="Kurangkan 4.200 dari 7.500."
+          benar="A"
+          umpan="3.834 − 1.358 = 2.476."
+          salah="Kurangkan 1.358 dari 3.834."
         />
         <Pilih
           id={idKuis("C", 16)}
-          pertanyaan="7. Truk membawa 9.005 peti, dikirim 4.376 peti. Berapa sisanya?"
+          pertanyaan="7. Berapa 7.003 − 2.456?"
           pilihan={[
-            { huruf: "A", teks: "4.629" },
-            { huruf: "B", teks: "4.639" },
-            { huruf: "C", teks: "4.729" },
-            { huruf: "D", teks: "5.629" },
+            { huruf: "A", teks: "4.547" },
+            { huruf: "B", teks: "4.557" },
+            { huruf: "C", teks: "5.547" },
+            { huruf: "D", teks: "4.647" },
           ]}
           benar="A"
-          umpan="Pinjam berantai: 15 − 6 = 9, 9 − 7 = 2, 9 − 3 = 6, 8 − 4 = 4. Jadi 4.629."
-          salah="Ada angka nol. Pinjamannya berantai sampai ribuan."
+          umpan="Puluhan dan ratusan 0. Pinjaman dari ribuan. Sisanya 4.547."
+          salah="Ada dua nol di tengah. Pinjaman berantai."
         />
         <Pilih
           id={idKuis("C", 17)}
-          pertanyaan="8. Muatan naik 400: 2.100 – 2.500 – 2.900 – ⬜. Berikutnya..."
+          pertanyaan="8. Deret naik 1.250: 1.200 – 2.450 – 3.700 – ⬜. Berikutnya..."
           pilihan={[
-            { huruf: "A", teks: "3.200" },
-            { huruf: "B", teks: "3.300" },
-            { huruf: "C", teks: "3.400" },
-            { huruf: "D", teks: "3.500" },
+            { huruf: "A", teks: "4.850" },
+            { huruf: "B", teks: "4.950" },
+            { huruf: "C", teks: "4.900" },
+            { huruf: "D", teks: "5.050" },
           ]}
           benar="B"
-          umpan="2.900 + 400 = 3.300."
-          salah="Tambahkan 400 pada 2.900."
+          umpan="3.700 + 1.250 = 4.950."
+          salah="Tambahkan 1.250 pada 3.700."
         />
         <KuisSuara
           id={idKuis("C", 18)}
-          pertanyaan="Truk membawa lima ribu dua ratus peti, ditambah tiga ribu seratus peti. Sebutkan jumlah totalnya."
-          periksa={baca8300}
-          petunjuk="Jumlahkan 5.200 dan 3.100, lalu ucapkan hasilnya."
+          pertanyaan="Ucapkan hasil 6.004 − 2.578, lalu sebutkan rumah awal pinjamannya."
+          periksa={pinjam3426}
+          petunjuk="Puluhan dan ratusan berisi 0. Hasilnya tiga ribu empat ratus dua puluh enam."
+          benar="Tiga ribu empat ratus dua puluh enam. Pinjam dari ribuan."
         />
         <TulisBebas
           id={idKuis("C", 19)}
-          judul="Dua langkah muatan"
-          visual={<Papan anak="Gudang punya 6.400 peti. Datang 2.350. Lalu dikirim 4.500." />}
-          pertanyaan="Tulis dua langkah pengerjaan dan hasil akhirnya!"
-          pesanSalah="Jumlahkan yang datang dulu, baru kurangi yang dikirim."
-          bantuan="6.400 + 2.350 = 8.750. Lalu 8.750 − 4.500 = 4.250."
-          umpan="8.750, lalu sisa 4.250."
-          periksa={duaLangkahMuatan}
-          alias={["8750", "4250"]}
-          konteks="6.400 + 2.350 = 8.750. 8.750 − 4.500 = 4.250."
+          judul="Jejak simpanan"
+          visual={<Papan anak="4.278 + 1.653" />}
+          pertanyaan="Tulis hasilnya, lalu tulis berapa kali kamu menyimpan."
+          pesanSalah="Satuan dan puluhan menyimpan. Ratusan tidak."
+          bantuan="Hasilnya 5.931. Menyimpan dua kali."
+          umpan="5.931, menyimpan dua kali."
+          periksa={simpan5931}
+          alias={["5931 dua"]}
+          konteks="4.278 + 1.653 = 5.931. Menyimpan dua kali."
         />
       </div>
     </KartuBingkai>
@@ -1307,30 +1259,26 @@ function LembarEvaluasi({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminG
     }
     return jumlahSkor;
   }, [kuis]);
-  const lencana = skor >= 9 ? "👷 Kepala Ekspedisi Ahli" : skor >= 6 ? "🚚 Kurir Cerdas" : "🐨 Sahabat Bunda Kiki";
+  const lencana = skor >= 9 ? "🥇 Pustakawan Ahli" : skor >= 6 ? "🦉 Petugas Rak Cerdas" : "📚 Sahabat Hulu";
   const pesan =
     skor >= 9
-      ? "Luar biasa! Semua muatanmu sampai dengan aman!"
+      ? "Luar biasa! Catatan rakmu rapi dan bisa dicek ulang!"
       : skor >= 6
-        ? "Hebat! Sedikit lagi jadi kepala ekspedisi!"
-        : "Ayo berlatih lagi, kamu pasti bisa!";
+        ? "Hebat! Sedikit lagi jadi pustakawan ahli!"
+        : "Ayo hitung lagi bersama Hulu, kamu pasti bisa!";
   return (
     <KartuBingkai latar="bg-rose-50/80">
       <KepalaKartu
-        ikon="📝🐨"
+        ikon="📝🦉"
         judul={kartu.judul}
         anak={`${nama} · Kelas 3 · ${skor} dari 10`}
         kelas={kelas}
         kelamin={kelamin}
-        cuplikan={cuplikanKalimat([
-          "Saatnya kalian mengerjakan sendiri. Ada sepuluh soal penjumlahan dan pengurangan sampai 10.000.",
-          "Beberapa soal menghitung langsung, beberapa memakai soal cerita. Ingat: simpanan harus dihitung, dan setelah meminjam rumahnya harus dikurangi satu.",
-          "Jangan terburu-buru, dan periksa lagi jawabanmu. Selamat mengerjakan!",
-        ])}
+        cuplikan={cuplikanKalimat(kartu.voice[0])}
       />
       <GambarDoodle
         src="/doodle-mtk/mtk-3-bab2-evaluasi.jpg"
-        alt="Meja ujian dengan pensil besar dan truk mainan. Koala mengangkat tangan."
+        alt="Meja ujian dengan pensil besar dan stempel. Burung hantu berdiri di tepi meja."
         ukuran="lebar"
       />
       <p className="mt-4 text-center text-sm font-black text-[#1C01A5]">
@@ -1339,116 +1287,116 @@ function LembarEvaluasi({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminG
       <div className="mt-4 space-y-3">
         <TulisBebas
           id={idKuis("D", 0)}
-          judul="1. Hitung bersusun"
-          visual={<Papan anak={"  5.748\n  3.276\n  ----- +\n    ⬜"} />}
-          pertanyaan="Tulis hasil akhirnya!"
-          pesanSalah="8 + 6 = 14. Tulis 4, simpan 1. Simpanan muncul lagi di puluhan dan ratusan."
-          bantuan="Simpanan 1, 1, dan 1. Hasilnya 9.024."
-          umpan="9.024. Simpanannya tiga kali."
-          periksa={(teks) => adaHasil(teks, "9024")}
-          alias={["9024", "9.024"]}
-          konteks="5.748 + 3.276 = 9.024. Simpanan tiga kali."
+          judul="1. Pinjaman melewati nol"
+          visual={<Papan anak={"  8.003\n− 2.567"} />}
+          pertanyaan="Tulis sisanya, lalu tulis rumah awal pinjamannya."
+          pesanSalah="Puluhan dan ratusan berisi 0. Pinjaman dimulai dari ribuan."
+          bantuan="Hasilnya 5.436. Pinjam dari ribuan."
+          umpan="8.003 − 2.567 = 5.436."
+          periksa={pinjam5436}
+          alias={["5436 ribuan"]}
+          konteks="8.003 − 2.567 = 5.436."
         />
         <Pilih
           id={idKuis("D", 1)}
-          pertanyaan="2. Berapa 6.786 + 2.458?"
-          visual={<Papan anak={"   1 1 1\n  6.786\n  2.458\n  ----- +"} />}
+          pertanyaan="2. Pada 2.476 + 1.358, apa yang ditulis di puluhan?"
+          visual={<Papan anak="Puluhan: 7 + 5 + simpanan 1" />}
           pilihan={[
-            { huruf: "A", teks: "9.244" },
-            { huruf: "B", teks: "8.244" },
-            { huruf: "C", teks: "9.144" },
-            { huruf: "D", teks: "9.234" },
+            { huruf: "A", teks: "3, karena ada simpanan 1 dari satuan" },
+            { huruf: "B", teks: "12, karena 7 + 5" },
+            { huruf: "C", teks: "2, karena simpanannya dibuang" },
+            { huruf: "D", teks: "7, karena angkanya 7" },
           ]}
           benar="A"
-          umpan="6 + 8 = 14, 1 + 8 + 5 = 14, 1 + 7 + 4 = 12, 1 + 6 + 2 = 9. Jadi 9.244."
-          salah="Ada tiga simpanan. Kalau satu terlewat, hasilnya meleset seribu atau seratus."
+          umpan="7 + 5 + 1 = 13. Tulis 3, simpan 1 ke ratusan."
+          salah="Jangan lupakan simpanan dari satuan."
         />
         <KuisSuara
           id={idKuis("D", 2)}
-          pertanyaan="Baca hasil 7.483 dengan benar."
-          periksa={baca7483}
-          petunjuk="Mulai dari ribuan."
+          pertanyaan="Ada 5.200 kartu, dibagikan 1.750. Ucapkan sisanya dan operasi yang kamu pakai."
+          periksa={sisa3450}
+          petunjuk="Dibagikan berarti kurang. Sisanya tiga ribu empat ratus lima puluh."
+          benar="Tiga ribu empat ratus lima puluh. Operasinya kurang."
         />
         <Pilih
           id={idKuis("D", 3)}
-          pertanyaan="4. Sinta menulis 8.243 − 3.876 = 4.367. Apakah Sinta benar?"
+          pertanyaan="3. Farhan menulis 12 di satuan karena 5 + 7 = 12. Apakah Farhan benar?"
           pilihan={[
-            { huruf: "A", teks: "Benar" },
-            { huruf: "B", teks: "Salah, seharusnya 4.477" },
-            { huruf: "C", teks: "Salah, seharusnya 4.357" },
-            { huruf: "D", teks: "Salah, seharusnya 5.367" },
+            { huruf: "A", teks: "Benar, 12 ditulis utuh" },
+            { huruf: "B", teks: "Salah, tulis 2 dan simpan 1" },
+            { huruf: "C", teks: "Salah, tulis 1 dan simpan 2" },
+            { huruf: "D", teks: "Salah, satuan tidak dijumlah" },
           ]}
-          benar="A"
-          umpan="13 − 6 = 7, 13 − 7 = 6, 11 − 8 = 3, 7 − 3 = 4. Jadi 4.367."
-          salah="Hitung ulang dari satuan. Pinjamannya tiga kali."
+          benar="B"
+          umpan="Angka 12 benar sebagai jumlah, tetapi yang ditulis di satuan hanya 2."
+          salah="Satu rumah hanya muat satu angka."
         />
         <KuisCocok
           id={idKuis("D", 4)}
-          perintah="5. Pasangkan soal dengan teknik yang tepat."
+          perintah="5. Pasangkan kata cerita dengan operasinya."
           baris={[
-            { kiri: "4.216 + 3.472", pilihan: TEKNIK_EVAL, benar: "Tambah tanpa menyimpan" },
-            { kiri: "5.264 − 3.142", pilihan: TEKNIK_EVAL, benar: "Kurang tanpa meminjam" },
-            { kiri: "7.324 − 4.568", pilihan: TEKNIK_EVAL, benar: "Kurang dengan meminjam" },
+            { kiri: "datang lagi", pilihan: KATA_CERITA, benar: "Tambah" },
+            { kiri: "dipinjam", pilihan: KATA_CERITA, benar: "Kurang" },
+            { kiri: "sisa di rak", pilihan: KATA_CERITA, benar: "Kurang" },
           ]}
-          umpan="4.216 + 3.472 tanpa simpanan. 5.264 − 3.142 tanpa pinjaman. 7.324 − 4.568 perlu pinjaman."
+          umpan="Datang berarti tambah. Dipinjam dan sisa berarti kurang."
         />
         <TulisBebas
           id={idKuis("D", 5)}
-          judul="6. Meminjam dengan rapi"
-          visual={<Papan anak={"  9.002\n  4.537\n  ----- −\n    ⬜"} />}
-          pertanyaan="Tulis jawabannya!"
-          pesanSalah="Satuan 2 lebih kecil dari 7. Angka nol ikut dipinjam."
-          bantuan="12 − 7 = 5, 9 − 3 = 6, 9 − 5 = 4, 8 − 4 = 4. Jadi 4.465."
-          umpan="4.465."
-          periksa={(teks) => adaHasil(teks, "4465")}
-          alias={["4465", "4.465"]}
-          konteks="9.002 − 4.537 = 4.465."
+          judul="6. Berapa kali menyimpan?"
+          visual={<Papan anak="3.756 + 2.845" />}
+          pertanyaan="Tulis hasilnya, lalu tulis berapa kali kamu menyimpan."
+          pesanSalah="Satuan, puluhan, dan ratusan semuanya menyimpan."
+          bantuan="Hasilnya 6.601. Menyimpan tiga kali."
+          umpan="6.601, menyimpan tiga kali."
+          periksa={simpan6601}
+          alias={["6601 tiga"]}
+          konteks="3.756 + 2.845 = 6.601."
         />
         <Pilih
           id={idKuis("D", 6)}
-          pertanyaan="7. ⬜.250 + 3.480 = 9.730. Angka yang hilang..."
-          visual={<Papan anak="⬜.250 + 3.480 = 9.730" />}
+          pertanyaan="7. Deret naik 1.250: 1.050 – 2.300 – 3.550 – ⬜. Berikutnya..."
           pilihan={[
-            { huruf: "A", teks: "5" },
-            { huruf: "B", teks: "6" },
-            { huruf: "C", teks: "7" },
-            { huruf: "D", teks: "8" },
+            { huruf: "A", teks: "4.700" },
+            { huruf: "B", teks: "4.800" },
+            { huruf: "C", teks: "4.850" },
+            { huruf: "D", teks: "5.000" },
           ]}
           benar="B"
-          umpan="9.730 − 3.480 = 6.250. Angka ribuannya 6."
-          salah="Kurangkan 3.480 dari 9.730."
+          umpan="3.550 + 1.250 = 4.800."
+          salah="Tambahkan 1.250 pada 3.550."
         />
         <SusunToken
           id={idKuis("D", 7)}
-          perintah="8. Susun dari hasil terkecil ke terbesar."
-          acak={["4.500 + 3.700", "9.200 − 2.400", "2.600 + 3.100", "8.000 − 6.700"]}
-          benar={["8.000 − 6.700", "2.600 + 3.100", "9.200 − 2.400", "4.500 + 3.700"]}
-          umpan="Hasilnya 1.300, 5.700, 6.800, lalu 8.200."
-          salah="Hitung dulu: 8.200, 6.800, 5.700, dan 1.300."
+          perintah="8. Susun dari yang terbesar."
+          acak={["2.768", "5.931", "6.601", "4.547"]}
+          benar={["6.601", "5.931", "4.547", "2.768"]}
+          umpan="6.601, 5.931, 4.547, 2.768."
         />
         <KuisSuara
           id={idKuis("D", 8)}
-          pertanyaan="Gudang punya 7.500 karung. Dikirim 2.850 karung. Ucapkan kata kuncinya dan sebutkan operasinya."
-          periksa={artiKurang}
-          petunjuk="Sebut kata dikirim, lalu sebut kurang."
+          pertanyaan="Mana yang lebih besar, 2.431 + 3.256 atau 5.876 − 2.341? Sebutkan hasilnya dan rumah yang membuatnya lebih besar."
+          periksa={lebih5687}
+          petunjuk="Hitung keduanya dulu. Yang besar lima ribu enam ratus delapan puluh tujuh."
+          benar="Lima ribu enam ratus delapan puluh tujuh lebih besar karena ribuannya 5."
         />
         <TulisBebas
           id={idKuis("D", 9)}
-          judul="10. Kasus gudang Bunda Kiki"
-          visual={<Papan anak={"Pagi 5.400\nSiang datang 2.750\nSore dikirim 4.150"} />}
-          pertanyaan="Tulis isi setelah siang, isi akhir hari, dan apakah akhir hari lebih banyak atau lebih sedikit dari pagi."
-          pesanSalah="Jumlahkan yang datang dulu, baru kurangi yang dikirim, lalu bandingkan dengan 5.400."
-          bantuan="8.150 setelah siang. Akhir hari 4.000, lebih sedikit dari pagi."
-          umpan="8.150, lalu 4.000, lebih sedikit."
-          periksa={kasusGudang}
-          alias={["8150", "4000", "lebih sedikit"]}
-          konteks="5.400 + 2.750 = 8.150. 8.150 − 4.150 = 4.000. Lebih sedikit dari pagi."
+          judul="10. Catatan halte Hulu"
+          visual={<Papan anak={"Pagi 3.480\nDatang 1.265\nDipinjam 2.180"} />}
+          pertanyaan="Tulis jumlah setelah sumbangan, sisa setelah dipinjam, dan selisih sumbangan dengan pinjaman."
+          pesanSalah="Tambah dulu, kurang kemudian, lalu kurangkan 1.265 dari 2.180."
+          bantuan="4.745, lalu 2.565, lalu selisih 915."
+          umpan="4.745, 2.565, dan 915."
+          periksa={halteHulu}
+          alias={["4745 2565 915"]}
+          konteks="3.480 + 1.265 = 4.745. 4.745 − 2.180 = 2.565. 2.180 − 1.265 = 915."
         />
         <KuisTulisKartu
           id={idKuisTulisKartu(ID, "D")}
-          pertanyaan="Tulis kalimat kunci: Satuan dulu, ribuan belakangan."
-          alias={["satuan", "ribuan"]}
-          konteks="Satuan dulu, ribuan belakangan."
+          pertanyaan="Tulis dua kata kunci: satuan dulu, simpanan dihitung."
+          alias={["satuan", "simpan"]}
+          konteks="Satuan dulu, simpanan dihitung."
         />
         <p className="text-center text-sm font-black text-[#1C01A5]">
           {lencana} · {skor} bintang dari 10
@@ -1456,18 +1404,12 @@ function LembarEvaluasi({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminG
       </div>
       <aside className="mt-5 rounded-2xl border-2 border-[#1C01A5]/15 bg-white px-4 py-4 text-sm font-semibold leading-relaxed text-slate-700">
         <p className="font-black text-[#1C01A5]">Catatan untuk guru</p>
-        <p className="mt-2">
-          Seluruh soal memakai bilangan sampai 10.000: penjumlahan, pengurangan, dan soal cerita.
-        </p>
-        <p className="mt-2">
-          Kesalahan yang paling sering: lupa menambahkan simpanan, lupa mengurangi rumah yang dipinjam, dan salah memilih operasi pada soal cerita.
-        </p>
-        <p className="mt-2">
-          Soal 1, 2, dan 6 menuntut jejak pengerjaan. Soal 4 mengajak anak menghitung ulang 8.243 − 3.876, yang hasilnya memang 4.367. Soal 10 punya tiga langkah: setelah siang, akhir hari, lalu perbandingan dengan pagi.
-        </p>
-        <p className="mt-2">
-          Gunakan kartu nilai tempat berwarna dan stik es krim untuk memperagakan menyimpan serta meminjam. Anak yang sudah lancar lisan sering masih goyah saat menuliskan coretannya.
-        </p>
+        <p className="mt-2">Soal memakai bilangan sampai 10.000: penjumlahan, pengurangan, menyimpan, meminjam, dan soal cerita.</p>
+        <p className="mt-2">Di kelas 3, Hulu menanyakan mengapa sebuah rumah menyimpan atau meminjam. Quiz meminta alasan, bukan hanya hasil.</p>
+        <p className="mt-2">Kesalahan yang paling sering: menulis 12 utuh di satu rumah, lupa menambahkan simpanan, dan mengubah 0 menjadi 10 tanpa mengurangi rumah yang memberi pinjaman.</p>
+        <p className="mt-2">Soal 1, 3, dan 10 menyasar ketiganya. Soal 3 adalah soal kunci: jumlah 12 benar, tetapi yang ditulis di satuan hanya 2. Soal 6, 8, dan 9 menilai alasan. Bahasa sederhana tetap dinilai penuh bila alasannya tepat.</p>
+        <p className="mt-2">Soal 10 tiga langkah: setelah sumbangan 4.745, setelah dipinjam 2.565, lalu selisih 2.180 − 1.265 = 915. Jika anak hanya menyelesaikan bagian pertama, minta ia membaca dua bagian berikutnya.</p>
+        <p className="mt-2">Gunakan ikat sepuluh buku atau stik. Minta anak memindahkan satu ikat ke rak kiri saat jumlahnya 10 atau lebih, dan memecah satu ikat saat rak kanan kurang. Siapkan rak kosong supaya pinjaman melewati nol terlihat.</p>
       </aside>
     </KartuBingkai>
   );
@@ -1481,13 +1423,12 @@ export default function NaskahMtk3Bab2({
   kelamin?: KelaminGuru;
 }) {
   const poin = [
-    "Satuan dulu, ribuan belakangan. Selalu dari kanan ke kiri.",
-    "Lebih dari sembilan? Simpan satu ke kiri.",
-    "Simpanan kecil itu wajib dihitung.",
-    "Bawah lebih besar? Pinjam dari kiri.",
-    "Sudah meminjam? Coret, kurang satu.",
-    "Terjual, dikirim, dipakai — itu semua kurang.",
-    "Soal campuran dikerjakan berurutan, satu langkah dulu.",
+    "Mulai dari satuan. Naik ke kiri satu rumah demi satu rumah.",
+    "Lebih dari sembilan? Tulis sisa, simpan 1 ke kiri.",
+    "Simpanan kecil itu wajib dijumlahkan.",
+    "Angka atas kurang? Pinjam 1 dari kiri. Nilainya sepuluh.",
+    "Rumah yang berisi 0 tidak bisa memberi pinjaman.",
+    "Datang dan jumlah berarti tambah. Dipinjam, sisa, dan terpakai berarti kurang.",
   ];
   return (
     <div className="space-y-5">
@@ -1500,15 +1441,15 @@ export default function NaskahMtk3Bab2({
         kelamin={kelamin}
         gambar={{
           src: "/doodle-mtk/mtk-3-bab2-poin.jpg",
-          alt: "Bunda Kiki berdiri di papan kalimat kunci. Truk kecil membawa angka di sekelilingnya.",
+          alt: "Burung hantu Hulu membentangkan lima kartu kunci di depan rak buku.",
         }}
         cuplikan={cuplikanKalimat([
-          "Ini yang perlu kalian ingat. Kerjakan dari satuan, lalu naik ke puluhan, ratusan, dan ribuan.",
-          "Kalau lebih dari sembilan, simpan satu ke kiri. Kalau bawah lebih besar, pinjam dari kiri dan jangan lupa kurangi rumahnya.",
-          "Untuk soal cerita, cari angka, cari kata kunci, tulis, lalu hitung.",
+          "Mari kita rumuskan hitungan hari ini. Penjumlahan dan pengurangan dimulai dari satuan.",
+          "Kalau lebih dari sembilan, tulis sisa dan simpan satu ke kiri. Kalau angka atas kurang, pinjam satu dari kiri.",
+          "Rumah yang berisi nol tidak bisa memberi pinjaman. Pada soal cerita, kata kuncinya yang memilih operasi.",
         ])}
         poin={poin}
-        penutup="Satuan dulu. Simpanan dihitung. Pinjaman dicoret."
+        penutup="Satuan dulu. Simpanan dihitung. Nol meneruskan pinjaman."
       />
       <LembarEvaluasi kelas={kelas} kelamin={kelamin} />
     </div>
