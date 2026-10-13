@@ -39,9 +39,9 @@ function bacakan(teks: string) {
   window.speechSynthesis.speak(suara);
 }
 
-function KartuBingkai({ children }: { children: ReactNode }) {
+function KartuBingkai({ children, latar = "bg-white" }: { children: ReactNode; latar?: string }) {
   return (
-    <section className="rounded-[1.75rem] border-4 border-[#1C01A5]/15 bg-white px-4 py-5 shadow-sm sm:px-6 sm:py-6">
+    <section className={`rounded-[1.75rem] border-4 border-[#1C01A5]/15 ${latar} px-4 py-5 shadow-sm sm:px-6 sm:py-6`}>
       {children}
     </section>
   );
@@ -51,7 +51,7 @@ const WARNA_DIALOG: Record<string, string> = {
   Tari: "border-[#DB2777]/20 bg-[#FDF2F8]",
   Dimas: "border-[#2563EB]/20 bg-[#EFF6FF]",
   Ojan: "border-[#16A34A]/25 bg-[#F0FDF4]",
-  Pipit: "border-[#F0AB00] bg-[#FFF8E8]",
+  Pipit: "border-teal-300 bg-teal-50",
   "Pak RT": "border-[#7C3AED]/25 bg-[#F5F3FF]",
   Semua: "border-[#E11D48]/20 bg-[#FFF1F2]",
 };
@@ -125,7 +125,7 @@ function Adegan({
     <article className={`rounded-2xl border-2 px-4 py-3 ${warna}`}>
       <p className="text-xs font-black uppercase tracking-wide text-[#1C01A5]">{judul}</p>
       {/* eslint-disable-next-line @next/next/no-img-element */}
-      <img src={src} alt={alt} className="mt-3 w-full rounded-xl border border-[#1C01A5]/10 bg-[#fbf6ea] object-cover" />
+      <img src={src} alt={alt} className="mt-3 w-full rounded-xl border border-[#1C01A5]/10 bg-white object-cover" />
       <div className="mt-3 space-y-2">{children}</div>
     </article>
   );
@@ -164,7 +164,7 @@ function Pilih({
   const [pilih, setPilih] = useState("");
   const status = statusDariPilihan(pilih, benar);
   return (
-    <article className="rounded-2xl border-2 border-[#1C01A5]/15 bg-[#FFFDF6] p-4">
+    <article className="rounded-2xl border-2 border-[#1C01A5]/15 bg-white p-4">
       <p className="text-sm font-semibold leading-relaxed text-slate-700">{pertanyaan}</p>
       {visual ? <div className="mt-3 text-2xl leading-relaxed">{visual}</div> : null}
       <div className="mt-3 grid gap-2">
@@ -213,13 +213,13 @@ function KuisCocok({
   const lengkap = baris.every((_, indeks) => peta[indeks]);
   const tepat = baris.every((item, indeks) => peta[indeks] === item.benar);
   return (
-    <article className="rounded-2xl border-2 border-amber-200 bg-amber-50/60 p-4">
-      <p className="text-sm font-black text-amber-950">{perintah}</p>
-      <p className="mt-1 text-xs font-semibold text-amber-900">Ketuk gambar, lalu ketuk angkanya.</p>
+    <article className="rounded-2xl border-2 border-violet-200 bg-violet-50 p-4">
+      <p className="text-sm font-black text-violet-950">{perintah}</p>
+      <p className="mt-1 text-xs font-semibold text-violet-900">Ketuk gambar, lalu ketuk angkanya.</p>
       <div className="mt-3 grid gap-2">
         {baris.map((item, indeks) => {
           const warna = !cek
-            ? "border-amber-200 bg-white"
+            ? "border-sky-200 bg-white"
             : peta[indeks] === item.benar
               ? "border-emerald-400 bg-emerald-50"
               : "border-rose-300 bg-rose-50";
@@ -228,7 +228,7 @@ function KuisCocok({
               key={item.kiri}
               type="button"
               onClick={() => setAktif(indeks)}
-              className={`rounded-xl border-2 px-3 py-2 text-left text-sm font-bold ${warna} ${aktif === indeks ? "ring-2 ring-amber-400" : ""}`}
+              className={`rounded-xl border-2 px-3 py-2 text-left text-sm font-bold ${warna} ${aktif === indeks ? "ring-2 ring-violet-400" : ""}`}
             >
               <span className="text-lg">{item.kiri}</span>
               <span className="mt-1 block text-slate-700">{peta[indeks] || "Belum dipasangkan"}</span>
@@ -258,7 +258,7 @@ function KuisCocok({
           setCek(true);
           if (tepat) kuis?.tandaiBenar(id);
         }}
-        className="mt-3 rounded-full bg-amber-500 px-4 py-2 text-sm font-black text-white disabled:opacity-50"
+        className="mt-3 rounded-full bg-emerald-600 px-4 py-2 text-sm font-black text-white disabled:opacity-50"
       >
         Periksa pasangan
       </button>
@@ -375,8 +375,8 @@ const BELASAN = [
 
 function TabelBelasan() {
   return (
-    <div className="overflow-hidden rounded-2xl border-2 border-[#F0AB00]">
-      <div className="grid grid-cols-3 bg-[#FFF8E8] px-3 py-2 text-xs font-black uppercase tracking-wide text-[#1C01A5]">
+    <div className="overflow-hidden rounded-2xl border-2 border-teal-300">
+      <div className="grid grid-cols-3 bg-teal-50 px-3 py-2 text-xs font-black uppercase tracking-wide text-[#1C01A5]">
         <span>Angka</span>
         <span>Dibaca</span>
         <span>Gambar</span>
@@ -386,14 +386,14 @@ function TabelBelasan() {
           key={angka}
           type="button"
           onClick={() => bacakan(nama)}
-          className="grid w-full grid-cols-3 border-t border-[#F0AB00]/40 bg-white px-3 py-2 text-left text-sm font-bold text-[#1C01A5] hover:bg-[#FFF8E8]"
+          className="grid w-full grid-cols-3 border-t border-sky-200 bg-white px-3 py-2 text-left text-sm font-bold text-[#1C01A5] hover:bg-teal-50"
         >
           <span>{angka}</span>
           <span>{nama}</span>
           <span>{gambar}</span>
         </button>
       ))}
-      <p className="border-t border-[#F0AB00]/40 px-3 py-2 text-xs font-semibold text-slate-600">
+      <p className="border-t border-sky-200 px-3 py-2 text-xs font-semibold text-slate-600">
         Ketuk tiap baris untuk mendengar cara membacanya.
       </p>
     </div>
@@ -465,7 +465,7 @@ function KartuBeda() {
     ["D", "🎀 ●●●●"],
   ];
   return (
-    <article className="rounded-2xl border-2 border-[#1C01A5]/15 bg-[#FFFDF6] p-4">
+    <article className="rounded-2xl border-2 border-[#1C01A5]/15 bg-white p-4">
       <p className="text-sm font-semibold text-slate-700">
         Tiga kartu menunjukkan angka yang sama. Satu kartu berbeda. Ketuk kartu yang berbeda!
       </p>
@@ -502,7 +502,7 @@ function KartuA({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminGuru }) {
   const [suara, setSuara] = useState<StatusJawabanKuis>(null);
   const [salahKanvas, setSalahKanvas] = useState(0);
   return (
-    <KartuBingkai>
+    <KartuBingkai latar="bg-sky-50/80">
       <KepalaKartu
         ikon="🇮🇩🎀🐦"
         judul={kartu.judul}
@@ -511,7 +511,7 @@ function KartuA({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminGuru }) {
         kelamin={kelamin}
         cuplikan={cuplikanDariNaskah(kartu.voice, 2_000, 3_000)}
       />
-      <div className="mt-4 rounded-2xl border-2 border-[#F0AB00] bg-[#FFF8E8] px-4 py-3">
+      <div className="mt-4 rounded-2xl border-2 border-sky-300 bg-sky-50 px-4 py-3">
         <p className="text-sm font-black text-[#1C01A5]">Tujuan Pembelajaran</p>
         <ul className="daftar-tujuan mt-2 space-y-1 text-sm font-semibold text-slate-700">
           <li>Membilang, membaca, dan menulis bilangan 11 sampai 20.</li>
@@ -593,7 +593,7 @@ function KartuA({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminGuru }) {
           <Dialog nama="Tari" anak="Jadi ada 13 bendera!" />
           <p className="text-center text-3xl font-black">
             <span className="text-blue-700">1</span>
-            <span className="text-amber-500">3</span>
+            <span className="text-sky-600">3</span>
           </p>
           <p className="text-sm font-semibold text-slate-700">Angka 1 artinya satu ikat. Angka 3 artinya tiga bendera lepas.</p>
           <KuisAkhirAdegan
@@ -687,7 +687,7 @@ function KartuA({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminGuru }) {
             <div className="rounded-xl border-2 border-blue-300 bg-blue-50 px-3 py-2 text-sm font-black text-blue-900">
               Puluhan · 🎀 satu ikat
             </div>
-            <div className="rounded-xl border-2 border-amber-300 bg-amber-50 px-3 py-2 text-sm font-black text-amber-950">
+            <div className="rounded-xl border-2 border-sky-300 bg-sky-50 px-3 py-2 text-sm font-black text-violet-950">
               Satuan · delapan bendera lepas
             </div>
           </div>
@@ -701,7 +701,7 @@ function KartuB({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminGuru }) {
   const kartu = MODUL_MTK1_BAB5.kartu[1];
   const pilihanAngka = ["12", "19", "20"];
   return (
-    <KartuBingkai>
+    <KartuBingkai latar="bg-emerald-50/80">
       <KepalaKartu
         ikon="🎀🔢"
         judul={kartu.judul}
@@ -711,7 +711,7 @@ function KartuB({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminGuru }) {
         cuplikan={cuplikanDariNaskah(kartu.voice, 2_000, 3_000)}
       />
       <div className="mt-4 space-y-4">
-        <article className="rounded-2xl border-2 border-[#F0AB00] bg-[#FFF8E8] px-4 py-3">
+        <article className="rounded-2xl border-2 border-emerald-300 bg-emerald-50 px-4 py-3">
           <p className="text-sm font-black text-[#1C01A5]">Kenali angka belasan</p>
           <p className="mt-1 text-sm font-semibold text-slate-700">🎀 = 1 ikat isi 10. ● = 1 benda lepas.</p>
           <div className="mt-3">
@@ -726,7 +726,7 @@ function KartuB({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminGuru }) {
               <p className="text-3xl font-black text-blue-700">1</p>
               <p className="text-sm">🎀</p>
             </div>
-            <div className="rounded-xl border-2 border-amber-400 bg-white px-3 py-2">
+            <div className="rounded-xl border-2 border-sky-300 bg-white px-3 py-2">
               <p className="text-xs font-black text-amber-800">Satuan</p>
               <p className="text-3xl font-black text-amber-600">6</p>
               <p className="text-sm">●●●●●●</p>
@@ -754,11 +754,11 @@ function KartuB({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminGuru }) {
           <p className="mt-2 text-2xl">🖐️🖐️ + ✋</p>
           <p className="mt-2 text-sm font-semibold text-slate-700">Jari teman = 10. Jarimu = 4. Semuanya = 14.</p>
         </article>
-        <article className="rounded-2xl border-2 border-amber-200 bg-[#FFF8E8] px-4 py-3">
+        <article className="rounded-2xl border-2 border-cyan-300 bg-cyan-50 px-4 py-3">
           <p className="text-sm font-black text-[#1C01A5]">Cara menulis angka belasan</p>
           <p className="mt-2 text-center text-4xl font-black">
             <span className="text-blue-700">1</span>
-            <span className="text-amber-500">4</span>
+            <span className="text-sky-600">4</span>
           </p>
           <p className="mt-2 text-sm font-semibold text-slate-700">
             Tulis puluhan dulu, baru satuan. Empat belas ditulis 14, bukan 41. Tujuh belas ditulis 17, bukan 71.
@@ -791,7 +791,7 @@ function KartuB({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminGuru }) {
           <p className="text-base font-extrabold text-[#1C01A5]">QUIZ:</p>
           <p className="mt-2 text-center text-4xl font-black">
             <span className="text-blue-700">1</span>
-            <span className="text-amber-500">8</span>
+            <span className="text-sky-600">8</span>
           </p>
           <SoalRekamSuara
             id={idKuis("B", 3)}
@@ -820,7 +820,7 @@ function KartuB({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminGuru }) {
 function KartuC({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminGuru }) {
   const kartu = MODUL_MTK1_BAB5.kartu[2];
   return (
-    <KartuBingkai>
+    <KartuBingkai latar="bg-violet-50/80">
       <KepalaKartu
         ikon="🇮🇩🎀🏆"
         judul={kartu.judul}
@@ -862,7 +862,7 @@ function LembarEvaluasi({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminG
   const kartu = MODUL_MTK1_BAB5.kartu[3];
   const pasangan = ["Dua belas", "Dua puluh", "1 puluhan 5 satuan"];
   return (
-    <KartuBingkai>
+    <KartuBingkai latar="bg-rose-50/80">
       <KepalaKartu
         ikon="📝⭐"
         judul={kartu.judul}

@@ -276,7 +276,7 @@ export default function MisiPenjagaKebun({
         <li>Belum tepat tidak mengurangi {tema.namaToken.toLowerCase()}. Kamu boleh mencoba lagi.</li>
       </ul>
       {bintang === misi.length ? (
-        <div className="rounded-2xl border-2 border-[#F0AB00] bg-[#FFF8E8] px-4 py-4">
+        <div className="rounded-2xl border-2 border-emerald-300 bg-emerald-50 px-4 py-4">
           <KuisTulisKartu
             id={idTulis}
             hanyaKanvas

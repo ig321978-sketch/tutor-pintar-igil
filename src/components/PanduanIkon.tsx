@@ -11,10 +11,12 @@ export default function PanduanIkon({
     <div className="mt-3">
       <p className="text-xs font-black uppercase tracking-wide text-[#1C01A5]">{judul}</p>
       <div className={`mt-2 grid gap-2 ${butir.length > 3 ? "grid-cols-2 sm:grid-cols-4" : "grid-cols-3"}`}>
-        {butir.map((item) => (
+        {butir.map((item, indeks) => (
           <div
             key={`${item.ikon}-${item.teks}`}
-            className="rounded-2xl border-2 border-[#F0AB00]/80 bg-white px-2 py-3 text-center shadow-sm"
+            className={`rounded-2xl border-2 px-2 py-3 text-center shadow-sm ${
+              ["border-sky-300 bg-sky-50", "border-emerald-300 bg-emerald-50", "border-violet-300 bg-violet-50", "border-rose-300 bg-rose-50", "border-cyan-300 bg-cyan-50"][indeks % 5]
+            }`}
           >
             <p className="text-4xl leading-none" aria-hidden>
               {item.ikon}

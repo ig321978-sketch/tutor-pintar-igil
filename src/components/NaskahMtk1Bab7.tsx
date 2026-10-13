@@ -99,9 +99,9 @@ function layangDua(teks: string): boolean {
   return beda && panjang;
 }
 
-function KartuBingkai({ children }: { children: ReactNode }) {
+function KartuBingkai({ children, latar = "bg-white" }: { children: ReactNode; latar?: string }) {
   return (
-    <section className="rounded-[1.75rem] border-4 border-[#1C01A5]/15 bg-white px-4 py-5 shadow-sm sm:px-6 sm:py-6">
+    <section className={`rounded-[1.75rem] border-4 border-[#1C01A5]/15 ${latar} px-4 py-5 shadow-sm sm:px-6 sm:py-6`}>
       {children}
     </section>
   );
@@ -111,7 +111,7 @@ const WARNA_DIALOG: Record<string, string> = {
   Ari: "border-[#2563EB]/20 bg-[#EFF6FF]",
   Mila: "border-[#DB2777]/20 bg-[#FDF2F8]",
   Bima: "border-[#16A34A]/25 bg-[#F0FDF4]",
-  Kodok: "border-[#F0AB00] bg-[#FFF8E8]",
+  Kodok: "border-teal-300 bg-teal-50",
   Semua: "border-[#E11D48]/20 bg-[#FFF1F2]",
 };
 
@@ -176,7 +176,7 @@ function Adegan({
     <article className={`rounded-2xl border-2 px-4 py-3 ${warna}`}>
       <p className="text-xs font-black uppercase tracking-wide text-[#1C01A5]">{judul}</p>
       {/* eslint-disable-next-line @next/next/no-img-element */}
-      <img src={src} alt={alt} className="mt-3 w-full rounded-xl border border-[#1C01A5]/10 bg-[#fbf6ea] object-cover" />
+      <img src={src} alt={alt} className="mt-3 w-full rounded-xl border border-[#1C01A5]/10 bg-white object-cover" />
       <div className="mt-3 space-y-2">{children}</div>
     </article>
   );
@@ -201,7 +201,7 @@ function Pilih({
   const [pilih, setPilih] = useState("");
   const status = statusDariPilihan(pilih, benar);
   return (
-    <article className="rounded-2xl border-2 border-[#1C01A5]/15 bg-[#FFFDF6] p-4">
+    <article className="rounded-2xl border-2 border-[#1C01A5]/15 bg-white p-4">
       <p className="text-sm font-semibold leading-relaxed text-slate-700">{pertanyaan}</p>
       <div className="mt-3 grid gap-2">
         {pilihan.map((item) => (
@@ -249,13 +249,13 @@ function KuisCocok({
   const lengkap = baris.every((_, indeks) => peta[indeks]);
   const tepat = baris.every((item, indeks) => peta[indeks] === item.benar);
   return (
-    <article className="rounded-2xl border-2 border-amber-200 bg-amber-50/60 p-4">
-      <p className="text-sm font-black text-amber-950">{perintah}</p>
-      <p className="mt-1 text-xs font-semibold text-amber-900">Ketuk benda, lalu ketuk pasangannya.</p>
+    <article className="rounded-2xl border-2 border-violet-200 bg-violet-50 p-4">
+      <p className="text-sm font-black text-violet-950">{perintah}</p>
+      <p className="mt-1 text-xs font-semibold text-violet-900">Ketuk benda, lalu ketuk pasangannya.</p>
       <div className="mt-3 grid gap-2">
         {baris.map((item, indeks) => {
           const warna = !cek
-            ? "border-amber-200 bg-white"
+            ? "border-sky-200 bg-white"
             : peta[indeks] === item.benar
               ? "border-emerald-400 bg-emerald-50"
               : "border-rose-300 bg-rose-50";
@@ -264,7 +264,7 @@ function KuisCocok({
               key={item.kiri}
               type="button"
               onClick={() => setAktif(indeks)}
-              className={`rounded-xl border-2 px-3 py-2 text-left text-sm font-bold ${warna} ${aktif === indeks ? "ring-2 ring-amber-400" : ""}`}
+              className={`rounded-xl border-2 px-3 py-2 text-left text-sm font-bold ${warna} ${aktif === indeks ? "ring-2 ring-violet-400" : ""}`}
             >
               <span>{item.kiri}</span>
               <span className="mt-1 block text-slate-700">{peta[indeks] || "Belum dipasangkan"}</span>
@@ -294,7 +294,7 @@ function KuisCocok({
           setCek(true);
           if (tepat) kuis?.tandaiBenar(id);
         }}
-        className="mt-3 rounded-full bg-amber-500 px-4 py-2 text-sm font-black text-white disabled:opacity-50"
+        className="mt-3 rounded-full bg-emerald-600 px-4 py-2 text-sm font-black text-white disabled:opacity-50"
       >
         Periksa pasangan
       </button>
@@ -463,7 +463,7 @@ function KartuA({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminGuru }) {
   const [suara, setSuara] = useState<StatusJawabanKuis>(null);
   const [salahKanvas, setSalahKanvas] = useState(0);
   return (
-    <KartuBingkai>
+    <KartuBingkai latar="bg-sky-50/80">
       <KepalaKartu
         ikon="🪁🐸📏"
         judul={kartu.judul}
@@ -472,7 +472,7 @@ function KartuA({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminGuru }) {
         kelamin={kelamin}
         cuplikan={cuplikanDariNaskah(kartu.voice, 2_000, 3_000)}
       />
-      <div className="mt-4 rounded-2xl border-2 border-[#F0AB00] bg-[#FFF8E8] px-4 py-3">
+      <div className="mt-4 rounded-2xl border-2 border-sky-300 bg-sky-50 px-4 py-3">
         <p className="text-sm font-black text-[#1C01A5]">Tujuan Pembelajaran</p>
         <ul className="daftar-tujuan mt-2 space-y-1 text-sm font-semibold text-slate-700">
           <li>Membandingkan panjang dan pendek, lalu mengurutkan benda.</li>
@@ -668,7 +668,7 @@ function KartuB({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminGuru }) {
   const kartu = MODUL_MTK1_BAB7.kartu[1];
   const panjang = ["2 jengkal", "5 jengkal", "9 jengkal"];
   return (
-    <KartuBingkai>
+    <KartuBingkai latar="bg-emerald-50/80">
       <KepalaKartu
         ikon="📏🖐️👣"
         judul={kartu.judul}
@@ -706,7 +706,7 @@ function KartuB({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminGuru }) {
             <p className="text-4xl font-black text-[#1C01A5]">4</p>
           </div>
         </div>
-        <p className="border-t-4 border-[#F0AB00] bg-[#FEF3C7] px-3 py-3 text-center text-lg font-black text-[#1C01A5]">
+        <p className="border-t-4 border-teal-300 bg-emerald-50 px-3 py-3 text-center text-lg font-black text-[#1C01A5]">
           7 &gt; 4 · pensil 7 klip lebih panjang
         </p>
       </div>
@@ -727,7 +727,7 @@ function KartuB({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminGuru }) {
             <li>🥢 Lidi dan 📎 klip kertas: satu batang atau satu klip.</li>
           </ul>
         </article>
-        <article className="rounded-2xl border-2 border-amber-200 bg-amber-50 px-4 py-3">
+        <article className="rounded-2xl border-2 border-cyan-300 bg-cyan-50 px-4 py-3">
           <p className="text-sm font-black text-[#1C01A5]">Aturan emas</p>
           <p className="mt-1 text-sm font-semibold text-slate-700">Mulai dari ujung. Tidak boleh ada celah. Satu orang, satu alat.</p>
           <p className="mt-2 text-sm font-black text-[#1C01A5]">Rapat, lurus, dari ujung.</p>
@@ -745,7 +745,7 @@ function KartuB({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminGuru }) {
             {["📎 Klip", "✏️ Pensil", "📏 Penggaris", "🧹 Sapu"].map((benda, indeks) => (
               <span key={benda} className="flex items-center gap-2">
                 <span className="rounded-full bg-white px-3 py-2 text-sm font-black text-[#1C01A5]">{benda}</span>
-                {indeks < 3 ? <span className="font-black text-[#F0AB00]">→</span> : null}
+                {indeks < 3 ? <span className="font-black text-sky-500">→</span> : null}
               </span>
             ))}
           </div>
@@ -815,7 +815,7 @@ function KartuB({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminGuru }) {
 function KartuC({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminGuru }) {
   const kartu = MODUL_MTK1_BAB7.kartu[2];
   return (
-    <KartuBingkai>
+    <KartuBingkai latar="bg-violet-50/80">
       <KepalaKartu
         ikon="🪁🐸🏆"
         judul={kartu.judul}
@@ -856,7 +856,7 @@ function LembarEvaluasi({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminG
         : "Ayo ukur lagi bersama Kodok, kamu pasti bisa!";
   const alatPas = ["📎 Klip kertas", "👣 Langkah kaki", "🖐️ Jengkal"];
   return (
-    <KartuBingkai>
+    <KartuBingkai latar="bg-rose-50/80">
       <KepalaKartu
         ikon="📝📏"
         judul={kartu.judul}

@@ -10,7 +10,7 @@ export default function TabelInfoGrafis({
   kaki?: string;
 }) {
   return (
-    <div className="mt-4 overflow-hidden rounded-2xl border-4 border-[#F0AB00]">
+    <div className="mt-4 overflow-hidden rounded-2xl border-4 border-sky-400">
       {judul ? (
         <p className="bg-[#16017a] px-3 py-2 text-center text-xs font-black uppercase tracking-wide text-white">
           {judul}
@@ -24,8 +24,8 @@ export default function TabelInfoGrafis({
       {baris.map((isi, indeks) => (
         <div
           key={isi.join("|")}
-          className={`grid grid-cols-3 items-center gap-2 border-t border-[#F0AB00]/40 px-3 py-3 text-sm font-bold leading-snug ${
-            indeks % 2 === 0 ? "bg-[#FFF7ED]" : "bg-[#F0FDF4]"
+          className={`grid grid-cols-3 items-center gap-2 border-t border-sky-200 px-3 py-3 text-sm font-bold leading-snug ${
+            indeks % 2 === 0 ? "bg-sky-50" : "bg-rose-50"
           }`}
         >
           <span className="text-lg leading-tight">{isi[0]}</span>
@@ -34,7 +34,7 @@ export default function TabelInfoGrafis({
         </div>
       ))}
       {kaki ? (
-        <p className="border-t-4 border-[#F0AB00] bg-[#FEF3C7] px-3 py-3 text-center text-lg font-black text-[#1C01A5]">
+        <p className="border-t-4 border-sky-400 bg-emerald-50 px-3 py-3 text-center text-lg font-black text-[#1C01A5]">
           {kaki}
         </p>
       ) : null}

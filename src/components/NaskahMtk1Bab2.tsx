@@ -48,9 +48,9 @@ function duaCaraDelapan(teks: string): boolean {
   return unik.size >= 2;
 }
 
-function KartuBingkai({ children }: { children: ReactNode }) {
+function KartuBingkai({ children, latar = "bg-white" }: { children: ReactNode; latar?: string }) {
   return (
-    <section className="rounded-[1.75rem] border-4 border-[#1C01A5]/15 bg-white px-4 py-5 shadow-sm sm:px-6 sm:py-6">
+    <section className={`rounded-[1.75rem] border-4 border-[#1C01A5]/15 ${latar} px-4 py-5 shadow-sm sm:px-6 sm:py-6`}>
       {children}
     </section>
   );
@@ -60,7 +60,7 @@ const WARNA_DIALOG: Record<string, string> = {
   Lala: "border-[#DB2777]/20 bg-[#FDF2F8]",
   Bima: "border-[#2563EB]/20 bg-[#EFF6FF]",
   Raka: "border-[#7C3AED]/25 bg-[#F5F3FF]",
-  Kepi: "border-[#F0AB00] bg-[#FFF8E8]",
+  Kepi: "border-teal-300 bg-teal-50",
 };
 
 function Dialog({ nama, anak }: { nama: string; anak: string }) {
@@ -109,7 +109,7 @@ function Pilih({
   const [pilih, setPilih] = useState("");
   const status = statusDariPilihan(pilih, benar);
   return (
-    <article className="rounded-2xl border-2 border-[#1C01A5]/15 bg-[#FFFDF6] p-4">
+    <article className="rounded-2xl border-2 border-[#1C01A5]/15 bg-white p-4">
       <p className="text-sm font-semibold leading-relaxed text-slate-700">{soal}</p>
       {visual ? <div className="mt-3 text-2xl leading-relaxed">{visual}</div> : null}
       <div className="mt-3 grid gap-2">
@@ -165,7 +165,7 @@ function KuisCocok({
     if (ok) kuis?.tandaiBenar(id);
   };
   return (
-    <article className="rounded-2xl border-2 border-[#1C01A5]/15 bg-[#FFF7ED] p-4">
+    <article className="rounded-2xl border-2 border-[#1C01A5]/15 bg-sky-50 p-4">
       <p className="text-sm font-semibold text-slate-700">{soal}</p>
       <div className="mt-3 grid gap-3">
         {baris.map((item) => (
@@ -176,7 +176,7 @@ function KuisCocok({
               {pilihan.map((kalimat) => {
                 const terpilih = pilih[item.label] === kalimat;
                 const dasar = terpilih
-                  ? "bg-[#F0AB00] text-[#1C01A5]"
+                  ? "bg-emerald-500 text-white"
                   : "bg-[#1C01A5] text-white hover:bg-[#16017a]";
                 return (
                   <button
@@ -378,7 +378,7 @@ function LembarEvaluasi() {
 
   return (
     <div className="mt-5 space-y-5">
-      <div className="grid gap-3 rounded-2xl border-2 border-dashed border-[#1C01A5]/25 bg-[#FFFDF6] p-4 sm:grid-cols-3">
+      <div className="grid gap-3 rounded-2xl border-2 border-dashed border-[#1C01A5]/25 bg-white p-4 sm:grid-cols-3">
         <label className="text-xs font-black uppercase text-[#1C01A5]">
           Nama
           <input
@@ -519,7 +519,7 @@ function LembarEvaluasi() {
           petunjuk="Sebut kedua jumlah, lalu sebut hasilnya."
         />
       </div>
-      <p className="rounded-2xl bg-[#FFF8E8] px-4 py-3 text-sm font-extrabold text-[#1C01A5]">{lencana}</p>
+      <p className="rounded-2xl bg-teal-50 px-4 py-3 text-sm font-extrabold text-[#1C01A5]">{lencana}</p>
     </div>
   );
 }
@@ -540,7 +540,7 @@ export default function NaskahMtk1Bab2({
 
   return (
     <div className="space-y-5">
-      <KartuBingkai>
+      <KartuBingkai latar="bg-sky-50/80">
         <p className="text-center text-4xl" aria-hidden>
           🏖️🦀🐚
         </p>
@@ -549,7 +549,7 @@ export default function NaskahMtk1Bab2({
         <div className="mt-4">
           <TombolVoiceMateriPai1 kelas={kelas} kelamin={kelamin} cuplikan={cuplikanDariNaskah(kartuA.voice, 2_000, 3_000)} />
         </div>
-        <div className="mt-4 rounded-2xl border-2 border-[#F0AB00] bg-[#FFF8E8] px-4 py-3">
+        <div className="mt-4 rounded-2xl border-2 border-sky-300 bg-sky-50 px-4 py-3">
           <p className="text-sm font-black text-[#1C01A5]">Tujuan Pembelajaran</p>
           <p className="mt-2 text-sm font-semibold text-slate-700">Setelah belajar, siswa dapat:</p>
           <ul className="daftar-tujuan mt-2 space-y-1 text-sm font-semibold text-slate-700">
@@ -583,7 +583,7 @@ export default function NaskahMtk1Bab2({
             aliasKanvas={["3", "tiga"]}
             konteksKanvas="Ada 3 anak: Lala, Bima, dan Raka."
           />
-          <article className="rounded-2xl border-2 border-[#F0AB00] bg-[#FFF8E8] px-4 py-3">
+          <article className="rounded-2xl border-2 border-emerald-300 bg-emerald-50 px-4 py-3">
             <p className="text-xs font-black uppercase tracking-wide text-[#92400E]">Adegan 2 · Menggabungkan kerang</p>
             <GambarCerita
               src="/doodle-mtk/mtk-1-bab2-adegan-2.jpg"
@@ -641,7 +641,7 @@ export default function NaskahMtk1Bab2({
             aliasKanvas={["2 + 1 = 3", "2+1=3"]}
             konteksKanvas="Tanda tambah menggabungkan. Dua tambah satu sama dengan tiga."
           />
-          <article className="rounded-2xl border-2 border-[#F0AB00] bg-[#FFF8E8] px-4 py-3">
+          <article className="rounded-2xl border-2 border-violet-300 bg-violet-50 px-4 py-3">
             <p className="text-xs font-black uppercase tracking-wide text-[#92400E]">Adegan 4 · Istana pasir</p>
             <GambarCerita
               src="/doodle-mtk/mtk-1-bab2-adegan-4.jpg"
@@ -703,7 +703,7 @@ export default function NaskahMtk1Bab2({
         />
       </KartuBingkai>
 
-      <KartuBingkai>
+      <KartuBingkai latar="bg-emerald-50/80">
         <p className="text-center text-4xl" aria-hidden>
           ➕🧺🦘
         </p>
@@ -741,7 +741,7 @@ export default function NaskahMtk1Bab2({
             </p>
             <p className="mt-2 text-sm font-semibold text-slate-700">Gabungkan, hitung 1 sampai 6. Angka terakhir adalah hasilnya. 4 + 2 = 6.</p>
           </article>
-          <article className="rounded-2xl border-2 border-amber-300 bg-amber-50 px-4 py-3">
+          <article className="rounded-2xl border-2 border-cyan-300 bg-cyan-50 px-4 py-3">
             <p className="text-sm font-black text-[#92400E]">Poin 3 · Hitung lanjut, lompat kanguru</p>
             <p className="mt-2 text-sm font-semibold text-slate-700">Simpan 5 di kepala. Lompat 3 kali: 6, 7, 8.</p>
             <div className="mt-3 flex flex-wrap justify-center gap-1">
@@ -776,7 +776,7 @@ export default function NaskahMtk1Bab2({
           </article>
           <article className="rounded-2xl border-2 border-[#1C01A5]/15 bg-white px-4 py-3">
             <p className="text-sm font-black text-[#1C01A5]">Poin 6 · Teman sepuluh</p>
-            <div className="mt-3 overflow-hidden rounded-2xl border-4 border-[#F0AB00]">
+            <div className="mt-3 overflow-hidden rounded-2xl border-4 border-sky-400">
               {[
                 ["1", "9"],
                 ["2", "8"],
@@ -787,7 +787,7 @@ export default function NaskahMtk1Bab2({
                 <div
                   key={kiri}
                   className={`grid grid-cols-3 items-center px-3 py-2 text-center ${
-                    indeks % 2 === 0 ? "bg-[#FFF7ED]" : "bg-[#F0FDF4]"
+                    indeks % 2 === 0 ? "bg-sky-50" : "bg-[#F0FDF4]"
                   }`}
                 >
                   <span className="text-2xl font-black text-[#1C01A5]">{kiri}</span>
@@ -855,7 +855,7 @@ export default function NaskahMtk1Bab2({
         </div>
       </KartuBingkai>
 
-      <KartuBingkai>
+      <KartuBingkai latar="bg-violet-50/80">
         <p className="text-center text-4xl" aria-hidden>
           🏖️🐚🏆
         </p>
@@ -886,7 +886,7 @@ export default function NaskahMtk1Bab2({
         penutup="Kalimat kunci: Tambah artinya gabung."
       />
 
-      <KartuBingkai>
+      <KartuBingkai latar="bg-rose-50/80">
         <p className="text-center text-4xl" aria-hidden>
           📝
         </p>

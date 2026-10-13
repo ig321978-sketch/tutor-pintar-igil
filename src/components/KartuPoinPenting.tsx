@@ -20,7 +20,7 @@ export default function KartuPoinPenting({
   gambar?: { src: string; alt: string };
 }) {
   return (
-    <section className="rounded-[1.75rem] border-4 border-[#1C01A5]/15 bg-white px-4 py-5 shadow-sm sm:px-6 sm:py-6">
+    <section className="rounded-[1.75rem] border-4 border-violet-200 bg-violet-50/70 px-4 py-5 shadow-sm sm:px-6 sm:py-6">
       <p className="text-center text-4xl" aria-hidden>
         🔑
       </p>
@@ -32,7 +32,7 @@ export default function KartuPoinPenting({
         <img
           src={gambar.src}
           alt={gambar.alt}
-          className="mt-4 w-full rounded-xl border border-[#1C01A5]/10 bg-[#fbf6ea] object-cover"
+          className="mt-4 w-full rounded-xl border border-[#1C01A5]/10 bg-white object-cover"
         />
       ) : null}
       <div className="mt-4">
@@ -44,7 +44,7 @@ export default function KartuPoinPenting({
         ))}
       </ul>
       {penutup ? (
-        <p className="mt-4 rounded-2xl bg-[#FFF8E8] px-4 py-3 text-sm font-extrabold text-[#1C01A5]">
+        <p className="mt-4 rounded-2xl bg-violet-100 px-4 py-3 text-sm font-extrabold text-[#1C01A5]">
           {penutup}
         </p>
       ) : null}
