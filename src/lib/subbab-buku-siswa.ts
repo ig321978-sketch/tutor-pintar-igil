@@ -175,9 +175,15 @@ const SUBBAB_BUKU_SISWA: Record<string, Record<string, Record<string, string[]>>
         "Poin penting",
         "Lembar evaluasi siswa",
       ],
-      "Bab 2: Kalimat Matematika": [
-        "Kalimat matematika penjumlahan bilangan cacah",
-        "Kalimat matematika pengurangan bilangan cacah",
+      "Bab 2: Penjumlahan dan Pengurangan sampai 10.000": [
+        "Penjumlahan tanpa menyimpan",
+        "Penjumlahan dengan menyimpan",
+        "Pengurangan tanpa meminjam",
+        "Pengurangan dengan meminjam",
+        "Soal cerita",
+        "Ekspedisi Truk Gudang",
+        "Poin penting",
+        "Lembar evaluasi siswa",
       ],
       "Bab 3: Pengukuran Panjang dan Berat": [
         "Alat ukur panjang dan penggaris dari angka 0",

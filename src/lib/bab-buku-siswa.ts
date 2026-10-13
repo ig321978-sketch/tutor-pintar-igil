@@ -241,7 +241,7 @@ export const BAB_BUKU_SISWA: Record<string, Record<string, string[]>> = {
     ],
     Matematika: [
       "Bab 1: Bilangan sampai 10.000",
-      "Bab 2: Kalimat Matematika",
+      "Bab 2: Penjumlahan dan Pengurangan sampai 10.000",
       "Bab 3: Pengukuran Panjang dan Berat",
       "Bab 4: Unsur-Unsur Bangun Datar",
       "Bab 5: Penyajian Data dalam Tabel",
