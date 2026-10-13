@@ -164,13 +164,24 @@ function Umpan({ status, teks }: { status: StatusJawabanKuis; teks: string }) {
   return <p className="mt-2 text-sm font-bold text-emerald-800">{teks}</p>;
 }
 
-function Adegan({ judul, warna, visual, children }: { judul: string; warna: string; visual: string; children: ReactNode }) {
+function Adegan({
+  judul,
+  warna,
+  src,
+  alt,
+  children,
+}: {
+  judul: string;
+  warna: string;
+  src: string;
+  alt: string;
+  children: ReactNode;
+}) {
   return (
     <article className={`rounded-2xl border-2 px-4 py-3 ${warna}`}>
       <p className="text-xs font-black uppercase tracking-wide text-[#1C01A5]">{judul}</p>
-      <div className="mt-3">
-        <Papan anak={visual} />
-      </div>
+      {/* eslint-disable-next-line @next/next/no-img-element */}
+      <img src={src} alt={alt} className="mt-3 w-full rounded-xl border border-[#1C01A5]/10 bg-[#fbf6ea] object-cover" />
       <div className="mt-3 space-y-2">{children}</div>
     </article>
   );
@@ -520,7 +531,12 @@ function KartuA({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminGuru }) {
         </ul>
       </div>
       <div className="mt-4 space-y-4">
-        <Adegan judul="Adegan 1 · Puluhan yang Hilang" warna="border-amber-200 bg-amber-50/40" visual="📦 🎀🎀🎀🎀 + 6 stik lepas = 46">
+        <Adegan
+          judul="Adegan 1 · Puluhan yang Hilang"
+          warna="border-amber-200 bg-amber-50/40"
+          src="/doodle-mtk/mtk-1-bab9-adegan-1.jpg"
+          alt="Sari memegang papan 46. Empat ikat stik bertanda 10 dan enam stik lepas. Kura mengintip dari kardus."
+        >
           <Dialog nama="Sari" anak="Bima, aku hitung stik es krim ini dapat 46." />
           <Dialog nama="Bima" anak="Halah, aku dapat 4 dan 6. Jadi 46? Atau 10?" />
           <Dialog nama="Danu" anak="Kok bisa beda?" />
@@ -545,7 +561,12 @@ function KartuA({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminGuru }) {
             periksa={rumah68}
           />
         </Adegan>
-        <Adegan judul="Adegan 2 · Lomba Membaca Angka" warna="border-sky-200 bg-sky-50/50" visual="📢 27 · 30 · 54 · 90">
+        <Adegan
+          judul="Adegan 2 · Lomba Membaca Angka"
+          warna="border-sky-200 bg-sky-50/50"
+          src="/doodle-mtk/mtk-1-bab9-adegan-2.jpg"
+          alt="Panggung kelas dengan kartu 27, 30, dan 90. Sari, Bima, dan Danu membaca. Kura menunjuk. Deret 10 sampai 100 di bawah."
+        >
           <Dialog nama="Danu" anak="Ayo lomba! Siapa yang bisa baca angka paling cepat dan benar?" />
           <Dialog nama="Bima" anak="Gampang! Dua puluh tujuh!" />
           <Dialog nama="Sari" anak="Tiga puluh… hmm, 30 itu dibaca apa ya?" />
@@ -567,7 +588,12 @@ function KartuA({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminGuru }) {
             visualKanvas={<Papan anak="🔊 sembilan puluh satu" />}
           />
         </Adegan>
-        <Adegan judul="Adegan 3 · Perang Tanda Buaya" warna="border-emerald-200 bg-emerald-50/40" visual="🐊 52 dan 57">
+        <Adegan
+          judul="Adegan 3 · Perang Tanda Buaya"
+          warna="border-emerald-200 bg-emerald-50/40"
+          src="/doodle-mtk/mtk-1-bab9-adegan-3.jpg"
+          alt="Dua keranjang kelereng berlabel 52 dan 57. Buaya berdiri di antara keduanya. Tulisan 52 kurang dari 57."
+        >
           <Dialog nama="Bima" anak="Keranjang A ada 52. Keranjang B ada 57. Mana yang lebih banyak?" />
           <Dialog nama="Danu" anak="Puluhannya sama-sama 5! Jadi bagaimana?" />
           <Dialog nama="Sari" anak="Kita lihat satuannya. 2 dan 7. Tujuh lebih besar!" />
@@ -592,7 +618,12 @@ function KartuA({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminGuru }) {
             periksa={simbolKiriBesar}
           />
         </Adegan>
-        <Adegan judul="Adegan 4 · Garis Bilangan Raksasa" warna="border-orange-200 bg-orange-50/40" visual="🧗 0 … 25 · 38 · 40 … 100">
+        <Adegan
+          judul="Adegan 4 · Garis Bilangan Raksasa"
+          warna="border-orange-200 bg-orange-50/40"
+          src="/doodle-mtk/mtk-1-bab9-adegan-4.jpg"
+          alt="Lapangan sekolah dengan petak 0, 25, 38, 40, dan 100. Sari di 25, Bima di 38, Danu di 40. Urutan 25 kurang dari 38 kurang dari 40."
+        >
           <Dialog nama="Sari" anak="Ayo main! Aku berdiri di angka 25." />
           <Dialog nama="Danu" anak="Aku di angka 40." />
           <Dialog nama="Bima" anak="Aku di angka 38. Siapa yang paling dekat dengan 25?" />
@@ -613,7 +644,12 @@ function KartuA({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminGuru }) {
             visualKanvas={<Papan anak="⬜ < ⬜ < ⬜ < ⬜ · 49 · 31 · 88 · 72" />}
           />
         </Adegan>
-        <Adegan judul="Adegan 5 · Rahasia Angka Terbalik" warna="border-fuchsia-200 bg-fuchsia-50/40" visual="🔄 28 dan 82">
+        <Adegan
+          judul="Adegan 5 · Rahasia Angka Terbalik"
+          warna="border-fuchsia-200 bg-fuchsia-50/40"
+          src="/doodle-mtk/mtk-1-bab9-adegan-5.jpg"
+          alt="Papan tulis menunjukkan 28 sama dengan 20 tambah 8, dan 82 sama dengan 80 tambah 2. Cermin memantulkan angka yang tertukar."
+        >
           <Dialog nama="Danu" anak="Sari, kenapa 28 dan 82 isinya angka yang sama tapi nilainya beda jauh?" />
           <Dialog nama="Bima" anak="Aku pernah salah tulis 82 jadi 28, dan Bu Guru bilang salah besar." />
           <Dialog nama="Sari" anak="Karena tempatnya bertukar!" />
