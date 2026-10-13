@@ -185,11 +185,15 @@ const SUBBAB_BUKU_SISWA: Record<string, Record<string, Record<string, string[]>>
         "Poin penting",
         "Lembar evaluasi siswa",
       ],
-      "Bab 3: Pengukuran Panjang dan Berat": [
-        "Alat ukur panjang dan penggaris dari angka 0",
-        "Tangga satuan panjang",
-        "Alat timbang dan jarum timbangan",
-        "Tangga satuan berat dan lembar kerja",
+      "Bab 3: Perkalian sampai 100": [
+        "Perkalian sebagai penjumlahan berulang",
+        "Sifat pertukaran",
+        "Sifat pengelompokan",
+        "Perkalian dua angka",
+        "Soal cerita perkalian",
+        "Kebun Stroberi Landak Bulat",
+        "Poin penting",
+        "Lembar evaluasi siswa",
       ],
       "Bab 4: Unsur-Unsur Bangun Datar": [
         "Sisi pada bangun datar",
