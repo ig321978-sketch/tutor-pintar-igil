@@ -1,4 +1,6 @@
 "use client";
+import MisiPenjagaKebun from "@/components/MisiPenjagaKebun";
+import { MISI_MTK1_BAB6 } from "@/lib/misi-kebun-mtk-1";
 
 import { useEffect, useMemo, useRef, useState, type ReactNode } from "react";
 import HasilJawabanKuis from "@/components/HasilJawabanKuis";
@@ -782,206 +784,25 @@ function KartuB({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminGuru }) {
   );
 }
 
-function PintuAngka({
-  judul,
-  cerita,
-  pilihan,
-  benar,
-  onBenar,
-  onSalah,
-}: {
-  judul: string;
-  cerita: string;
-  pilihan: string[];
-  benar: string;
-  onBenar: () => void;
-  onSalah: () => void;
-}) {
-  const [pilih, setPilih] = useState("");
-  const sudah = useRef(false);
-  return (
-    <article className="rounded-2xl border-2 border-[#1C01A5]/15 bg-white p-4">
-      <p className="text-sm font-black text-[#1C01A5]">{judul}</p>
-      <p className="mt-1 text-sm font-semibold text-slate-700">{cerita}</p>
-      <div className="mt-3 flex flex-wrap gap-2">
-        {pilihan.map((angka) => (
-          <button
-            key={angka}
-            type="button"
-            onClick={() => {
-              setPilih(angka);
-              if (angka === benar && !sudah.current) {
-                sudah.current = true;
-                onBenar();
-              } else if (angka !== benar) {
-                onSalah();
-              }
-            }}
-            className={`rounded-full px-4 py-2 text-sm font-black ${
-              pilih === angka && angka === benar
-                ? "bg-emerald-600 text-white"
-                : pilih === angka
-                  ? "bg-rose-600 text-white"
-                  : "bg-[#F8F7FF] text-[#1C01A5] ring-2 ring-[#1C01A5]/15"
-            }`}
-          >
-            {angka}
-          </button>
-        ))}
-      </div>
-      {pilih === benar ? <p className="mt-2 text-sm font-bold text-emerald-800">Tik-tik! Toki turun!</p> : null}
-      {pilih && pilih !== benar ? (
-        <p className="mt-2 text-sm font-bold text-rose-800">Toki naik 1 tingkat. Kunci tidak berkurang. Coba lagi.</p>
-      ) : null}
-    </article>
-  );
-}
-
 function KartuC({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminGuru }) {
-  const kuis = useKuisMateri();
   const kartu = MODUL_MTK1_BAB6.kartu[2];
-  const [level, setLevel] = useState([false, false, false]);
-  const sudahLevel = useRef([false, false, false]);
-  const [jam, setJam] = useState(false);
-  const [naik, setNaik] = useState(0);
-  const [jalur, setJalur] = useState<"" | "lift" | "tali">("");
-  const poin = (level[0] ? 1 : 0) + (level[1] ? 2 : 0) + (level[2] ? 3 : 0);
-  const bonus = level.every(Boolean) && !jam ? 1 : 0;
-  const kunci = Math.max(0, poin - (jam ? 1 : 0) + bonus);
-  const selesai = (indeks: number) => {
-    setLevel((lama) => lama.map((item, i) => (i === indeks ? true : item)));
-  };
-  useEffect(() => {
-    level.forEach((item, indeks) => {
-      if (!item || sudahLevel.current[indeks]) return;
-      sudahLevel.current[indeks] = true;
-      kuis?.tandaiBenar(idKuis("C", indeks));
-    });
-  }, [level, kuis]);
-  const ceritaTiga =
-    jalur === "tali"
-      ? "Aku punya 15 balok. Sebanyak 8 balok sudah dipakai membuat tangga. Berapa sisanya?"
-      : "Hitung langsung: 15 – 8. Sampai di angka berapa?";
   return (
     <KartuBingkai>
       <KepalaKartu
-        ikon="🗼⏱️🐭"
+        ikon="🏡🌷🏆"
         judul={kartu.judul}
-        anak="Turunkan Toki lewat tangga hitung"
+        anak="Sepuluh petak · menghitung, membaca, menulis, membandingkan"
         kelas={kelas}
         kelamin={kelamin}
         cuplikan={cuplikanDariNaskah(kartu.voice, 2_000, 3_000)}
       />
-      <p className="mt-4 text-sm font-semibold text-slate-700">
-        Toki di puncak menara. Jawaban benar membuatnya turun. Jawaban salah membuatnya naik satu tingkat.
-      </p>
-      <p className="mt-3 text-sm font-black text-[#1C01A5]">Kunci 🗝️ {kunci}</p>
-      {naik > 0 ? (
-        <p className="mt-1 text-sm font-semibold text-rose-800">Toki sudah naik {naik} kali. Ia belum jatuh, hanya naik satu tingkat.</p>
-      ) : null}
-      <div className="mt-4 grid gap-2 sm:grid-cols-2">
-        <button
-          type="button"
-          onClick={() => setJalur("lift")}
-          className={`rounded-2xl border-2 px-4 py-3 text-left text-sm font-bold ${
-            jalur === "lift" ? "border-[#1C01A5] bg-[#1C01A5] text-white" : "border-[#1C01A5]/20 bg-white text-[#1C01A5]"
-          }`}
-        >
-          Lift cepat. Soal langsung di pintu terakhir.
-        </button>
-        <button
-          type="button"
-          onClick={() => setJalur("tali")}
-          className={`rounded-2xl border-2 px-4 py-3 text-left text-sm font-bold ${
-            jalur === "tali" ? "border-amber-500 bg-amber-500 text-white" : "border-amber-300 bg-amber-50 text-amber-950"
-          }`}
-        >
-          Tali ajaib. Pintu terakhir berupa soal cerita.
-        </button>
-      </div>
-      <div className="mt-4 space-y-3">
-        <PintuAngka
-          judul="Level 1 · Tangga maju"
-          cerita="Toki di tingkat 8. Tangga di bawahnya +6. Hitung: 9, 10, 11, 12, 13, 14."
-          pilihan={["12", "13", "14", "15"]}
-          benar="14"
-          onBenar={() => selesai(0)}
-          onSalah={() => setNaik((n) => n + 1)}
-        />
-        <PintuAngka
-          judul="Level 2 · Tangga mundur"
-          cerita="Toki di tingkat 16. Tangga di bawahnya –7. Hitung mundur sampai berhenti."
-          pilihan={["7", "8", "9", "10"]}
-          benar="9"
-          onBenar={() => selesai(1)}
-          onSalah={() => setNaik((n) => n + 1)}
-        />
-        {jalur ? (
-          <PintuAngka
-            judul="Level 3 · Pintu terkunci"
-            cerita={ceritaTiga}
-            pilihan={["5", "6", "7", "8"]}
-            benar="7"
-            onBenar={() => selesai(2)}
-            onSalah={() => setNaik((n) => n + 1)}
-          />
-        ) : (
-          <p className="rounded-2xl bg-[#FFF8E8] px-4 py-3 text-sm font-bold text-[#1C01A5]">
-            Pilih lift atau tali dulu, baru pintu terakhir bisa dibuka.
-          </p>
-        )}
-      </div>
-      <p className="mt-3 text-sm font-semibold text-slate-700">
-        Cara pecah pintu terakhir: 15 – 5 = 10, lalu 10 – 3 = 7.
-      </p>
-      <button
-        type="button"
-        disabled={jam || kunci < 1}
-        onClick={() => {
-          if (!jam && kunci >= 1) setJam(true);
-        }}
-        className="mt-3 rounded-full bg-amber-500 px-4 py-2 text-sm font-black text-white disabled:opacity-50"
-      >
-        Pakai jam Toki · 1 kunci
-      </button>
-      {jam ? (
-        <p className="mt-2 text-sm font-semibold text-slate-700">
-          Garis bilangan: 0 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20. Lompat maju ke kanan, lompat mundur ke kiri.
-        </p>
-      ) : null}
-      <article className="mt-4 rounded-2xl border-2 border-dashed border-[#1C01A5]/25 px-4 py-3">
-        <p className="text-sm font-black text-[#1C01A5]">Mode bersama</p>
-        <p className="mt-1 text-sm font-semibold text-slate-700">
-          Pemain A hitung maju dari 10 sebanyak 4, berhenti di 14. Pemain B hitung mundur dari 18 sebanyak 4, berhenti di 14. Mereka bertemu di angka yang sama.
-        </p>
-        <p className="mt-2 text-sm font-semibold text-slate-700">Dua langkah di menara: 10 + 5 = 15, lalu 15 – 3 = 12.</p>
-      </article>
-      {level.every(Boolean) ? (
-        <p className="mt-3 text-sm font-black text-emerald-800">
-          Tiga pintu terbuka. Kunci terkumpul {kunci}. Kandang emas butuh 20 kunci, dan Toki sudah semakin dekat!
-        </p>
-      ) : null}
-      <div className="mt-6 border-t-2 border-[#1C01A5]/10 pt-5">
-        <p className="text-base font-extrabold text-[#1C01A5]">QUIZ:</p>
-        <p className="mt-2 text-sm font-semibold text-slate-700">Menara tingkat 11. Tangga +5.</p>
-        <SoalRekamSuara
-          id={idKuis("C", 3)}
-          pertanyaan="Aku di tingkat 11 dan tangga di bawahku tambah 5. Aku sampai di tingkat berapa? Ucapkan jawabannya!"
-          periksa={(transkrip) => jawabanTulisMemuatAlias(transkrip, ["enam belas", "16"])}
-          petunjuk="Sebutkan tingkat berhentinya."
-        />
-      </div>
-      <div className="mt-4">
-        <TulisBebas
-          id={idKuisTulisKartu(ID, "C")}
-          pertanyaan="Hitung 9 + 7 – 4. Tulis kedua langkahnya!"
-          visual={<p className="text-center text-sm font-black text-[#1C01A5]">9 + 7 = ⬜, lalu ⬜ – 4 = ⬜</p>}
-          pesanSalah="Jumlahkan dulu, baru kurangkan."
-          umpan="9 + 7 = 16, lalu 16 – 4 = 12."
-          konteks="Dua langkah: 9 ditambah 7 sama dengan 16, lalu 16 dikurangi 4 sama dengan 12."
-          periksa={jawabDuaLangkah}
-        />
-      </div>
+      <MisiPenjagaKebun
+        misi={MISI_MTK1_BAB6}
+        idMisi={(indeks) => idKuis("C", indeks)}
+        idTulis={idKuisTulisKartu(ID, "C")}
+        penutup="Bunga maju mundur tumbuh di kebun Kiko."
+        bunga="➕➖🦘⭐"
+      />
     </KartuBingkai>
   );
 }

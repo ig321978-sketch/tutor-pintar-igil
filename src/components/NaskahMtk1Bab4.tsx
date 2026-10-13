@@ -1,4 +1,6 @@
 "use client";
+import MisiPenjagaKebun from "@/components/MisiPenjagaKebun";
+import { MISI_MTK1_BAB4 } from "@/lib/misi-kebun-mtk-1";
 
 import { useEffect, useMemo, useRef, useState, type ReactNode } from "react";
 import HasilJawabanKuis from "@/components/HasilJawabanKuis";
@@ -576,166 +578,25 @@ function KartuB({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminGuru }) {
   );
 }
 
-function PilihSlot({
-  label,
-  nilai,
-  onPilih,
-}: {
-  label: string;
-  nilai: string;
-  onPilih: (bentuk: string) => void;
-}) {
-  return (
-    <div>
-      <p className="text-sm font-black text-slate-800">{label}</p>
-      <div className="mt-2 flex flex-wrap gap-2">
-        {[
-          ["segitiga", "🔺 1⭐"],
-          ["persegi", "🟦 2⭐"],
-          ["lingkaran", "⚪ 1⭐"],
-          ["balok", "📦 3⭐"],
-        ].map(([id, teks]) => (
-          <button
-            key={id}
-            type="button"
-            onClick={() => onPilih(id)}
-            className={`rounded-full px-3 py-2 text-sm font-bold ${
-              nilai === id ? "bg-[#1C01A5] text-white" : "bg-white text-[#1C01A5] ring-2 ring-[#1C01A5]/20"
-            }`}
-          >
-            {teks}
-          </button>
-        ))}
-      </div>
-    </div>
-  );
-}
-
 function KotaBentuk({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminGuru }) {
-  const kuis = useKuisMateri();
   const kartu = MODUL_MTK1_BAB4.kartu[2];
-  const [rugi, setRugi] = useState(0);
-  const [roboh, setRoboh] = useState("");
-  const [rumah, setRumah] = useState({ badan: "", atap: "", jendela: "" });
-  const [mobil, setMobil] = useState({ badan: "", roda1: "", roda2: "" });
-  const [hitungRumah, setHitungRumah] = useState("");
-  const [hitungMobil, setHitungMobil] = useState("");
-  const misi1 = Boolean(kuis?.sudahBenar(idKuis("C", 0)));
-  const misi2 = Boolean(kuis?.sudahBenar(idKuis("C", 1)));
-  const koin = Math.max(0, 10 - rugi - (misi1 ? 2 : 0) - (misi2 ? 3 : 0));
-  const gagal = (pesan: string) => {
-    const hargaMisi = misi1 ? 5 : 4;
-    if (koin - 1 >= hargaMisi) setRugi((n) => n + 1);
-    setRoboh(
-      koin - 1 >= hargaMisi
-        ? pesan
-        : `${pesan} Koin sisa ditahan supaya kota masih bisa dibangun.`,
-    );
-  };
   return (
     <KartuBingkai>
       <KepalaKartu
-        ikon="🏙️🐰⭐"
+        ikon="🏡🌷🏆"
         judul={kartu.judul}
-        anak="Bangun kota dengan bentuk yang tepat"
+        anak="Sepuluh petak · menghitung, membaca, menulis, membandingkan"
         kelas={kelas}
         kelamin={kelamin}
         cuplikan={cuplikanDariNaskah(kartu.voice, 2_000, 3_000)}
       />
-      <article className="mt-4 rounded-2xl border-2 border-[#16A34A]/25 bg-[#F0FDF4] px-4 py-3">
-        <p className="text-xs font-black uppercase tracking-wide text-[#166534]">Cerita: Kota Bentuk</p>
-        <p className="mt-2 text-sm font-semibold leading-relaxed text-slate-700">
-          Wali Kota Kelinci memakai topi di tanah hijau. Kota belum punya rumah. Bantulah dengan bentuk yang tepat.
-        </p>
-      </article>
-      <p className="mt-4 rounded-2xl bg-amber-50 px-4 py-3 text-lg font-black text-amber-900">Koin ⭐ {koin}</p>
-      <p className="mt-2 text-sm font-semibold text-slate-600">
-        Segitiga 1⭐, persegi 2⭐, lingkaran 1⭐, balok 3⭐. Bangunan yang tepat mendapat bonus 2⭐.
-      </p>
-      <div className="mt-4 grid gap-4">
-        <article className="rounded-2xl border-2 border-emerald-200 bg-emerald-50/70 p-4">
-          <p className="text-sm font-black text-emerald-950">Misi 1 · Bangun rumah</p>
-          <p className="mt-1 text-sm font-semibold text-emerald-900">Badan rumah, atap, dan jendela bulat.</p>
-          <div className="mt-3 grid gap-3">
-            <PilihSlot label="Badan" nilai={rumah.badan} onPilih={(bentuk) => setRumah((lama) => ({ ...lama, badan: bentuk }))} />
-            <PilihSlot label="Atap" nilai={rumah.atap} onPilih={(bentuk) => setRumah((lama) => ({ ...lama, atap: bentuk }))} />
-            <PilihSlot label="Jendela" nilai={rumah.jendela} onPilih={(bentuk) => setRumah((lama) => ({ ...lama, jendela: bentuk }))} />
-          </div>
-          <button
-            type="button"
-            disabled={misi1}
-            onClick={() => {
-              const tepat = rumah.badan === "persegi" && rumah.atap === "segitiga" && rumah.jendela === "lingkaran";
-              if (!tepat) {
-                gagal("Bangunan roboh. Satu koin hilang. Atapnya segitiga, badannya persegi, jendelanya lingkaran.");
-                return;
-              }
-              setRoboh("");
-              setHitungRumah(`${koin} - 4 = ${koin - 4}, ditambah bonus 2 = ${koin - 2}.`);
-              kuis?.tandaiBenar(idKuis("C", 0));
-            }}
-            className="mt-3 rounded-full bg-emerald-600 px-4 py-2 text-sm font-black text-white disabled:opacity-50"
-          >
-            Bangun rumah
-          </button>
-          {hitungRumah ? <p className="mt-2 text-sm font-bold text-emerald-900">{hitungRumah}</p> : null}
-        </article>
-        <article className="rounded-2xl border-2 border-sky-200 bg-sky-50/70 p-4">
-          <p className="text-sm font-black text-sky-950">Misi 2 · Bangun mobil</p>
-          <p className="mt-1 text-sm font-semibold text-sky-900">Badan panjang dan 2 roda.</p>
-          <div className="mt-3 grid gap-3">
-            <PilihSlot label="Badan" nilai={mobil.badan} onPilih={(bentuk) => setMobil((lama) => ({ ...lama, badan: bentuk }))} />
-            <PilihSlot label="Roda pertama" nilai={mobil.roda1} onPilih={(bentuk) => setMobil((lama) => ({ ...lama, roda1: bentuk }))} />
-            <PilihSlot label="Roda kedua" nilai={mobil.roda2} onPilih={(bentuk) => setMobil((lama) => ({ ...lama, roda2: bentuk }))} />
-          </div>
-          <button
-            type="button"
-            disabled={misi2 || !misi1}
-            onClick={() => {
-              const tepat = mobil.badan === "balok" && mobil.roda1 === "lingkaran" && mobil.roda2 === "lingkaran";
-              if (!tepat) {
-                gagal("Mobil roboh. Satu koin hilang. Badannya balok dan kedua rodanya lingkaran.");
-                return;
-              }
-              setRoboh("");
-              setHitungMobil(`${koin} - 5 = ${koin - 5}, ditambah bonus 2 = ${koin - 3}.`);
-              kuis?.tandaiBenar(idKuis("C", 1));
-            }}
-            className="mt-3 rounded-full bg-sky-600 px-4 py-2 text-sm font-black text-white disabled:opacity-50"
-          >
-            Bangun mobil
-          </button>
-          {hitungMobil ? <p className="mt-2 text-sm font-bold text-sky-900">{hitungMobil}</p> : null}
-        </article>
-        {roboh ? <p className="text-sm font-bold text-rose-800">{roboh}</p> : null}
-        <p className="rounded-2xl bg-[#F8F7FF] px-4 py-3 text-sm font-semibold text-slate-700">
-          Mode bersama: dua pemain berbagi koin. Kalau mereka memilih bentuk yang hemat dan tepat, keduanya mendapat lencana Tim Hebat.
-        </p>
-        {misi1 && misi2 ? (
-          <p className="rounded-2xl bg-amber-100 px-4 py-3 text-sm font-black text-amber-950">
-            Kota penuh warna. Rumah, mobil, dan matahari bulat sudah berdiri. Wali Kota Kelinci melompat gembira.
-          </p>
-        ) : null}
-        <SoalRekamSuara
-          id={idKuis("C", 2)}
-          pertanyaan="Wali Kota Kelinci ingin membuat roda mobil. Bentuk apa yang harus kamu pilih?"
-          periksa={(transkrip) => jawabanTulisMemuatAlias(transkrip, ["lingkaran", "bulat"])}
-          petunjuk="Sebutkan bentuk rodanya."
-        />
-        <TulisBebas
-          id={idKuisTulisKartu(ID, "C")}
-          visual={<p className="text-center text-3xl">🏠</p>}
-          pertanyaan="Gambarlah rumah sederhana, lalu tulis dua bentuknya: 1 persegi dan 1 segitiga."
-          pesanSalah="Tulis kedua namanya di papan: persegi dan segitiga."
-          umpan="Badan rumah persegi, atapnya segitiga."
-          periksa={(teks) =>
-            ucapanMemuat(teks, [
-              ["persegi", "segi empat"],
-              ["segitiga"],
-            ])
-          }
-        />
-      </div>
+      <MisiPenjagaKebun
+        misi={MISI_MTK1_BAB4}
+        idMisi={(indeks) => idKuis("C", indeks)}
+        idTulis={idKuisTulisKartu(ID, "C")}
+        penutup="Bunga bentuk tumbuh di kebun Kiko."
+        bunga="🔺🟦⚪🎲"
+      />
     </KartuBingkai>
   );
 }

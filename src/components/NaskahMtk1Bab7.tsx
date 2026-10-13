@@ -1,4 +1,6 @@
 "use client";
+import MisiPenjagaKebun from "@/components/MisiPenjagaKebun";
+import { MISI_MTK1_BAB7 } from "@/lib/misi-kebun-mtk-1";
 
 import { useEffect, useMemo, useRef, useState, type ReactNode } from "react";
 import HasilJawabanKuis from "@/components/HasilJawabanKuis";
@@ -738,200 +740,24 @@ function KartuB({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminGuru }) {
 }
 
 function KartuC({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminGuru }) {
-  const kuis = useKuisMateri();
   const kartu = MODUL_MTK1_BAB7.kartu[2];
-  const [level, setLevel] = useState([false, false, false]);
-  const [kacamata, setKacamata] = useState(false);
-  const [jatuh, setJatuh] = useState(0);
-  const [jalur, setJalur] = useState<"" | "kursi" | "pintu">("");
-  const [alat, setAlat] = useState("");
-  const [ukur, setUkur] = useState(0);
-  const [celah, setCelah] = useState(false);
-  const sudahLevel = useRef([false, false, false]);
-  const poin = (level[0] ? 1 : 0) + (level[1] ? 2 : 0) + (level[2] ? 3 : 0);
-  const bonus = level.every(Boolean) && !kacamata ? 1 : 0;
-  const kunci = Math.max(0, poin - (kacamata ? 1 : 0) + bonus);
-  const selesai = (indeks: number) => {
-    setLevel((lama) => lama.map((item, i) => (i === indeks ? true : item)));
-  };
-  useEffect(() => {
-    level.forEach((item, indeks) => {
-      if (!item || sudahLevel.current[indeks]) return;
-      sudahLevel.current[indeks] = true;
-      kuis?.tandaiBenar(idKuis("C", indeks));
-    });
-  }, [level, kuis]);
-  const ceritaTiga =
-    jalur === "pintu"
-      ? "Rak buku 3 jengkal lebih panjang dari pintu. Pintu 5 jengkal. Panjang rak berapa?"
-      : "Hitung langsung: 5 + 3. Panjangnya berapa jengkal?";
   return (
     <KartuBingkai>
       <KepalaKartu
-        ikon="🪵🐸🔧"
+        ikon="🏡🌷🏆"
         judul={kartu.judul}
-        anak="Pilih alat, ukur rapat, lalu hitung pesanan"
+        anak="Sepuluh petak · menghitung, membaca, menulis, membandingkan"
         kelas={kelas}
         kelamin={kelamin}
         cuplikan={cuplikanDariNaskah(kartu.voice, 2_000, 3_000)}
       />
-      <p className="mt-4 text-sm font-semibold text-slate-700">
-        Kayu yang salah ukuran kembali ke rak. Kodok berkata, kayu lebih baik diukur dua kali.
-      </p>
-      <p className="mt-3 text-sm font-black text-[#1C01A5]">Kunci pas 🔧 {kunci}</p>
-      {jatuh > 0 ? <p className="mt-1 text-sm font-semibold text-rose-800">Kayu kembali ke rak {jatuh} kali.</p> : null}
-      <div className="mt-4 grid gap-2 sm:grid-cols-2">
-        <button
-          type="button"
-          onClick={() => setJalur("kursi")}
-          className={`rounded-2xl border-2 px-4 py-3 text-left text-sm font-bold ${jalur === "kursi" ? "border-[#1C01A5] bg-[#1C01A5] text-white" : "border-[#1C01A5]/20 bg-white text-[#1C01A5]"}`}
-        >
-          Kursi kecil. Soal langsung di pesanan terakhir.
-        </button>
-        <button
-          type="button"
-          onClick={() => setJalur("pintu")}
-          className={`rounded-2xl border-2 px-4 py-3 text-left text-sm font-bold ${jalur === "pintu" ? "border-amber-500 bg-amber-500 text-white" : "border-amber-300 bg-amber-50 text-amber-950"}`}
-        >
-          Pintu besar. Pesanan terakhir berupa soal cerita.
-        </button>
-      </div>
-      <div className="mt-4 space-y-3">
-        <article className="rounded-2xl border-2 border-[#1C01A5]/15 bg-white p-4">
-          <p className="text-sm font-black text-[#1C01A5]">Level 1 · Pilih alat</p>
-          <p className="mt-1 text-sm font-semibold text-slate-700">Pesanan: meja sepanjang 5 depa.</p>
-          <div className="mt-3 flex flex-wrap gap-2">
-            {[
-              ["klip", "📎 Klip"],
-              ["jengkal", "🖐️ Jengkal"],
-              ["depa", "🙆 Depa"],
-            ].map(([kode, label]) => (
-              <button
-                key={kode}
-                type="button"
-                onClick={() => {
-                  setAlat(kode);
-                  if (kode === "depa") selesai(0);
-                  else setJatuh((n) => n + 1);
-                }}
-                className={`rounded-full px-4 py-2 text-sm font-black ${alat === kode && kode === "depa" ? "bg-emerald-600 text-white" : alat === kode ? "bg-rose-600 text-white" : "bg-[#F8F7FF] text-[#1C01A5] ring-2 ring-[#1C01A5]/15"}`}
-              >
-                {label}
-              </button>
-            ))}
-          </div>
-          {alat === "depa" ? <p className="mt-2 text-sm font-bold text-emerald-800">Klik! Alat ukur tepat!</p> : null}
-          {alat && alat !== "depa" ? (
-            <p className="mt-2 text-sm font-bold text-rose-800">Krukk! Terlalu kecil, nanti capek!</p>
-          ) : null}
-        </article>
-        <article className="rounded-2xl border-2 border-[#1C01A5]/15 bg-white p-4">
-          <p className="text-sm font-black text-[#1C01A5]">Level 2 · Ukur kayunya</p>
-          <p className="mt-1 text-sm font-semibold text-slate-700">Letakkan alat rapat, satu per satu, sampai 5.</p>
-          <p className="mt-2 text-center text-lg font-black text-[#1C01A5]">{ukur} / 5</p>
-          <div className="mt-3 flex flex-wrap gap-2">
-            <button
-              type="button"
-              onClick={() => {
-                setCelah(false);
-                setUkur((lama) => {
-                  const berikut = Math.min(5, lama + 1);
-                  if (berikut === 5) selesai(1);
-                  return berikut;
-                });
-              }}
-              className="rounded-full bg-[#1C01A5] px-4 py-2 text-sm font-black text-white"
-            >
-              Letakkan rapat
-            </button>
-            <button
-              type="button"
-              onClick={() => {
-                setUkur(0);
-                setCelah(true);
-                setJatuh((n) => n + 1);
-              }}
-              className="rounded-full bg-white px-4 py-2 text-sm font-bold text-rose-700 ring-2 ring-rose-200"
-            >
-              Beri celah
-            </button>
-          </div>
-          {ukur === 5 ? <p className="mt-2 text-sm font-bold text-emerald-800">Papan terukur 5. Tidak ada celah.</p> : null}
-          {celah ? <p className="mt-2 text-sm font-bold text-rose-800">Papan miring dan jatuh. Ulang dari ujung.</p> : null}
-        </article>
-        {jalur ? (
-          <article className="rounded-2xl border-2 border-[#1C01A5]/15 bg-white p-4">
-            <p className="text-sm font-black text-[#1C01A5]">Level 3 · Pesanan rumit</p>
-            <p className="mt-1 text-sm font-semibold text-slate-700">{ceritaTiga}</p>
-            <div className="mt-3 flex flex-wrap gap-2">
-              {["5", "6", "8", "9"].map((angka) => (
-                <button
-                  key={angka}
-                  type="button"
-                  onClick={() => {
-                    if (angka === "8") selesai(2);
-                    else setJatuh((n) => n + 1);
-                  }}
-                  className="rounded-full bg-[#F8F7FF] px-4 py-2 text-sm font-black text-[#1C01A5] ring-2 ring-[#1C01A5]/15"
-                >
-                  {angka}
-                </button>
-              ))}
-            </div>
-            {level[2] ? <p className="mt-2 text-sm font-bold text-emerald-800">5 + 3 = 8 jengkal.</p> : null}
-          </article>
-        ) : (
-          <p className="rounded-2xl bg-[#FFF8E8] px-4 py-3 text-sm font-bold text-[#1C01A5]">
-            Pilih kursi atau pintu dulu, baru pesanan terakhir bisa dikerjakan.
-          </p>
-        )}
-      </div>
-      <button
-        type="button"
-        disabled={kacamata || kunci < 1}
-        onClick={() => {
-          if (!kacamata && kunci >= 1) setKacamata(true);
-        }}
-        className="mt-3 rounded-full bg-amber-500 px-4 py-2 text-sm font-black text-white disabled:opacity-50"
-      >
-        Pakai kacamata periksa · 1 kunci
-      </button>
-      {kacamata ? (
-        <p className="mt-2 text-sm font-semibold text-slate-700">Tidak ada celah kalau alat diletakkan rapat dari ujung.</p>
-      ) : null}
-      <article className="mt-4 rounded-2xl border-2 border-dashed border-[#1C01A5]/25 px-4 py-3">
-        <p className="text-sm font-black text-[#1C01A5]">Mode bersama</p>
-        <p className="mt-1 text-sm font-semibold text-slate-700">
-          Pemain A mengukur kayu. Pemain B menulis angkanya. Kalau catatannya beda, keduanya mengukur ulang.
-        </p>
-      </article>
-      {level.every(Boolean) ? (
-        <p className="mt-3 text-sm font-black text-emerald-800">
-          Tiga pesanan selesai. Kunci pas terkumpul {kunci}. Bengkel besar butuh 10 kunci, dan kamu sudah semakin ahli!
-        </p>
-      ) : null}
-      <div className="mt-6 border-t-2 border-[#1C01A5]/10 pt-5">
-        <p className="text-base font-extrabold text-[#1C01A5]">QUIZ:</p>
-        <p className="mt-2 text-center text-2xl">🥢🥢🥢🥢🥢🥢</p>
-        <SoalRekamSuara
-          id={idKuis("C", 3)}
-          pertanyaan="Papan ini panjangnya berapa batang lidi? Ucapkan jawabannya!"
-          periksa={jawabEnam}
-          petunjuk="Hitung lidinya."
-        />
-      </div>
-      <div className="mt-4">
-        <TulisBebas
-          id={idKuisTulisKartu(ID, "C")}
-          pertanyaan="Papan A 7 jengkal, papan B 4 jengkal. Berapa jengkal lebih panjang papan A?"
-          visual={<p className="text-center text-sm font-black text-[#1C01A5]">7 – 4 = ⬜</p>}
-          pesanSalah="Kurangkan kedua panjangnya."
-          umpan="7 – 4 = 3 jengkal."
-          alias={["3", "tiga"]}
-          konteks="Selisih 7 dan 4 adalah 3 jengkal."
-          periksa={selisihTiga}
-        />
-      </div>
+      <MisiPenjagaKebun
+        misi={MISI_MTK1_BAB7}
+        idMisi={(indeks) => idKuis("C", indeks)}
+        idTulis={idKuisTulisKartu(ID, "C")}
+        penutup="Bunga ukur tumbuh di kebun Kiko."
+        bunga="📏📎👣⭐"
+      />
     </KartuBingkai>
   );
 }

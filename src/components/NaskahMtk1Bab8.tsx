@@ -1,4 +1,6 @@
 "use client";
+import MisiPenjagaKebun from "@/components/MisiPenjagaKebun";
+import { MISI_MTK1_BAB8 } from "@/lib/misi-kebun-mtk-1";
 
 import { useEffect, useMemo, useRef, useState, type ReactNode } from "react";
 import HasilJawabanKuis from "@/components/HasilJawabanKuis";
@@ -769,247 +771,24 @@ function KartuB({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminGuru }) {
 }
 
 function KartuC({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminGuru }) {
-  const kuis = useKuisMateri();
   const kartu = MODUL_MTK1_BAB8.kartu[2];
-  const [level, setLevel] = useState([false, false, false]);
-  const [kaca, setKaca] = useState(false);
-  const [jatuh, setJatuh] = useState(0);
-  const [jalur, setJalur] = useState<"" | "sejuk" | "ramai">("");
-  const [rak, setRak] = useState<Record<string, string>>({});
-  const [aktif, setAktif] = useState("");
-  const [isi, setIsi] = useState({ susu: 0, kaleng: 0, cokelat: 0 });
-  const [baris, setBaris] = useState<"susu" | "kaleng" | "cokelat">("susu");
-  const [pantul, setPantul] = useState("");
-  const sudahLevel = useRef([false, false, false]);
-  const poin = (level[0] ? 1 : 0) + (level[1] ? 2 : 0) + (level[2] ? 3 : 0);
-  const bonus = level.every(Boolean) && !kaca ? 1 : 0;
-  const kotak = Math.max(0, poin - (kaca ? 1 : 0) + bonus);
-  useEffect(() => {
-    level.forEach((item, indeks) => {
-      if (!item || sudahLevel.current[indeks]) return;
-      sudahLevel.current[indeks] = true;
-      kuis?.tandaiBenar(idKuis("C", indeks));
-    });
-  }, [level, kuis]);
-  useEffect(() => {
-    const lengkap = GUDANG.every((item) => rak[item.kunci] === item.rak);
-    if (!lengkap) return;
-    setLevel((lama) => lama.map((item, indeks) => (indeks === 0 ? true : item)));
-  }, [rak]);
-  useEffect(() => {
-    if (isi.susu === 4 && isi.kaleng === 3 && isi.cokelat === 1) {
-      setLevel((lama) => lama.map((item, indeks) => (indeks === 1 ? true : item)));
-    }
-  }, [isi]);
-  const cerita =
-    jalur === "ramai"
-      ? "Pelanggan bertanya selisih barang paling banyak dan paling sedikit. Susu 8, paling sedikit 3."
-      : "Susu ada 8. Yang paling sedikit ada 3. Selisihnya berapa?";
-  const taruhIkon = (jenis: "susu" | "kaleng" | "cokelat") => {
-    if (jenis !== baris || isi[jenis] >= { susu: 4, kaleng: 3, cokelat: 1 }[jenis]) {
-      setPantul("Coba lagi! Ikon itu memantul kembali.");
-      setJatuh((n) => n + 1);
-      return;
-    }
-    setPantul("");
-    setIsi((lama) => ({ ...lama, [jenis]: lama[jenis] + 1 }));
-  };
   return (
     <KartuBingkai>
       <KepalaKartu
-        ikon="🏪🐿️📦"
+        ikon="🏡🌷🏆"
         judul={kartu.judul}
-        anak="Sortir barang, gambar diagram, jawab pelanggan"
+        anak="Sepuluh petak · menghitung, membaca, menulis, membandingkan"
         kelas={kelas}
         kelamin={kelamin}
         cuplikan={cuplikanDariNaskah(kartu.voice, 2_000, 3_000)}
       />
-      <p className="mt-4 text-sm font-semibold text-slate-700">
-        Ikon yang salah memantul kembali. Tupi berkata, data harus benar dari awal.
-      </p>
-      <p className="mt-3 text-sm font-black text-[#1C01A5]">Kotak laporan 📦 {kotak}</p>
-      {jatuh > 0 ? <p className="mt-1 text-sm font-semibold text-rose-800">Ikon memantul {jatuh} kali.</p> : null}
-      <div className="mt-4 grid gap-2 sm:grid-cols-2">
-        <button
-          type="button"
-          onClick={() => setJalur("sejuk")}
-          className={`rounded-2xl border-2 px-4 py-3 text-left text-sm font-bold ${jalur === "sejuk" ? "border-[#1C01A5] bg-[#1C01A5] text-white" : "border-[#1C01A5]/20 bg-white text-[#1C01A5]"}`}
-        >
-          Pagi sejuk. Soal langsung di laporan terakhir.
-        </button>
-        <button
-          type="button"
-          onClick={() => setJalur("ramai")}
-          className={`rounded-2xl border-2 px-4 py-3 text-left text-sm font-bold ${jalur === "ramai" ? "border-amber-500 bg-amber-500 text-white" : "border-amber-300 bg-amber-50 text-amber-950"}`}
-        >
-          Pagi ramai. Laporan terakhir berupa soal cerita.
-        </button>
-      </div>
-      <div className="mt-4 space-y-3">
-        <article className="rounded-2xl border-2 border-[#1C01A5]/15 bg-white p-4">
-          <p className="text-sm font-black text-[#1C01A5]">Level 1 · Kelompokkan barang</p>
-          <p className="mt-1 text-sm font-semibold text-slate-700">Ketuk barang, lalu ketuk raknya. Susu 4, kaleng 3, cokelat 1.</p>
-          <div className="mt-3 flex flex-wrap gap-2">
-            {GUDANG.filter((item) => !rak[item.kunci]).map((item) => (
-              <button
-                key={item.kunci}
-                type="button"
-                onClick={() => setAktif(item.kunci)}
-                className={`rounded-xl bg-[#F8F7FF] px-3 py-2 text-lg ring-2 ${aktif === item.kunci ? "ring-[#1C01A5]" : "ring-transparent"}`}
-              >
-                {item.simbol}
-              </button>
-            ))}
-          </div>
-          <div className="mt-3 grid gap-2 sm:grid-cols-3">
-            {[
-              ["susu", "🥛 Susu"],
-              ["kaleng", "🥫 Kaleng"],
-              ["cokelat", "🍫 Cokelat"],
-            ].map(([kode, label]) => (
-              <button
-                key={kode}
-                type="button"
-                onClick={() => {
-                  const barang = GUDANG.find((item) => item.kunci === aktif);
-                  if (!barang) return;
-                  if (barang.rak !== kode) {
-                    setAktif("");
-                    setJatuh((n) => n + 1);
-                    setPantul("Salah rak. Barang memantul kembali.");
-                    return;
-                  }
-                  setRak((lama) => ({ ...lama, [barang.kunci]: kode }));
-                  setAktif("");
-                  setPantul("Klik!");
-                }}
-                className="rounded-xl border-2 border-[#1C01A5]/15 px-3 py-2 text-left text-sm font-bold text-[#1C01A5]"
-              >
-                {label}
-                <span className="mt-1 block">
-                  {GUDANG.filter((item) => rak[item.kunci] === kode).map((item) => item.simbol).join("") || "…"}
-                </span>
-              </button>
-            ))}
-          </div>
-          {level[0] ? <p className="mt-2 text-sm font-bold text-emerald-800">Klik! Semua barang di rak yang benar.</p> : null}
-        </article>
-        <article className="rounded-2xl border-2 border-[#1C01A5]/15 bg-white p-4">
-          <p className="text-sm font-black text-[#1C01A5]">Level 2 · Susun piktogram</p>
-          <p className="mt-1 text-sm font-semibold text-slate-700">Pilih baris, lalu tambah ikon yang sejenis sampai jumlahnya pas.</p>
-          <div className="mt-3 flex flex-wrap gap-2">
-            {(
-              [
-                ["susu", "🥛 Susu"],
-                ["kaleng", "🥫 Kaleng"],
-                ["cokelat", "🍫 Cokelat"],
-              ] as const
-            ).map(([kode, label]) => (
-              <button
-                key={kode}
-                type="button"
-                onClick={() => setBaris(kode)}
-                className={`rounded-full px-3 py-2 text-sm font-bold ${baris === kode ? "bg-[#1C01A5] text-white" : "bg-white text-[#1C01A5] ring-2 ring-[#1C01A5]/15"}`}
-              >
-                {label}
-              </button>
-            ))}
-          </div>
-          <p className="mt-3 text-sm font-black text-[#1C01A5]">
-            🥛 {isi.susu}/4 · 🥫 {isi.kaleng}/3 · 🍫 {isi.cokelat}/1
-          </p>
-          <div className="mt-3 flex flex-wrap gap-2">
-            {(
-              [
-                ["susu", "🥛"],
-                ["kaleng", "🥫"],
-                ["cokelat", "🍫"],
-              ] as const
-            ).map(([kode, simbol]) => (
-              <button
-                key={kode}
-                type="button"
-                onClick={() => taruhIkon(kode)}
-                className="rounded-xl bg-[#F8F7FF] px-4 py-2 text-lg ring-2 ring-[#1C01A5]/15"
-              >
-                {simbol}
-              </button>
-            ))}
-          </div>
-          {level[1] ? <p className="mt-2 text-sm font-bold text-emerald-800">Diagram sesuai rak.</p> : null}
-        </article>
-        {jalur && level[1] ? (
-          <article className="rounded-2xl border-2 border-[#1C01A5]/15 bg-white p-4">
-            <p className="text-sm font-black text-[#1C01A5]">Level 3 · Pertanyaan pelanggan</p>
-            <p className="mt-1 text-sm font-semibold text-slate-700">{cerita}</p>
-            <div className="mt-3 flex flex-wrap gap-2">
-              {["2", "5", "8", "11"].map((angka) => (
-                <button
-                  key={angka}
-                  type="button"
-                  onClick={() => {
-                    if (angka === "5") setLevel((lama) => lama.map((item, indeks) => (indeks === 2 ? true : item)));
-                    else setJatuh((n) => n + 1);
-                  }}
-                  className="rounded-full bg-[#F8F7FF] px-4 py-2 text-sm font-black text-[#1C01A5] ring-2 ring-[#1C01A5]/15"
-                >
-                  {angka}
-                </button>
-              ))}
-            </div>
-            {level[2] ? <p className="mt-2 text-sm font-bold text-emerald-800">Susu paling banyak. 8 – 3 = 5.</p> : null}
-          </article>
-        ) : (
-          <p className="rounded-2xl bg-[#FFF8E8] px-4 py-3 text-sm font-bold text-[#1C01A5]">
-            Pilih pagi sejuk atau pagi ramai, dan selesaikan diagram dulu. Data harus benar dari awal.
-          </p>
-        )}
-      </div>
-      {pantul ? <p className="mt-2 text-sm font-bold text-rose-800">{pantul}</p> : null}
-      <button
-        type="button"
-        disabled={kaca || kotak < 1}
-        onClick={() => {
-          if (!kaca && kotak >= 1) setKaca(true);
-        }}
-        className="mt-3 rounded-full bg-amber-500 px-4 py-2 text-sm font-black text-white disabled:opacity-50"
-      >
-        Pakai kaca pembesar · 1 kotak
-      </button>
-      {kaca ? <p className="mt-2 text-sm font-semibold text-slate-700">Baris terpanjang adalah yang paling banyak.</p> : null}
-      <article className="mt-4 rounded-2xl border-2 border-dashed border-[#1C01A5]/25 px-4 py-3">
-        <p className="text-sm font-black text-[#1C01A5]">Mode bersama</p>
-        <p className="mt-1 text-sm font-semibold text-slate-700">
-          Pemain A menyortir rak. Pemain B mengisi diagram. Kalau jumlahnya beda, keduanya memeriksa ulang.
-        </p>
-      </article>
-      {level.every(Boolean) ? (
-        <p className="mt-3 text-sm font-black text-emerald-800">
-          Tiga laporan selesai. Kotak terkumpul {kotak}. Cabang toko butuh 12 kotak, dan kamu sudah semakin rapi!
-        </p>
-      ) : null}
-      <div className="mt-6 border-t-2 border-[#1C01A5]/10 pt-5">
-        <p className="text-base font-extrabold text-[#1C01A5]">QUIZ:</p>
-        <p className="mt-2 text-center text-sm font-black text-[#1C01A5]">🍞 5 · 🥛 3 · 🍫 7</p>
-        <SoalRekamSuara
-          id={idKuis("C", 3)}
-          pertanyaan="Barang apa yang paling banyak stoknya? Ucapkan dengan jelas!"
-          periksa={jawabCokelat}
-          petunjuk="Lihat angka yang paling besar."
-        />
-      </div>
-      <div className="mt-4">
-        <TulisBebas
-          id={idKuisTulisKartu(ID, "C")}
-          pertanyaan="Cokelat 7 dan susu 3. Berapa selisihnya?"
-          visual={<p className="text-center text-sm font-black text-[#1C01A5]">7 – 3 = ⬜</p>}
-          pesanSalah="Kurangkan 7 dan 3."
-          umpan="7 – 3 = 4."
-          alias={["4", "empat"]}
-          konteks="Selisih 7 dan 3 adalah 4."
-          periksa={selisihEmpat}
-        />
-      </div>
+      <MisiPenjagaKebun
+        misi={MISI_MTK1_BAB8}
+        idMisi={(indeks) => idKuis("C", indeks)}
+        idTulis={idKuisTulisKartu(ID, "C")}
+        penutup="Bunga diagram tumbuh di kebun Kiko."
+        bunga="🍎🍌🍇📊"
+      />
     </KartuBingkai>
   );
 }

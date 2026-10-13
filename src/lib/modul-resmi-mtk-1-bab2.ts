@@ -1,4 +1,5 @@
 import type { ModulResmiPai } from "@/lib/modul-resmi-pai";
+import { MISI_MTK1_BAB2, kuisDariMisi } from "@/lib/misi-kebun-mtk-1";
 
 function pg(soal: string[]): string {
   return soal.join("\n\n");
@@ -17,7 +18,7 @@ export const MODUL_MTK1_BAB2: ModulResmiPai = {
   sketsaKartu: [
     "Lala, Bima, dan Raka piknik di pantai, menggabungkan kerang dan bendera istana pasir bersama Kepi.",
     "Tujuh cara menjumlah: gabungkan, hitung semua, lompat kanguru, jari, dibalik tetap sama, teman sepuluh, dan soal cerita.",
-    "Kapal pengumpul harta laut berlayar ke pulau gabung, pulau simbol, dan pulau cerita.",
+    "Kiko menjaga sepuluh petak kebun tambah: menghitung, membaca, menulis, dan membandingkan.",
     "Poin penting dan lembar evaluasi penjumlahan sampai 10.",
   ],
   latihan: pg([
@@ -180,59 +181,37 @@ D) 13`,
         ],
       ],
     },
-    {
+        {
       kode: "C",
-      judul: "C. Kapal Pengumpul Harta Laut",
+      judul: "C. Misi Penjaga Kebun Tambah",
       pengantar:
-        "Jadilah kapten kapal. Kumpulkan permata di pulau gabung, pulau simbol, dan pulau cerita. Sepuluh permata membuka peti raja laut.",
-      labelDaftar: "Berlayar dan mengumpulkan permata",
+        "Bantu Kiko mengisi 10 petak kebun penjumlahan. Hijau untuk menghitung, biru untuk membaca, kuning untuk menulis, dan ungu untuk membandingkan.",
+      labelDaftar: "Sepuluh misi tambah di kebun",
       kolom: 1,
       item: [
         {
-          nama: "Tiga pulau",
-          singkat: "Gabung, simbol, dan cerita",
+          nama: "Alur permainan",
+          singkat: "Pilih petak, jawab, dapat bintang",
           uraian:
-            "Pulau gabung menghitung 2 koin ditambah 3 koin. Pulau simbol menulis 4 tambah 2 sama dengan 6. Pulau cerita menulis 5 tambah 4 sama dengan 9.",
-          contoh: "5 + 4 = 9",
+            "Siswa memilih satu petak. Kiko membacakan misi penjumlahan. Jawaban benar mendapat 1 bintang kebun. Jawaban yang belum tepat mendapat petunjuk, tanpa kehilangan daun. Setelah 10 petak selesai, bunga tambah tumbuh.",
+          contoh: "4 + 3 = 7. Angka hilang pada 4 + kotak = 10 adalah 6. 5 + 3 bukan 7.",
         },
         {
-          nama: "Jalur laut",
-          singkat: "Laut tenang atau laut badai",
+          nama: "Daun ajaib",
+          singkat: "3, 2, atau 1 daun",
           uraian:
-            "Laut tenang memberi soal mudah dan 1 permata. Laut badai memberi soal cerita dan 3 permata. Jawaban yang belum tepat membuat kapal berputar, tanpa kehilangan permata.",
-          contoh: "7 + 3 = 10",
+            "Jawaban pertama benar mendapat 3 daun ajaib. Benar setelah satu petunjuk mendapat 2 daun. Benar setelah dua petunjuk mendapat 1 daun. Belum tepat tidak mengurangi daun. Siswa boleh mencoba lagi.",
+          contoh: "Petunjuk: benda bergoyang, lalu muncul titik, lalu Kiko menghitung bersama.",
         },
       ],
-      kuis: [
-        {
-          pertanyaan: "Dua peti koin, 2 dan 3, digabung menjadi berapa?",
-          alias: ["5", "lima"],
-        },
-        {
-          pertanyaan: "Lengkapi 4 tambah 2 sama dengan 6.",
-          alias: ["4 + 2 = 6", "4+2=6"],
-        },
-        {
-          pertanyaan: "5 mutiara ditambah 4 mutiara sama dengan berapa?",
-          alias: ["9", "sembilan", "5 + 4 = 9"],
-        },
-        {
-          pertanyaan: "Peti 6 koin digabung peti 3 koin. Ada berapa koin?",
-          alias: ["9", "sembilan"],
-        },
-        {
-          pertanyaan:
-            "Pilih laut tenang, 2 tambah 1, atau laut badai, 6 tambah 3.",
-          alias: ["3", "tiga", "9", "sembilan"],
-        },
-      ],
+      kuis: kuisDariMisi(MISI_MTK1_BAB2),
       voice: [
         [
-          "Kamu menjadi kapten kapal. Kepi memandu dari tiang kapal.",
-          "Di pulau gabung, dua peti koin digabung lalu dihitung satu per satu.",
-          "Di pulau simbol, tulis tanda tambah dan sama dengan.",
-          "Di pulau cerita, lima mutiara ditambah empat mutiara menjadi sembilan.",
-          "Jika jawaban belum tepat, kapal hanya berputar. Permata tidak hilang. Kumpulkan 10 permata untuk membuka peti raja laut.",
+          "Kiko menjaga kebun tambah. Ada sepuluh petak dari rumah sampai piala.",
+          "Petak hijau untuk menghitung. Petak biru untuk membaca. Petak kuning untuk menulis. Petak ungu untuk membandingkan.",
+          "Empat tambah tiga sama dengan tujuh. Tambah nol, angkanya tetap. Angka yang hilang supaya empat tambah kotak sama dengan sepuluh adalah enam.",
+          "Lima tambah tiga sama dengan delapan, bukan tujuh. Satu tambah sembilan sama dengan sembilan tambah satu.",
+          "Jawaban benar mendapat satu bintang kebun. Jika belum tepat, Kiko memberi petunjuk. Daun tidak berkurang.",
         ],
       ],
     },

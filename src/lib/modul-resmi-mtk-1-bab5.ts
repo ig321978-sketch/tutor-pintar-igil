@@ -1,4 +1,5 @@
 import type { ModulResmiPai } from "@/lib/modul-resmi-pai";
+import { MISI_MTK1_BAB5, kuisDariMisi } from "@/lib/misi-kebun-mtk-1";
 
 function pg(soal: string[]): string {
   return soal.join("\n\n");
@@ -16,7 +17,7 @@ export const MODUL_MTK1_BAB5: ModulResmiPai = {
   sketsaKartu: [
     "Tari, Dimas, dan Ojan mengikat bendera per sepuluh bersama Pipit untuk lomba 17 Agustus.",
     "Angka 11 sampai 20, rumah nilai tempat, bingkai sepuluh, dan garis bilangan.",
-    "Pasar malam kemerdekaan: menghitung tiket gulungan dan tiket lepas.",
+    "Kiko menjaga sepuluh petak kebun belasan: puluhan, satuan, dan membandingkan sampai 20.",
     "Poin penting dan lembar evaluasi membilang sampai 20.",
   ],
   latihan: pg([
@@ -172,54 +173,37 @@ D) Tidak ada`,
         ],
       ],
     },
-    {
+        {
       kode: "C",
-      judul: "C. Pasar Malam Kemerdekaan",
+      judul: "C. Misi Penjaga Kebun Belasan",
       pengantar:
-        "Di pasar malam, tiket dikemas sepuluh se-gulung. Hitung gulungan dan tiket lepas sebelum menukar hadiah.",
-      labelDaftar: "Menghitung tiket dan memilih hadiah",
+        "Bantu Kiko mengisi 10 petak kebun belasan. Hijau untuk menghitung, biru untuk membaca, kuning untuk menulis, dan ungu untuk membandingkan.",
+      labelDaftar: "Sepuluh misi belasan di kebun",
       kolom: 1,
       item: [
         {
-          nama: "Tiga stan",
-          singkat: "Hitung, gulung, lalu tukar",
+          nama: "Alur permainan",
+          singkat: "Pilih petak, jawab, dapat bintang",
           uraian:
-            "Satu gulungan dan empat tiket lepas sama dengan 14. Tujuh belas tiket lepas bisa digulung jadi satu gulungan dan tujuh lepas, yaitu puluhan 1 dan satuan 7. Boneka berharga 15 tiket dan mobil-mobilan berharga 19 tiket.",
-          contoh: "Satu gulungan dan enam lepas = 16. 16 cukup untuk boneka, belum cukup untuk mobil.",
+            "Siswa memilih satu petak. Kiko menanyakan gulungan sepuluh, satuan, dan perbandingan belasan. Jawaban benar mendapat 1 bintang kebun. Jawaban yang belum tepat mendapat petunjuk, tanpa kehilangan daun.",
+          contoh: "10 + 4 = 14. 19 lebih besar dari 12. 16 cukup untuk boneka seharga 15, belum cukup untuk mobil seharga 19.",
         },
         {
-          nama: "Keputusan",
-          singkat: "Senter memakai satu bintang",
+          nama: "Daun ajaib",
+          singkat: "3, 2, atau 1 daun",
           uraian:
-            "Senter bingkai sepuluh boleh dipakai dengan biaya satu bintang. Jawaban yang salah tidak mengurangi bintang, tiket kembali ke meja. Dua gulungan tanpa tiket lepas sama dengan 20. Satu gulungan dan satu tiket lepas sama dengan 11.",
-          contoh: "Dua gulungan = 20.",
+            "Jawaban pertama benar mendapat 3 daun ajaib. Benar setelah satu petunjuk mendapat 2 daun. Benar setelah dua petunjuk mendapat 1 daun. Belum tepat tidak mengurangi daun. Siswa boleh mencoba lagi.",
+          contoh: "Empat belas ditulis 14, bukan 41.",
         },
       ],
-      kuis: [
-        {
-          pertanyaan: "Satu gulungan dan empat tiket lepas berjumlah berapa?",
-          alias: ["14", "empat belas"],
-        },
-        {
-          pertanyaan: "Tujuh belas tiket punya puluhan dan satuan berapa?",
-          alias: ["1", "7", "tujuh belas"],
-        },
-        {
-          pertanyaan: "Enam belas tiket cukup untuk hadiah yang mana?",
-          alias: ["boneka"],
-        },
-        {
-          pertanyaan: "Dua gulungan tiket, tidak ada yang lepas. Berapa tiketnya?",
-          alias: ["dua puluh", "20"],
-        },
-      ],
+      kuis: kuisDariMisi(MISI_MTK1_BAB5),
       voice: [
         [
-          "Pasar malam kemerdekaan penuh lampu, bianglala, boneka, dan balon.",
-          "Sepuluh tiket digulung jadi satu. Empat tiket lepas membuat empat belas.",
-          "Tujuh belas tiket menjadi satu gulungan dan tujuh lepas.",
-          "Enam belas tiket cukup untuk boneka seharga lima belas, belum cukup untuk mobil seharga sembilan belas.",
-          "Dua gulungan penuh sama dengan dua puluh tiket.",
+          "Kiko menjaga kebun belasan. Ada sepuluh petak dari rumah sampai piala.",
+          "Satu gulungan sepuluh ditambah empat tiket lepas sama dengan empat belas.",
+          "Sembilan belas lebih besar daripada dua belas karena satuannya lebih besar.",
+          "Enam belas cukup untuk boneka seharga lima belas, belum cukup untuk mobil seharga sembilan belas.",
+          "Jawaban benar mendapat satu bintang kebun. Jika belum tepat, Kiko memberi petunjuk. Daun tidak berkurang.",
         ],
       ],
     },

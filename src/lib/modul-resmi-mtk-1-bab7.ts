@@ -1,4 +1,5 @@
 import type { ModulResmiPai } from "@/lib/modul-resmi-pai";
+import { MISI_MTK1_BAB7, kuisDariMisi } from "@/lib/misi-kebun-mtk-1";
 
 function pg(soal: string[]): string {
   return soal.join("\n\n");
@@ -16,7 +17,7 @@ export const MODUL_MTK1_BAB7: ModulResmiPai = {
   sketsaKartu: [
     "Ari, Mila, dan Bima mengukur benang layang-layang dengan jengkal Kodok di bukit.",
     "Satuan tidak baku, aturan mengukur, membandingkan, dan mengurutkan panjang.",
-    "Bengkel ukur Kodok: memilih alat, mengukur kayu, dan menghitung pesanan.",
+    "Kiko menjaga sepuluh petak kebun ukur: alat yang pas, selisih panjang, dan urutan benda.",
     "Poin penting dan lembar evaluasi mengukur panjang benda.",
   ],
   latihan: pg([
@@ -172,54 +173,37 @@ D) 4 jengkal`,
         ],
       ],
     },
-    {
+        {
       kode: "C",
-      judul: "C. Bengkel Ukur Kodok",
+      judul: "C. Misi Penjaga Kebun Ukur",
       pengantar:
-        "Di bengkel Kodok, pilih alat yang pas, letakkan alat tanpa celah, lalu hitung pesanan kayu.",
-      labelDaftar: "Memilih alat dan mengukur pesanan",
+        "Bantu Kiko mengisi 10 petak kebun mengukur. Hijau untuk menghitung, biru untuk membaca, kuning untuk menulis, dan ungu untuk membandingkan.",
+      labelDaftar: "Sepuluh misi ukur di kebun",
       kolom: 1,
       item: [
         {
-          nama: "Tiga pesanan",
-          singkat: "Alat, ukur, lalu hitung",
+          nama: "Alur permainan",
+          singkat: "Pilih petak, jawab, dapat bintang",
           uraian:
-            "Meja 5 depa diukur dengan depa, bukan klip. Papan diukur lima kali tanpa celah. Rak 3 jengkal lebih panjang dari pintu 5 jengkal, jadi panjangnya 8 jengkal.",
-          contoh: "5 + 3 = 8 jengkal. 7 – 4 = 3 jengkal.",
+            "Siswa memilih satu petak. Kiko menanyakan alat, selisih panjang, atau urutan benda. Jawaban benar mendapat 1 bintang kebun. Jawaban yang belum tepat mendapat petunjuk, tanpa kehilangan daun.",
+          contoh: "Pensil 7 klip lebih panjang daripada pensil 4 klip. Lorong diukur dengan langkah. Selisih 7 dan 4 adalah 3.",
         },
         {
-          nama: "Keputusan",
-          singkat: "Kacamata memakai satu kunci",
+          nama: "Daun ajaib",
+          singkat: "3, 2, atau 1 daun",
           uraian:
-            "Kursi kecil memakai soal langsung. Pintu besar memakai soal cerita. Kacamata periksa menunjukkan celah dengan biaya satu kunci pas. Tiga pesanan tanpa kacamata mendapat satu kunci bonus. Kayu yang salah kembali ke rak.",
-          contoh: "Enam batang lidi. Selisih 7 dan 4 adalah 3.",
+            "Jawaban pertama benar mendapat 3 daun ajaib. Benar setelah satu petunjuk mendapat 2 daun. Benar setelah dua petunjuk mendapat 1 daun. Belum tepat tidak mengurangi daun. Siswa boleh mencoba lagi.",
+          contoh: "Rapat, lurus, dari ujung. Satu orang, satu alat.",
         },
       ],
-      kuis: [
-        {
-          pertanyaan: "Pesanan 5 depa diukur dengan alat apa?",
-          alias: ["depa"],
-        },
-        {
-          pertanyaan: "Berapa kali alat diletakkan sampai papan terukur 5?",
-          alias: ["5", "lima"],
-        },
-        {
-          pertanyaan: "Pintu 5 jengkal. Rak lebih panjang 3 jengkal. Panjang rak berapa?",
-          alias: ["8", "delapan"],
-        },
-        {
-          pertanyaan: "Papan ini panjangnya berapa batang lidi?",
-          alias: ["enam", "6"],
-        },
-      ],
+      kuis: kuisDariMisi(MISI_MTK1_BAB7),
       voice: [
         [
-          "Bengkel Kodok mengukur kayu tanpa meteran.",
-          "Pesanan lima depa diukur dengan depa.",
-          "Letakkan alat rapat, dari ujung, sampai lima.",
-          "Lima jengkal ditambah tiga jengkal sama dengan delapan jengkal.",
-          "Tujuh jengkal dikurangi empat jengkal sama dengan tiga jengkal.",
+          "Kiko menjaga kebun ukur. Ada sepuluh petak dari rumah sampai piala.",
+          "Pensil tujuh klip lebih panjang daripada pensil empat klip.",
+          "Lorong panjang diukur dengan langkah kaki, bukan klip.",
+          "Lima jengkal ditambah tiga jengkal sama dengan delapan. Tujuh kurang empat sama dengan tiga.",
+          "Jawaban benar mendapat satu bintang kebun. Jika belum tepat, Kiko memberi petunjuk. Daun tidak berkurang.",
         ],
       ],
     },

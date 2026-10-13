@@ -1,4 +1,5 @@
 import type { ModulResmiPai } from "@/lib/modul-resmi-pai";
+import { MISI_MTK1_BAB6, kuisDariMisi } from "@/lib/misi-kebun-mtk-1";
 
 function pg(soal: string[]): string {
   return soal.join("\n\n");
@@ -16,7 +17,7 @@ export const MODUL_MTK1_BAB6: ModulResmiPai = {
   sketsaKartu: [
     "Kiki, Bayu, dan Naya menyusun kursi untuk mencapai anak kucing di dahan, bersama Toki si penjaga jam.",
     "Hitung maju, hitung mundur, dekomposisi, dan keluarga angka sampai 20.",
-    "Menara penyelamat: tangga maju, tangga mundur, dan pintu soal cerita.",
+    "Kiko menjaga sepuluh petak kebun maju mundur sampai 20, termasuk keluarga angka dan kartu yang berbeda.",
     "Poin penting dan lembar evaluasi penjumlahan serta pengurangan sampai 20.",
   ],
   latihan: pg([
@@ -172,54 +173,37 @@ D) 5`,
         ],
       ],
     },
-    {
+        {
       kode: "C",
-      judul: "C. Menara Penyelamat Toki",
+      judul: "C. Misi Penjaga Kebun Maju Mundur",
       pengantar:
-        "Toki duduk di puncak menara. Setiap jawaban benar membuat Toki turun. Jawaban salah membuat Toki naik satu tingkat, dan kunci tidak berkurang.",
-      labelDaftar: "Tangga maju, tangga mundur, dan pintu terkunci",
+        "Bantu Kiko mengisi 10 petak kebun hitung maju dan mundur. Hijau untuk menghitung, biru untuk membaca, kuning untuk menulis, dan ungu untuk membandingkan.",
+      labelDaftar: "Sepuluh misi maju mundur di kebun",
       kolom: 1,
       item: [
         {
-          nama: "Tiga pintu",
-          singkat: "Turun, mundur, lalu pecah",
+          nama: "Alur permainan",
+          singkat: "Pilih petak, jawab, dapat bintang",
           uraian:
-            "Dari tingkat 8, tangga tambah 6 sampai di 14. Dari tingkat 16, tangga kurang 7 sampai di 9. Lima belas balok dipakai delapan, sisanya tujuh: 15 – 5 = 10, lalu 10 – 3 = 7.",
-          contoh: "8 + 6 = 14. 16 – 7 = 9. 15 – 8 = 7.",
+            "Siswa memilih satu petak. Kiko memberi lompatan, keluarga angka, atau kartu yang hasilnya berbeda. Jawaban benar mendapat 1 bintang kebun. Jawaban yang belum tepat mendapat petunjuk, tanpa kehilangan daun.",
+          contoh: "12 + 5 = 17. 8 + 7 = 15 maka 15 - 7 = 8. Kartu 16 - 2 hasilnya 14, bukan 13.",
         },
         {
-          nama: "Keputusan",
-          singkat: "Jam memakai satu kunci",
+          nama: "Daun ajaib",
+          singkat: "3, 2, atau 1 daun",
           uraian:
-            "Lift cepat memakai soal langsung. Tali ajaib memakai soal cerita. Jam Toki boleh melihat garis bilangan dengan biaya satu kunci. Tiga pintu yang selesai tanpa jam mendapat satu kunci bonus. Dua langkah 9 + 7 – 4 berhenti di 12.",
-          contoh: "9 + 7 = 16, lalu 16 – 4 = 12.",
+            "Jawaban pertama benar mendapat 3 daun ajaib. Benar setelah satu petunjuk mendapat 2 daun. Benar setelah dua petunjuk mendapat 1 daun. Belum tepat tidak mengurangi daun. Siswa boleh mencoba lagi.",
+          contoh: "17 - 9 melewati sepuluh: 17 - 7 - 2 = 8.",
         },
       ],
-      kuis: [
-        {
-          pertanyaan: "Toki di tingkat 8. Tangga di bawahnya tambah 6. Toki sampai di tingkat berapa?",
-          alias: ["14", "empat belas"],
-        },
-        {
-          pertanyaan: "Toki di tingkat 16. Tangga di bawahnya kurang 7. Toki sampai di tingkat berapa?",
-          alias: ["9", "sembilan"],
-        },
-        {
-          pertanyaan: "Ada 15 balok, 8 sudah dipakai. Sisa balok berapa?",
-          alias: ["7", "tujuh"],
-        },
-        {
-          pertanyaan: "Toki di tingkat 11 dan tangga tambah 5. Sampai di tingkat berapa?",
-          alias: ["enam belas", "16"],
-        },
-      ],
+      kuis: kuisDariMisi(MISI_MTK1_BAB6),
       voice: [
         [
-          "Toki duduk di puncak menara dan memegang jam ajaib.",
-          "Dari delapan, hitung maju enam kali. Berhenti di empat belas.",
-          "Dari enam belas, hitung mundur tujuh kali. Berhenti di sembilan.",
-          "Lima belas balok dikurangi delapan. Habiskan dulu sampai sepuluh, sisanya tujuh.",
-          "Sembilan ditambah tujuh sama dengan enam belas. Enam belas dikurangi empat sama dengan dua belas.",
+          "Kiko menjaga kebun maju dan mundur. Ada sepuluh petak dari rumah sampai piala.",
+          "Dari dua belas, lompat maju lima kali dan berhenti di tujuh belas.",
+          "Kalau delapan tambah tujuh sama dengan lima belas, maka lima belas kurang tujuh sama dengan delapan.",
+          "Sepuluh tambah tiga dan enam belas kurang tiga sama-sama tiga belas. Kartu enam belas kurang dua hasilnya empat belas.",
+          "Jawaban benar mendapat satu bintang kebun. Jika belum tepat, Kiko memberi petunjuk. Daun tidak berkurang.",
         ],
       ],
     },

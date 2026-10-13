@@ -1,4 +1,6 @@
 "use client";
+import MisiPenjagaKebun from "@/components/MisiPenjagaKebun";
+import { MISI_MTK1_BAB3 } from "@/lib/misi-kebun-mtk-1";
 
 import { useEffect, useMemo, useRef, useState, type ReactNode } from "react";
 import HasilJawabanKuis from "@/components/HasilJawabanKuis";
@@ -641,164 +643,24 @@ function KartuB({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminGuru }) {
 }
 
 function TokoRoti({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminGuru }) {
-  const kuis = useKuisMateri();
   const kartu = MODUL_MTK1_BAB3.kartu[2];
-  const [jalur, setJalur] = useState({ ramah: false, buru: false });
-  const [garansi, setGaransi] = useState(false);
-  const [lonceng, setLonceng] = useState(false);
-  const [seret, setSeret] = useState(false);
-  const sudah = (kode: string, indeks: number) => Boolean(kuis?.sudahBenar(idKuis(kode, indeks)));
-  const tulisSiap = Boolean(kuis?.sudahBenar(idKuisTulisKartu(ID, "C")));
-  const roti = useMemo(() => {
-    let jumlah = 0;
-    if (sudah("C", 0)) jumlah += 1;
-    if (sudah("C", 1)) jumlah += 2;
-    if (sudah("C", 2)) jumlah += 3;
-    if (sudah("C", 3)) jumlah += 1;
-    if (jalur.ramah) jumlah += 1;
-    if (jalur.buru) jumlah += 3;
-    if (tulisSiap) jumlah += 2;
-    if (garansi) jumlah = Math.max(0, jumlah - 2);
-    return jumlah;
-  }, [kuis, jalur, garansi, tulisSiap]);
-  const cabang = roti >= 10;
   return (
     <KartuBingkai>
       <KepalaKartu
-        ikon="🍞🏪🐭"
+        ikon="🏡🌷🏆"
         judul={kartu.judul}
-        anak="Setiap pelanggan membeli, hitung roti yang tersisa"
+        anak="Sepuluh petak · menghitung, membaca, menulis, membandingkan"
         kelas={kelas}
         kelamin={kelamin}
         cuplikan={cuplikanDariNaskah(kartu.voice, 2_000, 3_000)}
       />
-      <p className="mt-4 text-sm font-semibold leading-relaxed text-slate-700">
-        Kamu menjaga toko roti. Cabang baru terbuka kalau sisanya benar.
-      </p>
-      <p className="mt-4 rounded-2xl bg-orange-50 px-4 py-3 text-lg font-black text-orange-900">
-        Roti {roti}/10 {cabang ? "· Cabang Toko Miko terbuka 👨‍🍳" : ""}
-      </p>
-      <p className="mt-2 text-3xl" aria-hidden>🥐🥖🍞🥯 🔔 🐭</p>
-      <div className="mt-4 grid gap-3">
-        <article className="rounded-2xl border-2 border-emerald-200 bg-emerald-50/70 p-4">
-          <p className="text-sm font-black text-emerald-950">Level 1 · Rak roti</p>
-          <p className="mt-2 text-sm font-semibold text-emerald-950">Di rak ada 7 roti. Pelanggan membeli 3. Seret 3 roti ke keranjang.</p>
-          <p className="mt-2 text-center text-2xl">
-            {seret ? <IkonUlang ikon="🥐" jumlah={4} /> : <IkonUlang ikon="🥐" jumlah={7} />}
-          </p>
-          <button
-            type="button"
-            onClick={() => setSeret(true)}
-            className="mt-2 rounded-full bg-emerald-600 px-4 py-2 text-sm font-black text-white"
-          >
-            Seret 3 roti ke keranjang
-          </button>
-          {seret ? <p className="mt-2 text-sm font-bold text-emerald-900">Satu… dua… tiga… empat!</p> : null}
-          {seret ? (
-            <div className="mt-3">
-              <Pilih
-                id={idKuis("C", 0)}
-                pertanyaan="Roti yang tersisa di rak berapa?"
-                pilihan={[
-                  { huruf: "A", teks: "3" },
-                  { huruf: "B", teks: "4" },
-                  { huruf: "C", teks: "7" },
-                ]}
-                benar="B"
-                umpan="+1 roti. Sisa 4."
-                salah="Lonceng berbunyi. Roti kembali ke rak. Hitung yang masih di rak."
-                onNilai={(benar) => setLonceng(!benar)}
-              />
-            </div>
-          ) : null}
-        </article>
-        <KuisTulisKartu
-          id={idKuis("C", 1)}
-          pertanyaan="Muncul nota: 9 □ 4 □ 5. Tulis kalimatnya lengkap dengan tanda kurang dan sama dengan."
-          alias={["9 - 4 = 5", "9-4=5"]}
-          visual={<p className="text-2xl font-black">9 □ 4 □ 5</p>}
-        />
-        <p className="text-xs font-bold text-amber-800">Hadiah level ini +2 roti.</p>
-        <KuisTulisKartu
-          id={idKuis("C", 2)}
-          pertanyaan='Pelanggan berkata: "Aku beli 5 donat. Tapi 2 donat jatuh dan rusak. Berapa donat yang masih bagus?" Tulis kalimatnya.'
-          alias={["5 - 2 = 3", "5-2=3"]}
-          visual={<p className="text-2xl">🍩🍩🍩🍩🍩</p>}
-        />
-        <p className="text-xs font-bold text-rose-800">Hadiah level ini +3 roti.</p>
-        <article className="rounded-2xl border-2 border-amber-200 bg-amber-50 p-4">
-          <p className="text-sm font-black text-amber-950">Pilih pelanggan</p>
-          <p className="mt-1 text-sm font-semibold text-amber-900">
-            Pelanggan ramah: soal mudah, +1 roti. Pelanggan buru-buru: soal cerita, +3 roti.
-          </p>
-          <div className="mt-3">
-            <Pilih
-              id={idKuis("C", 4)}
-              pertanyaan="Pelanggan ramah: ada 4 roti, dibeli 1. Sisa berapa?"
-              pilihan={[
-                { huruf: "A", teks: "2" },
-                { huruf: "B", teks: "3" },
-                { huruf: "C", teks: "5" },
-              ]}
-              benar="B"
-              umpan="+1 roti dari pelanggan ramah."
-              salah="Lonceng berbunyi. Hitung mundur dari 4: tiga."
-              onNilai={(benar) => {
-                setLonceng(!benar);
-                if (benar) setJalur((lama) => ({ ...lama, ramah: true }));
-              }}
-            />
-          </div>
-          <div className="mt-3">
-            <KuisTulisKartu
-              id={idKuis("C", 4)}
-              pertanyaan="Pelanggan buru-buru: rak ada 8 roti. Ia membeli 3. Tulis sisanya."
-              alias={["5", "lima", "8 - 3 = 5", "8-3=5"]}
-              sesudahNilai={(benar) => {
-                setLonceng(!benar);
-                if (benar) setJalur((lama) => ({ ...lama, buru: true }));
-              }}
-            />
-          </div>
-        </article>
-        <SoalRekamSuara
-          id={idKuis("C", 3)}
-          pertanyaan="Pelanggan membeli 3 donat dari 9 donat di rak. Sisa donat berapa? Ucapkan jawabannya!"
-          periksa={(transkrip) => jawabanTulisMemuatAlias(transkrip, ["enam", "6"])}
-          petunjuk="Ucapkan sisa donatnya."
-          sesudahNilai={(benar) => setLonceng(!benar)}
-        />
-        <p className="text-xs font-bold text-sky-800">Hadiah suara ini +1 roti.</p>
-        <KuisTulisKartu
-          id={idKuisTulisKartu(ID, "C")}
-          pertanyaan="Rak toko punya 10 roti. Sudah terjual 4 roti. Tulis berapa roti yang masih ada!"
-          alias={["6", "enam", "10 - 4 = 6", "10-4=6"]}
-          visual={<p className="text-2xl font-black">10 - 4 = □</p>}
-        />
-        <p className="text-xs font-bold text-emerald-800">Hadiah tulisan ini +2 roti.</p>
-        <button
-          type="button"
-          disabled={garansi || roti < 2}
-          onClick={() => setGaransi(true)}
-          className="rounded-full bg-slate-800 px-4 py-2 text-sm font-black text-white disabled:opacity-50"
-        >
-          Kartu garansi (−2 roti): lihat garis bilangan
-        </button>
-        {garansi ? (
-          <p className="text-sm font-bold text-slate-700">0 — 1 — 2 — 3 — 4 — 5 — 6 — 7 — 8 — 9 — 10. Lompat mundur dari angka yang besar.</p>
-        ) : null}
-        {lonceng ? (
-          <p className="text-sm font-bold text-rose-800">Lonceng berbunyi. Roti kembali ke rak. Rotimu yang sudah benar tetap aman. Coba lagi.</p>
-        ) : null}
-        <p className="rounded-2xl bg-[#F8F7FF] px-4 py-3 text-sm font-semibold text-slate-700">
-          Mode berdua: dua penjaga menggabungkan roti untuk oven baru. Contoh persediaan: 10 - 3 = 7.
-        </p>
-        {cabang ? (
-          <p className="rounded-2xl bg-amber-100 px-4 py-3 text-sm font-black text-amber-950">
-            Cabang Toko Miko terbuka. Topi koki untukmu.
-          </p>
-        ) : null}
-      </div>
+      <MisiPenjagaKebun
+        misi={MISI_MTK1_BAB3}
+        idMisi={(indeks) => idKuis("C", indeks)}
+        idTulis={idKuisTulisKartu(ID, "C")}
+        penutup="Bunga kurang tumbuh di kebun Kiko."
+        bunga="🎈🍊🍞⭐"
+      />
     </KartuBingkai>
   );
 }

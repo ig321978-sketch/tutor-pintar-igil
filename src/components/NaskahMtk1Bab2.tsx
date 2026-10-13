@@ -1,4 +1,6 @@
 "use client";
+import MisiPenjagaKebun from "@/components/MisiPenjagaKebun";
+import { MISI_MTK1_BAB2 } from "@/lib/misi-kebun-mtk-1";
 
 import { useEffect, useMemo, useRef, useState, type ReactNode } from "react";
 import HasilJawabanKuis from "@/components/HasilJawabanKuis";
@@ -349,212 +351,14 @@ function DuaCaraDelapan() {
 }
 
 function KapalHarta() {
-  const kuis = useKuisMateri();
-  const [tuang, setTuang] = useState(false);
-  const [jalur, setJalur] = useState({ tenang: false, badai: false });
-  const [teropong, setTeropong] = useState(false);
-  const [putar, setPutar] = useState(false);
-  const sudah = (indeks: number) => kuis?.sudahBenar(idKuis("C", indeks)) === true;
-  const permata = Math.max(
-    0,
-    (sudah(0) ? 1 : 0) +
-      (sudah(1) ? 2 : 0) +
-      (sudah(2) ? 3 : 0) +
-      (jalur.tenang ? 1 : 0) +
-      (jalur.badai ? 3 : 0) +
-      (sudah(3) ? 1 : 0) +
-      (kuis?.sudahBenar(idKuisTulisKartu(ID, "C")) ? 2 : 0) -
-      (teropong ? 1 : 0),
-  );
-  const gagal = () => setPutar(true);
-
   return (
-    <div className="mt-4 space-y-4">
-      <p className="text-sm font-semibold text-slate-700">
-        Kamu kapten kapal. Kepi memandu di atas tiang. Kapal berlayar kalau jawaban benar. Kumpulkan 10 permata.
-      </p>
-      <p className={`text-center text-3xl ${putar ? "animate-spin" : ""}`} aria-hidden>
-        ⛵
-      </p>
-      <p className="text-center text-sm font-black text-[#1C01A5]">🗺️ 🏝️ Gabung · 🏝️ Simbol · 🏝️ Cerita · 🏝️ Tenang · 🏝️ Badai</p>
-      <p className="text-sm font-black text-[#1C01A5]">Permata {permata}/10 💎</p>
-      {putar ? (
-        <p className="text-sm font-semibold text-amber-800">Kapal berputar. Permatamu tetap aman. Coba lagi.</p>
-      ) : null}
-
-      <article className="rounded-2xl border-2 border-emerald-500 bg-emerald-50 px-4 py-4">
-        <p className="text-sm font-black text-[#166534]">Level 1 · Pulau Gabung</p>
-        <p className="mt-2 text-sm font-semibold text-slate-700">Ada 2 peti. Tarik keduanya ke kapal, lalu hitung koinnya.</p>
-        {tuang || sudah(0) ? (
-          <p className="mt-3 text-center text-2xl">🪙🪙🪙🪙🪙</p>
-        ) : (
-          <p className="mt-3 text-center text-2xl">🪙🪙 &nbsp; 🪙🪙🪙</p>
-        )}
-        {tuang || sudah(0) ? (
-          <p className="mt-2 text-sm font-bold text-[#1C01A5]">Satu… dua… tiga… empat… lima!</p>
-        ) : (
-          <button
-            type="button"
-            onClick={() => setTuang(true)}
-            className="mt-3 rounded-xl bg-[#1C01A5] px-4 py-2 text-sm font-black text-white"
-          >
-            Tuang kedua peti ke kapal
-          </button>
-        )}
-        {tuang || sudah(0) ? (
-          <div className="mt-3">
-            <Pilih
-              id={idKuis("C", 0)}
-              soal="Jadi berapa koin semuanya?"
-              benar="B"
-              umpan="Hebat! 2 + 3 = 5. Kamu mendapat 1 permata."
-              salah="Gabungkan, lalu hitung satu per satu."
-              pilihan={[
-                { huruf: "A", teks: "4" },
-                { huruf: "B", teks: "5" },
-                { huruf: "C", teks: "6" },
-              ]}
-              onNilai={(benar) => {
-                if (!benar) gagal();
-              }}
-            />
-          </div>
-        ) : null}
-      </article>
-
-      <article className="rounded-2xl border-2 border-amber-400 bg-amber-50 px-4 py-4">
-        <p className="text-sm font-black text-[#92400E]">Level 2 · Pulau Simbol</p>
-        <KuisTulisKartu
-          id={idKuis("C", 1)}
-          hanyaKanvas
-          rapat
-          pertanyaan="Tulis tanda + dan = supaya kalimatnya lengkap."
-          alias={kumpulkanAlias(["4 + 2 = 6", "4+2=6"])}
-          konteks="Empat tambah dua sama dengan enam."
-          visual={<p className="text-center text-2xl font-black text-[#1C01A5]">4 ⬜ 2 ⬜ 6</p>}
-          sesudahNilai={(benar) => {
-            if (!benar) gagal();
-          }}
-        />
-        {sudah(1) ? <p className="text-sm font-bold text-emerald-800">2 permata masuk ke kapal.</p> : null}
-      </article>
-
-      <article className="rounded-2xl border-2 border-rose-400 bg-rose-50 px-4 py-4">
-        <p className="text-sm font-black text-[#9F1239]">Level 3 · Pulau Cerita</p>
-        <Dialog nama="Putri duyung" anak="Aku punya 5 mutiara. Temanku memberi 4 mutiara lagi. Berapa mutiaraku sekarang?" />
-        <KuisTulisKartu
-          id={idKuis("C", 2)}
-          hanyaKanvas
-          rapat
-          pertanyaan="Tuliskan kalimat matematikanya dan hasilnya."
-          alias={kumpulkanAlias(["5 + 4 = 9", "5+4=9", "4 + 5 = 9", "4+5=9"])}
-          konteks="Lima tambah empat sama dengan sembilan."
-          visual={<p className="text-center text-2xl">⚪⚪⚪⚪⚪ + ⚪⚪⚪⚪</p>}
-          sesudahNilai={(benar) => {
-            if (!benar) gagal();
-          }}
-        />
-        {sudah(2) ? <p className="text-sm font-bold text-emerald-800">3 permata masuk ke kapal.</p> : null}
-      </article>
-
-      <article className="rounded-2xl border-2 border-sky-500 bg-sky-50 px-4 py-4">
-        <p className="text-sm font-black text-[#0C4A6E]">Persimpangan peta</p>
-        <p className="mt-2 text-sm font-semibold text-slate-700">
-          Laut tenang memberi soal mudah dan 1 permata. Laut badai memberi soal cerita dan 3 permata.
-        </p>
-        <div className="mt-3">
-          <Pilih
-            id={idKuis("C", 4)}
-            soal="🌤️ Laut tenang: 🐚 + 🐚🐚. Berapa jumlah kerangnya?"
-            benar="B"
-            umpan="Laut tenang dilalui. 2 + 1 = 3. Kamu mendapat 1 permata."
-            salah="Hitung kerang di kedua kelompok."
-            pilihan={[
-              { huruf: "A", teks: "2" },
-              { huruf: "B", teks: "3" },
-              { huruf: "C", teks: "4" },
-            ]}
-            onNilai={(benar) => {
-              if (benar) setJalur((lama) => ({ ...lama, tenang: true }));
-              else gagal();
-            }}
-          />
-        </div>
-        <div className="mt-4">
-          <KuisTulisKartu
-            id={idKuis("C", 4)}
-            hanyaKanvas
-            rapat
-            pertanyaan="⛈️ Laut badai: Bima punya 6 bendera. Raka menambah 3. Tuliskan hasilnya."
-            alias={kumpulkanAlias(["9", "sembilan", "6 + 3 = 9", "6+3=9"])}
-            konteks="Enam tambah tiga sama dengan sembilan."
-            visual={<p className="text-center text-2xl">🚩🚩🚩🚩🚩🚩 + 🚩🚩🚩</p>}
-            sesudahNilai={(benar) => {
-              if (benar) setJalur((lama) => ({ ...lama, badai: true }));
-              else gagal();
-            }}
-          />
-        </div>
-        {jalur.badai ? <p className="text-sm font-bold text-emerald-800">Laut badai dilalui. 3 permata masuk.</p> : null}
-      </article>
-
-      <button
-        type="button"
-        onClick={() => {
-          if (permata < 1 || teropong) return;
-          setTeropong(true);
-        }}
-        className="rounded-xl border-2 border-[#1C01A5]/20 bg-white px-4 py-2 text-sm font-black text-[#1C01A5]"
-      >
-        {teropong ? "Teropong sudah dipakai" : "Pakai teropong petunjuk · biaya 1 permata"}
-      </button>
-      {teropong ? (
-        <p className="rounded-xl bg-[#F8F7FF] px-3 py-2 text-center text-sm font-black text-[#1C01A5]">
-          0 – 1 – 2 – 3 – 4 – 5 – 6 – 7 – 8 – 9 – 10
-        </p>
-      ) : null}
-
-      <div className="border-t-2 border-[#1C01A5]/10 pt-4">
-        <p className="text-base font-extrabold text-[#1C01A5]">QUIZ:</p>
-        <p className="text-2xl">🪙🪙🪙🪙🪙🪙 &nbsp; 🪙🪙🪙</p>
-        <SoalRekamSuara
-          id={idKuis("C", 3)}
-          pertanyaan="Kalau dua peti digabung, ada berapa koin?"
-          periksa={(transkrip) => jawabanTulisMemuatAlias(transkrip, ["9", "sembilan"])}
-          petunjuk="Ucapkan jawabannya."
-          sesudahNilai={(benar) => {
-            if (!benar) gagal();
-          }}
-        />
-      </div>
-      <KuisTulisKartu
-        id={idKuisTulisKartu(ID, "C")}
-        hanyaKanvas
-        pertanyaan="Kapal sudah punya 7 permata. Tinggal butuh berapa lagi supaya jadi 10?"
-        alias={kumpulkanAlias(["3", "tiga"])}
-        konteks="Tujuh ditambah tiga sama dengan sepuluh."
-        visual={<p className="text-center text-2xl font-black text-[#1C01A5]">7 + ⬜ = 10</p>}
-        sesudahNilai={(benar) => {
-          if (!benar) gagal();
-        }}
-      />
-
-      <article className="rounded-2xl border-2 border-[#7C3AED]/30 bg-[#F5F3FF] px-4 py-3">
-        <p className="text-sm font-black text-[#5B21B6]">Mode berdua</p>
-        <p className="mt-2 text-sm font-semibold text-slate-700">
-          Dua kapten menggabungkan permata: 4 💎 + 6 💎 = 10 💎.
-        </p>
-      </article>
-
-      {permata >= 10 ? (
-        <div className="rounded-2xl border-2 border-[#F0AB00] bg-[#FFF8E8] px-4 py-4 text-center">
-          <p className="text-3xl" aria-hidden>
-            👑💎
-          </p>
-          <p className="mt-2 text-sm font-black text-[#1C01A5]">Peti Harta Raja Laut terbuka!</p>
-        </div>
-      ) : null}
-    </div>
+    <MisiPenjagaKebun
+      misi={MISI_MTK1_BAB2}
+      idMisi={(indeks) => idKuis("C", indeks)}
+      idTulis={idKuisTulisKartu(ID, "C")}
+      penutup="Bunga tambah tumbuh di kebun Kiko."
+      bunga="🐚🍎🎈⭐"
+    />
   );
 }
 
@@ -1009,9 +813,12 @@ export default function NaskahMtk1Bab2({
 
       <KartuBingkai>
         <p className="text-center text-4xl" aria-hidden>
-          🚢💎🦀
+          🏡🌷🏆
         </p>
         <h4 className="mt-3 text-center text-lg font-black tracking-wide text-[#1C01A5] sm:text-xl">{kartuC.judul}</h4>
+        <p className="mt-1 text-center text-sm font-bold text-[#1C01A5]/70">
+          Sepuluh petak · menghitung, membaca, menulis, membandingkan
+        </p>
         <div className="mt-4">
           <TombolVoiceMateriPai1 kelas={kelas} kelamin={kelamin} cuplikan={cuplikanDariNaskah(kartuC.voice, 2_000, 3_000)} />
         </div>

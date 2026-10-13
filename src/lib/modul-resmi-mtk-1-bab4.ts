@@ -1,4 +1,5 @@
 import type { ModulResmiPai } from "@/lib/modul-resmi-pai";
+import { MISI_MTK1_BAB4, kuisDariMisi } from "@/lib/misi-kebun-mtk-1";
 
 function pg(soal: string[]): string {
   return soal.join("\n\n");
@@ -16,7 +17,7 @@ export const MODUL_MTK1_BAB4: ModulResmiPai = {
   sketsaKartu: [
     "Sasa, Bimo, dan Nenek Ani mengamati atap segitiga, jam lingkaran, pintu segi empat, dadu kubus, dan kotak susu balok.",
     "Keluarga bentuk datar dan bangun ruang, plus cara menghitung sisi dan sudut.",
-    "Kota bentuk: membangun rumah dan mobil dengan koin bintang.",
+    "Kiko menjaga sepuluh petak kebun bentuk: sisi, sudut, lingkaran, kubus, dan balok.",
     "Poin penting dan lembar evaluasi mengenal bentuk.",
   ],
   latihan: pg([
@@ -172,50 +173,37 @@ D) Balok`,
         ],
       ],
     },
-    {
+        {
       kode: "C",
-      judul: "C. Kota Bentuk",
+      judul: "C. Misi Penjaga Kebun Bentuk",
       pengantar:
-        "Bantu Wali Kota Kelinci membangun rumah dan mobil. Pilih bentuk yang tepat sebelum koin bintang terpakai.",
-      labelDaftar: "Membangun rumah dan mobil",
+        "Bantu Kiko mengisi 10 petak kebun bentuk. Hijau untuk menghitung, biru untuk membaca, kuning untuk menulis, dan ungu untuk membandingkan.",
+      labelDaftar: "Sepuluh misi bentuk di kebun",
       kolom: 1,
       item: [
         {
-          nama: "Harga bentuk",
-          singkat: "Segitiga 1, persegi 2, lingkaran 1, balok 3",
+          nama: "Alur permainan",
+          singkat: "Pilih petak, jawab, dapat bintang",
           uraian:
-            "Kamu mulai dengan 10 koin bintang. Rumah yang benar memakai persegi, segitiga, dan lingkaran, harganya 4. Mobil yang benar memakai balok dan dua lingkaran, harganya 5. Bangunan yang benar mendapat bonus 2 koin.",
-          contoh: "10 - 4 = 6, lalu tambah 2 menjadi 8.",
+            "Siswa memilih satu petak. Kiko menanyakan sisi, sudut, atau nama bentuk. Jawaban benar mendapat 1 bintang kebun. Jawaban yang belum tepat mendapat petunjuk, tanpa kehilangan daun.",
+          contoh: "Segitiga 3 sisi. Roda adalah lingkaran. Dadu kubus punya 6 sisi. Kotak susu adalah balok.",
         },
         {
-          nama: "Keputusan",
-          singkat: "Pikir dulu sebelum memilih",
+          nama: "Daun ajaib",
+          singkat: "3, 2, atau 1 daun",
           uraian:
-            "Kalau atap dipilih lingkaran, rumah roboh dan satu koin hilang. Koin sengaja ditahan supaya misi masih bisa dicoba lagi. Dalam mode bersama, dua pemain berbagi koin dan memilih bentuk yang hemat.",
-          contoh: "Roda mobil adalah lingkaran.",
+            "Jawaban pertama benar mendapat 3 daun ajaib. Benar setelah satu petunjuk mendapat 2 daun. Benar setelah dua petunjuk mendapat 1 daun. Belum tepat tidak mengurangi daun. Siswa boleh mencoba lagi.",
+          contoh: "Petunjuk: benda bergoyang, lalu muncul titik, lalu Kiko menjelaskan bersama.",
         },
       ],
-      kuis: [
-        {
-          pertanyaan: "Rumah butuh persegi, segitiga, dan lingkaran.",
-          alias: ["persegi", "segitiga", "lingkaran"],
-        },
-        {
-          pertanyaan: "Mobil butuh balok dan dua lingkaran.",
-          alias: ["balok", "lingkaran"],
-        },
-        {
-          pertanyaan: "Roda mobil bentuknya apa?",
-          alias: ["lingkaran"],
-        },
-      ],
+      kuis: kuisDariMisi(MISI_MTK1_BAB4),
       voice: [
         [
-          "Wali Kota Kelinci meminta bantuan membangun kota.",
-          "Rumah butuh badan persegi, atap segitiga, dan jendela lingkaran.",
-          "Mobil butuh badan balok dan dua roda lingkaran.",
-          "Kalau bentuknya salah, bangunan roboh. Pikirkan dulu, karena koin terbatas.",
-          "Roda mobil harus lingkaran supaya bisa menggelinding.",
+          "Kiko menjaga kebun bentuk. Ada sepuluh petak dari rumah sampai piala.",
+          "Segitiga punya tiga sisi dan tiga sudut. Segi empat punya empat sisi.",
+          "Roda yang menggelinding adalah lingkaran. Atap rumah memakai segitiga, bukan lingkaran.",
+          "Dadu adalah kubus dengan enam sisi. Kotak susu adalah balok.",
+          "Jawaban benar mendapat satu bintang kebun. Jika belum tepat, Kiko memberi petunjuk. Daun tidak berkurang.",
         ],
       ],
     },

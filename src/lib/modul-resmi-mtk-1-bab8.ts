@@ -1,4 +1,5 @@
 import type { ModulResmiPai } from "@/lib/modul-resmi-pai";
+import { MISI_MTK1_BAB8, kuisDariMisi } from "@/lib/misi-kebun-mtk-1";
 
 function pg(soal: string[]): string {
   return soal.join("\n\n");
@@ -16,7 +17,7 @@ export const MODUL_MTK1_BAB8: ModulResmiPai = {
   sketsaKartu: [
     "Sari dan Adi mengelompokkan gelas, piring, dan sendok bersama Tupi di kantin.",
     "Cara membuat dan membaca piktogram, lalu membandingkan dua baris.",
-    "Toko grosir Tupi: menyortir barang, menyusun diagram, dan menjawab pelanggan.",
+    "Kiko menjaga sepuluh petak kebun diagram: jumlah, selisih, dan arti satu gambar.",
     "Poin penting dan lembar evaluasi mengenal diagram.",
   ],
   latihan: pg([
@@ -172,54 +173,37 @@ D) Sama banyak`,
         ],
       ],
     },
-    {
+        {
       kode: "C",
-      judul: "C. Toko Grosir Tupi",
+      judul: "C. Misi Penjaga Kebun Diagram",
       pengantar:
-        "Barang gudang disortir ke rak, digambar di piktogram, lalu dipakai menjawab pertanyaan pelanggan.",
-      labelDaftar: "Sortir, diagram, dan selisih stok",
+        "Bantu Kiko mengisi 10 petak kebun diagram. Hijau untuk menghitung, biru untuk membaca, kuning untuk menulis, dan ungu untuk membandingkan.",
+      labelDaftar: "Sepuluh misi diagram di kebun",
       kolom: 1,
       item: [
         {
-          nama: "Tiga laporan",
-          singkat: "Kelompok, gambar, lalu jawab",
+          nama: "Alur permainan",
+          singkat: "Pilih petak, jawab, dapat bintang",
           uraian:
-            "Susu, kaleng, dan cokelat dipisah. Diagram harus cocok dengan rak. Susu 8 dan barang paling sedikit 3, jadi selisihnya 5.",
-          contoh: "Cokelat paling banyak pada papan roti 5, susu 3, cokelat 7. Selisih cokelat dan susu adalah 4.",
+            "Siswa memilih satu petak. Kiko menanyakan baris terpanjang, selisih, atau arti satu gambar. Jawaban benar mendapat 1 bintang kebun. Jawaban yang belum tepat mendapat petunjuk, tanpa kehilangan daun.",
+          contoh: "Apel 7 paling banyak. Jumlah 7 + 3 + 5 = 15. Selisih 4. Tiga gambar yang masing-masing mewakili 2 benda sama dengan 6.",
         },
         {
-          nama: "Keputusan",
-          singkat: "Kaca pembesar memakai satu kotak",
+          nama: "Daun ajaib",
+          singkat: "3, 2, atau 1 daun",
           uraian:
-            "Pagi sejuk memakai soal langsung. Pagi ramai memakai soal cerita. Keduanya menanyakan selisih 8 dan 3. Kaca pembesar membantu melihat baris terpanjang dengan biaya satu kotak. Tiga laporan tanpa kaca mendapat satu kotak bonus. Ikon yang salah memantul kembali.",
-          contoh: "8 – 3 = 5. 7 – 3 = 4.",
+            "Jawaban pertama benar mendapat 3 daun ajaib. Benar setelah satu petunjuk mendapat 2 daun. Benar setelah dua petunjuk mendapat 1 daun. Belum tepat tidak mengurangi daun. Siswa boleh mencoba lagi.",
+          contoh: "Satu jenis, satu baris. Satu gambar, satu benda, kecuali judulnya bilang lain.",
         },
       ],
-      kuis: [
-        {
-          pertanyaan: "Semua barang sudah masuk rak yang benar?",
-          alias: ["susu", "kaleng", "cokelat"],
-        },
-        {
-          pertanyaan: "Diagram susu 4, kaleng 3, cokelat 1 sudah sesuai?",
-          alias: ["4", "3", "1"],
-        },
-        {
-          pertanyaan: "Susu 8 dan yang paling sedikit 3. Selisihnya berapa?",
-          alias: ["5", "lima"],
-        },
-        {
-          pertanyaan: "Barang apa yang paling banyak stoknya?",
-          alias: ["cokelat", "coklat"],
-        },
-      ],
+      kuis: kuisDariMisi(MISI_MTK1_BAB8),
       voice: [
         [
-          "Toko Tupi membuka setelah laporannya benar.",
-          "Pisahkan susu, kaleng, dan cokelat.",
-          "Gambar di diagram harus sama dengan jumlah di rak.",
-          "Delapan dikurangi tiga sama dengan lima.",
-          "Tujuh dikurangi tiga sama dengan empat. Cokelat paling banyak.",
+          "Kiko menjaga kebun diagram. Ada sepuluh petak dari rumah sampai piala.",
+          "Apel tujuh, pisang tiga, anggur lima. Yang paling banyak tujuh. Jumlah semuanya lima belas. Selisihnya empat.",
+          "Ikan enam lebih banyak daripada kura-kura empat.",
+          "Tiga gambar biskuit, dan satu gambar mewakili dua biskuit, jadi jumlahnya enam.",
+          "Jawaban benar mendapat satu bintang kebun. Jika belum tepat, Kiko memberi petunjuk. Daun tidak berkurang.",
         ],
       ],
     },

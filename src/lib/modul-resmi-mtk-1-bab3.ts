@@ -1,4 +1,5 @@
 import type { ModulResmiPai } from "@/lib/modul-resmi-pai";
+import { MISI_MTK1_BAB3, kuisDariMisi } from "@/lib/misi-kebun-mtk-1";
 
 function pg(soal: string[]): string {
   return soal.join("\n\n");
@@ -17,7 +18,7 @@ export const MODUL_MTK1_BAB3: ModulResmiPai = {
   sketsaKartu: [
     "Nia dan Fajar di pesta ulang tahun. Delapan balon, tiga terbang, sisa lima. Miko si tikus menjelaskan tanda kurang.",
     "Cara mengurangi: hitung sisa, hitung mundur, pakai jari, dan saudara dari penjumlahan.",
-    "Toko roti Miko: rak roti, nota simbol, dan cerita pelanggan.",
+    "Kiko menjaga sepuluh petak kebun kurang: sisa, angka hilang, dan saudara dari penjumlahan.",
     "Poin penting dan lembar evaluasi pengurangan sampai 10.",
   ],
   latihan: pg([
@@ -176,58 +177,37 @@ D) 12`,
         ],
       ],
     },
-    {
+        {
       kode: "C",
-      judul: "C. Toko Roti Miko",
+      judul: "C. Misi Penjaga Kebun Kurang",
       pengantar:
-        "Jadilah penjaga toko. Setiap pelanggan membeli roti, hitung yang tersisa. Sepuluh roti membuka cabang baru.",
-      labelDaftar: "Menghitung roti yang tersisa",
+        "Bantu Kiko mengisi 10 petak kebun pengurangan. Hijau untuk menghitung, biru untuk membaca, kuning untuk menulis, dan ungu untuk membandingkan.",
+      labelDaftar: "Sepuluh misi kurang di kebun",
       kolom: 1,
       item: [
         {
-          nama: "Tiga level toko",
-          singkat: "Rak, nota, dan cerita",
+          nama: "Alur permainan",
+          singkat: "Pilih petak, jawab, dapat bintang",
           uraian:
-            "Rak punya 7 roti, pelanggan membeli 3, sisa 4. Nota 9 kurang 4 sama dengan 5. Donat 5 dikurangi 2 yang rusak sama dengan 3.",
-          contoh: "5 - 2 = 3",
+            "Siswa memilih satu petak. Kiko membacakan misi pengurangan. Jawaban benar mendapat 1 bintang kebun. Jawaban yang belum tepat mendapat petunjuk, tanpa kehilangan daun. Setelah 10 petak selesai, bunga kurang tumbuh.",
+          contoh: "8 - 3 = 5. Angka hilang pada 8 - kotak = 5 adalah 3. 9 - 2 bukan 6.",
         },
         {
-          nama: "Pelanggan",
-          singkat: "Ramah atau buru-buru",
+          nama: "Daun ajaib",
+          singkat: "3, 2, atau 1 daun",
           uraian:
-            "Pelanggan ramah memberi soal mudah dan 1 roti. Pelanggan buru-buru memberi soal cerita dan 3 roti. Jawaban yang belum tepat membuat lonceng berbunyi, roti kembali ke rak.",
-          contoh: "10 - 4 = 6",
+            "Jawaban pertama benar mendapat 3 daun ajaib. Benar setelah satu petunjuk mendapat 2 daun. Benar setelah dua petunjuk mendapat 1 daun. Belum tepat tidak mengurangi daun. Siswa boleh mencoba lagi.",
+          contoh: "Petunjuk: benda bergoyang, lalu muncul titik, lalu Kiko menghitung bersama.",
         },
       ],
-      kuis: [
-        {
-          pertanyaan: "Tujuh roti, dibeli 3. Sisa berapa?",
-          alias: ["4", "empat"],
-        },
-        {
-          pertanyaan: "Lengkapi 9 kurang 4 sama dengan 5.",
-          alias: ["9 - 4 = 5", "9-4=5"],
-        },
-        {
-          pertanyaan: "Lima donat, 2 rusak. Berapa yang masih bagus?",
-          alias: ["3", "tiga", "5 - 2 = 3"],
-        },
-        {
-          pertanyaan: "Sembilan donat, dibeli 3. Sisa berapa?",
-          alias: ["6", "enam"],
-        },
-        {
-          pertanyaan: "Pilih pelanggan ramah, 4 kurang 1, atau pelanggan buru-buru, 8 kurang 3.",
-          alias: ["3", "tiga", "5", "lima"],
-        },
-      ],
+      kuis: kuisDariMisi(MISI_MTK1_BAB3),
       voice: [
         [
-          "Kamu menjaga toko roti Miko.",
-          "Di rak ada tujuh roti. Pelanggan membeli tiga. Sisanya empat.",
-          "Di nota, tulis tanda kurang dan sama dengan.",
-          "Lima donat, dua jatuh. Yang masih bagus tiga.",
-          "Kalau jawaban belum tepat, lonceng berbunyi dan roti kembali ke rak. Kumpulkan 10 roti untuk membuka cabang baru.",
+          "Kiko menjaga kebun kurang. Ada sepuluh petak dari rumah sampai piala.",
+          "Delapan balon dikurangi tiga, sisanya lima. Kurang nol, angkanya tetap.",
+          "Angka yang hilang supaya delapan kurang kotak sama dengan lima adalah tiga.",
+          "Sembilan kurang dua sama dengan tujuh, bukan enam. Karena empat tambah tiga sama dengan tujuh, tujuh kurang tiga kembali ke empat.",
+          "Jawaban benar mendapat satu bintang kebun. Jika belum tepat, Kiko memberi petunjuk. Daun tidak berkurang.",
         ],
       ],
     },
