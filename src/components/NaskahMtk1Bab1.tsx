@@ -867,7 +867,7 @@ export default function NaskahMtk1Bab1({
         <div className="mt-4 rounded-2xl border-2 border-[#F0AB00] bg-[#FFF8E8] px-4 py-3">
           <p className="text-sm font-black text-[#1C01A5]">Tujuan Pembelajaran</p>
           <p className="mt-2 text-sm font-semibold text-slate-700">Setelah belajar, siswa dapat:</p>
-          <ul className="mt-2 list-disc space-y-1 pl-5 text-sm font-semibold text-slate-700">
+          <ul className="daftar-tujuan mt-2 space-y-1 text-sm font-semibold text-slate-700">
             <li>Menghitung benda sampai 10.</li>
             <li>Membaca bilangan 1–10.</li>
             <li>Menulis lambang bilangan 1–10.</li>

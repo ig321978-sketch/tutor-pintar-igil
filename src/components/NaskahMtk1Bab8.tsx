@@ -529,7 +529,7 @@ function KartuA({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminGuru }) {
       />
       <div className="mt-4 rounded-2xl border-2 border-[#F0AB00] bg-[#FFF8E8] px-4 py-3">
         <p className="text-sm font-black text-[#1C01A5]">Tujuan Pembelajaran</p>
-        <ul className="mt-2 list-disc space-y-1 pl-5 text-sm font-semibold text-slate-700">
+        <ul className="daftar-tujuan mt-2 space-y-1 text-sm font-semibold text-slate-700">
           <li>Mengelompokkan benda menurut jenisnya.</li>
           <li>Menyusun dan membaca diagram gambar sederhana.</li>
         </ul>
