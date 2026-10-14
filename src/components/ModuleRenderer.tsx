@@ -32,6 +32,7 @@ import NaskahMtk3Waktu from "@/components/NaskahMtk3Waktu";
 import NaskahMtk3Uang from "@/components/NaskahMtk3Uang";
 import NaskahMtk3Pola from "@/components/NaskahMtk3Pola";
 import NaskahMtk3Kalimat from "@/components/NaskahMtk3Kalimat";
+import NaskahMtk3Bangun from "@/components/NaskahMtk3Bangun";
 import NaskahMtk3Bab3 from "@/components/NaskahMtk3Bab3";
 import NaskahPancasila1 from "@/components/NaskahPancasila1";
 import NaskahBindo1 from "@/components/NaskahBindo1";
@@ -79,6 +80,7 @@ import {
   adalahJudulMtk3Uang,
   adalahJudulMtk3Pola,
   adalahJudulMtk3Kalimat,
+  adalahJudulMtk3Bangun,
   adalahJudulMtk3Bab3,
   adalahJudulPancasila1Bab1,
   adalahJudulPancasila1Bab2,
@@ -143,6 +145,7 @@ import { MODUL_MTK3_WAKTU } from "@/lib/modul-resmi-mtk-3-waktu";
 import { MODUL_MTK3_UANG } from "@/lib/modul-resmi-mtk-3-uang";
 import { MODUL_MTK3_POLA } from "@/lib/modul-resmi-mtk-3-pola";
 import { MODUL_MTK3_KALIMAT } from "@/lib/modul-resmi-mtk-3-kalimat";
+import { MODUL_MTK3_BANGUN } from "@/lib/modul-resmi-mtk-3-bangun";
 import { MODUL_MTK3_BAB3 } from "@/lib/modul-resmi-mtk-3-bab3";
 import { naskahTampilanModulResmi } from "@/lib/modul-resmi-pai";
 import { jenjangGuru, type KelaminGuru } from "@/lib/guru";
@@ -441,6 +444,13 @@ function ModuleRenderer({
         naskahTampilanModulResmi(MODUL_MTK3_KALIMAT, naskah)),
     [naskah, mapel, materi, kelas],
   );
+  const pakaiKartuMtk3Bangun = useMemo(
+    () =>
+      kelasTigaSd(kelas) &&
+      (adalahJudulMtk3Bangun(mapel, materi) ||
+        naskahTampilanModulResmi(MODUL_MTK3_BANGUN, naskah)),
+    [naskah, mapel, materi, kelas],
+  );
   const pakaiKartuMtk3Bab3 = useMemo(
     () =>
       kelasTigaSd(kelas) &&
@@ -729,6 +739,13 @@ function ModuleRenderer({
     return (
       <div className={className}>
         <NaskahMtk3Kalimat kelas={kelas} kelamin={kelamin} />
+      </div>
+    );
+  }
+  if (pakaiKartuMtk3Bangun) {
+    return (
+      <div className={className}>
+        <NaskahMtk3Bangun kelas={kelas} kelamin={kelamin} />
       </div>
     );
   }
