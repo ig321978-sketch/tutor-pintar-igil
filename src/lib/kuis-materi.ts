@@ -27,6 +27,7 @@ import { MODUL_MTK3_KALIMAT } from "@/lib/modul-resmi-mtk-3-kalimat";
 import { MODUL_MTK3_BANGUN } from "@/lib/modul-resmi-mtk-3-bangun";
 import { MODUL_MTK3_KELILING } from "@/lib/modul-resmi-mtk-3-keliling";
 import { MODUL_MTK3_RUANG } from "@/lib/modul-resmi-mtk-3-ruang";
+import { MODUL_MTK7_BAB1 } from "@/lib/modul-resmi-mtk-7-bab1";
 import { MODUL_MTK3_BAB3 } from "@/lib/modul-resmi-mtk-3-bab3";
 import { MODUL_PANCASILA1_BAB1 } from "@/lib/modul-resmi-pancasila-1-bab1";
 import { MODUL_PANCASILA1_BAB2 } from "@/lib/modul-resmi-pancasila-1-bab2";
@@ -62,6 +63,7 @@ import {
   adalahMtk3Bangun,
   adalahMtk3Keliling,
   adalahMtk3Ruang,
+  adalahMtk7Bab1,
   adalahMtk3Bab3,
   adalahPancasila1Bab1,
   adalahPancasila1Bab2,
@@ -303,6 +305,11 @@ export function daftarIdKuisMateri(
       ),
       idKuisTulisKartu(MODUL_MTK3_RUANG.id, "C"),
     ];
+  }
+  if (adalahMtk7Bab1(kelas, mapel, materi)) {
+    return MODUL_MTK7_BAB1.kartu.flatMap((kartu) =>
+      kartu.kuis.map((_, indeks) => idKuisKartuResmi(MODUL_MTK7_BAB1.id, kartu.kode, indeks)),
+    );
   }
   if (adalahMtk3Bab3(kelas, mapel, materi)) {
     return idKuisDariModulResmi(MODUL_MTK3_BAB3);

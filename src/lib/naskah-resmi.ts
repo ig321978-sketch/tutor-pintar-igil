@@ -40,6 +40,7 @@ import { MODUL_MTK3_KALIMAT } from "@/lib/modul-resmi-mtk-3-kalimat";
 import { MODUL_MTK3_BANGUN } from "@/lib/modul-resmi-mtk-3-bangun";
 import { MODUL_MTK3_KELILING } from "@/lib/modul-resmi-mtk-3-keliling";
 import { MODUL_MTK3_RUANG } from "@/lib/modul-resmi-mtk-3-ruang";
+import { MODUL_MTK7_BAB1 } from "@/lib/modul-resmi-mtk-7-bab1";
 import { MODUL_MTK3_BAB3 } from "@/lib/modul-resmi-mtk-3-bab3";
 import { MODUL_PANCASILA1_BAB1 } from "@/lib/modul-resmi-pancasila-1-bab1";
 import { MODUL_PANCASILA1_BAB2 } from "@/lib/modul-resmi-pancasila-1-bab2";
@@ -594,6 +595,21 @@ export function adalahMtk3Ruang(
   return adalahJudulMtk3Ruang(mapel, materi);
 }
 
+function kelasTujuhSmp(kelas: string): boolean {
+  const k = kelas.trim();
+  return /^7\s*SMP\b/i.test(k) || /^kelas\s*7(\s+SMP)?\b/i.test(k);
+}
+
+export function adalahJudulMtk7Bab1(mapel: string, materi: string): boolean {
+  if (!adalahMapelMatematika(mapel)) return false;
+  return MODUL_MTK7_BAB1.pola.test(normJudul(materi));
+}
+
+export function adalahMtk7Bab1(kelas: string, mapel: string, materi: string): boolean {
+  if (!kelasTujuhSmp(kelas)) return false;
+  return adalahJudulMtk7Bab1(mapel, materi);
+}
+
 export function adalahJudulMtk3Bab3(mapel: string, materi: string): boolean {
   if (!adalahMapelMatematika(mapel)) return false;
   return MODUL_MTK3_BAB3.pola.test(normJudul(materi));
@@ -1089,6 +1105,7 @@ export function daftarNaskahResmiPublik(): ModulTerbitPublik[] {
     { kelas: "3 SD", mapel: "Matematika", materi: MODUL_MTK3_BANGUN.judul },
     { kelas: "3 SD", mapel: "Matematika", materi: MODUL_MTK3_KELILING.judul },
     { kelas: "3 SD", mapel: "Matematika", materi: MODUL_MTK3_RUANG.judul },
+    { kelas: "7 SMP", mapel: "Matematika", materi: MODUL_MTK7_BAB1.judul },
     { kelas: "3 SD", mapel: "Matematika", materi: MODUL_MTK3_BAB3.judul },
     ...MODUL_PANCASILA1_BAB1_4.map((modul) => ({
       kelas: "1 SD",
@@ -1238,6 +1255,9 @@ export function naskahResmiJikaAda(
   }
   if (adalahMtk3Ruang(kelas, mapel, materi)) {
     return isiCacheDariModulResmi(MODUL_MTK3_RUANG);
+  }
+  if (adalahMtk7Bab1(kelas, mapel, materi)) {
+    return isiCacheDariModulResmi(MODUL_MTK7_BAB1);
   }
   if (adalahMtk3Bab3(kelas, mapel, materi)) {
     return isiCacheDariModulResmi(MODUL_MTK3_BAB3);
