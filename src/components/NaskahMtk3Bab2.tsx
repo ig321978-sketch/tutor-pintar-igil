@@ -329,16 +329,6 @@ function TabelSusun({
               {barisAtas.map((_, indeks) => {
                 const tambah = jejakTambah?.[indeks];
                 const kurang = jejakKurang;
-                const hanyaTerima = Boolean(kurang?.terima[indeks] && !kurang.beri[indeks]);
-                if (hanyaTerima && kurang) {
-                  return (
-                    <td key={RUMAH_ANGKA[indeks]} className="px-0.5 align-middle">
-                      <span data-terima={String(indeks - 1)} className={ANGKA_PINDAH}>
-                        {kurang.kerja[indeks]}
-                      </span>
-                    </td>
-                  );
-                }
                 const jejak = tambah && tambah.masuk > 0
                   ? { tanda: "+1", id: String(indeks + 1), peran: "terima" as const }
                   : kurang?.beri[indeks]
@@ -358,22 +348,16 @@ function TabelSusun({
                 {barisAtas.map((_, indeks) => {
                   const tambah = jejakTambah?.[indeks];
                   const kurang = jejakKurang;
-                  const hanyaTerima = Boolean(kurang?.terima[indeks] && !kurang.beri[indeks]);
-                  const sisaPemberi = Boolean(
-                    kurang?.beri[indeks] && !kurang.terima[indeks] && kurang.kerja[indeks] !== kurang.asli[indeks],
-                  );
-                  const angkaTengah = hanyaTerima
-                    ? ""
-                    : tambah && tambah.masuk > 0
-                      ? String(Number(barisAtas[indeks]) + tambah.masuk)
-                      : kurang && kurang.kerja[indeks] !== kurang.asli[indeks]
-                        ? String(kurang.kerja[indeks])
-                        : "";
-                  const kepalaPanah = kurang?.terima[indeks] && kurang.beri[indeks] ? String(indeks - 1) : undefined;
+                  const angkaTengah = tambah && tambah.masuk > 0
+                    ? String(Number(barisAtas[indeks]) + tambah.masuk)
+                    : kurang && kurang.kerja[indeks] !== kurang.asli[indeks]
+                      ? String(kurang.kerja[indeks])
+                      : "";
+                  const kepalaPanah = kurang?.terima[indeks] ? String(indeks - 1) : undefined;
                   return (
                     <td key={RUMAH_ANGKA[indeks]} className="px-0.5 pb-1">
                       {angkaTengah ? (
-                        <span className={sisaPemberi ? ANGKA_BESAR : ANGKA_PINDAH} data-terima={kepalaPanah}>
+                        <span className={ANGKA_PINDAH} data-terima={kepalaPanah}>
                           {angkaTengah}
                         </span>
                       ) : null}
