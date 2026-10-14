@@ -212,7 +212,7 @@ const SUBBAB_BUKU_SISWA: Record<string, Record<string, Record<string, string[]>>
         "Pecahan seperempat",
         "Pembilang dan penyebut",
         "Membandingkan pecahan",
-        "Warung Potong Buah Ciko",
+        "Pos Kertas Lipat Igil",
         "Poin penting",
         "Lembar evaluasi siswa",
       ],

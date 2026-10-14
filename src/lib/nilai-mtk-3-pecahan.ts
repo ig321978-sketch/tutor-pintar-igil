@@ -120,6 +120,65 @@ export function pesananDuaPerTiga(teks: string): boolean {
   return adaDuaPerTiga(teks) && k.includes("lebih besar") && !/lebih kecil/.test(k);
 }
 
+function dekat(teks: string, angka: string, ejaan: string): boolean {
+  if (new RegExp(`(?:^|\\D)${angka}(?:\\D|$)`).test(teks)) return true;
+  const kalimat = biasa(teks);
+  return new RegExp(`(?:^|\\s)${ejaan}(?!\\s+(?:puluh|belas|ratus|ribu))(?:\\s|$)`).test(` ${kalimat} `);
+}
+
+export function peranPecahan(
+  teks: string,
+  atas: string,
+  ejaanAtas: string,
+  bawah: string,
+  ejaanBawah: string,
+): boolean {
+  const kalimat = biasa(teks);
+  if (!kalimat.includes("pembilang") || !kalimat.includes("penyebut")) return false;
+  if (!dekat(teks, atas, ejaanAtas) || !dekat(teks, bawah, ejaanBawah)) return false;
+  if (new RegExp(`pembilang\\s+(?:${bawah}|${ejaanBawah})\\b`).test(kalimat)) return false;
+  if (new RegExp(`penyebut\\s+(?:${atas}|${ejaanAtas})\\b`).test(kalimat)) return false;
+  const atasBenar = new RegExp(`(?:pembilang\\s+(?:${atas}|${ejaanAtas})\\b|(?:${atas}|${ejaanAtas})\\s+pembilang)`).test(kalimat);
+  const bawahBenar = new RegExp(`(?:penyebut\\s+(?:${bawah}|${ejaanBawah})\\b|(?:${bawah}|${ejaanBawah})\\s+penyebut)`).test(kalimat);
+  return atasBenar && bawahBenar;
+}
+
+export function peranSetengah(teks: string): boolean {
+  return adaSetengah(teks) && peranPecahan(teks, "1", "satu", "2", "dua");
+}
+
+export function peranSepertiga(teks: string): boolean {
+  return adaSepertiga(teks) && peranPecahan(teks, "1", "satu", "3", "tiga");
+}
+
+export function peranSeperempat(teks: string): boolean {
+  return adaSeperempat(teks) && peranPecahan(teks, "1", "satu", "4", "empat");
+}
+
+export function yangLebihBesarSetengah(teks: string): boolean {
+  const kalimat = biasa(teks);
+  if (/sepertiga lebih besar|satu per tiga lebih besar|seperempat lebih besar|satu per empat lebih besar/.test(kalimat)) return false;
+  if (/1\s*\/\s*[34]\s*>/.test(teks)) return false;
+  if (jawabSetengah(teks)) return true;
+  return adaSetengah(teks) && lebihBesar(teks);
+}
+
+export function yangLebihBesarSepertiga(teks: string): boolean {
+  const kalimat = biasa(teks);
+  if (/seperempat lebih besar|satu per empat lebih besar|setengah lebih besar|satu per dua lebih besar/.test(kalimat)) return false;
+  if (/1\s*\/\s*[24]\s*>/.test(teks)) return false;
+  if (jawabSepertiga(teks)) return true;
+  return adaSepertiga(teks) && lebihBesar(teks);
+}
+
+export function yangLebihKecilSeperempat(teks: string): boolean {
+  const kalimat = biasa(teks);
+  if (/setengah lebih kecil|satu per dua lebih kecil|sepertiga lebih kecil|satu per tiga lebih kecil/.test(kalimat)) return false;
+  if (/1\s*\/\s*[23]\s*</.test(teks)) return false;
+  if (jawabSeperempat(teks)) return true;
+  return adaSeperempat(teks) && lebihKecil(teks);
+}
+
 export function warungTiga(teks: string): boolean {
   const k = ` ${biasa(teks)} `;
   if (!adaSepertiga(teks)) return false;
