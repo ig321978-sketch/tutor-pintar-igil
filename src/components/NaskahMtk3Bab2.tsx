@@ -124,75 +124,63 @@ function titikTepi(kiri: number, atas: number, lebar: number, tinggi: number, me
   return { x: cx + dx * t, y: cy + dy * t };
 }
 
-function SelAngkaAtas({
+const ANGKA_BESAR = "inline-block text-xl font-black text-[#1C01A5] sm:text-2xl";
+const ANGKA_PINDAH = "inline-block text-sm font-black leading-none text-rose-600";
+const TANDA_PINDAH = "inline-block text-[11px] font-black leading-none text-rose-600";
+
+function susunTambah(atas: number, bawah: number) {
+  const asli = digitEmpat(atas).map(Number);
+  const lawan = digitEmpat(bawah).map(Number);
+  const kolom = asli.map(() => ({ jumlah: 0, masuk: 0 }));
+  let simpan = 0;
+  for (let indeks = 3; indeks >= 0; indeks -= 1) {
+    const masuk = simpan;
+    const jumlah = asli[indeks] + lawan[indeks] + masuk;
+    kolom[indeks] = { jumlah, masuk };
+    simpan = jumlah >= 10 ? 1 : 0;
+  }
+  return kolom;
+}
+
+function susunKurang(atas: number, bawah: number) {
+  const asli = digitEmpat(atas).map(Number);
+  const lawan = digitEmpat(bawah).map(Number);
+  const kerja = [...asli];
+  const beri = [false, false, false, false];
+  const terima = [false, false, false, false];
+  for (let indeks = 3; indeks >= 0; indeks -= 1) {
+    if (kerja[indeks] >= lawan[indeks]) continue;
+    let pemberi = indeks - 1;
+    while (pemberi >= 0 && kerja[pemberi] === 0) pemberi -= 1;
+    if (pemberi < 0) break;
+    kerja[pemberi] -= 1;
+    beri[pemberi] = true;
+    for (let antara = pemberi + 1; antara < indeks; antara += 1) {
+      kerja[antara] = 9;
+      terima[antara] = true;
+      beri[antara] = true;
+    }
+    kerja[indeks] += 10;
+    terima[indeks] = true;
+  }
+  return { asli, kerja, beri, terima };
+}
+
+function SelAtas({
   digit,
-  operasi,
-  indeks,
-  semua,
-  adaJejak,
+  jejak,
 }: {
   digit: string;
-  operasi: "+" | "−";
-  indeks: number;
-  semua?: Array<CatatanKolom | null>;
-  adaJejak: boolean;
+  jejak?: { tanda: string; id: string; peran: "terima" | "beri" } | null;
 }) {
-  const ini = semua?.[indeks] ?? null;
-  const angkaBesar = "inline-block text-xl font-black text-[#1C01A5] sm:text-2xl";
-  const angkaKecil = "inline-block text-sm font-black leading-none text-rose-600";
-
-  if (!adaJejak) {
-    return <span className={angkaBesar}>{digit}</span>;
-  }
-
-  if (operasi === "+") {
-    const simpanan = ini?.panah ? ini.teks : null;
-    const idBeri = indeks > 0 && semua?.[indeks - 1]?.panah ? String(indeks - 1) : undefined;
-    return (
-      <div className="flex flex-col items-center">
-        <span className="flex h-5 items-center justify-center">
-          {simpanan ? (
-            <span data-terima={indeks} className={angkaKecil}>
-              {simpanan}
-            </span>
-          ) : null}
-        </span>
-        <span className="flex h-9 items-center justify-center">
-          <span data-pemberi={idBeri} className={angkaBesar}>
-            {digit}
-          </span>
-        </span>
-      </div>
-    );
-  }
-
-  const terima = ini?.panah ? ini.teks : null;
-  const sisa = ini && !ini.panah ? ini.teks : null;
-  const idBeri = indeks < 3 && semua?.[indeks + 1]?.panah ? String(indeks + 1) : undefined;
-  const hanyaTerima = Boolean(terima) && !idBeri;
-
+  if (!jejak) return <span className={ANGKA_BESAR}>{digit}</span>;
   return (
-    <div className="flex flex-col items-center">
-      <span className="flex h-9 items-center justify-center">
-        {hanyaTerima ? (
-          <span data-terima={indeks} className={angkaKecil}>
-            {terima}
-          </span>
-        ) : (
-          <span data-pemberi={idBeri} className={angkaBesar}>
-            {digit}
-          </span>
-        )}
+    <span className="inline-flex items-baseline justify-center whitespace-nowrap">
+      <span className={ANGKA_BESAR}>{digit}</span>
+      <span className={TANDA_PINDAH} {...(jejak.peran === "terima" ? { "data-terima": jejak.id } : { "data-pemberi": jejak.id })}>
+        {jejak.tanda}
       </span>
-      <span className="flex h-5 items-center justify-center">
-        {sisa ? <span className="inline-block text-sm font-black leading-none text-amber-700">{sisa}</span> : null}
-        {terima && !hanyaTerima ? (
-          <span data-terima={indeks} className={angkaKecil}>
-            {terima}
-          </span>
-        ) : null}
-      </span>
-    </div>
+    </span>
   );
 }
 
@@ -214,7 +202,10 @@ function TabelSusun({
   const barisAtas = digitEmpat(atas);
   const barisBawah = digitEmpat(bawah);
   const barisHasil = hasil === undefined ? null : digitEmpat(hasil);
-  const adaJejak = Boolean(catatan?.some(Boolean));
+  const bolehJejak = hasil !== undefined && kosong === undefined && Boolean(catatan?.some(Boolean));
+  const jejakTambah = bolehJejak && operasi === "+" ? susunTambah(atas, bawah) : null;
+  const jejakKurang = bolehJejak && operasi === "−" ? susunKurang(atas, bawah) : null;
+  const adaJejak = Boolean(jejakTambah?.some((kolom) => kolom.jumlah >= 10) || jejakKurang?.beri.some(Boolean));
   const bungkus = useRef<HTMLDivElement>(null);
   const tanda = useId().replace(/:/g, "");
   const [garis, setGaris] = useState<GarisPanah[]>([]);
@@ -227,21 +218,28 @@ function TabelSusun({
   };
 
   const keterangan = useMemo(() => {
-    if (!catatan) return "";
-    return catatan
-      .map((item, indeks) => {
-        if (!item?.panah) return "";
-        if (operasi === "−" && indeks > 0) {
-          return `Panah dari ${RUMAH_ANGKA[indeks - 1].toLowerCase()} ${barisAtas[indeks - 1]} ke angka pinjaman ${item.teks} di ${RUMAH_ANGKA[indeks].toLowerCase()}.`;
-        }
-        if (operasi === "+" && indeks < 3) {
-          return `Panah dari ${RUMAH_ANGKA[indeks + 1].toLowerCase()} ${barisAtas[indeks + 1]} ke angka simpanan ${item.teks} di ${RUMAH_ANGKA[indeks].toLowerCase()}.`;
-        }
-        return "";
-      })
-      .filter(Boolean)
-      .join(" ");
-  }, [catatan, operasi, barisAtas]);
+    if (jejakTambah && adaJejak) {
+      return jejakTambah
+        .map((kolom, indeks) =>
+          kolom.jumlah >= 10
+            ? `Jumlah ${RUMAH_ANGKA[indeks].toLowerCase()} ${kolom.jumlah}. Panah menuju +1 di ${RUMAH_ANGKA[indeks - 1].toLowerCase()}.`
+            : "",
+        )
+        .filter(Boolean)
+        .join(" ");
+    }
+    if (jejakKurang && adaJejak) {
+      return jejakKurang.beri
+        .map((memberi, indeks) =>
+          memberi
+            ? `Panah dari angka ${jejakKurang.kerja[indeks + 1]} di ${RUMAH_ANGKA[indeks + 1].toLowerCase()} menuju −1 pada ${RUMAH_ANGKA[indeks].toLowerCase()} ${jejakKurang.asli[indeks]}.`
+            : "",
+        )
+        .filter(Boolean)
+        .join(" ");
+    }
+    return "";
+  }, [adaJejak, jejakKurang, jejakTambah]);
 
   useLayoutEffect(() => {
     const akar = bungkus.current;
@@ -318,13 +316,47 @@ function TabelSusun({
           <tbody>
             <tr className="bg-sky-50">
               <td />
-              {barisAtas.map((_, indeks) => (
-                <td key={RUMAH_ANGKA[indeks]} className="px-0.5 align-middle">
-                  <SelAngkaAtas digit={isiAtas(indeks)} operasi={operasi} indeks={indeks} semua={catatan} adaJejak={adaJejak} />
-                </td>
-              ))}
+              {barisAtas.map((_, indeks) => {
+                const tambah = jejakTambah?.[indeks];
+                const kurang = jejakKurang;
+                const jejak = tambah && tambah.masuk > 0
+                  ? { tanda: "+1", id: String(indeks + 1), peran: "terima" as const }
+                  : kurang?.beri[indeks]
+                    ? { tanda: "−1", id: String(indeks), peran: "terima" as const }
+                    : null;
+                return (
+                  <td key={RUMAH_ANGKA[indeks]} className="px-0.5 align-middle">
+                    <SelAtas digit={isiAtas(indeks)} jejak={jejak} />
+                  </td>
+                );
+              })}
               <td />
             </tr>
+            {adaJejak ? (
+              <tr className="bg-sky-50">
+                <td />
+                {barisAtas.map((_, indeks) => {
+                  const tambah = jejakTambah?.[indeks];
+                  const kurang = jejakKurang;
+                  const angkaTengah = tambah && tambah.masuk > 0
+                    ? String(Number(barisAtas[indeks]) + tambah.masuk)
+                    : kurang && kurang.kerja[indeks] !== kurang.asli[indeks]
+                      ? String(kurang.kerja[indeks])
+                      : "";
+                  const idAsal = kurang?.terima[indeks] ? String(indeks - 1) : undefined;
+                  return (
+                    <td key={RUMAH_ANGKA[indeks]} className="px-0.5 pb-1">
+                      {angkaTengah ? (
+                        <span className={ANGKA_PINDAH} data-pemberi={idAsal}>
+                          {angkaTengah}
+                        </span>
+                      ) : null}
+                    </td>
+                  );
+                })}
+                <td />
+              </tr>
+            ) : null}
             <tr className="bg-violet-50">
               <td />
               {barisBawah.map((angka, indeks) => (
@@ -337,11 +369,20 @@ function TabelSusun({
             {barisHasil ? (
               <tr className="border-t-[3px] border-[#1C01A5] bg-emerald-100">
                 <td className="py-2 text-xl font-black text-emerald-800">=</td>
-                {barisHasil.map((angka, indeks) => (
-                  <td key={RUMAH_ANGKA[indeks]} className="px-0.5 py-2 text-xl font-black text-emerald-900 sm:text-2xl">
-                    {angka}
-                  </td>
-                ))}
+                {barisHasil.map((angka, indeks) => {
+                  const jumlah = jejakTambah?.[indeks]?.jumlah;
+                  const limpah = jumlah !== undefined && jumlah >= 10;
+                  return (
+                    <td key={RUMAH_ANGKA[indeks]} className="px-0.5 py-2">
+                      <span
+                        data-pemberi={limpah ? String(indeks) : undefined}
+                        className={`inline-block whitespace-nowrap text-xl font-black sm:text-2xl ${limpah ? "text-rose-600" : "text-emerald-900"}`}
+                      >
+                        {limpah ? jumlah : angka}
+                      </span>
+                    </td>
+                  );
+                })}
                 <td />
               </tr>
             ) : null}
@@ -355,7 +396,7 @@ function TabelSusun({
           >
             <defs>
               <marker id={`ujung-${tanda}`} viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto">
-                <path d="M0 0 L10 5 L0 10 Z" fill="#e11d48" />
+                <path d="M0 0 L10 5 L0 10 Z" fill="#ea580c" />
               </marker>
             </defs>
             {garis.map((item) => (
@@ -365,7 +406,7 @@ function TabelSusun({
                 y1={item.y1}
                 x2={item.x2}
                 y2={item.y2}
-                stroke="#e11d48"
+                stroke="#ea580c"
                 strokeWidth="2.5"
                 markerEnd={`url(#ujung-${tanda})`}
               />
