@@ -1,0 +1,19 @@
+---
+description: Bab 2 Matematika kelas 3 adalah patokan pola dan visual modul berikutnya
+alwaysApply: true
+---
+
+# Patokan modul: Matematika kelas 3 Bab 2
+
+Modul `mtk-3-bab2` (Nisa, Farhan, Cinta, burung hantu Hulu) adalah acuan yang sedang dimatangkan. Jangan salin pola ini ke bab lain sampai pengguna menyatakan Bab 2 sudah matang dan meminta bab berikutnya.
+
+Saat bab berikutnya dibuat, ikuti pola dan visual Bab 2. Ganti tokoh, latar, angka, dan kunci. Jangan menyalin kalimat atau gambarnya.
+
+- Usia 8–10 tahun. Kalimat pendek dan ceria.
+- Kartu A: tiap sub-bab punya dialog, suara, dan doodle di awal adegan, lalu 1 kuis suara dan 1 kuis kanvas. Di akhir kartu ada minimal 5 permainan (pilihan ganda, cocok, susun, benar-salah) tanpa kuis suara atau kanvas tambahan.
+- Kartu B: infografis, suara di tiap sub-bab, 1 kuis suara dan 1 kuis kanvas per sub-bab, lalu 5 permainan.
+- Kartu C: satu permainan, 10 soal. Suara paling banyak 2, kanvas paling banyak 2.
+- Poin penting lewat `KartuPoinPenting` dengan suara. Lembar evaluasi 10 soal, suara paling banyak 2, kanvas paling banyak 2.
+- Cek setiap kunci hitung sebelum dipasang. Ribuan Indonesia: `1.000` berarti seribu. “meminjam” tidak memuat “pinjam”; “menyimpan” tidak memuat “simpan”.
+- Visual: bagian utama dan adegan bukan kartu. Hanya dialog, papan hitung, simbol, soal, dan poin penting yang berkartu. Kartu Silabus, Materi, Latihan, dan Ujian di halaman modul tetap penuh.
+- Pemanasan otak masih percobaan di Bab 2 saja. Aturannya ikut ketukan acak kiri-kanan; yang beda memunculkan SALAH. Tema berganti tiap hari. Selesai sekali, tidak muncul lagi hari itu.
