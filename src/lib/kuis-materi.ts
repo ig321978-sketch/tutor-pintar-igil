@@ -206,7 +206,12 @@ export function daftarIdKuisMateri(
     ];
   }
   if (adalahMtk3Pembagian(kelas, mapel, materi)) {
-    return idKuisDariModulResmi(MODUL_MTK3_PEMBAGIAN);
+    return [
+      ...MODUL_MTK3_PEMBAGIAN.kartu.flatMap((kartu) =>
+        kartu.kuis.map((_, indeks) => idKuisKartuResmi(MODUL_MTK3_PEMBAGIAN.id, kartu.kode, indeks)),
+      ),
+      idKuisTulisKartu(MODUL_MTK3_PEMBAGIAN.id, "C"),
+    ];
   }
   if (adalahMtk3Pecahan(kelas, mapel, materi)) {
     return idKuisDariModulResmi(MODUL_MTK3_PECAHAN);

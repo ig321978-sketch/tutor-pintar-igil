@@ -202,7 +202,7 @@ const SUBBAB_BUKU_SISWA: Record<string, Record<string, Record<string, string[]>>
         "Pembagian tanpa sisa",
         "Pembagian dengan sisa",
         "Hubungan perkalian dan pembagian",
-        "Pesta Wortel Kelinci Putih",
+        "Pos Es Lilin Igil",
         "Poin penting",
         "Lembar evaluasi siswa",
       ],

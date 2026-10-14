@@ -135,3 +135,67 @@ export function pesta85(teks: string): boolean {
 export function meja12(teks: string): boolean {
   return angkaUtuh(teks, "9") && angkaUtuh(teks, "12");
 }
+
+const SATUAN_BAGI = "satu|dua|tiga|empat|lima|enam|tujuh|delapan|sembilan";
+
+export function tepatBagi(teks: string, angka: string, ejaan: string): boolean {
+  if (angkaUtuh(teks, angka)) return true;
+  const kalimat = biasa(teks);
+  if (!kalimat.includes(ejaan)) return false;
+  if (ejaan.split(" ").length >= 3 || ejaan.endsWith("belas")) return true;
+  if (ejaan.endsWith("puluh")) return !new RegExp(`${ejaan}\\s+(?:${SATUAN_BAGI})`).test(kalimat);
+  return new RegExp(`(?:^|\\s)${ejaan}(?!\\s+(?:puluh|belas|ratus|ribu))(?:\\s|$)`).test(` ${kalimat} `);
+}
+
+export function ucapBagi(
+  teks: string,
+  a: string,
+  ejaanA: string,
+  b: string,
+  ejaanB: string,
+  hasil: string,
+  ejaanHasil: string,
+): boolean {
+  return (
+    tepatBagi(teks, a, ejaanA) &&
+    tepatBagi(teks, b, ejaanB) &&
+    tepatBagi(teks, hasil, ejaanHasil) &&
+    adaBagi(teks)
+  );
+}
+
+export function salahSatuBagi(
+  teks: string,
+  pilihan: [string, string, string, string, string, string][],
+): boolean {
+  return pilihan.some(([a, ejaanA, b, ejaanB, hasil, ejaanHasil]) =>
+    ucapBagi(teks, a, ejaanA, b, ejaanB, hasil, ejaanHasil),
+  );
+}
+
+export function habisBagi(teks: string, hasil: string, ejaan: string): boolean {
+  const kalimat = biasa(teks);
+  if (/ada sisa|bersisa/.test(kalimat) && !/tidak ada sisa|tanpa sisa/.test(kalimat)) return false;
+  return tepatBagi(teks, hasil, ejaan) && /habis|tidak ada sisa|tanpa sisa/.test(kalimat);
+}
+
+export function bagiSisa(teks: string, hasil: string, sisa: string, ejaanHasil: string, ejaanSisa: string): boolean {
+  return tepatBagi(teks, hasil, ejaanHasil) && tepatBagi(teks, sisa, ejaanSisa) && /sisa/.test(biasa(teks));
+}
+
+export function berapaKali(teks: string, angka: string, ejaan: string): boolean {
+  const kalimat = ` ${biasa(teks)} `;
+  return new RegExp(`(?:^|\\s)(?:${angka}|${ejaan})\\s+kali(?:\\s|$)`).test(kalimat);
+}
+
+export function duaBagi(teks: string, utuh: string, a: string, b: string): boolean {
+  const rapat = teks.replace(/\s/g, "");
+  const tanda = "[÷:/]";
+  return (
+    adaBagi(teks) &&
+    new RegExp(`${utuh}${tanda}${a}`).test(rapat) &&
+    new RegExp(`${utuh}${tanda}${b}`).test(rapat) &&
+    angkaUtuh(teks, a) &&
+    angkaUtuh(teks, b)
+  );
+}
