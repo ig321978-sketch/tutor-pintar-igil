@@ -232,7 +232,7 @@ function TabelSusun({
       return jejakKurang.beri
         .map((memberi, indeks) =>
           memberi
-            ? `Panah dari angka ${jejakKurang.kerja[indeks + 1]} di ${RUMAH_ANGKA[indeks + 1].toLowerCase()} menuju −1 pada ${RUMAH_ANGKA[indeks].toLowerCase()} ${jejakKurang.asli[indeks]}.`
+            ? `Panah dari −1 pada ${RUMAH_ANGKA[indeks].toLowerCase()} ${jejakKurang.asli[indeks]} menuju angka pinjaman ${jejakKurang.kerja[indeks + 1]} di ${RUMAH_ANGKA[indeks + 1].toLowerCase()}.`
             : "",
         )
         .filter(Boolean)
@@ -319,10 +319,23 @@ function TabelSusun({
               {barisAtas.map((_, indeks) => {
                 const tambah = jejakTambah?.[indeks];
                 const kurang = jejakKurang;
+                const hanyaTerima = Boolean(kurang?.terima[indeks] && !kurang.beri[indeks]);
+                if (hanyaTerima && kurang) {
+                  return (
+                    <td key={RUMAH_ANGKA[indeks]} className="px-0.5 align-middle">
+                      <span
+                        data-terima={String(indeks - 1)}
+                        className="inline-block whitespace-nowrap text-xl font-black text-rose-600 sm:text-2xl"
+                      >
+                        {kurang.kerja[indeks]}
+                      </span>
+                    </td>
+                  );
+                }
                 const jejak = tambah && tambah.masuk > 0
                   ? { tanda: "+1", id: String(indeks + 1), peran: "terima" as const }
                   : kurang?.beri[indeks]
-                    ? { tanda: "−1", id: String(indeks), peran: "terima" as const }
+                    ? { tanda: "−1", id: String(indeks), peran: "beri" as const }
                     : null;
                 return (
                   <td key={RUMAH_ANGKA[indeks]} className="px-0.5 align-middle">
@@ -338,16 +351,19 @@ function TabelSusun({
                 {barisAtas.map((_, indeks) => {
                   const tambah = jejakTambah?.[indeks];
                   const kurang = jejakKurang;
-                  const angkaTengah = tambah && tambah.masuk > 0
-                    ? String(Number(barisAtas[indeks]) + tambah.masuk)
-                    : kurang && kurang.kerja[indeks] !== kurang.asli[indeks]
-                      ? String(kurang.kerja[indeks])
-                      : "";
-                  const idAsal = kurang?.terima[indeks] ? String(indeks - 1) : undefined;
+                  const hanyaTerima = Boolean(kurang?.terima[indeks] && !kurang.beri[indeks]);
+                  const angkaTengah = hanyaTerima
+                    ? ""
+                    : tambah && tambah.masuk > 0
+                      ? String(Number(barisAtas[indeks]) + tambah.masuk)
+                      : kurang && kurang.kerja[indeks] !== kurang.asli[indeks]
+                        ? String(kurang.kerja[indeks])
+                        : "";
+                  const kepalaPanah = kurang?.terima[indeks] && kurang.beri[indeks] ? String(indeks - 1) : undefined;
                   return (
                     <td key={RUMAH_ANGKA[indeks]} className="px-0.5 pb-1">
                       {angkaTengah ? (
-                        <span className={ANGKA_PINDAH} data-pemberi={idAsal}>
+                        <span className={ANGKA_PINDAH} data-terima={kepalaPanah}>
                           {angkaTengah}
                         </span>
                       ) : null}
@@ -396,7 +412,7 @@ function TabelSusun({
           >
             <defs>
               <marker id={`ujung-${tanda}`} viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto">
-                <path d="M0 0 L10 5 L0 10 Z" fill="#ea580c" />
+                <path d="M0 0 L10 5 L0 10 Z" fill={operasi === "−" ? "#e11d48" : "#ea580c"} />
               </marker>
             </defs>
             {garis.map((item) => (
@@ -406,7 +422,7 @@ function TabelSusun({
                 y1={item.y1}
                 x2={item.x2}
                 y2={item.y2}
-                stroke="#ea580c"
+                stroke={operasi === "−" ? "#e11d48" : "#ea580c"}
                 strokeWidth="2.5"
                 markerEnd={`url(#ujung-${tanda})`}
               />
