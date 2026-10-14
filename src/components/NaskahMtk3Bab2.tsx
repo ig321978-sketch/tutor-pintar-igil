@@ -1650,15 +1650,6 @@ function LembarEvaluasi({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminG
           {lencana} · {skor} bintang dari 10
         </p>
       </div>
-      <aside className="mt-5 rounded-2xl border-2 border-[#1C01A5]/15 bg-white px-4 py-4 text-sm font-semibold leading-relaxed text-slate-700">
-        <p className="font-black text-[#1C01A5]">Catatan untuk guru</p>
-        <p className="mt-2">Soal memakai bilangan sampai 10.000: penjumlahan, pengurangan, menyimpan, meminjam, dan soal cerita.</p>
-        <p className="mt-2">Di kelas 3, Hulu menanyakan mengapa sebuah rak menyimpan atau meminjam. Quiz meminta alasan, bukan hanya hasil.</p>
-        <p className="mt-2">Kesalahan yang paling sering: menulis 12 utuh di satu rak, lupa menambahkan simpanan, dan mengubah 0 menjadi 10 tanpa mengurangi rak yang memberi pinjaman.</p>
-        <p className="mt-2">Soal 1, 3, dan 10 menyasar ketiganya. Soal 3 adalah soal kunci: jumlah 12 benar, tetapi yang ditulis di satuan hanya 2. Soal 6, 8, dan 9 menilai alasan. Bahasa sederhana tetap dinilai penuh bila alasannya tepat.</p>
-        <p className="mt-2">Soal 10 tiga langkah: setelah sumbangan 4.745, setelah dipinjam 2.565, lalu selisih 2.180 − 1.265 = 915. Jika anak hanya menyelesaikan bagian pertama, minta ia membaca dua bagian berikutnya.</p>
-        <p className="mt-2">Gunakan ikat sepuluh buku atau stik. Minta anak memindahkan satu ikat ke rak kiri saat jumlahnya 10 atau lebih, dan memecah satu ikat saat rak kanan kurang. Siapkan rak kosong supaya pinjaman melewati nol terlihat.</p>
-      </aside>
     </KartuBingkai>
   );
 }
