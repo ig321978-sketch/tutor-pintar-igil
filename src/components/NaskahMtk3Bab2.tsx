@@ -7,7 +7,6 @@ import KuisTulisKartu from "@/components/KuisTulisKartu";
 import { useKuisMateri } from "@/components/KuisMateriContext";
 import MisiPenjagaKebun from "@/components/MisiPenjagaKebun";
 import { SLOT_AJUAN_SEBELUM_KARTU_D } from "@/components/NaskahMtk2Bab1";
-import PanduanIkon from "@/components/PanduanIkon";
 import SoalRekamSuara from "@/components/SoalRekamSuara";
 import TombolVoiceMateriPai1 from "@/components/TombolVoiceMateriPai1";
 import WritingCanvas from "@/components/WritingCanvas";
@@ -24,13 +23,11 @@ import {
   jumlah4221,
   lebih5687,
   pinjam2768,
-  pinjam3426,
   pinjam4077,
   pinjam5428,
   pinjam5436,
   sisa3175,
   sisa3450,
-  simpan5931,
   simpan6601,
   tanpaPinjam4434,
   tanpaPinjam5342,
@@ -882,7 +879,6 @@ function Langkah({ butir }: { butir: string[] }) {
 
 const HASIL_A = ["3.834", "3.535", "2.625"];
 const TEKNIK_B = ["Tanpa menyimpan", "Menyimpan", "Meminjam"];
-const HASIL_C = ["5.687", "3.834", "3.168"];
 const KATA_CERITA = ["Tambah", "Kurang"];
 
 function KartuA({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminGuru }) {
@@ -1475,7 +1471,7 @@ function KartuC({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminGuru }) {
       <KepalaKartu
         ikon="🔖🦉"
         judul={kartu.judul}
-        anak="Sepuluh giliran · stempel rak"
+        anak="Sepuluh soal pola"
         kelas={kelas}
         kelamin={kelamin}
         cuplikan={cuplikanKalimat(kartu.voice[0])}
@@ -1485,26 +1481,9 @@ function KartuC({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminGuru }) {
         alt="Burung hantu di meja perpustakaan keliling, memegang stempel. Rak buku dan bus di belakangnya."
         ukuran="lebar"
       />
-      <PanduanIkon
-        judul="Simbol rak"
-        butir={[
-          { ikon: "📚", teks: "Buku masuk" },
-          { ikon: "📌", teks: "Simpan" },
-          { ikon: "📖", teks: "Buku dipinjam" },
-          { ikon: "🔄", teks: "Pinjam rak" },
-          { ikon: "🦉", teks: "Hulu" },
-        ]}
-      />
-      <div className="mt-4 space-y-2 text-sm font-semibold leading-relaxed text-slate-700">
-        <p>Kamu petugas rak. Buku masuk dijumlahkan. Buku keluar dikurangi. Catatan benar mendapat stempel.</p>
-        <p>Level 1: 2.431 + 3.256. Level 2: 6 + 8 = 14, tulis 4 simpan 1. Level 3: 5.876 − 2.341, tanpa meminjam.</p>
-        <p>Level 4: 5.346 − 2.178. Level 5: pada 4.203 − 1.578, puluhan 0 jadi pinjaman loncat ke ratusan.</p>
-        <p>Meja pemula soalnya langsung, hadiahnya 1 stempel. Meja halte soalnya bertingkat, hadiahnya lebih besar.</p>
-        <p>Kaca rak membantu melihat angka pada tiap rak, tetapi mengurangi 1 stempel. Berani tanpa kaca menambah 1 stempel.</p>
-        <p>Salah hitung tidak mengurangi stempel. Rak berkedip, lalu kamu boleh mengulang.</p>
-        <p>Mode berdua: pemain A menghitung tambah, pemain B menghitung kurang. Keduanya harus bertemu di angka yang sama.</p>
-        <p>Kumpulkan 10 stempel untuk membuka meja pustakawan.</p>
-      </div>
+      <p className="mt-4 text-sm font-semibold leading-relaxed text-slate-700">
+        Sepuluh soal pola: deret, angka hilang, analogi, dan mana yang beda. Pilih satu pos, lalu jawab.
+      </p>
       <MisiPenjagaKebun
         misi={MISI_MTK3_BAB2}
         idMisi={(indeks) => idKuis("C", indeks)}
@@ -1513,121 +1492,6 @@ function KartuC({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminGuru }) {
         penutup="Meja pustakawan terbuka. Hulu memasang lencana petugas rak."
         bunga="📚📌📖🦉"
       />
-      <div className="mt-5 space-y-3">
-        <h5 className="text-center text-base font-black text-[#1C01A5]">Sepuluh soal giliran rak</h5>
-        <Pilih
-          id={idKuis("C", 10)}
-          pertanyaan="1. Berapa 4.278 + 1.653?"
-          pilihan={[
-            { huruf: "A", teks: "5.931" },
-            { huruf: "B", teks: "5.831" },
-            { huruf: "C", teks: "5.941" },
-            { huruf: "D", teks: "6.931" },
-          ]}
-          benar="A"
-          umpan="Satuan dan puluhan menyimpan. Hasilnya 5.931."
-          salah="Jangan lupakan dua simpanan."
-        />
-        <Pilih
-          id={idKuis("C", 11)}
-          pertanyaan="2. Satuan 5 + 7 = 12. Apa yang harus dilakukan?"
-          pilihan={[
-            { huruf: "A", teks: "Tulis 12 di satuan" },
-            { huruf: "B", teks: "Tulis 2, simpan 1 ke puluhan" },
-            { huruf: "C", teks: "Tulis 1, simpan 2" },
-            { huruf: "D", teks: "Tidak menjumlah satuan" },
-          ]}
-          benar="B"
-          umpan="12 tidak muat di satu rak. Tulis 2, simpan 1."
-          salah="Pisahkan sepuluh dan sisanya."
-        />
-        <KuisCocok
-          id={idKuis("C", 12)}
-          perintah="3. Pasangkan hitungan dengan hasilnya."
-          baris={[
-            { kiri: "2.431 + 3.256", pilihan: HASIL_C, benar: "5.687" },
-            { kiri: "2.476 + 1.358", pilihan: HASIL_C, benar: "3.834" },
-            { kiri: "5.346 − 2.178", pilihan: HASIL_C, benar: "3.168" },
-          ]}
-          umpan="5.687, 3.834, dan 3.168."
-        />
-        <SusunToken
-          id={idKuis("C", 13)}
-          perintah="4. Susun sisa buku dari yang terkecil."
-          acak={["4.221", "2.625", "2.215", "3.535"]}
-          benar={["2.215", "2.625", "3.535", "4.221"]}
-          umpan="2.215, 2.625, 3.535, 4.221."
-        />
-        <KuisBenarSalah
-          id={idKuis("C", 14)}
-          perintah="5. Cek catatan Hulu."
-          baris={[
-            { teks: "2.431 + 3.256 tidak menyimpan.", benar: true },
-            { teks: "4.203 − 1.578 bisa dikerjakan tanpa meminjam.", benar: false },
-            { teks: "Kata sisa berarti pengurangan.", benar: true },
-          ]}
-          umpan="Benar, salah, benar. 3 lebih kecil dari 8, jadi satuan meminjam."
-        />
-        <Pilih
-          id={idKuis("C", 15)}
-          pertanyaan="6. ⬜ + 1.358 = 3.834. Bilangan yang hilang adalah..."
-          visual={<TabelSusun operasi="+" atas={0} bawah={1358} hasil={3834} kosong="atas" />}
-          pilihan={[
-            { huruf: "A", teks: "2.476" },
-            { huruf: "B", teks: "2.486" },
-            { huruf: "C", teks: "1.476" },
-            { huruf: "D", teks: "2.576" },
-          ]}
-          benar="A"
-          umpan="3.834 − 1.358 = 2.476."
-          salah="Kurangkan 1.358 dari 3.834."
-        />
-        <Pilih
-          id={idKuis("C", 16)}
-          pertanyaan="7. Berapa 7.003 − 2.456?"
-          pilihan={[
-            { huruf: "A", teks: "4.547" },
-            { huruf: "B", teks: "4.557" },
-            { huruf: "C", teks: "5.547" },
-            { huruf: "D", teks: "4.647" },
-          ]}
-          benar="A"
-          umpan="Puluhan dan ratusan 0. Pinjaman dari ribuan. Sisanya 4.547."
-          salah="Ada dua nol di tengah. Pinjaman berantai."
-        />
-        <Pilih
-          id={idKuis("C", 17)}
-          pertanyaan="8. Deret naik 1.250: 1.200 – 2.450 – 3.700 – ⬜. Berikutnya..."
-          pilihan={[
-            { huruf: "A", teks: "4.850" },
-            { huruf: "B", teks: "4.950" },
-            { huruf: "C", teks: "4.900" },
-            { huruf: "D", teks: "5.050" },
-          ]}
-          benar="B"
-          umpan="3.700 + 1.250 = 4.950."
-          salah="Tambahkan 1.250 pada 3.700."
-        />
-        <KuisSuara
-          id={idKuis("C", 18)}
-          pertanyaan="Ucapkan hasil 6.004 − 2.578, lalu sebutkan rak awal pinjamannya."
-          periksa={pinjam3426}
-          petunjuk="Puluhan dan ratusan berisi 0. Hasilnya tiga ribu empat ratus dua puluh enam."
-          benar="Tiga ribu empat ratus dua puluh enam. Pinjam dari ribuan."
-        />
-        <TulisBebas
-          id={idKuis("C", 19)}
-          judul="Jejak simpanan"
-          visual={<TabelSusun operasi="+" atas={4278} bawah={1653} />}
-          pertanyaan="Tulis hasilnya, lalu tulis berapa kali kamu menyimpan."
-          pesanSalah="Satuan dan puluhan menyimpan. Ratusan tidak."
-          bantuan="Hasilnya 5.931. Menyimpan dua kali."
-          umpan="5.931, menyimpan dua kali."
-          periksa={simpan5931}
-          alias={["5931 dua"]}
-          konteks="4.278 + 1.653 = 5.931. Menyimpan dua kali."
-        />
-      </div>
     </KartuBingkai>
   );
 }

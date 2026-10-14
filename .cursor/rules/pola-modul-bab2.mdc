@@ -12,7 +12,7 @@ Saat bab berikutnya dibuat, ikuti pola dan visual Bab 2. Ganti tokoh, latar, ang
 - Usia 8–10 tahun. Kalimat pendek dan ceria. Bagian angka disebut rak, sesuai tema buku. Jangan memakai rumah untuk bagian yang sama.
 - Kartu A: tiap sub-bab punya dialog, suara, dan doodle di awal adegan, lalu 1 kuis suara dan 1 kuis kanvas. Di akhir kartu ada minimal 5 permainan (pilihan ganda, cocok, susun, benar-salah) tanpa kuis suara atau kanvas tambahan.
 - Kartu B: infografis, suara di tiap sub-bab, 1 kuis suara dan 1 kuis kanvas per sub-bab, lalu 5 permainan.
-- Kartu C: satu permainan, 10 soal. Suara paling banyak 2, kanvas paling banyak 2.
+- Kartu C: satu permainan, 10 soal model psikotes (deret, angka hilang, analogi, mana yang beda). Suara paling banyak 2, kanvas paling banyak 2. Tanpa simbol yang tidak dipakai dan tanpa naskah panjang.
 - Poin penting lewat `KartuPoinPenting` dengan suara. Lembar evaluasi 10 soal, suara paling banyak 2, kanvas paling banyak 2.
 - Cek setiap kunci hitung sebelum dipasang. Ribuan Indonesia: `1.000` berarti seribu. “meminjam” tidak memuat “pinjam”; “menyimpan” tidak memuat “simpan”.
 - Visual: bagian utama dan adegan bukan kartu. Hanya dialog, tabel hitung, simbol rak, soal, dan poin penting yang berkartu. Kartu Silabus, Materi, Latihan, dan Ujian di halaman modul tetap penuh.
