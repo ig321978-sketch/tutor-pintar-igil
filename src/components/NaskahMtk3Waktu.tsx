@@ -485,13 +485,71 @@ function KuisBenarSalah({
   );
 }
 
-function Langkah({ butir }: { butir: string[] }) {
+const WARNA_CABANG = [
+  { tepi: "border-teal-400", isi: "bg-teal-50", kepala: "bg-teal-600" },
+  { tepi: "border-orange-400", isi: "bg-orange-50", kepala: "bg-orange-500" },
+  { tepi: "border-violet-400", isi: "bg-violet-50", kepala: "bg-violet-600" },
+  { tepi: "border-amber-400", isi: "bg-amber-50", kepala: "bg-amber-500" },
+];
+
+function PetaContoh({
+  pusat,
+  cabang,
+  kolom,
+  baris,
+}: {
+  pusat: string;
+  cabang: { ikon: string; judul: string; isi: string }[];
+  kolom: string[];
+  baris: string[][];
+}) {
   return (
-    <ol className="list-decimal space-y-1 pl-5 text-sm font-semibold text-slate-700">
-      {butir.map((teks) => (
-        <li key={teks}>{teks}</li>
-      ))}
-    </ol>
+    <div className="space-y-3 rounded-3xl border-2 border-[#1C01A5]/15 bg-[#FBF6EA] p-3">
+      <div className="flex flex-col items-center">
+        <p className="rounded-full bg-[#1C01A5] px-4 py-2 text-center text-sm font-black text-white shadow">{pusat}</p>
+        <div className="h-4 w-1 rounded-full bg-[#F0AB00]" aria-hidden />
+        <div className="grid w-full gap-2 sm:grid-cols-3">
+          {cabang.map((item, indeks) => {
+            const warna = WARNA_CABANG[indeks % WARNA_CABANG.length];
+            return (
+              <div key={item.judul} className={`rounded-2xl border-2 px-3 py-2 text-center ${warna.tepi} ${warna.isi}`}>
+                <p className="text-2xl" aria-hidden>
+                  {item.ikon}
+                </p>
+                <p className={`mx-auto mt-1 inline-block rounded-full px-2 py-0.5 text-xs font-black text-white ${warna.kepala}`}>
+                  {item.judul}
+                </p>
+                <p className="mt-1 text-sm font-bold leading-snug text-slate-800">{item.isi}</p>
+              </div>
+            );
+          })}
+        </div>
+      </div>
+      <div className="overflow-x-auto rounded-2xl border-2 border-[#1C01A5]/20">
+        <table className="w-full min-w-[16rem] border-collapse text-center text-sm font-bold">
+          <thead>
+            <tr>
+              {kolom.map((nama, indeks) => (
+                <th key={nama} className={`px-2 py-2 text-white ${WARNA_CABANG[indeks % WARNA_CABANG.length].kepala}`}>
+                  {nama}
+                </th>
+              ))}
+            </tr>
+          </thead>
+          <tbody>
+            {baris.map((sel, indeksBaris) => (
+              <tr key={sel.join("|")} className={indeksBaris % 2 === 0 ? "bg-white" : "bg-[#EEE9FF]"}>
+                {sel.map((isi, indeksSel) => (
+                  <td key={`${indeksBaris}-${indeksSel}`} className="border-t border-[#1C01A5]/10 px-2 py-2 text-[#1C01A5]">
+                    {isi}
+                  </td>
+                ))}
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+    </div>
   );
 }
 
@@ -766,7 +824,7 @@ function KartuB({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminGuru }) {
       <KepalaKartu
         ikon="📊🦉"
         judul={kartu.judul}
-        anak="Papan pentas · contoh dan cara"
+        anak="Peta pentas · contoh dan cara"
         kelas={kelas}
         kelamin={kelamin}
         cuplikan={cuplikanKalimat(kartu.voice[0] ?? [])}
@@ -780,9 +838,19 @@ function KartuB({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminGuru }) {
           kelamin={kelamin}
           penjelasan={["Panjang di angka 12 berarti tepat. Angka lain dikali 5 menjadi menit."]}
         >
-          <p className="text-sm font-black text-[#1C01A5]">Contoh: pukul 04.00 dan 04.30</p>
-          <Langkah butir={["Pendek di 4, panjang di 12: pukul 04.00.", "Panjang di 6: 6 × 5 = 30.", "Jadi pukul 04.30."]} />
-          <Papan anak={"panjang di 12 → tepat\npanjang di 6 → 30 menit"} />
+          <PetaContoh
+            pusat="Membaca jam"
+            cabang={[
+              { ikon: "🕐", judul: "Pendek", isi: "menunjukkan jam" },
+              { ikon: "🕑", judul: "Panjang", isi: "menunjukkan menit" },
+              { ikon: "✖️", judul: "Kali 5", isi: "angka jadi menit" },
+            ]}
+            kolom={["Posisi", "Hitung", "Jam"]}
+            baris={[
+              ["pendek 4, panjang 12", "tepat", "04.00"],
+              ["panjang di 6", "6 × 5", "04.30"],
+            ]}
+          />
           <KuisSuara
             id={idKuis("B", 0)}
             pertanyaan="Jarum panjang di angka 9. Ucapkan berapa menit."
@@ -811,9 +879,19 @@ function KartuB({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminGuru }) {
           kelamin={kelamin}
           penjelasan={["Menit dikali 60 menjadi detik. Jam dikali 60 menjadi menit."]}
         >
-          <p className="text-sm font-black text-[#1C01A5]">Contoh: 4 menit dan 2 jam</p>
-          <Langkah butir={["4 × 60 = 240. Jadi 4 menit = 240 detik.", "2 × 60 = 120. Jadi 2 jam = 120 menit."]} />
-          <Papan anak={"4 menit = 240 detik\n2 jam = 120 menit"} />
+          <PetaContoh
+            pusat="Kali 60"
+            cabang={[
+              { ikon: "⏱️", judul: "1 menit", isi: "60 detik" },
+              { ikon: "🕐", judul: "1 jam", isi: "60 menit" },
+              { ikon: "✖️", judul: "Cara", isi: "kalikan 60" },
+            ]}
+            kolom={["Dari", "Hitung", "Jadi"]}
+            baris={[
+              ["4 menit", "4 × 60", "240 detik"],
+              ["2 jam", "2 × 60", "120 menit"],
+            ]}
+          />
           <KuisSuara
             id={idKuis("B", 2)}
             pertanyaan="5 menit sama dengan berapa detik? Ucapkan hasilnya."
@@ -842,9 +920,16 @@ function KartuB({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminGuru }) {
           kelamin={kelamin}
           penjelasan={["Jam yang sama: menit selesai dikurangi menit mulai."]}
         >
-          <p className="text-sm font-black text-[#1C01A5]">Contoh: 13.10 sampai 13.45</p>
-          <Langkah butir={["Jamnya sama-sama 13.", "45 − 10 = 35.", "Jadi 35 menit."]} />
-          <Papan anak={"13.45 − 13.10 = 35 menit"} />
+          <PetaContoh
+            pusat="Jam sama"
+            cabang={[
+              { ikon: "🕐", judul: "Mulai", isi: "13.10" },
+              { ikon: "🕑", judul: "Selesai", isi: "13.45" },
+              { ikon: "➖", judul: "Kurangi", isi: "menit saja" },
+            ]}
+            kolom={["Mulai", "Selesai", "Hitung", "Lama"]}
+            baris={[["13.10", "13.45", "45 − 10", "35 menit"]]}
+          />
           <KuisSuara
             id={idKuis("B", 4)}
             pertanyaan="Latihan dari pukul 11.20 sampai 11.50. Ucapkan lamanya."
@@ -873,9 +958,20 @@ function KartuB({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminGuru }) {
           kelamin={kelamin}
           penjelasan={["Hitung dulu sampai jam bulat. Lalu tambahkan menit sesudahnya."]}
         >
-          <p className="text-sm font-black text-[#1C01A5]">Contoh: 04.55 sampai 05.20</p>
-          <Langkah butir={["04.55 ke 05.00 = 5 menit.", "05.00 ke 05.20 = 20 menit.", "5 + 20 = 25 menit."]} />
-          <Papan anak={"5 + 20 = 25 menit"} />
+          <PetaContoh
+            pusat="Jam bulat"
+            cabang={[
+              { ikon: "🕐", judul: "Mulai", isi: "04.55" },
+              { ikon: "🕛", judul: "Bulat", isi: "05.00" },
+              { ikon: "🕑", judul: "Selesai", isi: "05.20" },
+            ]}
+            kolom={["Bagian", "Hitung", "Menit"]}
+            baris={[
+              ["04.55 → 05.00", "sampai jam bulat", "5"],
+              ["05.00 → 05.20", "sesudahnya", "20"],
+              ["jumlah", "5 + 20", "25"],
+            ]}
+          />
           <KuisSuara
             id={idKuis("B", 6)}
             pertanyaan="Latihan dari pukul 06.40 sampai 07.00. Ucapkan lamanya."
@@ -904,9 +1000,19 @@ function KartuB({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminGuru }) {
           kelamin={kelamin}
           penjelasan={["Dua minggu ada 14 hari. Seminggu lagi, tanggal ditambah 7."]}
         >
-          <p className="text-sm font-black text-[#1C01A5]">Contoh: 2 minggu dan tanggal 8</p>
-          <Langkah butir={["2 × 7 = 14. Jadi 2 minggu = 14 hari.", "8 + 7 = 15.", "Tanggal 8, seminggu lagi tanggal 15."]} />
-          <Papan anak={"2 minggu = 14 hari\n8 + 7 = 15"} />
+          <PetaContoh
+            pusat="Kalender"
+            cabang={[
+              { ikon: "📅", judul: "1 minggu", isi: "7 hari" },
+              { ikon: "✖️", judul: "2 minggu", isi: "kali 7" },
+              { ikon: "➕", judul: "Tanggal", isi: "tambah 7" },
+            ]}
+            kolom={["Ide", "Hitung", "Hasil"]}
+            baris={[
+              ["2 minggu", "2 × 7", "14 hari"],
+              ["tanggal 8", "8 + 7", "tanggal 15"],
+            ]}
+          />
           <KuisSuara
             id={idKuis("B", 8)}
             pertanyaan="3 minggu ada berapa hari? Ucapkan hasilnya."
