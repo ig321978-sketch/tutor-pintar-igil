@@ -13,209 +13,262 @@ export const MODUL_MTK3_UKUR: ModulResmiPai = {
   judul: JUDUL_MTK3_UKUR,
   pola: /^bab 6: pengukuran panjang dan berat$/,
   motivasi:
-    "Dimas, Salsa, dan Bimo belajar satuan panjang dan berat bersama tupai Kiki di bengkel kayu.",
-  kunciJawaban: "A,B,B,B,A,C,A,B,B,C",
+    "Nisa, Farhan, dan Cinta belajar mengukur panjang dan berat bersama burung hantu Igil di jalan sehat lapangan sekolah.",
+  kunciJawaban: "A,C,B,B,C,D,B,C,B,B",
   sketsaKartu: [
-    "Dimas, Salsa, dan Bimo mengukur kayu bersama tupai Kiki.",
-    "Satuan panjang, berat, alat ukur, dan konversi.",
-    "Kiki menjadi tukang kayu di bengkel.",
+    "Nisa, Farhan, dan Cinta mengukur jalur dan menimbang botol bersama burung hantu Igil.",
+    "Satuan panjang, satuan berat, alat ukur, dan konversi.",
+    "Sepuluh pos pola di jalan sehat.",
     "Poin penting dan lembar evaluasi pengukuran.",
   ],
   latihan: pg([
     `[Soal 1 - PG - Tipe: MOTS]
-Satuan yang paling tepat untuk tebal koin...
-A) mm
-B) cm
-C) m
-D) km`,
+Satuan paling pas untuk panjang penghapus...
+A) cm
+B) m
+C) km
+D) kg`,
     `[Soal 2 - PG - Tipe: MOTS]
-4 m sama dengan...
-A) 40 cm
-B) 400 cm
-C) 4.000 cm
-D) 4 cm`,
+5 m sama dengan...
+A) 50 cm
+B) 5.000 cm
+C) 500 cm
+D) 5 cm`,
     `[Soal 3 - PG - Tipe: HOTS]
-Salsa menulis: panjang lapangan lebih tepat diukur dengan penggaris karena mudah dibawa. Pernyataannya...
+Farhan berkata 1 kg = 100 g. Pernyataannya...
 A) Benar
-B) Salah, lapangan panjang jadi lebih tepat pakai meteran roda
-C) Salah, lapangan diukur dengan timbangan
-D) Tidak bisa ditentukan`,
+B) Salah, karena 1 kg = 1.000 g
+C) Tidak bisa dibandingkan
+D) 1 kg = 10 g`,
     `[Soal 4 - PG - Tipe: MOTS]
-4.000 gram sama dengan...
-A) 2 kg
-B) 4 kg
-C) 40 kg
-D) 400 kg`,
+Alat untuk mengukur panjang pagar...
+A) Penggaris
+B) Meteran
+C) Timbangan
+D) Gram`,
     `[Soal 5 - PG - Tipe: HOTS]
-Nilai yang paling besar...
-A) 3 m
-B) 250 cm
-C) 2.000 mm
-D) 1 m 50 cm`,
+⬜ km = 3.000 m. Angka yang hilang...
+A) 30
+B) 300
+C) 3
+D) 3.000`,
     `[Soal 6 - PG - Tipe: MOTS]
-Satuan yang paling tepat untuk tinggi pintu...
-A) mm
-B) cm
-C) m
-D) km`,
-    `[Soal 7 - PG - Tipe: HOTS]
-Nilai yang paling besar...
-A) 2 m
-B) 180 cm
-C) 1.500 mm
-D) 1 m 20 cm`,
+Mana yang merupakan satuan berat?
+A) cm
+B) m
+C) km
+D) g`,
+    `[Soal 7 - PG - Tipe: MOTS]
+6 kg sama dengan...
+A) 60 g
+B) 6.000 g
+C) 600 g
+D) 6 g`,
     `[Soal 8 - PG - Tipe: MOTS]
-Panjang papan naik 50 cm: 50 – 100 – 150 – berikutnya...
-A) 175 cm
-B) 200 cm
-C) 225 cm
-D) 250 cm`,
-    `[Soal 9 - PG - Tipe: MOTS]
-2 m sama dengan...
-A) 20 cm
-B) 200 cm
-C) 2.000 cm
-D) 2 cm`,
+Deret naik 100: 100 – 200 – 300 – ⬜. Berikutnya...
+A) 301
+B) 350
+C) 400
+D) 500`,
+    `[Soal 9 - PG - Tipe: HOTS]
+2 km dan 900 m. Yang lebih jauh...
+A) 900 m
+B) 2 km
+C) Sama jauh
+D) 90 m`,
     `[Soal 10 - PG - Tipe: HOTS]
-Pasangan yang tidak cocok...
-A) Pensil dengan penggaris
-B) Kain panjang dengan meteran pita
-C) Karung beras dengan penggaris
-D) Panjang jalan dengan meteran roda`,
+Tiga tas. Tas A 3 kg, tas B 2.000 g, tas C 4 kg. Paling ringan...
+A) Tas A
+B) Tas B
+C) Tas C
+D) Ketiganya sama`,
   ]),
   kartu: [
     {
       kode: "A",
       judul: "A. Naskah Bergambar",
-      pengantar: "Dimas, Salsa, Bimo, dan Kiki mengenal satuan baku panjang dan berat.",
-      labelDaftar: "Lima adegan bengkel kayu",
+      pengantar: "Nisa, Farhan, Cinta, dan Igil mengukur jalur jalan sehat.",
+      labelDaftar: "Lima adegan jalan sehat",
       kolom: 1,
       item: [
-        { nama: "Satuan panjang", singkat: "mm, cm, m, km", uraian: "Benda tipis pakai mm, benda kecil pakai cm, benda sedang pakai m, jarak jauh pakai km.", contoh: "Satuan baku sama untuk semua orang." },
-        { nama: "Satuan berat", singkat: "g dan kg", uraian: "Benda ringan pakai gram. Benda berat pakai kilogram. 1 kg = 1.000 g.", contoh: "Koin pakai gram. Beras pakai kilogram." },
-        { nama: "Alat ukur", singkat: "Sesuai bendanya", uraian: "Penggaris, meteran pita, meteran roda, dan timbangan punya kegunaan berbeda.", contoh: "Kain lentur pakai meteran pita." },
-        { nama: "Konversi panjang", singkat: "Turun kali, naik bagi", uraian: "Dari mm sampai m, satu tingkat dikali atau dibagi 10. 1 km = 1.000 m.", contoh: "2 m = 200 cm. 2 km = 2.000 m." },
-        { nama: "Konversi berat", singkat: "Kali atau bagi 1.000", uraian: "kg ke g dikali 1.000. g ke kg dibagi 1.000.", contoh: "3 kg = 3.000 g. Setengah kilo = 500 g." },
+        {
+          nama: "Satuan panjang",
+          singkat: "cm, m, km",
+          uraian: "Botol sekitar 20 cm. Jalur sekitar 2 m. Putaran jauh memakai km.",
+          contoh: "Pilih satuan sesuai panjangnya.",
+        },
+        {
+          nama: "Satuan berat",
+          singkat: "g dan kg",
+          uraian: "Biskuit sekitar 30 g. Jerigen air 5 kg.",
+          contoh: "Ringan memakai g. Berat memakai kg.",
+        },
+        {
+          nama: "Alat ukur",
+          singkat: "Sesuai benda",
+          uraian: "Penggaris untuk tali sepatu. Meteran untuk jalur. Timbangan untuk botol.",
+          contoh: "Alat mengikuti yang diukur.",
+        },
+        {
+          nama: "Konversi panjang",
+          singkat: "100 dan 1.000",
+          uraian: "1 m = 100 cm. 2 m = 200 cm. 1 km = 1.000 m.",
+          contoh: "Dari m ke cm, kali 100.",
+        },
+        {
+          nama: "Konversi berat",
+          singkat: "1.000 gram",
+          uraian: "1 kg = 1.000 g. 2 kg = 2.000 g. 5.000 g = 5 kg.",
+          contoh: "Dari kg ke g, kali 1.000.",
+        },
       ],
       kuis: [
-        { pertanyaan: "Benda mana yang diukur dengan sentimeter?", alias: ["pensil"] },
-        { pertanyaan: "Pasangkan koin, pensil, pintu, dan kota dengan satuannya.", alias: ["koin", "pensil", "pintu", "kota"] },
-        { pertanyaan: "Benda mana yang diukur dengan kilogram?", alias: ["gula"] },
-        { pertanyaan: "Perkirakan berat koin dan karung beras.", alias: ["koin", "beras"] },
-        { pertanyaan: "Alat ukur yang tepat untuk kain panjang?", alias: ["meteran pita"] },
-        { pertanyaan: "Hubungkan pensil, lapangan, dan karung beras dengan alatnya.", alias: ["pensil", "lapangan", "beras"] },
-        { pertanyaan: "3 meter sama dengan berapa sentimeter?", alias: ["tiga ratus", "300"] },
-        { pertanyaan: "Hitung 5 m, 400 cm, dan 2 km.", alias: ["500", "4", "2000"] },
-        { pertanyaan: "4 kilogram sama dengan berapa gram?", alias: ["empat ribu", "4000"] },
-        { pertanyaan: "Hitung 6 kg, 9.000 g, dan 2 kg 500 g.", alias: ["6000", "9", "2500"] },
-        { pertanyaan: "Satuan untuk tebal koin?", alias: ["mm"] },
-        { pertanyaan: "Pasangkan koin, beras, dan kartu dengan satuannya.", alias: ["g", "kg"] },
-        { pertanyaan: "Susun mm, cm, m, dan km.", alias: ["mm", "cm", "m", "km"] },
-        { pertanyaan: "Periksa tiga pernyataan ukuran.", alias: ["benar", "salah"] },
-        { pertanyaan: "Mana pasangan alat yang tidak cocok?", alias: ["timbangan"] },
+        { pertanyaan: "Panjang tali sepatu 25. Ucapkan satuannya.", alias: ["cm"] },
+        { pertanyaan: "Lebar pintu 1. Tulis satuannya.", alias: ["m"] },
+        { pertanyaan: "Apel 150. Ucapkan satuannya.", alias: ["g"] },
+        { pertanyaan: "Tas 3. Tulis satuannya.", alias: ["kg"] },
+        { pertanyaan: "Mengukur lapangan. Ucapkan alatnya.", alias: ["meteran"] },
+        { pertanyaan: "Menimbang tas. Tulis alatnya.", alias: ["timbangan"] },
+        { pertanyaan: "3 m sama dengan berapa cm?", alias: ["300"] },
+        { pertanyaan: "4 km dalam meter.", alias: ["4000"] },
+        { pertanyaan: "3 kg sama dengan berapa g?", alias: ["3000"] },
+        { pertanyaan: "5.000 g dalam kg.", alias: ["5"] },
+        { pertanyaan: "Satu putaran lapangan memakai satuan apa?", alias: ["m"] },
+        { pertanyaan: "Pasangkan 2 m, 3 kg, 1 km, dan 4 m.", alias: ["200", "3000", "1000", "400"] },
+        { pertanyaan: "Susun cm, m, dan km.", alias: ["cm", "m", "km"] },
+        { pertanyaan: "Periksa tiga pernyataan.", alias: ["benar", "salah"] },
+        { pertanyaan: "Mana yang bukan satuan panjang?", alias: ["kg"] },
       ],
-      voice: [[
-        "Satuan baku ukurannya sama untuk semua orang.",
-        "Panjang memakai milimeter, sentimeter, meter, dan kilometer. Berat memakai gram dan kilogram.",
-        "Pilih alat sesuai benda. Satu kilogram sama dengan seribu gram.",
-      ]],
+      voice: [
+        [
+          "Hari Sabtu di lapangan sekolah. Pos jalan sehat Igil ramai.",
+          "Kita mengukur panjang dan berat, lalu mengubah satuannya.",
+        ],
+      ],
     },
     {
       kode: "B",
       judul: "B. Infografis",
-      pengantar: "Pilih satuan, pilih alat, lalu ubah satuannya.",
+      pengantar: "Papan pos: contoh satuan, alat, dan cara mengubah.",
       labelDaftar: "Lima papan pengukuran",
       kolom: 1,
       item: [
-        { nama: "Panjang", singkat: "Empat satuan", uraian: "mm untuk koin, cm untuk pensil, m untuk tinggi badan, km untuk jarak kota.", contoh: "Tinggi pintu memakai meter." },
-        { nama: "Berat", singkat: "Gram dan kilogram", uraian: "Buku sekitar 500 gram. Berat badan memakai kilogram.", contoh: "1 kg = 1.000 g." },
-        { nama: "Alat", singkat: "Lima alat", uraian: "Penggaris, meteran pita, meteran roda, timbangan dapur, dan timbangan besar.", contoh: "Tali melengkung memakai meteran pita." },
-        { nama: "Tangga panjang", singkat: "×10 dan ÷10", uraian: "Dari mm ke m, turun dikali 10 dan naik dibagi 10. 1 km = 1.000 m.", contoh: "3 m = 300 cm. 700 cm = 7 m." },
-        { nama: "Tangga berat", singkat: "×1.000 dan ÷1.000", uraian: "5 kg = 5.000 g. 8.000 g = 8 kg. 3 kg 200 g = 3.200 g.", contoh: "Kilo ke gram, tambah tiga nol." },
-      ],
-      kuis: [
-        { pertanyaan: "Satuan untuk panjang meja?", alias: ["meter", "m"] },
-        { pertanyaan: "Pasangkan koin, pensil, tinggi badan, dan jarak kota.", alias: ["koin", "pensil", "badan", "kota"] },
-        { pertanyaan: "Buku sekitar 500. Gram atau kilogram?", alias: ["gram"] },
-        { pertanyaan: "Pasangkan koin dan karung beras.", alias: ["koin", "beras"] },
-        { pertanyaan: "Alat untuk panjang lapangan?", alias: ["meteran roda"] },
-        { pertanyaan: "Pasangkan tepung, kain, dan pensil.", alias: ["tepung", "kain", "pensil"] },
-        { pertanyaan: "4 m sama dengan berapa sentimeter?", alias: ["empat ratus", "400"] },
-        { pertanyaan: "Hitung 2 m, 900 cm, dan 3 km.", alias: ["200", "9", "3000"] },
-        { pertanyaan: "7 kg sama dengan berapa gram?", alias: ["tujuh ribu", "7000"] },
-        { pertanyaan: "Hitung 4 kg, 6.000 g, dan 1 kg 400 g.", alias: ["4000", "6", "1400"] },
-        { pertanyaan: "2 m sama dengan berapa cm?", alias: ["200"] },
-        { pertanyaan: "Pasangkan 3 kg, 2 kg, dan 5.000 g.", alias: ["3000", "2000", "5"] },
-        { pertanyaan: "Urutkan 1 m, 250 cm, 3.000 mm, dan 2 km.", alias: ["1 m", "250 cm", "3000 mm", "2 km"] },
-        { pertanyaan: "Periksa tiga konversi.", alias: ["benar", "salah"] },
-        { pertanyaan: "4.000 gram sama dengan berapa kilogram?", alias: ["4"] },
-      ],
-      voice: [[
-        "Pilih satuan sesuai ukuran benda. Kecil pakai kecil, besar pakai besar.",
-        "Ringan pakai gram, berat pakai kilogram. Lentur pakai meteran pita.",
-        "Turun tangga dikali sepuluh, naik tangga dibagi sepuluh. Satu kilometer sama dengan seribu meter.",
-      ]],
-    },
-    {
-      kode: "C",
-      judul: "C. Bengkel Kayu Tupai Kiki",
-      pengantar: "Siswa menjadi tukang kayu. Sepuluh pos selesai, sepuluh koin terkumpul.",
-      labelDaftar: "Sepuluh pos bengkel",
-      kolom: 1,
-      item: [
         {
-          nama: "Meja kerja",
-          singkat: "Ukur, ubah, timbang",
-          uraian: "Level 1: penggaris untuk papan 80 cm. Level 3: 3 m = 300 cm. Level 5: 2 × 150 cm = 300 cm = 3 m, dan 1 kg = 1.000 g.",
-          contoh: "Salah ukur tidak mengurangi koin. Coba lagi.",
+          nama: "Panjang",
+          singkat: "Tiga satuan",
+          uraian: "Penghapus memakai cm. Kelas memakai m. Dua kota memakai km.",
+          contoh: "Lihat bendanya dulu.",
+        },
+        {
+          nama: "Berat",
+          singkat: "Dua satuan",
+          uraian: "Kue memakai g. Ember air memakai kg.",
+          contoh: "1 kg = 1.000 g.",
+        },
+        {
+          nama: "Alat",
+          singkat: "Tiga alat",
+          uraian: "Penghapus memakai penggaris. Pagar memakai meteran. Tas memakai timbangan.",
+          contoh: "Alat mengikuti benda.",
+        },
+        {
+          nama: "Ubah panjang",
+          singkat: "Kali 100 atau 1.000",
+          uraian: "5 m = 500 cm. 2 km = 2.000 m.",
+          contoh: "Meter dikali 100. Kilometer dikali 1.000.",
+        },
+        {
+          nama: "Ubah berat",
+          singkat: "Kali atau bagi 1.000",
+          uraian: "4 kg = 4.000 g. 6.000 g = 6 kg.",
+          contoh: "Kilogram dikali 1.000 menjadi gram.",
         },
       ],
       kuis: [
-        ...kuisDariMisi(MISI_MTK3_UKUR),
-        { pertanyaan: "Alat untuk papan 75 cm?", alias: ["penggaris"] },
-        { pertanyaan: "4 m sama dengan berapa cm?", alias: ["400"] },
-        { pertanyaan: "Pasangkan lapangan, pensil, dan karung beras.", alias: ["roda", "penggaris", "timbangan"] },
-        { pertanyaan: "Urutkan 500 g, 1 kg 200 g, 2 kg, dan 3.000 g.", alias: ["500 g", "1200", "2000", "3000"] },
-        { pertanyaan: "Periksa tiga pernyataan bengkel.", alias: ["benar", "salah"] },
-        { pertanyaan: "Mana pasangan yang tidak cocok?", alias: ["jalan"] },
-        { pertanyaan: "Mana nilai yang paling besar?", alias: ["3 m"] },
-        { pertanyaan: "Deret 50, 100, 150, berikutnya?", alias: ["200"] },
-        { pertanyaan: "Tiga ratus sentimeter sama dengan berapa meter?", alias: ["tiga meter"] },
-        { pertanyaan: "Hitung 2 papan kali 150 cm, lalu ubah ke meter.", alias: ["300", "3"] },
+        { pertanyaan: "Panjang meja 120. Ucapkan satuannya.", alias: ["cm"] },
+        { pertanyaan: "Jarak dua kota 12. Tulis satuannya.", alias: ["km"] },
+        { pertanyaan: "Kue 80. Ucapkan satuannya.", alias: ["g"] },
+        { pertanyaan: "Ember air 6. Tulis satuannya.", alias: ["kg"] },
+        { pertanyaan: "Mengukur penghapus. Ucapkan alatnya.", alias: ["penggaris"] },
+        { pertanyaan: "Mengukur pagar. Tulis alatnya.", alias: ["meteran"] },
+        { pertanyaan: "6 m sama dengan berapa cm?", alias: ["600"] },
+        { pertanyaan: "3 km dalam meter.", alias: ["3000"] },
+        { pertanyaan: "2 kg sama dengan berapa g?", alias: ["2000"] },
+        { pertanyaan: "6.000 g dalam kg.", alias: ["6"] },
+        { pertanyaan: "7 m sama dengan berapa cm?", alias: ["700"] },
+        { pertanyaan: "Pasangkan 5 m, 2 km, 4 kg, dan 8 m.", alias: ["500", "2000", "4000", "800"] },
+        { pertanyaan: "Susun dari yang paling ringan.", alias: ["500 g", "1 kg", "2 kg", "3000 g"] },
+        { pertanyaan: "Periksa tiga pernyataan.", alias: ["benar", "salah"] },
+        { pertanyaan: "9 m sama dengan berapa cm?", alias: ["900"] },
       ],
-      voice: [[
-        "Kalian menjadi tukang kayu di bengkel. Pelanggan memesan kayu dengan ukuran tertentu.",
-        "Pilih alat ukur yang tepat, ukur dengan benar, dan ubah satuan kalau pesanannya berbeda.",
-        "Sepuluh pos selesai, sepuluh koin terkumpul, bengkel besar terbuka.",
-      ]],
+      voice: [
+        [
+          "Papan ini merangkum cara mengukur. Pilih satuan, pilih alat, lalu ubah bilangannya.",
+          "Satu meter ada 100 sentimeter. Satu kilometer ada 1.000 meter. Satu kilogram ada 1.000 gram.",
+        ],
+      ],
+    },
+    {
+      kode: "C",
+      judul: "C. Pos Jalan Sehat Igil",
+      pengantar: "Sepuluh soal pola: deret, angka hilang, analogi, dan mana yang beda.",
+      labelDaftar: "Sepuluh soal pola",
+      kolom: 1,
+      item: [
+        {
+          nama: "Soal pola",
+          singkat: "Deret dan yang beda",
+          uraian: "Cari angka berikutnya, angka yang hilang, atau satuan yang tidak cocok. Sepuluh pos, sepuluh stempel.",
+          contoh: "Salah boleh diulang. Stempel tidak berkurang.",
+        },
+      ],
+      kuis: kuisDariMisi(MISI_MTK3_UKUR),
+      voice: [
+        [
+          "Sepuluh soal pola. Cari angka berikutnya, angka yang hilang, atau yang beda.",
+          "Pilih satu pos, lalu jawab. Sepuluh stempel menutup jalan sehat.",
+        ],
+      ],
     },
     {
       kode: "D",
       judul: "E. Lembar Evaluasi Siswa",
-      pengantar: "Sepuluh soal satuan, alat ukur, dan konversi panjang serta berat.",
+      pengantar: "Sepuluh soal panjang, berat, alat, dan konversi.",
       labelDaftar: "Lembar evaluasi pengukuran",
       kolom: 1,
       item: [
-        { nama: "Tangga satuan", singkat: "Kali dan bagi", uraian: "6 m = 600 cm. 7 kg = 7.000 g. 2 kg 300 g = 2.300 g.", contoh: "Samakan satuan sebelum membandingkan." },
-        { nama: "Tiga pesanan", singkat: "Panjang dan berat", uraian: "2 m = 200 cm. Tali 250 cm lebih panjang. 3 kg = 3.000 g.", contoh: "Baca lagi bagian yang belum dijawab." },
+        {
+          nama: "Ubah dan bandingkan",
+          singkat: "Satuan sama",
+          uraian: "8 m = 800 cm. 7.000 g = 7 kg. 1 km lebih jauh dari 2 m.",
+          contoh: "Ubah dulu, baru bandingkan.",
+        },
+        {
+          nama: "Tiga botol",
+          singkat: "Paling berat",
+          uraian: "Botol A 2 kg, botol B 500 g, botol C 1 kg. Botol A paling berat.",
+          contoh: "2 kg = 2.000 g.",
+        },
       ],
       kuis: [
-        { pertanyaan: "Hitung 6 m, 800 cm, dan 4 km.", alias: ["600", "8", "4000"] },
-        { pertanyaan: "Satuan untuk tinggi pintu?", alias: ["m"] },
-        { pertanyaan: "5.000 gram sama dengan berapa kilogram?", alias: ["lima kilogram"] },
-        { pertanyaan: "Apakah lapangan diukur dengan penggaris?", alias: ["salah"] },
-        { pertanyaan: "Pasangkan kain, pensil, dan lapangan.", alias: ["pita", "penggaris", "roda"] },
-        { pertanyaan: "Hitung 7 kg, 9.000 g, dan 2 kg 300 g.", alias: ["7000", "9", "2300"] },
-        { pertanyaan: "Mana nilai yang paling besar?", alias: ["2 m"] },
-        { pertanyaan: "Urutkan 1 m, 250 cm, 3.000 mm, dan 2 km.", alias: ["1 m", "250 cm", "3000 mm", "2 km"] },
-        { pertanyaan: "Alat ukur untuk karung beras, dan mengapa?", alias: ["timbangan besar", "berat"] },
-        { pertanyaan: "Tiga pesanan: 2 m, 250 cm, dan 3 kg. Tulis panjang A dalam cm, pesanan yang lebih panjang, dan berat C dalam gram.", alias: ["200", "b", "3000"] },
+        { pertanyaan: "8 m dalam cm.", alias: ["800"] },
+        { pertanyaan: "Alat untuk menimbang tas?", alias: ["timbangan"] },
+        { pertanyaan: "4 kg sama dengan berapa g?", alias: ["4000"] },
+        { pertanyaan: "Mana yang paling jauh?", alias: ["1 km"] },
+        { pertanyaan: "Pasangkan 6 m, 1 km, 3 kg, dan 9 m.", alias: ["600", "1000", "3000", "900"] },
+        { pertanyaan: "7.000 g dalam kg.", alias: ["7"] },
+        { pertanyaan: "Susun dari yang paling ringan.", alias: ["200 g", "1 kg", "1500 g", "2 kg"] },
+        { pertanyaan: "Periksa tiga pernyataan.", alias: ["benar", "salah"] },
+        { pertanyaan: "Alat untuk mengukur lapangan?", alias: ["meteran"] },
+        { pertanyaan: "Botol mana yang paling berat?", alias: ["botol a", "2 kg"] },
       ],
-      voice: [[
-        "Saatnya kalian mengerjakan sendiri. Ada sepuluh soal pengukuran panjang dan berat.",
-        "Turun tangga dikali sepuluh, naik tangga dibagi sepuluh, dan satu kilogram sama dengan seribu gram.",
-        "Jangan terburu-buru, dan periksa lagi jawabanmu.",
-      ]],
+      voice: [
+        [
+          "Saatnya kalian mengerjakan sendiri. Ada sepuluh soal pengukuran.",
+          "Ada satuan panjang, satuan berat, alat ukur, dan konversi.",
+          "Kalau ragu, ingat 100 dan 1.000. Periksa lagi jawabanmu.",
+        ],
+      ],
     },
   ],
 };

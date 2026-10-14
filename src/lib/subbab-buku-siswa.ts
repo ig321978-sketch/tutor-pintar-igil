@@ -222,7 +222,7 @@ const SUBBAB_BUKU_SISWA: Record<string, Record<string, Record<string, string[]>>
         "Alat ukur",
         "Konversi panjang",
         "Konversi berat",
-        "Bengkel Kayu Tupai Kiki",
+        "Pos Jalan Sehat Igil",
         "Poin penting",
         "Lembar evaluasi siswa",
       ],

@@ -164,6 +164,65 @@ export function pesananLengkap(teks: string): boolean {
   return angkaUtuh(teks, "300") && angkaUtuh(teks, "3") && angkaUtuh(teks, "1000");
 }
 
+export function nilaiUkur(teks: string, digit: string, ejaan: string, satuan: string[]): boolean {
+  const kalimat = biasa(teks);
+  const rapat = teks.replace(/[.\s]/g, "");
+  const adaDigit = new RegExp(`(?:^|\\D)${digit}(?:\\D|$)`).test(rapat);
+  const adaEjaan = kalimat.includes(ejaan);
+  if (!adaDigit && !adaEjaan) return false;
+  if (!adaDigit) {
+    if (!ejaan.includes("ribu") && /ribu/.test(kalimat)) return false;
+    if (!ejaan.includes("ratus") && /ratus/.test(kalimat)) return false;
+    if (!ejaan.includes("puluh") && /puluh/.test(kalimat)) return false;
+  }
+  return satuan.some((nama) => new RegExp(`(?:^|\\s|\\d)${nama}(?:\\s|$)`).test(` ${kalimat} `));
+}
+
+export function satuanCm(teks: string): boolean {
+  const kalimat = ` ${biasa(teks)} `;
+  if (/kilometer|(?:^|\s)km(?:\s|$)|(?:^|\s)kg(?:\s|$)|(?:^|\s)gram(?:\s|$)/.test(kalimat)) return false;
+  if (/(?:^|\s)meter(?:\s|$)/.test(kalimat) && !/sentimeter/.test(kalimat)) return false;
+  return /sentimeter|(?:^|\s)cm(?:\s|$)/.test(kalimat);
+}
+
+export function satuanM(teks: string): boolean {
+  const kalimat = ` ${biasa(teks)} `;
+  if (/sentimeter|kilometer|(?:^|\s)cm(?:\s|$)|(?:^|\s)km(?:\s|$)/.test(kalimat)) return false;
+  return /(?:^|\s)meter(?:\s|$)|(?:^|\s)m(?:\s|$)/.test(kalimat);
+}
+
+export function satuanKm(teks: string): boolean {
+  const kalimat = ` ${biasa(teks)} `;
+  if (/sentimeter|(?:^|\s)cm(?:\s|$)/.test(kalimat)) return false;
+  return /kilometer|(?:^|\s)km(?:\s|$)/.test(kalimat);
+}
+
+export function satuanG(teks: string): boolean {
+  const kalimat = ` ${biasa(teks)} `;
+  if (/kilogram|(?:^|\s)kg(?:\s|$)/.test(kalimat)) return false;
+  return /(?:^|\s)gram(?:\s|$)|(?:^|\s)g(?:\s|$)/.test(kalimat);
+}
+
+export function satuanKg(teks: string): boolean {
+  const kalimat = ` ${biasa(teks)} `;
+  return /kilogram|(?:^|\s)kg(?:\s|$)|(?:^|\s)kilo(?:\s|$)/.test(kalimat);
+}
+
+export function alatPenggaris(teks: string): boolean {
+  const kalimat = biasa(teks);
+  return kalimat.includes("penggaris") && !/meteran|timbangan/.test(kalimat);
+}
+
+export function alatMeteran(teks: string): boolean {
+  const kalimat = biasa(teks);
+  return kalimat.includes("meteran") && !/penggaris|timbangan/.test(kalimat);
+}
+
+export function alatTimbangan(teks: string): boolean {
+  const kalimat = biasa(teks);
+  return kalimat.includes("timbangan") && !/penggaris|meteran/.test(kalimat);
+}
+
 export function bengkelTiga(teks: string): boolean {
   const k = biasa(teks);
   if (/pesanan a lebih panjang|papan a lebih panjang/.test(k)) return false;

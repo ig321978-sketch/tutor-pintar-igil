@@ -222,7 +222,12 @@ export function daftarIdKuisMateri(
     ];
   }
   if (adalahMtk3Ukur(kelas, mapel, materi)) {
-    return idKuisDariModulResmi(MODUL_MTK3_UKUR);
+    return [
+      ...MODUL_MTK3_UKUR.kartu.flatMap((kartu) =>
+        kartu.kuis.map((_, indeks) => idKuisKartuResmi(MODUL_MTK3_UKUR.id, kartu.kode, indeks)),
+      ),
+      idKuisTulisKartu(MODUL_MTK3_UKUR.id, "C"),
+    ];
   }
   if (adalahMtk3Bab3(kelas, mapel, materi)) {
     return idKuisDariModulResmi(MODUL_MTK3_BAB3);
