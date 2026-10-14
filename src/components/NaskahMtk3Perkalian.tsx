@@ -18,13 +18,14 @@ import {
   hasilDanSama,
   kalimatKali,
   salahSatuLalu,
-  semuaFrasa,
+  tepat,
+  tulisDanNaik,
   ucapKali,
   ulangKali,
 } from "@/lib/nilai-mtk-3-perkalian";
 import type { CuplikanVoiceMateri } from "@/lib/naskah-voice-pai-1-bab2";
 import { bacaProgres } from "@/lib/progres";
-import { useMemo, useState, type ReactNode } from "react";
+import { useId, useLayoutEffect, useMemo, useRef, useState, type ReactNode } from "react";
 
 const ID = MODUL_MTK3_PERKALIAN.id;
 
@@ -538,6 +539,136 @@ function Ikat({ jumlah, isi, ikon = "🎈" }: { jumlah: number; isi: number; iko
   );
 }
 
+function jejakKali(atas: number, kali: number) {
+  const satuan = atas % 10;
+  const puluhan = Math.floor(atas / 10);
+  const produkSatuan = satuan * kali;
+  return {
+    puluhan,
+    satuan,
+    produkSatuan,
+    tulis: produkSatuan % 10,
+    naik: Math.floor(produkSatuan / 10),
+    hasil: atas * kali,
+  };
+}
+
+function KaliSusun({ atas, kali, jejak = false }: { atas: number; kali: number; jejak?: boolean }) {
+  const hitung = jejakKali(atas, kali);
+  const tampil = jejak && hitung.naik > 0;
+  const digitHasil = String(hitung.hasil).padStart(3, " ").split("");
+  const bungkus = useRef<HTMLDivElement>(null);
+  const tanda = useId().replace(/:/g, "");
+  const [garis, setGaris] = useState<{ x1: number; y1: number; x2: number; y2: number } | null>(null);
+  const [ukuran, setUkuran] = useState({ lebar: 0, tinggi: 0 });
+
+  useLayoutEffect(() => {
+    const akar = bungkus.current;
+    if (!akar || !tampil) return;
+    const ukur = () => {
+      const batas = akar.getBoundingClientRect();
+      const asal = akar.querySelector<HTMLElement>("[data-pemberi='satuan']");
+      const tujuan = akar.querySelector<HTMLElement>("[data-terima='naik']");
+      if (!asal || !tujuan) return;
+      const kotakAsal = asal.getBoundingClientRect();
+      const kotakTujuan = tujuan.getBoundingClientRect();
+      const pusatAsal = {
+        x: kotakAsal.left + kotakAsal.width / 2 - batas.left,
+        y: kotakAsal.top + kotakAsal.height / 2 - batas.top,
+      };
+      const pusatTujuan = {
+        x: kotakTujuan.left + kotakTujuan.width / 2 - batas.left,
+        y: kotakTujuan.top + kotakTujuan.height / 2 - batas.top,
+      };
+      const pangkal = {
+        x: pusatAsal.x,
+        y: kotakAsal.top - batas.top,
+      };
+      const ujung = {
+        x: pusatTujuan.x,
+        y: kotakTujuan.top + kotakTujuan.height - batas.top,
+      };
+      const jarakX = ujung.x - pangkal.x;
+      const jarakY = ujung.y - pangkal.y;
+      const panjang = Math.hypot(jarakX, jarakY) || 1;
+      const celah = 8;
+      setUkuran({ lebar: batas.width, tinggi: batas.height });
+      setGaris({
+        x1: pangkal.x + (jarakX / panjang) * celah,
+        y1: pangkal.y + (jarakY / panjang) * celah,
+        x2: ujung.x - (jarakX / panjang) * celah,
+        y2: ujung.y - (jarakY / panjang) * celah,
+      });
+    };
+    ukur();
+    const pengamat = new ResizeObserver(ukur);
+    pengamat.observe(akar);
+    return () => pengamat.disconnect();
+  }, [tampil, atas, kali]);
+
+  return (
+    <div className="mx-auto w-full max-w-xs overflow-hidden rounded-2xl border-2 border-[#1C01A5]/15 bg-white">
+      <div ref={bungkus} className="relative px-3 py-4">
+        <table className="w-full border-collapse text-center">
+          <caption className="sr-only">
+            {atas} kali {kali}
+            {tampil
+              ? `. Satuan ${hitung.satuan} kali ${kali} sama dengan ${hitung.produkSatuan}. Tulis ${hitung.tulis}, naik ${hitung.naik}. Hasil ${hitung.hasil}.`
+              : ". Hasilnya belum ditulis."}
+          </caption>
+          <tbody>
+            <tr>
+              <td className="w-8" />
+              <td className="px-1 align-bottom">
+                {tampil ? (
+                  <span data-terima="naik" className="text-sm font-black leading-none text-[#e11d48]">
+                    {hitung.naik}+
+                  </span>
+                ) : null}
+              </td>
+              <td className="px-1 text-4xl font-black text-[#1C01A5]">{hitung.puluhan}</td>
+              <td className="px-1 text-4xl font-black text-[#1C01A5]">{hitung.satuan}</td>
+              <td className="w-8" />
+            </tr>
+            <tr>
+              <td />
+              <td />
+              <td />
+              <td className="px-1 pt-1 text-4xl font-black text-[#1C01A5]">{kali}</td>
+              <td className="pr-1 text-2xl font-black text-[#1C01A5]">×</td>
+            </tr>
+            {jejak ? (
+              <tr className="border-t-[3px] border-[#1C01A5]">
+                <td className="py-2 text-2xl font-black text-emerald-800">=</td>
+                {digitHasil.map((angka, indeks) => (
+                  <td key={indeks} className="px-1 py-2 text-4xl font-black text-emerald-700">
+                    <span {...(indeks === 2 && tampil ? { "data-pemberi": "satuan" } : {})}>{angka}</span>
+                  </td>
+                ))}
+                <td />
+              </tr>
+            ) : (
+              <tr className="border-t-[3px] border-[#1C01A5]">
+                <td className="py-2" colSpan={5} />
+              </tr>
+            )}
+          </tbody>
+        </table>
+        {garis && ukuran.lebar > 0 ? (
+          <svg className="pointer-events-none absolute inset-0 h-full w-full" viewBox={`0 0 ${ukuran.lebar} ${ukuran.tinggi}`} aria-hidden>
+            <defs>
+              <marker id={`ujung-kali-${tanda}`} viewBox="0 0 10 10" refX="8" refY="5" markerWidth="8" markerHeight="8" markerUnits="userSpaceOnUse" orient="auto">
+                <path d="M1 1.5 L8.5 5 L1 8.5 Z" fill="#e11d48" />
+              </marker>
+            </defs>
+            <line x1={garis.x1} y1={garis.y1} x2={garis.x2} y2={garis.y2} stroke="#e11d48" strokeWidth="1.6" markerEnd={`url(#ujung-kali-${tanda})`} />
+          </svg>
+        ) : null}
+      </div>
+    </div>
+  );
+}
+
 function Rumus({ baris }: { baris: { teks: string; hasil?: boolean }[] }) {
   return (
     <div className="rounded-2xl border-2 border-sky-300 bg-white px-3 py-3 text-center">
@@ -703,47 +834,34 @@ function KartuA({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminGuru }) {
         <Adegan
           judul="Sub-bab 4 — Perkalian dua angka"
           src="/doodle-mtk/mtk-3-perkalian-sub4.jpg"
-          alt="Satu ikat balon dipecah menjadi tumpukan puluhan dan tumpukan satuan."
+          alt="Susunan 24 kali 5. Angka merah 2+ naik ke kiri, hasilnya 120."
           kelas={kelas}
           kelamin={kelamin}
-          penjelasan={["Bilangan dua angka dipecah jadi puluhan dan satuan. Kalikan terpisah, lalu jumlahkan."]}
+          penjelasan={["Kalikan dari kanan. Lebih dari 9: tulis satuannya, naikkan angkanya ke kiri."]}
         >
-          <Dialog nama="Nisa" anak="Satu ikat berisi 12 balon. Ada 4 ikat." />
-          <Dialog nama="Farhan" anak="12 itu 10 dan 2." />
-          <Dialog nama="Cinta" anak="10 × 4 = 40. 2 × 4 = 8. 40 + 8 = 48." />
-          <Dialog nama="Igil" anak="Pecah dulu. Lalu jumlahkan." />
-          <Rumus
-            baris={[
-              { teks: "12 × 4" },
-              { teks: "10 × 4 = 40" },
-              { teks: "2 × 4 = 8" },
-              { teks: "40 + 8 = 48", hasil: true },
-            ]}
-          />
+          <Dialog nama="Nisa" anak="Satu ikat berisi 24 balon. Ada 5 ikat." />
+          <Dialog nama="Farhan" anak="Satuan dulu. 4 × 5 = 20." />
+          <Dialog nama="Cinta" anak="Tulis 0. Angka 2 naik ke kiri. Tulis 2+." />
+          <Dialog nama="Igil" anak="Puluhan: 2 × 5 = 10. Tambah 2, jadi 12. Hasilnya 120." />
+          <KaliSusun atas={24} kali={5} jejak />
           <KuisSuara
             id={idKuis("A", 6)}
-            pertanyaan="12 × 4. Ucapkan bentuk kalinya dan hasilnya."
-            periksa={(teks) => ucapKali(teks, "12", "dua belas", "4", "empat", "48", "empat puluh delapan")}
-            petunjuk="Sebutkan kedua bilangan dan hasilnya."
-            benar="12 × 4 = 48."
+            pertanyaan="Pada 16 × 5, satuan 6 × 5 = 30. Apa yang ditulis, dan angka berapa yang naik?"
+            periksa={(teks) => tulisDanNaik(teks, "0", "nol", "3", "tiga")}
+            petunjuk="Sebutkan angka yang ditulis dan angka yang naik."
+            benar="Tulis 0. Yang naik 3+."
           />
           <TulisBebas
             id={idKuis("A", 7)}
-            judul="Pecah lalu jumlah"
-            visual={<Papan anak={"14 × 3"} />}
-            pertanyaan="Tulis hasil puluhan, hasil satuan, dan jumlahnya."
-            pesanSalah="Pecah 14 jadi 10 dan 4. Kalikan masing-masing dengan 3."
-            bantuan="10 × 3 = 30. 4 × 3 = 12. 30 + 12 = 42."
-            umpan="14 × 3 = 42."
-            periksa={(teks) =>
-              semuaFrasa(teks, [
-                ["30", "tiga puluh"],
-                ["12", "dua belas"],
-                ["42", "empat puluh dua"],
-              ])
-            }
-            alias={["30", "12", "42"]}
-            konteks="10 × 3 = 30, 4 × 3 = 12, 30 + 12 = 42."
+            judul="Susun dari kanan"
+            visual={<KaliSusun atas={16} kali={4} />}
+            pertanyaan="Tulis hasilnya."
+            pesanSalah="Satuan dulu. Lebih dari 9: tulis satuannya, lalu naikkan."
+            bantuan="6 × 4 = 24. Tulis 4, naik 2. 1 × 4 = 4, tambah 2, jadi 6. Hasilnya 64."
+            umpan="16 × 4 = 64."
+            periksa={(teks) => tepat(teks, "64", "enam puluh empat")}
+            alias={["64"]}
+            konteks="16 × 4 = 64."
           />
         </Adegan>
 
@@ -971,50 +1089,31 @@ function KartuB({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminGuru }) {
         <Adegan
           judul="Sub-bab 4 — Perkalian dua angka"
           src="/doodle-mtk/mtk-3-perkalian-sub4.jpg"
-          alt="Angka 13 dipecah menjadi 10 dan 3, lalu masing-masing dikali 5."
+          alt="Susunan 17 kali 4. Angka merah 2+ naik dari satuan."
           kelas={kelas}
           kelamin={kelamin}
-          penjelasan={["Puluhan dikali dulu. Satuan dikali dulu. Lalu kedua hasil dijumlah."]}
+          penjelasan={["Mulai dari satuan. Tulis angka belakang. Angka depannya naik ke kiri sebagai tanda tambah."]}
         >
-          <p className="text-sm font-black text-[#1C01A5]">Contoh: 13 × 5</p>
-          <Langkah butir={["13 = 10 + 3.", "10 × 5 = 50.", "3 × 5 = 15.", "50 + 15 = 65."]} />
-          <Rumus
-            baris={[
-              { teks: "13 × 5" },
-              { teks: "10 × 5 = 50" },
-              { teks: "3 × 5 = 15" },
-              { teks: "50 + 15 = 65", hasil: true },
-            ]}
-          />
+          <p className="text-sm font-black text-[#1C01A5]">Contoh: 17 × 4</p>
+          <Langkah butir={["7 × 4 = 28. Tulis 8. Naik 2+.", "1 × 4 = 4. Tambah 2, jadi 6.", "Hasilnya 68."]} />
+          <KaliSusun atas={17} kali={4} jejak />
           <KuisSuara
             id={idKuis("B", 6)}
-            pertanyaan="13 × 5. Ucapkan hasil puluhan, hasil satuan, dan jumlahnya."
-            periksa={(teks) =>
-              semuaFrasa(teks, [
-                ["50", "lima puluh"],
-                ["15", "lima belas"],
-                ["65", "enam puluh lima"],
-              ])
-            }
-            petunjuk="Sebutkan tiga angka: hasil puluhan, hasil satuan, dan jumlahnya."
-            benar="50, 15, dan 65."
+            pertanyaan="Pada 18 × 3, satuan 8 × 3 = 24. Apa yang ditulis, dan angka berapa yang naik?"
+            periksa={(teks) => tulisDanNaik(teks, "4", "empat", "2", "dua")}
+            petunjuk="Sebutkan angka yang ditulis dan angka yang naik."
+            benar="Tulis 4. Yang naik 2+."
           />
           <TulisBebas
             id={idKuis("B", 7)}
-            visual={<Papan anak={"24 × 3"} />}
-            pertanyaan="Tulis hasil puluhan, hasil satuan, dan jumlahnya."
-            pesanSalah="Pecah 24 jadi 20 dan 4."
-            bantuan="20 × 3 = 60. 4 × 3 = 12. 60 + 12 = 72."
-            umpan="24 × 3 = 72."
-            periksa={(teks) =>
-              semuaFrasa(teks, [
-                ["60", "enam puluh"],
-                ["12", "dua belas"],
-                ["72", "tujuh puluh dua"],
-              ])
-            }
-            alias={["60", "12", "72"]}
-            konteks="20 × 3 = 60, 4 × 3 = 12, 60 + 12 = 72."
+            visual={<KaliSusun atas={19} kali={3} />}
+            pertanyaan="Tulis hasilnya."
+            pesanSalah="Satuan dulu. Lebih dari 9: tulis satuannya, lalu naikkan."
+            bantuan="9 × 3 = 27. Tulis 7, naik 2. 1 × 3 = 3, tambah 2, jadi 5. Hasilnya 57."
+            umpan="19 × 3 = 57."
+            periksa={(teks) => tepat(teks, "57", "lima puluh tujuh")}
+            alias={["57"]}
+            konteks="19 × 3 = 57."
           />
         </Adegan>
 
@@ -1053,7 +1152,7 @@ function KartuB({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminGuru }) {
         <Pilih
           id={idKuis("B", 10)}
           pertanyaan="1. 15 × 4 sama dengan..."
-          visual={<Papan anak={"15 × 4"} />}
+          visual={<KaliSusun atas={15} kali={4} />}
           pilihan={[
             { huruf: "A", teks: "45" },
             { huruf: "B", teks: "60" },
@@ -1061,8 +1160,8 @@ function KartuB({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminGuru }) {
             { huruf: "D", teks: "19" },
           ]}
           benar="B"
-          salah="Pecah 15 jadi 10 dan 5."
-          umpan="10 × 4 = 40. 5 × 4 = 20. 40 + 20 = 60."
+          salah="Satuan dulu. 5 × 4 = 20."
+          umpan="Tulis 0, naik 2. 1 × 4 = 4, tambah 2, jadi 6. Hasilnya 60."
         />
         <KuisCocok
           id={idKuis("B", 11)}
@@ -1236,21 +1335,15 @@ function LembarEvaluasi({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminG
         />
         <TulisBebas
           id={idKuis("D", 5)}
-          judul="6. Pecah 18"
-          visual={<Papan anak={"18 × 4"} />}
-          pertanyaan="Tulis hasil puluhan, hasil satuan, dan jumlahnya."
-          pesanSalah="Pecah 18 jadi 10 dan 8."
-          bantuan="10 × 4 = 40. 8 × 4 = 32. 40 + 32 = 72."
+          judul="6. Susun 18 × 4"
+          visual={<KaliSusun atas={18} kali={4} />}
+          pertanyaan="Tulis hasilnya."
+          pesanSalah="Satuan dulu. Lebih dari 9: tulis satuannya, lalu naikkan."
+          bantuan="8 × 4 = 32. Tulis 2, naik 3. 1 × 4 = 4, tambah 3, jadi 7. Hasilnya 72."
           umpan="18 × 4 = 72."
-          periksa={(teks) =>
-            semuaFrasa(teks, [
-              ["40", "empat puluh"],
-              ["32", "tiga puluh dua"],
-              ["72", "tujuh puluh dua"],
-            ])
-          }
-          alias={["40", "32", "72"]}
-          konteks="10 × 4 = 40, 8 × 4 = 32, 40 + 32 = 72."
+          periksa={(teks) => tepat(teks, "72", "tujuh puluh dua")}
+          alias={["72"]}
+          konteks="18 × 4 = 72."
         />
         <SusunToken
           id={idKuis("D", 6)}
@@ -1310,7 +1403,7 @@ export default function NaskahMtk3Perkalian({
     "Jumlah kelompok kali isi tiap kelompok.",
     "Dua bilangan boleh bertukar tempat.",
     "Tiga bilangan boleh dikelompokkan dengan dua cara.",
-    "Dua angka dipecah: puluhan dan satuan.",
+    "Dua angka dikali dari kanan. Lebih dari 9: tulis satuan, naikkan ke kiri.",
     "Kata setiap, tiap, dan masing-masing berarti kali.",
   ];
   return (
@@ -1328,11 +1421,11 @@ export default function NaskahMtk3Perkalian({
         }}
         cuplikan={cuplikanKalimat([
           "Ini yang perlu kalian ingat. Perkalian mengulang penjumlahan yang sama.",
-          "Dua bilangan boleh ditukar. Tiga bilangan boleh dikelompokkan dengan dua cara. Dua angka dipecah jadi puluhan dan satuan.",
+          "Dua bilangan boleh ditukar. Tiga bilangan boleh dikelompokkan dengan dua cara. Dua angka dikali dari kanan. Lebih dari 9, tulis satuan lalu naikkan.",
           "Kalau ada kata setiap, tiap, atau masing-masing, itu tanda perkalian.",
         ])}
         poin={poin}
-        penutup="Ulang, tukar, kelompokkan, pecah, lalu kali."
+        penutup="Ulang, tukar, kelompokkan, susun dari kanan, lalu kali."
       />
       <LembarEvaluasi kelas={kelas} kelamin={kelamin} />
     </div>

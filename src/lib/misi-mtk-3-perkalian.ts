@@ -157,7 +157,7 @@ export const MISI_MTK3_PERKALIAN: MisiPetak[] = [
     ],
     benarPilih: "b",
     alias: ["42"],
-    bersama: "10 × 3 = 30 dan 4 × 3 = 12. 30 + 12 = 42.",
+    bersama: "4 × 3 = 12. Tulis 2, naik 1. 1 × 3 = 3, tambah 1, jadi 4. Hasilnya 42.",
   },
   {
     warna: "biru",

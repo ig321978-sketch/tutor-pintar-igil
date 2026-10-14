@@ -234,3 +234,25 @@ export function duaSusunan(teks: string, a: string, b: string, hasil: string): b
 export function ulangKali(teks: string, potongan: string, a: string, b: string, hasil: string): boolean {
   return teks.replace(/\s/g, "").includes(potongan) && kalimatKali(teks, a, b, hasil);
 }
+
+export function tulisDanNaik(
+  teks: string,
+  tulis: string,
+  ejaanTulis: string,
+  naik: string,
+  ejaanNaik: string,
+): boolean {
+  const kalimat = biasa(teks);
+  const ekorPuluh = new RegExp(`puluh\\s+${ejaanTulis}\\b`).test(kalimat);
+  const adaTulis =
+    angkaUtuh(teks, tulis) ||
+    new RegExp(`(?:tulis|ditulis)\\s+${ejaanTulis}\\b`).test(kalimat) ||
+    (tulis === "0" && (/(?:^|\s)nol(?:\s|$)/.test(` ${kalimat} `) || /kosong/.test(kalimat))) ||
+    (tepat(teks, tulis, ejaanTulis) && !ekorPuluh);
+  const adaNaik =
+    new RegExp(`(?:naik|tambah|plus)\\s*(?:${naik}|${ejaanNaik})`).test(kalimat) ||
+    new RegExp(`(?:${ejaanNaik})\\s*(?:naik|plus)`).test(kalimat) ||
+    new RegExp(`(?:^|\\s)${naik}\\s*(?:naik|plus)`).test(` ${kalimat} `) ||
+    new RegExp(`\\+\\s*${naik}|${naik}\\s*\\+`).test(teks);
+  return adaTulis && adaNaik;
+}
