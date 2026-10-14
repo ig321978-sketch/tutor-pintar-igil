@@ -110,6 +110,63 @@ function digitEmpat(nilai: number): string[] {
   return String(nilai).padStart(4, "0").split("");
 }
 
+function SelAngkaAtas({
+  digit,
+  operasi,
+  catatan,
+  indeks,
+  semua,
+  adaJejak,
+}: {
+  digit: string;
+  operasi: "+" | "−";
+  catatan: CatatanKolom | null;
+  indeks: number;
+  semua?: Array<CatatanKolom | null>;
+  adaJejak: boolean;
+}) {
+  if (operasi === "+") {
+    const simpanan = catatan?.teks;
+    return (
+      <div className="flex flex-col items-center leading-none">
+        <span className={`text-sm font-black text-rose-700 ${adaJejak ? "min-h-5" : ""}`}>
+          {simpanan ? (catatan?.panah ? `${simpanan} ←` : simpanan) : ""}
+        </span>
+        <span className="py-1 text-xl font-black text-[#1C01A5] sm:text-2xl">{digit}</span>
+      </div>
+    );
+  }
+
+  const kanan = indeks < 3 ? semua?.[indeks + 1] : null;
+  const kirim = Boolean(kanan?.panah);
+  const kananJugaKirim = indeks < 2 && Boolean(semua?.[indeks + 2]?.panah);
+  const panahDiAtas = kirim && !kananJugaKirim;
+  const terima = catatan?.panah ? catatan.teks : null;
+  const sisa = catatan && !catatan.panah ? catatan.teks : null;
+  const terimaDiAtas = Boolean(terima) && !kirim;
+  const jejakBawah = (terima && !terimaDiAtas ? terima : "") || sisa || (kirim && !panahDiAtas ? "→" : "");
+
+  return (
+    <div className="flex flex-col items-center leading-none">
+      <span className="whitespace-nowrap py-1 text-xl font-black sm:text-2xl">
+        {terimaDiAtas ? <span className="text-rose-700">{terima}</span> : <span className="text-[#1C01A5]">{digit}</span>}
+        {panahDiAtas ? <span className="text-rose-700"> →</span> : null}
+      </span>
+      {adaJejak ? (
+        <span className="min-h-5 whitespace-nowrap text-sm font-black text-rose-700">
+          {terima && !terimaDiAtas ? terima : sisa}
+          {kirim && !panahDiAtas ? " →" : ""}
+        </span>
+      ) : null}
+      <span className="sr-only">
+        {terima ? `, menjadi ${terima}` : ""}
+        {sisa ? `, tinggal ${sisa}` : ""}
+        {jejakBawah && kirim ? ", panah ke rumah kanan" : ""}
+      </span>
+    </div>
+  );
+}
+
 function TabelSusun({
   operasi,
   atas,
@@ -128,7 +185,7 @@ function TabelSusun({
   const barisAtas = digitEmpat(atas);
   const barisBawah = digitEmpat(bawah);
   const barisHasil = hasil === undefined ? null : digitEmpat(hasil);
-  const adaCatatan = Boolean(catatan?.some(Boolean));
+  const adaJejak = Boolean(catatan?.some(Boolean));
 
   const isiAtas = (indeks: number) => {
     if (kosong === "atas" || kosong === indeks) return "⬜";
@@ -140,65 +197,58 @@ function TabelSusun({
       <table className="w-full border-collapse text-center">
         <caption className="sr-only">
           Susunan {operasi === "+" ? "penjumlahan" : "pengurangan"} dari rumah ribuan sampai satuan
-          {adaCatatan ? ". Angka kecil di atas adalah simpanan atau pinjaman, panah datang dari rumah kanan." : "."}
+          {adaJejak
+            ? operasi === "−"
+              ? ". Panah menunjuk ke kanan, ke angka yang menerima pinjaman. Angka kecil di bawah adalah sisa setelah memberi."
+              : ". Angka kecil di atas adalah simpanan, panah menunjuk ke kiri."
+            : "."}
         </caption>
         <thead>
           <tr className="bg-[#1C01A5] text-white">
-            <th className="w-8 px-1 py-2" />
+            <th className="w-7 px-0.5 py-2" />
             {RUMAH_ANGKA.map((nama) => (
-              <th key={nama} className="px-1 py-2 text-[10px] font-black uppercase tracking-wide sm:text-xs">
+              <th key={nama} className="px-0.5 py-2 text-[10px] font-black uppercase tracking-wide sm:text-xs">
                 {nama}
               </th>
             ))}
+            <th className="w-7 px-0.5 py-2" />
           </tr>
         </thead>
         <tbody>
-          {adaCatatan ? (
-            <tr className="bg-amber-100 text-rose-700">
-              <td className="px-1 py-1 text-xs font-black"> </td>
-              {RUMAH_ANGKA.map((nama, indeks) => {
-                const item = catatan?.[indeks];
-                return (
-                  <td key={nama} className="px-1 py-1 text-sm font-black sm:text-base">
-                    {item ? (
-                      <span aria-label={item.panah ? `${item.teks} dari rumah kanan` : item.teks}>
-                        {item.panah ? <span aria-hidden>← </span> : null}
-                        {item.teks}
-                      </span>
-                    ) : null}
-                  </td>
-                );
-              })}
-            </tr>
-          ) : null}
           <tr className="bg-sky-50">
-            <td className="px-1 py-2" />
+            <td />
             {barisAtas.map((_, indeks) => (
-              <td key={RUMAH_ANGKA[indeks]} className="px-1 py-2 text-lg font-black text-[#1C01A5] sm:text-2xl">
-                {catatan?.[indeks]?.coret && isiAtas(indeks) !== "⬜" ? (
-                  <span className="line-through decoration-2 decoration-rose-600">{isiAtas(indeks)}</span>
-                ) : (
-                  isiAtas(indeks)
-                )}
+              <td key={RUMAH_ANGKA[indeks]} className="px-0.5 align-bottom">
+                <SelAngkaAtas
+                  digit={isiAtas(indeks)}
+                  operasi={operasi}
+                  catatan={catatan?.[indeks] ?? null}
+                  indeks={indeks}
+                  semua={catatan}
+                  adaJejak={adaJejak}
+                />
               </td>
             ))}
+            <td />
           </tr>
           <tr className="bg-violet-50">
-            <td className="px-1 py-2 text-lg font-black text-[#1C01A5]">{operasi}</td>
+            <td />
             {barisBawah.map((angka, indeks) => (
-              <td key={RUMAH_ANGKA[indeks]} className="px-1 py-2 text-lg font-black text-[#1C01A5] sm:text-2xl">
+              <td key={RUMAH_ANGKA[indeks]} className="px-0.5 py-2 text-xl font-black text-[#1C01A5] sm:text-2xl">
                 {angka}
               </td>
             ))}
+            <td className="pr-1 text-xl font-black text-[#1C01A5]">{operasi}</td>
           </tr>
           {barisHasil ? (
-            <tr className="border-t-2 border-[#1C01A5]/20 bg-emerald-100">
-              <td className="px-1 py-2 text-lg font-black text-emerald-800">=</td>
+            <tr className="border-t-[3px] border-[#1C01A5] bg-emerald-100">
+              <td className="py-2 text-xl font-black text-emerald-800">=</td>
               {barisHasil.map((angka, indeks) => (
-                <td key={RUMAH_ANGKA[indeks]} className="px-1 py-2 text-lg font-black text-emerald-900 sm:text-2xl">
+                <td key={RUMAH_ANGKA[indeks]} className="px-0.5 py-2 text-xl font-black text-emerald-900 sm:text-2xl">
                   {angka}
                 </td>
               ))}
+              <td />
             </tr>
           ) : null}
         </tbody>
