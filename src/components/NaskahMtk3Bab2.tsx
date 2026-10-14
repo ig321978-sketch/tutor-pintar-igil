@@ -1,6 +1,5 @@
 "use client";
 
-import GambarDoodle from "@/components/GambarDoodle";
 import HasilJawabanKuis from "@/components/HasilJawabanKuis";
 import KartuPoinPenting from "@/components/KartuPoinPenting";
 import KuisTulisKartu from "@/components/KuisTulisKartu";
@@ -1476,10 +1475,11 @@ function KartuC({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminGuru }) {
         kelamin={kelamin}
         cuplikan={cuplikanKalimat(kartu.voice[0])}
       />
-      <GambarDoodle
+      {/* eslint-disable-next-line @next/next/no-img-element */}
+      <img
         src="/doodle-mtk/mtk-3-bab2-permainan.jpg"
         alt="Burung hantu di meja perpustakaan keliling, memegang stempel. Rak buku dan bus di belakangnya."
-        ukuran="lebar"
+        className="mt-4 w-full rounded-xl border border-[#1C01A5]/10 bg-white object-cover"
       />
       <p className="mt-4 text-sm font-semibold leading-relaxed text-slate-700">
         Sepuluh soal pola: deret, angka hilang, analogi, dan mana yang beda. Pilih satu pos, lalu jawab.
@@ -1524,10 +1524,11 @@ function LembarEvaluasi({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminG
         kelamin={kelamin}
         cuplikan={cuplikanKalimat(kartu.voice[0])}
       />
-      <GambarDoodle
+      {/* eslint-disable-next-line @next/next/no-img-element */}
+      <img
         src="/doodle-mtk/mtk-3-bab2-evaluasi.jpg"
         alt="Meja ujian dengan pensil besar dan stempel. Burung hantu berdiri di tepi meja."
-        ukuran="lebar"
+        className="mt-4 w-full rounded-xl border border-[#1C01A5]/10 bg-white object-cover"
       />
       <p className="mt-4 text-center text-sm font-black text-[#1C01A5]">
         {lencana} · {pesan}

@@ -17,7 +17,7 @@ export const MODUL_MTK3_BAB1: ModulResmiPai = {
   kunciJawaban: "A,B,C,C,A,C,C,A,D,A",
   sketsaKartu: [
     "Aldi, Naya, dan Fikri membaca 4.725 bersama Pandu.",
-    "Empat rumah angka: ribuan, ratusan, puluhan, dan satuan.",
+    "Empat rak angka: ribuan, ratusan, puluhan, dan satuan.",
     "Pandu menjadi juri di papan skor kejuaraan.",
     "Poin penting dan lembar evaluasi bilangan sampai 10.000.",
   ],
@@ -71,7 +71,7 @@ B) 7.999
 C) Keduanya sama
 D) Tidak bisa ditentukan`,
     `[Soal 9 - PG - Tipe: MOTS]
-Pada papan 3.⬜56, petunjuknya rumah kosong. Angka yang hilang...
+Pada papan 3.⬜56, petunjuknya rak kosong. Angka yang hilang...
 A) 2
 B) 3
 C) 4
