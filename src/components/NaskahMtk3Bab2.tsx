@@ -919,7 +919,7 @@ function KartuA({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminGuru }) {
             id={idKuis("A", 0)}
             pertanyaan="Berapa hasil 1.324 + 2.451? Sebutkan juga dari rak mana kamu mulai."
             periksa={baca3775}
-            petunjuk="Jumlahkan dari satuan. Hasilnya tiga ribu tujuh ratus tujuh puluh lima."
+            petunjuk="Jumlahkan dari satuan, lalu sebutkan rak awalnya."
             benar="Tiga ribu tujuh ratus tujuh puluh lima. Mulai dari satuan."
           />
           <TulisBebas
@@ -965,7 +965,7 @@ function KartuA({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminGuru }) {
             id={idKuis("A", 2)}
             pertanyaan="Pada 3.685 + 1.247, satuan 5 + 7 = 12. Apa yang ditulis di satuan, dan berapa yang disimpan?"
             periksa={tulisDuaSimpanSatu}
-            petunjuk="Jangan tulis 12 utuh. Sebutkan angka yang ditulis dan angka yang disimpan."
+            petunjuk="Sebutkan angka yang ditulis dan angka yang disimpan."
             benar="Tulis 2, simpan 1."
           />
           <TulisBebas
@@ -1004,7 +1004,7 @@ function KartuA({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminGuru }) {
             id={idKuis("A", 4)}
             pertanyaan="Berapa hasil 6.749 − 2.315? Sebutkan juga apakah ada rak yang meminjam."
             periksa={tanpaPinjam4434}
-            petunjuk="Semua angka atas cukup. Ucapkan hasilnya, lalu katakan tidak meminjam."
+            petunjuk="Ucapkan hasilnya, lalu sebutkan apakah ada yang meminjam."
             benar="Empat ribu empat ratus tiga puluh empat. Tidak meminjam."
           />
           <TulisBebas
@@ -1070,7 +1070,7 @@ function KartuA({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminGuru }) {
             id={idKuis("A", 6)}
             pertanyaan="Berapa hasil 7.245 − 3.168? Sebutkan rak yang meminjam."
             periksa={pinjam4077}
-            petunjuk="Satuan dan puluhan sama-sama meminjam. Hasilnya empat ribu tujuh puluh tujuh."
+            petunjuk="Sebutkan rak yang meminjam, lalu ucapkan hasilnya."
             benar="Empat ribu tujuh puluh tujuh. Satuan dan puluhan meminjam."
           />
           <TulisBebas
@@ -1115,7 +1115,7 @@ function KartuA({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminGuru }) {
             id={idKuis("A", 8)}
             pertanyaan="Rak ada 4.260 buku. Dipinjam 1.085. Sebutkan sisanya dan operasinya."
             periksa={sisa3175}
-            petunjuk="Dipinjam berarti kurang. Sisanya tiga ribu seratus tujuh puluh lima."
+            petunjuk="Sebutkan operasinya, lalu ucapkan sisanya."
             benar="Tiga ribu seratus tujuh puluh lima. Operasinya kurang."
           />
           <TulisBebas
@@ -1188,7 +1188,7 @@ function KartuA({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminGuru }) {
         />
         <KuisTulisKartu
           id={idKuisTulisKartu(ID, "A")}
-          pertanyaan="Tulis kalimat kunci: Lebih dari sembilan, simpan satu ke kiri."
+          pertanyaan="Tulis kalimat kunci tentang apa yang dilakukan jika jumlahnya lebih dari sembilan."
           alias={["sembilan", "simpan"]}
           konteks="Lebih dari sembilan, simpan satu ke kiri."
         />
@@ -1227,7 +1227,7 @@ function KartuB({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminGuru }) {
             id={idKuis("B", 0)}
             pertanyaan="Berapa 2.314 + 1.625? Sebutkan rak tempat kamu mulai."
             periksa={baca3939}
-            petunjuk="Mulai dari satuan. Hasilnya tiga ribu sembilan ratus tiga puluh sembilan."
+            petunjuk="Sebutkan rak tempat kamu mulai, lalu ucapkan hasilnya."
             benar="Tiga ribu sembilan ratus tiga puluh sembilan. Mulai dari satuan."
           />
           <TulisBebas
@@ -1266,7 +1266,7 @@ function KartuB({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminGuru }) {
             id={idKuis("B", 2)}
             pertanyaan="Pada 2.609 + 3.184, satuan 9 + 4 = 13. Apa yang ditulis, dan berapa yang disimpan?"
             periksa={tulisTigaSimpanSatu}
-            petunjuk="Tulis angka satuannya, simpan puluhannya."
+            petunjuk="Sebutkan angka yang ditulis dan angka yang disimpan."
             benar="Tulis 3, simpan 1."
           />
           <TulisBebas
@@ -1299,7 +1299,7 @@ function KartuB({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminGuru }) {
             id={idKuis("B", 4)}
             pertanyaan="Berapa 9.578 − 4.236? Apakah ada yang meminjam?"
             periksa={tanpaPinjam5342}
-            petunjuk="Ucapkan hasilnya, lalu katakan tidak meminjam."
+            petunjuk="Ucapkan hasilnya, lalu sebutkan apakah ada yang meminjam."
             benar="Lima ribu tiga ratus empat puluh dua. Tidak meminjam."
           />
           <TulisBebas
@@ -1343,7 +1343,7 @@ function KartuB({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminGuru }) {
             id={idKuis("B", 6)}
             pertanyaan="Berapa 8.045 − 2.617? Sebutkan rak kosong yang harus meminjam."
             periksa={pinjam5428}
-            petunjuk="Ratusan kosong, jadi sebutkan ratusan dan hasilnya."
+            petunjuk="Sebutkan rak kosong yang meminjam, lalu ucapkan hasilnya."
             benar="Lima ribu empat ratus dua puluh delapan. Ratusan meminjam dari ribuan."
           />
           <TulisBebas
@@ -1382,7 +1382,7 @@ function KartuB({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminGuru }) {
             id={idKuis("B", 8)}
             pertanyaan="Rak A 2.146 buku, rak B 1.853 buku. Sebutkan jumlahnya dan operasinya."
             periksa={jumlah3999}
-            petunjuk="Dua rak digabung berarti tambah. Hasilnya tiga ribu sembilan ratus sembilan puluh sembilan."
+            petunjuk="Sebutkan operasinya, lalu ucapkan jumlahnya."
             benar="Tiga ribu sembilan ratus sembilan puluh sembilan. Operasinya tambah."
           />
           <TulisBebas
@@ -1455,7 +1455,7 @@ function KartuB({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminGuru }) {
         />
         <KuisTulisKartu
           id={idKuisTulisKartu(ID, "B")}
-          pertanyaan="Tulis kalimat kunci: Kurang tidak cukup, pinjam satu dari kiri."
+          pertanyaan="Tulis kalimat kunci tentang apa yang dilakukan jika angka atas kurang."
           alias={["pinjam", "kiri"]}
           konteks="Kurang tidak cukup, pinjam satu dari kiri."
         />
@@ -1563,7 +1563,7 @@ function LembarEvaluasi({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminG
           id={idKuis("D", 2)}
           pertanyaan="Ada 5.200 kartu, dibagikan 1.750. Ucapkan sisanya dan operasi yang kamu pakai."
           periksa={sisa3450}
-          petunjuk="Dibagikan berarti kurang. Sisanya tiga ribu empat ratus lima puluh."
+          petunjuk="Sebutkan operasinya, lalu ucapkan sisanya."
           benar="Tiga ribu empat ratus lima puluh. Operasinya kurang."
         />
         <Pilih
@@ -1625,7 +1625,7 @@ function LembarEvaluasi({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminG
           id={idKuis("D", 8)}
           pertanyaan="Mana yang lebih besar, 2.431 + 3.256 atau 5.876 − 2.341? Sebutkan hasilnya dan rak yang membuatnya lebih besar."
           periksa={lebih5687}
-          petunjuk="Hitung keduanya dulu. Yang besar lima ribu enam ratus delapan puluh tujuh."
+          petunjuk="Hitung keduanya, sebutkan yang lebih besar, dan rak yang membuatnya lebih besar."
           benar="Lima ribu enam ratus delapan puluh tujuh lebih besar karena ribuannya 5."
         />
         <TulisBebas
@@ -1639,12 +1639,6 @@ function LembarEvaluasi({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminG
           periksa={halteHulu}
           alias={["4745 2565 915"]}
           konteks="3.480 + 1.265 = 4.745. 4.745 − 2.180 = 2.565. 2.180 − 1.265 = 915."
-        />
-        <KuisTulisKartu
-          id={idKuisTulisKartu(ID, "D")}
-          pertanyaan="Tulis dua kata kunci: satuan dulu, simpanan dihitung."
-          alias={["satuan", "simpan"]}
-          konteks="Satuan dulu, simpanan dihitung."
         />
         <p className="text-center text-sm font-black text-[#1C01A5]">
           {lencana} · {skor} bintang dari 10
