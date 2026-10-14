@@ -32,7 +32,7 @@ export const MISI_MTK3_BAB2: MisiPetak[] = [
     ],
     benarPilih: "a",
     alias: ["5687"],
-    bersama: "Setiap rumah muat. 2.431 + 3.256 = 5.687.",
+    bersama: "Setiap rak muat. 2.431 + 3.256 = 5.687.",
   },
   {
     warna: "kuning",
@@ -84,7 +84,7 @@ export const MISI_MTK3_BAB2: MisiPetak[] = [
   {
     warna: "hijau",
     misi: "Rak kosong",
-    narasi: "Pada 4.203 − 1.578, puluhan berisi 0. Dari rumah mana pinjaman satuan dilanjutkan?",
+    narasi: "Pada 4.203 − 1.578, puluhan berisi 0. Dari rak mana pinjaman satuan dilanjutkan?",
     mode: "pilih",
     ikon: "0️⃣",
     jumlah: 0,
@@ -120,7 +120,7 @@ export const MISI_MTK3_BAB2: MisiPetak[] = [
   {
     warna: "biru",
     misi: "Angka yang ditulis",
-    narasi: "Satuan 7 + 9 = 16. Angka berapa yang ditulis di rumah satuan?",
+    narasi: "Satuan 7 + 9 = 16. Angka berapa yang ditulis di rak satuan?",
     mode: "pilih",
     ikon: "✏️",
     jumlah: 0,
