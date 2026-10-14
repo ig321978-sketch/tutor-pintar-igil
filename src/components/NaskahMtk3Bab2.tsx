@@ -329,6 +329,16 @@ function TabelSusun({
               {barisAtas.map((_, indeks) => {
                 const tambah = jejakTambah?.[indeks];
                 const kurang = jejakKurang;
+                const hanyaTerima = Boolean(kurang?.terima[indeks] && !kurang.beri[indeks]);
+                if (hanyaTerima && kurang) {
+                  return (
+                    <td key={RUMAH_ANGKA[indeks]} className="px-0.5 align-middle">
+                      <span data-terima={String(indeks - 1)} className={ANGKA_PINDAH}>
+                        {kurang.kerja[indeks]}
+                      </span>
+                    </td>
+                  );
+                }
                 const jejak = tambah && tambah.masuk > 0
                   ? { tanda: "+1", id: String(indeks + 1), peran: "terima" as const }
                   : kurang?.beri[indeks]
@@ -348,12 +358,15 @@ function TabelSusun({
                 {barisAtas.map((_, indeks) => {
                   const tambah = jejakTambah?.[indeks];
                   const kurang = jejakKurang;
-                  const angkaTengah = tambah && tambah.masuk > 0
-                    ? String(Number(barisAtas[indeks]) + tambah.masuk)
-                    : kurang && kurang.kerja[indeks] !== kurang.asli[indeks]
-                      ? String(kurang.kerja[indeks])
-                      : "";
-                  const kepalaPanah = kurang?.terima[indeks] ? String(indeks - 1) : undefined;
+                  const hanyaTerima = Boolean(kurang?.terima[indeks] && !kurang.beri[indeks]);
+                  const angkaTengah = hanyaTerima
+                    ? ""
+                    : tambah && tambah.masuk > 0
+                      ? String(Number(barisAtas[indeks]) + tambah.masuk)
+                      : kurang && kurang.kerja[indeks] !== kurang.asli[indeks]
+                        ? String(kurang.kerja[indeks])
+                        : "";
+                  const kepalaPanah = kurang?.terima[indeks] && kurang.beri[indeks] ? String(indeks - 1) : undefined;
                   return (
                     <td key={RUMAH_ANGKA[indeks]} className="px-0.5 pb-1">
                       {angkaTengah ? (
@@ -383,12 +396,16 @@ function TabelSusun({
                   const jumlah = jejakTambah?.[indeks]?.jumlah;
                   const limpah = jumlah !== undefined && jumlah >= 10;
                   return (
-                    <td key={RUMAH_ANGKA[indeks]} className="px-0.5 py-2">
-                      <span
-                        data-pemberi={limpah ? String(indeks) : undefined}
-                        className={`inline-block whitespace-nowrap text-xl font-black sm:text-2xl ${limpah ? "text-rose-600" : "text-emerald-900"}`}
-                      >
-                        {limpah ? jumlah : angka}
+                    <td key={RUMAH_ANGKA[indeks]} className="px-0.5 py-2 align-bottom">
+                      <span className="inline-flex flex-col items-center">
+                        {limpah ? (
+                          <span data-pemberi={String(indeks)} className={ANGKA_PINDAH}>
+                            {jumlah}
+                          </span>
+                        ) : null}
+                        <span className="inline-block whitespace-nowrap text-xl font-black text-emerald-900 sm:text-2xl">
+                          {angka}
+                        </span>
                       </span>
                     </td>
                   );
