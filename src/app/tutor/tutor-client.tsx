@@ -65,6 +65,7 @@ import PemutarAudioGuru, {
   type KontrolPemutarGuru,
 } from "@/components/PemutarAudioGuru";
 import { KuisMateriProvider } from "@/components/KuisMateriContext";
+import GerbangPemanasanOtak from "@/components/brain-activation/GerbangPemanasanOtak";
 import KartuBagianModul from "@/components/modul/KartuBagianModul";
 import PanelLatihanModul from "@/components/modul/PanelLatihanModul";
 import PanelMateriModul from "@/components/modul/PanelMateriModul";
@@ -1780,6 +1781,11 @@ export default function TutorAI() {
               selesai={kuisMateriSelesai}
               onBenar={tandaiKuisMateriBenar}
             >
+            <GerbangPemanasanOtak
+              kelas={judulKelasSesi}
+              mapel={judulMapelSesi}
+              materi={judulMateriSesi}
+            >
             <KartuBagianModul
               daftar={opsiBagian}
               aktif={tahapBelajar}
@@ -2050,6 +2056,7 @@ export default function TutorAI() {
                 ),
               }}
             />
+            </GerbangPemanasanOtak>
             </KuisMateriProvider>
           </div>
         </div>
