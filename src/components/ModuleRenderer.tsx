@@ -29,6 +29,7 @@ import NaskahMtk3Pembagian from "@/components/NaskahMtk3Pembagian";
 import NaskahMtk3Pecahan from "@/components/NaskahMtk3Pecahan";
 import NaskahMtk3Ukur from "@/components/NaskahMtk3Ukur";
 import NaskahMtk3Waktu from "@/components/NaskahMtk3Waktu";
+import NaskahMtk3Uang from "@/components/NaskahMtk3Uang";
 import NaskahMtk3Bab3 from "@/components/NaskahMtk3Bab3";
 import NaskahPancasila1 from "@/components/NaskahPancasila1";
 import NaskahBindo1 from "@/components/NaskahBindo1";
@@ -73,6 +74,7 @@ import {
   adalahJudulMtk3Pecahan,
   adalahJudulMtk3Ukur,
   adalahJudulMtk3Waktu,
+  adalahJudulMtk3Uang,
   adalahJudulMtk3Bab3,
   adalahJudulPancasila1Bab1,
   adalahJudulPancasila1Bab2,
@@ -134,6 +136,7 @@ import { MODUL_MTK3_PEMBAGIAN } from "@/lib/modul-resmi-mtk-3-pembagian";
 import { MODUL_MTK3_PECAHAN } from "@/lib/modul-resmi-mtk-3-pecahan";
 import { MODUL_MTK3_UKUR } from "@/lib/modul-resmi-mtk-3-ukur";
 import { MODUL_MTK3_WAKTU } from "@/lib/modul-resmi-mtk-3-waktu";
+import { MODUL_MTK3_UANG } from "@/lib/modul-resmi-mtk-3-uang";
 import { MODUL_MTK3_BAB3 } from "@/lib/modul-resmi-mtk-3-bab3";
 import { naskahTampilanModulResmi } from "@/lib/modul-resmi-pai";
 import { jenjangGuru, type KelaminGuru } from "@/lib/guru";
@@ -411,6 +414,13 @@ function ModuleRenderer({
         naskahTampilanModulResmi(MODUL_MTK3_WAKTU, naskah)),
     [naskah, mapel, materi, kelas],
   );
+  const pakaiKartuMtk3Uang = useMemo(
+    () =>
+      kelasTigaSd(kelas) &&
+      (adalahJudulMtk3Uang(mapel, materi) ||
+        naskahTampilanModulResmi(MODUL_MTK3_UANG, naskah)),
+    [naskah, mapel, materi, kelas],
+  );
   const pakaiKartuMtk3Bab3 = useMemo(
     () =>
       kelasTigaSd(kelas) &&
@@ -678,6 +688,13 @@ function ModuleRenderer({
     return (
       <div className={className}>
         <NaskahMtk3Waktu kelas={kelas} kelamin={kelamin} />
+      </div>
+    );
+  }
+  if (pakaiKartuMtk3Uang) {
+    return (
+      <div className={className}>
+        <NaskahMtk3Uang kelas={kelas} kelamin={kelamin} />
       </div>
     );
   }
