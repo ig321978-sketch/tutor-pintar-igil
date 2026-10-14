@@ -951,6 +951,7 @@ function KartuA({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminGuru }) {
             "Sepuluhnya disimpan sebagai 1 di rak sebelah kiri. Simpanan itu wajib dihitung.",
           ]}
         >
+          <Dialog nama="Nisa" anak="Dua tumpukan buku: 2.476 dan 1.358. Kita jumlahkan dari kanan." />
           <Dialog nama="Farhan" anak="Satuan 6 + 8 = 14. Rak satuan cuma muat satu angka!" />
           <Dialog nama="Nisa" anak="Tulis 4. Sepuluhnya jadi 1 di rak puluhan. Itu simpanan." />
           <Dialog nama="Cinta" anak="Puluhan 7 + 5, ditambah simpanan 1, jadi 13. Tulis 3, simpan 1 lagi." />
