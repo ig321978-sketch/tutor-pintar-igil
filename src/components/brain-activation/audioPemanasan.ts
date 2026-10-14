@@ -36,6 +36,13 @@ export function bunyiKetukan(): void {
   nada(740, ctx.currentTime, 0.08, 0.05, "triangle");
 }
 
+export function bunyiSalah(): void {
+  const ctx = konteksAudio();
+  if (!ctx) return;
+  nada(196, ctx.currentTime, 0.12, 0.05, "triangle");
+  nada(146, ctx.currentTime + 0.1, 0.16, 0.04, "triangle");
+}
+
 export function bunyiBerhasil(): void {
   const ctx = konteksAudio();
   if (!ctx) return;

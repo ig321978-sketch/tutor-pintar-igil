@@ -44,7 +44,7 @@ export const BRAIN_ACTIVATION_REGISTRY: Record<number, BrainActivationModule> = 
     moduleId: MODUL_MTK3_BAB2.id,
     chapterNumber: 2,
     title: "Irama Otak: Ketuk Kiri-Kanan",
-    instruction: "Ketuk rak kiri dan rak kanan bergantian mengikuti ketukan Hulu!",
+    instruction: "Hulu mengetuk rak kiri atau kanan secara acak. Ketuk rak yang sama!",
     type: "cross_crawl_tap",
     themeColor: "from-emerald-400 to-teal-600",
     mascotEmotion: "excited",

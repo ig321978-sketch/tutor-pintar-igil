@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
-import { bunyiKetukan, siapkanAudioPemanasan } from "@/components/brain-activation/audioPemanasan";
+import { bunyiKetukan, bunyiSalah, siapkanAudioPemanasan } from "@/components/brain-activation/audioPemanasan";
 
 type Sisi = "kiri" | "kanan";
 
@@ -23,6 +23,7 @@ export default function CrossCrawlTap({
   const [terbuka, setTerbuka] = useState(false);
   const [hitung, setHitung] = useState(0);
   const [goyang, setGoyang] = useState<Sisi | null>(null);
+  const [salah, setSalah] = useState(0);
   const selesaiRef = useRef(false);
   const mulaiRef = useRef(false);
   const giliranRef = useRef<Sisi>("kiri");
@@ -37,11 +38,16 @@ export default function CrossCrawlTap({
     };
   }, []);
 
+  const sisiAcak = (): Sisi => (Math.random() < 0.5 ? "kiri" : "kanan");
+
+  const jedaAcak = () => Math.round(jedaMs * (0.65 + Math.random() * 0.7));
+
   const bukaGiliran = (sisi: Sisi) => {
     giliranRef.current = sisi;
     terbukaRef.current = true;
     setGiliran(sisi);
     setTerbuka(true);
+    setSalah(0);
     bunyiKetukan();
   };
 
@@ -50,7 +56,7 @@ export default function CrossCrawlTap({
     mulaiRef.current = true;
     siapkanAudioPemanasan();
     setMulai(true);
-    bukaGiliran("kiri");
+    bukaGiliran(sisiAcak());
   };
 
   const ketuk = (sisi: Sisi) => {
@@ -61,11 +67,14 @@ export default function CrossCrawlTap({
     if (!terbukaRef.current) return;
     if (sisi !== giliranRef.current) {
       setGoyang(sisi);
+      setSalah((jumlah) => jumlah + 1);
+      bunyiSalah();
       window.setTimeout(() => setGoyang(null), 350);
       return;
     }
     terbukaRef.current = false;
     setTerbuka(false);
+    setSalah(0);
     const berikutnya = hitungRef.current + 1;
     hitungRef.current = berikutnya;
     setHitung(berikutnya);
@@ -75,8 +84,7 @@ export default function CrossCrawlTap({
       onSelesai();
       return;
     }
-    const lawan: Sisi = sisi === "kiri" ? "kanan" : "kiri";
-    tungguRef.current = window.setTimeout(() => bukaGiliran(lawan), jedaMs);
+    tungguRef.current = window.setTimeout(() => bukaGiliran(sisiAcak()), jedaAcak());
   };
 
   ketukRef.current = ketuk;
@@ -109,7 +117,7 @@ export default function CrossCrawlTap({
         </span>
         <span className="mt-2 block text-lg font-black text-[#1C01A5]">Rak {nama}</span>
         <span className="mt-1 block text-sm font-bold text-teal-800">
-          {aktif ? "Ketuk sekarang!" : mulai ? "Tunggu ketukan" : "Siap"}
+          {aktif ? "Pilihan Hulu" : mulai ? "Tunggu Hulu" : "Siap"}
         </span>
       </button>
     );
@@ -118,8 +126,21 @@ export default function CrossCrawlTap({
   return (
     <div>
       <p className="mb-3 text-center text-sm font-black text-teal-800">
-        {mulai ? `Ketukan ${hitung} dari ${target}` : "Dengarkan ketukan, lalu ketuk rak yang menyala."}
+        {mulai
+          ? terbuka
+            ? `Hulu mengetuk rak ${giliran}. Ketukan benar ${hitung} dari ${target}.`
+            : `Ketukan benar ${hitung} dari ${target}.`
+          : "Tunggu Hulu mengetuk, lalu ketuk rak yang sama."}
       </p>
+      {salah > 0 ? (
+        <p
+          key={salah}
+          role="alert"
+          className="mb-3 rounded-2xl bg-rose-600 px-4 py-2 text-center text-xl font-black tracking-[0.2em] text-white"
+        >
+          SALAH
+        </p>
+      ) : null}
       <div className="grid grid-cols-2 gap-3 sm:gap-5">
         {tombol("kiri", "📚", "kiri")}
         {tombol("kanan", "📖", "kanan")}
