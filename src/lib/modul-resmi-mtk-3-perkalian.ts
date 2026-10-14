@@ -13,237 +13,220 @@ export const MODUL_MTK3_PERKALIAN: ModulResmiPai = {
   judul: JUDUL_MTK3_PERKALIAN,
   pola: /bab 3: perkalian( sampai 100)?/,
   motivasi:
-    "Alya, Danu, dan Cika belajar perkalian sampai 100 bersama landak Landak Bulat di kebun stroberi.",
-  kunciJawaban: "B,C,B,B,C,B,B,B,C,B",
+    "Nisa, Farhan, dan Cinta belajar perkalian sampai 100 bersama burung hantu Hulu di kios balon taman.",
+  kunciJawaban: "B,C,B,B,C,A,A,C,C,B",
   sketsaKartu: [
-    "Alya, Danu, dan Cika menghitung stroberi bersama landak Landak Bulat.",
-    "Perkalian sebagai penjumlahan berulang, sifat pertukaran, dan pecahan puluhan.",
-    "Landak Bulat memanen petak stroberi yang berbaris rapi.",
+    "Nisa, Farhan, dan Cinta menghitung ikat balon bersama burung hantu Hulu.",
+    "Penjumlahan berulang, sifat pertukaran, sifat pengelompokan, dan pecahan puluhan.",
+    "Sepuluh pos pola di taman balon.",
     "Poin penting dan lembar evaluasi perkalian.",
   ],
   latihan: pg([
     `[Soal 1 - PG - Tipe: MOTS]
-Ada 6 baris stroberi, tiap baris 7 pohon. Bentuk perkaliannya...
-A) 6 + 7
-B) 6 × 7
-C) 7 − 6
-D) 6 × 6`,
+Ada 5 ikat balon, tiap ikat 6 balon. Bentuk perkaliannya...
+A) 5 + 6
+B) 5 × 6
+C) 6 − 5
+D) 5 × 5`,
     `[Soal 2 - PG - Tipe: MOTS]
-8 × 7 sama dengan...
+7 × 8 sama dengan...
 A) 48
 B) 54
 C) 56
 D) 64`,
     `[Soal 3 - PG - Tipe: HOTS]
-32 × 3 sama dengan...
-A) 86
-B) 96
-C) 106
-D) 126`,
+15 × 4 sama dengan...
+A) 50
+B) 60
+C) 45
+D) 19`,
     `[Soal 4 - PG - Tipe: HOTS]
-Danu berkata perkalian selalu lebih besar dari penjumlahan. Pernyataannya...
+Farhan berkata perkalian selalu lebih besar dari penjumlahan. Pernyataannya...
 A) Benar
-B) Salah, karena 1 × 5 = 5 sedangkan 1 + 5 = 6
-C) Salah, karena 2 × 2 hasilnya hanya 4
+B) Salah, karena 1 × 8 = 8 sedangkan 1 + 8 = 9
+C) Benar, karena 2 × 2 = 4
 D) Tidak bisa ditentukan`,
     `[Soal 5 - PG - Tipe: HOTS]
-⬜ × 7 = 63. Angka yang hilang...
+⬜ × 6 = 54. Angka yang hilang...
 A) 7
 B) 8
 C) 9
-D) 10`,
+D) 6`,
     `[Soal 6 - PG - Tipe: HOTS]
-8 × 6 = 48, dan ⬜ × 8 = 48. Angka yang hilang...
+8 × 5 = 40, dan ⬜ × 8 = 40. Angka yang hilang...
 A) 5
 B) 6
-C) 7
+C) 4
 D) 8`,
     `[Soal 7 - PG - Tipe: MOTS]
-Manakah yang hasilnya 42?
-A) 6 × 6
-B) 6 × 7
-C) 7 × 7
-D) 8 × 5`,
+Manakah yang hasilnya 36?
+A) 4 × 9
+B) 6 × 5
+C) 7 × 5
+D) 8 × 4`,
     `[Soal 8 - PG - Tipe: MOTS]
-Hasil panen naik 6: 12 – 18 – 24 – ⬜ – 36. Berikutnya...
-A) 28
-B) 30
-C) 32
-D) 34`,
+Deret naik 7: 14 – 21 – 28 – ⬜ – 42. Berikutnya...
+A) 32
+B) 33
+C) 35
+D) 36`,
     `[Soal 9 - PG - Tipe: MOTS]
-4 × 9 dan 9 × 4. Yang benar...
+6 × 7 dan 7 × 6. Yang benar...
 A) Hasil pertama lebih besar
 B) Hasil kedua lebih besar
 C) Hasilnya sama
 D) Tidak bisa ditentukan`,
     `[Soal 10 - PG - Tipe: HOTS]
-Petak A 6 × 8, petak B 7 × 9, petak C 5 × 8. Pohon paling banyak ada di...
-A) Petak A
-B) Petak B
-C) Petak C
+Kios A 6 × 8, kios B 9 × 7, kios C 5 × 8. Balon paling banyak ada di...
+A) Kios A
+B) Kios B
+C) Kios C
 D) Ketiganya sama`,
   ]),
   kartu: [
     {
       kode: "A",
       judul: "A. Naskah Bergambar",
-      pengantar: "Alya, Danu, Cika, dan Landak Bulat mengubah penjumlahan berulang menjadi perkalian.",
-      labelDaftar: "Lima adegan kebun stroberi",
+      pengantar: "Nisa, Farhan, Cinta, dan Hulu mengubah penjumlahan berulang menjadi perkalian di kios balon.",
+      labelDaftar: "Lima adegan kios balon",
       kolom: 1,
       item: [
         {
           nama: "Penjumlahan berulang",
           singkat: "Cara cepat",
-          uraian: "4 × 3 = 12, sama dengan 3 + 3 + 3 + 3.",
-          contoh: "Empat kali tiga sama dengan dua belas.",
+          uraian: "4 × 6 = 24, sama dengan 6 + 6 + 6 + 6.",
+          contoh: "Empat kali enam sama dengan dua puluh empat.",
         },
         {
           nama: "Sifat pertukaran",
           singkat: "Dibalik tetap sama",
-          uraian: "4 × 6 = 24 dan 6 × 4 = 24.",
+          uraian: "8 × 6 = 48 dan 6 × 8 = 48.",
           contoh: "Dua bilangan boleh bertukar tempat.",
         },
         {
           nama: "Sifat pengelompokan",
           singkat: "Kerjakan bertahap",
-          uraian: "(2 × 3) × 4 = 24 dan 2 × (3 × 4) = 24.",
+          uraian: "(2 × 5) × 3 = 30 dan 2 × (5 × 3) = 30.",
           contoh: "Kurung boleh berpindah.",
         },
         {
           nama: "Perkalian dua angka",
           singkat: "Pecah dulu",
-          uraian: "23 × 4 = 80 + 12 = 92.",
+          uraian: "12 × 4 = 40 + 8 = 48. 14 × 3 = 30 + 12 = 42.",
           contoh: "Puluhan dan satuan dikali terpisah.",
         },
         {
           nama: "Soal cerita",
           singkat: "Kata setiap",
-          uraian: "8 baris, setiap baris 7 pohon: 8 × 7 = 56.",
-          contoh: "Setiap, tiap, per, dan masing-masing berarti kali.",
+          uraian: "4 tamu, setiap tamu 7 balon: 4 × 7 = 28.",
+          contoh: "Setiap, tiap, dan masing-masing berarti kali.",
         },
       ],
       kuis: [
-        { pertanyaan: "Tiga keranjang berisi 5. Ucapkan penjumlahan berulangnya.", alias: ["lima tambah lima tambah lima"] },
-        { pertanyaan: "Empat kotak berisi 4. Tulis penjumlahan dan perkaliannya.", alias: ["4+4+4+4", "16"] },
-        { pertanyaan: "7 × 3 dan 3 × 7 sama atau berbeda?", alias: ["sama"] },
-        { pertanyaan: "Berapa 8 × 5 dan 5 × 8?", alias: ["40"] },
-        { pertanyaan: "Pada (3 × 2) × 5, berapa langkah pertama?", alias: ["enam", "6"] },
-        { pertanyaan: "Hitung 2 × 4 × 3.", alias: ["8", "24"] },
-        { pertanyaan: "Berapa 30 × 2?", alias: ["enam puluh", "60"] },
-        { pertanyaan: "Hitung 42 × 3.", alias: ["120", "6", "126"] },
-        { pertanyaan: "Kata mana yang menandakan perkalian: setiap, sisa, atau berkurang?", alias: ["setiap"] },
-        { pertanyaan: "6 keranjang, setiap keranjang 9 jeruk. Tulis kalimatnya.", alias: ["6 x 9 = 54"] },
-        { pertanyaan: "Lima keranjang berisi 6 jeruk. Bentuk perkaliannya?", alias: ["5 x 6"] },
-        { pertanyaan: "Pasangkan penjumlahan berulang dengan perkaliannya.", alias: ["4 x 3", "5 x 4", "2 x 7"] },
-        { pertanyaan: "Susun 6 × 7 = 42.", alias: ["6", "7", "42"] },
-        { pertanyaan: "Periksa tiga pernyataan perkalian.", alias: ["benar", "salah"] },
-        { pertanyaan: "Mana yang hasilnya berbeda: 6 × 7, 7 × 6, 8 × 5, atau 42?", alias: ["40"] },
+        { pertanyaan: "5 ikat, tiap ikat 4 balon. Ucapkan bentuk kalinya dan hasilnya.", alias: ["20"] },
+        { pertanyaan: "Tulis 3 + 3 + 3 + 3 dan bentuk kalinya.", alias: ["12"] },
+        { pertanyaan: "8 × 6 dan 6 × 8. Ucapkan hasilnya.", alias: ["48", "sama"] },
+        { pertanyaan: "Tulis 9 × 5 dan 5 × 9 beserta hasilnya.", alias: ["45"] },
+        { pertanyaan: "(2 × 5) × 3. Ucapkan hasil dalam kurung dan hasil akhir.", alias: ["10", "30"] },
+        { pertanyaan: "Tulis satu langkah 4 × 2 × 5 dan hasilnya.", alias: ["40"] },
+        { pertanyaan: "12 × 4. Ucapkan hasilnya.", alias: ["48"] },
+        { pertanyaan: "14 × 3. Tulis hasil puluhan, satuan, dan jumlah.", alias: ["30", "12", "42"] },
+        { pertanyaan: "7 anak, masing-masing 4 balon. Ucapkan hasilnya.", alias: ["28"] },
+        { pertanyaan: "9 ikat, tiap ikat 6 balon. Tulis kalimatnya.", alias: ["54"] },
+        { pertanyaan: "4 ikat berisi 6. Bentuk kalinya?", alias: ["4 x 6"] },
+        { pertanyaan: "Pasangkan 5 × 4, 6 × 6, 7 × 3, dan 8 × 8.", alias: ["20", "36", "21", "64"] },
+        { pertanyaan: "Susun 16, 24, 35, dan 42.", alias: ["16", "24", "35", "42"] },
+        { pertanyaan: "Periksa tiga pernyataan.", alias: ["benar", "salah"] },
+        { pertanyaan: "Mana yang hasilnya bukan 18?", alias: ["20"] },
       ],
       voice: [
         [
-          "Perkalian adalah cara cepat menjumlahkan angka yang sama berulang kali.",
-          "Dua bilangan boleh dibalik, hasilnya sama. Tiga bilangan boleh dikelompokkan berbeda.",
-          "Bilangan dua angka dipecah jadi puluhan dan satuan. Kata setiap menandakan perkalian.",
+          "Hari Minggu di kios balon taman. Ikatnya berisi jumlah yang sama.",
+          "Perkalian adalah cara cepat menjumlahkan angka yang sama. Hasilnya sampai 100.",
         ],
       ],
     },
     {
       kode: "B",
       judul: "B. Infografis",
-      pengantar: "Bentuk pendek, sifat pertukaran, sifat pengelompokan, dan pecahan dua angka.",
+      pengantar: "Papan kios: contoh, cara, dan hasil sampai 100.",
       labelDaftar: "Lima papan perkalian",
       kolom: 1,
       item: [
         {
-          nama: "Bentuk pendek",
-          singkat: "Kelompok kali isi",
-          uraian: "7 + 7 + 7 = 3 × 7 = 21.",
-          contoh: "Hitung berapa kali angkanya muncul.",
+          nama: "Penjumlahan berulang",
+          singkat: "Hitung kemunculan",
+          uraian: "4 + 4 + 4 + 4 + 4 = 5 × 4 = 20. Batas bab ini 10 × 10 = 100.",
+          contoh: "Jumlah kelompok kali isi tiap kelompok.",
         },
         {
-          nama: "Pertukaran",
-          singkat: "Balik posisi",
-          uraian: "9 × 4 = 4 × 9 = 36. 9 × 7 = 7 × 9 = 63.",
-          contoh: "Kalau lupa, balik posisinya.",
+          nama: "Sifat pertukaran",
+          singkat: "Dibalik tetap sama",
+          uraian: "7 × 8 = 56 dan 8 × 7 = 56.",
+          contoh: "Kalau hafalan macet, balik posisinya.",
         },
         {
-          nama: "Pengelompokan",
-          singkat: "Kurung dulu",
-          uraian: "(2 × 5) × 3 = 30 dan 2 × (5 × 3) = 30.",
-          contoh: "Pilih kelompok yang paling mudah.",
+          nama: "Sifat pengelompokan",
+          singkat: "Kurung berpindah",
+          uraian: "(5 × 2) × 4 = 40 dan 5 × (2 × 4) = 40.",
+          contoh: "Kerjakan yang di dalam kurung dulu.",
         },
         {
-          nama: "Dua angka",
-          singkat: "Pecah, kali, jumlah",
-          uraian: "34 × 2 = 60 + 8 = 68. 63 × 4 = 240 + 12 = 252.",
-          contoh: "Puluhan dikali, satuan dikali, lalu dijumlahkan.",
+          nama: "Perkalian dua angka",
+          singkat: "Pecah dulu",
+          uraian: "13 × 5 = 50 + 15 = 65. 24 × 3 = 60 + 12 = 72.",
+          contoh: "Puluhan dan satuan dikali terpisah.",
         },
         {
-          nama: "Kata kunci",
+          nama: "Soal cerita",
           singkat: "Setiap berarti kali",
-          uraian: "7 kotak, setiap kotak 8 pensil: 7 × 8 = 56. 9 meja, setiap meja 4 kursi: 9 × 4 = 36.",
-          contoh: "Setiap, tiap-tiap, per, masing-masing.",
+          uraian: "8 anak, tiap anak 7 balon: 8 × 7 = 56. 5 dus, tiap dus 8 balon: 5 × 8 = 40.",
+          contoh: "Setiap, tiap, dan masing-masing berarti kali.",
         },
       ],
       kuis: [
-        { pertanyaan: "Ucapkan bentuk perkalian 5 + 5 + 5 + 5 dan hasilnya.", alias: ["empat kali lima", "20"] },
-        { pertanyaan: "Tulis bentuk perkalian 6 + 6 + 6.", alias: ["3 x 6 = 18"] },
-        { pertanyaan: "Berapa hasil 6 × 9 dan 9 × 6?", alias: ["54", "lima puluh empat"] },
-        { pertanyaan: "Hitung 9 × 7 dan tulis bentuk pertukarannya.", alias: ["63", "7", "9"] },
-        { pertanyaan: "Pada (3 × 3) × 5, berapa langkah pertama?", alias: ["sembilan", "9"] },
-        { pertanyaan: "Hitung 2 × 6 × 4.", alias: ["12", "48"] },
-        { pertanyaan: "Berapa 50 × 3?", alias: ["150", "seratus lima puluh"] },
-        { pertanyaan: "Hitung 63 × 4.", alias: ["240", "12", "252"] },
-        { pertanyaan: "Kata masing-masing menandakan operasi apa?", alias: ["perkalian"] },
-        { pertanyaan: "9 meja, setiap meja 4 kursi. Tulis kalimatnya.", alias: ["9 x 4 = 36"] },
-        { pertanyaan: "Manakah yang hasilnya 42?", alias: ["6 x 7"] },
-        { pertanyaan: "Pasangkan soal dengan sifatnya.", alias: ["pertukaran", "pengelompokan"] },
-        { pertanyaan: "Urutkan hasil 12, 30, 56, dan 81.", alias: ["12", "30", "56", "81"] },
+        { pertanyaan: "6 + 6 + 6 + 6. Ucapkan bentuk kalinya dan hasilnya.", alias: ["24"] },
+        { pertanyaan: "Tulis 7 + 7 + 7 dan bentuk kalinya.", alias: ["21"] },
+        { pertanyaan: "7 × 8 dan 8 × 7. Ucapkan hasilnya.", alias: ["56", "sama"] },
+        { pertanyaan: "Tulis 6 × 9 dan 9 × 6 beserta hasilnya.", alias: ["54"] },
+        { pertanyaan: "(5 × 2) × 4. Ucapkan hasil dalam kurung dan hasil akhir.", alias: ["10", "40"] },
+        { pertanyaan: "Tulis satu langkah 3 × 3 × 2 dan hasilnya.", alias: ["18"] },
+        { pertanyaan: "13 × 5. Ucapkan tiga angka pecahannya.", alias: ["50", "15", "65"] },
+        { pertanyaan: "24 × 3. Tulis hasil puluhan, satuan, dan jumlah.", alias: ["60", "12", "72"] },
+        { pertanyaan: "6 baris, setiap baris 9 balon. Ucapkan hasilnya.", alias: ["54"] },
+        { pertanyaan: "5 dus, tiap dus 8 balon. Tulis kalimatnya.", alias: ["40"] },
+        { pertanyaan: "15 × 4 sama dengan?", alias: ["60"] },
+        { pertanyaan: "Pasangkan 12 × 3, 14 × 2, 11 × 5, dan 13 × 4.", alias: ["36", "28", "55", "52"] },
+        { pertanyaan: "Susun 18, 27, 32, dan 45.", alias: ["18", "27", "32", "45"] },
         { pertanyaan: "Periksa tiga pernyataan.", alias: ["benar", "salah"] },
-        { pertanyaan: "8 × 6 = 48 dan ⬜ × 8 = 48. Angka yang hilang?", alias: ["6"] },
+        { pertanyaan: "4 × 5 = 20. Maka 4 × 8 sama dengan?", alias: ["32"] },
       ],
       voice: [
         [
-          "Perkalian adalah cara cepat menjumlahkan angka yang sama. Jumlah kelompok dikali isi tiap kelompok.",
-          "Dua angka boleh bertukar posisi. Tiga angka boleh dikelompokkan berbeda.",
-          "Pecah bilangan dua angka, lalu kalikan terpisah. Kata setiap berarti kali.",
+          "Papan ini merangkum cara kali. Hitung berapa kali angka yang sama dijumlah.",
+          "Dua bilangan boleh ditukar. Tiga bilangan dikerjakan bertahap. Dua angka dipecah dulu.",
         ],
       ],
     },
     {
       kode: "C",
-      judul: "C. Kebun Stroberi Landak Bulat",
-      pengantar:
-        "Siswa menjadi kepala kebun. Sepuluh pos selesai, sepuluh keranjang terkumpul.",
-      labelDaftar: "Sepuluh pos panen",
+      judul: "C. Pos Balon Hulu",
+      pengantar: "Sepuluh soal pola: deret, angka hilang, analogi, dan mana yang beda.",
+      labelDaftar: "Sepuluh soal pola",
       kolom: 1,
       item: [
         {
-          nama: "Petak stroberi",
-          singkat: "Hitung dengan kali",
-          uraian:
-            "Level 1: 4 × 5 = 20. Level 2: 6 × 3 = 18. Level 3: 2 × 4 × 5 = 40. Level 4: 24 × 4 = 96. Level 5: 7 × 8 × 5 = 280 kg.",
-          contoh: "Salah hitung tidak mengurangi keranjang. Coba lagi.",
+          nama: "Soal pola",
+          singkat: "Deret dan yang beda",
+          uraian: "Cari angka berikutnya, angka yang hilang, atau hasil yang tidak cocok. Sepuluh pos, sepuluh stempel.",
+          contoh: "Salah boleh diulang. Stempel tidak berkurang.",
         },
       ],
-      kuis: [
-        ...kuisDariMisi(MISI_MTK3_PERKALIAN),
-        { pertanyaan: "Ada 6 baris, tiap baris 7 pohon. Bentuk perkaliannya?", alias: ["6 x 7"] },
-        { pertanyaan: "Berapa 8 × 7?", alias: ["56"] },
-        { pertanyaan: "Pasangkan penjumlahan berulang dengan perkaliannya.", alias: ["24", "30", "12"] },
-        { pertanyaan: "Urutkan 9 × 3, 5 × 8, 7 × 7, dan 4 × 4.", alias: ["16", "27", "40", "49"] },
-        { pertanyaan: "Periksa tiga pernyataan kebun.", alias: ["benar", "salah"] },
-        { pertanyaan: "4 × 9 dan 9 × 4. Apa yang bisa dikatakan?", alias: ["sama"] },
-        { pertanyaan: "Berapa 32 × 3?", alias: ["96"] },
-        { pertanyaan: "Deret naik 6: 12, 18, 24, berikutnya?", alias: ["30"] },
-        { pertanyaan: "Sembilan baris, setiap baris delapan pohon. Sebutkan perkalian dan hasilnya.", alias: ["72", "tujuh puluh dua"] },
-        { pertanyaan: "Hitung 47 × 6 dengan langkah.", alias: ["240", "42", "282"] },
-      ],
+      kuis: kuisDariMisi(MISI_MTK3_PERKALIAN),
       voice: [
         [
-          "Kalian menjadi kepala kebun stroberi. Setiap petak punya baris dan pohon yang sama banyak.",
-          "Hitung cepat dengan perkalian. Kalau tepat, kalian mendapat keranjang stroberi.",
-          "Sepuluh pos selesai, sepuluh keranjang terkumpul, kebun besar terbuka.",
+          "Sepuluh soal pola. Cari angka berikutnya, angka yang hilang, atau yang beda.",
+          "Pilih satu pos, lalu jawab. Sepuluh stempel membuka kios balon.",
         ],
       ],
     },
@@ -255,29 +238,29 @@ D) Ketiganya sama`,
       kolom: 1,
       item: [
         {
-          nama: "Dua bentuk dan dua angka",
+          nama: "Sifat dan pecahan",
           singkat: "Jejak hitung",
-          uraian: "Tujuh kelompok berisi 8: 7 × 8 = 56. 56 × 4 = 200 + 24 = 224.",
-          contoh: "Pecah puluhan dan satuan, lalu jumlahkan.",
+          uraian: "9 × 5 sama dengan 5 × 9. 18 × 4 = 40 + 32 = 72. (3 × 4) × 2 = 24.",
+          contoh: "Hitung dulu, baru bandingkan.",
         },
         {
-          nama: "Tiga petak",
+          nama: "Tiga kios",
           singkat: "Bandingkan",
-          uraian: "Petak A 48, petak B 63, petak C 40. Selisih terbanyak dan tersedikit adalah 23.",
-          contoh: "Hitung dulu, baru bandingkan.",
+          uraian: "Kios A 48, kios B 45, kios C 42. Kios A paling banyak.",
+          contoh: "Kalikan tiap kios, lalu cari yang terbesar.",
         },
       ],
       kuis: [
-        { pertanyaan: "Tujuh kelompok berisi 8. Tulis penjumlahan dan perkaliannya.", alias: ["56"] },
-        { pertanyaan: "Bentuk mana yang sama dengan 9 × 6?", alias: ["6 x 9"] },
-        { pertanyaan: "Ucapkan hasil 7 × 8.", alias: ["56", "lima puluh enam"] },
-        { pertanyaan: "Apakah perkalian selalu lebih besar dari penjumlahan?", alias: ["salah"] },
-        { pertanyaan: "Pasangkan 8 × 8, 5 × 9, dan 6 × 8.", alias: ["64", "45", "48"] },
-        { pertanyaan: "Hitung 56 × 4.", alias: ["200", "24", "224"] },
-        { pertanyaan: "⬜ × 7 = 63. Angka yang hilang?", alias: ["9"] },
-        { pertanyaan: "Urutkan hasil 27, 28, 48, dan 81.", alias: ["27", "28", "48", "81"] },
-        { pertanyaan: "6 × 8 dan 8 × 6. Sebutkan hasil dan nama sifatnya.", alias: ["48", "pertukaran"] },
-        { pertanyaan: "Tiga petak: 6 × 8, 7 × 9, dan 5 × 8. Tulis jumlah, petak terbanyak, dan selisihnya.", alias: ["48", "63", "40", "23"] },
+        { pertanyaan: "6 kelompok berisi 4. Tulis bentuk kalinya.", alias: ["24"] },
+        { pertanyaan: "9 × 5 dan 5 × 9. Apa yang bisa dikatakan?", alias: ["sama"] },
+        { pertanyaan: "(3 × 4) × 2. Ucapkan langkah dan hasil.", alias: ["12", "24"] },
+        { pertanyaan: "Mana yang hasilnya bukan 36?", alias: ["35"] },
+        { pertanyaan: "Pasangkan 8 × 7, 9 × 8, 6 × 8, dan 7 × 9.", alias: ["56", "72", "48", "63"] },
+        { pertanyaan: "18 × 4. Tulis tiga angka pecahannya.", alias: ["40", "32", "72"] },
+        { pertanyaan: "Susun 21, 28, 35, dan 42.", alias: ["21", "28", "35", "42"] },
+        { pertanyaan: "Periksa tiga pernyataan.", alias: ["benar", "salah"] },
+        { pertanyaan: "7 ikat berisi 8. Ucapkan hasilnya.", alias: ["56"] },
+        { pertanyaan: "Kios A 6 × 8, B 9 × 5, C 7 × 6. Mana yang paling banyak?", alias: ["48", "kios a"] },
       ],
       voice: [
         [

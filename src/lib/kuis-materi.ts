@@ -198,7 +198,12 @@ export function daftarIdKuisMateri(
     return idKuisDariModulResmi(MODUL_MTK3_BAB2);
   }
   if (adalahMtk3Perkalian(kelas, mapel, materi)) {
-    return idKuisDariModulResmi(MODUL_MTK3_PERKALIAN);
+    return [
+      ...MODUL_MTK3_PERKALIAN.kartu.flatMap((kartu) =>
+        kartu.kuis.map((_, indeks) => idKuisKartuResmi(MODUL_MTK3_PERKALIAN.id, kartu.kode, indeks)),
+      ),
+      idKuisTulisKartu(MODUL_MTK3_PERKALIAN.id, "C"),
+    ];
   }
   if (adalahMtk3Pembagian(kelas, mapel, materi)) {
     return idKuisDariModulResmi(MODUL_MTK3_PEMBAGIAN);

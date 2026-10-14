@@ -192,7 +192,7 @@ const SUBBAB_BUKU_SISWA: Record<string, Record<string, Record<string, string[]>>
         "Sifat pengelompokan",
         "Perkalian dua angka",
         "Soal cerita perkalian",
-        "Kebun Stroberi Landak Bulat",
+        "Pos Balon Hulu",
         "Poin penting",
         "Lembar evaluasi siswa",
       ],

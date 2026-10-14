@@ -178,3 +178,59 @@ export function kasusPetak(teks: string): boolean {
     (/(?:^|\s)b(?:\s|$)/.test(` ${kalimat} `) && /paling|banyak/.test(kalimat));
   return angkaLengkap && sebutB;
 }
+
+const SATUAN = "satu|dua|tiga|empat|lima|enam|tujuh|delapan|sembilan";
+
+export function tepat(teks: string, angka: string, ejaan: string): boolean {
+  if (angkaUtuh(teks, angka)) return true;
+  const kalimat = biasa(teks);
+  if (!kalimat.includes(ejaan)) return false;
+  if (ejaan.split(" ").length >= 3 || ejaan.endsWith("belas")) return true;
+  if (ejaan.endsWith("puluh")) {
+    return !new RegExp(`${ejaan}\\s+(?:${SATUAN})`).test(kalimat);
+  }
+  return new RegExp(`(?:^|\\s)${ejaan}(?!\\s+(?:puluh|belas|ratus|ribu))(?:\\s|$)`).test(` ${kalimat} `);
+}
+
+export function ucapKali(
+  teks: string,
+  a: string,
+  ejaanA: string,
+  b: string,
+  ejaanB: string,
+  hasil: string,
+  ejaanHasil: string,
+): boolean {
+  return tepat(teks, a, ejaanA) && tepat(teks, b, ejaanB) && tepat(teks, hasil, ejaanHasil) && adaKali(teks);
+}
+
+export function hasilDanSama(teks: string, angka: string, ejaan: string): boolean {
+  return tepat(teks, angka, ejaan) && jawabSama(teks);
+}
+
+export function semuaFrasa(teks: string, daftar: [string, string][]): boolean {
+  const kalimat = biasa(teks);
+  return daftar.every(([angka, ejaan]) => angkaUtuh(teks, angka) || kalimat.includes(ejaan));
+}
+
+export function salahSatuLalu(
+  teks: string,
+  langkah: [string, string][],
+  hasil: [string, string],
+): boolean {
+  return langkah.some(([angka, ejaan]) => tepat(teks, angka, ejaan)) && tepat(teks, hasil[0], hasil[1]);
+}
+
+export function duaSusunan(teks: string, a: string, b: string, hasil: string): boolean {
+  const rapat = teks.replace(/\s/g, "");
+  const tanda = "[×xX*]";
+  return (
+    new RegExp(`${a}${tanda}${b}`).test(rapat) &&
+    new RegExp(`${b}${tanda}${a}`).test(rapat) &&
+    angkaUtuh(teks, hasil)
+  );
+}
+
+export function ulangKali(teks: string, potongan: string, a: string, b: string, hasil: string): boolean {
+  return teks.replace(/\s/g, "").includes(potongan) && kalimatKali(teks, a, b, hasil);
+}
