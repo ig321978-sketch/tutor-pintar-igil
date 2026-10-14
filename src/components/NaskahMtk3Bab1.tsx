@@ -62,12 +62,8 @@ function cuplikanKalimat(kalimat: string[]): CuplikanVoiceMateri[] {
   }));
 }
 
-function KartuBingkai({ children, latar = "bg-white" }: { children: ReactNode; latar?: string }) {
-  return (
-    <section className={`rounded-[1.75rem] border-4 border-[#1C01A5]/15 ${latar} px-4 py-5 shadow-sm sm:px-6 sm:py-6`}>
-      {children}
-    </section>
-  );
+function KartuBingkai({ children }: { children: ReactNode; latar?: string }) {
+  return <section className="space-y-4">{children}</section>;
 }
 
 const WARNA_DIALOG: Record<string, string> = {
@@ -145,7 +141,6 @@ function Umpan({ status, teks }: { status: StatusJawabanKuis; teks: string }) {
 
 function Adegan({
   judul,
-  warna,
   src,
   alt,
   kelas,
@@ -155,7 +150,6 @@ function Adegan({
   children,
 }: {
   judul: string;
-  warna: string;
   src: string;
   alt: string;
   kelas?: string;
@@ -165,16 +159,14 @@ function Adegan({
   children: ReactNode;
 }) {
   return (
-    <article className={`rounded-2xl border-2 px-4 py-3 ${warna}`}>
+    <section className="space-y-3">
       <p className="text-xs font-black uppercase tracking-wide text-[#1C01A5]">{judul}</p>
-      <div className="mt-3">
-        <TombolVoiceMateriPai1 kelas={kelas} kelamin={kelamin} cuplikan={cuplikanKalimat(penjelasan)} />
-      </div>
+      <TombolVoiceMateriPai1 kelas={kelas} kelamin={kelamin} cuplikan={cuplikanKalimat(penjelasan)} />
       {simbol ? <PanduanIkon butir={simbol} /> : null}
       {/* eslint-disable-next-line @next/next/no-img-element */}
-      <img src={src} alt={alt} className="mt-3 w-full rounded-xl border border-[#1C01A5]/10 bg-white object-cover" />
-      <div className="mt-3 space-y-2">{children}</div>
-    </article>
+      <img src={src} alt={alt} className="w-full rounded-xl border border-[#1C01A5]/10 bg-white object-cover" />
+      <div className="space-y-2">{children}</div>
+    </section>
   );
 }
 
@@ -572,7 +564,6 @@ function KartuA({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminGuru }) {
       <div className="mt-4 space-y-4">
         <Adegan
           judul="Sub-bab 1 — Membaca bilangan ribuan"
-          warna="border-sky-200 bg-sky-50/60"
           src="/doodle-mtk/mtk-3-bab1-sub1.jpg"
           alt="Lapangan sekolah dengan papan skor 4725. Aldi memegang catatan, Naya memegang stopwatch, dan panda berdiri di samping papan."
           kelas={kelas}
@@ -618,7 +609,6 @@ function KartuA({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminGuru }) {
 
         <Adegan
           judul="Sub-bab 2 — Nilai tempat ribuan sampai satuan"
-          warna="border-indigo-200 bg-indigo-50/60"
           src="/doodle-mtk/mtk-3-bab1-sub2.jpg"
           alt="Papan tulis bertuliskan 6482. Angka 4 berjalan ke rumah yang berbeda dan memunculkan balon 4, 40, 400, dan 4000."
           kelas={kelas}
@@ -664,7 +654,6 @@ function KartuA({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminGuru }) {
 
         <Adegan
           judul="Sub-bab 3 — Membandingkan bilangan"
-          warna="border-amber-200 bg-amber-50/70"
           src="/doodle-mtk/mtk-3-bab1-sub3.jpg"
           alt="Dua bilangan berdiri di atas timbangan. Papan skor menunjukkan 3842 dan 3291, dengan penggaris pemeriksaan dari kiri ke kanan."
           kelas={kelas}
@@ -707,7 +696,6 @@ function KartuA({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminGuru }) {
 
         <Adegan
           judul="Sub-bab 4 — Mengurutkan bilangan"
-          warna="border-emerald-200 bg-emerald-50/70"
           src="/doodle-mtk/mtk-3-bab1-sub4.jpg"
           alt="Lima anak tangga dengan bilangan, panah naik dan panah turun. Aldi memasang kartu nama di papan hasil lomba."
           kelas={kelas}
@@ -750,7 +738,6 @@ function KartuA({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminGuru }) {
 
         <Adegan
           judul="Sub-bab 5 — Membaca bilangan yang mengandung angka nol"
-          warna="border-violet-200 bg-violet-50/70"
           src="/doodle-mtk/mtk-3-bab1-sub5.jpg"
           alt="Dua papan skor berdampingan. Satu rumah angka kosong berkedip pelan."
           kelas={kelas}
@@ -883,7 +870,6 @@ function KartuB({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminGuru }) {
       <div className="mt-4 space-y-4">
         <Adegan
           judul="Sub-bab 1 — Membaca dan menulis bilangan ribuan"
-          warna="border-sky-200 bg-white"
           src="/doodle-mtk/mtk-3-bab1-sub1.jpg"
           alt="Empat rumah angka berjajar untuk bilangan ribuan."
           kelas={kelas}
@@ -936,7 +922,6 @@ function KartuB({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminGuru }) {
 
         <Adegan
           judul="Sub-bab 2 — Nilai tempat"
-          warna="border-indigo-200 bg-white"
           src="/doodle-mtk/mtk-3-bab1-sub2.jpg"
           alt="Tangga nilai tempat. Satu langkah ke kiri dikali sepuluh."
           kelas={kelas}
@@ -981,7 +966,6 @@ function KartuB({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminGuru }) {
 
         <Adegan
           judul="Sub-bab 3 — Membandingkan bilangan"
-          warna="border-amber-200 bg-white"
           src="/doodle-mtk/mtk-3-bab1-sub3.jpg"
           alt="Empat kotak pemeriksaan dari ribuan sampai satuan, dengan panah dari kiri ke kanan."
           kelas={kelas}
@@ -1029,7 +1013,6 @@ function KartuB({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminGuru }) {
 
         <Adegan
           judul="Sub-bab 4 — Mengurutkan bilangan"
-          warna="border-emerald-200 bg-white"
           src="/doodle-mtk/mtk-3-bab1-sub4.jpg"
           alt="Bilangan dimasukkan ke kantong ribuan, lalu diurutkan di dalam kantong."
           kelas={kelas}
@@ -1069,7 +1052,6 @@ function KartuB({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminGuru }) {
 
         <Adegan
           judul="Sub-bab 5 — Bilangan dengan angka nol"
-          warna="border-violet-200 bg-white"
           src="/doodle-mtk/mtk-3-bab1-sub5.jpg"
           alt="Dua bilangan dengan rumah kosong. Posisi angka delapan berbeda."
           kelas={kelas}

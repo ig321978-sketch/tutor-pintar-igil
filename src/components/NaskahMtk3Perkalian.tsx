@@ -1,6 +1,7 @@
 "use client";
 
 import HasilJawabanKuis from "@/components/HasilJawabanKuis";
+import PetaContoh from "@/components/PetaContoh";
 import KartuPoinPenting from "@/components/KartuPoinPenting";
 import { useKuisMateri } from "@/components/KuisMateriContext";
 import MisiPenjagaKebun from "@/components/MisiPenjagaKebun";
@@ -40,12 +41,8 @@ function cuplikanKalimat(kalimat: string[]): CuplikanVoiceMateri[] {
   }));
 }
 
-function KartuBingkai({ children, latar = "bg-white" }: { children: ReactNode; latar?: string }) {
-  return (
-    <section className={`rounded-[1.75rem] border-4 border-[#1C01A5]/15 ${latar} px-4 py-5 shadow-sm sm:px-6 sm:py-6`}>
-      {children}
-    </section>
-  );
+function KartuBingkai({ children }: { children: ReactNode; latar?: string }) {
+  return <section className="space-y-4">{children}</section>;
 }
 
 const WARNA_DIALOG: Record<string, string> = {
@@ -513,15 +510,7 @@ function KuisBenarSalah({
   );
 }
 
-function Langkah({ butir }: { butir: string[] }) {
-  return (
-    <ol className="list-decimal space-y-1 pl-5 text-sm font-semibold text-slate-700">
-      {butir.map((teks) => (
-        <li key={teks}>{teks}</li>
-      ))}
-    </ol>
-  );
-}
+
 
 function Ikat({ jumlah, isi, ikon = "🎈" }: { jumlah: number; isi: number; ikon?: string }) {
   return (
@@ -966,7 +955,7 @@ function KartuB({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminGuru }) {
       <KepalaKartu
         ikon="📊🦉"
         judul={kartu.judul}
-        anak="Papan kios · contoh dan cara"
+        anak="Peta kios · contoh dan cara"
         kelas={kelas}
         kelamin={kelamin}
         cuplikan={cuplikanKalimat(kartu.voice[0] ?? [])}
@@ -980,9 +969,16 @@ function KartuB({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminGuru }) {
           kelamin={kelamin}
           penjelasan={["Jumlah kelompok kali isi tiap kelompok. Hasil bab ini sampai 100."]}
         >
-          <p className="text-sm font-black text-[#1C01A5]">Contoh: 4 + 4 + 4 + 4 + 4</p>
-          <Ikat jumlah={5} isi={4} />
-          <Langkah butir={["Angka 4 muncul 5 kali.", "Bentuknya 5 × 4.", "5 × 4 = 20."]} />
+          <PetaContoh
+            pusat="5 × 4"
+            cabang={[
+              { ikon: "🎈", judul: "Angka 4", isi: "muncul 5 kali" },
+              { ikon: "✖️", judul: "Bentuk", isi: "5 × 4" },
+              { ikon: "⭐", judul: "Hasil", isi: "20" },
+            ]}
+            kolom={["Bentuk", "Hitung", "Hasil"]}
+            baris={[["4 + 4 + 4 + 4 + 4", "5 × 4", "20"]]}
+          />
           <Rumus baris={[{ teks: "5 × 4 = 20", hasil: true }]} />
           <p className="text-sm font-black text-emerald-800">Batas bab ini: 10 × 10 = 100.</p>
           <KuisSuara
@@ -1013,8 +1009,19 @@ function KartuB({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminGuru }) {
           kelamin={kelamin}
           penjelasan={["a × b sama dengan b × a. Kalau hafalan macet, balik posisinya."]}
         >
-          <p className="text-sm font-black text-[#1C01A5]">Contoh: 7 × 8</p>
-          <Langkah butir={["7 × 8 = 56.", "Dibalik jadi 8 × 7.", "8 × 7 juga 56."]} />
+          <PetaContoh
+            pusat="Tukar"
+            cabang={[
+              { ikon: "🎈", judul: "7 × 8", isi: "56" },
+              { ikon: "🔄", judul: "Balik", isi: "8 × 7" },
+              { ikon: "⭐", judul: "Hasil", isi: "tetap 56" },
+            ]}
+            kolom={["Susunan", "Hitung", "Hasil"]}
+            baris={[
+              ["7 × 8", "7 × 8", "56"],
+              ["8 × 7", "8 × 7", "56"],
+            ]}
+          />
           <Rumus
             baris={[
               { teks: "7 × 8 = 56", hasil: true },
@@ -1049,8 +1056,19 @@ function KartuB({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminGuru }) {
           kelamin={kelamin}
           penjelasan={["Kerjakan yang di dalam kurung dulu. Kurung boleh berpindah."]}
         >
-          <p className="text-sm font-black text-[#1C01A5]">Contoh: 5 × 2 × 4</p>
-          <Langkah butir={["(5 × 2) × 4 = 10 × 4 = 40.", "5 × (2 × 4) = 5 × 8 = 40."]} />
+          <PetaContoh
+            pusat="Kurung"
+            cabang={[
+              { ikon: "(", judul: "Kiri dulu", isi: "5 × 2 = 10" },
+              { ikon: ")", judul: "Kanan dulu", isi: "2 × 4 = 8" },
+              { ikon: "⭐", judul: "Hasil", isi: "tetap 40" },
+            ]}
+            kolom={["Cara", "Hitung", "Hasil"]}
+            baris={[
+              ["kurung kiri", "(5 × 2) × 4", "40"],
+              ["kurung kanan", "5 × (2 × 4)", "40"],
+            ]}
+          />
           <Rumus
             baris={[
               { teks: "(5 × 2) × 4 = 40", hasil: true },
@@ -1094,8 +1112,20 @@ function KartuB({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminGuru }) {
           kelamin={kelamin}
           penjelasan={["Mulai dari satuan. Tulis angka belakang. Angka depannya naik ke kiri sebagai tanda tambah."]}
         >
-          <p className="text-sm font-black text-[#1C01A5]">Contoh: 17 × 4</p>
-          <Langkah butir={["7 × 4 = 28. Tulis 8. Naik 2+.", "1 × 4 = 4. Tambah 2, jadi 6.", "Hasilnya 68."]} />
+          <PetaContoh
+            pusat="17 × 4"
+            cabang={[
+              { ikon: "7", judul: "Satuan", isi: "7 × 4 = 28" },
+              { ikon: "2+", judul: "Naik", isi: "tulis 8" },
+              { ikon: "1", judul: "Puluhan", isi: "4 + 2 = 6" },
+            ]}
+            kolom={["Rak", "Hitung", "Tulis"]}
+            baris={[
+              ["satuan", "7 × 4 = 28", "8, naik 2"],
+              ["puluhan", "1 × 4 + 2", "6"],
+              ["hasil", "17 × 4", "68"],
+            ]}
+          />
           <KaliSusun atas={17} kali={4} jejak />
           <KuisSuara
             id={idKuis("B", 6)}
@@ -1125,9 +1155,16 @@ function KartuB({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminGuru }) {
           kelamin={kelamin}
           penjelasan={["Cari kata setiap, tiap, atau masing-masing. Itu tanda perkalian."]}
         >
-          <p className="text-sm font-black text-[#1C01A5]">Contoh: 8 anak, tiap anak 7 balon</p>
-          <Ikat jumlah={8} isi={7} />
-          <Langkah butir={["Tiap berarti kali.", "8 × 7 = 56."]} />
+          <PetaContoh
+            pusat="Tiap"
+            cabang={[
+              { ikon: "🧒", judul: "8 anak", isi: "jumlah kelompok" },
+              { ikon: "🎈", judul: "7 balon", isi: "isi tiap anak" },
+              { ikon: "✖️", judul: "Tiap", isi: "berarti kali" },
+            ]}
+            kolom={["Cerita", "Hitung", "Hasil"]}
+            baris={[["8 anak, tiap 7 balon", "8 × 7", "56"]]}
+          />
           <Rumus baris={[{ teks: "8 × 7 = 56", hasil: true }]} />
           <KuisSuara
             id={idKuis("B", 8)}

@@ -1,6 +1,7 @@
 "use client";
 
 import HasilJawabanKuis from "@/components/HasilJawabanKuis";
+import PetaContoh from "@/components/PetaContoh";
 import KartuPoinPenting from "@/components/KartuPoinPenting";
 import { useKuisMateri } from "@/components/KuisMateriContext";
 import MisiPenjagaKebun from "@/components/MisiPenjagaKebun";
@@ -41,12 +42,8 @@ function cuplikanKalimat(kalimat: string[]): CuplikanVoiceMateri[] {
   }));
 }
 
-function KartuBingkai({ children, latar = "bg-white" }: { children: ReactNode; latar?: string }) {
-  return (
-    <section className={`rounded-[1.75rem] border-4 border-[#1C01A5]/15 ${latar} px-4 py-5 shadow-sm sm:px-6 sm:py-6`}>
-      {children}
-    </section>
-  );
+function KartuBingkai({ children }: { children: ReactNode; latar?: string }) {
+  return <section className="space-y-4">{children}</section>;
 }
 
 const WARNA_DIALOG: Record<string, string> = {
@@ -523,16 +520,6 @@ function Banding({ kiri, kanan }: { kiri: number; kanan: number }) {
   );
 }
 
-function Langkah({ butir }: { butir: string[] }) {
-  return (
-    <ol className="list-decimal space-y-1 pl-5 text-sm font-semibold text-slate-700">
-      {butir.map((teks) => (
-        <li key={teks}>{teks}</li>
-      ))}
-    </ol>
-  );
-}
-
 const PASANGAN_A = ["1/2", "1/3", "1/4", "2/4"];
 const PASANGAN_B = ["setengah", "sepertiga", "seperempat", "dua per empat"];
 const PASANGAN_D = ["1/2", "1/3", "1/4", "2/3"];
@@ -790,7 +777,7 @@ function KartuB({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminGuru }) {
       <KepalaKartu
         ikon="📊🦉"
         judul={kartu.judul}
-        anak="Papan kertas lipat · contoh dan cara"
+        anak="Peta kertas lipat · contoh dan cara"
         kelas={kelas}
         kelamin={kelamin}
         cuplikan={cuplikanKalimat(kartu.voice[0] ?? [])}
@@ -804,9 +791,16 @@ function KartuB({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminGuru }) {
           kelamin={kelamin}
           penjelasan={["Bagi keseluruhan jadi dua sama besar. Satu bagiannya 1/2."]}
         >
-          <p className="text-sm font-black text-[#1C01A5]">Contoh: satu dari dua</p>
-          <Bilah bagian={2} warna={1} />
-          <Langkah butir={["Ada 2 bagian sama besar.", "1 bagian diwarnai.", "Pecahannya 1/2."]} />
+          <PetaContoh
+            pusat="1/2"
+            cabang={[
+              { ikon: "📄", judul: "Semua", isi: "2 bagian" },
+              { ikon: "🎨", judul: "Diambil", isi: "1 bagian" },
+              { ikon: "½", judul: "Nama", isi: "setengah" },
+            ]}
+            kolom={["Bagian", "Diwarnai", "Pecahan"]}
+            baris={[["2 sama besar", "1", "1/2"]]}
+          />
           <KuisSuara
             id={idKuis("B", 0)}
             pertanyaan="Pita dibagi dua sama besar. Satu bagian diambil. Ucapkan pecahannya."
@@ -835,9 +829,16 @@ function KartuB({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminGuru }) {
           kelamin={kelamin}
           penjelasan={["Bagi keseluruhan jadi tiga sama besar. Satu bagiannya 1/3."]}
         >
-          <p className="text-sm font-black text-[#1C01A5]">Contoh: satu dari tiga</p>
-          <Bilah bagian={3} warna={1} />
-          <Langkah butir={["Ada 3 bagian sama besar.", "1 bagian diwarnai.", "Pecahannya 1/3."]} />
+          <PetaContoh
+            pusat="1/3"
+            cabang={[
+              { ikon: "📄", judul: "Semua", isi: "3 bagian" },
+              { ikon: "🎨", judul: "Diambil", isi: "1 bagian" },
+              { ikon: "⅓", judul: "Nama", isi: "sepertiga" },
+            ]}
+            kolom={["Bagian", "Diwarnai", "Pecahan"]}
+            baris={[["3 sama besar", "1", "1/3"]]}
+          />
           <KuisSuara
             id={idKuis("B", 2)}
             pertanyaan="Pita dibagi tiga sama besar. Satu bagian diambil. Ucapkan pecahannya."
@@ -866,9 +867,16 @@ function KartuB({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminGuru }) {
           kelamin={kelamin}
           penjelasan={["Bagi keseluruhan jadi empat sama besar. Satu bagiannya 1/4."]}
         >
-          <p className="text-sm font-black text-[#1C01A5]">Contoh: satu dari empat</p>
-          <Bilah bagian={4} warna={1} />
-          <Langkah butir={["Ada 4 bagian sama besar.", "1 bagian diwarnai.", "Pecahannya 1/4."]} />
+          <PetaContoh
+            pusat="1/4"
+            cabang={[
+              { ikon: "📄", judul: "Semua", isi: "4 bagian" },
+              { ikon: "🎨", judul: "Diambil", isi: "1 bagian" },
+              { ikon: "¼", judul: "Nama", isi: "seperempat" },
+            ]}
+            kolom={["Bagian", "Diwarnai", "Pecahan"]}
+            baris={[["4 sama besar", "1", "1/4"]]}
+          />
           <KuisSuara
             id={idKuis("B", 4)}
             pertanyaan="Pita dibagi empat sama besar. Satu bagian diambil. Ucapkan pecahannya."
@@ -897,9 +905,19 @@ function KartuB({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminGuru }) {
           kelamin={kelamin}
           penjelasan={["Pembilang menghitung bagian yang diambil. Penyebut menghitung semua bagian."]}
         >
-          <p className="text-sm font-black text-[#1C01A5]">Contoh: 1/2</p>
-          <Langkah butir={["1 di atas: pembilang.", "2 di bawah: penyebut.", "Satu bagian dari dua bagian sama besar."]} />
-          <Papan anak={"1/2\npembilang 1\npenyebut 2"} />
+          <PetaContoh
+            pusat="1/2"
+            cabang={[
+              { ikon: "⬆️", judul: "Atas", isi: "pembilang 1" },
+              { ikon: "⬇️", judul: "Bawah", isi: "penyebut 2" },
+              { ikon: "📄", judul: "Arti", isi: "1 dari 2" },
+            ]}
+            kolom={["Tempat", "Nama", "Angka"]}
+            baris={[
+              ["atas", "pembilang", "1"],
+              ["bawah", "penyebut", "2"],
+            ]}
+          />
           <KuisSuara
             id={idKuis("B", 6)}
             pertanyaan="Pada 1/2, ucapkan pecahannya, lalu mana pembilang dan mana penyebut."
@@ -928,9 +946,20 @@ function KartuB({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminGuru }) {
           kelamin={kelamin}
           penjelasan={["Bandingkan hanya jika keseluruhannya sama besar."]}
         >
-          <p className="text-sm font-black text-[#1C01A5]">Contoh: 1/2, 1/3, dan 1/4</p>
-          <Langkah butir={["Kertasnya sama besar.", "1/2 paling besar.", "1/4 paling kecil.", "1/2 > 1/3 > 1/4."]} />
-          <Papan anak={"1/2  >  1/3  >  1/4"} />
+          <PetaContoh
+            pusat="Banding"
+            cabang={[
+              { ikon: "½", judul: "1/2", isi: "paling besar" },
+              { ikon: "⅓", judul: "1/3", isi: "di tengah" },
+              { ikon: "¼", judul: "1/4", isi: "paling kecil" },
+            ]}
+            kolom={["Pecahan", "Bagian", "Urutan"]}
+            baris={[
+              ["1/2", "1 dari 2", "besar"],
+              ["1/3", "1 dari 3", "tengah"],
+              ["1/4", "1 dari 4", "kecil"],
+            ]}
+          />
           <KuisSuara
             id={idKuis("B", 8)}
             pertanyaan="1/3 dan 1/4 dari kertas yang sama. Ucapkan mana yang lebih besar."

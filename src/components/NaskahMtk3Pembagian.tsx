@@ -1,6 +1,7 @@
 "use client";
 
 import HasilJawabanKuis from "@/components/HasilJawabanKuis";
+import PetaContoh from "@/components/PetaContoh";
 import KartuPoinPenting from "@/components/KartuPoinPenting";
 import { useKuisMateri } from "@/components/KuisMateriContext";
 import MisiPenjagaKebun from "@/components/MisiPenjagaKebun";
@@ -39,12 +40,8 @@ function cuplikanKalimat(kalimat: string[]): CuplikanVoiceMateri[] {
   }));
 }
 
-function KartuBingkai({ children, latar = "bg-white" }: { children: ReactNode; latar?: string }) {
-  return (
-    <section className={`rounded-[1.75rem] border-4 border-[#1C01A5]/15 ${latar} px-4 py-5 shadow-sm sm:px-6 sm:py-6`}>
-      {children}
-    </section>
-  );
+function KartuBingkai({ children }: { children: ReactNode; latar?: string }) {
+  return <section className="space-y-4">{children}</section>;
 }
 
 const WARNA_DIALOG: Record<string, string> = {
@@ -528,16 +525,6 @@ function Gelas({ jumlah, isi, ikon = "🍧" }: { jumlah: number; isi: number; ik
   );
 }
 
-function Langkah({ butir }: { butir: string[] }) {
-  return (
-    <ol className="list-decimal space-y-1 pl-5 text-sm font-semibold text-slate-700">
-      {butir.map((teks) => (
-        <li key={teks}>{teks}</li>
-      ))}
-    </ol>
-  );
-}
-
 const PASANGAN_A = ["4", "3", "9", "7"];
 const PASANGAN_B = ["6", "4", "7", "9"];
 const PASANGAN_D = ["5", "8", "7", "9"];
@@ -798,7 +785,7 @@ function KartuB({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminGuru }) {
       <KepalaKartu
         ikon="📊🦉"
         judul={kartu.judul}
-        anak="Papan es lilin · contoh dan cara"
+        anak="Peta es lilin · contoh dan cara"
         kelas={kelas}
         kelamin={kelamin}
         cuplikan={cuplikanKalimat(kartu.voice[0] ?? [])}
@@ -812,9 +799,16 @@ function KartuB({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminGuru }) {
           kelamin={kelamin}
           penjelasan={["Bagi jumlah benda dengan jumlah wadah. Itulah isi tiap wadah."]}
         >
-          <p className="text-sm font-black text-[#1C01A5]">Contoh: 20 ÷ 4</p>
-          <Gelas jumlah={4} isi={5} />
-          <Langkah butir={["Ada 20 es lilin dan 4 gelas.", "20 ÷ 4 = 5.", "Tiap gelas berisi 5."]} />
+          <PetaContoh
+            pusat="20 ÷ 4"
+            cabang={[
+              { ikon: "🍧", judul: "20", isi: "es lilin" },
+              { ikon: "🥤", judul: "4", isi: "gelas" },
+              { ikon: "⭐", judul: "Tiap gelas", isi: "5" },
+            ]}
+            kolom={["Benda", "Wadah", "Isi"]}
+            baris={[["20 es lilin", "4 gelas", "5"]]}
+          />
           <KuisSuara
             id={idKuis("B", 0)}
             pertanyaan="14 es lilin untuk 2 gelas. Ucapkan bentuk baginya dan hasilnya."
@@ -843,9 +837,20 @@ function KartuB({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminGuru }) {
           kelamin={kelamin}
           penjelasan={["Hitung berapa kali bilangan itu dikurangi sampai nol."]}
         >
-          <p className="text-sm font-black text-[#1C01A5]">Contoh: 15 − 5 sampai habis</p>
-          <Langkah butir={["15 − 5 = 10.", "10 − 5 = 5.", "5 − 5 = 0.", "Tiga kali. 15 ÷ 5 = 3."]} />
-          <Papan anak={"15 − 5 − 5 − 5 = 0"} />
+          <PetaContoh
+            pusat="15 ÷ 5"
+            cabang={[
+              { ikon: "🍧", judul: "Mulai", isi: "15" },
+              { ikon: "➖", judul: "Kurangi", isi: "5 tiap kali" },
+              { ikon: "⭐", judul: "Habis", isi: "3 kali" },
+            ]}
+            kolom={["Langkah", "Hitung", "Sisa"]}
+            baris={[
+              ["1", "15 − 5", "10"],
+              ["2", "10 − 5", "5"],
+              ["3", "5 − 5", "0"],
+            ]}
+          />
           <KuisSuara
             id={idKuis("B", 2)}
             pertanyaan="16 dikurangi 4 terus sampai habis. Ucapkan berapa kali."
@@ -874,9 +879,19 @@ function KartuB({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminGuru }) {
           kelamin={kelamin}
           penjelasan={["Habis berarti sisa nol. Perkalian membalik pembagian itu."]}
         >
-          <p className="text-sm font-black text-[#1C01A5]">Contoh: 32 ÷ 8</p>
-          <Langkah butir={["8 × 4 = 32.", "32 ÷ 8 = 4.", "Sisanya 0. Habis."]} />
-          <Papan anak={"8 × 4 = 32\n32 ÷ 8 = 4"} />
+          <PetaContoh
+            pusat="32 ÷ 8"
+            cabang={[
+              { ikon: "✖️", judul: "Balik", isi: "8 × 4 = 32" },
+              { ikon: "➗", judul: "Bagi", isi: "32 ÷ 8" },
+              { ikon: "⭐", judul: "Sisa", isi: "0, habis" },
+            ]}
+            kolom={["Cara", "Hitung", "Hasil"]}
+            baris={[
+              ["perkalian", "8 × 4", "32"],
+              ["pembagian", "32 ÷ 8", "4"],
+            ]}
+          />
           <KuisSuara
             id={idKuis("B", 4)}
             pertanyaan="45 ÷ 9. Ucapkan hasilnya, lalu katakan habis atau ada sisa."
@@ -905,9 +920,20 @@ function KartuB({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminGuru }) {
           kelamin={kelamin}
           penjelasan={["Ambil perkalian yang paling dekat di bawah bilangan itu. Selisihnya adalah sisa."]}
         >
-          <p className="text-sm font-black text-[#1C01A5]">Contoh: 26 ÷ 4</p>
-          <Langkah butir={["4 × 6 = 24.", "26 − 24 = 2.", "26 ÷ 4 = 6 sisa 2.", "Sisa 2 lebih kecil dari 4."]} />
-          <Papan anak={"26 ÷ 4 = 6 sisa 2"} />
+          <PetaContoh
+            pusat="26 ÷ 4"
+            cabang={[
+              { ikon: "✖️", judul: "Dekat", isi: "4 × 6 = 24" },
+              { ikon: "➖", judul: "Selisih", isi: "26 − 24 = 2" },
+              { ikon: "⭐", judul: "Sisa", isi: "lebih kecil dari 4" },
+            ]}
+            kolom={["Cara", "Hitung", "Hasil"]}
+            baris={[
+              ["perkalian dekat", "4 × 6", "24"],
+              ["sisa", "26 − 24", "2"],
+              ["kalimat", "26 ÷ 4", "6 sisa 2"],
+            ]}
+          />
           <KuisSuara
             id={idKuis("B", 6)}
             pertanyaan="31 ÷ 7. Ucapkan hasilnya dan sisanya."
@@ -936,9 +962,20 @@ function KartuB({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminGuru }) {
           kelamin={kelamin}
           penjelasan={["Kalau a kali b sama dengan c, maka c bagi a sama dengan b, dan c bagi b sama dengan a."]}
         >
-          <p className="text-sm font-black text-[#1C01A5]">Contoh: 6 × 8 = 48</p>
-          <Langkah butir={["6 × 8 = 48.", "48 ÷ 6 = 8.", "48 ÷ 8 = 6."]} />
-          <Papan anak={"6 × 8 = 48\n48 ÷ 6 = 8\n48 ÷ 8 = 6"} />
+          <PetaContoh
+            pusat="Keluarga 6, 8, 48"
+            cabang={[
+              { ikon: "✖️", judul: "Kali", isi: "6 × 8 = 48" },
+              { ikon: "➗", judul: "Bagi 6", isi: "48 ÷ 6 = 8" },
+              { ikon: "➗", judul: "Bagi 8", isi: "48 ÷ 8 = 6" },
+            ]}
+            kolom={["Kalimat", "Hitung", "Hasil"]}
+            baris={[
+              ["kali", "6 × 8", "48"],
+              ["bagi", "48 ÷ 6", "8"],
+              ["bagi", "48 ÷ 8", "6"],
+            ]}
+          />
           <KuisSuara
             id={idKuis("B", 8)}
             pertanyaan="7 × 4 = 28. Ucapkan satu kalimat baginya."

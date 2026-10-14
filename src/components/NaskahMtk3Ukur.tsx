@@ -1,6 +1,7 @@
 "use client";
 
 import HasilJawabanKuis from "@/components/HasilJawabanKuis";
+import PetaContoh from "@/components/PetaContoh";
 import KartuPoinPenting from "@/components/KartuPoinPenting";
 import { useKuisMateri } from "@/components/KuisMateriContext";
 import MisiPenjagaKebun from "@/components/MisiPenjagaKebun";
@@ -41,12 +42,8 @@ function cuplikanKalimat(kalimat: string[]): CuplikanVoiceMateri[] {
   }));
 }
 
-function KartuBingkai({ children, latar = "bg-white" }: { children: ReactNode; latar?: string }) {
-  return (
-    <section className={`rounded-[1.75rem] border-4 border-[#1C01A5]/15 ${latar} px-4 py-5 shadow-sm sm:px-6 sm:py-6`}>
-      {children}
-    </section>
-  );
+function KartuBingkai({ children }: { children: ReactNode; latar?: string }) {
+  return <section className="space-y-4">{children}</section>;
 }
 
 const WARNA_DIALOG: Record<string, string> = {
@@ -495,16 +492,6 @@ function KuisBenarSalah({
   );
 }
 
-function Langkah({ butir }: { butir: string[] }) {
-  return (
-    <ol className="list-decimal space-y-1 pl-5 text-sm font-semibold text-slate-700">
-      {butir.map((teks) => (
-        <li key={teks}>{teks}</li>
-      ))}
-    </ol>
-  );
-}
-
 function Lambang({ ikon, teks }: { ikon: string; teks: string }) {
   return (
     <p className="text-center text-lg font-black text-[#1C01A5]">
@@ -778,7 +765,7 @@ function KartuB({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminGuru }) {
       <KepalaKartu
         ikon="📊🦉"
         judul={kartu.judul}
-        anak="Papan pos jalan sehat · contoh dan cara"
+        anak="Peta pos jalan sehat · contoh dan cara"
         kelas={kelas}
         kelamin={kelamin}
         cuplikan={cuplikanKalimat(kartu.voice[0] ?? [])}
@@ -792,8 +779,20 @@ function KartuB({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminGuru }) {
           kelamin={kelamin}
           penjelasan={["Lihat bendanya dulu. Baru pilih cm, m, atau km."]}
         >
-          <p className="text-sm font-black text-[#1C01A5]">Contoh</p>
-          <Langkah butir={["Penghapus: cm.", "Panjang kelas: m.", "Jarak dua kota: km."]} />
+          <PetaContoh
+            pusat="Panjang"
+            cabang={[
+              { ikon: "✏️", judul: "Pendek", isi: "penghapus, cm" },
+              { ikon: "🏫", judul: "Sedang", isi: "kelas, m" },
+              { ikon: "🗺️", judul: "Jauh", isi: "dua kota, km" },
+            ]}
+            kolom={["Benda", "Satuan", "Singkat"]}
+            baris={[
+              ["penghapus", "sentimeter", "cm"],
+              ["kelas", "meter", "m"],
+              ["dua kota", "kilometer", "km"],
+            ]}
+          />
           <KuisSuara
             id={idKuis("B", 0)}
             pertanyaan="Panjang meja 120. Ucapkan satuan yang pas."
@@ -822,8 +821,20 @@ function KartuB({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminGuru }) {
           kelamin={kelamin}
           penjelasan={["Ringan memakai g. Berat memakai kg."]}
         >
-          <p className="text-sm font-black text-[#1C01A5]">Contoh</p>
-          <Langkah butir={["Satu kue: g.", "Satu ember air: kg.", "1 kg = 1.000 g."]} />
+          <PetaContoh
+            pusat="Berat"
+            cabang={[
+              { ikon: "🧁", judul: "Ringan", isi: "kue, g" },
+              { ikon: "🪣", judul: "Berat", isi: "ember, kg" },
+              { ikon: "🔁", judul: "Tukar", isi: "1 kg = 1.000 g" },
+            ]}
+            kolom={["Benda", "Satuan", "Singkat"]}
+            baris={[
+              ["kue", "gram", "g"],
+              ["ember air", "kilogram", "kg"],
+              ["1 kg", "1.000 g", "sama"],
+            ]}
+          />
           <KuisSuara
             id={idKuis("B", 2)}
             pertanyaan="Satu kue sekitar 80. Ucapkan satuan yang pas."
@@ -852,8 +863,20 @@ function KartuB({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminGuru }) {
           kelamin={kelamin}
           penjelasan={["Alat pendek untuk benda pendek. Alat panjang untuk jalur. Timbangan untuk berat."]}
         >
-          <p className="text-sm font-black text-[#1C01A5]">Contoh</p>
-          <Langkah butir={["Penghapus: penggaris.", "Pagar: meteran.", "Tas: timbangan."]} />
+          <PetaContoh
+            pusat="Alat"
+            cabang={[
+              { ikon: "📏", judul: "Pendek", isi: "penggaris" },
+              { ikon: "🪵", judul: "Panjang", isi: "meteran" },
+              { ikon: "⚖️", judul: "Berat", isi: "timbangan" },
+            ]}
+            kolom={["Benda", "Alat", "Diukur"]}
+            baris={[
+              ["penghapus", "penggaris", "panjang"],
+              ["pagar", "meteran", "panjang"],
+              ["tas", "timbangan", "berat"],
+            ]}
+          />
           <KuisSuara
             id={idKuis("B", 4)}
             pertanyaan="Kita mau mengukur panjang penghapus. Ucapkan alatnya."
@@ -882,9 +905,19 @@ function KartuB({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminGuru }) {
           kelamin={kelamin}
           penjelasan={["Meter dikali 100 menjadi cm. Kilometer dikali 1.000 menjadi m."]}
         >
-          <p className="text-sm font-black text-[#1C01A5]">Contoh: 5 m dan 2 km</p>
-          <Langkah butir={["5 × 100 = 500. Jadi 5 m = 500 cm.", "2 × 1.000 = 2.000. Jadi 2 km = 2.000 m."]} />
-          <Papan anak={"5 m = 500 cm\n2 km = 2.000 m"} />
+          <PetaContoh
+            pusat="Ubah panjang"
+            cabang={[
+              { ikon: "×100", judul: "m ke cm", isi: "kali 100" },
+              { ikon: "×1000", judul: "km ke m", isi: "kali 1.000" },
+              { ikon: "⭐", judul: "Contoh", isi: "5 m dan 2 km" },
+            ]}
+            kolom={["Awal", "Hitung", "Hasil"]}
+            baris={[
+              ["5 m", "5 × 100", "500 cm"],
+              ["2 km", "2 × 1.000", "2.000 m"],
+            ]}
+          />
           <KuisSuara
             id={idKuis("B", 6)}
             pertanyaan="6 m sama dengan berapa cm? Ucapkan hasilnya."
@@ -913,9 +946,19 @@ function KartuB({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminGuru }) {
           kelamin={kelamin}
           penjelasan={["Kilogram dikali 1.000 menjadi gram. Gram dibagi 1.000 menjadi kilogram."]}
         >
-          <p className="text-sm font-black text-[#1C01A5]">Contoh: 4 kg</p>
-          <Langkah butir={["4 × 1.000 = 4.000.", "4 kg = 4.000 g.", "4.000 g = 4 kg."]} />
-          <Papan anak={"4 kg = 4.000 g"} />
+          <PetaContoh
+            pusat="Ubah berat"
+            cabang={[
+              { ikon: "×1000", judul: "kg ke g", isi: "kali 1.000" },
+              { ikon: "÷1000", judul: "g ke kg", isi: "bagi 1.000" },
+              { ikon: "⭐", judul: "Contoh", isi: "4 kg" },
+            ]}
+            kolom={["Awal", "Hitung", "Hasil"]}
+            baris={[
+              ["4 kg", "4 × 1.000", "4.000 g"],
+              ["4.000 g", "4.000 ÷ 1.000", "4 kg"],
+            ]}
+          />
           <KuisSuara
             id={idKuis("B", 8)}
             pertanyaan="2 kg sama dengan berapa g? Ucapkan hasilnya."
