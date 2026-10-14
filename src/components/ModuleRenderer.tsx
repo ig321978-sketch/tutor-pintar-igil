@@ -34,6 +34,7 @@ import NaskahMtk3Pola from "@/components/NaskahMtk3Pola";
 import NaskahMtk3Kalimat from "@/components/NaskahMtk3Kalimat";
 import NaskahMtk3Bangun from "@/components/NaskahMtk3Bangun";
 import NaskahMtk3Keliling from "@/components/NaskahMtk3Keliling";
+import NaskahMtk3Ruang from "@/components/NaskahMtk3Ruang";
 import NaskahMtk3Bab3 from "@/components/NaskahMtk3Bab3";
 import NaskahPancasila1 from "@/components/NaskahPancasila1";
 import NaskahBindo1 from "@/components/NaskahBindo1";
@@ -83,6 +84,7 @@ import {
   adalahJudulMtk3Kalimat,
   adalahJudulMtk3Bangun,
   adalahJudulMtk3Keliling,
+  adalahJudulMtk3Ruang,
   adalahJudulMtk3Bab3,
   adalahJudulPancasila1Bab1,
   adalahJudulPancasila1Bab2,
@@ -149,6 +151,7 @@ import { MODUL_MTK3_POLA } from "@/lib/modul-resmi-mtk-3-pola";
 import { MODUL_MTK3_KALIMAT } from "@/lib/modul-resmi-mtk-3-kalimat";
 import { MODUL_MTK3_BANGUN } from "@/lib/modul-resmi-mtk-3-bangun";
 import { MODUL_MTK3_KELILING } from "@/lib/modul-resmi-mtk-3-keliling";
+import { MODUL_MTK3_RUANG } from "@/lib/modul-resmi-mtk-3-ruang";
 import { MODUL_MTK3_BAB3 } from "@/lib/modul-resmi-mtk-3-bab3";
 import { naskahTampilanModulResmi } from "@/lib/modul-resmi-pai";
 import { jenjangGuru, type KelaminGuru } from "@/lib/guru";
@@ -461,6 +464,13 @@ function ModuleRenderer({
         naskahTampilanModulResmi(MODUL_MTK3_KELILING, naskah)),
     [naskah, mapel, materi, kelas],
   );
+  const pakaiKartuMtk3Ruang = useMemo(
+    () =>
+      kelasTigaSd(kelas) &&
+      (adalahJudulMtk3Ruang(mapel, materi) ||
+        naskahTampilanModulResmi(MODUL_MTK3_RUANG, naskah)),
+    [naskah, mapel, materi, kelas],
+  );
   const pakaiKartuMtk3Bab3 = useMemo(
     () =>
       kelasTigaSd(kelas) &&
@@ -763,6 +773,13 @@ function ModuleRenderer({
     return (
       <div className={className}>
         <NaskahMtk3Keliling kelas={kelas} kelamin={kelamin} />
+      </div>
+    );
+  }
+  if (pakaiKartuMtk3Ruang) {
+    return (
+      <div className={className}>
+        <NaskahMtk3Ruang kelas={kelas} kelamin={kelamin} />
       </div>
     );
   }
