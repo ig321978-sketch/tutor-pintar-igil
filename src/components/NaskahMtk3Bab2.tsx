@@ -89,7 +89,7 @@ function Dialog({ nama, anak }: { nama: string; anak: string }) {
         </span>
         {nama}
       </p>
-      <p className="mt-1 whitespace-pre-line text-sm font-semibold leading-relaxed text-slate-700">{anak}</p>
+      <p className="mt-1 text-sm font-semibold leading-relaxed text-slate-700">{anak}</p>
     </article>
   );
 }
@@ -309,7 +309,7 @@ function TabelSusun({
       <div ref={bungkus} className="relative">
         <table className="w-full border-collapse text-center">
           <caption className="sr-only">
-            Susunan {operasi === "+" ? "penjumlahan" : "pengurangan"} dari ribuan sampai satuan.
+            Susunan {operasi === "+" ? "penjumlahan" : "pengurangan"} dari rumah ribuan sampai satuan.
             {keterangan ? ` ${keterangan}` : ""}
           </caption>
           <thead>
@@ -892,7 +892,7 @@ function KartuA({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminGuru }) {
       <KepalaKartu
         ikon="📚🦉"
         judul={kartu.judul}
-        anak="Buku di halte · tambah, menyimpan, kurang, meminjam"
+        anak="Empat rak buku · tambah, simpan, kurang, pinjam"
         kelas={kelas}
         kelamin={kelamin}
         cuplikan={cuplikanKalimat(kartu.voice[0])}
@@ -906,20 +906,22 @@ function KartuA({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminGuru }) {
           kelas={kelas}
           kelamin={kelamin}
           penjelasan={[
-            "Jumlahkan tiap bagian: ribuan, ratusan, puluhan, dan satuan.",
-            "Kalau hasilnya masih satu angka, tulis saja. Belum ada yang disimpan.",
+            "Penjumlahan bersusun dimulai dari kanan, dari rumah satuan.",
+            "Kalau jumlah satu rumah masih satu angka, tulis saja. Belum ada yang disimpan.",
           ]}
         >
-          <Dialog nama="Nisa" anak="Ada 2 kardus. Isinya 2.431 buku dan 3.256 buku. Ayo kita jumlahkan bukunya!" />
-          <Dialog
-            nama="Farhan"
-            anak={"2 ribuan + 3 ribuan = 5 ribuan, ditulis 5\n4 ratusan + 2 ratusan = 6 ratusan, ditulis 6\n3 puluhan + 5 puluhan = 8 puluhan, ditulis 8\n1 satuan + 6 satuan = 7 satuan, ditulis 7\nHasilnya = 5.687"}
-          />
+          <Dialog nama="Nisa" anak="Dua kardus buku: 2.431 dan 3.256. Kita jumlahkan dari kanan." />
+          <Dialog nama="Farhan" anak="Ribuan dulu? 2 tambah 3 sama dengan 5." />
+          <Dialog nama="Cinta" anak="Coba satuan dulu. 1 tambah 6. Masih satu angka?" />
+          <Dialog nama="Farhan" anak="7. Muat di rak satuan." />
+          <Dialog nama="Hulu" anak="Kalau setiap rumah hasilnya masih satu angka, tidak ada yang disimpan." />
+          <Dialog nama="Nisa" anak="Puluhan 3 + 5 = 8. Ratusan 4 + 2 = 6. Ribuan 2 + 3 = 5." />
+          <Dialog nama="Cinta" anak="Jadi 5.687. Tidak ada buku yang pindah ke rak kiri." />
           <TabelSusun operasi="+" atas={2431} bawah={3256} hasil={5687} />
           <p className="text-sm font-black text-emerald-800">Kesimpulan: hasil 0 sampai 9 ditulis langsung. Tidak ada simpanan.</p>
           <KuisSuara
             id={idKuis("A", 0)}
-            pertanyaan="Berapa hasil 1.324 + 2.451? Sebutkan juga bagian yang kamu hitung lebih dulu."
+            pertanyaan="Berapa hasil 1.324 + 2.451? Sebutkan juga dari rumah mana kamu mulai."
             periksa={baca3775}
             petunjuk="Jumlahkan dari satuan. Hasilnya tiga ribu tujuh ratus tujuh puluh lima."
             benar="Tiga ribu tujuh ratus tujuh puluh lima. Mulai dari satuan."
@@ -945,15 +947,15 @@ function KartuA({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminGuru }) {
           kelas={kelas}
           kelamin={kelamin}
           penjelasan={[
-            "Kalau jumlah satu bagian sepuluh atau lebih, tulis angka belakangnya.",
-            "Satu puluhan itu disimpan ke bagian kiri. Simpanan wajib dihitung.",
+            "Kalau jumlah satu rumah sepuluh atau lebih, tulis angka satuannya.",
+            "Sepuluhnya disimpan sebagai 1 di rumah sebelah kiri. Simpanan itu wajib dihitung.",
           ]}
         >
-          <Dialog nama="Nisa" anak="Ada 2.476 buku, lalu datang 1.358 buku. Ayo kita jumlahkan!" />
-          <Dialog
-            nama="Farhan"
-            anak={"6 satuan + 8 satuan = 14. Ditulis 4. Menyimpan 1 ke puluhan.\n7 puluhan + 5 puluhan + 1 = 13. Ditulis 3. Menyimpan 1 ke ratusan.\n4 ratusan + 3 ratusan + 1 = 8 ratusan, ditulis 8.\n2 ribuan + 1 ribuan = 3 ribuan, ditulis 3.\nHasilnya = 3.834"}
-          />
+          <Dialog nama="Farhan" anak="Satuan 6 + 8 = 14. Rak satuan cuma muat satu angka!" />
+          <Dialog nama="Nisa" anak="Tulis 4. Sepuluhnya jadi 1 di rak puluhan. Itu simpanan." />
+          <Dialog nama="Cinta" anak="Puluhan 7 + 5, ditambah simpanan 1, jadi 13. Tulis 3, simpan 1 lagi." />
+          <Dialog nama="Hulu" anak="Simpanan itu bukan angka baru. Itu sepuluh yang pindah ke kiri." />
+          <Dialog nama="Nisa" anak="Ratusan 4 + 3 + 1 = 8. Ribuan 2 + 1 = 3. Hasilnya 3.834." />
           <TabelSusun
             operasi="+"
             atas={2476}
@@ -961,7 +963,7 @@ function KartuA({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminGuru }) {
             hasil={3834}
             catatan={[null, { teks: "1", panah: true }, { teks: "1", panah: true }, null]}
           />
-          <p className="text-sm font-black text-emerald-800">Kesimpulan: lebih dari sembilan, tulis angka belakang dan menyimpan 1 ke kiri.</p>
+          <p className="text-sm font-black text-emerald-800">Kesimpulan: lebih dari sembilan, tulis sisa dan simpan 1 ke kiri.</p>
           <KuisSuara
             id={idKuis("A", 2)}
             pertanyaan="Pada 3.685 + 1.247, satuan 5 + 7 = 12. Apa yang ditulis di satuan, dan berapa yang disimpan?"
@@ -994,16 +996,16 @@ function KartuA({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminGuru }) {
             "Kalau angka atas cukup, kurangkan saja. Belum ada yang meminjam.",
           ]}
         >
-          <Dialog nama="Nisa" anak="Ada 5.876 buku. Yang dipinjam 2.341 buku. Ayo kita kurangkan!" />
-          <Dialog
-            nama="Farhan"
-            anak={"6 satuan − 1 satuan = 5 satuan, ditulis 5\n7 puluhan − 4 puluhan = 3 puluhan, ditulis 3\n8 ratusan − 3 ratusan = 5 ratusan, ditulis 5\n5 ribuan − 2 ribuan = 3 ribuan, ditulis 3\nHasilnya = 3.535. Tidak ada yang meminjam."}
-          />
+          <Dialog nama="Cinta" anak="Rak ada 5.876 buku. Yang dipinjam 2.341." />
+          <Dialog nama="Farhan" anak="Satuan 6 lebih besar dari 1. Tidak perlu pinjam?" />
+          <Dialog nama="Hulu" anak="Betul. Kalau angka atas cukup, kurangkan saja." />
+          <Dialog nama="Nisa" anak="6 − 1 = 5. 7 − 4 = 3. 8 − 3 = 5. 5 − 2 = 3." />
+          <Dialog nama="Cinta" anak="Sisa 3.535. Tidak ada rak yang pinjam." />
           <TabelSusun operasi="−" atas={5876} bawah={2341} hasil={3535} />
           <p className="text-sm font-black text-emerald-800">Kesimpulan: angka atas cukup, langsung dikurangi.</p>
           <KuisSuara
             id={idKuis("A", 4)}
-            pertanyaan="Berapa hasil 6.749 − 2.315? Sebutkan juga apakah ada yang meminjam."
+            pertanyaan="Berapa hasil 6.749 − 2.315? Sebutkan juga apakah ada rumah yang meminjam."
             periksa={tanpaPinjam4434}
             petunjuk="Semua angka atas cukup. Ucapkan hasilnya, lalu katakan tidak meminjam."
             benar="Empat ribu empat ratus tiga puluh empat. Tidak meminjam."
@@ -1012,7 +1014,7 @@ function KartuA({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminGuru }) {
             id={idKuis("A", 5)}
             visual={<TabelSusun operasi="−" atas={8964} bawah={3521} />}
             pertanyaan="Tulis sisanya."
-            pesanSalah="Kurangi dari satuan. Tidak ada yang perlu meminjam."
+            pesanSalah="Kurangi dari satuan. Tidak ada yang perlu pinjam."
             bantuan="4 − 1 = 3, 6 − 2 = 4, 9 − 5 = 4, 8 − 3 = 5."
             umpan="Sisanya 5.443."
             periksa={tulis5443}
@@ -1029,20 +1031,17 @@ function KartuA({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminGuru }) {
           kelas={kelas}
           kelamin={kelamin}
           penjelasan={[
-            "Kalau angka atas lebih kecil, meminjam 1 dari kiri. Pinjaman itu bernilai sepuluh.",
-            "Kalau bagian di kirinya berisi 0, pinjaman dilanjutkan ke bagian yang masih ada isinya.",
+            "Kalau angka atas lebih kecil, pinjam 1 dari rumah kiri. Pinjaman itu bernilai sepuluh.",
+            "Kalau rumah di kirinya berisi 0, pinjaman dilanjutkan ke rumah yang masih ada isinya.",
           ]}
         >
-          <Dialog nama="Nisa" anak="Ada 5.346 buku. Yang keluar 2.178 buku. Ayo kita kurangkan!" />
-          <Dialog
-            nama="Farhan"
-            anak={"6 satuan kurang dari 8. Meminjam 1 dari puluhan. Puluhan 4 menjadi 3. Satuan menjadi 16.\n16 − 8 = 8, ditulis 8.\n3 puluhan kurang dari 7. Meminjam 1 dari ratusan. Ratusan 3 menjadi 2. Puluhan menjadi 13.\n13 − 7 = 6, ditulis 6.\n2 ratusan − 1 ratusan = 1, ditulis 1.\n5 ribuan − 2 ribuan = 3, ditulis 3.\nHasilnya = 3.168"}
-          />
-          <Dialog nama="Nisa" anak="Sekarang 4.203 buku dikurangi 1.578 buku. Puluhannya 0." />
-          <Dialog
-            nama="Farhan"
-            anak={"3 satuan kurang dari 8. Puluhan berisi 0, jadi meminjam dari ratusan. Ratusan 2 menjadi 1, puluhan menjadi 9, satuan menjadi 13.\n13 − 8 = 5, ditulis 5.\n9 puluhan − 7 puluhan = 2, ditulis 2.\n1 ratusan kurang dari 5. Meminjam 1 dari ribuan. Ribuan 4 menjadi 3. Ratusan menjadi 11.\n11 − 5 = 6, ditulis 6.\n3 ribuan − 1 ribuan = 2, ditulis 2.\nHasilnya = 2.625"}
-          />
+          <Dialog nama="Farhan" anak="5.346 kurang 2.178. Satuan 6 lebih kecil dari 8!" />
+          <Dialog nama="Nisa" anak="Pinjam 1 dari puluhan. Puluhan 4 jadi 3. Satuan jadi 16. 16 − 8 = 8." />
+          <Dialog nama="Cinta" anak="Puluhan sekarang 3, bawahnya 7. Kurang lagi. Pinjam dari ratusan." />
+          <Dialog nama="Hulu" anak="Satu pinjaman bernilai sepuluh di rumah yang menerima." />
+          <Dialog nama="Nisa" anak="Ratusan 3 jadi 2, puluhan jadi 13. 13 − 7 = 6. Ratusan 2 − 1 = 1. Ribuan 5 − 2 = 3." />
+          <Dialog nama="Cinta" anak="Sisa 3.168. Sekarang lihat 4.203 − 1.578. Puluhannya 0." />
+          <Dialog nama="Hulu" anak="Nol tidak bisa memberi pinjaman. Pinjaman loncat ke ratusan. Hasilnya 2.625." />
           <div className="space-y-3">
             <TabelSusun
               operasi="−"
@@ -1069,10 +1068,10 @@ function KartuA({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminGuru }) {
               ]}
             />
           </div>
-          <p className="text-sm font-black text-emerald-800">Kesimpulan: yang meminjam berkurang satu. Bagian yang berisi 0 meneruskan pinjaman ke kiri.</p>
+          <p className="text-sm font-black text-emerald-800">Kesimpulan: yang dipinjam berkurang satu. Rumah nol meneruskan pinjaman ke kiri.</p>
           <KuisSuara
             id={idKuis("A", 6)}
-            pertanyaan="Berapa hasil 7.245 − 3.168? Sebutkan bagian yang meminjam."
+            pertanyaan="Berapa hasil 7.245 − 3.168? Sebutkan rumah yang meminjam."
             periksa={pinjam4077}
             petunjuk="Satuan dan puluhan sama-sama meminjam. Hasilnya empat ribu tujuh puluh tujuh."
             benar="Empat ribu tujuh puluh tujuh. Satuan dan puluhan meminjam."
@@ -1080,7 +1079,7 @@ function KartuA({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminGuru }) {
           <TulisBebas
             id={idKuis("A", 7)}
             visual={<TabelSusun operasi="−" atas={5020} bawah={1346} />}
-            pertanyaan="Tulis sisanya, lalu tulis kata meminjam."
+            pertanyaan="Tulis sisanya, lalu tulis kata pinjam."
             pesanSalah="Puluhan 2 tidak cukup untuk 4, dan ratusan berisi 0. Pinjam dari ribuan."
             bantuan="Hasilnya 3.674."
             umpan="5.020 − 1.346 = 3.674. Ada pinjaman."
@@ -1102,12 +1101,11 @@ function KartuA({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminGuru }) {
             "Datang, jumlah, dan semua berarti tambah. Dipinjam, sisa, dan terpakai berarti kurang.",
           ]}
         >
-          <Dialog nama="Nisa" anak="Pagi ini ada 2.350 buku. Sumbangan datang 1.475 buku. Datang berarti tambah." />
-          <Dialog
-            nama="Farhan"
-            anak={"0 satuan + 5 satuan = 5, ditulis 5.\n5 puluhan + 7 puluhan = 12. Ditulis 2. Menyimpan 1 ke ratusan.\n3 ratusan + 4 ratusan + 1 = 8 ratusan, ditulis 8.\n2 ribuan + 1 ribuan = 3 ribuan, ditulis 3.\nHasilnya = 3.825"}
-          />
-          <Dialog nama="Hulu" anak="Datang, jumlah, dan semua berarti tambah. Dipinjam, sisa, dan terpakai berarti kurang." />
+          <Dialog nama="Nisa" anak="Pagi ini rak punya 2.350 buku. Sumbangan datang 1.475." />
+          <Dialog nama="Farhan" anak="Datang berarti tambah." />
+          <Dialog nama="Cinta" anak="Satuan 0 + 5 = 5. Puluhan 5 + 7 = 12. Tulis 2, simpan 1." />
+          <Dialog nama="Nisa" anak="Ratusan 3 + 4 + 1 = 8. Ribuan 2 + 1 = 3. Sekarang ada 3.825." />
+          <Dialog nama="Hulu" anak="Kata kuncinya yang memilih operasi. Baru setelah itu kita menghitung." />
           <TabelSusun
             operasi="+"
             atas={2350}
@@ -1222,7 +1220,7 @@ function KartuB({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminGuru }) {
           alt="Empat rak berlabel dan dua tumpukan buku yang masih muat."
           kelas={kelas}
           kelamin={kelamin}
-          penjelasan={["Jumlah 0 sampai 9 ditulis di bagiannya. Tidak ada simpanan."]}
+          penjelasan={["Jumlah 0 sampai 9 ditulis di rumahnya. Tidak ada simpanan."]}
         >
           <p className="text-sm font-black text-[#1C01A5]">Contoh: 1.203 + 4.571</p>
           <Langkah butir={["Satuan 3 + 1 = 4.", "Puluhan 0 + 7 = 7.", "Ratusan 2 + 5 = 7.", "Ribuan 1 + 4 = 5."]} />
@@ -1230,7 +1228,7 @@ function KartuB({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminGuru }) {
           <p className="text-sm font-black text-emerald-800">Trik: masih satu angka? Tulis saja.</p>
           <KuisSuara
             id={idKuis("B", 0)}
-            pertanyaan="Berapa 2.314 + 1.625? Sebutkan bagian yang kamu hitung lebih dulu."
+            pertanyaan="Berapa 2.314 + 1.625? Sebutkan rumah tempat kamu mulai."
             periksa={baca3939}
             petunjuk="Mulai dari satuan. Hasilnya tiga ribu sembilan ratus tiga puluh sembilan."
             benar="Tiga ribu sembilan ratus tiga puluh sembilan. Mulai dari satuan."
@@ -1255,10 +1253,10 @@ function KartuB({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminGuru }) {
           alt="Ikat sepuluh buku berpindah satu rak ke kiri."
           kelas={kelas}
           kelamin={kelamin}
-          penjelasan={["Lebih dari sembilan: tulis angka belakang, menyimpan 1 ke kiri."]}
+          penjelasan={["Lebih dari sembilan: tulis angka belakang, simpan 1 ke kiri."]}
         >
           <p className="text-sm font-black text-[#1C01A5]">Contoh: 4.278 + 1.653</p>
-          <Langkah butir={["8 satuan + 3 satuan = 11, ditulis 1, menyimpan 1.", "7 puluhan + 5 puluhan + 1 = 13, ditulis 3, menyimpan 1.", "2 ratusan + 6 ratusan + 1 = 9, ditulis 9.", "4 ribuan + 1 ribuan = 5, ditulis 5."]} />
+          <Langkah butir={["8 + 3 = 11, tulis 1, simpan 1.", "7 + 5 + 1 = 13, tulis 3, simpan 1.", "2 + 6 + 1 = 9.", "4 + 1 = 5."]} />
           <TabelSusun
             operasi="+"
             atas={4278}
@@ -1297,7 +1295,7 @@ function KartuB({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminGuru }) {
           penjelasan={["Angka atas cukup? Kurangi dari kanan. Tidak ada pinjaman."]}
         >
           <p className="text-sm font-black text-[#1C01A5]">Contoh: 7.865 − 2.431</p>
-          <Langkah butir={["5 satuan − 1 satuan = 4.", "6 puluhan − 3 puluhan = 3.", "8 ratusan − 4 ratusan = 4.", "7 ribuan − 2 ribuan = 5."]} />
+          <Langkah butir={["5 − 1 = 4.", "6 − 3 = 3.", "8 − 4 = 4.", "7 − 2 = 5."]} />
           <TabelSusun operasi="−" atas={7865} bawah={2431} hasil={5434} />
           <p className="text-sm font-black text-emerald-800">Trik: cukup? Langsung kurang.</p>
           <KuisSuara
@@ -1327,10 +1325,10 @@ function KartuB({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminGuru }) {
           alt="Rak tengah kosong, pinjaman datang dari rak paling kiri."
           kelas={kelas}
           kelamin={kelamin}
-          penjelasan={["Bagian yang berisi 0 tidak bisa memberi pinjaman. Lanjutkan ke kiri."]}
+          penjelasan={["Rumah yang berisi 0 tidak bisa memberi pinjaman. Lanjutkan ke kiri."]}
         >
           <p className="text-sm font-black text-[#1C01A5]">Contoh: 8.045 − 2.617</p>
-          <Langkah butir={["Satuan 5 meminjam. Puluhan 4 menjadi 3, satuan 15 − 7 = 8.", "Puluhan 3 − 1 = 2.", "Ratusan berisi 0, jadi meminjam dari ribuan. 10 − 6 = 4.", "Ribuan 7 − 2 = 5."]} />
+          <Langkah butir={["Satuan 5 pinjam. Puluhan 4 jadi 3, satuan 15 − 7 = 8.", "Puluhan 3 − 1 = 2.", "Ratusan 0, jadi pinjam dari ribuan. 10 − 6 = 4.", "Ribuan 7 − 2 = 5."]} />
           <TabelSusun
             operasi="−"
             atas={8045}
@@ -1343,10 +1341,10 @@ function KartuB({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminGuru }) {
               { teks: "15", panah: true, coret: true },
             ]}
           />
-          <p className="text-sm font-black text-emerald-800">Trik: bagian 0 meneruskan pinjaman.</p>
+          <p className="text-sm font-black text-emerald-800">Trik: rumah 0 meneruskan pinjaman.</p>
           <KuisSuara
             id={idKuis("B", 6)}
-            pertanyaan="Berapa 8.045 − 2.617? Sebutkan bagian yang berisi 0 dan harus meminjam."
+            pertanyaan="Berapa 8.045 − 2.617? Sebutkan rumah kosong yang harus meminjam."
             periksa={pinjam5428}
             petunjuk="Ratusan kosong, jadi sebutkan ratusan dan hasilnya."
             benar="Lima ribu empat ratus dua puluh delapan. Ratusan meminjam dari ribuan."
@@ -1354,7 +1352,7 @@ function KartuB({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminGuru }) {
           <TulisBebas
             id={idKuis("B", 7)}
             visual={<TabelSusun operasi="−" atas={4006} bawah={1238} />}
-            pertanyaan="Tulis sisanya, lalu tulis bagian awal meminjamnya: ribuan."
+            pertanyaan="Tulis sisanya, lalu tulis rumah awal pinjamannya: ribuan."
             pesanSalah="Puluhan dan ratusan berisi 0. Pinjaman dimulai dari ribuan."
             bantuan="Hasilnya 2.768."
             umpan="4.006 − 1.238 = 2.768. Pinjam dari ribuan."
@@ -1374,7 +1372,7 @@ function KartuB({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminGuru }) {
           penjelasan={["Pilih operasi dari kata kunci, baru hitung dari satuan."]}
         >
           <p className="text-sm font-black text-[#1C01A5]">Contoh: ada 3.480 pensil, terpakai 1.265. Sisa?</p>
-          <Langkah butir={["Terpakai berarti kurang.", "Satuan 0 meminjam. Puluhan 8 menjadi 7. Satuan 10 − 5 = 5.", "7 puluhan − 6 puluhan = 1.", "4 ratusan − 2 ratusan = 2.", "3 ribuan − 1 ribuan = 2."]} />
+          <Langkah butir={["Terpakai berarti kurang.", "0 pinjam, 10 − 5 = 5.", "7 − 6 = 1. 4 − 2 = 2. 3 − 1 = 2."]} />
           <TabelSusun
             operasi="−"
             atas={3480}
@@ -1438,7 +1436,7 @@ function KartuB({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminGuru }) {
           id={idKuis("B", 13)}
           perintah="4. Cek papan."
           baris={[
-            { teks: "Menyimpan 1 berarti sepuluh pindah ke bagian di kirinya.", benar: true },
+            { teks: "Menyimpan 1 berarti sepuluh pindah ke rumah kiri.", benar: true },
             { teks: "Jika angka atas lebih kecil, kurangi tanpa meminjam.", benar: false },
             { teks: "Kata sisa pada soal cerita berarti pengurangan.", benar: true },
           ]}
@@ -1492,7 +1490,7 @@ function KartuC({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminGuru }) {
           { ikon: "📚", teks: "Buku masuk" },
           { ikon: "📌", teks: "Simpan" },
           { ikon: "📖", teks: "Buku dipinjam" },
-          { ikon: "🔄", teks: "Meminjam" },
+          { ikon: "🔄", teks: "Pinjam rumah" },
           { ikon: "🦉", teks: "Hulu" },
         ]}
       />
@@ -1501,7 +1499,7 @@ function KartuC({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminGuru }) {
         <p>Level 1: 2.431 + 3.256. Level 2: 6 + 8 = 14, tulis 4 simpan 1. Level 3: 5.876 − 2.341, tanpa meminjam.</p>
         <p>Level 4: 5.346 − 2.178. Level 5: pada 4.203 − 1.578, puluhan 0 jadi pinjaman loncat ke ratusan.</p>
         <p>Meja pemula soalnya langsung, hadiahnya 1 stempel. Meja halte soalnya bertingkat, hadiahnya lebih besar.</p>
-        <p>Kaca rak membantu melihat ribuan, ratusan, puluhan, dan satuan, tetapi mengurangi 1 stempel. Berani tanpa kaca menambah 1 stempel.</p>
+        <p>Kaca rak membantu melihat rumah angka, tetapi mengurangi 1 stempel. Berani tanpa kaca menambah 1 stempel.</p>
         <p>Salah hitung tidak mengurangi stempel. Rak berkedip, lalu kamu boleh mengulang.</p>
         <p>Mode berdua: pemain A menghitung tambah, pemain B menghitung kurang. Keduanya harus bertemu di angka yang sama.</p>
         <p>Kumpulkan 10 stempel untuk membuka meja pustakawan.</p>
@@ -1539,7 +1537,7 @@ function KartuC({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminGuru }) {
             { huruf: "D", teks: "Tidak menjumlah satuan" },
           ]}
           benar="B"
-          umpan="12 tidak muat di satuan. Tulis 2, simpan 1."
+          umpan="12 tidak muat di satu rumah. Tulis 2, simpan 1."
           salah="Pisahkan sepuluh dan sisanya."
         />
         <KuisCocok
@@ -1611,7 +1609,7 @@ function KartuC({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminGuru }) {
         />
         <KuisSuara
           id={idKuis("C", 18)}
-          pertanyaan="Ucapkan hasil 6.004 − 2.578, lalu sebutkan bagian awal meminjamnya."
+          pertanyaan="Ucapkan hasil 6.004 − 2.578, lalu sebutkan rumah awal pinjamannya."
           periksa={pinjam3426}
           petunjuk="Puluhan dan ratusan berisi 0. Hasilnya tiga ribu empat ratus dua puluh enam."
           benar="Tiga ribu empat ratus dua puluh enam. Pinjam dari ribuan."
@@ -1674,7 +1672,7 @@ function LembarEvaluasi({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminG
           id={idKuis("D", 0)}
           judul="1. Pinjaman melewati nol"
           visual={<TabelSusun operasi="−" atas={8003} bawah={2567} />}
-          pertanyaan="Tulis sisanya, lalu tulis bagian awal meminjamnya."
+          pertanyaan="Tulis sisanya, lalu tulis rumah awal pinjamannya."
           pesanSalah="Puluhan dan ratusan berisi 0. Pinjaman dimulai dari ribuan."
           bantuan="Hasilnya 5.436. Pinjam dari ribuan."
           umpan="8.003 − 2.567 = 5.436."
@@ -1714,7 +1712,7 @@ function LembarEvaluasi({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminG
           ]}
           benar="B"
           umpan="Angka 12 benar sebagai jumlah, tetapi yang ditulis di satuan hanya 2."
-          salah="Satu bagian hanya muat satu angka."
+          salah="Satu rumah hanya muat satu angka."
         />
         <KuisCocok
           id={idKuis("D", 4)}
@@ -1760,7 +1758,7 @@ function LembarEvaluasi({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminG
         />
         <KuisSuara
           id={idKuis("D", 8)}
-          pertanyaan="Mana yang lebih besar, 2.431 + 3.256 atau 5.876 − 2.341? Sebutkan hasilnya dan bagian yang membuatnya lebih besar."
+          pertanyaan="Mana yang lebih besar, 2.431 + 3.256 atau 5.876 − 2.341? Sebutkan hasilnya dan rumah yang membuatnya lebih besar."
           periksa={lebih5687}
           petunjuk="Hitung keduanya dulu. Yang besar lima ribu enam ratus delapan puluh tujuh."
           benar="Lima ribu enam ratus delapan puluh tujuh lebih besar karena ribuannya 5."
@@ -1790,8 +1788,8 @@ function LembarEvaluasi({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminG
       <aside className="mt-5 rounded-2xl border-2 border-[#1C01A5]/15 bg-white px-4 py-4 text-sm font-semibold leading-relaxed text-slate-700">
         <p className="font-black text-[#1C01A5]">Catatan untuk guru</p>
         <p className="mt-2">Soal memakai bilangan sampai 10.000: penjumlahan, pengurangan, menyimpan, meminjam, dan soal cerita.</p>
-        <p className="mt-2">Di kelas 3, Hulu menanyakan mengapa satu bagian menyimpan atau meminjam. Quiz meminta alasan, bukan hanya hasil.</p>
-        <p className="mt-2">Kesalahan yang paling sering: menulis 12 utuh di satu bagian, lupa menambahkan simpanan, dan mengubah 0 menjadi 10 tanpa mengurangi bagian yang memberi pinjaman.</p>
+        <p className="mt-2">Di kelas 3, Hulu menanyakan mengapa sebuah rumah menyimpan atau meminjam. Quiz meminta alasan, bukan hanya hasil.</p>
+        <p className="mt-2">Kesalahan yang paling sering: menulis 12 utuh di satu rumah, lupa menambahkan simpanan, dan mengubah 0 menjadi 10 tanpa mengurangi rumah yang memberi pinjaman.</p>
         <p className="mt-2">Soal 1, 3, dan 10 menyasar ketiganya. Soal 3 adalah soal kunci: jumlah 12 benar, tetapi yang ditulis di satuan hanya 2. Soal 6, 8, dan 9 menilai alasan. Bahasa sederhana tetap dinilai penuh bila alasannya tepat.</p>
         <p className="mt-2">Soal 10 tiga langkah: setelah sumbangan 4.745, setelah dipinjam 2.565, lalu selisih 2.180 − 1.265 = 915. Jika anak hanya menyelesaikan bagian pertama, minta ia membaca dua bagian berikutnya.</p>
         <p className="mt-2">Gunakan ikat sepuluh buku atau stik. Minta anak memindahkan satu ikat ke rak kiri saat jumlahnya 10 atau lebih, dan memecah satu ikat saat rak kanan kurang. Siapkan rak kosong supaya pinjaman melewati nol terlihat.</p>
@@ -1808,11 +1806,11 @@ export default function NaskahMtk3Bab2({
   kelamin?: KelaminGuru;
 }) {
   const poin = [
-    "Mulai dari satuan, lalu puluhan, ratusan, dan ribuan.",
-    "Lebih dari sembilan? Tulis angka belakang, menyimpan 1 ke kiri.",
+    "Mulai dari satuan. Naik ke kiri satu rumah demi satu rumah.",
+    "Lebih dari sembilan? Tulis sisa, simpan 1 ke kiri.",
     "Simpanan kecil itu wajib dijumlahkan.",
-    "Angka atas kurang? Meminjam 1 dari kiri. Nilainya sepuluh.",
-    "Bagian yang berisi 0 tidak bisa memberi pinjaman.",
+    "Angka atas kurang? Pinjam 1 dari kiri. Nilainya sepuluh.",
+    "Rumah yang berisi 0 tidak bisa memberi pinjaman.",
     "Datang dan jumlah berarti tambah. Dipinjam, sisa, dan terpakai berarti kurang.",
   ];
   return (
