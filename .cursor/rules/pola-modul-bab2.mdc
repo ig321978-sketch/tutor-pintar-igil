@@ -15,5 +15,6 @@ Saat bab berikutnya dibuat, ikuti pola dan visual Bab 2. Ganti tokoh, latar, ang
 - Kartu C: satu permainan, 10 soal. Suara paling banyak 2, kanvas paling banyak 2.
 - Poin penting lewat `KartuPoinPenting` dengan suara. Lembar evaluasi 10 soal, suara paling banyak 2, kanvas paling banyak 2.
 - Cek setiap kunci hitung sebelum dipasang. Ribuan Indonesia: `1.000` berarti seribu. “meminjam” tidak memuat “pinjam”; “menyimpan” tidak memuat “simpan”.
-- Visual: bagian utama dan adegan bukan kartu. Hanya dialog, papan hitung, simbol, soal, dan poin penting yang berkartu. Kartu Silabus, Materi, Latihan, dan Ujian di halaman modul tetap penuh.
+- Visual: bagian utama dan adegan bukan kartu. Hanya dialog, tabel hitung, simbol rak, soal, dan poin penting yang berkartu. Kartu Silabus, Materi, Latihan, dan Ujian di halaman modul tetap penuh.
+- Contoh susun ke bawah memakai tabel 4 kolom: Ribuan, Ratusan, Puluhan, Satuan, dengan warna baris berbeda. Simpanan atau pinjaman ditulis di atas rumah yang tepat, dan panah menandai nilai yang datang dari kanan. Soal yang harus dihitung siswa tidak menampilkan hasil atau jejak simpanan.
 - Pemanasan otak masih percobaan di Bab 2 saja. Aturannya ikut ketukan acak kiri-kanan; yang beda memunculkan SALAH. Tema berganti tiap hari. Selesai sekali, tidak muncul lagi hari itu.

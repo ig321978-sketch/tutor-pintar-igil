@@ -7,7 +7,7 @@ import KuisTulisKartu from "@/components/KuisTulisKartu";
 import { useKuisMateri } from "@/components/KuisMateriContext";
 import MisiPenjagaKebun from "@/components/MisiPenjagaKebun";
 import { SLOT_AJUAN_SEBELUM_KARTU_D } from "@/components/NaskahMtk2Bab1";
-import PanduanIkon, { type ButirIkon } from "@/components/PanduanIkon";
+import PanduanIkon from "@/components/PanduanIkon";
 import SoalRekamSuara from "@/components/SoalRekamSuara";
 import TombolVoiceMateriPai1 from "@/components/TombolVoiceMateriPai1";
 import WritingCanvas from "@/components/WritingCanvas";
@@ -102,6 +102,111 @@ function Papan({ anak }: { anak: string }) {
   );
 }
 
+const RUMAH_ANGKA = ["Ribuan", "Ratusan", "Puluhan", "Satuan"] as const;
+
+type CatatanKolom = { teks: string; panah?: boolean; coret?: boolean };
+
+function digitEmpat(nilai: number): string[] {
+  return String(nilai).padStart(4, "0").split("");
+}
+
+function TabelSusun({
+  operasi,
+  atas,
+  bawah,
+  hasil,
+  catatan,
+  kosong,
+}: {
+  operasi: "+" | "−";
+  atas: number;
+  bawah: number;
+  hasil?: number;
+  catatan?: Array<CatatanKolom | null>;
+  kosong?: number | "atas";
+}) {
+  const barisAtas = digitEmpat(atas);
+  const barisBawah = digitEmpat(bawah);
+  const barisHasil = hasil === undefined ? null : digitEmpat(hasil);
+  const adaCatatan = Boolean(catatan?.some(Boolean));
+
+  const isiAtas = (indeks: number) => {
+    if (kosong === "atas" || kosong === indeks) return "⬜";
+    return barisAtas[indeks];
+  };
+
+  return (
+    <div className="mx-auto w-full max-w-md overflow-hidden rounded-2xl border-2 border-[#1C01A5]/15 bg-white">
+      <table className="w-full border-collapse text-center">
+        <caption className="sr-only">
+          Susunan {operasi === "+" ? "penjumlahan" : "pengurangan"} dari rumah ribuan sampai satuan
+          {adaCatatan ? ". Angka kecil di atas adalah simpanan atau pinjaman, panah datang dari rumah kanan." : "."}
+        </caption>
+        <thead>
+          <tr className="bg-[#1C01A5] text-white">
+            <th className="w-8 px-1 py-2" />
+            {RUMAH_ANGKA.map((nama) => (
+              <th key={nama} className="px-1 py-2 text-[10px] font-black uppercase tracking-wide sm:text-xs">
+                {nama}
+              </th>
+            ))}
+          </tr>
+        </thead>
+        <tbody>
+          {adaCatatan ? (
+            <tr className="bg-amber-100 text-rose-700">
+              <td className="px-1 py-1 text-xs font-black"> </td>
+              {RUMAH_ANGKA.map((nama, indeks) => {
+                const item = catatan?.[indeks];
+                return (
+                  <td key={nama} className="px-1 py-1 text-sm font-black sm:text-base">
+                    {item ? (
+                      <span aria-label={item.panah ? `${item.teks} dari rumah kanan` : item.teks}>
+                        {item.panah ? <span aria-hidden>← </span> : null}
+                        {item.teks}
+                      </span>
+                    ) : null}
+                  </td>
+                );
+              })}
+            </tr>
+          ) : null}
+          <tr className="bg-sky-50">
+            <td className="px-1 py-2" />
+            {barisAtas.map((_, indeks) => (
+              <td key={RUMAH_ANGKA[indeks]} className="px-1 py-2 text-lg font-black text-[#1C01A5] sm:text-2xl">
+                {catatan?.[indeks]?.coret && isiAtas(indeks) !== "⬜" ? (
+                  <span className="line-through decoration-2 decoration-rose-600">{isiAtas(indeks)}</span>
+                ) : (
+                  isiAtas(indeks)
+                )}
+              </td>
+            ))}
+          </tr>
+          <tr className="bg-violet-50">
+            <td className="px-1 py-2 text-lg font-black text-[#1C01A5]">{operasi}</td>
+            {barisBawah.map((angka, indeks) => (
+              <td key={RUMAH_ANGKA[indeks]} className="px-1 py-2 text-lg font-black text-[#1C01A5] sm:text-2xl">
+                {angka}
+              </td>
+            ))}
+          </tr>
+          {barisHasil ? (
+            <tr className="border-t-2 border-[#1C01A5]/20 bg-emerald-100">
+              <td className="px-1 py-2 text-lg font-black text-emerald-800">=</td>
+              {barisHasil.map((angka, indeks) => (
+                <td key={RUMAH_ANGKA[indeks]} className="px-1 py-2 text-lg font-black text-emerald-900 sm:text-2xl">
+                  {angka}
+                </td>
+              ))}
+            </tr>
+          ) : null}
+        </tbody>
+      </table>
+    </div>
+  );
+}
+
 function KepalaKartu({
   ikon,
   judul,
@@ -145,7 +250,6 @@ function Adegan({
   kelas,
   kelamin,
   penjelasan,
-  simbol,
   children,
 }: {
   judul: string;
@@ -155,14 +259,12 @@ function Adegan({
   kelas?: string;
   kelamin?: KelaminGuru;
   penjelasan: string[];
-  simbol?: ButirIkon[];
   children: ReactNode;
 }) {
   return (
     <section className="space-y-3">
       <p className="text-xs font-black uppercase tracking-wide text-[#1C01A5]">{judul}</p>
       <TombolVoiceMateriPai1 kelas={kelas} kelamin={kelamin} cuplikan={cuplikanKalimat(penjelasan)} />
-      {simbol ? <PanduanIkon butir={simbol} /> : null}
       {/* eslint-disable-next-line @next/next/no-img-element */}
       <img src={src} alt={alt} className="w-full rounded-xl border border-[#1C01A5]/10 bg-white object-cover" />
       <div className="space-y-2">{children}</div>
@@ -573,12 +675,6 @@ function KartuA({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminGuru }) {
             "Penjumlahan bersusun dimulai dari kanan, dari rumah satuan.",
             "Kalau jumlah satu rumah masih satu angka, tulis saja. Belum ada yang disimpan.",
           ]}
-          simbol={[
-            { ikon: "🟡", teks: "Satuan" },
-            { ikon: "🟨", teks: "Puluhan" },
-            { ikon: "🔵", teks: "Ratusan" },
-            { ikon: "🟦", teks: "Ribuan" },
-          ]}
         >
           <Dialog nama="Nisa" anak="Dua kardus buku: 2.431 dan 3.256. Kita jumlahkan dari kanan." />
           <Dialog nama="Farhan" anak="Ribuan dulu? 2 tambah 3 sama dengan 5." />
@@ -587,7 +683,7 @@ function KartuA({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminGuru }) {
           <Dialog nama="Hulu" anak="Kalau setiap rumah hasilnya masih satu angka, tidak ada yang disimpan." />
           <Dialog nama="Nisa" anak="Puluhan 3 + 5 = 8. Ratusan 4 + 2 = 6. Ribuan 2 + 3 = 5." />
           <Dialog nama="Cinta" anak="Jadi 5.687. Tidak ada buku yang pindah ke rak kiri." />
-          <Papan anak={"  2.431\n+ 3.256\n  -----\n  5.687"} />
+          <TabelSusun operasi="+" atas={2431} bawah={3256} hasil={5687} />
           <p className="text-sm font-black text-emerald-800">Kesimpulan: hasil 0 sampai 9 ditulis langsung. Tidak ada simpanan.</p>
           <KuisSuara
             id={idKuis("A", 0)}
@@ -598,7 +694,7 @@ function KartuA({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminGuru }) {
           />
           <TulisBebas
             id={idKuis("A", 1)}
-            visual={<Papan anak={"  4.102\n+ 3.576"} />}
+            visual={<TabelSusun operasi="+" atas={4102} bawah={3576} />}
             pertanyaan="Tulis hasilnya."
             pesanSalah="Jumlahkan dari satuan. Tidak ada yang sepuluh atau lebih."
             bantuan="2 + 6 = 8, 0 + 7 = 7, 1 + 5 = 6, 4 + 3 = 7."
@@ -626,7 +722,13 @@ function KartuA({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminGuru }) {
           <Dialog nama="Cinta" anak="Puluhan 7 + 5, ditambah simpanan 1, jadi 13. Tulis 3, simpan 1 lagi." />
           <Dialog nama="Hulu" anak="Simpanan itu bukan angka baru. Itu sepuluh yang pindah ke kiri." />
           <Dialog nama="Nisa" anak="Ratusan 4 + 3 + 1 = 8. Ribuan 2 + 1 = 3. Hasilnya 3.834." />
-          <Papan anak={"    1 1\n  2.476\n+ 1.358\n  -----\n  3.834"} />
+          <TabelSusun
+            operasi="+"
+            atas={2476}
+            bawah={1358}
+            hasil={3834}
+            catatan={[null, { teks: "1", panah: true }, { teks: "1", panah: true }, null]}
+          />
           <p className="text-sm font-black text-emerald-800">Kesimpulan: lebih dari sembilan, tulis sisa dan simpan 1 ke kiri.</p>
           <KuisSuara
             id={idKuis("A", 2)}
@@ -637,7 +739,7 @@ function KartuA({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminGuru }) {
           />
           <TulisBebas
             id={idKuis("A", 3)}
-            visual={<Papan anak={"  1.508\n+ 2.697"} />}
+            visual={<TabelSusun operasi="+" atas={1508} bawah={2697} />}
             pertanyaan="Tulis hasilnya. Ada simpanan di satuan, puluhan, dan ratusan."
             pesanSalah="8 + 7 = 15. Tulis 5, simpan 1. Jangan lupakan simpanan berikutnya."
             bantuan="Hasilnya 4.205."
@@ -665,7 +767,7 @@ function KartuA({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminGuru }) {
           <Dialog nama="Hulu" anak="Betul. Kalau angka atas cukup, kurangkan saja." />
           <Dialog nama="Nisa" anak="6 − 1 = 5. 7 − 4 = 3. 8 − 3 = 5. 5 − 2 = 3." />
           <Dialog nama="Cinta" anak="Sisa 3.535. Tidak ada rak yang pinjam." />
-          <Papan anak={"  5.876\n− 2.341\n  -----\n  3.535"} />
+          <TabelSusun operasi="−" atas={5876} bawah={2341} hasil={3535} />
           <p className="text-sm font-black text-emerald-800">Kesimpulan: angka atas cukup, langsung dikurangi.</p>
           <KuisSuara
             id={idKuis("A", 4)}
@@ -676,7 +778,7 @@ function KartuA({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminGuru }) {
           />
           <TulisBebas
             id={idKuis("A", 5)}
-            visual={<Papan anak={"  8.964\n− 3.521"} />}
+            visual={<TabelSusun operasi="−" atas={8964} bawah={3521} />}
             pertanyaan="Tulis sisanya."
             pesanSalah="Kurangi dari satuan. Tidak ada yang perlu pinjam."
             bantuan="4 − 1 = 3, 6 − 2 = 4, 9 − 5 = 4, 8 − 3 = 5."
@@ -706,7 +808,32 @@ function KartuA({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminGuru }) {
           <Dialog nama="Nisa" anak="Ratusan 3 jadi 2, puluhan jadi 13. 13 − 7 = 6. Ratusan 2 − 1 = 1. Ribuan 5 − 2 = 3." />
           <Dialog nama="Cinta" anak="Sisa 3.168. Sekarang lihat 4.203 − 1.578. Puluhannya 0." />
           <Dialog nama="Hulu" anak="Nol tidak bisa memberi pinjaman. Pinjaman loncat ke ratusan. Hasilnya 2.625." />
-          <Papan anak={"  5.346 − 2.178 = 3.168\n  4.203 − 1.578 = 2.625"} />
+          <div className="space-y-3">
+            <TabelSusun
+              operasi="−"
+              atas={5346}
+              bawah={2178}
+              hasil={3168}
+              catatan={[
+                null,
+                { teks: "2", coret: true },
+                { teks: "13", panah: true, coret: true },
+                { teks: "16", panah: true, coret: true },
+              ]}
+            />
+            <TabelSusun
+              operasi="−"
+              atas={4203}
+              bawah={1578}
+              hasil={2625}
+              catatan={[
+                { teks: "3", coret: true },
+                { teks: "11", panah: true, coret: true },
+                { teks: "9", panah: true, coret: true },
+                { teks: "13", panah: true, coret: true },
+              ]}
+            />
+          </div>
           <p className="text-sm font-black text-emerald-800">Kesimpulan: yang dipinjam berkurang satu. Rumah nol meneruskan pinjaman ke kiri.</p>
           <KuisSuara
             id={idKuis("A", 6)}
@@ -717,7 +844,7 @@ function KartuA({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminGuru }) {
           />
           <TulisBebas
             id={idKuis("A", 7)}
-            visual={<Papan anak={"  5.020\n− 1.346"} />}
+            visual={<TabelSusun operasi="−" atas={5020} bawah={1346} />}
             pertanyaan="Tulis sisanya, lalu tulis kata pinjam."
             pesanSalah="Puluhan 2 tidak cukup untuk 4, dan ratusan berisi 0. Pinjam dari ribuan."
             bantuan="Hasilnya 3.674."
@@ -745,7 +872,13 @@ function KartuA({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminGuru }) {
           <Dialog nama="Cinta" anak="Satuan 0 + 5 = 5. Puluhan 5 + 7 = 12. Tulis 2, simpan 1." />
           <Dialog nama="Nisa" anak="Ratusan 3 + 4 + 1 = 8. Ribuan 2 + 1 = 3. Sekarang ada 3.825." />
           <Dialog nama="Hulu" anak="Kata kuncinya yang memilih operasi. Baru setelah itu kita menghitung." />
-          <Papan anak={"2.350 + 1.475 = 3.825"} />
+          <TabelSusun
+            operasi="+"
+            atas={2350}
+            bawah={1475}
+            hasil={3825}
+            catatan={[null, { teks: "1", panah: true }, null, null]}
+          />
           <p className="text-sm font-black text-emerald-800">Kesimpulan: tentukan tambah atau kurang sebelum menyusun hitungan.</p>
           <KuisSuara
             id={idKuis("A", 8)}
@@ -756,7 +889,7 @@ function KartuA({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminGuru }) {
           />
           <TulisBebas
             id={idKuis("A", 9)}
-            visual={<Papan anak="Pagi 1.864 pengunjung. Siang datang 2.357." />}
+            visual={<TabelSusun operasi="+" atas={1864} bawah={2357} />}
             pertanyaan="Tulis jumlahnya, dan tulis kata tambah."
             pesanSalah="Datang berarti dijumlahkan. Jangan lupakan simpanannya."
             bantuan="1.864 + 2.357 = 4.221."
@@ -770,7 +903,7 @@ function KartuA({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminGuru }) {
         <Pilih
           id={idKuis("A", 10)}
           pertanyaan="1. Pada 2.476 + 1.358, berapa yang disimpan dari satuan ke puluhan?"
-          visual={<Papan anak="6 + 8 = 14" />}
+          visual={<TabelSusun operasi="+" atas={2476} bawah={1358} />}
           pilihan={[
             { huruf: "A", teks: "0, karena 14 masih muat" },
             { huruf: "B", teks: "1, karena 14 berarti satu puluhan" },
@@ -811,7 +944,7 @@ function KartuA({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminGuru }) {
         <Pilih
           id={idKuis("A", 14)}
           pertanyaan="5. 3.⬜25 + 1.460 = 4.885. Angka yang hilang adalah..."
-          visual={<Papan anak="3.⬜25 + 1.460 = 4.885" />}
+          visual={<TabelSusun operasi="+" atas={3025} bawah={1460} hasil={4885} kosong={1} />}
           pilihan={[
             { huruf: "A", teks: "2" },
             { huruf: "B", teks: "3" },
@@ -857,7 +990,7 @@ function KartuB({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminGuru }) {
         >
           <p className="text-sm font-black text-[#1C01A5]">Contoh: 1.203 + 4.571</p>
           <Langkah butir={["Satuan 3 + 1 = 4.", "Puluhan 0 + 7 = 7.", "Ratusan 2 + 5 = 7.", "Ribuan 1 + 4 = 5."]} />
-          <Papan anak="1.203 + 4.571 = 5.774" />
+          <TabelSusun operasi="+" atas={1203} bawah={4571} hasil={5774} />
           <p className="text-sm font-black text-emerald-800">Trik: masih satu angka? Tulis saja.</p>
           <KuisSuara
             id={idKuis("B", 0)}
@@ -868,7 +1001,7 @@ function KartuB({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminGuru }) {
           />
           <TulisBebas
             id={idKuis("B", 1)}
-            visual={<Papan anak="3.240 + 2.516" />}
+            visual={<TabelSusun operasi="+" atas={3240} bawah={2516} />}
             pertanyaan="Tulis hasilnya."
             pesanSalah="Tidak ada yang sepuluh atau lebih."
             bantuan="0 + 6 = 6, 4 + 1 = 5, 2 + 5 = 7, 3 + 2 = 5."
@@ -890,7 +1023,13 @@ function KartuB({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminGuru }) {
         >
           <p className="text-sm font-black text-[#1C01A5]">Contoh: 4.278 + 1.653</p>
           <Langkah butir={["8 + 3 = 11, tulis 1, simpan 1.", "7 + 5 + 1 = 13, tulis 3, simpan 1.", "2 + 6 + 1 = 9.", "4 + 1 = 5."]} />
-          <Papan anak="4.278 + 1.653 = 5.931" />
+          <TabelSusun
+            operasi="+"
+            atas={4278}
+            bawah={1653}
+            hasil={5931}
+            catatan={[null, { teks: "1", panah: true }, { teks: "1", panah: true }, null]}
+          />
           <p className="text-sm font-black text-emerald-800">Trik: yang ditulis bukan 11, melainkan 1.</p>
           <KuisSuara
             id={idKuis("B", 2)}
@@ -901,7 +1040,7 @@ function KartuB({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminGuru }) {
           />
           <TulisBebas
             id={idKuis("B", 3)}
-            visual={<Papan anak="2.847 + 1.365" />}
+            visual={<TabelSusun operasi="+" atas={2847} bawah={1365} />}
             pertanyaan="Tulis hasilnya."
             pesanSalah="Ada simpanan di satuan, puluhan, dan ratusan."
             bantuan="Hasilnya 4.212."
@@ -923,7 +1062,7 @@ function KartuB({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminGuru }) {
         >
           <p className="text-sm font-black text-[#1C01A5]">Contoh: 7.865 − 2.431</p>
           <Langkah butir={["5 − 1 = 4.", "6 − 3 = 3.", "8 − 4 = 4.", "7 − 2 = 5."]} />
-          <Papan anak="7.865 − 2.431 = 5.434" />
+          <TabelSusun operasi="−" atas={7865} bawah={2431} hasil={5434} />
           <p className="text-sm font-black text-emerald-800">Trik: cukup? Langsung kurang.</p>
           <KuisSuara
             id={idKuis("B", 4)}
@@ -934,7 +1073,7 @@ function KartuB({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminGuru }) {
           />
           <TulisBebas
             id={idKuis("B", 5)}
-            visual={<Papan anak="6.489 − 1.253" />}
+            visual={<TabelSusun operasi="−" atas={6489} bawah={1253} />}
             pertanyaan="Tulis sisanya."
             pesanSalah="Semua angka atas lebih besar."
             bantuan="9 − 3 = 6, 8 − 5 = 3, 4 − 2 = 2, 6 − 1 = 5."
@@ -956,7 +1095,18 @@ function KartuB({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminGuru }) {
         >
           <p className="text-sm font-black text-[#1C01A5]">Contoh: 8.045 − 2.617</p>
           <Langkah butir={["Satuan 5 pinjam. Puluhan 4 jadi 3, satuan 15 − 7 = 8.", "Puluhan 3 − 1 = 2.", "Ratusan 0, jadi pinjam dari ribuan. 10 − 6 = 4.", "Ribuan 7 − 2 = 5."]} />
-          <Papan anak="8.045 − 2.617 = 5.428" />
+          <TabelSusun
+            operasi="−"
+            atas={8045}
+            bawah={2617}
+            hasil={5428}
+            catatan={[
+              { teks: "7", coret: true },
+              { teks: "10", panah: true, coret: true },
+              { teks: "3", coret: true },
+              { teks: "15", panah: true, coret: true },
+            ]}
+          />
           <p className="text-sm font-black text-emerald-800">Trik: rumah 0 meneruskan pinjaman.</p>
           <KuisSuara
             id={idKuis("B", 6)}
@@ -967,7 +1117,7 @@ function KartuB({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminGuru }) {
           />
           <TulisBebas
             id={idKuis("B", 7)}
-            visual={<Papan anak="4.006 − 1.238" />}
+            visual={<TabelSusun operasi="−" atas={4006} bawah={1238} />}
             pertanyaan="Tulis sisanya, lalu tulis rumah awal pinjamannya: ribuan."
             pesanSalah="Puluhan dan ratusan berisi 0. Pinjaman dimulai dari ribuan."
             bantuan="Hasilnya 2.768."
@@ -989,7 +1139,13 @@ function KartuB({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminGuru }) {
         >
           <p className="text-sm font-black text-[#1C01A5]">Contoh: ada 3.480 pensil, terpakai 1.265. Sisa?</p>
           <Langkah butir={["Terpakai berarti kurang.", "0 pinjam, 10 − 5 = 5.", "7 − 6 = 1. 4 − 2 = 2. 3 − 1 = 2."]} />
-          <Papan anak="3.480 − 1.265 = 2.215" />
+          <TabelSusun
+            operasi="−"
+            atas={3480}
+            bawah={1265}
+            hasil={2215}
+            catatan={[null, null, { teks: "7", coret: true }, { teks: "10", panah: true, coret: true }]}
+          />
           <p className="text-sm font-black text-emerald-800">Trik: baca kata kerjanya dulu.</p>
           <KuisSuara
             id={idKuis("B", 8)}
@@ -1000,7 +1156,7 @@ function KartuB({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminGuru }) {
           />
           <TulisBebas
             id={idKuis("B", 9)}
-            visual={<Papan anak="5.200 kartu dibagikan 1.750." />}
+            visual={<TabelSusun operasi="−" atas={5200} bawah={1750} />}
             pertanyaan="Tulis sisanya, dan tulis kata kurang."
             pesanSalah="Dibagikan berarti pengurangan. Ratusan berisi 2, puluhan berisi 0."
             bantuan="5.200 − 1.750 = 3.450."
@@ -1014,7 +1170,7 @@ function KartuB({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminGuru }) {
         <Pilih
           id={idKuis("B", 10)}
           pertanyaan="1. Angka 1 yang ditulis di satuan pada 4.278 + 1.653 berasal dari..."
-          visual={<Papan anak="8 + 3 = 11" />}
+          visual={<TabelSusun operasi="+" atas={4278} bawah={1653} />}
           pilihan={[
             { huruf: "A", teks: "Simpanan dari puluhan" },
             { huruf: "B", teks: "Sisa dari 11, yaitu angka 1" },
@@ -1055,7 +1211,7 @@ function KartuB({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminGuru }) {
         <Pilih
           id={idKuis("B", 14)}
           pertanyaan="5. 5.2⬜0 − 1.346 = 3.674. Angka yang hilang adalah..."
-          visual={<Papan anak="5.2⬜0 − 1.346 = 3.674" />}
+          visual={<TabelSusun operasi="−" atas={5200} bawah={1346} hasil={3674} kosong={2} />}
           pilihan={[
             { huruf: "A", teks: "0" },
             { huruf: "B", teks: "2" },
@@ -1180,7 +1336,7 @@ function KartuC({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminGuru }) {
         <Pilih
           id={idKuis("C", 15)}
           pertanyaan="6. ⬜ + 1.358 = 3.834. Bilangan yang hilang adalah..."
-          visual={<Papan anak="⬜ + 1.358 = 3.834" />}
+          visual={<TabelSusun operasi="+" atas={0} bawah={1358} hasil={3834} kosong="atas" />}
           pilihan={[
             { huruf: "A", teks: "2.476" },
             { huruf: "B", teks: "2.486" },
@@ -1227,7 +1383,7 @@ function KartuC({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminGuru }) {
         <TulisBebas
           id={idKuis("C", 19)}
           judul="Jejak simpanan"
-          visual={<Papan anak="4.278 + 1.653" />}
+          visual={<TabelSusun operasi="+" atas={4278} bawah={1653} />}
           pertanyaan="Tulis hasilnya, lalu tulis berapa kali kamu menyimpan."
           pesanSalah="Satuan dan puluhan menyimpan. Ratusan tidak."
           bantuan="Hasilnya 5.931. Menyimpan dua kali."
@@ -1281,7 +1437,7 @@ function LembarEvaluasi({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminG
         <TulisBebas
           id={idKuis("D", 0)}
           judul="1. Pinjaman melewati nol"
-          visual={<Papan anak={"  8.003\n− 2.567"} />}
+          visual={<TabelSusun operasi="−" atas={8003} bawah={2567} />}
           pertanyaan="Tulis sisanya, lalu tulis rumah awal pinjamannya."
           pesanSalah="Puluhan dan ratusan berisi 0. Pinjaman dimulai dari ribuan."
           bantuan="Hasilnya 5.436. Pinjam dari ribuan."
@@ -1293,7 +1449,7 @@ function LembarEvaluasi({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminG
         <Pilih
           id={idKuis("D", 1)}
           pertanyaan="2. Pada 2.476 + 1.358, apa yang ditulis di puluhan?"
-          visual={<Papan anak="Puluhan: 7 + 5 + simpanan 1" />}
+          visual={<TabelSusun operasi="+" atas={2476} bawah={1358} />}
           pilihan={[
             { huruf: "A", teks: "3, karena ada simpanan 1 dari satuan" },
             { huruf: "B", teks: "12, karena 7 + 5" },
@@ -1337,7 +1493,7 @@ function LembarEvaluasi({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminG
         <TulisBebas
           id={idKuis("D", 5)}
           judul="6. Berapa kali menyimpan?"
-          visual={<Papan anak="3.756 + 2.845" />}
+          visual={<TabelSusun operasi="+" atas={3756} bawah={2845} />}
           pertanyaan="Tulis hasilnya, lalu tulis berapa kali kamu menyimpan."
           pesanSalah="Satuan, puluhan, dan ratusan semuanya menyimpan."
           bantuan="Hasilnya 6.601. Menyimpan tiga kali."
