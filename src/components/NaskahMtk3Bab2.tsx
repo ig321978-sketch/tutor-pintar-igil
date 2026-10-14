@@ -277,7 +277,17 @@ function TabelSusun({
           pusatAsal.x,
           pusatAsal.y,
         );
-        return [{ id, x1: pangkal.x, y1: pangkal.y, x2: ujung.x, y2: ujung.y }];
+        const jarakX = ujung.x - pangkal.x;
+        const jarakY = ujung.y - pangkal.y;
+        const panjang = Math.hypot(jarakX, jarakY) || 1;
+        const celah = Math.min(8, Math.max(0, (panjang - 14) / 2));
+        return [{
+          id,
+          x1: pangkal.x + (jarakX / panjang) * celah,
+          y1: pangkal.y + (jarakY / panjang) * celah,
+          x2: ujung.x - (jarakX / panjang) * celah,
+          y2: ujung.y - (jarakY / panjang) * celah,
+        }];
       });
       const kunci = `${Math.round(batas.width)}x${Math.round(batas.height)}|${berikutnya
         .map((item) => `${item.id}:${Math.round(item.x1)},${Math.round(item.y1)},${Math.round(item.x2)},${Math.round(item.y2)}`)
@@ -323,10 +333,7 @@ function TabelSusun({
                 if (hanyaTerima && kurang) {
                   return (
                     <td key={RUMAH_ANGKA[indeks]} className="px-0.5 align-middle">
-                      <span
-                        data-terima={String(indeks - 1)}
-                        className="inline-block whitespace-nowrap text-xl font-black text-rose-600 sm:text-2xl"
-                      >
+                      <span data-terima={String(indeks - 1)} className={ANGKA_PINDAH}>
                         {kurang.kerja[indeks]}
                       </span>
                     </td>
@@ -352,6 +359,9 @@ function TabelSusun({
                   const tambah = jejakTambah?.[indeks];
                   const kurang = jejakKurang;
                   const hanyaTerima = Boolean(kurang?.terima[indeks] && !kurang.beri[indeks]);
+                  const sisaPemberi = Boolean(
+                    kurang?.beri[indeks] && !kurang.terima[indeks] && kurang.kerja[indeks] !== kurang.asli[indeks],
+                  );
                   const angkaTengah = hanyaTerima
                     ? ""
                     : tambah && tambah.masuk > 0
@@ -363,7 +373,7 @@ function TabelSusun({
                   return (
                     <td key={RUMAH_ANGKA[indeks]} className="px-0.5 pb-1">
                       {angkaTengah ? (
-                        <span className={ANGKA_PINDAH} data-terima={kepalaPanah}>
+                        <span className={sisaPemberi ? ANGKA_BESAR : ANGKA_PINDAH} data-terima={kepalaPanah}>
                           {angkaTengah}
                         </span>
                       ) : null}
@@ -411,8 +421,17 @@ function TabelSusun({
             aria-hidden
           >
             <defs>
-              <marker id={`ujung-${tanda}`} viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto">
-                <path d="M0 0 L10 5 L0 10 Z" fill={operasi === "−" ? "#e11d48" : "#ea580c"} />
+              <marker
+                id={`ujung-${tanda}`}
+                viewBox="0 0 10 10"
+                refX="8"
+                refY="5"
+                markerWidth="8"
+                markerHeight="8"
+                markerUnits="userSpaceOnUse"
+                orient="auto"
+              >
+                <path d="M1 1.5 L8.5 5 L1 8.5 Z" fill={operasi === "−" ? "#e11d48" : "#ea580c"} />
               </marker>
             </defs>
             {garis.map((item) => (
@@ -423,7 +442,7 @@ function TabelSusun({
                 x2={item.x2}
                 y2={item.y2}
                 stroke={operasi === "−" ? "#e11d48" : "#ea580c"}
-                strokeWidth="2.5"
+                strokeWidth="1.6"
                 markerEnd={`url(#ujung-${tanda})`}
               />
             ))}
