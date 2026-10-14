@@ -226,6 +226,16 @@ const SUBBAB_BUKU_SISWA: Record<string, Record<string, Record<string, string[]>>
         "Poin penting",
         "Lembar evaluasi siswa",
       ],
+      "Bab 7: Waktu dan Durasi": [
+        "Membaca jam",
+        "Menit dan detik",
+        "Lama kegiatan",
+        "Jam mulai dan selesai",
+        "Kalender",
+        "Pos Panggung Igil",
+        "Poin penting",
+        "Lembar evaluasi siswa",
+      ],
     },
   },
   "4 SD": {
