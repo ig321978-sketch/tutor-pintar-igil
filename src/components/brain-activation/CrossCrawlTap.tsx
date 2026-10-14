@@ -6,17 +6,25 @@ import { bunyiKetukan, bunyiSalah, siapkanAudioPemanasan } from "@/components/br
 type Sisi = "kiri" | "kanan";
 
 export default function CrossCrawlTap({
-  targetRounds,
+  targetKetukan,
   tempoBpm,
+  ikonKiri,
+  ikonKanan,
+  namaKiri,
+  namaKanan,
   onProgress,
   onSelesai,
 }: {
-  targetRounds: number;
+  targetKetukan: number;
   tempoBpm: number;
+  ikonKiri: string;
+  ikonKanan: string;
+  namaKiri: string;
+  namaKanan: string;
   onProgress: (persen: number) => void;
   onSelesai: () => void;
 }) {
-  const target = Math.max(2, targetRounds) * 2;
+  const target = Math.max(8, targetKetukan);
   const jedaMs = Math.round(60000 / Math.max(48, tempoBpm));
   const [mulai, setMulai] = useState(false);
   const [giliran, setGiliran] = useState<Sisi>("kiri");
@@ -105,7 +113,7 @@ export default function CrossCrawlTap({
       <button
         type="button"
         onClick={() => ketuk(sisi)}
-        aria-label={aktif ? `Ketuk rak ${nama} sekarang` : `Rak ${nama}`}
+        aria-label={aktif ? `Ketuk ${nama} sekarang` : nama}
         className={`touch-manipulation min-h-36 rounded-3xl border-4 px-3 py-4 text-center shadow-sm transition sm:min-h-48 ${
           aktif
             ? "animate-pulse border-amber-300 bg-amber-50 ring-4 ring-amber-200"
@@ -115,7 +123,7 @@ export default function CrossCrawlTap({
         <span className="block text-5xl" aria-hidden>
           {ikon}
         </span>
-        <span className="mt-2 block text-lg font-black text-[#1C01A5]">Rak {nama}</span>
+        <span className="mt-2 block text-lg font-black text-[#1C01A5]">{nama}</span>
         <span className="mt-1 block text-sm font-bold text-teal-800">
           {aktif ? "Pilihan Hulu" : mulai ? "Tunggu Hulu" : "Siap"}
         </span>
@@ -128,9 +136,9 @@ export default function CrossCrawlTap({
       <p className="mb-3 text-center text-sm font-black text-teal-800">
         {mulai
           ? terbuka
-            ? `Hulu mengetuk rak ${giliran}. Ketukan benar ${hitung} dari ${target}.`
+            ? `Hulu mengetuk ${giliran === "kiri" ? namaKiri.toLowerCase() : namaKanan.toLowerCase()}. Ketukan benar ${hitung} dari ${target}.`
             : `Ketukan benar ${hitung} dari ${target}.`
-          : "Tunggu Hulu mengetuk, lalu ketuk rak yang sama."}
+          : "Tunggu Hulu mengetuk, lalu ketuk yang sama."}
       </p>
       {salah > 0 ? (
         <p
@@ -142,8 +150,8 @@ export default function CrossCrawlTap({
         </p>
       ) : null}
       <div className="grid grid-cols-2 gap-3 sm:gap-5">
-        {tombol("kiri", "📚", "kiri")}
-        {tombol("kanan", "📖", "kanan")}
+        {tombol("kiri", ikonKiri, namaKiri)}
+        {tombol("kanan", ikonKanan, namaKanan)}
       </div>
       {mulai ? null : (
         <button
