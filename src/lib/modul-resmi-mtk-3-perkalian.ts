@@ -13,10 +13,10 @@ export const MODUL_MTK3_PERKALIAN: ModulResmiPai = {
   judul: JUDUL_MTK3_PERKALIAN,
   pola: /bab 3: perkalian( sampai 100)?/,
   motivasi:
-    "Nisa, Farhan, dan Cinta belajar perkalian sampai 100 bersama burung hantu Hulu di kios balon taman.",
+    "Nisa, Farhan, dan Cinta belajar perkalian sampai 100 bersama burung hantu Igil di kios balon taman.",
   kunciJawaban: "B,C,B,B,C,A,A,C,C,B",
   sketsaKartu: [
-    "Nisa, Farhan, dan Cinta menghitung ikat balon bersama burung hantu Hulu.",
+    "Nisa, Farhan, dan Cinta menghitung ikat balon bersama burung hantu Igil.",
     "Penjumlahan berulang, sifat pertukaran, sifat pengelompokan, dan pecahan puluhan.",
     "Sepuluh pos pola di taman balon.",
     "Poin penting dan lembar evaluasi perkalian.",
@@ -87,7 +87,7 @@ D) Ketiganya sama`,
     {
       kode: "A",
       judul: "A. Naskah Bergambar",
-      pengantar: "Nisa, Farhan, Cinta, dan Hulu mengubah penjumlahan berulang menjadi perkalian di kios balon.",
+      pengantar: "Nisa, Farhan, Cinta, dan Igil mengubah penjumlahan berulang menjadi perkalian di kios balon.",
       labelDaftar: "Lima adegan kios balon",
       kolom: 1,
       item: [
@@ -210,7 +210,7 @@ D) Ketiganya sama`,
     },
     {
       kode: "C",
-      judul: "C. Pos Balon Hulu",
+      judul: "C. Pos Balon Igil",
       pengantar: "Sepuluh soal pola: deret, angka hilang, analogi, dan mana yang beda.",
       labelDaftar: "Sepuluh soal pola",
       kolom: 1,

@@ -51,14 +51,14 @@ const WARNA_DIALOG: Record<string, string> = {
   Nisa: "border-teal-300 bg-teal-50",
   Farhan: "border-orange-300 bg-orange-50",
   Cinta: "border-violet-300 bg-violet-50",
-  Hulu: "border-amber-300 bg-amber-50",
+  Igil: "border-amber-300 bg-amber-50",
 };
 
 const WAJAH_DIALOG: Record<string, string> = {
   Nisa: "👧",
   Farhan: "👦",
   Cinta: "👧",
-  Hulu: "🦉",
+  Igil: "🦉",
 };
 
 function Dialog({ nama, anak }: { nama: string; anak: string }) {
@@ -568,7 +568,7 @@ function KartuA({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminGuru }) {
       <KepalaKartu
         ikon="🎈🦉"
         judul={kartu.judul}
-        anak="Nisa, Farhan, Cinta, dan Hulu di kios balon"
+        anak="Nisa, Farhan, Cinta, dan Igil di kios balon"
         kelas={kelas}
         kelamin={kelamin}
         cuplikan={cuplikanKalimat(kartu.voice[0] ?? [])}
@@ -580,7 +580,7 @@ function KartuA({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminGuru }) {
         <Adegan
           judul="Sub-bab 1 — Perkalian sebagai penjumlahan berulang"
           src="/doodle-mtk/mtk-3-perkalian-sub1.jpg"
-          alt="Empat ikat balon di meja kios taman. Nisa, Farhan, Cinta, dan burung hantu Hulu menghitungnya."
+          alt="Empat ikat balon di meja kios taman. Nisa, Farhan, Cinta, dan burung hantu Igil menghitungnya."
           kelas={kelas}
           kelamin={kelamin}
           penjelasan={[
@@ -590,7 +590,7 @@ function KartuA({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminGuru }) {
           <Dialog nama="Nisa" anak="Ada 4 ikat. Tiap ikat berisi 6 balon." />
           <Dialog nama="Farhan" anak="Kalau dijumlah: 6 + 6 + 6 + 6." />
           <Dialog nama="Cinta" anak="Lebih cepat: 4 × 6 = 24." />
-          <Dialog nama="Hulu" anak="Perkalian itu penjumlahan yang sama, diulang." />
+          <Dialog nama="Igil" anak="Perkalian itu penjumlahan yang sama, diulang." />
           <Ikat jumlah={4} isi={6} />
           <KuisSuara
             id={idKuis("A", 0)}
@@ -623,7 +623,7 @@ function KartuA({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminGuru }) {
         >
           <Dialog nama="Nisa" anak="8 ikat, tiap ikat 6 balon. Bentuknya 8 × 6." />
           <Dialog nama="Farhan" anak="Aku lebih hafal 6 × 8." />
-          <Dialog nama="Hulu" anak="Boleh dibalik. Hasilnya tetap sama." />
+          <Dialog nama="Igil" anak="Boleh dibalik. Hasilnya tetap sama." />
           <Dialog nama="Cinta" anak="8 × 6 = 48. 6 × 8 = 48." />
           <Rumus
             baris={[
@@ -655,7 +655,7 @@ function KartuA({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminGuru }) {
         <Adegan
           judul="Sub-bab 3 — Sifat pengelompokan"
           src="/doodle-mtk/mtk-3-perkalian-sub3.jpg"
-          alt="Balon tersusun dua dus. Tiap dus ada beberapa ikat. Hulu menunjuk kelompok yang dikerjakan dulu."
+          alt="Balon tersusun dua dus. Tiap dus ada beberapa ikat. Igil menunjuk kelompok yang dikerjakan dulu."
           kelas={kelas}
           kelamin={kelamin}
           penjelasan={["Tiga bilangan boleh dikerjakan dari kelompok mana pun. Hasil akhirnya sama."]}
@@ -663,7 +663,7 @@ function KartuA({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminGuru }) {
           <Dialog nama="Nisa" anak="2 dus. Tiap dus 5 ikat. Tiap ikat 3 balon." />
           <Dialog nama="Farhan" anak="Aku hitung 2 × 5 dulu. Itu 10. Lalu 10 × 3 = 30." />
           <Dialog nama="Cinta" anak="Aku hitung 5 × 3 dulu. Itu 15. Lalu 2 × 15 = 30." />
-          <Dialog nama="Hulu" anak="Kelompoknya beda. Hasilnya sama." />
+          <Dialog nama="Igil" anak="Kelompoknya beda. Hasilnya sama." />
           <Rumus
             baris={[
               { teks: "(2 × 5) × 3 = 30", hasil: true },
@@ -711,7 +711,7 @@ function KartuA({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminGuru }) {
           <Dialog nama="Nisa" anak="Satu ikat berisi 12 balon. Ada 4 ikat." />
           <Dialog nama="Farhan" anak="12 itu 10 dan 2." />
           <Dialog nama="Cinta" anak="10 × 4 = 40. 2 × 4 = 8. 40 + 8 = 48." />
-          <Dialog nama="Hulu" anak="Pecah dulu. Lalu jumlahkan." />
+          <Dialog nama="Igil" anak="Pecah dulu. Lalu jumlahkan." />
           <Rumus
             baris={[
               { teks: "12 × 4" },
@@ -758,7 +758,7 @@ function KartuA({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminGuru }) {
           <Dialog nama="Nisa" anak="Setiap tamu dapat 7 balon. Ada 4 tamu." />
           <Dialog nama="Farhan" anak="Kata setiap berarti kali." />
           <Dialog nama="Cinta" anak="4 × 7 = 28." />
-          <Dialog nama="Hulu" anak="Tiap dan masing-masing juga berarti kali." />
+          <Dialog nama="Igil" anak="Tiap dan masing-masing juga berarti kali." />
           <Ikat jumlah={4} isi={7} />
           <KuisSuara
             id={idKuis("A", 8)}
@@ -1125,7 +1125,7 @@ function KartuC({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminGuru }) {
       {/* eslint-disable-next-line @next/next/no-img-element */}
       <img
         src="/doodle-mtk/mtk-3-perkalian-permainan.jpg"
-        alt="Sepuluh pos balon di taman. Burung hantu Hulu memegang stempel."
+        alt="Sepuluh pos balon di taman. Burung hantu Igil memegang stempel."
         className="mt-4 w-full rounded-xl border border-[#1C01A5]/10 bg-white object-cover"
       />
       <p className="mt-3 text-center text-sm font-semibold text-slate-600">Sepuluh soal pola. Pilih satu pos, lalu jawab.</p>
@@ -1154,7 +1154,7 @@ function LembarEvaluasi({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminG
     }
     return jumlahSkor;
   }, [kuis]);
-  const lencana = skor >= 9 ? "🦉 Penjaga Kios Ulung" : skor >= 6 ? "🎈 Perangkai Balon" : "🦉 Sahabat Hulu";
+  const lencana = skor >= 9 ? "🦉 Penjaga Kios Ulung" : skor >= 6 ? "🎈 Perangkai Balon" : "🦉 Sahabat Igil";
   const pesan =
     skor >= 9
       ? "Luar biasa! Perkalianmu cepat dan tepat."
@@ -1174,7 +1174,7 @@ function LembarEvaluasi({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminG
       {/* eslint-disable-next-line @next/next/no-img-element */}
       <img
         src="/doodle-mtk/mtk-3-perkalian-evaluasi.jpg"
-        alt="Nisa, Farhan, dan Cinta mengerjakan soal di meja taman. Hulu menunggu di samping kios."
+        alt="Nisa, Farhan, dan Cinta mengerjakan soal di meja taman. Igil menunggu di samping kios."
         className="mt-4 w-full rounded-xl border border-[#1C01A5]/10 bg-white object-cover"
       />
       <div className="mt-4 space-y-4">
@@ -1324,7 +1324,7 @@ export default function NaskahMtk3Perkalian({
         kelamin={kelamin}
         gambar={{
           src: "/doodle-mtk/mtk-3-perkalian-poin.jpg",
-          alt: "Burung hantu Hulu di samping kios balon, menunjuk enam kalimat kunci.",
+          alt: "Burung hantu Igil di samping kios balon, menunjuk enam kalimat kunci.",
         }}
         cuplikan={cuplikanKalimat([
           "Ini yang perlu kalian ingat. Perkalian mengulang penjumlahan yang sama.",

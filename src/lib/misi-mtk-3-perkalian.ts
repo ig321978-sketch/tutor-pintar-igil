@@ -2,7 +2,7 @@ import type { MisiPetak } from "@/lib/misi-kebun-mtk-1";
 import type { TemaMisi } from "@/lib/tema-misi-mtk-1";
 
 export const TEMA_MTK3_PERKALIAN: TemaMisi = {
-  pemandu: "Hulu",
+  pemandu: "Igil",
   pengantar: "Sepuluh soal pola. Pilih satu pos, lalu jawab.",
   satuan: "Pos",
   ikonAwal: "🎈",
