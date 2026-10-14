@@ -35,6 +35,7 @@ import { MODUL_MTK3_PECAHAN } from "@/lib/modul-resmi-mtk-3-pecahan";
 import { MODUL_MTK3_UKUR } from "@/lib/modul-resmi-mtk-3-ukur";
 import { MODUL_MTK3_WAKTU } from "@/lib/modul-resmi-mtk-3-waktu";
 import { MODUL_MTK3_UANG } from "@/lib/modul-resmi-mtk-3-uang";
+import { MODUL_MTK3_POLA } from "@/lib/modul-resmi-mtk-3-pola";
 import { MODUL_MTK3_BAB3 } from "@/lib/modul-resmi-mtk-3-bab3";
 import { MODUL_PANCASILA1_BAB1 } from "@/lib/modul-resmi-pancasila-1-bab1";
 import { MODUL_PANCASILA1_BAB2 } from "@/lib/modul-resmi-pancasila-1-bab2";
@@ -517,6 +518,20 @@ export function adalahMtk3Uang(
 ): boolean {
   if (!kelasTigaSd(kelas)) return false;
   return adalahJudulMtk3Uang(mapel, materi);
+}
+
+export function adalahJudulMtk3Pola(mapel: string, materi: string): boolean {
+  if (!adalahMapelMatematika(mapel)) return false;
+  return MODUL_MTK3_POLA.pola.test(normJudul(materi));
+}
+
+export function adalahMtk3Pola(
+  kelas: string,
+  mapel: string,
+  materi: string,
+): boolean {
+  if (!kelasTigaSd(kelas)) return false;
+  return adalahJudulMtk3Pola(mapel, materi);
 }
 
 export function adalahJudulMtk3Bab3(mapel: string, materi: string): boolean {
@@ -1009,6 +1024,7 @@ export function daftarNaskahResmiPublik(): ModulTerbitPublik[] {
     { kelas: "3 SD", mapel: "Matematika", materi: MODUL_MTK3_PECAHAN.judul },
     { kelas: "3 SD", mapel: "Matematika", materi: MODUL_MTK3_UKUR.judul },
     { kelas: "3 SD", mapel: "Matematika", materi: MODUL_MTK3_UANG.judul },
+    { kelas: "3 SD", mapel: "Matematika", materi: MODUL_MTK3_POLA.judul },
     { kelas: "3 SD", mapel: "Matematika", materi: MODUL_MTK3_BAB3.judul },
     ...MODUL_PANCASILA1_BAB1_4.map((modul) => ({
       kelas: "1 SD",
@@ -1143,6 +1159,9 @@ export function naskahResmiJikaAda(
   }
   if (adalahMtk3Uang(kelas, mapel, materi)) {
     return isiCacheDariModulResmi(MODUL_MTK3_UANG);
+  }
+  if (adalahMtk3Pola(kelas, mapel, materi)) {
+    return isiCacheDariModulResmi(MODUL_MTK3_POLA);
   }
   if (adalahMtk3Bab3(kelas, mapel, materi)) {
     return isiCacheDariModulResmi(MODUL_MTK3_BAB3);
