@@ -6,12 +6,12 @@ function pg(soal: string[]): string {
   return soal.join("\n\n");
 }
 
-export const JUDUL_MTK3_PERKALIAN = "Bab 3: Perkalian sampai 100";
+export const JUDUL_MTK3_PERKALIAN = "Bab 3: Perkalian";
 
 export const MODUL_MTK3_PERKALIAN: ModulResmiPai = {
   id: "mtk-3-perkalian",
   judul: JUDUL_MTK3_PERKALIAN,
-  pola: /perkalian sampai 100/,
+  pola: /bab 3: perkalian( sampai 100)?/,
   motivasi:
     "Alya, Danu, dan Cika belajar perkalian sampai 100 bersama landak Landak Bulat di kebun stroberi.",
   kunciJawaban: "B,C,B,B,C,B,B,B,C,B",

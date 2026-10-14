@@ -176,7 +176,7 @@ const SUBBAB_BUKU_SISWA: Record<string, Record<string, Record<string, string[]>>
         "Poin penting",
         "Lembar evaluasi siswa",
       ],
-      "Bab 2: Penjumlahan dan Pengurangan sampai 10.000": [
+      "Bab 2: Penjumlahan dan Pengurangan": [
         "Penjumlahan tanpa menyimpan",
         "Penjumlahan dengan menyimpan",
         "Pengurangan tanpa meminjam",
@@ -186,7 +186,7 @@ const SUBBAB_BUKU_SISWA: Record<string, Record<string, Record<string, string[]>>
         "Poin penting",
         "Lembar evaluasi siswa",
       ],
-      "Bab 3: Perkalian sampai 100": [
+      "Bab 3: Perkalian": [
         "Perkalian sebagai penjumlahan berulang",
         "Sifat pertukaran",
         "Sifat pengelompokan",

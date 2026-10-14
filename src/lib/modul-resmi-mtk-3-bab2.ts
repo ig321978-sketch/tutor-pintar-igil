@@ -6,12 +6,12 @@ function pg(soal: string[]): string {
   return soal.join("\n\n");
 }
 
-export const JUDUL_MTK3_BAB2 = "Bab 2: Penjumlahan dan Pengurangan sampai 10.000";
+export const JUDUL_MTK3_BAB2 = "Bab 2: Penjumlahan dan Pengurangan";
 
 export const MODUL_MTK3_BAB2: ModulResmiPai = {
   id: "mtk-3-bab2",
   judul: JUDUL_MTK3_BAB2,
-  pola: /penjumlahan dan pengurangan sampai 10\.?000/,
+  pola: /penjumlahan dan pengurangan( sampai 10\.?000)?/,
   motivasi:
     "Nisa, Farhan, dan Cinta belajar menjumlahkan dan mengurangkan bilangan sampai 10.000 bersama burung hantu Hulu di perpustakaan keliling.",
   kunciJawaban: "A,B,A,B,A,C,B,A,A,A",
