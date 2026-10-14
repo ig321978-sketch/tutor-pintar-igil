@@ -768,6 +768,7 @@ function KartuB({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminGuru }) {
           penjelasan={["Panjang di angka 12 berarti tepat. Angka lain dikali 5 menjadi menit."]}
         >
           <PetaContoh
+            polos
             pusat="Membaca jam"
             cabang={[
               { ikon: "🕐", judul: "Pendek", isi: "menunjukkan jam" },
@@ -809,6 +810,7 @@ function KartuB({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminGuru }) {
           penjelasan={["Menit dikali 60 menjadi detik. Jam dikali 60 menjadi menit."]}
         >
           <PetaContoh
+            polos
             pusat="Kali 60"
             cabang={[
               { ikon: "⏱️", judul: "1 menit", isi: "60 detik" },
@@ -850,6 +852,7 @@ function KartuB({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminGuru }) {
           penjelasan={["Jam yang sama: menit selesai dikurangi menit mulai."]}
         >
           <PetaContoh
+            polos
             pusat="Jam sama"
             cabang={[
               { ikon: "🕐", judul: "Mulai", isi: "13.10" },
@@ -888,6 +891,7 @@ function KartuB({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminGuru }) {
           penjelasan={["Hitung dulu sampai jam bulat. Lalu tambahkan menit sesudahnya."]}
         >
           <PetaContoh
+            polos
             pusat="Jam bulat"
             cabang={[
               { ikon: "🕐", judul: "Mulai", isi: "04.55" },
@@ -930,6 +934,7 @@ function KartuB({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminGuru }) {
           penjelasan={["Dua minggu ada 14 hari. Seminggu lagi, tanggal ditambah 7."]}
         >
           <PetaContoh
+            polos
             pusat="Kalender"
             cabang={[
               { ikon: "📅", judul: "1 minggu", isi: "7 hari" },

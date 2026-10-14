@@ -10,14 +10,16 @@ export default function PetaContoh({
   cabang,
   kolom,
   baris,
+  polos = false,
 }: {
   pusat: string;
   cabang: { ikon: string; judul: string; isi: string }[];
   kolom: string[];
   baris: string[][];
+  polos?: boolean;
 }) {
   return (
-    <div className="space-y-3 rounded-3xl border-2 border-[#1C01A5]/15 bg-[#FBF6EA] p-3">
+    <div className={polos ? "space-y-3" : "space-y-3 rounded-3xl border-2 border-[#1C01A5]/15 bg-[#FBF6EA] p-3"}>
       <div className="flex flex-col items-center">
         <p className="rounded-full bg-[#1C01A5] px-4 py-2 text-center text-sm font-black text-white shadow">{pusat}</p>
         <div className="h-4 w-1 rounded-full bg-[#F0AB00]" aria-hidden />
