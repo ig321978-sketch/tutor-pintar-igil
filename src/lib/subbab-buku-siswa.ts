@@ -331,6 +331,18 @@ const SUBBAB_BUKU_SISWA: Record<string, Record<string, Record<string, string[]>>
       ],
     },
   },
+  "6 SD": {
+    Matematika: {
+      "Bab 1: Pecahan dan Desimal": [
+        "Perkalian bilangan asli dengan pecahan",
+        "Perkalian pecahan dengan bilangan asli",
+        "Pembagian pecahan dengan bilangan asli",
+        "Pembagian bilangan asli dengan pecahan",
+        "Mengubah pecahan menjadi desimal",
+        "Membandingkan dan mengurutkan bilangan desimal",
+      ],
+    },
+  },
 };
 
 const ALIAS_MAPEL: Record<string, string> = {
