@@ -7,6 +7,7 @@ import { useMemo, useState, type ReactNode } from "react";
 import HasilJawabanKuis from "@/components/HasilJawabanKuis";
 import TabelInfoGrafis from "@/components/TabelInfoGrafis";
 import KartuPoinPenting from "@/components/KartuPoinPenting";
+import TujuanBelajar from "@/components/TujuanBelajar";
 import PanduanIkon, { type ButirIkon } from "@/components/PanduanIkon";
 import KuisTulisKartu from "@/components/KuisTulisKartu";
 import SoalRekamSuara from "@/components/SoalRekamSuara";
@@ -91,26 +92,20 @@ function cuplikanKalimat(kalimat: string[]): CuplikanVoiceMateri[] {
   }));
 }
 
-function KartuBingkai({ children, latar = "bg-white" }: { children: ReactNode; latar?: string }) {
-  return (
-    <section className={`rounded-[1.75rem] border-4 border-[#1C01A5]/15 ${latar} px-4 py-5 shadow-sm sm:px-6 sm:py-6`}>
-      {children}
-    </section>
-  );
+function KartuBingkai({ children }: { children: ReactNode; latar?: string }) {
+  return <section className="space-y-4">{children}</section>;
 }
 
 const WARNA_DIALOG: Record<string, string> = {
-  Nia: "border-[#DB2777]/20 bg-[#FDF2F8]",
-  Rafi: "border-[#2563EB]/20 bg-[#EFF6FF]",
-  Tono: "border-[#16A34A]/20 bg-[#F0FDF4]",
-  Kolu: "border-teal-300 bg-teal-50",
+  Rara: "border-[#DB2777]/20 bg-[#FDF2F8]",
+  Bimo: "border-[#2563EB]/20 bg-[#EFF6FF]",
+  Igil: "border-amber-300 bg-amber-50",
 };
 
 const WAJAH_DIALOG: Record<string, string> = {
-  Nia: "👧",
-  Rafi: "👦",
-  Tono: "👦",
-  Kolu: "🐨",
+  Rara: "👧",
+  Bimo: "👦",
+  Igil: "🦉",
 };
 
 function Dialog({ nama, anak }: { nama: string; anak: string }) {
@@ -210,14 +205,14 @@ function Adegan({
   children: ReactNode;
 }) {
   return (
-    <article className={`rounded-2xl border-2 px-4 py-3 ${warna}`}>
-      <p className="text-xs font-black uppercase tracking-wide text-[#1C01A5]">{judul}</p>
+    <section className="space-y-4 border-b-4 border-[#1C01A5] pb-8">
+      <p className="text-xl font-black leading-snug text-[#1C01A5]">{judul}</p>
       <TombolPenjelasan kelas={kelas} kelamin={kelamin} kalimat={penjelasan} />
       {simbol ? <PanduanIkon butir={simbol} /> : null}
       {/* eslint-disable-next-line @next/next/no-img-element */}
       <img src={src} alt={alt} className="mt-3 w-full rounded-xl border border-[#1C01A5]/10 bg-white object-cover" />
       <div className="mt-3 space-y-2">{children}</div>
-    </article>
+    </section>
   );
 }
 
@@ -553,14 +548,15 @@ function KartuA({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminGuru }) {
   const hasilCocok = ["24", "38", "45"];
   return (
     <KartuBingkai latar="bg-sky-50/80">
-      <KepalaKartu ikon="👧👦🐨" judul={kartu.judul} anak="Nia, Rafi, Tono, dan Kolu di toko kelontong" />
+      <KepalaKartu ikon="👧👦🦉" judul={kartu.judul} anak="Rara, Bimo, dan Igil di toko kelontong" />
       <div className="mt-4">
-        <p className="text-sm font-black text-[#1C01A5]">Tujuan Pembelajaran</p>
-        <ul className="daftar-tujuan mt-2 space-y-1 text-sm font-semibold text-slate-700">
-          <li>Siswa bisa menjumlahkan bilangan sampai 100 tanpa menyimpan dan dengan menyimpan.</li>
-          <li>Siswa bisa mengurangkan bilangan sampai 100 tanpa meminjam dan dengan meminjam.</li>
-          <li>Siswa bisa menyelesaikan soal cerita sehari-hari.</li>
-        </ul>
+        <TujuanBelajar
+        butir={[
+          "Siswa bisa menjumlahkan bilangan sampai 100 tanpa menyimpan dan dengan menyimpan.",
+          "Siswa bisa mengurangkan bilangan sampai 100 tanpa meminjam dan dengan meminjam.",
+          "Siswa bisa menyelesaikan soal cerita sehari-hari.",
+        ]}
+      />
       </div>
       <div className="mt-4 space-y-4">
         <Adegan
@@ -572,7 +568,7 @@ function KartuA({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminGuru }) {
           ]}
           warna="border-amber-200 bg-amber-50/40"
           src="/doodle-mtk/mtk-1-bab10-sub1.jpg"
-          alt="Nia membawa kotak 23 dan Rafi membawa kotak 14. Di meja tertulis 23 tambah 14 sama dengan 37."
+          alt="Rara membawa kotak 23 dan Bimo membawa kotak 14. Di meja tertulis 23 tambah 14 sama dengan 37."
           kelas={kelas}
           kelamin={kelamin}
           penjelasan={[
@@ -580,13 +576,13 @@ function KartuA({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminGuru }) {
             "Kita tidak perlu menyimpan apa pun. Jumlahkan satuan dulu, lalu puluhan.",
           ]}
         >
-          <Dialog nama="Nia" anak="Kolu, aku bawa 23 kelereng!" />
-          <Dialog nama="Rafi" anak="Aku bawa 14 kelereng!" />
-          <Dialog nama="Tono" anak="Kalau digabung, jadi berapa?" />
-          <Dialog nama="Kolu" anak="Ayo simpan di rumah angka. Satuan dulu, ya!" />
+          <Dialog nama="Rara" anak="Igil, aku bawa 23 kelereng!" />
+          <Dialog nama="Bimo" anak="Aku bawa 14 kelereng!" />
+          <Dialog nama="Bimo" anak="Kalau digabung, jadi berapa?" />
+          <Dialog nama="Igil" anak="Ayo simpan di rumah angka. Satuan dulu, ya!" />
           <Papan anak="➕ 23 + 14 · 1️⃣ 3 + 4 = 7 · 🔟 2 + 1 = 3" />
-          <Dialog nama="Nia" anak="Jadi 37!" />
-          <Dialog nama="Kolu" anak="Tepat! Tidak ada yang disimpan, semua muat." />
+          <Dialog nama="Rara" anak="Jadi 37!" />
+          <Dialog nama="Igil" anak="Tepat! Tidak ada yang disimpan, semua muat." />
           <div className="mt-3 border-t-2 border-teal-300 pt-3">
             <p className="text-xs font-black uppercase tracking-wide text-[#1C01A5]">Kuis suara</p>
             <SoalRekamSuara
@@ -616,7 +612,7 @@ function KartuA({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminGuru }) {
           ]}
           warna="border-sky-200 bg-sky-50/50"
           src="/doodle-mtk/mtk-1-bab10-sub2.jpg"
-          alt="Kolu menunjuk hitungan 28 tambah 47 sama dengan 75, dengan angka simpanan 1 di atas."
+          alt="Igil menunjuk hitungan 28 tambah 47 sama dengan 75, dengan angka simpanan 1 di atas."
           kelas={kelas}
           kelamin={kelamin}
           penjelasan={[
@@ -624,13 +620,13 @@ function KartuA({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminGuru }) {
             "Kita pindahkan satu puluhan ke rumah sebelah. Itulah menyimpan. Simpanan kecil ditulis di atas, dan ikut dihitung.",
           ]}
         >
-          <Dialog nama="Nia" anak="Aku punya 28 tutup botol." />
-          <Dialog nama="Rafi" anak="Aku punya 47." />
-          <Dialog nama="Tono" anak="Satuannya 8 + 7. Itu lebih dari sepuluh!" />
-          <Dialog nama="Kolu" anak="Betul! Kita harus menyimpan." />
+          <Dialog nama="Rara" anak="Aku punya 28 tutup botol." />
+          <Dialog nama="Bimo" anak="Aku punya 47." />
+          <Dialog nama="Bimo" anak="Satuannya 8 + 7. Itu lebih dari sepuluh!" />
+          <Dialog nama="Igil" anak="Betul! Kita harus menyimpan." />
           <Papan anak="🔟 8 + 7 = 15 · ✏️ tulis 5 · 1️⃣ simpan 1 · hasil 75" />
-          <Dialog nama="Rafi" anak="Jadi 75!" />
-          <Dialog nama="Nia" anak="Jangan lupa angka 1 yang kecil di atas, ya!" />
+          <Dialog nama="Bimo" anak="Jadi 75!" />
+          <Dialog nama="Rara" anak="Jangan lupa angka 1 yang kecil di atas, ya!" />
           <div className="mt-3 border-t-2 border-teal-300 pt-3">
             <p className="text-xs font-black uppercase tracking-wide text-[#1C01A5]">Kuis suara</p>
             <SoalRekamSuara
@@ -660,7 +656,7 @@ function KartuA({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminGuru }) {
           ]}
           warna="border-emerald-200 bg-emerald-50/40"
           src="/doodle-mtk/mtk-1-bab10-sub3.jpg"
-          alt="Rak bertanda 46 jeruk. Rafi membawa keranjang 23. Nia menulis 46 kurang 23 sama dengan 23."
+          alt="Rak bertanda 46 jeruk. Bimo membawa keranjang 23. Rara menulis 46 kurang 23 sama dengan 23."
           kelas={kelas}
           kelamin={kelamin}
           penjelasan={[
@@ -668,12 +664,12 @@ function KartuA({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminGuru }) {
             "Kurangi satuannya dulu, lalu puluhannya. Susunannya harus rapi supaya tidak salah rumah.",
           ]}
         >
-          <Dialog nama="Rafi" anak="Kolu, aku ambil 23 jeruk. Tadinya ada 46." />
-          <Dialog nama="Tono" anak="Sisanya berapa?" />
-          <Dialog nama="Nia" anak="Satuan di bawah 3, satuan di atas 6. Boleh dikurangi." />
+          <Dialog nama="Bimo" anak="Igil, aku ambil 23 jeruk. Tadinya ada 46." />
+          <Dialog nama="Bimo" anak="Sisanya berapa?" />
+          <Dialog nama="Rara" anak="Satuan di bawah 3, satuan di atas 6. Boleh dikurangi." />
           <Papan anak="➖ 6 − 3 = 3 · 🔟 4 − 2 = 2 · sisa 23" />
-          <Dialog nama="Rafi" anak="Sisa 23 jeruk!" />
-          <Dialog nama="Kolu" anak="Yang kecil ada di bawah, jadi aman." />
+          <Dialog nama="Bimo" anak="Sisa 23 jeruk!" />
+          <Dialog nama="Igil" anak="Yang kecil ada di bawah, jadi aman." />
           <div className="mt-3 border-t-2 border-teal-300 pt-3">
             <p className="text-xs font-black uppercase tracking-wide text-[#1C01A5]">Kuis suara</p>
             <SoalRekamSuara
@@ -703,7 +699,7 @@ function KartuA({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminGuru }) {
           ]}
           warna="border-orange-200 bg-orange-50/40"
           src="/doodle-mtk/mtk-1-bab10-sub4.jpg"
-          alt="Papan tulis menunjukkan 52 kurang 28 sama dengan 24. Kolu terlihat bingung di gudang susu."
+          alt="Papan tulis menunjukkan 52 kurang 28 sama dengan 24. Igil terlihat bingung di gudang susu."
           kelas={kelas}
           kelamin={kelamin}
           penjelasan={[
@@ -711,13 +707,13 @@ function KartuA({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminGuru }) {
             "Kita meminjam dari rumah sebelah. Satu puluhan sama dengan sepuluh satuan. Setelah meminjam, puluhan berkurang satu.",
           ]}
         >
-          <Dialog nama="Kolu" anak="Aku harus kirim 28 kotak, padahal aku punya 52." />
-          <Dialog nama="Nia" anak="2 − 8 tidak bisa." />
-          <Dialog nama="Tono" anak="Kok bisa tidak bisa?" />
-          <Dialog nama="Kolu" anak="Satuan di atas lebih kecil. Kita harus meminjam dari puluhan!" />
+          <Dialog nama="Igil" anak="Aku harus kirim 28 kotak, padahal aku punya 52." />
+          <Dialog nama="Rara" anak="2 − 8 tidak bisa." />
+          <Dialog nama="Bimo" anak="Kok bisa tidak bisa?" />
+          <Dialog nama="Igil" anak="Satuan di atas lebih kecil. Kita harus meminjam dari puluhan!" />
           <Papan anak="🤝 12 − 8 = 4 · ⬇️ puluhan 4 − 2 = 2 · sisa 24" />
-          <Dialog nama="Rafi" anak="Jadi sisa 24 kotak!" />
-          <Dialog nama="Nia" anak="Kalau di atas lebih kecil, pinjam dulu. Lalu puluhan berkurang satu." />
+          <Dialog nama="Bimo" anak="Jadi sisa 24 kotak!" />
+          <Dialog nama="Rara" anak="Kalau di atas lebih kecil, pinjam dulu. Lalu puluhan berkurang satu." />
           <div className="mt-3 border-t-2 border-teal-300 pt-3">
             <p className="text-xs font-black uppercase tracking-wide text-[#1C01A5]">Kuis suara</p>
             <SoalRekamSuara
@@ -755,12 +751,12 @@ function KartuA({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminGuru }) {
             "Diberi lagi atau datang artinya ditambah. Jatuh, dibeli, atau terjual artinya dikurangi.",
           ]}
         >
-          <Dialog nama="Kolu" anak="Toko punya 38 jeruk. Pagi ini datang 45 jeruk. Berapa jeruk sekarang?" />
-          <Dialog nama="Nia" anak="Datang berarti ditambah. Kalimatnya 38 + 45." />
-          <Dialog nama="Rafi" anak="8 + 5 = 13. Simpan satu. Puluhannya 1 + 3 + 4 = 8. Jadi 83." />
+          <Dialog nama="Igil" anak="Toko punya 38 jeruk. Pagi ini datang 45 jeruk. Berapa jeruk sekarang?" />
+          <Dialog nama="Rara" anak="Datang berarti ditambah. Kalimatnya 38 + 45." />
+          <Dialog nama="Bimo" anak="8 + 5 = 13. Simpan satu. Puluhannya 1 + 3 + 4 = 8. Jadi 83." />
           <Papan anak="➕ 38 + 45 = 83 · ➖ 72 − 29 = 43" />
-          <Dialog nama="Kolu" anak="Cerita kedua: ada 72 apel. Sebanyak 29 terjual. Sisa berapa?" />
-          <Dialog nama="Tono" anak="2 − 9 tidak bisa. Pinjam! 12 − 9 = 3. Lalu 6 − 2 = 4. Jadi 43." />
+          <Dialog nama="Igil" anak="Cerita kedua: ada 72 apel. Sebanyak 29 terjual. Sisa berapa?" />
+          <Dialog nama="Bimo" anak="2 − 9 tidak bisa. Pinjam! 12 − 9 = 3. Lalu 6 − 2 = 4. Jadi 43." />
           <div className="mt-3 border-t-2 border-teal-300 pt-3">
             <p className="text-xs font-black uppercase tracking-wide text-[#1C01A5]">Kuis suara</p>
             <SoalRekamSuara
@@ -857,7 +853,7 @@ function KartuB({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminGuru }) {
   ];
   return (
     <KartuBingkai latar="bg-emerald-50/80">
-      <KepalaKartu ikon="🟦🟨🐨" judul={kartu.judul} anak="Lima papan cara menghitung" />
+      <KepalaKartu ikon="🟦🟨🦉" judul={kartu.judul} anak="Lima papan cara menghitung" />
       <div className="mt-4 space-y-4">
         <article className="rounded-2xl border-2 border-sky-300 bg-sky-50 p-4">
           <h5 className="text-base font-black text-[#1C01A5]">Sub-bab 1 · Menjumlah Tanpa Menyimpan</h5>
@@ -1144,7 +1140,7 @@ function KartuC({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminGuru }) {
   return (
     <KartuBingkai latar="bg-violet-50/80">
       <KepalaKartu
-        ikon="🚂🐨"
+        ikon="🚂🦉"
         judul={kartu.judul}
         anak="Sepuluh pos stasiun · menambah, menyimpan, mengurangi, meminjam"
         kelas={kelas}
@@ -1157,7 +1153,7 @@ function KartuC({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminGuru }) {
       />
       <GambarDoodle
         src="/doodle-mtk/mtk-1-bab10-kereta.jpg"
-        alt="Kolu berkostum kepala stasiun di samping kereta. Gerbong depan puluhan, gerbong belakang satuan."
+        alt="Igil berkostum kepala stasiun di samping kereta. Gerbong depan puluhan, gerbong belakang satuan."
       />
       <div className="mt-4 space-y-3 text-sm font-semibold leading-relaxed text-slate-700">
         <p>
@@ -1182,7 +1178,7 @@ function KartuC({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminGuru }) {
         idMisi={(indeks) => idKuis("C", indeks)}
         idTulis={idKuisTulisKartu(ID, "C")}
         tema={TEMA_MTK1_BAB10}
-        penutup="Rel cepat terbuka. Kolu memasang topi kepala stasiun."
+        penutup="Rel cepat terbuka. Igil memasang topi kepala stasiun."
         bunga="🚃📦🚦👮"
       />
     </KartuBingkai>
@@ -1200,13 +1196,13 @@ function LembarEvaluasi({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminG
     }
     return jumlah;
   }, [kuis]);
-  const lencana = skor >= 9 ? "👮 Kepala Stasiun Ahli" : skor >= 6 ? "🚂 Kondektur Cerdas" : "🐨 Sahabat Kolu";
+  const lencana = skor >= 9 ? "👮 Kepala Stasiun Ahli" : skor >= 6 ? "🚂 Kondektur Cerdas" : "🐨 Sahabat Igil";
   const pesan =
     skor >= 9
       ? "Luar biasa! Semua gerbongmu sampai dengan aman!"
       : skor >= 6
         ? "Hebat! Sedikit lagi jadi kepala stasiun!"
-        : "Ayo berlatih lagi bersama Kolu, kamu pasti bisa!";
+        : "Ayo berlatih lagi bersama Igil, kamu pasti bisa!";
   const teknik = [
     "Tambah tanpa menyimpan",
     "Tambah dengan menyimpan",
@@ -1216,7 +1212,7 @@ function LembarEvaluasi({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminG
   return (
     <KartuBingkai latar="bg-rose-50/80">
       <KepalaKartu
-        ikon="📝🐨"
+        ikon="📝🦉"
         judul={kartu.judul}
         anak="Sepuluh soal hitung sampai 100"
         kelas={kelas}
@@ -1229,7 +1225,7 @@ function LembarEvaluasi({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminG
       />
       <GambarDoodle
         src="/doodle-mtk/mtk-1-bab10-evaluasi.jpg"
-        alt="Meja ujian dengan pensil dan jam pasir. Kolu mengacungkan ibu jari."
+        alt="Meja ujian dengan pensil dan jam pasir. Igil mengacungkan ibu jari."
       />
       <div className="mt-4 grid gap-2 rounded-2xl border-2 border-dashed border-[#1C01A5]/30 px-4 py-3 sm:grid-cols-3">
         <p className="text-sm font-black text-[#1C01A5]">Nama: {nama}</p>
@@ -1285,7 +1281,7 @@ function LembarEvaluasi({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminG
         </div>
         <Pilih
           id={idKuis("D", 3)}
-          pertanyaan="4. Rafi menjawab 72 − 38 = 46. Apakah Rafi benar?"
+          pertanyaan="4. Bimo menjawab 72 − 38 = 46. Apakah Bimo benar?"
           pilihan={[
             { huruf: "A", teks: "Benar" },
             { huruf: "B", teks: "Salah, seharusnya 34" },
@@ -1392,7 +1388,7 @@ export default function NaskahMtk1Bab10({
         kelamin={kelamin}
         gambar={{
           src: "/doodle-mtk/mtk-1-bab10-poin.jpg",
-          alt: "Kolu berdiri di atas gerbong kereta dengan papan kalimat kunci dan kembang api.",
+          alt: "Igil berdiri di atas gerbong kereta dengan papan kalimat kunci dan kembang api.",
         }}
         cuplikan={cuplikanKalimat([
           "Satuan dulu, puluhan kemudian. Selalu dari kanan ke kiri.",

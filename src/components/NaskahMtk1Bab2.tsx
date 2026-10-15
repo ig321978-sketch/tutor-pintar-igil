@@ -6,6 +6,7 @@ import { TEMA_MTK1_BAB2 } from "@/lib/tema-misi-mtk-1";
 import { useMemo, useState, type ReactNode } from "react";
 import HasilJawabanKuis from "@/components/HasilJawabanKuis";
 import KartuPoinPenting from "@/components/KartuPoinPenting";
+import TujuanBelajar from "@/components/TujuanBelajar";
 import KuisAkhirAdegan from "@/components/KuisAkhirAdegan";
 import KuisTulisKartu from "@/components/KuisTulisKartu";
 import SoalRekamSuara from "@/components/SoalRekamSuara";
@@ -48,19 +49,14 @@ function duaCaraDelapan(teks: string): boolean {
   return unik.size >= 2;
 }
 
-function KartuBingkai({ children, latar = "bg-white" }: { children: ReactNode; latar?: string }) {
-  return (
-    <section className={`rounded-[1.75rem] border-4 border-[#1C01A5]/15 ${latar} px-4 py-5 shadow-sm sm:px-6 sm:py-6`}>
-      {children}
-    </section>
-  );
+function KartuBingkai({ children }: { children: ReactNode; latar?: string }) {
+  return <section className="space-y-4">{children}</section>;
 }
 
 const WARNA_DIALOG: Record<string, string> = {
-  Lala: "border-[#DB2777]/20 bg-[#FDF2F8]",
-  Bima: "border-[#2563EB]/20 bg-[#EFF6FF]",
-  Raka: "border-[#7C3AED]/25 bg-[#F5F3FF]",
-  Kepi: "border-teal-300 bg-teal-50",
+  Rara: "border-[#DB2777]/20 bg-[#FDF2F8]",
+  Bimo: "border-[#2563EB]/20 bg-[#EFF6FF]",
+  Igil: "border-amber-300 bg-amber-50",
 };
 
 function Dialog({ nama, anak }: { nama: string; anak: string }) {
@@ -360,7 +356,7 @@ function KapalHarta() {
       idMisi={(indeks) => idKuis("C", indeks)}
       idTulis={idKuisTulisKartu(ID, "C")}
       tema={TEMA_MTK1_BAB2}
-      penutup="Istana pasir Kepi selesai. Kerang ajaib berjejer di pantai."
+      penutup="Istana pasir Igil selesai. Kerang ajaib berjejer di pantai."
       bunga="🐚🦀🏖️🚩"
     />
   );
@@ -374,7 +370,7 @@ function LembarEvaluasi() {
   const lencana =
     skor >= 9 ? "👑 Raja Laut Penjumlahan. Luar biasa! Kamu kapten paling hebat!"
     : skor >= 6 ? "⛵ Pelaut Cerdas. Hebat! Sedikit lagi sampai ke harta karun!"
-    : "🐚 Kerang Pintar. Ayo berlayar lagi bersama Kepi, kamu pasti bisa!";
+    : "🐚 Kerang Pintar. Ayo berlayar lagi bersama Igil, kamu pasti bisa!";
 
   return (
     <div className="mt-5 space-y-5">
@@ -428,10 +424,10 @@ function LembarEvaluasi() {
       />
       <div>
         <p className="text-base font-extrabold text-[#1C01A5]">QUIZ:</p>
-        <p className="text-sm font-semibold text-slate-700">4. Raka berkata, “6 + 3 = 8!”</p>
+        <p className="text-sm font-semibold text-slate-700">4. Bimo berkata, “6 + 3 = 8!”</p>
         <SoalRekamSuara
           id={idKuis("D", 3)}
-          pertanyaan="Apakah Raka benar? Ucapkan Benar atau Salah, lalu sebutkan jawaban yang benar."
+          pertanyaan="Apakah Bimo benar? Ucapkan Benar atau Salah, lalu sebutkan jawaban yang benar."
           periksa={(transkrip) =>
             ucapanMemuat(transkrip, [
               ["salah", "tidak benar", "tidak tepat", "keliru"],
@@ -550,69 +546,69 @@ export default function NaskahMtk1Bab2({
           <TombolVoiceMateriPai1 kelas={kelas} kelamin={kelamin} cuplikan={cuplikanDariNaskah(kartuA.voice, 2_000, 3_000)} />
         </div>
         <div className="mt-4 rounded-2xl border-2 border-sky-300 bg-sky-50 px-4 py-3">
-          <p className="text-sm font-black text-[#1C01A5]">Tujuan Pembelajaran</p>
-          <p className="mt-2 text-sm font-semibold text-slate-700">Setelah belajar, siswa dapat:</p>
-          <ul className="daftar-tujuan mt-2 space-y-1 text-sm font-semibold text-slate-700">
-            <li>Menggabungkan dua kelompok benda.</li>
-            <li>Memakai simbol + dan =.</li>
-            <li>Menyelesaikan soal cerita penjumlahan sampai 10.</li>
-          </ul>
+          <TujuanBelajar
+        butir={[
+          "Menggabungkan dua kelompok benda.",
+          "Memakai simbol + dan =.",
+          "Menyelesaikan soal cerita penjumlahan sampai 10.",
+        ]}
+      />
         </div>
         <div className="mt-4 space-y-3">
           <article className="rounded-2xl border-2 border-[#0284C7]/25 bg-[#F0F9FF] px-4 py-3">
-            <p className="text-xs font-black uppercase tracking-wide text-[#0C4A6E]">Adegan 1 · Tiba di pantai</p>
+            <p className="text-xl font-black tracking-wide text-[#0C4A6E]">Adegan 1 · Tiba di pantai</p>
             <GambarCerita
               src="/doodle-mtk/mtk-1-bab2-adegan-1.jpg"
-              alt="Lala, Bima, dan Raka tiba di pantai membawa ember. Kepi si katak ikut berjalan."
+              alt="Rara, Bimo, dan Igil tiba di pantai membawa ember. Igil si burung hantu ikut berjalan."
             />
             <p className="mt-2 text-center text-4xl" aria-hidden>
               🌊 ⛱️ 🕊️ 🪣
             </p>
-            <p className="mt-2 text-sm font-semibold text-slate-700">Pantai biru, pasir kuning, dan payung merah putih. Tiga anak membawa ember.</p>
+            <p className="mt-2 text-sm font-semibold text-slate-700">Pantai biru, pasir kuning, dan payung merah putih. Rara dan Bimo membawa ember. Igil berjalan di samping mereka.</p>
           </article>
-          <Dialog nama="Lala" anak="Hore, kita sampai di pantai!" />
-          <Dialog nama="Bima" anak="Ayo kita cari kerang!" />
-          <Dialog nama="Kepi" anak="Cik-cik! Aku bantu cari, ya!" />
+          <Dialog nama="Rara" anak="Hore, kita sampai di pantai!" />
+          <Dialog nama="Bimo" anak="Ayo kita cari kerang!" />
+          <Dialog nama="Igil" anak="Hoo! Aku bantu cari, ya!" />
           <KuisAkhirAdegan
             idSuara={idKuis("A", 1)}
             idKanvas={idKuis("A", 2)}
-            pertanyaanSuara="Lala, Bima, dan Raka tiba di pantai. Ada berapa anak?"
+            pertanyaanSuara="Rara, Bimo, dan Igil tiba di pantai. Ada berapa teman?"
             aliasSuara={["3", "tiga"]}
             petunjukSuara="Ucapkan angkanya."
-            pertanyaanKanvas="Tuliskan angka banyak anak itu."
+            pertanyaanKanvas="Tuliskan angka banyak teman itu."
             aliasKanvas={["3", "tiga"]}
-            konteksKanvas="Ada 3 anak: Lala, Bima, dan Raka."
+            konteksKanvas="Ada 3 teman: Rara, Bimo, dan Igil."
           />
           <article className="rounded-2xl border-2 border-emerald-300 bg-emerald-50 px-4 py-3">
-            <p className="text-xs font-black uppercase tracking-wide text-[#92400E]">Adegan 2 · Menggabungkan kerang</p>
+            <p className="text-xl font-black tracking-wide text-[#92400E]">Adegan 2 · Menggabungkan kerang</p>
             <GambarCerita
               src="/doodle-mtk/mtk-1-bab2-adegan-2.jpg"
-              alt="Ember Lala berisi 3 kerang. Ember Bima berisi 2 kerang."
+              alt="Ember Rara berisi 3 kerang. Ember Bimo berisi 2 kerang."
             />
             <div className="mt-2 grid gap-3 sm:grid-cols-2">
               <div>
-                <p className="text-xs font-black uppercase text-[#92400E]">Ember Lala</p>
+                <p className="text-xs font-black uppercase text-[#92400E]">Ember Rara</p>
                 <IkonUlang ikon="🐚" jumlah={3} ukuran="text-3xl" />
               </div>
               <div>
-                <p className="text-xs font-black uppercase text-[#92400E]">Ember Bima</p>
+                <p className="text-xs font-black uppercase text-[#92400E]">Ember Bimo</p>
                 <IkonUlang ikon="🐚" jumlah={2} ukuran="text-3xl" />
               </div>
             </div>
           </article>
-          <Dialog nama="Lala" anak="Kerangku ada 3." />
-          <Dialog nama="Bima" anak="Kerangku ada 2." />
-          <Dialog nama="Raka" anak="Kalau digabung, jadi berapa?" />
+          <Dialog nama="Rara" anak="Kerangku ada 3." />
+          <Dialog nama="Bimo" anak="Kerangku ada 2." />
+          <Dialog nama="Bimo" anak="Kalau digabung, jadi berapa?" />
           <p className="text-center text-sm font-bold text-[#1C01A5]">Satu, dua, tiga, empat, lima!</p>
           <p className="text-center text-2xl">
             <IkonUlang ikon="🐚" jumlah={3} /> + <IkonUlang ikon="🐚" jumlah={2} /> = <IkonUlang ikon="🐚" jumlah={5} />
           </p>
           <p className="text-center text-4xl font-black text-[#1C01A5]">3 + 2 = 5</p>
-          <Dialog nama="Kepi" anak="Jadi 5 kerang! Menggabungkan itu namanya menjumlahkan!" />
+          <Dialog nama="Igil" anak="Jadi 5 kerang! Menggabungkan itu namanya menjumlahkan!" />
           <KuisAkhirAdegan
             idSuara={idKuis("A", 3)}
             idKanvas={idKuis("A", 4)}
-            pertanyaanSuara="Lala punya 3 kerang. Bima punya 2 kerang. Semuanya berapa?"
+            pertanyaanSuara="Rara punya 3 kerang. Bimo punya 2 kerang. Semuanya berapa?"
             aliasSuara={["5", "lima"]}
             petunjukSuara="Ucapkan hasilnya."
             pertanyaanKanvas="Tuliskan 3 + 2 = 5."
@@ -620,17 +616,17 @@ export default function NaskahMtk1Bab2({
             konteksKanvas="Tiga kerang ditambah dua kerang sama dengan lima. 3 + 2 = 5."
           />
           <article className="rounded-2xl border-2 border-[#7C3AED]/30 bg-[#F5F3FF] px-4 py-3">
-            <p className="text-xs font-black uppercase text-[#5B21B6]">Adegan 3 · Kenalan dengan simbol</p>
+            <p className="text-xl font-black text-[#5B21B6]">Adegan 3 · Kenalan dengan simbol</p>
             <GambarCerita
               src="/doodle-mtk/mtk-1-bab2-adegan-3.jpg"
               alt="Tanda tambah dan tanda sama dengan di pasir pantai."
             />
             <p className="mt-2 text-center text-3xl font-black text-[#1C01A5]">➕ &nbsp; 🟰</p>
           </article>
-          <Dialog nama="Raka" anak="Tanda silang itu apa?" />
-          <Dialog nama="Kepi" anak="Itu tanda tambah. Artinya digabung!" />
-          <Dialog nama="Raka" anak="Kalau dua garis itu?" />
-          <Dialog nama="Lala" anak="Itu tanda sama dengan. Artinya hasilnya!" />
+          <Dialog nama="Bimo" anak="Tanda silang itu apa?" />
+          <Dialog nama="Igil" anak="Itu tanda tambah. Artinya digabung!" />
+          <Dialog nama="Bimo" anak="Kalau dua garis itu?" />
+          <Dialog nama="Rara" anak="Itu tanda sama dengan. Artinya hasilnya!" />
           <KuisAkhirAdegan
             idSuara={idKuis("A", 5)}
             idKanvas={idKuis("A", 6)}
@@ -642,7 +638,7 @@ export default function NaskahMtk1Bab2({
             konteksKanvas="Tanda tambah menggabungkan. Dua tambah satu sama dengan tiga."
           />
           <article className="rounded-2xl border-2 border-violet-300 bg-violet-50 px-4 py-3">
-            <p className="text-xs font-black uppercase tracking-wide text-[#92400E]">Adegan 4 · Istana pasir</p>
+            <p className="text-xl font-black tracking-wide text-[#92400E]">Adegan 4 · Istana pasir</p>
             <GambarCerita
               src="/doodle-mtk/mtk-1-bab2-adegan-4.jpg"
               alt="Istana pasir punya 4 bendera. Di sampingnya ada 3 bendera lagi."
@@ -654,9 +650,9 @@ export default function NaskahMtk1Bab2({
               <IkonUlang ikon="🚩" jumlah={4} /> + <IkonUlang ikon="🚩" jumlah={3} />
             </p>
           </article>
-          <Dialog nama="Bima" anak="Istanaku punya 4 bendera." />
-          <Dialog nama="Raka" anak="Aku tambah 3 bendera, ya!" />
-          <Dialog nama="Kepi" anak="Sekarang ada berapa bendera?" />
+          <Dialog nama="Bimo" anak="Istanaku punya 4 bendera." />
+          <Dialog nama="Bimo" anak="Aku tambah 3 bendera, ya!" />
+          <Dialog nama="Igil" anak="Sekarang ada berapa bendera?" />
           <p className="text-center text-sm font-bold text-[#1C01A5]">Lima… enam… tujuh!</p>
           <p className="text-center text-4xl font-black text-[#1C01A5]">4 + 3 = 7</p>
           <p className="rounded-2xl bg-[#F0FDF4] px-4 py-3 text-sm font-extrabold text-[#166534]">Horeee! Menjumlahkan itu seru!</p>
@@ -683,7 +679,7 @@ export default function NaskahMtk1Bab2({
             petunjuk="Ucapkan dengan keras."
           />
           {kuis?.sudahBenar(idKuis("A", 0)) ? (
-            <p className="text-sm font-bold text-emerald-800">Cik-cik! Kamu hebat!</p>
+            <p className="text-sm font-bold text-emerald-800">Hoo! Kamu hebat!</p>
           ) : null}
         </div>
         <KuisTulisKartu
@@ -800,8 +796,8 @@ export default function NaskahMtk1Bab2({
           <article className="rounded-2xl border-2 border-[#0F766E] bg-[#F0FDFA] px-4 py-3">
             <p className="text-sm font-black text-[#0F766E]">Poin 7 · Soal cerita</p>
             <p className="mt-2 text-center text-2xl">🎈🎈🎈🎈 + 🎈🎈</p>
-            <p className="mt-2 text-sm font-semibold text-slate-700">Lala punya 4 balon. Ibu memberi 2 balon lagi.</p>
-            <p className="mt-2 text-sm font-bold text-[#1C01A5]">Cari angka 4 dan 2. Kata “memberi lagi” berarti tambah. 4 + 2 = 6. Balon Lala sekarang ada 6.</p>
+            <p className="mt-2 text-sm font-semibold text-slate-700">Rara punya 4 balon. Ibu memberi 2 balon lagi.</p>
+            <p className="mt-2 text-sm font-bold text-[#1C01A5]">Cari angka 4 dan 2. Kata “memberi lagi” berarti tambah. 4 + 2 = 6. Balon Rara sekarang ada 6.</p>
             <p className="mt-2 text-sm font-semibold text-slate-700">Kata kunci tambah: digabung, ditambah, diberi lagi, datang lagi, semuanya, jumlahnya.</p>
           </article>
         </div>
@@ -843,7 +839,7 @@ export default function NaskahMtk1Bab2({
           <KuisTulisKartu
             id={idKuisTulisKartu(ID, "B")}
             hanyaKanvas
-            pertanyaan="Bima punya 3 bola. Raka punya 5 bola. Tulis kalimat matematika dan hasilnya."
+            pertanyaan="Bimo punya 3 bola. Bimo punya 5 bola. Tulis kalimat matematika dan hasilnya."
             alias={kumpulkanAlias(["3 + 5 = 8", "3+5=8", "5 + 3 = 8", "5+3=8"])}
             konteks="Tiga tambah lima sama dengan delapan."
             visual={

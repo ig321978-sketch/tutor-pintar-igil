@@ -6,6 +6,7 @@ import { TEMA_MTK1_BAB4 } from "@/lib/tema-misi-mtk-1";
 import { useMemo, useState, type ReactNode } from "react";
 import HasilJawabanKuis from "@/components/HasilJawabanKuis";
 import KartuPoinPenting from "@/components/KartuPoinPenting";
+import TujuanBelajar from "@/components/TujuanBelajar";
 import KuisAkhirAdegan from "@/components/KuisAkhirAdegan";
 import KuisTulisKartu from "@/components/KuisTulisKartu";
 import SoalRekamSuara from "@/components/SoalRekamSuara";
@@ -32,19 +33,14 @@ function ucapanMemuat(transkrip: string, kelompok: string[][]): boolean {
   return kelompok.every((alias) => jawabanTulisMemuatAlias(transkrip, alias));
 }
 
-function KartuBingkai({ children, latar = "bg-white" }: { children: ReactNode; latar?: string }) {
-  return (
-    <section className={`rounded-[1.75rem] border-4 border-[#1C01A5]/15 ${latar} px-4 py-5 shadow-sm sm:px-6 sm:py-6`}>
-      {children}
-    </section>
-  );
+function KartuBingkai({ children }: { children: ReactNode; latar?: string }) {
+  return <section className="space-y-4">{children}</section>;
 }
 
 const WARNA_DIALOG: Record<string, string> = {
-  Sasa: "border-[#DB2777]/20 bg-[#FDF2F8]",
+  Rara: "border-[#DB2777]/20 bg-[#FDF2F8]",
   Bimo: "border-[#2563EB]/20 bg-[#EFF6FF]",
-  "Nenek Ani": "border-teal-300 bg-teal-50",
-  "Sasa dan Bimo": "border-[#16A34A]/25 bg-[#F0FDF4]",
+  Igil: "border-amber-300 bg-amber-50",
 };
 
 function Dialog({ nama, anak }: { nama: string; anak: string }) {
@@ -330,31 +326,31 @@ function KartuA({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminGuru }) {
         cuplikan={cuplikanDariNaskah(kartu.voice, 2_000, 3_000)}
       />
       <div className="mt-4 rounded-2xl border-2 border-sky-300 bg-sky-50 px-4 py-3">
-        <p className="text-sm font-black text-[#1C01A5]">Tujuan Pembelajaran</p>
-        <p className="mt-2 text-sm font-semibold text-slate-700">Setelah belajar, siswa dapat:</p>
-        <ul className="daftar-tujuan mt-2 space-y-1 text-sm font-semibold text-slate-700">
-          <li>Mengamati benda di sekitarnya.</li>
-          <li>Mengenali dan menamai segitiga, segi empat, dan lingkaran.</li>
-          <li>Mengenali dan menamai kubus dan balok.</li>
-        </ul>
+        <TujuanBelajar
+        butir={[
+          "Mengamati benda di sekitarnya.",
+          "Mengenali dan menamai segitiga, segi empat, dan lingkaran.",
+          "Mengenali dan menamai kubus dan balok.",
+        ]}
+      />
       </div>
       <div className="mt-4 space-y-3">
         <article className="rounded-2xl border-2 border-emerald-300 bg-emerald-50 px-4 py-3">
-          <p className="text-xs font-black uppercase tracking-wide text-[#92400E]">Adegan 1 · Teras rumah Nenek</p>
+          <p className="text-xl font-black tracking-wide text-[#92400E]">Adegan 1 · Teras rumah Nenek</p>
           <GambarCerita
             src="/doodle-mtk/mtk-1-bab4-adegan-1.jpg"
-            alt="Rumah Nenek Ani beratap segitiga. Matahari bulat. Sasa dan Bimo berdiri di teras."
+            alt="Rumah Igil beratap segitiga. Matahari bulat. Rara berdiri di teras."
           />
           <p className="mt-2 text-center text-4xl" aria-hidden>
             🏠 ☀️
           </p>
           <p className="mt-2 text-sm font-semibold text-slate-700">Rumah kuning, atap segitiga merah, dan matahari bulat.</p>
         </article>
-        <Dialog nama="Nenek Ani" anak="Halo, Sasa! Halo, Bimo! Hari ini kita main detektif bentuk, yuk!" />
-        <Dialog nama="Sasa" anak="Asyik! Apa itu bentuk, Nek?" />
-        <Dialog nama="Nenek Ani" anak="Lihat atap rumah Nenek. Bentuknya apa?" />
+        <Dialog nama="Igil" anak="Halo, Rara! Halo, Bimo! Hari ini kita main detektif bentuk, yuk!" />
+        <Dialog nama="Rara" anak="Asyik! Apa itu bentuk, Nek?" />
+        <Dialog nama="Igil" anak="Lihat atap rumah Nenek. Bentuknya apa?" />
         <Dialog nama="Bimo" anak="Ujungnya lancip! Sisinya ada 1, 2, 3!" />
-        <Dialog nama="Nenek Ani" anak="Pintar! Itu namanya segitiga. Sisinya 3, sudutnya juga 3." />
+        <Dialog nama="Igil" anak="Pintar! Itu namanya segitiga. Sisinya 3, sudutnya juga 3." />
         <article className="rounded-2xl border-2 border-[#E23B3B]/25 bg-[#FFF1F2] px-4 py-3">
           <p className="text-xs font-black uppercase text-[#9F1239]">Atap segitiga</p>
           <GambarCerita src="/doodle-mtk/mtk-1-bab4-atap.jpg" alt="Atap rumah berbentuk segitiga dengan 3 sudut." />
@@ -374,7 +370,7 @@ function KartuA({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminGuru }) {
           konteksKanvas="Atap segitiga punya 3 sisi."
         />
         <article className="rounded-2xl border-2 border-[#0284C7]/25 bg-[#F0F9FF] px-4 py-3">
-          <p className="text-xs font-black uppercase tracking-wide text-[#0C4A6E]">Adegan 2 · Ruang tamu</p>
+          <p className="text-xl font-black tracking-wide text-[#0C4A6E]">Adegan 2 · Ruang tamu</p>
           <GambarCerita
             src="/doodle-mtk/mtk-1-bab4-adegan-2.jpg"
             alt="Jam dinding bulat, pintu persegi panjang, dan bingkai foto persegi."
@@ -383,12 +379,12 @@ function KartuA({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminGuru }) {
             ⏰ 🚪 🖼️
           </p>
         </article>
-        <Dialog nama="Sasa" anak="Nek, jam dinding itu bulat! Tidak ada pojoknya." />
-        <Dialog nama="Nenek Ani" anak="Betul! Itu lingkaran. Tidak punya sudut, bisa menggelinding." />
+        <Dialog nama="Rara" anak="Nek, jam dinding itu bulat! Tidak ada pojoknya." />
+        <Dialog nama="Igil" anak="Betul! Itu lingkaran. Tidak punya sudut, bisa menggelinding." />
         <Dialog nama="Bimo" anak="Kalau bingkai foto ini, sisinya ada 4. Panjangnya sama semua!" />
-        <Dialog nama="Nenek Ani" anak="Hebat! Itu persegi." />
-        <Dialog nama="Sasa" anak="Pintu juga sisinya 4, tapi ada yang panjang, ada yang pendek." />
-        <Dialog nama="Nenek Ani" anak="Itu persegi panjang. Persegi dan persegi panjang sama-sama segi empat." />
+        <Dialog nama="Igil" anak="Hebat! Itu persegi." />
+        <Dialog nama="Rara" anak="Pintu juga sisinya 4, tapi ada yang panjang, ada yang pendek." />
+        <Dialog nama="Igil" anak="Itu persegi panjang. Persegi dan persegi panjang sama-sama segi empat." />
         <KuisAkhirAdegan
           idSuara={idKuis("A", 3)}
           idKanvas={idKuis("A", 4)}
@@ -400,17 +396,17 @@ function KartuA({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminGuru }) {
           konteksKanvas="Pintu persegi panjang punya 4 sisi."
         />
         <article className="rounded-2xl border-2 border-[#7C3AED]/25 bg-[#F5F3FF] px-4 py-3">
-          <p className="text-xs font-black uppercase tracking-wide text-[#5B21B6]">Adegan 3 · Dapur</p>
+          <p className="text-xl font-black tracking-wide text-[#5B21B6]">Adegan 3 · Dapur</p>
           <GambarCerita src="/doodle-mtk/mtk-1-bab4-adegan-3.jpg" alt="Dadu berbentuk kubus dan kotak susu berbentuk balok." />
           <p className="mt-2 text-center text-4xl" aria-hidden>
             🎲 🧃
           </p>
         </article>
         <Dialog nama="Bimo" anak="Nek, dadu ini bisa dipegang. Tebal!" />
-        <Dialog nama="Nenek Ani" anak="Benar. Dadu itu kubus. Semua sisinya persegi yang sama besar." />
-        <Dialog nama="Sasa" anak="Kalau kotak susu? Bentuknya lebih panjang." />
-        <Dialog nama="Nenek Ani" anak="Itu balok. Sisinya ada yang persegi panjang." />
-        <Dialog nama="Sasa dan Bimo" anak="Yeay! Kita detektif bentuk!" />
+        <Dialog nama="Igil" anak="Benar. Dadu itu kubus. Semua sisinya persegi yang sama besar." />
+        <Dialog nama="Rara" anak="Kalau kotak susu? Bentuknya lebih panjang." />
+        <Dialog nama="Igil" anak="Itu balok. Sisinya ada yang persegi panjang." />
+        <Dialog nama="Rara" anak="Yeay! Kita detektif bentuk!" />
         <p className="rounded-2xl bg-[#F0FDF4] px-4 py-3 text-sm font-extrabold text-[#166534]">
           Lencana: Detektif Bentuk Datar dan Detektif Bangun Ruang.
         </p>
@@ -432,7 +428,7 @@ function KartuA({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminGuru }) {
         </p>
         <SoalRekamSuara
           id={idKuis("A", 0)}
-          pertanyaan="Sasa melihat jam dinding di rumah Nenek. Jam itu bentuknya apa? Ayo sebutkan!"
+          pertanyaan="Rara melihat jam dinding di rumah Nenek. Jam itu bentuknya apa? Ayo sebutkan!"
           periksa={(transkrip) => jawabanTulisMemuatAlias(transkrip, ["lingkaran", "bulat"])}
           petunjuk="Sebutkan nama bentuknya."
           sesudahNilai={(benar) => setSuara(benar ? "benar" : "salah")}
@@ -628,7 +624,7 @@ function KotaBentuk({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminGuru 
         idMisi={(indeks) => idKuis("C", indeks)}
         idTulis={idKuisTulisKartu(ID, "C")}
         tema={TEMA_MTK1_BAB4}
-        penutup="Rumah Nenek Ani sudah terpetakan. Sasa dan Bimo jadi detektif bentuk."
+        penutup="Rumah Igil sudah terpetakan. Rara jadi detektif bentuk."
         bunga="🔺🟦⚪🔍"
       />
     </KartuBingkai>
@@ -798,7 +794,7 @@ function LembarEvaluasi({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminG
       <div className="mt-4 grid gap-3">
         <SoalRekamSuara
           id={idKuis("D", 0)}
-          pertanyaan="1. Sasa punya pizza, koin, dan pintu. Benda mana yang tidak punya sudut? Mengapa?"
+          pertanyaan="1. Rara punya pizza, koin, dan pintu. Benda mana yang tidak punya sudut? Mengapa?"
           periksa={(transkrip) =>
             ucapanMemuat(transkrip, [
               ["koin"],

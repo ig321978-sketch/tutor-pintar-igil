@@ -10,14 +10,14 @@ export const JUDUL_MTK1_BAB13 = "Bab 13: Waktu dan Durasi";
 export const MODUL_MTK1_BAB13: ModulResmiPai = {
   id: "mtk-1-bab13",
   judul: JUDUL_MTK1_BAB13,
-  pola: /waktu\s+dan\s+durasi\b|stasiun jam jago|ayam jago kecil/,
+  pola: /waktu\s+dan\s+durasi\b|stasiun jam jago|burung hantu Igil/,
   motivasi:
-    "Ayu, Rian, dan Nisa belajar membaca jam bulat, menyusun jadwal, dan membedakan pagi, siang, sore, serta malam bersama ayam jago kecil.",
+    "Rara, Bimo, dan Rara belajar membaca jam bulat, menyusun jadwal, dan membedakan pagi, siang, sore, serta malam bersama burung hantu Igil.",
   kunciJawaban: "B,B,B,C,B,C,A,B,D,C",
   sketsaKartu: [
-    "Ayu, Rian, dan Nisa membaca jam dinding bersama ayam jago kecil.",
+    "Rara, Bimo, dan Rara membaca jam dinding bersama burung hantu Igil.",
     "Papan jam bulat, urutan kegiatan, dan durasi.",
-    "Jago menjaga menara jam di stasiun waktu.",
+    "Igil menjaga menara jam di stasiun waktu.",
     "Poin penting dan lembar evaluasi waktu.",
   ],
   latihan: pg([
@@ -28,7 +28,7 @@ B) Jam 4 tepat
 C) Jam 4 lewat 12
 D) Jam 12 lewat 4`,
     `[Soal 2 - PG - Tipe: LOTS]
-Ayu berangkat sekolah pada pagi hari. Jam yang paling cocok...
+Rara berangkat sekolah pada pagi hari. Jam yang paling cocok...
 A) Jam 12 tepat
 B) Jam 7 tepat
 C) Jam 3 tepat
@@ -85,8 +85,8 @@ D) Makan siang jam 12, bermain, tidur jam 8`,
   kartu: [
     {
       kode: "A",
-      judul: "A. Rumah Jam Ayu",
-      pengantar: "Ayu, Rian, dan Nisa membaca jam bulat, menyusun jadwal, dan membedakan waktu bersama Jago.",
+      judul: "A. Rumah Jam Rara",
+      pengantar: "Rara, Bimo, dan Rara membaca jam bulat, menyusun jadwal, dan membedakan waktu bersama Igil.",
       labelDaftar: "Lima adegan waktu",
       kolom: 1,
       item: [
@@ -213,7 +213,7 @@ D) Makan siang jam 12, bermain, tidur jam 8`,
     },
     {
       kode: "C",
-      judul: "C. Stasiun Jam Jago",
+      judul: "C. Stasiun Jam Igil",
       pengantar: "Siswa menjadi penjaga stasiun waktu. Setiap pos memasang jam atau menyusun jadwal.",
       labelDaftar: "Sepuluh pos stasiun",
       kolom: 1,
@@ -248,7 +248,7 @@ D) Makan siang jam 12, bermain, tidur jam 8`,
           contoh: "Tidur malam tidak dilakukan pada pagi hari.",
         },
         {
-          nama: "Jadwal Ayu",
+          nama: "Jadwal Rara",
           singkat: "Urutan dan jam",
           uraian: "Bangun harus paling awal. Sarapan dilakukan sebelum sekolah. Sarapan jam 8 tidak masuk akal jika sekolah jam 7.",
           contoh: "Langit jingga dan matahari turun berarti sore.",

@@ -6,6 +6,7 @@ import { TEMA_MTK1_BAB5 } from "@/lib/tema-misi-mtk-1";
 import { useMemo, useState, type ReactNode } from "react";
 import HasilJawabanKuis from "@/components/HasilJawabanKuis";
 import KartuPoinPenting from "@/components/KartuPoinPenting";
+import TujuanBelajar from "@/components/TujuanBelajar";
 import KuisAkhirAdegan from "@/components/KuisAkhirAdegan";
 import KuisTulisKartu from "@/components/KuisTulisKartu";
 import SoalRekamSuara from "@/components/SoalRekamSuara";
@@ -39,21 +40,14 @@ function bacakan(teks: string) {
   window.speechSynthesis.speak(suara);
 }
 
-function KartuBingkai({ children, latar = "bg-white" }: { children: ReactNode; latar?: string }) {
-  return (
-    <section className={`rounded-[1.75rem] border-4 border-[#1C01A5]/15 ${latar} px-4 py-5 shadow-sm sm:px-6 sm:py-6`}>
-      {children}
-    </section>
-  );
+function KartuBingkai({ children }: { children: ReactNode; latar?: string }) {
+  return <section className="space-y-4">{children}</section>;
 }
 
 const WARNA_DIALOG: Record<string, string> = {
-  Tari: "border-[#DB2777]/20 bg-[#FDF2F8]",
-  Dimas: "border-[#2563EB]/20 bg-[#EFF6FF]",
-  Ojan: "border-[#16A34A]/25 bg-[#F0FDF4]",
-  Pipit: "border-teal-300 bg-teal-50",
-  "Pak RT": "border-[#7C3AED]/25 bg-[#F5F3FF]",
-  Semua: "border-[#E11D48]/20 bg-[#FFF1F2]",
+  Rara: "border-[#DB2777]/20 bg-[#FDF2F8]",
+  Bimo: "border-[#2563EB]/20 bg-[#EFF6FF]",
+  Igil: "border-amber-300 bg-amber-50",
 };
 
 function Dialog({ nama, anak }: { nama: string; anak: string }) {
@@ -122,12 +116,12 @@ function Adegan({
   children: ReactNode;
 }) {
   return (
-    <article className={`rounded-2xl border-2 px-4 py-3 ${warna}`}>
-      <p className="text-xs font-black uppercase tracking-wide text-[#1C01A5]">{judul}</p>
+    <section className="space-y-4 border-b-4 border-[#1C01A5] pb-8">
+      <p className="text-xl font-black leading-snug text-[#1C01A5]">{judul}</p>
       {/* eslint-disable-next-line @next/next/no-img-element */}
       <img src={src} alt={alt} className="mt-3 w-full rounded-xl border border-[#1C01A5]/10 bg-white object-cover" />
       <div className="mt-3 space-y-2">{children}</div>
-    </article>
+    </section>
   );
 }
 
@@ -504,7 +498,7 @@ function KartuA({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminGuru }) {
   return (
     <KartuBingkai latar="bg-sky-50/80">
       <KepalaKartu
-        ikon="🇮🇩🎀🐦"
+        ikon="🇮🇩🎀🦉"
         judul={kartu.judul}
         anak="Ayo Membilang sampai dengan 20"
         kelas={kelas}
@@ -512,29 +506,30 @@ function KartuA({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminGuru }) {
         cuplikan={cuplikanDariNaskah(kartu.voice, 2_000, 3_000)}
       />
       <div className="mt-4 rounded-2xl border-2 border-sky-300 bg-sky-50 px-4 py-3">
-        <p className="text-sm font-black text-[#1C01A5]">Tujuan Pembelajaran</p>
-        <ul className="daftar-tujuan mt-2 space-y-1 text-sm font-semibold text-slate-700">
-          <li>Membilang, membaca, dan menulis bilangan 11 sampai 20.</li>
-          <li>Mengenal puluhan dan satuan dengan mengelompokkan benda per sepuluh.</li>
-        </ul>
+        <TujuanBelajar
+        butir={[
+          "Membilang, membaca, dan menulis bilangan 11 sampai 20.",
+          "Mengenal puluhan dan satuan dengan mengelompokkan benda per sepuluh.",
+        ]}
+      />
       </div>
       <div className="mt-4 space-y-3">
         <Adegan
           judul="Pagi di gang kampung"
           warna="border-rose-200 bg-rose-50"
           src="/doodle-mtk/mtk-1-bab5-pagi.jpg"
-          alt="Gang kampung berhias umbul-umbul. Bendera kecil mendarat di kaki Ojan, Pipit hinggap di pagar."
+          alt="Gang kampung berhias umbul-umbul. Bendera kecil mendarat di kaki Bimo, Igil hinggap di pagar."
         >
           <p className="text-sm font-semibold text-slate-700">
             Umbul-umbul merah putih berkibar. Satu bendera kecil terbang, lalu mendarat di kaki seorang anak.
           </p>
-          <Dialog nama="Pak RT" anak="Anak-anak, tolong pasang bendera kecil di sepanjang pagar. Kita butuh dua puluh bendera!" />
-          <Dialog nama="Ojan" anak="Dua puluh?! Aku cuma bisa menghitung sampai sepuluh…" />
-          <Dialog nama="Pipit" anak="Jangan khawatir! Rahasianya adalah ikatan ajaib!" />
+          <Dialog nama="Igil" anak="Anak-anak, tolong pasang bendera kecil di sepanjang pagar. Kita butuh dua puluh bendera!" />
+          <Dialog nama="Bimo" anak="Dua puluh?! Aku cuma bisa menghitung sampai sepuluh…" />
+          <Dialog nama="Igil" anak="Jangan khawatir! Rahasianya adalah ikatan ajaib!" />
           <KuisAkhirAdegan
             idSuara={idKuis("A", 1)}
             idKanvas={idKuis("A", 2)}
-            pertanyaanSuara="Pak RT butuh berapa bendera?"
+            pertanyaanSuara="Igil butuh berapa bendera?"
             aliasSuara={["20", "dua puluh"]}
             petunjukSuara="Ucapkan angkanya."
             pertanyaanKanvas="Tuliskan angka 20."
@@ -546,11 +541,11 @@ function KartuA({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminGuru }) {
           judul="Adegan 1 · Tumpukan bendera berantakan"
           warna="border-sky-200 bg-sky-50"
           src="/doodle-mtk/mtk-1-bab5-adegan-1.jpg"
-          alt="Dimas menunjuk bendera yang berserakan di tikar, Ojan bingung, Pipit mengawasi."
+          alt="Bimo menunjuk bendera yang berserakan di tikar, Bimo bingung, Igil mengawasi."
         >
-          <Dialog nama="Dimas" anak="Satu, dua, tiga… eh, yang ini sudah belum, ya?" />
-          <Dialog nama="Ojan" anak="Aku jadi bingung!" />
-          <Dialog nama="Pipit" anak="Kalau berantakan, gampang salah. Ayo kita ikat setiap sepuluh!" />
+          <Dialog nama="Bimo" anak="Satu, dua, tiga… eh, yang ini sudah belum, ya?" />
+          <Dialog nama="Bimo" anak="Aku jadi bingung!" />
+          <Dialog nama="Igil" anak="Kalau berantakan, gampang salah. Ayo kita ikat setiap sepuluh!" />
           <KuisAkhirAdegan
             idSuara={idKuis("A", 3)}
             idKanvas={idKuis("A", 4)}
@@ -566,10 +561,10 @@ function KartuA({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminGuru }) {
           judul="Adegan 2 · Ikatan ajaib pertama"
           warna="border-amber-200 bg-amber-50"
           src="/doodle-mtk/mtk-1-bab5-adegan-2.jpg"
-          alt="Tari mengikat sepuluh bendera jadi satu ikatan dengan pita, Pipit memperhatikan."
+          alt="Rara mengikat sepuluh bendera jadi satu ikatan dengan pita, Igil memperhatikan."
         >
-          <Dialog nama="Tari" anak="Satu, dua, tiga… sembilan, sepuluh!" />
-          <Dialog nama="Pipit" anak="Ikat! Sekarang ini 1 ikat isinya 10!" />
+          <Dialog nama="Rara" anak="Satu, dua, tiga… sembilan, sepuluh!" />
+          <Dialog nama="Igil" anak="Ikat! Sekarang ini 1 ikat isinya 10!" />
           <p className="rounded-xl bg-white px-3 py-2 text-sm font-black text-[#1C01A5]">🎀 1 ikat = 10 bendera = 1 puluhan</p>
           <KuisAkhirAdegan
             idSuara={idKuis("A", 5)}
@@ -586,11 +581,11 @@ function KartuA({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminGuru }) {
           judul="Adegan 3 · Lahirnya angka belasan"
           warna="border-blue-200 bg-blue-50"
           src="/doodle-mtk/mtk-1-bab5-adegan-3.jpg"
-          alt="Satu ikat bendera dan tiga bendera lepas, Ojan menunjuk, angkanya 13."
+          alt="Satu ikat bendera dan tiga bendera lepas, Bimo menunjuk, angkanya 13."
         >
-          <Dialog nama="Ojan" anak="Ada satu ikat dan tiga bendera lepas. Jadi berapa?" />
-          <Dialog nama="Pipit" anak="Mulai dari sepuluh, lalu lanjut: sebelas, dua belas, tiga belas!" />
-          <Dialog nama="Tari" anak="Jadi ada 13 bendera!" />
+          <Dialog nama="Bimo" anak="Ada satu ikat dan tiga bendera lepas. Jadi berapa?" />
+          <Dialog nama="Igil" anak="Mulai dari sepuluh, lalu lanjut: sebelas, dua belas, tiga belas!" />
+          <Dialog nama="Rara" anak="Jadi ada 13 bendera!" />
           <p className="text-center text-3xl font-black">
             <span className="text-blue-700">1</span>
             <span className="text-sky-600">3</span>
@@ -611,12 +606,12 @@ function KartuA({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminGuru }) {
           judul="Adegan 4 · Kata belas yang ajaib"
           warna="border-emerald-200 bg-emerald-50"
           src="/doodle-mtk/mtk-1-bab5-adegan-4.jpg"
-          alt="Papan tulis kampung berisi angka 11 sampai 19 dan kata belas. Dimas dan Tari melihatnya."
+          alt="Papan tulis kampung berisi angka 11 sampai 19 dan kata belas. Bimo dan Rara melihatnya."
         >
-          <Dialog nama="Dimas" anak="Kok namanya pakai belas semua?" />
-          <Dialog nama="Pipit" anak="Belas artinya sepuluh lebih sedikit. Tiga belas sama dengan sepuluh dan tiga." />
-          <Dialog nama="Tari" anak="Tapi 11 bukan satu belas. Namanya sebelas!" />
-          <Dialog nama="Pipit" anak="Betul! Sebelas itu angka istimewa." />
+          <Dialog nama="Bimo" anak="Kok namanya pakai belas semua?" />
+          <Dialog nama="Igil" anak="Belas artinya sepuluh lebih sedikit. Tiga belas sama dengan sepuluh dan tiga." />
+          <Dialog nama="Rara" anak="Tapi 11 bukan satu belas. Namanya sebelas!" />
+          <Dialog nama="Igil" anak="Betul! Sebelas itu angka istimewa." />
           <KuisAkhirAdegan
             idSuara={idKuis("A", 9)}
             idKanvas={idKuis("A", 10)}
@@ -632,12 +627,12 @@ function KartuA({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminGuru }) {
           judul="Adegan 5 · Dua ikat sama dengan dua puluh"
           warna="border-rose-200 bg-rose-50"
           src="/doodle-mtk/mtk-1-bab5-adegan-5.jpg"
-          alt="Dua ikat bendera, angka 20, Tari, Dimas, dan Ojan bersorak, kembang api di langit."
+          alt="Dua ikat bendera, angka 20, Rara, Bimo, dan Igil bersorak, kembang api di langit."
         >
-          <Dialog nama="Ojan" anak="Ikatan kedua sudah penuh!" />
-          <Dialog nama="Pipit" anak="Dua ikat, lepasnya nol. Itu 20, dua puluh!" />
+          <Dialog nama="Bimo" anak="Ikatan kedua sudah penuh!" />
+          <Dialog nama="Igil" anak="Dua ikat, lepasnya nol. Itu 20, dua puluh!" />
           <p className="text-center text-2xl font-black text-[#1C01A5]">🎀🎀 = 20</p>
-          <Dialog nama="Semua" anak="Horeee! Bendera untuk 17 Agustus sudah siap! Merdeka!" />
+          <Dialog nama="Igil" anak="Horeee! Bendera untuk 17 Agustus sudah siap! Merdeka!" />
           <KuisAkhirAdegan
             idSuara={idKuis("A", 11)}
             idKanvas={idKuis("A", 12)}
@@ -807,7 +802,7 @@ function KartuB({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminGuru }) {
         </div>
         <KuisTulisKartu
           id={idKuisTulisKartu(ID, "B")}
-          pertanyaan="Tulis angka yang dibacakan Pipit: enam belas!"
+          pertanyaan="Tulis angka yang dibacakan Igil: enam belas!"
           alias={["16", "enam belas"]}
           konteks="Enam belas ditulis 16. Empat satu, yaitu 61, salah."
           visual={<p className="text-center text-3xl">🐦 16</p>}
@@ -834,7 +829,7 @@ function KartuC({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminGuru }) {
         idMisi={(indeks) => idKuis("C", indeks)}
         idTulis={idKuisTulisKartu(ID, "C")}
         tema={TEMA_MTK1_BAB5}
-        penutup="Dua puluh tiang pagar sudah siap. Pipit mengikat pita terakhir."
+        penutup="Dua puluh tiang pagar sudah siap. Igil mengikat pita terakhir."
         bunga="🇮🇩🎀🎟️🚩"
       />
     </KartuBingkai>
@@ -852,13 +847,13 @@ function LembarEvaluasi({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminG
     return jumlah;
   }, [kuis]);
   const lencana =
-    skor >= 9 ? "🎆 Pahlawan Angka Merdeka" : skor >= 6 ? "🇮🇩 Pengibar Bendera Cerdas" : "🐦 Sahabat Pipit";
+    skor >= 9 ? "🎆 Pahlawan Angka Merdeka" : skor >= 6 ? "🇮🇩 Pengibar Bendera Cerdas" : "🐦 Sahabat Igil";
   const pesan =
     skor >= 9
       ? "Luar biasa! Kamu jagoan angka sampai 20!"
       : skor >= 6
         ? "Hebat! Sedikit lagi jadi pahlawan angka!"
-        : "Ayo mengikat bendera lagi bersama Pipit, kamu pasti bisa!";
+        : "Ayo mengikat bendera lagi bersama Igil, kamu pasti bisa!";
   const kartu = MODUL_MTK1_BAB5.kartu[3];
   const pasangan = ["Dua belas", "Dua puluh", "1 puluhan 5 satuan"];
   return (
@@ -912,7 +907,7 @@ function LembarEvaluasi({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminG
           <p className="mt-2 text-center text-3xl font-black text-rose-700">51</p>
           <SoalRekamSuara
             id={idKuis("D", 2)}
-            pertanyaan='3. Dimas menulis "lima belas" sebagai 51. Apakah Dimas benar? Ucapkan Benar atau Salah, lalu sebutkan cara menulis yang benar.'
+            pertanyaan='3. Bimo menulis "lima belas" sebagai 51. Apakah Bimo benar? Ucapkan Benar atau Salah, lalu sebutkan cara menulis yang benar.'
             periksa={(transkrip) =>
               ucapanMemuat(transkrip, [
                 ["salah"],
@@ -981,7 +976,7 @@ function LembarEvaluasi({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminG
         />
         <Pilih
           id={idKuis("D", 8)}
-          pertanyaan="9. Pagar punya 20 tiang. Tari membawa 1 ikat dan 7 bendera lepas. Apakah benderanya cukup?"
+          pertanyaan="9. Pagar punya 20 tiang. Rara membawa 1 ikat dan 7 bendera lepas. Apakah benderanya cukup?"
           visual={<p>🎀 dan 7 bendera lepas</p>}
           pilihan={[
             { huruf: "A", teks: "Cukup, karena ada 20" },

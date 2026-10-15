@@ -12,12 +12,12 @@ export const MODUL_MTK1_BAB11: ModulResmiPai = {
   judul: JUDUL_MTK1_BAB11,
   pola: /pola\s+bilangan\s+dan\s+pola\s+gambar\b|pabrik manik biru|burung beo biru/,
   motivasi:
-    "Maya, Yoga, dan Lita belajar pola berulang bersama burung Biru, dari pagar bendera sampai membuat pola sendiri.",
+    "Rara, Bimo, dan Rara belajar pola berulang bersama burung hantu Igil, dari pagar bendera sampai membuat pola sendiri.",
   kunciJawaban: "B,C,B,B,C,C,B,C,A,B",
   sketsaKartu: [
-    "Maya, Yoga, dan Lita menemukan pola bendera di pagar sekolah bersama burung Biru.",
+    "Rara, Bimo, dan Rara menemukan pola bendera di pagar sekolah bersama burung hantu Igil.",
     "Papan pengulangan gambar dan dua jenis pola angka.",
-    "Biru menjadi perancang di pabrik manik.",
+    "Igil menjadi perancang di pabrik manik.",
     "Poin penting dan lembar evaluasi pola gambar dan pola bilangan.",
   ],
   latihan: pg([
@@ -25,7 +25,7 @@ export const MODUL_MTK1_BAB11: ModulResmiPai = {
 Pola merah, kuning, merah, kuning. Berikutnya...
 A) Hijau
 B) Merah
-C) Biru
+C) Igil
 D) Bebas`,
     `[Soal 2 - PG - Tipe: LOTS]
 Berapa panjang pengulangan segitiga, kotak, kotak?
@@ -67,14 +67,14 @@ D) 44`,
 Pola biru, hijau. Warna manik ke-7...
 A) Hijau
 B) Merah
-C) Biru
+C) Igil
 D) Bebas`,
     `[Soal 9 - PG - Tipe: HOTS]
 Pola merah, kuning, hijau. Setelah hijau, warnanya...
 A) Merah
 B) Kuning
 C) Hijau
-D) Biru`,
+D) Igil`,
     `[Soal 10 - PG - Tipe: HOTS]
 Pola segitiga, lingkaran, lingkaran. Bentuk pada posisi ke-11...
 A) Segitiga
@@ -85,9 +85,9 @@ D) Tidak bisa ditentukan`,
   kartu: [
     {
       kode: "A",
-      judul: "A. Pagar Sekolah Biru",
+      judul: "A. Pagar Sekolah Igil",
       pengantar:
-        "Maya, Yoga, dan Lita mencari bagian yang berulang. Kalau pengulangannya ketemu, bagian berikutnya bisa ditebak.",
+        "Rara, Bimo, dan Rara mencari bagian yang berulang. Kalau pengulangannya ketemu, bagian berikutnya bisa ditebak.",
       labelDaftar: "Lima adegan pola",
       kolom: 1,
       item: [
@@ -100,7 +100,7 @@ D) Tidak bisa ditentukan`,
         {
           nama: "Panjang pengulangan",
           singkat: "Hitung isinya",
-          uraian: "Biru, biru, hijau punya tiga manik dalam satu pengulangan. Manik ke-13 sama dengan manik pertama.",
+          uraian: "Pola biru, biru, hijau punya tiga manik dalam satu pengulangan. Manik ke-13 sama dengan manik pertama.",
           contoh: "Segitiga, kotak, kotak. Panjangnya tiga.",
         },
         {
@@ -214,7 +214,7 @@ D) Tidak bisa ditentukan`,
     },
     {
       kode: "C",
-      judul: "C. Pabrik Manik Biru",
+      judul: "C. Pabrik Manik Igil",
       pengantar: "Siswa menjadi perancang manik. Setiap pesanan punya pola yang harus ditemukan lalu dilanjutkan.",
       labelDaftar: "Sepuluh pesanan pabrik",
       kolom: 1,
@@ -222,7 +222,7 @@ D) Tidak bisa ditentukan`,
         {
           nama: "Gelang pesanan",
           singkat: "Cari pengulangannya",
-          uraian: "Biru hijau bergantian. Merah merah kuning berulang tiga. Angka manik naik atau turun dengan langkah tetap.",
+          uraian: "Igil hijau bergantian. Merah merah kuning berulang tiga. Angka manik naik atau turun dengan langkah tetap.",
           contoh: "Setelah hijau pada merah kuning hijau, berikutnya merah.",
         },
       ],

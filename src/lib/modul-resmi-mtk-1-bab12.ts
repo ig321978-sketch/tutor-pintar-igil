@@ -12,12 +12,12 @@ export const MODUL_MTK1_BAB12: ModulResmiPai = {
   judul: JUDUL_MTK1_BAB12,
   pola: /pengukuran\s+berat\b|pasar timbang momo|gajah kecil momo/,
   motivasi:
-    "Sasa, Dito, dan Beben belajar membandingkan berat bersama gajah kecil Momo, lalu mengukur dengan kelereng dan genggaman.",
+    "Rara, Bimo, dan Igil belajar membandingkan berat bersama burung hantu Igil, lalu mengukur dengan kelereng dan genggaman.",
   kunciJawaban: "B,B,C,B,B,C,C,B,C,C",
   sketsaKartu: [
-    "Sasa, Dito, dan Beben mengangkat beras dan kapas bersama gajah kecil Momo.",
+    "Rara, Bimo, dan Igil mengangkat beras dan kapas bersama burung hantu Igil.",
     "Timbangan kelereng dan genggaman tangan untuk mengukur berat.",
-    "Momo menjadi penjaga timbangan di pasar.",
+    "Igil menjadi penjaga timbangan di pasar.",
     "Poin penting dan lembar evaluasi pengukuran berat.",
   ],
   latihan: pg([
@@ -85,8 +85,8 @@ D) 10`,
   kartu: [
     {
       kode: "A",
-      judul: "A. Halaman Rumah Sasa",
-      pengantar: "Sasa, Dito, dan Beben membandingkan berat, lalu mengukur dengan kelereng dan genggaman.",
+      judul: "A. Halaman Rumah Rara",
+      pengantar: "Rara, Bimo, dan Igil membandingkan berat, lalu mengukur dengan kelereng dan genggaman.",
       labelDaftar: "Lima adegan menimbang",
       kolom: 1,
       item: [
@@ -111,7 +111,7 @@ D) 10`,
         {
           nama: "Genggaman",
           singkat: "Jangan ganti tangan",
-          uraian: "Tangan kecil Beben perlu 6 genggam. Tangan besar Dito cukup 4 genggam untuk benda yang sama.",
+          uraian: "Tangan kecil Bimo perlu 6 genggam. Tangan besar Bimo cukup 4 genggam untuk benda yang sama.",
           contoh: "Pakai tangan orang yang sama dari awal sampai akhir.",
         },
         {
@@ -213,7 +213,7 @@ D) 10`,
     },
     {
       kode: "C",
-      judul: "C. Pasar Timbang Momo",
+      judul: "C. Pasar Timbang Igil",
       pengantar: "Siswa menjadi penjaga timbangan. Setiap pesanan diukur dengan satuan yang sama.",
       labelDaftar: "Sepuluh pos pasar",
       kolom: 1,
@@ -248,7 +248,7 @@ D) 10`,
           contoh: "Kapas yang banyak genggamnya tetap bisa lebih ringan daripada batu kecil.",
         },
         {
-          nama: "Tiga barang Momo",
+          nama: "Tiga barang Igil",
           singkat: "Selisih berat",
           uraian: "Botol 4, buku 9, krayon 2 kelereng. Paling berat buku. Paling ringan krayon. Selisihnya 7 kelereng.",
           contoh: "Hasil genggaman beda karena ukuran tangan beda.",

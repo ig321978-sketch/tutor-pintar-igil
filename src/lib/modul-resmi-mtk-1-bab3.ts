@@ -13,12 +13,12 @@ export const MODUL_MTK1_BAB3: ModulResmiPai = {
   judul: JUDUL_MTK1_BAB3,
   pola: /pengurangan\s+sampai(\s+dengan)?\s+10\b|pesta ulang tahun yang hilang|toko roti miko|misi pesta ulang tahun/,
   motivasi:
-    "Malam pesta, balon Nia terbang. Bersama Fajar dan Miko, hitung yang hilang, lalu cari sisanya sampai 10.",
+    "Malam pesta, balon Rara terbang. Bersama Bimo dan Igil, hitung yang hilang, lalu cari sisanya sampai 10.",
   kunciJawaban: "A,B,B,C,B,A,C,C,B,C",
   sketsaKartu: [
-    "Nia dan Fajar di pesta ulang tahun. Delapan balon, tiga terbang, sisa lima. Miko si tikus menjelaskan tanda kurang.",
+    "Rara dan Bimo di pesta ulang tahun. Delapan balon, tiga terbang, sisa lima. Igil si tikus menjelaskan tanda kurang.",
     "Cara mengurangi: hitung sisa, hitung mundur, pakai jari, dan saudara dari penjumlahan.",
-    "Miko menjaga sepuluh meja pesta: sisa balon, angka hilang, dan saudara dari penjumlahan.",
+    "Igil menjaga sepuluh meja pesta: sisa balon, angka hilang, dan saudara dari penjumlahan.",
     "Poin penting dan lembar evaluasi pengurangan sampai 10.",
   ],
   latihan: pg([
@@ -29,7 +29,7 @@ B) 3
 C) 8
 D) 11`,
     `[Soal 2 - PG - Tipe: LOTS]
-Ada 6 potong kue. Fajar makan 2 potong. Sisanya...
+Ada 6 potong kue. Bimo makan 2 potong. Sisanya...
 A) 8 potong
 B) 4 potong
 C) 2 potong
@@ -71,13 +71,13 @@ B) 6 – 1
 C) 9 – 5
 D) 7 – 2`,
     `[Soal 9 - PG - Tipe: HOTS]
-Fajar punya 8 kue dan memberi 5 kue. Sisanya...
+Bimo punya 8 kue dan memberi 5 kue. Sisanya...
 A) 13
 B) 3
 C) 5
 D) 8`,
     `[Soal 10 - PG - Tipe: HOTS]
-Nia punya 6 stiker dan memberikan semuanya. Sisa stiker Nia adalah...
+Rara punya 6 stiker dan memberikan semuanya. Sisa stiker Rara adalah...
 A) 6
 B) 1
 C) 0
@@ -88,7 +88,7 @@ D) 12`,
       kode: "A",
       judul: "A. Pesta Ulang Tahun yang Hilang",
       pengantar:
-        "Angin membawa 3 balon Nia. Dulu ada 8, yang hilang 3, sisa 5. Tanda kurang artinya diambil atau dipisahkan.",
+        "Angin membawa 3 balon Rara. Dulu ada 8, yang hilang 3, sisa 5. Tanda kurang artinya diambil atau dipisahkan.",
       labelDaftar: "Balon terbang dan kue yang dimakan",
       kolom: 1,
       item: [
@@ -96,14 +96,14 @@ D) 12`,
           nama: "Balon terbang",
           singkat: "8 balon kurang 3",
           uraian:
-            "Nia menghitung 8 balon. Angin membawa 3 balon. Yang tersisa dihitung satu, dua, tiga, empat, lima. Delapan kurang tiga sama dengan lima.",
+            "Rara menghitung 8 balon. Angin membawa 3 balon. Yang tersisa dihitung satu, dua, tiga, empat, lima. Delapan kurang tiga sama dengan lima.",
           contoh: "8 - 3 = 5",
         },
         {
           nama: "Kue dan topi",
           singkat: "6 kurang 2, dan 9 kurang 4",
           uraian:
-            "Fajar makan 2 potong dari 6 kue. Sisanya 4. Dari 9 topi, tamu mengambil 4. Sisanya 5.",
+            "Bimo makan 2 potong dari 6 kue. Sisanya 4. Dari 9 topi, tamu mengambil 4. Sisanya 5.",
           contoh: "6 - 2 = 4",
         },
       ],
@@ -137,7 +137,7 @@ D) 12`,
           alias: ["-", "kurang"],
         },
         {
-          pertanyaan: "Kue ada 6. Fajar makan 2. Sisa berapa?",
+          pertanyaan: "Kue ada 6. Bimo makan 2. Sisa berapa?",
           alias: ["4", "empat"],
         },
         {
@@ -155,7 +155,7 @@ D) 12`,
       ],
       voice: [
         [
-          "Malam pesta di rumah Nia. Ada delapan balon di dinding.",
+          "Malam pesta di rumah Rara. Ada delapan balon di dinding.",
           "Angin membawa tiga balon. Delapan kurang tiga sama dengan lima.",
           "Tanda kurang artinya diambil atau dipisahkan. Jumlahnya jadi lebih sedikit.",
           "Enam kue dikurangi dua menjadi empat. Sembilan topi dikurangi empat menjadi lima.",
@@ -221,7 +221,7 @@ D) 12`,
       kode: "C",
       judul: "C. Misi Pesta Ulang Tahun",
       pengantar:
-        "Bantu Miko menjaga 10 meja pesta ulang tahun. Hijau untuk menghitung, biru untuk membaca, kuning untuk menulis, dan ungu untuk membandingkan.",
+        "Bantu Igil menjaga 10 meja pesta ulang tahun. Hijau untuk menghitung, biru untuk membaca, kuning untuk menulis, dan ungu untuk membandingkan.",
       labelDaftar: "Sepuluh meja kurang di pesta",
       kolom: 1,
       item: [
@@ -229,7 +229,7 @@ D) 12`,
           nama: "Alur permainan",
           singkat: "Pilih meja, jawab, dapat bintang",
           uraian:
-            "Siswa memilih satu meja pesta. Miko membacakan misi pengurangan. Jawaban benar mendapat 1 bintang pesta. Jawaban yang belum tepat mendapat petunjuk, tanpa kehilangan balon. Setelah 10 meja selesai, pesta Nia rapi kembali.",
+            "Siswa memilih satu meja pesta. Igil membacakan misi pengurangan. Jawaban benar mendapat 1 bintang pesta. Jawaban yang belum tepat mendapat petunjuk, tanpa kehilangan balon. Setelah 10 meja selesai, pesta Rara rapi kembali.",
           contoh: "8 - 3 = 5. Angka hilang pada 8 - kotak = 5 adalah 3. 9 - 2 bukan 6.",
         },
         {
@@ -237,17 +237,17 @@ D) 12`,
           singkat: "3, 2, atau 1 balon",
           uraian:
             "Jawaban pertama benar mendapat 3 balon ajaib. Benar setelah satu petunjuk mendapat 2 balon. Benar setelah dua petunjuk mendapat 1 balon. Belum tepat tidak mengurangi balon. Siswa boleh mencoba lagi.",
-          contoh: "Petunjuk: benda bergoyang, lalu muncul titik, lalu Miko menghitung bersama.",
+          contoh: "Petunjuk: benda bergoyang, lalu muncul titik, lalu Igil menghitung bersama.",
         },
       ],
       kuis: kuisDariMisi(MISI_MTK1_BAB3),
       voice: [
         [
-          "Miko menjaga pesta ulang tahun. Ada sepuluh meja dari kue sampai kado.",
+          "Igil menjaga pesta ulang tahun. Ada sepuluh meja dari kue sampai kado.",
           "Delapan balon dikurangi tiga, sisanya lima. Kurang nol, angkanya tetap.",
           "Angka yang hilang supaya delapan kurang kotak sama dengan lima adalah tiga.",
           "Sembilan kurang dua sama dengan tujuh, bukan enam. Karena empat tambah tiga sama dengan tujuh, tujuh kurang tiga kembali ke empat.",
-          "Jawaban benar mendapat satu bintang pesta. Jika belum tepat, Miko memberi petunjuk. Balon tidak berkurang.",
+          "Jawaban benar mendapat satu bintang pesta. Jika belum tepat, Igil memberi petunjuk. Balon tidak berkurang.",
         ],
       ],
     },
@@ -271,9 +271,9 @@ D) 12`,
         { pertanyaan: "Sembilan permen, 4 dicoret. Sisa berapa?", alias: ["5", "lima"] },
         { pertanyaan: "Tujuh balon, 4 meletus. Sisa berapa?", alias: ["3", "tiga", "7 - 4 = 3"] },
         { pertanyaan: "Delapan kurang berapa sama dengan lima?", alias: ["3", "tiga"] },
-        { pertanyaan: "Fajar berkata 9 kurang 4 sama dengan 6. Apakah Fajar benar?", alias: ["salah", "5", "lima"] },
+        { pertanyaan: "Bimo berkata 9 kurang 4 sama dengan 6. Apakah Bimo benar?", alias: ["salah", "5", "lima"] },
         { pertanyaan: "Mana pasangan pengurangan yang keduanya hasilnya 4?", alias: ["5 - 1 = 4", "6 - 2 = 4"] },
-        { pertanyaan: "Nia punya 6 stiker dan memberi semuanya. Sisa berapa?", alias: ["c", "0", "nol"] },
+        { pertanyaan: "Rara punya 6 stiker dan memberi semuanya. Sisa berapa?", alias: ["c", "0", "nol"] },
         { pertanyaan: "Sepuluh bunga, 6 terjual. Sisa berapa?", alias: ["4", "empat", "10 - 6 = 4"] },
         { pertanyaan: "Pasangkan kartu pengurangan yang hasilnya sama.", alias: ["10 - 6", "6 - 2"] },
         { pertanyaan: "Sembilan boneka, 5 anak mengambil satu. Berapa yang tidak terambil?", alias: ["4", "empat"] },

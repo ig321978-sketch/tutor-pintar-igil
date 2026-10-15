@@ -12,12 +12,12 @@ export const MODUL_MTK1_BAB6: ModulResmiPai = {
   judul: JUDUL_MTK1_BAB6,
   pola: /penjumlahan\s+dan\s+pengurangan\s+sampai(\s+dengan)?\s+20\b|misi penyelamatan anak kucing|menara penyelamat toki|selamatkan anak kucing/,
   motivasi:
-    "Kiki, Bayu, dan Naya menyelamatkan anak kucing bersama Toki. Mereka menghitung maju, menghitung mundur, dan memecah angka belasan.",
+    "Igil, Bimo, dan Rara menyelamatkan anak kucing bersama Igil. Mereka menghitung maju, menghitung mundur, dan memecah angka belasan.",
   kunciJawaban: "A,A,B,A,B,C,A,B,C,B",
   sketsaKartu: [
-    "Kiki, Bayu, dan Naya menyusun kursi untuk mencapai anak kucing di dahan, bersama Toki si penjaga jam.",
+    "Igil, Bimo, dan Rara menyusun kursi untuk mencapai anak kucing di dahan, bersama Igil si penjaga jam.",
     "Hitung maju, hitung mundur, dekomposisi, dan keluarga angka sampai 20.",
-    "Toki menyusun sepuluh kursi penyelamatan: hitung maju, hitung mundur, dan keluarga angka sampai 20.",
+    "Igil menyusun sepuluh kursi penyelamatan: hitung maju, hitung mundur, dan keluarga angka sampai 20.",
     "Poin penting dan lembar evaluasi penjumlahan serta pengurangan sampai 20.",
   ],
   latihan: pg([
@@ -76,7 +76,7 @@ B) 16 – 3 lebih besar
 C) Sama besar
 D) Tidak bisa dibandingkan`,
     `[Soal 10 - PG - Tipe: HOTS]
-Kiki punya 13 stiker. Bayu memberi 5 stiker lagi. Stiker Kiki sekarang ada...
+Igil punya 13 stiker. Bimo memberi 5 stiker lagi. Stiker Igil sekarang ada...
 A) 8
 B) 18
 C) 13
@@ -87,7 +87,7 @@ D) 5`,
       kode: "A",
       judul: "A. Misi Penyelamatan Anak Kucing",
       pengantar:
-        "Sore hari, anak kucing terjebak di dahan setinggi 18. Kiki, Bayu, dan Naya menyusun kursi. Toki menunjukkan jam yang membuat angka berjalan maju dan mundur.",
+        "Sore hari, anak kucing terjebak di dahan setinggi 18. Igil, Bimo, dan Rara menyusun kursi. Igil menunjukkan jam yang membuat angka berjalan maju dan mundur.",
       labelDaftar: "Hitung maju, pecah angka, lalu hitung mundur",
       kolom: 1,
       item: [
@@ -241,7 +241,7 @@ D) 5`,
       kode: "C",
       judul: "C. Misi Selamatkan Anak Kucing",
       pengantar:
-        "Bantu Toki menyusun 10 kursi untuk menyelamatkan anak kucing. Hijau untuk menghitung, biru untuk membaca, kuning untuk menulis, dan ungu untuk membandingkan.",
+        "Bantu Igil menyusun 10 kursi untuk menyelamatkan anak kucing. Hijau untuk menghitung, biru untuk membaca, kuning untuk menulis, dan ungu untuk membandingkan.",
       labelDaftar: "Sepuluh kursi hitung maju dan mundur",
       kolom: 1,
       item: [
@@ -249,7 +249,7 @@ D) 5`,
           nama: "Alur permainan",
           singkat: "Pilih kursi, jawab, dapat bintang",
           uraian:
-            "Siswa memilih satu kursi. Toki memberi lompatan, keluarga angka, atau kartu yang hasilnya berbeda. Jawaban benar mendapat 1 bintang penyelamat. Jawaban yang belum tepat mendapat petunjuk, tanpa kehilangan detik.",
+            "Siswa memilih satu kursi. Igil memberi lompatan, keluarga angka, atau kartu yang hasilnya berbeda. Jawaban benar mendapat 1 bintang penyelamat. Jawaban yang belum tepat mendapat petunjuk, tanpa kehilangan detik.",
           contoh: "12 + 5 = 17. 8 + 7 = 15 maka 15 - 7 = 8. Kartu 16 - 2 hasilnya 14, bukan 13.",
         },
         {
@@ -263,11 +263,11 @@ D) 5`,
       kuis: kuisDariMisi(MISI_MTK1_BAB6),
       voice: [
         [
-          "Toki menyusun kursi untuk menyelamatkan anak kucing. Ada sepuluh kursi dari halaman sampai dahan.",
+          "Igil menyusun kursi untuk menyelamatkan anak kucing. Ada sepuluh kursi dari halaman sampai dahan.",
           "Dari dua belas, lompat maju lima kali dan berhenti di tujuh belas.",
           "Kalau delapan tambah tujuh sama dengan lima belas, maka lima belas kurang tujuh sama dengan delapan.",
           "Sepuluh tambah tiga dan enam belas kurang tiga sama-sama tiga belas. Kartu enam belas kurang dua hasilnya empat belas.",
-          "Jawaban benar mendapat satu bintang penyelamat. Jika belum tepat, Toki memberi petunjuk. Detik tidak berkurang.",
+          "Jawaban benar mendapat satu bintang penyelamat. Jika belum tepat, Igil memberi petunjuk. Detik tidak berkurang.",
         ],
       ],
     },
@@ -291,12 +291,12 @@ D) 5`,
         { pertanyaan: "Dari 9, enam lompatan maju. Tulis kalimatnya.", alias: ["9 + 6 = 15", "15"] },
         { pertanyaan: "Dari 17, lima lompatan mundur. Tulis kalimatnya.", alias: ["17 - 5 = 12", "12"] },
         { pertanyaan: "Pecah 18 jadi dua bagian.", alias: ["10", "8"] },
-        { pertanyaan: "Bayu berkata 13 + 5 = 17. Benar atau salah?", alias: ["salah", "18"] },
+        { pertanyaan: "Bimo berkata 13 + 5 = 17. Benar atau salah?", alias: ["salah", "18"] },
         { pertanyaan: "Hitung 8 + 9 dengan kejar sepuluh.", alias: ["8 + 2 = 10", "10 + 7 = 17"] },
         { pertanyaan: "Tanda antara 9 + 7 dan 15 + 1.", alias: ["="] },
-        { pertanyaan: "Naya punya 15 koin. Donat 11, kue 16. Mana yang bisa dibeli, dan kurang berapa untuk yang lain?", alias: ["donat", "1"] },
+        { pertanyaan: "Rara punya 15 koin. Donat 11, kue 16. Mana yang bisa dibeli, dan kurang berapa untuk yang lain?", alias: ["donat", "1"] },
         { pertanyaan: "Tulis dua cara berbeda supaya hasilnya 14.", alias: ["14"] },
-        { pertanyaan: "Bayu punya 17 kelereng, 9 jatuh. Sisanya berapa?", alias: ["17 - 9 = 8", "8"] },
+        { pertanyaan: "Bimo punya 17 kelereng, 9 jatuh. Sisanya berapa?", alias: ["17 - 9 = 8", "8"] },
         { pertanyaan: "Ada 12 balon, dibeli 5, lalu datang 8. Berapa sekarang?", alias: ["12 - 5 = 7", "7 + 8 = 15"] },
       ],
       voice: [

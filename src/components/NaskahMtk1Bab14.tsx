@@ -7,6 +7,7 @@ import { useMemo, useState, type ReactNode } from "react";
 import HasilJawabanKuis from "@/components/HasilJawabanKuis";
 import TabelInfoGrafis from "@/components/TabelInfoGrafis";
 import KartuPoinPenting from "@/components/KartuPoinPenting";
+import TujuanBelajar from "@/components/TujuanBelajar";
 import PanduanIkon, { type ButirIkon } from "@/components/PanduanIkon";
 import KuisTulisKartu from "@/components/KuisTulisKartu";
 import SoalRekamSuara from "@/components/SoalRekamSuara";
@@ -122,26 +123,20 @@ function cuplikanKalimat(kalimat: string[]): CuplikanVoiceMateri[] {
   }));
 }
 
-function KartuBingkai({ children, latar = "bg-white" }: { children: ReactNode; latar?: string }) {
-  return (
-    <section className={`rounded-[1.75rem] border-4 border-[#1C01A5]/15 ${latar} px-4 py-5 shadow-sm sm:px-6 sm:py-6`}>
-      {children}
-    </section>
-  );
+function KartuBingkai({ children }: { children: ReactNode; latar?: string }) {
+  return <section className="space-y-4">{children}</section>;
 }
 
 const WARNA_DIALOG: Record<string, string> = {
-  Karin: "border-[#DB2777]/20 bg-[#FDF2F8]",
-  Bagas: "border-[#2563EB]/20 bg-[#EFF6FF]",
-  Wulan: "border-[#16A34A]/20 bg-[#F0FDF4]",
-  Tupi: "border-teal-300 bg-teal-50",
+  Rara: "border-[#DB2777]/20 bg-[#FDF2F8]",
+  Bimo: "border-[#2563EB]/20 bg-[#EFF6FF]",
+  Igil: "border-amber-300 bg-amber-50",
 };
 
 const WAJAH_DIALOG: Record<string, string> = {
-  Karin: "👧",
-  Bagas: "👦",
-  Wulan: "👧",
-  Tupi: "🐿️",
+  Rara: "👧",
+  Bimo: "👦",
+  Igil: "🦉",
 };
 
 function Dialog({ nama, anak }: { nama: string; anak: string }) {
@@ -241,14 +236,14 @@ function Adegan({
   children: ReactNode;
 }) {
   return (
-    <article className={`rounded-2xl border-2 px-4 py-3 ${warna}`}>
-      <p className="text-xs font-black uppercase tracking-wide text-[#1C01A5]">{judul}</p>
+    <section className="space-y-4 border-b-4 border-[#1C01A5] pb-8">
+      <p className="text-xl font-black leading-snug text-[#1C01A5]">{judul}</p>
       <TombolPenjelasan kelas={kelas} kelamin={kelamin} kalimat={penjelasan} />
       {simbol ? <PanduanIkon butir={simbol} /> : null}
       {/* eslint-disable-next-line @next/next/no-img-element */}
       <img src={src} alt={alt} className="mt-3 w-full rounded-xl border border-[#1C01A5]/10 bg-white object-cover" />
       <div className="mt-3 space-y-2">{children}</div>
-    </article>
+    </section>
   );
 }
 
@@ -608,14 +603,15 @@ function KartuA({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminGuru }) {
   const ciri = ["3 sisi dan 3 sudut", "4 sisi dan 4 sudut", "Tidak punya sudut"];
   return (
     <KartuBingkai latar="bg-sky-50/80">
-      <KepalaKartu ikon="👧👦🐿️" judul={kartu.judul} anak="Karin, Bagas, Wulan, dan tupai kecil Tupi" />
+      <KepalaKartu ikon="👧👦🦉" judul={kartu.judul} anak="Rara, Bimo, dan Igil" />
       <div className="mt-4">
-        <p className="text-sm font-black text-[#1C01A5]">Tujuan Pembelajaran</p>
-        <ul className="daftar-tujuan mt-2 space-y-1 text-sm font-semibold text-slate-700">
-          <li>Siswa bisa menyebutkan ciri sisi dan sudut pada bangun datar.</li>
-          <li>Siswa bisa mengenali bangun ruang sederhana.</li>
-          <li>Siswa bisa membedakan bentuk datar dari bentuk ruang.</li>
-        </ul>
+        <TujuanBelajar
+        butir={[
+          "Siswa bisa menyebutkan ciri sisi dan sudut pada bangun datar.",
+          "Siswa bisa mengenali bangun ruang sederhana.",
+          "Siswa bisa membedakan bentuk datar dari bentuk ruang.",
+        ]}
+      />
       </div>
       <div className="mt-4 space-y-4">
         <Adegan
@@ -627,7 +623,7 @@ function KartuA({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminGuru }) {
           ]}
           warna="border-amber-200 bg-amber-50/40"
           src="/doodle-mtk/mtk-1-bab14-sub1.jpg"
-          alt="Karin duduk di lantai ubin sambil memegang krayon. Di karpet bundar ada segitiga, segi empat, dan lingkaran. Tupi mengintip dari kotak mainan."
+          alt="Rara duduk di lantai ubin sambil memegang krayon. Di karpet bundar ada segitiga, segi empat, dan lingkaran. Igil mengintip dari kotak mainan."
           kelas={kelas}
           kelamin={kelamin}
           penjelasan={[
@@ -636,9 +632,9 @@ function KartuA({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminGuru }) {
             "Bentuk lurus bisa dihitung sisinya. Bentuk yang melengkung tidak dihitung seperti garis lurus.",
           ]}
         >
-          <Dialog nama="Bagas" anak="Ubin lantai ini aku hitung: satu, dua, tiga, empat sisi!" />
-          <Dialog nama="Wulan" anak="Karpet bundar ini tidak habis-habis kalau dihitung seperti garis lurus." />
-          <Dialog nama="Tupi" anak="Cik-cik! Yang bundar melengkung terus, jadi tidak punya sisi lurus." />
+          <Dialog nama="Bimo" anak="Ubin lantai ini aku hitung: satu, dua, tiga, empat sisi!" />
+          <Dialog nama="Rara" anak="Karpet bundar ini tidak habis-habis kalau dihitung seperti garis lurus." />
+          <Dialog nama="Igil" anak="Hoo! Yang bundar melengkung terus, jadi tidak punya sisi lurus." />
           <Papan anak="🔺 3 sisi · ⬛ 4 sisi · ⬤ melengkung" />
           <KuisSuara
             id={idKuis("A", 0)}
@@ -668,7 +664,7 @@ function KartuA({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminGuru }) {
           ]}
           warna="border-sky-200 bg-sky-50/50"
           src="/doodle-mtk/mtk-1-bab14-sub2.jpg"
-          alt="Wulan menunjuk sudut buku. Segitiga punya tiga titik merah di sudutnya. Lingkaran diberi tanda silang."
+          alt="Rara menunjuk sudut buku. Segitiga punya tiga titik merah di sudutnya. Lingkaran diberi tanda silang."
           kelas={kelas}
           kelamin={kelamin}
           penjelasan={[
@@ -677,9 +673,9 @@ function KartuA({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminGuru }) {
             "Lingkaran tidak punya sudut, karena tidak ada garis yang bertemu.",
           ]}
         >
-          <Dialog nama="Karin" anak="Ujung buku yang tajam itu sudut. Tempat dua sisi bertemu." />
-          <Dialog nama="Tupi" anak="Segitiga punya 3 sudut. Persegi punya 4 sudut. Lingkaran punya nol." />
-          <Dialog nama="Wulan" anak="Jumlah sudut sama dengan jumlah sisi, kecuali lingkaran." />
+          <Dialog nama="Rara" anak="Ujung buku yang tajam itu sudut. Tempat dua sisi bertemu." />
+          <Dialog nama="Igil" anak="Segitiga punya 3 sudut. Persegi punya 4 sudut. Lingkaran punya nol." />
+          <Dialog nama="Rara" anak="Jumlah sudut sama dengan jumlah sisi, kecuali lingkaran." />
           <Papan anak="🔺 3 sudut · ⬛ 4 sudut · ⬤ 0 sudut" />
           <KuisSuara
             id={idKuis("A", 2)}
@@ -709,7 +705,7 @@ function KartuA({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminGuru }) {
           ]}
           warna="border-emerald-200 bg-emerald-50/50"
           src="/doodle-mtk/mtk-1-bab14-sub3.jpg"
-          alt="Halaman sekolah dengan rambu segitiga, jendela segi empat, dan jam bundar. Karin, Bagas, Wulan, dan Tupi mengamati."
+          alt="Halaman sekolah dengan rambu segitiga, jendela segi empat, dan jam bundar. Rara, Bimo, Rara, dan Igil mengamati."
           kelas={kelas}
           kelamin={kelamin}
           penjelasan={[
@@ -718,9 +714,9 @@ function KartuA({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminGuru }) {
             "Ketiga bentuk itu ada di sekitar kita.",
           ]}
         >
-          <Dialog nama="Karin" anak="Rambu itu segitiga. Jendela kelas punya 4 sisi, jadi segi empat." />
-          <Dialog nama="Wulan" anak="Jam dinding itu lingkaran. Potongan pizza juga segitiga." />
-          <Dialog nama="Bagas" anak="Tutup botol minumku bulat. Itu lingkaran!" />
+          <Dialog nama="Rara" anak="Rambu itu segitiga. Jendela kelas punya 4 sisi, jadi segi empat." />
+          <Dialog nama="Rara" anak="Jam dinding itu lingkaran. Potongan pizza juga segitiga." />
+          <Dialog nama="Bimo" anak="Tutup botol minumku bulat. Itu lingkaran!" />
           <Papan anak="🔺 rambu · ⬛ jendela · ⬤ jam" />
           <KuisSuara
             id={idKuis("A", 4)}
@@ -752,7 +748,7 @@ function KartuA({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminGuru }) {
           ]}
           warna="border-orange-200 bg-orange-50/50"
           src="/doodle-mtk/mtk-1-bab14-sub4.jpg"
-          alt="Rak mainan berisi dadu, kotak, kaleng, topi kerucut, dan bola. Bagas meraih dadu. Tupi berdiri di samping."
+          alt="Rak mainan berisi dadu, kotak, kaleng, topi kerucut, dan bola. Bimo meraih dadu. Igil berdiri di samping."
           kelas={kelas}
           kelamin={kelamin}
           penjelasan={[
@@ -761,9 +757,9 @@ function KartuA({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminGuru }) {
             "Yang perlu dikenal: kubus, balok, tabung, kerucut, dan bola.",
           ]}
         >
-          <Dialog nama="Tupi" anak="Dadu itu kubus. Semua sisinya sama besar." />
-          <Dialog nama="Karin" anak="Kotak sepatu itu balok. Punya 6 sisi, tetapi tidak sama semua." />
-          <Dialog nama="Wulan" anak="Kaleng susu tabung. Topi ulang tahun kerucut. Bola ya bola." />
+          <Dialog nama="Igil" anak="Dadu itu kubus. Semua sisinya sama besar." />
+          <Dialog nama="Rara" anak="Kotak sepatu itu balok. Punya 6 sisi, tetapi tidak sama semua." />
+          <Dialog nama="Rara" anak="Kaleng susu tabung. Topi ulang tahun kerucut. Bola ya bola." />
           <Papan anak="🧊 dadu · 📦 kotak · 🥫 kaleng · 🍦 topi · ⚽ bola" />
           <KuisSuara
             id={idKuis("A", 6)}
@@ -792,7 +788,7 @@ function KartuA({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminGuru }) {
           ]}
           warna="border-fuchsia-200 bg-fuchsia-50/40"
           src="/doodle-mtk/mtk-1-bab14-sub5.jpg"
-          alt="Dua meja. Meja kiri ada gambar lingkaran di kertas. Meja kanan ada bola yang dipegang Bagas. Tupi menunjuk bola."
+          alt="Dua meja. Meja kiri ada gambar lingkaran di kertas. Meja kanan ada bola yang dipegang Bimo. Igil menunjuk bola."
           kelas={kelas}
           kelamin={kelamin}
           penjelasan={[
@@ -801,9 +797,9 @@ function KartuA({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminGuru }) {
             "Tes paling mudah: coba diangkat.",
           ]}
         >
-          <Dialog nama="Bagas" anak="Gambar lingkaran di kertas tidak bisa diangkat. Bolanya bisa aku pegang." />
-          <Dialog nama="Tupi" anak="Bisa diangkat berarti bentuk ruang. Hanya bisa digambar berarti bentuk datar." />
-          <Dialog nama="Karin" anak="Persegi itu datar. Kubus itu ruang. Lingkaran datar, bola ruang." />
+          <Dialog nama="Bimo" anak="Gambar lingkaran di kertas tidak bisa diangkat. Bolanya bisa aku pegang." />
+          <Dialog nama="Igil" anak="Bisa diangkat berarti bentuk ruang. Hanya bisa digambar berarti bentuk datar." />
+          <Dialog nama="Rara" anak="Persegi itu datar. Kubus itu ruang. Lingkaran datar, bola ruang." />
           <Papan anak="📄 datar: 🔺 ⬛ ⬤ · ✋ ruang: 🧊 📦 🥫 🍦 ⚽" />
           <KuisSuara
             id={idKuis("A", 8)}
@@ -1216,7 +1212,7 @@ function KartuC({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminGuru }) {
   return (
     <KartuBingkai latar="bg-violet-50/80">
       <KepalaKartu
-        ikon="🔨🐿️"
+        ikon="🔨🦉"
         judul={kartu.judul}
         anak="Sepuluh pesanan · sisi, sudut, dan bangun ruang"
         kelas={kelas}
@@ -1229,7 +1225,7 @@ function KartuC({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminGuru }) {
       />
       <GambarDoodle
         src="/doodle-mtk/mtk-1-bab14-bengkel.jpg"
-        alt="Tupi memakai topi tukang di meja kerja kayu, dikelilingi potongan segitiga, kubus, dan bola."
+        alt="Igil memakai topi tukang di meja kerja kayu, dikelilingi potongan segitiga, kubus, dan bola."
       />
       <PanduanIkon
         judul="Simbol bengkel"
@@ -1252,7 +1248,7 @@ function KartuC({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminGuru }) {
         idMisi={(indeks) => idKuis("C", indeks)}
         idTulis={idKuisTulisKartu(ID, "C")}
         tema={TEMA_MTK1_BAB14}
-        penutup="Bengkel besar terbuka. Tupi memasang celemek tukang."
+        penutup="Bengkel besar terbuka. Igil memasang celemek tukang."
         bunga="🔺🧊🥫⚽⭐"
       />
     </KartuBingkai>
@@ -1270,18 +1266,18 @@ function LembarEvaluasi({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminG
     }
     return jumlahSkor;
   }, [kuis]);
-  const lencana = skor >= 9 ? "🧑‍🔧 Perancang Bentuk Ahli" : skor >= 6 ? "🔨 Tukang Bentuk Cerdas" : "🐿️ Sahabat Tupi";
+  const lencana = skor >= 9 ? "🧑‍🔧 Perancang Bentuk Ahli" : skor >= 6 ? "🔨 Tukang Bentuk Cerdas" : "🐿️ Sahabat Igil";
   const pesan =
     skor >= 9
       ? "Luar biasa! Semua bentukmu tepat!"
       : skor >= 6
         ? "Hebat! Sedikit lagi jadi perancang ahli!"
-        : "Ayo berkarya lagi bersama Tupi, kamu pasti bisa!";
+        : "Ayo berkarya lagi bersama Igil, kamu pasti bisa!";
   const ciri = ["6 sisi, semua sama besar", "6 sisi, tidak sama semua", "1 ujung lancip, alas lingkaran"];
   return (
     <KartuBingkai latar="bg-rose-50/80">
       <KepalaKartu
-        ikon="📝🐿️"
+        ikon="📝🦉"
         judul={kartu.judul}
         anak={`${nama} · Kelas 1 · ${skor} dari 10`}
         kelas={kelas}
@@ -1294,7 +1290,7 @@ function LembarEvaluasi({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminG
       />
       <GambarDoodle
         src="/doodle-mtk/mtk-1-bab14-evaluasi.jpg"
-        alt="Meja ujian dengan pensil besar dan potongan bentuk. Tupi mengangkat ibu jari."
+        alt="Meja ujian dengan pensil besar dan potongan bentuk. Igil mengangkat ibu jari."
       />
       <PanduanIkon
         judul="Simbol soal"
@@ -1341,7 +1337,7 @@ function LembarEvaluasi({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminG
         />
         <Pilih
           id={idKuis("D", 3)}
-          pertanyaan="4. Bagas berkata: lingkaran itu bentuk ruang, karena bulat seperti bola. Apakah Bagas benar?"
+          pertanyaan="4. Bimo berkata: lingkaran itu bentuk ruang, karena bulat seperti bola. Apakah Bimo benar?"
           pilihan={[
             { huruf: "A", teks: "Benar, karena sama-sama bulat" },
             { huruf: "B", teks: "Salah, lingkaran bentuk datar dan bola bentuk ruang" },
@@ -1458,7 +1454,7 @@ export default function NaskahMtk1Bab14({
         kelamin={kelamin}
         gambar={{
           src: "/doodle-mtk/mtk-1-bab14-poin.jpg",
-          alt: "Tupi berdiri di samping papan kosong. Segitiga, persegi, lingkaran, kubus, dan bola melayang di sekelilingnya.",
+          alt: "Igil berdiri di samping papan kosong. Segitiga, persegi, lingkaran, kubus, dan bola melayang di sekelilingnya.",
         }}
         cuplikan={cuplikanKalimat([
           "Sisi adalah garis yang membatasi bentuk. Sudut adalah tempat dua sisi bertemu.",

@@ -6,6 +6,7 @@ import { TEMA_MTK1_BAB3 } from "@/lib/tema-misi-mtk-1";
 import { useMemo, useState, type ReactNode } from "react";
 import HasilJawabanKuis from "@/components/HasilJawabanKuis";
 import KartuPoinPenting from "@/components/KartuPoinPenting";
+import TujuanBelajar from "@/components/TujuanBelajar";
 import KuisAkhirAdegan from "@/components/KuisAkhirAdegan";
 import KuisTulisKartu from "@/components/KuisTulisKartu";
 import SoalRekamSuara from "@/components/SoalRekamSuara";
@@ -48,18 +49,14 @@ function duaCaraEmpat(teks: string): boolean {
   return unik.size >= 2;
 }
 
-function KartuBingkai({ children, latar = "bg-white" }: { children: ReactNode; latar?: string }) {
-  return (
-    <section className={`rounded-[1.75rem] border-4 border-[#1C01A5]/15 ${latar} px-4 py-5 shadow-sm sm:px-6 sm:py-6`}>
-      {children}
-    </section>
-  );
+function KartuBingkai({ children }: { children: ReactNode; latar?: string }) {
+  return <section className="space-y-4">{children}</section>;
 }
 
 const WARNA_DIALOG: Record<string, string> = {
-  Nia: "border-[#DB2777]/20 bg-[#FDF2F8]",
-  Fajar: "border-[#2563EB]/20 bg-[#EFF6FF]",
-  Miko: "border-teal-300 bg-teal-50",
+  Rara: "border-[#DB2777]/20 bg-[#FDF2F8]",
+  Bimo: "border-[#2563EB]/20 bg-[#EFF6FF]",
+  Igil: "border-amber-300 bg-amber-50",
 };
 
 function Dialog({ nama, anak }: { nama: string; anak: string }) {
@@ -383,25 +380,25 @@ function DuaCaraEmpat() {
 function HookPesta() {
   return (
     <article className="rounded-2xl border-2 border-[#16A34A]/25 bg-[#F0FDF4] px-4 py-3">
-      <p className="text-xs font-black uppercase tracking-wide text-[#166534]">Cerita: Pesta Ulang Tahun yang Hilang</p>
+      <p className="text-xl font-black tracking-wide text-[#166534]">Cerita: Pesta Ulang Tahun yang Hilang</p>
       <GambarCerita
         src="/doodle-mtk/mtk-1-bab3-pesta.jpg"
-        alt="Pesta malam di rumah Nia. Ada 8 balon, kue, dan Miko si tikus berkacamata."
+        alt="Pesta malam di rumah Rara. Ada 8 balon, kue, dan Igil si tikus berkacamata."
       />
       <div className="mt-2 text-center">
         <IkonUlang ikon="🎈" jumlah={8} ukuran="text-3xl" />
       </div>
       <p className="mt-2 text-sm font-semibold leading-relaxed text-slate-700">
-        Malam ini pesta di rumah Nia. Mejanya penuh kue, dindingnya penuh balon. Nia menghitung, &quot;Satu, dua, tiga, empat, lima, enam, tujuh… delapan!&quot;
+        Malam ini pesta di rumah Rara. Mejanya penuh kue, dindingnya penuh balon. Rara menghitung, &quot;Satu, dua, tiga, empat, lima, enam, tujuh… delapan!&quot;
       </p>
       <p className="mt-2 text-sm font-semibold leading-relaxed text-slate-700">
         Jendela terbuka. Angin masuk. Satu, dua, tiga balon lepas dan terbang ke langit malam.
       </p>
       <p className="mt-2 text-sm font-semibold leading-relaxed text-slate-700">
-        Fajar terbelalak. &quot;Niaaa! Balonnya!&quot; Nia bertanya, &quot;Bagaimana caranya aku tahu sekarang tinggal berapa?&quot;
+        Bimo terbelalak. &quot;Niaaa! Balonnya!&quot; Rara bertanya, &quot;Bagaimana caranya aku tahu sekarang tinggal berapa?&quot;
       </p>
       <p className="mt-2 text-sm font-semibold leading-relaxed text-slate-700">
-        Dari balik kue muncul suara kecil, &quot;Cik-cik-cik!&quot; Miko si tikus berkacamata mengangkat satu jari. &quot;Ada rahasia, tapi kalian harus belajar mengurangi.&quot;
+        Dari balik kue muncul suara kecil, &quot;Cik-cik-cik!&quot; Igil si tikus berkacamata mengangkat satu jari. &quot;Ada rahasia, tapi kalian harus belajar mengurangi.&quot;
       </p>
     </article>
   );
@@ -414,7 +411,7 @@ function KartuA({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminGuru }) {
   return (
     <KartuBingkai latar="bg-sky-50/80">
       <KepalaKartu
-        ikon="🎈🎂🐭"
+        ikon="🎈🎂🦉"
         judul={kartu.judul}
         anak="Pengurangan sampai dengan 10"
         kelas={kelas}
@@ -422,20 +419,20 @@ function KartuA({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminGuru }) {
         cuplikan={cuplikanDariNaskah(kartu.voice, 2_000, 3_000)}
       />
       <div className="mt-4 rounded-2xl border-2 border-sky-300 bg-sky-50 px-4 py-3">
-        <p className="text-sm font-black text-[#1C01A5]">Tujuan Pembelajaran</p>
-        <p className="mt-2 text-sm font-semibold text-slate-700">Setelah belajar, siswa dapat:</p>
-        <ul className="daftar-tujuan mt-2 space-y-1 text-sm font-semibold text-slate-700">
-          <li>Mengurangi benda sampai 10.</li>
-          <li>Memakai tanda kurang dan sama dengan.</li>
-          <li>Menghitung sisa dengan hitung mundur.</li>
-          <li>Menyelesaikan soal cerita pengurangan.</li>
-        </ul>
+        <TujuanBelajar
+        butir={[
+          "Mengurangi benda sampai 10.",
+          "Memakai tanda kurang dan sama dengan.",
+          "Menghitung sisa dengan hitung mundur.",
+          "Menyelesaikan soal cerita pengurangan.",
+        ]}
+      />
       </div>
       <div className="mt-4 space-y-3">
         <HookPesta />
-        <Dialog nama="Nia" anak="Wah, balonnya banyak sekali!" />
-        <Dialog nama="Fajar" anak="Ayo hitung! Satu, dua, tiga, empat, lima, enam, tujuh… delapan!" />
-        <Dialog nama="Miko" anak="Cik-cik! Delapan balon siap untuk pesta!" />
+        <Dialog nama="Rara" anak="Wah, balonnya banyak sekali!" />
+        <Dialog nama="Bimo" anak="Ayo hitung! Satu, dua, tiga, empat, lima, enam, tujuh… delapan!" />
+        <Dialog nama="Igil" anak="Hoo! Delapan balon siap untuk pesta!" />
         <article className="rounded-2xl border-2 border-[#E23B3B]/25 bg-[#FFF1F2] px-4 py-3">
           <p className="text-xs font-black uppercase text-[#9F1239]">Delapan balon</p>
           <GambarCerita src="/doodle-mtk/mtk-1-bab3-delapan.jpg" alt="Delapan balon berjajar dan angka 8." />
@@ -453,9 +450,9 @@ function KartuA({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminGuru }) {
           aliasKanvas={["8", "delapan"]}
           konteksKanvas="Ada 8 balon. Lambangnya 8."
         />
-        <Dialog nama="Nia" anak="Aduh! Balonnya terbang!" />
-        <Dialog nama="Fajar" anak="Ada 3 yang lepas!" />
-        <Dialog nama="Miko" anak="Sekarang tinggal berapa, ya?" />
+        <Dialog nama="Rara" anak="Aduh! Balonnya terbang!" />
+        <Dialog nama="Bimo" anak="Ada 3 yang lepas!" />
+        <Dialog nama="Igil" anak="Sekarang tinggal berapa, ya?" />
         <article className="rounded-2xl border-2 border-violet-300/80 bg-violet-50 px-4 py-3">
           <p className="text-xs font-black uppercase text-[#9A3412]">Balon yang tersisa</p>
           <GambarCerita
@@ -468,7 +465,7 @@ function KartuA({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminGuru }) {
           <p className="mt-2 text-sm font-semibold text-slate-700">Satu, dua, tiga, empat, lima.</p>
         </article>
         <p className="text-center text-4xl font-black text-[#1C01A5]">8 - 3 = 5</p>
-        <Dialog nama="Miko" anak="Benar! Dulu 8, yang hilang 3, sisa 5." />
+        <Dialog nama="Igil" anak="Benar! Dulu 8, yang hilang 3, sisa 5." />
         <KuisAkhirAdegan
           idSuara={idKuis("A", 3)}
           idKanvas={idKuis("A", 4)}
@@ -479,12 +476,12 @@ function KartuA({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminGuru }) {
           aliasKanvas={["8 - 3 = 5", "8-3=5"]}
           konteksKanvas="Delapan kurang tiga sama dengan lima."
         />
-        <Dialog nama="Fajar" anak="Tanda satu garis itu apa?" />
-        <Dialog nama="Miko" anak="Itu tanda kurang. Artinya diambil atau dipisahkan!" />
-        <Dialog nama="Nia" anak="Kalau begitu, jumlahnya jadi lebih sedikit." />
+        <Dialog nama="Bimo" anak="Tanda satu garis itu apa?" />
+        <Dialog nama="Igil" anak="Itu tanda kurang. Artinya diambil atau dipisahkan!" />
+        <Dialog nama="Rara" anak="Kalau begitu, jumlahnya jadi lebih sedikit." />
         <article className="rounded-2xl border-2 border-[#7C3AED]/25 bg-[#F5F3FF] px-4 py-3">
           <p className="text-xs font-black uppercase text-[#5B21B6]">Tanda kurang</p>
-          <GambarCerita src="/doodle-mtk/mtk-1-bab3-kurang.jpg" alt="Miko menunjukkan tanda kurang." />
+          <GambarCerita src="/doodle-mtk/mtk-1-bab3-kurang.jpg" alt="Igil menunjukkan tanda kurang." />
           <p className="mt-2 text-center text-4xl" aria-hidden>
             ➖
           </p>
@@ -499,21 +496,21 @@ function KartuA({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminGuru }) {
           aliasKanvas={["-", "kurang"]}
           konteksKanvas="Tanda kurang artinya diambil atau dipisahkan."
         />
-        <Dialog nama="Fajar" anak="Aku makan 2 potong kue, ya!" />
-        <Dialog nama="Miko" anak="Ayo hitung mundur dari 6: lima… empat!" />
+        <Dialog nama="Bimo" anak="Aku makan 2 potong kue, ya!" />
+        <Dialog nama="Igil" anak="Ayo hitung mundur dari 6: lima… empat!" />
         <p className="text-center text-4xl font-black text-[#1C01A5]">6 - 2 = 4</p>
         <KuisAkhirAdegan
           idSuara={idKuis("A", 7)}
           idKanvas={idKuis("A", 8)}
-          pertanyaanSuara="Kue ada 6. Fajar makan 2. Sisa berapa?"
+          pertanyaanSuara="Kue ada 6. Bimo makan 2. Sisa berapa?"
           aliasSuara={["4", "empat"]}
           petunjukSuara="Ucapkan sisanya."
           pertanyaanKanvas="Tuliskan 6 - 2 = 4."
           aliasKanvas={["6 - 2 = 4", "6-2=4"]}
           konteksKanvas="Enam kue dikurangi dua sama dengan empat."
         />
-        <Dialog nama="Nia" anak="Ada 9 topi. Tamu mengambil 4 topi." />
-        <Dialog nama="Miko" anak="Hitung mundur dari 9: delapan, tujuh, enam… lima!" />
+        <Dialog nama="Rara" anak="Ada 9 topi. Tamu mengambil 4 topi." />
+        <Dialog nama="Igil" anak="Hitung mundur dari 9: delapan, tujuh, enam… lima!" />
         <p className="text-center text-4xl font-black text-[#1C01A5]">9 - 4 = 5</p>
         <KuisAkhirAdegan
           idSuara={idKuis("A", 9)}
@@ -539,7 +536,7 @@ function KartuA({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminGuru }) {
           sesudahNilai={(benar) => setSuaraA(benar ? "benar" : "salah")}
         />
         {suaraA === "benar" ? (
-          <p className="mt-2 text-sm font-bold text-emerald-800">Cik-cik! Kamu teliti sekali!</p>
+          <p className="mt-2 text-sm font-bold text-emerald-800">Hoo! Kamu teliti sekali!</p>
         ) : null}
         {suaraA === "salah" ? (
           <p className="mt-2 text-sm font-bold text-rose-800">Ayo hitung mundur dari angka enam, ya!</p>
@@ -638,7 +635,7 @@ function KartuB({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminGuru }) {
         <article className="rounded-2xl border-2 border-[#0F766E] bg-[#F0FDFA] px-4 py-3">
           <p className="text-sm font-black text-[#0F766E]">Soal cerita</p>
           <p className="mt-2 text-sm font-semibold text-slate-700">
-            Nia punya 7 balon, 3 terbang. Kata kunci terbang, hilang, diambil, dimakan, dipakai, diberikan, pecah, tersisa, tinggal. 7 - 3 = 4.
+            Rara punya 7 balon, 3 terbang. Kata kunci terbang, hilang, diambil, dimakan, dipakai, diberikan, pecah, tersisa, tinggal. 7 - 3 = 4.
           </p>
           <p className="mt-2 text-sm font-semibold text-slate-700">Tambah dan kurang itu saudara. 5 + 3 = 8, jadi 8 - 3 = 5.</p>
           <p className="mt-2 text-sm font-semibold text-slate-700">Kurang nol, angkanya tetap. 5 - 0 = 5. Tidak ada yang diambil.</p>
@@ -686,7 +683,7 @@ function KartuB({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminGuru }) {
         </div>
         <KuisTulisKartu
           id={idKuisTulisKartu(ID, "B")}
-          pertanyaan="Fajar punya 8 kue. Ia memberi 5 kue ke temannya. Tulis kalimat matematika dan sisanya!"
+          pertanyaan="Bimo punya 8 kue. Ia memberi 5 kue ke temannya. Tulis kalimat matematika dan sisanya!"
           alias={["8 - 5 = 3", "8-5=3"]}
           visual={<p className="text-2xl font-black text-[#1C01A5]">8 - 5 = ?</p>}
         />
@@ -712,7 +709,7 @@ function TokoRoti({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminGuru })
         idMisi={(indeks) => idKuis("C", indeks)}
         idTulis={idKuisTulisKartu(ID, "C")}
         tema={TEMA_MTK1_BAB3}
-        penutup="Meja pesta Nia rapi kembali. Miko tersenyum di balik kue."
+        penutup="Meja pesta Rara rapi kembali. Igil tersenyum di balik kue."
         bunga="🎈🎂🍊🎁"
       />
     </KartuBingkai>
@@ -731,10 +728,10 @@ function LembarEvaluasi({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminG
   }, [kuis]);
   const lencana =
     skor >= 9
-      ? { nama: "Kepala Toko Miko", pesan: "Luar biasa! Toko rotimu paling laris!" }
+      ? { nama: "Kepala Toko Igil", pesan: "Luar biasa! Toko rotimu paling laris!" }
       : skor >= 6
         ? { nama: "Penjaga Rak Hebat", pesan: "Hebat! Sedikit lagi jadi kepala toko!" }
-        : { nama: "Sahabat Miko", pesan: "Ayo jaga toko lagi bersama Miko, kamu pasti bisa!" };
+        : { nama: "Sahabat Igil", pesan: "Ayo jaga toko lagi bersama Igil, kamu pasti bisa!" };
   const kartu = MODUL_MTK1_BAB3.kartu[3];
   const kalimatPasangan = ["6 - 2", "8 - 6", "10 - 8"];
   return (
@@ -792,7 +789,7 @@ function LembarEvaluasi({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminG
         />
         <SoalRekamSuara
           id={idKuis("D", 3)}
-          pertanyaan='4. Fajar berkata: "9 - 4 = 6!" Apakah Fajar benar? Ucapkan Benar atau Salah, lalu sebutkan jawaban yang benar.'
+          pertanyaan='4. Bimo berkata: "9 - 4 = 6!" Apakah Bimo benar? Ucapkan Benar atau Salah, lalu sebutkan jawaban yang benar.'
           periksa={(transkrip) =>
             ucapanMemuat(transkrip, [
               ["salah", "tidak benar", "tidak tepat", "keliru"],
@@ -815,7 +812,7 @@ function LembarEvaluasi({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminG
         />
         <Pilih
           id={idKuis("D", 5)}
-          pertanyaan="6. Nia punya 6 stiker. Ia memberi 6 stiker ke Fajar. Berapa sisa stiker Nia?"
+          pertanyaan="6. Rara punya 6 stiker. Ia memberi 6 stiker ke Bimo. Berapa sisa stiker Rara?"
           pilihan={[
             { huruf: "A", teks: "6" },
             { huruf: "B", teks: "1" },
@@ -823,7 +820,7 @@ function LembarEvaluasi({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminG
           ]}
           benar="C"
           umpan="Semuanya habis. 6 - 6 = 0."
-          salah="Nia memberi semua stikernya."
+          salah="Rara memberi semua stikernya."
         />
         <Pilih
           id={idKuis("D", 6)}

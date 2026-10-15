@@ -12,12 +12,12 @@ export const MODUL_MTK1_BAB5: ModulResmiPai = {
   judul: JUDUL_MTK1_BAB5,
   pola: /membilang\s+sampai(\s+dengan)?\s+20\b|bendera kecil untuk lomba|pasar malam kemerdekaan|misi lomba bendera/,
   motivasi:
-    "Tari, Dimas, dan Ojan menyiapkan dua puluh bendera kecil bersama Pipit. Sepuluh bendera diikat jadi satu puluhan.",
+    "Rara, Bimo, dan Igil menyiapkan dua puluh bendera kecil bersama Igil. Sepuluh bendera diikat jadi satu puluhan.",
   kunciJawaban: "A,A,A,A,B,A,B,C,C,A",
   sketsaKartu: [
-    "Tari, Dimas, dan Ojan mengikat bendera per sepuluh bersama Pipit untuk lomba 17 Agustus.",
+    "Rara, Bimo, dan Igil mengikat bendera per sepuluh bersama Igil untuk lomba 17 Agustus.",
     "Angka 11 sampai 20, rumah nilai tempat, bingkai sepuluh, dan garis bilangan.",
-    "Pipit menemani sepuluh tiang lomba bendera: puluhan, satuan, dan membandingkan sampai 20.",
+    "Igil menemani sepuluh tiang lomba bendera: puluhan, satuan, dan membandingkan sampai 20.",
     "Poin penting dan lembar evaluasi membilang sampai 20.",
   ],
   latihan: pg([
@@ -87,7 +87,7 @@ D) Tidak ada`,
       kode: "A",
       judul: "A. Bendera Kecil untuk Lomba 17 Agustus",
       pengantar:
-        "Besok 17 Agustus. Pak RT meminta Tari, Dimas, dan Ojan memasang dua puluh bendera kecil. Pipit menunjukkan ikatan ajaib: setiap sepuluh bendera diikat jadi satu puluhan.",
+        "Besok 17 Agustus. Igil meminta Rara, Bimo, dan Igil memasang dua puluh bendera kecil. Igil menunjukkan ikatan ajaib: setiap sepuluh bendera diikat jadi satu puluhan.",
       labelDaftar: "Ikatan ajaib sepuluh bendera",
       kolom: 1,
       item: [
@@ -112,7 +112,7 @@ D) Tidak ada`,
           alias: ["lima belas", "15"],
         },
         {
-          pertanyaan: "Pak RT butuh berapa bendera?",
+          pertanyaan: "Igil butuh berapa bendera?",
           alias: ["20", "dua puluh"],
         },
         {
@@ -225,7 +225,7 @@ D) Tidak ada`,
       kode: "C",
       judul: "C. Misi Lomba Bendera",
       pengantar:
-        "Bantu Pipit memasang bendera di 10 tiang lomba. Hijau untuk menghitung, biru untuk membaca, kuning untuk menulis, dan ungu untuk membandingkan.",
+        "Bantu Igil memasang bendera di 10 tiang lomba. Hijau untuk menghitung, biru untuk membaca, kuning untuk menulis, dan ungu untuk membandingkan.",
       labelDaftar: "Sepuluh tiang belasan di lomba",
       kolom: 1,
       item: [
@@ -233,7 +233,7 @@ D) Tidak ada`,
           nama: "Alur permainan",
           singkat: "Pilih tiang, jawab, dapat bintang",
           uraian:
-            "Siswa memilih satu tiang lomba. Pipit menanyakan gulungan sepuluh, satuan, dan perbandingan belasan. Jawaban benar mendapat 1 bintang bendera. Jawaban yang belum tepat mendapat petunjuk, tanpa kehilangan pita.",
+            "Siswa memilih satu tiang lomba. Igil menanyakan gulungan sepuluh, satuan, dan perbandingan belasan. Jawaban benar mendapat 1 bintang bendera. Jawaban yang belum tepat mendapat petunjuk, tanpa kehilangan pita.",
           contoh: "10 + 4 = 14. 19 lebih besar dari 12. 16 cukup untuk boneka seharga 15, belum cukup untuk mobil seharga 19.",
         },
         {
@@ -247,11 +247,11 @@ D) Tidak ada`,
       kuis: kuisDariMisi(MISI_MTK1_BAB5),
       voice: [
         [
-          "Pipit memasang bendera lomba. Ada sepuluh tiang dari gang sampai pagar.",
+          "Igil memasang bendera lomba. Ada sepuluh tiang dari gang sampai pagar.",
           "Satu gulungan sepuluh ditambah empat tiket lepas sama dengan empat belas.",
           "Sembilan belas lebih besar daripada dua belas karena satuannya lebih besar.",
           "Enam belas cukup untuk boneka seharga lima belas, belum cukup untuk mobil seharga sembilan belas.",
-          "Jawaban benar mendapat satu bintang bendera. Jika belum tepat, Pipit memberi petunjuk. Pita tidak berkurang.",
+          "Jawaban benar mendapat satu bintang bendera. Jika belum tepat, Igil memberi petunjuk. Pita tidak berkurang.",
         ],
       ],
     },
@@ -274,13 +274,13 @@ D) Tidak ada`,
       kuis: [
         { pertanyaan: "Berapa banyak kelereng pada bingkai penuh dan tujuh kelereng?", alias: ["17", "tujuh belas"] },
         { pertanyaan: "Angka 19 punya puluhan dan satuan berapa?", alias: ["1", "9", "sembilan belas"] },
-        { pertanyaan: "Dimas menulis lima belas sebagai 51. Apakah itu benar?", alias: ["salah", "15"] },
+        { pertanyaan: "Bimo menulis lima belas sebagai 51. Apakah itu benar?", alias: ["salah", "15"] },
         { pertanyaan: "Angka yang hilang pada 12, 13, kosong, 15, kosong, kosong, 18.", alias: ["14", "16", "17"] },
         { pertanyaan: "Puluhan 1, satuan lebih besar dari 6 dan lebih kecil dari 8. Angka berapa?", alias: ["tujuh belas", "17"] },
         { pertanyaan: "Gambar angka 14 sebagai satu ikat dan empat bulatan.", alias: ["14", "empat belas"] },
         { pertanyaan: "Mana yang paling banyak: 16, 13, atau 10 tambah 8?", alias: ["18", "10 tambah 8"] },
         { pertanyaan: "Pasangkan 10 tambah 2, dua ikat, dan 15 dengan nama yang sama nilainya.", alias: ["dua belas", "dua puluh", "15"] },
-        { pertanyaan: "Tari membawa 17 bendera untuk 20 tiang. Cukup atau tidak?", alias: ["17", "tidak cukup"] },
+        { pertanyaan: "Rara membawa 17 bendera untuk 20 tiang. Cukup atau tidak?", alias: ["17", "tidak cukup"] },
         { pertanyaan: "Kartu 1 dan 8 disusun menjadi belasan. Kalau ditukar, apakah masih belasan?", alias: ["18", "bukan"] },
       ],
       voice: [

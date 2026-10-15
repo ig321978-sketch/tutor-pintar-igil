@@ -7,6 +7,7 @@ import { useMemo, useState, type ReactNode } from "react";
 import HasilJawabanKuis from "@/components/HasilJawabanKuis";
 import TabelInfoGrafis from "@/components/TabelInfoGrafis";
 import KartuPoinPenting from "@/components/KartuPoinPenting";
+import TujuanBelajar from "@/components/TujuanBelajar";
 import PanduanIkon, { type ButirIkon } from "@/components/PanduanIkon";
 import KuisTulisKartu from "@/components/KuisTulisKartu";
 import SoalRekamSuara from "@/components/SoalRekamSuara";
@@ -163,28 +164,20 @@ function cuplikanKalimat(kalimat: string[]): CuplikanVoiceMateri[] {
   }));
 }
 
-function KartuBingkai({ children, latar = "bg-white" }: { children: ReactNode; latar?: string }) {
-  return (
-    <section className={`rounded-[1.75rem] border-4 border-[#1C01A5]/15 ${latar} px-4 py-5 shadow-sm sm:px-6 sm:py-6`}>
-      {children}
-    </section>
-  );
+function KartuBingkai({ children }: { children: ReactNode; latar?: string }) {
+  return <section className="space-y-4">{children}</section>;
 }
 
 const WARNA_DIALOG: Record<string, string> = {
-  Lala: "border-[#DB2777]/20 bg-[#FDF2F8]",
-  Bima: "border-[#2563EB]/20 bg-[#EFF6FF]",
-  Raka: "border-[#16A34A]/20 bg-[#F0FDF4]",
-  Celi: "border-teal-300 bg-teal-50",
-  "Bu Kantin": "border-rose-200 bg-rose-50",
+  Rara: "border-[#DB2777]/20 bg-[#FDF2F8]",
+  Bimo: "border-[#2563EB]/20 bg-[#EFF6FF]",
+  Igil: "border-amber-300 bg-amber-50",
 };
 
 const WAJAH_DIALOG: Record<string, string> = {
-  Lala: "👧",
-  Bima: "👦",
-  Raka: "👦",
-  Celi: "🐖",
-  "Bu Kantin": "👩",
+  Rara: "👧",
+  Bimo: "👦",
+  Igil: "🦉",
 };
 
 function Dialog({ nama, anak }: { nama: string; anak: string }) {
@@ -284,14 +277,14 @@ function Adegan({
   children: ReactNode;
 }) {
   return (
-    <article className={`rounded-2xl border-2 px-4 py-3 ${warna}`}>
-      <p className="text-xs font-black uppercase tracking-wide text-[#1C01A5]">{judul}</p>
+    <section className="space-y-4 border-b-4 border-[#1C01A5] pb-8">
+      <p className="text-xl font-black leading-snug text-[#1C01A5]">{judul}</p>
       <TombolPenjelasan kelas={kelas} kelamin={kelamin} kalimat={penjelasan} />
       {simbol ? <PanduanIkon butir={simbol} /> : null}
       {/* eslint-disable-next-line @next/next/no-img-element */}
       <img src={src} alt={alt} className="mt-3 w-full rounded-xl border border-[#1C01A5]/10 bg-white object-cover" />
       <div className="mt-3 space-y-2">{children}</div>
-    </article>
+    </section>
   );
 }
 
@@ -653,14 +646,15 @@ function KartuA({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminGuru }) {
   const tukar = ["💵 1.000 × 5", "💵 1.000 × 10", "💵 1.000 × 2"];
   return (
     <KartuBingkai latar="bg-sky-50/80">
-      <KepalaKartu ikon="👧👦🐖" judul={kartu.judul} anak="Lala, Bima, Raka, dan celengan babi kecil Celi" />
+      <KepalaKartu ikon="👧👦🦉" judul={kartu.judul} anak="Rara, Bimo, dan Igil di warung" />
       <div className="mt-4">
-        <p className="text-sm font-black text-[#1C01A5]">Tujuan Pembelajaran</p>
-        <ul className="daftar-tujuan mt-2 space-y-1 text-sm font-semibold text-slate-700">
-          <li>Siswa bisa mengenal pecahan uang rupiah.</li>
-          <li>Siswa bisa menghitung sederhana dalam jual-beli, termasuk kembalian.</li>
-          <li>Siswa bisa menyelesaikan soal campuran sehari-hari.</li>
-        </ul>
+        <TujuanBelajar
+        butir={[
+          "Siswa bisa mengenal pecahan uang rupiah.",
+          "Siswa bisa menghitung sederhana dalam jual-beli, termasuk kembalian.",
+          "Siswa bisa menyelesaikan soal campuran sehari-hari.",
+        ]}
+      />
       </div>
       <div className="mt-4 space-y-4">
         <Adegan
@@ -672,7 +666,7 @@ function KartuA({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminGuru }) {
           ]}
           warna="border-amber-200 bg-amber-50/40"
           src="/doodle-mtk/mtk-1-bab15-sub1.jpg"
-          alt="Lala menyusun uang mainan di meja. Raka mengintip dari balik kursi. Celengan babi duduk di meja."
+          alt="Rara menyusun uang mainan di meja. Bimo mengintip dari balik kursi. Celengan babi duduk di meja."
           kelas={kelas}
           kelamin={kelamin}
           penjelasan={[
@@ -681,14 +675,14 @@ function KartuA({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminGuru }) {
             "Angka itu menunjukkan berapa nilainya. Ayo kita kenali satu per satu.",
           ]}
         >
-          <Dialog nama="Raka" anak="Kak, ini uang apa saja?" />
-          <Dialog nama="Lala" anak="Uang kertas ada yang 1.000, 2.000, 5.000, dan 10.000." />
-          <Dialog nama="Bima" anak="Kalau yang logam?" />
-          <Dialog nama="Lala" anak="Ada 100, 200, 500, dan 1.000." />
-          <Dialog nama="Celi" anak="Oink! Semua punya angka di depannya. Itu nilainya!" />
-          <Dialog nama="Raka" anak="Jadi uang 5.000 lebih besar dari uang 1.000?" />
-          <Dialog nama="Bima" anak="Iya! Angkanya lebih besar, nilainya juga lebih besar." />
-          <Dialog nama="Lala" anak="Dan uang kertas biasanya nilainya lebih besar dari uang logam." />
+          <Dialog nama="Bimo" anak="Kak, ini uang apa saja?" />
+          <Dialog nama="Rara" anak="Uang kertas ada yang 1.000, 2.000, 5.000, dan 10.000." />
+          <Dialog nama="Bimo" anak="Kalau yang logam?" />
+          <Dialog nama="Rara" anak="Ada 100, 200, 500, dan 1.000." />
+          <Dialog nama="Igil" anak="Hoo! Semua punya angka di depannya. Itu nilainya!" />
+          <Dialog nama="Bimo" anak="Jadi uang 5.000 lebih besar dari uang 1.000?" />
+          <Dialog nama="Bimo" anak="Iya! Angkanya lebih besar, nilainya juga lebih besar." />
+          <Dialog nama="Rara" anak="Dan uang kertas biasanya nilainya lebih besar dari uang logam." />
           <Papan anak="💵 1.000 · 2.000 · 5.000 · 10.000" />
           <Papan anak="🪙 100 · 200 · 500 · 1.000" />
           <p className="text-sm font-bold text-[#1C01A5]">Uang rupiah ada kertas dan logam. Angka di uang menunjukkan nilainya.</p>
@@ -727,13 +721,13 @@ function KartuA({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminGuru }) {
             "Yang penting jumlah nilainya sama.",
           ]}
         >
-          <Dialog nama="Bima" anak="Lala, aku punya uang 5.000. Aku mau uang kecil semua." />
-          <Dialog nama="Lala" anak="Bisa! Lima ribu sama dengan lima uang 1.000." />
-          <Dialog nama="Raka" anak="Kalau uang 10.000?" />
-          <Dialog nama="Lala" anak="Bisa jadi dua uang 5.000, atau sepuluh uang 1.000." />
-          <Dialog nama="Celi" anak="Oink! Yang penting jumlahnya sama, ya!" />
-          <Dialog nama="Bima" anak="Jadi bisa juga ditukar dengan uang logam?" />
-          <Dialog nama="Lala" anak="Bisa! 1.000 logam sama dengan 1.000 kertas." />
+          <Dialog nama="Bimo" anak="Rara, aku punya uang 5.000. Aku mau uang kecil semua." />
+          <Dialog nama="Rara" anak="Bisa! Lima ribu sama dengan lima uang 1.000." />
+          <Dialog nama="Bimo" anak="Kalau uang 10.000?" />
+          <Dialog nama="Rara" anak="Bisa jadi dua uang 5.000, atau sepuluh uang 1.000." />
+          <Dialog nama="Igil" anak="Hoo! Yang penting jumlahnya sama, ya!" />
+          <Dialog nama="Bimo" anak="Jadi bisa juga ditukar dengan uang logam?" />
+          <Dialog nama="Rara" anak="Bisa! 1.000 logam sama dengan 1.000 kertas." />
           <Papan anak="💵 5.000 = 💵 1.000 × 5" />
           <Papan anak="💵 10.000 = 💵 5.000 × 2" />
           <Papan anak="💵 10.000 = 💵 1.000 × 10" />
@@ -761,7 +755,7 @@ function KartuA({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminGuru }) {
           simbol={[{ ikon: "➕", teks: "Jumlahkan harga" }]}
           warna="border-emerald-200 bg-emerald-50/50"
           src="/doodle-mtk/mtk-1-bab15-sub3.jpg"
-          alt="Kantin sekolah dengan roti, susu, dan kue. Lala memegang keranjang."
+          alt="Kantin sekolah dengan roti, susu, dan kue. Rara memegang keranjang."
           kelas={kelas}
           kelamin={kelamin}
           penjelasan={[
@@ -769,13 +763,13 @@ function KartuA({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminGuru }) {
             "Itu namanya menghitung total harga. Ayo kita berlatih.",
           ]}
         >
-          <Dialog nama="Lala" anak="Aku mau beli roti 3.000 dan susu 2.000." />
-          <Dialog nama="Bima" anak="Totalnya berapa?" />
-          <Dialog nama="Lala" anak="Jumlahkan! 3.000 + 2.000." />
-          <Dialog nama="Raka" anak="Tiga tambah dua jadi lima. Jadi 5.000!" />
-          <Dialog nama="Celi" anak="Oink! Betul! Kalau seribunya sama, tinggal jumlahkan angkanya!" />
-          <Dialog nama="Bima" anak="Kalau aku mau roti dan kue?" />
-          <Dialog nama="Lala" anak="3.000 + 5.000 = 8.000. Tapi uangmu cukup?" />
+          <Dialog nama="Rara" anak="Aku mau beli roti 3.000 dan susu 2.000." />
+          <Dialog nama="Bimo" anak="Totalnya berapa?" />
+          <Dialog nama="Rara" anak="Jumlahkan! 3.000 + 2.000." />
+          <Dialog nama="Bimo" anak="Tiga tambah dua jadi lima. Jadi 5.000!" />
+          <Dialog nama="Igil" anak="Hoo! Betul! Kalau seribunya sama, tinggal jumlahkan angkanya!" />
+          <Dialog nama="Bimo" anak="Kalau aku mau roti dan kue?" />
+          <Dialog nama="Rara" anak="3.000 + 5.000 = 8.000. Tapi uangmu cukup?" />
           <Papan anak="🍞 3.000 + 🥛 2.000 = 5.000" />
           <Papan anak="🍞 3.000 + 🍰 5.000 = 8.000" />
           <p className="text-sm font-bold text-[#1C01A5]">Beli lebih dari satu barang? Jumlahkan semua harganya.</p>
@@ -802,7 +796,7 @@ function KartuA({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminGuru }) {
           simbol={[{ ikon: "➖", teks: "Bayar − harga" }]}
           warna="border-violet-200 bg-violet-50/50"
           src="/doodle-mtk/mtk-1-bab15-sub4.jpg"
-          alt="Raka memberi uang besar. Penjual mengembalikan beberapa uang kecil."
+          alt="Bimo memberi uang besar. Penjual mengembalikan beberapa uang kecil."
           kelas={kelas}
           kelamin={kelamin}
           penjelasan={[
@@ -811,14 +805,14 @@ function KartuA({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminGuru }) {
             "Caranya: uang yang dibayar dikurangi harga barang.",
           ]}
         >
-          <Dialog nama="Raka" anak="Bu, aku beli kue ini. Ini uangnya 5.000." />
-          <Dialog nama="Bu Kantin" anak="Harganya 3.000. Ini kembaliannya!" />
-          <Dialog nama="Bima" anak="Berapa kembaliannya, Bu?" />
-          <Dialog nama="Lala" anak="Hitung sendiri! Uang dibayar dikurangi harga barang." />
-          <Dialog nama="Raka" anak="5.000 − 3.000 = 2.000!" />
-          <Dialog nama="Celi" anak="Oink! Kembaliannya dua ribu!" />
-          <Dialog nama="Bima" anak="Kalau aku bayar 10.000 untuk roti 3.000?" />
-          <Dialog nama="Lala" anak="10.000 − 3.000 = 7.000. Jangan lupa hitung, ya!" />
+          <Dialog nama="Bimo" anak="Bu, aku beli kue ini. Ini uangnya 5.000." />
+          <Dialog nama="Igil" anak="Harganya 3.000. Ini kembaliannya!" />
+          <Dialog nama="Bimo" anak="Berapa kembaliannya, Bu?" />
+          <Dialog nama="Rara" anak="Hitung sendiri! Uang dibayar dikurangi harga barang." />
+          <Dialog nama="Bimo" anak="5.000 − 3.000 = 2.000!" />
+          <Dialog nama="Igil" anak="Hoo! Kembaliannya dua ribu!" />
+          <Dialog nama="Bimo" anak="Kalau aku bayar 10.000 untuk roti 3.000?" />
+          <Dialog nama="Rara" anak="10.000 − 3.000 = 7.000. Jangan lupa hitung, ya!" />
           <Papan anak="Bayar 5.000 − harga 3.000 = 2.000" />
           <Papan anak="Bayar 10.000 − harga 3.000 = 7.000" />
           <p className="text-sm font-bold text-[#1C01A5]">Kembalian = uang yang dibayar − harga barang.</p>
@@ -848,7 +842,7 @@ function KartuA({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminGuru }) {
           ]}
           warna="border-rose-200 bg-rose-50/50"
           src="/doodle-mtk/mtk-1-bab15-sub5.jpg"
-          alt="Kamar Raka dengan celengan, koin yang masuk, dan gambar sepeda di dinding."
+          alt="Kamar Bimo dengan celengan, koin yang masuk, dan gambar sepeda di dinding."
           kelas={kelas}
           kelamin={kelamin}
           penjelasan={[
@@ -856,15 +850,15 @@ function KartuA({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminGuru }) {
             "Soal campuran adalah soal yang butuh lebih dari satu langkah menghitung.",
           ]}
         >
-          <Dialog nama="Raka" anak="Kak, aku menabung tiap hari 2.000. Sudah 3 hari." />
-          <Dialog nama="Lala" anak="Berarti tabunganmu 2.000 + 2.000 + 2.000." />
-          <Dialog nama="Bima" anak="Itu 6.000, kan?" />
-          <Dialog nama="Celi" anak="Oink! Betul! Sekarang, kalau mau beli mainan 10.000, cukup belum?" />
-          <Dialog nama="Raka" anak="Belum! Kurang 4.000. Aku nabung lagi!" />
+          <Dialog nama="Bimo" anak="Kak, aku menabung tiap hari 2.000. Sudah 3 hari." />
+          <Dialog nama="Rara" anak="Berarti tabunganmu 2.000 + 2.000 + 2.000." />
+          <Dialog nama="Bimo" anak="Itu 6.000, kan?" />
+          <Dialog nama="Igil" anak="Hoo! Betul! Sekarang, kalau mau beli mainan 10.000, cukup belum?" />
+          <Dialog nama="Bimo" anak="Belum! Kurang 4.000. Aku nabung lagi!" />
           <Papan anak="2.000 + 2.000 + 2.000 = 6.000" />
           <Papan anak="10.000 − 6.000 = kurang 4.000" />
-          <Dialog nama="Lala" anak="Nah, itu yang namanya soal campuran. Tambah dulu, lalu kurang." />
-          <Dialog nama="Bima" anak="Jadi dua langkah, ya. Harus teliti!" />
+          <Dialog nama="Rara" anak="Nah, itu yang namanya soal campuran. Tambah dulu, lalu kurang." />
+          <Dialog nama="Bimo" anak="Jadi dua langkah, ya. Harus teliti!" />
           <p className="text-sm font-bold text-[#1C01A5]">Soal campuran butuh lebih dari satu langkah. Kerjakan berurutan.</p>
           <KuisSuara
             id={idKuis("A", 8)}
@@ -1276,7 +1270,7 @@ function KartuC({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminGuru }) {
   return (
     <KartuBingkai latar="bg-violet-50/80">
       <KepalaKartu
-        ikon="🏪🐖"
+        ikon="🏪🦉"
         judul={kartu.judul}
         anak="Sepuluh transaksi · total harga dan kembalian"
         kelas={kelas}
@@ -1289,7 +1283,7 @@ function KartuC({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminGuru }) {
       />
       <GambarDoodle
         src="/doodle-mtk/mtk-1-bab15-warung.jpg"
-        alt="Warung kecil dengan rak roti dan kue. Celi memakai celemek di meja kasir."
+        alt="Warung kecil dengan rak roti dan kue. Igil memakai celemek di meja kasir."
       />
       <PanduanIkon
         judul="Simbol warung"
@@ -1312,7 +1306,7 @@ function KartuC({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminGuru }) {
         idMisi={(indeks) => idKuis("C", indeks)}
         idTulis={idKuisTulisKartu(ID, "C")}
         tema={TEMA_MTK1_BAB15}
-        penutup="Warung besar terbuka. Celi memasang celemek penjaga warung."
+        penutup="Warung besar terbuka. Igil memasang celemek penjaga warung."
         bunga="💵🪙🍞🍰🏅"
       />
     </KartuBingkai>
@@ -1330,19 +1324,19 @@ function LembarEvaluasi({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminG
     }
     return jumlahSkor;
   }, [kuis]);
-  const lencana = skor >= 9 ? "🥇 Penjaga Warung Ahli" : skor >= 6 ? "💰 Kasir Cerdas" : "🐖 Sahabat Celi";
+  const lencana = skor >= 9 ? "🥇 Penjaga Warung Ahli" : skor >= 6 ? "💰 Kasir Cerdas" : "🐖 Sahabat Igil";
   const pesan =
     skor >= 9
       ? "Luar biasa! Hitunganmu selalu tepat!"
       : skor >= 6
         ? "Hebat! Sedikit lagi jadi penjaga warung!"
-        : "Ayo berlatih lagi bersama Celi, kamu pasti bisa!";
+        : "Ayo berlatih lagi bersama Igil, kamu pasti bisa!";
   const hasil = ["Total 5.000", "Kembalian 5.000", "Total 8.000"];
   const langkah = ["💵 Terima kembalian", "🧮 Hitung total", "💰 Bayar", "🧺 Pilih barang"];
   return (
     <KartuBingkai latar="bg-rose-50/80">
       <KepalaKartu
-        ikon="📝🐖"
+        ikon="📝🦉"
         judul={kartu.judul}
         anak={`${nama} · Kelas 1 · ${skor} dari 10`}
         kelas={kelas}
@@ -1403,7 +1397,7 @@ function LembarEvaluasi({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminG
         />
         <Pilih
           id={idKuis("D", 3)}
-          pertanyaan="4. Bima berkata: aku beli barang 7.000, bayar 5.000, jadi aku dapat kembalian 2.000. Apakah Bima benar?"
+          pertanyaan="4. Bimo berkata: aku beli barang 7.000, bayar 5.000, jadi aku dapat kembalian 2.000. Apakah Bimo benar?"
           pilihan={[
             { huruf: "A", teks: "Benar, dapat kembalian 2.000" },
             { huruf: "B", teks: "Salah, uangnya tidak cukup, kurang 2.000" },
@@ -1459,13 +1453,13 @@ function LembarEvaluasi({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminG
         />
         <KuisSuara
           id={idKuis("D", 8)}
-          pertanyaan="9. Raka punya 5.000. Barang berharga 8.000. Ucapkan cukup atau tidak cukup, lalu jelaskan alasannya singkat."
+          pertanyaan="9. Bimo punya 5.000. Barang berharga 8.000. Ucapkan cukup atau tidak cukup, lalu jelaskan alasannya singkat."
           periksa={tidakCukup}
           petunjuk="Bandingkan 5.000 dengan 8.000. Sebutkan kurang berapa."
         />
         <Pilih
           id={idKuis("D", 9)}
-          pertanyaan="10. Celi menjual 5 roti seharga 3.000. Pelanggan pertama bayar 10.000 untuk 1 roti. Celi ingin beli barang 20.000. Mana yang benar?"
+          pertanyaan="10. Igil menjual 5 roti seharga 3.000. Pelanggan pertama bayar 10.000 untuk 1 roti. Igil ingin beli barang 20.000. Mana yang benar?"
           visual={<Papan anak="🍞 × 5 · bayar 10.000 · harga 20.000" />}
           pilihan={[
             {
@@ -1521,7 +1515,7 @@ export default function NaskahMtk1Bab15({
         kelamin={kelamin}
         gambar={{
           src: "/doodle-mtk/mtk-1-bab15-poin.jpg",
-          alt: "Celi berdiri di samping papan kosong. Uang kertas, koin, dan celengan melayang di sekelilingnya.",
+          alt: "Igil berdiri di samping papan kosong. Uang kertas, koin, dan celengan melayang di sekelilingnya.",
         }}
         cuplikan={cuplikanKalimat([
           "Uang Indonesia namanya rupiah. Ada uang kertas dan uang logam. Angka di uang menunjukkan nilainya.",

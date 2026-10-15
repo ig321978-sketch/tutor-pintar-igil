@@ -7,6 +7,7 @@ import { useMemo, useState, type ReactNode } from "react";
 import HasilJawabanKuis from "@/components/HasilJawabanKuis";
 import TabelInfoGrafis from "@/components/TabelInfoGrafis";
 import KartuPoinPenting from "@/components/KartuPoinPenting";
+import TujuanBelajar from "@/components/TujuanBelajar";
 import PanduanIkon, { type ButirIkon } from "@/components/PanduanIkon";
 import KuisTulisKartu from "@/components/KuisTulisKartu";
 import SoalRekamSuara from "@/components/SoalRekamSuara";
@@ -95,26 +96,20 @@ function cuplikanKalimat(kalimat: string[]): CuplikanVoiceMateri[] {
   }));
 }
 
-function KartuBingkai({ children, latar = "bg-white" }: { children: ReactNode; latar?: string }) {
-  return (
-    <section className={`rounded-[1.75rem] border-4 border-[#1C01A5]/15 ${latar} px-4 py-5 shadow-sm sm:px-6 sm:py-6`}>
-      {children}
-    </section>
-  );
+function KartuBingkai({ children }: { children: ReactNode; latar?: string }) {
+  return <section className="space-y-4">{children}</section>;
 }
 
 const WARNA_DIALOG: Record<string, string> = {
-  Ayu: "border-[#DB2777]/20 bg-[#FDF2F8]",
-  Rian: "border-[#2563EB]/20 bg-[#EFF6FF]",
-  Nisa: "border-[#16A34A]/20 bg-[#F0FDF4]",
-  Jago: "border-teal-300 bg-teal-50",
+  Rara: "border-[#DB2777]/20 bg-[#FDF2F8]",
+  Bimo: "border-[#2563EB]/20 bg-[#EFF6FF]",
+  Igil: "border-amber-300 bg-amber-50",
 };
 
 const WAJAH_DIALOG: Record<string, string> = {
-  Ayu: "👧",
-  Rian: "👦",
-  Nisa: "👧",
-  Jago: "🐓",
+  Rara: "👧",
+  Bimo: "👦",
+  Igil: "🦉",
 };
 
 function Dialog({ nama, anak }: { nama: string; anak: string }) {
@@ -214,14 +209,14 @@ function Adegan({
   children: ReactNode;
 }) {
   return (
-    <article className={`rounded-2xl border-2 px-4 py-3 ${warna}`}>
-      <p className="text-xs font-black uppercase tracking-wide text-[#1C01A5]">{judul}</p>
+    <section className="space-y-4 border-b-4 border-[#1C01A5] pb-8">
+      <p className="text-xl font-black leading-snug text-[#1C01A5]">{judul}</p>
       <TombolPenjelasan kelas={kelas} kelamin={kelamin} kalimat={penjelasan} />
       {simbol ? <PanduanIkon butir={simbol} /> : null}
       {/* eslint-disable-next-line @next/next/no-img-element */}
       <img src={src} alt={alt} className="mt-3 w-full rounded-xl border border-[#1C01A5]/10 bg-white object-cover" />
       <div className="mt-3 space-y-2">{children}</div>
-    </article>
+    </section>
   );
 }
 
@@ -582,14 +577,15 @@ function KartuA({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminGuru }) {
   const urutanHarian = ["🛏️ Bangun", "🚿 Mandi", "🍳 Sarapan", "🎒 Sekolah", "🌙 Tidur"];
   return (
     <KartuBingkai latar="bg-sky-50/80">
-      <KepalaKartu ikon="👧👦🐓" judul={kartu.judul} anak="Ayu, Rian, Nisa, dan ayam jago kecil" />
+      <KepalaKartu ikon="👧👦🦉" judul={kartu.judul} anak="Rara, Bimo, dan Igil" />
       <div className="mt-4">
-        <p className="text-sm font-black text-[#1C01A5]">Tujuan Pembelajaran</p>
-        <ul className="daftar-tujuan mt-2 space-y-1 text-sm font-semibold text-slate-700">
-          <li>Siswa bisa membaca jam bulat.</li>
-          <li>Siswa bisa menyusun urutan kegiatan harian.</li>
-          <li>Siswa bisa membedakan waktu pagi, siang, sore, dan malam.</li>
-        </ul>
+        <TujuanBelajar
+        butir={[
+          "Siswa bisa membaca jam bulat.",
+          "Siswa bisa menyusun urutan kegiatan harian.",
+          "Siswa bisa membedakan waktu pagi, siang, sore, dan malam.",
+        ]}
+      />
       </div>
       <div className="mt-4 space-y-4">
         <Adegan
@@ -601,7 +597,7 @@ function KartuA({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminGuru }) {
           ]}
           warna="border-amber-200 bg-amber-50/40"
           src="/doodle-mtk/mtk-1-bab13-sub1.jpg"
-          alt="Ayu menunjuk jam dinding. Jarum pendek di angka 7 dan jarum panjang di angka 12. Rian duduk di sofa. Jago berkokok di jendela."
+          alt="Rara menunjuk jam dinding. Jarum pendek di angka 7 dan jarum panjang di angka 12. Bimo duduk di sofa. Igil berkokok di jendela."
           kelas={kelas}
           kelamin={kelamin}
           penjelasan={[
@@ -610,10 +606,10 @@ function KartuA({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminGuru }) {
             "Kalau jarum panjang menunjuk angka dua belas, artinya tepat.",
           ]}
         >
-          <Dialog nama="Rian" anak="Ayu, aku datang! Eh, jam berapa sekarang?" />
-          <Dialog nama="Ayu" anak="Jarum pendeknya di angka 7. Jarum panjangnya di angka 12. Berarti tepat jam 7." />
-          <Dialog nama="Jago" anak="Kukuruyuk! Tepat waktu!" />
-          <Dialog nama="Nisa" anak="Kalau jarum panjangnya bukan di 12, nanti kita pelajari di kelas berikutnya." />
+          <Dialog nama="Bimo" anak="Rara, aku datang! Eh, jam berapa sekarang?" />
+          <Dialog nama="Rara" anak="Jarum pendeknya di angka 7. Jarum panjangnya di angka 12. Berarti tepat jam 7." />
+          <Dialog nama="Igil" anak="Hoo! Tepat waktu!" />
+          <Dialog nama="Rara" anak="Kalau jarum panjangnya bukan di 12, nanti kita pelajari di kelas berikutnya." />
           <Papan anak="🟦 pendek di 7 · 🟨 panjang di 12 · jam tujuh tepat" />
           <p className="text-sm font-black text-[#1C01A5]">Jarum pendek = jam. Jarum panjang di angka 12 = tepat.</p>
           <KuisSuara
@@ -643,7 +639,7 @@ function KartuA({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminGuru }) {
           ]}
           warna="border-sky-200 bg-sky-50/50"
           src="/doodle-mtk/mtk-1-bab13-sub2.jpg"
-          alt="Lima jam dinding berjajar menunjukkan jam 6, 7, 8, 9, dan 12 tepat. Nisa dan Jago melihatnya."
+          alt="Lima jam dinding berjajar menunjukkan jam 6, 7, 8, 9, dan 12 tepat. Rara dan Igil melihatnya."
           kelas={kelas}
           kelamin={kelamin}
           penjelasan={[
@@ -652,9 +648,9 @@ function KartuA({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminGuru }) {
             "Kita membaca jam dari jarum pendeknya.",
           ]}
         >
-          <Dialog nama="Nisa" anak="Jarum pendek di 6 dan jarum panjang di 12. Itu jam 6 tepat, jam aku bangun." />
-          <Dialog nama="Rian" anak="Berangkat sekolah: jarum pendek di 7. Jam 7 tepat!" />
-          <Dialog nama="Ayu" anak="Kalau kedua jarum di angka 12, itu jam 12 tepat. Tengah hari!" />
+          <Dialog nama="Rara" anak="Jarum pendek di 6 dan jarum panjang di 12. Itu jam 6 tepat, jam aku bangun." />
+          <Dialog nama="Bimo" anak="Berangkat sekolah: jarum pendek di 7. Jam 7 tepat!" />
+          <Dialog nama="Rara" anak="Kalau kedua jarum di angka 12, itu jam 12 tepat. Tengah hari!" />
           <Papan anak="6 tepat · 7 tepat · 8 tepat · 9 tepat · 12 tepat" />
           <KuisSuara
             id={idKuis("A", 2)}
@@ -698,9 +694,9 @@ function KartuA({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminGuru }) {
             "Kalau urutannya terbalik, jadwalnya jadi aneh.",
           ]}
         >
-          <Dialog nama="Rian" anak="Yang pertama pasti bangun tidur!" />
-          <Dialog nama="Nisa" anak="Setelah bangun, kita mandi supaya segar. Lalu sarapan, baru sekolah." />
-          <Dialog nama="Ayu" anak="Malamnya tidur. Bangun jam 6, sekolah jam 7." />
+          <Dialog nama="Bimo" anak="Yang pertama pasti bangun tidur!" />
+          <Dialog nama="Rara" anak="Setelah bangun, kita mandi supaya segar. Lalu sarapan, baru sekolah." />
+          <Dialog nama="Rara" anak="Malamnya tidur. Bangun jam 6, sekolah jam 7." />
           <Papan anak="🛏️ Bangun → 🚿 Mandi → 🍳 Sarapan → 🎒 Sekolah → 🌙 Tidur" />
           <KuisSuara
             id={idKuis("A", 4)}
@@ -740,9 +736,9 @@ function KartuA({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminGuru }) {
             "Sore saat matahari turun. Malam saat gelap dan bulan muncul.",
           ]}
         >
-          <Dialog nama="Ayu" anak="Langitnya jingga. Berarti sekarang sore." />
-          <Dialog nama="Jago" anak="Kalau matahari ada di atas kepala, itu siang!" />
-          <Dialog nama="Rian" anak="Kalau gelap dan ada bintang, malam. Waktunya tidur." />
+          <Dialog nama="Rara" anak="Langitnya jingga. Berarti sekarang sore." />
+          <Dialog nama="Igil" anak="Kalau matahari ada di atas kepala, itu siang!" />
+          <Dialog nama="Bimo" anak="Kalau gelap dan ada bintang, malam. Waktunya tidur." />
           <Papan anak="🌅 pagi sekolah · ☀️ siang makan · 🌇 sore bermain · 🌙 malam tidur" />
           <KuisSuara
             id={idKuis("A", 6)}
@@ -781,9 +777,9 @@ function KartuA({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminGuru }) {
             "Kita membandingkan mana yang lebih lama.",
           ]}
         >
-          <Dialog nama="Ayu" anak="Mana yang lebih lama: menggosok gigi atau tidur malam?" />
-          <Dialog nama="Rian" anak="Tidur malam! Lama sekali, sampai pagi." />
-          <Dialog nama="Nisa" anak="Berkedip cuma sebentar. Makan lebih lama. Bermain sedang-sedang saja." />
+          <Dialog nama="Rara" anak="Mana yang lebih lama: menggosok gigi atau tidur malam?" />
+          <Dialog nama="Bimo" anak="Tidur malam! Lama sekali, sampai pagi." />
+          <Dialog nama="Rara" anak="Berkedip cuma sebentar. Makan lebih lama. Bermain sedang-sedang saja." />
           <Papan anak="⚡ berkedip · ⏳ mandi · 🕰️ tidur malam" />
           <KuisSuara
             id={idKuis("A", 8)}
@@ -833,7 +829,7 @@ function KartuA({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminGuru }) {
         />
         <SusunToken
           id={idKuis("A", 12)}
-          perintah="3. Susun jadwal Ayu dari pagi sampai malam."
+          perintah="3. Susun jadwal Rara dari pagi sampai malam."
           acak={["🍳 Sarapan", "🛏️ Bangun", "🌙 Tidur", "🎒 Sekolah", "🚿 Mandi"]}
           benar={urutanHarian}
           umpan="Bangun, mandi, sarapan, sekolah, tidur."
@@ -1019,7 +1015,7 @@ function KartuB({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminGuru }) {
         >
           <Papan anak="🛏️ bangun jam 6 → 🚿 mandi → 🍳 sarapan jam 7 → 🎒 sekolah jam 7 → 📚 belajar jam 8" />
           <p className="text-sm font-semibold text-slate-700">
-            Ayu bangun jam 6 lalu mandi. Sarapan jam 5 tidak masuk akal, karena sarapan tidak mungkin sebelum bangun.
+            Rara bangun jam 6 lalu mandi. Sarapan jam 5 tidak masuk akal, karena sarapan tidak mungkin sebelum bangun.
           </p>
           <KuisSuara
             id={idKuis("B", 4)}
@@ -1197,7 +1193,7 @@ function KartuC({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminGuru }) {
   return (
     <KartuBingkai latar="bg-violet-50/80">
       <KepalaKartu
-        ikon="⏰🐓"
+        ikon="⏰🦉"
         judul={kartu.judul}
         anak="Sepuluh pos stasiun · jam, jadwal, dan langit"
         kelas={kelas}
@@ -1210,7 +1206,7 @@ function KartuC({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminGuru }) {
       />
       <GambarDoodle
         src="/doodle-mtk/mtk-1-bab13-stasiun.jpg"
-        alt="Menara jam di kota kecil. Jago berdiri di puncak sambil memegang megafon. Matahari di kiri dan bulan di kanan."
+        alt="Menara jam di kota kecil. Igil berdiri di puncak sambil memegang megafon. Matahari di kiri dan bulan di kanan."
       />
       <PanduanIkon
         judul="Simbol stasiun"
@@ -1233,7 +1229,7 @@ function KartuC({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminGuru }) {
         idMisi={(indeks) => idKuis("C", indeks)}
         idTulis={idKuisTulisKartu(ID, "C")}
         tema={TEMA_MTK1_BAB13}
-        penutup="Menara jam besar terbuka. Jago memberi lencana Penjaga Waktu Ahli."
+        penutup="Menara jam besar terbuka. Igil memberi lencana Penjaga Waktu Ahli."
         bunga="🕐🌅🐓🔔"
       />
     </KartuBingkai>
@@ -1251,18 +1247,18 @@ function LembarEvaluasi({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminG
     }
     return jumlah;
   }, [kuis]);
-  const lencana = skor >= 9 ? "🏅 Penjaga Waktu Ahli" : skor >= 6 ? "⏰ Pembaca Jam Cerdas" : "🐓 Sahabat Jago";
+  const lencana = skor >= 9 ? "🏅 Penjaga Waktu Ahli" : skor >= 6 ? "⏰ Pembaca Jam Cerdas" : "🐓 Sahabat Igil";
   const pesan =
     skor >= 9
       ? "Luar biasa! Jadwalmu selalu rapi dan tepat!"
       : skor >= 6
         ? "Hebat! Sedikit lagi jadi penjaga waktu!"
-        : "Ayo belajar jam lagi bersama Jago, kamu pasti bisa!";
+        : "Ayo belajar jam lagi bersama Igil, kamu pasti bisa!";
   const ciri = ["Matahari terbit, udara sejuk", "Matahari tinggi, terasa panas", "Gelap, ada bintang"];
   return (
     <KartuBingkai latar="bg-rose-50/80">
       <KepalaKartu
-        ikon="📝🐓"
+        ikon="📝🦉"
         judul={kartu.judul}
         anak={`${nama} · Kelas 1 · ${skor} dari 10`}
         kelas={kelas}
@@ -1275,7 +1271,7 @@ function LembarEvaluasi({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminG
       />
       <GambarDoodle
         src="/doodle-mtk/mtk-1-bab13-evaluasi.jpg"
-        alt="Meja ujian dengan pensil besar dan jam kecil. Jago berdiri di tepi meja sambil mengangkat sayap."
+        alt="Meja ujian dengan pensil besar dan jam kecil. Igil berdiri di tepi meja sambil mengangkat sayap."
       />
       <PanduanIkon
         judul="Simbol soal"
@@ -1323,7 +1319,7 @@ function LembarEvaluasi({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminG
         />
         <Pilih
           id={idKuis("D", 3)}
-          pertanyaan="4. Rian menulis: aku tidur malam jam 9 pagi. Apakah jadwal itu masuk akal?"
+          pertanyaan="4. Bimo menulis: aku tidur malam jam 9 pagi. Apakah jadwal itu masuk akal?"
           pilihan={[
             { huruf: "A", teks: "Benar, itu wajar" },
             { huruf: "B", teks: "Salah, tidur malam dilakukan pada malam hari" },
@@ -1383,7 +1379,7 @@ function LembarEvaluasi({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminG
         />
         <Pilih
           id={idKuis("D", 9)}
-          pertanyaan="10. Ayu menulis: mandi jam 6, bangun jam 6, sekolah jam 7, sarapan jam 8. Mana yang benar?"
+          pertanyaan="10. Rara menulis: mandi jam 6, bangun jam 6, sekolah jam 7, sarapan jam 8. Mana yang benar?"
           visual={<Papan anak="🚿 mandi 6 · 🛏️ bangun 6 · 🎒 sekolah 7 · 🍳 sarapan 8" />}
           pilihan={[
             {
@@ -1436,7 +1432,7 @@ export default function NaskahMtk1Bab13({
         kelamin={kelamin}
         gambar={{
           src: "/doodle-mtk/mtk-1-bab13-poin.jpg",
-          alt: "Jago berdiri di puncak menara jam di samping papan kosong. Matahari di kiri dan bulan di kanan.",
+          alt: "Igil berdiri di puncak menara jam di samping papan kosong. Matahari di kiri dan bulan di kanan.",
         }}
         cuplikan={cuplikanKalimat([
           "Jam punya dua jarum. Jarum pendek menunjukkan jamnya. Jarum panjang menunjukkan menitnya.",

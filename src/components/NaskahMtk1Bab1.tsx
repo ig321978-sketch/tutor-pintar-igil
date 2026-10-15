@@ -3,6 +3,7 @@
 import { useMemo, useState, type ReactNode } from "react";
 import HasilJawabanKuis from "@/components/HasilJawabanKuis";
 import KartuPoinPenting from "@/components/KartuPoinPenting";
+import TujuanBelajar from "@/components/TujuanBelajar";
 import KuisAkhirAdegan from "@/components/KuisAkhirAdegan";
 import KuisTulisKartu from "@/components/KuisTulisKartu";
 import SoalRekamSuara from "@/components/SoalRekamSuara";
@@ -30,12 +31,8 @@ const BILANGAN = [
   { angka: 10, nama: "sepuluh", ikon: "★" },
 ];
 
-function KartuBingkai({ children, latar = "bg-white" }: { children: ReactNode; latar?: string }) {
-  return (
-    <section className={`rounded-[1.75rem] border-4 border-[#1C01A5]/15 ${latar} px-4 py-5 shadow-sm sm:px-6 sm:py-6`}>
-      {children}
-    </section>
-  );
+function KartuBingkai({ children }: { children: ReactNode; latar?: string }) {
+  return <section className="space-y-4">{children}</section>;
 }
 
 function IkonUlang({ ikon, jumlah, ukuran = "text-2xl" }: { ikon: string; jumlah: number; ukuran?: string }) {
@@ -856,7 +853,7 @@ export default function NaskahMtk1Bab1({
     <div className="space-y-5">
       <KartuBingkai latar="bg-sky-50/80">
         <p className="text-center text-4xl" aria-hidden>
-          🌳🧺🐱
+          🌳🧺🦉
         </p>
         <h4 className="mt-3 text-center text-lg font-black tracking-wide text-[#1C01A5] sm:text-xl">{kartuA.judul}</h4>
         <p className="mt-1 text-center text-sm font-bold text-[#1C01A5]/70">Ayo Membilang sampai dengan 10</p>
@@ -864,25 +861,25 @@ export default function NaskahMtk1Bab1({
           <TombolVoiceMateriPai1 kelas={kelas} kelamin={kelamin} cuplikan={cuplikanDariNaskah(kartuA.voice, 2_000, 3_000)} />
         </div>
         <div className="mt-4 rounded-2xl border-2 border-emerald-300 bg-emerald-50 px-4 py-3">
-          <p className="text-sm font-black text-[#1C01A5]">Tujuan Pembelajaran</p>
-          <p className="mt-2 text-sm font-semibold text-slate-700">Setelah belajar, siswa dapat:</p>
-          <ul className="daftar-tujuan mt-2 space-y-1 text-sm font-semibold text-slate-700">
-            <li>Menghitung benda sampai 10.</li>
-            <li>Membaca bilangan 1–10.</li>
-            <li>Menulis lambang bilangan 1–10.</li>
-            <li>Mencocokkan jumlah benda dengan lambang bilangannya.</li>
-            <li>Membandingkan dua kelompok: lebih banyak, lebih sedikit, atau sama banyak.</li>
-          </ul>
+          <TujuanBelajar
+        butir={[
+          "Menghitung benda sampai 10.",
+          "Membaca bilangan 1–10.",
+          "Menulis lambang bilangan 1–10.",
+          "Mencocokkan jumlah benda dengan lambang bilangannya.",
+          "Membandingkan dua kelompok: lebih banyak, lebih sedikit, atau sama banyak.",
+        ]}
+      />
         </div>
         <div className="mt-4 space-y-3">
           <article className="rounded-2xl border-2 border-[#16A34A]/25 bg-[#F0FDF4] px-4 py-3">
-            <p className="text-xs font-black uppercase tracking-wide text-[#166534]">Cerita: Piknik Buah Rara dan Bimo</p>
+            <p className="text-xl font-black tracking-wide text-[#166534]">Cerita: Piknik Buah Rara dan Bimo</p>
             <p className="mt-2 text-sm font-semibold leading-relaxed text-slate-700">
-              Taman cerah. Rara dan Bimo duduk di atas tikar. Ada keranjang buah dan Miko si Kucing.
+              Taman cerah. Rara dan Bimo duduk di atas tikar. Ada keranjang buah dan Igil si burung hantu.
             </p>
             <GambarCerita
               src="/doodle-mtk/mtk-1-bab1-piknik.jpg"
-              alt="Rara dan Bimo duduk di tikar piknik. Ada keranjang buah dan kucing Miko."
+              alt="Rara dan Bimo duduk di tikar piknik. Ada keranjang buah dan burung hantu Igil."
             />
           </article>
           <Dialog nama="Rara" warna="border-[#DB2777]/20 bg-[#FDF2F8]">
@@ -890,6 +887,9 @@ export default function NaskahMtk1Bab1({
           </Dialog>
           <Dialog nama="Bimo" warna="border-[#2563EB]/20 bg-[#EFF6FF]">
             “Ayo! Kita mulai dari apel.”
+          </Dialog>
+          <Dialog nama="Igil" warna="border-amber-300 bg-amber-50">
+            “Hoo! Aku bantu menghitung.”
           </Dialog>
           <article className="rounded-2xl border-2 border-[#E23B3B]/25 bg-[#FFF1F2] px-4 py-3">
             <p className="text-xs font-black uppercase text-[#9F1239]">Piring apel</p>
@@ -949,12 +949,12 @@ export default function NaskahMtk1Bab1({
             konteksKanvas="Jeruknya ada 5. Lambangnya 5."
           />
           <article className="rounded-2xl border-2 border-violet-300 bg-violet-50 px-4 py-3">
-            <p className="text-xs font-black uppercase text-[#92400E]">Miko membawa pisang</p>
-            <GambarCerita src="/doodle-mtk/mtk-1-bab1-pisang.jpg" alt="Miko si kucing di samping empat pisang dan angka 4." />
+            <p className="text-xs font-black uppercase text-[#92400E]">Igil membawa pisang</p>
+            <GambarCerita src="/doodle-mtk/mtk-1-bab1-pisang.jpg" alt="Igil si kucing di samping empat pisang dan angka 4." />
             <IkonUlang ikon="🍌" jumlah={4} ukuran="text-3xl" />
           </article>
           <Dialog nama="Rara" warna="border-[#DB2777]/20 bg-[#FDF2F8]">
-            “Miko membawa 4 pisang.”
+            “Igil membawa 4 pisang.”
           </Dialog>
           <Dialog nama="Bimo" warna="border-[#2563EB]/20 bg-[#EFF6FF]">
             “Ayo kita urutkan jumlah buahnya.”

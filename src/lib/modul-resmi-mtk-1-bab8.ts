@@ -12,12 +12,12 @@ export const MODUL_MTK1_BAB8: ModulResmiPai = {
   judul: JUDUL_MTK1_BAB8,
   pola: /mengenal\s+diagram|kantin sekolah yang berantakan|toko grosir tupi|bereskan kantin/,
   motivasi:
-    "Sari, Adi, dan tupai Tupi membereskan kantin. Mereka mengelompokkan gelas, piring, dan sendok, lalu membacanya lewat diagram gambar.",
+    "Rara, Bimo, dan tupai Igil membereskan kantin. Mereka mengelompokkan gelas, piring, dan sendok, lalu membacanya lewat diagram gambar.",
   kunciJawaban: "A,A,C,A,C,B,B,C,C,C",
   sketsaKartu: [
-    "Sari dan Adi mengelompokkan gelas, piring, dan sendok bersama Tupi di kantin.",
+    "Rara dan Bimo mengelompokkan gelas, piring, dan sendok bersama Igil di kantin.",
     "Cara membuat dan membaca piktogram, lalu membandingkan dua baris.",
-    "Tupi merapikan sepuluh rak kantin: jumlah, selisih, dan arti satu gambar.",
+    "Igil merapikan sepuluh rak kantin: jumlah, selisih, dan arti satu gambar.",
     "Poin penting dan lembar evaluasi mengenal diagram.",
   ],
   latihan: pg([
@@ -112,7 +112,7 @@ D) Sama banyak`,
           alias: ["kelinci"],
         },
         {
-          pertanyaan: "Rahasia Tupi: apa yang dilakukan dulu?",
+          pertanyaan: "Rahasia Igil: apa yang dilakukan dulu?",
           alias: ["kelompokkan", "kelompok"],
         },
         {
@@ -152,11 +152,11 @@ D) Sama banyak`,
           alias: ["8 - 4 = 4", "8-4=4"],
         },
         {
-          pertanyaan: "Siapa yang mengajari Sari dan Adi?",
+          pertanyaan: "Siapa yang mengajari Rara dan Bimo?",
           alias: ["tupi"],
         },
         {
-          pertanyaan: "Tuliskan nama Tupi.",
+          pertanyaan: "Tuliskan nama Igil.",
           alias: ["tupi"],
         },
       ],
@@ -225,7 +225,7 @@ D) Sama banyak`,
       kode: "C",
       judul: "C. Misi Bereskan Kantin",
       pengantar:
-        "Bantu Tupi merapikan 10 rak kantin. Hijau untuk menghitung, biru untuk membaca, kuning untuk menulis, dan ungu untuk membandingkan.",
+        "Bantu Igil merapikan 10 rak kantin. Hijau untuk menghitung, biru untuk membaca, kuning untuk menulis, dan ungu untuk membandingkan.",
       labelDaftar: "Sepuluh rak diagram di kantin",
       kolom: 1,
       item: [
@@ -233,7 +233,7 @@ D) Sama banyak`,
           nama: "Alur permainan",
           singkat: "Pilih rak, jawab, dapat bintang",
           uraian:
-            "Siswa memilih satu rak kantin. Tupi menanyakan baris terpanjang, selisih, atau arti satu gambar. Jawaban benar mendapat 1 bintang kantin. Jawaban yang belum tepat mendapat petunjuk, tanpa kehilangan stiker.",
+            "Siswa memilih satu rak kantin. Igil menanyakan baris terpanjang, selisih, atau arti satu gambar. Jawaban benar mendapat 1 bintang kantin. Jawaban yang belum tepat mendapat petunjuk, tanpa kehilangan stiker.",
           contoh: "Apel 7 paling banyak. Jumlah 7 + 3 + 5 = 15. Selisih 4. Tiga gambar yang masing-masing mewakili 2 benda sama dengan 6.",
         },
         {
@@ -247,11 +247,11 @@ D) Sama banyak`,
       kuis: kuisDariMisi(MISI_MTK1_BAB8),
       voice: [
         [
-          "Tupi membereskan kantin sekolah. Ada sepuluh rak dari gelas sampai diagram.",
+          "Igil membereskan kantin sekolah. Ada sepuluh rak dari gelas sampai diagram.",
           "Apel tujuh, pisang tiga, anggur lima. Yang paling banyak tujuh. Jumlah semuanya lima belas. Selisihnya empat.",
           "Ikan enam lebih banyak daripada kura-kura empat.",
           "Tiga gambar biskuit, dan satu gambar mewakili dua biskuit, jadi jumlahnya enam.",
-          "Jawaban benar mendapat satu bintang kantin. Jika belum tepat, Tupi memberi petunjuk. Stiker tidak berkurang.",
+          "Jawaban benar mendapat satu bintang kantin. Jika belum tepat, Igil memberi petunjuk. Stiker tidak berkurang.",
         ],
       ],
     },

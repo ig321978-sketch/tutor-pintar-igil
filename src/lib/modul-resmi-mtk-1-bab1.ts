@@ -12,10 +12,10 @@ export const MODUL_MTK1_BAB1: ModulResmiPai = {
   judul: JUDUL_MTK1_BAB1,
   pola: /ayo\s+berhitung|ayo\s+membilang\s+sampai(\s+dengan)?\s+10\b|piknik buah rara|rara dan bimo|permen warna-warni sani/,
   motivasi:
-    "Hore! Kamu sudah piknik bersama Rara, Bimo, dan Miko. Hitung buahnya satu per satu, tulis angkanya, lalu bandingkan jumlahnya.",
+    "Hore! Kamu sudah piknik bersama Rara, Bimo, dan Igil. Hitung buahnya satu per satu, tulis angkanya, lalu bandingkan jumlahnya.",
   kunciJawaban: "B,C,A,B,A,B,B,A,A,B",
   sketsaKartu: [
-    "Rara dan Bimo piknik di taman, menghitung apel, jeruk, pisang, dan stroberi bersama Miko.",
+    "Rara dan Bimo piknik di taman, menghitung apel, jeruk, pisang, dan stroberi bersama Igil.",
     "Tangga bilangan 1 sampai 10, mulut ikan untuk tanda lebih besar, dan kereta bilangan.",
     "Kiko menjaga sepuluh petak kebun angka: menghitung, membaca, menulis, dan membandingkan.",
     "Lembar kerja tantangan juara membilang dan membandingkan sampai 10.",
@@ -77,7 +77,7 @@ C) Bimo, selisih 4`,
       kode: "A",
       judul: "A. Piknik Buah Rara dan Bimo",
       pengantar:
-        "Rara dan Bimo piknik di taman bersama Miko si Kucing. Mereka menghitung apel, jeruk, pisang, dan stroberi.",
+        "Rara dan Bimo piknik di taman bersama Igil si burung hantu. Mereka menghitung apel, jeruk, pisang, dan stroberi.",
       labelDaftar: "Cerita piknik dan menghitung buah",
       kolom: 1,
       item: [
@@ -92,7 +92,7 @@ C) Bimo, selisih 4`,
           nama: "Cerita piknik",
           singkat: "Apel 3, pisang 4, jeruk 5",
           uraian:
-            "Tiga apel dibaca 3. Lima jeruk dibaca 5. Miko membawa 4 pisang. Urutannya 3, 4, 5. Jeruk lebih banyak daripada apel karena 5 > 3. Stroberi dan pisang sama-sama 4, jadi 4 = 4.",
+            "Tiga apel dibaca 3. Lima jeruk dibaca 5. Igil membawa 4 pisang. Urutannya 3, 4, 5. Jeruk lebih banyak daripada apel karena 5 > 3. Stroberi dan pisang sama-sama 4, jadi 4 = 4.",
           contoh: "Jeruk lebih banyak. Stroberi dan pisang sama banyak.",
         },
       ],
@@ -144,8 +144,8 @@ C) Bimo, selisih 4`,
       ],
       voice: [
         [
-          "Rara dan Bimo duduk di tikar piknik. Ada keranjang buah dan Miko si Kucing.",
-          "Rara menghitung tiga apel. Lambang bilangannya adalah 3. Bimo mengeluarkan lima jeruk. Miko membawa empat pisang.",
+          "Rara dan Bimo duduk di tikar piknik. Ada keranjang buah dan Igil si burung hantu.",
+          "Rara menghitung tiga apel. Lambang bilangannya adalah 3. Bimo mengeluarkan lima jeruk. Igil membawa empat pisang.",
           "Urutannya 3, 4, 5. Jeruk lebih banyak daripada apel, karena lima lebih besar daripada tiga. Stroberi dan pisang sama-sama empat.",
         ],
       ],

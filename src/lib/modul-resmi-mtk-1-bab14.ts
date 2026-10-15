@@ -12,12 +12,12 @@ export const MODUL_MTK1_BAB14: ModulResmiPai = {
   judul: JUDUL_MTK1_BAB14,
   pola: /bangun\s+datar\s+dan\s+bangun\s+ruang\b|bengkel bentuk wulan|tupai kecil tupi/,
   motivasi:
-    "Karin, Bagas, dan Wulan belajar sisi, sudut, dan bangun ruang bersama tupai kecil Tupi.",
+    "Rara, Bimo, dan Rara belajar sisi, sudut, dan bangun ruang bersama burung hantu Igil.",
   kunciJawaban: "B,B,D,B,C,C,B,B,B,C",
   sketsaKartu: [
-    "Karin, Bagas, dan Wulan menghitung sisi dan sudut bersama tupai kecil Tupi.",
+    "Rara, Bimo, dan Rara menghitung sisi dan sudut bersama burung hantu Igil.",
     "Papan segitiga, segi empat, lingkaran, dan lima bangun ruang.",
-    "Tupi merancang mainan di bengkel bentuk Wulan.",
+    "Igil merancang mainan di bengkel bentuk Rara.",
     "Poin penting dan lembar evaluasi bangun.",
   ],
   latihan: pg([
@@ -85,8 +85,8 @@ D) Tabung kayu`,
   kartu: [
     {
       kode: "A",
-      judul: "A. Kamar Main Karin",
-      pengantar: "Karin, Bagas, dan Wulan menghitung sisi dan sudut, lalu membedakan bentuk datar dari bentuk ruang.",
+      judul: "A. Kamar Main Rara",
+      pengantar: "Rara, Bimo, dan Rara menghitung sisi dan sudut, lalu membedakan bentuk datar dari bentuk ruang.",
       labelDaftar: "Lima adegan bentuk",
       kolom: 1,
       item: [
@@ -212,7 +212,7 @@ D) Tabung kayu`,
     },
     {
       kode: "C",
-      judul: "C. Bengkel Bentuk Wulan",
+      judul: "C. Bengkel Bentuk Rara",
       pengantar: "Siswa menjadi perancang mainan. Setiap pesanan meminta bentuk dengan ciri yang tepat.",
       labelDaftar: "Sepuluh pos bengkel",
       kolom: 1,
@@ -247,7 +247,7 @@ D) Tabung kayu`,
           contoh: "Lingkaran bulat, tetapi tetap bentuk datar.",
         },
         {
-          nama: "Kotak Wulan",
+          nama: "Kotak Rara",
           singkat: "Kelompokkan",
           uraian: "Kotak C berisi balok dan tabung, semuanya ruang. Kotak A dan B bercampur. Kubus dipindahkan dari kotak A.",
           contoh: "Dadu bisa diangkat, gambar dadu tidak.",

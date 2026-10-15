@@ -7,6 +7,7 @@ import { useMemo, useState, type ReactNode } from "react";
 import HasilJawabanKuis from "@/components/HasilJawabanKuis";
 import TabelInfoGrafis from "@/components/TabelInfoGrafis";
 import KartuPoinPenting from "@/components/KartuPoinPenting";
+import TujuanBelajar from "@/components/TujuanBelajar";
 import KuisAkhirAdegan from "@/components/KuisAkhirAdegan";
 import KuisTulisKartu from "@/components/KuisTulisKartu";
 import SoalRekamSuara from "@/components/SoalRekamSuara";
@@ -159,20 +160,14 @@ function warnaPaling(teks: string): boolean {
   return warna && angka;
 }
 
-function KartuBingkai({ children, latar = "bg-white" }: { children: ReactNode; latar?: string }) {
-  return (
-    <section className={`rounded-[1.75rem] border-4 border-[#1C01A5]/15 ${latar} px-4 py-5 shadow-sm sm:px-6 sm:py-6`}>
-      {children}
-    </section>
-  );
+function KartuBingkai({ children }: { children: ReactNode; latar?: string }) {
+  return <section className="space-y-4">{children}</section>;
 }
 
 const WARNA_DIALOG: Record<string, string> = {
-  Sari: "border-[#DB2777]/20 bg-[#FDF2F8]",
-  Adi: "border-[#2563EB]/20 bg-[#EFF6FF]",
-  Tupi: "border-teal-300 bg-teal-50",
-  "Bu Kantin": "border-[#16A34A]/25 bg-[#F0FDF4]",
-  Semua: "border-[#E11D48]/20 bg-[#FFF1F2]",
+  Rara: "border-[#DB2777]/20 bg-[#FDF2F8]",
+  Bimo: "border-[#2563EB]/20 bg-[#EFF6FF]",
+  Igil: "border-amber-300 bg-amber-50",
 };
 
 function Dialog({ nama, anak }: { nama: string; anak: string }) {
@@ -233,12 +228,12 @@ function Adegan({
   children: ReactNode;
 }) {
   return (
-    <article className={`rounded-2xl border-2 px-4 py-3 ${warna}`}>
-      <p className="text-xs font-black uppercase tracking-wide text-[#1C01A5]">{judul}</p>
+    <section className="space-y-4 border-b-4 border-[#1C01A5] pb-8">
+      <p className="text-xl font-black leading-snug text-[#1C01A5]">{judul}</p>
       {/* eslint-disable-next-line @next/next/no-img-element */}
       <img src={src} alt={alt} className="mt-3 w-full rounded-xl border border-[#1C01A5]/10 bg-white object-cover" />
       <div className="mt-3 space-y-2">{children}</div>
-    </article>
+    </section>
   );
 }
 
@@ -522,7 +517,7 @@ function KartuA({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminGuru }) {
   return (
     <KartuBingkai latar="bg-sky-50/80">
       <KepalaKartu
-        ikon="🍎🐿️📊"
+        ikon="🍎🦉📊"
         judul={kartu.judul}
         anak="Mengenal Diagram"
         kelas={kelas}
@@ -530,29 +525,30 @@ function KartuA({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminGuru }) {
         cuplikan={cuplikanDariNaskah(kartu.voice, 2_000, 3_000)}
       />
       <div className="mt-4 rounded-2xl border-2 border-sky-300 bg-sky-50 px-4 py-3">
-        <p className="text-sm font-black text-[#1C01A5]">Tujuan Pembelajaran</p>
-        <ul className="daftar-tujuan mt-2 space-y-1 text-sm font-semibold text-slate-700">
-          <li>Mengelompokkan benda menurut jenisnya.</li>
-          <li>Menyusun dan membaca diagram gambar sederhana.</li>
-        </ul>
+        <TujuanBelajar
+        butir={[
+          "Mengelompokkan benda menurut jenisnya.",
+          "Menyusun dan membaca diagram gambar sederhana.",
+        ]}
+      />
       </div>
       <div className="mt-4 space-y-3">
         <Adegan
           judul="Kantin yang berantakan"
           warna="border-amber-200 bg-amber-50"
           src="/doodle-mtk/mtk-1-bab8-kantin.jpg"
-          alt="Meja kantin penuh gelas, piring, dan sendok. Sari dan Adi terkejut. Tupai Tupi memakai celemek."
+          alt="Meja kantin penuh gelas, piring, dan sendok. Rara dan Bimo terkejut. Tupai Igil memakai celemek."
         >
           <p className="text-sm font-semibold text-slate-700">
             Sepulang istirahat, gelas, piring, dan sendok bertumpuk lalu runtuh.
           </p>
-          <Dialog nama="Sari" anak="Bu Kantin pasti marah. Kita tidak tahu mau mulai dari mana." />
-          <Dialog nama="Adi" anak="Ini terlalu banyak!" />
-          <Dialog nama="Tupi" anak="Namaku Tupi! Rahasianya… kelompokkan dulu!" />
+          <Dialog nama="Rara" anak="Igil pasti marah. Kita tidak tahu mau mulai dari mana." />
+          <Dialog nama="Bimo" anak="Ini terlalu banyak!" />
+          <Dialog nama="Igil" anak="Namaku Igil! Rahasianya… kelompokkan dulu!" />
           <KuisAkhirAdegan
             idSuara={idKuis("A", 1)}
             idKanvas={idKuis("A", 2)}
-            pertanyaanSuara="Rahasia Tupi: apa yang dilakukan dulu?"
+            pertanyaanSuara="Rahasia Igil: apa yang dilakukan dulu?"
             aliasSuara={["kelompokkan", "kelompok"]}
             petunjukSuara="Ucapkan: kelompokkan."
             pertanyaanKanvas="Tuliskan kata kelompokkan."
@@ -566,9 +562,9 @@ function KartuA({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminGuru }) {
           src="/doodle-mtk/mtk-1-bab8-adegan-1.jpg"
           alt="Tiga kotak kosong berlabel gelas, piring, dan sendok. Benda masih berserakan di lantai."
         >
-          <Dialog nama="Tupi" anak="Aturan pertama: pisahkan berdasarkan jenis!" />
-          <Dialog nama="Adi" anak="Jadi gelas ke kotak gelas?" />
-          <Dialog nama="Sari" anak="Aku ambil gelas!" />
+          <Dialog nama="Igil" anak="Aturan pertama: pisahkan berdasarkan jenis!" />
+          <Dialog nama="Bimo" anak="Jadi gelas ke kotak gelas?" />
+          <Dialog nama="Rara" anak="Aku ambil gelas!" />
           <p className="text-sm font-black text-[#1C01A5]">Satu jenis, satu kotak.</p>
           <KuisAkhirAdegan
             idSuara={idKuis("A", 3)}
@@ -587,9 +583,9 @@ function KartuA({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminGuru }) {
           src="/doodle-mtk/mtk-1-bab8-adegan-2.jpg"
           alt="Tiga kotak: gelas 6, piring 4, dan sendok 8."
         >
-          <Dialog nama="Sari" anak="Gelas ada 6." />
-          <Dialog nama="Adi" anak="Piring ada 4. Kalau ditanya yang paling banyak, aku masih harus hitung ulang." />
-          <Dialog nama="Tupi" anak="Sendok ada 8. Ayo lihat cara yang lebih pintar." />
+          <Dialog nama="Rara" anak="Gelas ada 6." />
+          <Dialog nama="Bimo" anak="Piring ada 4. Kalau ditanya yang paling banyak, aku masih harus hitung ulang." />
+          <Dialog nama="Igil" anak="Sendok ada 8. Ayo lihat cara yang lebih pintar." />
           <KuisAkhirAdegan
             idSuara={idKuis("A", 5)}
             idKanvas={idKuis("A", 6)}
@@ -608,9 +604,9 @@ function KartuA({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminGuru }) {
           alt="Papan piktogram: gelas 6, piring 4, sendok 8."
         >
           <p className="text-sm font-black text-[#1C01A5]">🥤 6 · 🍽️ 4 · 🥄 8</p>
-          <Dialog nama="Sari" anak="Aku bisa lihat langsung mana yang paling banyak!" />
-          <Dialog nama="Adi" anak="Sendok! Barisannya paling panjang!" />
-          <Dialog nama="Tupi" anak="Ini diagram gambar. Setiap gambar sama dengan satu benda." />
+          <Dialog nama="Rara" anak="Aku bisa lihat langsung mana yang paling banyak!" />
+          <Dialog nama="Bimo" anak="Sendok! Barisannya paling panjang!" />
+          <Dialog nama="Igil" anak="Ini diagram gambar. Setiap gambar sama dengan satu benda." />
           <KuisAkhirAdegan
             idSuara={idKuis("A", 7)}
             idKanvas={idKuis("A", 8)}
@@ -628,9 +624,9 @@ function KartuA({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminGuru }) {
           src="/doodle-mtk/mtk-1-bab8-adegan-4.jpg"
           alt="Piktogram dengan tanda tanya. Baris piring paling pendek, baris sendok paling panjang."
         >
-          <Dialog nama="Tupi" anak="Mana yang paling sedikit?" />
-          <Dialog nama="Adi" anak="Piring! Barisannya paling pendek!" />
-          <Dialog nama="Sari" anak="Sendok 8, piring 4. Selisihnya 4." />
+          <Dialog nama="Igil" anak="Mana yang paling sedikit?" />
+          <Dialog nama="Bimo" anak="Piring! Barisannya paling pendek!" />
+          <Dialog nama="Rara" anak="Sendok 8, piring 4. Selisihnya 4." />
           <p className="text-sm font-black text-[#1C01A5]">8 – 4 = 4</p>
           <KuisAkhirAdegan
             idSuara={idKuis("A", 9)}
@@ -647,21 +643,21 @@ function KartuA({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminGuru }) {
           judul="Adegan 5 · Kantin rapi kembali"
           warna="border-lime-200 bg-lime-50"
           src="/doodle-mtk/mtk-1-bab8-adegan-5.jpg"
-          alt="Kantin bersih. Bu Kantin tersenyum. Tupi duduk di bahu Sari."
+          alt="Kantin bersih. Igil tersenyum. Igil duduk di bahu Rara."
         >
-          <Dialog nama="Bu Kantin" anak="Kantinnya rapi sekali! Siapa yang mengajari kalian?" />
-          <Dialog nama="Sari" anak="Tupi!" />
-          <Dialog nama="Tupi" anak="Kalau benda banyak dan berserakan, kelompokkan, lalu gambar!" />
-          <Dialog nama="Semua" anak="Horeee! Kantin rapi!" />
+          <Dialog nama="Igil" anak="Kantinnya rapi sekali! Siapa yang mengajari kalian?" />
+          <Dialog nama="Rara" anak="Igil!" />
+          <Dialog nama="Igil" anak="Kalau benda banyak dan berserakan, kelompokkan, lalu gambar!" />
+          <Dialog nama="Igil" anak="Horeee! Kantin rapi!" />
           <KuisAkhirAdegan
             idSuara={idKuis("A", 11)}
             idKanvas={idKuis("A", 12)}
-            pertanyaanSuara="Siapa yang mengajari Sari dan Adi?"
+            pertanyaanSuara="Siapa yang mengajari Rara dan Bimo?"
             aliasSuara={["tupi"]}
             petunjukSuara="Sebutkan namanya."
-            pertanyaanKanvas="Tuliskan nama Tupi."
+            pertanyaanKanvas="Tuliskan nama Igil."
             aliasKanvas={["tupi"]}
-            konteksKanvas="Yang mengajari mereka adalah Tupi."
+            konteksKanvas="Yang mengajari mereka adalah Igil."
           />
         </Adegan>
       </div>
@@ -838,7 +834,7 @@ function KartuC({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminGuru }) {
   return (
     <KartuBingkai latar="bg-violet-50/80">
       <KepalaKartu
-        ikon="🍎🐿️🏆"
+        ikon="🍎🦉🏆"
         judul={kartu.judul}
         anak="Sepuluh rak kantin · menghitung, membaca, menulis, membandingkan"
         kelas={kelas}
@@ -850,7 +846,7 @@ function KartuC({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminGuru }) {
         idMisi={(indeks) => idKuis("C", indeks)}
         idTulis={idKuisTulisKartu(ID, "C")}
         tema={TEMA_MTK1_BAB8}
-        penutup="Kantin rapi kembali. Tupi menempel stiker di setiap rak."
+        penutup="Kantin rapi kembali. Igil menempel stiker di setiap rak."
         bunga="🍎🍌🍇🐿️"
       />
     </KartuBingkai>
@@ -868,13 +864,13 @@ function LembarEvaluasi({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminG
     }
     return jumlah;
   }, [kuis]);
-  const lencana = skor >= 9 ? "🏆 Manajer Data Hebat" : skor >= 6 ? "📊 Penata Kelompok Cerdas" : "🐿️ Sahabat Tupi";
+  const lencana = skor >= 9 ? "🏆 Manajer Data Hebat" : skor >= 6 ? "📊 Penata Kelompok Cerdas" : "🐿️ Sahabat Igil";
   const pesan =
     skor >= 9
       ? "Luar biasa! Diagrammu paling rapi!"
       : skor >= 6
         ? "Hebat! Sedikit lagi jadi manajer data!"
-        : "Ayo bereskan gudang lagi bersama Tupi, kamu pasti bisa!";
+        : "Ayo bereskan gudang lagi bersama Igil, kamu pasti bisa!";
   const kelompok = ["🥤 Minuman", "🍪 Makanan"];
   return (
     <KartuBingkai latar="bg-rose-50/80">
@@ -920,11 +916,11 @@ function LembarEvaluasi({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminG
         <div className="border-t-2 border-[#1C01A5]/10 pt-4">
           <p className="text-base font-extrabold text-[#1C01A5]">QUIZ:</p>
           <p className="mt-2 text-sm font-semibold text-slate-700">
-            Kucing 🐱🐱🐱🐱 dan ikan 🐠🐠🐠. Adi berkata jumlahnya sama banyak.
+            Kucing 🐱🐱🐱🐱 dan ikan 🐠🐠🐠. Bimo berkata jumlahnya sama banyak.
           </p>
           <SoalRekamSuara
             id={idKuis("D", 2)}
-            pertanyaan='3. Apakah Adi benar? Ucapkan "Benar" atau "Salah", lalu sebutkan jumlahnya.'
+            pertanyaan='3. Apakah Bimo benar? Ucapkan "Benar" atau "Salah", lalu sebutkan jumlahnya.'
             periksa={adiSalah}
             petunjuk="Kucing ada 4, ikan ada 3."
           />
@@ -1043,7 +1039,7 @@ export default function NaskahMtk1Bab8({
           "Selalu pakai judul.",
           "Data harus benar dari awal.",
         ]}
-        penutup="Satu jenis, satu kotak. Satu gambar, satu benda, Tupi pun tersenyum!"
+        penutup="Satu jenis, satu kotak. Satu gambar, satu benda, Igil pun tersenyum!"
       />
       <LembarEvaluasi kelas={kelas} kelamin={kelamin} />
     </div>

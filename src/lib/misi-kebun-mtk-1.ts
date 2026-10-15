@@ -75,7 +75,7 @@ export const MISI_MTK1_BAB2: MisiPetak[] = [
   {
     warna: "hijau",
     misi: "Menghitung",
-    narasi: "Lala punya 9 balon. Tidak ada balon yang ditambah. Berapa balonnya?",
+    narasi: "Rara punya 9 balon. Tidak ada balon yang ditambah. Berapa balonnya?",
     mode: "suara",
     ikon: "🎈",
     jumlah: 9,
@@ -109,7 +109,7 @@ export const MISI_MTK1_BAB2: MisiPetak[] = [
   {
     warna: "ungu",
     misi: "Membandingkan",
-    narasi: "Raka berkata 5 + 3 = 7. Pilih keputusan yang tepat.",
+    narasi: "Bimo berkata 5 + 3 = 7. Pilih keputusan yang tepat.",
     mode: "pilih",
     ikon: "",
     jumlah: 0,
@@ -231,7 +231,7 @@ export const MISI_MTK1_BAB3: MisiPetak[] = [
   {
     warna: "ungu",
     misi: "Membandingkan",
-    narasi: "Miko berkata 9 - 2 = 6. Pilih keputusan yang tepat.",
+    narasi: "Igil berkata 9 - 2 = 6. Pilih keputusan yang tepat.",
     mode: "pilih",
     ikon: "",
     jumlah: 0,

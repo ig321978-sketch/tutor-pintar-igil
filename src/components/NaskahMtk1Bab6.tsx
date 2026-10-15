@@ -7,6 +7,7 @@ import { useMemo, useState, type ReactNode } from "react";
 import HasilJawabanKuis from "@/components/HasilJawabanKuis";
 import TabelInfoGrafis from "@/components/TabelInfoGrafis";
 import KartuPoinPenting from "@/components/KartuPoinPenting";
+import TujuanBelajar from "@/components/TujuanBelajar";
 import KuisAkhirAdegan from "@/components/KuisAkhirAdegan";
 import KuisTulisKartu from "@/components/KuisTulisKartu";
 import SoalRekamSuara from "@/components/SoalRekamSuara";
@@ -118,20 +119,14 @@ function bacakan(teks: string) {
   window.speechSynthesis.speak(suara);
 }
 
-function KartuBingkai({ children, latar = "bg-white" }: { children: ReactNode; latar?: string }) {
-  return (
-    <section className={`rounded-[1.75rem] border-4 border-[#1C01A5]/15 ${latar} px-4 py-5 shadow-sm sm:px-6 sm:py-6`}>
-      {children}
-    </section>
-  );
+function KartuBingkai({ children }: { children: ReactNode; latar?: string }) {
+  return <section className="space-y-4">{children}</section>;
 }
 
 const WARNA_DIALOG: Record<string, string> = {
-  Kiki: "border-[#DB2777]/20 bg-[#FDF2F8]",
-  Bayu: "border-[#2563EB]/20 bg-[#EFF6FF]",
-  Naya: "border-[#16A34A]/25 bg-[#F0FDF4]",
-  Toki: "border-teal-300 bg-teal-50",
-  Semua: "border-[#E11D48]/20 bg-[#FFF1F2]",
+  Rara: "border-[#DB2777]/20 bg-[#FDF2F8]",
+  Bimo: "border-[#2563EB]/20 bg-[#EFF6FF]",
+  Igil: "border-amber-300 bg-amber-50",
 };
 
 function Dialog({ nama, anak }: { nama: string; anak: string }) {
@@ -192,12 +187,12 @@ function Adegan({
   children: ReactNode;
 }) {
   return (
-    <article className={`rounded-2xl border-2 px-4 py-3 ${warna}`}>
-      <p className="text-xs font-black uppercase tracking-wide text-[#1C01A5]">{judul}</p>
+    <section className="space-y-4 border-b-4 border-[#1C01A5] pb-8">
+      <p className="text-xl font-black leading-snug text-[#1C01A5]">{judul}</p>
       {/* eslint-disable-next-line @next/next/no-img-element */}
       <img src={src} alt={alt} className="mt-3 w-full rounded-xl border border-[#1C01A5]/10 bg-white object-cover" />
       <div className="mt-3 space-y-2">{children}</div>
-    </article>
+    </section>
   );
 }
 
@@ -491,7 +486,7 @@ function KartuA({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminGuru }) {
   return (
     <KartuBingkai latar="bg-sky-50/80">
       <KepalaKartu
-        ikon="🐱🌳🐭"
+        ikon="🦉🌳🦉"
         judul={kartu.judul}
         anak="Penjumlahan dan Pengurangan sampai dengan 20"
         kelas={kelas}
@@ -499,26 +494,27 @@ function KartuA({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminGuru }) {
         cuplikan={cuplikanDariNaskah(kartu.voice, 2_000, 3_000)}
       />
       <div className="mt-4 rounded-2xl border-2 border-sky-300 bg-sky-50 px-4 py-3">
-        <p className="text-sm font-black text-[#1C01A5]">Tujuan Pembelajaran</p>
-        <ul className="daftar-tujuan mt-2 space-y-1 text-sm font-semibold text-slate-700">
-          <li>Menjumlahkan dan mengurangkan bilangan sampai 20 dengan hitung maju dan hitung mundur.</li>
-          <li>Memecah angka jadi puluhan dan satuan, lalu menyelesaikan soal sehari-hari.</li>
-        </ul>
+        <TujuanBelajar
+        butir={[
+          "Menjumlahkan dan mengurangkan bilangan sampai 20 dengan hitung maju dan hitung mundur.",
+          "Memecah angka jadi puluhan dan satuan, lalu menyelesaikan soal sehari-hari.",
+        ]}
+      />
       </div>
       <div className="mt-4 space-y-3">
         <Adegan
           judul="Sore di halaman sekolah"
           warna="border-orange-200 bg-orange-50"
           src="/doodle-mtk/mtk-1-bab6-sore.jpg"
-          alt="Sore di halaman sekolah. Anak kucing di dahan beringin, tiga anak berlari, Toki membawa jam."
+          alt="Sore di halaman sekolah. Anak kucing di dahan beringin, tiga anak berlari, Igil membawa jam."
         >
           <p className="text-sm font-semibold text-slate-700">
             Langit jingga. Tali jemuran bergoyang. Dari dahan terdengar meoong pelan.
           </p>
-          <Dialog nama="Kiki" anak="Lihat! Ada anak kucing di dahan paling tinggi!" />
-          <Dialog nama="Bayu" anak="Wah, tingginya 18 kaki. Kita tidak bisa memanjat." />
-          <Dialog nama="Naya" anak="Kalau kursi kita susun, kita bisa sampai!" />
-          <Dialog nama="Toki" anak="Nama aku Toki! Jam ajaib ini membuat angka berjalan maju dan mundur!" />
+          <Dialog nama="Igil" anak="Lihat! Ada anak kucing di dahan paling tinggi!" />
+          <Dialog nama="Bimo" anak="Wah, tingginya 18 kaki. Kita tidak bisa memanjat." />
+          <Dialog nama="Rara" anak="Kalau kursi kita susun, kita bisa sampai!" />
+          <Dialog nama="Igil" anak="Nama aku Igil! Jam ajaib ini membuat angka berjalan maju dan mundur!" />
           <KuisAkhirAdegan
             idSuara={idKuis("A", 1)}
             idKanvas={idKuis("A", 2)}
@@ -534,13 +530,13 @@ function KartuA({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminGuru }) {
           judul="Adegan 1 · Menghitung ketinggian pohon"
           warna="border-sky-200 bg-sky-50"
           src="/doodle-mtk/mtk-1-bab6-adegan-1.jpg"
-          alt="Pohon berukur dari 0 di tanah sampai 18 di dahan. Bayu menunjuk, Toki memegang jam."
+          alt="Pohon berukur dari 0 di tanah sampai 18 di dahan. Bimo menunjuk, Igil memegang jam."
         >
-          <Dialog nama="Bayu" anak="Anak kucing ada di angka 18." />
-          <Dialog nama="Naya" anak="Kita baru bisa memanjat sampai angka 12. Sisa berapa lagi, ya?" />
-          <Dialog nama="Toki" anak="Ayo hitung maju dari 12 sampai 18!" />
-          <Dialog nama="Kiki" anak="Tiga belas, empat belas, lima belas, enam belas, tujuh belas, delapan belas!" />
-          <Dialog nama="Bayu" anak="Ada 6 langkah lagi!" />
+          <Dialog nama="Bimo" anak="Anak kucing ada di angka 18." />
+          <Dialog nama="Rara" anak="Kita baru bisa memanjat sampai angka 12. Sisa berapa lagi, ya?" />
+          <Dialog nama="Igil" anak="Ayo hitung maju dari 12 sampai 18!" />
+          <Dialog nama="Igil" anak="Tiga belas, empat belas, lima belas, enam belas, tujuh belas, delapan belas!" />
+          <Dialog nama="Bimo" anak="Ada 6 langkah lagi!" />
           <p className="text-center text-sm font-black text-[#1C01A5]">12 → 13 → 14 → 15 → 16 → 17 → 18</p>
           <p className="text-center text-sm font-black text-[#1C01A5]">12 + 6 = 18</p>
           <KuisAkhirAdegan
@@ -558,11 +554,11 @@ function KartuA({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminGuru }) {
           judul="Adegan 2 · Rahasia dekomposisi"
           warna="border-indigo-200 bg-indigo-50"
           src="/doodle-mtk/mtk-1-bab6-adegan-2.jpg"
-          alt="Angka 14 pecah menjadi kotak 10 dan kotak 4. Toki menunjukkan jamnya kepada Naya."
+          alt="Angka 14 pecah menjadi kotak 10 dan kotak 4. Igil menunjukkan jamnya kepada Rara."
         >
-          <Dialog nama="Toki" anak="Setiap angka belasan bisa dipecah jadi dua bagian!" />
-          <Dialog nama="Naya" anak="Seperti ikatan dan yang lepas?" />
-          <Dialog nama="Toki" anak="Tepat! 14 = 10 + 4. Sepuluh dan empat." />
+          <Dialog nama="Igil" anak="Setiap angka belasan bisa dipecah jadi dua bagian!" />
+          <Dialog nama="Rara" anak="Seperti ikatan dan yang lepas?" />
+          <Dialog nama="Igil" anak="Tepat! 14 = 10 + 4. Sepuluh dan empat." />
           <p className="text-sm font-black text-[#1C01A5]">14 → 10 + 4. 17 → 10 + 7.</p>
           <KuisAkhirAdegan
             idSuara={idKuis("A", 5)}
@@ -579,12 +575,12 @@ function KartuA({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminGuru }) {
           judul="Adegan 3 · Kursi susun, hitung maju"
           warna="border-amber-200 bg-amber-50"
           src="/doodle-mtk/mtk-1-bab6-adegan-3.jpg"
-          alt="Naya dan Kiki menyusun kursi plastik. Toki mengawasi dari samping."
+          alt="Rara dan Igil menyusun kursi plastik. Igil mengawasi dari samping."
         >
-          <Dialog nama="Naya" anak="Aku susun 8 kursi." />
-          <Dialog nama="Kiki" anak="Aku tambah 7 kursi lagi!" />
-          <Dialog nama="Bayu" anak="8 + 7… ayo mulai dari 8 dan hitung maju 7 kali!" />
-          <Dialog nama="Semua" anak="Sembilan, sepuluh, sebelas, dua belas, tiga belas, empat belas, lima belas!" />
+          <Dialog nama="Rara" anak="Aku susun 8 kursi." />
+          <Dialog nama="Igil" anak="Aku tambah 7 kursi lagi!" />
+          <Dialog nama="Bimo" anak="8 + 7… ayo mulai dari 8 dan hitung maju 7 kali!" />
+          <Dialog nama="Igil" anak="Sembilan, sepuluh, sebelas, dua belas, tiga belas, empat belas, lima belas!" />
           <p className="text-center text-sm font-black text-[#1C01A5]">8 + 7 = 15</p>
           <KuisAkhirAdegan
             idSuara={idKuis("A", 7)}
@@ -603,10 +599,10 @@ function KartuA({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminGuru }) {
           src="/doodle-mtk/mtk-1-bab6-adegan-4.jpg"
           alt="Bingkai sepuluh hampir penuh. Dua kursi masuk mengisi kotak kosong, lima kursi menunggu di luar."
         >
-          <Dialog nama="Toki" anak="8 itu kurang 2 supaya jadi penuh 10." />
-          <Dialog nama="Naya" anak="Jadi kita ambil 2 dari 7 kursi!" />
-          <Dialog nama="Bayu" anak="Sisanya 7 – 2 = 5." />
-          <Dialog nama="Kiki" anak="Jadi 10 + 5 = 15!" />
+          <Dialog nama="Igil" anak="8 itu kurang 2 supaya jadi penuh 10." />
+          <Dialog nama="Rara" anak="Jadi kita ambil 2 dari 7 kursi!" />
+          <Dialog nama="Bimo" anak="Sisanya 7 – 2 = 5." />
+          <Dialog nama="Igil" anak="Jadi 10 + 5 = 15!" />
           <p className="text-sm font-black text-[#1C01A5]">8 + 7 = 8 + 2 + 5 = 10 + 5 = 15</p>
           <KuisAkhirAdegan
             idSuara={idKuis("A", 9)}
@@ -623,12 +619,12 @@ function KartuA({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminGuru }) {
           judul="Adegan 5 · Kursi roboh, hitung mundur"
           warna="border-rose-200 bg-rose-50"
           src="/doodle-mtk/mtk-1-bab6-adegan-5.jpg"
-          alt="Jam Toki berputar mundur. Empat kursi jatuh berserakan."
+          alt="Jam Igil berputar mundur. Empat kursi jatuh berserakan."
         >
-          <Dialog nama="Toki" anak="Oh tidak! Kursinya jatuh 4!" />
-          <Dialog nama="Naya" anak="Tadi ada 15 kursi. Sekarang tinggal berapa?" />
-          <Dialog nama="Bayu" anak="Hitung mundur dari 15! Empat belas, tiga belas, dua belas, sebelas!" />
-          <Dialog nama="Kiki" anak="Sisa 11 kursi!" />
+          <Dialog nama="Igil" anak="Oh tidak! Kursinya jatuh 4!" />
+          <Dialog nama="Rara" anak="Tadi ada 15 kursi. Sekarang tinggal berapa?" />
+          <Dialog nama="Bimo" anak="Hitung mundur dari 15! Empat belas, tiga belas, dua belas, sebelas!" />
+          <Dialog nama="Igil" anak="Sisa 11 kursi!" />
           <p className="text-center text-sm font-black text-[#1C01A5]">15 – 4 = 11</p>
           <KuisAkhirAdegan
             idSuara={idKuis("A", 11)}
@@ -645,12 +641,12 @@ function KartuA({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminGuru }) {
           judul="Adegan 6 · Dekomposisi untuk kurang"
           warna="border-violet-200 bg-violet-50"
           src="/doodle-mtk/mtk-1-bab6-adegan-6.jpg"
-          alt="16 pecah menjadi 10 dan 6. 9 pecah menjadi 6 dan 3. Toki menunjuk keduanya."
+          alt="16 pecah menjadi 10 dan 6. 9 pecah menjadi 6 dan 3. Igil menunjuk keduanya."
         >
-          <Dialog nama="Naya" anak="16 – 9… aku bingung kalau langsung." />
-          <Dialog nama="Toki" anak="Kurangi dulu 6, jadi 16 – 6 = 10. Sisa yang harus dikurangi 3 lagi." />
-          <Dialog nama="Bayu" anak="10 – 3 = 7!" />
-          <Dialog nama="Kiki" anak="Jadi 16 – 9 = 7!" />
+          <Dialog nama="Rara" anak="16 – 9… aku bingung kalau langsung." />
+          <Dialog nama="Igil" anak="Kurangi dulu 6, jadi 16 – 6 = 10. Sisa yang harus dikurangi 3 lagi." />
+          <Dialog nama="Bimo" anak="10 – 3 = 7!" />
+          <Dialog nama="Igil" anak="Jadi 16 – 9 = 7!" />
           <p className="text-sm font-black text-[#1C01A5]">16 – 9 = 16 – 6 – 3 = 10 – 3 = 7</p>
           <KuisAkhirAdegan
             idSuara={idKuis("A", 13)}
@@ -667,13 +663,13 @@ function KartuA({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminGuru }) {
           judul="Adegan 7 · Anak kucing selamat"
           warna="border-rose-200 bg-rose-50"
           src="/doodle-mtk/mtk-1-bab6-adegan-7.jpg"
-          alt="Tumpukan kursi mencapai dahan. Kiki memegang anak kucing. Toki melompat gembira."
+          alt="Tumpukan kursi mencapai dahan. Igil memegang anak kucing. Igil melompat gembira."
         >
-          <Dialog nama="Kiki" anak="Dapat!" />
-          <Dialog nama="Bayu" anak="Kita pakai semua cara belajar tadi!" />
-          <Dialog nama="Naya" anak="Hitung maju, hitung mundur, dan pecah angka!" />
-          <Dialog nama="Toki" anak="Kalian hebat! Angka selalu bisa berjalan maju dan mundur!" />
-          <Dialog nama="Semua" anak="Horeee! Anak kucing selamat!" />
+          <Dialog nama="Igil" anak="Dapat!" />
+          <Dialog nama="Bimo" anak="Kita pakai semua cara belajar tadi!" />
+          <Dialog nama="Rara" anak="Hitung maju, hitung mundur, dan pecah angka!" />
+          <Dialog nama="Igil" anak="Kalian hebat! Angka selalu bisa berjalan maju dan mundur!" />
+          <Dialog nama="Igil" anak="Horeee! Anak kucing selamat!" />
           <KuisAkhirAdegan
             idSuara={idKuis("A", 15)}
             idKanvas={idKuis("A", 16)}
@@ -733,7 +729,7 @@ function KartuB({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminGuru }) {
   return (
     <KartuBingkai latar="bg-emerald-50/80">
       <KepalaKartu
-        ikon="➕➖🦘"
+        ikon="➕➖🦉"
         judul={kartu.judul}
         anak="Infografis hitung maju dan mundur"
         kelas={kelas}
@@ -872,7 +868,7 @@ function KartuC({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminGuru }) {
   return (
     <KartuBingkai latar="bg-violet-50/80">
       <KepalaKartu
-        ikon="🐱🌳🏆"
+        ikon="🦉🌳🏆"
         judul={kartu.judul}
         anak="Sepuluh kursi penyelamatan · menghitung, membaca, menulis, membandingkan"
         kelas={kelas}
@@ -884,7 +880,7 @@ function KartuC({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminGuru }) {
         idMisi={(indeks) => idKuis("C", indeks)}
         idTulis={idKuisTulisKartu(ID, "C")}
         tema={TEMA_MTK1_BAB6}
-        penutup="Anak kucing turun dari dahan. Jam Toki berbunyi tepat."
+        penutup="Anak kucing turun dari dahan. Jam Igil berbunyi tepat."
         bunga="🐱🌳⏰🪑"
       />
     </KartuBingkai>
@@ -902,13 +898,13 @@ function LembarEvaluasi({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminG
     }
     return jumlah;
   }, [kuis]);
-  const lencana = skor >= 9 ? "⏰ Jaganya Jam Ajaib" : skor >= 6 ? "🪢 Insinyur Penyelamat" : "🐭 Sahabat Toki";
+  const lencana = skor >= 9 ? "⏰ Jaganya Jam Ajaib" : skor >= 6 ? "🪢 Insinyur Penyelamat" : "🐭 Sahabat Igil";
   const pesan =
     skor >= 9
       ? "Luar biasa! Kamu bisa hitung maju dan mundur!"
       : skor >= 6
-        ? "Hebat! Sedikit lagi Toki bebas!"
-        : "Ayo coba lagi bersama Toki, kamu pasti bisa!";
+        ? "Hebat! Sedikit lagi Igil bebas!"
+        : "Ayo coba lagi bersama Igil, kamu pasti bisa!";
   return (
     <KartuBingkai latar="bg-rose-50/80">
       <KepalaKartu
@@ -962,10 +958,10 @@ function LembarEvaluasi({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminG
         />
         <div className="border-t-2 border-[#1C01A5]/10 pt-4">
           <p className="text-base font-extrabold text-[#1C01A5]">QUIZ:</p>
-          <p className="mt-2 text-sm font-black text-[#1C01A5]">Bayu berkata: 13 + 5 = 17.</p>
+          <p className="mt-2 text-sm font-black text-[#1C01A5]">Bimo berkata: 13 + 5 = 17.</p>
           <SoalRekamSuara
             id={idKuis("D", 3)}
-            pertanyaan='4. Apakah Bayu benar? Ucapkan "Benar" atau "Salah", lalu sebutkan jawaban yang benar.'
+            pertanyaan='4. Apakah Bimo benar? Ucapkan "Benar" atau "Salah", lalu sebutkan jawaban yang benar.'
             periksa={(transkrip) => ucapanMemuat(transkrip, [["salah"], ["18", "delapan belas"]])}
             petunjuk="Katakan salah, lalu sebutkan hasil yang benar."
           />
@@ -996,7 +992,7 @@ function LembarEvaluasi({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminG
         />
         <Pilih
           id={idKuis("D", 6)}
-          pertanyaan="7. Donat 11 koin. Kue 16 koin. Naya punya 15 koin. Mana yang bisa dibeli?"
+          pertanyaan="7. Donat 11 koin. Kue 16 koin. Rara punya 15 koin. Mana yang bisa dibeli?"
           pilihan={[
             { huruf: "A", teks: "Donat" },
             { huruf: "B", teks: "Kue" },
@@ -1078,7 +1074,7 @@ export default function NaskahMtk1Bab6({
           "Satu keluarga angka, tiga kalimat. 8 + 7 = 15, 15 – 7 = 8, 15 – 8 = 7.",
           "Baca soal, cari kata kunci, lalu hitung.",
         ]}
-        penutup="Maju ke kanan, mundur ke kiri. Pecah lewat sepuluh, Toki tersenyum lagi!"
+        penutup="Maju ke kanan, mundur ke kiri. Pecah lewat sepuluh, Igil tersenyum lagi!"
       />
       <LembarEvaluasi kelas={kelas} kelamin={kelamin} />
     </div>

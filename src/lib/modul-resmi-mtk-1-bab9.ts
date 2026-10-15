@@ -12,12 +12,12 @@ export const MODUL_MTK1_BAB9: ModulResmiPai = {
   judul: JUDUL_MTK1_BAB9,
   pola: /bilangan\s+sampai\s+100\b|puluhan yang hilang|pasar peci seribu/,
   motivasi:
-    "Sari, Bima, dan Danu belajar puluhan dan satuan bersama Kura, dari gudang stik sampai pasar peci.",
+    "Rara, Bimo, dan Igil belajar puluhan dan satuan bersama Igil, dari gudang stik sampai pasar peci.",
   kunciJawaban: "A,B,A,B,A,C,B,A,C,A",
   sketsaKartu: [
-    "Sari mengikat stik es krim per sepuluh di gudang sekolah, ditemani Bima, Danu, dan Kura.",
+    "Rara mengikat stik es krim per sepuluh di gudang sekolah, ditemani Bimo, Bimo, dan Igil.",
     "Rumah puluhan biru dan rumah satuan kuning untuk membaca, membandingkan, dan mengurutkan sampai 100.",
-    "Kura menjaga sepuluh pos di pasar peci: peti isi sepuluh, jeruk lepas, dan koin.",
+    "Igil menjaga sepuluh pos di pasar peci: peti isi sepuluh, jeruk lepas, dan koin.",
     "Poin penting dan lembar evaluasi bilangan sampai 100.",
   ],
   latihan: pg([
@@ -87,7 +87,7 @@ D) 27`,
       kode: "A",
       judul: "A. Puluhan yang Hilang",
       pengantar:
-        "Di gudang sekolah, Sari, Bima, dan Danu menghitung stik es krim. Kura menunjukkan bahwa angka yang sama bisa bernilai beda, tergantung rumahnya.",
+        "Di gudang sekolah, Rara, Bimo, dan Igil menghitung stik es krim. Igil menunjukkan bahwa angka yang sama bisa bernilai beda, tergantung rumahnya.",
       labelDaftar: "Lima adegan puluhan dan satuan",
       kolom: 1,
       item: [
@@ -125,7 +125,7 @@ D) 27`,
       ],
       voice: [
         [
-          "Sari menghitung stik es krim dan mendapat empat puluh enam.",
+          "Rara menghitung stik es krim dan mendapat empat puluh enam.",
           "Empat ikat isi sepuluh sama dengan empat puluh. Sisa enam. Jadi empat puluh enam.",
           "Angka empat di depan artinya empat puluhan, bukan empat saja.",
           "Tiga puluh dibaca tiga puluh, tanpa tambahan. Belasan hanya untuk sebelas sampai sembilan belas.",
@@ -242,7 +242,7 @@ D) 27`,
         { pertanyaan: "Isi nilai tempat angka 74, lalu pecahkan nilainya.", alias: ["70 + 4", "7", "4"] },
         { pertanyaan: "Manakah cara baca yang benar untuk 30 dan 13?", alias: ["tiga puluh"] },
         { pertanyaan: "Bacalah angka 69.", alias: ["enam puluh sembilan"] },
-        { pertanyaan: "Bima berkata angka 5 pada 58 bernilai 5. Apakah dia benar?", alias: ["salah", "50"] },
+        { pertanyaan: "Bimo berkata angka 5 pada 58 bernilai 5. Apakah dia benar?", alias: ["salah", "50"] },
         { pertanyaan: "Pasangkan 27, 63, dan 90 dengan nilai tempatnya.", alias: ["2 puluhan", "6 puluhan", "9 puluhan"] },
         { pertanyaan: "Tulis simbol untuk 46 dan 64, lalu sebutkan alasannya.", alias: ["lebih kecil"] },
         { pertanyaan: "Puluhannya 6. Satuannya lebih besar dari 6 dan lebih kecil dari 8. Siapa aku?", alias: ["67"] },

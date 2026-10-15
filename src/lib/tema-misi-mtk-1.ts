@@ -12,9 +12,9 @@ export type TemaMisi = {
 };
 
 export const TEMA_MTK1_BAB2: TemaMisi = {
-  pemandu: "Kepi",
+  pemandu: "Igil",
   pengantar:
-    "Bantu Kepi mengisi 10 pos piknik di pantai. Pilih satu pos, dengarkan misinya, lalu jawab dengan suara, kanvas, atau pilihan.",
+    "Bantu Igil mengisi 10 pos piknik di pantai. Pilih satu pos, dengarkan misinya, lalu jawab dengan suara, kanvas, atau pilihan.",
   satuan: "Pos",
   ikonAwal: "🏖️",
   ikonAkhir: "🏰",
@@ -26,9 +26,9 @@ export const TEMA_MTK1_BAB2: TemaMisi = {
 };
 
 export const TEMA_MTK1_BAB3: TemaMisi = {
-  pemandu: "Miko",
+  pemandu: "Igil",
   pengantar:
-    "Bantu Miko menjaga 10 meja pesta ulang tahun. Pilih satu meja, dengarkan misinya, lalu jawab dengan suara, kanvas, atau pilihan.",
+    "Bantu Igil menjaga 10 meja pesta ulang tahun. Pilih satu meja, dengarkan misinya, lalu jawab dengan suara, kanvas, atau pilihan.",
   satuan: "Meja",
   ikonAwal: "🎂",
   ikonAkhir: "🎁",
@@ -40,9 +40,9 @@ export const TEMA_MTK1_BAB3: TemaMisi = {
 };
 
 export const TEMA_MTK1_BAB4: TemaMisi = {
-  pemandu: "Nenek Ani",
+  pemandu: "Igil",
   pengantar:
-    "Bantu Nenek Ani memeriksa 10 ruang di rumah. Pilih satu ruang, dengarkan misinya, lalu jawab dengan suara, kanvas, atau pilihan.",
+    "Bantu Igil memeriksa 10 ruang di rumah. Pilih satu ruang, dengarkan misinya, lalu jawab dengan suara, kanvas, atau pilihan.",
   satuan: "Ruang",
   ikonAwal: "🏠",
   ikonAkhir: "🔍",
@@ -54,9 +54,9 @@ export const TEMA_MTK1_BAB4: TemaMisi = {
 };
 
 export const TEMA_MTK1_BAB5: TemaMisi = {
-  pemandu: "Pipit",
+  pemandu: "Igil",
   pengantar:
-    "Bantu Pipit memasang bendera di 10 tiang lomba. Pilih satu tiang, dengarkan misinya, lalu jawab dengan suara, kanvas, atau pilihan.",
+    "Bantu Igil memasang bendera di 10 tiang lomba. Pilih satu tiang, dengarkan misinya, lalu jawab dengan suara, kanvas, atau pilihan.",
   satuan: "Tiang",
   ikonAwal: "🇮🇩",
   ikonAkhir: "🎀",
@@ -68,9 +68,9 @@ export const TEMA_MTK1_BAB5: TemaMisi = {
 };
 
 export const TEMA_MTK1_BAB6: TemaMisi = {
-  pemandu: "Toki",
+  pemandu: "Igil",
   pengantar:
-    "Bantu Toki menyusun 10 kursi untuk menyelamatkan anak kucing. Pilih satu kursi, dengarkan misinya, lalu jawab dengan suara, kanvas, atau pilihan.",
+    "Bantu Igil menyusun 10 kursi untuk menyelamatkan anak kucing. Pilih satu kursi, dengarkan misinya, lalu jawab dengan suara, kanvas, atau pilihan.",
   satuan: "Kursi",
   ikonAwal: "🐱",
   ikonAkhir: "🌳",
@@ -82,12 +82,12 @@ export const TEMA_MTK1_BAB6: TemaMisi = {
 };
 
 export const TEMA_MTK1_BAB7: TemaMisi = {
-  pemandu: "Kodok",
+  pemandu: "Igil",
   pengantar:
-    "Bantu Kodok mengukur 10 tali di pesta layang-layang. Pilih satu tali, dengarkan misinya, lalu jawab dengan suara, kanvas, atau pilihan.",
+    "Bantu Igil mengukur 10 tali di pesta layang-layang. Pilih satu tali, dengarkan misinya, lalu jawab dengan suara, kanvas, atau pilihan.",
   satuan: "Tali",
   ikonAwal: "🪁",
-  ikonAkhir: "🐸",
+  ikonAkhir: "🦉",
   namaBintang: "Bintang layang",
   namaToken: "Jengkal ajaib",
   ikonToken: "📏",
@@ -96,12 +96,12 @@ export const TEMA_MTK1_BAB7: TemaMisi = {
 };
 
 export const TEMA_MTK1_BAB8: TemaMisi = {
-  pemandu: "Tupi",
+  pemandu: "Igil",
   pengantar:
-    "Bantu Tupi merapikan 10 rak kantin. Pilih satu rak, dengarkan misinya, lalu jawab dengan suara, kanvas, atau pilihan.",
+    "Bantu Igil merapikan 10 rak kantin. Pilih satu rak, dengarkan misinya, lalu jawab dengan suara, kanvas, atau pilihan.",
   satuan: "Rak",
   ikonAwal: "🍎",
-  ikonAkhir: "🐿️",
+  ikonAkhir: "🦉",
   namaBintang: "Bintang kantin",
   namaToken: "Stiker ajaib",
   ikonToken: "📊",
@@ -110,9 +110,9 @@ export const TEMA_MTK1_BAB8: TemaMisi = {
 };
 
 export const TEMA_MTK1_BAB9: TemaMisi = {
-  pemandu: "Kura",
+  pemandu: "Igil",
   pengantar:
-    "Bantu Kura menjaga 10 pos di Pasar Peci Seribu. Pilih satu pos, dengarkan misinya, lalu jawab dengan suara, kanvas, atau pilihan.",
+    "Bantu Igil menjaga 10 pos di Pasar Peci Seribu. Pilih satu pos, dengarkan misinya, lalu jawab dengan suara, kanvas, atau pilihan.",
   satuan: "Pos",
   ikonAwal: "🏪",
   ikonAkhir: "👳",
@@ -124,9 +124,9 @@ export const TEMA_MTK1_BAB9: TemaMisi = {
 };
 
 export const TEMA_MTK1_BAB10: TemaMisi = {
-  pemandu: "Kolu",
+  pemandu: "Igil",
   pengantar:
-    "Bantu Kolu menjalankan 10 pos di stasiun kereta barang. Pilih satu pos, dengarkan misinya, lalu jawab dengan suara, kanvas, atau pilihan.",
+    "Bantu Igil menjalankan 10 pos di stasiun kereta barang. Pilih satu pos, dengarkan misinya, lalu jawab dengan suara, kanvas, atau pilihan.",
   satuan: "Pos",
   ikonAwal: "🚂",
   ikonAkhir: "👮",
@@ -138,9 +138,9 @@ export const TEMA_MTK1_BAB10: TemaMisi = {
 };
 
 export const TEMA_MTK1_BAB11: TemaMisi = {
-  pemandu: "Biru",
+  pemandu: "Igil",
   pengantar:
-    "Bantu Biru menyelesaikan 10 pesanan di pabrik manik. Pilih satu pos, dengarkan misinya, lalu jawab dengan suara, kanvas, atau pilihan.",
+    "Bantu Igil menyelesaikan 10 pesanan di pabrik manik. Pilih satu pos, dengarkan misinya, lalu jawab dengan suara, kanvas, atau pilihan.",
   satuan: "Pos",
   ikonAwal: "🏭",
   ikonAkhir: "🏅",
@@ -152,9 +152,9 @@ export const TEMA_MTK1_BAB11: TemaMisi = {
 };
 
 export const TEMA_MTK1_BAB12: TemaMisi = {
-  pemandu: "Momo",
+  pemandu: "Igil",
   pengantar:
-    "Bantu Momo menjaga 10 pos timbangan di pasar. Pilih satu pos, dengarkan misinya, lalu jawab dengan suara, kanvas, atau pilihan.",
+    "Bantu Igil menjaga 10 pos timbangan di pasar. Pilih satu pos, dengarkan misinya, lalu jawab dengan suara, kanvas, atau pilihan.",
   satuan: "Pos",
   ikonAwal: "⚖️",
   ikonAkhir: "🥇",
@@ -162,13 +162,13 @@ export const TEMA_MTK1_BAB12: TemaMisi = {
   namaToken: "Kaca pembesar",
   ikonToken: "🔍",
   pertanyaanAkhir: "Tuliskan jumlah koin pasar yang sudah kamu kumpulkan.",
-  konteksAkhir: "Sepuluh pos timbangan selesai. Koin pasar ada 10. Pasar besar Momo terbuka.",
+  konteksAkhir: "Sepuluh pos timbangan selesai. Koin pasar ada 10. Pasar besar terbuka.",
 };
 
 export const TEMA_MTK1_BAB13: TemaMisi = {
-  pemandu: "Jago",
+  pemandu: "Igil",
   pengantar:
-    "Bantu Jago menjaga 10 pos di stasiun waktu. Pilih satu pos, dengarkan misinya, lalu jawab dengan suara, kanvas, atau pilihan.",
+    "Bantu Igil menjaga 10 pos di stasiun waktu. Pilih satu pos, dengarkan misinya, lalu jawab dengan suara, kanvas, atau pilihan.",
   satuan: "Pos",
   ikonAwal: "⏰",
   ikonAkhir: "🏅",
@@ -180,9 +180,9 @@ export const TEMA_MTK1_BAB13: TemaMisi = {
 };
 
 export const TEMA_MTK1_BAB14: TemaMisi = {
-  pemandu: "Tupi",
+  pemandu: "Igil",
   pengantar:
-    "Bantu Tupi menyelesaikan 10 pesanan di bengkel bentuk. Pilih satu pos, dengarkan misinya, lalu jawab dengan suara, kanvas, atau pilihan.",
+    "Bantu Igil menyelesaikan 10 pesanan di bengkel bentuk. Pilih satu pos, dengarkan misinya, lalu jawab dengan suara, kanvas, atau pilihan.",
   satuan: "Pos",
   ikonAwal: "🔷",
   ikonAkhir: "🏅",
@@ -194,9 +194,9 @@ export const TEMA_MTK1_BAB14: TemaMisi = {
 };
 
 export const TEMA_MTK1_BAB15: TemaMisi = {
-  pemandu: "Celi",
+  pemandu: "Igil",
   pengantar:
-    "Bantu Celi menyelesaikan 10 transaksi di warung. Pilih satu pos, dengarkan misinya, lalu jawab dengan suara, kanvas, atau pilihan.",
+    "Bantu Igil menyelesaikan 10 transaksi di warung. Pilih satu pos, dengarkan misinya, lalu jawab dengan suara, kanvas, atau pilihan.",
   satuan: "Pos",
   ikonAwal: "💰",
   ikonAkhir: "🏅",

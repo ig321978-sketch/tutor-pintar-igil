@@ -13,12 +13,12 @@ export const MODUL_MTK1_BAB2: ModulResmiPai = {
   judul: JUDUL_MTK1_BAB2,
   pola: /penjumlahan\s+sampai(\s+dengan)?\s+10\b|piknik seru di pantai|kapal pengumpul harta|misi piknik di pantai/,
   motivasi:
-    "Hore! Kamu piknik di pantai bersama Lala, Bima, Raka, dan Kepi. Gabungkan benda, tulis tanda tambah, lalu hitung sampai 10.",
+    "Hore! Kamu piknik di pantai bersama Rara, Bimo, Bimo, dan Igil. Gabungkan benda, tulis tanda tambah, lalu hitung sampai 10.",
   kunciJawaban: "A,B,C,B,B,B,B,B,B,B",
   sketsaKartu: [
-    "Lala, Bima, dan Raka piknik di pantai, menggabungkan kerang dan bendera istana pasir bersama Kepi.",
+    "Rara, Bimo, dan Igil piknik di pantai, menggabungkan kerang dan bendera istana pasir bersama Igil.",
     "Tujuh cara menjumlah: gabungkan, hitung semua, lompat kanguru, jari, dibalik tetap sama, teman sepuluh, dan soal cerita.",
-    "Kepi menemani sepuluh pos piknik di pantai: menghitung, membaca, menulis, dan membandingkan.",
+    "Igil menemani sepuluh pos piknik di pantai: menghitung, membaca, menulis, dan membandingkan.",
     "Poin penting dan lembar evaluasi penjumlahan sampai 10.",
   ],
   latihan: pg([
@@ -88,7 +88,7 @@ D) 13`,
       kode: "A",
       judul: "A. Piknik Seru di Pantai",
       pengantar:
-        "Lala, Bima, dan Raka tiba di pantai bersama Kepi. Mereka menggabungkan kerang dan bendera, lalu mengenal tanda + dan =.",
+        "Rara, Bimo, dan Igil tiba di pantai bersama Igil. Mereka menggabungkan kerang dan bendera, lalu mengenal tanda + dan =.",
       labelDaftar: "Menggabungkan kerang dan bendera di pantai",
       kolom: 1,
       item: [
@@ -96,7 +96,7 @@ D) 13`,
           nama: "Menggabungkan kerang",
           singkat: "3 kerang ditambah 2 kerang",
           uraian:
-            "Ember Lala berisi 3 kerang. Ember Bima berisi 2 kerang. Keduanya dituang ke satu ember dan dihitung satu, dua, tiga, empat, lima. 3 ditambah 2 sama dengan 5.",
+            "Ember Rara berisi 3 kerang. Ember Bimo berisi 2 kerang. Keduanya dituang ke satu ember dan dihitung satu, dua, tiga, empat, lima. 3 ditambah 2 sama dengan 5.",
           contoh: "3 + 2 = 5",
         },
         {
@@ -114,15 +114,15 @@ D) 13`,
           alias: ["6", "enam"],
         },
         {
-          pertanyaan: "Lala, Bima, dan Raka tiba di pantai. Ada berapa anak?",
+          pertanyaan: "Rara, Bimo, dan Igil tiba di pantai. Ada berapa teman?",
           alias: ["3", "tiga"],
         },
         {
-          pertanyaan: "Tuliskan angka banyak anak itu.",
+          pertanyaan: "Tuliskan angka banyak teman itu.",
           alias: ["3", "tiga"],
         },
         {
-          pertanyaan: "Lala punya 3 kerang. Bima punya 2 kerang. Semuanya berapa?",
+          pertanyaan: "Rara punya 3 kerang. Bimo punya 2 kerang. Semuanya berapa?",
           alias: ["5", "lima"],
         },
         {
@@ -148,10 +148,10 @@ D) 13`,
       ],
       voice: [
         [
-          "Lala, Bima, dan Raka tiba di pantai. Ombak biru, pasir kuning, dan payung merah putih.",
-          "Lala punya 3 kerang. Bima punya 2 kerang. Digabung menjadi 5 kerang. Tiga tambah dua sama dengan lima.",
+          "Rara, Bimo, dan Igil tiba di pantai. Ombak biru, pasir kuning, dan payung merah putih.",
+          "Rara punya 3 kerang. Bimo punya 2 kerang. Digabung menjadi 5 kerang. Tiga tambah dua sama dengan lima.",
           "Tanda tambah artinya digabung. Tanda sama dengan artinya hasilnya.",
-          "Istana pasir punya 4 bendera. Raka menambah 3 bendera. Empat tambah tiga sama dengan tujuh.",
+          "Istana pasir punya 4 bendera. Bimo menambah 3 bendera. Empat tambah tiga sama dengan tujuh.",
         ],
       ],
     },
@@ -217,7 +217,7 @@ D) 13`,
       kode: "C",
       judul: "C. Misi Piknik di Pantai",
       pengantar:
-        "Bantu Kepi mengisi 10 pos piknik di pantai. Hijau untuk menghitung, biru untuk membaca, kuning untuk menulis, dan ungu untuk membandingkan.",
+        "Bantu Igil mengisi 10 pos piknik di pantai. Hijau untuk menghitung, biru untuk membaca, kuning untuk menulis, dan ungu untuk membandingkan.",
       labelDaftar: "Sepuluh pos tambah di pantai",
       kolom: 1,
       item: [
@@ -225,7 +225,7 @@ D) 13`,
           nama: "Alur permainan",
           singkat: "Pilih pos, jawab, dapat bintang",
           uraian:
-            "Siswa memilih satu pos pantai. Kepi membacakan misi penjumlahan. Jawaban benar mendapat 1 bintang pantai. Jawaban yang belum tepat mendapat petunjuk, tanpa kehilangan kerang. Setelah 10 pos selesai, istana pasir Kepi selesai.",
+            "Siswa memilih satu pos pantai. Igil membacakan misi penjumlahan. Jawaban benar mendapat 1 bintang pantai. Jawaban yang belum tepat mendapat petunjuk, tanpa kehilangan kerang. Setelah 10 pos selesai, istana pasir Igil selesai.",
           contoh: "4 + 3 = 7. Angka hilang pada 4 + kotak = 10 adalah 6. 5 + 3 bukan 7.",
         },
         {
@@ -233,17 +233,17 @@ D) 13`,
           singkat: "3, 2, atau 1 kerang",
           uraian:
             "Jawaban pertama benar mendapat 3 kerang ajaib. Benar setelah satu petunjuk mendapat 2 kerang. Benar setelah dua petunjuk mendapat 1 kerang. Belum tepat tidak mengurangi kerang. Siswa boleh mencoba lagi.",
-          contoh: "Petunjuk: benda bergoyang, lalu muncul titik, lalu Kepi menghitung bersama.",
+          contoh: "Petunjuk: benda bergoyang, lalu muncul titik, lalu Igil menghitung bersama.",
         },
       ],
       kuis: kuisDariMisi(MISI_MTK1_BAB2),
       voice: [
         [
-          "Kepi menemani piknik di pantai. Ada sepuluh pos dari payung sampai istana pasir.",
+          "Igil menemani piknik di pantai. Ada sepuluh pos dari payung sampai istana pasir.",
           "Pos hijau untuk menghitung. Pos biru untuk membaca. Pos kuning untuk menulis. Pos ungu untuk membandingkan.",
           "Empat tambah tiga sama dengan tujuh. Tambah nol, angkanya tetap. Angka yang hilang supaya empat tambah kotak sama dengan sepuluh adalah enam.",
           "Lima tambah tiga sama dengan delapan, bukan tujuh. Satu tambah sembilan sama dengan sembilan tambah satu.",
-          "Jawaban benar mendapat satu bintang pantai. Jika belum tepat, Kepi memberi petunjuk. Kerang tidak berkurang.",
+          "Jawaban benar mendapat satu bintang pantai. Jika belum tepat, Igil memberi petunjuk. Kerang tidak berkurang.",
         ],
       ],
     },
@@ -277,7 +277,7 @@ D) 13`,
           alias: ["5", "lima"],
         },
         {
-          pertanyaan: "Raka berkata 6 tambah 3 sama dengan 8. Apakah Raka benar?",
+          pertanyaan: "Bimo berkata 6 tambah 3 sama dengan 8. Apakah Bimo benar?",
           alias: ["salah", "9", "sembilan"],
         },
         {

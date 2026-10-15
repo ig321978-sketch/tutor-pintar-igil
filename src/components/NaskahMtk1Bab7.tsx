@@ -7,6 +7,7 @@ import { useMemo, useState, type ReactNode } from "react";
 import HasilJawabanKuis from "@/components/HasilJawabanKuis";
 import TabelInfoGrafis from "@/components/TabelInfoGrafis";
 import KartuPoinPenting from "@/components/KartuPoinPenting";
+import TujuanBelajar from "@/components/TujuanBelajar";
 import KuisAkhirAdegan from "@/components/KuisAkhirAdegan";
 import KuisTulisKartu from "@/components/KuisTulisKartu";
 import SoalRekamSuara from "@/components/SoalRekamSuara";
@@ -99,20 +100,14 @@ function layangDua(teks: string): boolean {
   return beda && panjang;
 }
 
-function KartuBingkai({ children, latar = "bg-white" }: { children: ReactNode; latar?: string }) {
-  return (
-    <section className={`rounded-[1.75rem] border-4 border-[#1C01A5]/15 ${latar} px-4 py-5 shadow-sm sm:px-6 sm:py-6`}>
-      {children}
-    </section>
-  );
+function KartuBingkai({ children }: { children: ReactNode; latar?: string }) {
+  return <section className="space-y-4">{children}</section>;
 }
 
 const WARNA_DIALOG: Record<string, string> = {
-  Ari: "border-[#2563EB]/20 bg-[#EFF6FF]",
-  Mila: "border-[#DB2777]/20 bg-[#FDF2F8]",
-  Bima: "border-[#16A34A]/25 bg-[#F0FDF4]",
-  Kodok: "border-teal-300 bg-teal-50",
-  Semua: "border-[#E11D48]/20 bg-[#FFF1F2]",
+  Rara: "border-[#DB2777]/20 bg-[#FDF2F8]",
+  Bimo: "border-[#2563EB]/20 bg-[#EFF6FF]",
+  Igil: "border-amber-300 bg-amber-50",
 };
 
 function Dialog({ nama, anak }: { nama: string; anak: string }) {
@@ -173,12 +168,12 @@ function Adegan({
   children: ReactNode;
 }) {
   return (
-    <article className={`rounded-2xl border-2 px-4 py-3 ${warna}`}>
-      <p className="text-xs font-black uppercase tracking-wide text-[#1C01A5]">{judul}</p>
+    <section className="space-y-4 border-b-4 border-[#1C01A5] pb-8">
+      <p className="text-xl font-black leading-snug text-[#1C01A5]">{judul}</p>
       {/* eslint-disable-next-line @next/next/no-img-element */}
       <img src={src} alt={alt} className="mt-3 w-full rounded-xl border border-[#1C01A5]/10 bg-white object-cover" />
       <div className="mt-3 space-y-2">{children}</div>
-    </article>
+    </section>
   );
 }
 
@@ -465,7 +460,7 @@ function KartuA({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminGuru }) {
   return (
     <KartuBingkai latar="bg-sky-50/80">
       <KepalaKartu
-        ikon="🪁🐸📏"
+        ikon="🪁🦉📏"
         judul={kartu.judul}
         anak="Mengukur Panjang Benda"
         kelas={kelas}
@@ -473,46 +468,47 @@ function KartuA({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminGuru }) {
         cuplikan={cuplikanDariNaskah(kartu.voice, 2_000, 3_000)}
       />
       <div className="mt-4 rounded-2xl border-2 border-sky-300 bg-sky-50 px-4 py-3">
-        <p className="text-sm font-black text-[#1C01A5]">Tujuan Pembelajaran</p>
-        <ul className="daftar-tujuan mt-2 space-y-1 text-sm font-semibold text-slate-700">
-          <li>Membandingkan panjang dan pendek, lalu mengurutkan benda.</li>
-          <li>Mengukur dengan jengkal, langkah, klip kertas, lidi, dan depa.</li>
-        </ul>
+        <TujuanBelajar
+        butir={[
+          "Membandingkan panjang dan pendek, lalu mengurutkan benda.",
+          "Mengukur dengan jengkal, langkah, klip kertas, lidi, dan depa.",
+        ]}
+      />
       </div>
       <div className="mt-4 space-y-3">
         <Adegan
           judul="Pesta di bukit"
           warna="border-sky-200 bg-sky-50"
           src="/doodle-mtk/mtk-1-bab7-bukit.jpg"
-          alt="Bukit berlayang-layang. Ari, Mila, dan Bima berdiri. Kodok bertopi jerami membawa pita ukur."
+          alt="Bukit berlayang-layang. Bimo, Rara, dan Bimo berdiri. Igil bertopi jerami membawa pita ukur."
         >
           <p className="text-sm font-semibold text-slate-700">
             Langit cerah. Tiga layang-layang terbang. Satu tampak kecil karena jauh.
           </p>
-          <Dialog nama="Bima" anak="Layang-layangku kalah jauh. Punyamu lebih tinggi." />
-          <Dialog nama="Ari" anak="Itu cuma kelihatan begitu. Kamu berdiri jauh dari kami." />
-          <Dialog nama="Kodok" anak="Namaku Kodok! Aku mengukur tanpa penggaris. Aku memakai tubuhku!" />
+          <Dialog nama="Bimo" anak="Layang-layangku kalah jauh. Punyamu lebih tinggi." />
+          <Dialog nama="Bimo" anak="Itu cuma kelihatan begitu. Kamu berdiri jauh dari kami." />
+          <Dialog nama="Igil" anak="Namaku Igil! Aku mengukur tanpa penggaris. Aku memakai tubuhku!" />
           <KuisAkhirAdegan
             idSuara={idKuis("A", 1)}
             idKanvas={idKuis("A", 2)}
             pertanyaanSuara="Siapa yang mengukur tanpa penggaris?"
-            aliasSuara={["kodok"]}
+            aliasSuara={["burung hantu"]}
             petunjukSuara="Sebutkan namanya."
-            pertanyaanKanvas="Tuliskan nama Kodok."
-            aliasKanvas={["kodok"]}
-            konteksKanvas="Yang mengukur dengan tubuhnya adalah Kodok."
+            pertanyaanKanvas="Tuliskan nama Igil."
+            aliasKanvas={["burung hantu"]}
+            konteksKanvas="Yang mengukur dengan tubuhnya adalah Igil."
           />
         </Adegan>
         <Adegan
           judul="Adegan 1 · Masalah ketinggian"
           warna="border-amber-200 bg-amber-50"
           src="/doodle-mtk/mtk-1-bab7-adegan-1.jpg"
-          alt="Tiga layang-layang. Ari berdiri dekat, Bima berdiri jauh, tanda tanya di atas mereka."
+          alt="Tiga layang-layang. Bimo berdiri dekat, Bimo berdiri jauh, tanda tanya di atas mereka."
         >
-          <Dialog nama="Bima" anak="Punyaku paling kecil! Berarti paling rendah?" />
-          <Dialog nama="Ari" anak="Belum tentu! Mata kita bisa tertipu." />
-          <Dialog nama="Kodok" anak="Kalau mau tahu yang sebenarnya, kita harus mengukur." />
-          <Dialog nama="Mila" anak="Tapi kita tidak bawa meteran…" />
+          <Dialog nama="Bimo" anak="Punyaku paling kecil! Berarti paling rendah?" />
+          <Dialog nama="Bimo" anak="Belum tentu! Mata kita bisa tertipu." />
+          <Dialog nama="Igil" anak="Kalau mau tahu yang sebenarnya, kita harus mengukur." />
+          <Dialog nama="Rara" anak="Tapi kita tidak bawa meteran…" />
           <p className="text-sm font-black text-[#1C01A5]">Mata bisa salah. Ukuran tidak.</p>
           <KuisAkhirAdegan
             idSuara={idKuis("A", 3)}
@@ -529,38 +525,38 @@ function KartuA({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminGuru }) {
           judul="Adegan 2 · Kenalan dengan jengkal"
           warna="border-emerald-200 bg-emerald-50"
           src="/doodle-mtk/mtk-1-bab7-adegan-2.jpg"
-          alt="Kodok membuka tangan. Garis dari jempol ke kelingking bertuliskan 1 jengkal."
+          alt="Igil membuka tangan. Garis dari jempol ke kelingking bertuliskan 1 jengkal."
         >
-          <Dialog nama="Kodok" anak="Dari ujung jempol ke ujung kelingking, namanya satu jengkal!" />
-          <Dialog nama="Bima" anak="Jengkal katak kecil sekali!" />
-          <Dialog nama="Mila" anak="Benang Ari 7 jengkal!" />
+          <Dialog nama="Igil" anak="Dari ujung jempol ke ujung kelingking, namanya satu jengkal!" />
+          <Dialog nama="Bimo" anak="Jengkal katak kecil sekali!" />
+          <Dialog nama="Rara" anak="Benang Bimo 7 jengkal!" />
           <KuisAkhirAdegan
             idSuara={idKuis("A", 5)}
             idKanvas={idKuis("A", 6)}
-            pertanyaanSuara="Benang Ari panjangnya berapa jengkal?"
+            pertanyaanSuara="Benang Bimo panjangnya berapa jengkal?"
             aliasSuara={["7", "tujuh"]}
             petunjukSuara="Ucapkan angkanya."
             pertanyaanKanvas="Tuliskan angka 7."
             aliasKanvas={["7", "tujuh"]}
-            konteksKanvas="Benang Ari panjangnya 7 jengkal."
+            konteksKanvas="Benang Bimo panjangnya 7 jengkal."
           />
         </Adegan>
         <Adegan
           judul="Adegan 3 · Kenapa hasilnya beda?"
           warna="border-rose-200 bg-rose-50"
           src="/doodle-mtk/mtk-1-bab7-adegan-3.jpg"
-          alt="Benang yang sama: Kodok dapat 7, Ari dapat 4, Mila dapat 5."
+          alt="Benang yang sama: Igil dapat 7, Bimo dapat 4, Rara dapat 5."
         >
-          <Dialog nama="Ari" anak="Aku ukur benang yang sama, tapi dapat 4 jengkal." />
-          <Dialog nama="Mila" anak="Aku dapat 5 jengkal." />
-          <Dialog nama="Bima" anak="Kok beda?! Yang benar yang mana?" />
-          <Dialog nama="Kodok" anak="Tangan Ari lebih panjang, jadi jengkalnya lebih sedikit." />
-          <Dialog nama="Mila" anak="Harus pakai tangan yang sama dari awal sampai akhir!" />
+          <Dialog nama="Bimo" anak="Aku ukur benang yang sama, tapi dapat 4 jengkal." />
+          <Dialog nama="Rara" anak="Aku dapat 5 jengkal." />
+          <Dialog nama="Bimo" anak="Kok beda?! Yang benar yang mana?" />
+          <Dialog nama="Igil" anak="Tangan Bimo lebih panjang, jadi jengkalnya lebih sedikit." />
+          <Dialog nama="Rara" anak="Harus pakai tangan yang sama dari awal sampai akhir!" />
           <p className="text-sm font-black text-[#1C01A5]">1 alat ukur, 1 orang pengukur.</p>
           <KuisAkhirAdegan
             idSuara={idKuis("A", 7)}
             idKanvas={idKuis("A", 8)}
-            pertanyaanSuara="Mila mengukur benang yang sama. Dia dapat berapa jengkal?"
+            pertanyaanSuara="Rara mengukur benang yang sama. Dia dapat berapa jengkal?"
             aliasSuara={["5", "lima"]}
             petunjukSuara="Ucapkan angkanya."
             pertanyaanKanvas="Tuliskan angka 1, karena pengukurnya harus satu orang."
@@ -574,8 +570,8 @@ function KartuA({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminGuru }) {
           src="/doodle-mtk/mtk-1-bab7-adegan-4.jpg"
           alt="Tiga layang-layang berukuran 3, 5, dan 8 jengkal, dari kecil ke besar."
         >
-          <Dialog nama="Mila" anak="Yang kecil 3, yang sedang 5, yang besar 8." />
-          <Dialog nama="Bima" anak="Tiga, lima, delapan. Kecil, sedang, besar!" />
+          <Dialog nama="Rara" anak="Yang kecil 3, yang sedang 5, yang besar 8." />
+          <Dialog nama="Bimo" anak="Tiga, lima, delapan. Kecil, sedang, besar!" />
           <p className="text-sm font-black text-[#1C01A5]">3 jengkal &lt; 5 jengkal &lt; 8 jengkal</p>
           <KuisAkhirAdegan
             idSuara={idKuis("A", 9)}
@@ -589,43 +585,43 @@ function KartuA({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminGuru }) {
           />
         </Adegan>
         <Adegan
-          judul="Adegan 5 · Langkah kaki Kodok"
+          judul="Adegan 5 · Langkah kaki Igil"
           warna="border-lime-200 bg-lime-50"
           src="/doodle-mtk/mtk-1-bab7-adegan-5.jpg"
-          alt="Kodok melompat dari bendera start ke finish dan meninggalkan jejak kaki."
+          alt="Igil melompat dari bendera start ke finish dan meninggalkan jejak kaki."
         >
-          <Dialog nama="Kodok" anak="Jalan menuju panggung aku ukur dengan langkah kaki!" />
-          <Dialog nama="Bima" anak="Satu sampai sepuluh langkah!" />
-          <Dialog nama="Ari" anak="Jaraknya 10 langkah Kodok." />
+          <Dialog nama="Igil" anak="Jalan menuju panggung aku ukur dengan langkah kaki!" />
+          <Dialog nama="Bimo" anak="Satu sampai sepuluh langkah!" />
+          <Dialog nama="Bimo" anak="Jaraknya 10 langkah Igil." />
           <KuisAkhirAdegan
             idSuara={idKuis("A", 11)}
             idKanvas={idKuis("A", 12)}
-            pertanyaanSuara="Jalan menuju panggung berapa langkah Kodok?"
+            pertanyaanSuara="Jalan menuju panggung berapa langkah Igil?"
             aliasSuara={["10", "sepuluh"]}
             petunjukSuara="Ucapkan angkanya."
             pertanyaanKanvas="Tuliskan angka 10."
             aliasKanvas={["10", "sepuluh"]}
-            konteksKanvas="Jaraknya 10 langkah Kodok."
+            konteksKanvas="Jaraknya 10 langkah Igil."
           />
         </Adegan>
         <Adegan
           judul="Adegan 6 · Festival dimulai"
           warna="border-orange-200 bg-orange-50"
           src="/doodle-mtk/mtk-1-bab7-adegan-6.jpg"
-          alt="Panggung festival. Kodok bersselempang pita ukur. Mila memegang layang-layang terpanjang."
+          alt="Panggung festival. Igil bersselempang pita ukur. Rara memegang layang-layang terpanjang."
         >
-          <Dialog nama="Kodok" anak="Pemenangnya layang-layang terpanjang. Itu milik Mila!" />
-          <Dialog nama="Bima" anak="Aku tidak menang, tapi aku sudah tahu rahasianya!" />
-          <Dialog nama="Semua" anak="Horeee! Terima kasih, Kodok!" />
+          <Dialog nama="Igil" anak="Pemenangnya layang-layang terpanjang. Itu milik Rara!" />
+          <Dialog nama="Bimo" anak="Aku tidak menang, tapi aku sudah tahu rahasianya!" />
+          <Dialog nama="Rara" anak="Horeee! Terima kasih, Igil!" />
           <KuisAkhirAdegan
             idSuara={idKuis("A", 13)}
             idKanvas={idKuis("A", 14)}
             pertanyaanSuara="Siapa pemilik layang-layang terpanjang?"
             aliasSuara={["mila"]}
             petunjukSuara="Sebutkan namanya."
-            pertanyaanKanvas="Tuliskan nama Mila."
+            pertanyaanKanvas="Tuliskan nama Rara."
             aliasKanvas={["mila"]}
-            konteksKanvas="Layang-layang terpanjang milik Mila."
+            konteksKanvas="Layang-layang terpanjang milik Rara."
           />
         </Adegan>
       </div>
@@ -817,7 +813,7 @@ function KartuC({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminGuru }) {
   return (
     <KartuBingkai latar="bg-violet-50/80">
       <KepalaKartu
-        ikon="🪁🐸🏆"
+        ikon="🪁🦉🏆"
         judul={kartu.judul}
         anak="Sepuluh tali layang · menghitung, membaca, menulis, membandingkan"
         kelas={kelas}
@@ -829,7 +825,7 @@ function KartuC({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminGuru }) {
         idMisi={(indeks) => idKuis("C", indeks)}
         idTulis={idKuisTulisKartu(ID, "C")}
         tema={TEMA_MTK1_BAB7}
-        penutup="Layang-layang tertib di bukit. Kodok mengukur dengan jengkal."
+        penutup="Layang-layang tertib di bukit. Igil mengukur dengan jengkal."
         bunga="🪁📏🐸👣"
       />
     </KartuBingkai>
@@ -847,13 +843,13 @@ function LembarEvaluasi({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminG
     }
     return jumlah;
   }, [kuis]);
-  const lencana = skor >= 9 ? "🏅 Tukang Ukur Ahli" : skor >= 6 ? "🖐️ Juri Jengkal Hebat" : "🐸 Sahabat Kodok";
+  const lencana = skor >= 9 ? "🏅 Tukang Ukur Ahli" : skor >= 6 ? "🖐️ Juri Jengkal Hebat" : "🐸 Sahabat Igil";
   const pesan =
     skor >= 9
       ? "Luar biasa! Kamu bisa mengukur apa saja!"
       : skor >= 6
         ? "Hebat! Sedikit lagi jadi ahli ukur!"
-        : "Ayo ukur lagi bersama Kodok, kamu pasti bisa!";
+        : "Ayo ukur lagi bersama Igil, kamu pasti bisa!";
   const alatPas = ["📎 Klip kertas", "👣 Langkah kaki", "🖐️ Jengkal"];
   return (
     <KartuBingkai latar="bg-rose-50/80">
@@ -899,11 +895,11 @@ function LembarEvaluasi({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminG
         <div className="border-t-2 border-[#1C01A5]/10 pt-4">
           <p className="text-base font-extrabold text-[#1C01A5]">QUIZ:</p>
           <p className="mt-2 text-sm font-semibold text-slate-700">
-            Meja yang sama: tangan Ari 6 jengkal, tangan Bima 9 jengkal. Ari berkata mejanya berubah panjang.
+            Meja yang sama: tangan Bimo 6 jengkal, tangan Bimo 9 jengkal. Bimo berkata mejanya berubah panjang.
           </p>
           <SoalRekamSuara
             id={idKuis("D", 2)}
-            pertanyaan='3. Apakah Ari benar? Ucapkan "Benar" atau "Salah", lalu jelaskan singkat.'
+            pertanyaan='3. Apakah Bimo benar? Ucapkan "Benar" atau "Salah", lalu jelaskan singkat.'
             periksa={(transkrip) =>
               ucapanMemuat(transkrip, [["salah"], ["tangan", "beda", "tidak berubah", "alat"]])
             }
@@ -1021,7 +1017,7 @@ export default function NaskahMtk1Bab7({
           "Tebak dulu, ukur kemudian.",
           "Satuan tidak baku untuk membandingkan. Satuan baku untuk semua orang.",
         ]}
-        penutup="Rapat, lurus, dari ujung. Satu tangan, satu ukuran, Kodok pun tersenyum!"
+        penutup="Rapat, lurus, dari ujung. Satu tangan, satu ukuran, Igil pun tersenyum!"
       />
       <LembarEvaluasi kelas={kelas} kelamin={kelamin} />
     </div>

@@ -12,12 +12,12 @@ export const MODUL_MTK1_BAB10: ModulResmiPai = {
   judul: JUDUL_MTK1_BAB10,
   pola: /penjumlahan\s+dan\s+pengurangan\s+sampai\s+100\b|toko kelontong kolu|ekspedisi kereta barang/,
   motivasi:
-    "Nia, Rafi, dan Tono belajar menjumlah dan mengurangi sampai 100 di toko Kolu, dari tanpa menyimpan sampai soal cerita.",
+    "Rara, Bimo, dan Igil belajar menjumlah dan mengurangi sampai 100 di toko Igil, dari tanpa menyimpan sampai soal cerita.",
   kunciJawaban: "A,B,A,C,A,B,C,A,B,C",
   sketsaKartu: [
-    "Nia dan Rafi menghitung kelereng di toko kelontong bersama koala Kolu.",
+    "Rara dan Bimo menghitung kelereng di toko kelontong bersama koala Igil.",
     "Rumah puluhan dan satuan untuk menjumlah, mengurangi, menyimpan, dan meminjam.",
-    "Kolu menjadi kepala stasiun kereta barang dengan gerbong puluhan dan satuan.",
+    "Igil menjadi kepala stasiun kereta barang dengan gerbong puluhan dan satuan.",
     "Poin penting dan lembar evaluasi penjumlahan dan pengurangan sampai 100.",
   ],
   latihan: pg([
@@ -85,9 +85,9 @@ D) 65`,
   kartu: [
     {
       kode: "A",
-      judul: "A. Toko Kelontong Kolu",
+      judul: "A. Toko Kelontong Igil",
       pengantar:
-        "Nia, Rafi, dan Tono belajar menjumlah dan mengurangi di toko Kolu. Satuan dikerjakan dulu, lalu puluhan.",
+        "Rara, Bimo, dan Igil belajar menjumlah dan mengurangi di toko Igil. Satuan dikerjakan dulu, lalu puluhan.",
       labelDaftar: "Lima cara hitung sampai 100",
       kolom: 1,
       item: [
@@ -182,7 +182,7 @@ D) 65`,
     },
     {
       kode: "C",
-      judul: "C. Ekspedisi Kereta Barang Kolu",
+      judul: "C. Ekspedisi Kereta Barang Igil",
       pengantar:
         "Siswa menjadi kepala stasiun. Menggabung gerbong artinya menambah. Melepas gerbong artinya mengurangi.",
       labelDaftar: "Sepuluh pos stasiun",

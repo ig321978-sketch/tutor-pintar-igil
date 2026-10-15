@@ -10,14 +10,14 @@ export const JUDUL_MTK1_BAB7 = "Bab 7: Mengukur Panjang Benda";
 export const MODUL_MTK1_BAB7: ModulResmiPai = {
   id: "mtk-1-bab7",
   judul: JUDUL_MTK1_BAB7,
-  pola: /mengukur\s+panjang\s+benda|pesta layang-layang|bengkel ukur kodok|misi pesta layang/,
+  pola: /mengukur\s+panjang\s+benda|pesta layang-layang|bengkel ukur burung hantu|misi pesta layang/,
   motivasi:
-    "Ari, Mila, dan Bima mengukur layang-layang bersama Kodok. Mereka memakai jengkal, langkah, dan depa, lalu membandingkan panjangnya.",
+    "Bimo, Rara, dan Bimo mengukur layang-layang bersama Igil. Mereka memakai jengkal, langkah, dan depa, lalu membandingkan panjangnya.",
   kunciJawaban: "A,A,B,A,C,B,C,C,B,B",
   sketsaKartu: [
-    "Ari, Mila, dan Bima mengukur benang layang-layang dengan jengkal Kodok di bukit.",
+    "Bimo, Rara, dan Bimo mengukur benang layang-layang dengan jengkal Igil di bukit.",
     "Satuan tidak baku, aturan mengukur, membandingkan, dan mengurutkan panjang.",
-    "Kodok mengukur sepuluh tali layang-layang: alat yang pas, selisih panjang, dan urutan benda.",
+    "Igil mengukur sepuluh tali layang-layang: alat yang pas, selisih panjang, dan urutan benda.",
     "Poin penting dan lembar evaluasi mengukur panjang benda.",
   ],
   latihan: pg([
@@ -34,11 +34,11 @@ B) Depa
 C) Meter
 D) Langkah`,
     `[Soal 3 - PG - Tipe: LOTS]
-Benang yang sama diukur Ari 4 jengkal dan Mila 5 jengkal. Hasilnya beda karena...
+Benang yang sama diukur Bimo 4 jengkal dan Rara 5 jengkal. Hasilnya beda karena...
 A) Benangnya berubah
 B) Panjang tangannya berbeda
 C) Layang-layangnya beda warna
-D) Kodok lupa menghitung`,
+D) Igil lupa menghitung`,
     `[Soal 4 - PG - Tipe: LOTS]
 Panjang layang-layang 3, 5, dan 8 jengkal. Urutan dari yang paling pendek adalah...
 A) 3, 5, 8
@@ -87,7 +87,7 @@ D) 4 jengkal`,
       kode: "A",
       judul: "A. Pesta Layang-Layang di Bukit",
       pengantar:
-        "Di festival layang-layang, mata bisa tertipu. Kodok mengajak mengukur dengan jengkal, langkah, dan aturan satu alat.",
+        "Di festival layang-layang, mata bisa tertipu. Igil mengajak mengukur dengan jengkal, langkah, dan aturan satu alat.",
       labelDaftar: "Jengkal, langkah, dan urutan panjang",
       kolom: 1,
       item: [
@@ -96,13 +96,13 @@ D) 4 jengkal`,
           singkat: "Jempol sampai kelingking",
           uraian:
             "Satu jengkal adalah jarak ujung jempol ke ujung kelingking. Benang yang sama bisa menghasilkan angka berbeda jika tangannya berbeda. Ukur dengan tangan yang sama dari awal sampai akhir.",
-          contoh: "Benang Ari 7 jengkal Kodok, 4 jengkal Ari, dan 5 jengkal Mila.",
+          contoh: "Benang Bimo 7 jengkal Igil, 4 jengkal Bimo, dan 5 jengkal Rara.",
         },
         {
           nama: "Urutan dan langkah",
           singkat: "Pendek ke panjang",
           uraian:
-            "Layang-layang 3, 5, dan 8 jengkal diurutkan dari yang paling pendek. Jalan ke panggung diukur 10 langkah Kodok. Pemenangnya layang-layang terpanjang.",
+            "Layang-layang 3, 5, dan 8 jengkal diurutkan dari yang paling pendek. Jalan ke panggung diukur 10 langkah Igil. Pemenangnya layang-layang terpanjang.",
           contoh: "3 jengkal lebih pendek dari 5 jengkal, dan 5 lebih pendek dari 8.",
         },
       ],
@@ -113,11 +113,11 @@ D) 4 jengkal`,
         },
         {
           pertanyaan: "Siapa yang mengukur tanpa penggaris?",
-          alias: ["kodok"],
+          alias: ["burung hantu"],
         },
         {
-          pertanyaan: "Tuliskan nama Kodok.",
-          alias: ["kodok"],
+          pertanyaan: "Tuliskan nama Igil.",
+          alias: ["burung hantu"],
         },
         {
           pertanyaan: "Kalau mau tahu yang sebenarnya, kita harus apa?",
@@ -128,7 +128,7 @@ D) 4 jengkal`,
           alias: ["mengukur"],
         },
         {
-          pertanyaan: "Benang Ari panjangnya berapa jengkal?",
+          pertanyaan: "Benang Bimo panjangnya berapa jengkal?",
           alias: ["7", "tujuh"],
         },
         {
@@ -136,7 +136,7 @@ D) 4 jengkal`,
           alias: ["7", "tujuh"],
         },
         {
-          pertanyaan: "Mila mengukur benang yang sama. Dia dapat berapa jengkal?",
+          pertanyaan: "Rara mengukur benang yang sama. Dia dapat berapa jengkal?",
           alias: ["5", "lima"],
         },
         {
@@ -152,7 +152,7 @@ D) 4 jengkal`,
           alias: ["3 < 5 < 8", "3<5<8"],
         },
         {
-          pertanyaan: "Jalan menuju panggung berapa langkah Kodok?",
+          pertanyaan: "Jalan menuju panggung berapa langkah Igil?",
           alias: ["10", "sepuluh"],
         },
         {
@@ -164,7 +164,7 @@ D) 4 jengkal`,
           alias: ["mila"],
         },
         {
-          pertanyaan: "Tuliskan nama Mila.",
+          pertanyaan: "Tuliskan nama Rara.",
           alias: ["mila"],
         },
       ],
@@ -233,7 +233,7 @@ D) 4 jengkal`,
       kode: "C",
       judul: "C. Misi Pesta Layang-Layang",
       pengantar:
-        "Bantu Kodok mengukur 10 tali di pesta layang-layang. Hijau untuk menghitung, biru untuk membaca, kuning untuk menulis, dan ungu untuk membandingkan.",
+        "Bantu Igil mengukur 10 tali di pesta layang-layang. Hijau untuk menghitung, biru untuk membaca, kuning untuk menulis, dan ungu untuk membandingkan.",
       labelDaftar: "Sepuluh tali ukur di bukit",
       kolom: 1,
       item: [
@@ -241,7 +241,7 @@ D) 4 jengkal`,
           nama: "Alur permainan",
           singkat: "Pilih tali, jawab, dapat bintang",
           uraian:
-            "Siswa memilih satu tali layang. Kodok menanyakan alat, selisih panjang, atau urutan benda. Jawaban benar mendapat 1 bintang layang. Jawaban yang belum tepat mendapat petunjuk, tanpa kehilangan jengkal.",
+            "Siswa memilih satu tali layang. Igil menanyakan alat, selisih panjang, atau urutan benda. Jawaban benar mendapat 1 bintang layang. Jawaban yang belum tepat mendapat petunjuk, tanpa kehilangan jengkal.",
           contoh: "Pensil 7 klip lebih panjang daripada pensil 4 klip. Lorong diukur dengan langkah. Selisih 7 dan 4 adalah 3.",
         },
         {
@@ -255,11 +255,11 @@ D) 4 jengkal`,
       kuis: kuisDariMisi(MISI_MTK1_BAB7),
       voice: [
         [
-          "Kodok mengukur tali di pesta layang-layang. Ada sepuluh tali dari bukit sampai langit.",
+          "Igil mengukur tali di pesta layang-layang. Ada sepuluh tali dari bukit sampai langit.",
           "Pensil tujuh klip lebih panjang daripada pensil empat klip.",
           "Lorong panjang diukur dengan langkah kaki, bukan klip.",
           "Lima jengkal ditambah tiga jengkal sama dengan delapan. Tujuh kurang empat sama dengan tiga.",
-          "Jawaban benar mendapat satu bintang layang. Jika belum tepat, Kodok memberi petunjuk. Jengkal tidak berkurang.",
+          "Jawaban benar mendapat satu bintang layang. Jika belum tepat, Igil memberi petunjuk. Jengkal tidak berkurang.",
         ],
       ],
     },
