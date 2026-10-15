@@ -14,7 +14,10 @@ import {
   labelJenjangKelas,
 } from "@/lib/kurikulum";
 import { useUserRole } from "@/hooks/useUserRole";
+import { kelasDuaSd } from "@/lib/infografis-kelas1";
+import { daftarJudulMtk2Tersusun } from "@/lib/modul-resmi-mtk-2";
 import {
+  adalahMapelMatematika,
   adalahPilotMatematikaSd,
   KELAS_PILOT_SD,
   KELAS_TERBUKA_PUBLIK,
@@ -107,6 +110,9 @@ export default function RuangBelajarPage() {
   }, [kelas, kunciPublik]);
   const daftarMateri = useMemo(() => {
     if (pilihanMapel === OPSI_MAPEL_LAIN) return [];
+    if (kelasDuaSd(kelas) && adalahMapelMatematika(pilihanMapel)) {
+      return daftarJudulMtk2Tersusun();
+    }
     const buku = DATA_KURIKULUM[kelas]?.[pilihanMapel] ?? [];
     if (!kunciPublik) return buku;
     if (adalahPilotMatematikaSd(kelas, pilihanMapel)) return buku;

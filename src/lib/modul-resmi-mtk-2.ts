@@ -39,3 +39,7 @@ export const MODUL_MTK2_BAB11_SATU = [MODUL_MTK2_BAB11] as const;
 export const MODUL_MTK2_BAB12_SATU = [MODUL_MTK2_BAB12] as const;
 export const MODUL_MTK2_BAB13_SATU = [MODUL_MTK2_BAB13] as const;
 export const MODUL_MTK2_BAB14_SATU = [MODUL_MTK2_BAB14] as const;
+
+export function daftarJudulMtk2Tersusun(): string[] {
+  return MODUL_MTK2_BAB1_8.map((modul) => modul.judul);
+}
