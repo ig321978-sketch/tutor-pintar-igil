@@ -240,39 +240,67 @@ const SUBBAB_BUKU_SISWA: Record<string, Record<string, Record<string, string[]>>
   },
   "4 SD": {
     Matematika: {
-      "Bab 1: Bilangan Cacah sampai 10.000": [
-        "Membaca dan menulis bilangan cacah sampai 10.000",
-        "Nilai tempat bilangan cacah sampai 10.000",
-        "Membandingkan dan mengurutkan bilangan cacah sampai 10.000",
-        "Komposisi dan dekomposisi bilangan cacah sampai 10.000",
-        "Penjumlahan bilangan cacah sampai 1.000",
-        "Pengurangan bilangan cacah sampai 1.000",
-        "Perkalian bilangan cacah sampai 100",
-        "Pembagian bilangan cacah sampai 100",
-        "Faktor dan kelipatan",
+      "Bab 1: Bilangan Cacah Besar": [
+        "Membaca bilangan cacah besar",
+        "Nilai tempat",
+        "Membandingkan dan mengurutkan",
       ],
-      "Bab 2: Pecahan": [
-        "Pecahan dengan pembilang satu",
-        "Pecahan dengan penyebut sama",
+      "Bab 2: Operasi Hitung Bilangan Cacah": [
+        "Penjumlahan",
+        "Pengurangan",
+        "Perkalian",
+        "Pembagian",
+      ],
+      "Bab 3: Faktor dan Kelipatan": [
+        "Faktor",
+        "Kelipatan",
+      ],
+      "Bab 4: Pecahan": [
+        "Bagian dari keseluruhan",
         "Pecahan senilai",
-        "Pecahan desimal persepuluhan dan perseratusan",
-        "Menghubungkan pecahan desimal perseratusan dengan persen",
+        "Membandingkan pecahan",
       ],
-      "Bab 3: Pola Gambar dan Pola Bilangan": [
-        "Pola gambar",
+      "Bab 5: Pecahan Desimal dan Persen": [
+        "Pecahan desimal",
+        "Persen",
+      ],
+      "Bab 6: Pengukuran Panjang dan Berat": [
+        "Panjang",
+        "Berat",
+      ],
+      "Bab 7: Pengukuran Waktu dan Volume": [
+        "Waktu",
+        "Volume",
+      ],
+      "Bab 8: Uang dan Pemecahan Masalah": [
+        "Nilai uang",
+        "Soal cerita uang",
+      ],
+      "Bab 9: Pola Bilangan dan Pola Gambar": [
         "Pola bilangan",
+        "Pola gambar",
       ],
-      "Bab 4: Pengukuran Luas dan Volume": [
-        "Pengukuran luas",
-        "Pengukuran volume",
+      "Bab 10: Kalimat Matematika dan Persamaan": [
+        "Kalimat matematika",
+        "Persamaan",
       ],
-      "Bab 5: Bangun Datar": [
-        "Ciri-ciri bangun datar",
-        "Komposisi dan dekomposisi bangun datar",
+      "Bab 11: Bangun Datar": [
+        "Ciri bangun datar",
       ],
-      "Bab 6: Piktogram dan Diagram Batang": [
-        "Piktogram",
-        "Diagram batang",
+      "Bab 12: Keliling dan Luas": [
+        "Keliling",
+        "Luas",
+      ],
+      "Bab 13: Bangun Ruang": [
+        "Ciri bangun ruang",
+      ],
+      "Bab 14: Analisis Data": [
+        "Mengumpulkan data",
+        "Menyajikan data",
+      ],
+      "Bab 15: Pengenalan Peluang dan Proyek Data": [
+        "Peluang sederhana",
+        "Proyek data",
       ],
     },
   },
