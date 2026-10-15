@@ -2,6 +2,7 @@
 
 import HasilJawabanKuis from "@/components/HasilJawabanKuis";
 import KartuPoinPenting from "@/components/KartuPoinPenting";
+import TujuanBelajar from "@/components/TujuanBelajar";
 import PetaContoh from "@/components/PetaContoh";
 import { useKuisMateri } from "@/components/KuisMateriContext";
 import MisiPenjagaKebun from "@/components/MisiPenjagaKebun";
@@ -117,8 +118,10 @@ function Adegan({
   kelamin,
   penjelasan,
   children,
+  utama = false,
 }: {
   judul: string;
+  utama?: boolean;
   src: string;
   alt: string;
   kelas?: string;
@@ -127,8 +130,8 @@ function Adegan({
   children: ReactNode;
 }) {
   return (
-    <section className="space-y-3">
-      <p className="text-xs font-black uppercase tracking-wide text-[#1C01A5]">{judul}</p>
+    <section className={utama ? "space-y-4 border-b-4 border-[#1C01A5] pb-8" : "space-y-3"}>
+      <p className={utama ? "text-xl font-black leading-snug text-[#1C01A5]" : "text-xs font-black uppercase tracking-wide text-[#1C01A5]"}>{judul}</p>
       <TombolVoiceMateriPai1 kelas={kelas} kelamin={kelamin} cuplikan={cuplikanKalimat(penjelasan)} />
       {/* eslint-disable-next-line @next/next/no-img-element */}
       <img src={src} alt={alt} className="w-full rounded-xl border border-[#1C01A5]/10 bg-white object-cover" />
@@ -502,17 +505,22 @@ function KartuA({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminGuru }) {
     <KartuBingkai>
       <KepalaKartu
         ikon="🔷🦉"
-        judul={kartu.judul}
+        judul="A. Sanggar Bingkai"
         anak="Nisa, Farhan, Cinta, dan Igil di sanggar bingkai"
         kelas={kelas}
         kelamin={kelamin}
         cuplikan={cuplikanKalimat(kartu.voice[0] ?? [])}
       />
-      <p className="mt-3 text-center text-sm font-semibold text-slate-600">
-        Tujuan: menghitung sisi dan sudut, menamai segi banyak, lalu membedakan sudut siku, lancip, dan tumpul.
-      </p>
+      <TujuanBelajar
+        butir={[
+          "Menghitung sisi dan sudut.",
+          "Menamai segi banyak.",
+          "Membedakan sudut siku, lancip, dan tumpul.",
+        ]}
+      />
       <div className="mt-4 space-y-4">
         <Adegan
+          utama
           judul="Sub-bab 1 — Sisi dan sudut"
           src="/doodle-mtk/mtk-3-bangun-sub1.jpg"
           alt="Bingkai kayu di meja sanggar. Igil bertopi biru dan tiga anak menelusuri tepinya."
@@ -545,6 +553,7 @@ function KartuA({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminGuru }) {
         </Adegan>
 
         <Adegan
+          utama
           judul="Sub-bab 2 — Segi banyak"
           src="/doodle-mtk/mtk-3-bangun-sub2.jpg"
           alt="Ubin segitiga, persegi, segilima, dan segienam berjajar di meja. Bingkai kosong di belakangnya."
@@ -577,6 +586,7 @@ function KartuA({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminGuru }) {
         </Adegan>
 
         <Adegan
+          utama
           judul="Sub-bab 3 — Sudut siku-siku"
           src="/doodle-mtk/mtk-3-bangun-sub3.jpg"
           alt="Igil memegang buku. Nisa mengangkat ubin persegi di depan bingkai kayu."
@@ -609,6 +619,7 @@ function KartuA({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminGuru }) {
         </Adegan>
 
         <Adegan
+          utama
           judul="Sub-bab 4 — Sudut lancip"
           src="/doodle-mtk/mtk-3-bangun-sub4.jpg"
           alt="Cinta memegang bendera kertas yang runcing. Farhan memegang lipatan kertas yang lancip."
@@ -641,6 +652,7 @@ function KartuA({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminGuru }) {
         </Adegan>
 
         <Adegan
+          utama
           judul="Sub-bab 5 — Sudut tumpul"
           src="/doodle-mtk/mtk-3-bangun-sub5.jpg"
           alt="Farhan membuka kipas kertas lebar. Bingkai kosong tergantung di dinding."

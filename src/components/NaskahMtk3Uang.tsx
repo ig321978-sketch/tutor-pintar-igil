@@ -2,6 +2,7 @@
 
 import HasilJawabanKuis from "@/components/HasilJawabanKuis";
 import KartuPoinPenting from "@/components/KartuPoinPenting";
+import TujuanBelajar from "@/components/TujuanBelajar";
 import PetaContoh from "@/components/PetaContoh";
 import { useKuisMateri } from "@/components/KuisMateriContext";
 import MisiPenjagaKebun from "@/components/MisiPenjagaKebun";
@@ -117,8 +118,10 @@ function Adegan({
   kelamin,
   penjelasan,
   children,
+  utama = false,
 }: {
   judul: string;
+  utama?: boolean;
   src: string;
   alt: string;
   kelas?: string;
@@ -127,8 +130,8 @@ function Adegan({
   children: ReactNode;
 }) {
   return (
-    <section className="space-y-3">
-      <p className="text-xs font-black uppercase tracking-wide text-[#1C01A5]">{judul}</p>
+    <section className={utama ? "space-y-4 border-b-4 border-[#1C01A5] pb-8" : "space-y-3"}>
+      <p className={utama ? "text-xl font-black leading-snug text-[#1C01A5]" : "text-xs font-black uppercase tracking-wide text-[#1C01A5]"}>{judul}</p>
       <TombolVoiceMateriPai1 kelas={kelas} kelamin={kelamin} cuplikan={cuplikanKalimat(penjelasan)} />
       {/* eslint-disable-next-line @next/next/no-img-element */}
       <img src={src} alt={alt} className="w-full rounded-xl border border-[#1C01A5]/10 bg-white object-cover" />
@@ -492,17 +495,22 @@ function KartuA({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminGuru }) {
     <KartuBingkai>
       <KepalaKartu
         ikon="🪙🦉"
-        judul={kartu.judul}
+        judul="A. Warung Koin"
         anak="Nisa, Farhan, Cinta, dan Igil di warung koin"
         kelas={kelas}
         kelamin={kelamin}
         cuplikan={cuplikanKalimat(kartu.voice[0] ?? [])}
       />
-      <p className="mt-3 text-center text-sm font-semibold text-slate-600">
-        Tujuan: mengenal pecahan rupiah, menjumlah belanja, dan menghitung kembalian.
-      </p>
+      <TujuanBelajar
+        butir={[
+          "Mengenal pecahan rupiah.",
+          "Menjumlah belanja.",
+          "Menghitung kembalian.",
+        ]}
+      />
       <div className="mt-4 space-y-4">
         <Adegan
+          utama
           judul="Sub-bab 1 — Pecahan uang"
           src="/doodle-mtk/mtk-3-uang-sub1.jpg"
           alt="Warung jajan. Igil memakai topi biru, Nisa, Farhan, dan Cinta memegang koin dan lembar uang polos."
@@ -535,6 +543,7 @@ function KartuA({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminGuru }) {
         </Adegan>
 
         <Adegan
+          utama
           judul="Sub-bab 2 — Menjumlahkan pecahan"
           src="/doodle-mtk/mtk-3-uang-sub2.jpg"
           alt="Cinta dan Farhan menumpuk koin dan lembar uang polos. Igil mengawasi dari meja warung."
@@ -567,6 +576,7 @@ function KartuA({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminGuru }) {
         </Adegan>
 
         <Adegan
+          utama
           judul="Sub-bab 3 — Harga belanja"
           src="/doodle-mtk/mtk-3-uang-sub3.jpg"
           alt="Baki susu, stiker, dan pensil dengan label harga polos. Tiga anak dan burung hantu di warung."
@@ -599,6 +609,7 @@ function KartuA({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminGuru }) {
         </Adegan>
 
         <Adegan
+          utama
           judul="Sub-bab 4 — Kembalian"
           src="/doodle-mtk/mtk-3-uang-sub4.jpg"
           alt="Igil mengulurkan koin kembalian dari meja warung kepada Farhan."
@@ -631,6 +642,7 @@ function KartuA({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminGuru }) {
         </Adegan>
 
         <Adegan
+          utama
           judul="Sub-bab 5 — Cukup atau kurang"
           src="/doodle-mtk/mtk-3-uang-sub5.jpg"
           alt="Cinta memegang dompet tipis di depan kotak pensil berlabel polos. Igil menunjuk label itu."

@@ -2,6 +2,7 @@
 
 import HasilJawabanKuis from "@/components/HasilJawabanKuis";
 import KartuPoinPenting from "@/components/KartuPoinPenting";
+import TujuanBelajar from "@/components/TujuanBelajar";
 import KuisTulisKartu from "@/components/KuisTulisKartu";
 import { useKuisMateri } from "@/components/KuisMateriContext";
 import MisiPenjagaKebun from "@/components/MisiPenjagaKebun";
@@ -481,8 +482,10 @@ function Adegan({
   kelamin,
   penjelasan,
   children,
+  utama = false,
 }: {
   judul: string;
+  utama?: boolean;
   warna?: string;
   src: string;
   alt: string;
@@ -492,8 +495,8 @@ function Adegan({
   children: ReactNode;
 }) {
   return (
-    <section className="space-y-3">
-      <p className="text-xs font-black uppercase tracking-wide text-[#1C01A5]">{judul}</p>
+    <section className={utama ? "space-y-4 border-b-4 border-[#1C01A5] pb-8" : "space-y-3"}>
+      <p className={utama ? "text-xl font-black leading-snug text-[#1C01A5]" : "text-xs font-black uppercase tracking-wide text-[#1C01A5]"}>{judul}</p>
       <TombolVoiceMateriPai1 kelas={kelas} kelamin={kelamin} cuplikan={cuplikanKalimat(penjelasan)} />
       {/* eslint-disable-next-line @next/next/no-img-element */}
       <img src={src} alt={alt} className="w-full rounded-xl border border-[#1C01A5]/10 bg-white object-cover" />
@@ -886,14 +889,24 @@ function KartuA({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminGuru }) {
     <KartuBingkai>
       <KepalaKartu
         ikon="📚🦉"
-        judul={kartu.judul}
+        judul="A. Rak Buku"
         anak="Empat rak buku · tambah, simpan, kurang, pinjam"
         kelas={kelas}
         kelamin={kelamin}
         cuplikan={cuplikanKalimat(kartu.voice[0])}
       />
+      <TujuanBelajar
+        butir={[
+          "Menjumlah tanpa menyimpan.",
+          "Menjumlah dengan menyimpan.",
+          "Mengurangi tanpa meminjam.",
+          "Mengurangi dengan meminjam.",
+          "Menyelesaikan soal cerita tambah dan kurang.",
+        ]}
+      />
       <div className="mt-4 space-y-4">
         <Adegan
+          utama
           judul="Sub-bab 1 — Penjumlahan tanpa menyimpan"
           warna="border-sky-200 bg-white"
           src="/doodle-mtk/mtk-3-bab2-sub1.jpg"
@@ -935,6 +948,7 @@ function KartuA({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminGuru }) {
         </Adegan>
 
         <Adegan
+          utama
           judul="Sub-bab 2 — Penjumlahan dengan menyimpan"
           warna="border-amber-200 bg-white"
           src="/doodle-mtk/mtk-3-bab2-sub2.jpg"
@@ -981,6 +995,7 @@ function KartuA({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminGuru }) {
         </Adegan>
 
         <Adegan
+          utama
           judul="Sub-bab 3 — Pengurangan tanpa meminjam"
           warna="border-emerald-200 bg-white"
           src="/doodle-mtk/mtk-3-bab2-sub3.jpg"
@@ -1020,6 +1035,7 @@ function KartuA({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminGuru }) {
         </Adegan>
 
         <Adegan
+          utama
           judul="Sub-bab 4 — Pengurangan dengan meminjam"
           warna="border-rose-200 bg-white"
           src="/doodle-mtk/mtk-3-bab2-sub4.jpg"
@@ -1086,6 +1102,7 @@ function KartuA({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminGuru }) {
         </Adegan>
 
         <Adegan
+          utama
           judul="Sub-bab 5 — Soal cerita"
           warna="border-violet-200 bg-white"
           src="/doodle-mtk/mtk-3-bab2-sub5.jpg"

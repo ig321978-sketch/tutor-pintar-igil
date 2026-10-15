@@ -2,6 +2,7 @@
 
 import HasilJawabanKuis from "@/components/HasilJawabanKuis";
 import KartuPoinPenting from "@/components/KartuPoinPenting";
+import TujuanBelajar from "@/components/TujuanBelajar";
 import PetaContoh from "@/components/PetaContoh";
 import { useKuisMateri } from "@/components/KuisMateriContext";
 import MisiPenjagaKebun from "@/components/MisiPenjagaKebun";
@@ -117,8 +118,10 @@ function Adegan({
   kelamin,
   penjelasan,
   children,
+  utama = false,
 }: {
   judul: string;
+  utama?: boolean;
   src: string;
   alt: string;
   kelas?: string;
@@ -127,8 +130,8 @@ function Adegan({
   children: ReactNode;
 }) {
   return (
-    <section className="space-y-3">
-      <p className="text-xs font-black uppercase tracking-wide text-[#1C01A5]">{judul}</p>
+    <section className={utama ? "space-y-4 border-b-4 border-[#1C01A5] pb-8" : "space-y-3"}>
+      <p className={utama ? "text-xl font-black leading-snug text-[#1C01A5]" : "text-xs font-black uppercase tracking-wide text-[#1C01A5]"}>{judul}</p>
       <TombolVoiceMateriPai1 kelas={kelas} kelamin={kelamin} cuplikan={cuplikanKalimat(penjelasan)} />
       {/* eslint-disable-next-line @next/next/no-img-element */}
       <img src={src} alt={alt} className="w-full rounded-xl border border-[#1C01A5]/10 bg-white object-cover" />
@@ -503,17 +506,22 @@ function KartuA({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminGuru }) {
     <KartuBingkai>
       <KepalaKartu
         ikon="🌱🦉"
-        judul={kartu.judul}
+        judul="A. Kebun Petak"
         anak="Nisa, Farhan, Cinta, dan Igil di kebun petak"
         kelas={kelas}
         kelamin={kelamin}
         cuplikan={cuplikanKalimat(kartu.voice[0] ?? [])}
       />
-      <p className="mt-3 text-center text-sm font-semibold text-slate-600">
-        Tujuan: menghitung keliling persegi dan persegi panjang, lalu menentukan luas dengan menghitung petak.
-      </p>
+      <TujuanBelajar
+        butir={[
+          "Menghitung keliling persegi.",
+          "Menghitung keliling persegi panjang.",
+          "Menentukan luas dengan menghitung petak.",
+        ]}
+      />
       <div className="mt-4 space-y-4">
         <Adegan
+          utama
           judul="Sub-bab 1 — Keliling persegi"
           src="/doodle-mtk/mtk-3-keliling-sub1.jpg"
           alt="Kebun persegi dikelilingi tali. Igil bertopi biru bersama tiga anak."
@@ -546,6 +554,7 @@ function KartuA({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminGuru }) {
         </Adegan>
 
         <Adegan
+          utama
           judul="Sub-bab 2 — Keliling persegi panjang"
           src="/doodle-mtk/mtk-3-keliling-sub2.jpg"
           alt="Kebun persegi panjang dengan tali di tepi. Wortel dan sayuran di dalamnya."
@@ -578,6 +587,7 @@ function KartuA({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminGuru }) {
         </Adegan>
 
         <Adegan
+          utama
           judul="Sub-bab 3 — Menjumlahkan semua sisi"
           src="/doodle-mtk/mtk-3-keliling-sub3.jpg"
           alt="Farhan berjalan di tali keliling kebun. Cinta memegang ujung tali."
@@ -610,6 +620,7 @@ function KartuA({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminGuru }) {
         </Adegan>
 
         <Adegan
+          utama
           judul="Sub-bab 4 — Luas dengan petak"
           src="/doodle-mtk/mtk-3-keliling-sub4.jpg"
           alt="Anak-anak menata petak warna di dalam tali kebun. Igil bertopi biru di tepi."
@@ -642,6 +653,7 @@ function KartuA({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminGuru }) {
         </Adegan>
 
         <Adegan
+          utama
           judul="Sub-bab 5 — Membandingkan luas"
           src="/doodle-mtk/mtk-3-keliling-sub5.jpg"
           alt="Dua kebun petak berdampingan. Tiga anak dan Igil membandingkannya."

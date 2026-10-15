@@ -2,6 +2,7 @@
 
 import HasilJawabanKuis from "@/components/HasilJawabanKuis";
 import KartuPoinPenting from "@/components/KartuPoinPenting";
+import TujuanBelajar from "@/components/TujuanBelajar";
 import PetaContoh from "@/components/PetaContoh";
 import { useKuisMateri } from "@/components/KuisMateriContext";
 import MisiPenjagaKebun from "@/components/MisiPenjagaKebun";
@@ -142,8 +143,10 @@ function Adegan({
   kelamin,
   penjelasan,
   children,
+  utama = false,
 }: {
   judul: string;
+  utama?: boolean;
   src: string;
   alt: string;
   kelas?: string;
@@ -152,8 +155,8 @@ function Adegan({
   children: ReactNode;
 }) {
   return (
-    <section className="space-y-3">
-      <p className="text-xs font-black uppercase tracking-wide text-[#1C01A5]">{judul}</p>
+    <section className={utama ? "space-y-4 border-b-4 border-[#1C01A5] pb-8" : "space-y-3"}>
+      <p className={utama ? "text-xl font-black leading-snug text-[#1C01A5]" : "text-xs font-black uppercase tracking-wide text-[#1C01A5]"}>{judul}</p>
       <TombolVoiceMateriPai1 kelas={kelas} kelamin={kelamin} cuplikan={cuplikanKalimat(penjelasan)} />
       {/* eslint-disable-next-line @next/next/no-img-element */}
       <img src={src} alt={alt} className="w-full rounded-xl border border-[#1C01A5]/10 bg-white object-cover" />
@@ -536,17 +539,23 @@ function KartuA({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminGuru }) {
     <KartuBingkai>
       <KepalaKartu
         ikon="👦👧🐼"
-        judul={kartu.judul}
+        judul="A. Lapangan Sekolah"
         anak="Aldi, Naya, Fikri, dan Pandu"
         kelas={kelas}
         kelamin={kelamin}
         cuplikan={cuplikanKalimat(kartu.voice[0] ?? [])}
       />
-      <p className="mt-3 text-center text-sm font-semibold text-slate-600">
-        Tujuan: membaca, menulis, membandingkan, dan mengurutkan bilangan sampai 10.000.
-      </p>
+      <TujuanBelajar
+        butir={[
+          "Membaca bilangan sampai 10.000.",
+          "Menulis bilangan sampai 10.000.",
+          "Membandingkan bilangan sampai 10.000.",
+          "Mengurutkan bilangan sampai 10.000.",
+        ]}
+      />
       <div className="mt-4 space-y-4">
         <Adegan
+          utama
           judul="Sub-bab 1 — Membaca bilangan ribuan"
           src="/doodle-mtk/mtk-3-bab1-sub1.jpg"
           alt="Lapangan sekolah, papan skor kosong, dan empat kotak rak kosong. Aldi memegang catatan, Naya memegang stopwatch, Fikri melambai, panda berdiri di samping."
@@ -581,6 +590,7 @@ function KartuA({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminGuru }) {
         </Adegan>
 
         <Adegan
+          utama
           judul="Sub-bab 2 — Nilai tempat ribuan sampai satuan"
           src="/doodle-mtk/mtk-3-bab1-sub2.jpg"
           alt="Anak-anak, panda, balon, dan empat kotak rak kosong di depan papan yang masih kosong."
@@ -615,6 +625,7 @@ function KartuA({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminGuru }) {
         </Adegan>
 
         <Adegan
+          utama
           judul="Sub-bab 3 — Membandingkan bilangan"
           src="/doodle-mtk/mtk-3-bab1-sub3.jpg"
           alt="Dua papan skor kosong di atas timbangan, dengan penggaris pemeriksaan dari kiri ke kanan."
@@ -649,6 +660,7 @@ function KartuA({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminGuru }) {
         </Adegan>
 
         <Adegan
+          utama
           judul="Sub-bab 4 — Mengurutkan bilangan"
           src="/doodle-mtk/mtk-3-bab1-sub4.jpg"
           alt="Anak tangga podium tanpa angka. Aldi memasang kartu nama polos di papan hasil lomba."
@@ -683,6 +695,7 @@ function KartuA({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminGuru }) {
         </Adegan>
 
         <Adegan
+          utama
           judul="Sub-bab 5 — Membaca bilangan yang mengandung angka nol"
           src="/doodle-mtk/mtk-3-bab1-sub5.jpg"
           alt="Dua papan skor kosong berdampingan. Satu rak angka masih kosong."

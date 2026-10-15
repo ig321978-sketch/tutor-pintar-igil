@@ -2,6 +2,7 @@
 
 import HasilJawabanKuis from "@/components/HasilJawabanKuis";
 import KartuPoinPenting from "@/components/KartuPoinPenting";
+import TujuanBelajar from "@/components/TujuanBelajar";
 import PetaContoh from "@/components/PetaContoh";
 import { useKuisMateri } from "@/components/KuisMateriContext";
 import MisiPenjagaKebun from "@/components/MisiPenjagaKebun";
@@ -117,8 +118,10 @@ function Adegan({
   kelamin,
   penjelasan,
   children,
+  utama = false,
 }: {
   judul: string;
+  utama?: boolean;
   src: string;
   alt: string;
   kelas?: string;
@@ -127,8 +130,8 @@ function Adegan({
   children: ReactNode;
 }) {
   return (
-    <section className="space-y-3">
-      <p className="text-xs font-black uppercase tracking-wide text-[#1C01A5]">{judul}</p>
+    <section className={utama ? "space-y-4 border-b-4 border-[#1C01A5] pb-8" : "space-y-3"}>
+      <p className={utama ? "text-xl font-black leading-snug text-[#1C01A5]" : "text-xs font-black uppercase tracking-wide text-[#1C01A5]"}>{judul}</p>
       <TombolVoiceMateriPai1 kelas={kelas} kelamin={kelamin} cuplikan={cuplikanKalimat(penjelasan)} />
       {/* eslint-disable-next-line @next/next/no-img-element */}
       <img src={src} alt={alt} className="w-full rounded-xl border border-[#1C01A5]/10 bg-white object-cover" />
@@ -504,17 +507,22 @@ function KartuA({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminGuru }) {
     <KartuBingkai>
       <KepalaKartu
         ikon="🏮🦉"
-        judul={kartu.judul}
+        judul="A. Pos Lampion"
         anak="Nisa, Farhan, Cinta, dan Igil di pos lampion"
         kelas={kelas}
         kelamin={kelamin}
         cuplikan={cuplikanKalimat(kartu.voice[0] ?? [])}
       />
-      <p className="mt-3 text-center text-sm font-semibold text-slate-600">
-        Tujuan: mengisi kotak pada kalimat tambah dan kurang, mengecek kalimat, lalu mengubah cerita menjadi kalimat.
-      </p>
+      <TujuanBelajar
+        butir={[
+          "Mengisi kotak pada kalimat tambah dan kurang.",
+          "Mengecek kalimat.",
+          "Mengubah cerita menjadi kalimat.",
+        ]}
+      />
       <div className="mt-4 space-y-4">
         <Adegan
+          utama
           judul="Sub-bab 1 — Kotak pada penjumlahan"
           src="/doodle-mtk/mtk-3-kalimat-sub1.jpg"
           alt="Pos lampion dengan kartu kosong di tali. Igil bertopi biru bersama tiga anak."
@@ -547,6 +555,7 @@ function KartuA({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminGuru }) {
         </Adegan>
 
         <Adegan
+          utama
           judul="Sub-bab 2 — Kotak pada pengurangan"
           src="/doodle-mtk/mtk-3-kalimat-sub2.jpg"
           alt="Beberapa lampion sudah turun ke keranjang. Igil menunjuk tali yang lebih sepi."
@@ -579,6 +588,7 @@ function KartuA({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminGuru }) {
         </Adegan>
 
         <Adegan
+          utama
           judul="Sub-bab 3 — Kotak di depan"
           src="/doodle-mtk/mtk-3-kalimat-sub3.jpg"
           alt="Kait pertama kosong, lampion mulai dari kait berikutnya. Igil bertengger di bambu."
@@ -611,6 +621,7 @@ function KartuA({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminGuru }) {
         </Adegan>
 
         <Adegan
+          utama
           judul="Sub-bab 4 — Kalimat benar atau salah"
           src="/doodle-mtk/mtk-3-kalimat-sub4.jpg"
           alt="Dua tumpukan lampion sama tinggi dan dua tumpukan yang tidak sama. Farhan memegang kartu kosong."
@@ -643,6 +654,7 @@ function KartuA({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminGuru }) {
         </Adegan>
 
         <Adegan
+          utama
           judul="Sub-bab 5 — Soal cerita"
           src="/doodle-mtk/mtk-3-kalimat-sub5.jpg"
           alt="Cinta memegang lampion dan bercerita. Farhan membawa keranjang. Igil mendengar di tepi tali."

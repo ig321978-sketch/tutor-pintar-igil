@@ -3,6 +3,7 @@
 import HasilJawabanKuis from "@/components/HasilJawabanKuis";
 import PetaContoh from "@/components/PetaContoh";
 import KartuPoinPenting from "@/components/KartuPoinPenting";
+import TujuanBelajar from "@/components/TujuanBelajar";
 import { useKuisMateri } from "@/components/KuisMateriContext";
 import MisiPenjagaKebun from "@/components/MisiPenjagaKebun";
 import { SLOT_AJUAN_SEBELUM_KARTU_D } from "@/components/NaskahMtk2Bab1";
@@ -127,8 +128,10 @@ function Adegan({
   kelamin,
   penjelasan,
   children,
+  utama = false,
 }: {
   judul: string;
+  utama?: boolean;
   src: string;
   alt: string;
   kelas?: string;
@@ -137,8 +140,8 @@ function Adegan({
   children: ReactNode;
 }) {
   return (
-    <section className="space-y-3">
-      <p className="text-xs font-black uppercase tracking-wide text-[#1C01A5]">{judul}</p>
+    <section className={utama ? "space-y-4 border-b-4 border-[#1C01A5] pb-8" : "space-y-3"}>
+      <p className={utama ? "text-xl font-black leading-snug text-[#1C01A5]" : "text-xs font-black uppercase tracking-wide text-[#1C01A5]"}>{judul}</p>
       <TombolVoiceMateriPai1 kelas={kelas} kelamin={kelamin} cuplikan={cuplikanKalimat(penjelasan)} />
       {/* eslint-disable-next-line @next/next/no-img-element */}
       <img src={src} alt={alt} className="w-full rounded-xl border border-[#1C01A5]/10 bg-white object-cover" />
@@ -518,17 +521,21 @@ function KartuA({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminGuru }) {
     <KartuBingkai>
       <KepalaKartu
         ikon="📏🦉"
-        judul={kartu.judul}
+        judul="A. Jalan Sehat"
         anak="Nisa, Farhan, Cinta, dan Igil di jalan sehat"
         kelas={kelas}
         kelamin={kelamin}
         cuplikan={cuplikanKalimat(kartu.voice[0] ?? [])}
       />
-      <p className="mt-3 text-center text-sm font-semibold text-slate-600">
-        Tujuan: memilih cm, m, km, g, dan kg, lalu mengubah satuannya.
-      </p>
+      <TujuanBelajar
+        butir={[
+          "Memilih satuan cm, m, km, g, dan kg.",
+          "Mengubah satuan.",
+        ]}
+      />
       <div className="mt-4 space-y-4">
         <Adegan
+          utama
           judul="Sub-bab 1 — Satuan panjang"
           src="/doodle-mtk/mtk-3-ukur-sub1.jpg"
           alt="Anak-anak mengukur jalur jalan sehat. Igil memegang pita ukur."
@@ -563,6 +570,7 @@ function KartuA({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminGuru }) {
         </Adegan>
 
         <Adegan
+          utama
           judul="Sub-bab 2 — Satuan berat"
           src="/doodle-mtk/mtk-3-ukur-sub2.jpg"
           alt="Biskuit kecil dan jerigen air di meja pos minum. Igil melihat timbangan."
@@ -597,6 +605,7 @@ function KartuA({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminGuru }) {
         </Adegan>
 
         <Adegan
+          utama
           judul="Sub-bab 3 — Alat ukur"
           src="/doodle-mtk/mtk-3-ukur-sub3.jpg"
           alt="Penggaris, meteran gulung, dan timbangan duduk di meja pos jalan sehat."
@@ -631,6 +640,7 @@ function KartuA({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminGuru }) {
         </Adegan>
 
         <Adegan
+          utama
           judul="Sub-bab 4 — Konversi panjang"
           src="/doodle-mtk/mtk-3-ukur-sub4.jpg"
           alt="Pita meter diubah menjadi sentimeter di papan pos jalan sehat."
@@ -665,6 +675,7 @@ function KartuA({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminGuru }) {
         </Adegan>
 
         <Adegan
+          utama
           judul="Sub-bab 5 — Konversi berat"
           src="/doodle-mtk/mtk-3-ukur-sub5.jpg"
           alt="Jerigen air diubah dari kilogram menjadi gram di timbangan."

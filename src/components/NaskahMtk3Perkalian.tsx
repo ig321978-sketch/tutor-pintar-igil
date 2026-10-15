@@ -3,6 +3,7 @@
 import HasilJawabanKuis from "@/components/HasilJawabanKuis";
 import PetaContoh from "@/components/PetaContoh";
 import KartuPoinPenting from "@/components/KartuPoinPenting";
+import TujuanBelajar from "@/components/TujuanBelajar";
 import { useKuisMateri } from "@/components/KuisMateriContext";
 import MisiPenjagaKebun from "@/components/MisiPenjagaKebun";
 import { SLOT_AJUAN_SEBELUM_KARTU_D } from "@/components/NaskahMtk2Bab1";
@@ -126,8 +127,10 @@ function Adegan({
   kelamin,
   penjelasan,
   children,
+  utama = false,
 }: {
   judul: string;
+  utama?: boolean;
   src: string;
   alt: string;
   kelas?: string;
@@ -136,8 +139,8 @@ function Adegan({
   children: ReactNode;
 }) {
   return (
-    <section className="space-y-3">
-      <p className="text-xs font-black uppercase tracking-wide text-[#1C01A5]">{judul}</p>
+    <section className={utama ? "space-y-4 border-b-4 border-[#1C01A5] pb-8" : "space-y-3"}>
+      <p className={utama ? "text-xl font-black leading-snug text-[#1C01A5]" : "text-xs font-black uppercase tracking-wide text-[#1C01A5]"}>{judul}</p>
       <TombolVoiceMateriPai1 kelas={kelas} kelamin={kelamin} cuplikan={cuplikanKalimat(penjelasan)} />
       {/* eslint-disable-next-line @next/next/no-img-element */}
       <img src={src} alt={alt} className="w-full rounded-xl border border-[#1C01A5]/10 bg-white object-cover" />
@@ -687,17 +690,23 @@ function KartuA({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminGuru }) {
     <KartuBingkai>
       <KepalaKartu
         ikon="🎈🦉"
-        judul={kartu.judul}
+        judul="A. Kios Balon"
         anak="Nisa, Farhan, Cinta, dan Igil di kios balon"
         kelas={kelas}
         kelamin={kelamin}
         cuplikan={cuplikanKalimat(kartu.voice[0] ?? [])}
       />
-      <p className="mt-3 text-center text-sm font-semibold text-slate-600">
-        Tujuan: menghitung perkalian sampai 100, menukar, mengelompokkan, dan memecah dua angka.
-      </p>
+      <TujuanBelajar
+        butir={[
+          "Menghitung perkalian sampai 100.",
+          "Menukar urutan perkalian.",
+          "Mengelompokkan perkalian.",
+          "Memecah perkalian dua angka.",
+        ]}
+      />
       <div className="mt-4 space-y-4">
         <Adegan
+          utama
           judul="Sub-bab 1 — Perkalian sebagai penjumlahan berulang"
           src="/doodle-mtk/mtk-3-perkalian-sub1.jpg"
           alt="Empat ikat balon di meja kios taman. Nisa, Farhan, Cinta, dan burung hantu Igil menghitungnya."
@@ -734,6 +743,7 @@ function KartuA({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminGuru }) {
         </Adegan>
 
         <Adegan
+          utama
           judul="Sub-bab 2 — Sifat pertukaran"
           src="/doodle-mtk/mtk-3-perkalian-sub2.jpg"
           alt="Dua tumpukan ikat balon bertukar tempat di meja kios. Hasil hitungnya tetap."
@@ -773,6 +783,7 @@ function KartuA({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminGuru }) {
         </Adegan>
 
         <Adegan
+          utama
           judul="Sub-bab 3 — Sifat pengelompokan"
           src="/doodle-mtk/mtk-3-perkalian-sub3.jpg"
           alt="Balon tersusun dua dus. Tiap dus ada beberapa ikat. Igil menunjuk kelompok yang dikerjakan dulu."
@@ -821,6 +832,7 @@ function KartuA({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminGuru }) {
         </Adegan>
 
         <Adegan
+          utama
           judul="Sub-bab 4 — Perkalian dua angka"
           src="/doodle-mtk/mtk-3-perkalian-sub4.jpg"
           alt="Susunan 24 kali 5. Angka merah 2+ naik ke kiri, hasilnya 120."
@@ -855,6 +867,7 @@ function KartuA({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminGuru }) {
         </Adegan>
 
         <Adegan
+          utama
           judul="Sub-bab 5 — Soal cerita perkalian"
           src="/doodle-mtk/mtk-3-perkalian-sub5.jpg"
           alt="Empat anak di taman. Masing-masing menerima satu ikat balon dari kios."

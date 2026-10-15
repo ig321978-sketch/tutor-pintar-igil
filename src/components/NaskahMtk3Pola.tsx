@@ -2,6 +2,7 @@
 
 import HasilJawabanKuis from "@/components/HasilJawabanKuis";
 import KartuPoinPenting from "@/components/KartuPoinPenting";
+import TujuanBelajar from "@/components/TujuanBelajar";
 import PetaContoh from "@/components/PetaContoh";
 import { useKuisMateri } from "@/components/KuisMateriContext";
 import MisiPenjagaKebun from "@/components/MisiPenjagaKebun";
@@ -117,8 +118,10 @@ function Adegan({
   kelamin,
   penjelasan,
   children,
+  utama = false,
 }: {
   judul: string;
+  utama?: boolean;
   src: string;
   alt: string;
   kelas?: string;
@@ -127,8 +130,8 @@ function Adegan({
   children: ReactNode;
 }) {
   return (
-    <section className="space-y-3">
-      <p className="text-xs font-black uppercase tracking-wide text-[#1C01A5]">{judul}</p>
+    <section className={utama ? "space-y-4 border-b-4 border-[#1C01A5] pb-8" : "space-y-3"}>
+      <p className={utama ? "text-xl font-black leading-snug text-[#1C01A5]" : "text-xs font-black uppercase tracking-wide text-[#1C01A5]"}>{judul}</p>
       <TombolVoiceMateriPai1 kelas={kelas} kelamin={kelamin} cuplikan={cuplikanKalimat(penjelasan)} />
       {/* eslint-disable-next-line @next/next/no-img-element */}
       <img src={src} alt={alt} className="w-full rounded-xl border border-[#1C01A5]/10 bg-white object-cover" />
@@ -493,17 +496,23 @@ function KartuA({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminGuru }) {
     <KartuBingkai>
       <KepalaKartu
         ikon="🔮🦉"
-        judul={kartu.judul}
+        judul="A. Taman Manik"
         anak="Nisa, Farhan, Cinta, dan Igil di taman manik"
         kelas={kelas}
         kelamin={kelamin}
         cuplikan={cuplikanKalimat(kartu.voice[0] ?? [])}
       />
-      <p className="mt-3 text-center text-sm font-semibold text-slate-600">
-        Tujuan: melanjutkan pola naik, pola turun, dan pola gambar, lalu membuat pola sendiri.
-      </p>
+      <TujuanBelajar
+        butir={[
+          "Melanjutkan pola naik.",
+          "Melanjutkan pola turun.",
+          "Melanjutkan pola gambar.",
+          "Membuat pola sendiri.",
+        ]}
+      />
       <div className="mt-4 space-y-4">
         <Adegan
+          utama
           judul="Sub-bab 1 — Pola naik"
           src="/doodle-mtk/mtk-3-pola-sub1.jpg"
           alt="Batu pijakan di taman, tumpukan manik yang makin tinggi. Igil bertopi biru bersama tiga anak."
@@ -536,6 +545,7 @@ function KartuA({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminGuru }) {
         </Adegan>
 
         <Adegan
+          utama
           judul="Sub-bab 2 — Pola turun"
           src="/doodle-mtk/mtk-3-pola-sub2.jpg"
           alt="Tumpukan manik yang makin pendek. Burung hantu dan dua anak di meja taman."
@@ -568,6 +578,7 @@ function KartuA({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminGuru }) {
         </Adegan>
 
         <Adegan
+          utama
           judul="Sub-bab 3 — Pola berulang"
           src="/doodle-mtk/mtk-3-pola-sub3.jpg"
           alt="Gelang manik merah dan kuning berselang-seling. Ekor layang-layang dengan pita berulang."
@@ -600,6 +611,7 @@ function KartuA({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminGuru }) {
         </Adegan>
 
         <Adegan
+          utama
           judul="Sub-bab 4 — Angka yang hilang"
           src="/doodle-mtk/mtk-3-pola-sub4.jpg"
           alt="Satu batu pijakan kosong di antara batu yang lain. Igil menunjuk celah itu."
@@ -632,6 +644,7 @@ function KartuA({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminGuru }) {
         </Adegan>
 
         <Adegan
+          utama
           judul="Sub-bab 5 — Pola sendiri"
           src="/doodle-mtk/mtk-3-pola-sub5.jpg"
           alt="Cinta merangkai gelang manik sendiri. Igil dan dua teman melihat."
