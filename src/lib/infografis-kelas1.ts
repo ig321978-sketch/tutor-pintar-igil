@@ -40,6 +40,11 @@ export function kelasTigaSd(kelas: string): boolean {
   return /^3\s*SD\b/i.test(k) || /^kelas\s*3(\s+SD)?\b/i.test(k);
 }
 
+export function kelasEmpatSd(kelas: string): boolean {
+  const k = kelas.trim();
+  return /^4\s*SD\b/i.test(k) || /^kelas\s*4(\s+SD)?\b/i.test(k);
+}
+
 export function adalahNaskahInfografis(teks?: string): boolean {
   const naskah = buangPenandaBatasNaskah(teks).trim();
   if (naskah.length < 40) return false;
