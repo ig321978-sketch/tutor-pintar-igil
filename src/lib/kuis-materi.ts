@@ -32,6 +32,7 @@ import { MODUL_MTK4_BAB2 } from "@/lib/modul-resmi-mtk-4-bab2";
 import { MODUL_MTK4_BAB3 } from "@/lib/modul-resmi-mtk-4-bab3";
 import { MODUL_MTK4_BAB4 } from "@/lib/modul-resmi-mtk-4-bab4";
 import { MODUL_MTK4_BAB5 } from "@/lib/modul-resmi-mtk-4-bab5";
+import { MODUL_MTK4_BAB6 } from "@/lib/modul-resmi-mtk-4-bab6";
 import { MODUL_MTK7_BAB1 } from "@/lib/modul-resmi-mtk-7-bab1";
 import { MODUL_MTK3_BAB3 } from "@/lib/modul-resmi-mtk-3-bab3";
 import { MODUL_PANCASILA1_BAB1 } from "@/lib/modul-resmi-pancasila-1-bab1";
@@ -73,6 +74,7 @@ import {
   adalahMtk4Bab3,
   adalahMtk4Bab4,
   adalahMtk4Bab5,
+  adalahMtk4Bab6,
   adalahMtk7Bab1,
   adalahMtk3Bab3,
   adalahPancasila1Bab1,
@@ -354,6 +356,14 @@ export function daftarIdKuisMateri(
         kartu.kuis.map((_, indeks) => idKuisKartuResmi(MODUL_MTK4_BAB5.id, kartu.kode, indeks)),
       ),
       idKuisTulisKartu(MODUL_MTK4_BAB5.id, "C"),
+    ];
+  }
+  if (adalahMtk4Bab6(kelas, mapel, materi)) {
+    return [
+      ...MODUL_MTK4_BAB6.kartu.flatMap((kartu) =>
+        kartu.kuis.map((_, indeks) => idKuisKartuResmi(MODUL_MTK4_BAB6.id, kartu.kode, indeks)),
+      ),
+      idKuisTulisKartu(MODUL_MTK4_BAB6.id, "C"),
     ];
   }
   if (adalahMtk7Bab1(kelas, mapel, materi)) {
