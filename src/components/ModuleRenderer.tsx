@@ -37,6 +37,7 @@ import NaskahMtk3Keliling from "@/components/NaskahMtk3Keliling";
 import NaskahMtk3Ruang from "@/components/NaskahMtk3Ruang";
 import NaskahMtk4Bab1 from "@/components/NaskahMtk4Bab1";
 import NaskahMtk4Bab2 from "@/components/NaskahMtk4Bab2";
+import NaskahMtk4Bab3 from "@/components/NaskahMtk4Bab3";
 import NaskahMtk7Bab1 from "@/components/NaskahMtk7Bab1";
 import NaskahMtk3Bab3 from "@/components/NaskahMtk3Bab3";
 import NaskahPancasila1 from "@/components/NaskahPancasila1";
@@ -90,6 +91,7 @@ import {
   adalahJudulMtk3Ruang,
   adalahJudulMtk4Bab1,
   adalahJudulMtk4Bab2,
+  adalahJudulMtk4Bab3,
   adalahJudulMtk7Bab1,
   adalahJudulMtk3Bab3,
   adalahJudulPancasila1Bab1,
@@ -160,6 +162,7 @@ import { MODUL_MTK3_KELILING } from "@/lib/modul-resmi-mtk-3-keliling";
 import { MODUL_MTK3_RUANG } from "@/lib/modul-resmi-mtk-3-ruang";
 import { MODUL_MTK4_BAB1 } from "@/lib/modul-resmi-mtk-4-bab1";
 import { MODUL_MTK4_BAB2 } from "@/lib/modul-resmi-mtk-4-bab2";
+import { MODUL_MTK4_BAB3 } from "@/lib/modul-resmi-mtk-4-bab3";
 import { MODUL_MTK7_BAB1 } from "@/lib/modul-resmi-mtk-7-bab1";
 import { MODUL_MTK3_BAB3 } from "@/lib/modul-resmi-mtk-3-bab3";
 import { naskahTampilanModulResmi } from "@/lib/modul-resmi-pai";
@@ -494,6 +497,13 @@ function ModuleRenderer({
         naskahTampilanModulResmi(MODUL_MTK4_BAB2, naskah)),
     [naskah, mapel, materi, kelas],
   );
+  const pakaiKartuMtk4Bab3 = useMemo(
+    () =>
+      kelasEmpatSd(kelas) &&
+      (adalahJudulMtk4Bab3(mapel, materi) ||
+        naskahTampilanModulResmi(MODUL_MTK4_BAB3, naskah)),
+    [naskah, mapel, materi, kelas],
+  );
   const pakaiKartuMtk7Bab1 = useMemo(
     () =>
       /^7\s*SMP\b/i.test(kelas.trim()) &&
@@ -824,6 +834,13 @@ function ModuleRenderer({
     return (
       <div className={className}>
         <NaskahMtk4Bab2 kelas={kelas} kelamin={kelamin} />
+      </div>
+    );
+  }
+  if (pakaiKartuMtk4Bab3) {
+    return (
+      <div className={className}>
+        <NaskahMtk4Bab3 kelas={kelas} kelamin={kelamin} />
       </div>
     );
   }
