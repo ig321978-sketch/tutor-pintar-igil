@@ -113,6 +113,27 @@ function Tabel({ kolom, baris }: { kolom: string[]; baris: string[][] }) {
   );
 }
 
+function TabelEmber({ baris, keterangan }: { baris: number; keterangan: string }) {
+  const pola = ["penuh", "penuh", "penuh", "kosong", "kosong"] as const;
+  return (
+    <div className="space-y-1">
+      <table className="border-collapse text-xs">
+        <tbody>
+          {Array.from({ length: baris }, (_, indeks) => (
+            <tr key={indeks}>
+              <th className="border border-slate-300 bg-white px-2 py-1 text-left font-black text-[#1C01A5]">Ember {indeks + 1}</th>
+              {pola.map((jenis, kolom) => (
+                <td key={kolom} className={`h-8 w-8 border ${jenis === "penuh" ? "border-sky-600 bg-sky-300" : "border-slate-300 bg-white"}`} />
+              ))}
+            </tr>
+          ))}
+        </tbody>
+      </table>
+      <p className="text-xs font-semibold text-slate-600">{keterangan}</p>
+    </div>
+  );
+}
+
 function Petak({ kolom, isi, keterangan }: { kolom: number; isi: Array<"isi" | "kosong">; keterangan: string }) {
   return (
     <div className="space-y-1">
@@ -212,8 +233,8 @@ export default function NaskahMtk6Bab1(_props: { kelas?: string; kelamin?: strin
           <Petak kolom={5} isi={["isi", "isi", "isi", "kosong", "kosong"]} keterangan="Satu ember kecil: 3 kotak dari 5, yaitu 3/5 m²." />
         </Kegiatan>
         <KotakJawaban id={idKuis("A", 2)} soal="Luas yang disiram 5 ember besar, dalam m²?" periksa={jumlahSepuluh} umpan="5 × 2 = 10 m²." />
-        <KotakJawaban id={idKuis("A", 3)} soal="Luas yang disiram 2 ember kecil, dalam m²?" periksa={enamPerLima} umpan="3/5 + 3/5 = 6/5 m². Lima kotak = 1 m², sisa 1 kotak = 1/5 m²." />
-        <KotakJawaban id={idKuis("A", 4)} soal="Luas yang disiram 5 ember kecil, dalam m²?" periksa={jumlahTiga} umpan="5 × 3 = 15 kotak. 15/5 = 3 m²." />
+        <KotakJawaban id={idKuis("A", 3)} soal="Luas yang disiram 2 ember kecil, dalam m²?" periksa={enamPerLima} umpan="2 baris × 3 kolom penuh = 6. Penyebut tetap 5, jadi 6/5 m²." />
+        <KotakJawaban id={idKuis("A", 4)} soal="Luas yang disiram 5 ember kecil, dalam m²?" periksa={jumlahTiga} umpan="5 baris × 3 kolom penuh = 15. 15/5 = 3 m²." />
         <Kegiatan label="Pembahasan">
           <p>Lima ember besar memakai perkalian bilangan asli: 5 × 2 = 10 m².</p>
           <p>Ember kecil dihitung dengan menambah kotak yang sama. Caranya ada di bagian berikut.</p>
@@ -221,32 +242,14 @@ export default function NaskahMtk6Bab1(_props: { kelas?: string; kelamin?: strin
 
         <div className="space-y-3 rounded-2xl border-2 border-sky-300 bg-sky-50 px-4 py-4 text-sm font-semibold leading-relaxed text-slate-800">
           <h3 className="text-lg font-black text-[#1C01A5]">Cara mudah: ember kecil</h3>
-          <p>Satu ember kecil menyiram 3/5 m². Bagi 1 m² menjadi 5 kotak sama. Ember itu mengisi 3 kotak.</p>
-          <Petak kolom={5} isi={["isi", "isi", "isi", "kosong", "kosong"]} keterangan="1 ember = 3 kotak. Tiap kotak = 1/5 m²." />
-          <p>Dua ember kecil berarti dua kelompok 3 kotak. Jumlahkan kotak yang terisi. Penyebut tetap 5.</p>
-          <div className="flex flex-wrap gap-6">
-            <Petak kolom={5} isi={["isi", "isi", "isi", "kosong", "kosong"]} keterangan="Ember 1: 3 kotak" />
-            <Petak kolom={5} isi={["isi", "isi", "isi", "kosong", "kosong"]} keterangan="Ember 2: 3 kotak" />
-          </div>
-          <p>3 + 3 = 6 kotak. Jadi 2 × 3/5 = 6/5 m².</p>
-          <p>Enam kotak itu sama dengan satu meter penuh ditambah sisanya.</p>
-          <div className="flex flex-wrap gap-6">
-            <Petak kolom={5} isi={["isi", "isi", "isi", "isi", "isi"]} keterangan="5 kotak = 1 m²" />
-            <Petak kolom={5} isi={["isi", "kosong", "kosong", "kosong", "kosong"]} keterangan="Sisa 1 kotak = 1/5 m²" />
-          </div>
-          <p>6/5 m² = 1 m² + 1/5 m². Jawaban yang ditulis tetap 6/5.</p>
-          <p>Lima ember kecil memakai langkah yang sama. Kalikan pembilang 3 dengan 5. Penyebut tetap 5.</p>
-          <Rumus anak="5 × 3/5 = 15/5 = 3" />
-          <Tabel
-            kolom={["Banyak ember", "Kotak terisi", "Luas"]}
-            baris={[
-              ["1", "3", "3/5 m²"],
-              ["2", "3 + 3 = 6", "6/5 m²"],
-              ["5", "5 × 3 = 15", "15/5 = 3 m²"],
-            ]}
-          />
+          <p>1 m² dibagi menjadi 5 kolom sama. Satu ember kecil mengisi 3 kolom. Dua kolom tetap kosong. Satu ember = satu baris.</p>
+          <TabelEmber baris={1} keterangan="1 baris, 5 kolom: 3 penuh dan 2 kosong. Hasilnya 3/5 m²." />
+          <p>2 ember = 2 baris. Tiap baris sama: 3 kolom penuh dan 2 kolom kosong.</p>
+          <TabelEmber baris={2} keterangan="Kolom penuh: 3 + 3 = 6. Tiap baris tetap 5 bagian, jadi 6/5 m²." />
+          <p>5 ember = 5 baris dengan pola yang sama.</p>
+          <TabelEmber baris={5} keterangan="Kolom penuh: 5 × 3 = 15. 15/5 = 3 m²." />
           <Rumus anak="a × b/c = (a × b)/c" />
-          <p>Kalikan pembilang dengan banyak ember. Penyebut tidak ikut dikali.</p>
+          <p>Banyak baris kali 3 kolom penuh. Penyebut tetap 5.</p>
         </div>
 
         <h3 className="text-lg font-black text-[#1C01A5]">2. Perkalian Pecahan dengan Bilangan Asli</h3>
