@@ -71,8 +71,10 @@ function Pecahan({ atas, bawah }: { atas: string; bawah: string }) {
 }
 
 function Teks({ anak }: { anak: string }) {
-  const potongan = anak.split(/(\([^)]+\)\/[A-Za-z0-9]+|[A-Za-z0-9]+\/[A-Za-z0-9]+)/g);
+  const potongan = anak.split(/(\([^)]+\)\/\([^)]+\)|\([^)]+\)\/[A-Za-z0-9]+|[A-Za-z0-9]+\/[A-Za-z0-9]+)/g);
   return potongan.map((bagian, indeks) => {
+    const duaKurung = bagian.match(/^\(([^)]+)\)\/\(([^)]+)\)$/);
+    if (duaKurung) return <Pecahan key={indeks} atas={duaKurung[1]} bawah={duaKurung[2]} />;
     const kurung = bagian.match(/^\(([^)]+)\)\/([A-Za-z0-9]+)$/);
     if (kurung) return <Pecahan key={indeks} atas={kurung[1]} bawah={kurung[2]} />;
     const biasa = bagian.match(/^([A-Za-z0-9]+)\/([A-Za-z0-9]+)$/);
@@ -123,12 +125,31 @@ function Tabel({ kolom, baris }: { kolom: string[]; baris: string[][] }) {
           {baris.map((barisItem) => (
             <tr key={barisItem.join("|")}>
               {barisItem.map((sel, indeks) => (
-                <td key={`${indeks}-${sel}`} className="border border-slate-200 px-3 py-2 font-semibold text-slate-800">{sel}</td>
+                <td key={`${indeks}-${sel}`} className="border border-slate-200 px-3 py-2 font-semibold leading-8 text-slate-800"><Teks anak={sel} /></td>
               ))}
             </tr>
           ))}
         </tbody>
       </table>
+    </div>
+  );
+}
+
+function Infografis({ judul, aturan, alur, kolom, baris }: { judul: string; aturan: string; alur: string[]; kolom: string[]; baris: string[][] }) {
+  return (
+    <div className="space-y-3 rounded-2xl border-2 border-[#F0AB00] bg-[#FFFBF0] px-4 py-4">
+      <p className="text-xs font-black uppercase tracking-wide text-[#1C01A5]">Infografis</p>
+      <h3 className="text-lg font-black text-[#1C01A5]">{judul}</h3>
+      <p className="text-sm font-semibold leading-8 text-slate-800"><Teks anak={aturan} /></p>
+      <div className="flex flex-col items-stretch gap-1">
+        {alur.map((langkah, indeks) => (
+          <div key={`${indeks}-${langkah}`} className="flex flex-col items-center gap-1">
+            {indeks > 0 ? <span className="text-lg font-black leading-none text-[#1C01A5]">↓</span> : null}
+            <p className="w-full rounded-xl border border-[#1C01A5]/15 bg-white px-3 py-2 text-center text-sm font-black leading-8 text-[#1C01A5]"><Teks anak={langkah} /></p>
+          </div>
+        ))}
+      </div>
+      <Tabel kolom={kolom} baris={baris} />
     </div>
   );
 }
@@ -272,6 +293,18 @@ export default function NaskahMtk6Bab1(_props: { kelas?: string; kelamin?: strin
           <p>Banyak baris kali 3 kolom penuh. Penyebut tetap 5.</p>
         </div>
 
+        <Infografis
+          judul="Perkalian bilangan asli dengan pecahan"
+          aturan="Ubah bilangan asli menjadi pecahan. Pembilang1 × pembilang2 dibagi penyebut1 × penyebut2."
+          alur={["5 × 2/3", "5/1 × 2/3", "(5 × 2)/(1 × 3)", "10/3 = 3 + 1/3"]}
+          kolom={["Langkah", "Pembilang", "Penyebut"]}
+          baris={[
+            ["5 menjadi pecahan", "5", "1"],
+            ["Kali", "5 × 2 = 10", "1 × 3 = 3"],
+            ["Hasil", "10/3", "3 + 1/3"],
+          ]}
+        />
+
         <h3 className="text-lg font-black text-[#1C01A5]">2. Perkalian Pecahan dengan Bilangan Asli</h3>
         <Kegiatan label="Permasalahan">
           <Gambar src="/doodle-mtk/mtk-6-bab1-pohon.jpg" alt="Agam berdiri di kebun pohon mangga." keterangan="Kebun mangga Agam. Pohonnya ada 15." />
@@ -286,6 +319,18 @@ export default function NaskahMtk6Bab1(_props: { kelas?: string; kelamin?: strin
           <Rumus anak="a/c × b = (a × b)/c" />
           <p><Teks anak="Bandingkan 1/4 × 20 dan 20 × 1/4. Keduanya sama dengan 5." /></p>
         </Kegiatan>
+
+        <Infografis
+          judul="Perkalian pecahan dengan bilangan asli"
+          aturan="Ubah bilangan asli menjadi pecahan. Pembilang1 × pembilang2 dibagi penyebut1 × penyebut2."
+          alur={["2/3 × 15", "2/3 × 15/1", "(2 × 15)/(3 × 1)", "30/3 = 10"]}
+          kolom={["Langkah", "Pembilang", "Penyebut"]}
+          baris={[
+            ["15 menjadi pecahan", "15", "1"],
+            ["Kali", "2 × 15 = 30", "3 × 1 = 3"],
+            ["Hasil", "30/3", "10"],
+          ]}
+        />
 
         <Kegiatan label="Latihan 1.1">
           <p><Teks anak="1. Hani punya 4 pita. Tiap pita panjangnya 3/4 m." /></p>
@@ -323,6 +368,18 @@ export default function NaskahMtk6Bab1(_props: { kelas?: string; kelamin?: strin
           <p><Teks anak="Rini menghitung 4/3 ÷ 2 dengan membagi pembilang saja: (4 ÷ 2)/3 = 2/3. Pada soal ini hasilnya sama dengan 4/3 × 1/2 = 2/3. Cara yang berlaku umum tetap kali dengan kebalikan pembagi." /></p>
         </Kegiatan>
 
+        <Infografis
+          judul="Pembagian pecahan dengan bilangan asli"
+          aturan="Ubah bilangan asli menjadi pecahan. Pembilang1 × penyebut2 dibagi penyebut1 × pembilang2."
+          alur={["1/2 ÷ 3", "1/2 ÷ 3/1", "(1 × 1)/(2 × 3)", "1/6"]}
+          kolom={["Peran", "Hitung"]}
+          baris={[
+            ["Pembilang1 × penyebut2", "1 × 1 = 1"],
+            ["Penyebut1 × pembilang2", "2 × 3 = 6"],
+            ["Hasil", "1/6"],
+          ]}
+        />
+
         <h3 className="text-lg font-black text-[#1C01A5]">2. Pembagian Bilangan Asli dengan Pecahan</h3>
         <Kegiatan label="Permasalahan">
           <Gambar src="/doodle-mtk/mtk-6-bab1-jus.jpg" alt="Tiga botol minuman dan tumpukan gelas kecil." keterangan="Jus jeruk, jus jambu, dan air mineral, masing-masing 3 liter." />
@@ -339,6 +396,19 @@ export default function NaskahMtk6Bab1(_props: { kelas?: string; kelamin?: strin
           <p>Hasilnya lebih besar dari 3 karena gelasnya lebih kecil dari 1 liter. Membagi dengan pecahan sama dengan mengalikan kebalikan pecahan itu.</p>
           <Rumus anak="a ÷ b/c = a × c/b" />
         </Kegiatan>
+
+        <Infografis
+          judul="Pembagian bilangan asli dengan pecahan"
+          aturan="Ubah bilangan asli menjadi pecahan. Pembilang1 × penyebut2 dibagi penyebut1 × pembilang2."
+          alur={["5 ÷ 2/3", "5/1 ÷ 2/3", "(5 × 3)/(1 × 2)", "15/2 = 7 + 1/2"]}
+          kolom={["Peran", "Hitung"]}
+          baris={[
+            ["5 menjadi pecahan", "5/1"],
+            ["Pembilang1 × penyebut2", "5 × 3 = 15"],
+            ["Penyebut1 × pembilang2", "1 × 2 = 2"],
+            ["Hasil", "15/2 = 7 + 1/2"],
+          ]}
+        />
 
         <Kegiatan label="Latihan 1.2">
           <p><Teks anak="1. Pak Rudi membagi 2/4 bagian tanah kepada 3 anak secara adil." /></p>
@@ -368,6 +438,18 @@ export default function NaskahMtk6Bab1(_props: { kelas?: string; kelamin?: strin
           <p><Teks anak="Angka di kiri koma menempati satuan. Angka pertama di kanan koma menempati persepuluhan. 0,10 sama dengan 0,1 karena keduanya sama dengan 1/10." /></p>
           <p><Teks anak="1/10 = 0,1 = 0,10. Untuk penyebut yang tidak bisa dijadikan 10 atau 100, buku meminta diskusi di kelas." /></p>
         </Kegiatan>
+
+        <Infografis
+          judul="Mengubah pecahan menjadi desimal"
+          aturan="Samakan penyebut menjadi 10 atau 100. Pembilang itulah angka di belakang koma."
+          alur={["1/2", "5/10", "0,5", "3/4 = 75/100 = 0,75"]}
+          kolom={["Pecahan", "Penyebut 10 atau 100", "Desimal"]}
+          baris={[
+            ["1/2", "5/10", "0,5"],
+            ["1/5", "2/10", "0,2"],
+            ["3/4", "75/100", "0,75"],
+          ]}
+        />
 
         <h3 className="text-lg font-black text-[#1C01A5]">2. Membandingkan dan Mengurutkan Bilangan Desimal</h3>
         <Kegiatan label="Permasalahan">
@@ -407,6 +489,17 @@ export default function NaskahMtk6Bab1(_props: { kelas?: string; kelamin?: strin
           <p>Urutan terdekat ke terjauh: 0,9 km, 1,9 km, 2,3 km, 2,6 km, 3,6 km.</p>
           <p>Urutan sepuluh siswa dari yang terdekat: Andi 1,5; Anita 1,9; Alma 2,3; Rini 2,6; Fatim 2,8; Dias 3,1; Rido 3,6; Fadilah 4,7; Budi 10,9; Musa 11,3.</p>
         </Kegiatan>
+
+        <Infografis
+          judul="Membandingkan dan mengurutkan desimal"
+          aturan="Bandingkan dari kiri tanda koma: puluhan, satuan, lalu persepuluhan."
+          alur={["2,9 dan 2,49", "Satuan sama-sama 2", "Persepuluhan 9 dan 4", "2,9 lebih besar", "Urutan dekat ke jauh: 0,9 → 1,9 → 2,3 → 2,6 → 3,6"]}
+          kolom={["Tempat", "2,9", "2,49"]}
+          baris={[
+            ["Satuan", "2", "2"],
+            ["Persepuluhan", "9", "4"],
+          ]}
+        />
         <KotakJawaban id={idKuis("C", 3)} soal="Dari lima jarak itu, yang terdekat berapa km?" periksa={desimalNolKomaSembilan} umpan="0,9 km." />
         <KotakJawaban id={idKuis("C", 4)} soal="Dari lima jarak itu, yang terjauh berapa km?" periksa={desimalTigaKomaEnam} umpan="3,6 km." />
         <KotakJawaban id={idKuis("C", 5)} soal="Siapa yang rumahnya paling dekat, atau berapa km jaraknya?" periksa={(teks) => namaAtauAngka(teks, "andi", "1.5", desimalSatuKomaLima)} umpan="Andi, 1,5 km." />
@@ -452,12 +545,44 @@ export default function NaskahMtk6Bab1(_props: { kelas?: string; kelamin?: strin
         <Kegiatan label="Perkalian pecahan">
           <p><Teks anak="Tangki terisi 1/2. Hari ini terpakai 1/3 dari air yang ada. Bagian yang terpakai 1/2 × 1/3 = 1/6." /></p>
         </Kegiatan>
+        <Infografis
+          judul="Perkalian pecahan dengan pecahan"
+          aturan="Pembilang1 × pembilang2 dibagi penyebut1 × penyebut2."
+          alur={["1/2 × 1/3", "(1 × 1)/(2 × 3)", "1/6"]}
+          kolom={["Peran", "Hitung"]}
+          baris={[
+            ["Pembilang1 × pembilang2", "1 × 1 = 1"],
+            ["Penyebut1 × penyebut2", "2 × 3 = 6"],
+            ["Hasil", "1/6"],
+          ]}
+        />
         <Kegiatan label="Pembagian pecahan">
           <p><Teks anak="3 gelas air memenuhi 2/3 botol. Satu botol penuh memerlukan 3 ÷ 2/3 = 9/2 gelas. 1/2 gelas memenuhi 3/4 botol, jadi satu botol penuh memerlukan 1/2 ÷ 3/4 = 2/3 gelas." /></p>
         </Kegiatan>
+        <Infografis
+          judul="Pembagian pecahan dengan pecahan"
+          aturan="Pembilang1 × penyebut2 dibagi penyebut1 × pembilang2."
+          alur={["1/2 ÷ 3/4", "(1 × 4)/(2 × 3)", "4/6 = 2/3"]}
+          kolom={["Peran", "Hitung"]}
+          baris={[
+            ["Pembilang1 × penyebut2", "1 × 4 = 4"],
+            ["Penyebut1 × pembilang2", "2 × 3 = 6"],
+            ["Hasil", "4/6 = 2/3"],
+          ]}
+        />
         <Kegiatan label="Desimal berulang">
           <p><Teks anak="1/3 liter dan 1/6 liter tidak berhenti pada satu angka di belakang koma. Dengan kalkulator, 1/3 = 0,333… dan 1/6 = 0,1666…" /></p>
         </Kegiatan>
+        <Infografis
+          judul="Desimal berulang"
+          aturan="Jika penyebut tidak bisa dijadikan 10 atau 100, desimalnya bisa berulang."
+          alur={["1/3 = 0,333…", "1/6 = 0,1666…"]}
+          kolom={["Pecahan", "Desimal pada kalkulator"]}
+          baris={[
+            ["1/3", "0,333…"],
+            ["1/6", "0,1666…"],
+          ]}
+        />
       </section>
     </article>
   );
