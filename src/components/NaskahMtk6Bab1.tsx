@@ -386,6 +386,77 @@ function TabelEmber({ baris, keterangan }: { baris: number; keterangan: string }
   );
 }
 
+function KantongPermen() {
+  return (
+    <figure className="space-y-1">
+      <div className="flex flex-wrap gap-3" aria-label="Empat kantong, tiap kantong berisi enam permen">
+        {Array.from({ length: 4 }, (_, kantong) => (
+          <div key={kantong} className="w-[5.5rem] rounded-md border-2 border-slate-500 bg-white px-2 py-1.5">
+            <div className="mb-1 h-1 border-b border-dashed border-slate-400" />
+            <div className="grid grid-cols-3 gap-1 py-1">
+              {["bg-rose-300", "bg-sky-400", "bg-lime-400", "bg-red-500", "bg-orange-400", "bg-emerald-400"].map((warna, permen) => (
+                <span key={permen} className={`mx-auto h-2.5 w-4 rounded-full ${warna}`} />
+              ))}
+            </div>
+            <div className="mt-1 h-1 border-t border-dashed border-slate-400" />
+          </div>
+        ))}
+      </div>
+      <figcaption className="text-xs font-semibold leading-6 text-slate-600">Empat kantong. Tiap kantong berisi enam permen.</figcaption>
+    </figure>
+  );
+}
+
+function PermenDuaPuluh() {
+  return (
+    <figure className="space-y-1">
+      <div className="inline-grid grid-cols-4 gap-1.5 rounded-xl border border-slate-300 bg-white p-3" aria-label="Dua puluh permen">
+        {Array.from({ length: 20 }, (_, indeks) => (
+          <span key={indeks} className="h-3 w-5 rounded-full bg-amber-400" />
+        ))}
+      </div>
+      <figcaption className="text-xs font-semibold leading-6 text-slate-600">Dua puluh permen untuk lima anak.</figcaption>
+    </figure>
+  );
+}
+
+function PilihanDuaPertiga() {
+  const jeruk = (jumlah: number, kunci: string) => Array.from({ length: jumlah }, (_, indeks) => <span key={`${kunci}-${indeks}`} className="h-6 w-6 rounded-full bg-orange-400" />);
+  return (
+    <div className="grid gap-4 sm:grid-cols-3">
+      <figure className="space-y-1">
+        <Petak kolom={10} isi={[...Array(6).fill("isi"), ...Array(4).fill("kosong")]} keterangan="a. Enam kotak biru dari sepuluh kotak." />
+      </figure>
+      <figure className="space-y-1">
+        <div className="h-24 w-24 rounded-full border-4 border-amber-800" style={{ background: "conic-gradient(#f59e0b 0deg 90deg, #fde68a 90deg 360deg)" }} aria-label="Pizza empat potong, satu potong dilingkari" />
+        <figcaption className="text-xs font-semibold leading-6 text-slate-600"><Teks anak="b. Satu potong dari empat potong pizza." /></figcaption>
+      </figure>
+      <figure className="space-y-1">
+        <div className="space-y-1" aria-label="Delapan jeruk di dalam tanda, empat jeruk di luar">
+          <div className="grid w-max grid-cols-4 gap-1 rounded-lg border-2 border-rose-600 p-1">{jeruk(8, "dalam")}</div>
+          <div className="grid w-max grid-cols-4 gap-1 px-1">{jeruk(4, "luar")}</div>
+        </div>
+        <figcaption className="text-xs font-semibold leading-6 text-slate-600">c. Delapan jeruk di dalam tanda, dari dua belas jeruk.</figcaption>
+      </figure>
+    </div>
+  );
+}
+
+function operasiEmpatKaliEnam(teks: string): boolean {
+  const s = rapat(teks).replace(/[×x*]/g, "x");
+  return /(?<!\d)4x6(?!\d)/.test(s) || s.includes("4kali6");
+}
+
+function operasiDuaPuluhBagiLima(teks: string): boolean {
+  const s = rapat(teks).replace(/[÷:]/g, "/");
+  return /(?<!\d)20\/5(?!\d)/.test(s) || s.includes("20bagi5");
+}
+
+function gambarJeruk(teks: string): boolean {
+  const huruf = teks.toLowerCase();
+  return /(?:^|[^a-z])c(?:[^a-z]|$)/.test(huruf) || huruf.includes("jeruk");
+}
+
 function Petak({ kolom, isi, keterangan }: { kolom: number; isi: Array<"isi" | "kosong">; keterangan: string }) {
   return (
     <div className="space-y-1">
@@ -462,9 +533,19 @@ export default function NaskahMtk6Bab1(_props: { kelas?: string; kelamin?: strin
 
       <section className="space-y-3">
         <JudulBagian anak="Ayo Mengingat Kembali" />
-        <p className="text-sm font-semibold leading-8 text-slate-800">Beberapa kantong permen yang sama banyak dihitung dengan perkalian bilangan asli.</p>
-        <p className="text-sm font-semibold leading-8 text-slate-800"><Teks anak="Ada 20 permen untuk 5 anak. Tiap anak mendapat 20 ÷ 5 = 4 permen." /></p>
-        <p className="text-sm font-semibold leading-8 text-slate-800"><Teks anak="Pecahan 2/3 berarti 2 bagian dari 3 bagian yang sama besar." /></p>
+        <p className="text-sm font-semibold leading-8 text-slate-800">Ingat kembali perkalian bilangan asli, pembagian bilangan asli, dan pecahan sebagai bagian dari keseluruhan.</p>
+        <p className="text-sm font-black leading-8 text-[#1C01A5]">Perkalian dua bilangan asli</p>
+        <KantongPermen />
+        <KotakJawaban id={idKuis("A", 12)} soal="a. Berapa banyak permen seluruhnya?" periksa={(teks) => utuh(teks, "24")} umpan="4 × 6 = 24 permen." />
+        <KotakJawaban id={idKuis("A", 13)} soal="b. Tuliskan operasi perkaliannya." periksa={operasiEmpatKaliEnam} umpan="4 × 6 = 24." />
+        <p className="text-sm font-black leading-8 text-[#1C01A5]">Pembagian dua bilangan asli</p>
+        <PermenDuaPuluh />
+        <KotakJawaban id={idKuis("A", 14)} soal="a. Berapa permen yang diperoleh tiap anak?" periksa={(teks) => utuh(teks, "4")} umpan="20 ÷ 5 = 4 permen." />
+        <KotakJawaban id={idKuis("A", 15)} soal="b. Tuliskan operasi pembagiannya." periksa={operasiDuaPuluhBagiLima} umpan="20 ÷ 5 = 4." />
+        <p className="text-sm font-black leading-8 text-[#1C01A5]">Pecahan sebagai bagian dari keseluruhan</p>
+        <p className="text-sm font-semibold leading-8 text-slate-800"><Teks anak="Gambar mana yang menunjukkan 2/3?" /></p>
+        <PilihanDuaPertiga />
+        <KotakJawaban id={idKuis("A", 16)} soal="Tuliskan huruf gambar yang menunjukkan 2/3." periksa={gambarJeruk} umpan="Gambar c. 8 jeruk dari 12 jeruk sama dengan 2/3. Gambar a adalah 6/10. Gambar b adalah 1/4." />
         <Kegiatan label="Pembuka">
           <Gambar src="/doodle-mtk/mtk-6-bab1-penampungan.jpg" alt="Agam dan Ayah mengambil air dari penampungan di kebun yang kering." keterangan="Agam membantu Ayah mengambil air di penampungan." />
           <p><Teks anak="Penampungan air masih terisi 2/3 bagian. Hari ini terpakai 1/5 dari air yang tersisa. Air sisa 2/3 itu juga akan dipakai selama 2 hari, dibagi sama banyak." /></p>
