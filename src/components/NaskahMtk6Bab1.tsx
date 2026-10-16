@@ -28,7 +28,7 @@ import {
   sepersembilan,
   sepertiga,
 } from "@/lib/nilai-mtk-6-bab1";
-import { useState, type ReactNode } from "react";
+import { useId, useLayoutEffect, useRef, useState, type ReactNode, type Ref } from "react";
 
 function idKuis(kode: string, indeks: number): string {
   return idKuisKartuResmi(MODUL_MTK6_BAB1.id, kode, indeks);
@@ -135,45 +135,230 @@ function Tabel({ kolom, baris }: { kolom: string[]; baris: string[][] }) {
   );
 }
 
-function SisiPecahan({ nomor, atas, bawah }: { nomor: string; atas: string; bawah: string }) {
+function AngkaSusun({ atas, bawah, bingkai, refAtas, refBawah }: { atas: string; bawah: string; bingkai?: boolean; refAtas?: Ref<HTMLSpanElement>; refBawah?: Ref<HTMLSpanElement> }) {
   return (
-    <span className="inline-flex min-w-16 flex-col items-center leading-none">
-      <span className="text-[0.65rem] font-bold text-slate-500">Pembilang{nomor}</span>
-      <span className="mt-1 border-b border-current px-3 pb-0.5 text-lg">{atas}</span>
-      <span className="px-3 pt-0.5 text-lg">{bawah}</span>
-      <span className="mt-1 text-[0.65rem] font-bold text-slate-500">Penyebut{nomor}</span>
-    </span>
-  );
-}
-
-function BagiBerlabel() {
-  return (
-    <span className="flex flex-col items-center gap-2 py-1">
-      <span className="text-xs font-bold leading-5 text-slate-600">Pembilang1 per Penyebut1 dibagi Pembilang2 per Penyebut2</span>
-      <span className="inline-flex items-center gap-3">
-        <SisiPecahan nomor="1" atas="1" bawah="2" />
-        <span className="text-xl">÷</span>
-        <SisiPecahan nomor="2" atas="3" bawah="1" />
+    <span className={bingkai ? "rounded-md border-[3px] border-red-600 bg-white px-2 py-1" : "bg-white px-1.5 py-1"}>
+      <span className="flex min-w-6 flex-col items-center leading-none text-slate-900">
+        <span ref={refAtas} className="whitespace-nowrap text-lg font-black">{atas}</span>
+        <span className="my-1 h-0.5 w-full min-w-5 bg-slate-900" />
+        <span ref={refBawah} className="whitespace-nowrap text-lg font-black">{bawah}</span>
       </span>
     </span>
   );
 }
 
-function Infografis({ judul, aturan, alur, kolom, baris }: { judul: string; aturan: string; alur: Array<string | ReactNode>; kolom: string[]; baris: string[][] }) {
+function GambarPasangan({
+  kiriAtas,
+  kiriBawah,
+  kananAtas,
+  kananBawah,
+  operasi,
+  arah,
+  hasilAtas,
+  hasilBawah,
+  akhirAtas,
+  akhirBawah,
+  catatan,
+}: {
+  kiriAtas: string;
+  kiriBawah: string;
+  kananAtas: string;
+  kananBawah: string;
+  operasi: string;
+  arah: "lurus" | "silang" | "ubah";
+  hasilAtas?: string;
+  hasilBawah?: string;
+  akhirAtas?: string;
+  akhirBawah?: string;
+  catatan?: string;
+}) {
+  const bungkus = useRef<HTMLDivElement>(null);
+  const kiriAtasRef = useRef<HTMLSpanElement>(null);
+  const kiriBawahRef = useRef<HTMLSpanElement>(null);
+  const kananAtasRef = useRef<HTMLSpanElement>(null);
+  const kananBawahRef = useRef<HTMLSpanElement>(null);
+  const penanda = useId().replace(/:/g, "");
+  const [garis, setGaris] = useState<Array<{ x1: number; y1: number; x2: number; y2: number }>>([]);
+  const labelKiri = arah === "ubah" ? "" : "1";
+  const labelKanan = arah === "ubah" ? "" : "2";
+
+  useLayoutEffect(() => {
+    const ukur = () => {
+      const akar = bungkus.current;
+      const elemen = [kiriAtasRef.current, kiriBawahRef.current, kananAtasRef.current, kananBawahRef.current];
+      if (!akar || elemen.some((item) => !item)) return;
+      const kotak = akar.getBoundingClientRect();
+      if (kotak.width < 8) return;
+      const tepi = (el: HTMLSpanElement, sisi: "kiri" | "kanan") => {
+        const batas = el.getBoundingClientRect();
+        return {
+          x: (sisi === "kiri" ? batas.left : batas.right) - kotak.left,
+          y: batas.top + batas.height / 2 - kotak.top,
+        };
+      };
+      const renggang = (dari: { x: number; y: number }, ke: { x: number; y: number }) => {
+        const dx = ke.x - dari.x;
+        const dy = ke.y - dari.y;
+        const panjang = Math.hypot(dx, dy) || 1;
+        const jarak = 4;
+        return {
+          x1: dari.x + (dx / panjang) * jarak,
+          y1: dari.y + (dy / panjang) * jarak,
+          x2: ke.x - (dx / panjang) * jarak,
+          y2: ke.y - (dy / panjang) * jarak,
+        };
+      };
+      const kiriAtasTitik = tepi(kiriAtasRef.current!, "kanan");
+      const kiriBawahTitik = tepi(kiriBawahRef.current!, "kanan");
+      const kananAtasTitik = tepi(kananAtasRef.current!, "kiri");
+      const kananBawahTitik = tepi(kananBawahRef.current!, "kiri");
+      if (arah === "ubah") {
+        setGaris([
+          renggang(tepi(kiriAtasRef.current!, "kanan"), tepi(kananAtasRef.current!, "kiri")),
+          renggang(tepi(kiriBawahRef.current!, "kanan"), tepi(kananBawahRef.current!, "kiri")),
+        ]);
+        return;
+      }
+      if (arah === "silang") {
+        setGaris([
+          renggang(kananBawahTitik, kiriAtasTitik),
+          renggang(kananAtasTitik, kiriBawahTitik),
+        ]);
+        return;
+      }
+      setGaris([
+        renggang(kananAtasTitik, kiriAtasTitik),
+        renggang(kananBawahTitik, kiriBawahTitik),
+      ]);
+    };
+    ukur();
+    const akar = bungkus.current;
+    if (!akar || typeof ResizeObserver === "undefined") return;
+    const pengamat = new ResizeObserver(ukur);
+    pengamat.observe(akar);
+    return () => pengamat.disconnect();
+  }, [arah, kiriAtas, kiriBawah, kananAtas, kananBawah]);
+
+  const sisi = (atas: string, bawah: string, judulAtas: string, judulBawah: string, refAtas: Ref<HTMLSpanElement>, refBawah: Ref<HTMLSpanElement>, bingkai?: boolean) => (
+    <span className="inline-flex flex-col items-center">
+      <span className="mb-1 min-h-4 text-[0.65rem] font-bold leading-4 text-slate-500">{judulAtas}</span>
+      <AngkaSusun atas={atas} bawah={bawah} bingkai={bingkai} refAtas={refAtas} refBawah={refBawah} />
+      <span className="mt-1 min-h-4 text-[0.65rem] font-bold leading-4 text-slate-500">{judulBawah}</span>
+    </span>
+  );
+
+  return (
+    <div className="space-y-2" aria-label={`${kiriAtas} per ${kiriBawah} ${operasi} ${kananAtas} per ${kananBawah}`}>
+      <div className="flex w-max min-w-full justify-center">
+      <div className="flex items-center gap-x-2">
+        <div ref={bungkus} className="relative z-0 inline-flex items-center">
+          {sisi(kiriAtas, kiriBawah, `Pembilang${labelKiri}`, `Penyebut${labelKiri}`, kiriAtasRef, kiriBawahRef, true)}
+          <span className={`relative z-30 bg-white font-black text-slate-900 ${arah === "ubah" ? "mx-1 rounded-full px-1.5 text-sm text-green-700" : "mx-1 flex h-8 w-8 items-center justify-center rounded-full text-xl"}`}>{operasi}</span>
+          {sisi(kananAtas, kananBawah, `Pembilang${labelKanan}`, `Penyebut${labelKanan}`, kananAtasRef, kananBawahRef)}
+          <svg className="pointer-events-none absolute inset-0 z-20 h-full w-full overflow-visible" aria-hidden>
+            <defs>
+              <marker id={penanda} markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto">
+                <polygon points="0 0, 8 4, 0 8" fill="#16a34a" />
+              </marker>
+            </defs>
+            {garis.map((item) => (
+              <line key={`${item.x1}-${item.y1}-${item.x2}-${item.y2}`} x1={item.x1} y1={item.y1} x2={item.x2} y2={item.y2} stroke="#16a34a" strokeWidth="2.5" markerEnd={`url(#${penanda})`} />
+            ))}
+          </svg>
+        </div>
+        {hasilAtas && hasilBawah ? (
+          <>
+            <span className="text-xl font-black text-slate-900">=</span>
+            <span className="inline-flex flex-col items-center">
+              <span className="mb-1 min-h-4" />
+              <AngkaSusun atas={hasilAtas} bawah={hasilBawah} />
+              <span className="mt-1 min-h-4" />
+            </span>
+          </>
+        ) : null}
+        {akhirAtas && akhirBawah ? (
+          <>
+            <span className="text-xl font-black text-slate-900">=</span>
+            <span className="inline-flex flex-col items-center">
+              <span className="mb-1 min-h-4" />
+              <AngkaSusun atas={akhirAtas} bawah={akhirBawah} />
+              <span className="mt-1 min-h-4" />
+            </span>
+          </>
+        ) : null}
+        {akhirAtas && !akhirBawah ? (
+          <>
+            <span className="text-xl font-black text-slate-900">=</span>
+            <span className="text-2xl font-black text-slate-900">{akhirAtas}</span>
+          </>
+        ) : null}
+      </div>
+      </div>
+      {catatan ? <p className="text-center text-sm font-bold leading-8 text-slate-800"><Teks anak={catatan} /></p> : null}
+    </div>
+  );
+}
+
+function GambarBanding() {
+  return (
+    <div className="flex flex-col items-center gap-3" aria-label="2,9 dan 2,49. Bandingkan persepuluhan.">
+      <div className="flex items-start gap-8">
+        <div className="flex flex-col items-center">
+          <span className="text-3xl font-black tracking-wide text-slate-900">2,<span className="rounded-md border-[3px] border-red-600 px-1">9</span></span>
+          <span className="mt-1 text-xl font-black leading-none text-green-700">↑</span>
+          <span className="text-[0.65rem] font-bold text-green-700">persepuluhan</span>
+        </div>
+        <div className="flex flex-col items-center">
+          <span className="text-3xl font-black tracking-wide text-slate-900">2,<span className="rounded-md border-[3px] border-red-600 px-1">4</span>9</span>
+          <span className="mt-1 text-xl font-black leading-none text-green-700">↑</span>
+          <span className="text-[0.65rem] font-bold text-green-700">persepuluhan</span>
+        </div>
+      </div>
+      <p className="text-center text-sm font-bold text-slate-800">9 lebih besar dari 4, jadi 2,9 lebih besar.</p>
+    </div>
+  );
+}
+
+function GambarBerulang() {
+  const pecahan = (atas: string, bawah: string) => (
+    <span className="inline-flex flex-col items-center">
+      <span className="mb-1 min-h-4 text-[0.65rem] font-bold leading-4 text-slate-500">Pembilang</span>
+      <AngkaSusun atas={atas} bawah={bawah} bingkai />
+      <span className="mt-1 min-h-4 text-[0.65rem] font-bold leading-4 text-slate-500">Penyebut</span>
+    </span>
+  );
+  return (
+    <div className="flex flex-wrap items-center justify-center gap-x-8 gap-y-4">
+      <div className="flex items-center gap-2">
+        {pecahan("1", "3")}
+        <span className="text-2xl font-black text-slate-900">=</span>
+        <span className="flex flex-col items-center">
+          <span className="text-2xl font-black text-slate-900">0,<span className="text-green-700">333</span>…</span>
+          <span className="text-lg font-black leading-none text-green-700">↑</span>
+          <span className="text-[0.65rem] font-bold text-green-700">berulang</span>
+        </span>
+      </div>
+      <div className="flex items-center gap-2">
+        {pecahan("1", "6")}
+        <span className="text-2xl font-black text-slate-900">=</span>
+        <span className="flex flex-col items-center">
+          <span className="text-2xl font-black text-slate-900">0,1<span className="text-green-700">666</span>…</span>
+          <span className="text-lg font-black leading-none text-green-700">↑</span>
+          <span className="text-[0.65rem] font-bold text-green-700">berulang</span>
+        </span>
+      </div>
+    </div>
+  );
+}
+
+function Infografis({ judul, aturan, gambar, kolom, baris }: { judul: string; aturan: string; gambar: ReactNode; kolom: string[]; baris: string[][] }) {
   return (
     <div className="space-y-3 rounded-2xl border-2 border-[#F0AB00] bg-[#FFFBF0] px-4 py-4">
       <p className="text-xs font-black uppercase tracking-wide text-[#1C01A5]">Infografis</p>
       <h3 className="text-lg font-black text-[#1C01A5]">{judul}</h3>
       <p className="text-sm font-semibold leading-8 text-slate-800"><Teks anak={aturan} /></p>
-      <div className="flex flex-col items-stretch gap-1">
-        {alur.map((langkah, indeks) => (
-          <div key={indeks} className="flex flex-col items-center gap-1">
-            {indeks > 0 ? <span className="text-lg font-black leading-none text-[#1C01A5]">↓</span> : null}
-            <div className="w-full rounded-xl border border-[#1C01A5]/15 bg-white px-3 py-2 text-center text-sm font-black leading-8 text-[#1C01A5]">
-              {typeof langkah === "string" ? <Teks anak={langkah} /> : langkah}
-            </div>
-          </div>
-        ))}
+      <div className="overflow-x-auto rounded-xl border border-[#1C01A5]/15 bg-white px-3 py-4">
+        {gambar}
       </div>
       <Tabel kolom={kolom} baris={baris} />
     </div>
@@ -321,8 +506,8 @@ export default function NaskahMtk6Bab1(_props: { kelas?: string; kelamin?: strin
 
         <Infografis
           judul="Perkalian bilangan asli dengan pecahan"
-          aturan="Ubah bilangan asli menjadi pecahan. Pembilang1 × pembilang2 dibagi penyebut1 × penyebut2."
-          alur={["5 × 2/3", "5/1 × 2/3", "(5 × 2)/(1 × 3)", "10/3 = 3 + 1/3"]}
+          aturan="Ubah bilangan asli menjadi pecahan. Panah lurus: Pembilang1 per Penyebut1 dikali Pembilang2 per Penyebut2."
+          gambar={<GambarPasangan kiriAtas="5" kiriBawah="1" kananAtas="2" kananBawah="3" operasi="×" arah="lurus" hasilAtas="5 × 2" hasilBawah="1 × 3" akhirAtas="10" akhirBawah="3" catatan="10/3 sama dengan 3 + 1/3." />}
           kolom={["Langkah", "Pembilang", "Penyebut"]}
           baris={[
             ["5 menjadi pecahan", "5", "1"],
@@ -348,8 +533,8 @@ export default function NaskahMtk6Bab1(_props: { kelas?: string; kelamin?: strin
 
         <Infografis
           judul="Perkalian pecahan dengan bilangan asli"
-          aturan="Ubah bilangan asli menjadi pecahan. Pembilang1 × pembilang2 dibagi penyebut1 × penyebut2."
-          alur={["2/3 × 15", "2/3 × 15/1", "(2 × 15)/(3 × 1)", "30/3 = 10"]}
+          aturan="Ubah bilangan asli menjadi pecahan. Panah lurus: Pembilang1 per Penyebut1 dikali Pembilang2 per Penyebut2."
+          gambar={<GambarPasangan kiriAtas="2" kiriBawah="3" kananAtas="15" kananBawah="1" operasi="×" arah="lurus" hasilAtas="2 × 15" hasilBawah="3 × 1" akhirAtas="30" akhirBawah="3" catatan="30/3 sama dengan 10." />}
           kolom={["Langkah", "Pembilang", "Penyebut"]}
           baris={[
             ["15 menjadi pecahan", "15", "1"],
@@ -396,8 +581,8 @@ export default function NaskahMtk6Bab1(_props: { kelas?: string; kelamin?: strin
 
         <Infografis
           judul="Pembagian pecahan dengan bilangan asli"
-          aturan="Ubah bilangan asli menjadi pecahan. Pembilang1 × penyebut2 dibagi penyebut1 × pembilang2."
-          alur={["1/2 ÷ 3", <BagiBerlabel key="bagi" />, "(1 × 1)/(2 × 3)", "1/6"]}
+          aturan="Ubah bilangan asli menjadi pecahan. Panah silang: Pembilang1 per Penyebut1 dibagi Pembilang2 per Penyebut2."
+          gambar={<GambarPasangan kiriAtas="1" kiriBawah="2" kananAtas="3" kananBawah="1" operasi="÷" arah="silang" hasilAtas="1 × 1" hasilBawah="2 × 3" akhirAtas="1" akhirBawah="6" />}
           kolom={["Peran", "Pada 1/2 ÷ 3/1"]}
           baris={[
             ["Pembilang1", "1"],
@@ -429,8 +614,8 @@ export default function NaskahMtk6Bab1(_props: { kelas?: string; kelamin?: strin
 
         <Infografis
           judul="Pembagian bilangan asli dengan pecahan"
-          aturan="Ubah bilangan asli menjadi pecahan. Pembilang1 × penyebut2 dibagi penyebut1 × pembilang2."
-          alur={["5 ÷ 2/3", "5/1 ÷ 2/3", "(5 × 3)/(1 × 2)", "15/2 = 7 + 1/2"]}
+          aturan="Ubah bilangan asli menjadi pecahan. Panah silang: Pembilang1 per Penyebut1 dibagi Pembilang2 per Penyebut2."
+          gambar={<GambarPasangan kiriAtas="5" kiriBawah="1" kananAtas="2" kananBawah="3" operasi="÷" arah="silang" hasilAtas="5 × 3" hasilBawah="1 × 2" akhirAtas="15" akhirBawah="2" catatan="15/2 sama dengan 7 + 1/2." />}
           kolom={["Peran", "Hitung"]}
           baris={[
             ["5 menjadi pecahan", "5/1"],
@@ -471,8 +656,8 @@ export default function NaskahMtk6Bab1(_props: { kelas?: string; kelamin?: strin
 
         <Infografis
           judul="Mengubah pecahan menjadi desimal"
-          aturan="Samakan penyebut menjadi 10 atau 100. Pembilang itulah angka di belakang koma."
-          alur={["1/2", "5/10", "0,5", "3/4 = 75/100 = 0,75"]}
+          aturan="Kalikan pembilang dan penyebut dengan bilangan yang sama, sampai penyebut menjadi 10 atau 100."
+          gambar={<div className="space-y-4"><GambarPasangan kiriAtas="1" kiriBawah="2" kananAtas="5" kananBawah="10" operasi="×5" arah="ubah" akhirAtas="0,5" /><GambarPasangan kiriAtas="3" kiriBawah="4" kananAtas="75" kananBawah="100" operasi="×25" arah="ubah" akhirAtas="0,75" /></div>}
           kolom={["Pecahan", "Penyebut 10 atau 100", "Desimal"]}
           baris={[
             ["1/2", "5/10", "0,5"],
@@ -522,8 +707,8 @@ export default function NaskahMtk6Bab1(_props: { kelas?: string; kelamin?: strin
 
         <Infografis
           judul="Membandingkan dan mengurutkan desimal"
-          aturan="Bandingkan dari kiri tanda koma: puluhan, satuan, lalu persepuluhan."
-          alur={["2,9 dan 2,49", "Satuan sama-sama 2", "Persepuluhan 9 dan 4", "2,9 lebih besar", "Urutan dekat ke jauh: 0,9 → 1,9 → 2,3 → 2,6 → 3,6"]}
+          aturan="Bandingkan dari kiri tanda koma. Panah hijau menunjuk persepuluhan."
+          gambar={<GambarBanding />}
           kolom={["Tempat", "2,9", "2,49"]}
           baris={[
             ["Satuan", "2", "2"],
@@ -577,8 +762,8 @@ export default function NaskahMtk6Bab1(_props: { kelas?: string; kelamin?: strin
         </Kegiatan>
         <Infografis
           judul="Perkalian pecahan dengan pecahan"
-          aturan="Pembilang1 × pembilang2 dibagi penyebut1 × penyebut2."
-          alur={["1/2 × 1/3", "(1 × 1)/(2 × 3)", "1/6"]}
+          aturan="Panah lurus: Pembilang1 per Penyebut1 dikali Pembilang2 per Penyebut2."
+          gambar={<GambarPasangan kiriAtas="1" kiriBawah="2" kananAtas="1" kananBawah="3" operasi="×" arah="lurus" hasilAtas="1 × 1" hasilBawah="2 × 3" akhirAtas="1" akhirBawah="6" />}
           kolom={["Peran", "Hitung"]}
           baris={[
             ["Pembilang1 × pembilang2", "1 × 1 = 1"],
@@ -591,8 +776,8 @@ export default function NaskahMtk6Bab1(_props: { kelas?: string; kelamin?: strin
         </Kegiatan>
         <Infografis
           judul="Pembagian pecahan dengan pecahan"
-          aturan="Pembilang1 × penyebut2 dibagi penyebut1 × pembilang2."
-          alur={["1/2 ÷ 3/4", "(1 × 4)/(2 × 3)", "4/6 = 2/3"]}
+          aturan="Panah silang: Pembilang1 per Penyebut1 dibagi Pembilang2 per Penyebut2."
+          gambar={<GambarPasangan kiriAtas="1" kiriBawah="2" kananAtas="3" kananBawah="4" operasi="÷" arah="silang" hasilAtas="1 × 4" hasilBawah="2 × 3" akhirAtas="4" akhirBawah="6" catatan="4/6 sama dengan 2/3." />}
           kolom={["Peran", "Hitung"]}
           baris={[
             ["Pembilang1 × penyebut2", "1 × 4 = 4"],
@@ -605,8 +790,8 @@ export default function NaskahMtk6Bab1(_props: { kelas?: string; kelamin?: strin
         </Kegiatan>
         <Infografis
           judul="Desimal berulang"
-          aturan="Jika penyebut tidak bisa dijadikan 10 atau 100, desimalnya bisa berulang."
-          alur={["1/3 = 0,333…", "1/6 = 0,1666…"]}
+          aturan="Jika penyebut tidak bisa dijadikan 10 atau 100, angka hijau berulang."
+          gambar={<GambarBerulang />}
           kolom={["Pecahan", "Desimal pada kalkulator"]}
           baris={[
             ["1/3", "0,333…"],
