@@ -369,12 +369,9 @@ export function daftarIdKuisMateri(
     ];
   }
   if (adalahMtk6Bab1(kelas, mapel, materi)) {
-    return [
-      ...MODUL_MTK6_BAB1.kartu.flatMap((kartu) =>
-        kartu.kuis.map((_, indeks) => idKuisKartuResmi(MODUL_MTK6_BAB1.id, kartu.kode, indeks)),
-      ),
-      idKuisTulisKartu(MODUL_MTK6_BAB1.id, "C"),
-    ];
+    return MODUL_MTK6_BAB1.kartu.flatMap((kartu) =>
+      kartu.kuis.map((_, indeks) => idKuisKartuResmi(MODUL_MTK6_BAB1.id, kartu.kode, indeks)),
+    );
   }
   if (adalahMtk7Bab1(kelas, mapel, materi)) {
     return MODUL_MTK7_BAB1.kartu.flatMap((kartu) =>
