@@ -117,7 +117,7 @@ function Tabel({ kolom, baris }: { kolom: string[]; baris: string[][] }) {
         <thead>
           <tr>
             {kolom.map((nama) => (
-              <th key={nama} className="border border-slate-200 bg-slate-50 px-3 py-2 text-left font-black text-[#1C01A5]">{nama}</th>
+              <th key={nama} className="border border-slate-200 bg-slate-50 px-3 py-2 text-left font-black leading-8 text-[#1C01A5]"><Teks anak={nama} /></th>
             ))}
           </tr>
         </thead>
@@ -135,7 +135,31 @@ function Tabel({ kolom, baris }: { kolom: string[]; baris: string[][] }) {
   );
 }
 
-function Infografis({ judul, aturan, alur, kolom, baris }: { judul: string; aturan: string; alur: string[]; kolom: string[]; baris: string[][] }) {
+function SisiPecahan({ nomor, atas, bawah }: { nomor: string; atas: string; bawah: string }) {
+  return (
+    <span className="inline-flex min-w-16 flex-col items-center leading-none">
+      <span className="text-[0.65rem] font-bold text-slate-500">Pembilang{nomor}</span>
+      <span className="mt-1 border-b border-current px-3 pb-0.5 text-lg">{atas}</span>
+      <span className="px-3 pt-0.5 text-lg">{bawah}</span>
+      <span className="mt-1 text-[0.65rem] font-bold text-slate-500">Penyebut{nomor}</span>
+    </span>
+  );
+}
+
+function BagiBerlabel() {
+  return (
+    <span className="flex flex-col items-center gap-2 py-1">
+      <span className="text-xs font-bold leading-5 text-slate-600">Pembilang1 per Penyebut1 dibagi Pembilang2 per Penyebut2</span>
+      <span className="inline-flex items-center gap-3">
+        <SisiPecahan nomor="1" atas="1" bawah="2" />
+        <span className="text-xl">÷</span>
+        <SisiPecahan nomor="2" atas="3" bawah="1" />
+      </span>
+    </span>
+  );
+}
+
+function Infografis({ judul, aturan, alur, kolom, baris }: { judul: string; aturan: string; alur: Array<string | ReactNode>; kolom: string[]; baris: string[][] }) {
   return (
     <div className="space-y-3 rounded-2xl border-2 border-[#F0AB00] bg-[#FFFBF0] px-4 py-4">
       <p className="text-xs font-black uppercase tracking-wide text-[#1C01A5]">Infografis</p>
@@ -143,9 +167,11 @@ function Infografis({ judul, aturan, alur, kolom, baris }: { judul: string; atur
       <p className="text-sm font-semibold leading-8 text-slate-800"><Teks anak={aturan} /></p>
       <div className="flex flex-col items-stretch gap-1">
         {alur.map((langkah, indeks) => (
-          <div key={`${indeks}-${langkah}`} className="flex flex-col items-center gap-1">
+          <div key={indeks} className="flex flex-col items-center gap-1">
             {indeks > 0 ? <span className="text-lg font-black leading-none text-[#1C01A5]">↓</span> : null}
-            <p className="w-full rounded-xl border border-[#1C01A5]/15 bg-white px-3 py-2 text-center text-sm font-black leading-8 text-[#1C01A5]"><Teks anak={langkah} /></p>
+            <div className="w-full rounded-xl border border-[#1C01A5]/15 bg-white px-3 py-2 text-center text-sm font-black leading-8 text-[#1C01A5]">
+              {typeof langkah === "string" ? <Teks anak={langkah} /> : langkah}
+            </div>
           </div>
         ))}
       </div>
@@ -371,9 +397,13 @@ export default function NaskahMtk6Bab1(_props: { kelas?: string; kelamin?: strin
         <Infografis
           judul="Pembagian pecahan dengan bilangan asli"
           aturan="Ubah bilangan asli menjadi pecahan. Pembilang1 × penyebut2 dibagi penyebut1 × pembilang2."
-          alur={["1/2 ÷ 3", "1/2 ÷ 3/1", "(1 × 1)/(2 × 3)", "1/6"]}
-          kolom={["Peran", "Hitung"]}
+          alur={["1/2 ÷ 3", <BagiBerlabel key="bagi" />, "(1 × 1)/(2 × 3)", "1/6"]}
+          kolom={["Peran", "Pada 1/2 ÷ 3/1"]}
           baris={[
+            ["Pembilang1", "1"],
+            ["Penyebut1", "2"],
+            ["Pembilang2", "3"],
+            ["Penyebut2", "1"],
             ["Pembilang1 × penyebut2", "1 × 1 = 1"],
             ["Penyebut1 × pembilang2", "2 × 3 = 6"],
             ["Hasil", "1/6"],
