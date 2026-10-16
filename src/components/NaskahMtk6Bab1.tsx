@@ -74,6 +74,16 @@ function Kegiatan({ label, children }: { label: string; children: ReactNode }) {
   );
 }
 
+function Gambar({ src, alt, keterangan }: { src: string; alt: string; keterangan: string }) {
+  return (
+    <figure className="space-y-1">
+      {/* eslint-disable-next-line @next/next/no-img-element */}
+      <img src={src} alt={alt} className="w-full rounded-xl border border-slate-200 bg-white object-cover" />
+      <figcaption className="text-xs font-semibold text-slate-600">{keterangan}</figcaption>
+    </figure>
+  );
+}
+
 function Rumus({ anak }: { anak: string }) {
   return <p className="rounded-xl bg-[#F8F7FF] px-4 py-3 text-base font-black text-[#1C01A5]">{anak}</p>;
 }
@@ -180,6 +190,7 @@ export default function NaskahMtk6Bab1(_props: { kelas?: string; kelamin?: strin
         <JudulBagian anak="Ayo Mengingat Kembali" />
         <p className="text-sm font-semibold text-slate-800">Ada 20 permen untuk 5 anak. Tiap anak mendapat 20 ÷ 5 = 4 permen. Pecahan 2/3 berarti 2 bagian dari 3 bagian yang sama besar.</p>
         <Kegiatan label="Pembuka">
+          <Gambar src="/doodle-mtk/mtk-6-bab1-penampungan.jpg" alt="Agam dan Ayah mengambil air dari penampungan di kebun yang kering." keterangan="Agam membantu Ayah mengambil air di penampungan." />
           <p>Penampungan air masih terisi 2/3 bagian. Hari ini terpakai 1/5 dari air yang tersisa. Air sisa 2/3 itu juga akan dipakai selama 2 hari, dibagi sama banyak.</p>
         </Kegiatan>
         <KotakJawaban id={idKuis("A", 0)} soal="1/5 dari 2/3. Bagian air yang terpakai hari ini?" periksa={(teks) => pecahan(teks, "2/15")} umpan="1/5 × 2/3 = 2/15." />
@@ -190,11 +201,13 @@ export default function NaskahMtk6Bab1(_props: { kelas?: string; kelamin?: strin
         <JudulBagian anak="A. Perkalian Pecahan" />
         <h3 className="text-lg font-black text-[#1C01A5]">1. Perkalian Bilangan Asli dengan Pecahan</h3>
         <Kegiatan label="Permasalahan">
+          <Gambar src="/doodle-mtk/mtk-6-bab1-ember-besar.jpg" alt="Agam dan Ayah menyiram kebun dengan ember besar." keterangan="Satu ember besar menyiram 2 m² kebun." />
           <p>Agam menyiram kebun. Satu ember besar menyiram 2 m². Satu ember kecil menyiram 3/5 m². Ia memakai 5 ember besar dan 5 ember kecil.</p>
         </Kegiatan>
         <Kegiatan label="Eksplorasi 1.1">
           <p>Isi tabel ember besar. Satu ember menyiram 2 m², jadi lima ember menyiram 5 × 2 m².</p>
           <Tabel kolom={["Banyak ember besar", "Luas kebun (m²)"]} baris={[["1", "2"], ["5", "…"]]} />
+          <Gambar src="/doodle-mtk/mtk-6-bab1-ember-kecil.jpg" alt="Agam memegang ember kecil di samping kebun." keterangan="Ember kecil menyiram sebagian kebun. Bagian 3/5 ada pada petak di bawah." />
           <p>Lalu hitung 2 ember kecil. Satu kotak penuh = 1 m². Satu kotak kecil = 1/5 m². Bagian 3/5 m² adalah 3 kotak kecil.</p>
           <Petak kolom={5} isi={["isi", "isi", "isi", "kosong", "kosong"]} keterangan="3/5 m² pada satu ember kecil." />
           <Petak kolom={5} isi={["isi", "isi", "isi", "isi", "isi", "isi", "kosong", "kosong", "kosong", "kosong"]} keterangan="Dua ember kecil: 6 bagian dari 1/5 m²." />
@@ -211,6 +224,7 @@ export default function NaskahMtk6Bab1(_props: { kelas?: string; kelamin?: strin
 
         <h3 className="text-lg font-black text-[#1C01A5]">2. Perkalian Pecahan dengan Bilangan Asli</h3>
         <Kegiatan label="Permasalahan">
+          <Gambar src="/doodle-mtk/mtk-6-bab1-pohon.jpg" alt="Agam berdiri di kebun pohon mangga." keterangan="Kebun mangga Agam. Pohonnya ada 15." />
           <p>Agam punya 15 pohon mangga. 2/3 dari pohon itu adalah mangga manalagi.</p>
         </Kegiatan>
         <Kegiatan label="Eksplorasi 1.2">
@@ -244,6 +258,7 @@ export default function NaskahMtk6Bab1(_props: { kelas?: string; kelamin?: strin
         <JudulBagian anak="B. Pembagian Pecahan" />
         <h3 className="text-lg font-black text-[#1C01A5]">1. Pembagian Pecahan dengan Bilangan Asli</h3>
         <Kegiatan label="Permasalahan">
+          <Gambar src="/doodle-mtk/mtk-6-bab1-botol.jpg" alt="Satu botol air dan tiga gelas kosong di meja." keterangan="Satu botol air akan dibagi rata ke 3 gelas." />
           <p>Agam punya satu botol air. Air dibagi rata ke 3 gelas. Isi botol berganti: 1 liter, lalu 1/2 liter, lalu 1/3 liter.</p>
         </Kegiatan>
         <Kegiatan label="Eksplorasi 1.3">
@@ -260,6 +275,7 @@ export default function NaskahMtk6Bab1(_props: { kelas?: string; kelamin?: strin
 
         <h3 className="text-lg font-black text-[#1C01A5]">2. Pembagian Bilangan Asli dengan Pecahan</h3>
         <Kegiatan label="Permasalahan">
+          <Gambar src="/doodle-mtk/mtk-6-bab1-jus.jpg" alt="Tiga botol minuman dan tumpukan gelas kecil." keterangan="Jus jeruk, jus jambu, dan air mineral, masing-masing 3 liter." />
           <p>Agam menyiapkan 3 liter jus jeruk untuk gelas 1/4 liter, 3 liter jus jambu untuk gelas 1/2 liter, dan 3 liter air mineral untuk gelas 1/5 liter. Lalu 3 liter air itu juga diukur dengan botol 2/5 liter.</p>
         </Kegiatan>
         <Kegiatan label="Eksplorasi 1.4">
@@ -289,6 +305,7 @@ export default function NaskahMtk6Bab1(_props: { kelas?: string; kelamin?: strin
         <JudulBagian anak="C. Bilangan Desimal" />
         <h3 className="text-lg font-black text-[#1C01A5]">1. Mengubah Pecahan Menjadi Desimal</h3>
         <Kegiatan label="Permasalahan">
+          <Gambar src="/doodle-mtk/mtk-6-bab1-timbangan.jpg" alt="Agam dan Ibu di depan timbangan buah. Jarum timbangan tanpa angka." keterangan="Timbangan buah untuk jeruk 1/2 kg dan salak 1/5 kg." />
           <p>Ibu meminta jeruk 1/2 kg dan salak 1/5 kg. Timbangan menunjukkan 0,50 kg dan 0,20 kg.</p>
         </Kegiatan>
         <Kegiatan label="Eksplorasi 1.5">
@@ -304,6 +321,7 @@ export default function NaskahMtk6Bab1(_props: { kelas?: string; kelamin?: strin
 
         <h3 className="text-lg font-black text-[#1C01A5]">2. Membandingkan dan Mengurutkan Bilangan Desimal</h3>
         <Kegiatan label="Permasalahan">
+          <Gambar src="/doodle-mtk/mtk-6-bab1-jarak.jpg" alt="Beberapa rumah dihubungkan jalan yang panjangnya berbeda menuju pagar sekolah." keterangan="Jarak rumah ke sekolah tidak sama. Angkanya ada pada tabel." />
           <p>Agam mengumpulkan jarak rumah 10 teman ke sekolah.</p>
         </Kegiatan>
         <Tabel
