@@ -61,6 +61,26 @@ function namaAtauAngka(teks: string, nama: string, angka: string, cek?: (nilai: 
   return teks.toLowerCase().includes(nama) || (cek ? cek(teks) : utuh(teks, angka));
 }
 
+function Pecahan({ atas, bawah }: { atas: string; bawah: string }) {
+  return (
+    <span className="mx-[0.15em] inline-flex translate-y-px flex-col items-center align-middle text-[0.82em] leading-none" aria-label={`${atas} per ${bawah}`}>
+      <span className="border-b border-current px-[0.2em] pb-px">{atas}</span>
+      <span className="px-[0.2em] pt-px">{bawah}</span>
+    </span>
+  );
+}
+
+function Teks({ anak }: { anak: string }) {
+  const potongan = anak.split(/(\([^)]+\)\/[A-Za-z0-9]+|[A-Za-z0-9]+\/[A-Za-z0-9]+)/g);
+  return potongan.map((bagian, indeks) => {
+    const kurung = bagian.match(/^\(([^)]+)\)\/([A-Za-z0-9]+)$/);
+    if (kurung) return <Pecahan key={indeks} atas={kurung[1]} bawah={kurung[2]} />;
+    const biasa = bagian.match(/^([A-Za-z0-9]+)\/([A-Za-z0-9]+)$/);
+    if (biasa) return <Pecahan key={indeks} atas={biasa[1]} bawah={biasa[2]} />;
+    return <span key={indeks}>{bagian}</span>;
+  });
+}
+
 function JudulBagian({ anak }: { anak: string }) {
   return <h2 className="text-2xl font-black text-[#1C01A5]">{anak}</h2>;
 }
@@ -69,7 +89,7 @@ function Kegiatan({ label, children }: { label: string; children: ReactNode }) {
   return (
     <div className="space-y-2">
       <p className="text-sm font-black uppercase tracking-wide text-[#1C01A5]">{label}</p>
-      <div className="space-y-2 text-sm font-semibold leading-relaxed text-slate-800">{children}</div>
+      <div className="space-y-2 text-sm font-semibold leading-8 text-slate-800">{children}</div>
     </div>
   );
 }
@@ -79,13 +99,13 @@ function Gambar({ src, alt, keterangan }: { src: string; alt: string; keterangan
     <figure className="space-y-1">
       {/* eslint-disable-next-line @next/next/no-img-element */}
       <img src={src} alt={alt} className="w-full rounded-xl border border-slate-200 bg-white object-cover" />
-      <figcaption className="text-xs font-semibold text-slate-600">{keterangan}</figcaption>
+      <figcaption className="text-xs font-semibold leading-6 text-slate-600"><Teks anak={keterangan} /></figcaption>
     </figure>
   );
 }
 
 function Rumus({ anak }: { anak: string }) {
-  return <p className="rounded-xl bg-[#F8F7FF] px-4 py-3 text-base font-black text-[#1C01A5]">{anak}</p>;
+  return <p className="rounded-xl bg-[#F8F7FF] px-4 py-3 text-base font-black leading-8 text-[#1C01A5]"><Teks anak={anak} /></p>;
 }
 
 function Tabel({ kolom, baris }: { kolom: string[]; baris: string[][] }) {
@@ -129,7 +149,7 @@ function TabelEmber({ baris, keterangan }: { baris: number; keterangan: string }
           ))}
         </tbody>
       </table>
-      <p className="text-xs font-semibold text-slate-600">{keterangan}</p>
+      <p className="text-xs font-semibold leading-6 text-slate-600"><Teks anak={keterangan} /></p>
     </div>
   );
 }
@@ -142,7 +162,7 @@ function Petak({ kolom, isi, keterangan }: { kolom: number; isi: Array<"isi" | "
           <div key={indeks} className={`h-7 rounded-sm border ${jenis === "isi" ? "border-sky-600 bg-sky-300" : "border-slate-300 bg-white"}`} />
         ))}
       </div>
-      <p className="text-xs font-semibold text-slate-600">{keterangan}</p>
+      <p className="text-xs font-semibold leading-6 text-slate-600"><Teks anak={keterangan} /></p>
     </div>
   );
 }
@@ -158,12 +178,12 @@ function KotakJawaban({ id, soal, periksa, umpan }: { id: string; soal: string; 
   };
   return (
     <div className="space-y-2 rounded-xl border border-slate-200 bg-white px-3 py-3">
-      <label className="block text-sm font-bold text-slate-800">
-        {soal}
+      <label className="block text-sm font-bold leading-8 text-slate-800">
+        <Teks anak={soal} />
         <input value={isi} onChange={(event) => { setIsi(event.target.value); setStatus(null); }} className="mt-2 w-full rounded-lg border border-slate-300 px-3 py-2 text-base font-semibold text-slate-900" />
       </label>
       <button type="button" onClick={kirim} className="rounded-full bg-[#1C01A5] px-4 py-2 text-sm font-black text-white">Periksa</button>
-      {status === "benar" ? <p className="text-sm font-bold text-emerald-800">Benar. {umpan}</p> : null}
+      {status === "benar" ? <p className="text-sm font-bold leading-8 text-emerald-800">Benar. <Teks anak={umpan} /></p> : null}
       {status === "salah" ? <p className="text-sm font-bold text-rose-700">Belum tepat. Hitung lagi dari angka pada soal.</p> : null}
     </div>
   );
@@ -209,10 +229,10 @@ export default function NaskahMtk6Bab1(_props: { kelas?: string; kelamin?: strin
 
       <section className="space-y-3">
         <JudulBagian anak="Ayo Mengingat Kembali" />
-        <p className="text-sm font-semibold text-slate-800">Ada 20 permen untuk 5 anak. Tiap anak mendapat 20 ÷ 5 = 4 permen. Pecahan 2/3 berarti 2 bagian dari 3 bagian yang sama besar.</p>
+        <p className="text-sm font-semibold leading-8 text-slate-800"><Teks anak="Ada 20 permen untuk 5 anak. Tiap anak mendapat 20 ÷ 5 = 4 permen. Pecahan 2/3 berarti 2 bagian dari 3 bagian yang sama besar." /></p>
         <Kegiatan label="Pembuka">
           <Gambar src="/doodle-mtk/mtk-6-bab1-penampungan.jpg" alt="Agam dan Ayah mengambil air dari penampungan di kebun yang kering." keterangan="Agam membantu Ayah mengambil air di penampungan." />
-          <p>Penampungan air masih terisi 2/3 bagian. Hari ini terpakai 1/5 dari air yang tersisa. Air sisa 2/3 itu juga akan dipakai selama 2 hari, dibagi sama banyak.</p>
+          <p><Teks anak="Penampungan air masih terisi 2/3 bagian. Hari ini terpakai 1/5 dari air yang tersisa. Air sisa 2/3 itu juga akan dipakai selama 2 hari, dibagi sama banyak." /></p>
         </Kegiatan>
         <KotakJawaban id={idKuis("A", 0)} soal="1/5 dari 2/3. Bagian air yang terpakai hari ini?" periksa={(teks) => pecahan(teks, "2/15")} umpan="1/5 × 2/3 = 2/15." />
         <KotakJawaban id={idKuis("A", 1)} soal="2/3 dibagi untuk 2 hari. Bagian tiap hari?" periksa={(teks) => sepertiga(teks) || pecahan(teks, "2/6")} umpan="2/3 × 1/2 = 2/6. 2/6 sama dengan 1/3." />
@@ -223,13 +243,13 @@ export default function NaskahMtk6Bab1(_props: { kelas?: string; kelamin?: strin
         <h3 className="text-lg font-black text-[#1C01A5]">1. Perkalian Bilangan Asli dengan Pecahan</h3>
         <Kegiatan label="Permasalahan">
           <Gambar src="/doodle-mtk/mtk-6-bab1-ember-besar.jpg" alt="Agam dan Ayah menyiram kebun dengan ember besar." keterangan="Satu ember besar menyiram 2 m² kebun." />
-          <p>Agam menyiram kebun. Satu ember besar menyiram 2 m². Satu ember kecil menyiram 3/5 m². Ia memakai 5 ember besar dan 5 ember kecil.</p>
+          <p><Teks anak="Agam menyiram kebun. Satu ember besar menyiram 2 m². Satu ember kecil menyiram 3/5 m². Ia memakai 5 ember besar dan 5 ember kecil." /></p>
         </Kegiatan>
         <Kegiatan label="Eksplorasi 1.1">
           <p>Isi tabel ember besar. Satu ember menyiram 2 m², jadi lima ember menyiram 5 × 2 m².</p>
           <Tabel kolom={["Banyak ember besar", "Luas kebun (m²)"]} baris={[["1", "2"], ["5", "…"]]} />
           <Gambar src="/doodle-mtk/mtk-6-bab1-ember-kecil.jpg" alt="Agam memegang ember kecil di samping kebun." keterangan="Ember kecil menyiram sebagian kebun. Bagian 3/5 ada pada petak di bawah." />
-          <p>Satu baris 5 kotak sama dengan 1 m². Satu kotak sama dengan 1/5 m². Satu ember kecil mengisi 3 kotak.</p>
+          <p><Teks anak="Satu baris 5 kotak sama dengan 1 m². Satu kotak sama dengan 1/5 m². Satu ember kecil mengisi 3 kotak." /></p>
           <Petak kolom={5} isi={["isi", "isi", "isi", "kosong", "kosong"]} keterangan="Satu ember kecil: 3 kotak dari 5, yaitu 3/5 m²." />
         </Kegiatan>
         <KotakJawaban id={idKuis("A", 2)} soal="Luas yang disiram 5 ember besar, dalam m²?" periksa={jumlahSepuluh} umpan="5 × 2 = 10 m²." />
@@ -240,7 +260,7 @@ export default function NaskahMtk6Bab1(_props: { kelas?: string; kelamin?: strin
           <p>Ember kecil dihitung dengan menambah kotak yang sama. Caranya ada di bagian berikut.</p>
         </Kegiatan>
 
-        <div className="space-y-3 rounded-2xl border-2 border-sky-300 bg-sky-50 px-4 py-4 text-sm font-semibold leading-relaxed text-slate-800">
+        <div className="space-y-3 rounded-2xl border-2 border-sky-300 bg-sky-50 px-4 py-4 text-sm font-semibold leading-8 text-slate-800">
           <h3 className="text-lg font-black text-[#1C01A5]">Cara mudah: ember kecil</h3>
           <p>1 m² dibagi menjadi 5 kolom sama. Satu ember kecil mengisi 3 kolom. Dua kolom tetap kosong. Satu ember = satu baris.</p>
           <TabelEmber baris={1} keterangan="1 baris, 5 kolom: 3 penuh dan 2 kosong. Hasilnya 3/5 m²." />
@@ -255,23 +275,23 @@ export default function NaskahMtk6Bab1(_props: { kelas?: string; kelamin?: strin
         <h3 className="text-lg font-black text-[#1C01A5]">2. Perkalian Pecahan dengan Bilangan Asli</h3>
         <Kegiatan label="Permasalahan">
           <Gambar src="/doodle-mtk/mtk-6-bab1-pohon.jpg" alt="Agam berdiri di kebun pohon mangga." keterangan="Kebun mangga Agam. Pohonnya ada 15." />
-          <p>Agam punya 15 pohon mangga. 2/3 dari pohon itu adalah mangga manalagi.</p>
+          <p><Teks anak="Agam punya 15 pohon mangga. 2/3 dari pohon itu adalah mangga manalagi." /></p>
         </Kegiatan>
         <Kegiatan label="Eksplorasi 1.2">
           <p>Bagi 15 pohon menjadi 3 bagian yang sama. Ambil 2 bagian.</p>
         </Kegiatan>
         <KotakJawaban id={idKuis("A", 5)} soal="Banyak pohon mangga manalagi?" periksa={jumlahSepuluh} umpan="2/3 × 15 = 10 pohon." />
         <Kegiatan label="Pembahasan">
-          <p>2/3 × 15 mencari bagian tertentu dari 15 pohon. Kalikan pembilang dengan bilangan asli. Penyebut tetap: (2 × 15)/3 = 10.</p>
+          <p><Teks anak="2/3 × 15 mencari bagian tertentu dari 15 pohon. Kalikan pembilang dengan bilangan asli. Penyebut tetap: (2 × 15)/3 = 10." /></p>
           <Rumus anak="a/c × b = (a × b)/c" />
-          <p>Bandingkan 1/4 × 20 dan 20 × 1/4. Keduanya sama dengan 5.</p>
+          <p><Teks anak="Bandingkan 1/4 × 20 dan 20 × 1/4. Keduanya sama dengan 5." /></p>
         </Kegiatan>
 
         <Kegiatan label="Latihan 1.1">
-          <p>1. Hani punya 4 pita. Tiap pita panjangnya 3/4 m.</p>
-          <p>2. Fina membuat 75 pastel. Keluarga memakan 2/15 bagian.</p>
-          <p>3. Ada 180 siswa kelas 6. 1/6 memilih musik. 2/3 dari siswa musik itu juga memilih melukis.</p>
-          <p>4. Buat cerita untuk 1/4 × 20 dan untuk 20 × 1/4. Kedua hasil hitungnya sama dengan 5.</p>
+          <p><Teks anak="1. Hani punya 4 pita. Tiap pita panjangnya 3/4 m." /></p>
+          <p><Teks anak="2. Fina membuat 75 pastel. Keluarga memakan 2/15 bagian." /></p>
+          <p><Teks anak="3. Ada 180 siswa kelas 6. 1/6 memilih musik. 2/3 dari siswa musik itu juga memilih melukis." /></p>
+          <p><Teks anak="4. Buat cerita untuk 1/4 × 20 dan untuk 20 × 1/4. Kedua hasil hitungnya sama dengan 5." /></p>
         </Kegiatan>
         <KotakJawaban id={idKuis("A", 6)} soal="Panjang seluruh pita Hani, dalam meter?" periksa={jumlahTiga} umpan="4 × 3/4 = 3 meter." />
         <KotakJawaban id={idKuis("A", 7)} soal="Banyak pastel yang sudah dimakan?" periksa={jumlahSepuluh} umpan="2/15 × 75 = 10 pastel." />
@@ -289,7 +309,7 @@ export default function NaskahMtk6Bab1(_props: { kelas?: string; kelamin?: strin
         <h3 className="text-lg font-black text-[#1C01A5]">1. Pembagian Pecahan dengan Bilangan Asli</h3>
         <Kegiatan label="Permasalahan">
           <Gambar src="/doodle-mtk/mtk-6-bab1-botol.jpg" alt="Satu botol air dan tiga gelas kosong di meja." keterangan="Satu botol air akan dibagi rata ke 3 gelas." />
-          <p>Agam punya satu botol air. Air dibagi rata ke 3 gelas. Isi botol berganti: 1 liter, lalu 1/2 liter, lalu 1/3 liter.</p>
+          <p><Teks anak="Agam punya satu botol air. Air dibagi rata ke 3 gelas. Isi botol berganti: 1 liter, lalu 1/2 liter, lalu 1/3 liter." /></p>
         </Kegiatan>
         <Kegiatan label="Eksplorasi 1.3">
           <p>Satu kotak penuh menggambarkan 1 liter. Bagi kotak itu sesuai isi botol, lalu bagi lagi ke 3 gelas.</p>
@@ -300,16 +320,16 @@ export default function NaskahMtk6Bab1(_props: { kelas?: string; kelamin?: strin
         <Kegiatan label="Pembahasan">
           <p>Membagi pecahan dengan bilangan asli berarti membagi pecahan itu menjadi beberapa bagian. Bagian bertambah banyak, nilai tiap bagian menjadi lebih kecil.</p>
           <Rumus anak="1/a ÷ b = 1/a × 1/b" />
-          <p>Rini menghitung 4/3 ÷ 2 dengan membagi pembilang saja: (4 ÷ 2)/3 = 2/3. Pada soal ini hasilnya sama dengan 4/3 × 1/2 = 2/3. Cara yang berlaku umum tetap kali dengan kebalikan pembagi.</p>
+          <p><Teks anak="Rini menghitung 4/3 ÷ 2 dengan membagi pembilang saja: (4 ÷ 2)/3 = 2/3. Pada soal ini hasilnya sama dengan 4/3 × 1/2 = 2/3. Cara yang berlaku umum tetap kali dengan kebalikan pembagi." /></p>
         </Kegiatan>
 
         <h3 className="text-lg font-black text-[#1C01A5]">2. Pembagian Bilangan Asli dengan Pecahan</h3>
         <Kegiatan label="Permasalahan">
           <Gambar src="/doodle-mtk/mtk-6-bab1-jus.jpg" alt="Tiga botol minuman dan tumpukan gelas kecil." keterangan="Jus jeruk, jus jambu, dan air mineral, masing-masing 3 liter." />
-          <p>Agam menyiapkan 3 liter jus jeruk untuk gelas 1/4 liter, 3 liter jus jambu untuk gelas 1/2 liter, dan 3 liter air mineral untuk gelas 1/5 liter. Lalu 3 liter air itu juga diukur dengan botol 2/5 liter.</p>
+          <p><Teks anak="Agam menyiapkan 3 liter jus jeruk untuk gelas 1/4 liter, 3 liter jus jambu untuk gelas 1/2 liter, dan 3 liter air mineral untuk gelas 1/5 liter. Lalu 3 liter air itu juga diukur dengan botol 2/5 liter." /></p>
         </Kegiatan>
         <Kegiatan label="Eksplorasi 1.4">
-          <p>Dalam 1 liter ada 4 gelas 1/4 liter, 2 gelas 1/2 liter, dan 5 gelas 1/5 liter. Untuk 2/5 liter, dalam 1 liter ada 5/2 bagian.</p>
+          <p><Teks anak="Dalam 1 liter ada 4 gelas 1/4 liter, 2 gelas 1/2 liter, dan 5 gelas 1/5 liter. Untuk 2/5 liter, dalam 1 liter ada 5/2 bagian." /></p>
         </Kegiatan>
         <KotakJawaban id={idKuis("B", 3)} soal="Banyak gelas 1/4 liter dari 3 liter jus jeruk?" periksa={(teks) => utuh(teks, "12")} umpan="3 ÷ 1/4 = 3 × 4 = 12 gelas." />
         <KotakJawaban id={idKuis("B", 4)} soal="Banyak gelas 1/2 liter dari 3 liter jus jambu?" periksa={jumlahEnam} umpan="3 ÷ 1/2 = 6 gelas." />
@@ -321,10 +341,10 @@ export default function NaskahMtk6Bab1(_props: { kelas?: string; kelamin?: strin
         </Kegiatan>
 
         <Kegiatan label="Latihan 1.2">
-          <p>1. Pak Rudi membagi 2/4 bagian tanah kepada 3 anak secara adil.</p>
-          <p>2. Rina punya 6 kg gula. Tiap adonan bolu memakai 3/4 kg.</p>
-          <p>3. Astri punya 5 batang cokelat. Tiap teman mendapat 2/3 batang.</p>
-          <p>4. Buat cerita untuk 1/5 ÷ 4 dan untuk 4 ÷ 1/5.</p>
+          <p><Teks anak="1. Pak Rudi membagi 2/4 bagian tanah kepada 3 anak secara adil." /></p>
+          <p><Teks anak="2. Rina punya 6 kg gula. Tiap adonan bolu memakai 3/4 kg." /></p>
+          <p><Teks anak="3. Astri punya 5 batang cokelat. Tiap teman mendapat 2/3 batang." /></p>
+          <p><Teks anak="4. Buat cerita untuk 1/5 ÷ 4 dan untuk 4 ÷ 1/5." /></p>
         </Kegiatan>
         <KotakJawaban id={idKuis("B", 7)} soal="Bagian tanah tiap anak Pak Rudi?" periksa={seperenam} umpan="2/4 ÷ 3 = 2/4 × 1/3 = 1/6." />
         <KotakJawaban id={idKuis("B", 8)} soal="Banyak kue bolu yang dibuat Rina?" periksa={jumlahDelapan} umpan="6 ÷ 3/4 = 8 bolu." />
@@ -336,17 +356,17 @@ export default function NaskahMtk6Bab1(_props: { kelas?: string; kelamin?: strin
         <h3 className="text-lg font-black text-[#1C01A5]">1. Mengubah Pecahan Menjadi Desimal</h3>
         <Kegiatan label="Permasalahan">
           <Gambar src="/doodle-mtk/mtk-6-bab1-timbangan.jpg" alt="Agam dan Ibu di depan timbangan buah. Jarum timbangan tanpa angka." keterangan="Timbangan buah untuk jeruk 1/2 kg dan salak 1/5 kg." />
-          <p>Ibu meminta jeruk 1/2 kg dan salak 1/5 kg. Timbangan menunjukkan 0,50 kg dan 0,20 kg.</p>
+          <p><Teks anak="Ibu meminta jeruk 1/2 kg dan salak 1/5 kg. Timbangan menunjukkan 0,50 kg dan 0,20 kg." /></p>
         </Kegiatan>
         <Kegiatan label="Eksplorasi 1.5">
-          <p>Satu persegi bernilai 1. Jika dibagi 10 bagian sama, tiap bagian 1/10 = 0,1. Sepuluh persegi kecil dari 100 bagian sama dengan 10/100 = 0,10 = 0,1.</p>
+          <p><Teks anak="Satu persegi bernilai 1. Jika dibagi 10 bagian sama, tiap bagian 1/10 = 0,1. Sepuluh persegi kecil dari 100 bagian sama dengan 10/100 = 0,10 = 0,1." /></p>
           <p>Pecahan berpenyebut 2, 5, atau kelipatannya diubah dulu menjadi penyebut 10 atau 100.</p>
         </Kegiatan>
         <KotakJawaban id={idKuis("C", 0)} soal="Bentuk desimal dari 1/2 kg?" periksa={desimalSetengah} umpan="1/2 = 5/10 = 0,5 = 0,50." />
         <KotakJawaban id={idKuis("C", 1)} soal="Bentuk desimal dari 1/5 kg?" periksa={desimalSeperlima} umpan="1/5 = 2/10 = 0,2 = 0,20." />
         <Kegiatan label="Pembahasan">
-          <p>Angka di kiri koma menempati satuan. Angka pertama di kanan koma menempati persepuluhan. 0,10 sama dengan 0,1 karena keduanya sama dengan 1/10.</p>
-          <p>1/10 = 0,1 = 0,10. Untuk penyebut yang tidak bisa dijadikan 10 atau 100, buku meminta diskusi di kelas.</p>
+          <p><Teks anak="Angka di kiri koma menempati satuan. Angka pertama di kanan koma menempati persepuluhan. 0,10 sama dengan 0,1 karena keduanya sama dengan 1/10." /></p>
+          <p><Teks anak="1/10 = 0,1 = 0,10. Untuk penyebut yang tidak bisa dijadikan 10 atau 100, buku meminta diskusi di kelas." /></p>
         </Kegiatan>
 
         <h3 className="text-lg font-black text-[#1C01A5]">2. Membandingkan dan Mengurutkan Bilangan Desimal</h3>
@@ -393,7 +413,7 @@ export default function NaskahMtk6Bab1(_props: { kelas?: string; kelamin?: strin
         <KotakJawaban id={idKuis("C", 6)} soal="Siapa yang rumahnya paling jauh, atau berapa km jaraknya?" periksa={(teks) => namaAtauAngka(teks, "musa", "11.3", (nilai) => desimalUtuh(nilai, "11.3"))} umpan="Musa, 11,3 km." />
 
         <Kegiatan label="Latihan 1.3">
-          <p>1. Kain sepanjang 3/4 meter. Gambar pecahannya, lalu ubah menjadi desimal.</p>
+          <p><Teks anak="1. Kain sepanjang 3/4 meter. Gambar pecahannya, lalu ubah menjadi desimal." /></p>
           <p>2. Suhu tertinggi tahun 2015: Sumatra Selatan 37,2; Sumatra Utara 33,3; Nusa Tenggara Timur 36,6; Sulawesi Tengah 38,5; Kalimantan Utara 36,8.</p>
           <p>3. Lompat jauh: Arman 3,7 m, Bayu 3,6 m, Didi 2,9 m.</p>
           <p>4. Pada label, protein 5 g, lemak 10 g, karbohidrat 30 g, serat pangan 2 g, dan natrium 100 mg. Natrium 100 mg sama dengan 0,1 g.</p>
@@ -430,13 +450,13 @@ export default function NaskahMtk6Bab1(_props: { kelas?: string; kelamin?: strin
         <JudulBagian anak="Pengayaan" />
         <p className="text-sm font-semibold text-slate-800">Bagian ini terpisah dari soal inti. Buku memakainya untuk pecahan kali pecahan, pecahan dibagi pecahan, dan desimal yang berulang.</p>
         <Kegiatan label="Perkalian pecahan">
-          <p>Tangki terisi 1/2. Hari ini terpakai 1/3 dari air yang ada. Bagian yang terpakai 1/2 × 1/3 = 1/6.</p>
+          <p><Teks anak="Tangki terisi 1/2. Hari ini terpakai 1/3 dari air yang ada. Bagian yang terpakai 1/2 × 1/3 = 1/6." /></p>
         </Kegiatan>
         <Kegiatan label="Pembagian pecahan">
-          <p>3 gelas air memenuhi 2/3 botol. Satu botol penuh memerlukan 3 ÷ 2/3 = 9/2 gelas. 1/2 gelas memenuhi 3/4 botol, jadi satu botol penuh memerlukan 1/2 ÷ 3/4 = 2/3 gelas.</p>
+          <p><Teks anak="3 gelas air memenuhi 2/3 botol. Satu botol penuh memerlukan 3 ÷ 2/3 = 9/2 gelas. 1/2 gelas memenuhi 3/4 botol, jadi satu botol penuh memerlukan 1/2 ÷ 3/4 = 2/3 gelas." /></p>
         </Kegiatan>
         <Kegiatan label="Desimal berulang">
-          <p>1/3 liter dan 1/6 liter tidak berhenti pada satu angka di belakang koma. Dengan kalkulator, 1/3 = 0,333… dan 1/6 = 0,1666…</p>
+          <p><Teks anak="1/3 liter dan 1/6 liter tidak berhenti pada satu angka di belakang koma. Dengan kalkulator, 1/3 = 0,333… dan 1/6 = 0,1666…" /></p>
         </Kegiatan>
       </section>
     </article>
