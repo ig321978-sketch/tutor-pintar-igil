@@ -451,16 +451,6 @@ function PilihanDuaPertiga() {
   );
 }
 
-function operasiEmpatKaliEnam(teks: string): boolean {
-  const s = rapat(teks).replace(/[×x*]/g, "x");
-  return /(?<!\d)4x6(?!\d)/.test(s) || s.includes("4kali6");
-}
-
-function operasiDuaPuluhBagiLima(teks: string): boolean {
-  const s = rapat(teks).replace(/[÷:]/g, "/");
-  return /(?<!\d)20\/5(?!\d)/.test(s) || s.includes("20bagi5");
-}
-
 function gambarJeruk(teks: string): boolean {
   const huruf = teks.toLowerCase();
   return /(?:^|[^a-z])c(?:[^a-z]|$)/.test(huruf) || huruf.includes("jeruk");
@@ -475,6 +465,15 @@ function Petak({ kolom, isi, keterangan }: { kolom: number; isi: Array<"isi" | "
         ))}
       </div>
       <p className="text-xs font-semibold leading-6 text-slate-600"><Teks anak={keterangan} /></p>
+    </div>
+  );
+}
+
+function SoalLatihan({ anak, id, periksa, tanya = "Tuliskan hasilnya." }: { anak: string; id: string; periksa: (teks: string) => boolean; tanya?: string }) {
+  return (
+    <div className="space-y-2">
+      <p className="text-sm font-semibold leading-8 text-slate-800"><Teks anak={anak} /></p>
+      <KotakJawaban id={id} soal={tanya} periksa={periksa} umpan="" />
     </div>
   );
 }
@@ -557,16 +556,10 @@ export default function NaskahMtk6Bab1(_props: { kelas?: string; kelamin?: strin
           <p>Teoritis: 6 + 6 + 6 + 6 = 24. Operasinya 4 × 6 = 24.</p>
         </Kegiatan>
         <Jawaban anak="24 permen." />
-        <KotakJawaban id={idKuis("A", 12)} soal="a. Berapa banyak permen seluruhnya?" periksa={(teks) => utuh(teks, "24")} umpan="4 × 6 = 24 permen." />
-        <KotakJawaban id={idKuis("A", 13)} soal="b. Tuliskan operasi perkaliannya." periksa={operasiEmpatKaliEnam} umpan="4 × 6 = 24." />
-        <Kegiatan label="Latihan Soal">
-          <p>1. Satu bungkus pizza ada 4 bagian. Jika ada 3 bungkus pizza, ada berapa bagian?</p>
-          <p>2. Satu ember berisi 3 liter air. Ada berapa liter air jika Agam memiliki 5 ember?</p>
-          <p>3. Agam punya 5 kotak pensil. Satu kotak berisi 10 pensil. Berapa jumlah semua pensil Agam?</p>
-        </Kegiatan>
-        <KotakJawaban id={idKuis("A", 17)} soal="3 bungkus pizza, tiap bungkus 4 bagian. Berapa bagian seluruhnya?" periksa={(teks) => hasilUtuh(teks, "12")} umpan="4 + 4 + 4 = 12. Operasinya 3 × 4 = 12." />
-        <KotakJawaban id={idKuis("A", 18)} soal="5 ember, tiap ember 3 liter. Berapa liter seluruhnya?" periksa={(teks) => hasilUtuh(teks, "15")} umpan="3 + 3 + 3 + 3 + 3 = 15. Operasinya 5 × 3 = 15." />
-        <KotakJawaban id={idKuis("A", 19)} soal="5 kotak pensil, tiap kotak 10 pensil. Berapa pensil seluruhnya?" periksa={(teks) => hasilUtuh(teks, "50")} umpan="10 sebanyak 5 kotak. 5 × 10 = 50 pensil." />
+        <p className="text-sm font-black uppercase tracking-wide text-[#1C01A5]">Latihan Soal</p>
+        <SoalLatihan anak="1. Satu bungkus pizza ada 4 bagian. Jika ada 3 bungkus pizza, ada berapa bagian?" id={idKuis("A", 12)} periksa={(teks) => hasilUtuh(teks, "12")} />
+        <SoalLatihan anak="2. Satu ember berisi 3 liter air. Ada berapa liter air jika Agam memiliki 5 ember?" id={idKuis("A", 13)} periksa={(teks) => hasilUtuh(teks, "15")} />
+        <SoalLatihan anak="3. Agam punya 5 kotak pensil. Satu kotak berisi 10 pensil. Berapa jumlah semua pensil Agam?" id={idKuis("A", 14)} periksa={(teks) => hasilUtuh(teks, "50")} />
         <p className="text-sm font-black leading-8 text-[#1C01A5]">Pembagian dua bilangan asli</p>
         <Kegiatan label="Materi">
           <p>Ada 20 permen yang dibagikan kepada 5 anak.</p>
@@ -581,20 +574,14 @@ export default function NaskahMtk6Bab1(_props: { kelas?: string; kelamin?: strin
           <p><Teks anak="Teoritis: 20 ÷ 5 = 4. Empat permen sebanyak 5 anak habis menjadi 20." /></p>
         </Kegiatan>
         <Jawaban anak="4 permen tiap anak." />
-        <KotakJawaban id={idKuis("A", 14)} soal="a. Berapa permen yang diperoleh tiap anak?" periksa={(teks) => utuh(teks, "4")} umpan="20 ÷ 5 = 4 permen." />
-        <KotakJawaban id={idKuis("A", 15)} soal="b. Tuliskan operasi pembagiannya." periksa={operasiDuaPuluhBagiLima} umpan="20 ÷ 5 = 4." />
-        <Kegiatan label="Latihan Soal">
-          <p>1. 12 apel dibagikan kepada 4 teman. Berapa apel tiap teman?</p>
-          <p>2. 16 buku disusun ke 2 rak sama banyak. Berapa buku tiap rak?</p>
-          <p>3. 15 kue diletakkan di 5 piring sama banyak. Berapa kue tiap piring?</p>
-        </Kegiatan>
-        <KotakJawaban id={idKuis("A", 20)} soal="12 apel untuk 4 teman. Berapa apel tiap teman?" periksa={(teks) => hasilUtuh(teks, "3")} umpan="12 ÷ 4 = 3 apel." />
-        <KotakJawaban id={idKuis("A", 21)} soal="16 buku untuk 2 rak. Berapa buku tiap rak?" periksa={(teks) => hasilUtuh(teks, "8")} umpan="16 ÷ 2 = 8 buku." />
-        <KotakJawaban id={idKuis("A", 22)} soal="15 kue untuk 5 piring. Berapa kue tiap piring?" periksa={(teks) => hasilUtuh(teks, "3")} umpan="15 ÷ 5 = 3 kue." />
+        <p className="text-sm font-black uppercase tracking-wide text-[#1C01A5]">Latihan Soal</p>
+        <SoalLatihan anak="1. 12 apel dibagikan kepada 4 teman. Berapa apel tiap teman?" id={idKuis("A", 15)} periksa={(teks) => hasilUtuh(teks, "3")} />
+        <SoalLatihan anak="2. 16 buku disusun ke 2 rak sama banyak. Berapa buku tiap rak?" id={idKuis("A", 16)} periksa={(teks) => hasilUtuh(teks, "8")} />
+        <SoalLatihan anak="3. 15 kue diletakkan di 5 piring sama banyak. Berapa kue tiap piring?" id={idKuis("A", 17)} periksa={(teks) => hasilUtuh(teks, "3")} />
         <p className="text-sm font-black leading-8 text-[#1C01A5]">Pecahan sebagai bagian dari keseluruhan</p>
         <p className="text-sm font-semibold leading-8 text-slate-800"><Teks anak="Gambar mana yang menunjukkan 2/3?" /></p>
         <PilihanDuaPertiga />
-        <KotakJawaban id={idKuis("A", 16)} soal="Tuliskan huruf gambar yang menunjukkan 2/3." periksa={gambarJeruk} umpan="Gambar c. 8 jeruk dari 12 jeruk sama dengan 2/3. Gambar a adalah 6/10. Gambar b adalah 1/4." />
+        <KotakJawaban id={idKuis("A", 11)} soal="Tuliskan huruf gambar yang menunjukkan 2/3." periksa={gambarJeruk} umpan="" />
         <Kegiatan label="Pembuka">
           <Gambar src="/doodle-mtk/mtk-6-bab1-penampungan.jpg" alt="Agam dan Ayah mengambil air dari penampungan di kebun yang kering." keterangan="Agam membantu Ayah mengambil air di penampungan." />
           <p><Teks anak="Penampungan air masih terisi 2/3 bagian. Hari ini terpakai 1/5 dari air yang tersisa. Air sisa 2/3 itu juga akan dipakai selama 2 hari, dibagi sama banyak." /></p>
@@ -658,18 +645,13 @@ export default function NaskahMtk6Bab1(_props: { kelas?: string; kelamin?: strin
           ]}
         />
         <Jawaban anak="10/3 liter, yaitu 3 + 1/3 liter." />
-        <Kegiatan label="Latihan Soal">
-          <p><Teks anak="1. Satu gelas berisi 2/5 liter jus. Agam menuang 4 gelas. Berapa liter jus seluruhnya?" /></p>
-          <p><Teks anak="2. Satu petak kebun luasnya 3/4 m². Ada 2 petak seperti itu. Berapa luas seluruhnya?" /></p>
-          <p><Teks anak="3. Satu kantong pupuk beratnya 1/5 kg. Agam membeli 5 kantong. Berapa kg seluruhnya?" /></p>
-          <p>Lalu hitung ember Agam pada cerita di atas.</p>
-        </Kegiatan>
-        <KotakJawaban id={idKuis("A", 23)} soal="4 gelas, tiap gelas 2/5 liter. Berapa liter seluruhnya?" periksa={(teks) => pecahan(teks, "8/5")} umpan="2/5 + 2/5 + 2/5 + 2/5 = 8/5. Infografis: 4/1 × 2/5 = 8/5 liter." />
-        <KotakJawaban id={idKuis("A", 24)} soal="2 petak, tiap petak 3/4 m². Berapa m² seluruhnya?" periksa={(teks) => pecahan(teks, "6/4") || pecahan(teks, "3/2")} umpan="3/4 + 3/4 = 6/4 = 3/2 m²." />
-        <KotakJawaban id={idKuis("A", 25)} soal="5 kantong, tiap kantong 1/5 kg. Berapa kg seluruhnya?" periksa={(teks) => hasilUtuh(teks, "1") || pecahan(teks, "5/5")} umpan="1/5 sebanyak 5 kantong = 5/5 = 1 kg." />
-        <KotakJawaban id={idKuis("A", 2)} soal="Luas yang disiram 5 ember besar, dalam m²?" periksa={jumlahSepuluh} umpan="5 × 2 = 10 m²." />
-        <KotakJawaban id={idKuis("A", 3)} soal="Luas yang disiram 2 ember kecil, dalam m²?" periksa={enamPerLima} umpan="2 baris × 3 kolom penuh = 6. Penyebut tetap 5, jadi 6/5 m²." />
-        <KotakJawaban id={idKuis("A", 4)} soal="Luas yang disiram 5 ember kecil, dalam m²?" periksa={jumlahTiga} umpan="5 baris × 3 kolom penuh = 15. 15/5 = 3 m²." />
+        <p className="text-sm font-black uppercase tracking-wide text-[#1C01A5]">Latihan Soal</p>
+        <SoalLatihan anak="1. Satu gelas berisi 2/5 liter jus. Agam menuang 4 gelas. Berapa liter jus seluruhnya?" id={idKuis("A", 18)} periksa={(teks) => pecahan(teks, "8/5")} />
+        <SoalLatihan anak="2. Satu petak kebun luasnya 3/4 m². Ada 2 petak seperti itu. Berapa luas seluruhnya?" id={idKuis("A", 19)} periksa={(teks) => pecahan(teks, "6/4") || pecahan(teks, "3/2")} />
+        <SoalLatihan anak="3. Satu kantong pupuk beratnya 1/5 kg. Agam membeli 5 kantong. Berapa kg seluruhnya?" id={idKuis("A", 20)} periksa={(teks) => hasilUtuh(teks, "1") || pecahan(teks, "5/5")} />
+        <SoalLatihan anak="4. Luas yang disiram 5 ember besar, dalam m²?" id={idKuis("A", 2)} periksa={jumlahSepuluh} />
+        <SoalLatihan anak="5. Luas yang disiram 2 ember kecil, dalam m²?" id={idKuis("A", 3)} periksa={enamPerLima} />
+        <SoalLatihan anak="6. Luas yang disiram 5 ember kecil, dalam m²?" id={idKuis("A", 4)} periksa={jumlahTiga} />
 
         <h3 className="text-lg font-black text-[#1C01A5]">2. Perkalian Pecahan dengan Bilangan Asli</h3>
         <Kegiatan label="Materi">
@@ -705,29 +687,23 @@ export default function NaskahMtk6Bab1(_props: { kelas?: string; kelamin?: strin
           ]}
         />
         <Jawaban anak="10 pohon mangga manalagi." />
-        <Kegiatan label="Latihan Soal">
-          <p><Teks anak="1. Ada 12 mangga. 3/4 bagian sudah masak. Berapa mangga yang masak?" /></p>
-          <p><Teks anak="2. Ada 20 pensil. 2/5 bagian berwarna merah. Berapa pensil merah?" /></p>
-          <p><Teks anak="3. Ada 18 buku. 1/3 bagian buku cerita. Berapa buku cerita?" /></p>
-        </Kegiatan>
-        <KotakJawaban id={idKuis("A", 26)} soal="3/4 dari 12 mangga. Berapa mangga yang masak?" periksa={(teks) => hasilUtuh(teks, "9")} umpan="12 dibagi 4 sama dengan 3. Tiga bagian: 3 + 3 + 3 = 9. (3 × 12)/4 = 9." />
-        <KotakJawaban id={idKuis("A", 27)} soal="2/5 dari 20 pensil. Berapa pensil merah?" periksa={(teks) => hasilUtuh(teks, "8")} umpan="20 dibagi 5 sama dengan 4. Dua bagian: 4 + 4 = 8 pensil." />
-        <KotakJawaban id={idKuis("A", 28)} soal="1/3 dari 18 buku. Berapa buku cerita?" periksa={(teks) => hasilUtuh(teks, "6")} umpan="18 dibagi 3 sama dengan 6. Satu bagian berisi 6 buku." />
-        <KotakJawaban id={idKuis("A", 5)} soal="Banyak pohon mangga manalagi?" periksa={jumlahSepuluh} umpan="2/3 × 15 = 10 pohon." />
+        <p className="text-sm font-black uppercase tracking-wide text-[#1C01A5]">Latihan Soal</p>
+        <SoalLatihan anak="1. Ada 12 mangga. 3/4 bagian sudah masak. Berapa mangga yang masak?" id={idKuis("A", 21)} periksa={(teks) => hasilUtuh(teks, "9")} />
+        <SoalLatihan anak="2. Ada 20 pensil. 2/5 bagian berwarna merah. Berapa pensil merah?" id={idKuis("A", 22)} periksa={(teks) => hasilUtuh(teks, "8")} />
+        <SoalLatihan anak="3. Ada 18 buku. 1/3 bagian buku cerita. Berapa buku cerita?" id={idKuis("A", 23)} periksa={(teks) => hasilUtuh(teks, "6")} />
 
-        <Kegiatan label="Latihan 1.1">
-          <p><Teks anak="1. Hani punya 4 pita. Tiap pita panjangnya 3/4 m. Satu pita digambar 1 m yang dibagi 4 bagian sama, lalu 3 bagian diarsir." /></p>
+        <p className="text-sm font-black uppercase tracking-wide text-[#1C01A5]">Latihan 1.1</p>
+        <div className="space-y-2">
+          <p className="text-sm font-semibold leading-8 text-slate-800"><Teks anak="1. Hani punya 4 pita. Tiap pita panjangnya 3/4 m. Satu pita digambar 1 m yang dibagi 4 bagian sama, lalu 3 bagian diarsir." /></p>
           <Petak kolom={4} isi={["isi", "isi", "isi", "kosong"]} keterangan="Satu pita: 3 bagian dari 4, yaitu 3/4 m. Hani punya 4 pita seperti ini." />
-          <p><Teks anak="2. Fina membuat 75 pastel. Keluarga memakan 2/15 bagian." /></p>
-          <p><Teks anak="3. Ada 180 siswa kelas 6. 1/6 memilih musik. 2/3 dari siswa musik itu juga memilih melukis." /></p>
-          <p><Teks anak="4. Buat cerita untuk 1/4 × 20 dan untuk 20 × 1/4. Kedua hasil hitungnya sama dengan 5." /></p>
-        </Kegiatan>
-        <KotakJawaban id={idKuis("A", 6)} soal="Panjang seluruh pita Hani, dalam meter?" periksa={jumlahTiga} umpan="4 × 3/4 = 3 meter." />
-        <KotakJawaban id={idKuis("A", 7)} soal="Banyak pastel yang sudah dimakan?" periksa={jumlahSepuluh} umpan="2/15 × 75 = 10 pastel." />
-        <KotakJawaban id={idKuis("A", 8)} soal="Banyak pastel yang belum dimakan?" periksa={jumlahEnamPuluhLima} umpan="75 − 10 = 65 pastel." />
-        <KotakJawaban id={idKuis("A", 9)} soal="Banyak siswa yang memilih musik?" periksa={jumlahTigaPuluh} umpan="1/6 × 180 = 30 siswa." />
-        <KotakJawaban id={idKuis("A", 10)} soal="Banyak siswa yang memilih melukis?" periksa={jumlahDuaPuluh} umpan="2/3 × 30 = 20 siswa." />
-        <KotakJawaban id={idKuis("A", 11)} soal="Pecahan siswa kelas 6 yang memilih melukis?" periksa={sepersembilan} umpan="20/180 = 1/9." />
+          <KotakJawaban id={idKuis("A", 5)} soal="Panjang seluruh pita Hani, dalam meter?" periksa={jumlahTiga} umpan="" />
+        </div>
+        <SoalLatihan anak="2. Fina membuat 75 pastel. Keluarga memakan 2/15 bagian. Berapa pastel yang sudah dimakan?" id={idKuis("A", 6)} periksa={jumlahSepuluh} />
+        <SoalLatihan anak="Berapa pastel yang belum dimakan?" id={idKuis("A", 7)} periksa={jumlahEnamPuluhLima} />
+        <SoalLatihan anak="3. Ada 180 siswa kelas 6. 1/6 memilih musik. Berapa siswa yang memilih musik?" id={idKuis("A", 8)} periksa={jumlahTigaPuluh} />
+        <SoalLatihan anak="2/3 dari siswa musik itu juga memilih melukis. Berapa siswa yang memilih melukis?" id={idKuis("A", 9)} periksa={jumlahDuaPuluh} />
+        <SoalLatihan anak="Pecahan siswa kelas 6 yang memilih melukis?" id={idKuis("A", 10)} periksa={sepersembilan} />
+        <p className="text-sm font-semibold leading-8 text-slate-800"><Teks anak="4. Buat cerita untuk 1/4 × 20 dan untuk 20 × 1/4." /></p>
         <Kegiatan label="Refleksi subbab">
           <p>Bagaimana cara mengalikan bilangan asli dengan pecahan?</p>
           <p>Bagaimana cara mengalikan pecahan dengan bilangan asli?</p>
@@ -780,18 +756,12 @@ export default function NaskahMtk6Bab1(_props: { kelas?: string; kelamin?: strin
           ]}
         />
         <Jawaban anak="1/6 liter tiap gelas." />
-        <Kegiatan label="Latihan Soal">
-          <p><Teks anak="1. Ada 3/4 liter sirup. Sirup dibagi rata ke 2 gelas. Berapa liter tiap gelas?" /></p>
-          <p><Teks anak="2. Ada 2/3 kg gula. Gula dibagi rata untuk 4 adonan. Berapa kg tiap adonan?" /></p>
-          <p><Teks anak="3. Ada pita 4/5 meter. Pita dibagi rata menjadi 2. Berapa meter tiap bagian?" /></p>
-          <p>Lalu hitung tiga botol Agam pada cerita di atas.</p>
-        </Kegiatan>
-        <KotakJawaban id={idKuis("B", 12)} soal="3/4 liter dibagi 2 gelas. Isi tiap gelas, dalam liter?" periksa={(teks) => pecahan(teks, "3/8")} umpan="3/4 ÷ 2 = 3/4 × 1/2 = 3/8 liter." />
-        <KotakJawaban id={idKuis("B", 13)} soal="2/3 kg dibagi 4 adonan. Tiap adonan berapa kg?" periksa={(teks) => seperenam(teks) || pecahan(teks, "2/12")} umpan="2/3 ÷ 4 = 2/3 × 1/4 = 2/12 = 1/6 kg." />
-        <KotakJawaban id={idKuis("B", 14)} soal="4/5 meter dibagi 2. Tiap bagian berapa meter?" periksa={(teks) => pecahan(teks, "2/5") || pecahan(teks, "4/10")} umpan="4/5 ÷ 2 = 4/5 × 1/2 = 4/10 = 2/5 meter." />
-        <KotakJawaban id={idKuis("B", 0)} soal="1 liter dibagi 3 gelas. Isi tiap gelas, dalam liter?" periksa={sepertiga} umpan="1 ÷ 3 = 1/3 liter." />
-        <KotakJawaban id={idKuis("B", 1)} soal="1/2 liter dibagi 3 gelas. Isi tiap gelas, dalam liter?" periksa={seperenam} umpan="1/2 ÷ 3 = 1/2 × 1/3 = 1/6 liter." />
-        <KotakJawaban id={idKuis("B", 2)} soal="1/3 liter dibagi 3 gelas. Isi tiap gelas, dalam liter?" periksa={sepersembilan} umpan="1/3 ÷ 3 = 1/3 × 1/3 = 1/9 liter." />
+        <p className="text-sm font-black uppercase tracking-wide text-[#1C01A5]">Latihan Soal</p>
+        <SoalLatihan anak="1. Ada 3/4 liter sirup. Sirup dibagi rata ke 2 gelas. Berapa liter tiap gelas?" id={idKuis("B", 10)} periksa={(teks) => pecahan(teks, "3/8")} />
+        <SoalLatihan anak="2. Ada 2/3 kg gula. Gula dibagi rata untuk 4 adonan. Berapa kg tiap adonan?" id={idKuis("B", 11)} periksa={(teks) => seperenam(teks) || pecahan(teks, "2/12")} />
+        <SoalLatihan anak="3. Ada pita 4/5 meter. Pita dibagi rata menjadi 2. Berapa meter tiap bagian?" id={idKuis("B", 12)} periksa={(teks) => pecahan(teks, "2/5") || pecahan(teks, "4/10")} />
+        <SoalLatihan anak="4. 1 liter dibagi 3 gelas. Isi tiap gelas, dalam liter?" id={idKuis("B", 0)} periksa={sepertiga} />
+        <SoalLatihan anak="5. 1/3 liter dibagi 3 gelas. Isi tiap gelas, dalam liter?" id={idKuis("B", 1)} periksa={sepersembilan} />
 
         <h3 className="text-lg font-black text-[#1C01A5]">2. Pembagian Bilangan Asli dengan Pecahan</h3>
         <Kegiatan label="Materi">
@@ -841,31 +811,21 @@ export default function NaskahMtk6Bab1(_props: { kelas?: string; kelamin?: strin
             ["Hasil", "15/2 = 7 + 1/2"],
           ]}
         />
-        <Kegiatan label="Latihan Soal">
-          <p><Teks anak="1. Ada 2 liter jus. Tiap gelas berisi 1/2 liter. Berapa gelas yang terisi?" /></p>
-          <p><Teks anak="2. Ada 4 liter air. Tiap gelas berisi 1/5 liter. Berapa gelas yang terisi?" /></p>
-          <p><Teks anak="3. Ada 2 liter sirup. Tiap botol berisi 2/3 liter. Berapa botol yang terisi?" /></p>
-          <p>Lalu hitung jus, jambu, air mineral, dan botol 2/5 pada cerita Agam.</p>
-        </Kegiatan>
-        <KotakJawaban id={idKuis("B", 15)} soal="2 liter dibagi gelas 1/2 liter. Berapa gelas?" periksa={(teks) => hasilUtuh(teks, "4")} umpan="Dalam 1 liter ada 2 gelas. 2 + 2 = 4. Jadi 2 ÷ 1/2 = 4 gelas." />
-        <KotakJawaban id={idKuis("B", 16)} soal="4 liter dibagi gelas 1/5 liter. Berapa gelas?" periksa={(teks) => hasilUtuh(teks, "20")} umpan="Dalam 1 liter ada 5 gelas. 4 × 5 = 20. Jadi 4 ÷ 1/5 = 20 gelas." />
-        <KotakJawaban id={idKuis("B", 17)} soal="2 liter dibagi botol 2/3 liter. Berapa botol?" periksa={(teks) => hasilUtuh(teks, "3")} umpan="2 ÷ 2/3 = 2 × 3/2 = 3 botol." />
-        <KotakJawaban id={idKuis("B", 3)} soal="Banyak gelas 1/4 liter dari 3 liter jus jeruk?" periksa={(teks) => utuh(teks, "12")} umpan="3 ÷ 1/4 = 3 × 4 = 12 gelas." />
-        <KotakJawaban id={idKuis("B", 4)} soal="Banyak gelas 1/2 liter dari 3 liter jus jambu?" periksa={jumlahEnam} umpan="3 ÷ 1/2 = 6 gelas." />
-        <KotakJawaban id={idKuis("B", 5)} soal="Banyak gelas 1/5 liter dari 3 liter air mineral?" periksa={jumlahLimaBelas} umpan="3 ÷ 1/5 = 15 gelas." />
-        <KotakJawaban id={idKuis("B", 6)} soal="Banyak botol 2/5 liter dari 3 liter air?" periksa={limaBelasPerDua} umpan="3 ÷ 2/5 = 3 × 5/2 = 15/2, yaitu 7 1/2 botol." />
+        <p className="text-sm font-black uppercase tracking-wide text-[#1C01A5]">Latihan Soal</p>
+        <SoalLatihan anak="1. Ada 2 liter jus. Tiap gelas berisi 1/2 liter. Berapa gelas yang terisi?" id={idKuis("B", 13)} periksa={(teks) => hasilUtuh(teks, "4")} />
+        <SoalLatihan anak="2. Ada 4 liter air. Tiap gelas berisi 1/5 liter. Berapa gelas yang terisi?" id={idKuis("B", 14)} periksa={(teks) => hasilUtuh(teks, "20")} />
+        <SoalLatihan anak="3. Ada 2 liter sirup. Tiap botol berisi 2/3 liter. Berapa botol yang terisi?" id={idKuis("B", 15)} periksa={(teks) => hasilUtuh(teks, "3")} />
+        <SoalLatihan anak="4. Banyak gelas 1/2 liter dari 3 liter jus jambu?" id={idKuis("B", 2)} periksa={jumlahEnam} />
+        <SoalLatihan anak="5. Banyak gelas 1/5 liter dari 3 liter air mineral?" id={idKuis("B", 3)} periksa={jumlahLimaBelas} />
+        <SoalLatihan anak="6. Banyak botol 2/5 liter dari 3 liter air?" id={idKuis("B", 4)} periksa={limaBelasPerDua} />
 
-        <Kegiatan label="Latihan 1.2">
-          <p><Teks anak="1. Pak Rudi membagi 2/4 bagian tanah kepada 3 anak secara adil. Gambar bagian tanah itu, lalu gambar bagian tiap anak." /></p>
-          <p><Teks anak="2. Rina punya 6 kg gula. Tiap adonan bolu memakai 3/4 kg." /></p>
-          <p><Teks anak="3. Astri punya 5 batang cokelat. Tiap teman mendapat 2/3 batang. Berapa teman yang mendapat bagian penuh? Apakah ada sisa?" /></p>
-          <p><Teks anak="4. Buat cerita untuk 1/5 ÷ 4 dan untuk 4 ÷ 1/5." /></p>
-        </Kegiatan>
-        <KotakJawaban id={idKuis("B", 7)} soal="Bagian tanah tiap anak Pak Rudi?" periksa={seperenam} umpan="2/4 ÷ 3 = 2/4 × 1/3 = 1/6." />
-        <KotakJawaban id={idKuis("B", 8)} soal="Banyak kue bolu yang dibuat Rina?" periksa={jumlahDelapan} umpan="6 ÷ 3/4 = 8 bolu." />
-        <KotakJawaban id={idKuis("B", 9)} soal="5 ÷ 2/3. Tuliskan hasilnya." periksa={limaBelasPerDua} umpan="5 × 3/2 = 15/2. Ada 7 teman yang mendapat bagian penuh, sisa 1/3 batang." />
-        <KotakJawaban id={idKuis("B", 10)} soal="Berapa teman Astri yang mendapat bagian penuh?" periksa={(teks) => utuh(teks, "7")} umpan="15/2 = 7 1/2, jadi 7 teman mendapat 2/3 batang penuh." />
-        <KotakJawaban id={idKuis("B", 11)} soal="Sisa cokelat Astri, dalam batang?" periksa={sepertiga} umpan="Setengah dari 2/3 batang sama dengan 1/3 batang." />
+        <p className="text-sm font-black uppercase tracking-wide text-[#1C01A5]">Latihan 1.2</p>
+        <SoalLatihan anak="1. Pak Rudi membagi 2/4 bagian tanah kepada 3 anak secara adil. Berapa bagian tanah tiap anak?" id={idKuis("B", 5)} periksa={seperenam} />
+        <SoalLatihan anak="2. Rina punya 6 kg gula. Tiap adonan bolu memakai 3/4 kg. Berapa kue bolu yang dibuat?" id={idKuis("B", 6)} periksa={jumlahDelapan} />
+        <SoalLatihan anak="3. Astri punya 5 batang cokelat. Tiap teman mendapat 2/3 batang. Tuliskan hasil 5 ÷ 2/3." id={idKuis("B", 7)} periksa={limaBelasPerDua} />
+        <SoalLatihan anak="Berapa teman Astri yang mendapat bagian penuh?" id={idKuis("B", 8)} periksa={(teks) => utuh(teks, "7")} />
+        <SoalLatihan anak="Sisa cokelat Astri, dalam batang?" id={idKuis("B", 9)} periksa={sepertiga} />
+        <p className="text-sm font-semibold leading-8 text-slate-800"><Teks anak="4. Buat cerita untuk 1/5 ÷ 4 dan untuk 4 ÷ 1/5." /></p>
         <Kegiatan label="Refleksi subbab">
           <p>Bagaimana cara membagi pecahan dengan bilangan asli?</p>
           <p>Bagaimana cara membagi bilangan asli dengan pecahan?</p>
@@ -910,17 +870,12 @@ export default function NaskahMtk6Bab1(_props: { kelas?: string; kelamin?: strin
           ]}
         />
         <Jawaban anak="0,75 meter." />
-        <Kegiatan label="Latihan Soal">
-          <p><Teks anak="1. Ibu membeli 1/4 kg kacang. Berapa kg dalam desimal?" /></p>
-          <p><Teks anak="2. Botol berisi 2/5 liter. Berapa liter dalam desimal?" /></p>
-          <p><Teks anak="3. Tali sepanjang 7/10 meter. Berapa meter dalam desimal?" /></p>
-          <p>Lalu tuliskan desimal jeruk 1/2 kg dan salak 1/5 kg.</p>
-        </Kegiatan>
-        <KotakJawaban id={idKuis("C", 12)} soal="1/4 kg dalam desimal?" periksa={(teks) => desimalUtuh(teks, "0.25")} umpan="1/4 = 25/100 = 0,25." />
-        <KotakJawaban id={idKuis("C", 13)} soal="2/5 liter dalam desimal?" periksa={(teks) => desimalUtuh(teks, "0.4") || desimalUtuh(teks, "0.40")} umpan="2/5 = 4/10 = 0,4." />
-        <KotakJawaban id={idKuis("C", 14)} soal="7/10 meter dalam desimal?" periksa={(teks) => desimalUtuh(teks, "0.7") || desimalUtuh(teks, "0.70")} umpan="7/10 = 0,7." />
-        <KotakJawaban id={idKuis("C", 0)} soal="Bentuk desimal dari 1/2 kg?" periksa={desimalSetengah} umpan="1/2 = 5/10 = 0,5 = 0,50." />
-        <KotakJawaban id={idKuis("C", 1)} soal="Bentuk desimal dari 1/5 kg?" periksa={desimalSeperlima} umpan="1/5 = 2/10 = 0,2 = 0,20." />
+        <p className="text-sm font-black uppercase tracking-wide text-[#1C01A5]">Latihan Soal</p>
+        <SoalLatihan anak="1. Ibu membeli 1/4 kg kacang. Berapa kg dalam desimal?" id={idKuis("C", 11)} periksa={(teks) => desimalUtuh(teks, "0.25")} />
+        <SoalLatihan anak="2. Botol berisi 2/5 liter. Berapa liter dalam desimal?" id={idKuis("C", 12)} periksa={(teks) => desimalUtuh(teks, "0.4") || desimalUtuh(teks, "0.40")} />
+        <SoalLatihan anak="3. Tali sepanjang 7/10 meter. Berapa meter dalam desimal?" id={idKuis("C", 13)} periksa={(teks) => desimalUtuh(teks, "0.7") || desimalUtuh(teks, "0.70")} />
+        <SoalLatihan anak="4. Bentuk desimal dari 1/2 kg jeruk?" id={idKuis("C", 0)} periksa={desimalSetengah} />
+        <SoalLatihan anak="5. Bentuk desimal dari 1/5 kg salak?" id={idKuis("C", 1)} periksa={desimalSeperlima} />
 
         <h3 className="text-lg font-black text-[#1C01A5]">2. Membandingkan dan Mengurutkan Bilangan Desimal</h3>
         <Kegiatan label="Materi">
@@ -1009,32 +964,21 @@ export default function NaskahMtk6Bab1(_props: { kelas?: string; kelamin?: strin
           ]}
         />
         <Jawaban anak="2,9 lebih besar dari 2,49." />
-        <Kegiatan label="Latihan Soal">
-          <p>1. Mana yang lebih besar, 3,5 atau 3,45?</p>
-          <p>2. Dari 1,2 ; 0,8 ; dan 1,15, mana yang terkecil?</p>
-          <p>3. Mana yang lebih besar, 4,6 atau 4,59?</p>
-          <p>Lalu urutkan jarak pada tabel cerita Agam.</p>
-        </Kegiatan>
-        <KotakJawaban id={idKuis("C", 15)} soal="Mana yang lebih besar, 3,5 atau 3,45?" periksa={(teks) => desimalUtuh(teks, "3.5") || desimalUtuh(teks, "3.50")} umpan="Satuan sama-sama 3. Persepuluhan 5 lebih besar dari 4, jadi 3,5 lebih besar." />
-        <KotakJawaban id={idKuis("C", 16)} soal="Dari 1,2 ; 0,8 ; dan 1,15, mana yang terkecil?" periksa={(teks) => desimalUtuh(teks, "0.8") || desimalUtuh(teks, "0.80")} umpan="0,8 lebih kecil dari 1,15 dan dari 1,2 karena satuannya 0." />
-        <KotakJawaban id={idKuis("C", 17)} soal="Mana yang lebih besar, 4,6 atau 4,59?" periksa={(teks) => desimalUtuh(teks, "4.6") || desimalUtuh(teks, "4.60")} umpan="Persepuluhan 6 lebih besar dari 5, jadi 4,6 lebih besar." />
-        <KotakJawaban id={idKuis("C", 3)} soal="Dari lima jarak itu, yang terdekat berapa km?" periksa={desimalNolKomaSembilan} umpan="0,9 km." />
-        <KotakJawaban id={idKuis("C", 4)} soal="Dari lima jarak itu, yang terjauh berapa km?" periksa={desimalTigaKomaEnam} umpan="3,6 km." />
-        <KotakJawaban id={idKuis("C", 5)} soal="Siapa yang rumahnya paling dekat, atau berapa km jaraknya?" periksa={(teks) => namaAtauAngka(teks, "andi", "1.5", desimalSatuKomaLima)} umpan="Andi, 1,5 km." />
-        <KotakJawaban id={idKuis("C", 6)} soal="Siapa yang rumahnya paling jauh, atau berapa km jaraknya?" periksa={(teks) => namaAtauAngka(teks, "musa", "11.3", (nilai) => desimalUtuh(nilai, "11.3"))} umpan="Musa, 11,3 km." />
+        <p className="text-sm font-black uppercase tracking-wide text-[#1C01A5]">Latihan Soal</p>
+        <SoalLatihan anak="1. Mana yang lebih besar, 3,5 atau 3,45?" id={idKuis("C", 14)} periksa={(teks) => desimalUtuh(teks, "3.5") || desimalUtuh(teks, "3.50")} />
+        <SoalLatihan anak="2. Dari 1,2 ; 0,8 ; dan 1,15, mana yang terkecil?" id={idKuis("C", 15)} periksa={(teks) => desimalUtuh(teks, "0.8") || desimalUtuh(teks, "0.80")} />
+        <SoalLatihan anak="3. Mana yang lebih besar, 4,6 atau 4,59?" id={idKuis("C", 16)} periksa={(teks) => desimalUtuh(teks, "4.6") || desimalUtuh(teks, "4.60")} />
+        <SoalLatihan anak="4. Dari lima jarak 0,9 km, 1,9 km, 2,3 km, 2,6 km, dan 3,6 km, yang terdekat berapa km?" id={idKuis("C", 2)} periksa={desimalNolKomaSembilan} />
+        <SoalLatihan anak="5. Dari lima jarak itu, yang terjauh berapa km?" id={idKuis("C", 3)} periksa={desimalTigaKomaEnam} />
+        <SoalLatihan anak="6. Siapa yang rumahnya paling dekat, atau berapa km jaraknya?" id={idKuis("C", 4)} periksa={(teks) => namaAtauAngka(teks, "andi", "1.5", desimalSatuKomaLima)} />
+        <SoalLatihan anak="7. Siapa yang rumahnya paling jauh, atau berapa km jaraknya?" id={idKuis("C", 5)} periksa={(teks) => namaAtauAngka(teks, "musa", "11.3", (nilai) => desimalUtuh(nilai, "11.3"))} />
 
-        <Kegiatan label="Latihan 1.3">
-          <p><Teks anak="1. Kain sepanjang 3/4 meter. Gambar pecahannya, lalu ubah menjadi desimal." /></p>
-          <p>2. Suhu tertinggi tahun 2015: Sumatra Selatan 37,2; Sumatra Utara 33,3; Nusa Tenggara Timur 36,6; Sulawesi Tengah 38,5; Kalimantan Utara 36,8. Urutkan dari yang tertinggi.</p>
-          <p>3. Lompat jauh: Arman 3,7 m, Bayu 3,6 m, Didi 2,9 m. Siapa yang paling jauh dan siapa yang paling dekat?</p>
-          <p><Teks anak="4. Pada label, protein 5 g, lemak 10 g, karbohidrat 30 g, serat pangan 2 g, dan natrium 100 mg. Natrium 100 mg sama dengan 0,1 g. Zat mana yang paling besar, mana yang paling kecil, dan bagaimana urutannya?" /></p>
-        </Kegiatan>
-        <KotakJawaban id={idKuis("C", 2)} soal="3/4 meter dalam desimal?" periksa={desimalTigaPerEmpat} umpan="3/4 = 75/100 = 0,75." />
-        <KotakJawaban id={idKuis("C", 7)} soal="Provinsi dengan suhu tertinggi, atau tuliskan suhunya." periksa={(teks) => namaAtauAngka(teks, "sulawesi", "38.5", desimalTigaDelapanKomaLima)} umpan="Sulawesi Tengah, 38,5. Urutan dari yang tertinggi: 38,5; 37,2; 36,8; 36,6; 33,3." />
-        <KotakJawaban id={idKuis("C", 8)} soal="Siapa yang lompatannya paling jauh?" periksa={(teks) => teks.toLowerCase().includes("arman") || desimalTigaKomaTujuh(teks)} umpan="Arman, 3,7 m." />
-        <KotakJawaban id={idKuis("C", 9)} soal="Siapa yang lompatannya paling dekat?" periksa={(teks) => teks.toLowerCase().includes("didi") || desimalDuaKomaSembilan(teks)} umpan="Didi, 2,9 m." />
-        <KotakJawaban id={idKuis("C", 10)} soal="Zat dengan komposisi paling besar, atau tuliskan massanya dalam gram." periksa={(teks) => namaAtauAngka(teks, "karbohidrat", "30", (nilai) => utuh(nilai, "30"))} umpan="Karbohidrat, 30 g. Urutan dari yang terkecil: natrium 0,1 g; serat 2 g; protein 5 g; lemak 10 g; karbohidrat 30 g." />
-        <KotakJawaban id={idKuis("C", 11)} soal="Zat dengan komposisi paling kecil, atau tuliskan massanya dalam gram." periksa={(teks) => teks.toLowerCase().includes("natrium") || desimalUtuh(teks, "0.1")} umpan="Natrium, 0,1 g. Seratus miligram sama dengan 0,1 g." />
+        <p className="text-sm font-black uppercase tracking-wide text-[#1C01A5]">Latihan 1.3</p>
+        <SoalLatihan anak="1. Suhu tertinggi tahun 2015: Sumatra Selatan 37,2; Sumatra Utara 33,3; Nusa Tenggara Timur 36,6; Sulawesi Tengah 38,5; Kalimantan Utara 36,8. Provinsi dengan suhu tertinggi, atau tuliskan suhunya." id={idKuis("C", 6)} periksa={(teks) => namaAtauAngka(teks, "sulawesi", "38.5", desimalTigaDelapanKomaLima)} />
+        <SoalLatihan anak="2. Lompat jauh: Arman 3,7 m, Bayu 3,6 m, Didi 2,9 m. Siapa yang lompatannya paling jauh?" id={idKuis("C", 7)} periksa={(teks) => teks.toLowerCase().includes("arman") || desimalTigaKomaTujuh(teks)} />
+        <SoalLatihan anak="Siapa yang lompatannya paling dekat?" id={idKuis("C", 8)} periksa={(teks) => teks.toLowerCase().includes("didi") || desimalDuaKomaSembilan(teks)} />
+        <SoalLatihan anak="3. Pada label, protein 5 g, lemak 10 g, karbohidrat 30 g, serat pangan 2 g, dan natrium 100 mg. Natrium 100 mg sama dengan 0,1 g. Zat dengan komposisi paling besar, atau tuliskan massanya dalam gram." id={idKuis("C", 9)} periksa={(teks) => namaAtauAngka(teks, "karbohidrat", "30", (nilai) => utuh(nilai, "30"))} />
+        <SoalLatihan anak="Zat dengan komposisi paling kecil, atau tuliskan massanya dalam gram." id={idKuis("C", 10)} periksa={(teks) => teks.toLowerCase().includes("natrium") || desimalUtuh(teks, "0.1")} />
         <Kegiatan label="Refleksi subbab">
           <p>Bandingkan desimal dari kiri tanda koma. Urutkan setelah nilai tempatnya diketahui.</p>
         </Kegiatan>
@@ -1088,14 +1032,10 @@ export default function NaskahMtk6Bab1(_props: { kelas?: string; kelamin?: strin
           ]}
         />
         <Jawaban anak="1/6 bagian tangki." />
-        <Kegiatan label="Latihan Soal">
-          <p><Teks anak="1. 1/2 × 1/4. Berapa hasilnya?" /></p>
-          <p><Teks anak="2. 2/3 × 1/5. Berapa hasilnya?" /></p>
-          <p><Teks anak="3. 3/4 × 1/2. Berapa hasilnya?" /></p>
-        </Kegiatan>
-        <KotakJawaban id={idKuis("E", 0)} soal="1/2 × 1/4. Tuliskan hasilnya." periksa={(teks) => pecahan(teks, "1/8")} umpan="(1 × 1) / (2 × 4) = 1/8." />
-        <KotakJawaban id={idKuis("E", 1)} soal="2/3 × 1/5. Tuliskan hasilnya." periksa={(teks) => pecahan(teks, "2/15")} umpan="(2 × 1) / (3 × 5) = 2/15." />
-        <KotakJawaban id={idKuis("E", 2)} soal="3/4 × 1/2. Tuliskan hasilnya." periksa={(teks) => pecahan(teks, "3/8")} umpan="(3 × 1) / (4 × 2) = 3/8." />
+        <p className="text-sm font-black uppercase tracking-wide text-[#1C01A5]">Latihan Soal</p>
+        <SoalLatihan anak="1. 1/2 × 1/4. Berapa hasilnya?" id={idKuis("E", 0)} periksa={(teks) => pecahan(teks, "1/8")} />
+        <SoalLatihan anak="2. 2/3 × 1/5. Berapa hasilnya?" id={idKuis("E", 1)} periksa={(teks) => pecahan(teks, "2/15")} />
+        <SoalLatihan anak="3. 3/4 × 1/2. Berapa hasilnya?" id={idKuis("E", 2)} periksa={(teks) => pecahan(teks, "3/8")} />
         <h3 className="text-lg font-black text-[#1C01A5]">Pembagian pecahan dengan pecahan</h3>
         <Kegiatan label="Materi">
           <p><Teks anak="3 gelas air memenuhi 2/3 botol. Satu pertiga botol memerlukan 3/2 gelas. Satu botol penuh memerlukan 3 ÷ 2/3 = 9/2 gelas." /></p>
@@ -1122,14 +1062,10 @@ export default function NaskahMtk6Bab1(_props: { kelas?: string; kelamin?: strin
           ]}
         />
         <Jawaban anak="2/3 gelas untuk satu botol penuh." />
-        <Kegiatan label="Latihan Soal">
-          <p><Teks anak="1. 1/2 ÷ 1/4. Berapa hasilnya?" /></p>
-          <p><Teks anak="2. 2/3 ÷ 1/3. Berapa hasilnya?" /></p>
-          <p><Teks anak="3. 3/4 ÷ 1/2. Berapa hasilnya?" /></p>
-        </Kegiatan>
-        <KotakJawaban id={idKuis("E", 3)} soal="1/2 ÷ 1/4. Tuliskan hasilnya." periksa={(teks) => hasilUtuh(teks, "2")} umpan="1/2 × 4/1 = 4/2 = 2." />
-        <KotakJawaban id={idKuis("E", 4)} soal="2/3 ÷ 1/3. Tuliskan hasilnya." periksa={(teks) => hasilUtuh(teks, "2")} umpan="2/3 × 3/1 = 6/3 = 2." />
-        <KotakJawaban id={idKuis("E", 5)} soal="3/4 ÷ 1/2. Tuliskan hasilnya." periksa={(teks) => pecahan(teks, "3/2") || pecahan(teks, "6/4")} umpan="3/4 × 2/1 = 6/4 = 3/2." />
+        <p className="text-sm font-black uppercase tracking-wide text-[#1C01A5]">Latihan Soal</p>
+        <SoalLatihan anak="1. 1/2 ÷ 1/4. Berapa hasilnya?" id={idKuis("E", 3)} periksa={(teks) => hasilUtuh(teks, "2")} />
+        <SoalLatihan anak="2. 2/3 ÷ 1/3. Berapa hasilnya?" id={idKuis("E", 4)} periksa={(teks) => hasilUtuh(teks, "2")} />
+        <SoalLatihan anak="3. 3/4 ÷ 1/2. Berapa hasilnya?" id={idKuis("E", 5)} periksa={(teks) => pecahan(teks, "3/2") || pecahan(teks, "6/4")} />
         <h3 className="text-lg font-black text-[#1C01A5]">Desimal berulang</h3>
         <Kegiatan label="Materi">
           <p><Teks anak="Rani punya 1/3 liter jus jeruk dan 1/6 liter jus jambu." /></p>
@@ -1154,14 +1090,10 @@ export default function NaskahMtk6Bab1(_props: { kelas?: string; kelamin?: strin
           ]}
         />
         <Jawaban anak="1/3 = 0,333… dan 1/6 = 0,1666…" />
-        <Kegiatan label="Latihan Soal">
-          <p><Teks anak="1. Tuliskan desimal 1/3 sampai tiga angka 3 yang berulang." /></p>
-          <p><Teks anak="2. Tuliskan desimal 1/6 yang angkanya berulang." /></p>
-          <p><Teks anak="3. Dari 1/2 dan 1/3, mana yang desimalnya berulang?" /></p>
-        </Kegiatan>
-        <KotakJawaban id={idKuis("E", 6)} soal="Desimal berulang dari 1/3?" periksa={(teks) => rapat(teks).includes("333")} umpan="1/3 = 0,333…" />
-        <KotakJawaban id={idKuis("E", 7)} soal="Desimal berulang dari 1/6?" periksa={(teks) => rapat(teks).includes("166")} umpan="1/6 = 0,1666…" />
-        <KotakJawaban id={idKuis("E", 8)} soal="Dari 1/2 dan 1/3, mana yang berulang?" periksa={sepertiga} umpan="1/3 = 0,333… sedangkan 1/2 = 0,5 dan berhenti." />
+        <p className="text-sm font-black uppercase tracking-wide text-[#1C01A5]">Latihan Soal</p>
+        <SoalLatihan anak="1. Tuliskan desimal 1/3 sampai tiga angka 3 yang berulang." id={idKuis("E", 6)} periksa={(teks) => rapat(teks).includes("333")} />
+        <SoalLatihan anak="2. Tuliskan desimal 1/6 yang angkanya berulang." id={idKuis("E", 7)} periksa={(teks) => rapat(teks).includes("166")} />
+        <SoalLatihan anak="3. Dari 1/2 dan 1/3, mana yang desimalnya berulang?" id={idKuis("E", 8)} periksa={sepertiga} />
       </section>
     </article>
   );
