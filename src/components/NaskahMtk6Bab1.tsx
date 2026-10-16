@@ -278,7 +278,7 @@ export default function NaskahMtk6Bab1(_props: { kelas?: string; kelamin?: strin
           <p><Teks anak="Agam punya 15 pohon mangga. 2/3 dari pohon itu adalah mangga manalagi." /></p>
         </Kegiatan>
         <Kegiatan label="Eksplorasi 1.2">
-          <p>Bagi 15 pohon menjadi 3 bagian yang sama. Ambil 2 bagian.</p>
+          <p>Bagi 15 pohon menjadi 3 bagian, lalu gabungkan 2 bagian.</p>
         </Kegiatan>
         <KotakJawaban id={idKuis("A", 5)} soal="Banyak pohon mangga manalagi?" periksa={jumlahSepuluh} umpan="2/3 × 15 = 10 pohon." />
         <Kegiatan label="Pembahasan">
