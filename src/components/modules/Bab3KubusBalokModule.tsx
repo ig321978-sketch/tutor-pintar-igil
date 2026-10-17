@@ -403,7 +403,7 @@ function kolomBentuk(bentuk: BentukDua | BentukTiga): number[] {
   return [3];
 }
 
-export default function KubusModuleView() {
+export default function Bab3KubusBalokModule() {
   const kuis = useKuisMateri();
   const [siap, setSiap] = useState(false);
   const [jawaban, setJawaban] = useState<Record<string, string>>({});
