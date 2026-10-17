@@ -534,11 +534,13 @@ export default function NaskahMtk6Bab1(_props: { kelas?: string; kelamin?: strin
           <p><Teks anak="Penampungan air masih terisi 2/3 bagian. Hari ini terpakai 1/5 dari air yang tersisa." /></p>
         </Kegiatan>
         <Kegiatan label="Logika Pemahaman">
-          <p><Teks anak="Bagian 2/3 itu dibagi 5, atau dikali 1/5." /></p>
+          <p><Teks anak="Bagian 2/3 yang berarti 1 itu dibagi 5, atau dikali 1/5." /></p>
         </Kegiatan>
         <Kegiatan label="Langkah Perhitungan">
           <p><Teks anak="A. 2/3 dibagi 5, artinya 2/3 : 5/1 = (2 × 1) : (3 × 5) = 2/15." /></p>
+          <GambarPasangan kiriAtas="2" kiriBawah="3" kananAtas="5" kananBawah="1" operasi="÷" arah="silang" hasilAtas="2 × 1" hasilBawah="3 × 5" akhirAtas="2" akhirBawah="15" catatan="Kotak merah pada 2/3. Panah hijau menyilang." />
           <p><Teks anak="B. 2/3 dikali 1/5, artinya 2/3 × 1/5 = (2 × 1) : (3 × 5) = 2/15." /></p>
+          <GambarPasangan kiriAtas="2" kiriBawah="3" kananAtas="1" kananBawah="5" operasi="×" arah="lurus" hasilAtas="2 × 1" hasilBawah="3 × 5" akhirAtas="2" akhirBawah="15" catatan="Kotak merah pada 2/3. Panah hijau lurus." />
         </Kegiatan>
         <Jawaban anak="2/15 bagian." />
         <Kegiatan label="Adegan">
@@ -549,11 +551,13 @@ export default function NaskahMtk6Bab1(_props: { kelas?: string; kelamin?: strin
           <p><Teks anak="Air sisa 2/3 itu akan dipakai selama 2 hari, dibagi sama banyak." /></p>
         </Kegiatan>
         <Kegiatan label="Logika Pemahaman">
-          <p><Teks anak="Bagian 2/3 itu dibagi 2, atau dikali 1/2." /></p>
+          <p><Teks anak="Bagian 2/3 yang berarti 1 itu dibagi 2, atau dikali 1/2." /></p>
         </Kegiatan>
         <Kegiatan label="Langkah Perhitungan">
           <p><Teks anak="A. 2/3 dibagi 2, artinya 2/3 : 2/1 = (2 × 1) : (3 × 2) = 2/6 = 1/3." /></p>
+          <GambarPasangan kiriAtas="2" kiriBawah="3" kananAtas="2" kananBawah="1" operasi="÷" arah="silang" hasilAtas="2 × 1" hasilBawah="3 × 2" akhirAtas="2" akhirBawah="6" catatan="Kotak merah pada 2/3. Panah hijau menyilang. 2/6 sama dengan 1/3." />
           <p><Teks anak="B. 2/3 dikali 1/2, artinya 2/3 × 1/2 = (2 × 1) : (3 × 2) = 2/6 = 1/3." /></p>
+          <GambarPasangan kiriAtas="2" kiriBawah="3" kananAtas="1" kananBawah="2" operasi="×" arah="lurus" hasilAtas="2 × 1" hasilBawah="3 × 2" akhirAtas="2" akhirBawah="6" catatan="Kotak merah pada 2/3. Panah hijau lurus. 2/6 sama dengan 1/3." />
         </Kegiatan>
         <Jawaban anak="2/6 bagian, yaitu 1/3 bagian tiap hari." />
       </section>
