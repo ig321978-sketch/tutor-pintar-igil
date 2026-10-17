@@ -21,6 +21,7 @@
     "poin": [
       {
         "judul": "Bangun yang bisa digelindingkan dan yang bisa ditumpuk",
+        "visual": "gelinding",
         "isi": [
           "Delapan bangun pada gambar punya sifat yang berbeda. Bola, tabung, dan kerucut dapat digelindingkan karena ada sisi lengkung.",
           "Kubus, balok, prisma, dan limas dapat ditumpuk karena ada sisi yang datar."
@@ -29,6 +30,7 @@
       },
       {
         "judul": "Sisi, titik sudut, dan rusuk",
+        "visual": "rusuk",
         "isi": [
           "Sisi adalah dinding. Titik sudut adalah pojokan. Rusuk adalah garis tempat dua sisi bertemu.",
           "Prisma segitiga punya 5 sisi: 2 segitiga dan 3 persegi panjang. Limas segi empat punya 5 titik sudut: 4 di alas dan 1 di puncak. Balok punya 12 rusuk: 4 di alas, 4 di tutup, dan 4 yang tegak.",
@@ -38,6 +40,7 @@
       },
       {
         "judul": "Menyusun dan mengurai kubus",
+        "visual": "susun",
         "isi": [
           "Dua kubus yang menempel pada satu sisi hanya menghasilkan satu bentuk. Berdampingan atau bertumpuk adalah bentuk yang sama, hanya arah pandangnya berbeda.",
           "Tiga kubus pada satu lantai punya 2 bentuk: lurus dan siku. Jika boleh tiga lantai, hanya ada 1 bentuk, yaitu menara tiga kubus.",
@@ -60,6 +63,7 @@
       },
       {
         "judul": "Tampak dari beberapa arah dan mata dadu",
+        "visual": "lawan",
         "isi": [
           "Bangun yang sama dapat terlihat berbeda dari depan, samping, dan atas. Satu arah sering belum cukup untuk menyusun kembali kubusnya.",
           "Pada dadu bab ini, dua sisi yang berhadapan berjumlah 7. Jadi 6 berhadapan dengan 1, 5 berhadapan dengan 2, dan 3 berhadapan dengan 4.",
@@ -88,6 +92,7 @@
       },
       {
         "judul": "Jarak terpendek pada petak",
+        "visual": "jarak",
         "isi": [
           "Langkah hanya boleh ke kiri, kanan, depan, atau belakang. Langkah tidak boleh langsung menyilang.",
           "Jarak terpendek adalah selisih huruf ditambah selisih bilangan. Jalur yang berputar lebih panjang."
@@ -101,6 +106,7 @@
       },
       {
         "judul": "Banyak cara terpendek",
+        "visual": "cara",
         "isi": [
           "Jika hanya boleh ke kanan atau ke atas, banyak cara dari (A,1) ke (D,5) dihitung dari 3 langkah kanan dan 4 langkah atas.",
           "Jumlah langkah terpendek = 3 + 4 = 7. Banyak caranya = 7! : (3! × 4!) = 5.040 : (6 × 24) = 35.",
@@ -130,6 +136,7 @@
     "kasus": [
       {
         "judul": "Kasus 1. Luas lantai gudang",
+        "visual": "gudang",
         "soal": "Pak Hasan punya 30 kardus berukuran 20 cm × 30 cm × 50 cm. Gudang berukuran 3 m × 3 m dan tinggi 3,1 m. Kardus boleh ditumpuk ke segala arah. Berapa luas lantai yang terpakai, dalam m²?",
         "langkah": [
           "Volume satu kardus = 20 × 30 × 50 = 30.000 cm³.",

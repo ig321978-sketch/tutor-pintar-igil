@@ -1,6 +1,7 @@
 "use client";
 
 import { useKuisMateri } from "@/components/KuisMateriContext";
+import { IkonBalok, IkonKubus, IkonPetak, InfografisAngka, PetaPikiran, VisualBab } from "@/components/VisualMtk6Bab3";
 import materiMentah from "@/content/mtk-6-bab3.json";
 import { idKuisKartuResmi } from "@/lib/kuis-materi";
 import { MODUL_MTK6_BAB3 } from "@/lib/modul-resmi-mtk-6-bab3";
@@ -14,8 +15,9 @@ type PoinKonsep = {
   contoh?: string;
   gambar?: GambarMateri;
   tabel?: TabelMateri;
+  visual?: string;
 };
-type Kasus = { judul: string; soal: string; langkah: string[] };
+type Kasus = { judul: string; soal: string; langkah: string[]; visual?: string };
 type Istilah = { kata: string; arti: string };
 type Pilihan = { kode: string; teks: string };
 type SoalBank = {
@@ -182,7 +184,14 @@ export default function NaskahMtk6Bab3(_props: { kelas?: string; kelamin?: strin
       <Kartu>
         <JudulBagian bagian={materi.pengantar.bagian} anak={materi.pengantar.judul} />
         {materi.pengantar.paragraf.map((kalimat) => <P key={kalimat} anak={kalimat} />)}
+        <div className="flex flex-wrap items-center gap-4 rounded-xl bg-[#F8F7FF] px-3 py-2">
+          <span className="flex items-center gap-2 text-sm font-black text-[#1C01A5]"><IkonKubus /> Kubus</span>
+          <span className="flex items-center gap-2 text-sm font-black text-[#6A1B9A]"><IkonBalok /> Balok</span>
+          <span className="flex items-center gap-2 text-sm font-black text-[#2E7D32]"><IkonPetak /> Petak</span>
+        </div>
         {materi.pengantar.gambar ? <Gambar {...materi.pengantar.gambar} /> : null}
+        <PetaPikiran />
+        <InfografisAngka />
       </Kartu>
 
       <Kartu>
@@ -193,6 +202,7 @@ export default function NaskahMtk6Bab3(_props: { kelas?: string; kelamin?: strin
               <h3 className="text-lg font-black text-[#1C01A5]">{indeks + 1}. {poin.judul}</h3>
               {poin.isi.map((kalimat) => <P key={kalimat} anak={kalimat} />)}
               {poin.contoh ? <p className="rounded-xl bg-[#EEF2FF] px-3 py-2 text-sm font-semibold leading-8 text-slate-800"><span className="font-black text-[#1C01A5]">Contoh angka. </span>{poin.contoh}</p> : null}
+              <VisualBab kode={poin.visual} />
               {poin.gambar ? <Gambar {...poin.gambar} /> : null}
               {poin.tabel ? <Tabel {...poin.tabel} /> : null}
             </li>
@@ -206,6 +216,7 @@ export default function NaskahMtk6Bab3(_props: { kelas?: string; kelamin?: strin
           <div key={kasus.judul} className="space-y-2 rounded-xl border border-slate-200 p-3">
             <h3 className="text-lg font-black text-[#1C01A5]">{kasus.judul}</h3>
             <P anak={kasus.soal} />
+            <VisualBab kode={kasus.visual} />
             <ol className="list-decimal space-y-1 pl-5 text-sm font-semibold leading-8 text-slate-800">
               {kasus.langkah.map((langkah) => <li key={langkah}>{langkah}</li>)}
             </ol>
@@ -217,9 +228,14 @@ export default function NaskahMtk6Bab3(_props: { kelas?: string; kelamin?: strin
         <JudulBagian bagian={materi.kamus.bagian} anak={materi.kamus.judul} />
         <dl className="space-y-3">
           {materi.kamus.istilah.map((item) => (
-            <div key={item.kata} className="rounded-xl bg-[#F8F7FF] px-3 py-2">
-              <dt className="text-base font-black text-[#1C01A5]">{item.kata}</dt>
-              <dd className="text-sm font-semibold leading-8 text-slate-800">{item.arti}</dd>
+            <div key={item.kata} className="flex items-start gap-3 rounded-xl bg-[#F8F7FF] px-3 py-2">
+              {item.kata === "Kubus" ? <IkonKubus /> : null}
+              {item.kata === "Balok" ? <IkonBalok /> : null}
+              {item.kata === "Sistem berpetak" ? <IkonPetak /> : null}
+              <div>
+                <dt className="text-base font-black text-[#1C01A5]">{item.kata}</dt>
+                <dd className="text-sm font-semibold leading-8 text-slate-800">{item.arti}</dd>
+              </div>
             </div>
           ))}
         </dl>
