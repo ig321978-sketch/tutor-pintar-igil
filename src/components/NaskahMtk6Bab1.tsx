@@ -543,16 +543,16 @@ function LembaranEvaluasi() {
       <JudulBagian anak="Lembaran Evaluasi" />
       <p className="text-sm font-semibold leading-8 text-slate-800">Sepuluh soal. Modelnya berganti: deret, angka hilang, analogi, mana yang beda, dan perbandingan.</p>
       <p className="text-sm font-black text-[#1C01A5]">Benar {skor} dari 10.</p>
-      <SoalLatihan anak="1. Deret. 1/2 , 1/4 , 1/8 , ... Bilangan berikutnya?" id={idKuis("F", 0)} periksa={(teks) => pecahan(teks, "1/16")} jawaban="Penyebut berganti 2, 4, 8, lalu 16. Pembilang tetap 1. Jawabannya 1/16." />
-      <SoalLatihan anak="2. Deret. 0,2 ; 0,4 ; 0,6 ; ... Bilangan berikutnya?" id={idKuis("F", 1)} periksa={(teks) => desimalUtuh(teks, "0.8") || desimalUtuh(teks, "0.80")} jawaban="Tiap langkah bertambah 0,2. 0,6 + 0,2 = 0,8. Jawabannya 0,8." />
-      <SoalLatihan anak="3. Angka hilang. 2/3 × ☐ = 10. Tuliskan angka di kotak kosong." id={idKuis("F", 2)} periksa={(teks) => hasilUtuh(teks, "15")} jawaban="2/3 × 15 = (2 × 15)/3 = 30/3 = 10. Angka yang hilang 15." />
-      <SoalLatihan anak="4. Angka hilang. ☐ : 1/4 = 12. Tuliskan bilangan di kotak kosong." id={idKuis("F", 3)} periksa={(teks) => hasilUtuh(teks, "3")} jawaban="3 : 1/4 = 3 × 4 = 12. Bilangan yang hilang 3." />
-      <SoalLatihan anak="5. Analogi. 1/2 sama dengan 0,5. Maka 1/5 sama dengan ..." id={idKuis("F", 4)} periksa={(teks) => desimalUtuh(teks, "0.2") || desimalUtuh(teks, "0.20")} jawaban="1/5 = (1 × 2)/(5 × 2) = 2/10 = 0,2. Jawabannya 0,2." />
-      <SoalLatihan anak="6. Analogi. 1/2 : 3 = 1/6. Maka 1/4 : 2 = ..." id={idKuis("F", 5)} periksa={(teks) => pecahan(teks, "1/8")} jawaban="1/4 : 2 = 1/4 × 1/2 = 1/8. Jawabannya 1/8." />
-      <SoalLatihan anak="7. Mana yang beda? 0,50 ; 1/2 ; 5/10 ; 0,05." id={idKuis("F", 6)} periksa={(teks) => desimalUtuh(teks, "0.05")} jawaban="0,50, 1/2, dan 5/10 sama-sama setengah. 0,05 adalah 5 perseratusan. Jawabannya 0,05." />
-      <SoalLatihan anak="8. Mana yang beda? 4/6 ; 8/12 ; 6/9 ; 6/10." id={idKuis("F", 7)} periksa={(teks) => pecahan(teks, "6/10") || pecahan(teks, "3/5")} jawaban="4/6, 8/12, dan 6/9 sama dengan 2/3. 6/10 sama dengan 3/5. Jawabannya 6/10." />
-      <SoalLatihan anak="9. Deret. 3 : 1/2 = 6. 3 : 1/4 = 12. 3 : 1/5 = ..." id={idKuis("F", 8)} periksa={(teks) => hasilUtuh(teks, "15")} jawaban="3 : 1/5 = 3 × 5 = 15. Jawabannya 15." />
-      <SoalLatihan anak="10. Mana yang paling besar? 2/3 ; 0,6 ; 3/4 ; 0,7." id={idKuis("F", 9)} periksa={(teks) => pecahan(teks, "3/4") || desimalUtuh(teks, "0.75")} jawaban="2/3 = 0,666… 0,6 = 0,6. 3/4 = 0,75. 0,7 = 0,7. Yang paling besar 3/4." />
+      <SoalLatihan anak="1. Deret. 1/7 , 1/14 , 1/28 , ... Bilangan berikutnya?" id={idKuis("F", 0)} periksa={(teks) => pecahan(teks, "1/56")} jawaban="Penyebut berganti 7, 14, 28, lalu 56. Pembilang tetap 1. Jawabannya 1/56." />
+      <SoalLatihan anak="2. Deret. 0,12 ; 0,24 ; 0,36 ; ... Bilangan berikutnya?" id={idKuis("F", 1)} periksa={(teks) => desimalUtuh(teks, "0.48")} jawaban="Tiap langkah bertambah 0,12. 0,36 + 0,12 = 0,48. Jawabannya 0,48." />
+      <SoalLatihan anak="3. Angka hilang. 3/7 × ☐ = 6. Tuliskan angka di kotak kosong." id={idKuis("F", 2)} periksa={(teks) => hasilUtuh(teks, "14")} jawaban="3/7 × 14 = (3 × 14)/7 = 42/7 = 6. Angka yang hilang 14." />
+      <SoalLatihan anak="4. Angka hilang. ☐ : 4/7 = 14. Tuliskan bilangan di kotak kosong." id={idKuis("F", 3)} periksa={(teks) => hasilUtuh(teks, "8")} jawaban="8 : 4/7 = 8 × 7/4 = 56/4 = 14. Bilangan yang hilang 8." />
+      <SoalLatihan anak="5. Analogi. 11/20 sama dengan 0,55. Maka 13/20 sama dengan ..." id={idKuis("F", 4)} periksa={(teks) => desimalUtuh(teks, "0.65")} jawaban="13/20 = (13 × 5)/(20 × 5) = 65/100 = 0,65. Jawabannya 0,65." />
+      <SoalLatihan anak="6. Analogi. 4/9 : 2 = 4/18. Maka 7/9 : 2 = ..." id={idKuis("F", 5)} periksa={(teks) => pecahan(teks, "7/18")} jawaban="7/9 : 2 = 7/9 × 1/2 = 7/18. Jawabannya 7/18." />
+      <SoalLatihan anak="7. Mana yang beda? 0,35 ; 7/20 ; 35/100 ; 0,53." id={idKuis("F", 6)} periksa={(teks) => desimalUtuh(teks, "0.53")} jawaban="7/20 = 35/100 = 0,35. 0,53 adalah 53 perseratusan. Jawabannya 0,53." />
+      <SoalLatihan anak="8. Mana yang beda? 10/14 ; 15/21 ; 20/28 ; 8/18." id={idKuis("F", 7)} periksa={(teks) => pecahan(teks, "8/18") || pecahan(teks, "4/9")} jawaban="10/14, 15/21, dan 20/28 sama dengan 5/7. 8/18 sama dengan 4/9. Jawabannya 8/18." />
+      <SoalLatihan anak="9. Deret. 7 : 1/3 = 21. 7 : 1/4 = 28. 7 : 1/6 = ..." id={idKuis("F", 8)} periksa={(teks) => hasilUtuh(teks, "42")} jawaban="7 : 1/6 = 7 × 6 = 42. Jawabannya 42." />
+      <SoalLatihan anak="10. Mana yang paling besar? 0,51 ; 11/20 ; 14/25 ; 0,53." id={idKuis("F", 9)} periksa={(teks) => pecahan(teks, "14/25") || desimalUtuh(teks, "0.56")} jawaban="11/20 = 0,55. 14/25 = 0,56. 0,51 dan 0,53 lebih kecil. Yang paling besar 14/25." />
     </section>
   );
 }
