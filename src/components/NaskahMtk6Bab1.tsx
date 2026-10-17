@@ -444,7 +444,7 @@ function SoalLatihan({ anak, id, periksa, jawaban, tanya = "Tuliskan hasilnya." 
   );
 }
 
-function KotakJawaban({ id, soal, periksa, umpan, jawaban }: { id: string; soal: string; periksa: (teks: string) => boolean; umpan: string; jawaban?: string }) {
+function KotakJawaban({ id, soal = "", periksa, umpan, jawaban }: { id: string; soal?: string; periksa: (teks: string) => boolean; umpan: string; jawaban?: string }) {
   const kuis = useKuisMateri();
   const [isi, setIsi] = useState("");
   const [status, setStatus] = useState<"benar" | "salah" | null>(null);
@@ -457,8 +457,8 @@ function KotakJawaban({ id, soal, periksa, umpan, jawaban }: { id: string; soal:
   return (
     <div className="space-y-2 rounded-xl border border-slate-200 bg-white px-3 py-3">
       <label className="block text-sm font-bold leading-8 text-slate-800">
-        <Teks anak={soal} />
-        <input value={isi} onChange={(event) => { setIsi(event.target.value); setStatus(null); }} className="mt-2 w-full rounded-lg border border-slate-300 px-3 py-2 text-base font-semibold text-slate-900" />
+        {soal ? <Teks anak={soal} /> : null}
+        <input aria-label={soal || "Jawaban"} value={isi} onChange={(event) => { setIsi(event.target.value); setStatus(null); }} className={`${soal ? "mt-2" : ""} w-full rounded-lg border border-slate-300 px-3 py-2 text-base font-semibold text-slate-900`} />
       </label>
       <div className="flex flex-wrap gap-2">
         <button type="button" onClick={kirim} className="rounded-full bg-[#1C01A5] px-4 py-2 text-sm font-black text-white">Periksa</button>
@@ -523,7 +523,7 @@ export default function NaskahMtk6Bab1(_props: { kelas?: string; kelamin?: strin
         <Jawaban anak="2/6 bagian, yaitu 1/3 bagian tiap hari." />
         <p className="text-sm font-semibold leading-8 text-slate-800"><Teks anak="Gambar mana yang menunjukkan 2/3 bagian?" /></p>
         <PilihanDuaPertiga />
-        <KotakJawaban id={idKuis("A", 9)} soal="Tuliskan huruf gambar yang menunjukkan 2/3." periksa={gambarJeruk} umpan="" jawaban="Delapan jeruk di dalam tanda dari dua belas jeruk sama dengan 8/12 = 2/3. Batang biru 6/10. Pizza yang dilingkari 1/4. Jawabannya gambar c." />
+        <KotakJawaban id={idKuis("A", 9)} periksa={gambarJeruk} umpan="" jawaban="a. Batang biru 6/10. b. Pizza 1/4. c. Jeruk 8/12 = 2/3. Jawabannya gambar c." />
       </section>
 
       <section className="space-y-2">
