@@ -169,7 +169,7 @@ function HitungPanah({
 }) {
   return (
     <div className="space-y-3">
-      <KartuMetode judul="Metode Kotak Merah Panah Hijau" warna="panah">
+      <KartuMetode judul="Metode Pecahan" warna="panah">
         <p><Teks anak={kalimat} /></p>
         <GambarPasangan
           kiriAtas={kiriAtas}
