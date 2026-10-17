@@ -587,8 +587,29 @@ export default function NaskahMtk6Bab1(_props: { kelas?: string; kelamin?: strin
       </section>
 
       <section className="space-y-4">
+        <JudulBagian anak="Ayo Mengingat" />
+        <PolaCerita
+          adegan={<p>Agam membawa 20 permen ke kebun. Temannya ada 5. Ia membagi permen itu sampai tidak ada yang lebih banyak.</p>}
+          permasalahan={<p><Teks anak="Ada 20 permen untuk 5 teman. Berapa permen tiap teman?" /></p>}
+          logika={<p><Teks anak="20 dan 5 sama-sama bilangan asli. Bagi 20 dengan 5. Tidak perlu diubah menjadi pecahan." /></p>}
+          langkah={<p><Teks anak="20 : 5 = 4. Tiap teman mendapat 4 permen." /></p>}
+        />
+      </section>
+
+      <section className="space-y-4">
         <JudulBagian anak="A. Perkalian Pecahan" />
         <h3 className="text-lg font-black text-[#1C01A5]">1. Perkalian Bilangan Asli dengan Pecahan</h3>
+        <PolaCerita
+          adegan={
+            <>
+              <Gambar src="/doodle-mtk/mtk-6-bab1-ember-besar.jpg" alt="Agam dan Ayah menyiram kebun dengan ember besar." keterangan="Satu ember besar menyiram 2 m² kebun." />
+              <p>Ayah mengangkat ember besar. Satu ember membuat tanah basah seluas dua meter persegi. Ayah menuang lima ember, lalu bertanya berapa luas yang sudah basah.</p>
+            </>
+          }
+          permasalahan={<p><Teks anak="Satu ember besar menyiram 2 m². Ada 5 ember besar. Berapa luas yang basah?" /></p>}
+          logika={<p><Teks anak="5 dan 2 sama-sama bilangan asli. Luasnya lima kali dua." /></p>}
+          langkah={<p><Teks anak="5 × 2 = 10. Kebun yang basah 10 m²." /></p>}
+        />
         <PolaCerita
           adegan={
             <>
@@ -597,8 +618,14 @@ export default function NaskahMtk6Bab1(_props: { kelas?: string; kelamin?: strin
             </>
           }
           permasalahan={<p><Teks anak="Satu ember kecil menyiram 3/5 m². Agam memakai 2 ember kecil. Berapa luas yang basah?" /></p>}
-          logika={<p><Teks anak="Ada 2 ember. Tiap ember mengisi 3/5 m², jadi luasnya 2 kali 3/5." /></p>}
-          langkah={<HitungPanah kalimat="2/1 × 3/5 = (2 × 3) : (1 × 5) = 6/5." kiriAtas="2" kiriBawah="1" kananAtas="3" kananBawah="5" operasi="×" arah="lurus" hasilAtas="2 × 3" hasilBawah="1 × 5" akhirAtas="6" akhirBawah="5" catatan="Kotak merah pada 2/1. Panah hijau lurus." />}
+          logika={<p><Teks anak="Ada 2 ember. Tiap ember 3 bagian dari 1/5 m². Dua ember menjadi 6 bagian dari 1/5, yaitu 6/5. Hasil 6/5 lebih kecil dari 2, karena yang dikali pecahan sejati." /></p>}
+          langkah={<HitungPanah kalimat="2/1 × 3/5 = (2 × 3) : (1 × 5) = 6/5." kiriAtas="2" kiriBawah="1" kananAtas="3" kananBawah="5" operasi="×" arah="lurus" hasilAtas="2 × 3" hasilBawah="1 × 5" akhirAtas="6" akhirBawah="5" catatan="Kotak merah pada 2/1. Panah hijau lurus. 6 bagian dari 1/5 sama dengan 6/5." />}
+        />
+        <PolaCerita
+          adegan={<p>Ayah bertanya lagi. Kalau ember kecilnya lima, tanah yang basah masih pecahan atau sudah utuh?</p>}
+          permasalahan={<p><Teks anak="Satu ember kecil menyiram 3/5 m². Ada 5 ember kecil. Berapa luas yang basah?" /></p>}
+          logika={<p><Teks anak="Lima kali tiga per lima. Lima bagian dari 3/5 sama dengan 15 bagian dari 1/5." /></p>}
+          langkah={<HitungPanah kalimat="5/1 × 3/5 = (5 × 3) : (1 × 5) = 15/5 = 3." kiriAtas="5" kiriBawah="1" kananAtas="3" kananBawah="5" operasi="×" arah="lurus" hasilAtas="5 × 3" hasilBawah="1 × 5" akhirAtas="15" akhirBawah="5" catatan="Kotak merah pada 5/1. Panah hijau lurus. 15/5 sama dengan 3 m²." />}
         />
         <p className="text-sm font-black uppercase tracking-wide text-[#1C01A5]">Latihan Soal</p>
         <SoalLatihan anak="1. Satu gelas berisi 2/5 liter jus. Agam menuang 4 gelas. Berapa liter jus seluruhnya?" id={idKuis("A", 1)} periksa={(teks) => pecahan(teks, "8/5")} jawaban="4 gelas, tiap gelas 2/5 liter. 4/1 × 2/5 = (4 × 2) : (1 × 5) = 8/5. Kotak merah pada 4/1. Panah hijau lurus. Jawabannya 8/5 liter." />
@@ -622,6 +649,17 @@ export default function NaskahMtk6Bab1(_props: { kelas?: string; kelamin?: strin
           logika={<p>Bagi 15 pohon menjadi 3 bagian, lalu gabungkan 2 bagian.</p>}
           langkah={<HitungPanah kalimat="2/3 × 15/1 = (2 × 15) : (3 × 1) = 30/3 = 10." kiriAtas="2" kiriBawah="3" kananAtas="15" kananBawah="1" operasi="×" arah="lurus" hasilAtas="2 × 15" hasilBawah="3 × 1" akhirAtas="30" akhirBawah="3" catatan="Kotak merah pada 2/3. Panah hijau lurus. 30/3 sama dengan 10." />}
         />
+        <PolaCerita
+          adegan={<p>Agam menulis dua hitungan: seperempat dari 20 jeruk, dan 20 kali seperempat jeruk. Ia memeriksa apakah urutan kali mengubah hasil.</p>}
+          permasalahan={<p><Teks anak="Hitung 1/4 × 20 dan 20 × 1/4. Sama atau berbeda?" /></p>}
+          logika={<p><Teks anak="Urutan dikali tidak mengubah banyaknya. Seperempat dari 20 sama dengan dua puluh kali seperempat." /></p>}
+          langkah={
+            <>
+              <HitungPanah kalimat="1/4 × 20/1 = (1 × 20) : (4 × 1) = 20/4 = 5." kiriAtas="1" kiriBawah="4" kananAtas="20" kananBawah="1" operasi="×" arah="lurus" hasilAtas="1 × 20" hasilBawah="4 × 1" akhirAtas="20" akhirBawah="4" catatan="Kotak merah pada 1/4. Panah hijau lurus. 20/4 sama dengan 5." />
+              <HitungPanah kalimat="20/1 × 1/4 = (20 × 1) : (1 × 4) = 20/4 = 5." kiriAtas="20" kiriBawah="1" kananAtas="1" kananBawah="4" operasi="×" arah="lurus" hasilAtas="20 × 1" hasilBawah="1 × 4" akhirAtas="20" akhirBawah="4" catatan="Kotak merah pada 20/1. Panah hijau lurus. Hasilnya tetap 5." />
+            </>
+          }
+        />
         <p className="text-sm font-black uppercase tracking-wide text-[#1C01A5]">Latihan Soal</p>
         <SoalLatihan anak="1. Ada 12 mangga. 3/4 bagian sudah masak. Berapa mangga yang masak?" id={idKuis("A", 4)} periksa={(teks) => hasilUtuh(teks, "9")} jawaban="Bagi 12 mangga menjadi 4 bagian, lalu gabungkan 3 bagian. 3/4 × 12/1 = (3 × 12) : (4 × 1) = 36/4 = 9. Kotak merah pada 3/4. Panah hijau lurus. Jawabannya 9 mangga." />
         <SoalLatihan anak="2. Ada 20 pensil. 2/5 bagian berwarna merah. Berapa pensil merah?" id={idKuis("A", 5)} periksa={(teks) => hasilUtuh(teks, "8")} jawaban="Bagi 20 pensil menjadi 5 bagian, lalu gabungkan 2 bagian. 2/5 × 20/1 = (2 × 20) : (5 × 1) = 40/5 = 8. Kotak merah pada 2/5. Panah hijau lurus. Jawabannya 8 pensil." />
@@ -632,10 +670,38 @@ export default function NaskahMtk6Bab1(_props: { kelas?: string; kelamin?: strin
         <JudulBagian anak="B. Pembagian Pecahan" />
         <h3 className="text-lg font-black text-[#1C01A5]">1. Pembagian Pecahan dengan Bilangan Asli</h3>
         <PolaCerita
-          adegan={<p>Botol kedua tidak penuh. Isinya hanya setengah liter. Gelasnya tiga, untuk Agam, Ayah, dan Ibu. Agam melihat airnya lebih sedikit, lalu bertanya berapa liter tiap gelas.</p>}
+          adegan={
+            <>
+              <Gambar src="/doodle-mtk/mtk-6-bab1-botol.jpg" alt="Agam menuang satu liter air ke tiga gelas." keterangan="Satu liter air untuk tiga gelas." />
+              <p>Botol pertama penuh, isinya satu liter. Agam menuang air itu rata ke gelasnya, gelas Ayah, dan gelas Ibu.</p>
+            </>
+          }
+          permasalahan={<p><Teks anak="Ada 1 liter air. Air dibagi rata ke 3 gelas. Berapa liter tiap gelas?" /></p>}
+          logika={<p><Teks anak="1 dan 3 sama-sama bilangan asli. Satu liter dibagi tiga bagian yang sama." /></p>}
+          langkah={<p><Teks anak="1 : 3 = 1/3. Tiap gelas terisi 1/3 liter." /></p>}
+        />
+        <PolaCerita
+          adegan={<p>Botol kedua tidak penuh. Isinya hanya setengah liter. Gelasnya tetap tiga. Agam melihat airnya lebih sedikit, lalu bertanya berapa liter tiap gelas.</p>}
           permasalahan={<p><Teks anak="Isi botol 1/2 liter. Air dibagi rata ke 3 gelas. Berapa liter tiap gelas?" /></p>}
           logika={<p><Teks anak="Setengah liter dibagi rata ke 3 gelas. Tiap gelas mendapat sepertiga dari setengah liter." /></p>}
           langkah={<HitungPanah kalimat="1/2 : 3/1 = (1 × 1) : (2 × 3) = 1/6." kiriAtas="1" kiriBawah="2" kananAtas="3" kananBawah="1" operasi=":" arah="silang" hasilAtas="1 × 1" hasilBawah="2 × 3" akhirAtas="1" akhirBawah="6" catatan="Kotak merah pada 1/2. Panah hijau menyilang." />}
+        />
+        <PolaCerita
+          adegan={<p>Botol ketiga lebih sedikit lagi, hanya sepertiga liter. Tiga gelas yang sama masih menunggu. Agam membagi air itu sekali lagi.</p>}
+          permasalahan={<p><Teks anak="Ada 1/3 liter air. Air dibagi rata ke 3 gelas. Berapa liter tiap gelas?" /></p>}
+          logika={<p><Teks anak="Sepertiga dibagi lagi menjadi 3. Bagiannya menjadi 9, dan tiap bagian lebih kecil, yaitu 1/9." /></p>}
+          langkah={<HitungPanah kalimat="1/3 : 3/1 = (1 × 1) : (3 × 3) = 1/9." kiriAtas="1" kiriBawah="3" kananAtas="3" kananBawah="1" operasi=":" arah="silang" hasilAtas="1 × 1" hasilBawah="3 × 3" akhirAtas="1" akhirBawah="9" catatan="Kotak merah pada 1/3. Panah hijau menyilang." />}
+        />
+        <PolaCerita
+          adegan={<p>Rini punya pita empat pertiga meter. Ia memotong pita itu menjadi dua bagian sama panjang, lalu menulis 4 dibagi 2 di atas penyebut 3.</p>}
+          permasalahan={<p><Teks anak="Ada pita 4/3 meter. Pita dibagi rata menjadi 2. Berapa meter tiap bagian?" /></p>}
+          logika={<p><Teks anak="Pembilang 4 habis dibagi 2, jadi 4 dibagi 2 tetap di atas penyebut 3. Panah menyilang harus memberi hasil yang sama." /></p>}
+          langkah={
+            <>
+              <p><Teks anak="Cara Rini: 4 : 2 = 2, penyebut tetap 3, jadi 2/3." /></p>
+              <HitungPanah kalimat="4/3 : 2/1 = (4 × 1) : (3 × 2) = 4/6 = 2/3." kiriAtas="4" kiriBawah="3" kananAtas="2" kananBawah="1" operasi=":" arah="silang" hasilAtas="4 × 1" hasilBawah="3 × 2" akhirAtas="4" akhirBawah="6" catatan="Kotak merah pada 4/3. Panah hijau menyilang. 4/6 sama dengan 2/3." />
+            </>
+          }
         />
         <p className="text-sm font-black uppercase tracking-wide text-[#1C01A5]">Latihan Soal</p>
         <SoalLatihan anak="1. Ada 3/4 liter sirup. Sirup dibagi rata ke 2 gelas. Berapa liter tiap gelas?" id={idKuis("B", 0)} periksa={(teks) => pecahan(teks, "3/8")} jawaban="3/4 liter dibagi rata ke 2 gelas. 3/4 : 2/1 = (3 × 1) : (4 × 2) = 3/8. Kotak merah pada 3/4. Panah hijau menyilang. Jawabannya 3/8 liter." />
@@ -652,7 +718,24 @@ export default function NaskahMtk6Bab1(_props: { kelas?: string; kelamin?: strin
           }
           permasalahan={<p><Teks anak="Ada 3 liter jus jeruk. Tiap gelas berisi 1/4 liter. Berapa gelas yang terisi?" /></p>}
           logika={<p><Teks anak="Dalam 1 liter muat 4 gelas seperempat liter. Jus ada 3 liter, jadi gelasnya 3 kali 4." /></p>}
-          langkah={<HitungPanah kalimat="3/1 : 1/4 = (3 × 4) : (1 × 1) = 12." kiriAtas="3" kiriBawah="1" kananAtas="1" kananBawah="4" operasi=":" arah="silang" hasilAtas="3 × 4" hasilBawah="1 × 1" akhirAtas="12" catatan="Kotak merah pada 3/1. Panah hijau menyilang." />}
+          langkah={<HitungPanah kalimat="3/1 : 1/4 = (3 × 4) : (1 × 1) = 12." kiriAtas="3" kiriBawah="1" kananAtas="1" kananBawah="4" operasi=":" arah="silang" hasilAtas="3 × 4" hasilBawah="1 × 1" akhirAtas="12" catatan="Kotak merah pada 3/1. Panah hijau menyilang. Hasil 12 lebih besar dari 3, karena gelasnya lebih kecil dari 1 liter." />}
+        />
+        <PolaCerita
+          adegan={<p>Jus jambu juga 3 liter. Gelasnya lebih besar, tiap gelas setengah liter. Air mineral 3 liter dituang ke gelas seperlima liter.</p>}
+          permasalahan={<p><Teks anak="Berapa gelas untuk 3 liter jika tiap gelas 1/2 liter? Berapa gelas jika tiap gelas 1/5 liter?" /></p>}
+          logika={<p><Teks anak="Cara yang sama dengan gelas seperempat. Hitung dulu berapa gelas dalam 1 liter, lalu kali 3." /></p>}
+          langkah={
+            <>
+              <HitungPanah kalimat="3/1 : 1/2 = (3 × 2) : (1 × 1) = 6." kiriAtas="3" kiriBawah="1" kananAtas="1" kananBawah="2" operasi=":" arah="silang" hasilAtas="3 × 2" hasilBawah="1 × 1" akhirAtas="6" catatan="Dalam 1 liter ada 2 gelas setengah liter. Tiga liter menjadi 6 gelas." />
+              <HitungPanah kalimat="3/1 : 1/5 = (3 × 5) : (1 × 1) = 15." kiriAtas="3" kiriBawah="1" kananAtas="1" kananBawah="5" operasi=":" arah="silang" hasilAtas="3 × 5" hasilBawah="1 × 1" akhirAtas="15" catatan="Dalam 1 liter ada 5 gelas seperlima liter. Tiga liter menjadi 15 gelas." />
+            </>
+          }
+        />
+        <PolaCerita
+          adegan={<p>Air mineral yang sama, 3 liter, sekarang dituang ke botol kecil. Satu botol hanya muat dua perlima liter. Agam menghitung botolnya, dan pembaginya bukan pecahan satuan.</p>}
+          permasalahan={<p><Teks anak="Ada 3 liter air. Tiap botol 2/5 liter. Berapa botol yang terisi?" /></p>}
+          logika={<p><Teks anak="Dalam 1 liter ada 5/2 bagian dari 2/5 liter. Untuk 3 liter, kalikan 3 dengan 5/2. Hasilnya lebih besar dari 3 karena botolnya lebih kecil dari 1 liter." /></p>}
+          langkah={<HitungPanah kalimat="3/1 : 2/5 = (3 × 5) : (1 × 2) = 15/2." kiriAtas="3" kiriBawah="1" kananAtas="2" kananBawah="5" operasi=":" arah="silang" hasilAtas="3 × 5" hasilBawah="1 × 2" akhirAtas="15" akhirBawah="2" catatan="Kotak merah pada 3/1. Panah hijau menyilang. 15/2 sama dengan 7 1/2 botol." />}
         />
         <p className="text-sm font-black uppercase tracking-wide text-[#1C01A5]">Latihan Soal</p>
         <SoalLatihan anak="1. Ada 2 liter jus. Tiap gelas berisi 1/2 liter. Berapa gelas yang terisi?" id={idKuis("B", 3)} periksa={(teks) => hasilUtuh(teks, "4")} jawaban="Dalam 1 liter muat 2 gelas setengah liter. 2/1 : 1/2 = (2 × 2) : (1 × 1) = 4. Kotak merah pada 2/1. Panah hijau menyilang. Jawabannya 4 gelas." />
@@ -671,8 +754,47 @@ export default function NaskahMtk6Bab1(_props: { kelas?: string; kelamin?: strin
             </>
           }
           permasalahan={<p><Teks anak="Jeruk 1/2 kg. Berapa kilogram dalam desimal?" /></p>}
-          logika={<p><Teks anak="Setengah kilogram adalah 5 bagian dari 10. Angka 5 itu ditulis di kanan koma, yaitu 0,5." /></p>}
-          langkah={<HitungPanah kalimat="1/2 = (1 × 5) : (2 × 5) = 5/10 = 0,5." kiriAtas="1" kiriBawah="2" kananAtas="5" kananBawah="10" operasi="×5" arah="ubah" catatan="Pembilang dan penyebut dikali 5. 5/10 sama dengan 0,5." />}
+          logika={<p><Teks anak="Setengah dapat ditulis 5 persepuluhan atau 50 perseratusan. Keduanya 0,5 dan 0,50, sama nilainya." /></p>}
+          langkah={
+            <>
+              <HitungPanah kalimat="1/2 = (1 × 5) : (2 × 5) = 5/10 = 0,5." kiriAtas="1" kiriBawah="2" kananAtas="5" kananBawah="10" operasi="×5" arah="ubah" catatan="Pembilang dan penyebut dikali 5." />
+              <HitungPanah kalimat="1/2 = (1 × 50) : (2 × 50) = 50/100 = 0,50." kiriAtas="1" kiriBawah="2" kananAtas="50" kananBawah="100" operasi="×50" arah="ubah" catatan="0,50 sama dengan 0,5. Timbangan 0,50 kg memang setengah kilogram." />
+            </>
+          }
+        />
+        <PolaCerita
+          adegan={<p>Ibu juga meminta salak seperlima kilogram. Timbangan menulis 0,20 kg. Agam memeriksa apakah seperlima sama dengan nol koma dua puluh.</p>}
+          permasalahan={<p><Teks anak="Salak 1/5 kg. Apakah sama dengan 0,20 kg?" /></p>}
+          logika={<p><Teks anak="Penyebut 5 bisa dijadikan 10 dan 100. Persepuluhan dan perseratusan itu nilainya sama." /></p>}
+          langkah={
+            <>
+              <HitungPanah kalimat="1/5 = (1 × 2) : (5 × 2) = 2/10 = 0,2." kiriAtas="1" kiriBawah="5" kananAtas="2" kananBawah="10" operasi="×2" arah="ubah" catatan="Pembilang dan penyebut dikali 2." />
+              <HitungPanah kalimat="1/5 = (1 × 20) : (5 × 20) = 20/100 = 0,20." kiriAtas="1" kiriBawah="5" kananAtas="20" kananBawah="100" operasi="×20" arah="ubah" catatan="0,20 sama dengan 0,2. Timbangan 0,20 kg memang seperlima kilogram." />
+            </>
+          }
+        />
+        <PolaCerita
+          adegan={<p>Agam melihat persegi yang dibagi sepuluh. Satu kotak kecil diarsir. Di tempat lain, persegi dibagi seratus dan sepuluh kotak diarsir. Tulisannya 0,1 dan 0,10.</p>}
+          permasalahan={<p><Teks anak="Apakah 1/10, 0,1, dan 0,10 sama?" /></p>}
+          logika={<p><Teks anak="Angka 1 di kanan koma menempati persepuluhan, nilainya 1/10. Sepuluh kotak dari seratus adalah 10/100, sama dengan 1/10." /></p>}
+          langkah={
+            <>
+              <p><Teks anak="1/10 = 0,1. 10/100 = 0,10. 0,10 sama dengan 0,1." /></p>
+              <HitungPanah kalimat="1/10 = (1 × 10) : (10 × 10) = 10/100 = 0,10." kiriAtas="1" kiriBawah="10" kananAtas="10" kananBawah="100" operasi="×10" arah="ubah" catatan="Persepuluhan 1 sama dengan perseratusan 10." />
+            </>
+          }
+        />
+        <PolaCerita
+          adegan={<p>Agam membaca 0,5 kg di timbangan, lalu ingin menulisnya kembali sebagai pecahan.</p>}
+          permasalahan={<p><Teks anak="0,5 sama dengan pecahan berapa?" /></p>}
+          logika={<p><Teks anak="Angka 5 di kanan koma adalah 5 persepuluhan. Sederhanakan 5/10." /></p>}
+          langkah={<p><Teks anak="0,5 = 5/10 = 1/2." /></p>}
+        />
+        <PolaCerita
+          adegan={<p>Rina menerima pesanan kain tiga perempat meter. Ia perlu menulis panjang itu sebagai desimal. Penyebut 4 tidak bisa dijadikan 10 dengan bilangan asli.</p>}
+          permasalahan={<p><Teks anak="Berapa desimal dari 3/4 meter?" /></p>}
+          logika={<p><Teks anak="4 kali 25 sama dengan 100. Jadi jadikan penyebut 100, bukan 10." /></p>}
+          langkah={<HitungPanah kalimat="3/4 = (3 × 25) : (4 × 25) = 75/100 = 0,75." kiriAtas="3" kiriBawah="4" kananAtas="75" kananBawah="100" operasi="×25" arah="ubah" catatan="75 perseratusan ditulis 0,75." />}
         />
         <p className="text-sm font-black uppercase tracking-wide text-[#1C01A5]">Latihan Soal</p>
         <SoalLatihan anak="1. Ibu membeli 1/4 kg kacang. Berapa kg dalam desimal?" id={idKuis("C", 0)} periksa={(teks) => desimalUtuh(teks, "0.25")} jawaban="Penyebut 4 dijadikan 100. 1/4 = (1 × 25) : (4 × 25) = 25/100 = 0,25. Jawabannya 0,25 kg." />
@@ -680,6 +802,28 @@ export default function NaskahMtk6Bab1(_props: { kelas?: string; kelamin?: strin
         <SoalLatihan anak="3. Tali sepanjang 7/10 meter. Berapa meter dalam desimal?" id={idKuis("C", 2)} periksa={(teks) => desimalUtuh(teks, "0.7") || desimalUtuh(teks, "0.70")} jawaban="Penyebutnya sudah 10. 7/10 = 0,7. Jawabannya 0,7 meter." />
 
         <h3 className="text-lg font-black text-[#1C01A5]">2. Membandingkan dan Mengurutkan Bilangan Desimal</h3>
+        <PolaCerita
+          adegan={<p>Agam membandingkan lima jarak: 2,3 km, 0,9 km, 1,9 km, 2,6 km, dan 3,6 km. Ia mengisi nilai tempat sebelum memilih yang terdekat dan terjauh.</p>}
+          permasalahan={<p>Mana yang terdekat dan terjauh? Urutkan dari yang terdekat.</p>}
+          logika={<p>Lihat satuan dulu, lalu persepuluhan. Satuan 0 paling kecil. Satuan 3 paling besar di daftar ini.</p>}
+          langkah={
+            <>
+              <Tabel kolom={["Jarak (km)", "Satuan", "Persepuluhan", "Perseratusan"]} baris={[["2,3", "2", "3", "0"], ["0,9", "0", "9", "0"], ["1,9", "1", "9", "0"], ["2,6", "2", "6", "0"], ["3,6", "3", "6", "0"]]} />
+              <p>Terdekat 0,9 km. Terjauh 3,6 km. Urutannya 0,9 km, 1,9 km, 2,3 km, 2,6 km, 3,6 km.</p>
+            </>
+          }
+        />
+        <PolaCerita
+          adegan={<p>Agam juga mengumpulkan jarak sepuluh teman. Ada yang puluhannya 1, jadi angka di kiri koma harus dilihat lebih dulu.</p>}
+          permasalahan={<p>Siapa yang rumahnya paling dekat, dan siapa yang paling jauh?</p>}
+          logika={<p>Puluhan lebih besar menang sebelum satuan dilihat. 11 lebih besar dari 10. Di antara yang satuannya 1, persepuluhan 5 lebih kecil dari 9.</p>}
+          langkah={
+            <>
+              <Tabel kolom={["Nama", "Jarak (km)"]} baris={[["Andi", "1,5"], ["Anita", "1,9"], ["Alma", "2,3"], ["Rini", "2,6"], ["Fatim", "2,8"], ["Dias", "3,1"], ["Rido", "3,6"], ["Fadilah", "4,7"], ["Budi", "10,9"], ["Musa", "11,3"]]} />
+              <p>Paling dekat Andi, 1,5 km. Paling jauh Musa, 11,3 km.</p>
+            </>
+          }
+        />
         <PolaCerita
           adegan={<p>Seorang teman melihat dua jarak, 2,49 km dan 2,9 km. Ia berkata 2,49 lebih besar karena 49 lebih besar dari 9. Agam ragu, lalu membandingkan kedua angka dari kiri tanda koma.</p>}
           permasalahan={<p>Mana yang lebih besar, 2,9 atau 2,49?</p>}
@@ -736,7 +880,23 @@ export default function NaskahMtk6Bab1(_props: { kelas?: string; kelamin?: strin
           adegan={<p>Agam menuang air ke botol. Tiga gelas sudah dituang, tetapi botol baru terisi dua pertiga. Ayah bertanya, kalau botolnya mau penuh, perlu berapa gelas?</p>}
           permasalahan={<p><Teks anak="3 gelas air memenuhi 2/3 botol. Berapa gelas untuk satu botol penuh?" /></p>}
           logika={<p><Teks anak="3 gelas baru mengisi 2/3 botol. Banyak gelas untuk satu botol adalah 3 dibagi 2/3." /></p>}
-          langkah={<HitungPanah kalimat="3/1 : 2/3 = (3 × 3) : (1 × 2) = 9/2." kiriAtas="3" kiriBawah="1" kananAtas="2" kananBawah="3" operasi=":" arah="silang" hasilAtas="3 × 3" hasilBawah="1 × 2" akhirAtas="9" akhirBawah="2" catatan="Kotak merah pada 3/1. Panah hijau menyilang." />}
+          langkah={
+            <>
+              <HitungPanah kalimat="3/1 : 2/3 = (3 × 3) : (1 × 2) = 9/2." kiriAtas="3" kiriBawah="1" kananAtas="2" kananBawah="3" operasi=":" arah="silang" hasilAtas="3 × 3" hasilBawah="1 × 2" akhirAtas="9" akhirBawah="2" catatan="Kotak merah pada 3/1. Panah hijau menyilang. Satu botol penuh perlu 9/2 gelas." />
+              <p><Teks anak="Sepertiga botol adalah setengah dari dua pertiga. 3 : 2 = 3/2. Jadi 1/3 botol terisi oleh 3/2 gelas." /></p>
+            </>
+          }
+        />
+        <PolaCerita
+          adegan={<p>Agam menuang lagi. Kali ini hanya setengah gelas, tetapi botol lain sudah terisi tiga perempat.</p>}
+          permasalahan={<p><Teks anak="1/2 gelas memenuhi 3/4 botol. Berapa gelas untuk 1/4 botol, dan berapa gelas untuk satu botol penuh?" /></p>}
+          logika={<p><Teks anak="Seperempat botol adalah sepertiga dari tiga perempat botol. Satu botol penuh adalah empat pertiga dari tiga perempat botol." /></p>}
+          langkah={
+            <>
+              <p><Teks anak="1/4 botol = 1/3 dari 1/2 gelas = 1/6 gelas." /></p>
+              <HitungPanah kalimat="1/2 : 3/4 = (1 × 4) : (2 × 3) = 4/6 = 2/3." kiriAtas="1" kiriBawah="2" kananAtas="3" kananBawah="4" operasi=":" arah="silang" hasilAtas="1 × 4" hasilBawah="2 × 3" akhirAtas="4" akhirBawah="6" catatan="Kotak merah pada 1/2. Panah hijau menyilang. Satu botol penuh perlu 2/3 gelas." />
+            </>
+          }
         />
         <p className="text-sm font-black uppercase tracking-wide text-[#1C01A5]">Latihan Soal</p>
         <SoalLatihan anak="1. 1/2 ÷ 1/4. Berapa hasilnya?" id={idKuis("E", 3)} periksa={(teks) => hasilUtuh(teks, "2")} jawaban="1/2 : 1/4 = (1 × 4) : (2 × 1) = 4/2 = 2. Kotak merah pada 1/2. Panah hijau menyilang. Jawabannya 2." />
@@ -752,6 +912,17 @@ export default function NaskahMtk6Bab1(_props: { kelas?: string; kelamin?: strin
             <>
               <p><Teks anak="1 : 3 = 0,333…" /></p>
               <GambarBerulang pecahan="sepertiga" />
+            </>
+          }
+        />
+        <PolaCerita
+          adegan={<p>Rani juga membeli jus jambu seperenam liter. Angka di belakang koma tidak berhenti pada satu angka.</p>}
+          permasalahan={<p><Teks anak="Jus jambu 1/6 liter. Berapa liter dalam desimal?" /></p>}
+          logika={<p><Teks anak="Penyebut 6 juga tidak bisa dijadikan 10 atau 100. Angka 6 di belakang koma berulang." /></p>}
+          langkah={
+            <>
+              <p><Teks anak="1 : 6 = 0,1666…" /></p>
+              <GambarBerulang pecahan="perenam" />
             </>
           }
         />

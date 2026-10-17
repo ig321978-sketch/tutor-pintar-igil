@@ -60,8 +60,9 @@ D) 4,5`,
       kolom: 1,
       item: [
         { nama: "Gambar 2/3", singkat: "Batang, pizza, jeruk", uraian: "Jeruk 8/12 = 2/3. Batang biru 6/10. Pizza 1/4.", contoh: "Jawaban gambar c." },
-        { nama: "Ember kecil", singkat: "Asli kali pecahan", uraian: "2/1 × 3/5 = 6/5 m².", contoh: "Kotak merah pada 2/1. Panah hijau lurus." },
-        { nama: "Pohon manalagi", singkat: "Pecahan kali asli", uraian: "2/3 × 15 = 10 pohon.", contoh: "Bagi 15 menjadi 3 bagian, lalu gabungkan 2 bagian." },
+        { nama: "Ember besar", singkat: "Asli kali asli", uraian: "5 × 2 = 10 m².", contoh: "Keduanya bilangan asli." },
+        { nama: "Ember kecil", singkat: "Asli kali pecahan", uraian: "2/1 × 3/5 = 6/5 m². 5/1 × 3/5 = 3 m².", contoh: "6 bagian dari 1/5. Hasil lebih kecil dari bilangan aslinya." },
+        { nama: "Pohon manalagi", singkat: "Pecahan kali asli", uraian: "2/3 × 15 = 10 pohon. 1/4 × 20 = 20 × 1/4 = 5.", contoh: "Bagi 15 menjadi 3 bagian, lalu gabungkan 2 bagian. Urutan kali tidak mengubah hasil." },
       ],
       kuis: [
         { pertanyaan: "Gambar yang menunjukkan 2/3.", alias: ["c", "jeruk"] },
@@ -84,8 +85,8 @@ D) 4,5`,
       labelDaftar: "B. Pembagian Pecahan",
       kolom: 1,
       item: [
-        { nama: "Setengah liter", singkat: "Pecahan dibagi asli", uraian: "1/2 : 3/1 = 1/6 liter.", contoh: "Kotak merah pada 1/2. Panah hijau menyilang." },
-        { nama: "Jus ke gelas", singkat: "Asli dibagi pecahan", uraian: "3/1 : 1/4 = 12 gelas.", contoh: "Dalam 1 liter muat 4 gelas." },
+        { nama: "Air ke gelas", singkat: "Pecahan dibagi asli", uraian: "1 : 3 = 1/3. 1/2 : 3 = 1/6. 1/3 : 3 = 1/9. 4/3 : 2 = 2/3.", contoh: "Bagian bertambah, nilainya mengecil." },
+        { nama: "Jus ke gelas", singkat: "Asli dibagi pecahan", uraian: "3 : 1/4 = 12. 3 : 1/2 = 6. 3 : 1/5 = 15. 3 : 2/5 = 15/2.", contoh: "2/5 bukan pecahan satuan. Hasil lebih besar dari 3." },
       ],
       kuis: [
         { pertanyaan: "3/4 dibagi 2.", alias: ["3/8"] },
@@ -107,8 +108,8 @@ D) 4,5`,
       labelDaftar: "C. Bilangan Desimal",
       kolom: 1,
       item: [
-        { nama: "Jeruk setengah kg", singkat: "Pecahan ke desimal", uraian: "1/2 = 5/10 = 0,5.", contoh: "Jadikan penyebut 10." },
-        { nama: "Dua koma sembilan", singkat: "Banding dari kiri", uraian: "2,9 lebih besar dari 2,49.", contoh: "Bandingkan satuan, lalu persepuluhan." },
+        { nama: "Jeruk dan salak", singkat: "Pecahan ke desimal", uraian: "1/2 = 0,5 = 0,50. 1/5 = 0,2 = 0,20. 3/4 = 0,75. 0,5 = 1/2.", contoh: "1/10 = 0,1 = 0,10." },
+        { nama: "Urutan jarak", singkat: "Nilai tempat", uraian: "0,9 sampai 3,6. Andi 1,5 km terdekat. Musa 11,3 km terjauh. 2,9 lebih besar dari 2,49.", contoh: "Bandingkan dari kiri tanda koma." },
       ],
       kuis: [
         { pertanyaan: "1/4 dalam desimal.", alias: ["0,25"] },
