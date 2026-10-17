@@ -34,7 +34,6 @@ import { MODUL_MTK4_BAB4 } from "@/lib/modul-resmi-mtk-4-bab4";
 import { MODUL_MTK4_BAB5 } from "@/lib/modul-resmi-mtk-4-bab5";
 import { MODUL_MTK4_BAB6 } from "@/lib/modul-resmi-mtk-4-bab6";
 import { MODUL_MTK6_BAB1 } from "@/lib/modul-resmi-mtk-6-bab1";
-import { MODUL_MTK6_BAB3 } from "@/lib/modul-resmi-mtk-6-bab3";
 import { MODUL_MTK7_BAB1 } from "@/lib/modul-resmi-mtk-7-bab1";
 import { MODUL_MTK3_BAB3 } from "@/lib/modul-resmi-mtk-3-bab3";
 import { MODUL_PANCASILA1_BAB1 } from "@/lib/modul-resmi-pancasila-1-bab1";
@@ -118,6 +117,7 @@ import {
   naskahResmiJikaAda,
 } from "@/lib/naskah-resmi";
 import modulRasioKelas6 from "@/data/modules/kurikulum-merdeka-bab2-rasio.json";
+import modulKubusKelas6 from "@/data/modules/kurikulum-merdeka-bab3-kubus.json";
 
 export function idLatihanMtk6Bab2(idSoal: string): string {
   return `${modulRasioKelas6.id}-${idSoal}`;
@@ -125,6 +125,14 @@ export function idLatihanMtk6Bab2(idSoal: string): string {
 
 export function daftarIdLatihanMtk6Bab2(): string[] {
   return modulRasioKelas6.latihanFormatif.map((soal) => idLatihanMtk6Bab2(soal.id));
+}
+
+export function idLatihanMtk6Bab3(idSoal: string): string {
+  return `${modulKubusKelas6.id}-${idSoal}`;
+}
+
+export function daftarIdLatihanMtk6Bab3(): string[] {
+  return modulKubusKelas6.latihanFormatif.map((soal) => idLatihanMtk6Bab3(soal.id));
 }
 
 export const ID_KUIS_HIJAIYAH = [
@@ -389,9 +397,7 @@ export function daftarIdKuisMateri(
     return daftarIdLatihanMtk6Bab2();
   }
   if (adalahMtk6Bab3(kelas, mapel, materi)) {
-    return MODUL_MTK6_BAB3.kartu.flatMap((kartu) =>
-      kartu.kuis.map((_, indeks) => idKuisKartuResmi(MODUL_MTK6_BAB3.id, kartu.kode, indeks)),
-    );
+    return daftarIdLatihanMtk6Bab3();
   }
   if (adalahMtk7Bab1(kelas, mapel, materi)) {
     return MODUL_MTK7_BAB1.kartu.flatMap((kartu) =>

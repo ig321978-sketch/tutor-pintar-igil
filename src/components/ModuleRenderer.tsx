@@ -43,7 +43,7 @@ import NaskahMtk4Bab5 from "@/components/NaskahMtk4Bab5";
 import NaskahMtk4Bab6 from "@/components/NaskahMtk4Bab6";
 import NaskahMtk6Bab1 from "@/components/NaskahMtk6Bab1";
 import RasioModuleView from "@/components/modules/RasioModuleView";
-import NaskahMtk6Bab3 from "@/components/NaskahMtk6Bab3";
+import KubusModuleView from "@/components/modules/KubusModuleView";
 import NaskahMtk7Bab1 from "@/components/NaskahMtk7Bab1";
 import NaskahMtk3Bab3 from "@/components/NaskahMtk3Bab3";
 import NaskahPancasila1 from "@/components/NaskahPancasila1";
@@ -942,7 +942,7 @@ function ModuleRenderer({
   if (pakaiKartuMtk6Bab3) {
     return (
       <div className={className}>
-        <NaskahMtk6Bab3 kelas={kelas} kelamin={kelamin} />
+        <KubusModuleView />
       </div>
     );
   }

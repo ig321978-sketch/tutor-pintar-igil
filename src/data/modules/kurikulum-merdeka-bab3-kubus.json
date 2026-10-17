@@ -1,0 +1,218 @@
+{
+  "id": "mat-6-bab3",
+  "jenjang": "SD",
+  "kelas": 6,
+  "fase": "C",
+  "mataPelajaran": "Matematika",
+  "bab": 3,
+  "judul": "Kubus dan Balok",
+  "sumber": "Matematika untuk SD/MI Kelas VI, Bab 3",
+  "capaianPembelajaran": "Peserta didik menyusun dan mengurai kubus, balok, serta gabungannya.",
+  "pembuka": [
+    "Tigor dan Tenri tinggal di Makassar. Pada peta, Makassar terletak di petak C2.",
+    "Saat libur kenaikan kelas, mereka mengunjungi Fort Rotterdam. Temboknya tersusun seperti balok, dan atapnya berbentuk prisma segitiga.",
+    "Keduanya menggambar benteng yang sama, tetapi hasilnya berbeda. Tigor melihat dari sisi yang berbeda dengan Tenri.",
+    "Bangun ruang dapat digabung, diurai, dan dilihat dari berbagai arah."
+  ],
+  "tujuanPembelajaran": [
+    "Menentukan hasil menyusun dan mengurai kubus, balok, dan gabungannya",
+    "Menyusun bangun ruang dari model dua dimensi, dan sebaliknya",
+    "Memakai sistem berpetak untuk lokasi, jalur, serta jarak mendatar dan tegak"
+  ],
+  "pertanyaanPemantik": [
+    "Apakah bangun ruang dapat digabung dan dipisah?",
+    "Apa kesamaan kubus dan balok? Apa perbedaannya?",
+    "Apakah bangun ruang terlihat sama dari semua arah?",
+    "Mengapa peta memakai petak?"
+  ],
+  "kataKunci": ["Kubus", "balok", "tampak atas", "tampak depan", "tampak samping", "sistem berpetak", "lokasi"],
+  "petaKonsep": [
+    { "judul": "Mengonstruksi dan Mengurai", "anak": ["Gabungan kubus", "Gabungan balok"] },
+    { "judul": "Visualisasi Spasial", "anak": ["Tampak dari beberapa arah"] },
+    { "judul": "Lokasi", "anak": ["Sistem berpetak"] }
+  ],
+  "fokusPeta": ["Mengonstruksi dan Mengurai"],
+  "bangun": [
+    { "nomor": 1, "nama": "Tabung" },
+    { "nomor": 2, "nama": "Kerucut" },
+    { "nomor": 3, "nama": "Kubus" },
+    { "nomor": 4, "nama": "Balok" },
+    { "nomor": 5, "nama": "Prisma segitiga" },
+    { "nomor": 6, "nama": "Bola" },
+    { "nomor": 7, "nama": "Limas segitiga" },
+    { "nomor": 8, "nama": "Prisma segi lima" }
+  ],
+  "kontainer": "Di Batu, Malang, ada perpustakaan yang disusun dari kontainer bekas. Di Trawas, Mojokerto, ada hotel yang juga disusun dari kontainer. Kontainer bekas dipakai lagi agar tidak menjadi limbah, dan bangunannya lebih cepat selesai.",
+  "gudang": {
+    "kardus": 30,
+    "rusuk": [20, 30, 50],
+    "lantaiCm": 300,
+    "tinggiCm": 310
+  },
+  "refleksi": [
+    "Kubus dan balok dapat disusun menjadi bangun yang baru.",
+    "Bangun yang sudah tersusun dapat diurai kembali menjadi kubus atau balok yang lebih kecil."
+  ],
+  "latihanFormatif": [
+    {
+      "id": "bangun-3",
+      "bagian": "Ayo Mengingat Kembali",
+      "soal": "Bangun nomor 3 adalah ...",
+      "opsi": ["Kubus", "Balok", "Tabung", "Bola"],
+      "kunciJawaban": "Kubus",
+      "pembahasan": "Nomor 3 memiliki 6 sisi persegi yang sama. Namanya kubus."
+    },
+    {
+      "id": "bangun-6",
+      "bagian": "Ayo Mengingat Kembali",
+      "soal": "Bangun nomor 6 adalah ...",
+      "opsi": ["Bola", "Kerucut", "Tabung", "Limas segitiga"],
+      "kunciJawaban": "Bola",
+      "pembahasan": "Nomor 6 bulat di semua sisi. Namanya bola."
+    },
+    {
+      "id": "gelinding",
+      "bagian": "Ayo Mengingat Kembali",
+      "soal": "Bangun yang dapat digelindingkan adalah ...",
+      "opsi": ["Tabung, kerucut, dan bola", "Kubus, balok, dan prisma", "Hanya bola", "Limas dan kubus"],
+      "kunciJawaban": "Tabung, kerucut, dan bola",
+      "pembahasan": "Nomor 1, 2, dan 6 punya sisi lengkung, jadi dapat digelindingkan."
+    },
+    {
+      "id": "tumpuk",
+      "bagian": "Ayo Mengingat Kembali",
+      "soal": "Bangun yang mudah ditumpuk karena sisinya datar adalah ...",
+      "opsi": ["Kubus, balok, prisma, dan limas", "Hanya bola", "Kerucut dan bola", "Tabung saja"],
+      "kunciJawaban": "Kubus, balok, prisma, dan limas",
+      "pembahasan": "Nomor 3, 4, 5, 7, dan 8 punya sisi datar. Tabung juga bisa ditumpuk pada alasnya."
+    },
+    {
+      "id": "sisi-prisma",
+      "bagian": "Ayo Mengingat Kembali",
+      "soal": "Banyak sisi pada prisma segitiga adalah ...",
+      "opsi": ["5", "4", "6", "8"],
+      "kunciJawaban": "5",
+      "pembahasan": "Prisma segitiga punya 2 sisi segitiga dan 3 sisi persegi panjang. Jumlahnya 5."
+    },
+    {
+      "id": "sudut-limas",
+      "bagian": "Ayo Mengingat Kembali",
+      "soal": "Limas segi empat memiliki titik sudut sebanyak ...",
+      "opsi": ["5", "4", "6", "8"],
+      "kunciJawaban": "5",
+      "pembahasan": "Alas segi empat punya 4 titik sudut, ditambah 1 titik puncak. Jumlahnya 5."
+    },
+    {
+      "id": "rusuk-balok",
+      "bagian": "Ayo Mengingat Kembali",
+      "soal": "Banyak rusuk pada balok adalah ...",
+      "opsi": ["12", "6", "8", "4"],
+      "kunciJawaban": "12",
+      "pembahasan": "Balok punya 4 rusuk di alas, 4 di tutup, dan 4 yang tegak. Jumlahnya 12."
+    },
+    {
+      "id": "sisi-sama",
+      "bagian": "Ayo Mengingat Kembali",
+      "soal": "Bangun ruang yang semua sisinya sama adalah ...",
+      "opsi": ["Kubus", "Balok", "Prisma segitiga", "Limas segitiga"],
+      "kunciJawaban": "Kubus",
+      "pembahasan": "Kubus punya 6 sisi persegi yang sama besar. Pada balok, ada sisi yang lebih panjang."
+    },
+    {
+      "id": "dua-kubus",
+      "bagian": "Eksplorasi 3.1",
+      "soal": "Gambar (a) dua kubus berdampingan dan gambar (c) adalah susunan yang sama dari arah lain. Apakah gambar (b), dua kubus bertumpuk, juga susunan yang sama?",
+      "opsi": ["Ya, susunan yang sama", "Tidak, karena ada 4 kubus", "Tidak, karena tidak bisa diputar", "Hanya (a) dan (c) yang sama"],
+      "kunciJawaban": "Ya, susunan yang sama",
+      "pembahasan": "Dua kubus yang menempel pada satu sisi hanya punya satu bentuk. Berdampingan atau bertumpuk hanya beda arah pandang."
+    },
+    {
+      "id": "tiga-satu",
+      "bagian": "Eksplorasi 3.1",
+      "soal": "Rumah dari 3 kubus yang semuanya setinggi satu lantai ada ...",
+      "opsi": ["2 bentuk", "1 bentuk", "3 bentuk", "4 bentuk"],
+      "kunciJawaban": "2 bentuk",
+      "pembahasan": "Bentuknya lurus dan siku. Keduanya setinggi satu lantai, jadi ada lebih dari satu kemungkinan."
+    },
+    {
+      "id": "tiga-dua",
+      "bagian": "Eksplorasi 3.1",
+      "soal": "Jika rumah 3 kubus boleh setinggi dua lantai, banyak bentuknya adalah ...",
+      "opsi": ["3 bentuk", "1 bentuk", "2 bentuk", "4 bentuk"],
+      "kunciJawaban": "3 bentuk",
+      "pembahasan": "Bentuk rendah tetap boleh: lurus, siku, dan siku yang berdiri setinggi dua lantai."
+    },
+    {
+      "id": "tiga-tiga",
+      "bagian": "Eksplorasi 3.1",
+      "soal": "Jika rumah 3 kubus boleh setinggi tiga lantai, banyak bentuknya adalah ...",
+      "opsi": ["4 bentuk", "1 bentuk", "2 bentuk", "3 bentuk"],
+      "kunciJawaban": "4 bentuk",
+      "pembahasan": "Tiga bentuk sebelumnya tetap boleh, ditambah menara tiga kubus. Jumlahnya 4."
+    },
+    {
+      "id": "balok-arah",
+      "bagian": "Eksplorasi 3.1",
+      "soal": "Dua balok satu tingkat: (a) ditempel pada sisi panjang, (b) ditempel pada ujung. Keduanya adalah ...",
+      "opsi": ["Susunan yang berbeda", "Susunan yang sama, beda arah", "Satu kubus", "Tiga balok"],
+      "kunciJawaban": "Susunan yang berbeda",
+      "pembahasan": "(a) menjadi lebih lebar. (b) menjadi lebih panjang. Bentuknya tidak sama."
+    },
+    {
+      "id": "balok-macam",
+      "bagian": "Eksplorasi 3.1",
+      "soal": "Susunan dua balok untuk bangunan satu tingkat ada ...",
+      "opsi": ["2 macam", "1 macam", "3 macam", "4 macam"],
+      "kunciJawaban": "2 macam",
+      "pembahasan": "Dua macam: memanjang dan berdampingan. Balok punya sisi yang tidak sama, jadi lebih banyak cara daripada dua kubus."
+    },
+    {
+      "id": "latihan-a",
+      "bagian": "Latihan 3.1",
+      "soal": "Menara (a) tersusun dari balok yang sama. Banyak baloknya adalah ...",
+      "opsi": ["3 balok", "2 balok", "4 balok", "6 balok"],
+      "kunciJawaban": "3 balok",
+      "pembahasan": "Menara (a) punya 3 lapis. Setiap lapis satu balok, jadi 3 balok."
+    },
+    {
+      "id": "latihan-b",
+      "bagian": "Latihan 3.1",
+      "soal": "Bangun (b) berbentuk siku. Banyak baloknya adalah ...",
+      "opsi": ["3 balok", "2 balok", "4 balok", "5 balok"],
+      "kunciJawaban": "3 balok",
+      "pembahasan": "Dua balok bertumpuk di ujung, ditambah satu balok yang menempel di samping. Jumlahnya 3."
+    },
+    {
+      "id": "kardus-jumlah",
+      "bagian": "Latihan 3.1",
+      "soal": "Tumpukan kardus satuan itu berisi batang berukuran 1 × 2. Ada dua batang di belakang, satu di kiri, dan satu di kanan. Banyak kardusnya adalah ...",
+      "opsi": ["8 kardus", "6 kardus", "4 kardus", "10 kardus"],
+      "kunciJawaban": "8 kardus",
+      "pembahasan": "Setiap batang 1 × 2 berisi 2 kardus. Empat batang: 2 + 2 + 2 + 2 = 8."
+    },
+    {
+      "id": "kubus-warna",
+      "bagian": "Latihan 3.1",
+      "soal": "Bangun warna itu tersusun dari kubus ungu, kuning, hijau, dan merah muda. Banyak kubusnya adalah ...",
+      "opsi": ["4 kubus", "3 kubus", "5 kubus", "6 kubus"],
+      "kunciJawaban": "4 kubus",
+      "pembahasan": "Keempat kubus terlihat. Merah muda berada di atas ungu. Tidak ada kubus yang tersembunyi."
+    },
+    {
+      "id": "hasan-cara",
+      "bagian": "Latihan 3.1",
+      "soal": "Agar lantai gudang yang terpakai sesedikit mungkin, kardus Pak Hasan sebaiknya ...",
+      "opsi": ["Ditumpuk setinggi 300 cm", "Dibaringkan satu lapis", "Ditumpuk setinggi 310 cm", "Disebar memenuhi lantai 3 m × 3 m"],
+      "kunciJawaban": "Ditumpuk setinggi 300 cm",
+      "pembahasan": "Gudang tingginya 3,1 m, yaitu 310 cm. Tumpukan yang habis dibagi 20, 30, dan 50 paling tinggi 300 cm."
+    },
+    {
+      "id": "hasan-luas",
+      "bagian": "Latihan 3.1",
+      "soal": "Luas lantai yang dipakai 30 kardus itu adalah ...",
+      "opsi": ["0,3 m²", "3 m²", "9 m²", "30 m²"],
+      "kunciJawaban": "0,3 m²",
+      "pembahasan": "Satu kardus 20 × 30 × 50 = 30.000 cm³. Tiga puluh kardus = 900.000 cm³. 900.000 : 300 = 3.000 cm² = 0,3 m²."
+    }
+  ]
+}
