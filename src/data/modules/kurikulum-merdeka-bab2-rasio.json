@@ -5,67 +5,223 @@
   "fase": "C",
   "mataPelajaran": "Matematika",
   "bab": 2,
-  "judul": "Rasio dan Proporsi Sederhana",
-  "capaianPembelajaran": "Peserta didik dapat memahami konsep rasio dan menggunakannya dalam konteks aritmetika sosial sederhana sehari-hari.",
-  "tujuanPembelajaran": [
-    "Menjelaskan pengertian perbandingan/rasio dua besaran sejenis",
-    "Menentukan rasio satuan (unit rate) dalam kehidupan nyata",
-    "Menyelesaikan masalah kontekstual yang melibatkan rasio ekuivalen"
+  "judul": "Rasio",
+  "sumber": "Matematika untuk SD/MI Kelas VI, Bab 2",
+  "capaianPembelajaran": "Peserta didik memahami konsep rasio dan memakai bahasa rasio untuk menjelaskan perbandingan dua besaran.",
+  "pembuka": [
+    "Beberapa siswa membaca poster di dinding sekolah. Pak Wayan, guru Matematika, menghampiri mereka.",
+    "Poster itu tentang Gerakan Satu Juta Pohon. Gerakan ini diperingati setiap tanggal 10 Januari agar hutan dan lingkungan terjaga.",
+    "Besok sekolah ikut menanam bibit. Jarak tanam memberi ruang tumbuh. Susunan menurut jenis pohon memakai rasio.",
+    "Rasio adalah perbandingan dua besaran yang sama."
   ],
-  "pertanyaanPemantik": "Ibu ingin membuat 2 gelas es sirup manis menggunakan 4 sendok sirup. Jika ingin membuat 6 gelas untuk tamu, berapa sendok sirup yang harus dituang?",
-  "eksplorasiMateri": [
+  "tujuanPembelajaran": [
+    "Memahami konsep rasio dan memakai bahasa rasio untuk menjelaskan perbandingan dua besaran",
+    "Menentukan kesamaan rasio dengan tabel rasio",
+    "Menentukan rasio satuan",
+    "Menentukan rasio bagian terhadap bagian dan rasio bagian terhadap keseluruhan"
+  ],
+  "pertanyaanPemantik": [
+    "Bagaimana rasio dua besaran ditulis?",
+    "Bagaimana perkalian dan pembagian menyelesaikan soal rasio?",
+    "Bagaimana soal dipindah ke tabel rasio?",
+    "Bagaimana faktor bilangan menyederhanakan rasio?",
+    "Bagaimana rasio satuan ditentukan?"
+  ],
+  "kataKunci": [
+    "Rasio",
+    "kesamaan rasio",
+    "rasio satuan",
+    "kotak rasio",
+    "tabel rasio",
+    "rasio pada durasi waktu"
+  ],
+  "petaKonsep": [
     {
-      "subJudul": "A. Mengenal Arti Rasio",
-      "tahap": "Konkret",
-      "narasi": "Rasio adalah cara membandingkan dua jumlah benda. Kita menuliskannya dengan tanda titik dua (:). Misalnya 2 sendok sirup untuk 1 gelas air ditulis 2 : 1.",
-      "contohKonkret": {
-        "objekA": "Sirup (sendok)",
-        "nilaiA": 2,
-        "objekB": "Air (gelas)",
-        "nilaiB": 1,
-        "rasioBaku": "2 : 1"
-      }
+      "judul": "Konsep Rasio",
+      "anak": ["Membandingkan benda", "Pengertian rasio"]
     },
     {
-      "subJudul": "B. Rasio Ekuivalen (Senilai)",
-      "tahap": "Semikonkret",
-      "narasi": "Jika jumlah air dilipatgandakan menjadi 3 kali lipat, maka jumlah sirup juga harus dikalikan 3 agar rasa manisnya tetap sama persis!",
-      "langkahHitung": "2 : 1 = (2 × 3) : (1 × 3) = 6 : 3"
+      "judul": "Kesamaan Rasio",
+      "anak": ["Konsep kesamaan rasio", "Rasio satuan"]
     },
     {
-      "subJudul": "C. Rasio Satuan",
-      "tahap": "Abstrak",
-      "narasi": "Rasio satuan menanyakan banyak benda untuk tepat 1 satuan lain. Pada resep ini, 1 gelas air selalu memakai 2 sendok sirup. Bentuk umumnya: a : b = (a × k) : (b × k). Bilangan k boleh diganti, asalkan kedua ruas dikali bilangan yang sama.",
-      "langkahHitung": "Banyak sendok = banyak gelas × 2. Satu gelas tetap 2 sendok, berapa pun gelasnya."
+      "judul": "Penerapan Rasio",
+      "anak": ["Bagian terhadap bagian dan terhadap keseluruhan", "Rasio pada durasi waktu"]
     }
   ],
-  "simulasiLokal": {
-    "judul": "Laboratorium Mini: Resep Sirup Pas",
-    "deskripsi": "Geser pengatur gelas air dan perhatikan berapa sendok sirup yang otomatis dibutuhkan!",
-    "baseRatioA": 2,
-    "baseRatioB": 1
+  "fokusPeta": "Konsep Rasio",
+  "mengingat": {
+    "narasi": "Faktor membagi habis suatu bilangan. Kelipatan didapat dengan mengalikan. Faktor memperkecil rasio. Kelipatan memperbesar rasio.",
+    "pecahan": "Tuliskan pecahan untuk bagian yang hilang. Roti punya 4 tempat dan 1 kosong. Semangka terbagi 6 dan 1 juring hilang. Cokelat tersusun 8 kotak dan 1 kotak hilang."
   },
+  "permasalahan": "Siswa SD Mentari menanam bibit di kebun belakang sekolah. Ada dua paket bibit dengan harga berbeda. Membandingkan hanya banyak bibit, atau hanya harga satu paket, belum menunjukkan paket yang lebih murah untuk setiap bibit.",
+  "membandingkan": {
+    "subJudul": "1. Membandingkan Benda",
+    "eksplorasi": "Eksplorasi 2.1 Membeli Bibit Pohon",
+    "narasi": "Artus, ketua kelas 6B, membeli bibit di toko. Paket A berisi 5 bibit seharga Rp50.000. Paket B berisi 3 bibit seharga Rp40.000.",
+    "gambar": "/doodle-mtk/mtk-6-bab2-paket.jpg",
+    "gambarAlt": "Paket A berisi lima bibit dan paket B berisi tiga bibit",
+    "paket": [
+      { "kode": "A", "bibit": 5, "harga": 50000 },
+      { "kode": "B", "bibit": 3, "harga": 40000 }
+    ]
+  },
+  "pengertian": {
+    "subJudul": "2. Pengertian Rasio",
+    "eksplorasi": "Eksplorasi 2.2 Menanam Pohon di Kebun Sekolah",
+    "narasi": "Cemara ditanam di sisi kanan. Pucuk merah ditanam di sisi kiri. Setiap 2 pucuk merah berpasangan dengan 3 cemara. Pada gambar ada 4 pucuk merah dan 6 cemara.",
+    "gambar": "/doodle-mtk/mtk-6-bab2-pohon.jpg",
+    "gambarAlt": "Pucuk merah di satu sisi dan cemara di sisi yang lain",
+    "objekA": "Pucuk merah",
+    "nilaiA": 4,
+    "objekB": "Cemara",
+    "nilaiB": 6,
+    "rasioAwal": "4 : 6",
+    "rasioSederhana": "2 : 3",
+    "rasioTerbalik": "3 : 2",
+    "makna": "Rasio adalah perbandingan dua besaran. Besaran itu boleh ukuran atau jumlah benda. Rasio a terhadap b ditulis a : b atau a/b. Untuk besaran yang sama, satuan tidak ditulis. a : b tidak sama artinya dengan b : a."
+  },
+  "kerjaSama": "Jika lahan diperluas dan pucuk merah yang ditanam 14 pohon, cemara yang ditanam agar rasio tetap 2 : 3 adalah 21 pohon. 14 : 2 = 7 dan 3 × 7 = 21.",
+  "berpikirKritis": "Jika pucuk merah diketahui, cemara = pucuk merah × 3 : 2. Jika cemara diketahui, pucuk merah = cemara × 2 : 3.",
+  "simulasiLokal": {
+    "judul": "Kebun Mini: Rasio Tetap 2 : 3",
+    "deskripsi": "Geser kelipatan. Banyak pucuk merah dan cemara berubah bersama, rasionya tetap 2 terhadap 3.",
+    "baseRatioA": 2,
+    "baseRatioB": 3,
+    "kelipatanAwal": 2,
+    "kelipatanMin": 1,
+    "kelipatanMaks": 8
+  },
+  "antrean": [
+    { "wahana": "Roller coaster", "jumlah": "24" },
+    { "wahana": "Komidi putar", "jumlah": "18" },
+    { "wahana": "Bianglala", "jumlah": "dicari" },
+    { "wahana": "Rumah hantu", "jumlah": "dicari" }
+  ],
+  "refleksi": [
+    "Ada dua cara menulis rasio: a : b dan a/b. Keduanya dibaca a terhadap b.",
+    "Contoh di sekitar: 2 pensil terhadap 5 buku, dan 3 gelas terhadap 4 piring."
+  ],
   "latihanFormatif": [
     {
-      "id": "soal-1",
-      "soal": "Di atas meja ada 3 buku gambar dan 6 buku tulis. Berapakah bentuk rasio paling sederhana antara buku gambar dan buku tulis?",
-      "opsi": ["1 : 2", "1 : 3", "2 : 1", "3 : 6"],
-      "kunciJawaban": "1 : 2",
-      "pembahasan": "Rasio awal 3 : 6. Kedua angka sama-sama dibagi 3 sehingga menjadi 1 : 2."
+      "id": "faktor-10",
+      "bagian": "Ayo Mengingat Kembali",
+      "soal": "Apakah 2 merupakan faktor atau kelipatan dari 10?",
+      "opsi": ["Faktor", "Kelipatan"],
+      "kunciJawaban": "Faktor",
+      "pembahasan": "10 : 2 = 5, pembagiannya habis. Jadi 2 adalah faktor dari 10."
     },
     {
-      "id": "soal-2",
-      "soal": "Untuk membuat 1 loyang kue dibutuhkan 4 butir telur. Berapa butir telur yang dibutuhkan untuk membuat 3 loyang kue?",
-      "opsi": ["8 butir", "10 butir", "12 butir", "16 butir"],
-      "kunciJawaban": "12 butir",
-      "pembahasan": "Rasio kue dan telur adalah 1 : 4. Jika kuenya 3 loyang, maka telur = 3 × 4 = 12 butir."
+      "id": "kelipatan-6",
+      "bagian": "Ayo Mengingat Kembali",
+      "soal": "Tiga bilangan yang merupakan kelipatan dari 6 adalah ...",
+      "opsi": ["6, 12, dan 18", "2, 3, dan 6", "1, 2, dan 3", "4, 8, dan 10"],
+      "kunciJawaban": "6, 12, dan 18",
+      "pembahasan": "Kelipatan 6 didapat dengan mengalikan: 6 × 1 = 6, 6 × 2 = 12, dan 6 × 3 = 18."
     },
     {
-      "id": "soal-3",
-      "soal": "Rasio siswa laki-laki dan perempuan di kelas 6 adalah 2 : 3. Jika jumlah siswa laki-laki ada 10 anak, berapa jumlah siswa perempuan?",
-      "opsi": ["12 anak", "15 anak", "18 anak", "20 anak"],
-      "kunciJawaban": "15 anak",
-      "pembahasan": "Laki-laki = 2 bagian = 10 anak (artinya 1 bagian = 5). Perempuan = 3 bagian = 3 × 5 = 15 anak."
+      "id": "pecahan-roti",
+      "bagian": "Ayo Mengingat Kembali",
+      "soal": "Pada gambar roti ada 4 tempat dan 1 tempat kosong. Pecahan bagian yang hilang adalah ...",
+      "opsi": ["1/4", "1/2", "3/4", "1/8"],
+      "kunciJawaban": "1/4",
+      "pembahasan": "Ada 4 tempat dan 1 yang kosong. Bagian yang hilang adalah 1/4."
+    },
+    {
+      "id": "pecahan-semangka",
+      "bagian": "Ayo Mengingat Kembali",
+      "soal": "Semangka terbagi 6 juring dan 1 juring hilang. Pecahan bagian yang hilang adalah ...",
+      "opsi": ["1/6", "1/5", "5/6", "1/8"],
+      "kunciJawaban": "1/6",
+      "pembahasan": "Semangka terbagi 6 dan 1 juring hilang. Bagian yang hilang adalah 1/6."
+    },
+    {
+      "id": "pecahan-cokelat",
+      "bagian": "Ayo Mengingat Kembali",
+      "soal": "Cokelat tersusun 8 kotak dan 1 kotak hilang. Pecahan bagian yang hilang adalah ...",
+      "opsi": ["1/8", "1/4", "7/8", "1/6"],
+      "kunciJawaban": "1/8",
+      "pembahasan": "Cokelat tersusun 8 kotak dan 1 kotak hilang. Bagian yang hilang adalah 1/8."
+    },
+    {
+      "id": "paket-banyak",
+      "bagian": "1. Membandingkan Benda",
+      "soal": "Paket mana yang jumlah bibitnya lebih banyak?",
+      "opsi": ["Paket A", "Paket B", "Sama banyak", "Tidak bisa dibanding"],
+      "kunciJawaban": "Paket A",
+      "pembahasan": "Paket A berisi 5 bibit. Paket B berisi 3 bibit. 5 lebih besar dari 3."
+    },
+    {
+      "id": "paket-murah",
+      "bagian": "1. Membandingkan Benda",
+      "soal": "Paket mana yang harganya lebih murah untuk satu paket?",
+      "opsi": ["Paket A", "Paket B", "Harganya sama", "Tidak bisa dibanding"],
+      "kunciJawaban": "Paket B",
+      "pembahasan": "Harga satu paket B adalah Rp40.000. Harga satu paket A adalah Rp50.000. Rp40.000 lebih kecil, jadi paket B lebih murah untuk satu paket."
+    },
+    {
+      "id": "paket-beli",
+      "bagian": "1. Membandingkan Benda",
+      "soal": "Paket mana yang sebaiknya dibeli Artus agar satu bibit lebih murah?",
+      "opsi": ["Paket A", "Paket B", "Keduanya sama", "Beli yang lebih sedikit"],
+      "kunciJawaban": "Paket A",
+      "pembahasan": "Harga satu bibit paket A adalah 50.000 : 5 = 10.000. Paket B adalah 40.000 : 3 = 13.333 sisa 1. Banding silang: 50.000 × 3 = 150.000 dan 40.000 × 5 = 200.000. Karena 150.000 lebih kecil, satu bibit paket A lebih murah."
+    },
+    {
+      "id": "rasio-sederhana",
+      "bagian": "2. Pengertian Rasio",
+      "soal": "Bentuk paling sederhana rasio pucuk merah terhadap cemara adalah ...",
+      "opsi": ["2 : 3", "3 : 2", "4 : 6", "6 : 4"],
+      "kunciJawaban": "2 : 3",
+      "pembahasan": "Pada gambar ada 4 pucuk merah dan 6 cemara, jadi 4 : 6. Kedua angka dibagi 2 sehingga menjadi 2 : 3."
+    },
+    {
+      "id": "rasio-terbalik",
+      "bagian": "2. Pengertian Rasio",
+      "soal": "Bentuk paling sederhana rasio cemara terhadap pucuk merah adalah ...",
+      "opsi": ["3 : 2", "2 : 3", "6 : 4", "4 : 6"],
+      "kunciJawaban": "3 : 2",
+      "pembahasan": "Urutan rasio mengikuti yang disebut lebih dulu. Cemara terhadap pucuk merah adalah 6 : 4 = 3 : 2."
+    },
+    {
+      "id": "cemara-14",
+      "bagian": "2. Pengertian Rasio",
+      "soal": "Pucuk merah yang ditanam 14 pohon. Agar rasio tetap 2 : 3, berapa cemara yang ditanam?",
+      "opsi": ["21 pohon", "14 pohon", "28 pohon", "9 pohon"],
+      "kunciJawaban": "21 pohon",
+      "pembahasan": "14 : 2 = 7, lalu 3 × 7 = 21. Cemara yang ditanam 21 pohon."
+    },
+    {
+      "id": "antrean",
+      "bagian": "Latihan 2.1",
+      "soal": "Rasio pengunjung roller coaster terhadap komidi putar dalam bentuk paling sederhana adalah ...",
+      "opsi": ["4 : 3", "3 : 4", "24 : 18", "6 : 4"],
+      "kunciJawaban": "4 : 3",
+      "pembahasan": "Roller coaster 24 orang dan komidi putar 18 orang. 24 : 18 dibagi 6 menjadi 4 : 3."
+    },
+    {
+      "id": "bianglala",
+      "bagian": "Latihan 2.1",
+      "soal": "Rasio bianglala terhadap roller coaster adalah 4 : 3. Roller coaster ada 24 orang. Pengunjung bianglala ada ...",
+      "opsi": ["32 orang", "24 orang", "18 orang", "36 orang"],
+      "kunciJawaban": "32 orang",
+      "pembahasan": "3 bagian sama dengan 24, jadi 1 bagian = 8. Bianglala 4 × 8 = 32 orang."
+    },
+    {
+      "id": "rumah-hantu",
+      "bagian": "Latihan 2.1",
+      "soal": "Rasio rumah hantu terhadap komidi putar adalah 2 : 6. Komidi putar ada 18 orang. Pengunjung rumah hantu ada ...",
+      "opsi": ["6 orang", "12 orang", "18 orang", "36 orang"],
+      "kunciJawaban": "6 orang",
+      "pembahasan": "6 bagian sama dengan 18, jadi 1 bagian = 3. Rumah hantu 2 × 3 = 6 orang."
+    },
+    {
+      "id": "minuman",
+      "bagian": "Latihan 2.1",
+      "soal": "Banyu menyiapkan 6 liter minuman untuk 15 teman. Siang hari tamu yang datang 10 orang. Agar jatah tiap orang tetap, minuman yang disiapkan adalah ...",
+      "opsi": ["4 liter", "6 liter", "5 liter", "10 liter"],
+      "kunciJawaban": "4 liter",
+      "pembahasan": "6 : 15 = 2 : 5. Untuk 10 orang, 2 : 5 = 4 : 10. Minuman yang disiapkan 4 liter."
     }
   ]
 }
