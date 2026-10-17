@@ -63,6 +63,15 @@ function Kegiatan({ label, children }: { label: string; children: ReactNode }) {
   );
 }
 
+function Gambar({ src, alt, keterangan }: { src: string; alt: string; keterangan: string }) {
+  return (
+    <figure className="space-y-1">
+      <img src={src} alt={alt} className="w-full rounded-xl border border-slate-200 bg-white object-cover" />
+      <figcaption className="text-xs font-semibold leading-6 text-slate-600"><Teks anak={keterangan} /></figcaption>
+    </figure>
+  );
+}
+
 function PolaCerita({ adegan, permasalahan, logika, langkah, judulAdegan = "Adegan" }: { adegan: ReactNode; permasalahan: ReactNode; logika: ReactNode; langkah: ReactNode; judulAdegan?: string }) {
   return (
     <>
@@ -205,7 +214,7 @@ export default function NaskahMtk6Bab2(_props: { kelas?: string; kelamin?: strin
         <JudulBagian anak="Pembuka Bab" />
         <PolaCerita
           judulAdegan="Adegan 1"
-          adegan={<p>Agam ikut menanam di kebun sekolah. Di sisi kiri ada 4 pohon pucuk merah. Di sisi kanan ada 6 pohon cemara. Guru meminta kedua banyak itu ditulis sebagai pasangan, bukan hanya disebut lebih banyak.</p>}
+          adegan={<><Gambar src="/doodle-mtk/mtk-6-bab2-pohon.jpg" alt="Agam berdiri di antara pohon pucuk merah dan pohon cemara" keterangan="Agam membandingkan pohon pucuk merah dan pohon cemara." /><p>Agam ikut menanam di kebun sekolah. Di sisi kiri ada 4 pohon pucuk merah. Di sisi kanan ada 6 pohon cemara. Guru meminta kedua banyak itu ditulis sebagai pasangan, bukan hanya disebut lebih banyak.</p></>}
           permasalahan={<p><Teks anak="Tuliskan rasio pohon pucuk merah terhadap pohon cemara, lalu sederhanakan." /></p>}
           logika={<p><Teks anak="Rasio menulis dua banyak berurutan. Pucuk merah disebut lebih dulu, jadi 4 ditulis di kiri. Kedua angka dibagi faktor yang sama." /></p>}
           langkah={
@@ -220,7 +229,7 @@ export default function NaskahMtk6Bab2(_props: { kelas?: string; kelamin?: strin
         />
         <PolaCerita
           judulAdegan="Adegan 2"
-          adegan={<p>Agam menukar urutan kalimat. Ia menulis cemara lebih dulu, lalu pucuk merah. Pasangannya berubah arti.</p>}
+          adegan={<><Gambar src="/doodle-mtk/mtk-6-bab2-urutan.jpg" alt="Agam menunjuk pohon cemara lebih dahulu, lalu pohon pucuk merah" keterangan="Agam menukar urutan: cemara lebih dahulu, lalu pucuk merah." /><p>Agam menukar urutan kalimat. Ia menulis cemara lebih dulu, lalu pucuk merah. Pasangannya berubah arti.</p></>}
           permasalahan={<p><Teks anak="Berapa rasio cemara terhadap pucuk merah?" /></p>}
           logika={<p><Teks anak="Urutan rasio mengikuti urutan kalimat. 6 : 4 tidak sama artinya dengan 4 : 6." /></p>}
           langkah={
@@ -269,7 +278,7 @@ export default function NaskahMtk6Bab2(_props: { kelas?: string; kelamin?: strin
       <section className="space-y-4">
         <JudulBagian anak="Ayo Mengingat" />
         <PolaCerita
-          adegan={<p>Agam membuka catatan lama. Ia membedakan faktor dan kelipatan sebelum menyederhanakan pasangan angka.</p>}
+          adegan={<><Gambar src="/doodle-mtk/mtk-6-bab2-catatan.jpg" alt="Agam membuka buku catatan di meja" keterangan="Agam membuka catatan faktor dan kelipatan." /><p>Agam membuka catatan lama. Ia membedakan faktor dan kelipatan sebelum menyederhanakan pasangan angka.</p></>}
           permasalahan={<p><Teks anak="Sebutkan faktor 12. Sebutkan tiga kelipatan 4." /></p>}
           logika={<p><Teks anak="Faktor membagi habis. Kelipatan didapat dari mengalikan. Faktor dipakai untuk memperkecil rasio. Kelipatan dipakai untuk memperbesar rasio." /></p>}
           langkah={<p><Teks anak="Faktor 12: 1, 2, 3, 4, 6, 12. Kelipatan 4: 4, 8, 12." /></p>}
@@ -280,7 +289,7 @@ export default function NaskahMtk6Bab2(_props: { kelas?: string; kelamin?: strin
         <JudulBagian anak="A. Konsep Rasio" />
         <h3 className="text-lg font-black text-[#1C01A5]">1. Membandingkan Benda</h3>
         <PolaCerita
-          adegan={<p>Di taman hiburan, antrean roller coaster ada 24 orang. Antrean komidi putar ada 18 orang. Agam ingin tahu antrean mana yang lebih panjang.</p>}
+          adegan={<><Gambar src="/doodle-mtk/mtk-6-bab2-antrean.jpg" alt="Agam membandingkan antrean roller coaster dan antrean komidi putar" keterangan="Agam membandingkan panjang dua antrean." /><p>Di taman hiburan, antrean roller coaster ada 24 orang. Antrean komidi putar ada 18 orang. Agam ingin tahu antrean mana yang lebih panjang.</p></>}
           permasalahan={<p><Teks anak="Mana yang lebih banyak, 24 atau 18?" /></p>}
           logika={<p><Teks anak="Dua bilangan sejenis dibanding langsung. Belum perlu ditulis sebagai rasio." /></p>}
           langkah={<p><Teks anak="24 lebih besar dari 18. Antrean roller coaster lebih panjang." /></p>}
@@ -289,7 +298,7 @@ export default function NaskahMtk6Bab2(_props: { kelas?: string; kelamin?: strin
         <h3 className="text-lg font-black text-[#1C01A5]">2. Pengertian Rasio</h3>
         <PolaCerita
           judulAdegan="Adegan 1"
-          adegan={<p>Agam menulis kedua antrean sebagai pasangan. Roller coaster disebut lebih dulu.</p>}
+          adegan={<><Gambar src="/doodle-mtk/mtk-6-bab2-pasangan.jpg" alt="Agam memasangkan anak dari dua antrean" keterangan="Agam memasangkan antrean roller coaster dengan antrean komidi putar." /><p>Agam menulis kedua antrean sebagai pasangan. Roller coaster disebut lebih dulu.</p></>}
           permasalahan={<p><Teks anak="Tuliskan rasio pengunjung roller coaster terhadap komidi putar, lalu sederhanakan." /></p>}
           logika={<p><Teks anak="24 dan 18 sama-sama habis dibagi 6. Bentuk sederhananya tetap menyimpan urutan yang sama." /></p>}
           langkah={
@@ -304,7 +313,7 @@ export default function NaskahMtk6Bab2(_props: { kelas?: string; kelamin?: strin
         />
         <PolaCerita
           judulAdegan="Adegan 2"
-          adegan={<p>Kebun akan ditambah. Setiap 2 pucuk merah tetap bersama 3 cemara. Pucuk merah yang baru ada 14 pohon.</p>}
+          adegan={<><Gambar src="/doodle-mtk/mtk-6-bab2-tambah.jpg" alt="Agam menambah bibit di kebun sekolah" keterangan="Agam menambah pohon tanpa mengubah rasio." /><p>Kebun akan ditambah. Setiap 2 pucuk merah tetap bersama 3 cemara. Pucuk merah yang baru ada 14 pohon.</p></>}
           permasalahan={<p><Teks anak="Jika pucuk merah 14, berapa cemara yang ditanam?" /></p>}
           logika={<p><Teks anak="14 adalah 2 dikali 7. Cemara juga dikali 7 supaya rasio tidak berubah." /></p>}
           langkah={
@@ -319,7 +328,7 @@ export default function NaskahMtk6Bab2(_props: { kelas?: string; kelamin?: strin
         />
         <PolaCerita
           judulAdegan="Adegan 3"
-          adegan={<p>Pagi hari Agam menyiapkan 6 liter minuman untuk 15 teman. Siang hari teman yang datang hanya 10. Ia ingin minuman tiap orang tetap sama.</p>}
+          adegan={<><Gambar src="/doodle-mtk/mtk-6-bab2-minuman.jpg" alt="Agam menuang minuman dari kendi ke gelas" keterangan="Agam menakar minuman agar tiap teman mendapat bagian yang sama." /><p>Pagi hari Agam menyiapkan 6 liter minuman untuk 15 teman. Siang hari teman yang datang hanya 10. Ia ingin minuman tiap orang tetap sama.</p></>}
           permasalahan={<p><Teks anak="Berapa liter untuk 10 orang?" /></p>}
           logika={<p><Teks anak="6 : 15 disederhanakan dulu menjadi 2 : 5. Sepuluh orang adalah 5 dikali 2, jadi liternya juga dikali 2." /></p>}
           langkah={
@@ -343,7 +352,7 @@ export default function NaskahMtk6Bab2(_props: { kelas?: string; kelamin?: strin
         <h3 className="text-lg font-black text-[#1C01A5]">1. Kesamaan Rasio</h3>
         <PolaCerita
           judulAdegan="Adegan 1"
-          adegan={<p>Satu lahan 10 m² diperkirakan memuat 12 bibit. Agam mencari bentuk paling sederhananya.</p>}
+          adegan={<><Gambar src="/doodle-mtk/mtk-6-bab2-lahan.jpg" alt="Agam berdiri di petak kebun yang kecil" keterangan="Agam menghitung bibit pada lahan yang kecil." /><p>Satu lahan 10 m² diperkirakan memuat 12 bibit. Agam mencari bentuk paling sederhananya.</p></>}
           permasalahan={<p><Teks anak="Sederhanakan rasio 10 : 12." /></p>}
           logika={<p><Teks anak="10 dan 12 habis dibagi 2. Membagi kedua ruas dengan bilangan yang sama tidak mengubah rasio." /></p>}
           langkah={
@@ -358,7 +367,7 @@ export default function NaskahMtk6Bab2(_props: { kelas?: string; kelamin?: strin
         />
         <PolaCerita
           judulAdegan="Adegan 2"
-          adegan={<p>Lahan yang tersedia 25 m². Agam memakai rasio sederhana 5 : 6 agar bibitnya tetap sepadan.</p>}
+          adegan={<><Gambar src="/doodle-mtk/mtk-6-bab2-lahan-luas.jpg" alt="Agam berdiri di petak kebun yang lebih luas" keterangan="Lahan diperluas, kerapatan tanam tetap." /><p>Lahan yang tersedia 25 m². Agam memakai rasio sederhana 5 : 6 agar bibitnya tetap sepadan.</p></>}
           permasalahan={<p><Teks anak="Berapa bibit untuk lahan 25 m²?" /></p>}
           logika={<p><Teks anak="25 adalah 5 dikali 5. Bibit pada ruas 6 juga dikali 5." /></p>}
           langkah={
@@ -373,7 +382,7 @@ export default function NaskahMtk6Bab2(_props: { kelas?: string; kelamin?: strin
         />
         <PolaCerita
           judulAdegan="Adegan 3"
-          adegan={<p>Agam memeriksa dua pasangan lain dari 10 : 12. Satu diperbesar, satu diperkecil.</p>}
+          adegan={<><Gambar src="/doodle-mtk/mtk-6-bab2-senilai.jpg" alt="Agam membandingkan dua petak bibit yang senilai" keterangan="Agam memeriksa dua rasio yang senilai." /><p>Agam memeriksa dua pasangan lain dari 10 : 12. Satu diperbesar, satu diperkecil.</p></>}
           permasalahan={<p><Teks anak="Tunjukkan bahwa 30 : 36 dan 5 : 6 senilai dengan 10 : 12." /></p>}
           logika={<p><Teks anak="Mengali kedua ruas dengan 3, atau membagi kedua ruas dengan 2, menghasilkan rasio yang sama." /></p>}
           langkah={
@@ -390,7 +399,7 @@ export default function NaskahMtk6Bab2(_props: { kelas?: string; kelamin?: strin
         <h3 className="text-lg font-black text-[#1C01A5]">2. Rasio Satuan</h3>
         <PolaCerita
           judulAdegan="Adegan 1"
-          adegan={<p>Ibu membandingkan dua kemasan bibit jahe. Tiga bibit berharga Rp37.500. Lima bibit berharga Rp58.000. Harga kemasan saja belum menunjukkan yang lebih murah.</p>}
+          adegan={<><Gambar src="/doodle-mtk/mtk-6-bab2-jahe.jpg" alt="Agam dan Ibu membandingkan dua keranjang bibit jahe" keterangan="Agam membandingkan harga dua kemasan jahe." /><p>Ibu membandingkan dua kemasan bibit jahe. Tiga bibit berharga Rp37.500. Lima bibit berharga Rp58.000. Harga kemasan saja belum menunjukkan yang lebih murah.</p></>}
           permasalahan={<p><Teks anak="Berapa harga satu bibit pada kemasan 3 dan pada kemasan 5?" /></p>}
           logika={<p><Teks anak="Rasio satuan mencari nilai untuk satu benda. Bagi harga dengan banyak bibit." /></p>}
           langkah={
@@ -403,7 +412,7 @@ export default function NaskahMtk6Bab2(_props: { kelas?: string; kelamin?: strin
         />
         <PolaCerita
           judulAdegan="Adegan 2"
-          adegan={<p>Enam bibit perlu 1,5 jam untuk dikemas. Agam ingin tahu berapa bibit selesai dalam satu jam.</p>}
+          adegan={<><Gambar src="/doodle-mtk/mtk-6-bab2-kemas.jpg" alt="Agam mengemas bibit ke dalam kotak" keterangan="Agam mengemas bibit dan memperhatikan waktunya." /><p>Enam bibit perlu 1,5 jam untuk dikemas. Agam ingin tahu berapa bibit selesai dalam satu jam.</p></>}
           permasalahan={<p><Teks anak="Berapa bibit per jam, dan berapa bibit dalam 4 jam?" /></p>}
           logika={<p><Teks anak="1,5 jam sama dengan 3/2 jam. Bagi 6 dengan 3/2 supaya ketemu nilai untuk 1 jam." /></p>}
           langkah={
@@ -418,7 +427,7 @@ export default function NaskahMtk6Bab2(_props: { kelas?: string; kelamin?: strin
         />
         <PolaCerita
           judulAdegan="Adegan 3"
-          adegan={<p>Resep wedang jahe untuk 4 liter air memakai 12 jahe merah, 8 batang serai, dan 4 lemon. Agam akan membuat 8 liter.</p>}
+          adegan={<><Gambar src="/doodle-mtk/mtk-6-bab2-wedang.jpg" alt="Agam menyiapkan jahe, serai, dan lemon untuk wedang" keterangan="Agam menyiapkan bahan wedang jahe." /><p>Resep wedang jahe untuk 4 liter air memakai 12 jahe merah, 8 batang serai, dan 4 lemon. Agam akan membuat 8 liter.</p></>}
           permasalahan={<p><Teks anak="Berapa jahe, serai, dan lemon untuk 8 liter?" /></p>}
           logika={<p><Teks anak="8 liter adalah 4 liter dikali 2. Setiap bahan juga dikali 2." /></p>}
           langkah={
@@ -442,7 +451,7 @@ export default function NaskahMtk6Bab2(_props: { kelas?: string; kelamin?: strin
         <h3 className="text-lg font-black text-[#1C01A5]">1. Rasio Bagian terhadap Bagian dan terhadap Keseluruhan</h3>
         <PolaCerita
           judulAdegan="Adegan 1"
-          adegan={<p>Sebuah toko bibit mencatat penjualan bulan ini. Tanaman hias dibanding tanaman obat adalah 4 : 5. Seluruh bibit yang terjual ada 72.</p>}
+          adegan={<><Gambar src="/doodle-mtk/mtk-6-bab2-toko.jpg" alt="Agam di antara tanaman hias dan tanaman obat" keterangan="Agam membandingkan tanaman hias dan tanaman obat." /><p>Sebuah toko bibit mencatat penjualan bulan ini. Tanaman hias dibanding tanaman obat adalah 4 : 5. Seluruh bibit yang terjual ada 72.</p></>}
           permasalahan={<p><Teks anak="Berapa tanaman hias dan berapa tanaman obat yang terjual?" /></p>}
           logika={<p><Teks anak="4 + 5 = 9 bagian. 72 dibagi 9, lalu tiap jenis dikali banyak bagiannya." /></p>}
           langkah={
@@ -456,7 +465,7 @@ export default function NaskahMtk6Bab2(_props: { kelas?: string; kelamin?: strin
           }
         />
         <PolaCerita
-          adegan={<p>Agam sekarang membandingkan tiap jenis dengan seluruh penjualan, bukan dengan jenis yang lain.</p>}
+          adegan={<><Gambar src="/doodle-mtk/mtk-6-bab2-keseluruhan.jpg" alt="Agam membandingkan satu keranjang dengan seluruh pot" keterangan="Agam membandingkan satu bagian dengan keseluruhan." /><p>Agam sekarang membandingkan tiap jenis dengan seluruh penjualan, bukan dengan jenis yang lain.</p></>}
           permasalahan={<p><Teks anak="Tuliskan rasio tanaman hias terhadap seluruh bibit, dan rasio tanaman obat terhadap seluruh bibit." /></p>}
           logika={<p><Teks anak="Seluruh bibit adalah 9 bagian. Hias 4 bagian dari 9. Obat 5 bagian dari 9." /></p>}
           langkah={<p><Teks anak="Hias terhadap seluruhnya 32 : 72 = 4 : 9. Obat terhadap seluruhnya 40 : 72 = 5 : 9." /></p>}
@@ -465,14 +474,14 @@ export default function NaskahMtk6Bab2(_props: { kelas?: string; kelamin?: strin
         <h3 className="text-lg font-black text-[#1C01A5]">2. Rasio pada Durasi Waktu</h3>
         <PolaCerita
           judulAdegan="Adegan 1"
-          adegan={<p>Agam mengelompokkan bibit menurut masa panen. Jahe merah 3 bulan. Kumis kucing 12 minggu. Satuan keduanya belum sama.</p>}
+          adegan={<><Gambar src="/doodle-mtk/mtk-6-bab2-panen.jpg" alt="Agam membandingkan masa panen jahe dan kumis kucing" keterangan="Agam membandingkan waktu panen dua tanaman." /><p>Agam mengelompokkan bibit menurut masa panen. Jahe merah 3 bulan. Kumis kucing 12 minggu. Satuan keduanya belum sama.</p></>}
           permasalahan={<p><Teks anak="Apakah 3 bulan sama dengan 12 minggu?" /></p>}
           logika={<p><Teks anak="Samakan satuannya dulu. 1 bulan dihitung 4 minggu." /></p>}
           langkah={<p><Teks anak="3 × 4 = 12 minggu. Jahe merah dan kumis kucing sama-sama 12 minggu." /></p>}
         />
         <PolaCerita
           judulAdegan="Adegan 2"
-          adegan={<p>Banyu berjalan 1 km dalam 30 menit. Ia menjaga kecepatan yang sama.</p>}
+          adegan={<><Gambar src="/doodle-mtk/mtk-6-bab2-jalan.jpg" alt="Agam berjalan di jalan desa" keterangan="Agam menakar jarak dan waktu berjalan." /><p>Banyu berjalan 1 km dalam 30 menit. Ia menjaga kecepatan yang sama.</p></>}
           permasalahan={<p><Teks anak="Berapa km dalam 1 jam? Berapa jam untuk 9 km?" /></p>}
           logika={<p><Teks anak="1 jam berisi dua kali 30 menit. Untuk 9 km, lihat berapa kali 2 km muat di dalamnya." /></p>}
           langkah={
@@ -487,7 +496,7 @@ export default function NaskahMtk6Bab2(_props: { kelas?: string; kelamin?: strin
         />
         <PolaCerita
           judulAdegan="Adegan 3"
-          adegan={<p>Lengkuas dipanen dalam 1,5 tahun. Agam ingin menulis masa itu dalam bulan supaya mudah dibanding dengan kencur yang 6 bulan.</p>}
+          adegan={<><Gambar src="/doodle-mtk/mtk-6-bab2-lengkuas.jpg" alt="Agam memegang tanaman lengkuas di samping kalender" keterangan="Agam mengubah masa panen lengkuas ke dalam bulan." /><p>Lengkuas dipanen dalam 1,5 tahun. Agam ingin menulis masa itu dalam bulan supaya mudah dibanding dengan kencur yang 6 bulan.</p></>}
           permasalahan={<p><Teks anak="Berapa bulan dalam 1,5 tahun?" /></p>}
           logika={<p><Teks anak="1 tahun berisi 12 bulan. Setengah tahun berisi 6 bulan." /></p>}
           langkah={<p><Teks anak="1,5 × 12 = 18. Lengkuas dipanen dalam 18 bulan." /></p>}
@@ -521,7 +530,7 @@ export default function NaskahMtk6Bab2(_props: { kelas?: string; kelamin?: strin
         <JudulBagian anak="Pengayaan" />
         <p className="text-sm font-semibold text-slate-800">Bagian ini terpisah dari soal inti. Dipakai untuk rasio senilai, pupuk yang hasilnya pecahan, dan durasi mengetik.</p>
         <PolaCerita
-          adegan={<p>Agam mencari rasio lain yang senilai dengan 12 : 28.</p>}
+          adegan={<><Gambar src="/doodle-mtk/mtk-6-bab2-kartu.jpg" alt="Agam membandingkan dua kartu berisi titik" keterangan="Agam mencari rasio lain yang senilai." /><p>Agam mencari rasio lain yang senilai dengan 12 : 28.</p></>}
           permasalahan={<p><Teks anak="Tuliskan bentuk paling sederhana dari 12 : 28." /></p>}
           logika={<p><Teks anak="12 dan 28 habis dibagi 4." /></p>}
           langkah={
@@ -535,7 +544,7 @@ export default function NaskahMtk6Bab2(_props: { kelas?: string; kelamin?: strin
           }
         />
         <PolaCerita
-          adegan={<p>Untuk 2 bibit diperlukan 5 gram pupuk. Agam akan menanam 11 bibit. Hasilnya tidak bulat.</p>}
+          adegan={<><Gambar src="/doodle-mtk/mtk-6-bab2-pupuk.jpg" alt="Agam menabur pupuk di samping deretan bibit" keterangan="Agam menakar pupuk untuk beberapa bibit." /><p>Untuk 2 bibit diperlukan 5 gram pupuk. Agam akan menanam 11 bibit. Hasilnya tidak bulat.</p></>}
           permasalahan={<p><Teks anak="Berapa gram pupuk untuk 11 bibit?" /></p>}
           logika={<p><Teks anak="Pupuk tiap bibit adalah 5 : 2 gram. Untuk 11 bibit, kalikan 11 dengan 5/2." /></p>}
           langkah={<p><Teks anak="11 × 5 / 2 = 55/2 = 27,5. Pupuk yang diperlukan 27,5 gram." /></p>}
