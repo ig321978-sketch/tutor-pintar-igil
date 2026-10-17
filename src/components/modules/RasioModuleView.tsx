@@ -113,6 +113,43 @@ type ModulRasio = {
     bahan: string[];
   };
   refleksiKesamaan: string[];
+  penerapan: {
+    permasalahan: string;
+    hiasPersediaan: number;
+    obatPersediaan: number;
+    gambar: string;
+    gambarAlt: string;
+    eksplorasi: string;
+    narasi: string;
+    hias: number;
+    obat: number;
+    totalJuni: number;
+    gambarBagian: string;
+    gambarBagianAlt: string;
+    pengertianBagian: string;
+    pengertianUtuh: string;
+    kelas: string;
+    durasiEksplorasi: string;
+    durasiNarasi: string;
+    gambarPanen: string;
+    gambarPanenAlt: string;
+    tanaman: { nama: string; masa: string }[];
+    gambarWaktu: string;
+    gambarWaktuAlt: string;
+    satuanWaktu: { satuan: string; sama: string }[];
+    ayahMenit: number;
+    tigorPecahan: string;
+    hariPerMinggu: number;
+    jamPerHari: number;
+    banyuKm: number;
+    banyuMenit: number;
+    gambarJalan: string;
+    gambarJalanAlt: string;
+    pasarAnak: number;
+    pasarDewasa: number;
+    pasarTotal: number;
+  };
+  refleksiPenerapan: string[];
   latihanFormatif: SoalFormatif[];
 };
 
@@ -121,6 +158,9 @@ type JejakRasio = {
   kelipatan: number;
   kelipatanLahan: number;
   jamKemas: number;
+  kelipatanToko: number;
+  mingguKalender: number;
+  jamJalan: number;
   simulasiDicoba: boolean;
   tuntas: boolean;
 };
@@ -138,7 +178,10 @@ function adalahModul(data: unknown): data is ModulRasio {
     calon.membandingkan.paket.length >= 2 &&
     Array.isArray(calon.fokusPeta) &&
     calon.kesamaan?.fpb > 0 &&
-    (calon.satuan?.paket?.length ?? 0) >= 2
+    (calon.satuan?.paket?.length ?? 0) >= 2 &&
+    (calon.penerapan?.hias ?? 0) > 0 &&
+    (calon.penerapan?.tanaman?.length ?? 0) >= 6 &&
+    (calon.penerapan?.satuanWaktu?.length ?? 0) >= 8
   );
 }
 
@@ -150,6 +193,12 @@ function jepit(nilai: number, min: number, maks: number, cadangan: number, langk
   const hitung = Math.round((nilai - min) / langkahAman) * langkahAman + min;
   const terbatas = Math.min(maks, Math.max(min, hitung));
   return Math.round(terbatas * 1000) / 1000;
+}
+
+function gabungDan(daftar: string[]): string {
+  if (daftar.length <= 1) return daftar[0] ?? "";
+  if (daftar.length === 2) return `${daftar[0]} dan ${daftar[1]}`;
+  return `${daftar.slice(0, -1).join(", ")}, dan ${daftar[daftar.length - 1]}`;
 }
 
 function koma(nilai: number): string {
@@ -171,6 +220,9 @@ function bacaJejak(awal: number, min: number, maks: number): JejakRasio | null {
       kelipatan: jepit(typeof mentahKelipatan === "number" ? mentahKelipatan : awal, min, maks, awal),
       kelipatanLahan: typeof data.kelipatanLahan === "number" ? data.kelipatanLahan : 2,
       jamKemas: typeof data.jamKemas === "number" ? data.jamKemas : 1.5,
+      kelipatanToko: typeof data.kelipatanToko === "number" ? data.kelipatanToko : 1,
+      mingguKalender: typeof data.mingguKalender === "number" ? data.mingguKalender : 2,
+      jamJalan: typeof data.jamJalan === "number" ? data.jamJalan : 0.5,
       simulasiDicoba: Boolean(data.simulasiDicoba),
       tuntas: Boolean(data.tuntas),
     };
@@ -274,6 +326,8 @@ function Laboratorium({
   labelB = "Cemara",
   satuanA = "pohon",
   satuanB = "pohon",
+  labelJumlah,
+  satuanJumlah = "",
   petunjuk = "Kelipatan 2 menampilkan gambar kebun, 4 : 6. Kelipatan 7 menampilkan 14 pucuk merah.",
   onUbah,
 }: {
@@ -290,11 +344,14 @@ function Laboratorium({
   labelB?: string;
   satuanA?: string;
   satuanB?: string;
+  labelJumlah?: string;
+  satuanJumlah?: string;
   petunjuk?: string;
   onUbah: (nilai: number) => void;
 }) {
   const nilaiA = dasarA * kelipatan;
   const nilaiB = dasarB * kelipatan;
+  const jumlah = nilaiA + nilaiB;
   return (
     <section className="space-y-4 rounded-3xl border-2 border-[#F0AB00] bg-[#FFF9EB] p-5">
       <div className="space-y-1">
@@ -339,7 +396,7 @@ function Laboratorium({
         />
         <p className="text-center text-sm font-bold text-slate-600">{petunjuk}</p>
       </div>
-      <div className="grid gap-3 sm:grid-cols-2">
+      <div className={`grid gap-3 ${labelJumlah ? "sm:grid-cols-3" : "sm:grid-cols-2"}`}>
         <div className="space-y-2 rounded-2xl bg-rose-50 p-4">
           <p className="text-sm font-black text-rose-900">{labelA}</p>
           <p className="text-3xl font-black text-rose-700">{koma(nilaiA)} {satuanA}</p>
@@ -348,6 +405,12 @@ function Laboratorium({
           <p className="text-sm font-black text-emerald-900">{labelB}</p>
           <p className="text-3xl font-black text-emerald-700">{koma(nilaiB)} {satuanB}</p>
         </div>
+        {labelJumlah ? (
+          <div className="space-y-2 rounded-2xl bg-[#EEF2FF] p-4">
+            <p className="text-sm font-black text-[#1C01A5]">{labelJumlah}</p>
+            <p className="text-3xl font-black text-[#1C01A5]">{koma(jumlah)} {satuanJumlah}</p>
+          </div>
+        ) : null}
       </div>
       <p className="rounded-2xl bg-white px-4 py-3 text-center text-lg font-black leading-8 text-[#1C01A5]">
         {koma(dasarA)} : {koma(dasarB)} = ({koma(dasarA)} × {koma(kelipatan)}) : ({koma(dasarB)} × {koma(kelipatan)}) = {koma(nilaiA)} : {koma(nilaiB)}
@@ -366,6 +429,9 @@ export default function RasioModuleView() {
   const [kelipatan, setKelipatan] = useState(awal);
   const [kelipatanLahan, setKelipatanLahan] = useState(2);
   const [jamKemas, setJamKemas] = useState(1.5);
+  const [kelipatanToko, setKelipatanToko] = useState(1);
+  const [mingguKalender, setMingguKalender] = useState(2);
+  const [jamJalan, setJamJalan] = useState(0.5);
   const [simulasiDicoba, setSimulasiDicoba] = useState(false);
 
   useEffect(() => {
@@ -375,6 +441,9 @@ export default function RasioModuleView() {
       setKelipatan(jejak.kelipatan);
       setKelipatanLahan(jepit(jejak.kelipatanLahan, 1, 8, 2));
       setJamKemas(jepit(jejak.jamKemas, 0.5, 6, 1.5, 0.5));
+      setKelipatanToko(jepit(jejak.kelipatanToko, 1, 10, 1));
+      setMingguKalender(jepit(jejak.mingguKalender, 1, 8, 2));
+      setJamJalan(jepit(jejak.jamJalan, 0.5, 9, 0.5, 0.5));
       setSimulasiDicoba(jejak.simulasiDicoba);
     }
     setSiap(true);
@@ -387,8 +456,8 @@ export default function RasioModuleView() {
 
   useEffect(() => {
     if (!siap || !modul) return;
-    simpanJejak({ jawaban, kelipatan, kelipatanLahan, jamKemas, simulasiDicoba, tuntas });
-  }, [siap, jawaban, kelipatan, kelipatanLahan, jamKemas, simulasiDicoba, tuntas]);
+    simpanJejak({ jawaban, kelipatan, kelipatanLahan, jamKemas, kelipatanToko, mingguKalender, jamJalan, simulasiDicoba, tuntas });
+  }, [siap, jawaban, kelipatan, kelipatanLahan, jamKemas, kelipatanToko, mingguKalender, jamJalan, simulasiDicoba, tuntas]);
 
   const tandai = kuis?.tandaiBenar;
   useEffect(() => {
@@ -434,6 +503,8 @@ export default function RasioModuleView() {
   const lahanSederhana = modul.kesamaan.luas / modul.kesamaan.fpb;
   const bibitSederhana = modul.kesamaan.bibit / modul.kesamaan.fpb;
   const lajuKemas = modul.satuan.kemasBibit / modul.satuan.kemasJam;
+  const jamPerMinggu = modul.penerapan.hariPerMinggu * modul.penerapan.jamPerHari;
+  const lajuBanyu = modul.penerapan.banyuKm / (modul.penerapan.banyuMenit / 60);
 
   return (
     <article className="space-y-6">
@@ -495,7 +566,7 @@ export default function RasioModuleView() {
             </div>
           ))}
         </div>
-        <p className="text-sm font-bold text-[#1C01A5]">Bagian yang dikerjakan sekarang: {modul.fokusPeta.join(" dan ")}.</p>
+        <p className="text-sm font-bold text-[#1C01A5]">Bagian yang dikerjakan sekarang: {gabungDan(modul.fokusPeta)}.</p>
       </section>
 
       <section className="space-y-4">
@@ -801,9 +872,256 @@ export default function RasioModuleView() {
         </div>
       </section>
 
+      <section className="space-y-4">
+        <h3 className="text-2xl font-black text-[#1C01A5]">C. Penerapan Rasio</h3>
+        <p className="text-base font-semibold leading-8 text-slate-800">{modul.penerapan.permasalahan}</p>
+        <GambarBuku
+          src={modul.penerapan.gambar}
+          alt={modul.penerapan.gambarAlt}
+          keterangan="Persediaan tanaman hias terhadap tanaman obat adalah 3 : 2."
+        />
+        {kartu(soalBagian("C. Permasalahan"))}
+      </section>
+
+      <section className="space-y-4">
+        <h3 className="text-xl font-black text-[#1C01A5]">1. Rasio Bagian terhadap Bagian dan terhadap Keseluruhan</h3>
+        <p className="text-sm font-black text-[#1C01A5]">{modul.penerapan.eksplorasi}</p>
+        <p className="text-base font-semibold leading-8 text-slate-800">{modul.penerapan.narasi}</p>
+        <div className="overflow-x-auto">
+          <table className="min-w-full border-collapse text-sm">
+            <thead>
+              <tr>
+                {["", "Tanaman hias", "Tanaman obat", "Total"].map((kolom) => (
+                  <th key={kolom || "langkah"} className="border border-slate-200 bg-slate-50 px-3 py-2 text-left font-black text-[#1C01A5]">{kolom}</th>
+                ))}
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td className="border border-slate-200 px-3 py-2 font-semibold">Rasio</td>
+                <td className="border border-slate-200 px-3 py-2 font-semibold">{modul.penerapan.hias}</td>
+                <td className="border border-slate-200 px-3 py-2 font-semibold">{modul.penerapan.obat}</td>
+                <td className="border border-slate-200 px-3 py-2 font-semibold">{modul.penerapan.hias} + {modul.penerapan.obat}</td>
+              </tr>
+              <tr>
+                <td className="border border-slate-200 px-3 py-2 font-semibold">Jumlah sebenarnya</td>
+                <td className="border border-slate-200 px-3 py-2 font-semibold">...</td>
+                <td className="border border-slate-200 px-3 py-2 font-semibold">...</td>
+                <td className="border border-slate-200 px-3 py-2 font-semibold">{modul.penerapan.totalJuni}</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <Laboratorium
+          judul="Toko Mini: Rasio 4 : 5"
+          deskripsi="Geser kelipatan. Dua jenis bibit berubah bersama, dan rasionya tetap 4 terhadap 5."
+          dasarA={modul.penerapan.hias}
+          dasarB={modul.penerapan.obat}
+          kelipatan={kelipatanToko}
+          min={1}
+          maks={10}
+          namaPengatur="kelipatan penjualan"
+          labelA="Tanaman hias"
+          labelB="Tanaman obat"
+          satuanA="bibit"
+          satuanB="bibit"
+          labelJumlah="Seluruh tanaman"
+          satuanJumlah="bibit"
+          petunjuk="Geser sampai seluruh tanaman menunjukkan 72 bibit."
+          onUbah={(nilai) => {
+            setKelipatanToko(jepit(nilai, 1, 10, 1));
+            setSimulasiDicoba(true);
+          }}
+        />
+        {kartu(soalBagian("1. Bagian dan Keseluruhan"))}
+        <GambarBuku
+          src={modul.penerapan.gambarBagian}
+          alt={modul.penerapan.gambarBagianAlt}
+          keterangan="Satu jenis dibanding seluruh tanaman yang dijual."
+        />
+        <p className="text-base font-semibold leading-8 text-slate-800">{modul.penerapan.pengertianBagian}</p>
+        <p className="text-base font-semibold leading-8 text-slate-800">{modul.penerapan.pengertianUtuh}</p>
+        <p className="rounded-2xl bg-[#F8F7FF] px-4 py-3 text-base font-semibold leading-8 text-slate-800">{modul.penerapan.kelas}</p>
+      </section>
+
+      <section className="space-y-4">
+        <h3 className="text-xl font-black text-[#1C01A5]">2. Rasio pada Durasi Waktu</h3>
+        <p className="text-sm font-black text-[#1C01A5]">{modul.penerapan.durasiEksplorasi}</p>
+        <p className="text-base font-semibold leading-8 text-slate-800">{modul.penerapan.durasiNarasi}</p>
+        <GambarBuku
+          src={modul.penerapan.gambarPanen}
+          alt={modul.penerapan.gambarPanenAlt}
+          keterangan="Enam tanaman obat punya masa panen yang berbeda."
+        />
+        <div className="overflow-x-auto">
+          <table className="min-w-full border-collapse text-sm">
+            <thead>
+              <tr>
+                {["Tanaman", "Masa panen"].map((kolom) => (
+                  <th key={kolom} className="border border-slate-200 bg-slate-50 px-3 py-2 text-left font-black text-[#1C01A5]">{kolom}</th>
+                ))}
+              </tr>
+            </thead>
+            <tbody>
+              {modul.penerapan.tanaman.map((baris) => (
+                <tr key={baris.nama}>
+                  <td className="border border-slate-200 px-3 py-2 font-semibold">{baris.nama}</td>
+                  <td className="border border-slate-200 px-3 py-2 font-semibold">{baris.masa}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+        <p className="text-base font-semibold leading-8 text-slate-800">
+          Dua waktu hanya boleh dibanding jika satuannya sama. Hari dibanding hari, bulan dibanding bulan, dan tahun dibanding tahun.
+        </p>
+        <GambarBuku
+          src={modul.penerapan.gambarWaktu}
+          alt={modul.penerapan.gambarWaktuAlt}
+          keterangan="Lengkuas di samping catatan satuan waktu."
+        />
+        <div className="overflow-x-auto">
+          <table className="min-w-full border-collapse text-sm">
+            <thead>
+              <tr>
+                {["Satuan", "Sama dengan"].map((kolom) => (
+                  <th key={kolom} className="border border-slate-200 bg-slate-50 px-3 py-2 text-left font-black text-[#1C01A5]">{kolom}</th>
+                ))}
+              </tr>
+            </thead>
+            <tbody>
+              {modul.penerapan.satuanWaktu.map((baris) => (
+                <tr key={`${baris.satuan}-${baris.sama}`}>
+                  <td className="border border-slate-200 px-3 py-2 font-semibold">{baris.satuan}</td>
+                  <td className="border border-slate-200 px-3 py-2 font-semibold">{baris.sama}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+        {kartu(soalBagian("2. Durasi Waktu").slice(0, 5))}
+        <div className="space-y-2 rounded-3xl bg-emerald-50 p-4">
+          <h4 className="text-lg font-black text-emerald-900">Ayo Bekerja Sama</h4>
+          <p className="text-base font-semibold leading-8 text-slate-800">
+            Ayah menanam bibit dalam {modul.penerapan.ayahMenit} menit. Tigor perlu {modul.penerapan.tigorPecahan} jam. Samakan dulu satuannya ke menit.
+          </p>
+        </div>
+        {kartu(soalBagian("2. Durasi Waktu").slice(5))}
+      </section>
+
+      <section className="space-y-4">
+        <h3 className="text-xl font-black text-[#1C01A5]">Latihan 2.3</h3>
+        <div className="overflow-x-auto">
+          <table className="min-w-full border-collapse text-sm">
+            <thead>
+              <tr>
+                {["", "Anak-anak", "Dewasa", "Total"].map((kolom) => (
+                  <th key={kolom || "pengunjung"} className="border border-slate-200 bg-slate-50 px-3 py-2 text-left font-black text-[#1C01A5]">{kolom}</th>
+                ))}
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td className="border border-slate-200 px-3 py-2 font-semibold">Rasio</td>
+                <td className="border border-slate-200 px-3 py-2 font-semibold">{modul.penerapan.pasarAnak}</td>
+                <td className="border border-slate-200 px-3 py-2 font-semibold">{modul.penerapan.pasarDewasa}</td>
+                <td className="border border-slate-200 px-3 py-2 font-semibold">{modul.penerapan.pasarAnak} + {modul.penerapan.pasarDewasa}</td>
+              </tr>
+              <tr>
+                <td className="border border-slate-200 px-3 py-2 font-semibold">Jumlah sebenarnya</td>
+                <td className="border border-slate-200 px-3 py-2 font-semibold">...</td>
+                <td className="border border-slate-200 px-3 py-2 font-semibold">...</td>
+                <td className="border border-slate-200 px-3 py-2 font-semibold">{modul.penerapan.pasarTotal}</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        {kartu(soalBagian("Latihan 2.3").slice(0, 1))}
+        <GambarBuku
+          src={modul.penerapan.gambarJalan}
+          alt={modul.penerapan.gambarJalanAlt}
+          keterangan={`${modul.penerapan.banyuKm} km ditempuh dalam ${modul.penerapan.banyuMenit} menit.`}
+        />
+        {kartu(soalBagian("Latihan 2.3").slice(1, 4))}
+        <Laboratorium
+          judul="Jalan Banyu"
+          deskripsi="Geser lama perjalanan. Jarak berubah bersama waktu, dengan kecepatan yang sama."
+          dasarA={lajuBanyu}
+          dasarB={1}
+          kelipatan={jamJalan}
+          min={0.5}
+          maks={9}
+          langkah={0.5}
+          namaPengatur="jam jalan"
+          labelA="Jarak"
+          labelB="Waktu"
+          satuanA="km"
+          satuanB="jam"
+          petunjuk="0,5 jam menampilkan 1 km, sesuai data soal."
+          onUbah={(nilai) => {
+            setJamJalan(jepit(nilai, 0.5, 9, 0.5, 0.5));
+            setSimulasiDicoba(true);
+          }}
+        />
+        <div className="overflow-x-auto">
+          <table className="min-w-full border-collapse text-sm">
+            <thead>
+              <tr>
+                {["No.", "Jam", "Minggu"].map((kolom) => (
+                  <th key={kolom} className="border border-slate-200 bg-slate-50 px-3 py-2 text-left font-black text-[#1C01A5]">{kolom}</th>
+                ))}
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td className="border border-slate-200 px-3 py-2 font-semibold">1</td>
+                <td className="border border-slate-200 px-3 py-2 font-semibold">...</td>
+                <td className="border border-slate-200 px-3 py-2 font-semibold">1</td>
+              </tr>
+              <tr>
+                <td className="border border-slate-200 px-3 py-2 font-semibold">2</td>
+                <td className="border border-slate-200 px-3 py-2 font-semibold">504</td>
+                <td className="border border-slate-200 px-3 py-2 font-semibold">3</td>
+              </tr>
+              <tr>
+                <td className="border border-slate-200 px-3 py-2 font-semibold">3</td>
+                <td className="border border-slate-200 px-3 py-2 font-semibold">840</td>
+                <td className="border border-slate-200 px-3 py-2 font-semibold">...</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        {kartu(soalBagian("Latihan 2.3").slice(4))}
+        <Laboratorium
+          judul="Kalender Mini: Jam dan Minggu"
+          deskripsi={`Geser banyak minggu. Satu minggu sama dengan ${modul.penerapan.hariPerMinggu} × ${modul.penerapan.jamPerHari} jam.`}
+          dasarA={jamPerMinggu}
+          dasarB={1}
+          kelipatan={mingguKalender}
+          min={1}
+          maks={8}
+          namaPengatur="minggu"
+          labelA="Jam"
+          labelB="Minggu"
+          satuanA="jam"
+          satuanB="minggu"
+          petunjuk="Mulai dari 2 minggu. Geser untuk melihat jam pada minggu yang lain."
+          onUbah={(nilai) => {
+            setMingguKalender(jepit(nilai, 1, 8, 2));
+            setSimulasiDicoba(true);
+          }}
+        />
+        <div className="space-y-2 rounded-3xl bg-[#F8F7FF] p-4">
+          <h4 className="text-lg font-black text-[#1C01A5]">Ayo Berefleksi</h4>
+          {modul.refleksiPenerapan.map((kalimat) => (
+            <p key={kalimat} className="text-base font-semibold leading-8 text-slate-800">{kalimat}</p>
+          ))}
+        </div>
+      </section>
+
       {tuntas ? (
         <section className="rounded-3xl bg-emerald-600 px-5 py-4 text-white">
-          <p className="text-lg font-black">Bagian A dan B tuntas.</p>
+          <p className="text-lg font-black">Bagian A, B, dan C tuntas.</p>
           <p className="mt-1 text-sm font-semibold leading-7">
             {jumlahBenar} soal benar{simulasiDicoba ? " dan kebun mini sudah dicoba" : ""}. Status tersimpan di perangkat ini.
           </p>

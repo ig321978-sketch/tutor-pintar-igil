@@ -49,7 +49,7 @@
       "anak": ["Bagian terhadap bagian dan terhadap keseluruhan", "Rasio pada durasi waktu"]
     }
   ],
-  "fokusPeta": ["Konsep Rasio", "Kesamaan Rasio"],
+  "fokusPeta": ["Konsep Rasio", "Kesamaan Rasio", "Penerapan Rasio"],
   "mengingat": {
     "narasi": "Faktor membagi habis suatu bilangan. Kelipatan didapat dengan mengalikan. Faktor memperkecil rasio. Kelipatan memperbesar rasio.",
     "pecahan": "Tuliskan pecahan untuk bagian yang hilang. Roti punya 4 tempat dan 1 kosong. Semangka terbagi 6 dan 1 juring hilang. Cokelat tersusun 8 kotak dan 1 kotak hilang."
@@ -154,6 +154,66 @@
   "refleksiKesamaan": [
     "12 : 28 dibagi 4 menjadi 3 : 7. Rasio yang senilai antara lain 6 : 14, 9 : 21, dan 24 : 56.",
     "Rasio satuan berarti salah satu besaran bernilai 1. Contoh: 1 bibit seharga Rp12.500 ditulis 1 : 12.500."
+  ],
+  "penerapan": {
+    "permasalahan": "Toko Herbal Tani menjual bibit tanaman hias dan bibit tanaman obat. Rasio persediaan tanaman hias terhadap tanaman obat adalah 3 : 2.",
+    "hiasPersediaan": 3,
+    "obatPersediaan": 2,
+    "gambar": "/doodle-mtk/mtk-6-bab2-toko.jpg",
+    "gambarAlt": "Anak di samping meja tanaman hias dan tanaman obat",
+    "eksplorasi": "Eksplorasi 2.5 Angka Penjualan Bibit Tanaman",
+    "narasi": "Pada bulan Juni, tanaman hias dan tanaman obat yang terjual berjumlah 72 bibit. Rasio penjualannya 4 : 5.",
+    "hias": 4,
+    "obat": 5,
+    "totalJuni": 72,
+    "gambarBagian": "/doodle-mtk/mtk-6-bab2-keseluruhan.jpg",
+    "gambarBagianAlt": "Keranjang bunga di samping banyak pot tanaman",
+    "pengertianBagian": "Rasio bagian terhadap bagian membandingkan dua kelompok yang satuannya sama. Contohnya siswa perempuan terhadap siswa laki-laki, atau gula terhadap garam.",
+    "pengertianUtuh": "Rasio bagian terhadap keseluruhan membandingkan satu kelompok dengan jumlah semuanya. Contohnya tanaman hias terhadap seluruh tanaman, atau siswa laki-laki terhadap seluruh siswa.",
+    "kelas": "Amati kelasmu. Tuliskan satu rasio bagian terhadap bagian dan satu rasio bagian terhadap keseluruhan dari teman di kelas itu. Soal ini tidak dinilai.",
+    "durasiEksplorasi": "Eksplorasi 2.6 Tanaman Obat",
+    "durasiNarasi": "Tigor membantu ayah menanam enam jenis bibit obat. Ayah mengelompokkan bibit menurut masa panen, supaya yang cepat panen bisa dipanen bersama dan lahannya ditanami lagi.",
+    "gambarPanen": "/doodle-mtk/mtk-6-bab2-panen.jpg",
+    "gambarPanenAlt": "Tigor berlutut di antara jahe dan tanaman berbunga",
+    "tanaman": [
+      { "nama": "Kumis kucing", "masa": "12 minggu" },
+      { "nama": "Lengkuas", "masa": "1,5 tahun" },
+      { "nama": "Jahe merah", "masa": "3 bulan" },
+      { "nama": "Kencur", "masa": "6 bulan" },
+      { "nama": "Buah merah", "masa": "3 tahun" },
+      { "nama": "Kemangi", "masa": "30 hari" }
+    ],
+    "gambarWaktu": "/doodle-mtk/mtk-6-bab2-lengkuas.jpg",
+    "gambarWaktuAlt": "Tigor memegang lengkuas di samping catatan waktu",
+    "satuanWaktu": [
+      { "satuan": "1 menit", "sama": "60 detik" },
+      { "satuan": "1 jam", "sama": "60 menit" },
+      { "satuan": "1 hari", "sama": "24 jam" },
+      { "satuan": "1 minggu", "sama": "7 hari" },
+      { "satuan": "1 bulan", "sama": "4 minggu" },
+      { "satuan": "1 semester", "sama": "6 bulan" },
+      { "satuan": "1 tahun", "sama": "12 bulan" },
+      { "satuan": "1 tahun", "sama": "365 hari" },
+      { "satuan": "1 lustrum", "sama": "5 tahun" },
+      { "satuan": "1 windu", "sama": "8 tahun" },
+      { "satuan": "1 dasawarsa", "sama": "10 tahun" },
+      { "satuan": "1 abad", "sama": "100 tahun" }
+    ],
+    "ayahMenit": 10,
+    "tigorPecahan": "2/3",
+    "hariPerMinggu": 7,
+    "jamPerHari": 24,
+    "banyuKm": 1,
+    "banyuMenit": 30,
+    "gambarJalan": "/doodle-mtk/mtk-6-bab2-jalan.jpg",
+    "gambarJalanAlt": "Banyu berjalan di jalan desa",
+    "pasarAnak": 9,
+    "pasarDewasa": 4,
+    "pasarTotal": 390
+  },
+  "refleksiPenerapan": [
+    "Bagian terhadap bagian membandingkan dua kelompok. Bagian terhadap keseluruhan membandingkan satu kelompok dengan jumlah semuanya.",
+    "Dua waktu hanya boleh dibanding jika satuannya sudah disamakan."
   ],
   "latihanFormatif": [
     {
@@ -419,6 +479,158 @@
       "opsi": ["Rp12.000", "Rp10.000", "Rp2.400", "Rp15.000"],
       "kunciJawaban": "Rp12.000",
       "pembahasan": "Harga satu pena Rp2.400. Lima pena = 5 × 2.400 = 12.000."
+    },
+    {
+      "id": "hias-keseluruhan",
+      "bagian": "C. Permasalahan",
+      "soal": "Rasio persediaan tanaman hias terhadap tanaman obat adalah 3 : 2. Rasio tanaman hias terhadap jumlah keseluruhan adalah ...",
+      "opsi": ["3 : 5", "3 : 2", "2 : 5", "5 : 3"],
+      "kunciJawaban": "3 : 5",
+      "pembahasan": "3 + 2 = 5 bagian. Tanaman hias terhadap keseluruhan = 3 : 5."
+    },
+    {
+      "id": "penjualan-banyak",
+      "bagian": "1. Bagian dan Keseluruhan",
+      "soal": "Rasio penjualan tanaman hias terhadap tanaman obat adalah 4 : 5. Jenis yang lebih banyak terjual adalah ...",
+      "opsi": ["Tanaman obat", "Tanaman hias", "Sama banyak", "Belum bisa ditentukan"],
+      "kunciJawaban": "Tanaman obat",
+      "pembahasan": "5 lebih besar dari 4, jadi tanaman obat lebih banyak terjual."
+    },
+    {
+      "id": "hias-seluruh",
+      "bagian": "1. Bagian dan Keseluruhan",
+      "soal": "Rasio tanaman hias yang terjual terhadap seluruh tanaman adalah ...",
+      "opsi": ["4 : 9", "4 : 5", "5 : 9", "4 : 72"],
+      "kunciJawaban": "4 : 9",
+      "pembahasan": "4 + 5 = 9 bagian. Hias terhadap seluruh tanaman = 4 : 9."
+    },
+    {
+      "id": "obat-seluruh",
+      "bagian": "1. Bagian dan Keseluruhan",
+      "soal": "Rasio tanaman obat yang terjual terhadap seluruh tanaman adalah ...",
+      "opsi": ["5 : 9", "4 : 9", "5 : 4", "5 : 72"],
+      "kunciJawaban": "5 : 9",
+      "pembahasan": "Obat menempati 5 bagian dari 9 bagian. Rasio obat terhadap seluruh tanaman = 5 : 9."
+    },
+    {
+      "id": "hias-juni",
+      "bagian": "1. Bagian dan Keseluruhan",
+      "soal": "Dari 72 bibit yang terjual, jumlah tanaman hias adalah ...",
+      "opsi": ["32 bibit", "40 bibit", "36 bibit", "45 bibit"],
+      "kunciJawaban": "32 bibit",
+      "pembahasan": "72 : 9 = 8. Tanaman hias = 4 × 8 = 32 bibit."
+    },
+    {
+      "id": "obat-juni",
+      "bagian": "1. Bagian dan Keseluruhan",
+      "soal": "Dari 72 bibit yang terjual, jumlah tanaman obat adalah ...",
+      "opsi": ["40 bibit", "32 bibit", "45 bibit", "27 bibit"],
+      "kunciJawaban": "40 bibit",
+      "pembahasan": "Tanaman obat = 5 × 8 = 40 bibit. 32 + 40 = 72."
+    },
+    {
+      "id": "panen-cepat",
+      "bagian": "2. Durasi Waktu",
+      "soal": "Tanaman dengan masa panen paling cepat dan paling lama adalah ...",
+      "opsi": ["Kemangi dan buah merah", "Jahe merah dan lengkuas", "Kumis kucing dan kencur", "Kemangi dan lengkuas"],
+      "kunciJawaban": "Kemangi dan buah merah",
+      "pembahasan": "Kemangi dipanen dalam 30 hari, paling singkat. Buah merah dipanen dalam 3 tahun, paling lama."
+    },
+    {
+      "id": "jahe-lengkuas",
+      "bagian": "2. Durasi Waktu",
+      "soal": "Rasio masa panen jahe merah terhadap lengkuas, dalam bulan, adalah ...",
+      "opsi": ["1 : 6", "3 : 1,5", "1 : 3", "6 : 1"],
+      "kunciJawaban": "1 : 6",
+      "pembahasan": "1,5 tahun = 1,5 × 12 = 18 bulan. Jahe merah 3 bulan. 3 : 18 = 1 : 6."
+    },
+    {
+      "id": "kencur-lengkuas",
+      "bagian": "2. Durasi Waktu",
+      "soal": "Rasio masa panen kencur terhadap lengkuas, dalam tahun, adalah ...",
+      "opsi": ["1 : 3", "6 : 1,5", "1 : 6", "2 : 3"],
+      "kunciJawaban": "1 : 3",
+      "pembahasan": "6 bulan = 0,5 tahun. Lengkuas 1,5 tahun. 0,5 : 1,5 = 1 : 3."
+    },
+    {
+      "id": "jahe-kumis",
+      "bagian": "2. Durasi Waktu",
+      "soal": "Rasio masa panen jahe merah terhadap kumis kucing, dalam minggu, adalah ...",
+      "opsi": ["1 : 1", "3 : 12", "12 : 3", "1 : 4"],
+      "kunciJawaban": "1 : 1",
+      "pembahasan": "Di bab ini 1 bulan = 4 minggu, jadi 3 bulan = 12 minggu. Kumis kucing juga 12 minggu. 12 : 12 = 1 : 1."
+    },
+    {
+      "id": "buah-merah",
+      "bagian": "2. Durasi Waktu",
+      "soal": "Dalam satu masa panen buah merah, kencur dan lengkuas dapat dipanen ...",
+      "opsi": ["6 kali dan 2 kali", "2 kali dan 6 kali", "3 kali dan 1 kali", "12 kali dan 4 kali"],
+      "kunciJawaban": "6 kali dan 2 kali",
+      "pembahasan": "Buah merah 3 tahun = 36 bulan. Kencur 36 : 6 = 6 kali. Lengkuas 36 : 18 = 2 kali."
+    },
+    {
+      "id": "ayah-tigor",
+      "bagian": "2. Durasi Waktu",
+      "soal": "Ayah menanam bibit dalam 10 menit. Tigor perlu 2/3 jam. Rasio waktu Ayah terhadap Tigor, dalam menit, adalah ...",
+      "opsi": ["1 : 4", "10 : 60", "2 : 3", "4 : 1"],
+      "kunciJawaban": "1 : 4",
+      "pembahasan": "2/3 × 60 = 40 menit. Rasio waktunya 10 : 40 = 1 : 4."
+    },
+    {
+      "id": "ayah-cepat",
+      "bagian": "2. Durasi Waktu",
+      "soal": "Ayah menanam bibit lebih cepat daripada Tigor sebanyak ...",
+      "opsi": ["4 kali", "2 kali", "6 kali", "40 kali"],
+      "kunciJawaban": "4 kali",
+      "pembahasan": "40 : 10 = 4. Waktu Ayah adalah seperempat waktu Tigor, jadi 4 kali lebih cepat."
+    },
+    {
+      "id": "pasar-anak",
+      "bagian": "Latihan 2.3",
+      "soal": "Pengunjung pasar malam 390 orang. Untuk 9 anak-anak terdapat 4 orang dewasa. Jumlah anak-anak adalah ...",
+      "opsi": ["270 orang", "120 orang", "390 orang", "180 orang"],
+      "kunciJawaban": "270 orang",
+      "pembahasan": "9 + 4 = 13 bagian. 390 : 13 = 30. Anak-anak = 9 × 30 = 270. Dewasa = 4 × 30 = 120."
+    },
+    {
+      "id": "banyu-satu",
+      "bagian": "Latihan 2.3",
+      "soal": "Banyu menempuh 1 km dalam 30 menit. Jarak yang ditempuh dalam 1 jam adalah ...",
+      "opsi": ["2 km", "1 km", "30 km", "4 km"],
+      "kunciJawaban": "2 km",
+      "pembahasan": "1 jam = 2 × 30 menit. Jarak = 2 × 1 km = 2 km."
+    },
+    {
+      "id": "banyu-sembilan",
+      "bagian": "Latihan 2.3",
+      "soal": "Dengan kecepatan yang sama, waktu yang diperlukan Banyu untuk 9 km adalah ...",
+      "opsi": ["4,5 jam", "9 jam", "3 jam", "270 jam"],
+      "kunciJawaban": "4,5 jam",
+      "pembahasan": "Kecepatan Banyu 2 km tiap jam. 9 : 2 = 4,5 jam."
+    },
+    {
+      "id": "banyu-tiga",
+      "bagian": "Latihan 2.3",
+      "soal": "Jika Banyu berjalan selama 3,5 jam, jarak yang ditempuh adalah ...",
+      "opsi": ["7 km", "3,5 km", "6 km", "10,5 km"],
+      "kunciJawaban": "7 km",
+      "pembahasan": "3,5 × 2 = 7. Jawabannya 7 km."
+    },
+    {
+      "id": "minggu-satu",
+      "bagian": "Latihan 2.3",
+      "soal": "1 minggu sama dengan ...",
+      "opsi": ["168 jam", "24 jam", "84 jam", "365 jam"],
+      "kunciJawaban": "168 jam",
+      "pembahasan": "7 × 24 = 168. Satu minggu sama dengan 168 jam."
+    },
+    {
+      "id": "jam-delapan",
+      "bagian": "Latihan 2.3",
+      "soal": "840 jam sama dengan ...",
+      "opsi": ["5 minggu", "3 minggu", "4 minggu", "840 minggu"],
+      "kunciJawaban": "5 minggu",
+      "pembahasan": "840 : 168 = 5. Karena 168 × 5 = 840, maka 840 jam = 5 minggu."
     }
   ]
 }
