@@ -349,6 +349,12 @@ const SUBBAB_BUKU_SISWA: Record<string, Record<string, Record<string, string[]>>
         "Rasio bagian terhadap bagian dan terhadap keseluruhan",
         "Rasio pada durasi waktu",
       ],
+      "Bab 3: Kubus dan Balok": [
+        "Mengonstruksi dan mengurai",
+        "Visualisasi spasial",
+        "Lokasi pada sistem berpetak",
+        "Jalur dan jarak",
+      ],
     },
   },
 };
