@@ -65,8 +65,6 @@ D) 4,5`,
         { nama: "Latihan 1.1", singkat: "Pita, pastel, siswa", uraian: "4 × 3/4 = 3 m. 2/15 × 75 = 10, sisa 65. 1/6 × 180 = 30. 2/3 × 30 = 20. 20/180 = 1/9.", contoh: "1/4 × 20 dan 20 × 1/4 sama-sama 5." },
       ],
       kuis: [
-        { pertanyaan: "1/5 kali 2/3.", alias: ["2/15"] },
-        { pertanyaan: "2/3 dibagi 2.", alias: ["1/3"] },
         { pertanyaan: "5 kali 2.", alias: ["10"] },
         { pertanyaan: "2 kali 3/5.", alias: ["6/5"] },
         { pertanyaan: "5 kali 3/5.", alias: ["3"] },
