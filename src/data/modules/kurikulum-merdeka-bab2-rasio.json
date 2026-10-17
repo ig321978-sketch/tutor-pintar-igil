@@ -1,0 +1,71 @@
+{
+  "id": "mat-6-bab2",
+  "jenjang": "SD",
+  "kelas": 6,
+  "fase": "C",
+  "mataPelajaran": "Matematika",
+  "bab": 2,
+  "judul": "Rasio dan Proporsi Sederhana",
+  "capaianPembelajaran": "Peserta didik dapat memahami konsep rasio dan menggunakannya dalam konteks aritmetika sosial sederhana sehari-hari.",
+  "tujuanPembelajaran": [
+    "Menjelaskan pengertian perbandingan/rasio dua besaran sejenis",
+    "Menentukan rasio satuan (unit rate) dalam kehidupan nyata",
+    "Menyelesaikan masalah kontekstual yang melibatkan rasio ekuivalen"
+  ],
+  "pertanyaanPemantik": "Ibu ingin membuat 2 gelas es sirup manis menggunakan 4 sendok sirup. Jika ingin membuat 6 gelas untuk tamu, berapa sendok sirup yang harus dituang?",
+  "eksplorasiMateri": [
+    {
+      "subJudul": "A. Mengenal Arti Rasio",
+      "tahap": "Konkret",
+      "narasi": "Rasio adalah cara membandingkan dua jumlah benda. Kita menuliskannya dengan tanda titik dua (:). Misalnya 2 sendok sirup untuk 1 gelas air ditulis 2 : 1.",
+      "contohKonkret": {
+        "objekA": "Sirup (sendok)",
+        "nilaiA": 2,
+        "objekB": "Air (gelas)",
+        "nilaiB": 1,
+        "rasioBaku": "2 : 1"
+      }
+    },
+    {
+      "subJudul": "B. Rasio Ekuivalen (Senilai)",
+      "tahap": "Semikonkret",
+      "narasi": "Jika jumlah air dilipatgandakan menjadi 3 kali lipat, maka jumlah sirup juga harus dikalikan 3 agar rasa manisnya tetap sama persis!",
+      "langkahHitung": "2 : 1 = (2 × 3) : (1 × 3) = 6 : 3"
+    },
+    {
+      "subJudul": "C. Rasio Satuan",
+      "tahap": "Abstrak",
+      "narasi": "Rasio satuan menanyakan banyak benda untuk tepat 1 satuan lain. Pada resep ini, 1 gelas air selalu memakai 2 sendok sirup. Bentuk umumnya: a : b = (a × k) : (b × k). Bilangan k boleh diganti, asalkan kedua ruas dikali bilangan yang sama.",
+      "langkahHitung": "Banyak sendok = banyak gelas × 2. Satu gelas tetap 2 sendok, berapa pun gelasnya."
+    }
+  ],
+  "simulasiLokal": {
+    "judul": "Laboratorium Mini: Resep Sirup Pas",
+    "deskripsi": "Geser pengatur gelas air dan perhatikan berapa sendok sirup yang otomatis dibutuhkan!",
+    "baseRatioA": 2,
+    "baseRatioB": 1
+  },
+  "latihanFormatif": [
+    {
+      "id": "soal-1",
+      "soal": "Di atas meja ada 3 buku gambar dan 6 buku tulis. Berapakah bentuk rasio paling sederhana antara buku gambar dan buku tulis?",
+      "opsi": ["1 : 2", "1 : 3", "2 : 1", "3 : 6"],
+      "kunciJawaban": "1 : 2",
+      "pembahasan": "Rasio awal 3 : 6. Kedua angka sama-sama dibagi 3 sehingga menjadi 1 : 2."
+    },
+    {
+      "id": "soal-2",
+      "soal": "Untuk membuat 1 loyang kue dibutuhkan 4 butir telur. Berapa butir telur yang dibutuhkan untuk membuat 3 loyang kue?",
+      "opsi": ["8 butir", "10 butir", "12 butir", "16 butir"],
+      "kunciJawaban": "12 butir",
+      "pembahasan": "Rasio kue dan telur adalah 1 : 4. Jika kuenya 3 loyang, maka telur = 3 × 4 = 12 butir."
+    },
+    {
+      "id": "soal-3",
+      "soal": "Rasio siswa laki-laki dan perempuan di kelas 6 adalah 2 : 3. Jika jumlah siswa laki-laki ada 10 anak, berapa jumlah siswa perempuan?",
+      "opsi": ["12 anak", "15 anak", "18 anak", "20 anak"],
+      "kunciJawaban": "15 anak",
+      "pembahasan": "Laki-laki = 2 bagian = 10 anak (artinya 1 bagian = 5). Perempuan = 3 bagian = 3 × 5 = 15 anak."
+    }
+  ]
+}
