@@ -535,6 +535,28 @@ function KotakJawaban({ id, soal = "", periksa, umpan, jawaban }: { id: string; 
   );
 }
 
+function LembaranEvaluasi() {
+  const kuis = useKuisMateri();
+  const skor = Array.from({ length: 10 }, (_, indeks) => kuis?.sudahBenar(idKuis("F", indeks))).filter(Boolean).length;
+  return (
+    <section className="space-y-3">
+      <JudulBagian anak="Lembaran Evaluasi" />
+      <p className="text-sm font-semibold leading-8 text-slate-800">Sepuluh soal. Modelnya berganti: deret, angka hilang, analogi, mana yang beda, dan perbandingan.</p>
+      <p className="text-sm font-black text-[#1C01A5]">Benar {skor} dari 10.</p>
+      <SoalLatihan anak="1. Deret. 1/2 , 1/4 , 1/8 , ... Bilangan berikutnya?" id={idKuis("F", 0)} periksa={(teks) => pecahan(teks, "1/16")} jawaban="Penyebut berganti 2, 4, 8, lalu 16. Pembilang tetap 1. Jawabannya 1/16." />
+      <SoalLatihan anak="2. Deret. 0,2 ; 0,4 ; 0,6 ; ... Bilangan berikutnya?" id={idKuis("F", 1)} periksa={(teks) => desimalUtuh(teks, "0.8") || desimalUtuh(teks, "0.80")} jawaban="Tiap langkah bertambah 0,2. 0,6 + 0,2 = 0,8. Jawabannya 0,8." />
+      <SoalLatihan anak="3. Angka hilang. 2/3 × ☐ = 10. Tuliskan angka di kotak kosong." id={idKuis("F", 2)} periksa={(teks) => hasilUtuh(teks, "15")} jawaban="2/3 × 15 = (2 × 15)/3 = 30/3 = 10. Angka yang hilang 15." />
+      <SoalLatihan anak="4. Angka hilang. ☐ : 1/4 = 12. Tuliskan bilangan di kotak kosong." id={idKuis("F", 3)} periksa={(teks) => hasilUtuh(teks, "3")} jawaban="3 : 1/4 = 3 × 4 = 12. Bilangan yang hilang 3." />
+      <SoalLatihan anak="5. Analogi. 1/2 sama dengan 0,5. Maka 1/5 sama dengan ..." id={idKuis("F", 4)} periksa={(teks) => desimalUtuh(teks, "0.2") || desimalUtuh(teks, "0.20")} jawaban="1/5 = (1 × 2)/(5 × 2) = 2/10 = 0,2. Jawabannya 0,2." />
+      <SoalLatihan anak="6. Analogi. 1/2 : 3 = 1/6. Maka 1/4 : 2 = ..." id={idKuis("F", 5)} periksa={(teks) => pecahan(teks, "1/8")} jawaban="1/4 : 2 = 1/4 × 1/2 = 1/8. Jawabannya 1/8." />
+      <SoalLatihan anak="7. Mana yang beda? 0,50 ; 1/2 ; 5/10 ; 0,05." id={idKuis("F", 6)} periksa={(teks) => desimalUtuh(teks, "0.05")} jawaban="0,50, 1/2, dan 5/10 sama-sama setengah. 0,05 adalah 5 perseratusan. Jawabannya 0,05." />
+      <SoalLatihan anak="8. Mana yang beda? 4/6 ; 8/12 ; 6/9 ; 6/10." id={idKuis("F", 7)} periksa={(teks) => pecahan(teks, "6/10") || pecahan(teks, "3/5")} jawaban="4/6, 8/12, dan 6/9 sama dengan 2/3. 6/10 sama dengan 3/5. Jawabannya 6/10." />
+      <SoalLatihan anak="9. Deret. 3 : 1/2 = 6. 3 : 1/4 = 12. 3 : 1/5 = ..." id={idKuis("F", 8)} periksa={(teks) => hasilUtuh(teks, "15")} jawaban="3 : 1/5 = 3 × 5 = 15. Jawabannya 15." />
+      <SoalLatihan anak="10. Mana yang paling besar? 2/3 ; 0,6 ; 3/4 ; 0,7." id={idKuis("F", 9)} periksa={(teks) => pecahan(teks, "3/4") || desimalUtuh(teks, "0.75")} jawaban="2/3 = 0,666… 0,6 = 0,6. 3/4 = 0,75. 0,7 = 0,7. Yang paling besar 3/4." />
+    </section>
+  );
+}
+
 export default function NaskahMtk6Bab1(_props: { kelas?: string; kelamin?: string }) {
   return (
     <article className="space-y-8">
@@ -965,6 +987,8 @@ export default function NaskahMtk6Bab1(_props: { kelas?: string; kelamin?: strin
         <SoalLatihan anak="2. Tuliskan desimal 1/6 yang angkanya berulang." id={idKuis("E", 7)} periksa={(teks) => rapat(teks).includes("166")} jawaban="1 : 6 = 0,1666… Angka 6 berulang. Jawabannya 0,1666…" />
         <SoalLatihan anak="3. Dari 1/2 dan 1/3, mana yang desimalnya berulang?" id={idKuis("E", 8)} periksa={sepertiga} jawaban="1/2 = 0,5 dan berhenti. 1/3 = 0,333… dan berulang. Jawabannya 1/3." />
       </section>
+
+      <LembaranEvaluasi />
     </article>
   );
 }
