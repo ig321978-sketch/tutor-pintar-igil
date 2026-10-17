@@ -125,19 +125,13 @@ function BarisLangkah({ anak, gambar }: { anak: string; gambar?: ReactNode }) {
   );
 }
 
-function JudulCara({ anak }: { anak: string }) {
-  return <h3 className="mt-4 border-t-4 border-[#1C01A5] pt-3 text-base font-black uppercase tracking-wide text-[#1C01A5]">{anak}</h3>;
-}
-
-function KartuRumus({ rumus, hitung }: { rumus: string[]; hitung: string[] }) {
+function KartuMetode({ judul, warna, children }: { judul: string; warna: "panah" | "rumus"; children: ReactNode }) {
+  const kelas = warna === "rumus" ? "border-[#1C01A5] bg-[#EEF2FF]" : "border-red-600 bg-white";
+  const judulKelas = warna === "rumus" ? "text-[#1C01A5]" : "text-red-700";
   return (
-    <div className="space-y-1 rounded-xl border-2 border-[#1C01A5] bg-[#EEF2FF] px-4 py-3">
-      {rumus.map((anak) => (
-        <p key={anak} className="text-base font-black leading-8 text-[#1C01A5]"><Teks anak={anak} /></p>
-      ))}
-      {hitung.map((anak) => (
-        <p key={anak} className="text-sm font-semibold leading-8 text-slate-800"><Teks anak={anak} /></p>
-      ))}
+    <div className={`space-y-2 rounded-xl border-2 px-4 py-3 ${kelas}`}>
+      <h3 className={`text-base font-black uppercase tracking-wide ${judulKelas}`}>{judul}</h3>
+      {children}
     </div>
   );
 }
@@ -174,25 +168,32 @@ function HitungPanah({
   hitung: string[];
 }) {
   return (
-    <>
-      <JudulCara anak="Metode Kotak Merah Panah Hijau" />
-      <p><Teks anak={kalimat} /></p>
-      <GambarPasangan
-        kiriAtas={kiriAtas}
-        kiriBawah={kiriBawah}
-        kananAtas={kananAtas}
-        kananBawah={kananBawah}
-        operasi={operasi}
-        arah={arah}
-        hasilAtas={hasilAtas}
-        hasilBawah={hasilBawah}
-        akhirAtas={akhirAtas}
-        akhirBawah={akhirBawah}
-        catatan={catatan}
-      />
-      <JudulCara anak="Metode Rumus" />
-      <KartuRumus rumus={rumus} hitung={hitung} />
-    </>
+    <div className="space-y-3">
+      <KartuMetode judul="Metode Kotak Merah Panah Hijau" warna="panah">
+        <p><Teks anak={kalimat} /></p>
+        <GambarPasangan
+          kiriAtas={kiriAtas}
+          kiriBawah={kiriBawah}
+          kananAtas={kananAtas}
+          kananBawah={kananBawah}
+          operasi={operasi}
+          arah={arah}
+          hasilAtas={hasilAtas}
+          hasilBawah={hasilBawah}
+          akhirAtas={akhirAtas}
+          akhirBawah={akhirBawah}
+          catatan={catatan}
+        />
+      </KartuMetode>
+      <KartuMetode judul="Metode Rumus" warna="rumus">
+        {rumus.map((anak) => (
+          <p key={anak} className="text-base font-black leading-8 text-[#1C01A5]"><Teks anak={anak} /></p>
+        ))}
+        {hitung.map((anak) => (
+          <p key={anak} className="text-sm font-semibold leading-8 text-slate-800"><Teks anak={anak} /></p>
+        ))}
+      </KartuMetode>
+    </div>
   );
 }
 
