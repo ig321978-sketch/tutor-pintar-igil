@@ -25,27 +25,84 @@
     "Apakah bangun ruang terlihat sama dari semua arah?",
     "Mengapa peta memakai petak?"
   ],
-  "kataKunci": ["Kubus", "balok", "tampak atas", "tampak depan", "tampak samping", "sistem berpetak", "lokasi"],
-  "petaKonsep": [
-    { "judul": "Mengonstruksi dan Mengurai", "anak": ["Gabungan kubus", "Gabungan balok"] },
-    { "judul": "Visualisasi Spasial", "anak": ["Tampak dari beberapa arah"] },
-    { "judul": "Lokasi", "anak": ["Sistem berpetak", "Jarak mendatar dan tegak"] }
+  "kataKunci": [
+    "Kubus",
+    "balok",
+    "tampak atas",
+    "tampak depan",
+    "tampak samping",
+    "sistem berpetak",
+    "lokasi"
   ],
-  "fokusPeta": ["Mengonstruksi dan Mengurai", "Visualisasi Spasial", "Lokasi"],
+  "petaKonsep": [
+    {
+      "judul": "Mengonstruksi dan Mengurai",
+      "anak": [
+        "Gabungan kubus",
+        "Gabungan balok"
+      ]
+    },
+    {
+      "judul": "Visualisasi Spasial",
+      "anak": [
+        "Tampak dari beberapa arah"
+      ]
+    },
+    {
+      "judul": "Lokasi",
+      "anak": [
+        "Sistem berpetak",
+        "Jarak mendatar dan tegak"
+      ]
+    }
+  ],
+  "fokusPeta": [
+    "Mengonstruksi dan Mengurai",
+    "Visualisasi Spasial",
+    "Lokasi"
+  ],
   "bangun": [
-    { "nomor": 1, "nama": "Tabung" },
-    { "nomor": 2, "nama": "Kerucut" },
-    { "nomor": 3, "nama": "Kubus" },
-    { "nomor": 4, "nama": "Balok" },
-    { "nomor": 5, "nama": "Prisma segitiga" },
-    { "nomor": 6, "nama": "Bola" },
-    { "nomor": 7, "nama": "Limas segitiga" },
-    { "nomor": 8, "nama": "Prisma segi lima" }
+    {
+      "nomor": 1,
+      "nama": "Tabung"
+    },
+    {
+      "nomor": 2,
+      "nama": "Kerucut"
+    },
+    {
+      "nomor": 3,
+      "nama": "Kubus"
+    },
+    {
+      "nomor": 4,
+      "nama": "Balok"
+    },
+    {
+      "nomor": 5,
+      "nama": "Prisma segitiga"
+    },
+    {
+      "nomor": 6,
+      "nama": "Bola"
+    },
+    {
+      "nomor": 7,
+      "nama": "Limas segitiga"
+    },
+    {
+      "nomor": 8,
+      "nama": "Prisma segi lima"
+    }
   ],
   "kontainer": "Di Batu, Malang, ada perpustakaan yang disusun dari kontainer bekas. Di Trawas, Mojokerto, ada hotel yang juga disusun dari kontainer. Kontainer bekas dipakai lagi agar tidak menjadi limbah, dan bangunannya lebih cepat selesai.",
   "gudang": {
     "kardus": 30,
-    "rusuk": [20, 30, 50],
+    "rusuk": [
+      20,
+      30,
+      50
+    ],
     "lantaiCm": 300,
     "tinggiCm": 310
   },
@@ -54,15 +111,66 @@
     "Bangun yang sudah tersusun dapat diurai kembali menjadi kubus atau balok yang lebih kecil."
   ],
   "anike": [
-    { "x": 0, "y": 0, "z": 0, "nama": "biru", "warna": "#60A5FA" },
-    { "x": 1, "y": 0, "z": 0, "nama": "merah", "warna": "#F87171" },
-    { "x": 1, "y": 0, "z": 1, "nama": "hijau", "warna": "#4ADE80" },
-    { "x": 2, "y": 0, "z": 0, "nama": "kuning", "warna": "#FACC15" }
+    {
+      "x": 0,
+      "y": 0,
+      "z": 0,
+      "nama": "biru",
+      "warna": "#60A5FA"
+    },
+    {
+      "x": 1,
+      "y": 0,
+      "z": 0,
+      "nama": "merah",
+      "warna": "#F87171"
+    },
+    {
+      "x": 1,
+      "y": 0,
+      "z": 1,
+      "nama": "hijau",
+      "warna": "#4ADE80"
+    },
+    {
+      "x": 2,
+      "y": 0,
+      "z": 0,
+      "nama": "kuning",
+      "warna": "#FACC15"
+    }
   ],
   "soalLima": {
-    "depan": [["biru", ""], ["kuning", "merah"]],
-    "kanan": [["biru", ""], ["merah", "hijau"]],
-    "atas": [["hijau", ""], ["biru", "merah"]]
+    "depan": [
+      [
+        "biru",
+        ""
+      ],
+      [
+        "kuning",
+        "merah"
+      ]
+    ],
+    "kanan": [
+      [
+        "biru",
+        ""
+      ],
+      [
+        "merah",
+        "hijau"
+      ]
+    ],
+    "atas": [
+      [
+        "hijau",
+        ""
+      ],
+      [
+        "biru",
+        "merah"
+      ]
+    ]
   },
   "refleksiSpasial": [
     "Bangun yang sama dapat terlihat berbeda dari depan, kanan, dan atas.",
@@ -74,356 +182,551 @@
   ],
   "latihanFormatif": [
     {
-      "id": "bangun-3",
+      "id": "ingat-1",
       "bagian": "Ayo Mengingat Kembali",
-      "soal": "Bangun nomor 3 adalah ...",
-      "opsi": ["Kubus", "Balok", "Tabung", "Bola"],
-      "kunciJawaban": "Kubus",
-      "pembahasan": "Nomor 3 memiliki 6 sisi persegi yang sama. Namanya kubus."
+      "soal": "Ayo Mengingat Kembali (a). Sebutkan nama bangun ruang nomor 1.",
+      "jenis": "isian",
+      "opsi": [],
+      "kunciJawaban": "Tabung",
+      "alias": [
+        "tabung"
+      ],
+      "pembahasan": "Bangun nomor 1 pada gambar mengingat kembali adalah tabung."
     },
     {
-      "id": "bangun-6",
+      "id": "ingat-2",
       "bagian": "Ayo Mengingat Kembali",
-      "soal": "Bangun nomor 6 adalah ...",
-      "opsi": ["Bola", "Kerucut", "Tabung", "Limas segitiga"],
+      "soal": "Ayo Mengingat Kembali (a). Sebutkan nama bangun ruang nomor 2.",
+      "jenis": "isian",
+      "opsi": [],
+      "kunciJawaban": "Kerucut",
+      "alias": [
+        "kerucut"
+      ],
+      "pembahasan": "Bangun nomor 2 pada gambar mengingat kembali adalah kerucut."
+    },
+    {
+      "id": "ingat-3",
+      "bagian": "Ayo Mengingat Kembali",
+      "soal": "Ayo Mengingat Kembali (a). Sebutkan nama bangun ruang nomor 3.",
+      "jenis": "isian",
+      "opsi": [],
+      "kunciJawaban": "Kubus",
+      "alias": [
+        "kubus"
+      ],
+      "pembahasan": "Bangun nomor 3 pada gambar mengingat kembali adalah kubus."
+    },
+    {
+      "id": "ingat-4",
+      "bagian": "Ayo Mengingat Kembali",
+      "soal": "Ayo Mengingat Kembali (a). Sebutkan nama bangun ruang nomor 4.",
+      "jenis": "isian",
+      "opsi": [],
+      "kunciJawaban": "Balok",
+      "alias": [
+        "balok"
+      ],
+      "pembahasan": "Bangun nomor 4 pada gambar mengingat kembali adalah balok."
+    },
+    {
+      "id": "ingat-5",
+      "bagian": "Ayo Mengingat Kembali",
+      "soal": "Ayo Mengingat Kembali (a). Sebutkan nama bangun ruang nomor 5.",
+      "jenis": "isian",
+      "opsi": [],
+      "kunciJawaban": "Prisma segitiga",
+      "alias": [
+        "prisma segitiga",
+        "prisma"
+      ],
+      "pembahasan": "Bangun nomor 5 pada gambar mengingat kembali adalah prisma segitiga."
+    },
+    {
+      "id": "ingat-6",
+      "bagian": "Ayo Mengingat Kembali",
+      "soal": "Ayo Mengingat Kembali (a). Sebutkan nama bangun ruang nomor 6.",
+      "jenis": "isian",
+      "opsi": [],
       "kunciJawaban": "Bola",
-      "pembahasan": "Nomor 6 bulat di semua sisi. Namanya bola."
+      "alias": [
+        "bola"
+      ],
+      "pembahasan": "Bangun nomor 6 pada gambar mengingat kembali adalah bola."
     },
     {
-      "id": "gelinding",
+      "id": "ingat-7",
       "bagian": "Ayo Mengingat Kembali",
-      "soal": "Bangun yang dapat digelindingkan adalah ...",
-      "opsi": ["Tabung, kerucut, dan bola", "Kubus, balok, dan prisma", "Hanya bola", "Limas dan kubus"],
-      "kunciJawaban": "Tabung, kerucut, dan bola",
-      "pembahasan": "Nomor 1, 2, dan 6 punya sisi lengkung, jadi dapat digelindingkan."
+      "soal": "Ayo Mengingat Kembali (a). Sebutkan nama bangun ruang nomor 7.",
+      "jenis": "isian",
+      "opsi": [],
+      "kunciJawaban": "Limas segitiga",
+      "alias": [
+        "limas segitiga",
+        "limas"
+      ],
+      "pembahasan": "Bangun nomor 7 pada gambar mengingat kembali adalah limas segitiga."
     },
     {
-      "id": "tumpuk",
+      "id": "ingat-8",
       "bagian": "Ayo Mengingat Kembali",
-      "soal": "Bangun yang mudah ditumpuk karena sisinya datar adalah ...",
-      "opsi": ["Kubus, balok, prisma, dan limas", "Hanya bola", "Kerucut dan bola", "Tabung saja"],
-      "kunciJawaban": "Kubus, balok, prisma, dan limas",
-      "pembahasan": "Nomor 3, 4, 5, 7, dan 8 punya sisi datar. Tabung juga bisa ditumpuk pada alasnya."
+      "soal": "Ayo Mengingat Kembali (a). Sebutkan nama bangun ruang nomor 8.",
+      "jenis": "isian",
+      "opsi": [],
+      "kunciJawaban": "Prisma segi lima",
+      "alias": [
+        "prisma segi lima",
+        "prisma segi 5"
+      ],
+      "pembahasan": "Bangun nomor 8 pada gambar mengingat kembali adalah prisma segi lima."
     },
     {
-      "id": "sisi-prisma",
+      "id": "ingat-gelinding",
       "bagian": "Ayo Mengingat Kembali",
-      "soal": "Banyak sisi pada prisma segitiga adalah ...",
-      "opsi": ["5", "4", "6", "8"],
-      "kunciJawaban": "5",
-      "pembahasan": "Prisma segitiga punya 2 sisi segitiga dan 3 sisi persegi panjang. Jumlahnya 5."
+      "soal": "Ayo Mengingat Kembali (b). Bangun ruang mana saja yang dapat digelindingkan?",
+      "jenis": "isian",
+      "opsi": [],
+      "kunciJawaban": "tabung, kerucut, dan bola",
+      "alias": [
+        "bola, tabung, dan kerucut",
+        "tabung kerucut bola",
+        "bola tabung kerucut"
+      ],
+      "pembahasan": "Yang dapat digelindingkan adalah tabung, kerucut, dan bola."
     },
     {
-      "id": "sudut-limas",
+      "id": "ingat-tumpuk",
       "bagian": "Ayo Mengingat Kembali",
-      "soal": "Limas segi empat memiliki titik sudut sebanyak ...",
-      "opsi": ["5", "4", "6", "8"],
-      "kunciJawaban": "5",
-      "pembahasan": "Alas segi empat punya 4 titik sudut, ditambah 1 titik puncak. Jumlahnya 5."
+      "soal": "Ayo Mengingat Kembali (c). Bangun ruang mana saja yang dapat ditumpuk?",
+      "jenis": "isian",
+      "opsi": [],
+      "kunciJawaban": "kubus, balok, prisma, dan limas",
+      "alias": [
+        "kubus balok prisma limas",
+        "kubus, balok, prisma segitiga, limas segitiga, dan prisma segi lima"
+      ],
+      "pembahasan": "Yang mudah ditumpuk karena ada sisi datar adalah kubus, balok, prisma, dan limas. Tabung juga dapat ditumpuk pada alasnya."
     },
     {
-      "id": "rusuk-balok",
+      "id": "ingat-sisi",
       "bagian": "Ayo Mengingat Kembali",
-      "soal": "Banyak rusuk pada balok adalah ...",
-      "opsi": ["12", "6", "8", "4"],
-      "kunciJawaban": "12",
-      "pembahasan": "Balok punya 4 rusuk di alas, 4 di tutup, dan 4 yang tegak. Jumlahnya 12."
+      "soal": "Ayo Mengingat Kembali (d). Ada berapa sisi pada prisma segitiga?",
+      "opsi": [
+        "5 sisi",
+        "4 sisi",
+        "6 sisi",
+        "3 sisi"
+      ],
+      "kunciJawaban": "5 sisi",
+      "pembahasan": "Prisma segitiga punya 2 alas segitiga dan 3 sisi tegak. Jumlahnya 5."
     },
     {
-      "id": "sisi-sama",
+      "id": "ingat-sudut",
       "bagian": "Ayo Mengingat Kembali",
-      "soal": "Bangun ruang yang semua sisinya sama adalah ...",
-      "opsi": ["Kubus", "Balok", "Prisma segitiga", "Limas segitiga"],
+      "soal": "Ayo Mengingat Kembali (e). Limas segi empat memiliki berapa titik sudut?",
+      "opsi": [
+        "5 titik sudut",
+        "4 titik sudut",
+        "6 titik sudut",
+        "8 titik sudut"
+      ],
+      "kunciJawaban": "5 titik sudut",
+      "pembahasan": "Ada 4 titik pada alas dan 1 titik puncak. Jumlahnya 5."
+    },
+    {
+      "id": "ingat-rusuk",
+      "bagian": "Ayo Mengingat Kembali",
+      "soal": "Ayo Mengingat Kembali (f). Ada berapa rusuk pada balok?",
+      "opsi": [
+        "12 rusuk",
+        "8 rusuk",
+        "6 rusuk",
+        "4 rusuk"
+      ],
+      "kunciJawaban": "12 rusuk",
+      "pembahasan": "Balok punya 4 rusuk atas, 4 rusuk bawah, dan 4 rusuk tegak. Jumlahnya 12."
+    },
+    {
+      "id": "ingat-sama",
+      "bagian": "Ayo Mengingat Kembali",
+      "soal": "Ayo Mengingat Kembali (g). Adakah bangun ruang yang semua sisinya sama? Sebutkan.",
+      "jenis": "isian",
+      "opsi": [],
       "kunciJawaban": "Kubus",
-      "pembahasan": "Kubus punya 6 sisi persegi yang sama besar. Pada balok, ada sisi yang lebih panjang."
+      "alias": [
+        "ya, kubus",
+        "kubus",
+        "ada, kubus"
+      ],
+      "pembahasan": "Kubus memiliki enam sisi persegi yang sama."
     },
     {
-      "id": "dua-kubus",
+      "id": "eks31-1",
       "bagian": "Eksplorasi 3.1",
-      "soal": "Gambar (a) dua kubus berdampingan dan gambar (c) adalah susunan yang sama dari arah lain. Apakah gambar (b), dua kubus bertumpuk, juga susunan yang sama?",
-      "opsi": ["Ya, susunan yang sama", "Tidak, karena ada 4 kubus", "Tidak, karena tidak bisa diputar", "Hanya (a) dan (c) yang sama"],
+      "soal": "Eksplorasi 3.1 nomor 1. Gambar (a) dan (c) adalah dua kubus yang sama, dipandang dari arah berbeda. Apakah gambar (b), dua kubus bertumpuk, juga susunan yang sama?",
+      "opsi": [
+        "Ya, susunan yang sama",
+        "Tidak, susunan berbeda",
+        "Hanya jika kubusnya beda ukuran",
+        "Hanya untuk balok"
+      ],
       "kunciJawaban": "Ya, susunan yang sama",
-      "pembahasan": "Dua kubus yang menempel pada satu sisi hanya punya satu bentuk. Berdampingan atau bertumpuk hanya beda arah pandang."
+      "pembahasan": "Dua kubus yang menempel pada satu sisi hanya punya satu bentuk. Bertumpuk dan berdampingan adalah arah pandang yang berbeda."
     },
     {
-      "id": "tiga-satu",
+      "id": "eks31-2a",
       "bagian": "Eksplorasi 3.1",
-      "soal": "Rumah dari 3 kubus yang semuanya setinggi satu lantai ada ...",
-      "opsi": ["2 bentuk", "1 bentuk", "3 bentuk", "4 bentuk"],
-      "kunciJawaban": "2 bentuk",
-      "pembahasan": "Bentuknya lurus dan siku. Keduanya setinggi satu lantai, jadi ada lebih dari satu kemungkinan."
+      "soal": "Eksplorasi 3.1 nomor 2a. Untuk 3 kubus sebagai bangunan satu lantai, apakah ada lebih dari satu kemungkinan?",
+      "opsi": [
+        "Ya, ada lebih dari satu",
+        "Tidak, hanya satu",
+        "Hanya menara",
+        "Hanya jika kubus berbeda"
+      ],
+      "kunciJawaban": "Ya, ada lebih dari satu",
+      "pembahasan": "Bangunan satu lantai bisa lurus atau siku. Keduanya setinggi satu lantai."
     },
     {
-      "id": "tiga-dua",
+      "id": "eks31-2b",
       "bagian": "Eksplorasi 3.1",
-      "soal": "Jika rumah 3 kubus boleh setinggi dua lantai, banyak bentuknya adalah ...",
-      "opsi": ["3 bentuk", "1 bentuk", "2 bentuk", "4 bentuk"],
-      "kunciJawaban": "3 bentuk",
-      "pembahasan": "Bentuk rendah tetap boleh: lurus, siku, dan siku yang berdiri setinggi dua lantai."
+      "soal": "Eksplorasi 3.1 nomor 2b. Jika bangunan 3 kubus boleh memiliki bagian dua lantai, ada berapa kemungkinan?",
+      "opsi": [
+        "3 kemungkinan",
+        "2 kemungkinan",
+        "1 kemungkinan",
+        "4 kemungkinan"
+      ],
+      "kunciJawaban": "3 kemungkinan",
+      "pembahasan": "Yang boleh: lurus, siku, dan bentuk bertingkat. Menara tiga lantai belum masuk."
     },
     {
-      "id": "tiga-tiga",
+      "id": "eks31-2c",
       "bagian": "Eksplorasi 3.1",
-      "soal": "Jika rumah 3 kubus boleh setinggi tiga lantai, banyak bentuknya adalah ...",
-      "opsi": ["4 bentuk", "1 bentuk", "2 bentuk", "3 bentuk"],
-      "kunciJawaban": "4 bentuk",
-      "pembahasan": "Tiga bentuk sebelumnya tetap boleh, ditambah menara tiga kubus. Jumlahnya 4."
+      "soal": "Eksplorasi 3.1 nomor 2c. Jika bangunan 3 kubus boleh memiliki bagian tiga lantai, ada berapa kemungkinan?",
+      "opsi": [
+        "4 kemungkinan",
+        "3 kemungkinan",
+        "2 kemungkinan",
+        "1 kemungkinan"
+      ],
+      "kunciJawaban": "4 kemungkinan",
+      "pembahasan": "Ditambah menara, ada 4 bentuk: lurus, siku, bertingkat, dan menara."
     },
     {
-      "id": "balok-arah",
+      "id": "eks31-3a",
       "bagian": "Eksplorasi 3.1",
-      "soal": "Dua balok satu tingkat: (a) ditempel pada sisi panjang, (b) ditempel pada ujung. Keduanya adalah ...",
-      "opsi": ["Susunan yang berbeda", "Susunan yang sama, beda arah", "Satu kubus", "Tiga balok"],
+      "soal": "Eksplorasi 3.1 nomor 3a. Dua balok disusun menjadi bangunan satu tingkat. Apakah susunan (a) dan (b) berbeda, atau sama tetapi dipandang dari arah lain?",
+      "opsi": [
+        "Susunan yang berbeda",
+        "Susunan yang sama",
+        "Tidak dapat dibandingkan",
+        "Hanya berbeda warnanya"
+      ],
       "kunciJawaban": "Susunan yang berbeda",
-      "pembahasan": "(a) menjadi lebih lebar. (b) menjadi lebih panjang. Bentuknya tidak sama."
+      "pembahasan": "Balok punya sisi yang tidak sama. Menempel pada sisi panjang berbeda dengan menempel pada ujung."
     },
     {
-      "id": "balok-macam",
+      "id": "eks31-3b",
       "bagian": "Eksplorasi 3.1",
-      "soal": "Susunan dua balok untuk bangunan satu tingkat ada ...",
-      "opsi": ["2 macam", "1 macam", "3 macam", "4 macam"],
-      "kunciJawaban": "2 macam",
-      "pembahasan": "Dua macam: memanjang dan berdampingan. Balok punya sisi yang tidak sama, jadi lebih banyak cara daripada dua kubus."
+      "soal": "Eksplorasi 3.1 nomor 3b. Temukan semua susunan dua balok untuk bangunan satu tingkat. Ada berapa susunan?",
+      "opsi": [
+        "2 susunan",
+        "1 susunan",
+        "3 susunan",
+        "4 susunan"
+      ],
+      "kunciJawaban": "2 susunan",
+      "pembahasan": "Ada dua cara: berdampingan pada sisi panjang, atau disambung pada ujung."
     },
     {
-      "id": "latihan-a",
+      "id": "l31-2a",
       "bagian": "Latihan 3.1",
-      "soal": "Menara (a) tersusun dari balok yang sama. Banyak baloknya adalah ...",
-      "opsi": ["3 balok", "2 balok", "4 balok", "6 balok"],
+      "soal": "Latihan 3.1 nomor 2. Berapa balok yang dibutuhkan untuk menyusun bangun (a)?",
+      "opsi": [
+        "3 balok",
+        "2 balok",
+        "4 balok",
+        "6 balok"
+      ],
       "kunciJawaban": "3 balok",
-      "pembahasan": "Menara (a) punya 3 lapis. Setiap lapis satu balok, jadi 3 balok."
+      "pembahasan": "Bangun (a) adalah tiga balok yang sama, ditumpuk."
     },
     {
-      "id": "latihan-b",
+      "id": "l31-2b",
       "bagian": "Latihan 3.1",
-      "soal": "Bangun (b) berbentuk siku. Banyak baloknya adalah ...",
-      "opsi": ["3 balok", "2 balok", "4 balok", "5 balok"],
+      "soal": "Latihan 3.1 nomor 2. Berapa balok yang dibutuhkan untuk menyusun bangun (b)?",
+      "opsi": [
+        "3 balok",
+        "2 balok",
+        "4 balok",
+        "5 balok"
+      ],
       "kunciJawaban": "3 balok",
-      "pembahasan": "Dua balok bertumpuk di ujung, ditambah satu balok yang menempel di samping. Jumlahnya 3."
+      "pembahasan": "Bangun (b) memakai dua balok bertumpuk dan satu balok di samping. Jumlahnya 3."
     },
     {
-      "id": "kardus-jumlah",
+      "id": "l31-3",
       "bagian": "Latihan 3.1",
-      "soal": "Tumpukan kardus satuan itu berisi batang berukuran 1 × 2. Ada dua batang di belakang, satu di kiri, dan satu di kanan. Banyak kardusnya adalah ...",
-      "opsi": ["8 kardus", "6 kardus", "4 kardus", "10 kardus"],
+      "soal": "Latihan 3.1 nomor 3. Tumpukan kardus tersusun dari kardus kubus yang sama seperti contoh. Berapa kardus pada tumpukan tersebut?",
+      "opsi": [
+        "8 kardus",
+        "4 kardus",
+        "6 kardus",
+        "10 kardus"
+      ],
       "kunciJawaban": "8 kardus",
-      "pembahasan": "Setiap batang 1 × 2 berisi 2 kardus. Empat batang: 2 + 2 + 2 + 2 = 8."
+      "pembahasan": "Ada empat batang. Tiap batang berisi 2 kardus satuan. 4 x 2 = 8."
     },
     {
-      "id": "kubus-warna",
+      "id": "l31-4",
       "bagian": "Latihan 3.1",
-      "soal": "Bangun warna itu tersusun dari kubus ungu, kuning, hijau, dan merah muda. Banyak kubusnya adalah ...",
-      "opsi": ["4 kubus", "3 kubus", "5 kubus", "6 kubus"],
+      "soal": "Latihan 3.1 nomor 4. Tentukan cara menyusun kubus untuk membentuk bangun warna itu. Berapa kubus yang diperlukan?",
+      "opsi": [
+        "4 kubus",
+        "3 kubus",
+        "5 kubus",
+        "6 kubus"
+      ],
       "kunciJawaban": "4 kubus",
-      "pembahasan": "Keempat kubus terlihat. Merah muda berada di atas ungu. Tidak ada kubus yang tersembunyi."
+      "pembahasan": "Ada kubus ungu, merah muda di atasnya, kuning, dan hijau. Jumlahnya 4."
     },
     {
-      "id": "hasan-cara",
+      "id": "l31-5a",
       "bagian": "Latihan 3.1",
-      "soal": "Agar lantai gudang yang terpakai sesedikit mungkin, kardus Pak Hasan sebaiknya ...",
-      "opsi": ["Ditumpuk setinggi 300 cm", "Dibaringkan satu lapis", "Ditumpuk setinggi 310 cm", "Disebar memenuhi lantai 3 m × 3 m"],
-      "kunciJawaban": "Ditumpuk setinggi 300 cm",
-      "pembahasan": "Gudang tingginya 3,1 m, yaitu 310 cm. Tumpukan yang habis dibagi 20, 30, dan 50 paling tinggi 300 cm."
+      "soal": "Latihan 3.1 nomor 5a. Bagaimana sebaiknya Pak Hasan menyusun 30 kardus 20 cm x 30 cm x 50 cm agar luas lantai sesedikit mungkin? Gudang tingginya 3,1 m.",
+      "opsi": [
+        "Sisi 50 cm tegak, tinggi tumpukan 300 cm",
+        "Sisi 20 cm tegak, tinggi tumpukan 300 cm",
+        "Sisi 30 cm tegak, tinggi tumpukan 300 cm",
+        "Kardus diletakkan satu lapis tanpa ditumpuk"
+      ],
+      "kunciJawaban": "Sisi 50 cm tegak, tinggi tumpukan 300 cm",
+      "pembahasan": "Tinggi yang habis dibagi 20, 30, dan 50, serta tidak melebihi 310 cm, adalah 300 cm. Itu 6 lapis jika sisi 50 cm tegak."
     },
     {
-      "id": "hasan-luas",
+      "id": "l31-5b",
       "bagian": "Latihan 3.1",
-      "soal": "Luas lantai yang dipakai 30 kardus itu adalah ...",
-      "opsi": ["0,3 m²", "3 m²", "9 m²", "30 m²"],
+      "soal": "Latihan 3.1 nomor 5b. Berapa luas lantai yang digunakan untuk menumpuk kardus-kardus tersebut?",
+      "opsi": [
+        "0,3 m²",
+        "3 m²",
+        "30 m²",
+        "0,03 m²"
+      ],
       "kunciJawaban": "0,3 m²",
-      "pembahasan": "Satu kardus 20 × 30 × 50 = 30.000 cm³. Tiga puluh kardus = 900.000 cm³. 900.000 : 300 = 3.000 cm² = 0,3 m²."
+      "pembahasan": "Volume 30 kardus = 900.000 cm³. Dibagi tinggi 300 cm = 3.000 cm² = 0,3 m²."
     },
     {
       "id": "beda-sisi",
       "bagian": "B. Permasalahan",
-      "soal": "Gambar Fort Rotterdam milik Tigor dan Tenri berbeda karena ...",
-      "opsi": ["Mereka melihat dari sisi yang berbeda", "Bentengnya ada dua", "Satu gambar salah ukuran", "Mereka memakai penggaris yang beda"],
-      "kunciJawaban": "Mereka melihat dari sisi yang berbeda",
-      "pembahasan": "Bangun yang sama terlihat berbeda jika dilihat dari sisi yang berbeda. Arsitek menggambar beberapa tampak agar rancangannya bisa dibuat."
+      "soal": "Permasalahan bagian B. Mengapa gambar Fort Rotterdam milik Tigor dan Tenri berbeda?",
+      "opsi": [
+        "Mereka menggambar dari sisi yang berbeda",
+        "Bentengnya berubah bentuk",
+        "Mereka memakai penggaris yang berbeda",
+        "Satu gambar memakai kubus, satu memakai bola"
+      ],
+      "kunciJawaban": "Mereka menggambar dari sisi yang berbeda",
+      "pembahasan": "Bangunan yang sama terlihat berbeda jika arah pandangnya berbeda."
     },
     {
-      "id": "anike-jumlah",
+      "id": "eks32-arah",
       "bagian": "Eksplorasi 3.2",
-      "soal": "Susunan kubus Anike memakai kubus sebanyak ...",
-      "opsi": ["4 kubus", "3 kubus", "5 kubus", "6 kubus"],
+      "soal": "Eksplorasi 3.2 diskusi (c). Apakah menggambarkan penampakan dari lebih banyak arah akan menolong?",
+      "opsi": [
+        "Ya, lebih menolong",
+        "Tidak menolong",
+        "Hanya tampak atas yang berguna",
+        "Hanya jika kubusnya satu"
+      ],
+      "kunciJawaban": "Ya, lebih menolong",
+      "pembahasan": "Tiga arah lebih menolong daripada satu arah saat susunan kubus disusun kembali."
+    },
+    {
+      "id": "eks32-satu",
+      "bagian": "Eksplorasi 3.2",
+      "soal": "Eksplorasi 3.2 diskusi (e). Dapatkah susunan kubus ditentukan hanya dari tampilan satu arah?",
+      "opsi": [
+        "Tidak selalu cukup",
+        "Selalu cukup",
+        "Cukup jika warnanya sama",
+        "Cukup untuk dadu saja"
+      ],
+      "kunciJawaban": "Tidak selalu cukup",
+      "pembahasan": "Satu tampak sering masih bisa disusun dengan lebih dari satu cara."
+    },
+    {
+      "id": "l32-1",
+      "bagian": "Latihan 3.2",
+      "soal": "Latihan 3.2 nomor 1. Gambarkan kubus itu dari tiga arah. Tuliskan warna tampak depan, kanan, dan atas.",
+      "jenis": "isian",
+      "opsi": [],
+      "kunciJawaban": "biru, kuning, merah",
+      "alias": [
+        "depan biru, kanan kuning, atas merah",
+        "biru kuning merah"
+      ],
+      "pembahasan": "Sisi depan biru, sisi kanan kuning, dan sisi atas merah."
+    },
+    {
+      "id": "l32-5",
+      "bagian": "Latihan 3.2",
+      "soal": "Latihan 3.2 nomor 5. Tentukan susunan kubus dari tampak depan, kanan, dan atas. Tuliskan banyak kubus dan warnanya.",
+      "jenis": "isian",
+      "opsi": [],
       "kunciJawaban": "4 kubus",
-      "pembahasan": "Ada 3 kubus di bawah dan 1 kubus hijau di atas yang tengah. Jumlahnya 4."
+      "alias": [
+        "4",
+        "empat kubus",
+        "4 kubus. depan kiri kuning ditumpuk biru, depan kanan merah, belakang kiri hijau"
+      ],
+      "pembahasan": "Depan kiri kuning ditumpuk biru, depan kanan merah, dan belakang kiri hijau. Jumlahnya 4 kubus."
     },
     {
-      "id": "anike-depan",
-      "bagian": "Eksplorasi 3.2",
-      "soal": "Pada tampak depan Anike, kubus paling kiri berwarna ...",
-      "opsi": ["Biru", "Merah", "Hijau", "Kuning"],
-      "kunciJawaban": "Biru",
-      "pembahasan": "Dari depan, baris bawah dari kiri ke kanan berwarna biru, merah, lalu kuning. Hijau berada di atas merah."
-    },
-    {
-      "id": "anike-atas",
-      "bagian": "Eksplorasi 3.2",
-      "soal": "Pada tampak atas Anike, kotak tengah berwarna ...",
-      "opsi": ["Hijau", "Merah", "Biru", "Kuning"],
-      "kunciJawaban": "Hijau",
-      "pembahasan": "Tampak atas melihat tutup tiap kolom. Kolom tengah ditutup kubus hijau, bukan kubus merah yang ada di bawahnya."
-    },
-    {
-      "id": "hijau-merah",
-      "bagian": "Eksplorasi 3.2",
-      "soal": "Susunan dua kubus hijau bertumpuk dan dua kubus merah memakai kubus sebanyak ...",
-      "opsi": ["4 kubus", "2 kubus", "3 kubus", "5 kubus"],
-      "kunciJawaban": "4 kubus",
-      "pembahasan": "Dua hijau ditambah dua merah. Jumlahnya 4."
-    },
-    {
-      "id": "satu-arah",
-      "bagian": "Eksplorasi 3.2",
-      "soal": "Apakah tampak dari satu arah selalu cukup untuk menentukan susunan kubus?",
-      "opsi": ["Tidak, sering belum cukup", "Ya, satu arah selalu cukup", "Hanya jika kubusnya merah", "Ya, asal dilihat dari atas"],
-      "kunciJawaban": "Tidak, sering belum cukup",
-      "pembahasan": "Satu arah, bahkan dua arah, kadang masih punya lebih dari satu kemungkinan. Tiga arah lebih menolong."
-    },
-    {
-      "id": "kubus-kanan",
+      "id": "l32-6a",
       "bagian": "Latihan 3.2",
-      "soal": "Pada kubus pertama di Latihan 3.2, warna tampak kanan adalah ...",
-      "opsi": ["Kuning", "Biru", "Merah", "Hijau"],
-      "kunciJawaban": "Kuning",
-      "pembahasan": "Tampak kanan melihat sisi kanan kubus itu. Warnanya kuning."
+      "soal": "Latihan 3.2 nomor 6a. Gambarkan dadu itu dari tiga arah. Tuliskan mata pada sisi atas, depan, dan kanan.",
+      "jenis": "isian",
+      "opsi": [],
+      "kunciJawaban": "atas 6, depan 4, kanan 5",
+      "alias": [
+        "6, 4, 5",
+        "atas 6 depan 4 kanan 5"
+      ],
+      "pembahasan": "Sisi atas bermata 6, depan bermata 4, dan kanan bermata 5."
     },
     {
-      "id": "tiga-warna",
+      "id": "l32-6b",
       "bagian": "Latihan 3.2",
-      "soal": "Tampak depan merah, tampak kanan kuning, dan tampak atas hijau. Tiga sisi yang bertemu berwarna ...",
-      "opsi": ["Merah, kuning, dan hijau", "Biru, kuning, dan merah", "Hijau, biru, dan merah", "Kuning saja"],
-      "kunciJawaban": "Merah, kuning, dan hijau",
-      "pembahasan": "Setiap tampak menunjukkan satu sisi. Depan merah, kanan kuning, dan atas hijau."
-    },
-    {
-      "id": "soal-lima",
-      "bagian": "Latihan 3.2",
-      "soal": "Tampak depan, kanan, dan atas pada tabel menunjukkan susunan kubus. Banyak kubusnya adalah ...",
-      "opsi": ["4 kubus", "3 kubus", "5 kubus", "6 kubus"],
-      "kunciJawaban": "4 kubus",
-      "pembahasan": "Depan kiri kuning ditumpuk biru, depan kanan merah, dan di belakang kiri ada hijau. Jumlahnya 4."
-    },
-    {
-      "id": "soal-lima-hijau",
-      "bagian": "Latihan 3.2",
-      "soal": "Pada susunan itu, kubus di belakang kiri berwarna ...",
-      "opsi": ["Hijau", "Biru", "Merah", "Kuning"],
-      "kunciJawaban": "Hijau",
-      "pembahasan": "Tampak atas menaruh hijau di belakang kiri. Tampak kanan juga menunjukkan hijau di kolom belakang."
-    },
-    {
-      "id": "dadu-depan",
-      "bagian": "Latihan 3.2",
-      "soal": "Pada dadu pertama, mata yang menghadap depan adalah ...",
-      "opsi": ["4", "6", "5", "3"],
+      "soal": "Latihan 3.2 nomor 6b. Dadu yang sama dilihat dari arah lain. Atas tetap 6 dan depan menjadi 2. Jika mata pada dua sisi berlawanan berjumlah 7, ada berapa mata pada sisi yang kosong?",
+      "opsi": [
+        "4",
+        "3",
+        "5",
+        "1"
+      ],
       "kunciJawaban": "4",
-      "pembahasan": "Sisi yang menghadap depan menunjukkan 4 mata."
+      "pembahasan": "6 berlawanan dengan 1, 2 berlawanan dengan 5, dan 4 berlawanan dengan 3. Sisi kanan yang kosong bermata 4."
     },
     {
-      "id": "dadu-kosong",
-      "bagian": "Latihan 3.2",
-      "soal": "Dadu yang sama diputar. Atas tetap 6 dan depan menjadi 2. Jika sisi berlawanan berjumlah 7, sisi kanan yang kosong bermata ...",
-      "opsi": ["4", "3", "5", "1"],
-      "kunciJawaban": "4",
-      "pembahasan": "6 berlawanan dengan 1, 5 berlawanan dengan 2, dan 4 berlawanan dengan 3. Saat depan menjadi 2, sisi kanan yang tadinya depan berpindah ke kanan. Isinya 4."
-    },
-    {
-      "id": "makassar",
-      "bagian": "C. Permasalahan",
-      "soal": "Titik emas pada peta kecil menunjukkan Makassar. Letaknya ...",
-      "opsi": ["(C,2)", "(B,2)", "(C,3)", "(D,2)"],
-      "kunciJawaban": "(C,2)",
-      "pembahasan": "Titik emas berada di garis tegak C dan garis mendatar 2. Letaknya (C,2)."
-    },
-    {
-      "id": "tanda-x",
-      "bagian": "Eksplorasi 3.3",
-      "soal": "Tanda X pada petak terletak di ...",
-      "opsi": ["(B,4)", "(B,1)", "(D,4)", "(C,4)"],
-      "kunciJawaban": "(B,4)",
-      "pembahasan": "X ada di garis tegak B dan garis mendatar 4."
-    },
-    {
-      "id": "tanda-o",
-      "bagian": "Eksplorasi 3.3",
-      "soal": "Tanda O pada petak terletak di ...",
-      "opsi": ["(D,1)", "(B,4)", "(D,4)", "(A,1)"],
-      "kunciJawaban": "(D,1)",
-      "pembahasan": "O ada di garis tegak D dan garis mendatar 1."
-    },
-    {
-      "id": "pesan-silang",
-      "bagian": "Eksplorasi 3.3",
-      "soal": "Dari (B,3), tujuan yang tidak boleh langsung dikirimi pesan adalah ...",
-      "opsi": ["(C,2)", "(A,3)", "(C,3)", "(B,4)"],
-      "kunciJawaban": "(C,2)",
-      "pembahasan": "Pesan hanya boleh ke kiri, kanan, atas, atau bawah. (C,2) menyilang. Yang boleh dari (B,3) adalah (A,3), (C,3), (B,2), dan (B,4)."
-    },
-    {
-      "id": "tiga-benda",
-      "bagian": "Eksplorasi 3.3",
-      "soal": "Kubus hijau, kerucut ungu, dan bola kuning berturut-turut terletak di ...",
-      "opsi": ["(C,0), (D,2), dan (E,1)", "(B,1), (C,3), dan (D,2)", "(C,1), (D,3), dan (E,2)", "(B,0), (C,2), dan (D,1)"],
+      "id": "l33-3",
+      "bagian": "Latihan 3.3",
+      "soal": "Latihan 3.3 nomor 3. Tuliskan letak kubus hijau, kerucut ungu, dan bola kuning.",
+      "jenis": "isian",
+      "opsi": [],
       "kunciJawaban": "(C,0), (D,2), dan (E,1)",
-      "pembahasan": "Kubus di perpotongan C dan 0, kerucut di D dan 2, bola di E dan 1."
+      "alias": [
+        "(c,0), (d,2), (e,1)",
+        "c0, d2, e1",
+        "C0, D2, E1"
+      ],
+      "pembahasan": "Kubus di (C,0), kerucut di (D,2), dan bola di (E,1)."
     },
     {
-      "id": "jarak-pq",
+      "id": "eks34-jalur",
       "bagian": "Eksplorasi 3.4",
-      "soal": "Jarak terpendek dari P(B,5) ke Q(E,1) adalah ...",
-      "opsi": ["7 langkah", "5 langkah", "4 langkah", "12 langkah"],
-      "kunciJawaban": "7 langkah",
-      "pembahasan": "B ke E = 3 langkah mendatar. 5 ke 1 = 4 langkah tegak. 3 + 4 = 7."
+      "soal": "Eksplorasi 3.4 diskusi (b). Adakah jalur berbeda yang sama panjangnya?",
+      "opsi": [
+        "Ya, ada jalur lain yang sama panjang",
+        "Tidak, hanya ada satu jalur",
+        "Hanya jika jalurnya menyilang",
+        "Hanya jika melewati (A,1)"
+      ],
+      "kunciJawaban": "Ya, ada jalur lain yang sama panjang",
+      "pembahasan": "Langkah mendatar dan langkah tegak dapat ditukar urutannya. Panjangnya tetap sama."
     },
     {
-      "id": "jalur-sama",
-      "bagian": "Eksplorasi 3.4",
-      "soal": "Apakah ada jalur lain dari P ke Q yang panjangnya sama?",
-      "opsi": ["Ya, urutan langkahnya dapat ditukar", "Tidak, hanya ada satu jalur", "Hanya jika menyilang", "Hanya jika melewati (A,1)"],
-      "kunciJawaban": "Ya, urutan langkahnya dapat ditukar",
-      "pembahasan": "Langkah mendatar dan langkah tegak dapat diurutkan berbeda. Panjangnya tetap sama."
-    },
-    {
-      "id": "jarak-ae",
+      "id": "l34-1a",
       "bagian": "Latihan 3.4",
-      "soal": "Jarak dari (A,3) ke (E,5) adalah ...",
-      "opsi": ["6 langkah", "4 langkah", "2 langkah", "8 langkah"],
+      "soal": "Latihan 3.4 nomor 1a. Tuliskan satu jalur dari (A,3) ke (E,5).",
+      "jenis": "isian",
+      "opsi": [],
+      "kunciJawaban": "4 ke kanan, 2 ke atas",
+      "alias": [
+        "4 kanan 2 atas",
+        "kanan kanan kanan kanan atas atas",
+        "4 mendatar dan 2 tegak"
+      ],
+      "pembahasan": "Dari A ke E ada 4 langkah mendatar, dari 3 ke 5 ada 2 langkah tegak. Contoh jalur: empat kali ke kanan, lalu dua kali ke atas."
+    },
+    {
+      "id": "l34-1b",
+      "bagian": "Latihan 3.4",
+      "soal": "Latihan 3.4 nomor 1b. Tuliskan satu jalur dari (B,6) ke (D,3).",
+      "jenis": "isian",
+      "opsi": [],
+      "kunciJawaban": "2 ke kanan, 3 ke bawah",
+      "alias": [
+        "2 kanan 3 bawah",
+        "2 mendatar dan 3 tegak"
+      ],
+      "pembahasan": "Dari B ke D ada 2 langkah mendatar, dari 6 ke 3 ada 3 langkah tegak."
+    },
+    {
+      "id": "l34-2a",
+      "bagian": "Latihan 3.4",
+      "soal": "Latihan 3.4 nomor 2a. Tentukan jarak dari (A,3) ke (E,5).",
+      "opsi": [
+        "6 langkah",
+        "4 langkah",
+        "2 langkah",
+        "8 langkah"
+      ],
       "kunciJawaban": "6 langkah",
-      "pembahasan": "A ke E = 4 langkah mendatar. 3 ke 5 = 2 langkah tegak. 4 + 2 = 6."
+      "pembahasan": "4 langkah mendatar ditambah 2 langkah tegak sama dengan 6."
     },
     {
-      "id": "jarak-bd",
+      "id": "l34-2b",
       "bagian": "Latihan 3.4",
-      "soal": "Jarak dari (B,6) ke (D,3) adalah ...",
-      "opsi": ["5 langkah", "2 langkah", "3 langkah", "9 langkah"],
+      "soal": "Latihan 3.4 nomor 2b. Tentukan jarak dari (B,6) ke (D,3).",
+      "opsi": [
+        "5 langkah",
+        "2 langkah",
+        "3 langkah",
+        "9 langkah"
+      ],
       "kunciJawaban": "5 langkah",
-      "pembahasan": "B ke D = 2 langkah mendatar. 6 ke 3 = 3 langkah tegak. 2 + 3 = 5."
+      "pembahasan": "2 langkah mendatar ditambah 3 langkah tegak sama dengan 5."
     },
     {
-      "id": "kubus-rebah",
+      "id": "l34-3b",
       "bagian": "Latihan 3.4",
-      "soal": "Kubus di (F,1) direbahkan ke (D,2) tanpa diangkat. Paling sedikit kubus direbahkan ...",
-      "opsi": ["3 kali", "2 kali", "1 kali", "4 kali"],
+      "soal": "Latihan 3.4 nomor 3b. Kubus di (F,1) direbahkan ke (D,2) tanpa diangkat. Berapa kali kubus direbahkan untuk mencapai tujuannya pada jalur terpendek?",
+      "opsi": [
+        "3 kali",
+        "2 kali",
+        "1 kali",
+        "4 kali"
+      ],
       "kunciJawaban": "3 kali",
-      "pembahasan": "F ke D = 2 langkah. 1 ke 2 = 1 langkah. Satu rebahan menggeser kubus satu petak, jadi paling sedikit 3 kali."
+      "pembahasan": "F ke D = 2 langkah, 1 ke 2 = 1 langkah. Satu rebahan menggeser satu petak, jadi 3 kali."
     },
     {
-      "id": "titik-p",
+      "id": "l34-3c",
       "bagian": "Latihan 3.4",
-      "soal": "Titik P pada kubus itu, setelah sampai di (D,2), letaknya ...",
-      "opsi": ["Bergantung pada urutan rebahan", "Selalu di atas", "Selalu di bawah", "Selalu di sisi kiri"],
+      "soal": "Latihan 3.4 nomor 3c. Pada titik tujuan, di manakah letak titik yang ditandai huruf P?",
+      "opsi": [
+        "Bergantung pada urutan rebahan",
+        "Selalu di atas",
+        "Selalu di bawah",
+        "Selalu di sisi kiri"
+      ],
       "kunciJawaban": "Bergantung pada urutan rebahan",
       "pembahasan": "Dua langkah ke arah D dan satu langkah ke arah 2 dapat diurutkan berbeda. Urutan itu memutar kubus, jadi titik P tidak selalu berhenti di tempat yang sama."
     },
     {
-      "id": "jarak-petak",
+      "id": "refleksi-5",
       "bagian": "C. Refleksi",
-      "soal": "Jarak terpendek pada petak dijumlah dari ...",
-      "opsi": ["jarak mendatar dan jarak tegak", "jarak menyilang saja", "luas petak", "keliling petak"],
-      "kunciJawaban": "jarak mendatar dan jarak tegak",
-      "pembahasan": "Langkah menyilang tidak dipakai. Yang dijumlah adalah langkah sepanjang garis huruf dan langkah sepanjang garis bilangan."
+      "soal": "Refleksi nomor 5. Jarak dua titik pada petak ditentukan dari jarak ... dan jarak ...",
+      "jenis": "isian",
+      "opsi": [],
+      "kunciJawaban": "mendatar dan tegak",
+      "alias": [
+        "horizontal dan vertikal",
+        "jarak mendatar dan jarak tegak",
+        "mendatar, tegak"
+      ],
+      "pembahasan": "Yang dijumlah adalah jarak mendatar dan jarak tegak."
     }
   ]
 }

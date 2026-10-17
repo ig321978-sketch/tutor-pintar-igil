@@ -14,6 +14,8 @@ type SoalFormatif = {
   opsi: string[];
   kunciJawaban: string;
   pembahasan: string;
+  jenis?: string;
+  alias?: string[];
 };
 type CabangPeta = { judul: string; anak: string[] };
 type BentukDua = "berdampingan" | "bertumpuk";
@@ -316,6 +318,16 @@ function BangunNomor({ nomor }: { nomor: number }) {
   );
 }
 
+function normJawaban(nilai: string): string {
+  return nilai.toLowerCase().replace(/m²/g, "m2").replace(/\s+/g, "").replace(/\./g, "");
+}
+
+function jawabanCocok(soal: SoalFormatif, isi: string | undefined): boolean {
+  if (!isi) return false;
+  const milik = normJawaban(isi);
+  return [soal.kunciJawaban, ...(soal.alias ?? [])].some((kunci) => normJawaban(kunci) === milik);
+}
+
 function KartuSoal({
   nomor,
   soal,
@@ -327,33 +339,49 @@ function KartuSoal({
   pilihan: string | undefined;
   onPilih: (opsi: string) => void;
 }) {
+  const [draf, setDraf] = useState(pilihan ?? "");
   const sudah = pilihan !== undefined;
-  const benar = pilihan === soal.kunciJawaban;
+  const benar = jawabanCocok(soal, pilihan);
+  const isian = soal.jenis === "isian";
   return (
     <fieldset className="space-y-3 rounded-3xl border-2 border-[#1C01A5]/15 bg-white p-5">
       <legend className="px-1 text-sm font-black text-[#1C01A5]">Soal {nomor}</legend>
       <p className="text-base font-semibold leading-8 text-slate-800">{soal.soal}</p>
-      <div className="grid gap-2">
-        {soal.opsi.map((opsi) => {
-          const aktif = pilihan === opsi;
-          const warna = !aktif
-            ? "border-slate-200 bg-white text-slate-800"
-            : opsi === soal.kunciJawaban
-              ? "border-emerald-600 bg-emerald-50 text-emerald-900"
-              : "border-rose-600 bg-rose-50 text-rose-900";
-          return (
-            <button
-              key={opsi}
-              type="button"
-              aria-pressed={aktif}
-              onClick={() => onPilih(opsi)}
-              className={`rounded-2xl border-2 px-4 py-3 text-left text-base font-bold ${warna}`}
-            >
-              {opsi}
-            </button>
-          );
-        })}
-      </div>
+      {isian ? (
+        <div className="flex flex-wrap gap-2">
+          <input
+            value={draf}
+            onChange={(kejadian) => setDraf(kejadian.target.value)}
+            className="min-w-0 flex-1 rounded-2xl border-2 border-[#1C01A5]/20 px-4 py-3 text-base font-bold text-slate-800"
+            aria-label={soal.soal}
+          />
+          <button type="button" onClick={() => { if (draf.trim()) onPilih(draf.trim()); }} className="rounded-2xl bg-[#1C01A5] px-4 py-3 text-sm font-black text-white">
+            Periksa
+          </button>
+        </div>
+      ) : (
+        <div className="grid gap-2">
+          {soal.opsi.map((opsi) => {
+            const aktif = pilihan === opsi;
+            const warna = !aktif
+              ? "border-slate-200 bg-white text-slate-800"
+              : jawabanCocok(soal, opsi)
+                ? "border-emerald-600 bg-emerald-50 text-emerald-900"
+                : "border-rose-600 bg-rose-50 text-rose-900";
+            return (
+              <button
+                key={opsi}
+                type="button"
+                aria-pressed={aktif}
+                onClick={() => onPilih(opsi)}
+                className={`rounded-2xl border-2 px-4 py-3 text-left text-base font-bold ${warna}`}
+              >
+                {opsi}
+              </button>
+            );
+          })}
+        </div>
+      )}
       {sudah ? (
         <div
           aria-live="polite"
@@ -404,7 +432,7 @@ export default function KubusModuleView() {
     setSiap(true);
   }, []);
 
-  const jumlahBenar = modul ? modul.latihanFormatif.filter((soal) => jawaban[soal.id] === soal.kunciJawaban).length : 0;
+  const jumlahBenar = modul ? modul.latihanFormatif.filter((soal) => jawabanCocok(soal, jawaban[soal.id])).length : 0;
   const tuntas = modul ? jumlahBenar === modul.latihanFormatif.length : false;
 
   useEffect(() => {
@@ -421,7 +449,7 @@ export default function KubusModuleView() {
   useEffect(() => {
     if (!siap || !tandai || !modul) return;
     for (const soal of modul.latihanFormatif) {
-      if (jawaban[soal.id] === soal.kunciJawaban) tandai(idLatihanMtk6Bab3(soal.id));
+      if (jawabanCocok(soal, jawaban[soal.id])) tandai(idLatihanMtk6Bab3(soal.id));
     }
   }, [siap, tandai, jawaban]);
 
@@ -431,7 +459,7 @@ export default function KubusModuleView() {
 
   const pilih = (soal: SoalFormatif, opsi: string) => {
     setJawaban((lama) => ({ ...lama, [soal.id]: opsi }));
-    if (opsi === soal.kunciJawaban) kuis?.tandaiBenar(idLatihanMtk6Bab3(soal.id));
+    if (jawabanCocok(soal, opsi)) kuis?.tandaiBenar(idLatihanMtk6Bab3(soal.id));
   };
   const soalBagian = (bagian: string) => modul.latihanFormatif.filter((soal) => soal.bagian === bagian);
   let nomor = 0;
@@ -559,7 +587,7 @@ export default function KubusModuleView() {
             ))}
           </div>
           <Susunan kolom={kolomBentuk(bentukDua)} />
-          <p className="text-lg font-black text-[#1C01A5]">2 kubus · 1 bentuk</p>
+          <p className="text-lg font-black text-[#1C01A5]">2 kubus</p>
         </div>
         {kartu(soalBagian("Eksplorasi 3.1").slice(0, 1))}
         <div className="space-y-4 rounded-3xl border-2 border-[#F0AB00] bg-[#FFF9EB] p-5">
@@ -618,6 +646,10 @@ export default function KubusModuleView() {
           <h3 className="text-xl font-black text-[#1C01A5]">Latihan 3.1</h3>
           <p className="text-sm font-black text-[#1C01A5]">{jumlahBenar}/{modul.latihanFormatif.length} benar</p>
         </div>
+        <p className="text-base font-semibold leading-8 text-slate-800">
+          Nomor 1. Susunlah kubus untuk membentuk bangun pada latihan ini: satu kubus, kubus yang disusun rata, siku tiga kubus, bangun pipih empat atau lima kubus, tumpukan dua tingkat, dan tangga.
+        </p>
+        <p className="text-base font-semibold leading-8 text-slate-800">Nomor 2. Berapa balok yang dibutuhkan untuk menyusun bangun (a) dan (b)?</p>
         <div className="grid gap-3 sm:grid-cols-2">
           <div className="space-y-2 rounded-2xl bg-orange-50 p-4">
             <p className="text-sm font-black text-[#1C01A5]">(a)</p>
@@ -717,7 +749,7 @@ export default function KubusModuleView() {
       <section className="space-y-4">
         <h3 className="text-xl font-black text-[#1C01A5]">Eksplorasi 3.2 Melihat dari Berbagai Sisi</h3>
         <p className="text-base font-semibold leading-8 text-slate-800">
-          Anike menggambar satu susunan kubus dari depan, dari kanan, dan dari atas. Tigor dan Tenri ingat Fort Rotterdam: gambar mereka berbeda karena sisinya berbeda.
+          Anike menggambar susunan kubusnya dari depan, kanan, dan atas. Warnai ketiga tampak itu sesuai warna kubus yang terlihat.
         </p>
         <div className="flex items-end gap-1" aria-label="Susunan kubus Anike">
           <Kolom tinggi={1} warna="#60A5FA" />
@@ -749,13 +781,18 @@ export default function KubusModuleView() {
           />
           <p className="text-sm font-bold text-slate-600">Tampak {arahAnike} dihitung dari susunan kubus di atas.</p>
         </div>
-        {kartu(soalBagian("Eksplorasi 3.2").slice(0, 3))}
+        <p className="text-base font-semibold leading-8 text-slate-800">
+          Nomor 2. Gambarkan tampak depan, kanan, dan atas untuk susunan dua kubus hijau yang bertumpuk dan dua kubus merah.
+        </p>
         <div className="flex items-end gap-1" aria-label="Dua kubus hijau dan dua kubus merah">
           <Kolom tinggi={2} warna="#4ADE80" />
           <Kolom tinggi={1} warna="#F87171" />
           <Kolom tinggi={1} warna="#F87171" />
         </div>
-        {kartu(soalBagian("Eksplorasi 3.2").slice(3))}
+        <p className="text-base font-semibold leading-8 text-slate-800">
+          Nomor 3. Buat susunan kubus yang lain, lalu gambar penampakannya dari tiga arah. Nomor 4. Tukar gambar dengan kelompok lain dan susun kembali kubusnya. Nomor 5. Bandingkan hasilnya. Apakah rekonstruksi berhasil?
+        </p>
+        {kartu(soalBagian("Eksplorasi 3.2"))}
         <p className="rounded-2xl bg-[#F8F7FF] px-4 py-3 text-base font-semibold leading-8 text-slate-800">
           Orang bisa berdebat karena melihat sisi yang berbeda dari hal yang sama. Melihat tampak yang lebih banyak membantu menyusun kubus kembali.
         </p>
@@ -763,21 +800,14 @@ export default function KubusModuleView() {
 
       <section className="space-y-4">
         <h3 className="text-xl font-black text-[#1C01A5]">Latihan 3.2</h3>
-        <div className="flex flex-wrap items-end gap-6">
-          <div className="space-y-1">
-            <p className="text-sm font-black text-[#1C01A5]">Depan</p>
-            <Kotak warna="#60A5FA" />
-          </div>
-          <div className="space-y-1">
-            <p className="text-sm font-black text-[#1C01A5]">Kanan</p>
-            <Kotak warna="#FACC15" />
-          </div>
-          <div className="space-y-1">
-            <p className="text-sm font-black text-[#1C01A5]">Atas</p>
-            <Kotak warna="#F87171" />
-          </div>
+        <p className="text-base font-semibold leading-8 text-slate-800">Nomor 1. Gambarkan kubus ini dari depan, kanan, dan atas.</p>
+        <div className="relative h-28 w-36" aria-label="Kubus dengan sisi depan biru, kanan kuning, dan atas merah">
+          <span className="absolute bottom-3 left-3 h-16 w-16 border-2 border-[#1C01A5] bg-[#60A5FA]" />
+          <span className="absolute bottom-3 left-[4.25rem] h-16 w-8 border-2 border-[#1C01A5] bg-[#FACC15]" style={{ clipPath: "polygon(0 12%, 100% 0, 100% 88%, 0 100%)" }} />
+          <span className="absolute left-6 top-2 h-8 w-16 border-2 border-[#1C01A5] bg-[#F87171]" style={{ clipPath: "polygon(18% 100%, 100% 55%, 82% 0, 0 45%)" }} />
         </div>
         {kartu(soalBagian("Latihan 3.2").slice(0, 1))}
+        <p className="text-base font-semibold leading-8 text-slate-800">Nomor 2. Sebuah kubus dilihat dari tiga arah berikut. Gambarkan kubusnya.</p>
         <div className="flex flex-wrap items-end gap-6">
           <div className="space-y-1">
             <p className="text-sm font-black text-[#1C01A5]">Depan</p>
@@ -792,7 +822,7 @@ export default function KubusModuleView() {
             <Kotak warna="#4ADE80" />
           </div>
         </div>
-        {kartu(soalBagian("Latihan 3.2").slice(1, 2))}
+        <p className="text-base font-semibold leading-8 text-slate-800">Nomor 3 dan 4. Gambarkan tampilan dua susunan kubus yang berbeda, masing-masing dari depan, kanan, dan atas.</p>
         <div className="grid gap-3 sm:grid-cols-3">
           {(["depan", "kanan", "atas"] as Arah[]).map((arah) => (
             <div key={arah} className="space-y-2 rounded-2xl bg-[#F8F7FF] p-3">
@@ -804,7 +834,8 @@ export default function KubusModuleView() {
             </div>
           ))}
         </div>
-        {kartu(soalBagian("Latihan 3.2").slice(2, 4))}
+        <p className="text-base font-semibold leading-8 text-slate-800">Nomor 5. Tentukan susunan kubus dari tiga tampak ini.</p>
+        {kartu(soalBagian("Latihan 3.2").slice(1, 2))}
         <div className="flex flex-wrap items-end gap-6">
           <div className="space-y-2">
             <p className="text-sm font-black text-[#1C01A5]">Dadu pertama</p>
@@ -835,7 +866,8 @@ export default function KubusModuleView() {
             </span>
           </div>
         </div>
-        {kartu(soalBagian("Latihan 3.2").slice(4))}
+        <p className="text-base font-semibold leading-8 text-slate-800">Nomor 6. Gambarkan dadu dari tiga arah, lalu tentukan mata pada sisi yang kosong.</p>
+        {kartu(soalBagian("Latihan 3.2").slice(2))}
         <div className="space-y-2 rounded-3xl bg-[#F8F7FF] p-4">
           <h4 className="text-lg font-black text-[#1C01A5]">Ayo Berefleksi</h4>
           {modul.refleksiSpasial.map((kalimat) => (
@@ -847,16 +879,15 @@ export default function KubusModuleView() {
       <section className="space-y-4">
         <h3 className="text-2xl font-black text-[#1C01A5]">C. Lokasi</h3>
         <p className="text-base font-semibold leading-8 text-slate-800">
-          Peta dibagi petak. Garis tegak diberi huruf, garis mendatar diberi bilangan. Letak suatu tempat ditulis (huruf, bilangan).
+          Tigor menunjukkan Kota Makassar pada peta. Makassar terletak di petak C2. Garis tegak diberi huruf. Garis mendatar diberi bilangan.
         </p>
         <PetakDiam huruf={["A", "B", "C", "D", "E"]} angka={[3, 2, 1]} tanda={[{ huruf: "C", angka: 2, isi: "●", warna: "#F0AB00" }]} />
-        {kartu(soalBagian("C. Permasalahan"))}
       </section>
 
       <section className="space-y-4">
         <h3 className="text-xl font-black text-[#1C01A5]">Eksplorasi 3.3 Letak pada Petak</h3>
         <p className="text-base font-semibold leading-8 text-slate-800">
-          Lokasi adalah perpotongan garis huruf dan garis bilangan. Baca hurufnya lebih dulu, lalu bilangannya.
+          Letak ditulis dari garis yang berpotongan. Tanda X pada contoh ada di (B,4). Tanda O ada di (D,1).
         </p>
         <PetakDiam
           huruf={["A", "B", "C", "D", "E", "F"]}
@@ -866,13 +897,11 @@ export default function KubusModuleView() {
             { huruf: "D", angka: 1, isi: "O", warna: "#1C01A5" },
           ]}
         />
-        {kartu(soalBagian("Eksplorasi 3.3").slice(0, 2))}
         <p className="text-base font-semibold leading-8 text-slate-800">
-          Pada permainan pesan, langkah hanya boleh ke kiri, kanan, atas, atau bawah. Langkah menyilang tidak dipakai.
+          Dua kelompok bergiliran menaruh tanda X dan O. Pemenangnya kelompok yang lebih dulu membuat tiga tanda segaris, mendatar, tegak, atau menyilang.
         </p>
-        {kartu(soalBagian("Eksplorasi 3.3").slice(2, 3))}
         <p className="text-base font-semibold leading-8 text-slate-800">
-          Kubus hijau, kerucut ungu, dan bola kuning diletakkan pada perpotongan petak.
+          Latihan 3.3 nomor 3. Bangun ruang berikut diletakkan pada petak. Tuliskan letak masing-masing.
         </p>
         <PetakDiam
           huruf={["A", "B", "C", "D", "E", "F"]}
@@ -884,14 +913,11 @@ export default function KubusModuleView() {
           ]}
         />
         <p className="text-sm font-bold text-slate-600">■ kubus hijau, ▲ kerucut ungu, ● bola kuning.</p>
-        {kartu(soalBagian("Eksplorasi 3.3").slice(3))}
+        {kartu(soalBagian("Latihan 3.3"))}
         <div className="space-y-2 rounded-3xl bg-[#F8F7FF] p-4">
-          <h4 className="text-lg font-black text-[#1C01A5]">Latihan 3.3</h4>
+          <h4 className="text-lg font-black text-[#1C01A5]">Latihan 3.3 nomor 1 dan 2</h4>
           <p className="text-base font-semibold leading-8 text-slate-800">
-            Gambar denah kelas pada buku petak. Tandai tempat dudukmu dan dua teman, lalu tulis letaknya.
-          </p>
-          <p className="text-base font-semibold leading-8 text-slate-800">
-            Pada petak 3 × 3, dua orang bergiliran menaruh tanda. Siapa yang lebih dulu membuat garis tiga, dia yang menang.
+            Buat denah kelas pada sistem berpetak. Tuliskan lokasi tiga orang teman.
           </p>
         </div>
       </section>
@@ -899,18 +925,21 @@ export default function KubusModuleView() {
       <section className="space-y-4">
         <h3 className="text-xl font-black text-[#1C01A5]">Eksplorasi 3.4 Jalur dan Jarak</h3>
         <p className="text-base font-semibold leading-8 text-slate-800">
-          Jarak terpendek adalah langkah mendatar ditambah langkah tegak. Huruf bertambah ke kanan. Bilangan bertambah ke atas. Titik P ada di (B,5) dan titik Q ada di (E,1).
+          Pesan hanya diteruskan ke teman di kiri, kanan, depan, atau belakang. Dari (B,3), pesan boleh ke (A,3), (C,3), (B,2), atau (B,4), tetapi tidak langsung ke (C,2).
         </p>
         {kartu(soalBagian("Eksplorasi 3.4"))}
+        <p className="text-base font-semibold leading-8 text-slate-800">
+          Pembahasan: titik P ada di (B,5) dan titik Q ada di (E,1). Jalur terpendeknya tiga langkah ke kanan dan empat langkah ke bawah. Ada lebih dari satu jalur dengan panjang itu.
+        </p>
       </section>
 
       <section className="space-y-4">
         <h3 className="text-xl font-black text-[#1C01A5]">Latihan 3.4</h3>
-        {kartu(soalBagian("Latihan 3.4").slice(0, 2))}
+        {kartu(soalBagian("Latihan 3.4").slice(0, 4))}
         <p className="text-base font-semibold leading-8 text-slate-800">
-          Sebuah kubus di (F,1) digeser ke (D,2). Kubus tidak diangkat. Ia direbahkan ke salah satu sisi tegaknya. Panjang rusuknya sama dengan satu petak. Titik P menandai salah satu sudut kubus.
+          Nomor 3. Kubus di (F,1) dipindah ke (D,2). Kubus tidak diangkat, hanya direbahkan ke salah satu sisi tegaknya. Rusuknya sama panjang dengan satu petak. Gambarkan jalurnya. Titik P menandai salah satu sudut kubus.
         </p>
-        {kartu(soalBagian("Latihan 3.4").slice(2))}
+        {kartu(soalBagian("Latihan 3.4").slice(4))}
         {kartu(soalBagian("C. Refleksi"))}
         <div className="space-y-3 rounded-3xl border-2 border-[#F0AB00] bg-[#FFF9EB] p-5">
           <p className="text-xs font-black uppercase tracking-wide text-[#1C01A5]">Praktikum mandiri</p>
