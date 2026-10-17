@@ -35,7 +35,8 @@ import {
   simpanModulLokal,
 } from "@/lib/cache-modul-lokal";
 import { kandidatKunciMateri, kunciMateriTutor } from "@/lib/kunci-siswa";
-import { naskahResmiJikaAda } from "@/lib/naskah-resmi";
+import { adalahMtk6Bab3, naskahResmiJikaAda } from "@/lib/naskah-resmi";
+import Bab3KubusBalokModule from "@/components/modules/Bab3KubusBalokModule";
 import { useUserRole } from "@/hooks/useUserRole";
 import {
   adalahMapelMatematika,
@@ -421,6 +422,11 @@ export default function TutorAI() {
   );
   const judulMateriSesi = sesiMateri || (modeInput === "teks" ? bab : "Analisis halaman buku");
   const judulKelasSesi = teksQuery(params.get("kelas"), kelas);
+  const halamanResmiBab3 = adalahMtk6Bab3(
+    judulKelasSesi,
+    judulMapelSesi,
+    teksQuery(params.get("materi"), judulMateriSesi),
+  );
   const opsiBagian = daftarBagianModul(judulMapelSesi).filter((id) =>
     kunciPublik ? id !== "simulasi" && id !== "praktikum" : true,
   );
@@ -1757,6 +1763,19 @@ export default function TutorAI() {
       ) : (
         <>
         <div className="w-full px-2 pt-6 pb-8 animate-in slide-in-from-bottom-10 duration-700">
+          {halamanResmiBab3 ? (
+            <>
+              <button
+                type="button"
+                onClick={kembaliKeMenu}
+                className="igil-tanpa-tepi mb-4 flex items-center gap-2 text-[#1C01A5] font-bold hover:text-[#F0AB00] transition-colors"
+              >
+                <ArrowLeft className="w-5 h-5" /> Ganti Materi
+              </button>
+              <Bab3KubusBalokModule />
+            </>
+          ) : (
+          <>
           <div className="mb-6">
             <button
               type="button"
@@ -2065,6 +2084,8 @@ export default function TutorAI() {
             </GerbangPemanasanOtak>
             </KuisMateriProvider>
           </div>
+          </>
+          )}
         </div>
         <PemutarAudioGuru
           ref={pemutarRef}
