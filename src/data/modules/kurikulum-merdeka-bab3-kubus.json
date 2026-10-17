@@ -9,7 +9,7 @@
   "sumber": "Matematika untuk SD/MI Kelas VI, Bab 3",
   "capaianPembelajaran": "Peserta didik menyusun dan mengurai kubus, balok, serta gabungannya.",
   "pembuka": [
-    "Tigor dan Tenri tinggal di Makassar. Pada peta, Makassar terletak di petak C2.",
+    "Tigor dan Tenri tinggal di Makassar. Mereka mencari kota itu pada peta.",
     "Saat libur kenaikan kelas, mereka mengunjungi Fort Rotterdam. Temboknya tersusun seperti balok, dan atapnya berbentuk prisma segitiga.",
     "Keduanya menggambar benteng yang sama, tetapi hasilnya berbeda. Tigor melihat dari sisi yang berbeda dengan Tenri.",
     "Bangun ruang dapat digabung, diurai, dan dilihat dari berbagai arah."
@@ -29,9 +29,9 @@
   "petaKonsep": [
     { "judul": "Mengonstruksi dan Mengurai", "anak": ["Gabungan kubus", "Gabungan balok"] },
     { "judul": "Visualisasi Spasial", "anak": ["Tampak dari beberapa arah"] },
-    { "judul": "Lokasi", "anak": ["Sistem berpetak"] }
+    { "judul": "Lokasi", "anak": ["Sistem berpetak", "Jarak mendatar dan tegak"] }
   ],
-  "fokusPeta": ["Mengonstruksi dan Mengurai", "Visualisasi Spasial"],
+  "fokusPeta": ["Mengonstruksi dan Mengurai", "Visualisasi Spasial", "Lokasi"],
   "bangun": [
     { "nomor": 1, "nama": "Tabung" },
     { "nomor": 2, "nama": "Kerucut" },
@@ -67,6 +67,10 @@
   "refleksiSpasial": [
     "Bangun yang sama dapat terlihat berbeda dari depan, kanan, dan atas.",
     "Tiga arah lebih menolong daripada satu arah saat kubus disusun kembali."
+  ],
+  "refleksiLokasi": [
+    "Lokasi pada petak ditulis (huruf, bilangan).",
+    "Jarak terpendek dijumlah dari jarak mendatar dan jarak tegak."
   ],
   "latihanFormatif": [
     {
@@ -324,6 +328,102 @@
       "opsi": ["4", "3", "5", "1"],
       "kunciJawaban": "4",
       "pembahasan": "6 berlawanan dengan 1, 5 berlawanan dengan 2, dan 4 berlawanan dengan 3. Saat depan menjadi 2, sisi kanan yang tadinya depan berpindah ke kanan. Isinya 4."
+    },
+    {
+      "id": "makassar",
+      "bagian": "C. Permasalahan",
+      "soal": "Titik emas pada peta kecil menunjukkan Makassar. Letaknya ...",
+      "opsi": ["(C,2)", "(B,2)", "(C,3)", "(D,2)"],
+      "kunciJawaban": "(C,2)",
+      "pembahasan": "Titik emas berada di garis tegak C dan garis mendatar 2. Letaknya (C,2)."
+    },
+    {
+      "id": "tanda-x",
+      "bagian": "Eksplorasi 3.3",
+      "soal": "Tanda X pada petak terletak di ...",
+      "opsi": ["(B,4)", "(B,1)", "(D,4)", "(C,4)"],
+      "kunciJawaban": "(B,4)",
+      "pembahasan": "X ada di garis tegak B dan garis mendatar 4."
+    },
+    {
+      "id": "tanda-o",
+      "bagian": "Eksplorasi 3.3",
+      "soal": "Tanda O pada petak terletak di ...",
+      "opsi": ["(D,1)", "(B,4)", "(D,4)", "(A,1)"],
+      "kunciJawaban": "(D,1)",
+      "pembahasan": "O ada di garis tegak D dan garis mendatar 1."
+    },
+    {
+      "id": "pesan-silang",
+      "bagian": "Eksplorasi 3.3",
+      "soal": "Dari (B,3), tujuan yang tidak boleh langsung dikirimi pesan adalah ...",
+      "opsi": ["(C,2)", "(A,3)", "(C,3)", "(B,4)"],
+      "kunciJawaban": "(C,2)",
+      "pembahasan": "Pesan hanya boleh ke kiri, kanan, atas, atau bawah. (C,2) menyilang. Yang boleh dari (B,3) adalah (A,3), (C,3), (B,2), dan (B,4)."
+    },
+    {
+      "id": "tiga-benda",
+      "bagian": "Eksplorasi 3.3",
+      "soal": "Kubus hijau, kerucut ungu, dan bola kuning berturut-turut terletak di ...",
+      "opsi": ["(C,0), (D,2), dan (E,1)", "(B,1), (C,3), dan (D,2)", "(C,1), (D,3), dan (E,2)", "(B,0), (C,2), dan (D,1)"],
+      "kunciJawaban": "(C,0), (D,2), dan (E,1)",
+      "pembahasan": "Kubus di perpotongan C dan 0, kerucut di D dan 2, bola di E dan 1."
+    },
+    {
+      "id": "jarak-pq",
+      "bagian": "Eksplorasi 3.4",
+      "soal": "Jarak terpendek dari P(B,5) ke Q(E,1) adalah ...",
+      "opsi": ["7 langkah", "5 langkah", "4 langkah", "12 langkah"],
+      "kunciJawaban": "7 langkah",
+      "pembahasan": "B ke E = 3 langkah mendatar. 5 ke 1 = 4 langkah tegak. 3 + 4 = 7."
+    },
+    {
+      "id": "jalur-sama",
+      "bagian": "Eksplorasi 3.4",
+      "soal": "Apakah ada jalur lain dari P ke Q yang panjangnya sama?",
+      "opsi": ["Ya, urutan langkahnya dapat ditukar", "Tidak, hanya ada satu jalur", "Hanya jika menyilang", "Hanya jika melewati (A,1)"],
+      "kunciJawaban": "Ya, urutan langkahnya dapat ditukar",
+      "pembahasan": "Langkah mendatar dan langkah tegak dapat diurutkan berbeda. Panjangnya tetap sama."
+    },
+    {
+      "id": "jarak-ae",
+      "bagian": "Latihan 3.4",
+      "soal": "Jarak dari (A,3) ke (E,5) adalah ...",
+      "opsi": ["6 langkah", "4 langkah", "2 langkah", "8 langkah"],
+      "kunciJawaban": "6 langkah",
+      "pembahasan": "A ke E = 4 langkah mendatar. 3 ke 5 = 2 langkah tegak. 4 + 2 = 6."
+    },
+    {
+      "id": "jarak-bd",
+      "bagian": "Latihan 3.4",
+      "soal": "Jarak dari (B,6) ke (D,3) adalah ...",
+      "opsi": ["5 langkah", "2 langkah", "3 langkah", "9 langkah"],
+      "kunciJawaban": "5 langkah",
+      "pembahasan": "B ke D = 2 langkah mendatar. 6 ke 3 = 3 langkah tegak. 2 + 3 = 5."
+    },
+    {
+      "id": "kubus-rebah",
+      "bagian": "Latihan 3.4",
+      "soal": "Kubus di (F,1) direbahkan ke (D,2) tanpa diangkat. Paling sedikit kubus direbahkan ...",
+      "opsi": ["3 kali", "2 kali", "1 kali", "4 kali"],
+      "kunciJawaban": "3 kali",
+      "pembahasan": "F ke D = 2 langkah. 1 ke 2 = 1 langkah. Satu rebahan menggeser kubus satu petak, jadi paling sedikit 3 kali."
+    },
+    {
+      "id": "titik-p",
+      "bagian": "Latihan 3.4",
+      "soal": "Titik P pada kubus itu, setelah sampai di (D,2), letaknya ...",
+      "opsi": ["Bergantung pada urutan rebahan", "Selalu di atas", "Selalu di bawah", "Selalu di sisi kiri"],
+      "kunciJawaban": "Bergantung pada urutan rebahan",
+      "pembahasan": "Dua langkah ke arah D dan satu langkah ke arah 2 dapat diurutkan berbeda. Urutan itu memutar kubus, jadi titik P tidak selalu berhenti di tempat yang sama."
+    },
+    {
+      "id": "jarak-petak",
+      "bagian": "C. Refleksi",
+      "soal": "Jarak terpendek pada petak dijumlah dari ...",
+      "opsi": ["jarak mendatar dan jarak tegak", "jarak menyilang saja", "luas petak", "keliling petak"],
+      "kunciJawaban": "jarak mendatar dan jarak tegak",
+      "pembahasan": "Langkah menyilang tidak dipakai. Yang dijumlah adalah langkah sepanjang garis huruf dan langkah sepanjang garis bilangan."
     }
   ]
 }

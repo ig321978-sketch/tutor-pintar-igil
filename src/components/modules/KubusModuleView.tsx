@@ -44,6 +44,7 @@ type ModulKubus = {
   anike: KubusWarna[];
   soalLima: { depan: string[][]; kanan: string[][]; atas: string[][] };
   refleksiSpasial: string[];
+  refleksiLokasi: string[];
   latihanFormatif: SoalFormatif[];
 };
 
@@ -55,6 +56,8 @@ type JejakKubus = {
   sisiTegak: number;
   arahAnike: Arah;
   simulasiDicoba: boolean;
+  awalPetak: string;
+  akhirPetak: string;
 };
 
 function adalahModul(data: unknown): data is ModulKubus {
@@ -83,6 +86,51 @@ function koma(nilai: number): string {
   return nilai.toFixed(1).replace(".", ",");
 }
 
+function kalimatFokus(daftar: string[]): string {
+  if (daftar.length <= 1) return daftar[0] ?? "";
+  if (daftar.length === 2) return `${daftar[0]} serta ${daftar[1]}`;
+  return `${daftar.slice(0, -1).join(", ")}, serta ${daftar[daftar.length - 1]}`;
+}
+
+const HURUF_PETAK = ["A", "B", "C", "D", "E", "F", "G"];
+
+function pecahPetak(kode: string): { huruf: string; angka: number } | null {
+  if (!/^[A-G][0-9]$/.test(kode)) return null;
+  return { huruf: kode[0] ?? "", angka: Number(kode.slice(1)) };
+}
+
+function PetakDiam({
+  huruf,
+  angka,
+  tanda,
+}: {
+  huruf: string[];
+  angka: number[];
+  tanda: { huruf: string; angka: number; isi: string; warna: string }[];
+}) {
+  return (
+    <div className="inline-grid gap-1" style={{ gridTemplateColumns: `auto repeat(${huruf.length}, 2.5rem)` }}>
+      <span />
+      {huruf.map((nama) => (
+        <span key={nama} className="text-center text-xs font-black text-[#1C01A5]">{nama}</span>
+      ))}
+      {angka.map((bilangan) => (
+        <span key={bilangan} className="contents">
+          <span className="flex items-center pr-1 text-xs font-black text-[#1C01A5]">{bilangan}</span>
+          {huruf.map((nama) => {
+            const isi = tanda.find((titik) => titik.huruf === nama && titik.angka === bilangan);
+            return (
+              <span key={`${nama}${bilangan}`} className="flex h-10 w-10 items-center justify-center rounded-md border border-[#1C01A5]/20 bg-white text-sm font-black" style={{ color: isi?.warna }}>
+                {isi?.isi ?? ""}
+              </span>
+            );
+          })}
+        </span>
+      ))}
+    </div>
+  );
+}
+
 function bacaJejak(): JejakKubus | null {
   if (typeof window === "undefined") return null;
   try {
@@ -102,6 +150,8 @@ function bacaJejak(): JejakKubus | null {
       sisiTegak: sisi,
       arahAnike,
       simulasiDicoba: Boolean(data.simulasiDicoba),
+      awalPetak: typeof data.awalPetak === "string" ? data.awalPetak : "",
+      akhirPetak: typeof data.akhirPetak === "string" ? data.akhirPetak : "",
     };
   } catch {
     return null;
@@ -335,6 +385,8 @@ export default function KubusModuleView() {
   const [sisiTegak, setSisiTegak] = useState(50);
   const [arahAnike, setArahAnike] = useState<Arah>("depan");
   const [simulasiDicoba, setSimulasiDicoba] = useState(false);
+  const [awalPetak, setAwalPetak] = useState("");
+  const [akhirPetak, setAkhirPetak] = useState("");
 
   useEffect(() => {
     const jejak = bacaJejak();
@@ -346,6 +398,8 @@ export default function KubusModuleView() {
       setSisiTegak(jejak.sisiTegak);
       setArahAnike(jejak.arahAnike);
       setSimulasiDicoba(jejak.simulasiDicoba);
+      setAwalPetak(jejak.awalPetak);
+      setAkhirPetak(jejak.akhirPetak);
     }
     setSiap(true);
   }, []);
@@ -355,13 +409,13 @@ export default function KubusModuleView() {
 
   useEffect(() => {
     if (!siap || !modul) return;
-    const jejak: JejakKubus = { jawaban, bentukDua, bentukTiga, batang, sisiTegak, arahAnike, simulasiDicoba };
+    const jejak: JejakKubus = { jawaban, bentukDua, bentukTiga, batang, sisiTegak, arahAnike, simulasiDicoba, awalPetak, akhirPetak };
     try {
       window.localStorage.setItem(KUNCI_JEJAK, JSON.stringify({ ...jejak, tuntas }));
     } catch {
       return;
     }
-  }, [siap, jawaban, bentukDua, bentukTiga, batang, sisiTegak, arahAnike, simulasiDicoba, tuntas]);
+  }, [siap, jawaban, bentukDua, bentukTiga, batang, sisiTegak, arahAnike, simulasiDicoba, awalPetak, akhirPetak, tuntas]);
 
   const tandai = kuis?.tandaiBenar;
   useEffect(() => {
@@ -395,6 +449,20 @@ export default function KubusModuleView() {
   const luasM = luasCm / 10000;
   const kardusPasang = batang.filter(Boolean).length * 2;
   const lantaiTiga = bentukTiga === "menara" ? 3 : bentukTiga === "bertingkat" ? 2 : 1;
+  const titikAwal = pecahPetak(awalPetak);
+  const titikAkhir = pecahPetak(akhirPetak);
+  const langkahMendatar = titikAwal && titikAkhir ? Math.abs(HURUF_PETAK.indexOf(titikAkhir.huruf) - HURUF_PETAK.indexOf(titikAwal.huruf)) : null;
+  const langkahTegak = titikAwal && titikAkhir ? Math.abs(titikAkhir.angka - titikAwal.angka) : null;
+  const pilihPetak = (kode: string) => {
+    setSimulasiDicoba(true);
+    if (!awalPetak || akhirPetak) {
+      setAwalPetak(kode);
+      setAkhirPetak("");
+      return;
+    }
+    if (kode === awalPetak) return;
+    setAkhirPetak(kode);
+  };
 
   return (
     <article className="space-y-6">
@@ -447,7 +515,7 @@ export default function KubusModuleView() {
             </div>
           ))}
         </div>
-        <p className="text-sm font-bold text-[#1C01A5]">Bagian yang dikerjakan sekarang: {modul.fokusPeta[0]} serta {modul.fokusPeta.slice(1).join(", ")}.</p>
+        <p className="text-sm font-bold text-[#1C01A5]">Bagian yang dikerjakan sekarang: {kalimatFokus(modul.fokusPeta)}.</p>
       </section>
 
       <section className="space-y-4">
@@ -776,9 +844,127 @@ export default function KubusModuleView() {
         </div>
       </section>
 
+      <section className="space-y-4">
+        <h3 className="text-2xl font-black text-[#1C01A5]">C. Lokasi</h3>
+        <p className="text-base font-semibold leading-8 text-slate-800">
+          Peta dibagi petak. Garis tegak diberi huruf, garis mendatar diberi bilangan. Letak suatu tempat ditulis (huruf, bilangan).
+        </p>
+        <PetakDiam huruf={["A", "B", "C", "D", "E"]} angka={[3, 2, 1]} tanda={[{ huruf: "C", angka: 2, isi: "●", warna: "#F0AB00" }]} />
+        {kartu(soalBagian("C. Permasalahan"))}
+      </section>
+
+      <section className="space-y-4">
+        <h3 className="text-xl font-black text-[#1C01A5]">Eksplorasi 3.3 Letak pada Petak</h3>
+        <p className="text-base font-semibold leading-8 text-slate-800">
+          Lokasi adalah perpotongan garis huruf dan garis bilangan. Baca hurufnya lebih dulu, lalu bilangannya.
+        </p>
+        <PetakDiam
+          huruf={["A", "B", "C", "D", "E", "F"]}
+          angka={[5, 4, 3, 2, 1]}
+          tanda={[
+            { huruf: "B", angka: 4, isi: "X", warna: "#1C01A5" },
+            { huruf: "D", angka: 1, isi: "O", warna: "#1C01A5" },
+          ]}
+        />
+        {kartu(soalBagian("Eksplorasi 3.3").slice(0, 2))}
+        <p className="text-base font-semibold leading-8 text-slate-800">
+          Pada permainan pesan, langkah hanya boleh ke kiri, kanan, atas, atau bawah. Langkah menyilang tidak dipakai.
+        </p>
+        {kartu(soalBagian("Eksplorasi 3.3").slice(2, 3))}
+        <p className="text-base font-semibold leading-8 text-slate-800">
+          Kubus hijau, kerucut ungu, dan bola kuning diletakkan pada perpotongan petak.
+        </p>
+        <PetakDiam
+          huruf={["A", "B", "C", "D", "E", "F"]}
+          angka={[4, 3, 2, 1, 0]}
+          tanda={[
+            { huruf: "C", angka: 0, isi: "■", warna: "#3F6212" },
+            { huruf: "D", angka: 2, isi: "▲", warna: "#7E22CE" },
+            { huruf: "E", angka: 1, isi: "●", warna: "#CA8A04" },
+          ]}
+        />
+        <p className="text-sm font-bold text-slate-600">■ kubus hijau, ▲ kerucut ungu, ● bola kuning.</p>
+        {kartu(soalBagian("Eksplorasi 3.3").slice(3))}
+        <div className="space-y-2 rounded-3xl bg-[#F8F7FF] p-4">
+          <h4 className="text-lg font-black text-[#1C01A5]">Latihan 3.3</h4>
+          <p className="text-base font-semibold leading-8 text-slate-800">
+            Gambar denah kelas pada buku petak. Tandai tempat dudukmu dan dua teman, lalu tulis letaknya.
+          </p>
+          <p className="text-base font-semibold leading-8 text-slate-800">
+            Pada petak 3 × 3, dua orang bergiliran menaruh tanda. Siapa yang lebih dulu membuat garis tiga, dia yang menang.
+          </p>
+        </div>
+      </section>
+
+      <section className="space-y-4">
+        <h3 className="text-xl font-black text-[#1C01A5]">Eksplorasi 3.4 Jalur dan Jarak</h3>
+        <p className="text-base font-semibold leading-8 text-slate-800">
+          Jarak terpendek adalah langkah mendatar ditambah langkah tegak. Huruf bertambah ke kanan. Bilangan bertambah ke atas. Titik P ada di (B,5) dan titik Q ada di (E,1).
+        </p>
+        {kartu(soalBagian("Eksplorasi 3.4"))}
+      </section>
+
+      <section className="space-y-4">
+        <h3 className="text-xl font-black text-[#1C01A5]">Latihan 3.4</h3>
+        {kartu(soalBagian("Latihan 3.4").slice(0, 2))}
+        <p className="text-base font-semibold leading-8 text-slate-800">
+          Sebuah kubus di (F,1) digeser ke (D,2). Kubus tidak diangkat. Ia direbahkan ke salah satu sisi tegaknya. Panjang rusuknya sama dengan satu petak. Titik P menandai salah satu sudut kubus.
+        </p>
+        {kartu(soalBagian("Latihan 3.4").slice(2))}
+        {kartu(soalBagian("C. Refleksi"))}
+        <div className="space-y-3 rounded-3xl border-2 border-[#F0AB00] bg-[#FFF9EB] p-5">
+          <p className="text-xs font-black uppercase tracking-wide text-[#1C01A5]">Praktikum mandiri</p>
+          <h3 className="text-xl font-black text-[#1C01A5]">Mengukur Jarak pada Petak</h3>
+          <p className="text-sm font-semibold leading-7 text-slate-700">Pilih titik awal, lalu titik akhir. Emas adalah titik 1. Biru adalah titik 2.</p>
+          <div className="inline-grid gap-1" style={{ gridTemplateColumns: `auto repeat(${HURUF_PETAK.length}, 2.25rem)` }}>
+            <span />
+            {HURUF_PETAK.map((nama) => (
+              <span key={nama} className="text-center text-xs font-black text-[#1C01A5]">{nama}</span>
+            ))}
+            {[6, 5, 4, 3, 2, 1].map((bilangan) => (
+              <span key={bilangan} className="contents">
+                <span className="flex items-center pr-1 text-xs font-black text-[#1C01A5]">{bilangan}</span>
+                {HURUF_PETAK.map((nama) => {
+                  const kode = `${nama}${bilangan}`;
+                  const awal = kode === awalPetak;
+                  const akhir = kode === akhirPetak;
+                  return (
+                    <button
+                      key={kode}
+                      type="button"
+                      aria-pressed={awal || akhir}
+                      onClick={() => pilihPetak(kode)}
+                      className={`h-9 w-9 rounded-md text-xs font-black ${awal ? "bg-[#F0AB00] text-[#1C01A5]" : akhir ? "bg-[#1C01A5] text-white" : "bg-white text-[#1C01A5]"}`}
+                    >
+                      {awal ? "1" : akhir ? "2" : ""}
+                    </button>
+                  );
+                })}
+              </span>
+            ))}
+          </div>
+          <button type="button" onClick={() => { setAwalPetak(""); setAkhirPetak(""); }} className="rounded-full bg-white px-4 py-2 text-sm font-black text-[#1C01A5]">
+            Kosongkan
+          </button>
+          {langkahMendatar !== null && langkahTegak !== null ? (
+            <p className="text-lg font-black text-[#1C01A5]">
+              {langkahMendatar} langkah mendatar + {langkahTegak} langkah tegak = {langkahMendatar + langkahTegak} langkah
+            </p>
+          ) : (
+            <p className="text-sm font-bold text-slate-600">Jarak muncul setelah dua titik terpilih.</p>
+          )}
+        </div>
+        <div className="space-y-2 rounded-3xl bg-[#F8F7FF] p-4">
+          <h4 className="text-lg font-black text-[#1C01A5]">Ayo Berefleksi</h4>
+          {modul.refleksiLokasi.map((kalimat) => (
+            <p key={kalimat} className="text-base font-semibold leading-8 text-slate-800">{kalimat}</p>
+          ))}
+        </div>
+      </section>
+
       {tuntas ? (
         <section className="rounded-3xl bg-emerald-600 px-5 py-4 text-white">
-          <p className="text-lg font-black">Bagian A dan B tuntas.</p>
+          <p className="text-lg font-black">Bagian A, B, dan C tuntas.</p>
           <p className="mt-1 text-sm font-semibold leading-7">
             {jumlahBenar} soal benar{simulasiDicoba ? " dan praktikum sudah dicoba" : ""}. Status tersimpan di perangkat ini.
           </p>
