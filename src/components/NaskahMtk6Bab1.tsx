@@ -105,6 +105,27 @@ function Kegiatan({ label, children }: { label: string; children: ReactNode }) {
   );
 }
 
+function PolaCerita({ adegan, materi, logika, langkah, jawaban }: { adegan: ReactNode; materi: ReactNode; logika: ReactNode; langkah: ReactNode; jawaban: string }) {
+  return (
+    <>
+      <Kegiatan label="Adegan">{adegan}</Kegiatan>
+      <Kegiatan label="Materi">{materi}</Kegiatan>
+      <Kegiatan label="Logika Pemahaman">{logika}</Kegiatan>
+      <Kegiatan label="Langkah Perhitungan">{langkah}</Kegiatan>
+      <Jawaban anak={jawaban} />
+    </>
+  );
+}
+
+function BarisLangkah({ anak, gambar }: { anak: string; gambar?: ReactNode }) {
+  return (
+    <>
+      <p><Teks anak={anak} /></p>
+      {gambar}
+    </>
+  );
+}
+
 function Gambar({ src, alt, keterangan }: { src: string; alt: string; keterangan: string }) {
   return (
     <figure className="space-y-1">
@@ -328,48 +349,40 @@ function GambarBanding() {
   );
 }
 
-function GambarBerulang() {
-  const pecahan = (atas: string, bawah: string) => (
+function GambarBerulang({ pecahan = "keduanya" }: { pecahan?: "sepertiga" | "perenam" | "keduanya" }) {
+  const susun = (atas: string, bawah: string) => (
     <span className="inline-flex flex-col items-center">
       <span className="mb-1 min-h-4 text-[0.65rem] font-bold leading-4 text-slate-500">Pembilang</span>
       <AngkaSusun atas={atas} bawah={bawah} bingkai />
       <span className="mt-1 min-h-4 text-[0.65rem] font-bold leading-4 text-slate-500">Penyebut</span>
     </span>
   );
+  const sepertiga = pecahan !== "perenam";
+  const perenam = pecahan !== "sepertiga";
   return (
     <div className="flex flex-wrap items-center justify-center gap-x-8 gap-y-4">
-      <div className="flex items-center gap-2">
-        {pecahan("1", "3")}
-        <span className="text-2xl font-black text-slate-900">=</span>
-        <span className="flex flex-col items-center">
-          <span className="text-2xl font-black text-slate-900">0,<span className="text-green-700">333</span>…</span>
-          <span className="text-lg font-black leading-none text-green-700">↑</span>
-          <span className="text-[0.65rem] font-bold text-green-700">berulang</span>
-        </span>
-      </div>
-      <div className="flex items-center gap-2">
-        {pecahan("1", "6")}
-        <span className="text-2xl font-black text-slate-900">=</span>
-        <span className="flex flex-col items-center">
-          <span className="text-2xl font-black text-slate-900">0,1<span className="text-green-700">666</span>…</span>
-          <span className="text-lg font-black leading-none text-green-700">↑</span>
-          <span className="text-[0.65rem] font-bold text-green-700">berulang</span>
-        </span>
-      </div>
-    </div>
-  );
-}
-
-function Infografis({ judul, aturan, gambar, kolom, baris }: { judul: string; aturan: string; gambar: ReactNode; kolom: string[]; baris: string[][] }) {
-  return (
-    <div className="space-y-3 rounded-2xl border-2 border-[#F0AB00] bg-[#FFFBF0] px-4 py-4">
-      <p className="text-xs font-black uppercase tracking-wide text-[#1C01A5]">Infografis</p>
-      <h3 className="text-lg font-black text-[#1C01A5]">{judul}</h3>
-      <p className="text-sm font-semibold leading-8 text-slate-800"><Teks anak={aturan} /></p>
-      <div className="overflow-x-auto rounded-xl border border-[#1C01A5]/15 bg-white px-3 py-4">
-        {gambar}
-      </div>
-      <Tabel kolom={kolom} baris={baris} />
+      {sepertiga ? (
+        <div className="flex items-center gap-2">
+          {susun("1", "3")}
+          <span className="text-2xl font-black text-slate-900">=</span>
+          <span className="flex flex-col items-center">
+            <span className="text-2xl font-black text-slate-900">0,<span className="text-green-700">333</span>…</span>
+            <span className="text-lg font-black leading-none text-green-700">↑</span>
+            <span className="text-[0.65rem] font-bold text-green-700">berulang</span>
+          </span>
+        </div>
+      ) : null}
+      {perenam ? (
+        <div className="flex items-center gap-2">
+          {susun("1", "6")}
+          <span className="text-2xl font-black text-slate-900">=</span>
+          <span className="flex flex-col items-center">
+            <span className="text-2xl font-black text-slate-900">0,1<span className="text-green-700">666</span>…</span>
+            <span className="text-lg font-black leading-none text-green-700">↑</span>
+            <span className="text-[0.65rem] font-bold text-green-700">berulang</span>
+          </span>
+        </div>
+      ) : null}
     </div>
   );
 }
@@ -559,70 +572,73 @@ export default function NaskahMtk6Bab1(_props: { kelas?: string; kelamin?: strin
       <section className="space-y-4">
         <JudulBagian anak="A. Perkalian Pecahan" />
         <h3 className="text-lg font-black text-[#1C01A5]">1. Perkalian Bilangan Asli dengan Pecahan</h3>
-        <Kegiatan label="Materi">
-          <Gambar src="/doodle-mtk/mtk-6-bab1-ember-besar.jpg" alt="Agam dan Ayah menyiram kebun dengan ember besar." keterangan="Satu ember besar menyiram 2 m² kebun." />
-          <p><Teks anak="Agam menyiram kebun. Satu ember besar menyiram 2 m². Ia memakai 5 ember besar." /></p>
-          <p><Teks anak="Satu ember kecil menyiram 3/5 m². Ia memakai 5 ember kecil." /></p>
-        </Kegiatan>
-        <Kegiatan label="Eksplorasi 1.1">
-          <p>Isi tabel ember besar. Satu ember menyiram 2 m², jadi lima ember menyiram 5 × 2 m².</p>
-          <Tabel kolom={["Banyak ember besar", "Luas kebun (m²)"]} baris={[["1", "2"], ["5", "…"]]} />
-          <p>Isi juga tabel untuk 2 ember kecil. Satu ember kecil menyiram 3/5 m².</p>
-          <Tabel kolom={["Banyak ember kecil", "Luas kebun (m²)"]} baris={[["1", "3/5"], ["2", "…"]]} />
-          <Gambar src="/doodle-mtk/mtk-6-bab1-ember-kecil.jpg" alt="Agam memegang ember kecil di samping kebun." keterangan="Ember kecil menyiram sebagian kebun. Bagian 3/5 ada pada petak di bawah." />
-          <p><Teks anak="Satu baris 5 kotak sama dengan 1 m². Satu kotak sama dengan 1/5 m². Satu ember kecil mengisi 3 kotak." /></p>
-          <Petak kolom={5} isi={["isi", "isi", "isi", "kosong", "kosong"]} keterangan="Satu ember kecil: 3 kotak dari 5, yaitu 3/5 m²." />
-        </Kegiatan>
-        <Kegiatan label="Logika Pemahaman">
-          <p>Lima ember besar: ada 2 m² sebanyak 5 kali. Bagian itu dijumlah 5 kali, atau 5 dikali 2.</p>
-          <Tabel kolom={["Banyak ember besar", "Luas kebun (m²)"]} baris={[["1", "2"], ["5", "10"]]} />
-          <p><Teks anak="Dua ember kecil: bagian 3/5 sebanyak 2 kali. Bagian itu dijumlah 2 kali, atau 2 dikali 3/5." /></p>
-          <p><Teks anak="Lima ember kecil: bagian 3/5 sebanyak 5 kali. Bagian itu dijumlah 5 kali, atau 5 dikali 3/5." /></p>
-        </Kegiatan>
-        <Kegiatan label="Langkah Perhitungan">
-          <p>Lima ember besar</p>
-          <p>A. 2 + 2 + 2 + 2 + 2 = 10.</p>
-          <p><Teks anak="B. 5 × 2/1 = (5 × 2) : (1 × 1) = 10." /></p>
-          <p><Teks anak="Dua ember kecil" /></p>
-          <p><Teks anak="A. 3/5 + 3/5 = 6/5." /></p>
-          <p><Teks anak="B. 2/1 × 3/5 = (2 × 3) : (1 × 5) = 6/5." /></p>
-          <p><Teks anak="Lima ember kecil" /></p>
-          <p><Teks anak="A. 3/5 + 3/5 + 3/5 + 3/5 + 3/5 = 15/5 = 3." /></p>
-          <p><Teks anak="B. 5/1 × 3/5 = (5 × 3) : (1 × 5) = 15/5 = 3." /></p>
-        </Kegiatan>
-
-        <div className="space-y-3 rounded-2xl border-2 border-sky-300 bg-sky-50 px-4 py-4 text-sm font-semibold leading-8 text-slate-800">
-          <h3 className="text-lg font-black text-[#1C01A5]">Cara mudah: ember kecil</h3>
-          <p>1 m² dibagi menjadi 5 kolom sama. Satu ember kecil mengisi 3 kolom. Dua kolom tetap kosong. Satu ember = satu baris.</p>
-          <TabelEmber baris={1} keterangan="1 baris, 5 kolom: 3 penuh dan 2 kosong. Hasilnya 3/5 m²." />
-          <p>2 ember = 2 baris. Tiap baris sama: 3 kolom penuh dan 2 kolom kosong.</p>
-          <TabelEmber baris={2} keterangan="Kolom penuh: 3 + 3 = 6. Tiap baris tetap 5 bagian, jadi 6/5 m²." />
-          <p>5 ember = 5 baris dengan pola yang sama.</p>
-          <TabelEmber baris={5} keterangan="Kolom penuh: 5 × 3 = 15. 15/5 = 3 m²." />
-          <Rumus anak="a × b/c = (a × b)/c" />
-          <p>Banyak baris kali 3 kolom penuh. Penyebut tetap 5.</p>
-          <p><Teks anak="Coba buktikan: apakah hasil kali bilangan asli dengan pecahan selalu lebih kecil? Pada ember, 5 × 3/5 = 3, dan 3 lebih kecil dari 5. 2 × 3/5 = 6/5, dan 6/5 lebih kecil dari 2. Jika pecahannya lebih kecil dari 1, hasilnya lebih kecil daripada bilangan aslinya." /></p>
-        </div>
-
-        <Kegiatan label="Contoh Soal">
-          <p><Teks anak="Satu botol berisi 2/3 liter air. Jika ada 5 botol, berapa liter jumlah airnya?" /></p>
-          <p><Teks anak="Logika: ada 2/3 liter sebanyak 5 botol. Bagian itu dijumlah 5 kali, atau 5 dikali 2/3." /></p>
-          <p className="font-black text-[#1C01A5]">Langkah Perhitungan</p>
-          <p><Teks anak="A. 2/3 + 2/3 + 2/3 + 2/3 + 2/3 = 10/3 = 3 + 1/3." /></p>
-          <p><Teks anak="B. 5/1 × 2/3 = (5 × 2) : (1 × 3) = 10/3 = 3 + 1/3 liter air." /></p>
-        </Kegiatan>
-        <Infografis
-          judul="Perkalian bilangan asli dengan pecahan"
-          aturan="Ubah bilangan asli menjadi pecahan. Panah lurus: Pembilang1 per Penyebut1 dikali Pembilang2 per Penyebut2."
-          gambar={<GambarPasangan kiriAtas="5" kiriBawah="1" kananAtas="2" kananBawah="3" operasi="×" arah="lurus" hasilAtas="5 × 2" hasilBawah="1 × 3" akhirAtas="10" akhirBawah="3" catatan="10/3 sama dengan 3 + 1/3." />}
-          kolom={["Langkah", "Pembilang", "Penyebut"]}
-          baris={[
-            ["5 menjadi pecahan", "5", "1"],
-            ["Kali", "5 × 2 = 10", "1 × 3 = 3"],
-            ["Hasil", "10/3", "3 + 1/3"],
-          ]}
+        <PolaCerita
+          adegan={<Gambar src="/doodle-mtk/mtk-6-bab1-ember-besar.jpg" alt="Agam dan Ayah menyiram kebun dengan ember besar." keterangan="Satu ember besar menyiram 2 m² kebun." />}
+          materi={<p><Teks anak="Agam menyiram kebun. Satu ember besar menyiram 2 m². Ia memakai 5 ember besar." /></p>}
+          logika={<p>Ada 2 m² sebanyak 5 kali. Bagian itu dijumlah 5 kali, atau 5 dikali 2.</p>}
+          langkah={
+            <>
+              <BarisLangkah anak="A. 2 + 2 + 2 + 2 + 2 = 10." />
+              <BarisLangkah anak="B. 5 × 2/1 = (5 × 2) : (1 × 1) = 10." gambar={<GambarPasangan kiriAtas="5" kiriBawah="1" kananAtas="2" kananBawah="1" operasi="×" arah="lurus" hasilAtas="5 × 2" hasilBawah="1 × 1" akhirAtas="10" akhirBawah="1" catatan="Kotak merah pada 5/1. Panah hijau lurus. 10/1 sama dengan 10." />} />
+              <Tabel kolom={["Banyak ember besar", "Luas kebun (m²)"]} baris={[["1", "2"], ["5", "10"]]} />
+            </>
+          }
+          jawaban="10 m²."
         />
-        <Jawaban anak="10/3 liter, yaitu 3 + 1/3 liter." />
+        <PolaCerita
+          adegan={
+            <>
+              <Gambar src="/doodle-mtk/mtk-6-bab1-ember-kecil.jpg" alt="Agam memegang ember kecil di samping kebun." keterangan="Ember kecil menyiram sebagian kebun. Bagian 3/5 ada pada petak di bawah." />
+              <p><Teks anak="Satu baris 5 kotak sama dengan 1 m². Satu kotak sama dengan 1/5 m². Satu ember kecil mengisi 3 kotak." /></p>
+              <Petak kolom={5} isi={["isi", "isi", "isi", "kosong", "kosong"]} keterangan="Satu ember kecil: 3 kotak dari 5, yaitu 3/5 m²." />
+            </>
+          }
+          materi={<p><Teks anak="Satu ember kecil menyiram 3/5 m². Agam memakai 2 ember kecil." /></p>}
+          logika={
+            <>
+              <p><Teks anak="Ada bagian 3/5 sebanyak 2 kali. Bagian itu dijumlah 2 kali, atau 2 dikali 3/5." /></p>
+              <Rumus anak="a × b/c = (a × b)/c" />
+            </>
+          }
+          langkah={
+            <>
+              <BarisLangkah anak="A. 3/5 + 3/5 = 6/5." />
+              <BarisLangkah anak="B. 2/1 × 3/5 = (2 × 3) : (1 × 5) = 6/5." gambar={<GambarPasangan kiriAtas="2" kiriBawah="1" kananAtas="3" kananBawah="5" operasi="×" arah="lurus" hasilAtas="2 × 3" hasilBawah="1 × 5" akhirAtas="6" akhirBawah="5" catatan="Kotak merah pada 2/1. Panah hijau lurus." />} />
+              <p>1 m² dibagi menjadi 5 kolom sama. Satu ember kecil mengisi 3 kolom. Satu ember sama dengan satu baris.</p>
+              <TabelEmber baris={1} keterangan="1 baris, 5 kolom: 3 penuh dan 2 kosong. Hasilnya 3/5 m²." />
+              <p>2 ember sama dengan 2 baris. Tiap baris sama: 3 kolom penuh dan 2 kolom kosong.</p>
+              <TabelEmber baris={2} keterangan="Kolom penuh: 3 + 3 = 6. Tiap baris tetap 5 bagian, jadi 6/5 m²." />
+            </>
+          }
+          jawaban="6/5 m²."
+        />
+        <PolaCerita
+          adegan={<p><Teks anak="Agam masih di kebun. Kali ini ia memakai 5 ember kecil." /></p>}
+          materi={<p><Teks anak="Satu ember kecil menyiram 3/5 m². Ada 5 ember kecil." /></p>}
+          logika={<p><Teks anak="Ada bagian 3/5 sebanyak 5 kali. Bagian itu dijumlah 5 kali, atau 5 dikali 3/5." /></p>}
+          langkah={
+            <>
+              <BarisLangkah anak="A. 3/5 + 3/5 + 3/5 + 3/5 + 3/5 = 15/5 = 3." />
+              <BarisLangkah anak="B. 5/1 × 3/5 = (5 × 3) : (1 × 5) = 15/5 = 3." gambar={<GambarPasangan kiriAtas="5" kiriBawah="1" kananAtas="3" kananBawah="5" operasi="×" arah="lurus" hasilAtas="5 × 3" hasilBawah="1 × 5" akhirAtas="15" akhirBawah="5" catatan="Kotak merah pada 5/1. Panah hijau lurus. 15/5 sama dengan 3." />} />
+              <p>5 ember sama dengan 5 baris dengan pola yang sama. Banyak baris kali 3 kolom penuh. Penyebut tetap 5.</p>
+              <TabelEmber baris={5} keterangan="Kolom penuh: 5 × 3 = 15. 15/5 = 3 m²." />
+              <p><Teks anak="Coba buktikan: apakah hasil kali bilangan asli dengan pecahan selalu lebih kecil? Pada ember, 5 × 3/5 = 3, dan 3 lebih kecil dari 5. 2 × 3/5 = 6/5, dan 6/5 lebih kecil dari 2. Jika pecahannya lebih kecil dari 1, hasilnya lebih kecil daripada bilangan aslinya." /></p>
+            </>
+          }
+          jawaban="3 m²."
+        />
+        <PolaCerita
+          adegan={<p><Teks anak="Agam menyimpan air di botol. Satu botol berisi 2/3 liter. Ada 5 botol." /></p>}
+          materi={<p><Teks anak="Satu botol berisi 2/3 liter air. Jika ada 5 botol, berapa liter jumlah airnya?" /></p>}
+          logika={<p><Teks anak="Ada bagian 2/3 sebanyak 5 botol. Bagian itu dijumlah 5 kali, atau 5 dikali 2/3." /></p>}
+          langkah={
+            <>
+              <BarisLangkah anak="A. 2/3 + 2/3 + 2/3 + 2/3 + 2/3 = 10/3 = 3 + 1/3." />
+              <BarisLangkah anak="B. 5/1 × 2/3 = (5 × 2) : (1 × 3) = 10/3 = 3 + 1/3." gambar={<GambarPasangan kiriAtas="5" kiriBawah="1" kananAtas="2" kananBawah="3" operasi="×" arah="lurus" hasilAtas="5 × 2" hasilBawah="1 × 3" akhirAtas="10" akhirBawah="3" catatan="Kotak merah pada 5/1. Panah hijau lurus. 10/3 sama dengan 3 + 1/3." />} />
+            </>
+          }
+          jawaban="10/3 liter, yaitu 3 + 1/3 liter."
+        />
         <p className="text-sm font-black uppercase tracking-wide text-[#1C01A5]">Latihan Soal</p>
         <SoalLatihan anak="1. Satu gelas berisi 2/5 liter jus. Agam menuang 4 gelas. Berapa liter jus seluruhnya?" id={idKuis("A", 10)} periksa={(teks) => pecahan(teks, "8/5")} jawaban="Ada 2/5 liter sebanyak 4 gelas. A. 2/5 + 2/5 + 2/5 + 2/5 = 8/5. B. 4/1 × 2/5 = (4 × 2) : (1 × 5) = 8/5. Jawabannya 8/5 liter." />
         <SoalLatihan anak="2. Satu petak kebun luasnya 3/4 m². Ada 2 petak seperti itu. Berapa luas seluruhnya?" id={idKuis("A", 11)} periksa={(teks) => pecahan(teks, "6/4") || pecahan(teks, "3/2")} jawaban="Ada 3/4 m² sebanyak 2 petak. A. 3/4 + 3/4 = 6/4 = 3/2. B. 2/1 × 3/4 = (2 × 3) : (1 × 4) = 6/4 = 3/2. Jawabannya 3/2 m²." />
@@ -632,47 +648,40 @@ export default function NaskahMtk6Bab1(_props: { kelas?: string; kelamin?: strin
         <SoalLatihan anak="6. Luas yang disiram 5 ember kecil, dalam m²?" id={idKuis("A", 2)} periksa={jumlahTiga} jawaban="Ada 3/5 m² sebanyak 5 ember. A. 3/5 + 3/5 + 3/5 + 3/5 + 3/5 = 15/5 = 3. B. 5/1 × 3/5 = (5 × 3) : (1 × 5) = 15/5 = 3. Jawabannya 3 m²." />
 
         <h3 className="text-lg font-black text-[#1C01A5]">2. Perkalian Pecahan dengan Bilangan Asli</h3>
-        <Kegiatan label="Materi">
-          <Gambar src="/doodle-mtk/mtk-6-bab1-pohon.jpg" alt="Agam berdiri di kebun pohon mangga." keterangan="Kebun mangga Agam. Pohonnya ada 15." />
-          <p><Teks anak="Agam punya 15 pohon mangga. 2/3 dari pohon itu adalah mangga manalagi." /></p>
-        </Kegiatan>
-        <Kegiatan label="Eksplorasi 1.2">
-          <p>Bagi 15 pohon menjadi 3 bagian, lalu gabungkan 2 bagian.</p>
-          <p>Gambar 15 pohon itu, lalu tandai 2 bagian dari 3 bagian.</p>
-        </Kegiatan>
-        <Kegiatan label="Logika Pemahaman">
-          <p><Teks anak="15 pohon dibagi 3, lalu 2 bagian digabung. Itu sama dengan 2/3 dikali 15." /></p>
-          <Rumus anak="a/c × b = (a × b)/c" />
-          <p><Teks anak="1/4 dari 20 berarti 20 dibagi 4, atau 20 dikali 1/4. Urutan 1/4 × 20 dan 20 × 1/4 tidak mengubah hasil." /></p>
-        </Kegiatan>
-        <Kegiatan label="Langkah Perhitungan">
-          <p><Teks anak="15 pohon, bagian 2/3" /></p>
-          <p><Teks anak="A. 15 : 3 = 5. Dua bagian: 5 + 5 = 10." /></p>
-          <p><Teks anak="B. 2/3 × 15/1 = (2 × 15) : (3 × 1) = 30/3 = 10." /></p>
-          <p><Teks anak="1/4 dari 20" /></p>
-          <p><Teks anak="A. 20 : 4/1 = (20 × 1) : (1 × 4) = 20/4 = 5. Atau 1/4 × 20/1 = (1 × 20) : (4 × 1) = 20/4 = 5." /></p>
-          <p><Teks anak="B. 20/1 × 1/4 = (20 × 1) : (1 × 4) = 20/4 = 5." /></p>
-        </Kegiatan>
-
-        <Kegiatan label="Contoh Soal">
-          <p><Teks anak="Agam punya 15 pohon mangga. 2/3 dari pohon itu mangga manalagi. Berapa pohon manalagi?" /></p>
-          <p><Teks anak="Logika: 15 pohon dibagi 3, lalu 2 bagian digabung. Itu sama dengan 2/3 dikali 15." /></p>
-          <p className="font-black text-[#1C01A5]">Langkah Perhitungan</p>
-          <p><Teks anak="A. 15 : 3 = 5. Dua bagian: 5 + 5 = 10." /></p>
-          <p><Teks anak="B. 2/3 × 15/1 = (2 × 15) : (3 × 1) = 30/3 = 10 pohon." /></p>
-        </Kegiatan>
-        <Infografis
-          judul="Perkalian pecahan dengan bilangan asli"
-          aturan="Ubah bilangan asli menjadi pecahan. Panah lurus: Pembilang1 per Penyebut1 dikali Pembilang2 per Penyebut2."
-          gambar={<GambarPasangan kiriAtas="2" kiriBawah="3" kananAtas="15" kananBawah="1" operasi="×" arah="lurus" hasilAtas="2 × 15" hasilBawah="3 × 1" akhirAtas="30" akhirBawah="3" catatan="30/3 sama dengan 10." />}
-          kolom={["Langkah", "Pembilang", "Penyebut"]}
-          baris={[
-            ["15 menjadi pecahan", "15", "1"],
-            ["Kali", "2 × 15 = 30", "3 × 1 = 3"],
-            ["Hasil", "30/3", "10"],
-          ]}
+        <PolaCerita
+          adegan={<Gambar src="/doodle-mtk/mtk-6-bab1-pohon.jpg" alt="Agam berdiri di kebun pohon mangga." keterangan="Kebun mangga Agam. Pohonnya ada 15." />}
+          materi={
+            <>
+              <p><Teks anak="Agam punya 15 pohon mangga. 2/3 dari pohon itu adalah mangga manalagi." /></p>
+              <p>Bagi 15 pohon menjadi 3 bagian, lalu gabungkan 2 bagian.</p>
+            </>
+          }
+          logika={
+            <>
+              <p><Teks anak="15 pohon dibagi 3, lalu 2 bagian digabung. Itu sama dengan 2/3 dikali 15." /></p>
+              <Rumus anak="a/c × b = (a × b)/c" />
+            </>
+          }
+          langkah={
+            <>
+              <BarisLangkah anak="A. 15 : 3 = 5. Dua bagian: 5 + 5 = 10." />
+              <BarisLangkah anak="B. 2/3 × 15/1 = (2 × 15) : (3 × 1) = 30/3 = 10." gambar={<GambarPasangan kiriAtas="2" kiriBawah="3" kananAtas="15" kananBawah="1" operasi="×" arah="lurus" hasilAtas="2 × 15" hasilBawah="3 × 1" akhirAtas="30" akhirBawah="3" catatan="Kotak merah pada 2/3. Panah hijau lurus. 30/3 sama dengan 10." />} />
+            </>
+          }
+          jawaban="10 pohon mangga manalagi."
         />
-        <Jawaban anak="10 pohon mangga manalagi." />
+        <PolaCerita
+          adegan={<p><Teks anak="Agam menghitung seperempat dari 20 benda di kebun." /></p>}
+          materi={<p><Teks anak="1/4 dari 20." /></p>}
+          logika={<p><Teks anak="20 dibagi 4, atau 20 dikali 1/4. Urutan 1/4 × 20 dan 20 × 1/4 tidak mengubah hasil." /></p>}
+          langkah={
+            <>
+              <BarisLangkah anak="A. 20/1 : 4/1 = (20 × 1) : (1 × 4) = 20/4 = 5." gambar={<GambarPasangan kiriAtas="20" kiriBawah="1" kananAtas="4" kananBawah="1" operasi="÷" arah="silang" hasilAtas="20 × 1" hasilBawah="1 × 4" akhirAtas="20" akhirBawah="4" catatan="Kotak merah pada 20/1. Panah hijau menyilang. 20/4 sama dengan 5." />} />
+              <BarisLangkah anak="B. 20/1 × 1/4 = (20 × 1) : (1 × 4) = 20/4 = 5. 1/4 × 20/1 juga 5." gambar={<GambarPasangan kiriAtas="20" kiriBawah="1" kananAtas="1" kananBawah="4" operasi="×" arah="lurus" hasilAtas="20 × 1" hasilBawah="1 × 4" akhirAtas="20" akhirBawah="4" catatan="Kotak merah pada 20/1. Panah hijau lurus. 20/4 sama dengan 5." />} />
+            </>
+          }
+          jawaban="5."
+        />
         <p className="text-sm font-black uppercase tracking-wide text-[#1C01A5]">Latihan Soal</p>
         <SoalLatihan anak="1. Ada 12 mangga. 3/4 bagian sudah masak. Berapa mangga yang masak?" id={idKuis("A", 13)} periksa={(teks) => hasilUtuh(teks, "9")} jawaban="12 mangga dibagi 4, lalu 3 bagian digabung. A. 12 : 4 = 3. Tiga bagian: 3 + 3 + 3 = 9. B. 3/4 × 12/1 = (3 × 12) : (4 × 1) = 36/4 = 9. Jawabannya 9 mangga." />
         <SoalLatihan anak="2. Ada 20 pensil. 2/5 bagian berwarna merah. Berapa pensil merah?" id={idKuis("A", 14)} periksa={(teks) => hasilUtuh(teks, "8")} jawaban="20 pensil dibagi 5, lalu 2 bagian digabung. A. 20 : 5 = 4. Dua bagian: 4 + 4 = 8. B. 2/5 × 20/1 = (2 × 20) : (5 × 1) = 40/5 = 8. Jawabannya 8 pensil." />
@@ -700,64 +709,66 @@ export default function NaskahMtk6Bab1(_props: { kelas?: string; kelamin?: strin
       <section className="space-y-4">
         <JudulBagian anak="B. Pembagian Pecahan" />
         <h3 className="text-lg font-black text-[#1C01A5]">1. Pembagian Pecahan dengan Bilangan Asli</h3>
-        <Kegiatan label="Materi">
-          <Gambar src="/doodle-mtk/mtk-6-bab1-botol.jpg" alt="Satu botol air dan tiga gelas kosong di meja." keterangan="Satu botol air akan dibagi rata ke 3 gelas." />
-          <p><Teks anak="Agam punya satu botol air. Air dibagi rata ke 3 gelas." /></p>
-          <p><Teks anak="Pertama, isi botol 1 liter." /></p>
-          <p><Teks anak="Kemudian, isi botol 1/2 liter." /></p>
-          <p><Teks anak="Terakhir, isi botol 1/3 liter." /></p>
-        </Kegiatan>
-        <Kegiatan label="Eksplorasi 1.3">
-          <p>Satu kotak penuh menggambarkan 1 liter. Arsir isi botol, lalu bagi arsiran itu rata ke 3 gelas.</p>
-          <p><Teks anak="a. Botol 1 liter. b. Botol 1/2 liter. c. Botol 1/3 liter." /></p>
-        </Kegiatan>
-        <Kegiatan label="Logika Pemahaman">
-          <p><Teks anak="1 liter dibagi 3, atau dikali 1/3." /></p>
-          <Tabel kolom={["Gelas", "Isi"]} baris={[["1", "1/3 liter"], ["2", "1/3 liter"], ["3", "1/3 liter"]]} />
-          <p><Teks anak="1/2 liter dibagi 3, atau dikali 1/3." /></p>
-          <p><Teks anak="1/3 liter dibagi 3, atau dikali 1/3. Bagiannya bertambah banyak, tetapi nilai tiap bagian menjadi lebih kecil." /></p>
-          <Rumus anak="1/a ÷ b = 1/a × 1/b" />
-          <p><Teks anak="Rini menghitung 4/3 ÷ 2. Bagian 4/3 dibagi 2, atau dikali 1/2. Membagi pembilang saja, (4 ÷ 2)/3 = 2/3, kebetulan sama." /></p>
-          <p><Teks anak="Buat cerita sendiri untuk 4/3 ÷ 2." /></p>
-        </Kegiatan>
-        <Kegiatan label="Langkah Perhitungan">
-          <p>1 liter dibagi 3 gelas</p>
-          <p><Teks anak="A. 1/1 : 3/1 = (1 × 1) : (1 × 3) = 1/3." /></p>
-          <p><Teks anak="B. 1 × 1/3 = 1/3 liter." /></p>
-          <p><Teks anak="1/2 liter dibagi 3 gelas" /></p>
-          <p><Teks anak="A. 1/2 : 3/1 = (1 × 1) : (2 × 3) = 1/6." /></p>
-          <p><Teks anak="B. 1/2 × 1/3 = (1 × 1) : (2 × 3) = 1/6 liter." /></p>
-          <p><Teks anak="1/3 liter dibagi 3 gelas" /></p>
-          <p><Teks anak="A. 1/3 : 3/1 = (1 × 1) : (3 × 3) = 1/9." /></p>
-          <p><Teks anak="B. 1/3 × 1/3 = (1 × 1) : (3 × 3) = 1/9 liter." /></p>
-          <p><Teks anak="4/3 dibagi 2" /></p>
-          <p><Teks anak="A. 4/3 : 2/1 = (4 × 1) : (3 × 2) = 4/6 = 2/3." /></p>
-          <p><Teks anak="B. 4/3 × 1/2 = (4 × 1) : (3 × 2) = 4/6 = 2/3." /></p>
-        </Kegiatan>
-
-        <Kegiatan label="Contoh Soal">
-          <p><Teks anak="Satu botol berisi 1/2 liter air. Air itu dibagi rata ke 3 gelas. Berapa liter isi tiap gelas?" /></p>
-          <p><Teks anak="Logika: bagian 1/2 itu dibagi 3, atau dikali 1/3." /></p>
-          <p className="font-black text-[#1C01A5]">Langkah Perhitungan</p>
-          <p><Teks anak="A. 1/2 : 3/1 = (1 × 1) : (2 × 3) = 1/6." /></p>
-          <p><Teks anak="B. 1/2 × 1/3 = (1 × 1) : (2 × 3) = 1/6 liter." /></p>
-        </Kegiatan>
-        <Infografis
-          judul="Pembagian pecahan dengan bilangan asli"
-          aturan="Ubah bilangan asli menjadi pecahan. Panah silang: Pembilang1 per Penyebut1 dibagi Pembilang2 per Penyebut2."
-          gambar={<GambarPasangan kiriAtas="1" kiriBawah="2" kananAtas="3" kananBawah="1" operasi="÷" arah="silang" hasilAtas="1 × 1" hasilBawah="2 × 3" akhirAtas="1" akhirBawah="6" />}
-          kolom={["Peran", "Pada 1/2 ÷ 3/1"]}
-          baris={[
-            ["Pembilang1", "1"],
-            ["Penyebut1", "2"],
-            ["Pembilang2", "3"],
-            ["Penyebut2", "1"],
-            ["Pembilang1 × penyebut2", "1 × 1 = 1"],
-            ["Penyebut1 × pembilang2", "2 × 3 = 6"],
-            ["Hasil", "1/6"],
-          ]}
+        <PolaCerita
+          adegan={
+            <>
+              <Gambar src="/doodle-mtk/mtk-6-bab1-botol.jpg" alt="Satu botol air dan tiga gelas kosong di meja." keterangan="Satu botol air akan dibagi rata ke 3 gelas." />
+              <p>Satu kotak penuh menggambarkan 1 liter. Arsir isi botol, lalu bagi arsiran itu rata ke 3 gelas.</p>
+            </>
+          }
+          materi={<p><Teks anak="Isi botol 1 liter. Air dibagi rata ke 3 gelas." /></p>}
+          logika={<p><Teks anak="1 liter dibagi 3, atau dikali 1/3." /></p>}
+          langkah={
+            <>
+              <BarisLangkah anak="A. 1/1 : 3/1 = (1 × 1) : (1 × 3) = 1/3." gambar={<GambarPasangan kiriAtas="1" kiriBawah="1" kananAtas="3" kananBawah="1" operasi="÷" arah="silang" hasilAtas="1 × 1" hasilBawah="1 × 3" akhirAtas="1" akhirBawah="3" catatan="Kotak merah pada 1/1. Panah hijau menyilang." />} />
+              <BarisLangkah anak="B. 1/1 × 1/3 = (1 × 1) : (1 × 3) = 1/3." gambar={<GambarPasangan kiriAtas="1" kiriBawah="1" kananAtas="1" kananBawah="3" operasi="×" arah="lurus" hasilAtas="1 × 1" hasilBawah="1 × 3" akhirAtas="1" akhirBawah="3" catatan="Kotak merah pada 1/1. Panah hijau lurus." />} />
+              <Tabel kolom={["Gelas", "Isi"]} baris={[["1", "1/3 liter"], ["2", "1/3 liter"], ["3", "1/3 liter"]]} />
+            </>
+          }
+          jawaban="1/3 liter tiap gelas."
         />
-        <Jawaban anak="1/6 liter tiap gelas." />
+        <PolaCerita
+          adegan={<p><Teks anak="Botol yang sama sekarang berisi 1/2 liter. Air tetap dibagi rata ke 3 gelas." /></p>}
+          materi={<p><Teks anak="Isi botol 1/2 liter. Air dibagi rata ke 3 gelas." /></p>}
+          logika={
+            <>
+              <p><Teks anak="Bagian 1/2 yang berarti 1 itu dibagi 3, atau dikali 1/3." /></p>
+              <Rumus anak="1/a ÷ b = 1/a × 1/b" />
+            </>
+          }
+          langkah={
+            <>
+              <BarisLangkah anak="A. 1/2 : 3/1 = (1 × 1) : (2 × 3) = 1/6." gambar={<GambarPasangan kiriAtas="1" kiriBawah="2" kananAtas="3" kananBawah="1" operasi="÷" arah="silang" hasilAtas="1 × 1" hasilBawah="2 × 3" akhirAtas="1" akhirBawah="6" catatan="Kotak merah pada 1/2. Panah hijau menyilang." />} />
+              <BarisLangkah anak="B. 1/2 × 1/3 = (1 × 1) : (2 × 3) = 1/6." gambar={<GambarPasangan kiriAtas="1" kiriBawah="2" kananAtas="1" kananBawah="3" operasi="×" arah="lurus" hasilAtas="1 × 1" hasilBawah="2 × 3" akhirAtas="1" akhirBawah="6" catatan="Kotak merah pada 1/2. Panah hijau lurus." />} />
+            </>
+          }
+          jawaban="1/6 liter tiap gelas."
+        />
+        <PolaCerita
+          adegan={<p><Teks anak="Terakhir, isi botol hanya 1/3 liter. Air itu juga dibagi rata ke 3 gelas." /></p>}
+          materi={<p><Teks anak="Isi botol 1/3 liter. Air dibagi rata ke 3 gelas." /></p>}
+          logika={<p><Teks anak="Bagian 1/3 yang berarti 1 itu dibagi 3, atau dikali 1/3. Bagiannya bertambah banyak, tetapi nilai tiap bagian menjadi lebih kecil." /></p>}
+          langkah={
+            <>
+              <BarisLangkah anak="A. 1/3 : 3/1 = (1 × 1) : (3 × 3) = 1/9." gambar={<GambarPasangan kiriAtas="1" kiriBawah="3" kananAtas="3" kananBawah="1" operasi="÷" arah="silang" hasilAtas="1 × 1" hasilBawah="3 × 3" akhirAtas="1" akhirBawah="9" catatan="Kotak merah pada 1/3. Panah hijau menyilang." />} />
+              <BarisLangkah anak="B. 1/3 × 1/3 = (1 × 1) : (3 × 3) = 1/9." gambar={<GambarPasangan kiriAtas="1" kiriBawah="3" kananAtas="1" kananBawah="3" operasi="×" arah="lurus" hasilAtas="1 × 1" hasilBawah="3 × 3" akhirAtas="1" akhirBawah="9" catatan="Kotak merah pada 1/3. Panah hijau lurus." />} />
+            </>
+          }
+          jawaban="1/9 liter tiap gelas."
+        />
+        <PolaCerita
+          adegan={<p><Teks anak="Rini menghitung 4/3 dibagi 2." /></p>}
+          materi={<p><Teks anak="4/3 ÷ 2." /></p>}
+          logika={<p><Teks anak="Bagian 4/3 yang berarti 1 itu dibagi 2, atau dikali 1/2. Membagi pembilang saja, (4 ÷ 2)/3 = 2/3, kebetulan sama." /></p>}
+          langkah={
+            <>
+              <BarisLangkah anak="A. 4/3 : 2/1 = (4 × 1) : (3 × 2) = 4/6 = 2/3." gambar={<GambarPasangan kiriAtas="4" kiriBawah="3" kananAtas="2" kananBawah="1" operasi="÷" arah="silang" hasilAtas="4 × 1" hasilBawah="3 × 2" akhirAtas="4" akhirBawah="6" catatan="Kotak merah pada 4/3. Panah hijau menyilang. 4/6 sama dengan 2/3." />} />
+              <BarisLangkah anak="B. 4/3 × 1/2 = (4 × 1) : (3 × 2) = 4/6 = 2/3." gambar={<GambarPasangan kiriAtas="4" kiriBawah="3" kananAtas="1" kananBawah="2" operasi="×" arah="lurus" hasilAtas="4 × 1" hasilBawah="3 × 2" akhirAtas="4" akhirBawah="6" catatan="Kotak merah pada 4/3. Panah hijau lurus. 4/6 sama dengan 2/3." />} />
+            </>
+          }
+          jawaban="2/3."
+        />
+        <p className="text-sm font-semibold leading-8 text-slate-800"><Teks anak="Buat cerita sendiri untuk 4/3 ÷ 2." /></p>
         <p className="text-sm font-black uppercase tracking-wide text-[#1C01A5]">Latihan Soal</p>
         <SoalLatihan anak="1. Ada 3/4 liter sirup. Sirup dibagi rata ke 2 gelas. Berapa liter tiap gelas?" id={idKuis("B", 10)} periksa={(teks) => pecahan(teks, "3/8")} jawaban="Bagian 3/4 dibagi 2, atau dikali 1/2. A. 3/4 : 2/1 = (3 × 1) : (4 × 2) = 3/8. B. 3/4 × 1/2 = (3 × 1) : (4 × 2) = 3/8. Jawabannya 3/8 liter." />
         <SoalLatihan anak="2. Ada 2/3 kg gula. Gula dibagi rata untuk 4 adonan. Berapa kg tiap adonan?" id={idKuis("B", 11)} periksa={(teks) => seperenam(teks) || pecahan(teks, "2/12")} jawaban="Bagian 2/3 dibagi 4, atau dikali 1/4. A. 2/3 : 4/1 = (2 × 1) : (3 × 4) = 2/12 = 1/6. B. 2/3 × 1/4 = (2 × 1) : (3 × 4) = 2/12 = 1/6. Jawabannya 1/6 kg." />
@@ -766,70 +777,70 @@ export default function NaskahMtk6Bab1(_props: { kelas?: string; kelamin?: strin
         <SoalLatihan anak="5. 1/3 liter dibagi 3 gelas. Isi tiap gelas, dalam liter?" id={idKuis("B", 1)} periksa={sepersembilan} jawaban="Bagian 1/3 dibagi 3, atau dikali 1/3. A. 1/3 : 3/1 = (1 × 1) : (3 × 3) = 1/9. B. 1/3 × 1/3 = (1 × 1) : (3 × 3) = 1/9. Jawabannya 1/9 liter." />
 
         <h3 className="text-lg font-black text-[#1C01A5]">2. Pembagian Bilangan Asli dengan Pecahan</h3>
-        <Kegiatan label="Materi">
-          <Gambar src="/doodle-mtk/mtk-6-bab1-jus.jpg" alt="Tiga botol minuman dan tumpukan gelas kecil." keterangan="Jus jeruk, jus jambu, dan air mineral, masing-masing 3 liter." />
-          <p><Teks anak="Agam menyiapkan 3 liter jus jeruk. Tiap gelas berisi 1/4 liter." /></p>
-          <p><Teks anak="Agam menyiapkan 3 liter jus jambu. Tiap gelas berisi 1/2 liter." /></p>
-          <p><Teks anak="Agam menyiapkan 3 liter air mineral. Tiap gelas berisi 1/5 liter." /></p>
-          <p><Teks anak="3 liter air itu juga diukur dengan botol 2/5 liter." /></p>
-        </Kegiatan>
-        <Kegiatan label="Eksplorasi 1.4">
-          <p><Teks anak="Dalam 1 liter ada 4 gelas 1/4 liter, 2 gelas 1/2 liter, dan 5 gelas 1/5 liter. Untuk 2/5 liter, dalam 1 liter ada 5/2 bagian. Mengapa hasilnya bisa lebih besar dari 3?" /></p>
-        </Kegiatan>
-        <Kegiatan label="Logika Pemahaman">
-          <p><Teks anak="3 liter dibagi gelas 1/4 liter. Dalam 1 liter ada 4 gelas, jadi 3 dikali 4. Operasinya 3 dibagi 1/4, atau 3 dikali 4/1." /></p>
-          <p><Teks anak="3 liter dibagi gelas 1/2 liter. Dalam 1 liter ada 2 gelas. Operasinya 3 dibagi 1/2, atau 3 dikali 2/1." /></p>
-          <p><Teks anak="3 liter dibagi gelas 1/5 liter. Dalam 1 liter ada 5 gelas. Operasinya 3 dibagi 1/5, atau 3 dikali 5/1." /></p>
-          <p><Teks anak="3 liter dibagi botol 2/5 liter. Dalam 1 liter ada 5/2 bagian. Operasinya 3 dibagi 2/5, atau 3 dikali 5/2." /></p>
-          <p>Hasilnya lebih besar dari 3 karena gelas atau botol itu lebih kecil dari 1 liter, jadi wadahnya lebih banyak.</p>
-          <Rumus anak="a ÷ b/c = a × c/b" />
-        </Kegiatan>
-        <Kegiatan label="Langkah Perhitungan">
-          <p><Teks anak="3 liter, gelas 1/4 liter" /></p>
-          <p><Teks anak="A. 3/1 : 1/4 = (3 × 4) : (1 × 1) = 12." /></p>
-          <p><Teks anak="B. 3 × 4/1 = (3 × 4) : (1 × 1) = 12 gelas." /></p>
-          <p><Teks anak="3 liter, gelas 1/2 liter" /></p>
-          <p><Teks anak="A. 3/1 : 1/2 = (3 × 2) : (1 × 1) = 6." /></p>
-          <p><Teks anak="B. 3 × 2/1 = (3 × 2) : (1 × 1) = 6 gelas." /></p>
-          <p><Teks anak="3 liter, gelas 1/5 liter" /></p>
-          <p><Teks anak="A. 3/1 : 1/5 = (3 × 5) : (1 × 1) = 15." /></p>
-          <p><Teks anak="B. 3 × 5/1 = (3 × 5) : (1 × 1) = 15 gelas." /></p>
-          <p><Teks anak="3 liter, botol 2/5 liter" /></p>
-          <p><Teks anak="A. 3/1 : 2/5 = (3 × 5) : (1 × 2) = 15/2 = 7 1/2." /></p>
-          <p><Teks anak="B. 3 × 5/2 = (3 × 5) : (1 × 2) = 15/2 = 7 1/2 botol." /></p>
-        </Kegiatan>
-
-        <Kegiatan label="Contoh Soal">
-          <p><Teks anak="Agam punya 3 liter jus jeruk. Tiap gelas berisi 1/4 liter. Berapa gelas yang terisi?" /></p>
-          <p><Teks anak="Logika: 3 liter dibagi 1/4, atau dikali 4/1. Dalam 1 liter ada 4 gelas." /></p>
-          <p className="font-black text-[#1C01A5]">Langkah Perhitungan</p>
-          <p><Teks anak="A. 3/1 : 1/4 = (3 × 4) : (1 × 1) = 12." /></p>
-          <p><Teks anak="B. 3 × 4/1 = (3 × 4) : (1 × 1) = 12 gelas. Empat gelas sebanyak 3 liter: 4 + 4 + 4 = 12." /></p>
-        </Kegiatan>
-        <Infografis
-          judul="3 liter dibagi gelas 1/4 liter"
-          aturan="Ubah bilangan asli menjadi pecahan. Panah silang: Pembilang1 per Penyebut1 dibagi Pembilang2 per Penyebut2."
-          gambar={<GambarPasangan kiriAtas="3" kiriBawah="1" kananAtas="1" kananBawah="4" operasi="÷" arah="silang" hasilAtas="3 × 4" hasilBawah="1 × 1" akhirAtas="12" />}
-          kolom={["Langkah", "Hitung"]}
-          baris={[
-            ["3 menjadi pecahan", "3/1"],
-            ["Pembilang1 × penyebut2", "3 × 4 = 12"],
-            ["Penyebut1 × pembilang2", "1 × 1 = 1"],
-            ["Hasil", "12"],
-          ]}
+        <PolaCerita
+          adegan={<Gambar src="/doodle-mtk/mtk-6-bab1-jus.jpg" alt="Tiga botol minuman dan tumpukan gelas kecil." keterangan="Jus jeruk, jus jambu, dan air mineral, masing-masing 3 liter." />}
+          materi={<p><Teks anak="Agam menyiapkan 3 liter jus jeruk. Tiap gelas berisi 1/4 liter." /></p>}
+          logika={
+            <>
+              <p><Teks anak="3 liter dibagi 1/4, atau dikali 4/1. Dalam 1 liter ada 4 gelas, jadi 3 dikali 4." /></p>
+              <Rumus anak="a ÷ b/c = a × c/b" />
+            </>
+          }
+          langkah={
+            <>
+              <BarisLangkah anak="A. 3/1 : 1/4 = (3 × 4) : (1 × 1) = 12." gambar={<GambarPasangan kiriAtas="3" kiriBawah="1" kananAtas="1" kananBawah="4" operasi="÷" arah="silang" hasilAtas="3 × 4" hasilBawah="1 × 1" akhirAtas="12" catatan="Kotak merah pada 3/1. Panah hijau menyilang." />} />
+              <BarisLangkah anak="B. 3/1 × 4/1 = (3 × 4) : (1 × 1) = 12. Empat gelas sebanyak 3 liter: 4 + 4 + 4 = 12." gambar={<GambarPasangan kiriAtas="3" kiriBawah="1" kananAtas="4" kananBawah="1" operasi="×" arah="lurus" hasilAtas="3 × 4" hasilBawah="1 × 1" akhirAtas="12" catatan="Kotak merah pada 3/1. Panah hijau lurus." />} />
+            </>
+          }
+          jawaban="12 gelas."
         />
-        <Jawaban anak="12 gelas." />
-        <Infografis
-          judul="Pembagian bilangan asli dengan pecahan"
-          aturan="Ubah bilangan asli menjadi pecahan. Panah silang: Pembilang1 per Penyebut1 dibagi Pembilang2 per Penyebut2."
-          gambar={<GambarPasangan kiriAtas="5" kiriBawah="1" kananAtas="2" kananBawah="3" operasi="÷" arah="silang" hasilAtas="5 × 3" hasilBawah="1 × 2" akhirAtas="15" akhirBawah="2" catatan="15/2 sama dengan 7 + 1/2." />}
-          kolom={["Peran", "Hitung"]}
-          baris={[
-            ["5 menjadi pecahan", "5/1"],
-            ["Pembilang1 × penyebut2", "5 × 3 = 15"],
-            ["Penyebut1 × pembilang2", "1 × 2 = 2"],
-            ["Hasil", "15/2 = 7 + 1/2"],
-          ]}
+        <PolaCerita
+          adegan={<p><Teks anak="Agam menyiapkan 3 liter jus jambu. Tiap gelas berisi 1/2 liter." /></p>}
+          materi={<p><Teks anak="3 liter dibagi gelas 1/2 liter." /></p>}
+          logika={<p><Teks anak="3 liter dibagi 1/2, atau dikali 2/1. Dalam 1 liter ada 2 gelas." /></p>}
+          langkah={
+            <>
+              <BarisLangkah anak="A. 3/1 : 1/2 = (3 × 2) : (1 × 1) = 6." gambar={<GambarPasangan kiriAtas="3" kiriBawah="1" kananAtas="1" kananBawah="2" operasi="÷" arah="silang" hasilAtas="3 × 2" hasilBawah="1 × 1" akhirAtas="6" catatan="Kotak merah pada 3/1. Panah hijau menyilang." />} />
+              <BarisLangkah anak="B. 3/1 × 2/1 = (3 × 2) : (1 × 1) = 6." gambar={<GambarPasangan kiriAtas="3" kiriBawah="1" kananAtas="2" kananBawah="1" operasi="×" arah="lurus" hasilAtas="3 × 2" hasilBawah="1 × 1" akhirAtas="6" catatan="Kotak merah pada 3/1. Panah hijau lurus." />} />
+            </>
+          }
+          jawaban="6 gelas."
+        />
+        <PolaCerita
+          adegan={<p><Teks anak="Agam menyiapkan 3 liter air mineral. Tiap gelas berisi 1/5 liter." /></p>}
+          materi={<p><Teks anak="3 liter dibagi gelas 1/5 liter." /></p>}
+          logika={<p><Teks anak="3 liter dibagi 1/5, atau dikali 5/1. Dalam 1 liter ada 5 gelas." /></p>}
+          langkah={
+            <>
+              <BarisLangkah anak="A. 3/1 : 1/5 = (3 × 5) : (1 × 1) = 15." gambar={<GambarPasangan kiriAtas="3" kiriBawah="1" kananAtas="1" kananBawah="5" operasi="÷" arah="silang" hasilAtas="3 × 5" hasilBawah="1 × 1" akhirAtas="15" catatan="Kotak merah pada 3/1. Panah hijau menyilang." />} />
+              <BarisLangkah anak="B. 3/1 × 5/1 = (3 × 5) : (1 × 1) = 15." gambar={<GambarPasangan kiriAtas="3" kiriBawah="1" kananAtas="5" kananBawah="1" operasi="×" arah="lurus" hasilAtas="3 × 5" hasilBawah="1 × 1" akhirAtas="15" catatan="Kotak merah pada 3/1. Panah hijau lurus." />} />
+            </>
+          }
+          jawaban="15 gelas."
+        />
+        <PolaCerita
+          adegan={<p><Teks anak="3 liter air itu juga diukur dengan botol 2/5 liter." /></p>}
+          materi={<p><Teks anak="3 liter dibagi botol 2/5 liter." /></p>}
+          logika={<p><Teks anak="3 liter dibagi 2/5, atau dikali 5/2. Dalam 1 liter ada 5/2 bagian. Hasilnya lebih besar dari 3 karena botol itu lebih kecil dari 1 liter, jadi wadahnya lebih banyak." /></p>}
+          langkah={
+            <>
+              <BarisLangkah anak="A. 3/1 : 2/5 = (3 × 5) : (1 × 2) = 15/2 = 7 1/2." gambar={<GambarPasangan kiriAtas="3" kiriBawah="1" kananAtas="2" kananBawah="5" operasi="÷" arah="silang" hasilAtas="3 × 5" hasilBawah="1 × 2" akhirAtas="15" akhirBawah="2" catatan="Kotak merah pada 3/1. Panah hijau menyilang. 15/2 sama dengan 7 + 1/2." />} />
+              <BarisLangkah anak="B. 3/1 × 5/2 = (3 × 5) : (1 × 2) = 15/2 = 7 1/2." gambar={<GambarPasangan kiriAtas="3" kiriBawah="1" kananAtas="5" kananBawah="2" operasi="×" arah="lurus" hasilAtas="3 × 5" hasilBawah="1 × 2" akhirAtas="15" akhirBawah="2" catatan="Kotak merah pada 3/1. Panah hijau lurus. 15/2 sama dengan 7 + 1/2." />} />
+            </>
+          }
+          jawaban="15/2 botol, yaitu 7 1/2 botol."
+        />
+        <PolaCerita
+          adegan={<p><Teks anak="Contoh umum: 5 dibagi 2/3." /></p>}
+          materi={<p><Teks anak="5 ÷ 2/3." /></p>}
+          logika={<p><Teks anak="5 dibagi 2/3, atau dikali 3/2." /></p>}
+          langkah={
+            <>
+              <BarisLangkah anak="A. 5/1 : 2/3 = (5 × 3) : (1 × 2) = 15/2 = 7 1/2." gambar={<GambarPasangan kiriAtas="5" kiriBawah="1" kananAtas="2" kananBawah="3" operasi="÷" arah="silang" hasilAtas="5 × 3" hasilBawah="1 × 2" akhirAtas="15" akhirBawah="2" catatan="Kotak merah pada 5/1. Panah hijau menyilang. 15/2 sama dengan 7 + 1/2." />} />
+              <BarisLangkah anak="B. 5/1 × 3/2 = (5 × 3) : (1 × 2) = 15/2 = 7 1/2." gambar={<GambarPasangan kiriAtas="5" kiriBawah="1" kananAtas="3" kananBawah="2" operasi="×" arah="lurus" hasilAtas="5 × 3" hasilBawah="1 × 2" akhirAtas="15" akhirBawah="2" catatan="Kotak merah pada 5/1. Panah hijau lurus. 15/2 sama dengan 7 + 1/2." />} />
+            </>
+          }
+          jawaban="15/2, yaitu 7 1/2."
         />
         <p className="text-sm font-black uppercase tracking-wide text-[#1C01A5]">Latihan Soal</p>
         <SoalLatihan anak="1. Ada 2 liter jus. Tiap gelas berisi 1/2 liter. Berapa gelas yang terisi?" id={idKuis("B", 13)} periksa={(teks) => hasilUtuh(teks, "4")} jawaban="2 liter dibagi 1/2, atau dikali 2/1. A. 2/1 : 1/2 = (2 × 2) : (1 × 1) = 4. B. 2 × 2/1 = 4. Jawabannya 4 gelas." />
@@ -856,51 +867,48 @@ export default function NaskahMtk6Bab1(_props: { kelas?: string; kelamin?: strin
       <section className="space-y-4">
         <JudulBagian anak="C. Bilangan Desimal" />
         <h3 className="text-lg font-black text-[#1C01A5]">1. Mengubah Pecahan Menjadi Desimal</h3>
-        <Kegiatan label="Materi">
-          <Gambar src="/doodle-mtk/mtk-6-bab1-timbangan.jpg" alt="Agam dan Ibu di depan timbangan buah. Jarum timbangan tanpa angka." keterangan="Timbangan buah untuk jeruk 1/2 kg dan salak 1/5 kg." />
-          <p><Teks anak="Ibu meminta jeruk 1/2 kg. Timbangan menunjukkan 0,50 kg." /></p>
-          <p><Teks anak="Ibu meminta salak 1/5 kg. Timbangan menunjukkan 0,20 kg." /></p>
-        </Kegiatan>
-        <Kegiatan label="Eksplorasi 1.5">
-          <p><Teks anak="Satu persegi bernilai 1. Jika dibagi 10 bagian sama, tiap bagian 1/10 = 0,1. Sepuluh persegi kecil dari 100 bagian sama dengan 10/100 = 0,10 = 0,1." /></p>
-          <p><Teks anak="1/2 dapat ditulis 5/10 = 0,5 dan juga 50/100 = 0,50. Keduanya sama. Timbangan 0,50 kg sama dengan permintaan 1/2 kg." /></p>
-          <p><Teks anak="1/5 dapat ditulis 2/10 = 0,2 dan juga 20/100 = 0,20. Timbangan 0,20 kg sama dengan permintaan 1/5 kg." /></p>
-          <p>Pecahan berpenyebut 2, 5, atau kelipatannya diubah dulu menjadi penyebut 10 atau 100.</p>
-        </Kegiatan>
-        <Kegiatan label="Logika Pemahaman">
-          <p><Teks anak="Angka di kiri koma menempati puluhan dan satuan. Angka pertama di kanan koma menempati persepuluhan, nilainya 1/10. Angka kedua menempati perseratusan, nilainya 1/100." /></p>
-          <p><Teks anak="Jeruk 1/2 kg diubah dulu ke penyebut 10, atau ke penyebut 100. Keduanya sama dengan 0,5." /></p>
-          <p><Teks anak="Salak 1/5 kg diubah dulu ke penyebut 10, atau ke penyebut 100. Keduanya sama dengan 0,2." /></p>
-          <p>Jika penyebut tidak bisa dijadikan 10 atau 100, bentuk desimalnya dibahas di pengayaan.</p>
-        </Kegiatan>
-        <Kegiatan label="Langkah Perhitungan">
-          <p><Teks anak="1/2 kg jeruk" /></p>
-          <p><Teks anak="A. 1/2 = (1 × 5) : (2 × 5) = 5/10 = 0,5." /></p>
-          <p><Teks anak="B. 1/2 = (1 × 50) : (2 × 50) = 50/100 = 0,50." /></p>
-          <p><Teks anak="1/5 kg salak" /></p>
-          <p><Teks anak="A. 1/5 = (1 × 2) : (5 × 2) = 2/10 = 0,2." /></p>
-          <p><Teks anak="B. 1/5 = (1 × 20) : (5 × 20) = 20/100 = 0,20." /></p>
-        </Kegiatan>
-
-        <Kegiatan label="Contoh Soal">
-          <p><Teks anak="Kain sepanjang 3/4 meter. Berapa meter dalam desimal?" /></p>
-          <p><Teks anak="Logika: penyebut 4 tidak menjadi 10 dengan bilangan bulat. Jadikan 100 dengan kali 25. Pembilang ikut kali 25." /></p>
-          <p className="font-black text-[#1C01A5]">Langkah Perhitungan</p>
-          <p><Teks anak="A. 3/4 = (3 × 25) : (4 × 25) = 75/100 = 0,75." /></p>
-          <p><Teks anak="B. 75/100 = 0,75 meter. Penyebut 10 tidak tercapai, jadi yang dipakai penyebut 100." /></p>
-        </Kegiatan>
-        <Infografis
-          judul="Mengubah pecahan menjadi desimal"
-          aturan="Kalikan pembilang dan penyebut dengan bilangan yang sama, sampai penyebut menjadi 10 atau 100."
-          gambar={<div className="space-y-4"><GambarPasangan kiriAtas="1" kiriBawah="2" kananAtas="5" kananBawah="10" operasi="×5" arah="ubah" akhirAtas="0,5" /><GambarPasangan kiriAtas="3" kiriBawah="4" kananAtas="75" kananBawah="100" operasi="×25" arah="ubah" akhirAtas="0,75" /></div>}
-          kolom={["Pecahan", "Penyebut 10 atau 100", "Desimal"]}
-          baris={[
-            ["1/2", "5/10", "0,5"],
-            ["1/5", "2/10", "0,2"],
-            ["3/4", "75/100", "0,75"],
-          ]}
+        <PolaCerita
+          adegan={<Gambar src="/doodle-mtk/mtk-6-bab1-timbangan.jpg" alt="Agam dan Ibu di depan timbangan buah. Jarum timbangan tanpa angka." keterangan="Timbangan buah untuk jeruk 1/2 kg dan salak 1/5 kg." />}
+          materi={<p><Teks anak="Ibu meminta jeruk 1/2 kg. Timbangan menunjukkan 0,50 kg." /></p>}
+          logika={
+            <>
+              <p><Teks anak="Angka di kiri koma menempati puluhan dan satuan. Angka pertama di kanan koma menempati persepuluhan, nilainya 1/10. Angka kedua menempati perseratusan, nilainya 1/100." /></p>
+              <p><Teks anak="Satu persegi bernilai 1. Jika dibagi 10 bagian sama, tiap bagian 1/10 = 0,1. Sepuluh persegi kecil dari 100 bagian sama dengan 10/100 = 0,10 = 0,1." /></p>
+              <p><Teks anak="Jeruk 1/2 kg diubah dulu ke penyebut 10, atau ke penyebut 100. Keduanya sama dengan 0,5. Pecahan berpenyebut 2, 5, atau kelipatannya diubah dulu menjadi penyebut 10 atau 100." /></p>
+            </>
+          }
+          langkah={
+            <>
+              <BarisLangkah anak="A. 1/2 = (1 × 5) : (2 × 5) = 5/10 = 0,5." gambar={<GambarPasangan kiriAtas="1" kiriBawah="2" kananAtas="5" kananBawah="10" operasi="×5" arah="ubah" akhirAtas="0,5" catatan="Kotak merah pada 1/2. Panah hijau ke penyebut 10." />} />
+              <BarisLangkah anak="B. 1/2 = (1 × 50) : (2 × 50) = 50/100 = 0,50." gambar={<GambarPasangan kiriAtas="1" kiriBawah="2" kananAtas="50" kananBawah="100" operasi="×50" arah="ubah" akhirAtas="0,50" catatan="Kotak merah pada 1/2. Panah hijau ke penyebut 100. 0,50 sama dengan 0,5." />} />
+            </>
+          }
+          jawaban="0,5 kg, yaitu 0,50 kg."
         />
-        <Jawaban anak="0,75 meter." />
+        <PolaCerita
+          adegan={<p><Teks anak="Ibu meminta salak 1/5 kg. Timbangan menunjukkan 0,20 kg." /></p>}
+          materi={<p><Teks anak="Salak 1/5 kg diubah dulu ke penyebut 10, atau ke penyebut 100." /></p>}
+          logika={<p><Teks anak="1/5 dapat ditulis 2/10 = 0,2 dan juga 20/100 = 0,20. Timbangan 0,20 kg sama dengan permintaan 1/5 kg. Jika penyebut tidak bisa dijadikan 10 atau 100, bentuk desimalnya dibahas di pengayaan." /></p>}
+          langkah={
+            <>
+              <BarisLangkah anak="A. 1/5 = (1 × 2) : (5 × 2) = 2/10 = 0,2." gambar={<GambarPasangan kiriAtas="1" kiriBawah="5" kananAtas="2" kananBawah="10" operasi="×2" arah="ubah" akhirAtas="0,2" catatan="Kotak merah pada 1/5. Panah hijau ke penyebut 10." />} />
+              <BarisLangkah anak="B. 1/5 = (1 × 20) : (5 × 20) = 20/100 = 0,20." gambar={<GambarPasangan kiriAtas="1" kiriBawah="5" kananAtas="20" kananBawah="100" operasi="×20" arah="ubah" akhirAtas="0,20" catatan="Kotak merah pada 1/5. Panah hijau ke penyebut 100. 0,20 sama dengan 0,2." />} />
+            </>
+          }
+          jawaban="0,2 kg, yaitu 0,20 kg."
+        />
+        <PolaCerita
+          adegan={<p><Teks anak="Ada kain sepanjang 3/4 meter. Agam ingin tahu panjangnya dalam desimal." /></p>}
+          materi={<p><Teks anak="Kain sepanjang 3/4 meter. Berapa meter dalam desimal?" /></p>}
+          logika={<p><Teks anak="Penyebut 4 tidak menjadi 10 dengan bilangan bulat. Jadikan 100 dengan kali 25. Pembilang ikut kali 25." /></p>}
+          langkah={
+            <>
+              <BarisLangkah anak="A. 3/4 = (3 × 25) : (4 × 25) = 75/100 = 0,75." gambar={<GambarPasangan kiriAtas="3" kiriBawah="4" kananAtas="75" kananBawah="100" operasi="×25" arah="ubah" akhirAtas="0,75" catatan="Kotak merah pada 3/4. Panah hijau ke penyebut 100." />} />
+              <BarisLangkah anak="B. 75/100 = 0,75 meter. Penyebut 10 tidak tercapai, jadi yang dipakai penyebut 100." />
+            </>
+          }
+          jawaban="0,75 meter."
+        />
         <p className="text-sm font-black uppercase tracking-wide text-[#1C01A5]">Latihan Soal</p>
         <SoalLatihan anak="1. Ibu membeli 1/4 kg kacang. Berapa kg dalam desimal?" id={idKuis("C", 11)} periksa={(teks) => desimalUtuh(teks, "0.25")} jawaban="A. 1/4 = (1 × 25) : (4 × 25) = 25/100 = 0,25. B. 25/100 = 0,25 kg. Jawabannya 0,25 kg." />
         <SoalLatihan anak="2. Botol berisi 2/5 liter. Berapa liter dalam desimal?" id={idKuis("C", 12)} periksa={(teks) => desimalUtuh(teks, "0.4") || desimalUtuh(teks, "0.40")} jawaban="A. 2/5 = (2 × 2) : (5 × 2) = 4/10 = 0,4. B. 2/5 = (2 × 20) : (5 × 20) = 40/100 = 0,40. Jawabannya 0,4 liter." />
@@ -909,93 +917,98 @@ export default function NaskahMtk6Bab1(_props: { kelas?: string; kelamin?: strin
         <SoalLatihan anak="5. Bentuk desimal dari 1/5 kg salak?" id={idKuis("C", 1)} periksa={desimalSeperlima} jawaban="A. 1/5 = (1 × 2) : (5 × 2) = 2/10 = 0,2. B. 1/5 = (1 × 20) : (5 × 20) = 20/100 = 0,20. Jawabannya 0,2 kg." />
 
         <h3 className="text-lg font-black text-[#1C01A5]">2. Membandingkan dan Mengurutkan Bilangan Desimal</h3>
-        <Kegiatan label="Materi">
-          <Gambar src="/doodle-mtk/mtk-6-bab1-jarak.jpg" alt="Beberapa rumah dihubungkan jalan yang panjangnya berbeda menuju pagar sekolah." keterangan="Jarak rumah ke sekolah tidak sama. Angkanya ada pada tabel." />
-          <p>Agam mengumpulkan jarak rumah 10 teman ke sekolah.</p>
-        </Kegiatan>
-        <Tabel
-          kolom={["Nama", "Jarak (km)"]}
-          baris={[
-            ["Alma", "2,3"],
-            ["Budi", "10,9"],
-            ["Anita", "1,9"],
-            ["Fadilah", "4,7"],
-            ["Musa", "11,3"],
-            ["Rini", "2,6"],
-            ["Rido", "3,6"],
-            ["Dias", "3,1"],
-            ["Fatim", "2,8"],
-            ["Andi", "1,5"],
-          ]}
+        <PolaCerita
+          adegan={
+            <>
+              <Gambar src="/doodle-mtk/mtk-6-bab1-jarak.jpg" alt="Beberapa rumah dihubungkan jalan yang panjangnya berbeda menuju pagar sekolah." keterangan="Jarak rumah ke sekolah tidak sama. Angkanya ada pada tabel." />
+              <p>Agam mengumpulkan jarak rumah 10 teman ke sekolah.</p>
+            </>
+          }
+          materi={
+            <Tabel
+              kolom={["Nama", "Jarak (km)"]}
+              baris={[
+                ["Alma", "2,3"],
+                ["Budi", "10,9"],
+                ["Anita", "1,9"],
+                ["Fadilah", "4,7"],
+                ["Musa", "11,3"],
+                ["Rini", "2,6"],
+                ["Rido", "3,6"],
+                ["Dias", "3,1"],
+                ["Fatim", "2,8"],
+                ["Andi", "1,5"],
+              ]}
+            />
+          }
+          logika={
+            <>
+              <p><Teks anak="Kiri tanda koma adalah bilangan asli. Kanan tanda koma, angka pertama bernilai persepuluhan (1/10) dan angka kedua bernilai perseratusan (1/100). Bandingkan dari kiri tanda koma." /></p>
+              <p>Nilai tempat sepuluh jarak itu:</p>
+            </>
+          }
+          langkah={
+            <>
+              <BarisLangkah anak="A. Isi nilai tempat: puluhan, satuan, persepuluhan, dan perseratusan." />
+              <Tabel
+                kolom={["Nama", "Jarak", "Puluhan", "Satuan", "Persepuluhan", "Perseratusan"]}
+                baris={[
+                  ["Alma", "2,3", "0", "2", "3", "0"],
+                  ["Budi", "10,9", "1", "0", "9", "0"],
+                  ["Anita", "1,9", "0", "1", "9", "0"],
+                  ["Fadilah", "4,7", "0", "4", "7", "0"],
+                  ["Musa", "11,3", "1", "1", "3", "0"],
+                  ["Rini", "2,6", "0", "2", "6", "0"],
+                  ["Rido", "3,6", "0", "3", "6", "0"],
+                  ["Dias", "3,1", "0", "3", "1", "0"],
+                  ["Fatim", "2,8", "0", "2", "8", "0"],
+                  ["Andi", "1,5", "0", "1", "5", "0"],
+                ]}
+              />
+              <BarisLangkah anak="B. Lima jarak 0,9 km, 1,9 km, 2,3 km, 2,6 km, dan 3,6 km diurut dari satuan terkecil." />
+              <Tabel
+                kolom={["Jarak (km)", "Satuan", "Persepuluhan", "Perseratusan"]}
+                baris={[
+                  ["0,9", "0", "9", "0"],
+                  ["1,9", "1", "9", "0"],
+                  ["2,3", "2", "3", "0"],
+                  ["2,6", "2", "6", "0"],
+                  ["3,6", "3", "6", "0"],
+                ]}
+              />
+              <p>Urutan sepuluh teman, dari terdekat ke terjauh:</p>
+              <Tabel
+                kolom={["Urutan", "Nama", "Jarak (km)"]}
+                baris={[
+                  ["1", "Andi", "1,5"],
+                  ["2", "Anita", "1,9"],
+                  ["3", "Alma", "2,3"],
+                  ["4", "Rini", "2,6"],
+                  ["5", "Fatim", "2,8"],
+                  ["6", "Dias", "3,1"],
+                  ["7", "Rido", "3,6"],
+                  ["8", "Fadilah", "4,7"],
+                  ["9", "Budi", "10,9"],
+                  ["10", "Musa", "11,3"],
+                ]}
+              />
+            </>
+          }
+          jawaban="Terdekat Andi, 1,5 km. Terjauh Musa, 11,3 km. Lima jarak dari terdekat: 0,9 km, 1,9 km, 2,3 km, 2,6 km, 3,6 km."
         />
-        <Kegiatan label="Eksplorasi 1.6">
-          <p>Isi nilai tempat tiap jarak: puluhan, satuan, persepuluhan, dan perseratusan. Lalu urutkan dari yang terdekat.</p>
-        </Kegiatan>
-        <Kegiatan label="Logika Pemahaman">
-          <p><Teks anak="Kiri tanda koma adalah bilangan asli. Kanan tanda koma, angka pertama bernilai persepuluhan (1/10) dan angka kedua bernilai perseratusan (1/100)." /></p>
-          <p>Nilai tempat sepuluh jarak itu:</p>
-          <Tabel
-            kolom={["Nama", "Jarak", "Puluhan", "Satuan", "Persepuluhan", "Perseratusan"]}
-            baris={[
-              ["Alma", "2,3", "0", "2", "3", "0"],
-              ["Budi", "10,9", "1", "0", "9", "0"],
-              ["Anita", "1,9", "0", "1", "9", "0"],
-              ["Fadilah", "4,7", "0", "4", "7", "0"],
-              ["Musa", "11,3", "1", "1", "3", "0"],
-              ["Rini", "2,6", "0", "2", "6", "0"],
-              ["Rido", "3,6", "0", "3", "6", "0"],
-              ["Dias", "3,1", "0", "3", "1", "0"],
-              ["Fatim", "2,8", "0", "2", "8", "0"],
-              ["Andi", "1,5", "0", "1", "5", "0"],
-            ]}
-          />
-          <p>Contoh lima jarak: 2,3 km, 0,9 km, 1,9 km, 2,6 km, dan 3,6 km. Ada yang mengira 2,49 lebih besar dari 2,9 karena 49 lebih besar dari 9. Persepuluhan 4 lebih kecil dari 9, jadi 2,9 lebih besar.</p>
-          <Tabel
-            kolom={["Jarak (km)", "Satuan", "Persepuluhan", "Perseratusan"]}
-            baris={[
-              ["2,3", "2", "3", "0"],
-              ["0,9", "0", "9", "0"],
-              ["1,9", "1", "9", "0"],
-              ["2,6", "2", "6", "0"],
-              ["3,6", "3", "6", "0"],
-            ]}
-          />
-          <p>Urutan terdekat ke terjauh: 0,9 km, 1,9 km, 2,3 km, 2,6 km, 3,6 km.</p>
-          <Tabel
-            kolom={["Urutan", "Nama", "Jarak (km)"]}
-            baris={[
-              ["1", "Andi", "1,5"],
-              ["2", "Anita", "1,9"],
-              ["3", "Alma", "2,3"],
-              ["4", "Rini", "2,6"],
-              ["5", "Fatim", "2,8"],
-              ["6", "Dias", "3,1"],
-              ["7", "Rido", "3,6"],
-              ["8", "Fadilah", "4,7"],
-              ["9", "Budi", "10,9"],
-              ["10", "Musa", "11,3"],
-            ]}
-          />
-        </Kegiatan>
-
-        <Kegiatan label="Contoh Soal">
-          <p>Mana yang lebih besar, 2,9 atau 2,49?</p>
-          <p>Logika: bandingkan dari kiri tanda koma. Satuan dulu, lalu persepuluhan.</p>
-          <p className="font-black text-[#1C01A5]">Langkah Perhitungan</p>
-          <p>A. Satuan keduanya 2, jadi sama.</p>
-          <p>B. Persepuluhan 9 lebih besar dari 4. Jawabannya 2,9 lebih besar. Perseratusan belum perlu dibanding.</p>
-        </Kegiatan>
-        <Infografis
-          judul="Membandingkan dan mengurutkan desimal"
-          aturan="Bandingkan dari kiri tanda koma. Panah hijau menunjuk persepuluhan."
-          gambar={<GambarBanding />}
-          kolom={["Tempat", "2,9", "2,49"]}
-          baris={[
-            ["Satuan", "2", "2"],
-            ["Persepuluhan", "9", "4"],
-          ]}
+        <PolaCerita
+          adegan={<p>Ada yang mengira 2,49 lebih besar dari 2,9 karena 49 lebih besar dari 9.</p>}
+          materi={<p>Mana yang lebih besar, 2,9 atau 2,49?</p>}
+          logika={<p>Bandingkan dari kiri tanda koma. Satuan dulu, lalu persepuluhan. Persepuluhan 4 lebih kecil dari 9.</p>}
+          langkah={
+            <>
+              <BarisLangkah anak="A. Satuan keduanya 2, jadi sama." />
+              <BarisLangkah anak="B. Persepuluhan 9 lebih besar dari 4. Perseratusan belum perlu dibanding." gambar={<GambarBanding />} />
+              <Tabel kolom={["Tempat", "2,9", "2,49"]} baris={[["Satuan", "2", "2"], ["Persepuluhan", "9", "4"]]} />
+            </>
+          }
+          jawaban="2,9 lebih besar dari 2,49."
         />
-        <Jawaban anak="2,9 lebih besar dari 2,49." />
         <p className="text-sm font-black uppercase tracking-wide text-[#1C01A5]">Latihan Soal</p>
         <SoalLatihan anak="1. Mana yang lebih besar, 3,5 atau 3,45?" id={idKuis("C", 14)} periksa={(teks) => desimalUtuh(teks, "3.5") || desimalUtuh(teks, "3.50")} jawaban="Satuan sama-sama 3. Persepuluhan 5 lebih besar dari 4. Jawabannya 3,5 lebih besar." />
         <SoalLatihan anak="2. Dari 1,2 ; 0,8 ; dan 1,15, mana yang terkecil?" id={idKuis("C", 15)} periksa={(teks) => desimalUtuh(teks, "0.8") || desimalUtuh(teks, "0.80")} jawaban="0,8 satuannya 0, sedangkan 1,15 dan 1,2 satuannya 1. Jawabannya 0,8." />
@@ -1040,93 +1053,76 @@ export default function NaskahMtk6Bab1(_props: { kelas?: string; kelamin?: strin
         <JudulBagian anak="Pengayaan" />
         <p className="text-sm font-semibold text-slate-800">Bagian ini terpisah dari soal inti. Buku memakainya untuk pecahan kali pecahan, pecahan dibagi pecahan, dan desimal yang berulang.</p>
         <h3 className="text-lg font-black text-[#1C01A5]">Perkalian pecahan dengan pecahan</h3>
-        <Kegiatan label="Materi">
-          <p><Teks anak="Tangki terisi 1/2. Hari ini terpakai 1/3 dari air yang ada." /></p>
-        </Kegiatan>
-        <Kegiatan label="Logika Pemahaman">
-          <p><Teks anak="Bagian 1/2 itu dibagi 3, atau dikali 1/3." /></p>
-        </Kegiatan>
-        <Kegiatan label="Langkah Perhitungan">
-          <p><Teks anak="A. 1/2 : 3/1 = (1 × 1) : (2 × 3) = 1/6." /></p>
-          <p><Teks anak="B. 1/2 × 1/3 = (1 × 1) : (2 × 3) = 1/6 bagian tangki." /></p>
-        </Kegiatan>
-        <Infografis
-          judul="Perkalian pecahan dengan pecahan"
-          aturan="Panah lurus: Pembilang1 per Penyebut1 dikali Pembilang2 per Penyebut2."
-          gambar={<GambarPasangan kiriAtas="1" kiriBawah="2" kananAtas="1" kananBawah="3" operasi="×" arah="lurus" hasilAtas="1 × 1" hasilBawah="2 × 3" akhirAtas="1" akhirBawah="6" />}
-          kolom={["Peran", "Hitung"]}
-          baris={[
-            ["Pembilang1 × pembilang2", "1 × 1 = 1"],
-            ["Penyebut1 × penyebut2", "2 × 3 = 6"],
-            ["Hasil", "1/6"],
-          ]}
+        <PolaCerita
+          adegan={<p><Teks anak="Tangki terisi 1/2. Hari ini terpakai 1/3 dari air yang ada." /></p>}
+          materi={<p><Teks anak="Bagian 1/2 itu, lalu 1/3 dari bagian tersebut." /></p>}
+          logika={<p><Teks anak="Bagian 1/2 yang berarti 1 itu dibagi 3, atau dikali 1/3." /></p>}
+          langkah={
+            <>
+              <BarisLangkah anak="A. 1/2 : 3/1 = (1 × 1) : (2 × 3) = 1/6." gambar={<GambarPasangan kiriAtas="1" kiriBawah="2" kananAtas="3" kananBawah="1" operasi="÷" arah="silang" hasilAtas="1 × 1" hasilBawah="2 × 3" akhirAtas="1" akhirBawah="6" catatan="Kotak merah pada 1/2. Panah hijau menyilang." />} />
+              <BarisLangkah anak="B. 1/2 × 1/3 = (1 × 1) : (2 × 3) = 1/6." gambar={<GambarPasangan kiriAtas="1" kiriBawah="2" kananAtas="1" kananBawah="3" operasi="×" arah="lurus" hasilAtas="1 × 1" hasilBawah="2 × 3" akhirAtas="1" akhirBawah="6" catatan="Kotak merah pada 1/2. Panah hijau lurus." />} />
+            </>
+          }
+          jawaban="1/6 bagian tangki."
         />
-        <Jawaban anak="1/6 bagian tangki." />
         <p className="text-sm font-black uppercase tracking-wide text-[#1C01A5]">Latihan Soal</p>
         <SoalLatihan anak="1. 1/2 × 1/4. Berapa hasilnya?" id={idKuis("E", 0)} periksa={(teks) => pecahan(teks, "1/8")} jawaban="Bagian 1/2 dibagi 4, atau dikali 1/4. A. 1/2 : 4/1 = (1 × 1) : (2 × 4) = 1/8. B. 1/2 × 1/4 = (1 × 1) : (2 × 4) = 1/8. Jawabannya 1/8." />
         <SoalLatihan anak="2. 2/3 × 1/5. Berapa hasilnya?" id={idKuis("E", 1)} periksa={(teks) => pecahan(teks, "2/15")} jawaban="Bagian 2/3 dibagi 5, atau dikali 1/5. A. 2/3 : 5/1 = (2 × 1) : (3 × 5) = 2/15. B. 2/3 × 1/5 = (2 × 1) : (3 × 5) = 2/15. Jawabannya 2/15." />
         <SoalLatihan anak="3. 3/4 × 1/2. Berapa hasilnya?" id={idKuis("E", 2)} periksa={(teks) => pecahan(teks, "3/8")} jawaban="Bagian 3/4 dibagi 2, atau dikali 1/2. A. 3/4 : 2/1 = (3 × 1) : (4 × 2) = 3/8. B. 3/4 × 1/2 = (3 × 1) : (4 × 2) = 3/8. Jawabannya 3/8." />
         <h3 className="text-lg font-black text-[#1C01A5]">Pembagian pecahan dengan pecahan</h3>
-        <Kegiatan label="Materi">
-          <p><Teks anak="3 gelas air memenuhi 2/3 botol." /></p>
-          <p><Teks anak="1/2 gelas memenuhi 3/4 botol." /></p>
-        </Kegiatan>
-        <Kegiatan label="Logika Pemahaman">
-          <p><Teks anak="Satu botol dari cerita pertama: 3 gelas dibagi 2/3, atau 3 dikali 3/2." /></p>
-          <p><Teks anak="Satu botol dari cerita kedua: 1/2 gelas dibagi 3/4, atau 1/2 dikali 4/3." /></p>
-        </Kegiatan>
-        <Kegiatan label="Langkah Perhitungan">
-          <p><Teks anak="3 gelas memenuhi 2/3 botol" /></p>
-          <p><Teks anak="A. 3/1 : 2/3 = (3 × 3) : (1 × 2) = 9/2 gelas." /></p>
-          <p><Teks anak="B. 3 × 3/2 = (3 × 3) : (1 × 2) = 9/2 gelas." /></p>
-          <p><Teks anak="1/2 gelas memenuhi 3/4 botol" /></p>
-          <p><Teks anak="A. 1/2 : 3/4 = (1 × 4) : (2 × 3) = 4/6 = 2/3 gelas." /></p>
-          <p><Teks anak="B. 1/2 × 4/3 = (1 × 4) : (2 × 3) = 4/6 = 2/3 gelas." /></p>
-        </Kegiatan>
-        <Infografis
-          judul="Pembagian pecahan dengan pecahan"
-          aturan="Panah silang: Pembilang1 per Penyebut1 dibagi Pembilang2 per Penyebut2."
-          gambar={<GambarPasangan kiriAtas="1" kiriBawah="2" kananAtas="3" kananBawah="4" operasi="÷" arah="silang" hasilAtas="1 × 4" hasilBawah="2 × 3" akhirAtas="4" akhirBawah="6" catatan="4/6 sama dengan 2/3." />}
-          kolom={["Peran", "Hitung"]}
-          baris={[
-            ["Pembilang1 × penyebut2", "1 × 4 = 4"],
-            ["Penyebut1 × pembilang2", "2 × 3 = 6"],
-            ["Hasil", "4/6 = 2/3"],
-          ]}
+        <PolaCerita
+          adegan={<p><Teks anak="3 gelas air memenuhi 2/3 botol." /></p>}
+          materi={<p><Teks anak="Satu botol dari cerita ini: 3 gelas dibagi 2/3." /></p>}
+          logika={<p><Teks anak="3 gelas dibagi 2/3, atau 3 dikali 3/2." /></p>}
+          langkah={
+            <>
+              <BarisLangkah anak="A. 3/1 : 2/3 = (3 × 3) : (1 × 2) = 9/2." gambar={<GambarPasangan kiriAtas="3" kiriBawah="1" kananAtas="2" kananBawah="3" operasi="÷" arah="silang" hasilAtas="3 × 3" hasilBawah="1 × 2" akhirAtas="9" akhirBawah="2" catatan="Kotak merah pada 3/1. Panah hijau menyilang." />} />
+              <BarisLangkah anak="B. 3/1 × 3/2 = (3 × 3) : (1 × 2) = 9/2." gambar={<GambarPasangan kiriAtas="3" kiriBawah="1" kananAtas="3" kananBawah="2" operasi="×" arah="lurus" hasilAtas="3 × 3" hasilBawah="1 × 2" akhirAtas="9" akhirBawah="2" catatan="Kotak merah pada 3/1. Panah hijau lurus." />} />
+            </>
+          }
+          jawaban="9/2 gelas."
         />
-        <Jawaban anak="Cerita pertama 9/2 gelas. Cerita kedua 2/3 gelas." />
+        <PolaCerita
+          adegan={<p><Teks anak="1/2 gelas memenuhi 3/4 botol." /></p>}
+          materi={<p><Teks anak="Satu botol dari cerita ini: 1/2 gelas dibagi 3/4." /></p>}
+          logika={<p><Teks anak="Bagian 1/2 yang berarti 1 itu dibagi 3/4, atau dikali 4/3." /></p>}
+          langkah={
+            <>
+              <BarisLangkah anak="A. 1/2 : 3/4 = (1 × 4) : (2 × 3) = 4/6 = 2/3." gambar={<GambarPasangan kiriAtas="1" kiriBawah="2" kananAtas="3" kananBawah="4" operasi="÷" arah="silang" hasilAtas="1 × 4" hasilBawah="2 × 3" akhirAtas="4" akhirBawah="6" catatan="Kotak merah pada 1/2. Panah hijau menyilang. 4/6 sama dengan 2/3." />} />
+              <BarisLangkah anak="B. 1/2 × 4/3 = (1 × 4) : (2 × 3) = 4/6 = 2/3." gambar={<GambarPasangan kiriAtas="1" kiriBawah="2" kananAtas="4" kananBawah="3" operasi="×" arah="lurus" hasilAtas="1 × 4" hasilBawah="2 × 3" akhirAtas="4" akhirBawah="6" catatan="Kotak merah pada 1/2. Panah hijau lurus. 4/6 sama dengan 2/3." />} />
+            </>
+          }
+          jawaban="2/3 gelas."
+        />
         <p className="text-sm font-black uppercase tracking-wide text-[#1C01A5]">Latihan Soal</p>
         <SoalLatihan anak="1. 1/2 ÷ 1/4. Berapa hasilnya?" id={idKuis("E", 3)} periksa={(teks) => hasilUtuh(teks, "2")} jawaban="1/2 dibagi 1/4, atau dikali 4/1. A. 1/2 : 1/4 = (1 × 4) : (2 × 1) = 4/2 = 2. B. 1/2 × 4/1 = (1 × 4) : (2 × 1) = 4/2 = 2. Jawabannya 2." />
         <SoalLatihan anak="2. 2/3 ÷ 1/3. Berapa hasilnya?" id={idKuis("E", 4)} periksa={(teks) => hasilUtuh(teks, "2")} jawaban="2/3 dibagi 1/3, atau dikali 3/1. A. 2/3 : 1/3 = (2 × 3) : (3 × 1) = 6/3 = 2. B. 2/3 × 3/1 = (2 × 3) : (3 × 1) = 6/3 = 2. Jawabannya 2." />
         <SoalLatihan anak="3. 3/4 ÷ 1/2. Berapa hasilnya?" id={idKuis("E", 5)} periksa={(teks) => pecahan(teks, "3/2") || pecahan(teks, "6/4")} jawaban="3/4 dibagi 1/2, atau dikali 2/1. A. 3/4 : 1/2 = (3 × 2) : (4 × 1) = 6/4 = 3/2. B. 3/4 × 2/1 = (3 × 2) : (4 × 1) = 6/4 = 3/2. Jawabannya 3/2." />
         <h3 className="text-lg font-black text-[#1C01A5]">Desimal berulang</h3>
-        <Kegiatan label="Materi">
-          <p><Teks anak="Rani punya 1/3 liter jus jeruk." /></p>
-          <p><Teks anak="Rani punya 1/6 liter jus jambu." /></p>
-        </Kegiatan>
-        <Kegiatan label="Logika Pemahaman">
-          <p><Teks anak="Penyebut 3 tidak bisa dijadikan 10 atau 100. 1 dibagi 3, angkanya berulang." /></p>
-          <p><Teks anak="Penyebut 6 tidak bisa dijadikan 10 atau 100. 1 dibagi 6, angkanya berulang." /></p>
-        </Kegiatan>
-        <Kegiatan label="Langkah Perhitungan">
-          <p><Teks anak="1/3 liter" /></p>
-          <p><Teks anak="A. 1 : 3 = 0,333…" /></p>
-          <p><Teks anak="B. 1/3 = 0,333… Angka 3 berulang." /></p>
-          <p><Teks anak="1/6 liter" /></p>
-          <p><Teks anak="A. 1 : 6 = 0,1666…" /></p>
-          <p><Teks anak="B. 1/6 = 0,1666… Angka 6 berulang." /></p>
-        </Kegiatan>
-        <Infografis
-          judul="Desimal berulang"
-          aturan="Jika penyebut tidak bisa dijadikan 10 atau 100, angka hijau berulang."
-          gambar={<GambarBerulang />}
-          kolom={["Pecahan", "Desimal pada kalkulator"]}
-          baris={[
-            ["1/3", "0,333…"],
-            ["1/6", "0,1666…"],
-          ]}
+        <PolaCerita
+          adegan={<p><Teks anak="Rani punya 1/3 liter jus jeruk." /></p>}
+          materi={<p><Teks anak="1/3 liter diubah menjadi desimal." /></p>}
+          logika={<p><Teks anak="Penyebut 3 tidak bisa dijadikan 10 atau 100. 1 dibagi 3, angkanya berulang." /></p>}
+          langkah={
+            <>
+              <BarisLangkah anak="A. 1 : 3 = 0,333…" />
+              <BarisLangkah anak="B. 1/3 = 0,333… Angka 3 berulang." gambar={<GambarBerulang pecahan="sepertiga" />} />
+            </>
+          }
+          jawaban="0,333…"
         />
-        <Jawaban anak="1/3 = 0,333… dan 1/6 = 0,1666…" />
+        <PolaCerita
+          adegan={<p><Teks anak="Rani punya 1/6 liter jus jambu." /></p>}
+          materi={<p><Teks anak="1/6 liter diubah menjadi desimal." /></p>}
+          logika={<p><Teks anak="Penyebut 6 tidak bisa dijadikan 10 atau 100. 1 dibagi 6, angkanya berulang." /></p>}
+          langkah={
+            <>
+              <BarisLangkah anak="A. 1 : 6 = 0,1666…" />
+              <BarisLangkah anak="B. 1/6 = 0,1666… Angka 6 berulang." gambar={<GambarBerulang pecahan="perenam" />} />
+            </>
+          }
+          jawaban="0,1666…"
+        />
         <p className="text-sm font-black uppercase tracking-wide text-[#1C01A5]">Latihan Soal</p>
         <SoalLatihan anak="1. Tuliskan desimal 1/3 sampai tiga angka 3 yang berulang." id={idKuis("E", 6)} periksa={(teks) => rapat(teks).includes("333")} jawaban="A. 1 : 3 = 0,333… B. 1/3 = 0,333… Angka 3 berulang. Jawabannya 0,333…" />
         <SoalLatihan anak="2. Tuliskan desimal 1/6 yang angkanya berulang." id={idKuis("E", 7)} periksa={(teks) => rapat(teks).includes("166")} jawaban="A. 1 : 6 = 0,1666… B. 1/6 = 0,1666… Angka 6 berulang. Jawabannya 0,1666…" />
