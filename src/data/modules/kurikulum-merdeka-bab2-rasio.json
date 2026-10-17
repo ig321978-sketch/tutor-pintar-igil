@@ -49,7 +49,7 @@
       "anak": ["Bagian terhadap bagian dan terhadap keseluruhan", "Rasio pada durasi waktu"]
     }
   ],
-  "fokusPeta": "Konsep Rasio",
+  "fokusPeta": ["Konsep Rasio", "Kesamaan Rasio"],
   "mengingat": {
     "narasi": "Faktor membagi habis suatu bilangan. Kelipatan didapat dengan mengalikan. Faktor memperkecil rasio. Kelipatan memperbesar rasio.",
     "pecahan": "Tuliskan pecahan untuk bagian yang hilang. Roti punya 4 tempat dan 1 kosong. Semangka terbagi 6 dan 1 juring hilang. Cokelat tersusun 8 kotak dan 1 kotak hilang."
@@ -101,6 +101,59 @@
   "refleksi": [
     "Ada dua cara menulis rasio: a : b dan a/b. Keduanya dibaca a terhadap b.",
     "Contoh di sekitar: 2 pensil terhadap 5 buku, dan 3 gelas terhadap 4 piring."
+  ],
+  "kesamaan": {
+    "permasalahan": "Polybag adalah kantong tanam. Satu rak memuat 6 polybag. Tiga rak memuat polybag dengan rasio yang sama.",
+    "rakMuat": 6,
+    "rakDitanya": 3,
+    "eksplorasi": "Eksplorasi 2.3 Lahan untuk Menanam Bibit Tanaman",
+    "narasi": "Pak Wayan menjelaskan jarak polybag. Lahan 10 m² diperkirakan memuat 12 bibit. Dua rasio disebut senilai jika keduanya dikali atau dibagi dengan bilangan yang sama.",
+    "gambar": "/doodle-mtk/mtk-6-bab2-lahan.jpg",
+    "gambarAlt": "Petak lahan kecil berisi bibit",
+    "gambarLuas": "/doodle-mtk/mtk-6-bab2-lahan-luas.jpg",
+    "gambarLuasAlt": "Petak lahan yang lebih luas",
+    "luas": 10,
+    "bibit": 12,
+    "fpb": 2,
+    "karakter": "Menjaga rasio yang sama berarti menjaga mutu. Jika rasio berubah, mutu ikut berubah. Campuran semen dan pasir, misalnya, harus pada perbandingan tertentu supaya bangunan tetap kokoh.",
+    "pupukBibit": 2,
+    "pupukGram": 5,
+    "pupukDitanya": 11,
+    "gambarPupuk": "/doodle-mtk/mtk-6-bab2-pupuk.jpg",
+    "gambarPupukAlt": "Pupuk ditakar untuk bibit"
+  },
+  "satuan": {
+    "eksplorasi": "Eksplorasi 2.4 Memilih Bibit Tanaman",
+    "narasi": "Ibu dan Anike mencari bibit TOGA, tanaman obat keluarga. Di rak ada dua paket jahe merah organik.",
+    "gambar": "/doodle-mtk/mtk-6-bab2-jahe.jpg",
+    "gambarAlt": "Dua kemasan bibit jahe merah",
+    "paket": [
+      { "bibit": 3, "harga": 37500 },
+      { "bibit": 5, "harga": 58000 }
+    ],
+    "pengertian": "Rasio satuan adalah rasio yang salah satu besarannya bernilai 1. Jika harga satuannya sudah diketahui, rasio lain didapat dengan mengalikan.",
+    "kemasNarasi": "Toko mengemas 6 bibit dalam 1,5 jam. Jika dua satuan berbeda, satuan ditulis bersama rasio.",
+    "kemasBibit": 6,
+    "kemasJam": 1.5,
+    "gambarKemas": "/doodle-mtk/mtk-6-bab2-kemas.jpg",
+    "gambarKemasAlt": "Bibit dikemas sebelum dikirim"
+  },
+  "wedang": {
+    "gambar": "/doodle-mtk/mtk-6-bab2-wedang.jpg",
+    "gambarAlt": "Bahan wedang jahe di meja",
+    "air": 4,
+    "bahan": [
+      "12 jahe merah",
+      "8 batang serai",
+      "4 lemon",
+      "20 cm kayu manis",
+      "20 cengkeh",
+      "250 gram gula aren"
+    ]
+  },
+  "refleksiKesamaan": [
+    "12 : 28 dibagi 4 menjadi 3 : 7. Rasio yang senilai antara lain 6 : 14, 9 : 21, dan 24 : 56.",
+    "Rasio satuan berarti salah satu besaran bernilai 1. Contoh: 1 bibit seharga Rp12.500 ditulis 1 : 12.500."
   ],
   "latihanFormatif": [
     {
@@ -222,6 +275,150 @@
       "opsi": ["4 liter", "6 liter", "5 liter", "10 liter"],
       "kunciJawaban": "4 liter",
       "pembahasan": "6 : 15 = 2 : 5. Untuk 10 orang, 2 : 5 = 4 : 10. Minuman yang disiapkan 4 liter."
+    },
+    {
+      "id": "rak-polybag",
+      "bagian": "B. Permasalahan",
+      "soal": "Satu rak memuat 6 polybag. Berapa polybag yang tertampung pada 3 rak?",
+      "opsi": ["18 polybag", "12 polybag", "9 polybag", "24 polybag"],
+      "kunciJawaban": "18 polybag",
+      "pembahasan": "1 : 6 senilai dengan 3 : 18. Polybag = 6 × 3 = 18."
+    },
+    {
+      "id": "lahan-sederhana",
+      "bagian": "1. Kesamaan Rasio",
+      "soal": "Bentuk paling sederhana rasio lahan 10 m² terhadap 12 bibit adalah ...",
+      "opsi": ["5 : 6", "10 : 12", "6 : 5", "2 : 3"],
+      "kunciJawaban": "5 : 6",
+      "pembahasan": "FPB 10 dan 12 adalah 2. 10 : 12 dibagi 2 menjadi 5 : 6."
+    },
+    {
+      "id": "lahan-25",
+      "bagian": "1. Kesamaan Rasio",
+      "soal": "Lahan yang tersedia 25 m². Dengan kerapatan yang sama, bibit yang dapat ditanam adalah ...",
+      "opsi": ["30 bibit", "25 bibit", "20 bibit", "36 bibit"],
+      "kunciJawaban": "30 bibit",
+      "pembahasan": "5 : 6 = 25 : 30. Karena 25 : 5 = 5, bibit = 6 × 5 = 30."
+    },
+    {
+      "id": "lahan-24",
+      "bagian": "1. Kesamaan Rasio",
+      "soal": "Siswa membawa 24 bibit. Luas lahan yang diperlukan adalah ...",
+      "opsi": ["20 m²", "24 m²", "12 m²", "30 m²"],
+      "kunciJawaban": "20 m²",
+      "pembahasan": "6 bagian sama dengan 24, jadi 1 bagian = 4. Lahan = 5 × 4 = 20 m²."
+    },
+    {
+      "id": "lahan-30",
+      "bagian": "1. Kesamaan Rasio",
+      "soal": "Luas lahan untuk menanam 30 bibit adalah ...",
+      "opsi": ["25 m²", "30 m²", "20 m²", "15 m²"],
+      "kunciJawaban": "25 m²",
+      "pembahasan": "Bentuk sederhana bibit adalah 6. 30 : 6 = 5, lalu lahan = 5 × 5 = 25 m²."
+    },
+    {
+      "id": "senilai-10-12",
+      "bagian": "1. Kesamaan Rasio",
+      "soal": "Rasio yang senilai dengan 10 : 12 adalah ...",
+      "opsi": ["30 : 36", "20 : 36", "10 : 6", "12 : 10"],
+      "kunciJawaban": "30 : 36",
+      "pembahasan": "10 : 12 dikali 3 menjadi 30 : 36. Dibagi 2 menjadi 5 : 6. Keduanya senilai."
+    },
+    {
+      "id": "pupuk-11",
+      "bagian": "1. Kesamaan Rasio",
+      "soal": "2 bibit memerlukan 5 gram pupuk. Pupuk untuk 11 bibit adalah ...",
+      "opsi": ["27,5 gram", "22 gram", "55 gram", "10 gram"],
+      "kunciJawaban": "27,5 gram",
+      "pembahasan": "2 : 5 = 11 : 27,5. Karena 11 : 2 = 5,5, pupuk = 5 × 5,5 = 27,5 gram."
+    },
+    {
+      "id": "jahe-tiga",
+      "bagian": "2. Rasio Satuan",
+      "soal": "Harga satu bibit pada paket 3 seharga Rp37.500 adalah ...",
+      "opsi": ["Rp12.500", "Rp11.600", "Rp37.500", "Rp15.000"],
+      "kunciJawaban": "Rp12.500",
+      "pembahasan": "37.500 : 3 = 12.500. Rasio 3 : 37.500 senilai dengan 1 : 12.500."
+    },
+    {
+      "id": "jahe-lima",
+      "bagian": "2. Rasio Satuan",
+      "soal": "Harga satu bibit pada paket 5 seharga Rp58.000 adalah ...",
+      "opsi": ["Rp11.600", "Rp12.500", "Rp10.000", "Rp58.000"],
+      "kunciJawaban": "Rp11.600",
+      "pembahasan": "58.000 : 5 = 11.600. Rasio 5 : 58.000 senilai dengan 1 : 11.600."
+    },
+    {
+      "id": "jahe-pilih",
+      "bagian": "2. Rasio Satuan",
+      "soal": "Agar harga satu bibit lebih murah, paket jahe yang dipilih Anike adalah ...",
+      "opsi": ["Paket 5 bibit", "Paket 3 bibit", "Keduanya sama", "Paket yang lebih sedikit"],
+      "kunciJawaban": "Paket 5 bibit",
+      "pembahasan": "Rp11.600 lebih kecil dari Rp12.500. Paket 5 bibit lebih murah untuk setiap satu bibit."
+    },
+    {
+      "id": "kemas-jam",
+      "bagian": "2. Rasio Satuan",
+      "soal": "6 bibit dikemas dalam 1,5 jam. Rasio per jam adalah ...",
+      "opsi": ["4 bibit per jam", "6 bibit per jam", "1,5 bibit per jam", "9 bibit per jam"],
+      "kunciJawaban": "4 bibit per jam",
+      "pembahasan": "6 : 1,5 = 4 : 1. Penjaga toko mengemas 4 bibit setiap 1 jam."
+    },
+    {
+      "id": "kemas-empat",
+      "bagian": "2. Rasio Satuan",
+      "soal": "Dengan kecepatan kemas yang sama, bibit yang selesai dalam 4 jam adalah ...",
+      "opsi": ["16 bibit", "12 bibit", "8 bibit", "24 bibit"],
+      "kunciJawaban": "16 bibit",
+      "pembahasan": "4 bibit per jam × 4 jam = 16 bibit."
+    },
+    {
+      "id": "kecepatan",
+      "bagian": "2. Rasio Satuan",
+      "soal": "Apakah 50 km/jam merupakan rasio satuan?",
+      "opsi": ["Ya, 50 km terhadap 1 jam", "Tidak, karena ada kata jam", "Ya, 50 terhadap 50", "Tidak, karena satuannya beda"],
+      "kunciJawaban": "Ya, 50 km terhadap 1 jam",
+      "pembahasan": "50 km/jam berarti 50 km untuk 1 jam. Salah satu besaran bernilai 1, jadi itu rasio satuan. Satuan ditulis karena besaran berbeda."
+    },
+    {
+      "id": "wedang-jahe",
+      "bagian": "Latihan 2.2",
+      "soal": "Resep 4 liter air memakai 12 jahe merah. Jahe untuk 8 liter air adalah ...",
+      "opsi": ["24 buah", "16 buah", "20 buah", "12 buah"],
+      "kunciJawaban": "24 buah",
+      "pembahasan": "4 : 12 = 8 : 24. Air dikali 2, jahe juga dikali 2."
+    },
+    {
+      "id": "wedang-lemon",
+      "bagian": "Latihan 2.2",
+      "soal": "Resep memakai 8 batang serai dan 4 lemon. Jika serai hanya 6 batang, lemon yang dibutuhkan adalah ...",
+      "opsi": ["3 buah", "2 buah", "4 buah", "6 buah"],
+      "kunciJawaban": "3 buah",
+      "pembahasan": "8 : 4 dibagi 4 menjadi 2 : 1. Untuk 6 serai, 2 : 1 = 6 : 3."
+    },
+    {
+      "id": "kopi-dona",
+      "bagian": "Latihan 2.2",
+      "soal": "Ibu memakai 1 sdt kopi dan 2 sdt gula untuk 250 ml. Untuk 1 liter, ibu memakai 4 sdt kopi dan 8 sdt gula. Dona memakai 4 sdt kopi dan 10 sdt gula. Rasa kopi Dona ...",
+      "opsi": ["Terlalu manis", "Terlalu pahit", "Rasanya pas", "Tidak bisa dibanding"],
+      "kunciJawaban": "Terlalu manis",
+      "pembahasan": "1 liter = 4 × 250 ml. Kopi Dona sama, yaitu 4 sdt. Gulanya 10 sdt, lebih banyak dari 8 sdt, jadi terlalu manis."
+    },
+    {
+      "id": "pena-satu",
+      "bagian": "Latihan 2.2",
+      "soal": "1 kotak berisi 15 pena seharga Rp36.000. Harga 1 pena adalah ...",
+      "opsi": ["Rp2.400", "Rp3.600", "Rp1.500", "Rp12.000"],
+      "kunciJawaban": "Rp2.400",
+      "pembahasan": "36.000 : 15 = 2.400. Rasio 15 : 36.000 senilai dengan 1 : 2.400."
+    },
+    {
+      "id": "pena-lima",
+      "bagian": "Latihan 2.2",
+      "soal": "Jika Mutia hanya membeli 5 pena, uang yang dibayarkan adalah ...",
+      "opsi": ["Rp12.000", "Rp10.000", "Rp2.400", "Rp15.000"],
+      "kunciJawaban": "Rp12.000",
+      "pembahasan": "Harga satu pena Rp2.400. Lima pena = 5 × 2.400 = 12.000."
     }
   ]
 }

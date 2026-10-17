@@ -34,7 +34,7 @@ type ModulRasio = {
   pertanyaanPemantik: string[];
   kataKunci: string[];
   petaKonsep: CabangPeta[];
-  fokusPeta: string;
+  fokusPeta: string[];
   mengingat: { narasi: string; pecahan: string };
   permasalahan: string;
   membandingkan: {
@@ -73,12 +73,54 @@ type ModulRasio = {
   };
   antrean: BarisAntrean[];
   refleksi: string[];
+  kesamaan: {
+    permasalahan: string;
+    rakMuat: number;
+    rakDitanya: number;
+    eksplorasi: string;
+    narasi: string;
+    gambar: string;
+    gambarAlt: string;
+    gambarLuas: string;
+    gambarLuasAlt: string;
+    luas: number;
+    bibit: number;
+    fpb: number;
+    karakter: string;
+    pupukBibit: number;
+    pupukGram: number;
+    pupukDitanya: number;
+    gambarPupuk: string;
+    gambarPupukAlt: string;
+  };
+  satuan: {
+    eksplorasi: string;
+    narasi: string;
+    gambar: string;
+    gambarAlt: string;
+    paket: { bibit: number; harga: number }[];
+    pengertian: string;
+    kemasNarasi: string;
+    kemasBibit: number;
+    kemasJam: number;
+    gambarKemas: string;
+    gambarKemasAlt: string;
+  };
+  wedang: {
+    gambar: string;
+    gambarAlt: string;
+    air: number;
+    bahan: string[];
+  };
+  refleksiKesamaan: string[];
   latihanFormatif: SoalFormatif[];
 };
 
 type JejakRasio = {
   jawaban: Record<string, string>;
   kelipatan: number;
+  kelipatanLahan: number;
+  jamKemas: number;
   simulasiDicoba: boolean;
   tuntas: boolean;
 };
@@ -93,15 +135,27 @@ function adalahModul(data: unknown): data is ModulRasio {
     calon.simulasiLokal?.baseRatioA > 0 &&
     calon.simulasiLokal?.baseRatioB > 0 &&
     Array.isArray(calon.membandingkan?.paket) &&
-    calon.membandingkan.paket.length >= 2
+    calon.membandingkan.paket.length >= 2 &&
+    Array.isArray(calon.fokusPeta) &&
+    calon.kesamaan?.fpb > 0 &&
+    (calon.satuan?.paket?.length ?? 0) >= 2
   );
 }
 
 const modul = adalahModul(dataMentah) ? dataMentah : null;
 
-function jepit(nilai: number, min: number, maks: number, cadangan: number): number {
+function jepit(nilai: number, min: number, maks: number, cadangan: number, langkah = 1): number {
   if (!Number.isFinite(nilai)) return cadangan;
-  return Math.min(maks, Math.max(min, Math.round(nilai)));
+  const langkahAman = langkah > 0 ? langkah : 1;
+  const hitung = Math.round((nilai - min) / langkahAman) * langkahAman + min;
+  const terbatas = Math.min(maks, Math.max(min, hitung));
+  return Math.round(terbatas * 1000) / 1000;
+}
+
+function koma(nilai: number): string {
+  const bulat = Math.round(nilai);
+  if (Math.abs(nilai - bulat) < 1e-6) return String(bulat);
+  return nilai.toFixed(1).replace(".", ",");
 }
 
 function bacaJejak(awal: number, min: number, maks: number): JejakRasio | null {
@@ -115,6 +169,8 @@ function bacaJejak(awal: number, min: number, maks: number): JejakRasio | null {
     return {
       jawaban,
       kelipatan: jepit(typeof mentahKelipatan === "number" ? mentahKelipatan : awal, min, maks, awal),
+      kelipatanLahan: typeof data.kelipatanLahan === "number" ? data.kelipatanLahan : 2,
+      jamKemas: typeof data.jamKemas === "number" ? data.jamKemas : 1.5,
       simulasiDicoba: Boolean(data.simulasiDicoba),
       tuntas: Boolean(data.tuntas),
     };
@@ -212,6 +268,13 @@ function Laboratorium({
   kelipatan,
   min,
   maks,
+  langkah = 1,
+  namaPengatur = "kelipatan",
+  labelA = "Pucuk merah",
+  labelB = "Cemara",
+  satuanA = "pohon",
+  satuanB = "pohon",
+  petunjuk = "Kelipatan 2 menampilkan gambar kebun, 4 : 6. Kelipatan 7 menampilkan 14 pucuk merah.",
   onUbah,
 }: {
   judul: string;
@@ -221,10 +284,17 @@ function Laboratorium({
   kelipatan: number;
   min: number;
   maks: number;
+  langkah?: number;
+  namaPengatur?: string;
+  labelA?: string;
+  labelB?: string;
+  satuanA?: string;
+  satuanB?: string;
+  petunjuk?: string;
   onUbah: (nilai: number) => void;
 }) {
-  const pucuk = dasarA * kelipatan;
-  const cemara = dasarB * kelipatan;
+  const nilaiA = dasarA * kelipatan;
+  const nilaiB = dasarB * kelipatan;
   return (
     <section className="space-y-4 rounded-3xl border-2 border-[#F0AB00] bg-[#FFF9EB] p-5">
       <div className="space-y-1">
@@ -234,23 +304,23 @@ function Laboratorium({
       </div>
       <div className="space-y-3 rounded-2xl bg-white p-4">
         <div className="flex items-center justify-between gap-3">
-          <p className="text-sm font-black text-[#1C01A5]">Kelipatan</p>
+          <p className="text-sm font-black text-[#1C01A5]">{namaPengatur}</p>
           <div className="flex items-center gap-2">
             <button
               type="button"
-              onClick={() => onUbah(kelipatan - 1)}
-              disabled={kelipatan <= min}
-              aria-label="Kurangi kelipatan"
+              onClick={() => onUbah(kelipatan - langkah)}
+              disabled={kelipatan <= min + 1e-9}
+              aria-label={`Kurangi ${namaPengatur}`}
               className="h-11 w-11 rounded-full bg-[#1C01A5] text-2xl font-black text-white disabled:opacity-40"
             >
               −
             </button>
-            <span className="min-w-10 text-center text-3xl font-black text-[#1C01A5]">{kelipatan}</span>
+            <span className="min-w-10 text-center text-3xl font-black text-[#1C01A5]">{koma(kelipatan)}</span>
             <button
               type="button"
-              onClick={() => onUbah(kelipatan + 1)}
-              disabled={kelipatan >= maks}
-              aria-label="Tambah kelipatan"
+              onClick={() => onUbah(kelipatan + langkah)}
+              disabled={kelipatan >= maks - 1e-9}
+              aria-label={`Tambah ${namaPengatur}`}
               className="h-11 w-11 rounded-full bg-[#1C01A5] text-2xl font-black text-white disabled:opacity-40"
             >
               +
@@ -261,28 +331,26 @@ function Laboratorium({
           type="range"
           min={min}
           max={maks}
-          step={1}
+          step={langkah}
           value={kelipatan}
-          aria-label="Kelipatan rasio pohon"
+          aria-label={`Pengatur ${namaPengatur}`}
           onChange={(event) => onUbah(Number(event.target.value))}
           className="w-full accent-[#1C01A5]"
         />
-        <p className="text-center text-sm font-bold text-slate-600">
-          Kelipatan 2 menampilkan gambar kebun, 4 : 6. Kelipatan 7 menampilkan 14 pucuk merah.
-        </p>
+        <p className="text-center text-sm font-bold text-slate-600">{petunjuk}</p>
       </div>
       <div className="grid gap-3 sm:grid-cols-2">
         <div className="space-y-2 rounded-2xl bg-rose-50 p-4">
-          <p className="text-sm font-black text-rose-900">Pucuk merah</p>
-          <p className="text-3xl font-black text-rose-700">{pucuk} pohon</p>
+          <p className="text-sm font-black text-rose-900">{labelA}</p>
+          <p className="text-3xl font-black text-rose-700">{koma(nilaiA)} {satuanA}</p>
         </div>
         <div className="space-y-2 rounded-2xl bg-emerald-50 p-4">
-          <p className="text-sm font-black text-emerald-900">Cemara</p>
-          <p className="text-3xl font-black text-emerald-700">{cemara} pohon</p>
+          <p className="text-sm font-black text-emerald-900">{labelB}</p>
+          <p className="text-3xl font-black text-emerald-700">{koma(nilaiB)} {satuanB}</p>
         </div>
       </div>
       <p className="rounded-2xl bg-white px-4 py-3 text-center text-lg font-black leading-8 text-[#1C01A5]">
-        {dasarA} : {dasarB} = ({dasarA} × {kelipatan}) : ({dasarB} × {kelipatan}) = {pucuk} : {cemara}
+        {koma(dasarA)} : {koma(dasarB)} = ({koma(dasarA)} × {koma(kelipatan)}) : ({koma(dasarB)} × {koma(kelipatan)}) = {koma(nilaiA)} : {koma(nilaiB)}
       </p>
     </section>
   );
@@ -296,6 +364,8 @@ export default function RasioModuleView() {
   const [siap, setSiap] = useState(false);
   const [jawaban, setJawaban] = useState<Record<string, string>>({});
   const [kelipatan, setKelipatan] = useState(awal);
+  const [kelipatanLahan, setKelipatanLahan] = useState(2);
+  const [jamKemas, setJamKemas] = useState(1.5);
   const [simulasiDicoba, setSimulasiDicoba] = useState(false);
 
   useEffect(() => {
@@ -303,6 +373,8 @@ export default function RasioModuleView() {
     if (jejak) {
       setJawaban(jejak.jawaban);
       setKelipatan(jejak.kelipatan);
+      setKelipatanLahan(jepit(jejak.kelipatanLahan, 1, 8, 2));
+      setJamKemas(jepit(jejak.jamKemas, 0.5, 6, 1.5, 0.5));
       setSimulasiDicoba(jejak.simulasiDicoba);
     }
     setSiap(true);
@@ -315,8 +387,8 @@ export default function RasioModuleView() {
 
   useEffect(() => {
     if (!siap || !modul) return;
-    simpanJejak({ jawaban, kelipatan, simulasiDicoba, tuntas });
-  }, [siap, jawaban, kelipatan, simulasiDicoba, tuntas]);
+    simpanJejak({ jawaban, kelipatan, kelipatanLahan, jamKemas, simulasiDicoba, tuntas });
+  }, [siap, jawaban, kelipatan, kelipatanLahan, jamKemas, simulasiDicoba, tuntas]);
 
   const tandai = kuis?.tandaiBenar;
   useEffect(() => {
@@ -359,6 +431,9 @@ export default function RasioModuleView() {
   const paketB = modul.membandingkan.paket[1];
   const silangKiri = paketA.harga * paketB.bibit;
   const silangKanan = paketB.harga * paketA.bibit;
+  const lahanSederhana = modul.kesamaan.luas / modul.kesamaan.fpb;
+  const bibitSederhana = modul.kesamaan.bibit / modul.kesamaan.fpb;
+  const lajuKemas = modul.satuan.kemasBibit / modul.satuan.kemasJam;
 
   return (
     <article className="space-y-6">
@@ -411,7 +486,7 @@ export default function RasioModuleView() {
           {modul.petaKonsep.map((cabang) => (
             <div
               key={cabang.judul}
-              className={`space-y-2 rounded-2xl p-3 ${cabang.judul === modul.fokusPeta ? "bg-[#F0AB00]/30" : "bg-[#EEF2FF]"}`}
+              className={`space-y-2 rounded-2xl p-3 ${modul.fokusPeta.includes(cabang.judul) ? "bg-[#F0AB00]/30" : "bg-[#EEF2FF]"}`}
             >
               <p className="text-sm font-black text-[#1C01A5]">{cabang.judul}</p>
               {cabang.anak.map((anak) => (
@@ -420,7 +495,7 @@ export default function RasioModuleView() {
             </div>
           ))}
         </div>
-        <p className="text-sm font-bold text-[#1C01A5]">Bagian yang dikerjakan sekarang: {modul.fokusPeta}.</p>
+        <p className="text-sm font-bold text-[#1C01A5]">Bagian yang dikerjakan sekarang: {modul.fokusPeta.join(" dan ")}.</p>
       </section>
 
       <section className="space-y-4">
@@ -585,9 +660,150 @@ export default function RasioModuleView() {
         </div>
       </section>
 
+      <section className="space-y-4">
+        <h3 className="text-2xl font-black text-[#1C01A5]">B. Konsep Kesamaan Rasio</h3>
+        <p className="text-base font-semibold leading-8 text-slate-800">{modul.kesamaan.permasalahan}</p>
+        {kartu(soalBagian("B. Permasalahan"))}
+      </section>
+
+      <section className="space-y-4">
+        <h3 className="text-xl font-black text-[#1C01A5]">1. Kesamaan Rasio</h3>
+        <p className="text-sm font-black text-[#1C01A5]">{modul.kesamaan.eksplorasi}</p>
+        <p className="text-base font-semibold leading-8 text-slate-800">{modul.kesamaan.narasi}</p>
+        <GambarBuku src={modul.kesamaan.gambar} alt={modul.kesamaan.gambarAlt} keterangan="Lahan 10 m² diperkirakan memuat 12 bibit." />
+        <div className="overflow-x-auto">
+          <table className="min-w-full border-collapse text-sm">
+            <thead>
+              <tr>
+                {["", "Luas lahan (m²)", "Banyak bibit"].map((kolom) => (
+                  <th key={kolom || "langkah"} className="border border-slate-200 bg-slate-50 px-3 py-2 text-left font-black text-[#1C01A5]">{kolom}</th>
+                ))}
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td className="border border-slate-200 px-3 py-2 font-semibold">Data</td>
+                <td className="border border-slate-200 px-3 py-2 font-semibold">{modul.kesamaan.luas}</td>
+                <td className="border border-slate-200 px-3 py-2 font-semibold">{modul.kesamaan.bibit}</td>
+              </tr>
+              <tr>
+                <td className="border border-slate-200 px-3 py-2 font-semibold">Bagi {modul.kesamaan.fpb}</td>
+                <td className="border border-slate-200 px-3 py-2 font-semibold">{lahanSederhana}</td>
+                <td className="border border-slate-200 px-3 py-2 font-semibold">{bibitSederhana}</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <p className="text-base font-semibold leading-8 text-slate-800">
+          FPB {modul.kesamaan.luas} dan {modul.kesamaan.bibit} adalah {modul.kesamaan.fpb}. Bentuk paling sederhana {modul.kesamaan.luas} : {modul.kesamaan.bibit} = {lahanSederhana} : {bibitSederhana}.
+        </p>
+        <p className="rounded-2xl bg-[#F8F7FF] px-4 py-3 text-base font-semibold leading-8 text-slate-800">{modul.kesamaan.karakter}</p>
+        <GambarBuku src={modul.kesamaan.gambarLuas} alt={modul.kesamaan.gambarLuasAlt} keterangan="Lahan 25 m² memakai kerapatan yang sama." />
+        <Laboratorium
+          judul="Lahan Mini: Rasio Tetap 5 : 6"
+          deskripsi="Geser kelipatan bentuk sederhana. Kelipatan 2 mengembalikan data 10 : 12. Kelipatan 5 menampilkan lahan 25 m²."
+          dasarA={lahanSederhana}
+          dasarB={bibitSederhana}
+          kelipatan={kelipatanLahan}
+          min={1}
+          maks={8}
+          namaPengatur="kelipatan lahan"
+          labelA="Luas lahan"
+          labelB="Bibit"
+          satuanA="m²"
+          satuanB="bibit"
+          petunjuk="Kelipatan 4 menampilkan 24 bibit. Kelipatan 5 menampilkan 30 bibit."
+          onUbah={(nilai) => {
+            setKelipatanLahan(jepit(nilai, 1, 8, 2));
+            setSimulasiDicoba(true);
+          }}
+        />
+        {kartu(soalBagian("1. Kesamaan Rasio").slice(0, 5))}
+        <GambarBuku
+          src={modul.kesamaan.gambarPupuk}
+          alt={modul.kesamaan.gambarPupukAlt}
+          keterangan={`${modul.kesamaan.pupukBibit} bibit memerlukan ${modul.kesamaan.pupukGram} gram pupuk.`}
+        />
+        {kartu(soalBagian("1. Kesamaan Rasio").slice(5))}
+      </section>
+
+      <section className="space-y-4">
+        <h3 className="text-xl font-black text-[#1C01A5]">2. Rasio Satuan</h3>
+        <p className="text-sm font-black text-[#1C01A5]">{modul.satuan.eksplorasi}</p>
+        <p className="text-base font-semibold leading-8 text-slate-800">{modul.satuan.narasi}</p>
+        <GambarBuku src={modul.satuan.gambar} alt={modul.satuan.gambarAlt} keterangan="Paket 3 bibit berharga Rp37.500. Paket 5 bibit berharga Rp58.000." />
+        <div className="overflow-x-auto">
+          <table className="min-w-full border-collapse text-sm">
+            <thead>
+              <tr>
+                {["Paket", "Banyak bibit", "Harga paket", "Harga satu bibit"].map((kolom) => (
+                  <th key={kolom} className="border border-slate-200 bg-slate-50 px-3 py-2 text-left font-black text-[#1C01A5]">{kolom}</th>
+                ))}
+              </tr>
+            </thead>
+            <tbody>
+              {modul.satuan.paket.map((paket) => (
+                <tr key={paket.bibit}>
+                  <td className="border border-slate-200 px-3 py-2 font-semibold">{paket.bibit} bibit</td>
+                  <td className="border border-slate-200 px-3 py-2 font-semibold">{paket.bibit}</td>
+                  <td className="border border-slate-200 px-3 py-2 font-semibold">{rupiah(paket.harga)}</td>
+                  <td className="border border-slate-200 px-3 py-2 font-semibold">{rupiah(paket.harga / paket.bibit)}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+        <p className="text-base font-semibold leading-8 text-slate-800">{modul.satuan.pengertian}</p>
+        {kartu(soalBagian("2. Rasio Satuan").slice(0, 3))}
+        <p className="text-base font-semibold leading-8 text-slate-800">{modul.satuan.kemasNarasi}</p>
+        <GambarBuku src={modul.satuan.gambarKemas} alt={modul.satuan.gambarKemasAlt} keterangan="6 bibit dikemas dalam 1,5 jam." />
+        {kartu(soalBagian("2. Rasio Satuan").slice(3))}
+        <Laboratorium
+          judul="Meja Kemas: 4 Bibit per Jam"
+          deskripsi="Geser lama waktu. Banyak bibit mengikuti rasio satuan 4 : 1."
+          dasarA={lajuKemas}
+          dasarB={1}
+          kelipatan={jamKemas}
+          min={0.5}
+          maks={6}
+          langkah={0.5}
+          namaPengatur="jam kemas"
+          labelA="Bibit"
+          labelB="Waktu"
+          satuanA="bibit"
+          satuanB="jam"
+          petunjuk="1,5 jam menampilkan 6 bibit. 4 jam menampilkan 16 bibit."
+          onUbah={(nilai) => {
+            setJamKemas(jepit(nilai, 0.5, 6, 1.5, 0.5));
+            setSimulasiDicoba(true);
+          }}
+        />
+      </section>
+
+      <section className="space-y-4">
+        <h3 className="text-xl font-black text-[#1C01A5]">Latihan 2.2</h3>
+        <GambarBuku
+          src={modul.wedang.gambar}
+          alt={modul.wedang.gambarAlt}
+          keterangan={`Resep untuk ${modul.wedang.air} liter air.`}
+        />
+        <ul className="list-disc space-y-1 pl-5 text-base font-semibold leading-8 text-slate-800">
+          {modul.wedang.bahan.map((bahan) => (
+            <li key={bahan}>{bahan}</li>
+          ))}
+        </ul>
+        {kartu(soalBagian("Latihan 2.2"))}
+        <div className="space-y-2 rounded-3xl bg-[#F8F7FF] p-4">
+          <h4 className="text-lg font-black text-[#1C01A5]">Ayo Berefleksi</h4>
+          {modul.refleksiKesamaan.map((kalimat) => (
+            <p key={kalimat} className="text-base font-semibold leading-8 text-slate-800">{kalimat}</p>
+          ))}
+        </div>
+      </section>
+
       {tuntas ? (
         <section className="rounded-3xl bg-emerald-600 px-5 py-4 text-white">
-          <p className="text-lg font-black">Bagian A tuntas.</p>
+          <p className="text-lg font-black">Bagian A dan B tuntas.</p>
           <p className="mt-1 text-sm font-semibold leading-7">
             {jumlahBenar} soal benar{simulasiDicoba ? " dan kebun mini sudah dicoba" : ""}. Status tersimpan di perangkat ini.
           </p>
