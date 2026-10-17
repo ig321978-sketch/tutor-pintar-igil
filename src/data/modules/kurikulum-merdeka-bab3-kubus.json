@@ -31,7 +31,7 @@
     { "judul": "Visualisasi Spasial", "anak": ["Tampak dari beberapa arah"] },
     { "judul": "Lokasi", "anak": ["Sistem berpetak"] }
   ],
-  "fokusPeta": ["Mengonstruksi dan Mengurai"],
+  "fokusPeta": ["Mengonstruksi dan Mengurai", "Visualisasi Spasial"],
   "bangun": [
     { "nomor": 1, "nama": "Tabung" },
     { "nomor": 2, "nama": "Kerucut" },
@@ -52,6 +52,21 @@
   "refleksi": [
     "Kubus dan balok dapat disusun menjadi bangun yang baru.",
     "Bangun yang sudah tersusun dapat diurai kembali menjadi kubus atau balok yang lebih kecil."
+  ],
+  "anike": [
+    { "x": 0, "y": 0, "z": 0, "nama": "biru", "warna": "#60A5FA" },
+    { "x": 1, "y": 0, "z": 0, "nama": "merah", "warna": "#F87171" },
+    { "x": 1, "y": 0, "z": 1, "nama": "hijau", "warna": "#4ADE80" },
+    { "x": 2, "y": 0, "z": 0, "nama": "kuning", "warna": "#FACC15" }
+  ],
+  "soalLima": {
+    "depan": [["biru", ""], ["kuning", "merah"]],
+    "kanan": [["biru", ""], ["merah", "hijau"]],
+    "atas": [["hijau", ""], ["biru", "merah"]]
+  },
+  "refleksiSpasial": [
+    "Bangun yang sama dapat terlihat berbeda dari depan, kanan, dan atas.",
+    "Tiga arah lebih menolong daripada satu arah saat kubus disusun kembali."
   ],
   "latihanFormatif": [
     {
@@ -213,6 +228,102 @@
       "opsi": ["0,3 m²", "3 m²", "9 m²", "30 m²"],
       "kunciJawaban": "0,3 m²",
       "pembahasan": "Satu kardus 20 × 30 × 50 = 30.000 cm³. Tiga puluh kardus = 900.000 cm³. 900.000 : 300 = 3.000 cm² = 0,3 m²."
+    },
+    {
+      "id": "beda-sisi",
+      "bagian": "B. Permasalahan",
+      "soal": "Gambar Fort Rotterdam milik Tigor dan Tenri berbeda karena ...",
+      "opsi": ["Mereka melihat dari sisi yang berbeda", "Bentengnya ada dua", "Satu gambar salah ukuran", "Mereka memakai penggaris yang beda"],
+      "kunciJawaban": "Mereka melihat dari sisi yang berbeda",
+      "pembahasan": "Bangun yang sama terlihat berbeda jika dilihat dari sisi yang berbeda. Arsitek menggambar beberapa tampak agar rancangannya bisa dibuat."
+    },
+    {
+      "id": "anike-jumlah",
+      "bagian": "Eksplorasi 3.2",
+      "soal": "Susunan kubus Anike memakai kubus sebanyak ...",
+      "opsi": ["4 kubus", "3 kubus", "5 kubus", "6 kubus"],
+      "kunciJawaban": "4 kubus",
+      "pembahasan": "Ada 3 kubus di bawah dan 1 kubus hijau di atas yang tengah. Jumlahnya 4."
+    },
+    {
+      "id": "anike-depan",
+      "bagian": "Eksplorasi 3.2",
+      "soal": "Pada tampak depan Anike, kubus paling kiri berwarna ...",
+      "opsi": ["Biru", "Merah", "Hijau", "Kuning"],
+      "kunciJawaban": "Biru",
+      "pembahasan": "Dari depan, baris bawah dari kiri ke kanan berwarna biru, merah, lalu kuning. Hijau berada di atas merah."
+    },
+    {
+      "id": "anike-atas",
+      "bagian": "Eksplorasi 3.2",
+      "soal": "Pada tampak atas Anike, kotak tengah berwarna ...",
+      "opsi": ["Hijau", "Merah", "Biru", "Kuning"],
+      "kunciJawaban": "Hijau",
+      "pembahasan": "Tampak atas melihat tutup tiap kolom. Kolom tengah ditutup kubus hijau, bukan kubus merah yang ada di bawahnya."
+    },
+    {
+      "id": "hijau-merah",
+      "bagian": "Eksplorasi 3.2",
+      "soal": "Susunan dua kubus hijau bertumpuk dan dua kubus merah memakai kubus sebanyak ...",
+      "opsi": ["4 kubus", "2 kubus", "3 kubus", "5 kubus"],
+      "kunciJawaban": "4 kubus",
+      "pembahasan": "Dua hijau ditambah dua merah. Jumlahnya 4."
+    },
+    {
+      "id": "satu-arah",
+      "bagian": "Eksplorasi 3.2",
+      "soal": "Apakah tampak dari satu arah selalu cukup untuk menentukan susunan kubus?",
+      "opsi": ["Tidak, sering belum cukup", "Ya, satu arah selalu cukup", "Hanya jika kubusnya merah", "Ya, asal dilihat dari atas"],
+      "kunciJawaban": "Tidak, sering belum cukup",
+      "pembahasan": "Satu arah, bahkan dua arah, kadang masih punya lebih dari satu kemungkinan. Tiga arah lebih menolong."
+    },
+    {
+      "id": "kubus-kanan",
+      "bagian": "Latihan 3.2",
+      "soal": "Pada kubus pertama di Latihan 3.2, warna tampak kanan adalah ...",
+      "opsi": ["Kuning", "Biru", "Merah", "Hijau"],
+      "kunciJawaban": "Kuning",
+      "pembahasan": "Tampak kanan melihat sisi kanan kubus itu. Warnanya kuning."
+    },
+    {
+      "id": "tiga-warna",
+      "bagian": "Latihan 3.2",
+      "soal": "Tampak depan merah, tampak kanan kuning, dan tampak atas hijau. Tiga sisi yang bertemu berwarna ...",
+      "opsi": ["Merah, kuning, dan hijau", "Biru, kuning, dan merah", "Hijau, biru, dan merah", "Kuning saja"],
+      "kunciJawaban": "Merah, kuning, dan hijau",
+      "pembahasan": "Setiap tampak menunjukkan satu sisi. Depan merah, kanan kuning, dan atas hijau."
+    },
+    {
+      "id": "soal-lima",
+      "bagian": "Latihan 3.2",
+      "soal": "Tampak depan, kanan, dan atas pada tabel menunjukkan susunan kubus. Banyak kubusnya adalah ...",
+      "opsi": ["4 kubus", "3 kubus", "5 kubus", "6 kubus"],
+      "kunciJawaban": "4 kubus",
+      "pembahasan": "Depan kiri kuning ditumpuk biru, depan kanan merah, dan di belakang kiri ada hijau. Jumlahnya 4."
+    },
+    {
+      "id": "soal-lima-hijau",
+      "bagian": "Latihan 3.2",
+      "soal": "Pada susunan itu, kubus di belakang kiri berwarna ...",
+      "opsi": ["Hijau", "Biru", "Merah", "Kuning"],
+      "kunciJawaban": "Hijau",
+      "pembahasan": "Tampak atas menaruh hijau di belakang kiri. Tampak kanan juga menunjukkan hijau di kolom belakang."
+    },
+    {
+      "id": "dadu-depan",
+      "bagian": "Latihan 3.2",
+      "soal": "Pada dadu pertama, mata yang menghadap depan adalah ...",
+      "opsi": ["4", "6", "5", "3"],
+      "kunciJawaban": "4",
+      "pembahasan": "Sisi yang menghadap depan menunjukkan 4 mata."
+    },
+    {
+      "id": "dadu-kosong",
+      "bagian": "Latihan 3.2",
+      "soal": "Dadu yang sama diputar. Atas tetap 6 dan depan menjadi 2. Jika sisi berlawanan berjumlah 7, sisi kanan yang kosong bermata ...",
+      "opsi": ["4", "3", "5", "1"],
+      "kunciJawaban": "4",
+      "pembahasan": "6 berlawanan dengan 1, 5 berlawanan dengan 2, dan 4 berlawanan dengan 3. Saat depan menjadi 2, sisi kanan yang tadinya depan berpindah ke kanan. Isinya 4."
     }
   ]
 }

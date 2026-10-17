@@ -18,6 +18,8 @@ type SoalFormatif = {
 type CabangPeta = { judul: string; anak: string[] };
 type BentukDua = "berdampingan" | "bertumpuk";
 type BentukTiga = "lurus" | "siku" | "bertingkat" | "menara";
+type Arah = "depan" | "kanan" | "atas";
+type KubusWarna = { x: number; y: number; z: number; nama: string; warna: string };
 
 type ModulKubus = {
   id: string;
@@ -39,6 +41,9 @@ type ModulKubus = {
   kontainer: string;
   gudang: { kardus: number; rusuk: number[]; lantaiCm: number; tinggiCm: number };
   refleksi: string[];
+  anike: KubusWarna[];
+  soalLima: { depan: string[][]; kanan: string[][]; atas: string[][] };
+  refleksiSpasial: string[];
   latihanFormatif: SoalFormatif[];
 };
 
@@ -48,6 +53,7 @@ type JejakKubus = {
   bentukTiga: BentukTiga;
   batang: boolean[];
   sisiTegak: number;
+  arahAnike: Arah;
   simulasiDicoba: boolean;
 };
 
@@ -87,12 +93,14 @@ function bacaJejak(): JejakKubus | null {
     const bentukTiga = data.bentukTiga === "siku" || data.bentukTiga === "bertingkat" || data.bentukTiga === "menara" ? data.bentukTiga : "lurus";
     const batang = Array.isArray(data.batang) ? BATANG.map((_, indeks) => Boolean(data.batang?.[indeks])) : BATANG.map(() => false);
     const sisi = data.sisiTegak === 20 || data.sisiTegak === 30 || data.sisiTegak === 50 ? data.sisiTegak : 50;
+    const arahAnike = data.arahAnike === "kanan" || data.arahAnike === "atas" ? data.arahAnike : "depan";
     return {
       jawaban: data.jawaban && typeof data.jawaban === "object" ? data.jawaban : {},
       bentukDua,
       bentukTiga,
       batang,
       sisiTegak: sisi,
+      arahAnike,
       simulasiDicoba: Boolean(data.simulasiDicoba),
     };
   } catch {
@@ -104,12 +112,78 @@ function Kotak({ warna = "#F0AB00" }: { warna?: string }) {
   return <span className="inline-block h-9 w-9 rounded-sm border-2 border-[#1C01A5]" style={{ background: warna }} />;
 }
 
-function Kolom({ tinggi, warna }: { tinggi: number; warna?: string }) {
+function Kolom({ tinggi, warna, warnaTiap }: { tinggi: number; warna?: string; warnaTiap?: string[] }) {
   return (
     <span className="flex flex-col-reverse gap-1">
       {Array.from({ length: tinggi }, (_, indeks) => (
-        <Kotak key={indeks} warna={warna} />
+        <Kotak key={indeks} warna={warnaTiap?.[indeks] ?? warna} />
       ))}
+    </span>
+  );
+}
+
+function gridTampak(kubus: KubusWarna[], arah: Arah): string[][] {
+  const maxX = Math.max(...kubus.map((kotak) => kotak.x));
+  const maxY = Math.max(...kubus.map((kotak) => kotak.y));
+  const maxZ = Math.max(...kubus.map((kotak) => kotak.z));
+  if (arah === "atas") {
+    return Array.from({ length: maxY + 1 }, (_, urut) => {
+      const y = maxY - urut;
+      return Array.from({ length: maxX + 1 }, (_, x) => {
+        const tertinggi = kubus.filter((kotak) => kotak.x === x && kotak.y === y).sort((a, b) => b.z - a.z)[0];
+        return tertinggi?.nama ?? "";
+      });
+    });
+  }
+  if (arah === "kanan") {
+    return Array.from({ length: maxZ + 1 }, (_, urut) => {
+      const z = maxZ - urut;
+      return Array.from({ length: maxY + 1 }, (_, urutY) => {
+        const y = urutY;
+        const terkanan = kubus.filter((kotak) => kotak.y === y && kotak.z === z).sort((a, b) => b.x - a.x)[0];
+        return terkanan?.nama ?? "";
+      });
+    });
+  }
+  return Array.from({ length: maxZ + 1 }, (_, urut) => {
+    const z = maxZ - urut;
+    return Array.from({ length: maxX + 1 }, (_, x) => {
+      const terdepan = kubus.filter((kotak) => kotak.x === x && kotak.z === z).sort((a, b) => a.y - b.y)[0];
+      return terdepan?.nama ?? "";
+    });
+  });
+}
+
+function PapanTampak({ baris, warnaNama }: { baris: string[][]; warnaNama: Record<string, string> }) {
+  return (
+    <div className="inline-flex flex-col gap-1">
+      {baris.map((barisIni, indeksBaris) => (
+        <div key={indeksBaris} className="flex gap-1">
+          {barisIni.map((nama, indeks) => (
+            <span
+              key={indeks}
+              className="h-9 w-9 rounded-sm border-2 border-[#1C01A5]"
+              style={{ background: nama ? warnaNama[nama] ?? "#E2E8F0" : "#FFFFFF" }}
+            />
+          ))}
+        </div>
+      ))}
+    </div>
+  );
+}
+
+function MataDadu({ mata, kosong = false }: { mata: number; kosong?: boolean }) {
+  const posisi: Record<number, string[]> = {
+    1: ["col-start-2 row-start-2"],
+    2: ["col-start-1 row-start-1", "col-start-3 row-start-3"],
+    3: ["col-start-1 row-start-1", "col-start-2 row-start-2", "col-start-3 row-start-3"],
+    4: ["col-start-1 row-start-1", "col-start-3 row-start-1", "col-start-1 row-start-3", "col-start-3 row-start-3"],
+    5: ["col-start-1 row-start-1", "col-start-3 row-start-1", "col-start-2 row-start-2", "col-start-1 row-start-3", "col-start-3 row-start-3"],
+    6: ["col-start-1 row-start-1", "col-start-3 row-start-1", "col-start-1 row-start-2", "col-start-3 row-start-2", "col-start-1 row-start-3", "col-start-3 row-start-3"],
+  };
+  return (
+    <span className={`grid h-16 w-16 grid-cols-3 grid-rows-3 rounded-xl border-2 border-[#1C01A5] p-1 ${kosong ? "bg-slate-100" : "bg-white"}`} aria-label={kosong ? "sisi kosong" : `${mata} mata`}>
+      {kosong ? null : posisi[mata]?.map((kelas) => <span key={kelas} className={`h-3 w-3 self-center justify-self-center rounded-full bg-[#1C01A5] ${kelas}`} />)}
     </span>
   );
 }
@@ -259,6 +333,7 @@ export default function KubusModuleView() {
   const [bentukTiga, setBentukTiga] = useState<BentukTiga>("lurus");
   const [batang, setBatang] = useState<boolean[]>(BATANG.map(() => false));
   const [sisiTegak, setSisiTegak] = useState(50);
+  const [arahAnike, setArahAnike] = useState<Arah>("depan");
   const [simulasiDicoba, setSimulasiDicoba] = useState(false);
 
   useEffect(() => {
@@ -269,6 +344,7 @@ export default function KubusModuleView() {
       setBentukTiga(jejak.bentukTiga);
       setBatang(jejak.batang);
       setSisiTegak(jejak.sisiTegak);
+      setArahAnike(jejak.arahAnike);
       setSimulasiDicoba(jejak.simulasiDicoba);
     }
     setSiap(true);
@@ -279,13 +355,13 @@ export default function KubusModuleView() {
 
   useEffect(() => {
     if (!siap || !modul) return;
-    const jejak: JejakKubus = { jawaban, bentukDua, bentukTiga, batang, sisiTegak, simulasiDicoba };
+    const jejak: JejakKubus = { jawaban, bentukDua, bentukTiga, batang, sisiTegak, arahAnike, simulasiDicoba };
     try {
       window.localStorage.setItem(KUNCI_JEJAK, JSON.stringify({ ...jejak, tuntas }));
     } catch {
       return;
     }
-  }, [siap, jawaban, bentukDua, bentukTiga, batang, sisiTegak, simulasiDicoba, tuntas]);
+  }, [siap, jawaban, bentukDua, bentukTiga, batang, sisiTegak, arahAnike, simulasiDicoba, tuntas]);
 
   const tandai = kuis?.tandaiBenar;
   useEffect(() => {
@@ -371,7 +447,7 @@ export default function KubusModuleView() {
             </div>
           ))}
         </div>
-        <p className="text-sm font-bold text-[#1C01A5]">Bagian yang dikerjakan sekarang: {modul.fokusPeta.join(" dan ")}.</p>
+        <p className="text-sm font-bold text-[#1C01A5]">Bagian yang dikerjakan sekarang: {modul.fokusPeta[0]} serta {modul.fokusPeta.slice(1).join(", ")}.</p>
       </section>
 
       <section className="space-y-4">
@@ -562,9 +638,147 @@ export default function KubusModuleView() {
         </div>
       </section>
 
+      <section className="space-y-4">
+        <h3 className="text-2xl font-black text-[#1C01A5]">B. Visualisasi Spasial</h3>
+        <p className="text-base font-semibold leading-8 text-slate-800">
+          Bangunan terlihat berbeda dari sisi yang berbeda. Arsitek menggambar tampak dari beberapa arah agar orang lain dapat membangun rancangannya. Lawang Sewu di Semarang, misalnya, tidak terlihat sama dari setiap sisi.
+        </p>
+        {kartu(soalBagian("B. Permasalahan"))}
+      </section>
+
+      <section className="space-y-4">
+        <h3 className="text-xl font-black text-[#1C01A5]">Eksplorasi 3.2 Melihat dari Berbagai Sisi</h3>
+        <p className="text-base font-semibold leading-8 text-slate-800">
+          Anike menggambar satu susunan kubus dari depan, dari kanan, dan dari atas. Tigor dan Tenri ingat Fort Rotterdam: gambar mereka berbeda karena sisinya berbeda.
+        </p>
+        <div className="flex items-end gap-1" aria-label="Susunan kubus Anike">
+          <Kolom tinggi={1} warna="#60A5FA" />
+          <Kolom tinggi={2} warnaTiap={["#F87171", "#4ADE80"]} />
+          <Kolom tinggi={1} warna="#FACC15" />
+        </div>
+        <div className="space-y-3 rounded-3xl border-2 border-[#F0AB00] bg-[#FFF9EB] p-5">
+          <p className="text-xs font-black uppercase tracking-wide text-[#1C01A5]">Praktikum mandiri</p>
+          <h3 className="text-xl font-black text-[#1C01A5]">Tampak Anike</h3>
+          <div className="flex flex-wrap gap-2">
+            {(["depan", "kanan", "atas"] as Arah[]).map((arah) => (
+              <button
+                key={arah}
+                type="button"
+                aria-pressed={arahAnike === arah}
+                onClick={() => {
+                  setArahAnike(arah);
+                  setSimulasiDicoba(true);
+                }}
+                className={`rounded-full px-4 py-2 text-sm font-black ${arahAnike === arah ? "bg-[#1C01A5] text-white" : "bg-white text-[#1C01A5]"}`}
+              >
+                {arah}
+              </button>
+            ))}
+          </div>
+          <PapanTampak
+            baris={gridTampak(modul.anike, arahAnike)}
+            warnaNama={Object.fromEntries(modul.anike.map((kotak) => [kotak.nama, kotak.warna]))}
+          />
+          <p className="text-sm font-bold text-slate-600">Tampak {arahAnike} dihitung dari susunan kubus di atas.</p>
+        </div>
+        {kartu(soalBagian("Eksplorasi 3.2").slice(0, 3))}
+        <div className="flex items-end gap-1" aria-label="Dua kubus hijau dan dua kubus merah">
+          <Kolom tinggi={2} warna="#4ADE80" />
+          <Kolom tinggi={1} warna="#F87171" />
+          <Kolom tinggi={1} warna="#F87171" />
+        </div>
+        {kartu(soalBagian("Eksplorasi 3.2").slice(3))}
+        <p className="rounded-2xl bg-[#F8F7FF] px-4 py-3 text-base font-semibold leading-8 text-slate-800">
+          Orang bisa berdebat karena melihat sisi yang berbeda dari hal yang sama. Melihat tampak yang lebih banyak membantu menyusun kubus kembali.
+        </p>
+      </section>
+
+      <section className="space-y-4">
+        <h3 className="text-xl font-black text-[#1C01A5]">Latihan 3.2</h3>
+        <div className="flex flex-wrap items-end gap-6">
+          <div className="space-y-1">
+            <p className="text-sm font-black text-[#1C01A5]">Depan</p>
+            <Kotak warna="#60A5FA" />
+          </div>
+          <div className="space-y-1">
+            <p className="text-sm font-black text-[#1C01A5]">Kanan</p>
+            <Kotak warna="#FACC15" />
+          </div>
+          <div className="space-y-1">
+            <p className="text-sm font-black text-[#1C01A5]">Atas</p>
+            <Kotak warna="#F87171" />
+          </div>
+        </div>
+        {kartu(soalBagian("Latihan 3.2").slice(0, 1))}
+        <div className="flex flex-wrap items-end gap-6">
+          <div className="space-y-1">
+            <p className="text-sm font-black text-[#1C01A5]">Depan</p>
+            <Kotak warna="#F87171" />
+          </div>
+          <div className="space-y-1">
+            <p className="text-sm font-black text-[#1C01A5]">Kanan</p>
+            <Kotak warna="#FACC15" />
+          </div>
+          <div className="space-y-1">
+            <p className="text-sm font-black text-[#1C01A5]">Atas</p>
+            <Kotak warna="#4ADE80" />
+          </div>
+        </div>
+        {kartu(soalBagian("Latihan 3.2").slice(1, 2))}
+        <div className="grid gap-3 sm:grid-cols-3">
+          {(["depan", "kanan", "atas"] as Arah[]).map((arah) => (
+            <div key={arah} className="space-y-2 rounded-2xl bg-[#F8F7FF] p-3">
+              <p className="text-sm font-black text-[#1C01A5]">{arah}</p>
+              <PapanTampak
+                baris={modul.soalLima[arah]}
+                warnaNama={{ biru: "#60A5FA", merah: "#F87171", kuning: "#FACC15", hijau: "#4ADE80" }}
+              />
+            </div>
+          ))}
+        </div>
+        {kartu(soalBagian("Latihan 3.2").slice(2, 4))}
+        <div className="flex flex-wrap items-end gap-6">
+          <div className="space-y-2">
+            <p className="text-sm font-black text-[#1C01A5]">Dadu pertama</p>
+            <span className="flex items-end gap-2">
+              {[[6, "atas"], [4, "depan"], [5, "kanan"]].map(([mata, arah]) => (
+                <span key={arah} className="space-y-1 text-center">
+                  <MataDadu mata={Number(mata)} />
+                  <span className="block text-xs font-bold text-slate-600">{arah}</span>
+                </span>
+              ))}
+            </span>
+          </div>
+          <div className="space-y-2">
+            <p className="text-sm font-black text-[#1C01A5]">Dadu yang sama, dilihat dari arah lain</p>
+            <span className="flex items-end gap-2">
+              <span className="space-y-1 text-center">
+                <MataDadu mata={6} />
+                <span className="block text-xs font-bold text-slate-600">atas</span>
+              </span>
+              <span className="space-y-1 text-center">
+                <MataDadu mata={2} />
+                <span className="block text-xs font-bold text-slate-600">depan</span>
+              </span>
+              <span className="space-y-1 text-center">
+                <MataDadu mata={0} kosong />
+                <span className="block text-xs font-bold text-slate-600">kanan</span>
+              </span>
+            </span>
+          </div>
+        </div>
+        {kartu(soalBagian("Latihan 3.2").slice(4))}
+        <div className="space-y-2 rounded-3xl bg-[#F8F7FF] p-4">
+          <h4 className="text-lg font-black text-[#1C01A5]">Ayo Berefleksi</h4>
+          {modul.refleksiSpasial.map((kalimat) => (
+            <p key={kalimat} className="text-base font-semibold leading-8 text-slate-800">{kalimat}</p>
+          ))}
+        </div>
+      </section>
+
       {tuntas ? (
         <section className="rounded-3xl bg-emerald-600 px-5 py-4 text-white">
-          <p className="text-lg font-black">Bagian A tuntas.</p>
+          <p className="text-lg font-black">Bagian A dan B tuntas.</p>
           <p className="mt-1 text-sm font-semibold leading-7">
             {jumlahBenar} soal benar{simulasiDicoba ? " dan praktikum sudah dicoba" : ""}. Status tersimpan di perangkat ini.
           </p>
