@@ -183,17 +183,43 @@ export default function NaskahMtk6Bab2(_props: { kelas?: string; kelamin?: strin
         <P anak="Rasio, kesamaan rasio, rasio satuan, rasio bagian, kotak rasio, tabel rasio, rasio pada durasi waktu." />
       </section>
 
-      <section className="space-y-2">
+      <section className="space-y-3">
         <JudulBagian anak="Peta Konsep" />
-        <P anak="Rasio punya tiga cabang: konsep rasio, kesamaan rasio, dan penerapan rasio. Konsep rasio berisi membandingkan benda dan pengertian rasio. Kesamaan rasio berisi tabel rasio dan rasio satuan. Penerapan berisi rasio bagian terhadap bagian, rasio bagian terhadap keseluruhan, dan rasio pada durasi waktu." />
+        <div className="space-y-3 rounded-2xl border border-slate-200 bg-white p-4">
+          <p className="mx-auto w-fit rounded-full bg-[#1C01A5] px-4 py-1 text-sm font-black text-white">Rasio</p>
+          <div className="grid gap-3 md:grid-cols-3">
+            <div className="space-y-2 rounded-xl bg-[#EEF2FF] p-3">
+              <p className="text-sm font-black text-[#1C01A5]">Konsep Rasio</p>
+              <p className="text-sm font-semibold text-slate-800">Membandingkan benda</p>
+              <p className="text-sm font-semibold text-slate-800">Pengertian rasio</p>
+            </div>
+            <div className="space-y-2 rounded-xl bg-[#EEF2FF] p-3">
+              <p className="text-sm font-black text-[#1C01A5]">Kesamaan Rasio</p>
+              <p className="text-sm font-semibold text-slate-800">Konsep kesamaan rasio</p>
+              <p className="text-sm font-semibold text-slate-800">Rasio satuan</p>
+            </div>
+            <div className="space-y-2 rounded-xl bg-[#EEF2FF] p-3">
+              <p className="text-sm font-black text-[#1C01A5]">Penerapan Rasio</p>
+              <p className="text-sm font-semibold text-slate-800">Bagian terhadap bagian dan terhadap keseluruhan</p>
+              <p className="text-sm font-semibold text-slate-800">Rasio pada durasi waktu</p>
+            </div>
+          </div>
+        </div>
       </section>
 
       <section className="space-y-3">
         <JudulBagian anak="Ayo Mengingat Kembali" />
-        <Gambar src="/doodle-mtk/mtk-6-bab2-catatan.jpg" alt="Agam membuka buku catatan di meja" keterangan="Catatan faktor, kelipatan, dan pecahan dipakai lagi di bab ini." />
-        <P anak="Faktor adalah bilangan yang membagi habis. Kelipatan didapat dengan mengalikan. Faktor memperkecil rasio. Kelipatan memperbesar rasio." />
-        <P anak="2 merupakan faktor dari 10, karena 10 : 2 = 5. Kelipatan 10 dimulai dari 10, 20, 30. Tiga kelipatan 6 antara lain 6, 12, dan 18." />
-        <P anak="Bagian yang hilang pada gambar pecahan: roti A ada 4 tempat dan 1 kosong, jadi (1)/(4). Semangka B terbagi 6 dan 1 bagian hilang, jadi (1)/(6). Cokelat C tersusun 8 kotak dan 1 kotak hilang, jadi (1)/(8)." />
+        <Gambar src="/doodle-mtk/mtk-6-bab2-catatan.jpg" alt="Catatan faktor dan kelipatan" keterangan="Faktor dan kelipatan dipakai untuk memperkecil atau memperbesar rasio." />
+        <Daftar anak={[
+          "a. Apa beda faktor dan kelipatan suatu bilangan?",
+          "b. Apakah 2 merupakan faktor atau kelipatan dari 10?",
+          "c. Sebutkan tiga bilangan yang merupakan kelipatan dari 6.",
+        ]} />
+        <P anak="Faktor membagi habis suatu bilangan. Kelipatan didapat dengan mengalikan. Faktor memperkecil rasio. Kelipatan memperbesar rasio. 2 adalah faktor dari 10 karena 10 : 2 = 5. Tiga kelipatan 6 adalah 6, 12, dan 18." />
+        <Gambar src="/doodle-mtk/mtk-6-bab2-pecahan.jpg" alt="Roti, semangka, dan cokelat dengan satu bagian yang hilang" keterangan="Gambar A, B, dan C. Tuliskan pecahan untuk bagian yang hilang." />
+        <SoalLatihan anak="A. Pecahan bagian yang hilang pada roti." id={idKuis("E", 8)} periksa={(teks) => rasio(teks, "1", "4")} jawaban="Ada 4 tempat dan 1 kosong. Jawabannya 1/4." />
+        <SoalLatihan anak="B. Pecahan bagian yang hilang pada semangka." id={idKuis("E", 9)} periksa={(teks) => rasio(teks, "1", "6")} jawaban="Semangka terbagi 6 dan 1 juring hilang. Jawabannya 1/6." />
+        <SoalLatihan anak="C. Pecahan bagian yang hilang pada cokelat." id={idKuis("E", 10)} periksa={(teks) => rasio(teks, "1", "8")} jawaban="Cokelat tersusun 8 kotak dan 1 kotak hilang. Jawabannya 1/8." />
       </section>
 
       <section className="space-y-4">
@@ -202,7 +228,15 @@ export default function NaskahMtk6Bab2(_props: { kelas?: string; kelamin?: strin
         <P anak="Siswa SD Mentari menanam bibit di kebun belakang sekolah. Ada dua paket bibit dengan harga berbeda. Membandingkan hanya banyak bibit, atau hanya harga paket, belum menunjukkan paket yang lebih murah untuk setiap bibit." />
 
         <Subjudul anak="1. Membandingkan Benda" />
-        <P anak="Eksplorasi 2.1. Artus melihat dua paket. Paket A berisi 5 bibit seharga Rp50.000. Paket B berisi 3 bibit seharga Rp40.000." />
+        <P anak="Eksplorasi 2.1. Artus membeli bibit di toko. Ada dua paket pada gambar." />
+        <Gambar src="/doodle-mtk/mtk-6-bab2-paket.jpg" alt="Paket A berisi lima bibit dan paket B berisi tiga bibit" keterangan="Paket A berharga Rp50.000. Paket B berharga Rp40.000." />
+        <Daftar anak={[
+          "a. Paket mana yang jumlah bibitnya lebih banyak?",
+          "b. Paket mana yang harganya lebih murah?",
+          "c. Paket mana yang sebaiknya dibeli Artus?",
+        ]} />
+        <Subjudul anak="Ayo Mencoba" />
+        <P anak="Hitung harga satu bibit pada kedua paket." />
         <Tabel kolom={["Paket", "Banyak bibit", "Harga paket", "Harga satu bibit"]} baris={[
           ["A", "5", "Rp50.000", "Rp10.000"],
           ["B", "3", "Rp40.000", "Rp13.333 sisa Rp1"],
@@ -217,19 +251,34 @@ export default function NaskahMtk6Bab2(_props: { kelas?: string; kelamin?: strin
         <Gambar src="/doodle-mtk/mtk-6-bab2-urutan.jpg" alt="Agam menunjuk pohon cemara lebih dahulu" keterangan="Urutan rasio mengikuti urutan yang disebut." />
         <P anak="a : b tidak sama artinya dengan b : a. Pucuk merah terhadap cemara 2 : 3 berarti setiap 2 pucuk merah ada 3 cemara. Cemara terhadap pucuk merah adalah 6 : 4 = 3 : 2." />
         <Gambar src="/doodle-mtk/mtk-6-bab2-tambah.jpg" alt="Agam menambah pohon di kebun" keterangan="Pucuk merah ditambah menjadi 14 pohon." />
-        <P anak="Jika pucuk merah menjadi 14, cemara ikut dengan rasio yang sama. 2 : 3 = 14 : 21, karena 14 : 2 = 7 dan 3 × 7 = 21. Cemara yang ditanam 21 pohon." />
+        <Subjudul anak="Ayo Bekerja Sama" />
+        <P anak="Jika lahan diperluas dan pucuk merah yang ditanam 14 pohon, berapa cemara yang ditanam agar rasio tetap 2 : 3?" />
+        <P anak="14 : 2 = 7 dan 3 × 7 = 21. Cemara yang ditanam 21 pohon." />
+        <Subjudul anak="Ayo Berpikir Kritis" />
         <P anak="Jika pucuk merah diketahui, cemara = pucuk merah × 3 : 2. Jika cemara diketahui, pucuk merah = cemara × 2 : 3." />
 
         <Subjudul anak="Latihan 2.1" />
-        <P anak="Soal kelahiran teman sekelas tidak punya satu kunci. Hitung dua kelompok dari kelasmu, tulis rasio, lalu bagi kedua angka dengan faktor persekutuan terbesar. Rasio terbalik menukar urutan." />
+        <P anak="1. Hitung dari teman sekelasmu, lalu tulis rasionya." />
+        <Daftar anak={[
+          "a. Berapa siswa yang lahir di bulan yang sama dengan bulan kelahiranmu?",
+          "b. Berapa siswa yang lahir dua bulan sesudah bulan kelahiranmu?",
+          "c. Tuliskan rasio kelompok a terhadap kelompok b dalam bentuk paling sederhana.",
+          "d. Tuliskan rasio kelompok b terhadap kelompok a dalam bentuk paling sederhana.",
+        ]} />
+        <P anak="Kunci soal 1 mengikuti jumlah di kelasmu. Bagi kedua angka dengan faktor persekutuan terbesar. Soal d menukar urutan soal c." />
         <Gambar src="/doodle-mtk/mtk-6-bab2-antrean.jpg" alt="Dua antrean wahana di taman hiburan" keterangan="Roller coaster 24 orang. Komidi putar 18 orang." />
         <Tabel kolom={["Wahana", "Banyak pengunjung"]} baris={[["Roller coaster", "24"], ["Komidi putar", "18"], ["Bianglala", "dicari"], ["Rumah hantu", "dicari"]]} />
-        <SoalLatihan anak="1. Tuliskan rasio pengunjung roller coaster terhadap komidi putar dalam bentuk paling sederhana." id={idKuis("A", 0)} periksa={(teks) => rasio(teks, "4", "3")} jawaban="24 : 18 dibagi 6. Jawabannya 4 : 3." />
-        <SoalLatihan anak="2. Rasio bianglala terhadap roller coaster adalah 4 : 3. Roller coaster ada 24 orang. Berapa pengunjung bianglala?" id={idKuis("A", 1)} periksa={(teks) => bulat(teks, "32")} jawaban="3 bagian sama dengan 24, jadi 1 bagian 8. Bianglala 4 × 8 = 32 orang." />
-        <SoalLatihan anak="3. Rasio rumah hantu terhadap komidi putar adalah 2 : 6. Komidi putar ada 18 orang. Berapa pengunjung rumah hantu?" id={idKuis("A", 2)} periksa={(teks) => bulat(teks, "6")} jawaban="6 bagian sama dengan 18, jadi 1 bagian 3. Rumah hantu 2 × 3 = 6 orang." />
+        <SoalLatihan anak="2a. Tuliskan rasio pengunjung roller coaster terhadap komidi putar dalam bentuk paling sederhana." id={idKuis("A", 0)} periksa={(teks) => rasio(teks, "4", "3")} jawaban="24 : 18 dibagi 6. Jawabannya 4 : 3." />
+        <SoalLatihan anak="2b. Rasio bianglala terhadap roller coaster adalah 4 : 3. Roller coaster ada 24 orang. Berapa pengunjung bianglala?" id={idKuis("A", 1)} periksa={(teks) => bulat(teks, "32")} jawaban="3 bagian sama dengan 24, jadi 1 bagian 8. Bianglala 4 × 8 = 32 orang." />
+        <SoalLatihan anak="2c. Rasio rumah hantu terhadap komidi putar adalah 2 : 6. Komidi putar ada 18 orang. Berapa pengunjung rumah hantu?" id={idKuis("A", 2)} periksa={(teks) => bulat(teks, "6")} jawaban="6 bagian sama dengan 18, jadi 1 bagian 3. Rumah hantu 2 × 3 = 6 orang." />
         <Gambar src="/doodle-mtk/mtk-6-bab2-minuman.jpg" alt="Minuman dituang untuk teman undangan" keterangan="6 liter disiapkan untuk 15 teman." />
-        <SoalLatihan anak="4. Banyu menyiapkan 6 liter minuman untuk 15 teman pagi hari. Siang hari tamu yang datang 10 orang. Berapa liter yang disiapkan agar jatah tiap orang tetap?" id={idKuis("E", 0)} periksa={(teks) => bulat(teks, "4")} jawaban="6 : 15 = 2 : 5. Untuk 10 orang, 2 : 5 = 4 : 10. Jawabannya 4 liter." />
-        <P anak="Refleksi. Rasio dapat ditulis a : b atau sebagai pecahan a/b. Keduanya dibaca a terhadap b. Contoh di sekitar kita: 2 pensil terhadap 5 buku, atau 3 gelas terhadap 4 piring." />
+        <SoalLatihan anak="3. Banyu menyiapkan 6 liter minuman untuk 15 teman pagi hari. Siang hari tamu yang datang 10 orang. Berapa liter yang disiapkan agar jatah tiap orang tetap?" id={idKuis("E", 0)} periksa={(teks) => bulat(teks, "4")} jawaban="6 : 15 = 2 : 5. Untuk 10 orang, 2 : 5 = 4 : 10. Jawabannya 4 liter." />
+        <Subjudul anak="Ayo Berefleksi" />
+        <Daftar anak={[
+          "a. Ada berapa cara untuk menyatakan rasio? Tuliskan cara itu.",
+          "b. Tuliskan minimal dua contoh rasio dari benda di sekitarmu.",
+        ]} />
+        <P anak="Ada dua cara: a : b dan a/b. Keduanya dibaca a terhadap b. Contoh: 2 pensil terhadap 5 buku, dan 3 gelas terhadap 4 piring." />
       </section>
 
       <section className="space-y-4">
@@ -238,6 +287,8 @@ export default function NaskahMtk6Bab2(_props: { kelas?: string; kelamin?: strin
         <Subjudul anak="1. Kesamaan Rasio" />
         <Gambar src="/doodle-mtk/mtk-6-bab2-lahan.jpg" alt="Petak lahan kecil berisi bibit" keterangan="Lahan 10 m² diperkirakan memuat 12 bibit." />
         <P anak="Eksplorasi 2.3. Pak Wayan menjelaskan jarak polybag. Lahan 10 m² memuat 12 bibit. Kesamaan rasio adalah dua perbandingan atau lebih yang nilainya sama. Kedua angka boleh dikali atau dibagi dengan bilangan yang sama." />
+        <Subjudul anak="Penguatan Karakter" />
+        <P anak="Menjaga rasio yang sama berarti menjaga mutu. Jika rasio berubah, mutu ikut berubah. Campuran semen dan pasir, misalnya, harus pada perbandingan tertentu supaya bangunan tetap kokoh." />
         <P anak="FPB 10 dan 12 adalah 2. Bentuk paling sederhana 10 : 12 = 5 : 6." />
         <Gambar src="/doodle-mtk/mtk-6-bab2-lahan-luas.jpg" alt="Petak lahan yang lebih luas" keterangan="Lahan 25 m² memakai kerapatan yang sama." />
         <Tabel kolom={["", "Luas lahan (m²)", "Banyak bibit"]} baris={[
@@ -249,9 +300,11 @@ export default function NaskahMtk6Bab2(_props: { kelas?: string; kelamin?: strin
         <P anak="Lahan 25 m² memuat 30 bibit, karena 5 : 6 = 25 : 30. Untuk 24 bibit, luas yang diperlukan 20 m², karena 5 : 6 = 20 : 24. Untuk 30 bibit, luasnya 25 m²." />
         <Gambar src="/doodle-mtk/mtk-6-bab2-senilai.jpg" alt="Dua petak bibit yang senilai" keterangan="Beberapa pasangan rasio punya nilai yang sama." />
         <P anak="Tiga rasio pada tabel sama: 5 : 6 = 10 : 12 = 25 : 30. Cara lain dari pecahan senilai: 10 : 12 dikali 3 menjadi 30 : 36, dan dibagi 2 menjadi 5 : 6. Jadi 30 : 36 dan 5 : 6 senilai dengan 10 : 12." />
+        <Subjudul anak="Ayo Berpikir Kritis" />
         <Gambar src="/doodle-mtk/mtk-6-bab2-pupuk.jpg" alt="Pupuk ditakar untuk bibit" keterangan="2 bibit memerlukan 5 gram pupuk." />
-        <P anak="Untuk 2 bibit perlu 5 gram pupuk. Untuk 11 bibit: 2 : 5 = 11 : 27,5. Hitung 11 × 5 : 2 = 27,5 gram." />
-        <P anak="Latihan manik-manik pada GeoGebra memakai aturan yang sama: pemain kedua membuat jumlah berbeda, tetapi rasionya tetap senilai. Tautan latihan: https://www.geogebra.org/m/esjmefvr" />
+        <P anak="Untuk 2 bibit perlu 5 gram pupuk. Berapa gram untuk 11 bibit? 2 : 5 = 11 : 27,5. Hitung 11 × 5 : 2 = 27,5 gram." />
+        <Subjudul anak="Ayo Menggunakan Teknologi" />
+        <P anak="Latihan manik-manik pada GeoGebra memakai aturan yang sama. Pemain pertama membuat satu perbandingan. Pemain kedua membuat jumlah yang berbeda, tetapi rasionya tetap senilai. Tautan latihan: https://www.geogebra.org/m/esjmefvr" />
 
         <Subjudul anak="2. Rasio Satuan" />
         <Gambar src="/doodle-mtk/mtk-6-bab2-jahe.jpg" alt="Dua kemasan bibit jahe merah" keterangan="Paket 3 bibit dan paket 5 bibit." />
@@ -262,7 +315,14 @@ export default function NaskahMtk6Bab2(_props: { kelas?: string; kelamin?: strin
         ]} />
         <P anak="37.500 : 3 = 12.500, jadi rasio 3 : 37.500 menjadi 1 : 12.500. 58.000 : 5 = 11.600, jadi rasio 5 : 58.000 menjadi 1 : 11.600. Paket 5 lebih murah untuk setiap bibit. Setelah rasio satuan diketahui, nilai lain didapat dengan mengalikan." />
         <Gambar src="/doodle-mtk/mtk-6-bab2-kemas.jpg" alt="Bibit dikemas sebelum dikirim" keterangan="6 bibit dikemas dalam 1,5 jam." />
-        <P anak="Jasa antar gratis jika pembelian paling sedikit 5 bibit. Mengemas 6 bibit perlu 1,5 jam. Rasio per jam: 6 : 1,5 = 4 : 1, yaitu 4 bibit tiap jam. Dalam 4 jam selesai 4 × 4 = 16 bibit. Jika dua satuan berbeda, satuan ditulis, misalnya 4 bibit/jam." />
+        <Subjudul anak="Ayo Berpikir Kritis" />
+        <P anak="Jasa antar gratis jika pembelian paling sedikit 5 bibit. Mengemas 6 bibit perlu 1,5 jam." />
+        <Daftar anak={[
+          "a. Berapa rasio bibit yang dikemas per jam?",
+          "b. Berapa bibit yang selesai dikemas dalam 4 jam?",
+        ]} />
+        <P anak="6 : 1,5 = 4 : 1, yaitu 4 bibit tiap jam. Dalam 4 jam selesai 4 × 4 = 16 bibit. Jika dua satuan berbeda, satuan ditulis, misalnya 4 bibit/jam." />
+        <Subjudul anak="Ayo Berpikir Kreatif" />
         <P anak="50 km/jam juga rasio satuan. Artinya 50 km terhadap 1 jam, atau 50 : 1." />
 
         <Subjudul anak="Latihan 2.2" />
@@ -282,7 +342,12 @@ export default function NaskahMtk6Bab2(_props: { kelas?: string; kelamin?: strin
         <SoalLatihan anak="4. Mutia membeli 15 pena seharga Rp36.000. Berapa harga 1 pena?" id={idKuis("B", 1)} periksa={(teks) => bulat(teks, "2400")} jawaban="36.000 : 15 = 2.400. Jawabannya Rp2.400." />
         <SoalLatihan anak="5. Berapa harga 5 pena jika 1 pena Rp2.400?" id={idKuis("B", 2)} periksa={(teks) => bulat(teks, "12000")} jawaban="5 × 2.400 = 12.000. Jawabannya Rp12.000." />
         <Gambar src="/doodle-mtk/mtk-6-bab2-kartu.jpg" alt="Dua kelompok titik yang dibanding" keterangan="Rasio 12 : 28 masih bisa disederhanakan." />
-        <P anak="Refleksi. Rasio yang senilai dengan 12 : 28 antara lain 6 : 14, 3 : 7, 24 : 56, dan 9 : 21. Bentuk paling sederhananya 3 : 7. Rasio satuan adalah rasio yang salah satu kuantitasnya 1." />
+        <Subjudul anak="Ayo Berefleksi" />
+        <Daftar anak={[
+          "a. Tuliskan minimal empat rasio yang senilai dengan 12 : 28.",
+          "b. Jelaskan pengertian rasio satuan dengan bahasamu.",
+        ]} />
+        <P anak="Empat rasio yang senilai dengan 12 : 28 antara lain 6 : 14, 3 : 7, 24 : 56, dan 9 : 21. Bentuk paling sederhananya 3 : 7. Rasio satuan adalah rasio yang salah satu kuantitasnya sama dengan 1." />
         <SoalLatihan anak="6. Tuliskan bentuk paling sederhana dari 12 : 28." id={idKuis("E", 3)} periksa={(teks) => rasio(teks, "3", "7")} jawaban="FPB 12 dan 28 adalah 4. 12 : 4 = 3 dan 28 : 4 = 7. Jawabannya 3 : 7." />
       </section>
 
@@ -300,7 +365,9 @@ export default function NaskahMtk6Bab2(_props: { kelas?: string; kelamin?: strin
         ]} />
         <P anak="4 + 5 = 9 bagian. 72 : 9 = 8. Hias 4 × 8 = 32. Obat 5 × 8 = 40. Rasio 4 : 5 adalah rasio bagian terhadap bagian. Rasio hias terhadap seluruh tanaman 32 : 72 = 4 : 9. Rasio obat terhadap seluruh tanaman 40 : 72 = 5 : 9. Itulah rasio bagian terhadap keseluruhan." />
         <Gambar src="/doodle-mtk/mtk-6-bab2-keseluruhan.jpg" alt="Satu kelompok dibanding seluruh tanaman" keterangan="Satu jenis dibanding seluruh penjualan." />
-        <P anak="Contoh lain bagian terhadap bagian: siswa perempuan terhadap siswa laki-laki, atau gula terhadap garam. Contoh bagian terhadap keseluruhan: perempuan terhadap seluruh siswa, dan laki-laki terhadap seluruh siswa. Di kelasmu, hitung dua kelompok itu dari jumlah yang benar-benar ada." />
+        <P anak="Contoh lain bagian terhadap bagian: siswa perempuan terhadap siswa laki-laki, atau gula terhadap garam. Contoh bagian terhadap keseluruhan: perempuan terhadap seluruh siswa, dan laki-laki terhadap seluruh siswa." />
+        <Subjudul anak="Ayo Berpikir Kreatif" />
+        <P anak="Amati kelasmu. Tuliskan satu rasio bagian terhadap bagian dan satu rasio bagian terhadap keseluruhan dari keadaan kelas itu." />
 
         <Subjudul anak="2. Rasio pada Durasi Waktu" />
         <Gambar src="/doodle-mtk/mtk-6-bab2-panen.jpg" alt="Beberapa tanaman obat dengan masa panen berbeda" keterangan="Enam tanaman obat punya masa panen yang berbeda." />
@@ -313,12 +380,21 @@ export default function NaskahMtk6Bab2(_props: { kelas?: string; kelamin?: strin
           ["Buah merah", "3 tahun"],
           ["Kemangi", "30 hari"],
         ]} />
+        <Daftar anak={[
+          "a. Tanaman mana yang masa panennya paling cepat, dan mana yang paling lama?",
+          "b. Tuliskan rasio masa panen jahe merah terhadap lengkuas, dalam bulan.",
+          "c. Tuliskan rasio masa panen kencur terhadap lengkuas, dalam tahun.",
+          "d. Tuliskan rasio masa panen jahe merah terhadap kumis kucing, dalam minggu.",
+          "e. Dalam satu kali masa panen buah merah, berapa kali kencur dan lengkuas dapat dipanen?",
+        ]} />
         <P anak="Paling cepat adalah kemangi, 30 hari. Paling lama adalah buah merah, 3 tahun." />
         <Gambar src="/doodle-mtk/mtk-6-bab2-lengkuas.jpg" alt="Lengkuas di samping catatan waktu" keterangan="1,5 tahun sama dengan 18 bulan." />
         <P anak="Jahe merah terhadap lengkuas, dalam bulan: 3 bulan terhadap 1,5 × 12 = 18 bulan. Rasio 3 : 18 = 1 : 6." />
         <P anak="Kencur terhadap lengkuas, dalam tahun: 6 bulan = 0,5 tahun. Rasio 0,5 : 1,5 = 1 : 3." />
         <P anak="Jahe merah terhadap kumis kucing, dalam minggu: 1 bulan = 4 minggu, jadi 3 bulan = 12 minggu. Rasio 12 : 12 = 1 : 1." />
         <P anak="Dalam satu masa panen buah merah, yaitu 3 tahun atau 36 bulan, kencur dapat dipanen 36 : 6 = 6 kali. Lengkuas dapat dipanen 36 : 18 = 2 kali." />
+        <Subjudul anak="Ayo Mengingat Kembali" />
+        <P anak="Dua waktu hanya boleh dibanding jika satuannya sama. Hubungan satuan waktu berikut yang dipakai di bab ini." />
         <Tabel kolom={["Satuan", "Sama dengan"]} baris={[
           ["1 menit", "60 detik"],
           ["1 jam", "60 menit"],
@@ -333,7 +409,15 @@ export default function NaskahMtk6Bab2(_props: { kelas?: string; kelamin?: strin
           ["1 dasawarsa", "10 tahun"],
           ["1 abad", "100 tahun"],
         ]} />
-        <P anak="Ayah menanam bibit dalam 10 menit. Tigor perlu (2)/(3) jam. (2)/(3) × 60 = 40 menit. Rasio waktu Ayah terhadap Tigor adalah 10 : 40 = 1 : 4. Ayah 4 kali lebih cepat, karena 40 : 10 = 4." />
+        <Subjudul anak="Ayo Bekerja Sama" />
+        <P anak="Ayah menanam bibit dalam 10 menit. Tigor perlu (2)/(3) jam." />
+        <Daftar anak={[
+          "a. Tuliskan rasio waktu Ayah terhadap Tigor dalam menit.",
+          "b. Berapa kali lebih cepat Ayah menanam dibanding Tigor?",
+        ]} />
+        <P anak="(2)/(3) × 60 = 40 menit. Rasio waktunya 10 : 40 = 1 : 4. Ayah 4 kali lebih cepat karena 40 : 10 = 4." />
+        <SoalLatihan anak="a. Rasio waktu Ayah terhadap Tigor." id={idKuis("E", 11)} periksa={(teks) => rasio(teks, "1", "4") || rasio(teks, "10", "40")} jawaban="40 menit dibanding 10 menit. Bentuk sederhananya 1 : 4." />
+        <SoalLatihan anak="b. Berapa kali lebih cepat Ayah?" id={idKuis("E", 12)} periksa={(teks) => bulat(teks, "4")} jawaban="40 : 10 = 4. Jawabannya 4 kali." />
 
         <Subjudul anak="Latihan 2.3" />
         <SoalLatihan anak="1. Pengunjung pasar malam 390 orang. Setiap 9 anak-anak terdapat 4 orang dewasa. Berapa jumlah anak-anak?" id={idKuis("C", 0)} periksa={(teks) => bulat(teks, "270")} jawaban="9 + 4 = 13 bagian. 390 : 13 = 30. Anak-anak 9 × 30 = 270. Dewasa 4 × 30 = 120." />
@@ -351,11 +435,12 @@ export default function NaskahMtk6Bab2(_props: { kelas?: string; kelamin?: strin
       <section className="space-y-2">
         <JudulBagian anak="Refleksi Bab" />
         <Daftar anak={[
-          "Rasio adalah perbandingan dua besaran, ditulis a : b atau a/b.",
-          "Dua besaran ditulis berurutan sesuai kalimat. Urutan yang tertukar mengubah arti.",
-          "Rasio senilai didapat dengan mengalikan atau membagi kedua angka dengan bilangan yang sama.",
-          "Rasio satuan membuat salah satu kuantitas menjadi 1, misalnya harga 1 barang atau jarak 1 jam.",
+          "1. Apakah pengertian rasio sudah kamu pahami?",
+          "2. Apakah kamu dapat menyatakan rasio dari dua besaran?",
+          "3. Apakah kamu dapat menuliskan rasio yang senilai dengan rasio tertentu?",
+          "4. Apakah kamu dapat menentukan rasio satuan?",
         ]} />
+        <P anak="Cek dirimu. Rasio ditulis a : b atau a/b, sesuai urutan kalimat. Rasio senilai mengalikan atau membagi kedua angka dengan bilangan yang sama. Rasio satuan membuat salah satu kuantitas menjadi 1." />
       </section>
 
       <section className="space-y-3">
@@ -375,7 +460,14 @@ export default function NaskahMtk6Bab2(_props: { kelas?: string; kelamin?: strin
 
       <section className="space-y-2">
         <JudulBagian anak="Pengayaan" />
-        <P anak="Tiap daerah punya makanan khas dari hasil alamnya. Tuliskan satu makanan dari daerahmu untuk 5 orang, lengkap dengan bahan dan jumlahnya. Untuk porsi 3 kali lebih banyak, yaitu 15 orang, kalikan setiap bahan dengan 3. Rasio bahan terhadap porsi tetap sama." />
+        <P anak="Tiap daerah punya makanan khas dari hasil alamnya." />
+        <Daftar anak={[
+          "a. Dari daerah mana kamu berasal?",
+          "b. Sebutkan satu makanan khas daerahmu.",
+          "c. Tuliskan bahan makanan itu untuk 5 orang, beserta jumlah tiap bahan.",
+          "d. Jika porsinya dijadikan 3 kali lebih banyak, tuliskan jumlah tiap bahan.",
+        ]} />
+        <P anak="Pada soal d, kalikan setiap bahan dengan 3. Porsi menjadi 15 orang. Rasio bahan terhadap porsi tetap sama." />
       </section>
     </article>
   );
