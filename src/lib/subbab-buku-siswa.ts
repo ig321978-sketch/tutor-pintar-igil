@@ -341,6 +341,14 @@ const SUBBAB_BUKU_SISWA: Record<string, Record<string, Record<string, string[]>>
         "Mengubah pecahan menjadi desimal",
         "Membandingkan dan mengurutkan bilangan desimal",
       ],
+      "Bab 2: Rasio": [
+        "Membandingkan benda",
+        "Pengertian rasio",
+        "Kesamaan rasio",
+        "Rasio satuan",
+        "Rasio bagian terhadap bagian dan terhadap keseluruhan",
+        "Rasio pada durasi waktu",
+      ],
     },
   },
 };
