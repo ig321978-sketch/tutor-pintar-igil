@@ -546,7 +546,7 @@ export default function NaskahMtk6Bab1(_props: { kelas?: string; kelamin?: strin
 
       <section className="space-y-3">
         <JudulBagian anak="Pembuka Bab" />
-        <Kegiatan label="Adegan">
+        <Kegiatan label="Adegan 1">
           <Gambar src="/doodle-mtk/mtk-6-bab1-penampungan.jpg" alt="Agam dan Ayah mengambil air dari penampungan di kebun yang kering." keterangan="Agam membantu Ayah mengambil air di penampungan." />
           <p>Agam menghampiri Ayah di penampungan kebun. Musim kemarau. Ayah mengatakan air yang tersisa masih dua pertiga bagian. Ayah bertanya, jika hari ini terpakai seperlima dari air yang tersisa, berapa bagian yang terpakai.</p>
         </Kegiatan>
@@ -559,7 +559,7 @@ export default function NaskahMtk6Bab1(_props: { kelas?: string; kelamin?: strin
         <Kegiatan label="Langkah Penyelesaian">
           <HitungPanah kalimat="2/3 × 1/5 = (2 × 1) : (3 × 5) = 2/15." kiriAtas="2" kiriBawah="3" kananAtas="1" kananBawah="5" operasi="×" arah="lurus" hasilAtas="2 × 1" hasilBawah="3 × 5" akhirAtas="2" akhirBawah="15" catatan="Kotak merah pada 2/3. Panah hijau lurus."  rumus={["a/b × c/d = (a × c)/(b × d)"]} hitung={["2/3 × 1/5 = (2 × 1)/(3 × 5) = 2/15."]}/>
         </Kegiatan>
-        <Kegiatan label="Adegan">
+        <Kegiatan label="Adegan 2">
           <p>Ayah bertanya lagi. Air yang tersisa akan dipakai selama dua hari, dibagi sama banyak. Ayah ingin tahu bagian air untuk tiap hari.</p>
           <p>Agam memakai air seperlunya, karena musim kemarau membuat banyak daerah kekurangan air.</p>
         </Kegiatan>
