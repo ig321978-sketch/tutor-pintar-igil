@@ -580,11 +580,10 @@ export default function NaskahMtk6Bab1(_props: { kelas?: string; kelamin?: strin
             </>
           }
           materi={<p><Teks anak="Satu ember besar menyiram 2 m². Ada 5 ember besar." /></p>}
-          logika={<p>Lima ember berarti luas 2 m² dihitung lima kali. Menghitung berulang itu sama dengan mengalikan.</p>}
+          logika={<p><Teks anak="Lima ember, tiap ember 2 m². Keduanya bilangan asli, jadi hitung 5 × 2." /></p>}
           langkah={
             <>
-              <BarisLangkah anak="A. 2 + 2 + 2 + 2 + 2 = 10." />
-              <BarisLangkah anak="B. 5 × 2/1 = (5 × 2) : (1 × 1) = 10." gambar={<GambarPasangan kiriAtas="5" kiriBawah="1" kananAtas="2" kananBawah="1" operasi="×" arah="lurus" hasilAtas="5 × 2" hasilBawah="1 × 1" akhirAtas="10" akhirBawah="1" catatan="Kotak merah pada 5/1. Panah hijau lurus. 10/1 sama dengan 10." />} />
+              <BarisLangkah anak="5 × 2 = 10." />
               <Tabel kolom={["Banyak ember besar", "Luas kebun (m²)"]} baris={[["1", "2"], ["5", "10"]]} />
             </>
           }
@@ -648,7 +647,7 @@ export default function NaskahMtk6Bab1(_props: { kelas?: string; kelamin?: strin
         <SoalLatihan anak="1. Satu gelas berisi 2/5 liter jus. Agam menuang 4 gelas. Berapa liter jus seluruhnya?" id={idKuis("A", 10)} periksa={(teks) => pecahan(teks, "8/5")} jawaban="Ada 2/5 liter sebanyak 4 gelas. A. 2/5 + 2/5 + 2/5 + 2/5 = 8/5. B. 4/1 × 2/5 = (4 × 2) : (1 × 5) = 8/5. Jawabannya 8/5 liter." />
         <SoalLatihan anak="2. Satu petak kebun luasnya 3/4 m². Ada 2 petak seperti itu. Berapa luas seluruhnya?" id={idKuis("A", 11)} periksa={(teks) => pecahan(teks, "6/4") || pecahan(teks, "3/2")} jawaban="Ada 3/4 m² sebanyak 2 petak. A. 3/4 + 3/4 = 6/4 = 3/2. B. 2/1 × 3/4 = (2 × 3) : (1 × 4) = 6/4 = 3/2. Jawabannya 3/2 m²." />
         <SoalLatihan anak="3. Satu kantong pupuk beratnya 1/5 kg. Agam membeli 5 kantong. Berapa kg seluruhnya?" id={idKuis("A", 12)} periksa={(teks) => hasilUtuh(teks, "1") || pecahan(teks, "5/5")} jawaban="Ada 1/5 kg sebanyak 5 kantong. A. 1/5 + 1/5 + 1/5 + 1/5 + 1/5 = 5/5 = 1. B. 5/1 × 1/5 = (5 × 1) : (1 × 5) = 5/5 = 1. Jawabannya 1 kg." />
-        <SoalLatihan anak="4. Luas yang disiram 5 ember besar, dalam m²?" id={idKuis("A", 0)} periksa={jumlahSepuluh} jawaban="Ada 2 m² sebanyak 5 ember. A. 2 + 2 + 2 + 2 + 2 = 10. B. 5 × 2/1 = (5 × 2) : (1 × 1) = 10. Jawabannya 10 m²." />
+        <SoalLatihan anak="4. Luas yang disiram 5 ember besar, dalam m²?" id={idKuis("A", 0)} periksa={jumlahSepuluh} jawaban="Ada 2 m² sebanyak 5 ember. 5 × 2 = 10. Jawabannya 10 m²." />
         <SoalLatihan anak="5. Luas yang disiram 2 ember kecil, dalam m²?" id={idKuis("A", 1)} periksa={enamPerLima} jawaban="Ada 3/5 m² sebanyak 2 ember. A. 3/5 + 3/5 = 6/5. B. 2/1 × 3/5 = (2 × 3) : (1 × 5) = 6/5. Jawabannya 6/5 m²." />
         <SoalLatihan anak="6. Luas yang disiram 5 ember kecil, dalam m²?" id={idKuis("A", 2)} periksa={jumlahTiga} jawaban="Ada 3/5 m² sebanyak 5 ember. A. 3/5 + 3/5 + 3/5 + 3/5 + 3/5 = 15/5 = 3. B. 5/1 × 3/5 = (5 × 3) : (1 × 5) = 15/5 = 3. Jawabannya 3 m²." />
 
@@ -686,8 +685,8 @@ export default function NaskahMtk6Bab1(_props: { kelas?: string; kelamin?: strin
           logika={<p><Teks anak="Satu keranjang dari empat keranjang sama dengan 20 dibagi 4. Mengalikan 20 dengan 1/4 memberi hasil yang sama." /></p>}
           langkah={
             <>
-              <BarisLangkah anak="A. 20/1 : 4/1 = (20 × 1) : (1 × 4) = 20/4 = 5." gambar={<GambarPasangan kiriAtas="20" kiriBawah="1" kananAtas="4" kananBawah="1" operasi="÷" arah="silang" hasilAtas="20 × 1" hasilBawah="1 × 4" akhirAtas="20" akhirBawah="4" catatan="Kotak merah pada 20/1. Panah hijau menyilang. 20/4 sama dengan 5." />} />
-              <BarisLangkah anak="B. 20/1 × 1/4 = (20 × 1) : (1 × 4) = 20/4 = 5. 1/4 × 20/1 juga 5." gambar={<GambarPasangan kiriAtas="20" kiriBawah="1" kananAtas="1" kananBawah="4" operasi="×" arah="lurus" hasilAtas="20 × 1" hasilBawah="1 × 4" akhirAtas="20" akhirBawah="4" catatan="Kotak merah pada 20/1. Panah hijau lurus. 20/4 sama dengan 5." />} />
+              <BarisLangkah anak="A. 20 : 4 = 5." />
+              <BarisLangkah anak="B. 20 × 1/4 = 20/4 = 5. 1/4 × 20 juga 5." gambar={<GambarPasangan kiriAtas="20" kiriBawah="1" kananAtas="1" kananBawah="4" operasi="×" arah="lurus" hasilAtas="20 × 1" hasilBawah="1 × 4" akhirAtas="20" akhirBawah="4" catatan="Kotak merah pada 20. Panah hijau lurus. 20/4 sama dengan 5." />} />
             </>
           }
           jawaban="5."
@@ -705,7 +704,7 @@ export default function NaskahMtk6Bab1(_props: { kelas?: string; kelamin?: strin
         </div>
         <SoalLatihan anak="2. Fina membuat 75 pastel. Keluarga memakan 2/15 bagian. Berapa pastel yang sudah dimakan?" id={idKuis("A", 4)} periksa={jumlahSepuluh} jawaban="75 pastel dibagi 15, lalu 2 bagian digabung. A. 75 : 15 = 5. Dua bagian: 5 + 5 = 10. B. 2/15 × 75/1 = (2 × 75) : (15 × 1) = 150/15 = 10. Jawabannya 10 pastel." />
         <SoalLatihan anak="Berapa pastel yang belum dimakan?" id={idKuis("A", 5)} periksa={jumlahEnamPuluhLima} jawaban="75 − 10 = 65. Jawabannya 65 pastel." />
-        <SoalLatihan anak="3. Ada 180 siswa kelas 6. 1/6 memilih musik. Berapa siswa yang memilih musik?" id={idKuis("A", 6)} periksa={jumlahTigaPuluh} jawaban="180 siswa dibagi 6, atau dikali 1/6. A. 180 : 6/1 = (180 × 1) : (1 × 6) = 30. B. 1/6 × 180/1 = (1 × 180) : (6 × 1) = 180/6 = 30. Jawabannya 30 siswa." />
+        <SoalLatihan anak="3. Ada 180 siswa kelas 6. 1/6 memilih musik. Berapa siswa yang memilih musik?" id={idKuis("A", 6)} periksa={jumlahTigaPuluh} jawaban="180 siswa dibagi 6, atau dikali 1/6. A. 180 : 6 = 30. B. 1/6 × 180 = 180/6 = 30. Jawabannya 30 siswa." />
         <SoalLatihan anak="2/3 dari siswa musik itu juga memilih melukis. Berapa siswa yang memilih melukis?" id={idKuis("A", 7)} periksa={jumlahDuaPuluh} jawaban="30 siswa dibagi 3, lalu 2 bagian digabung. A. 30 : 3 = 10. Dua bagian: 10 + 10 = 20. B. 2/3 × 30/1 = (2 × 30) : (3 × 1) = 60/3 = 20. Jawabannya 20 siswa." />
         <SoalLatihan anak="Pecahan siswa kelas 6 yang memilih melukis?" id={idKuis("A", 8)} periksa={sepersembilan} jawaban="20 dari 180. A. 20/180 = 1/9. B. Pembilang dan penyebut dibagi 20: (20 : 20) : (180 : 20) = 1/9. Jawabannya 1/9." />
         <p className="text-sm font-semibold leading-8 text-slate-800"><Teks anak="4. Buat cerita untuk 1/4 × 20 dan untuk 20 × 1/4." /></p>
@@ -729,8 +728,8 @@ export default function NaskahMtk6Bab1(_props: { kelas?: string; kelamin?: strin
           materi={<p><Teks anak="Isi botol 1 liter. Air dibagi rata ke 3 gelas." /></p>}
           langkah={
             <>
-              <BarisLangkah anak="A. 1/1 : 3/1 = (1 × 1) : (1 × 3) = 1/3." gambar={<GambarPasangan kiriAtas="1" kiriBawah="1" kananAtas="3" kananBawah="1" operasi="÷" arah="silang" hasilAtas="1 × 1" hasilBawah="1 × 3" akhirAtas="1" akhirBawah="3" catatan="Kotak merah pada 1/1. Panah hijau menyilang." />} />
-              <BarisLangkah anak="B. 1/1 × 1/3 = (1 × 1) : (1 × 3) = 1/3." gambar={<GambarPasangan kiriAtas="1" kiriBawah="1" kananAtas="1" kananBawah="3" operasi="×" arah="lurus" hasilAtas="1 × 1" hasilBawah="1 × 3" akhirAtas="1" akhirBawah="3" catatan="Kotak merah pada 1/1. Panah hijau lurus." />} />
+              <BarisLangkah anak="A. 1 : 3 = 1/3." />
+              <BarisLangkah anak="B. 1 × 1/3 = 1/3." gambar={<GambarPasangan kiriAtas="1" kiriBawah="1" kananAtas="1" kananBawah="3" operasi="×" arah="lurus" hasilAtas="1 × 1" hasilBawah="1 × 3" akhirAtas="1" akhirBawah="3" catatan="Kotak merah pada 1. Panah hijau lurus." />} />
               <Tabel kolom={["Gelas", "Isi"]} baris={[["1", "1/3 liter"], ["2", "1/3 liter"], ["3", "1/3 liter"]]} />
             </>
           }
@@ -781,7 +780,7 @@ export default function NaskahMtk6Bab1(_props: { kelas?: string; kelamin?: strin
         <SoalLatihan anak="1. Ada 3/4 liter sirup. Sirup dibagi rata ke 2 gelas. Berapa liter tiap gelas?" id={idKuis("B", 10)} periksa={(teks) => pecahan(teks, "3/8")} jawaban="Bagian 3/4 dibagi 2, atau dikali 1/2. A. 3/4 : 2/1 = (3 × 1) : (4 × 2) = 3/8. B. 3/4 × 1/2 = (3 × 1) : (4 × 2) = 3/8. Jawabannya 3/8 liter." />
         <SoalLatihan anak="2. Ada 2/3 kg gula. Gula dibagi rata untuk 4 adonan. Berapa kg tiap adonan?" id={idKuis("B", 11)} periksa={(teks) => seperenam(teks) || pecahan(teks, "2/12")} jawaban="Bagian 2/3 dibagi 4, atau dikali 1/4. A. 2/3 : 4/1 = (2 × 1) : (3 × 4) = 2/12 = 1/6. B. 2/3 × 1/4 = (2 × 1) : (3 × 4) = 2/12 = 1/6. Jawabannya 1/6 kg." />
         <SoalLatihan anak="3. Ada pita 4/5 meter. Pita dibagi rata menjadi 2. Berapa meter tiap bagian?" id={idKuis("B", 12)} periksa={(teks) => pecahan(teks, "2/5") || pecahan(teks, "4/10")} jawaban="Bagian 4/5 dibagi 2, atau dikali 1/2. A. 4/5 : 2/1 = (4 × 1) : (5 × 2) = 4/10 = 2/5. B. 4/5 × 1/2 = (4 × 1) : (5 × 2) = 4/10 = 2/5. Jawabannya 2/5 meter." />
-        <SoalLatihan anak="4. 1 liter dibagi 3 gelas. Isi tiap gelas, dalam liter?" id={idKuis("B", 0)} periksa={sepertiga} jawaban="1 liter dibagi 3, atau dikali 1/3. A. 1/1 : 3/1 = (1 × 1) : (1 × 3) = 1/3. B. 1 × 1/3 = 1/3. Jawabannya 1/3 liter." />
+        <SoalLatihan anak="4. 1 liter dibagi 3 gelas. Isi tiap gelas, dalam liter?" id={idKuis("B", 0)} periksa={sepertiga} jawaban="1 liter dibagi 3, atau dikali 1/3. A. 1 : 3 = 1/3. B. 1 × 1/3 = 1/3. Jawabannya 1/3 liter." />
         <SoalLatihan anak="5. 1/3 liter dibagi 3 gelas. Isi tiap gelas, dalam liter?" id={idKuis("B", 1)} periksa={sepersembilan} jawaban="Bagian 1/3 dibagi 3, atau dikali 1/3. A. 1/3 : 3/1 = (1 × 1) : (3 × 3) = 1/9. B. 1/3 × 1/3 = (1 × 1) : (3 × 3) = 1/9. Jawabannya 1/9 liter." />
 
         <h3 className="text-lg font-black text-[#1C01A5]">2. Pembagian Bilangan Asli dengan Pecahan</h3>
@@ -802,7 +801,7 @@ export default function NaskahMtk6Bab1(_props: { kelas?: string; kelamin?: strin
           langkah={
             <>
               <BarisLangkah anak="A. 3/1 : 1/4 = (3 × 4) : (1 × 1) = 12." gambar={<GambarPasangan kiriAtas="3" kiriBawah="1" kananAtas="1" kananBawah="4" operasi="÷" arah="silang" hasilAtas="3 × 4" hasilBawah="1 × 1" akhirAtas="12" catatan="Kotak merah pada 3/1. Panah hijau menyilang." />} />
-              <BarisLangkah anak="B. 3/1 × 4/1 = (3 × 4) : (1 × 1) = 12. Empat gelas sebanyak 3 liter: 4 + 4 + 4 = 12." gambar={<GambarPasangan kiriAtas="3" kiriBawah="1" kananAtas="4" kananBawah="1" operasi="×" arah="lurus" hasilAtas="3 × 4" hasilBawah="1 × 1" akhirAtas="12" catatan="Kotak merah pada 3/1. Panah hijau lurus." />} />
+              <BarisLangkah anak="B. 3 × 4 = 12." />
             </>
           }
           jawaban="12 gelas."
@@ -814,7 +813,7 @@ export default function NaskahMtk6Bab1(_props: { kelas?: string; kelamin?: strin
           langkah={
             <>
               <BarisLangkah anak="A. 3/1 : 1/2 = (3 × 2) : (1 × 1) = 6." gambar={<GambarPasangan kiriAtas="3" kiriBawah="1" kananAtas="1" kananBawah="2" operasi="÷" arah="silang" hasilAtas="3 × 2" hasilBawah="1 × 1" akhirAtas="6" catatan="Kotak merah pada 3/1. Panah hijau menyilang." />} />
-              <BarisLangkah anak="B. 3/1 × 2/1 = (3 × 2) : (1 × 1) = 6." gambar={<GambarPasangan kiriAtas="3" kiriBawah="1" kananAtas="2" kananBawah="1" operasi="×" arah="lurus" hasilAtas="3 × 2" hasilBawah="1 × 1" akhirAtas="6" catatan="Kotak merah pada 3/1. Panah hijau lurus." />} />
+              <BarisLangkah anak="B. 3 × 2 = 6." />
             </>
           }
           jawaban="6 gelas."
@@ -826,7 +825,7 @@ export default function NaskahMtk6Bab1(_props: { kelas?: string; kelamin?: strin
           langkah={
             <>
               <BarisLangkah anak="A. 3/1 : 1/5 = (3 × 5) : (1 × 1) = 15." gambar={<GambarPasangan kiriAtas="3" kiriBawah="1" kananAtas="1" kananBawah="5" operasi="÷" arah="silang" hasilAtas="3 × 5" hasilBawah="1 × 1" akhirAtas="15" catatan="Kotak merah pada 3/1. Panah hijau menyilang." />} />
-              <BarisLangkah anak="B. 3/1 × 5/1 = (3 × 5) : (1 × 1) = 15." gambar={<GambarPasangan kiriAtas="3" kiriBawah="1" kananAtas="5" kananBawah="1" operasi="×" arah="lurus" hasilAtas="3 × 5" hasilBawah="1 × 1" akhirAtas="15" catatan="Kotak merah pada 3/1. Panah hijau lurus." />} />
+              <BarisLangkah anak="B. 3 × 5 = 15." />
             </>
           }
           jawaban="15 gelas."
@@ -844,11 +843,11 @@ export default function NaskahMtk6Bab1(_props: { kelas?: string; kelamin?: strin
           jawaban="15/2 botol, yaitu 7 1/2 botol."
         />
         <p className="text-sm font-black uppercase tracking-wide text-[#1C01A5]">Latihan Soal</p>
-        <SoalLatihan anak="1. Ada 2 liter jus. Tiap gelas berisi 1/2 liter. Berapa gelas yang terisi?" id={idKuis("B", 13)} periksa={(teks) => hasilUtuh(teks, "4")} jawaban="2 liter dibagi 1/2, atau dikali 2/1. A. 2/1 : 1/2 = (2 × 2) : (1 × 1) = 4. B. 2 × 2/1 = 4. Jawabannya 4 gelas." />
-        <SoalLatihan anak="2. Ada 4 liter air. Tiap gelas berisi 1/5 liter. Berapa gelas yang terisi?" id={idKuis("B", 14)} periksa={(teks) => hasilUtuh(teks, "20")} jawaban="4 liter dibagi 1/5, atau dikali 5/1. A. 4/1 : 1/5 = (4 × 5) : (1 × 1) = 20. B. 4 × 5/1 = 20. Jawabannya 20 gelas." />
+        <SoalLatihan anak="1. Ada 2 liter jus. Tiap gelas berisi 1/2 liter. Berapa gelas yang terisi?" id={idKuis("B", 13)} periksa={(teks) => hasilUtuh(teks, "4")} jawaban="2 liter dibagi 1/2, atau dikali 2. A. 2 : 1/2 = (2 × 2) : (1 × 1) = 4. B. 2 × 2 = 4. Jawabannya 4 gelas." />
+        <SoalLatihan anak="2. Ada 4 liter air. Tiap gelas berisi 1/5 liter. Berapa gelas yang terisi?" id={idKuis("B", 14)} periksa={(teks) => hasilUtuh(teks, "20")} jawaban="4 liter dibagi 1/5, atau dikali 5. A. 4 : 1/5 = (4 × 5) : (1 × 1) = 20. B. 4 × 5 = 20. Jawabannya 20 gelas." />
         <SoalLatihan anak="3. Ada 2 liter sirup. Tiap botol berisi 2/3 liter. Berapa botol yang terisi?" id={idKuis("B", 15)} periksa={(teks) => hasilUtuh(teks, "3")} jawaban="2 liter dibagi 2/3, atau dikali 3/2. A. 2/1 : 2/3 = (2 × 3) : (1 × 2) = 6/2 = 3. B. 2 × 3/2 = (2 × 3) : (1 × 2) = 6/2 = 3. Jawabannya 3 botol." />
-        <SoalLatihan anak="4. Banyak gelas 1/2 liter dari 3 liter jus jambu?" id={idKuis("B", 2)} periksa={jumlahEnam} jawaban="3 liter dibagi 1/2, atau dikali 2/1. A. 3/1 : 1/2 = (3 × 2) : (1 × 1) = 6. B. 3 × 2/1 = 6. Jawabannya 6 gelas." />
-        <SoalLatihan anak="5. Banyak gelas 1/5 liter dari 3 liter air mineral?" id={idKuis("B", 3)} periksa={jumlahLimaBelas} jawaban="3 liter dibagi 1/5, atau dikali 5/1. A. 3/1 : 1/5 = (3 × 5) : (1 × 1) = 15. B. 3 × 5/1 = 15. Jawabannya 15 gelas." />
+        <SoalLatihan anak="4. Banyak gelas 1/2 liter dari 3 liter jus jambu?" id={idKuis("B", 2)} periksa={jumlahEnam} jawaban="3 liter dibagi 1/2, atau dikali 2. A. 3 : 1/2 = (3 × 2) : (1 × 1) = 6. B. 3 × 2 = 6. Jawabannya 6 gelas." />
+        <SoalLatihan anak="5. Banyak gelas 1/5 liter dari 3 liter air mineral?" id={idKuis("B", 3)} periksa={jumlahLimaBelas} jawaban="3 liter dibagi 1/5, atau dikali 5. A. 3 : 1/5 = (3 × 5) : (1 × 1) = 15. B. 3 × 5 = 15. Jawabannya 15 gelas." />
         <SoalLatihan anak="6. Banyak botol 2/5 liter dari 3 liter air?" id={idKuis("B", 4)} periksa={limaBelasPerDua} jawaban="3 liter dibagi 2/5, atau dikali 5/2. A. 3/1 : 2/5 = (3 × 5) : (1 × 2) = 15/2 = 7 1/2. B. 3 × 5/2 = 15/2 = 7 1/2. Jawabannya 15/2 botol." />
 
         <p className="text-sm font-black uppercase tracking-wide text-[#1C01A5]">Latihan 1.2</p>
