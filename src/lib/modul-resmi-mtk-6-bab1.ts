@@ -60,7 +60,7 @@ D) 4,5`,
       kolom: 1,
       item: [
         { nama: "Gambar 2/3", singkat: "Batang, pizza, jeruk", uraian: "Jeruk 8/12 = 2/3. Batang biru 6/10. Pizza 1/4.", contoh: "Jawaban gambar c." },
-        { nama: "Ember kecil", singkat: "Asli kali pecahan", uraian: "2 × 3/5 = 6/5 m².", contoh: "a × b/c = (a × b)/c." },
+        { nama: "Ember kecil", singkat: "Asli kali pecahan", uraian: "2/1 × 3/5 = 6/5 m².", contoh: "Kotak merah pada 2/1. Panah hijau lurus." },
         { nama: "Pohon manalagi", singkat: "Pecahan kali asli", uraian: "2/3 × 15 = 10 pohon.", contoh: "Bagi 15 menjadi 3 bagian, lalu gabungkan 2 bagian." },
       ],
       kuis: [
@@ -84,8 +84,8 @@ D) 4,5`,
       labelDaftar: "B. Pembagian Pecahan",
       kolom: 1,
       item: [
-        { nama: "Setengah liter", singkat: "Pecahan dibagi asli", uraian: "1/2 ÷ 3 = 1/6 liter.", contoh: "1/a ÷ b = 1/a × 1/b." },
-        { nama: "Jus ke gelas", singkat: "Asli dibagi pecahan", uraian: "3 ÷ 1/4 = 12 gelas.", contoh: "a ÷ b/c = a × c/b." },
+        { nama: "Setengah liter", singkat: "Pecahan dibagi asli", uraian: "1/2 : 3/1 = 1/6 liter.", contoh: "Kotak merah pada 1/2. Panah hijau menyilang." },
+        { nama: "Jus ke gelas", singkat: "Asli dibagi pecahan", uraian: "3/1 : 1/4 = 12 gelas.", contoh: "Dalam 1 liter muat 4 gelas." },
       ],
       kuis: [
         { pertanyaan: "3/4 dibagi 2.", alias: ["3/8"] },
@@ -132,7 +132,7 @@ D) 4,5`,
       item: [
         { nama: "Perjalanan", singkat: "2/5 dari 630", uraian: "2/5 × 630 = 252 km.", contoh: "Bagi 630 dengan 5, lalu kali 2." },
         { nama: "Nasi kotak", singkat: "3/4 dari 100", uraian: "3/4 × 100 = 75 porsi.", contoh: "Bagi 100 dengan 4, lalu kali 3." },
-        { nama: "Beras", singkat: "50 dibagi 2/3", uraian: "50 ÷ 2/3 = 75 hari.", contoh: "Kali 50 dengan 3/2." },
+        { nama: "Beras", singkat: "50 dibagi 2/3", uraian: "50/1 : 2/3 = 75 hari.", contoh: "Kotak merah pada 50/1. Panah hijau menyilang." },
         { nama: "Kue dan cat", singkat: "5/32 dan 5,8", uraian: "5/8 ÷ 4 = 5/32. 5 4/5 = 5,8.", contoh: "4/5 = 0,8." },
       ],
       kuis: [

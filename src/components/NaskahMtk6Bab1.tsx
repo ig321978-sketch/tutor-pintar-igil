@@ -129,16 +129,50 @@ function JudulCara({ anak }: { anak: string }) {
   return <h3 className="mt-4 border-t-4 border-[#1C01A5] pt-3 text-base font-black uppercase tracking-wide text-[#1C01A5]">{anak}</h3>;
 }
 
-function KartuRumus({ rumus, hitung }: { rumus: string[]; hitung: string[] }) {
+function HitungPanah({
+  kalimat,
+  kiriAtas,
+  kiriBawah,
+  kananAtas,
+  kananBawah,
+  operasi,
+  arah,
+  hasilAtas,
+  hasilBawah,
+  akhirAtas,
+  akhirBawah,
+  catatan,
+}: {
+  kalimat: string;
+  kiriAtas: string;
+  kiriBawah: string;
+  kananAtas: string;
+  kananBawah: string;
+  operasi: string;
+  arah: "lurus" | "silang" | "ubah";
+  hasilAtas?: string;
+  hasilBawah?: string;
+  akhirAtas?: string;
+  akhirBawah?: string;
+  catatan: string;
+}) {
   return (
-    <div className="space-y-1 rounded-xl border-2 border-[#1C01A5] bg-[#EEF2FF] px-4 py-3">
-      {rumus.map((anak) => (
-        <p key={anak} className="text-base font-black leading-8 text-[#1C01A5]"><Teks anak={anak} /></p>
-      ))}
-      {hitung.map((anak) => (
-        <p key={anak} className="text-sm font-semibold leading-8 text-slate-800"><Teks anak={anak} /></p>
-      ))}
-    </div>
+    <>
+      <p><Teks anak={kalimat} /></p>
+      <GambarPasangan
+        kiriAtas={kiriAtas}
+        kiriBawah={kiriBawah}
+        kananAtas={kananAtas}
+        kananBawah={kananBawah}
+        operasi={operasi}
+        arah={arah}
+        hasilAtas={hasilAtas}
+        hasilBawah={hasilBawah}
+        akhirAtas={akhirAtas}
+        akhirBawah={akhirBawah}
+        catatan={catatan}
+      />
+    </>
   );
 }
 
@@ -499,10 +533,10 @@ export default function NaskahMtk6Bab1(_props: { kelas?: string; kelamin?: strin
           <p><Teks anak="Penampungan air masih terisi 2/3 bagian. Hari ini terpakai 1/5 dari air yang tersisa. Berapa bagian yang terpakai?" /></p>
         </Kegiatan>
         <Kegiatan label="Logika Pemahaman">
-          <p><Teks anak="Bagian 2/3 yang berarti 1 itu dikali 1/5. Kali pembilang dengan pembilang, penyebut dengan penyebut." /></p>
+          <p><Teks anak="Bagian 2/3 yang berarti 1 itu diambil seperlimanya. Jadi 2/3 dikali 1/5." /></p>
         </Kegiatan>
         <Kegiatan label="Langkah Penyelesaian">
-          <KartuRumus rumus={["a/b × c/d = (a × c)/(b × d)"]} hitung={["2/3 × 1/5 = (2 × 1)/(3 × 5) = 2/15."]} />
+          <HitungPanah kalimat="2/3 × 1/5 = (2 × 1) : (3 × 5) = 2/15." kiriAtas="2" kiriBawah="3" kananAtas="1" kananBawah="5" operasi="×" arah="lurus" hasilAtas="2 × 1" hasilBawah="3 × 5" akhirAtas="2" akhirBawah="15" catatan="Kotak merah pada 2/3. Panah hijau lurus." />
         </Kegiatan>
         <Kegiatan label="Adegan">
           <p>Ayah bertanya lagi. Air yang tersisa akan dipakai selama dua hari, dibagi sama banyak. Ayah ingin tahu bagian air untuk tiap hari.</p>
@@ -512,10 +546,10 @@ export default function NaskahMtk6Bab1(_props: { kelas?: string; kelamin?: strin
           <p><Teks anak="Air sisa 2/3 itu akan dipakai selama 2 hari, dibagi sama banyak. Berapa bagian tiap hari?" /></p>
         </Kegiatan>
         <Kegiatan label="Logika Pemahaman">
-          <p><Teks anak="Bagian 2/3 yang berarti 1 itu dikali 1/2." /></p>
+          <p><Teks anak="Bagian 2/3 yang berarti 1 itu dibagi rata untuk 2 hari." /></p>
         </Kegiatan>
         <Kegiatan label="Langkah Penyelesaian">
-          <KartuRumus rumus={["a/b × c/d = (a × c)/(b × d)"]} hitung={["2/3 × 1/2 = (2 × 1)/(3 × 2) = 2/6 = 1/3."]} />
+          <HitungPanah kalimat="2/3 : 2/1 = (2 × 1) : (3 × 2) = 2/6 = 1/3." kiriAtas="2" kiriBawah="3" kananAtas="2" kananBawah="1" operasi=":" arah="silang" hasilAtas="2 × 1" hasilBawah="3 × 2" akhirAtas="2" akhirBawah="6" catatan="Kotak merah pada 2/3. Panah hijau menyilang. 2/6 sama dengan 1/3." />
         </Kegiatan>
         <p className="text-sm font-semibold leading-8 text-slate-800"><Teks anak="Gambar mana yang menunjukkan 2/3 bagian?" /></p>
         <PilihanDuaPertiga />
@@ -563,13 +597,13 @@ export default function NaskahMtk6Bab1(_props: { kelas?: string; kelamin?: strin
             </>
           }
           permasalahan={<p><Teks anak="Satu ember kecil menyiram 3/5 m². Agam memakai 2 ember kecil. Berapa luas yang basah?" /></p>}
-          logika={<p><Teks anak="Bilangan asli dikali pecahan: kali pembilang, penyebut tetap. Rumusnya a × b/c = (a × b)/c." /></p>}
-          langkah={<KartuRumus rumus={["a × b/c = (a × b)/c"]} hitung={["2 × 3/5 = (2 × 3)/5 = 6/5."]} />}
+          logika={<p><Teks anak="Ada 2 ember. Tiap ember mengisi 3/5 m², jadi luasnya 2 kali 3/5." /></p>}
+          langkah={<HitungPanah kalimat="2/1 × 3/5 = (2 × 3) : (1 × 5) = 6/5." kiriAtas="2" kiriBawah="1" kananAtas="3" kananBawah="5" operasi="×" arah="lurus" hasilAtas="2 × 3" hasilBawah="1 × 5" akhirAtas="6" akhirBawah="5" catatan="Kotak merah pada 2/1. Panah hijau lurus." />}
         />
         <p className="text-sm font-black uppercase tracking-wide text-[#1C01A5]">Latihan Soal</p>
-        <SoalLatihan anak="1. Satu gelas berisi 2/5 liter jus. Agam menuang 4 gelas. Berapa liter jus seluruhnya?" id={idKuis("A", 1)} periksa={(teks) => pecahan(teks, "8/5")} jawaban="Rumus a × b/c = (a × b)/c. 4 × 2/5 = (4 × 2)/5 = 8/5. Jawabannya 8/5 liter." />
-        <SoalLatihan anak="2. Satu petak kebun luasnya 3/4 m². Ada 2 petak seperti itu. Berapa luas seluruhnya?" id={idKuis("A", 2)} periksa={(teks) => pecahan(teks, "6/4") || pecahan(teks, "3/2")} jawaban="Rumus a × b/c = (a × b)/c. 2 × 3/4 = (2 × 3)/4 = 6/4 = 3/2. Jawabannya 3/2 m²." />
-        <SoalLatihan anak="3. Satu kantong pupuk beratnya 1/5 kg. Agam membeli 5 kantong. Berapa kg seluruhnya?" id={idKuis("A", 3)} periksa={(teks) => hasilUtuh(teks, "1") || pecahan(teks, "5/5")} jawaban="Rumus a × b/c = (a × b)/c. 5 × 1/5 = (5 × 1)/5 = 5/5 = 1. Jawabannya 1 kg." />
+        <SoalLatihan anak="1. Satu gelas berisi 2/5 liter jus. Agam menuang 4 gelas. Berapa liter jus seluruhnya?" id={idKuis("A", 1)} periksa={(teks) => pecahan(teks, "8/5")} jawaban="4 gelas, tiap gelas 2/5 liter. 4/1 × 2/5 = (4 × 2) : (1 × 5) = 8/5. Kotak merah pada 4/1. Panah hijau lurus. Jawabannya 8/5 liter." />
+        <SoalLatihan anak="2. Satu petak kebun luasnya 3/4 m². Ada 2 petak seperti itu. Berapa luas seluruhnya?" id={idKuis("A", 2)} periksa={(teks) => pecahan(teks, "6/4") || pecahan(teks, "3/2")} jawaban="2 petak, tiap petak 3/4 m². 2/1 × 3/4 = (2 × 3) : (1 × 4) = 6/4 = 3/2. Kotak merah pada 2/1. Panah hijau lurus. Jawabannya 3/2 m²." />
+        <SoalLatihan anak="3. Satu kantong pupuk beratnya 1/5 kg. Agam membeli 5 kantong. Berapa kg seluruhnya?" id={idKuis("A", 3)} periksa={(teks) => hasilUtuh(teks, "1") || pecahan(teks, "5/5")} jawaban="5 kantong, tiap kantong 1/5 kg. 5/1 × 1/5 = (5 × 1) : (1 × 5) = 5/5 = 1. Kotak merah pada 5/1. Panah hijau lurus. Jawabannya 1 kg." />
 
         <h3 className="text-lg font-black text-[#1C01A5]">2. Perkalian Pecahan dengan Bilangan Asli</h3>
         <PolaCerita
@@ -585,13 +619,13 @@ export default function NaskahMtk6Bab1(_props: { kelas?: string; kelamin?: strin
               <p>Bagi 15 pohon menjadi 3 bagian, lalu gabungkan 2 bagian.</p>
             </>
           }
-          logika={<p><Teks anak="Pecahan dikali bilangan asli: kali pembilang dengan bilangan itu, penyebut tetap. Rumusnya a/c × b = (a × b)/c." /></p>}
-          langkah={<KartuRumus rumus={["a/c × b = (a × b)/c"]} hitung={["2/3 × 15 = (2 × 15)/3 = 30/3 = 10."]} />}
+          logika={<p>Bagi 15 pohon menjadi 3 bagian, lalu gabungkan 2 bagian.</p>}
+          langkah={<HitungPanah kalimat="2/3 × 15/1 = (2 × 15) : (3 × 1) = 30/3 = 10." kiriAtas="2" kiriBawah="3" kananAtas="15" kananBawah="1" operasi="×" arah="lurus" hasilAtas="2 × 15" hasilBawah="3 × 1" akhirAtas="30" akhirBawah="3" catatan="Kotak merah pada 2/3. Panah hijau lurus. 30/3 sama dengan 10." />}
         />
         <p className="text-sm font-black uppercase tracking-wide text-[#1C01A5]">Latihan Soal</p>
-        <SoalLatihan anak="1. Ada 12 mangga. 3/4 bagian sudah masak. Berapa mangga yang masak?" id={idKuis("A", 4)} periksa={(teks) => hasilUtuh(teks, "9")} jawaban="Rumus a/c × b = (a × b)/c. 3/4 × 12 = (3 × 12)/4 = 36/4 = 9. Jawabannya 9 mangga." />
-        <SoalLatihan anak="2. Ada 20 pensil. 2/5 bagian berwarna merah. Berapa pensil merah?" id={idKuis("A", 5)} periksa={(teks) => hasilUtuh(teks, "8")} jawaban="Rumus a/c × b = (a × b)/c. 2/5 × 20 = (2 × 20)/5 = 40/5 = 8. Jawabannya 8 pensil." />
-        <SoalLatihan anak="3. Ada 18 buku. 1/3 bagian buku cerita. Berapa buku cerita?" id={idKuis("A", 6)} periksa={(teks) => hasilUtuh(teks, "6")} jawaban="Rumus a/c × b = (a × b)/c. 1/3 × 18 = (1 × 18)/3 = 18/3 = 6. Jawabannya 6 buku." />
+        <SoalLatihan anak="1. Ada 12 mangga. 3/4 bagian sudah masak. Berapa mangga yang masak?" id={idKuis("A", 4)} periksa={(teks) => hasilUtuh(teks, "9")} jawaban="Bagi 12 mangga menjadi 4 bagian, lalu gabungkan 3 bagian. 3/4 × 12/1 = (3 × 12) : (4 × 1) = 36/4 = 9. Kotak merah pada 3/4. Panah hijau lurus. Jawabannya 9 mangga." />
+        <SoalLatihan anak="2. Ada 20 pensil. 2/5 bagian berwarna merah. Berapa pensil merah?" id={idKuis("A", 5)} periksa={(teks) => hasilUtuh(teks, "8")} jawaban="Bagi 20 pensil menjadi 5 bagian, lalu gabungkan 2 bagian. 2/5 × 20/1 = (2 × 20) : (5 × 1) = 40/5 = 8. Kotak merah pada 2/5. Panah hijau lurus. Jawabannya 8 pensil." />
+        <SoalLatihan anak="3. Ada 18 buku. 1/3 bagian buku cerita. Berapa buku cerita?" id={idKuis("A", 6)} periksa={(teks) => hasilUtuh(teks, "6")} jawaban="Bagi 18 buku menjadi 3 bagian, lalu ambil 1 bagian. 1/3 × 18/1 = (1 × 18) : (3 × 1) = 18/3 = 6. Kotak merah pada 1/3. Panah hijau lurus. Jawabannya 6 buku." />
       </section>
 
       <section className="space-y-4">
@@ -600,13 +634,13 @@ export default function NaskahMtk6Bab1(_props: { kelas?: string; kelamin?: strin
         <PolaCerita
           adegan={<p>Botol kedua tidak penuh. Isinya hanya setengah liter. Gelasnya tiga, untuk Agam, Ayah, dan Ibu. Agam melihat airnya lebih sedikit, lalu bertanya berapa liter tiap gelas.</p>}
           permasalahan={<p><Teks anak="Isi botol 1/2 liter. Air dibagi rata ke 3 gelas. Berapa liter tiap gelas?" /></p>}
-          logika={<p><Teks anak="Membagi dengan bilangan asli sama dengan mengalikan 1 per bilangan itu. Rumusnya 1/a ÷ b = 1/a × 1/b." /></p>}
-          langkah={<KartuRumus rumus={["1/a ÷ b = 1/a × 1/b"]} hitung={["1/2 ÷ 3 = 1/2 × 1/3 = (1 × 1)/(2 × 3) = 1/6."]} />}
+          logika={<p><Teks anak="Setengah liter dibagi rata ke 3 gelas. Tiap gelas mendapat sepertiga dari setengah liter." /></p>}
+          langkah={<HitungPanah kalimat="1/2 : 3/1 = (1 × 1) : (2 × 3) = 1/6." kiriAtas="1" kiriBawah="2" kananAtas="3" kananBawah="1" operasi=":" arah="silang" hasilAtas="1 × 1" hasilBawah="2 × 3" akhirAtas="1" akhirBawah="6" catatan="Kotak merah pada 1/2. Panah hijau menyilang." />}
         />
         <p className="text-sm font-black uppercase tracking-wide text-[#1C01A5]">Latihan Soal</p>
-        <SoalLatihan anak="1. Ada 3/4 liter sirup. Sirup dibagi rata ke 2 gelas. Berapa liter tiap gelas?" id={idKuis("B", 0)} periksa={(teks) => pecahan(teks, "3/8")} jawaban="3/4 ÷ 2 = 3/4 × 1/2 = (3 × 1)/(4 × 2) = 3/8. Jawabannya 3/8 liter." />
-        <SoalLatihan anak="2. Ada 2/3 kg gula. Gula dibagi rata untuk 4 adonan. Berapa kg tiap adonan?" id={idKuis("B", 1)} periksa={(teks) => seperenam(teks) || pecahan(teks, "2/12")} jawaban="2/3 ÷ 4 = 2/3 × 1/4 = (2 × 1)/(3 × 4) = 2/12 = 1/6. Jawabannya 1/6 kg." />
-        <SoalLatihan anak="3. Ada pita 4/5 meter. Pita dibagi rata menjadi 2. Berapa meter tiap bagian?" id={idKuis("B", 2)} periksa={(teks) => pecahan(teks, "2/5") || pecahan(teks, "4/10")} jawaban="4/5 ÷ 2 = 4/5 × 1/2 = (4 × 1)/(5 × 2) = 4/10 = 2/5. Jawabannya 2/5 meter." />
+        <SoalLatihan anak="1. Ada 3/4 liter sirup. Sirup dibagi rata ke 2 gelas. Berapa liter tiap gelas?" id={idKuis("B", 0)} periksa={(teks) => pecahan(teks, "3/8")} jawaban="3/4 liter dibagi rata ke 2 gelas. 3/4 : 2/1 = (3 × 1) : (4 × 2) = 3/8. Kotak merah pada 3/4. Panah hijau menyilang. Jawabannya 3/8 liter." />
+        <SoalLatihan anak="2. Ada 2/3 kg gula. Gula dibagi rata untuk 4 adonan. Berapa kg tiap adonan?" id={idKuis("B", 1)} periksa={(teks) => seperenam(teks) || pecahan(teks, "2/12")} jawaban="2/3 kg dibagi rata untuk 4 adonan. 2/3 : 4/1 = (2 × 1) : (3 × 4) = 2/12 = 1/6. Kotak merah pada 2/3. Panah hijau menyilang. Jawabannya 1/6 kg." />
+        <SoalLatihan anak="3. Ada pita 4/5 meter. Pita dibagi rata menjadi 2. Berapa meter tiap bagian?" id={idKuis("B", 2)} periksa={(teks) => pecahan(teks, "2/5") || pecahan(teks, "4/10")} jawaban="4/5 meter dibagi rata menjadi 2. 4/5 : 2/1 = (4 × 1) : (5 × 2) = 4/10 = 2/5. Kotak merah pada 4/5. Panah hijau menyilang. Jawabannya 2/5 meter." />
 
         <h3 className="text-lg font-black text-[#1C01A5]">2. Pembagian Bilangan Asli dengan Pecahan</h3>
         <PolaCerita
@@ -617,13 +651,13 @@ export default function NaskahMtk6Bab1(_props: { kelas?: string; kelamin?: strin
             </>
           }
           permasalahan={<p><Teks anak="Ada 3 liter jus jeruk. Tiap gelas berisi 1/4 liter. Berapa gelas yang terisi?" /></p>}
-          logika={<p><Teks anak="Membagi dengan pecahan sama dengan mengalikan kebalikannya. Kebalikan 1/4 adalah 4. Rumusnya a ÷ b/c = a × c/b." /></p>}
-          langkah={<KartuRumus rumus={["a ÷ b/c = a × c/b"]} hitung={["3 ÷ 1/4 = 3 × 4 = 12."]} />}
+          logika={<p><Teks anak="Dalam 1 liter muat 4 gelas seperempat liter. Jus ada 3 liter, jadi gelasnya 3 kali 4." /></p>}
+          langkah={<HitungPanah kalimat="3/1 : 1/4 = (3 × 4) : (1 × 1) = 12." kiriAtas="3" kiriBawah="1" kananAtas="1" kananBawah="4" operasi=":" arah="silang" hasilAtas="3 × 4" hasilBawah="1 × 1" akhirAtas="12" catatan="Kotak merah pada 3/1. Panah hijau menyilang." />}
         />
         <p className="text-sm font-black uppercase tracking-wide text-[#1C01A5]">Latihan Soal</p>
-        <SoalLatihan anak="1. Ada 2 liter jus. Tiap gelas berisi 1/2 liter. Berapa gelas yang terisi?" id={idKuis("B", 3)} periksa={(teks) => hasilUtuh(teks, "4")} jawaban="Rumus a ÷ b/c = a × c/b. 2 ÷ 1/2 = 2 × 2 = 4. Jawabannya 4 gelas." />
-        <SoalLatihan anak="2. Rina punya 6 kg gula. Tiap adonan bolu memakai 3/4 kg. Berapa kue bolu yang dibuat?" id={idKuis("B", 4)} periksa={jumlahDelapan} jawaban="Rumus a ÷ b/c = a × c/b. 6 ÷ 3/4 = 6 × 4/3 = (6 × 4)/3 = 24/3 = 8. Jawabannya 8 bolu." />
-        <SoalLatihan anak="3. Astri punya 5 batang cokelat. Tiap teman mendapat 2/3 batang. Tuliskan hasil 5 ÷ 2/3." id={idKuis("B", 5)} periksa={limaBelasPerDua} jawaban="Rumus a ÷ b/c = a × c/b. 5 ÷ 2/3 = 5 × 3/2 = (5 × 3)/2 = 15/2. Jawabannya 15/2." />
+        <SoalLatihan anak="1. Ada 2 liter jus. Tiap gelas berisi 1/2 liter. Berapa gelas yang terisi?" id={idKuis("B", 3)} periksa={(teks) => hasilUtuh(teks, "4")} jawaban="Dalam 1 liter muat 2 gelas setengah liter. 2/1 : 1/2 = (2 × 2) : (1 × 1) = 4. Kotak merah pada 2/1. Panah hijau menyilang. Jawabannya 4 gelas." />
+        <SoalLatihan anak="2. Rina punya 6 kg gula. Tiap adonan bolu memakai 3/4 kg. Berapa kue bolu yang dibuat?" id={idKuis("B", 4)} periksa={jumlahDelapan} jawaban="6 kg dibagi 3/4 kg tiap bolu. 6/1 : 3/4 = (6 × 4) : (1 × 3) = 24/3 = 8. Kotak merah pada 6/1. Panah hijau menyilang. Jawabannya 8 bolu." />
+        <SoalLatihan anak="3. Astri punya 5 batang cokelat. Tiap teman mendapat 2/3 batang. Tuliskan hasil 5 ÷ 2/3." id={idKuis("B", 5)} periksa={limaBelasPerDua} jawaban="5 batang dibagi 2/3 batang. 5/1 : 2/3 = (5 × 3) : (1 × 2) = 15/2. Kotak merah pada 5/1. Panah hijau menyilang. Jawabannya 15/2." />
       </section>
 
       <section className="space-y-4">
@@ -637,12 +671,12 @@ export default function NaskahMtk6Bab1(_props: { kelas?: string; kelamin?: strin
             </>
           }
           permasalahan={<p><Teks anak="Jeruk 1/2 kg. Berapa kilogram dalam desimal?" /></p>}
-          logika={<p><Teks anak="Jadikan penyebut 10. Persepuluhan adalah angka pertama di kanan koma. 0,50 sama nilainya dengan 0,5." /></p>}
-          langkah={<KartuRumus rumus={["penyebut dijadikan 10"]} hitung={["1/2 = (1 × 5)/(2 × 5) = 5/10 = 0,5."]} />}
+          logika={<p><Teks anak="Setengah kilogram adalah 5 bagian dari 10. Angka 5 itu ditulis di kanan koma, yaitu 0,5." /></p>}
+          langkah={<HitungPanah kalimat="1/2 = (1 × 5) : (2 × 5) = 5/10 = 0,5." kiriAtas="1" kiriBawah="2" kananAtas="5" kananBawah="10" operasi="×5" arah="ubah" catatan="Pembilang dan penyebut dikali 5. 5/10 sama dengan 0,5." />}
         />
         <p className="text-sm font-black uppercase tracking-wide text-[#1C01A5]">Latihan Soal</p>
-        <SoalLatihan anak="1. Ibu membeli 1/4 kg kacang. Berapa kg dalam desimal?" id={idKuis("C", 0)} periksa={(teks) => desimalUtuh(teks, "0.25")} jawaban="Penyebut 4 dijadikan 100. 1/4 = (1 × 25)/(4 × 25) = 25/100 = 0,25. Jawabannya 0,25 kg." />
-        <SoalLatihan anak="2. Botol berisi 2/5 liter. Berapa liter dalam desimal?" id={idKuis("C", 1)} periksa={(teks) => desimalUtuh(teks, "0.4") || desimalUtuh(teks, "0.40")} jawaban="2/5 = (2 × 2)/(5 × 2) = 4/10 = 0,4. Jawabannya 0,4 liter." />
+        <SoalLatihan anak="1. Ibu membeli 1/4 kg kacang. Berapa kg dalam desimal?" id={idKuis("C", 0)} periksa={(teks) => desimalUtuh(teks, "0.25")} jawaban="Penyebut 4 dijadikan 100. 1/4 = (1 × 25) : (4 × 25) = 25/100 = 0,25. Jawabannya 0,25 kg." />
+        <SoalLatihan anak="2. Botol berisi 2/5 liter. Berapa liter dalam desimal?" id={idKuis("C", 1)} periksa={(teks) => desimalUtuh(teks, "0.4") || desimalUtuh(teks, "0.40")} jawaban="2/5 = (2 × 2) : (5 × 2) = 4/10 = 0,4. Jawabannya 0,4 liter." />
         <SoalLatihan anak="3. Tali sepanjang 7/10 meter. Berapa meter dalam desimal?" id={idKuis("C", 2)} periksa={(teks) => desimalUtuh(teks, "0.7") || desimalUtuh(teks, "0.70")} jawaban="Penyebutnya sudah 10. 7/10 = 0,7. Jawabannya 0,7 meter." />
 
         <h3 className="text-lg font-black text-[#1C01A5]">2. Membandingkan dan Mengurutkan Bilangan Desimal</h3>
@@ -675,11 +709,11 @@ export default function NaskahMtk6Bab1(_props: { kelas?: string; kelamin?: strin
 
       <section className="space-y-3">
         <JudulBagian anak="Uji Kompetensi" />
-        <KotakJawaban id={idKuis("D", 0)} soal="Pak Arman menempuh 630 km. Setelah 2/5 perjalanan, berapa km yang sudah ditempuh?" periksa={(teks) => utuh(teks, "252")} umpan="2/5 × 630 = 252 km." />
-        <KotakJawaban id={idKuis("D", 1)} soal="Dini mendapat pesanan 100 porsi. Yang selesai 3/4 pesanan. Berapa porsi?" periksa={(teks) => utuh(teks, "75")} umpan="3/4 × 100 = 75 porsi." />
-        <KotakJawaban id={idKuis("D", 2)} soal="Keluarga Dias memakai 2/3 kg beras tiap hari. Persediaan 50 kg. Habis dalam berapa hari?" periksa={(teks) => utuh(teks, "75")} umpan="50 ÷ 2/3 = 75 hari." />
-        <KotakJawaban id={idKuis("D", 3)} soal="Rania punya 5/8 potong kue. Kue itu memenuhi 4 kotak sama rata. Bagian kue tiap kotak?" periksa={limaPerTigaPuluhDua} umpan="5/8 ÷ 4 = 5/32." />
-        <KotakJawaban id={idKuis("D", 4)} soal="Pak Made sudah mengecat 5 4/5 m². Tuliskan bentuk desimalnya." periksa={desimalLimaKomaDelapan} umpan="4/5 = 0,8, jadi 5,8." />
+        <KotakJawaban id={idKuis("D", 0)} soal="Pak Arman menempuh 630 km. Setelah 2/5 perjalanan, berapa km yang sudah ditempuh?" periksa={(teks) => utuh(teks, "252")} umpan="2/5 dari 630 km. 2/5 × 630/1 = (2 × 630) : (5 × 1) = 1260/5 = 252 km." />
+        <KotakJawaban id={idKuis("D", 1)} soal="Dini mendapat pesanan 100 porsi. Yang selesai 3/4 pesanan. Berapa porsi?" periksa={(teks) => utuh(teks, "75")} umpan="3/4 dari 100 porsi. 3/4 × 100/1 = (3 × 100) : (4 × 1) = 300/4 = 75 porsi." />
+        <KotakJawaban id={idKuis("D", 2)} soal="Keluarga Dias memakai 2/3 kg beras tiap hari. Persediaan 50 kg. Habis dalam berapa hari?" periksa={(teks) => utuh(teks, "75")} umpan="50 kg dibagi 2/3 kg. 50/1 : 2/3 = (50 × 3) : (1 × 2) = 150/2 = 75 hari." />
+        <KotakJawaban id={idKuis("D", 3)} soal="Rania punya 5/8 potong kue. Kue itu memenuhi 4 kotak sama rata. Bagian kue tiap kotak?" periksa={limaPerTigaPuluhDua} umpan="5/8 kue dibagi 4 kotak. 5/8 : 4/1 = (5 × 1) : (8 × 4) = 5/32." />
+        <KotakJawaban id={idKuis("D", 4)} soal="Pak Made sudah mengecat 5 4/5 m². Tuliskan bentuk desimalnya." periksa={desimalLimaKomaDelapan} umpan="4/5 = (4 × 2) : (5 × 2) = 8/10 = 0,8, jadi 5,8." />
       </section>
 
       <section className="space-y-3 border-t-4 border-amber-400 pt-6">
@@ -689,25 +723,25 @@ export default function NaskahMtk6Bab1(_props: { kelas?: string; kelamin?: strin
         <PolaCerita
           adegan={<p>Musim kemarau belum reda. Tangki kebun tinggal terisi setengah. Hari ini Ayah memakai sepertiga dari air yang ada, bukan sepertiga tangki penuh. Agam menghitung bagian tangki yang terpakai.</p>}
           permasalahan={<p><Teks anak="Tangki terisi 1/2. Hari ini terpakai 1/3 dari air yang ada. Berapa bagian tangki yang terpakai?" /></p>}
-          logika={<p><Teks anak="Sepertiga dari setengah tangki adalah 1/2 dikali 1/3. Kali pembilang dengan pembilang, penyebut dengan penyebut." /></p>}
-          langkah={<KartuRumus rumus={["a/b × c/d = (a × c)/(b × d)"]} hitung={["1/2 × 1/3 = (1 × 1)/(2 × 3) = 1/6."]} />}
+          logika={<p><Teks anak="Air yang ada baru 1/2 tangki. Yang terpakai 1/3 dari air itu, jadi 1/2 dikali 1/3." /></p>}
+          langkah={<HitungPanah kalimat="1/2 × 1/3 = (1 × 1) : (2 × 3) = 1/6." kiriAtas="1" kiriBawah="2" kananAtas="1" kananBawah="3" operasi="×" arah="lurus" hasilAtas="1 × 1" hasilBawah="2 × 3" akhirAtas="1" akhirBawah="6" catatan="Kotak merah pada 1/2. Panah hijau lurus." />}
         />
         <p className="text-sm font-black uppercase tracking-wide text-[#1C01A5]">Latihan Soal</p>
-        <SoalLatihan anak="1. 1/2 × 1/4. Berapa hasilnya?" id={idKuis("E", 0)} periksa={(teks) => pecahan(teks, "1/8")} jawaban="1/2 × 1/4 = (1 × 1)/(2 × 4) = 1/8. Jawabannya 1/8." />
-        <SoalLatihan anak="2. 2/3 × 1/5. Berapa hasilnya?" id={idKuis("E", 1)} periksa={(teks) => pecahan(teks, "2/15")} jawaban="2/3 × 1/5 = (2 × 1)/(3 × 5) = 2/15. Jawabannya 2/15." />
-        <SoalLatihan anak="3. 3/4 × 1/2. Berapa hasilnya?" id={idKuis("E", 2)} periksa={(teks) => pecahan(teks, "3/8")} jawaban="3/4 × 1/2 = (3 × 1)/(4 × 2) = 3/8. Jawabannya 3/8." />
+        <SoalLatihan anak="1. 1/2 × 1/4. Berapa hasilnya?" id={idKuis("E", 0)} periksa={(teks) => pecahan(teks, "1/8")} jawaban="1/2 × 1/4 = (1 × 1) : (2 × 4) = 1/8. Kotak merah pada 1/2. Panah hijau lurus. Jawabannya 1/8." />
+        <SoalLatihan anak="2. 2/3 × 1/5. Berapa hasilnya?" id={idKuis("E", 1)} periksa={(teks) => pecahan(teks, "2/15")} jawaban="2/3 × 1/5 = (2 × 1) : (3 × 5) = 2/15. Kotak merah pada 2/3. Panah hijau lurus. Jawabannya 2/15." />
+        <SoalLatihan anak="3. 3/4 × 1/2. Berapa hasilnya?" id={idKuis("E", 2)} periksa={(teks) => pecahan(teks, "3/8")} jawaban="3/4 × 1/2 = (3 × 1) : (4 × 2) = 3/8. Kotak merah pada 3/4. Panah hijau lurus. Jawabannya 3/8." />
 
         <h3 className="text-lg font-black text-[#1C01A5]">Pembagian pecahan dengan pecahan</h3>
         <PolaCerita
           adegan={<p>Agam menuang air ke botol. Tiga gelas sudah dituang, tetapi botol baru terisi dua pertiga. Ayah bertanya, kalau botolnya mau penuh, perlu berapa gelas?</p>}
           permasalahan={<p><Teks anak="3 gelas air memenuhi 2/3 botol. Berapa gelas untuk satu botol penuh?" /></p>}
-          logika={<p><Teks anak="Membagi dengan pecahan sama dengan mengalikan kebalikannya. Kebalikan 2/3 adalah 3/2." /></p>}
-          langkah={<KartuRumus rumus={["a ÷ b/c = a × c/b"]} hitung={["3 ÷ 2/3 = 3 × 3/2 = (3 × 3)/2 = 9/2."]} />}
+          logika={<p><Teks anak="3 gelas baru mengisi 2/3 botol. Banyak gelas untuk satu botol adalah 3 dibagi 2/3." /></p>}
+          langkah={<HitungPanah kalimat="3/1 : 2/3 = (3 × 3) : (1 × 2) = 9/2." kiriAtas="3" kiriBawah="1" kananAtas="2" kananBawah="3" operasi=":" arah="silang" hasilAtas="3 × 3" hasilBawah="1 × 2" akhirAtas="9" akhirBawah="2" catatan="Kotak merah pada 3/1. Panah hijau menyilang." />}
         />
         <p className="text-sm font-black uppercase tracking-wide text-[#1C01A5]">Latihan Soal</p>
-        <SoalLatihan anak="1. 1/2 ÷ 1/4. Berapa hasilnya?" id={idKuis("E", 3)} periksa={(teks) => hasilUtuh(teks, "2")} jawaban="Rumus a ÷ b/c = a × c/b. 1/2 ÷ 1/4 = 1/2 × 4/1 = (1 × 4)/(2 × 1) = 4/2 = 2. Jawabannya 2." />
-        <SoalLatihan anak="2. 2/3 ÷ 1/3. Berapa hasilnya?" id={idKuis("E", 4)} periksa={(teks) => hasilUtuh(teks, "2")} jawaban="2/3 ÷ 1/3 = 2/3 × 3/1 = (2 × 3)/(3 × 1) = 6/3 = 2. Jawabannya 2." />
-        <SoalLatihan anak="3. 3/4 ÷ 1/2. Berapa hasilnya?" id={idKuis("E", 5)} periksa={(teks) => pecahan(teks, "3/2") || pecahan(teks, "6/4")} jawaban="3/4 ÷ 1/2 = 3/4 × 2/1 = (3 × 2)/(4 × 1) = 6/4 = 3/2. Jawabannya 3/2." />
+        <SoalLatihan anak="1. 1/2 ÷ 1/4. Berapa hasilnya?" id={idKuis("E", 3)} periksa={(teks) => hasilUtuh(teks, "2")} jawaban="1/2 : 1/4 = (1 × 4) : (2 × 1) = 4/2 = 2. Kotak merah pada 1/2. Panah hijau menyilang. Jawabannya 2." />
+        <SoalLatihan anak="2. 2/3 ÷ 1/3. Berapa hasilnya?" id={idKuis("E", 4)} periksa={(teks) => hasilUtuh(teks, "2")} jawaban="2/3 : 1/3 = (2 × 3) : (3 × 1) = 6/3 = 2. Kotak merah pada 2/3. Panah hijau menyilang. Jawabannya 2." />
+        <SoalLatihan anak="3. 3/4 ÷ 1/2. Berapa hasilnya?" id={idKuis("E", 5)} periksa={(teks) => pecahan(teks, "3/2") || pecahan(teks, "6/4")} jawaban="3/4 : 1/2 = (3 × 2) : (4 × 1) = 6/4 = 3/2. Kotak merah pada 3/4. Panah hijau menyilang. Jawabannya 3/2." />
 
         <h3 className="text-lg font-black text-[#1C01A5]">Desimal berulang</h3>
         <PolaCerita
