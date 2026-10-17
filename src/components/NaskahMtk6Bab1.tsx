@@ -640,13 +640,8 @@ export default function NaskahMtk6Bab1(_props: { kelas?: string; kelamin?: strin
               <p>Agam berjalan bersama Ayah di antara pohon mangga. Pohonnya ada lima belas. Ayah menunjuk sebagian pohon. Itu mangga manalagi, dua pertiga dari semua pohon. Ayah meminta Agam menghitung pohon manalaginya.</p>
             </>
           }
-          permasalahan={
-            <>
-              <p><Teks anak="Ada 15 pohon mangga. 2/3 dari pohon itu adalah mangga manalagi. Berapa pohon manalagi?" /></p>
-              <p>Bagi 15 pohon menjadi 3 bagian, lalu gabungkan 2 bagian.</p>
-            </>
-          }
-          logika={<p>Bagi 15 pohon menjadi 3 bagian, lalu gabungkan 2 bagian.</p>}
+          permasalahan={<p><Teks anak="Ada 15 pohon mangga. 2/3 dari pohon itu adalah mangga manalagi. Berapa pohon manalagi?" /></p>}
+          logika={<p><Teks anak="2/3 bagian dari 15 pohon berarti 15 pohon itu dikalikan 2 lalu dibagi 3." /></p>}
           langkah={<HitungPanah kalimat="2/3 × 15/1 = (2 × 15) : (3 × 1) = 30/3 = 10." kiriAtas="2" kiriBawah="3" kananAtas="15" kananBawah="1" operasi="×" arah="lurus" hasilAtas="2 × 15" hasilBawah="3 × 1" akhirAtas="30" akhirBawah="3" catatan="Kotak merah pada 2/3. Panah hijau lurus. 30/3 sama dengan 10." />}
         />
         <PolaCerita

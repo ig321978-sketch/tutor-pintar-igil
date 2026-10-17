@@ -62,7 +62,7 @@ D) 4,5`,
         { nama: "Gambar 2/3", singkat: "Batang, pizza, jeruk", uraian: "Jeruk 8/12 = 2/3. Batang biru 6/10. Pizza 1/4.", contoh: "Jawaban gambar c." },
         { nama: "Ember besar", singkat: "Asli kali asli", uraian: "5 × 2 = 10 m².", contoh: "Keduanya bilangan asli." },
         { nama: "Ember kecil", singkat: "Asli kali pecahan", uraian: "2/1 × 3/5 = 6/5 m². 5/1 × 3/5 = 3 m².", contoh: "6 bagian dari 1/5. Hasil lebih kecil dari bilangan aslinya." },
-        { nama: "Pohon manalagi", singkat: "Pecahan kali asli", uraian: "2/3 × 15 = 10 pohon. 1/4 × 20 = 20 × 1/4 = 5.", contoh: "Bagi 15 menjadi 3 bagian, lalu gabungkan 2 bagian. Urutan kali tidak mengubah hasil." },
+        { nama: "Pohon manalagi", singkat: "Pecahan kali asli", uraian: "2/3 × 15 = 10 pohon. 1/4 × 20 = 20 × 1/4 = 5.", contoh: "2/3 dari 15 pohon berarti 15 dikali 2 lalu dibagi 3. Urutan kali tidak mengubah hasil." },
       ],
       kuis: [
         { pertanyaan: "Gambar yang menunjukkan 2/3.", alias: ["c", "jeruk"] },
