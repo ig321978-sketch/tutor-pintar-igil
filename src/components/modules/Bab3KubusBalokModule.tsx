@@ -377,110 +377,122 @@ function generateDynamicQuestions(seedOffset: number): QuestionItem[] {
   ];
 }
 
-function SlideVisual({ jenis }: { jenis: VisualSlide["visualComponentType"] }) {
-  const kotak = "h-10 w-10 rounded-md border-2 border-indigo-700 bg-indigo-500";
-  if (jenis === "kontainer_isometric") {
-    return (
-      <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 rounded-xl bg-slate-50 border border-slate-200 p-4">
-        <div>
-          <div className="text-xs font-bold text-slate-500 mb-2">Segaris</div>
-          <div className="flex gap-1">
-            <div className={kotak} />
-            <div className={kotak} />
-            <div className={kotak} />
-          </div>
-        </div>
-        <div>
-          <div className="text-xs font-bold text-slate-500 mb-2">Huruf L</div>
-          <div className="flex gap-1">
-            <div className={kotak} />
-            <div className={kotak} />
-          </div>
-          <div className={`${kotak} mt-1`} />
-        </div>
-      </div>
-    );
-  }
-  if (jenis === "lapis_breakdown") {
-    const tingkat = "h-10 w-10 rounded-md border-2 border-amber-600 bg-amber-400";
-    return (
-      <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 rounded-xl bg-slate-50 border border-slate-200 p-4">
-        <div>
-          <div className="text-xs font-bold text-slate-500 mb-2">Lantai 1</div>
-          <div className="grid grid-cols-2 gap-1 w-fit">
-            <div className={kotak} />
-            <div className={kotak} />
-            <div className={kotak} />
-            <div className={kotak} />
-          </div>
-        </div>
-        <div>
-          <div className="text-xs font-bold text-slate-500 mb-2">Lantai 2</div>
-          <div className="flex gap-1">
-            <div className={tingkat} />
-            <div className={tingkat} />
-          </div>
-        </div>
-      </div>
-    );
-  }
-  if (jenis === "proyeksi_3arah") {
-    const panel = (judul: string, tinggi: number[]) => (
-      <div key={judul}>
-        <div className="text-xs font-bold text-slate-500 mb-2">{judul}</div>
-        <div className="flex items-end gap-1 h-16">
-          {tinggi.map((n, i) => (
-            <div key={i} className="flex flex-col-reverse gap-0.5">
-              {Array.from({ length: n }).map((_, k) => (
-                <div key={k} className="h-4 w-6 rounded-sm bg-indigo-500 border border-indigo-700" />
-              ))}
-            </div>
-          ))}
-        </div>
-      </div>
-    );
-    return (
-      <div className="grid grid-cols-3 gap-3 rounded-xl bg-slate-50 border border-slate-200 p-4">
-        {panel("Tampak Atas", [1, 1])}
-        {panel("Tampak Depan", [3, 1])}
-        {panel("Tampak Samping", [3])}
-      </div>
-    );
-  }
-  const kolom = ["A", "B", "C", "D"];
-  const baris = [4, 3, 2, 1];
-  return (
-    <div className="rounded-xl bg-slate-50 border border-slate-200 p-4">
-      <div className="inline-grid grid-cols-[1.5rem_repeat(4,2.25rem)] gap-1 text-center text-xs font-bold">
-        <div />
-        {kolom.map((k) => (
-          <div key={k} className="text-slate-500">{k}</div>
-        ))}
-        {baris.map((b) => (
-          <div key={b} className="contents">
-            <div className="text-slate-500 leading-9">{b}</div>
-            {kolom.map((k) => {
-              const aktif = k === "C" && b === 4;
-              return (
-                <div
-                  key={`${k}${b}`}
-                  className={`h-9 rounded-md border leading-9 ${aktif ? "bg-amber-400 border-amber-600 text-amber-950" : "bg-white border-slate-200"}`}
-                >
-                  {aktif ? "●" : ""}
-                </div>
-              );
-            })}
-          </div>
-        ))}
-      </div>
-      <div className="mt-2 text-xs font-bold text-amber-800">(C, 4)</div>
-    </div>
-  );
-}
-
 // ============================================================================
 // 3. KOMPONEN UTAMA MODUL PEMBELAJARAN IGIL
 // ============================================================================
+
+// Komponen Grafis Visualisasi Materi Bab 3 (100% SVG Murni & Bebas Biaya API)
+function MaterialVisualGraphic({ type }: { type: VisualSlide["visualComponentType"] }) {
+  if (type === "kontainer_isometric") {
+    return (
+      <div className="bg-slate-900 rounded-2xl p-5 text-white flex flex-col items-center shadow-inner">
+        <div className="text-xs font-bold uppercase tracking-wider text-amber-400 mb-2">
+          📦 Visualisasi Kontainer: 2 Cara Konstruksi dari 3 Kubus
+        </div>
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 w-full">
+          {/* Bentuk Segaris */}
+          <div className="bg-slate-800/80 p-3 rounded-xl border border-slate-700 flex flex-col items-center">
+            <span className="text-xs font-bold text-indigo-300 mb-2">Bentuk 1: Segaris Lurus (3 × 1 × 1)</span>
+            <svg viewBox="0 0 160 80" className="w-36 h-20">
+              <rect x="15" y="25" width="40" height="35" fill="#3b82f6" stroke="#ffffff" strokeWidth="2" />
+              <rect x="55" y="25" width="40" height="35" fill="#2563eb" stroke="#ffffff" strokeWidth="2" />
+              <rect x="95" y="25" width="40" height="35" fill="#1d4ed8" stroke="#ffffff" strokeWidth="2" />
+              <text x="80" y="75" textAnchor="middle" fill="#93c5fd" fontSize="10" fontWeight="bold">3 Kubus Berjajar</text>
+            </svg>
+          </div>
+          {/* Bentuk Sudut L */}
+          <div className="bg-slate-800/80 p-3 rounded-xl border border-slate-700 flex flex-col items-center">
+            <span className="text-xs font-bold text-emerald-300 mb-2">Bentuk 2: Sudut L (Menyiku)</span>
+            <svg viewBox="0 0 160 80" className="w-36 h-20">
+              <rect x="35" y="10" width="35" height="30" fill="#10b981" stroke="#ffffff" strokeWidth="2" />
+              <rect x="35" y="40" width="35" height="30" fill="#059669" stroke="#ffffff" strokeWidth="2" />
+              <rect x="70" y="40" width="35" height="30" fill="#047857" stroke="#ffffff" strokeWidth="2" />
+              <text x="80" y="78" textAnchor="middle" fill="#6ee7b7" fontSize="10" fontWeight="bold">Membentuk Siku-Siku L</text>
+            </svg>
+          </div>
+        </div>
+      </div>
+    );
+  }
+
+  if (type === "lapis_breakdown") {
+    return (
+      <div className="bg-gradient-to-br from-indigo-950 via-slate-900 to-indigo-950 rounded-2xl p-5 text-white shadow-inner">
+        <div className="text-xs font-bold uppercase tracking-wider text-amber-300 text-center mb-3">
+          🍰 Metode Bongkar Per Lantai: Menghitung Kubus Tersembunyi
+        </div>
+        <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
+          <div className="bg-indigo-900/50 p-3 rounded-xl border border-indigo-500/40 text-center">
+            <div className="text-xs font-extrabold text-amber-300">Lantai 2 (Atas)</div>
+            <div className="text-2xl font-black my-1 text-white">2 Kubus</div>
+            <div className="text-[10px] text-slate-300">Terlihat jelas di atas</div>
+          </div>
+          <div className="text-2xl font-bold text-amber-400">+</div>
+          <div className="bg-indigo-900/50 p-3 rounded-xl border border-indigo-500/40 text-center">
+            <div className="text-xs font-extrabold text-sky-300">Lantai 1 (Dasar)</div>
+            <div className="text-2xl font-black my-1 text-white">6 Kubus (3 × 2)</div>
+            <div className="text-[10px] text-sky-200">Termasuk 2 kubus tersembunyi!</div>
+          </div>
+          <div className="text-2xl font-bold text-emerald-400">=</div>
+          <div className="bg-emerald-950/80 p-3 rounded-xl border border-emerald-500 text-center">
+            <div className="text-xs font-extrabold text-emerald-300">Total Bangunan</div>
+            <div className="text-2xl font-black my-1 text-emerald-400">8 Kubus</div>
+            <div className="text-[10px] text-emerald-200">100% Benar & Tuntas</div>
+          </div>
+        </div>
+      </div>
+    );
+  }
+
+  if (type === "proyeksi_3arah") {
+    return (
+      <div className="bg-slate-900 rounded-2xl p-4 text-white">
+        <div className="text-xs font-bold uppercase tracking-wider text-sky-300 text-center mb-3">
+          📐 Prinsip Proyeksi 2D: Aturan Menara Tertinggi
+        </div>
+        <div className="grid grid-cols-3 gap-2 text-center">
+          <div className="bg-slate-800 p-2.5 rounded-lg border border-slate-700">
+            <div className="text-[11px] font-bold text-amber-400">1. Tampak Atas</div>
+            <div className="text-[10px] text-slate-300 mt-1">Hanya melihat denah petak lantai yang terisi</div>
+            <div className="mt-2 text-lg">🦅 ⬛⬛</div>
+          </div>
+          <div className="bg-slate-800 p-2.5 rounded-lg border border-slate-700">
+            <div className="text-[11px] font-bold text-sky-400">2. Tampak Depan</div>
+            <div className="text-[10px] text-slate-300 mt-1">Mengambil tinggi MAKSIMUM tiap kolom</div>
+            <div className="mt-2 text-lg">👁️ 🟦🟦</div>
+          </div>
+          <div className="bg-slate-800 p-2.5 rounded-lg border border-slate-700">
+            <div className="text-[11px] font-bold text-emerald-400">3. Tampak Samping</div>
+            <div className="text-[10px] text-slate-300 mt-1">Mengambil tinggi MAKSIMUM tiap baris</div>
+            <div className="mt-2 text-lg">👉 🟩🟩</div>
+          </div>
+        </div>
+      </div>
+    );
+  }
+
+  // Koordinat Denah
+  return (
+    <div className="bg-slate-900 rounded-2xl p-4 text-white">
+      <div className="text-xs font-bold uppercase tracking-wider text-emerald-400 text-center mb-2">
+        📍 Rumus Membaca Koordinat: Masuk Pintu (X) Lalu Naik Tangga (Y)
+      </div>
+      <div className="flex items-center justify-center gap-6 py-2">
+        <div className="text-center">
+          <div className="text-3xl font-black text-amber-400">A, B, C...</div>
+          <div className="text-xs font-bold text-slate-300 mt-1">Sumbu Mendatar (Kolom)</div>
+          <div className="text-[10px] text-amber-300 font-semibold">Tulis Pertama!</div>
+        </div>
+        <div className="text-3xl font-black text-slate-500">→</div>
+        <div className="text-center">
+          <div className="text-3xl font-black text-sky-400">1, 2, 3...</div>
+          <div className="text-xs font-bold text-slate-300 mt-1">Sumbu Tegak (Baris)</div>
+          <div className="text-[10px] text-sky-300 font-semibold">Tulis Kedua!</div>
+        </div>
+      </div>
+    </div>
+  );
+}
 
 export default function Bab3KubusBalokModule() {
   // Navigation Tabs
@@ -856,7 +868,7 @@ export default function Bab3KubusBalokModule() {
                       <div className="text-xs font-extrabold uppercase tracking-wider text-indigo-600">{slide.badge}</div>
                       <h3 className="text-lg font-extrabold text-slate-800">{slide.title}</h3>
                       <p className="text-slate-700 text-base leading-relaxed">{slide.explanation}</p>
-                      <SlideVisual jenis={slide.visualComponentType} />
+                      <MaterialVisualGraphic type={slide.visualComponentType} />
                       <ul className="space-y-2.5">
                         {slide.keyTakeaways.map((pt, pIdx) => (
                           <li key={pIdx} className="flex items-start gap-2.5 text-sm text-slate-700">
