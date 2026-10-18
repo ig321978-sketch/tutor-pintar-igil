@@ -3,7 +3,6 @@
 import { useMemo, useState, type ReactNode } from "react";
 import HasilJawabanKuis from "@/components/HasilJawabanKuis";
 import KartuPoinPenting from "@/components/KartuPoinPenting";
-import TujuanBelajar from "@/components/TujuanBelajar";
 import KuisAkhirAdegan from "@/components/KuisAkhirAdegan";
 import KuisTulisKartu from "@/components/KuisTulisKartu";
 import SoalRekamSuara from "@/components/SoalRekamSuara";
@@ -859,17 +858,6 @@ export default function NaskahMtk1Bab1({
         <p className="mt-1 text-center text-sm font-bold text-[#1C01A5]/70">Ayo Membilang sampai dengan 10</p>
         <div className="mt-4">
           <TombolVoiceMateriPai1 kelas={kelas} kelamin={kelamin} cuplikan={cuplikanDariNaskah(kartuA.voice, 2_000, 3_000)} />
-        </div>
-        <div className="mt-4 rounded-2xl border-2 border-emerald-300 bg-emerald-50 px-4 py-3">
-          <TujuanBelajar
-        butir={[
-          "Menghitung benda sampai 10.",
-          "Membaca bilangan 1–10.",
-          "Menulis lambang bilangan 1–10.",
-          "Mencocokkan jumlah benda dengan lambang bilangannya.",
-          "Membandingkan dua kelompok: lebih banyak, lebih sedikit, atau sama banyak.",
-        ]}
-      />
         </div>
         <div className="mt-4 space-y-3">
           <article className="rounded-2xl border-2 border-[#16A34A]/25 bg-[#F0FDF4] px-4 py-3">
