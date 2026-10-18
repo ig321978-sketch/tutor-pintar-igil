@@ -395,7 +395,7 @@ export function daftarIdKuisMateri(
     );
   }
   if (adalahMtk6Bab2(kelas, mapel, materi)) {
-    return daftarIdLatihanMtk6Bab2();
+    return [];
   }
   if (adalahMtk6Bab3(kelas, mapel, materi)) {
     return daftarIdLatihanMtk6Bab3();
