@@ -49,6 +49,7 @@ const ADEGAN: {
   judul: string;
   suara: string;
   figur: "skala" | "roda" | "hujan";
+  gambar: { src: string; alt: string; keterangan: string };
   dialog: BarisDialog[];
   suaraKuis: KuisSuara;
   kanvas: KuisKanvas;
@@ -58,6 +59,11 @@ const ADEGAN: {
     judul: "Adegan 1 · Gerbang Karnaval",
     suara: "Selamat datang di Karnaval Kota Ceria! Sebelum masuk, kita belajar skala peluang. Peluang itu seberapa mungkin sebuah kejadian terjadi. Ada lima tingkat: mustahil, kecil, seimbang, besar, dan pasti.",
     figur: "skala",
+    gambar: {
+      src: "/doodle-mtk/mtk-6-bab4-gerbang.jpg",
+      alt: "Nampan berisi 9 bola merah dan 1 bola biru, plus koin, dadu, dan garis skala dari silang sampai centang.",
+      keterangan: "9 bola merah dan 1 bola biru. Skala dari mustahil sampai pasti.",
+    },
     dialog: [
       { nama: "Lala", teks: "Kak Nara, aku mau main lempar koin. Dapat gambar atau angka, ya?" },
       { nama: "Kak Nara", teks: "Huu-huu! Koin punya 2 sisi yang sama mungkin muncul. Peluangnya seimbang." },
@@ -90,6 +96,11 @@ const ADEGAN: {
     judul: "Adegan 2 · Wahana Roda Putar",
     suara: "Di wahana roda putar, kamu menang kalau panah berhenti di warna pilihanmu. Peluang dihitung dengan membandingkan banyak hasil yang kita mau dengan semua hasil yang mungkin. Warna yang sektornya lebih banyak, peluangnya lebih besar.",
     figur: "roda",
+    gambar: {
+      src: "/doodle-mtk/mtk-6-bab4-roda.jpg",
+      alt: "Roda karnaval 8 sektor: 4 merah, 3 biru, dan 1 kuning.",
+      keterangan: "4 sektor merah, 3 sektor biru, 1 sektor kuning.",
+    },
     dialog: [
       { nama: "Rio", teks: "Rodanya punya 8 sektor. Merah ada 4, biru 3, kuning 1." },
       { nama: "Lala", teks: "Aku pilih kuning! Hadiahnya paling bagus!" },
@@ -120,6 +131,11 @@ const ADEGAN: {
     judul: "Adegan 3 · Pulang dari Karnaval",
     suara: "Peluang tidak hanya ada di permainan. Cuaca, bus, dan undian juga punya peluang. Kita bisa membandingkannya dari data: berapa kali kejadian itu terjadi dibanding semua kesempatan.",
     figur: "hujan",
+    gambar: {
+      src: "/doodle-mtk/mtk-6-bab4-hujan.jpg",
+      alt: "Kalender 10 hari dengan 8 kotak biru dan 2 kotak kuning, serta bus hijau dan bus biru di depan karnaval.",
+      keterangan: "8 hari hujan dan 2 hari cerah dari 10 hari.",
+    },
     dialog: [
       { nama: "Cika", teks: "Langit mendung. Ada payung tidak?" },
       { nama: "Rio", teks: "Dari 10 sore terakhir, 8 sore hujan. Peluang hujan sore ini besar." },
@@ -643,6 +659,16 @@ function Papan({ anak }: { anak: string }) {
   );
 }
 
+function GambarAdegan({ src, alt, keterangan }: { src: string; alt: string; keterangan: string }) {
+  return (
+    <figure className="space-y-1">
+      {/* eslint-disable-next-line @next/next/no-img-element */}
+      <img src={src} alt={alt} className="w-full rounded-xl border border-slate-200 bg-white object-cover" />
+      <figcaption className="text-xs font-semibold leading-6 text-slate-600">{keterangan}</figcaption>
+    </figure>
+  );
+}
+
 function KepalaBagian({ ikon, judul, anak }: { ikon: string; judul: string; anak?: string }) {
   return (
     <div>
@@ -1113,6 +1139,7 @@ export default function Bab4PeluangModule() {
           <section key={adegan.id} className="space-y-3 border-b-4 border-[#1C01A5] pb-8">
             <p className="text-xl font-black leading-snug text-[#1C01A5]">{adegan.judul}</p>
             <TombolVoiceMateriPai1 cuplikan={cuplikan(adegan.suara)} />
+            <GambarAdegan {...adegan.gambar} />
             <Figur jenis={adegan.figur} />
             <div className="space-y-2">
               {adegan.dialog.map((baris) => (

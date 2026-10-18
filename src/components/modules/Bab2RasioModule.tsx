@@ -21,6 +21,7 @@ type AdeganRasio = {
   judul: string;
   suara: string;
   figur: "rak" | "jus" | "resep" | "jeruk" | "buah" | "waktu";
+  gambar: { src: string; alt: string; keterangan: string };
   dialog: BarisDialog[];
   suaraKuis: KuisSingkat;
   kanvas: KuisSingkat;
@@ -59,6 +60,11 @@ const ADEGAN: AdeganRasio[] = [
     judul: "Adegan A1 · Rak Benih yang Berantakan",
     suara: "Selamat datang di Rumah Kaca Ajaib! Kita lihat dua rak benih. Rak mana yang lebih banyak? Dan berapa kali lebih banyak? Yuk, kita bandingkan!",
     figur: "rak",
+    gambar: {
+      src: "/doodle-mtk/mtk-6-bab2-rak.jpg",
+      alt: "Lala, Rio, Pak Bima, dan Kak Nara membandingkan rak berisi 6 kantong benih dengan rak berisi 3 kantong.",
+      keterangan: "Rak kiri 6 kantong. Rak kanan 3 kantong.",
+    },
     dialog: [
       { nama: "Pak Bima", teks: "Rak benih kita berantakan! Ayo hitung dulu." },
       { nama: "Lala", teks: "Rak A ada 6 kantong benih bunga matahari!" },
@@ -84,6 +90,11 @@ const ADEGAN: AdeganRasio[] = [
     judul: "Adegan A2 · Ramuan Jus Rahasia",
     suara: "Para ilmuwan menulis perbandingan dengan dua titik. Namanya rasio. Perhatikan resep jus Pak Bima ya!",
     figur: "jus",
+    gambar: {
+      src: "/doodle-mtk/mtk-6-bab2-jus.jpg",
+      alt: "Tiga gelas air dan dua gelas sirup di meja, bersama Lala, Rio, Pak Bima, dan Kak Nara.",
+      keterangan: "3 gelas air dan 2 gelas sirup.",
+    },
     dialog: [
       { nama: "Cika", teks: "Pak, ada cara singkat menulis “3 banding 2”?" },
       { nama: "Pak Bima", teks: "Ada! Tulis 3 : 2. Dibaca “tiga banding dua”. Ini namanya rasio." },
@@ -108,6 +119,11 @@ const ADEGAN: AdeganRasio[] = [
     judul: "Adegan B1 · Tiga Resep, Satu Rasa",
     suara: "Ada rasio yang angkanya beda tapi rasanya sama! Kita cari tahu rahasianya.",
     figur: "resep",
+    gambar: {
+      src: "/doodle-mtk/mtk-6-bab2-resep.jpg",
+      alt: "Tiga kendi jus jeruk yang sama warnanya, dari yang kecil sampai yang besar.",
+      keterangan: "Tiga resep, satu rasa jus.",
+    },
     dialog: [
       { nama: "Lala", teks: "Resep A 2 : 3, resep B 4 : 6, resep C 6 : 9. Kok rasanya sama?" },
       { nama: "Cika", teks: "Resep A dikali 2 jadi 4 : 6! Sama dengan B!" },
@@ -131,6 +147,11 @@ const ADEGAN: AdeganRasio[] = [
     judul: "Adegan B2 · Satu Kantong untuk Semua",
     suara: "Kalau kita mau tahu harga satu kilo, atau kecepatan per jam, kita pakai rasio satuan!",
     figur: "jeruk",
+    gambar: {
+      src: "/doodle-mtk/mtk-6-bab2-jeruk.jpg",
+      alt: "Rio, Lala, Pak Bima, dan Kak Nara menghitung harga jeruk di keranjang.",
+      keterangan: "Jeruk dihitung per kilogram.",
+    },
     dialog: [
       { nama: "Rio", teks: "Aku mau tahu harga per kilogram supaya mudah dibandingkan." },
       { nama: "Pak Bima", teks: "Itu rasio satuan, yaitu rasio yang salah satu angkanya 1." },
@@ -155,6 +176,11 @@ const ADEGAN: AdeganRasio[] = [
     judul: "Adegan C1 · Dua Cara di Rak Buah",
     suara: "Sekarang kita belajar dua jenis rasio. Bagian dengan bagian, dan bagian dengan keseluruhan. Hati-hati, jangan tertukar!",
     figur: "buah",
+    gambar: {
+      src: "/doodle-mtk/mtk-6-bab2-buah.jpg",
+      alt: "Peti buah berisi 5 mangga dan 7 jambu.",
+      keterangan: "5 mangga dan 7 jambu. Seluruhnya 12 buah.",
+    },
     dialog: [
       { nama: "Pak Bima", teks: "Di rak ada 5 mangga dan 7 jambu." },
       { nama: "Rio", teks: "Mangga banding jambu = 5 : 7. Ini bagian : bagian." },
@@ -179,6 +205,11 @@ const ADEGAN: AdeganRasio[] = [
     judul: "Adegan C2 · Jadwal Penyiraman",
     suara: "Rasio juga dipakai untuk waktu dan kecepatan. Aturan utamanya: samakan satuan waktu dulu!",
     figur: "waktu",
+    gambar: {
+      src: "/doodle-mtk/mtk-6-bab2-waktu.jpg",
+      alt: "Pak Bima menyiram tanaman dengan dua pompa, sementara Lala melihat jam dan Rio memegang kalkulator.",
+      keterangan: "Dua pompa dan jam dinding. Satuan waktu disamakan dulu.",
+    },
     dialog: [
       { nama: "Lala", teks: "Pompa A menyala 20 menit, pompa B 50 menit. Rasionya 20 : 50!" },
       { nama: "Rio", teks: "Dibagi 10, jadi 2 : 5." },
@@ -732,6 +763,16 @@ function Papan({ anak }: { anak: string }) {
   );
 }
 
+function GambarAdegan({ src, alt, keterangan }: { src: string; alt: string; keterangan: string }) {
+  return (
+    <figure className="space-y-1">
+      {/* eslint-disable-next-line @next/next/no-img-element */}
+      <img src={src} alt={alt} className="w-full rounded-xl border border-slate-200 bg-white object-cover" />
+      <figcaption className="text-xs font-semibold leading-6 text-slate-600">{keterangan}</figcaption>
+    </figure>
+  );
+}
+
 function KepalaBagian({ ikon, judul, anak }: { ikon: string; judul: string; anak?: string }) {
   return (
     <div>
@@ -1178,6 +1219,7 @@ export default function Bab2RasioModule() {
           <section key={adegan.id} className="space-y-3 border-b-4 border-[#1C01A5] pb-8">
             <p className="text-xl font-black leading-snug text-[#1C01A5]">{adegan.judul}</p>
             <TombolVoiceMateriPai1 cuplikan={cuplikan(adegan.suara)} />
+            <GambarAdegan {...adegan.gambar} />
             <Figur jenis={adegan.figur} />
             <div className="space-y-2">
               {adegan.dialog.map((baris) => (
