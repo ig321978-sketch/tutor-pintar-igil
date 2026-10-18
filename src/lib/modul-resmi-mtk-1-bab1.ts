@@ -75,7 +75,7 @@ C) Bimo, selisih 4`,
   kartu: [
     {
       kode: "A",
-      judul: "A. Piknik Buah Rara dan Bimo",
+      judul: "Piknik Buah Rara dan Bimo",
       pengantar:
         "Rara dan Bimo piknik di taman bersama Igil si burung hantu. Mereka menghitung apel, jeruk, pisang, dan stroberi.",
       labelDaftar: "Cerita piknik dan menghitung buah",
