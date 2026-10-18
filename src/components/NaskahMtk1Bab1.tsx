@@ -6,6 +6,7 @@ import KartuPoinPenting from "@/components/KartuPoinPenting";
 import KuisAkhirAdegan from "@/components/KuisAkhirAdegan";
 import KuisTulisKartu from "@/components/KuisTulisKartu";
 import SoalRekamSuara from "@/components/SoalRekamSuara";
+import { NamaDialog } from "@/components/IkonDialogMtk1";
 import TujuanBelajar from "@/components/TujuanBelajar";
 import TombolVoiceMateriPai1 from "@/components/TombolVoiceMateriPai1";
 import { useKuisMateri } from "@/components/KuisMateriContext";
@@ -298,7 +299,7 @@ function JudulSubBab({
 function Dialog({ nama, warna, children }: { nama: string; warna: string; children: ReactNode }) {
   return (
     <article className={`rounded-2xl border-2 px-4 py-3 ${warna}`}>
-      <p className="text-xs font-black uppercase tracking-wide text-[#1C01A5]">{nama}</p>
+      <NamaDialog nama={nama} />
       <div className="mt-1 text-sm font-semibold leading-relaxed text-slate-700">{children}</div>
     </article>
   );
