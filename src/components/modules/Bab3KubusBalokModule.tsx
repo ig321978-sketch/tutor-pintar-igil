@@ -520,6 +520,23 @@ function hurufL() {
   }));
 }
 
+function hurufLDepan() {
+  const sisi = UKURAN_KUBUS;
+  const mentah = [
+    { nomor: "1", x: 0, y: 0, z: 0 },
+    { nomor: "2", x: sisi, y: 0, z: 0 },
+    { nomor: "3", x: sisi, y: -sisi, z: 0 },
+  ];
+  const tengahX = mentah.reduce((jumlah, kubus) => jumlah + kubus.x, 0) / mentah.length;
+  const tengahY = mentah.reduce((jumlah, kubus) => jumlah + kubus.y, 0) / mentah.length;
+  return mentah.map((kubus) => ({
+    nomor: kubus.nomor,
+    x: kubus.x - tengahX,
+    y: kubus.y - tengahY,
+    z: 0,
+  }));
+}
+
 function PanggungKubus({
   kubus,
   warna,
@@ -530,6 +547,7 @@ function PanggungKubus({
   awalDatar = 0,
   petunjuk = true,
   putarDatar = false,
+  tinggiKelas = "h-44",
 }: {
   kubus: { nomor: string; x: number; y: number; z?: number }[];
   warna: WarnaKubus;
@@ -540,6 +558,7 @@ function PanggungKubus({
   awalDatar?: number;
   petunjuk?: boolean;
   putarDatar?: boolean;
+  tinggiKelas?: string;
 }) {
   const [sudut, setSudut] = useState({ x: awal.x, y: awal.y, z: awalDatar });
   const [halus, setHalus] = useState(true);
@@ -576,13 +595,13 @@ function PanggungKubus({
 
   function keDatar(derajat: number) {
     setHalus(true);
-    setSudut({ x: -58, y: 18, z: derajat });
+    setSudut({ x: awal.x, y: awal.y, z: derajat });
   }
 
   return (
     <div>
       <div
-        className="relative mx-auto mt-2 h-44 w-full cursor-grab touch-none select-none active:cursor-grabbing"
+        className={`relative mx-auto mt-2 w-full cursor-grab touch-none select-none active:cursor-grabbing ${tinggiKelas}`}
         style={{ perspective: "760px" }}
         onPointerDown={mulaiTarik}
         onPointerMove={geserTarik}
@@ -596,7 +615,7 @@ function PanggungKubus({
           style={{
             transformStyle: "preserve-3d",
             transform: putarDatar
-              ? `rotateX(${sudut.x}deg) rotateY(${sudut.y}deg) rotateY(${sudut.z}deg)`
+              ? `rotateX(${sudut.x}deg) rotateY(${sudut.y}deg) rotateY(${-sudut.z}deg)`
               : `rotateX(${sudut.x}deg) rotateY(${sudut.y}deg)`,
             transition: halus ? "transform 0.7s ease" : "none",
           }}
@@ -607,7 +626,9 @@ function PanggungKubus({
               style={{
                 width: 148,
                 height: 148,
-                transform: `translate(-50%, -50%) translateY(${UKURAN_KUBUS / 2 + 1}px) rotateX(90deg)`,
+                transform: `translate(-50%, -50%) translateY(${
+                  kubus.reduce((terendah, item) => Math.max(terendah, item.y), 0) + UKURAN_KUBUS / 2 + 1
+                }px) rotateX(90deg)`,
               }}
             />
           ) : null}
@@ -641,7 +662,7 @@ function PanggungKubus({
       {putarDatar ? (
         <div className="mt-3">
           <p className={`text-center text-xs font-black ${kelasLabel}`}>
-            Putar datar {sudut.z}°{sudut.z === 360 ? " · sama dengan 0°" : ""}
+            Putar ke kanan {sudut.z}°{sudut.z === 360 ? " · sama dengan 0°" : ""}
           </p>
           <div className="mt-2 flex flex-wrap justify-center gap-1.5">
             {sudutDatar.map((derajat) => (
@@ -695,15 +716,18 @@ function MaterialVisualGraphic({ type }: { type: VisualSlide["visualComponentTyp
           <div className="rounded-2xl border-4 border-emerald-300 bg-white p-4">
             <p className="text-sm font-black text-emerald-800">Bentuk 2 · Huruf L</p>
             <PanggungKubus
-              aria="Huruf L dari tiga kubus. Geser untuk memutar, atau pilih sudut datar."
+              aria="Huruf L dari depan. Lantai 1 kubus 1 dan 2, lantai 2 kubus 3 di kanan. Putar ke kanan."
               warna={WARNA_L}
               kelasLabel="text-emerald-800"
               kelasTombol="bg-emerald-100 text-emerald-900"
-              awal={{ x: -46, y: 24 }}
+              awal={{ x: -10, y: 0 }}
+              tinggiKelas="h-56"
               putarDatar
-              kubus={hurufL()}
+              kubus={hurufLDepan()}
             />
-            <p className="mt-2 text-center text-sm font-bold text-slate-700">2 berjajar, 1 menempel menyiku</p>
+            <p className="mt-2 text-center text-sm font-bold text-slate-700">
+              Lantai 1: kubus 1 dan 2. Lantai 2: kubus 3 di kanan.
+            </p>
           </div>
         </div>
         <div className="mt-4 rounded-2xl border-4 border-emerald-400 bg-white p-4">
