@@ -529,6 +529,7 @@ function PanggungKubus({
   kelasTombol,
   awal = { x: -18, y: 28 },
   petunjuk = true,
+  putarDatar = false,
 }: {
   kubus: { nomor: string; x: number; y: number }[];
   warna: WarnaKubus;
@@ -537,10 +538,12 @@ function PanggungKubus({
   kelasTombol: string;
   awal?: { x: number; y: number };
   petunjuk?: boolean;
+  putarDatar?: boolean;
 }) {
-  const [sudut, setSudut] = useState(awal);
+  const [sudut, setSudut] = useState({ x: awal.x, y: awal.y, z: 0 });
   const [halus, setHalus] = useState(true);
-  const tarik = useRef<{ x: number; y: number; sx: number; sy: number } | null>(null);
+  const tarik = useRef<{ x: number; y: number; sx: number; sy: number; sz: number } | null>(null);
+  const sudutDatar = [0, 90, 180, 270, 360];
 
   function mulaiTarik(event: React.PointerEvent<HTMLDivElement>) {
     try {
@@ -549,7 +552,7 @@ function PanggungKubus({
       // Geser tetap jalan bila browser menolak tangkapan jari.
     }
     setHalus(false);
-    tarik.current = { x: event.clientX, y: event.clientY, sx: sudut.x, sy: sudut.y };
+    tarik.current = { x: event.clientX, y: event.clientY, sx: sudut.x, sy: sudut.y, sz: sudut.z };
   }
 
   function geserTarik(event: React.PointerEvent<HTMLDivElement>) {
@@ -557,6 +560,7 @@ function PanggungKubus({
     setSudut({
       x: Math.max(-85, Math.min(85, tarik.current.sx - (event.clientY - tarik.current.y) * 0.5)),
       y: tarik.current.sy + (event.clientX - tarik.current.x) * 0.55,
+      z: tarik.current.sz,
     });
   }
 
@@ -566,7 +570,12 @@ function PanggungKubus({
 
   function keSudut(x: number, y: number) {
     setHalus(true);
-    setSudut({ x, y });
+    setSudut((sekarang) => ({ ...sekarang, x, y }));
+  }
+
+  function keDatar(derajat: number) {
+    setHalus(true);
+    setSudut({ x: -70, y: 0, z: derajat });
   }
 
   return (
@@ -585,8 +594,8 @@ function PanggungKubus({
           className="absolute left-1/2 top-1/2 h-0 w-0"
           style={{
             transformStyle: "preserve-3d",
-            transform: `rotateX(${sudut.x}deg) rotateY(${sudut.y}deg)`,
-            transition: halus ? "transform 0.55s ease" : "none",
+            transform: `rotateX(${sudut.x}deg) rotateY(${sudut.y}deg) rotateZ(${sudut.z}deg)`,
+            transition: halus ? "transform 0.7s ease" : "none",
           }}
         >
           {kubus.map((item) => (
@@ -609,6 +618,27 @@ function PanggungKubus({
           Atas
         </button>
       </div>
+      {putarDatar ? (
+        <div className="mt-3">
+          <p className={`text-center text-xs font-black ${kelasLabel}`}>
+            Putar datar {sudut.z}°{sudut.z === 360 ? " · sama dengan 0°" : ""}
+          </p>
+          <div className="mt-2 flex flex-wrap justify-center gap-1.5">
+            {sudutDatar.map((derajat) => (
+              <button
+                key={derajat}
+                type="button"
+                onClick={() => keDatar(derajat)}
+                className={`rounded-full px-2.5 py-1 text-xs font-black ${kelasTombol} ${
+                  sudut.z === derajat ? "ring-2 ring-emerald-700" : ""
+                }`}
+              >
+                {derajat}°
+              </button>
+            ))}
+          </div>
+        </div>
+      ) : null}
     </div>
   );
 }
@@ -645,11 +675,12 @@ function MaterialVisualGraphic({ type }: { type: VisualSlide["visualComponentTyp
           <div className="rounded-2xl border-4 border-emerald-300 bg-white p-4">
             <p className="text-sm font-black text-emerald-800">Bentuk 2 · Huruf L</p>
             <PanggungKubus
-              aria="Huruf L dari tiga kubus. Geser untuk memutar."
+              aria="Huruf L dari tiga kubus. Geser untuk memutar, atau pilih sudut datar."
               warna={WARNA_L}
               kelasLabel="text-emerald-800"
               kelasTombol="bg-emerald-100 text-emerald-900"
               awal={{ x: -28, y: 36 }}
+              putarDatar
               kubus={hurufL(false)}
             />
             <p className="mt-2 text-center text-sm font-bold text-slate-700">2 berjajar, 1 menempel menyiku</p>
