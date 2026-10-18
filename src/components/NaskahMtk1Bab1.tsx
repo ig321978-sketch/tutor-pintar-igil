@@ -868,7 +868,7 @@ export default function NaskahMtk1Bab1({
             "Membandingkan dua kelompok: lebih banyak, lebih sedikit, atau sama banyak.",
           ]}
         />
-        <h5 className="mt-5 text-center text-base font-black tracking-wide text-[#1C01A5] sm:text-lg">
+        <h5 className="mt-5 text-left text-base font-black tracking-wide text-[#1C01A5] sm:text-lg">
           Sub-Bab 1: Menghitung, membaca dan menulis bilangan
         </h5>
         <div className="mt-4 space-y-3">
