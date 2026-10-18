@@ -980,17 +980,17 @@ function BentukSegaris3D() {
 function MaterialVisualGraphic({ type }: { type: VisualSlide["visualComponentType"] }) {
   if (type === "kontainer_isometric") {
     return (
-      <div className="rounded-3xl border-4 border-amber-300 bg-amber-50 p-4 sm:p-5">
-        <p className="text-center text-sm font-black text-amber-950">
+      <div className="space-y-4">
+        <p className="rounded-2xl border border-amber-300 bg-amber-50 px-3 py-3 text-center text-sm font-black text-amber-950">
           3 kubus yang menempel sisi penuh hanya punya 2 bentuk. Diputar tetap bentuk yang sama.
         </p>
-        <div className="mt-4 grid grid-cols-1 gap-4 md:grid-cols-2">
-          <div className="rounded-2xl border-4 border-sky-300 bg-white p-4">
+        <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
+          <div>
             <p className="text-sm font-black text-sky-800">Bentuk 1 · Segaris</p>
             <BentukSegaris3D />
             <p className="mt-2 text-center text-sm font-bold text-slate-700">3 × 1 × 1 · memanjang lurus</p>
           </div>
-          <div className="rounded-2xl border-4 border-emerald-300 bg-white p-4">
+          <div>
             <p className="text-sm font-black text-emerald-800">Bentuk 2 · Huruf L</p>
             <PanggungKubus
               aria="Huruf L dari depan. Lantai 1 kubus 1 dan 2, lantai 2 kubus 3 di kiri."
@@ -1013,20 +1013,18 @@ function MaterialVisualGraphic({ type }: { type: VisualSlide["visualComponentTyp
 
   if (type === "lapis_breakdown") {
     return (
-      <div className="rounded-3xl border-4 border-sky-300 bg-sky-50 p-4 sm:p-5">
-        <p className="text-center text-sm font-black text-sky-950">
+      <div className="space-y-4">
+        <p className="rounded-2xl border border-sky-300 bg-sky-50 px-3 py-3 text-center text-sm font-black text-sky-950">
           Kubus di atas tidak bisa melayang. Yang tertutup di bawah tetap dihitung.
         </p>
-        <div className="mt-4">
-          <div className="rounded-2xl border-4 border-sky-300 bg-white p-4">
-            <p className="text-sm font-black text-sky-800">Bongkar dan pasang delapan kubus</p>
-            <TumpukanBongkar />
-            <p className="mt-2 text-center text-sm font-bold text-slate-700">
-              Dari depan, kiri ke kanan. Lantai 1: 1-2-3. Lantai 2: 4-5-6. Lantai 3: 7-8.
-            </p>
-          </div>
+        <div>
+          <p className="text-sm font-black text-sky-800">Bongkar dan pasang delapan kubus</p>
+          <TumpukanBongkar />
+          <p className="mt-2 text-center text-sm font-bold text-slate-700">
+            Dari depan, kiri ke kanan. Lantai 1: 1-2-3. Lantai 2: 4-5-6. Lantai 3: 7-8.
+          </p>
         </div>
-        <div className="mt-4 flex flex-wrap items-center justify-center gap-2 rounded-2xl bg-emerald-500 px-4 py-3 text-white">
+        <div className="flex flex-wrap items-center justify-center gap-2 rounded-2xl bg-emerald-500 px-3 py-3 text-white">
           <span className="rounded-xl bg-white/20 px-3 py-1 text-lg font-black">3</span>
           <span className="text-2xl font-black">+</span>
           <span className="rounded-xl bg-white/20 px-3 py-1 text-lg font-black">3</span>
@@ -1048,11 +1046,11 @@ function MaterialVisualGraphic({ type }: { type: VisualSlide["visualComponentTyp
       </div>
     );
     return (
-      <div className="rounded-3xl border-4 border-violet-300 bg-violet-50 p-4 sm:p-5">
-        <p className="text-center text-sm font-black text-violet-950">
+      <div className="space-y-4">
+        <p className="rounded-2xl border border-violet-300 bg-violet-50 px-3 py-3 text-center text-sm font-black text-violet-950">
           Satu bangunan, tiga gambar. Angka di peta adalah tinggi menara.
         </p>
-        <div className="mx-auto mt-4 w-fit rounded-2xl border-4 border-slate-300 bg-white p-4">
+        <div className="mx-auto w-fit">
           <p className="mb-2 text-center text-xs font-black text-slate-600">Peta tinggi · depan ada di bawah</p>
           <div className="grid grid-cols-[4.5rem_3.5rem_3.5rem] gap-1 text-center text-sm font-black">
             <div />
@@ -1067,8 +1065,8 @@ function MaterialVisualGraphic({ type }: { type: VisualSlide["visualComponentTyp
           </div>
           <p className="mt-2 text-center text-xs font-bold text-slate-600">Jumlah kubus = 3 + 1 + 1 + 2 = 7</p>
         </div>
-        <div className="mt-4 grid grid-cols-1 gap-3 md:grid-cols-3">
-          <div className="rounded-2xl border-4 border-amber-300 bg-white p-3 text-center">
+        <div className="grid grid-cols-1 gap-4 md:grid-cols-3">
+          <div className="text-center">
             <p className="text-sm font-black text-amber-800">Tampak atas</p>
             <div className="mx-auto mt-3 grid w-fit grid-cols-2 gap-1">
               <div className="h-10 w-10 rounded-md border-4 border-amber-600 bg-amber-300" />
@@ -1078,7 +1076,7 @@ function MaterialVisualGraphic({ type }: { type: VisualSlide["visualComponentTyp
             </div>
             <p className="mt-2 text-xs font-bold text-slate-700">4 petak terisi. Tinggi tidak kelihatan.</p>
           </div>
-          <div className="rounded-2xl border-4 border-sky-300 bg-white p-3 text-center">
+          <div className="text-center">
             <p className="text-sm font-black text-sky-800">Tampak depan</p>
             <div className="mt-3 flex items-end justify-center gap-2">
               <div>
@@ -1092,7 +1090,7 @@ function MaterialVisualGraphic({ type }: { type: VisualSlide["visualComponentTyp
             </div>
             <p className="mt-2 text-xs font-bold text-slate-700">Kiri: max(1, 3) = 3. Kanan: max(2, 1) = 2.</p>
           </div>
-          <div className="rounded-2xl border-4 border-emerald-300 bg-white p-3 text-center">
+          <div className="text-center">
             <p className="text-sm font-black text-emerald-800">Tampak samping</p>
             <div className="mt-3 flex items-end justify-center gap-2">
               <div>
@@ -1118,12 +1116,12 @@ function MaterialVisualGraphic({ type }: { type: VisualSlide["visualComponentTyp
   const baris = [4, 3, 2, 1];
   const langkah = new Set(["A1", "B1", "C1", "C2", "C3"]);
   return (
-    <div className="rounded-3xl border-4 border-emerald-300 bg-emerald-50 p-4 sm:p-5">
-      <p className="text-center text-sm font-black text-emerald-950">
+    <div className="space-y-4">
+      <p className="rounded-2xl border border-emerald-300 bg-emerald-50 px-3 py-3 text-center text-sm font-black text-emerald-950">
         Tulis kolom dulu, baru baris. Jalan menyusuri petak, jangan menyerong.
       </p>
-      <div className="mt-4 grid grid-cols-1 items-center gap-4 lg:grid-cols-[auto_1fr]">
-        <div className="mx-auto rounded-2xl border-4 border-slate-300 bg-white p-4">
+      <div className="grid grid-cols-1 items-center gap-4 lg:grid-cols-[auto_1fr]">
+        <div className="mx-auto">
           <div className="grid grid-cols-[2rem_repeat(4,3.25rem)] gap-1 text-center text-sm font-black">
             <div />
             {kolom.map((huruf) => (
@@ -1158,12 +1156,12 @@ function MaterialVisualGraphic({ type }: { type: VisualSlide["visualComponentTyp
           <p className="text-center text-xs font-bold text-emerald-700">1 2 3 4 naik ke atas · baris, tulis kedua</p>
         </div>
         <div className="space-y-3">
-          <div className="rounded-2xl border-4 border-amber-300 bg-white p-4">
+          <div className="rounded-2xl border border-amber-300 bg-amber-50 px-3 py-3">
             <p className="text-sm font-black text-amber-800">Cara menulis</p>
             <p className="mt-1 text-2xl font-black text-slate-900">(C, 4)</p>
             <p className="text-sm font-bold text-slate-700">Kolom C, lalu baris 4. Bukan (4, C).</p>
           </div>
-          <div className="rounded-2xl border-4 border-emerald-300 bg-white p-4">
+          <div className="rounded-2xl border border-emerald-300 bg-emerald-50 px-3 py-3">
             <p className="text-sm font-black text-emerald-800">Jalur hijau: (A, 1) ke (C, 3)</p>
             <p className="mt-1 text-sm font-bold text-slate-700">2 petak ke kanan + 2 petak ke atas</p>
             <p className="mt-2 text-2xl font-black text-emerald-700">2 + 2 = 4 langkah</p>
@@ -1545,7 +1543,7 @@ export default function Bab3KubusBalokModule() {
               return (
                 <div className="space-y-6">
                   {/* Header Sub-Bab */}
-                  <div className="bg-white rounded-2xl p-6 border border-slate-200 shadow-sm flex flex-col md:flex-row md:items-center justify-between gap-4">
+                  <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
                     <div>
                       <span className="text-xs font-extrabold text-indigo-700 bg-indigo-50 px-3 py-1 rounded-full uppercase">
                         {current.code} • Belajar Mandiri Terarah
@@ -1562,49 +1560,46 @@ export default function Bab3KubusBalokModule() {
                   </div>
 
                   {/* Kartu-Kartu Slide Materi Bergambar */}
-                  <div className="grid grid-cols-1 gap-6">
+                  <div className="space-y-8">
                     {current.slides.map((slide, sIdx) => (
-                      <div key={sIdx} className="bg-white rounded-2xl border border-indigo-100 p-6 shadow-sm space-y-4">
-                        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 border-b border-slate-100 pb-3">
-                          <div>
-                            <span className="text-[11px] font-black uppercase text-indigo-600 bg-indigo-50 px-2.5 py-1 rounded-md">
-                              {slide.badge}
-                            </span>
-                            <h3 className="text-lg font-extrabold text-slate-800 mt-1.5">{slide.title}</h3>
-                          </div>
+                      <section
+                        key={sIdx}
+                        className={sIdx === 0 ? "space-y-4" : "space-y-4 border-t border-slate-200 pt-8"}
+                      >
+                        <div>
+                          <span className="text-[11px] font-black uppercase text-indigo-600 bg-indigo-50 px-2.5 py-1 rounded-md">
+                            {slide.badge}
+                          </span>
+                          <h3 className="text-lg font-extrabold text-slate-800 mt-1.5">{slide.title}</h3>
                         </div>
 
-                        <p className="text-slate-700 text-sm leading-relaxed">{slide.explanation}</p>
+                        <p className="text-base leading-relaxed text-slate-700">{slide.explanation}</p>
 
-                        {/* Komponen Visualisasi SVG / Diagram */}
                         <MaterialVisualGraphic type={slide.visualComponentType} />
 
-                        {/* Poin Kunci Belajar Mandiri */}
-                        <div className="bg-slate-50 rounded-xl p-4 border border-slate-200">
-                          <div className="text-xs font-extrabold text-slate-700 uppercase tracking-wider mb-2">
-                            🎯 Rangkuman Konsep Penting:
+                        <div className="rounded-2xl border border-slate-200 bg-white px-3 py-3">
+                          <div className="mb-2 text-xs font-extrabold uppercase tracking-wider text-slate-700">
+                            Rangkuman konsep penting
                           </div>
                           <ul className="space-y-2">
                             {slide.keyTakeaways.map((point, pIdx) => (
-                              <li key={pIdx} className="text-xs text-slate-700 flex items-start gap-2">
-                                <span className="text-emerald-600 font-bold">✔</span>
+                              <li key={pIdx} className="flex items-start gap-2 text-sm text-slate-700">
+                                <span className="font-bold text-emerald-600">✔</span>
                                 <span>{point}</span>
                               </li>
                             ))}
                           </ul>
                         </div>
 
-                        {/* Jebakan / Miskonsepsi Siswa */}
-                        <div className="bg-rose-50 border border-rose-200 text-rose-900 px-4 py-2.5 rounded-xl text-xs font-bold">
+                        <div className="rounded-2xl border border-rose-200 bg-rose-50 px-3 py-3 text-sm font-bold text-rose-900">
                           {slide.commonTrap}
                         </div>
-                      </div>
+                      </section>
                     ))}
                   </div>
 
-                  {/* Kamus Istilah Bergambar */}
-                  <div className="bg-white rounded-2xl border border-slate-200 p-6">
-                    <h4 className="font-extrabold text-slate-800 text-base mb-3 flex items-center gap-2">
+                  <div>
+                    <h4 className="mb-3 flex items-center gap-2 text-base font-extrabold text-slate-800">
                       <span>📖</span> Kamus Cilik Bab 3 (Ingat Kata Kunci Ini!)
                     </h4>
                     <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
