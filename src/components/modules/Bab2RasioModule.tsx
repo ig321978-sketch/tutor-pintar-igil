@@ -442,23 +442,12 @@ function generateDynamicQuestionsRasio(seed: number): QuestionItemRasio[] {
 function VisualDoodleRasio({ type }: { type: VisualSlideRasio["visualType"] }) {
   if (type === "konsep_sirup") {
     return (
-      <div className="bg-amber-50/80 border-2 border-amber-200 rounded-3xl p-5 shadow-sm">
-        <div className="flex items-center justify-between border-b border-amber-200 pb-2 mb-4">
-          <span className="text-xs font-black uppercase text-amber-800 tracking-wider flex items-center gap-1.5">
-            <span>🎨</span> Sketsa Doodle: Resep Manis Es Sirup (Rasio 2 : 5)
-          </span>
-          <span className="text-[11px] font-bold bg-amber-200 text-amber-900 px-2.5 py-0.5 rounded-full">
-            Eksplorasi 2.1 & 2.2
-          </span>
-        </div>
-
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 items-center">
-          {/* Ilustrasi Gelas Takaran */}
-          <div className="bg-white p-4 rounded-2xl border-2 border-rose-100 flex flex-col items-center">
-            <span className="text-xs font-extrabold text-rose-700 bg-rose-50 px-3 py-1 rounded-full mb-2">
-              Takaran Campuran Minuman
-            </span>
-            <svg viewBox="0 0 220 110" className="w-full max-w-[210px] h-auto">
+      <figure className="w-full space-y-3">
+        <figcaption className="text-sm font-black uppercase tracking-wider text-amber-800">
+          Sketsa: resep manis es sirup, rasio 2 : 5
+        </figcaption>
+        <div className="flex w-full flex-col items-center">
+            <svg viewBox="0 0 220 110" className="h-auto w-full">
               {/* Wadah Sirup Merah (2 Cangkir) */}
               <g transform="translate(20, 20)">
                 <rect x="0" y="20" width="35" height="45" rx="4" fill="#f43f5e" stroke="#9f1239" strokeWidth="2" />
@@ -479,103 +468,63 @@ function VisualDoodleRasio({ type }: { type: VisualSlideRasio["visualType"] }) {
                 <text x="36" y="58" textAnchor="middle" fill="#0284c7" fontSize="10" fontWeight="bold">5 Cangkir Air</text>
               </g>
             </svg>
-            <div className="mt-2 text-center text-[11px] font-bold text-slate-700">
-              Rasio Sirup terhadap Air = <span className="text-rose-600 font-black">2 : 5</span>
-            </div>
-          </div>
-
-          {/* Analisis Bagian terhadap Total */}
-          <div className="bg-white p-4 rounded-2xl border-2 border-indigo-100 flex flex-col justify-center space-y-2.5">
-            <div className="bg-indigo-50 p-2.5 rounded-xl border border-indigo-200">
-              <div className="text-[11px] font-extrabold text-indigo-800">1. Bagian terhadap Bagian:</div>
-              <div className="text-xs text-slate-700 mt-0.5">Sirup : Air = <strong>2 : 5</strong></div>
-            </div>
-            <div className="bg-emerald-50 p-2.5 rounded-xl border border-emerald-200">
-              <div className="text-[11px] font-extrabold text-emerald-800">2. Bagian terhadap Total:</div>
-              <div className="text-xs text-slate-700 mt-0.5">Sirup : Total Campuran = 2 : (2 + 5) = <strong>2 : 7</strong></div>
-            </div>
-            <p className="text-[10px] text-slate-500 italic text-center">
-              *Rasa manis yang pas tercipta dari perbandingan yang tepat!
+            <p className="mt-2 text-center text-base font-bold text-slate-700">
+              Rasio sirup terhadap air = <span className="font-black text-rose-600">2 : 5</span>
             </p>
-          </div>
         </div>
-      </div>
+      </figure>
     );
   }
 
   if (type === "tabel_ekuivalen") {
     return (
-      <div className="bg-indigo-50/80 border-2 border-indigo-200 rounded-3xl p-5 shadow-sm">
-        <div className="flex items-center justify-between border-b border-indigo-200 pb-2 mb-4">
-          <span className="text-xs font-black uppercase text-indigo-900 tracking-wider flex items-center gap-1.5">
-            <span>📊</span> Sketsa Doodle: Melipatgandakan Resep Bolu (Rasio Ekuivalen)
-          </span>
-          <span className="text-[11px] font-bold bg-indigo-200 text-indigo-900 px-2.5 py-0.5 rounded-full">
-            Eksplorasi 2.3 & 2.4
-          </span>
-        </div>
-
-        <div className="flex flex-col sm:flex-row items-center justify-around gap-4 bg-white p-4 rounded-2xl border-2 border-slate-200">
+      <figure className="w-full space-y-3">
+        <figcaption className="text-sm font-black uppercase tracking-wider text-indigo-900">
+          Sketsa: melipatgandakan resep bolu
+        </figcaption>
+        <div className="flex w-full flex-col items-center justify-between gap-4 sm:flex-row">
           <div className="text-center">
-            <span className="text-xs font-extrabold text-slate-500 uppercase">Resep Dasar (1 Loyang)</span>
-            <div className="text-xl font-black text-indigo-700 mt-1">2 : 3</div>
-            <div className="text-[11px] text-slate-600">(2 Terigu : 3 Telur)</div>
+            <span className="text-sm font-extrabold uppercase text-slate-500">Resep dasar (1 loyang)</span>
+            <div className="mt-1 text-3xl font-black text-indigo-700">2 : 3</div>
+            <div className="text-base text-slate-600">2 terigu : 3 telur</div>
           </div>
-
-          <div className="text-center font-black text-amber-500 text-sm">
-            dikali 3 ➔<br />
-            <span className="text-[10px] text-slate-400 font-semibold">(faktor pengali sama)</span>
+          <div className="text-center text-base font-black text-amber-500">
+            dikali 3
+            <div className="text-sm font-semibold text-slate-500">faktor pengali sama</div>
           </div>
-
-          <div className="text-center bg-indigo-600 text-white p-3 rounded-xl shadow-md min-w-[120px]">
-            <span className="text-[10px] font-extrabold uppercase opacity-90">Resep Pesta (3 Loyang)</span>
-            <div className="text-2xl font-black mt-0.5">6 : 9</div>
-            <div className="text-[10px] opacity-85">(6 Terigu : 9 Telur)</div>
+          <div className="text-center">
+            <span className="text-sm font-extrabold uppercase text-indigo-700">Resep pesta (3 loyang)</span>
+            <div className="mt-1 text-3xl font-black text-indigo-700">6 : 9</div>
+            <div className="text-base text-slate-600">6 terigu : 9 telur</div>
           </div>
         </div>
-      </div>
+      </figure>
     );
   }
 
   // Unit Rate Belanja
   return (
-    <div className="bg-emerald-50/80 border-2 border-emerald-200 rounded-3xl p-5 shadow-sm">
-      <div className="flex items-center justify-between border-b border-emerald-200 pb-2 mb-4">
-        <span className="text-xs font-black uppercase text-emerald-900 tracking-wider flex items-center gap-1.5">
-          <span>🏷️</span> Sketsa Doodle: Membandingkan Harga Satuan (Unit Rate)
-        </span>
-        <span className="text-[11px] font-bold bg-emerald-200 text-emerald-900 px-2.5 py-0.5 rounded-full">
-          Eksplorasi 2.5
-        </span>
-      </div>
-
-      <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-        {/* Pilihan A */}
-        <div className="bg-white p-4 rounded-2xl border-2 border-slate-300 text-center">
-          <span className="text-xs font-extrabold text-slate-600 bg-slate-100 px-3 py-1 rounded-full">
-            Paket Hemat (3 kg)
-          </span>
-          <div className="text-2xl font-black text-slate-800 my-2">Rp45.000</div>
-          <div className="text-xs font-bold text-slate-600 border-t border-slate-100 pt-2">
-            Rp45.000 ÷ 3 = <span className="text-rose-600 font-black">Rp15.000 / kg</span>
+    <figure className="w-full space-y-3">
+      <figcaption className="text-sm font-black uppercase tracking-wider text-emerald-900">
+        Sketsa: membandingkan harga satuan
+      </figcaption>
+      <div className="grid w-full grid-cols-1 gap-4">
+        <div className="w-full rounded-2xl border border-slate-300 bg-white px-5 py-4 text-center md:px-6">
+          <div className="text-base font-extrabold text-slate-600">Paket Hemat (3 kg)</div>
+          <div className="my-2 text-3xl font-black text-slate-800">Rp45.000</div>
+          <div className="border-t border-slate-100 pt-2 text-base font-bold text-slate-600">
+            Rp45.000 ÷ 3 = <span className="font-black text-rose-600">Rp15.000 / kg</span>
           </div>
         </div>
-
-        {/* Pilihan B */}
-        <div className="bg-white p-4 rounded-2xl border-2 border-emerald-400 text-center relative shadow-sm">
-          <div className="absolute -top-2.5 right-3 bg-amber-400 text-slate-900 text-[10px] font-black px-2 py-0.5 rounded-full uppercase">
-            Paling Hemat!
-          </div>
-          <span className="text-xs font-extrabold text-emerald-700 bg-emerald-50 px-3 py-1 rounded-full">
-            Paket Jumbo (5 kg)
-          </span>
-          <div className="text-2xl font-black text-slate-800 my-2">Rp70.000</div>
-          <div className="text-xs font-bold text-slate-600 border-t border-slate-100 pt-2">
-            Rp70.000 ÷ 5 = <span className="text-emerald-600 font-black">Rp14.000 / kg</span>
+        <div className="w-full rounded-2xl border border-emerald-400 bg-white px-5 py-4 text-center md:px-6">
+          <div className="text-base font-extrabold text-emerald-700">Paket Jumbo (5 kg) · paling hemat</div>
+          <div className="my-2 text-3xl font-black text-slate-800">Rp70.000</div>
+          <div className="border-t border-slate-100 pt-2 text-base font-bold text-slate-600">
+            Rp70.000 ÷ 5 = <span className="font-black text-emerald-600">Rp14.000 / kg</span>
           </div>
         </div>
       </div>
-    </div>
+    </figure>
   );
 }
 
@@ -692,7 +641,7 @@ export default function Bab2RasioModule() {
     <div className="min-h-screen bg-slate-50 text-slate-800 pb-16">
       {/* HEADER UTAMA & STATUS TOKEN */}
       <header className="bg-gradient-to-r from-emerald-700 via-teal-700 to-indigo-800 text-white shadow-lg sticky top-0 z-30">
-        <div className="max-w-6xl mx-auto px-4 py-4 flex flex-col md:flex-row md:items-center md:justify-between gap-4">
+        <div className="flex w-full flex-col gap-4 px-2 py-4 sm:px-4 md:flex-row md:items-center md:justify-between">
           <div>
             <div className="flex items-center gap-2 text-xs font-semibold uppercase tracking-wider bg-emerald-950/40 px-3 py-1 rounded-full w-fit mb-1">
               <span>Kurikulum Merdeka • Fase C</span>
@@ -721,7 +670,7 @@ export default function Bab2RasioModule() {
         </div>
 
         {/* NAVIGASI TAB */}
-        <div className="max-w-6xl mx-auto px-4 flex overflow-x-auto gap-1 border-t border-emerald-500/30 pt-2 pb-2">
+        <div className="flex w-full gap-1 overflow-x-auto border-t border-emerald-500/30 px-2 pb-2 pt-2 sm:px-4">
           {[
             { id: "pemanasan", label: "🧠 1. Aktivasi Otak" },
             { id: "materi", label: "📖 2. Eksplorasi Materi" },
@@ -745,34 +694,34 @@ export default function Bab2RasioModule() {
         </div>
       </header>
 
-      <main className="max-w-6xl mx-auto px-4 mt-6">
+      <main className="mt-6 w-full px-2 sm:px-4">
         {/* ================================================================
             TAB 1: AKTIVASI OTAK (BRAIN ACTIVATION: IRAMA RASIO 1 : 2)
         ================================================================ */}
         {activeTab === "pemanasan" && (
-          <div className="bg-white rounded-2xl shadow-md border border-emerald-100 p-6 md:p-8">
-            <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-4 pb-6 border-b border-slate-100">
+          <div className="space-y-6">
+            <div className="flex flex-col items-start justify-between gap-4 md:flex-row md:items-center">
               <div>
-                <span className="text-xs font-bold uppercase tracking-wider text-emerald-700 bg-emerald-50 px-3 py-1 rounded-full">
+                <span className="rounded-full bg-emerald-50 px-3 py-1 text-xs font-bold uppercase tracking-wider text-emerald-700">
                   Brain Activation • Irama Bilateral
                 </span>
-                <h2 className="text-2xl font-extrabold text-slate-800 mt-2">
+                <h2 className="mt-2 text-2xl font-extrabold text-slate-800">
                   Senam Irama Rasio: 1 Ketukan Kiri Berbanding 2 Ketukan Kanan!
                 </h2>
-                <p className="text-slate-600 text-sm mt-1">
+                <p className="mt-1 text-base leading-relaxed text-slate-600">
                   Aktifkan koordinasi belahan otak kiri dan kananmu dengan menyamakan rasio ritme ketukan:{" "}
                   <strong>1 Ketukan Biru (Kiri) : 2 Ketukan Hijau (Kanan)</strong>.
                 </p>
               </div>
-              <div className="bg-emerald-50 px-4 py-3 rounded-xl text-center min-w-[150px]">
-                <div className="text-xs font-bold text-emerald-700 uppercase">Focus Meter</div>
+              <div className="text-center">
+                <div className="text-xs font-bold uppercase text-emerald-700">Focus Meter</div>
                 <div className="text-2xl font-black text-emerald-800">
                   {Math.min(100, Math.round((rhythmClicks / 6) * 100))}%
                 </div>
               </div>
             </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center mt-6">
+            <div className="grid grid-cols-1 items-center gap-8">
               <div className="bg-slate-900 rounded-3xl p-6 flex flex-col items-center justify-center min-h-[260px] text-white">
                 <div className="text-xs font-bold uppercase text-amber-400 mb-4">
                   Ketuk Tombol Bergantian Mengikuti Rasio 1 : 2
@@ -810,12 +759,12 @@ export default function Bab2RasioModule() {
                 </div>
               </div>
 
-              <div className="space-y-4">
-                <div className="bg-amber-50 border border-amber-200 rounded-xl p-4">
-                  <h3 className="font-bold text-amber-900 text-base">
-                    💡 Mengapa Kita Memainkan Ritme Ini?
+              <div className="w-full space-y-4">
+                <div className="w-full rounded-2xl border border-amber-200 bg-amber-50 px-5 py-4 md:px-6 md:py-5">
+                  <h3 className="text-lg font-bold text-amber-900">
+                    Mengapa Kita Memainkan Ritme Ini?
                   </h3>
-                  <p className="text-amber-800 text-sm mt-1 leading-relaxed">
+                  <p className="mt-2 text-base leading-relaxed text-amber-800">
                     Saat tangan kiri dan kanan bergerak dalam perbandingan proporsional (1 : 2), otak kecilmu menyinkronkan ritme motorik dengan pemahaman konsep perbandingan di dalam matematika.
                   </p>
                 </div>
@@ -852,20 +801,20 @@ export default function Bab2RasioModule() {
         ================================================================ */}
         {activeTab === "materi" && (
           <div className="space-y-6">
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-3">
+            <div className="grid w-full grid-cols-1 gap-3">
               {BAB2_MATERIALS.map((sub, idx) => (
                 <button
                   key={sub.id}
                   onClick={() => setSelectedSubBab(idx)}
-                  className={`p-4 rounded-2xl border text-left transition ${
+                  className={`w-full rounded-2xl border px-5 py-4 text-left transition md:px-6 ${
                     selectedSubBab === idx
-                      ? "bg-emerald-700 text-white border-emerald-700 shadow-lg scale-[1.01]"
+                      ? "bg-emerald-700 text-white border-emerald-700"
                       : "bg-white text-slate-700 border-slate-200 hover:border-emerald-300"
                   }`}
                 >
-                  <div className="text-[11px] font-extrabold uppercase tracking-wider opacity-80">{sub.code}</div>
-                  <div className="font-extrabold text-base mt-0.5">{sub.title}</div>
-                  <div className="text-xs opacity-85 mt-1 line-clamp-1">{sub.subtitle}</div>
+                  <div className="text-sm font-extrabold uppercase tracking-wider opacity-80">{sub.code}</div>
+                  <div className="mt-0.5 text-lg font-extrabold">{sub.title}</div>
+                  <div className="mt-1 text-base leading-relaxed opacity-85">{sub.subtitle}</div>
                 </button>
               ))}
             </div>
@@ -875,99 +824,82 @@ export default function Bab2RasioModule() {
               return (
                 <div className="space-y-6">
                   {/* Kisah Pemantik Kurikulum Merdeka */}
-                  <div className="bg-gradient-to-r from-amber-50 to-orange-50 border border-amber-200 rounded-2xl p-6 shadow-sm">
-                    <div className="flex items-start gap-4">
-                      <div className="text-4xl bg-white p-3 rounded-2xl shadow-sm">{current.storyHook.avatar}</div>
-                      <div>
-                        <div className="text-xs font-extrabold uppercase text-amber-800 tracking-wider">
-                          Kisah Pemantik • {current.storyHook.character}
-                        </div>
-                        <p className="text-slate-700 mt-1 text-base leading-relaxed">{current.storyHook.dialogue}</p>
-                        <div className="mt-3 bg-white/90 border border-amber-300 rounded-xl px-4 py-2.5 text-sm font-bold text-amber-900">
-                          ❓ Pertanyaan Pemantik: {current.storyHook.question}
-                        </div>
+                  <div className="space-y-4">
+                    <div className="w-full">
+                      <div className="text-base font-extrabold uppercase tracking-wider text-amber-800">
+                        {current.storyHook.avatar} Kisah Pemantik • {current.storyHook.character}
                       </div>
+                      <p className="mt-2 w-full text-base leading-relaxed text-slate-700">{current.storyHook.dialogue}</p>
+                    </div>
+                    <div className="w-full rounded-2xl border border-amber-300 bg-amber-50 px-5 py-4 text-base font-bold leading-relaxed text-amber-900 md:px-6 md:py-5">
+                      Pertanyaan pemantik: {current.storyHook.question}
                     </div>
                   </div>
 
                   {/* Slide-Slide Visual Bertahap */}
                   <div className="grid grid-cols-1 gap-6">
                     {current.slides.map((slide, sIdx) => (
-                      <div key={sIdx} className="bg-white rounded-2xl border border-emerald-100 p-6 shadow-sm space-y-4">
-                        <div className="border-b border-slate-100 pb-3">
-                          <span className="text-[11px] font-black uppercase text-emerald-700 bg-emerald-50 px-2.5 py-1 rounded-md">
+                      <section key={sIdx} className="space-y-4 border-t border-slate-200 pt-6">
+                        <div>
+                          <span className="rounded-md bg-emerald-50 px-2.5 py-1 text-sm font-black uppercase text-emerald-700">
                             {slide.badge}
                           </span>
-                          <h3 className="text-lg font-extrabold text-slate-800 mt-1.5">{slide.title}</h3>
+                          <h3 className="mt-1.5 text-xl font-extrabold text-slate-800">{slide.title}</h3>
                         </div>
 
-                        <p className="text-slate-700 text-sm leading-relaxed">{slide.explanation}</p>
+                        <p className="text-base leading-relaxed text-slate-700">{slide.explanation}</p>
 
-                        {/* Komponen Grafis Vektor Doodle */}
                         <VisualDoodleRasio type={slide.visualType} />
 
-                        {/* Poin Kunci Belajar Mandiri */}
-                        <div className="bg-slate-50 rounded-xl p-4 border border-slate-200">
-                          <div className="text-xs font-extrabold text-slate-700 uppercase tracking-wider mb-2">
-                            🎯 Rangkuman Konsep Penting:
+                        <div className="w-full rounded-2xl border border-slate-200 bg-slate-50 px-5 py-4 md:px-6 md:py-5">
+                          <div className="mb-3 text-base font-extrabold uppercase tracking-wider text-slate-700">
+                            Rangkuman konsep penting
                           </div>
-                          <ul className="space-y-2">
+                          <ul className="space-y-3">
                             {slide.keyTakeaways.map((point, pIdx) => (
-                              <li key={pIdx} className="text-xs text-slate-700 flex items-start gap-2">
-                                <span className="text-emerald-600 font-bold">✔</span>
+                              <li key={pIdx} className="flex items-start gap-2 text-base leading-relaxed text-slate-700">
+                                <span className="font-bold text-emerald-600">✔</span>
                                 <span>{point}</span>
                               </li>
                             ))}
                           </ul>
                         </div>
 
-                        {/* Peringatan Jebakan Belajar Mandiri */}
-                        <div className="bg-rose-50 border border-rose-200 text-rose-900 px-4 py-2.5 rounded-xl text-xs font-bold">
+                        <div className="w-full rounded-2xl border border-rose-200 bg-rose-50 px-5 py-4 text-base font-bold leading-relaxed text-rose-900 md:px-6 md:py-5">
                           {slide.commonTrap}
                         </div>
-                      </div>
+                      </section>
                     ))}
                   </div>
 
                   {/* Kamus Cilik & Panduan Luring */}
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                    <div className="bg-white rounded-2xl border border-slate-200 p-6">
-                      <h4 className="font-extrabold text-slate-800 text-base mb-3">📚 Kamus Cilik Rasio</h4>
-                      <div className="space-y-3">
-                        {current.kamusCilik.map((k, kIdx) => (
-                          <div key={kIdx} className="border-b border-slate-100 pb-2 last:border-0 flex items-start gap-2">
-                            <span className="text-xl">{k.ikon}</span>
-                            <div>
-                              <span className="font-bold text-emerald-800 text-sm">{k.kata}: </span>
-                              <span className="text-slate-600 text-sm">{k.arti}</span>
-                            </div>
-                          </div>
-                        ))}
-                      </div>
+                  <div className="space-y-4 border-t border-slate-200 pt-6">
+                    <h4 className="text-lg font-extrabold text-slate-800">Kamus Cilik Rasio</h4>
+                    <div className="space-y-3">
+                      {current.kamusCilik.map((k, kIdx) => (
+                        <div key={kIdx} className="flex w-full items-start gap-3 rounded-2xl border border-slate-200 bg-white px-5 py-4 md:px-6 md:py-5">
+                          <span className="text-2xl">{k.ikon}</span>
+                          <p className="text-base leading-relaxed text-slate-700">
+                            <span className="font-bold text-emerald-800">{k.kata}: </span>
+                            {k.arti}
+                          </p>
+                        </div>
+                      ))}
                     </div>
-
-                    <div className="bg-emerald-950 text-white rounded-2xl p-6">
-                      <h4 className="font-extrabold text-amber-300 text-base mb-3">
-                        🤝 Aktivitas Luring Guru & Orang Tua
-                      </h4>
-                      <div className="space-y-3 text-xs leading-relaxed">
-                        <div>
-                          <div className="font-bold text-emerald-300 uppercase mb-1">Panduan Guru di Kelas:</div>
-                          <ul className="list-disc list-inside space-y-1 text-slate-200">
-                            {current.offlineActivities.teacherGuide.map((tg, i) => (
-                              <li key={i}>{tg}</li>
-                            ))}
-                          </ul>
-                        </div>
-                        <div className="pt-2 border-t border-emerald-800">
-                          <div className="font-bold text-amber-300 uppercase mb-1">Praktik Orang Tua di Rumah:</div>
-                          <ul className="list-disc list-inside space-y-1 text-slate-200">
-                            {current.offlineActivities.parentGuide.map((pg, i) => (
-                              <li key={i}>{pg}</li>
-                            ))}
-                          </ul>
-                        </div>
-                      </div>
+                    <div className="space-y-3 text-base leading-relaxed text-slate-700">
+                      <h4 className="text-lg font-extrabold text-slate-800">Aktivitas luring guru dan orang tua</h4>
+                      <p className="font-bold text-emerald-800">Panduan guru di kelas</p>
+                      <ul className="list-disc space-y-1 pl-5">
+                        {current.offlineActivities.teacherGuide.map((tg, i) => (
+                          <li key={i}>{tg}</li>
+                        ))}
+                      </ul>
+                      <p className="font-bold text-amber-800">Praktik orang tua di rumah</p>
+                      <ul className="list-disc space-y-1 pl-5">
+                        {current.offlineActivities.parentGuide.map((pg, i) => (
+                          <li key={i}>{pg}</li>
+                        ))}
+                      </ul>
                     </div>
                   </div>
                 </div>
@@ -980,28 +912,27 @@ export default function Bab2RasioModule() {
             TAB 3: SIMULATOR INTERAKTIF RASIO RESEP EKUIVALEN
         ================================================================ */}
         {activeTab === "simulator" && (
-          <div className="bg-white rounded-2xl shadow-md border border-emerald-100 p-6">
-            <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 border-b border-slate-100 pb-4">
+          <div className="space-y-6">
+            <div className="space-y-4">
               <div>
-                <span className="text-xs font-bold uppercase text-emerald-700 bg-emerald-50 px-3 py-1 rounded-full">
+                <span className="rounded-full bg-emerald-50 px-3 py-1 text-xs font-bold uppercase text-emerald-700">
                   Laboratorium Proporsi (Eksplorasi 2.3 & 2.4)
                 </span>
-                <h2 className="text-xl font-extrabold text-slate-800 mt-1">
+                <h2 className="mt-1 text-xl font-extrabold text-slate-800">
                   Simulator Takaran Sirup: Membuktikan Rasio Ekuivalen
                 </h2>
-                <p className="text-sm text-slate-600">
+                <p className="text-base leading-relaxed text-slate-600">
                   Ubah faktor pengali resep untuk melihat bagaimana takaran sirup dan air membesar bersama tanpa mengubah rasa manisnya!
                 </p>
               </div>
-              <div className="bg-emerald-700 text-white px-5 py-3 rounded-xl text-center shrink-0">
-                <div className="text-xs uppercase font-bold opacity-80">Rasio Terbuka</div>
-                <div className="text-3xl font-black">{baseSirup * scaleFactor} : {baseAir * scaleFactor}</div>
+              <div className="w-full rounded-2xl border border-emerald-700 bg-emerald-700 px-5 py-4 text-center text-white md:px-6">
+                <div className="text-sm font-bold uppercase">Rasio terbuka</div>
+                <div className="text-4xl font-black">{baseSirup * scaleFactor} : {baseAir * scaleFactor}</div>
               </div>
             </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mt-6 items-center">
-              {/* Kontrol Pengali Adonan */}
-              <div className="space-y-5 bg-slate-50 p-6 rounded-2xl border border-slate-200">
+            <div className="grid grid-cols-1 items-start gap-8">
+              <div className="w-full space-y-5">
                 <div>
                   <label className="text-xs font-extrabold uppercase text-slate-600">
                     Pilih Faktor Pengali Resep ({scaleFactor}x Lipat):
@@ -1023,30 +954,29 @@ export default function Bab2RasioModule() {
                   </div>
                 </div>
 
-                <div className="grid grid-cols-2 gap-3 text-center">
-                  <div className="bg-rose-50 border border-rose-200 p-3 rounded-xl">
-                    <div className="text-xs font-bold text-rose-800">Sirup Diperlukan</div>
-                    <div className="text-2xl font-black text-rose-600 mt-1">
+                <div className="grid w-full grid-cols-1 gap-3 text-center">
+                  <div className="w-full rounded-2xl border border-rose-200 bg-rose-50 px-5 py-4 md:px-6">
+                    <div className="text-base font-bold text-rose-800">Sirup diperlukan</div>
+                    <div className="mt-1 text-3xl font-black text-rose-600">
                       {baseSirup * scaleFactor} Cangkir
                     </div>
-                    <div className="text-[10px] text-slate-500">({baseSirup} × {scaleFactor})</div>
+                    <div className="text-sm text-slate-500">({baseSirup} × {scaleFactor})</div>
                   </div>
-                  <div className="bg-sky-50 border border-sky-200 p-3 rounded-xl">
-                    <div className="text-xs font-bold text-sky-800">Air Diperlukan</div>
-                    <div className="text-2xl font-black text-sky-600 mt-1">
+                  <div className="w-full rounded-2xl border border-sky-200 bg-sky-50 px-5 py-4 md:px-6">
+                    <div className="text-base font-bold text-sky-800">Air diperlukan</div>
+                    <div className="mt-1 text-3xl font-black text-sky-600">
                       {baseAir * scaleFactor} Cangkir
                     </div>
-                    <div className="text-[10px] text-slate-500">({baseAir} × {scaleFactor})</div>
+                    <div className="text-sm text-slate-500">({baseAir} × {scaleFactor})</div>
                   </div>
                 </div>
               </div>
 
-              {/* Tabel Proporsi Ekuivalen Otomatis */}
-              <div className="bg-white border-2 border-slate-200 rounded-2xl p-4 shadow-sm">
-                <div className="text-xs font-extrabold uppercase text-slate-600 mb-2">
-                  Tabel Rasio Ekuivalen Sederhana:
+              <div className="w-full">
+                <div className="mb-2 text-base font-extrabold uppercase text-slate-600">
+                  Tabel rasio ekuivalen
                 </div>
-                <table className="w-full text-center text-xs border-collapse">
+                <table className="w-full border-collapse text-center text-base">
                   <thead>
                     <tr className="bg-slate-100 text-slate-700">
                       <th className="p-2 border border-slate-200">Porsi</th>
@@ -1078,18 +1008,18 @@ export default function Bab2RasioModule() {
             TAB 4: KANVAS PRAKTIKUM (ZERO-COST CLIENT-SIDE)
         ================================================================ */}
         {activeTab === "praktikum" && (
-          <div className="bg-white rounded-2xl shadow-md border border-emerald-100 p-6">
-            <span className="text-xs font-bold uppercase text-emerald-700 bg-emerald-50 px-3 py-1 rounded-full">
+          <div className="space-y-4">
+            <span className="rounded-full bg-emerald-50 px-3 py-1 text-xs font-bold uppercase text-emerald-700">
               Praktikum Visualisasi Rasio (Biaya API Rp 0)
             </span>
-            <h2 className="text-xl font-extrabold text-slate-800 mt-2">
+            <h2 className="text-xl font-extrabold text-slate-800">
               Tantangan Kanvas: Menggambar Diagram Kotak Rasio (Tape Diagram)
             </h2>
-            <p className="text-sm text-slate-600 mt-1">
+            <p className="text-base leading-relaxed text-slate-600">
               Rasio buah apel terhadap buah jeruk adalah <strong>2 : 3</strong>. Gambarkan diagram batang kotak (tape diagram) untuk mewakili 2 kotak apel dan 3 kotak jeruk di kanvas berpetak bawah ini!
             </p>
 
-            <div className="mt-5 flex flex-col items-center">
+            <div className="mt-5 flex w-full flex-col">
               <canvas
                 ref={canvasRef}
                 width={560}
@@ -1101,7 +1031,7 @@ export default function Bab2RasioModule() {
                 onTouchStart={startDraw}
                 onTouchMove={draw}
                 onTouchEnd={endDraw}
-                className="w-full max-w-[560px] h-[280px] bg-slate-50 border-2 border-dashed border-emerald-300 rounded-2xl cursor-crosshair touch-none"
+                className="h-[280px] w-full cursor-crosshair touch-none border-2 border-dashed border-emerald-300 bg-slate-50"
                 style={{
                   backgroundImage:
                     "linear-gradient(to right, #e2e8f0 1px, transparent 1px), linear-gradient(to bottom, #e2e8f0 1px, transparent 1px)",
@@ -1125,7 +1055,7 @@ export default function Bab2RasioModule() {
               </div>
 
               {canvasFeedback && (
-                <div className="mt-4 max-w-lg text-center bg-emerald-50 border border-emerald-200 text-emerald-900 px-4 py-3 rounded-xl text-sm font-bold">
+                <div className="mt-4 w-full rounded-2xl border border-emerald-200 bg-emerald-50 px-5 py-4 text-center text-base font-bold leading-relaxed text-emerald-900 md:px-6">
                   {canvasFeedback}
                 </div>
               )}
@@ -1138,11 +1068,11 @@ export default function Bab2RasioModule() {
         ================================================================ */}
         {activeTab === "latihan" && (
           <div className="space-y-4">
-            <div className="bg-white p-5 rounded-2xl border border-slate-200 shadow-sm">
+            <div>
               <h2 className="text-xl font-extrabold text-slate-800">
-                🎯 Latihan Pemahaman Bab 2 (10 Soal Kurikulum Merdeka)
+                Latihan Pemahaman Bab 2 (10 Soal Kurikulum Merdeka)
               </h2>
-              <p className="text-sm text-slate-600">
+              <p className="text-base leading-relaxed text-slate-600">
                 Uji pemahamanmu secara mandiri. Jawaban benar pada percobaan pertama memberikan <strong>+5 Token IGIL</strong>!
               </p>
             </div>
@@ -1153,7 +1083,7 @@ export default function Bab2RasioModule() {
               const isCorrect = userChoice === q.correctAnswer;
 
               return (
-                <div key={q.id} className="bg-white rounded-2xl border border-slate-200 p-6 shadow-sm">
+                <div key={q.id} className="space-y-3 border-t border-slate-200 pt-6">
                   <div className="flex items-center justify-between mb-2">
                     <span className="text-xs font-extrabold uppercase bg-emerald-50 text-emerald-800 px-3 py-1 rounded-full">
                       Soal {idx + 1} • Sub-Bab {q.subBab}
@@ -1198,16 +1128,16 @@ export default function Bab2RasioModule() {
                       </button>
                     ) : (
                       <div
-                        className={`w-full p-4 rounded-xl border text-sm ${
+                        className={`w-full rounded-2xl border px-5 py-4 text-base leading-relaxed md:px-6 md:py-5 ${
                           isCorrect
                             ? "bg-emerald-50 border-emerald-200 text-emerald-900"
                             : "bg-rose-50 border-rose-200 text-rose-900"
                         }`}
                       >
                         <div className="font-extrabold">
-                          {isCorrect ? "🎉 Jawabanmu Benar!" : `❌ Kurang Tepat. Jawaban yang benar: ${q.correctAnswer}`}
+                          {isCorrect ? "Jawabanmu benar!" : `Kurang tepat. Jawaban yang benar: ${q.correctAnswer}`}
                         </div>
-                        <p className="mt-1 text-xs leading-relaxed">{q.explanation}</p>
+                        <p className="mt-2 leading-relaxed">{q.explanation}</p>
                       </div>
                     )}
                   </div>
@@ -1222,15 +1152,15 @@ export default function Bab2RasioModule() {
         ================================================================ */}
         {activeTab === "evaluasi" && (
           <div className="space-y-4">
-            <div className="bg-gradient-to-r from-emerald-900 via-teal-900 to-slate-900 text-white p-6 rounded-2xl shadow-md flex flex-col md:flex-row md:items-center justify-between gap-4">
+            <div className="flex flex-col justify-between gap-4 md:flex-row md:items-center">
               <div>
-                <span className="text-xs font-extrabold uppercase bg-amber-400 text-slate-900 px-3 py-1 rounded-full">
+                <span className="rounded-full bg-amber-400 px-3 py-1 text-xs font-extrabold uppercase text-slate-900">
                   Anti-Cheating Dynamic Engine
                 </span>
-                <h2 className="text-xl font-extrabold mt-2">
-                  🏆 Lembar Evaluasi Bab 2 (Angka Unik Per Siswa)
+                <h2 className="mt-2 text-xl font-extrabold text-slate-800">
+                  Lembar Evaluasi Bab 2 (Angka Unik Per Siswa)
                 </h2>
-                <p className="text-xs text-emerald-100 mt-1">
+                <p className="mt-1 text-base leading-relaxed text-slate-600">
                   Setiap siswa mendapatkan angka takaran resep, jumlah bibit pohon, dan harga belanja yang berbeda. Nilai per soal bernilai <strong>+10 Token IGIL</strong>!
                 </p>
               </div>
@@ -1238,9 +1168,9 @@ export default function Bab2RasioModule() {
                 onClick={() => {
                   setStudentSeed(Math.floor(Math.random() * 9000) + 100);
                 }}
-                className="bg-white text-emerald-900 hover:bg-emerald-50 px-4 py-2.5 rounded-xl font-extrabold text-xs shrink-0 shadow"
+                className="shrink-0 rounded-xl bg-emerald-700 px-4 py-2.5 text-sm font-extrabold text-white hover:bg-emerald-800"
               >
-                🎲 Simulasikan Siswa Lain (Acak Angka Baru)
+                Simulasikan Siswa Lain (Acak Angka Baru)
               </button>
             </div>
 
@@ -1250,7 +1180,7 @@ export default function Bab2RasioModule() {
               const isCorrect = userChoice === q.correctAnswer;
 
               return (
-                <div key={q.id} className="bg-white rounded-2xl border border-emerald-100 p-6 shadow-sm">
+                <div key={q.id} className="space-y-3 border-t border-slate-200 pt-6">
                   <div className="flex items-center justify-between mb-2">
                     <span className="text-xs font-extrabold uppercase bg-amber-100 text-amber-900 px-3 py-1 rounded-full">
                       Evaluasi #{idx + 1} • Paket Unik Siswa #{studentSeed}
@@ -1295,16 +1225,16 @@ export default function Bab2RasioModule() {
                       </button>
                     ) : (
                       <div
-                        className={`w-full p-4 rounded-xl border text-sm ${
+                        className={`w-full rounded-2xl border px-5 py-4 text-base leading-relaxed md:px-6 md:py-5 ${
                           isCorrect
                             ? "bg-emerald-50 border-emerald-200 text-emerald-900"
                             : "bg-rose-50 border-rose-200 text-rose-900"
                         }`}
                       >
                         <div className="font-extrabold">
-                          {isCorrect ? "🌟 Tepat Sekali! +10 Token IGIL" : `❌ Belum Tepat. Kunci Jawaban: ${q.correctAnswer}`}
+                          {isCorrect ? "Tepat sekali! +10 Token IGIL" : `Belum tepat. Kunci jawaban: ${q.correctAnswer}`}
                         </div>
-                        <p className="mt-1 text-xs leading-relaxed">{q.explanation}</p>
+                        <p className="mt-2 leading-relaxed">{q.explanation}</p>
                       </div>
                     )}
                   </div>
