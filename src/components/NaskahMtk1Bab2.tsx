@@ -259,7 +259,7 @@ function Ikatan({ gabungan, kiri, kanan }: { gabungan: number; kiri: number; kan
   );
 }
 
-const PETAK_KEBUN = ["1️⃣", "2️⃣", "3️⃣", "4️⃣", "5️⃣", "6️⃣", "7️⃣", "8️⃣", "9️⃣", "🔟"];
+const POS_LOMPAT = ["1️⃣", "2️⃣", "3️⃣", "4️⃣", "5️⃣", "6️⃣", "7️⃣", "8️⃣", "9️⃣", "🔟"];
 
 const KELAS_PETAK: Record<WarnaPetak, string> = {
   hijau: "border-emerald-500 bg-emerald-50",
@@ -268,7 +268,7 @@ const KELAS_PETAK: Record<WarnaPetak, string> = {
   ungu: "border-violet-500 bg-violet-50",
 };
 
-function daunDariPetunjuk(petunjuk: number): number {
+function taliDariPetunjuk(petunjuk: number): number {
   if (petunjuk <= 0) return 3;
   if (petunjuk === 1) return 2;
   return 1;
@@ -281,7 +281,7 @@ function BendaPetak({ ikon, jumlah, petunjuk }: { ikon: string; jumlah: number; 
       {Array.from({ length: jumlah }, (_, i) => (
         <span key={`${ikon}-${i}`} className="inline-flex flex-col items-center">
           <span
-            className={`text-3xl ${petunjuk >= 1 ? "kebun-goyang" : ""}`}
+            className={`text-3xl ${petunjuk >= 1 ? "lompat-goyang" : ""}`}
             style={petunjuk >= 1 ? { animationDelay: `${i * 0.28}s` } : undefined}
           >
             {ikon}
@@ -293,22 +293,22 @@ function BendaPetak({ ikon, jumlah, petunjuk }: { ikon: string; jumlah: number; 
   );
 }
 
-function MisiKebunAngka() {
+function MisiLapanganLompat() {
   const kuis = useKuisMateri();
   const [aktif, setAktif] = useState(0);
-  const [jejak, setJejak] = useState<Record<number, { petunjuk: number; selesai: boolean; daun: number }>>({});
+  const [jejak, setJejak] = useState<Record<number, { petunjuk: number; selesai: boolean; tali: number }>>({});
   const misi: MisiPetak = MISI_MTK1_BAB2[aktif];
-  const kini = jejak[aktif] ?? { petunjuk: 0, selesai: false, daun: 0 };
+  const kini = jejak[aktif] ?? { petunjuk: 0, selesai: false, tali: 0 };
   const bintang = Object.values(jejak).filter((item) => item.selesai).length;
-  const daun = Object.values(jejak).reduce((jumlah, item) => jumlah + item.daun, 0);
+  const tali = Object.values(jejak).reduce((jumlah, item) => jumlah + item.tali, 0);
   const adaPasangan = (misi.kananJumlah ?? 0) > 0;
 
   const catat = (indeks: number, benar: boolean) => {
     setJejak((lama) => {
-      const sebelumnya = lama[indeks] ?? { petunjuk: 0, selesai: false, daun: 0 };
+      const sebelumnya = lama[indeks] ?? { petunjuk: 0, selesai: false, tali: 0 };
       if (sebelumnya.selesai) return lama;
       if (benar) {
-        return { ...lama, [indeks]: { ...sebelumnya, selesai: true, daun: daunDariPetunjuk(sebelumnya.petunjuk) } };
+        return { ...lama, [indeks]: { ...sebelumnya, selesai: true, tali: taliDariPetunjuk(sebelumnya.petunjuk) } };
       }
       return { ...lama, [indeks]: { ...sebelumnya, petunjuk: Math.min(3, sebelumnya.petunjuk + 1) } };
     });
@@ -316,7 +316,7 @@ function MisiKebunAngka() {
 
   const mintaPetunjuk = () => {
     setJejak((lama) => {
-      const sebelumnya = lama[aktif] ?? { petunjuk: 0, selesai: false, daun: 0 };
+      const sebelumnya = lama[aktif] ?? { petunjuk: 0, selesai: false, tali: 0 };
       if (sebelumnya.selesai || sebelumnya.petunjuk >= 3) return lama;
       return { ...lama, [aktif]: { ...sebelumnya, petunjuk: sebelumnya.petunjuk + 1 } };
     });
@@ -325,21 +325,21 @@ function MisiKebunAngka() {
   return (
     <div className="mt-4 space-y-4">
       <style>{`
-        @keyframes kebun-goyang {
+        @keyframes lompat-goyang {
           0%, 100% { transform: rotate(0deg); }
           30% { transform: rotate(-14deg) translateY(-3px); }
           70% { transform: rotate(12deg); }
         }
-        .kebun-goyang { animation: kebun-goyang 1s ease-in-out infinite; display: inline-block; }
+        .lompat-goyang { animation: lompat-goyang 1s ease-in-out infinite; display: inline-block; }
       `}</style>
       <p className="text-sm font-semibold leading-relaxed text-slate-700">
-        Bantu Kiko mengisi 10 petak kebun. Pilih satu petak, dengarkan misinya, lalu jawab dengan suara, kanvas, atau pilihan.
+        Bantu Igil mengisi 10 pos di lapangan lompat tali. Pilih satu pos, dengarkan misinya, lalu jawab dengan suara, kanvas, atau pilihan.
       </p>
       <div className="flex flex-wrap items-center justify-center gap-2">
         <span className="text-2xl" aria-hidden>
-          🏡
+          👟
         </span>
-        {PETAK_KEBUN.map((lambang, indeks) => {
+        {POS_LOMPAT.map((lambang, indeks) => {
           const selesai = jejak[indeks]?.selesai;
           return (
             <button
@@ -349,14 +349,14 @@ function MisiKebunAngka() {
               className={`rounded-xl border-2 px-2 py-1 text-lg font-black ${
                 indeks === aktif ? "border-[#1C01A5] bg-[#1C01A5] text-white" : KELAS_PETAK[MISI_MTK1_BAB2[indeks].warna]
               }`}
-              aria-label={`Petak ${indeks + 1}${selesai ? ", selesai" : ""}`}
+              aria-label={`Pos ${indeks + 1}${selesai ? ", selesai" : ""}`}
             >
               {selesai ? "⭐" : lambang}
             </button>
           );
         })}
         <span className={`text-2xl ${bintang === 10 ? "" : "opacity-40"}`} aria-hidden>
-          🏆
+          🏅
         </span>
       </div>
       <div className="flex flex-wrap gap-2 text-sm font-black text-[#1C01A5]">
@@ -366,18 +366,18 @@ function MisiKebunAngka() {
         <span className="rounded-full bg-violet-100 px-3 py-1">Ungu · membandingkan</span>
       </div>
       <p className="text-sm font-bold text-[#1C01A5]">
-        Bintang kebun {bintang}/10 · Daun ajaib {daun} 🍃
+        Bintang lompat {bintang}/10 · Tali ajaib {tali} 👟
       </p>
       <article className={`rounded-2xl border-2 px-4 py-4 ${KELAS_PETAK[misi.warna]}`}>
         <p className="text-xs font-black uppercase tracking-wide text-[#1C01A5]">
-          Petak {aktif + 1} · {misi.warna} · {misi.misi}
+          Pos {aktif + 1} · {misi.warna} · {misi.misi}
         </p>
-        <p className="mt-2 text-sm font-black text-[#1C01A5]">Kiko</p>
+        <p className="mt-2 text-sm font-black text-[#1C01A5]">Igil</p>
         <p className="text-sm font-semibold text-slate-700">“{misi.narasi}”</p>
         {misi.mode === "kanvas" ? null : (
           <>
             {misi.angka ? (
-              <p className={`mt-3 text-center text-6xl font-black text-[#1C01A5] ${kini.petunjuk >= 1 ? "kebun-goyang" : ""}`}>
+              <p className={`mt-3 text-center text-6xl font-black text-[#1C01A5] ${kini.petunjuk >= 1 ? "lompat-goyang" : ""}`}>
                 {misi.angka}
                 {kini.petunjuk >= 2 ? <span className="mx-auto mt-2 block h-2 w-2 rounded-full bg-[#1C01A5]" /> : null}
               </p>
@@ -409,11 +409,11 @@ function MisiKebunAngka() {
           <p className="mt-3 rounded-xl bg-white px-3 py-2 text-sm font-bold text-[#1C01A5]">{misi.bersama}</p>
         ) : null}
         {kini.petunjuk > 0 && !kini.selesai ? (
-          <p className="mt-2 text-sm font-semibold text-amber-800">Belum tepat. Daunmu tetap aman. Coba lagi.</p>
+          <p className="mt-2 text-sm font-semibold text-amber-800">Belum tepat. Talimu tetap aman. Coba lagi.</p>
         ) : null}
         {kini.selesai ? (
           <p className="mt-3 text-sm font-black text-emerald-800">
-            1 bintang kebun. Daun ajaib {kini.daun} {"🍃".repeat(kini.daun)}
+            1 bintang lompat. Tali ajaib {kini.tali} {"👟".repeat(kini.tali)}
           </p>
         ) : (
           <button
@@ -483,10 +483,10 @@ function MisiKebunAngka() {
         ) : null}
       </article>
       <ul className="list-disc space-y-1 pl-5 text-sm font-semibold text-slate-700">
-        <li>Jawaban pertama benar: 3 daun ajaib.</li>
-        <li>Benar setelah satu petunjuk: 2 daun ajaib.</li>
-        <li>Benar setelah dua petunjuk: 1 daun ajaib.</li>
-        <li>Belum tepat tidak mengurangi daun. Kamu boleh mencoba lagi.</li>
+        <li>Jawaban pertama benar: 3 tali ajaib.</li>
+        <li>Benar setelah satu petunjuk: 2 tali ajaib.</li>
+        <li>Benar setelah dua petunjuk: 1 tali ajaib.</li>
+        <li>Belum tepat tidak mengurangi tali. Kamu boleh mencoba lagi.</li>
       </ul>
       {bintang === 10 ? (
         <div className="rounded-2xl border-2 border-sky-300 bg-sky-50 px-4 py-4">
@@ -494,15 +494,15 @@ function MisiKebunAngka() {
             id={idKuisTulisKartu(ID, "C")}
             hanyaKanvas
             rapat
-            pertanyaan="Tuliskan jumlah bintang kebun yang sudah kamu kumpulkan."
+            pertanyaan="Tuliskan jumlah bintang lompat yang sudah kamu kumpulkan."
             alias={kumpulkanAlias(["10", "sepuluh"])}
-            konteks="Sepuluh petak selesai. Bintang kebun ada 10."
+            konteks="Sepuluh pos selesai. Bintang lompat ada 10."
             visual={
               <>
                 <p className="text-center text-3xl" aria-hidden>
-                  🌷🌼🌻🌺🌹🌸💐
+                  👟⭐🏅
                 </p>
-                <p className="mt-2 text-center text-sm font-black text-[#1C01A5]">Bunga pelangi tumbuh di kebun Kiko.</p>
+                <p className="mt-2 text-center text-sm font-black text-[#1C01A5]">Lapangan lompat Igil sudah siap.</p>
               </>
             }
           />
@@ -680,8 +680,8 @@ export default function NaskahMtk1Bab2({
   return (
     <div className="space-y-5">
       <KartuBingkai latar="bg-sky-50/80">
-        <p className="text-center text-4xl" aria-hidden>
-          🪢👧🦉
+        <p className="text-center text-4xl font-normal" aria-hidden>
+          👟👧🦉
         </p>
         <h4 className="mt-3 text-center text-lg font-black tracking-wide text-[#1C01A5] sm:text-xl">{kartuA.judul}</h4>
         <div className="mt-4">
@@ -1124,17 +1124,17 @@ export default function NaskahMtk1Bab2({
       </KartuBingkai>
 
       <KartuBingkai latar="bg-violet-50/80">
-        <p className="text-center text-4xl" aria-hidden>
-          🏡🌷🏆
+        <p className="text-center text-4xl font-normal" aria-hidden>
+          👟🦉🏅
         </p>
-        <h4 className="mt-3 text-center text-lg font-black tracking-wide text-[#1C01A5] sm:text-xl">Misi Penjaga Kebun Angka</h4>
+        <h4 className="mt-3 text-center text-lg font-black tracking-wide text-[#1C01A5] sm:text-xl">Misi Lapangan Lompat</h4>
         <p className="mt-1 text-center text-sm font-bold text-[#1C01A5]/70">
-          Sepuluh petak · menghitung, membaca, menulis, membandingkan
+          Sepuluh pos · menghitung, membaca, menulis, membandingkan
         </p>
         <div className="mt-4">
           <TombolVoiceMateriPai1 kelas={kelas} kelamin={kelamin} cuplikan={cuplikanDariNaskah(kartuC.voice, 2_000, 3_000)} />
         </div>
-        <MisiKebunAngka />
+        <MisiLapanganLompat />
       </KartuBingkai>
 
       <div id={SLOT_AJUAN_SEBELUM_KARTU_D} />

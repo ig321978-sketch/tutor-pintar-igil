@@ -34,7 +34,7 @@ export const MISI_MTK1_BAB2: MisiPetak[] = [
     kananIkon: "🧒",
     kananJumlah: 2,
     alias: ["6", "enam"],
-    bersama: "Kiko menghitung bersama. Empat ditambah dua sama dengan enam.",
+    bersama: "Igil menghitung bersama. Empat ditambah dua sama dengan enam.",
   },
   {
     warna: "biru",
@@ -45,7 +45,7 @@ export const MISI_MTK1_BAB2: MisiPetak[] = [
     jumlah: 0,
     angka: "7",
     alias: ["tujuh", "7"],
-    bersama: "Kiko membaca bersama: tujuh. Tiga ditambah empat hasilnya tujuh.",
+    bersama: "Igil membaca bersama: tujuh. Tiga ditambah empat hasilnya tujuh.",
   },
   {
     warna: "kuning",
@@ -56,7 +56,7 @@ export const MISI_MTK1_BAB2: MisiPetak[] = [
     jumlah: 0,
     teksGambar: "3 + 4 = 7",
     alias: ["3 + 4 = 7", "3+4=7"],
-    bersama: "Kiko menulis bersama: tiga tambah empat sama dengan tujuh.",
+    bersama: "Igil menulis bersama: tiga tambah empat sama dengan tujuh.",
   },
   {
     warna: "ungu",
@@ -71,7 +71,7 @@ export const MISI_MTK1_BAB2: MisiPetak[] = [
     labelKanan: "4 + 4",
     alias: ["kedua", "4 + 4", "delapan"],
     benarPilih: "kedua",
-    bersama: "Kiko menghitung bersama. 2 + 4 = 6. 4 + 4 = 8. Delapan lebih banyak.",
+    bersama: "Igil menghitung bersama. 2 + 4 = 6. 4 + 4 = 8. Delapan lebih banyak.",
   },
   {
     warna: "hijau",
@@ -82,7 +82,7 @@ export const MISI_MTK1_BAB2: MisiPetak[] = [
     jumlah: 0,
     teksGambar: "5 → 6, 7, 8",
     alias: ["8", "delapan"],
-    bersama: "Kiko melompat bersama: enam, tujuh, delapan. Lima ditambah tiga sama dengan delapan.",
+    bersama: "Igil melompat bersama: enam, tujuh, delapan. Lima ditambah tiga sama dengan delapan.",
   },
   {
     warna: "biru",
@@ -93,7 +93,7 @@ export const MISI_MTK1_BAB2: MisiPetak[] = [
     jumlah: 0,
     angka: "10",
     alias: ["sepuluh", "10"],
-    bersama: "Kiko membaca bersama: sepuluh. Lima ditambah lima sama dengan sepuluh.",
+    bersama: "Igil membaca bersama: sepuluh. Lima ditambah lima sama dengan sepuluh.",
   },
   {
     warna: "kuning",
@@ -119,7 +119,7 @@ export const MISI_MTK1_BAB2: MisiPetak[] = [
     labelKanan: "6 + 4",
     alias: ["kedua", "6 + 4", "sepuluh"],
     benarPilih: "kedua",
-    bersama: "Kiko menghitung bersama. 6 + 3 = 9. 6 + 4 = 10.",
+    bersama: "Igil menghitung bersama. 6 + 3 = 9. 6 + 4 = 10.",
   },
   {
     warna: "hijau",
@@ -131,7 +131,7 @@ export const MISI_MTK1_BAB2: MisiPetak[] = [
     kananIkon: "🐦",
     kananJumlah: 2,
     alias: ["6", "enam"],
-    bersama: "Kiko menghitung bersama. Empat ditambah dua sama dengan enam.",
+    bersama: "Igil menghitung bersama. Empat ditambah dua sama dengan enam.",
   },
   {
     warna: "biru",
@@ -142,7 +142,7 @@ export const MISI_MTK1_BAB2: MisiPetak[] = [
     jumlah: 0,
     angka: "8",
     alias: ["delapan", "8"],
-    bersama: "Kiko membaca bersama: delapan. Lima ditambah tiga sama dengan delapan.",
+    bersama: "Igil membaca bersama: delapan. Lima ditambah tiga sama dengan delapan.",
   },
 ];
 

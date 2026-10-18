@@ -18,7 +18,7 @@ export const MODUL_MTK1_BAB2: ModulResmiPai = {
   sketsaKartu: [
     "Rara, Bimo, dan Igil di halaman: 4 anak bermain lompat tali, lalu datang 2 anak. 4 + 2 = 6.",
     "Empat cara menjumlah: pasangan bilangan, menghitung maju, penjumlahan berulang, dan hasil 10.",
-    "Kiko menjaga sepuluh petak kebun penjumlahan: menghitung, membaca, menulis, dan membandingkan.",
+    "Igil menjaga sepuluh pos lapangan lompat: menghitung, membaca, menulis, dan membandingkan.",
     "Lembar evaluasi cerita penjumlahan, hitung maju, pasangan sepuluh, dan soal cerita.",
   ],
   latihan: pg([
@@ -180,34 +180,34 @@ C) 7`,
     },
     {
       kode: "C",
-      judul: "C. Misi Penjaga Kebun Angka",
+      judul: "C. Misi Lapangan Lompat",
       pengantar:
-        "Bantu Kiko mengisi 10 petak kebun. Hijau untuk menghitung, biru untuk membaca, kuning untuk menulis, dan ungu untuk membandingkan.",
-      labelDaftar: "Sepuluh misi penjumlahan di kebun",
+        "Bantu Igil mengisi 10 pos di lapangan lompat tali. Hijau untuk menghitung, biru untuk membaca, kuning untuk menulis, dan ungu untuk membandingkan.",
+      labelDaftar: "Sepuluh pos penjumlahan di lapangan",
       kolom: 1,
       item: [
         {
           nama: "Alur permainan",
-          singkat: "Pilih petak, jawab, dapat bintang",
+          singkat: "Pilih pos, jawab, dapat bintang",
           uraian:
-            "Siswa memilih satu petak. Kiko membacakan misi penjumlahan. Jawaban benar mendapat 1 bintang kebun. Jawaban yang belum tepat mendapat petunjuk, tanpa kehilangan daun. Setelah 10 petak selesai, bunga pelangi tumbuh.",
+            "Siswa memilih satu pos. Igil membacakan misi penjumlahan. Jawaban benar mendapat 1 bintang lompat. Jawaban yang belum tepat mendapat petunjuk, tanpa kehilangan tali. Setelah 10 pos selesai, lapangan lompat siap.",
           contoh: "4 + 2 = 6. Bacaan tujuh. Tulis 3 + 4 = 7. Bandingkan 2 + 4 dengan 4 + 4.",
         },
         {
-          nama: "Daun ajaib",
-          singkat: "3, 2, atau 1 daun",
+          nama: "Tali ajaib",
+          singkat: "3, 2, atau 1 tali",
           uraian:
-            "Jawaban pertama benar mendapat 3 daun ajaib. Benar setelah satu petunjuk mendapat 2 daun. Benar setelah dua petunjuk mendapat 1 daun. Belum tepat tidak mengurangi daun. Siswa boleh mencoba lagi.",
-          contoh: "Petunjuk: benda bergoyang, lalu muncul titik, lalu Kiko menghitung bersama.",
+            "Jawaban pertama benar mendapat 3 tali ajaib. Benar setelah satu petunjuk mendapat 2 tali. Benar setelah dua petunjuk mendapat 1 tali. Belum tepat tidak mengurangi tali. Siswa boleh mencoba lagi.",
+          contoh: "Petunjuk: benda bergoyang, lalu muncul titik, lalu Igil menghitung bersama.",
         },
       ],
       kuis: kuisDariMisi(MISI_MTK1_BAB2),
       voice: [
         [
-          "Kiko menjaga kebun angka. Ada sepuluh petak dari rumah sampai piala.",
-          "Petak hijau untuk menghitung. Petak biru untuk membaca. Petak kuning untuk menulis. Petak ungu untuk membandingkan.",
+          "Igil menjaga lapangan lompat. Ada sepuluh pos dari tali sampai medali.",
+          "Pos hijau untuk menghitung. Pos biru untuk membaca. Pos kuning untuk menulis. Pos ungu untuk membandingkan.",
           "Empat ditambah dua sama dengan enam. Tiga ditambah empat sama dengan tujuh. Lima ditambah tiga sama dengan delapan.",
-          "Jawaban benar mendapat satu bintang kebun. Jika belum tepat, Kiko memberi petunjuk. Daun tidak berkurang.",
+          "Jawaban benar mendapat satu bintang lompat. Jika belum tepat, Igil memberi petunjuk. Tali tidak berkurang.",
         ],
       ],
     },

@@ -14,15 +14,15 @@ export type TemaMisi = {
 export const TEMA_MTK1_BAB2: TemaMisi = {
   pemandu: "Igil",
   pengantar:
-    "Bantu Igil mengisi 10 pos piknik di pantai. Pilih satu pos, dengarkan misinya, lalu jawab dengan suara, kanvas, atau pilihan.",
+    "Bantu Igil mengisi 10 pos di lapangan lompat tali. Pilih satu pos, dengarkan misinya, lalu jawab dengan suara, kanvas, atau pilihan.",
   satuan: "Pos",
-  ikonAwal: "🏖️",
-  ikonAkhir: "🏰",
-  namaBintang: "Bintang pantai",
-  namaToken: "Kerang ajaib",
-  ikonToken: "🐚",
-  pertanyaanAkhir: "Tuliskan jumlah bintang pantai yang sudah kamu kumpulkan.",
-  konteksAkhir: "Sepuluh pos pantai selesai. Bintang pantai ada 10.",
+  ikonAwal: "👟",
+  ikonAkhir: "🏅",
+  namaBintang: "Bintang lompat",
+  namaToken: "Tali ajaib",
+  ikonToken: "👟",
+  pertanyaanAkhir: "Tuliskan jumlah bintang lompat yang sudah kamu kumpulkan.",
+  konteksAkhir: "Sepuluh pos selesai. Bintang lompat ada 10.",
 };
 
 export const TEMA_MTK1_BAB3: TemaMisi = {
