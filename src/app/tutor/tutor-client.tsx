@@ -35,9 +35,10 @@ import {
   simpanModulLokal,
 } from "@/lib/cache-modul-lokal";
 import { kandidatKunciMateri, kunciMateriTutor } from "@/lib/kunci-siswa";
-import { adalahMtk6Bab2, adalahMtk6Bab3, naskahResmiJikaAda } from "@/lib/naskah-resmi";
+import { adalahMtk6Bab2, adalahMtk6Bab3, adalahMtk6Bab4, naskahResmiJikaAda } from "@/lib/naskah-resmi";
 import Bab2RasioModule from "@/components/modules/Bab2RasioModule";
 import Bab3KubusBalokModule from "@/components/modules/Bab3KubusBalokModule";
+import Bab4PeluangModule from "@/components/modules/Bab4PeluangModule";
 import { useUserRole } from "@/hooks/useUserRole";
 import {
   adalahMapelMatematika,
@@ -430,6 +431,11 @@ export default function TutorAI() {
     materiSesi,
   );
   const halamanResmiBab3 = adalahMtk6Bab3(
+    judulKelasSesi,
+    judulMapelSesi,
+    materiSesi,
+  );
+  const halamanResmiBab4 = adalahMtk6Bab4(
     judulKelasSesi,
     judulMapelSesi,
     materiSesi,
@@ -1770,7 +1776,7 @@ export default function TutorAI() {
       ) : (
         <>
         <div className="w-full px-2 pt-6 pb-8 animate-in slide-in-from-bottom-10 duration-700">
-          {halamanResmiBab2 || halamanResmiBab3 ? (
+          {halamanResmiBab2 || halamanResmiBab3 || halamanResmiBab4 ? (
             <>
               <button
                 type="button"
@@ -1779,7 +1785,13 @@ export default function TutorAI() {
               >
                 <ArrowLeft className="w-5 h-5" /> Ganti Materi
               </button>
-              {halamanResmiBab2 ? <Bab2RasioModule /> : <Bab3KubusBalokModule />}
+              {halamanResmiBab2 ? (
+                <Bab2RasioModule />
+              ) : halamanResmiBab3 ? (
+                <Bab3KubusBalokModule />
+              ) : (
+                <Bab4PeluangModule />
+              )}
             </>
           ) : (
           <>

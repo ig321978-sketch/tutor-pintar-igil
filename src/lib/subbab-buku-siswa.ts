@@ -355,6 +355,7 @@ const SUBBAB_BUKU_SISWA: Record<string, Record<string, Record<string, string[]>>
         "Lokasi pada sistem berpetak",
         "Jalur dan jarak",
       ],
+      "Bab 4: Peluang": ["Skala peluang", "Membandingkan peluang kejadian"],
     },
   },
 };

@@ -44,6 +44,7 @@ import NaskahMtk4Bab6 from "@/components/NaskahMtk4Bab6";
 import NaskahMtk6Bab1 from "@/components/NaskahMtk6Bab1";
 import Bab2RasioModule from "@/components/modules/Bab2RasioModule";
 import Bab3KubusBalokModule from "@/components/modules/Bab3KubusBalokModule";
+import Bab4PeluangModule from "@/components/modules/Bab4PeluangModule";
 import NaskahMtk7Bab1 from "@/components/NaskahMtk7Bab1";
 import NaskahMtk3Bab3 from "@/components/NaskahMtk3Bab3";
 import NaskahPancasila1 from "@/components/NaskahPancasila1";
@@ -104,6 +105,7 @@ import {
   adalahJudulMtk6Bab1,
   adalahJudulMtk6Bab2,
   adalahJudulMtk6Bab3,
+  adalahJudulMtk6Bab4,
   adalahJudulMtk7Bab1,
   adalahJudulMtk3Bab3,
   adalahJudulPancasila1Bab1,
@@ -181,6 +183,7 @@ import { MODUL_MTK4_BAB6 } from "@/lib/modul-resmi-mtk-4-bab6";
 import { MODUL_MTK6_BAB1 } from "@/lib/modul-resmi-mtk-6-bab1";
 import { MODUL_MTK6_BAB2 } from "@/lib/modul-resmi-mtk-6-bab2";
 import { MODUL_MTK6_BAB3 } from "@/lib/modul-resmi-mtk-6-bab3";
+import { MODUL_MTK6_BAB4 } from "@/lib/modul-resmi-mtk-6-bab4";
 import { MODUL_MTK7_BAB1 } from "@/lib/modul-resmi-mtk-7-bab1";
 import { MODUL_MTK3_BAB3 } from "@/lib/modul-resmi-mtk-3-bab3";
 import { naskahTampilanModulResmi } from "@/lib/modul-resmi-pai";
@@ -564,6 +567,13 @@ function ModuleRenderer({
         naskahTampilanModulResmi(MODUL_MTK6_BAB3, naskah)),
     [naskah, mapel, materi, kelas],
   );
+  const pakaiKartuMtk6Bab4 = useMemo(
+    () =>
+      kelasEnamSd(kelas) &&
+      (adalahJudulMtk6Bab4(mapel, materi) ||
+        naskahTampilanModulResmi(MODUL_MTK6_BAB4, naskah)),
+    [naskah, mapel, materi, kelas],
+  );
   const pakaiKartuMtk7Bab1 = useMemo(
     () =>
       /^7\s*SMP\b/i.test(kelas.trim()) &&
@@ -943,6 +953,13 @@ function ModuleRenderer({
     return (
       <div className={className}>
         <Bab3KubusBalokModule />
+      </div>
+    );
+  }
+  if (pakaiKartuMtk6Bab4) {
+    return (
+      <div className={className}>
+        <Bab4PeluangModule />
       </div>
     );
   }

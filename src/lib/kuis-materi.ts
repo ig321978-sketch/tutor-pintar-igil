@@ -79,6 +79,7 @@ import {
   adalahMtk6Bab1,
   adalahMtk6Bab2,
   adalahMtk6Bab3,
+  adalahMtk6Bab4,
   adalahMtk7Bab1,
   adalahMtk3Bab3,
   adalahPancasila1Bab1,
@@ -398,6 +399,9 @@ export function daftarIdKuisMateri(
   }
   if (adalahMtk6Bab3(kelas, mapel, materi)) {
     return daftarIdLatihanMtk6Bab3();
+  }
+  if (adalahMtk6Bab4(kelas, mapel, materi)) {
+    return [];
   }
   if (adalahMtk7Bab1(kelas, mapel, materi)) {
     return MODUL_MTK7_BAB1.kartu.flatMap((kartu) =>
