@@ -504,20 +504,19 @@ function SatuKubus({
   );
 }
 
-function hurufL(tegak: boolean) {
+function hurufL() {
   const mentah = [
-    { nomor: "1", x: 0, y: 0 },
-    { nomor: "2", x: JARAK_KUBUS, y: 0 },
-    { nomor: "3", x: 0, y: JARAK_KUBUS },
-  ].map((kubus) =>
-    tegak ? { nomor: kubus.nomor, x: -kubus.y, y: kubus.x } : kubus,
-  );
+    { nomor: "1", x: 0, z: 0 },
+    { nomor: "2", x: JARAK_KUBUS, z: 0 },
+    { nomor: "3", x: 0, z: JARAK_KUBUS },
+  ];
   const tengahX = mentah.reduce((jumlah, kubus) => jumlah + kubus.x, 0) / mentah.length;
-  const tengahY = mentah.reduce((jumlah, kubus) => jumlah + kubus.y, 0) / mentah.length;
+  const tengahZ = mentah.reduce((jumlah, kubus) => jumlah + kubus.z, 0) / mentah.length;
   return mentah.map((kubus) => ({
     nomor: kubus.nomor,
     x: kubus.x - tengahX,
-    y: kubus.y - tengahY,
+    y: 0,
+    z: kubus.z - tengahZ,
   }));
 }
 
@@ -528,19 +527,21 @@ function PanggungKubus({
   kelasLabel,
   kelasTombol,
   awal = { x: -18, y: 28 },
+  awalDatar = 0,
   petunjuk = true,
   putarDatar = false,
 }: {
-  kubus: { nomor: string; x: number; y: number }[];
+  kubus: { nomor: string; x: number; y: number; z?: number }[];
   warna: WarnaKubus;
   aria: string;
   kelasLabel: string;
   kelasTombol: string;
   awal?: { x: number; y: number };
+  awalDatar?: number;
   petunjuk?: boolean;
   putarDatar?: boolean;
 }) {
-  const [sudut, setSudut] = useState({ x: awal.x, y: awal.y, z: 0 });
+  const [sudut, setSudut] = useState({ x: awal.x, y: awal.y, z: awalDatar });
   const [halus, setHalus] = useState(true);
   const tarik = useRef<{ x: number; y: number; sx: number; sy: number; sz: number } | null>(null);
   const sudutDatar = [0, 90, 180, 270, 360];
@@ -575,7 +576,7 @@ function PanggungKubus({
 
   function keDatar(derajat: number) {
     setHalus(true);
-    setSudut({ x: -70, y: 0, z: derajat });
+    setSudut({ x: -58, y: 18, z: derajat });
   }
 
   return (
@@ -594,12 +595,31 @@ function PanggungKubus({
           className="absolute left-1/2 top-1/2 h-0 w-0"
           style={{
             transformStyle: "preserve-3d",
-            transform: `rotateX(${sudut.x}deg) rotateY(${sudut.y}deg) rotateZ(${sudut.z}deg)`,
+            transform: putarDatar
+              ? `rotateX(${sudut.x}deg) rotateY(${sudut.y}deg) rotateY(${sudut.z}deg)`
+              : `rotateX(${sudut.x}deg) rotateY(${sudut.y}deg)`,
             transition: halus ? "transform 0.7s ease" : "none",
           }}
         >
+          {putarDatar ? (
+            <div
+              className="absolute left-1/2 top-1/2 rounded-[28px] bg-emerald-100"
+              style={{
+                width: 148,
+                height: 148,
+                transform: `translate(-50%, -50%) translateY(${UKURAN_KUBUS / 2 + 1}px) rotateX(90deg)`,
+              }}
+            />
+          ) : null}
           {kubus.map((item) => (
-            <SatuKubus key={item.nomor} nomor={item.nomor} x={item.x} y={item.y} warna={warna} />
+            <SatuKubus
+              key={item.nomor}
+              nomor={item.nomor}
+              x={item.x}
+              y={item.y}
+              z={item.z ?? 0}
+              warna={warna}
+            />
           ))}
         </div>
       </div>
@@ -679,39 +699,44 @@ function MaterialVisualGraphic({ type }: { type: VisualSlide["visualComponentTyp
               warna={WARNA_L}
               kelasLabel="text-emerald-800"
               kelasTombol="bg-emerald-100 text-emerald-900"
-              awal={{ x: -28, y: 36 }}
+              awal={{ x: -46, y: 24 }}
               putarDatar
-              kubus={hurufL(false)}
+              kubus={hurufL()}
             />
             <p className="mt-2 text-center text-sm font-bold text-slate-700">2 berjajar, 1 menempel menyiku</p>
           </div>
         </div>
         <div className="mt-4 rounded-2xl border-4 border-emerald-400 bg-white p-4">
           <p className="text-center text-sm font-black text-emerald-800">Diputar? Masih huruf L. Bukan bentuk baru.</p>
-          <p className="mt-1 text-center text-xs font-bold text-slate-500">Tahan tiap model, lalu geser. Bentuknya tetap L.</p>
+          <p className="mt-1 text-center text-xs font-bold text-slate-500">
+            Tahan tiap model, lalu geser. Atau pilih 0° sampai 360°. Bentuknya tetap L.
+          </p>
           <div className="mt-3 grid grid-cols-1 gap-4 sm:grid-cols-2">
             <div className="rounded-2xl bg-emerald-50 p-3">
               <p className="text-center text-sm font-black text-emerald-800">L tidur</p>
               <PanggungKubus
-                aria="Huruf L tidur. Geser untuk memutar."
+                aria="Huruf L tidur. Geser untuk memutar, atau pilih sudut datar."
                 warna={WARNA_L}
                 kelasLabel="text-emerald-800"
                 kelasTombol="bg-emerald-100 text-emerald-900"
-                awal={{ x: -28, y: 36 }}
+                awal={{ x: -46, y: 24 }}
                 petunjuk={false}
-                kubus={hurufL(false)}
+                putarDatar
+                kubus={hurufL()}
               />
             </div>
             <div className="rounded-2xl bg-emerald-50 p-3">
               <p className="text-center text-sm font-black text-emerald-800">L tegak</p>
               <PanggungKubus
-                aria="Huruf L tegak. Geser untuk memutar."
+                aria="Huruf L tegak. Geser untuk memutar, atau pilih sudut datar."
                 warna={WARNA_L}
                 kelasLabel="text-emerald-800"
                 kelasTombol="bg-emerald-100 text-emerald-900"
-                awal={{ x: -28, y: 36 }}
+                awal={{ x: -46, y: 24 }}
+                awalDatar={90}
                 petunjuk={false}
-                kubus={hurufL(true)}
+                putarDatar
+                kubus={hurufL()}
               />
             </div>
           </div>
