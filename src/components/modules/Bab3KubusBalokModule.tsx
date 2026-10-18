@@ -1261,6 +1261,72 @@ function MaterialVisualGraphic({ type }: { type: VisualSlide["visualComponentTyp
   );
 }
 
+function nilaiTampakDepan(petak: Set<string>) {
+  if (petak.size === 0) {
+    return {
+      benar: false,
+      alasan: "Kanvas masih kosong. Gambar tiang kiri setinggi 3 kotak, dan 1 kotak di kanan bawah.",
+    };
+  }
+  const titik = [...petak].map((kunci) => {
+    const [kolom, baris] = kunci.split(",").map(Number);
+    return { kolom, baris };
+  });
+  const minKolom = Math.min(...titik.map((titik) => titik.kolom));
+  const maxKolom = Math.max(...titik.map((titik) => titik.kolom));
+  const minBaris = Math.min(...titik.map((titik) => titik.baris));
+  const maxBaris = Math.max(...titik.map((titik) => titik.baris));
+  const lebar = maxKolom - minKolom + 1;
+  const tinggi = maxBaris - minBaris + 1;
+  const ada = (kolom: number, baris: number) => petak.has(`${kolom},${baris}`);
+  if (lebar % 2 !== 0 || tinggi % 3 !== 0 || lebar / 2 !== tinggi / 3) {
+    return {
+      benar: false,
+      alasan: `Tampak depan huruf L ini lebar 2 kotak dan tinggi 3 kotak. Gambar sekarang ${lebar} × ${tinggi} kotak.`,
+    };
+  }
+  const skala = lebar / 2;
+  const hurufL = [
+    [true, false],
+    [true, false],
+    [true, true],
+  ];
+  const cermin = [
+    [false, true],
+    [false, true],
+    [true, true],
+  ];
+  const cocok = (pola: boolean[][]) => {
+    for (let baris = 0; baris < 3; baris += 1) {
+      for (let kolom = 0; kolom < 2; kolom += 1) {
+        for (let geserBaris = 0; geserBaris < skala; geserBaris += 1) {
+          for (let geserKolom = 0; geserKolom < skala; geserKolom += 1) {
+            const isi = ada(minKolom + kolom * skala + geserKolom, minBaris + baris * skala + geserBaris);
+            if (isi !== pola[baris][kolom]) return false;
+          }
+        }
+      }
+    }
+    return true;
+  };
+  if (cocok(hurufL)) {
+    return {
+      benar: true,
+      alasan: "Tampak depan sudah tepat. Tiang kiri 3 kotak, dan 1 kotak menempel di kanan bawah.",
+    };
+  }
+  if (cocok(cermin)) {
+    return {
+      benar: false,
+      alasan: "Tiang yang tinggi ada di kanan. Pindahkan tiang 3 kotak ke kiri, dan 1 kotak di kanan bawah.",
+    };
+  }
+  return {
+    benar: false,
+    alasan: "Susunannya belum huruf L. Tiang kiri harus 3 kotak. Satu kotak lagi menempel di kanan bawah.",
+  };
+}
+
 export default function Bab3KubusBalokModule() {
   // Navigation Tabs
   const [activeTab, setActiveTab] = useState<
@@ -1286,9 +1352,9 @@ export default function Bab3KubusBalokModule() {
 
   // State Kanvas Praktikum Lokal (Zero API Cost)
   const canvasRef = useRef<HTMLCanvasElement | null>(null);
-  const [isDrawing, setIsDrawing] = useState(false);
-  const [strokeCount, setStrokeCount] = useState(0);
-  const [canvasFeedback, setCanvasFeedback] = useState<string | null>(null);
+  const petakRef = useRef<Set<string>>(new Set());
+  const gerakRef = useRef<{ kunci: string; sudah: boolean; pindah: boolean } | null>(null);
+  const [hasilGambar, setHasilGambar] = useState<{ benar: boolean; alasan: string } | null>(null);
 
   // State Latihan & Evaluasi Dinamis
   const [studentSeed, setStudentSeed] = useState<number>(101);
@@ -1326,68 +1392,101 @@ export default function Bab3KubusBalokModule() {
     );
   };
 
-  // Handler Kanvas Gambar Lokal
+  const SEL_KANVAS = 35;
+  const KOLOM_KANVAS = 16;
+  const BARIS_KANVAS = 8;
+
+  function gambarDasarKanvas(ctx: CanvasRenderingContext2D, petak = petakRef.current) {
+    const kanvas = ctx.canvas;
+    ctx.clearRect(0, 0, kanvas.width, kanvas.height);
+    ctx.strokeStyle = "#e2e8f0";
+    ctx.lineWidth = 1;
+    for (let kolom = 0; kolom <= KOLOM_KANVAS; kolom += 1) {
+      ctx.beginPath();
+      ctx.moveTo(kolom * SEL_KANVAS, 0);
+      ctx.lineTo(kolom * SEL_KANVAS, BARIS_KANVAS * SEL_KANVAS);
+      ctx.stroke();
+    }
+    for (let baris = 0; baris <= BARIS_KANVAS; baris += 1) {
+      ctx.beginPath();
+      ctx.moveTo(0, baris * SEL_KANVAS);
+      ctx.lineTo(KOLOM_KANVAS * SEL_KANVAS, baris * SEL_KANVAS);
+      ctx.stroke();
+    }
+    ctx.fillStyle = "rgba(79, 70, 229, 0.55)";
+    petak.forEach((kunci) => {
+      const [kolom, baris] = kunci.split(",").map(Number);
+      ctx.fillRect(kolom * SEL_KANVAS + 3, baris * SEL_KANVAS + 3, SEL_KANVAS - 6, SEL_KANVAS - 6);
+    });
+  }
+
+  function kunciPetak(event: React.MouseEvent<HTMLCanvasElement> | React.TouchEvent<HTMLCanvasElement>) {
+    const kanvas = canvasRef.current;
+    if (!kanvas) return null;
+    const rect = kanvas.getBoundingClientRect();
+    const clientX = "touches" in event ? event.touches[0]?.clientX : event.clientX;
+    const clientY = "touches" in event ? event.touches[0]?.clientY : event.clientY;
+    if (clientX == null || clientY == null) return null;
+    const x = ((clientX - rect.left) * kanvas.width) / rect.width;
+    const y = ((clientY - rect.top) * kanvas.height) / rect.height;
+    const kolom = Math.floor(x / SEL_KANVAS);
+    const baris = Math.floor(y / SEL_KANVAS);
+    if (kolom < 0 || baris < 0 || kolom >= KOLOM_KANVAS || baris >= BARIS_KANVAS) return null;
+    return `${kolom},${baris}`;
+  }
+
   useEffect(() => {
     if (activeTab === "praktikum" && canvasRef.current) {
       const ctx = canvasRef.current.getContext("2d");
-      if (ctx) {
-        ctx.strokeStyle = "#4f46e5";
-        ctx.lineWidth = 4;
-        ctx.lineCap = "round";
-      }
+      if (ctx) gambarDasarKanvas(ctx);
     }
   }, [activeTab]);
 
-  const startDraw = (e: React.MouseEvent<HTMLCanvasElement> | React.TouchEvent<HTMLCanvasElement>) => {
-    const canvas = canvasRef.current;
-    if (!canvas) return;
-    const rect = canvas.getBoundingClientRect();
-    const clientX = "touches" in e ? e.touches[0].clientX : e.clientX;
-    const clientY = "touches" in e ? e.touches[0].clientY : e.clientY;
-    const ctx = canvas.getContext("2d");
-    if (ctx) {
-      ctx.beginPath();
-      ctx.moveTo(clientX - rect.left, clientY - rect.top);
-      setIsDrawing(true);
-      setStrokeCount((prev) => prev + 1);
+  const startDraw = (event: React.MouseEvent<HTMLCanvasElement> | React.TouchEvent<HTMLCanvasElement>) => {
+    const kunci = kunciPetak(event);
+    if (!kunci) return;
+    const ctx = canvasRef.current?.getContext("2d");
+    if (!ctx) return;
+    const sudah = petakRef.current.has(kunci);
+    gerakRef.current = { kunci, sudah, pindah: false };
+    setHasilGambar(null);
+    if (!sudah) {
+      petakRef.current.add(kunci);
+      gambarDasarKanvas(ctx);
     }
   };
 
-  const draw = (e: React.MouseEvent<HTMLCanvasElement> | React.TouchEvent<HTMLCanvasElement>) => {
-    if (!isDrawing) return;
-    const canvas = canvasRef.current;
-    if (!canvas) return;
-    const rect = canvas.getBoundingClientRect();
-    const clientX = "touches" in e ? e.touches[0].clientX : e.clientX;
-    const clientY = "touches" in e ? e.touches[0].clientY : e.clientY;
-    const ctx = canvas.getContext("2d");
-    if (ctx) {
-      ctx.lineTo(clientX - rect.left, clientY - rect.top);
-      ctx.stroke();
-    }
+  const draw = (event: React.MouseEvent<HTMLCanvasElement> | React.TouchEvent<HTMLCanvasElement>) => {
+    if (!gerakRef.current) return;
+    const kunci = kunciPetak(event);
+    if (!kunci || !gerakRef.current) return;
+    if (kunci !== gerakRef.current.kunci) gerakRef.current.pindah = true;
+    if (petakRef.current.has(kunci)) return;
+    const ctx = canvasRef.current?.getContext("2d");
+    if (!ctx) return;
+    petakRef.current.add(kunci);
+    gambarDasarKanvas(ctx);
   };
 
   const endDraw = () => {
-    setIsDrawing(false);
+    const gerak = gerakRef.current;
+    gerakRef.current = null;
+    if (!gerak || gerak.pindah || !gerak.sudah) return;
+    petakRef.current.delete(gerak.kunci);
+    const ctx = canvasRef.current?.getContext("2d");
+    if (ctx) gambarDasarKanvas(ctx);
   };
 
   const clearCanvas = () => {
-    const canvas = canvasRef.current;
-    if (!canvas) return;
-    const ctx = canvas.getContext("2d");
-    if (ctx) {
-      ctx.clearRect(0, 0, canvas.width, canvas.height);
-      setStrokeCount(0);
-      setCanvasFeedback(null);
-    }
+    petakRef.current = new Set();
+    gerakRef.current = null;
+    setHasilGambar(null);
+    const ctx = canvasRef.current?.getContext("2d");
+    if (ctx) gambarDasarKanvas(ctx);
   };
 
   const verifyLocalCanvas = () => {
-    if (strokeCount < 3) {
-      setCanvasFeedback("⚠️ Coretan belum lengkap! Ayo gambar minimal 3 susunan kotak tampak depan dan atas pada kanvas berpetak.");
-    } else {
-      setCanvasFeedback("🌟 Luar Biasa! Goresan proyeksi spasialmu sudah terekam dengan rapi di sistem lokal (Zero-API Validated).");
-    }
+    setHasilGambar(nilaiTampakDepan(petakRef.current));
   };
 
   // Handler Menjawab Soal & Klaim Token
@@ -2009,12 +2108,13 @@ export default function Bab3KubusBalokModule() {
             <p className="text-sm text-slate-600 mt-1">
               Bayangkan sebuah susunan balok berbentuk <strong>Huruf L</strong> yang terdiri dari 4 kubus satuan (tinggi tiang kiri 3 kubus, dan di sebelah kanannya ada 1 kubus). Gambarlah bentuk <strong>Tampak Depan</strong> di kanvas bawah ini!
             </p>
+            <p className="mt-1 text-sm font-bold text-slate-500">Satu petak sama dengan satu kubus. Ketuk petak yang salah untuk menghapusnya.</p>
 
             <div className="mt-5 flex flex-col items-center">
               <canvas
                 ref={canvasRef}
                 width={560}
-                height={300}
+                height={280}
                 onMouseDown={startDraw}
                 onMouseMove={draw}
                 onMouseUp={endDraw}
@@ -2022,12 +2122,7 @@ export default function Bab3KubusBalokModule() {
                 onTouchStart={startDraw}
                 onTouchMove={draw}
                 onTouchEnd={endDraw}
-                className="w-full max-w-[560px] h-[300px] bg-slate-50 border-2 border-dashed border-indigo-300 rounded-2xl cursor-crosshair touch-none"
-                style={{
-                  backgroundImage:
-                    "linear-gradient(to right, #e2e8f0 1px, transparent 1px), linear-gradient(to bottom, #e2e8f0 1px, transparent 1px)",
-                  backgroundSize: "35px 35px",
-                }}
+                className="aspect-[2/1] w-full max-w-[560px] cursor-crosshair touch-none rounded-2xl border-2 border-dashed border-indigo-300 bg-slate-50"
               />
 
               <div className="flex flex-wrap gap-3 mt-4">
@@ -2035,19 +2130,26 @@ export default function Bab3KubusBalokModule() {
                   onClick={clearCanvas}
                   className="px-5 py-2.5 rounded-xl border border-slate-300 text-slate-700 font-semibold text-sm hover:bg-slate-100"
                 >
-                  🗑️ Bersihkan Kanvas
+                  Bersihkan kanvas
                 </button>
                 <button
                   onClick={verifyLocalCanvas}
                   className="px-6 py-2.5 rounded-xl bg-indigo-600 hover:bg-indigo-700 text-white font-bold text-sm shadow-md"
                 >
-                  ✅ Periksa Gambarku (Lokal)
+                  Periksa gambar
                 </button>
               </div>
 
-              {canvasFeedback && (
-                <div className="mt-4 max-w-lg text-center bg-indigo-50 border border-indigo-200 text-indigo-900 px-4 py-3 rounded-xl text-sm font-bold">
-                  {canvasFeedback}
+              {hasilGambar && (
+                <div
+                  className={`mt-4 w-full max-w-[560px] rounded-2xl border-2 px-4 py-4 text-center ${
+                    hasilGambar.benar
+                      ? "border-emerald-400 bg-emerald-50 text-emerald-900"
+                      : "border-rose-400 bg-rose-50 text-rose-900"
+                  }`}
+                >
+                  <p className="text-3xl font-black tracking-wide">{hasilGambar.benar ? "BENAR" : "SALAH"}</p>
+                  <p className="mt-1 text-sm font-bold">{hasilGambar.alasan}</p>
                 </div>
               )}
             </div>
