@@ -1,9 +1,12 @@
 "use client";
 
 import { useState } from "react";
+import HasilJawabanKuis from "@/components/HasilJawabanKuis";
+import KartuPoinPenting from "@/components/KartuPoinPenting";
 import KuisTulisKartu from "@/components/KuisTulisKartu";
 import SoalRekamSuara from "@/components/SoalRekamSuara";
 import TombolVoiceMateriPai1 from "@/components/TombolVoiceMateriPai1";
+import { kelasTombolHasilKuis, statusDariPilihan } from "@/lib/hasil-kuis";
 import { jawabanTulisMemuatAlias } from "@/lib/nilai-kuis-tulis";
 import type { CuplikanVoiceMateri } from "@/lib/naskah-voice-pai-1-bab2";
 
@@ -43,11 +46,11 @@ const WAJAH: Record<NamaTokoh, string> = {
 };
 
 const WARNA: Record<NamaTokoh, string> = {
-  "Pak Bima": "border-[#0F766E] bg-[#F0FDFA]",
-  Lala: "border-[#DB2777]/30 bg-[#FDF2F8]",
-  Rio: "border-[#F0AB00] bg-[#FFF8E8]",
-  Cika: "border-[#2563EB]/30 bg-[#EFF6FF]",
-  "Kak Nara": "border-[#F0AB00] bg-[#FFF7ED]",
+  "Pak Bima": "border-[#16A34A]/20 bg-[#F0FDF4]",
+  Lala: "border-[#DB2777]/20 bg-[#FDF2F8]",
+  Rio: "border-amber-300 bg-amber-50",
+  Cika: "border-[#2563EB]/20 bg-[#EFF6FF]",
+  "Kak Nara": "border-amber-300 bg-amber-50",
 };
 
 const ADEGAN: AdeganRasio[] = [
@@ -711,13 +714,31 @@ function cocokAlias(teks: string, alias: string[]): boolean {
 
 function Dialog({ nama, teks }: BarisDialog) {
   return (
-    <article className={`w-full rounded-2xl border-2 px-5 py-4 md:px-6 md:py-5 ${WARNA[nama]}`}>
-      <p className="flex items-center gap-2 text-base font-black text-slate-800">
-        <span className="text-2xl" aria-hidden>{WAJAH[nama]}</span>
+    <article className={`rounded-2xl border-2 px-4 py-3 ${WARNA[nama]}`}>
+      <p className="flex items-center gap-2 text-xs font-black uppercase tracking-wide text-[#1C01A5]">
+        <span className="text-2xl leading-none" aria-hidden>{WAJAH[nama]}</span>
         {nama}
       </p>
-      <p className="mt-2 text-base leading-relaxed text-slate-700">{teks}</p>
+      <p className="mt-1 text-sm font-semibold leading-relaxed text-slate-700">{teks}</p>
     </article>
+  );
+}
+
+function Papan({ anak }: { anak: string }) {
+  return (
+    <p className="rounded-2xl border-2 border-sky-300 bg-sky-50 px-3 py-4 text-center text-xl font-black leading-snug text-[#1C01A5] sm:text-2xl">
+      {anak}
+    </p>
+  );
+}
+
+function KepalaBagian({ ikon, judul, anak }: { ikon: string; judul: string; anak?: string }) {
+  return (
+    <div>
+      <p className="text-center text-4xl" aria-hidden>{ikon}</p>
+      <h2 className="mt-3 text-center text-lg font-black tracking-wide text-[#1C01A5] sm:text-xl">{judul}</h2>
+      {anak ? <p className="mt-1 text-center text-sm font-semibold leading-relaxed text-slate-600">{anak}</p> : null}
+    </div>
   );
 }
 
@@ -728,10 +749,10 @@ function Figur({ jenis }: { jenis: AdeganRasio["figur"] }) {
         <figcaption className="text-base font-bold text-slate-700">Rak A 6 kantong, rak B 3 kantong. Rak A dua kali lipat.</figcaption>
         <div className="flex w-full flex-col gap-3 sm:flex-row sm:items-end sm:justify-between">
           <p className="text-3xl leading-tight">🌱🌱🌱🌱🌱🌱</p>
-          <p className="text-xl font-black text-[#1C01A5]">2 kali lipat</p>
+          <Papan anak="2 kali lipat" />
           <p className="text-3xl leading-tight">🌱🌱🌱</p>
         </div>
-        <p className="rounded-2xl border-2 border-[#F0AB00] bg-[#FFF8E8] px-4 py-3 text-base font-bold text-[#1C01A5]">Urutan penting: 6 dibanding 3 tidak sama dengan 3 dibanding 6.</p>
+        <Papan anak="Urutan penting: 6 dibanding 3 tidak sama dengan 3 dibanding 6." />
       </figure>
     );
   }
@@ -739,7 +760,7 @@ function Figur({ jenis }: { jenis: AdeganRasio["figur"] }) {
     return (
       <figure className="w-full">
         <p className="text-base font-bold text-slate-700">Resep jus, 3 bagian air dan 2 bagian sirup.</p>
-        <p className="mt-2 text-5xl font-black text-[#1C01A5]">3 : 2</p>
+        <Papan anak="3 : 2" />
         <p className="mt-1 text-base text-slate-600">Dibaca tiga banding dua. Sama dengan pecahan 3/2. Satuan harus sama.</p>
       </figure>
     );
@@ -748,7 +769,7 @@ function Figur({ jenis }: { jenis: AdeganRasio["figur"] }) {
     return (
       <figure className="w-full">
         <p className="text-base font-bold text-slate-700">Tiga resep, satu rasa. Kedua angka diperlakukan sama.</p>
-        <p className="mt-2 text-3xl font-black text-[#1C01A5]">2 : 3 → 4 : 6 → 6 : 9</p>
+        <Papan anak="2 : 3 → 4 : 6 → 6 : 9" />
         <p className="mt-1 text-base text-slate-600">Kali 2, lalu kali 3. Bagi 6 : 9 dengan 3 kembali ke 2 : 3.</p>
       </figure>
     );
@@ -757,7 +778,7 @@ function Figur({ jenis }: { jenis: AdeganRasio["figur"] }) {
     return (
       <figure className="w-full">
         <p className="text-base font-bold text-slate-700">4 kg jeruk seharga Rp60.000.</p>
-        <p className="mt-2 text-3xl font-black text-[#1C01A5]">Rp60.000 ÷ 4 = Rp15.000</p>
+        <Papan anak="Rp60.000 ÷ 4 = Rp15.000" />
         <p className="mt-1 text-base text-slate-600">Rasio satuan: 15.000 : 1, yaitu Rp15.000 per kg.</p>
       </figure>
     );
@@ -766,15 +787,15 @@ function Figur({ jenis }: { jenis: AdeganRasio["figur"] }) {
     return (
       <figure className="w-full space-y-1">
         <p className="text-base font-bold text-slate-700">5 mangga dan 7 jambu. Seluruhnya 12 buah.</p>
-        <p className="text-2xl font-black text-[#1C01A5]">Bagian : bagian = 5 : 7</p>
-        <p className="text-2xl font-black text-[#0F766E]">Bagian : keseluruhan = 5 : 12</p>
+        <Papan anak="Bagian : bagian = 5 : 7" />
+        <Papan anak="Bagian : keseluruhan = 5 : 12" />
       </figure>
     );
   }
   return (
     <figure className="w-full">
       <p className="text-base font-bold text-slate-700">Samakan satuan waktu dulu. 1 jam = 60 menit.</p>
-      <p className="mt-2 text-3xl font-black text-[#1C01A5]">20 menit : 50 menit = 2 : 5</p>
+      <Papan anak="20 menit : 50 menit = 2 : 5" />
       <p className="mt-1 text-base text-slate-600">120 km dalam 2 jam = 60 : 1, yaitu 60 km/jam.</p>
     </figure>
   );
@@ -782,34 +803,25 @@ function Figur({ jenis }: { jenis: AdeganRasio["figur"] }) {
 
 function Tabel({ kepala, baris }: { kepala: string[]; baris: string[][] }) {
   return (
-    <div className="w-full overflow-hidden rounded-2xl border-4 border-[#F0AB00]">
-      <table className="w-full border-collapse text-left text-base">
+    <div className="overflow-x-auto rounded-2xl border-2 border-[#1C01A5]/20">
+      <table className="w-full min-w-[16rem] border-collapse text-center text-sm font-bold">
         <thead>
-          <tr className="bg-[#1C01A5] text-white">
-            {kepala.map((sel) => (
-              <th key={sel} className="px-3 py-2 font-black">{sel}</th>
+          <tr>
+            {kepala.map((sel, indeks) => (
+              <th key={sel} className={`px-2 py-2 text-white ${["bg-teal-600", "bg-orange-500", "bg-violet-600", "bg-amber-500"][indeks % 4]}`}>{sel}</th>
             ))}
           </tr>
         </thead>
         <tbody>
           {baris.map((barisSel, barisIndeks) => (
-            <tr key={barisSel.join("|")} className={barisIndeks % 2 === 0 ? "bg-[#FFF7ED]" : "bg-[#F0FDF4]"}>
+            <tr key={barisSel.join("|")} className={barisIndeks % 2 === 0 ? "bg-white" : "bg-[#EEE9FF]"}>
               {barisSel.map((sel, indeks) => (
-                <td key={`${indeks}-${sel}`} className="border-t border-[#F0AB00]/40 px-3 py-3 font-bold text-slate-700">{sel}</td>
+                <td key={`${indeks}-${sel}`} className="border-t border-[#1C01A5]/10 px-2 py-2 text-[#1C01A5]">{sel}</td>
               ))}
             </tr>
           ))}
         </tbody>
       </table>
-    </div>
-  );
-}
-
-function KartuHasil({ benar, teks }: { benar: boolean; teks: string }) {
-  return (
-    <div className={`w-full rounded-2xl border-4 px-5 py-4 text-base leading-relaxed md:px-6 md:py-5 ${benar ? "border-emerald-600 bg-emerald-50 text-emerald-950" : "border-rose-600 bg-rose-50 text-rose-950"}`}>
-      <p className="text-xl font-black">{benar ? "BENAR" : "SALAH"}</p>
-      <p className="mt-2">{teks}</p>
     </div>
   );
 }
@@ -828,11 +840,10 @@ function KuisPilih({
   onNilai?: (benar: boolean) => void;
 }) {
   const [pilih, setPilih] = useState("");
-  const tepat = pilih === benar;
   return (
-    <div className="w-full space-y-3">
-      <p className="text-base font-extrabold leading-relaxed text-[#1C01A5]">{tanya}</p>
-      <div className="grid w-full gap-2">
+    <article className="rounded-2xl border-2 border-[#1C01A5]/15 bg-white p-4">
+      <p className="text-sm font-semibold leading-relaxed text-slate-700">{tanya}</p>
+      <div className="mt-3 grid gap-2">
         {opsi.map((item) => (
           <button
             key={item.huruf}
@@ -842,20 +853,20 @@ function KuisPilih({
               setPilih(item.huruf);
               onNilai?.(item.huruf === benar);
             }}
-            className={`w-full rounded-xl border-2 px-5 py-3 text-left text-base font-bold ${
-              pilih === item.huruf
-                ? item.huruf === benar
-                  ? "border-emerald-600 bg-emerald-600 text-white"
-                  : "border-rose-600 bg-rose-600 text-white"
-                : "border-[#F0AB00] bg-[#1C01A5] text-white"
-            }`}
+            className={`rounded-xl px-3 py-2 text-left text-sm font-bold ${kelasTombolHasilKuis(
+              pilih,
+              item.huruf,
+              benar,
+              "bg-[#1C01A5] text-white hover:bg-[#16017a]",
+            )}`}
           >
             {item.huruf}. {item.teks}
           </button>
         ))}
       </div>
-      {pilih ? <KartuHasil benar={tepat} teks={umpan} /> : null}
-    </div>
+      <HasilJawabanKuis status={statusDariPilihan(pilih, benar)} cuplikan={pilih || undefined} pesanSalah="Coba hitung lagi." />
+      {pilih ? <p className="mt-2 text-sm font-bold text-emerald-800">{umpan}</p> : null}
+    </article>
   );
 }
 
@@ -876,16 +887,16 @@ function KuisCocok({
   const tepat = pasangan.every((item, indeks) => peta[indeks] === item.kanan);
   const pilihan = pasangan.map((item) => item.kanan);
   return (
-    <div className="w-full space-y-3">
-      <p className="text-base font-extrabold leading-relaxed text-[#1C01A5]">{tanya}</p>
-      <p className="text-base text-slate-600">Ketuk baris, lalu ketuk pasangannya.</p>
+    <article className="rounded-2xl border-2 border-violet-200 bg-violet-50 p-4">
+      <p className="text-sm font-black text-violet-950">{tanya}</p>
+      <p className="mt-1 text-xs font-semibold text-violet-900">Ketuk baris, lalu ketuk pasangannya.</p>
       <div className="grid w-full gap-2">
         {pasangan.map((item, indeks) => (
           <button
             key={item.kiri}
             type="button"
             onClick={() => setAktif(indeks)}
-            className={`w-full rounded-xl border-2 px-5 py-3 text-left text-base ${aktif === indeks ? "border-[#F0AB00] bg-[#FFF8E8]" : "border-[#1C01A5]/20 bg-white"}`}
+            className={`rounded-xl border-2 px-3 py-2 text-left text-sm font-bold ${aktif === indeks ? "border-violet-400 bg-white ring-2 ring-violet-400" : "border-sky-200 bg-white"}`}
           >
             <span className="font-black">{item.kiri}</span>
             <span className="mt-1 block">{peta[indeks] || "Belum dipasangkan"}</span>
@@ -901,7 +912,7 @@ function KuisCocok({
               setPeta((lama) => ({ ...lama, [aktif]: kanan }));
               setCek(false);
             }}
-            className="rounded-xl border-2 border-[#F0AB00] bg-white px-4 py-2 text-base font-bold text-[#1C01A5]"
+            className="rounded-full bg-white px-3 py-2 text-sm font-bold text-[#1C01A5] ring-2 ring-[#1C01A5]/20"
           >
             {kanan}
           </button>
@@ -913,12 +924,17 @@ function KuisCocok({
           setCek(true);
           onNilai?.(tepat);
         }}
-        className="rounded-xl border-2 border-[#F0AB00] bg-[#1C01A5] px-4 py-2 text-base font-black text-white"
+        className="mt-3 rounded-full bg-emerald-600 px-4 py-2 text-sm font-black text-white"
       >
         Periksa pasangan
       </button>
-      {cek ? <KartuHasil benar={tepat} teks={umpan} /> : null}
-    </div>
+      {cek ? (
+        <div className="mt-3">
+          <HasilJawabanKuis status={tepat ? "benar" : "salah"} pesanSalah="Cocokkan lagi." />
+          <p className="mt-2 text-sm font-bold text-emerald-800">{umpan}</p>
+        </div>
+      ) : null}
+    </article>
   );
 }
 
@@ -940,9 +956,9 @@ function KuisSusun({
   const [cek, setCek] = useState(false);
   const tepat = susun.length === urutan.length && susun.every((item, indeks) => item.kode === urutan[indeks]);
   return (
-    <div className="w-full space-y-3">
-      <p className="text-base font-extrabold leading-relaxed text-[#1C01A5]">{tanya}</p>
-      <p className="text-lg font-black text-slate-800">{susun.map((item) => item.teks).join(" → ") || "Ketuk langkah sesuai urutan."}</p>
+    <article className="rounded-2xl border-2 border-sky-200 bg-sky-50 p-4">
+      <p className="text-sm font-black text-[#1C01A5]">{tanya}</p>
+      <p className="mt-2 text-center text-lg font-black text-[#1C01A5]">{susun.map((item) => item.teks).join(" → ") || "Ketuk langkah sesuai urutan."}</p>
       <div className="flex w-full flex-wrap gap-2">
         {sisa.map((item) => (
           <button
@@ -953,7 +969,7 @@ function KuisSusun({
               setSusun((lama) => [...lama, item]);
               setCek(false);
             }}
-            className="rounded-xl border-2 border-[#F0AB00] bg-white px-4 py-2 text-base font-bold text-[#1C01A5]"
+            className="rounded-full bg-white px-4 py-2 text-sm font-black text-[#1C01A5] ring-2 ring-sky-300"
           >
             {item.teks}
           </button>
@@ -965,12 +981,17 @@ function KuisSusun({
           setCek(true);
           onNilai?.(tepat);
         }}
-        className="rounded-xl border-2 border-[#F0AB00] bg-[#1C01A5] px-4 py-2 text-base font-black text-white"
+        className="mt-3 rounded-full bg-sky-600 px-4 py-2 text-sm font-black text-white"
       >
         Periksa urutan
       </button>
-      {cek ? <KartuHasil benar={tepat} teks={umpan} /> : null}
-    </div>
+      {cek ? (
+        <div className="mt-3">
+          <HasilJawabanKuis status={tepat ? "benar" : "salah"} pesanSalah="Urutkan lagi dari awal." />
+          <p className="mt-2 text-sm font-bold text-emerald-800">{umpan}</p>
+        </div>
+      ) : null}
+    </article>
   );
 }
 
@@ -987,9 +1008,9 @@ function KuisBenarSalah({
 }) {
   const [pilih, setPilih] = useState<boolean | null>(null);
   return (
-    <div className="w-full space-y-3">
-      <p className="text-base font-extrabold leading-relaxed text-[#1C01A5]">{tanya}</p>
-      <div className="flex w-full gap-2">
+    <article className="rounded-2xl border-2 border-violet-200 bg-violet-50 p-4">
+      <p className="text-sm font-black text-[#1C01A5]">{tanya}</p>
+      <div className="mt-3 flex gap-2">
         {[true, false].map((nilai) => (
           <button
             key={String(nilai)}
@@ -999,24 +1020,29 @@ function KuisBenarSalah({
               setPilih(nilai);
               onNilai?.(nilai === benar);
             }}
-            className={`w-full rounded-xl border-2 px-5 py-3 text-base font-black ${
-              pilih === nilai ? "border-[#F0AB00] bg-[#1C01A5] text-white" : "border-[#1C01A5]/20 bg-white text-[#1C01A5]"
+            className={`rounded-full px-4 py-2 text-sm font-black ${
+              pilih === nilai ? "bg-violet-700 text-white" : "bg-white text-[#1C01A5] ring-2 ring-violet-200"
             }`}
           >
             {nilai ? "Benar" : "Salah"}
           </button>
         ))}
       </div>
-      {pilih !== null ? <KartuHasil benar={pilih === benar} teks={umpan} /> : null}
-    </div>
+      {pilih !== null ? (
+        <div className="mt-3">
+          <HasilJawabanKuis status={pilih === benar ? "benar" : "salah"} pesanSalah="Baca lagi pernyataannya." />
+          <p className="mt-2 text-sm font-bold text-emerald-800">{umpan}</p>
+        </div>
+      ) : null}
+    </article>
   );
 }
 
 function KuisSuaraLokal({ tanya, alias, kunci, onNilai }: KuisSingkat & { onNilai?: (benar: boolean) => void }) {
   const [tepat, setTepat] = useState<boolean | null>(null);
   return (
-    <div className="w-full space-y-3 border-t-2 border-[#1C01A5]/10 pt-5">
-      <p className="text-base font-extrabold leading-relaxed text-[#1C01A5]">QUIZ:</p>
+    <div className="mt-3 border-t-2 border-teal-300 pt-3">
+      <p className="text-xs font-black uppercase tracking-wide text-[#1C01A5]">Kuis suara</p>
       <SoalRekamSuara
         pertanyaan={<span className="text-base font-bold">{tanya}</span>}
         periksa={(teks) => cocokAlias(teks, alias)}
@@ -1025,7 +1051,7 @@ function KuisSuaraLokal({ tanya, alias, kunci, onNilai }: KuisSingkat & { onNila
           onNilai?.(hasil);
         }}
       />
-      {tepat ? <p className="text-base leading-relaxed text-[#1C01A5]">{kunci}</p> : null}
+      {tepat ? <p className="mt-2 text-sm font-bold text-emerald-800">{kunci}</p> : null}
     </div>
   );
 }
@@ -1044,12 +1070,12 @@ function KuisTulis({
   const [jawaban, setJawaban] = useState("");
   const [hasil, setHasil] = useState<boolean | null>(null);
   return (
-    <div className="w-full space-y-3">
-      <p className="text-base font-extrabold leading-relaxed text-[#1C01A5]">{tanya}</p>
+    <article className="rounded-2xl border-2 border-[#1C01A5]/15 bg-[#F8F7FF] p-4">
+      <p className="text-sm font-semibold leading-relaxed text-slate-700">{tanya}</p>
       <input
         value={jawaban}
         onChange={(event) => setJawaban(event.target.value)}
-        className="w-full rounded-xl border-2 border-[#1C01A5]/20 px-4 py-3 text-base font-extrabold text-[#1C01A5] outline-none focus:border-[#F0AB00]"
+        className="mt-3 w-full rounded-xl border-2 border-[#1C01A5]/20 px-3 py-2 font-extrabold text-[#1C01A5] outline-none focus:border-[#F0AB00]"
       />
       <button
         type="button"
@@ -1058,12 +1084,17 @@ function KuisTulis({
           setHasil(ok);
           onNilai?.(ok);
         }}
-        className="rounded-xl border-2 border-[#F0AB00] bg-[#1C01A5] px-4 py-2 text-base font-black text-white"
+        className="mt-3 rounded-xl bg-[#1C01A5] px-4 py-2 text-sm font-black text-white hover:bg-[#16017a]"
       >
-        Periksa jawaban
+        Periksa
       </button>
-      {hasil !== null ? <KartuHasil benar={hasil} teks={hasil ? umpan : `Belum tepat. ${umpan}`} /> : null}
-    </div>
+      {hasil !== null ? (
+        <div className="mt-3">
+          <HasilJawabanKuis status={hasil ? "benar" : "salah"} cuplikan={jawaban} pesanSalah="Coba tulis lagi." />
+          <p className="mt-2 text-sm font-bold text-emerald-800">{umpan}</p>
+        </div>
+      ) : null}
+    </article>
   );
 }
 
@@ -1088,11 +1119,7 @@ function KuisKanvasLokal({
           onNilai?.(benar);
         }}
       />
-      {selesai ? (
-        <p className="mt-3 rounded-2xl border-2 border-[#F0AB00] bg-[#FFF8E8] px-4 py-3 text-base font-bold leading-relaxed text-[#1C01A5]">
-          {kunci}
-        </p>
-      ) : null}
+      {selesai ? <p className="mt-2 text-sm font-bold text-emerald-800">{kunci}</p> : null}
     </div>
   );
 }
@@ -1125,18 +1152,7 @@ function RenderPermainan({
   return <KuisKanvasLokal id={item.id} tanya={item.tanya} alias={item.alias} kunci={item.umpan} onNilai={onNilai} />;
 }
 
-const TAB = [
-  { id: "naskah", label: "A. Naskah" },
-  { id: "info", label: "B. Infografis" },
-  { id: "misi", label: "C. Misi" },
-  { id: "poin", label: "D. Poin penting" },
-  { id: "evaluasi", label: "Evaluasi" },
-] as const;
-
-type TabId = (typeof TAB)[number]["id"];
-
 export default function Bab2RasioModule() {
-  const [tab, setTab] = useState<TabId>("naskah");
   const [skorMisi, setSkorMisi] = useState<Record<string, number>>({});
   const [salahMisi, setSalahMisi] = useState<Record<string, boolean>>({});
   const poinDaun = Object.values(skorMisi).reduce((jumlah, nilai) => jumlah + nilai, 0);
@@ -1151,141 +1167,102 @@ export default function Bab2RasioModule() {
   };
 
   return (
-    <div className="min-h-screen bg-[#FFFDF6] pb-16 text-slate-800">
-      <header className="bg-[#1C01A5] text-white">
-        <div className="w-full px-2 py-4 sm:px-4">
-          <p className="text-sm font-bold uppercase tracking-wide text-[#F0AB00]">Kelas 6 SD · Fase C · Rumah Kaca Ajaib</p>
-          <h1 className="mt-1 text-2xl font-black md:text-3xl">Bab 2: Rasio</h1>
-          <p className="mt-1 text-base text-white/90">Kak Nara, Pak Bima, Lala, Rio, dan Cika</p>
-        </div>
-        <div className="flex w-full gap-2 overflow-x-auto px-2 pb-3 sm:px-4">
-          {TAB.map((item) => (
-            <button
-              key={item.id}
-              type="button"
-              onClick={() => setTab(item.id)}
-              className={`whitespace-nowrap rounded-full border-2 px-4 py-2 text-sm font-black ${
-                tab === item.id
-                  ? "border-[#F0AB00] bg-white text-[#1C01A5]"
-                  : "border-[#F0AB00]/70 bg-transparent text-[#F0AB00]"
-              }`}
-            >
-              {item.label}
-            </button>
+    <div className="space-y-5">
+      <section className="space-y-4">
+        <KepalaBagian
+          ikon="🦉👨‍🏫"
+          judul="A. Naskah bergambar"
+          anak="Di rumah kaca ini kamu membandingkan benda, menulis rasio, mencari rasio yang senilai, dan membedakan bagian dengan keseluruhan."
+        />
+        {ADEGAN.map((adegan) => (
+          <section key={adegan.id} className="space-y-3 border-b-4 border-[#1C01A5] pb-8">
+            <p className="text-xl font-black leading-snug text-[#1C01A5]">{adegan.judul}</p>
+            <TombolVoiceMateriPai1 cuplikan={cuplikan(adegan.suara)} />
+            <Figur jenis={adegan.figur} />
+            <div className="space-y-2">
+              {adegan.dialog.map((baris) => (
+                <Dialog key={`${adegan.id}-${baris.nama}-${baris.teks}`} nama={baris.nama} teks={baris.teks} />
+              ))}
+            </div>
+            <KuisSuaraLokal {...adegan.suaraKuis} />
+            <KuisKanvasLokal id={`${adegan.id}-kanvas`} {...adegan.kanvas} />
+          </section>
+        ))}
+        <p className="text-xs font-black uppercase tracking-wide text-[#1C01A5]">Tantangan akhir naskah</p>
+        <div className="space-y-3">
+          {PERMAINAN_A.map((item) => (
+            <RenderPermainan key={item.id} item={item} />
           ))}
         </div>
-      </header>
+      </section>
 
-      <main className="mt-6 w-full space-y-8 px-2 sm:px-4">
-        {tab === "naskah" ? (
-          <>
-            <section className="space-y-3">
-              <h2 className="text-2xl font-black text-[#1C01A5]">A. Naskah bergambar</h2>
-              <p className="text-base leading-relaxed">
-                Di rumah kaca ini kamu membandingkan benda, menulis rasio, mencari rasio yang senilai, dan membedakan bagian dengan keseluruhan.
-              </p>
-            </section>
-            {ADEGAN.map((adegan) => (
-              <section key={adegan.id} className="space-y-4 border-t border-[#1C01A5]/15 pt-6">
-                <h3 className="text-xl font-black text-[#1C01A5]">{adegan.judul}</h3>
-                <TombolVoiceMateriPai1 cuplikan={cuplikan(adegan.suara)} />
-                <Figur jenis={adegan.figur} />
-                <div className="space-y-3">
-                  {adegan.dialog.map((baris) => (
-                    <Dialog key={`${adegan.id}-${baris.nama}-${baris.teks}`} nama={baris.nama} teks={baris.teks} />
-                  ))}
-                </div>
-                <KuisSuaraLokal {...adegan.suaraKuis} />
-                <KuisKanvasLokal id={`${adegan.id}-kanvas`} {...adegan.kanvas} />
-              </section>
-            ))}
-            <section className="space-y-6 border-t border-[#1C01A5]/15 pt-6">
-              <h3 className="text-xl font-black text-[#1C01A5]">Tantangan akhir naskah</h3>
-              {PERMAINAN_A.map((item) => (
-                <RenderPermainan key={item.id} item={item} />
-              ))}
-            </section>
-          </>
-        ) : null}
-
-        {tab === "info" ? (
-          <>
-            <section className="space-y-3">
-              <h2 className="text-2xl font-black text-[#1C01A5]">B. Infografis</h2>
-              <p className="text-base leading-relaxed">Tabel ini merangkum cara membandingkan, menulis rasio, dan menyamakan satuan.</p>
-            </section>
-            {INFOGRAFIS.map((kartu) => (
-              <section key={kartu.id} className="space-y-4 border-t border-[#1C01A5]/15 pt-6">
-                <h3 className="text-xl font-black text-[#1C01A5]">{kartu.judul}</h3>
-                <TombolVoiceMateriPai1 cuplikan={cuplikan(kartu.suara)} />
-                <Tabel kepala={kartu.tabel.kepala} baris={kartu.tabel.baris} />
-                <p className="text-base leading-relaxed">{kartu.contoh}</p>
-                <KuisSuaraLokal {...kartu.suaraKuis} />
-                <KuisKanvasLokal id={`${kartu.id}-kanvas`} {...kartu.kanvas} />
-              </section>
-            ))}
-            <section className="space-y-6 border-t border-[#1C01A5]/15 pt-6">
-              <h3 className="text-xl font-black text-[#1C01A5]">Tantangan akhir infografis</h3>
-              {PERMAINAN_B.map((item) => (
-                <RenderPermainan key={item.id} item={item} />
-              ))}
-            </section>
-          </>
-        ) : null}
-
-        {tab === "misi" ? (
-          <section className="space-y-6">
-            <div className="space-y-3">
-              <h2 className="text-2xl font-black text-[#1C01A5]">C. Misi menyelamatkan rumah kaca</h2>
-              <TombolVoiceMateriPai1 cuplikan={cuplikan("Kamu jadi Asisten Rumah Kaca! Selesaikan 10 misi dengan rasio. Kumpulkan Poin Daun sampai 70 untuk membuka Pintu Rumah Kaca!")} />
-              <p className="text-base leading-relaxed">
-                Jawaban benar pada percobaan pertama memberi 10 poin daun. Benar setelah salah sekali memberi 5 poin. Pintu terbuka pada 70 poin.
-              </p>
-              <p className="text-2xl font-black text-[#1C01A5]">
-                {poinDaun} poin daun {poinDaun >= 70 ? "· pintu terbuka" : "· pintu masih tertutup"}
-              </p>
-            </div>
-            {MISI.map((item) => (
-              <div key={item.id} className="border-t border-[#1C01A5]/15 pt-6">
-                <RenderPermainan item={item} onNilai={(benar) => nilaiMisi(item.id, benar)} />
-                {skorMisi[item.id] ? (
-                  <p className="mt-2 text-base font-bold text-[#1C01A5]">+{skorMisi[item.id]} poin daun</p>
-                ) : null}
-              </div>
-            ))}
+      <section className="space-y-4">
+        <KepalaBagian
+          ikon="📊"
+          judul="B. Infografis"
+          anak="Tabel ini merangkum cara membandingkan, menulis rasio, dan menyamakan satuan."
+        />
+        {INFOGRAFIS.map((kartu) => (
+          <section key={kartu.id} className="space-y-3">
+            <p className="text-xs font-black uppercase tracking-wide text-[#1C01A5]">{kartu.judul}</p>
+            <TombolVoiceMateriPai1 cuplikan={cuplikan(kartu.suara)} />
+            <Tabel kepala={kartu.tabel.kepala} baris={kartu.tabel.baris} />
+            <p className="text-sm font-semibold leading-relaxed text-slate-700">{kartu.contoh}</p>
+            <KuisSuaraLokal {...kartu.suaraKuis} />
+            <KuisKanvasLokal id={`${kartu.id}-kanvas`} {...kartu.kanvas} />
           </section>
-        ) : null}
+        ))}
+        <p className="text-xs font-black uppercase tracking-wide text-[#1C01A5]">Tantangan akhir infografis</p>
+        <div className="space-y-3">
+          {PERMAINAN_B.map((item) => (
+            <RenderPermainan key={item.id} item={item} />
+          ))}
+        </div>
+      </section>
 
-        {tab === "poin" ? (
-          <section className="space-y-4">
-            <h2 className="text-2xl font-black text-[#1C01A5]">D. Poin penting</h2>
-            <TombolVoiceMateriPai1 cuplikan={cuplikan("Ini kalimat-kalimat kunci bab Rasio. Ingat-ingat ya!")} />
-            <div className="w-full rounded-2xl border-2 border-[#F0AB00] bg-[#FFF8E8] px-5 py-4 md:px-6 md:py-5">
-              <ul className="space-y-3">
-                {POIN.map((teks) => (
-                  <li key={teks} className="text-base leading-relaxed text-slate-800">{teks}</li>
-                ))}
-              </ul>
+      <section className="space-y-4">
+        <KepalaBagian
+          ikon="🌿"
+          judul="C. Misi menyelamatkan rumah kaca"
+          anak="Jawaban benar pada percobaan pertama memberi 10 poin daun. Benar setelah salah sekali memberi 5 poin. Pintu terbuka pada 70 poin."
+        />
+        <TombolVoiceMateriPai1 cuplikan={cuplikan("Kamu jadi Asisten Rumah Kaca! Selesaikan 10 misi dengan rasio. Kumpulkan Poin Daun sampai 70 untuk membuka Pintu Rumah Kaca!")} />
+        <p className="text-center text-sm font-black text-[#1C01A5]">
+          {poinDaun} poin daun · {poinDaun >= 70 ? "pintu terbuka" : "pintu masih tertutup"}
+        </p>
+        <div className="space-y-3">
+          {MISI.map((item) => (
+            <div key={item.id}>
+              <RenderPermainan item={item} onNilai={(benar) => nilaiMisi(item.id, benar)} />
+              {skorMisi[item.id] ? (
+                <p className="mt-2 text-center text-sm font-black text-[#1C01A5]">+{skorMisi[item.id]} poin daun</p>
+              ) : null}
             </div>
-          </section>
-        ) : null}
+          ))}
+        </div>
+      </section>
 
-        {tab === "evaluasi" ? (
-          <section className="space-y-6">
-            <div className="space-y-3">
-              <h2 className="text-2xl font-black text-[#1C01A5]">Lembar evaluasi</h2>
-              <TombolVoiceMateriPai1 cuplikan={cuplikan("Baca soal pelan-pelan. Tulis langkahmu, bukan hanya jawaban. Ingat samakan satuan dulu. Semangat!")} />
-              <p className="text-base leading-relaxed">Sepuluh soal. Samakan satuan sebelum membandingkan waktu.</p>
+      <KartuPoinPenting
+        cuplikan={cuplikan("Ini kalimat-kalimat kunci bab Rasio. Ingat-ingat ya!")}
+        poin={POIN}
+      />
+
+      <section className="space-y-4">
+        <KepalaBagian
+          ikon="📝"
+          judul="Lembar evaluasi"
+          anak="Sepuluh soal. Samakan satuan sebelum membandingkan waktu."
+        />
+        <TombolVoiceMateriPai1 cuplikan={cuplikan("Baca soal pelan-pelan. Tulis langkahmu, bukan hanya jawaban. Ingat samakan satuan dulu. Semangat!")} />
+        <div className="space-y-3">
+          {EVALUASI.map((item, indeks) => (
+            <div key={item.id} className="space-y-2">
+              <p className="text-xs font-black uppercase tracking-wide text-[#1C01A5]">Soal {indeks + 1}</p>
+              <RenderPermainan item={item} />
             </div>
-            {EVALUASI.map((item, indeks) => (
-              <div key={item.id} className="border-t border-[#1C01A5]/15 pt-6">
-                <p className="mb-2 text-sm font-black uppercase text-[#1C01A5]">Soal {indeks + 1}</p>
-                <RenderPermainan item={item} />
-              </div>
-            ))}
-          </section>
-        ) : null}
-      </main>
+          ))}
+        </div>
+      </section>
     </div>
   );
 }
