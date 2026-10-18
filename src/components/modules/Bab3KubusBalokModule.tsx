@@ -44,146 +44,157 @@ export const BAB3_MATERIALS: SubChapterMaterial[] = [
     id: "sub-a",
     code: "Sub-Bab A",
     title: "Mengonstruksi dan Mengurai Bangun Ruang",
-    subtitle: "Eksplorasi 3.1 & 3.2: Menyusun dan Membongkar Kubus Satuan",
+    subtitle: "Eksplorasi 3.1 & 3.2: Arsitek Bangunan dari Kontainer Bekas",
     storyHook: {
-      character: "Aktivitas Kelas Kurikulum Merdeka",
-      avatar: "📦",
+      character: "Arsitek Bangunan Ramah Lingkungan",
+      avatar: "🏗️",
       dialogue:
-        "Perhatikan kardus-kardus kecil berbentuk kubus satuan yang disusun membentuk balok besar. Ketika melihat gambar susunan kubus pada buku, ada kubus-kubus tertentu yang berada di lapisan bawah atau belakang yang tidak terlihat langsung oleh mata.",
+        "Dalam Eksplorasi 3.1 kalian akan bermain peran sebagai seorang arsitek yang merancang bangunan dari susunan kontainer bekas. Kontainer pengiriman barang berbentuk balok dan kubus dapat disusun menjadi rumah tinggal, kafe, atau ruang kelas yang kreatif. Bentuk bangunan yang bagaimana yang dapat kalian rancang dari susunan kontainer tersebut?",
       question:
-        "Bagaimana caramu membongkar dan menghitung seluruh kubus satuan penyusunnya tanpa ada kubus tersembunyi yang terlewat?",
+        "Bagaimana cara menggambar susunan kontainer 3D di kertas isometrik dan menghitung seluruh kontainer yang tertutup di bagian belakang?",
     },
     coreConcepts: [
       {
-        heading: "1. Konsep Mengonstruksi (Menyusun)",
+        heading: "1. Mengonstruksi Bangun Ruang (Eksplorasi 3.1)",
         content:
-          "Mengonstruksi artinya menyusun kubus-kubus satuan menjadi sebuah bangun ruang baru (kubus besar atau balok).",
+          "Mengonstruksi adalah kegiatan menyusun atau membangun bentuk ruang baru dari kubus atau balok satuan. Dalam merancang bangunan kontainer:",
         keyPoints: [
-          "Setiap kubus satuan memiliki ukuran 1 satuan panjang × 1 satuan lebar × 1 satuan tinggi.",
-          "Jika balok tersusun rapat tanpa celah, banyak kubus satuan pada satu lapis mendatar dihitung dari: Banyak Kubus Baris Depan × Banyak Kubus Baris Samping.",
-          "Total seluruh kubus satuan = Banyak kubus pada satu lapis alas × Banyak lapis tingginya.",
+          "Dua kubus/balok dikatakan tersusun jika setidaknya ada satu sisi muka yang menempel penuh dengan sisi muka kontainer lainnya.",
+          "Meskipun susunan kontainer diputar posisinya, jika susunan bentuk dasarnya sama, maka dianggap sebagai satu cara konstruksi yang sama.",
+          "Kertas Isometrik: Kertas dengan pola kisi titik-titik segitiga yang digunakan para arsitek untuk menggambar bentuk 3 dimensi secara proporsional.",
         ],
         visualType: "anatomy",
       },
       {
-        heading: "2. Konsep Mengurai (Membongkar per Lapis)",
+        heading: "2. Mengurai dan Menghitung Kubus Satuan (Eksplorasi 3.2)",
         content:
-          "Mengurai artinya memecah bangun ruang susunan menjadi bagian-bagian lapisan atau tiang untuk melihat bagian dalamnya.",
+          "Mengurai adalah membongkar atau memecah susunan bangunan menjadi unit-unit pembentuknya. Saat melihat gambar susunan kontainer di buku, kita harus jeli menghitung:",
         keyPoints: [
-          "Urai Berdasarkan Lapisan (Lantai): Pisahkan susunan menjadi Lapis 1 (paling bawah), Lapis 2 (tengah), dan Lapis 3 (atas). Hitung isi tiap lapis lalu jumlahkan.",
-          "Urai Berdasarkan Tiang: Hitung tinggi tumpukan pada tiap petak alas, lalu jumlahkan angka tinggi dari semua petak.",
-          "Kubus Tersembunyi: Kubus yang tertutup kubus lain di depannya tetap dihitung sebagai kubus penyusun.",
+          "Lapisan Bawah (Lantai 1): Menyokong kontainer di atasnya. Kontainer yang berada di bawah kontainer lain tetap dihitung meskipun tidak terlihat langsung dari depan.",
+          "Metode Urai Per Lantai: Hitung kontainer pada lantai dasar, lalu lantai 2, dan lantai 3, kemudian jumlahkan.",
+          "Metode Urai Tiang: Tulis angka tinggi tumpukan pada denah alas bangun.",
         ],
         visualType: "anatomy",
       },
     ],
     workedExamples: [
       {
-        title: "Contoh Resmi: Menghitung Balok Bertingkat",
+        title: "Eksplorasi 3.1: Menyusun 3 Kontainer Berbentuk Kubus",
         problem:
-          "Sebuah susunan kubus memiliki 2 lapis. Lapis bawah berukuran 3 × 2 kubus satuan penuh. Lapis atas hanya memiliki 2 kubus di sisi kiri. Berapa total kubus penyusunnya?",
+          "Berapa banyak cara berbeda kalian dapat menyusun 3 kontainer kubus agar setiap kontainer saling menempel satu sisi penuh?",
         steps: [
-          "Langkah 1 (Lapis Bawah): Hitung kubus alas = 3 × 2 = 6 kubus satuan.",
-          "Langkah 2 (Lapis Atas): Hitung kubus tambahan = 2 kubus satuan.",
-          "Langkah 3: Jumlahkan kedua lapisan = 6 + 2 = 8 kubus satuan.",
+          "Bentuk 1 (Garis Lurus): 3 kubus disusun memanjang membentuk balok berukuran 3 × 1 × 1 (baik mendatar maupun diberdirikan tegak, ini adalah bentuk yang sama).",
+          "Bentuk 2 (Bentuk Sudut / Huruf L): 2 kubus berjajar lalu 1 kubus diletakkan di samping membentuk siku-siku di satu lantai datar.",
+          "Apakah bentuk L tegak berbeda dengan L tidur? Tidak, itu hanya susunan yang sama yang diputar posisinya.",
         ],
-        conclusion: "Bangun ruang tersebut tersusun dari 8 kubus satuan.",
+        conclusion: "Hanya ada 2 cara bentuk dasar yang berbeda untuk menyusun 3 kontainer kubus.",
+      },
+      {
+        title: "Eksplorasi 3.2: Menghitung Kontainer Tersembunyi",
+        problem:
+          "Sebuah kantor kontainer bertingkat memiliki tampak alas 2 × 2. Di atas lantai dasar berukuran 4 kontainer, diletakkan 2 kontainer di bagian belakang lantai 2. Berapa total kontainer yang dibutuhkan?",
+        steps: [
+          "Urai Lantai 1 (Dasar): Tersusun dari 2 × 2 = 4 kontainer (dua di depan terlihat, dua di belakang tertutup tumpukan atas).",
+          "Urai Lantai 2 (Atas): Tersusun dari 2 kontainer di belakang.",
+          "Hitung total kontainer: 4 kontainer lantai dasar + 2 kontainer lantai atas = 6 kontainer.",
+        ],
+        conclusion: "Total bangunan membutuhkan 6 kontainer bekas.",
       },
     ],
     dictionary: [
       {
         term: "Mengonstruksi",
-        definition: "Menyusun kubus-kubus satuan menjadi bangun ruang baru.",
+        definition: "Membangun atau menyusun kubus/balok satuan menjadi suatu bentuk bangun ruang gabungan.",
       },
       {
         term: "Mengurai",
-        definition: "Membongkar susunan bangun ruang menjadi lapisan atau bagian penyusunnya.",
+        definition: "Membongkar susunan bangun ruang menjadi bagian-bagian atau lapisan pembentuknya.",
       },
       {
-        term: "Kubus Satuan",
-        definition: "Satuan dasar takar volume berukuran 1 × 1 × 1.",
+        term: "Kertas Isometrik",
+        definition: "Kertas bergaris/titik kisi bersudut miring untuk memudahkan menggambar bentuk bangun ruang 3D.",
       },
     ],
     offlineActivities: {
       teacherGuide: [
-        "Sediakan dadu atau kubus kayu di kelas.",
-        "Minta siswa membuat susunan bertingkat lalu menggambar tiap lapisnya di buku tulis.",
+        "Ajak peserta didik melakukan Eksplorasi 3.1 secara berpasangan menggunakan 3 buah kubus, 3 buah balok, dan kertas isometrik.",
+        "Diskusikan mengapa dua susunan yang tampak berbeda saat diputar sebenarnya adalah bangun yang sama.",
       ],
       parentGuide: [
-        "Gunakan kotak gula atau biskuit kecil untuk latihan menyusun tumpukan di rumah.",
+        "Sediakan kardus bekas kotak obat/sabun. Ajak anak menggambar susunan kardus di atas kertas buku.",
       ],
     },
   },
   {
     id: "sub-b",
     code: "Sub-Bab B",
-    title: "Visualisasi Spasial (Tampak Atas, Depan, Samping)",
-    subtitle: "Eksplorasi 3.3: Menggambar Bangun Ruang dari Tiga Arah Pandang",
+    title: "Visualisasi Spasial",
+    subtitle: "Eksplorasi 3.3: Menggambar Tampak Atas, Tampak Depan, dan Tampak Samping",
     storyHook: {
-      character: "Pandangan Mata Sejajar",
-      avatar: "👁️",
+      character: "Cetak Biru Bangunan",
+      avatar: "📐",
       dialogue:
-        "Saat kita berdiri tegak dan melihat sebuah gedung lurus dari depan, kita tidak bisa melihat bagian belakang gedung tersebut. Bangun 3 dimensi akan tampak datar menjadi gambar 2 dimensi jika dilihat tepat tegak lurus dari satu arah.",
+        "Ketika seorang arsitek menyerahkan rancangan bangunan kontainer kepada mandor lapangan, gambar yang diberikan bukan hanya gambar 3 dimensi, melainkan gambar datar dari berbagai sudut pandang: Tampak Atas, Tampak Depan, dan Tampak Kanan. Gambar-gambar ini digambar pada kertas berpetak.",
       question:
-        "Bagaimana gambar tampak depan, tampak samping, dan tampak atas dari susunan balok kubus satuan?",
+        "Bagaimana cara memproyeksikan tumpukan balok 3 dimensi menjadi gambar petak 2 dimensi tanpa membuat tukang bangunan salah paham?",
     },
     coreConcepts: [
       {
-        heading: "1. Tiga Sudut Pandang Pokok",
+        heading: "1. Mengenal Tiga Arah Pandang Pokok",
         content:
-          "Visualisasi spasial adalah kemampuan membayangkan penampakan objek dari arah pandang yang berbeda:",
+          "Visualisasi spasial adalah kemampuan membayangkan dan mengenali bentuk suatu objek dari sudut pandang yang berbeda-beda:",
         keyPoints: [
-          "Tampak Atas: Posisi mata tepat berada di atas objek menghadap ke bawah. Yang terlihat hanyalah petak-petak alas yang memiliki kubus.",
-          "Tampak Depan: Posisi mata sejajar di depan objek. Tinggi gambar ditentukan oleh tumpukan kubus PALING TINGGI pada kolom tersebut.",
-          "Tampak Samping (Kanan): Posisi mata sejajar di sisi kanan objek. Tinggi gambar ditentukan oleh tumpukan kubus PALING TINGGI pada baris tersebut.",
+          "Tampak Atas: Dilihat lurus tepat dari arah atas langit. Menunjukkan posisi letak alas petak-petak bangunan.",
+          "Tampak Depan: Dilihat lurus sejajar mata dari arah depan bangunan. Menunjukkan lebar tampak depan dan tinggi menara di setiap kolom.",
+          "Tampak Samping (Kanan): Dilihat lurus sejajar mata dari arah kanan bangunan. Menunjukkan kedalaman (panjang) dan tinggi tumpukan di setiap baris.",
         ],
         visualType: "orthographic",
       },
       {
-        heading: "2. Menentukan Gambar 2D dari Tabel Tinggi",
+        heading: "2. Aturan Ketinggian Tertinggi",
         content:
-          "Jika tinggi tumpukan pada alas diketahui, gambar proyeksi 2 dimensi dapat dibuat dengan aturan nilai tertinggi:",
+          "Pada gambar tampak depan atau samping, kubus yang lebih rendah akan terhalang oleh kubus yang lebih tinggi di baris/jalur pandang yang sama:",
         keyPoints: [
-          "Kolom pada Tampak Depan = Nilai maksimum dari depan ke belakang pada kolom itu.",
-          "Kolom pada Tampak Samping = Nilai maksimum dari kanan ke kiri pada baris itu.",
-          "Semua kotak yang tertutup oleh tumpukan yang lebih tinggi tidak akan memunculkan garis tambahan.",
+          "Kotak persegi yang digambar pada Tampak Depan selalu mewakili tumpukan KONTEN TERTINGGI pada kolom tersebut.",
+          "Garis pemisah antar-persegi hanya digambar jika terdapat perbedaan bidang atau perbedaan ketinggian tampak.",
         ],
         visualType: "orthographic",
       },
     ],
     workedExamples: [
       {
-        title: "Contoh Resmi: Menentukan Tampak Depan",
+        title: "Eksplorasi 3.3: Menggambar Tiga Tampak dari Susunan 4 Kubus",
         problem:
-          "Tumpukan kubus memiliki alas 2 kolom. Kolom kiri memiliki kubus depan tinggi 1 dan kubus belakang tinggi 3. Kolom kanan memiliki kubus depan tinggi 2 dan kubus belakang tinggi 1. Bagaimana tampak depannya?",
+          "Dua kubus diletakkan mendatar di depan (kiri dan kanan). Di belakang kubus kiri diletakkan satu tumpukan setinggi 2 kubus. Gambarkan Tampak Atas dan Tampak Depannya!",
         steps: [
-          "Periksa Kolom Kiri: Kubus belakang (3) lebih tinggi dari depan (1). Yang terlihat dari depan adalah tiang setinggi 3 kotak.",
-          "Periksa Kolom Kanan: Kubus depan (2) lebih tinggi dari belakang (1). Yang terlihat dari depan adalah tiang setinggi 2 kotak.",
-          "Gabungkan kedua kolom: Gambar 2D terdiri dari kolom kiri 3 petak dan kolom kanan 2 petak.",
+          "Tampak Atas: Posisi alas yang terisi ada 3 petak: dua di depan, satu di belakang kiri. Digambar sebagai 3 persegi berbentuk sudut L.",
+          "Tampak Depan: Kolom Kiri memiliki kubus depan (tinggi 1) dan kubus belakang (tinggi 2). Tertinggi = 2. Kolom Kanan hanya ada kubus depan (tinggi 1). Tertinggi = 1.",
+          "Hasil Tampak Depan: Dua kolom berdampingan, kolom kiri setinggi 2 kotak, kolom kanan setinggi 1 kotak.",
         ],
-        conclusion: "Tampak Depan membentuk bangunan bertingkat 3 petak di kiri dan 2 petak di kanan.",
+        conclusion: "Tampak Atas berbentuk huruf L (3 petak), Tampak Depan memiliki total 3 petak (2 di kiri, 1 di kanan).",
       },
     ],
     dictionary: [
       {
+        term: "Visualisasi Spasial",
+        definition: "Kemampuan kognitif melihat dan mengubah posisi objek 3 dimensi di dalam pikiran.",
+      },
+      {
         term: "Tampak Atas",
-        definition: "Bentuk 2D yang terlihat saat memandang objek tegak lurus dari arah atas.",
+        definition: "Proyeksi ortogonal objek yang dilihat tepat tegak lurus dari atas.",
       },
       {
-        term: "Tampak Depan",
-        definition: "Bentuk 2D yang terlihat saat memandang objek sejajar dari arah depan.",
-      },
-      {
-        term: "Tampak Samping",
-        definition: "Bentuk 2D yang terlihat saat memandang objek sejajar dari arah samping.",
+        term: "Tampak Depan & Samping",
+        definition: "Proyeksi tegak lurus dari arah depan dan arah sisi samping benda.",
       },
     ],
     offlineActivities: {
       teacherGuide: [
-        "Ajak siswa mengamati kardus di atas meja guru dari posisi duduk lurus dan posisi berdiri di atas kursi.",
+        "Bagilah kelas menjadi beberapa kelompok untuk melakukan permainan tebak bangun ruang pada Eksplorasi 3.3.",
+        "Satu kelompok membangun susunan 4-5 kubus tersembunyi, lalu hanya memberikan gambar 3 tampaknya ke kelompok lawan untuk disusun ulang.",
       ],
       parentGuide: [
-        "Sorotkan lampu ke tumpukan mainan anak ke arah tembok putih untuk melihat bentuk bayangan tampak depannya.",
+        "Letakkan benda kotak di meja, minta anak menggambar apa yang tampak saat berdiri melihat ke bawah (tampak atas) dan saat berlutut (tampak depan).",
       ],
     },
   },
@@ -191,68 +202,71 @@ export const BAB3_MATERIALS: SubChapterMaterial[] = [
     id: "sub-c",
     code: "Sub-Bab C",
     title: "Lokasi pada Sistem Berpetak",
-    subtitle: "Eksplorasi 3.4 & 3.5: Menentukan Koordinat dan Rute Terpendek",
+    subtitle: "Eksplorasi 3.4 & 3.5: Menentukan Lokasi dan Jalur pada Peta Berpetak",
     storyHook: {
-      character: "Denah Ruang Berpetak",
-      avatar: "🗺️",
+      character: "Pengawas Lapangan Kontainer",
+      avatar: "📍",
       dialogue:
-        "Pada denah ruang kelas atau peta gudang yang berpetak-petak, posisi suatu meja atau rak ditentukan menggunakan garis kolom mendatar dan garis baris tegak agar posisinya pasti dan tidak tertukar.",
+        "Di pelabuhan peti kemas maupun area proyek konstruksi, ratusan kontainer ditata di atas tanah yang diberi garis petak kotak-kotak. Mandor menggunakan kode kolom mendatar (huruf) dan baris tegak (angka) agar truk pengangkut dapat menemukan kontainer yang tepat tanpa tersasar.",
       question:
-        "Bagaimana cara membaca titik koordinat petak dan menghitung jarak langkah terpendek dari satu petak ke petak lainnya?",
+        "Bagaimana cara membaca letak lokasi suatu tempat dan menentukan jalur perjalanan terpendek pada peta berpetak?",
     },
     coreConcepts: [
       {
-        heading: "1. Aturan Penulisan Letak Petak (Kolom, Baris)",
+        heading: "1. Menentukan Lokasi Petak (Eksplorasi 3.4)",
         content:
-          "Sistem berpetak menggunakan pasangan berurutan dengan urutan baku:",
+          "Sistem berpetak menggunakan pasangan berurutan untuk menunjukkan letak suatu petak:",
         keyPoints: [
-          "Kolom Mendatar ditulis terlebih dahulu (biasanya menggunakan huruf A, B, C, D...).",
-          "Baris Tegak ditulis setelahnya (biasanya menggunakan angka 1, 2, 3, 4...).",
-          "Contoh: Petak (C, 3) berarti terletak di pertemuan Kolom C dan Baris 3.",
+          "Sumbu Mendatar (Kolom): Dibaca dari kiri ke kanan, biasanya menggunakan huruf alfabet (A, B, C, D, E, F...).",
+          "Sumbu Tegak (Baris): Dibaca dari bawah ke atas, menggunakan angka (1, 2, 3, 4, 5...).",
+          "Penulisan Koordinat Petak: Selalu diawali dengan Kolom lalu diikuti Baris, ditulis dalam kurung: (Kolom, Baris). Contoh: (B, 3).",
         ],
         visualType: "grid_coord",
       },
       {
-        heading: "2. Menentukan Langkah Terpendek",
+        heading: "2. Menentukan Jalur dan Jarak Langkah (Eksplorasi 3.5)",
         content:
-          "Perpindahan pada sistem berpetak hanya boleh menyusuri garis petak (ke kanan/kiri dan ke atas/bawah), tidak boleh memotong diagonal:",
+          "Dalam sistem berpetak, pergerakan kendaraan atau orang hanya dapat melalui petak-petak secara horizontal dan vertikal:",
         keyPoints: [
-          "Langkah mendatar = Banyak petak bergeser ke kiri atau kanan.",
-          "Langkah tegak = Banyak petak bergeser ke atas atau bawah.",
-          "Jarak langkah terpendek = Jumlah langkah mendatar + Jumlah langkah tegak.",
+          "Jalur yang diperbolehkan hanya: Kanan (Timur), Kiri (Barat), Atas (Utara), dan Bawah (Selatan). Tidak diperbolehkan memotong diagonal melintasi garis.",
+          "Jarak Terpendek: Jumlah langkah mendatar ditambah dengan jumlah langkah tegak antara dua titik lokasi.",
         ],
         visualType: "grid_coord",
       },
     ],
     workedExamples: [
       {
-        title: "Contoh Resmi: Menghitung Langkah",
+        title: "Eksplorasi 3.5: Menghitung Rute Truk Kontainer",
         problem:
-          "Berapa langkah terpendek dari petak (A, 2) menuju petak (D, 5)?",
+          "Truk kontainer berada di depo pada koordinat (B, 1) dan harus mengantar muatan ke lokasi proyek di (E, 4). Tentukan koordinat dan jumlah langkah terpendeknya!",
         steps: [
-          "Hitung langkah mendatar dari Kolom A ke D: A -> B -> C -> D = 3 langkah ke kanan.",
-          "Hitung langkah tegak dari Baris 2 ke 5: 2 -> 3 -> 4 -> 5 = 3 langkah ke atas.",
-          "Total langkah = 3 + 3 = 6 langkah.",
+          "Langkah Mendatar (dari Kolom B ke Kolom E): B -> C (1), C -> D (2), D -> E (3). Berarti 3 langkah ke kanan.",
+          "Langkah Tegak (dari Baris 1 ke Baris 4): 1 -> 2 (1), 2 -> 3 (2), 3 -> 4 (3). Berarti 3 langkah ke atas.",
+          "Total Jarak Langkah: 3 langkah kanan + 3 langkah atas = 6 langkah petak.",
         ],
-        conclusion: "Jarak langkah terpendeknya adalah 6 petak langkah.",
+        conclusion: "Jalur terpendek ditempuh dalam 6 langkah perpindahan petak.",
       },
     ],
     dictionary: [
       {
         term: "Sistem Berpetak",
-        definition: "Kotak-kotak beraturan yang mempermudah penentuan letak suatu benda.",
+        definition: "Susunan petak persegi beraturan yang diatur dalam kolom mendatar dan baris tegak.",
       },
       {
-        term: "Titik Acuan",
-        definition: "Titik awal keberangkatan sebelum menghitung pergeseran langkah.",
+        term: "Pasangan Berurutan",
+        definition: "Pasangan (Kolom, Baris) yang menentukan letak pasti satu petak.",
+      },
+      {
+        term: "Jalur Terpendek",
+        definition: "Rute perpindahan dengan jumlah langkah paling sedikit menyusuri petak horizontal dan vertikal.",
       },
     ],
     offlineActivities: {
       teacherGuide: [
-        "Buat petak koordinat di lantai ubin kelas dan minta siswa melangkah sesuai instruksi guru.",
+        "Ajak peserta didik memetakan denah tata letak meja di ruang kelas menggunakan kertas berpetak dengan kode kolom A-E dan baris 1-6.",
       ],
       parentGuide: [
-        "Gunakan papan catur atau kertas buku kotak-kotak untuk latihan membaca koordinat bidak bersama anak.",
+        "Gunakan peta kota sederhana atau denah kebun binatang untuk mengajak anak membaca letak kandang hewan menggunakan kolom dan baris.",
       ],
     },
   },
