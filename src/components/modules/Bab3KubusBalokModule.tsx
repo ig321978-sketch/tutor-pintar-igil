@@ -546,7 +546,7 @@ function PanggungKubus({
   awal = { x: -18, y: 28 },
   awalDatar = 0,
   petunjuk = true,
-  putarDatar = false,
+  adaLantai = false,
   tinggiKelas = "h-44",
 }: {
   kubus: { nomor: string; x: number; y: number; z?: number }[];
@@ -557,13 +557,12 @@ function PanggungKubus({
   awal?: { x: number; y: number };
   awalDatar?: number;
   petunjuk?: boolean;
-  putarDatar?: boolean;
+  adaLantai?: boolean;
   tinggiKelas?: string;
 }) {
   const [sudut, setSudut] = useState({ x: awal.x, y: awal.y, z: awalDatar });
   const [halus, setHalus] = useState(true);
   const tarik = useRef<{ x: number; y: number; sx: number; sy: number; sz: number } | null>(null);
-  const sudutDatar = [0, 90, 180, 270, 360];
 
   function mulaiTarik(event: React.PointerEvent<HTMLDivElement>) {
     try {
@@ -593,11 +592,6 @@ function PanggungKubus({
     setSudut((sekarang) => ({ ...sekarang, x, y }));
   }
 
-  function keDatar(derajat: number) {
-    setHalus(true);
-    setSudut({ x: awal.x, y: awal.y, z: derajat });
-  }
-
   return (
     <div>
       <div
@@ -614,13 +608,11 @@ function PanggungKubus({
           className="absolute left-1/2 top-1/2 h-0 w-0"
           style={{
             transformStyle: "preserve-3d",
-            transform: putarDatar
-              ? `rotateX(${sudut.x}deg) rotateY(${sudut.y}deg) rotateY(${-sudut.z}deg)`
-              : `rotateX(${sudut.x}deg) rotateY(${sudut.y}deg)`,
+            transform: `rotateX(${sudut.x}deg) rotateY(${sudut.y}deg) rotateY(${-sudut.z}deg)`,
             transition: halus ? "transform 0.7s ease" : "none",
           }}
         >
-          {putarDatar ? (
+          {adaLantai ? (
             <div
               className="absolute left-1/2 top-1/2 rounded-[28px] bg-emerald-100"
               style={{
@@ -659,27 +651,6 @@ function PanggungKubus({
           Atas
         </button>
       </div>
-      {putarDatar ? (
-        <div className="mt-3">
-          <p className={`text-center text-xs font-black ${kelasLabel}`}>
-            Putar ke kanan {sudut.z}°{sudut.z === 360 ? " · sama dengan 0°" : ""}
-          </p>
-          <div className="mt-2 flex flex-wrap justify-center gap-1.5">
-            {sudutDatar.map((derajat) => (
-              <button
-                key={derajat}
-                type="button"
-                onClick={() => keDatar(derajat)}
-                className={`rounded-full px-2.5 py-1 text-xs font-black ${kelasTombol} ${
-                  sudut.z === derajat ? "ring-2 ring-emerald-700" : ""
-                }`}
-              >
-                {derajat}°
-              </button>
-            ))}
-          </div>
-        </div>
-      ) : null}
     </div>
   );
 }
@@ -716,13 +687,13 @@ function MaterialVisualGraphic({ type }: { type: VisualSlide["visualComponentTyp
           <div className="rounded-2xl border-4 border-emerald-300 bg-white p-4">
             <p className="text-sm font-black text-emerald-800">Bentuk 2 · Huruf L</p>
             <PanggungKubus
-              aria="Huruf L dari depan. Lantai 1 kubus 1 dan 2, lantai 2 kubus 3 di kanan. Putar ke kanan."
+              aria="Huruf L dari depan. Lantai 1 kubus 1 dan 2, lantai 2 kubus 3 di kanan."
               warna={WARNA_L}
               kelasLabel="text-emerald-800"
               kelasTombol="bg-emerald-100 text-emerald-900"
               awal={{ x: -10, y: 0 }}
               tinggiKelas="h-56"
-              putarDatar
+              adaLantai
               kubus={hurufLDepan()}
             />
             <p className="mt-2 text-center text-sm font-bold text-slate-700">
@@ -733,33 +704,33 @@ function MaterialVisualGraphic({ type }: { type: VisualSlide["visualComponentTyp
         <div className="mt-4 rounded-2xl border-4 border-emerald-400 bg-white p-4">
           <p className="text-center text-sm font-black text-emerald-800">Diputar? Masih huruf L. Bukan bentuk baru.</p>
           <p className="mt-1 text-center text-xs font-bold text-slate-500">
-            Tahan tiap model, lalu geser. Atau pilih 0° sampai 360°. Bentuknya tetap L.
+            Tahan tiap model, lalu geser. Bentuknya tetap L.
           </p>
           <div className="mt-3 grid grid-cols-1 gap-4 sm:grid-cols-2">
             <div className="rounded-2xl bg-emerald-50 p-3">
               <p className="text-center text-sm font-black text-emerald-800">L tidur</p>
               <PanggungKubus
-                aria="Huruf L tidur. Geser untuk memutar, atau pilih sudut datar."
+                aria="Huruf L tidur. Geser untuk memutar."
                 warna={WARNA_L}
                 kelasLabel="text-emerald-800"
                 kelasTombol="bg-emerald-100 text-emerald-900"
                 awal={{ x: -46, y: 24 }}
                 petunjuk={false}
-                putarDatar
+                adaLantai
                 kubus={hurufL()}
               />
             </div>
             <div className="rounded-2xl bg-emerald-50 p-3">
               <p className="text-center text-sm font-black text-emerald-800">L tegak</p>
               <PanggungKubus
-                aria="Huruf L tegak. Geser untuk memutar, atau pilih sudut datar."
+                aria="Huruf L tegak. Geser untuk memutar."
                 warna={WARNA_L}
                 kelasLabel="text-emerald-800"
                 kelasTombol="bg-emerald-100 text-emerald-900"
                 awal={{ x: -46, y: 24 }}
                 awalDatar={90}
                 petunjuk={false}
-                putarDatar
+                adaLantai
                 kubus={hurufL()}
               />
             </div>
