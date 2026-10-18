@@ -1261,44 +1261,98 @@ function MaterialVisualGraphic({ type }: { type: VisualSlide["visualComponentTyp
   );
 }
 
-function nilaiTampakDepan(petak: Set<string>) {
-  if (petak.size === 0) {
-    return {
-      benar: false,
-      alasan: "Kanvas masih kosong. Gambar tiang kiri setinggi 3 kotak, dan 1 kotak di kanan bawah.",
-    };
-  }
+const SOAL_KANVAS = [
+  {
+    naskah:
+      "Bayangkan susunan huruf L dari 4 kubus satuan. Tiang kiri tingginya 3 kubus, dan di kanan bawah ada 1 kubus. Gambar tampak depan.",
+    pola: [
+      [true, false],
+      [true, false],
+      [true, true],
+    ],
+    kosong: "Kanvas masih kosong. Gambar tiang kiri setinggi 3 kotak, dan 1 kotak di kanan bawah.",
+    ukuran: "Tampak depan huruf L ini lebar 2 kotak dan tinggi 3 kotak.",
+    bentuk: "Susunannya belum huruf L. Tiang kiri harus 3 kotak. Satu kotak lagi menempel di kanan bawah.",
+    cermin: "Tiang yang tinggi ada di kanan. Pindahkan tiang 3 kotak ke kiri.",
+    benar: "Tampak depan huruf L sudah tepat.",
+  },
+  {
+    naskah:
+      "Enam kubus disusun seperti tangga. Dari kiri tingginya 1 kubus, tengah 2 kubus, dan kanan 3 kubus. Gambar tampak depan.",
+    pola: [
+      [false, false, true],
+      [false, true, true],
+      [true, true, true],
+    ],
+    kosong: "Kanvas masih kosong. Gambar tangga: kiri 1 kotak, tengah 2 kotak, kanan 3 kotak.",
+    ukuran: "Tampak depan tangga ini lebar 3 kotak dan tinggi 3 kotak.",
+    bentuk: "Tangga belum pas. Dari kiri tingginya 1, lalu 2, lalu 3 kotak.",
+    cermin: "Tangga ini naik ke kanan. Kotak terpendek ada di kiri.",
+    benar: "Tampak depan tangga sudah tepat.",
+  },
+  {
+    naskah:
+      "Empat kubus menempel menjadi lantai persegi, 2 kotak ke samping dan 2 kotak ke belakang. Gambar tampak atas.",
+    pola: [
+      [true, true],
+      [true, true],
+    ],
+    kosong: "Kanvas masih kosong. Gambar persegi 2 kotak kali 2 kotak.",
+    ukuran: "Tampak atas lantai ini berukuran 2 kotak kali 2 kotak.",
+    bentuk: "Lantai persegi belum penuh. Isi 4 petak yang saling menempel.",
+    cermin: "",
+    benar: "Tampak atas lantai persegi sudah tepat.",
+  },
+  {
+    naskah:
+      "Dua tiang berdiri terpisah. Tiap tiang tingginya 2 kubus, dan di tengah ada 1 petak kosong. Gambar tampak depan.",
+    pola: [
+      [true, false, true],
+      [true, false, true],
+    ],
+    kosong: "Kanvas masih kosong. Gambar dua tiang setinggi 2 kotak, dengan 1 petak kosong di tengah.",
+    ukuran: "Tampak depan dua tiang ini lebar 3 kotak dan tinggi 2 kotak.",
+    bentuk: "Masih ada petak yang menempel di tengah. Kedua tiang harus terpisah.",
+    cermin: "",
+    benar: "Tampak depan dua tiang sudah tepat.",
+  },
+  {
+    naskah: "Sembilan kubus disusun rapat, 3 kotak ke samping dan 3 kotak ke atas. Gambar tampak depan tembok itu.",
+    pola: [
+      [true, true, true],
+      [true, true, true],
+      [true, true, true],
+    ],
+    kosong: "Kanvas masih kosong. Gambar tembok 3 kotak kali 3 kotak.",
+    ukuran: "Tampak depan tembok ini berukuran 3 kotak kali 3 kotak.",
+    bentuk: "Tembok belum penuh. Isi 9 petak yang rapat.",
+    cermin: "",
+    benar: "Tampak depan tembok 3 kali 3 sudah tepat.",
+  },
+];
+
+function nilaiSoalKanvas(petak: Set<string>, soal: (typeof SOAL_KANVAS)[number]) {
+  if (petak.size === 0) return { benar: false, alasan: soal.kosong };
   const titik = [...petak].map((kunci) => {
     const [kolom, baris] = kunci.split(",").map(Number);
     return { kolom, baris };
   });
-  const minKolom = Math.min(...titik.map((titik) => titik.kolom));
-  const maxKolom = Math.max(...titik.map((titik) => titik.kolom));
-  const minBaris = Math.min(...titik.map((titik) => titik.baris));
-  const maxBaris = Math.max(...titik.map((titik) => titik.baris));
+  const minKolom = Math.min(...titik.map((item) => item.kolom));
+  const maxKolom = Math.max(...titik.map((item) => item.kolom));
+  const minBaris = Math.min(...titik.map((item) => item.baris));
+  const maxBaris = Math.max(...titik.map((item) => item.baris));
   const lebar = maxKolom - minKolom + 1;
   const tinggi = maxBaris - minBaris + 1;
+  const lebarPola = soal.pola[0].length;
+  const tinggiPola = soal.pola.length;
   const ada = (kolom: number, baris: number) => petak.has(`${kolom},${baris}`);
-  if (lebar % 2 !== 0 || tinggi % 3 !== 0 || lebar / 2 !== tinggi / 3) {
-    return {
-      benar: false,
-      alasan: `Tampak depan huruf L ini lebar 2 kotak dan tinggi 3 kotak. Gambar sekarang ${lebar} × ${tinggi} kotak.`,
-    };
+  if (lebar % lebarPola !== 0 || tinggi % tinggiPola !== 0 || lebar / lebarPola !== tinggi / tinggiPola) {
+    return { benar: false, alasan: `${soal.ukuran} Gambar sekarang ${lebar} × ${tinggi} kotak.` };
   }
-  const skala = lebar / 2;
-  const hurufL = [
-    [true, false],
-    [true, false],
-    [true, true],
-  ];
-  const cermin = [
-    [false, true],
-    [false, true],
-    [true, true],
-  ];
+  const skala = lebar / lebarPola;
   const cocok = (pola: boolean[][]) => {
-    for (let baris = 0; baris < 3; baris += 1) {
-      for (let kolom = 0; kolom < 2; kolom += 1) {
+    for (let baris = 0; baris < pola.length; baris += 1) {
+      for (let kolom = 0; kolom < pola[baris].length; kolom += 1) {
         for (let geserBaris = 0; geserBaris < skala; geserBaris += 1) {
           for (let geserKolom = 0; geserKolom < skala; geserKolom += 1) {
             const isi = ada(minKolom + kolom * skala + geserKolom, minBaris + baris * skala + geserBaris);
@@ -1309,22 +1363,11 @@ function nilaiTampakDepan(petak: Set<string>) {
     }
     return true;
   };
-  if (cocok(hurufL)) {
-    return {
-      benar: true,
-      alasan: "Tampak depan sudah tepat. Tiang kiri 3 kotak, dan 1 kotak menempel di kanan bawah.",
-    };
-  }
-  if (cocok(cermin)) {
-    return {
-      benar: false,
-      alasan: "Tiang yang tinggi ada di kanan. Pindahkan tiang 3 kotak ke kiri, dan 1 kotak di kanan bawah.",
-    };
-  }
-  return {
-    benar: false,
-    alasan: "Susunannya belum huruf L. Tiang kiri harus 3 kotak. Satu kotak lagi menempel di kanan bawah.",
-  };
+  if (cocok(soal.pola)) return { benar: true, alasan: soal.benar };
+  const cermin = soal.pola.map((baris) => [...baris].reverse());
+  const simetris = cermin.every((baris, indeks) => baris.every((isi, kolom) => isi === soal.pola[indeks][kolom]));
+  if (!simetris && cocok(cermin)) return { benar: false, alasan: soal.cermin };
+  return { benar: false, alasan: soal.bentuk };
 }
 
 export default function Bab3KubusBalokModule() {
@@ -1355,6 +1398,7 @@ export default function Bab3KubusBalokModule() {
   const petakRef = useRef<Set<string>>(new Set());
   const gerakRef = useRef<{ kunci: string; sudah: boolean; pindah: boolean } | null>(null);
   const [hasilGambar, setHasilGambar] = useState<{ benar: boolean; alasan: string } | null>(null);
+  const [indeksSoal, setIndeksSoal] = useState(0);
 
   // State Latihan & Evaluasi Dinamis
   const [studentSeed, setStudentSeed] = useState<number>(101);
@@ -1486,7 +1530,24 @@ export default function Bab3KubusBalokModule() {
   };
 
   const verifyLocalCanvas = () => {
-    setHasilGambar(nilaiTampakDepan(petakRef.current));
+    const hasil = nilaiSoalKanvas(petakRef.current, SOAL_KANVAS[indeksSoal]);
+    if (!hasil.benar || indeksSoal === SOAL_KANVAS.length - 1) {
+      setHasilGambar(
+        hasil.benar
+          ? { benar: true, alasan: `${hasil.alasan} Lima soal sudah selesai.` }
+          : hasil,
+      );
+      return;
+    }
+    petakRef.current = new Set();
+    gerakRef.current = null;
+    const ctx = canvasRef.current?.getContext("2d");
+    if (ctx) gambarDasarKanvas(ctx);
+    setIndeksSoal(indeksSoal + 1);
+    setHasilGambar({
+      benar: true,
+      alasan: `Soal ${indeksSoal + 1} selesai. Soal ${indeksSoal + 2} sudah muncul.`,
+    });
   };
 
   // Handler Menjawab Soal & Klaim Token
@@ -2105,9 +2166,10 @@ export default function Bab3KubusBalokModule() {
             <h2 className="text-xl font-extrabold text-slate-800 mt-2">
               Misi Menggambar Proyeksi Tampak Atas & Tampak Depan
             </h2>
-            <p className="text-sm text-slate-600 mt-1">
-              Bayangkan sebuah susunan balok berbentuk <strong>Huruf L</strong> yang terdiri dari 4 kubus satuan (tinggi tiang kiri 3 kubus, dan di sebelah kanannya ada 1 kubus). Gambarlah bentuk <strong>Tampak Depan</strong> di kanvas bawah ini!
+            <p className="mt-3 text-xs font-black uppercase tracking-wide text-indigo-600">
+              Soal {indeksSoal + 1} dari {SOAL_KANVAS.length}
             </p>
+            <p className="text-sm text-slate-600 mt-1">{SOAL_KANVAS[indeksSoal].naskah}</p>
             <p className="mt-1 text-sm font-bold text-slate-500">Satu petak sama dengan satu kubus. Ketuk petak yang salah untuk menghapusnya.</p>
 
             <div className="mt-5 flex flex-col items-center">
