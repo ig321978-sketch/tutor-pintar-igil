@@ -916,7 +916,7 @@ export default function NaskahMtk1Bab1({
           </Dialog>
           <article className="rounded-2xl border-2 border-[#E23B3B]/25 bg-[#FFF1F2] px-4 py-3">
             <p className="text-xs font-black uppercase text-[#9F1239]">Piring apel</p>
-            <GambarCerita src="/doodle-mtk/mtk-1-bab1-apel.jpg" alt="Rara dan Bimo berdiri di samping piring berisi tiga apel." />
+            <GambarCerita src="/doodle-mtk/mtk-1-bab1-apel.jpg" alt="Rara dan Bimo berdiri di samping piring berisi tiga apel. Angka 3." />
             <IkonUlang ikon="🍎" jumlah={3} ukuran="text-3xl" />
           </article>
           <Dialog nama="Rara" warna="border-[#DB2777]/20 bg-[#FDF2F8]">
@@ -949,7 +949,7 @@ export default function NaskahMtk1Bab1({
           />
           <article className="rounded-2xl border-2 border-violet-300/80 bg-violet-50 px-4 py-3">
             <p className="text-xs font-black uppercase text-[#9A3412]">Jeruk dari keranjang</p>
-            <GambarCerita src="/doodle-mtk/mtk-1-bab1-jeruk.jpg" alt="Bimo di samping keranjang. Lima jeruk berjajar di rumput." />
+            <GambarCerita src="/doodle-mtk/mtk-1-bab1-jeruk.jpg" alt="Bimo di samping keranjang. Lima jeruk berjajar, dihitung 1 sampai 5. Angka 5." />
             <IkonUlang ikon="🍊" jumlah={5} ukuran="text-3xl" />
           </article>
           <Dialog nama="Bimo" warna="border-[#2563EB]/20 bg-[#EFF6FF]">
@@ -973,7 +973,7 @@ export default function NaskahMtk1Bab1({
           />
           <article className="rounded-2xl border-2 border-violet-300 bg-violet-50 px-4 py-3">
             <p className="text-xs font-black uppercase text-[#92400E]">Igil membawa pisang</p>
-            <GambarCerita src="/doodle-mtk/mtk-1-bab1-pisang.jpg" alt="Igil si burung hantu berdiri di samping empat pisang." />
+            <GambarCerita src="/doodle-mtk/mtk-1-bab1-pisang.jpg" alt="Igil si burung hantu berdiri di samping empat pisang. Angka 4." />
             <IkonUlang ikon="🍌" jumlah={4} ukuran="text-3xl" />
           </article>
           <Dialog nama="Rara" warna="border-[#DB2777]/20 bg-[#FDF2F8]">
@@ -989,7 +989,7 @@ export default function NaskahMtk1Bab1({
           </ul>
           <GambarCerita
             src="/doodle-mtk/mtk-1-bab1-urut.jpg"
-            alt="Urutan buah: tiga apel, empat pisang, lima jeruk."
+            alt="Urutan buah: tiga apel angka 3, empat pisang angka 4, lima jeruk angka 5."
           />
           <Dialog nama="Rara" warna="border-[#DB2777]/20 bg-[#FDF2F8]">
             “Urutannya adalah 3, 4, 5.”
@@ -1154,7 +1154,7 @@ export default function NaskahMtk1Bab1({
           </Dialog>
           <GambarCerita
             src="/doodle-mtk/mtk-1-bab1-sama.jpg"
-            alt="Empat stroberi dan empat pisang. Jumlahnya sama, empat sama dengan empat."
+            alt="Empat stroberi dan empat pisang. Tulisan 4 sama dengan 4."
           />
           <p className="text-center text-4xl font-black text-[#1C01A5]">4 = 4</p>
           <KuisAkhirAdegan
