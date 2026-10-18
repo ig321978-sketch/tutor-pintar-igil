@@ -888,16 +888,10 @@ export default function NaskahMtk1Bab1({
           />
         </div>
         <div className="mt-4 space-y-3">
-          <article className="rounded-2xl border-2 border-[#16A34A]/25 bg-[#F0FDF4] px-4 py-3">
-            <p className="text-xl font-black tracking-wide text-[#166534]">Cerita: Piknik Buah Rara dan Bimo</p>
-            <p className="mt-2 text-sm font-semibold leading-relaxed text-slate-700">
-              Taman cerah. Rara dan Bimo duduk di atas tikar. Ada keranjang buah dan Igil si burung hantu.
-            </p>
-            <GambarCerita
-              src="/doodle-mtk/mtk-1-bab1-piknik.jpg"
-              alt="Rara dan Bimo duduk di tikar piknik. Ada keranjang buah dan burung hantu Igil."
-            />
-          </article>
+          <GambarCerita
+            src="/doodle-mtk/mtk-1-bab1-piknik.jpg"
+            alt="Rara dan Bimo duduk di tikar piknik. Ada keranjang buah dan burung hantu Igil."
+          />
           <Dialog nama="Rara" warna="border-[#DB2777]/20 bg-[#FDF2F8]">
             “Bimo, ayo kita hitung buahnya!”
           </Dialog>
