@@ -1627,7 +1627,7 @@ export default function Bab3KubusBalokModule() {
             TAB 1: PEMANASAN OTAK (BRAIN ACTIVATION)
         ================================================================ */}
         {activeTab === "pemanasan" && (
-          <div className="bg-white rounded-2xl shadow-md border border-indigo-100 p-6 md:p-8">
+          <div className="space-y-6">
             <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-4 pb-6 border-b border-slate-100">
               <div>
                 <span className="text-xs font-bold uppercase tracking-wider text-indigo-600 bg-indigo-50 px-3 py-1 rounded-full">
@@ -1874,7 +1874,7 @@ export default function Bab3KubusBalokModule() {
         {activeTab === "simulator" && (
           <div className="space-y-8">
             {/* SIMULATOR 1: KONSTRUKSI KUBUS SATUAN & PROYEKSI 3 SUDUT PANDANG */}
-            <div className="bg-white rounded-2xl shadow-md border border-indigo-100 p-6">
+            <div className="space-y-4">
               <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 border-b border-slate-100 pb-4">
                 <div>
                   <span className="text-xs font-bold uppercase text-indigo-600 bg-indigo-50 px-3 py-1 rounded-full">
@@ -1895,7 +1895,7 @@ export default function Bab3KubusBalokModule() {
 
               <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mt-6">
                 {/* Kontrol Alas 3x3 */}
-                <div className="bg-slate-50 p-5 rounded-xl border border-slate-200">
+                <div>
                   <div className="text-xs font-bold uppercase text-center text-slate-500 mb-2">
                     ⬆️ Arah Belakang Bangunan
                   </div>
@@ -1940,7 +1940,7 @@ export default function Bab3KubusBalokModule() {
                 {/* Hasil 3 Proyeksi Ortogonal Otomatis */}
                 <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
                   {/* Tampak Atas */}
-                  <div className="bg-slate-50 p-4 rounded-xl border border-slate-200 flex flex-col items-center">
+                  <div className="flex flex-col items-center">
                     <div className="font-bold text-sm text-slate-800 mb-1">1. Tampak Atas</div>
                     <p className="text-[11px] text-slate-500 text-center mb-3">
                       Petak menyala jika tinggi ≥ 1
@@ -1962,7 +1962,7 @@ export default function Bab3KubusBalokModule() {
                   </div>
 
                   {/* Tampak Depan */}
-                  <div className="bg-slate-50 p-4 rounded-xl border border-slate-200 flex flex-col items-center">
+                  <div className="flex flex-col items-center">
                     <div className="font-bold text-sm text-slate-800 mb-1">2. Tampak Depan</div>
                     <p className="text-[11px] text-slate-500 text-center mb-3">
                       Tinggi maks tiap kolom: [{frontProjection.join(", ")}]
@@ -1985,7 +1985,7 @@ export default function Bab3KubusBalokModule() {
                   </div>
 
                   {/* Tampak Samping Kanan */}
-                  <div className="bg-slate-50 p-4 rounded-xl border border-slate-200 flex flex-col items-center">
+                  <div className="flex flex-col items-center">
                     <div className="font-bold text-sm text-slate-800 mb-1">3. Tampak Samping</div>
                     <p className="text-[11px] text-slate-500 text-center mb-3">
                       Tinggi maks tiap baris: [{sideProjection.join(", ")}]
@@ -2011,7 +2011,7 @@ export default function Bab3KubusBalokModule() {
             </div>
 
             {/* SIMULATOR 2: NAVIGASI LOKASI PADA SISTEM BERPETAK (SUB-BAB C) */}
-            <div className="bg-white rounded-2xl shadow-md border border-indigo-100 p-6">
+            <div className="space-y-4 border-t border-slate-200 pt-8">
               <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 border-b border-slate-100 pb-4">
                 <div>
                   <span className="text-xs font-bold uppercase text-emerald-700 bg-emerald-50 px-3 py-1 rounded-full">
@@ -2159,7 +2159,7 @@ export default function Bab3KubusBalokModule() {
             TAB 4: KANVAS PRAKTIKUM SPASIAL (ZERO-COST CLIENT-SIDE)
         ================================================================ */}
         {activeTab === "praktikum" && (
-          <div className="bg-white rounded-2xl shadow-md border border-indigo-100 p-6">
+          <div>
             <span className="text-xs font-bold uppercase text-indigo-600 bg-indigo-50 px-3 py-1 rounded-full">
               Praktikum Motorik & Visualisasi (Biaya API Rp 0)
             </span>
@@ -2223,7 +2223,7 @@ export default function Bab3KubusBalokModule() {
         ================================================================ */}
         {activeTab === "latihan" && (
           <div className="space-y-4">
-            <div className="bg-white p-5 rounded-2xl border border-slate-200 shadow-sm">
+            <div>
               <h2 className="text-xl font-extrabold text-slate-800">
                 🎯 Latihan Pemahaman Bab 3 (10 Soal Kurikulum Merdeka)
               </h2>
@@ -2238,7 +2238,7 @@ export default function Bab3KubusBalokModule() {
               const isCorrect = userChoice === q.correctAnswer;
 
               return (
-                <div key={q.id} className="bg-white rounded-2xl border border-slate-200 p-6 shadow-sm">
+                <div key={q.id} className="space-y-3 border-t border-slate-200 pt-6">
                   <div className="flex items-center justify-between mb-2">
                     <span className="text-xs font-extrabold uppercase bg-indigo-50 text-indigo-700 px-3 py-1 rounded-full">
                       Soal {idx + 1} • Sub-Bab {q.subBab}
@@ -2307,15 +2307,15 @@ export default function Bab3KubusBalokModule() {
         ================================================================ */}
         {activeTab === "evaluasi" && (
           <div className="space-y-4">
-            <div className="bg-gradient-to-r from-indigo-900 to-violet-900 text-white p-6 rounded-2xl shadow-md flex flex-col md:flex-row md:items-center justify-between gap-4">
+            <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
               <div>
                 <span className="text-xs font-extrabold uppercase bg-amber-400 text-slate-900 px-3 py-1 rounded-full">
                   Anti-Cheating Dynamic Engine
                 </span>
-                <h2 className="text-xl font-extrabold mt-2">
+                <h2 className="text-xl font-extrabold mt-2 text-slate-800">
                   🏆 Lembar Evaluasi Bab 3 (Angka Unik Per Siswa)
                 </h2>
-                <p className="text-xs text-indigo-100 mt-1">
+                <p className="text-sm text-slate-600 mt-1">
                   Setiap siswa mendapatkan kombinasi ukuran balok, matriks tinggi menara, dan koordinat yang berbeda. Menyelesaikan soal evaluasi bernilai <strong>+10 Token IGIL</strong> per soal!
                 </p>
               </div>
@@ -2323,7 +2323,7 @@ export default function Bab3KubusBalokModule() {
                 onClick={() => {
                   setStudentSeed(Math.floor(Math.random() * 9000) + 100);
                 }}
-                className="bg-white text-indigo-900 hover:bg-indigo-50 px-4 py-2.5 rounded-xl font-extrabold text-xs shrink-0 shadow"
+                className="bg-indigo-600 text-white hover:bg-indigo-700 px-4 py-2.5 rounded-xl font-extrabold text-xs shrink-0"
               >
                 🎲 Simulasikan Siswa Lain (Acak Angka Baru)
               </button>
@@ -2335,7 +2335,7 @@ export default function Bab3KubusBalokModule() {
               const isCorrect = userChoice === q.correctAnswer;
 
               return (
-                <div key={q.id} className="bg-white rounded-2xl border border-indigo-100 p-6 shadow-sm">
+                <div key={q.id} className="space-y-3 border-t border-slate-200 pt-6">
                   <div className="flex items-center justify-between mb-2">
                     <span className="text-xs font-extrabold uppercase bg-amber-100 text-amber-900 px-3 py-1 rounded-full">
                       Evaluasi #{idx + 1} • Paket Unik Siswa #{studentSeed}
