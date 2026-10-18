@@ -890,7 +890,7 @@ export default function NaskahMtk1Bab1({
           ]}
         />
         <JudulSubBab
-          judul="A. Menghitung, Membaca, dan Menulis Bilangan"
+          judul="Sub-Bab A: Menghitung, Membaca, dan Menulis Bilangan"
           kelas={kelas}
           kelamin={kelamin}
           naskah={[
@@ -1092,7 +1092,7 @@ export default function NaskahMtk1Bab1({
         />
 
         <JudulSubBab
-          judul="B. Membandingkan Banyak Benda"
+          judul="Sub-Bab B: Membandingkan Banyak Benda"
           kelas={kelas}
           kelamin={kelamin}
           naskah={[
@@ -1220,7 +1220,7 @@ export default function NaskahMtk1Bab1({
         </div>
 
         <JudulSubBab
-          judul="C. Menghitung Maju dan Mundur"
+          judul="Sub-Bab C: Menghitung Maju dan Mundur"
           kelas={kelas}
           kelamin={kelamin}
           naskah={[
@@ -1297,7 +1297,7 @@ export default function NaskahMtk1Bab1({
         </div>
 
         <JudulSubBab
-          judul="D. Pasangan Bilangan"
+          judul="Sub-Bab D: Pasangan Bilangan"
           kelas={kelas}
           kelamin={kelamin}
           naskah={[
