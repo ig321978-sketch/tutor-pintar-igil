@@ -94,13 +94,34 @@ function KepalaKartu({
 }) {
   return (
     <>
-      <p className="text-center text-4xl" aria-hidden>
+      <p className="text-center text-4xl font-normal" aria-hidden>
         {ikon}
       </p>
       <h4 className="mt-3 text-center text-lg font-black tracking-wide text-[#1C01A5] sm:text-xl">{judul}</h4>
       {anak ? <p className="mt-1 text-center text-sm font-bold text-[#1C01A5]/70">{anak}</p> : null}
       <div className="mt-4">
         <TombolVoiceMateriPai1 kelas={kelas} kelamin={kelamin} cuplikan={cuplikan} />
+      </div>
+    </>
+  );
+}
+
+function JudulSubBab({
+  judul,
+  kelas,
+  kelamin,
+  naskah,
+}: {
+  judul: string;
+  kelas?: string;
+  kelamin?: KelaminGuru;
+  naskah: string[];
+}) {
+  return (
+    <>
+      <h5 className="mt-5 text-left text-base font-black tracking-wide text-[#1C01A5] sm:text-lg">{judul}</h5>
+      <div className="mt-4">
+        <TombolVoiceMateriPai1 kelas={kelas} kelamin={kelamin} cuplikan={cuplikanDariNaskah([naskah], 2_000, 3_000)} />
       </div>
     </>
   );
@@ -404,30 +425,22 @@ function HookPesta() {
   );
 }
 
-function KartuA({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminGuru }) {
-  const kartu = MODUL_MTK1_BAB3.kartu[0];
+function IsiCerita({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminGuru }) {
   const [kedip, setKedip] = useState(0);
   const [suaraA, setSuaraA] = useState<StatusJawabanKuis>(null);
   return (
-    <KartuBingkai latar="bg-sky-50/80">
-      <KepalaKartu
-        ikon="🎈🎂🦉"
-        judul={kartu.judul}
-        anak="Pengurangan sampai dengan 10"
+    <>
+      <JudulSubBab
+        judul="Sub-Bab A: Cerita Pengurangan"
         kelas={kelas}
         kelamin={kelamin}
-        cuplikan={cuplikanDariNaskah(kartu.voice, 2_000, 3_000)}
-      />
-      <div className="mt-4 rounded-2xl border-2 border-sky-300 bg-sky-50 px-4 py-3">
-        <TujuanBelajar
-        butir={[
-          "Mengurangi benda sampai 10.",
-          "Memakai tanda kurang dan sama dengan.",
-          "Menghitung sisa dengan hitung mundur.",
-          "Menyelesaikan soal cerita pengurangan.",
+        naskah={[
+          "Malam pesta di rumah Rara. Ada delapan balon di dinding.",
+          "Angin membawa tiga balon. Delapan kurang tiga sama dengan lima.",
+          "Tanda kurang artinya diambil atau dipisahkan. Jumlahnya jadi lebih sedikit.",
+          "Enam kue dikurangi dua menjadi empat. Sembilan topi dikurangi empat menjadi lima.",
         ]}
       />
-      </div>
       <div className="mt-4 space-y-3">
         <HookPesta />
         <Dialog nama="Rara" anak="Wah, balonnya banyak sekali!" />
@@ -522,6 +535,16 @@ function KartuA({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminGuru }) {
           aliasKanvas={["9 - 4 = 5", "9-4=5"]}
           konteksKanvas="Sembilan topi dikurangi empat sama dengan lima."
         />
+        <TabelInfoGrafis
+          judul="Infografis: Cerita Pengurangan"
+          kepala={["Cerita pesta", "Operasi", "Sisa"]}
+          baris={[
+            ["8 balon, 3 terbang", "8 - 3", "5"],
+            ["6 kue, 2 dimakan", "6 - 2", "4"],
+            ["9 topi, 4 diambil", "9 - 4", "5"],
+          ]}
+          kaki="Yang hilang diambil. Yang tinggal adalah sisa."
+        />
       </div>
       <div className="mt-6 border-t-2 border-[#1C01A5]/10 pt-5">
         <p className="text-base font-extrabold text-[#1C01A5]">QUIZ:</p>
@@ -557,22 +580,23 @@ function KartuA({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminGuru }) {
           }}
         />
       </div>
-    </KartuBingkai>
+    </>
   );
 }
 
-function KartuB({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminGuru }) {
-  const kartu = MODUL_MTK1_BAB3.kartu[1];
+function IsiCara({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminGuru }) {
   const kalimat = ["6 - 2 = 4", "4 - 1 = 3", "9 - 5 = 4"];
   return (
-    <KartuBingkai latar="bg-emerald-50/80">
-      <KepalaKartu
-        ikon="➖🍊⭐"
-        judul={kartu.judul}
-        anak="Infografis: Ayo Mengenal Pengurangan"
+    <>
+      <JudulSubBab
+        judul="Sub-Bab B: Berbagai Cara Melakukan Pengurangan"
         kelas={kelas}
         kelamin={kelamin}
-        cuplikan={cuplikanDariNaskah(kartu.voice, 2_000, 3_000)}
+        naskah={[
+          "Mengurangi artinya mengambil sebagian. Yang hilang membuat jumlah jadi lebih sedikit.",
+          "Cara pertama, pasangan bilangan. Cara kedua, menghitung mundur.",
+          "Cara ketiga, pengurangan dari sepuluh. Kurang nol, angkanya tetap.",
+        ]}
       />
       <TabelInfoGrafis
         judul="Infografis: Ayo Mengenal Pengurangan"
@@ -616,29 +640,26 @@ function KartuB({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminGuru }) {
           </div>
         </article>
         <article className="rounded-2xl border-2 border-[#16A34A]/30 bg-[#F0FDF4] px-4 py-3">
-          <p className="text-sm font-black text-[#166534]">Cara 1 · Hitung yang tersisa</p>
+          <p className="text-sm font-black text-[#166534]">1. Pasangan Bilangan</p>
           <p className="mt-2 text-center text-2xl">
             <span>⭐⭐⭐⭐</span>
             <span className="ml-2 text-slate-400 line-through">⭐⭐⭐</span>
           </p>
-          <p className="mt-2 text-sm font-semibold text-slate-700">Dikurangi 3 bintang. Yang tidak dicoret ada 4. 7 - 3 = 4.</p>
+          <p className="mt-2 text-sm font-semibold text-slate-700">Dikurangi 3 bintang. Yang tidak dicoret ada 4. 7 - 3 = 4. Dibalik, 7 - 4 = 3.</p>
+        </article>
+        <article className="rounded-2xl border-2 border-[#7C3AED]/25 bg-[#F5F3FF] px-4 py-3">
+          <p className="text-sm font-black text-[#5B21B6]">Pakai jari</p>
+          <p className="mt-2 text-sm font-semibold text-slate-700">Angkat 8 jari, lipat 3, yang terbuka 5. 8 - 3 = 5.</p>
         </article>
         <article className="rounded-2xl border-2 border-emerald-300 bg-emerald-50 px-4 py-3">
-          <p className="text-sm font-black text-[#92400E]">Cara 2 · Lompat mundur</p>
+          <p className="text-sm font-black text-[#92400E]">2. Menghitung Mundur</p>
           <p className="mt-2 text-center text-sm font-black text-[#1C01A5]">0 — 1 — 2 — 3 — 4 — 5 ← 6 ← 7 ← 8 ← 9 — 10</p>
           <p className="mt-2 text-sm font-semibold text-slate-700">Simpan 9, lompat 4 kali: 8, 7, 6, 5. 9 - 4 = 5.</p>
         </article>
-        <article className="rounded-2xl border-2 border-[#7C3AED]/25 bg-[#F5F3FF] px-4 py-3">
-          <p className="text-sm font-black text-[#5B21B6]">Cara 3 · Pakai jari</p>
-          <p className="mt-2 text-sm font-semibold text-slate-700">Angkat 8 jari, lipat 3, yang terbuka 5. 8 - 3 = 5.</p>
-        </article>
-        <article className="rounded-2xl border-2 border-[#0F766E] bg-[#F0FDFA] px-4 py-3">
-          <p className="text-sm font-black text-[#0F766E]">Soal cerita</p>
-          <p className="mt-2 text-sm font-semibold text-slate-700">
-            Rara punya 7 balon, 3 terbang. Kata kunci terbang, hilang, diambil, dimakan, dipakai, diberikan, pecah, tersisa, tinggal. 7 - 3 = 4.
-          </p>
-          <p className="mt-2 text-sm font-semibold text-slate-700">Tambah dan kurang itu saudara. 5 + 3 = 8, jadi 8 - 3 = 5.</p>
+        <article className="rounded-2xl border-2 border-amber-300 bg-amber-50 px-4 py-3">
+          <p className="text-sm font-black text-[#92400E]">3. Pengurangan dari 10</p>
           <p className="mt-2 text-sm font-semibold text-slate-700">Kurang nol, angkanya tetap. 5 - 0 = 5. Tidak ada yang diambil.</p>
+          <p className="mt-2 text-center text-2xl font-black text-[#1C01A5]">10 - 4 = 6</p>
         </article>
       </div>
       <div className="mt-4 grid gap-3">
@@ -681,6 +702,37 @@ function KartuB({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminGuru }) {
             petunjuk="Ucapkan sisa permennya."
           />
         </div>
+      </div>
+      <JudulSubBab
+        judul="Sub-Bab C: Hubungan Penjumlahan dan Pengurangan"
+        kelas={kelas}
+        kelamin={kelamin}
+        naskah={[
+          "Tambah dan kurang itu saudara.",
+          "Lima tambah tiga sama dengan delapan, jadi delapan kurang tiga sama dengan lima.",
+        ]}
+      />
+      <article className="mt-4 rounded-2xl border-2 border-[#0F766E] bg-[#F0FDFA] px-4 py-3">
+        <p className="text-sm font-semibold text-slate-700">Tambah dan kurang itu saudara. 5 + 3 = 8, jadi 8 - 3 = 5.</p>
+        <p className="mt-2 text-center text-2xl font-black text-[#1C01A5]">5 + 3 = 8</p>
+        <p className="text-center text-2xl font-black text-[#1C01A5]">8 - 3 = 5</p>
+      </article>
+      <JudulSubBab
+        judul="Sub-Bab D: Soal Cerita Pengurangan"
+        kelas={kelas}
+        kelamin={kelamin}
+        naskah={[
+          "Pada soal cerita, cari angkanya, cari kata kunci kurang, lalu hitung mundur.",
+          "Rara punya tujuh balon, tiga terbang. Tujuh kurang tiga sama dengan empat.",
+        ]}
+      />
+      <article className="mt-4 rounded-2xl border-2 border-[#0F766E] bg-[#F0FDFA] px-4 py-3">
+        <p className="text-sm font-black text-[#0F766E]">Soal cerita</p>
+        <p className="mt-2 text-sm font-semibold text-slate-700">
+          Rara punya 7 balon, 3 terbang. Kata kunci terbang, hilang, diambil, dimakan, dipakai, diberikan, pecah, tersisa, tinggal. 7 - 3 = 4.
+        </p>
+      </article>
+      <div className="mt-4">
         <KuisTulisKartu
           id={idKuisTulisKartu(ID, "B")}
           pertanyaan="Bimo punya 8 kue. Ia memberi 5 kue ke temannya. Tulis kalimat matematika dan sisanya!"
@@ -688,7 +740,7 @@ function KartuB({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminGuru }) {
           visual={<p className="text-2xl font-black text-[#1C01A5]">8 - 5 = ?</p>}
         />
       </div>
-    </KartuBingkai>
+    </>
   );
 }
 
@@ -887,10 +939,31 @@ export default function NaskahMtk1Bab3({
   kelas?: string;
   kelamin?: KelaminGuru;
 }) {
+  const kartuA = MODUL_MTK1_BAB3.kartu[0];
   return (
     <div className="space-y-5">
-      <KartuA kelas={kelas} kelamin={kelamin} />
-      <KartuB kelas={kelas} kelamin={kelamin} />
+      <KartuBingkai latar="bg-sky-50/80">
+        <KepalaKartu
+          ikon="🎈🎂🦉"
+          judul={kartuA.judul}
+          anak="Pengurangan sampai dengan 10"
+          kelas={kelas}
+          kelamin={kelamin}
+          cuplikan={cuplikanDariNaskah(kartuA.voice, 2_000, 3_000)}
+        />
+        <div className="mt-4 rounded-2xl border-2 border-sky-300 bg-sky-50 px-4 py-3">
+          <TujuanBelajar
+            butir={[
+              "Membuat cerita pengurangan, lalu menulisnya dengan tanda - dan =.",
+              "Mengurangi dengan pasangan bilangan, menghitung mundur, dan pengurangan dari 10.",
+              "Melihat hubungan penjumlahan dan pengurangan.",
+              "Menyelesaikan soal cerita pengurangan sampai 10.",
+            ]}
+          />
+        </div>
+        <IsiCerita kelas={kelas} kelamin={kelamin} />
+        <IsiCara kelas={kelas} kelamin={kelamin} />
+      </KartuBingkai>
       <TokoRoti kelas={kelas} kelamin={kelamin} />
       <div id={SLOT_AJUAN_SEBELUM_KARTU_D} />
       <KartuPoinPenting
