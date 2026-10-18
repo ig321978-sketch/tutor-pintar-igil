@@ -1,1248 +1,1346 @@
 "use client";
 
-import React, { useState, useEffect, useRef } from "react";
+import { useRef, useState } from "react";
+import SoalRekamSuara from "@/components/SoalRekamSuara";
+import TombolVoiceMateriPai1 from "@/components/TombolVoiceMateriPai1";
+import { jawabanTulisMemuatAlias } from "@/lib/nilai-kuis-tulis";
+import type { CuplikanVoiceMateri } from "@/lib/naskah-voice-pai-1-bab2";
 
-// ============================================================================
-// 1. DATA MATERI RESMI KURIKULUM MERDEKA KELAS 6 SD - BAB 2: RASIO
-// ============================================================================
+type NamaTokoh = "Pak Bima" | "Lala" | "Rio" | "Cika" | "Kak Nara";
 
-export interface VisualSlideRasio {
-  title: string;
-  badge: string;
-  explanation: string;
-  visualType: "konsep_sirup" | "tabel_ekuivalen" | "unit_rate_belanja";
-  keyTakeaways: string[];
-  commonTrap: string;
-}
+type BarisDialog = { nama: NamaTokoh; teks: string };
 
-export interface SubChapterRasio {
+type KuisSingkat = { tanya: string; alias: string[]; kunci: string };
+
+type AdeganRasio = {
   id: string;
-  code: string;
-  title: string;
-  subtitle: string;
-  storyHook: {
-    character: string;
-    avatar: string;
-    dialogue: string;
-    question: string;
-  };
-  slides: VisualSlideRasio[];
-  kamusCilik: { kata: string; arti: string; ikon: string }[];
-  offlineActivities: {
-    teacherGuide: string[];
-    parentGuide: string[];
-  };
-}
+  judul: string;
+  suara: string;
+  figur: "rak" | "jus" | "resep" | "jeruk" | "buah" | "waktu";
+  dialog: BarisDialog[];
+  suaraKuis: KuisSingkat;
+  kanvas: KuisSingkat;
+};
 
-export const BAB2_MATERIALS: SubChapterRasio[] = [
+type Pilihan = { huruf: string; teks: string };
+
+type Permainan =
+  | { jenis: "pilih"; id: string; tanya: string; opsi: Pilihan[]; benar: string; umpan: string }
+  | { jenis: "cocok"; id: string; tanya: string; pasangan: { kiri: string; kanan: string }[]; umpan: string }
+  | { jenis: "susun"; id: string; tanya: string; langkah: { kode: string; teks: string }[]; urutan: string[]; umpan: string }
+  | { jenis: "benarSalah"; id: string; tanya: string; benar: boolean; umpan: string }
+  | { jenis: "suara"; id: string; tanya: string; alias: string[]; umpan: string }
+  | { jenis: "tulis"; id: string; tanya: string; alias: string[]; umpan: string }
+  | { jenis: "kanvas"; id: string; tanya: string; alias: string[]; umpan: string };
+
+const WAJAH: Record<NamaTokoh, string> = {
+  "Pak Bima": "👨‍🏫",
+  Lala: "👧",
+  Rio: "👦",
+  Cika: "🧒",
+  "Kak Nara": "🦉",
+};
+
+const WARNA: Record<NamaTokoh, string> = {
+  "Pak Bima": "border-emerald-300 bg-emerald-50",
+  Lala: "border-pink-300 bg-pink-50",
+  Rio: "border-amber-300 bg-amber-50",
+  Cika: "border-sky-300 bg-sky-50",
+  "Kak Nara": "border-orange-300 bg-orange-50",
+};
+
+const ADEGAN: AdeganRasio[] = [
   {
-    id: "sub-a",
-    code: "Sub-Bab A",
-    title: "Konsep Rasio (Perbandingan)",
-    subtitle: "Eksplorasi 2.1 & 2.2: Membandingkan Dua Besaran & Bagian Terhadap Keseluruhan",
-    storyHook: {
-      character: "Dini & Agam di Kebun Bibit",
-      avatar: "🌱",
-      dialogue:
-        "Dini dan Agam sedang membantu menanam bibit pohon dalam program penghijauan sekolah. Dini membawa 4 bibit pohon jati, sedangkan Agam membawa 6 bibit pohon mahoni. Mereka ingin membandingkan banyaknya bibit yang mereka bawa tanpa menggunakan kata selisih (pengurangan).",
-      question:
-        "Bagaimana cara menuliskan perbandingan jumlah bibit Dini dan Agam dalam bentuk rasio paling sederhana?",
+    id: "a1",
+    judul: "Adegan A1 · Rak Benih yang Berantakan",
+    suara: "Selamat datang di Rumah Kaca Ajaib! Kita lihat dua rak benih. Rak mana yang lebih banyak? Dan berapa kali lebih banyak? Yuk, kita bandingkan!",
+    figur: "rak",
+    dialog: [
+      { nama: "Pak Bima", teks: "Rak benih kita berantakan! Ayo hitung dulu." },
+      { nama: "Lala", teks: "Rak A ada 6 kantong benih bunga matahari!" },
+      { nama: "Rio", teks: "Rak B ada 3 kantong. Jadi rak A lebih banyak!" },
+      { nama: "Cika", teks: "“Lebih banyak” belum bilang seberapa banyak. Aku gambar ya… rak A itu dua kali lipat rak B!" },
+      { nama: "Kak Nara", teks: "Huu-huu! Ada 3 cara membandingkan. Selisih: 6 − 3 = 3, lebih banyak 3. Berapa kali lipat: 6 ÷ 3 = 2 kali. Kata-kata: lebih banyak, sama banyak, atau setengahnya." },
+      { nama: "Rio", teks: "Kalau dibalik, 3 dibanding 6, berarti setengahnya?" },
+      { nama: "Pak Bima", teks: "Tepat! Urutan itu penting." },
+    ],
+    suaraKuis: {
+      tanya: "Rak B hanya setengah dari rak A. Kalau rak A ada 8 kantong, rak B ada berapa?",
+      alias: ["4", "empat", "4 kantong"],
+      kunci: "4 kantong, karena 8 ÷ 2 = 4.",
     },
-    slides: [
-      {
-        title: "Tahap 1: Apa itu Rasio?",
-        badge: "Eksplorasi 2.1 • Pengenalan Notasi",
-        explanation:
-          "Rasio adalah cara membandingkan dua besaran sejenis menggunakan pembagian. Jika Dini membawa 4 bibit dan Agam membawa 6 bibit, rasio bibit Dini terhadap Agam ditulis dengan tanda titik dua ( : ) atau pecahan.",
-        visualType: "konsep_sirup",
-        keyTakeaways: [
-          "Notasi Rasio: Ditulis a : b (dibaca 'a berbanding b') atau bentuk a/b.",
-          "Urutan Sangat Berpengaruh: Rasio Dini terhadap Agam (4 : 6) TIDAK SAMA dengan rasio Agam terhadap Dini (6 : 4).",
-          "Penyederhanaan: Rasio 4 : 6 dapat disederhanakan dengan membagi kedua angka dengan FPB-nya (bagi 2), sehingga menjadi 2 : 3.",
-        ],
-        commonTrap: "⚠️ Jangan membalik urutan angka rasio! Siapa yang disebut pertama di soal, angkanya wajib ditaruh di depan.",
-      },
-      {
-        title: "Tahap 2: Bagian terhadap Bagian vs Bagian terhadap Keseluruhan",
-        badge: "Eksplorasi 2.2 • Analisis Perbandingan",
-        explanation:
-          "Dalam satu wadah terdapat 2 cangkir sirup merah dan 5 cangkir air mineral. Kita bisa membandingkan sirup dengan air, atau membandingkan sirup dengan total seluruh isi minuman.",
-        visualType: "konsep_sirup",
-        keyTakeaways: [
-          "Bagian terhadap Bagian: Membandingkan sirup terhadap air = 2 : 5.",
-          "Total Keseluruhan: Jumlah total cairan = 2 + 5 = 7 cangkir.",
-          "Bagian terhadap Keseluruhan: Membandingkan sirup terhadap total minuman = 2 : 7.",
-        ],
-        commonTrap: "⚠️ Baca pertanyaan dengan teliti: apakah yang diminta perbandingan dengan benda lain (bagian:bagian) atau dengan jumlah total (bagian:total)?",
-      },
-    ],
-    kamusCilik: [
-      { kata: "Rasio", arti: "Perbandingan nilai antara dua atau lebih besaran sejenis.", ikon: "⚖️" },
-      { kata: "Besaran Sejenis", arti: "Benda atau ukuran yang menggunakan satuan yang setara.", ikon: "📏" },
-      { kata: "Rasio Sederhana", arti: "Bentuk rasio dengan bilangan bulat terkecil yang tidak bisa dibagi lagi.", ikon: "✨" },
-    ],
-    offlineActivities: {
-      teacherGuide: [
-        "Sediakan kancing baju dua warna berbeda (misal 6 merah dan 9 biru).",
-        "Minta siswa mengelompokkan kancing menjadi beberapa paket kecil yang isi perbandingannya sama.",
-      ],
-      parentGuide: [
-        "Ajak anak ke dapur saat membuat teh manis: bandingkan 1 sendok gula dengan 1 gelas air teh (1 : 1).",
-      ],
+    kanvas: {
+      tanya: "Di kanvas ada 4 apel merah dan 12 apel hijau. Tulis berapa kali lipat apel hijau dari apel merah, dan berapa selisihnya.",
+      alias: ["3 kali", "3", "selisih 8", "3 kali lipat 8"],
+      kunci: "12 ÷ 4 = 3 kali lipat. Selisih 12 − 4 = 8.",
     },
   },
   {
-    id: "sub-b",
-    code: "Sub-Bab B",
-    title: "Rasio Ekuivalen (Rasio Senilai)",
-    subtitle: "Eksplorasi 2.3 & 2.4: Melipatgandakan Takaran & Tabel Rasio Ekuivalen",
-    storyHook: {
-      character: "Koki Rendy di Dapur Kue",
-      avatar: "👨‍🍳",
-      dialogue:
-        "Koki Rendy memiliki resep rahasia bolu kukus: untuk 2 cangkir tepung terigu, dibutuhkan 3 butir telur ayam. Hari ini Koki Rendy mendapat pesanan pesta dan harus membuat adonan menggunakan 6 cangkir tepung terigu. Berapa butir telur yang harus disiapkan?",
-      question:
-        "Bagaimana menjaga rasa kue tetap sama persis meskipun ukuran resep dilipatgandakan?",
+    id: "a2",
+    judul: "Adegan A2 · Ramuan Jus Rahasia",
+    suara: "Para ilmuwan menulis perbandingan dengan dua titik. Namanya rasio. Perhatikan resep jus Pak Bima ya!",
+    figur: "jus",
+    dialog: [
+      { nama: "Cika", teks: "Pak, ada cara singkat menulis “3 banding 2”?" },
+      { nama: "Pak Bima", teks: "Ada! Tulis 3 : 2. Dibaca “tiga banding dua”. Ini namanya rasio." },
+      { nama: "Lala", teks: "Resep jusku 3 bagian air dan 2 bagian sirup. Jadi 3 : 2?" },
+      { nama: "Pak Bima", teks: "Benar! Ingat, kedua benda harus sejenis dan satuannya sama. Tidak boleh 2 gelas dibanding 3 ember." },
+      { nama: "Rio", teks: "Kalau beda satuan, disamakan dulu ya?" },
+      { nama: "Kak Nara", teks: "Betul! Rasio juga bisa ditulis seperti pecahan: 3 : 2 = 3/2. Dan 3 : 2 bukan dijumlah jadi 5. Rasio itu untuk membandingkan." },
+    ],
+    suaraKuis: {
+      tanya: "Saus memakai 5 bagian tomat dan 4 bagian cabai. Bagaimana membaca rasionya?",
+      alias: ["lima banding empat", "5 banding 4", "5 4"],
+      kunci: "Lima banding empat, ditulis 5 : 4.",
     },
-    slides: [
-      {
-        title: "Tahap 1: Menemukan Rasio Ekuivalen",
-        badge: "Eksplorasi 2.3 • Sifat Perkalian Rasio",
-        explanation:
-          "Rasio ekuivalen adalah rasio-rasio yang memiliki nilai perbandingan yang sama persis. Agar rasa adonan tidak berubah, setiap pengali pada bagian pertama wajib dikalikan dengan angka yang sama pada bagian kedua.",
-        visualType: "tabel_ekuivalen",
-        keyTakeaways: [
-          "Aturan Perkalian: Jika tepung dikali 3 (2 × 3 = 6), maka telur juga harus dikali 3 (3 × 3 = 9).",
-          "Membagi Bersama: 6 : 9 ekuivalen dengan 2 : 3 karena kedua angka sama-sama dibagi 3.",
-          "Dilarang Menjumlahkan: Menambah 4 cangkir tepung BUKAN berarti menambah 4 butir telur!",
-        ],
-        commonTrap: "⚠️ Rasio ekuivalen dibentuk lewat perkalian atau pembagian, BUKAN penambahan atau pengurangan!",
-      },
-      {
-        title: "Tahap 2: Menggunakan Tabel Rasio untuk Pemecahan Masalah",
-        badge: "Eksplorasi 2.4 • Tabel Skala",
-        explanation:
-          "Tabel rasio membantu kita menemukan nilai yang belum diketahui secara bertahap tanpa perlu menghafal rumus silang yang membingungkan.",
-        visualType: "tabel_ekuivalen",
-        keyTakeaways: [
-          "Baris Pertama: Tepung (cangkir) -> [2, 4, 6, 8, 10].",
-          "Baris Kedua: Telur (butir) -> [3, 6, 9, 12, 15].",
-          "Pola Lompatan: Setiap kolom bertambah secara proporsional sesuai rasio dasar 2 : 3.",
-        ],
-        commonTrap: "⚠️ Selalu periksa kembali apakah hasil bagi setiap kolom bernilai sama dengan rasio dasarnya.",
-      },
-    ],
-    kamusCilik: [
-      { kata: "Ekuivalen", arti: "Memiliki nilai, ukuran, atau perbandingan yang sama.", ikon: "🔄" },
-      { kata: "Faktor Pengali", arti: "Bilangan pengali yang sama untuk memperbesar kedua suku rasio.", ikon: "✖️" },
-      { kata: "Proporsi", arti: "Persamaan yang menyatakan bahwa dua rasio bernilai sama.", ikon: "📊" },
-    ],
-    offlineActivities: {
-      teacherGuide: [
-        "Buat tabel rasio kosong di papan tulis untuk resep minuman jus buah kelas.",
-        "Minta siswa mengisi kolom-kolom takaran jika jumlah tamu bertambah 2 kali, 3 kali, dan 5 kali.",
-      ],
-      parentGuide: [
-        "Ajak anak menghitung kebutuhan beras keluarga: 1 hari butuh 3 gelas beras, berapa gelas untuk 4 hari?",
-      ],
+    kanvas: {
+      tanya: "Tulis rasio 7 kembang kol : 3 wortel, dan 12 daun : 4 bunga. Lalu tulis keduanya sebagai pecahan.",
+      alias: ["7 3", "7/3", "12 4", "12/4"],
+      kunci: "7 : 3 = 7/3. Dan 12 : 4 = 12/4.",
     },
   },
   {
-    id: "sub-c",
-    code: "Sub-Bab C",
-    title: "Penerapan Rasio & Rasio Satuan (Unit Rate)",
-    subtitle: "Eksplorasi 2.5: Menentukan Harga Satuan Termurah & Efisiensi Bahan Bakar",
-    storyHook: {
-      character: "Ibu & Budi Berbelanja",
-      avatar: "🛒",
-      dialogue:
-        "Di supermarket ada dua pilihan detergen: Paket Hemat A berisi 3 kg seharga Rp45.000, sedangkan Paket Jumbo B berisi 5 kg seharga Rp70.000. Budi mengira Paket B lebih mahal karena harganya Rp70.000.",
-      question:
-        "Paket detergen manakah yang sebenarnya lebih murah dan hemat per kilogramnya?",
+    id: "b1",
+    judul: "Adegan B1 · Tiga Resep, Satu Rasa",
+    suara: "Ada rasio yang angkanya beda tapi rasanya sama! Kita cari tahu rahasianya.",
+    figur: "resep",
+    dialog: [
+      { nama: "Lala", teks: "Resep A 2 : 3, resep B 4 : 6, resep C 6 : 9. Kok rasanya sama?" },
+      { nama: "Cika", teks: "Resep A dikali 2 jadi 4 : 6! Sama dengan B!" },
+      { nama: "Pak Bima", teks: "Itu kesamaan rasio. Kalau kedua angka dikali atau dibagi bilangan yang sama, rasio tetap senilai." },
+      { nama: "Lala", teks: "Resep C, 6 : 9 dibagi 3, jadi 2 : 3!" },
+      { nama: "Kak Nara", teks: "Huu-huu! Itu namanya menyederhanakan. Bagi kedua angka dengan FPB-nya. Susun juga di tabel rasio!" },
+    ],
+    suaraKuis: {
+      tanya: "Madu dan air memakai rasio 1 : 4. Kalau jumlahnya dibuat 2 kali lipat, rasio barunya berapa?",
+      alias: ["2 banding 8", "2 8", "dua banding delapan"],
+      kunci: "1 : 4 dikali 2 menjadi 2 : 8.",
     },
-    slides: [
-      {
-        title: "Tahap 1: Konsep Rasio Satuan (Unit Rate)",
-        badge: "Eksplorasi 2.5 • Harga Satuan",
-        explanation:
-          "Rasio satuan adalah rasio yang suku keduanya disederhanakan menjadi 1 satuan. Dengan mengetahui harga per 1 kg atau jarak per 1 liter, kita bisa membandingkan pilihan secara adil.",
-        visualType: "unit_rate_belanja",
-        keyTakeaways: [
-          "Paket A: Rp45.000 ÷ 3 kg = Rp15.000 per 1 kg.",
-          "Paket B: Rp70.000 ÷ 5 kg = Rp14.000 per 1 kg.",
-          "Keputusan Cerdas: Paket B lebih hemat karena harga per kilogramnya hanya Rp14.000 (selisih Rp1.000/kg).",
-        ],
-        commonTrap: "⚠️ Jangan tertipu angka harga total yang besar! Selalu bagi harga dengan kuantitasnya untuk mencari harga per 1 satuan.",
-      },
-      {
-        title: "Tahap 2: Efisiensi Laju dan Konsumsi",
-        badge: "Penerapan Nyata • Kecepatan & Bahan Bakar",
-        explanation:
-          "Mobil Ayah menempuh jarak 120 km dengan menghabiskan 10 liter bensin. Sepeda motor Kakak menempuh jarak 90 km dengan 5 liter bensin. Kendaraan mana yang lebih hemat bensin?",
-        visualType: "unit_rate_belanja",
-        keyTakeaways: [
-          "Konsumsi Mobil: 120 km ÷ 10 liter = 12 km per liter.",
-          "Konsumsi Motor: 90 km ÷ 5 liter = 18 km per liter.",
-          "Motor lebih efisien karena dapat melaju lebih jauh (18 km) untuk setiap 1 liter bensin yang sama.",
-        ],
-        commonTrap: "⚠️ Untuk efisiensi bensin: angka km/liter yang LEBIH BESAR berarti LEBIH IRIT. Untuk harga belanja: harga/satuan yang LEBIH KECIL berarti LEBIH MURAH.",
-      },
+    kanvas: {
+      tanya: "Mulai dari 3 : 5. Tulis 3 rasio senilai berikutnya.",
+      alias: ["6 10", "9 15", "12 20"],
+      kunci: "3 : 5, lalu 6 : 10, 9 : 15, dan 12 : 20.",
+    },
+  },
+  {
+    id: "b2",
+    judul: "Adegan B2 · Satu Kantong untuk Semua",
+    suara: "Kalau kita mau tahu harga satu kilo, atau kecepatan per jam, kita pakai rasio satuan!",
+    figur: "jeruk",
+    dialog: [
+      { nama: "Rio", teks: "Aku mau tahu harga per kilogram supaya mudah dibandingkan." },
+      { nama: "Pak Bima", teks: "Itu rasio satuan, yaitu rasio yang salah satu angkanya 1." },
+      { nama: "Cika", teks: "4 kg jeruk Rp60.000, berarti 60.000 ÷ 4 = Rp15.000 per kg!" },
+      { nama: "Lala", teks: "Kenapa harus jadi 1?" },
+      { nama: "Pak Bima", teks: "Supaya adil dibandingkan: mana yang lebih murah, lebih cepat, atau lebih banyak." },
+      { nama: "Kak Nara", teks: "Caranya, bagi kedua angka dengan angka yang mau dijadikan 1." },
     ],
-    kamusCilik: [
-      { kata: "Rasio Satuan", arti: "Perbandingan kuantitas terhadap satu satuan besaran lain.", ikon: "🏷️" },
-      { kata: "Efisiensi", arti: "Tingkat ketepatan atau kehematan penggunaan sumber daya.", ikon: "⚡" },
-      { kata: "Laju / Kecepatan", arti: "Perbandingan antara jarak tempuh terhadap waktu tempuh.", ikon: "🚗" },
+    suaraKuis: {
+      tanya: "Mesin menanam 9 bibit dalam 3 menit. Berapa bibit per menit?",
+      alias: ["3", "tiga", "3 bibit"],
+      kunci: "9 ÷ 3 = 3 bibit per menit.",
+    },
+    kanvas: {
+      tanya: "15 liter air dipakai menyiram 5 pot. Tulis rasio air : pot, lalu jadikan rasio satuan.",
+      alias: ["15 5", "3 1", "3 liter"],
+      kunci: "15 : 5 menjadi 3 : 1, yaitu 3 liter per pot.",
+    },
+  },
+  {
+    id: "c1",
+    judul: "Adegan C1 · Dua Cara di Rak Buah",
+    suara: "Sekarang kita belajar dua jenis rasio. Bagian dengan bagian, dan bagian dengan keseluruhan. Hati-hati, jangan tertukar!",
+    figur: "buah",
+    dialog: [
+      { nama: "Pak Bima", teks: "Di rak ada 5 mangga dan 7 jambu." },
+      { nama: "Rio", teks: "Mangga banding jambu = 5 : 7. Ini bagian : bagian." },
+      { nama: "Cika", teks: "Mangga banding semua buah?" },
+      { nama: "Pak Bima", teks: "Jumlahkan dulu: 5 + 7 = 12. Jadi 5 : 12. Ini bagian : keseluruhan." },
+      { nama: "Kak Nara", teks: "Huu-huu! Ada kata “semua”, “seluruh”, atau “total”? Jumlahkan dulu!" },
+      { nama: "Rio", teks: "Jambu banding semua buah = 7 : 12." },
     ],
-    offlineActivities: {
-      teacherGuide: [
-        "Bawa 2 kemasan makanan ringan berbeda ukuran ke kelas lengkap dengan struk belanja.",
-        "Minta siswa menghitung harga per gram untuk menentukan kemasan paling ekonomis.",
-      ],
-      parentGuide: [
-        "Saat mengisi bensin di SPBU, minta anak mencatat total rupiah dan liter yang dibeli lalu menghitung harga 1 liternya.",
-      ],
+    suaraKuis: {
+      tanya: "Ada 8 bunga matahari dan 4 lavender. Berapa rasio lavender terhadap seluruh bunga?",
+      alias: ["4 banding 12", "1 banding 3", "4 12", "1 3"],
+      kunci: "Seluruh bunga 8 + 4 = 12. Lavender : seluruhnya = 4 : 12 = 1 : 3.",
+    },
+    kanvas: {
+      tanya: "Ada 9 kancing biru dan 6 kancing merah. Tulis biru : merah, biru : seluruhnya, dan merah : seluruhnya, dalam bentuk sederhana.",
+      alias: ["3 2", "3 5", "2 5"],
+      kunci: "9 : 6 = 3 : 2. Seluruhnya 15, jadi biru 9 : 15 = 3 : 5, dan merah 6 : 15 = 2 : 5.",
+    },
+  },
+  {
+    id: "c2",
+    judul: "Adegan C2 · Jadwal Penyiraman",
+    suara: "Rasio juga dipakai untuk waktu dan kecepatan. Aturan utamanya: samakan satuan waktu dulu!",
+    figur: "waktu",
+    dialog: [
+      { nama: "Lala", teks: "Pompa A menyala 20 menit, pompa B 50 menit. Rasionya 20 : 50!" },
+      { nama: "Rio", teks: "Dibagi 10, jadi 2 : 5." },
+      { nama: "Pak Bima", teks: "Mesin penyiram menyiram 60 pot dalam 12 menit. 60 : 12 = 5 : 1, jadi 5 pot per menit." },
+      { nama: "Kak Nara", teks: "Kalau satuan waktunya beda, ubah dulu. 1 jam = 60 menit." },
+      { nama: "Pak Bima", teks: "120 km dalam 2 jam? 120 : 2 = 60 : 1, artinya 60 km per jam. Itu namanya kecepatan." },
+    ],
+    suaraKuis: {
+      tanya: "Kincir berputar 90 kali dalam 3 menit. Berapa putaran per menit?",
+      alias: ["30", "tiga puluh", "30 putaran"],
+      kunci: "90 ÷ 3 = 30 putaran per menit.",
+    },
+    kanvas: {
+      tanya: "Bus kebun menempuh 180 km dalam 3 jam. Tulis rasio jarak : waktu sebagai rasio satuan.",
+      alias: ["180 3", "60 1", "60 km"],
+      kunci: "180 : 3 = 60 : 1, yaitu 60 km/jam.",
     },
   },
 ];
 
-// ============================================================================
-// 2. BANK SOAL STATIS (10 SOAL) & GENERATOR DINAMIS ANTI-CONTEK
-// ============================================================================
-
-export interface QuestionItemRasio {
-  id: string;
-  category: "latihan" | "evaluasi" | "ujian";
-  subBab: "A" | "B" | "C";
-  question: string;
-  options: string[];
-  correctAnswer: string;
-  explanation: string;
-}
-
-export const STATIC_QUESTIONS_RASIO: QuestionItemRasio[] = [
+const PERMAINAN_A: Permainan[] = [
   {
-    id: "lat-r1",
-    category: "latihan",
-    subBab: "A",
-    question: "Di dalam kelas ada 15 siswa laki-laki dan 20 siswa perempuan. Berapakah rasio paling sederhana antara siswa laki-laki dan perempuan?",
-    options: ["3 : 4", "4 : 3", "3 : 7", "15 : 20"],
-    correctAnswer: "3 : 4",
-    explanation: "Rasio laki-laki terhadap perempuan = 15 : 20. Sederhanakan kedua suku dengan membaginya dengan FPB-nya (5): 15÷5 = 3 dan 20÷5 = 4. Jadi hasilnya 3 : 4.",
-  },
-  {
-    id: "lat-r2",
-    category: "latihan",
-    subBab: "A",
-    question: "Koleksi buku cerita Fajar terdiri dari 6 buku komik dan 18 buku dongeng. Berapakah rasio buku komik terhadap TOTAL seluruh buku cerita Fajar?",
-    options: ["1 : 3", "1 : 4", "3 : 1", "6 : 18"],
-    correctAnswer: "1 : 4",
-    explanation: "Total seluruh buku = 6 + 18 = 24 buku. Rasio komik terhadap total = 6 : 24. Bagi kedua angka dengan 6, diperoleh 1 : 4.",
-  },
-  {
-    id: "lat-r3",
-    category: "latihan",
-    subBab: "A",
-    question: "Sebuah resep minuman membutuhkan 3 sendok sirup dan 1 gelas air. Manakah pernyataan perbandingan yang TEPAT?",
-    options: [
-      "Rasio sirup terhadap air adalah 3 : 1",
-      "Rasio air terhadap sirup adalah 3 : 1",
-      "Rasio sirup terhadap total minuman adalah 3 : 1",
-      "Rasio air terhadap total minuman adalah 3 : 4",
+    jenis: "pilih",
+    id: "pa1",
+    tanya: "Ada 3 bunga matahari dan 9 tulip. Bunga matahari dibanding tulip adalah…",
+    opsi: [
+      { huruf: "A", teks: "3 kali lipat" },
+      { huruf: "B", teks: "sepertiganya" },
+      { huruf: "C", teks: "6 lebih banyak" },
+      { huruf: "D", teks: "sama banyak" },
     ],
-    correctAnswer: "Rasio sirup terhadap air adalah 3 : 1",
-    explanation: "Sirup = 3 dan Air = 1, sehingga rasio sirup terhadap air ditulis 3 : 1.",
+    benar: "B",
+    umpan: "3 : 9 = 1 : 3. Bunga matahari sepertiga dari tulip.",
   },
   {
-    id: "lat-r4",
-    category: "latihan",
-    subBab: "B",
-    question: "Rasio tepung terigu dan gula pasir untuk adonan adalah 4 : 3. Jika seorang pembuat kue menggunakan 12 cangkir tepung terigu, berapa cangkir gula pasir yang dibutuhkan?",
-    options: ["6 cangkir", "8 cangkir", "9 cangkir", "12 cangkir"],
-    correctAnswer: "9 cangkir",
-    explanation: "Tepung terigu meningkat dari 4 menjadi 12 (dikalikan 3). Maka gula pasir juga harus dikalikan 3: 3 × 3 = 9 cangkir.",
-  },
-  {
-    id: "lat-r5",
-    category: "latihan",
-    subBab: "B",
-    question: "Manakah pasangan rasio di bawah ini yang TIDAK ekuivalen (tidak senilai)?",
-    options: ["2 : 5 dan 6 : 15", "3 : 7 dan 9 : 21", "4 : 6 dan 10 : 15", "3 : 4 dan 6 : 7"],
-    correctAnswer: "3 : 4 dan 6 : 7",
-    explanation: "3 : 4 jika dikali 2 menjadi 6 : 8, bukan 6 : 7. Pasangan 3:4 dan 6:7 tidak memiliki faktor pengali yang sama.",
-  },
-  {
-    id: "lat-r6",
-    category: "latihan",
-    subBab: "B",
-    question: "Di peternakan, rasio ayam jantan terhadap ayam betina adalah 2 : 5. Jika total ayam di peternakan ada 35 ekor, berapakah banyak ayam betina?",
-    options: ["10 ekor", "15 ekor", "20 ekor", "25 ekor"],
-    correctAnswer: "25 ekor",
-    explanation: "Jumlah bagian rasio = 2 + 5 = 7 bagian. Nilai 1 bagian = 35 ÷ 7 = 5 ekor. Ayam betina = 5 bagian × 5 = 25 ekor.",
-  },
-  {
-    id: "lat-r7",
-    category: "latihan",
-    subBab: "B",
-    question: "Bentuk paling sederhana dari rasio 24 : 36 adalah...",
-    options: ["4 : 6", "2 : 3", "3 : 4", "1 : 2"],
-    correctAnswer: "2 : 3",
-    explanation: "FPB dari 24 dan 36 adalah 12. Bagilah kedua suku: 24 ÷ 12 = 2 dan 36 ÷ 12 = 3. Bentuk paling sederhananya adalah 2 : 3.",
-  },
-  {
-    id: "lat-r8",
-    category: "latihan",
-    subBab: "C",
-    question: "Sebuah mobil menempuh jarak 150 km dalam waktu 3 jam dengan kecepatan konstan. Berapakah rasio satuan (kecepatan) mobil tersebut per jam?",
-    options: ["40 km/jam", "45 km/jam", "50 km/jam", "60 km/jam"],
-    correctAnswer: "50 km/jam",
-    explanation: "Rasio satuan jarak per waktu = 150 km ÷ 3 jam = 50 km per 1 jam (50 km/jam).",
-  },
-  {
-    id: "lat-r9",
-    category: "latihan",
-    subBab: "C",
-    question: "Toko A menjual 4 buku tulis seharga Rp16.000. Toko B menjual 6 buku tulis seharga Rp21.000. Manakah toko yang menjual buku tulis lebih murah per satuannya?",
-    options: [
-      "Toko A lebih murah (Rp4.000/buku)",
-      "Toko B lebih murah (Rp3.500/buku)",
-      "Kedua toko menjual dengan harga satuan sama",
-      "Toko B lebih mahal (Rp4.500/buku)",
+    jenis: "pilih",
+    id: "pa2",
+    tanya: "Pilih kartu yang menunjukkan rasio 2 : 5 untuk biru : kuning.",
+    opsi: [
+      { huruf: "A", teks: "5 biru, 2 kuning" },
+      { huruf: "B", teks: "2 biru, 3 kuning" },
+      { huruf: "C", teks: "2 biru, 5 kuning" },
+      { huruf: "D", teks: "5 biru, 5 kuning" },
     ],
-    correctAnswer: "Toko B lebih murah (Rp3.500/buku)",
-    explanation: "Toko A = Rp16.000 ÷ 4 = Rp4.000/buku. Toko B = Rp21.000 ÷ 6 = Rp3.500/buku. Toko B lebih murah karena Rp3.500 < Rp4.000.",
+    benar: "C",
+    umpan: "Yang disebut pertama adalah biru. Jadi 2 biru dan 5 kuning.",
   },
   {
-    id: "lat-r10",
-    category: "latihan",
-    subBab: "C",
-    question: "Sebuah mesin pencetak dapat mencetak 180 lembar kertas dalam waktu 2 menit. Berapa lembar kertas yang dapat dicetak mesin tersebut dalam waktu 5 menit?",
-    options: ["360 lembar", "450 lembar", "500 lembar", "540 lembar"],
-    correctAnswer: "450 lembar",
-    explanation: "Rasio satuan kecepatan = 180 lembar ÷ 2 menit = 90 lembar/menit. Dalam 5 menit: 90 × 5 = 450 lembar.",
+    jenis: "cocok",
+    id: "pa3",
+    tanya: "Cocokkan rasio dengan bentuk sederhananya.",
+    pasangan: [
+      { kiri: "6 : 8", kanan: "3 : 4" },
+      { kiri: "10 : 15", kanan: "2 : 3" },
+      { kiri: "9 : 3", kanan: "3 : 1" },
+      { kiri: "4 : 12", kanan: "1 : 3" },
+    ],
+    umpan: "6 : 8 → 3 : 4. 10 : 15 → 2 : 3. 9 : 3 → 3 : 1. 4 : 12 → 1 : 3.",
+  },
+  {
+    jenis: "susun",
+    id: "pa4",
+    tanya: "Urutkan langkah mencari rasio kucing terhadap seluruh hewan. Ada 7 kucing dan 5 anjing.",
+    langkah: [
+      { kode: "a", teks: "Cek apakah bisa disederhanakan" },
+      { kode: "b", teks: "Hitung total 7 + 5" },
+      { kode: "c", teks: "Tulis 7 : 12" },
+    ],
+    urutan: ["b", "c", "a"],
+    umpan: "Totalnya 12. Rasio 7 : 12 sudah paling sederhana.",
+  },
+  {
+    jenis: "benarSalah",
+    id: "pa5",
+    tanya: "4 : 6 senilai dengan 8 : 12, tetapi tidak senilai dengan 2 : 3.",
+    benar: false,
+    umpan: "Salah. 4 : 6, 8 : 12, dan 2 : 3 sama-sama senilai dengan 2 : 3.",
   },
 ];
 
-// Generator Soal Dinamis Anti-Contek (Client-Side Math 100%)
-function generateDynamicQuestionsRasio(seed: number): QuestionItemRasio[] {
-  const rand = (min: number, max: number, idx: number) => {
-    const val = Math.sin(seed * 777 + idx * 43) * 10000;
-    const frac = val - Math.floor(val);
-    return Math.floor(frac * (max - min + 1)) + min;
-  };
-
-  // Soal 1: Penyederhanaan Rasio
-  const multiplier1 = rand(2, 5, 1);
-  const baseA = rand(2, 4, 2);
-  const baseB = rand(5, 7, 3);
-  const valA = baseA * multiplier1;
-  const valB = baseB * multiplier1;
-
-  // Soal 2: Ekuivalen Resep
-  const rTepung = rand(2, 3, 4);
-  const rGula = rand(4, 5, 5);
-  const resepMultiplier = rand(3, 6, 6);
-  const givenTepung = rTepung * resepMultiplier;
-  const ansGula = rGula * resepMultiplier;
-
-  // Soal 3: Jumlah Bagian Total
-  const partX = rand(2, 3, 7);
-  const partY = rand(3, 4, 8);
-  const onePartVal = rand(4, 8, 9);
-  const totalItems = (partX + partY) * onePartVal;
-  const targetY = partY * onePartVal;
-
-  // Soal 4: Unit Rate Belanja
-  const itemWeightA = 3;
-  const itemPriceA = rand(36, 48, 10) * 1000;
-  const unitRateA = itemPriceA / itemWeightA;
-
-  // Soal 5: Efisiensi Jarak Kendaraan
-  const literBensin = rand(4, 6, 11);
-  const kmPerLiter = rand(12, 16, 12);
-  const totalJarak = literBensin * kmPerLiter;
-
-  return [
-    {
-      id: `dyn-r1-${seed}`,
-      category: "evaluasi",
-      subBab: "A",
-      question: `Di sebuah taman pembibitan, terdapat ${valA} pohon pucuk merah dan ${valB} pohon cemara udang. Berapakah bentuk rasio paling sederhana dari pohon pucuk merah terhadap pohon cemara udang?`,
-      options: [
-        `${baseA} : ${baseB}`,
-        `${baseB} : ${baseA}`,
-        `${valA} : ${valB}`,
-        `${baseA} : ${baseB + 1}`,
-      ].sort(),
-      correctAnswer: `${baseA} : ${baseB}`,
-      explanation: `Rasio awal ${valA} : ${valB}. Keduanya dibagi dengan FPB (${multiplier1}), menghasilkan rasio paling sederhana ${baseA} : ${baseB}.`,
+const INFOGRAFIS: {
+  id: string;
+  judul: string;
+  suara: string;
+  tabel: { kepala: string[]; baris: string[][] };
+  contoh: string;
+  suaraKuis: KuisSingkat;
+  kanvas: KuisSingkat;
+}[] = [
+  {
+    id: "ib1",
+    judul: "Membandingkan benda",
+    suara: "Ingat tiga cara membandingkan: selisih, berapa kali lipat, dan kata-kata.",
+    tabel: {
+      kepala: ["Cara", "Rumus", "Contoh 6 dan 3"],
+      baris: [
+        ["Selisih", "besar − kecil", "6 − 3 = 3"],
+        ["Kali lipat", "besar ÷ kecil", "6 ÷ 3 = 2 kali"],
+        ["Kata", "—", "dua kali lipat"],
+      ],
     },
-    {
-      id: `dyn-r2-${seed}`,
-      category: "evaluasi",
-      subBab: "B",
-      question: `Perbandingan takaran terigu dan mentega pada resep roti adalah ${rTepung} : ${rGula}. Jika seorang juru masak menggunakan ${givenTepung} cangkir terigu, berapa cangkir mentega yang harus ia tambahkan agar adonan seimbang?`,
-      options: [
-        `${ansGula} cangkir`,
-        `${ansGula + 2} cangkir`,
-        `${ansGula - 2} cangkir`,
-        `${givenTepung + rGula} cangkir`,
-      ].sort(),
-      correctAnswer: `${ansGula} cangkir`,
-      explanation: `Faktor pengali rasio = ${givenTepung} ÷ ${rTepung} = ${resepMultiplier}. Maka mentega = ${rGula} × ${resepMultiplier} = ${ansGula} cangkir.`,
+    contoh: "12 pot mint dan 4 pot basil. 12 ÷ 4 = 3 kali lipat.",
+    suaraKuis: {
+      tanya: "15 jeruk dan 5 apel. Jeruk berapa kali lipat apel?",
+      alias: ["3", "tiga", "3 kali"],
+      kunci: "15 ÷ 5 = 3 kali.",
     },
-    {
-      id: `dyn-r3-${seed}`,
-      category: "evaluasi",
-      subBab: "B",
-      question: `Rasio bibit cabai merah dan cabai rawit di kebun adalah ${partX} : ${partY}. Jika total seluruh bibit cabai berjumlah ${totalItems} polybag, berapakah jumlah bibit cabai rawit?`,
-      options: [
-        `${targetY} polybag`,
-        `${targetY - onePartVal} polybag`,
-        `${targetY + onePartVal} polybag`,
-        `${totalItems / 2} polybag`,
-      ].sort(),
-      correctAnswer: `${targetY} polybag`,
-      explanation: `Jumlah bagian rasio = ${partX} + ${partY} = ${partX + partY} bagian. Nilai 1 bagian = ${totalItems} ÷ ${partX + partY} = ${onePartVal}. Bibit cabai rawit = ${partY} × ${onePartVal} = ${targetY} polybag.`,
+    kanvas: {
+      tanya: "Gambar 5 bintang dan 15 lingkaran. Tulis selisih dan kali lipatnya.",
+      alias: ["selisih 10", "10", "3 kali"],
+      kunci: "Selisih 15 − 5 = 10. Kali lipat 15 ÷ 5 = 3.",
     },
-    {
-      id: `dyn-r4-${seed}`,
-      category: "evaluasi",
-      subBab: "C",
-      question: `Ibu membeli satu kantong beras seberat ${itemWeightA} kg dengan harga total Rp${itemPriceA.toLocaleString("id-ID")}. Berapakah harga rasio satuan untuk 1 kg beras tersebut?`,
-      options: [
-        `Rp${unitRateA.toLocaleString("id-ID")}`,
-        `Rp${(unitRateA + 1000).toLocaleString("id-ID")}`,
-        `Rp${(unitRateA - 1000).toLocaleString("id-ID")}`,
-        `Rp${(unitRateA + 2000).toLocaleString("id-ID")}`,
-      ].sort(),
-      correctAnswer: `Rp${unitRateA.toLocaleString("id-ID")}`,
-      explanation: `Harga per 1 kg = Total Harga ÷ Berat = Rp${itemPriceA.toLocaleString("id-ID")} ÷ ${itemWeightA} kg = Rp${unitRateA.toLocaleString("id-ID")} per kg.`,
+  },
+  {
+    id: "ib2",
+    judul: "Pengertian rasio",
+    suara: "Rasio ditulis a : b dan dibaca a banding b. Besaran yang dibandingkan harus sejenis!",
+    tabel: {
+      kepala: ["Ditulis", "Dibaca", "Artinya"],
+      baris: [
+        ["3 : 2", "tiga banding dua", "3 air, 2 sirup"],
+        ["7 : 1", "tujuh banding satu", "7 untuk tiap 1"],
+        ["5 : 5", "lima banding lima", "sama banyak, 1 : 1"],
+      ],
     },
-    {
-      id: `dyn-r5-${seed}`,
-      category: "evaluasi",
-      subBab: "C",
-      question: `Sebuah sepeda motor menempuh perjalanan antarkota sejauh ${totalJarak} km dan menghabiskan ${literBensin} liter bensin. Berapa jarak yang ditempuh motor tersebut untuk setiap 1 liter bensinnya?`,
-      options: [
-        `${kmPerLiter} km/liter`,
-        `${kmPerLiter + 2} km/liter`,
-        `${kmPerLiter - 2} km/liter`,
-        `${Math.round(totalJarak / (literBensin + 1))} km/liter`,
-      ].sort(),
-      correctAnswer: `${kmPerLiter} km/liter`,
-      explanation: `Konsumsi bahan bakar = ${totalJarak} km ÷ ${literBensin} liter = ${kmPerLiter} km per 1 liter bensin.`,
+    contoh: "8 krayon : 12 pensil = 8 : 12 = 8/12 = 2 : 3.",
+    suaraKuis: {
+      tanya: "Bacakan rasio 8 krayon dan 12 pensil warna.",
+      alias: ["delapan banding dua belas", "8 banding 12", "2 banding 3"],
+      kunci: "Delapan banding dua belas. Bentuk sederhananya 2 : 3.",
     },
-  ];
+    kanvas: {
+      tanya: "Tulis 9 buku : 6 penggaris dalam bentuk titik dua, pecahan, dan paling sederhana.",
+      alias: ["9 6", "9/6", "3 2"],
+      kunci: "9 : 6, lalu 9/6, dan bentuk sederhananya 3 : 2.",
+    },
+  },
+  {
+    id: "ib3",
+    judul: "Kesamaan rasio",
+    suara: "Kalikan atau bagi kedua angka dengan bilangan yang sama. Nilai rasio tidak berubah.",
+    tabel: {
+      kepala: ["Rasio", "× 2", "× 3", "Sederhana"],
+      baris: [
+        ["2 : 3", "4 : 6", "6 : 9", "2 : 3"],
+        ["1 : 4", "2 : 8", "3 : 12", "1 : 4"],
+        ["3 : 5", "6 : 10", "9 : 15", "3 : 5"],
+      ],
+    },
+    contoh: "18 : 24. FPB-nya 6. 18 ÷ 6 = 3 dan 24 ÷ 6 = 4. Hasilnya 3 : 4.",
+    suaraKuis: {
+      tanya: "15 : 25 dibagi berapa supaya sederhana, dan hasilnya apa?",
+      alias: ["dibagi 5", "3 banding 5", "3 5"],
+      kunci: "Dibagi 5, hasilnya 3 : 5.",
+    },
+    kanvas: {
+      tanya: "Dari 4 : 7, tulis tiga rasio senilai.",
+      alias: ["8 14", "12 21", "16 28"],
+      kunci: "8 : 14, 12 : 21, dan 16 : 28.",
+    },
+  },
+  {
+    id: "ib4",
+    judul: "Rasio satuan",
+    suara: "Ubah salah satu angka menjadi 1 dengan cara membagi. Hasilnya mudah dibandingkan.",
+    tabel: {
+      kepala: ["Situasi", "Rasio", "Dibagi", "Rasio satuan"],
+      baris: [
+        ["4 kg jeruk Rp60.000", "60.000 : 4", "4", "15.000 : 1"],
+        ["9 bibit, 3 menit", "9 : 3", "3", "3 : 1"],
+        ["120 km, 2 jam", "120 : 2", "2", "60 : 1"],
+      ],
+    },
+    contoh: "60 pot : 12 menit dibagi 12 menjadi 5 : 1, yaitu 5 pot per menit.",
+    suaraKuis: {
+      tanya: "48 kotak dikemas dalam 6 menit. Berapa kotak per menit?",
+      alias: ["8", "delapan", "8 kotak"],
+      kunci: "48 ÷ 6 = 8 kotak per menit.",
+    },
+    kanvas: {
+      tanya: "20 liter pupuk dari 4 kg bahan. Tulis rasio satuan pupuk : bahan.",
+      alias: ["20 4", "5 1", "5 liter"],
+      kunci: "20 : 4 = 5 : 1.",
+    },
+  },
+  {
+    id: "ib5",
+    judul: "Bagian terhadap bagian dan terhadap keseluruhan",
+    suara: "Bagian dengan bagian dibandingkan langsung. Bagian dengan keseluruhan, jumlahkan dulu semuanya!",
+    tabel: {
+      kepala: ["Pertanyaan", "Jenis", "Cara", "Jawaban"],
+      baris: [
+        ["mangga : jambu", "Bagian : bagian", "langsung", "5 : 7"],
+        ["mangga : semua", "Bagian : keseluruhan", "5 + 7 = 12", "5 : 12"],
+        ["jambu : semua", "Bagian : keseluruhan", "5 + 7 = 12", "7 : 12"],
+      ],
+    },
+    contoh: "5 mangga dan 7 jambu. Seluruh buah ada 12.",
+    suaraKuis: {
+      tanya: "6 apel dan 9 jeruk. Rasio jeruk terhadap seluruh buah?",
+      alias: ["9 banding 15", "3 banding 5", "9 15", "3 5"],
+      kunci: "Seluruhnya 15. Jeruk : seluruhnya = 9 : 15 = 3 : 5.",
+    },
+    kanvas: {
+      tanya: "10 bola merah dan 6 bola putih. Tulis merah : seluruhnya dan putih : merah.",
+      alias: ["5 8", "10 16", "3 5", "6 10"],
+      kunci: "Seluruhnya 16, jadi 10 : 16 = 5 : 8. Putih : merah = 6 : 10 = 3 : 5.",
+    },
+  },
+  {
+    id: "ib6",
+    judul: "Rasio pada durasi waktu",
+    suara: "Samakan satuan waktu dulu. Satu jam sama dengan enam puluh menit.",
+    tabel: {
+      kepala: ["Situasi", "Samakan", "Rasio", "Sederhana"],
+      baris: [
+        ["1 jam : 20 menit", "60 : 20", "60 : 20", "3 : 1"],
+        ["90 menit : 2 jam", "90 : 120", "90 : 120", "3 : 4"],
+        ["180 km : 3 jam", "sudah sama", "180 : 3", "60 : 1"],
+      ],
+    },
+    contoh: "Kereta 240 km dalam 4 jam. 240 : 4 = 60 : 1, yaitu 60 km/jam.",
+    suaraKuis: {
+      tanya: "Menyiram 45 menit pagi dan 15 menit sore. Rasio pagi : sore?",
+      alias: ["45 banding 15", "3 banding 1", "3 1"],
+      kunci: "45 : 15 = 3 : 1.",
+    },
+    kanvas: {
+      tanya: "Ani berlari 300 m dalam 60 detik. Tulis rasio satuannya.",
+      alias: ["300 60", "5 1", "5 meter"],
+      kunci: "300 : 60 = 5 : 1, yaitu 5 m/detik.",
+    },
+  },
+];
+
+const PERMAINAN_B: Permainan[] = [
+  {
+    jenis: "pilih",
+    id: "pb1",
+    tanya: "Pasangan rasio manakah yang senilai?",
+    opsi: [
+      { huruf: "A", teks: "2 : 3 dan 3 : 2" },
+      { huruf: "B", teks: "4 : 5 dan 5 : 4" },
+      { huruf: "C", teks: "12 : 18 dan 2 : 3" },
+      { huruf: "D", teks: "6 : 8 dan 4 : 6" },
+    ],
+    benar: "C",
+    umpan: "12 : 18 dibagi 6 menjadi 2 : 3. Pasangan lain urutannya terbalik atau tidak senilai.",
+  },
+  {
+    jenis: "cocok",
+    id: "pb2",
+    tanya: "Cocokkan gambar dengan rasio sederhananya.",
+    pasangan: [
+      { kiri: "3 biru : 9 biru", kanan: "1 : 3" },
+      { kiri: "2 hati : 10 hati", kanan: "1 : 5" },
+      { kiri: "5 daun : 5 daun", kanan: "1 : 1" },
+      { kiri: "6 bintang : 4 bintang", kanan: "3 : 2" },
+    ],
+    umpan: "3 : 9 → 1 : 3. 2 : 10 → 1 : 5. 5 : 5 → 1 : 1. 6 : 4 → 3 : 2.",
+  },
+  {
+    jenis: "susun",
+    id: "pb3",
+    tanya: "Urutkan langkah rasio kucing terhadap seluruh hewan. Ada 4 kucing dan 8 anjing.",
+    langkah: [
+      { kode: "a", teks: "Sederhanakan" },
+      { kode: "b", teks: "Tulis 4 : 12" },
+      { kode: "c", teks: "Hitung 4 + 8" },
+    ],
+    urutan: ["c", "b", "a"],
+    umpan: "Total 12. Rasio 4 : 12 disederhanakan menjadi 1 : 3.",
+  },
+  {
+    jenis: "pilih",
+    id: "pb4",
+    tanya: "Rasio satuan 6 kg gula seharga Rp72.000 adalah…",
+    opsi: [
+      { huruf: "A", teks: "6 : 72.000" },
+      { huruf: "B", teks: "72.000 : 6" },
+      { huruf: "C", teks: "1 : 6" },
+      { huruf: "D", teks: "12.000 : 1" },
+    ],
+    benar: "D",
+    umpan: "72.000 ÷ 6 = 12.000. Jadi Rp12.000 per kg, ditulis 12.000 : 1.",
+  },
+  {
+    jenis: "benarSalah",
+    id: "pb5",
+    tanya: "30 menit dibanding 2 jam boleh langsung ditulis 30 : 2.",
+    benar: false,
+    umpan: "Salah. Samakan dulu: 2 jam = 120 menit. 30 : 120 = 1 : 4.",
+  },
+];
+
+const MISI: Permainan[] = [
+  {
+    jenis: "pilih",
+    id: "m1",
+    tanya: "Misi 1. Ada 7 pot selada dan 14 pot bayam. Pot bayam berapa kali lipat pot selada?",
+    opsi: [
+      { huruf: "A", teks: "7 kali" },
+      { huruf: "B", teks: "2 kali" },
+      { huruf: "C", teks: "setengahnya" },
+      { huruf: "D", teks: "21 kali" },
+    ],
+    benar: "B",
+    umpan: "14 ÷ 7 = 2. Bayam dua kali lipat selada.",
+  },
+  {
+    jenis: "pilih",
+    id: "m2",
+    tanya: "Misi 2. Resep pupuk 4 air : 6 pupuk. Bentuk sederhananya?",
+    opsi: [
+      { huruf: "A", teks: "2 : 3" },
+      { huruf: "B", teks: "3 : 2" },
+      { huruf: "C", teks: "4 : 6" },
+      { huruf: "D", teks: "1 : 6" },
+    ],
+    benar: "A",
+    umpan: "4 : 6 dibagi 2 menjadi 2 : 3.",
+  },
+  {
+    jenis: "pilih",
+    id: "m3",
+    tanya: "Misi 3. Rak berisi 5 bunga dan 3 kaktus. Rasio kaktus terhadap seluruh pot?",
+    opsi: [
+      { huruf: "A", teks: "5 : 8" },
+      { huruf: "B", teks: "3 : 8" },
+      { huruf: "C", teks: "3 : 5" },
+      { huruf: "D", teks: "8 : 3" },
+    ],
+    benar: "B",
+    umpan: "Seluruh pot 5 + 3 = 8. Kaktus : seluruhnya = 3 : 8.",
+  },
+  {
+    jenis: "suara",
+    id: "m4",
+    tanya: "Misi 4. Mesin A berbunyi 20 kali, mesin B 5 kali. Sebutkan rasio A : B paling sederhana.",
+    alias: ["4 banding 1", "4 1", "empat banding satu"],
+    umpan: "20 : 5 = 4 : 1.",
+  },
+  {
+    jenis: "pilih",
+    id: "m5",
+    tanya: "Misi 5. 4 bibit dalam 2 menit. Rasio satuannya?",
+    opsi: [
+      { huruf: "A", teks: "1 : 2" },
+      { huruf: "B", teks: "2 : 1" },
+      { huruf: "C", teks: "4 : 1" },
+      { huruf: "D", teks: "8 : 1" },
+    ],
+    benar: "B",
+    umpan: "4 ÷ 2 = 2. Jadi 2 bibit per menit, atau 2 : 1.",
+  },
+  {
+    jenis: "cocok",
+    id: "m6",
+    tanya: "Misi 6. Cocokkan situasi dengan rasio satuannya.",
+    pasangan: [
+      { kiri: "Rp18.000 untuk 3 biji", kanan: "6.000 : 1" },
+      { kiri: "8 kotak dalam 4 menit", kanan: "2 : 1" },
+      { kiri: "100 km dalam 2 jam", kanan: "50 : 1" },
+    ],
+    umpan: "18.000 ÷ 3 = 6.000. 8 ÷ 4 = 2. 100 ÷ 2 = 50.",
+  },
+  {
+    jenis: "pilih",
+    id: "m7",
+    tanya: "Misi 7. Mesin menyiram 36 pot dalam 9 menit. Berapa pot per menit?",
+    opsi: [
+      { huruf: "A", teks: "3" },
+      { huruf: "B", teks: "4" },
+      { huruf: "C", teks: "5" },
+      { huruf: "D", teks: "9" },
+    ],
+    benar: "B",
+    umpan: "36 ÷ 9 = 4 pot per menit.",
+  },
+  {
+    jenis: "pilih",
+    id: "m8",
+    tanya: "Misi 8. Ada 9 bunga matahari dan 6 lavender. Rasio matahari terhadap seluruh bunga?",
+    opsi: [
+      { huruf: "A", teks: "9 : 6" },
+      { huruf: "B", teks: "6 : 15" },
+      { huruf: "C", teks: "3 : 5" },
+      { huruf: "D", teks: "5 : 3" },
+    ],
+    benar: "C",
+    umpan: "Seluruhnya 15. 9 : 15 = 3 : 5.",
+  },
+  {
+    jenis: "pilih",
+    id: "m9",
+    tanya: "Misi 9. Pompa menyala 40 menit pagi dan 1 jam sore. Rasio pagi : sore yang paling sederhana?",
+    opsi: [
+      { huruf: "A", teks: "40 : 1" },
+      { huruf: "B", teks: "2 : 3" },
+      { huruf: "C", teks: "4 : 6" },
+      { huruf: "D", teks: "3 : 2" },
+    ],
+    benar: "B",
+    umpan: "1 jam = 60 menit. 40 : 60 = 2 : 3. Bentuk 4 : 6 masih senilai, tetapi belum paling sederhana.",
+  },
+  {
+    jenis: "kanvas",
+    id: "m10",
+    tanya: "Misi 10. Lintasan 150 m ditempuh dalam 5 menit. Gambar garis waktunya, lalu tulis rasio satuannya.",
+    alias: ["150 5", "30 1", "30 meter", "30 m"],
+    umpan: "150 : 5 = 30 : 1, yaitu 30 m/menit.",
+  },
+];
+
+const POIN = [
+  "Membandingkan memakai selisih, berapa kali lipat, atau kata-kata.",
+  "Rasio adalah perbandingan dua besaran sejenis, ditulis a : b atau a/b.",
+  "Satuan kedua besaran harus sama.",
+  "Kesamaan rasio: kali atau bagi kedua angka dengan bilangan yang sama.",
+  "Menyederhanakan berarti bagi dengan FPB.",
+  "Rasio satuan membuat salah satu angkanya 1, misalnya harga per kg atau km per jam.",
+  "Bagian : bagian membandingkan dua bagian secara langsung.",
+  "Bagian : keseluruhan menjumlahkan semua bagian lebih dulu.",
+  "Untuk waktu, samakan satuan dulu. 1 jam = 60 menit. Kecepatan = jarak : waktu.",
+];
+
+const EVALUASI: Permainan[] = [
+  {
+    jenis: "pilih",
+    id: "e1",
+    tanya: "Rak P berisi 12 bibit cabai dan rak Q 18 bibit tomat. Rio menulis P : Q = 3 : 2. Cika menulis 2 : 3. Siapa yang benar?",
+    opsi: [
+      { huruf: "A", teks: "Rio" },
+      { huruf: "B", teks: "Cika" },
+    ],
+    benar: "B",
+    umpan: "12 : 18 dibagi 6 = 2 : 3. Cika benar. Rio membalik urutannya.",
+  },
+  {
+    jenis: "pilih",
+    id: "e2",
+    tanya: "Penawaran A: 8 bibit Rp40.000. Penawaran B: 5 bibit Rp30.000. Mana yang lebih murah per bibit?",
+    opsi: [
+      { huruf: "A", teks: "Penawaran A" },
+      { huruf: "B", teks: "Penawaran B" },
+    ],
+    benar: "A",
+    umpan: "A = 40.000 ÷ 8 = Rp5.000 per bibit. B = 30.000 ÷ 5 = Rp6.000 per bibit. A lebih murah.",
+  },
+  {
+    jenis: "pilih",
+    id: "e3",
+    tanya: "Kotak berisi 9 bola merah, 6 kuning, dan 5 hijau. Manakah pasangan yang tepat untuk kuning : seluruhnya dan merah : kuning?",
+    opsi: [
+      { huruf: "A", teks: "6 : 20 dan 9 : 6" },
+      { huruf: "B", teks: "3 : 10 dan 3 : 2" },
+      { huruf: "C", teks: "6 : 15 dan 3 : 2" },
+      { huruf: "D", teks: "9 : 20 dan 2 : 3" },
+    ],
+    benar: "B",
+    umpan: "Total 9 + 6 + 5 = 20. Kuning : seluruhnya = 6 : 20 = 3 : 10. Merah : kuning = 9 : 6 = 3 : 2.",
+  },
+  {
+    jenis: "tulis",
+    id: "e4",
+    tanya: "Jus memakai 3 bagian sari buah : 5 bagian air. Untuk 48 liter campuran, berapa liter sari buah?",
+    alias: ["18", "18 liter", "delapan belas"],
+    umpan: "3 + 5 = 8 bagian. 48 ÷ 8 = 6 liter tiap bagian. Sari buah 3 × 6 = 18 liter.",
+  },
+  {
+    jenis: "suara",
+    id: "e5",
+    tanya: "Rio berkata: “6 : 10 dan 9 : 15 tidak senilai karena angkanya beda.” Benarkah? Jawab benar atau salah.",
+    alias: ["salah", "tidak", "tidak benar"],
+    umpan: "Salah. 6 : 10 = 3 : 5 dan 9 : 15 = 3 : 5. Keduanya senilai.",
+  },
+  {
+    jenis: "tulis",
+    id: "e6",
+    tanya: "Mesin A menyala 25 menit, mesin B 1 jam. Tulis rasio A : B paling sederhana.",
+    alias: ["5 banding 12", "5 12", "25 60"],
+    umpan: "1 jam = 60 menit. 25 : 60 = 5 : 12.",
+  },
+  {
+    jenis: "pilih",
+    id: "e7",
+    tanya: "Bus menempuh 210 km dalam 3 jam. Motor menempuh 90 km dalam 1 jam 30 menit. Mana yang lebih cepat?",
+    opsi: [
+      { huruf: "A", teks: "Bus, 70 km/jam" },
+      { huruf: "B", teks: "Motor, 90 km/jam" },
+      { huruf: "C", teks: "Sama cepat" },
+      { huruf: "D", teks: "Motor, 70 km/jam" },
+    ],
+    benar: "A",
+    umpan: "Bus 210 ÷ 3 = 70 km/jam. Motor 90 km dalam 1,5 jam = 60 km/jam. Bus lebih cepat.",
+  },
+  {
+    jenis: "benarSalah",
+    id: "e8",
+    tanya: "Kelompok 1 menumbuhkan 4 tanaman dalam 2 minggu. Kelompok 2 menumbuhkan 10 tanaman dalam 5 minggu. Rio bilang kelompok 2 dua kali lebih produktif.",
+    benar: false,
+    umpan: "Tidak setuju. 4 : 2 = 2 : 1 dan 10 : 5 = 2 : 1. Produktivitasnya sama.",
+  },
+  {
+    jenis: "kanvas",
+    id: "e9",
+    tanya: "Gambar kelompok benda yang rasio bagian terhadap keseluruhannya 3 : 8. Tulis banyak bagian itu dan seluruhnya, misalnya 3 dan 8.",
+    alias: ["3 dan 8", "3 8", "3 banding 8"],
+    umpan: "Contohnya 3 bintang dan 5 lingkaran. Seluruhnya 8, jadi bagian itu 3 : 8.",
+  },
+  {
+    jenis: "pilih",
+    id: "e10",
+    tanya: "Kotak A 5 kantong, B 10 kantong, C 15 kantong. Apakah B : seluruhnya senilai dengan A : B?",
+    opsi: [
+      { huruf: "A", teks: "Senilai, keduanya 1 : 2" },
+      { huruf: "B", teks: "Tidak senilai. B : seluruhnya = 1 : 3, A : B = 1 : 2" },
+      { huruf: "C", teks: "Senilai, keduanya 1 : 3" },
+      { huruf: "D", teks: "Tidak senilai. B : seluruhnya = 1 : 2" },
+    ],
+    benar: "B",
+    umpan: "Total 30. B : seluruhnya = 10 : 30 = 1 : 3. A : B = 5 : 10 = 1 : 2. Tidak senilai.",
+  },
+];
+
+function cuplikan(teks: string): CuplikanVoiceMateri[] {
+  return [{ teks, jedaSetelahMs: 0 }];
 }
 
-// ============================================================================
-// 3. KOMPONEN ILUSTRASI DOODLE BERWARNA (100% SVG - ZERO API COST)
-// ============================================================================
+function cocokAlias(teks: string, alias: string[]): boolean {
+  return jawabanTulisMemuatAlias(teks, alias);
+}
 
-function VisualDoodleRasio({ type }: { type: VisualSlideRasio["visualType"] }) {
-  if (type === "konsep_sirup") {
-    return (
-      <figure className="w-full space-y-3">
-        <figcaption className="text-sm font-black uppercase tracking-wider text-amber-800">
-          Sketsa: resep manis es sirup, rasio 2 : 5
-        </figcaption>
-        <div className="flex w-full flex-col items-center">
-            <svg viewBox="0 0 220 110" className="h-auto w-full">
-              {/* Wadah Sirup Merah (2 Cangkir) */}
-              <g transform="translate(20, 20)">
-                <rect x="0" y="20" width="35" height="45" rx="4" fill="#f43f5e" stroke="#9f1239" strokeWidth="2" />
-                <rect x="42" y="20" width="35" height="45" rx="4" fill="#f43f5e" stroke="#9f1239" strokeWidth="2" />
-                <text x="38" y="80" textAnchor="middle" fill="#be123c" fontSize="10" fontWeight="bold">2 Cangkir Sirup</text>
-              </g>
-
-              {/* Tanda Titik Dua Rasio ( : ) */}
-              <text x="110" y="55" textAnchor="middle" fill="#64748b" fontSize="24" fontWeight="black">:</text>
-
-              {/* Wadah Air Bening (5 Cangkir) */}
-              <g transform="translate(130, 15)">
-                <rect x="0" y="10" width="12" height="30" rx="2" fill="#38bdf8" stroke="#0369a1" strokeWidth="1.5" />
-                <rect x="15" y="10" width="12" height="30" rx="2" fill="#38bdf8" stroke="#0369a1" strokeWidth="1.5" />
-                <rect x="30" y="10" width="12" height="30" rx="2" fill="#38bdf8" stroke="#0369a1" strokeWidth="1.5" />
-                <rect x="45" y="10" width="12" height="30" rx="2" fill="#38bdf8" stroke="#0369a1" strokeWidth="1.5" />
-                <rect x="60" y="10" width="12" height="30" rx="2" fill="#38bdf8" stroke="#0369a1" strokeWidth="1.5" />
-                <text x="36" y="58" textAnchor="middle" fill="#0284c7" fontSize="10" fontWeight="bold">5 Cangkir Air</text>
-              </g>
-            </svg>
-            <p className="mt-2 text-center text-base font-bold text-slate-700">
-              Rasio sirup terhadap air = <span className="font-black text-rose-600">2 : 5</span>
-            </p>
-        </div>
-      </figure>
-    );
-  }
-
-  if (type === "tabel_ekuivalen") {
-    return (
-      <figure className="w-full space-y-3">
-        <figcaption className="text-sm font-black uppercase tracking-wider text-indigo-900">
-          Sketsa: melipatgandakan resep bolu
-        </figcaption>
-        <div className="flex w-full flex-col items-center justify-between gap-4 sm:flex-row">
-          <div className="text-center">
-            <span className="text-sm font-extrabold uppercase text-slate-500">Resep dasar (1 loyang)</span>
-            <div className="mt-1 text-3xl font-black text-indigo-700">2 : 3</div>
-            <div className="text-base text-slate-600">2 terigu : 3 telur</div>
-          </div>
-          <div className="text-center text-base font-black text-amber-500">
-            dikali 3
-            <div className="text-sm font-semibold text-slate-500">faktor pengali sama</div>
-          </div>
-          <div className="text-center">
-            <span className="text-sm font-extrabold uppercase text-indigo-700">Resep pesta (3 loyang)</span>
-            <div className="mt-1 text-3xl font-black text-indigo-700">6 : 9</div>
-            <div className="text-base text-slate-600">6 terigu : 9 telur</div>
-          </div>
-        </div>
-      </figure>
-    );
-  }
-
-  // Unit Rate Belanja
+function Dialog({ nama, teks }: BarisDialog) {
   return (
-    <figure className="w-full space-y-3">
-      <figcaption className="text-sm font-black uppercase tracking-wider text-emerald-900">
-        Sketsa: membandingkan harga satuan
-      </figcaption>
-      <div className="grid w-full grid-cols-1 gap-4">
-        <div className="w-full rounded-2xl border border-slate-300 bg-white px-5 py-4 text-center md:px-6">
-          <div className="text-base font-extrabold text-slate-600">Paket Hemat (3 kg)</div>
-          <div className="my-2 text-3xl font-black text-slate-800">Rp45.000</div>
-          <div className="border-t border-slate-100 pt-2 text-base font-bold text-slate-600">
-            Rp45.000 ÷ 3 = <span className="font-black text-rose-600">Rp15.000 / kg</span>
-          </div>
+    <article className={`w-full rounded-2xl border px-5 py-4 md:px-6 md:py-5 ${WARNA[nama]}`}>
+      <p className="flex items-center gap-2 text-base font-black text-slate-800">
+        <span className="text-2xl" aria-hidden>{WAJAH[nama]}</span>
+        {nama}
+      </p>
+      <p className="mt-2 text-base leading-relaxed text-slate-700">{teks}</p>
+    </article>
+  );
+}
+
+function Figur({ jenis }: { jenis: AdeganRasio["figur"] }) {
+  if (jenis === "rak") {
+    return (
+      <figure className="w-full space-y-2">
+        <figcaption className="text-base font-bold text-slate-700">Rak A 6 kantong, rak B 3 kantong. Rak A dua kali lipat.</figcaption>
+        <div className="flex w-full flex-col gap-3 sm:flex-row sm:items-end sm:justify-between">
+          <p className="text-3xl leading-tight">🌱🌱🌱🌱🌱🌱</p>
+          <p className="text-xl font-black text-orange-600">2 kali lipat</p>
+          <p className="text-3xl leading-tight">🌱🌱🌱</p>
         </div>
-        <div className="w-full rounded-2xl border border-emerald-400 bg-white px-5 py-4 text-center md:px-6">
-          <div className="text-base font-extrabold text-emerald-700">Paket Jumbo (5 kg) · paling hemat</div>
-          <div className="my-2 text-3xl font-black text-slate-800">Rp70.000</div>
-          <div className="border-t border-slate-100 pt-2 text-base font-bold text-slate-600">
-            Rp70.000 ÷ 5 = <span className="font-black text-emerald-600">Rp14.000 / kg</span>
-          </div>
-        </div>
-      </div>
+        <p className="text-base font-bold text-amber-800">Urutan penting: 6 dibanding 3 tidak sama dengan 3 dibanding 6.</p>
+      </figure>
+    );
+  }
+  if (jenis === "jus") {
+    return (
+      <figure className="w-full">
+        <p className="text-base font-bold text-slate-700">Resep jus, 3 bagian air dan 2 bagian sirup.</p>
+        <p className="mt-2 text-5xl font-black text-orange-700">3 : 2</p>
+        <p className="mt-1 text-base text-slate-600">Dibaca tiga banding dua. Sama dengan pecahan 3/2. Satuan harus sama.</p>
+      </figure>
+    );
+  }
+  if (jenis === "resep") {
+    return (
+      <figure className="w-full">
+        <p className="text-base font-bold text-slate-700">Tiga resep, satu rasa. Kedua angka diperlakukan sama.</p>
+        <p className="mt-2 text-3xl font-black text-indigo-800">2 : 3 → 4 : 6 → 6 : 9</p>
+        <p className="mt-1 text-base text-slate-600">Kali 2, lalu kali 3. Bagi 6 : 9 dengan 3 kembali ke 2 : 3.</p>
+      </figure>
+    );
+  }
+  if (jenis === "jeruk") {
+    return (
+      <figure className="w-full">
+        <p className="text-base font-bold text-slate-700">4 kg jeruk seharga Rp60.000.</p>
+        <p className="mt-2 text-3xl font-black text-emerald-800">Rp60.000 ÷ 4 = Rp15.000</p>
+        <p className="mt-1 text-base text-slate-600">Rasio satuan: 15.000 : 1, yaitu Rp15.000 per kg.</p>
+      </figure>
+    );
+  }
+  if (jenis === "buah") {
+    return (
+      <figure className="w-full space-y-1">
+        <p className="text-base font-bold text-slate-700">5 mangga dan 7 jambu. Seluruhnya 12 buah.</p>
+        <p className="text-2xl font-black text-sky-800">Bagian : bagian = 5 : 7</p>
+        <p className="text-2xl font-black text-emerald-800">Bagian : keseluruhan = 5 : 12</p>
+      </figure>
+    );
+  }
+  return (
+    <figure className="w-full">
+      <p className="text-base font-bold text-slate-700">Samakan satuan waktu dulu. 1 jam = 60 menit.</p>
+      <p className="mt-2 text-3xl font-black text-sky-800">20 menit : 50 menit = 2 : 5</p>
+      <p className="mt-1 text-base text-slate-600">120 km dalam 2 jam = 60 : 1, yaitu 60 km/jam.</p>
     </figure>
   );
 }
 
-// ============================================================================
-// 4. KOMPONEN UTAMA MODUL BAB 2: RASIO
-// ============================================================================
+function Tabel({ kepala, baris }: { kepala: string[]; baris: string[][] }) {
+  return (
+    <div className="w-full overflow-x-auto">
+      <table className="w-full border-collapse text-left text-base">
+        <thead>
+          <tr>
+            {kepala.map((sel) => (
+              <th key={sel} className="border border-slate-300 bg-slate-100 px-3 py-2 font-black text-slate-800">{sel}</th>
+            ))}
+          </tr>
+        </thead>
+        <tbody>
+          {baris.map((barisSel) => (
+            <tr key={barisSel.join("|")}>
+              {barisSel.map((sel, indeks) => (
+                <td key={`${indeks}-${sel}`} className="border border-slate-200 px-3 py-2 text-slate-700">{sel}</td>
+              ))}
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
+  );
+}
 
-export default function Bab2RasioModule() {
-  const [activeTab, setActiveTab] = useState<
-    "pemanasan" | "materi" | "simulator" | "praktikum" | "latihan" | "evaluasi"
-  >("pemanasan");
-  const [selectedSubBab, setSelectedSubBab] = useState<number>(0);
+function KartuHasil({ benar, teks }: { benar: boolean; teks: string }) {
+  return (
+    <div className={`w-full rounded-2xl border px-5 py-4 text-base leading-relaxed md:px-6 md:py-5 ${benar ? "border-emerald-300 bg-emerald-50 text-emerald-950" : "border-rose-300 bg-rose-50 text-rose-950"}`}>
+      <p className="text-xl font-black">{benar ? "BENAR" : "SALAH"}</p>
+      <p className="mt-2">{teks}</p>
+    </div>
+  );
+}
 
-  // State Pemanasan Otak (Brain Activation) - Metronom Ketukan Rasio 1 : 2
-  const [rhythmClicks, setRhythmClicks] = useState<number>(0);
-  const [brainReady, setBrainReady] = useState<boolean>(false);
+function KuisPilih({
+  tanya,
+  opsi,
+  benar,
+  umpan,
+  onNilai,
+}: {
+  tanya: string;
+  opsi: Pilihan[];
+  benar: string;
+  umpan: string;
+  onNilai?: (benar: boolean) => void;
+}) {
+  const [pilih, setPilih] = useState("");
+  const tepat = pilih === benar;
+  return (
+    <div className="w-full space-y-3">
+      <p className="text-base font-bold leading-relaxed text-slate-800">{tanya}</p>
+      <div className="grid w-full gap-2">
+        {opsi.map((item) => (
+          <button
+            key={item.huruf}
+            type="button"
+            onClick={() => {
+              if (pilih) return;
+              setPilih(item.huruf);
+              onNilai?.(item.huruf === benar);
+            }}
+            className={`w-full rounded-2xl border px-5 py-3 text-left text-base font-bold ${
+              pilih === item.huruf
+                ? item.huruf === benar
+                  ? "border-emerald-600 bg-emerald-600 text-white"
+                  : "border-rose-600 bg-rose-600 text-white"
+                : "border-slate-300 bg-white text-slate-800"
+            }`}
+          >
+            {item.huruf}. {item.teks}
+          </button>
+        ))}
+      </div>
+      {pilih ? <KartuHasil benar={tepat} teks={umpan} /> : null}
+    </div>
+  );
+}
 
-  // State Simulator Interaktif Resep Rasio Ekuivalen
-  const [baseSirup, setBaseSirup] = useState<number>(2);
-  const [baseAir, setBaseAir] = useState<number>(5);
-  const [scaleFactor, setScaleFactor] = useState<number>(1);
+function KuisCocok({
+  tanya,
+  pasangan,
+  umpan,
+  onNilai,
+}: {
+  tanya: string;
+  pasangan: { kiri: string; kanan: string }[];
+  umpan: string;
+  onNilai?: (benar: boolean) => void;
+}) {
+  const [aktif, setAktif] = useState(0);
+  const [peta, setPeta] = useState<Record<number, string>>({});
+  const [cek, setCek] = useState(false);
+  const tepat = pasangan.every((item, indeks) => peta[indeks] === item.kanan);
+  const pilihan = pasangan.map((item) => item.kanan);
+  return (
+    <div className="w-full space-y-3">
+      <p className="text-base font-bold leading-relaxed text-slate-800">{tanya}</p>
+      <p className="text-base text-slate-600">Ketuk baris, lalu ketuk pasangannya.</p>
+      <div className="grid w-full gap-2">
+        {pasangan.map((item, indeks) => (
+          <button
+            key={item.kiri}
+            type="button"
+            onClick={() => setAktif(indeks)}
+            className={`w-full rounded-2xl border px-5 py-3 text-left text-base ${aktif === indeks ? "border-indigo-500 bg-indigo-50" : "border-slate-300 bg-white"}`}
+          >
+            <span className="font-black">{item.kiri}</span>
+            <span className="mt-1 block">{peta[indeks] || "Belum dipasangkan"}</span>
+          </button>
+        ))}
+      </div>
+      <div className="flex w-full flex-wrap gap-2">
+        {pilihan.map((kanan) => (
+          <button
+            key={kanan}
+            type="button"
+            onClick={() => {
+              setPeta((lama) => ({ ...lama, [aktif]: kanan }));
+              setCek(false);
+            }}
+            className="rounded-full bg-white px-4 py-2 text-base font-bold text-slate-800 ring-2 ring-slate-300"
+          >
+            {kanan}
+          </button>
+        ))}
+      </div>
+      <button
+        type="button"
+        onClick={() => {
+          setCek(true);
+          onNilai?.(tepat);
+        }}
+        className="rounded-full bg-emerald-700 px-5 py-2 text-base font-black text-white"
+      >
+        Periksa pasangan
+      </button>
+      {cek ? <KartuHasil benar={tepat} teks={umpan} /> : null}
+    </div>
+  );
+}
 
-  // State Kanvas Praktikum Lokal (Zero API Cost)
-  const canvasRef = useRef<HTMLCanvasElement | null>(null);
-  const [isDrawing, setIsDrawing] = useState(false);
-  const [strokeCount, setStrokeCount] = useState(0);
-  const [canvasFeedback, setCanvasFeedback] = useState<string | null>(null);
+function KuisSusun({
+  tanya,
+  langkah,
+  urutan,
+  umpan,
+  onNilai,
+}: {
+  tanya: string;
+  langkah: { kode: string; teks: string }[];
+  urutan: string[];
+  umpan: string;
+  onNilai?: (benar: boolean) => void;
+}) {
+  const [sisa, setSisa] = useState(langkah);
+  const [susun, setSusun] = useState<{ kode: string; teks: string }[]>([]);
+  const [cek, setCek] = useState(false);
+  const tepat = susun.length === urutan.length && susun.every((item, indeks) => item.kode === urutan[indeks]);
+  return (
+    <div className="w-full space-y-3">
+      <p className="text-base font-bold leading-relaxed text-slate-800">{tanya}</p>
+      <p className="text-lg font-black text-slate-800">{susun.map((item) => item.teks).join(" → ") || "Ketuk langkah sesuai urutan."}</p>
+      <div className="flex w-full flex-wrap gap-2">
+        {sisa.map((item) => (
+          <button
+            key={item.kode}
+            type="button"
+            onClick={() => {
+              setSisa((lama) => lama.filter((kartu) => kartu.kode !== item.kode));
+              setSusun((lama) => [...lama, item]);
+              setCek(false);
+            }}
+            className="rounded-full bg-white px-4 py-2 text-base font-bold text-slate-800 ring-2 ring-slate-300"
+          >
+            {item.teks}
+          </button>
+        ))}
+      </div>
+      <button
+        type="button"
+        onClick={() => {
+          setCek(true);
+          onNilai?.(tepat);
+        }}
+        className="rounded-full bg-sky-700 px-5 py-2 text-base font-black text-white"
+      >
+        Periksa urutan
+      </button>
+      {cek ? <KartuHasil benar={tepat} teks={umpan} /> : null}
+    </div>
+  );
+}
 
-  // State Latihan & Evaluasi Dinamis
-  const [studentSeed, setStudentSeed] = useState<number>(202);
-  const [selectedAnswers, setSelectedAnswers] = useState<Record<string, string>>({});
-  const [submittedQuiz, setSubmittedQuiz] = useState<Record<string, boolean>>({});
-  const [earnedTokens, setEarnedTokens] = useState<number>(0);
-  const [claimedQuestionIds, setClaimedQuestionIds] = useState<string[]>([]);
+function KuisBenarSalah({
+  tanya,
+  benar,
+  umpan,
+  onNilai,
+}: {
+  tanya: string;
+  benar: boolean;
+  umpan: string;
+  onNilai?: (benar: boolean) => void;
+}) {
+  const [pilih, setPilih] = useState<boolean | null>(null);
+  return (
+    <div className="w-full space-y-3">
+      <p className="text-base font-bold leading-relaxed text-slate-800">{tanya}</p>
+      <div className="flex w-full gap-2">
+        {[true, false].map((nilai) => (
+          <button
+            key={String(nilai)}
+            type="button"
+            onClick={() => {
+              if (pilih !== null) return;
+              setPilih(nilai);
+              onNilai?.(nilai === benar);
+            }}
+            className={`w-full rounded-2xl border px-5 py-3 text-base font-black ${
+              pilih === nilai ? "border-indigo-700 bg-indigo-700 text-white" : "border-slate-300 bg-white"
+            }`}
+          >
+            {nilai ? "Benar" : "Salah"}
+          </button>
+        ))}
+      </div>
+      {pilih !== null ? <KartuHasil benar={pilih === benar} teks={umpan} /> : null}
+    </div>
+  );
+}
 
-  const dynamicEvalQuestions = generateDynamicQuestionsRasio(studentSeed);
+function KuisSuaraLokal({ tanya, alias, kunci, onNilai }: KuisSingkat & { onNilai?: (benar: boolean) => void }) {
+  const [tepat, setTepat] = useState<boolean | null>(null);
+  return (
+    <div className="w-full space-y-3 border-t border-slate-200 pt-4">
+      <p className="text-sm font-black uppercase tracking-wide text-emerald-800">Kuis suara</p>
+      <SoalRekamSuara
+        pertanyaan={<span className="text-base font-bold">{tanya}</span>}
+        periksa={(teks) => cocokAlias(teks, alias)}
+        sesudahNilai={(hasil) => {
+          setTepat(hasil);
+          onNilai?.(hasil);
+        }}
+      />
+      {tepat ? <p className="text-base leading-relaxed text-emerald-900">{kunci}</p> : null}
+    </div>
+  );
+}
 
-  // Handler Kanvas Praktikum
-  useEffect(() => {
-    if (activeTab === "praktikum" && canvasRef.current) {
-      const ctx = canvasRef.current.getContext("2d");
-      if (ctx) {
-        ctx.strokeStyle = "#4f46e5";
-        ctx.lineWidth = 4;
-        ctx.lineCap = "round";
-      }
-    }
-  }, [activeTab]);
+function KuisTulis({
+  tanya,
+  alias,
+  umpan,
+  onNilai,
+}: {
+  tanya: string;
+  alias: string[];
+  umpan: string;
+  onNilai?: (benar: boolean) => void;
+}) {
+  const [jawaban, setJawaban] = useState("");
+  const [hasil, setHasil] = useState<boolean | null>(null);
+  return (
+    <div className="w-full space-y-3">
+      <p className="text-base font-bold leading-relaxed text-slate-800">{tanya}</p>
+      <input
+        value={jawaban}
+        onChange={(event) => setJawaban(event.target.value)}
+        className="w-full rounded-2xl border border-slate-300 px-4 py-3 text-base"
+      />
+      <button
+        type="button"
+        onClick={() => {
+          const ok = cocokAlias(jawaban, alias);
+          setHasil(ok);
+          onNilai?.(ok);
+        }}
+        className="rounded-full bg-emerald-700 px-5 py-2 text-base font-black text-white"
+      >
+        Periksa jawaban
+      </button>
+      {hasil !== null ? <KartuHasil benar={hasil} teks={hasil ? umpan : `Belum tepat. ${umpan}`} /> : null}
+    </div>
+  );
+}
 
-  const startDraw = (e: React.MouseEvent<HTMLCanvasElement> | React.TouchEvent<HTMLCanvasElement>) => {
-    const canvas = canvasRef.current;
-    if (!canvas) return;
-    const rect = canvas.getBoundingClientRect();
-    const clientX = "touches" in e ? e.touches[0].clientX : e.clientX;
-    const clientY = "touches" in e ? e.touches[0].clientY : e.clientY;
-    const ctx = canvas.getContext("2d");
-    if (ctx) {
-      ctx.beginPath();
-      ctx.moveTo(clientX - rect.left, clientY - rect.top);
-      setIsDrawing(true);
-      setStrokeCount((prev) => prev + 1);
-    }
+function KuisKanvasLokal({ tanya, alias, kunci, onNilai }: KuisSingkat & { onNilai?: (benar: boolean) => void }) {
+  const kanvasRef = useRef<HTMLCanvasElement | null>(null);
+  const gambar = useRef(false);
+  const [coretan, setCoretan] = useState(0);
+  const [jawaban, setJawaban] = useState("");
+  const [hasil, setHasil] = useState<boolean | null>(null);
+
+  const mulai = (x: number, y: number) => {
+    const kanvas = kanvasRef.current;
+    const ctx = kanvas?.getContext("2d");
+    if (!kanvas || !ctx) return;
+    ctx.strokeStyle = "#1C01A5";
+    ctx.lineWidth = 4;
+    ctx.lineCap = "round";
+    ctx.beginPath();
+    ctx.moveTo(x, y);
+    gambar.current = true;
+    setCoretan((jumlah) => jumlah + 1);
   };
-
-  const draw = (e: React.MouseEvent<HTMLCanvasElement> | React.TouchEvent<HTMLCanvasElement>) => {
-    if (!isDrawing) return;
-    const canvas = canvasRef.current;
-    if (!canvas) return;
-    const rect = canvas.getBoundingClientRect();
-    const clientX = "touches" in e ? e.touches[0].clientX : e.clientX;
-    const clientY = "touches" in e ? e.touches[0].clientY : e.clientY;
-    const ctx = canvas.getContext("2d");
-    if (ctx) {
-      ctx.lineTo(clientX - rect.left, clientY - rect.top);
-      ctx.stroke();
-    }
+  const geser = (x: number, y: number) => {
+    if (!gambar.current) return;
+    const ctx = kanvasRef.current?.getContext("2d");
+    if (!ctx) return;
+    ctx.lineTo(x, y);
+    ctx.stroke();
   };
-
-  const endDraw = () => setIsDrawing(false);
-
-  const clearCanvas = () => {
-    const canvas = canvasRef.current;
-    if (!canvas) return;
-    const ctx = canvas.getContext("2d");
-    if (ctx) {
-      ctx.clearRect(0, 0, canvas.width, canvas.height);
-      setStrokeCount(0);
-      setCanvasFeedback(null);
-    }
-  };
-
-  const verifyCanvasLocal = () => {
-    if (strokeCount < 3) {
-      setCanvasFeedback("⚠️ Gambar atau tabel rasiomu belum lengkap! Ayo gambarkan takaran sirup dan air di kanvas berpetak.");
-    } else {
-      setCanvasFeedback("🌟 Hebat! Diagram proporsi rasiomu sudah terekam dengan rapi di sistem lokal (Zero-API Validated).");
-    }
-  };
-
-  // Handler Jawab Soal & Token
-  const handleAnswerSubmit = (q: QuestionItemRasio) => {
-    const chosen = selectedAnswers[q.id];
-    if (!chosen) return;
-    setSubmittedQuiz((prev) => ({ ...prev, [q.id]: true }));
-
-    if (chosen === q.correctAnswer && !claimedQuestionIds.includes(q.id)) {
-      const reward = q.category === "evaluasi" ? 10 : 5;
-      setEarnedTokens((prev) => prev + reward);
-      setClaimedQuestionIds((prev) => [...prev, q.id]);
-    }
+  const titik = (el: HTMLCanvasElement, clientX: number, clientY: number) => {
+    const kotak = el.getBoundingClientRect();
+    return {
+      x: ((clientX - kotak.left) * el.width) / kotak.width,
+      y: ((clientY - kotak.top) * el.height) / kotak.height,
+    };
   };
 
   return (
-    <div className="min-h-screen bg-slate-50 text-slate-800 pb-16">
-      {/* HEADER UTAMA & STATUS TOKEN */}
-      <header className="bg-gradient-to-r from-emerald-700 via-teal-700 to-indigo-800 text-white shadow-lg sticky top-0 z-30">
-        <div className="flex w-full flex-col gap-4 px-2 py-4 sm:px-4 md:flex-row md:items-center md:justify-between">
-          <div>
-            <div className="flex items-center gap-2 text-xs font-semibold uppercase tracking-wider bg-emerald-950/40 px-3 py-1 rounded-full w-fit mb-1">
-              <span>Kurikulum Merdeka • Fase C</span>
-              <span>•</span>
-              <span>Kelas 6 SD</span>
-            </div>
-            <h1 className="text-2xl md:text-3xl font-extrabold tracking-tight">
-              Bab 2: Rasio dan Proporsi Sederhana
-            </h1>
-          </div>
+    <div className="w-full space-y-3 border-t border-slate-200 pt-4">
+      <p className="text-sm font-black uppercase tracking-wide text-sky-800">Kuis kanvas</p>
+      <p className="text-base font-bold leading-relaxed text-slate-800">{tanya}</p>
+      <canvas
+        ref={kanvasRef}
+        width={720}
+        height={220}
+        className="h-52 w-full touch-none border-2 border-dashed border-sky-300 bg-amber-50"
+        onPointerDown={(event) => {
+          const pos = titik(event.currentTarget, event.clientX, event.clientY);
+          event.currentTarget.setPointerCapture(event.pointerId);
+          mulai(pos.x, pos.y);
+        }}
+        onPointerMove={(event) => {
+          const pos = titik(event.currentTarget, event.clientX, event.clientY);
+          geser(pos.x, pos.y);
+        }}
+        onPointerUp={() => {
+          gambar.current = false;
+        }}
+      />
+      <label className="block w-full text-base font-bold text-slate-700">
+        Tulis jawabanmu
+        <input
+          value={jawaban}
+          onChange={(event) => setJawaban(event.target.value)}
+          className="mt-1 w-full rounded-2xl border border-slate-300 px-4 py-3 text-base"
+        />
+      </label>
+      <button
+        type="button"
+        onClick={() => {
+          if (coretan < 1) {
+            setHasil(false);
+            return;
+          }
+          const ok = cocokAlias(jawaban, alias);
+          setHasil(ok);
+          onNilai?.(ok);
+        }}
+        className="rounded-full bg-sky-700 px-5 py-2 text-base font-black text-white"
+      >
+        Periksa gambarku
+      </button>
+      {hasil !== null ? (
+        <KartuHasil
+          benar={hasil}
+          teks={hasil ? kunci : coretan < 1 ? "Gambar dulu di kanvas, lalu tulis jawabannya." : `Belum tepat. ${kunci}`}
+        />
+      ) : null}
+    </div>
+  );
+}
 
-          <div className="flex items-center gap-3 self-start md:self-auto">
-            <div className="bg-amber-400 text-slate-900 px-4 py-2 rounded-xl font-bold flex items-center gap-2 shadow-md">
-              <span className="text-xl">⭐</span>
-              <div>
-                <div className="text-[10px] uppercase tracking-wider font-extrabold opacity-80">
-                  Dompet Belajar IGIL
-                </div>
-                <div className="text-base leading-none">{earnedTokens} Token</div>
-              </div>
-            </div>
-            <div className="bg-emerald-500/20 border border-emerald-300/40 text-emerald-100 px-3 py-2 rounded-xl text-xs font-semibold">
-              ⚡ Mode Hemat API: Aktif (Rp 0)
-            </div>
-          </div>
+function RenderPermainan({
+  item,
+  onNilai,
+}: {
+  item: Permainan;
+  onNilai?: (benar: boolean) => void;
+}) {
+  if (item.jenis === "pilih") {
+    return <KuisPilih tanya={item.tanya} opsi={item.opsi} benar={item.benar} umpan={item.umpan} onNilai={onNilai} />;
+  }
+  if (item.jenis === "cocok") {
+    return <KuisCocok tanya={item.tanya} pasangan={item.pasangan} umpan={item.umpan} onNilai={onNilai} />;
+  }
+  if (item.jenis === "susun") {
+    return <KuisSusun tanya={item.tanya} langkah={item.langkah} urutan={item.urutan} umpan={item.umpan} onNilai={onNilai} />;
+  }
+  if (item.jenis === "benarSalah") {
+    return <KuisBenarSalah tanya={item.tanya} benar={item.benar} umpan={item.umpan} onNilai={onNilai} />;
+  }
+  if (item.jenis === "suara") {
+    return <KuisSuaraLokal tanya={item.tanya} alias={item.alias} kunci={item.umpan} onNilai={onNilai} />;
+  }
+  if (item.jenis === "tulis") {
+    return <KuisTulis tanya={item.tanya} alias={item.alias} umpan={item.umpan} onNilai={onNilai} />;
+  }
+  return <KuisKanvasLokal tanya={item.tanya} alias={item.alias} kunci={item.umpan} onNilai={onNilai} />;
+}
+
+const TAB = [
+  { id: "naskah", label: "A. Naskah" },
+  { id: "info", label: "B. Infografis" },
+  { id: "misi", label: "C. Misi" },
+  { id: "poin", label: "D. Poin penting" },
+  { id: "evaluasi", label: "Evaluasi" },
+] as const;
+
+type TabId = (typeof TAB)[number]["id"];
+
+export default function Bab2RasioModule() {
+  const [tab, setTab] = useState<TabId>("naskah");
+  const [skorMisi, setSkorMisi] = useState<Record<string, number>>({});
+  const [salahMisi, setSalahMisi] = useState<Record<string, boolean>>({});
+  const poinDaun = Object.values(skorMisi).reduce((jumlah, nilai) => jumlah + nilai, 0);
+
+  const nilaiMisi = (id: string, benar: boolean) => {
+    if (skorMisi[id]) return;
+    if (!benar) {
+      setSalahMisi((lama) => ({ ...lama, [id]: true }));
+      return;
+    }
+    setSkorMisi((lama) => ({ ...lama, [id]: salahMisi[id] ? 5 : 10 }));
+  };
+
+  return (
+    <div className="min-h-screen bg-amber-50/40 pb-16 text-slate-800">
+      <header className="bg-emerald-800 text-white">
+        <div className="w-full px-2 py-4 sm:px-4">
+          <p className="text-sm font-bold uppercase tracking-wide text-amber-200">Kelas 6 SD · Fase C · Rumah Kaca Ajaib</p>
+          <h1 className="mt-1 text-2xl font-black md:text-3xl">Bab 2: Rasio</h1>
+          <p className="mt-1 text-base text-emerald-50">Kak Nara, Pak Bima, Lala, Rio, dan Cika</p>
         </div>
-
-        {/* NAVIGASI TAB */}
-        <div className="flex w-full gap-1 overflow-x-auto border-t border-emerald-500/30 px-2 pb-2 pt-2 sm:px-4">
-          {[
-            { id: "pemanasan", label: "🧠 1. Aktivasi Otak" },
-            { id: "materi", label: "📖 2. Eksplorasi Materi" },
-            { id: "simulator", label: "🧪 3. Lab Rasio Ekuivalen" },
-            { id: "praktikum", label: "✏️ 4. Kanvas Praktikum" },
-            { id: "latihan", label: "🎯 5. Latihan (10 Soal)" },
-            { id: "evaluasi", label: "🏆 6. Evaluasi Anti-Contek" },
-          ].map((tab) => (
+        <div className="flex w-full gap-1 overflow-x-auto px-2 pb-3 sm:px-4">
+          {TAB.map((item) => (
             <button
-              key={tab.id}
-              onClick={() => setActiveTab(tab.id as any)}
-              className={`px-4 py-2 rounded-lg text-sm font-bold whitespace-nowrap transition ${
-                activeTab === tab.id
-                  ? "bg-white text-emerald-800 shadow-sm"
-                  : "text-emerald-100 hover:bg-emerald-600/60"
+              key={item.id}
+              type="button"
+              onClick={() => setTab(item.id)}
+              className={`whitespace-nowrap rounded-full px-4 py-2 text-sm font-black ${
+                tab === item.id ? "bg-white text-emerald-800" : "text-emerald-50"
               }`}
             >
-              {tab.label}
+              {item.label}
             </button>
           ))}
         </div>
       </header>
 
-      <main className="mt-6 w-full px-2 sm:px-4">
-        {/* ================================================================
-            TAB 1: AKTIVASI OTAK (BRAIN ACTIVATION: IRAMA RASIO 1 : 2)
-        ================================================================ */}
-        {activeTab === "pemanasan" && (
-          <div className="space-y-6">
-            <div className="flex flex-col items-start justify-between gap-4 md:flex-row md:items-center">
-              <div>
-                <span className="rounded-full bg-emerald-50 px-3 py-1 text-xs font-bold uppercase tracking-wider text-emerald-700">
-                  Brain Activation • Irama Bilateral
-                </span>
-                <h2 className="mt-2 text-2xl font-extrabold text-slate-800">
-                  Senam Irama Rasio: 1 Ketukan Kiri Berbanding 2 Ketukan Kanan!
-                </h2>
-                <p className="mt-1 text-base leading-relaxed text-slate-600">
-                  Aktifkan koordinasi belahan otak kiri dan kananmu dengan menyamakan rasio ritme ketukan:{" "}
-                  <strong>1 Ketukan Biru (Kiri) : 2 Ketukan Hijau (Kanan)</strong>.
-                </p>
-              </div>
-              <div className="text-center">
-                <div className="text-xs font-bold uppercase text-emerald-700">Focus Meter</div>
-                <div className="text-2xl font-black text-emerald-800">
-                  {Math.min(100, Math.round((rhythmClicks / 6) * 100))}%
+      <main className="mt-6 w-full space-y-8 px-2 sm:px-4">
+        {tab === "naskah" ? (
+          <>
+            <section className="space-y-3">
+              <h2 className="text-2xl font-black text-emerald-900">A. Naskah bergambar</h2>
+              <p className="text-base leading-relaxed">
+                Di rumah kaca ini kamu membandingkan benda, menulis rasio, mencari rasio yang senilai, dan membedakan bagian dengan keseluruhan.
+              </p>
+            </section>
+            {ADEGAN.map((adegan) => (
+              <section key={adegan.id} className="space-y-4 border-t border-emerald-200 pt-6">
+                <h3 className="text-xl font-black text-slate-900">{adegan.judul}</h3>
+                <TombolVoiceMateriPai1 cuplikan={cuplikan(adegan.suara)} />
+                <Figur jenis={adegan.figur} />
+                <div className="space-y-3">
+                  {adegan.dialog.map((baris) => (
+                    <Dialog key={`${adegan.id}-${baris.nama}-${baris.teks}`} nama={baris.nama} teks={baris.teks} />
+                  ))}
                 </div>
-              </div>
-            </div>
-
-            <div className="grid grid-cols-1 items-center gap-8">
-              <div className="bg-slate-900 rounded-3xl p-6 flex flex-col items-center justify-center min-h-[260px] text-white">
-                <div className="text-xs font-bold uppercase text-amber-400 mb-4">
-                  Ketuk Tombol Bergantian Mengikuti Rasio 1 : 2
-                </div>
-                <div className="flex gap-4">
-                  <button
-                    onClick={() => {
-                      setRhythmClicks((c) => {
-                        const next = c + 1;
-                        if (next >= 6) setBrainReady(true);
-                        return next;
-                      });
-                    }}
-                    className="w-24 h-24 rounded-2xl bg-sky-500 hover:bg-sky-600 text-white font-extrabold text-sm shadow-lg active:scale-95 transition flex flex-col items-center justify-center gap-1"
-                  >
-                    <span className="text-2xl">🔵</span>
-                    <span>Kiri (1x)</span>
-                  </button>
-                  <button
-                    onClick={() => {
-                      setRhythmClicks((c) => {
-                        const next = c + 1;
-                        if (next >= 6) setBrainReady(true);
-                        return next;
-                      });
-                    }}
-                    className="w-24 h-24 rounded-2xl bg-emerald-500 hover:bg-emerald-600 text-white font-extrabold text-sm shadow-lg active:scale-95 transition flex flex-col items-center justify-center gap-1"
-                  >
-                    <span className="text-2xl">🟢</span>
-                    <span>Kanan (2x)</span>
-                  </button>
-                </div>
-                <div className="text-xs text-slate-300 mt-4">
-                  Progres: {rhythmClicks} / 6 ketukan ritme selesai
-                </div>
-              </div>
-
-              <div className="w-full space-y-4">
-                <div className="w-full rounded-2xl border border-amber-200 bg-amber-50 px-5 py-4 md:px-6 md:py-5">
-                  <h3 className="text-lg font-bold text-amber-900">
-                    Mengapa Kita Memainkan Ritme Ini?
-                  </h3>
-                  <p className="mt-2 text-base leading-relaxed text-amber-800">
-                    Saat tangan kiri dan kanan bergerak dalam perbandingan proporsional (1 : 2), otak kecilmu menyinkronkan ritme motorik dengan pemahaman konsep perbandingan di dalam matematika.
-                  </p>
-                </div>
-
-                <div className="flex flex-wrap gap-3">
-                  <button
-                    onClick={() => {
-                      setRhythmClicks(0);
-                      setBrainReady(false);
-                    }}
-                    className="px-4 py-2.5 rounded-xl border border-slate-300 text-slate-700 font-semibold text-sm hover:bg-slate-100"
-                  >
-                    🔄 Ulangi Ritme
-                  </button>
-
-                  <button
-                    onClick={() => setActiveTab("materi")}
-                    className={`px-6 py-2.5 rounded-xl font-bold text-sm shadow-md transition ${
-                      brainReady
-                        ? "bg-emerald-600 hover:bg-emerald-700 text-white animate-bounce"
-                        : "bg-indigo-600 hover:bg-indigo-700 text-white"
-                    }`}
-                  >
-                    {brainReady ? "🚀 Otak Siap! Buka Materi Rasio" : "Lewati ke Materi →"}
-                  </button>
-                </div>
-              </div>
-            </div>
-          </div>
-        )}
-
-        {/* ================================================================
-            TAB 2: EKSPLORASI MATERI LENGKAP (SUB-BAB A, B, C)
-        ================================================================ */}
-        {activeTab === "materi" && (
-          <div className="space-y-6">
-            <div className="grid w-full grid-cols-1 gap-3">
-              {BAB2_MATERIALS.map((sub, idx) => (
-                <button
-                  key={sub.id}
-                  onClick={() => setSelectedSubBab(idx)}
-                  className={`w-full rounded-2xl border px-5 py-4 text-left transition md:px-6 ${
-                    selectedSubBab === idx
-                      ? "bg-emerald-700 text-white border-emerald-700"
-                      : "bg-white text-slate-700 border-slate-200 hover:border-emerald-300"
-                  }`}
-                >
-                  <div className="text-sm font-extrabold uppercase tracking-wider opacity-80">{sub.code}</div>
-                  <div className="mt-0.5 text-lg font-extrabold">{sub.title}</div>
-                  <div className="mt-1 text-base leading-relaxed opacity-85">{sub.subtitle}</div>
-                </button>
+                <KuisSuaraLokal {...adegan.suaraKuis} />
+                <KuisKanvasLokal {...adegan.kanvas} />
+              </section>
+            ))}
+            <section className="space-y-6 border-t border-emerald-200 pt-6">
+              <h3 className="text-xl font-black">Tantangan akhir naskah</h3>
+              {PERMAINAN_A.map((item) => (
+                <RenderPermainan key={item.id} item={item} />
               ))}
-            </div>
+            </section>
+          </>
+        ) : null}
 
-            {(() => {
-              const current = BAB2_MATERIALS[selectedSubBab];
-              return (
-                <div className="space-y-6">
-                  {/* Kisah Pemantik Kurikulum Merdeka */}
-                  <div className="space-y-4">
-                    <div className="w-full">
-                      <div className="text-base font-extrabold uppercase tracking-wider text-amber-800">
-                        {current.storyHook.avatar} Kisah Pemantik • {current.storyHook.character}
-                      </div>
-                      <p className="mt-2 w-full text-base leading-relaxed text-slate-700">{current.storyHook.dialogue}</p>
-                    </div>
-                    <div className="w-full rounded-2xl border border-amber-300 bg-amber-50 px-5 py-4 text-base font-bold leading-relaxed text-amber-900 md:px-6 md:py-5">
-                      Pertanyaan pemantik: {current.storyHook.question}
-                    </div>
-                  </div>
+        {tab === "info" ? (
+          <>
+            <section className="space-y-3">
+              <h2 className="text-2xl font-black text-emerald-900">B. Infografis</h2>
+              <p className="text-base leading-relaxed">Tabel ini merangkum cara membandingkan, menulis rasio, dan menyamakan satuan.</p>
+            </section>
+            {INFOGRAFIS.map((kartu) => (
+              <section key={kartu.id} className="space-y-4 border-t border-emerald-200 pt-6">
+                <h3 className="text-xl font-black">{kartu.judul}</h3>
+                <TombolVoiceMateriPai1 cuplikan={cuplikan(kartu.suara)} />
+                <Tabel kepala={kartu.tabel.kepala} baris={kartu.tabel.baris} />
+                <p className="text-base leading-relaxed">{kartu.contoh}</p>
+                <KuisSuaraLokal {...kartu.suaraKuis} />
+                <KuisKanvasLokal {...kartu.kanvas} />
+              </section>
+            ))}
+            <section className="space-y-6 border-t border-emerald-200 pt-6">
+              <h3 className="text-xl font-black">Tantangan akhir infografis</h3>
+              {PERMAINAN_B.map((item) => (
+                <RenderPermainan key={item.id} item={item} />
+              ))}
+            </section>
+          </>
+        ) : null}
 
-                  {/* Slide-Slide Visual Bertahap */}
-                  <div className="grid grid-cols-1 gap-6">
-                    {current.slides.map((slide, sIdx) => (
-                      <section key={sIdx} className="space-y-4 border-t border-slate-200 pt-6">
-                        <div>
-                          <span className="rounded-md bg-emerald-50 px-2.5 py-1 text-sm font-black uppercase text-emerald-700">
-                            {slide.badge}
-                          </span>
-                          <h3 className="mt-1.5 text-xl font-extrabold text-slate-800">{slide.title}</h3>
-                        </div>
-
-                        <p className="text-base leading-relaxed text-slate-700">{slide.explanation}</p>
-
-                        <VisualDoodleRasio type={slide.visualType} />
-
-                        <div className="w-full rounded-2xl border border-slate-200 bg-slate-50 px-5 py-4 md:px-6 md:py-5">
-                          <div className="mb-3 text-base font-extrabold uppercase tracking-wider text-slate-700">
-                            Rangkuman konsep penting
-                          </div>
-                          <ul className="space-y-3">
-                            {slide.keyTakeaways.map((point, pIdx) => (
-                              <li key={pIdx} className="flex items-start gap-2 text-base leading-relaxed text-slate-700">
-                                <span className="font-bold text-emerald-600">✔</span>
-                                <span>{point}</span>
-                              </li>
-                            ))}
-                          </ul>
-                        </div>
-
-                        <div className="w-full rounded-2xl border border-rose-200 bg-rose-50 px-5 py-4 text-base font-bold leading-relaxed text-rose-900 md:px-6 md:py-5">
-                          {slide.commonTrap}
-                        </div>
-                      </section>
-                    ))}
-                  </div>
-
-                  {/* Kamus Cilik & Panduan Luring */}
-                  <div className="space-y-4 border-t border-slate-200 pt-6">
-                    <h4 className="text-lg font-extrabold text-slate-800">Kamus Cilik Rasio</h4>
-                    <div className="space-y-3">
-                      {current.kamusCilik.map((k, kIdx) => (
-                        <div key={kIdx} className="flex w-full items-start gap-3 rounded-2xl border border-slate-200 bg-white px-5 py-4 md:px-6 md:py-5">
-                          <span className="text-2xl">{k.ikon}</span>
-                          <p className="text-base leading-relaxed text-slate-700">
-                            <span className="font-bold text-emerald-800">{k.kata}: </span>
-                            {k.arti}
-                          </p>
-                        </div>
-                      ))}
-                    </div>
-                    <div className="space-y-3 text-base leading-relaxed text-slate-700">
-                      <h4 className="text-lg font-extrabold text-slate-800">Aktivitas luring guru dan orang tua</h4>
-                      <p className="font-bold text-emerald-800">Panduan guru di kelas</p>
-                      <ul className="list-disc space-y-1 pl-5">
-                        {current.offlineActivities.teacherGuide.map((tg, i) => (
-                          <li key={i}>{tg}</li>
-                        ))}
-                      </ul>
-                      <p className="font-bold text-amber-800">Praktik orang tua di rumah</p>
-                      <ul className="list-disc space-y-1 pl-5">
-                        {current.offlineActivities.parentGuide.map((pg, i) => (
-                          <li key={i}>{pg}</li>
-                        ))}
-                      </ul>
-                    </div>
-                  </div>
-                </div>
-              );
-            })()}
-          </div>
-        )}
-
-        {/* ================================================================
-            TAB 3: SIMULATOR INTERAKTIF RASIO RESEP EKUIVALEN
-        ================================================================ */}
-        {activeTab === "simulator" && (
-          <div className="space-y-6">
-            <div className="space-y-4">
-              <div>
-                <span className="rounded-full bg-emerald-50 px-3 py-1 text-xs font-bold uppercase text-emerald-700">
-                  Laboratorium Proporsi (Eksplorasi 2.3 & 2.4)
-                </span>
-                <h2 className="mt-1 text-xl font-extrabold text-slate-800">
-                  Simulator Takaran Sirup: Membuktikan Rasio Ekuivalen
-                </h2>
-                <p className="text-base leading-relaxed text-slate-600">
-                  Ubah faktor pengali resep untuk melihat bagaimana takaran sirup dan air membesar bersama tanpa mengubah rasa manisnya!
-                </p>
-              </div>
-              <div className="w-full rounded-2xl border border-emerald-700 bg-emerald-700 px-5 py-4 text-center text-white md:px-6">
-                <div className="text-sm font-bold uppercase">Rasio terbuka</div>
-                <div className="text-4xl font-black">{baseSirup * scaleFactor} : {baseAir * scaleFactor}</div>
-              </div>
-            </div>
-
-            <div className="grid grid-cols-1 items-start gap-8">
-              <div className="w-full space-y-5">
-                <div>
-                  <label className="text-xs font-extrabold uppercase text-slate-600">
-                    Pilih Faktor Pengali Resep ({scaleFactor}x Lipat):
-                  </label>
-                  <div className="flex gap-2 mt-2">
-                    {[1, 2, 3, 4, 5].map((factor) => (
-                      <button
-                        key={factor}
-                        onClick={() => setScaleFactor(factor)}
-                        className={`flex-1 py-2.5 rounded-xl font-black text-sm transition ${
-                          scaleFactor === factor
-                            ? "bg-emerald-600 text-white shadow-md"
-                            : "bg-white text-slate-700 border border-slate-300 hover:bg-slate-100"
-                        }`}
-                      >
-                        {factor}x
-                      </button>
-                    ))}
-                  </div>
-                </div>
-
-                <div className="grid w-full grid-cols-1 gap-3 text-center">
-                  <div className="w-full rounded-2xl border border-rose-200 bg-rose-50 px-5 py-4 md:px-6">
-                    <div className="text-base font-bold text-rose-800">Sirup diperlukan</div>
-                    <div className="mt-1 text-3xl font-black text-rose-600">
-                      {baseSirup * scaleFactor} Cangkir
-                    </div>
-                    <div className="text-sm text-slate-500">({baseSirup} × {scaleFactor})</div>
-                  </div>
-                  <div className="w-full rounded-2xl border border-sky-200 bg-sky-50 px-5 py-4 md:px-6">
-                    <div className="text-base font-bold text-sky-800">Air diperlukan</div>
-                    <div className="mt-1 text-3xl font-black text-sky-600">
-                      {baseAir * scaleFactor} Cangkir
-                    </div>
-                    <div className="text-sm text-slate-500">({baseAir} × {scaleFactor})</div>
-                  </div>
-                </div>
-              </div>
-
-              <div className="w-full">
-                <div className="mb-2 text-base font-extrabold uppercase text-slate-600">
-                  Tabel rasio ekuivalen
-                </div>
-                <table className="w-full border-collapse text-center text-base">
-                  <thead>
-                    <tr className="bg-slate-100 text-slate-700">
-                      <th className="p-2 border border-slate-200">Porsi</th>
-                      <th className="p-2 border border-slate-200 text-rose-700 font-extrabold">Sirup</th>
-                      <th className="p-2 border border-slate-200 text-sky-700 font-extrabold">Air</th>
-                      <th className="p-2 border border-slate-200">Rasio Bentuk</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    {[1, 2, 3, 4, 5].map((s) => (
-                      <tr
-                        key={s}
-                        className={s === scaleFactor ? "bg-amber-100 font-bold" : "hover:bg-slate-50"}
-                      >
-                        <td className="p-2 border border-slate-200">{s} Loyang</td>
-                        <td className="p-2 border border-slate-200">{baseSirup * s} Cangkir</td>
-                        <td className="p-2 border border-slate-200">{baseAir * s} Cangkir</td>
-                        <td className="p-2 border border-slate-200 font-mono">{baseSirup * s} : {baseAir * s}</td>
-                      </tr>
-                    ))}
-                  </tbody>
-                </table>
-              </div>
-            </div>
-          </div>
-        )}
-
-        {/* ================================================================
-            TAB 4: KANVAS PRAKTIKUM (ZERO-COST CLIENT-SIDE)
-        ================================================================ */}
-        {activeTab === "praktikum" && (
-          <div className="space-y-4">
-            <span className="rounded-full bg-emerald-50 px-3 py-1 text-xs font-bold uppercase text-emerald-700">
-              Praktikum Visualisasi Rasio (Biaya API Rp 0)
-            </span>
-            <h2 className="text-xl font-extrabold text-slate-800">
-              Tantangan Kanvas: Menggambar Diagram Kotak Rasio (Tape Diagram)
-            </h2>
-            <p className="text-base leading-relaxed text-slate-600">
-              Rasio buah apel terhadap buah jeruk adalah <strong>2 : 3</strong>. Gambarkan diagram batang kotak (tape diagram) untuk mewakili 2 kotak apel dan 3 kotak jeruk di kanvas berpetak bawah ini!
-            </p>
-
-            <div className="mt-5 flex w-full flex-col">
-              <canvas
-                ref={canvasRef}
-                width={560}
-                height={280}
-                onMouseDown={startDraw}
-                onMouseMove={draw}
-                onMouseUp={endDraw}
-                onMouseLeave={endDraw}
-                onTouchStart={startDraw}
-                onTouchMove={draw}
-                onTouchEnd={endDraw}
-                className="h-[280px] w-full cursor-crosshair touch-none border-2 border-dashed border-emerald-300 bg-slate-50"
-                style={{
-                  backgroundImage:
-                    "linear-gradient(to right, #e2e8f0 1px, transparent 1px), linear-gradient(to bottom, #e2e8f0 1px, transparent 1px)",
-                  backgroundSize: "35px 35px",
-                }}
-              />
-
-              <div className="flex flex-wrap gap-3 mt-4">
-                <button
-                  onClick={clearCanvas}
-                  className="px-5 py-2.5 rounded-xl border border-slate-300 text-slate-700 font-semibold text-sm hover:bg-slate-100"
-                >
-                  🗑️ Bersihkan Kanvas
-                </button>
-                <button
-                  onClick={verifyCanvasLocal}
-                  className="px-6 py-2.5 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-sm shadow-md"
-                >
-                  ✅ Periksa Gambarku (Lokal)
-                </button>
-              </div>
-
-              {canvasFeedback && (
-                <div className="mt-4 w-full rounded-2xl border border-emerald-200 bg-emerald-50 px-5 py-4 text-center text-base font-bold leading-relaxed text-emerald-900 md:px-6">
-                  {canvasFeedback}
-                </div>
-              )}
-            </div>
-          </div>
-        )}
-
-        {/* ================================================================
-            TAB 5: LATIHAN MANDIRI RESMI (10 SOAL)
-        ================================================================ */}
-        {activeTab === "latihan" && (
-          <div className="space-y-4">
-            <div>
-              <h2 className="text-xl font-extrabold text-slate-800">
-                Latihan Pemahaman Bab 2 (10 Soal Kurikulum Merdeka)
-              </h2>
-              <p className="text-base leading-relaxed text-slate-600">
-                Uji pemahamanmu secara mandiri. Jawaban benar pada percobaan pertama memberikan <strong>+5 Token IGIL</strong>!
+        {tab === "misi" ? (
+          <section className="space-y-6">
+            <div className="space-y-3">
+              <h2 className="text-2xl font-black text-emerald-900">C. Misi menyelamatkan rumah kaca</h2>
+              <TombolVoiceMateriPai1 cuplikan={cuplikan("Kamu jadi Asisten Rumah Kaca! Selesaikan 10 misi dengan rasio. Kumpulkan Poin Daun sampai 70 untuk membuka Pintu Rumah Kaca!")} />
+              <p className="text-base leading-relaxed">
+                Jawaban benar pada percobaan pertama memberi 10 poin daun. Benar setelah salah sekali memberi 5 poin. Pintu terbuka pada 70 poin.
+              </p>
+              <p className="text-2xl font-black text-emerald-800">
+                {poinDaun} poin daun {poinDaun >= 70 ? "· pintu terbuka" : "· pintu masih tertutup"}
               </p>
             </div>
-
-            {STATIC_QUESTIONS_RASIO.map((q, idx) => {
-              const isSubmitted = submittedQuiz[q.id];
-              const userChoice = selectedAnswers[q.id];
-              const isCorrect = userChoice === q.correctAnswer;
-
-              return (
-                <div key={q.id} className="space-y-3 border-t border-slate-200 pt-6">
-                  <div className="flex items-center justify-between mb-2">
-                    <span className="text-xs font-extrabold uppercase bg-emerald-50 text-emerald-800 px-3 py-1 rounded-full">
-                      Soal {idx + 1} • Sub-Bab {q.subBab}
-                    </span>
-                    {claimedQuestionIds.includes(q.id) && (
-                      <span className="text-xs font-bold text-emerald-600 bg-emerald-50 px-2.5 py-1 rounded-full">
-                        ✓ +5 Token Diklaim
-                      </span>
-                    )}
-                  </div>
-
-                  <p className="font-bold text-slate-800 text-base mt-2">{q.question}</p>
-
-                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5 mt-4">
-                    {q.options.map((opt) => (
-                      <button
-                        key={opt}
-                        onClick={() => {
-                          if (!isSubmitted) {
-                            setSelectedAnswers((prev) => ({ ...prev, [q.id]: opt }));
-                          }
-                        }}
-                        className={`p-3 rounded-xl border text-left text-sm font-semibold transition ${
-                          userChoice === opt
-                            ? "bg-emerald-700 text-white border-emerald-700"
-                            : "bg-slate-50 text-slate-700 border-slate-200 hover:border-emerald-300"
-                        }`}
-                      >
-                        {opt}
-                      </button>
-                    ))}
-                  </div>
-
-                  <div className="mt-4 flex items-center gap-3">
-                    {!isSubmitted ? (
-                      <button
-                        onClick={() => handleAnswerSubmit(q)}
-                        disabled={!userChoice}
-                        className="px-5 py-2 rounded-xl bg-emerald-700 hover:bg-emerald-800 disabled:bg-slate-300 text-white font-bold text-sm"
-                      >
-                        Kunci Jawaban
-                      </button>
-                    ) : (
-                      <div
-                        className={`w-full rounded-2xl border px-5 py-4 text-base leading-relaxed md:px-6 md:py-5 ${
-                          isCorrect
-                            ? "bg-emerald-50 border-emerald-200 text-emerald-900"
-                            : "bg-rose-50 border-rose-200 text-rose-900"
-                        }`}
-                      >
-                        <div className="font-extrabold">
-                          {isCorrect ? "Jawabanmu benar!" : `Kurang tepat. Jawaban yang benar: ${q.correctAnswer}`}
-                        </div>
-                        <p className="mt-2 leading-relaxed">{q.explanation}</p>
-                      </div>
-                    )}
-                  </div>
-                </div>
-              );
-            })}
-          </div>
-        )}
-
-        {/* ================================================================
-            TAB 6: EVALUASI RESMI ANTI-CONTEK (DYNAMIC PARAMETERIZATION)
-        ================================================================ */}
-        {activeTab === "evaluasi" && (
-          <div className="space-y-4">
-            <div className="flex flex-col justify-between gap-4 md:flex-row md:items-center">
-              <div>
-                <span className="rounded-full bg-amber-400 px-3 py-1 text-xs font-extrabold uppercase text-slate-900">
-                  Anti-Cheating Dynamic Engine
-                </span>
-                <h2 className="mt-2 text-xl font-extrabold text-slate-800">
-                  Lembar Evaluasi Bab 2 (Angka Unik Per Siswa)
-                </h2>
-                <p className="mt-1 text-base leading-relaxed text-slate-600">
-                  Setiap siswa mendapatkan angka takaran resep, jumlah bibit pohon, dan harga belanja yang berbeda. Nilai per soal bernilai <strong>+10 Token IGIL</strong>!
-                </p>
+            {MISI.map((item) => (
+              <div key={item.id} className="border-t border-emerald-200 pt-6">
+                <RenderPermainan item={item} onNilai={(benar) => nilaiMisi(item.id, benar)} />
+                {skorMisi[item.id] ? (
+                  <p className="mt-2 text-base font-bold text-emerald-800">+{skorMisi[item.id]} poin daun</p>
+                ) : null}
               </div>
-              <button
-                onClick={() => {
-                  setStudentSeed(Math.floor(Math.random() * 9000) + 100);
-                }}
-                className="shrink-0 rounded-xl bg-emerald-700 px-4 py-2.5 text-sm font-extrabold text-white hover:bg-emerald-800"
-              >
-                Simulasikan Siswa Lain (Acak Angka Baru)
-              </button>
+            ))}
+          </section>
+        ) : null}
+
+        {tab === "poin" ? (
+          <section className="space-y-4">
+            <h2 className="text-2xl font-black text-emerald-900">D. Poin penting</h2>
+            <TombolVoiceMateriPai1 cuplikan={cuplikan("Ini kalimat-kalimat kunci bab Rasio. Ingat-ingat ya!")} />
+            <div className="w-full rounded-2xl border border-amber-300 bg-amber-50 px-5 py-4 md:px-6 md:py-5">
+              <ul className="space-y-3">
+                {POIN.map((teks) => (
+                  <li key={teks} className="text-base leading-relaxed text-slate-800">{teks}</li>
+                ))}
+              </ul>
             </div>
+          </section>
+        ) : null}
 
-            {dynamicEvalQuestions.map((q, idx) => {
-              const isSubmitted = submittedQuiz[q.id];
-              const userChoice = selectedAnswers[q.id];
-              const isCorrect = userChoice === q.correctAnswer;
-
-              return (
-                <div key={q.id} className="space-y-3 border-t border-slate-200 pt-6">
-                  <div className="flex items-center justify-between mb-2">
-                    <span className="text-xs font-extrabold uppercase bg-amber-100 text-amber-900 px-3 py-1 rounded-full">
-                      Evaluasi #{idx + 1} • Paket Unik Siswa #{studentSeed}
-                    </span>
-                    {claimedQuestionIds.includes(q.id) && (
-                      <span className="text-xs font-bold text-emerald-600 bg-emerald-50 px-2.5 py-1 rounded-full">
-                        ⭐ +10 Token Ditambang
-                      </span>
-                    )}
-                  </div>
-
-                  <p className="font-bold text-slate-800 text-base mt-2">{q.question}</p>
-
-                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5 mt-4">
-                    {q.options.map((opt) => (
-                      <button
-                        key={opt}
-                        onClick={() => {
-                          if (!isSubmitted) {
-                            setSelectedAnswers((prev) => ({ ...prev, [q.id]: opt }));
-                          }
-                        }}
-                        className={`p-3 rounded-xl border text-left text-sm font-semibold transition ${
-                          userChoice === opt
-                            ? "bg-emerald-700 text-white border-emerald-700"
-                            : "bg-slate-50 text-slate-700 border-slate-200 hover:border-emerald-300"
-                        }`}
-                      >
-                        {opt}
-                      </button>
-                    ))}
-                  </div>
-
-                  <div className="mt-4">
-                    {!isSubmitted ? (
-                      <button
-                        onClick={() => handleAnswerSubmit(q)}
-                        disabled={!userChoice}
-                        className="px-5 py-2 rounded-xl bg-amber-500 hover:bg-amber-600 disabled:bg-slate-300 text-slate-950 font-extrabold text-sm"
-                      >
-                        Kirim & Tambang Token
-                      </button>
-                    ) : (
-                      <div
-                        className={`w-full rounded-2xl border px-5 py-4 text-base leading-relaxed md:px-6 md:py-5 ${
-                          isCorrect
-                            ? "bg-emerald-50 border-emerald-200 text-emerald-900"
-                            : "bg-rose-50 border-rose-200 text-rose-900"
-                        }`}
-                      >
-                        <div className="font-extrabold">
-                          {isCorrect ? "Tepat sekali! +10 Token IGIL" : `Belum tepat. Kunci jawaban: ${q.correctAnswer}`}
-                        </div>
-                        <p className="mt-2 leading-relaxed">{q.explanation}</p>
-                      </div>
-                    )}
-                  </div>
-                </div>
-              );
-            })}
-          </div>
-        )}
+        {tab === "evaluasi" ? (
+          <section className="space-y-6">
+            <div className="space-y-3">
+              <h2 className="text-2xl font-black text-emerald-900">Lembar evaluasi</h2>
+              <TombolVoiceMateriPai1 cuplikan={cuplikan("Baca soal pelan-pelan. Tulis langkahmu, bukan hanya jawaban. Ingat samakan satuan dulu. Semangat!")} />
+              <p className="text-base leading-relaxed">Sepuluh soal. Samakan satuan sebelum membandingkan waktu.</p>
+            </div>
+            {EVALUASI.map((item, indeks) => (
+              <div key={item.id} className="border-t border-emerald-200 pt-6">
+                <p className="mb-2 text-sm font-black uppercase text-emerald-800">Soal {indeks + 1}</p>
+                <RenderPermainan item={item} />
+              </div>
+            ))}
+          </section>
+        ) : null}
       </main>
     </div>
   );
