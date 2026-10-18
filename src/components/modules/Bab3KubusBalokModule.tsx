@@ -476,6 +476,7 @@ function SatuKubus({
   z = 0,
   warna,
   ukuran = UKURAN_KUBUS,
+  transisi = true,
   onPointerDown,
   onPointerMove,
   onPointerUp,
@@ -486,6 +487,7 @@ function SatuKubus({
   z?: number;
   warna: WarnaKubus;
   ukuran?: number;
+  transisi?: boolean;
   onPointerDown?: (event: React.PointerEvent<HTMLDivElement>) => void;
   onPointerMove?: (event: React.PointerEvent<HTMLDivElement>) => void;
   onPointerUp?: (event: React.PointerEvent<HTMLDivElement>) => void;
@@ -501,13 +503,14 @@ function SatuKubus({
   ];
   return (
     <div
+      data-nomor={nomor}
       className="absolute left-1/2 top-1/2"
       style={{
         width: ukuran,
         height: ukuran,
         transformStyle: "preserve-3d",
         transform: `translate(-50%, -50%) translate3d(${x}px, ${y}px, ${z}px)`,
-        transition: "transform 0.45s ease",
+        transition: transisi ? "transform 0.45s ease" : "none",
       }}
       onPointerDown={onPointerDown}
       onPointerMove={onPointerMove}
@@ -665,37 +668,123 @@ const WARNA_LANTAI_ATAS: WarnaKubus = {
   bawah: "border-slate-600 bg-slate-300 text-slate-800",
 };
 
-function TumpukanBongkar() {
-  const ukuran = 38;
-  const pola = [
-    { nomor: "1", kolom: 0, lantai: 1, warna: WARNA_LANGIT },
-    { nomor: "2", kolom: 1, lantai: 1, warna: WARNA_LANGIT },
-    { nomor: "3", kolom: 2, lantai: 1, warna: WARNA_LANGIT },
-    { nomor: "4", kolom: 0, lantai: 2, warna: WARNA_L },
-    { nomor: "5", kolom: 1, lantai: 2, warna: WARNA_L },
-    { nomor: "6", kolom: 2, lantai: 2, warna: WARNA_L },
-    { nomor: "7", kolom: 0, lantai: 3, warna: WARNA_LANTAI_ATAS },
-    { nomor: "8", kolom: 1, lantai: 3, warna: WARNA_LANTAI_ATAS },
-  ].map((kubus) => ({
-    ...kubus,
-    x: kubus.kolom * ukuran,
-    y: -(kubus.lantai - 1) * ukuran,
-  }));
-  const tengahX = pola.reduce((jumlah, kubus) => jumlah + kubus.x, 0) / pola.length;
-  const tengahY = pola.reduce((jumlah, kubus) => jumlah + kubus.y, 0) / pola.length;
-  const rumah = pola.map((kubus, urutan) => ({
-    ...kubus,
-    x: kubus.x - tengahX,
-    y: kubus.y - tengahY,
-    lepasX: ((urutan % 4) - 1.5) * (ukuran + 6),
-    lepasY: ukuran * 2.35 + Math.floor(urutan / 4) * (ukuran + 6),
-    lepasZ: ukuran * 1.4,
-  }));
+type SelKubus = {
+  nomor: string;
+  kolom: number;
+  dalam: number;
+  lantai: number;
+  warna: WarnaKubus;
+};
 
+const UKURAN_TUMPUK = 38;
+const ASAL_KOLOM = 1;
+
+function polaDelapan(): SelKubus[] {
+  return [
+    { nomor: "1", kolom: 0, dalam: 0, lantai: 0, warna: WARNA_LANGIT },
+    { nomor: "2", kolom: 1, dalam: 0, lantai: 0, warna: WARNA_LANGIT },
+    { nomor: "3", kolom: 2, dalam: 0, lantai: 0, warna: WARNA_LANGIT },
+    { nomor: "4", kolom: 0, dalam: 0, lantai: 1, warna: WARNA_L },
+    { nomor: "5", kolom: 1, dalam: 0, lantai: 1, warna: WARNA_L },
+    { nomor: "6", kolom: 2, dalam: 0, lantai: 1, warna: WARNA_L },
+    { nomor: "7", kolom: 0, dalam: 0, lantai: 2, warna: WARNA_LANTAI_ATAS },
+    { nomor: "8", kolom: 1, dalam: 0, lantai: 2, warna: WARNA_LANTAI_ATAS },
+  ];
+}
+
+function pikselSel(sel: { kolom: number; dalam: number; lantai: number }) {
+  return {
+    x: (sel.kolom - ASAL_KOLOM) * UKURAN_TUMPUK,
+    y: (1 - sel.lantai) * UKURAN_TUMPUK,
+    z: sel.dalam * UKURAN_TUMPUK,
+  };
+}
+
+function jepit(nilai: number, rendah: number, tinggi: number) {
+  return Math.max(rendah, Math.min(tinggi, nilai));
+}
+
+function layarKePetak(dx: number, dy: number, ax: number, ay: number) {
+  const ayR = (ay * Math.PI) / 180;
+  const axR = (ax * Math.PI) / 180;
+  const cy = Math.cos(ayR);
+  const sy = Math.sin(ayR);
+  const cx = Math.cos(axR);
+  const sx = Math.sin(axR);
+  const sumbu = [
+    { nama: "x" as const, x: cy, y: sy * sx },
+    { nama: "y" as const, x: 0, y: cx },
+    { nama: "z" as const, x: sy, y: -cy * sx },
+  ]
+    .map((item) => ({ ...item, panjang: Math.hypot(item.x, item.y) }))
+    .sort((a, b) => b.panjang - a.panjang);
+  const hasil = { x: 0, y: 0, z: 0 };
+  const utama = sumbu[0];
+  const kedua = sumbu[1];
+  const det = utama.x * kedua.y - utama.y * kedua.x;
+  if (Math.abs(det) < 0.08) {
+    const panjang = utama.panjang || 1;
+    hasil[utama.nama] = (dx * utama.x + dy * utama.y) / (panjang * panjang);
+    return hasil;
+  }
+  hasil[utama.nama] = (dx * kedua.y - dy * kedua.x) / det;
+  hasil[kedua.nama] = (utama.x * dy - utama.y * dx) / det;
+  return hasil;
+}
+
+function angkatKeMata(ax: number, ay: number) {
+  const ayR = (ay * Math.PI) / 180;
+  const axR = (ax * Math.PI) / 180;
+  const jarak = 34;
+  return {
+    x: -Math.cos(axR) * Math.sin(ayR) * jarak,
+    y: Math.sin(axR) * jarak,
+    z: Math.cos(axR) * Math.cos(ayR) * jarak,
+  };
+}
+
+function padatkan(daftar: SelKubus[], nomor: string) {
+  const pindah = daftar.find((item) => item.nomor === nomor);
+  if (!pindah) return daftar;
+  const kelompok = new Map<string, SelKubus[]>();
+  daftar.forEach((item) => {
+    if (item.nomor === nomor) return;
+    const kunci = `${item.kolom},${item.dalam}`;
+    const isi = kelompok.get(kunci) ?? [];
+    isi.push(item);
+    kelompok.set(kunci, isi);
+  });
+  const hasil: SelKubus[] = [];
+  kelompok.forEach((isi) => {
+    isi.sort((a, b) => a.lantai - b.lantai);
+    isi.forEach((item, indeks) => hasil.push({ ...item, lantai: indeks }));
+  });
+  const kunci = `${pindah.kolom},${pindah.dalam}`;
+  const tinggi = hasil.filter((item) => `${item.kolom},${item.dalam}` === kunci).length;
+  hasil.push({ ...pindah, lantai: Math.min(tinggi, 4) });
+  return hasil.sort((a, b) => Number(a.nomor) - Number(b.nomor));
+}
+
+function TumpukanBongkar() {
+  const [sel, setSel] = useState<SelKubus[]>(polaDelapan);
   const [sudut, setSudut] = useState({ x: -14, y: 18 });
   const [halus, setHalus] = useState(true);
-  const [lepas, setLepas] = useState<string[]>([]);
-  const tarik = useRef<{ x: number; y: number; sx: number; sy: number; nomor: string | null; gerak: number } | null>(null);
+  const [pegang, setPegang] = useState<string | null>(null);
+  const [geser, setGeser] = useState<{ x: number; y: number; z: number } | null>(null);
+  const tarik = useRef<{
+    jenis: "putar" | "kubus";
+    nomor: string | null;
+    x: number;
+    y: number;
+    sx: number;
+    sy: number;
+    px: number;
+    py: number;
+    pz: number;
+    gx: number;
+    gy: number;
+    gz: number;
+  } | null>(null);
 
   function mulaiTarik(event: React.PointerEvent<HTMLDivElement>, nomor: string | null) {
     if (nomor) event.stopPropagation();
@@ -704,30 +793,83 @@ function TumpukanBongkar() {
     } catch {
       // Geser tetap jalan bila browser menolak tangkapan jari.
     }
+    if (nomor) {
+      const asal = sel.find((item) => item.nomor === nomor);
+      const piksel = pikselSel(asal ?? { kolom: 0, dalam: 0, lantai: 0 });
+      setPegang(nomor);
+      setGeser(null);
+      tarik.current = {
+        jenis: "kubus",
+        nomor,
+        x: event.clientX,
+        y: event.clientY,
+        sx: sudut.x,
+        sy: sudut.y,
+        px: piksel.x,
+        py: piksel.y,
+        pz: piksel.z,
+        gx: piksel.x,
+        gy: piksel.y,
+        gz: piksel.z,
+      };
+      return;
+    }
     setHalus(false);
-    tarik.current = { x: event.clientX, y: event.clientY, sx: sudut.x, sy: sudut.y, nomor, gerak: 0 };
+    tarik.current = {
+      jenis: "putar",
+      nomor: null,
+      x: event.clientX,
+      y: event.clientY,
+      sx: sudut.x,
+      sy: sudut.y,
+      px: 0,
+      py: 0,
+      pz: 0,
+      gx: 0,
+      gy: 0,
+      gz: 0,
+    };
   }
 
   function geserTarik(event: React.PointerEvent<HTMLDivElement>) {
-    if (!tarik.current) return;
-    const dx = event.clientX - tarik.current.x;
-    const dy = event.clientY - tarik.current.y;
-    tarik.current.gerak += Math.abs(event.movementX) + Math.abs(event.movementY);
-    setSudut({
-      x: Math.max(-85, Math.min(85, tarik.current.sx - dy * 0.5)),
-      y: tarik.current.sy + dx * 0.55,
-    });
+    const jejak = tarik.current;
+    if (!jejak) return;
+    const dx = event.clientX - jejak.x;
+    const dy = event.clientY - jejak.y;
+    if (jejak.jenis === "putar") {
+      setSudut({
+        x: Math.max(-85, Math.min(85, jejak.sx - dy * 0.5)),
+        y: jejak.sy + dx * 0.55,
+      });
+      return;
+    }
+    const lokal = layarKePetak(dx, dy, jejak.sx, jejak.sy);
+    jejak.gx = jejak.px + lokal.x;
+    jejak.gy = jejak.py + lokal.y;
+    jejak.gz = jejak.pz + lokal.z;
+    setGeser({ x: jejak.gx, y: jejak.gy, z: jejak.gz });
   }
 
   function lepasTarik() {
     const jejak = tarik.current;
     tarik.current = null;
-    if (jejak?.nomor && jejak.gerak < 8) {
-      const nomor = jejak.nomor;
-      setLepas((sekarang) =>
-        sekarang.includes(nomor) ? sekarang.filter((item) => item !== nomor) : [...sekarang, nomor],
+    if (!jejak || jejak.jenis === "putar") return;
+    const nomor = jejak.nomor;
+    setPegang(null);
+    setGeser(null);
+    if (!nomor) return;
+    const jarak = Math.hypot(jejak.gx - jejak.px, jejak.gy - jejak.py, jejak.gz - jejak.pz);
+    if (jarak < 8) return;
+    const kolom = jepit(Math.round(jejak.gx / UKURAN_TUMPUK + ASAL_KOLOM), -1, 4);
+    const dalam = jepit(Math.round(jejak.gz / UKURAN_TUMPUK), -2, 2);
+    setSel((sekarang) => {
+      const asal = sekarang.find((item) => item.nomor === nomor);
+      if (asal && asal.kolom === kolom && asal.dalam === dalam) return sekarang;
+      return padatkan(
+        sekarang.map((item) => (item.nomor === nomor ? { ...item, kolom, dalam } : item)),
+        nomor,
       );
-    }
+    });
   }
 
   function keSudut(x: number, y: number) {
@@ -735,7 +877,8 @@ function TumpukanBongkar() {
     setSudut({ x, y });
   }
 
-  const terpasang = rumah.length - lepas.length;
+  const angkat = pegang && geser ? angkatKeMata(sudut.x, sudut.y) : { x: 0, y: 0, z: 0 };
+  const urutan = [...sel].sort((a, b) => (a.nomor === pegang ? 1 : b.nomor === pegang ? -1 : 0));
 
   return (
     <div>
@@ -747,7 +890,7 @@ function TumpukanBongkar() {
         onPointerUp={lepasTarik}
         onPointerCancel={lepasTarik}
         role="img"
-        aria-label="Delapan kubus. Lantai 1 nomor 1 2 3, lantai 2 nomor 4 5 6, lantai 3 nomor 7 8. Ketuk untuk membongkar."
+        aria-label="Delapan kubus. Lantai 1 nomor 1 2 3, lantai 2 nomor 4 5 6, lantai 3 nomor 7 8. Geser satu kubus untuk memindahkannya."
       >
         <div
           className="absolute left-1/2 top-[42%] h-0 w-0"
@@ -757,17 +900,27 @@ function TumpukanBongkar() {
             transition: halus ? "transform 0.7s ease" : "none",
           }}
         >
-          {rumah.map((kubus) => {
-            const terbongkar = lepas.includes(kubus.nomor);
+          <div
+            className="absolute left-1/2 top-1/2 rounded-[24px] bg-sky-100"
+            style={{
+              width: 248,
+              height: 190,
+              transform: `translate(-50%, -50%) translate3d(19px, ${UKURAN_TUMPUK * 1.5 + 1}px, 0px) rotateX(90deg)`,
+            }}
+          />
+          {urutan.map((kubus) => {
+            const dasar = pikselSel(kubus);
+            const dipegang = kubus.nomor === pegang && geser;
             return (
               <SatuKubus
                 key={kubus.nomor}
                 nomor={kubus.nomor}
-                ukuran={ukuran}
+                ukuran={UKURAN_TUMPUK}
                 warna={kubus.warna}
-                x={terbongkar ? kubus.lepasX : kubus.x}
-                y={terbongkar ? kubus.lepasY : kubus.y}
-                z={terbongkar ? kubus.lepasZ : 0}
+                transisi={!dipegang}
+                x={dipegang ? geser.x + angkat.x : dasar.x}
+                y={dipegang ? geser.y + angkat.y : dasar.y}
+                z={dipegang ? geser.z + angkat.z : dasar.z}
                 onPointerDown={(event) => mulaiTarik(event, kubus.nomor)}
                 onPointerMove={geserTarik}
                 onPointerUp={lepasTarik}
@@ -778,10 +931,9 @@ function TumpukanBongkar() {
       </div>
       <p className="text-center text-sm font-black text-sky-800">{namaSudutPandang(sudut.x, sudut.y)}</p>
       <p className="text-center text-xs font-bold text-slate-500">
-        Ketuk kubus untuk bongkar atau pasang. Tahan, lalu geser untuk memutar.
-      </p>
-      <p className="mt-1 text-center text-sm font-black text-slate-700">
-        Terpasang {terpasang} · Terbongkar {lepas.length}
+        {pegang
+          ? `Kubus ${pegang} sedang dipindah. Lepas jari di tempat yang kamu mau.`
+          : "Tahan satu kubus, lalu geser ke tempat baru. Geser area kosong untuk memutar."}
       </p>
       <div className="mt-2 flex flex-wrap justify-center gap-2">
         <button type="button" onClick={() => keSudut(-14, 18)} className="rounded-full bg-sky-100 px-3 py-1 text-xs font-black text-sky-900">
@@ -795,17 +947,14 @@ function TumpukanBongkar() {
         </button>
         <button
           type="button"
-          onClick={() => setLepas(rumah.map((kubus) => kubus.nomor))}
-          className="rounded-full bg-rose-100 px-3 py-1 text-xs font-black text-rose-800"
-        >
-          Bongkar semua
-        </button>
-        <button
-          type="button"
-          onClick={() => setLepas([])}
+          onClick={() => {
+            setPegang(null);
+            setGeser(null);
+            setSel(polaDelapan());
+          }}
           className="rounded-full bg-emerald-100 px-3 py-1 text-xs font-black text-emerald-900"
         >
-          Pasang semua
+          Susun semula
         </button>
       </div>
     </div>
