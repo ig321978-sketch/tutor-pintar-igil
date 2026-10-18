@@ -504,22 +504,6 @@ function SatuKubus({
   );
 }
 
-function hurufL() {
-  const mentah = [
-    { nomor: "1", x: 0, z: 0 },
-    { nomor: "2", x: JARAK_KUBUS, z: 0 },
-    { nomor: "3", x: 0, z: JARAK_KUBUS },
-  ];
-  const tengahX = mentah.reduce((jumlah, kubus) => jumlah + kubus.x, 0) / mentah.length;
-  const tengahZ = mentah.reduce((jumlah, kubus) => jumlah + kubus.z, 0) / mentah.length;
-  return mentah.map((kubus) => ({
-    nomor: kubus.nomor,
-    x: kubus.x - tengahX,
-    y: 0,
-    z: kubus.z - tengahZ,
-  }));
-}
-
 function hurufLDepan() {
   const sisi = UKURAN_KUBUS;
   const mentah = [
@@ -699,45 +683,6 @@ function MaterialVisualGraphic({ type }: { type: VisualSlide["visualComponentTyp
             <p className="mt-2 text-center text-sm font-bold text-slate-700">
               Lantai 1: kubus 1 dan 2. Lantai 2: kubus 3 di kiri.
             </p>
-          </div>
-        </div>
-        <div className="mt-4 rounded-2xl border-4 border-emerald-400 bg-white p-4">
-          <p className="text-center text-sm font-black text-emerald-800">Diputar? Masih huruf L. Bukan bentuk baru.</p>
-          <p className="mt-1 text-center text-xs font-bold text-slate-500">
-            Tahan tiap model, lalu geser. Bentuknya tetap L.
-          </p>
-          <div className="mt-3 grid grid-cols-1 gap-4 sm:grid-cols-2">
-            <div className="rounded-2xl bg-emerald-50 p-3">
-              <p className="text-center text-sm font-black text-emerald-800">L tidur</p>
-              <PanggungKubus
-                aria="Huruf L tidur. Geser untuk memutar."
-                warna={WARNA_L}
-                kelasLabel="text-emerald-800"
-                kelasTombol="bg-emerald-100 text-emerald-900"
-                awal={{ x: -46, y: 24 }}
-                petunjuk={false}
-                adaLantai
-                kubus={hurufL()}
-              />
-            </div>
-            <div className="rounded-2xl bg-emerald-50 p-3">
-              <p className="text-center text-sm font-black text-emerald-800">L tegak</p>
-              <PanggungKubus
-                aria="Huruf L tegak. Geser untuk memutar."
-                warna={WARNA_L}
-                kelasLabel="text-emerald-800"
-                kelasTombol="bg-emerald-100 text-emerald-900"
-                awal={{ x: -46, y: 24 }}
-                awalDatar={90}
-                petunjuk={false}
-                adaLantai
-                kubus={hurufL()}
-              />
-            </div>
-          </div>
-          <div className="mx-auto mt-3 max-w-xs rounded-2xl bg-emerald-500 px-4 py-3 text-center text-white">
-            <p className="text-lg font-black">SAMA</p>
-            <p className="text-xs font-bold">jangan dihitung dua kali</p>
           </div>
         </div>
       </div>
