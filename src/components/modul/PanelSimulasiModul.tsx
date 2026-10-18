@@ -1,11 +1,13 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState, type ComponentProps } from "react";
 import { Camera, ExternalLink, Loader2, Send, Sparkles } from "lucide-react";
 import { tambahTokenIgil } from "@/lib/progres";
 import type { BahanSimulasi } from "@/lib/simulasi-global";
 import { kelasKotak, kelasLabel, kelasTombolUtama } from "@/lib/tema";
 import TungguNaskah from "@/components/modul/TungguNaskah";
+import SimulasiMtk1Bab1 from "@/components/modules/SimulasiMtk1Bab1";
+import { adalahMtk1Bab1 } from "@/lib/naskah-resmi";
 
 type MisiSimulasi = {
   misi: string;
@@ -71,7 +73,7 @@ function bacaGambarBukti(berkas: File): Promise<string> {
   });
 }
 
-export default function PanelSimulasiModul({
+function PanelSimulasiUmum({
   nama,
   kelas,
   mapel,
@@ -468,4 +470,29 @@ export default function PanelSimulasiModul({
       ) : null}
     </div>
   );
+}
+
+function PanelSimulasiMembilang({
+  sudahLulus = false,
+  onSelesai,
+}: Pick<ComponentProps<typeof PanelSimulasiUmum>, "sudahLulus" | "onSelesai">) {
+  const dicatat = useRef(sudahLulus);
+  return (
+    <SimulasiMtk1Bab1
+      onBenar={() => {
+        if (dicatat.current) return;
+        dicatat.current = true;
+        onSelesai?.(true, "Tantangan membilang sampai 10 selesai.");
+      }}
+    />
+  );
+}
+
+export default function PanelSimulasiModul(
+  props: ComponentProps<typeof PanelSimulasiUmum>,
+) {
+  if (adalahMtk1Bab1(props.kelas, props.mapel, props.materi)) {
+    return <PanelSimulasiMembilang sudahLulus={props.sudahLulus} onSelesai={props.onSelesai} />;
+  }
+  return <PanelSimulasiUmum {...props} />;
 }
