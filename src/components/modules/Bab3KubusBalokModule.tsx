@@ -381,113 +381,385 @@ function generateDynamicQuestions(seedOffset: number): QuestionItem[] {
 // 3. KOMPONEN UTAMA MODUL PEMBELAJARAN IGIL
 // ============================================================================
 
-// Komponen Grafis Visualisasi Materi Bab 3 (100% SVG Murni & Bebas Biaya API)
+// ============================================================================
+// KOMPONEN ILUSTRASI DOODLE BERWARNA (100% SVG VEKTOR - ZERO API COST)
+// ============================================================================
 function MaterialVisualGraphic({ type }: { type: VisualSlide["visualComponentType"] }) {
+  // --------------------------------------------------------------------------
+  // DOODLE 1: KONSTRUKSI KONTAINER ISOMETRIK 3D
+  // --------------------------------------------------------------------------
   if (type === "kontainer_isometric") {
     return (
-      <div className="bg-slate-900 rounded-2xl p-5 text-white flex flex-col items-center shadow-inner">
-        <div className="text-xs font-bold uppercase tracking-wider text-amber-400 mb-2">
-          📦 Visualisasi Kontainer: 2 Cara Konstruksi dari 3 Kubus
+      <div className="bg-amber-50/70 border-2 border-amber-200 rounded-3xl p-5 shadow-sm">
+        <div className="flex items-center justify-between border-b border-amber-200 pb-2 mb-4">
+          <span className="text-xs font-black uppercase text-amber-800 tracking-wider flex items-center gap-1.5">
+            <span>🎨</span> Sketsa Doodle: Membangun dengan 3 Kontainer
+          </span>
+          <span className="text-[11px] font-bold bg-amber-200 text-amber-900 px-2.5 py-0.5 rounded-full">
+            Eksplorasi 3.1
+          </span>
         </div>
-        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 w-full">
-          {/* Bentuk Segaris */}
-          <div className="bg-slate-800/80 p-3 rounded-xl border border-slate-700 flex flex-col items-center">
-            <span className="text-xs font-bold text-indigo-300 mb-2">Bentuk 1: Segaris Lurus (3 × 1 × 1)</span>
-            <svg viewBox="0 0 160 80" className="w-36 h-20">
-              <rect x="15" y="25" width="40" height="35" fill="#3b82f6" stroke="#ffffff" strokeWidth="2" />
-              <rect x="55" y="25" width="40" height="35" fill="#2563eb" stroke="#ffffff" strokeWidth="2" />
-              <rect x="95" y="25" width="40" height="35" fill="#1d4ed8" stroke="#ffffff" strokeWidth="2" />
-              <text x="80" y="75" textAnchor="middle" fill="#93c5fd" fontSize="10" fontWeight="bold">3 Kubus Berjajar</text>
+
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+          {/* Doodle 1: Segaris Lurus */}
+          <div className="bg-white p-4 rounded-2xl border-2 border-indigo-100 flex flex-col items-center">
+            <span className="text-xs font-extrabold text-indigo-700 bg-indigo-50 px-3 py-1 rounded-full mb-3">
+              1. Bentuk Segaris (Panjang 3 × 1)
+            </span>
+            <svg viewBox="0 0 240 120" className="w-full max-w-[200px] h-auto">
+              {/* Karakter Doodle Anak Tersenyum */}
+              <g transform="translate(10, 30)">
+                <circle cx="20" cy="20" r="16" fill="#fed7aa" stroke="#334155" strokeWidth="2.5" />
+                {/* Rambut */}
+                <path d="M 6 16 Q 20 4 34 16" fill="#78350f" stroke="#78350f" strokeWidth="3" />
+                {/* Mata Senyum */}
+                <path d="M 14 18 Q 17 15 20 18" fill="none" stroke="#334155" strokeWidth="2" strokeLinecap="round" />
+                <path d="M 22 18 Q 25 15 28 18" fill="none" stroke="#334155" strokeWidth="2" strokeLinecap="round" />
+                {/* Senyum */}
+                <path d="M 17 25 Q 21 29 25 25" fill="none" stroke="#e11d48" strokeWidth="2" strokeLinecap="round" />
+                {/* Badan Doodle */}
+                <path d="M 20 36 L 20 60 M 10 45 L 30 45" stroke="#334155" strokeWidth="2.5" strokeLinecap="round" />
+              </g>
+
+              {/* 3 Kubus Isometrik Berdampingan */}
+              <g transform="translate(70, 25)">
+                {/* Kubus 1 (Biru Muda) */}
+                <g transform="translate(0, 20)">
+                  <polygon points="25,5 50,18 25,32 0,18" fill="#60a5fa" stroke="#1e3a8a" strokeWidth="2" />
+                  <polygon points="0,18 25,32 25,62 0,48" fill="#3b82f6" stroke="#1e3a8a" strokeWidth="2" />
+                  <polygon points="25,32 50,18 50,48 25,62" fill="#2563eb" stroke="#1e3a8a" strokeWidth="2" />
+                </g>
+                {/* Kubus 2 (Kuning-Oranye) */}
+                <g transform="translate(45, 20)">
+                  <polygon points="25,5 50,18 25,32 0,18" fill="#fde047" stroke="#854d0e" strokeWidth="2" />
+                  <polygon points="0,18 25,32 25,62 0,48" fill="#eab308" stroke="#854d0e" strokeWidth="2" />
+                  <polygon points="25,32 50,18 50,48 25,62" fill="#ca8a04" stroke="#854d0e" strokeWidth="2" />
+                </g>
+                {/* Kubus 3 (Hijau) */}
+                <g transform="translate(90, 20)">
+                  <polygon points="25,5 50,18 25,32 0,18" fill="#86efac" stroke="#166534" strokeWidth="2" />
+                  <polygon points="0,18 25,32 25,62 0,48" fill="#22c55e" stroke="#166534" strokeWidth="2" />
+                  <polygon points="25,32 50,18 50,48 25,62" fill="#16a34a" stroke="#166534" strokeWidth="2" />
+                </g>
+              </g>
             </svg>
+            <p className="text-[11px] font-semibold text-slate-600 text-center mt-2">
+              Disusun memanjang lurus membentuk balok 3 × 1 × 1
+            </p>
           </div>
-          {/* Bentuk Sudut L */}
-          <div className="bg-slate-800/80 p-3 rounded-xl border border-slate-700 flex flex-col items-center">
-            <span className="text-xs font-bold text-emerald-300 mb-2">Bentuk 2: Sudut L (Menyiku)</span>
-            <svg viewBox="0 0 160 80" className="w-36 h-20">
-              <rect x="35" y="10" width="35" height="30" fill="#10b981" stroke="#ffffff" strokeWidth="2" />
-              <rect x="35" y="40" width="35" height="30" fill="#059669" stroke="#ffffff" strokeWidth="2" />
-              <rect x="70" y="40" width="35" height="30" fill="#047857" stroke="#ffffff" strokeWidth="2" />
-              <text x="80" y="78" textAnchor="middle" fill="#6ee7b7" fontSize="10" fontWeight="bold">Membentuk Siku-Siku L</text>
+
+          {/* Doodle 2: Sudut L */}
+          <div className="bg-white p-4 rounded-2xl border-2 border-emerald-100 flex flex-col items-center">
+            <span className="text-xs font-extrabold text-emerald-800 bg-emerald-50 px-3 py-1 rounded-full mb-3">
+              2. Bentuk Menyiku (Huruf L)
+            </span>
+            <svg viewBox="0 0 240 120" className="w-full max-w-[200px] h-auto">
+              <g transform="translate(40, 10)">
+                {/* Kubus Belakang */}
+                <g transform="translate(30, 0)">
+                  <polygon points="25,5 50,18 25,32 0,18" fill="#f472b6" stroke="#9d174d" strokeWidth="2" />
+                  <polygon points="0,18 25,32 25,58 0,44" fill="#ec4899" stroke="#9d174d" strokeWidth="2" />
+                  <polygon points="25,32 50,18 50,44 25,58" fill="#db2777" stroke="#9d174d" strokeWidth="2" />
+                </g>
+                {/* Kubus Kiri Depan */}
+                <g transform="translate(0, 25)">
+                  <polygon points="25,5 50,18 25,32 0,18" fill="#c084fc" stroke="#6b21a8" strokeWidth="2" />
+                  <polygon points="0,18 25,32 25,58 0,44" fill="#a855f7" stroke="#6b21a8" strokeWidth="2" />
+                  <polygon points="25,32 50,18 50,44 25,58" fill="#9333ea" stroke="#6b21a8" strokeWidth="2" />
+                </g>
+                {/* Kubus Kanan Depan (Membentuk Sudut L) */}
+                <g transform="translate(55, 30)">
+                  <polygon points="25,5 50,18 25,32 0,18" fill="#38bdf8" stroke="#075985" strokeWidth="2" />
+                  <polygon points="0,18 25,32 25,58 0,44" fill="#0ea5e9" stroke="#075985" strokeWidth="2" />
+                  <polygon points="25,32 50,18 50,44 25,58" fill="#0284c7" stroke="#075985" strokeWidth="2" />
+                </g>
+              </g>
+              {/* Tanda Seru Doodle Lucu */}
+              <g transform="translate(180, 25)">
+                <circle cx="15" cy="15" r="12" fill="#fef08a" stroke="#ca8a04" strokeWidth="2" />
+                <text x="15" y="20" textAnchor="middle" fill="#854d0e" fontSize="14" fontWeight="bold">!</text>
+                <text x="15" y="42" textAnchor="middle" fill="#64748b" fontSize="9" fontWeight="bold">Siku 90°</text>
+              </g>
             </svg>
+            <p className="text-[11px] font-semibold text-slate-600 text-center mt-2">
+              Menempel membentuk sudut siku-siku (Huruf L)
+            </p>
           </div>
         </div>
       </div>
     );
   }
 
+  // --------------------------------------------------------------------------
+  // DOODLE 2: MEMBONGKAR LAPISAN & KUBUS TERSEMBUNYI
+  // --------------------------------------------------------------------------
   if (type === "lapis_breakdown") {
     return (
-      <div className="bg-gradient-to-br from-indigo-950 via-slate-900 to-indigo-950 rounded-2xl p-5 text-white shadow-inner">
-        <div className="text-xs font-bold uppercase tracking-wider text-amber-300 text-center mb-3">
-          🍰 Metode Bongkar Per Lantai: Menghitung Kubus Tersembunyi
+      <div className="bg-sky-50/70 border-2 border-sky-200 rounded-3xl p-5 shadow-sm">
+        <div className="flex items-center justify-between border-b border-sky-200 pb-2 mb-4">
+          <span className="text-xs font-black uppercase text-sky-900 tracking-wider flex items-center gap-1.5">
+            <span>🍰</span> Doodle: Menemukan Kubus yang Tertutup di Bawah
+          </span>
+          <span className="text-[11px] font-bold bg-sky-200 text-sky-900 px-2.5 py-0.5 rounded-full">
+            Eksplorasi 3.2
+          </span>
         </div>
-        <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-          <div className="bg-indigo-900/50 p-3 rounded-xl border border-indigo-500/40 text-center">
-            <div className="text-xs font-extrabold text-amber-300">Lantai 2 (Atas)</div>
-            <div className="text-2xl font-black my-1 text-white">2 Kubus</div>
-            <div className="text-[10px] text-slate-300">Terlihat jelas di atas</div>
+
+        <div className="flex flex-col lg:flex-row items-center justify-around gap-6">
+          {/* Ilustrasi Kubus Bertumpuk utuh */}
+          <div className="flex flex-col items-center">
+            <span className="text-xs font-extrabold text-slate-700 mb-2">Tumpukan Utuh</span>
+            <svg viewBox="0 0 160 140" className="w-36 h-32">
+              {/* Lapis Bawah (6 kubus) */}
+              <g transform="translate(20, 45)">
+                <polygon points="40,5 80,25 40,45 0,25" fill="#bae6fd" stroke="#0284c7" strokeWidth="2" />
+                <polygon points="0,25 40,45 40,80 0,60" fill="#38bdf8" stroke="#0284c7" strokeWidth="2" />
+                <polygon points="40,45 80,25 80,60 40,80" fill="#0284c7" stroke="#0284c7" strokeWidth="2" />
+              </g>
+              {/* Lapis Atas (2 kubus) */}
+              <g transform="translate(20, 10)">
+                <polygon points="30,5 60,20 30,35 0,20" fill="#fde047" stroke="#ca8a04" strokeWidth="2" />
+                <polygon points="0,20 30,35 30,65 0,50" fill="#eab308" stroke="#ca8a04" strokeWidth="2" />
+                <polygon points="30,35 60,20 60,50 30,65" fill="#ca8a04" stroke="#ca8a04" strokeWidth="2" />
+              </g>
+              {/* Kacamata Detektif Doodle */}
+              <g transform="translate(100, 20)">
+                <circle cx="15" cy="15" r="10" fill="none" stroke="#0f172a" strokeWidth="2.5" />
+                <line x1="22" y1="22" x2="35" y2="35" stroke="#0f172a" strokeWidth="3.5" strokeLinecap="round" />
+                <text x="20" y="52" textAnchor="middle" fill="#0369a1" fontSize="9" fontWeight="bold">Ada yang</text>
+                <text x="20" y="62" textAnchor="middle" fill="#0369a1" fontSize="9" fontWeight="bold">tersembunyi!</text>
+              </g>
+            </svg>
           </div>
-          <div className="text-2xl font-bold text-amber-400">+</div>
-          <div className="bg-indigo-900/50 p-3 rounded-xl border border-indigo-500/40 text-center">
-            <div className="text-xs font-extrabold text-sky-300">Lantai 1 (Dasar)</div>
-            <div className="text-2xl font-black my-1 text-white">6 Kubus (3 × 2)</div>
-            <div className="text-[10px] text-sky-200">Termasuk 2 kubus tersembunyi!</div>
-          </div>
-          <div className="text-2xl font-bold text-emerald-400">=</div>
-          <div className="bg-emerald-950/80 p-3 rounded-xl border border-emerald-500 text-center">
-            <div className="text-xs font-extrabold text-emerald-300">Total Bangunan</div>
-            <div className="text-2xl font-black my-1 text-emerald-400">8 Kubus</div>
-            <div className="text-[10px] text-emerald-200">100% Benar & Tuntas</div>
+
+          <div className="text-2xl font-black text-sky-400">➡️ Diurai Menjadi:</div>
+
+          {/* Penguraian Per Lapis */}
+          <div className="flex gap-4">
+            {/* Lantai Atas */}
+            <div className="bg-white p-3 rounded-2xl border-2 border-amber-300 text-center shadow-sm">
+              <span className="text-[11px] font-bold text-amber-700 bg-amber-100 px-2 py-0.5 rounded-full">
+                Lantai 2 (Atas)
+              </span>
+              <div className="text-3xl my-2">🟨🟨</div>
+              <div className="font-extrabold text-slate-800 text-sm">2 Kubus</div>
+              <div className="text-[10px] text-slate-500">Terlihat di atas</div>
+            </div>
+
+            <div className="text-2xl font-black text-slate-400 self-center">+</div>
+
+            {/* Lantai Bawah */}
+            <div className="bg-white p-3 rounded-2xl border-2 border-sky-300 text-center shadow-sm">
+              <span className="text-[11px] font-bold text-sky-700 bg-sky-100 px-2 py-0.5 rounded-full">
+                Lantai 1 (Dasar)
+              </span>
+              <div className="text-3xl my-2">🟦🟦🟦<br />🟦🟦🟦</div>
+              <div className="font-extrabold text-slate-800 text-sm">6 Kubus (3 × 2)</div>
+              <div className="text-[10px] text-emerald-600 font-bold">Termasuk 2 di bawah!</div>
+            </div>
+
+            <div className="text-2xl font-black text-slate-400 self-center">=</div>
+
+            {/* Total */}
+            <div className="bg-emerald-500 text-white p-3 rounded-2xl text-center shadow-md self-center min-w-[90px]">
+              <span className="text-[10px] uppercase font-bold opacity-90">Total Asli</span>
+              <div className="text-2xl font-black my-0.5">8 Buah</div>
+              <span className="text-[10px] bg-emerald-600 px-2 py-0.5 rounded-full">Tuntas ✓</span>
+            </div>
           </div>
         </div>
       </div>
     );
   }
 
+  // --------------------------------------------------------------------------
+  // DOODLE 3: MATA PENGAMAT 3 SUDUT PANDANG (ATAS, DEPAN, SAMPING)
+  // --------------------------------------------------------------------------
   if (type === "proyeksi_3arah") {
     return (
-      <div className="bg-slate-900 rounded-2xl p-4 text-white">
-        <div className="text-xs font-bold uppercase tracking-wider text-sky-300 text-center mb-3">
-          📐 Prinsip Proyeksi 2D: Aturan Menara Tertinggi
+      <div className="bg-violet-50/70 border-2 border-violet-200 rounded-3xl p-5 shadow-sm">
+        <div className="flex items-center justify-between border-b border-violet-200 pb-2 mb-4">
+          <span className="text-xs font-black uppercase text-violet-900 tracking-wider flex items-center gap-1.5">
+            <span>👀</span> Doodle: 3 Wajah Pengamat Memandang dari Arah Berbeda
+          </span>
+          <span className="text-[11px] font-bold bg-violet-200 text-violet-900 px-2.5 py-0.5 rounded-full">
+            Eksplorasi 3.3
+          </span>
         </div>
-        <div className="grid grid-cols-3 gap-2 text-center">
-          <div className="bg-slate-800 p-2.5 rounded-lg border border-slate-700">
-            <div className="text-[11px] font-bold text-amber-400">1. Tampak Atas</div>
-            <div className="text-[10px] text-slate-300 mt-1">Hanya melihat denah petak lantai yang terisi</div>
-            <div className="mt-2 text-lg">🦅 ⬛⬛</div>
+
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+          {/* 1. Pengamat Tampak Atas (Melihat ke Bawah) */}
+          <div className="bg-white p-4 rounded-2xl border-2 border-amber-200 flex flex-col items-center">
+            <span className="text-xs font-extrabold text-amber-800 bg-amber-100 px-3 py-1 rounded-full mb-2">
+              1. Tampak Atas (Dari Langit)
+            </span>
+            <svg viewBox="0 0 160 120" className="w-36 h-28">
+              {/* Karakter Wajah Menunduk / Melihat ke Bawah */}
+              <g transform="translate(50, 10)">
+                <circle cx="30" cy="25" r="22" fill="#fed7aa" stroke="#334155" strokeWidth="2.5" />
+                <path d="M 12 18 Q 30 5 48 18" fill="#78350f" stroke="#78350f" strokeWidth="4" />
+                {/* Mata Menatap ke Bawah */}
+                <ellipse cx="23" cy="27" rx="3" ry="5" fill="#334155" />
+                <ellipse cx="37" cy="27" rx="3" ry="5" fill="#334155" />
+                {/* Panah Pandang ke Bawah */}
+                <path d="M 30 38 L 30 54 M 25 48 L 30 54 L 35 48" stroke="#f59e0b" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" />
+              </g>
+              {/* Hasil Gambar 2D di Kertas */}
+              <g transform="translate(45, 75)">
+                <rect x="0" y="0" width="30" height="30" fill="#fef08a" stroke="#ca8a04" strokeWidth="2" />
+                <rect x="35" y="0" width="30" height="30" fill="#fef08a" stroke="#ca8a04" strokeWidth="2" />
+                <text x="35" y="42" textAnchor="middle" fill="#854d0e" fontSize="9" fontWeight="bold">Hanya Jejak Alas</text>
+              </g>
+            </svg>
+            <p className="text-[11px] text-slate-600 text-center mt-1">
+              Mata di atas melihat ke bawah. Tinggi menara <strong>tidak kelihatan</strong>!
+            </p>
           </div>
-          <div className="bg-slate-800 p-2.5 rounded-lg border border-slate-700">
-            <div className="text-[11px] font-bold text-sky-400">2. Tampak Depan</div>
-            <div className="text-[10px] text-slate-300 mt-1">Mengambil tinggi MAKSIMUM tiap kolom</div>
-            <div className="mt-2 text-lg">👁️ 🟦🟦</div>
+
+          {/* 2. Pengamat Tampak Depan (Sejajar Lurus) */}
+          <div className="bg-white p-4 rounded-2xl border-2 border-sky-200 flex flex-col items-center">
+            <span className="text-xs font-extrabold text-sky-800 bg-sky-100 px-3 py-1 rounded-full mb-2">
+              2. Tampak Depan (Lurus)
+            </span>
+            <svg viewBox="0 0 160 120" className="w-36 h-28">
+              {/* Karakter Wajah Menatap Lurus ke Depan */}
+              <g transform="translate(10, 30)">
+                <circle cx="25" cy="25" r="20" fill="#fed7aa" stroke="#334155" strokeWidth="2.5" />
+                <path d="M 8 18 Q 25 8 42 18" fill="#1e293b" stroke="#1e293b" strokeWidth="4" />
+                {/* Kacamata / Mata Membelalak */}
+                <circle cx="19" cy="25" r="5" fill="#ffffff" stroke="#334155" strokeWidth="2" />
+                <circle cx="19" cy="25" r="2" fill="#0284c7" />
+                <circle cx="31" cy="25" r="5" fill="#ffffff" stroke="#334155" strokeWidth="2" />
+                <circle cx="31" cy="25" r="2" fill="#0284c7" />
+                {/* Panah Lurus ke Bangunan */}
+                <path d="M 50 25 L 68 25 M 62 19 L 68 25 L 62 31" stroke="#0284c7" strokeWidth="3" strokeLinecap="round" />
+              </g>
+              {/* Hasil Gambar Bertingkat 2D */}
+              <g transform="translate(85, 20)">
+                <rect x="0" y="0" width="26" height="26" fill="#38bdf8" stroke="#0369a1" strokeWidth="1.5" />
+                <rect x="0" y="28" width="26" height="26" fill="#38bdf8" stroke="#0369a1" strokeWidth="1.5" />
+                <rect x="28" y="28" width="26" height="26" fill="#38bdf8" stroke="#0369a1" strokeWidth="1.5" />
+                <text x="27" y="66" textAnchor="middle" fill="#0369a1" fontSize="9" fontWeight="bold">Tinggi Maksimal</text>
+              </g>
+            </svg>
+            <p className="text-[11px] text-slate-600 text-center mt-1">
+              Mata lurus di depan. Terlihat lebar dan <strong>menara tertinggi</strong> tiap kolom.
+            </p>
           </div>
-          <div className="bg-slate-800 p-2.5 rounded-lg border border-slate-700">
-            <div className="text-[11px] font-bold text-emerald-400">3. Tampak Samping</div>
-            <div className="text-[10px] text-slate-300 mt-1">Mengambil tinggi MAKSIMUM tiap baris</div>
-            <div className="mt-2 text-lg">👉 🟩🟩</div>
+
+          {/* 3. Pengamat Tampak Samping Kanan */}
+          <div className="bg-white p-4 rounded-2xl border-2 border-emerald-200 flex flex-col items-center">
+            <span className="text-xs font-extrabold text-emerald-800 bg-emerald-100 px-3 py-1 rounded-full mb-2">
+              3. Tampak Samping (Kanan)
+            </span>
+            <svg viewBox="0 0 160 120" className="w-36 h-28">
+              {/* Hasil Gambar Datar dari Sisi */}
+              <g transform="translate(20, 20)">
+                <rect x="0" y="0" width="26" height="26" fill="#34d399" stroke="#065f46" strokeWidth="1.5" />
+                <rect x="0" y="28" width="26" height="26" fill="#34d399" stroke="#065f46" strokeWidth="1.5" />
+                <rect x="28" y="28" width="26" height="26" fill="#34d399" stroke="#065f46" strokeWidth="1.5" />
+                <text x="27" y="66" textAnchor="middle" fill="#065f46" fontSize="9" fontWeight="bold">Tampak Sisi</text>
+              </g>
+              {/* Karakter Wajah Menghadap ke Kiri */}
+              <g transform="translate(100, 30)">
+                <circle cx="22" cy="25" r="20" fill="#fed7aa" stroke="#334155" strokeWidth="2.5" />
+                <path d="M 6 18 Q 22 8 38 18" fill="#b45309" stroke="#b45309" strokeWidth="4" />
+                {/* Mata Menoleh ke Kiri */}
+                <ellipse cx="14" cy="24" rx="3" ry="5" fill="#334155" />
+                {/* Panah Menembak ke Kiri */}
+                <path d="M -5 25 L -22 25 M -16 19 L -22 25 L -16 31" stroke="#059669" strokeWidth="3" strokeLinecap="round" />
+              </g>
+            </svg>
+            <p className="text-[11px] text-slate-600 text-center mt-1">
+              Mata berdiri di sisi kanan menatap ke kiri. Terlihat panjang ke belakang!
+            </p>
           </div>
         </div>
       </div>
     );
   }
 
-  // Koordinat Denah
+  // --------------------------------------------------------------------------
+  // DOODLE 4: SISTEM BERPETAK & KARAKTER MELANGKAH
+  // --------------------------------------------------------------------------
   return (
-    <div className="bg-slate-900 rounded-2xl p-4 text-white">
-      <div className="text-xs font-bold uppercase tracking-wider text-emerald-400 text-center mb-2">
-        📍 Rumus Membaca Koordinat: Masuk Pintu (X) Lalu Naik Tangga (Y)
+    <div className="bg-emerald-50/70 border-2 border-emerald-200 rounded-3xl p-5 shadow-sm">
+      <div className="flex items-center justify-between border-b border-emerald-200 pb-2 mb-4">
+        <span className="text-xs font-black uppercase text-emerald-900 tracking-wider flex items-center gap-1.5">
+          <span>🧭</span> Doodle: Petualang Melangkah di Ubin Koordinat
+        </span>
+        <span className="text-[11px] font-bold bg-emerald-200 text-emerald-900 px-2.5 py-0.5 rounded-full">
+          Eksplorasi 3.4 & 3.5
+        </span>
       </div>
-      <div className="flex items-center justify-center gap-6 py-2">
-        <div className="text-center">
-          <div className="text-3xl font-black text-amber-400">A, B, C...</div>
-          <div className="text-xs font-bold text-slate-300 mt-1">Sumbu Mendatar (Kolom)</div>
-          <div className="text-[10px] text-amber-300 font-semibold">Tulis Pertama!</div>
+
+      <div className="flex flex-col sm:flex-row items-center justify-around gap-6">
+        {/* Peta Ubin Doodle Berpetak */}
+        <div className="bg-white p-3 rounded-2xl border-2 border-slate-300 shadow-sm">
+          <svg viewBox="0 0 180 140" className="w-44 h-36">
+            {/* Garis-Garis Ubin Berpetak */}
+            {[0, 1, 2, 3].map((r) =>
+              [0, 1, 2, 3].map((c) => (
+                <rect
+                  key={`${r}-${c}`}
+                  x={25 + c * 35}
+                  y={10 + r * 28}
+                  width="35"
+                  height="28"
+                  fill={(r + c) % 2 === 0 ? "#f8fafc" : "#f1f5f9"}
+                  stroke="#cbd5e1"
+                  strokeWidth="1.5"
+                />
+              ))
+            )}
+            {/* Huruf Kolom */}
+            {["A", "B", "C", "D"].map((h, i) => (
+              <text key={h} x={42 + i * 35} y={132} textAnchor="middle" fill="#4338ca" fontSize="11" fontWeight="bold">
+                {h}
+              </text>
+            ))}
+            {/* Angka Baris */}
+            {[4, 3, 2, 1].map((n, i) => (
+              <text key={n} x={15} y={28 + i * 28} textAnchor="middle" fill="#047857" fontSize="11" fontWeight="bold">
+                {n}
+              </text>
+            ))}
+
+            {/* Karakter Petualang di (B, 1) */}
+            <g transform="translate(62, 90)">
+              <circle cx="15" cy="12" r="9" fill="#fde047" stroke="#334155" strokeWidth="2" />
+              <text x="15" y="16" textAnchor="middle" fontSize="10">🤠</text>
+            </g>
+
+            {/* Jalur Panah Doodle: Kanan dulu baru Atas */}
+            <path
+              d="M 80 105 L 125 105 M 125 105 L 125 50"
+              fill="none"
+              stroke="#ef4444"
+              strokeWidth="3"
+              strokeDasharray="4"
+            />
+            {/* Target Harta Karun di (C, 3) */}
+            <g transform="translate(118, 38)">
+              <text x="10" y="16" textAnchor="middle" fontSize="16">⭐</text>
+            </g>
+          </svg>
         </div>
-        <div className="text-3xl font-black text-slate-500">→</div>
-        <div className="text-center">
-          <div className="text-3xl font-black text-sky-400">1, 2, 3...</div>
-          <div className="text-xs font-bold text-slate-300 mt-1">Sumbu Tegak (Baris)</div>
-          <div className="text-[10px] text-sky-300 font-semibold">Tulis Kedua!</div>
+
+        {/* Kotak Rumus Jembatan Keledai Doodle */}
+        <div className="space-y-3 max-w-xs">
+          <div className="bg-white p-3.5 rounded-2xl border-2 border-indigo-200">
+            <div className="text-xs font-black text-indigo-700 uppercase">🚪 Jembatan Keledai:</div>
+            <p className="text-xs text-slate-700 mt-1 leading-relaxed">
+              <strong>"Masuk Pintu Dulu"</strong> (Geser mendatar A ➔ B ➔ C), lalu <strong>"Baru Naik Tangga"</strong> (Naik tegak 1 ➔ 2 ➔ 3)!
+            </p>
+          </div>
+          <div className="bg-white p-3.5 rounded-2xl border-2 border-emerald-200">
+            <div className="text-xs font-black text-emerald-700 uppercase">🚫 Jangan Menyerong:</div>
+            <p className="text-xs text-slate-700 mt-1 leading-relaxed">
+              Langkah terpendek dihitung dari: <strong>Langkah Mendatar + Langkah Tegak</strong>.
+            </p>
+          </div>
         </div>
       </div>
     </div>
