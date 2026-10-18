@@ -425,8 +425,8 @@ function MukaKubus({
 }) {
   return (
     <div
-      className={`absolute flex items-center justify-center border-2 font-black ${
-        ukuran < 46 ? "text-sm" : "text-lg"
+      className={`absolute flex items-center justify-center border-2 font-black leading-none ${
+        ukuran < 40 ? "text-xs" : ukuran < 46 ? "text-sm" : "text-lg"
       } ${kelas}`}
       style={{
         width: ukuran,
@@ -692,12 +692,39 @@ function polaDelapan(): SelKubus[] {
   ];
 }
 
-function pikselSel(sel: { kolom: number; dalam: number; lantai: number }) {
+function pikselSel(
+  sel: { kolom: number; dalam: number; lantai: number },
+  ukuran = UKURAN_TUMPUK,
+  asalKolom = ASAL_KOLOM,
+  asalDalam = 0,
+) {
   return {
-    x: (sel.kolom - ASAL_KOLOM) * UKURAN_TUMPUK,
-    y: (1 - sel.lantai) * UKURAN_TUMPUK,
-    z: sel.dalam * UKURAN_TUMPUK,
+    x: (sel.kolom - asalKolom) * ukuran,
+    y: (1 - sel.lantai) * ukuran,
+    z: (asalDalam - sel.dalam) * ukuran,
   };
+}
+
+function polaRuang24(): SelKubus[] {
+  const warnaLantai = [WARNA_LANGIT, WARNA_L, WARNA_LANTAI_ATAS];
+  const daftar: SelKubus[] = [];
+  let nomor = 1;
+  for (let lantai = 0; lantai < 3; lantai += 1) {
+    const jumlahBaris = lantai === 2 ? 2 : 3;
+    for (let dalam = 0; dalam < jumlahBaris; dalam += 1) {
+      for (let kolom = 0; kolom < 3; kolom += 1) {
+        daftar.push({
+          nomor: String(nomor),
+          kolom,
+          dalam,
+          lantai,
+          warna: warnaLantai[lantai],
+        });
+        nomor += 1;
+      }
+    }
+  }
+  return daftar;
 }
 
 function jepit(nilai: number, rendah: number, tinggi: number) {
@@ -743,7 +770,7 @@ function angkatKeMata(ax: number, ay: number) {
   };
 }
 
-function padatkan(daftar: SelKubus[], nomor: string) {
+function padatkan(daftar: SelKubus[], nomor: string, tinggiMaks = 4) {
   const pindah = daftar.find((item) => item.nomor === nomor);
   if (!pindah) return daftar;
   const kelompok = new Map<string, SelKubus[]>();
@@ -761,12 +788,40 @@ function padatkan(daftar: SelKubus[], nomor: string) {
   });
   const kunci = `${pindah.kolom},${pindah.dalam}`;
   const tinggi = hasil.filter((item) => `${item.kolom},${item.dalam}` === kunci).length;
-  hasil.push({ ...pindah, lantai: Math.min(tinggi, 4) });
+  hasil.push({ ...pindah, lantai: Math.min(tinggi, tinggiMaks) });
   return hasil.sort((a, b) => Number(a.nomor) - Number(b.nomor));
 }
 
-function TumpukanBongkar() {
-  const [sel, setSel] = useState<SelKubus[]>(polaDelapan);
+function TumpukanBongkar({
+  polaAwal = polaDelapan,
+  ukuran = UKURAN_TUMPUK,
+  asalKolom = ASAL_KOLOM,
+  asalDalam = 0,
+  batasKolom = [-1, 4],
+  batasDalam = [-2, 2],
+  tinggiMaks = 4,
+  aria = "Delapan kubus. Lantai 1 nomor 1 2 3, lantai 2 nomor 4 5 6, lantai 3 nomor 7 8. Geser satu kubus untuk memindahkannya.",
+  tinggiKelas = "h-80",
+  puncak = "top-[42%]",
+  lantaiLebar = 248,
+  lantaiDalam = 190,
+  lantaiGeserX = 19,
+}: {
+  polaAwal?: () => SelKubus[];
+  ukuran?: number;
+  asalKolom?: number;
+  asalDalam?: number;
+  batasKolom?: [number, number];
+  batasDalam?: [number, number];
+  tinggiMaks?: number;
+  aria?: string;
+  tinggiKelas?: string;
+  puncak?: string;
+  lantaiLebar?: number;
+  lantaiDalam?: number;
+  lantaiGeserX?: number;
+}) {
+  const [sel, setSel] = useState<SelKubus[]>(polaAwal);
   const [sudut, setSudut] = useState({ x: -14, y: 18 });
   const [halus, setHalus] = useState(true);
   const [pegang, setPegang] = useState<string | null>(null);
@@ -795,7 +850,7 @@ function TumpukanBongkar() {
     }
     if (nomor) {
       const asal = sel.find((item) => item.nomor === nomor);
-      const piksel = pikselSel(asal ?? { kolom: 0, dalam: 0, lantai: 0 });
+      const piksel = pikselSel(asal ?? { kolom: 0, dalam: 0, lantai: 0 }, ukuran, asalKolom, asalDalam);
       setPegang(nomor);
       setGeser(null);
       tarik.current = {
@@ -860,14 +915,15 @@ function TumpukanBongkar() {
     if (!nomor) return;
     const jarak = Math.hypot(jejak.gx - jejak.px, jejak.gy - jejak.py, jejak.gz - jejak.pz);
     if (jarak < 8) return;
-    const kolom = jepit(Math.round(jejak.gx / UKURAN_TUMPUK + ASAL_KOLOM), -1, 4);
-    const dalam = jepit(Math.round(jejak.gz / UKURAN_TUMPUK), -2, 2);
+    const kolom = jepit(Math.round(jejak.gx / ukuran + asalKolom), batasKolom[0], batasKolom[1]);
+    const dalam = jepit(Math.round(asalDalam - jejak.gz / ukuran), batasDalam[0], batasDalam[1]);
     setSel((sekarang) => {
       const asal = sekarang.find((item) => item.nomor === nomor);
       if (asal && asal.kolom === kolom && asal.dalam === dalam) return sekarang;
       return padatkan(
         sekarang.map((item) => (item.nomor === nomor ? { ...item, kolom, dalam } : item)),
         nomor,
+        tinggiMaks,
       );
     });
   }
@@ -883,17 +939,17 @@ function TumpukanBongkar() {
   return (
     <div>
       <div
-        className="relative mx-auto mt-2 h-80 w-full cursor-grab touch-none select-none active:cursor-grabbing"
+        className={`relative mx-auto mt-2 w-full cursor-grab touch-none select-none active:cursor-grabbing ${tinggiKelas}`}
         style={{ perspective: "820px" }}
         onPointerDown={(event) => mulaiTarik(event, null)}
         onPointerMove={geserTarik}
         onPointerUp={lepasTarik}
         onPointerCancel={lepasTarik}
         role="img"
-        aria-label="Delapan kubus. Lantai 1 nomor 1 2 3, lantai 2 nomor 4 5 6, lantai 3 nomor 7 8. Geser satu kubus untuk memindahkannya."
+        aria-label={aria}
       >
         <div
-          className="absolute left-1/2 top-[42%] h-0 w-0"
+          className={`absolute left-1/2 h-0 w-0 ${puncak}`}
           style={{
             transformStyle: "preserve-3d",
             transform: `rotateX(${sudut.x}deg) rotateY(${sudut.y}deg)`,
@@ -903,19 +959,19 @@ function TumpukanBongkar() {
           <div
             className="absolute left-1/2 top-1/2 rounded-[24px] bg-sky-100"
             style={{
-              width: 248,
-              height: 190,
-              transform: `translate(-50%, -50%) translate3d(19px, ${UKURAN_TUMPUK * 1.5 + 1}px, 0px) rotateX(90deg)`,
+              width: lantaiLebar,
+              height: lantaiDalam,
+              transform: `translate(-50%, -50%) translate3d(${lantaiGeserX}px, ${ukuran * 1.5 + 1}px, 0px) rotateX(90deg)`,
             }}
           />
           {urutan.map((kubus) => {
-            const dasar = pikselSel(kubus);
+            const dasar = pikselSel(kubus, ukuran, asalKolom, asalDalam);
             const dipegang = kubus.nomor === pegang && geser;
             return (
               <SatuKubus
                 key={kubus.nomor}
                 nomor={kubus.nomor}
-                ukuran={UKURAN_TUMPUK}
+                ukuran={ukuran}
                 warna={kubus.warna}
                 transisi={!dipegang}
                 x={dipegang ? geser.x + angkat.x : dasar.x}
@@ -950,7 +1006,7 @@ function TumpukanBongkar() {
           onClick={() => {
             setPegang(null);
             setGeser(null);
-            setSel(polaDelapan());
+            setSel(polaAwal());
           }}
           className="rounded-full bg-emerald-100 px-3 py-1 text-xs font-black text-emerald-900"
         >
@@ -1032,6 +1088,38 @@ function MaterialVisualGraphic({ type }: { type: VisualSlide["visualComponentTyp
           <span className="rounded-xl bg-white/20 px-3 py-1 text-lg font-black">2</span>
           <span className="text-2xl font-black">=</span>
           <span className="rounded-xl bg-white px-3 py-1 text-lg font-black text-emerald-800">8 kubus</span>
+        </div>
+        <div className="border-t border-slate-200 pt-4">
+          <p className="text-sm font-black text-violet-800">Bongkar dan pasang 24 kubus</p>
+          <p className="mt-1 text-center text-sm font-bold text-slate-700">
+            Ruang 3 × 3 × 3 m. Lantai 1 dan 2 penuh. Lantai 3 hanya dua baris depan.
+          </p>
+          <TumpukanBongkar
+            polaAwal={polaRuang24}
+            ukuran={30}
+            asalDalam={1}
+            batasKolom={[-1, 3]}
+            batasDalam={[-1, 3]}
+            tinggiMaks={4}
+            tinggiKelas="h-80"
+            puncak="top-1/2"
+            lantaiLebar={210}
+            lantaiDalam={210}
+            lantaiGeserX={0}
+            aria="Dua puluh empat kubus. Lantai 1 nomor 1 sampai 9, lantai 2 nomor 10 sampai 18, lantai 3 nomor 19 sampai 24. Geser satu kubus untuk memindahkannya."
+          />
+          <p className="mt-2 text-center text-sm font-bold text-slate-700">
+            Dari depan, kiri ke kanan, baris depan dulu. Lantai 1: 1-9. Lantai 2: 10-18. Lantai 3: 19-24.
+          </p>
+        </div>
+        <div className="flex flex-wrap items-center justify-center gap-2 rounded-2xl bg-violet-600 px-3 py-3 text-white">
+          <span className="rounded-xl bg-white/20 px-3 py-1 text-lg font-black">9</span>
+          <span className="text-2xl font-black">+</span>
+          <span className="rounded-xl bg-white/20 px-3 py-1 text-lg font-black">9</span>
+          <span className="text-2xl font-black">+</span>
+          <span className="rounded-xl bg-white/20 px-3 py-1 text-lg font-black">6</span>
+          <span className="text-2xl font-black">=</span>
+          <span className="rounded-xl bg-white px-3 py-1 text-lg font-black text-violet-800">24 kubus</span>
         </div>
       </div>
     );
