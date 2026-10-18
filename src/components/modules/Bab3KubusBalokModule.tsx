@@ -397,6 +397,150 @@ function KotakDoodle({
   );
 }
 
+const UKURAN_KUBUS = 52;
+const JEJAK_KUBUS = UKURAN_KUBUS / 2;
+
+function namaSudutPandang(x: number, y: number) {
+  const lingkar = ((y % 360) + 360) % 360;
+  const mendatar = lingkar > 180 ? lingkar - 360 : lingkar;
+  if (x < -55) return "tampak atas";
+  if (x > 55) return "tampak bawah";
+  if (Math.abs(mendatar) < 30) return "tampak depan";
+  if (mendatar > 60 && mendatar < 120) return "tampak kanan";
+  if (mendatar < -60 && mendatar > -120) return "tampak kiri";
+  if (Math.abs(mendatar) > 150) return "tampak belakang";
+  return "miring";
+}
+
+function MukaKubus({
+  transform,
+  kelas,
+  nomor,
+}: {
+  transform: string;
+  kelas: string;
+  nomor: string;
+}) {
+  return (
+    <div
+      className={`absolute flex items-center justify-center border-2 text-lg font-black ${kelas}`}
+      style={{
+        width: UKURAN_KUBUS,
+        height: UKURAN_KUBUS,
+        transform,
+        backfaceVisibility: "hidden",
+      }}
+    >
+      {nomor}
+    </div>
+  );
+}
+
+function SatuKubus({ nomor, geserX }: { nomor: string; geserX: number }) {
+  const z = `${JEJAK_KUBUS}px`;
+  const muka = [
+    { transform: `rotateY(0deg) translateZ(${z})`, kelas: "border-sky-900 bg-sky-300 text-sky-950" },
+    { transform: `rotateY(180deg) translateZ(${z})`, kelas: "border-sky-900 bg-sky-500 text-white" },
+    { transform: `rotateY(90deg) translateZ(${z})`, kelas: "border-sky-900 bg-sky-400 text-sky-950" },
+    { transform: `rotateY(-90deg) translateZ(${z})`, kelas: "border-sky-900 bg-sky-200 text-sky-950" },
+    { transform: `rotateX(90deg) translateZ(${z})`, kelas: "border-amber-800 bg-amber-300 text-amber-950" },
+    { transform: `rotateX(-90deg) translateZ(${z})`, kelas: "border-slate-600 bg-slate-300 text-slate-800" },
+  ];
+  return (
+    <div
+      className="absolute left-1/2 top-1/2"
+      style={{
+        width: UKURAN_KUBUS,
+        height: UKURAN_KUBUS,
+        transformStyle: "preserve-3d",
+        transform: `translate(-50%, -50%) translateX(${geserX}px)`,
+      }}
+    >
+      {muka.map((item) => (
+        <MukaKubus key={item.transform} transform={item.transform} kelas={item.kelas} nomor={nomor} />
+      ))}
+    </div>
+  );
+}
+
+function BentukSegaris3D() {
+  const [sudut, setSudut] = useState({ x: -18, y: 28 });
+  const [halus, setHalus] = useState(true);
+  const tarik = useRef<{ x: number; y: number; sx: number; sy: number } | null>(null);
+
+  function mulaiTarik(event: React.PointerEvent<HTMLDivElement>) {
+    try {
+      event.currentTarget.setPointerCapture(event.pointerId);
+    } catch {
+      // Geser tetap jalan bila browser menolak tangkapan jari.
+    }
+    setHalus(false);
+    tarik.current = { x: event.clientX, y: event.clientY, sx: sudut.x, sy: sudut.y };
+  }
+
+  function geserTarik(event: React.PointerEvent<HTMLDivElement>) {
+    if (!tarik.current) return;
+    setSudut({
+      x: Math.max(-85, Math.min(85, tarik.current.sx - (event.clientY - tarik.current.y) * 0.5)),
+      y: tarik.current.sy + (event.clientX - tarik.current.x) * 0.55,
+    });
+  }
+
+  function lepasTarik() {
+    tarik.current = null;
+  }
+
+  function keSudut(x: number, y: number) {
+    setHalus(true);
+    setSudut({ x, y });
+  }
+
+  const jarak = UKURAN_KUBUS + 2;
+
+  return (
+    <div>
+      <div
+        className="relative mx-auto mt-2 h-48 w-full cursor-grab touch-none select-none active:cursor-grabbing"
+        style={{ perspective: "760px" }}
+        onPointerDown={mulaiTarik}
+        onPointerMove={geserTarik}
+        onPointerUp={lepasTarik}
+        onPointerCancel={lepasTarik}
+        role="img"
+        aria-label="Tiga kubus segaris. Geser untuk memutar."
+      >
+        <div
+          className="absolute left-1/2 top-1/2 h-0 w-0"
+          style={{
+            transformStyle: "preserve-3d",
+            transform: `rotateX(${sudut.x}deg) rotateY(${sudut.y}deg)`,
+            transition: halus ? "transform 0.55s ease" : "none",
+          }}
+        >
+          <SatuKubus nomor="1" geserX={-jarak} />
+          <SatuKubus nomor="2" geserX={0} />
+          <SatuKubus nomor="3" geserX={jarak} />
+        </div>
+      </div>
+      <p className="text-center text-sm font-black text-sky-800">
+        {namaSudutPandang(sudut.x, sudut.y)}
+      </p>
+      <p className="text-center text-xs font-bold text-slate-500">Tahan, lalu geser untuk memutar</p>
+      <div className="mt-2 flex flex-wrap justify-center gap-2">
+        <button type="button" onClick={() => keSudut(-18, 28)} className="rounded-full bg-sky-100 px-3 py-1 text-xs font-black text-sky-900">
+          Depan
+        </button>
+        <button type="button" onClick={() => keSudut(-16, 90)} className="rounded-full bg-sky-100 px-3 py-1 text-xs font-black text-sky-900">
+          Samping
+        </button>
+        <button type="button" onClick={() => keSudut(-74, 16)} className="rounded-full bg-amber-200 px-3 py-1 text-xs font-black text-amber-950">
+          Atas
+        </button>
+      </div>
+    </div>
+  );
+}
+
 function MaterialVisualGraphic({ type }: { type: VisualSlide["visualComponentType"] }) {
   if (type === "kontainer_isometric") {
     return (
@@ -407,12 +551,8 @@ function MaterialVisualGraphic({ type }: { type: VisualSlide["visualComponentTyp
         <div className="mt-4 grid grid-cols-1 gap-4 md:grid-cols-2">
           <div className="rounded-2xl border-4 border-sky-300 bg-white p-4">
             <p className="text-sm font-black text-sky-800">Bentuk 1 · Segaris</p>
-            <div className="mt-3 flex items-center justify-center gap-1">
-              <KotakDoodle isi="1" kelas="border-sky-700 bg-sky-300 text-sky-950" />
-              <KotakDoodle isi="2" kelas="border-sky-700 bg-sky-300 text-sky-950" />
-              <KotakDoodle isi="3" kelas="border-sky-700 bg-sky-300 text-sky-950" />
-            </div>
-            <p className="mt-3 text-center text-sm font-bold text-slate-700">3 × 1 × 1 · memanjang lurus</p>
+            <BentukSegaris3D />
+            <p className="mt-2 text-center text-sm font-bold text-slate-700">3 × 1 × 1 · memanjang lurus</p>
           </div>
           <div className="rounded-2xl border-4 border-emerald-300 bg-white p-4">
             <p className="text-sm font-black text-emerald-800">Bentuk 2 · Huruf L</p>
