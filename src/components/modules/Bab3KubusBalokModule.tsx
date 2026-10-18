@@ -525,7 +525,7 @@ function hurufLDepan() {
   const mentah = [
     { nomor: "1", x: 0, y: 0, z: 0 },
     { nomor: "2", x: sisi, y: 0, z: 0 },
-    { nomor: "3", x: sisi, y: -sisi, z: 0 },
+    { nomor: "3", x: 0, y: -sisi, z: 0 },
   ];
   const tengahX = mentah.reduce((jumlah, kubus) => jumlah + kubus.x, 0) / mentah.length;
   const tengahY = mentah.reduce((jumlah, kubus) => jumlah + kubus.y, 0) / mentah.length;
@@ -687,7 +687,7 @@ function MaterialVisualGraphic({ type }: { type: VisualSlide["visualComponentTyp
           <div className="rounded-2xl border-4 border-emerald-300 bg-white p-4">
             <p className="text-sm font-black text-emerald-800">Bentuk 2 · Huruf L</p>
             <PanggungKubus
-              aria="Huruf L dari depan. Lantai 1 kubus 1 dan 2, lantai 2 kubus 3 di kanan."
+              aria="Huruf L dari depan. Lantai 1 kubus 1 dan 2, lantai 2 kubus 3 di kiri."
               warna={WARNA_L}
               kelasLabel="text-emerald-800"
               kelasTombol="bg-emerald-100 text-emerald-900"
@@ -697,7 +697,7 @@ function MaterialVisualGraphic({ type }: { type: VisualSlide["visualComponentTyp
               kubus={hurufLDepan()}
             />
             <p className="mt-2 text-center text-sm font-bold text-slate-700">
-              Lantai 1: kubus 1 dan 2. Lantai 2: kubus 3 di kanan.
+              Lantai 1: kubus 1 dan 2. Lantai 2: kubus 3 di kiri.
             </p>
           </div>
         </div>
