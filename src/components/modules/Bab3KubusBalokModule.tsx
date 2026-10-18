@@ -6,269 +6,140 @@ import React, { useState, useEffect, useRef } from "react";
 // 1. DATA MATERI KURIKULUM MERDEKA KELAS 6 SD - BAB 3: KUBUS DAN BALOK
 // ============================================================================
 
+export interface VisualSlide {
+  title: string;
+  badge: string;
+  explanation: string;
+  visualComponentType: "kontainer_isometric" | "lapis_breakdown" | "proyeksi_3arah" | "koordinat_denah";
+  keyTakeaways: string[];
+  commonTrap: string; // Jebakan yang sering salah pada anak belajar mandiri
+}
+
 export interface SubChapterMaterial {
   id: string;
   code: string;
   title: string;
   subtitle: string;
-  storyHook: {
-    character: string;
-    avatar: string;
-    dialogue: string;
-    question: string;
-  };
-  coreConcepts: {
-    heading: string;
-    content: string;
-    keyPoints: string[];
-    visualType: "anatomy" | "orthographic" | "grid_coord";
-  }[];
-  workedExamples: {
-    title: string;
-    problem: string;
-    steps: string[];
-    conclusion: string;
-  }[];
-  dictionary: {
-    term: string;
-    definition: string;
-  }[];
-  offlineActivities: {
-    teacherGuide: string[];
-    parentGuide: string[];
-  };
+  slides: VisualSlide[];
+  kamusCilik: { kata: string; arti: string; ikon: string }[];
 }
 
 export const BAB3_MATERIALS: SubChapterMaterial[] = [
   {
     id: "sub-a",
     code: "Sub-Bab A",
-    title: "Mengonstruksi dan Mengurai Bangun Ruang",
-    subtitle: "Eksplorasi 3.1 & 3.2: Arsitek Bangunan dari Kontainer Bekas",
-    storyHook: {
-      character: "Arsitek Bangunan Ramah Lingkungan",
-      avatar: "🏗️",
-      dialogue:
-        "Dalam Eksplorasi 3.1 kalian akan bermain peran sebagai seorang arsitek yang merancang bangunan dari susunan kontainer bekas. Kontainer pengiriman barang berbentuk balok dan kubus dapat disusun menjadi rumah tinggal, kafe, atau ruang kelas yang kreatif. Bentuk bangunan yang bagaimana yang dapat kalian rancang dari susunan kontainer tersebut?",
-      question:
-        "Bagaimana cara menggambar susunan kontainer 3D di kertas isometrik dan menghitung seluruh kontainer yang tertutup di bagian belakang?",
-    },
-    coreConcepts: [
+    title: "Mengonstruksi & Mengurai Bangun Ruang",
+    subtitle: "Eksplorasi 3.1 & 3.2: Arsitektur Bangunan Kontainer & Menghitung Kubus Tersembunyi",
+    slides: [
       {
-        heading: "1. Mengonstruksi Bangun Ruang (Eksplorasi 3.1)",
-        content:
-          "Mengonstruksi adalah kegiatan menyusun atau membangun bentuk ruang baru dari kubus atau balok satuan. Dalam merancang bangunan kontainer:",
-        keyPoints: [
-          "Dua kubus/balok dikatakan tersusun jika setidaknya ada satu sisi muka yang menempel penuh dengan sisi muka kontainer lainnya.",
-          "Meskipun susunan kontainer diputar posisinya, jika susunan bentuk dasarnya sama, maka dianggap sebagai satu cara konstruksi yang sama.",
-          "Kertas Isometrik: Kertas dengan pola kisi titik-titik segitiga yang digunakan para arsitek untuk menggambar bentuk 3 dimensi secara proporsional.",
+        title: "Tahap 1: Merancang Bangunan dari Kontainer Bekas",
+        badge: "Eksplorasi 3.1 • Konsep Dasar",
+        explanation:
+          "Bayangkan kamu adalah seorang arsitek yang merancang kafe atau rumah modular ramah lingkungan. Setiap kontainer barang berbentuk balok atau kubus satuan. Ketika dua kontainer disambung, minimal satu sisi penuh harus menempel rata.",
+        visualComponentType: "kontainer_isometric",
+        keyTakeaways: [
+          "Konstruksi Segaris: 3 kontainer disusun memanjang lurus (3 × 1 × 1).",
+          "Konstruksi Sudut (Huruf L): 2 kontainer sejajar lalu 1 kontainer menempel menyiku di samping.",
+          "Aturan Rotasi: Bentuk L yang diberdirikan tegak maupun ditidurkan mendatar dihitung sebagai 1 BENTUK YANG SAMA (hanya diputar posisinya).",
         ],
-        visualType: "anatomy",
+        commonTrap: "⚠️ Jangan menganggap balok yang diputar posisinya sebagai bentuk baru! Pola konstruksinya tetap sama persis.",
       },
       {
-        heading: "2. Mengurai dan Menghitung Kubus Satuan (Eksplorasi 3.2)",
-        content:
-          "Mengurai adalah membongkar atau memecah susunan bangunan menjadi unit-unit pembentuknya. Saat melihat gambar susunan kontainer di buku, kita harus jeli menghitung:",
-        keyPoints: [
-          "Lapisan Bawah (Lantai 1): Menyokong kontainer di atasnya. Kontainer yang berada di bawah kontainer lain tetap dihitung meskipun tidak terlihat langsung dari depan.",
-          "Metode Urai Per Lantai: Hitung kontainer pada lantai dasar, lalu lantai 2, dan lantai 3, kemudian jumlahkan.",
-          "Metode Urai Tiang: Tulis angka tinggi tumpukan pada denah alas bangun.",
+        title: "Tahap 2: Menghitung Kubus Tersembunyi (Metode Urai Per Lapis)",
+        badge: "Eksplorasi 3.2 • Intisari Perhitungan",
+        explanation:
+          "Saat melihat gambar tumpukan balok 3D di layar, ada kubus-kubus di lapisan bawah dan belakang yang tertutup oleh kubus di depannya. Anak yang belajar mandiri sering salah menghitung hanya yang terlihat oleh mata!",
+        visualComponentType: "lapis_breakdown",
+        keyTakeaways: [
+          "Lantai 1 (Dasar): Hitung luas alas = Panjang × Lebar petak. Di sinilah semua kubus penyangga berada (termasuk yang tertutup).",
+          "Lantai 2 & 3 (Tingkat): Hitung kubus tambahan yang bertumpuk di atas lantai dasar.",
+          "Rumus Total: Total Kubus = Kubus Lantai Dasar + Kubus Lantai Tingkat.",
         ],
-        visualType: "anatomy",
+        commonTrap: "⚠️ Jangan lupa: Kubus di lantai atas TIDAK BISA MELAYANG di udara. Pasti ada kubus tersembunyi di bawahnya yang menopangnya!",
       },
     ],
-    workedExamples: [
-      {
-        title: "Eksplorasi 3.1: Menyusun 3 Kontainer Berbentuk Kubus",
-        problem:
-          "Berapa banyak cara berbeda kalian dapat menyusun 3 kontainer kubus agar setiap kontainer saling menempel satu sisi penuh?",
-        steps: [
-          "Bentuk 1 (Garis Lurus): 3 kubus disusun memanjang membentuk balok berukuran 3 × 1 × 1 (baik mendatar maupun diberdirikan tegak, ini adalah bentuk yang sama).",
-          "Bentuk 2 (Bentuk Sudut / Huruf L): 2 kubus berjajar lalu 1 kubus diletakkan di samping membentuk siku-siku di satu lantai datar.",
-          "Apakah bentuk L tegak berbeda dengan L tidur? Tidak, itu hanya susunan yang sama yang diputar posisinya.",
-        ],
-        conclusion: "Hanya ada 2 cara bentuk dasar yang berbeda untuk menyusun 3 kontainer kubus.",
-      },
-      {
-        title: "Eksplorasi 3.2: Menghitung Kontainer Tersembunyi",
-        problem:
-          "Sebuah kantor kontainer bertingkat memiliki tampak alas 2 × 2. Di atas lantai dasar berukuran 4 kontainer, diletakkan 2 kontainer di bagian belakang lantai 2. Berapa total kontainer yang dibutuhkan?",
-        steps: [
-          "Urai Lantai 1 (Dasar): Tersusun dari 2 × 2 = 4 kontainer (dua di depan terlihat, dua di belakang tertutup tumpukan atas).",
-          "Urai Lantai 2 (Atas): Tersusun dari 2 kontainer di belakang.",
-          "Hitung total kontainer: 4 kontainer lantai dasar + 2 kontainer lantai atas = 6 kontainer.",
-        ],
-        conclusion: "Total bangunan membutuhkan 6 kontainer bekas.",
-      },
+    kamusCilik: [
+      { kata: "Mengonstruksi", arti: "Menyusun kubus-kubus kecil menjadi bangunan ruang baru.", ikon: "🧱" },
+      { kata: "Mengurai", arti: "Membongkar susunan ruang menjadi potongan per lantai/lapis.", ikon: "🧩" },
+      { kata: "Kertas Isometrik", arti: "Kertas dengan kisi titik segitiga untuk menggambar 3D secara presisi.", ikon: "📐" },
     ],
-    dictionary: [
-      {
-        term: "Mengonstruksi",
-        definition: "Membangun atau menyusun kubus/balok satuan menjadi suatu bentuk bangun ruang gabungan.",
-      },
-      {
-        term: "Mengurai",
-        definition: "Membongkar susunan bangun ruang menjadi bagian-bagian atau lapisan pembentuknya.",
-      },
-      {
-        term: "Kertas Isometrik",
-        definition: "Kertas bergaris/titik kisi bersudut miring untuk memudahkan menggambar bentuk bangun ruang 3D.",
-      },
-    ],
-    offlineActivities: {
-      teacherGuide: [
-        "Ajak peserta didik melakukan Eksplorasi 3.1 secara berpasangan menggunakan 3 buah kubus, 3 buah balok, dan kertas isometrik.",
-        "Diskusikan mengapa dua susunan yang tampak berbeda saat diputar sebenarnya adalah bangun yang sama.",
-      ],
-      parentGuide: [
-        "Sediakan kardus bekas kotak obat/sabun. Ajak anak menggambar susunan kardus di atas kertas buku.",
-      ],
-    },
   },
   {
     id: "sub-b",
     code: "Sub-Bab B",
-    title: "Visualisasi Spasial",
-    subtitle: "Eksplorasi 3.3: Menggambar Tampak Atas, Tampak Depan, dan Tampak Samping",
-    storyHook: {
-      character: "Cetak Biru Bangunan",
-      avatar: "📐",
-      dialogue:
-        "Ketika seorang arsitek menyerahkan rancangan bangunan kontainer kepada mandor lapangan, gambar yang diberikan bukan hanya gambar 3 dimensi, melainkan gambar datar dari berbagai sudut pandang: Tampak Atas, Tampak Depan, dan Tampak Kanan. Gambar-gambar ini digambar pada kertas berpetak.",
-      question:
-        "Bagaimana cara memproyeksikan tumpukan balok 3 dimensi menjadi gambar petak 2 dimensi tanpa membuat tukang bangunan salah paham?",
-    },
-    coreConcepts: [
+    title: "Visualisasi Spasial (3 Sudut Pandang)",
+    subtitle: "Eksplorasi 3.3: Mengubah Gambar 3D Menjadi Cetak Biru Datar 2D",
+    slides: [
       {
-        heading: "1. Mengenal Tiga Arah Pandang Pokok",
-        content:
-          "Visualisasi spasial adalah kemampuan membayangkan dan mengenali bentuk suatu objek dari sudut pandang yang berbeda-beda:",
-        keyPoints: [
-          "Tampak Atas: Dilihat lurus tepat dari arah atas langit. Menunjukkan posisi letak alas petak-petak bangunan.",
-          "Tampak Depan: Dilihat lurus sejajar mata dari arah depan bangunan. Menunjukkan lebar tampak depan dan tinggi menara di setiap kolom.",
-          "Tampak Samping (Kanan): Dilihat lurus sejajar mata dari arah kanan bangunan. Menunjukkan kedalaman (panjang) dan tinggi tumpukan di setiap baris.",
+        title: "Tahap 1: Tiga Arah Pandang Mata Tegak Lurus",
+        badge: "Eksplorasi 3.3 • Proyeksi Ortogonal",
+        explanation:
+          "Tukang bangunan membutuhkan gambar denah datar 2D yang pasti agar tidak salah membangun. Ketika kamu memandang tumpukan kubus tepat tegak lurus dari satu arah, efek kedalaman hilang dan berubah menjadi petak bujur sangkar datar:",
+        visualComponentType: "proyeksi_3arah",
+        keyTakeaways: [
+          "Tampak Atas: Memandang dari langit ke bawah. Terlihat posisi jejak petak alas bangunan.",
+          "Tampak Depan: Mata berdiri sejajar lurus dari depan. Terlihat lebar ke samping dan tinggi menara.",
+          "Tampak Samping Kanan: Berdiri sejajar dari sisi kanan. Terlihat panjang ke belakang dan tinggi menara.",
         ],
-        visualType: "orthographic",
+        commonTrap: "⚠️ Pada Tampak Atas, kamu TIDAK BISA melihat seberapa tinggi menara kubus itu! Kamu hanya tahu petak mana saja yang terisi.",
       },
       {
-        heading: "2. Aturan Ketinggian Tertinggi",
-        content:
-          "Pada gambar tampak depan atau samping, kubus yang lebih rendah akan terhalang oleh kubus yang lebih tinggi di baris/jalur pandang yang sama:",
-        keyPoints: [
-          "Kotak persegi yang digambar pada Tampak Depan selalu mewakili tumpukan KONTEN TERTINGGI pada kolom tersebut.",
-          "Garis pemisah antar-persegi hanya digambar jika terdapat perbedaan bidang atau perbedaan ketinggian tampak.",
+        title: "Tahap 2: Aturan Menara Tertinggi",
+        badge: "Logika Gambar Proyeksi",
+        explanation:
+          "Jika dalam satu baris/kolom lurus pandangan terdapat beberapa kubus dengan ketinggian berbeda, kubus yang pendek akan terhalang oleh kubus yang lebih tinggi.",
+        visualComponentType: "proyeksi_3arah",
+        keyTakeaways: [
+          "Kotak Tampak Depan = Angka TERTINGGI (Maksimum) dari depan ke belakang pada kolom tersebut.",
+          "Kotak Tampak Samping = Angka TERTINGGI (Maksimum) dari kanan ke kiri pada baris tersebut.",
         ],
-        visualType: "orthographic",
+        commonTrap: "⚠️ Jika di depan ada 1 kubus dan di belakangnya ada 3 kubus, dari depan tetap terlihat 3 petak kotak!",
       },
     ],
-    workedExamples: [
-      {
-        title: "Eksplorasi 3.3: Menggambar Tiga Tampak dari Susunan 4 Kubus",
-        problem:
-          "Dua kubus diletakkan mendatar di depan (kiri dan kanan). Di belakang kubus kiri diletakkan satu tumpukan setinggi 2 kubus. Gambarkan Tampak Atas dan Tampak Depannya!",
-        steps: [
-          "Tampak Atas: Posisi alas yang terisi ada 3 petak: dua di depan, satu di belakang kiri. Digambar sebagai 3 persegi berbentuk sudut L.",
-          "Tampak Depan: Kolom Kiri memiliki kubus depan (tinggi 1) dan kubus belakang (tinggi 2). Tertinggi = 2. Kolom Kanan hanya ada kubus depan (tinggi 1). Tertinggi = 1.",
-          "Hasil Tampak Depan: Dua kolom berdampingan, kolom kiri setinggi 2 kotak, kolom kanan setinggi 1 kotak.",
-        ],
-        conclusion: "Tampak Atas berbentuk huruf L (3 petak), Tampak Depan memiliki total 3 petak (2 di kiri, 1 di kanan).",
-      },
+    kamusCilik: [
+      { kata: "Visualisasi Spasial", arti: "Kemampuan memutar dan melihat objek ruang di dalam bayangan pikiran.", ikon: "🧠" },
+      { kata: "Tampak Depan", arti: "Penampakan datar ketika melihat bangunan tegak lurus dari arah depan.", ikon: "👁️" },
+      { kata: "Tampak Atas", arti: "Penampakan denah datar seolah-olah dilihat dari atas langit (bird-eye).", ikon: "🦅" },
     ],
-    dictionary: [
-      {
-        term: "Visualisasi Spasial",
-        definition: "Kemampuan kognitif melihat dan mengubah posisi objek 3 dimensi di dalam pikiran.",
-      },
-      {
-        term: "Tampak Atas",
-        definition: "Proyeksi ortogonal objek yang dilihat tepat tegak lurus dari atas.",
-      },
-      {
-        term: "Tampak Depan & Samping",
-        definition: "Proyeksi tegak lurus dari arah depan dan arah sisi samping benda.",
-      },
-    ],
-    offlineActivities: {
-      teacherGuide: [
-        "Bagilah kelas menjadi beberapa kelompok untuk melakukan permainan tebak bangun ruang pada Eksplorasi 3.3.",
-        "Satu kelompok membangun susunan 4-5 kubus tersembunyi, lalu hanya memberikan gambar 3 tampaknya ke kelompok lawan untuk disusun ulang.",
-      ],
-      parentGuide: [
-        "Letakkan benda kotak di meja, minta anak menggambar apa yang tampak saat berdiri melihat ke bawah (tampak atas) dan saat berlutut (tampak depan).",
-      ],
-    },
   },
   {
     id: "sub-c",
     code: "Sub-Bab C",
     title: "Lokasi pada Sistem Berpetak",
-    subtitle: "Eksplorasi 3.4 & 3.5: Menentukan Lokasi dan Jalur pada Peta Berpetak",
-    storyHook: {
-      character: "Pengawas Lapangan Kontainer",
-      avatar: "📍",
-      dialogue:
-        "Di pelabuhan peti kemas maupun area proyek konstruksi, ratusan kontainer ditata di atas tanah yang diberi garis petak kotak-kotak. Mandor menggunakan kode kolom mendatar (huruf) dan baris tegak (angka) agar truk pengangkut dapat menemukan kontainer yang tepat tanpa tersasar.",
-      question:
-        "Bagaimana cara membaca letak lokasi suatu tempat dan menentukan jalur perjalanan terpendek pada peta berpetak?",
-    },
-    coreConcepts: [
+    subtitle: "Eksplorasi 3.4 & 3.5: Koordinat Petak (Kolom, Baris) & Rute Terpendek",
+    slides: [
       {
-        heading: "1. Menentukan Lokasi Petak (Eksplorasi 3.4)",
-        content:
-          "Sistem berpetak menggunakan pasangan berurutan untuk menunjukkan letak suatu petak:",
-        keyPoints: [
-          "Sumbu Mendatar (Kolom): Dibaca dari kiri ke kanan, biasanya menggunakan huruf alfabet (A, B, C, D, E, F...).",
-          "Sumbu Tegak (Baris): Dibaca dari bawah ke atas, menggunakan angka (1, 2, 3, 4, 5...).",
-          "Penulisan Koordinat Petak: Selalu diawali dengan Kolom lalu diikuti Baris, ditulis dalam kurung: (Kolom, Baris). Contoh: (B, 3).",
+        title: "Tahap 1: Aturan Baku Pasangan Berurutan (Kolom, Baris)",
+        badge: "Eksplorasi 3.4 • Membaca Peta",
+        explanation:
+          "Agar kapal pengangkut dan truk logistik tidak salah menurunkan peti kemas, lantai pelabuhan dibagi menjadi sistem petak koordinat kotak-kotak beraturan:",
+        visualComponentType: "koordinat_denah",
+        keyTakeaways: [
+          "Langkah 1 (Mendatar / Kolom): Susuri garis huruf di bawah dari kiri ke kanan (A, B, C, D...).",
+          "Langkah 2 (Tegak / Baris): Naik ke atas menyusuri angka di samping (1, 2, 3, 4...).",
+          "Rumus Notasi: Wajib (KOLOM, BARIS) -> Contoh: (C, 4). Jangan sampai terbalik menjadi (4, C)!",
         ],
-        visualType: "grid_coord",
+        commonTrap: "⚠️ Jembatan Keledai: 'Masuk Pintu Rumah dulu (Mendatar), baru Naik Tangga (Tegak)!'",
       },
       {
-        heading: "2. Menentukan Jalur dan Jarak Langkah (Eksplorasi 3.5)",
-        content:
-          "Dalam sistem berpetak, pergerakan kendaraan atau orang hanya dapat melalui petak-petak secara horizontal dan vertikal:",
-        keyPoints: [
-          "Jalur yang diperbolehkan hanya: Kanan (Timur), Kiri (Barat), Atas (Utara), dan Bawah (Selatan). Tidak diperbolehkan memotong diagonal melintasi garis.",
-          "Jarak Terpendek: Jumlah langkah mendatar ditambah dengan jumlah langkah tegak antara dua titik lokasi.",
+        title: "Tahap 2: Menghitung Jalur Terpendek Tanpa Menyerong",
+        badge: "Eksplorasi 3.5 • Navigasi Jalur",
+        explanation:
+          "Di atas peta berpetak, kendaraan tidak boleh berjalan serong/miring memotong garis. Gerakan hanya boleh belok 90 derajat (Timur/Barat dan Utara/Selatan).",
+        visualComponentType: "koordinat_denah",
+        keyTakeaways: [
+          "Jarak Mendatar = Selisih langkah kolom asal ke kolom tujuan.",
+          "Jarak Tegak = Selisih langkah baris asal ke baris tujuan.",
+          "Total Langkah Terpendek = Jarak Mendatar + Jarak Tegak.",
         ],
-        visualType: "grid_coord",
+        commonTrap: "⚠️ Jangan mengukur garis miring diagonal! Hitung jumlah ubin petak yang dilewati menyusuri garis kisi.",
       },
     ],
-    workedExamples: [
-      {
-        title: "Eksplorasi 3.5: Menghitung Rute Truk Kontainer",
-        problem:
-          "Truk kontainer berada di depo pada koordinat (B, 1) dan harus mengantar muatan ke lokasi proyek di (E, 4). Tentukan koordinat dan jumlah langkah terpendeknya!",
-        steps: [
-          "Langkah Mendatar (dari Kolom B ke Kolom E): B -> C (1), C -> D (2), D -> E (3). Berarti 3 langkah ke kanan.",
-          "Langkah Tegak (dari Baris 1 ke Baris 4): 1 -> 2 (1), 2 -> 3 (2), 3 -> 4 (3). Berarti 3 langkah ke atas.",
-          "Total Jarak Langkah: 3 langkah kanan + 3 langkah atas = 6 langkah petak.",
-        ],
-        conclusion: "Jalur terpendek ditempuh dalam 6 langkah perpindahan petak.",
-      },
+    kamusCilik: [
+      { kata: "Sistem Berpetak", arti: "Kisi-kisi ubin bujur sangkar beraturan untuk menentukan lokasi pasti.", ikon: "🗺️" },
+      { kata: "Pasangan Berurutan", arti: "Penulisan koordinat (Mendatar, Tegak) yang tidak boleh tertukar.", ikon: "📌" },
+      { kata: "Jalur Terpendek", arti: "Rute dengan jumlah petak paling sedikit tanpa memotong diagonal.", ikon: "🧭" },
     ],
-    dictionary: [
-      {
-        term: "Sistem Berpetak",
-        definition: "Susunan petak persegi beraturan yang diatur dalam kolom mendatar dan baris tegak.",
-      },
-      {
-        term: "Pasangan Berurutan",
-        definition: "Pasangan (Kolom, Baris) yang menentukan letak pasti satu petak.",
-      },
-      {
-        term: "Jalur Terpendek",
-        definition: "Rute perpindahan dengan jumlah langkah paling sedikit menyusuri petak horizontal dan vertikal.",
-      },
-    ],
-    offlineActivities: {
-      teacherGuide: [
-        "Ajak peserta didik memetakan denah tata letak meja di ruang kelas menggunakan kertas berpetak dengan kode kolom A-E dan baris 1-6.",
-      ],
-      parentGuide: [
-        "Gunakan peta kota sederhana atau denah kebun binatang untuk mengajak anak membaca letak kandang hewan menggunakan kolom dan baris.",
-      ],
-    },
   },
 ];
 
@@ -504,6 +375,107 @@ function generateDynamicQuestions(seedOffset: number): QuestionItem[] {
       explanation: `Kolom awal ${cols[startColIdx]} bergeser ${moveRight} ke kanan menjadi Kolom ${endCol}. Baris awal ${startRow} naik ${moveUp} menjadi Baris ${endRow}. Koordinat akhir adalah (${endCol}, ${endRow}) dengan total ${totalSteps} langkah.`,
     },
   ];
+}
+
+function SlideVisual({ jenis }: { jenis: VisualSlide["visualComponentType"] }) {
+  const kotak = "h-10 w-10 rounded-md border-2 border-indigo-700 bg-indigo-500";
+  if (jenis === "kontainer_isometric") {
+    return (
+      <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 rounded-xl bg-slate-50 border border-slate-200 p-4">
+        <div>
+          <div className="text-xs font-bold text-slate-500 mb-2">Segaris</div>
+          <div className="flex gap-1">
+            <div className={kotak} />
+            <div className={kotak} />
+            <div className={kotak} />
+          </div>
+        </div>
+        <div>
+          <div className="text-xs font-bold text-slate-500 mb-2">Huruf L</div>
+          <div className="flex gap-1">
+            <div className={kotak} />
+            <div className={kotak} />
+          </div>
+          <div className={`${kotak} mt-1`} />
+        </div>
+      </div>
+    );
+  }
+  if (jenis === "lapis_breakdown") {
+    const tingkat = "h-10 w-10 rounded-md border-2 border-amber-600 bg-amber-400";
+    return (
+      <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 rounded-xl bg-slate-50 border border-slate-200 p-4">
+        <div>
+          <div className="text-xs font-bold text-slate-500 mb-2">Lantai 1</div>
+          <div className="grid grid-cols-2 gap-1 w-fit">
+            <div className={kotak} />
+            <div className={kotak} />
+            <div className={kotak} />
+            <div className={kotak} />
+          </div>
+        </div>
+        <div>
+          <div className="text-xs font-bold text-slate-500 mb-2">Lantai 2</div>
+          <div className="flex gap-1">
+            <div className={tingkat} />
+            <div className={tingkat} />
+          </div>
+        </div>
+      </div>
+    );
+  }
+  if (jenis === "proyeksi_3arah") {
+    const panel = (judul: string, tinggi: number[]) => (
+      <div key={judul}>
+        <div className="text-xs font-bold text-slate-500 mb-2">{judul}</div>
+        <div className="flex items-end gap-1 h-16">
+          {tinggi.map((n, i) => (
+            <div key={i} className="flex flex-col-reverse gap-0.5">
+              {Array.from({ length: n }).map((_, k) => (
+                <div key={k} className="h-4 w-6 rounded-sm bg-indigo-500 border border-indigo-700" />
+              ))}
+            </div>
+          ))}
+        </div>
+      </div>
+    );
+    return (
+      <div className="grid grid-cols-3 gap-3 rounded-xl bg-slate-50 border border-slate-200 p-4">
+        {panel("Tampak Atas", [1, 1])}
+        {panel("Tampak Depan", [3, 1])}
+        {panel("Tampak Samping", [3])}
+      </div>
+    );
+  }
+  const kolom = ["A", "B", "C", "D"];
+  const baris = [4, 3, 2, 1];
+  return (
+    <div className="rounded-xl bg-slate-50 border border-slate-200 p-4">
+      <div className="inline-grid grid-cols-[1.5rem_repeat(4,2.25rem)] gap-1 text-center text-xs font-bold">
+        <div />
+        {kolom.map((k) => (
+          <div key={k} className="text-slate-500">{k}</div>
+        ))}
+        {baris.map((b) => (
+          <div key={b} className="contents">
+            <div className="text-slate-500 leading-9">{b}</div>
+            {kolom.map((k) => {
+              const aktif = k === "C" && b === 4;
+              return (
+                <div
+                  key={`${k}${b}`}
+                  className={`h-9 rounded-md border leading-9 ${aktif ? "bg-amber-400 border-amber-600 text-amber-950" : "bg-white border-slate-200"}`}
+                >
+                  {aktif ? "●" : ""}
+                </div>
+              );
+            })}
+          </div>
+        ))}
+      </div>
+      <div className="mt-2 text-xs font-bold text-amber-800">(C, 4)</div>
+    </div>
+  );
 }
 
 // ============================================================================
@@ -869,7 +841,7 @@ export default function Bab3KubusBalokModule() {
                 >
                   <div className="text-xs font-extrabold uppercase opacity-80">{sub.code}</div>
                   <div className="font-bold text-base mt-0.5">{sub.title}</div>
-                  <div className="text-xs opacity-85 mt-1 line-clamp-1">{sub.subtitle}</div>
+                  <div className="text-xs opacity-85 mt-1">{sub.subtitle}</div>
                 </button>
               ))}
             </div>
@@ -879,106 +851,38 @@ export default function Bab3KubusBalokModule() {
               const current = BAB3_MATERIALS[selectedSubBab];
               return (
                 <div className="space-y-6">
-                  {/* Kartu Cerita Pemantik */}
-                  <div className="bg-gradient-to-r from-amber-50 to-orange-50 border border-amber-200 rounded-2xl p-6 shadow-sm">
-                    <div className="flex items-start gap-4">
-                      <div className="text-4xl bg-white p-3 rounded-2xl shadow-sm">{current.storyHook.avatar}</div>
-                      <div>
-                        <div className="text-xs font-extrabold uppercase text-amber-700 tracking-wider">
-                          Kisah Pemantik Kurikulum Merdeka • {current.storyHook.character}
-                        </div>
-                        <p className="text-slate-700 mt-1 text-base leading-relaxed">{current.storyHook.dialogue}</p>
-                        <div className="mt-3 bg-white/90 border border-amber-300 rounded-xl px-4 py-2.5 text-sm font-bold text-amber-900">
-                          ❓ Pertanyaan Pemantik: {current.storyHook.question}
-                        </div>
+                  {current.slides.map((slide, sIdx) => (
+                    <article key={sIdx} className="bg-white rounded-2xl border border-slate-200 p-6 shadow-sm space-y-4">
+                      <div className="text-xs font-extrabold uppercase tracking-wider text-indigo-600">{slide.badge}</div>
+                      <h3 className="text-lg font-extrabold text-slate-800">{slide.title}</h3>
+                      <p className="text-slate-700 text-base leading-relaxed">{slide.explanation}</p>
+                      <SlideVisual jenis={slide.visualComponentType} />
+                      <ul className="space-y-2.5">
+                        {slide.keyTakeaways.map((pt, pIdx) => (
+                          <li key={pIdx} className="flex items-start gap-2.5 text-sm text-slate-700">
+                            <span className="bg-indigo-100 text-indigo-700 font-bold rounded-full w-5 h-5 flex items-center justify-center text-xs shrink-0 mt-0.5">
+                              ✓
+                            </span>
+                            <span>{pt}</span>
+                          </li>
+                        ))}
+                      </ul>
+                      <div className="bg-amber-50 border border-amber-300 text-amber-950 px-4 py-3 rounded-xl text-sm font-semibold">
+                        {slide.commonTrap}
                       </div>
-                    </div>
-                  </div>
+                    </article>
+                  ))}
 
-                  {/* Konsep Inti */}
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                    {current.coreConcepts.map((concept, cIdx) => (
-                      <div key={cIdx} className="bg-white rounded-2xl border border-slate-200 p-6 shadow-sm">
-                        <h3 className="text-lg font-extrabold text-indigo-700">{concept.heading}</h3>
-                        <p className="text-slate-600 text-sm mt-2 leading-relaxed">{concept.content}</p>
-                        <ul className="mt-4 space-y-2.5">
-                          {concept.keyPoints.map((pt, pIdx) => (
-                            <li key={pIdx} className="flex items-start gap-2.5 text-sm text-slate-700">
-                              <span className="bg-indigo-100 text-indigo-700 font-bold rounded-full w-5 h-5 flex items-center justify-center text-xs shrink-0 mt-0.5">
-                                ✓
-                              </span>
-                              <span>{pt}</span>
-                            </li>
-                          ))}
-                        </ul>
-                      </div>
-                    ))}
-                  </div>
-
-                  {/* Contoh Soal & Pembahasan Langkah demi Langkah */}
-                  <div className="bg-white rounded-2xl border border-indigo-100 p-6 shadow-sm">
-                    <h3 className="text-lg font-extrabold text-slate-800 mb-4">
-                      📌 Bedah Contoh Kasus & Cara Berpikir
-                    </h3>
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                      {current.workedExamples.map((ex, exIdx) => (
-                        <div key={exIdx} className="bg-slate-50 rounded-xl p-5 border border-slate-200">
-                          <div className="font-bold text-indigo-700 text-base">{ex.title}</div>
-                          <p className="text-sm text-slate-700 mt-2 bg-white p-3 rounded-lg border border-slate-200 italic">
-                            "{ex.problem}"
-                          </p>
-                          <div className="mt-3 space-y-1.5">
-                            {ex.steps.map((st, sIdx) => (
-                              <div key={sIdx} className="text-xs text-slate-700 flex gap-2">
-                                <span className="font-bold text-indigo-600">{sIdx + 1}.</span>
-                                <span>{st}</span>
-                              </div>
-                            ))}
-                          </div>
-                          <div className="mt-4 bg-emerald-50 border border-emerald-200 text-emerald-900 px-3 py-2 rounded-lg text-xs font-bold">
-                            🎯 Kesimpulan: {ex.conclusion}
-                          </div>
+                  <div className="bg-white rounded-2xl border border-slate-200 p-6">
+                    <h4 className="font-extrabold text-slate-800 text-base mb-3">Kamus Cilik</h4>
+                    <div className="grid grid-cols-1 md:grid-cols-3 gap-3">
+                      {current.kamusCilik.map((d) => (
+                        <div key={d.kata} className="border border-slate-100 rounded-xl p-4">
+                          <div className="text-2xl">{d.ikon}</div>
+                          <div className="font-bold text-indigo-700 text-sm mt-1">{d.kata}</div>
+                          <p className="text-slate-600 text-sm mt-1">{d.arti}</p>
                         </div>
                       ))}
-                    </div>
-                  </div>
-
-                  {/* Kamus Mini & Panduan Guru/Orang Tua */}
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                    <div className="bg-white rounded-2xl border border-slate-200 p-6">
-                      <h4 className="font-extrabold text-slate-800 text-base mb-3">📚 Kamus Istilah Penting</h4>
-                      <div className="space-y-3">
-                        {current.dictionary.map((d, dIdx) => (
-                          <div key={dIdx} className="border-b border-slate-100 pb-2 last:border-0">
-                            <span className="font-bold text-indigo-700 text-sm">{d.term}: </span>
-                            <span className="text-slate-600 text-sm">{d.definition}</span>
-                          </div>
-                        ))}
-                      </div>
-                    </div>
-
-                    <div className="bg-indigo-950 text-white rounded-2xl p-6">
-                      <h4 className="font-extrabold text-amber-300 text-base mb-3">
-                        🤝 Aktivitas Dunia Nyata (Guru & Orang Tua)
-                      </h4>
-                      <div className="space-y-3 text-xs leading-relaxed">
-                        <div>
-                          <div className="font-bold text-indigo-200 uppercase mb-1">Di Kelas Bersama Guru:</div>
-                          <ul className="list-disc list-inside space-y-1 text-slate-200">
-                            {current.offlineActivities.teacherGuide.map((tg, i) => (
-                              <li key={i}>{tg}</li>
-                            ))}
-                          </ul>
-                        </div>
-                        <div className="pt-2 border-t border-indigo-800">
-                          <div className="font-bold text-emerald-300 uppercase mb-1">Di Rumah Bersama Orang Tua:</div>
-                          <ul className="list-disc list-inside space-y-1 text-slate-200">
-                            {current.offlineActivities.parentGuide.map((pg, i) => (
-                              <li key={i}>{pg}</li>
-                            ))}
-                          </ul>
-                        </div>
-                      </div>
                     </div>
                   </div>
                 </div>
