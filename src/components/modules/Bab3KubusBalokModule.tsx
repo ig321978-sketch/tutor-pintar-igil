@@ -416,17 +416,21 @@ function MukaKubus({
   transform,
   kelas,
   nomor,
+  ukuran = UKURAN_KUBUS,
 }: {
   transform: string;
   kelas: string;
   nomor: string;
+  ukuran?: number;
 }) {
   return (
     <div
-      className={`absolute flex items-center justify-center border-2 text-lg font-black ${kelas}`}
+      className={`absolute flex items-center justify-center border-2 font-black ${
+        ukuran < 46 ? "text-sm" : "text-lg"
+      } ${kelas}`}
       style={{
-        width: UKURAN_KUBUS,
-        height: UKURAN_KUBUS,
+        width: ukuran,
+        height: ukuran,
         transform,
         backfaceVisibility: "hidden",
       }}
@@ -471,14 +475,22 @@ function SatuKubus({
   y,
   z = 0,
   warna,
+  ukuran = UKURAN_KUBUS,
+  onPointerDown,
+  onPointerMove,
+  onPointerUp,
 }: {
   nomor: string;
   x: number;
   y: number;
   z?: number;
   warna: WarnaKubus;
+  ukuran?: number;
+  onPointerDown?: (event: React.PointerEvent<HTMLDivElement>) => void;
+  onPointerMove?: (event: React.PointerEvent<HTMLDivElement>) => void;
+  onPointerUp?: (event: React.PointerEvent<HTMLDivElement>) => void;
 }) {
-  const jejak = `${JEJAK_KUBUS}px`;
+  const jejak = `${ukuran / 2}px`;
   const muka = [
     { transform: `rotateY(0deg) translateZ(${jejak})`, kelas: warna.depan },
     { transform: `rotateY(180deg) translateZ(${jejak})`, kelas: warna.belakang },
@@ -491,14 +503,19 @@ function SatuKubus({
     <div
       className="absolute left-1/2 top-1/2"
       style={{
-        width: UKURAN_KUBUS,
-        height: UKURAN_KUBUS,
+        width: ukuran,
+        height: ukuran,
         transformStyle: "preserve-3d",
         transform: `translate(-50%, -50%) translate3d(${x}px, ${y}px, ${z}px)`,
+        transition: "transform 0.45s ease",
       }}
+      onPointerDown={onPointerDown}
+      onPointerMove={onPointerMove}
+      onPointerUp={onPointerUp}
+      onPointerCancel={onPointerUp}
     >
       {muka.map((item) => (
-        <MukaKubus key={item.transform} transform={item.transform} kelas={item.kelas} nomor={nomor} />
+        <MukaKubus key={item.transform} transform={item.transform} kelas={item.kelas} nomor={nomor} ukuran={ukuran} />
       ))}
     </div>
   );
@@ -639,6 +656,162 @@ function PanggungKubus({
   );
 }
 
+const WARNA_LANTAI_ATAS: WarnaKubus = {
+  depan: "border-amber-800 bg-amber-300 text-amber-950",
+  belakang: "border-amber-900 bg-amber-500 text-amber-950",
+  kanan: "border-amber-800 bg-amber-200 text-amber-950",
+  kiri: "border-amber-900 bg-amber-400 text-amber-950",
+  atas: "border-orange-800 bg-orange-200 text-orange-950",
+  bawah: "border-slate-600 bg-slate-300 text-slate-800",
+};
+
+function TumpukanBongkar() {
+  const ukuran = 38;
+  const pola = [
+    { nomor: "1", kolom: 0, lantai: 1, warna: WARNA_LANGIT },
+    { nomor: "2", kolom: 1, lantai: 1, warna: WARNA_LANGIT },
+    { nomor: "3", kolom: 2, lantai: 1, warna: WARNA_LANGIT },
+    { nomor: "4", kolom: 0, lantai: 2, warna: WARNA_L },
+    { nomor: "5", kolom: 1, lantai: 2, warna: WARNA_L },
+    { nomor: "6", kolom: 2, lantai: 2, warna: WARNA_L },
+    { nomor: "7", kolom: 0, lantai: 3, warna: WARNA_LANTAI_ATAS },
+    { nomor: "8", kolom: 1, lantai: 3, warna: WARNA_LANTAI_ATAS },
+  ].map((kubus) => ({
+    ...kubus,
+    x: kubus.kolom * ukuran,
+    y: -(kubus.lantai - 1) * ukuran,
+  }));
+  const tengahX = pola.reduce((jumlah, kubus) => jumlah + kubus.x, 0) / pola.length;
+  const tengahY = pola.reduce((jumlah, kubus) => jumlah + kubus.y, 0) / pola.length;
+  const rumah = pola.map((kubus, urutan) => ({
+    ...kubus,
+    x: kubus.x - tengahX,
+    y: kubus.y - tengahY,
+    lepasX: ((urutan % 4) - 1.5) * (ukuran + 6),
+    lepasY: ukuran * 2.35 + Math.floor(urutan / 4) * (ukuran + 6),
+    lepasZ: ukuran * 1.4,
+  }));
+
+  const [sudut, setSudut] = useState({ x: -14, y: 18 });
+  const [halus, setHalus] = useState(true);
+  const [lepas, setLepas] = useState<string[]>([]);
+  const tarik = useRef<{ x: number; y: number; sx: number; sy: number; nomor: string | null; gerak: number } | null>(null);
+
+  function mulaiTarik(event: React.PointerEvent<HTMLDivElement>, nomor: string | null) {
+    if (nomor) event.stopPropagation();
+    try {
+      event.currentTarget.setPointerCapture(event.pointerId);
+    } catch {
+      // Geser tetap jalan bila browser menolak tangkapan jari.
+    }
+    setHalus(false);
+    tarik.current = { x: event.clientX, y: event.clientY, sx: sudut.x, sy: sudut.y, nomor, gerak: 0 };
+  }
+
+  function geserTarik(event: React.PointerEvent<HTMLDivElement>) {
+    if (!tarik.current) return;
+    const dx = event.clientX - tarik.current.x;
+    const dy = event.clientY - tarik.current.y;
+    tarik.current.gerak += Math.abs(event.movementX) + Math.abs(event.movementY);
+    setSudut({
+      x: Math.max(-85, Math.min(85, tarik.current.sx - dy * 0.5)),
+      y: tarik.current.sy + dx * 0.55,
+    });
+  }
+
+  function lepasTarik() {
+    const jejak = tarik.current;
+    tarik.current = null;
+    if (jejak?.nomor && jejak.gerak < 8) {
+      const nomor = jejak.nomor;
+      setLepas((sekarang) =>
+        sekarang.includes(nomor) ? sekarang.filter((item) => item !== nomor) : [...sekarang, nomor],
+      );
+    }
+  }
+
+  function keSudut(x: number, y: number) {
+    setHalus(true);
+    setSudut({ x, y });
+  }
+
+  const terpasang = rumah.length - lepas.length;
+
+  return (
+    <div>
+      <div
+        className="relative mx-auto mt-2 h-80 w-full cursor-grab touch-none select-none active:cursor-grabbing"
+        style={{ perspective: "820px" }}
+        onPointerDown={(event) => mulaiTarik(event, null)}
+        onPointerMove={geserTarik}
+        onPointerUp={lepasTarik}
+        onPointerCancel={lepasTarik}
+        role="img"
+        aria-label="Delapan kubus. Lantai 1 nomor 1 2 3, lantai 2 nomor 4 5 6, lantai 3 nomor 7 8. Ketuk untuk membongkar."
+      >
+        <div
+          className="absolute left-1/2 top-[42%] h-0 w-0"
+          style={{
+            transformStyle: "preserve-3d",
+            transform: `rotateX(${sudut.x}deg) rotateY(${sudut.y}deg)`,
+            transition: halus ? "transform 0.7s ease" : "none",
+          }}
+        >
+          {rumah.map((kubus) => {
+            const terbongkar = lepas.includes(kubus.nomor);
+            return (
+              <SatuKubus
+                key={kubus.nomor}
+                nomor={kubus.nomor}
+                ukuran={ukuran}
+                warna={kubus.warna}
+                x={terbongkar ? kubus.lepasX : kubus.x}
+                y={terbongkar ? kubus.lepasY : kubus.y}
+                z={terbongkar ? kubus.lepasZ : 0}
+                onPointerDown={(event) => mulaiTarik(event, kubus.nomor)}
+                onPointerMove={geserTarik}
+                onPointerUp={lepasTarik}
+              />
+            );
+          })}
+        </div>
+      </div>
+      <p className="text-center text-sm font-black text-sky-800">{namaSudutPandang(sudut.x, sudut.y)}</p>
+      <p className="text-center text-xs font-bold text-slate-500">
+        Ketuk kubus untuk bongkar atau pasang. Tahan, lalu geser untuk memutar.
+      </p>
+      <p className="mt-1 text-center text-sm font-black text-slate-700">
+        Terpasang {terpasang} · Terbongkar {lepas.length}
+      </p>
+      <div className="mt-2 flex flex-wrap justify-center gap-2">
+        <button type="button" onClick={() => keSudut(-14, 18)} className="rounded-full bg-sky-100 px-3 py-1 text-xs font-black text-sky-900">
+          Depan
+        </button>
+        <button type="button" onClick={() => keSudut(-16, 78)} className="rounded-full bg-sky-100 px-3 py-1 text-xs font-black text-sky-900">
+          Samping
+        </button>
+        <button type="button" onClick={() => keSudut(-72, 16)} className="rounded-full bg-amber-200 px-3 py-1 text-xs font-black text-amber-950">
+          Atas
+        </button>
+        <button
+          type="button"
+          onClick={() => setLepas(rumah.map((kubus) => kubus.nomor))}
+          className="rounded-full bg-rose-100 px-3 py-1 text-xs font-black text-rose-800"
+        >
+          Bongkar semua
+        </button>
+        <button
+          type="button"
+          onClick={() => setLepas([])}
+          className="rounded-full bg-emerald-100 px-3 py-1 text-xs font-black text-emerald-900"
+        >
+          Pasang semua
+        </button>
+      </div>
+    </div>
+  );
+}
+
 function BentukSegaris3D() {
   return (
     <PanggungKubus
@@ -690,10 +863,6 @@ function MaterialVisualGraphic({ type }: { type: VisualSlide["visualComponentTyp
   }
 
   if (type === "lapis_breakdown") {
-    const alas = [
-      ["tersembunyi", "tersembunyi", "kelihatan"],
-      ["kelihatan", "kelihatan", "kelihatan"],
-    ];
     return (
       <div className="rounded-3xl border-4 border-sky-300 bg-sky-50 p-4 sm:p-5">
         <p className="text-center text-sm font-black text-sky-950">
@@ -701,37 +870,19 @@ function MaterialVisualGraphic({ type }: { type: VisualSlide["visualComponentTyp
         </p>
         <div className="mt-4">
           <div className="rounded-2xl border-4 border-sky-300 bg-white p-4">
-            <p className="text-sm font-black text-sky-800">Benar: bongkar per lantai</p>
-            <div className="mt-3">
-              <p className="mb-2 text-center text-xs font-black text-slate-700">
-                Lantai 2 duduk tepat di atas dua kotak putus-putus
-              </p>
-              <div className="mx-auto grid w-fit grid-cols-3 gap-1">
-                <KotakDoodle isi="+" kelas="border-amber-700 bg-amber-300 text-amber-950" />
-                <KotakDoodle isi="+" kelas="border-amber-700 bg-amber-300 text-amber-950" />
-                <div />
-                {alas.flat().map((jenis, i) => (
-                  <KotakDoodle
-                    key={i}
-                    isi={String(i + 1)}
-                    kelas={
-                      jenis === "tersembunyi"
-                        ? "border-dashed border-amber-700 bg-amber-100 text-amber-800"
-                        : "border-sky-700 bg-sky-300 text-sky-950"
-                    }
-                  />
-                ))}
-              </div>
-              <p className="mt-2 text-center text-xs font-bold text-amber-800">
-                Lantai 2 = 2 kubus. Lantai 1 = 3 × 2 = 6 kubus, termasuk yang tertutup.
-              </p>
-            </div>
+            <p className="text-sm font-black text-sky-800">Bongkar dan pasang delapan kubus</p>
+            <TumpukanBongkar />
+            <p className="mt-2 text-center text-sm font-bold text-slate-700">
+              Dari depan, kiri ke kanan. Lantai 1: 1-2-3. Lantai 2: 4-5-6. Lantai 3: 7-8.
+            </p>
           </div>
         </div>
         <div className="mt-4 flex flex-wrap items-center justify-center gap-2 rounded-2xl bg-emerald-500 px-4 py-3 text-white">
-          <span className="rounded-xl bg-white/20 px-3 py-1 text-lg font-black">2</span>
+          <span className="rounded-xl bg-white/20 px-3 py-1 text-lg font-black">3</span>
           <span className="text-2xl font-black">+</span>
-          <span className="rounded-xl bg-white/20 px-3 py-1 text-lg font-black">6</span>
+          <span className="rounded-xl bg-white/20 px-3 py-1 text-lg font-black">3</span>
+          <span className="text-2xl font-black">+</span>
+          <span className="rounded-xl bg-white/20 px-3 py-1 text-lg font-black">2</span>
           <span className="text-2xl font-black">=</span>
           <span className="rounded-xl bg-white px-3 py-1 text-lg font-black text-emerald-800">8 kubus</span>
         </div>
