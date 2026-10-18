@@ -436,15 +436,56 @@ function MukaKubus({
   );
 }
 
-function SatuKubus({ nomor, geserX }: { nomor: string; geserX: number }) {
-  const z = `${JEJAK_KUBUS}px`;
+type WarnaKubus = {
+  depan: string;
+  belakang: string;
+  kanan: string;
+  kiri: string;
+  atas: string;
+  bawah: string;
+};
+
+const WARNA_LANGIT: WarnaKubus = {
+  depan: "border-sky-900 bg-sky-300 text-sky-950",
+  belakang: "border-sky-900 bg-sky-500 text-white",
+  kanan: "border-sky-900 bg-sky-400 text-sky-950",
+  kiri: "border-sky-900 bg-sky-200 text-sky-950",
+  atas: "border-amber-800 bg-amber-300 text-amber-950",
+  bawah: "border-slate-600 bg-slate-300 text-slate-800",
+};
+
+const WARNA_L: WarnaKubus = {
+  depan: "border-emerald-900 bg-emerald-300 text-emerald-950",
+  belakang: "border-emerald-900 bg-emerald-600 text-white",
+  kanan: "border-emerald-900 bg-emerald-400 text-emerald-950",
+  kiri: "border-emerald-900 bg-emerald-200 text-emerald-950",
+  atas: "border-amber-800 bg-amber-300 text-amber-950",
+  bawah: "border-slate-600 bg-slate-300 text-slate-800",
+};
+
+const JARAK_KUBUS = UKURAN_KUBUS + 2;
+
+function SatuKubus({
+  nomor,
+  x,
+  y,
+  z = 0,
+  warna,
+}: {
+  nomor: string;
+  x: number;
+  y: number;
+  z?: number;
+  warna: WarnaKubus;
+}) {
+  const jejak = `${JEJAK_KUBUS}px`;
   const muka = [
-    { transform: `rotateY(0deg) translateZ(${z})`, kelas: "border-sky-900 bg-sky-300 text-sky-950" },
-    { transform: `rotateY(180deg) translateZ(${z})`, kelas: "border-sky-900 bg-sky-500 text-white" },
-    { transform: `rotateY(90deg) translateZ(${z})`, kelas: "border-sky-900 bg-sky-400 text-sky-950" },
-    { transform: `rotateY(-90deg) translateZ(${z})`, kelas: "border-sky-900 bg-sky-200 text-sky-950" },
-    { transform: `rotateX(90deg) translateZ(${z})`, kelas: "border-amber-800 bg-amber-300 text-amber-950" },
-    { transform: `rotateX(-90deg) translateZ(${z})`, kelas: "border-slate-600 bg-slate-300 text-slate-800" },
+    { transform: `rotateY(0deg) translateZ(${jejak})`, kelas: warna.depan },
+    { transform: `rotateY(180deg) translateZ(${jejak})`, kelas: warna.belakang },
+    { transform: `rotateY(90deg) translateZ(${jejak})`, kelas: warna.kanan },
+    { transform: `rotateY(-90deg) translateZ(${jejak})`, kelas: warna.kiri },
+    { transform: `rotateX(90deg) translateZ(${jejak})`, kelas: warna.atas },
+    { transform: `rotateX(-90deg) translateZ(${jejak})`, kelas: warna.bawah },
   ];
   return (
     <div
@@ -453,7 +494,7 @@ function SatuKubus({ nomor, geserX }: { nomor: string; geserX: number }) {
         width: UKURAN_KUBUS,
         height: UKURAN_KUBUS,
         transformStyle: "preserve-3d",
-        transform: `translate(-50%, -50%) translateX(${geserX}px)`,
+        transform: `translate(-50%, -50%) translate3d(${x}px, ${y}px, ${z}px)`,
       }}
     >
       {muka.map((item) => (
@@ -463,8 +504,41 @@ function SatuKubus({ nomor, geserX }: { nomor: string; geserX: number }) {
   );
 }
 
-function BentukSegaris3D() {
-  const [sudut, setSudut] = useState({ x: -18, y: 28 });
+function hurufL(tegak: boolean) {
+  const mentah = [
+    { nomor: "1", x: 0, y: 0 },
+    { nomor: "2", x: JARAK_KUBUS, y: 0 },
+    { nomor: "3", x: 0, y: JARAK_KUBUS },
+  ].map((kubus) =>
+    tegak ? { nomor: kubus.nomor, x: -kubus.y, y: kubus.x } : kubus,
+  );
+  const tengahX = mentah.reduce((jumlah, kubus) => jumlah + kubus.x, 0) / mentah.length;
+  const tengahY = mentah.reduce((jumlah, kubus) => jumlah + kubus.y, 0) / mentah.length;
+  return mentah.map((kubus) => ({
+    nomor: kubus.nomor,
+    x: kubus.x - tengahX,
+    y: kubus.y - tengahY,
+  }));
+}
+
+function PanggungKubus({
+  kubus,
+  warna,
+  aria,
+  kelasLabel,
+  kelasTombol,
+  awal = { x: -18, y: 28 },
+  petunjuk = true,
+}: {
+  kubus: { nomor: string; x: number; y: number }[];
+  warna: WarnaKubus;
+  aria: string;
+  kelasLabel: string;
+  kelasTombol: string;
+  awal?: { x: number; y: number };
+  petunjuk?: boolean;
+}) {
+  const [sudut, setSudut] = useState(awal);
   const [halus, setHalus] = useState(true);
   const tarik = useRef<{ x: number; y: number; sx: number; sy: number } | null>(null);
 
@@ -495,19 +569,17 @@ function BentukSegaris3D() {
     setSudut({ x, y });
   }
 
-  const jarak = UKURAN_KUBUS + 2;
-
   return (
     <div>
       <div
-        className="relative mx-auto mt-2 h-48 w-full cursor-grab touch-none select-none active:cursor-grabbing"
+        className="relative mx-auto mt-2 h-44 w-full cursor-grab touch-none select-none active:cursor-grabbing"
         style={{ perspective: "760px" }}
         onPointerDown={mulaiTarik}
         onPointerMove={geserTarik}
         onPointerUp={lepasTarik}
         onPointerCancel={lepasTarik}
         role="img"
-        aria-label="Tiga kubus segaris. Geser untuk memutar."
+        aria-label={aria}
       >
         <div
           className="absolute left-1/2 top-1/2 h-0 w-0"
@@ -517,20 +589,20 @@ function BentukSegaris3D() {
             transition: halus ? "transform 0.55s ease" : "none",
           }}
         >
-          <SatuKubus nomor="1" geserX={-jarak} />
-          <SatuKubus nomor="2" geserX={0} />
-          <SatuKubus nomor="3" geserX={jarak} />
+          {kubus.map((item) => (
+            <SatuKubus key={item.nomor} nomor={item.nomor} x={item.x} y={item.y} warna={warna} />
+          ))}
         </div>
       </div>
-      <p className="text-center text-sm font-black text-sky-800">
-        {namaSudutPandang(sudut.x, sudut.y)}
-      </p>
-      <p className="text-center text-xs font-bold text-slate-500">Tahan, lalu geser untuk memutar</p>
+      <p className={`text-center text-sm font-black ${kelasLabel}`}>{namaSudutPandang(sudut.x, sudut.y)}</p>
+      {petunjuk ? (
+        <p className="text-center text-xs font-bold text-slate-500">Tahan, lalu geser untuk memutar</p>
+      ) : null}
       <div className="mt-2 flex flex-wrap justify-center gap-2">
-        <button type="button" onClick={() => keSudut(-18, 28)} className="rounded-full bg-sky-100 px-3 py-1 text-xs font-black text-sky-900">
+        <button type="button" onClick={() => keSudut(awal.x, awal.y)} className={`rounded-full px-3 py-1 text-xs font-black ${kelasTombol}`}>
           Depan
         </button>
-        <button type="button" onClick={() => keSudut(-16, 90)} className="rounded-full bg-sky-100 px-3 py-1 text-xs font-black text-sky-900">
+        <button type="button" onClick={() => keSudut(-16, 90)} className={`rounded-full px-3 py-1 text-xs font-black ${kelasTombol}`}>
           Samping
         </button>
         <button type="button" onClick={() => keSudut(-74, 16)} className="rounded-full bg-amber-200 px-3 py-1 text-xs font-black text-amber-950">
@@ -538,6 +610,22 @@ function BentukSegaris3D() {
         </button>
       </div>
     </div>
+  );
+}
+
+function BentukSegaris3D() {
+  return (
+    <PanggungKubus
+      aria="Tiga kubus segaris. Geser untuk memutar."
+      warna={WARNA_LANGIT}
+      kelasLabel="text-sky-800"
+      kelasTombol="bg-sky-100 text-sky-900"
+      kubus={[
+        { nomor: "1", x: -JARAK_KUBUS, y: 0 },
+        { nomor: "2", x: 0, y: 0 },
+        { nomor: "3", x: JARAK_KUBUS, y: 0 },
+      ]}
+    />
   );
 }
 
@@ -556,46 +644,49 @@ function MaterialVisualGraphic({ type }: { type: VisualSlide["visualComponentTyp
           </div>
           <div className="rounded-2xl border-4 border-emerald-300 bg-white p-4">
             <p className="text-sm font-black text-emerald-800">Bentuk 2 · Huruf L</p>
-            <div className="mt-3 flex justify-center">
-              <div>
-                <div className="flex gap-1">
-                  <KotakDoodle isi="1" kelas="border-emerald-700 bg-emerald-300 text-emerald-950" />
-                  <KotakDoodle isi="2" kelas="border-emerald-700 bg-emerald-300 text-emerald-950" />
-                </div>
-                <div className="mt-1">
-                  <KotakDoodle isi="3" kelas="border-emerald-700 bg-emerald-300 text-emerald-950" />
-                </div>
-              </div>
-            </div>
-            <p className="mt-3 text-center text-sm font-bold text-slate-700">2 berjajar, 1 menempel menyiku</p>
+            <PanggungKubus
+              aria="Huruf L dari tiga kubus. Geser untuk memutar."
+              warna={WARNA_L}
+              kelasLabel="text-emerald-800"
+              kelasTombol="bg-emerald-100 text-emerald-900"
+              awal={{ x: -28, y: 36 }}
+              kubus={hurufL(false)}
+            />
+            <p className="mt-2 text-center text-sm font-bold text-slate-700">2 berjajar, 1 menempel menyiku</p>
           </div>
         </div>
         <div className="mt-4 rounded-2xl border-4 border-emerald-400 bg-white p-4">
           <p className="text-center text-sm font-black text-emerald-800">Diputar? Masih huruf L. Bukan bentuk baru.</p>
-          <div className="mt-3 flex flex-wrap items-center justify-center gap-3">
-            <div>
-              <div className="flex gap-1">
-                <KotakDoodle isi="1" kelas="border-emerald-700 bg-emerald-200 text-emerald-950" />
-                <KotakDoodle isi="2" kelas="border-emerald-700 bg-emerald-200 text-emerald-950" />
-              </div>
-              <KotakDoodle isi="3" kelas="mt-1 border-emerald-700 bg-emerald-200 text-emerald-950" />
-              <p className="mt-1 text-center text-xs font-bold text-slate-600">L tidur</p>
+          <p className="mt-1 text-center text-xs font-bold text-slate-500">Tahan tiap model, lalu geser. Bentuknya tetap L.</p>
+          <div className="mt-3 grid grid-cols-1 gap-4 sm:grid-cols-2">
+            <div className="rounded-2xl bg-emerald-50 p-3">
+              <p className="text-center text-sm font-black text-emerald-800">L tidur</p>
+              <PanggungKubus
+                aria="Huruf L tidur. Geser untuk memutar."
+                warna={WARNA_L}
+                kelasLabel="text-emerald-800"
+                kelasTombol="bg-emerald-100 text-emerald-900"
+                awal={{ x: -28, y: 36 }}
+                petunjuk={false}
+                kubus={hurufL(false)}
+              />
             </div>
-            <div className="rounded-full bg-amber-300 px-3 py-2 text-sm font-black text-amber-950">diputar →</div>
-            <div>
-              <div className="flex gap-1">
-                <KotakDoodle isi="3" kelas="border-emerald-700 bg-emerald-200 text-emerald-950" />
-                <KotakDoodle isi="1" kelas="border-emerald-700 bg-emerald-200 text-emerald-950" />
-              </div>
-              <div className="mt-1 flex justify-end">
-                <KotakDoodle isi="2" kelas="border-emerald-700 bg-emerald-200 text-emerald-950" />
-              </div>
-              <p className="mt-1 text-center text-xs font-bold text-slate-600">L tegak</p>
+            <div className="rounded-2xl bg-emerald-50 p-3">
+              <p className="text-center text-sm font-black text-emerald-800">L tegak</p>
+              <PanggungKubus
+                aria="Huruf L tegak. Geser untuk memutar."
+                warna={WARNA_L}
+                kelasLabel="text-emerald-800"
+                kelasTombol="bg-emerald-100 text-emerald-900"
+                awal={{ x: -28, y: 36 }}
+                petunjuk={false}
+                kubus={hurufL(true)}
+              />
             </div>
-            <div className="rounded-2xl bg-emerald-500 px-4 py-3 text-center text-white">
-              <p className="text-lg font-black">SAMA</p>
-              <p className="text-xs font-bold">jangan dihitung dua kali</p>
-            </div>
+          </div>
+          <div className="mx-auto mt-3 max-w-xs rounded-2xl bg-emerald-500 px-4 py-3 text-center text-white">
+            <p className="text-lg font-black">SAMA</p>
+            <p className="text-xs font-bold">jangan dihitung dua kali</p>
           </div>
         </div>
       </div>
