@@ -856,7 +856,6 @@ export default function NaskahMtk1Bab1({
           🌳🧺🦉
         </p>
         <h4 className="mt-3 text-center text-lg font-black tracking-wide text-[#1C01A5] sm:text-xl">{kartuA.judul}</h4>
-        <p className="mt-1 text-center text-sm font-bold text-[#1C01A5]/70">Ayo Membilang sampai dengan 10</p>
         <div className="mt-4">
           <TombolVoiceMateriPai1 kelas={kelas} kelamin={kelamin} cuplikan={cuplikanDariNaskah(kartuA.voice, 2_000, 3_000)} />
         </div>
@@ -869,6 +868,9 @@ export default function NaskahMtk1Bab1({
             "Membandingkan dua kelompok: lebih banyak, lebih sedikit, atau sama banyak.",
           ]}
         />
+        <h5 className="mt-5 text-center text-base font-black tracking-wide text-[#1C01A5] sm:text-lg">
+          Sub-Bab 1: Menghitung, membaca dan menulis bilangan
+        </h5>
         <div className="mt-4 space-y-3">
           <article className="rounded-2xl border-2 border-[#16A34A]/25 bg-[#F0FDF4] px-4 py-3">
             <p className="text-xl font-black tracking-wide text-[#166534]">Cerita: Piknik Buah Rara dan Bimo</p>
