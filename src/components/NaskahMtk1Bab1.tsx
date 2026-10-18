@@ -6,6 +6,7 @@ import KartuPoinPenting from "@/components/KartuPoinPenting";
 import KuisAkhirAdegan from "@/components/KuisAkhirAdegan";
 import KuisTulisKartu from "@/components/KuisTulisKartu";
 import SoalRekamSuara from "@/components/SoalRekamSuara";
+import TujuanBelajar from "@/components/TujuanBelajar";
 import TombolVoiceMateriPai1 from "@/components/TombolVoiceMateriPai1";
 import { useKuisMateri } from "@/components/KuisMateriContext";
 import { SLOT_AJUAN_SEBELUM_KARTU_D } from "@/components/NaskahMtk2Bab1";
@@ -859,6 +860,15 @@ export default function NaskahMtk1Bab1({
         <div className="mt-4">
           <TombolVoiceMateriPai1 kelas={kelas} kelamin={kelamin} cuplikan={cuplikanDariNaskah(kartuA.voice, 2_000, 3_000)} />
         </div>
+        <TujuanBelajar
+          butir={[
+            "Menghitung benda sampai 10.",
+            "Membaca bilangan 1–10.",
+            "Menulis lambang bilangan 1–10.",
+            "Mencocokkan jumlah benda dengan lambang bilangannya.",
+            "Membandingkan dua kelompok: lebih banyak, lebih sedikit, atau sama banyak.",
+          ]}
+        />
         <div className="mt-4 space-y-3">
           <article className="rounded-2xl border-2 border-[#16A34A]/25 bg-[#F0FDF4] px-4 py-3">
             <p className="text-xl font-black tracking-wide text-[#166534]">Cerita: Piknik Buah Rara dan Bimo</p>
