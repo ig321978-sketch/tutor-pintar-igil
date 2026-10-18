@@ -19,6 +19,7 @@ import { bacaProgres } from "@/lib/progres";
 import type { KelaminGuru } from "@/lib/guru";
 
 const BILANGAN = [
+  { angka: 0, nama: "nol", ikon: "○" },
   { angka: 1, nama: "satu", ikon: "●" },
   { angka: 2, nama: "dua", ikon: "●" },
   { angka: 3, nama: "tiga", ikon: "●" },
@@ -270,6 +271,27 @@ function KuisSusun({
         <UmpanBenar status={status} teks={umpanBenar} />
       </div>
     </article>
+  );
+}
+
+function JudulSubBab({
+  judul,
+  kelas,
+  kelamin,
+  naskah,
+}: {
+  judul: string;
+  kelas: string;
+  kelamin?: KelaminGuru;
+  naskah: string[];
+}) {
+  return (
+    <>
+      <h5 className="mt-5 text-left text-base font-black tracking-wide text-[#1C01A5] sm:text-lg">{judul}</h5>
+      <div className="mt-4">
+        <TombolVoiceMateriPai1 kelas={kelas} kelamin={kelamin} cuplikan={cuplikanDariNaskah([naskah], 2_000, 3_000)} />
+      </div>
+    </>
   );
 }
 
@@ -847,7 +869,7 @@ export default function NaskahMtk1Bab1({
   kelamin?: KelaminGuru;
 }) {
   const modul = MODUL_MTK1_BAB1;
-  const [kartuA, kartuB, kartuC, kartuD] = modul.kartu;
+  const [kartuA, , kartuC, kartuD] = modul.kartu;
 
   return (
     <div className="space-y-5">
@@ -861,32 +883,23 @@ export default function NaskahMtk1Bab1({
         </div>
         <TujuanBelajar
           butir={[
-            "Menghitung benda sampai 10.",
-            "Membaca bilangan 1–10.",
-            "Menulis lambang bilangan 1–10.",
-            "Mencocokkan jumlah benda dengan lambang bilangannya.",
+            "Menghitung benda, lalu membaca dan menulis lambangnya, termasuk 0.",
             "Membandingkan dua kelompok: lebih banyak, lebih sedikit, atau sama banyak.",
+            "Menghitung maju dari kecil ke besar, dan mundur dari besar ke kecil.",
+            "Memisahkan satu jumlah menjadi dua kelompok sebagai pasangan bilangan.",
           ]}
         />
-        <h5 className="mt-5 text-left text-base font-black tracking-wide text-[#1C01A5] sm:text-lg">
-          Sub-Bab 1: Menghitung, membaca dan menulis bilangan
-        </h5>
-        <div className="mt-4">
-          <TombolVoiceMateriPai1
-            kelas={kelas}
-            kelamin={kelamin}
-            cuplikan={cuplikanDariNaskah(
-              [[
-                "Anak-anak, sub-bab ini tentang menghitung, membaca, dan menulis bilangan.",
-                "Kita akan menghitung benda satu per satu, dari satu sampai sepuluh.",
-                "Setelah menghitung, kita membaca nama bilangannya, lalu menulis lambangnya.",
-                "Ceritanya piknik buah bersama Rara, Bimo, dan Igil. Ayo mulai.",
-              ]],
-              2_000,
-              3_000,
-            )}
-          />
-        </div>
+        <JudulSubBab
+          judul="A. Menghitung, Membaca, dan Menulis Bilangan"
+          kelas={kelas}
+          kelamin={kelamin}
+          naskah={[
+            "Anak-anak, bagian ini tentang menghitung, membaca, dan menulis bilangan.",
+            "Kita hitung buah satu per satu. Kosong dibaca nol. Lalu satu sampai sepuluh.",
+            "Setelah menghitung, kita membaca nama bilangannya, lalu menulis lambangnya.",
+            "Ceritanya piknik buah bersama Rara, Bimo, dan Igil. Ayo mulai.",
+          ]}
+        />
         <div className="mt-4 space-y-3">
           <GambarCerita
             src="/doodle-mtk/mtk-1-bab1-piknik.jpg"
@@ -991,6 +1004,104 @@ export default function NaskahMtk1Bab1({
             aliasKanvas={["3, 4, 5", "3 4 5", "345"]}
             konteksKanvas="Apel 3, pisang 4, jeruk 5. Urutannya 3, 4, 5."
           />
+          <p className="text-sm font-black uppercase tracking-wide text-[#1C01A5]">Nama dan lambang bilangan</p>
+          <div className="overflow-hidden rounded-2xl border-4 border-sky-400">
+            <div className="grid grid-cols-3 bg-[#1C01A5] px-3 py-2 text-[10px] font-black uppercase text-white sm:text-xs">
+              <span>Jumlah</span>
+              <span>Nama bilangan</span>
+              <span>Lambang</span>
+            </div>
+            {BILANGAN.map((baris, i) => (
+              <div
+                key={baris.angka}
+                className={`grid grid-cols-3 items-center border-t border-sky-200 px-3 py-2 text-sm font-bold ${
+                  i % 2 === 0 ? "bg-sky-50" : "bg-[#F0FDF4]"
+                }`}
+              >
+                <span>{baris.angka === 0 ? "kosong" : Array.from({ length: baris.angka }, () => baris.ikon).join(" ")}</span>
+                <span>{baris.nama}</span>
+                <span className="text-lg font-black text-[#1C01A5]">{baris.angka}</span>
+              </div>
+            ))}
+          </div>
+          <article className="rounded-2xl border-2 border-[#0284C7]/25 bg-[#F0F9FF] px-4 py-3">
+            <p className="text-sm font-black text-[#0C4A6E]">Cara Menghitung Benda</p>
+            <IkonUlang ikon="🐟" jumlah={6} />
+            <p className="mt-2 text-sm font-semibold text-slate-700">
+              Tunjuk benda satu per satu. Ucapkan: “Satu, dua, tiga, empat, lima, enam.” Benda terakhir menunjukkan jumlah semuanya.
+            </p>
+            <p className="mt-2 text-lg font-black text-[#1C01A5]">Jumlah ikan = 6</p>
+          </article>
+          <article className="rounded-2xl border-2 border-[#7C3AED]/25 bg-[#F5F3FF] px-4 py-3">
+            <p className="text-sm font-black text-[#5B21B6]">Cara Mencocokkan Jumlah dan Angka</p>
+            <IkonUlang ikon="🦋" jumlah={4} />
+            <p className="mt-2 text-sm font-semibold text-slate-700">Hitung kupu-kupu: 1, 2, 3, 4. Pasangkan dengan angka 4.</p>
+            <p className="mt-2 text-lg font-black text-[#1C01A5]">🦋 🦋 🦋 🦋 ↔ 4</p>
+          </article>
+          <KuisCocokAngka />
+          <article className="rounded-2xl border-2 border-slate-300 bg-white px-4 py-3">
+            <p className="text-xs font-black uppercase text-slate-500">Piring kosong</p>
+            <p className="mt-2 text-center text-6xl font-black text-[#1C01A5]">0</p>
+            <p className="mt-2 text-sm font-semibold text-slate-700">Tidak ada buah di piring. Banyaknya 0. Dibaca nol.</p>
+          </article>
+          <Dialog nama="Rara" warna="border-[#DB2777]/20 bg-[#FDF2F8]">
+            “Piring ini kosong.”
+          </Dialog>
+          <Dialog nama="Bimo" warna="border-[#2563EB]/20 bg-[#EFF6FF]">
+            “Kosong berarti nol. Lambang bilangannya 0.”
+          </Dialog>
+          <KuisAkhirAdegan
+            idSuara={idKuis("A", 11)}
+            idKanvas={idKuis("A", 12)}
+            pertanyaanSuara="Piring kosong. Berapa jumlah buahnya?"
+            aliasSuara={["0", "nol"]}
+            petunjukSuara="Ucapkan nol atau angka 0."
+            pertanyaanKanvas="Tuliskan lambang bilangan nol."
+            aliasKanvas={["0", "nol"]}
+            konteksKanvas="Piring kosong. Banyaknya 0. Dibaca nol."
+          />
+          <Dialog nama="Igil" warna="border-amber-300 bg-amber-50">
+            “Lambang 8 dibaca delapan.”
+          </Dialog>
+          <KuisAkhirAdegan
+            idSuara={idKuis("A", 13)}
+            pertanyaanSuara="Bagaimana cara membaca lambang 8?"
+            aliasSuara={["delapan"]}
+            petunjukSuara="Sebutkan nama bilangannya."
+          />
+          <p className="rounded-2xl bg-[#F0FDF4] px-4 py-3 text-sm font-extrabold text-[#166534]">
+            Rara dan Bimo sudah menghitung buah, membaca namanya, dan menulis lambangnya.
+          </p>
+        </div>
+        <div className="mt-6 border-t-2 border-[#1C01A5]/10 pt-5">
+          <p className="text-base font-extrabold text-[#1C01A5]">QUIZ:</p>
+          <SoalRekamSuara
+            id={idKuis("A", 0)}
+            pertanyaan="Di atas tikar ada tujuh mangga. Berapa jumlah mangganya?"
+            periksa={(transkrip) => jawabanTulisMemuatAlias(transkrip, ["tujuh", "7", "ada tujuh mangga"])}
+            petunjuk="Dengarkan, hitung, lalu jawab dengan suara."
+          />
+        </div>
+        <KuisTulisKartu
+          id={idKuisTulisKartu(MODUL_MTK1_BAB1.id, "A")}
+          hanyaKanvas
+          pertanyaan="Hitung bintang. Tuliskan lambang bilangannya."
+          alias={kumpulkanAlias(["6", "enam"])}
+          konteks="Ada 6 bintang. Lambangnya 6."
+          visual={<IkonUlang ikon="⭐" jumlah={6} ukuran="text-3xl" />}
+        />
+
+        <JudulSubBab
+          judul="B. Membandingkan Banyak Benda"
+          kelas={kelas}
+          kelamin={kelamin}
+          naskah={[
+            "Sekarang kita membandingkan banyak benda.",
+            "Ada yang lebih banyak, ada yang lebih sedikit, dan ada yang sama banyak.",
+            "Kita lihat lagi buah di piknik Rara, Bimo, dan Igil.",
+          ]}
+        />
+        <div className="mt-4 space-y-3">
           <div className="grid gap-3 sm:grid-cols-2">
             <article className="rounded-2xl border-2 border-[#E23B3B]/25 bg-[#FFF1F2] px-4 py-3">
               <p className="text-xs font-black uppercase text-[#9F1239]">Piring kiri · apel</p>
@@ -1056,77 +1167,7 @@ export default function NaskahMtk1Bab1({
             aliasKanvas={["4 = 4", "4=4", "empat sama dengan empat"]}
             konteksKanvas="Stroberi 4 dan pisang 4. Jumlahnya sama. 4 = 4."
           />
-          <p className="rounded-2xl bg-[#F0FDF4] px-4 py-3 text-sm font-extrabold text-[#166534]">
-            Rara dan Bimo berhasil menghitung buah. Mereka juga dapat membaca, menulis, dan membandingkan bilangan.
-          </p>
-        </div>
-        <div className="mt-6 border-t-2 border-[#1C01A5]/10 pt-5">
-          <p className="text-base font-extrabold text-[#1C01A5]">QUIZ:</p>
-          <SoalRekamSuara
-            id={idKuis("A", 0)}
-            pertanyaan="Di atas tikar ada tujuh mangga. Berapa jumlah mangganya?"
-            periksa={(transkrip) => jawabanTulisMemuatAlias(transkrip, ["tujuh", "7", "ada tujuh mangga"])}
-            petunjuk="Dengarkan, hitung, lalu jawab dengan suara."
-          />
-        </div>
-        <KuisTulisKartu
-          id={idKuisTulisKartu(MODUL_MTK1_BAB1.id, "A")}
-          hanyaKanvas
-          pertanyaan="Hitung bintang. Tuliskan lambang bilangannya."
-          alias={kumpulkanAlias(["6", "enam"])}
-          konteks="Ada 6 bintang. Lambangnya 6."
-          visual={<IkonUlang ikon="⭐" jumlah={6} ukuran="text-3xl" />}
-        />
-      </KartuBingkai>
-
-      <KartuBingkai latar="bg-emerald-50/80">
-        <p className="text-center text-4xl" aria-hidden>
-          🔢🐟🦋
-        </p>
-        <h4 className="mt-3 text-center text-lg font-black tracking-wide text-[#1C01A5] sm:text-xl">{kartuB.judul}</h4>
-        <div className="mt-4">
-          <TombolVoiceMateriPai1 kelas={kelas} kelamin={kelamin} cuplikan={cuplikanDariNaskah(kartuB.voice, 2_000, 3_000)} />
-        </div>
-        <p className="mt-4 text-center text-sm font-black uppercase tracking-wide text-[#1C01A5]/70">
-          Infografis: Ayo Mengenal Bilangan 1–10
-        </p>
-        <div className="mt-4 overflow-hidden rounded-2xl border-4 border-sky-400">
-          <div className="grid grid-cols-3 bg-[#1C01A5] px-3 py-2 text-[10px] font-black uppercase text-white sm:text-xs">
-            <span>Jumlah</span>
-            <span>Nama bilangan</span>
-            <span>Lambang</span>
-          </div>
-          {BILANGAN.map((baris, i) => (
-            <div
-              key={baris.angka}
-              className={`grid grid-cols-3 items-center border-t border-sky-200 px-3 py-2 text-sm font-bold ${
-                i % 2 === 0 ? "bg-sky-50" : "bg-[#F0FDF4]"
-              }`}
-            >
-              <span>{Array.from({ length: baris.angka }, () => baris.ikon).join(" ")}</span>
-              <span>{baris.nama}</span>
-              <span className="text-lg font-black text-[#1C01A5]">{baris.angka}</span>
-            </div>
-          ))}
-        </div>
-
-        <article className="mt-4 rounded-2xl border-2 border-[#0284C7]/25 bg-[#F0F9FF] px-4 py-3">
-          <p className="text-sm font-black text-[#0C4A6E]">Cara Menghitung Benda</p>
-          <IkonUlang ikon="🐟" jumlah={6} />
-          <p className="mt-2 text-sm font-semibold text-slate-700">
-            Tunjuk benda satu per satu. Ucapkan: “Satu, dua, tiga, empat, lima, enam.” Benda terakhir menunjukkan jumlah semuanya.
-          </p>
-          <p className="mt-2 text-lg font-black text-[#1C01A5]">Jumlah ikan = 6</p>
-        </article>
-        <article className="mt-4 rounded-2xl border-2 border-[#7C3AED]/25 bg-[#F5F3FF] px-4 py-3">
-          <p className="text-sm font-black text-[#5B21B6]">Cara Mencocokkan Jumlah dan Angka</p>
-          <IkonUlang ikon="🦋" jumlah={4} />
-          <p className="mt-2 text-sm font-semibold text-slate-700">Hitung kupu-kupu: 1, 2, 3, 4. Pasangkan dengan angka 4.</p>
-          <p className="mt-2 text-lg font-black text-[#1C01A5]">🦋 🦋 🦋 🦋 ↔ 4</p>
-        </article>
-
-        <p className="mt-5 text-sm font-black uppercase tracking-wide text-[#1C01A5]">Cara Membandingkan Jumlah</p>
-        <div className="mt-3 grid gap-3">
+          <p className="text-sm font-black uppercase tracking-wide text-[#1C01A5]">Cara Membandingkan Jumlah</p>
           <article className="rounded-2xl border-2 border-[#16A34A]/30 bg-[#F0FDF4] px-4 py-3">
             <p className="text-xs font-black uppercase text-[#166534]">Lebih banyak</p>
             <p className="mt-2 text-2xl">🐥 🐥 🐥 🐥 🐥 &nbsp;&nbsp; 🐸 🐸 🐸</p>
@@ -1148,35 +1189,17 @@ export default function NaskahMtk1Bab1({
             <p className="text-2xl font-black text-[#1C01A5]">3 = 3</p>
             <p className="text-sm font-bold text-slate-700">Bunga dan stroberi sama banyak.</p>
           </article>
-        </div>
-        <article className="mt-4 rounded-2xl border-2 border-[#0F766E] bg-[#F0FDFA] px-4 py-4">
-          <p className="text-sm font-black text-[#0F766E]">Cara Mudah Memilih Tanda</p>
-          <p className="mt-2 text-sm font-semibold text-slate-700">
-            Bayangkan tanda &gt; dan &lt; seperti mulut ikan. Mulut ikan selalu terbuka ke jumlah yang lebih banyak.
-          </p>
-          <p className="mt-2 text-3xl font-black text-[#1C01A5]">8 &gt; 5</p>
-          <p className="text-sm font-bold text-slate-700">Pada contoh itu, mulut terbuka ke arah 8.</p>
-        </article>
-
-        <div className="mt-6 space-y-4">
-          <KuisCocokAngka />
-          <KuisSusun
-            id={idKuis("B", 1)}
-            soal="Quiz 2. Susun gerbong dari bilangan paling kecil. 🚂"
-            pool={[
-              { kunci: "6", tampil: "6" },
-              { kunci: "4", tampil: "4" },
-              { kunci: "5", tampil: "5" },
-              { kunci: "2", tampil: "2" },
-              { kunci: "3", tampil: "3" },
-            ]}
-            benar={["2", "3", "4", "5", "6"]}
-            umpanBenar="Kereta siap berangkat! Bilangannya sudah berurutan."
-            pesanSalah="Mulai dari bilangan paling kecil."
-          />
+          <article className="rounded-2xl border-2 border-[#0F766E] bg-[#F0FDFA] px-4 py-4">
+            <p className="text-sm font-black text-[#0F766E]">Cara Mudah Memilih Tanda</p>
+            <p className="mt-2 text-sm font-semibold text-slate-700">
+              Bayangkan tanda &gt; dan &lt; seperti mulut ikan. Mulut ikan selalu terbuka ke jumlah yang lebih banyak.
+            </p>
+            <p className="mt-2 text-3xl font-black text-[#1C01A5]">8 &gt; 5</p>
+            <p className="text-sm font-bold text-slate-700">Pada contoh itu, mulut terbuka ke arah 8.</p>
+          </article>
           <KuisPilih
             id={idKuis("B", 2)}
-            soal="Quiz 3. Pilih keranjang yang berisi buah paling banyak."
+            soal="Pilih keranjang yang berisi buah paling banyak."
             benar="B"
             umpanBenar="Tepat! Enam lebih banyak daripada lima dan empat."
             pesanSalah="Hitung setiap keranjang. Pilih bilangan terbesar."
@@ -1185,6 +1208,82 @@ export default function NaskahMtk1Bab1({
               { huruf: "B", teks: "Keranjang B · 🍎 🍎 🍎 🍎 🍎 🍎" },
               { huruf: "C", teks: "Keranjang C · 🍐 🍐 🍐 🍐 🍐" },
             ]}
+          />
+          <KuisTulisKartu
+            id={idKuisTulisKartu(MODUL_MTK1_BAB1.id, "B")}
+            hanyaKanvas
+            pertanyaan="Tulis jumlah kura-kura, tanda < > atau =, lalu jumlah kelinci. Contoh: 3 < 5."
+            alias={kumpulkanAlias(["3 < 5", "3<5", "tiga lebih sedikit daripada lima"])}
+            konteks="Kura-kura 3. Kelinci 5. Tiga lebih sedikit daripada lima."
+            visual={<div className="text-center text-2xl">🐢 🐢 🐢 &nbsp;&nbsp; 🐰 🐰 🐰 🐰 🐰</div>}
+          />
+        </div>
+
+        <JudulSubBab
+          judul="C. Menghitung Maju dan Mundur"
+          kelas={kelas}
+          kelamin={kelamin}
+          naskah={[
+            "Menghitung maju berjalan dari bilangan kecil ke bilangan besar. Contohnya satu, dua, tiga.",
+            "Menghitung mundur berjalan dari bilangan besar ke bilangan kecil. Contohnya sepuluh, sembilan, delapan.",
+            "Igil naik dulu, lalu turun. Ayo ikuti hitungannya.",
+          ]}
+        />
+        <div className="mt-4 space-y-3">
+          <Dialog nama="Igil" warna="border-amber-300 bg-amber-50">
+            “Aku naik dahan. Hitung maju bersamaku: 1, 2, 3.”
+          </Dialog>
+          <Dialog nama="Rara" warna="border-[#DB2777]/20 bg-[#FDF2F8]">
+            “Lalu 4, 5, 6, 7, 8, 9, 10.”
+          </Dialog>
+          <p className="text-center text-2xl font-black tracking-wide text-[#1C01A5]">1 · 2 · 3 · 4 · 5 · 6 · 7 · 8 · 9 · 10</p>
+          <p className="text-center text-sm font-bold text-slate-600">Maju: dari kecil ke besar. Langkahnya satu-satu.</p>
+          <KuisSusun
+            id={idKuis("B", 1)}
+            soal="Susun bilangan dari yang kecil ke yang besar. 🚂"
+            pool={[
+              { kunci: "6", tampil: "6" },
+              { kunci: "4", tampil: "4" },
+              { kunci: "5", tampil: "5" },
+              { kunci: "2", tampil: "2" },
+              { kunci: "3", tampil: "3" },
+            ]}
+            benar={["2", "3", "4", "5", "6"]}
+            umpanBenar="Benar! Itu menghitung maju: 2, 3, 4, 5, 6."
+            pesanSalah="Mulai dari bilangan paling kecil."
+          />
+          <KuisAkhirAdegan
+            idSuara={idKuis("B", 4)}
+            pertanyaanSuara="Urutan maju: 1, 2, 3, lalu berapa?"
+            aliasSuara={["4", "empat"]}
+            petunjukSuara="Sebutkan bilangan berikutnya."
+          />
+          <Dialog nama="Bimo" warna="border-[#2563EB]/20 bg-[#EFF6FF]">
+            “Igil turun. Hitung mundur dari 10: 10, 9, 8.”
+          </Dialog>
+          <Dialog nama="Rara" warna="border-[#DB2777]/20 bg-[#FDF2F8]">
+            “Lalu 7, 6, 5, 4, 3, 2, 1.”
+          </Dialog>
+          <p className="text-center text-2xl font-black tracking-wide text-[#1C01A5]">10 · 9 · 8 · 7 · 6 · 5 · 4 · 3 · 2 · 1</p>
+          <p className="text-center text-sm font-bold text-slate-600">Mundur: dari besar ke kecil. Langkahnya satu-satu.</p>
+          <KuisSusun
+            id={idKuis("B", 8)}
+            soal="Susun bilangan dari yang besar ke yang kecil."
+            pool={[
+              { kunci: "8", tampil: "8" },
+              { kunci: "10", tampil: "10" },
+              { kunci: "7", tampil: "7" },
+              { kunci: "9", tampil: "9" },
+            ]}
+            benar={["10", "9", "8", "7"]}
+            umpanBenar="Benar! Itu menghitung mundur: 10, 9, 8, 7."
+            pesanSalah="Mulai dari bilangan paling besar."
+          />
+          <KuisAkhirAdegan
+            idSuara={idKuis("B", 5)}
+            pertanyaanSuara="Saat menghitung mundur, setelah 10 adalah berapa?"
+            aliasSuara={["9", "sembilan"]}
+            petunjukSuara="Sebutkan bilangan yang lebih kecil satu langkah."
           />
           <div className="border-t-2 border-[#1C01A5]/10 pt-5">
             <p className="text-base font-extrabold text-[#1C01A5]">QUIZ:</p>
@@ -1195,13 +1294,64 @@ export default function NaskahMtk1Bab1({
               petunjuk="Dengarkan, lalu jawab dengan suara."
             />
           </div>
-          <KuisTulisKartu
-            id={idKuisTulisKartu(MODUL_MTK1_BAB1.id, "B")}
-            hanyaKanvas
-            pertanyaan="Tulis jumlah kura-kura, tanda < > atau =, lalu jumlah kelinci. Contoh: 3 < 5."
-            alias={kumpulkanAlias(["3 < 5", "3<5", "tiga lebih sedikit daripada lima"])}
-            konteks="Kura-kura 3. Kelinci 5. Tiga lebih sedikit daripada lima."
-            visual={<div className="text-center text-2xl">🐢 🐢 🐢 &nbsp;&nbsp; 🐰 🐰 🐰 🐰 🐰</div>}
+        </div>
+
+        <JudulSubBab
+          judul="D. Pasangan Bilangan"
+          kelas={kelas}
+          kelamin={kelamin}
+          naskah={[
+            "Pasangan bilangan berarti satu jumlah dipisah menjadi dua kelompok.",
+            "Dua kelompok juga bisa digabung menjadi satu jumlah.",
+            "Rara memisahkan jeruk. Bimo memisahkan pisang. Igil menggabungkan buah.",
+          ]}
+        />
+        <div className="mt-4 space-y-3">
+          <Dialog nama="Rara" warna="border-[#DB2777]/20 bg-[#FDF2F8]">
+            “Ada 5 jeruk. Aku pisahkan: 2 di tangan kiri, 3 di tangan kanan.”
+          </Dialog>
+          <div className="grid gap-3 sm:grid-cols-2">
+            <article className="rounded-2xl border-2 border-orange-300 bg-orange-50 px-4 py-3 text-center">
+              <p className="text-xs font-black uppercase text-[#9A3412]">Kelompok pertama</p>
+              <IkonUlang ikon="🍊" jumlah={2} ukuran="text-3xl" />
+              <p className="text-2xl font-black text-[#1C01A5]">2</p>
+            </article>
+            <article className="rounded-2xl border-2 border-orange-300 bg-orange-50 px-4 py-3 text-center">
+              <p className="text-xs font-black uppercase text-[#9A3412]">Kelompok kedua</p>
+              <IkonUlang ikon="🍊" jumlah={3} ukuran="text-3xl" />
+              <p className="text-2xl font-black text-[#1C01A5]">3</p>
+            </article>
+          </div>
+          <p className="text-center text-lg font-black text-[#1C01A5]">2 dan 3 adalah pasangan untuk 5</p>
+          <Dialog nama="Bimo" warna="border-[#2563EB]/20 bg-[#EFF6FF]">
+            “4 pisang juga bisa dipisah. Satu untuk Igil. Tiga tetap di piring.”
+          </Dialog>
+          <p className="text-center text-lg font-black text-[#1C01A5]">1 dan 3 adalah pasangan untuk 4</p>
+          <Dialog nama="Igil" warna="border-amber-300 bg-amber-50">
+            “4 stroberi dan 4 pisang digabung. Bersama-sama ada 8. Pasangannya 4 dan 4.”
+          </Dialog>
+          <p className="text-center text-lg font-black text-[#1C01A5]">4 dan 4 adalah pasangan untuk 8</p>
+          <KuisAkhirAdegan
+            idSuara={idKuis("B", 6)}
+            idKanvas={idKuis("B", 7)}
+            pertanyaanSuara="Lima jeruk dipisah menjadi 2 dan berapa?"
+            aliasSuara={["3", "tiga"]}
+            petunjukSuara="Sebutkan kelompok yang satunya."
+            pertanyaanKanvas="Tuliskan pasangan bilangan 2 dan 3."
+            aliasKanvas={["2 dan 3", "2, 3", "2 3"]}
+            konteksKanvas="Lima jeruk dipisah menjadi 2 dan 3."
+          />
+          <KuisPilih
+            id={idKuis("B", 9)}
+            soal="Mana pasangan bilangan untuk 5?"
+            benar="A"
+            umpanBenar="Tepat! 2 dan 3 bersama-sama menjadi 5."
+            pesanSalah="Hitung dua kelompok itu. Jumlahnya harus 5."
+            pilihan={[
+              { huruf: "A", teks: "2 dan 3" },
+              { huruf: "B", teks: "4 dan 4" },
+              { huruf: "C", teks: "1 dan 6" },
+            ]}
           />
         </div>
       </KartuBingkai>
@@ -1210,7 +1360,7 @@ export default function NaskahMtk1Bab1({
         <p className="text-center text-4xl" aria-hidden>
           🏡🌷🏆
         </p>
-        <h4 className="mt-3 text-center text-lg font-black tracking-wide text-[#1C01A5] sm:text-xl">{kartuC.judul}</h4>
+        <h4 className="mt-3 text-center text-lg font-black tracking-wide text-[#1C01A5] sm:text-xl">Misi Penjaga Kebun Angka</h4>
         <p className="mt-1 text-center text-sm font-bold text-[#1C01A5]/70">
           Sepuluh petak · menghitung, membaca, menulis, membandingkan
         </p>
@@ -1236,8 +1386,12 @@ export default function NaskahMtk1Bab1({
           "Sama banyak berarti jumlah kedua kelompok sama.",
           "Mulut tanda > atau < terbuka ke bilangan yang lebih besar.",
           "Tanda = berarti kedua jumlah sama.",
+          "Bilangan 0 dibaca nol. Nol berarti tidak ada bendanya.",
+          "Menghitung maju berjalan dari bilangan kecil ke bilangan besar.",
+          "Menghitung mundur berjalan dari bilangan besar ke bilangan kecil.",
+          "Satu jumlah dapat dipisah menjadi dua kelompok. Itulah pasangan bilangan.",
         ]}
-        penutup="Kalimat kunci: “Hitung satu per satu, tulis angkanya, lalu bandingkan jumlahnya.”"
+        penutup="Kalimat kunci: “Hitung satu per satu, tulis angkanya, bandingkan, lalu cari pasangan bilangannya.”"
       />
 
       <KartuBingkai latar="bg-rose-50/80">

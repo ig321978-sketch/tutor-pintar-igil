@@ -12,7 +12,7 @@ export const MODUL_MTK1_BAB1: ModulResmiPai = {
   judul: JUDUL_MTK1_BAB1,
   pola: /ayo\s+berhitung|ayo\s+membilang\s+sampai(\s+dengan)?\s+10\b|piknik buah rara|rara dan bimo|permen warna-warni sani/,
   motivasi:
-    "Hore! Kamu sudah piknik bersama Rara, Bimo, dan Igil. Hitung buahnya satu per satu, tulis angkanya, lalu bandingkan jumlahnya.",
+    "Hore! Kamu sudah piknik bersama Rara, Bimo, dan Igil. Hitung buahnya, tulis angkanya, bandingkan jumlahnya, hitung maju dan mundur, lalu cari pasangan bilangannya.",
   kunciJawaban: "B,C,A,B,A,B,B,A,A,B",
   sketsaKartu: [
     "Rara dan Bimo piknik di taman, menghitung apel, jeruk, pisang, dan stroberi bersama Igil.",
@@ -85,7 +85,7 @@ C) Bimo, selisih 4`,
           nama: "Tujuan pembelajaran",
           singkat: "Membilang sampai 10",
           uraian:
-            "Siswa dapat menghitung benda sampai 10, membaca dan menulis lambang 1 sampai 10, mencocokkan jumlah dengan lambangnya, serta membandingkan lebih banyak, lebih sedikit, atau sama banyak.",
+            "Siswa dapat menghitung, membaca, dan menulis bilangan 0 sampai 10, membandingkan banyak benda, menghitung maju dan mundur, serta menemukan pasangan bilangan.",
           contoh: "Hitung satu per satu, lalu tulis angkanya.",
         },
         {
@@ -141,6 +141,18 @@ C) Bimo, selisih 4`,
           pertanyaan: "Tuliskan 4 = 4.",
           alias: ["4 = 4", "4=4", "empat sama dengan empat"],
         },
+        {
+          pertanyaan: "Piring kosong. Berapa jumlah buahnya?",
+          alias: ["0", "nol"],
+        },
+        {
+          pertanyaan: "Tuliskan lambang bilangan nol.",
+          alias: ["0", "nol"],
+        },
+        {
+          pertanyaan: "Bagaimana cara membaca lambang 8?",
+          alias: ["delapan"],
+        },
       ],
       voice: [
         [
@@ -189,6 +201,30 @@ C) Bimo, selisih 4`,
         {
           pertanyaan: "Ada delapan burung di pohon. Sebutkan bilangan sebelum delapan.",
           alias: ["tujuh", "7"],
+        },
+        {
+          pertanyaan: "Urutan maju: 1, 2, 3, lalu berapa?",
+          alias: ["4", "empat"],
+        },
+        {
+          pertanyaan: "Saat menghitung mundur, setelah 10 adalah berapa?",
+          alias: ["9", "sembilan"],
+        },
+        {
+          pertanyaan: "Lima jeruk dipisah menjadi 2 dan berapa?",
+          alias: ["3", "tiga"],
+        },
+        {
+          pertanyaan: "Tuliskan pasangan bilangan 2 dan 3.",
+          alias: ["2 dan 3", "2, 3", "2 3"],
+        },
+        {
+          pertanyaan: "Susun mundur: 10, 9, 8, 7.",
+          alias: ["10", "9", "8", "7"],
+        },
+        {
+          pertanyaan: "Mana pasangan bilangan untuk 5?",
+          alias: ["2 dan 3", "a"],
         },
       ],
       voice: [
