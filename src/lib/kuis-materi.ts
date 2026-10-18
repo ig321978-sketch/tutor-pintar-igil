@@ -7,13 +7,6 @@ import { MODUL_MTK1_BAB5 } from "@/lib/modul-resmi-mtk-1-bab5";
 import { MODUL_MTK1_BAB6 } from "@/lib/modul-resmi-mtk-1-bab6";
 import { MODUL_MTK1_BAB7 } from "@/lib/modul-resmi-mtk-1-bab7";
 import { MODUL_MTK1_BAB8 } from "@/lib/modul-resmi-mtk-1-bab8";
-import { MODUL_MTK1_BAB9 } from "@/lib/modul-resmi-mtk-1-bab9";
-import { MODUL_MTK1_BAB10 } from "@/lib/modul-resmi-mtk-1-bab10";
-import { MODUL_MTK1_BAB11 } from "@/lib/modul-resmi-mtk-1-bab11";
-import { MODUL_MTK1_BAB12 } from "@/lib/modul-resmi-mtk-1-bab12";
-import { MODUL_MTK1_BAB13 } from "@/lib/modul-resmi-mtk-1-bab13";
-import { MODUL_MTK1_BAB14 } from "@/lib/modul-resmi-mtk-1-bab14";
-import { MODUL_MTK1_BAB15 } from "@/lib/modul-resmi-mtk-1-bab15";
 import { MODUL_MTK3_BAB1 } from "@/lib/modul-resmi-mtk-3-bab1";
 import { MODUL_MTK3_BAB2 } from "@/lib/modul-resmi-mtk-3-bab2";
 import { MODUL_MTK3_PERKALIAN } from "@/lib/modul-resmi-mtk-3-perkalian";
@@ -50,13 +43,6 @@ import {
   adalahMtk1Bab6,
   adalahMtk1Bab7,
   adalahMtk1Bab8,
-  adalahMtk1Bab9,
-  adalahMtk1Bab10,
-  adalahMtk1Bab11,
-  adalahMtk1Bab12,
-  adalahMtk1Bab13,
-  adalahMtk1Bab14,
-  adalahMtk1Bab15,
   adalahMtk3Bab1,
   adalahMtk3Bab2,
   adalahMtk3Perkalian,
@@ -431,27 +417,6 @@ export function daftarIdKuisMateri(
   }
   if (adalahMtk1Bab8(kelas, mapel, materi)) {
     return idKuisDariModulResmi(MODUL_MTK1_BAB8);
-  }
-  if (adalahMtk1Bab9(kelas, mapel, materi)) {
-    return idKuisDariModulResmi(MODUL_MTK1_BAB9);
-  }
-  if (adalahMtk1Bab10(kelas, mapel, materi)) {
-    return idKuisDariModulResmi(MODUL_MTK1_BAB10);
-  }
-  if (adalahMtk1Bab11(kelas, mapel, materi)) {
-    return idKuisDariModulResmi(MODUL_MTK1_BAB11);
-  }
-  if (adalahMtk1Bab12(kelas, mapel, materi)) {
-    return idKuisDariModulResmi(MODUL_MTK1_BAB12);
-  }
-  if (adalahMtk1Bab13(kelas, mapel, materi)) {
-    return idKuisDariModulResmi(MODUL_MTK1_BAB13);
-  }
-  if (adalahMtk1Bab14(kelas, mapel, materi)) {
-    return idKuisDariModulResmi(MODUL_MTK1_BAB14);
-  }
-  if (adalahMtk1Bab15(kelas, mapel, materi)) {
-    return idKuisDariModulResmi(MODUL_MTK1_BAB15);
   }
   if (adalahPancasila1Bab1(kelas, mapel, materi)) {
     return idKuisDariModulResmi(MODUL_PANCASILA1_BAB1);

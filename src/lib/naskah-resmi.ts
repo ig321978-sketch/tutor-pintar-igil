@@ -20,13 +20,6 @@ import { MODUL_MTK1_BAB5 } from "@/lib/modul-resmi-mtk-1-bab5";
 import { MODUL_MTK1_BAB6 } from "@/lib/modul-resmi-mtk-1-bab6";
 import { MODUL_MTK1_BAB7 } from "@/lib/modul-resmi-mtk-1-bab7";
 import { MODUL_MTK1_BAB8 } from "@/lib/modul-resmi-mtk-1-bab8";
-import { MODUL_MTK1_BAB9 } from "@/lib/modul-resmi-mtk-1-bab9";
-import { MODUL_MTK1_BAB10 } from "@/lib/modul-resmi-mtk-1-bab10";
-import { MODUL_MTK1_BAB11 } from "@/lib/modul-resmi-mtk-1-bab11";
-import { MODUL_MTK1_BAB12 } from "@/lib/modul-resmi-mtk-1-bab12";
-import { MODUL_MTK1_BAB13 } from "@/lib/modul-resmi-mtk-1-bab13";
-import { MODUL_MTK1_BAB14 } from "@/lib/modul-resmi-mtk-1-bab14";
-import { MODUL_MTK1_BAB15 } from "@/lib/modul-resmi-mtk-1-bab15";
 import { MODUL_MTK3_BAB1 } from "@/lib/modul-resmi-mtk-3-bab1";
 import { MODUL_MTK3_BAB2 } from "@/lib/modul-resmi-mtk-3-bab2";
 import { MODUL_MTK3_PERKALIAN } from "@/lib/modul-resmi-mtk-3-perkalian";
@@ -323,104 +316,6 @@ export function adalahMtk1Bab8(
 ): boolean {
   if (!kelasSatuSd(kelas)) return false;
   return adalahJudulMtk1Bab8(mapel, materi);
-}
-
-export function adalahJudulMtk1Bab9(mapel: string, materi: string): boolean {
-  if (!adalahMapelMatematika(mapel)) return false;
-  return /bilangan\s+sampai\s+100\b/.test(normJudul(materi));
-}
-
-export function adalahMtk1Bab9(
-  kelas: string,
-  mapel: string,
-  materi: string,
-): boolean {
-  if (!kelasSatuSd(kelas)) return false;
-  return adalahJudulMtk1Bab9(mapel, materi);
-}
-
-export function adalahJudulMtk1Bab10(mapel: string, materi: string): boolean {
-  if (!adalahMapelMatematika(mapel)) return false;
-  return /penjumlahan\s+dan\s+pengurangan\s+sampai\s+100\b/.test(normJudul(materi));
-}
-
-export function adalahMtk1Bab10(
-  kelas: string,
-  mapel: string,
-  materi: string,
-): boolean {
-  if (!kelasSatuSd(kelas)) return false;
-  return adalahJudulMtk1Bab10(mapel, materi);
-}
-
-export function adalahJudulMtk1Bab11(mapel: string, materi: string): boolean {
-  if (!adalahMapelMatematika(mapel)) return false;
-  return /pola\s+bilangan\s+dan\s+pola\s+gambar\b/.test(normJudul(materi));
-}
-
-export function adalahMtk1Bab11(
-  kelas: string,
-  mapel: string,
-  materi: string,
-): boolean {
-  if (!kelasSatuSd(kelas)) return false;
-  return adalahJudulMtk1Bab11(mapel, materi);
-}
-
-export function adalahJudulMtk1Bab12(mapel: string, materi: string): boolean {
-  if (!adalahMapelMatematika(mapel)) return false;
-  return /pengukuran\s+berat\b/.test(normJudul(materi));
-}
-
-export function adalahMtk1Bab12(
-  kelas: string,
-  mapel: string,
-  materi: string,
-): boolean {
-  if (!kelasSatuSd(kelas)) return false;
-  return adalahJudulMtk1Bab12(mapel, materi);
-}
-
-export function adalahJudulMtk1Bab13(mapel: string, materi: string): boolean {
-  if (!adalahMapelMatematika(mapel)) return false;
-  return /waktu\s+dan\s+durasi\b/.test(normJudul(materi));
-}
-
-export function adalahMtk1Bab13(
-  kelas: string,
-  mapel: string,
-  materi: string,
-): boolean {
-  if (!kelasSatuSd(kelas)) return false;
-  return adalahJudulMtk1Bab13(mapel, materi);
-}
-
-export function adalahJudulMtk1Bab14(mapel: string, materi: string): boolean {
-  if (!adalahMapelMatematika(mapel)) return false;
-  return /bangun\s+datar\s+dan\s+bangun\s+ruang\b/.test(normJudul(materi));
-}
-
-export function adalahMtk1Bab14(
-  kelas: string,
-  mapel: string,
-  materi: string,
-): boolean {
-  if (!kelasSatuSd(kelas)) return false;
-  return adalahJudulMtk1Bab14(mapel, materi);
-}
-
-export function adalahJudulMtk1Bab15(mapel: string, materi: string): boolean {
-  if (!adalahMapelMatematika(mapel)) return false;
-  return /uang\s+dan\s+pemecahan\s+masalah\b/.test(normJudul(materi));
-}
-
-export function adalahMtk1Bab15(
-  kelas: string,
-  mapel: string,
-  materi: string,
-): boolean {
-  if (!kelasSatuSd(kelas)) return false;
-  return adalahJudulMtk1Bab15(mapel, materi);
 }
 
 export function adalahJudulMtk3Bab1(mapel: string, materi: string): boolean {
@@ -1236,13 +1131,6 @@ export function daftarNaskahResmiPublik(): ModulTerbitPublik[] {
     { kelas: "1 SD", mapel: "Matematika", materi: MODUL_MTK1_BAB6.judul },
     { kelas: "1 SD", mapel: "Matematika", materi: MODUL_MTK1_BAB7.judul },
     { kelas: "1 SD", mapel: "Matematika", materi: MODUL_MTK1_BAB8.judul },
-    { kelas: "1 SD", mapel: "Matematika", materi: MODUL_MTK1_BAB9.judul },
-    { kelas: "1 SD", mapel: "Matematika", materi: MODUL_MTK1_BAB10.judul },
-    { kelas: "1 SD", mapel: "Matematika", materi: MODUL_MTK1_BAB11.judul },
-    { kelas: "1 SD", mapel: "Matematika", materi: MODUL_MTK1_BAB12.judul },
-    { kelas: "1 SD", mapel: "Matematika", materi: MODUL_MTK1_BAB13.judul },
-    { kelas: "1 SD", mapel: "Matematika", materi: MODUL_MTK1_BAB14.judul },
-    { kelas: "1 SD", mapel: "Matematika", materi: MODUL_MTK1_BAB15.judul },
     { kelas: "3 SD", mapel: "Matematika", materi: MODUL_MTK3_BAB1.judul },
     { kelas: "3 SD", mapel: "Matematika", materi: MODUL_MTK3_BAB2.judul },
     { kelas: "3 SD", mapel: "Matematika", materi: MODUL_MTK3_PERKALIAN.judul },
@@ -1355,27 +1243,6 @@ export function naskahResmiJikaAda(
   }
   if (adalahMtk1Bab8(kelas, mapel, materi)) {
     return isiCacheDariModulResmi(MODUL_MTK1_BAB8);
-  }
-  if (adalahMtk1Bab9(kelas, mapel, materi)) {
-    return isiCacheDariModulResmi(MODUL_MTK1_BAB9);
-  }
-  if (adalahMtk1Bab10(kelas, mapel, materi)) {
-    return isiCacheDariModulResmi(MODUL_MTK1_BAB10);
-  }
-  if (adalahMtk1Bab11(kelas, mapel, materi)) {
-    return isiCacheDariModulResmi(MODUL_MTK1_BAB11);
-  }
-  if (adalahMtk1Bab12(kelas, mapel, materi)) {
-    return isiCacheDariModulResmi(MODUL_MTK1_BAB12);
-  }
-  if (adalahMtk1Bab13(kelas, mapel, materi)) {
-    return isiCacheDariModulResmi(MODUL_MTK1_BAB13);
-  }
-  if (adalahMtk1Bab14(kelas, mapel, materi)) {
-    return isiCacheDariModulResmi(MODUL_MTK1_BAB14);
-  }
-  if (adalahMtk1Bab15(kelas, mapel, materi)) {
-    return isiCacheDariModulResmi(MODUL_MTK1_BAB15);
   }
   if (adalahMtk3Bab1(kelas, mapel, materi)) {
     return isiCacheDariModulResmi(MODUL_MTK3_BAB1);
@@ -1531,13 +1398,6 @@ export function naskahTampilanResmi(teks?: string): boolean {
   if (naskahTampilanModulResmi(MODUL_MTK1_BAB6, teks)) return true;
   if (naskahTampilanModulResmi(MODUL_MTK1_BAB7, teks)) return true;
   if (naskahTampilanModulResmi(MODUL_MTK1_BAB8, teks)) return true;
-  if (naskahTampilanModulResmi(MODUL_MTK1_BAB9, teks)) return true;
-  if (naskahTampilanModulResmi(MODUL_MTK1_BAB10, teks)) return true;
-  if (naskahTampilanModulResmi(MODUL_MTK1_BAB11, teks)) return true;
-  if (naskahTampilanModulResmi(MODUL_MTK1_BAB12, teks)) return true;
-  if (naskahTampilanModulResmi(MODUL_MTK1_BAB13, teks)) return true;
-  if (naskahTampilanModulResmi(MODUL_MTK1_BAB14, teks)) return true;
-  if (naskahTampilanModulResmi(MODUL_MTK1_BAB15, teks)) return true;
   if (naskahTampilanModulResmi(MODUL_MTK3_BAB1, teks)) return true;
   if (naskahTampilanModulResmi(MODUL_MTK4_BAB1, teks)) return true;
   if (naskahTampilanModulResmi(MODUL_MTK4_BAB2, teks)) return true;
@@ -1626,27 +1486,6 @@ export function teksLisanResmiJikaAda(teks?: string): string | null {
   }
   if (naskahTampilanModulResmi(MODUL_MTK1_BAB8, teks)) {
     return teksLisanModulResmi(MODUL_MTK1_BAB8);
-  }
-  if (naskahTampilanModulResmi(MODUL_MTK1_BAB9, teks)) {
-    return teksLisanModulResmi(MODUL_MTK1_BAB9);
-  }
-  if (naskahTampilanModulResmi(MODUL_MTK1_BAB10, teks)) {
-    return teksLisanModulResmi(MODUL_MTK1_BAB10);
-  }
-  if (naskahTampilanModulResmi(MODUL_MTK1_BAB11, teks)) {
-    return teksLisanModulResmi(MODUL_MTK1_BAB11);
-  }
-  if (naskahTampilanModulResmi(MODUL_MTK1_BAB12, teks)) {
-    return teksLisanModulResmi(MODUL_MTK1_BAB12);
-  }
-  if (naskahTampilanModulResmi(MODUL_MTK1_BAB13, teks)) {
-    return teksLisanModulResmi(MODUL_MTK1_BAB13);
-  }
-  if (naskahTampilanModulResmi(MODUL_MTK1_BAB14, teks)) {
-    return teksLisanModulResmi(MODUL_MTK1_BAB14);
-  }
-  if (naskahTampilanModulResmi(MODUL_MTK1_BAB15, teks)) {
-    return teksLisanModulResmi(MODUL_MTK1_BAB15);
   }
   if (naskahTampilanModulResmi(MODUL_MTK3_BAB1, teks)) {
     return teksLisanModulResmi(MODUL_MTK3_BAB1);
