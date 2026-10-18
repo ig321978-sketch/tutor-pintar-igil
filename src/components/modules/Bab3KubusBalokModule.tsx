@@ -699,16 +699,7 @@ function MaterialVisualGraphic({ type }: { type: VisualSlide["visualComponentTyp
         <p className="text-center text-sm font-black text-sky-950">
           Kubus di atas tidak bisa melayang. Yang tertutup di bawah tetap dihitung.
         </p>
-        <div className="mt-4 grid grid-cols-1 gap-4 lg:grid-cols-[auto_auto_1fr] lg:items-center">
-          <div className="rounded-2xl border-4 border-rose-300 bg-white p-4 text-center">
-            <p className="text-sm font-black text-rose-700">Salah: hanya yang kelihatan</p>
-            <div className="mt-3 flex justify-center gap-1">
-              <KotakDoodle isi="?" kelas="border-rose-600 bg-rose-200 text-rose-900" />
-              <KotakDoodle isi="?" kelas="border-rose-600 bg-rose-200 text-rose-900" />
-            </div>
-            <p className="mt-2 text-sm font-bold text-rose-700">mata cuma melihat 2</p>
-          </div>
-          <p className="text-center text-2xl font-black text-sky-700">→</p>
+        <div className="mt-4">
           <div className="rounded-2xl border-4 border-sky-300 bg-white p-4">
             <p className="text-sm font-black text-sky-800">Benar: bongkar per lantai</p>
             <div className="mt-3">
