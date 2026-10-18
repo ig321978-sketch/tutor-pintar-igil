@@ -839,60 +839,101 @@ export default function Bab3KubusBalokModule() {
         ================================================================ */}
         {activeTab === "materi" && (
           <div className="space-y-6">
-            {/* Pilihan Sub-Bab */}
+            {/* Pilihan 3 Sub-Bab Buku Siswa */}
             <div className="grid grid-cols-1 md:grid-cols-3 gap-3">
               {BAB3_MATERIALS.map((sub, idx) => (
                 <button
                   key={sub.id}
                   onClick={() => setSelectedSubBab(idx)}
-                  className={`p-4 rounded-xl border text-left transition ${
+                  className={`p-4 rounded-2xl border text-left transition ${
                     selectedSubBab === idx
-                      ? "bg-indigo-600 text-white border-indigo-600 shadow-md"
+                      ? "bg-indigo-600 text-white border-indigo-600 shadow-lg scale-[1.01]"
                       : "bg-white text-slate-700 border-slate-200 hover:border-indigo-300"
                   }`}
                 >
-                  <div className="text-xs font-extrabold uppercase opacity-80">{sub.code}</div>
-                  <div className="font-bold text-base mt-0.5">{sub.title}</div>
-                  <div className="text-xs opacity-85 mt-1">{sub.subtitle}</div>
+                  <div className="text-[11px] font-extrabold uppercase tracking-wider opacity-80">{sub.code}</div>
+                  <div className="font-extrabold text-base mt-0.5">{sub.title}</div>
+                  <div className="text-xs opacity-85 mt-1 line-clamp-1">{sub.subtitle}</div>
                 </button>
               ))}
             </div>
 
-            {/* Konten Sub-Bab Aktif */}
+            {/* Isi Konten Pembelajaran Mandiri (Bite-Sized Cards) */}
             {(() => {
               const current = BAB3_MATERIALS[selectedSubBab];
               return (
                 <div className="space-y-6">
-                  {current.slides.map((slide, sIdx) => (
-                    <article key={sIdx} className="bg-white rounded-2xl border border-slate-200 p-6 shadow-sm space-y-4">
-                      <div className="text-xs font-extrabold uppercase tracking-wider text-indigo-600">{slide.badge}</div>
-                      <h3 className="text-lg font-extrabold text-slate-800">{slide.title}</h3>
-                      <p className="text-slate-700 text-base leading-relaxed">{slide.explanation}</p>
-                      <MaterialVisualGraphic type={slide.visualComponentType} />
-                      <ul className="space-y-2.5">
-                        {slide.keyTakeaways.map((pt, pIdx) => (
-                          <li key={pIdx} className="flex items-start gap-2.5 text-sm text-slate-700">
-                            <span className="bg-indigo-100 text-indigo-700 font-bold rounded-full w-5 h-5 flex items-center justify-center text-xs shrink-0 mt-0.5">
-                              ✓
-                            </span>
-                            <span>{pt}</span>
-                          </li>
-                        ))}
-                      </ul>
-                      <div className="bg-amber-50 border border-amber-300 text-amber-950 px-4 py-3 rounded-xl text-sm font-semibold">
-                        {slide.commonTrap}
-                      </div>
-                    </article>
-                  ))}
+                  {/* Header Sub-Bab */}
+                  <div className="bg-white rounded-2xl p-6 border border-slate-200 shadow-sm flex flex-col md:flex-row md:items-center justify-between gap-4">
+                    <div>
+                      <span className="text-xs font-extrabold text-indigo-700 bg-indigo-50 px-3 py-1 rounded-full uppercase">
+                        {current.code} • Belajar Mandiri Terarah
+                      </span>
+                      <h2 className="text-2xl font-black text-slate-800 mt-1">{current.title}</h2>
+                      <p className="text-sm text-slate-600 mt-0.5">{current.subtitle}</p>
+                    </div>
+                    <button
+                      onClick={() => setActiveTab("simulator")}
+                      className="bg-amber-400 hover:bg-amber-500 text-slate-900 font-extrabold px-5 py-2.5 rounded-xl text-xs shadow self-start md:self-auto shrink-0 transition"
+                    >
+                      🧪 Buka Simulator 3D Bab Ini →
+                    </button>
+                  </div>
 
+                  {/* Kartu-Kartu Slide Materi Bergambar */}
+                  <div className="grid grid-cols-1 gap-6">
+                    {current.slides.map((slide, sIdx) => (
+                      <div key={sIdx} className="bg-white rounded-2xl border border-indigo-100 p-6 shadow-sm space-y-4">
+                        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 border-b border-slate-100 pb-3">
+                          <div>
+                            <span className="text-[11px] font-black uppercase text-indigo-600 bg-indigo-50 px-2.5 py-1 rounded-md">
+                              {slide.badge}
+                            </span>
+                            <h3 className="text-lg font-extrabold text-slate-800 mt-1.5">{slide.title}</h3>
+                          </div>
+                        </div>
+
+                        <p className="text-slate-700 text-sm leading-relaxed">{slide.explanation}</p>
+
+                        {/* Komponen Visualisasi SVG / Diagram */}
+                        <MaterialVisualGraphic type={slide.visualComponentType} />
+
+                        {/* Poin Kunci Belajar Mandiri */}
+                        <div className="bg-slate-50 rounded-xl p-4 border border-slate-200">
+                          <div className="text-xs font-extrabold text-slate-700 uppercase tracking-wider mb-2">
+                            🎯 Rangkuman Konsep Penting:
+                          </div>
+                          <ul className="space-y-2">
+                            {slide.keyTakeaways.map((point, pIdx) => (
+                              <li key={pIdx} className="text-xs text-slate-700 flex items-start gap-2">
+                                <span className="text-emerald-600 font-bold">✔</span>
+                                <span>{point}</span>
+                              </li>
+                            ))}
+                          </ul>
+                        </div>
+
+                        {/* Jebakan / Miskonsepsi Siswa */}
+                        <div className="bg-rose-50 border border-rose-200 text-rose-900 px-4 py-2.5 rounded-xl text-xs font-bold">
+                          {slide.commonTrap}
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+
+                  {/* Kamus Istilah Bergambar */}
                   <div className="bg-white rounded-2xl border border-slate-200 p-6">
-                    <h4 className="font-extrabold text-slate-800 text-base mb-3">Kamus Cilik</h4>
-                    <div className="grid grid-cols-1 md:grid-cols-3 gap-3">
-                      {current.kamusCilik.map((d) => (
-                        <div key={d.kata} className="border border-slate-100 rounded-xl p-4">
-                          <div className="text-2xl">{d.ikon}</div>
-                          <div className="font-bold text-indigo-700 text-sm mt-1">{d.kata}</div>
-                          <p className="text-slate-600 text-sm mt-1">{d.arti}</p>
+                    <h4 className="font-extrabold text-slate-800 text-base mb-3 flex items-center gap-2">
+                      <span>📖</span> Kamus Cilik Bab 3 (Ingat Kata Kunci Ini!)
+                    </h4>
+                    <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
+                      {current.kamusCilik.map((k, kIdx) => (
+                        <div key={kIdx} className="bg-slate-50 p-4 rounded-xl border border-slate-200 flex flex-col justify-between">
+                          <div>
+                            <div className="text-2xl mb-1">{k.ikon}</div>
+                            <div className="font-extrabold text-indigo-700 text-sm">{k.kata}</div>
+                            <div className="text-xs text-slate-600 mt-1 leading-relaxed">{k.arti}</div>
+                          </div>
                         </div>
                       ))}
                     </div>
