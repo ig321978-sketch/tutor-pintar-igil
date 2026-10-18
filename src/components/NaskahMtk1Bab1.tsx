@@ -1102,6 +1102,11 @@ export default function NaskahMtk1Bab1({
           ]}
         />
         <div className="mt-4 space-y-3">
+          <GambarCerita
+            src="/doodle-mtk/mtk-1-bab1-banding.jpg"
+            alt="Piring kiri tiga apel. Piring kanan lima jeruk. Lima lebih besar dari tiga."
+          />
+          <p className="text-center text-4xl font-black text-[#1C01A5]">5 &gt; 3</p>
           <div className="grid gap-3 sm:grid-cols-2">
             <article className="rounded-2xl border-2 border-[#E23B3B]/25 bg-[#FFF1F2] px-4 py-3">
               <p className="text-xs font-black uppercase text-[#9F1239]">Piring kiri · apel</p>
@@ -1121,11 +1126,6 @@ export default function NaskahMtk1Bab1({
           <Dialog nama="Bimo" warna="border-[#2563EB]/20 bg-[#EFF6FF]">
             “Benar! Lima lebih besar daripada tiga.”
           </Dialog>
-          <GambarCerita
-            src="/doodle-mtk/mtk-1-bab1-banding.jpg"
-            alt="Piring kiri tiga apel. Piring kanan lima jeruk. Lima lebih besar dari tiga."
-          />
-          <p className="text-center text-4xl font-black text-[#1C01A5]">5 &gt; 3</p>
           <KuisAkhirAdegan
             idSuara={idKuis("A", 7)}
             idKanvas={idKuis("A", 8)}
@@ -1230,6 +1230,10 @@ export default function NaskahMtk1Bab1({
           ]}
         />
         <div className="mt-4 space-y-3">
+          <GambarCerita
+            src="/doodle-mtk/mtk-1-bab1-maju.jpg"
+            alt="Igil si burung hantu naik ke dahan. Rara dan Bimo menatap ke atas."
+          />
           <Dialog nama="Igil" warna="border-amber-300 bg-amber-50">
             “Aku naik dahan. Hitung maju bersamaku: 1, 2, 3.”
           </Dialog>
@@ -1307,6 +1311,10 @@ export default function NaskahMtk1Bab1({
           ]}
         />
         <div className="mt-4 space-y-3">
+          <GambarCerita
+            src="/doodle-mtk/mtk-1-bab1-pasangan.jpg"
+            alt="Rara memegang dua jeruk di tangan kiri dan tiga jeruk di tangan kanan. Bimo dan Igil melihat."
+          />
           <Dialog nama="Rara" warna="border-[#DB2777]/20 bg-[#FDF2F8]">
             “Ada 5 jeruk. Aku pisahkan: 2 di tangan kiri, 3 di tangan kanan.”
           </Dialog>
