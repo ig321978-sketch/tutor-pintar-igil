@@ -35,7 +35,8 @@ import {
   simpanModulLokal,
 } from "@/lib/cache-modul-lokal";
 import { kandidatKunciMateri, kunciMateriTutor } from "@/lib/kunci-siswa";
-import { adalahMtk6Bab3, naskahResmiJikaAda } from "@/lib/naskah-resmi";
+import { adalahMtk6Bab2, adalahMtk6Bab3, naskahResmiJikaAda } from "@/lib/naskah-resmi";
+import Bab2RasioModule from "@/components/modules/Bab2RasioModule";
 import Bab3KubusBalokModule from "@/components/modules/Bab3KubusBalokModule";
 import { useUserRole } from "@/hooks/useUserRole";
 import {
@@ -422,10 +423,16 @@ export default function TutorAI() {
   );
   const judulMateriSesi = sesiMateri || (modeInput === "teks" ? bab : "Analisis halaman buku");
   const judulKelasSesi = teksQuery(params.get("kelas"), kelas);
+  const materiSesi = teksQuery(params.get("materi"), judulMateriSesi);
+  const halamanResmiBab2 = adalahMtk6Bab2(
+    judulKelasSesi,
+    judulMapelSesi,
+    materiSesi,
+  );
   const halamanResmiBab3 = adalahMtk6Bab3(
     judulKelasSesi,
     judulMapelSesi,
-    teksQuery(params.get("materi"), judulMateriSesi),
+    materiSesi,
   );
   const opsiBagian = daftarBagianModul(judulMapelSesi).filter((id) =>
     kunciPublik ? id !== "simulasi" && id !== "praktikum" : true,
@@ -1763,7 +1770,7 @@ export default function TutorAI() {
       ) : (
         <>
         <div className="w-full px-2 pt-6 pb-8 animate-in slide-in-from-bottom-10 duration-700">
-          {halamanResmiBab3 ? (
+          {halamanResmiBab2 || halamanResmiBab3 ? (
             <>
               <button
                 type="button"
@@ -1772,7 +1779,7 @@ export default function TutorAI() {
               >
                 <ArrowLeft className="w-5 h-5" /> Ganti Materi
               </button>
-              <Bab3KubusBalokModule />
+              {halamanResmiBab2 ? <Bab2RasioModule /> : <Bab3KubusBalokModule />}
             </>
           ) : (
           <>
