@@ -1320,7 +1320,7 @@ export default function Bab3KubusBalokModule() {
   return (
     <div className="min-h-screen bg-slate-50 text-slate-800 pb-16">
       {/* HEADER UTAMA & STATUS TOKEN */}
-      <header className="bg-gradient-to-r from-indigo-700 via-indigo-600 to-violet-700 text-white shadow-lg sticky top-0 z-30">
+      <header className="bg-gradient-to-r from-indigo-700 via-indigo-600 to-violet-700 text-white shadow-lg">
         <div className="max-w-6xl mx-auto px-4 py-4 flex flex-col md:flex-row md:items-center md:justify-between gap-4">
           <div>
             <div className="flex items-center gap-2 text-xs font-semibold uppercase tracking-wider bg-indigo-900/50 px-3 py-1 rounded-full w-fit mb-1">
