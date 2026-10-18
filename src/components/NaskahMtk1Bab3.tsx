@@ -401,7 +401,6 @@ function DuaCaraEmpat() {
 function HookPesta() {
   return (
     <article className="rounded-2xl border-2 border-[#16A34A]/25 bg-[#F0FDF4] px-4 py-3">
-      <p className="text-xl font-black tracking-wide text-[#166534]">Cerita: Pesta Ulang Tahun yang Hilang</p>
       <GambarCerita
         src="/doodle-mtk/mtk-1-bab3-pesta.jpg"
         alt="Pesta malam di rumah Rara. Ada 8 balon, kue, dan Igil si tikus berkacamata."
@@ -946,21 +945,18 @@ export default function NaskahMtk1Bab3({
         <KepalaKartu
           ikon="🎈🎂🦉"
           judul={kartuA.judul}
-          anak="Pengurangan sampai dengan 10"
           kelas={kelas}
           kelamin={kelamin}
           cuplikan={cuplikanDariNaskah(kartuA.voice, 2_000, 3_000)}
         />
-        <div className="mt-4 rounded-2xl border-2 border-sky-300 bg-sky-50 px-4 py-3">
-          <TujuanBelajar
-            butir={[
-              "Membuat cerita pengurangan, lalu menulisnya dengan tanda - dan =.",
-              "Mengurangi dengan pasangan bilangan, menghitung mundur, dan pengurangan dari 10.",
-              "Melihat hubungan penjumlahan dan pengurangan.",
-              "Menyelesaikan soal cerita pengurangan sampai 10.",
-            ]}
-          />
-        </div>
+        <TujuanBelajar
+          butir={[
+            "Membuat cerita pengurangan, lalu menulisnya dengan tanda - dan =.",
+            "Mengurangi dengan pasangan bilangan, menghitung mundur, dan pengurangan dari 10.",
+            "Melihat hubungan penjumlahan dan pengurangan.",
+            "Menyelesaikan soal cerita pengurangan sampai 10.",
+          ]}
+        />
         <IsiCerita kelas={kelas} kelamin={kelamin} />
         <IsiCara kelas={kelas} kelamin={kelamin} />
       </KartuBingkai>

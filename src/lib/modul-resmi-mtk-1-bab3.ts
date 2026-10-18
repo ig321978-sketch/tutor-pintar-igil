@@ -86,7 +86,7 @@ D) 12`,
   kartu: [
     {
       kode: "A",
-      judul: "A. Pesta Ulang Tahun yang Hilang",
+      judul: "Pesta Ulang Tahun yang Hilang",
       pengantar:
         "Angin membawa 3 balon Rara. Dulu ada 8, yang hilang 3, sisa 5. Tanda kurang artinya diambil atau dipisahkan.",
       labelDaftar: "Balon terbang dan kue yang dimakan",
