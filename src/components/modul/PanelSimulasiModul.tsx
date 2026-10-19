@@ -2,7 +2,7 @@
 
 import { useRef } from "react";
 import SimulasiMtk1Bab1 from "@/components/modules/SimulasiMtk1Bab1";
-import SimulasiPenjumlahanKelas1 from "@/components/modules/SimulasiPenjumlahanKelas1";
+import SimulasiPhetPenjumlahanKelas1 from "@/components/modules/SimulasiPhetPenjumlahanKelas1";
 import { adalahMtk1Bab1, adalahMtk1Bab2 } from "@/lib/naskah-resmi";
 
 type PanelSimulasiProps = {
@@ -37,11 +37,11 @@ function PanelSimulasiPenjumlahan({
 }: Pick<PanelSimulasiProps, "sudahLulus" | "onSelesai">) {
   const dicatat = useRef(sudahLulus);
   return (
-    <SimulasiPenjumlahanKelas1
+    <SimulasiPhetPenjumlahanKelas1
       onBenar={() => {
         if (dicatat.current) return;
         dicatat.current = true;
-        onSelesai?.(true, "Kereta penjumlahan apel selesai.");
+        onSelesai?.(true, "Lab batang blok dan garis bilangan selesai.");
       }}
     />
   );
