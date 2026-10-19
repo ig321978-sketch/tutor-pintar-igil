@@ -11,7 +11,6 @@ import TujuanBelajar from "@/components/TujuanBelajar";
 import TombolVoiceMateriPai1 from "@/components/TombolVoiceMateriPai1";
 import { NamaDialog } from "@/components/IkonDialogMtk1";
 import { useKuisMateri } from "@/components/KuisMateriContext";
-import SimulasiPenjumlahanKelas1 from "@/components/modules/SimulasiPenjumlahanKelas1";
 import { SLOT_AJUAN_SEBELUM_KARTU_D } from "@/components/NaskahMtk2Bab1";
 import { kelasTombolHasilKuis, statusDariPilihan, type StatusJawabanKuis } from "@/lib/hasil-kuis";
 import { MISI_MTK1_BAB2, type MisiPetak, type WarnaPetak } from "@/lib/misi-kebun-mtk-1";
@@ -1158,8 +1157,6 @@ export default function NaskahMtk1Bab2({
         ]}
         penutup="Kalimat kunci: “Gabungkan dua kelompok, tulis operasinya, lalu hitung hasilnya.”"
       />
-
-      <SimulasiPenjumlahanKelas1 />
 
       <KartuBingkai latar="bg-rose-50/80">
         <p className="text-center text-4xl" aria-hidden>

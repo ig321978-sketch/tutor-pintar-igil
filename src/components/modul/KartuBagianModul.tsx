@@ -26,7 +26,7 @@ const META: Record<
   },
   simulasi: {
     judul: "Simulasi",
-    ringkas: "Mainkan lab, kerjakan misi, kirim bukti ke guru AI",
+    ringkas: "Mainkan lab buatan IGIL dan selesaikan tantangannya",
     gambar: "/kartu-modul/simulasi.png",
   },
   latihan: {

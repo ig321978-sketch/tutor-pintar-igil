@@ -1,6 +1,6 @@
 "use client";
 import React, { useState } from "react";
-export default function SimulasiPenjumlahanKelas1() {
+export default function SimulasiPenjumlahanKelas1({ onBenar }: { onBenar?: () => void }) {
   // State untuk jumlah apel di Kereta A dan Kereta B (Maksimal total 10)
   const [applesA, setApplesA] = useState<number>(3);
   const [applesB, setApplesB] = useState<number>(2);
@@ -24,6 +24,7 @@ export default function SimulasiPenjumlahanKelas1() {
         status: "correct",
         message: `🎉 Hore! Hebat sekali! ${applesA} ditambah ${applesB} hasilnya adalah ${correctAnswer}! Bintang untukmu! ⭐`,
       });
+      onBenar?.();
     } else {
       setFeedback({
         status: "incorrect",
