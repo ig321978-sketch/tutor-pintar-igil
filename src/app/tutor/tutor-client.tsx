@@ -35,7 +35,7 @@ import {
   simpanModulLokal,
 } from "@/lib/cache-modul-lokal";
 import { kandidatKunciMateri, kunciMateriTutor } from "@/lib/kunci-siswa";
-import { adalahMtk1Bab1, adalahMtk6Bab3, naskahResmiJikaAda } from "@/lib/naskah-resmi";
+import { adalahMtk1Bab1, adalahMtk1Bab2, adalahMtk6Bab3, naskahResmiJikaAda } from "@/lib/naskah-resmi";
 import Bab3KubusBalokModule from "@/components/modules/Bab3KubusBalokModule";
 import { useUserRole } from "@/hooks/useUserRole";
 import {
@@ -428,11 +428,13 @@ export default function TutorAI() {
     judulMapelSesi,
     materiSesi,
   );
-  const labMembilangBab1 = adalahMtk1Bab1(judulKelasSesi, judulMapelSesi, materiSesi);
+  const labSendiri =
+    adalahMtk1Bab1(judulKelasSesi, judulMapelSesi, materiSesi) ||
+    adalahMtk1Bab2(judulKelasSesi, judulMapelSesi, materiSesi);
   const opsiBagian = daftarBagianModul(judulMapelSesi).filter((id) => {
+    if (id === "simulasi") return labSendiri;
     if (!kunciPublik) return true;
     if (id === "praktikum") return false;
-    if (id === "simulasi") return labMembilangBab1;
     return true;
   });
   const idKuisMateri = useMemo(
