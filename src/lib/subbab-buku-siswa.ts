@@ -83,9 +83,10 @@ const SUBBAB_BUKU_SISWA: Record<string, Record<string, Record<string, string[]>>
         "Lembar evaluasi siswa",
       ],
       "Bab 4: Mengenal Bentuk": [
-        "Petualangan bentuk di rumah nenek",
-        "Kenalan dengan keluarga bentuk",
-        "Kota bentuk",
+        "Sub-Bab A: Mendeskripsikan Benda Berdasarkan Bentuk",
+        "Sub-Bab B: Mengelompokkan Benda",
+        "Sub-Bab C: Menyusun dan Mengurai Bentuk Bangun",
+        "Misi detektif bentuk",
         "Poin penting",
         "Lembar evaluasi siswa",
       ],

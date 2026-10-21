@@ -85,7 +85,7 @@ D) Balok`,
   kartu: [
     {
       kode: "A",
-      judul: "A. Petualangan Bentuk di Rumah Nenek",
+      judul: "Petualangan Bentuk di Rumah Nenek",
       pengantar:
         "Rara mengamati rumah Igil. Atapnya segitiga, jamnya lingkaran, pintunya segi empat, dadunya kubus, dan kotak susunya balok.",
       labelDaftar: "Detektif bentuk di rumah Nenek",

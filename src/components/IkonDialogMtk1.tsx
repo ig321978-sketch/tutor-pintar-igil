@@ -5,7 +5,7 @@ export function NamaDialog({
   igil = "burung",
 }: {
   nama: string;
-  igil?: "burung" | "tikus";
+  igil?: "burung" | "tikus" | "nenek";
 }) {
   return (
     <p className="flex items-center gap-2 text-xs font-black uppercase tracking-wide text-[#1C01A5]">
@@ -15,10 +15,14 @@ export function NamaDialog({
   );
 }
 
-function IkonKarakter({ nama, igil }: { nama: string; igil: "burung" | "tikus" }) {
+function IkonKarakter({ nama, igil }: { nama: string; igil: "burung" | "tikus" | "nenek" }) {
   if (nama === "Rara") return <Rara />;
   if (nama === "Bimo") return <Bimo />;
-  if (nama === "Igil") return igil === "tikus" ? <IgilTikus /> : <IgilBurung />;
+  if (nama === "Igil") {
+    if (igil === "tikus") return <IgilTikus />;
+    if (igil === "nenek") return <IgilNenek />;
+    return <IgilBurung />;
+  }
   return null;
 }
 
@@ -85,6 +89,21 @@ function IgilTikus() {
       <circle cx="13.2" cy="17.6" r=".7" fill="#1C1917" />
       <circle cx="18.8" cy="17.6" r=".7" fill="#1C1917" />
       <ellipse cx="16" cy="20.4" rx="1.3" ry=".9" fill="#F0AB00" />
+    </Bingkai>
+  );
+}
+
+function IgilNenek() {
+  return (
+    <Bingkai latar="#FEF3C7">
+      <circle cx="16" cy="19" r="7.5" fill="#F6C4A4" />
+      <path d="M9.2 18.2c.3-7 3-10.4 6.8-10.4s6.5 3.4 6.8 10.4c-1.7-2-4-3-6.8-3s-5.1 1-6.8 3z" fill="#A8A29E" />
+      <circle cx="16" cy="9.4" r="2.3" fill="#A8A29E" />
+      <circle cx="13.2" cy="18.4" r="2.1" fill="#fff" stroke="#1C1917" strokeWidth=".7" />
+      <circle cx="18.8" cy="18.4" r="2.1" fill="#fff" stroke="#1C1917" strokeWidth=".7" />
+      <circle cx="13.2" cy="18.4" r=".7" fill="#1C1917" />
+      <circle cx="18.8" cy="18.4" r=".7" fill="#1C1917" />
+      <path d="M14.2 21.8c1 .8 2.4.8 3.6 0" fill="none" stroke="#C45C4A" strokeWidth="1" strokeLinecap="round" />
     </Bingkai>
   );
 }
