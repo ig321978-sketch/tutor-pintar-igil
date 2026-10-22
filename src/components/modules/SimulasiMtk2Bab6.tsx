@@ -1,6 +1,6 @@
 "use client";
 
-import { useCallback, useEffect, useRef, useState, type ReactNode } from "react";
+import { useCallback, useEffect, useRef, useState, type PointerEvent, type ReactNode } from "react";
 
 export type TutorEventType =
   | "SCENE_START"
@@ -539,14 +539,14 @@ function KanvasTugas({
     return () => pengamat.disconnect();
   }, [siapkan, kunci]);
 
-  const titikDari = (event: React.PointerEvent<HTMLCanvasElement>) => {
+  const titikDari = (event: PointerEvent<HTMLCanvasElement>) => {
     const kanvas = canvasRef.current;
     if (!kanvas) return { x: 0, y: 0 };
     const kotak = kanvas.getBoundingClientRect();
     return { x: event.clientX - kotak.left, y: event.clientY - kotak.top };
   };
 
-  const mulai = (event: React.PointerEvent<HTMLCanvasElement>) => {
+  const mulai = (event: PointerEvent<HTMLCanvasElement>) => {
     event.preventDefault();
     const kanvas = canvasRef.current;
     const ctx = kanvas?.getContext("2d");
@@ -562,7 +562,7 @@ function KanvasTugas({
     ctx.moveTo(terakhir.current.x, terakhir.current.y);
   };
 
-  const geser = (event: React.PointerEvent<HTMLCanvasElement>) => {
+  const geser = (event: PointerEvent<HTMLCanvasElement>) => {
     if (!gambar.current) return;
     const ctx = canvasRef.current?.getContext("2d");
     const sekarang = titikDari(event);
