@@ -328,15 +328,15 @@ function IgilKokiSvg({ bicara }: { bicara: boolean }) {
 function SudutKoki({ pesan, sedangBicara, onUlang }: { pesan: string; sedangBicara: boolean; onUlang: () => void }) {
   return (
     <div className="pointer-events-none absolute bottom-2 left-2 z-30 flex max-w-[min(100%,24rem)] items-end gap-2">
-      <div className="pointer-events-auto shrink-0">
+      <div className="shrink-0">
         <IgilKokiSvg bicara={sedangBicara} />
       </div>
-      <div className="pointer-events-auto mb-3 rounded-2xl rounded-bl-sm bg-white px-3 py-2 shadow-lg ring-2 ring-amber-300">
+      <div className="mb-3 rounded-2xl rounded-bl-sm bg-white px-3 py-2 shadow-lg ring-2 ring-amber-300">
         <p className="text-sm font-bold leading-snug text-amber-950">{pesan}</p>
         <button
           type="button"
           onClick={onUlang}
-          className={`mt-1 inline-flex min-h-12 min-w-12 items-center justify-center rounded-xl px-3 text-xs font-black ${
+          className={`pointer-events-auto mt-1 inline-flex min-h-12 min-w-12 items-center justify-center rounded-xl px-3 text-xs font-black ${
             sedangBicara ? "bg-emerald-400 text-emerald-950" : "bg-amber-400 text-amber-950"
           }`}
         >
