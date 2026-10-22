@@ -39,6 +39,9 @@ function kunciUtama(materi) {
 }
 
 function filterCari(judul) {
+  if (/bab\s*2[:.]\s*penjumlahan dan pengurangan/i.test(judul)) {
+    return "materi.ilike.Bab 2:%penjumlahan%";
+  }
   const potong = judul
     .replace(/^bab\s+\d+\s*:\s*/i, "")
     .split(",")[0]
@@ -55,10 +58,13 @@ function judulAlias(materi) {
     tambahan.push("Bab 1: Bilangan 1 sampai 100");
     tambahan.push("Bab 1: Loker Baru di Kelas Malosi");
   }
-  if (/penjumlahan dan pengurangan bersusun/i.test(materi)) {
+  if (/penjumlahan dan pengurangan/i.test(materi)) {
+    tambahan.push("Bab 2: Penjumlahan dan Pengurangan");
+    tambahan.push("Bab 2: Penjumlahan dan Pengurangan Bersusun");
     tambahan.push("Bab 2: Cara Berhitung");
     tambahan.push("Bab 2: Operasi Hitung");
     tambahan.push("Bab 2: Pesta Permen Sani");
+    tambahan.push("Bab 2: Panen Jambu Air");
   }
   if (/fondasi perkalian dasar/i.test(materi)) {
     tambahan.push("Bab 3: Waktu dan Durasi");

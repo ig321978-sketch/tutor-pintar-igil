@@ -391,24 +391,24 @@ const INFOGRAFIS: Record<
   }
 > = {
   "mtk-2-bab2-A": {
-    judul: "Jalan bersusun matematika",
-    kepala: ["Langkah", "Aturan", "Ingat"],
+    judul: "Tiga cara penjumlahan",
+    kepala: ["Cara", "Langkah", "Contoh"],
     baris: [
-      ["Sejajarkan", "Satuan di bawah satuan", "Jangan geser"],
-      ["Hitung kanan", "Mulai dari satuan", "7 + 5 = 12"],
-      ["Simpan / pinjam", "≥10 simpan; atas kecil pinjam", "Tulis 2, simpan 1"],
+      ["Maju", "Lompat ke depan", "12 + 6 = 18"],
+      ["Bersusun", "Satuan di bawah satuan", "2 + 6 = 8"],
+      ["Pasangan", "Pecah jadi 10 dan sisa", "10 + 8 = 18"],
     ],
-    catatan: "27 + 5: satuan 2, simpan 1. 42 - 15: pinjam jadi 12 - 5 = 7, hasil 27.",
+    catatan: "8 satuan + 2 satuan = 10 satuan = 1 puluhan. 18 + 2 = 20.",
   },
   "mtk-2-bab2-B": {
-    judul: "Dua jenis pengerjaan",
-    kepala: ["Jenis", "Ciri", "Contoh"],
+    judul: "Pengurangan dan kata cerita",
+    kepala: ["Kata", "Arti", "Contoh"],
     baris: [
-      ["Tanpa simpan", "Tiap kamar cukup", "34 + 25 = 59"],
-      ["Dengan simpan", "Satuan ≥ 10", "48 + 15 = 63"],
-      ["Dengan pinjam", "Atas lebih kecil", "52 - 14 = 38"],
+      ["Lebihnya", "Ditambah", "12 + 6 = 18"],
+      ["Kurangnya", "Dikurangi", "12 - 5 = 7"],
+      ["Selisih / jumlah", "Kurang / tambah", "18 - 12 = 6"],
     ],
-    catatan: "Soal cerita: yang sudah ada, yang bertambah, lalu pertanyaan. 24 + 15 = 39 apel.",
+    catatan: "Mundur dari 18 sebanyak 12 langkah sampai 6. Urai puluhan jika satuan tidak cukup.",
   },
   "mtk-2-bab3-A": {
     judul: "Logika perkalian cerdik",

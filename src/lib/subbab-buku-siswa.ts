@@ -133,6 +133,14 @@ const SUBBAB_BUKU_SISWA: Record<string, Record<string, Record<string, string[]>>
         "Poin penting",
         "Lembar evaluasi siswa",
       ],
+      "Bab 2: Penjumlahan dan Pengurangan": [
+        "Sub-Bab A: Berbagai Cara Melakukan Penjumlahan",
+        "Sub-Bab B: Berbagai Cara Melakukan Pengurangan",
+        "Sub-Bab C: Soal Cerita Penjumlahan dan Pengurangan",
+        "Keranjang panen Igil",
+        "Poin penting",
+        "Lembar evaluasi siswa",
+      ],
     },
   },
   "3 SD": {
