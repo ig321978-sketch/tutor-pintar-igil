@@ -156,6 +156,14 @@ const SUBBAB_BUKU_SISWA: Record<string, Record<string, Record<string, string[]>>
         "Poin penting",
         "Lembar evaluasi siswa",
       ],
+      "Bab 5: Pecahan": [
+        "Sub-Bab A: Setengah dari Benda Utuh",
+        "Sub-Bab B: Setengah dari Kumpulan Benda",
+        "Sub-Bab C: Seperempat dari Benda Utuh",
+        "Potong martabak Igil",
+        "Poin penting",
+        "Lembar evaluasi siswa",
+      ],
     },
   },
   "3 SD": {

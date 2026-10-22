@@ -451,26 +451,24 @@ const INFOGRAFIS: Record<
     catatan: "Pola berulang dan teratur. Setelah langkah terakhir, ulang dari awal.",
   },
   "mtk-2-bab5-A": {
-    judul: "Logika bagi adil cerdik",
+    judul: "Setengah benda utuh",
     kepala: ["Bagian", "Arti", "Contoh"],
     baris: [
-      ["Berbagi adil", "Pengurangan berulang sampai habis", "6 cokelat, 3 teman"],
-      ["Contoh nyata", "Kurangi 3 sampai sisa 0", "6 - 3 - 3 = 0"],
-      ["Kalimat", "Yang dibagi : pembagi = hasil", "6 : 3 = 2"],
+      ["Setengah", "Dua bagian sama besar", "Martabak Kira dan Tika"],
+      ["Bukan setengah", "Potongan tidak sama besar", "Segi empat miring"],
+      ["Di sekitar", "Benda dipotong dua sama", "Semangka, gelas, kertas"],
     ],
-    catatan:
-      "Hasil pembagian menunjukkan berapa kali pengurangan terjadi sampai bendanya habis menjadi 0.",
+    catatan: "Setengah hanya jika kedua bagian sama besar.",
   },
   "mtk-2-bab5-B": {
-    judul: "Hasil sama, bagi satu, cerita",
-    kepala: ["Bentuk", "Pengurangan", "Hasil"],
+    judul: "Kumpulan dan seperempat",
+    kepala: ["Bagian", "Arti", "Contoh"],
     baris: [
-      ["6 : 2 / 12 : 4", "6-2-2-2 / 12-4-4-4", "3"],
-      ["8 : 2 / 16 : 4", "Kurangi 2 atau 4 sampai 0", "4"],
-      ["15 : 1 / 20 : 2", "Satu wadah / dua rak", "15 / 10"],
+      ["Setengah kumpulan", "Dua kelompok sama banyak", "4 kelereng jadi 2 dan 2"],
+      ["Bukan setengah", "Jumlah tidak sama", "6 ikan jadi 4 dan 2"],
+      ["Seperempat", "Empat bagian sama besar", "Martabak 4 teman"],
     ],
-    catatan:
-      "15 : 5 artinya 15 dikurangi 5 sebanyak 3 kali. Bagi 1, isinya tidak berubah.",
+    catatan: "Setengah dari 8 pensil adalah 4. Dua dari empat bagian sama besar juga setengah.",
   },
   "mtk-2-bab6-A": {
     judul: "Penggaris pintar kita",
@@ -776,22 +774,22 @@ function EvaluasiBab5({ modulId }: { modulId: string }) {
       </h5>
       <KuisPilihan
         id={idEval(modulId, 0)}
-        soal="12 - 4 - 4 - 4 = 0 ditulis pembagian..."
+        soal="Martabak dipotong dua sama besar. Tiap potong bernilai..."
         benar="B"
         pilihan={[
-          { huruf: "A", teks: "4 : 12" },
-          { huruf: "B", teks: "12 : 4" },
-          { huruf: "C", teks: "12 : 3 wajib saja" },
+          { huruf: "A", teks: "seperempat" },
+          { huruf: "B", teks: "setengah" },
+          { huruf: "C", teks: "utuh" },
         ]}
       />
       <KuisPilihan
         id={idEval(modulId, 1)}
-        soal="10 : 2 = 5 dalam pengurangan berulang adalah..."
+        soal="Setengah dari 4 kelereng adalah..."
         benar="B"
         pilihan={[
-          { huruf: "A", teks: "10 - 5 - 5 = 0" },
-          { huruf: "B", teks: "10 - 2 - 2 - 2 - 2 - 2 = 0" },
-          { huruf: "C", teks: "2 - 2 - 2 = 0" },
+          { huruf: "A", teks: "4" },
+          { huruf: "B", teks: "2" },
+          { huruf: "C", teks: "1" },
         ]}
       />
       <h5 className="text-sm font-black uppercase tracking-wide text-[#1C01A5]">
@@ -799,40 +797,40 @@ function EvaluasiBab5({ modulId }: { modulId: string }) {
       </h5>
       <KuisBenarSalah
         id={idEval(modulId, 2)}
-        soal="Operasi 15 : 5 = 3 artinya angka 15 dikurangi angka 3 secara berulang sebanyak 5 kali."
+        soal="Potongan tidak sama besar tetap disebut setengah."
         benar="salah"
-        alasanBenar="15 dikurangi 5 sebanyak 3 kali sampai habis"
+        alasanBenar="Setengah hanya jika kedua bagian sama besar"
       />
       <KuisBenarSalah
         id={idEval(modulId, 3)}
-        soal="Setiap bilangan cacah kecuali 0 jika dibagi 1, hasilnya adalah bilangan itu sendiri."
+        soal="Empat bagian sama besar dari satu martabak bernilai seperempat."
         benar="benar"
-        alasanBenar="seluruh benda masuk satu wadah sehingga isinya tidak berubah"
+        alasanBenar="Tiap orang dari empat teman mendapat seperempat"
       />
       <h5 className="text-sm font-black uppercase tracking-wide text-[#1C01A5]">
         C. Mencocokkan garis
       </h5>
       <KuisJodoh
         id={idEval(modulId, 4)}
-        soal="Jodohkan bentuk pembagian dengan pengurangan berulangnya."
+        soal="Jodohkan cerita dengan nilainya."
         pasangan={[
           {
-            kiri: "8 : 4",
-            kanan: ["4 - 4 = 0", "8 - 4 - 4 = 0", "9 - 3 - 3 - 3 = 0"],
+            kiri: "Dua potong sama besar",
+            kanan: ["setengah", "seperempat", "bukan setengah"],
           },
           {
-            kiri: "4 : 4",
-            kanan: ["4 - 4 = 0", "8 - 4 - 4 = 0", "9 - 3 - 3 - 3 = 0"],
+            kiri: "Empat potong sama besar",
+            kanan: ["setengah", "seperempat", "bukan setengah"],
           },
           {
-            kiri: "9 : 3",
-            kanan: ["4 - 4 = 0", "8 - 4 - 4 = 0", "9 - 3 - 3 - 3 = 0"],
+            kiri: "6 ikan jadi 4 dan 2",
+            kanan: ["setengah", "seperempat", "bukan setengah"],
           },
         ]}
         kunci={{
-          "8 : 4": "8 - 4 - 4 = 0",
-          "4 : 4": "4 - 4 = 0",
-          "9 : 3": "9 - 3 - 3 - 3 = 0",
+          "Dua potong sama besar": "setengah",
+          "Empat potong sama besar": "seperempat",
+          "6 ikan jadi 4 dan 2": "bukan setengah",
         }}
       />
       <h5 className="text-sm font-black uppercase tracking-wide text-[#1C01A5]">
@@ -840,8 +838,8 @@ function EvaluasiBab5({ modulId }: { modulId: string }) {
       </h5>
       <KuisIsian
         id={idEval(modulId, 5)}
-        soal="Mengapa hasil pembagian menunjukkan berapa kali pengurangan terjadi sampai habis?"
-        alias={["kurang", "habis", "nol", "kali", "berulang"]}
+        soal="Mengapa 4 ikan dan 2 ikan tidak boleh disebut setengah dari 6 ikan?"
+        alias={["sama", "banyak", "tidak", "bukan"]}
       />
     </div>
   );

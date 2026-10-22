@@ -4,266 +4,235 @@ function pg(soal: string[]): string {
   return soal.join("\n\n");
 }
 
-export const JUDUL_MTK2_BAB5 = "Bab 5: Fondasi Pembagian Dasar";
+export const JUDUL_MTK2_BAB5 = "Bab 5: Pecahan";
+export const JUDUL_MTK2_BAB5_LAMA = "Bab 5: Fondasi Pembagian Dasar";
 
 export const MODUL_MTK2_BAB5: ModulResmiPai = {
   id: "mtk-2-bab5",
   judul: JUDUL_MTK2_BAB5,
   pola:
-    /fondasi pembagian|berbagi adil|bagi adil|pengurangan berulang sampai habis|pengurangan bersusun|data sederhana/,
+    /bab\s*5[:.]\s*pecahan(?!\s*sederhana)|setengah dari benda utuh|berbagi sama banyak|martabak manis kira|fondasi pembagian dasar|berbagi adil/,
   motivasi:
-    "Hore! Kamu sudah membantu Sani berbagi adil. 12 ÷ 3 = 4 karena 12 - 3 - 3 - 3 - 3 = 0. Pembagian adalah pengurangan berulang sampai habis.",
-  kunciJawaban: "B,B,A,A,A,A,A,A,A,A",
+    "Hore! Kamu sudah bantu Kira memotong martabak. Dua bagian sama besar itu setengah. Empat bagian sama besar itu seperempat. Setengah dari kumpulan benda harus sama banyak.",
+  kunciJawaban: "B,A,B,A,C,B,A,B,B,A",
   sketsaKartu: [
-    "Sani membagi 12 permen kepada 3 sahabat sampai habis.",
-    "Pengurangan 12 - 3 - 3 - 3 - 3 = 0 diubah menjadi 12 ÷ 3 = 4.",
-    "Anak menjadi detektif: 10 permen dibagi 2 anak sampai 0.",
-    "Anak mengisi lembar evaluasi tantangan para juara tentang pembagian adil.",
+    "Ibu memberi Kira martabak manis. Kira berbagi adil dengan Tika. Dua potong sama besar bernilai setengah.",
+    "Malosi berbagi kelereng dengan Upe. Setengah dari 4 adalah 2. Kira memotong martabak menjadi 4 untuk empat teman. Tiap potong seperempat.",
+    "Sepuluh potong martabak Igil: setengah, kumpulan, seperempat.",
+    "Lembar kerja tantangan juara pecahan.",
   ],
   latihan: pg([
-    `[Soal 1 - PG - Tipe: HOTS]
-Edo menulis 15 - 5 - 5 - 5 = 0 jadi 15 ÷ 3 = 5. Udin bilang harus dikurangi 3 berulang. Siapa yang tepat?
-A) Edo benar, karena hasilnya habis 0
-B) Udin benar, karena angka pengurangan harus menunjukkan jumlah orang yang menerima, yaitu 3
-C) Kedua anak salah
-D) Keduanya benar tanpa syarat`,
-    `[Soal 2 - PG - Tipe: HOTS]
-Ibu membagi seluruh permen kepada 5 anak. Tiap anak dapat 4, habis tanpa sisa. Permen semula...
-A) 9
-B) 20
-C) 1
-D) 15`,
-    `[Soal 3 - PG - Tipe: HOTS]
-Empat kantong sama banyak jumlahnya 20. Kalimat pembagian untuk isi satu kantong...
-A) 20 ÷ 4 = 5
-B) 20 ÷ 5 = 4
-C) 4 ÷ 20 = 5
-D) 20 + 4 = 24`,
+    `[Soal 1 - PG - Tipe: LOTS]
+Martabak dipotong dua sama besar. Tiap potong bernilai...
+A) seperempat
+B) setengah
+C) utuh`,
+    `[Soal 2 - PG - Tipe: LOTS]
+Segi empat dipotong dua, tetapi tidak sama besar. Itu...
+A) bukan setengah
+B) setengah
+C) seperempat`,
+    `[Soal 3 - PG - Tipe: MOTS]
+Malosi punya 4 kelereng. Setengah untuk Upe. Upe mendapat...
+A) 4 kelereng
+B) 2 kelereng
+C) 1 kelereng`,
     `[Soal 4 - PG - Tipe: MOTS]
-Lani punya 18 permen ke 6 kotak sama banyak sampai habis. Pengurangan berulang yang tepat...
-A) 18 - 6 - 6 - 6 = 0
-B) 18 - 3 - 3 - 3 - 3 - 3 - 3 = 0
-C) 18 - 9 - 9 = 0
-D) 18 - 18 = 0`,
-    `[Soal 5 - PG - Tipe: HOTS]
-Cerita A: 24 permen untuk 4 anak. Cerita B: 24 permen untuk 6 anak. Pernyataan yang tepat...
-A) Anak pada Cerita A mendapat lebih banyak
-B) Anak pada Cerita B mendapat lebih banyak
-C) Setiap anak mendapat sama persis
-D) Tidak bisa dihitung`,
-    `[Soal 6 - PG - Tipe: LOTS]
-32 - 8 - 8 - 8 - 8 = 0 ditulis pembagian...
-A) 32 ÷ 8 = 4
-B) 32 ÷ 4 = 8 wajib saja
-C) 8 ÷ 32 = 4
-D) 32 + 8 = 40`,
-    `[Soal 7 - PG - Tipe: HOTS]
-12 cokelat dan 8 stroberi dibagi 4 teman secara adil. Isi campuran tiap anak...
-A) 5
+Ada 6 ikan. Dibagi dua tempat sama banyak. Setengahnya...
+A) 3 ikan
+B) 2 ikan
+C) 4 ikan`,
+    `[Soal 5 - PG - Tipe: MOTS]
+6 ikan: 4 di satu ember, 2 di ember lain. Itu...
+A) setengah
+B) seperempat
+C) bukan setengah`,
+    `[Soal 6 - PG - Tipe: MOTS]
+Tika punya 8 pensil. Setengah pensil Tika...
+A) 8
 B) 4
-C) 8
-D) 20`,
-    `[Soal 8 - PG - Tipe: HOTS]
-16 permen ke 8 stoples, dan 16 permen ke 2 stoples. Pasangan yang tepat...
-A) Kisah 1 = 16 ÷ 8, kisah 2 = 16 ÷ 2
-B) Keduanya 16 ÷ 2
-C) Keduanya 16 ÷ 8
-D) Kisah 1 = 16 ÷ 2, kisah 2 = 16 ÷ 8`,
-    `[Soal 9 - PG - Tipe: HOTS]
-Riko punya 15 permen, makan 3 dulu, sisa dibagi 3 adik. Tiap adik mendapat...
-A) 4
-B) 5
-C) 3
-D) 12`,
+C) 2`,
+    `[Soal 7 - PG - Tipe: LOTS]
+Martabak untuk Kira, Malosi, Upe, dan Tika. Empat potong sama besar. Tiap orang mendapat...
+A) seperempat
+B) setengah
+C) utuh`,
+    `[Soal 8 - PG - Tipe: MOTS]
+Potong jadi dua sama besar, lalu potong lagi jadi dua sama besar. Dapat...
+A) setengah
+B) seperempat
+C) utuh`,
+    `[Soal 9 - PG - Tipe: MOTS]
+Lingkaran dibagi 4 sama besar. Satu bagian diwarnai. Bagian diwarnai...
+A) setengah
+B) seperempat
+C) utuh`,
     `[Soal 10 - PG - Tipe: HOTS]
-Dua pembagian berbeda yang hasilnya 3...
-A) 6 ÷ 2 dan 9 ÷ 3
-B) 3 + 3 dan 1 × 3
-C) 8 ÷ 4 dan 10 ÷ 2
-D) 3 ÷ 3 dan 0 ÷ 3`,
+Lingkaran dibagi 4 sama besar. Dua bagian diwarnai. Bagian diwarnai...
+A) setengah
+B) seperempat
+C) tiga`,
   ]),
   kartu: [
     {
       kode: "A",
-      judul: "A. Dialog Berbagi Permen Ulang Tahun",
+      judul: "Berbagi Sama Banyak",
       pengantar:
-        "🗺️ Sani punya 12 permen. Tiga sahabat datang. Sani ingin berbagi sama rata sampai habis.",
-      labelDaftar: "Target dan cerita apersepsi",
+        "Ibu memberi Kira martabak manis. Kira berbagi dengan Tika. Dua bagian sama besar bernilai setengah.",
+      labelDaftar: "Cerita martabak dan setengah benda utuh",
       kolom: 1,
       item: [
         {
-          nama: "🌟 Target belajarku hari ini",
-          singkat: "Pembagian adil",
+          nama: "Tujuan pembelajaran",
+          singkat: "Setengah dan seperempat",
           uraian:
-            "🎯 Aku bisa memahami pembagian sebagai pengurangan berulang sampai habis. 🎯 Aku bisa membagi permen secara adil tanpa sisa.",
-          contoh: "Kurangi terus sampai 0.",
+            "Siswa dapat menunjukkan setengah dari benda utuh. Siswa dapat menunjukkan setengah dari kumpulan benda. Siswa dapat menunjukkan seperempat dari benda utuh.",
+          contoh: "Martabak dua potong sama besar. Tiap potong setengah.",
         },
         {
-          nama: "🗺️ Berbagi permen ulang tahun",
-          singkat: "12 permen untuk 3 sahabat",
+          nama: "Cerita martabak manis",
+          singkat: "Kira dan Tika",
           uraian:
-            "Sani ingin 3 sahabat mendapat sama banyak, dan permen di tangannya habis. Bagaimana membagi 12 kepada 3 teman secara adil?",
-          contoh: "Yuk bantu Sani dengan trik matematika adil!",
+            "Ibu memberi Kira oleh-oleh martabak manis. Kira ingat Tika juga suka. Kira membagi martabak sama besar. Pakai pisau yang aman untuk anak.",
+          contoh: "Potongan sama besar. Itu adil.",
         },
       ],
       kuis: [
-        {
-          pertanyaan: "1. Sani punya berapa permen di kantong baru?",
-          alias: ["12", "dua belas"],
-        },
-        {
-          pertanyaan: "2. Ada berapa sahabat Sani yang datang?",
-          alias: ["3", "tiga"],
-        },
-        {
-          pertanyaan: "3. Sani ingin permennya dibagi sampai apa?",
-          alias: ["habis", "nol", "0", "tidak bersisa", "adil"],
-        },
+        { pertanyaan: "Dua bagian sama besar bernilai apa?", alias: ["setengah"] },
+        { pertanyaan: "Tuliskan setengah.", alias: ["setengah"] },
+        { pertanyaan: "Potongan tidak sama besar. Itu setengah?", alias: ["bukan", "tidak"] },
+        { pertanyaan: "Tuliskan bukan.", alias: ["bukan"] },
       ],
       voice: [
         [
-          "Sani membuka kantong berisi 12 permen. Tiga sahabat datang. Sani ingin berbagi sama rata sampai habis, agar tidak ada yang sedih.",
-          "Bagaimana membagi 12 permen kepada 3 teman secara adil? Yuk, kita bantu Sani dengan trik matematika adil!",
+          "Ibu memberi Kira martabak manis. Kira berbagi dengan Tika.",
+          "Potong dua sama besar. Tiap potong bernilai setengah.",
         ],
       ],
     },
     {
       kode: "B",
-      judul: "B. Infografis Berbagi Adil",
+      judul: "B. Setengah Kumpulan dan Seperempat",
       pengantar:
-        "🍬 Setiap keliling Sani memberi 1 permen ke tiap anak. Ada 3 anak, jadi setiap keliling berkurang 3. 12 - 3 - 3 - 3 - 3 = 0. Itu 4 kali. Jadi 12 ÷ 3 = 4.",
-      labelDaftar: "Pengurangan berulang dan rumus pembagian",
+        "Malosi punya 4 kelereng. Setengah untuk Upe adalah 2. Kira memotong martabak jadi 4. Tiap potong seperempat.",
+      labelDaftar: "Setengah kumpulan dan seperempat benda utuh",
       kolom: 1,
       item: [
         {
-          nama: "🍬 Kurangi terus sampai habis",
-          singkat: "12 - 3 - 3 - 3 - 3 = 0",
+          nama: "Setengah dari kumpulan",
+          singkat: "Dua kelompok sama banyak",
           uraian:
-            "Keliling 1 sisa 9. Keliling 2 sisa 6. Keliling 3 sisa 3. Keliling 4 sisa 0. Pengurangan angka 3 terjadi 4 kali.",
-          contoh: "Tiap anak dapat 4.",
+            "Setengah dari 4 kelereng adalah 2. Setengah dari 6 ikan adalah 3. Jika 4 dan 2, itu bukan setengah.",
+          contoh: "Setengah dari 8 pensil adalah 4.",
         },
         {
-          nama: "✍️ Rumus kotak rahasia",
-          singkat: "12 ÷ 3 = 4",
+          nama: "Seperempat dari benda utuh",
+          singkat: "Empat bagian sama besar",
           uraian:
-            "Jumlah semua permen dibagi banyaknya teman atau wadah. 12 ÷ 3 = 4. Dibaca dua belas dibagi tiga sama dengan empat.",
-          contoh: "Semua ÷ wadah = isi per anak.",
-        },
-        {
-          nama: "💡 Nama kerennya pembagian",
-          singkat: "Pengurangan berulang sampai 0",
-          uraian:
-            "Pengurangan berulang sampai habis disebut pembagian. Angka yang dikurangi berulang adalah jumlah orang yang menerima.",
-          contoh: "Kurangi wadahnya, bukan hasilnya.",
+            "Martabak untuk 4 teman. Potong empat sama besar. Tiap potong seperempat. Potong dua dulu, lalu potong lagi, juga seperempat.",
+          contoh: "Apel utuh, setengah, lalu seperempat.",
         },
       ],
       kuis: [
-        {
-          pertanyaan: "1. 12 dikurangi 3 berulang sampai 0 terjadi berapa kali?",
-          alias: ["4", "empat", "4 kali"],
-        },
-        {
-          pertanyaan: "2. 12 dibagi 3 sama dengan berapa?",
-          alias: ["4", "empat"],
-        },
-        {
-          pertanyaan: "3. Pembagian adalah pengurangan berulang sampai angka berapa?",
-          alias: ["0", "nol", "habis"],
-        },
+        { pertanyaan: "Setengah dari 4 kelereng?", alias: ["2", "dua"] },
+        { pertanyaan: "Tuliskan 2.", alias: ["2", "dua"] },
+        { pertanyaan: "Setengah dari 6 ikan?", alias: ["3", "tiga"] },
+        { pertanyaan: "Tuliskan seperempat.", alias: ["seperempat"] },
+        { pertanyaan: "Empat potong sama besar bernilai apa?", alias: ["seperempat"] },
       ],
       voice: [
         [
-          "Setiap keliling Sani memberi satu permen ke tiap anak. Ada tiga anak, jadi berkurang tiga. Dua belas kurang tiga kurang tiga kurang tiga kurang tiga sama dengan nol. Itu empat kali.",
-          "Jadi tiap anak mendapat empat. Ditulis 12 dibagi 3 sama dengan 4. Pengurangan berulang sampai habis namanya pembagian.",
+          "Malosi punya 4 kelereng. Setengah untuk Upe. Upe dapat 2.",
+          "Kira memotong martabak jadi 4. Tiap orang mendapat seperempat.",
         ],
       ],
     },
     {
       kode: "C",
-      judul: "C. Detektif Pembagian Adil",
+      judul: "C. Potong Martabak Igil",
       pengantar:
-        "🕵️‍♂️ Sani punya 10 permen cokelat. Dibagi kepada 2 anak sampai habis. Kurangi 2 berulang, lalu tulis pembagiannya.",
-      labelDaftar: "Aktivitas terbimbing dan jurnal",
+        "Bantu Igil memotong 10 martabak. Sebut setengah atau seperempat. Hitung setengah kumpulan.",
+      labelDaftar: "Sepuluh misi potong martabak",
       kolom: 1,
       item: [
         {
-          nama: "🕵️‍♂️ Aktivitas 1",
-          singkat: "10 ÷ 2 = 5",
+          nama: "Alur permainan",
+          singkat: "Pilih potong, jawab, dapat bintang",
           uraian:
-            "Mula-mula 10. Dikurangi 2. 10 - 2 - 2 - 2 - 2 - 2 = 0. Angka 2 muncul 5 kali. Pembagian 10 ÷ 2 = 5.",
-          contoh: "10 ÷ 2 = 5.",
+            "Siswa memilih satu potong martabak. Igil membacakan misi. Jawaban benar mendapat 1 bintang madu. Jika belum tepat, Igil memberi petunjuk.",
+          contoh: "Dua sama besar itu setengah. Empat sama besar itu seperempat.",
         },
         {
-          nama: "🎭 Jurnal perasaanku",
-          singkat: "Pilih wajah",
+          nama: "Daun rapi",
+          singkat: "3, 2, atau 1 daun",
           uraian:
-            "😀 Sangat seru, sekarang aku bisa membagi makanan dengan adil! 😐 Sedikit bingung menghitung berapa kali angka pengurangan muncul. 😢 Masih butuh bantuan menghitung mundur sampai 0.",
-          contoh: "Pilih satu wajah.",
+            "Benar di percobaan pertama mendapat 3 daun. Benar setelah satu petunjuk mendapat 2 daun. Benar setelah dua petunjuk mendapat 1 daun.",
+          contoh: "Petunjuk: potongan harus sama besar.",
         },
       ],
       kuis: [
-        {
-          pertanyaan: "1. Sani punya berapa permen cokelat mula-mula?",
-          alias: ["10", "sepuluh"],
-        },
-        {
-          pertanyaan: "2. Dikurangi angka berapa secara berulang?",
-          alias: ["2", "dua"],
-        },
-        {
-          pertanyaan: "3. 10 dibagi 2 sama dengan berapa?",
-          alias: ["5", "lima"],
-        },
+        { pertanyaan: "Dua sama besar bernilai apa?", alias: ["setengah"] },
+        { pertanyaan: "Tuliskan setengah.", alias: ["setengah"] },
+        { pertanyaan: "Tidak sama besar. Itu setengah?", alias: ["bukan", "tidak"] },
+        { pertanyaan: "Setengah dari 4?", alias: ["2", "dua"] },
+        { pertanyaan: "Tuliskan 2.", alias: ["2", "dua"] },
+        { pertanyaan: "Setengah dari 6?", alias: ["3", "tiga"] },
+        { pertanyaan: "4 dan 2 itu setengah?", alias: ["bukan", "tidak"] },
+        { pertanyaan: "Tuliskan 4.", alias: ["4", "empat"] },
+        { pertanyaan: "Empat sama besar bernilai apa?", alias: ["seperempat"] },
+        { pertanyaan: "Tuliskan seperempat.", alias: ["seperempat"] },
       ],
       voice: [
         [
-          "Yuk jadi detektif pembagian adil. Ada 10 permen untuk 2 anak. Sepuluh kurang dua kurang dua kurang dua kurang dua kurang dua sama dengan nol.",
-          "Angka dua muncul lima kali. Pembagiannya 10 dibagi 2 sama dengan 5.",
+          "Igil menjaga nampan martabak. Ada sepuluh potong dari yang pertama sampai piala.",
+          "Potong hijau untuk setengah. Potong biru untuk kelereng. Potong kuning untuk menulis. Potong ungu untuk memilih.",
+          "Jawaban benar mendapat satu bintang. Jika belum tepat, Igil memberi petunjuk.",
         ],
       ],
     },
     {
       kode: "D",
-      judul: "D. Lembar Evaluasi Siswa",
+      judul: "E. Lembar Evaluasi Siswa",
       pengantar:
-        "📝 Tantangan para juara! Bagi adil permen Edo, Udin, Lani, Dodi, dan Riko sampai habis.",
-      labelDaftar: "Evaluasi pilihan ganda dan isian",
+        "Sebut setengah atau seperempat. Hitung setengah kumpulan. Ini tantangan para juara.",
+      labelDaftar: "Poin penting dan evaluasi",
       kolom: 1,
       item: [
         {
-          nama: "🍓 Bagian A",
-          singkat: "Pilihan ganda",
+          nama: "Poin penting",
+          singkat: "Setengah dan seperempat",
           uraian:
-            "Udin benar: kurangi jumlah orang. Kantong semula 20. Empat kantong 20 adalah 20 ÷ 4. Lani 18 - 6 - 6 - 6. Cerita A dapat lebih banyak.",
-          contoh: "Kurangi wadahnya. 20 ÷ 4 = 5.",
+            "Setengah: dua bagian sama besar, atau dua kelompok sama banyak. Seperempat: empat bagian sama besar. Potongan tidak sama besar bukan setengah. 4 dan 2 bukan setengah dari 6.",
+          contoh: "Sama besar, sama banyak.",
         },
         {
-          nama: "✏️ Bagian B",
-          singkat: "Isian singkat",
+          nama: "Lembar kerja",
+          singkat: "Sepuluh tantangan",
           uraian:
-            "32 ÷ 8 = 4. Campuran Dodi 5. Kisah 1 = B, kisah 2 = A. Adik Riko 4. Dua bentuk yang hasilnya 3.",
-          contoh: "32 ÷ 8 = 4. Tiap anak 5.",
+            "Dua sama besar adalah setengah. Tidak sama besar bukan setengah. Setengah 4 kelereng adalah 2. Setengah 6 ikan adalah 3. 4 dan 2 bukan setengah. Setengah 8 pensil adalah 4. Empat teman mendapat seperempat. Potong dua lalu dua lagi adalah seperempat. Satu dari empat adalah seperempat. Dua dari empat adalah setengah.",
+          contoh: "Jawaban latihan: B, A, B, A, C, B, A, B, B, A.",
         },
       ],
       kuis: [
-        { pertanyaan: "1. 15 permen untuk 3 teman, dikurangi angka berapa berulang?", alias: ["3", "tiga"] },
-        { pertanyaan: "2. 5 anak masing-masing 4, permen semula?", alias: ["20"] },
-        { pertanyaan: "3. Empat kantong jumlah 20, isi satu kantong?", alias: ["5", "20 ÷ 4"] },
-        { pertanyaan: "4. 18 ke 6 kotak, pengurangan berulangnya?", alias: ["18 - 6 - 6 - 6"] },
-        { pertanyaan: "5. 24 untuk 4 anak dibanding 24 untuk 6 anak?", alias: ["lebih banyak", "cerita a"] },
-        { pertanyaan: "6. 32 - 8 - 8 - 8 - 8 ditulis pembagian?", alias: ["32 ÷ 8", "32:8", "4"] },
-        { pertanyaan: "7. 12 cokelat dan 8 stroberi dibagi 4, tiap anak?", alias: ["5"] },
-        { pertanyaan: "8. 16 ke 8 stoples, pembagiannya?", alias: ["16 ÷ 8", "2"] },
-        { pertanyaan: "9. 15 makan 3, sisa dibagi 3 adik, tiap adik?", alias: ["4"] },
-        { pertanyaan: "10. Dua pembagian berbeda yang hasilnya 3?", alias: ["6 ÷ 2", "9 ÷ 3", "12 ÷ 4", "3"] },
+        { pertanyaan: "Dua sama besar?", alias: ["setengah", "b"] },
+        { pertanyaan: "Tidak sama besar?", alias: ["bukan", "a"] },
+        { pertanyaan: "Setengah 4 kelereng?", alias: ["2", "b"] },
+        { pertanyaan: "Setengah 6 ikan?", alias: ["3", "a"] },
+        { pertanyaan: "4 dan 2?", alias: ["bukan", "c"] },
+        { pertanyaan: "Setengah 8 pensil?", alias: ["4", "b"] },
+        { pertanyaan: "Empat teman?", alias: ["seperempat", "a"] },
+        { pertanyaan: "Potong dua lalu dua?", alias: ["seperempat", "b"] },
+        { pertanyaan: "Satu dari empat?", alias: ["seperempat", "b"] },
+        { pertanyaan: "Dua dari empat?", alias: ["setengah", "a"] },
       ],
       voice: [
         [
-          "Ini lembar evaluasi tantangan para juara. Lima belas permen untuk tiga teman dikurangi tiga berulang. Lima anak kali empat sama dengan 20. Empat kantong jumlah 20 artinya 20 dibagi 4.",
-          "Delapan belas ke enam kotak: 18 kurang 6 kurang 6 kurang 6. Dua puluh empat untuk empat anak lebih banyak daripada untuk enam anak.",
+          "Poin penting. Dua bagian sama besar itu setengah. Empat bagian sama besar itu seperempat.",
+          "Setengah kumpulan harus sama banyak. Kalimat kunci: sama besar, sama banyak.",
         ],
         [
-          "Tiga puluh dua kurang delapan empat kali sama dengan 32 dibagi 8. Campuran Dodi tiap anak 5. Enam belas ke delapan stoples adalah 16 dibagi 8. Riko makan 3, sisa 12, tiap adik 4.",
+          "Martabak dua potong sama besar itu setengah. Empat potong sama besar itu seperempat.",
+          "Setengah dari 4 kelereng adalah 2. Setengah dari 8 pensil adalah 4. Dua dari empat bagian sama besar juga setengah.",
         ],
       ],
     },

@@ -48,10 +48,12 @@ function filterCari(judul) {
 
 function judulAlias(materi) {
   const tambahan = [];
-  if (/fondasi pembagian dasar/i.test(materi)) {
+  if (/fondasi pembagian dasar|bab 5:\s*pecahan/i.test(materi)) {
     tambahan.push("Bab 5: Berbagi Adil");
     tambahan.push("Bab 5: Pengurangan Bersusun");
     tambahan.push("Bab 5: Data Sederhana");
+    tambahan.push("Bab 5: Fondasi Pembagian Dasar");
+    tambahan.push("Bab 5: Pecahan");
   }
   if (/pengukuran panjang standar/i.test(materi)) {
     tambahan.push("Bab 6: Pita Kantong Permen");

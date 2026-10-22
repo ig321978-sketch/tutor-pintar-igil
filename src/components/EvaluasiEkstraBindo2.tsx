@@ -676,54 +676,48 @@ const PAKET: Record<string, PaketEvaluasiEkstra> = {
   },
   "mtk-2-bab5": {
     garis: {
-      soal: "Tariklah garis menggunakan jari untuk menjodohkan bentuk pembagian dengan pengurangan berulangnya yang benar!",
-      kiri: ["8 : 4", "4 : 4", "9 : 3"],
-      kanan: [
-        "4 - 4 = 0 (Pengurangan 1 kali)",
-        "8 - 4 - 4 = 0 (Pengurangan 2 kali)",
-        "9 - 3 - 3 - 3 = 0 (Pengurangan 3 kali)",
-      ],
+      soal: "Tariklah garis untuk menjodohkan cerita pecahan dengan nilainya!",
+      kiri: ["Martabak dua potong sama besar", "Martabak empat potong sama besar", "6 ikan jadi 4 dan 2"],
+      kanan: ["setengah", "seperempat", "bukan setengah"],
       kunci: {
-        "8 : 4": "8 - 4 - 4 = 0 (Pengurangan 2 kali)",
-        "4 : 4": "4 - 4 = 0 (Pengurangan 1 kali)",
-        "9 : 3": "9 - 3 - 3 - 3 = 0 (Pengurangan 3 kali)",
+        "Martabak dua potong sama besar": "setengah",
+        "Martabak empat potong sama besar": "seperempat",
+        "6 ikan jadi 4 dan 2": "bukan setengah",
       },
     },
     keranjang: {
-      soal: "Geser dan masukkan kepingan pembagian ke keranjang hasil akhir yang benar!",
-      keranjang1: "HASIL AKHIRNYA 3",
-      keranjang2: "HASIL AKHIRNYA 4",
+      soal: "Geser kepingan ke keranjang yang benar!",
+      keranjang1: "SETENGAH",
+      keranjang2: "SEPEREMPAT",
       keping: [
-        { id: "enam2", label: "6 : 2", wadah: "1" },
-        { id: "delapan2", label: "8 : 2", wadah: "2" },
-        { id: "duabelas4", label: "12 : 4", wadah: "1" },
-        { id: "enambelas4", label: "16 : 4", wadah: "2" },
+        { id: "martabak2", label: "Dua sama besar", wadah: "1" },
+        { id: "kelereng4", label: "2 dari 4 kelereng", wadah: "1" },
+        { id: "martabak4", label: "Empat sama besar", wadah: "2" },
+        { id: "apel4", label: "Satu dari empat apel", wadah: "2" },
       ],
     },
     urut: {
-      soal: "Susunlah 3 kalimat acak agar membentuk alur soal cerita pembagian yang logis!",
+      soal: "Susun 3 langkah memotong seperempat!",
       balok: [
-        "Tono memiliki 15 butir kelereng di dalam kantongnya.",
-        "Ia ingin membagikan seluruh kelereng itu secara adil kepada 5 orang temannya.",
-        "Berapa banyak kelereng yang diterima oleh masing-masing temannya?",
+        "Ambil satu martabak utuh.",
+        "Potong menjadi dua bagian sama besar.",
+        "Potong lagi tiap setengah menjadi dua, jadi seperempat.",
       ],
     },
     kanvas: {
-      soal: 'Nia memiliki 20 buah buku. Ia menyusun buku-buku tersebut ke dalam 2 rak secara sama banyak. Jumlah buku di setiap rak adalah __ - 0.',
-      alias: ["10", "1"],
+      soal: "Tika punya 8 pensil. Setengah pensil Tika adalah __.",
+      alias: ["4", "empat"],
     },
     detektif: [
       {
-        soal: "Operasi pembagian 15 : 5 = 3 artinya angka 15 dikurangi angka 3 secara berulang sebanyak 5 kali.",
+        soal: "Potongan tidak sama besar tetap disebut setengah.",
         benar: false,
-        alasan:
-          "Salah. 15 : 5 artinya angka 15 dikurangi angka 5 secara berulang sebanyak 3 kali: 15 - 5 - 5 - 5 = 0.",
+        alasan: "Salah. Setengah hanya jika kedua bagian sama besar.",
       },
       {
-        soal: "Setiap bilangan cacah (kecuali 0) jika dibagi dengan angka 1, maka hasil akhirnya adalah bilangan itu sendiri.",
+        soal: "Empat bagian sama besar dari satu martabak bernilai seperempat.",
         benar: true,
-        alasan:
-          "Benar. Membagi dengan 1 artinya seluruh benda dimasukkan ke dalam 1 wadah tunggal, sehingga isinya tidak berubah.",
+        alasan: "Benar. Tiap orang dari empat teman mendapat seperempat.",
       },
     ],
   },
