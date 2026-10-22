@@ -11,228 +11,241 @@ export const MODUL_MTK2_BAB5: ModulResmiPai = {
   id: "mtk-2-bab5",
   judul: JUDUL_MTK2_BAB5,
   pola:
-    /bab\s*5[:.]\s*pecahan(?!\s*sederhana)|setengah dari benda utuh|berbagi sama banyak|martabak manis kira|fondasi pembagian dasar|berbagi adil/,
+    /bab\s*5[:.]\s*pecahan(?!\s*sederhana)|dapur koki igil|restoran berbagi adil|setengah dari benda utuh|seperempat dari benda utuh|martabak manis kira|fondasi pembagian dasar|berbagi sama banyak|berbagi adil/,
   motivasi:
-    "Hore! Kamu sudah bantu Kira memotong martabak. Dua bagian sama besar itu setengah. Empat bagian sama besar itu seperempat. Setengah dari kumpulan benda harus sama banyak.",
-  kunciJawaban: "B,A,B,A,C,B,A,B,B,A",
+    "Hore! Kamu sudah bantu Koki Igil berbagi adil. Dua bagian sama besar itu setengah atau satu per dua. Empat bagian sama besar itu seperempat atau satu per empat. Setengah kumpulan harus sama banyak.",
+  kunciJawaban: "A,A,C,B,B,B,C,B,B,B",
   sketsaKartu: [
-    "Ibu memberi Kira martabak manis. Kira berbagi adil dengan Tika. Dua potong sama besar bernilai setengah.",
-    "Malosi berbagi kelereng dengan Upe. Setengah dari 4 adalah 2. Kira memotong martabak menjadi 4 untuk empat teman. Tiap potong seperempat.",
-    "Sepuluh potong martabak Igil: setengah, kumpulan, seperempat.",
-    "Lembar kerja tantangan juara pecahan.",
+    "Koki Igil, Rara, dan Bimo memotong martabak tepat di tengah. Dua bagian sama besar bernilai setengah atau satu per dua.",
+    "Empat teman memotong semangka jadi seperempat. Delapan donat dibagi dua kotak. Setengah dari 8 adalah 4.",
+    "Sepuluh pesanan Restoran Berbagi Adil. Tamu hanya tersenyum jika potongannya sama besar.",
+    "Lembar kerja juara pecahan. Bandingkan setengah dan seperempat. Hitung setengah kumpulan.",
   ],
   latihan: pg([
-    `[Soal 1 - PG - Tipe: LOTS]
-Martabak dipotong dua sama besar. Tiap potong bernilai...
-A) seperempat
-B) setengah
-C) utuh`,
-    `[Soal 2 - PG - Tipe: LOTS]
-Segi empat dipotong dua, tetapi tidak sama besar. Itu...
-A) bukan setengah
-B) setengah
-C) seperempat`,
+    `[Soal 1 - PG - Tipe: HOTS]
+Persegi A dibagi 4 sama besar, 1 petak biru. Persegi B dibagi 4 dengan garis silang sama besar, 1 bagian biru. Persegi C dibagi 4 tidak sama lebar. Bagian biru yang keduanya seperempat ada pada...
+A) A dan B
+B) A dan C
+C) B dan C`,
+    `[Soal 2 - PG - Tipe: HOTS]
+Rara makan setengah semangka. Bimo makan seperempat dari semangka yang sama besar. Siapa yang makan lebih besar?
+A) Rara
+B) Bimo
+C) sama besar`,
     `[Soal 3 - PG - Tipe: MOTS]
-Malosi punya 4 kelereng. Setengah untuk Upe. Upe mendapat...
-A) 4 kelereng
-B) 2 kelereng
-C) 1 kelereng`,
-    `[Soal 4 - PG - Tipe: MOTS]
-Ada 6 ikan. Dibagi dua tempat sama banyak. Setengahnya...
-A) 3 ikan
-B) 2 ikan
-C) 4 ikan`,
+Satu segitiga kecil bernilai seperempat dari bangun utuh. Berapa segitiga kecil supaya menjadi utuh?
+A) 2 segitiga
+B) 3 segitiga
+C) 4 segitiga`,
+    `[Soal 4 - PG - Tipe: HOTS]
+Ibu punya 8 apel. Setengah diberikan kepada Nenek. Rara makan 1 apel dari sisa Ibu. Apel Ibu yang tersisa...
+A) 4 apel
+B) 3 apel
+C) 2 apel`,
     `[Soal 5 - PG - Tipe: MOTS]
-6 ikan: 4 di satu ember, 2 di ember lain. Itu...
-A) setengah
-B) seperempat
-C) bukan setengah`,
-    `[Soal 6 - PG - Tipe: MOTS]
-Tika punya 8 pensil. Setengah pensil Tika...
-A) 8
+Setengah dari 8 ikan adalah...
+A) 2
 B) 4
-C) 2`,
-    `[Soal 7 - PG - Tipe: LOTS]
-Martabak untuk Kira, Malosi, Upe, dan Tika. Empat potong sama besar. Tiap orang mendapat...
-A) seperempat
-B) setengah
-C) utuh`,
-    `[Soal 8 - PG - Tipe: MOTS]
-Potong jadi dua sama besar, lalu potong lagi jadi dua sama besar. Dapat...
+C) 5`,
+    `[Soal 6 - PG - Tipe: HOTS]
+Segitiga dipotong mendatar. Atas kecil, bawah lebar. Bimo bilang bagian atas bernilai setengah. Pernyataan Bimo...
+A) benar
+B) salah
+C) sama besar`,
+    `[Soal 7 - PG - Tipe: HOTS]
+Setengah dari sosis Bimo adalah 3 potong. Jumlah seluruh sosis mula-mula...
+A) 3
+B) 5
+C) 6`,
+    `[Soal 8 - PG - Tipe: LOTS]
+Lingkaran dibagi 4 sama besar. Satu bagian kuning. Bagian kuning bernilai...
 A) setengah
 B) seperempat
 C) utuh`,
     `[Soal 9 - PG - Tipe: MOTS]
-Lingkaran dibagi 4 sama besar. Satu bagian diwarnai. Bagian diwarnai...
-A) setengah
-B) seperempat
-C) utuh`,
-    `[Soal 10 - PG - Tipe: HOTS]
-Lingkaran dibagi 4 sama besar. Dua bagian diwarnai. Bagian diwarnai...
-A) setengah
-B) seperempat
-C) tiga`,
+Ada 6 kupu-kupu. Setengah bagiannya berapa?
+A) 2
+B) 3
+C) 6`,
+    `[Soal 10 - PG - Tipe: MOTS]
+Ada 12 telur. Setengah dari 12 telur adalah...
+A) 4
+B) 6
+C) 8`,
   ]),
   kartu: [
     {
       kode: "A",
-      judul: "Berbagi Sama Banyak",
+      judul: "Dapur Koki Igil",
       pengantar:
-        "Ibu memberi Kira martabak manis. Kira berbagi dengan Tika. Dua bagian sama besar bernilai setengah.",
-      labelDaftar: "Cerita martabak dan setengah benda utuh",
+        "Halo koki cilik! Hari ini kita belajar pecahan di dapur Koki Igil bersama Rara dan Bimo.",
+      labelDaftar: "Naskah bergambar setengah dan seperempat",
       kolom: 1,
       item: [
         {
           nama: "Tujuan pembelajaran",
           singkat: "Setengah dan seperempat",
           uraian:
-            "Siswa dapat menunjukkan setengah dari benda utuh. Siswa dapat menunjukkan setengah dari kumpulan benda. Siswa dapat menunjukkan seperempat dari benda utuh.",
-          contoh: "Martabak dua potong sama besar. Tiap potong setengah.",
+            "Siswa dapat menunjukkan setengah dari benda utuh. Siswa dapat menunjukkan seperempat dari benda utuh. Siswa dapat menunjukkan setengah dari kumpulan benda.",
+          contoh: "Martabak dua potong sama besar bernilai satu per dua.",
         },
         {
-          nama: "Cerita martabak manis",
-          singkat: "Kira dan Tika",
+          nama: "Cerita dapur",
+          singkat: "Rara, Bimo, dan Koki Igil",
           uraian:
-            "Ibu memberi Kira oleh-oleh martabak manis. Kira ingat Tika juga suka. Kira membagi martabak sama besar. Pakai pisau yang aman untuk anak.",
-          contoh: "Potongan sama besar. Itu adil.",
+            "Martabak cuma satu. Rara dan Bimo sama-sama mau makan. Potong tepat di tengah supaya adil.",
+          contoh: "Satu bagian bernilai setengah atau satu per dua.",
         },
       ],
       kuis: [
-        { pertanyaan: "Dua bagian sama besar bernilai apa?", alias: ["setengah"] },
-        { pertanyaan: "Tuliskan setengah.", alias: ["setengah"] },
-        { pertanyaan: "Potongan tidak sama besar. Itu setengah?", alias: ["bukan", "tidak"] },
-        { pertanyaan: "Tuliskan bukan.", alias: ["bukan"] },
+        { pertanyaan: "Dua bagian sama besar disebut apa?", alias: ["setengah", "satu per dua", "1/2"] },
+        { pertanyaan: "Tuliskan 1/2.", alias: ["1/2", "setengah", "satu per dua"] },
+        { pertanyaan: "Empat bagian sama besar disebut apa?", alias: ["seperempat", "satu per empat", "1/4"] },
+        { pertanyaan: "Tuliskan 1/4.", alias: ["1/4", "seperempat", "satu per empat"] },
+        { pertanyaan: "Setengah dari 6 permen?", alias: ["3", "tiga"] },
+        { pertanyaan: "Tuliskan 5.", alias: ["5", "lima"] },
       ],
       voice: [
         [
-          "Ibu memberi Kira martabak manis. Kira berbagi dengan Tika.",
-          "Potong dua sama besar. Tiap potong bernilai setengah.",
+          "Halo koki cilik. Hari ini kita belajar pecahan setengah bersama Koki Igil.",
+          "Jika satu benda utuh dibagi menjadi dua bagian yang sama besar, setiap bagian disebut setengah atau satu per dua.",
         ],
       ],
     },
     {
       kode: "B",
-      judul: "B. Setengah Kumpulan dan Seperempat",
+      judul: "Ringkasan Pecahan",
       pengantar:
-        "Malosi punya 4 kelereng. Setengah untuk Upe adalah 2. Kira memotong martabak jadi 4. Tiap potong seperempat.",
-      labelDaftar: "Setengah kumpulan dan seperempat benda utuh",
+        "Lihat ringkasan pecahan. Angka atas artinya bagian yang diambil. Angka bawah artinya semua potongan yang sama besar.",
+      labelDaftar: "Infografis setengah, seperempat, dan kumpulan",
       kolom: 1,
       item: [
         {
-          nama: "Setengah dari kumpulan",
-          singkat: "Dua kelompok sama banyak",
+          nama: "Mengenal setengah",
+          singkat: "Satu per dua",
           uraian:
-            "Setengah dari 4 kelereng adalah 2. Setengah dari 6 ikan adalah 3. Jika 4 dan 2, itu bukan setengah.",
-          contoh: "Setengah dari 8 pensil adalah 4.",
+            "Benda utuh dibagi 2 sama besar. Angka 1 di atas: satu bagian yang diambil. Angka 2 di bawah: dua potong sama besar.",
+          contoh: "Kertas dipotong diagonal tepat di tengah. Satu segitiga bernilai satu per dua.",
         },
         {
-          nama: "Seperempat dari benda utuh",
-          singkat: "Empat bagian sama besar",
+          nama: "Mengenal seperempat",
+          singkat: "Satu per empat",
           uraian:
-            "Martabak untuk 4 teman. Potong empat sama besar. Tiap potong seperempat. Potong dua dulu, lalu potong lagi, juga seperempat.",
-          contoh: "Apel utuh, setengah, lalu seperempat.",
+            "Benda utuh dibagi 4 sama besar. Kalau ukurannya tidak sama, itu bukan seperempat.",
+          contoh: "Empat potong sama besar bernilai satu per empat.",
+        },
+        {
+          nama: "Setengah kumpulan",
+          singkat: "Dua kelompok sama banyak",
+          uraian:
+            "Bagi benda ke 2 wadah sama banyak. Isi satu wadah itulah setengahnya.",
+          contoh: "Setengah dari 6 stroberi adalah 3.",
         },
       ],
       kuis: [
-        { pertanyaan: "Setengah dari 4 kelereng?", alias: ["2", "dua"] },
-        { pertanyaan: "Tuliskan 2.", alias: ["2", "dua"] },
-        { pertanyaan: "Setengah dari 6 ikan?", alias: ["3", "tiga"] },
-        { pertanyaan: "Tuliskan seperempat.", alias: ["seperempat"] },
-        { pertanyaan: "Empat potong sama besar bernilai apa?", alias: ["seperempat"] },
+        { pertanyaan: "Pada 1/2, angka bawah berapa?", alias: ["2", "dua"] },
+        { pertanyaan: "Tuliskan 1/2.", alias: ["1/2", "setengah"] },
+        { pertanyaan: "Kue seperempat dipotong jadi berapa?", alias: ["4", "empat"] },
+        { pertanyaan: "Tuliskan 1/4.", alias: ["1/4", "seperempat"] },
+        { pertanyaan: "Setengah dari 4 bintang?", alias: ["2", "dua"] },
+        { pertanyaan: "Tuliskan 4.", alias: ["4", "empat"] },
       ],
       voice: [
         [
-          "Malosi punya 4 kelereng. Setengah untuk Upe. Upe dapat 2.",
-          "Kira memotong martabak jadi 4. Tiap orang mendapat seperempat.",
+          "Perhatikan ringkasan pecahan setengah. Syarat utamanya: dibagi menjadi 2 bagian yang sama besar.",
+          "Angka 1 di atas artinya 1 bagian yang dipilih. Angka 2 di bawah artinya jumlah seluruh potongan yang sama besar.",
         ],
       ],
     },
     {
       kode: "C",
-      judul: "C. Potong Martabak Igil",
+      judul: "Restoran Berbagi Adil",
       pengantar:
-        "Bantu Igil memotong 10 martabak. Sebut setengah atau seperempat. Hitung setengah kumpulan.",
-      labelDaftar: "Sepuluh misi potong martabak",
+        "Bantu Koki Igil mengambil keputusan di 10 pesanan. Tamu hanya tersenyum jika potongannya adil dan sama besar.",
+      labelDaftar: "Sepuluh pesanan restoran",
       kolom: 1,
       item: [
         {
           nama: "Alur permainan",
-          singkat: "Pilih potong, jawab, dapat bintang",
+          singkat: "Pilih pesanan, jawab, dapat bintang",
           uraian:
-            "Siswa memilih satu potong martabak. Igil membacakan misi. Jawaban benar mendapat 1 bintang madu. Jika belum tepat, Igil memberi petunjuk.",
+            "Siswa memilih satu pesanan. Koki Igil membacakan misi. Jawaban benar mendapat 1 bintang kepuasan.",
           contoh: "Dua sama besar itu setengah. Empat sama besar itu seperempat.",
         },
         {
-          nama: "Daun rapi",
-          singkat: "3, 2, atau 1 daun",
+          nama: "Bintang kepuasan",
+          singkat: "Win-win fairness",
           uraian:
             "Benar di percobaan pertama mendapat 3 daun. Benar setelah satu petunjuk mendapat 2 daun. Benar setelah dua petunjuk mendapat 1 daun.",
           contoh: "Petunjuk: potongan harus sama besar.",
         },
       ],
       kuis: [
-        { pertanyaan: "Dua sama besar bernilai apa?", alias: ["setengah"] },
-        { pertanyaan: "Tuliskan setengah.", alias: ["setengah"] },
-        { pertanyaan: "Tidak sama besar. Itu setengah?", alias: ["bukan", "tidak"] },
-        { pertanyaan: "Setengah dari 4?", alias: ["2", "dua"] },
-        { pertanyaan: "Tuliskan 2.", alias: ["2", "dua"] },
-        { pertanyaan: "Setengah dari 6?", alias: ["3", "tiga"] },
-        { pertanyaan: "4 dan 2 itu setengah?", alias: ["bukan", "tidak"] },
-        { pertanyaan: "Tuliskan 4.", alias: ["4", "empat"] },
-        { pertanyaan: "Empat sama besar bernilai apa?", alias: ["seperempat"] },
-        { pertanyaan: "Tuliskan seperempat.", alias: ["seperempat"] },
+        { pertanyaan: "Wortel dua sama besar?", alias: ["a", "sama"] },
+        { pertanyaan: "Pizza 4 sama besar?", alias: ["4"] },
+        { pertanyaan: "Setengah dari 6 kue?", alias: ["3", "tiga"] },
+        { pertanyaan: "Puding tidak sama. Setuju?", alias: ["tidak"] },
+        { pertanyaan: "Satu dari empat apel?", alias: ["1/4", "seperempat"] },
+        { pertanyaan: "Setengah 12 adalah 6?", alias: ["benar"] },
+        { pertanyaan: "Satu dari dua ikan?", alias: ["setengah", "satu per dua", "1/2"] },
+        { pertanyaan: "Setengah dari 10?", alias: ["5", "lima"] },
+        { pertanyaan: "Tuliskan 1/4.", alias: ["1/4", "seperempat"] },
+        { pertanyaan: "Tuliskan 1/2.", alias: ["1/2", "setengah"] },
       ],
       voice: [
         [
-          "Igil menjaga nampan martabak. Ada sepuluh potong dari yang pertama sampai piala.",
-          "Potong hijau untuk setengah. Potong biru untuk kelereng. Potong kuning untuk menulis. Potong ungu untuk memilih.",
-          "Jawaban benar mendapat satu bintang. Jika belum tepat, Igil memberi petunjuk.",
+          "Selamat datang di Restoran Berbagi Adil Koki Igil.",
+          "Setiap tamu hanya mau menerima makanan jika potongannya adil dan sama besar.",
+          "Ayo bantu Koki Igil mengambil keputusan yang tepat di 10 pesanan pelanggan.",
         ],
       ],
     },
     {
       kode: "D",
-      judul: "E. Lembar Evaluasi Siswa",
+      judul: "Lembar Evaluasi Siswa",
       pengantar:
-        "Sebut setengah atau seperempat. Hitung setengah kumpulan. Ini tantangan para juara.",
+        "Ada 10 soal seru tentang pecahan setengah dan seperempat. Perhatikan gambarnya. Pastikan bagiannya sama besar.",
       labelDaftar: "Poin penting dan evaluasi",
       kolom: 1,
       item: [
         {
           nama: "Poin penting",
-          singkat: "Setengah dan seperempat",
+          singkat: "Tiga kalimat kunci",
           uraian:
-            "Setengah: dua bagian sama besar, atau dua kelompok sama banyak. Seperempat: empat bagian sama besar. Potongan tidak sama besar bukan setengah. 4 dan 2 bukan setengah dari 6.",
+            "Setengah: satu bagian dari benda utuh yang dibagi 2 sama besar. Seperempat: satu bagian dari benda utuh yang dibagi 4 sama besar. Setengah kumpulan: bagi menjadi 2 kelompok sama banyak.",
           contoh: "Sama besar, sama banyak.",
         },
         {
           nama: "Lembar kerja",
           singkat: "Sepuluh tantangan",
           uraian:
-            "Dua sama besar adalah setengah. Tidak sama besar bukan setengah. Setengah 4 kelereng adalah 2. Setengah 6 ikan adalah 3. 4 dan 2 bukan setengah. Setengah 8 pensil adalah 4. Empat teman mendapat seperempat. Potong dua lalu dua lagi adalah seperempat. Satu dari empat adalah seperempat. Dua dari empat adalah setengah.",
-          contoh: "Jawaban latihan: B, A, B, A, C, B, A, B, B, A.",
+            "A dan B bernilai seperempat. Setengah lebih besar dari seperempat. Empat seperempat menjadi utuh. Setengah 8 apel lalu dikurangi 1 sisa 3. Setengah 8 ikan adalah 4. Potongan tidak sama bukan setengah. Setengah 3 berarti utuh 6. Satu dari empat itu seperempat. Setengah 6 adalah 3. Setengah 12 adalah 6.",
+          contoh: "Jawaban latihan: A, A, C, B, B, B, C, B, B, B.",
         },
       ],
       kuis: [
-        { pertanyaan: "Dua sama besar?", alias: ["setengah", "b"] },
-        { pertanyaan: "Tidak sama besar?", alias: ["bukan", "a"] },
-        { pertanyaan: "Setengah 4 kelereng?", alias: ["2", "b"] },
-        { pertanyaan: "Setengah 6 ikan?", alias: ["3", "a"] },
-        { pertanyaan: "4 dan 2?", alias: ["bukan", "c"] },
-        { pertanyaan: "Setengah 8 pensil?", alias: ["4", "b"] },
-        { pertanyaan: "Empat teman?", alias: ["seperempat", "a"] },
-        { pertanyaan: "Potong dua lalu dua?", alias: ["seperempat", "b"] },
-        { pertanyaan: "Satu dari empat?", alias: ["seperempat", "b"] },
-        { pertanyaan: "Dua dari empat?", alias: ["setengah", "a"] },
+        { pertanyaan: "A dan B seperempat?", alias: ["a"] },
+        { pertanyaan: "Siapa makan lebih besar?", alias: ["rara", "a"] },
+        { pertanyaan: "Berapa segitiga utuh?", alias: ["4", "c"] },
+        { pertanyaan: "Sisa apel Ibu?", alias: ["3", "b"] },
+        { pertanyaan: "Setengah 8 ikan?", alias: ["4", "b"] },
+        { pertanyaan: "Bimo benar?", alias: ["salah", "b"] },
+        { pertanyaan: "Seluruh sosis?", alias: ["6", "enam"] },
+        { pertanyaan: "Bagian kuning?", alias: ["seperempat", "satu per empat", "1/4"] },
+        { pertanyaan: "Setengah 6 kupu?", alias: ["3", "tiga"] },
+        { pertanyaan: "Setengah 12 telur?", alias: ["6", "enam"] },
       ],
       voice: [
         [
-          "Poin penting. Dua bagian sama besar itu setengah. Empat bagian sama besar itu seperempat.",
-          "Setengah kumpulan harus sama banyak. Kalimat kunci: sama besar, sama banyak.",
+          "Hebat sekali. Ingat tiga kalimat kunci.",
+          "Setengah: satu bagian dari benda yang dibagi 2 sama besar.",
+          "Seperempat: satu bagian dari benda yang dibagi 4 sama besar.",
+          "Setengah kumpulan: bagi menjadi 2 kelompok sama banyak.",
         ],
         [
-          "Martabak dua potong sama besar itu setengah. Empat potong sama besar itu seperempat.",
-          "Setengah dari 4 kelereng adalah 2. Setengah dari 8 pensil adalah 4. Dua dari empat bagian sama besar juga setengah.",
+          "Sekarang waktunya Lembar Evaluasi Siswa.",
+          "Ada 10 soal seru tentang pecahan setengah dan seperempat.",
+          "Perhatikan gambarnya baik-baik. Pastikan bagiannya sama besar.",
         ],
       ],
     },

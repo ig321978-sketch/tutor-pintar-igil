@@ -677,12 +677,12 @@ const PAKET: Record<string, PaketEvaluasiEkstra> = {
   "mtk-2-bab5": {
     garis: {
       soal: "Tariklah garis untuk menjodohkan cerita pecahan dengan nilainya!",
-      kiri: ["Martabak dua potong sama besar", "Martabak empat potong sama besar", "6 ikan jadi 4 dan 2"],
+      kiri: ["Martabak dua potong sama besar", "Semangka empat potong sama besar", "8 donat jadi 5 dan 3"],
       kanan: ["setengah", "seperempat", "bukan setengah"],
       kunci: {
         "Martabak dua potong sama besar": "setengah",
-        "Martabak empat potong sama besar": "seperempat",
-        "6 ikan jadi 4 dan 2": "bukan setengah",
+        "Semangka empat potong sama besar": "seperempat",
+        "8 donat jadi 5 dan 3": "bukan setengah",
       },
     },
     keranjang: {
@@ -691,21 +691,21 @@ const PAKET: Record<string, PaketEvaluasiEkstra> = {
       keranjang2: "SEPEREMPAT",
       keping: [
         { id: "martabak2", label: "Dua sama besar", wadah: "1" },
-        { id: "kelereng4", label: "2 dari 4 kelereng", wadah: "1" },
-        { id: "martabak4", label: "Empat sama besar", wadah: "2" },
+        { id: "donat8", label: "4 dari 8 donat", wadah: "1" },
+        { id: "semangka4", label: "Empat sama besar", wadah: "2" },
         { id: "apel4", label: "Satu dari empat apel", wadah: "2" },
       ],
     },
     urut: {
       soal: "Susun 3 langkah memotong seperempat!",
       balok: [
-        "Ambil satu martabak utuh.",
+        "Ambil satu semangka utuh.",
         "Potong menjadi dua bagian sama besar.",
         "Potong lagi tiap setengah menjadi dua, jadi seperempat.",
       ],
     },
     kanvas: {
-      soal: "Tika punya 8 pensil. Setengah pensil Tika adalah __.",
+      soal: "Rara punya 8 donat. Setengah donat Rara adalah __.",
       alias: ["4", "empat"],
     },
     detektif: [
@@ -715,7 +715,7 @@ const PAKET: Record<string, PaketEvaluasiEkstra> = {
         alasan: "Salah. Setengah hanya jika kedua bagian sama besar.",
       },
       {
-        soal: "Empat bagian sama besar dari satu martabak bernilai seperempat.",
+        soal: "Empat bagian sama besar dari satu semangka bernilai seperempat.",
         benar: true,
         alasan: "Benar. Tiap orang dari empat teman mendapat seperempat.",
       },

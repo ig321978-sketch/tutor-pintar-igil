@@ -903,6 +903,8 @@ export function adalahJudulMtk2Bab5(mapel: string, materi: string): boolean {
   return (
     /bab\s*5[:.]\s*pecahan(?!\s*sederhana)/.test(judul) ||
     /setengah dari benda utuh/.test(judul) ||
+    /dapur koki igil/.test(judul) ||
+    /restoran berbagi adil/.test(judul) ||
     /berbagi sama banyak/.test(judul) ||
     /martabak manis kira/.test(judul) ||
     /fondasi pembagian dasar/.test(judul)

@@ -451,24 +451,24 @@ const INFOGRAFIS: Record<
     catatan: "Pola berulang dan teratur. Setelah langkah terakhir, ulang dari awal.",
   },
   "mtk-2-bab5-A": {
-    judul: "Setengah benda utuh",
+    judul: "Setengah dan seperempat",
     kepala: ["Bagian", "Arti", "Contoh"],
     baris: [
-      ["Setengah", "Dua bagian sama besar", "Martabak Kira dan Tika"],
-      ["Bukan setengah", "Potongan tidak sama besar", "Segi empat miring"],
-      ["Di sekitar", "Benda dipotong dua sama", "Semangka, gelas, kertas"],
+      ["Setengah 1/2", "Dua bagian sama besar", "Martabak Rara dan Bimo"],
+      ["Seperempat 1/4", "Empat bagian sama besar", "Semangka 4 piring"],
+      ["Bukan pecahan itu", "Potongan tidak sama besar", "Apel besar dan kecil"],
     ],
-    catatan: "Setengah hanya jika kedua bagian sama besar.",
+    catatan: "Angka atas: bagian yang diambil. Angka bawah: semua potongan sama besar.",
   },
   "mtk-2-bab5-B": {
-    judul: "Kumpulan dan seperempat",
+    judul: "Kumpulan benda",
     kepala: ["Bagian", "Arti", "Contoh"],
     baris: [
-      ["Setengah kumpulan", "Dua kelompok sama banyak", "4 kelereng jadi 2 dan 2"],
-      ["Bukan setengah", "Jumlah tidak sama", "6 ikan jadi 4 dan 2"],
-      ["Seperempat", "Empat bagian sama besar", "Martabak 4 teman"],
+      ["Setengah kumpulan", "Dua kelompok sama banyak", "8 donat jadi 4 dan 4"],
+      ["Bukan setengah", "Jumlah tidak sama", "6 stroberi jadi 4 dan 2"],
+      ["Utuh dari pecahan", "Dua 1/2 atau empat 1/4", "Piring kue penuh"],
     ],
-    catatan: "Setengah dari 8 pensil adalah 4. Dua dari empat bagian sama besar juga setengah.",
+    catatan: "Setengah dari 6 stroberi adalah 3. Setengah lebih besar daripada seperempat.",
   },
   "mtk-2-bab6-A": {
     judul: "Penggaris pintar kita",
@@ -774,22 +774,22 @@ function EvaluasiBab5({ modulId }: { modulId: string }) {
       </h5>
       <KuisPilihan
         id={idEval(modulId, 0)}
-        soal="Martabak dipotong dua sama besar. Tiap potong bernilai..."
-        benar="B"
+        soal="Rara makan setengah semangka. Bimo makan seperempat. Siapa yang makan lebih besar?"
+        benar="A"
         pilihan={[
-          { huruf: "A", teks: "seperempat" },
-          { huruf: "B", teks: "setengah" },
-          { huruf: "C", teks: "utuh" },
+          { huruf: "A", teks: "Rara" },
+          { huruf: "B", teks: "Bimo" },
+          { huruf: "C", teks: "sama besar" },
         ]}
       />
       <KuisPilihan
         id={idEval(modulId, 1)}
-        soal="Setengah dari 4 kelereng adalah..."
+        soal="Ibu punya 8 apel. Setengah ke Nenek. Rara makan 1 dari sisa. Sisa Ibu..."
         benar="B"
         pilihan={[
-          { huruf: "A", teks: "4" },
-          { huruf: "B", teks: "2" },
-          { huruf: "C", teks: "1" },
+          { huruf: "A", teks: "4 apel" },
+          { huruf: "B", teks: "3 apel" },
+          { huruf: "C", teks: "2 apel" },
         ]}
       />
       <h5 className="text-sm font-black uppercase tracking-wide text-[#1C01A5]">
@@ -803,7 +803,7 @@ function EvaluasiBab5({ modulId }: { modulId: string }) {
       />
       <KuisBenarSalah
         id={idEval(modulId, 3)}
-        soal="Empat bagian sama besar dari satu martabak bernilai seperempat."
+        soal="Empat bagian sama besar dari satu semangka bernilai seperempat."
         benar="benar"
         alasanBenar="Tiap orang dari empat teman mendapat seperempat"
       />
@@ -815,22 +815,22 @@ function EvaluasiBab5({ modulId }: { modulId: string }) {
         soal="Jodohkan cerita dengan nilainya."
         pasangan={[
           {
-            kiri: "Dua potong sama besar",
+            kiri: "Martabak dua potong sama besar",
             kanan: ["setengah", "seperempat", "bukan setengah"],
           },
           {
-            kiri: "Empat potong sama besar",
+            kiri: "Semangka empat potong sama besar",
             kanan: ["setengah", "seperempat", "bukan setengah"],
           },
           {
-            kiri: "6 ikan jadi 4 dan 2",
+            kiri: "8 donat jadi 5 dan 3",
             kanan: ["setengah", "seperempat", "bukan setengah"],
           },
         ]}
         kunci={{
-          "Dua potong sama besar": "setengah",
-          "Empat potong sama besar": "seperempat",
-          "6 ikan jadi 4 dan 2": "bukan setengah",
+          "Martabak dua potong sama besar": "setengah",
+          "Semangka empat potong sama besar": "seperempat",
+          "8 donat jadi 5 dan 3": "bukan setengah",
         }}
       />
       <h5 className="text-sm font-black uppercase tracking-wide text-[#1C01A5]">
@@ -838,7 +838,7 @@ function EvaluasiBab5({ modulId }: { modulId: string }) {
       </h5>
       <KuisIsian
         id={idEval(modulId, 5)}
-        soal="Mengapa 4 ikan dan 2 ikan tidak boleh disebut setengah dari 6 ikan?"
+        soal="Mengapa 5 donat dan 3 donat tidak boleh disebut setengah dari 8 donat?"
         alias={["sama", "banyak", "tidak", "bukan"]}
       />
     </div>

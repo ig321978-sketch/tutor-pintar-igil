@@ -118,7 +118,7 @@ for (const item of daftar) {
     .ilike("kelas", KELAS)
     .ilike("mapel", "%matematika%")
     .or(
-      "materi.ilike.Bab 5:%pecahan%,materi.ilike.%fondasi pembagian%,materi.ilike.%berbagi adil%,materi.ilike.%martabak manis%",
+      "materi.ilike.Bab 5:%pecahan%,materi.ilike.%fondasi pembagian%,materi.ilike.%berbagi adil%,materi.ilike.%dapur koki%,materi.ilike.%martabak manis%",
     );
 
   if (cari.error) {

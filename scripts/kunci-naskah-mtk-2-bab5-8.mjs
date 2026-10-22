@@ -48,7 +48,7 @@ function filterCari(judul) {
 
 function judulAlias(materi) {
   const tambahan = [];
-  if (/fondasi pembagian dasar|bab 5:\s*pecahan/i.test(materi)) {
+  if (/fondasi pembagian dasar|bab 5:\s*pecahan|dapur koki igil|restoran berbagi adil/i.test(materi)) {
     tambahan.push("Bab 5: Berbagi Adil");
     tambahan.push("Bab 5: Pengurangan Bersusun");
     tambahan.push("Bab 5: Data Sederhana");
