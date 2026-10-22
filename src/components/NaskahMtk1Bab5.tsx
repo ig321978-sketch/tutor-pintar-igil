@@ -6,10 +6,13 @@ import { TEMA_MTK1_BAB5 } from "@/lib/tema-misi-mtk-1";
 import { useMemo, useState, type ReactNode } from "react";
 import HasilJawabanKuis from "@/components/HasilJawabanKuis";
 import KartuPoinPenting from "@/components/KartuPoinPenting";
+import { NamaDialog } from "@/components/IkonDialogMtk1";
 import TujuanBelajar from "@/components/TujuanBelajar";
 import KuisAkhirAdegan from "@/components/KuisAkhirAdegan";
 import KuisTulisKartu from "@/components/KuisTulisKartu";
 import SoalRekamSuara from "@/components/SoalRekamSuara";
+import GambarCerita from "@/components/GambarCerita";
+import TabelInfoGrafis from "@/components/TabelInfoGrafis";
 import TombolVoiceMateriPai1 from "@/components/TombolVoiceMateriPai1";
 import WritingCanvas from "@/components/WritingCanvas";
 import { useKuisMateri } from "@/components/KuisMateriContext";
@@ -54,7 +57,7 @@ function Dialog({ nama, anak }: { nama: string; anak: string }) {
   const warna = WARNA_DIALOG[nama] ?? "border-[#1C01A5]/15 bg-[#F8F7FF]";
   return (
     <article className={`rounded-2xl border-2 px-4 py-3 ${warna}`}>
-      <p className="text-xs font-black uppercase tracking-wide text-[#1C01A5]">{nama}</p>
+      <NamaDialog nama={nama} />
       <p className="mt-1 text-sm font-semibold leading-relaxed text-slate-700">{anak}</p>
     </article>
   );
@@ -85,13 +88,34 @@ function KepalaKartu({
 }) {
   return (
     <>
-      <p className="text-center text-4xl" aria-hidden>
+      <p className="text-center text-4xl font-normal" aria-hidden>
         {ikon}
       </p>
       <h4 className="mt-3 text-center text-lg font-black tracking-wide text-[#1C01A5] sm:text-xl">{judul}</h4>
       {anak ? <p className="mt-1 text-center text-sm font-bold text-[#1C01A5]/70">{anak}</p> : null}
       <div className="mt-4">
         <TombolVoiceMateriPai1 kelas={kelas} kelamin={kelamin} cuplikan={cuplikan} />
+      </div>
+    </>
+  );
+}
+
+function JudulSubBab({
+  judul,
+  kelas,
+  kelamin,
+  naskah,
+}: {
+  judul: string;
+  kelas?: string;
+  kelamin?: KelaminGuru;
+  naskah: string[];
+}) {
+  return (
+    <>
+      <h5 className="mt-5 text-left text-base font-black tracking-wide text-[#1C01A5] sm:text-lg">{judul}</h5>
+      <div className="mt-4">
+        <TombolVoiceMateriPai1 kelas={kelas} kelamin={kelamin} cuplikan={cuplikanDariNaskah([naskah], 2_000, 3_000)} />
       </div>
     </>
   );
@@ -104,24 +128,21 @@ function Umpan({ status, teks }: { status: StatusJawabanKuis; teks: string }) {
 
 function Adegan({
   judul,
-  warna,
   src,
   alt,
   children,
 }: {
   judul: string;
-  warna: string;
   src: string;
   alt: string;
   children: ReactNode;
 }) {
   return (
-    <section className="space-y-4 border-b-4 border-[#1C01A5] pb-8">
-      <p className="text-xl font-black leading-snug text-[#1C01A5]">{judul}</p>
-      {/* eslint-disable-next-line @next/next/no-img-element */}
-      <img src={src} alt={alt} className="mt-3 w-full rounded-xl border border-[#1C01A5]/10 bg-white object-cover" />
-      <div className="mt-3 space-y-2">{children}</div>
-    </section>
+    <article className="space-y-3 rounded-2xl border-2 border-[#16A34A]/25 bg-[#F0FDF4] px-4 py-3">
+      <p className="text-xs font-black uppercase text-[#166534]">{judul}</p>
+      <GambarCerita src={src} alt={alt} />
+      <div className="space-y-2">{children}</div>
+    </article>
   );
 }
 
@@ -491,32 +512,26 @@ function KartuBeda() {
   );
 }
 
-function KartuA({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminGuru }) {
-  const kartu = MODUL_MTK1_BAB5.kartu[0];
+function IsiHitung({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminGuru }) {
   const [suara, setSuara] = useState<StatusJawabanKuis>(null);
   const [salahKanvas, setSalahKanvas] = useState(0);
   return (
-    <KartuBingkai latar="bg-sky-50/80">
-      <KepalaKartu
-        ikon="🇮🇩🎀🦉"
-        judul={kartu.judul}
-        anak="Ayo Membilang sampai dengan 20"
+    <>
+      <JudulSubBab
+        judul="Sub-Bab A: Menghitung, Membaca, dan Menulis Bilangan"
         kelas={kelas}
         kelamin={kelamin}
-        cuplikan={cuplikanDariNaskah(kartu.voice, 2_000, 3_000)}
-      />
-      <div className="mt-4 rounded-2xl border-2 border-sky-300 bg-sky-50 px-4 py-3">
-        <TujuanBelajar
-        butir={[
-          "Membilang, membaca, dan menulis bilangan 11 sampai 20.",
-          "Mengenal puluhan dan satuan dengan mengelompokkan benda per sepuluh.",
+        naskah={[
+          "Besok hari tujuh belas Agustus. Kampung memasang bendera kecil.",
+          "Sepuluh bendera diikat jadi satu. Satu ikat sama dengan sepuluh. Itu satu puluhan.",
+          "Satu ikat dan tiga bendera lepas adalah tiga belas.",
+          "Belas artinya sepuluh lebih sedikit. Sebelas adalah nama istimewa.",
+          "Dua ikat penuh, lepasnya nol, sama dengan dua puluh. Merdeka!",
         ]}
       />
-      </div>
       <div className="mt-4 space-y-3">
         <Adegan
           judul="Pagi di gang kampung"
-          warna="border-rose-200 bg-rose-50"
           src="/doodle-mtk/mtk-1-bab5-pagi.jpg"
           alt="Gang kampung berhias umbul-umbul. Bendera kecil mendarat di kaki Bimo, Igil hinggap di pagar."
         >
@@ -538,8 +553,7 @@ function KartuA({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminGuru }) {
           />
         </Adegan>
         <Adegan
-          judul="Adegan 1 · Tumpukan bendera berantakan"
-          warna="border-sky-200 bg-sky-50"
+          judul="Tumpukan bendera berantakan"
           src="/doodle-mtk/mtk-1-bab5-adegan-1.jpg"
           alt="Bimo menunjuk bendera yang berserakan di tikar, Bimo bingung, Igil mengawasi."
         >
@@ -558,8 +572,7 @@ function KartuA({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminGuru }) {
           />
         </Adegan>
         <Adegan
-          judul="Adegan 2 · Ikatan ajaib pertama"
-          warna="border-amber-200 bg-amber-50"
+          judul="Ikatan ajaib pertama"
           src="/doodle-mtk/mtk-1-bab5-adegan-2.jpg"
           alt="Rara mengikat sepuluh bendera jadi satu ikatan dengan pita, Igil memperhatikan."
         >
@@ -578,8 +591,7 @@ function KartuA({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminGuru }) {
           />
         </Adegan>
         <Adegan
-          judul="Adegan 3 · Lahirnya angka belasan"
-          warna="border-blue-200 bg-blue-50"
+          judul="Lahirnya angka belasan"
           src="/doodle-mtk/mtk-1-bab5-adegan-3.jpg"
           alt="Satu ikat bendera dan tiga bendera lepas, Bimo menunjuk, angkanya 13."
         >
@@ -603,8 +615,7 @@ function KartuA({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminGuru }) {
           />
         </Adegan>
         <Adegan
-          judul="Adegan 4 · Kata belas yang ajaib"
-          warna="border-emerald-200 bg-emerald-50"
+          judul="Kata belas yang ajaib"
           src="/doodle-mtk/mtk-1-bab5-adegan-4.jpg"
           alt="Papan tulis kampung berisi angka 11 sampai 19 dan kata belas. Bimo dan Rara melihatnya."
         >
@@ -624,8 +635,7 @@ function KartuA({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminGuru }) {
           />
         </Adegan>
         <Adegan
-          judul="Adegan 5 · Dua ikat sama dengan dua puluh"
-          warna="border-rose-200 bg-rose-50"
+          judul="Dua ikat sama dengan dua puluh"
           src="/doodle-mtk/mtk-1-bab5-adegan-5.jpg"
           alt="Dua ikat bendera, angka 20, Rara, Bimo, dan Igil bersorak, kembang api di langit."
         >
@@ -644,6 +654,23 @@ function KartuA({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminGuru }) {
             konteksKanvas="Dua ikatan penuh sama dengan 20."
           />
         </Adegan>
+        <article className="rounded-2xl border-2 border-emerald-300 bg-emerald-50 px-4 py-3">
+          <p className="text-sm font-black text-[#1C01A5]">Kenali angka belasan</p>
+          <p className="mt-1 text-sm font-semibold text-slate-700">🎀 = 1 ikat isi 10. ● = 1 benda lepas.</p>
+          <div className="mt-3">
+            <TabelBelasan />
+          </div>
+        </article>
+        <TabelInfoGrafis
+          judul="Infografis: Menghitung Bendera"
+          kepala={["Gambar", "Cara baca", "Angka"]}
+          baris={[
+            ["🎀 ●●●", "Tiga belas", "13"],
+            ["🎀 ●●●●●", "Lima belas", "15"],
+            ["🎀🎀", "Dua puluh", "20"],
+          ]}
+          kaki="Satu ikat sepuluh. Lepasnya satuan. Dua ikat penuh sama dengan 20."
+        />
       </div>
       <div className="mt-6 border-t-2 border-[#1C01A5]/10 pt-5">
         <p className="text-base font-extrabold text-[#1C01A5]">QUIZ:</p>
@@ -688,31 +715,82 @@ function KartuA({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminGuru }) {
           </div>
         ) : null}
       </div>
-    </KartuBingkai>
+    </>
   );
 }
 
-function KartuB({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminGuru }) {
-  const kartu = MODUL_MTK1_BAB5.kartu[1];
-  const pilihanAngka = ["12", "19", "20"];
+function IsiMaju({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminGuru }) {
   return (
-    <KartuBingkai latar="bg-emerald-50/80">
-      <KepalaKartu
-        ikon="🎀🔢"
-        judul={kartu.judul}
-        anak="Infografis angka belasan"
+    <>
+      <JudulSubBab
+        judul="Sub-Bab B: Menghitung Maju dan Mundur"
         kelas={kelas}
         kelamin={kelamin}
-        cuplikan={cuplikanDariNaskah(kartu.voice, 2_000, 3_000)}
+        naskah={[
+          "Sebelas, dua belas, tiga belas, empat belas, lima belas.",
+          "Enam belas, tujuh belas, delapan belas, sembilan belas, dua puluh.",
+          "Simpan sepuluh, lalu lanjut hitung. Jangan hitung ulang dari satu.",
+        ]}
       />
-      <div className="mt-4 space-y-4">
-        <article className="rounded-2xl border-2 border-emerald-300 bg-emerald-50 px-4 py-3">
-          <p className="text-sm font-black text-[#1C01A5]">Kenali angka belasan</p>
-          <p className="mt-1 text-sm font-semibold text-slate-700">🎀 = 1 ikat isi 10. ● = 1 benda lepas.</p>
-          <div className="mt-3">
-            <TabelBelasan />
-          </div>
+      <TabelInfoGrafis
+        judul="Infografis: Maju dan Mundur"
+        kepala={["Arah", "Urutan", "Contoh"]}
+        baris={[
+          ["Maju", "10, 11, 12, 13", "kecil ke besar"],
+          ["Mundur", "15, 14, 13, 12", "besar ke kecil"],
+          ["Lanjut", "11 sampai 17", "simpan 10 dulu"],
+        ]}
+        kaki="Simpan sepuluh, lalu lanjut hitung."
+      />
+      <div className="mt-4 space-y-3">
+        <article className="rounded-2xl border-2 border-violet-200 bg-violet-50 px-4 py-3">
+          <p className="text-sm font-black text-[#1C01A5]">Membilang lanjut</p>
+          <p className="mt-2 text-2xl">🎀 🍬🍬🍬🍬🍬🍬🍬</p>
+          <p className="mt-2 text-sm font-semibold text-slate-700">
+            Simpan 10 di kepala. Tunjuk permen: 11, 12, 13, 14, 15, 16, 17. Angka terakhir = 17.
+          </p>
         </article>
+        <article className="rounded-2xl border-2 border-rose-200 bg-rose-50 px-4 py-3">
+          <p className="text-sm font-black text-[#1C01A5]">Garis bilangan 0–20</p>
+          <p className="mt-2 flex flex-wrap gap-1 text-sm font-black text-[#1C01A5]">
+            {Array.from({ length: 21 }, (_, angka) => (
+              <span key={angka}>{angka === 10 || angka === 20 ? `🚩${angka}` : angka}</span>
+            ))}
+          </p>
+          <p className="mt-2 text-sm font-semibold text-slate-700">
+            12 dan 19 puluhannya sama-sama 1. Satuannya 2 dan 9. 9 lebih besar, jadi 19 lebih besar dari 12.
+          </p>
+        </article>
+        <SusunKereta />
+      </div>
+    </>
+  );
+}
+
+function IsiNilai({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminGuru }) {
+  const pilihanAngka = ["12", "19", "20"];
+  return (
+    <>
+      <JudulSubBab
+        judul="Sub-Bab C: Nilai Tempat"
+        kelas={kelas}
+        kelamin={kelamin}
+        naskah={[
+          "Rumah kiri untuk ikatan. Rumah kanan untuk benda yang lepas.",
+          "Tulis angka satu lebih dulu, baru satuannya. Empat belas adalah satu empat, bukan empat satu.",
+        ]}
+      />
+      <TabelInfoGrafis
+        judul="Infografis: Nilai Tempat"
+        kepala={["Angka", "Puluhan", "Satuan"]}
+        baris={[
+          ["13", "1 ikat", "3 lepas"],
+          ["16", "1 ikat", "6 lepas"],
+          ["18", "1 ikat", "8 lepas"],
+        ]}
+        kaki="Kiri puluhan, kanan satuan. 16 = 10 + 6."
+      />
+      <div className="mt-4 space-y-3">
         <article className="rounded-2xl border-2 border-blue-200 bg-blue-50 px-4 py-3">
           <p className="text-sm font-black text-[#1C01A5]">Rumah nilai tempat · 16</p>
           <div className="mt-3 grid grid-cols-2 gap-2 text-center">
@@ -737,13 +815,6 @@ function KartuB({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminGuru }) {
           </div>
           <p className="mt-2 text-sm font-semibold text-slate-700">Bingkai penuh = 10. Titik di bingkai kedua = 3. 10 + 3 = 13.</p>
         </article>
-        <article className="rounded-2xl border-2 border-violet-200 bg-violet-50 px-4 py-3">
-          <p className="text-sm font-black text-[#1C01A5]">Membilang lanjut</p>
-          <p className="mt-2 text-2xl">🎀 🍬🍬🍬🍬🍬🍬🍬</p>
-          <p className="mt-2 text-sm font-semibold text-slate-700">
-            Simpan 10 di kepala. Tunjuk permen: 11, 12, 13, 14, 15, 16, 17. Angka terakhir = 17.
-          </p>
-        </article>
         <article className="rounded-2xl border-2 border-emerald-200 bg-emerald-50 px-4 py-3">
           <p className="text-sm font-black text-[#1C01A5]">Pakai jari teman</p>
           <p className="mt-2 text-2xl">🖐️🖐️ + ✋</p>
@@ -759,17 +830,6 @@ function KartuB({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminGuru }) {
             Tulis puluhan dulu, baru satuan. Empat belas ditulis 14, bukan 41. Tujuh belas ditulis 17, bukan 71.
           </p>
         </article>
-        <article className="rounded-2xl border-2 border-rose-200 bg-rose-50 px-4 py-3">
-          <p className="text-sm font-black text-[#1C01A5]">Garis bilangan 0–20</p>
-          <p className="mt-2 flex flex-wrap gap-1 text-sm font-black text-[#1C01A5]">
-            {Array.from({ length: 21 }, (_, angka) => (
-              <span key={angka}>{angka === 10 || angka === 20 ? `🚩${angka}` : angka}</span>
-            ))}
-          </p>
-          <p className="mt-2 text-sm font-semibold text-slate-700">
-            12 dan 19 puluhannya sama-sama 1. Satuannya 2 dan 9. 9 lebih besar, jadi 19 lebih besar dari 12.
-          </p>
-        </article>
         <KuisCocok
           id={idKuis("B", 0)}
           perintah="Tarik garis dari gambar ke angka yang benar!"
@@ -780,8 +840,6 @@ function KartuB({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminGuru }) {
           ]}
           umpan="Satu ikat dua lepas = 12. Satu ikat sembilan lepas = 19. Dua ikat = 20."
         />
-        <SusunKereta />
-        <KartuBeda />
         <div className="border-t-2 border-[#1C01A5]/10 pt-5">
           <p className="text-base font-extrabold text-[#1C01A5]">QUIZ:</p>
           <p className="mt-2 text-center text-4xl font-black">
@@ -808,7 +866,42 @@ function KartuB({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminGuru }) {
           visual={<p className="text-center text-3xl">🐦 16</p>}
         />
       </div>
-    </KartuBingkai>
+    </>
+  );
+}
+
+function IsiBanding({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminGuru }) {
+  return (
+    <>
+      <JudulSubBab
+        judul="Sub-Bab D: Membandingkan Bilangan"
+        kelas={kelas}
+        kelamin={kelamin}
+        naskah={[
+          "Kalau puluhannya sama, bandingkan satuannya. Sembilan belas lebih besar dari dua belas.",
+        ]}
+      />
+      <TabelInfoGrafis
+        judul="Infografis: Membandingkan"
+        kepala={["Pasangan", "Lihat", "Hasil"]}
+        baris={[
+          ["19 dan 12", "satuan 9 dan 2", "19 lebih besar"],
+          ["16 dan 13", "satuan 6 dan 3", "16 lebih besar"],
+          ["10 + 8 dan 16", "18 dan 16", "18 paling banyak"],
+        ]}
+        kaki="Puluhan sama? Lihat satuannya."
+      />
+      <div className="mt-4 space-y-3">
+        <article className="rounded-2xl border-2 border-rose-200 bg-rose-50 px-4 py-3">
+          <p className="text-sm font-black text-[#1C01A5]">Puluhan sama, lihat satuan</p>
+          <p className="mt-2 text-center text-3xl font-black text-[#1C01A5]">19 &gt; 12</p>
+          <p className="mt-2 text-sm font-semibold text-slate-700">
+            12 dan 19 puluhannya sama-sama 1. Satuannya 2 dan 9. 9 lebih besar, jadi 19 lebih besar dari 12.
+          </p>
+        </article>
+        <KartuBeda />
+      </div>
+    </>
   );
 }
 
@@ -1013,16 +1106,36 @@ function LembarEvaluasi({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminG
 }
 
 export default function NaskahMtk1Bab5({
-  kelas,
+  kelas = "1 SD",
   kelamin,
 }: {
   kelas?: string;
   kelamin?: KelaminGuru;
 }) {
+  const kartuA = MODUL_MTK1_BAB5.kartu[0];
   return (
     <div className="space-y-5">
-      <KartuA kelas={kelas} kelamin={kelamin} />
-      <KartuB kelas={kelas} kelamin={kelamin} />
+      <KartuBingkai latar="bg-sky-50/80">
+        <KepalaKartu
+          ikon="🇮🇩🎀🦉"
+          judul={kartuA.judul}
+          kelas={kelas}
+          kelamin={kelamin}
+          cuplikan={cuplikanDariNaskah(kartuA.voice, 2_000, 3_000)}
+        />
+        <TujuanBelajar
+          butir={[
+            "Membilang, membaca, dan menulis bilangan 11 sampai 20.",
+            "Menghitung maju dan mundur pada bilangan belasan.",
+            "Mengenal puluhan dan satuan dengan mengelompokkan benda per sepuluh.",
+            "Membandingkan bilangan sampai 20.",
+          ]}
+        />
+        <IsiHitung kelas={kelas} kelamin={kelamin} />
+        <IsiMaju kelas={kelas} kelamin={kelamin} />
+        <IsiNilai kelas={kelas} kelamin={kelamin} />
+        <IsiBanding kelas={kelas} kelamin={kelamin} />
+      </KartuBingkai>
       <KartuC kelas={kelas} kelamin={kelamin} />
       <div id={SLOT_AJUAN_SEBELUM_KARTU_D} />
       <KartuPoinPenting

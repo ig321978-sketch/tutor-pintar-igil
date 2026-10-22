@@ -10,7 +10,7 @@ export const JUDUL_MTK1_BAB5 = "Bab 5: Ayo Membilang sampai dengan 20";
 export const MODUL_MTK1_BAB5: ModulResmiPai = {
   id: "mtk-1-bab5",
   judul: JUDUL_MTK1_BAB5,
-  pola: /membilang\s+sampai(\s+dengan)?\s+20\b|bendera kecil untuk lomba|pasar malam kemerdekaan|misi lomba bendera/,
+  pola: /membilang\s+sampai(\s+dengan)?\s+20\b|bendera kecil untuk lomba|misi lomba bendera|nilai tempat/,
   motivasi:
     "Rara, Bimo, dan Igil menyiapkan dua puluh bendera kecil bersama Igil. Sepuluh bendera diikat jadi satu puluhan.",
   kunciJawaban: "A,A,A,A,B,A,B,C,C,A",
@@ -85,7 +85,7 @@ D) Tidak ada`,
   kartu: [
     {
       kode: "A",
-      judul: "A. Bendera Kecil untuk Lomba 17 Agustus",
+      judul: "Bendera Kecil untuk Lomba 17 Agustus",
       pengantar:
         "Besok 17 Agustus. Igil meminta Rara, Bimo, dan Igil memasang dua puluh bendera kecil. Igil menunjukkan ikatan ajaib: setiap sepuluh bendera diikat jadi satu puluhan.",
       labelDaftar: "Ikatan ajaib sepuluh bendera",
@@ -221,7 +221,7 @@ D) Tidak ada`,
         ],
       ],
     },
-        {
+    {
       kode: "C",
       judul: "C. Misi Lomba Bendera",
       pengantar:
