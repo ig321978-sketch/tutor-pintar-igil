@@ -48,11 +48,12 @@ function filterCari(judul) {
 
 function judulAlias(materi) {
   const tambahan = [];
-  if (/bilangan cacah sampai 100/i.test(materi)) {
+  if (/ayo membilang sampai dengan 50|bilangan cacah sampai 100/i.test(materi)) {
+    tambahan.push("Bab 1: Ayo Membilang sampai dengan 50");
+    tambahan.push("Bab 1: Bilangan Cacah sampai 100");
     tambahan.push("Bab 1: Bilangan 1 Sampai dengan 1.000");
     tambahan.push("Bab 1: Bilangan 1 sampai 100");
-    tambahan.push("Bab 1: Berpetualang di Desa Angka");
-    tambahan.push("Bab 1: Kantong Permen Sani");
+    tambahan.push("Bab 1: Loker Baru di Kelas Malosi");
   }
   if (/penjumlahan dan pengurangan bersusun/i.test(materi)) {
     tambahan.push("Bab 2: Cara Berhitung");

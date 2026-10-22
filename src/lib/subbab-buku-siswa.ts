@@ -123,6 +123,18 @@ const SUBBAB_BUKU_SISWA: Record<string, Record<string, Record<string, string[]>>
       ],
     },
   },
+  "2 SD": {
+    Matematika: {
+      "Bab 1: Ayo Membilang sampai dengan 50": [
+        "Sub-Bab A: Menghitung, Membaca, dan Menulis Bilangan sampai dengan 50",
+        "Sub-Bab B: Nilai Tempat",
+        "Sub-Bab C: Membandingkan Dua Bilangan atau Lebih",
+        "Misi penjaga loker kelas",
+        "Poin penting",
+        "Lembar evaluasi siswa",
+      ],
+    },
+  },
   "3 SD": {
     Matematika: {
       "Bab 1: Bilangan sampai 10.000": [

@@ -1,6 +1,12 @@
 const IKON: Record<string, string> = {
   Rara: "👧",
   Bimo: "👦",
+  Malosi: "👦",
+  Tika: "👧",
+  Kira: "👧",
+  Upe: "👦",
+  Lili: "👧",
+  Halim: "👦",
   burung: "🦉",
   tikus: "🐭",
   nenek: "👵",
