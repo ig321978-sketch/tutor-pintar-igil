@@ -71,10 +71,12 @@ function judulAlias(materi) {
     tambahan.push("Bab 3: Pengukuran Waktu dan Uang");
     tambahan.push("Bab 3: Kotak Permen Kembar");
   }
-  if (/geometri bangun datar/i.test(materi)) {
-    tambahan.push("Bab 4: Penjumlahan Bersusun");
+  if (/geometri bangun datar|posisi benda dan pola/i.test(materi)) {
+    tambahan.push("Bab 4: Posisi Benda dan Pola di Sekitar Kita");
+    tambahan.push("Bab 4: Geometri Bangun Datar");
     tambahan.push("Bab 4: Pola dan Bangun");
     tambahan.push("Bab 4: Bungkus Permen Unik");
+    tambahan.push("Bab 4: Waktu Panen Padi");
   }
   return tambahan;
 }

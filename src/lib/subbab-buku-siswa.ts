@@ -149,6 +149,13 @@ const SUBBAB_BUKU_SISWA: Record<string, Record<string, Record<string, string[]>>
         "Poin penting",
         "Lembar evaluasi siswa",
       ],
+      "Bab 4: Posisi Benda dan Pola di Sekitar Kita": [
+        "Sub-Bab A: Posisi Benda",
+        "Sub-Bab B: Pola",
+        "Ikat padi Igil",
+        "Poin penting",
+        "Lembar evaluasi siswa",
+      ],
     },
   },
   "3 SD": {

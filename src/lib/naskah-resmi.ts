@@ -877,6 +877,26 @@ export function adalahMtk2Bab3(
   return adalahJudulMtk2Bab3(mapel, materi);
 }
 
+export function adalahJudulMtk2Bab4(mapel: string, materi: string): boolean {
+  if (!adalahMapelMatematika(mapel)) return false;
+  const judul = normJudul(materi);
+  return (
+    /bab\s*4[:.]\s*posisi benda/.test(judul) ||
+    /posisi benda dan pola/.test(judul) ||
+    /waktu panen padi/.test(judul) ||
+    /geometri bangun datar/.test(judul)
+  );
+}
+
+export function adalahMtk2Bab4(
+  kelas: string,
+  mapel: string,
+  materi: string,
+): boolean {
+  if (!kelasDuaSd(kelas)) return false;
+  return adalahJudulMtk2Bab4(mapel, materi);
+}
+
 export function cariModulPjok1Resmi(materi: string): ModulResmiPai | null {
   const judul = normJudul(materi);
   return MODUL_PJOK1_BAB1_4.find((modul) => modul.pola.test(judul)) ?? null;

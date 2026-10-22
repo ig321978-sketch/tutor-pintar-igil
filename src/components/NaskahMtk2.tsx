@@ -431,24 +431,24 @@ const INFOGRAFIS: Record<
     catatan: "5 × 1 bukan 5+5+5+5+5. Kali 0 selalu 0. Lima kucing empat kaki = 20.",
   },
   "mtk-2-bab4-A": {
-    judul: "Karakter bangun datar",
-    kepala: ["Bangun", "Sisi", "Sudut"],
+    judul: "Posisi di sawah",
+    kepala: ["Kalimat", "Kata posisi", "Pasangan"],
     baris: [
-      ["Segitiga", "3 garis lurus", "3 pojok"],
-      ["Segiempat", "4 garis lurus", "4 pojok"],
-      ["Lingkaran", "1 sisi lengkung", "0 pojok"],
+      ["Kupu-kupu di atas bunga", "atas", "Bunga di bawah"],
+      ["Burung di depan ulat", "depan", "Ulat di belakang"],
+      ["Burung di kiri rumput", "kiri", "Rumput di kanan"],
     ],
-    catatan: "Pizza sering segitiga, televisi dan papan tulis segiempat, roda dan koin lingkaran.",
+    catatan: "Atas berpasangan dengan bawah. Depan berpasangan dengan belakang. Kiri berpasangan dengan kanan.",
   },
   "mtk-2-bab4-B": {
-    judul: "Detektif benda sekitar",
-    kepala: ["Benda", "Bangun", "Ciri"],
+    judul: "Pola panen",
+    kepala: ["Jenis", "Contoh", "Berikutnya"],
     baris: [
-      ["Koin, roda, jam", "Lingkaran", "Tanpa pojok"],
-      ["Papan, buku, kalender", "Segiempat", "4 sisi lurus"],
-      ["Potongan pizza", "Segitiga", "3 sisi lurus"],
+      ["Bentuk", "bunga, segi empat, bunga", "segi empat"],
+      ["Warna", "merah, biru, merah", "biru"],
+      ["Gerakan", "membungkuk, berdiri", "membungkuk"],
     ],
-    catatan: "Urutan jumlah sisi dari sedikit: lingkaran, segitiga, segiempat. Sudut segitiga ada 3.",
+    catatan: "Pola berulang dan teratur. Setelah langkah terakhir, ulang dari awal.",
   },
   "mtk-2-bab5-A": {
     judul: "Logika bagi adil cerdik",
@@ -697,22 +697,22 @@ function EvaluasiBab4({ modulId }: { modulId: string }) {
       </h5>
       <KuisPilihan
         id={idEval(modulId, 0)}
-        soal="Jumlah sudut pojok dan sisi lingkaran adalah..."
+        soal="Kupu-kupu hinggap di atas bunga. Bunga ada di..."
         benar="B"
         pilihan={[
-          { huruf: "A", teks: "1 sudut, 3 sisi" },
-          { huruf: "B", teks: "0 sudut, 1 sisi lengkung" },
-          { huruf: "C", teks: "4 sudut, 4 sisi" },
+          { huruf: "A", teks: "atas kupu-kupu" },
+          { huruf: "B", teks: "bawah kupu-kupu" },
+          { huruf: "C", teks: "depan kupu-kupu" },
         ]}
       />
       <KuisPilihan
         id={idEval(modulId, 1)}
-        soal="Bangun datar yang memiliki 3 sisi garis lurus dinamakan..."
-        benar="B"
+        soal="Pola kaus: merah, biru, merah, biru. Berikutnya..."
+        benar="C"
         pilihan={[
-          { huruf: "A", teks: "Lingkaran" },
-          { huruf: "B", teks: "Segitiga" },
-          { huruf: "C", teks: "Segiempat" },
+          { huruf: "A", teks: "kuning" },
+          { huruf: "B", teks: "biru" },
+          { huruf: "C", teks: "merah" },
         ]}
       />
       <h5 className="text-sm font-black uppercase tracking-wide text-[#1C01A5]">
@@ -720,52 +720,40 @@ function EvaluasiBab4({ modulId }: { modulId: string }) {
       </h5>
       <KuisBenarSalah
         id={idEval(modulId, 2)}
-        soal="Permukaan kertas kalender berbentuk segiempat karena memiliki empat garis lurus."
+        soal="Yang di depan berpasangan dengan yang di belakang."
         benar="benar"
-        alasanBenar="empat sisi lurus termasuk jenis segiempat"
+        alasanBenar="depan dan belakang selalu berpasangan"
       />
       <KuisBenarSalah
         id={idEval(modulId, 3)}
-        soal="Bangun datar segitiga bisa memiliki sisi melengkung seperti busur panah."
+        soal="Pola tepuk 1, 2, 3, 4 lalu ulang. Setelah 4 adalah 5."
         benar="salah"
-        alasanBenar="segitiga wajib tiga garis lurus yang bertemu di tiga titik sudut"
+        alasanBenar="setelah 4 pola ulang dari 1, bukan 5"
       />
       <h5 className="text-sm font-black uppercase tracking-wide text-[#1C01A5]">
         C. Mencocokkan garis
       </h5>
       <KuisJodoh
         id={idEval(modulId, 4)}
-        soal="Jodohkan bangun datar dengan ciri fisiknya."
+        soal="Jodohkan pola dengan langkah berikutnya."
         pasangan={[
           {
-            kiri: "Segitiga",
-            kanan: [
-              "4 garis sisi dan 4 titik sudut",
-              "3 garis sisi dan 3 titik sudut",
-              "1 sisi lengkung dan 0 sudut",
-            ],
+            kiri: "merah, biru, merah, biru",
+            kanan: ["merah", "bunga", "membungkuk"],
           },
           {
-            kiri: "Lingkaran",
-            kanan: [
-              "4 garis sisi dan 4 titik sudut",
-              "3 garis sisi dan 3 titik sudut",
-              "1 sisi lengkung dan 0 sudut",
-            ],
+            kiri: "bunga, segi empat, bunga, segi empat",
+            kanan: ["merah", "bunga", "membungkuk"],
           },
           {
-            kiri: "Segiempat",
-            kanan: [
-              "4 garis sisi dan 4 titik sudut",
-              "3 garis sisi dan 3 titik sudut",
-              "1 sisi lengkung dan 0 sudut",
-            ],
+            kiri: "membungkuk, berdiri, membungkuk, berdiri",
+            kanan: ["merah", "bunga", "membungkuk"],
           },
         ]}
         kunci={{
-          Segitiga: "3 garis sisi dan 3 titik sudut",
-          Lingkaran: "1 sisi lengkung dan 0 sudut",
-          Segiempat: "4 garis sisi dan 4 titik sudut",
+          "merah, biru, merah, biru": "merah",
+          "bunga, segi empat, bunga, segi empat": "bunga",
+          "membungkuk, berdiri, membungkuk, berdiri": "membungkuk",
         }}
       />
       <h5 className="text-sm font-black uppercase tracking-wide text-[#1C01A5]">
@@ -773,8 +761,8 @@ function EvaluasiBab4({ modulId }: { modulId: string }) {
       </h5>
       <KuisIsian
         id={idEval(modulId, 5)}
-        soal="Mengapa roda sepeda tidak disebut segiempat? Jelaskan cirinya!"
-        alias={["lengkung", "sudut", "pojok", "lingkaran", "sisi"]}
+        soal="Mengapa setelah tepuk 4 kita tidak tepuk 5? Jelaskan polanya!"
+        alias={["ulang", "satu", "1", "pola", "awal"]}
       />
     </div>
   );
