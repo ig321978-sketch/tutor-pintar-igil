@@ -108,9 +108,9 @@ const SUBBAB_BUKU_SISWA: Record<string, Record<string, Record<string, string[]>>
         "Lembar evaluasi siswa",
       ],
       "Bab 7: Mengukur Panjang Benda": [
-        "Pesta layang-layang di bukit",
-        "Ayo mengukur tanpa penggaris",
-        "Bengkel ukur Igil",
+        "Sub-Bab A: Membandingkan dan Mengurutkan Panjang Benda",
+        "Sub-Bab B: Mengukur Panjang Benda",
+        "Misi pesta layang-layang",
         "Poin penting",
         "Lembar evaluasi siswa",
       ],

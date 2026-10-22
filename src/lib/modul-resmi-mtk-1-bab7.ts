@@ -10,7 +10,7 @@ export const JUDUL_MTK1_BAB7 = "Bab 7: Mengukur Panjang Benda";
 export const MODUL_MTK1_BAB7: ModulResmiPai = {
   id: "mtk-1-bab7",
   judul: JUDUL_MTK1_BAB7,
-  pola: /mengukur\s+panjang\s+benda|pesta layang-layang|bengkel ukur burung hantu|misi pesta layang/,
+  pola: /mengukur\s+panjang\s+benda|pesta layang-layang|bengkel ukur burung hantu|misi pesta layang|membandingkan dan mengurutkan/,
   motivasi:
     "Bimo, Rara, dan Bimo mengukur layang-layang bersama Igil. Mereka memakai jengkal, langkah, dan depa, lalu membandingkan panjangnya.",
   kunciJawaban: "A,A,B,A,C,B,C,C,B,B",
@@ -85,7 +85,7 @@ D) 4 jengkal`,
   kartu: [
     {
       kode: "A",
-      judul: "A. Pesta Layang-Layang di Bukit",
+      judul: "Pesta Layang-Layang di Bukit",
       pengantar:
         "Di festival layang-layang, mata bisa tertipu. Igil mengajak mengukur dengan jengkal, langkah, dan aturan satu alat.",
       labelDaftar: "Jengkal, langkah, dan urutan panjang",
@@ -229,7 +229,7 @@ D) 4 jengkal`,
         ],
       ],
     },
-        {
+    {
       kode: "C",
       judul: "C. Misi Pesta Layang-Layang",
       pengantar:

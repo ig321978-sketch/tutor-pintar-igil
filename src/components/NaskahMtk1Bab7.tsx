@@ -7,10 +7,12 @@ import { useMemo, useState, type ReactNode } from "react";
 import HasilJawabanKuis from "@/components/HasilJawabanKuis";
 import TabelInfoGrafis from "@/components/TabelInfoGrafis";
 import KartuPoinPenting from "@/components/KartuPoinPenting";
+import { NamaDialog } from "@/components/IkonDialogMtk1";
 import TujuanBelajar from "@/components/TujuanBelajar";
 import KuisAkhirAdegan from "@/components/KuisAkhirAdegan";
 import KuisTulisKartu from "@/components/KuisTulisKartu";
 import SoalRekamSuara from "@/components/SoalRekamSuara";
+import GambarCerita from "@/components/GambarCerita";
 import TombolVoiceMateriPai1 from "@/components/TombolVoiceMateriPai1";
 import WritingCanvas from "@/components/WritingCanvas";
 import { useKuisMateri } from "@/components/KuisMateriContext";
@@ -114,7 +116,7 @@ function Dialog({ nama, anak }: { nama: string; anak: string }) {
   const warna = WARNA_DIALOG[nama] ?? "border-[#1C01A5]/15 bg-[#F8F7FF]";
   return (
     <article className={`rounded-2xl border-2 px-4 py-3 ${warna}`}>
-      <p className="text-xs font-black uppercase tracking-wide text-[#1C01A5]">{nama}</p>
+      <NamaDialog nama={nama} />
       <p className="mt-1 text-sm font-semibold leading-relaxed text-slate-700">{anak}</p>
     </article>
   );
@@ -137,13 +139,34 @@ function KepalaKartu({
 }) {
   return (
     <>
-      <p className="text-center text-4xl" aria-hidden>
+      <p className="text-center text-4xl font-normal" aria-hidden>
         {ikon}
       </p>
       <h4 className="mt-3 text-center text-lg font-black tracking-wide text-[#1C01A5] sm:text-xl">{judul}</h4>
-      {anak ? <p className="mt-1 text-center text-sm font-semibold text-slate-600">{anak}</p> : null}
-      <div className="mt-3 flex justify-center">
+      {anak ? <p className="mt-1 text-center text-sm font-bold text-[#1C01A5]/70">{anak}</p> : null}
+      <div className="mt-4">
         <TombolVoiceMateriPai1 kelas={kelas} kelamin={kelamin} cuplikan={cuplikan} />
+      </div>
+    </>
+  );
+}
+
+function JudulSubBab({
+  judul,
+  kelas,
+  kelamin,
+  naskah,
+}: {
+  judul: string;
+  kelas?: string;
+  kelamin?: KelaminGuru;
+  naskah: string[];
+}) {
+  return (
+    <>
+      <h5 className="mt-5 text-left text-base font-black tracking-wide text-[#1C01A5] sm:text-lg">{judul}</h5>
+      <div className="mt-4">
+        <TombolVoiceMateriPai1 kelas={kelas} kelamin={kelamin} cuplikan={cuplikanDariNaskah([naskah], 2_000, 3_000)} />
       </div>
     </>
   );
@@ -156,24 +179,21 @@ function Umpan({ status, teks }: { status: StatusJawabanKuis; teks: string }) {
 
 function Adegan({
   judul,
-  warna,
   src,
   alt,
   children,
 }: {
   judul: string;
-  warna: string;
   src: string;
   alt: string;
   children: ReactNode;
 }) {
   return (
-    <section className="space-y-4 border-b-4 border-[#1C01A5] pb-8">
-      <p className="text-xl font-black leading-snug text-[#1C01A5]">{judul}</p>
-      {/* eslint-disable-next-line @next/next/no-img-element */}
-      <img src={src} alt={alt} className="mt-3 w-full rounded-xl border border-[#1C01A5]/10 bg-white object-cover" />
-      <div className="mt-3 space-y-2">{children}</div>
-    </section>
+    <article className="space-y-3 rounded-2xl border-2 border-[#16A34A]/25 bg-[#F0FDF4] px-4 py-3">
+      <p className="text-xs font-black uppercase text-[#166534]">{judul}</p>
+      <GambarCerita src={src} alt={alt} />
+      <div className="space-y-2">{children}</div>
+    </article>
   );
 }
 
@@ -453,32 +473,23 @@ function TulisBebas({
   );
 }
 
-function KartuA({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminGuru }) {
-  const kartu = MODUL_MTK1_BAB7.kartu[0];
-  const [suara, setSuara] = useState<StatusJawabanKuis>(null);
-  const [salahKanvas, setSalahKanvas] = useState(0);
+function IsiBanding({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminGuru }) {
+  const panjang = ["2 jengkal", "5 jengkal", "9 jengkal"];
   return (
-    <KartuBingkai latar="bg-sky-50/80">
-      <KepalaKartu
-        ikon="🪁🦉📏"
-        judul={kartu.judul}
-        anak="Mengukur Panjang Benda"
+    <>
+      <JudulSubBab
+        judul="Sub-Bab A: Membandingkan dan Mengurutkan Panjang Benda"
         kelas={kelas}
         kelamin={kelamin}
-        cuplikan={cuplikanDariNaskah(kartu.voice, 2_000, 3_000)}
-      />
-      <div className="mt-4 rounded-2xl border-2 border-sky-300 bg-sky-50 px-4 py-3">
-        <TujuanBelajar
-        butir={[
-          "Membandingkan panjang dan pendek, lalu mengurutkan benda.",
-          "Mengukur dengan jengkal, langkah, klip kertas, lidi, dan depa.",
+        naskah={[
+          "Mata bisa tertipu. Yang kelihatan kecil belum tentu lebih pendek.",
+          "Urutkan dari yang paling pendek. Tiga jengkal, lima jengkal, delapan jengkal.",
+          "Ratakan ujung kiri, lalu lihat ujung kanan. Tujuh lebih panjang dari empat.",
         ]}
       />
-      </div>
       <div className="mt-4 space-y-3">
         <Adegan
           judul="Pesta di bukit"
-          warna="border-sky-200 bg-sky-50"
           src="/doodle-mtk/mtk-1-bab7-bukit.jpg"
           alt="Bukit berlayang-layang. Bimo, Rara, dan Bimo berdiri. Igil bertopi jerami membawa pita ukur."
         >
@@ -501,7 +512,6 @@ function KartuA({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminGuru }) {
         </Adegan>
         <Adegan
           judul="Adegan 1 · Masalah ketinggian"
-          warna="border-amber-200 bg-amber-50"
           src="/doodle-mtk/mtk-1-bab7-adegan-1.jpg"
           alt="Tiga layang-layang. Bimo berdiri dekat, Bimo berdiri jauh, tanda tanya di atas mereka."
         >
@@ -522,8 +532,144 @@ function KartuA({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminGuru }) {
           />
         </Adegan>
         <Adegan
+          judul="Adegan 4 · Mengurutkan layang-layang"
+          src="/doodle-mtk/mtk-1-bab7-adegan-4.jpg"
+          alt="Tiga layang-layang berukuran 3, 5, dan 8 jengkal, dari kecil ke besar."
+        >
+          <Dialog nama="Rara" anak="Yang kecil 3, yang sedang 5, yang besar 8." />
+          <Dialog nama="Bimo" anak="Tiga, lima, delapan. Kecil, sedang, besar!" />
+          <p className="text-sm font-black text-[#1C01A5]">3 jengkal &lt; 5 jengkal &lt; 8 jengkal</p>
+          <KuisAkhirAdegan
+            idSuara={idKuis("A", 9)}
+            idKanvas={idKuis("A", 10)}
+            pertanyaanSuara="Layang-layang yang paling panjang berapa jengkal?"
+            aliasSuara={["8", "delapan"]}
+            petunjukSuara="Ucapkan angkanya."
+            pertanyaanKanvas="Tuliskan 3 < 5 < 8."
+            aliasKanvas={["3 < 5 < 8", "3<5<8"]}
+            konteksKanvas="Urutannya 3 jengkal, lalu 5, lalu 8."
+          />
+        </Adegan>
+        <TabelInfoGrafis
+          judul="Infografis: Membandingkan dan Mengurutkan"
+          kepala={["Benda", "Ukuran", "Hasil"]}
+          baris={[
+            ["Layang 3, 5, dan 8", "3 < 5 < 8", "8 paling panjang"],
+            ["Pensil 7 klip dan 4 klip", "7 > 4", "7 lebih panjang"],
+            ["Pita merah 8 dan biru 5", "8 > 5", "pita merah lebih panjang"],
+          ]}
+          kaki="Ratakan ujungnya dulu, baru bandingkan."
+        />
+        <div className="overflow-hidden rounded-2xl border-4 border-[#1C01A5]/20">
+          <p className="bg-[#1C01A5] px-3 py-2 text-center text-xs font-black uppercase text-white">
+            Membandingkan dengan alat yang sama
+          </p>
+          <div className="grid sm:grid-cols-2">
+            <div className="border-b-2 border-[#1C01A5]/10 px-4 py-4 sm:border-b-0 sm:border-r-2">
+              <p className="text-xs font-black uppercase text-[#92400E]">Pensil 7 klip</p>
+              <p className="mt-2 text-2xl">📎📎📎📎📎📎📎</p>
+              <p className="text-4xl font-black text-[#1C01A5]">7</p>
+            </div>
+            <div className="px-4 py-4">
+              <p className="text-xs font-black uppercase text-[#166534]">Pensil 4 klip</p>
+              <p className="mt-2 text-2xl">📎📎📎📎</p>
+              <p className="text-4xl font-black text-[#1C01A5]">4</p>
+            </div>
+          </div>
+          <p className="border-t-4 border-teal-300 bg-emerald-50 px-3 py-3 text-center text-lg font-black text-[#1C01A5]">
+            7 &gt; 4 · pensil 7 klip lebih panjang
+          </p>
+        </div>
+        <article className="rounded-2xl border-2 border-rose-200 bg-rose-50 px-4 py-3">
+          <p className="text-sm font-black text-[#1C01A5]">Mata bisa tertipu</p>
+          <p className="mt-1 text-sm font-semibold text-slate-700">
+            Garis berujung panah bisa tampak lebih panjang. Ukur dengan alat yang sama. Keduanya bisa sama panjang.
+          </p>
+        </article>
+        <article className="rounded-2xl border-2 border-sky-200 bg-sky-50 px-4 py-3">
+          <p className="text-sm font-black text-[#1C01A5]">Membandingkan</p>
+          <p className="mt-1 text-sm font-semibold text-slate-700">
+            Ratakan ujung kiri. Pensil 7 klip lebih panjang dari pensil 4 klip. Tanda &gt; berarti lebih panjang, &lt; lebih pendek, = sama panjang.
+          </p>
+        </article>
+        <article className="rounded-2xl border-2 border-indigo-200 bg-indigo-50 px-4 py-3">
+          <p className="text-sm font-black text-[#1C01A5]">Mengurutkan</p>
+          <p className="mt-1 text-sm font-semibold text-slate-700">2, 4, 9, 7 diurutkan menjadi 2, 4, 7, 9.</p>
+          <div className="mt-3 flex flex-wrap items-center justify-center gap-2">
+            {["📎 Klip", "✏️ Pensil", "📏 Penggaris", "🧹 Sapu"].map((benda, indeks) => (
+              <span key={benda} className="flex items-center gap-2">
+                <span className="rounded-full bg-white px-3 py-2 text-sm font-black text-[#1C01A5]">{benda}</span>
+                {indeks < 3 ? <span className="font-black text-sky-500">→</span> : null}
+              </span>
+            ))}
+          </div>
+          <p className="mt-2 text-sm font-black text-[#1C01A5]">Klip → pensil → penggaris → sapu</p>
+        </article>
+        <KuisCocok
+          id={idKuis("B", 0)}
+          perintah="Pasangkan benda dengan panjangnya!"
+          baris={[
+            { kiri: "🖍️ Krayon", pilihan: panjang, benar: "2 jengkal" },
+            { kiri: "🛏️ Tempat tidur", pilihan: panjang, benar: "9 jengkal" },
+            { kiri: "🪑 Meja belajar", pilihan: panjang, benar: "5 jengkal" },
+          ]}
+          umpan="Krayon 2 jengkal. Meja 5 jengkal. Tempat tidur 9 jengkal."
+        />
+        <SusunUrut
+          id={idKuis("B", 1)}
+          judul="Susun dari yang paling pendek ke paling panjang!"
+          tampil={["🧵 Benang 8", "📏 Penggaris 6", "✏️ Pensil 3", "🖇️ Klip 1"]}
+          benar={["🖇️ Klip 1", "✏️ Pensil 3", "📏 Penggaris 6", "🧵 Benang 8"]}
+          umpan="Klip, pensil, penggaris, lalu benang."
+        />
+        <TulisBebas
+          id={idKuisTulisKartu(ID, "B")}
+          pertanyaan="Pita merah 8 klip. Pita biru 5 klip. Tulis perbandingannya dengan tanda > atau <."
+          visual={<p className="text-center text-sm font-black text-[#1C01A5]">Pita merah 8 ⬜ pita biru 5</p>}
+          pesanSalah="Delapan lebih besar dari lima. Pakai tanda lebih panjang."
+          umpan="8 > 5."
+          konteks="Pita merah lebih panjang. Kalimatnya 8 lebih besar dari 5."
+          periksa={bandingPita}
+        />
+      </div>
+    </>
+  );
+}
+
+function IsiUkur({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminGuru }) {
+  const [suara, setSuara] = useState<StatusJawabanKuis>(null);
+  const [salahKanvas, setSalahKanvas] = useState(0);
+  return (
+    <>
+      <JudulSubBab
+        judul="Sub-Bab B: Mengukur Panjang Benda"
+        kelas={kelas}
+        kelamin={kelamin}
+        naskah={[
+          "Satu jengkal diukur dari ujung jempol ke ujung kelingking.",
+          "Benang yang sama bisa beda angka kalau tangannya beda panjang.",
+          "Pakai satu orang dan satu alat dari awal sampai akhir.",
+          "Jengkal, depa, langkah, hasta, lidi, dan klip kertas adalah satuan tidak baku.",
+          "Mulai dari ujung. Rapatkan alatnya. Pakai tangan yang sama.",
+          "Tebak dulu, ukur kemudian. Satuan baku membuat ukuran sama untuk semua orang.",
+        ]}
+      />
+      <TabelInfoGrafis
+        judul="Infografis: Satuan tidak baku"
+        kepala={["Alat", "Cara", "Cocok untuk"]}
+        baris={[
+          ["🖐️ Jengkal", "Jempol sampai kelingking", "Pensil, buku"],
+          ["🙆 Depa", "Dua tangan dibuka", "Meja guru"],
+          ["👣 Langkah", "Satu langkah kaki", "Lorong"],
+          ["💪 Hasta", "Siku sampai ujung jari", "Pita"],
+          ["🥢 Lidi", "Satu batang", "Meja kecil"],
+          ["📎 Klip", "Satu klip", "Pensil"],
+        ]}
+        kaki="Rapat, lurus, dari ujung. Satu orang, satu alat."
+      />
+      <div className="mt-4 space-y-3">
+        <Adegan
           judul="Adegan 2 · Kenalan dengan jengkal"
-          warna="border-emerald-200 bg-emerald-50"
           src="/doodle-mtk/mtk-1-bab7-adegan-2.jpg"
           alt="Igil membuka tangan. Garis dari jempol ke kelingking bertuliskan 1 jengkal."
         >
@@ -543,7 +689,6 @@ function KartuA({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminGuru }) {
         </Adegan>
         <Adegan
           judul="Adegan 3 · Kenapa hasilnya beda?"
-          warna="border-rose-200 bg-rose-50"
           src="/doodle-mtk/mtk-1-bab7-adegan-3.jpg"
           alt="Benang yang sama: Igil dapat 7, Bimo dapat 4, Rara dapat 5."
         >
@@ -565,28 +710,7 @@ function KartuA({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminGuru }) {
           />
         </Adegan>
         <Adegan
-          judul="Adegan 4 · Mengurutkan layang-layang"
-          warna="border-indigo-200 bg-indigo-50"
-          src="/doodle-mtk/mtk-1-bab7-adegan-4.jpg"
-          alt="Tiga layang-layang berukuran 3, 5, dan 8 jengkal, dari kecil ke besar."
-        >
-          <Dialog nama="Rara" anak="Yang kecil 3, yang sedang 5, yang besar 8." />
-          <Dialog nama="Bimo" anak="Tiga, lima, delapan. Kecil, sedang, besar!" />
-          <p className="text-sm font-black text-[#1C01A5]">3 jengkal &lt; 5 jengkal &lt; 8 jengkal</p>
-          <KuisAkhirAdegan
-            idSuara={idKuis("A", 9)}
-            idKanvas={idKuis("A", 10)}
-            pertanyaanSuara="Layang-layang yang paling panjang berapa jengkal?"
-            aliasSuara={["8", "delapan"]}
-            petunjukSuara="Ucapkan angkanya."
-            pertanyaanKanvas="Tuliskan 3 < 5 < 8."
-            aliasKanvas={["3 < 5 < 8", "3<5<8"]}
-            konteksKanvas="Urutannya 3 jengkal, lalu 5, lalu 8."
-          />
-        </Adegan>
-        <Adegan
           judul="Adegan 5 · Langkah kaki Igil"
-          warna="border-lime-200 bg-lime-50"
           src="/doodle-mtk/mtk-1-bab7-adegan-5.jpg"
           alt="Igil melompat dari bendera start ke finish dan meninggalkan jejak kaki."
         >
@@ -606,7 +730,6 @@ function KartuA({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminGuru }) {
         </Adegan>
         <Adegan
           judul="Adegan 6 · Festival dimulai"
-          warna="border-orange-200 bg-orange-50"
           src="/doodle-mtk/mtk-1-bab7-adegan-6.jpg"
           alt="Panggung festival. Igil bersselempang pita ukur. Rara memegang layang-layang terpanjang."
         >
@@ -624,6 +747,27 @@ function KartuA({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminGuru }) {
             konteksKanvas="Layang-layang terpanjang milik Rara."
           />
         </Adegan>
+        <article className="rounded-2xl border-2 border-emerald-200 bg-emerald-50 px-4 py-3">
+          <p className="text-sm font-black text-[#1C01A5]">Satuan tidak baku</p>
+          <ul className="mt-2 space-y-1 text-sm font-semibold text-slate-700">
+            <li>🖐️ Jengkal: jempol sampai kelingking.</li>
+            <li>🙆 Depa: kedua tangan dibuka lebar.</li>
+            <li>👣 Langkah: satu langkah kaki.</li>
+            <li>💪 Hasta: siku sampai ujung jari.</li>
+            <li>🥢 Lidi dan 📎 klip kertas: satu batang atau satu klip.</li>
+          </ul>
+        </article>
+        <article className="rounded-2xl border-2 border-cyan-300 bg-cyan-50 px-4 py-3">
+          <p className="text-sm font-black text-[#1C01A5]">Aturan emas</p>
+          <p className="mt-1 text-sm font-semibold text-slate-700">Mulai dari ujung. Tidak boleh ada celah. Satu orang, satu alat.</p>
+          <p className="mt-2 text-sm font-black text-[#1C01A5]">Rapat, lurus, dari ujung.</p>
+        </article>
+        <article className="rounded-2xl border-2 border-slate-200 bg-slate-50 px-4 py-3">
+          <p className="text-sm font-black text-[#1C01A5]">Tebak, lalu ukur</p>
+          <p className="mt-1 text-sm font-semibold text-slate-700">
+            Bayangkan berapa jengkalmu muat di pintu, baru ukur. Satuan tidak baku untuk membandingkan. Sentimeter dan meter sama untuk semua orang.
+          </p>
+        </article>
       </div>
       <div className="mt-6 border-t-2 border-[#1C01A5]/10 pt-5">
         <p className="text-base font-extrabold text-[#1C01A5]">QUIZ:</p>
@@ -656,122 +800,7 @@ function KartuA({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminGuru }) {
           <p className="text-sm font-bold text-[#1C01A5]">Klip berkedip: 1, 2, 3, 4, 5, 6.</p>
         ) : null}
       </div>
-    </KartuBingkai>
-  );
-}
-
-function KartuB({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminGuru }) {
-  const kartu = MODUL_MTK1_BAB7.kartu[1];
-  const panjang = ["2 jengkal", "5 jengkal", "9 jengkal"];
-  return (
-    <KartuBingkai latar="bg-emerald-50/80">
-      <KepalaKartu
-        ikon="📏🖐️👣"
-        judul={kartu.judul}
-        anak="Satuan tidak baku di sekitar kita"
-        kelas={kelas}
-        kelamin={kelamin}
-        cuplikan={cuplikanDariNaskah(kartu.voice, 2_000, 3_000)}
-      />
-      <TabelInfoGrafis
-        judul="Infografis: Satuan tidak baku"
-        kepala={["Alat", "Cara", "Cocok untuk"]}
-        baris={[
-          ["🖐️ Jengkal", "Jempol sampai kelingking", "Pensil, buku"],
-          ["🙆 Depa", "Dua tangan dibuka", "Meja guru"],
-          ["👣 Langkah", "Satu langkah kaki", "Lorong"],
-          ["💪 Hasta", "Siku sampai ujung jari", "Pita"],
-          ["🥢 Lidi", "Satu batang", "Meja kecil"],
-          ["📎 Klip", "Satu klip", "Pensil"],
-        ]}
-        kaki="Rapat, lurus, dari ujung. Satu orang, satu alat."
-      />
-      <div className="mt-4 overflow-hidden rounded-2xl border-4 border-[#1C01A5]/20">
-        <p className="bg-[#1C01A5] px-3 py-2 text-center text-xs font-black uppercase text-white">
-          Membandingkan dengan alat yang sama
-        </p>
-        <div className="grid sm:grid-cols-2">
-          <div className="border-b-2 border-[#1C01A5]/10 px-4 py-4 sm:border-b-0 sm:border-r-2">
-            <p className="text-xs font-black uppercase text-[#92400E]">Pensil 7 klip</p>
-            <p className="mt-2 text-2xl">📎📎📎📎📎📎📎</p>
-            <p className="text-4xl font-black text-[#1C01A5]">7</p>
-          </div>
-          <div className="px-4 py-4">
-            <p className="text-xs font-black uppercase text-[#166534]">Pensil 4 klip</p>
-            <p className="mt-2 text-2xl">📎📎📎📎</p>
-            <p className="text-4xl font-black text-[#1C01A5]">4</p>
-          </div>
-        </div>
-        <p className="border-t-4 border-teal-300 bg-emerald-50 px-3 py-3 text-center text-lg font-black text-[#1C01A5]">
-          7 &gt; 4 · pensil 7 klip lebih panjang
-        </p>
-      </div>
-      <div className="mt-4 space-y-3">
-        <article className="rounded-2xl border-2 border-rose-200 bg-rose-50 px-4 py-3">
-          <p className="text-sm font-black text-[#1C01A5]">Mata bisa tertipu</p>
-          <p className="mt-1 text-sm font-semibold text-slate-700">
-            Garis berujung panah bisa tampak lebih panjang. Ukur dengan alat yang sama. Keduanya bisa sama panjang.
-          </p>
-        </article>
-        <article className="rounded-2xl border-2 border-emerald-200 bg-emerald-50 px-4 py-3">
-          <p className="text-sm font-black text-[#1C01A5]">Satuan tidak baku</p>
-          <ul className="mt-2 space-y-1 text-sm font-semibold text-slate-700">
-            <li>🖐️ Jengkal: jempol sampai kelingking.</li>
-            <li>🙆 Depa: kedua tangan dibuka lebar.</li>
-            <li>👣 Langkah: satu langkah kaki.</li>
-            <li>💪 Hasta: siku sampai ujung jari.</li>
-            <li>🥢 Lidi dan 📎 klip kertas: satu batang atau satu klip.</li>
-          </ul>
-        </article>
-        <article className="rounded-2xl border-2 border-cyan-300 bg-cyan-50 px-4 py-3">
-          <p className="text-sm font-black text-[#1C01A5]">Aturan emas</p>
-          <p className="mt-1 text-sm font-semibold text-slate-700">Mulai dari ujung. Tidak boleh ada celah. Satu orang, satu alat.</p>
-          <p className="mt-2 text-sm font-black text-[#1C01A5]">Rapat, lurus, dari ujung.</p>
-        </article>
-        <article className="rounded-2xl border-2 border-sky-200 bg-sky-50 px-4 py-3">
-          <p className="text-sm font-black text-[#1C01A5]">Membandingkan</p>
-          <p className="mt-1 text-sm font-semibold text-slate-700">
-            Ratakan ujung kiri. Pensil 7 klip lebih panjang dari pensil 4 klip. Tanda &gt; berarti lebih panjang, &lt; lebih pendek, = sama panjang.
-          </p>
-        </article>
-        <article className="rounded-2xl border-2 border-indigo-200 bg-indigo-50 px-4 py-3">
-          <p className="text-sm font-black text-[#1C01A5]">Mengurutkan</p>
-          <p className="mt-1 text-sm font-semibold text-slate-700">2, 4, 9, 7 diurutkan menjadi 2, 4, 7, 9.</p>
-          <div className="mt-3 flex flex-wrap items-center justify-center gap-2">
-            {["📎 Klip", "✏️ Pensil", "📏 Penggaris", "🧹 Sapu"].map((benda, indeks) => (
-              <span key={benda} className="flex items-center gap-2">
-                <span className="rounded-full bg-white px-3 py-2 text-sm font-black text-[#1C01A5]">{benda}</span>
-                {indeks < 3 ? <span className="font-black text-sky-500">→</span> : null}
-              </span>
-            ))}
-          </div>
-          <p className="mt-2 text-sm font-black text-[#1C01A5]">Klip → pensil → penggaris → sapu</p>
-        </article>
-        <article className="rounded-2xl border-2 border-slate-200 bg-slate-50 px-4 py-3">
-          <p className="text-sm font-black text-[#1C01A5]">Tebak, lalu ukur</p>
-          <p className="mt-1 text-sm font-semibold text-slate-700">
-            Bayangkan berapa jengkalmu muat di pintu, baru ukur. Satuan tidak baku untuk membandingkan. Sentimeter dan meter sama untuk semua orang.
-          </p>
-        </article>
-      </div>
-      <div className="mt-6 space-y-4 border-t-2 border-[#1C01A5]/10 pt-5">
-        <KuisCocok
-          id={idKuis("B", 0)}
-          perintah="Pasangkan benda dengan panjangnya!"
-          baris={[
-            { kiri: "🖍️ Krayon", pilihan: panjang, benar: "2 jengkal" },
-            { kiri: "🛏️ Tempat tidur", pilihan: panjang, benar: "9 jengkal" },
-            { kiri: "🪑 Meja belajar", pilihan: panjang, benar: "5 jengkal" },
-          ]}
-          umpan="Krayon 2 jengkal. Meja 5 jengkal. Tempat tidur 9 jengkal."
-        />
-        <SusunUrut
-          id={idKuis("B", 1)}
-          judul="Susun dari yang paling pendek ke paling panjang!"
-          tampil={["🧵 Benang 8", "📏 Penggaris 6", "✏️ Pensil 3", "🖇️ Klip 1"]}
-          benar={["🖇️ Klip 1", "✏️ Pensil 3", "📏 Penggaris 6", "🧵 Benang 8"]}
-          umpan="Klip, pensil, penggaris, lalu benang."
-        />
+      <div className="mt-4 space-y-4">
         <Pilih
           id={idKuis("B", 2)}
           pertanyaan="Benda mana yang paling tepat diukur pakai langkah kaki?"
@@ -794,17 +823,8 @@ function KartuB({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminGuru }) {
             petunjuk="Pilih alat yang tidak terlalu kecil."
           />
         </div>
-        <TulisBebas
-          id={idKuisTulisKartu(ID, "B")}
-          pertanyaan="Pita merah 8 klip. Pita biru 5 klip. Tulis perbandingannya dengan tanda > atau <."
-          visual={<p className="text-center text-sm font-black text-[#1C01A5]">Pita merah 8 ⬜ pita biru 5</p>}
-          pesanSalah="Delapan lebih besar dari lima. Pakai tanda lebih panjang."
-          umpan="8 > 5."
-          konteks="Pita merah lebih panjang. Kalimatnya 8 lebih besar dari 5."
-          periksa={bandingPita}
-        />
       </div>
-    </KartuBingkai>
+    </>
   );
 }
 
@@ -992,16 +1012,32 @@ function LembarEvaluasi({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminG
 }
 
 export default function NaskahMtk1Bab7({
-  kelas,
+  kelas = "1 SD",
   kelamin,
 }: {
   kelas?: string;
   kelamin?: KelaminGuru;
 }) {
+  const kartuA = MODUL_MTK1_BAB7.kartu[0];
   return (
     <div className="space-y-5">
-      <KartuA kelas={kelas} kelamin={kelamin} />
-      <KartuB kelas={kelas} kelamin={kelamin} />
+      <KartuBingkai latar="bg-sky-50/80">
+        <KepalaKartu
+          ikon="🪁🦉📏"
+          judul={kartuA.judul}
+          kelas={kelas}
+          kelamin={kelamin}
+          cuplikan={cuplikanDariNaskah(kartuA.voice, 2_000, 3_000)}
+        />
+        <TujuanBelajar
+          butir={[
+            "Membandingkan panjang dan pendek, lalu mengurutkan benda.",
+            "Mengukur dengan jengkal, langkah, klip kertas, lidi, dan depa.",
+          ]}
+        />
+        <IsiBanding kelas={kelas} kelamin={kelamin} />
+        <IsiUkur kelas={kelas} kelamin={kelamin} />
+      </KartuBingkai>
       <KartuC kelas={kelas} kelamin={kelamin} />
       <div id={SLOT_AJUAN_SEBELUM_KARTU_D} />
       <KartuPoinPenting
