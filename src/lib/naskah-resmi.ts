@@ -941,6 +941,28 @@ export function adalahMtk2Bab6(
   return adalahJudulMtk2Bab6(mapel, materi);
 }
 
+export function adalahJudulMtk2Bab7(mapel: string, materi: string): boolean {
+  if (!adalahMapelMatematika(mapel)) return false;
+  const judul = normJudul(materi);
+  return (
+    /bab\s*7[:.]\s*(ayo )?membilang/.test(judul) ||
+    /ayo membilang sampai( dengan)? 100/.test(judul) ||
+    /penyelam igil/.test(judul) ||
+    /ekspedisi kapal selam/.test(judul) ||
+    /palung 100/.test(judul) ||
+    /pengukuran berat standar/.test(judul)
+  );
+}
+
+export function adalahMtk2Bab7(
+  kelas: string,
+  mapel: string,
+  materi: string,
+): boolean {
+  if (!kelasDuaSd(kelas)) return false;
+  return adalahJudulMtk2Bab7(mapel, materi);
+}
+
 export function cariModulPjok1Resmi(materi: string): ModulResmiPai | null {
   const judul = normJudul(materi);
   return MODUL_PJOK1_BAB1_4.find((modul) => modul.pola.test(judul)) ?? null;

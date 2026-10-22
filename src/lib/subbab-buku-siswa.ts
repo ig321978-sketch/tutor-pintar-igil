@@ -172,6 +172,14 @@ const SUBBAB_BUKU_SISWA: Record<string, Record<string, Record<string, string[]>>
         "Poin penting",
         "Lembar evaluasi siswa",
       ],
+      "Bab 7: Ayo Membilang sampai dengan 100": [
+        "Sub-Bab 7.1: Menghitung, Membaca, dan Menulis Bilangan (51–100)",
+        "Sub-Bab 7.2: Nilai Tempat Puluhan dan Satuan sampai 100",
+        "Sub-Bab 7.3: Membandingkan Bilangan dan Membilang Lompat",
+        "Ekspedisi Kapal Selam Menuju Palung 100",
+        "Poin penting",
+        "Lembar evaluasi siswa",
+      ],
     },
   },
   "3 SD": {

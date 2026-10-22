@@ -61,9 +61,11 @@ function judulAlias(materi) {
     tambahan.push("Bab 6: Pengukuran Panjang Standar");
     tambahan.push("Bab 6: Pengukuran");
   }
-  if (/pengukuran berat standar/i.test(materi)) {
+  if (/pengukuran berat standar|ayo membilang sampai( dengan)? 100|penyelam igil|palung 100/i.test(materi)) {
     tambahan.push("Bab 7: Timbangan Toko Permen");
     tambahan.push("Bab 7: Tabel dan Grafik");
+    tambahan.push("Bab 7: Pengukuran Berat Standar");
+    tambahan.push("Bab 7: Ayo Membilang sampai dengan 100");
   }
   if (/diagram gambar sederhana/i.test(materi)) {
     tambahan.push("Bab 8: Papan Prestasi Sani");

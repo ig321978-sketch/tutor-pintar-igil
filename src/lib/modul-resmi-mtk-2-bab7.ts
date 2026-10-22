@@ -4,221 +4,218 @@ function pg(soal: string[]): string {
   return soal.join("\n\n");
 }
 
-export const JUDUL_MTK2_BAB7 = "Bab 7: Pengukuran Berat Standar";
+export const JUDUL_MTK2_BAB7 = "Bab 7: Ayo Membilang sampai dengan 100";
+export const JUDUL_MTK2_BAB7_LAMA = "Bab 7: Pengukuran Berat Standar";
 
 export const MODUL_MTK2_BAB7: ModulResmiPai = {
   id: "mtk-2-bab7",
   judul: JUDUL_MTK2_BAB7,
   pola:
-    /pengukuran berat standar|timbangan toko permen|dunia timbangan|satuan g dan kg|tabel dan grafik|mengenal satuan g/,
+    /bab\s*7[:.]\s*(ayo )?membilang|ayo membilang sampai( dengan)? 100|penyelam igil|ekspedisi kapal selam|palung 100|pengukuran berat standar|timbangan toko permen|satuan g dan kg|dunia timbangan/,
   motivasi:
-    "Hore! Kamu sudah membantu Sani menimbang bahan permen. g untuk benda ringan, kg untuk benda berat. 1 kg = 1.000 g. Besar belum tentu lebih berat.",
-  kunciJawaban: "C,A,B,A,A,A,A,A,A,A",
+    "Hore! Kamu sudah bantu Penyelam IGIL menghitung mutiara sampai 100. Kelompokkan sepuluh-sepuluh. Angka depan puluhan, angka belakang satuan. Bandingkan puluhannya dulu.",
+  kunciJawaban: "B,B,B,B,A,A,C,A,B,A",
   sketsaKartu: [
-    "Paman membawa kantong gula berat dan bungkus garam enteng ke meja Sani.",
-    "Timbangan menunjuk angka. g untuk benda ringan, kg untuk benda berat. 1 kg = 1.000 g.",
-    "Anak menjadi petugas timbang: lolipop dan cokelat pakai g, karung dan badan pakai kg.",
-    "Anak mengisi lembar evaluasi tantangan para juara tentang pengukuran berat.",
+    "Penyelam IGIL, Nala, dan Arka menghitung mutiara 51 sampai 100. Tujuh kerang puluhan dan tiga mutiara satuan menjadi 73.",
+    "Penyu Toti membawa karang puluhan dan satuan. Angka depan nilainya puluhan. Sepuluh puluhan sama dengan 100.",
+    "Sepuluh gerbang kapal selam menuju Palung 100. Kode angka 51 sampai 100 membuka karang.",
+    "Lembar juara membilang sampai 100. Nilai tempat, bandingkan puluhan, lompat 2, 5, dan 10.",
   ],
   latihan: pg([
     `[Soal 1 - PG - Tipe: HOTS]
-Paket Siti dan Paket Dayu sama-sama 1 kg, tetapi kotak Siti lebih besar. Beni bilang Siti lebih berat. Pendapat yang tepat...
-A) Benar, karena benda besar selalu lebih berat
-B) Salah, Dayu lebih berat karena kotak kayu lebih keras
-C) Salah, keduanya sama berat karena timbangannya 1 kg
-D) Benar jika plastik lebih ringan`,
+Nala punya kartu 6 dan 9. Bilangan dua angka PALING BESAR dan nilai tempatnya...
+A) 6 Puluhan dan 9 Satuan (69)
+B) 9 Puluhan dan 6 Satuan (96)
+C) 9 Puluhan dan 9 Satuan (99)`,
     `[Soal 2 - PG - Tipe: HOTS]
-Semangka 4 kg dipotong tepat di tengah. Berat satu potongan...
-A) 2 kg
-B) 8 kg
-C) 200 g
-D) 4 kg`,
+6 kantong puluhan (60) dan 14 kelereng satuan. 10 satuan masuk kantong baru. Jumlah seluruhnya...
+A) 64 kelereng
+B) 74 kelereng
+C) 84 kelereng`,
     `[Soal 3 - PG - Tipe: HOTS]
-(1) Jeruk 150 g. (2) Ayam 2 kg. (3) Penghapus kecil 5 kg. Mana yang tidak masuk akal?
-A) Nomor (1) saja
-B) Nomor (3) saja
-C) Nomor (2) dan (3)
-D) Semuanya salah`,
-    `[Soal 4 - PG - Tipe: MOTS]
-Adonan stroberi 600 g digabung adonan susu 300 g. Totalnya...
-A) 900 gram
-B) 300 gram
-C) 90 gram
-D) 600 gram`,
-    `[Soal 5 - PG - Tipe: HOTS]
-Lani 2 kg, Mita 1 kg lebih 500 g, Dodi 2.500 g. Urutan dari yang paling ringan...
-A) Mita, Lani, Dodi
-B) Lani, Mita, Dodi
-C) Dodi, Lani, Mita
-D) Mita, Dodi, Lani`,
-    `[Soal 6 - PG - Tipe: LOTS]
-2.000 gram diubah ke kilogram...
-A) 2
-B) 20
-C) 200
-D) 2.000`,
+Aku bilangan di antara 70 dan 80. Angka satuanku sama dengan angka puluhanku. Aku adalah...
+A) 70
+B) 77
+C) 88`,
+    `[Soal 4 - PG - Tipe: HOTS]
+Katak laut lompat mundur 5: 95 → 90 → 85 → [P] → 75. Bilangan P...
+A) 84
+B) 80
+C) 70`,
+    `[Soal 5 - PG - Tipe: MOTS]
+Pasangan yang tepat...
+A) 8 Puluhan + 0 Satuan = 80, 10 Puluhan = 100, 5 Satuan + 7 Puluhan = 75
+B) 8 Puluhan + 0 Satuan = 8, 10 Puluhan = 10
+C) 5 Satuan + 7 Puluhan = 57`,
+    `[Soal 6 - PG - Tipe: HOTS]
+Arka 89 kerang, Nala 91, Toti 85. Arka: urutan paling banyak Nala, Arka, lalu Toti. Benar atau salah?
+A) Benar
+B) Salah
+C) Sama saja`,
     `[Soal 7 - PG - Tipe: HOTS]
-Cokelat 850 g, diambil 200 g lalu 350 g. Sisanya...
-A) 300
-B) 650
-C) 500
-D) 150`,
-    `[Soal 8 - PG - Tipe: HOTS]
-Klip kertas pakai gram, karung beras pakai kilogram. Pasangan yang tepat...
-A) 1B 2A
-B) 1A 2B
-C) Keduanya A
-D) Keduanya B`,
+Sudah 90 mutiara. Tambah berapa supaya genap 100?
+A) 9
+B) 20
+C) 10`,
+    `[Soal 8 - PG - Tipe: LOTS]
+Antara 64 dan 69, mana yang lebih besar?
+A) 69
+B) 64
+C) 60`,
     `[Soal 9 - PG - Tipe: HOTS]
-Wadah 100 g diisi permen 400 g. Berat di timbangan...
-A) 500
-B) 400
-C) 100
-D) 300`,
-    `[Soal 10 - PG - Tipe: HOTS]
-Keranjang plus mangga 7 kg, keranjang kosong 1 kg. Berat bersih mangga...
-A) 6
-B) 8
-C) 7
-D) 1`,
+Bilangan dari 3 Satuan dan 9 Puluhan...
+A) 39
+B) 93
+C) 36`,
+    `[Soal 10 - PG - Tipe: MOTS]
+Pada Tabel 100, di bawah 72 ditambah 10 menjadi...
+A) 82
+B) 62
+C) 72`,
   ]),
   kartu: [
     {
       kode: "A",
-      judul: "A. Dialog Kantong Gula yang Bocor",
+      judul: "A. Naskah Bergambar Palung Mutiara",
       pengantar:
-        "🗺️ Paman membawa kantong gula yang berat dan bungkus garam yang enteng. Sani ingin tahu berat pastinya di timbangan.",
-      labelDaftar: "Target dan cerita apersepsi",
+        "🗺️ Halo penyelam cilik! Bersama Penyelam IGIL kita menghitung harta karun mutiara dari 51 sampai 100.",
+      labelDaftar: "Tiga sub-bab palung",
       kolom: 1,
       item: [
         {
-          nama: "🌟 Target belajarku hari ini",
-          singkat: "Timbang dengan benar",
+          nama: "🐚 7.1 Menghitung, membaca, menulis 51–100",
+          singkat: "10 mutiara = 1 kerang",
           uraian:
-            "🎯 Aku bisa mengenal timbangan sebagai alat ukur berat baku. 🎯 Aku bisa membedakan satuan g dan kg serta hubungannya.",
-          contoh: "Jarum timbangan menunjuk angka berat.",
+            "Kumpulkan setiap 10 mutiara ke 1 kerang besar. Tujuh kerang dan 3 mutiara dibaca tujuh puluh tiga.",
+          contoh: "7 kerang + 3 mutiara = 73.",
         },
         {
-          nama: "🗺️ Kantong gula yang bocor",
-          singkat: "Gula berat, garam enteng",
+          nama: "🏠 7.2 Nilai tempat puluhan dan satuan",
+          singkat: "Depan puluhan, belakang satuan",
           uraian:
-            "Kantong gula terasa mantap dan berat. Bungkus garam terasa sangat enteng. Paman mengeluarkan timbangan bermangkuk dan berjarum.",
-          contoh: "Yuk bantu Sani menimbang bahan permen!",
+            "Angka depan menempati Puluhan. Angka belakang menempati Satuan. 10 puluhan = 100 seratus.",
+          contoh: "96: 9 puluhan = 90, 6 satuan = 6.",
+        },
+        {
+          nama: "🐬 7.3 Membandingkan dan membilang lompat",
+          singkat: "Cek puluhan dulu",
+          uraian:
+            "Bandingkan puluhan dulu. Kalau puluhan sama, bandingkan satuan. Lompat 2, 5, atau 10.",
+          contoh: "81 lebih dari 79 karena 8 puluhan > 7 puluhan.",
         },
       ],
       kuis: [
         {
-          pertanyaan: "1. Benda mana yang terasa lebih berat di tangan Sani?",
-          alias: ["gula", "kantong gula", "gula pasir"],
+          pertanyaan: "1. Bagaimana cara membaca bilangan 85?",
+          alias: ["delapan puluh lima", "85"],
         },
         {
-          pertanyaan: "2. Benda mana yang terasa enteng?",
-          alias: ["garam", "bungkus garam", "garam halus"],
+          pertanyaan: "2. Pada 79, angka 7 menempati nilai tempat apa?",
+          alias: ["puluhan"],
         },
         {
-          pertanyaan: "3. Alat besi yang dikeluarkan Paman namanya apa?",
-          alias: ["timbangan", "timbang"],
+          pertanyaan: "3. Mana yang lebih banyak: 68 atau 86?",
+          alias: ["delapan puluh enam", "86"],
         },
       ],
       voice: [
         [
-          "Paman membawa kantong gula pasir dan bungkus garam. Kantong gula terasa berat, bungkus garam terasa enteng.",
-          "Paman mengeluarkan timbangan bermangkuk dan berjarum. Yuk, kita bantu Sani menimbang bahan permen!",
+          "Halo penyelam cilik! Bersama Penyelam IGIL, kita akan menghitung harta karun mutiara dari angka 51 sampai 100.",
+          "Agar cepat dan tidak salah hitung, kita kumpulkan setiap 10 mutiara ke dalam 1 kerang besar!",
         ],
       ],
     },
     {
       kode: "B",
-      judul: "B. Infografis Timbangan Gram dan Kilogram",
+      judul: "B. Infografis Puluhan sampai 100",
       pengantar:
-        "⚖️ Jangan hanya mengira dengan tangan. Pakai timbangan. Jarum menunjuk angka berat. g untuk benda ringan, kg untuk benda berat. 1 kg = 1.000 g.",
-      labelDaftar: "Alat baku dan satuan berat",
+        "📊 Tiga rumus cepat: kelompok puluhan, peta nilai tempat, dan jurus banding plus lompat.",
+      labelDaftar: "Tiga infografis",
       kolom: 1,
       item: [
         {
-          nama: "⚖️ Mengenal timbangan",
-          singkat: "Jarum menunjuk angka",
+          nama: "🐚 Kelompok puluhan",
+          singkat: "10 puluhan = 100",
           uraian:
-            "Benda ditaruh di atas timbangan. Jarum berputar ke sebuah angka. Angka itu adalah berat benda.",
-          contoh: "Angka jarum = berat.",
+            "Hitung dulu berapa kelompok puluhannya, lalu tambahkan satuan. 10 kelompok puluhan sama dengan 100.",
+          contoh: "7 kerang + 4 mutiara = 70 + 4 = 74.",
         },
         {
-          nama: "🍬 Gram dan kilogram",
-          singkat: "g ringan, kg berat",
+          nama: "🔢 Peta nilai tempat",
+          singkat: "Kiri puluhan, kanan satuan",
           uraian:
-            "Gram (g) untuk permen, garam kecil, kertas. Kilogram (kg) untuk karung gula, keranjang apel, berat badan.",
-          contoh: "Permen = g. Karung = kg.",
+            "Angka kiri adalah Puluhan. Angka kanan adalah Satuan. 59 berbeda dengan 95.",
+          contoh: "87: 8 nilainya 80, 7 nilainya 7. 80 + 7 = 87.",
         },
         {
-          nama: "🏃‍♂️ Rumus lompatan berat",
-          singkat: "1 kg = 1.000 g",
+          nama: "⚖️ Banding dan lompat",
+          singkat: "Puluhan dulu",
           uraian:
-            "Seribu benda seberat 1 gram sama dengan 1 kilogram. g dan kg bersahabat erat.",
-          contoh: "1 kg = 1.000 g.",
+            "Kalau puluhan berbeda, yang puluhannya lebih besar lebih banyak. Kalau puluhan sama, lihat satuan. Lompat 2, 5, atau 10.",
+          contoh: "91 > 89. 74 < 78. Lompat 2: 62, 64, 66.",
         },
       ],
       kuis: [
         {
-          pertanyaan: "1. Satuan untuk benda ringan ditulis singkat apa?",
-          alias: ["g", "gram"],
+          pertanyaan: "1. Sepuluh kelompok puluhan sama dengan bilangan berapa?",
+          alias: ["seratus", "100"],
         },
         {
-          pertanyaan: "2. Satuan untuk benda berat ditulis singkat apa?",
-          alias: ["kg", "kilogram"],
+          pertanyaan: "2. Pada 63, nilai angka 6 di puluhan: enam atau enam puluh?",
+          alias: ["enam puluh", "60"],
         },
         {
-          pertanyaan: "3. 1 kilogram sama dengan berapa gram?",
-          alias: ["1000", "1.000", "seribu"],
+          pertanyaan: "3. Antara 74 dan 78, mana yang kurang dari yang lain?",
+          alias: ["tujuh puluh empat", "74"],
         },
       ],
       voice: [
         [
-          "Jangan hanya mengira dengan tangan. Pakai timbangan. Jarum menunjuk angka berat. Gram untuk benda ringan, kilogram untuk benda berat.",
-          "Satu kilogram sama dengan seribu gram.",
+          "Ingat rumus cepat menghitung benda sampai 100: hitung dulu berapa kelompok puluhannya, lalu tambahkan satuannya. Kalau ada 10 kelompok puluhan, itu sama dengan 100!",
         ],
       ],
     },
     {
       kode: "C",
-      judul: "C. Petugas Timbang Toko",
+      judul: "C. Ekspedisi Kapal Selam Menuju Palung 100",
       pengantar:
-        "🕵️‍♂️ Tempel stiker g atau kg. Lolipop 50 dan cokelat 100 pakai g. Karung 25 dan badan Riko 28 pakai kg.",
-      labelDaftar: "Aktivitas terbimbing dan jurnal",
+        "🚢 Kapal selam butuh kode angka 51 sampai 100 untuk membuka 10 gerbang karang.",
+      labelDaftar: "Sepuluh gerbang palung",
       kolom: 1,
       item: [
         {
-          nama: "🕵️‍♂️ Aktivitas 1",
-          singkat: "A g, B kg, C g, D kg",
+          nama: "🐚 Kode puluhan dan satuan",
+          singkat: "Kelompokkan sepuluh-sepuluh",
           uraian:
-            "Benda ringan dipegang anak: A dan C, satuannya g. Benda diangkat dua tangan: B dan D, satuannya kg.",
-          contoh: "50 g. 25 kg. 100 g. 28 kg.",
+            "5 ikat puluhan dan 9 satuan = 59. Sembilan puluh satu ditulis 91. 70 + 6 = 76.",
+          contoh: "Jalur kanan 71 lebih banyak dari jalur kiri 69.",
         },
         {
-          nama: "🎭 Jurnal perasaanku",
-          singkat: "Pilih wajah",
+          nama: "🐬 Lompat dan seratus",
+          singkat: "10 puluhan = 100",
           uraian:
-            "😀 Sangat seru, aku tahu kenapa benda besar bisa terasa berat! 😐 Sedikit bingung menghitung nol pada gram. 😢 Masih tertukar menulis g dan kg.",
-          contoh: "Pilih satu wajah.",
+            "Lompat 10: 63, 73, 83, 93. Pada 80, satuan 0 dan puluhan 8. 10 puluhan dibaca seratus.",
+          contoh: "8 kerang + 3 mutiara = 83. Paling besar di 67, 76, 70 adalah 76.",
         },
       ],
       kuis: [
         {
-          pertanyaan: "1. Lolipop mini 50 memakai satuan apa?",
-          alias: ["g", "gram"],
+          pertanyaan: "1. 5 ikat puluhan dan 9 satuan. Kodenya berapa?",
+          alias: ["59", "lima puluh sembilan"],
         },
         {
-          pertanyaan: "2. Karung tepung 25 memakai satuan apa?",
-          alias: ["kg", "kilogram"],
+          pertanyaan: "2. Sembilan puluh satu ditulis?",
+          alias: ["91", "sembilan puluh satu"],
         },
         {
-          pertanyaan: "3. 1 kg sama dengan berapa g?",
-          alias: ["1000", "1.000", "seribu"],
+          pertanyaan: "3. 70 tambah 6 membentuk bilangan?",
+          alias: ["76", "tujuh puluh enam"],
         },
       ],
       voice: [
         [
-          "Yuk jadi petugas timbang. Lolipop lima puluh dan cokelat seratus pakai gram. Karung dua puluh lima dan badan Riko dua puluh delapan pakai kilogram.",
-          "Benda ringan dipegang anak memakai g. Benda yang diangkat dua tangan memakai kg.",
+          "Selamat datang di permainan Ekspedisi Kapal Selam Menuju Palung 100! Kapal selam Penyelam IGIL membutuhkan kode angka dari 51 sampai 100 untuk membuka 10 gerbang karang bawah laut.",
+          "Setiap jawaban benar akan mengisi bahan bakar oksigen dan menyalakan lampu sonar!",
         ],
       ],
     },
@@ -226,44 +223,43 @@ D) 1`,
       kode: "D",
       judul: "D. Lembar Evaluasi Siswa",
       pengantar:
-        "📝 Tantangan para juara! Bandingkan paket 1 kg, potong semangka, dan baca label gram-kilogram. Besar belum tentu lebih berat.",
-      labelDaftar: "Evaluasi pilihan ganda dan isian",
+        "📝 Sepuluh soal ketelitian. Perhatikan nilai tempat puluhan dan satuan.",
+      labelDaftar: "Evaluasi HOTS membilang sampai 100",
       kolom: 1,
       item: [
         {
-          nama: "🍓 Bagian A",
-          singkat: "Pilihan ganda",
+          nama: "🧠 Nilai tempat dan gabung satuan",
+          singkat: "Kartu 6 dan 9",
           uraian:
-            "Kedua paket 1 kg sama berat. Setengah semangka 2 kg. Penghapus 5 kg tidak masuk akal. 600+300=900. Mita 1.500 g paling ringan.",
-          contoh: "Sama 1 kg. 2 kg. 900 g.",
+            "Bilangan terbesar dari 6 dan 9 adalah 96. Enam puluhan plus 14 satuan menjadi 7 puluhan dan 4 satuan = 74.",
+          contoh: "Di antara 70 dan 80, satuan sama puluhan: 77.",
         },
         {
-          nama: "✏️ Bagian B",
-          singkat: "Isian singkat",
+          nama: "🐬 Lompat, banding, papan 100",
+          singkat: "Puluhan dulu",
           uraian:
-            "2.000 g = 2 kg. Sisa cokelat 300 g. Klip = g, karung = kg. Wadah plus permen 500 g. Mangga bersih 6 kg.",
-          contoh: "2. 300. 500. 6.",
+            "Lompat mundur 5 dari 85 adalah 80. 91 > 89 > 85. 90 butuh 10 lagi jadi 100. 3 satuan dan 9 puluhan = 93. Di bawah 72 adalah 82.",
+          contoh: "69 lebih besar dari 64.",
         },
       ],
       kuis: [
-        { pertanyaan: "1. Dua paket 1 kg, apakah yang lebih besar lebih berat?", alias: ["sama", "salah"] },
-        { pertanyaan: "2. Semangka 4 kg dipotong dua, satu potong?", alias: ["2"] },
-        { pertanyaan: "3. Penghapus 5 kg masuk akal?", alias: ["tidak", "3"] },
-        { pertanyaan: "4. 600 g + 300 g?", alias: ["900"] },
-        { pertanyaan: "5. Paket paling ringan?", alias: ["mita"] },
-        { pertanyaan: "6. 2.000 gram sama dengan berapa kg?", alias: ["2"] },
-        { pertanyaan: "7. 850 potong 200 lalu 350, sisa?", alias: ["300"] },
-        { pertanyaan: "8. Klip dan karung beras, pasangannya?", alias: ["1b"] },
-        { pertanyaan: "9. Wadah 100 g plus permen 400 g?", alias: ["500"] },
-        { pertanyaan: "10. Total 7 kg, keranjang 1 kg, mangga bersih?", alias: ["6"] },
+        { pertanyaan: "1. Kartu 6 dan 9, bilangan terbesar?", alias: ["96", "sembilan puluh enam"] },
+        { pertanyaan: "2. 6 puluhan dan 14 satuan, setelah dikelompokkan?", alias: ["74", "tujuh puluh empat"] },
+        { pertanyaan: "3. Antara 70 dan 80, satuan sama puluhan?", alias: ["77", "tujuh puluh tujuh"] },
+        { pertanyaan: "4. 95 lompat mundur 5, setelah 85?", alias: ["80", "delapan puluh"] },
+        { pertanyaan: "5. 8 puluhan 0 satuan sama dengan?", alias: ["80", "delapan puluh"] },
+        { pertanyaan: "6. Urutan Nala 91, Arka 89, Toti 85. Arka benar?", alias: ["benar"] },
+        { pertanyaan: "7. 90 butuh tambah berapa ke 100?", alias: ["sepuluh", "10"] },
+        { pertanyaan: "8. Mana lebih besar, 64 atau 69?", alias: ["enam puluh sembilan", "69"] },
+        { pertanyaan: "9. 3 satuan dan 9 puluhan ditulis?", alias: ["93"] },
+        { pertanyaan: "10. Di bawah 72 pada papan 100?", alias: ["82"] },
       ],
       voice: [
         [
-          "Ini lembar evaluasi tantangan para juara. Dua paket satu kilogram sama berat. Setengah semangka empat kilogram adalah dua kilogram. Penghapus lima kilogram tidak masuk akal.",
-          "Enam ratus tambah tiga ratus sama dengan sembilan ratus. Mita seribu lima ratus gram paling ringan, lalu Lani, lalu Dodi.",
+          "Hebat sekali, Penyelam Cilik! Sebelum kita mulai Lembar Evaluasi Siswa, yuk kita ingat kembali tiga kalimat kunci tentang bilangan sampai 100 bersama Penyelam IGIL!",
         ],
         [
-          "Dua ribu gram sama dengan dua kilogram. Sisa cokelat tiga ratus gram. Klip memakai gram, karung memakai kilogram. Wadah plus permen lima ratus. Mangga bersih enam kilogram.",
+          "Sekarang waktunya menguji ketangkasanmu di Lembar Evaluasi Siswa Bab 7! Ada 10 soal HOTS tentang bilangan sampai dengan 100. Perhatikan nilai tempat puluhan dan satuannya dengan teliti ya!",
         ],
       ],
     },

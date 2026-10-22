@@ -493,26 +493,26 @@ const INFOGRAFIS: Record<
       "Jarum pendek menunjuk jam. Jarum panjang di 12 artinya tepat. Selisih kelereng: 5 − 3 = 2.",
   },
   "mtk-2-bab7-A": {
-    judul: "Dunia timbangan pintar",
-    kepala: ["Satuan", "Dipakai untuk", "Contoh"],
+    judul: "Kelompok puluhan sampai 100",
+    kepala: ["Cara", "Rumus", "Contoh"],
     baris: [
-      ["Gram (g)", "Benda ringan", "Garam, permen, selembar roti"],
-      ["Kilogram (kg)", "Benda berat", "Beras, semangka, berat badan"],
-      ["Hubungan", "1 kg = 1.000 g", "Jarum menunjuk angka berat"],
+      ["Kerang puluhan", "1 kerang = 10 mutiara", "7 kerang = 70"],
+      ["Tambah satuan", "puluhan + satuan", "70 + 4 = 74"],
+      ["Seratus", "10 puluhan = 100", "Dibaca seratus"],
     ],
     catatan:
-      "Jika jarum menunjuk 3 saat semangka ditaruh, beratnya 3 kilogram. 2 kg = 2.000 g.",
+      "Hitung kelompok puluhan dulu, lalu tambahkan satuan. Angka depan puluhan, angka belakang satuan.",
   },
   "mtk-2-bab7-B": {
-    judul: "Ringan, berat, dan digital",
-    kepala: ["Kelompok", "Contoh", "Ingat"],
+    judul: "Nilai tempat dan lompat",
+    kepala: ["Topik", "Cara", "Ingat"],
     baris: [
-      ["Lebih cocok gram", "Penghapus, sebutir permen", "Ringan"],
-      ["Lebih cocok kg", "Semangka, sepeda", "Berat"],
-      ["Digital", "Angka muncul di layar", "3 kg + 2 kg = 5 kg"],
+      ["Nilai tempat", "Kiri puluhan, kanan satuan", "87 = 80 + 7"],
+      ["Membandingkan", "Cek puluhan dulu", "81 > 79"],
+      ["Hitung lompat", "Lompat 2, 5, atau 10", "70, 80, 90, 100"],
     ],
     catatan:
-      "Benda besar belum tentu lebih berat. Balon gas besar bisa lebih ringan daripada batu kecil.",
+      "59 berbeda dengan 95. Kalau puluhan sama, bandingkan satuan. 10 puluhan = 100.",
   },
   "mtk-2-bab8-A": {
     judul: "Kunci membaca piktogram",
@@ -932,22 +932,22 @@ function EvaluasiBab7({ modulId }: { modulId: string }) {
       </h5>
       <KuisPilihan
         id={idEval(modulId, 0)}
-        soal="Benda mana yang lebih membutuhkan satuan kilogram saat ditimbang?"
+        soal="Kartu 6 dan 9 disusun menjadi bilangan dua angka paling besar. Nilai tempatnya..."
         benar="B"
         pilihan={[
-          { huruf: "A", teks: "Sebutir telur ayam" },
-          { huruf: "B", teks: "Sekarung beras yang besar" },
-          { huruf: "C", teks: "Sebutir permen" },
+          { huruf: "A", teks: "6 Puluhan dan 9 Satuan (69)" },
+          { huruf: "B", teks: "9 Puluhan dan 6 Satuan (96)" },
+          { huruf: "C", teks: "9 Puluhan dan 9 Satuan (99)" },
         ]}
       />
       <KuisPilihan
         id={idEval(modulId, 1)}
-        soal="2 kilogram jika diubah ke gram sama dengan..."
+        soal="6 kantong puluhan dan 14 satuan. 10 satuan masuk kantong baru. Jumlahnya..."
         benar="B"
         pilihan={[
-          { huruf: "A", teks: "2 gram" },
-          { huruf: "B", teks: "2.000 gram" },
-          { huruf: "C", teks: "200 gram" },
+          { huruf: "A", teks: "64 kelereng" },
+          { huruf: "B", teks: "74 kelereng" },
+          { huruf: "C", teks: "84 kelereng" },
         ]}
       />
       <h5 className="text-sm font-black uppercase tracking-wide text-[#1C01A5]">
@@ -955,40 +955,40 @@ function EvaluasiBab7({ modulId }: { modulId: string }) {
       </h5>
       <KuisBenarSalah
         id={idEval(modulId, 2)}
-        soal="Benda yang ukurannya besar sudah pasti selalu lebih berat daripada benda yang kecil."
+        soal="Bilangan 72 lebih kecil dari 69 karena angka 2 lebih kecil dari 9."
         benar="salah"
-        alasanBenar="balon gas besar bisa lebih ringan daripada batu kerikil kecil"
+        alasanBenar="72 lebih besar karena 7 puluhan lebih dari 6 puluhan"
       />
       <KuisBenarSalah
         id={idEval(modulId, 3)}
-        soal="Timbangan digital langsung menampilkan angka berat berupa tulisan lampu di layar."
+        soal="Urutan kerang paling banyak Nala 91, Arka 89, lalu Toti 85."
         benar="benar"
-        alasanBenar="sensor elektronik memunculkan angka secara akurat"
+        alasanBenar="91 lebih dari 89, dan 89 lebih dari 85"
       />
       <h5 className="text-sm font-black uppercase tracking-wide text-[#1C01A5]">
         C. Mencocokkan garis
       </h5>
       <KuisJodoh
         id={idEval(modulId, 4)}
-        soal="Jodohkan benda dengan satuan berat yang paling tepat."
+        soal="Jodohkan deskripsi dengan bilangannya."
         pasangan={[
           {
-            kiri: "Sebungkus biskuit kecil",
-            kanan: ["Satuan Gram (g)", "Satuan Kilogram (kg)"],
+            kiri: "8 Puluhan + 0 Satuan",
+            kanan: ["80", "8", "100"],
           },
           {
-            kiri: "Berat badan anak kelas 2",
-            kanan: ["Satuan Gram (g)", "Satuan Kilogram (kg)"],
+            kiri: "10 Puluhan",
+            kanan: ["10", "100", "1"],
           },
           {
-            kiri: "Sekantung besar pupuk",
-            kanan: ["Satuan Gram (g)", "Satuan Kilogram (kg)"],
+            kiri: "5 Satuan + 7 Puluhan",
+            kanan: ["57", "75", "52"],
           },
         ]}
         kunci={{
-          "Sebungkus biskuit kecil": "Satuan Gram (g)",
-          "Berat badan anak kelas 2": "Satuan Kilogram (kg)",
-          "Sekantung besar pupuk": "Satuan Kilogram (kg)",
+          "8 Puluhan + 0 Satuan": "80",
+          "10 Puluhan": "100",
+          "5 Satuan + 7 Puluhan": "75",
         }}
       />
       <h5 className="text-sm font-black uppercase tracking-wide text-[#1C01A5]">
@@ -996,8 +996,8 @@ function EvaluasiBab7({ modulId }: { modulId: string }) {
       </h5>
       <KuisIsian
         id={idEval(modulId, 5)}
-        soal="Mengapa 1 kilogram sama dengan 1.000 gram?"
-        alias={["seribu", "1000", "1.000", "lebih besar", "berat"]}
+        soal="Mengapa 81 lebih dari 79 meskipun satuan 1 lebih kecil dari 9?"
+        alias={["puluhan", "8 puluhan", "80", "puluh"]}
       />
     </div>
   );

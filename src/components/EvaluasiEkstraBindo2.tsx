@@ -780,58 +780,49 @@ const PAKET: Record<string, PaketEvaluasiEkstra> = {
   },
   "mtk-2-bab7": {
     garis: {
-      soal: "Tariklah garis untuk menjodohkan benda di bawah ini dengan satuan berat standar yang paling tepat!",
+      soal: "Tariklah garis untuk menjodohkan deskripsi dengan bilangan yang tepat!",
       kiri: [
-        "Sebungkus biskuit kecil",
-        "Berat badan anak kelas 2",
-        "Sekantung besar pupuk",
+        "8 Puluhan + 0 Satuan",
+        "10 Puluhan",
+        "5 Satuan + 7 Puluhan",
       ],
-      kanan: [
-        "Satuan Kilogram (kg) — berat badan",
-        "Satuan Gram (g)",
-        "Satuan Kilogram (kg) — pupuk",
-      ],
+      kanan: ["75", "80", "100"],
       kunci: {
-        "Sebungkus biskuit kecil": "Satuan Gram (g)",
-        "Berat badan anak kelas 2": "Satuan Kilogram (kg) — berat badan",
-        "Sekantung besar pupuk": "Satuan Kilogram (kg) — pupuk",
+        "8 Puluhan + 0 Satuan": "80",
+        "10 Puluhan": "100",
+        "5 Satuan + 7 Puluhan": "75",
       },
     },
     keranjang: {
-      soal: "Masukkan nama-nama benda ke dalam keranjang perkiraan berat yang sesuai!",
-      keranjang1: "LEBIH COCOK DENGAN GRAM (Ringan)",
-      keranjang2: "LEBIH COCOK DENGAN KILOGRAM (Berat)",
+      soal: "Masukkan bilangan ke keranjang nilai tempat yang sesuai!",
+      keranjang1: "MEMILIKI 6 PULUHAN",
+      keranjang2: "MEMILIKI 8 PULUHAN",
       keping: [
-        { id: "semangka", label: "Semangka", wadah: "2" },
-        { id: "penghapus", label: "Penghapus", wadah: "1" },
-        { id: "sepeda", label: "Sepeda", wadah: "2" },
-        { id: "permen", label: "Sebutir Permen", wadah: "1" },
+        { id: "n64", label: "64", wadah: "1" },
+        { id: "n84", label: "84", wadah: "2" },
+        { id: "n69", label: "69", wadah: "1" },
+        { id: "n81", label: "81", wadah: "2" },
       ],
     },
     urut: {
-      soal: "Urutkan balok benda dari yang memiliki massa/berat paling ringan hingga yang paling berat!",
-      balok: [
-        "Selembar kapas kosmetik seberat 5 gram.",
-        "Buah pisang seberat 200 gram.",
-        "Buah pepaya besar seberat 2 kilogram.",
-      ],
+      soal: "Urutkan gelembung mutiara dari yang paling sedikit hingga yang paling banyak!",
+      balok: ["58", "73", "91"],
     },
     kanvas: {
-      soal: 'Ibu membeli 3 kg tepung terigu dan 2 kg gula pasir. Total berat belanjaan Ibu adalah __ kilogram.',
-      alias: ["5"],
+      soal: "Ada 9 kerang puluhan dan 2 mutiara satuan. Lambang bilangannya adalah __.",
+      alias: ["92"],
     },
     detektif: [
       {
-        soal: "Benda yang ukurannya besar sudah pasti selalu lebih berat daripada benda yang ukurannya kecil ketika ditimbang.",
+        soal: "Bilangan 72 lebih kecil dari 69 karena angka 2 lebih kecil dari 9.",
         benar: false,
         alasan:
-          "Salah. Contohnya sebuah balon gas yang besar bisa jauh lebih ringan daripada sebuah batu kerikil kecil yang padat keras.",
+          "Salah. 72 lebih besar karena 7 puluhan lebih dari 6 puluhan. Jangan terkecoh angka satuan.",
       },
       {
-        soal: "Timbangan digital akan langsung menampilkan angka berat benda berupa tulisan lampu di layarnya secara otomatis.",
+        soal: "Sepuluh kelompok puluhan sama dengan 100 dan dibaca seratus.",
         benar: true,
-        alasan:
-          "Benar. Timbangan digital menggunakan sensor elektronik untuk memunculkan angka secara pasti dan akurat.",
+        alasan: "Benar. 10 puluhan = 100 (seratus).",
       },
     ],
   },
