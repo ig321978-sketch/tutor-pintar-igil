@@ -920,6 +920,27 @@ export function adalahMtk2Bab5(
   return adalahJudulMtk2Bab5(mapel, materi);
 }
 
+export function adalahJudulMtk2Bab6(mapel: string, materi: string): boolean {
+  if (!adalahMapelMatematika(mapel)) return false;
+  const judul = normJudul(materi);
+  return (
+    /bab\s*6[:.]\s*pengukuran(?!\s*panjang dan berat)/.test(judul) ||
+    /membandingkan berat benda/.test(judul) ||
+    /kapten igil/.test(judul) ||
+    /misi kereta kargo/.test(judul) ||
+    /pengukuran panjang standar/.test(judul)
+  );
+}
+
+export function adalahMtk2Bab6(
+  kelas: string,
+  mapel: string,
+  materi: string,
+): boolean {
+  if (!kelasDuaSd(kelas)) return false;
+  return adalahJudulMtk2Bab6(mapel, materi);
+}
+
 export function cariModulPjok1Resmi(materi: string): ModulResmiPai | null {
   const judul = normJudul(materi);
   return MODUL_PJOK1_BAB1_4.find((modul) => modul.pola.test(judul)) ?? null;

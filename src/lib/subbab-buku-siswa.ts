@@ -164,6 +164,14 @@ const SUBBAB_BUKU_SISWA: Record<string, Record<string, Record<string, string[]>>
         "Poin penting",
         "Lembar evaluasi siswa",
       ],
+      "Bab 6: Pengukuran": [
+        "Sub-Bab 6.1: Membandingkan Berat Benda",
+        "Sub-Bab 6.2: Mengukur Berat dengan Satuan Tak Baku",
+        "Sub-Bab 6.3: Membaca Jam dan Durasi Waktu",
+        "Misi Kereta Kargo Tepat Waktu",
+        "Poin penting",
+        "Lembar evaluasi siswa",
+      ],
     },
   },
   "3 SD": {

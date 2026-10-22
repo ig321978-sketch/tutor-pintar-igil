@@ -55,9 +55,11 @@ function judulAlias(materi) {
     tambahan.push("Bab 5: Fondasi Pembagian Dasar");
     tambahan.push("Bab 5: Pecahan");
   }
-  if (/pengukuran panjang standar/i.test(materi)) {
+  if (/pengukuran panjang standar|bab 6:\s*pengukuran|kapten igil|kereta kargo/i.test(materi)) {
     tambahan.push("Bab 6: Pita Kantong Permen");
     tambahan.push("Bab 6: Panjang");
+    tambahan.push("Bab 6: Pengukuran Panjang Standar");
+    tambahan.push("Bab 6: Pengukuran");
   }
   if (/pengukuran berat standar/i.test(materi)) {
     tambahan.push("Bab 7: Timbangan Toko Permen");

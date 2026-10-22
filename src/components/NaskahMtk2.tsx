@@ -471,26 +471,26 @@ const INFOGRAFIS: Record<
     catatan: "Setengah dari 6 stroberi adalah 3. Setengah lebih besar daripada seperempat.",
   },
   "mtk-2-bab6-A": {
-    judul: "Penggaris pintar kita",
-    kepala: ["Satuan", "Dipakai untuk", "Contoh"],
+    judul: "Aturan timbangan Kapten IGIL",
+    kepala: ["Posisi nampan", "Arti", "Contoh"],
     baris: [
-      ["Sentimeter (cm)", "Benda pendek atau kecil", "Pensil, penghapus, buku"],
-      ["Meter (m)", "Benda panjang atau luar kelas", "Papan tulis, pintu, kelas"],
-      ["Mulai dari 0", "Ujung kiri benda di angka nol", "Bukan ujung plastik"],
+      ["Turun ke bawah", "Lebih berat", "Kotak besi, semangka, gajah kecil"],
+      ["Naik ke atas", "Lebih ringan", "Bantal kapas, stroberi, kelinci"],
+      ["Lurus sejajar", "Sama berat", "1 apel merah = 1 apel hijau"],
     ],
     catatan:
-      "Sejajarkan ujung paling kiri benda tepat pada angka 0. Angka di ujung kanan adalah panjang aslinya.",
+      "Benda yang lebih berat membuat nampan turun. Jangan tertipu ukuran. Batu kecil bisa lebih berat dari balon besar.",
   },
   "mtk-2-bab6-B": {
-    judul: "Alat baku dan 100 cm",
-    kepala: ["Jenis", "Contoh", "Hasil ukur"],
+    judul: "Kelereng, jam, dan durasi",
+    kepala: ["Topik", "Rumus", "Ingat"],
     baris: [
-      ["Alat baku", "Penggaris cm, meteran pita", "Sama di seluruh dunia"],
-      ["Tidak baku", "Jengkal tangan, langkah kaki", "Berubah-ubah"],
-      ["Konversi", "1 meter = 100 sentimeter", "Klip 3, krayon 8, papan 15"],
+      ["Satuan tak baku", "Berat benda = jumlah kelereng saat lurus", "Mangga 5 > pisang 3"],
+      ["Jam tepat", "Panjang di 12, pendek di X = pukul X", "Pendek di 8 = pukul 8"],
+      ["Durasi", "Sebentar vs lama", "Cuci tangan sebentar, tidur malam lama"],
     ],
     catatan:
-      "Jika mulai dari angka 1 sampai 6, panjangnya 6 - 1 = 5 cm, bukan 6 cm.",
+      "Jarum pendek menunjuk jam. Jarum panjang di 12 artinya tepat. Selisih kelereng: 5 − 3 = 2.",
   },
   "mtk-2-bab7-A": {
     judul: "Dunia timbangan pintar",
@@ -853,22 +853,22 @@ function EvaluasiBab6({ modulId }: { modulId: string }) {
       </h5>
       <KuisPilihan
         id={idEval(modulId, 0)}
-        soal="Penghapus diukur dari angka 0, ujung kanan di angka 4. Panjangnya..."
-        benar="B"
+        soal="Timbangan 1: semangka turun, nanas naik. Timbangan 2: nanas turun, apel naik. Urutan dari paling berat..."
+        benar="A"
         pilihan={[
-          { huruf: "A", teks: "0 cm" },
-          { huruf: "B", teks: "4 cm" },
-          { huruf: "C", teks: "5 cm" },
+          { huruf: "A", teks: "Semangka - Nanas - Apel" },
+          { huruf: "B", teks: "Apel - Nanas - Semangka" },
+          { huruf: "C", teks: "Nanas - Semangka - Apel" },
         ]}
       />
       <KuisPilihan
         id={idEval(modulId, 1)}
-        soal="Singkatan satuan ukuran standar sentimeter adalah..."
-        benar="B"
+        soal="Kotak susu 5 kelereng dan roti 2 kelereng ditaruh bersama. Kelereng di nampan kanan agar lurus..."
+        benar="C"
         pilihan={[
-          { huruf: "A", teks: "m" },
-          { huruf: "B", teks: "cm" },
-          { huruf: "C", teks: "kg" },
+          { huruf: "A", teks: "3 kelereng" },
+          { huruf: "B", teks: "5 kelereng" },
+          { huruf: "C", teks: "7 kelereng" },
         ]}
       />
       <h5 className="text-sm font-black uppercase tracking-wide text-[#1C01A5]">
@@ -876,40 +876,40 @@ function EvaluasiBab6({ modulId }: { modulId: string }) {
       </h5>
       <KuisBenarSalah
         id={idEval(modulId, 2)}
-        soal="Jika kita mulai mengukur buku dari angka 1 dan ujung kanan di angka 6, panjangnya 6 cm."
+        soal="Balon besar naik, batu kecil turun. Berarti balon lebih berat karena ukurannya besar."
         benar="salah"
-        alasanBenar="tidak mulai dari 0 sehingga panjangnya 6 - 1 = 5 cm"
+        alasanBenar="nampan yang turun lebih berat, jadi batu kecil lebih berat"
       />
       <KuisBenarSalah
         id={idEval(modulId, 3)}
-        soal="Mengukur meja memakai meteran kain menghasilkan angka yang sama meskipun diukur orang berbeda."
-        benar="benar"
-        alasanBenar="meteran kain adalah alat ukur baku standar"
+        soal="Jarum pendek di 12 dan jarum panjang di 6 berarti pukul 6 tepat."
+        benar="salah"
+        alasanBenar="pukul 6 tepat: jarum pendek di 6 dan jarum panjang di 12"
       />
       <h5 className="text-sm font-black uppercase tracking-wide text-[#1C01A5]">
         C. Mencocokkan garis
       </h5>
       <KuisJodoh
         id={idEval(modulId, 4)}
-        soal="Jodohkan benda dengan satuan panjang yang paling cocok."
+        soal="Jodohkan situasi dengan kesimpulannya."
         pasangan={[
           {
-            kiri: "Panjang pensil tulis baru",
-            kanan: ["Satuan Sentimeter (cm)", "Satuan Meter (m)"],
+            kiri: "Tidur malam 8 jam vs gosok gigi 2 menit",
+            kanan: ["Tidur malam lebih lama", "Pensil lebih ringan"],
           },
           {
-            kiri: "Panjang halaman sekolah",
-            kanan: ["Satuan Sentimeter (cm)", "Satuan Meter (m)"],
+            kiri: "Buku 6 balok vs pensil 1 balok",
+            kanan: ["Tidur malam lebih lama", "Pensil lebih ringan"],
           },
           {
-            kiri: "Tinggi lemari kelas",
-            kanan: ["Satuan Sentimeter (cm)", "Satuan Meter (m)"],
+            kiri: "Jarum pendek di 6, jarum panjang di 12",
+            kanan: ["Pukul 06.00 tepat", "Pukul 12.00 tepat"],
           },
         ]}
         kunci={{
-          "Panjang pensil tulis baru": "Satuan Sentimeter (cm)",
-          "Panjang halaman sekolah": "Satuan Meter (m)",
-          "Tinggi lemari kelas": "Satuan Meter (m)",
+          "Tidur malam 8 jam vs gosok gigi 2 menit": "Tidur malam lebih lama",
+          "Buku 6 balok vs pensil 1 balok": "Pensil lebih ringan",
+          "Jarum pendek di 6, jarum panjang di 12": "Pukul 06.00 tepat",
         }}
       />
       <h5 className="text-sm font-black uppercase tracking-wide text-[#1C01A5]">
@@ -917,8 +917,8 @@ function EvaluasiBab6({ modulId }: { modulId: string }) {
       </h5>
       <KuisIsian
         id={idEval(modulId, 5)}
-        soal="Mengapa kita mulai mengukur dari angka 0, bukan dari ujung plastik penggaris?"
-        alias={["nol", "0", "benar", "panjang", "ujung"]}
+        soal="Mengapa nampan yang turun ke bawah menunjukkan benda yang lebih berat?"
+        alias={["berat", "turun", "bawah", "timbangan"]}
       />
     </div>
   );
