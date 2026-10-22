@@ -10,8 +10,9 @@ import SimulasiMtk1Bab7 from "@/components/modules/SimulasiMtk1Bab7";
 import SimulasiMtk1Bab8 from "@/components/modules/SimulasiMtk1Bab8";
 import SimulasiMtk2Bab1 from "@/components/modules/SimulasiMtk2Bab1";
 import SimulasiMtk2Bab2 from "@/components/modules/SimulasiMtk2Bab2";
+import SimulasiMtk2Bab3 from "@/components/modules/SimulasiMtk2Bab3";
 import SimulasiPhetPenjumlahanKelas1 from "@/components/modules/SimulasiPhetPenjumlahanKelas1";
-import { adalahMtk1Bab1, adalahMtk1Bab2, adalahMtk1Bab3, adalahMtk1Bab4, adalahMtk1Bab5, adalahMtk1Bab6, adalahMtk1Bab7, adalahMtk1Bab8, adalahMtk2Bab1, adalahMtk2Bab2 } from "@/lib/naskah-resmi";
+import { adalahMtk1Bab1, adalahMtk1Bab2, adalahMtk1Bab3, adalahMtk1Bab4, adalahMtk1Bab5, adalahMtk1Bab6, adalahMtk1Bab7, adalahMtk1Bab8, adalahMtk2Bab1, adalahMtk2Bab2, adalahMtk2Bab3 } from "@/lib/naskah-resmi";
 import type { KelaminGuru } from "@/lib/guru";
 
 type PanelSimulasiProps = {
@@ -193,6 +194,26 @@ function PanelSimulasiTambahKurangJambu({
   );
 }
 
+function PanelSimulasiBentukSarang({
+  kelas,
+  kelamin,
+  sudahLulus = false,
+  onSelesai,
+}: Pick<PanelSimulasiProps, "kelas" | "kelamin" | "sudahLulus" | "onSelesai">) {
+  const dicatat = useRef(sudahLulus);
+  return (
+    <SimulasiMtk2Bab3
+      kelas={kelas}
+      kelamin={kelamin}
+      onBenar={() => {
+        if (dicatat.current) return;
+        dicatat.current = true;
+        onSelesai?.(true, "Lab bentuk di sekitar kita selesai.");
+      }}
+    />
+  );
+}
+
 export default function PanelSimulasiModul({
   kelas,
   mapel,
@@ -230,6 +251,9 @@ export default function PanelSimulasiModul({
   }
   if (adalahMtk2Bab2(kelas, mapel, materi)) {
     return <PanelSimulasiTambahKurangJambu kelas={kelas} kelamin={kelamin} sudahLulus={sudahLulus} onSelesai={onSelesai} />;
+  }
+  if (adalahMtk2Bab3(kelas, mapel, materi)) {
+    return <PanelSimulasiBentukSarang kelas={kelas} kelamin={kelamin} sudahLulus={sudahLulus} onSelesai={onSelesai} />;
   }
   return (
     <p className="text-sm font-semibold text-[#1C01A5]">
