@@ -823,6 +823,21 @@ export function adalahMtk2(
   return adalahJudulMtk2(mapel, materi);
 }
 
+export function adalahJudulMtk2Bab1(mapel: string, materi: string): boolean {
+  if (!adalahMapelMatematika(mapel)) return false;
+  const judul = normJudul(materi);
+  return /ayo\s+membilang\s+sampai(\s+dengan)?\s+50/.test(judul) || /bilangan\s+cacah\s+sampai\s+100/.test(judul);
+}
+
+export function adalahMtk2Bab1(
+  kelas: string,
+  mapel: string,
+  materi: string,
+): boolean {
+  if (!kelasDuaSd(kelas)) return false;
+  return adalahJudulMtk2Bab1(mapel, materi);
+}
+
 export function cariModulPjok1Resmi(materi: string): ModulResmiPai | null {
   const judul = normJudul(materi);
   return MODUL_PJOK1_BAB1_4.find((modul) => modul.pola.test(judul)) ?? null;
