@@ -5,8 +5,9 @@ import SimulasiMtk1Bab1 from "@/components/modules/SimulasiMtk1Bab1";
 import SimulasiMtk1Bab3 from "@/components/modules/SimulasiMtk1Bab3";
 import SimulasiMtk1Bab4 from "@/components/modules/SimulasiMtk1Bab4";
 import SimulasiMtk1Bab5 from "@/components/modules/SimulasiMtk1Bab5";
+import SimulasiMtk1Bab6 from "@/components/modules/SimulasiMtk1Bab6";
 import SimulasiPhetPenjumlahanKelas1 from "@/components/modules/SimulasiPhetPenjumlahanKelas1";
-import { adalahMtk1Bab1, adalahMtk1Bab2, adalahMtk1Bab3, adalahMtk1Bab4, adalahMtk1Bab5 } from "@/lib/naskah-resmi";
+import { adalahMtk1Bab1, adalahMtk1Bab2, adalahMtk1Bab3, adalahMtk1Bab4, adalahMtk1Bab5, adalahMtk1Bab6 } from "@/lib/naskah-resmi";
 
 type PanelSimulasiProps = {
   nama: string;
@@ -98,6 +99,22 @@ function PanelSimulasiMembilang20({
   );
 }
 
+function PanelSimulasiTambahKurang20({
+  sudahLulus = false,
+  onSelesai,
+}: Pick<PanelSimulasiProps, "sudahLulus" | "onSelesai">) {
+  const dicatat = useRef(sudahLulus);
+  return (
+    <SimulasiMtk1Bab6
+      onBenar={() => {
+        if (dicatat.current) return;
+        dicatat.current = true;
+        onSelesai?.(true, "Lab penjumlahan dan pengurangan sampai 20 selesai.");
+      }}
+    />
+  );
+}
+
 export default function PanelSimulasiModul({
   kelas,
   mapel,
@@ -119,6 +136,9 @@ export default function PanelSimulasiModul({
   }
   if (adalahMtk1Bab5(kelas, mapel, materi)) {
     return <PanelSimulasiMembilang20 sudahLulus={sudahLulus} onSelesai={onSelesai} />;
+  }
+  if (adalahMtk1Bab6(kelas, mapel, materi)) {
+    return <PanelSimulasiTambahKurang20 sudahLulus={sudahLulus} onSelesai={onSelesai} />;
   }
   return (
     <p className="text-sm font-semibold text-[#1C01A5]">
