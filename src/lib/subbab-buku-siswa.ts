@@ -100,9 +100,10 @@ const SUBBAB_BUKU_SISWA: Record<string, Record<string, Record<string, string[]>>
         "Lembar evaluasi siswa",
       ],
       "Bab 6: Penjumlahan dan Pengurangan sampai dengan 20": [
-        "Misi penyelamatan anak kucing",
-        "Ayo hitung maju dan mundur",
-        "Menara penyelamat Igil",
+        "Sub-Bab A: Mengenal Konsep Lebih dari, Kurang dari, dan Selisih",
+        "Sub-Bab B: Penjumlahan yang Hasilnya Kurang dari 20",
+        "Sub-Bab C: Pengurangan yang Hasilnya Kurang dari 20",
+        "Misi selamatkan anak kucing",
         "Poin penting",
         "Lembar evaluasi siswa",
       ],

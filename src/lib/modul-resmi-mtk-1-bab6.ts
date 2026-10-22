@@ -10,7 +10,7 @@ export const JUDUL_MTK1_BAB6 = "Bab 6: Penjumlahan dan Pengurangan sampai dengan
 export const MODUL_MTK1_BAB6: ModulResmiPai = {
   id: "mtk-1-bab6",
   judul: JUDUL_MTK1_BAB6,
-  pola: /penjumlahan\s+dan\s+pengurangan\s+sampai(\s+dengan)?\s+20\b|misi penyelamatan anak kucing|menara penyelamat toki|selamatkan anak kucing/,
+  pola: /penjumlahan\s+dan\s+pengurangan\s+sampai(\s+dengan)?\s+20\b|misi penyelamatan anak kucing|selamatkan anak kucing|lebih dari|selisih/,
   motivasi:
     "Igil, Bimo, dan Rara menyelamatkan anak kucing bersama Igil. Mereka menghitung maju, menghitung mundur, dan memecah angka belasan.",
   kunciJawaban: "A,A,B,A,B,C,A,B,C,B",
@@ -85,7 +85,7 @@ D) 5`,
   kartu: [
     {
       kode: "A",
-      judul: "A. Misi Penyelamatan Anak Kucing",
+      judul: "Misi Penyelamatan Anak Kucing",
       pengantar:
         "Sore hari, anak kucing terjebak di dahan setinggi 18. Igil, Bimo, dan Rara menyusun kursi. Igil menunjukkan jam yang membuat angka berjalan maju dan mundur.",
       labelDaftar: "Hitung maju, pecah angka, lalu hitung mundur",
@@ -237,7 +237,7 @@ D) 5`,
         ],
       ],
     },
-        {
+    {
       kode: "C",
       judul: "C. Misi Selamatkan Anak Kucing",
       pengantar:

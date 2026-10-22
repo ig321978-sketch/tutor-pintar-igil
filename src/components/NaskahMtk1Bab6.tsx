@@ -7,10 +7,12 @@ import { useMemo, useState, type ReactNode } from "react";
 import HasilJawabanKuis from "@/components/HasilJawabanKuis";
 import TabelInfoGrafis from "@/components/TabelInfoGrafis";
 import KartuPoinPenting from "@/components/KartuPoinPenting";
+import { NamaDialog } from "@/components/IkonDialogMtk1";
 import TujuanBelajar from "@/components/TujuanBelajar";
 import KuisAkhirAdegan from "@/components/KuisAkhirAdegan";
 import KuisTulisKartu from "@/components/KuisTulisKartu";
 import SoalRekamSuara from "@/components/SoalRekamSuara";
+import GambarCerita from "@/components/GambarCerita";
 import TombolVoiceMateriPai1 from "@/components/TombolVoiceMateriPai1";
 import WritingCanvas from "@/components/WritingCanvas";
 import { useKuisMateri } from "@/components/KuisMateriContext";
@@ -133,7 +135,7 @@ function Dialog({ nama, anak }: { nama: string; anak: string }) {
   const warna = WARNA_DIALOG[nama] ?? "border-[#1C01A5]/15 bg-[#F8F7FF]";
   return (
     <article className={`rounded-2xl border-2 px-4 py-3 ${warna}`}>
-      <p className="text-xs font-black uppercase tracking-wide text-[#1C01A5]">{nama}</p>
+      <NamaDialog nama={nama} />
       <p className="mt-1 text-sm font-semibold leading-relaxed text-slate-700">{anak}</p>
     </article>
   );
@@ -156,13 +158,34 @@ function KepalaKartu({
 }) {
   return (
     <>
-      <p className="text-center text-4xl" aria-hidden>
+      <p className="text-center text-4xl font-normal" aria-hidden>
         {ikon}
       </p>
       <h4 className="mt-3 text-center text-lg font-black tracking-wide text-[#1C01A5] sm:text-xl">{judul}</h4>
-      {anak ? <p className="mt-1 text-center text-sm font-semibold text-slate-600">{anak}</p> : null}
-      <div className="mt-3 flex justify-center">
+      {anak ? <p className="mt-1 text-center text-sm font-bold text-[#1C01A5]/70">{anak}</p> : null}
+      <div className="mt-4">
         <TombolVoiceMateriPai1 kelas={kelas} kelamin={kelamin} cuplikan={cuplikan} />
+      </div>
+    </>
+  );
+}
+
+function JudulSubBab({
+  judul,
+  kelas,
+  kelamin,
+  naskah,
+}: {
+  judul: string;
+  kelas?: string;
+  kelamin?: KelaminGuru;
+  naskah: string[];
+}) {
+  return (
+    <>
+      <h5 className="mt-5 text-left text-base font-black tracking-wide text-[#1C01A5] sm:text-lg">{judul}</h5>
+      <div className="mt-4">
+        <TombolVoiceMateriPai1 kelas={kelas} kelamin={kelamin} cuplikan={cuplikanDariNaskah([naskah], 2_000, 3_000)} />
       </div>
     </>
   );
@@ -175,24 +198,21 @@ function Umpan({ status, teks }: { status: StatusJawabanKuis; teks: string }) {
 
 function Adegan({
   judul,
-  warna,
   src,
   alt,
   children,
 }: {
   judul: string;
-  warna: string;
   src: string;
   alt: string;
   children: ReactNode;
 }) {
   return (
-    <section className="space-y-4 border-b-4 border-[#1C01A5] pb-8">
-      <p className="text-xl font-black leading-snug text-[#1C01A5]">{judul}</p>
-      {/* eslint-disable-next-line @next/next/no-img-element */}
-      <img src={src} alt={alt} className="mt-3 w-full rounded-xl border border-[#1C01A5]/10 bg-white object-cover" />
-      <div className="mt-3 space-y-2">{children}</div>
-    </section>
+    <article className="space-y-3 rounded-2xl border-2 border-[#16A34A]/25 bg-[#F0FDF4] px-4 py-3">
+      <p className="text-xs font-black uppercase text-[#166534]">{judul}</p>
+      <GambarCerita src={src} alt={alt} />
+      <div className="space-y-2">{children}</div>
+    </article>
   );
 }
 
@@ -479,32 +499,22 @@ function TulisBebas({
   );
 }
 
-function KartuA({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminGuru }) {
-  const kartu = MODUL_MTK1_BAB6.kartu[0];
-  const [suara, setSuara] = useState<StatusJawabanKuis>(null);
-  const [salahKanvas, setSalahKanvas] = useState(0);
+function IsiLebih({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminGuru }) {
   return (
-    <KartuBingkai latar="bg-sky-50/80">
-      <KepalaKartu
-        ikon="🦉🌳🦉"
-        judul={kartu.judul}
-        anak="Penjumlahan dan Pengurangan sampai dengan 20"
+    <>
+      <JudulSubBab
+        judul="Sub-Bab A: Mengenal Konsep Lebih dari, Kurang dari, dan Selisih"
         kelas={kelas}
         kelamin={kelamin}
-        cuplikan={cuplikanDariNaskah(kartu.voice, 2_000, 3_000)}
-      />
-      <div className="mt-4 rounded-2xl border-2 border-sky-300 bg-sky-50 px-4 py-3">
-        <TujuanBelajar
-        butir={[
-          "Menjumlahkan dan mengurangkan bilangan sampai 20 dengan hitung maju dan hitung mundur.",
-          "Memecah angka jadi puluhan dan satuan, lalu menyelesaikan soal sehari-hari.",
+        naskah={[
+          "Anak kucing ada di dahan angka delapan belas. Kita baru sampai dua belas.",
+          "Hitung maju: tiga belas, empat belas, lima belas, enam belas, tujuh belas, delapan belas. Ada enam langkah.",
+          "Sepuluh tambah tiga dan enam belas kurang tiga sama-sama tiga belas.",
         ]}
       />
-      </div>
       <div className="mt-4 space-y-3">
         <Adegan
           judul="Sore di halaman sekolah"
-          warna="border-orange-200 bg-orange-50"
           src="/doodle-mtk/mtk-1-bab6-sore.jpg"
           alt="Sore di halaman sekolah. Anak kucing di dahan beringin, tiga anak berlari, Igil membawa jam."
         >
@@ -527,8 +537,7 @@ function KartuA({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminGuru }) {
           />
         </Adegan>
         <Adegan
-          judul="Adegan 1 · Menghitung ketinggian pohon"
-          warna="border-sky-200 bg-sky-50"
+          judul="Menghitung ketinggian pohon"
           src="/doodle-mtk/mtk-1-bab6-adegan-1.jpg"
           alt="Pohon berukur dari 0 di tanah sampai 18 di dahan. Bimo menunjuk, Igil memegang jam."
         >
@@ -550,9 +559,54 @@ function KartuA({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminGuru }) {
             konteksKanvas="Dua belas ditambah enam sama dengan delapan belas."
           />
         </Adegan>
+        <TabelInfoGrafis
+          judul="Infografis: Lebih, Kurang, dan Selisih"
+          kepala={["Pasangan", "Lihat", "Hasil"]}
+          baris={[
+            ["18 dan 12", "6 langkah", "18 lebih besar"],
+            ["15 dan 11", "4 kursi jatuh", "11 lebih kecil"],
+            ["10 + 3 dan 16 - 3", "keduanya 13", "sama besar"],
+          ]}
+          kaki="10 + 3 = 13 dan 16 - 3 = 13. Keduanya sama."
+        />
+        <article className="rounded-2xl border-2 border-teal-200 bg-teal-50 px-4 py-3">
+          <p className="text-sm font-black text-[#1C01A5]">Membandingkan</p>
+          <p className="mt-1 text-sm font-semibold text-slate-700">10 + 3 = 13. 16 – 3 = 13. Keduanya sama.</p>
+          <p className="mt-2 text-center text-lg font-black text-[#1C01A5]">13 = 13</p>
+        </article>
+      </div>
+    </>
+  );
+}
+
+function IsiTambah({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminGuru }) {
+  const [suara, setSuara] = useState<StatusJawabanKuis>(null);
+  const hasil = ["12", "17", "15"];
+  return (
+    <>
+      <JudulSubBab
+        judul="Sub-Bab B: Penjumlahan yang Hasilnya Kurang dari 20"
+        kelas={kelas}
+        kelamin={kelamin}
+        naskah={[
+          "Empat belas sama dengan sepuluh ditambah empat.",
+          "Delapan ditambah tujuh sama dengan lima belas. Kejar sepuluh dulu, lalu tambah sisanya.",
+          "Tambah berarti hitung maju. Dua belas ditambah lima berhenti di tujuh belas.",
+        ]}
+      />
+      <TabelInfoGrafis
+        judul="Infografis: Penjumlahan sampai 20"
+        kepala={["Langkah", "Kalimat", "Hasil"]}
+        baris={[
+          ["12 lalu 13 14 15 16 17", "12 + 5", "17"],
+          ["9 + 1 + 5", "9 + 6", "15"],
+          ["8 + 2 + 5", "8 + 7", "15"],
+        ]}
+        kaki="Kejar sepuluh dulu, sisanya gampang."
+      />
+      <div className="mt-4 space-y-3">
         <Adegan
-          judul="Adegan 2 · Rahasia dekomposisi"
-          warna="border-indigo-200 bg-indigo-50"
+          judul="Rahasia dekomposisi"
           src="/doodle-mtk/mtk-1-bab6-adegan-2.jpg"
           alt="Angka 14 pecah menjadi kotak 10 dan kotak 4. Igil menunjukkan jamnya kepada Rara."
         >
@@ -572,8 +626,7 @@ function KartuA({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminGuru }) {
           />
         </Adegan>
         <Adegan
-          judul="Adegan 3 · Kursi susun, hitung maju"
-          warna="border-amber-200 bg-amber-50"
+          judul="Kursi susun, hitung maju"
           src="/doodle-mtk/mtk-1-bab6-adegan-3.jpg"
           alt="Rara dan Igil menyusun kursi plastik. Igil mengawasi dari samping."
         >
@@ -594,8 +647,7 @@ function KartuA({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminGuru }) {
           />
         </Adegan>
         <Adegan
-          judul="Adegan 4 · Isi dulu ke sepuluh"
-          warna="border-emerald-200 bg-emerald-50"
+          judul="Isi dulu ke sepuluh"
           src="/doodle-mtk/mtk-1-bab6-adegan-4.jpg"
           alt="Bingkai sepuluh hampir penuh. Dua kursi masuk mengisi kotak kosong, lima kursi menunggu di luar."
         >
@@ -615,150 +667,10 @@ function KartuA({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminGuru }) {
             konteksKanvas="Sepuluh ditambah lima sama dengan lima belas."
           />
         </Adegan>
-        <Adegan
-          judul="Adegan 5 · Kursi roboh, hitung mundur"
-          warna="border-rose-200 bg-rose-50"
-          src="/doodle-mtk/mtk-1-bab6-adegan-5.jpg"
-          alt="Jam Igil berputar mundur. Empat kursi jatuh berserakan."
-        >
-          <Dialog nama="Igil" anak="Oh tidak! Kursinya jatuh 4!" />
-          <Dialog nama="Rara" anak="Tadi ada 15 kursi. Sekarang tinggal berapa?" />
-          <Dialog nama="Bimo" anak="Hitung mundur dari 15! Empat belas, tiga belas, dua belas, sebelas!" />
-          <Dialog nama="Igil" anak="Sisa 11 kursi!" />
-          <p className="text-center text-sm font-black text-[#1C01A5]">15 – 4 = 11</p>
-          <KuisAkhirAdegan
-            idSuara={idKuis("A", 11)}
-            idKanvas={idKuis("A", 12)}
-            pertanyaanSuara="Ada 15 kursi. Yang jatuh 4. Sisa berapa?"
-            aliasSuara={["11", "sebelas"]}
-            petunjukSuara="Ucapkan sisanya."
-            pertanyaanKanvas="Tuliskan 15 - 4 = 11."
-            aliasKanvas={["15 - 4 = 11", "15-4=11"]}
-            konteksKanvas="Lima belas dikurangi empat sama dengan sebelas."
-          />
-        </Adegan>
-        <Adegan
-          judul="Adegan 6 · Dekomposisi untuk kurang"
-          warna="border-violet-200 bg-violet-50"
-          src="/doodle-mtk/mtk-1-bab6-adegan-6.jpg"
-          alt="16 pecah menjadi 10 dan 6. 9 pecah menjadi 6 dan 3. Igil menunjuk keduanya."
-        >
-          <Dialog nama="Rara" anak="16 – 9… aku bingung kalau langsung." />
-          <Dialog nama="Igil" anak="Kurangi dulu 6, jadi 16 – 6 = 10. Sisa yang harus dikurangi 3 lagi." />
-          <Dialog nama="Bimo" anak="10 – 3 = 7!" />
-          <Dialog nama="Igil" anak="Jadi 16 – 9 = 7!" />
-          <p className="text-sm font-black text-[#1C01A5]">16 – 9 = 16 – 6 – 3 = 10 – 3 = 7</p>
-          <KuisAkhirAdegan
-            idSuara={idKuis("A", 13)}
-            idKanvas={idKuis("A", 14)}
-            pertanyaanSuara="Enam belas dikurangi sembilan. Hasilnya berapa?"
-            aliasSuara={["7", "tujuh"]}
-            petunjukSuara="Ucapkan hasilnya."
-            pertanyaanKanvas="Tuliskan 16 - 9 = 7."
-            aliasKanvas={["16 - 9 = 7", "16-9=7"]}
-            konteksKanvas="Enam belas dikurangi sembilan sama dengan tujuh."
-          />
-        </Adegan>
-        <Adegan
-          judul="Adegan 7 · Anak kucing selamat"
-          warna="border-rose-200 bg-rose-50"
-          src="/doodle-mtk/mtk-1-bab6-adegan-7.jpg"
-          alt="Tumpukan kursi mencapai dahan. Igil memegang anak kucing. Igil melompat gembira."
-        >
-          <Dialog nama="Igil" anak="Dapat!" />
-          <Dialog nama="Bimo" anak="Kita pakai semua cara belajar tadi!" />
-          <Dialog nama="Rara" anak="Hitung maju, hitung mundur, dan pecah angka!" />
-          <Dialog nama="Igil" anak="Kalian hebat! Angka selalu bisa berjalan maju dan mundur!" />
-          <Dialog nama="Igil" anak="Horeee! Anak kucing selamat!" />
-          <KuisAkhirAdegan
-            idSuara={idKuis("A", 15)}
-            idKanvas={idKuis("A", 16)}
-            pertanyaanSuara="Ada berapa cara yang dipakai: hitung maju, hitung mundur, dan pecah angka?"
-            aliasSuara={["3", "tiga"]}
-            petunjukSuara="Ucapkan angkanya."
-            pertanyaanKanvas="Tuliskan salah satu caranya: maju."
-            aliasKanvas={["maju", "hitung maju"]}
-            konteksKanvas="Salah satu caranya adalah hitung maju."
-          />
-        </Adegan>
-      </div>
-      <div className="mt-6 border-t-2 border-[#1C01A5]/10 pt-5">
-        <p className="text-base font-extrabold text-[#1C01A5]">QUIZ:</p>
-        <p className="mt-2 text-center text-sm font-black text-[#1C01A5]">13 → 14 → 15 → 16 → 17</p>
-        <SoalRekamSuara
-          id={idKuis("A", 0)}
-          pertanyaan="Mulai dari 13, hitung maju 4 langkah. Berhenti di angka berapa? Ucapkan dengan keras!"
-          periksa={(transkrip) => jawabanTulisMemuatAlias(transkrip, ["tujuh belas", "17"])}
-          petunjuk="Sebutkan angka berhentinya."
-          sesudahNilai={(benar) => setSuara(benar ? "benar" : "salah")}
-        />
-        {suara === "benar" ? <p className="mt-2 text-sm font-bold text-emerald-800">Tik-tik! Kamu cepat sekali!</p> : null}
-        {suara === "salah" ? (
-          <p className="mt-2 text-sm font-bold text-rose-800">Ayo tunjuk angkanya satu per satu: empat belas, lima belas, enam belas…</p>
-        ) : null}
-      </div>
-      <div className="mt-4">
-        <TulisBebas
-          id={idKuisTulisKartu(ID, "A")}
-          pertanyaan="Tulis kalimat matematikanya dan hasilnya!"
-          visual={
-            <p className="text-center text-sm font-semibold text-slate-700">
-              Bingkai 10 penuh dan 5 titik. Delapan titik dicoret.
-            </p>
-          }
-          pesanSalah="Coba tulis 15 – 8 dan hasilnya."
-          umpan="15 – 8 = 7."
-          alias={["15-8=7"]}
-          konteks="Sepuluh penuh ditambah lima adalah 15. Delapan dicoret. 15 kurang 8 sama dengan 7."
-          periksa={jawabLimaBelasKurangDelapan}
-          sesudahNilai={(benar) => setSalahKanvas((n) => (benar ? 0 : n + 1))}
-        />
-        {salahKanvas >= 2 ? (
-          <p className="text-sm font-bold text-[#1C01A5]">
-            Garis bilangan 0 sampai 20. Lompat mundur dari 15 sebanyak 8 kali.
-          </p>
-        ) : null}
-      </div>
-    </KartuBingkai>
-  );
-}
-
-function KartuB({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminGuru }) {
-  const kartu = MODUL_MTK1_BAB6.kartu[1];
-  const hasil = ["12", "17", "15"];
-  return (
-    <KartuBingkai latar="bg-emerald-50/80">
-      <KepalaKartu
-        ikon="➕➖🦉"
-        judul={kartu.judul}
-        anak="Infografis hitung maju dan mundur"
-        kelas={kelas}
-        kelamin={kelamin}
-        cuplikan={cuplikanDariNaskah(kartu.voice, 2_000, 3_000)}
-      />
-      <TabelInfoGrafis
-        judul="Infografis: Hitung maju dan mundur"
-        kepala={["Langkah", "Kalimat", "Hasil"]}
-        baris={[
-          ["12 lalu 13 14 15 16 17", "12 + 5", "17"],
-          ["18 mundur 6 kali", "18 - 6", "12"],
-          ["9 + 1 + 5", "9 + 6", "15"],
-          ["14 - 4 - 2", "14 - 6", "8"],
-          ["8 + 7 dan saudaranya", "15 - 7", "8"],
-          ["13 + 5 stiker", "13 + 5", "18"],
-        ]}
-        kaki="10 + 3 = 13 dan 16 - 3 = 13. Keduanya sama."
-      />
-      <div className="mt-4 space-y-3">
         <article className="rounded-2xl border-2 border-sky-200 bg-sky-50 px-4 py-3">
           <p className="text-sm font-black text-[#1C01A5]">Hitung maju</p>
           <p className="mt-1 text-sm font-semibold text-slate-700">Simpan 12. Lompat 5 kali: 13, 14, 15, 16, 17.</p>
           <p className="mt-2 text-sm font-black text-[#1C01A5]">12 + 5 = 17</p>
-        </article>
-        <article className="rounded-2xl border-2 border-rose-200 bg-rose-50 px-4 py-3">
-          <p className="text-sm font-black text-[#1C01A5]">Hitung mundur</p>
-          <p className="mt-1 text-sm font-semibold text-slate-700">Simpan 18. Lompat mundur 6 kali: 17, 16, 15, 14, 13, 12.</p>
-          <p className="mt-2 text-sm font-black text-[#1C01A5]">18 – 6 = 12</p>
         </article>
         <article className="rounded-2xl border-2 border-indigo-200 bg-indigo-50 px-4 py-3">
           <p className="text-sm font-black text-[#1C01A5]">Belasan punya 10 di dalamnya</p>
@@ -787,11 +699,6 @@ function KartuB({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminGuru }) {
           <p className="mt-1 text-sm font-semibold text-slate-700">9 kurang 1 supaya jadi 10. Pecah 6 jadi 1 dan 5.</p>
           <p className="mt-2 text-sm font-black text-[#1C01A5]">9 + 6 = 9 + 1 + 5 = 10 + 5 = 15</p>
         </article>
-        <article className="rounded-2xl border-2 border-cyan-300 bg-cyan-50 px-4 py-3">
-          <p className="text-sm font-black text-[#1C01A5]">Habiskan satuannya</p>
-          <p className="mt-1 text-sm font-semibold text-slate-700">14 = 10 + 4. Pecah 6 jadi 4 dan 2.</p>
-          <p className="mt-2 text-sm font-black text-[#1C01A5]">14 – 6 = 14 – 4 – 2 = 10 – 2 = 8</p>
-        </article>
         <article className="rounded-2xl border-2 border-pink-200 bg-pink-50 px-4 py-3">
           <p className="text-sm font-black text-[#1C01A5]">Satu keluarga, tiga kalimat</p>
           <p className="mt-1 text-sm font-semibold text-slate-700">8 + 7 = 15, maka 15 – 7 = 8 dan 15 – 8 = 7.</p>
@@ -810,13 +717,6 @@ function KartuB({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminGuru }) {
             Tambah: digabung, ditambah, diberi lagi, datang lagi, semuanya. Kurang: hilang, jatuh, diambil, dimakan, tersisa, tinggal.
           </p>
         </article>
-        <article className="rounded-2xl border-2 border-teal-200 bg-teal-50 px-4 py-3">
-          <p className="text-sm font-black text-[#1C01A5]">Membandingkan</p>
-          <p className="mt-1 text-sm font-semibold text-slate-700">10 + 3 = 13. 16 – 3 = 13. Keduanya sama.</p>
-          <p className="mt-2 text-center text-lg font-black text-[#1C01A5]">13 = 13</p>
-        </article>
-      </div>
-      <div className="mt-6 space-y-4 border-t-2 border-[#1C01A5]/10 pt-5">
         <KuisCocok
           id={idKuis("B", 0)}
           perintah="Pasangkan kalimat hitung dengan hasilnya!"
@@ -828,6 +728,123 @@ function KartuB({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminGuru }) {
           umpan="11 + 6 = 17. 19 – 7 = 12. 10 + 9 – 4 = 15."
         />
         <SusunBalok id={idKuis("B", 1)} />
+        <div className="border-t-2 border-[#1C01A5]/10 pt-5">
+          <p className="text-base font-extrabold text-[#1C01A5]">QUIZ:</p>
+          <p className="mt-2 text-center text-sm font-black text-[#1C01A5]">13 → 14 → 15 → 16 → 17</p>
+          <SoalRekamSuara
+            id={idKuis("A", 0)}
+            pertanyaan="Mulai dari 13, hitung maju 4 langkah. Berhenti di angka berapa? Ucapkan dengan keras!"
+            periksa={(transkrip) => jawabanTulisMemuatAlias(transkrip, ["tujuh belas", "17"])}
+            petunjuk="Sebutkan angka berhentinya."
+            sesudahNilai={(benar) => setSuara(benar ? "benar" : "salah")}
+          />
+          {suara === "benar" ? <p className="mt-2 text-sm font-bold text-emerald-800">Tik-tik! Kamu cepat sekali!</p> : null}
+          {suara === "salah" ? (
+            <p className="mt-2 text-sm font-bold text-rose-800">Ayo tunjuk angkanya satu per satu: empat belas, lima belas, enam belas…</p>
+          ) : null}
+        </div>
+      </div>
+    </>
+  );
+}
+
+function IsiKurang({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminGuru }) {
+  const [salahKanvas, setSalahKanvas] = useState(0);
+  return (
+    <>
+      <JudulSubBab
+        judul="Sub-Bab C: Pengurangan yang Hasilnya Kurang dari 20"
+        kelas={kelas}
+        kelamin={kelamin}
+        naskah={[
+          "Lima belas dikurangi empat sama dengan sebelas. Enam belas dikurangi sembilan sama dengan tujuh.",
+          "Kurang berarti hitung mundur. Delapan belas dikurangi enam berhenti di dua belas.",
+        ]}
+      />
+      <TabelInfoGrafis
+        judul="Infografis: Pengurangan sampai 20"
+        kepala={["Langkah", "Kalimat", "Hasil"]}
+        baris={[
+          ["18 mundur 6 kali", "18 - 6", "12"],
+          ["14 - 4 - 2", "14 - 6", "8"],
+          ["16 - 6 - 3", "16 - 9", "7"],
+        ]}
+        kaki="Habiskan satuan dulu, lalu lanjut dari sepuluh."
+      />
+      <div className="mt-4 space-y-3">
+        <Adegan
+          judul="Kursi roboh, hitung mundur"
+          src="/doodle-mtk/mtk-1-bab6-adegan-5.jpg"
+          alt="Jam Igil berputar mundur. Empat kursi jatuh berserakan."
+        >
+          <Dialog nama="Igil" anak="Oh tidak! Kursinya jatuh 4!" />
+          <Dialog nama="Rara" anak="Tadi ada 15 kursi. Sekarang tinggal berapa?" />
+          <Dialog nama="Bimo" anak="Hitung mundur dari 15! Empat belas, tiga belas, dua belas, sebelas!" />
+          <Dialog nama="Igil" anak="Sisa 11 kursi!" />
+          <p className="text-center text-sm font-black text-[#1C01A5]">15 – 4 = 11</p>
+          <KuisAkhirAdegan
+            idSuara={idKuis("A", 11)}
+            idKanvas={idKuis("A", 12)}
+            pertanyaanSuara="Ada 15 kursi. Yang jatuh 4. Sisa berapa?"
+            aliasSuara={["11", "sebelas"]}
+            petunjukSuara="Ucapkan sisanya."
+            pertanyaanKanvas="Tuliskan 15 - 4 = 11."
+            aliasKanvas={["15 - 4 = 11", "15-4=11"]}
+            konteksKanvas="Lima belas dikurangi empat sama dengan sebelas."
+          />
+        </Adegan>
+        <Adegan
+          judul="Dekomposisi untuk kurang"
+          src="/doodle-mtk/mtk-1-bab6-adegan-6.jpg"
+          alt="16 pecah menjadi 10 dan 6. 9 pecah menjadi 6 dan 3. Igil menunjuk keduanya."
+        >
+          <Dialog nama="Rara" anak="16 – 9… aku bingung kalau langsung." />
+          <Dialog nama="Igil" anak="Kurangi dulu 6, jadi 16 – 6 = 10. Sisa yang harus dikurangi 3 lagi." />
+          <Dialog nama="Bimo" anak="10 – 3 = 7!" />
+          <Dialog nama="Igil" anak="Jadi 16 – 9 = 7!" />
+          <p className="text-sm font-black text-[#1C01A5]">16 – 9 = 16 – 6 – 3 = 10 – 3 = 7</p>
+          <KuisAkhirAdegan
+            idSuara={idKuis("A", 13)}
+            idKanvas={idKuis("A", 14)}
+            pertanyaanSuara="Enam belas dikurangi sembilan. Hasilnya berapa?"
+            aliasSuara={["7", "tujuh"]}
+            petunjukSuara="Ucapkan hasilnya."
+            pertanyaanKanvas="Tuliskan 16 - 9 = 7."
+            aliasKanvas={["16 - 9 = 7", "16-9=7"]}
+            konteksKanvas="Enam belas dikurangi sembilan sama dengan tujuh."
+          />
+        </Adegan>
+        <Adegan
+          judul="Anak kucing selamat"
+          src="/doodle-mtk/mtk-1-bab6-adegan-7.jpg"
+          alt="Tumpukan kursi mencapai dahan. Igil memegang anak kucing. Igil melompat gembira."
+        >
+          <Dialog nama="Igil" anak="Dapat!" />
+          <Dialog nama="Bimo" anak="Kita pakai semua cara belajar tadi!" />
+          <Dialog nama="Rara" anak="Hitung maju, hitung mundur, dan pecah angka!" />
+          <Dialog nama="Igil" anak="Kalian hebat! Angka selalu bisa berjalan maju dan mundur!" />
+          <Dialog nama="Igil" anak="Horeee! Anak kucing selamat!" />
+          <KuisAkhirAdegan
+            idSuara={idKuis("A", 15)}
+            idKanvas={idKuis("A", 16)}
+            pertanyaanSuara="Ada berapa cara yang dipakai: hitung maju, hitung mundur, dan pecah angka?"
+            aliasSuara={["3", "tiga"]}
+            petunjukSuara="Ucapkan angkanya."
+            pertanyaanKanvas="Tuliskan salah satu caranya: maju."
+            aliasKanvas={["maju", "hitung maju"]}
+            konteksKanvas="Salah satu caranya adalah hitung maju."
+          />
+        </Adegan>
+        <article className="rounded-2xl border-2 border-rose-200 bg-rose-50 px-4 py-3">
+          <p className="text-sm font-black text-[#1C01A5]">Hitung mundur</p>
+          <p className="mt-1 text-sm font-semibold text-slate-700">Simpan 18. Lompat mundur 6 kali: 17, 16, 15, 14, 13, 12.</p>
+          <p className="mt-2 text-sm font-black text-[#1C01A5]">18 – 6 = 12</p>
+        </article>
+        <article className="rounded-2xl border-2 border-cyan-300 bg-cyan-50 px-4 py-3">
+          <p className="text-sm font-black text-[#1C01A5]">Habiskan satuannya</p>
+          <p className="mt-1 text-sm font-semibold text-slate-700">14 = 10 + 4. Pecah 6 jadi 4 dan 2.</p>
+          <p className="mt-2 text-sm font-black text-[#1C01A5]">14 – 6 = 14 – 4 – 2 = 10 – 2 = 8</p>
+        </article>
         <Pilih
           id={idKuis("B", 2)}
           pertanyaan="Tiga kartu hasilnya 13. Ketuk kartu yang berbeda!"
@@ -841,7 +858,7 @@ function KartuB({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminGuru }) {
           umpan="16 – 2 = 14. Kartu lain hasilnya 13."
           salah="Hitung tiap kartu. Yang bukan 13 adalah kartu berbeda."
         />
-        <div>
+        <div className="border-t-2 border-[#1C01A5]/10 pt-5">
           <p className="text-base font-extrabold text-[#1C01A5]">QUIZ:</p>
           <SoalRekamSuara
             id={idKuis("B", 3)}
@@ -851,6 +868,26 @@ function KartuB({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminGuru }) {
           />
         </div>
         <TulisBebas
+          id={idKuisTulisKartu(ID, "A")}
+          pertanyaan="Tulis kalimat matematikanya dan hasilnya!"
+          visual={
+            <p className="text-center text-sm font-semibold text-slate-700">
+              Bingkai 10 penuh dan 5 titik. Delapan titik dicoret.
+            </p>
+          }
+          pesanSalah="Coba tulis 15 – 8 dan hasilnya."
+          umpan="15 – 8 = 7."
+          alias={["15-8=7"]}
+          konteks="Sepuluh penuh ditambah lima adalah 15. Delapan dicoret. 15 kurang 8 sama dengan 7."
+          periksa={jawabLimaBelasKurangDelapan}
+          sesudahNilai={(benar) => setSalahKanvas((n) => (benar ? 0 : n + 1))}
+        />
+        {salahKanvas >= 2 ? (
+          <p className="text-sm font-bold text-[#1C01A5]">
+            Garis bilangan 0 sampai 20. Lompat mundur dari 15 sebanyak 8 kali.
+          </p>
+        ) : null}
+        <TulisBebas
           id={idKuisTulisKartu(ID, "B")}
           pertanyaan="Hitung 17 – 9 dengan cara pecah angka. Tulis langkahnya dan hasilnya!"
           pesanSalah="Pecah lewat sepuluh: kurangi dulu sampai 10, lalu sisanya."
@@ -859,7 +896,7 @@ function KartuB({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminGuru }) {
           periksa={jawabTujuhBelasKurangSembilan}
         />
       </div>
-    </KartuBingkai>
+    </>
   );
 }
 
@@ -1049,16 +1086,34 @@ function LembarEvaluasi({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminG
 }
 
 export default function NaskahMtk1Bab6({
-  kelas,
+  kelas = "1 SD",
   kelamin,
 }: {
   kelas?: string;
   kelamin?: KelaminGuru;
 }) {
+  const kartuA = MODUL_MTK1_BAB6.kartu[0];
   return (
     <div className="space-y-5">
-      <KartuA kelas={kelas} kelamin={kelamin} />
-      <KartuB kelas={kelas} kelamin={kelamin} />
+      <KartuBingkai latar="bg-sky-50/80">
+        <KepalaKartu
+          ikon="🦉🌳🦉"
+          judul={kartuA.judul}
+          kelas={kelas}
+          kelamin={kelamin}
+          cuplikan={cuplikanDariNaskah(kartuA.voice, 2_000, 3_000)}
+        />
+        <TujuanBelajar
+          butir={[
+            "Membandingkan dua jumlah: lebih banyak, lebih sedikit, atau sama.",
+            "Menjumlahkan bilangan sampai 20 dengan hitung maju dan kejar sepuluh.",
+            "Mengurangkan bilangan sampai 20 dengan hitung mundur.",
+          ]}
+        />
+        <IsiLebih kelas={kelas} kelamin={kelamin} />
+        <IsiTambah kelas={kelas} kelamin={kelamin} />
+        <IsiKurang kelas={kelas} kelamin={kelamin} />
+      </KartuBingkai>
       <KartuC kelas={kelas} kelamin={kelamin} />
       <div id={SLOT_AJUAN_SEBELUM_KARTU_D} />
       <KartuPoinPenting
