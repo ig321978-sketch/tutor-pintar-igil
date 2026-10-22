@@ -894,33 +894,32 @@ function TabKuis({
         </p>
       ) : null}
 
-      {nomor < 3 ? (
+      {"opsi" in soal ? (
         <div className="grid gap-2">
-          {(nomor === 1 ? (soal.opsi as readonly { id: string; label: string }[]) : (soal.opsi as readonly string[]).map((id) => ({ id, label: id }))).map(
-            (o) => {
-              const id = typeof o === "string" ? o : o.id;
-              const label = typeof o === "string" ? o : o.label;
-              const aktif = pilih === id;
-              const hijau = umpan === "benar" && id === soal.kunci;
-              const merah = umpan === "salah" && aktif;
-              return (
-                <button
-                  key={id}
-                  type="button"
-                  onClick={() => jawab(id)}
-                  className={`min-h-12 rounded-2xl border-2 px-3 text-left text-sm font-bold ${
-                    hijau
-                      ? "border-emerald-500 bg-emerald-50 text-emerald-800"
-                      : merah
-                        ? "border-rose-400 bg-rose-50 text-rose-800"
-                        : "border-slate-200 bg-white text-slate-700"
-                  }`}
-                >
-                  {label}
-                </button>
-              );
-            },
-          )}
+          {(typeof soal.opsi[0] === "string"
+            ? (soal.opsi as readonly string[]).map((id) => ({ id, label: id }))
+            : (soal.opsi as readonly { id: string; label: string }[])
+          ).map((o) => {
+            const aktif = pilih === o.id;
+            const hijau = umpan === "benar" && o.id === soal.kunci;
+            const merah = umpan === "salah" && aktif;
+            return (
+              <button
+                key={o.id}
+                type="button"
+                onClick={() => jawab(o.id)}
+                className={`min-h-12 rounded-2xl border-2 px-3 text-left text-sm font-bold ${
+                  hijau
+                    ? "border-emerald-500 bg-emerald-50 text-emerald-800"
+                    : merah
+                      ? "border-rose-400 bg-rose-50 text-rose-800"
+                      : "border-slate-200 bg-white text-slate-700"
+                }`}
+              >
+                {o.label}
+              </button>
+            );
+          })}
         </div>
       ) : null}
 
