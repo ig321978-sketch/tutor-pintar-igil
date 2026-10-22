@@ -4,8 +4,9 @@ import { useRef } from "react";
 import SimulasiMtk1Bab1 from "@/components/modules/SimulasiMtk1Bab1";
 import SimulasiMtk1Bab3 from "@/components/modules/SimulasiMtk1Bab3";
 import SimulasiMtk1Bab4 from "@/components/modules/SimulasiMtk1Bab4";
+import SimulasiMtk1Bab5 from "@/components/modules/SimulasiMtk1Bab5";
 import SimulasiPhetPenjumlahanKelas1 from "@/components/modules/SimulasiPhetPenjumlahanKelas1";
-import { adalahMtk1Bab1, adalahMtk1Bab2, adalahMtk1Bab3, adalahMtk1Bab4 } from "@/lib/naskah-resmi";
+import { adalahMtk1Bab1, adalahMtk1Bab2, adalahMtk1Bab3, adalahMtk1Bab4, adalahMtk1Bab5 } from "@/lib/naskah-resmi";
 
 type PanelSimulasiProps = {
   nama: string;
@@ -81,6 +82,22 @@ function PanelSimulasiBentuk({
   );
 }
 
+function PanelSimulasiMembilang20({
+  sudahLulus = false,
+  onSelesai,
+}: Pick<PanelSimulasiProps, "sudahLulus" | "onSelesai">) {
+  const dicatat = useRef(sudahLulus);
+  return (
+    <SimulasiMtk1Bab5
+      onBenar={() => {
+        if (dicatat.current) return;
+        dicatat.current = true;
+        onSelesai?.(true, "Lab membilang sampai 20 selesai.");
+      }}
+    />
+  );
+}
+
 export default function PanelSimulasiModul({
   kelas,
   mapel,
@@ -99,6 +116,9 @@ export default function PanelSimulasiModul({
   }
   if (adalahMtk1Bab4(kelas, mapel, materi)) {
     return <PanelSimulasiBentuk sudahLulus={sudahLulus} onSelesai={onSelesai} />;
+  }
+  if (adalahMtk1Bab5(kelas, mapel, materi)) {
+    return <PanelSimulasiMembilang20 sudahLulus={sudahLulus} onSelesai={onSelesai} />;
   }
   return (
     <p className="text-sm font-semibold text-[#1C01A5]">
