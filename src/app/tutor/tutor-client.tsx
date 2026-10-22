@@ -10,9 +10,7 @@ import {
   profilGuru,
   type KelaminGuru,
 } from "@/lib/guru";
-import { kelasDuaSd } from "@/lib/infografis-kelas1";
 import { DATA_KURIKULUM, OPSI_LAIN_NYA, daftarMapelUntukKelas } from "@/lib/kurikulum";
-import { daftarJudulMtk2Tersusun } from "@/lib/modul-resmi-mtk-2";
 import { hurufKunci, pecahBankSoal } from "@/lib/kuis";
 import {
   bacaProgres,
@@ -39,7 +37,6 @@ import { adalahMtk1Bab1, adalahMtk1Bab2, adalahMtk1Bab3, adalahMtk1Bab4, adalahM
 import Bab3KubusBalokModule from "@/components/modules/Bab3KubusBalokModule";
 import { useUserRole } from "@/hooks/useUserRole";
 import {
-  adalahMapelMatematika,
   adalahPilotMatematikaSd,
   PESAN_MATERI_TERKUNCI_PUBLIK,
   situsHanyaAdmin,
@@ -396,9 +393,6 @@ export default function TutorAI() {
   );
   const daftarBab = useMemo(() => {
     if (!pilihanMapel || pilihanMapel === OPSI_LAIN_NYA) return [];
-    if (kelasDuaSd(kelas) && adalahMapelMatematika(pilihanMapel)) {
-      return daftarJudulMtk2Tersusun();
-    }
     return DATA_KURIKULUM[kelas]?.[pilihanMapel] ?? [];
   }, [kelas, pilihanMapel]);
 

@@ -3,7 +3,14 @@
 import { useEffect, useMemo, useRef, useState } from "react";
 import { Eye, ExternalLink, FlaskConical, Play, Sparkles } from "lucide-react";
 import PageShell from "@/components/PageShell";
-import { daftarMapelUnik, daftarMateriUntukMapel, OPSI_LAINNYA } from "@/lib/kurikulum";
+import {
+  DATA_KURIKULUM,
+  DAFTAR_KELAS,
+  daftarMapelUnik,
+  daftarMateriUntukMapel,
+  labelJenjangKelas,
+  OPSI_LAINNYA,
+} from "@/lib/kurikulum";
 import { bacaProgres, tambahTokenIgil } from "@/lib/progres";
 import { kelasKotak, kelasLabel, kelasTombolUtama } from "@/lib/tema";
 import {
@@ -37,10 +44,11 @@ export default function SimulasiPraktikumPage() {
   const hasilRef = useRef<HTMLElement | null>(null);
 
   const mapel = pilihanMapel;
-  const daftarMateri = useMemo(
-    () => daftarMateriUntukMapel(pilihanMapel),
-    [pilihanMapel],
-  );
+  const daftarMateri = useMemo(() => {
+    const buku = DATA_KURIKULUM[kelas]?.[pilihanMapel];
+    if (buku?.length) return buku;
+    return daftarMateriUntukMapel(pilihanMapel);
+  }, [kelas, pilihanMapel]);
   const materi = pilihanMateri === OPSI_LAINNYA ? materiManual : pilihanMateri;
 
   useEffect(() => {
@@ -133,6 +141,21 @@ export default function SimulasiPraktikumPage() {
         </div>
 
         <div className="grid gap-5">
+          <div>
+            <label className={kelasLabel}>Jenjang</label>
+            <select
+              value={kelas}
+              onChange={(e) => setKelas(e.target.value)}
+              className={`${kelasKotak} text-lg`}
+            >
+              {DAFTAR_KELAS.map((item) => (
+                <option key={item} value={item}>
+                  {labelJenjangKelas(item)}
+                </option>
+              ))}
+            </select>
+          </div>
+
           <div>
             <label className={kelasLabel}>Mata pelajaran</label>
             <select
