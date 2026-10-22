@@ -141,6 +141,14 @@ const SUBBAB_BUKU_SISWA: Record<string, Record<string, Record<string, string[]>>
         "Poin penting",
         "Lembar evaluasi siswa",
       ],
+      "Bab 3: Bentuk di Sekitar Kita": [
+        "Sub-Bab A: Bangun Datar",
+        "Sub-Bab B: Mengurai dan Menyusun Bangun Datar",
+        "Sub-Bab C: Bangun Ruang",
+        "Sisir madu Igil",
+        "Poin penting",
+        "Lembar evaluasi siswa",
+      ],
     },
   },
   "3 SD": {

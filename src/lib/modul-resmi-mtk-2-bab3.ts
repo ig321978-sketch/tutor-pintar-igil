@@ -4,269 +4,245 @@ function pg(soal: string[]): string {
   return soal.join("\n\n");
 }
 
-export const JUDUL_MTK2_BAB3 = "Bab 3: Fondasi Perkalian Dasar";
+export const JUDUL_MTK2_BAB3 = "Bab 3: Bentuk di Sekitar Kita";
+export const JUDUL_MTK2_BAB3_LAMA = "Bab 3: Fondasi Perkalian Dasar";
 
 export const MODUL_MTK2_BAB3: ModulResmiPai = {
   id: "mtk-2-bab3",
   judul: JUDUL_MTK2_BAB3,
   pola:
-    /fondasi perkalian|penjumlahan berulang|kotak permen kembar|kotak x isi|pengukuran waktu dan uang/,
+    /bab\s*3[:.]\s*bentuk di sekitar|bentuk di sekitar kita|sarang lebah( upe)?|fondasi perkalian dasar|kotak permen kembar/,
   motivasi:
-    "Hore! Kamu sudah membantu Sani. Perkalian adalah penjumlahan berulang angka kembar. 3 piring × 2 permen = 6.",
-  kunciJawaban: "B,C,A,B,B,A,A,A,A,A",
+    "Hore! Kamu sudah bantu Upe mengamati sarang lebah. Segi banyak punya sisi lurus. Bentuk lengkung punya kurva. Bangun ruang bisa diisi.",
+  kunciJawaban: "B,A,B,A,C,B,A,B,C,B",
   sketsaKartu: [
-    "Sani memasukkan 2 permen ke masing-masing 3 piring untuk tamu ulang tahun.",
-    "Tiga piring berisi 2 permen diubah menjadi 3 × 2 = 6.",
-    "Anak menjadi detektif: 4 kantong berisi 4 permen menjadi 4 × 4 = 16.",
-    "Anak mengisi lembar evaluasi tantangan para juara tentang perkalian dasar.",
+    "Paman membawa madu dan sarang lebah ke rumah Upe. Igil menghitung enam sisi.",
+    "Urai dan susun bangun datar. Lalu kenali kubus, balok, tabung, kerucut, dan bola.",
+    "Sepuluh sisir madu: sisi, lengkung, urai, susun, dan bangun ruang.",
+    "Lembar kerja tantangan juara bentuk di sekitar kita.",
   ],
   latihan: pg([
-    `[Soal 1 - PG - Tipe: HOTS]
-Adi minum obat 3 kali sehari, tiap kali 1 tablet. Beni menulis 1 × 3. Tulisan Beni...
-A) Tepat, karena totalnya 3 tablet
-B) Salah, seharusnya 3 × 1 karena ada 3 waktu minum yang masing-masing 1 tablet
-C) Salah, seharusnya 3 + 3 + 3
-D) Perkalian tidak boleh dipakai`,
-    `[Soal 2 - PG - Tipe: HOTS]
-Siti punya 12 permen dibagi rata ke kantong. Kombinasi yang SALAH dan tidak menghasilkan 12...
-A) 4 kantong × 3 permen
-B) 6 kantong × 2 permen
-C) 5 kantong × 2 permen
-D) 3 kantong × 4 permen`,
-    `[Soal 3 - PG - Tipe: HOTS]
-Tiga kantong sama banyak jumlahnya 15. Kalimat perkalian yang tepat...
-A) 3 × 5 = 15
-B) 5 × 3 = 15
-C) 15 × 3 = 5
-D) 3 + 15 = 18`,
+    `[Soal 1 - PG - Tipe: LOTS]
+Permukaan sarang lebah punya 6 sisi lurus. Namanya...
+A) Segitiga
+B) Segi enam
+C) Lingkaran`,
+    `[Soal 2 - PG - Tipe: LOTS]
+Segitiga punya sisi sebanyak...
+A) 3
+B) 4
+C) 6`,
+    `[Soal 3 - PG - Tipe: LOTS]
+Lingkaran termasuk...
+A) Segi banyak
+B) Bentuk lengkung
+C) Kubus`,
     `[Soal 4 - PG - Tipe: MOTS]
-Lani beli 5 bungkus, tiap bungkus 4 permen. Penjumlahan berulang yang tepat...
-A) 5 + 5 + 5 + 5
-B) 4 + 4 + 4 + 4 + 4
-C) 5 + 4
-D) 4 + 5`,
-    `[Soal 5 - PG - Tipe: HOTS]
-Meja hijau 2 × 6. Meja biru 4 × 3. Pernyataan yang tepat...
-A) Permen meja hijau lebih banyak
-B) Cerita berbeda, tetapi total permennya sama banyak
-C) Bentuk perkalian dan susunan piring sama persis
-D) Meja biru lebih banyak`,
-    `[Soal 6 - PG - Tipe: LOTS]
-7 + 7 + 7 + 7 + 7 = 35 ditulis perkalian...
-A) 5 × 7 = 35
-B) 7 × 5 wajib saja
-C) 7 × 7 = 35
-D) 5 + 7 = 12`,
-    `[Soal 7 - PG - Tipe: HOTS]
-Dodi punya 2 kantong. 10 cokelat dan 6 stroberi dibagi rata. Isi tiap kantong...
-A) 8
-B) 10
-C) 6
-D) 16`,
+Segi banyak yang punya 5 sisi namanya...
+A) Segi lima
+B) Segi empat
+C) Segi enam`,
+    `[Soal 5 - PG - Tipe: MOTS]
+Uang logam termasuk contoh...
+A) Segitiga
+B) Kubus
+C) Lingkaran`,
+    `[Soal 6 - PG - Tipe: MOTS]
+Sebuah persegi diurai dengan satu garis diagonal. Hasilnya...
+A) 2 segi empat
+B) 2 segitiga
+C) 1 lingkaran`,
+    `[Soal 7 - PG - Tipe: MOTS]
+Bangun ruang yang semua permukaannya segi empat sama ukurannya...
+A) Kubus
+B) Balok
+C) Bola`,
     `[Soal 8 - PG - Tipe: HOTS]
-5 anak masing-masing 4 permen, dan 4 bungkus masing-masing 5 permen. Pasangan yang tepat...
-A) Kisah 1 = 5 × 4, kisah 2 = 4 × 5
-B) Keduanya 4 × 5
-C) Keduanya 5 × 4
-D) Kisah 1 = 4 × 5, kisah 2 = 5 × 4`,
-    `[Soal 9 - PG - Tipe: HOTS]
-Riko punya 3 kantong berisi 6. Satu kantong bolong, 2 permen hilang. Sisa permen aman...
-A) 16
-B) 18
-C) 14
-D) 12`,
+Benda yang paling mudah menggelinding...
+A) Kubus
+B) Bola
+C) Balok`,
+    `[Soal 9 - PG - Tipe: LOTS]
+Kaleng susu berbentuk...
+A) Kerucut
+B) Kubus
+C) Tabung`,
     `[Soal 10 - PG - Tipe: HOTS]
-Dua bentuk perkalian berbeda yang hasilnya 8...
-A) 2 × 4 dan 4 × 2
-B) 3 × 3 dan 2 × 2
-C) 8 + 0 dan 4 + 4
-D) 5 × 3 dan 2 × 6`,
+Igil menyusun 2 lapis balok. Tiap lapis 4 balok. Banyak balok satuan...
+A) 6
+B) 8
+C) 14`,
   ]),
   kartu: [
     {
       kode: "A",
-      judul: "A. Dialog Tamu Ulang Tahun Sani",
+      judul: "Sarang Lebah",
       pengantar:
-        "🗺️ Tiga sahabat Sani datang bermain. Sani menyiapkan 3 piring, tiap piring 2 permen.",
-      labelDaftar: "Target dan cerita apersepsi",
+        "Paman berkunjung ke rumah Upe. Dia membawa madu dan sarangnya. Permukaannya bangun datar berenam sisi. Igil ikut menghitung sisi.",
+      labelDaftar: "Cerita sarang lebah dan bangun datar",
       kolom: 1,
       item: [
         {
-          nama: "🌟 Target belajarku hari ini",
-          singkat: "Perkalian angka kembar",
+          nama: "Tujuan pembelajaran",
+          singkat: "Bangun datar dan bangun ruang",
           uraian:
-            "🎯 Aku bisa memahami perkalian sebagai penjumlahan berulang angka yang sama. 🎯 Aku bisa mengubah cerita permen menjadi kalimat perkalian.",
-          contoh: "Wadah × isi = total.",
+            "Siswa dapat membedakan segi banyak dan bentuk lengkung. Siswa dapat menamai segitiga, segi empat, segi lima, segi enam, dan lingkaran. Siswa dapat mengurai dan menyusun bangun datar. Siswa dapat menamai kubus, balok, tabung, kerucut, dan bola.",
+          contoh: "Sarang lebah = segi enam. Uang logam = lingkaran.",
         },
         {
-          nama: "🗺️ Tamu ulang tahun Sani",
-          singkat: "3 piring × 2 permen",
+          nama: "Cerita sarang lebah",
+          singkat: "Enam sisi lurus",
           uraian:
-            "Sani menghitung 2 + 2 + 2. Kalau tamunya banyak, menambah terus melelahkan. Ada trik cepat untuk angka kembar.",
-          contoh: "Yuk bantu Sani melihat trik angka kembar!",
+            "Upe melihat sarang lebah untuk pertama kali. Permukaannya segi banyak berenam sisi. Namanya segi enam. Igil menghitung: satu, dua, tiga, empat, lima, enam.",
+          contoh: "Segi banyak yang 6 sisi = segi enam.",
         },
       ],
       kuis: [
-        {
-          pertanyaan: "1. Ada berapa sahabat Sani yang datang bermain?",
-          alias: ["3", "tiga", "tiga sahabat"],
-        },
-        {
-          pertanyaan: "2. Tiap piring Sani berisi berapa permen?",
-          alias: ["2", "dua", "dua permen"],
-        },
-        {
-          pertanyaan: "3. Sani menghitung dengan cara apa sebelum tahu perkalian?",
-          alias: ["tambah", "ditambah", "penjumlahan", "dua ditambah dua"],
-        },
+        { pertanyaan: "Sarang lebah punya berapa sisi?", alias: ["6", "enam"] },
+        { pertanyaan: "Tuliskan 6.", alias: ["6", "enam"] },
+        { pertanyaan: "Uang logam termasuk bentuk apa?", alias: ["lingkaran"] },
+        { pertanyaan: "Tuliskan lingkaran.", alias: ["lingkaran"] },
+        { pertanyaan: "Urutkan: 3, 4, 5, 6 sisi.", alias: ["segitiga", "segi empat"] },
+        { pertanyaan: "Segi empat punya berapa sisi?", alias: ["4", "empat"] },
+        { pertanyaan: "Mana yang mudah menggelinding?", alias: ["bola"] },
+        { pertanyaan: "Kaleng berbentuk apa?", alias: ["tabung"] },
       ],
       voice: [
         [
-          "Hari ini tiga sahabat Sani datang bermain. Sani menyiapkan tiga piring kecil. Tiap piring diisi dua permen.",
-          "Sani menghitung dua ditambah dua, lalu ditambah dua lagi. Kalau tamunya banyak, menambah terus melelahkan. Yuk, kita bantu Sani melihat trik angka kembar!",
+          "Paman datang ke rumah Upe. Dia membawa madu dan sarang lebah. Permukaannya punya enam sisi lurus. Namanya segi enam.",
+          "Igil menghitung sisi satu sampai enam. Yuk amati bentuk di sekitar kita.",
         ],
       ],
     },
     {
       kode: "B",
-      judul: "B. Infografis Kotak Permen Kembar",
+      judul: "B. Urai, Susun, dan Bangun Ruang",
       pengantar:
-        "🍽️ 2 + 2 + 2 = 6. Angka 2 muncul 3 kali. Penjumlahan berulang angka kembar disebut perkalian: 3 × 2 = 6.",
-      labelDaftar: "Penjumlahan berulang dan rumus wadah kali isi",
+        "Satu bangun bisa diurai jadi beberapa. Beberapa bangun bisa disusun jadi satu. Bangun ruang punya banyak permukaan dan bisa diisi.",
+      labelDaftar: "Mengurai, menyusun, dan bangun ruang",
       kolom: 1,
       item: [
         {
-          nama: "🍽️ Penjumlahan berulang",
-          singkat: "2 + 2 + 2 = 6",
+          nama: "Mengurai dan menyusun",
+          singkat: "Satu jadi banyak, banyak jadi satu",
           uraian:
-            "Tiga piring, tiap piring 2 permen. Angka 2 ditulis berulang 3 kali. Namanya perkalian.",
-          contoh: "2 + 2 + 2 = 6.",
+            "Persegi bisa diurai menjadi 2 segitiga. Dua segitiga dan satu segi empat bisa disusun menjadi rumah. Cara mengurai yang berbeda menghasilkan bentuk yang berbeda.",
+          contoh: "Persegi diurai diagonal: 2 segitiga.",
         },
         {
-          nama: "✍️ Rumus kotak rahasia",
-          singkat: "3 × 2 = 6",
+          nama: "Bangun ruang",
+          singkat: "Kubus, balok, tabung, kerucut, bola",
           uraian:
-            "Jumlah wadah atau piring dikali isi permen per piring. 3 × 2 = 6. Dibaca tiga dikali dua sama dengan enam.",
-          contoh: "Wadah × isi = total.",
-        },
-        {
-          nama: "⚠️ Posisi tidak boleh terbalik",
-          singkat: "3 × 2 berbeda dengan 2 × 3",
-          uraian:
-            "3 × 2 artinya 3 piring berisi 2. 2 × 3 artinya 2 piring berisi 3. Total sama 6, tetapi ceritanya berbeda.",
-          contoh: "Cerita berbeda, total bisa sama.",
+            "Bangun datar punya satu permukaan. Bangun ruang punya lebih dari satu permukaan dan bisa diisi. Kubus permukaannya segi empat sama. Balok permukaannya segi empat beda ukuran. Tabung, kerucut, dan bola punya permukaan lengkung. Bola paling mudah menggelinding.",
+          contoh: "Dadu = kubus. Kaleng = tabung. Bola sepak = bola.",
         },
       ],
       kuis: [
-        {
-          pertanyaan: "1. 2 + 2 + 2 ditulis perkalian berapa?",
-          alias: ["3 × 2", "3x2", "3 kali 2", "tiga dikali dua"],
-        },
-        {
-          pertanyaan: "2. 3 × 2 artinya ada berapa piring?",
-          alias: ["3", "tiga", "3 piring"],
-        },
-        {
-          pertanyaan: "3. 3 × 2 dan 2 × 3 hasilnya sama, tetapi ceritanya?",
-          alias: ["berbeda", "beda", "tidak sama", "lain"],
-        },
+        { pertanyaan: "Persegi diurai diagonal jadi berapa segitiga?", alias: ["2", "dua"] },
+        { pertanyaan: "Tuliskan 2.", alias: ["2", "dua"] },
+        { pertanyaan: "2 segitiga dan 1 segi empat disusun jadi apa?", alias: ["rumah"] },
+        { pertanyaan: "Tuliskan rumah.", alias: ["rumah"] },
+        { pertanyaan: "Dadu berbentuk apa?", alias: ["kubus"] },
+        { pertanyaan: "Bola mudah menggelinding. Bentuknya?", alias: ["bola"] },
+        { pertanyaan: "Tuliskan bola.", alias: ["bola"] },
+        { pertanyaan: "Es krim di atas kerucut. Namanya?", alias: ["kerucut"] },
       ],
       voice: [
         [
-          "Lihat tiga piring Sani. Dua ditambah dua ditambah dua sama dengan enam. Angka dua muncul tiga kali. Itu perkalian. Tiga dikali dua sama dengan enam.",
-          "Rumus kotak rahasia: jumlah wadah dikali isi tiap wadah. Tiga piring kali dua permen sama dengan enam.",
+          "Kita bisa mengurai satu bangun menjadi beberapa bangun. Persegi diurai diagonal menjadi dua segitiga.",
+          "Kita juga bisa menyusun. Dua segitiga dan satu segi empat menjadi rumah.",
         ],
         [
-          "Hati-hati. Tiga kali dua artinya tiga piring berisi dua. Dua kali tiga artinya dua piring berisi tiga. Totalnya sama enam, tetapi ceritanya berbeda.",
+          "Bangun ruang bisa diisi. Kubus permukaannya sama. Balok permukaannya beda ukuran. Bola menggelinding. Kaleng itu tabung. Es krim itu kerucut.",
         ],
       ],
     },
     {
       kode: "C",
-      judul: "C. Detektif Kantong Hadiah",
+      judul: "C. Sisir Madu Igil",
       pengantar:
-        "🕵️‍♂️ Ada 4 kantong. Tiap kantong berisi 4 permen. Hitung angka kembar, jumlah kantong, lalu tulis penjumlahan dan perkaliannya.",
-      labelDaftar: "Aktivitas terbimbing dan jurnal",
+        "Bantu Igil mengisi 10 sisir madu. Hitung sisi, kenali lengkung, urai, susun, dan sebut bangun ruang.",
+      labelDaftar: "Sepuluh misi sisir madu",
       kolom: 1,
       item: [
         {
-          nama: "🕵️‍♂️ Aktivitas 1",
-          singkat: "4 × 4 = 16",
+          nama: "Alur permainan",
+          singkat: "Pilih sisir, jawab, dapat bintang",
           uraian:
-            "Angka kembar 4. Kantong ada 4. 4 + 4 + 4 + 4 = 16. Perkalian 4 × 4 = 16.",
-          contoh: "4 × 4 = 16.",
+            "Siswa memilih satu sisir madu. Igil membacakan misi. Jawaban benar mendapat 1 bintang madu. Jika belum tepat, Igil memberi petunjuk. Daun tidak berkurang.",
+          contoh: "6 sisi = segi enam. Uang logam = lingkaran. Dadu = kubus.",
         },
         {
-          nama: "🎭 Jurnal perasaanku",
-          singkat: "Pilih wajah",
+          nama: "Daun rapi",
+          singkat: "3, 2, atau 1 daun",
           uraian:
-            "😀 Seru banget, ternyata perkalian itu mudah! 😐 Sedikit bingung membedakan angka depan dan belakang. 😢 Masih butuh bantuan menulis lambang perkalian.",
-          contoh: "Pilih satu wajah.",
+            "Benar di percobaan pertama mendapat 3 daun. Benar setelah satu petunjuk mendapat 2 daun. Benar setelah dua petunjuk mendapat 1 daun.",
+          contoh: "Petunjuk: sisir bergoyang, lalu muncul jejak, lalu Igil menghitung bersama.",
         },
       ],
       kuis: [
-        {
-          pertanyaan: "1. Angka kembar pada kantong hadiah berapa?",
-          alias: ["4", "empat"],
-        },
-        {
-          pertanyaan: "2. Ada berapa kantong seluruhnya?",
-          alias: ["4", "empat", "4 kantong"],
-        },
-        {
-          pertanyaan: "3. 4 kantong berisi 4 permen sama dengan berapa?",
-          alias: ["16", "enam belas"],
-        },
+        { pertanyaan: "Segitiga punya berapa sisi?", alias: ["3", "tiga"] },
+        { pertanyaan: "Segi empat punya berapa sisi?", alias: ["4", "empat"] },
+        { pertanyaan: "Tuliskan 5.", alias: ["5", "lima"] },
+        { pertanyaan: "Sarang lebah segi enam atau lingkaran?", alias: ["segi enam"] },
+        { pertanyaan: "Uang logam bentuknya?", alias: ["lingkaran"] },
+        { pertanyaan: "Persegi diurai jadi berapa segitiga?", alias: ["2", "dua"] },
+        { pertanyaan: "Tuliskan 2.", alias: ["2", "dua"] },
+        { pertanyaan: "Dadu kubus atau bola?", alias: ["kubus"] },
+        { pertanyaan: "Yang menggelinding?", alias: ["bola"] },
+        { pertanyaan: "Kaleng namanya?", alias: ["tabung"] },
       ],
       voice: [
         [
-          "Yuk jadi detektif kantong hadiah. Ada empat kantong. Tiap kantong berisi empat permen. Angka kembarnya empat. Kantongnya ada empat.",
-          "Empat ditambah empat ditambah empat ditambah empat sama dengan enam belas. Perkaliannya empat dikali empat sama dengan enam belas.",
+          "Igil menjaga sisir madu. Ada sepuluh sisir dari yang pertama sampai piala.",
+          "Sisir hijau untuk menghitung sisi. Sisir biru untuk nama bentuk. Sisir kuning untuk menulis. Sisir ungu untuk memilih.",
+          "Jawaban benar mendapat satu bintang madu. Jika belum tepat, Igil memberi petunjuk. Daun tidak berkurang.",
         ],
       ],
     },
     {
       kode: "D",
-      judul: "D. Lembar Evaluasi Siswa",
+      judul: "E. Lembar Evaluasi Siswa",
       pengantar:
-        "📝 Tantangan para juara! Ubah cerita obat, kantong, dan piring Sani, Siti, Lani, Dodi, serta Riko menjadi perkalian.",
-      labelDaftar: "Evaluasi pilihan ganda dan isian",
+        "Hitung sisi. Bedakan lengkung. Urai dan susun. Nama bangun ruang. Ini tantangan para juara.",
+      labelDaftar: "Poin penting dan evaluasi",
       kolom: 1,
       item: [
         {
-          nama: "🍓 Bagian A",
-          singkat: "Pilihan ganda",
+          nama: "Poin penting",
+          singkat: "Sisi, lengkung, urai, ruang",
           uraian:
-            "Obat Adi 3 × 1. Kombinasi salah 5 × 2. Tiga kantong 15 adalah 3 × 5. Lani 4+4+4+4+4. Meja hijau dan biru totalnya sama.",
-          contoh: "3 × 1. 5 × 2 salah.",
+            "Segi banyak dibatasi garis lurus. Namanya ikut banyak sisi: 3 segitiga, 4 segi empat, 5 segi lima, 6 segi enam. Bentuk lengkung dibatasi kurva. Lingkaran bulat sempurna. Bangun datar satu permukaan. Bangun ruang banyak permukaan dan bisa diisi. Kubus sama. Balok beda. Bola menggelinding.",
+          contoh: "Hitung sisinya, bedakan lengkung, sebut nama ruangnya.",
         },
         {
-          nama: "✏️ Bagian B",
-          singkat: "Isian singkat",
+          nama: "Lembar kerja",
+          singkat: "Sepuluh tantangan",
           uraian:
-            "5 × 7 = 35. Tiap kantong Dodi 8. Kisah 1 = B, kisah 2 = A. Sisa Riko 16. Dua bentuk 2 × 4 dan 4 × 2.",
-          contoh: "5 × 7, 8, 16.",
+            "Sarang lebah segi enam. Segitiga 3 sisi. Lingkaran bentuk lengkung. Segi lima 5 sisi. Uang logam lingkaran. Persegi diurai 2 segitiga. Kubus permukaan sama. Bola menggelinding. Kaleng tabung. Dua lapis kali 4 sama dengan 8.",
+          contoh: "Jawaban latihan: B, A, B, A, C, B, A, B, C, B.",
         },
       ],
       kuis: [
-        { pertanyaan: "1. Obat 3 kali sehari 1 tablet ditulis perkalian?", alias: ["3 × 1", "3x1", "3 kali 1"] },
-        { pertanyaan: "2. Kombinasi yang tidak menghasilkan 12?", alias: ["5 × 2", "5x2", "10"] },
-        { pertanyaan: "3. Tiga kantong sama banyak jumlah 15?", alias: ["3 × 5", "3x5"] },
-        { pertanyaan: "4. 5 bungkus berisi 4, penjumlahan berulangnya?", alias: ["4 + 4 + 4 + 4 + 4"] },
-        { pertanyaan: "5. 2 × 6 dan 4 × 3 totalnya?", alias: ["sama", "sama banyak", "12"] },
-        { pertanyaan: "6. 7 + 7 + 7 + 7 + 7 ditulis perkalian?", alias: ["5 × 7", "5x7"] },
-        { pertanyaan: "7. Isi tiap kantong Dodi?", alias: ["8", "delapan"] },
-        { pertanyaan: "8. 5 anak masing-masing 4, perkaliannya?", alias: ["5 × 4", "5x4"] },
-        { pertanyaan: "9. 3 kantong isi 6, hilang 2, sisa?", alias: ["16"] },
-        { pertanyaan: "10. Dua perkalian berbeda yang hasilnya 8?", alias: ["2 × 4", "4 × 2", "1 × 8", "8 × 1"] },
+        { pertanyaan: "Sarang lebah 6 sisi namanya?", alias: ["segi enam", "b"] },
+        { pertanyaan: "Segitiga punya berapa sisi?", alias: ["3", "tiga", "a"] },
+        { pertanyaan: "Lingkaran termasuk apa?", alias: ["bentuk lengkung", "b"] },
+        { pertanyaan: "5 sisi namanya?", alias: ["segi lima", "a"] },
+        { pertanyaan: "Uang logam termasuk apa?", alias: ["lingkaran", "c"] },
+        { pertanyaan: "Persegi diurai diagonal jadi?", alias: ["2 segitiga", "b"] },
+        { pertanyaan: "Permukaan sama ukurannya?", alias: ["kubus", "a"] },
+        { pertanyaan: "Paling mudah menggelinding?", alias: ["bola", "b"] },
+        { pertanyaan: "Kaleng berbentuk apa?", alias: ["tabung", "c"] },
+        { pertanyaan: "2 lapis, tiap lapis 4. Banyak balok?", alias: ["8", "delapan", "b"] },
       ],
       voice: [
         [
-          "Ini lembar evaluasi tantangan para juara. Obat Adi tiga kali satu tablet, ditulis 3 kali 1. Lima kantong kali dua tidak sama dengan 12. Tiga kantong jumlah 15 artinya 3 kali 5.",
-          "Lani lima bungkus berisi empat, jadi empat ditambah berulang lima kali. Dua kali enam dan empat kali tiga totalnya sama 12.",
+          "Poin penting. Segi banyak punya sisi lurus. Tiga sisi segitiga. Empat sisi segi empat. Lima sisi segi lima. Enam sisi segi enam.",
+          "Bentuk lengkung punya kurva. Lingkaran bulat sempurna. Bangun ruang bisa diisi. Kubus sama. Balok beda. Bola menggelinding.",
         ],
         [
-          "Tujuh ditambah lima kali sama dengan 5 kali 7. Kantong Dodi masing-masing 8. Lima anak kali empat, empat bungkus kali lima. Sisa Riko 16. Dua bentuk untuk 8: 2 kali 4 dan 4 kali 2.",
+          "Sarang lebah segi enam. Segitiga tiga sisi. Lingkaran bentuk lengkung. Segi lima lima sisi. Uang logam lingkaran.",
+          "Persegi diurai dua segitiga. Kubus permukaan sama. Bola menggelinding. Kaleng tabung. Dua lapis kali empat sama dengan delapan.",
         ],
       ],
     },

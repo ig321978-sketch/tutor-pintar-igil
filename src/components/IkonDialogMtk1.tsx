@@ -7,6 +7,7 @@ const IKON: Record<string, string> = {
   Upe: "👦",
   Lili: "👧",
   Halim: "👦",
+  Paman: "👨",
   burung: "🦉",
   tikus: "🐭",
   nenek: "👵",
