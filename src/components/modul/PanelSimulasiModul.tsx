@@ -13,8 +13,9 @@ import SimulasiMtk2Bab2 from "@/components/modules/SimulasiMtk2Bab2";
 import SimulasiMtk2Bab3 from "@/components/modules/SimulasiMtk2Bab3";
 import SimulasiMtk2Bab4 from "@/components/modules/SimulasiMtk2Bab4";
 import SimulasiMtk2Bab5 from "@/components/modules/SimulasiMtk2Bab5";
+import SimulasiMtk2Bab6 from "@/components/modules/SimulasiMtk2Bab6";
 import SimulasiPhetPenjumlahanKelas1 from "@/components/modules/SimulasiPhetPenjumlahanKelas1";
-import { adalahMtk1Bab1, adalahMtk1Bab2, adalahMtk1Bab3, adalahMtk1Bab4, adalahMtk1Bab5, adalahMtk1Bab6, adalahMtk1Bab7, adalahMtk1Bab8, adalahMtk2Bab1, adalahMtk2Bab2, adalahMtk2Bab3, adalahMtk2Bab4, adalahMtk2Bab5 } from "@/lib/naskah-resmi";
+import { adalahMtk1Bab1, adalahMtk1Bab2, adalahMtk1Bab3, adalahMtk1Bab4, adalahMtk1Bab5, adalahMtk1Bab6, adalahMtk1Bab7, adalahMtk1Bab8, adalahMtk2Bab1, adalahMtk2Bab2, adalahMtk2Bab3, adalahMtk2Bab4, adalahMtk2Bab5, adalahMtk2Bab6 } from "@/lib/naskah-resmi";
 import type { KelaminGuru } from "@/lib/guru";
 
 type PanelSimulasiProps = {
@@ -252,6 +253,22 @@ function PanelSimulasiPecahan({
   );
 }
 
+function PanelSimulasiPengukuran({
+  sudahLulus = false,
+  onSelesai,
+}: Pick<PanelSimulasiProps, "sudahLulus" | "onSelesai">) {
+  const dicatat = useRef(sudahLulus);
+  return (
+    <SimulasiMtk2Bab6
+      onBenar={() => {
+        if (dicatat.current) return;
+        dicatat.current = true;
+        onSelesai?.(true, "Lab pengukuran berat dan waktu selesai.");
+      }}
+    />
+  );
+}
+
 export default function PanelSimulasiModul({
   kelas,
   mapel,
@@ -298,6 +315,9 @@ export default function PanelSimulasiModul({
   }
   if (adalahMtk2Bab5(kelas, mapel, materi)) {
     return <PanelSimulasiPecahan sudahLulus={sudahLulus} onSelesai={onSelesai} />;
+  }
+  if (adalahMtk2Bab6(kelas, mapel, materi)) {
+    return <PanelSimulasiPengukuran sudahLulus={sudahLulus} onSelesai={onSelesai} />;
   }
   return (
     <p className="text-sm font-semibold text-[#1C01A5]">

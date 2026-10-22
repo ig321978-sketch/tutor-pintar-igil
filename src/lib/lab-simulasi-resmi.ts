@@ -12,6 +12,7 @@ import {
   adalahMtk2Bab3,
   adalahMtk2Bab4,
   adalahMtk2Bab5,
+  adalahMtk2Bab6,
 } from "@/lib/naskah-resmi";
 
 export function punyaLabSimulasiResmi(
@@ -32,6 +33,7 @@ export function punyaLabSimulasiResmi(
     adalahMtk2Bab2(kelas, mapel, materi) ||
     adalahMtk2Bab3(kelas, mapel, materi) ||
     adalahMtk2Bab4(kelas, mapel, materi) ||
-    adalahMtk2Bab5(kelas, mapel, materi)
+    adalahMtk2Bab5(kelas, mapel, materi) ||
+    adalahMtk2Bab6(kelas, mapel, materi)
   );
 }
