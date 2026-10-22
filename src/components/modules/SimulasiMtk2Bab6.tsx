@@ -1173,12 +1173,12 @@ function AdeganDurasi({
       </div>
       <div className="grid grid-cols-2 gap-3">
         <div className="rounded-2xl bg-white p-3 text-center ring-2 ring-sky-200">
-          <p className={`text-5xl ${pasangan.kiri.gerak === "cepat" ? "igil-cepat" : "igil-lambat"}`}>{pasangan.kiri.ikon}</p>
+          <p className={`text-5xl igil-${pasangan.kiri.gerak}`}>{pasangan.kiri.ikon}</p>
           <p className="mt-2 text-sm font-black text-[#1C01A5]">{pasangan.kiri.nama}</p>
           <p className="text-xs font-bold text-slate-500">Sebentar</p>
         </div>
         <div className="rounded-2xl bg-white p-3 text-center ring-2 ring-sky-200">
-          <p className={`text-5xl ${pasangan.kanan.gerak === "cepat" ? "igil-cepat" : "igil-lambat"}`}>{pasangan.kanan.ikon}</p>
+          <p className={`text-5xl igil-${pasangan.kanan.gerak}`}>{pasangan.kanan.ikon}</p>
           <p className="mt-2 text-sm font-black text-[#1C01A5]">{pasangan.kanan.nama}</p>
           <p className="text-xs font-bold text-slate-500">Lama</p>
         </div>
