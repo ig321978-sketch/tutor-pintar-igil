@@ -1,6 +1,7 @@
 "use client";
 
 import { useCallback, useEffect, useState } from "react";
+import { ucapkanGuruIgil } from "@/lib/suara-guru-igil";
 
 const DATA_BILANGAN: Record<number, { kata: string; jari: string; warna: string }> = {
   0: { kata: "Nol (Kosong)", jari: "✊", warna: "text-slate-400" },
@@ -33,14 +34,8 @@ export default function SimulasiMtk1Bab1({ onBenar }: { onBenar?: () => void }) 
 
   const ucapkan = useCallback(
     (teks: string) => {
-      if (!suaraAktif || typeof window === "undefined") return;
-      if (!("speechSynthesis" in window)) return;
-      window.speechSynthesis.cancel();
-      const suara = new SpeechSynthesisUtterance(teks);
-      suara.lang = "id-ID";
-      suara.rate = 0.9;
-      suara.pitch = 1.1;
-      window.speechSynthesis.speak(suara);
+      if (!suaraAktif) return;
+      void ucapkanGuruIgil(teks, { kelas: "1 SD" });
     },
     [suaraAktif],
   );

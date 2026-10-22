@@ -1,6 +1,7 @@
 "use client";
 
 import { useCallback, useEffect, useRef, useState } from "react";
+import { ucapkanGuruIgil } from "@/lib/suara-guru-igil";
 
 export type TutorEventType =
   | "MAKE_TEN_START"
@@ -87,12 +88,7 @@ function jamSekarang(): string {
 }
 
 function ucapkan(teks: string) {
-  if (typeof window === "undefined" || !window.speechSynthesis) return;
-  window.speechSynthesis.cancel();
-  const ucap = new SpeechSynthesisUtterance(teks);
-  ucap.lang = "id-ID";
-  ucap.rate = 0.92;
-  window.speechSynthesis.speak(ucap);
+  void ucapkanGuruIgil(teks, { kelas: "1 SD" });
 }
 
 function clamp(nilai: number, min: number, max: number) {

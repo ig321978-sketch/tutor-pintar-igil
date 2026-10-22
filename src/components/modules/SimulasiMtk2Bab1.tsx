@@ -1,10 +1,8 @@
 "use client";
 
 import { useCallback, useEffect, useRef, useState } from "react";
-import { normalisasiKelaminGuru, type KelaminGuru } from "@/lib/guru";
-import { bacaPerlambatVoice, lajuPutarDariPerlambat } from "@/lib/laju-suara";
-import { bacaProgres } from "@/lib/progres";
-import { hentikanAudioGuruAktif, mintaAudioTts, saatHentiAudioGuru } from "@/lib/putar-tts-klien";
+import type { KelaminGuru } from "@/lib/guru";
+import { siapkanSuaraGuruIgil, ucapkanGuruIgil } from "@/lib/suara-guru-igil";
 
 export type TutorEventType =
   | "SCENE_START"
@@ -654,68 +652,16 @@ export default function SimulasiMtk2Bab1({
   const [sedangBicara, setSedangBicara] = useState(false);
   const sudahLulus = useRef(false);
   const suaraRef = useRef(suaraAktif);
-  const audioRef = useRef<HTMLAudioElement | null>(null);
-  const genSuara = useRef(0);
-  const diamHentiRef = useRef(false);
   suaraRef.current = suaraAktif;
-
-  const hentikanSuaraLab = useCallback(() => {
-    genSuara.current += 1;
-    audioRef.current?.pause();
-    audioRef.current = null;
-    setSedangBicara(false);
-  }, []);
-
-  useEffect(() => {
-    const lepas = saatHentiAudioGuru(() => {
-      if (diamHentiRef.current) return;
-      hentikanSuaraLab();
-    });
-    return () => {
-      lepas();
-      hentikanSuaraLab();
-    };
-  }, [hentikanSuaraLab]);
 
   const ucapkan = useCallback(
     (teks: string) => {
-      if (!suaraRef.current || typeof window === "undefined") return;
-      const naskah = teks.replace(/\s+/g, " ").trim();
-      if (!naskah) return;
-      const gen = ++genSuara.current;
-      audioRef.current?.pause();
-      diamHentiRef.current = true;
-      hentikanAudioGuruAktif();
-      diamHentiRef.current = false;
-      setSedangBicara(true);
-      const profil = bacaProgres().profil;
-      const guru = normalisasiKelaminGuru(kelamin ?? profil.guruKelamin);
-      const kelasSuara = (kelas || profil.kelas || "2 SD").trim();
-      void (async () => {
-        const hasil = await mintaAudioTts(naskah, guru, kelasSuara, {
-          persist: true,
-          tanpaNotasi: true,
-        });
-        if (gen !== genSuara.current) return;
-        if (!hasil?.url) {
-          setSedangBicara(false);
-          return;
-        }
-        const audio = new Audio(hasil.url);
-        audio.preload = "auto";
-        audio.playbackRate = lajuPutarDariPerlambat(bacaPerlambatVoice());
-        audioRef.current = audio;
-        const selesai = () => {
-          if (gen === genSuara.current) setSedangBicara(false);
-        };
-        audio.onended = selesai;
-        audio.onerror = selesai;
-        try {
-          await audio.play();
-        } catch {
-          selesai();
-        }
-      })();
+      if (!suaraRef.current) return;
+      void ucapkanGuruIgil(teks, {
+        kelas,
+        kelamin,
+        onBicara: setSedangBicara,
+      });
     },
     [kelas, kelamin],
   );
@@ -741,8 +687,10 @@ export default function SimulasiMtk2Bab1({
   );
 
   useEffect(() => {
+    const pembuka = "Ayo lingkari setiap 10 kelereng. Satu lingkaran jadi satu toples puluhan!";
+    siapkanSuaraGuruIgil(pembuka, { kelas, kelamin });
     kirimEvent("SCENE_START", {
-      pesan: "Ayo lingkari setiap 10 kelereng. Satu lingkaran jadi satu toples puluhan!",
+      pesan: pembuka,
       adegan: 1,
     });
     // hanya sekali saat lab dibuka
