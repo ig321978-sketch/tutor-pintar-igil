@@ -10,7 +10,7 @@ export const JUDUL_MTK1_BAB8 = "Bab 8: Mengenal Diagram";
 export const MODUL_MTK1_BAB8: ModulResmiPai = {
   id: "mtk-1-bab8",
   judul: JUDUL_MTK1_BAB8,
-  pola: /mengenal\s+diagram|kantin sekolah yang berantakan|toko grosir tupi|bereskan kantin/,
+  pola: /mengenal\s+diagram|kantin sekolah yang berantakan|toko grosir tupi|bereskan kantin|mengelompokkan data/,
   motivasi:
     "Rara, Bimo, dan tupai Igil membereskan kantin. Mereka mengelompokkan gelas, piring, dan sendok, lalu membacanya lewat diagram gambar.",
   kunciJawaban: "A,A,C,A,C,B,B,C,C,C",
@@ -85,7 +85,7 @@ D) Sama banyak`,
   kartu: [
     {
       kode: "A",
-      judul: "A. Kantin Sekolah yang Berantakan",
+      judul: "Kantin Sekolah yang Berantakan",
       pengantar:
         "Tumpukan gelas, piring, dan sendok dibereskan dengan mengelompokkan dulu, lalu digambar menjadi piktogram.",
       labelDaftar: "Kelompokkan, hitung, lalu gambar",
@@ -221,7 +221,7 @@ D) Sama banyak`,
         ],
       ],
     },
-        {
+    {
       kode: "C",
       judul: "C. Misi Bereskan Kantin",
       pengantar:

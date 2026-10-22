@@ -115,9 +115,9 @@ const SUBBAB_BUKU_SISWA: Record<string, Record<string, Record<string, string[]>>
         "Lembar evaluasi siswa",
       ],
       "Bab 8: Mengenal Diagram": [
-        "Kantin sekolah yang berantakan",
-        "Ayo bikin diagram",
-        "Toko grosir Igil",
+        "Sub-Bab A: Mengelompokkan Data",
+        "Sub-Bab B: Diagram Gambar",
+        "Misi bereskan kantin",
         "Poin penting",
         "Lembar evaluasi siswa",
       ],
