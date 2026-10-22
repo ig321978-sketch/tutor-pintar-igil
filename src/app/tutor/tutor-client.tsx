@@ -2000,6 +2000,7 @@ export default function TutorAI() {
                     kelas={judulKelasSesi}
                     mapel={judulMapelSesi}
                     materi={judulMateriSesi}
+                    kelamin={guruKelamin}
                     sudahLulus={simulasiLulus}
                     onMemuat={setSimulasiMemuat}
                     onSelesai={(lulus, catatan) => {

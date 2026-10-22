@@ -11,12 +11,14 @@ import SimulasiMtk1Bab8 from "@/components/modules/SimulasiMtk1Bab8";
 import SimulasiMtk2Bab1 from "@/components/modules/SimulasiMtk2Bab1";
 import SimulasiPhetPenjumlahanKelas1 from "@/components/modules/SimulasiPhetPenjumlahanKelas1";
 import { adalahMtk1Bab1, adalahMtk1Bab2, adalahMtk1Bab3, adalahMtk1Bab4, adalahMtk1Bab5, adalahMtk1Bab6, adalahMtk1Bab7, adalahMtk1Bab8, adalahMtk2Bab1 } from "@/lib/naskah-resmi";
+import type { KelaminGuru } from "@/lib/guru";
 
 type PanelSimulasiProps = {
   nama: string;
   kelas: string;
   mapel: string;
   materi: string;
+  kelamin?: KelaminGuru;
   sudahLulus?: boolean;
   onSelesai?: (lulus: boolean, catatan: string) => void;
   onMemuat?: (memuat: boolean) => void;
@@ -151,12 +153,16 @@ function PanelSimulasiDiagram({
 }
 
 function PanelSimulasiMembilang50({
+  kelas,
+  kelamin,
   sudahLulus = false,
   onSelesai,
-}: Pick<PanelSimulasiProps, "sudahLulus" | "onSelesai">) {
+}: Pick<PanelSimulasiProps, "kelas" | "kelamin" | "sudahLulus" | "onSelesai">) {
   const dicatat = useRef(sudahLulus);
   return (
     <SimulasiMtk2Bab1
+      kelas={kelas}
+      kelamin={kelamin}
       onBenar={() => {
         if (dicatat.current) return;
         dicatat.current = true;
@@ -170,6 +176,7 @@ export default function PanelSimulasiModul({
   kelas,
   mapel,
   materi,
+  kelamin,
   sudahLulus = false,
   onSelesai,
 }: PanelSimulasiProps) {
@@ -198,7 +205,7 @@ export default function PanelSimulasiModul({
     return <PanelSimulasiDiagram sudahLulus={sudahLulus} onSelesai={onSelesai} />;
   }
   if (adalahMtk2Bab1(kelas, mapel, materi)) {
-    return <PanelSimulasiMembilang50 sudahLulus={sudahLulus} onSelesai={onSelesai} />;
+    return <PanelSimulasiMembilang50 kelas={kelas} kelamin={kelamin} sudahLulus={sudahLulus} onSelesai={onSelesai} />;
   }
   return (
     <p className="text-sm font-semibold text-[#1C01A5]">
