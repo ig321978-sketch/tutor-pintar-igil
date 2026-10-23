@@ -3,6 +3,7 @@
 import { useCallback, useEffect, useRef, useState, type PointerEvent, type ReactNode } from "react";
 import type { KelaminGuru } from "@/lib/guru";
 import { hentikanSuaraGuruIgil, siapkanSuaraGuruIgil, ucapkanGuruIgil } from "@/lib/suara-guru-igil";
+import { KuisLima, PitaSuaraIgil, KUIS_MTK2_BAB6 } from "./KuisLimaSimulasi";
 
 export type TutorEventType =
   | "SCENE_START"
@@ -23,7 +24,7 @@ export type TutorEventPayload = {
 };
 
 type TutorEventMasuk = { waktu: string; jenis: string; payload: TutorEventPayload };
-type TabLab = "timbangan" | "jam" | "durasi";
+type TabLab = "timbangan" | "jam" | "durasi" | "kuis";
 type Titik = { x: number; y: number };
 type JenisKanvas = "tulis" | "lingkar-kiri" | "lingkar-kanan" | "lingkar-sel" | "jarum";
 type ModeTimbang = "banding" | "ukur";
@@ -33,6 +34,7 @@ const TAB_LAB: { id: TabLab; label: string }[] = [
   { id: "timbangan", label: "1. Timbang" },
   { id: "jam", label: "2. Jam" },
   { id: "durasi", label: "3. Durasi" },
+  { id: "kuis", label: "4. Kuis" },
 ];
 
 const POLA_ANGKA: Record<string, string> = {
@@ -1478,6 +1480,7 @@ export default function SimulasiMtk2Bab6({
     timbangan: "Pilih benda di dua nampan. Yang lebih berat turun. Isi kelereng sampai lurus untuk mengukur.",
     jam: "Jarum panjang di 12. Jarum pendek menunjuk jam. Putar, hitung durasi, atau gambar jarumnya.",
     durasi: "Bandingkan dua kegiatan. Lingkari yang lebih lama atau lebih sebentar.",
+    kuis: "Lima soal berbeda. Pilih jawaban yang tepat.",
   };
 
   const gantiTab = (id: TabLab) => {
@@ -1522,6 +1525,7 @@ export default function SimulasiMtk2Bab6({
           {suaraAktif ? "Suara Aktif" : "Suara Mati"}
         </button>
       </div>
+      <PitaSuaraIgil pesan={pesanIgil} bicara={sedangBicara} onUlang={() => ucapkan(pesanIgil)} />
       <div className="flex flex-wrap gap-2 bg-sky-50 p-2">
         {TAB_LAB.map((item) => (
           <button
@@ -1537,12 +1541,12 @@ export default function SimulasiMtk2Bab6({
         ))}
       </div>
       <div className="relative h-[min(72vh,42rem)] bg-gradient-to-b from-sky-50 to-blue-100">
-        <div className="h-full overflow-y-auto p-3 pb-32 sm:p-4">
+        <div className="h-full overflow-y-auto p-3 sm:p-4">
           {tab === "timbangan" ? <AdeganTimbangan kirimEvent={kirimEvent} onBicara={setSedangBicara} /> : null}
           {tab === "jam" ? <AdeganJam kirimEvent={kirimEvent} onBicara={setSedangBicara} /> : null}
           {tab === "durasi" ? <AdeganDurasi kirimEvent={kirimEvent} onBicara={setSedangBicara} /> : null}
+          {tab === "kuis" ? <KuisLima butir={KUIS_MTK2_BAB6} onJawab={(pesan, benar, soal) => kirimEvent("QUIZ_ANSWERED", { pesan, benar, soal })} onSelesai={tandaiSelesai} /> : null}
         </div>
-        <SudutKapten pesan={pesanIgil} sedangBicara={sedangBicara} onUlang={() => ucapkan(pesanIgil)} />
       </div>
     </div>
   );

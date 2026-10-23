@@ -24,13 +24,14 @@ export type TutorEventMasuk = {
   payload: TutorEventPayload;
 };
 
-type TabLab = "bungkus" | "kereta" | "timbang";
+type TabLab = "bungkus" | "kereta" | "timbang" | "kuis";
 type LabelBanding = ">" | "<" | "=";
 
 const TAB_LAB: { id: TabLab; ikon: string; label: string }[] = [
   { id: "bungkus", ikon: "🍊", label: "Bungkus Puluhan" },
   { id: "kereta", ikon: "🚂", label: "Kereta 0–20" },
   { id: "timbang", ikon: "⚖️", label: "Timbangan 11–20" },
+  { id: "kuis", ikon: "⭐", label: "Kuis" },
 ];
 
 const SOAL_KUIS = [
@@ -65,6 +66,13 @@ const SOAL_KUIS = [
     hint: "Lihat puluhannya sama, lalu bandingkan satuannya.",
     kunci: "12-16-19",
     kartu: [16, 12, 19],
+  },
+  {
+    id: "q5",
+    tanya: "Ada 1 puluhan dan 6 satuan. Berapa jumlahnya?",
+    hint: "1 puluhan berarti 10. 10 + 6 = 16.",
+    kunci: "16",
+    opsi: ["7", "16", "61"],
   },
 ] as const;
 
@@ -280,7 +288,7 @@ export default function SimulasiMtk1Bab5({
         <p className="mt-1 text-sm text-orange-50">Ikat puluhan, naik kereta, dan bandingkan belasan bersama IGIL.</p>
       </div>
 
-      <div className="grid grid-cols-3 gap-2 bg-orange-50 p-2">
+      <div className="grid grid-cols-2 gap-2 bg-orange-50 p-2 sm:grid-cols-4">
         {TAB_LAB.map((item) => (
           <button
             key={item.id}
@@ -312,6 +320,7 @@ export default function SimulasiMtk1Bab5({
         {tab === "timbang" ? (
           <TabTimbang kiri={kiri} setKiri={setKiri} kanan={kanan} setKanan={setKanan} kirimEvent={kirimEvent} />
         ) : null}
+        {tab === "kuis" ? <TabKuis kirimEvent={kirimEvent} onLulus={tandaiSelesai} onTotal={setTotalKuis} /> : null}
       </div>
 
     </div>
@@ -761,13 +770,13 @@ function TabKuis({
   const selesai = nomor >= SOAL_KUIS.length;
 
   useEffect(() => {
-    onTotal([14, 17, 17, 12][Math.min(nomor, 3)]);
+    onTotal([14, 17, 17, 12, 16][Math.min(nomor, 4)]);
   }, [nomor, onTotal]);
 
   const maju = () => {
     window.setTimeout(() => {
       if (nomor + 1 >= SOAL_KUIS.length) {
-        onLulus("Kuis membilang sampai 20 selesai. Empat soal interaktif sudah dijawab.");
+        onLulus("Kuis membilang sampai 20 selesai. Lima soal sudah dijawab.");
         setNomor(SOAL_KUIS.length);
       } else {
         setNomor((n) => n + 1);
@@ -810,14 +819,14 @@ function TabKuis({
           🌟
         </p>
         <p className="mt-2 text-xl font-black text-emerald-800">Kuis selesai!</p>
-        <p className="mt-1 text-sm font-semibold text-emerald-700">Empat soal membilang sampai 20 sudah terjawab.</p>
+        <p className="mt-1 text-sm font-semibold text-emerald-700">Lima soal membilang sampai 20 sudah terjawab.</p>
       </div>
     );
   }
 
   return (
     <div className="space-y-4">
-      <p className="text-xs font-bold uppercase tracking-wide text-orange-500">Soal {nomor + 1} dari 4</p>
+      <p className="text-xs font-bold uppercase tracking-wide text-orange-500">Soal {nomor + 1} dari {SOAL_KUIS.length}</p>
       <p className="text-lg font-black text-slate-800">{soal.tanya}</p>
 
       {nomor === 0 ? (

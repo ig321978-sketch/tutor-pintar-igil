@@ -23,13 +23,14 @@ export type TutorEventMasuk = {
   payload: TutorEventPayload;
 };
 
-type TabLab = "genap" | "bongkar" | "jembatan";
+type TabLab = "genap" | "bongkar" | "jembatan" | "kuis";
 type ModeJembatan = "plus" | "minus";
 
 const TAB_LAB: { id: TabLab; ikon: string; label: string }[] = [
   { id: "genap", ikon: "🍎", label: "Genapkan Jadi 10" },
   { id: "bongkar", ikon: "🧺", label: "Bongkar Puluhan" },
   { id: "jembatan", ikon: "🌉", label: "Jembatan 10" },
+  { id: "kuis", ikon: "⭐", label: "Kuis" },
 ];
 
 type OpsiKuis = { id: string; label: string };
@@ -78,6 +79,17 @@ const SOAL_KUIS: SoalKuis[] = [
       { id: "13", label: "13" },
       { id: "10", label: "10" },
       { id: "15", label: "15" },
+    ],
+  },
+  {
+    id: "q5",
+    tanya: "14 − 6. Satuan cuma 4, tidak cukup. Setelah buka ikatan 10, berapa hasilnya?",
+    hint: "Buka 10. 10 − 6 = 4, lalu tambah 4 satuan. 4 + 4 = 8.",
+    kunci: "8",
+    opsi: [
+      { id: "8", label: "8" },
+      { id: "7", label: "7" },
+      { id: "20", label: "20" },
     ],
   },
 ];
@@ -353,7 +365,7 @@ export default function SimulasiMtk1Bab6({
         <p className="mt-1 text-sm text-violet-100">Genapkan 10, bongkar puluhan, dan lompat di jembatan bersama IGIL.</p>
       </div>
 
-      <div className="grid grid-cols-3 gap-2 bg-violet-50 p-2">
+      <div className="grid grid-cols-2 gap-2 bg-violet-50 p-2 sm:grid-cols-4">
         {TAB_LAB.map((item) => (
           <button
             key={item.id}
@@ -412,6 +424,16 @@ export default function SimulasiMtk1Bab6({
             setMode={setModeJembatan}
             setLangkah={setLangkah}
             kirimEvent={kirimEvent}
+          />
+        ) : null}
+        {tab === "kuis" ? (
+          <TabKuis
+            kirimEvent={kirimEvent}
+            onLulus={tandaiSelesai}
+            onKalimat={(dari, ke) => {
+              setKuisDari(dari);
+              setKuisKe(ke);
+            }}
           />
         ) : null}
       </div>
@@ -801,8 +823,9 @@ function TabKuis({
       ["17 − 4", "10 + 3 = 13"],
       ["12 − 5", "(10 − 5) + 2 = 7"],
       ["8 + 5", "10 + 3 = 13"],
+      ["14 − 6", "(10 − 6) + 4 = 8"],
     ] as const;
-    const i = Math.min(nomor, 3);
+    const i = Math.min(nomor, peta.length - 1);
     onKalimat(peta[i][0], peta[i][1]);
   }, [nomor, onKalimat]);
 
@@ -815,7 +838,7 @@ function TabKuis({
       kirimEvent("QUIZ_ANSWERED", { pesan: `Benar! Soal ${nomor + 1} sudah tepat.`, soal: soal.id, benar: true });
       window.setTimeout(() => {
         if (nomor + 1 >= SOAL_KUIS.length) {
-          onLulus("Kuis penjumlahan dan pengurangan sampai 20 selesai. Empat soal sudah dijawab.");
+          onLulus("Kuis penjumlahan dan pengurangan sampai 20 selesai. Lima soal sudah dijawab.");
           setNomor(SOAL_KUIS.length);
         } else {
           setNomor((n) => n + 1);
@@ -838,14 +861,14 @@ function TabKuis({
           🌟
         </p>
         <p className="mt-2 text-xl font-black text-emerald-800">Kuis selesai!</p>
-        <p className="mt-1 text-sm font-semibold text-emerald-700">Empat soal jembatan 10 sudah terjawab.</p>
+        <p className="mt-1 text-sm font-semibold text-emerald-700">Lima soal jembatan 10 sudah terjawab.</p>
       </div>
     );
   }
 
   return (
     <div className="space-y-4">
-      <p className="text-xs font-bold uppercase tracking-wide text-violet-500">Soal {nomor + 1} dari 4</p>
+      <p className="text-xs font-bold uppercase tracking-wide text-violet-500">Soal {nomor + 1} dari {SOAL_KUIS.length}</p>
       <p className="text-lg font-black text-slate-800">{soal.tanya}</p>
       {nomor === 0 ? <CabangAngka atas={6} kiri="?" kanan="?" /> : null}
       {nomor === 3 ? (

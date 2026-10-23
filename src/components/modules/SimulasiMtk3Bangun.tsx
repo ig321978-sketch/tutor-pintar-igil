@@ -3,6 +3,7 @@
 import { useCallback, useEffect, useRef, useState, type PointerEvent as AcaraPointer } from "react";
 import type { KelaminGuru } from "@/lib/guru";
 import { hentikanSuaraGuruIgil, ucapkanGuruIgil } from "@/lib/suara-guru-igil";
+import { KuisLima, PitaSuaraIgil, KUIS_MTK3_BANGUN } from "./KuisLimaSimulasi";
 
 export type TutorEventType =
   | "SCENE_START"
@@ -28,7 +29,7 @@ type TutorEventMasuk = {
   payload: TutorEventPayload;
 };
 
-type TabLab = "sudut" | "garis" | "bangun";
+type TabLab = "sudut" | "garis" | "bangun" | "kuis";
 type Titik = { x: number; y: number };
 type Kirim = (jenis: TutorEventType, payload: TutorEventPayload, bicara?: boolean) => void;
 type JenisSudut = "siku" | "lancip" | "tumpul";
@@ -37,6 +38,7 @@ const TAB_LAB: { id: TabLab; label: string }[] = [
   { id: "sudut", label: "Sudut" },
   { id: "garis", label: "Garis" },
   { id: "bangun", label: "Bangun" },
+  { id: "kuis", label: "Kuis" },
 ];
 
 const POLA_ANGKA: Record<string, string> = {
@@ -1539,6 +1541,7 @@ export default function SimulasiMtk3Bangun({
     sudut: "Pojok kertas adalah sudut siku. Yang lebih kecil lancip. Yang lebih besar tumpul.",
     garis: "Rel kereta sejajar. Persimpangan siku disebut tegak lurus.",
     bangun: "Cek sisi, sudut, dan sisi yang sejajar.",
+    kuis: "Lima soal berbeda. Pilih jawaban yang tepat.",
   };
 
   const gantiTab = (id: TabLab) => {
@@ -1572,9 +1575,10 @@ export default function SimulasiMtk3Bangun({
           }}
           className={`inline-flex min-h-12 items-center rounded-xl px-3 text-xs font-black ${suaraAktif ? "bg-amber-300 text-amber-950" : "bg-white/20 text-white"}`}
         >
-          {suaraAktif ? "Suara hidup" : "Suara mati"}
+          {suaraAktif ? "Suara Aktif" : "Suara Mati"}
         </button>
       </div>
+      <PitaSuaraIgil pesan={pesanIgil} bicara={bicara} onUlang={() => ucapkan(pesanIgil)} />
       <div className="flex gap-1 bg-indigo-50 p-1">
         {TAB_LAB.map((item) => (
           <button
@@ -1593,8 +1597,8 @@ export default function SimulasiMtk3Bangun({
         {tab === "sudut" ? <ModeSudut kirimEvent={kirimEvent} /> : null}
         {tab === "garis" ? <ModeGaris kirimEvent={kirimEvent} /> : null}
         {tab === "bangun" ? <ModeBangun kirimEvent={kirimEvent} /> : null}
+        {tab === "kuis" ? <KuisLima butir={KUIS_MTK3_BANGUN} onJawab={(pesan, benar, soal) => kirimEvent("QUIZ_ANSWERED", { pesan, benar, soal })} onSelesai={tandaiSelesai} /> : null}
       </div>
-      <KaptenGeometri pesan={pesanIgil} bicara={bicara} onUlang={() => ucapkan(pesanIgil)} />
     </div>
   );
 }

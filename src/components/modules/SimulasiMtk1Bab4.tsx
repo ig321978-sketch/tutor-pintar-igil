@@ -26,7 +26,7 @@ export type TutorEventMasuk = {
   payload: TutorEventPayload;
 };
 
-type TabLab = "sisi" | "gelinding" | "susun";
+type TabLab = "sisi" | "gelinding" | "susun" | "kuis";
 type JenisBangun = "lingkaran" | "segitiga" | "persegi" | "persegiPanjang";
 type BendaGelinding = "lingkaran" | "segitiga" | "persegi";
 type PolaSusun = "rumah" | "roket";
@@ -52,6 +52,7 @@ const TAB_LAB: { id: TabLab; ikon: string; label: string }[] = [
   { id: "sisi", ikon: "🔷", label: "Kenali Sisi & Sudut" },
   { id: "gelinding", ikon: "🎢", label: "Tes Gelinding" },
   { id: "susun", ikon: "🏠", label: "Susun Bentuk" },
+  { id: "kuis", ikon: "⭐", label: "Kuis" },
 ];
 
 const TITIK_BANGUN: Record<Exclude<JenisBangun, "lingkaran">, Titik[]> = {
@@ -174,6 +175,28 @@ const SOAL_KUIS = [
       { id: "a", label: "1 segitiga, 2 segiempat" },
       { id: "b", label: "2 segitiga, 1 segiempat" },
       { id: "c", label: "3 segitiga, 3 segiempat" },
+    ],
+  },
+  {
+    id: "q4",
+    tanya: "Persegi punya berapa sisi?",
+    hint: "Hitung tepi yang lurus. Persegi punya 4 sisi.",
+    kunci: "4",
+    opsi: [
+      { id: "3", label: "3 sisi" },
+      { id: "4", label: "4 sisi" },
+      { id: "5", label: "5 sisi" },
+    ],
+  },
+  {
+    id: "q5",
+    tanya: "Bangun mana yang tidak punya pojok?",
+    hint: "Yang bundar tidak punya sudut.",
+    kunci: "lingkaran",
+    opsi: [
+      { id: "segitiga", label: "Segitiga" },
+      { id: "persegi", label: "Persegi" },
+      { id: "lingkaran", label: "Lingkaran" },
     ],
   },
 ] as const;
@@ -352,7 +375,7 @@ export default function SimulasiMtk1Bab4({
         <p className="mt-1 text-sm text-indigo-100">Putar, hitung, gelindingkan, dan susun bangun bersama IGIL.</p>
       </div>
 
-      <div className="grid grid-cols-3 gap-2 bg-indigo-50 p-2">
+      <div className="grid grid-cols-2 gap-2 bg-indigo-50 p-2 sm:grid-cols-4">
         {TAB_LAB.map((item) => (
           <button
             key={item.id}
@@ -375,6 +398,7 @@ export default function SimulasiMtk1Bab4({
         {tab === "sisi" ? <TabSisiSudut kirimEvent={kirimEvent} /> : null}
         {tab === "gelinding" ? <TabGelinding kirimEvent={kirimEvent} /> : null}
         {tab === "susun" ? <TabSusun kirimEvent={kirimEvent} /> : null}
+        {tab === "kuis" ? <TabKuis kirimEvent={kirimEvent} onLulus={tandaiSelesai} /> : null}
       </div>
 
     </div>
@@ -907,7 +931,7 @@ function TabKuis({
       });
       window.setTimeout(() => {
         if (nomor + 1 >= SOAL_KUIS.length) {
-          onLulus("Kuis mengenal bentuk selesai. Tiga soal interaktif sudah dijawab.");
+          onLulus("Kuis mengenal bentuk selesai. Lima soal sudah dijawab.");
           setNomor(SOAL_KUIS.length);
         } else {
           setNomor((n) => n + 1);
@@ -937,14 +961,14 @@ function TabKuis({
           🌟
         </p>
         <p className="mt-2 text-xl font-black text-emerald-800">Kuis selesai!</p>
-        <p className="mt-1 text-sm font-semibold text-emerald-700">Tiga soal sudah terjawab. IGIL bangga sekali.</p>
+        <p className="mt-1 text-sm font-semibold text-emerald-700">Lima soal sudah terjawab. IGIL bangga sekali.</p>
       </div>
     );
   }
 
   return (
     <div className="space-y-4">
-      <p className="text-xs font-bold uppercase tracking-wide text-indigo-500">Soal {nomor + 1} dari 3</p>
+      <p className="text-xs font-bold uppercase tracking-wide text-indigo-500">Soal {nomor + 1} dari {SOAL_KUIS.length}</p>
       <p className="text-lg font-black text-slate-800">{soal.tanya}</p>
 
       {nomor === 0 ? (

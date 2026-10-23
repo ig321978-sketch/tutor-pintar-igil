@@ -3,6 +3,7 @@
 import { useCallback, useEffect, useRef, useState } from "react";
 import type { KelaminGuru } from "@/lib/guru";
 import { siapkanSuaraGuruIgil, ucapkanGuruIgil } from "@/lib/suara-guru-igil";
+import { KuisLima, PitaSuaraIgil, KUIS_MTK2_BAB4 } from "./KuisLimaSimulasi";
 
 export type TutorEventType =
   | "SCENE_START"
@@ -23,7 +24,7 @@ export type TutorEventPayload = {
 };
 
 type TutorEventMasuk = { waktu: string; jenis: string; payload: TutorEventPayload };
-type TabLab = "rak" | "kereta" | "musik";
+type TabLab = "rak" | "kereta" | "musik" | "kuis";
 type Titik = { x: number; y: number };
 type IdBenda = "boneka" | "robot" | "mobil" | "tas" | "buku" | "botol" | "bola" | "jam" | "sepatu";
 type Arah = "atas" | "bawah" | "kiri" | "kanan";
@@ -35,6 +36,7 @@ const TAB_LAB: { id: TabLab; label: string }[] = [
   { id: "rak", label: "1. Rak Posisi" },
   { id: "kereta", label: "2. Kereta Pola" },
   { id: "musik", label: "3. Musik Gerak" },
+  { id: "kuis", label: "4. Kuis" },
 ];
 
 const BENDA: Record<IdBenda, { label: string; ikon: string; alias: string[] }> = {
@@ -935,6 +937,7 @@ export default function SimulasiMtk2Bab4({
       rak: "Ketuk benda acuan di rak. Lihat atas, bawah, kiri, dan kanannya!",
       kereta: "Lihat gerbong kereta. Pola apa yang berulang? Isi gerbong kosong!",
       musik: "Susun irama di slot, lalu mainkan bersama IGIL!",
+      kuis: "Lima soal berbeda. Pilih jawaban yang tepat.",
     };
     kirimEvent("SCENE_START", { pesan: pembuka[id], tab: id });
   };
@@ -965,6 +968,7 @@ export default function SimulasiMtk2Bab4({
         </button>
       </div>
 
+      <PitaSuaraIgil pesan={pesanIgil} bicara={sedangBicara} onUlang={() => ucapkan(pesanIgil)} />
       <div className="flex flex-wrap gap-2 bg-lime-50 p-2">
         {TAB_LAB.map((item) => (
           <button
@@ -984,7 +988,7 @@ export default function SimulasiMtk2Bab4({
         {tab === "rak" ? <AdeganRak kirimEvent={kirimEvent} /> : null}
         {tab === "kereta" ? <AdeganKereta kirimEvent={kirimEvent} /> : null}
         {tab === "musik" ? <AdeganMusik kirimEvent={kirimEvent} onMenari={setIgilMenari} /> : null}
-        <SudutIgil pesan={pesanIgil} sedangBicara={sedangBicara} onUlang={() => ucapkan(pesanIgil)} menari={igilMenari} />
+        {tab === "kuis" ? <KuisLima butir={KUIS_MTK2_BAB4} onJawab={(pesan, benar, soal) => kirimEvent("QUIZ_ANSWERED", { pesan, benar, soal })} onSelesai={tandaiSelesai} /> : null}
       </div>
 
     </div>

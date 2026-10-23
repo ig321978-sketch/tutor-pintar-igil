@@ -24,7 +24,7 @@ export type TutorEventMasuk = {
   payload: TutorEventPayload;
 };
 
-type TabLab = "sejajar" | "ukur" | "urut";
+type TabLab = "sejajar" | "ukur" | "urut" | "kuis";
 type IdBenda = "merah" | "biru" | "hijau";
 type TargetUkur = "pensil" | "buku" | "meja";
 type AlatUkur = "klip" | "penghapus" | "jengkal";
@@ -34,6 +34,7 @@ const TAB_LAB: { id: TabLab; ikon: string; label: string }[] = [
   { id: "sejajar", ikon: "📏", label: "Sejajarkan" },
   { id: "ukur", ikon: "📎", label: "Satuan Tak Baku" },
   { id: "urut", ikon: "📊", label: "Urutkan" },
+  { id: "kuis", ikon: "⭐", label: "Kuis" },
 ];
 
 const BENDA_BANDING: { id: IdBenda; nama: string; panjang: number; warna: string }[] = [
@@ -106,6 +107,17 @@ const SOAL_KUIS: SoalKuis[] = [
       { id: "6-4-2", label: "6 petak, 4 petak, 2 petak" },
       { id: "2-4-6", label: "2 petak, 4 petak, 6 petak" },
       { id: "4-6-2", label: "4 petak, 6 petak, 2 petak" },
+    ],
+  },
+  {
+    id: "q5",
+    tanya: "Meja diukur 4 jengkal. Buku diukur 2 jengkal. Mana yang lebih panjang?",
+    hint: "4 jengkal lebih banyak dari 2 jengkal.",
+    kunci: "meja",
+    opsi: [
+      { id: "meja", label: "Meja" },
+      { id: "buku", label: "Buku" },
+      { id: "sama", label: "Sama panjang" },
     ],
   },
 ];
@@ -257,7 +269,7 @@ export default function SimulasiMtk1Bab7({
         <p className="mt-1 text-sm text-teal-50">Sejajarkan pangkal, ukur rapat, dan urutkan bersama IGIL.</p>
       </div>
 
-      <div className="grid grid-cols-3 gap-2 bg-teal-50 p-2">
+      <div className="grid grid-cols-2 gap-2 bg-teal-50 p-2 sm:grid-cols-4">
         {TAB_LAB.map((item) => (
           <button
             key={item.id}
@@ -306,6 +318,7 @@ export default function SimulasiMtk1Bab7({
         {tab === "urut" ? (
           <TabUrut misi={misiUrut} urutan={urutan} setMisi={setMisiUrut} setUrutan={setUrutan} kirimEvent={kirimEvent} />
         ) : null}
+        {tab === "kuis" ? <TabKuis kirimEvent={kirimEvent} onLulus={tandaiSelesai} /> : null}
       </div>
 
     </div>
@@ -673,7 +686,7 @@ function TabKuis({
       kirimEvent("QUIZ_ANSWERED", { pesan: `Benar! Soal ${nomor + 1} sudah tepat.`, soal: soal.id, benar: true });
       window.setTimeout(() => {
         if (nomor + 1 >= SOAL_KUIS.length) {
-          onLulus("Kuis mengukur panjang benda selesai. Empat soal sudah dijawab.");
+          onLulus("Kuis mengukur panjang benda selesai. Lima soal sudah dijawab.");
           setNomor(SOAL_KUIS.length);
         } else {
           setNomor((n) => n + 1);
@@ -696,14 +709,14 @@ function TabKuis({
           🌟
         </p>
         <p className="mt-2 text-xl font-black text-emerald-800">Kuis selesai!</p>
-        <p className="mt-1 text-sm font-semibold text-emerald-700">Empat soal mengukur panjang sudah terjawab.</p>
+        <p className="mt-1 text-sm font-semibold text-emerald-700">Lima soal mengukur panjang sudah terjawab.</p>
       </div>
     );
   }
 
   return (
     <div className="space-y-4">
-      <p className="text-xs font-bold uppercase tracking-wide text-teal-500">Soal {nomor + 1} dari 4</p>
+      <p className="text-xs font-bold uppercase tracking-wide text-teal-500">Soal {nomor + 1} dari {SOAL_KUIS.length}</p>
       <p className="text-lg font-black text-slate-800">{soal.tanya}</p>
       {nomor === 0 ? (
         <div className="relative rounded-2xl bg-amber-50 p-3 pl-6">

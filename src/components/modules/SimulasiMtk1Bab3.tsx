@@ -22,12 +22,13 @@ export type TutorEventMasuk = {
   payload: TutorEventPayload;
 };
 
-type TabLab = "ambil" | "katak" | "banding";
+type TabLab = "ambil" | "katak" | "banding" | "kuis";
 
 const TAB_LAB: { id: TabLab; ikon: string; label: string }[] = [
   { id: "ambil", ikon: "🍎", label: "Ambil Benda" },
   { id: "katak", ikon: "🐸", label: "Lompat Katak" },
   { id: "banding", ikon: "🐰", label: "Bandingkan Selisih" },
+  { id: "kuis", ikon: "⭐", label: "Kuis" },
 ];
 
 const SOAL_KUIS = [
@@ -58,6 +59,13 @@ const SOAL_KUIS = [
     hint: "Dari 6, berapa yang harus diambil supaya sisa 2?",
     kunci: "4",
     opsi: ["3", "4", "5"],
+  },
+  {
+    id: "q5",
+    tanya: "Ada 10 kelereng. 6 kelereng masuk kantong. Berapa yang masih di meja?",
+    hint: "Mulai dari 10, ambil 6. Sisanya 4.",
+    kunci: "4",
+    opsi: ["3", "4", "6"],
   },
 ] as const;
 
@@ -338,7 +346,7 @@ export default function SimulasiMtk1Bab3({
         <p className="mt-1 text-sm text-rose-50">Ambil, lompat mundur, dan bandingkan sisa bersama IGIL.</p>
       </div>
 
-      <div className="grid grid-cols-3 gap-2 bg-rose-50 p-2">
+      <div className="grid grid-cols-2 gap-2 bg-rose-50 p-2 sm:grid-cols-4">
         {TAB_LAB.map((item) => (
           <button
             key={item.id}
@@ -407,6 +415,9 @@ export default function SimulasiMtk1Bab3({
             setTerpasang={setTerpasang}
             kirimEvent={kirimEvent}
           />
+        ) : null}
+        {tab === "kuis" ? (
+          <TabKuis kirimEvent={kirimEvent} onLulus={tandaiSelesai} onKalimat={setKalimatKuis} />
         ) : null}
       </div>
 
@@ -815,8 +826,9 @@ function TabKuis({
       { a: 9, b: 4, hasil: 5 },
       { a: 5, b: 3, hasil: 2 },
       { a: 6, b: 4, hasil: 2 },
+      { a: 10, b: 6, hasil: 4 },
     ];
-    onKalimat(peta[Math.min(nomor, 3)]);
+    onKalimat(peta[Math.min(nomor, peta.length - 1)]);
   }, [nomor, onKalimat]);
 
   const jawab = (id: string) => {
@@ -832,7 +844,7 @@ function TabKuis({
       });
       window.setTimeout(() => {
         if (nomor + 1 >= SOAL_KUIS.length) {
-          onLulus("Kuis pengurangan sampai 10 selesai. Empat soal interaktif sudah dijawab.");
+          onLulus("Kuis pengurangan sampai 10 selesai. Lima soal sudah dijawab.");
           setNomor(SOAL_KUIS.length);
         } else {
           setNomor((n) => n + 1);
@@ -859,14 +871,14 @@ function TabKuis({
           🌟
         </p>
         <p className="mt-2 text-xl font-black text-emerald-800">Kuis selesai!</p>
-        <p className="mt-1 text-sm font-semibold text-emerald-700">Empat soal pengurangan sudah terjawab.</p>
+        <p className="mt-1 text-sm font-semibold text-emerald-700">Lima soal pengurangan sudah terjawab.</p>
       </div>
     );
   }
 
   return (
     <div className="space-y-4">
-      <p className="text-xs font-bold uppercase tracking-wide text-rose-500">Soal {nomor + 1} dari 4</p>
+      <p className="text-xs font-bold uppercase tracking-wide text-rose-500">Soal {nomor + 1} dari {SOAL_KUIS.length}</p>
       <p className="text-lg font-black text-slate-800">{soal.tanya}</p>
 
       {nomor === 0 ? (

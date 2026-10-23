@@ -3,6 +3,7 @@
 import { useCallback, useEffect, useRef, useState } from "react";
 import type { KelaminGuru } from "@/lib/guru";
 import { siapkanSuaraGuruIgil, ucapkanGuruIgil } from "@/lib/suara-guru-igil";
+import { KuisLima, PitaSuaraIgil, KUIS_MTK2_BAB1 } from "./KuisLimaSimulasi";
 
 export type TutorEventType =
   | "SCENE_START"
@@ -27,7 +28,7 @@ type TutorEventMasuk = {
   payload: TutorEventPayload;
 };
 
-type TabLab = "adegan1" | "adegan2" | "adegan3";
+type TabLab = "adegan1" | "adegan2" | "adegan3" | "kuis";
 type Titik = { x: number; y: number };
 type Kelereng = { id: number; x: number; y: number; warna: string; ikat: 0 | 1 | 2 };
 
@@ -35,6 +36,7 @@ const TAB_LAB: { id: TabLab; label: string }[] = [
   { id: "adegan1", label: "1. Ikat 10" },
   { id: "adegan2", label: "2. Nilai Tempat" },
   { id: "adegan3", label: "3. Bandingkan" },
+  { id: "kuis", label: "4. Kuis" },
 ];
 
 const WARNA_KELERENG = ["#ef4444", "#f97316", "#eab308", "#22c55e", "#06b6d4", "#3b82f6", "#a855f7", "#ec4899"];
@@ -686,6 +688,7 @@ export default function SimulasiMtk2Bab1({
       adegan1: "Ayo lingkari setiap 10 kelereng. Satu lingkaran jadi satu toples puluhan!",
       adegan2: "Ini rumah nilai tempat. Tulis 3 di kamar puluhan, dan 5 di kamar satuan.",
       adegan3: "Jangan terkecoh satuan 8. Lingkari meja yang puluhannya lebih banyak.",
+      kuis: "Lima soal berbeda. Pilih jawaban yang tepat.",
     };
     kirimEvent("SCENE_START", { pesan: pembuka[id], tab: id });
   };
@@ -716,6 +719,7 @@ export default function SimulasiMtk2Bab1({
         </button>
       </div>
 
+      <PitaSuaraIgil pesan={pesanIgil} bicara={sedangBicara} onUlang={() => ucapkan(pesanIgil)} />
       <div className="flex flex-wrap gap-2 bg-sky-50 p-2">
         {TAB_LAB.map((item) => (
           <button
@@ -735,7 +739,7 @@ export default function SimulasiMtk2Bab1({
         {tab === "adegan1" ? <AdeganKelereng kirimEvent={kirimEvent} /> : null}
         {tab === "adegan2" ? <AdeganNilaiTempat kirimEvent={kirimEvent} /> : null}
         {tab === "adegan3" ? <AdeganBanding kirimEvent={kirimEvent} /> : null}
-        <SudutIgil pesan={pesanIgil} sedangBicara={sedangBicara} onUlang={() => ucapkan(pesanIgil)} />
+        {tab === "kuis" ? <KuisLima butir={KUIS_MTK2_BAB1} onJawab={(pesan, benar, soal) => kirimEvent("QUIZ_ANSWERED", { pesan, benar, soal })} onSelesai={tandaiSelesai} /> : null}
       </div>
 
     </div>

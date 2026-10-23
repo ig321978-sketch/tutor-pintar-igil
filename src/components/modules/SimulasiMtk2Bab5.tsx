@@ -3,6 +3,7 @@
 import { useCallback, useEffect, useRef, useState, type ReactNode } from "react";
 import type { KelaminGuru } from "@/lib/guru";
 import { hentikanSuaraGuruIgil, siapkanSuaraGuruIgil, ucapkanGuruIgil } from "@/lib/suara-guru-igil";
+import { KuisLima, PitaSuaraIgil, KUIS_MTK2_BAB5 } from "./KuisLimaSimulasi";
 
 export type TutorEventType =
   | "SCENE_START"
@@ -19,7 +20,7 @@ export type TutorEventPayload = {
 };
 
 type TutorEventMasuk = { waktu: string; jenis: string; payload: TutorEventPayload };
-type TabLab = "cerita" | "info" | "restoran" | "rangkuman";
+type TabLab = "cerita" | "info" | "restoran" | "rangkuman" | "kuis";
 type Titik = { x: number; y: number };
 type JenisKanvas = "garis-tengah" | "silang" | "arsir-setengah" | "lingkar" | "tulis";
 
@@ -28,6 +29,7 @@ const TAB_LAB: { id: TabLab; label: string }[] = [
   { id: "info", label: "2. Infografis" },
   { id: "restoran", label: "3. Restoran" },
   { id: "rangkuman", label: "4. Rangkuman" },
+  { id: "kuis", label: "5. Kuis" },
 ];
 
 const POLA_ANGKA: Record<string, string> = {
@@ -791,6 +793,7 @@ export default function SimulasiMtk2Bab5({
     info: "Lihat ringkasan pecahan. Angka atas bagian yang diambil. Angka bawah semua potongan sama besar.",
     restoran: "Selamat datang di Restoran Berbagi Adil! Tamu hanya tersenyum jika potongannya sama besar.",
     rangkuman: "Ingat tiga kalimat kunci: setengah, seperempat, dan setengah kumpulan.",
+    kuis: "Lima soal berbeda. Pilih jawaban yang tepat.",
   };
 
   const gantiTab = (id: TabLab) => {
@@ -825,6 +828,7 @@ export default function SimulasiMtk2Bab5({
           {suaraAktif ? "Suara Aktif" : "Suara Mati"}
         </button>
       </div>
+      <PitaSuaraIgil pesan={pesanIgil} bicara={sedangBicara} onUlang={() => ucapkan(pesanIgil)} />
       <div className="flex flex-wrap gap-2 bg-amber-50 p-2">
         {TAB_LAB.map((item) => (
           <button
@@ -840,13 +844,13 @@ export default function SimulasiMtk2Bab5({
         ))}
       </div>
       <div className="relative h-[min(72vh,42rem)] bg-gradient-to-b from-amber-50 to-orange-50">
-        <div className="h-full overflow-y-auto p-3 pb-32 sm:p-4">
+        <div className="h-full overflow-y-auto p-3 sm:p-4">
         {tab === "cerita" ? <AdeganCerita kirimEvent={kirimEvent} onBicara={setSedangBicara} /> : null}
         {tab === "info" ? <AdeganInfo kirimEvent={kirimEvent} onBicara={setSedangBicara} /> : null}
         {tab === "restoran" ? <AdeganRestoran kirimEvent={kirimEvent} onBicara={setSedangBicara} /> : null}
         {tab === "rangkuman" ? <AdeganRangkuman onBicara={setSedangBicara} /> : null}
+        {tab === "kuis" ? <KuisLima butir={KUIS_MTK2_BAB5} onJawab={(pesan, benar, soal) => kirimEvent("QUIZ_ANSWERED", { pesan, benar, soal })} onSelesai={tandaiSelesai} /> : null}
         </div>
-        <SudutKoki pesan={pesanIgil} sedangBicara={sedangBicara} onUlang={() => ucapkan(pesanIgil)} />
       </div>
     </div>
   );

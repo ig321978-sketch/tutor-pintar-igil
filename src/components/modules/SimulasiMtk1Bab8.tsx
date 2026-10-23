@@ -23,7 +23,7 @@ export type TutorEventMasuk = {
   payload: TutorEventPayload;
 };
 
-type TabLab = "kelompok" | "diagram" | "detektif";
+type TabLab = "kelompok" | "diagram" | "detektif" | "kuis";
 type IdBuah = "apel" | "pisang" | "jeruk" | "stroberi";
 type Orientasi = "tegak" | "datar";
 type ItemMeja = { id: string; jenis: IdBuah; x: number; y: number; diMeja: boolean };
@@ -33,6 +33,7 @@ const TAB_LAB: { id: TabLab; ikon: string; label: string }[] = [
   { id: "kelompok", ikon: "🧺", label: "Kelompokkan" },
   { id: "diagram", ikon: "📊", label: "Diagram Gambar" },
   { id: "detektif", ikon: "🔎", label: "Detektif Data" },
+  { id: "kuis", ikon: "⭐", label: "Kuis" },
 ];
 
 const BUAH: { id: IdBuah; nama: string; warna: string; latar: string }[] = [
@@ -95,6 +96,17 @@ const SOAL_KUIS: SoalKuis[] = [
       { id: "5", label: "5" },
       { id: "7", label: "7" },
       { id: "8", label: "8" },
+    ],
+  },
+  {
+    id: "q5",
+    tanya: "Ada 3 apel dan 3 pisang. Jumlah semuanya?",
+    hint: "3 + 3 = 6.",
+    kunci: "6",
+    opsi: [
+      { id: "5", label: "5" },
+      { id: "6", label: "6" },
+      { id: "9", label: "9" },
     ],
   },
 ];
@@ -287,7 +299,7 @@ export default function SimulasiMtk1Bab8({
         <p className="mt-1 text-sm text-orange-50">Kelompokkan, susun gambar, dan bandingkan data bersama IGIL.</p>
       </div>
 
-      <div className="grid grid-cols-3 gap-2 bg-orange-50 p-2">
+      <div className="grid grid-cols-2 gap-2 bg-orange-50 p-2 sm:grid-cols-4">
         {TAB_LAB.map((item) => (
           <button
             key={item.id}
@@ -339,6 +351,7 @@ export default function SimulasiMtk1Bab8({
             kirimEvent={kirimEvent}
           />
         ) : null}
+        {tab === "kuis" ? <TabKuis kirimEvent={kirimEvent} onLulus={tandaiSelesai} /> : null}
       </div>
 
     </div>
@@ -786,7 +799,7 @@ function TabKuis({
       kirimEvent("QUIZ_ANSWERED", { pesan: `Benar! Soal ${nomor + 1} sudah tepat.`, soal: soal.id, benar: true });
       window.setTimeout(() => {
         if (nomor + 1 >= SOAL_KUIS.length) {
-          onLulus("Kuis mengenal diagram selesai. Empat soal sudah dijawab.");
+          onLulus("Kuis mengenal diagram selesai. Lima soal sudah dijawab.");
           setNomor(SOAL_KUIS.length);
         } else {
           setNomor((n) => n + 1);
@@ -810,14 +823,14 @@ function TabKuis({
           🌟
         </p>
         <p className="mt-2 text-xl font-black text-emerald-800">Kuis selesai!</p>
-        <p className="mt-1 text-sm font-semibold text-emerald-700">Empat soal diagram sudah terjawab.</p>
+        <p className="mt-1 text-sm font-semibold text-emerald-700">Lima soal diagram sudah terjawab.</p>
       </div>
     );
   }
 
   return (
     <div className="space-y-4">
-      <p className="text-xs font-bold uppercase tracking-wide text-orange-500">Soal {nomor + 1} dari 4</p>
+      <p className="text-xs font-bold uppercase tracking-wide text-orange-500">Soal {nomor + 1} dari {SOAL_KUIS.length}</p>
       <p className="text-lg font-black text-slate-800">{soal!.tanya}</p>
       {nomor === 0 ? (
         <MiniBar

@@ -3,6 +3,7 @@
 import { useCallback, useEffect, useRef, useState } from "react";
 import type { KelaminGuru } from "@/lib/guru";
 import { hentikanSuaraGuruIgil, ucapkanGuruIgil } from "@/lib/suara-guru-igil";
+import { KuisLima, PitaSuaraIgil, KUIS_MTK3_BAB1 } from "./KuisLimaSimulasi";
 
 export type TutorEventType =
   | "SCENE_START"
@@ -29,7 +30,7 @@ type TutorEventMasuk = {
   payload: TutorEventPayload;
 };
 
-type TabLab = "pabrik" | "teropong" | "timbangan";
+type TabLab = "pabrik" | "teropong" | "timbangan" | "kuis";
 type Titik = { x: number; y: number };
 type Kirim = (jenis: TutorEventType, payload: TutorEventPayload, bicara?: boolean) => void;
 
@@ -37,6 +38,7 @@ const TAB_LAB: { id: TabLab; label: string }[] = [
   { id: "pabrik", label: "Pabrik Balok" },
   { id: "teropong", label: "Teropong" },
   { id: "timbangan", label: "Timbangan" },
+  { id: "kuis", label: "Kuis" },
 ];
 
 const NAMA = ["nol", "satu", "dua", "tiga", "empat", "lima", "enam", "tujuh", "delapan", "sembilan"];
@@ -1395,6 +1397,7 @@ export default function SimulasiMtk3Bab1({
     pabrik: "Tambah baloknya. Sepuluh satuan menyatu jadi satu puluhan. Sepuluh puluhan jadi satu lempeng ratusan.",
     teropong: "Geser teropong ke ratusan yang kamu cari. Lalu lompat seratus, sepuluh, atau satu.",
     timbangan: "Cek ratusan dulu. Jangan terkecoh puluhan yang kelihatan besar.",
+    kuis: "Lima soal berbeda. Pilih jawaban yang tepat.",
   };
 
   const gantiTab = (id: TabLab) => {
@@ -1441,9 +1444,10 @@ export default function SimulasiMtk3Bab1({
             suaraAktif ? "bg-amber-300 text-amber-950" : "bg-white/20 text-white"
           }`}
         >
-          {suaraAktif ? "Suara hidup" : "Suara mati"}
+          {suaraAktif ? "Suara Aktif" : "Suara Mati"}
         </button>
       </div>
+      <PitaSuaraIgil pesan={pesanIgil} bicara={bicara} onUlang={() => ucapkan(pesanIgil)} />
       <div className="flex gap-1 bg-indigo-50 p-1">
         {TAB_LAB.map((item) => (
           <button
@@ -1462,8 +1466,8 @@ export default function SimulasiMtk3Bab1({
         {tab === "pabrik" ? <ModePabrik kirimEvent={kirimEvent} /> : null}
         {tab === "teropong" ? <ModeTeropong kirimEvent={kirimEvent} /> : null}
         {tab === "timbangan" ? <ModeTimbangan kirimEvent={kirimEvent} /> : null}
+        {tab === "kuis" ? <KuisLima butir={KUIS_MTK3_BAB1} onJawab={(pesan, benar, soal) => kirimEvent("QUIZ_ANSWERED", { pesan, benar, soal })} onSelesai={tandaiSelesai} /> : null}
       </div>
-      <ArsitekIgil pesan={pesanIgil} bicara={bicara} onUlang={() => ucapkan(pesanIgil)} />
     </div>
   );
 }

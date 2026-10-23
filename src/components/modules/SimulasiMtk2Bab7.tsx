@@ -3,6 +3,7 @@
 import { useCallback, useEffect, useRef, useState, type PointerEvent, type ReactNode } from "react";
 import type { KelaminGuru } from "@/lib/guru";
 import { hentikanSuaraGuruIgil, siapkanSuaraGuruIgil, ucapkanGuruIgil } from "@/lib/suara-guru-igil";
+import { KuisLima, PitaSuaraIgil, KUIS_MTK2_BAB7 } from "./KuisLimaSimulasi";
 
 export type TutorEventType =
   | "SCENE_START"
@@ -23,7 +24,7 @@ export type TutorEventPayload = {
 };
 
 type TutorEventMasuk = { waktu: string; jenis: string; payload: TutorEventPayload };
-type TabLab = "mutiara" | "peta" | "timbang";
+type TabLab = "mutiara" | "peta" | "timbang" | "kuis";
 type Titik = { x: number; y: number };
 type JenisKanvas = "tulis" | "lingkar-kiri" | "lingkar-kanan";
 type Kirim = (jenis: TutorEventType, payload: TutorEventPayload, bicara?: boolean) => void;
@@ -33,6 +34,7 @@ const TAB_LAB: { id: TabLab; label: string }[] = [
   { id: "mutiara", label: "1. Mutiara" },
   { id: "peta", label: "2. Peta 100" },
   { id: "timbang", label: "3. Banding" },
+  { id: "kuis", label: "4. Kuis" },
 ];
 
 const SATUAN_KATA = ["nol", "satu", "dua", "tiga", "empat", "lima", "enam", "tujuh", "delapan", "sembilan"];
@@ -1277,6 +1279,7 @@ export default function SimulasiMtk2Bab7({
     mutiara: "Tambah puluhan dan satuan. Kalau satuan penuh 10, ikat jadi 1 kerang puluhan. 10 kerang jadi peti seratus.",
     peta: "Papan 1 sampai 100. Lompat 2, 5, atau 10. Ketuk angka, lalu lihat tetangga plus-minus 1 dan 10.",
     timbang: "Bandingkan dua kapal. Cek puluhan dulu. Jangan terkecoh satuan yang lebih besar.",
+    kuis: "Lima soal berbeda. Pilih jawaban yang tepat.",
   };
 
   const gantiTab = (id: TabLab) => {
@@ -1327,6 +1330,7 @@ export default function SimulasiMtk2Bab7({
           {suaraAktif ? "Suara Aktif" : "Suara Mati"}
         </button>
       </div>
+      <PitaSuaraIgil pesan={pesanIgil} bicara={sedangBicara} onUlang={() => ucapkan(pesanIgil)} />
       <div className="flex flex-wrap gap-2 bg-sky-50 p-2">
         {TAB_LAB.map((item) => (
           <button
@@ -1342,12 +1346,12 @@ export default function SimulasiMtk2Bab7({
         ))}
       </div>
       <div className="relative h-[min(72vh,42rem)] bg-gradient-to-b from-sky-100 to-cyan-600">
-        <div className="h-full overflow-y-auto p-3 pb-32 sm:p-4">
+        <div className="h-full overflow-y-auto p-3 sm:p-4">
           {tab === "mutiara" ? <AdeganMutiara kirimEvent={kirimEvent} onBicara={setSedangBicara} /> : null}
           {tab === "peta" ? <AdeganPeta kirimEvent={kirimEvent} onBicara={setSedangBicara} /> : null}
           {tab === "timbang" ? <AdeganTimbang kirimEvent={kirimEvent} onBicara={setSedangBicara} /> : null}
+          {tab === "kuis" ? <KuisLima butir={KUIS_MTK2_BAB7} onJawab={(pesan, benar, soal) => kirimEvent("QUIZ_ANSWERED", { pesan, benar, soal })} onSelesai={tandaiSelesai} /> : null}
         </div>
-        <SudutPenyelam pesan={pesanIgil} sedangBicara={sedangBicara} onUlang={() => ucapkan(pesanIgil)} />
       </div>
     </div>
   );

@@ -3,6 +3,7 @@
 import { useCallback, useEffect, useRef, useState, type PointerEvent as AcaraPointer } from "react";
 import type { KelaminGuru } from "@/lib/guru";
 import { hentikanSuaraGuruIgil, ucapkanGuruIgil } from "@/lib/suara-guru-igil";
+import { KuisLima, PitaSuaraIgil, KUIS_MTK3_DATA } from "./KuisLimaSimulasi";
 
 export type TutorEventType =
   | "SCENE_START"
@@ -29,7 +30,7 @@ type TutorEventMasuk = {
   payload: TutorEventPayload;
 };
 
-type TabLab = "sortir" | "tabel" | "filter";
+type TabLab = "sortir" | "tabel" | "filter" | "kuis";
 type Titik = { x: number; y: number };
 type Kirim = (jenis: TutorEventType, payload: TutorEventPayload, bicara?: boolean) => void;
 type KartuAngka = { id: number; nilai: number };
@@ -39,6 +40,7 @@ const TAB_LAB: { id: TabLab; label: string }[] = [
   { id: "sortir", label: "Sortir" },
   { id: "tabel", label: "Tabel" },
   { id: "filter", label: "Filter" },
+  { id: "kuis", label: "Kuis" },
 ];
 
 const PRESET: Record<PresetId, { judul: string; satuan: string; angka: number[] }> = {
@@ -1316,6 +1318,7 @@ export default function SimulasiMtk3Data({
     sortir: "Ketuk angka dari yang paling kecil. Ujung kiri terkecil, ujung kanan terbesar.",
     tabel: "Coret satu data, lalu ketuk baris tabel yang sama. Turus kelima digaris miring.",
     filter: "Nyalakan lampu sorot. Nilai di atas 80 tidak menghitung baris 80.",
+    kuis: "Lima soal berbeda. Pilih jawaban yang tepat.",
   };
 
   const gantiTab = (id: TabLab) => {
@@ -1348,9 +1351,10 @@ export default function SimulasiMtk3Data({
           }}
           className={`inline-flex min-h-12 items-center rounded-xl px-3 text-xs font-black ${suaraAktif ? "bg-amber-300 text-amber-950" : "bg-white/20 text-white"}`}
         >
-          {suaraAktif ? "Suara hidup" : "Suara mati"}
+          {suaraAktif ? "Suara Aktif" : "Suara Mati"}
         </button>
       </div>
+      <PitaSuaraIgil pesan={pesanIgil} bicara={sedangBicara} onUlang={() => ucapkan(pesanIgil)} />
       <div className="flex gap-1 bg-indigo-50 p-1">
         {TAB_LAB.map((item) => (
           <button
@@ -1367,8 +1371,8 @@ export default function SimulasiMtk3Data({
         {tab === "sortir" ? <ModeSortir kirimEvent={kirimEvent} bicara={bicara} /> : null}
         {tab === "tabel" ? <ModeTabel kirimEvent={kirimEvent} bicara={bicara} /> : null}
         {tab === "filter" ? <ModeFilter kirimEvent={kirimEvent} bicara={bicara} /> : null}
+        {tab === "kuis" ? <KuisLima butir={KUIS_MTK3_DATA} onJawab={(pesan, benar, soal) => kirimEvent("QUIZ_ANSWERED", { pesan, benar, soal })} onSelesai={tandaiSelesai} /> : null}
       </div>
-      <IlmuwanIgil pesan={pesanIgil} bicara={sedangBicara} onUlang={() => ucapkan(pesanIgil)} />
     </div>
   );
 }

@@ -3,6 +3,7 @@
 import { useCallback, useEffect, useRef, useState, type PointerEvent, type ReactNode } from "react";
 import type { KelaminGuru } from "@/lib/guru";
 import { hentikanSuaraGuruIgil, siapkanSuaraGuruIgil, ucapkanGuruIgil } from "@/lib/suara-guru-igil";
+import { KuisLima, PitaSuaraIgil, KUIS_MTK2_BAB8 } from "./KuisLimaSimulasi";
 
 export type TutorEventType =
   | "SCENE_START"
@@ -24,7 +25,7 @@ export type TutorEventPayload = {
 };
 
 type TutorEventMasuk = { waktu: string; jenis: string; payload: TutorEventPayload };
-type TabLab = "turus" | "jembatan" | "detektif";
+type TabLab = "turus" | "jembatan" | "detektif" | "kuis";
 type Titik = { x: number; y: number };
 type JenisKanvas = "tulis" | "lingkar-kiri" | "lingkar-kanan" | "miring";
 type Kirim = (jenis: TutorEventType, payload: TutorEventPayload, bicara?: boolean) => void;
@@ -36,6 +37,7 @@ const TAB_LAB: { id: TabLab; label: string }[] = [
   { id: "turus", label: "1. Turus" },
   { id: "jembatan", label: "2. Jembatan" },
   { id: "detektif", label: "3. Detektif" },
+  { id: "kuis", label: "4. Kuis" },
 ];
 
 const SATUAN_KATA = ["nol", "satu", "dua", "tiga", "empat", "lima", "enam", "tujuh", "delapan", "sembilan"];
@@ -1300,6 +1302,7 @@ export default function SimulasiMtk2Bab8({
     turus: "Ketuk satwa atau tombol plus. Setiap lima garis, ikat dengan garis miring. Coba juga Mode Salah tanpa ikatan.",
     jembatan: "Ubah turus di kiri, gambar di kanan ikut berubah. Jumlahnya tetap sama. Boleh tegak atau mendatar.",
     detektif: "Pilih dua kategori, tampilkan garis selisih. Lalu uji jebakan semangka renggang versus stroberi rapat.",
+    kuis: "Lima soal berbeda. Pilih jawaban yang tepat.",
   };
 
   const gantiTab = (id: TabLab) => {
@@ -1345,6 +1348,7 @@ export default function SimulasiMtk2Bab8({
           {suaraAktif ? "Suara Aktif" : "Suara Mati"}
         </button>
       </div>
+      <PitaSuaraIgil pesan={pesanIgil} bicara={sedangBicara} onUlang={() => ucapkan(pesanIgil)} />
       <div className="flex flex-wrap gap-2 bg-emerald-50 p-2">
         {TAB_LAB.map((item) => (
           <button
@@ -1360,12 +1364,12 @@ export default function SimulasiMtk2Bab8({
         ))}
       </div>
       <div className="relative h-[min(72vh,42rem)] bg-gradient-to-b from-lime-100 to-green-700">
-        <div className="h-full overflow-y-auto p-3 pb-32 sm:p-4">
+        <div className="h-full overflow-y-auto p-3 sm:p-4">
           {tab === "turus" ? <AdeganTurus kirimEvent={kirimEvent} onBicara={setSedangBicara} /> : null}
           {tab === "jembatan" ? <AdeganJembatan kirimEvent={kirimEvent} onBicara={setSedangBicara} /> : null}
           {tab === "detektif" ? <AdeganDetektif kirimEvent={kirimEvent} onBicara={setSedangBicara} /> : null}
+          {tab === "kuis" ? <KuisLima butir={KUIS_MTK2_BAB8} onJawab={(pesan, benar, soal) => kirimEvent("QUIZ_ANSWERED", { pesan, benar, soal })} onSelesai={tandaiSelesai} /> : null}
         </div>
-        <SudutRanger pesan={pesanIgil} sedangBicara={sedangBicara} onUlang={() => ucapkan(pesanIgil)} />
       </div>
     </div>
   );

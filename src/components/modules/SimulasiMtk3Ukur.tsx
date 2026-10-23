@@ -3,6 +3,7 @@
 import { useCallback, useEffect, useRef, useState } from "react";
 import type { KelaminGuru } from "@/lib/guru";
 import { hentikanSuaraGuruIgil, ucapkanGuruIgil } from "@/lib/suara-guru-igil";
+import { KuisLima, PitaSuaraIgil, KUIS_MTK3_UKUR } from "./KuisLimaSimulasi";
 
 export type TutorEventType =
   | "SCENE_START"
@@ -29,7 +30,7 @@ type TutorEventMasuk = {
   payload: TutorEventPayload;
 };
 
-type TabLab = "penggaris" | "timbangan" | "konversi";
+type TabLab = "penggaris" | "timbangan" | "konversi" | "kuis";
 type Titik = { x: number; y: number };
 type Kirim = (jenis: TutorEventType, payload: TutorEventPayload, bicara?: boolean) => void;
 
@@ -37,6 +38,7 @@ const TAB_LAB: { id: TabLab; label: string }[] = [
   { id: "penggaris", label: "Penggaris" },
   { id: "timbangan", label: "Timbangan" },
   { id: "konversi", label: "Konversi" },
+  { id: "kuis", label: "Kuis" },
 ];
 
 const NAMA = ["nol", "satu", "dua", "tiga", "empat", "lima", "enam", "tujuh", "delapan", "sembilan"];
@@ -1291,6 +1293,7 @@ export default function SimulasiMtk3Ukur({
     penggaris: "Pangkal benda pas di angka 0. Satu sentimeter ada sepuluh milimeter.",
     timbangan: "Lihat jarumnya. Seribu gram sama dengan satu kilogram.",
     konversi: "Satu meter ada seratus sentimeter. Satu kilogram ada seribu gram.",
+    kuis: "Lima soal berbeda. Pilih jawaban yang tepat.",
   };
 
   const gantiTab = (id: TabLab) => {
@@ -1326,9 +1329,10 @@ export default function SimulasiMtk3Ukur({
             suaraAktif ? "bg-amber-300 text-amber-950" : "bg-white/20 text-white"
           }`}
         >
-          {suaraAktif ? "Suara hidup" : "Suara mati"}
+          {suaraAktif ? "Suara Aktif" : "Suara Mati"}
         </button>
       </div>
+      <PitaSuaraIgil pesan={pesanIgil} bicara={bicara} onUlang={() => ucapkan(pesanIgil)} />
       <div className="flex gap-1 bg-indigo-50 p-1">
         {TAB_LAB.map((item) => (
           <button
@@ -1347,8 +1351,8 @@ export default function SimulasiMtk3Ukur({
         {tab === "penggaris" ? <ModePenggaris kirimEvent={kirimEvent} /> : null}
         {tab === "timbangan" ? <ModeTimbangan kirimEvent={kirimEvent} /> : null}
         {tab === "konversi" ? <ModeKonversi kirimEvent={kirimEvent} /> : null}
+        {tab === "kuis" ? <KuisLima butir={KUIS_MTK3_UKUR} onJawab={(pesan, benar, soal) => kirimEvent("QUIZ_ANSWERED", { pesan, benar, soal })} onSelesai={tandaiSelesai} /> : null}
       </div>
-      <InsinyurIgil pesan={pesanIgil} bicara={bicara} onUlang={() => ucapkan(pesanIgil)} />
     </div>
   );
 }
