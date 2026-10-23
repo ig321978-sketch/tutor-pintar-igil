@@ -988,16 +988,9 @@ function JamTiga() {
 function KaptenGeometri({ pesan, bicara, onUlang }: { pesan: string; bicara: boolean; onUlang: () => void }) {
   return (
     <div className="flex items-end gap-2 border-t border-amber-200 bg-amber-50 px-2 py-2">
-      <svg width="78" height="88" viewBox="0 0 88 100" aria-hidden className={bicara ? "igil-angguk" : ""}>
-        <polygon points="16,34 52,34 34,16" fill="#facc15" stroke="#a16207" />
-        <circle cx="34" cy="46" r="14" fill="#f6d7b0" />
-        <circle cx="29" cy="45" r="2" fill="#1C01A5" />
-        <circle cx="39" cy="45" r="2" fill="#1C01A5" />
-        <path d="M30 52 Q34 56 38 52" fill="none" stroke="#1C01A5" strokeWidth="1.5" />
-        <ellipse cx="34" cy="76" rx="16" ry="16" fill="#1C01A5" />
-        <polygon points="54,50 86,50 54,82" fill="#fde047" stroke="#a16207" strokeWidth="2" />
-        <path d="M54 62 H66 V50" fill="none" stroke="#16a34a" strokeWidth="2" />
-      </svg>
+      <span aria-hidden className={`select-none text-7xl leading-none ${bicara ? "igil-angguk" : ""}`}>
+        🦉
+      </span>
       <div className="min-w-0 flex-1">
         <p className="text-[11px] font-black uppercase text-amber-800">Kapten Geometri IGIL</p>
         <p className="text-sm font-bold leading-snug text-[#1C01A5]">{pesan}</p>

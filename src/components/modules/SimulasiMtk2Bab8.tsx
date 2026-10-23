@@ -316,21 +316,9 @@ function useMic(onTeks: (teks: string) => void) {
 
 function IgilRangerSvg({ bicara }: { bicara: boolean }) {
   return (
-    <svg viewBox="0 0 80 118" width="82" height="118" aria-hidden className={bicara ? "igil-kedip" : ""}>
-      <ellipse cx="40" cy="112" rx="18" ry="5" fill="#000" opacity="0.12" />
-      <ellipse cx="40" cy="80" rx="24" ry="22" fill="#c2410c" />
-      <circle cx="40" cy="54" r="20" fill="#ea580c" />
-      <ellipse cx="40" cy="34" rx="28" ry="8" fill="#92400e" />
-      <ellipse cx="40" cy="28" rx="16" ry="10" fill="#78350f" />
-      <circle cx="32" cy="54" r="5" fill="#fff" />
-      <circle cx="48" cy="54" r="5" fill="#fff" />
-      <circle cx="33" cy="55" r="2.6" fill="#1e1b4b" />
-      <circle cx="49" cy="55" r="2.6" fill="#1e1b4b" />
-      <path d="M40 60 L46 68 L34 68 Z" fill="#fbbf24" />
-      <text x="40" y="104" textAnchor="middle" fontSize="6.5" fontWeight="800" fill="#14532d">
-        RANGER
-      </text>
-    </svg>
+    <span aria-hidden className={`inline-flex h-24 w-20 items-center justify-center text-7xl leading-none ${bicara ? "igil-kedip" : ""}`}>
+      🦉
+    </span>
   );
 }
 

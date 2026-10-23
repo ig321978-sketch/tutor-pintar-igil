@@ -288,24 +288,9 @@ function useMic(onTeks: (teks: string) => void) {
 
 function IgilPenyelamSvg({ bicara }: { bicara: boolean }) {
   return (
-    <svg viewBox="0 0 80 118" width="82" height="118" aria-hidden className={bicara ? "igil-kedip" : ""}>
-      <ellipse cx="40" cy="112" rx="18" ry="5" fill="#000" opacity="0.12" />
-      <ellipse cx="40" cy="78" rx="24" ry="22" fill="#c2410c" />
-      <circle cx="40" cy="50" r="22" fill="#ea580c" />
-      <ellipse cx="40" cy="46" rx="26" ry="14" fill="#facc15" stroke="#ca8a04" strokeWidth="2" />
-      <circle cx="31" cy="48" r="8" fill="#7dd3fc" />
-      <circle cx="49" cy="48" r="8" fill="#7dd3fc" />
-      <circle cx="32" cy="50" r="3.6" fill="#1e1b4b" />
-      <circle cx="50" cy="50" r="3.6" fill="#1e1b4b" />
-      <path d="M14 48 Q4 40 10 28" fill="none" stroke="#38bdf8" strokeWidth="3" />
-      <circle cx="10" cy="26" r="4" fill="#38bdf8" />
-      <path d="M40 56 L47 64 L33 64 Z" fill="#fbbf24" />
-      <path d="M18 96 Q8 108 22 110" fill="#0ea5e9" />
-      <path d="M62 96 Q72 108 58 110" fill="#0ea5e9" />
-      <text x="40" y="104" textAnchor="middle" fontSize="6.5" fontWeight="800" fill="#0f172a">
-        PENYELAM
-      </text>
-    </svg>
+    <span aria-hidden className={`inline-flex h-24 w-20 items-center justify-center text-7xl leading-none ${bicara ? "igil-kedip" : ""}`}>
+      🦉
+    </span>
   );
 }
 

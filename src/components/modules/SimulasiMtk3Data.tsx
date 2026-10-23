@@ -545,19 +545,9 @@ function Turus({ jumlah }: { jumlah: number }) {
 function IlmuwanIgil({ pesan, bicara, onUlang }: { pesan: string; bicara: boolean; onUlang: () => void }) {
   return (
     <div className="flex items-end gap-2 border-t border-emerald-200 bg-emerald-50 px-2 py-2">
-      <svg width="78" height="88" viewBox="0 0 88 100" aria-hidden className={bicara ? "igil-angguk" : ""}>
-        <circle cx="36" cy="36" r="16" fill="#f6d7b0" />
-        <circle cx="30" cy="36" r="6" fill="none" stroke="#16a34a" strokeWidth="2.4" />
-        <circle cx="43" cy="36" r="6" fill="none" stroke="#16a34a" strokeWidth="2.4" />
-        <path d="M36 36 H37" stroke="#16a34a" strokeWidth="2" />
-        <circle cx="30" cy="36" r="1.4" fill="#1C01A5" />
-        <circle cx="43" cy="36" r="1.4" fill="#1C01A5" />
-        <path d="M31 44 Q36 48 41 44" fill="none" stroke="#1C01A5" strokeWidth="1.6" />
-        <path d="M16 58 L36 48 L56 58 L62 96 L10 96 Z" fill="#ffffff" stroke="#1C01A5" strokeWidth="2" />
-        <path d="M36 52 V94" stroke="#1C01A5" strokeWidth="2" />
-        <circle cx="36" cy="70" r="2" fill="#16a34a" />
-        <circle cx="36" cy="80" r="2" fill="#16a34a" />
-      </svg>
+      <span aria-hidden className={`select-none text-7xl leading-none ${bicara ? "igil-angguk" : ""}`}>
+        🦉
+      </span>
       <div className="min-w-0 flex-1">
         <p className="text-[11px] font-black uppercase text-emerald-800">Ilmuwan IGIL</p>
         <p className="text-sm font-bold leading-snug text-[#1C01A5]">{pesan}</p>

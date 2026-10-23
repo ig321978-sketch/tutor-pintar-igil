@@ -591,19 +591,9 @@ function ArsitekIgil({
 }) {
   return (
     <div className="flex items-end gap-2 border-t border-amber-200 bg-amber-50 px-2 py-2">
-      <svg width="72" height="84" viewBox="0 0 80 96" aria-hidden className={bicara ? "igil-angguk" : ""}>
-        <ellipse cx="40" cy="30" rx="30" ry="8" fill="#facc15" />
-        <path d="M14 30 Q14 8 40 6 Q66 8 66 30" fill="#fde047" stroke="#a16207" strokeWidth="2" />
-        <rect x="32" y="4" width="16" height="7" rx="1" fill="#fff7d6" stroke="#a16207" />
-        <ellipse cx="40" cy="48" rx="18" ry="16" fill="#f6d7b0" />
-        <circle cx="33" cy="46" r="2.2" fill="#1C01A5" />
-        <circle cx="47" cy="46" r="2.2" fill="#1C01A5" />
-        <path d="M30 40 Q28 32 34 34" stroke="#1C01A5" fill="none" strokeWidth="2" />
-        <path d="M50 40 Q52 32 46 34" stroke="#1C01A5" fill="none" strokeWidth="2" />
-        <path d="M34 54 Q40 58 46 54" stroke="#1C01A5" fill="none" strokeWidth="2" />
-        <path d="M22 68 L40 60 L58 68 L54 94 L26 94 Z" fill="#1C01A5" />
-        <rect x="34" y="72" width="12" height="12" rx="2" fill="#facc15" />
-      </svg>
+      <span aria-hidden className={`select-none text-7xl leading-none ${bicara ? "igil-angguk" : ""}`}>
+        🦉
+      </span>
       <div className="min-w-0 flex-1">
         <p className="text-[11px] font-black uppercase text-amber-800">Arsitek IGIL</p>
         <p className="text-sm font-bold leading-snug text-[#1C01A5]">{pesan}</p>

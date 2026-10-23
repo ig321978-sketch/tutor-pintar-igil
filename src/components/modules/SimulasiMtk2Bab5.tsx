@@ -294,22 +294,9 @@ function Lambang({ atas, bawah }: { atas: string; bawah: string }) {
 
 function IgilKokiSvg({ bicara }: { bicara: boolean }) {
   return (
-    <svg viewBox="0 0 80 108" width="82" height="110" aria-hidden className={bicara ? "igil-kedip" : ""}>
-      <ellipse cx="40" cy="102" rx="18" ry="5" fill="#000" opacity="0.12" />
-      <path d="M18 22 Q18 2 40 2 Q62 2 62 22 L58 28 L22 28 Z" fill="#fff" stroke="#cbd5e1" strokeWidth="2" />
-      <rect x="22" y="24" width="36" height="8" rx="2" fill="#fff" stroke="#94a3b8" />
-      <ellipse cx="40" cy="72" rx="26" ry="24" fill="#f59e0b" />
-      <ellipse cx="40" cy="76" rx="16" ry="14" fill="#fde68a" />
-      <circle cx="40" cy="46" r="22" fill="#f59e0b" />
-      <circle cx="31" cy="45" r="9" fill="#fff" />
-      <circle cx="49" cy="45" r="9" fill="#fff" />
-      <circle cx="32" cy="47" r="4.2" fill="#1e1b4b" />
-      <circle cx="50" cy="47" r="4.2" fill="#1e1b4b" />
-      <path d="M40 50 L47 59 L33 59 Z" fill="#ea580c" />
-      <text x="40" y="90" textAnchor="middle" fontSize="8" fontWeight="800" fill="#92400e">
-        KOKI
-      </text>
-    </svg>
+    <span aria-hidden className={`inline-flex h-24 w-20 items-center justify-center text-7xl leading-none ${bicara ? "igil-kedip" : ""}`}>
+      🦉
+    </span>
   );
 }
 

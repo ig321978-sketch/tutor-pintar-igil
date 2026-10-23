@@ -309,22 +309,9 @@ function useMic(onTeks: (teks: string) => void) {
 
 function IgilKaptenSvg({ bicara }: { bicara: boolean }) {
   return (
-    <svg viewBox="0 0 80 114" width="82" height="116" aria-hidden className={bicara ? "igil-kedip" : ""}>
-      <ellipse cx="40" cy="108" rx="18" ry="5" fill="#000" opacity="0.12" />
-      <ellipse cx="40" cy="16" rx="26" ry="11" fill="#1d4ed8" />
-      <rect x="12" y="16" width="56" height="11" rx="2" fill="#1e3a8a" />
-      <circle cx="40" cy="14" r="5" fill="#fbbf24" />
-      <ellipse cx="40" cy="78" rx="24" ry="22" fill="#c2410c" />
-      <circle cx="40" cy="50" r="22" fill="#ea580c" />
-      <circle cx="31" cy="48" r="9" fill="#fff" />
-      <circle cx="49" cy="48" r="9" fill="#fff" />
-      <circle cx="32" cy="50" r="4.2" fill="#1e1b4b" />
-      <circle cx="50" cy="50" r="4.2" fill="#1e1b4b" />
-      <path d="M40 54 L47 62 L33 62 Z" fill="#fbbf24" />
-      <text x="40" y="98" textAnchor="middle" fontSize="7" fontWeight="800" fill="#1e3a8a">
-        KAPTEN
-      </text>
-    </svg>
+    <span aria-hidden className={`inline-flex h-24 w-20 items-center justify-center text-7xl leading-none ${bicara ? "igil-kedip" : ""}`}>
+      🦉
+    </span>
   );
 }
 

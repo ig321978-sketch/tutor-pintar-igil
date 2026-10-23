@@ -224,22 +224,9 @@ function buatKelereng(): Kelereng[] {
 
 function IgilSvg({ bicara }: { bicara: boolean }) {
   return (
-    <svg viewBox="0 0 80 92" width="86" height="99" aria-hidden className={bicara ? "igil-kedip" : ""}>
-      <ellipse cx="40" cy="84" rx="18" ry="5" fill="#000" opacity="0.12" />
-      <ellipse cx="40" cy="60" rx="26" ry="24" fill="#f59e0b" />
-      <ellipse cx="40" cy="64" rx="16" ry="14" fill="#fde68a" />
-      <circle cx="40" cy="32" r="22" fill="#f59e0b" />
-      <path d="M20 18 L26 6 L32 22" fill="#d97706" />
-      <path d="M60 18 L54 6 L48 22" fill="#d97706" />
-      <circle cx="31" cy="31" r="9" fill="#fff" />
-      <circle cx="49" cy="31" r="9" fill="#fff" />
-      <circle cx="32" cy="33" r="4.2" fill="#1e1b4b" />
-      <circle cx="50" cy="33" r="4.2" fill="#1e1b4b" />
-      <path d="M40 36 L47 45 L33 45 Z" fill="#ea580c" />
-      <text x="40" y="78" textAnchor="middle" fontSize="9" fontWeight="800" fill="#92400e">
-        IGIL
-      </text>
-    </svg>
+    <span aria-hidden className={`inline-flex h-24 w-20 items-center justify-center text-7xl leading-none ${bicara ? "igil-kedip" : ""}`}>
+      🦉
+    </span>
   );
 }
 

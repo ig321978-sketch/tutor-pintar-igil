@@ -649,21 +649,9 @@ function BatangTimbangan({ kiri, kanan, selisih }: { kiri: ReactNode; kanan: Rea
 function DetektifIgil({ pesan, bicara, onUlang }: { pesan: string; bicara: boolean; onUlang: () => void }) {
   return (
     <div className="flex items-end gap-2 border-t border-amber-200 bg-amber-50 px-2 py-2">
-      <svg width="78" height="88" viewBox="0 0 88 100" aria-hidden className={bicara ? "igil-angguk" : ""}>
-        <ellipse cx="34" cy="24" rx="20" ry="5" fill="#6b4423" />
-        <path d="M16 24 Q16 8 34 6 Q52 8 52 24" fill="#8a5a2b" stroke="#4a2c12" strokeWidth="2" />
-        <ellipse cx="14" cy="26" rx="10" ry="4" fill="#8a5a2b" stroke="#4a2c12" />
-        <ellipse cx="54" cy="26" rx="12" ry="4" fill="#8a5a2b" stroke="#4a2c12" />
-        <ellipse cx="34" cy="46" rx="16" ry="15" fill="#f6d7b0" />
-        <circle cx="28" cy="44" r="5" fill="#fff" />
-        <circle cx="41" cy="44" r="5" fill="#fff" />
-        <circle cx="29" cy="45" r="2.2" fill="#1C01A5" />
-        <circle cx="42" cy="45" r="2.2" fill="#1C01A5" />
-        <path d="M31 52 L34 56 L37 52 Z" fill="#f59e0b" />
-        <ellipse cx="34" cy="74" rx="16" ry="16" fill="#1C01A5" />
-        <circle cx="70" cy="58" r="12" fill="#dbeafe" stroke="#0f172a" strokeWidth="3" />
-        <line x1="62" y1="67" x2="50" y2="80" stroke="#0f172a" strokeWidth="3" strokeLinecap="round" />
-      </svg>
+      <span aria-hidden className={`select-none text-7xl leading-none ${bicara ? "igil-angguk" : ""}`}>
+        🦉
+      </span>
       <div className="min-w-0 flex-1">
         <p className="text-[11px] font-black uppercase text-amber-800">Detektif IGIL</p>
         <p className="text-sm font-bold leading-snug text-[#1C01A5]">{pesan}</p>
