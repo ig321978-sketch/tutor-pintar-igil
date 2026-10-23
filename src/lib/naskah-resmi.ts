@@ -963,6 +963,28 @@ export function adalahMtk2Bab7(
   return adalahJudulMtk2Bab7(mapel, materi);
 }
 
+export function adalahJudulMtk2Bab8(mapel: string, materi: string): boolean {
+  if (!adalahMapelMatematika(mapel)) return false;
+  const judul = normJudul(materi);
+  return (
+    /bab\s*8[:.]\s*berbagai diagram/.test(judul) ||
+    /berbagai diagram/.test(judul) ||
+    /diagram gambar sederhana/.test(judul) ||
+    /ranger igil/.test(judul) ||
+    /tabel turus satwa/.test(judul) ||
+    /taman safari ranger/.test(judul)
+  );
+}
+
+export function adalahMtk2Bab8(
+  kelas: string,
+  mapel: string,
+  materi: string,
+): boolean {
+  if (!kelasDuaSd(kelas)) return false;
+  return adalahJudulMtk2Bab8(mapel, materi);
+}
+
 export function cariModulPjok1Resmi(materi: string): ModulResmiPai | null {
   const judul = normJudul(materi);
   return MODUL_PJOK1_BAB1_4.find((modul) => modul.pola.test(judul)) ?? null;

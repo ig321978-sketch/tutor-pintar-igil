@@ -828,54 +828,48 @@ const PAKET: Record<string, PaketEvaluasiEkstra> = {
   },
   "mtk-2-bab8": {
     garis: {
-      soal: "Perhatikan data diagram pensil: Kelompok Merah 3 pensil, Kelompok Biru 5 pensil. Tariklah garis untuk menjodohkan pertanyaan data dengan jawaban angka yang tepat!",
+      soal: "Tariklah garis untuk menjodohkan kumpulan turus dengan angkanya!",
       kiri: [
-        "Jumlah pensil Kelompok Merah",
-        "Jumlah pensil Kelompok Biru",
-        "Total seluruh pensil warna",
+        "1 ikat lima + 1 garis",
+        "2 ikat lima",
+        "3 garis tegak",
       ],
-      kanan: ["5 buah pensil", "3 buah pensil", "8 buah pensil"],
+      kanan: ["10", "6", "3"],
       kunci: {
-        "Jumlah pensil Kelompok Merah": "3 buah pensil",
-        "Jumlah pensil Kelompok Biru": "5 buah pensil",
-        "Total seluruh pensil warna": "8 buah pensil",
+        "1 ikat lima + 1 garis": "6",
+        "2 ikat lima": "10",
+        "3 garis tegak": "3",
       },
     },
     keranjang: {
-      soal: "Perhatikan diagram hewan: Kucing 4 ekor, Burung 2 ekor. Geser pernyataan data ke keranjang kebenaran yang tepat!",
+      soal: "Geser pernyataan data satwa ke keranjang yang tepat!",
       keranjang1: "PERNYATAAN DATA YANG BENAR",
       keranjang2: "PERNYATAAN DATA YANG SALAH",
       keping: [
-        { id: "kucing4", label: "Jumlah kucing ada 4 ekor", wadah: "1" },
-        { id: "burunglebih", label: "Burung lebih banyak dari kucing", wadah: "2" },
-        { id: "burung2", label: "Jumlah burung ada 2 ekor", wadah: "1" },
-        { id: "total6", label: "Total seluruh hewan ada 6 ekor", wadah: "1" },
+        { id: "ikatlima", label: "Satu ikatan turus bernilai 5", wadah: "1" },
+        { id: "lebah", label: "Lebah 7 lebih banyak dari kupu-kupu 9", wadah: "2" },
+        { id: "selisih", label: "Selisih dihitung dengan mengurangkan", wadah: "1" },
+        { id: "rusa7", label: "7 rusa = 1 ikat lima dan 2 garis", wadah: "1" },
       ],
     },
     urut: {
-      soal: "Urutkan jenis buku dari yang memiliki jumlah paling sedikit hingga yang paling banyak di dalam kelas!",
-      balok: [
-        "Buku Gambar (2 buah).",
-        "Buku Sains (3 buah).",
-        "Buku Cerita (5 buah).",
-      ],
+      soal: "Urutkan satwa dari yang paling sedikit hingga yang paling banyak!",
+      balok: ["Singa (4)", "Jerapah (6)", "Zebra (8)"],
     },
     kanvas: {
-      soal: 'Analisis data diagram mainan: Mobil-mobilan 4 gambar, Boneka 3 gambar. Jumlah anak yang memilih mainan mobil-mobilan adalah sebanyak __ anak.',
-      alias: ["4"],
+      soal: "Kakaktua 6 ekor dan Merak 4 ekor. Selisihnya adalah __ ekor.",
+      alias: ["2"],
     },
     detektif: [
       {
-        soal: "Dalam diagram gambar, jika baris gambar mainan robot lebih pendek daripada baris gambar mainan bola, artinya mainan robot lebih banyak jumlahnya daripada bola.",
+        soal: "Kino berkata lebah 7 lebih banyak daripada kupu-kupu 9.",
         benar: false,
-        alasan:
-          "Salah. Baris gambar yang lebih pendek menunjukkan jumlah data yang lebih sedikit, bukan lebih banyak.",
+        alasan: "Salah. Kupu-kupu 9 lebih banyak. Lihat menara yang lebih tinggi.",
       },
       {
-        soal: "Diagram gambar sangat membantu kita untuk membandingkan mana data yang paling banyak dan mana data yang paling sedikit secara cepat hanya dengan melihat gambar.",
+        soal: "Setiap lima garis turus diikat garis miring supaya mudah dihitung lompat lima.",
         benar: true,
-        alasan:
-          "Benar. Visual piktogram dirancang untuk menyederhanakan data angka menjadi grafik visual yang mudah dibaca anak-anak.",
+        alasan: "Benar. 1 ikatan turus = 5.",
       },
     ],
   },

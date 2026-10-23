@@ -515,26 +515,26 @@ const INFOGRAFIS: Record<
       "59 berbeda dengan 95. Kalau puluhan sama, bandingkan satuan. 10 puluhan = 100.",
   },
   "mtk-2-bab8-A": {
-    judul: "Kunci membaca piktogram",
-    kepala: ["Bagian", "Arti", "Contoh"],
+    judul: "Turus lompat lima",
+    kepala: ["Lambang", "Nilai", "Contoh"],
     baris: [
-      ["Data gambar", "Satu ikon = satu jumlah", "Simbol buah atau pensil"],
-      ["Data kelas", "Hitung banyak gambar", "Apel 4, pisang 2"],
-      ["Analisis", "Baris terpanjang paling banyak", "Apel lebih disukai"],
+      ["Garis tegak |", "1 benda", "3 garis = 3"],
+      ["Ikatan miring", "5 benda", "||||/ = 5"],
+      ["Ikat + sisa", "5 + satuan", "1 ikat + 2 = 7"],
     ],
     catatan:
-      "Selisih anak yang suka apel dan pisang adalah 2. Namanya diagram gambar atau piktogram.",
+      "Hitung lompat lima pada setiap ikatan, lalu tambahkan garis satuan. 2 ikat penuh = 10.",
   },
   "mtk-2-bab8-B": {
-    judul: "Membandingkan dan menjumlah",
-    kepala: ["Data", "Gambar", "Angka"],
+    judul: "Diagram gambar dan selisih",
+    kepala: ["Langkah", "Cara", "Ingat"],
     baris: [
-      ["Pensil merah / biru", "3 ikon / 5 ikon", "3, 5, total 8"],
-      ["Kucing / burung", "4 ikon / 2 ikon", "4, 2, total 6"],
-      ["Buku gambar-sains-cerita", "2 / 3 / 5", "Urutan 2, 3, 5"],
+      ["Isi petak", "1 gambar = 1 benda", "Kura 6 petak"],
+      ["Paling banyak", "Menara tertinggi", "Pisang 8 > wortel 5"],
+      ["Selisih", "Terbanyak − tersedikit", "8 − 5 = 3"],
     ],
     catatan:
-      "Baris lebih pendek artinya lebih sedikit. Empat gambar mobil berarti 4 anak.",
+      "Petak harus sama besar. Jangan terkecoh gambar besar yang ditaruh renggang. Kurangkan untuk selisih.",
   },
 };
 

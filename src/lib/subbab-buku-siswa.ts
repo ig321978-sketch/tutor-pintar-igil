@@ -180,6 +180,13 @@ const SUBBAB_BUKU_SISWA: Record<string, Record<string, Record<string, string[]>>
         "Poin penting",
         "Lembar evaluasi siswa",
       ],
+      "Bab 8: Berbagai Diagram": [
+        "Sub-Bab 8.1: Mengenal dan Membaca Diagram Turus",
+        "Sub-Bab 8.2: Menyusun dan Membaca Diagram Gambar",
+        "Misi Penyelamatan dan Logistik Satwa",
+        "Poin penting",
+        "Lembar evaluasi siswa",
+      ],
     },
   },
   "3 SD": {
