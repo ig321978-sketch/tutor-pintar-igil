@@ -2,6 +2,7 @@
 
 import { useCallback, useEffect, useRef, useState, type PointerEvent as AcaraPointer } from "react";
 import type { KelaminGuru } from "@/lib/guru";
+import { hentikanSuaraGuruIgil, ucapkanGuruIgil } from "@/lib/suara-guru-igil";
 
 export type TutorEventType =
   | "SCENE_START"
@@ -1265,6 +1266,7 @@ function ModeEvaluasi({ kirimEvent, onLulus }: { kirimEvent: Kirim; onLulus: (ca
 
 export default function SimulasiMtk3Data({
   kelas = "3 SD",
+  kelamin,
   onTutorEvent,
   onBenar,
 }: {
@@ -1284,16 +1286,9 @@ export default function SimulasiMtk3Data({
   suaraRef.current = suaraAktif;
 
   const ucapkan = useCallback((teks: string) => {
-    if (!suaraRef.current || typeof window === "undefined" || !window.speechSynthesis) return;
-    window.speechSynthesis.cancel();
-    const u = new SpeechSynthesisUtterance(teks);
-    u.lang = "id-ID";
-    u.rate = 0.95;
-    u.onstart = () => setSedangBicara(true);
-    u.onend = () => setSedangBicara(false);
-    u.onerror = () => setSedangBicara(false);
-    window.speechSynthesis.speak(u);
-  }, []);
+    if (!suaraRef.current) return;
+    void ucapkanGuruIgil(teks, { kelas, kelamin, onBicara: setSedangBicara });
+  }, [kelas, kelamin]);
 
   const bicara = useCallback(
     (teks: string) => {
@@ -1329,7 +1324,7 @@ export default function SimulasiMtk3Data({
     kirimEvent("SCENE_START", { pesan: "Halo peneliti cilik! Yuk urutkan data dan baca tabel.", adegan: "sortir" });
   }, [kirimEvent]);
 
-  useEffect(() => () => window.speechSynthesis?.cancel(), []);
+  useEffect(() => () => hentikanSuaraGuruIgil(), []);
 
   const pembuka: Record<TabLab, string> = {
     sortir: "Ketuk angka dari yang paling kecil. Ujung kiri terkecil, ujung kanan terbesar.",
@@ -1362,7 +1357,10 @@ export default function SimulasiMtk3Data({
           type="button"
           onClick={() => {
             setSuaraAktif((v) => !v);
-            if (suaraAktif) window.speechSynthesis?.cancel();
+            if (suaraAktif) {
+              hentikanSuaraGuruIgil();
+              setSedangBicara(false);
+            }
           }}
           className={`inline-flex min-h-12 items-center rounded-xl px-3 text-xs font-black ${suaraAktif ? "bg-amber-300 text-amber-950" : "bg-white/20 text-white"}`}
         >

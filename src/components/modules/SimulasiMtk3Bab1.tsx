@@ -2,6 +2,7 @@
 
 import { useCallback, useEffect, useRef, useState } from "react";
 import type { KelaminGuru } from "@/lib/guru";
+import { hentikanSuaraGuruIgil, ucapkanGuruIgil } from "@/lib/suara-guru-igil";
 
 export type TutorEventType =
   | "SCENE_START"
@@ -1349,6 +1350,7 @@ function ModeEvaluasi({ kirimEvent, onLulus }: { kirimEvent: Kirim; onLulus: (ca
 
 export default function SimulasiMtk3Bab1({
   kelas = "3 SD",
+  kelamin,
   onTutorEvent,
   onBenar,
 }: {
@@ -1368,16 +1370,9 @@ export default function SimulasiMtk3Bab1({
   suaraRef.current = suaraAktif;
 
   const ucapkan = useCallback((teks: string) => {
-    if (!suaraRef.current || typeof window === "undefined" || !window.speechSynthesis) return;
-    window.speechSynthesis.cancel();
-    const u = new SpeechSynthesisUtterance(teks);
-    u.lang = "id-ID";
-    u.rate = 0.95;
-    u.onstart = () => setBicara(true);
-    u.onend = () => setBicara(false);
-    u.onerror = () => setBicara(false);
-    window.speechSynthesis.speak(u);
-  }, []);
+    if (!suaraRef.current) return;
+    void ucapkanGuruIgil(teks, { kelas, kelamin, onBicara: setBicara });
+  }, [kelas, kelamin]);
 
   const kirimEvent = useCallback<Kirim>(
     (jenis, payload, bicaraPesan = true) => {
@@ -1407,6 +1402,8 @@ export default function SimulasiMtk3Bab1({
       adegan: "pabrik",
     });
   }, [kirimEvent]);
+
+  useEffect(() => () => hentikanSuaraGuruIgil(), []);
 
   const pembuka: Record<TabLab, string> = {
     pabrik: "Tambah baloknya. Sepuluh satuan menyatu jadi satu puluhan. Sepuluh puluhan jadi satu lempeng ratusan.",
@@ -1451,7 +1448,10 @@ export default function SimulasiMtk3Bab1({
           type="button"
           onClick={() => {
             setSuaraAktif((v) => !v);
-            if (suaraAktif) window.speechSynthesis?.cancel();
+            if (suaraAktif) {
+              hentikanSuaraGuruIgil();
+              setBicara(false);
+            }
           }}
           className={`inline-flex min-h-12 items-center rounded-xl px-3 text-xs font-black ${
             suaraAktif ? "bg-amber-300 text-amber-950" : "bg-white/20 text-white"
