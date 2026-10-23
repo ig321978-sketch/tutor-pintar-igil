@@ -573,6 +573,15 @@ function KartuA({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminGuru }) {
           <Papan anak="6.418 = enam ribu empat ratus delapan belas" />
           <KuisSuara id={idKuis("A", 0)} pertanyaan="Baca bilangan 2.735 dengan lengkap." periksa={baca2735} petunjuk="Sebutkan rak ribuan, lalu ratusan, puluhan, dan satuan." benar="Dua ribu tujuh ratus tiga puluh lima." />
           <TulisBebas id={idKuis("A", 1)} judul="Tulis dari bacaan" visual={<Papan anak="sembilan ribu empat puluh delapan" />} pertanyaan="Tulis angkanya: sembilan ribu empat puluh delapan." pesanSalah="Rak ratusan tidak disebut. Isikan nol." bantuan="Ribuan 9, ratusan 0, puluhan 4, satuan 8. Jadi 9.048." umpan="9.048." periksa={tulis9048} alias={["9048", "9.048"]} konteks="Sembilan ribu empat puluh delapan ditulis 9.048." />
+          <Dialog nama="Igil" anak="2.345 dibaca dua ribu tiga ratus empat puluh lima. Jangan baca dua ribuan tiga ratusan." />
+          <Dialog nama="Nisa" anak="Kartu 7 di ribuan, 5 di ratusan, 0 di puluhan, 8 di satuan. Jadinya 7.508." />
+          <Dialog nama="Farhan" anak="5.091 dibaca lima ribu sembilan puluh satu. Rak ratusan diam." />
+          <Dialog nama="Cinta" anak="1.206 dibaca seribu dua ratus enam. 6.002 dibaca enam ribu dua." />
+          <Dialog nama="Igil" anak="Kalau rak ribuan nol, itu bukan ribuan. 036 hanya tiga puluh enam." />
+          <p className="pt-2 text-sm font-black uppercase tracking-wide text-[#1C01A5]">Infografis: Baca empat rak</p>
+          <PetaSub pusat="5.206" cabang={[{ ikon: "👀", judul: "Baca", isi: "lima ribu dua ratus enam" }, { ikon: "0️⃣", judul: "Rak diam", isi: "puluhan kosong" }, { ikon: "✏️", judul: "Tulis", isi: "nol tetap ada" }]} kolom={["Ribuan", "Ratusan", "Puluhan", "Satuan"]} baris={[["5", "2", "0", "6"]]} />
+          <KuisSuara id={idKuis("B", 0)} pertanyaan="Baca bilangan 4.019." periksa={baca4019} petunjuk="Rak yang kosong tidak perlu disebut." benar="Empat ribu sembilan belas." />
+          <TulisBebas id={idKuis("B", 1)} visual={<Papan anak="delapan ribu tiga ratus enam puluh" />} pertanyaan="Tulis angkanya." pesanSalah="Ada empat rak." bantuan="8.360." umpan="8.360." periksa={tulis8360} alias={["8360", "8.360"]} konteks="Delapan ribu tiga ratus enam puluh ditulis 8.360." />
         </Adegan>
 
         <Adegan utama judul="Sub-bab 2 — Nilai tempat" src="/doodle-mtk/mtk-4-bab1-sub2.jpg" alt="Empat rak kayu kosong di dermaga, peti buah di samping, tiga anak dan burung hantu bertopi biru." kelas={kelas} kelamin={kelamin} penjelasan={["Angkanya tetap. Raknya yang mengubah nilai."]}>
@@ -583,6 +592,14 @@ function KartuA({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminGuru }) {
           <Papan anak="5.284 = 5.000 + 200 + 80 + 4" />
           <KuisSuara id={idKuis("A", 2)} pertanyaan="Berapa nilai angka 8 pada 4.839? Sebutkan juga raknya." periksa={nilaiDelapanPuluh} petunjuk="Cari raknya dulu. Rak itu yang menentukan pengalinya." benar="Delapan puluh, karena ada di rak puluhan." />
           <TulisBebas id={idKuis("A", 3)} judul="Urai nilai tempat" visual={<Papan anak="3.672 = ⬜ + ⬜ + ⬜ + ⬜" />} pertanyaan="Tulis uraiannya, lalu sebutkan nama setiap rak." pesanSalah="Ribuan, ratusan, puluhan, lalu satuan." bantuan="3.000 + 600 + 70 + 2." umpan="3.000 + 600 + 70 + 2." periksa={pecah3672} alias={["3000 + 600 + 70 + 2"]} konteks="3.672 = 3.000 + 600 + 70 + 2." />
+          <Dialog nama="Cinta" anak="Slamet beli kue Rp7.350. Ia bayar Rp9.500. Kembaliannya Rp2.150." />
+          <Dialog nama="Farhan" anak="Pada 7.350, angka 7 di ribuan, 3 di ratusan, 5 di puluhan, 0 di satuan." />
+          <Dialog nama="Nisa" anak="6.192 punya rak 6, 1, 9, 2. 2.910 punya 2, 9, 1, 0." />
+          <Dialog nama="Igil" anak="Tabel rak diisi angkanya. 1.234 ditulis 1, 2, 3, 4." />
+          <p className="pt-2 text-sm font-black uppercase tracking-wide text-[#1C01A5]">Infografis: Rak mengubah nilai</p>
+          <PetaSub pusat="7.145" cabang={[{ ikon: "🟦", judul: "Ribuan", isi: "7 → 7.000" }, { ikon: "🟧", judul: "Ratusan", isi: "1 → 100" }, { ikon: "🟪", judul: "Puluhan", isi: "4 → 40" }]} kolom={["Bilangan", "Uraian"]} baris={[["7.145", "7.000 + 100 + 40 + 5"]]} />
+          <KuisSuara id={idKuis("B", 2)} pertanyaan="Berapa nilai angka 9 pada 6.392? Sebutkan raknya." periksa={nilaiSembilanPuluh} petunjuk="Lihat posisi angka 9, bukan besar angkanya saja." benar="Sembilan puluh, di rak puluhan." />
+          <TulisBebas id={idKuis("B", 3)} visual={<Papan anak="2.938" />} pertanyaan="Tulis uraian nilai tempat 2.938 dan sebutkan rak ribuan serta ratusan." pesanSalah="Mulai dari ribuan." bantuan="2.000 + 900 + 30 + 8." umpan="2.000 + 900 + 30 + 8." periksa={pecah2938} alias={["2000 + 900 + 30 + 8"]} konteks="2.938 = 2.000 + 900 + 30 + 8." />
         </Adegan>
 
         <Adegan utama judul="Sub-bab 3 — Membandingkan dan mengurutkan" src="/doodle-mtk/mtk-4-bab1-sub3.jpg" alt="Dua tumpukan peti yang tingginya berbeda di dermaga. Anak-anak membandingkan, burung hantu bertopi biru berdiri di tengah." kelas={kelas} kelamin={kelamin} penjelasan={["Bandingkan dari rak kiri. Untuk mengurutkan, kelompokkan ribuan dulu."]}>
@@ -593,6 +610,14 @@ function KartuA({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminGuru }) {
           <Papan anak="4.615 < 4.651" />
           <KuisSuara id={idKuis("A", 4)} pertanyaan="Mana yang lebih besar, 8.246 atau 8.264? Sebutkan bilangannya dan rak yang menentukan." periksa={lebihBesar8264} petunjuk="Ribuan dan ratusan masih sama. Geser ke rak berikutnya." benar="8.264 lebih besar. Rak puluhan yang menentukan." />
           <TulisBebas id={idKuis("A", 5)} judul="Urutkan empat peti" visual={<Papan anak="7.085 · 2.508 · 7.508 · 2.850" />} pertanyaan="Urutkan dari yang paling kecil ke paling besar." pesanSalah="Kelompokkan ribuannya dulu." bantuan="2.508, 2.850, 7.085, 7.508." umpan="2.508, 2.850, 7.085, 7.508." periksa={urutAdegan} alias={["2508 2850 7085 7508"]} konteks="Urutan kecil ke besar: 2.508, 2.850, 7.085, 7.508." />
+          <Dialog nama="Nisa" anak="6.192 dan 9.217. Ribuan 6 lebih kecil dari 9, jadi 9.217 lebih besar." />
+          <Dialog nama="Farhan" anak="5.734 lebih besar dari 4.312. Ribuan 5 sudah menang." />
+          <Dialog nama="Cinta" anak="Urutan kecil ke besar: 3.041, 5.240, 7.570, lalu 9.941." />
+          <Dialog nama="Igil" anak="9.999 lebih besar dari 9.998. 1.001 lebih kecil dari 1.002." />
+          <p className="pt-2 text-sm font-black uppercase tracking-wide text-[#1C01A5]">Infografis: Banding dari kiri</p>
+          <PetaSub pusat="3.754 > 3.745" cabang={[{ ikon: "1️⃣", judul: "Ribuan", isi: "sama-sama 3" }, { ikon: "2️⃣", judul: "Ratusan", isi: "sama-sama 7" }, { ikon: "3️⃣", judul: "Puluhan", isi: "5 lebih besar dari 4" }]} kolom={["Kiri", "Kanan", "Pemenang"]} baris={[["3.754", "3.745", "3.754"]]} />
+          <KuisSuara id={idKuis("B", 4)} pertanyaan="Mana yang lebih besar, 3.754 atau 3.745? Sebutkan rak yang menentukan." periksa={lebihBesar3754} petunjuk="Dua rak kiri masih sama." benar="3.754. Rak puluhan yang menentukan." />
+          <TulisBebas id={idKuis("B", 5)} visual={<Papan anak="4.210 · 4.012 · 4.120 · 4.102" />} pertanyaan="Urutkan dari kecil ke besar." pesanSalah="Ribuan sama. Lihat ratusan, lalu puluhan." bantuan="4.012, 4.102, 4.120, 4.210." umpan="4.012, 4.102, 4.120, 4.210." periksa={urutPeta} alias={["4012 4102 4120 4210"]} konteks="Urutan: 4.012, 4.102, 4.120, 4.210." />
         </Adegan>
 
         <Adegan utama judul="Sub-bab 4 — Komposisi dan dekomposisi" src="/doodle-mtk/mtk-4-bab1-sub4.jpg" alt="Anak-anak menyusun peti menjadi satu tumpukan dan membuka satu peti berisi mangga, bersama burung hantu bertopi biru." kelas={kelas} kelamin={kelamin} penjelasan={["Menyusun berarti menggabungkan rak. Mengurai berarti memecah ke tiap rak."]}>
@@ -603,6 +628,14 @@ function KartuA({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminGuru }) {
           <Papan anak="4.206 tersusun    8.173 = 8.000 + 100 + 70 + 3" />
           <KuisSuara id={idKuis("A", 6)} pertanyaan="Susun bilangan ini: 3 ribuan, 0 ratusan, 5 puluhan, 8 satuan." periksa={susun3058} petunjuk="Rak yang tidak disebut tetap diisi angka kosong." benar="3.058." />
           <TulisBebas id={idKuis("A", 7)} judul="Jumlahkan pecahan rak" visual={<Papan anak="6.000 + 400 + 20 + 9" />} pertanyaan="Tulis satu bilangan dari jumlah rak itu." pesanSalah="Gabungkan dari rak kiri." bantuan="6 ribuan, 4 ratusan, 2 puluhan, 9 satuan." umpan="6.429." periksa={tulis6429} alias={["6429", "6.429"]} konteks="6.000 + 400 + 20 + 9 = 6.429." />
+          <Dialog nama="Igil" anak="6 ribuan, 4 ratusan, 8 puluhan, 2 satuan tersusun jadi 6.482. Kalau puluhan saja yang terisi, 6.040." />
+          <Dialog nama="Cinta" anak="4.530 artinya 4 ribuan, 5 ratusan, 3 puluhan, dan satuan kosong." />
+          <Dialog nama="Farhan" anak="7.020 artinya 7 ribuan dan 2 puluhan. 2.001 artinya 2 ribuan dan 1 satuan." />
+          <Dialog nama="Nisa" anak="9.999 terisi 9 di setiap rak. 7.000 hanya rak ribuan yang terisi." />
+          <p className="pt-2 text-sm font-black uppercase tracking-wide text-[#1C01A5]">Infografis: Susun dan urai</p>
+          <PetaSub pusat="Susun ↔ urai" cabang={[{ ikon: "🧩", judul: "Susun", isi: "7 ribuan + 3 puluhan + 2 satuan" }, { ikon: "📦", judul: "Jadi", isi: "7.032" }, { ikon: "🔓", judul: "Urai", isi: "4.150 = 4.000 + 100 + 50" }]} kolom={["Arah", "Contoh"]} baris={[["Susun", "7.032"], ["Urai", "4.000 + 100 + 50"]]} />
+          <KuisSuara id={idKuis("B", 6)} pertanyaan="Susun 7 ribuan, 0 ratusan, 3 puluhan, 2 satuan." periksa={susun7032} petunjuk="Rak kosong tetap ditulis." benar="7.032." />
+          <TulisBebas id={idKuis("B", 7)} visual={<Papan anak="4.150 = ⬜ + ⬜ + ⬜" />} pertanyaan="Urai 4.150 menjadi ribuan, ratusan, dan puluhan." pesanSalah="Satuan 4.150 adalah nol, boleh tidak ditulis." bantuan="4.000 + 100 + 50." umpan="4.000 + 100 + 50." periksa={urai4150} alias={["4000 + 100 + 50"]} konteks="4.150 = 4.000 + 100 + 50." />
         </Adegan>
 
         <Adegan utama judul="Sub-bab 5 — Penjumlahan sampai 1.000" src="/doodle-mtk/mtk-4-bab1-sub5.jpg" alt="Dua kelompok peti didorong menjadi satu di dermaga. Tiga anak dan burung hantu bertopi biru." kelas={kelas} kelamin={kelamin} penjelasan={["Jumlahkan dari rak satuan. Jika 10 atau lebih, ada +1 di rak kirinya."]}>
@@ -613,6 +646,14 @@ function KartuA({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminGuru }) {
           <TabelHitung operasi="+" atas={["", "4", "8", "6"]} bawah={["", "3", "5", "7"]} tanda={[null, "+1", "+1", null]} jejak={[null, "5", "9", null]} utuh={[null, null, "14", "13"]} hasil={["", "8", "4", "3"]} />
           <KuisSuara id={idKuis("A", 8)} pertanyaan="Berapa hasil 264 + 173? Sebutkan bilangannya." periksa={tambah437} petunjuk="Jumlahkan dari satuan. Jika ada sepuluh, geser satu ke kiri." benar="Empat ratus tiga puluh tujuh." />
           <TulisBebas id={idKuis("A", 9)} judul="Jumlah peti sore" visual={<TabelHitung operasi="+" atas={["", "5", "0", "8"]} bawah={["", "2", "9", "5"]} />} pertanyaan="Tulis hasil 508 + 295." pesanSalah="Mulai dari satuan." bantuan="Satuan 13, puluhan 10, ratusan 8." umpan="803." periksa={tambah803} alias={["803"]} konteks="508 + 295 = 803." />
+          <Dialog nama="Farhan" anak="373 + 208 = 581. Satuan 11, ada +1 di puluhan." />
+          <Dialog nama="Nisa" anak="Ikan lele 117, 105, dan 242. Jumlahnya 464." />
+          <Dialog nama="Igil" anak="333 + 205 = 538. 576 + 148 = 724." />
+          <Dialog nama="Cinta" anak="Kebun A 328 buah, kebun B 579 buah. Jumlahnya 907." />
+          <p className="pt-2 text-sm font-black uppercase tracking-wide text-[#1C01A5]">Infografis: Jumlah dari kanan</p>
+          <PetaSub pusat="375 + 148" cabang={[{ ikon: "➡️", judul: "Satuan", isi: "5 + 8 = 13" }, { ikon: "➕", judul: "Puluhan", isi: "7 + 4 + 1 = 12" }, { ikon: "✅", judul: "Hasil", isi: "523" }]} kolom={["Rak", "Hitung", "Tulis"]} baris={[["Satuan", "13", "3"], ["Puluhan", "12", "2"], ["Ratusan", "5", "5"]]} />
+          <KuisSuara id={idKuis("B", 8)} pertanyaan="Berapa hasil 142 + 230?" periksa={tambah372} petunjuk="Jumlahkan tiap rak dari kanan." benar="Tiga ratus tujuh puluh dua." />
+          <TulisBebas id={idKuis("B", 9)} visual={<Papan anak="609 + 186" />} pertanyaan="Tulis hasil 609 + 186." pesanSalah="Satuan lebih dari sembilan." bantuan="609 + 186 = 795." umpan="795." periksa={tambah795} alias={["795"]} konteks="609 + 186 = 795." />
         </Adegan>
 
         <Adegan utama judul="Sub-bab 6 — Pengurangan sampai 1.000" src="/doodle-mtk/mtk-4-bab1-sub6.jpg" alt="Seorang anak mengangkat satu peti dari tumpukan di dermaga. Burung hantu bertopi biru memperhatikan." kelas={kelas} kelamin={kelamin} penjelasan={["Kurangkan dari satuan. Jika tidak cukup, rak kiri memberi 1."]}>
@@ -623,6 +664,14 @@ function KartuA({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminGuru }) {
           <TabelHitung operasi="−" atas={["", "5", "3", "2"]} bawah={["", "2", "1", "8"]} tanda={[null, null, "−1", null]} jejak={[null, null, "2", "12"]} hasil={["", "3", "1", "4"]} />
           <KuisSuara id={idKuis("A", 10)} pertanyaan="Berapa hasil 630 − 215?" periksa={kurang415} petunjuk="Kurangkan tiap rak, mulai dari satuan." benar="Empat ratus lima belas." />
           <TulisBebas id={idKuis("A", 11)} judul="Sisa peti" visual={<Papan anak="500 − 176" />} pertanyaan="Tulis hasil 500 − 176." pesanSalah="Satuan dan puluhan perlu meminta 1 dari rak kiri." bantuan="500 − 176 = 324." umpan="324." periksa={kurang324} alias={["324"]} konteks="500 − 176 = 324." />
+          <Dialog nama="Cinta" anak="573 − 268 = 305. Satuan tidak cukup, puluhan memberi 1." />
+          <Dialog nama="Farhan" anak="Ada 427 siswa berangkat. 218 sudah naik mobil. Yang belum naik 209." />
+          <Dialog nama="Igil" anak="633 − 211 = 422. 522 − 148 = 374." />
+          <Dialog nama="Nisa" anak="333 apel, dibeli 129. Sisa 204. Mangga 765, busuk 179, sisa 586." />
+          <p className="pt-2 text-sm font-black uppercase tracking-wide text-[#1C01A5]">Infografis: Rak kiri memberi 1</p>
+          <PetaSub pusat="481 − 256" cabang={[{ ikon: "➖", judul: "Satuan", isi: "11 − 6 = 5" }, { ikon: "👈", judul: "Pemberi", isi: "puluhan −1" }, { ikon: "✅", judul: "Sisa", isi: "225" }]} kolom={["Rak", "Sesudah", "Hasil"]} baris={[["Satuan", "12", "5"], ["Puluhan", "7", "2"], ["Ratusan", "4", "2"]]} />
+          <KuisSuara id={idKuis("B", 10)} pertanyaan="Berapa hasil 900 − 400?" periksa={kurang500} petunjuk="Ratusan dikurangi ratusan." benar="Lima ratus." />
+          <TulisBebas id={idKuis("B", 11)} visual={<Papan anak="703 − 248" />} pertanyaan="Tulis hasil 703 − 248." pesanSalah="Puluhan kosong, jadi minta ke ratusan." bantuan="703 − 248 = 455." umpan="455." periksa={kurang455} alias={["455"]} konteks="703 − 248 = 455." />
         </Adegan>
 
         <Adegan utama judul="Sub-bab 7 — Perkalian sampai 100" src="/doodle-mtk/mtk-4-bab1-sub7.jpg" alt="Mangga tersusun dalam beberapa baris sama banyak di dermaga, tanpa angka. Tiga anak dan burung hantu bertopi biru." kelas={kelas} kelamin={kelamin} penjelasan={["Perkalian adalah kelompok yang sama banyak. Gambar dulu, baru tulis simbol."]}>
@@ -633,6 +682,14 @@ function KartuA({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminGuru }) {
           <Papan anak="🥭🥭🥭🥭🥭🥭🥭🥭    × 3 kelompok" />
           <KuisSuara id={idKuis("A", 12)} pertanyaan="Ada 6 baris peti. Tiap baris 7 peti. Sebutkan jumlahnya." periksa={kali42} petunjuk="Banyak baris dikali isi satu baris." benar="Empat puluh dua." />
           <TulisBebas id={idKuis("A", 13)} judul="Baris mangga" visual={<Papan anak="5 baris × 9 mangga" />} pertanyaan="Tulis hasil 5 × 9." pesanSalah="Lima kelompok, masing-masing sembilan." bantuan="5 × 9 = 45." umpan="45." periksa={kali45} alias={["45"]} konteks="5 × 9 = 45." />
+          <Dialog nama="Nisa" anak="Asep punya 12 ayam. Tiap ayam makan 3 mangkuk. 12 × 3 = 36 mangkuk." />
+          <Dialog nama="Igil" anak="Satu dus berisi 12 pak. Satu pak berisi 8 pensil. 12 × 8 = 96 pensil." />
+          <Dialog nama="Farhan" anak="32 × 3 = 96. Dua rak buku, tiap rak 45. 2 × 45 = 90." />
+          <Dialog nama="Cinta" anak="14 baju butuh 7 kancing. 14 × 7 = 98. Enam kelas kirim 13 siswa. 6 × 13 = 78." />
+          <p className="pt-2 text-sm font-black uppercase tracking-wide text-[#1C01A5]">Infografis: Kelompok sama</p>
+          <PetaSub pusat="4 × 7" cabang={[{ ikon: "🥭", judul: "Gambar", isi: "4 baris, isi 7" }, { ikon: "🔁", judul: "Jumlah ulang", isi: "7 + 7 + 7 + 7" }, { ikon: "✖️", judul: "Simbol", isi: "28" }]} kolom={["Kelompok", "Isi", "Jumlah"]} baris={[["4", "7", "28"]]} />
+          <KuisSuara id={idKuis("B", 12)} pertanyaan="Berapa hasil 8 × 6?" periksa={kali48} petunjuk="Delapan kelompok, masing-masing enam." benar="Empat puluh delapan." />
+          <TulisBebas id={idKuis("B", 13)} visual={<Papan anak="7 × 5" />} pertanyaan="Tulis hasil 7 × 5." pesanSalah="Tujuh kelompok berisi lima." bantuan="7 × 5 = 35." umpan="35." periksa={kali35} alias={["35"]} konteks="7 × 5 = 35." />
         </Adegan>
 
         <Adegan utama judul="Sub-bab 8 — Pembagian sampai 100" src="/doodle-mtk/mtk-4-bab1-sub8.jpg" alt="Anak-anak membagi mangga rata ke beberapa keranjang di dermaga. Burung hantu bertopi biru berdiri di samping." kelas={kelas} kelamin={kelamin} penjelasan={["Pembagian membagi sama banyak. Periksa dengan perkalian."]}>
@@ -643,6 +700,15 @@ function KartuA({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminGuru }) {
           <Papan anak="36 ÷ 4 = 9" />
           <KuisSuara id={idKuis("A", 14)} pertanyaan="48 peti dibagi rata ke 6 perahu. Sebutkan isi satu perahu." periksa={bagi8} petunjuk="Cari bilangan yang dikali 6 hasilnya 48." benar="Delapan." />
           <TulisBebas id={idKuis("A", 15)} judul="Bagi keranjang" visual={<Papan anak="56 ÷ 7 = ⬜" />} pertanyaan="Tulis hasil 56 ÷ 7." pesanSalah="Cari kali yang hasilnya 56." bantuan="7 × 8 = 56." umpan="8." periksa={bagi8} alias={["8"]} konteks="56 ÷ 7 = 8." />
+          <Dialog nama="Farhan" anak="Putu punya 55 gantungan kunci untuk 5 teman. 55 ÷ 5 = 11." />
+          <Dialog nama="Cinta" anak="96 ÷ 8 = 12. Ceknya 8 × 12 = 96." />
+          <Dialog nama="Nisa" anak="24 ÷ 2 = 12. 96 ÷ 3 = 32. 75 ÷ 5 = 15." />
+          <Dialog nama="Igil" anak="36 permen untuk 2 anak, masing-masing 18. 64 alpukat untuk 4 keluarga, masing-masing 16." />
+          <Dialog nama="Farhan" anak="81 kue, 3 per kotak, perlu 27 kotak. 48 habis dibagi 2, 3, 4, 6, dan 8." />
+          <p className="pt-2 text-sm font-black uppercase tracking-wide text-[#1C01A5]">Infografis: Bagi rata</p>
+          <PetaSub pusat="45 ÷ 5" cabang={[{ ikon: "🧺", judul: "Keranjang", isi: "5 wadah" }, { ikon: "🥭", judul: "Isi", isi: "9 tiap wadah" }, { ikon: "🔁", judul: "Cek", isi: "5 × 9 = 45" }]} kolom={["Bagi", "Hasil", "Cek"]} baris={[["45 ÷ 5", "9", "5 × 9"]]} />
+          <KuisSuara id={idKuis("B", 14)} pertanyaan="36 ÷ 6 sama dengan berapa?" periksa={bagi6} petunjuk="Cari bilangan yang dikali 6 hasilnya 36." benar="Enam." />
+          <TulisBebas id={idKuis("B", 15)} visual={<Papan anak="64 ÷ 8 = ⬜" />} pertanyaan="Tulis hasil 64 ÷ 8." pesanSalah="Cari kali yang hasilnya 64." bantuan="8 × 8 = 64." umpan="8." periksa={bagi8} alias={["8"]} konteks="64 ÷ 8 = 8." />
         </Adegan>
 
         <Adegan utama judul="Sub-bab 9 — Faktor dan kelipatan" src="/doodle-mtk/mtk-4-bab1-sub9.jpg" alt="Peti tersusun rapi dalam baris dan kolom yang sama di dermaga. Burung hantu bertopi biru menunjuk barisan." kelas={kelas} kelamin={kelamin} penjelasan={["Faktor membagi habis. Kelipatan adalah lompatan yang sama."]}>
@@ -653,6 +719,15 @@ function KartuA({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminGuru }) {
           <Papan anak="Faktor 12: 1  2  3  4  6  12" />
           <KuisSuara id={idKuis("A", 16)} pertanyaan="Apakah 18 kelipatan 6? Jawab ya atau bukan, lalu sebutkan alasannya singkat." periksa={kelipatanYa} petunjuk="Coba lompat enam sampai melewati delapan belas." benar="Ya. 6 × 3 = 18." />
           <TulisBebas id={idKuis("A", 17)} judul="Faktor lengkap" visual={<Papan anak="Faktor dari 18" />} pertanyaan="Tulis semua faktor 18." pesanSalah="Cari bilangan yang membagi 18 tanpa sisa." bantuan="1, 2, 3, 6, 9, dan 18." umpan="1, 2, 3, 6, 9, 18." periksa={faktorDelapanBelas} alias={["1 2 3 6 9 18"]} konteks="Faktor 18 adalah 1, 2, 3, 6, 9, dan 18." />
+          <Dialog nama="Igil" anak="Faktor 20 adalah 1, 2, 4, 5, 10, dan 20. Semuanya membagi habis." />
+          <Dialog nama="Nisa" anak="10 kg beras bisa untuk 10 orang, masing-masing 1 kg. Atau 5 orang, masing-masing 2 kg." />
+          <Dialog nama="Farhan" anak="Faktor 24: 1, 2, 3, 4, 6, 8, 12, 24. Faktor 25: 1, 5, 25." />
+          <Dialog nama="Cinta" anak="Kelipatan 6 di bawah 40: 6, 12, 18, 24, 30, 36." />
+          <Dialog nama="Igil" anak="Kelereng bertambah 3: 3, 6, 9, 12, 15, 18, 21." />
+          <p className="pt-2 text-sm font-black uppercase tracking-wide text-[#1C01A5]">Infografis: Habis dan lompat</p>
+          <PetaSub pusat="10 dan 3" cabang={[{ ikon: "➗", judul: "Faktor 10", isi: "1, 2, 5, 10" }, { ikon: "🦘", judul: "Lompat 3", isi: "3, 6, 9, 12" }, { ikon: "🚫", judul: "Bukan", isi: "4 bukan faktor 10" }]} kolom={["Jenis", "Contoh"]} baris={[["Faktor", "1 · 2 · 5 · 10"], ["Kelipatan", "3 · 6 · 9 · 12"]]} />
+          <KuisSuara id={idKuis("B", 16)} pertanyaan="Apakah 20 kelipatan 4? Jawab ya atau bukan." periksa={kelipatanYa} petunjuk="Lompat empat sampai dua puluh." benar="Ya. 4 × 5 = 20." />
+          <TulisBebas id={idKuis("B", 17)} visual={<Papan anak="Faktor dari 15" />} pertanyaan="Tulis semua faktor 15." pesanSalah="Yang membagi 15 tanpa sisa." bantuan="1, 3, 5, dan 15." umpan="1, 3, 5, 15." periksa={faktorLimaBelas} alias={["1 3 5 15"]} konteks="Faktor 15 adalah 1, 3, 5, dan 15." />
         </Adegan>
 
         <Pilih id={idKuis("A", 18)} pertanyaan="Bagaimana membaca 8.015?" visual={<Papan anak="8.015" />} pilihan={[{ huruf: "A", teks: "Delapan ribu seratus lima belas" }, { huruf: "B", teks: "Delapan ribu lima belas" }, { huruf: "C", teks: "Delapan ratus lima belas" }, { huruf: "D", teks: "Delapan puluh ribu lima belas" }]} benar="B" umpan="Rak ratusan kosong, jadi tidak disebut." salah="Rak kosong tidak dibaca sebagai seratus." />
@@ -661,6 +736,11 @@ function KartuA({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminGuru }) {
         <KuisBenarSalah id={idKuis("A", 21)} perintah="Pilih benar atau salah." baris={[{ teks: "9.040 dibaca sembilan ribu empat puluh.", benar: true }, { teks: "Pada 6.250, angka 6 bernilai 60.", benar: false }, { teks: "3 × 8 = 24.", benar: true }]} umpan="Yang pertama dan ketiga benar. Angka 6 ada di rak ribuan, nilainya 6.000." />
         <Pilih id={idKuis("A", 22)} pertanyaan="7 × 8 = ..." visual={<Papan anak="7 kelompok × 8" />} pilihan={[{ huruf: "A", teks: "15" }, { huruf: "B", teks: "56" }, { huruf: "C", teks: "78" }, { huruf: "D", teks: "42" }]} benar="B" umpan="7 × 8 = 56." salah="Tujuh kelompok, masing-masing delapan." />
         <Pilih id={idKuis("A", 23)} pertanyaan="Kelipatan 5 yang tepat setelah 15 adalah..." visual={<Papan anak="5 · 10 · 15 · ⬜" />} pilihan={[{ huruf: "A", teks: "16" }, { huruf: "B", teks: "18" }, { huruf: "C", teks: "20" }, { huruf: "D", teks: "25" }]} benar="C" umpan="Lompat 5. 15 + 5 = 20." salah="Kelipatan 5 berakhiran 0 atau 5, dan tepat satu lompatan." />
+        <Pilih id={idKuis("B", 18)} pertanyaan="Mana yang paling besar?" visual={<Papan anak="9.040 · 9.400 · 9.004" />} pilihan={[{ huruf: "A", teks: "9.040" }, { huruf: "B", teks: "9.400" }, { huruf: "C", teks: "9.004" }, { huruf: "D", teks: "Semua sama" }]} benar="B" umpan="Ratusan 4 paling besar. Jadi 9.400." salah="Ribuan sama. Lihat ratusannya." />
+        <KuisCocok id={idKuis("B", 19)} perintah="Pasangkan bilangan dengan bacaannya." baris={[{ kiri: "3.080", pilihan: BACAAN_B, benar: "tiga ribu delapan puluh" }, { kiri: "3.800", pilihan: BACAAN_B, benar: "tiga ribu delapan ratus" }, { kiri: "3.008", pilihan: BACAAN_B, benar: "tiga ribu delapan" }]} umpan="Delapan puluh, delapan ratus, dan delapan." />
+        <SusunToken id={idKuis("B", 20)} perintah="Susun dari yang paling kecil." acak={["2.540", "2.045", "2.450", "2.405"]} benar={["2.045", "2.405", "2.450", "2.540"]} umpan="2.045, 2.405, 2.450, 2.540." />
+        <KuisBenarSalah id={idKuis("B", 21)} perintah="Pilih benar atau salah." baris={[{ teks: "2.000 + 40 + 6 = 2.046.", benar: true }, { teks: "15 adalah kelipatan 6.", benar: false }, { teks: "9 × 4 = 36.", benar: true }]} umpan="Yang pertama dan ketiga benar. 15 bukan lompatan 6." />
+        <Pilih id={idKuis("B", 22)} pertanyaan="48 ÷ 6 = ..." visual={<Papan anak="48 mangga · 6 keranjang" />} pilihan={[{ huruf: "A", teks: "6" }, { huruf: "B", teks: "7" }, { huruf: "C", teks: "8" }, { huruf: "D", teks: "9" }]} benar="C" umpan="6 × 8 = 48." salah="Cari bilangan yang dikali 6 hasilnya 48." />
       </div>
     </KartuBingkai>
   );
@@ -678,68 +758,6 @@ function PetaSub({
   baris: string[][];
 }) {
   return <PetaContoh pusat={pusat} cabang={cabang} kolom={kolom} baris={baris} />;
-}
-
-function KartuB({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminGuru }) {
-  const kartu = MODUL_MTK4_BAB1.kartu[1];
-  return (
-    <KartuBingkai>
-      <KepalaKartu ikon="🗺️🦉" judul="B. Peta Dermaga" anak="Intisari hitungan peti" kelas={kelas} kelamin={kelamin} cuplikan={cuplikanKalimat(kartu.voice[0] ?? [])} />
-      <div className="mt-4 space-y-4">
-        <Adegan utama judul="Sub-bab 1 — Membaca dan menulis" src="/doodle-mtk/mtk-4-bab1-sub1.jpg" alt="Dermaga dan peti buah bertanda kosong." kelas={kelas} kelamin={kelamin} penjelasan={["Rak kosong tidak disebut, tetapi wajib ditulis."]}>
-          <PetaSub pusat="5.206" cabang={[{ ikon: "👀", judul: "Baca", isi: "lima ribu dua ratus enam" }, { ikon: "0️⃣", judul: "Rak diam", isi: "puluhan kosong" }, { ikon: "✏️", judul: "Tulis", isi: "nol tetap ada" }]} kolom={["Ribuan", "Ratusan", "Puluhan", "Satuan"]} baris={[["5", "2", "0", "6"]]} />
-          <KuisSuara id={idKuis("B", 0)} pertanyaan="Baca bilangan 4.019." periksa={baca4019} petunjuk="Rak yang kosong tidak perlu disebut." benar="Empat ribu sembilan belas." />
-          <TulisBebas id={idKuis("B", 1)} visual={<Papan anak="delapan ribu tiga ratus enam puluh" />} pertanyaan="Tulis angkanya." pesanSalah="Ada empat rak." bantuan="8.360." umpan="8.360." periksa={tulis8360} alias={["8360", "8.360"]} konteks="Delapan ribu tiga ratus enam puluh ditulis 8.360." />
-        </Adegan>
-        <Adegan utama judul="Sub-bab 2 — Nilai tempat" src="/doodle-mtk/mtk-4-bab1-sub2.jpg" alt="Empat rak kosong di dermaga." kelas={kelas} kelamin={kelamin} penjelasan={["Pindah satu rak ke kiri, nilai dikali sepuluh."]}>
-          <PetaSub pusat="7.145" cabang={[{ ikon: "🟦", judul: "Ribuan", isi: "7 → 7.000" }, { ikon: "🟧", judul: "Ratusan", isi: "1 → 100" }, { ikon: "🟪", judul: "Puluhan", isi: "4 → 40" }]} kolom={["Bilangan", "Uraian"]} baris={[["7.145", "7.000 + 100 + 40 + 5"]]} />
-          <KuisSuara id={idKuis("B", 2)} pertanyaan="Berapa nilai angka 9 pada 6.392? Sebutkan raknya." periksa={nilaiSembilanPuluh} petunjuk="Lihat posisi angka 9, bukan besar angkanya saja." benar="Sembilan puluh, di rak puluhan." />
-          <TulisBebas id={idKuis("B", 3)} visual={<Papan anak="2.938" />} pertanyaan="Tulis uraian nilai tempat 2.938 dan sebutkan rak ribuan serta ratusan." pesanSalah="Mulai dari ribuan." bantuan="2.000 + 900 + 30 + 8." umpan="2.000 + 900 + 30 + 8." periksa={pecah2938} alias={["2000 + 900 + 30 + 8"]} konteks="2.938 = 2.000 + 900 + 30 + 8." />
-        </Adegan>
-        <Adegan utama judul="Sub-bab 3 — Membandingkan dan mengurutkan" src="/doodle-mtk/mtk-4-bab1-sub3.jpg" alt="Dua tumpukan peti berbeda tinggi." kelas={kelas} kelamin={kelamin} penjelasan={["Sama di kiri, geser ke kanan. Beda, berhenti."]}>
-          <PetaSub pusat="3.754 > 3.745" cabang={[{ ikon: "1️⃣", judul: "Ribuan", isi: "sama-sama 3" }, { ikon: "2️⃣", judul: "Ratusan", isi: "sama-sama 7" }, { ikon: "3️⃣", judul: "Puluhan", isi: "5 lebih besar dari 4" }]} kolom={["Kiri", "Kanan", "Pemenang"]} baris={[["3.754", "3.745", "3.754"]]} />
-          <KuisSuara id={idKuis("B", 4)} pertanyaan="Mana yang lebih besar, 3.754 atau 3.745? Sebutkan rak yang menentukan." periksa={lebihBesar3754} petunjuk="Dua rak kiri masih sama." benar="3.754. Rak puluhan yang menentukan." />
-          <TulisBebas id={idKuis("B", 5)} visual={<Papan anak="4.210 · 4.012 · 4.120 · 4.102" />} pertanyaan="Urutkan dari kecil ke besar." pesanSalah="Ribuan sama. Lihat ratusan, lalu puluhan." bantuan="4.012, 4.102, 4.120, 4.210." umpan="4.012, 4.102, 4.120, 4.210." periksa={urutPeta} alias={["4012 4102 4120 4210"]} konteks="Urutan: 4.012, 4.102, 4.120, 4.210." />
-        </Adegan>
-        <Adegan utama judul="Sub-bab 4 — Komposisi dan dekomposisi" src="/doodle-mtk/mtk-4-bab1-sub4.jpg" alt="Peti disusun dan dibuka di dermaga." kelas={kelas} kelamin={kelamin} penjelasan={["Menyusun menggabungkan rak. Mengurai memecahnya lagi."]}>
-          <PetaSub pusat="Susun ↔ urai" cabang={[{ ikon: "🧩", judul: "Susun", isi: "7 ribuan + 3 puluhan + 2 satuan" }, { ikon: "📦", judul: "Jadi", isi: "7.032" }, { ikon: "🔓", judul: "Urai", isi: "4.150 = 4.000 + 100 + 50" }]} kolom={["Arah", "Contoh"]} baris={[["Susun", "7.032"], ["Urai", "4.000 + 100 + 50"]]} />
-          <KuisSuara id={idKuis("B", 6)} pertanyaan="Susun 7 ribuan, 0 ratusan, 3 puluhan, 2 satuan." periksa={susun7032} petunjuk="Rak kosong tetap ditulis." benar="7.032." />
-          <TulisBebas id={idKuis("B", 7)} visual={<Papan anak="4.150 = ⬜ + ⬜ + ⬜" />} pertanyaan="Urai 4.150 menjadi ribuan, ratusan, dan puluhan." pesanSalah="Satuan 4.150 adalah nol, boleh tidak ditulis." bantuan="4.000 + 100 + 50." umpan="4.000 + 100 + 50." periksa={urai4150} alias={["4000 + 100 + 50"]} konteks="4.150 = 4.000 + 100 + 50." />
-        </Adegan>
-        <Adegan utama judul="Sub-bab 5 — Penjumlahan" src="/doodle-mtk/mtk-4-bab1-sub5.jpg" alt="Dua kelompok peti digabung." kelas={kelas} kelamin={kelamin} penjelasan={["Jika jumlah satu rak mencapai sepuluh, geser +1 ke kiri."]}>
-          <PetaSub pusat="375 + 148" cabang={[{ ikon: "➡️", judul: "Satuan", isi: "5 + 8 = 13" }, { ikon: "➕", judul: "Puluhan", isi: "7 + 4 + 1 = 12" }, { ikon: "✅", judul: "Hasil", isi: "523" }]} kolom={["Rak", "Hitung", "Tulis"]} baris={[["Satuan", "13", "3"], ["Puluhan", "12", "2"], ["Ratusan", "5", "5"]]} />
-          <KuisSuara id={idKuis("B", 8)} pertanyaan="Berapa hasil 142 + 230?" periksa={tambah372} petunjuk="Jumlahkan tiap rak dari kanan." benar="Tiga ratus tujuh puluh dua." />
-          <TulisBebas id={idKuis("B", 9)} visual={<Papan anak="609 + 186" />} pertanyaan="Tulis hasil 609 + 186." pesanSalah="Satuan lebih dari sembilan." bantuan="609 + 186 = 795." umpan="795." periksa={tambah795} alias={["795"]} konteks="609 + 186 = 795." />
-        </Adegan>
-        <Adegan utama judul="Sub-bab 6 — Pengurangan" src="/doodle-mtk/mtk-4-bab1-sub6.jpg" alt="Satu peti diangkat dari tumpukan." kelas={kelas} kelamin={kelamin} penjelasan={["Yang memberi menulis −1. Angka soal tetap di tempatnya."]}>
-          <PetaSub pusat="481 − 256" cabang={[{ ikon: "➖", judul: "Satuan", isi: "11 − 6 = 5" }, { ikon: "👈", judul: "Pemberi", isi: "puluhan −1" }, { ikon: "✅", judul: "Sisa", isi: "225" }]} kolom={["Rak", "Sesudah", "Hasil"]} baris={[["Satuan", "12", "5"], ["Puluhan", "7", "2"], ["Ratusan", "4", "2"]]} />
-          <KuisSuara id={idKuis("B", 10)} pertanyaan="Berapa hasil 900 − 400?" periksa={kurang500} petunjuk="Ratusan dikurangi ratusan." benar="Lima ratus." />
-          <TulisBebas id={idKuis("B", 11)} visual={<Papan anak="703 − 248" />} pertanyaan="Tulis hasil 703 − 248." pesanSalah="Puluhan kosong, jadi minta ke ratusan." bantuan="703 − 248 = 455." umpan="455." periksa={kurang455} alias={["455"]} konteks="703 − 248 = 455." />
-        </Adegan>
-        <Adegan utama judul="Sub-bab 7 — Perkalian" src="/doodle-mtk/mtk-4-bab1-sub7.jpg" alt="Baris mangga yang sama banyak." kelas={kelas} kelamin={kelamin} penjelasan={["Gambar kelompok yang sama, lalu tulis kali."]}>
-          <PetaSub pusat="4 × 7" cabang={[{ ikon: "🥭", judul: "Gambar", isi: "4 baris, isi 7" }, { ikon: "🔁", judul: "Jumlah ulang", isi: "7 + 7 + 7 + 7" }, { ikon: "✖️", judul: "Simbol", isi: "28" }]} kolom={["Kelompok", "Isi", "Jumlah"]} baris={[["4", "7", "28"]]} />
-          <KuisSuara id={idKuis("B", 12)} pertanyaan="Berapa hasil 8 × 6?" periksa={kali48} petunjuk="Delapan kelompok, masing-masing enam." benar="Empat puluh delapan." />
-          <TulisBebas id={idKuis("B", 13)} visual={<Papan anak="7 × 5" />} pertanyaan="Tulis hasil 7 × 5." pesanSalah="Tujuh kelompok berisi lima." bantuan="7 × 5 = 35." umpan="35." periksa={kali35} alias={["35"]} konteks="7 × 5 = 35." />
-        </Adegan>
-        <Adegan utama judul="Sub-bab 8 — Pembagian" src="/doodle-mtk/mtk-4-bab1-sub8.jpg" alt="Mangga dibagi rata ke keranjang." kelas={kelas} kelamin={kelamin} penjelasan={["Bagi sama banyak. Periksa dengan kali."]}>
-          <PetaSub pusat="45 ÷ 5" cabang={[{ ikon: "🧺", judul: "Keranjang", isi: "5 wadah" }, { ikon: "🥭", judul: "Isi", isi: "9 tiap wadah" }, { ikon: "🔁", judul: "Cek", isi: "5 × 9 = 45" }]} kolom={["Bagi", "Hasil", "Cek"]} baris={[["45 ÷ 5", "9", "5 × 9"]]} />
-          <KuisSuara id={idKuis("B", 14)} pertanyaan="36 ÷ 6 sama dengan berapa?" periksa={bagi6} petunjuk="Cari bilangan yang dikali 6 hasilnya 36." benar="Enam." />
-          <TulisBebas id={idKuis("B", 15)} visual={<Papan anak="64 ÷ 8 = ⬜" />} pertanyaan="Tulis hasil 64 ÷ 8." pesanSalah="Cari kali yang hasilnya 64." bantuan="8 × 8 = 64." umpan="8." periksa={bagi8} alias={["8"]} konteks="64 ÷ 8 = 8." />
-        </Adegan>
-        <Adegan utama judul="Sub-bab 9 — Faktor dan kelipatan" src="/doodle-mtk/mtk-4-bab1-sub9.jpg" alt="Peti tersusun dalam baris yang sama." kelas={kelas} kelamin={kelamin} penjelasan={["Faktor membagi habis. Kelipatan dilompati dengan jarak tetap."]}>
-          <PetaSub pusat="10 dan 3" cabang={[{ ikon: "➗", judul: "Faktor 10", isi: "1, 2, 5, 10" }, { ikon: "🦘", judul: "Lompat 3", isi: "3, 6, 9, 12" }, { ikon: "🚫", judul: "Bukan", isi: "4 bukan faktor 10" }]} kolom={["Jenis", "Contoh"]} baris={[["Faktor", "1 · 2 · 5 · 10"], ["Kelipatan", "3 · 6 · 9 · 12"]]} />
-          <KuisSuara id={idKuis("B", 16)} pertanyaan="Apakah 20 kelipatan 4? Jawab ya atau bukan." periksa={kelipatanYa} petunjuk="Lompat empat sampai dua puluh." benar="Ya. 4 × 5 = 20." />
-          <TulisBebas id={idKuis("B", 17)} visual={<Papan anak="Faktor dari 15" />} pertanyaan="Tulis semua faktor 15." pesanSalah="Yang membagi 15 tanpa sisa." bantuan="1, 3, 5, dan 15." umpan="1, 3, 5, 15." periksa={faktorLimaBelas} alias={["1 3 5 15"]} konteks="Faktor 15 adalah 1, 3, 5, dan 15." />
-        </Adegan>
-
-        <Pilih id={idKuis("B", 18)} pertanyaan="Mana yang paling besar?" visual={<Papan anak="9.040 · 9.400 · 9.004" />} pilihan={[{ huruf: "A", teks: "9.040" }, { huruf: "B", teks: "9.400" }, { huruf: "C", teks: "9.004" }, { huruf: "D", teks: "Semua sama" }]} benar="B" umpan="Ratusan 4 paling besar. Jadi 9.400." salah="Ribuan sama. Lihat ratusannya." />
-        <KuisCocok id={idKuis("B", 19)} perintah="Pasangkan bilangan dengan bacaannya." baris={[{ kiri: "3.080", pilihan: BACAAN_B, benar: "tiga ribu delapan puluh" }, { kiri: "3.800", pilihan: BACAAN_B, benar: "tiga ribu delapan ratus" }, { kiri: "3.008", pilihan: BACAAN_B, benar: "tiga ribu delapan" }]} umpan="Delapan puluh, delapan ratus, dan delapan." />
-        <SusunToken id={idKuis("B", 20)} perintah="Susun dari yang paling kecil." acak={["2.540", "2.045", "2.450", "2.405"]} benar={["2.045", "2.405", "2.450", "2.540"]} umpan="2.045, 2.405, 2.450, 2.540." />
-        <KuisBenarSalah id={idKuis("B", 21)} perintah="Pilih benar atau salah." baris={[{ teks: "2.000 + 40 + 6 = 2.046.", benar: true }, { teks: "15 adalah kelipatan 6.", benar: false }, { teks: "9 × 4 = 36.", benar: true }]} umpan="Yang pertama dan ketiga benar. 15 bukan lompatan 6." />
-        <Pilih id={idKuis("B", 22)} pertanyaan="48 ÷ 6 = ..." visual={<Papan anak="48 mangga · 6 keranjang" />} pilihan={[{ huruf: "A", teks: "6" }, { huruf: "B", teks: "7" }, { huruf: "C", teks: "8" }, { huruf: "D", teks: "9" }]} benar="C" umpan="6 × 8 = 48." salah="Cari bilangan yang dikali 6 hasilnya 48." />
-      </div>
-    </KartuBingkai>
-  );
 }
 
 function KartuC({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminGuru }) {
@@ -799,7 +817,6 @@ export default function NaskahMtk4Bab1({ kelas, kelamin }: { kelas?: string; kel
   return (
     <div className="space-y-5">
       <KartuA kelas={kelas} kelamin={kelamin} />
-      <KartuB kelas={kelas} kelamin={kelamin} />
       <KartuC kelas={kelas} kelamin={kelamin} />
       <div id={SLOT_AJUAN_SEBELUM_KARTU_D} />
       <KartuPoinPenting
@@ -812,8 +829,8 @@ export default function NaskahMtk4Bab1({ kelas, kelamin }: { kelas?: string; kel
           "Kali adalah kelompok sama. Bagi adalah kebalikannya. Faktor membagi habis. Kelipatan melompat.",
         ])}
         poin={[
-          "6.418 dibaca enam ribu empat ratus delapan belas.",
-          "Nilai angka tergantung rak: ribuan, ratusan, puluhan, satuan.",
+          "6.418 dibaca enam ribu empat ratus delapan belas. 5.091 dibaca lima ribu sembilan puluh satu.",
+          "Nilai angka tergantung rak: ribuan, ratusan, puluhan, satuan. Tabel diisi angkanya.",
           "Bandingkan dari kiri. Urutkan dengan mengelompokkan ribuan.",
           "Menyusun menggabungkan rak. Mengurai memecahnya.",
           "Jika jumlah rak 10 atau lebih, ada +1 di rak kiri.",
