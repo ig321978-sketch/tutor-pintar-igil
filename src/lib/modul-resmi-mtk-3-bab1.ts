@@ -88,8 +88,8 @@ D) Kuning`,
       kode: "A",
       judul: "A. Naskah Bergambar",
       pengantar:
-        "Aldi, Naya, Fikri, dan panda Pandu membaca, membandingkan, lalu mengurutkan bilangan sampai 10.000.",
-      labelDaftar: "Lima adegan bilangan ribuan",
+        "Aldi, Naya, Fikri, dan panda Pandu membaca, membandingkan, lalu mengurutkan bilangan sampai 10.000. Infografis tiap sub-bab ada di dalam materi.",
+      labelDaftar: "Lima sub-bab, infografis di dalam materi",
       kolom: 1,
       item: [
         {
@@ -155,9 +155,10 @@ D) Kuning`,
     },
     {
       kode: "B",
-      judul: "B. Infografis",
-      pengantar: "Cara membaca, memecah nilai tempat, membandingkan, dan mengurutkan bilangan sampai 10.000.",
-      labelDaftar: "Lima papan bilangan",
+      judul: "B. Latihan di dalam sub-bab",
+      pengantar:
+        "Papan infografis sudah masuk ke tiap sub-bab materi. Latihan ini menguji bacaan, nilai tempat, perbandingan, urutan, dan angka nol.",
+      labelDaftar: "Latihan mengikuti lima sub-bab",
       kolom: 1,
       item: [
         {

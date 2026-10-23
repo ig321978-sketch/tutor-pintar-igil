@@ -99,6 +99,10 @@ function Papan({ anak }: { anak: string }) {
   );
 }
 
+function JudulInfografis({ judul }: { judul: string }) {
+  return <p className="pt-2 text-sm font-black uppercase tracking-wide text-[#1C01A5]">Infografis: {judul}</p>;
+}
+
 function KepalaKartu({
   ikon,
   judul,
@@ -568,6 +572,23 @@ function KartuA({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminGuru }) {
           <Dialog nama="Naya" anak="Itu menyebut angka. Bacanya: empat ribu tujuh ratus dua puluh lima." />
           <Dialog nama="Pandu" anak="4 di rak ribuan, 7 ratusan, 2 puluhan, 5 satuan. Titik bukan angka." />
           <Papan anak="4.725 = 4 ribuan + 7 ratusan + 2 puluhan + 5 satuan" />
+          <JudulInfografis judul="Membaca dan menulis" />
+          <PetaContoh
+            pusat="4.725"
+            cabang={[
+              { ikon: "🟦", judul: "Ribuan", isi: "4 × 1.000" },
+              { ikon: "🔵", judul: "Ratusan", isi: "7 × 100" },
+              { ikon: "🟨", judul: "Puluhan", isi: "2 × 10" },
+            ]}
+            kolom={["Rak", "Hitung", "Angka"]}
+            baris={[
+              ["ribuan", "4 × 1.000", "4"],
+              ["ratusan", "7 × 100", "7"],
+              ["puluhan", "2 × 10", "2"],
+              ["satuan", "5 × 1", "5"],
+            ]}
+          />
+          <Papan anak="enam ribu delapan puluh empat" />
           <KuisSuara
             id={idKuis("A", 0)}
             pertanyaan="Baca bilangan 3.568 dengan lengkap."
@@ -587,6 +608,23 @@ function KartuA({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminGuru }) {
             alias={["6293", "6.293", "enam ribu dua ratus sembilan puluh tiga"]}
             konteks="Jawabannya 6.293."
           />
+          <KuisSuara
+            id={idKuis("B", 0)}
+            pertanyaan="Baca bilangan 5.402 dengan lengkap!"
+            periksa={baca5402}
+            petunjuk="Ratusan disebut. Puluhan 0 tidak disebut."
+          />
+          <TulisBebas
+            id={idKuis("B", 1)}
+            visual={<Papan anak="tujuh ribu sembilan ratus lima" />}
+            pertanyaan="Tulis angka dari: tujuh ribu sembilan ratus lima."
+            pesanSalah="Tujuh ribuan, sembilan ratusan, puluhan nol, satuan lima."
+            bantuan="Raknya 7, 9, 0, 5. Jadi 7.905."
+            umpan="7.905."
+            periksa={tulis7905}
+            alias={["7905", "tujuh ribu sembilan ratus lima"]}
+            konteks="Jawabannya 7.905."
+          />
         </Adegan>
 
         <Adegan
@@ -603,6 +641,22 @@ function KartuA({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminGuru }) {
           <Dialog nama="Naya" anak="Satu puluhan berisi sepuluh. Pindah satu rak ke kiri, kali sepuluh." />
           <Dialog nama="Pandu" anak="6.482 sama dengan 6.000 + 400 + 80 + 2." />
           <Papan anak="6.482 = 6.000 + 400 + 80 + 2" />
+          <JudulInfografis judul="Nilai tempat" />
+          <PetaContoh
+            pusat="8.359"
+            cabang={[
+              { ikon: "8", judul: "Ribuan", isi: "8.000" },
+              { ikon: "3", judul: "Ratusan", isi: "300" },
+              { ikon: "5", judul: "Puluhan", isi: "50" },
+            ]}
+            kolom={["Angka", "Rak", "Nilai"]}
+            baris={[
+              ["8", "ribuan", "8.000"],
+              ["3", "ratusan", "300"],
+              ["5", "puluhan", "50"],
+              ["9", "satuan", "9"],
+            ]}
+          />
           <KuisSuara
             id={idKuis("A", 2)}
             pertanyaan="Berapa nilai angka tiga pada 5.374? Jelaskan singkat alasannya."
@@ -622,6 +676,24 @@ function KartuA({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminGuru }) {
             alias={["7000 + 900 + 10 + 6", "tujuh ribu sembilan ratus sepuluh enam"]}
             konteks="7.916 = 7.000 + 900 + 10 + 6."
           />
+          <KuisSuara
+            id={idKuis("B", 2)}
+            pertanyaan="Berapa nilai angka 7 pada 2.745? Sebutkan juga nama raknya."
+            periksa={nilaiTujuhRatus}
+            petunjuk="Angka 7 ada di rak ratusan."
+            benar="Tujuh ratus. Rak ratusan."
+          />
+          <TulisBebas
+            id={idKuis("B", 3)}
+            visual={<Papan anak="9.123 = ⬜ + ⬜ + ⬜ + ⬜" />}
+            pertanyaan="Tulis pemecahan nilai tempatnya!"
+            pesanSalah="Ribuan 9, ratusan 1, puluhan 2, satuan 3."
+            bantuan="9.000 + 100 + 20 + 3."
+            umpan="9.000 + 100 + 20 + 3."
+            periksa={pecah9123}
+            alias={["9000 + 100 + 20 + 3", "sembilan ribu seratus dua puluh tiga"]}
+            konteks="9.123 = 9.000 + 100 + 20 + 3."
+          />
         </Adegan>
 
         <Adegan
@@ -638,6 +710,21 @@ function KartuA({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminGuru }) {
           <Dialog nama="Fikri" anak="Kalau 8.000 dan 7.999?" />
           <Dialog nama="Pandu" anak="Ribuan sudah beda. 8.000 lebih besar." />
           <Papan anak="3.842 > 3.291    8.000 > 7.999" />
+          <JudulInfografis judul="Membandingkan" />
+          <PetaContoh
+            pusat="4.376"
+            cabang={[
+              { ikon: "1", judul: "Ribuan", isi: "4 dan 4, sama" },
+              { ikon: "2", judul: "Ratusan", isi: "3 dan 3, sama" },
+              { ikon: "3", judul: "Puluhan", isi: "7 lebih besar" },
+            ]}
+            kolom={["Langkah", "Periksa", "Hasil"]}
+            baris={[
+              ["1", "ribuan", "sama"],
+              ["2", "ratusan", "sama"],
+              ["3", "puluhan", "4.376 lebih besar"],
+            ]}
+          />
           <KuisSuara
             id={idKuis("A", 4)}
             pertanyaan="Mana yang lebih besar, 5.671 atau 5.619? Sebutkan bilangannya, lalu sebutkan rak mana yang menentukan."
@@ -657,6 +744,24 @@ function KartuA({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminGuru }) {
             alias={["lebih kecil", "ratusan"]}
             konteks="4.086 lebih kecil dari 4.806. Rak ratusan yang menentukan."
           />
+          <KuisSuara
+            id={idKuis("B", 4)}
+            pertanyaan="Mana yang lebih besar, 6.512 atau 6.521? Sebutkan rak yang menentukan."
+            periksa={lebihBesar6521}
+            petunjuk="Ribuan dan ratusan sama. Bandingkan puluhannya."
+            benar="Enam ribu lima ratus dua puluh satu. Rak puluhan."
+          />
+          <TulisBebas
+            id={idKuis("B", 5)}
+            visual={<Papan anak="[ 3.908 ] ⬜ [ 3.890 ]" />}
+            pertanyaan="Tulis simbol yang tepat, lalu sebutkan rak yang menentukan."
+            pesanSalah="Ribuan sama. Ratusan 9 dan 8 sudah berbeda, jadi pemeriksaan berhenti di situ."
+            bantuan="3.908 lebih besar. Rak ratusan yang menentukan, karena 9 lebih besar dari 8."
+            umpan="Lebih besar. Rak ratusan: 9 dan 8."
+            periksa={(teks) => bandingRak(teks, ">", "ratusan")}
+            alias={["lebih besar", "ratusan"]}
+            konteks="3.908 lebih besar dari 3.890. Rak ratusan yang menentukan."
+          />
         </Adegan>
 
         <Adegan
@@ -673,6 +778,22 @@ function KartuA({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminGuru }) {
           <Dialog nama="Fikri" anak="Di kelompok 2: 2.180 lalu 2.990." />
           <Dialog nama="Pandu" anak="Jadi 2.180, 2.990, 6.290, 6.540, 9.050." />
           <Papan anak="2.180 < 2.990 < 6.290 < 6.540 < 9.050" />
+          <JudulInfografis judul="Mengurutkan" />
+          <PetaContoh
+            pusat="Urut"
+            cabang={[
+              { ikon: "1", judul: "1.000", isi: "1.940" },
+              { ikon: "3", judul: "3.000", isi: "3.612" },
+              { ikon: "5", judul: "5.000", isi: "5.080 lalu 5.208" },
+            ]}
+            kolom={["Urutan", "Bilangan", "Kelompok"]}
+            baris={[
+              ["1", "1.940", "ribuan 1"],
+              ["2", "3.612", "ribuan 3"],
+              ["3", "5.080", "ribuan 5"],
+              ["4", "5.208", "ribuan 5"],
+            ]}
+          />
           <KuisSuara
             id={idKuis("A", 6)}
             pertanyaan="Dari 7.300, 3.700, dan 7.030, sebutkan bilangan yang paling kecil, lalu sebutkan kelompok ribuan mana yang paling kecil."
@@ -692,6 +813,23 @@ function KartuA({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminGuru }) {
             alias={["1905 3276 5482 8040"]}
             konteks="Urutan: 1.905, 3.276, 5.482, 8.040."
           />
+          <KuisSuara
+            id={idKuis("B", 6)}
+            pertanyaan="Dari 4.500, 4.050, dan 4.005, sebutkan yang paling kecil."
+            periksa={palingKecil4005}
+            petunjuk="Ratusan dan puluhan yang nol membuat bilangan lebih kecil."
+          />
+          <TulisBebas
+            id={idKuis("B", 7)}
+            visual={<Papan anak="2.760 · 2.067 · 2.670" />}
+            pertanyaan="Urutkan dari kecil ke besar!"
+            pesanSalah="Ribuan sama. Lihat ratusannya."
+            bantuan="2.067, lalu 2.670, lalu 2.760."
+            umpan="2.067, 2.670, 2.760."
+            periksa={urutKartuB}
+            alias={["2067 2670 2760"]}
+            konteks="Urutan: 2.067, 2.670, 2.760."
+          />
         </Adegan>
 
         <Adegan
@@ -708,6 +846,21 @@ function KartuA({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminGuru }) {
           <Dialog nama="Aldi" anak="Nol di tengah tidak disebut." />
           <Dialog nama="Pandu" anak="Tetap ditulis. Tanpa nol, 6.084 jadi 684." />
           <Papan anak={"6.084 = enam ribu delapan puluh empat\n6.840 = enam ribu delapan ratus empat puluh"} />
+          <JudulInfografis judul="Bilangan dengan angka nol" />
+          <PetaContoh
+            pusat="Nol"
+            cabang={[
+              { ikon: "6", judul: "6.084", isi: "delapan puluh empat" },
+              { ikon: "8", judul: "6.840", isi: "delapan ratus" },
+              { ikon: "0", judul: "Kosong", isi: "tetap ditulis" },
+            ]}
+            kolom={["Bilangan", "Rak", "Dibaca"]}
+            baris={[
+              ["6.084", "6 · 0 · 8 · 4", "enam ribu delapan puluh empat"],
+              ["6.840", "6 · 8 · 4 · 0", "enam ribu delapan ratus empat puluh"],
+              ["4.050", "4 · 0 · 5 · 0", "empat ribu lima puluh"],
+            ]}
+          />
           <KuisSuara
             id={idKuis("A", 8)}
             pertanyaan="Baca bilangan 5.402, lalu sebutkan rak mana yang kosong."
@@ -726,6 +879,24 @@ function KartuA({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminGuru }) {
             periksa={tulis7905Rak}
             alias={["7905", "puluhan kosong"]}
             konteks="7.905. Rak puluhan yang kosong."
+          />
+          <KuisSuara
+            id={idKuis("B", 8)}
+            pertanyaan="Baca bilangan 8.007, lalu sebutkan rak mana saja yang kosong."
+            periksa={baca8007}
+            petunjuk="Dua rak di tengah berisi angka nol."
+            benar="Delapan ribu tujuh. Rak ratusan dan puluhan yang kosong."
+          />
+          <TulisBebas
+            id={idKuis("B", 9)}
+            visual={<Papan anak="sembilan ribu enam puluh" />}
+            pertanyaan="Tulis bilangan dari sembilan ribu enam puluh."
+            pesanSalah="Ratusan dan satuan tidak disebut. Keduanya nol."
+            bantuan="9.060."
+            umpan="9.060."
+            periksa={tulis9060}
+            alias={["9060"]}
+            konteks="Sembilan ribu enam puluh ditulis 9.060."
           />
         </Adegan>
 
@@ -784,239 +955,9 @@ function KartuA({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminGuru }) {
           umpan="Naik 500 setiap langkah. 3.500 + 500 = 4.000."
           salah="Hitung selisih 2.500 ke 3.000."
         />
-      </div>
-    </KartuBingkai>
-  );
-}
-
-function KartuB({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminGuru }) {
-  const kartu = MODUL_MTK3_BAB1.kartu[1];
-  return (
-    <KartuBingkai latar="bg-[#F8F7FF]">
-      <KepalaKartu
-        ikon="📊"
-        judul={kartu.judul}
-        anak="Papan rak angka"
-        kelas={kelas}
-        kelamin={kelamin}
-        cuplikan={cuplikanKalimat(kartu.voice[0] ?? [])}
-      />
-      <div className="mt-4 space-y-4">
-        <Adegan
-          judul="Sub-bab 1 — Membaca dan menulis bilangan ribuan"
-          src="/doodle-mtk/mtk-3-bab1-sub1.jpg"
-          alt="Empat rak angka berjajar untuk bilangan ribuan."
-          kelas={kelas}
-          kelamin={kelamin}
-          penjelasan={["Empat rak: ribuan, ratusan, puluhan, satuan. Nol di tengah tidak disebut."]}
-        >
-          <PetaContoh
-            pusat="4.725"
-            cabang={[
-              { ikon: "🟦", judul: "Ribuan", isi: "4 × 1.000" },
-              { ikon: "🔵", judul: "Ratusan", isi: "7 × 100" },
-              { ikon: "🟨", judul: "Puluhan", isi: "2 × 10" },
-            ]}
-            kolom={["Rak", "Hitung", "Angka"]}
-            baris={[
-              ["ribuan", "4 × 1.000", "4"],
-              ["ratusan", "7 × 100", "7"],
-              ["puluhan", "2 × 10", "2"],
-              ["satuan", "5 × 1", "5"],
-            ]}
-          />
-          <Papan anak="enam ribu delapan puluh empat" />
-          <KuisSuara
-            id={idKuis("B", 0)}
-            pertanyaan="Baca bilangan 5.402 dengan lengkap!"
-            periksa={baca5402}
-            petunjuk="Ratusan disebut. Puluhan 0 tidak disebut."
-          />
-          <TulisBebas
-            id={idKuis("B", 1)}
-            visual={<Papan anak="tujuh ribu sembilan ratus lima" />}
-            pertanyaan="Tulis angka dari: tujuh ribu sembilan ratus lima."
-            pesanSalah="Tujuh ribuan, sembilan ratusan, puluhan nol, satuan lima."
-            bantuan="Raknya 7, 9, 0, 5. Jadi 7.905."
-            umpan="7.905."
-            periksa={tulis7905}
-            alias={["7905", "tujuh ribu sembilan ratus lima"]}
-            konteks="Jawabannya 7.905."
-          />
-        </Adegan>
-
-        <Adegan
-          judul="Sub-bab 2 — Nilai tempat"
-          src="/doodle-mtk/mtk-3-bab1-sub2.jpg"
-          alt="Tangga nilai tempat. Satu langkah ke kiri dikali sepuluh."
-          kelas={kelas}
-          kelamin={kelamin}
-          penjelasan={["Pindah satu rak ke kiri, kali sepuluh."]}
-        >
-          <PetaContoh
-            pusat="8.359"
-            cabang={[
-              { ikon: "8", judul: "Ribuan", isi: "8.000" },
-              { ikon: "3", judul: "Ratusan", isi: "300" },
-              { ikon: "5", judul: "Puluhan", isi: "50" },
-            ]}
-            kolom={["Angka", "Rak", "Nilai"]}
-            baris={[
-              ["8", "ribuan", "8.000"],
-              ["3", "ratusan", "300"],
-              ["5", "puluhan", "50"],
-              ["9", "satuan", "9"],
-            ]}
-          />
-          <KuisSuara
-            id={idKuis("B", 2)}
-            pertanyaan="Berapa nilai angka 7 pada 2.745? Sebutkan juga nama raknya."
-            periksa={nilaiTujuhRatus}
-            petunjuk="Angka 7 ada di rak ratusan."
-            benar="Tujuh ratus. Rak ratusan."
-          />
-          <TulisBebas
-            id={idKuis("B", 3)}
-            visual={<Papan anak="9.123 = ⬜ + ⬜ + ⬜ + ⬜" />}
-            pertanyaan="Tulis pemecahan nilai tempatnya!"
-            pesanSalah="Ribuan 9, ratusan 1, puluhan 2, satuan 3."
-            bantuan="9.000 + 100 + 20 + 3."
-            umpan="9.000 + 100 + 20 + 3."
-            periksa={pecah9123}
-            alias={["9000 + 100 + 20 + 3", "sembilan ribu seratus dua puluh tiga"]}
-            konteks="9.123 = 9.000 + 100 + 20 + 3."
-          />
-        </Adegan>
-
-        <Adegan
-          judul="Sub-bab 3 — Membandingkan bilangan"
-          src="/doodle-mtk/mtk-3-bab1-sub3.jpg"
-          alt="Empat kotak pemeriksaan dari ribuan sampai satuan, dengan panah dari kiri ke kanan."
-          kelas={kelas}
-          kelamin={kelamin}
-          penjelasan={["Sama, lanjut. Beda, berhenti."]}
-        >
-          <PetaContoh
-            pusat="4.376"
-            cabang={[
-              { ikon: "1", judul: "Ribuan", isi: "4 dan 4, sama" },
-              { ikon: "2", judul: "Ratusan", isi: "3 dan 3, sama" },
-              { ikon: "3", judul: "Puluhan", isi: "7 lebih besar" },
-            ]}
-            kolom={["Langkah", "Periksa", "Hasil"]}
-            baris={[
-              ["1", "ribuan", "sama"],
-              ["2", "ratusan", "sama"],
-              ["3", "puluhan", "4.376 lebih besar"],
-            ]}
-          />
-          <KuisSuara
-            id={idKuis("B", 4)}
-            pertanyaan="Mana yang lebih besar, 6.512 atau 6.521? Sebutkan rak yang menentukan."
-            periksa={lebihBesar6521}
-            petunjuk="Ribuan dan ratusan sama. Bandingkan puluhannya."
-            benar="Enam ribu lima ratus dua puluh satu. Rak puluhan."
-          />
-          <TulisBebas
-            id={idKuis("B", 5)}
-            visual={<Papan anak="[ 3.908 ] ⬜ [ 3.890 ]" />}
-            pertanyaan="Tulis simbol yang tepat, lalu sebutkan rak yang menentukan."
-            pesanSalah="Ribuan sama. Ratusan 9 dan 8 sudah berbeda, jadi pemeriksaan berhenti di situ."
-            bantuan="3.908 lebih besar. Rak ratusan yang menentukan, karena 9 lebih besar dari 8."
-            umpan="Lebih besar. Rak ratusan: 9 dan 8."
-            periksa={(teks) => bandingRak(teks, ">", "ratusan")}
-            alias={["lebih besar", "ratusan"]}
-            konteks="3.908 lebih besar dari 3.890. Rak ratusan yang menentukan."
-          />
-        </Adegan>
-
-        <Adegan
-          judul="Sub-bab 4 — Mengurutkan bilangan"
-          src="/doodle-mtk/mtk-3-bab1-sub4.jpg"
-          alt="Bilangan dimasukkan ke kantong ribuan, lalu diurutkan di dalam kantong."
-          kelas={kelas}
-          kelamin={kelamin}
-          penjelasan={["Kelompokkan ribuan, lalu rapikan."]}
-        >
-          <PetaContoh
-            pusat="Urut"
-            cabang={[
-              { ikon: "1", judul: "1.000", isi: "1.940" },
-              { ikon: "3", judul: "3.000", isi: "3.612" },
-              { ikon: "5", judul: "5.000", isi: "5.080 lalu 5.208" },
-            ]}
-            kolom={["Urutan", "Bilangan", "Kelompok"]}
-            baris={[
-              ["1", "1.940", "ribuan 1"],
-              ["2", "3.612", "ribuan 3"],
-              ["3", "5.080", "ribuan 5"],
-              ["4", "5.208", "ribuan 5"],
-            ]}
-          />
-          <KuisSuara
-            id={idKuis("B", 6)}
-            pertanyaan="Dari 4.500, 4.050, dan 4.005, sebutkan yang paling kecil."
-            periksa={palingKecil4005}
-            petunjuk="Ratusan dan puluhan yang nol membuat bilangan lebih kecil."
-          />
-          <TulisBebas
-            id={idKuis("B", 7)}
-            visual={<Papan anak="2.760 · 2.067 · 2.670" />}
-            pertanyaan="Urutkan dari kecil ke besar!"
-            pesanSalah="Ribuan sama. Lihat ratusannya."
-            bantuan="2.067, lalu 2.670, lalu 2.760."
-            umpan="2.067, 2.670, 2.760."
-            periksa={urutKartuB}
-            alias={["2067 2670 2760"]}
-            konteks="Urutan: 2.067, 2.670, 2.760."
-          />
-        </Adegan>
-
-        <Adegan
-          judul="Sub-bab 5 — Bilangan dengan angka nol"
-          src="/doodle-mtk/mtk-3-bab1-sub5.jpg"
-          alt="Dua bilangan dengan rak kosong. Posisi angka delapan berbeda."
-          kelas={kelas}
-          kelamin={kelamin}
-          penjelasan={["Nol menandai rak kosong. Tidak disebut, tetapi ditulis."]}
-        >
-          <PetaContoh
-            pusat="Nol"
-            cabang={[
-              { ikon: "6", judul: "6.084", isi: "delapan puluh empat" },
-              { ikon: "8", judul: "6.840", isi: "delapan ratus" },
-              { ikon: "0", judul: "Kosong", isi: "tetap ditulis" },
-            ]}
-            kolom={["Bilangan", "Rak", "Dibaca"]}
-            baris={[
-              ["6.084", "6 · 0 · 8 · 4", "enam ribu delapan puluh empat"],
-              ["6.840", "6 · 8 · 4 · 0", "enam ribu delapan ratus empat puluh"],
-              ["4.050", "4 · 0 · 5 · 0", "empat ribu lima puluh"],
-            ]}
-          />
-          <KuisSuara
-            id={idKuis("B", 8)}
-            pertanyaan="Baca bilangan 8.007, lalu sebutkan rak mana saja yang kosong."
-            periksa={baca8007}
-            petunjuk="Dua rak di tengah berisi angka nol."
-            benar="Delapan ribu tujuh. Rak ratusan dan puluhan yang kosong."
-          />
-          <TulisBebas
-            id={idKuis("B", 9)}
-            visual={<Papan anak="sembilan ribu enam puluh" />}
-            pertanyaan="Tulis bilangan dari sembilan ribu enam puluh."
-            pesanSalah="Ratusan dan satuan tidak disebut. Keduanya nol."
-            bantuan="9.060."
-            umpan="9.060."
-            periksa={tulis9060}
-            alias={["9060"]}
-            konteks="Sembilan ribu enam puluh ditulis 9.060."
-          />
-        </Adegan>
-
         <Pilih
           id={idKuis("B", 10)}
-          pertanyaan="1. Manakah bacaan yang benar untuk 7.050?"
+          pertanyaan="6. Manakah bacaan yang benar untuk 7.050?"
           visual={<Papan anak="7.050" />}
           pilihan={[
             { huruf: "A", teks: "Tujuh ribu lima" },
@@ -1030,7 +971,7 @@ function KartuB({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminGuru }) {
         />
         <KuisCocok
           id={idKuis("B", 11)}
-          perintah="2. Pada 6.487, pasangkan setiap angka dengan nilainya."
+          perintah="7. Pada 6.487, pasangkan setiap angka dengan nilainya."
           baris={[
             { kiri: "Angka 6", pilihan: NILAI_B, benar: "6.000" },
             { kiri: "Angka 4", pilihan: NILAI_B, benar: "400" },
@@ -1040,14 +981,14 @@ function KartuB({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminGuru }) {
         />
         <SusunToken
           id={idKuis("B", 12)}
-          perintah="3. Susun dari terbesar ke terkecil."
+          perintah="8. Susun dari terbesar ke terkecil."
           acak={["3.099", "9.003", "3.909", "9.300"]}
           benar={["9.300", "9.003", "3.909", "3.099"]}
           umpan="9.300, 9.003, 3.909, 3.099."
         />
         <KuisBenarSalah
           id={idKuis("B", 13)}
-          perintah="4. Cek bilangan. Periksa tiga pernyataan."
+          perintah="9. Cek bilangan. Periksa tiga pernyataan."
           baris={[
             { teks: "Pada 4.506, angka 5 bernilai 500.", benar: true },
             { teks: "Nol di tengah bilangan selalu disebut saat membaca.", benar: false },
@@ -1057,7 +998,7 @@ function KartuB({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminGuru }) {
         />
         <Pilih
           id={idKuis("B", 14)}
-          pertanyaan="5. Ribuanku 5, ratusanku 0, puluhanku 7, satuanku 2. Aku bilangan..."
+          pertanyaan="10. Ribuanku 5, ratusanku 0, puluhanku 7, satuanku 2. Aku bilangan..."
           pilihan={[
             { huruf: "A", teks: "5.072" },
             { huruf: "B", teks: "5.720" },
@@ -1278,7 +1219,6 @@ export default function NaskahMtk3Bab1({
   return (
     <div className="space-y-5">
       <KartuA kelas={kelas} kelamin={kelamin} />
-      <KartuB kelas={kelas} kelamin={kelamin} />
       <KartuC kelas={kelas} kelamin={kelamin} />
       <div id={SLOT_AJUAN_SEBELUM_KARTU_D} />
       <KartuPoinPenting
