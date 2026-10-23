@@ -515,15 +515,15 @@ function KartuA({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminGuru }) {
       />
       <TujuanBelajar
         butir={[
-          "Mengisi kotak pada kalimat tambah dan kurang.",
-          "Mengecek kalimat.",
-          "Mengubah cerita menjadi kalimat.",
+          "Mengisi kotak pada kalimat penjumlahan bilangan cacah sampai 100.",
+          "Mengisi kotak pada kalimat pengurangan bilangan cacah sampai 100.",
+          "Mengecek kalimat dan mengubah cerita menjadi kalimat.",
         ]}
       />
       <div className="mt-4 space-y-4">
         <Adegan
           utama
-          judul="Sub-bab 1 — Kotak pada penjumlahan"
+          judul="Sub-bab 1 — Kalimat penjumlahan"
           src="/doodle-mtk/mtk-3-kalimat-sub1.jpg"
           alt="Pos lampion dengan kartu kosong di tali. Igil bertopi biru bersama tiga anak."
           kelas={kelas}
@@ -534,6 +534,26 @@ function KartuA({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminGuru }) {
           <Dialog nama="Nisa" anak="Kalimatnya 20 + kotak = 35." />
           <Dialog nama="Farhan" anak="35 kurang 20." />
           <Dialog nama="Cinta" anak="Kotaknya 15." />
+          <Dialog nama="Igil" anak="Sampai 100 caranya sama. Farhan punya 30. Digabung jadi 50." />
+          <Dialog nama="Farhan" anak="30 + kotak = 50. Kotaknya 20." />
+          <p className="pt-2 text-sm font-black uppercase tracking-wide text-[#1C01A5]">Infografis: Penjumlahan</p>
+          <PetaContoh
+            pusat="Tambah"
+            cabang={[
+              { ikon: "30", judul: "Ada", isi: "lampion Farhan" },
+              { ikon: "50", judul: "Jumlah", isi: "setelah digabung" },
+              { ikon: "20", judul: "Kotak", isi: "50 − 30" },
+            ]}
+            kolom={["Bagian", "Angka", "Cara"]}
+            baris={[
+              ["ada", "28", "sudah digantung"],
+              ["jumlah", "45", "target"],
+              ["kotak", "17", "45 − 28"],
+              ["ada", "30", "Farhan"],
+              ["jumlah", "50", "digabung"],
+              ["kotak", "20", "50 − 30"],
+            ]}
+          />
           <KuisSuara
             id={idKuis("A", 0)}
             pertanyaan="30 + kotak = 46. Sebutkan isi kotak."
@@ -552,11 +572,29 @@ function KartuA({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminGuru }) {
             alias={["27", "dua puluh tujuh"]}
             konteks="45 + kotak = 72. Kotaknya 27."
           />
+          <KuisSuara
+            id={idKuis("B", 0)}
+            pertanyaan="34 + kotak = 50. Sebutkan isi kotak."
+            periksa={(teks) => nilaiKotak(teks, 16, ["enam belas"], LARANG_BELAS)}
+            petunjuk="Kurangkan jumlah dengan bilangan yang sudah ada."
+            benar="16."
+          />
+          <TulisBebas
+            id={idKuis("B", 1)}
+            visual={<Papan anak="56 + □ = 80" />}
+            pertanyaan="56 + kotak = 80. Tulis isi kotak."
+            pesanSalah="Kurangkan jumlah dengan bilangan yang sudah ada."
+            bantuan="80 − 56 = 24."
+            umpan="24."
+            periksa={(teks) => nilaiKotak(teks, 24, ["dua puluh empat"], LARANG_24)}
+            alias={["24", "dua puluh empat"]}
+            konteks="56 + kotak = 80. Kotaknya 24."
+          />
         </Adegan>
 
         <Adegan
           utama
-          judul="Sub-bab 2 — Kotak pada pengurangan"
+          judul="Sub-bab 2 — Kalimat pengurangan"
           src="/doodle-mtk/mtk-3-kalimat-sub2.jpg"
           alt="Beberapa lampion sudah turun ke keranjang. Igil menunjuk tali yang lebih sepi."
           kelas={kelas}
@@ -567,6 +605,26 @@ function KartuA({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminGuru }) {
           <Dialog nama="Farhan" anak="40 − kotak = 25." />
           <Dialog nama="Igil" anak="40 kurang 25 sama dengan 15." />
           <Dialog nama="Nisa" anak="Jadi 15 lampion yang sudah dipasang." />
+          <Dialog nama="Igil" anak="Di gudang ada 80. Yang masih di tali 45." />
+          <Dialog nama="Cinta" anak="80 − kotak = 45. Kotaknya 35." />
+          <p className="pt-2 text-sm font-black uppercase tracking-wide text-[#1C01A5]">Infografis: Pengurangan</p>
+          <PetaContoh
+            pusat="Kurang"
+            cabang={[
+              { ikon: "80", judul: "Depan", isi: "semula di gudang" },
+              { ikon: "45", judul: "Sisa", isi: "masih di tali" },
+              { ikon: "35", judul: "Kotak", isi: "80 − 45" },
+            ]}
+            kolom={["Bagian", "Angka", "Cara"]}
+            baris={[
+              ["depan", "80", "semula"],
+              ["sisa", "45", "masih ada"],
+              ["kotak", "35", "80 − 45"],
+              ["depan", "75", "contoh lain"],
+              ["sisa", "40", "masih ada"],
+              ["kotak", "35", "75 − 40"],
+            ]}
+          />
           <KuisSuara
             id={idKuis("A", 2)}
             pertanyaan="80 − kotak = 55. Sebutkan isi kotak."
@@ -585,6 +643,24 @@ function KartuA({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminGuru }) {
             alias={["54", "lima puluh empat"]}
             konteks="90 − kotak = 36. Kotaknya 54."
           />
+          <KuisSuara
+            id={idKuis("B", 2)}
+            pertanyaan="90 − kotak = 62. Sebutkan isi kotak."
+            periksa={(teks) => nilaiKotak(teks, 28, ["dua puluh delapan"], LARANG_28)}
+            petunjuk="Kurangkan bilangan depan dengan sisanya."
+            benar="28."
+          />
+          <TulisBebas
+            id={idKuis("B", 3)}
+            visual={<Papan anak="83 − □ = 47" />}
+            pertanyaan="83 − kotak = 47. Tulis isi kotak."
+            pesanSalah="Kurangkan bilangan depan dengan sisanya."
+            bantuan="83 − 47 = 36."
+            umpan="36."
+            periksa={(teks) => nilaiKotak(teks, 36, ["tiga puluh enam"], LARANG_36)}
+            alias={["36", "tiga puluh enam"]}
+            konteks="83 − kotak = 47. Kotaknya 36."
+          />
         </Adegan>
 
         <Adegan
@@ -594,12 +670,27 @@ function KartuA({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminGuru }) {
           alt="Kait pertama kosong, lampion mulai dari kait berikutnya. Igil bertengger di bambu."
           kelas={kelas}
           kelamin={kelamin}
-          penjelasan={["Kotak di depan pengurangan dicari dengan menjumlahkan sisa dan yang dikurangkan."]}
+          penjelasan={["Kotak di depan tambah dicari dengan mengurangkan jumlah. Kotak di depan kurang dicari dengan menjumlahkan sisa."]}
         >
-          <Dialog nama="Nisa" anak="Kotak − 8 = 14." />
-          <Dialog nama="Farhan" anak="Kotaknya ada di depan." />
-          <Dialog nama="Igil" anak="14 tambah 8." />
-          <Dialog nama="Cinta" anak="Kotaknya 22." />
+          <Dialog nama="Nisa" anak="Kotak + 16 = 54. Kotaknya ada di depan tanda tambah." />
+          <Dialog nama="Igil" anak="54 kurang 16. Kotaknya 38." />
+          <Dialog nama="Farhan" anak="Kalau kotak − 8 = 14, kotaknya di depan tanda kurang." />
+          <Dialog nama="Cinta" anak="14 tambah 8. Kotaknya 22." />
+          <p className="pt-2 text-sm font-black uppercase tracking-wide text-[#1C01A5]">Infografis: Kotak di depan</p>
+          <PetaContoh
+            pusat="Di depan"
+            cabang={[
+              { ikon: "54", judul: "Tambah", isi: "kotak + 16" },
+              { ikon: "38", judul: "Kurang", isi: "54 − 16" },
+              { ikon: "22", judul: "Sisa", isi: "14 + 8" },
+            ]}
+            kolom={["Kalimat", "Cara", "Kotak"]}
+            baris={[
+              ["kotak + 16 = 54", "54 − 16", "38"],
+              ["kotak − 8 = 14", "14 + 8", "22"],
+              ["kotak − 12 = 26", "26 + 12", "38"],
+            ]}
+          />
           <KuisSuara
             id={idKuis("A", 4)}
             pertanyaan="Kotak + 14 = 40. Sebutkan isi kotak."
@@ -618,6 +709,24 @@ function KartuA({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminGuru }) {
             alias={["37", "tiga puluh tujuh"]}
             konteks="Kotak − 17 = 20. Kotaknya 37."
           />
+          <KuisSuara
+            id={idKuis("B", 4)}
+            pertanyaan="Kotak + 13 = 40. Sebutkan isi kotak."
+            periksa={(teks) => nilaiKotak(teks, 27, ["dua puluh tujuh"], LARANG_27)}
+            petunjuk="Kurangkan jumlah dengan bilangan di belakang kotak."
+            benar="27."
+          />
+          <TulisBebas
+            id={idKuis("B", 5)}
+            visual={<Papan anak="□ − 12 = 25" />}
+            pertanyaan="Kotak − 12 = 25. Tulis isi kotak."
+            pesanSalah="Jumlahkan sisa dengan bilangan yang dikurangkan."
+            bantuan="25 + 12 = 37."
+            umpan="37."
+            periksa={(teks) => nilaiKotak(teks, 37, ["tiga puluh tujuh"], LARANG_37)}
+            alias={["37", "tiga puluh tujuh"]}
+            konteks="Kotak − 12 = 25. Kotaknya 37."
+          />
         </Adegan>
 
         <Adegan
@@ -633,6 +742,21 @@ function KartuA({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminGuru }) {
           <Dialog nama="Nisa" anak="Kalimat itu benar." />
           <Dialog nama="Cinta" anak="20 + 9 ditulis 30. Hitungnya 29." />
           <Dialog nama="Igil" anak="Itu salah. Bandingkan dengan hasil hitung." />
+          <p className="pt-2 text-sm font-black uppercase tracking-wide text-[#1C01A5]">Infografis: Cek kalimat</p>
+          <PetaContoh
+            pusat="Cek"
+            cabang={[
+              { ikon: "40", judul: "Hitung", isi: "22 + 18" },
+              { ikon: "=", judul: "Banding", isi: "sama dengan 40" },
+              { ikon: "✓", judul: "Putusan", isi: "kalimat benar" },
+            ]}
+            kolom={["Kalimat", "Hitung", "Hasil"]}
+            baris={[
+              ["22 + 18 = 40", "40", "sama"],
+              ["30 + 9 = 40", "39", "beda"],
+              ["15 + 8 = 24", "23", "beda"],
+            ]}
+          />
           <KuisSuara
             id={idKuis("A", 6)}
             pertanyaan="24 + 6 = 30. Sebutkan benar atau salah."
@@ -651,6 +775,24 @@ function KartuA({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminGuru }) {
             alias={["salah"]}
             konteks="15 + 8 = 23, tertulis 24. Jawabannya salah."
           />
+          <KuisSuara
+            id={idKuis("B", 6)}
+            pertanyaan="35 + 15 = 50. Sebutkan benar atau salah."
+            periksa={(teks) => nilaiKata(teks, ["benar"], ["salah"])}
+            petunjuk="Hitung dulu, lalu bandingkan."
+            benar="Benar."
+          />
+          <TulisBebas
+            id={idKuis("B", 7)}
+            visual={<Papan anak="46 − 8 = 36" />}
+            pertanyaan="46 − 8 = 36. Tulis benar atau salah."
+            pesanSalah="Hitung 46 − 8, lalu bandingkan dengan 36."
+            bantuan="46 − 8 = 38. Kalimat itu salah."
+            umpan="Salah."
+            periksa={(teks) => nilaiKata(teks, ["salah"], ["benar"])}
+            alias={["salah"]}
+            konteks="46 − 8 = 38, tertulis 36. Jawabannya salah."
+          />
         </Adegan>
 
         <Adegan
@@ -666,6 +808,26 @@ function KartuA({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminGuru }) {
           <Dialog nama="Igil" anak="Cerita itu jadi 10 + kotak = 16." />
           <Dialog nama="Farhan" anak="Kotaknya 6." />
           <Dialog nama="Cinta" anak="Tulis kalimatnya dulu, baru dihitung." />
+          <Dialog nama="Igil" anak="Farhan punya 19. Ia butuh 32. Kalimatnya 19 + kotak = 32." />
+          <Dialog nama="Nisa" anak="32 kurang 19. Kotaknya 13." />
+          <p className="pt-2 text-sm font-black uppercase tracking-wide text-[#1C01A5]">Infografis: Cerita jadi kalimat</p>
+          <PetaContoh
+            pusat="Cerita"
+            cabang={[
+              { ikon: "19", judul: "Punya", isi: "lampion Farhan" },
+              { ikon: "32", judul: "Butuh", isi: "target" },
+              { ikon: "13", judul: "Isi", isi: "32 − 19" },
+            ]}
+            kolom={["Bagian", "Angka", "Cara"]}
+            baris={[
+              ["punya", "19", "Farhan"],
+              ["butuh", "32", "target"],
+              ["kotak", "13", "32 − 19"],
+              ["punya", "10", "Nisa"],
+              ["jadi", "16", "setelah ditambah"],
+              ["kotak", "6", "16 − 10"],
+            ]}
+          />
           <KuisSuara
             id={idKuis("A", 8)}
             pertanyaan="Cinta punya 28 lampion. Beberapa dipasang. Sisa 19. Sebutkan yang dipasang."
@@ -683,6 +845,24 @@ function KartuA({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminGuru }) {
             periksa={(teks) => nilaiKotak(teks, 17, ["tujuh belas"], LARANG_BELAS)}
             alias={["17", "tujuh belas"]}
             konteks="33 + kotak = 50. Kotaknya 17."
+          />
+          <KuisSuara
+            id={idKuis("B", 8)}
+            pertanyaan="Nisa punya 44 lampion. Ia memberi beberapa. Sisa 29. Sebutkan yang diberikan."
+            periksa={(teks) => nilaiKotak(teks, 15, ["lima belas"], LARANG_BELAS)}
+            petunjuk="Ubah cerita menjadi kalimat kurang, lalu cari kotaknya."
+            benar="15."
+          />
+          <TulisBebas
+            id={idKuis("B", 9)}
+            visual={<Papan anak="□ + 21 = 60" />}
+            pertanyaan="Sudah ada beberapa lampion. Ditambah 21 menjadi 60. Tulis isi kotak."
+            pesanSalah="Kalimatnya kotak + 21 = 60."
+            bantuan="60 − 21 = 39."
+            umpan="39."
+            periksa={(teks) => nilaiKotak(teks, 39, ["tiga puluh sembilan"], LARANG_39)}
+            alias={["39", "tiga puluh sembilan"]}
+            konteks="Kotak + 21 = 60. Kotaknya 39."
           />
         </Adegan>
 
@@ -742,233 +922,6 @@ function KartuA({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminGuru }) {
           umpan="Yang ditambah ditulis 16 + kotak = 29."
           salah="Lihat mana yang sudah ada dan mana jumlahnya."
         />
-      </div>
-    </KartuBingkai>
-  );
-}
-
-function KartuB({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminGuru }) {
-  const kartu = MODUL_MTK3_KALIMAT.kartu[1];
-  return (
-    <KartuBingkai>
-      <KepalaKartu
-        ikon="➕"
-        judul={kartu.judul}
-        anak="Papan tambah, kurang, dan cek"
-        kelas={kelas}
-        kelamin={kelamin}
-        cuplikan={cuplikanKalimat(kartu.voice[0] ?? [])}
-      />
-      <div className="mt-4 space-y-4">
-        <Adegan
-          judul="Sub-bab 1 — Kurangkan jumlah"
-          src="/doodle-mtk/mtk-3-kalimat-sub1.jpg"
-          alt="Tali lampion dan kartu kosong di pos."
-          kelas={kelas}
-          kelamin={kelamin}
-          penjelasan={["Jumlah dikurangi bilangan yang sudah diketahui."]}
-        >
-          <PetaContoh
-            pusat="Tambah"
-            cabang={[
-              { ikon: "28", judul: "Ada", isi: "lampion Nisa" },
-              { ikon: "45", judul: "Jumlah", isi: "yang diinginkan" },
-              { ikon: "17", judul: "Kotak", isi: "45 − 28" },
-            ]}
-            kolom={["Bagian", "Angka", "Cara"]}
-            baris={[
-              ["ada", "28", "sudah digantung"],
-              ["jumlah", "45", "target"],
-              ["kotak", "17", "45 − 28"],
-            ]}
-          />
-          <KuisSuara
-            id={idKuis("B", 0)}
-            pertanyaan="34 + kotak = 50. Sebutkan isi kotak."
-            periksa={(teks) => nilaiKotak(teks, 16, ["enam belas"], LARANG_BELAS)}
-            petunjuk="Kurangkan jumlah dengan bilangan yang sudah ada."
-            benar="16."
-          />
-          <TulisBebas
-            id={idKuis("B", 1)}
-            visual={<Papan anak="56 + □ = 80" />}
-            pertanyaan="56 + kotak = 80. Tulis isi kotak."
-            pesanSalah="Kurangkan jumlah dengan bilangan yang sudah ada."
-            bantuan="80 − 56 = 24."
-            umpan="24."
-            periksa={(teks) => nilaiKotak(teks, 24, ["dua puluh empat"], LARANG_24)}
-            alias={["24", "dua puluh empat"]}
-            konteks="56 + kotak = 80. Kotaknya 24."
-          />
-        </Adegan>
-
-        <Adegan
-          judul="Sub-bab 2 — Kurangkan sisa"
-          src="/doodle-mtk/mtk-3-kalimat-sub2.jpg"
-          alt="Lampion di keranjang dan yang masih tergantung."
-          kelas={kelas}
-          kelamin={kelamin}
-          penjelasan={["Bilangan depan dikurangi sisa yang tertulis."]}
-        >
-          <PetaContoh
-            pusat="Kurang"
-            cabang={[
-              { ikon: "75", judul: "Depan", isi: "semula" },
-              { ikon: "40", judul: "Sisa", isi: "yang tinggal" },
-              { ikon: "35", judul: "Kotak", isi: "75 − 40" },
-            ]}
-            kolom={["Bagian", "Angka", "Cara"]}
-            baris={[
-              ["depan", "75", "semula"],
-              ["sisa", "40", "masih ada"],
-              ["kotak", "35", "75 − 40"],
-            ]}
-          />
-          <KuisSuara
-            id={idKuis("B", 2)}
-            pertanyaan="90 − kotak = 62. Sebutkan isi kotak."
-            periksa={(teks) => nilaiKotak(teks, 28, ["dua puluh delapan"], LARANG_28)}
-            petunjuk="Kurangkan bilangan depan dengan sisanya."
-            benar="28."
-          />
-          <TulisBebas
-            id={idKuis("B", 3)}
-            visual={<Papan anak="83 − □ = 47" />}
-            pertanyaan="83 − kotak = 47. Tulis isi kotak."
-            pesanSalah="Kurangkan bilangan depan dengan sisanya."
-            bantuan="83 − 47 = 36."
-            umpan="36."
-            periksa={(teks) => nilaiKotak(teks, 36, ["tiga puluh enam"], LARANG_36)}
-            alias={["36", "tiga puluh enam"]}
-            konteks="83 − kotak = 47. Kotaknya 36."
-          />
-        </Adegan>
-
-        <Adegan
-          judul="Sub-bab 3 — Kotak di awal"
-          src="/doodle-mtk/mtk-3-kalimat-sub3.jpg"
-          alt="Kait pertama masih kosong sebelum deretan lampion."
-          kelas={kelas}
-          kelamin={kelamin}
-          penjelasan={["Jika kotak dikurangi suatu bilangan, jumlahkan sisa dengan bilangan itu."]}
-        >
-          <PetaContoh
-            pusat="Di depan"
-            cabang={[
-              { ikon: "□", judul: "Kosong", isi: "belum diketahui" },
-              { ikon: "9", judul: "Kurang", isi: "yang dikurangkan" },
-              { ikon: "30", judul: "Isi", isi: "21 + 9" },
-            ]}
-            kolom={["Bagian", "Angka", "Cara"]}
-            baris={[
-              ["sisa", "21", "hasil"],
-              ["kurang", "9", "dikurangkan"],
-              ["kotak", "30", "21 + 9"],
-            ]}
-          />
-          <KuisSuara
-            id={idKuis("B", 4)}
-            pertanyaan="Kotak + 13 = 40. Sebutkan isi kotak."
-            periksa={(teks) => nilaiKotak(teks, 27, ["dua puluh tujuh"], LARANG_27)}
-            petunjuk="Kurangkan jumlah dengan bilangan di belakang kotak."
-            benar="27."
-          />
-          <TulisBebas
-            id={idKuis("B", 5)}
-            visual={<Papan anak="□ − 12 = 25" />}
-            pertanyaan="Kotak − 12 = 25. Tulis isi kotak."
-            pesanSalah="Jumlahkan sisa dengan bilangan yang dikurangkan."
-            bantuan="25 + 12 = 37."
-            umpan="37."
-            periksa={(teks) => nilaiKotak(teks, 37, ["tiga puluh tujuh"], LARANG_37)}
-            alias={["37", "tiga puluh tujuh"]}
-            konteks="Kotak − 12 = 25. Kotaknya 37."
-          />
-        </Adegan>
-
-        <Adegan
-          judul="Sub-bab 4 — Bandingkan hasil"
-          src="/doodle-mtk/mtk-3-kalimat-sub4.jpg"
-          alt="Tumpukan lampion yang sama dan yang tidak sama di atas meja."
-          kelas={kelas}
-          kelamin={kelamin}
-          penjelasan={["Hitung ruas kiri, lalu bandingkan dengan bilangan di kanan."]}
-        >
-          <PetaContoh
-            pusat="Cek"
-            cabang={[
-              { ikon: "22", judul: "Hitung", isi: "22 + 18" },
-              { ikon: "40", judul: "Banding", isi: "sama dengan 40" },
-              { ikon: "✓", judul: "Putusan", isi: "kalimat benar" },
-            ]}
-            kolom={["Kalimat", "Hitung", "Hasil"]}
-            baris={[
-              ["22 + 18 = 40", "40", "sama"],
-              ["30 + 9 = 40", "39", "beda"],
-            ]}
-          />
-          <KuisSuara
-            id={idKuis("B", 6)}
-            pertanyaan="35 + 15 = 50. Sebutkan benar atau salah."
-            periksa={(teks) => nilaiKata(teks, ["benar"], ["salah"])}
-            petunjuk="Hitung dulu, lalu bandingkan."
-            benar="Benar."
-          />
-          <TulisBebas
-            id={idKuis("B", 7)}
-            visual={<Papan anak="46 − 8 = 36" />}
-            pertanyaan="46 − 8 = 36. Tulis benar atau salah."
-            pesanSalah="Hitung 46 − 8, lalu bandingkan dengan 36."
-            bantuan="46 − 8 = 38. Kalimat itu salah."
-            umpan="Salah."
-            periksa={(teks) => nilaiKata(teks, ["salah"], ["benar"])}
-            alias={["salah"]}
-            konteks="46 − 8 = 38, tertulis 36. Jawabannya salah."
-          />
-        </Adegan>
-
-        <Adegan
-          judul="Sub-bab 5 — Cerita jadi kalimat"
-          src="/doodle-mtk/mtk-3-kalimat-sub5.jpg"
-          alt="Anak-anak membawa lampion sambil merencanakan jumlahnya."
-          kelas={kelas}
-          kelamin={kelamin}
-          penjelasan={["Sebut yang sudah ada, yang diinginkan, lalu tulis kalimatnya."]}
-        >
-          <PetaContoh
-            pusat="Cerita"
-            cabang={[
-              { ikon: "19", judul: "Punya", isi: "lampion Farhan" },
-              { ikon: "32", judul: "Butuh", isi: "target" },
-              { ikon: "13", judul: "Isi", isi: "32 − 19" },
-            ]}
-            kolom={["Bagian", "Angka", "Cara"]}
-            baris={[
-              ["punya", "19", "Farhan"],
-              ["butuh", "32", "target"],
-              ["kotak", "13", "32 − 19"],
-            ]}
-          />
-          <KuisSuara
-            id={idKuis("B", 8)}
-            pertanyaan="Nisa punya 44 lampion. Ia memberi beberapa. Sisa 29. Sebutkan yang diberikan."
-            periksa={(teks) => nilaiKotak(teks, 15, ["lima belas"], LARANG_BELAS)}
-            petunjuk="Ubah cerita menjadi kalimat kurang, lalu cari kotaknya."
-            benar="15."
-          />
-          <TulisBebas
-            id={idKuis("B", 9)}
-            visual={<Papan anak="□ + 21 = 60" />}
-            pertanyaan="Sudah ada beberapa lampion. Ditambah 21 menjadi 60. Tulis isi kotak."
-            pesanSalah="Kalimatnya kotak + 21 = 60."
-            bantuan="60 − 21 = 39."
-            umpan="39."
-            periksa={(teks) => nilaiKotak(teks, 39, ["tiga puluh sembilan"], LARANG_39)}
-            alias={["39", "tiga puluh sembilan"]}
-            konteks="Kotak + 21 = 60. Kotaknya 39."
-          />
-        </Adegan>
-
         <Pilih
           id={idKuis("B", 10)}
           pertanyaan="67 + kotak = 90. Isi kotak..."
@@ -1225,16 +1178,15 @@ export default function NaskahMtk3Kalimat({
   kelamin?: KelaminGuru;
 }) {
   const poin = [
-    "Kotak pada penjumlahan: jumlah dikurangi yang sudah ada.",
-    "Kotak pada pengurangan: bilangan depan dikurangi sisa.",
-    "Kotak di depan pengurangan: sisa ditambah yang dikurangkan.",
+    "Kotak pada penjumlahan sampai 100: jumlah dikurangi yang sudah ada.",
+    "Kotak pada pengurangan sampai 100: bilangan depan dikurangi sisa.",
+    "Kotak di depan tambah: kurangkan jumlah. Kotak di depan kurang: jumlahkan sisa.",
     "Kalimat benar bila hasil hitung sama dengan yang tertulis.",
     "Soal cerita diubah dulu menjadi kalimat, baru kotaknya dicari.",
   ];
   return (
     <div className="space-y-5">
       <KartuA kelas={kelas} kelamin={kelamin} />
-      <KartuB kelas={kelas} kelamin={kelamin} />
       <KartuC kelas={kelas} kelamin={kelamin} />
       <div id={SLOT_AJUAN_SEBELUM_KARTU_D} />
       <KartuPoinPenting

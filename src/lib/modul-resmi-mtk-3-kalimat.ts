@@ -87,8 +87,9 @@ D) 117`,
     {
       kode: "A",
       judul: "A. Naskah Bergambar",
-      pengantar: "Nisa, Farhan, Cinta, dan Igil mengisi kotak di pos lampion.",
-      labelDaftar: "Lima adegan lampion",
+      pengantar:
+        "Nisa, Farhan, Cinta, dan Igil mengisi kotak kalimat penjumlahan dan pengurangan bilangan cacah sampai 100. Infografis tiap sub-bab ada di dalam materi.",
+      labelDaftar: "Penjumlahan, pengurangan, kotak di depan, cek, dan cerita",
       kolom: 1,
       item: [
         { nama: "Kotak tambah", singkat: "Jumlah dikurangi", uraian: "20 + kotak = 35. Kotaknya 15.", contoh: "Kurangkan jumlah dengan yang sudah ada." },
@@ -118,9 +119,10 @@ D) 117`,
     },
     {
       kode: "B",
-      judul: "B. Infografis",
-      pengantar: "Papan kotak: tambah, kurang, di depan, cek, dan cerita.",
-      labelDaftar: "Lima papan kotak",
+      judul: "B. Latihan di dalam sub-bab",
+      pengantar:
+        "Papan infografis sudah masuk ke tiap sub-bab materi. Latihan ini mengisi kotak penjumlahan, pengurangan, kotak di depan, cek kalimat, dan cerita sampai 100.",
+      labelDaftar: "Latihan mengikuti lima sub-bab",
       kolom: 1,
       item: [
         { nama: "Tambah", singkat: "28 + kotak = 45", uraian: "45 − 28 = 17.", contoh: "Kurangkan jumlah dengan yang sudah ada." },
