@@ -240,12 +240,16 @@ function PanelSimulasiPosisiPola({
 }
 
 function PanelSimulasiPecahan({
+  kelas,
+  kelamin,
   sudahLulus = false,
   onSelesai,
-}: Pick<PanelSimulasiProps, "sudahLulus" | "onSelesai">) {
+}: Pick<PanelSimulasiProps, "kelas" | "kelamin" | "sudahLulus" | "onSelesai">) {
   const dicatat = useRef(sudahLulus);
   return (
     <SimulasiMtk2Bab5
+      kelas={kelas}
+      kelamin={kelamin}
       onBenar={() => {
         if (dicatat.current) return;
         dicatat.current = true;
@@ -256,12 +260,16 @@ function PanelSimulasiPecahan({
 }
 
 function PanelSimulasiPengukuran({
+  kelas,
+  kelamin,
   sudahLulus = false,
   onSelesai,
-}: Pick<PanelSimulasiProps, "sudahLulus" | "onSelesai">) {
+}: Pick<PanelSimulasiProps, "kelas" | "kelamin" | "sudahLulus" | "onSelesai">) {
   const dicatat = useRef(sudahLulus);
   return (
     <SimulasiMtk2Bab6
+      kelas={kelas}
+      kelamin={kelamin}
       onBenar={() => {
         if (dicatat.current) return;
         dicatat.current = true;
@@ -272,12 +280,16 @@ function PanelSimulasiPengukuran({
 }
 
 function PanelSimulasiMembilang100({
+  kelas,
+  kelamin,
   sudahLulus = false,
   onSelesai,
-}: Pick<PanelSimulasiProps, "sudahLulus" | "onSelesai">) {
+}: Pick<PanelSimulasiProps, "kelas" | "kelamin" | "sudahLulus" | "onSelesai">) {
   const dicatat = useRef(sudahLulus);
   return (
     <SimulasiMtk2Bab7
+      kelas={kelas}
+      kelamin={kelamin}
       onBenar={() => {
         if (dicatat.current) return;
         dicatat.current = true;
@@ -288,12 +300,16 @@ function PanelSimulasiMembilang100({
 }
 
 function PanelSimulasiTurusDiagram({
+  kelas,
+  kelamin,
   sudahLulus = false,
   onSelesai,
-}: Pick<PanelSimulasiProps, "sudahLulus" | "onSelesai">) {
+}: Pick<PanelSimulasiProps, "kelas" | "kelamin" | "sudahLulus" | "onSelesai">) {
   const dicatat = useRef(sudahLulus);
   return (
     <SimulasiMtk2Bab8
+      kelas={kelas}
+      kelamin={kelamin}
       onBenar={() => {
         if (dicatat.current) return;
         dicatat.current = true;
@@ -348,16 +364,16 @@ export default function PanelSimulasiModul({
     return <PanelSimulasiPosisiPola kelas={kelas} kelamin={kelamin} sudahLulus={sudahLulus} onSelesai={onSelesai} />;
   }
   if (adalahMtk2Bab5(kelas, mapel, materi)) {
-    return <PanelSimulasiPecahan sudahLulus={sudahLulus} onSelesai={onSelesai} />;
+    return <PanelSimulasiPecahan kelas={kelas} kelamin={kelamin} sudahLulus={sudahLulus} onSelesai={onSelesai} />;
   }
   if (adalahMtk2Bab6(kelas, mapel, materi)) {
-    return <PanelSimulasiPengukuran sudahLulus={sudahLulus} onSelesai={onSelesai} />;
+    return <PanelSimulasiPengukuran kelas={kelas} kelamin={kelamin} sudahLulus={sudahLulus} onSelesai={onSelesai} />;
   }
   if (adalahMtk2Bab7(kelas, mapel, materi)) {
-    return <PanelSimulasiMembilang100 sudahLulus={sudahLulus} onSelesai={onSelesai} />;
+    return <PanelSimulasiMembilang100 kelas={kelas} kelamin={kelamin} sudahLulus={sudahLulus} onSelesai={onSelesai} />;
   }
   if (adalahMtk2Bab8(kelas, mapel, materi)) {
-    return <PanelSimulasiTurusDiagram sudahLulus={sudahLulus} onSelesai={onSelesai} />;
+    return <PanelSimulasiTurusDiagram kelas={kelas} kelamin={kelamin} sudahLulus={sudahLulus} onSelesai={onSelesai} />;
   }
   return (
     <p className="text-sm font-semibold text-[#1C01A5]">

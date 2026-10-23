@@ -1,6 +1,8 @@
 "use client";
 
 import { useCallback, useEffect, useRef, useState, type ReactNode } from "react";
+import type { KelaminGuru } from "@/lib/guru";
+import { hentikanSuaraGuruIgil, siapkanSuaraGuruIgil, ucapkanGuruIgil } from "@/lib/suara-guru-igil";
 
 export type TutorEventType =
   | "SCENE_START"
@@ -226,20 +228,6 @@ function cocokTulis(kanvas: HTMLCanvasElement, kunci: string[]): boolean {
   return kunci.some((k) => angka.includes(k));
 }
 
-function ucapkanLokal(teks: string, onBicara?: (v: boolean) => void) {
-  if (typeof window === "undefined" || !window.speechSynthesis) return;
-  window.speechSynthesis.cancel();
-  const u = new SpeechSynthesisUtterance(teks);
-  u.lang = "id-ID";
-  u.rate = 0.92;
-  const suara = window.speechSynthesis.getVoices().find((v) => v.lang.toLowerCase().startsWith("id"));
-  if (suara) u.voice = suara;
-  u.onstart = () => onBicara?.(true);
-  u.onend = () => onBicara?.(false);
-  u.onerror = () => onBicara?.(false);
-  window.speechSynthesis.speak(u);
-}
-
 type MesinMic = {
   lang: string;
   continuous: boolean;
@@ -351,7 +339,9 @@ function TombolDengarGuru({ naskah, onBicara }: { naskah: string; onBicara: (v: 
   return (
     <button
       type="button"
-      onClick={() => ucapkanLokal(naskah, onBicara)}
+      onClick={() => {
+        void ucapkanGuruIgil(naskah, { onBicara });
+      }}
       className="z-20 inline-flex min-h-12 w-full items-center justify-center rounded-2xl bg-amber-800 px-4 text-sm font-black text-white hover:bg-amber-900"
     >
       🔊 Dengarkan Penjelasan Guru
@@ -758,9 +748,13 @@ function KuisPilih({
 }
 
 export default function SimulasiMtk2Bab5({
+  kelas = "2 SD",
+  kelamin,
   onTutorEvent,
   onBenar,
 }: {
+  kelas?: string;
+  kelamin?: KelaminGuru;
   onTutorEvent?: (eventType: TutorEventType, payload: TutorEventPayload) => void;
   onBenar?: () => void;
 }) {
@@ -773,10 +767,13 @@ export default function SimulasiMtk2Bab5({
   const suaraRef = useRef(suaraAktif);
   suaraRef.current = suaraAktif;
 
-  const ucapkan = useCallback((teks: string) => {
-    if (!suaraRef.current) return;
-    ucapkanLokal(teks, setSedangBicara);
-  }, []);
+  const ucapkan = useCallback(
+    (teks: string) => {
+      if (!suaraRef.current) return;
+      void ucapkanGuruIgil(teks, { kelas, kelamin, onBicara: setSedangBicara });
+    },
+    [kelas, kelamin],
+  );
 
   const kirimEvent = useCallback(
     (jenis: TutorEventType, payload: TutorEventPayload, bicara = true) => {
@@ -799,8 +796,9 @@ export default function SimulasiMtk2Bab5({
   );
 
   useEffect(() => {
-    const pembuka = "Halo koki cilik! Yuk belajar pecahan di dapur Koki Igil.";
-    kirimEvent("SCENE_START", { pesan: pembuka, adegan: "cerita" });
+    const pembukaAwal = "Halo koki cilik! Yuk belajar pecahan di dapur Koki Igil.";
+    siapkanSuaraGuruIgil(pembukaAwal, { kelas, kelamin });
+    kirimEvent("SCENE_START", { pesan: pembukaAwal, adegan: "cerita" });
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
@@ -835,7 +833,7 @@ export default function SimulasiMtk2Bab5({
           type="button"
           onClick={() => {
             setSuaraAktif((v) => !v);
-            if (suaraAktif) window.speechSynthesis?.cancel();
+            if (suaraAktif) hentikanSuaraGuruIgil();
           }}
           className={`inline-flex min-h-12 items-center rounded-xl px-3 text-sm font-bold ${
             suaraAktif ? "bg-amber-200 text-amber-950" : "bg-white/20 text-white"
