@@ -513,25 +513,42 @@ function KartuA({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminGuru }) {
       />
       <TujuanBelajar
         butir={[
-          "Menghitung sisi dan sudut.",
-          "Menamai segi banyak.",
-          "Membedakan sudut siku, lancip, dan tumpul.",
+          "Mengenal sisi dan ruas garis. 1 cm = 10 mm.",
+          "Menamai segi banyak. Lingkaran tidak punya sudut.",
+          "Membedakan sudut siku 90 derajat, lancip, dan tumpul.",
+          "Mengenal garis tegak lurus dan garis sejajar.",
         ]}
       />
       <div className="mt-4 space-y-4">
         <Adegan
           utama
-          judul="Sub-bab 1 — Sisi dan sudut"
+          judul="Sub-bab 1 — Sisi pada bangun datar"
           src="/doodle-mtk/mtk-3-bangun-sub1.jpg"
           alt="Bingkai kayu di meja sanggar. Igil bertopi biru dan tiga anak menelusuri tepinya."
           kelas={kelas}
           kelamin={kelamin}
-          penjelasan={["Sisi adalah garis tepinya. Sudut adalah pojoknya."]}
+          penjelasan={["Sisi adalah ruas garis di tepi bangun. Ruas garis punya panjang yang tetap."]}
         >
-          <Dialog nama="Igil" anak="Bingkai foto ini punya 4 sisi." />
-          <Dialog nama="Nisa" anak="Pojoknya juga 4." />
-          <Dialog nama="Farhan" anak="Jadi 4 sisi dan 4 sudut." />
-          <Dialog nama="Cinta" anak="Aku hitung garisnya dulu, baru pojoknya." />
+          <Dialog nama="Igil" anak="Di ruang tamu ada benda seperti segitiga, persegi, dan lingkaran." />
+          <Dialog nama="Nisa" anak="Bingkai foto ini punya 4 sisi dan 4 sudut." />
+          <Dialog nama="Farhan" anak="Titik P dan Q hanya bisa disambung satu ruas garis lurus. Panjangnya 7 cm." />
+          <Dialog nama="Cinta" anak="Di penggaris, 1 cm terbagi 10 mm. Jadi 1 cm sama dengan 10 mm." />
+          <p className="pt-2 text-sm font-black uppercase tracking-wide text-[#1C01A5]">Infografis: Sisi</p>
+          <PetaContoh
+            pusat="Sisi"
+            cabang={[
+              { ikon: "📏", judul: "Ruas", isi: "panjang tetap" },
+              { ikon: "7", judul: "Contoh", isi: "ruas 7 cm" },
+              { ikon: "10", judul: "Kecil", isi: "1 cm = 10 mm" },
+            ]}
+            kolom={["Bangun", "Sisi", "Sudut"]}
+            baris={[
+              ["segitiga", "3", "3"],
+              ["bingkai", "4", "4"],
+              ["segienam", "6", "6"],
+              ["ruas PQ", "7 cm", "tetap"],
+            ]}
+          />
           <KuisSuara
             id={idKuis("A", 0)}
             pertanyaan="Segitiga punya berapa sisi? Sebutkan angkanya."
@@ -550,21 +567,55 @@ function KartuA({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminGuru }) {
             alias={["6", "enam"]}
             konteks="Segienam punya 6 sudut."
           />
+          <KuisSuara
+            id={idKuis("B", 0)}
+            pertanyaan="Persegi punya berapa sudut? Sebutkan angkanya."
+            periksa={(teks) => nilaiSisi(teks, 4, ["empat"], LARANG_ANGKA)}
+            petunjuk="Hitung pojoknya."
+            benar="4."
+          />
+          <TulisBebas
+            id={idKuis("B", 1)}
+            visual={<Papan anak="⬠" />}
+            pertanyaan="Segilima punya berapa sisi? Tulis angkanya."
+            pesanSalah="Hitung garis yang mengelilinginya."
+            bantuan="Segilima punya 5 sisi."
+            umpan="5."
+            periksa={(teks) => nilaiSisi(teks, 5, ["lima"], LARANG_ANGKA)}
+            alias={["5", "lima"]}
+            konteks="Segilima punya 5 sisi."
+          />
         </Adegan>
 
         <Adegan
           utama
-          judul="Sub-bab 2 — Segi banyak"
+          judul="Sub-bab 2 — Bangun datar sederhana"
           src="/doodle-mtk/mtk-3-bangun-sub2.jpg"
           alt="Ubin segitiga, persegi, segilima, dan segienam berjajar di meja. Bingkai kosong di belakangnya."
           kelas={kelas}
           kelamin={kelamin}
-          penjelasan={["Nama segi banyak mengikuti jumlah sisinya."]}
+          penjelasan={["Nama segi banyak mengikuti jumlah sisinya. Lingkaran dibatasi garis lengkung."]}
         >
-          <Dialog nama="Cinta" anak="Ubin kuning ini punya 5 sisi." />
-          <Dialog nama="Igil" anak="Namanya segilima." />
-          <Dialog nama="Farhan" anak="Jumlah sisi jadi namanya." />
-          <Dialog nama="Nisa" anak="Aku mau coba ubin yang lain." />
+          <Dialog nama="Cinta" anak="Tiga pensil yang disambung ujungnya jadi segitiga." />
+          <Dialog nama="Igil" anak="Empat pensil bisa jadi persegi panjang. Empat sisi dan empat sudut." />
+          <Dialog nama="Farhan" anak="Empat korek api sama panjang jadi persegi." />
+          <Dialog nama="Nisa" anak="Lingkaran dibatasi garis lengkung. Ia tidak punya sudut." />
+          <p className="pt-2 text-sm font-black uppercase tracking-wide text-[#1C01A5]">Infografis: Nama</p>
+          <PetaContoh
+            pusat="Nama"
+            cabang={[
+              { ikon: "3", judul: "Tiga", isi: "segitiga" },
+              { ikon: "4", judul: "Empat", isi: "persegi" },
+              { ikon: "◯", judul: "Lengkung", isi: "lingkaran" },
+            ]}
+            kolom={["Sisi", "Nama", "Contoh"]}
+            baris={[
+              ["3", "segitiga", "3 pensil"],
+              ["4", "persegi panjang", "4 pensil"],
+              ["4 sama", "persegi", "4 korek api"],
+              ["lengkung", "lingkaran", "tanpa sudut"],
+            ]}
+          />
           <KuisSuara
             id={idKuis("A", 2)}
             pertanyaan="Bangun ini punya 4 sisi. Sebutkan namanya."
@@ -583,21 +634,55 @@ function KartuA({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminGuru }) {
             alias={["segitiga", "segi tiga"]}
             konteks="3 sisi namanya segitiga."
           />
+          <KuisSuara
+            id={idKuis("B", 2)}
+            pertanyaan="Bangun ini punya 6 sisi. Sebutkan namanya."
+            periksa={(teks) => nilaiJenis(teks, ["segienam", "segi enam"], LARANG_ENAM)}
+            petunjuk="Lihat jumlah sisinya, lalu sebut namanya."
+            benar="Segienam."
+          />
+          <TulisBebas
+            id={idKuis("B", 3)}
+            visual={<Papan anak="⬠" />}
+            pertanyaan="Bangun ini punya 5 sisi. Tulis namanya."
+            pesanSalah="Lima sisi punya nama sendiri."
+            bantuan="5 sisi namanya segilima."
+            umpan="Segilima."
+            periksa={(teks) => nilaiJenis(teks, ["segilima", "segi lima"], LARANG_LIMA)}
+            alias={["segilima", "segi lima"]}
+            konteks="5 sisi namanya segilima."
+          />
         </Adegan>
 
         <Adegan
           utama
-          judul="Sub-bab 3 — Sudut siku-siku"
+          judul="Sub-bab 3 — Sudut siku dan garis tegak lurus"
           src="/doodle-mtk/mtk-3-bangun-sub3.jpg"
           alt="Igil memegang buku. Nisa mengangkat ubin persegi di depan bingkai kayu."
           kelas={kelas}
           kelamin={kelamin}
-          penjelasan={["Sudut siku-siku sama dengan pojok buku."]}
+          penjelasan={["Sudut siku tepat 90 derajat. Dua garis yang bertemu siku disebut tegak lurus."]}
         >
-          <Dialog nama="Igil" anak="Pojok sampul buku ini siku." />
-          <Dialog nama="Nisa" anak="Aku tempelkan ubin pada buku." />
-          <Dialog nama="Farhan" anak="Pojoknya pas." />
-          <Dialog nama="Cinta" anak="Sudut yang pas seperti itu disebut siku-siku." />
+          <Dialog nama="Igil" anak="Pojok sampul buku ini sudut siku, tepat 90 derajat." />
+          <Dialog nama="Nisa" anak="Dua sisi yang bertemu siku disebut garis tegak lurus." />
+          <Dialog nama="Farhan" anak="Ubin persegi punya 4 sudut siku." />
+          <Dialog nama="Cinta" anak="Segitiga tidak bisa punya 3 sudut siku sekaligus." />
+          <p className="pt-2 text-sm font-black uppercase tracking-wide text-[#1C01A5]">Infografis: Siku</p>
+          <PetaContoh
+            pusat="Siku"
+            cabang={[
+              { ikon: "📘", judul: "90°", isi: "pojok buku" },
+              { ikon: "⊥", judul: "Tegak", isi: "bertemu siku" },
+              { ikon: "□", judul: "Ubin", isi: "4 sudut siku" },
+            ]}
+            kolom={["Benda", "Sudut", "Jenis"]}
+            baris={[
+              ["buku", "90 derajat", "siku"],
+              ["sisi buku", "bertemu siku", "tegak lurus"],
+              ["ubin", "4 pojok", "siku"],
+              ["segitiga", "bukan 3 siku", "tidak bisa"],
+            ]}
+          />
           <KuisSuara
             id={idKuis("A", 4)}
             pertanyaan="Sudut pojok meja. Sebutkan jenisnya."
@@ -616,6 +701,24 @@ function KartuA({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminGuru }) {
             alias={["siku", "siku-siku"]}
             konteks="Sudut ubin persegi adalah siku-siku."
           />
+          <KuisSuara
+            id={idKuis("B", 4)}
+            pertanyaan="Sudut kotak pensil. Sebutkan jenisnya."
+            periksa={(teks) => nilaiJenis(teks, ["siku"], LARANG_SIKU)}
+            petunjuk="Bandingkan dengan pojok buku."
+            benar="Siku-siku."
+          />
+          <TulisBebas
+            id={idKuis("B", 5)}
+            visual={<Papan anak="📘 □" />}
+            pertanyaan="Sudut kertas yang sama dengan pojok buku. Tulis jenisnya."
+            pesanSalah="Lihat apakah pojoknya pas dengan buku."
+            bantuan="Yang pas dengan buku disebut siku-siku."
+            umpan="Siku-siku."
+            periksa={(teks) => nilaiJenis(teks, ["siku"], LARANG_SIKU)}
+            alias={["siku", "siku-siku"]}
+            konteks="Sudut yang sama dengan pojok buku adalah siku-siku."
+          />
         </Adegan>
 
         <Adegan
@@ -625,12 +728,27 @@ function KartuA({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminGuru }) {
           alt="Cinta memegang bendera kertas yang runcing. Farhan memegang lipatan kertas yang lancip."
           kelas={kelas}
           kelamin={kelamin}
-          penjelasan={["Sudut lancip lebih kecil dari pojok buku."]}
+          penjelasan={["Sudut lancip lebih kecil dari 90 derajat, jadi lebih sempit dari pojok buku."]}
         >
           <Dialog nama="Cinta" anak="Ujung benderaku sempit." />
           <Dialog nama="Farhan" anak="Lebih kecil dari pojok buku." />
-          <Dialog nama="Igil" anak="Itu sudut lancip." />
-          <Dialog nama="Nisa" anak="Yang runcing disebut lancip." />
+          <Dialog nama="Igil" anak="Sudut 50 derajat masih di bawah 90. Itu lancip." />
+          <Dialog nama="Nisa" anak="Yang lebih kecil dari sudut siku disebut lancip." />
+          <p className="pt-2 text-sm font-black uppercase tracking-wide text-[#1C01A5]">Infografis: Lancip</p>
+          <PetaContoh
+            pusat="Lancip"
+            cabang={[
+              { ikon: "🚩", judul: "Runcing", isi: "ujung bendera" },
+              { ikon: "50", judul: "Contoh", isi: "50 derajat" },
+              { ikon: "<", judul: "Kecil", isi: "dari 90°" },
+            ]}
+            kolom={["Benda", "Ukuran", "Jenis"]}
+            baris={[
+              ["bendera", "lebih kecil", "lancip"],
+              ["busur", "50 derajat", "lancip"],
+              ["gunting", "runcing", "lancip"],
+            ]}
+          />
           <KuisSuara
             id={idKuis("A", 6)}
             pertanyaan="Sudut ini lebih kecil dari pojok buku. Sebutkan jenisnya."
@@ -649,21 +767,55 @@ function KartuA({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminGuru }) {
             alias={["lancip"]}
             konteks="Ujung gunting yang runcing adalah sudut lancip."
           />
+          <KuisSuara
+            id={idKuis("B", 6)}
+            pertanyaan="Ujung panah kertas yang runcing. Sebutkan jenis sudutnya."
+            periksa={(teks) => nilaiJenis(teks, ["lancip"], LARANG_LANCIP)}
+            petunjuk="Bandingkan dengan pojok buku. Lihat yang lebih kecil."
+            benar="Lancip."
+          />
+          <TulisBebas
+            id={idKuis("B", 7)}
+            visual={<Papan anak="🍕" />}
+            pertanyaan="Sudut irisan kecil. Tulis jenisnya."
+            pesanSalah="Lihat apakah lebih kecil dari pojok buku."
+            bantuan="Irisan yang sempit disebut lancip."
+            umpan="Lancip."
+            periksa={(teks) => nilaiJenis(teks, ["lancip"], LARANG_LANCIP)}
+            alias={["lancip"]}
+            konteks="Sudut irisan kecil adalah lancip."
+          />
         </Adegan>
 
         <Adegan
           utama
-          judul="Sub-bab 5 — Sudut tumpul"
+          judul="Sub-bab 5 — Sudut tumpul dan garis sejajar"
           src="/doodle-mtk/mtk-3-bangun-sub5.jpg"
           alt="Farhan membuka kipas kertas lebar. Bingkai kosong tergantung di dinding."
           kelas={kelas}
           kelamin={kelamin}
-          penjelasan={["Sudut tumpul lebih besar dari pojok buku."]}
+          penjelasan={["Sudut tumpul lebih besar dari 90 derajat dan lebih kecil dari 180 derajat. Garis sejajar tidak pernah bertemu."]}
         >
-          <Dialog nama="Farhan" anak="Kipas ini terbuka lebar." />
-          <Dialog nama="Nisa" anak="Lebih besar dari pojok buku." />
-          <Dialog nama="Igil" anak="Itu sudut tumpul." />
-          <Dialog nama="Cinta" anak="Yang melebar disebut tumpul." />
+          <Dialog nama="Farhan" anak="Kipas ini terbuka lebar. Sudutnya tumpul." />
+          <Dialog nama="Nisa" anak="Sudut lurus tepat 180 derajat. Itu dua kali sudut siku." />
+          <Dialog nama="Igil" anak="Sisi atas dan sisi bawah bingkai sejajar. Jaraknya tetap, tidak pernah bertemu." />
+          <Dialog nama="Cinta" anak="Di buku, garis AB sejajar CD. Jarak antar petaknya sama." />
+          <p className="pt-2 text-sm font-black uppercase tracking-wide text-[#1C01A5]">Infografis: Tumpul dan sejajar</p>
+          <PetaContoh
+            pusat="Garis"
+            cabang={[
+              { ikon: ">", judul: "Tumpul", isi: "lebih dari 90°" },
+              { ikon: "—", judul: "Lurus", isi: "180 derajat" },
+              { ikon: "∥", judul: "Sejajar", isi: "jarak tetap" },
+            ]}
+            kolom={["Benda", "Ukuran", "Jenis"]}
+            baris={[
+              ["kipas", "lebih dari 90", "tumpul"],
+              ["garis datar", "180 derajat", "lurus"],
+              ["sisi bingkai", "jarak tetap", "sejajar"],
+              ["petak 1", "jarak sama", "sejajar"],
+            ]}
+          />
           <KuisSuara
             id={idKuis("A", 8)}
             pertanyaan="Sudut ini lebih besar dari pojok buku. Sebutkan jenisnya."
@@ -681,6 +833,24 @@ function KartuA({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminGuru }) {
             periksa={(teks) => nilaiJenis(teks, ["tumpul"], LARANG_TUMPUL)}
             alias={["tumpul"]}
             konteks="Bukaan pintu yang lebar adalah sudut tumpul."
+          />
+          <KuisSuara
+            id={idKuis("B", 8)}
+            pertanyaan="Sudut atap yang melebar. Sebutkan jenisnya."
+            periksa={(teks) => nilaiJenis(teks, ["tumpul"], LARANG_TUMPUL)}
+            petunjuk="Bandingkan dengan pojok buku. Lihat yang lebih besar."
+            benar="Tumpul."
+          />
+          <TulisBebas
+            id={idKuis("B", 9)}
+            visual={<Papan anak="▭" />}
+            pertanyaan="Sudut pagar yang terbuka lebar. Tulis jenisnya."
+            pesanSalah="Lihat apakah lebih besar dari pojok buku."
+            bantuan="Sudut yang lebih besar disebut tumpul."
+            umpan="Tumpul."
+            periksa={(teks) => nilaiJenis(teks, ["tumpul"], LARANG_TUMPUL)}
+            alias={["tumpul"]}
+            konteks="Sudut pagar yang terbuka lebar adalah tumpul."
           />
         </Adegan>
 
@@ -740,233 +910,6 @@ function KartuA({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminGuru }) {
           umpan="Yang lebih kecil dari siku disebut lancip."
           salah="Bandingkan dengan pojok buku."
         />
-      </div>
-    </KartuBingkai>
-  );
-}
-
-function KartuB({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminGuru }) {
-  const kartu = MODUL_MTK3_BANGUN.kartu[1];
-  return (
-    <KartuBingkai>
-      <KepalaKartu
-        ikon="📐"
-        judul={kartu.judul}
-        anak="Papan sisi, nama, dan sudut"
-        kelas={kelas}
-        kelamin={kelamin}
-        cuplikan={cuplikanKalimat(kartu.voice[0] ?? [])}
-      />
-      <div className="mt-4 space-y-4">
-        <Adegan
-          judul="Sub-bab 1 — Hitung sisi dan sudut"
-          src="/doodle-mtk/mtk-3-bangun-sub1.jpg"
-          alt="Bingkai dan ubin di meja sanggar."
-          kelas={kelas}
-          kelamin={kelamin}
-          penjelasan={["Pada segi banyak ini, jumlah sisi sama dengan jumlah sudut."]}
-        >
-          <PetaContoh
-            pusat="Hitung"
-            cabang={[
-              { ikon: "3", judul: "Segitiga", isi: "3 sisi" },
-              { ikon: "3", judul: "Pojok", isi: "3 sudut" },
-              { ikon: "=", judul: "Sama", isi: "sisi dan sudut" },
-            ]}
-            kolom={["Bangun", "Sisi", "Sudut"]}
-            baris={[
-              ["segitiga", "3", "3"],
-              ["segienam", "6", "6"],
-            ]}
-          />
-          <KuisSuara
-            id={idKuis("B", 0)}
-            pertanyaan="Persegi punya berapa sudut? Sebutkan angkanya."
-            periksa={(teks) => nilaiSisi(teks, 4, ["empat"], LARANG_ANGKA)}
-            petunjuk="Hitung pojoknya."
-            benar="4."
-          />
-          <TulisBebas
-            id={idKuis("B", 1)}
-            visual={<Papan anak="⬠" />}
-            pertanyaan="Segilima punya berapa sisi? Tulis angkanya."
-            pesanSalah="Hitung garis yang mengelilinginya."
-            bantuan="Segilima punya 5 sisi."
-            umpan="5."
-            periksa={(teks) => nilaiSisi(teks, 5, ["lima"], LARANG_ANGKA)}
-            alias={["5", "lima"]}
-            konteks="Segilima punya 5 sisi."
-          />
-        </Adegan>
-
-        <Adegan
-          judul="Sub-bab 2 — Nama dari jumlah sisi"
-          src="/doodle-mtk/mtk-3-bangun-sub2.jpg"
-          alt="Empat ubin berbeda bentuk berjajar."
-          kelas={kelas}
-          kelamin={kelamin}
-          penjelasan={["Sebut jumlah sisinya, lalu pakai nama itu."]}
-        >
-          <PetaContoh
-            pusat="Nama"
-            cabang={[
-              { ikon: "3", judul: "Tiga", isi: "segitiga" },
-              { ikon: "4", judul: "Empat", isi: "segiempat" },
-              { ikon: "?", judul: "Cara", isi: "hitung sisinya" },
-            ]}
-            kolom={["Sisi", "Nama", "Contoh"]}
-            baris={[
-              ["3", "segitiga", "ubin merah"],
-              ["4", "segiempat", "bingkai"],
-              ["?", "dari sisi", "lalu beri nama"],
-            ]}
-          />
-          <KuisSuara
-            id={idKuis("B", 2)}
-            pertanyaan="Bangun ini punya 6 sisi. Sebutkan namanya."
-            periksa={(teks) => nilaiJenis(teks, ["segienam", "segi enam"], LARANG_ENAM)}
-            petunjuk="Lihat jumlah sisinya, lalu sebut namanya."
-            benar="Segienam."
-          />
-          <TulisBebas
-            id={idKuis("B", 3)}
-            visual={<Papan anak="⬠" />}
-            pertanyaan="Bangun ini punya 5 sisi. Tulis namanya."
-            pesanSalah="Lima sisi punya nama sendiri."
-            bantuan="5 sisi namanya segilima."
-            umpan="Segilima."
-            periksa={(teks) => nilaiJenis(teks, ["segilima", "segi lima"], LARANG_LIMA)}
-            alias={["segilima", "segi lima"]}
-            konteks="5 sisi namanya segilima."
-          />
-        </Adegan>
-
-        <Adegan
-          judul="Sub-bab 3 — Bandingkan dengan buku"
-          src="/doodle-mtk/mtk-3-bangun-sub3.jpg"
-          alt="Buku dan ubin persegi dibandingkan di sanggar."
-          kelas={kelas}
-          kelamin={kelamin}
-          penjelasan={["Sudut yang pas dengan pojok buku disebut siku-siku."]}
-        >
-          <PetaContoh
-            pusat="Siku"
-            cabang={[
-              { ikon: "📘", judul: "Buku", isi: "pojok sampul" },
-              { ikon: "□", judul: "Ubin", isi: "pojok yang pas" },
-              { ikon: "📐", judul: "Jenis", isi: "siku-siku" },
-            ]}
-            kolom={["Benda", "Sudut", "Jenis"]}
-            baris={[
-              ["buku", "pojok", "siku"],
-              ["ubin", "pas", "siku"],
-              ["meja", "pojok", "siku"],
-            ]}
-          />
-          <KuisSuara
-            id={idKuis("B", 4)}
-            pertanyaan="Sudut kotak pensil. Sebutkan jenisnya."
-            periksa={(teks) => nilaiJenis(teks, ["siku"], LARANG_SIKU)}
-            petunjuk="Bandingkan dengan pojok buku."
-            benar="Siku-siku."
-          />
-          <TulisBebas
-            id={idKuis("B", 5)}
-            visual={<Papan anak="📘 □" />}
-            pertanyaan="Sudut kertas yang sama dengan pojok buku. Tulis jenisnya."
-            pesanSalah="Lihat apakah pojoknya pas dengan buku."
-            bantuan="Yang pas dengan buku disebut siku-siku."
-            umpan="Siku-siku."
-            periksa={(teks) => nilaiJenis(teks, ["siku"], LARANG_SIKU)}
-            alias={["siku", "siku-siku"]}
-            konteks="Sudut yang sama dengan pojok buku adalah siku-siku."
-          />
-        </Adegan>
-
-        <Adegan
-          judul="Sub-bab 4 — Lebih kecil dari siku"
-          src="/doodle-mtk/mtk-3-bangun-sub4.jpg"
-          alt="Bendera kertas dan lipatan kertas yang ujungnya runcing."
-          kelas={kelas}
-          kelamin={kelamin}
-          penjelasan={["Sudut yang lebih sempit dari pojok buku disebut lancip."]}
-        >
-          <PetaContoh
-            pusat="Lancip"
-            cabang={[
-              { ikon: "🚩", judul: "Runcing", isi: "ujung bendera" },
-              { ikon: "<", judul: "Kecil", isi: "dari siku" },
-              { ikon: "△", judul: "Jenis", isi: "lancip" },
-            ]}
-            kolom={["Benda", "Ukuran", "Jenis"]}
-            baris={[
-              ["bendera", "kecil", "lancip"],
-              ["gunting", "runcing", "lancip"],
-              ["panah", "sempit", "lancip"],
-            ]}
-          />
-          <KuisSuara
-            id={idKuis("B", 6)}
-            pertanyaan="Ujung panah kertas yang runcing. Sebutkan jenis sudutnya."
-            periksa={(teks) => nilaiJenis(teks, ["lancip"], LARANG_LANCIP)}
-            petunjuk="Bandingkan dengan pojok buku. Lihat yang lebih kecil."
-            benar="Lancip."
-          />
-          <TulisBebas
-            id={idKuis("B", 7)}
-            visual={<Papan anak="🍕" />}
-            pertanyaan="Sudut irisan kecil. Tulis jenisnya."
-            pesanSalah="Lihat apakah lebih kecil dari pojok buku."
-            bantuan="Irisan yang sempit disebut lancip."
-            umpan="Lancip."
-            periksa={(teks) => nilaiJenis(teks, ["lancip"], LARANG_LANCIP)}
-            alias={["lancip"]}
-            konteks="Sudut irisan kecil adalah lancip."
-          />
-        </Adegan>
-
-        <Adegan
-          judul="Sub-bab 5 — Lebih besar dari siku"
-          src="/doodle-mtk/mtk-3-bangun-sub5.jpg"
-          alt="Kipas kertas terbuka lebar di depan bingkai."
-          kelas={kelas}
-          kelamin={kelamin}
-          penjelasan={["Sudut yang lebih terbuka dari pojok buku disebut tumpul."]}
-        >
-          <PetaContoh
-            pusat="Tumpul"
-            cabang={[
-              { ikon: "🪭", judul: "Kipas", isi: "terbuka lebar" },
-              { ikon: ">", judul: "Besar", isi: "dari siku" },
-              { ikon: "∠", judul: "Jenis", isi: "tumpul" },
-            ]}
-            kolom={["Benda", "Ukuran", "Jenis"]}
-            baris={[
-              ["kipas", "lebar", "tumpul"],
-              ["pintu", "terbuka", "tumpul"],
-              ["pagar", "melebar", "tumpul"],
-            ]}
-          />
-          <KuisSuara
-            id={idKuis("B", 8)}
-            pertanyaan="Sudut atap yang melebar. Sebutkan jenisnya."
-            periksa={(teks) => nilaiJenis(teks, ["tumpul"], LARANG_TUMPUL)}
-            petunjuk="Bandingkan dengan pojok buku. Lihat yang lebih besar."
-            benar="Tumpul."
-          />
-          <TulisBebas
-            id={idKuis("B", 9)}
-            visual={<Papan anak="▭" />}
-            pertanyaan="Sudut pagar yang terbuka lebar. Tulis jenisnya."
-            pesanSalah="Lihat apakah lebih besar dari pojok buku."
-            bantuan="Sudut yang lebih besar disebut tumpul."
-            umpan="Tumpul."
-            periksa={(teks) => nilaiJenis(teks, ["tumpul"], LARANG_TUMPUL)}
-            alias={["tumpul"]}
-            konteks="Sudut pagar yang terbuka lebar adalah tumpul."
-          />
-        </Adegan>
-
         <Pilih
           id={idKuis("B", 10)}
           pertanyaan="Segiempat punya sudut..."
@@ -1223,16 +1166,15 @@ export default function NaskahMtk3Bangun({
   kelamin?: KelaminGuru;
 }) {
   const poin = [
-    "Bangun datar punya sisi dan sudut.",
-    "Nama segi banyak mengikuti jumlah sisinya.",
-    "Sudut siku-siku sama dengan pojok buku.",
-    "Sudut lancip lebih kecil dari siku.",
-    "Sudut tumpul lebih besar dari siku.",
+    "Ruas garis punya panjang tetap. Contohnya 7 cm. 1 cm = 10 mm.",
+    "Segitiga 3 pensil. Persegi panjang 4 pensil. Persegi 4 korek api sama panjang. Lingkaran tanpa sudut.",
+    "Sudut siku tepat 90 derajat. Dua garis yang bertemu siku disebut tegak lurus.",
+    "Sudut lancip lebih kecil dari 90 derajat. Contohnya 50 derajat.",
+    "Sudut tumpul lebih besar dari 90 derajat. Garis sejajar jaraknya tetap dan tidak pernah bertemu.",
   ];
   return (
     <div className="space-y-5">
       <KartuA kelas={kelas} kelamin={kelamin} />
-      <KartuB kelas={kelas} kelamin={kelamin} />
       <KartuC kelas={kelas} kelamin={kelamin} />
       <div id={SLOT_AJUAN_SEBELUM_KARTU_D} />
       <KartuPoinPenting
@@ -1243,9 +1185,9 @@ export default function NaskahMtk3Bangun({
           alt: "Igil dan tiga anak di sanggar bingkai memegang kartu kosong.",
         }}
         cuplikan={cuplikanKalimat([
-          "Hitung sisi dan sudutnya. Nama segi banyak mengikuti jumlah sisi.",
-          "Pojok buku adalah sudut siku.",
-          "Yang lebih kecil disebut lancip. Yang lebih besar disebut tumpul.",
+          "Ruas garis punya panjang tetap. Satu sentimeter sama dengan 10 milimeter.",
+          "Sudut siku tepat 90 derajat. Garis yang bertemu siku disebut tegak lurus.",
+          "Lancip lebih kecil dari siku. Tumpul lebih besar. Garis sejajar tidak pernah bertemu.",
         ])}
         poin={poin}
         penutup="Hitung sisinya, lalu bandingkan sudutnya."
