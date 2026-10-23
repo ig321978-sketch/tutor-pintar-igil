@@ -269,10 +269,16 @@ function revalidateSemuaTagMateri(
   materi?: string,
   topicId?: string,
 ) {
-  if (topicId) revalidateTag(tagCacheMateriTerkunci(topicId), "max");
-  if (!kelas || !mapel || !materi) return;
-  for (const id of kandidatKunciMateri(kelas, mapel, materi)) {
-    revalidateTag(tagCacheMateriTerkunci(id), "max");
+  try {
+    if (topicId) revalidateTag(tagCacheMateriTerkunci(topicId), "max");
+    if (!kelas || !mapel || !materi) return;
+    for (const id of kandidatKunciMateri(kelas, mapel, materi)) {
+      revalidateTag(tagCacheMateriTerkunci(id), "max");
+    }
+  } catch (error) {
+    const pesan = error instanceof Error ? error.message : String(error);
+    if (!/static generation store missing/i.test(pesan)) throw error;
+    console.warn(`[cache-materi] revalidate dilewati: ${pesan}`);
   }
 }
 
@@ -625,7 +631,12 @@ export async function aturKunciNaskahMateri(
       detail.topicId || kunci,
     );
   } else {
-    revalidateTag(tagCacheMateriTerkunci(detail?.topicId || kunci), "max");
+    revalidateSemuaTagMateri(
+      undefined,
+      undefined,
+      undefined,
+      detail?.topicId || kunci,
+    );
   }
   return detail;
 }
