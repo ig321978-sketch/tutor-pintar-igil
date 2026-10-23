@@ -6,12 +6,12 @@ function pg(soal: string[]): string {
   return soal.join("\n\n");
 }
 
-export const JUDUL_MTK3_BANGUN = "Bab 11: Bangun Datar";
+export const JUDUL_MTK3_BANGUN = "Bab 4: Unsur-Unsur Bangun Datar";
 
 export const MODUL_MTK3_BANGUN: ModulResmiPai = {
   id: "mtk-3-bangun",
   judul: JUDUL_MTK3_BANGUN,
-  pola: /^bab 11: bangun datar$/,
+  pola: /^bab 4: unsur-unsur bangun datar$/,
   motivasi:
     "Nisa, Farhan, dan Cinta menghitung sisi dan sudut bingkai bersama burung hantu Igil di sanggar bingkai.",
   kunciJawaban: "B,C,C,A,D,C,C,B,B,A",

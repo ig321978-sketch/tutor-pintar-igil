@@ -132,11 +132,11 @@ const DATA_INTI_KURIKULUM: Record<string, Record<string, string[]>> = {
       "Bab 4: Menulis Pengalaman",
     ],
     Matematika: [
-      "Bab 1: Bilangan Cacah",
-      "Bab 2: Perkalian dan Pembagian",
-      "Bab 3: Pecahan Sederhana",
-      "Bab 4: Keliling dan Luas",
-      "Bab 5: Pengukuran",
+      "Bab 1: Bilangan Cacah sampai 1.000",
+      "Bab 2: Kalimat Matematika",
+      "Bab 3: Pengukuran Panjang dan Berat",
+      "Bab 4: Unsur-Unsur Bangun Datar",
+      "Bab 5: Penyajian Data dalam Tabel",
     ],
     "Ilmu Pengetahuan Alam dan Sosial (IPAS)": [
       "Bab 1: Kenali Hewan dan Tanaman",

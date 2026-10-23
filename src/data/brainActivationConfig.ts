@@ -1,5 +1,3 @@
-import { MODUL_MTK3_BAB2 } from "@/lib/modul-resmi-mtk-3-bab2";
-
 export type BrainActivationType =
   | "infinity_trace"
   | "cross_crawl_tap"
@@ -131,12 +129,12 @@ const VARIASI_KETUK_BAB2: VariasiKetuk[] = [
 ];
 
 /**
- * Percobaan pemanasan otak. Saat ini hanya Matematika kelas 3 Bab 2.
- * Bab lain belum didaftarkan.
+ * Percobaan pemanasan otak. Bab yang memakainya sudah tidak ada di buku siswa kelas 3,
+ * jadi sesi belajar tidak menampilkannya.
  */
 export const BRAIN_ACTIVATION_REGISTRY: Record<number, BrainActivationModule> = {
   2: {
-    moduleId: MODUL_MTK3_BAB2.id,
+    moduleId: "mtk-3-bab2",
     chapterNumber: 2,
     title: "Irama Otak: Ketuk Kiri-Kanan",
     instruction: "Hulu mengetuk kiri atau kanan secara acak. Ketuk yang sama!",
@@ -165,9 +163,10 @@ export function modulPemanasan(bab: number): BrainActivationModule | null {
   return BRAIN_ACTIVATION_REGISTRY[bab] ?? null;
 }
 
-export function pemanasanUntukSesi(kelas: string, mapel: string, materi: string): BrainActivationModule | null {
-  if (kelas.trim().toLowerCase() !== "3 sd") return null;
-  if (mapel.trim().toLowerCase() !== "matematika") return null;
-  if (!MODUL_MTK3_BAB2.pola.test(materi.trim().toLowerCase())) return null;
-  return modulPemanasan(2);
+export function pemanasanUntukSesi(
+  _kelas: string,
+  _mapel: string,
+  _materi: string,
+): BrainActivationModule | null {
+  return null;
 }

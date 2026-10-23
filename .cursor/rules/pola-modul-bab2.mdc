@@ -1,13 +1,13 @@
 ---
-description: Bab 2 Matematika kelas 3 adalah patokan pola dan visual modul berikutnya
+description: Pola visual modul Matematika SD
 alwaysApply: true
 ---
 
-# Patokan modul: Matematika kelas 3 Bab 2
+# Pola visual modul Matematika
 
-Modul `mtk-3-bab2` (Nisa, Farhan, Cinta, burung hantu Hulu) adalah acuan yang sedang dimatangkan. Jangan salin pola ini ke bab lain sampai pengguna menyatakan Bab 2 sudah matang dan meminta bab berikutnya.
+Modul `mtk-3-bab2` sudah dihapus karena bukan bab pada buku siswa Matematika kelas 3. Jangan membuat ulang bab di luar daftar isi buku.
 
-Saat bab berikutnya dibuat, ikuti pola dan visual Bab 2. Ganti tokoh, latar, angka, dan kunci. Jangan menyalin kalimat atau gambarnya.
+Saat modul baru dibuat, ikuti pola visual di bawah. Ganti tokoh, latar, angka, dan kunci. Jangan menyalin kalimat atau gambar modul lain.
 
 - Usia 8–10 tahun. Kalimat pendek dan ceria. Bagian angka disebut rak, sesuai tema buku. Jangan memakai rumah untuk bagian yang sama.
 - Kartu A: tiap sub-bab punya dialog, suara, dan doodle di awal adegan, lalu 1 kuis suara dan 1 kuis kanvas. Di akhir kartu ada minimal 5 permainan (pilihan ganda, cocok, susun, benar-salah) tanpa kuis suara atau kanvas tambahan.
@@ -17,4 +17,4 @@ Saat bab berikutnya dibuat, ikuti pola dan visual Bab 2. Ganti tokoh, latar, ang
 - Cek setiap kunci hitung sebelum dipasang. Ribuan Indonesia: `1.000` berarti seribu. “meminjam” tidak memuat “pinjam”; “menyimpan” tidak memuat “simpan”.
 - Visual: bagian utama dan adegan bukan kartu. Hanya dialog, tabel hitung, simbol rak, soal, dan poin penting yang berkartu. Kartu Silabus, Materi, Latihan, dan Ujian di halaman modul tetap penuh.
 - Contoh susun ke bawah memakai tabel 4 kolom. Angka soal tetap biru besar. Angka jawaban tetap hijau besar dan selalu angka hasil yang sebenarnya. Merah kecil hanya untuk simpanan, pinjaman, dan pra-hasil. Penjumlahan: +1 kecil merah menempel pada angka penerima. Pra-hasil angka itu ditambah 1 ditulis kecil merah di bawahnya. Jumlah utuh (11, 13, 14) ditulis kecil merah di atas angka jawaban, dan panah menuju +1. Pengurangan: angka soal tetap biru besar. Pemberi menulis −1 kecil merah. Angka pinjaman dan sisa setelah memberi ditulis kecil merah di bawah angka soal, tidak menggantikan angka soal. Panah berangkat dari −1 menuju angka pinjaman, dengan kepala yang proporsional dan jarak longgar. Soal yang harus dihitung siswa tidak menampilkan hasil atau jejak.
-- Pemanasan otak masih percobaan di Bab 2 saja. Aturannya ikut ketukan acak kiri-kanan; yang beda memunculkan SALAH. Tema berganti tiap hari. Selesai sekali, tidak muncul lagi hari itu.
+- Pemanasan otak (ketukan acak kiri-kanan) tidak dipasang pada bab yang sedang tayang.

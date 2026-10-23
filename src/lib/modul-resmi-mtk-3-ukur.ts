@@ -6,12 +6,12 @@ function pg(soal: string[]): string {
   return soal.join("\n\n");
 }
 
-export const JUDUL_MTK3_UKUR = "Bab 6: Pengukuran Panjang dan Berat";
+export const JUDUL_MTK3_UKUR = "Bab 3: Pengukuran Panjang dan Berat";
 
 export const MODUL_MTK3_UKUR: ModulResmiPai = {
   id: "mtk-3-ukur",
   judul: JUDUL_MTK3_UKUR,
-  pola: /^bab 6: pengukuran panjang dan berat$/,
+  pola: /^bab 3: pengukuran panjang dan berat$/,
   motivasi:
     "Nisa, Farhan, dan Cinta belajar mengukur panjang dan berat bersama burung hantu Igil di jalan sehat lapangan sekolah.",
   kunciJawaban: "A,C,B,B,C,D,B,C,B,B",

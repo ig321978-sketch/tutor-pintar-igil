@@ -6,12 +6,12 @@ function pg(soal: string[]): string {
   return soal.join("\n\n");
 }
 
-export const JUDUL_MTK3_KALIMAT = "Bab 10: Kalimat Matematika dan Persamaan";
+export const JUDUL_MTK3_KALIMAT = "Bab 2: Kalimat Matematika";
 
 export const MODUL_MTK3_KALIMAT: ModulResmiPai = {
   id: "mtk-3-kalimat",
   judul: JUDUL_MTK3_KALIMAT,
-  pola: /^bab 10: kalimat matematika dan persamaan$/,
+  pola: /^bab 2: kalimat matematika$/,
   motivasi:
     "Nisa, Farhan, dan Cinta mengisi kotak lampion bersama burung hantu Igil di pos lampion.",
   kunciJawaban: "A,B,C,B,C,A,D,B,C,A",
