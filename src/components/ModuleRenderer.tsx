@@ -19,6 +19,7 @@ import NaskahMtk3Bab1 from "@/components/NaskahMtk3Bab1";
 import NaskahMtk3Ukur from "@/components/NaskahMtk3Ukur";
 import NaskahMtk3Kalimat from "@/components/NaskahMtk3Kalimat";
 import NaskahMtk3Bangun from "@/components/NaskahMtk3Bangun";
+import NaskahMtk3Data from "@/components/NaskahMtk3Data";
 import NaskahMtk4Bab1 from "@/components/NaskahMtk4Bab1";
 import NaskahMtk4Bab2 from "@/components/NaskahMtk4Bab2";
 import NaskahMtk4Bab3 from "@/components/NaskahMtk4Bab3";
@@ -63,6 +64,7 @@ import {
   adalahJudulMtk3Ukur,
   adalahJudulMtk3Kalimat,
   adalahJudulMtk3Bangun,
+  adalahJudulMtk3Data,
   adalahJudulMtk4Bab1,
   adalahJudulMtk4Bab2,
   adalahJudulMtk4Bab3,
@@ -131,6 +133,7 @@ import { MODUL_MTK3_BAB1 } from "@/lib/modul-resmi-mtk-3-bab1";
 import { MODUL_MTK3_UKUR } from "@/lib/modul-resmi-mtk-3-ukur";
 import { MODUL_MTK3_KALIMAT } from "@/lib/modul-resmi-mtk-3-kalimat";
 import { MODUL_MTK3_BANGUN } from "@/lib/modul-resmi-mtk-3-bangun";
+import { MODUL_MTK3_DATA } from "@/lib/modul-resmi-mtk-3-data";
 import { MODUL_MTK4_BAB1 } from "@/lib/modul-resmi-mtk-4-bab1";
 import { MODUL_MTK4_BAB2 } from "@/lib/modul-resmi-mtk-4-bab2";
 import { MODUL_MTK4_BAB3 } from "@/lib/modul-resmi-mtk-4-bab3";
@@ -332,6 +335,13 @@ function ModuleRenderer({
       kelasTigaSd(kelas) &&
       (adalahJudulMtk3Bangun(mapel, materi) ||
         naskahTampilanModulResmi(MODUL_MTK3_BANGUN, naskah)),
+    [naskah, mapel, materi, kelas],
+  );
+  const pakaiKartuMtk3Data = useMemo(
+    () =>
+      kelasTigaSd(kelas) &&
+      (adalahJudulMtk3Data(mapel, materi) ||
+        naskahTampilanModulResmi(MODUL_MTK3_DATA, naskah)),
     [naskah, mapel, materi, kelas],
   );
   const pakaiKartuMtk4Bab1 = useMemo(
@@ -650,6 +660,13 @@ function ModuleRenderer({
     return (
       <div className={className}>
         <NaskahMtk3Bangun kelas={kelas} kelamin={kelamin} />
+      </div>
+    );
+  }
+  if (pakaiKartuMtk3Data) {
+    return (
+      <div className={className}>
+        <NaskahMtk3Data kelas={kelas} kelamin={kelamin} />
       </div>
     );
   }

@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 220" role="img">
+  <rect width="640" height="220" rx="24" fill="#ECFEFF"/>
+  <circle cx="90" cy="120" r="36" fill="#FDE68A" stroke="#1C01A5" stroke-width="3"/>
+  <rect x="70" y="150" width="40" height="36" rx="8" fill="#fff" stroke="#1C01A5"/>
+  <text x="90" y="174" text-anchor="middle" font-family="ui-sans-serif,system-ui" font-size="16" font-weight="800" fill="#1C01A5">>ê</text>
+  <g font-family="ui-sans-serif,system-ui" font-size="28">
+    <text x="180" y="90"><</text>
+    <text x="230" y="90"><</text>
+    <text x="280" y="90"><</text>
+    <text x="330" y="90"><</text>
+    <text x="380" y="90"><</text>
+  </g>
+  <rect x="170" y="120" width="360" height="64" rx="14" fill="#fff" stroke="#1C01A5" stroke-width="3"/>
+  <text x="190" y="158" font-family="ui-sans-serif,system-ui" font-size="18" font-weight="800" fill="#1C01A5">Tabel panen · jumlah · selisih</text>
+</svg>

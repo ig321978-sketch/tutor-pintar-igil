@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 180" role="img">
+  <rect width="640" height="180" rx="24" fill="#EEF2FF"/>
+  <g font-family="ui-sans-serif,system-ui" font-size="20" font-weight="800" fill="#1C01A5">
+    <text x="40" y="70">1. Urutkan dari kecil ke besar</text>
+    <text x="40" y="108">2. Rapikan di tabel dengan turus</text>
+    <text x="40" y="146">3. Jumlahkan dan cari selisih</text>
+  </g>
+</svg>
