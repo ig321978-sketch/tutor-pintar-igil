@@ -16,8 +16,9 @@ import SimulasiMtk2Bab5 from "@/components/modules/SimulasiMtk2Bab5";
 import SimulasiMtk2Bab6 from "@/components/modules/SimulasiMtk2Bab6";
 import SimulasiMtk2Bab7 from "@/components/modules/SimulasiMtk2Bab7";
 import SimulasiMtk2Bab8 from "@/components/modules/SimulasiMtk2Bab8";
+import SimulasiMtk3Bab1 from "@/components/modules/SimulasiMtk3Bab1";
 import SimulasiPhetPenjumlahanKelas1 from "@/components/modules/SimulasiPhetPenjumlahanKelas1";
-import { adalahMtk1Bab1, adalahMtk1Bab2, adalahMtk1Bab3, adalahMtk1Bab4, adalahMtk1Bab5, adalahMtk1Bab6, adalahMtk1Bab7, adalahMtk1Bab8, adalahMtk2Bab1, adalahMtk2Bab2, adalahMtk2Bab3, adalahMtk2Bab4, adalahMtk2Bab5, adalahMtk2Bab6, adalahMtk2Bab7, adalahMtk2Bab8 } from "@/lib/naskah-resmi";
+import { adalahMtk1Bab1, adalahMtk1Bab2, adalahMtk1Bab3, adalahMtk1Bab4, adalahMtk1Bab5, adalahMtk1Bab6, adalahMtk1Bab7, adalahMtk1Bab8, adalahMtk2Bab1, adalahMtk2Bab2, adalahMtk2Bab3, adalahMtk2Bab4, adalahMtk2Bab5, adalahMtk2Bab6, adalahMtk2Bab7, adalahMtk2Bab8, adalahMtk3Bab1 } from "@/lib/naskah-resmi";
 import type { KelaminGuru } from "@/lib/guru";
 
 type PanelSimulasiProps = {
@@ -299,6 +300,26 @@ function PanelSimulasiMembilang100({
   );
 }
 
+function PanelSimulasiBilangan1000({
+  kelas,
+  kelamin,
+  sudahLulus = false,
+  onSelesai,
+}: Pick<PanelSimulasiProps, "kelas" | "kelamin" | "sudahLulus" | "onSelesai">) {
+  const dicatat = useRef(sudahLulus);
+  return (
+    <SimulasiMtk3Bab1
+      kelas={kelas}
+      kelamin={kelamin}
+      onBenar={() => {
+        if (dicatat.current) return;
+        dicatat.current = true;
+        onSelesai?.(true, "Lab bilangan cacah sampai 1.000 selesai.");
+      }}
+    />
+  );
+}
+
 function PanelSimulasiTurusDiagram({
   kelas,
   kelamin,
@@ -374,6 +395,9 @@ export default function PanelSimulasiModul({
   }
   if (adalahMtk2Bab8(kelas, mapel, materi)) {
     return <PanelSimulasiTurusDiagram kelas={kelas} kelamin={kelamin} sudahLulus={sudahLulus} onSelesai={onSelesai} />;
+  }
+  if (adalahMtk3Bab1(kelas, mapel, materi)) {
+    return <PanelSimulasiBilangan1000 kelas={kelas} kelamin={kelamin} sudahLulus={sudahLulus} onSelesai={onSelesai} />;
   }
   return (
     <p className="text-sm font-semibold text-[#1C01A5]">
