@@ -15,6 +15,7 @@ import NaskahMtk1Bab5 from "@/components/NaskahMtk1Bab5";
 import NaskahMtk1Bab6 from "@/components/NaskahMtk1Bab6";
 import NaskahMtk1Bab7 from "@/components/NaskahMtk1Bab7";
 import NaskahMtk1Bab8 from "@/components/NaskahMtk1Bab8";
+import NaskahMtk3Bab1 from "@/components/NaskahMtk3Bab1";
 import NaskahMtk3Ukur from "@/components/NaskahMtk3Ukur";
 import NaskahMtk3Kalimat from "@/components/NaskahMtk3Kalimat";
 import NaskahMtk3Bangun from "@/components/NaskahMtk3Bangun";
@@ -58,6 +59,7 @@ import {
   adalahJudulMtk1Bab6,
   adalahJudulMtk1Bab7,
   adalahJudulMtk1Bab8,
+  adalahJudulMtk3Bab1,
   adalahJudulMtk3Ukur,
   adalahJudulMtk3Kalimat,
   adalahJudulMtk3Bangun,
@@ -125,6 +127,7 @@ import {
 } from "@/lib/naskah-resmi";
 import { potongLengkap } from "@/lib/paket-lengkap-materi";
 import { kelasDuaSd, kelasEmpatSd, kelasEnamSd, kelasSatuSd, kelasTigaSd } from "@/lib/infografis-kelas1";
+import { MODUL_MTK3_BAB1 } from "@/lib/modul-resmi-mtk-3-bab1";
 import { MODUL_MTK3_UKUR } from "@/lib/modul-resmi-mtk-3-ukur";
 import { MODUL_MTK3_KALIMAT } from "@/lib/modul-resmi-mtk-3-kalimat";
 import { MODUL_MTK3_BANGUN } from "@/lib/modul-resmi-mtk-3-bangun";
@@ -303,6 +306,13 @@ function ModuleRenderer({
     }
     return cariModulMtk2DariNaskah(naskah);
   }, [naskah, mapel, materi, kelas]);
+  const pakaiKartuMtk3Bab1 = useMemo(
+    () =>
+      kelasTigaSd(kelas) &&
+      (adalahJudulMtk3Bab1(mapel, materi) ||
+        naskahTampilanModulResmi(MODUL_MTK3_BAB1, naskah)),
+    [naskah, mapel, materi, kelas],
+  );
   const pakaiKartuMtk3Ukur = useMemo(
     () =>
       kelasTigaSd(kelas) &&
@@ -612,6 +622,13 @@ function ModuleRenderer({
           kelas={kelas || "2 SD"}
           kelamin={kelamin}
         />
+      </div>
+    );
+  }
+  if (pakaiKartuMtk3Bab1) {
+    return (
+      <div className={className}>
+        <NaskahMtk3Bab1 kelas={kelas} kelamin={kelamin} />
       </div>
     );
   }
