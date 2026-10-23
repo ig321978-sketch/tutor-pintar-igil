@@ -66,14 +66,14 @@ const WARNA_DIALOG: Record<string, string> = {
   Aldi: "border-[#2563EB]/20 bg-[#EFF6FF]",
   Naya: "border-[#DB2777]/20 bg-[#FDF2F8]",
   Fikri: "border-[#16A34A]/20 bg-[#F0FDF4]",
-  Pandu: "border-amber-300 bg-amber-50",
+  Igil: "border-amber-300 bg-amber-50",
 };
 
 const WAJAH_DIALOG: Record<string, string> = {
   Aldi: "👦",
   Naya: "👧",
   Fikri: "👦",
-  Pandu: "🐼",
+  Igil: "🦉",
 };
 
 function Dialog({ nama, anak }: { nama: string; anak: string }) {
@@ -542,9 +542,9 @@ function KartuA({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminGuru }) {
   return (
     <KartuBingkai>
       <KepalaKartu
-        ikon="👦👧🐼"
+        ikon="👦👧🦉"
         judul="A. Lapangan Sekolah"
-        anak="Aldi, Naya, Fikri, dan Pandu"
+        anak="Aldi, Naya, Fikri, dan Igil"
         kelas={kelas}
         kelamin={kelamin}
         cuplikan={cuplikanKalimat(kartu.voice[0] ?? [])}
@@ -562,7 +562,7 @@ function KartuA({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminGuru }) {
           utama
           judul="Sub-bab 1 — Membaca bilangan ribuan"
           src="/doodle-mtk/mtk-3-bab1-sub1.jpg"
-          alt="Lapangan sekolah, papan skor kosong, dan empat kotak rak kosong. Aldi memegang catatan, Naya memegang stopwatch, Fikri melambai, panda berdiri di samping."
+          alt="Lapangan sekolah, papan skor kosong, dan empat kotak rak kosong. Aldi memegang catatan, Naya memegang stopwatch, Fikri melambai, burung hantu Igil berdiri di samping."
           kelas={kelas}
           kelamin={kelamin}
           penjelasan={["Empat angka dibaca dari kiri. Titik hanya pemisah ribuan."]}
@@ -570,7 +570,7 @@ function KartuA({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminGuru }) {
           <Dialog nama="Aldi" anak="Papan menulis 4.725." />
           <Dialog nama="Fikri" anak="Empat, tujuh, dua, lima?" />
           <Dialog nama="Naya" anak="Itu menyebut angka. Bacanya: empat ribu tujuh ratus dua puluh lima." />
-          <Dialog nama="Pandu" anak="4 di rak ribuan, 7 ratusan, 2 puluhan, 5 satuan. Titik bukan angka." />
+          <Dialog nama="Igil" anak="4 di rak ribuan, 7 ratusan, 2 puluhan, 5 satuan. Titik bukan angka." />
           <Papan anak="4.725 = 4 ribuan + 7 ratusan + 2 puluhan + 5 satuan" />
           <JudulInfografis judul="Membaca dan menulis" />
           <PetaContoh
@@ -631,7 +631,7 @@ function KartuA({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminGuru }) {
           utama
           judul="Sub-bab 2 — Nilai tempat ribuan sampai satuan"
           src="/doodle-mtk/mtk-3-bab1-sub2.jpg"
-          alt="Anak-anak, panda, balon, dan empat kotak rak kosong di depan papan yang masih kosong."
+          alt="Anak-anak, burung hantu Igil, balon, dan empat kotak rak kosong di depan papan yang masih kosong."
           kelas={kelas}
           kelamin={kelamin}
           penjelasan={["Angkanya tetap. Raknya yang mengubah nilai."]}
@@ -639,7 +639,7 @@ function KartuA({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminGuru }) {
           <Dialog nama="Fikri" anak="Mengapa angka 8 pada 6.482 bernilai 80?" />
           <Dialog nama="Aldi" anak="Karena ia di rak puluhan." />
           <Dialog nama="Naya" anak="Satu puluhan berisi sepuluh. Pindah satu rak ke kiri, kali sepuluh." />
-          <Dialog nama="Pandu" anak="6.482 sama dengan 6.000 + 400 + 80 + 2." />
+          <Dialog nama="Igil" anak="6.482 sama dengan 6.000 + 400 + 80 + 2." />
           <Papan anak="6.482 = 6.000 + 400 + 80 + 2" />
           <JudulInfografis judul="Nilai tempat" />
           <PetaContoh
@@ -708,7 +708,7 @@ function KartuA({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminGuru }) {
           <Dialog nama="Naya" anak="Merah 3.842, Biru 3.291." />
           <Dialog nama="Aldi" anak="Ribuan sama. Ratusan 8 lebih besar dari 2." />
           <Dialog nama="Fikri" anak="Kalau 8.000 dan 7.999?" />
-          <Dialog nama="Pandu" anak="Ribuan sudah beda. 8.000 lebih besar." />
+          <Dialog nama="Igil" anak="Ribuan sudah beda. 8.000 lebih besar." />
           <Papan anak="3.842 > 3.291    8.000 > 7.999" />
           <JudulInfografis judul="Membandingkan" />
           <PetaContoh
@@ -776,7 +776,7 @@ function KartuA({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminGuru }) {
           <Dialog nama="Aldi" anak="Skornya 6.540, 2.180, 6.290, 9.050, dan 2.990." />
           <Dialog nama="Naya" anak="Pisahkan ribuan 2, ribuan 6, dan ribuan 9." />
           <Dialog nama="Fikri" anak="Di kelompok 2: 2.180 lalu 2.990." />
-          <Dialog nama="Pandu" anak="Jadi 2.180, 2.990, 6.290, 6.540, 9.050." />
+          <Dialog nama="Igil" anak="Jadi 2.180, 2.990, 6.290, 6.540, 9.050." />
           <Papan anak="2.180 < 2.990 < 6.290 < 6.540 < 9.050" />
           <JudulInfografis judul="Mengurutkan" />
           <PetaContoh
@@ -844,7 +844,7 @@ function KartuA({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminGuru }) {
           <Dialog nama="Fikri" anak="6.084 dan 6.840 angkanya sama." />
           <Dialog nama="Naya" anak="Pada 6.084, angka 8 di puluhan. Pada 6.840, angka 8 di ratusan." />
           <Dialog nama="Aldi" anak="Nol di tengah tidak disebut." />
-          <Dialog nama="Pandu" anak="Tetap ditulis. Tanpa nol, 6.084 jadi 684." />
+          <Dialog nama="Igil" anak="Tetap ditulis. Tanpa nol, 6.084 jadi 684." />
           <Papan anak={"6.084 = enam ribu delapan puluh empat\n6.840 = enam ribu delapan ratus empat puluh"} />
           <JudulInfografis judul="Bilangan dengan angka nol" />
           <PetaContoh
@@ -1019,7 +1019,7 @@ function KartuC({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminGuru }) {
   return (
     <KartuBingkai latar="bg-amber-50/40">
       <KepalaKartu
-        ikon="🏗️🐼"
+        ikon="🏗️🦉"
         judul={kartu.judul}
         anak="Sepuluh pos · baca, bandingkan, urutkan"
         kelas={kelas}
@@ -1029,7 +1029,7 @@ function KartuC({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminGuru }) {
       {/* eslint-disable-next-line @next/next/no-img-element */}
       <img
         src="/doodle-mtk/mtk-3-bab1-permainan.jpg"
-        alt="Stadion kejuaraan. Pandu berdiri di meja juri."
+        alt="Stadion kejuaraan. Igil berdiri di meja juri."
         className="mt-4 w-full rounded-xl border border-[#1C01A5]/10 bg-white object-cover"
       />
       <p className="mt-3 text-center text-sm font-semibold text-slate-600">Sepuluh soal pola. Pilih satu pos, lalu jawab.</p>
@@ -1039,8 +1039,8 @@ function KartuC({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminGuru }) {
           idMisi={(indeks) => idKuis("C", indeks)}
           idTulis={idKuisTulisKartu(ID, "C")}
           tema={TEMA_MTK3_BAB1}
-          penutup="Podium juara terbuka. Pandu memasang lencana juri."
-          bunga="🏟️🏆🥇🐼"
+          penutup="Podium juara terbuka. Igil memasang lencana juri."
+          bunga="🏟️🏆🥇🦉"
         />
       </div>
     </KartuBingkai>
@@ -1058,17 +1058,17 @@ function LembarEvaluasi({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminG
     }
     return jumlahSkor;
   }, [kuis]);
-  const lencana = skor >= 9 ? "🥇 Juri Bilangan Ahli" : skor >= 6 ? "🏟️ Juri Muda Cerdas" : "🐼 Sahabat Pandu";
+  const lencana = skor >= 9 ? "🥇 Juri Bilangan Ahli" : skor >= 6 ? "🏟️ Juri Muda Cerdas" : "🦉 Sahabat Igil";
   const pesan =
     skor >= 9
       ? "Luar biasa! Catatanmu bisa dipertanggungjawabkan!"
       : skor >= 6
         ? "Hebat! Sedikit lagi jadi juri ahli!"
-        : "Ayo selidiki lagi bersama Pandu, kamu pasti bisa!";
+        : "Ayo selidiki lagi bersama Igil, kamu pasti bisa!";
   return (
     <KartuBingkai latar="bg-rose-50/80">
       <KepalaKartu
-        ikon="📝🐼"
+        ikon="📝🦉"
         judul={kartu.judul}
         anak={`${nama} · Kelas 3 · ${skor} dari 10`}
         kelas={kelas}
@@ -1078,7 +1078,7 @@ function LembarEvaluasi({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminG
       {/* eslint-disable-next-line @next/next/no-img-element */}
       <img
         src="/doodle-mtk/mtk-3-bab1-evaluasi.jpg"
-        alt="Meja ujian dan panda Pandu."
+        alt="Meja ujian dan burung hantu Igil."
         className="mt-4 w-full rounded-xl border border-[#1C01A5]/10 bg-white object-cover"
       />
       <p className="mt-4 text-center text-sm font-black text-[#1C01A5]">
@@ -1226,7 +1226,7 @@ export default function NaskahMtk3Bab1({
         kelamin={kelamin}
         gambar={{
           src: "/doodle-mtk/mtk-3-bab1-poin.jpg",
-          alt: "Panda Pandu membentangkan lima kartu kunci di depan papan skor.",
+          alt: "Burung hantu Igil membentangkan lima kartu kunci di depan papan skor.",
         }}
         cuplikan={cuplikanKalimat([
           "Baca tiap rak dari kiri. Pindah satu rak ke kiri berarti dikali sepuluh.",

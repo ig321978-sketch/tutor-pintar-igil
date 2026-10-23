@@ -2,9 +2,9 @@ import type { MisiPetak } from "@/lib/misi-kebun-mtk-1";
 import type { TemaMisi } from "@/lib/tema-misi-mtk-1";
 
 export const TEMA_MTK3_BAB1: TemaMisi = {
-  pemandu: "Pandu",
+  pemandu: "Igil",
   pengantar:
-    "Bantu Pandu mencatat 10 pos di papan skor kejuaraan. Pilih satu pos, lalu jawab dengan suara, kanvas, atau pilihan.",
+    "Bantu Igil mencatat 10 pos di papan skor kejuaraan. Pilih satu pos, lalu jawab dengan suara, kanvas, atau pilihan.",
   satuan: "Pos",
   ikonAwal: "🏟️",
   ikonAkhir: "🥇",
@@ -32,7 +32,7 @@ export const MISI_MTK3_BAB1: MisiPetak[] = [
     ],
     benarPilih: "a",
     alias: ["empat ribu delapan ratus dua puluh tujuh", "4827"],
-    bersama: "Pandu membaca: empat ribu delapan ratus dua puluh tujuh. Angka 4 di rak ribuan.",
+    bersama: "Igil membaca: empat ribu delapan ratus dua puluh tujuh. Angka 4 di rak ribuan.",
   },
   {
     warna: "kuning",

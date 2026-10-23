@@ -13,12 +13,12 @@ export const MODUL_MTK3_BAB1: ModulResmiPai = {
   judul: JUDUL_MTK3_BAB1,
   pola: /bilangan sampai 10\.?000/,
   motivasi:
-    "Aldi, Naya, dan Fikri belajar membaca, membandingkan, dan mengurutkan bilangan sampai 10.000 bersama panda Pandu.",
+    "Aldi, Naya, dan Fikri belajar membaca, membandingkan, dan mengurutkan bilangan sampai 10.000 bersama burung hantu Igil.",
   kunciJawaban: "A,B,C,C,A,C,C,A,D,A",
   sketsaKartu: [
-    "Aldi, Naya, dan Fikri membaca 4.725 bersama Pandu.",
+    "Aldi, Naya, dan Fikri membaca 4.725 bersama Igil.",
     "Empat rak angka: ribuan, ratusan, puluhan, dan satuan.",
-    "Pandu menjadi juri di papan skor kejuaraan.",
+    "Igil menjadi juri di papan skor kejuaraan.",
     "Poin penting dan lembar evaluasi bilangan sampai 10.000.",
   ],
   latihan: pg([
@@ -88,7 +88,7 @@ D) Kuning`,
       kode: "A",
       judul: "A. Naskah Bergambar",
       pengantar:
-        "Aldi, Naya, Fikri, dan panda Pandu membaca, membandingkan, lalu mengurutkan bilangan sampai 10.000. Infografis tiap sub-bab ada di dalam materi.",
+        "Aldi, Naya, Fikri, dan burung hantu Igil membaca, membandingkan, lalu mengurutkan bilangan sampai 10.000. Infografis tiap sub-bab ada di dalam materi.",
       labelDaftar: "Lima sub-bab, infografis di dalam materi",
       kolom: 1,
       item: [
@@ -222,7 +222,7 @@ D) Kuning`,
     },
     {
       kode: "C",
-      judul: "C. Papan Skor Kejuaraan Pandu",
+      judul: "C. Papan Skor Kejuaraan Igil",
       pengantar: "Siswa menjadi juri pencatat skor. Sepuluh pos selesai, sepuluh piala terkumpul.",
       labelDaftar: "Sepuluh pos papan skor",
       kolom: 1,
@@ -271,7 +271,7 @@ D) Kuning`,
           contoh: "Kelompokkan dulu sebelum mengurutkan.",
         },
         {
-          nama: "Kejuaraan Pandu",
+          nama: "Kejuaraan Igil",
           singkat: "Tiga langkah",
           uraian:
             "Hijau 3.840 juara pertama. Kuning 3.084 peringkat terakhir. Selisihnya 3.840 dikurangi 3.084 sama dengan 756.",

@@ -197,7 +197,7 @@ const SUBBAB_BUKU_SISWA: Record<string, Record<string, Record<string, string[]>>
         "Membandingkan bilangan",
         "Mengurutkan bilangan",
         "Bilangan dengan angka nol",
-        "Papan Skor Kejuaraan Pandu",
+        "Papan Skor Kejuaraan Igil",
         "Poin penting",
         "Lembar evaluasi siswa",
       ],
