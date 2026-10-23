@@ -23,7 +23,7 @@ export type TutorEventPayload = {
 };
 
 type TutorEventMasuk = { waktu: string; jenis: string; payload: TutorEventPayload };
-type TabLab = "timbangan" | "jam" | "durasi" | "kuis" | "evaluasi";
+type TabLab = "timbangan" | "jam" | "durasi";
 type Titik = { x: number; y: number };
 type JenisKanvas = "tulis" | "lingkar-kiri" | "lingkar-kanan" | "lingkar-sel" | "jarum";
 type ModeTimbang = "banding" | "ukur";
@@ -33,8 +33,6 @@ const TAB_LAB: { id: TabLab; label: string }[] = [
   { id: "timbangan", label: "1. Timbang" },
   { id: "jam", label: "2. Jam" },
   { id: "durasi", label: "3. Durasi" },
-  { id: "kuis", label: "4. Kuis" },
-  { id: "evaluasi", label: "5. Uji" },
 ];
 
 const POLA_ANGKA: Record<string, string> = {
@@ -1435,7 +1433,6 @@ export default function SimulasiMtk2Bab6({
   onBenar?: () => void;
 }) {
   const [tab, setTab] = useState<TabLab>("timbangan");
-  const [log, setLog] = useState<TutorEventMasuk[]>([]);
   const [pesanIgil, setPesanIgil] = useState("Halo petugas cilik! Yuk ukur berat dan baca jam bersama Kapten IGIL.");
   const [sedangBicara, setSedangBicara] = useState(false);
   const [suaraAktif, setSuaraAktif] = useState(true);
@@ -1453,7 +1450,6 @@ export default function SimulasiMtk2Bab6({
 
   const kirimEvent = useCallback(
     (jenis: TutorEventType, payload: TutorEventPayload, bicara = true) => {
-      setLog((lama) => [{ waktu: jamSekarang(), jenis, payload }, ...lama].slice(0, 12));
       setPesanIgil(payload.pesan);
       onTutorEvent?.(jenis, payload);
       if (bicara) ucapkan(payload.pesan);
@@ -1482,8 +1478,6 @@ export default function SimulasiMtk2Bab6({
     timbangan: "Pilih benda di dua nampan. Yang lebih berat turun. Isi kelereng sampai lurus untuk mengukur.",
     jam: "Jarum panjang di 12. Jarum pendek menunjuk jam. Putar, hitung durasi, atau gambar jarumnya.",
     durasi: "Bandingkan dua kegiatan. Lingkari yang lebih lama atau lebih sebentar.",
-    kuis: "Tiga tantangan stasiun. Seimbangkan, gambar jam, lalu pilih yang sebentar.",
-    evaluasi: "Lima soal juara. Amati timbangan dan jarum jam dengan saksama.",
   };
 
   const gantiTab = (id: TabLab) => {
@@ -1547,32 +1541,8 @@ export default function SimulasiMtk2Bab6({
           {tab === "timbangan" ? <AdeganTimbangan kirimEvent={kirimEvent} onBicara={setSedangBicara} /> : null}
           {tab === "jam" ? <AdeganJam kirimEvent={kirimEvent} onBicara={setSedangBicara} /> : null}
           {tab === "durasi" ? <AdeganDurasi kirimEvent={kirimEvent} onBicara={setSedangBicara} /> : null}
-          {tab === "kuis" ? <AdeganKuis kirimEvent={kirimEvent} onBicara={setSedangBicara} /> : null}
-          {tab === "evaluasi" ? <AdeganEvaluasi kirimEvent={kirimEvent} onBicara={setSedangBicara} onLulus={tandaiSelesai} /> : null}
         </div>
         <SudutKapten pesan={pesanIgil} sedangBicara={sedangBicara} onUlang={() => ucapkan(pesanIgil)} />
-      </div>
-      <div className="border-t-2 border-slate-200 bg-slate-900 p-4 text-slate-100">
-        <div className="mb-2 flex items-center justify-between gap-2">
-          <p className="text-xs font-black uppercase tracking-widest text-sky-300">Panel Log Event IGIL</p>
-          <button type="button" onClick={() => setLog([])} className="min-h-12 rounded-xl bg-slate-700 px-3 text-xs font-bold text-white">
-            Hapus log
-          </button>
-        </div>
-        {log.length === 0 ? (
-          <p className="text-sm text-slate-400">Belum ada event. Main di stasiun, pesan muncul di sini.</p>
-        ) : (
-          <ul className="max-h-40 space-y-2 overflow-y-auto pr-1">
-            {log.map((baris, i) => (
-              <li key={`${baris.waktu}-${baris.jenis}-${i}`} className="rounded-xl bg-slate-800 px-3 py-2">
-                <p className="text-[11px] font-bold text-emerald-300">
-                  {baris.waktu} · {baris.jenis}
-                </p>
-                <p className="text-sm text-slate-100">{baris.payload.pesan}</p>
-              </li>
-            ))}
-          </ul>
-        )}
       </div>
     </div>
   );

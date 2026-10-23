@@ -23,7 +23,7 @@ export type TutorEventMasuk = {
   payload: TutorEventPayload;
 };
 
-type TabLab = "kelompok" | "diagram" | "detektif" | "kuis";
+type TabLab = "kelompok" | "diagram" | "detektif";
 type IdBuah = "apel" | "pisang" | "jeruk" | "stroberi";
 type Orientasi = "tegak" | "datar";
 type ItemMeja = { id: string; jenis: IdBuah; x: number; y: number; diMeja: boolean };
@@ -33,7 +33,6 @@ const TAB_LAB: { id: TabLab; ikon: string; label: string }[] = [
   { id: "kelompok", ikon: "🧺", label: "Kelompokkan" },
   { id: "diagram", ikon: "📊", label: "Diagram Gambar" },
   { id: "detektif", ikon: "🔎", label: "Detektif Data" },
-  { id: "kuis", ikon: "⭐", label: "Kuis" },
 ];
 
 const BUAH: { id: IdBuah; nama: string; warna: string; latar: string }[] = [
@@ -235,7 +234,6 @@ export default function SimulasiMtk1Bab8({
   onBenar?: () => void;
 }) {
   const [tab, setTab] = useState<TabLab>("kelompok");
-  const [log, setLog] = useState<TutorEventMasuk[]>([]);
   const [pesanLayar, setPesanLayar] = useState("Kelompokkan buah, susun diagram gambar, lalu jadi detektif data bersama IGIL.");
   const sudahLulus = useRef(false);
   const sudahAcakAwal = useRef(false);
@@ -250,7 +248,6 @@ export default function SimulasiMtk1Bab8({
 
   const kirimEvent = useCallback(
     (jenis: TutorEventType, payload: TutorEventPayload, bicara = true) => {
-      setLog((lama) => [{ waktu: jamSekarang(), jenis, payload }, ...lama].slice(0, 12));
       setPesanLayar(payload.pesan);
       onTutorEvent?.(jenis, payload);
       if (bicara) ucapkan(payload.pesan);
@@ -290,7 +287,7 @@ export default function SimulasiMtk1Bab8({
         <p className="mt-1 text-sm text-orange-50">Kelompokkan, susun gambar, dan bandingkan data bersama IGIL.</p>
       </div>
 
-      <div className="grid grid-cols-2 gap-2 bg-orange-50 p-2 sm:grid-cols-4">
+      <div className="grid grid-cols-3 gap-2 bg-orange-50 p-2">
         {TAB_LAB.map((item) => (
           <button
             key={item.id}
@@ -342,31 +339,8 @@ export default function SimulasiMtk1Bab8({
             kirimEvent={kirimEvent}
           />
         ) : null}
-        {tab === "kuis" ? <TabKuis kirimEvent={kirimEvent} onLulus={tandaiSelesai} /> : null}
       </div>
 
-      <div className="border-t-2 border-slate-200 bg-slate-900 p-4 text-slate-100">
-        <div className="mb-2 flex items-center justify-between gap-2">
-          <p className="text-xs font-black uppercase tracking-widest text-amber-300">Simulasi Log Tutor IGIL</p>
-          <button type="button" onClick={() => setLog([])} className="min-h-12 rounded-xl bg-slate-700 px-3 text-xs font-bold text-white hover:bg-slate-600">
-            Hapus log
-          </button>
-        </div>
-        {log.length === 0 ? (
-          <p className="text-sm text-slate-400">Belum ada event. Lakukan aksi di lab, pesan `onTutorEvent` akan muncul di sini.</p>
-        ) : (
-          <ul className="max-h-44 space-y-2 overflow-y-auto pr-1">
-            {log.map((baris, i) => (
-              <li key={`${baris.waktu}-${baris.jenis}-${i}`} className="rounded-xl bg-slate-800 px-3 py-2">
-                <p className="text-[11px] font-bold text-emerald-300">
-                  {baris.waktu} · {baris.jenis}
-                </p>
-                <p className="text-sm text-slate-100">{baris.payload.pesan}</p>
-              </li>
-            ))}
-          </ul>
-        )}
-      </div>
     </div>
   );
 }

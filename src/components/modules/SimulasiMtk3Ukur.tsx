@@ -29,7 +29,7 @@ type TutorEventMasuk = {
   payload: TutorEventPayload;
 };
 
-type TabLab = "penggaris" | "timbangan" | "konversi" | "kuis" | "evaluasi";
+type TabLab = "penggaris" | "timbangan" | "konversi";
 type Titik = { x: number; y: number };
 type Kirim = (jenis: TutorEventType, payload: TutorEventPayload, bicara?: boolean) => void;
 
@@ -37,8 +37,6 @@ const TAB_LAB: { id: TabLab; label: string }[] = [
   { id: "penggaris", label: "Penggaris" },
   { id: "timbangan", label: "Timbangan" },
   { id: "konversi", label: "Konversi" },
-  { id: "kuis", label: "Kuis" },
-  { id: "evaluasi", label: "Evaluasi" },
 ];
 
 const NAMA = ["nol", "satu", "dua", "tiga", "empat", "lima", "enam", "tujuh", "delapan", "sembilan"];
@@ -1246,7 +1244,6 @@ export default function SimulasiMtk3Ukur({
   onBenar?: () => void;
 }) {
   const [tab, setTab] = useState<TabLab>("penggaris");
-  const [log, setLog] = useState<TutorEventMasuk[]>([]);
   const [pesanIgil, setPesanIgil] = useState("Halo insinyur cilik! Yuk ukur panjang dan berat.");
   const [bicara, setBicara] = useState(false);
   const [suaraAktif, setSuaraAktif] = useState(true);
@@ -1262,7 +1259,6 @@ export default function SimulasiMtk3Ukur({
 
   const kirimEvent = useCallback<Kirim>(
     (jenis, payload, bicaraPesan = true) => {
-      setLog((lama) => [{ waktu: jamSekarang(), jenis, payload }, ...lama].slice(0, 8));
       setPesanIgil(payload.pesan);
       onTutorEvent?.(jenis, payload);
       if (bicaraPesan) ucapkan(payload.pesan);
@@ -1295,8 +1291,6 @@ export default function SimulasiMtk3Ukur({
     penggaris: "Pangkal benda pas di angka 0. Satu sentimeter ada sepuluh milimeter.",
     timbangan: "Lihat jarumnya. Seribu gram sama dengan satu kilogram.",
     konversi: "Satu meter ada seratus sentimeter. Satu kilogram ada seribu gram.",
-    kuis: "Tiga tantangan. Hitung selisih, baca jarum, lalu ubah meter.",
-    evaluasi: "Lima soal. Tulis atau ucapkan hasil ukurnya.",
   };
 
   const gantiTab = (id: TabLab) => {
@@ -1353,32 +1347,8 @@ export default function SimulasiMtk3Ukur({
         {tab === "penggaris" ? <ModePenggaris kirimEvent={kirimEvent} /> : null}
         {tab === "timbangan" ? <ModeTimbangan kirimEvent={kirimEvent} /> : null}
         {tab === "konversi" ? <ModeKonversi kirimEvent={kirimEvent} /> : null}
-        {tab === "kuis" ? <ModeKuis kirimEvent={kirimEvent} /> : null}
-        {tab === "evaluasi" ? <ModeEvaluasi kirimEvent={kirimEvent} onLulus={tandaiSelesai} /> : null}
       </div>
       <InsinyurIgil pesan={pesanIgil} bicara={bicara} onUlang={() => ucapkan(pesanIgil)} />
-      <div className="border-t border-slate-700 bg-slate-900 px-3 py-2 text-slate-100">
-        <div className="mb-1 flex items-center justify-between">
-          <p className="text-[11px] font-black uppercase tracking-widest text-amber-300">Log Event IGIL</p>
-          <button type="button" onClick={() => setLog([])} className="min-h-12 rounded-xl bg-slate-700 px-3 text-xs font-bold">
-            Hapus log
-          </button>
-        </div>
-        {log.length === 0 ? (
-          <p className="text-xs text-slate-400">Belum ada event.</p>
-        ) : (
-          <ul className="max-h-16 space-y-1 overflow-y-auto">
-            {log.map((baris, i) => (
-              <li key={`${baris.waktu}-${baris.jenis}-${i}`} className="text-xs">
-                <span className="font-bold text-emerald-300">
-                  {baris.waktu} · {baris.jenis}
-                </span>{" "}
-                {baris.payload.pesan}
-              </li>
-            ))}
-          </ul>
-        )}
-      </div>
     </div>
   );
 }

@@ -24,7 +24,7 @@ export type TutorEventPayload = {
 };
 
 type TutorEventMasuk = { waktu: string; jenis: string; payload: TutorEventPayload };
-type TabLab = "turus" | "jembatan" | "detektif" | "kuis" | "evaluasi";
+type TabLab = "turus" | "jembatan" | "detektif";
 type Titik = { x: number; y: number };
 type JenisKanvas = "tulis" | "lingkar-kiri" | "lingkar-kanan" | "miring";
 type Kirim = (jenis: TutorEventType, payload: TutorEventPayload, bicara?: boolean) => void;
@@ -36,8 +36,6 @@ const TAB_LAB: { id: TabLab; label: string }[] = [
   { id: "turus", label: "1. Turus" },
   { id: "jembatan", label: "2. Jembatan" },
   { id: "detektif", label: "3. Detektif" },
-  { id: "kuis", label: "4. Kuis" },
-  { id: "evaluasi", label: "5. Uji" },
 ];
 
 const SATUAN_KATA = ["nol", "satu", "dua", "tiga", "empat", "lima", "enam", "tujuh", "delapan", "sembilan"];
@@ -1251,7 +1249,6 @@ export default function SimulasiMtk2Bab8({
   onBenar?: () => void;
 }) {
   const [tab, setTab] = useState<TabLab>("turus");
-  const [log, setLog] = useState<TutorEventMasuk[]>([]);
   const [pesanIgil, setPesanIgil] = useState("Halo penjaga hutan cilik! Yuk catat satwa dengan turus bersama Ranger IGIL.");
   const [sedangBicara, setSedangBicara] = useState(false);
   const [suaraAktif, setSuaraAktif] = useState(true);
@@ -1270,7 +1267,6 @@ export default function SimulasiMtk2Bab8({
 
   const kirimEvent = useCallback(
     (jenis: TutorEventType, payload: TutorEventPayload, bicara = true) => {
-      setLog((lama) => [{ waktu: jamSekarang(), jenis, payload }, ...lama].slice(0, 12));
       setPesanIgil(payload.pesan);
       onTutorEvent?.(jenis, payload);
       if (bicara) ucapkan(payload.pesan);
@@ -1304,8 +1300,6 @@ export default function SimulasiMtk2Bab8({
     turus: "Ketuk satwa atau tombol plus. Setiap lima garis, ikat dengan garis miring. Coba juga Mode Salah tanpa ikatan.",
     jembatan: "Ubah turus di kiri, gambar di kanan ikut berubah. Jumlahnya tetap sama. Boleh tegak atau mendatar.",
     detektif: "Pilih dua kategori, tampilkan garis selisih. Lalu uji jebakan semangka renggang versus stroberi rapat.",
-    kuis: "Tiga tantangan. Ikat lima, baca 13, hitung selisih 8 kurang 5.",
-    evaluasi: "Lima soal juara. Lengkapi mangga, baca 14, samakan kue, selisih olahraga, total alat tulis.",
   };
 
   const gantiTab = (id: TabLab) => {
@@ -1370,32 +1364,8 @@ export default function SimulasiMtk2Bab8({
           {tab === "turus" ? <AdeganTurus kirimEvent={kirimEvent} onBicara={setSedangBicara} /> : null}
           {tab === "jembatan" ? <AdeganJembatan kirimEvent={kirimEvent} onBicara={setSedangBicara} /> : null}
           {tab === "detektif" ? <AdeganDetektif kirimEvent={kirimEvent} onBicara={setSedangBicara} /> : null}
-          {tab === "kuis" ? <AdeganKuis kirimEvent={kirimEvent} onBicara={setSedangBicara} /> : null}
-          {tab === "evaluasi" ? <AdeganEvaluasi kirimEvent={kirimEvent} onBicara={setSedangBicara} onLulus={tandaiSelesai} /> : null}
         </div>
         <SudutRanger pesan={pesanIgil} sedangBicara={sedangBicara} onUlang={() => ucapkan(pesanIgil)} />
-      </div>
-      <div className="border-t-2 border-slate-200 bg-slate-900 p-4 text-slate-100">
-        <div className="mb-2 flex items-center justify-between gap-2">
-          <p className="text-xs font-black uppercase tracking-widest text-amber-300">Panel Log Event IGIL</p>
-          <button type="button" onClick={() => setLog([])} className="min-h-12 rounded-xl bg-slate-700 px-3 text-xs font-bold text-white">
-            Hapus log
-          </button>
-        </div>
-        {log.length === 0 ? (
-          <p className="text-sm text-slate-400">Belum ada event. Main di taman safari, pesan muncul di sini.</p>
-        ) : (
-          <ul className="max-h-40 space-y-2 overflow-y-auto pr-1">
-            {log.map((baris, i) => (
-              <li key={`${baris.waktu}-${baris.jenis}-${i}`} className="rounded-xl bg-slate-800 px-3 py-2">
-                <p className="text-[11px] font-bold text-emerald-300">
-                  {baris.waktu} · {baris.jenis}
-                </p>
-                <p className="text-sm text-slate-100">{baris.payload.pesan}</p>
-              </li>
-            ))}
-          </ul>
-        )}
       </div>
     </div>
   );

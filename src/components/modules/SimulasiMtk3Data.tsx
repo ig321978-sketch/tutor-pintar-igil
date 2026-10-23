@@ -29,7 +29,7 @@ type TutorEventMasuk = {
   payload: TutorEventPayload;
 };
 
-type TabLab = "sortir" | "tabel" | "filter" | "kuis" | "evaluasi";
+type TabLab = "sortir" | "tabel" | "filter";
 type Titik = { x: number; y: number };
 type Kirim = (jenis: TutorEventType, payload: TutorEventPayload, bicara?: boolean) => void;
 type KartuAngka = { id: number; nilai: number };
@@ -39,8 +39,6 @@ const TAB_LAB: { id: TabLab; label: string }[] = [
   { id: "sortir", label: "Sortir" },
   { id: "tabel", label: "Tabel" },
   { id: "filter", label: "Filter" },
-  { id: "kuis", label: "Kuis" },
-  { id: "evaluasi", label: "Evaluasi" },
 ];
 
 const PRESET: Record<PresetId, { judul: string; satuan: string; angka: number[] }> = {
@@ -1266,7 +1264,6 @@ export default function SimulasiMtk3Data({
   onBenar?: () => void;
 }) {
   const [tab, setTab] = useState<TabLab>("sortir");
-  const [log, setLog] = useState<TutorEventMasuk[]>([]);
   const [pesanIgil, setPesanIgil] = useState("Halo peneliti cilik! Yuk urutkan data dan baca tabel.");
   const [sedangBicara, setSedangBicara] = useState(false);
   const [suaraAktif, setSuaraAktif] = useState(true);
@@ -1290,7 +1287,6 @@ export default function SimulasiMtk3Data({
 
   const kirimEvent = useCallback<Kirim>(
     (jenis, payload, bicaraPesan = true) => {
-      setLog((lama) => [{ waktu: jamSekarang(), jenis, payload }, ...lama].slice(0, 8));
       setPesanIgil(payload.pesan);
       onTutorEvent?.(jenis, payload);
       if (bicaraPesan) ucapkan(payload.pesan);
@@ -1320,8 +1316,6 @@ export default function SimulasiMtk3Data({
     sortir: "Ketuk angka dari yang paling kecil. Ujung kiri terkecil, ujung kanan terbesar.",
     tabel: "Coret satu data, lalu ketuk baris tabel yang sama. Turus kelima digaris miring.",
     filter: "Nyalakan lampu sorot. Nilai di atas 80 tidak menghitung baris 80.",
-    kuis: "Tiga tantangan. Urutkan labu, hitung angka 8, lalu gabungkan baris.",
-    evaluasi: "Lima soal. Tulis atau ucapkan hasilnya.",
   };
 
   const gantiTab = (id: TabLab) => {
@@ -1373,32 +1367,8 @@ export default function SimulasiMtk3Data({
         {tab === "sortir" ? <ModeSortir kirimEvent={kirimEvent} bicara={bicara} /> : null}
         {tab === "tabel" ? <ModeTabel kirimEvent={kirimEvent} bicara={bicara} /> : null}
         {tab === "filter" ? <ModeFilter kirimEvent={kirimEvent} bicara={bicara} /> : null}
-        {tab === "kuis" ? <ModeKuis kirimEvent={kirimEvent} /> : null}
-        {tab === "evaluasi" ? <ModeEvaluasi kirimEvent={kirimEvent} onLulus={tandaiSelesai} /> : null}
       </div>
       <IlmuwanIgil pesan={pesanIgil} bicara={sedangBicara} onUlang={() => ucapkan(pesanIgil)} />
-      <div className="border-t border-slate-700 bg-slate-900 px-3 py-2 text-slate-100">
-        <div className="mb-1 flex items-center justify-between">
-          <p className="text-[11px] font-black uppercase tracking-widest text-amber-300">Log Event IGIL</p>
-          <button type="button" onClick={() => setLog([])} className="min-h-12 rounded-xl bg-slate-700 px-3 text-xs font-bold">
-            Hapus log
-          </button>
-        </div>
-        {log.length === 0 ? (
-          <p className="text-xs text-slate-400">Belum ada event.</p>
-        ) : (
-          <ul className="max-h-16 space-y-1 overflow-y-auto">
-            {log.map((baris, i) => (
-              <li key={`${baris.waktu}-${baris.jenis}-${i}`} className="text-xs">
-                <span className="font-bold text-emerald-300">
-                  {baris.waktu} · {baris.jenis}
-                </span>{" "}
-                {baris.payload.pesan}
-              </li>
-            ))}
-          </ul>
-        )}
-      </div>
     </div>
   );
 }

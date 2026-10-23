@@ -28,7 +28,7 @@ type TutorEventMasuk = {
   payload: TutorEventPayload;
 };
 
-type TabLab = "sudut" | "garis" | "bangun" | "kuis" | "evaluasi";
+type TabLab = "sudut" | "garis" | "bangun";
 type Titik = { x: number; y: number };
 type Kirim = (jenis: TutorEventType, payload: TutorEventPayload, bicara?: boolean) => void;
 type JenisSudut = "siku" | "lancip" | "tumpul";
@@ -37,8 +37,6 @@ const TAB_LAB: { id: TabLab; label: string }[] = [
   { id: "sudut", label: "Sudut" },
   { id: "garis", label: "Garis" },
   { id: "bangun", label: "Bangun" },
-  { id: "kuis", label: "Kuis" },
-  { id: "evaluasi", label: "Evaluasi" },
 ];
 
 const POLA_ANGKA: Record<string, string> = {
@@ -1494,7 +1492,6 @@ export default function SimulasiMtk3Bangun({
   onBenar?: () => void;
 }) {
   const [tab, setTab] = useState<TabLab>("sudut");
-  const [log, setLog] = useState<TutorEventMasuk[]>([]);
   const [pesanIgil, setPesanIgil] = useState("Halo kapten cilik! Yuk kenali sisi, sudut, dan garis.");
   const [bicara, setBicara] = useState(false);
   const [suaraAktif, setSuaraAktif] = useState(true);
@@ -1510,7 +1507,6 @@ export default function SimulasiMtk3Bangun({
 
   const kirimEvent = useCallback<Kirim>(
     (jenis, payload, bicaraPesan = true) => {
-      setLog((lama) => [{ waktu: jamSekarang(), jenis, payload }, ...lama].slice(0, 8));
       setPesanIgil(payload.pesan);
       onTutorEvent?.(jenis, payload);
       if (bicaraPesan) ucapkan(payload.pesan);
@@ -1543,8 +1539,6 @@ export default function SimulasiMtk3Bangun({
     sudut: "Pojok kertas adalah sudut siku. Yang lebih kecil lancip. Yang lebih besar tumpul.",
     garis: "Rel kereta sejajar. Persimpangan siku disebut tegak lurus.",
     bangun: "Cek sisi, sudut, dan sisi yang sejajar.",
-    kuis: "Tiga tantangan. Sebut jenis sudut, garis, lalu hitung pojok siku.",
-    evaluasi: "Lima soal. Bandingkan bukaan, bukan panjang kakinya.",
   };
 
   const gantiTab = (id: TabLab) => {
@@ -1599,32 +1593,8 @@ export default function SimulasiMtk3Bangun({
         {tab === "sudut" ? <ModeSudut kirimEvent={kirimEvent} /> : null}
         {tab === "garis" ? <ModeGaris kirimEvent={kirimEvent} /> : null}
         {tab === "bangun" ? <ModeBangun kirimEvent={kirimEvent} /> : null}
-        {tab === "kuis" ? <ModeKuis kirimEvent={kirimEvent} /> : null}
-        {tab === "evaluasi" ? <ModeEvaluasi kirimEvent={kirimEvent} onLulus={tandaiSelesai} /> : null}
       </div>
       <KaptenGeometri pesan={pesanIgil} bicara={bicara} onUlang={() => ucapkan(pesanIgil)} />
-      <div className="border-t border-slate-700 bg-slate-900 px-3 py-2 text-slate-100">
-        <div className="mb-1 flex items-center justify-between">
-          <p className="text-[11px] font-black uppercase tracking-widest text-amber-300">Log Event IGIL</p>
-          <button type="button" onClick={() => setLog([])} className="min-h-12 rounded-xl bg-slate-700 px-3 text-xs font-bold">
-            Hapus log
-          </button>
-        </div>
-        {log.length === 0 ? (
-          <p className="text-xs text-slate-400">Belum ada event.</p>
-        ) : (
-          <ul className="max-h-16 space-y-1 overflow-y-auto">
-            {log.map((baris, i) => (
-              <li key={`${baris.waktu}-${baris.jenis}-${i}`} className="text-xs">
-                <span className="font-bold text-emerald-300">
-                  {baris.waktu} · {baris.jenis}
-                </span>{" "}
-                {baris.payload.pesan}
-              </li>
-            ))}
-          </ul>
-        )}
-      </div>
     </div>
   );
 }

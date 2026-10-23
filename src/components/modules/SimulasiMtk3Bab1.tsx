@@ -29,7 +29,7 @@ type TutorEventMasuk = {
   payload: TutorEventPayload;
 };
 
-type TabLab = "pabrik" | "teropong" | "timbangan" | "kuis" | "evaluasi";
+type TabLab = "pabrik" | "teropong" | "timbangan";
 type Titik = { x: number; y: number };
 type Kirim = (jenis: TutorEventType, payload: TutorEventPayload, bicara?: boolean) => void;
 
@@ -37,8 +37,6 @@ const TAB_LAB: { id: TabLab; label: string }[] = [
   { id: "pabrik", label: "Pabrik Balok" },
   { id: "teropong", label: "Teropong" },
   { id: "timbangan", label: "Timbangan" },
-  { id: "kuis", label: "Kuis" },
-  { id: "evaluasi", label: "Evaluasi" },
 ];
 
 const NAMA = ["nol", "satu", "dua", "tiga", "empat", "lima", "enam", "tujuh", "delapan", "sembilan"];
@@ -1350,7 +1348,6 @@ export default function SimulasiMtk3Bab1({
   onBenar?: () => void;
 }) {
   const [tab, setTab] = useState<TabLab>("pabrik");
-  const [log, setLog] = useState<TutorEventMasuk[]>([]);
   const [pesanIgil, setPesanIgil] = useState("Halo arsitek cilik! Yuk susun balok sampai seribu.");
   const [bicara, setBicara] = useState(false);
   const [suaraAktif, setSuaraAktif] = useState(true);
@@ -1366,7 +1363,6 @@ export default function SimulasiMtk3Bab1({
 
   const kirimEvent = useCallback<Kirim>(
     (jenis, payload, bicaraPesan = true) => {
-      setLog((lama) => [{ waktu: jamSekarang(), jenis, payload }, ...lama].slice(0, 8));
       setPesanIgil(payload.pesan);
       onTutorEvent?.(jenis, payload);
       if (bicaraPesan) ucapkan(payload.pesan);
@@ -1399,8 +1395,6 @@ export default function SimulasiMtk3Bab1({
     pabrik: "Tambah baloknya. Sepuluh satuan menyatu jadi satu puluhan. Sepuluh puluhan jadi satu lempeng ratusan.",
     teropong: "Geser teropong ke ratusan yang kamu cari. Lalu lompat seratus, sepuluh, atau satu.",
     timbangan: "Cek ratusan dulu. Jangan terkecoh puluhan yang kelihatan besar.",
-    kuis: "Tiga tantangan. Nol di tengah, angka hilang, lalu bandingkan.",
-    evaluasi: "Lima soal juara. Tulis atau ucapkan jawabannya.",
   };
 
   const gantiTab = (id: TabLab) => {
@@ -1468,32 +1462,8 @@ export default function SimulasiMtk3Bab1({
         {tab === "pabrik" ? <ModePabrik kirimEvent={kirimEvent} /> : null}
         {tab === "teropong" ? <ModeTeropong kirimEvent={kirimEvent} /> : null}
         {tab === "timbangan" ? <ModeTimbangan kirimEvent={kirimEvent} /> : null}
-        {tab === "kuis" ? <ModeKuis kirimEvent={kirimEvent} /> : null}
-        {tab === "evaluasi" ? <ModeEvaluasi kirimEvent={kirimEvent} onLulus={tandaiSelesai} /> : null}
       </div>
       <ArsitekIgil pesan={pesanIgil} bicara={bicara} onUlang={() => ucapkan(pesanIgil)} />
-      <div className="border-t border-slate-700 bg-slate-900 px-3 py-2 text-slate-100">
-        <div className="mb-1 flex items-center justify-between">
-          <p className="text-[11px] font-black uppercase tracking-widest text-amber-300">Log Event IGIL</p>
-          <button type="button" onClick={() => setLog([])} className="min-h-12 rounded-xl bg-slate-700 px-3 text-xs font-bold">
-            Hapus log
-          </button>
-        </div>
-        {log.length === 0 ? (
-          <p className="text-xs text-slate-400">Belum ada event.</p>
-        ) : (
-          <ul className="max-h-16 space-y-1 overflow-y-auto">
-            {log.map((baris, i) => (
-              <li key={`${baris.waktu}-${baris.jenis}-${i}`} className="text-xs">
-                <span className="font-bold text-emerald-300">
-                  {baris.waktu} · {baris.jenis}
-                </span>{" "}
-                {baris.payload.pesan}
-              </li>
-            ))}
-          </ul>
-        )}
-      </div>
     </div>
   );
 }

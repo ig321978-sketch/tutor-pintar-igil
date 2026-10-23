@@ -29,7 +29,7 @@ type TutorEventMasuk = {
   payload: TutorEventPayload;
 };
 
-type TabLab = "meja" | "katak" | "pasangan" | "kuis" | "evaluasi";
+type TabLab = "meja" | "katak" | "pasangan";
 type Titik = { x: number; y: number };
 type Operasi = "plus" | "minus";
 
@@ -37,8 +37,6 @@ const TAB_LAB: { id: TabLab; label: string }[] = [
   { id: "meja", label: "1. Meja Rakit" },
   { id: "katak", label: "2. Lompat Katak" },
   { id: "pasangan", label: "3. Pasangan" },
-  { id: "kuis", label: "Kuis" },
-  { id: "evaluasi", label: "Evaluasi" },
 ];
 
 const POLA_ANGKA: Record<string, string> = {
@@ -670,7 +668,6 @@ export default function SimulasiMtk2Bab2({
   onBenar?: () => void;
 }) {
   const [tab, setTab] = useState<TabLab>("meja");
-  const [log, setLog] = useState<TutorEventMasuk[]>([]);
   const [pesanIgil, setPesanIgil] = useState("Yuk rakit jambu di meja puluhan dan satuan. 27 + 15, mulai dari satuan!");
   const [suaraAktif, setSuaraAktif] = useState(true);
   const [sedangBicara, setSedangBicara] = useState(false);
@@ -692,7 +689,6 @@ export default function SimulasiMtk2Bab2({
 
   const kirimEvent = useCallback(
     (jenis: TutorEventType, payload: TutorEventPayload, bicara = true) => {
-      setLog((lama) => [{ waktu: jamSekarang(), jenis, payload }, ...lama].slice(0, 12));
       setPesanIgil(payload.pesan);
       onTutorEvent?.(jenis, payload);
       if (bicara) ucapkan(payload.pesan);
@@ -723,8 +719,6 @@ export default function SimulasiMtk2Bab2({
       meja: "Yuk rakit jambu di meja puluhan dan satuan. 27 + 15, mulai dari satuan!",
       katak: "Katak mulai di 24. Lompat besar +10, lalu lompat kecil +1 tiga kali.",
       pasangan: "Lingkaran atas total. Dua lingkaran bawah bagian. Cari yang hilang!",
-      kuis: "Satu tantangan per layar. Tulis dan ucapkan jawabannya.",
-      evaluasi: "Tiga puluh dua ditambah lima belas. Tulis hasilnya.",
     };
     kirimEvent("SCENE_START", { pesan: pembuka[id], tab: id });
   };
@@ -774,33 +768,9 @@ export default function SimulasiMtk2Bab2({
         {tab === "meja" ? <AdeganMeja kirimEvent={kirimEvent} /> : null}
         {tab === "katak" ? <AdeganKatak kirimEvent={kirimEvent} /> : null}
         {tab === "pasangan" ? <AdeganPasangan kirimEvent={kirimEvent} /> : null}
-        {tab === "kuis" ? <ModeKuis kirimEvent={kirimEvent} /> : null}
-        {tab === "evaluasi" ? <ModeEvaluasi kirimEvent={kirimEvent} onLulus={tandaiSelesai} /> : null}
         <SudutIgil pesan={pesanIgil} sedangBicara={sedangBicara} onUlang={() => ucapkan(pesanIgil)} />
       </div>
 
-      <div className="border-t-2 border-slate-200 bg-slate-900 p-4 text-slate-100">
-        <div className="mb-2 flex items-center justify-between gap-2">
-          <p className="text-xs font-black uppercase tracking-widest text-amber-300">Panel Log Event IGIL</p>
-          <button type="button" onClick={() => setLog([])} className="min-h-12 rounded-xl bg-slate-700 px-3 text-xs font-bold text-white">
-            Hapus log
-          </button>
-        </div>
-        {log.length === 0 ? (
-          <p className="text-sm text-slate-400">Belum ada event. Main di lab, pesan onTutorEvent muncul di sini.</p>
-        ) : (
-          <ul className="max-h-40 space-y-2 overflow-y-auto pr-1">
-            {log.map((baris, i) => (
-              <li key={`${baris.waktu}-${baris.jenis}-${i}`} className="rounded-xl bg-slate-800 px-3 py-2">
-                <p className="text-[11px] font-bold text-emerald-300">
-                  {baris.waktu} · {baris.jenis}
-                </p>
-                <p className="text-sm text-slate-100">{baris.payload.pesan}</p>
-              </li>
-            ))}
-          </ul>
-        )}
-      </div>
     </div>
   );
 }

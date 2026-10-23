@@ -26,7 +26,7 @@ export type TutorEventMasuk = {
   payload: TutorEventPayload;
 };
 
-type TabLab = "sisi" | "gelinding" | "susun" | "kuis";
+type TabLab = "sisi" | "gelinding" | "susun";
 type JenisBangun = "lingkaran" | "segitiga" | "persegi" | "persegiPanjang";
 type BendaGelinding = "lingkaran" | "segitiga" | "persegi";
 type PolaSusun = "rumah" | "roket";
@@ -52,7 +52,6 @@ const TAB_LAB: { id: TabLab; ikon: string; label: string }[] = [
   { id: "sisi", ikon: "🔷", label: "Kenali Sisi & Sudut" },
   { id: "gelinding", ikon: "🎢", label: "Tes Gelinding" },
   { id: "susun", ikon: "🏠", label: "Susun Bentuk" },
-  { id: "kuis", ikon: "⭐", label: "Kuis" },
 ];
 
 const TITIK_BANGUN: Record<Exclude<JenisBangun, "lingkaran">, Titik[]> = {
@@ -306,13 +305,11 @@ export default function SimulasiMtk1Bab4({
   onBenar?: () => void;
 }) {
   const [tab, setTab] = useState<TabLab>("sisi");
-  const [log, setLog] = useState<TutorEventMasuk[]>([]);
   const [pesanLayar, setPesanLayar] = useState("Ketuk bangun, putar, atau susun. IGIL akan ikut bicara.");
   const sudahLulus = useRef(false);
 
   const kirimEvent = useCallback(
     (jenis: TutorEventType, payload: TutorEventPayload, bicara = true) => {
-      setLog((lama) => [{ waktu: jamSekarang(), jenis, payload }, ...lama].slice(0, 12));
       setPesanLayar(payload.pesan);
       onTutorEvent?.(jenis, payload);
       if (bicara) ucapkan(payload.pesan);
@@ -355,7 +352,7 @@ export default function SimulasiMtk1Bab4({
         <p className="mt-1 text-sm text-indigo-100">Putar, hitung, gelindingkan, dan susun bangun bersama IGIL.</p>
       </div>
 
-      <div className="grid grid-cols-2 gap-2 bg-indigo-50 p-2 sm:grid-cols-4">
+      <div className="grid grid-cols-3 gap-2 bg-indigo-50 p-2">
         {TAB_LAB.map((item) => (
           <button
             key={item.id}
@@ -378,35 +375,8 @@ export default function SimulasiMtk1Bab4({
         {tab === "sisi" ? <TabSisiSudut kirimEvent={kirimEvent} /> : null}
         {tab === "gelinding" ? <TabGelinding kirimEvent={kirimEvent} /> : null}
         {tab === "susun" ? <TabSusun kirimEvent={kirimEvent} /> : null}
-        {tab === "kuis" ? <TabKuis kirimEvent={kirimEvent} onLulus={tandaiSelesai} /> : null}
       </div>
 
-      <div className="border-t-2 border-slate-200 bg-slate-900 p-4 text-slate-100">
-        <div className="mb-2 flex items-center justify-between gap-2">
-          <p className="text-xs font-black uppercase tracking-widest text-amber-300">Simulasi Log Tutor IGIL</p>
-          <button
-            type="button"
-            onClick={() => setLog([])}
-            className="min-h-12 rounded-xl bg-slate-700 px-3 text-xs font-bold text-white hover:bg-slate-600"
-          >
-            Hapus log
-          </button>
-        </div>
-        {log.length === 0 ? (
-          <p className="text-sm text-slate-400">Belum ada event. Lakukan aksi di lab, pesan `onTutorEvent` akan muncul di sini.</p>
-        ) : (
-          <ul className="max-h-44 space-y-2 overflow-y-auto pr-1">
-            {log.map((baris, i) => (
-              <li key={`${baris.waktu}-${baris.jenis}-${i}`} className="rounded-xl bg-slate-800 px-3 py-2">
-                <p className="text-[11px] font-bold text-emerald-300">
-                  {baris.waktu} · {baris.jenis}
-                </p>
-                <p className="text-sm text-slate-100">{baris.payload.pesan}</p>
-              </li>
-            ))}
-          </ul>
-        )}
-      </div>
     </div>
   );
 }
