@@ -2,6 +2,7 @@
 
 import { useCallback, useEffect, useState } from "react";
 import { ucapkanGuruIgil } from "@/lib/suara-guru-igil";
+import { KuisLima, KUIS_MTK1_BAB1 } from "./KuisLimaSimulasi";
 
 const DATA_BILANGAN: Record<number, { kata: string; jari: string; warna: string }> = {
   0: { kata: "Nol (Kosong)", jari: "✊", warna: "text-slate-400" },
@@ -17,7 +18,7 @@ const DATA_BILANGAN: Record<number, { kata: string; jari: string; warna: string 
   10: { kata: "Sepuluh", jari: "🖐️🖐️", warna: "text-blue-600" },
 };
 
-type ModeSimulasi = "explore" | "compare" | "challenge";
+type ModeSimulasi = "explore" | "compare" | "challenge" | "kuis";
 type Benda = "🍎" | "🍊" | "⭐";
 
 export default function SimulasiMtk1Bab1({ onBenar }: { onBenar?: () => void }) {
@@ -96,12 +97,13 @@ export default function SimulasiMtk1Bab1({ onBenar }: { onBenar?: () => void }) 
         </button>
       </div>
 
-      <div className="grid grid-cols-3 gap-2 border-b border-sky-100 bg-sky-50 p-2">
+      <div className="grid grid-cols-2 gap-2 border-b border-sky-100 bg-sky-50 p-2 sm:grid-cols-4">
         {(
           [
             ["explore", "1. Eksplorasi"],
             ["compare", "2. Bandingkan"],
             ["challenge", "3. Tantangan"],
+            ["kuis", "4. Kuis"],
           ] as const
         ).map(([id, label]) => (
           <button
@@ -328,6 +330,7 @@ export default function SimulasiMtk1Bab1({ onBenar }: { onBenar?: () => void }) 
             </div>
           </div>
         ) : null}
+        {mode === "kuis" ? <KuisLima butir={KUIS_MTK1_BAB1} onSelesai={() => onBenar?.()} /> : null}
       </div>
     </div>
   );

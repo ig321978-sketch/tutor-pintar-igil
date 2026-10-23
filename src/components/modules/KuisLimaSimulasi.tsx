@@ -232,3 +232,19 @@ export const KUIS_MTK3_DATA: readonly ButirKuis[] = [
   lima("Jangkauan data itu 9 − 6. Hasilnya?", ["3", "15", "6"], 0, "Jangkauan = data terbesar − data terkecil. 9 − 6 = 3."),
   lima("Tabel: apel 4, jeruk 7. Jumlah semuanya?", ["11", "3", "10"], 0, "4 + 7 = 11."),
 ];
+
+export const KUIS_MTK1_BAB1: readonly ButirKuis[] = [
+  lima("Ada 4 apel, ditambah 3 apel. Berapa semuanya?", ["6", "7", "8"], 1, "4 + 3 = 7."),
+  lima("Mana yang lebih banyak, 2 atau 5?", ["2", "5", "Sama banyak"], 1, "5 lebih banyak dari 2."),
+  lima("Angka sesudah 6 adalah?", ["5", "7", "8"], 1, "Hitung maju satu. Sesudah 6 adalah 7."),
+  lima("9 − 2 = ?", ["6", "7", "11"], 1, "9 dikurangi 2 sama dengan 7."),
+  lima("3 + 3 = ?", ["5", "6", "9"], 1, "3 ditambah 3 sama dengan 6."),
+];
+
+export const KUIS_MTK1_PHET: readonly ButirKuis[] = [
+  lima("3 + 4 = ?", ["6", "7", "8"], 1, "3 + 4 = 7."),
+  lima("5 + 2 = ?", ["7", "3", "10"], 0, "5 + 2 = 7."),
+  lima("6 + 4 = ?", ["9", "10", "2"], 1, "6 + 4 = 10."),
+  lima("1 + 8 = ?", ["7", "9", "18"], 1, "1 + 8 = 9."),
+  lima("2 + 2 = ?", ["3", "4", "22"], 1, "2 + 2 = 4."),
+];

@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import { KuisLima, KUIS_MTK1_PHET } from "./KuisLimaSimulasi";
 
 export default function SimulasiPhetPenjumlahanKelas1({
   onBenar,
@@ -9,7 +10,7 @@ export default function SimulasiPhetPenjumlahanKelas1({
 }) {
   const [part1, setPart1] = useState<number>(3);
   const [part2, setPart2] = useState<number>(4);
-  const [selectedTool, setSelectedTool] = useState<"batang" | "garis_bilangan">("batang");
+  const [selectedTool, setSelectedTool] = useState<"batang" | "garis_bilangan" | "kuis">("batang");
 
   const totalSum = part1 + part2;
   const batasGaris = Math.max(10, totalSum);
@@ -64,9 +65,23 @@ export default function SimulasiPhetPenjumlahanKelas1({
           >
             📏 Garis Bilangan Kancil
           </button>
+          <button
+            type="button"
+            onClick={() => setSelectedTool("kuis")}
+            className={`rounded-lg px-4 py-2 text-xs font-extrabold transition ${
+              selectedTool === "kuis" ? "bg-indigo-600 text-white shadow" : "text-slate-300 hover:text-white"
+            }`}
+          >
+            ⭐ Kuis
+          </button>
         </div>
       </div>
 
+      {selectedTool === "kuis" ? (
+        <div className="my-6 rounded-2xl bg-white p-4 text-slate-900">
+          <KuisLima butir={KUIS_MTK1_PHET} onSelesai={() => onBenar?.()} />
+        </div>
+      ) : (
       <div className="my-6 grid grid-cols-1 gap-6 lg:grid-cols-3">
         <div className="flex flex-col justify-between space-y-6 rounded-2xl border border-slate-700/80 bg-slate-800/80 p-5">
           <div>
@@ -223,6 +238,7 @@ export default function SimulasiPhetPenjumlahanKelas1({
           ) : null}
         </div>
       </div>
+      )}
     </div>
   );
 }
