@@ -533,8 +533,8 @@ function KartuA({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminGuru }) {
       <TujuanBelajar
         butir={[
           "Mengurutkan data dari yang terkecil ke yang terbesar.",
-          "Membaca nilai paling kecil, paling besar, dan yang paling sering muncul.",
-          "Menyajikan data dalam tabel dengan turus dan kolom banyaknya.",
+          "Membaca data terkecil, data terbesar, dan jangkauannya.",
+          "Menyajikan data dalam tabel: kolom data, turus, dan banyaknya.",
         ]}
       />
       <div className="mt-4 space-y-4">
@@ -547,13 +547,29 @@ function KartuA({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminGuru }) {
           kelamin={kelamin}
           penjelasan={[
             "Halo peneliti cilik! Kita urutkan kumpulan angka dari yang terkecil.",
-            "Setelah rapi, nilai paling kecil, paling besar, dan yang paling sering muncul langsung kelihatan.",
+            "Data terkecil ada di ujung kiri. Data terbesar ada di ujung kanan.",
+            "Jangkauan sama dengan data terbesar dikurangi data terkecil.",
           ]}
         >
           <Papan anak={"35   28   40   28   32   38   28\n↓\n28   28   28   32   35   38   40"} />
           <Dialog nama="Rio" anak="Ilmuwan IGIL, catatan tinggi bunga matahari kita berantakan! Aku bingung mana yang paling pendek dan paling tinggi." />
           <Dialog nama="Zara" anak="Jangan panik, Rio! Kita bariskan dulu: 28, 28, 28, 32, 35, 38, 40." />
-          <Dialog nama="Ilmuwan IGIL" anak="Cerdas, Zara! Paling pendek 28 cm, paling tinggi 40 cm, dan 28 cm muncul pada 3 tanaman." />
+          <Dialog nama="Ilmuwan IGIL" anak="Cerdas, Zara! Data terkecil 28 cm, data terbesar 40 cm, dan 28 cm muncul pada 3 tanaman." />
+          <Dialog nama="Ilmuwan IGIL" anak="Selisih data terbesar dan data terkecil disebut jangkauan." />
+          <Papan anak={"Nilai ulangan, 20 siswa\n5  6  6  6  6  7  7  7  7  7\n8  8  8  9  9  9  9  9  10  10"} />
+          <Dialog nama="Zara" anak="Data terkecil 5. Data terbesar 10. Jangkauannya 10 dikurangi 5, sama dengan 5." />
+          <Dialog nama="Rio" anak="Nilai 9 ada 5 siswa. Nilai 10 ada 2 siswa." />
+          <Tabel
+            kolom={["Anak", "Kelereng"]}
+            baris={[
+              ["Andi", "2"],
+              ["Alen", "3"],
+              ["Galih", "5"],
+              ["Meutia", "7"],
+              ["Alfa", "7"],
+            ]}
+          />
+          <Dialog nama="Robot Bibo" anak="Bip! Dari paling sedikit: Andi, Alen, Galih, lalu Meutia dan Alfa. Jumlahnya 24 kelereng." />
           <KuisSuara
             id={idKuis("A", 0)}
             pertanyaan="Dari urutan 28, 28, 28, 32, 35, 38, 40, berapakah tinggi yang paling besar? Ucapkan angkanya."
@@ -573,6 +589,35 @@ function KartuA({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminGuru }) {
             alias={["4 5 7 9", "4579", "empat lima tujuh sembilan"]}
             konteks="Urutan berat labu dari kecil ke besar adalah 4, 5, 7, 9."
           />
+          <p className="pt-2 text-sm font-black uppercase tracking-wide text-[#1C01A5]">Infografis: Urutkan data</p>
+          <PetaContoh
+            pusat="8 data"
+            cabang={[
+              { ikon: "🔹", judul: "Terkecil", isi: "ujung kiri: 6" },
+              { ikon: "🔸", judul: "Terbesar", isi: "ujung kanan: 10" },
+              { ikon: "🏆", judul: "Jangkauan", isi: "10 − 6 = 4" },
+            ]}
+            kolom={["Awal", "Setelah diurut"]}
+            baris={[["8, 6, 9, 7, 6, 10, 6, 8", "6, 6, 6, 7, 8, 8, 9, 10"]]}
+          />
+          <Papan anak="Angka 6 muncul 3 kali" />
+          <KuisSuara
+            id={idKuis("B", 0)}
+            pertanyaan="Dari urutan 6, 6, 6, 7, 8, 8, 9, 10, angka berapa yang paling sering muncul?"
+            periksa={(teks) => cocokBilangan(teks, 6)}
+            petunjuk="Hitung angka yang tulisannya paling banyak."
+            benar="Enam."
+          />
+          <TulisBebas
+            id={idKuis("B", 1)}
+            pertanyaan="Berapa jangkauan angka terbesar 10 dan angka terkecil 6? Tuliskan angkanya."
+            pesanSalah="Kurangkan angka paling kanan dengan angka paling kiri."
+            bantuan="10 dikurangi 6 sama dengan 4."
+            umpan="4."
+            periksa={(teks) => cocokBilangan(teks, 4)}
+            alias={["4", "empat"]}
+            konteks="Jangkauan 10 dan 6 adalah 4."
+          />
         </Adegan>
         <Adegan
           judul="Sub-bab 5.2 — Menyajikan Data dalam Bentuk Tabel"
@@ -582,9 +627,23 @@ function KartuA({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminGuru }) {
           kelamin={kelamin}
           penjelasan={[
             "Data yang sudah terkumpul bisa dirapikan ke tabel.",
-            "Ada kolom nama, kolom turus, dan kolom banyaknya.",
+            "Kolomnya ada tiga: data, turus, dan banyaknya.",
+            "Empat garis tegak dan satu garis miring dihitung lima.",
           ]}
         >
+          <Papan anak={"Turus\n|    ||    |||    ||||\nSatu ikatan miring  =  5"} />
+          <Dialog nama="Ilmuwan IGIL" anak="Empat garis tegak, lalu satu garis miring. Itu satu ikatan lima." />
+          <Tabel
+            kolom={["Huruf", "Turus", "Banyak"]}
+            baris={[
+              ["S", "||", "2"],
+              ["T", "|||", "3"],
+              ["A", "||", "2"],
+              ["I", "||", "2"],
+              ["K", "|", "1"],
+            ]}
+          />
+          <Dialog nama="Zara" anak="Pada kata STATISTIKA, huruf T paling banyak. Huruf K paling sedikit." />
           <Tabel
             kolom={["Jenis", "Turus", "Banyaknya"]}
             baris={[
@@ -625,8 +684,36 @@ function KartuA({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminGuru }) {
             alias={["15", "lima belas"]}
             konteks="Tiga ikatan turus lima sama dengan 15 pengunjung."
           />
+          <p className="pt-2 text-sm font-black uppercase tracking-wide text-[#1C01A5]">Infografis: Cek tabel</p>
+          <Tabel
+            kolom={["Nilai", "Turus", "Banyak siswa"]}
+            baris={[
+              ["80", "||||", "4"],
+              ["90", "卌 |||", "8"],
+              ["100", "卌", "5"],
+              ["Jumlah", "", "17"],
+            ]}
+          />
+          <Papan anak={"Nilai 90 paling banyak: 8 siswa.\nDi atas 80: 8 + 5 = 13 siswa."} />
+          <KuisSuara
+            id={idKuis("B", 2)}
+            pertanyaan="Nilai mana yang paling banyak diperoleh siswa: 80, 90, atau 100?"
+            periksa={(teks) => cocokBilangan(teks, 90)}
+            petunjuk="Lihat kolom banyak siswa yang paling besar."
+            benar="Sembilan puluh."
+          />
+          <TulisBebas
+            id={idKuis("B", 3)}
+            pertanyaan="Berapa banyak siswa yang mendapat nilai 80? Tuliskan angkanya."
+            pesanSalah="Lihat baris nilai 80."
+            bantuan="Baris 80 tertulis 4."
+            umpan="4 siswa."
+            periksa={(teks) => cocokBilangan(teks, 4)}
+            alias={["4", "empat"]}
+            konteks="Siswa yang mendapat nilai 80 ada 4 orang."
+          />
         </Adegan>
-        <p className="text-xs font-black uppercase tracking-wide text-[#1C01A5]">Lima permainan</p>
+        <p className="text-xs font-black uppercase tracking-wide text-[#1C01A5]">Permainan</p>
         <SusunToken
           id={idKuis("A", 4)}
           perintah="Susun botol 25, 19, 30, 22, 27 dari yang terkecil."
@@ -682,105 +769,6 @@ function KartuA({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminGuru }) {
           umpan="10 + 8 + 7 = 25."
           salah="Jumlahkan ketiga kelompok."
         />
-      </div>
-    </KartuBingkai>
-  );
-}
-
-function KartuB({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminGuru }) {
-  const kartu = MODUL_MTK3_DATA.kartu[1];
-  return (
-    <KartuBingkai>
-      <KepalaKartu
-        ikon="📊"
-        judul={kartu.judul}
-        anak="Dua papan cara membaca data"
-        kelas={kelas}
-        kelamin={kelamin}
-        cuplikan={cuplikanKalimat(kartu.voice[0] ?? [])}
-      />
-      <div className="mt-4 space-y-4">
-        <Adegan
-          utama
-          judul="Infografis 1 — Mengurutkan data acak"
-          src="/doodle-mtk/mtk-3-data-urut.svg"
-          alt="Barisan angka yang sudah diurut dari kecil ke besar."
-          kelas={kelas}
-          kelamin={kelamin}
-          penjelasan={[
-            "Kalau angkanya panjang dan acak, urutkan dari yang terkecil.",
-            "Coret angka yang sudah ditulis supaya tidak ada yang terlewat.",
-          ]}
-        >
-          <PetaContoh
-            pusat="8 data"
-            cabang={[
-              { ikon: "🔹", judul: "Terkecil", isi: "Angka paling kiri: 6" },
-              { ikon: "🔸", judul: "Terbesar", isi: "Angka paling kanan: 10" },
-              { ikon: "🏆", judul: "Paling sering", isi: "6 muncul 3 kali" },
-            ]}
-            kolom={["Awal", "Setelah diurut"]}
-            baris={[["8, 6, 9, 7, 6, 10, 6, 8", "6, 6, 6, 7, 8, 8, 9, 10"]]}
-          />
-          <Papan anak="Selisih  10 − 6 = 4" />
-          <KuisSuara
-            id={idKuis("B", 0)}
-            pertanyaan="Dari urutan 6, 6, 6, 7, 8, 8, 9, 10, angka berapa yang paling sering muncul?"
-            periksa={(teks) => cocokBilangan(teks, 6)}
-            petunjuk="Hitung angka yang tulisannya paling banyak."
-            benar="Enam."
-          />
-          <TulisBebas
-            id={idKuis("B", 1)}
-            pertanyaan="Berapa selisih angka terbesar 10 dan angka terkecil 6? Tuliskan angkanya."
-            pesanSalah="Kurangkan angka paling kanan dengan angka paling kiri."
-            bantuan="10 dikurangi 6 sama dengan 4."
-            umpan="4."
-            periksa={(teks) => cocokBilangan(teks, 4)}
-            alias={["4", "empat"]}
-            konteks="Selisih 10 dan 6 adalah 4."
-          />
-        </Adegan>
-        <Adegan
-          judul="Infografis 2 — Struktur tabel dan cek jumlah"
-          src="/doodle-mtk/mtk-3-data-tabel.svg"
-          alt="Tabel nilai ujian dengan kolom turus dan banyak siswa."
-          kelas={kelas}
-          kelamin={kelamin}
-          penjelasan={[
-            "Pindahkan data ke tabel dengan hati-hati.",
-            "Jumlah kolom banyaknya harus sama dengan benda yang dihitung di awal.",
-          ]}
-        >
-          <Tabel
-            kolom={["Nilai", "Turus", "Banyak siswa"]}
-            baris={[
-              ["80", "||||", "4"],
-              ["90", "卌 |||", "8"],
-              ["100", "卌", "5"],
-              ["Jumlah", "", "17"],
-            ]}
-          />
-          <Papan anak={"Nilai 90 paling banyak: 8 siswa.\nDi atas 80: 8 + 5 = 13 siswa."} />
-          <KuisSuara
-            id={idKuis("B", 2)}
-            pertanyaan="Nilai mana yang paling banyak diperoleh siswa: 80, 90, atau 100?"
-            periksa={(teks) => cocokBilangan(teks, 90)}
-            petunjuk="Lihat kolom banyak siswa yang paling besar."
-            benar="Sembilan puluh."
-          />
-          <TulisBebas
-            id={idKuis("B", 3)}
-            pertanyaan="Berapa banyak siswa yang mendapat nilai 80? Tuliskan angkanya."
-            pesanSalah="Lihat baris nilai 80."
-            bantuan="Baris 80 tertulis 4."
-            umpan="4 siswa."
-            periksa={(teks) => cocokBilangan(teks, 4)}
-            alias={["4", "empat"]}
-            konteks="Siswa yang mendapat nilai 80 ada 4 orang."
-          />
-        </Adegan>
-        <p className="text-xs font-black uppercase tracking-wide text-[#1C01A5]">Lima permainan</p>
         <Pilih
           id={idKuis("B", 4)}
           pertanyaan="Urutan yang pindah baru 9 angka: 11, 12, 12, 13, ?, 15, 15, 16, 17. Angka yang belum tertulis?"
@@ -1061,14 +1049,13 @@ export default function NaskahMtk3Data({
   kelamin?: KelaminGuru;
 }) {
   const poin = [
-    "Urutkan data dari yang terkecil ke terbesar. Dari situ kelihatan paling kecil, paling besar, dan paling sering.",
-    "Data yang banyak bisa dirapikan di tabel dengan turus dan kolom banyaknya.",
-    "Jumlahkan kolom banyaknya untuk total. Kurangkan dua data untuk mencari selisih.",
+    "Urutkan data dari yang terkecil. Data terkecil di kiri, data terbesar di kanan.",
+    "Jangkauan sama dengan data terbesar dikurangi data terkecil.",
+    "Tabel punya kolom data, turus, dan banyaknya. Empat garis tegak ditambah satu miring dihitung lima.",
   ];
   return (
     <div className="space-y-5">
       <KartuA kelas={kelas} kelamin={kelamin} />
-      <KartuB kelas={kelas} kelamin={kelamin} />
       <KartuC kelas={kelas} kelamin={kelamin} />
       <div id={SLOT_AJUAN_SEBELUM_KARTU_D} />
       <KartuPoinPenting
@@ -1079,9 +1066,9 @@ export default function NaskahMtk3Data({
           alt: "Tiga kalimat kunci: urutkan, buat tabel, lalu jumlahkan atau kurangkan.",
         }}
         cuplikan={cuplikanKalimat([
-          "Urutkan dari yang terkecil supaya paling kecil, paling besar, dan paling sering mudah dicari.",
-          "Tabel punya kolom data, turus, dan banyaknya.",
-          "Jumlahkan untuk total. Kurangkan untuk selisih.",
+          "Urutkan dari yang terkecil. Data terkecil di kiri, data terbesar di kanan.",
+          "Jangkauan sama dengan data terbesar dikurangi data terkecil.",
+          "Tabel punya kolom data, turus, dan banyaknya. Empat garis tegak ditambah satu miring dihitung lima.",
         ])}
         poin={poin}
         penutup="Rapikan angkanya, lalu baca tabelnya."
