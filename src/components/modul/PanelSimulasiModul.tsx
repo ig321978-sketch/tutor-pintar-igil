@@ -18,8 +18,9 @@ import SimulasiMtk2Bab7 from "@/components/modules/SimulasiMtk2Bab7";
 import SimulasiMtk2Bab8 from "@/components/modules/SimulasiMtk2Bab8";
 import SimulasiMtk3Bab1 from "@/components/modules/SimulasiMtk3Bab1";
 import SimulasiMtk3Kalimat from "@/components/modules/SimulasiMtk3Kalimat";
+import SimulasiMtk3Ukur from "@/components/modules/SimulasiMtk3Ukur";
 import SimulasiPhetPenjumlahanKelas1 from "@/components/modules/SimulasiPhetPenjumlahanKelas1";
-import { adalahMtk1Bab1, adalahMtk1Bab2, adalahMtk1Bab3, adalahMtk1Bab4, adalahMtk1Bab5, adalahMtk1Bab6, adalahMtk1Bab7, adalahMtk1Bab8, adalahMtk2Bab1, adalahMtk2Bab2, adalahMtk2Bab3, adalahMtk2Bab4, adalahMtk2Bab5, adalahMtk2Bab6, adalahMtk2Bab7, adalahMtk2Bab8, adalahMtk3Bab1, adalahMtk3Kalimat } from "@/lib/naskah-resmi";
+import { adalahMtk1Bab1, adalahMtk1Bab2, adalahMtk1Bab3, adalahMtk1Bab4, adalahMtk1Bab5, adalahMtk1Bab6, adalahMtk1Bab7, adalahMtk1Bab8, adalahMtk2Bab1, adalahMtk2Bab2, adalahMtk2Bab3, adalahMtk2Bab4, adalahMtk2Bab5, adalahMtk2Bab6, adalahMtk2Bab7, adalahMtk2Bab8, adalahMtk3Bab1, adalahMtk3Kalimat, adalahMtk3Ukur } from "@/lib/naskah-resmi";
 import type { KelaminGuru } from "@/lib/guru";
 
 type PanelSimulasiProps = {
@@ -341,6 +342,26 @@ function PanelSimulasiKalimat({
   );
 }
 
+function PanelSimulasiUkur({
+  kelas,
+  kelamin,
+  sudahLulus = false,
+  onSelesai,
+}: Pick<PanelSimulasiProps, "kelas" | "kelamin" | "sudahLulus" | "onSelesai">) {
+  const dicatat = useRef(sudahLulus);
+  return (
+    <SimulasiMtk3Ukur
+      kelas={kelas}
+      kelamin={kelamin}
+      onBenar={() => {
+        if (dicatat.current) return;
+        dicatat.current = true;
+        onSelesai?.(true, "Lab pengukuran panjang dan berat selesai.");
+      }}
+    />
+  );
+}
+
 function PanelSimulasiTurusDiagram({
   kelas,
   kelamin,
@@ -422,6 +443,9 @@ export default function PanelSimulasiModul({
   }
   if (adalahMtk3Kalimat(kelas, mapel, materi)) {
     return <PanelSimulasiKalimat kelas={kelas} kelamin={kelamin} sudahLulus={sudahLulus} onSelesai={onSelesai} />;
+  }
+  if (adalahMtk3Ukur(kelas, mapel, materi)) {
+    return <PanelSimulasiUkur kelas={kelas} kelamin={kelamin} sudahLulus={sudahLulus} onSelesai={onSelesai} />;
   }
   return (
     <p className="text-sm font-semibold text-[#1C01A5]">
