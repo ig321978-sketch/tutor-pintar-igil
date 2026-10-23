@@ -529,25 +529,42 @@ function KartuA({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminGuru }) {
       />
       <TujuanBelajar
         butir={[
-          "Memilih satuan cm, m, km, g, dan kg.",
-          "Mengubah satuan.",
+          "Mengukur panjang dengan cm, m, dan km. Ujung alat di angka 0.",
+          "Mengukur berat dengan g dan kg.",
+          "Mengubah satuan. 1 m = 100 cm. 1 kg = 1.000 g.",
         ]}
       />
       <div className="mt-4 space-y-4">
         <Adegan
           utama
-          judul="Sub-bab 1 — Satuan panjang"
+          judul="Sub-bab 1 — Panjang dengan satuan baku"
           src="/doodle-mtk/mtk-3-ukur-sub1.jpg"
           alt="Anak-anak mengukur jalur jalan sehat. Igil memegang pita ukur."
           kelas={kelas}
           kelamin={kelamin}
-          penjelasan={["Benda pendek memakai cm. Jalur sedang memakai m. Jarak jauh memakai km."]}
+          penjelasan={["Benda pendek memakai cm. Jalur sedang memakai m. Jarak jauh memakai km. Ujung penggaris mulai di angka 0."]}
         >
           <Dialog nama="Nisa" anak="Sabtu ini kita jalan sehat keliling lapangan." />
           <Dialog nama="Farhan" anak="Tinggi botol minum sekitar 20 cm." />
-          <Dialog nama="Cinta" anak="Lebar jalur kira-kira 2 m." />
-          <Dialog nama="Igil" anak="Satu putaran jauh. Satuan yang pas bisa km." />
+          <Dialog nama="Cinta" anak="Buku tulis ini 30 cm. Ujung penggaris di angka 0." />
+          <Dialog nama="Igil" anak="Lebar jalur kira-kira 2 m. Satu putaran jauh memakai km." />
           <Lambang ikon="📏" teks="cm · m · km" />
+          <p className="pt-2 text-sm font-black uppercase tracking-wide text-[#1C01A5]">Infografis: Panjang</p>
+          <PetaContoh
+            pusat="Panjang"
+            cabang={[
+              { ikon: "✏️", judul: "Pendek", isi: "buku, 30 cm" },
+              { ikon: "🏫", judul: "Sedang", isi: "jalur, m" },
+              { ikon: "🗺️", judul: "Jauh", isi: "putaran, km" },
+            ]}
+            kolom={["Benda", "Ukuran", "Satuan"]}
+            baris={[
+              ["buku tulis", "30 cm", "cm"],
+              ["botol", "20 cm", "cm"],
+              ["jalur", "2 m", "m"],
+              ["putaran jauh", "km", "km"],
+            ]}
+          />
           <KuisSuara
             id={idKuis("A", 0)}
             pertanyaan="Panjang tali sepatu 25. Ucapkan satuan yang pas."
@@ -567,22 +584,56 @@ function KartuA({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminGuru }) {
             alias={["m", "meter"]}
             konteks="meter."
           />
+          <KuisSuara
+            id={idKuis("B", 0)}
+            pertanyaan="Panjang meja 120. Ucapkan satuan yang pas."
+            periksa={satuanCm}
+            petunjuk="Sebutkan satuan untuk benda sepanjang meja."
+            benar="Sentimeter, atau cm."
+          />
+          <TulisBebas
+            id={idKuis("B", 1)}
+            visual={<Lambang ikon="🗺️" teks="dua kota" />}
+            pertanyaan="Jarak dua kota kira-kira 12. Tulis satuan yang pas."
+            pesanSalah="Jarak kota jauh sekali."
+            bantuan="Satuan yang pas adalah km."
+            umpan="Kilometer, atau km."
+            periksa={satuanKm}
+            alias={["km", "kilometer"]}
+            konteks="kilometer."
+          />
         </Adegan>
 
         <Adegan
           utama
-          judul="Sub-bab 2 — Satuan berat"
+          judul="Sub-bab 2 — Berat dengan satuan baku"
           src="/doodle-mtk/mtk-3-ukur-sub2.jpg"
           alt="Biskuit kecil dan jerigen air di meja pos minum. Igil melihat timbangan."
           kelas={kelas}
           kelamin={kelamin}
-          penjelasan={["Benda ringan memakai g. Benda berat memakai kg."]}
+          penjelasan={["Benda ringan memakai g. Tepung dan gula memakai g. Karung beras memakai kg."]}
         >
           <Dialog nama="Nisa" anak="Biskuit di tas beratnya sekitar 30 g." />
-          <Dialog nama="Farhan" anak="Jerigen air minum 5 kg." />
-          <Dialog nama="Cinta" anak="Gram untuk yang ringan. Kilogram untuk yang berat." />
-          <Dialog nama="Igil" anak="Jangan tertukar kedua satuan itu." />
+          <Dialog nama="Farhan" anak="Tepung dan gula pasir juga memakai g." />
+          <Dialog nama="Cinta" anak="Jerigen air minum 5 kg." />
+          <Dialog nama="Igil" anak="Karung beras dan berat badan memakai kg." />
           <Lambang ikon="⚖️" teks="g · kg" />
+          <p className="pt-2 text-sm font-black uppercase tracking-wide text-[#1C01A5]">Infografis: Berat</p>
+          <PetaContoh
+            pusat="Berat"
+            cabang={[
+              { ikon: "🧁", judul: "Ringan", isi: "gula, g" },
+              { ikon: "🪣", judul: "Berat", isi: "karung, kg" },
+              { ikon: "🔁", judul: "Tukar", isi: "1 kg = 1.000 g" },
+            ]}
+            kolom={["Benda", "Satuan", "Singkat"]}
+            baris={[
+              ["biskuit", "30 g", "g"],
+              ["gula pasir", "gram", "g"],
+              ["jerigen", "5 kg", "kg"],
+              ["karung beras", "kilogram", "kg"],
+            ]}
+          />
           <KuisSuara
             id={idKuis("A", 2)}
             pertanyaan="Sebuah apel kecil sekitar 150. Ucapkan satuan yang pas."
@@ -602,6 +653,24 @@ function KartuA({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminGuru }) {
             alias={["kg", "kilogram"]}
             konteks="kilogram."
           />
+          <KuisSuara
+            id={idKuis("B", 2)}
+            pertanyaan="Satu kue sekitar 80. Ucapkan satuan yang pas."
+            periksa={satuanG}
+            petunjuk="Sebutkan satuan untuk benda ringan."
+            benar="Gram, atau g."
+          />
+          <TulisBebas
+            id={idKuis("B", 3)}
+            visual={<Lambang ikon="🪣" teks="ember air" />}
+            pertanyaan="Satu ember air kira-kira 6. Tulis satuan yang pas."
+            pesanSalah="Ember air terasa berat."
+            bantuan="Satuan yang pas adalah kg."
+            umpan="Kilogram, atau kg."
+            periksa={satuanKg}
+            alias={["kg", "kilogram"]}
+            konteks="kilogram."
+          />
         </Adegan>
 
         <Adegan
@@ -611,13 +680,29 @@ function KartuA({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminGuru }) {
           alt="Penggaris, meteran gulung, dan timbangan duduk di meja pos jalan sehat."
           kelas={kelas}
           kelamin={kelamin}
-          penjelasan={["Penggaris untuk yang pendek. Meteran untuk jalur. Timbangan untuk berat."]}
+          penjelasan={["Penggaris untuk yang pendek. Meteran untuk pintu dan meja. Timbangan untuk berat. Mulai dari angka 0."]}
         >
-          <Dialog nama="Nisa" anak="Tali sepatu diukur dengan penggaris." />
-          <Dialog nama="Farhan" anak="Jalur jalan sehat diukur dengan meteran." />
+          <Dialog nama="Nisa" anak="Pensil dan buku diukur dengan penggaris." />
+          <Dialog nama="Farhan" anak="Pintu dan meja lebih panjang dari penggaris. Pakai meteran." />
           <Dialog nama="Cinta" anak="Berat botol ditimbang dengan timbangan." />
-          <Dialog nama="Igil" anak="Pilih alat sesuai bendanya." />
+          <Dialog nama="Igil" anak="Mulai ukur dari angka 0." />
           <Lambang ikon="📏" teks="penggaris · meteran · timbangan" />
+          <p className="pt-2 text-sm font-black uppercase tracking-wide text-[#1C01A5]">Infografis: Alat ukur</p>
+          <PetaContoh
+            pusat="Alat"
+            cabang={[
+              { ikon: "📏", judul: "Pendek", isi: "penggaris" },
+              { ikon: "🪵", judul: "Panjang", isi: "meteran" },
+              { ikon: "⚖️", judul: "Berat", isi: "timbangan" },
+            ]}
+            kolom={["Benda", "Alat", "Diukur"]}
+            baris={[
+              ["buku 30 cm", "penggaris", "panjang"],
+              ["pintu", "meteran", "panjang"],
+              ["meja", "meteran", "panjang"],
+              ["botol", "timbangan", "berat"],
+            ]}
+          />
           <KuisSuara
             id={idKuis("A", 4)}
             pertanyaan="Kita mau mengukur panjang lapangan. Ucapkan alatnya."
@@ -637,22 +722,57 @@ function KartuA({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminGuru }) {
             alias={["timbangan"]}
             konteks="timbangan."
           />
+          <KuisSuara
+            id={idKuis("B", 4)}
+            pertanyaan="Kita mau mengukur panjang penghapus. Ucapkan alatnya."
+            periksa={alatPenggaris}
+            petunjuk="Sebutkan alat untuk benda yang pendek."
+            benar="Penggaris."
+          />
+          <TulisBebas
+            id={idKuis("B", 5)}
+            visual={<Lambang ikon="🪵" teks="pagar" />}
+            pertanyaan="Kita mau mengukur panjang pagar. Tulis alatnya."
+            pesanSalah="Pagar lebih panjang dari penggaris."
+            bantuan="Alatnya meteran."
+            umpan="Meteran."
+            periksa={alatMeteran}
+            alias={["meteran"]}
+            konteks="meteran."
+          />
         </Adegan>
 
         <Adegan
           utama
-          judul="Sub-bab 4 — Konversi panjang"
+          judul="Sub-bab 4 — Hubungan satuan panjang"
           src="/doodle-mtk/mtk-3-ukur-sub4.jpg"
           alt="Pita meter diubah menjadi sentimeter di papan pos jalan sehat."
           kelas={kelas}
           kelamin={kelamin}
-          penjelasan={["1 m sama dengan 100 cm. 1 km sama dengan 1.000 m."]}
+          penjelasan={["100 cm sama dengan 1 m. 1 km sama dengan 1.000 m."]}
         >
-          <Dialog nama="Nisa" anak="1 m = 100 cm." />
-          <Dialog nama="Farhan" anak="Jalur 2 m sama dengan 200 cm." />
-          <Dialog nama="Cinta" anak="1 km = 1.000 m." />
+          <Dialog nama="Nisa" anak="Di meteran, 100 cm sama dengan 1 m." />
+          <Dialog nama="Farhan" anak="Kebun 5.000 cm sama dengan 50 m." />
+          <Dialog nama="Cinta" anak="Azizah setinggi 1 m 17 cm. Itu 117 cm." />
           <Dialog nama="Igil" anak="Dari m ke cm, kali 100. Dari km ke m, kali 1.000." />
-          <Papan anak={"1 m = 100 cm\n1 km = 1.000 m"} />
+          <Papan anak={"100 cm = 1 m\n1 km = 1.000 m"} />
+          <p className="pt-2 text-sm font-black uppercase tracking-wide text-[#1C01A5]">Infografis: Hubungan panjang</p>
+          <PetaContoh
+            pusat="Ubah panjang"
+            cabang={[
+              { ikon: "×100", judul: "m ke cm", isi: "kali 100" },
+              { ikon: "÷100", judul: "cm ke m", isi: "bagi 100" },
+              { ikon: "×1000", judul: "km ke m", isi: "kali 1.000" },
+            ]}
+            kolom={["Awal", "Hitung", "Hasil"]}
+            baris={[
+              ["100 cm", "100 ÷ 100", "1 m"],
+              ["5.000 cm", "5.000 ÷ 100", "50 m"],
+              ["1 m 17 cm", "100 + 17", "117 cm"],
+              ["5 m", "5 × 100", "500 cm"],
+              ["2 km", "2 × 1.000", "2.000 m"],
+            ]}
+          />
           <KuisSuara
             id={idKuis("A", 6)}
             pertanyaan="3 m sama dengan berapa cm? Ucapkan hasilnya."
@@ -672,22 +792,56 @@ function KartuA({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminGuru }) {
             alias={["4000", "m"]}
             konteks="4.000 m."
           />
+          <KuisSuara
+            id={idKuis("B", 6)}
+            pertanyaan="6 m sama dengan berapa cm? Ucapkan hasilnya."
+            periksa={(teks) => nilaiUkur(teks, "600", "enam ratus", CM)}
+            petunjuk="Sebutkan hasilnya beserta satuannya."
+            benar="600 cm."
+          />
+          <TulisBebas
+            id={idKuis("B", 7)}
+            visual={<Lambang ikon="🚶" teks="3 km" />}
+            pertanyaan="Tulis panjang itu dalam meter."
+            pesanSalah="1 km = 1.000 m. Kalikan 3."
+            bantuan="3 × 1.000 = 3.000. Jadi 3.000 m."
+            umpan="3.000 m."
+            periksa={(teks) => nilaiUkur(teks, "3000", "tiga ribu", METER)}
+            alias={["3000", "m"]}
+            konteks="3.000 m."
+          />
         </Adegan>
 
         <Adegan
           utama
-          judul="Sub-bab 5 — Konversi berat"
+          judul="Sub-bab 5 — Hubungan satuan berat"
           src="/doodle-mtk/mtk-3-ukur-sub5.jpg"
           alt="Jerigen air diubah dari kilogram menjadi gram di timbangan."
           kelas={kelas}
           kelamin={kelamin}
-          penjelasan={["1 kg sama dengan 1.000 g. Dari kg ke g, kali 1.000."]}
+          penjelasan={["1 kg sama dengan 1.000 g. Satu ons ada 100 g. Satu kg ada 10 ons."]}
         >
-          <Dialog nama="Nisa" anak="1 kg = 1.000 g." />
+          <Dialog nama="Nisa" anak="Telur 1 kg sama dengan 1.000 g." />
           <Dialog nama="Farhan" anak="Jerigen 2 kg sama dengan 2.000 g." />
-          <Dialog nama="Cinta" anak="Dari kg ke g, kali 1.000." />
-          <Dialog nama="Igil" anak="Dari g ke kg, bagi 1.000." />
-          <Papan anak={"1 kg = 1.000 g"} />
+          <Dialog nama="Cinta" anak="Satu ons ada 100 g." />
+          <Dialog nama="Igil" anak="Satu kg ada 10 ons. Dari g ke kg, bagi 1.000." />
+          <Papan anak={"1 kg = 1.000 g\n1 ons = 100 g"} />
+          <p className="pt-2 text-sm font-black uppercase tracking-wide text-[#1C01A5]">Infografis: Hubungan berat</p>
+          <PetaContoh
+            pusat="Ubah berat"
+            cabang={[
+              { ikon: "×1000", judul: "kg ke g", isi: "kali 1.000" },
+              { ikon: "÷1000", judul: "g ke kg", isi: "bagi 1.000" },
+              { ikon: "100", judul: "Ons", isi: "1 ons = 100 g" },
+            ]}
+            kolom={["Awal", "Hitung", "Hasil"]}
+            baris={[
+              ["1 kg", "1 × 1.000", "1.000 g"],
+              ["1 ons", "100 g", "ringan"],
+              ["4 kg", "4 × 1.000", "4.000 g"],
+              ["4.000 g", "4.000 ÷ 1.000", "4 kg"],
+            ]}
+          />
           <KuisSuara
             id={idKuis("A", 8)}
             pertanyaan="3 kg sama dengan berapa g? Ucapkan hasilnya."
@@ -706,6 +860,24 @@ function KartuA({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminGuru }) {
             periksa={(teks) => nilaiUkur(teks, "5", "lima", KILO)}
             alias={["5", "kg"]}
             konteks="5 kg."
+          />
+          <KuisSuara
+            id={idKuis("B", 8)}
+            pertanyaan="2 kg sama dengan berapa g? Ucapkan hasilnya."
+            periksa={(teks) => nilaiUkur(teks, "2000", "dua ribu", GRAM)}
+            petunjuk="Sebutkan hasilnya beserta satuannya."
+            benar="2.000 g."
+          />
+          <TulisBebas
+            id={idKuis("B", 9)}
+            visual={<Lambang ikon="⚖️" teks="6.000 g" />}
+            pertanyaan="Tulis berat itu dalam kg."
+            pesanSalah="1.000 g = 1 kg. Bagi 6.000 dengan 1.000."
+            bantuan="6.000 ÷ 1.000 = 6. Jadi 6 kg."
+            umpan="6 kg."
+            periksa={(teks) => nilaiUkur(teks, "6", "enam", KILO)}
+            alias={["6", "kg"]}
+            konteks="6 kg."
           />
         </Adegan>
 
@@ -764,235 +936,9 @@ function KartuA({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminGuru }) {
           salah="Cari satuan yang dipakai untuk berat."
           umpan="kg adalah satuan berat."
         />
-      </div>
-    </KartuBingkai>
-  );
-}
-
-function KartuB({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminGuru }) {
-  const kartu = MODUL_MTK3_UKUR.kartu[1];
-  return (
-    <KartuBingkai latar="bg-sky-50/50">
-      <KepalaKartu
-        ikon="📊🦉"
-        judul={kartu.judul}
-        anak="Peta pos jalan sehat · contoh dan cara"
-        kelas={kelas}
-        kelamin={kelamin}
-        cuplikan={cuplikanKalimat(kartu.voice[0] ?? [])}
-      />
-      <div className="mt-4 space-y-4">
-        <Adegan
-          judul="Sub-bab 1 — Pilih satuan panjang"
-          src="/doodle-mtk/mtk-3-ukur-sub1.jpg"
-          alt="Meja pos dan peta jalan sehat dengan tiga ukuran."
-          kelas={kelas}
-          kelamin={kelamin}
-          penjelasan={["Lihat bendanya dulu. Baru pilih cm, m, atau km."]}
-        >
-          <PetaContoh
-            pusat="Panjang"
-            cabang={[
-              { ikon: "✏️", judul: "Pendek", isi: "penghapus, cm" },
-              { ikon: "🏫", judul: "Sedang", isi: "kelas, m" },
-              { ikon: "🗺️", judul: "Jauh", isi: "dua kota, km" },
-            ]}
-            kolom={["Benda", "Satuan", "Singkat"]}
-            baris={[
-              ["penghapus", "sentimeter", "cm"],
-              ["kelas", "meter", "m"],
-              ["dua kota", "kilometer", "km"],
-            ]}
-          />
-          <KuisSuara
-            id={idKuis("B", 0)}
-            pertanyaan="Panjang meja 120. Ucapkan satuan yang pas."
-            periksa={satuanCm}
-            petunjuk="Sebutkan satuan untuk benda sepanjang meja."
-            benar="Sentimeter, atau cm."
-          />
-          <TulisBebas
-            id={idKuis("B", 1)}
-            visual={<Lambang ikon="🗺️" teks="dua kota" />}
-            pertanyaan="Jarak dua kota kira-kira 12. Tulis satuan yang pas."
-            pesanSalah="Jarak kota jauh sekali."
-            bantuan="Satuan yang pas adalah km."
-            umpan="Kilometer, atau km."
-            periksa={satuanKm}
-            alias={["km", "kilometer"]}
-            konteks="kilometer."
-          />
-        </Adegan>
-
-        <Adegan
-          judul="Sub-bab 2 — Pilih satuan berat"
-          src="/doodle-mtk/mtk-3-ukur-sub2.jpg"
-          alt="Kue kecil dan ember air di samping timbangan."
-          kelas={kelas}
-          kelamin={kelamin}
-          penjelasan={["Ringan memakai g. Berat memakai kg."]}
-        >
-          <PetaContoh
-            pusat="Berat"
-            cabang={[
-              { ikon: "🧁", judul: "Ringan", isi: "kue, g" },
-              { ikon: "🪣", judul: "Berat", isi: "ember, kg" },
-              { ikon: "🔁", judul: "Tukar", isi: "1 kg = 1.000 g" },
-            ]}
-            kolom={["Benda", "Satuan", "Singkat"]}
-            baris={[
-              ["kue", "gram", "g"],
-              ["ember air", "kilogram", "kg"],
-              ["1 kg", "1.000 g", "sama"],
-            ]}
-          />
-          <KuisSuara
-            id={idKuis("B", 2)}
-            pertanyaan="Satu kue sekitar 80. Ucapkan satuan yang pas."
-            periksa={satuanG}
-            petunjuk="Sebutkan satuan untuk benda ringan."
-            benar="Gram, atau g."
-          />
-          <TulisBebas
-            id={idKuis("B", 3)}
-            visual={<Lambang ikon="🪣" teks="ember air" />}
-            pertanyaan="Satu ember air kira-kira 6. Tulis satuan yang pas."
-            pesanSalah="Ember air terasa berat."
-            bantuan="Satuan yang pas adalah kg."
-            umpan="Kilogram, atau kg."
-            periksa={satuanKg}
-            alias={["kg", "kilogram"]}
-            konteks="kilogram."
-          />
-        </Adegan>
-
-        <Adegan
-          judul="Sub-bab 3 — Pilih alat"
-          src="/doodle-mtk/mtk-3-ukur-sub3.jpg"
-          alt="Tiga alat: penggaris, meteran, dan timbangan."
-          kelas={kelas}
-          kelamin={kelamin}
-          penjelasan={["Alat pendek untuk benda pendek. Alat panjang untuk jalur. Timbangan untuk berat."]}
-        >
-          <PetaContoh
-            pusat="Alat"
-            cabang={[
-              { ikon: "📏", judul: "Pendek", isi: "penggaris" },
-              { ikon: "🪵", judul: "Panjang", isi: "meteran" },
-              { ikon: "⚖️", judul: "Berat", isi: "timbangan" },
-            ]}
-            kolom={["Benda", "Alat", "Diukur"]}
-            baris={[
-              ["penghapus", "penggaris", "panjang"],
-              ["pagar", "meteran", "panjang"],
-              ["tas", "timbangan", "berat"],
-            ]}
-          />
-          <KuisSuara
-            id={idKuis("B", 4)}
-            pertanyaan="Kita mau mengukur panjang penghapus. Ucapkan alatnya."
-            periksa={alatPenggaris}
-            petunjuk="Sebutkan alat untuk benda yang pendek."
-            benar="Penggaris."
-          />
-          <TulisBebas
-            id={idKuis("B", 5)}
-            visual={<Lambang ikon="🪵" teks="pagar" />}
-            pertanyaan="Kita mau mengukur panjang pagar. Tulis alatnya."
-            pesanSalah="Pagar lebih panjang dari penggaris."
-            bantuan="Alatnya meteran."
-            umpan="Meteran."
-            periksa={alatMeteran}
-            alias={["meteran"]}
-            konteks="meteran."
-          />
-        </Adegan>
-
-        <Adegan
-          judul="Sub-bab 4 — Ubah panjang"
-          src="/doodle-mtk/mtk-3-ukur-sub4.jpg"
-          alt="Lima meter diubah menjadi sentimeter di papan."
-          kelas={kelas}
-          kelamin={kelamin}
-          penjelasan={["Meter dikali 100 menjadi cm. Kilometer dikali 1.000 menjadi m."]}
-        >
-          <PetaContoh
-            pusat="Ubah panjang"
-            cabang={[
-              { ikon: "×100", judul: "m ke cm", isi: "kali 100" },
-              { ikon: "×1000", judul: "km ke m", isi: "kali 1.000" },
-              { ikon: "⭐", judul: "Contoh", isi: "5 m dan 2 km" },
-            ]}
-            kolom={["Awal", "Hitung", "Hasil"]}
-            baris={[
-              ["5 m", "5 × 100", "500 cm"],
-              ["2 km", "2 × 1.000", "2.000 m"],
-            ]}
-          />
-          <KuisSuara
-            id={idKuis("B", 6)}
-            pertanyaan="6 m sama dengan berapa cm? Ucapkan hasilnya."
-            periksa={(teks) => nilaiUkur(teks, "600", "enam ratus", CM)}
-            petunjuk="Sebutkan hasilnya beserta satuannya."
-            benar="600 cm."
-          />
-          <TulisBebas
-            id={idKuis("B", 7)}
-            visual={<Lambang ikon="🚶" teks="3 km" />}
-            pertanyaan="Tulis panjang itu dalam meter."
-            pesanSalah="1 km = 1.000 m. Kalikan 3."
-            bantuan="3 × 1.000 = 3.000. Jadi 3.000 m."
-            umpan="3.000 m."
-            periksa={(teks) => nilaiUkur(teks, "3000", "tiga ribu", METER)}
-            alias={["3000", "m"]}
-            konteks="3.000 m."
-          />
-        </Adegan>
-
-        <Adegan
-          judul="Sub-bab 5 — Ubah berat"
-          src="/doodle-mtk/mtk-3-ukur-sub5.jpg"
-          alt="Empat kilogram diubah menjadi gram di papan timbangan."
-          kelas={kelas}
-          kelamin={kelamin}
-          penjelasan={["Kilogram dikali 1.000 menjadi gram. Gram dibagi 1.000 menjadi kilogram."]}
-        >
-          <PetaContoh
-            pusat="Ubah berat"
-            cabang={[
-              { ikon: "×1000", judul: "kg ke g", isi: "kali 1.000" },
-              { ikon: "÷1000", judul: "g ke kg", isi: "bagi 1.000" },
-              { ikon: "⭐", judul: "Contoh", isi: "4 kg" },
-            ]}
-            kolom={["Awal", "Hitung", "Hasil"]}
-            baris={[
-              ["4 kg", "4 × 1.000", "4.000 g"],
-              ["4.000 g", "4.000 ÷ 1.000", "4 kg"],
-            ]}
-          />
-          <KuisSuara
-            id={idKuis("B", 8)}
-            pertanyaan="2 kg sama dengan berapa g? Ucapkan hasilnya."
-            periksa={(teks) => nilaiUkur(teks, "2000", "dua ribu", GRAM)}
-            petunjuk="Sebutkan hasilnya beserta satuannya."
-            benar="2.000 g."
-          />
-          <TulisBebas
-            id={idKuis("B", 9)}
-            visual={<Lambang ikon="⚖️" teks="6.000 g" />}
-            pertanyaan="Tulis berat itu dalam kg."
-            pesanSalah="1.000 g = 1 kg. Bagi 6.000 dengan 1.000."
-            bantuan="6.000 ÷ 1.000 = 6. Jadi 6 kg."
-            umpan="6 kg."
-            periksa={(teks) => nilaiUkur(teks, "6", "enam", KILO)}
-            alias={["6", "kg"]}
-            konteks="6 kg."
-          />
-        </Adegan>
-
         <Pilih
           id={idKuis("B", 10)}
-          pertanyaan="1. 7 m sama dengan..."
+          pertanyaan="6. 7 m sama dengan..."
           visual={<Lambang ikon="📏" teks="7 m" />}
           pilihan={[
             { huruf: "A", teks: "70 cm" },
@@ -1006,7 +952,7 @@ function KartuB({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminGuru }) {
         />
         <KuisCocok
           id={idKuis("B", 11)}
-          perintah="2. Pasangkan ukuran dengan hasil ubahnya."
+          perintah="7. Pasangkan ukuran dengan hasil ubahnya."
           baris={[
             { kiri: "5 m", pilihan: PASANGAN_B, benar: "500 cm" },
             { kiri: "2 km", pilihan: PASANGAN_B, benar: "2.000 m" },
@@ -1017,14 +963,14 @@ function KartuB({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminGuru }) {
         />
         <SusunToken
           id={idKuis("B", 12)}
-          perintah="3. Susun dari yang paling ringan."
+          perintah="8. Susun dari yang paling ringan."
           acak={["2 kg", "500 g", "3.000 g", "1 kg"]}
           benar={["500 g", "1 kg", "2 kg", "3.000 g"]}
           umpan="500 g, 1 kg, 2 kg, 3.000 g."
         />
         <KuisBenarSalah
           id={idKuis("B", 13)}
-          perintah="4. Periksa tiga pernyataan."
+          perintah="9. Periksa tiga pernyataan."
           baris={[
             { teks: "Penggaris dipakai untuk mengukur penghapus.", benar: true },
             { teks: "1 km = 100 m.", benar: false },
@@ -1034,7 +980,7 @@ function KartuB({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminGuru }) {
         />
         <Pilih
           id={idKuis("B", 14)}
-          pertanyaan="5. 1 m = 100 cm. Maka 9 m sama dengan..."
+          pertanyaan="10. 1 m = 100 cm. Maka 9 m sama dengan..."
           pilihan={[
             { huruf: "A", teks: "90 cm" },
             { huruf: "B", teks: "900 cm" },
@@ -1240,16 +1186,15 @@ export default function NaskahMtk3Ukur({
   kelamin?: KelaminGuru;
 }) {
   const poin = [
-    "Benda pendek memakai cm. Jalur sedang memakai m. Jarak jauh memakai km.",
-    "Benda ringan memakai g. Benda berat memakai kg.",
-    "Penggaris, meteran, dan timbangan dipilih sesuai benda.",
-    "1 m = 100 cm. 1 km = 1.000 m.",
-    "1 kg = 1.000 g.",
+    "Benda pendek memakai cm. Buku tulis bisa 30 cm. Jalur sedang memakai m. Jarak jauh memakai km.",
+    "Benda ringan memakai g. Tepung dan gula memakai g. Karung beras memakai kg.",
+    "Penggaris untuk yang pendek. Meteran untuk pintu dan meja. Timbangan untuk berat. Mulai dari angka 0.",
+    "100 cm = 1 m. 5.000 cm = 50 m. 1 km = 1.000 m.",
+    "1 kg = 1.000 g. Satu ons ada 100 g.",
   ];
   return (
     <div className="space-y-5">
       <KartuA kelas={kelas} kelamin={kelamin} />
-      <KartuB kelas={kelas} kelamin={kelamin} />
       <KartuC kelas={kelas} kelamin={kelamin} />
       <div id={SLOT_AJUAN_SEBELUM_KARTU_D} />
       <KartuPoinPenting
@@ -1260,9 +1205,9 @@ export default function NaskahMtk3Ukur({
           alt: "Burung hantu Igil di samping pos jalan sehat, menunjuk lima kalimat kunci.",
         }}
         cuplikan={cuplikanKalimat([
-          "Ini yang perlu kalian ingat. Pilih satuan sesuai bendanya.",
-          "Penggaris untuk yang pendek, meteran untuk jalur, timbangan untuk berat.",
-          "Satu meter ada 100 sentimeter. Satu kilometer ada 1.000 meter. Satu kilogram ada 1.000 gram.",
+          "Ini yang perlu kalian ingat. Pilih satuan sesuai bendanya. Mulai ukur dari angka 0.",
+          "Penggaris untuk buku, meteran untuk pintu, timbangan untuk berat.",
+          "Seratus sentimeter sama dengan satu meter. Lima ribu sentimeter sama dengan lima puluh meter. Satu kilogram ada seribu gram.",
         ])}
         poin={poin}
         penutup="Pilih satuan, pilih alat, lalu ubah dengan 100 atau 1.000."
