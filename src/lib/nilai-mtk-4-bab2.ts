@@ -99,6 +99,13 @@ export function persenDuaPuluh(teks: string): boolean {
   return nilai && /persen|%/.test(`${teks} ${k}`);
 }
 
+export function persenDuaPuluhLima(teks: string): boolean {
+  const k = biasa(teks);
+  if (/dua ratus|250/.test(k)) return false;
+  const nilai = angkaUtuh(teks, "25") || k.includes("dua puluh lima");
+  return nilai && /persen|%/.test(`${teks} ${k}`);
+}
+
 export function persenTujuhLima(teks: string): boolean {
   const k = biasa(teks);
   if (/tujuh ratus|750/.test(k)) return false;
@@ -194,6 +201,18 @@ export function senilaiDelapanPerDuaBelas(teks: string): boolean {
 
 export function urutEvaluasiBesar(teks: string): boolean {
   return urutSimbol(teks, ["1/2", "1/3", "1/5", "1/10"]);
+}
+
+export function urutKecilSeperempat(teks: string): boolean {
+  return urutSimbol(teks, ["1/4", "1/3", "1/2"]);
+}
+
+export function lebihBesarSetengahDariSeperempat(teks: string): boolean {
+  const k = biasa(teks);
+  const setengah = adaPecahan(teks, "1/2") || ada(teks, "setengah") || ada(teks, "seperdua") || k.includes("bawang");
+  const hanyaKecil = (adaPecahan(teks, "1/4") || ada(teks, "seperempat") || k.includes("gula")) && !setengah;
+  if (hanyaKecil) return false;
+  return setengah;
 }
 
 export function senilaiEnamPerDelapan(teks: string): boolean {
