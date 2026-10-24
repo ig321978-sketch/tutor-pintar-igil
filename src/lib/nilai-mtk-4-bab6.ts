@@ -13,6 +13,10 @@ function jawab(teks: string, angka: string, kata: string): boolean {
   return angkaUtuh(teks, angka) || ejaan;
 }
 
+export function jumlahDua(teks: string): boolean {
+  return jawab(teks, "2", "dua");
+}
+
 export function jumlahTiga(teks: string): boolean {
   return jawab(teks, "3", "tiga");
 }
@@ -51,6 +55,22 @@ export function jumlahDuaBelas(teks: string): boolean {
 
 export function jumlahEmpatBelas(teks: string): boolean {
   return jawab(teks, "14", "empat belas");
+}
+
+export function jumlahLimaBelas(teks: string): boolean {
+  return jawab(teks, "15", "lima belas");
+}
+
+export function jumlahEnamBelas(teks: string): boolean {
+  return jawab(teks, "16", "enam belas");
+}
+
+export function jumlahDuaPuluhEmpat(teks: string): boolean {
+  return jawab(teks, "24", "dua puluh empat");
+}
+
+export function jumlahTigaPuluhDua(teks: string): boolean {
+  return jawab(teks, "32", "tiga puluh dua");
 }
 
 export function jumlahDelapanBelas(teks: string): boolean {
