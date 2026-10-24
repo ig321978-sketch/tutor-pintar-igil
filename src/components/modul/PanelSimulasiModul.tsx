@@ -22,8 +22,9 @@ import SimulasiMtk3Ukur from "@/components/modules/SimulasiMtk3Ukur";
 import SimulasiMtk3Bangun from "@/components/modules/SimulasiMtk3Bangun";
 import SimulasiMtk3Data from "@/components/modules/SimulasiMtk3Data";
 import SimulasiMtk4Bab1 from "@/components/modules/SimulasiMtk4Bab1";
+import SimulasiMtk4Bab2 from "@/components/modules/SimulasiMtk4Bab2";
 import SimulasiPhetPenjumlahanKelas1 from "@/components/modules/SimulasiPhetPenjumlahanKelas1";
-import { adalahMtk1Bab1, adalahMtk1Bab2, adalahMtk1Bab3, adalahMtk1Bab4, adalahMtk1Bab5, adalahMtk1Bab6, adalahMtk1Bab7, adalahMtk1Bab8, adalahMtk2Bab1, adalahMtk2Bab2, adalahMtk2Bab3, adalahMtk2Bab4, adalahMtk2Bab5, adalahMtk2Bab6, adalahMtk2Bab7, adalahMtk2Bab8, adalahMtk3Bab1, adalahMtk3Kalimat, adalahMtk3Ukur, adalahMtk3Bangun, adalahMtk3Data, adalahMtk4Bab1 } from "@/lib/naskah-resmi";
+import { adalahMtk1Bab1, adalahMtk1Bab2, adalahMtk1Bab3, adalahMtk1Bab4, adalahMtk1Bab5, adalahMtk1Bab6, adalahMtk1Bab7, adalahMtk1Bab8, adalahMtk2Bab1, adalahMtk2Bab2, adalahMtk2Bab3, adalahMtk2Bab4, adalahMtk2Bab5, adalahMtk2Bab6, adalahMtk2Bab7, adalahMtk2Bab8, adalahMtk3Bab1, adalahMtk3Kalimat, adalahMtk3Ukur, adalahMtk3Bangun, adalahMtk3Data, adalahMtk4Bab1, adalahMtk4Bab2 } from "@/lib/naskah-resmi";
 import type { KelaminGuru } from "@/lib/guru";
 
 type PanelSimulasiProps = {
@@ -405,6 +406,26 @@ function PanelSimulasiData({
   );
 }
 
+function PanelSimulasiMtk4Pecahan({
+  kelas,
+  kelamin,
+  sudahLulus = false,
+  onSelesai,
+}: Pick<PanelSimulasiProps, "kelas" | "kelamin" | "sudahLulus" | "onSelesai">) {
+  const dicatat = useRef(sudahLulus);
+  return (
+    <SimulasiMtk4Bab2
+      kelas={kelas}
+      kelamin={kelamin}
+      onBenar={() => {
+        if (dicatat.current) return;
+        dicatat.current = true;
+        onSelesai?.(true, "Lab pecahan selesai.");
+      }}
+    />
+  );
+}
+
 function PanelSimulasiCacah10000({
   kelas,
   kelamin,
@@ -518,6 +539,9 @@ export default function PanelSimulasiModul({
   }
   if (adalahMtk4Bab1(kelas, mapel, materi)) {
     return <PanelSimulasiCacah10000 kelas={kelas} kelamin={kelamin} sudahLulus={sudahLulus} onSelesai={onSelesai} />;
+  }
+  if (adalahMtk4Bab2(kelas, mapel, materi)) {
+    return <PanelSimulasiMtk4Pecahan kelas={kelas} kelamin={kelamin} sudahLulus={sudahLulus} onSelesai={onSelesai} />;
   }
   return (
     <p className="text-sm font-semibold text-[#1C01A5]">
