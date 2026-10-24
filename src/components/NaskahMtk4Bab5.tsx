@@ -16,16 +16,15 @@ import { idKuisKartuResmi, idKuisTulisKartu } from "@/lib/kuis-materi";
 import { MISI_MTK4_BAB5, TEMA_MTK4_BAB5 } from "@/lib/misi-mtk-4-bab5";
 import { MODUL_MTK4_BAB5 } from "@/lib/modul-resmi-mtk-4-bab5";
 import {
+  jarakTigaRatus,
   namaSamaSisi,
   namaSembarang,
   namaTrapesium,
-  sisiDelapan,
   sisiDua,
   sisiEmpat,
   sisiEnam,
   sisiLima,
   sisiSatu,
-  sisiSembilan,
   sisiTiga,
 } from "@/lib/nilai-mtk-4-bab5";
 import type { CuplikanVoiceMateri } from "@/lib/naskah-voice-pai-1-bab2";
@@ -333,83 +332,60 @@ function KartuA({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminGuru }) {
       <KepalaKartu ikon="🪟👧👦🦉" judul="A. Bengkel Jendela" anak="Nisa, Farhan, Cinta, dan Igil" kelas={kelas} kelamin={kelamin} cuplikan={cuplikanKalimat(kartu.voice[0] ?? [])} />
       <TujuanBelajar butir={["Mendeskripsikan ciri segitiga, segiempat, dan segi banyak.", "Menyusun bangun datar dengan lebih dari satu cara.", "Mengurai bangun datar dengan lebih dari satu cara."]} />
       <div className="mt-4 space-y-4">
-        <Adegan utama judul="Sub-bab 1 — Ciri segitiga" src="/doodle-mtk/mtk-4-bab5-sub1.jpg" alt="Tiga anak dan burung hantu bertopi biru mengamati kaca berbentuk segitiga di bengkel." kelas={kelas} kelamin={kelamin} penjelasan={["Segitiga punya sisi lurus dan tertutup. Sama sisi: semua sisi sama panjang. Sama kaki: dua sisi sama. Sembarang: semua sisi beda."]}>
-          <Dialog nama="Farhan" anak="Kaca ini semua sisinya sama panjang." />
-          <Dialog nama="Cinta" anak="Kaca kecil hanya sepasang sisi yang sama." />
-          <Dialog nama="Igil" anak="Ada juga kaca yang semua sisinya beda." />
-          <Dialog nama="Nisa" anak="Kita amati dulu, baru sebut namanya." />
-          <Papan anak="semua sama    ·    sepasang sama    ·    semua beda" />
-          <KuisSuara id={idKuis("A", 0)} pertanyaan="Segitiga yang semua sisinya beda panjang. Sebutkan namanya." periksa={namaSembarang} petunjuk="Bukan yang semua sisinya sama, dan bukan yang hanya sepasang." benar="Segitiga sembarang." />
+        <Adegan utama judul="Sub-bab A — Ciri segitiga" src="/doodle-mtk/mtk-4-bab5-sub1.jpg" alt="Tiga anak dan burung hantu bertopi biru mengamati kaca berbentuk segitiga di bengkel." kelas={kelas} kelamin={kelamin} penjelasan={["Segitiga punya 3 sisi dan 3 sudut. Sama kaki punya 2 sisi sama. Sama sisi punya semua sisi sama. Sembarang tidak punya sisi yang sama."]}>
+          <Dialog nama="Farhan" anak="Kaca ABC: dua sisi sama panjang. Itu sama kaki." />
+          <Dialog nama="Cinta" anak="Kaca PQR: ketiga sisinya sama. Itu sama sisi." />
+          <Dialog nama="Igil" anak="Sama sisi boleh disebut sama kaki. Semua cirinya ada di sana." />
+          <Dialog nama="Nisa" anak="Kaca DEF semua sisinya beda. Itu sembarang." />
+          <Papan anak="sama kaki 2  ·  sama sisi 3  ·  sembarang beda" />
+          <p className="pt-2 text-sm font-black uppercase tracking-wide text-[#1C01A5]">Infografis: Tiga macam sisi</p>
+          <PetaContoh pusat="3 sisi" cabang={[{ ikon: "🔺", judul: "Sama kaki", isi: "2 sisi sama" }, { ikon: "🔷", judul: "Sama sisi", isi: "semua sisi sama" }, { ikon: "🦉", judul: "Sembarang", isi: "tidak ada yang sama" }]} kolom={["Macam", "Ciri sisi"]} baris={[["Sama kaki", "2 sama"], ["Sama sisi", "3 sama"], ["Sembarang", "tidak ada yang sama"]]} />
+          <KuisSuara id={idKuis("A", 0)} pertanyaan="Segitiga yang semua sisinya beda panjang. Sebutkan namanya." periksa={namaSembarang} petunjuk="Bukan yang semua sisinya sama, dan bukan yang hanya dua sisi sama." benar="Segitiga sembarang." />
           <TulisBebas id={idKuis("A", 1)} judul="Banyak sisi" visual={<Kaca bentuk="segitiga" />} pertanyaan="Tulis banyak sisi pada segitiga." pesanSalah="Hitung sisi yang mengelilingi kaca." bantuan="Segitiga punya 3 sisi." umpan="3 sisi." periksa={sisiTiga} alias={["3"]} konteks="Segitiga punya 3 sisi." />
         </Adegan>
-        <Adegan utama judul="Sub-bab 1 — Ciri segiempat" src="/doodle-mtk/mtk-4-bab5-sub2.jpg" alt="Bingkai jendela segiempat dan belah ketupat. Burung hantu bertopi biru bersama tiga anak." kelas={kelas} kelamin={kelamin} penjelasan={["Jajargenjang punya dua pasang sisi berhadapan yang sejajar. Trapesium punya tepat satu pasang. Persegi: semua sisi sama dan sudutnya siku-siku."]}>
-          <Dialog nama="Igil" anak="Kaca persegi ini semua sisinya sama, dan sudutnya siku-siku." />
-          <Dialog nama="Nisa" anak="Kaca panjang sudutnya siku-siku. Sisi yang berhadapan sama panjang." />
-          <Dialog nama="Cinta" anak="Belah ketupat semua sisinya sama. Sudutnya belum tentu siku-siku." />
-          <Dialog nama="Farhan" anak="Ada kaca yang hanya satu pasang sisinya sejajar." />
-          <Papan anak="sisi sama + siku    ·    sisi berhadapan sama    ·    satu pasang sejajar" />
-          <KuisSuara id={idKuis("A", 2)} pertanyaan="Segiempat yang punya tepat satu pasang sisi sejajar. Sebutkan namanya." periksa={namaTrapesium} petunjuk="Hanya satu pasang sisi yang sejajar." benar="Trapesium." />
+        <Adegan utama judul="Sub-bab A — Ciri segiempat" src="/doodle-mtk/mtk-4-bab5-sub2.jpg" alt="Bingkai jendela segiempat dan belah ketupat. Burung hantu bertopi biru bersama tiga anak." kelas={kelas} kelamin={kelamin} penjelasan={["Jajargenjang punya dua pasang sisi berhadapan yang sejajar. Trapesium punya tepat satu pasang. Persegi adalah belah ketupat yang sudutnya siku-siku."]}>
+          <Dialog nama="Igil" anak="Persegi panjang ABCD punya 4 sudut siku-siku." />
+          <Dialog nama="Nisa" anak="Belah ketupat semua sisinya sama, dan dua pasang sisinya sejajar." />
+          <Dialog nama="Cinta" anak="Kalau belah ketupat itu siku-siku, namanya persegi." />
+          <Dialog nama="Farhan" anak="Trapesium punya tepat satu pasang sisi sejajar. Jangan lupa kata tepat." />
+          <Papan anak="trapesium: tepat 1 pasang    ·    jajargenjang: 2 pasang" />
+          <p className="pt-2 text-sm font-black uppercase tracking-wide text-[#1C01A5]">Infografis: Tepat sepasang</p>
+          <PetaContoh pusat="Sejajar" cabang={[{ ikon: "🟧", judul: "Jajargenjang", isi: "2 pasang sejajar" }, { ikon: "🪟", judul: "Trapesium", isi: "tepat 1 pasang" }, { ikon: "🟦", judul: "Persegi", isi: "sisi sama dan siku" }]} kolom={["Bangun", "Ciri"]} baris={[["Jajargenjang", "2 pasang"], ["Trapesium", "tepat 1 pasang"], ["Persegi", "sisi sama, siku"]]} />
+          <KuisSuara id={idKuis("A", 2)} pertanyaan="Segiempat yang punya tepat satu pasang sisi sejajar. Sebutkan namanya." periksa={namaTrapesium} petunjuk="Hanya tepat satu pasang sisi yang sejajar." benar="Trapesium." />
           <TulisBebas id={idKuis("A", 3)} judul="Banyak sisi" visual={<Kaca bentuk="segiempat" />} pertanyaan="Tulis banyak sisi pada persegi." pesanSalah="Hitung sisi yang mengelilingi kaca." bantuan="Persegi punya 4 sisi." umpan="4 sisi." periksa={sisiEmpat} alias={["4"]} konteks="Persegi punya 4 sisi." />
         </Adegan>
-        <Adegan utama judul="Sub-bab 2 — Menyusun bangun" src="/doodle-mtk/mtk-4-bab5-sub3.jpg" alt="Potongan kaca segitiga disusun menjadi jendela. Burung hantu bertopi biru memegang potongan." kelas={kelas} kelamin={kelamin} penjelasan={["Menyusun berarti menggabungkan beberapa bangun menjadi satu bangun baru. Cara pasangnya boleh lebih dari satu."]}>
-          <Dialog nama="Farhan" anak="Enam segitiga kecil bisa disusun jadi satu segienam." />
-          <Dialog nama="Nisa" anak="Empat segitiga kecil bisa jadi dua persegi." />
-          <Dialog nama="Cinta" anak="Cara susunnya lebih dari satu." />
-          <Dialog nama="Igil" anak="Itu komposisi. Banyak potongannya tetap." />
-          <Papan anak="🔺🔺🔺🔺🔺🔺    atau    🔺🔺 = 🟦" />
-          <KuisSuara id={idKuis("A", 4)} pertanyaan="Ada segitiga di kiri, di tengah, dan di kanan. Semuanya disusun jadi satu trapesium. Ada berapa segitiga?" periksa={sisiTiga} petunjuk="Hitung semua segitiga yang disusun." benar="3 segitiga." />
-          <TulisBebas id={idKuis("A", 5)} judul="Petak segitiga" visual={<Papan anak="3 baris × 3 kolom" />} pertanyaan="Tulis banyak segitiga pada susunan itu." pesanSalah="Kalikan banyak baris dengan banyak kolom." bantuan="3 × 3 = 9." umpan="9 segitiga." periksa={sisiSembilan} alias={["9"]} konteks="3 baris kali 3 kolom sama dengan 9 segitiga." />
+        <Adegan utama judul="Sub-bab B — Menyusun bangun" src="/doodle-mtk/mtk-4-bab5-sub3.jpg" alt="Potongan kaca segitiga disusun menjadi jendela. Burung hantu bertopi biru memegang potongan." kelas={kelas} kelamin={kelamin} penjelasan={["Menyusun berarti menggabungkan beberapa bangun menjadi satu bangun baru. Cara pasangnya boleh lebih dari satu."]}>
+          <Dialog nama="Farhan" anak="Tiga lidi tersambung jadi segitiga. Empat lidi jadi segiempat." />
+          <Dialog nama="Nisa" anak="Lima lidi jadi segilima. Enam lidi jadi segienam." />
+          <Dialog nama="Cinta" anak="Enam segitiga sama bisa disusun jadi satu segienam." />
+          <Dialog nama="Igil" anak="Itu menyusun. Cara pasangnya boleh lebih dari satu." />
+          <Papan anak="3 lidi → segitiga    ·    6 lidi → segienam" />
+          <p className="pt-2 text-sm font-black uppercase tracking-wide text-[#1C01A5]">Infografis: Menyusun</p>
+          <PetaContoh pusat="Gabung" cabang={[{ ikon: "🥢", judul: "3 lidi", isi: "segitiga" }, { ikon: "🪟", judul: "4 lidi", isi: "segiempat" }, { ikon: "🔷", judul: "6 segitiga", isi: "segienam" }]} kolom={["Potongan", "Hasil"]} baris={[["3 lidi", "segitiga"], ["5 lidi", "segilima"], ["6 segitiga", "segienam"]]} />
+          <KuisSuara id={idKuis("A", 4)} pertanyaan="Segitiga sama kaki punya berapa sisi yang sama panjang? Sebutkan angkanya." periksa={sisiDua} petunjuk="Bukan ketiga sisinya." benar="2 sisi." />
+          <TulisBebas id={idKuis("A", 5)} judul="Lima lidi" visual={<Papan anak="5 lidi tersambung" />} pertanyaan="Tulis banyak sisi pada segilima." pesanSalah="Banyak sisi sama dengan banyak lidi yang tersambung." bantuan="Lima lidi membuat 5 sisi." umpan="5 sisi." periksa={sisiLima} alias={["5"]} konteks="Segilima punya 5 sisi." />
         </Adegan>
-        <Adegan utama judul="Sub-bab 2 — Mengurai bangun" src="/doodle-mtk/mtk-4-bab5-sub4.jpg" alt="Satu kaca persegi dipotong menjadi bagian. Burung hantu bertopi biru dan tiga anak melihat hasilnya." kelas={kelas} kelamin={kelamin} penjelasan={["Mengurai berarti memotong satu bangun menjadi beberapa bangun. Cara urainya boleh lebih dari satu."]}>
-          <Dialog nama="Cinta" anak="Satu persegi bisa diurai jadi empat segitiga kecil yang sama." />
-          <Dialog nama="Igil" anak="Persegi panjang bisa diurai jadi dua persegi yang sama." />
-          <Dialog nama="Nisa" anak="Cara urainya lebih dari satu." />
-          <Dialog nama="Farhan" anak="Itu dekomposisi. Satu kaca menjadi beberapa kaca." />
-          <Papan anak="1 persegi  →  beberapa bagian" />
+        <Adegan utama judul="Sub-bab B — Mengurai bangun" src="/doodle-mtk/mtk-4-bab5-sub4.jpg" alt="Satu kaca persegi dipotong menjadi bagian. Burung hantu bertopi biru dan tiga anak melihat hasilnya." kelas={kelas} kelamin={kelamin} penjelasan={["Mengurai berarti memotong satu bangun menjadi beberapa bangun. Cara urainya boleh lebih dari satu."]}>
+          <Dialog nama="Cinta" anak="Satu segienam diurai dari titik tengah jadi 6 segitiga." />
+          <Dialog nama="Igil" anak="Taman itu segienam. Satu sisi 50 m." />
+          <Dialog nama="Nisa" anak="Kelilingnya 50 × 6 = 300 m." />
+          <Dialog nama="Farhan" anak="Satu kaca boleh diurai dengan lebih dari satu cara." />
+          <Papan anak="50 m × 6 = 300 m" />
+          <p className="pt-2 text-sm font-black uppercase tracking-wide text-[#1C01A5]">Infografis: Mengurai</p>
+          <PetaContoh pusat="300 m" cabang={[{ ikon: "🌳", judul: "Taman", isi: "segienam" }, { ikon: "📏", judul: "Satu sisi", isi: "50 m" }, { ikon: "✂️", judul: "Dari tengah", isi: "6 segitiga" }]} kolom={["Cara", "Hasil"]} baris={[["1 sisi", "50 m"], ["6 sisi", "300 m"], ["Dari tengah", "6 segitiga"]]} />
           <KuisSuara id={idKuis("A", 6)} pertanyaan="Satu segienam diurai dari titik tengah menjadi segitiga. Ada berapa segitiga?" periksa={sisiEnam} petunjuk="Banyak segitiga sama dengan banyak sisi bangun itu." benar="6 segitiga." />
-          <TulisBebas id={idKuis("A", 7)} judul="Persegi kecil" visual={<Papan anak="2 baris × 4 kolom" />} pertanyaan="Tulis banyak persegi kecil pada urutan itu." pesanSalah="Kalikan banyak baris dengan banyak kolom." bantuan="2 × 4 = 8." umpan="8 persegi kecil." periksa={sisiDelapan} alias={["8"]} konteks="2 baris kali 4 kolom sama dengan 8 persegi kecil." />
+          <TulisBebas id={idKuis("A", 7)} judul="Keliling taman" visual={<Papan anak="50 m × 6" />} pertanyaan="Tulis jarak keliling taman segienam itu." pesanSalah="Kalikan panjang satu sisi dengan banyak sisi." bantuan="50 × 6 = 300." umpan="300 m." periksa={jarakTigaRatus} alias={["300"]} konteks="50 meter kali 6 sama dengan 300 meter." />
         </Adegan>
         <Pilih id={idKuis("A", 8)} pertanyaan="Segitiga sama sisi juga boleh disebut..." visual={<Kaca bentuk="segitiga" />} pilihan={[{ huruf: "A", teks: "Sembarang" }, { huruf: "B", teks: "Sama kaki" }, { huruf: "C", teks: "Trapesium" }, { huruf: "D", teks: "Lingkaran" }]} benar="B" umpan="Semua ciri sama kaki ada pada sama sisi." salah="Lihat berapa sisi yang sama panjang." />
         <KuisCocok id={idKuis("A", 9)} perintah="Pasangkan banyak sisi dengan namanya." baris={[{ kiri: "3 sisi", pilihan: SISI_A, benar: "Segitiga" }, { kiri: "4 sisi", pilihan: SISI_A, benar: "Segiempat" }, { kiri: "6 sisi", pilihan: SISI_A, benar: "Segienam" }]} umpan="3 sisi segitiga, 4 sisi segiempat, 6 sisi segienam." />
         <SusunToken id={idKuis("A", 10)} perintah="Susun dari yang sisinya paling sedikit." acak={["4 sisi", "6 sisi", "3 sisi", "5 sisi"]} benar={["3 sisi", "4 sisi", "5 sisi", "6 sisi"]} umpan="3 sisi, 4 sisi, 5 sisi, 6 sisi." />
         <KuisBenarSalah id={idKuis("A", 11)} perintah="Pilih benar atau salah." baris={[{ teks: "Trapesium punya tepat satu pasang sisi sejajar.", benar: true }, { teks: "Persegi tidak punya sudut siku-siku.", benar: false }, { teks: "Satu kumpulan kaca bisa disusun dengan lebih dari satu cara.", benar: true }]} umpan="Yang pertama dan ketiga benar. Persegi punya sudut siku-siku." />
         <Pilih id={idKuis("A", 12)} pertanyaan="Belah ketupat yang sudutnya siku-siku disebut..." visual={<Kaca bentuk="segiempat" />} pilihan={[{ huruf: "A", teks: "Trapesium" }, { huruf: "B", teks: "Lingkaran" }, { huruf: "C", teks: "Persegi" }, { huruf: "D", teks: "Segitiga" }]} benar="C" umpan="Sisi sama dan sudut siku-siku. Itu persegi." salah="Persegi punya sisi sama dan sudut siku-siku." />
-      </div>
-    </KartuBingkai>
-  );
-}
-
-function KartuB({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminGuru }) {
-  const kartu = MODUL_MTK4_BAB5.kartu[1];
-  return (
-    <KartuBingkai>
-      <KepalaKartu ikon="🗺️🪟" judul="B. Peta Jendela" anak="Intisari ciri dan susun" kelas={kelas} kelamin={kelamin} cuplikan={cuplikanKalimat(kartu.voice[0] ?? [])} />
-      <div className="mt-4 space-y-4">
-        <Adegan utama judul="Sub-bab 1 — Macam segitiga" src="/doodle-mtk/mtk-4-bab5-sub1.jpg" alt="Kaca segitiga di bengkel jendela." kelas={kelas} kelamin={kelamin} penjelasan={["Amati sisi yang sama panjang. Sama sisi, sama kaki, dan sembarang adalah tiga macam segitiga."]}>
-          <PetaContoh pusat="3 macam" cabang={[{ ikon: "🔺", judul: "Sama sisi", isi: "semua sisi sama" }, { ikon: "🔷", judul: "Sama kaki", isi: "sepasang sisi sama" }, { ikon: "🦉", judul: "Sembarang", isi: "semua sisi beda" }]} kolom={["Macam", "Ciri"]} baris={[["Sama sisi", "semua sama"], ["Sama kaki", "sepasang sama"], ["Sembarang", "semua beda"]]} />
-          <KuisSuara id={idKuis("B", 0)} pertanyaan="Segilima punya berapa sisi? Sebutkan angkanya." periksa={sisiLima} petunjuk="Nama segilima mengikuti banyak sisinya." benar="5 sisi." />
-          <TulisBebas id={idKuis("B", 1)} judul="Sudut segienam" visual={<Papan anak="segienam" />} pertanyaan="Tulis banyak sudut pada segienam." pesanSalah="Banyak sudut sama dengan banyak sisi." bantuan="Segienam punya 6 sudut." umpan="6 sudut." periksa={sisiEnam} alias={["6"]} konteks="Segienam punya 6 sudut." />
-        </Adegan>
-        <Adegan utama judul="Sub-bab 1 — Macam segiempat" src="/doodle-mtk/mtk-4-bab5-sub2.jpg" alt="Bingkai jendela segiempat." kelas={kelas} kelamin={kelamin} penjelasan={["Lihat sisi yang sejajar dan sudut yang siku-siku. Itu membedakan jajargenjang, trapesium, dan persegi."]}>
-          <PetaContoh pusat="Sejajar" cabang={[{ ikon: "🟧", judul: "Jajargenjang", isi: "berhadapan sejajar" }, { ikon: "🪟", judul: "Trapesium", isi: "tepat satu pasang" }, { ikon: "🟦", judul: "Persegi", isi: "sisi sama dan siku" }]} kolom={["Bangun", "Ciri"]} baris={[["Jajargenjang", "berhadapan sejajar"], ["Trapesium", "tepat satu pasang"], ["Persegi", "sisi sama, siku"]]} />
-          <KuisSuara id={idKuis("B", 2)} pertanyaan="Jajargenjang punya berapa pasang sisi berhadapan yang sejajar?" periksa={sisiDua} petunjuk="Bukan tepat satu pasang." benar="2 pasang." />
-          <TulisBebas id={idKuis("B", 3)} judul="Sudut siku" visual={<Kaca bentuk="segiempat" />} pertanyaan="Tulis banyak sudut siku-siku pada persegi panjang." pesanSalah="Setiap pojok persegi panjang siku-siku." bantuan="Ada 4 sudut siku-siku." umpan="4 sudut." periksa={sisiEmpat} alias={["4"]} konteks="Persegi panjang punya 4 sudut siku-siku." />
-        </Adegan>
-        <Adegan utama judul="Sub-bab 2 — Cara menyusun" src="/doodle-mtk/mtk-4-bab5-sub3.jpg" alt="Potongan kaca disusun menjadi jendela." kelas={kelas} kelamin={kelamin} penjelasan={["Dua segitiga yang sama dapat menjadi persegi panjang. Enam segitiga sama dapat menjadi segienam."]}>
-          <PetaContoh pusat="Susun" cabang={[{ ikon: "🔺", judul: "Dua segitiga", isi: "jadi persegi panjang" }, { ikon: "🔷", judul: "Enam segitiga", isi: "jadi segienam" }, { ikon: "🔁", judul: "Cara lain", isi: "banyaknya tetap" }]} kolom={["Potongan", "Hasil"]} baris={[["2 segitiga", "persegi panjang"], ["6 segitiga", "segienam"]]} />
-          <KuisSuara id={idKuis("B", 4)} pertanyaan="Ada dua kaca persegi dan satu kaca segitiga. Semuanya disusun jadi satu jendela. Ada berapa kaca?" periksa={sisiTiga} petunjuk="Jumlahkan kaca persegi dan kaca segitiga." benar="3 kaca." />
-          <TulisBebas id={idKuis("B", 5)} judul="Dua baris" visual={<Papan anak="2 baris × 4 kolom" />} pertanyaan="Tulis banyak persegi kecil pada susunan itu." pesanSalah="Kalikan banyak baris dengan banyak kolom." bantuan="2 × 4 = 8." umpan="8 persegi kecil." periksa={sisiDelapan} alias={["8"]} konteks="2 baris kali 4 kolom sama dengan 8 persegi kecil." />
-        </Adegan>
-        <Adegan utama judul="Sub-bab 2 — Cara mengurai" src="/doodle-mtk/mtk-4-bab5-sub4.jpg" alt="Satu kaca dipotong menjadi beberapa bagian." kelas={kelas} kelamin={kelamin} penjelasan={["Satu persegi dapat diurai menjadi dua segitiga. Cara lain: kedua diagonal membuat empat segitiga."]}>
-          <PetaContoh pusat="Urai" cabang={[{ ikon: "✂️", judul: "Satu garis", isi: "dua segitiga" }, { ikon: "🟦", judul: "Cara lain", isi: "potong lagi" }, { ikon: "🦉", judul: "Tetap satu", isi: "asalnya satu kaca" }]} kolom={["Cara", "Hasil"]} baris={[["Satu garis", "2 segitiga"], ["Cara lain", "bagian baru"]]} />
-          <KuisSuara id={idKuis("B", 6)} pertanyaan="Satu persegi dipotong kedua diagonalnya. Ada berapa segitiga?" periksa={sisiEmpat} petunjuk="Dua garis silang membagi bagian yang sama." benar="4 segitiga." />
-          <TulisBebas id={idKuis("B", 7)} judul="Petak kecil" visual={<Papan anak="3 baris × 3 kolom" />} pertanyaan="Tulis banyak persegi kecil pada urutan itu." pesanSalah="Kalikan banyak baris dengan banyak kolom." bantuan="3 × 3 = 9." umpan="9 persegi kecil." periksa={sisiSembilan} alias={["9"]} konteks="3 baris kali 3 kolom sama dengan 9 persegi kecil." />
-        </Adegan>
-        <Pilih id={idKuis("B", 8)} pertanyaan="Mana yang boleh disebut layang-layang?" pilihan={[{ huruf: "A", teks: "Lingkaran" }, { huruf: "B", teks: "Belah ketupat" }, { huruf: "C", teks: "Segitiga" }, { huruf: "D", teks: "Trapesium" }]} benar="B" umpan="Semua ciri layang-layang ada pada belah ketupat." salah="Layang-layang punya dua pasang sisi berdekatan yang sama." />
-        <KuisCocok id={idKuis("B", 9)} perintah="Pasangkan ciri dengan namanya." baris={[{ kiri: "Tepat 1 pasang sejajar", pilihan: JENIS_B, benar: "Trapesium" }, { kiri: "4 sisi sama dan siku", pilihan: JENIS_B, benar: "Persegi" }, { kiri: "2 sisi sama", pilihan: JENIS_B, benar: "Segitiga sama kaki" }]} umpan="Trapesium, persegi, dan segitiga sama kaki." />
-        <SusunToken id={idKuis("B", 10)} perintah="Susun dari yang sisinya paling sedikit." acak={["5 sisi", "3 sisi", "6 sisi", "4 sisi"]} benar={["3 sisi", "4 sisi", "5 sisi", "6 sisi"]} umpan="3 sisi, 4 sisi, 5 sisi, 6 sisi." />
-        <KuisBenarSalah id={idKuis("B", 11)} perintah="Pilih benar atau salah." baris={[{ teks: "Segitiga sama sisi boleh disebut sama kaki.", benar: true }, { teks: "Trapesium punya dua pasang sisi sejajar.", benar: false }, { teks: "Satu persegi hanya bisa diurai dengan satu cara.", benar: false }]} umpan="Hanya yang pertama benar. Trapesium tepat satu pasang. Persegi bisa diurai dengan lebih dari satu cara." />
-        <Pilih id={idKuis("B", 12)} pertanyaan="Satu persegi diurai jadi 2 persegi panjang. Tiap persegi panjang diurai jadi 2 segitiga. Ada berapa segitiga?" visual={<Papan anak="1 persegi → 2 bagian → segitiga" />} pilihan={[{ huruf: "A", teks: "2" }, { huruf: "B", teks: "8" }, { huruf: "C", teks: "4" }, { huruf: "D", teks: "6" }]} benar="C" umpan="2 × 2 = 4 segitiga." salah="Kalikan banyak bagian dengan segitiga di setiap bagian." />
+        <Pilih id={idKuis("B", 0)} pertanyaan="Mana yang boleh disebut layang-layang?" pilihan={[{ huruf: "A", teks: "Lingkaran" }, { huruf: "B", teks: "Belah ketupat" }, { huruf: "C", teks: "Segitiga" }, { huruf: "D", teks: "Trapesium" }]} benar="B" umpan="Belah ketupat punya dua pasang sisi berdekatan yang sama." salah="Layang-layang punya dua pasang sisi berdekatan yang sama." />
+        <KuisCocok id={idKuis("B", 1)} perintah="Pasangkan ciri dengan namanya." baris={[{ kiri: "Tepat 1 pasang sejajar", pilihan: JENIS_B, benar: "Trapesium" }, { kiri: "4 sisi sama dan siku", pilihan: JENIS_B, benar: "Persegi" }, { kiri: "2 sisi sama", pilihan: JENIS_B, benar: "Segitiga sama kaki" }]} umpan="Trapesium, persegi, dan segitiga sama kaki." />
+        <SusunToken id={idKuis("B", 2)} perintah="Susun dari yang sisinya paling sedikit." acak={["5 sisi", "3 sisi", "6 sisi", "4 sisi"]} benar={["3 sisi", "4 sisi", "5 sisi", "6 sisi"]} umpan="3 sisi, 4 sisi, 5 sisi, 6 sisi." />
+        <KuisBenarSalah id={idKuis("B", 3)} perintah="Pilih benar atau salah." baris={[{ teks: "Segitiga sama sisi boleh disebut sama kaki.", benar: true }, { teks: "Trapesium punya dua pasang sisi sejajar.", benar: false }, { teks: "Satu persegi hanya bisa diurai dengan satu cara.", benar: false }]} umpan="Hanya yang pertama benar. Trapesium tepat satu pasang. Persegi bisa diurai dengan lebih dari satu cara." />
+        <Pilih id={idKuis("B", 4)} pertanyaan="Satu persegi diurai jadi 2 persegi panjang. Tiap persegi panjang diurai jadi 2 segitiga. Ada berapa segitiga?" visual={<Papan anak="1 persegi → 2 bagian → segitiga" />} pilihan={[{ huruf: "A", teks: "2" }, { huruf: "B", teks: "8" }, { huruf: "C", teks: "4" }, { huruf: "D", teks: "6" }]} benar="C" umpan="2 × 2 = 4 segitiga." salah="Kalikan banyak bagian dengan segitiga di setiap bagian." />
       </div>
     </KartuBingkai>
   );
@@ -453,7 +429,7 @@ function LembarEvaluasi({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminG
         <KuisSuara id={idKuis("D", 2)} pertanyaan="3. Segitiga yang ketiga sisinya sama panjang. Sebutkan namanya." periksa={namaSamaSisi} petunjuk="Lihat yang semua sisinya sama panjang." benar="Segitiga sama sisi." />
         <Pilih id={idKuis("D", 3)} pertanyaan="4. Satu layang-layang diurai jadi segitiga. Biasanya ada berapa segitiga?" visual={<Papan anak="layang-layang" />} pilihan={[{ huruf: "A", teks: "4" }, { huruf: "B", teks: "2" }, { huruf: "C", teks: "6" }, { huruf: "D", teks: "8" }]} benar="B" umpan="Satu garis di tengah membuat 2 segitiga." salah="Layang-layang dapat dibagi pada diagonalnya." />
         <KuisCocok id={idKuis("D", 4)} perintah="5. Pasangkan ciri dengan bangunnya." baris={[{ kiri: "5 sisi", pilihan: HASIL_D, benar: "Segilima" }, { kiri: "Tepat 1 pasang sejajar", pilihan: HASIL_D, benar: "Trapesium" }, { kiri: "4 sisi sama", pilihan: HASIL_D, benar: "Belah ketupat" }]} umpan="Segilima, trapesium, dan belah ketupat." />
-        <TulisBebas id={idKuis("D", 5)} judul="6. Petak kecil" visual={<Papan anak="2 baris × 2 kolom" />} pertanyaan="Tulis banyak persegi kecil pada urutan itu." pesanSalah="Kalikan banyak baris dengan banyak kolom." bantuan="2 × 2 = 4." umpan="4 persegi kecil." periksa={sisiEmpat} alias={["4"]} konteks="2 baris kali 2 kolom sama dengan 4 persegi kecil." />
+        <TulisBebas id={idKuis("D", 5)} judul="6. Sudut siku" visual={<Papan anak="persegi panjang ABCD" />} pertanyaan="Tulis banyak sudut siku-siku pada persegi panjang." pesanSalah="Setiap pojok persegi panjang siku-siku." bantuan="Ada 4 sudut siku-siku." umpan="4 sudut." periksa={sisiEmpat} alias={["4"]} konteks="Persegi panjang punya 4 sudut siku-siku." />
         <Pilih id={idKuis("D", 6)} pertanyaan="7. Segitiga sama sisi boleh disebut sama kaki. Alasannya..." pilihan={[{ huruf: "A", teks: "Semua sisinya beda" }, { huruf: "B", teks: "Semua ciri sama kaki ada pada sama sisi" }, { huruf: "C", teks: "Hanya punya 1 sisi" }, { huruf: "D", teks: "Bukan segitiga" }]} benar="B" umpan="Dua sisi sama sudah ada pada sama kaki. Sama sisi punya lebih dari itu." salah="Bandingkan ciri yang dimiliki keduanya." />
         <Pilih id={idKuis("D", 7)} pertanyaan="8. Enam segitiga sama disusun mengelilingi satu titik. Bangun yang mungkin..." visual={<Papan anak="🔺 di sekeliling titik" />} pilihan={[{ huruf: "A", teks: "Segitiga" }, { huruf: "B", teks: "Segiempat" }, { huruf: "C", teks: "Segienam" }, { huruf: "D", teks: "Lingkaran" }]} benar="C" umpan="Enam segitiga sama mengelilingi satu titik dapat menjadi segienam." salah="Hitung segitiga yang mengelilingi titik itu." />
         <KuisSuara id={idKuis("D", 8)} pertanyaan="9. Trapesium punya tepat berapa pasang sisi sejajar? Sebutkan angkanya." periksa={sisiSatu} petunjuk="Bukan dua pasang." benar="1 pasang." />
@@ -468,15 +444,14 @@ export default function NaskahMtk4Bab5({ kelas, kelamin }: { kelas?: string; kel
   return (
     <div className="space-y-5">
       <KartuA kelas={kelas} kelamin={kelamin} />
-      <KartuB kelas={kelas} kelamin={kelamin} />
       <KartuC kelas={kelas} kelamin={kelamin} />
       <div id={SLOT_AJUAN_SEBELUM_KARTU_D} />
       <KartuPoinPenting
         kelas={kelas}
         kelamin={kelamin}
         gambar={{ src: "/doodle-mtk/mtk-4-bab5-poin.jpg", alt: "Igil dan tiga anak di bengkel jendela memegang kaca." }}
-        cuplikan={cuplikanKalimat(["Ciri bangun dilihat dari sisi, sudut, dan sisi yang sejajar.", "Menyusun menggabungkan beberapa bangun. Mengurai memotong satu bangun.", "Cara susun dan cara urai boleh lebih dari satu."])}
-        poin={["Segitiga: sama sisi, sama kaki, atau sembarang.", "Sama sisi boleh disebut sama kaki.", "Trapesium punya tepat satu pasang sisi sejajar. Jajargenjang punya dua pasang.", "Persegi: semua sisi sama dan sudutnya siku-siku.", "Satu kumpulan kaca dapat disusun atau diurai dengan lebih dari satu cara."]}
+        cuplikan={cuplikanKalimat(["Ciri bangun dilihat dari sisi, sudut, dan sisi yang sejajar.", "Sama sisi boleh disebut sama kaki. Trapesium punya tepat satu pasang.", "Menyusun menggabungkan. Mengurai memotong. Caranya boleh lebih dari satu."])}
+        poin={["Sama kaki: 2 sisi sama. Sama sisi: semua sisi sama. Sembarang: tidak ada yang sama.", "Sama sisi boleh disebut sama kaki. Siku-siku boleh sekaligus sama kaki.", "Trapesium tepat 1 pasang sejajar. Jajargenjang 2 pasang. Persegi adalah belah ketupat yang siku-siku.", "Layang-layang punya dua pasang sisi berdekatan yang sama panjang.", "Taman segienam, satu sisi 50 m, kelilingnya 300 m."]}
         penutup="Amati sisinya dulu, baru susun atau urai."
       />
       <LembarEvaluasi kelas={kelas} kelamin={kelamin} />

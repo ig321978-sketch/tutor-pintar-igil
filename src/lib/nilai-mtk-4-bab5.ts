@@ -53,6 +53,10 @@ export function sisiSembilan(teks: string): boolean {
   return jawab(teks, "9", "sembilan");
 }
 
+export function jarakTigaRatus(teks: string): boolean {
+  return jawab(teks, "300", "tiga ratus");
+}
+
 export function namaSamaSisi(teks: string): boolean {
   return frasa(teks, "sama sisi");
 }
