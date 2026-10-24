@@ -1,0 +1,14 @@
+{
+  "manifest_version": 3,
+  "name": "Gemini: Enter tidak mengirim",
+  "version": "1.0.0",
+  "description": "Di gemini.google.com, Enter menambah baris baru. Pesan hanya terkirim lewat tombol Kirim.",
+  "content_scripts": [
+    {
+      "matches": ["https://gemini.google.com/*"],
+      "js": ["logika-enter.js", "content.js"],
+      "run_at": "document_start",
+      "all_frames": true
+    }
+  ]
+}
