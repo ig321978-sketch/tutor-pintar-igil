@@ -24,6 +24,10 @@ export function luasDuaBelas(teks: string): boolean {
   return jawab(teks, "12", "dua belas");
 }
 
+export function literSatu(teks: string): boolean {
+  return jawab(teks, "1", "satu");
+}
+
 export function literEmpat(teks: string): boolean {
   return jawab(teks, "4", "empat");
 }

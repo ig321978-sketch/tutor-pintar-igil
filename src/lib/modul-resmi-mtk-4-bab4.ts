@@ -13,7 +13,7 @@ export const MODUL_MTK4_BAB4: ModulResmiPai = {
   judul: JUDUL_MTK4_BAB4,
   pola: /^bab 4: pengukuran luas dan volume$/,
   motivasi:
-    "Nisa, Farhan, dan Cinta menutup alas dan mengisi toples bersama burung hantu Igil di toko toples.",
+    "Nisa, Farhan, dan Cinta mengukur tutup meja dan isi botol bersama burung hantu Igil di toko toples.",
   kunciJawaban: "B,B,C,B,C,D,D,B,C,B",
   sketsaKartu: [
     "Nisa, Farhan, dan Cinta mengukur tutup meja dan isi toples bersama Igil.",
@@ -23,11 +23,11 @@ export const MODUL_MTK4_BAB4: ModulResmiPai = {
   ],
   latihan: pg([
     `[Soal 1 - PG - Tipe: MOTS]
-Alas ditutup 4 baris. Tiap baris ada 6 kartu yang sama. Luasnya...
-A) 10 kartu
-B) 24 kartu
-C) 20 kartu
-D) 12 kartu`,
+Meja guru ditutup uang kertas tanpa celah. Luasnya...
+A) 12 satuan
+B) 21 satuan
+C) 4 satuan
+D) 8 satuan`,
     `[Soal 2 - PG - Tipe: MOTS]
 Satuan baku untuk luas adalah...
 A) Gelas
@@ -35,17 +35,17 @@ B) cm²
 C) Gayung
 D) Buku`,
     `[Soal 3 - PG - Tipe: MOTS]
-3.000 ml sama dengan...
-A) 30 liter
-B) 300 liter
-C) 3 liter
-D) 3.000 liter`,
+Susu UHT 1.000 ml sama dengan...
+A) 10 liter
+B) 100 liter
+C) 1 liter
+D) 1.000 liter`,
     `[Soal 4 - PG - Tipe: MOTS]
-Persegi panjang 8 cm × 2 cm. Luasnya...
-A) 10 cm²
-B) 16 cm²
-C) 20 cm²
-D) 6 cm²`,
+Bangun yang diarsir pada petak 1 cm luasnya...
+A) 9 cm²
+B) 12 cm²
+C) 13 cm²
+D) 4 cm²`,
     `[Soal 5 - PG - Tipe: HOTS]
 1 m² sama dengan...
 A) 100 cm²
@@ -53,17 +53,17 @@ B) 1.000 cm²
 C) 10.000 cm²
 D) 100.000 cm²`,
     `[Soal 6 - PG - Tipe: MOTS]
-Kotak tersusun 2 × 5 × 2 kubus. Volumenya...
-A) 9 cm³
-B) 10 cm³
-C) 12 cm³
-D) 20 cm³`,
+Botol sabun A sama dengan berapa botol sabun C?
+A) 4 botol
+B) 8 botol
+C) 12 botol
+D) 10 botol`,
     `[Soal 7 - PG - Tipe: HOTS]
-Meja yang sama ditutup 4 kartu besar atau 16 kartu kecil. Satuan yang lebih kecil adalah...
-A) Kartu besar
+Meja lipat kecil ditutup 8 uang kertas atau 4 origami. Satuan yang lebih kecil adalah...
+A) Origami
 B) Keduanya sama besar
 C) Penggaris
-D) Kartu kecil`,
+D) Uang kertas`,
     `[Soal 8 - PG - Tipe: MOTS]
 1 liter 500 ml sama dengan...
 A) 150 ml
@@ -71,84 +71,75 @@ B) 1.500 ml
 C) 15.000 ml
 D) 501 ml`,
     `[Soal 9 - PG - Tipe: HOTS]
-Botol kira-kira berisi 2 liter. Perkiraan yang paling masuk akal...
-A) 20 ml
-B) 200 ml
-C) 2.000 ml
-D) 20.000 ml`,
+Botol jus buah kira-kira...
+A) 2 ml
+B) 25 ml
+C) 256 ml
+D) 25.000 ml`,
     `[Soal 10 - PG - Tipe: HOTS]
-Ada 4 lapis kubus, tiap lapis 6 kubus. Satu lapis diambil. Sisanya...
-A) 24 cm³
-B) 18 cm³
-C) 10 cm³
-D) 30 cm³`,
+Satu botol besar hand sanitizer sama dengan...
+A) 4 botol kecil
+B) 8 botol kecil
+C) 10 botol kecil
+D) 16 botol kecil`,
   ]),
   kartu: [
     {
       kode: "A",
       judul: "A. Naskah Bergambar",
-      pengantar: "Nisa, Farhan, Cinta, dan Igil mengukur tutup meja dan isi toples.",
+      pengantar: "Nisa, Farhan, Cinta, dan Igil mengukur tutup meja dan isi botol.",
       labelDaftar: "Empat adegan toko toples",
       kolom: 1,
       item: [
-        { nama: "Luas tidak baku", singkat: "Tutup tanpa celah", uraian: "Kartu, buku, atau tatakan yang sama besar boleh menutup alas. Satuan berbeda, hitungannya berbeda.", contoh: "Tutup rapat, tanpa tumpang tindih." },
-        { nama: "Luas baku", singkat: "cm² dan m²", uraian: "1 petak cm adalah 1 cm². Luas = baris × kolom. 1 m² = 10.000 cm².", contoh: "Jangan kali 100 saja saat m² diubah ke cm²." },
-        { nama: "Volume tidak baku", singkat: "Isi yang sama", uraian: "Gayung, gelas, atau kubus kayu yang sama dapat mengisi wadah. Gayung lebih besar, tuangan lebih sedikit.", contoh: "Wadahnya sama, alatnya beda." },
-        { nama: "Volume baku", singkat: "ml, liter, cm³", uraian: "1.000 ml = 1 liter. Kubus 1 cm adalah 1 cm³. Volume = panjang × lebar × tinggi.", contoh: "Hitung kubus yang tersusun." },
+        { nama: "Luas tidak baku", singkat: "Uang atau origami", uraian: "Meja lipat kecil 8 uang kertas atau 4 origami. Meja guru 21 uang kertas atau 12 origami.", contoh: "Tutup rapat, tanpa tumpang tindih." },
+        { nama: "Luas baku", singkat: "cm² dan m²", uraian: "1 cm × 1 cm = 1 cm². Bangun diarsir 12 cm². Dua bangun sama-sama 13 cm². 1 m² = 10.000 cm².", contoh: "m² ke cm² dikali 100 × 100." },
+        { nama: "Volume tidak baku", singkat: "Botol sabun", uraian: "Botol A = 4 botol B atau 10 botol C. Botol besar = 8 botol kecil.", contoh: "Satuan beda, hitungan beda." },
+        { nama: "Volume baku", singkat: "ml, liter, cm³", uraian: "1.000 ml = 1 liter. Jus 256 ml. Kubus A 9, B 8, C 12, D 18 cm³. 1 cm³ = 1 ml.", contoh: "Tiga susu 250, 200, dan 1.000 ml berjumlah 1.450 ml." },
       ],
       kuis: [
-        { pertanyaan: "3 stiker dan 5 stiker menutup rapat. Luasnya?", alias: ["8"] },
-        { pertanyaan: "3 baris dan 4 kolom. Berapa petak?", alias: ["12"] },
-        { pertanyaan: "3 baris, tiap baris 4 petak cm. Luasnya?", alias: ["12"] },
-        { pertanyaan: "6 cm × 4 cm. Luasnya?", alias: ["24"] },
-        { pertanyaan: "3 tingkat, tiap tingkat 3 kubus. Volumenya?", alias: ["9"] },
-        { pertanyaan: "2 lapis, tiap lapis 6 kubus. Volumenya?", alias: ["12"] },
-        { pertanyaan: "Dua botol 2.000 ml. Berapa liter semuanya?", alias: ["4"] },
-        { pertanyaan: "2 lapis, tiap lapis 8 kubus. Volumenya?", alias: ["16"] },
-        { pertanyaan: "5 × 3 petak. Luasnya?", alias: ["15"] },
+        { pertanyaan: "Meja guru ditutup berapa uang kertas?", alias: ["21"] },
+        { pertanyaan: "Meja lipat kecil ditutup berapa origami?", alias: ["4"] },
+        { pertanyaan: "1 m² sama dengan berapa cm²?", alias: ["10000"] },
+        { pertanyaan: "Luas bangun yang diarsir?", alias: ["12"] },
+        { pertanyaan: "Botol A sama dengan berapa botol B?", alias: ["4"] },
+        { pertanyaan: "Botol besar sama dengan berapa botol kecil?", alias: ["8"] },
+        { pertanyaan: "Susu UHT 1.000 ml sama dengan berapa liter?", alias: ["1"] },
+        { pertanyaan: "Volume bangun A dalam cm³?", alias: ["9"] },
+        { pertanyaan: "Meja kecil ditutup berapa origami?", alias: ["4"] },
         { pertanyaan: "Pasangkan alat dengan jenis satuannya.", alias: ["luas", "volume"] },
-        { pertanyaan: "Susun luas dari kecil.", alias: ["6", "10", "15", "21"] },
+        { pertanyaan: "Susun 4, 8, 12, 21.", alias: ["4", "8", "12", "21"] },
         { pertanyaan: "Periksa tiga pernyataan toko.", alias: ["benar", "salah"] },
         { pertanyaan: "Satuan baku luas adalah...", alias: ["cm2"] },
-        { pertanyaan: "Perkiraan nampan paling masuk akal.", alias: ["18"] },
+        { pertanyaan: "Perkiraan botol air mineral paling masuk akal.", alias: ["1000"] },
       ],
       voice: [[
-        "Hari ini kita mengukur tutup meja dan isi toples di toko Igil.",
-        "Luas menutup permukaan. Volume mengisi ruang.",
+        "Hari ini kita mengukur tutup meja dan isi botol di toko Igil.",
+        "Luas menutup permukaan tanpa celah. Volume mengisi ruang.",
         "Satuan tidak baku hasilnya bisa beda. Satuan baku memakai cm², m², ml, liter, dan cm³.",
       ]],
     },
     {
       kode: "B",
-      judul: "B. Infografis",
-      pengantar: "Intisari menutup permukaan dan mengisi ruang.",
-      labelDaftar: "Empat peta toko",
+      judul: "B. Latihan di dalam sub-bab",
+      pengantar: "Peta dan latihan tiap bagian ada di dalam materi luas dan volume.",
+      labelDaftar: "Latihan di dalam pengukuran luas dan volume",
       kolom: 1,
       item: [
-        { nama: "Tutup rapat", singkat: "Satuan sama", uraian: "6 baris kartu, tiap baris 4. Ada 24 kartu.", contoh: "Tanpa celah dan tanpa tumpuk." },
-        { nama: "Petak baku", singkat: "Kali baris", uraian: "7 cm × 3 cm = 21 cm². 1 m² = 10.000 cm².", contoh: "m² ke cm² dikali 10.000." },
-        { nama: "Isi wadah", singkat: "Gayung atau kubus", uraian: "6 gayung memenuhi ember. 3 tingkat × 5 kubus = 15 kubus.", contoh: "Satuan yang sama dulu." },
-        { nama: "Liter dan kubus", singkat: "1.000 ml", uraian: "2 liter = 2.000 ml. Kotak 5 × 2 × 2 = 20 cm³.", contoh: "Tiga ukuran dikalikan." },
+        { nama: "Tutup rapat", singkat: "Uang atau origami", uraian: "Meja kecil 8 atau 4. Meja guru 21 atau 12.", contoh: "Tanpa celah dan tanpa tumpuk." },
+        { nama: "Petak baku", singkat: "10.000 cm²", uraian: "Bangun diarsir 12 cm². Dua bangun sama-sama 13 cm².", contoh: "m² ke cm² dikali 10.000." },
+        { nama: "Isi wadah", singkat: "Botol sabun", uraian: "Botol A = 4 botol B atau 10 botol C. Botol besar = 8 botol kecil.", contoh: "Satuan yang sama dulu." },
+        { nama: "Liter dan kubus", singkat: "1.000 ml", uraian: "Tiga susu berjumlah 1.450 ml. Sendok 5 ml, cangkir 240 ml, botol 330 ml.", contoh: "1 cm³ sama dengan 1 ml." },
       ],
       kuis: [
-        { pertanyaan: "6 baris, tiap baris 4 kartu. Berapa kartu?", alias: ["24"] },
-        { pertanyaan: "5 kartu besar atau berapa kartu kecil?", alias: ["20"] },
-        { pertanyaan: "7 cm × 3 cm. Luasnya?", alias: ["21"] },
-        { pertanyaan: "2 m² sama dengan berapa cm²?", alias: ["20000"] },
-        { pertanyaan: "2 gayung ditambah 4 gayung. Volumenya?", alias: ["6"] },
-        { pertanyaan: "3 tingkat, tiap tingkat 5 kubus. Berapa kubus?", alias: ["15"] },
-        { pertanyaan: "2 liter sama dengan berapa ml?", alias: ["2000"] },
-        { pertanyaan: "5 × 2 × 2 kubus. Volumenya?", alias: ["20"] },
-        { pertanyaan: "1.500 ml sama dengan...", alias: ["1 liter 500 ml"] },
+        { pertanyaan: "Bangun (ii) yang sama dengan bangun (i)?", alias: ["13"] },
         { pertanyaan: "Pasangkan ukuran dengan jenisnya.", alias: ["luas", "volume"] },
-        { pertanyaan: "Susun volume dari kecil.", alias: ["250", "500", "1000", "2000"] },
+        { pertanyaan: "Susun 5 ml, 240 ml, 330 ml, 1.000 ml.", alias: ["5", "240", "330", "1000"] },
         { pertanyaan: "Periksa tiga pernyataan peta.", alias: ["benar", "salah"] },
-        { pertanyaan: "Perkiraan botol yang paling masuk akal.", alias: ["900"] },
+        { pertanyaan: "250 ml + 200 ml + 1.000 ml?", alias: ["1450"] },
       ],
       voice: [[
-        "Peta ini merangkum cara mengukur luas dan volume.",
+        "Peta luas dan volume ada di dalam materi, pada tiap bagian.",
         "Tutup permukaan tanpa celah. Isi ruang dengan satuan yang sama.",
-        "1.000 ml sama dengan 1 liter. 1 m² sama dengan 10.000 cm².",
       ]],
     },
     {
@@ -181,21 +172,21 @@ D) 30 cm³`,
         {
           nama: "Tutup dan isi",
           singkat: "Hitung lalu perkirakan",
-          uraian: "9 × 4 = 36 cm². 7.000 ml = 7 liter. 1 m² = 10.000 cm². Dua lapis 6 kubus = 12 cm³.",
+          uraian: "Bangun diarsir 12 cm². Susu 1.000 ml = 1 liter. 1 m² = 10.000 cm². 3 × 3 × 2 = 18 cm³.",
           contoh: "Satuan kecil membuat hitungan lebih banyak.",
         },
       ],
       kuis: [
-        { pertanyaan: "9 × 4 petak. Luasnya?", alias: ["36"] },
-        { pertanyaan: "Kartu kecil atau kartu besar, mana hitungannya lebih banyak?", alias: ["kecil"] },
-        { pertanyaan: "7.000 ml sama dengan berapa liter?", alias: ["7"] },
-        { pertanyaan: "2 × 4 × 3 kubus. Volumenya?", alias: ["24"] },
+        { pertanyaan: "Bangun diarsir 3 × 4. Luasnya?", alias: ["12"] },
+        { pertanyaan: "Uang kertas atau origami, mana hitungannya lebih banyak?", alias: ["uang"] },
+        { pertanyaan: "1.000 ml sama dengan berapa liter?", alias: ["1"] },
+        { pertanyaan: "3 × 3 × 2 kubus. Volumenya?", alias: ["18"] },
         { pertanyaan: "Pasangkan hitungan dengan hasilnya.", alias: ["24 cm²", "2 liter", "12 cm³"] },
         { pertanyaan: "1 m² sama dengan berapa cm²?", alias: ["10000"] },
-        { pertanyaan: "Kartu diganti yang luasnya dua kali. Kira-kira berapa kartu?", alias: ["15"] },
-        { pertanyaan: "1 liter 250 ml sama dengan berapa ml?", alias: ["1250"] },
-        { pertanyaan: "6 kubus satu lapis, ada 2 lapis. Volumenya?", alias: ["12"] },
-        { pertanyaan: "4 gayung atau 4 gelas, mana volume yang lebih besar?", alias: ["gayung"] },
+        { pertanyaan: "Satuan dua kali lebih luas. Kira-kira berapa satuan?", alias: ["4"] },
+        { pertanyaan: "1 liter 500 ml sama dengan berapa ml?", alias: ["1500"] },
+        { pertanyaan: "Botol A sama dengan berapa botol B?", alias: ["4"] },
+        { pertanyaan: "4 botol B atau 4 botol C, mana volume yang lebih besar?", alias: ["botol b"] },
       ],
       voice: [[
         "Sepuluh soal toko toples. Lihat dulu, ini menutup permukaan atau mengisi ruang.",
