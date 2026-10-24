@@ -87,3 +87,27 @@ export function pitaLimaPuluhDua(teks: string): boolean {
 export function pitaTujuhPuluhSembilan(teks: string): boolean {
   return jawab(teks, "79", "tujuh puluh sembilan");
 }
+
+export function pitaTiga(teks: string): boolean {
+  return jawab(teks, "3", "tiga");
+}
+
+export function pitaTigaBelas(teks: string): boolean {
+  return jawab(teks, "13", "tiga belas");
+}
+
+export function pitaSatu(teks: string): boolean {
+  return jawab(teks, "1", "satu");
+}
+
+export function pitaEnamBelas(teks: string): boolean {
+  return jawab(teks, "16", "enam belas");
+}
+
+export function pitaLimaPuluhLima(teks: string): boolean {
+  return jawab(teks, "55", "lima puluh lima");
+}
+
+export function pitaEmpatPuluhSembilan(teks: string): boolean {
+  return jawab(teks, "49", "empat puluh sembilan");
+}

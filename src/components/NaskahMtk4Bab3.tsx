@@ -17,23 +17,15 @@ import { MISI_MTK4_BAB3, TEMA_MTK4_BAB3 } from "@/lib/misi-mtk-4-bab3";
 import { MODUL_MTK4_BAB3 } from "@/lib/modul-resmi-mtk-4-bab3";
 import {
   pitaDelapan,
-  pitaDelapanBelas,
-  pitaDuaPuluh,
-  pitaDuaPuluhDelapan,
-  pitaDuaPuluhSembilan,
-  pitaDuaPuluhTujuh,
   pitaEmpatBelas,
-  pitaEmpatPuluh,
-  pitaEmpatPuluhDua,
-  pitaEmpatPuluhTujuh,
+  pitaEmpatPuluhSembilan,
   pitaEnam,
-  pitaEnamPuluhEmpat,
-  pitaEnamPuluhEnam,
+  pitaEnamBelas,
   pitaLimaPuluhDua,
-  pitaLimaPuluhSembilan,
-  pitaSembilanBelas,
-  pitaTigaPuluhSembilan,
-  pitaTujuhPuluhSembilan,
+  pitaLimaPuluhLima,
+  pitaSatu,
+  pitaTiga,
+  pitaTigaBelas,
 } from "@/lib/nilai-mtk-4-bab3";
 import type { CuplikanVoiceMateri } from "@/lib/naskah-voice-pai-1-bab2";
 import { bacaProgres } from "@/lib/progres";
@@ -322,95 +314,72 @@ function KuisBenarSalah({ id, perintah, baris, umpan }: { id: string; perintah: 
   );
 }
 
-const ATURAN_A = ["Naik 3", "Turun 4", "Naik 10"];
-const ATURAN_B = ["Naik 6", "Turun 9", "Naik 2"];
-const ATURAN_D = ["Naik 3", "Turun 4", "Naik 10"];
+const ATURAN_A = ["Naik 2", "Turun 2", "Naik 8"];
+const ATURAN_B = ["Naik 12", "Turun 11", "Turun 6"];
+const ATURAN_D = ["Naik 4", "Turun 14", "Naik 15"];
 
 function KartuA({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminGuru }) {
   const kartu = MODUL_MTK4_BAB3.kartu[0];
   return (
     <KartuBingkai>
-      <KepalaKartu ikon="🪁👧👦🦉" judul="A. Padang Layang" anak="Nisa, Farhan, Cinta, dan Igil" kelas={kelas} kelamin={kelamin} cuplikan={cuplikanKalimat(kartu.voice[0] ?? [])} />
+      <KepalaKartu ikon="🍊🍬🥚🦉" judul="A. Pola Gambar dan Pola Bilangan" anak="Nisa, Farhan, Cinta, dan Igil" kelas={kelas} kelamin={kelamin} cuplikan={cuplikanKalimat(kartu.voice[0] ?? [])} />
       <TujuanBelajar butir={["Mengenali pola gambar yang membesar dan mengecil sampai 100.", "Mengembangkan pola gambar dengan tambah atau kurang.", "Mengenali pola bilangan yang membesar dan mengecil sampai 100.", "Mengembangkan pola bilangan dengan tambah atau kurang."]} />
       <div className="mt-4 space-y-4">
-        <Adegan utama judul="Sub-bab 1 — Pola gambar membesar" src="/doodle-mtk/mtk-4-bab3-sub1.jpg" alt="Padang layang. Ekor pita makin panjang dari kiri ke kanan. Tiga anak dan burung hantu bertopi biru." kelas={kelas} kelamin={kelamin} penjelasan={["Pola gambar membesar berarti benda berikutnya lebih banyak. Cari berapa yang ditambah."]}>
-          <Dialog nama="Nisa" anak="Layang pertama punya 2 pita." />
-          <Dialog nama="Farhan" anak="Layang kedua punya 5 pita. Layang ketiga punya 8." />
-          <Dialog nama="Cinta" anak="Setiap layang bertambah 3 pita." />
-          <Dialog nama="Igil" anak="Itu pola gambar membesar. Berikutnya selalu ditambah 3." />
-          <Papan anak="2  →  5  →  8  →  …" />
-          <KuisSuara id={idKuis("A", 0)} pertanyaan="4, 8, 12, 16. Berapa pita berikutnya?" periksa={pitaDuaPuluh} petunjuk="Kurangi dua bilangan yang bersebelahan, lalu tambahkan selisih itu." benar="20. Naik 4." />
-          <TulisBebas id={idKuis("A", 1)} judul="Gambar berikutnya" visual={<Papan anak="3 · 7 · 11 · 15 · ⬜" />} pertanyaan="Tulis banyak pita berikutnya." pesanSalah="Cari selisihnya dulu." bantuan="Naik 4. 15 + 4 = 19." umpan="19." periksa={pitaSembilanBelas} alias={["19"]} konteks="3, 7, 11, 15, berikutnya 19." />
+        <Adegan utama judul="Sub-bab A — Pola gambar membesar" src="/doodle-mtk/mtk-4-bab3-sub1.jpg" alt="Padang layang. Ekor pita makin panjang dari kiri ke kanan. Tiga anak dan burung hantu bertopi biru." kelas={kelas} kelamin={kelamin} penjelasan={["Pola gambar membesar berarti benda berikutnya lebih banyak. Jeruk tiap kumpulan bertambah 2."]}>
+          <Dialog nama="Nisa" anak="Kumpulan jeruk pertama ada 2 buah." />
+          <Dialog nama="Farhan" anak="Kumpulan kedua ada 4. Kumpulan ketiga ada 6." />
+          <Dialog nama="Cinta" anak="Setiap kumpulan bertambah 2 jeruk." />
+          <Dialog nama="Igil" anak="Gambar berikutnya lebih banyak. Kumpulan ke-7 ada 14 jeruk." />
+          <Papan anak="2  →  4  →  6  →  8  →  10  →  12  →  14" />
+          <KuisSuara id={idKuis("A", 0)} pertanyaan="Jeruk 2, 4, 6. Berapa kumpulan ke-7?" periksa={pitaEmpatBelas} petunjuk="Tambahkan 2 pada setiap kumpulan." benar="14 jeruk." />
+          <TulisBebas id={idKuis("A", 1)} judul="Gambar berikutnya" visual={<Papan anak="4 · 8 · 12 · ⬜" />} pertanyaan="Tulis banyak buah berikutnya." pesanSalah="Cari selisihnya dulu." bantuan="Naik 4. 12 + 4 = 16." umpan="16." periksa={pitaEnamBelas} alias={["16"]} konteks="4, 8, 12, berikutnya 16." />
+          <p className="pt-2 text-sm font-black uppercase tracking-wide text-[#1C01A5]">Infografis: Tambah tetap</p>
+          <PetaContoh pusat="Naik 2" cabang={[{ ikon: "🍊", judul: "Kumpulan 1", isi: "2 jeruk" }, { ikon: "➕", judul: "Selisih", isi: "selalu +2" }, { ikon: "7️⃣", judul: "Kumpulan 7", isi: "14 jeruk" }]} kolom={["Kumpulan", "Banyak"]} baris={[["1", "2"], ["2", "4"], ["3", "6"], ["7", "14"]]} />
         </Adegan>
-        <Adegan utama judul="Sub-bab 1 — Pola gambar mengecil" src="/doodle-mtk/mtk-4-bab3-sub2.jpg" alt="Padang layang. Ekor pita makin pendek. Burung hantu bertopi biru melepas pita bersama tiga anak." kelas={kelas} kelamin={kelamin} penjelasan={["Pola gambar mengecil berarti benda berikutnya lebih sedikit. Cari berapa yang dikurangi."]}>
-          <Dialog nama="Farhan" anak="Tumpukan pita: 20, lalu 15, lalu 10." />
-          <Dialog nama="Nisa" anak="Setiap tumpukan berkurang 5." />
-          <Dialog nama="Cinta" anak="Gambarnya makin sedikit. Itu pola mengecil." />
-          <Dialog nama="Igil" anak="Kurangkan dengan aturan yang sama." />
-          <Papan anak="20  →  15  →  10  →  …" />
-          <KuisSuara id={idKuis("A", 2)} pertanyaan="18, 15, 12, 9. Berapa berikutnya?" periksa={pitaEnam} petunjuk="Lihat berapa yang berkurang di setiap langkah." benar="6. Turun 3." />
-          <TulisBebas id={idKuis("A", 3)} judul="Makin sedikit" visual={<Papan anak="30 · 26 · 22 · 18 · ⬜" />} pertanyaan="Tulis banyak benda berikutnya." pesanSalah="Polanya turun." bantuan="Turun 4. 18 − 4 = 14." umpan="14." periksa={pitaEmpatBelas} alias={["14"]} konteks="30, 26, 22, 18, berikutnya 14." />
+        <Adegan utama judul="Sub-bab A — Pola gambar mengecil" src="/doodle-mtk/mtk-4-bab3-sub2.jpg" alt="Padang layang. Ekor pita makin pendek. Burung hantu bertopi biru melepas pita bersama tiga anak." kelas={kelas} kelamin={kelamin} penjelasan={["Pola gambar mengecil berarti benda berikutnya lebih sedikit. Permen tiap kumpulan berkurang 2."]}>
+          <Dialog nama="Farhan" anak="Kumpulan permen pertama ada 9." />
+          <Dialog nama="Nisa" anak="Berikutnya 7, lalu 5." />
+          <Dialog nama="Cinta" anak="Setiap kumpulan berkurang 2 permen." />
+          <Dialog nama="Igil" anak="Gambar berikutnya lebih sedikit. Kumpulan ke-5 tinggal 1 permen." />
+          <Papan anak="9  →  7  →  5  →  3  →  1" />
+          <KuisSuara id={idKuis("A", 2)} pertanyaan="Permen 9, 7, 5. Berapa kumpulan ke-5?" periksa={pitaSatu} petunjuk="Kurangi 2 pada setiap kumpulan." benar="1 permen." />
+          <TulisBebas id={idKuis("A", 3)} judul="Makin sedikit" visual={<Papan anak="24 · 20 · 16 · 12 · ⬜" />} pertanyaan="Tulis banyak benda berikutnya." pesanSalah="Polanya turun." bantuan="Turun 4. 12 − 4 = 8." umpan="8." periksa={pitaDelapan} alias={["8"]} konteks="24, 20, 16, 12, berikutnya 8." />
+          <p className="pt-2 text-sm font-black uppercase tracking-wide text-[#1C01A5]">Infografis: Kurang tetap</p>
+          <PetaContoh pusat="Turun 2" cabang={[{ ikon: "🍬", judul: "Kumpulan 1", isi: "9 permen" }, { ikon: "➖", judul: "Selisih", isi: "selalu −2" }, { ikon: "5️⃣", judul: "Kumpulan 5", isi: "1 permen" }]} kolom={["Kumpulan", "Banyak"]} baris={[["1", "9"], ["2", "7"], ["3", "5"], ["5", "1"]]} />
         </Adegan>
-        <Adegan utama judul="Sub-bab 2 — Pola bilangan membesar" src="/doodle-mtk/mtk-4-bab3-sub3.jpg" alt="Empat kartu pita kosong, tumpukan pita makin tinggi, tanpa angka. Burung hantu bertopi biru menunjuk." kelas={kelas} kelamin={kelamin} penjelasan={["Pola bilangan membesar berarti angka berikutnya lebih besar. Tambahkan aturan yang sama."]}>
-          <Dialog nama="Igil" anak="Lihat bilangan 12, 18, 24." />
-          <Dialog nama="Cinta" anak="18 − 12 = 6. 24 − 18 = 6." />
-          <Dialog nama="Nisa" anak="Aturannya naik 6." />
-          <Dialog nama="Farhan" anak="Bilangan berikutnya selalu ditambah 6." />
-          <Papan anak="12  →  18  →  24  →  …" />
-          <KuisSuara id={idKuis("A", 4)} pertanyaan="8, 13, 18, 23. Sebutkan bilangan berikutnya." periksa={pitaDuaPuluhDelapan} petunjuk="Cari selisih dua bilangan yang bersebelahan." benar="28. Naik 5." />
-          <TulisBebas id={idKuis("A", 5)} judul="Bilangan naik" visual={<Papan anak="11 · 20 · 29 · 38 · ⬜" />} pertanyaan="Tulis bilangan berikutnya." pesanSalah="Aturannya sama di setiap langkah." bantuan="Naik 9. 38 + 9 = 47." umpan="47." periksa={pitaEmpatPuluhTujuh} alias={["47"]} konteks="11, 20, 29, 38, berikutnya 47." />
+        <Adegan utama judul="Sub-bab B — Pola bilangan membesar" src="/doodle-mtk/mtk-4-bab3-sub3.jpg" alt="Empat kartu pita kosong, tumpukan pita makin tinggi, tanpa angka. Burung hantu bertopi biru menunjuk." kelas={kelas} kelamin={kelamin} penjelasan={["Pola bilangan membesar berarti angka berikutnya lebih besar. Jangan menebak 12 kalau selisihnya 2."]}>
+          <Dialog nama="Igil" anak="Lihat bilangan 3, 5, 7, 9, 11." />
+          <Dialog nama="Cinta" anak="Aku kira berikutnya 12." />
+          <Dialog nama="Nisa" anak="Selisihnya 2. Jadi 11 + 2 = 13." />
+          <Dialog nama="Farhan" anak="Telur hari pertama 20, kedua 28, ketiga 36. Hari kelima ada 52." />
+          <Papan anak="3  →  5  →  7  →  9  →  11  →  13" />
+          <KuisSuara id={idKuis("A", 4)} pertanyaan="3, 5, 7, 9, 11. Sebutkan bilangan berikutnya." periksa={pitaTigaBelas} petunjuk="Cari selisih dua bilangan yang bersebelahan." benar="13. Naik 2." />
+          <TulisBebas id={idKuis("A", 5)} judul="Telur naik" visual={<Papan anak="20 · 28 · 36 · 44 · ⬜" />} pertanyaan="Tulis telur pada hari kelima." pesanSalah="Aturannya sama di setiap hari." bantuan="Naik 8. 44 + 8 = 52." umpan="52." periksa={pitaLimaPuluhDua} alias={["52"]} konteks="20, 28, 36, 44, hari kelima 52." />
+          <p className="pt-2 text-sm font-black uppercase tracking-wide text-[#1C01A5]">Infografis: Makin besar</p>
+          <PetaContoh pusat="Naik 2" cabang={[{ ikon: "🔢", judul: "Deret", isi: "3, 5, 7, 9, 11" }, { ikon: "➕", judul: "Berikutnya", isi: "11 + 2 = 13" }, { ikon: "🥚", judul: "Telur", isi: "hari ke-5 = 52" }]} kolom={["Hari", "Telur"]} baris={[["1", "20"], ["2", "28"], ["3", "36"], ["5", "52"]]} />
         </Adegan>
-        <Adegan utama judul="Sub-bab 2 — Pola bilangan mengecil" src="/doodle-mtk/mtk-4-bab3-sub4.jpg" alt="Empat tumpukan pita yang makin kecil, tanpa angka. Tiga anak dan burung hantu bertopi biru." kelas={kelas} kelamin={kelamin} penjelasan={["Pola bilangan mengecil berarti angka berikutnya lebih kecil. Kurangkan aturan yang sama."]}>
-          <Dialog nama="Cinta" anak="50, 44, 38." />
-          <Dialog nama="Farhan" anak="50 − 44 = 6. Angkanya turun 6." />
-          <Dialog nama="Nisa" anak="Bilangan berikutnya lebih kecil." />
-          <Dialog nama="Igil" anak="Pola mengecil memakai pengurangan. Angkanya sampai 100." />
-          <Papan anak="50  →  44  →  38  →  …" />
-          <KuisSuara id={idKuis("A", 6)} pertanyaan="90, 82, 74. Sebutkan bilangan berikutnya." periksa={pitaEnamPuluhEnam} petunjuk="Hitung selisihnya, lalu kurangkan lagi." benar="66. Turun 8." />
-          <TulisBebas id={idKuis("A", 7)} judul="Bilangan turun" visual={<Papan anak="100 · 91 · 82 · 73 · ⬜" />} pertanyaan="Tulis bilangan berikutnya." pesanSalah="Polanya turun." bantuan="Turun 9. 73 − 9 = 64." umpan="64." periksa={pitaEnamPuluhEmpat} alias={["64"]} konteks="100, 91, 82, 73, berikutnya 64." />
+        <Adegan utama judul="Sub-bab B — Pola bilangan mengecil" src="/doodle-mtk/mtk-4-bab3-sub4.jpg" alt="Empat tumpukan pita yang makin kecil, tanpa angka. Tiga anak dan burung hantu bertopi biru." kelas={kelas} kelamin={kelamin} penjelasan={["Pola bilangan mengecil berarti angka berikutnya lebih kecil. Kelapa berkurang 5 tiap hari."]}>
+          <Dialog nama="Cinta" anak="23, 18, 13, 8." />
+          <Dialog nama="Farhan" anak="Selisihnya 5. Berikutnya 3." />
+          <Dialog nama="Nisa" anak="Bilangan berikutnya lebih kecil. Itu pola mengecil." />
+          <Dialog nama="Igil" anak="Televisi Januari 70, lalu berkurang 6. Juni ada 40. Kelapa hari pertama 36, hari ke-7 ada 6." />
+          <Papan anak="23  →  18  →  13  →  8  →  3" />
+          <KuisSuara id={idKuis("A", 6)} pertanyaan="23, 18, 13, 8. Sebutkan bilangan berikutnya." periksa={pitaTiga} petunjuk="Hitung selisihnya, lalu kurangkan lagi." benar="3. Turun 5." />
+          <TulisBebas id={idKuis("A", 7)} judul="Kelapa turun" visual={<Papan anak="36 · 31 · 26 · 21 · 16 · 11 · ⬜" />} pertanyaan="Tulis kelapa pada hari ke-7." pesanSalah="Polanya turun." bantuan="Turun 5. 11 − 5 = 6." umpan="6." periksa={pitaEnam} alias={["6"]} konteks="36, 31, 26, 21, 16, 11, hari ke-7 ada 6." />
+          <p className="pt-2 text-sm font-black uppercase tracking-wide text-[#1C01A5]">Infografis: Makin kecil</p>
+          <PetaContoh pusat="Turun 5" cabang={[{ ikon: "🥥", judul: "Hari 1", isi: "36 kelapa" }, { ikon: "➖", judul: "Selisih", isi: "selalu −5" }, { ikon: "7️⃣", judul: "Hari 7", isi: "6 kelapa" }]} kolom={["Hari", "Kelapa"]} baris={[["1", "36"], ["2", "31"], ["4", "21"], ["7", "6"]]} />
         </Adegan>
-        <Pilih id={idKuis("A", 8)} pertanyaan="6 – 11 – 16 – 21 – ⬜. Berikutnya..." visual={<Papan anak="6 · 11 · 16 · 21 · ⬜" />} pilihan={[{ huruf: "A", teks: "24" }, { huruf: "B", teks: "26" }, { huruf: "C", teks: "25" }, { huruf: "D", teks: "22" }]} benar="B" umpan="Naik 5. 21 + 5 = 26." salah="Kurangi dua bilangan yang bersebelahan." />
-        <KuisCocok id={idKuis("A", 9)} perintah="Pasangkan barisan dengan aturannya." baris={[{ kiri: "12 · 15 · 18", pilihan: ATURAN_A, benar: "Naik 3" }, { kiri: "40 · 36 · 32", pilihan: ATURAN_A, benar: "Turun 4" }, { kiri: "7 · 17 · 27", pilihan: ATURAN_A, benar: "Naik 10" }]} umpan="Naik 3, turun 4, dan naik 10." />
-        <SusunToken id={idKuis("A", 10)} perintah="Susun dari yang paling kecil. Aturannya naik 7." acak={["26", "12", "33", "19"]} benar={["12", "19", "26", "33"]} umpan="12, 19, 26, 33." />
-        <KuisBenarSalah id={idKuis("A", 11)} perintah="Pilih benar atau salah." baris={[{ teks: "4, 8, 12 naik 4.", benar: true }, { teks: "30, 25, 20 naik 5.", benar: false }, { teks: "9, 16, 23 naik 7.", benar: true }]} umpan="Yang pertama dan ketiga benar. 30, 25, 20 turun 5." />
-        <Pilih id={idKuis("A", 12)} pertanyaan="Mana yang tidak ikut naik 4?" visual={<Papan anak="8 · 12 · 16 · 19" />} pilihan={[{ huruf: "A", teks: "8" }, { huruf: "B", teks: "12" }, { huruf: "C", teks: "16" }, { huruf: "D", teks: "19" }]} benar="D" umpan="8, 12, 16 naik 4. Seharusnya 20, bukan 19." salah="Cek selisih tiap pasangan." />
-        <Pilih id={idKuis("A", 13)} pertanyaan="50 – 43 – 36 – ⬜. Berikutnya..." visual={<Papan anak="50 · 43 · 36 · ⬜" />} pilihan={[{ huruf: "A", teks: "30" }, { huruf: "B", teks: "29" }, { huruf: "C", teks: "28" }, { huruf: "D", teks: "22" }]} benar="B" umpan="Turun 7. 36 − 7 = 29." salah="Bilangannya makin kecil." />
-      </div>
-    </KartuBingkai>
-  );
-}
-
-function KartuB({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminGuru }) {
-  const kartu = MODUL_MTK4_BAB3.kartu[1];
-  return (
-    <KartuBingkai>
-      <KepalaKartu ikon="🗺️🦉" judul="B. Peta Padang" anak="Intisari pola pita" kelas={kelas} kelamin={kelamin} cuplikan={cuplikanKalimat(kartu.voice[0] ?? [])} />
-      <div className="mt-4 space-y-4">
-        <Adegan utama judul="Sub-bab 1 — Gambar membesar" src="/doodle-mtk/mtk-4-bab3-sub1.jpg" alt="Layang dengan ekor yang makin panjang." kelas={kelas} kelamin={kelamin} penjelasan={["Dua gambar yang bersebelahan dikurangi. Hasilnya adalah aturan tambah."]}>
-          <PetaContoh pusat="Naik 4" cabang={[{ ikon: "🪁", judul: "Satu pita", isi: "awal 1" }, { ikon: "🎀", judul: "Lima pita", isi: "1 + 4" }, { ikon: "👀", judul: "Cek selisih", isi: "selisih tetap" }]} kolom={["Gambar", "Banyak"]} baris={[["1", "1"], ["2", "5"], ["3", "9"], ["4", "13"]]} />
-          <KuisSuara id={idKuis("B", 0)} pertanyaan="2, 6, 10, 14. Berapa berikutnya?" periksa={pitaDelapanBelas} petunjuk="Cari berapa yang ditambah." benar="18." />
-          <TulisBebas id={idKuis("B", 1)} visual={<Papan anak="9 · 14 · 19 · 24 · ⬜" />} pertanyaan="Tulis banyak berikutnya." pesanSalah="Aturannya naik." bantuan="Naik 5. 24 + 5 = 29." umpan="29." periksa={pitaDuaPuluhSembilan} alias={["29"]} konteks="9, 14, 19, 24, berikutnya 29." />
-        </Adegan>
-        <Adegan utama judul="Sub-bab 1 — Gambar mengecil" src="/doodle-mtk/mtk-4-bab3-sub2.jpg" alt="Layang dengan ekor yang makin pendek." kelas={kelas} kelamin={kelamin} penjelasan={["Jika selisihnya berkurang, gambar berikutnya lebih sedikit."]}>
-          <PetaContoh pusat="Turun 4" cabang={[{ ikon: "🎀", judul: "Delapan belas", isi: "awal" }, { ikon: "🪁", judul: "Empat belas", isi: "18 − 4" }, { ikon: "➖", judul: "Sepuluh", isi: "14 − 4" }]} kolom={["Langkah", "Banyak"]} baris={[["1", "18"], ["2", "14"], ["3", "10"]]} />
-          <KuisSuara id={idKuis("B", 2)} pertanyaan="40, 35, 30, 25. Berapa berikutnya?" periksa={pitaDuaPuluh} petunjuk="Lihat berapa yang dikurangi." benar="20." />
-          <TulisBebas id={idKuis("B", 3)} visual={<Papan anak="24 · 20 · 16 · 12 · ⬜" />} pertanyaan="Tulis banyak berikutnya." pesanSalah="Polanya turun." bantuan="Turun 4. 12 − 4 = 8." umpan="8." periksa={pitaDelapan} alias={["8"]} konteks="24, 20, 16, 12, berikutnya 8." />
-        </Adegan>
-        <Adegan utama judul="Sub-bab 2 — Bilangan membesar" src="/doodle-mtk/mtk-4-bab3-sub3.jpg" alt="Tumpukan pita yang makin tinggi." kelas={kelas} kelamin={kelamin} penjelasan={["Tambahkan aturan yang sama pada bilangan terakhir."]}>
-          <PetaContoh pusat="Naik 7" cabang={[{ ikon: "5️⃣", judul: "Mulai lima", isi: "5" }, { ikon: "➕", judul: "Tambah tujuh", isi: "5 + 7 = 12" }, { ikon: "🔁", judul: "Lanjut", isi: "12 + 7 = 19" }]} kolom={["Bilangan", "Cara"]} baris={[["5", "awal"], ["12", "5 + 7"], ["19", "12 + 7"]]} />
-          <KuisSuara id={idKuis("B", 4)} pertanyaan="15, 23, 31. Sebutkan berikutnya." periksa={pitaTigaPuluhSembilan} petunjuk="Kurangi dua bilangan yang bersebelahan." benar="39." />
-          <TulisBebas id={idKuis("B", 5)} visual={<Papan anak="4 · 13 · 22 · 31 · ⬜" />} pertanyaan="Tulis bilangan berikutnya." pesanSalah="Aturannya tetap." bantuan="Naik 9. 31 + 9 = 40." umpan="40." periksa={pitaEmpatPuluh} alias={["40"]} konteks="4, 13, 22, 31, berikutnya 40." />
-        </Adegan>
-        <Adegan utama judul="Sub-bab 2 — Bilangan mengecil" src="/doodle-mtk/mtk-4-bab3-sub4.jpg" alt="Tumpukan pita yang makin rendah." kelas={kelas} kelamin={kelamin} penjelasan={["Kurangkan aturan yang sama. Hasilnya lebih kecil."]}>
-          <PetaContoh pusat="Turun 6" cabang={[{ ikon: "3️⃣", judul: "Tiga puluh", isi: "awal" }, { ikon: "➖", judul: "Dua puluh empat", isi: "30 − 6" }, { ikon: "🪁", judul: "Delapan belas", isi: "24 − 6" }]} kolom={["Bilangan", "Cara"]} baris={[["30", "awal"], ["24", "30 − 6"], ["18", "24 − 6"]]} />
-          <KuisSuara id={idKuis("B", 6)} pertanyaan="80, 73, 66. Sebutkan berikutnya." periksa={pitaLimaPuluhSembilan} petunjuk="Hitung selisihnya." benar="59." />
-          <TulisBebas id={idKuis("B", 7)} visual={<Papan anak="55 · 48 · 41 · 34 · ⬜" />} pertanyaan="Tulis bilangan berikutnya." pesanSalah="Polanya turun." bantuan="Turun 7. 34 − 7 = 27." umpan="27." periksa={pitaDuaPuluhTujuh} alias={["27"]} konteks="55, 48, 41, 34, berikutnya 27." />
-        </Adegan>
-        <Pilih id={idKuis("B", 8)} pertanyaan="7 – 16 – 25 – 34 – ⬜. Berikutnya..." visual={<Papan anak="7 · 16 · 25 · 34 · ⬜" />} pilihan={[{ huruf: "A", teks: "41" }, { huruf: "B", teks: "43" }, { huruf: "C", teks: "42" }, { huruf: "D", teks: "40" }]} benar="B" umpan="Naik 9. 34 + 9 = 43." salah="Selisih dua bilangan yang bersebelahan." />
-        <KuisCocok id={idKuis("B", 9)} perintah="Pasangkan barisan dengan aturannya." baris={[{ kiri: "8 · 14 · 20", pilihan: ATURAN_B, benar: "Naik 6" }, { kiri: "45 · 36 · 27", pilihan: ATURAN_B, benar: "Turun 9" }, { kiri: "11 · 13 · 15", pilihan: ATURAN_B, benar: "Naik 2" }]} umpan="Naik 6, turun 9, dan naik 2." />
-        <SusunToken id={idKuis("B", 10)} perintah="Susun dari yang paling besar. Aturannya turun 8." acak={["44", "60", "36", "52"]} benar={["60", "52", "44", "36"]} umpan="60, 52, 44, 36." />
-        <KuisBenarSalah id={idKuis("B", 11)} perintah="Pilih benar atau salah." baris={[{ teks: "50, 42, 34 turun 8.", benar: true }, { teks: "6, 13, 20 turun 7.", benar: false }, { teks: "15, 24, 33 naik 9.", benar: true }]} umpan="Yang pertama dan ketiga benar. 6, 13, 20 naik 7." />
-        <Pilih id={idKuis("B", 12)} pertanyaan="100 – 92 – 84 – ⬜. Berikutnya..." visual={<Papan anak="100 · 92 · 84 · ⬜" />} pilihan={[{ huruf: "A", teks: "78" }, { huruf: "B", teks: "76" }, { huruf: "C", teks: "80" }, { huruf: "D", teks: "74" }]} benar="B" umpan="Turun 8. 84 − 8 = 76." salah="Angkanya makin kecil." />
+        <Pilih id={idKuis("A", 8)} pertanyaan="Jeruk 2 – 4 – 6 – ⬜. Kumpulan ke-4 ada..." visual={<Papan anak="2 · 4 · 6 · ⬜" />} pilihan={[{ huruf: "A", teks: "6" }, { huruf: "B", teks: "8" }, { huruf: "C", teks: "10" }, { huruf: "D", teks: "4" }]} benar="B" umpan="Naik 2. 6 + 2 = 8." salah="Kurangi dua kumpulan yang bersebelahan." />
+        <KuisCocok id={idKuis("A", 9)} perintah="Pasangkan barisan dengan aturannya." baris={[{ kiri: "2 · 4 · 6", pilihan: ATURAN_A, benar: "Naik 2" }, { kiri: "9 · 7 · 5", pilihan: ATURAN_A, benar: "Turun 2" }, { kiri: "20 · 28 · 36", pilihan: ATURAN_A, benar: "Naik 8" }]} umpan="Naik 2, turun 2, dan naik 8." />
+        <SusunToken id={idKuis("A", 10)} perintah="Susun rak buku dari yang paling kecil. Aturannya naik 4." acak={["13", "5", "17", "9"]} benar={["5", "9", "13", "17"]} umpan="5, 9, 13, 17." />
+        <KuisBenarSalah id={idKuis("A", 11)} perintah="Pilih benar atau salah." baris={[{ teks: "2, 4, 6 membesar.", benar: true }, { teks: "9, 7, 5 membesar.", benar: false }, { teks: "3, 5, 7, 9, 11 berikutnya 13.", benar: true }]} umpan="Yang pertama dan ketiga benar. 9, 7, 5 mengecil." />
+        <Pilih id={idKuis("A", 12)} pertanyaan="Mana yang tidak ikut naik 9?" visual={<Papan anak="13 · 22 · 31 · 49" />} pilihan={[{ huruf: "A", teks: "13" }, { huruf: "B", teks: "22" }, { huruf: "C", teks: "31" }, { huruf: "D", teks: "49" }]} benar="D" umpan="13, 22, 31 naik 9. Seharusnya 40, bukan 49." salah="Cek selisih tiap pasangan." />
+        <Pilih id={idKuis("A", 13)} pertanyaan="Rak buku 5 – 9 – 13. Rak kelima ada..." visual={<Papan anak="5 · 9 · 13 · 17 · ⬜" />} pilihan={[{ huruf: "A", teks: "17" }, { huruf: "B", teks: "21" }, { huruf: "C", teks: "25" }, { huruf: "D", teks: "15" }]} benar="B" umpan="Naik 4. Rak ke-4 ada 17. Rak ke-5 ada 21." salah="Tambahkan 4 pada setiap rak." />
+        <Pilih id={idKuis("B", 0)} pertanyaan="Kursi 20 – 23 – 26. Baris kelima ada..." visual={<Papan anak="20 · 23 · 26 · 29 · ⬜" />} pilihan={[{ huruf: "A", teks: "29" }, { huruf: "B", teks: "32" }, { huruf: "C", teks: "35" }, { huruf: "D", teks: "26" }]} benar="B" umpan="Naik 3. Baris ke-5 ada 32." salah="Selisihnya 3." />
+        <KuisCocok id={idKuis("B", 1)} perintah="Pasangkan barisan dengan aturannya." baris={[{ kiri: "7 · 19 · 31", pilihan: ATURAN_B, benar: "Naik 12" }, { kiri: "96 · 85 · 74", pilihan: ATURAN_B, benar: "Turun 11" }, { kiri: "70 · 64 · 58", pilihan: ATURAN_B, benar: "Turun 6" }]} umpan="Naik 12, turun 11, dan turun 6." />
+        <SusunToken id={idKuis("B", 2)} perintah="Susun kelapa dari yang paling banyak. Aturannya turun 5." acak={["26", "36", "21", "31"]} benar={["36", "31", "26", "21"]} umpan="36, 31, 26, 21." />
+        <KuisBenarSalah id={idKuis("B", 3)} perintah="Pilih benar atau salah." baris={[{ teks: "20, 28, 36 naik 8.", benar: true }, { teks: "23, 18, 13 naik 5.", benar: false }, { teks: "70, 64, 58 turun 6.", benar: true }]} umpan="Yang pertama dan ketiga benar. 23, 18, 13 turun 5." />
+        <Pilih id={idKuis("B", 4)} pertanyaan="Bioskop 10 – 14 – 18. Baris ke-10 ada..." visual={<Papan anak="10 · 14 · 18 · … · ⬜" />} pilihan={[{ huruf: "A", teks: "42" }, { huruf: "B", teks: "46" }, { huruf: "C", teks: "50" }, { huruf: "D", teks: "40" }]} benar="B" umpan="Naik 4. Baris ke-10 ada 46." salah="Tambahkan 4 sebanyak sembilan langkah dari 10." />
       </div>
     </KartuBingkai>
   );
@@ -440,7 +409,7 @@ function LembarEvaluasi({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminG
     for (let indeks = 0; indeks < 10; indeks += 1) if (kuis?.sudahBenar(idKuis("D", indeks))) jumlahSkor += 1;
     return jumlahSkor;
   }, [kuis]);
-  const lencana = skor >= 9 ? "🥇 Juru Pola Layang" : skor >= 6 ? "🎀 Penjaga Pita" : "🦉 Sahabat Igil";
+  const lencana = skor >= 9 ? "🥇 Juru Pola" : skor >= 6 ? "🍊 Penjaga Pola" : "🦉 Sahabat Igil";
   const pesan = skor >= 9 ? "Hebat! Polamu rapi." : skor >= 6 ? "Bagus! Sedikit lagi jadi juru pola." : "Ayo cari aturannya lagi bersama Igil. Kamu pasti bisa.";
   return (
     <KartuBingkai>
@@ -449,16 +418,16 @@ function LembarEvaluasi({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminG
       <img src="/doodle-mtk/mtk-4-bab3-evaluasi.jpg" alt="Meja kecil di padang layang dengan pensil dan kertas kosong. Burung hantu bertopi biru berdiri di samping." className="mt-4 w-full rounded-xl border border-[#1C01A5]/10 bg-white object-cover" />
       <p className="mt-4 text-center text-sm font-black text-[#1C01A5]">{lencana} · {pesan}</p>
       <div className="mt-4 space-y-3">
-        <TulisBebas id={idKuis("D", 0)} judul="1. Pita berikutnya" visual={<Papan anak="14 · 21 · 28 · 35 · ⬜" />} pertanyaan="Tulis bilangan berikutnya." pesanSalah="Cari selisihnya." bantuan="Naik 7. 35 + 7 = 42." umpan="42." periksa={pitaEmpatPuluhDua} alias={["42"]} konteks="14, 21, 28, 35, berikutnya 42." />
-        <Pilih id={idKuis("D", 1)} pertanyaan="2. 36 – 30 – 24 – 18 – ⬜. Berikutnya..." visual={<Papan anak="36 · 30 · 24 · 18 · ⬜" />} pilihan={[{ huruf: "A", teks: "14" }, { huruf: "B", teks: "12" }, { huruf: "C", teks: "10" }, { huruf: "D", teks: "16" }]} benar="B" umpan="Turun 6. 18 − 6 = 12." salah="Gambarnya makin sedikit." />
-        <KuisSuara id={idKuis("D", 2)} pertanyaan="3. 7, 15, 23, 31. Sebutkan berikutnya." periksa={pitaTigaPuluhSembilan} petunjuk="Dua bilangan yang bersebelahan punya selisih yang sama." benar="39." />
-        <Pilih id={idKuis("D", 3)} pertanyaan="4. Mana yang tidak ikut naik 8?" visual={<Papan anak="20 · 28 · 36 · 45" />} pilihan={[{ huruf: "A", teks: "20" }, { huruf: "B", teks: "28" }, { huruf: "C", teks: "36" }, { huruf: "D", teks: "45" }]} benar="D" umpan="20, 28, 36 naik 8. Seharusnya 44, bukan 45." salah="Cek tiap selisih." />
-        <KuisCocok id={idKuis("D", 4)} perintah="5. Pasangkan barisan dengan aturannya." baris={[{ kiri: "14 · 17 · 20", pilihan: ATURAN_D, benar: "Naik 3" }, { kiri: "28 · 24 · 20", pilihan: ATURAN_D, benar: "Turun 4" }, { kiri: "5 · 15 · 25", pilihan: ATURAN_D, benar: "Naik 10" }]} umpan="Naik 3, turun 4, dan naik 10." />
-        <TulisBebas id={idKuis("D", 5)} judul="6. Turun dari 88" visual={<Papan anak="88 · 79 · 70 · 61 · ⬜" />} pertanyaan="Tulis bilangan berikutnya." pesanSalah="Polanya turun." bantuan="Turun 9. 61 − 9 = 52." umpan="52." periksa={pitaLimaPuluhDua} alias={["52"]} konteks="88, 79, 70, 61, berikutnya 52." />
-        <Pilih id={idKuis("D", 6)} pertanyaan="7. 2 – 9 – 16 – 23 – ⬜. Berikutnya..." visual={<Papan anak="2 · 9 · 16 · 23 · ⬜" />} pilihan={[{ huruf: "A", teks: "28" }, { huruf: "B", teks: "30" }, { huruf: "C", teks: "32" }, { huruf: "D", teks: "25" }]} benar="B" umpan="Naik 7. 23 + 7 = 30." salah="Selisihnya tetap." />
-        <Pilih id={idKuis("D", 7)} pertanyaan="8. Layang pertama 12 pita. Tiap layang bertambah 6. Layang keempat punya..." visual={<Papan anak="12 · 18 · 24 · ⬜" />} pilihan={[{ huruf: "A", teks: "24" }, { huruf: "B", teks: "18" }, { huruf: "C", teks: "30" }, { huruf: "D", teks: "36" }]} benar="C" umpan="12, 18, 24, 30. Layang keempat punya 30." salah="Tambahkan 6 sebanyak tiga langkah dari 12." />
-        <KuisSuara id={idKuis("D", 8)} pertanyaan="9. 100, 93, 86. Sebutkan berikutnya." periksa={pitaTujuhPuluhSembilan} petunjuk="Hitung berapa yang dikurangi." benar="79." />
-        <Pilih id={idKuis("D", 9)} pertanyaan="10. 5 – 11 – 17 – ⬜. Banyak pita berikutnya..." visual={<Papan anak="5 · 11 · 17 · ⬜" />} pilihan={[{ huruf: "A", teks: "22" }, { huruf: "B", teks: "23" }, { huruf: "C", teks: "24" }, { huruf: "D", teks: "20" }]} benar="B" umpan="Naik 6. 17 + 6 = 23." salah="Kurangi dua bilangan yang bersebelahan." />
+        <TulisBebas id={idKuis("D", 0)} judul="1. Bilangan berikutnya" visual={<Papan anak="7 · 19 · 31 · 43 · ⬜" />} pertanyaan="Tulis bilangan berikutnya." pesanSalah="Cari selisihnya." bantuan="Naik 12. 43 + 12 = 55." umpan="55." periksa={pitaLimaPuluhLima} alias={["55"]} konteks="7, 19, 31, 43, berikutnya 55." />
+        <Pilih id={idKuis("D", 1)} pertanyaan="2. Permen 9 – 7 – 5. Kumpulan ke-4 ada..." visual={<Papan anak="9 · 7 · 5 · ⬜" />} pilihan={[{ huruf: "A", teks: "1" }, { huruf: "B", teks: "3" }, { huruf: "C", teks: "5" }, { huruf: "D", teks: "7" }]} benar="B" umpan="Turun 2. 5 − 2 = 3." salah="Gambarnya makin sedikit." />
+        <KuisSuara id={idKuis("D", 2)} pertanyaan="3. 1, 4, 7, 10. Sebutkan berikutnya." periksa={pitaTigaBelas} petunjuk="Dua bilangan yang bersebelahan punya selisih yang sama." benar="13." />
+        <Pilih id={idKuis("D", 3)} pertanyaan="4. Mana yang tidak ikut naik 6?" visual={<Papan anak="6 · 12 · 24" />} pilihan={[{ huruf: "A", teks: "6" }, { huruf: "B", teks: "12" }, { huruf: "C", teks: "18" }, { huruf: "D", teks: "24" }]} benar="D" umpan="6 lalu 12 naik 6. Berikutnya 18, bukan 24." salah="Cek tiap selisih." />
+        <KuisCocok id={idKuis("D", 4)} perintah="5. Pasangkan barisan dengan aturannya." baris={[{ kiri: "5 · 9 · 13", pilihan: ATURAN_D, benar: "Naik 4" }, { kiri: "91 · 77 · 63", pilihan: ATURAN_D, benar: "Turun 14" }, { kiri: "12 · 27 · 42", pilihan: ATURAN_D, benar: "Naik 15" }]} umpan="Naik 4, turun 14, dan naik 15." />
+        <TulisBebas id={idKuis("D", 5)} judul="6. Turun dari 91" visual={<Papan anak="91 · 77 · 63 · ⬜" />} pertanyaan="Tulis bilangan berikutnya." pesanSalah="Polanya turun." bantuan="Turun 14. 63 − 14 = 49." umpan="49." periksa={pitaEmpatPuluhSembilan} alias={["49"]} konteks="91, 77, 63, berikutnya 49." />
+        <Pilih id={idKuis("D", 6)} pertanyaan="7. Kursi 20 – 23 – 26. Baris ketujuh ada..." visual={<Papan anak="20 · 23 · 26 · … · ⬜" />} pilihan={[{ huruf: "A", teks: "35" }, { huruf: "B", teks: "38" }, { huruf: "C", teks: "41" }, { huruf: "D", teks: "32" }]} benar="B" umpan="Naik 3. Baris ke-7 ada 38." salah="Selisihnya tetap." />
+        <Pilih id={idKuis("D", 7)} pertanyaan="8. Televisi Januari 70, lalu berkurang 6 tiap bulan. Agustus ada..." visual={<Papan anak="70 · 64 · 58 · 52 · …" />} pilihan={[{ huruf: "A", teks: "34" }, { huruf: "B", teks: "28" }, { huruf: "C", teks: "22" }, { huruf: "D", teks: "40" }]} benar="B" umpan="Januari 70, Agustus adalah bulan ke-8. 70 − 42 = 28." salah="Kurangi 6 sebanyak tujuh langkah." />
+        <KuisSuara id={idKuis("D", 8)} pertanyaan="9. 96, 85, 74, 63. Sebutkan berikutnya." periksa={pitaLimaPuluhDua} petunjuk="Hitung berapa yang dikurangi." benar="52." />
+        <Pilih id={idKuis("D", 9)} pertanyaan="10. Bioskop 10 – 14 – 18. Baris ke-10 ada..." visual={<Papan anak="10 · 14 · 18 · … · ⬜" />} pilihan={[{ huruf: "A", teks: "42" }, { huruf: "B", teks: "46" }, { huruf: "C", teks: "50" }, { huruf: "D", teks: "40" }]} benar="B" umpan="Naik 4. Baris ke-10 ada 46." salah="Tambahkan 4 pada setiap baris." />
         <p className="text-center text-sm font-black text-[#1C01A5]">{lencana} · {skor} bintang dari 10</p>
       </div>
     </KartuBingkai>
@@ -469,15 +438,14 @@ export default function NaskahMtk4Bab3({ kelas, kelamin }: { kelas?: string; kel
   return (
     <div className="space-y-5">
       <KartuA kelas={kelas} kelamin={kelamin} />
-      <KartuB kelas={kelas} kelamin={kelamin} />
       <KartuC kelas={kelas} kelamin={kelamin} />
       <div id={SLOT_AJUAN_SEBELUM_KARTU_D} />
       <KartuPoinPenting
         kelas={kelas}
         kelamin={kelamin}
         gambar={{ src: "/doodle-mtk/mtk-4-bab3-poin.jpg", alt: "Igil dan tiga anak memegang kartu kosong di padang layang." }}
-        cuplikan={cuplikanKalimat(["Pola membesar berarti berikutnya lebih banyak. Pola mengecil berarti berikutnya lebih sedikit.", "Kurangi dua bilangan yang bersebelahan. Selisih yang sama adalah aturannya.", "Naik ditambah. Turun dikurangi. Angkanya sampai seratus."])}
-        poin={["Gambar membesar: 4, 8, 12, 16, berikutnya 20.", "Gambar mengecil: 18, 15, 12, 9, berikutnya 6.", "Bilangan membesar: 8, 13, 18, 23, berikutnya 28.", "Bilangan mengecil: 90, 82, 74, berikutnya 66.", "Aturan yang sama dipakai untuk membuat pola sendiri."]}
+        cuplikan={cuplikanKalimat(["Jeruk 2, 4, 6. Kumpulan ke-7 ada 14. Permen 9, 7, 5. Kumpulan ke-5 ada 1.", "3, 5, 7, 9, 11 berikutnya 13. Telur hari kelima ada 52.", "Kelapa hari ke-7 ada 6. Bioskop baris ke-10 ada 46."])}
+        poin={["Jeruk 2, 4, 6. Tambah 2. Kumpulan ke-7 ada 14.", "Permen 9, 7, 5, 3. Kurang 2. Kumpulan ke-5 ada 1.", "3, 5, 7, 9, 11 berikutnya 13. Telur 20, 28, 36, hari kelima 52.", "23, 18, 13, 8 berikutnya 3. Televisi Januari 70 turun 6, Juni ada 40.", "Kelapa hari pertama 36 turun 5, hari ke-7 ada 6. Bioskop baris ke-10 ada 46."]}
         penutup="Cari selisih dulu, baru lanjutkan polanya."
       />
       <LembarEvaluasi kelas={kelas} kelamin={kelamin} />
