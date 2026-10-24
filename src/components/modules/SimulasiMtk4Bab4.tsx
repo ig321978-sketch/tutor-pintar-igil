@@ -460,7 +460,7 @@ export default function SimulasiMtk4Bab4({ onBenar, onTutorEvent }: Props) {
   const skala = [1000, 800, 600, 400, 200, 0];
 
   return (
-    <section className="relative flex min-h-[78vh] flex-col overflow-hidden rounded-3xl bg-[#F4F6FF] text-[#1C01A5]">
+    <section id="lab-mtk-4-bab4" className="relative flex min-h-[78vh] flex-col overflow-hidden rounded-3xl bg-[#F4F6FF] text-[#1C01A5]">
       <header className="flex flex-wrap gap-2 border-b border-indigo-100 bg-white px-3 py-3">
         <button type="button" className={tombol(tab === "luas")} onClick={() => { setTab("luas"); setCatatan(""); }}>Pasang Ubin Luas</button>
         <button type="button" className={tombol(tab === "volume")} onClick={() => { setTab("volume"); setCatatan(""); }}>Tuang Air Volume</button>
@@ -492,11 +492,11 @@ export default function SimulasiMtk4Bab4({ onBenar, onTutorEvent }: Props) {
             </>
           ) : (
             <div className="flex flex-1 flex-col items-center justify-between gap-4 sm:flex-row sm:items-end">
-              <div className="flex items-end gap-2">
-                <div className="flex h-72 flex-col justify-between py-1 text-[11px] font-black text-indigo-400">
+              <div className="flex shrink-0 items-end gap-2">
+                <div className="flex h-64 flex-col justify-between py-1 text-[11px] font-black text-indigo-400">
                   {skala.map((garis) => <span key={garis}>{garis === 1000 ? "1.000" : garis}</span>)}
                 </div>
-                <div className="relative h-72 w-24 overflow-hidden rounded-b-3xl rounded-t-md border-4 border-sky-300 bg-sky-50">
+                <div className="relative h-64 w-24 overflow-hidden rounded-b-3xl rounded-t-md border-4 border-sky-300 bg-sky-50">
                   {Array.from({ length: 9 }, (_, indeks) => (
                     <span key={indeks} className="absolute left-0 right-0 border-t border-sky-200" style={{ bottom: `${(indeks + 1) * 10}%` }} />
                   ))}
