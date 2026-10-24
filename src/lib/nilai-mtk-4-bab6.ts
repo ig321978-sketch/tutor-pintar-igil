@@ -76,3 +76,31 @@ export function jumlahTigaPuluhDua(teks: string): boolean {
 export function jumlahDelapanBelas(teks: string): boolean {
   return jawab(teks, "18", "delapan belas");
 }
+
+export function jumlahNol(teks: string): boolean {
+  return jawab(teks, "0", "nol");
+}
+
+export function jumlahDuaPuluhLima(teks: string): boolean {
+  return jawab(teks, "25", "dua puluh lima");
+}
+
+export function jumlahTigaPuluh(teks: string): boolean {
+  return jawab(teks, "30", "tiga puluh");
+}
+
+export function jumlahTigaPuluhLima(teks: string): boolean {
+  return jawab(teks, "35", "tiga puluh lima");
+}
+
+export function jumlahEmpatPuluhLima(teks: string): boolean {
+  return jawab(teks, "45", "empat puluh lima");
+}
+
+export function kataKomputer(teks: string): boolean {
+  return /(?:^|\s)komputer(?:\s|$)/.test(biasa(teks));
+}
+
+export function kataPilot(teks: string): boolean {
+  return /(?:^|\s)pilot(?:\s|$)/.test(biasa(teks));
+}

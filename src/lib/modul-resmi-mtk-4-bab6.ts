@@ -13,183 +13,180 @@ export const MODUL_MTK4_BAB6: ModulResmiPai = {
   judul: JUDUL_MTK4_BAB6,
   pola: /^bab 6: piktogram dan diagram batang$/,
   motivasi:
-    "Nisa, Farhan, dan Cinta menghitung mangga terjual bersama burung hantu Igil di lapak mangga.",
-  kunciJawaban: "C,B,C,D,A,C,B,B,A,C",
+    "Raka, Sinta, dan Merpati Piko menyajikan data bersama Reporter IGIL di ruang redaksi majalah sekolah.",
+  kunciJawaban: "C,A,B,C,C,D,B,D,C,C",
   sketsaKartu: [
-    "Nisa, Farhan, dan Cinta menyusun gambar mangga dan batang bersama Igil.",
-    "Piktogram dengan kunci, lalu diagram batang tegak.",
-    "Sepuluh pos di lapak mangga.",
+    "Piktogram berskala dan diagram batang di ruang redaksi.",
+    "Rumus skala piktogram dan anatomi diagram batang.",
+    "Sepuluh laporan redaksi majalah.",
     "Poin penting dan lembar evaluasi piktogram dan diagram batang.",
   ],
   latihan: pg([
     `[Soal 1 - PG - Tipe: MOTS]
-Di kelas ada 8 hiasan dinding, 2 papan tulis, 1 jam dinding, dan 1 lemari. Yang paling banyak...
-A) Jam dinding
-B) Lemari
-C) Hiasan dinding
-D) Papan tulis`,
-    `[Soal 2 - PG - Tipe: MOTS]
-Mainan Karel: 6 mobil, 4 robot, 3 pesawat, 1 puzzle, dan 9 kelereng. Yang paling banyak...
-A) Mobil
-B) Kelereng
-C) Robot
-D) Puzzle`,
-    `[Soal 3 - PG - Tipe: MOTS]
-Satu gambar = 4 siswa. Kelas IV ada 8 gambar. Banyak siswa...
-A) 8
-B) 12
-C) 32
-D) 4`,
-    `[Soal 4 - PG - Tipe: MOTS]
-Mawar 5, kertas 9, sepatu 4, matahari 3. Bunga yang paling banyak...
-A) Mawar
-B) Sepatu
-C) Matahari
-D) Kertas`,
-    `[Soal 5 - PG - Tipe: MOTS]
-Sabtu 14 buku. Selasa 6 buku. Selisihnya...
-A) 8
-B) 20
-C) 14
-D) 6`,
-    `[Soal 6 - PG - Tipe: MOTS]
-Buku di meja guru ada 4. Satu gambar = 1 buku. Banyak gambar yang dibuat...
-A) 8
-B) 2
-C) 4
-D) 1`,
-    `[Soal 7 - PG - Tipe: HOTS]
-Satu gambar = 4 siswa. Ada 6 gambar. Banyak siswa...
-A) 10
-B) 24
-C) 6
-D) 4`,
-    `[Soal 8 - PG - Tipe: MOTS]
-Lomba IPA diikuti 6 siswa. Pengetahuan Umum juga 6 siswa. Pernyataan yang benar...
-A) IPA lebih banyak
-B) Keduanya sama banyak
-C) Selisihnya 6
-D) Tidak ada data`,
-    `[Soal 9 - PG - Tipe: HOTS]
-Catur diikuti 5 siswa. Renang diikuti 2 siswa. Selisihnya...
+Piktogram buku dari perpustakaan: 1 gambar = 5 siswa. Hari Selasa ada 3 gambar. Banyak siswa...
 A) 3
-B) 7
-C) 5
-D) 2`,
-    `[Soal 10 - PG - Tipe: HOTS]
-Meja guru: buku 4, taplak 1, spidol 3, penghapus 1, pulpen 2. Berapa kategori yang paling sedikit?
-A) 1
+B) 8
+C) 15
+D) 5`,
+    `[Soal 2 - PG - Tipe: MOTS]
+Hari Kamis ada 30 siswa. Satu gambar buku = 5 siswa. Banyak gambar yang dipasang...
+A) 6
+B) 5
+C) 30
+D) 25`,
+    `[Soal 3 - PG - Tipe: MOTS]
+Batang Futsal 25. Batang Lukis 10. Selisihnya...
+A) 35
+B) 15
+C) 25
+D) 10`,
+    `[Soal 4 - PG - Tipe: MOTS]
+Futsal 25, Tari 15, Komputer 20, Lukis 10. Ekstrakurikuler yang diikuti 20 siswa...
+A) Futsal
+B) Tari
+C) Komputer
+D) Lukis`,
+    `[Soal 5 - PG - Tipe: MOTS]
+Piktogram jus: 4 gambar gelas. Satu gambar = 10 gelas. Jumlah jus mangga...
+A) 4
+B) 14
+C) 40
+D) 10`,
+    `[Soal 6 - PG - Tipe: HOTS]
+Satu gambar mobil = 4 mobil. Untuk 12 mobil, banyak gambar yang dibuat...
+A) 12
 B) 4
-C) 2
+C) 8
 D) 3`,
+    `[Soal 7 - PG - Tipe: HOTS]
+Satu gambar apel = 4 apel. Ada 3 gambar utuh dan 1 gambar setengah. Jumlah apel...
+A) 12
+B) 14
+C) 7
+D) 16`,
+    `[Soal 8 - PG - Tipe: MOTS]
+Ujung batang ada di tengah garis 20 dan 30. Nilai batang itu...
+A) 20
+B) 30
+C) 50
+D) 25`,
+    `[Soal 9 - PG - Tipe: MOTS]
+Garis angka pada sumbu skala diagram batang harus mulai dari...
+A) 1
+B) 5
+C) 0
+D) 10`,
+    `[Soal 10 - PG - Tipe: HOTS]
+24 kg apel digambar dengan 4 gambar. Satu gambar mewakili...
+A) 8 kg
+B) 4 kg
+C) 6 kg
+D) 10 kg`,
   ]),
   kartu: [
     {
       kode: "A",
       judul: "A. Naskah Bergambar",
-      pengantar: "Nisa, Farhan, Cinta, dan Igil mencatat mangga di lapak.",
-      labelDaftar: "Empat adegan lapak mangga",
+      pengantar: "Raka, Sinta, Merpati Piko, dan Reporter IGIL membaca piktogram berskala dan diagram batang.",
+      labelDaftar: "Dua sub-bab redaksi data",
       kolom: 1,
       item: [
-        { nama: "Gambar satu-satu", singkat: "Hitung gambar", uraian: "Hiasan dinding 8, jam dinding 1, lemari 1. Kelereng Karel 9. Jumlah mainan Karel 23.", contoh: "Gambar dalam satu baris harus sama." },
-        { nama: "Baca kunci", singkat: "Satu atau empat", uraian: "Warna kesukaan: ungu 4, kuning 2, hitam 1, merah 5. Jumlah 12. Kelas IV: 8 gambar × 4 = 32 siswa.", contoh: "Piktogram disebut juga diagram gambar." },
-        { nama: "Batang tegak", singkat: "Lebih tinggi", uraian: "Sepak bola 9 siswa. Catur 2. Lomba matematika 15. Puisi 3. IPA dan Pengetahuan Umum sama-sama 6.", contoh: "Sumbu angka wajib ada." },
-        { nama: "Batang mendatar", singkat: "Lebih panjang", uraian: "Bunga kertas 9, matahari 3, melati 8. Kertas + anggrek = 16. Sepeda motor 14 siswa.", contoh: "Data yang sama bisa jadi gambar atau batang." },
+        { nama: "Piktogram berskala", singkat: "Baca keterangan", uraian: "Satu gambar buku = 5 siswa. Selasa 3 gambar = 15 siswa. Kamis 30 siswa = 6 gambar.", contoh: "Jumlah sebenarnya = banyak gambar × nilai 1 gambar." },
+        { nama: "Diagram batang", singkat: "Baca ujung batang", uraian: "Futsal 25, Tari 15, Komputer 20, Lukis 10. Selisih Futsal dan Lukis 15. Selisih Komputer dan Tari 5.", contoh: "Tinggi atau panjang batang mengikuti skala." },
       ],
       kuis: [
-        { pertanyaan: "Hiasan dinding ada berapa?", alias: ["8"] },
-        { pertanyaan: "Kelereng Karel ada berapa?", alias: ["9"] },
-        { pertanyaan: "Ungu, kuning, hitam, dan merah. Jumlah siswanya?", alias: ["12"] },
-        { pertanyaan: "8 gambar × 4 siswa. Kelas IV ada berapa siswa?", alias: ["32"] },
-        { pertanyaan: "Sepak bola diikuti berapa siswa?", alias: ["9"] },
-        { pertanyaan: "Lomba matematika diikuti berapa siswa?", alias: ["15"] },
-        { pertanyaan: "Renang diikuti berapa siswa?", alias: ["2"] },
-        { pertanyaan: "Bunga kertas 9 dan anggrek 7. Jumlahnya?", alias: ["16"] },
-        { pertanyaan: "Piktogram juga disebut...", alias: ["diagram gambar"] },
-        { pertanyaan: "Pasangkan benda dengan banyaknya.", alias: ["8", "9", "1"] },
-        { pertanyaan: "Susun bunga dari yang paling sedikit.", alias: ["3", "4", "5", "9"] },
-        { pertanyaan: "Periksa tiga pernyataan data.", alias: ["benar", "salah"] },
-        { pertanyaan: "6 gambar, kunci 4. Banyak siswa?", alias: ["24"] },
+        { pertanyaan: "Selasa 3 gambar, kunci 5. Banyak siswa?", alias: ["15", "lima belas"] },
+        { pertanyaan: "Kamis 30 siswa, kunci 5. Banyak gambar?", alias: ["6"] },
+        { pertanyaan: "Ekstrakurikuler yang diikuti 20 siswa?", alias: ["komputer"] },
+        { pertanyaan: "Selisih Komputer 20 dan Tari 15?", alias: ["5"] },
+        { pertanyaan: "4 gambar gelas, kunci 10. Jumlah jus?", alias: ["40"] },
+        { pertanyaan: "Pasangkan buah dengan ujung batangnya.", alias: ["30", "45", "25"] },
+        { pertanyaan: "12 mobil, kunci 4. Apakah 12 gambar benar?", alias: ["salah"] },
+        { pertanyaan: "Tarik batang jagung sampai 35.", alias: ["35"] },
+        { pertanyaan: "Urutkan kota dari yang paling besar.", alias: ["C", "A", "D", "B"] },
       ],
       voice: [[
-        "Hari ini kita menyajikan data dengan gambar dan batang.",
-        "Piktogram memakai gambar dan kunci. Diagram batang memakai persegi panjang.",
-        "Baca kuncinya dulu. Lalu cari yang paling banyak, yang paling sedikit, atau jumlahnya.",
+        "Halo jurnalis cilik! Hari ini kita menyajikan berita memakai piktogram.",
+        "Satu gambar bisa mewakili lebih dari satu benda. Baca keterangan di bawah tabel dulu.",
+        "Lalu kita baca diagram batang. Tinggi atau panjang batang mengikuti angka skala.",
       ]],
     },
     {
       kode: "B",
-      judul: "B. Latihan di dalam sub-bab",
-      pengantar: "Peta dan latihan tiap bagian ada di dalam materi data.",
-      labelDaftar: "Latihan di dalam gambar dan batang",
+      judul: "B. Infografis",
+      pengantar: "Rumus piktogram berskala dan anatomi diagram batang.",
+      labelDaftar: "Dua peta data",
       kolom: 1,
       item: [
-        { nama: "Peta gambar", singkat: "Gambar sama", uraian: "Hiasan dinding 8. Jam dinding dan lemari sama-sama 1. Kelereng Karel 9.", contoh: "Gambar dalam satu baris harus sama." },
-        { nama: "Peta kunci", singkat: "Kali dengan kunci", uraian: "Warna kesukaan berjumlah 12. Kelas IV 8 × 4 = 32. Kelas I dan II masing-masing 24.", contoh: "Piktogram adalah diagram gambar." },
-        { nama: "Peta tegak", singkat: "Lebih tinggi", uraian: "Sepak bola 9. Matematika 15. Puisi 3. IPA dan Pengetahuan Umum sama-sama 6.", contoh: "Sumbu angka wajib ada." },
-        { nama: "Peta mendatar", singkat: "Lebih panjang", uraian: "Kertas 9, matahari 3. Motor 14, mobil 3. Renang 2, menyanyi paling banyak.", contoh: "Satu data boleh disajikan dengan tiga cara." },
+        { nama: "Rumus piktogram", singkat: "Kali dengan skala", uraian: "Jumlah sebenarnya = banyak gambar × nilai 1 gambar. Tiga apel utuh dan setengah, kunci 4, jumlahnya 14.", contoh: "Gambar setengah dihitung setengah dari nilai 1 gambar." },
+        { nama: "Anatomi batang", singkat: "Judul dan sumbu", uraian: "Ada judul, sumbu kategori, dan sumbu skala dari 0 dengan lompat tetap. Tengah 10 dan 20 bernilai 15.", contoh: "Jarak angka pada skala harus sama." },
       ],
       kuis: [
-        { pertanyaan: "Alat ke sekolah yang paling banyak adalah...", alias: ["sepeda motor"] },
-        { pertanyaan: "Pasangkan hari dengan banyak bukunya.", alias: ["14", "3", "6"] },
-        { pertanyaan: "Susun benda meja dari yang paling sedikit.", alias: ["1", "2", "3", "4"] },
-        { pertanyaan: "Periksa tiga pernyataan batang.", alias: ["benar", "salah"] },
-        { pertanyaan: "Catur 5 dan renang 2. Jumlahnya?", alias: ["7"] },
+        { pertanyaan: "Setengah gambar, kunci 10. Nilainya?", alias: ["5", "lima"] },
+        { pertanyaan: "7 gambar bola, kunci 2. Jumlah bola?", alias: ["14"] },
+        { pertanyaan: "Sumbu skala diagram batang mulai dari?", alias: ["0", "nol"] },
+        { pertanyaan: "Tengah garis 20 dan 30. Nilai batang?", alias: ["25"] },
+        { pertanyaan: "2 gambar utuh dan 1 setengah, kunci 6. Jumlah biskuit?", alias: ["15"] },
+        { pertanyaan: "Skala 0, 4, 8, ?, 16, 20. Angka hilang?", alias: ["12"] },
+        { pertanyaan: "3 bintang, kunci 10. Tinggi batang?", alias: ["30"] },
+        { pertanyaan: "Bulu tangkis 35, renang 20. Selisihnya?", alias: ["15"] },
+        { pertanyaan: "Batang Rabu harus 25, digambar 35. Yang salah?", alias: ["rabu"] },
       ],
       voice: [[
-        "Peta data ada di dalam materi, pada tiap bagian.",
-        "Gambar dibaca dari kuncinya. Batang tegak dibaca dari tingginya. Batang mendatar dibaca dari panjangnya.",
+        "Kunci piktogram kelas 4 ada pada keterangan skala.",
+        "Kalikan banyak gambar dengan nilai 1 gambar.",
+        "Pada diagram batang, jarak angka skala harus tetap dan mulai dari nol.",
       ]],
     },
     {
       kode: "C",
-      judul: "C. Pos Lapak Mangga",
-      pengantar: "Sepuluh soal piktogram dan diagram batang. Selesai sepuluh pos, mangga terkumpul sepuluh.",
-      labelDaftar: "Sepuluh pos mangga",
+      judul: "C. Redaksi Majalah Fakta IGIL",
+      pengantar: "Sepuluh laporan piktogram dan diagram batang. Selesai sepuluh pos, bintang terkumpul sepuluh.",
+      labelDaftar: "Sepuluh laporan redaksi",
       kolom: 1,
       item: [
         {
-          nama: "Pos data",
-          singkat: "Gambar dan batang",
-          uraian: "Kunci gambar, ujung batang, dan selisih.",
+          nama: "Laporan data",
+          singkat: "Periksa hitungan",
+          uraian: "Skala gambar, ujung batang, dan selisih.",
           contoh: "Dua soal suara dan dua soal tulis.",
         },
       ],
       kuis: kuisDariMisi(MISI_MTK4_BAB6),
       voice: [[
-        "Igil menjaga sepuluh pos di lapak mangga.",
-        "Ada piktogram dan diagram batang. Dua pos dijawab dengan suara, dua pos ditulis.",
+        "Selamat datang di redaksi majalah Fakta IGIL.",
+        "Periksa sepuluh laporan. Dua laporan dijawab dengan suara, dua ditulis.",
       ]],
     },
     {
       kode: "D",
       judul: "E. Lembar Evaluasi Siswa",
-      pengantar: "Sepuluh soal menyajikan dan membaca data.",
-      labelDaftar: "Lembar evaluasi mangga",
+      pengantar: "Sepuluh soal piktogram berskala dan diagram batang.",
+      labelDaftar: "Lembar evaluasi redaksi",
       kolom: 1,
       item: [
         {
-          nama: "Catatan lapak",
-          singkat: "Baca lalu bandingkan",
-          uraian: "Lomba matematika 15 siswa. Sabtu 14 buku. Kertas dan anggrek 16. Enam gambar kali 4 sama dengan 24 siswa.",
-          contoh: "Data yang sama tinggi berarti sama banyak.",
+          nama: "Catatan redaksi",
+          singkat: "Baca skala dulu",
+          uraian: "Semangka Senin dan Selasa 55. Skala 24 siswa dari 6 gambar = 4. Tengah 30 dan 40 = 35. Total sampah 45 kg.",
+          contoh: "Gambar setengah dihitung setengah dari kunci.",
         },
       ],
       kuis: [
-        { pertanyaan: "Lomba matematika diikuti berapa siswa?", alias: ["15"] },
-        { pertanyaan: "Bunga yang paling sedikit?", alias: ["matahari"] },
-        { pertanyaan: "Sabtu ada berapa buku?", alias: ["14"] },
-        { pertanyaan: "Piktogram juga disebut...", alias: ["diagram gambar"] },
-        { pertanyaan: "Pasangkan benda dengan banyaknya.", alias: ["9", "8", "1"] },
-        { pertanyaan: "Kertas 9 dan anggrek 7. Jumlahnya?", alias: ["16"] },
-        { pertanyaan: "Batang mendatar yang lebih panjang berarti...", alias: ["lebih banyak"] },
-        { pertanyaan: "Meja guru: berapa kategori yang paling sedikit?", alias: ["2"] },
-        { pertanyaan: "6 gambar, kunci 4. Banyak siswa?", alias: ["24"] },
-        { pertanyaan: "Siswa kelas IV yang berangkat sekolah ada berapa?", alias: ["30"] },
+        { pertanyaan: "Panen Senin 3 gambar dan Selasa 2,5 gambar, kunci 10. Jumlahnya?", alias: ["55"] },
+        { pertanyaan: "6 gambar bintang untuk 24 siswa. Nilai 1 gambar?", alias: ["4"] },
+        { pertanyaan: "Total 100. Senin 25, Selasa 20, Kamis 30. Batang Rabu?", alias: ["25"] },
+        { pertanyaan: "Toko A 4×5 dan Toko B 5×3. Pernyataan yang benar?", alias: ["5"] },
+        { pertanyaan: "Pasangkan analisis nilai ulangan.", alias: ["12", "8", "30"] },
+        { pertanyaan: "Selisih 5 gambar dan 3 gambar, kunci 4. Apakah 2 buku benar?", alias: ["salah"] },
+        { pertanyaan: "5 gambar dan 2 gambar ayam, kunci 10. Selisih ayam?", alias: ["30", "tiga puluh"] },
+        { pertanyaan: "Ujung batang di tengah 30 dan 40. Nilainya?", alias: ["35", "tiga puluh lima"] },
+        { pertanyaan: "36 sepeda, kunci 4. Banyak gambar?", alias: ["9"] },
+        { pertanyaan: "15 + 20 + 10 kg sampah. Jumlahnya?", alias: ["45"] },
       ],
       voice: [[
-        "Sepuluh soal data. Baca kuncinya dulu, atau lihat ujung batangnya.",
-        "Piktogram memakai gambar. Diagram batang memakai persegi panjang.",
+        "Sepuluh soal data. Baca keterangan skala pada setiap gambar dan diagram.",
+        "Gambar setengah dihitung setengah. Ujung batang di tengah dua garis diambil nilai tengahnya.",
       ]],
     },
   ],

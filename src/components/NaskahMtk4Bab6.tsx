@@ -16,15 +16,17 @@ import { idKuisKartuResmi, idKuisTulisKartu } from "@/lib/kuis-materi";
 import { MISI_MTK4_BAB6, TEMA_MTK4_BAB6 } from "@/lib/misi-mtk-4-bab6";
 import { MODUL_MTK4_BAB6 } from "@/lib/modul-resmi-mtk-4-bab6";
 import {
-  jumlahDelapan,
-  jumlahDua,
-  jumlahDuaBelas,
-  jumlahDuaPuluhEmpat,
+  jumlahDuaPuluhLima,
   jumlahEmpatBelas,
-  jumlahEnamBelas,
+  jumlahEmpatPuluhLima,
+  jumlahEnam,
+  jumlahLima,
   jumlahLimaBelas,
+  jumlahNol,
   jumlahSembilan,
-  jumlahTigaPuluhDua,
+  jumlahTigaPuluh,
+  jumlahTigaPuluhLima,
+  kataKomputer,
 } from "@/lib/nilai-mtk-4-bab6";
 import type { CuplikanVoiceMateri } from "@/lib/naskah-voice-pai-1-bab2";
 import { bacaProgres } from "@/lib/progres";
@@ -48,17 +50,17 @@ function KartuBingkai({ children }: { children: ReactNode; latar?: string }) {
 }
 
 const WARNA_DIALOG: Record<string, string> = {
-  Nisa: "border-teal-300 bg-teal-50",
-  Farhan: "border-orange-300 bg-orange-50",
-  Cinta: "border-violet-300 bg-violet-50",
-  Igil: "border-amber-300 bg-amber-50",
+  Raka: "border-teal-300 bg-teal-50",
+  Sinta: "border-orange-300 bg-orange-50",
+  "Merpati Piko": "border-violet-300 bg-violet-50",
+  "Reporter IGIL": "border-amber-300 bg-amber-50",
 };
 
 const WAJAH_DIALOG: Record<string, string> = {
-  Nisa: "👧",
-  Farhan: "👦",
-  Cinta: "👧",
-  Igil: "🦉",
+  Raka: "👦",
+  Sinta: "👧",
+  "Merpati Piko": "🕊️",
+  "Reporter IGIL": "🦉",
 };
 
 function Dialog({ nama, anak }: { nama: string; anak: string }) {
@@ -206,7 +208,7 @@ function KuisCocok({ id, perintah, baris, umpan }: { id: string; perintah: strin
         ))}
       </div>
       <button type="button" disabled={!lengkap} onClick={() => { setCek(true); if (tepat) kuis?.tandaiBenar(id); }} className="mt-3 rounded-full bg-emerald-600 px-4 py-2 text-sm font-black text-white disabled:opacity-50">Periksa pasangan</button>
-      {cek ? <div className="mt-3"><HasilJawabanKuis status={tepat ? "benar" : "salah"} pesanSalah="Cocokkan lagi dengan gambarnya." />{tepat ? <p className="mt-2 text-sm font-bold text-emerald-800">{umpan}</p> : null}</div> : null}
+      {cek ? <div className="mt-3"><HasilJawabanKuis status={tepat ? "benar" : "salah"} pesanSalah="Cocokkan lagi dengan datanya." />{tepat ? <p className="mt-2 text-sm font-bold text-emerald-800">{umpan}</p> : null}</div> : null}
     </article>
   );
 }
@@ -275,7 +277,7 @@ function SusunToken({ id, perintah, acak, benar, umpan }: { id: string; perintah
         <button type="button" onClick={() => { setSusun((lama) => { const akhir = lama[lama.length - 1]; if (akhir) setSisa((kartu) => [...kartu, akhir]); return lama.slice(0, -1); }); setStatus(null); }} className="rounded-full bg-white px-4 py-2 text-sm font-bold text-slate-700 ring-2 ring-slate-200">Urungkan</button>
         <button type="button" onClick={periksa} className="rounded-full bg-sky-600 px-4 py-2 text-sm font-black text-white">Periksa urutan</button>
       </div>
-      <HasilJawabanKuis status={status} pesanSalah="Lihat kuncinya, lalu susun dari yang paling sedikit." />
+      <HasilJawabanKuis status={status} pesanSalah="Susun lagi sesuai perintah." />
       <Umpan status={status} teks={umpan} />
     </article>
   );
@@ -307,93 +309,117 @@ function KuisBenarSalah({ id, perintah, baris, umpan }: { id: string; perintah: 
         ))}
       </div>
       <button type="button" disabled={!lengkap} onClick={periksa} className="mt-3 rounded-full bg-violet-700 px-4 py-2 text-sm font-black text-white disabled:opacity-50">Periksa pernyataan</button>
-      <HasilJawabanKuis status={status} pesanSalah="Cek kunci gambar atau ujung batang, lalu pilih ulang." />
+      <HasilJawabanKuis status={status} pesanSalah="Baca kuncinya dulu, lalu pilih ulang." />
       <Umpan status={status} teks={umpan} />
     </article>
   );
 }
 
-function DeretMangga({ jumlah }: { jumlah: number }) {
+function DiagramTegak({ data, max = 30 }: { data: { nama: string; nilai: number; warna: string }[]; max?: number }) {
   return (
-    <p className="text-center text-3xl leading-relaxed tracking-wide">
-      {Array.from({ length: jumlah }, () => "🥭").join(" ")}
-    </p>
-  );
-}
-
-function Batang({ tinggi }: { tinggi: number }) {
-  return (
-    <div className="mx-auto flex h-28 w-16 items-end justify-center rounded-lg bg-amber-50" aria-hidden>
-      <div className="w-10 rounded-t-md bg-amber-500" style={{ height: `${tinggi}%` }} />
+    <div className="flex h-44 items-end justify-center gap-3">
+      {data.map((item) => (
+        <div key={item.nama} className="flex w-14 flex-col items-center gap-1">
+          <p className="text-xs font-black text-[#1C01A5]">{item.nilai}</p>
+          <div className="flex h-32 w-10 items-end rounded-md bg-sky-50 ring-1 ring-sky-200">
+            <div className={`w-full rounded-t-md ${item.warna}`} style={{ height: `${(item.nilai / max) * 100}%` }} />
+          </div>
+          <p className="text-center text-[11px] font-black leading-tight text-slate-700">{item.nama}</p>
+        </div>
+      ))}
     </div>
   );
 }
 
-const BANYAK_A = ["8", "9", "1"];
-const HARI_B = ["14 buku", "3 buku", "6 buku"];
-const BANYAK_D = ["9", "8", "1"];
+function TarikBatang({ id, perintah, target, umpan }: { id: string; perintah: string; target: number; umpan: string }) {
+  const kuis = useKuisMateri();
+  const [nilai, setNilai] = useState(5);
+  const [status, setStatus] = useState<StatusJawabanKuis>(null);
+  const periksa = () => {
+    const tepat = nilai === target;
+    setStatus(tepat ? "benar" : "salah");
+    if (tepat) kuis?.tandaiBenar(id);
+  };
+  return (
+    <article className="rounded-2xl border-2 border-amber-200 bg-amber-50 p-4">
+      <p className="text-sm font-black text-[#1C01A5]">{perintah}</p>
+      <div className="mx-auto mt-3 flex h-40 w-16 items-end rounded-lg bg-white ring-2 ring-amber-200">
+        <div className="w-full rounded-t-md bg-amber-500 transition-all" style={{ height: `${(nilai / 50) * 100}%` }} />
+      </div>
+      <p className="mt-2 text-center text-lg font-black text-[#1C01A5]">{nilai}</p>
+      <input className="mt-1 h-12 w-full accent-[#1C01A5]" type="range" min={0} max={50} step={5} value={nilai} onChange={(e) => { setNilai(Number(e.target.value)); setStatus(null); }} />
+      <button type="button" onClick={periksa} className="mt-3 rounded-full bg-amber-600 px-4 py-2 text-sm font-black text-white">Periksa tinggi</button>
+      <HasilJawabanKuis status={status} pesanSalah="Tarik sampai ujung batang sejajar 35." />
+      <Umpan status={status} teks={umpan} />
+    </article>
+  );
+}
+
+const BUAH_B = ["30", "45", "25"];
+const NILAI_D = ["12 siswa", "8 siswa", "30 siswa"];
+const EKSKUL = [
+  { nama: "Futsal", nilai: 25, warna: "bg-sky-500" },
+  { nama: "Tari", nilai: 15, warna: "bg-rose-500" },
+  { nama: "Komputer", nilai: 20, warna: "bg-emerald-500" },
+  { nama: "Lukis", nilai: 10, warna: "bg-amber-400" },
+];
 
 function KartuA({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminGuru }) {
   const kartu = MODUL_MTK4_BAB6.kartu[0];
   return (
     <KartuBingkai>
-      <KepalaKartu ikon="🥭👧👦🦉" judul="A. Lapak Mangga" anak="Nisa, Farhan, Cinta, dan Igil" kelas={kelas} kelamin={kelamin} cuplikan={cuplikanKalimat(kartu.voice[0] ?? [])} />
+      <KepalaKartu ikon="🎤🦉" judul="A. Naskah Bergambar" anak="Raka, Sinta, Merpati Piko, dan Reporter IGIL" kelas={kelas} kelamin={kelamin} cuplikan={cuplikanKalimat(kartu.voice[0] ?? [])} />
       <TujuanBelajar butir={["Menampilkan data dalam bentuk piktogram.", "Menafsirkan data dari piktogram.", "Menampilkan data dalam bentuk diagram batang.", "Menafsirkan data dari diagram batang."]} />
       <div className="mt-4 space-y-4">
-        <Adegan utama judul="Sub-bab A — Gambar satu-satu" src="/doodle-mtk/mtk-4-bab6-sub1.jpg" alt="Tiga anak dan burung hantu bertopi biru menyusun gambar mangga di lapak." kelas={kelas} kelamin={kelamin} penjelasan={["Piktogram memakai gambar untuk menghitung tiap jenis. Gambar dalam satu baris harus sama. Jika kuncinya satu, hitung gambarnya."]}>
-          <Dialog nama="Nisa" anak="Di kelas ada 2 papan tulis, 1 jam dinding, 1 lemari, dan 8 hiasan dinding." />
-          <Dialog nama="Farhan" anak="Hiasan dinding paling banyak. Jam dan lemari sama-sama paling sedikit." />
-          <Dialog nama="Cinta" anak="Mainan Karel: 6 mobil, 4 robot, 3 pesawat, 1 puzzle, dan 9 kelereng." />
-          <Dialog nama="Igil" anak="Jumlah mainan Karel 23. Kelereng paling banyak. Puzzle paling sedikit." />
-          <Papan anak="hiasan 8    ·    jam 1    ·    kelereng 9" />
-          <p className="pt-2 text-sm font-black uppercase tracking-wide text-[#1C01A5]">Infografis: Gambar sama</p>
-          <PetaContoh pusat="Gambar" cabang={[{ ikon: "🥭", judul: "Satu baris", isi: "gambarnya sama" }, { ikon: "👁️", judul: "Kunci 1", isi: "hitung gambar" }, { ikon: "🏆", judul: "Paling banyak", isi: "hiasan 8" }]} kolom={["Benda", "Banyak"]} baris={[["Hiasan dinding", "8"], ["Jam dinding", "1"], ["Kelereng Karel", "9"]]} />
-          <KuisSuara id={idKuis("A", 0)} pertanyaan="Hiasan dinding di kelas ada berapa? Sebutkan angkanya." periksa={jumlahDelapan} petunjuk="Itu benda yang paling banyak di kelas." benar="8 hiasan dinding." />
-          <TulisBebas id={idKuis("A", 1)} judul="Kelereng Karel" visual={<Papan anak="mobil 6 · robot 4 · pesawat 3 · puzzle 1 · kelereng ?" />} pertanyaan="Tulis banyak kelereng Karel." pesanSalah="Lihat mainan yang paling banyak." bantuan="Kelereng Karel ada 9." umpan="9 kelereng." periksa={jumlahSembilan} alias={["9"]} konteks="Kelereng Karel ada 9 buah." />
+        <Adegan utama judul="Sub-bab A — Piktogram berskala" src="/doodle-mtk/mtk-4-bab6-sub1.jpg" alt="Tiga anak dan burung hantu bertopi biru menyusun gambar mangga di lapak." kelas={kelas} kelamin={kelamin} penjelasan={["Halo jurnalis cilik! Bersama Reporter IGIL, kita menyajikan berita memakai piktogram.", "Satu gambar bisa mewakili lebih dari satu benda. Baca keterangan di bawah tabel dulu."]}>
+          <Papan anak={"Buku dari perpustakaan\nSenin 📘📘📘📘\nSelasa 📘📘📘\nRabu 📘📘📘📘📘\n1 📘 = 5 siswa"} />
+          <Dialog nama="Raka" anak="Lihat papan ini. Senin cuma ada 4 gambar buku. Berarti yang mengambil buku hari Senin cuma 4 siswa ya?" />
+          <Dialog nama="Sinta" anak="Baca dulu kotak keterangan di bawah tabel. Satu gambar buku mewakili 5 siswa." />
+          <Dialog nama="Reporter IGIL" anak="Tepat, Sinta. Senin ada 4 gambar. Setiap gambar bernilai 5. Jadi 4 × 5 = 20 siswa." />
+          <KuisSuara id={idKuis("A", 0)} pertanyaan="Satu gambar buku mewakili 5 siswa. Selasa ada 3 gambar. Berapa siswa yang mengambil buku hari Selasa?" periksa={jumlahLimaBelas} petunjuk="Kalikan 3 dengan 5." benar="15 siswa." />
+          <TulisBebas id={idKuis("A", 1)} judul="Hari Kamis" visual={<Papan anak="Kamis: 30 siswa · 1 📘 = 5" />} pertanyaan="Jika Kamis ada 30 siswa, berapa gambar buku yang dipasang? Hitung 30 dibagi 5, lalu tulis angkanya." pesanSalah="Bagi 30 dengan nilai 1 gambar." bantuan="30 dibagi 5 sama dengan 6." umpan="6 gambar." periksa={jumlahEnam} alias={["6"]} konteks="Tiga puluh dibagi lima sama dengan 6 gambar." />
         </Adegan>
-        <Adegan utama judul="Sub-bab A — Baca kunci" src="/doodle-mtk/mtk-4-bab6-sub2.jpg" alt="Papan gambar mangga di lapak. Burung hantu bertopi biru menunjuk kuncinya." kelas={kelas} kelamin={kelamin} penjelasan={["Baca kunci dulu. Satu gambar bisa berarti 1 benda, atau lebih. Piktogram disebut juga diagram gambar."]}>
-          <Dialog nama="Igil" anak="Warna kesukaan: ungu 4, kuning 2, hitam 1, merah 5. Satu gambar berarti 1 siswa." />
-          <Dialog nama="Nisa" anak="Merah paling banyak. Jumlah keempat warna 4 + 2 + 1 + 5 = 12 siswa." />
-          <Dialog nama="Farhan" anak="Kelas IV ada 8 gambar. Satu gambar = 4 siswa. Jadi 32 siswa." />
-          <Dialog nama="Cinta" anak="Kelas I dan kelas II masing-masing 24 siswa. Kelas V paling sedikit." />
-          <Papan anak="8 gambar × 4 = 32 siswa" />
-          <p className="pt-2 text-sm font-black uppercase tracking-wide text-[#1C01A5]">Infografis: Baca kunci</p>
-          <PetaContoh pusat="Kunci" cabang={[{ ikon: "🎨", judul: "Warna", isi: "jumlah 12" }, { ikon: "✖️", judul: "Kelas IV", isi: "8 × 4 = 32" }, { ikon: "🖼️", judul: "Nama lain", isi: "diagram gambar" }]} kolom={["Data", "Hasil"]} baris={[["4 warna", "12 siswa"], ["Kelas IV", "32 siswa"], ["Kelas I", "24 siswa"]]} />
-          <KuisSuara id={idKuis("A", 2)} pertanyaan="Ungu 4, kuning 2, hitam 1, merah 5. Sebutkan jumlah siswanya." periksa={jumlahDuaBelas} petunjuk="Jumlahkan keempat warna itu." benar="12 siswa." />
-          <TulisBebas id={idKuis("A", 3)} judul="Kelas IV" visual={<Papan anak="8 gambar × 4 siswa" />} pertanyaan="Tulis banyak siswa kelas IV." pesanSalah="Kalikan banyak gambar dengan kuncinya." bantuan="8 kali 4 sama dengan 32." umpan="32 siswa." periksa={jumlahTigaPuluhDua} alias={["32"]} konteks="Delapan gambar kali 4 siswa sama dengan 32 siswa." />
+        <Adegan utama judul="Sub-bab B — Diagram batang" src="/doodle-mtk/mtk-4-bab6-sub2.jpg" alt="Papan gambar mangga di lapak. Burung hantu bertopi biru menunjuk kuncinya." kelas={kelas} kelamin={kelamin} penjelasan={["Selain piktogram, jurnalis juga memakai diagram batang.", "Ada sumbu kategori dan sumbu skala. Tinggi atau panjang batang menunjukkan banyak datanya."]}>
+          <DiagramTegak data={EKSKUL} max={30} />
+          <Dialog nama="Merpati Piko" anak="Kurr! Tarik jari dari ujung atas batang ke garis angka di kiri." />
+          <Dialog nama="Raka" anak="Batang Futsal paling tinggi, ujungnya di 25. Lukis paling rendah di 10." />
+          <Dialog nama="Reporter IGIL" anak="Hebat. Batang juga bisa diputar jadi mendatar, nilainya tetap. Selisih Futsal 25 dan Lukis 10 adalah 15 siswa." />
+          <KuisSuara id={idKuis("A", 2)} pertanyaan="Lihat diagram batang. Ekstrakurikuler manakah yang diikuti tepat 20 siswa? Sebutkan namanya." periksa={kataKomputer} petunjuk="Cari batang yang ujungnya di 20." benar="Komputer." />
+          <TulisBebas id={idKuis("A", 3)} judul="Selisih dua batang" visual={<Papan anak="Komputer 20 − Tari 15 = ?" />} pertanyaan="Berapa selisih peminat Komputer dan Tari? Tulis angkanya." pesanSalah="Kurangkan 20 dengan 15." bantuan="20 dikurangi 15 sama dengan 5." umpan="5 siswa." periksa={jumlahLima} alias={["5"]} konteks="Dua puluh dikurangi lima belas sama dengan 5." />
         </Adegan>
-        <Adegan utama judul="Sub-bab B — Batang tegak" src="/doodle-mtk/mtk-4-bab6-sub3.jpg" alt="Diagram batang kosong di lapak mangga. Burung hantu bertopi biru bersama tiga anak." kelas={kelas} kelamin={kelamin} penjelasan={["Diagram batang memakai persegi panjang. Batang tegak: yang lebih tinggi lebih banyak. Sumbu angka wajib ada."]}>
-          <Dialog nama="Cinta" anak="Sepak bola diikuti 9 siswa. Batangnya paling tinggi." />
-          <Dialog nama="Farhan" anak="Catur hanya 2 siswa." />
-          <Dialog nama="Nisa" anak="Lomba matematika 15 siswa. Puisi hanya 3, itu yang paling sedikit." />
-          <Dialog nama="Igil" anak="IPA 6 dan Pengetahuan Umum 6. Dua batang itu sama tinggi." />
-          <Papan anak="sepak bola 9    ·    matematika 15    ·    puisi 3" />
-          <p className="pt-2 text-sm font-black uppercase tracking-wide text-[#1C01A5]">Infografis: Lebih tinggi</p>
-          <PetaContoh pusat="Tegak" cabang={[{ ikon: "⚽", judul: "Sepak bola", isi: "9 siswa" }, { ikon: "📐", judul: "Matematika", isi: "15 siswa" }, { ikon: "📏", judul: "Sumbu", isi: "angka wajib" }]} kolom={["Lomba", "Siswa"]} baris={[["Matematika", "15"], ["Puisi", "3"], ["IPA", "6"]]} />
-          <KuisSuara id={idKuis("A", 4)} pertanyaan="Ekstrakurikuler sepak bola diikuti berapa siswa? Sebutkan angkanya." periksa={jumlahSembilan} petunjuk="Itu batang yang paling tinggi." benar="9 siswa." />
-          <TulisBebas id={idKuis("A", 5)} judul="Lomba matematika" visual={<Batang tinggi={90} />} pertanyaan="Tulis banyak siswa yang mengikuti lomba matematika." pesanSalah="Lihat batang yang paling tinggi pada lomba." bantuan="Lomba matematika diikuti 15 siswa." umpan="15 siswa." periksa={jumlahLimaBelas} alias={["15"]} konteks="Lomba matematika diikuti 15 siswa." />
+        <Pilih id={idKuis("A", 4)} pertanyaan="Piktogram jus menampilkan 4 gambar gelas. Satu gambar = 10 gelas. Jumlah jus mangga..." visual={<Papan anak="🍹🍹🍹🍹 · 1 🍹 = 10" />} pilihan={[{ huruf: "A", teks: "4 gelas" }, { huruf: "B", teks: "14 gelas" }, { huruf: "C", teks: "40 gelas" }, { huruf: "D", teks: "10 gelas" }]} benar="C" umpan="4 × 10 = 40 gelas." salah="Kalikan banyak gambar dengan kuncinya." />
+        <KuisCocok id={idKuis("A", 5)} perintah="Pasangkan buah dengan angka di ujung batangnya." baris={[{ kiri: "Apel", pilihan: BUAH_B, benar: "30" }, { kiri: "Jeruk", pilihan: BUAH_B, benar: "45" }, { kiri: "Anggur", pilihan: BUAH_B, benar: "25" }]} umpan="Apel 30, jeruk 45, anggur 25." />
+        <KuisBenarSalah id={idKuis("A", 6)} perintah="Pilih benar atau salah." baris={[{ teks: "Satu gambar mobil = 4 mobil. Untuk 12 mobil, Raka menggambar 12 gambar mobil.", benar: false }]} umpan="Salah. 12 dibagi 4 sama dengan 3 gambar." />
+        <TarikBatang id={idKuis("A", 7)} perintah="Panen jagung 35 ton. Tarik ujung batang Jagung sampai sejajar garis 35." target={35} umpan="Batang berhenti di 35." />
+        <SusunToken id={idKuis("A", 8)} perintah="Susun kota dari yang paling besar ke yang paling kecil. Kota A 40, Kota B 20, Kota C 50, Kota D 30." acak={["Kota A", "Kota B", "Kota C", "Kota D"]} benar={["Kota C", "Kota A", "Kota D", "Kota B"]} umpan="C 50, A 40, D 30, lalu B 20." />
+      </div>
+    </KartuBingkai>
+  );
+}
+
+function KartuB({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminGuru }) {
+  const kartu = MODUL_MTK4_BAB6.kartu[1];
+  return (
+    <KartuBingkai>
+      <KepalaKartu ikon="📊🔑" judul="B. Infografis" anak="Rumus piktogram dan anatomi batang" kelas={kelas} kelamin={kelamin} cuplikan={cuplikanKalimat(kartu.voice[0] ?? [])} />
+      <div className="mt-4 space-y-4">
+        <Adegan utama judul="Infografis: Rumus piktogram berskala" src="/doodle-mtk/mtk-4-bab6-sub3.jpg" alt="Diagram batang kosong di lapak mangga. Burung hantu bertopi biru bersama tiga anak." kelas={kelas} kelamin={kelamin} penjelasan={["Ingat kunci piktogram kelas 4: baca nilai skala pada keterangannya.", "Kalikan jumlah gambar dengan nilai 1 gambar untuk tahu jumlah sebenarnya."]}>
+          <p className="pt-2 text-sm font-black uppercase tracking-wide text-[#1C01A5]">Infografis: Kali dengan skala</p>
+          <PetaContoh pusat="Gambar × kunci" cabang={[{ ikon: "🔑", judul: "Rumus", isi: "banyak × nilai 1 gambar" }, { ikon: "🍎", judul: "3 utuh", isi: "3 × 4 = 12" }, { ikon: "🌗", judul: "Setengah", isi: "setengah dari 4 = 2" }]} kolom={["Gambar", "Hitung"]} baris={[["3 utuh", "12 apel"], ["1 setengah", "2 apel"], ["Jumlah", "14 apel"]]} />
+          <KuisSuara id={idKuis("B", 0)} pertanyaan="Jika 1 gambar lingkaran penuh mewakili 10 orang, maka setengah gambar lingkaran mewakili berapa orang?" periksa={jumlahLima} petunjuk="Ambil setengah dari 10." benar="5 orang." />
+          <TulisBebas id={idKuis("B", 1)} judul="Tujuh bola" visual={<Papan anak="⚽⚽⚽⚽⚽⚽⚽ · 1 ⚽ = 2" />} pertanyaan="Jika 1 gambar bola mewakili 2 bola, dan ada 7 gambar, berapa jumlah bola sebenarnya? Tulis angkanya." pesanSalah="Kalikan 7 dengan 2." bantuan="7 kali 2 sama dengan 14." umpan="14 bola." periksa={jumlahEmpatBelas} alias={["14"]} konteks="Tujuh kali dua sama dengan 14 bola." />
         </Adegan>
-        <Adegan utama judul="Sub-bab B — Batang mendatar" src="/doodle-mtk/mtk-4-bab6-sub4.jpg" alt="Dua batang yang tingginya berbeda di lapak mangga. Burung hantu bertopi biru membandingkannya." kelas={kelas} kelamin={kelamin} penjelasan={["Batang mendatar dibaca dari panjangnya. Yang lebih panjang lebih banyak. Data yang sama boleh disajikan sebagai gambar atau batang."]}>
-          <Dialog nama="Nisa" anak="Bunga kertas 9, paling banyak. Bunga matahari 3, paling sedikit." />
-          <Dialog nama="Farhan" anak="Melati ada 8. Kertas ditambah anggrek: 9 + 7 = 16." />
-          <Dialog nama="Cinta" anak="Ke sekolah, sepeda motor 14 siswa. Mobil hanya 3, paling sedikit." />
-          <Dialog nama="Igil" anak="Renang 2 siswa, paling sedikit. Menyanyi paling banyak. Catur dan renang berjumlah 7." />
-          <Papan anak="kertas 9    ·    matahari 3    ·    motor 14" />
-          <p className="pt-2 text-sm font-black uppercase tracking-wide text-[#1C01A5]">Infografis: Lebih panjang</p>
-          <PetaContoh pusat="Mendatar" cabang={[{ ikon: "🌸", judul: "Kertas", isi: "9 bunga" }, { ikon: "🌻", judul: "Matahari", isi: "3 bunga" }, { ikon: "🏍️", judul: "Motor", isi: "14 siswa" }]} kolom={["Data", "Banyak"]} baris={[["Bunga kertas", "9"], ["Bunga matahari", "3"], ["Sepeda motor", "14"]]} />
-          <KuisSuara id={idKuis("A", 6)} pertanyaan="Lomba renang diikuti berapa siswa? Sebutkan angkanya." periksa={jumlahDua} petunjuk="Itu lomba yang paling sedikit." benar="2 siswa." />
-          <TulisBebas id={idKuis("A", 7)} judul="Dua bunga" visual={<Papan anak="kertas 9 + anggrek 7" />} pertanyaan="Tulis jumlah bunga kertas dan bunga anggrek." pesanSalah="Jumlahkan kedua bunga itu." bantuan="9 ditambah 7 sama dengan 16." umpan="16 bunga." periksa={jumlahEnamBelas} alias={["16"]} konteks="Sembilan ditambah tujuh sama dengan 16 bunga." />
+        <Adegan utama judul="Infografis: Anatomi diagram batang" src="/doodle-mtk/mtk-4-bab6-sub4.jpg" alt="Dua batang yang tingginya berbeda di lapak mangga. Burung hantu bertopi biru membandingkannya." kelas={kelas} kelamin={kelamin} penjelasan={["Saat membaca atau menggambar diagram batang, jarak antar-angka pada garis skala selalu tetap.", "Lompat 2, lompat 5, atau lompat 10. Jangan campur."]}>
+          <p className="pt-2 text-sm font-black uppercase tracking-wide text-[#1C01A5]">Infografis: Tiga bagian batang</p>
+          <PetaContoh pusat="Diagram batang" cabang={[{ ikon: "🏷️", judul: "Judul", isi: "paling atas" }, { ikon: "📛", judul: "Kategori", isi: "jarak batang sama" }, { ikon: "0️⃣", judul: "Skala", isi: "mulai dari 0" }]} kolom={["Bagian", "Isi"]} baris={[["Judul", "nama data"], ["Sumbu kategori", "nama benda"], ["Sumbu skala", "0, 5, 10, 15"]]} />
+          <KuisSuara id={idKuis("B", 2)} pertanyaan="Garis angka pada sumbu skala diagram batang harus selalu dimulai dari angka berapa?" periksa={jumlahNol} petunjuk="Itu angka paling bawah pada skala." benar="Nol." />
+          <TulisBebas id={idKuis("B", 3)} judul="Tengah dua garis" visual={<Papan anak="20 · ? · 30" />} pertanyaan="Ujung sebuah batang berhenti tepat di tengah antara garis 20 dan 30. Berapa nilai batang itu? Tulis angkanya." pesanSalah="Ambil nilai di tengah 20 dan 30." bantuan="Tengah 20 dan 30 adalah 25." umpan="25." periksa={jumlahDuaPuluhLima} alias={["25"]} konteks="Tengah dua puluh dan tiga puluh adalah 25." />
         </Adegan>
-        <Pilih id={idKuis("A", 8)} pertanyaan="Piktogram juga disebut..." visual={<DeretMangga jumlah={4} />} pilihan={[{ huruf: "A", teks: "Tabel saja" }, { huruf: "B", teks: "Diagram gambar" }, { huruf: "C", teks: "Diagram lingkaran" }, { huruf: "D", teks: "Cerita" }]} benar="B" umpan="Piktogram adalah diagram gambar." salah="Piktogram memakai gambar untuk menyajikan data." />
-        <KuisCocok id={idKuis("A", 9)} perintah="Pasangkan benda dengan banyaknya." baris={[{ kiri: "Hiasan dinding", pilihan: BANYAK_A, benar: "8" }, { kiri: "Kelereng Karel", pilihan: BANYAK_A, benar: "9" }, { kiri: "Jam dinding", pilihan: BANYAK_A, benar: "1" }]} umpan="Hiasan 8, kelereng 9, dan jam dinding 1." />
-        <SusunToken id={idKuis("A", 10)} perintah="Susun bunga dari yang paling sedikit." acak={["5", "9", "3", "4"]} benar={["3", "4", "5", "9"]} umpan="3, 4, 5, 9. Matahari, sepatu, mawar, lalu kertas." />
-        <KuisBenarSalah id={idKuis("A", 11)} perintah="Pilih benar atau salah." baris={[{ teks: "Piktogram bukan diagram gambar.", benar: false }, { teks: "Batang tegak yang lebih tinggi lebih banyak.", benar: true }, { teks: "Kunci gambar boleh diabaikan.", benar: false }]} umpan="Hanya yang kedua benar. Piktogram adalah diagram gambar. Kunci wajib dibaca." />
-        <Pilih id={idKuis("A", 12)} pertanyaan="Ada 6 gambar. Satu gambar = 4 siswa. Banyak siswa..." visual={<Papan anak="6 gambar × 4" />} pilihan={[{ huruf: "A", teks: "6" }, { huruf: "B", teks: "10" }, { huruf: "C", teks: "24" }, { huruf: "D", teks: "4" }]} benar="C" umpan="6 kali 4 sama dengan 24 siswa." salah="Kalikan banyak gambar dengan kuncinya." />
-        <Pilih id={idKuis("B", 0)} pertanyaan="Alat ke sekolah yang paling banyak dipakai siswa..." pilihan={[{ huruf: "A", teks: "Mobil" }, { huruf: "B", teks: "Sepeda motor" }, { huruf: "C", teks: "Becak" }, { huruf: "D", teks: "Jalan kaki" }]} benar="B" umpan="Sepeda motor dipakai 14 siswa. Itu yang paling banyak." salah="Bandingkan 14, 8, 5, dan 3." />
-        <KuisCocok id={idKuis("B", 1)} perintah="Pasangkan hari dengan banyak bukunya." baris={[{ kiri: "Sabtu", pilihan: HARI_B, benar: "14 buku" }, { kiri: "Kamis", pilihan: HARI_B, benar: "3 buku" }, { kiri: "Selasa", pilihan: HARI_B, benar: "6 buku" }]} umpan="Sabtu 14, Kamis 3, Selasa 6." />
-        <SusunToken id={idKuis("B", 2)} perintah="Susun benda di meja guru dari yang paling sedikit." acak={["3", "1", "4", "2"]} benar={["1", "2", "3", "4"]} umpan="1, 2, 3, 4. Taplak atau penghapus, pulpen, spidol, lalu buku." />
-        <KuisBenarSalah id={idKuis("B", 3)} perintah="Pilih benar atau salah." baris={[{ teks: "Batang mendatar yang lebih panjang lebih banyak.", benar: true }, { teks: "Kelas V siswanya paling banyak.", benar: false }, { teks: "Data meja guru boleh disajikan sebagai gambar atau batang.", benar: true }]} umpan="Yang pertama dan ketiga benar. Kelas IV yang paling banyak, kelas V yang paling sedikit." />
-        <Pilih id={idKuis("B", 4)} pertanyaan="Catur diikuti 5 siswa. Renang diikuti 2 siswa. Jumlahnya..." visual={<Papan anak="catur 5 + renang 2" />} pilihan={[{ huruf: "A", teks: "3" }, { huruf: "B", teks: "10" }, { huruf: "C", teks: "7" }, { huruf: "D", teks: "2" }]} benar="C" umpan="5 + 2 = 7 siswa." salah="Jumlahkan kedua lomba itu." />
+        <Pilih id={idKuis("B", 4)} pertanyaan="Satu gambar kue = 6 biskuit. Toples A berisi 2 gambar utuh dan 1 gambar setengah. Jumlah biskuit..." visual={<Papan anak="🍪 🍪 🌗 · 1 🍪 = 6" />} pilihan={[{ huruf: "A", teks: "12" }, { huruf: "B", teks: "15" }, { huruf: "C", teks: "18" }, { huruf: "D", teks: "9" }]} benar="B" umpan="6 + 6 + 3 = 15 biskuit." salah="Setengah gambar bernilai 3." />
+        <Pilih id={idKuis("B", 5)} pertanyaan="Sumbu tegak: 0, 4, 8, ?, 16, 20. Angka yang hilang..." visual={<Papan anak="0 · 4 · 8 · ? · 16 · 20" />} pilihan={[{ huruf: "A", teks: "10" }, { huruf: "B", teks: "14" }, { huruf: "C", teks: "12" }, { huruf: "D", teks: "9" }]} benar="C" umpan="Lompat 4. Setelah 8 adalah 12." salah="Lihat jarak antar-angka." />
+        <Pilih id={idKuis("B", 6)} pertanyaan="Piktogram kelas 4A: 3 bintang. Satu bintang = 10 siswa. Ketuk batang yang tingginya benar." visual={<DiagramTegak data={[{ nama: "A", nilai: 10, warna: "bg-sky-400" }, { nama: "B", nilai: 30, warna: "bg-emerald-500" }, { nama: "C", nilai: 3, warna: "bg-amber-400" }]} max={30} />} pilihan={[{ huruf: "A", teks: "Batang A setinggi 10" }, { huruf: "B", teks: "Batang B setinggi 30" }, { huruf: "C", teks: "Batang C setinggi 3" }, { huruf: "D", teks: "Tidak ada yang cocok" }]} benar="B" umpan="3 × 10 = 30. Batang B." salah="Kalikan 3 dengan 10." />
+        <Pilih id={idKuis("B", 7)} pertanyaan="Batang mendatar: bulu tangkis 35, renang 20. Selisih keduanya..." pilihan={[{ huruf: "A", teks: "55" }, { huruf: "B", teks: "35" }, { huruf: "C", teks: "15" }, { huruf: "D", teks: "20" }]} benar="C" umpan="35 − 20 = 15." salah="Kurangkan kedua olahraga itu." />
+        <Pilih id={idKuis("B", 8)} pertanyaan="Tabel: Senin 20, Selasa 30, Rabu 25. Pada diagram, batang Rabu digambar setinggi 35. Batang hari yang salah..." visual={<DiagramTegak data={[{ nama: "Senin", nilai: 20, warna: "bg-sky-400" }, { nama: "Selasa", nilai: 30, warna: "bg-emerald-500" }, { nama: "Rabu", nilai: 35, warna: "bg-rose-500" }]} max={40} />} pilihan={[{ huruf: "A", teks: "Senin" }, { huruf: "B", teks: "Selasa" }, { huruf: "C", teks: "Rabu" }, { huruf: "D", teks: "Semua benar" }]} benar="C" umpan="Rabu harus 25, bukan 35." salah="Bandingkan tabel dengan tinggi batang." />
       </div>
     </KartuBingkai>
   );
@@ -403,12 +429,12 @@ function KartuC({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminGuru }) {
   const kartu = MODUL_MTK4_BAB6.kartu[2];
   return (
     <KartuBingkai>
-      <KepalaKartu ikon="🥭🦉" judul={kartu.judul} anak="Sepuluh pos mangga" kelas={kelas} kelamin={kelamin} cuplikan={cuplikanKalimat(kartu.voice[0] ?? [])} />
+      <KepalaKartu ikon="⭐🦉" judul={kartu.judul} anak="Sepuluh laporan redaksi" kelas={kelas} kelamin={kelamin} cuplikan={cuplikanKalimat(kartu.voice[0] ?? [])} />
       {/* eslint-disable-next-line @next/next/no-img-element */}
       <img src="/doodle-mtk/mtk-4-bab6-permainan.jpg" alt="Sepuluh mangga berjajar dua baris. Burung hantu bertopi biru memegang stempel. Tiga anak berdiri di awal." className="mt-4 w-full rounded-xl border border-[#1C01A5]/10 bg-white object-cover" />
-      <p className="mt-3 text-center text-sm font-semibold text-slate-600">Sepuluh soal gambar dan batang. Pilih satu pos, lalu jawab.</p>
+      <p className="mt-3 text-center text-sm font-semibold text-slate-600">Sepuluh laporan piktogram dan diagram batang. Pilih satu pos, lalu jawab.</p>
       <div className="mt-4">
-        <MisiPenjagaKebun misi={MISI_MTK4_BAB6} idMisi={(indeks) => idKuis("C", indeks)} idTulis={idKuisTulisKartu(ID, "C")} tema={TEMA_MTK4_BAB6} penutup="Lapak tutup. Igil menempelkan stempel mangga." bunga="🥭📊🦉" />
+        <MisiPenjagaKebun misi={MISI_MTK4_BAB6} idMisi={(indeks) => idKuis("C", indeks)} idTulis={idKuisTulisKartu(ID, "C")} tema={TEMA_MTK4_BAB6} penutup="Redaksi tutup. Igil menempelkan stempel bintang." bunga="⭐📊🦉" />
       </div>
     </KartuBingkai>
   );
@@ -423,8 +449,8 @@ function LembarEvaluasi({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminG
     for (let indeks = 0; indeks < 10; indeks += 1) if (kuis?.sudahBenar(idKuis("D", indeks))) jumlahSkor += 1;
     return jumlahSkor;
   }, [kuis]);
-  const lencana = skor >= 9 ? "🥇 Juru Lapak Mangga" : skor >= 6 ? "🥭 Penjaga Data" : "🦉 Sahabat Igil";
-  const pesan = skor >= 9 ? "Hebat! Gambar dan batangmu tepat." : skor >= 6 ? "Bagus! Sedikit lagi jadi juru lapak." : "Ayo baca kunci dan ujung batang lagi bersama Igil. Kamu pasti bisa.";
+  const lencana = skor >= 9 ? "🥇 Pemimpin Redaksi Cilik" : skor >= 6 ? "⭐ Jurnalis Data" : "🦉 Sahabat Igil";
+  const pesan = skor >= 9 ? "Hebat! Skala dan batangmu tepat." : skor >= 6 ? "Bagus! Sedikit lagi jadi pemimpin redaksi." : "Ayo baca keterangan skala lagi bersama Igil. Kamu pasti bisa.";
   return (
     <KartuBingkai>
       <KepalaKartu ikon="📝🦉" judul={kartu.judul} anak={`${nama} · Kelas 4 · ${skor} dari 10`} kelas={kelas} kelamin={kelamin} cuplikan={cuplikanKalimat(kartu.voice[0] ?? [])} />
@@ -432,16 +458,16 @@ function LembarEvaluasi({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminG
       <img src="/doodle-mtk/mtk-4-bab6-evaluasi.jpg" alt="Meja lapak dengan kertas kosong dan mangga. Burung hantu bertopi biru berdiri di samping." className="mt-4 w-full rounded-xl border border-[#1C01A5]/10 bg-white object-cover" />
       <p className="mt-4 text-center text-sm font-black text-[#1C01A5]">{lencana} · {pesan}</p>
       <div className="mt-4 space-y-3">
-        <TulisBebas id={idKuis("D", 0)} judul="1. Lomba matematika" visual={<Batang tinggi={90} />} pertanyaan="Tulis banyak siswa yang mengikuti lomba matematika." pesanSalah="Lihat batang lomba yang paling tinggi." bantuan="Lomba matematika diikuti 15 siswa." umpan="15 siswa." periksa={jumlahLimaBelas} alias={["15"]} konteks="Lomba matematika diikuti 15 siswa." />
-        <Pilih id={idKuis("D", 1)} pertanyaan="2. Mawar 5, kertas 9, sepatu 4, matahari 3. Bunga yang paling sedikit..." visual={<Papan anak="5 · 9 · 4 · 3" />} pilihan={[{ huruf: "A", teks: "Kertas" }, { huruf: "B", teks: "Matahari" }, { huruf: "C", teks: "Mawar" }, { huruf: "D", teks: "Sepatu" }]} benar="B" umpan="3 paling kecil. Itu bunga matahari." salah="Bandingkan keempat bunga itu." />
-        <KuisSuara id={idKuis("D", 2)} pertanyaan="3. Buku dari perpustakaan paling banyak pada hari Sabtu. Sebutkan angkanya." periksa={jumlahEmpatBelas} petunjuk="Hari itu ada 14 buku." benar="14 buku." />
-        <Pilih id={idKuis("D", 3)} pertanyaan="4. Piktogram juga disebut..." visual={<DeretMangga jumlah={3} />} pilihan={[{ huruf: "A", teks: "Diagram lingkaran" }, { huruf: "B", teks: "Diagram gambar" }, { huruf: "C", teks: "Tabel saja" }, { huruf: "D", teks: "Cerita" }]} benar="B" umpan="Piktogram adalah diagram gambar." salah="Piktogram memakai gambar." />
-        <KuisCocok id={idKuis("D", 4)} perintah="5. Pasangkan benda dengan banyaknya." baris={[{ kiri: "Kelereng Karel", pilihan: BANYAK_D, benar: "9" }, { kiri: "Hiasan dinding", pilihan: BANYAK_D, benar: "8" }, { kiri: "Jam dinding", pilihan: BANYAK_D, benar: "1" }]} umpan="Kelereng 9, hiasan 8, dan jam dinding 1." />
-        <TulisBebas id={idKuis("D", 5)} judul="6. Dua bunga" visual={<Papan anak="kertas 9 + anggrek 7" />} pertanyaan="Tulis jumlah bunga kertas dan bunga anggrek." pesanSalah="Jumlahkan kedua bunga itu." bantuan="9 ditambah 7 sama dengan 16." umpan="16 bunga." periksa={jumlahEnamBelas} alias={["16"]} konteks="Sembilan ditambah tujuh sama dengan 16 bunga." />
-        <Pilih id={idKuis("D", 6)} pertanyaan="7. Pada batang mendatar, batang yang lebih panjang berarti..." visual={<Papan anak="batang mendatar" />} pilihan={[{ huruf: "A", teks: "Lebih sedikit" }, { huruf: "B", teks: "Lebih banyak" }, { huruf: "C", teks: "Sama saja" }, { huruf: "D", teks: "Tidak ada data" }]} benar="B" umpan="Yang lebih panjang lebih banyak." salah="Baca panjang batangnya." />
-        <Pilih id={idKuis("D", 7)} pertanyaan="8. Meja guru: buku 4, taplak 1, spidol 3, penghapus 1, pulpen 2. Berapa kategori yang paling sedikit?" visual={<Papan anak="4 · 1 · 3 · 1 · 2" />} pilihan={[{ huruf: "A", teks: "1" }, { huruf: "B", teks: "2" }, { huruf: "C", teks: "4" }, { huruf: "D", teks: "3" }]} benar="B" umpan="Taplak dan penghapus sama-sama 1. Ada 2 kategori." salah="Cari angka yang paling kecil, lalu hitung berapa kategori." />
-        <KuisSuara id={idKuis("D", 8)} pertanyaan="9. Ada 6 gambar. Satu gambar = 4 siswa. Sebutkan banyak siswanya." periksa={jumlahDuaPuluhEmpat} petunjuk="Kalikan banyak gambar dengan kuncinya." benar="24 siswa." />
-        <Pilih id={idKuis("D", 9)} pertanyaan="10. Mobil 3, sepeda motor 14, becak 5, jalan kaki 8. Jumlah siswa kelas IV..." visual={<Papan anak="3 + 14 + 5 + 8" />} pilihan={[{ huruf: "A", teks: "14" }, { huruf: "B", teks: "11" }, { huruf: "C", teks: "30" }, { huruf: "D", teks: "8" }]} benar="C" umpan="3 + 14 + 5 + 8 = 30 siswa." salah="Jumlahkan keempat alat itu." />
+        <Pilih id={idKuis("D", 0)} pertanyaan="1. Panen semangka. Senin 🍉🍉🍉. Selasa 🍉🍉🌗. Satu gambar utuh = 10 buah. Jumlah Senin dan Selasa..." visual={<Papan anak="3 × 10  dan  2,5 × 10" />} pilihan={[{ huruf: "A", teks: "55 buah" }, { huruf: "B", teks: "60 buah" }, { huruf: "C", teks: "6 buah" }, { huruf: "D", teks: "50 buah" }]} benar="A" umpan="Senin 30. Selasa 25. Jumlah 55." salah="Hitung gambar setengah sebagai 5." />
+        <Pilih id={idKuis("D", 1)} pertanyaan="2. Baris kelas 4A menampilkan 6 gambar bintang. Siswanya 24 orang. Satu gambar bintang mewakili..." pilihan={[{ huruf: "A", teks: "3 orang" }, { huruf: "B", teks: "4 orang" }, { huruf: "C", teks: "6 orang" }, { huruf: "D", teks: "8 orang" }]} benar="B" umpan="24 ÷ 6 = 4 orang." salah="Bagi jumlah siswa dengan banyak gambar." />
+        <Pilih id={idKuis("D", 2)} pertanyaan="3. Total pengunjung 100. Senin 25, Selasa 20, Kamis 30. Batang Rabu seharusnya..." pilihan={[{ huruf: "A", teks: "15" }, { huruf: "B", teks: "25" }, { huruf: "C", teks: "35" }, { huruf: "D", teks: "20" }]} benar="B" umpan="25 + 20 + 30 = 75. 100 − 75 = 25." salah="Kurangkan total dengan tiga hari yang kelihatan." />
+        <Pilih id={idKuis("D", 3)} pertanyaan="4. Toko A: 4 gambar roti, 1 gambar = 5 roti. Toko B: 5 gambar roti, 1 gambar = 3 roti. Pernyataan yang benar..." pilihan={[{ huruf: "A", teks: "Toko B lebih banyak karena gambarnya 5" }, { huruf: "B", teks: "Toko A menjual 5 roti lebih banyak daripada Toko B" }, { huruf: "C", teks: "Penjualan keduanya sama banyak" }, { huruf: "D", teks: "Toko B menjual 5 roti lebih banyak" }]} benar="B" umpan="Toko A 20. Toko B 15. Selisih 5." salah="Kalikan dulu, baru bandingkan." />
+        <KuisCocok id={idKuis("D", 4)} perintah="5. Pasangkan pertanyaan dengan jawabannya. Nilai 70 = 6, 80 = 12, 90 = 8, 100 = 4." baris={[{ kiri: "Siswa bernilai di atas 80", pilihan: NILAI_D, benar: "12 siswa" }, { kiri: "Selisih bernilai 80 dan 100", pilihan: NILAI_D, benar: "8 siswa" }, { kiri: "Jumlah seluruh siswa", pilihan: NILAI_D, benar: "30 siswa" }]} umpan="12, 8, dan 30." />
+        <KuisBenarSalah id={idKuis("D", 5)} perintah="6. Pilih benar atau salah." baris={[{ teks: "Satu gambar buku = 4 buku. Melati 5 gambar, Mawar 3 gambar. Raka berkata selisihnya 2 buku.", benar: false }]} umpan="Salah. Selisih 2 gambar × 4 = 8 buku." />
+        <KuisSuara id={idKuis("D", 6)} pertanyaan="7. Kandang A 5 gambar ayam, kandang B 2 gambar. Satu gambar = 10 ekor. Berapa selisih jumlah ayam sebenarnya?" periksa={jumlahTigaPuluh} petunjuk="3 gambar dikali 10." benar="30 ekor." />
+        <KuisSuara id={idKuis("D", 7)} pertanyaan="8. Ujung batang kelas 4B ada tepat di tengah antara 30 dan 40. Berapa nilai batang itu?" periksa={jumlahTigaPuluhLima} petunjuk="Ambil nilai di tengah 30 dan 40." benar="35." />
+        <TulisBebas id={idKuis("D", 8)} judul="9. Gambar sepeda" visual={<Papan anak="36 sepeda · 1 🚲 = 4" />} pertanyaan="Berapa gambar sepeda untuk mewakili 36 sepeda? Hitung 36 dibagi 4, lalu tulis angkanya." pesanSalah="Bagi 36 dengan 4." bantuan="36 dibagi 4 sama dengan 9." umpan="9 gambar." periksa={jumlahSembilan} alias={["9"]} konteks="Tiga puluh enam dibagi empat sama dengan 9 gambar." />
+        <TulisBebas id={idKuis("D", 9)} judul="10. Sampah daur ulang" visual={<Papan anak="Kertas 15 · Plastik 20 · Kaleng 10" />} pertanyaan="Berapa kilogram total seluruh sampah daur ulang? Hitung 15 + 20 + 10, lalu tulis angkanya." pesanSalah="Jumlahkan ketiga jenis itu." bantuan="15 + 20 + 10 = 45." umpan="45 kg." periksa={jumlahEmpatPuluhLima} alias={["45"]} konteks="Lima belas ditambah dua puluh ditambah sepuluh sama dengan 45." />
         <p className="text-center text-sm font-black text-[#1C01A5]">{lencana} · {skor} bintang dari 10</p>
       </div>
     </KartuBingkai>
@@ -452,15 +478,16 @@ export default function NaskahMtk4Bab6({ kelas, kelamin }: { kelas?: string; kel
   return (
     <div className="space-y-5">
       <KartuA kelas={kelas} kelamin={kelamin} />
+      <KartuB kelas={kelas} kelamin={kelamin} />
       <KartuC kelas={kelas} kelamin={kelamin} />
       <div id={SLOT_AJUAN_SEBELUM_KARTU_D} />
       <KartuPoinPenting
         kelas={kelas}
         kelamin={kelamin}
         gambar={{ src: "/doodle-mtk/mtk-4-bab6-poin.jpg", alt: "Igil dan tiga anak di lapak mangga memegang gambar mangga." }}
-        cuplikan={cuplikanKalimat(["Piktogram adalah diagram gambar. Baca kuncinya dulu.", "Kelas IV: 8 gambar kali 4 sama dengan 32 siswa.", "Batang tegak yang lebih tinggi lebih banyak. Batang mendatar yang lebih panjang lebih banyak."])}
-        poin={["Gambar dalam satu baris harus sama. Hiasan dinding ada 8.", "Warna kesukaan berjumlah 12 siswa. Merah paling banyak.", "Satu gambar kelas berarti 4 siswa. Kelas IV ada 32 siswa.", "Sepak bola 9 siswa. Lomba matematika 15 siswa. Puisi 3 siswa.", "Bunga kertas 9 dan matahari 3. Sepeda motor dipakai 14 siswa.", "Data yang sama boleh jadi piktogram, batang tegak, atau batang mendatar."]}
-        penutup="Baca kunci atau ujung batang dulu, baru hitung."
+        cuplikan={cuplikanKalimat(["Pada piktogram, baca keterangan skala. Jumlah = banyak gambar kali nilai 1 gambar.", "Diagram batang memakai persegi panjang tegak atau mendatar. Tingginya sejajar angka skala.", "Garis angka mulai dari 0. Jarak kelipatannya tetap, misalnya lompat 5 atau 10."])}
+        poin={["Piktogram berskala: jumlah data = banyak gambar × nilai 1 gambar.", "Gambar setengah dihitung setengah dari nilai 1 gambar.", "Diagram batang punya judul, sumbu kategori, dan sumbu skala.", "Sumbu skala mulai dari 0 dengan lompat yang sama.", "Ujung batang di tengah dua garis diambil nilai tengahnya.", "Data yang sama boleh jadi piktogram, batang tegak, atau batang mendatar."]}
+        penutup="Baca keterangan skala atau ujung batang dulu, baru hitung."
       />
       <LembarEvaluasi kelas={kelas} kelamin={kelamin} />
     </div>
