@@ -1,0 +1,549 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>MeteoBox MEMA - Konsep Logis Peta Heksagon Radius 60 NM</title>
+  <style>
+    :root {
+      --bg: #f4f6f9;
+      --card: #ffffff;
+      --text: #1e293b;
+      --muted: #64748b;
+      --primary: #2563eb;
+      --danger: #dc2626;
+      --success: #0d9488;
+      --border: #e2e8f0;
+    }
+    * { box-sizing: border-box; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; }
+    body { margin: 0; padding: 20px; background: var(--bg); color: var(--text); }
+    .container { max-width: 1200px; margin: 0 auto; }
+    .header {
+      background: var(--card); padding: 18px 24px; border-radius: 14px;
+      border: 1px solid var(--border); margin-bottom: 16px;
+      display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px;
+    }
+    .header h1 { margin: 0; font-size: 20px; font-weight: 700; }
+    .header p { margin: 4px 0 0; font-size: 13px; color: var(--muted); }
+    .badge {
+      background: #eff6ff; color: var(--primary); border: 1px solid #bfdbfe;
+      padding: 6px 12px; border-radius: 999px; font-size: 12px; font-weight: 600;
+    }
+    .stage-bar {
+      display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; margin-bottom: 16px;
+    }
+    .stage-btn {
+      padding: 12px 14px; border-radius: 10px; border: 1px solid var(--border);
+      background: var(--card); color: var(--text); font-weight: 600; font-size: 13px;
+      cursor: pointer; text-align: left; transition: all 0.15s ease;
+    }
+    .stage-btn span { display: block; font-size: 11px; color: var(--muted); font-weight: 400; margin-top: 3px; }
+    .stage-btn.active {
+      background: var(--primary); color: #ffffff; border-color: var(--primary);
+      box-shadow: 0 4px 12px rgba(37, 99, 235, 0.25);
+    }
+    .stage-btn.active span { color: #dbeafe; }
+    .grid-main {
+      display: grid; grid-template-columns: 1.05fr 0.95fr; gap: 16px;
+    }
+    @media (max-width: 960px) {
+      .grid-main { grid-template-columns: 1fr; }
+      .stage-bar { grid-template-columns: repeat(2, 1fr); }
+    }
+    .panel {
+      background: var(--card); border: 1px solid var(--border);
+      border-radius: 14px; padding: 18px; display: flex; flex-direction: column;
+    }
+    .panel-title {
+      display: flex; justify-content: space-between; align-items: baseline;
+      margin-bottom: 10px; border-bottom: 1px solid var(--border); padding-bottom: 8px;
+    }
+    .panel-title h2 { margin: 0; font-size: 16px; }
+    .panel-title span { font-size: 12px; color: var(--muted); }
+    canvas {
+      width: 100%; height: auto; background: #ffffff;
+      border: 1px solid #f1f5f9; border-radius: 10px; cursor: crosshair;
+    }
+    .controls {
+      background: var(--card); border: 1px solid var(--border);
+      border-radius: 14px; padding: 16px 20px; margin-top: 16px;
+      display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px;
+    }
+    @media (max-width: 768px) { .controls { grid-template-columns: 1fr; } }
+    .control-group label {
+      display: flex; justify-content: space-between; font-size: 13px; font-weight: 600; margin-bottom: 6px;
+    }
+    .control-group input[type="range"] { width: 100%; accent-color: var(--primary); }
+    .control-sub { font-size: 11px; color: var(--muted); margin-top: 4px; }
+    .legend {
+      display: flex; flex-wrap: wrap; gap: 14px; margin-top: 12px;
+      padding-top: 10px; border-top: 1px solid var(--border); font-size: 12px;
+    }
+    .legend-item { display: flex; align-items: center; gap: 6px; }
+    .dot { width: 12px; height: 12px; border-radius: 50%; display: inline-block; }
+    .info-box {
+      margin-top: 12px; padding: 12px 14px; background: #f8fafc;
+      border-left: 4px solid var(--primary); border-radius: 6px; font-size: 13px; line-height: 1.5;
+    }
+  </style>
+</head>
+<body>
+<div class="container">
+  <div class="header">
+    <div>
+      <h1>MeteoBox (MEMA) — Simulator Logika Peta Heksagon Radius 60 NM</h1>
+      <p>Acuan Teknis untuk Pak Albert & Maria: 7 Tiang Pancang Satelit (96 Byte) + Grid Konsentris (20 NM Sub-1km) + Asimilasi Barnes RBF</p>
+    </div>
+    <div class="badge">Satuan Baku: Nautical Miles (NM) & Knots</div>
+  </div>
+  <!-- Tombol 4 Tahap Logis -->
+  <div class="stage-bar">
+    <button class="stage-btn" onclick="setStage(1)" id="btn-s1">
+      Tahap 1: 7 Pancang Satelit
+      <span>1 Pusat (20 NM) + 6 Sekeliling (@ 40 NM)</span>
+    </button>
+    <button class="stage-btn active" onclick="setStage(2)" id="btn-s2">
+      Tahap 2: Grid Konsentris (20 NM)
+      <span>0–20 NM: 0.5 NM (Sub-1km) | 20–60 NM: 5 NM</span>
+    </button>
+    <button class="stage-btn" onclick="setStage(3)" id="btn-s3">
+      Tahap 3: Tarikan Barnes RBF
+      <span>0–20 NM: 100% | 20–40 NM: 60% | 50–60 NM: Satelit</span>
+    </button>
+    <button class="stage-btn" onclick="setStage(4)" id="btn-s4">
+      Tahap 4: Gerak & Paku Jejak
+      <span>Estafet Heksagon & Breadcrumb tiap 0.5 NM</span>
+    </button>
+  </div>
+  <div class="grid-main">
+    <!-- Panel Kiri: Peta Radar Heksagon 60 NM -->
+    <div class="panel">
+      <div class="panel-title">
+        <h2>Peta Heksagon Radius 60 NM (Diameter 120 NM)</h2>
+        <span>Luar 60 NM: Putih Kosong (#FFFFFF)</span>
+      </div>
+      <canvas id="mapCanvas" width="540" height="540"></canvas>
+      <div class="legend">
+        <div class="legend-item"><span class="dot" style="background:#2563eb;border:2px solid #fff;box-shadow:0 0 0 1px #2563eb"></span> Patokan Satelit (7 Titik)</div>
+        <div class="legend-item"><span class="dot" style="background:#dc2626"></span> Kapal & Pancang 1 (Radius 20 NM — 100% Sensor)</div>
+        <div class="legend-item"><span class="dot" style="background:#f59e0b"></span> Sabuk 20–40 NM (Terangkat 60%)</div>
+        <div class="legend-item"><span class="dot" style="background:#15803d"></span> Paku Jejak (Tiap 0.5 NM)</div>
+      </div>
+    </div>
+    <!-- Panel Kanan: Grafik Irisan Melintang "Kain Elastis" -->
+    <div class="panel">
+      <div class="panel-title">
+        <h2>Irisan Melintang "Kain Elastis" (-60 NM s/d +60 NM)</h2>
+        <span>Profil Bobot Barnes RBF & Kecepatan Angin (Knots)</span>
+      </div>
+      <canvas id="profileCanvas" width="540" height="360"></canvas>
+      <div class="info-box" id="stageDesc"></div>
+      <div class="info-box" style="margin-top:8px; border-left-color:#0d9488;" id="hoverReadout">
+        <strong>Inspeksi Kursor:</strong> Arahkan mouse ke atas Peta Heksagon di sebelah kiri untuk memeriksa jarak (NM), zona radius, bobot sensor kapal (%), dan nilai kecepatan angin (Knots).
+      </div>
+    </div>
+  </div>
+  <!-- Kontrol Parameter Interaktif -->
+  <div class="controls">
+    <div class="control-group">
+      <label>
+        <span>Angin Sensor Tiang Kapal (In-Situ)</span>
+        <span id="val-sensor" style="color:var(--danger)">25.0 Knots</span>
+      </label>
+      <input type="range" id="sl-sensor" min="10" max="35" step="0.5" value="25.0" oninput="updateSim()" />
+      <div class="control-sub">Mengubah tarikan sensor kapal pada zona 0–20 NM (100%) dan 20–40 NM (60%).</div>
+    </div>
+    <div class="control-group">
+      <label>
+        <span>Baseline Satelit Global (96 Byte)</span>
+        <span id="val-sat" style="color:var(--primary)">15.0 Knots</span>
+      </label>
+      <input type="range" id="sl-sat" min="8" max="25" step="0.5" value="15.0" oninput="updateSim()" />
+      <div class="control-sub">Nilai dasar ke-7 tiang pancang satelit (dikirim tiap 3 jam via Iridium SBD).</div>
+    </div>
+    <div class="control-group">
+      <label>
+        <span>Pergerakan Kapal Selama Jeda 3 Jam</span>
+        <span id="val-move" style="color:var(--success)">0.0 NM</span>
+      </label>
+      <input type="range" id="sl-move" min="0" max="30" step="0.5" value="0.0" oninput="updateSim()" />
+      <div class="control-sub">Geser untuk menguji gerak kapal (0–30 NM), Estafet Heksagon, & Paku Jejak 0.5 NM.</div>
+    </div>
+  </div>
+</div>
+<script>
+  const mapCanvas = document.getElementById("mapCanvas");
+  const ctxMap = mapCanvas.getContext("2d");
+  const profCanvas = document.getElementById("profileCanvas");
+  const ctxProf = profCanvas.getContext("2d");
+  let currentStage = 2; // Default buka di Tahap 2 untuk melihat jelas Lingkaran Merah 20 NM
+  let sensorWindKn = 25.0;
+  let satWindKn = 15.0;
+  let shipMoveNM = 0.0;
+  // Koordinat 7 Tiang Pancang Satelit dalam satuan NM terhadap Pusat Klaster (0,0)
+  // 1 Pusat (0,0) + 6 Sekeliling pada jarak 40 NM (0, 60, 120, 180, 240, 300 derajat)
+  const PANCANG_NODES = [
+    { id: 0, name: "Pancang 0 (Pusat)", x_nm: 0, y_nm: 0, r_nm: 20 },
+    ...[0, 60, 120, 180, 240, 300].map((deg, i) => {
+      const rad = (deg * Math.PI) / 180;
+      return {
+        id: i + 1,
+        name: `Pancang ${i + 1} (${deg}°)`,
+        x_nm: 40 * Math.sin(rad),
+        y_nm: -40 * Math.cos(rad),
+        r_nm: 20
+      };
+    })
+  ];
+  // Fungsi Bobot Terkunci: Plateau Barnes RBF
+  // 0-20 NM = 100% (1.00) | 20-40 NM = 60% (0.60) | 40-50 NM = Transisi | 50-60 NM = 0% (Satelit)
+  function getBarnesPlateauWeight(distFromShipNM) {
+    if (distFromShipNM <= 20.0) return 1.00;
+    if (distFromShipNM <= 40.0) return 0.60;
+    if (distFromShipNM < 50.0) {
+      const ratio = (distFromShipNM - 40.0) / 10.0;
+      return 0.60 * 0.5 * (1.0 + Math.cos(Math.PI * ratio));
+    }
+    return 0.00;
+  }
+  // Menghitung kecepatan angin pada posisi (x_nm, y_nm) dengan memperhitungkan Paku Jejak (Breadcrumbs)
+  function evaluateWindAtPoint(x_nm, y_nm, shipX_nm, shipY_nm) {
+    if (currentStage <= 2) return satWindKn;
+    const dShip = Math.hypot(x_nm - shipX_nm, y_nm - shipY_nm);
+    let maxWeight = getBarnesPlateauWeight(dShip);
+    // Jika di Tahap 4 dan kapal sudah bergerak, Paku Jejak (tiap 0.5 NM di belakang kapal)
+    // ikut mengunci nilai di jalur yang sudah dilewati kapal
+    if (currentStage === 4 && shipMoveNM > 0) {
+      for (let bx = 0; bx < shipX_nm; bx += 0.5) {
+        const dCrumb = Math.hypot(x_nm - bx, y_nm - 0);
+        if (dCrumb <= 6.0) {
+          const wCrumb = 0.85 * Math.exp(-(dCrumb * dCrumb) / (2 * 3.5 * 3.5));
+          if (wCrumb > maxWeight) maxWeight = wCrumb;
+        }
+      }
+    }
+    return satWindKn + maxWeight * (sensorWindKn - satWindKn);
+  }
+  // Warna sel heksagon berdasarkan kecepatan angin (Knots)
+  function windToColor(kn, isSub1km) {
+    if (currentStage === 2) {
+      return isSub1km ? "#2b938f" : "#68b7b4";
+    }
+    const t = Math.max(0, Math.min(1, (kn - 10) / 22));
+    if (t < 0.35) return "#38bdf8";      // Biru tenang
+    if (t < 0.55) return "#2dd4bf";      // Toska sedang
+    if (t < 0.75) return "#facc15";      // Kuning waspada
+    if (t < 0.90) return "#fb923c";      // Oranye kencang
+    return "#ef4444";                    // Merah squall
+  }
+  function drawHexagon(ctx, cx, cy, r_px, fillStyle, strokeStyle, lineWidth = 0.8) {
+    ctx.beginPath();
+    for (let i = 0; i < 6; i++) {
+      const angle = (Math.PI / 180) * (60 * i - 30);
+      const vx = cx + r_px * Math.cos(angle);
+      const vy = cy + r_px * Math.sin(angle);
+      if (i === 0) ctx.moveTo(vx, vy);
+      else ctx.lineTo(vx, vy);
+    }
+    ctx.closePath();
+    if (fillStyle) { ctx.fillStyle = fillStyle; ctx.fill(); }
+    if (strokeStyle) { ctx.strokeStyle = strokeStyle; ctx.lineWidth = lineWidth; ctx.stroke(); }
+  }
+  function renderMap() {
+    const W = mapCanvas.width;
+    const H = mapCanvas.height;
+    const cx = W / 2;
+    const cy = H / 2;
+    const scale = 3.6; // 1 NM = 3.6 piksel -> 60 NM = 216 piksel
+    ctxMap.clearRect(0, 0, W, H);
+    ctxMap.fillStyle = "#ffffff"; // Area luar 60 NM mutlak Putih Kosong (#FFFFFF)
+    ctxMap.fillRect(0, 0, W, H);
+    const shipX_nm = currentStage === 4 ? shipMoveNM : 0.0;
+    const shipY_nm = 0.0;
+    const shipX_px = cx + shipX_nm * scale;
+    const shipY_px = cy + shipY_nm * scale;
+    // 1. Gambar Kisi Heksagon (Tahap 2, 3, dan 4)
+    if (currentStage >= 2) {
+      ctxMap.save();
+      ctxMap.beginPath();
+      ctxMap.arc(cx, cy, 60 * scale, 0, Math.PI * 2);
+      ctxMap.clip(); // Potong tegas di batas cakrawala 60 NM (luar = #FFFFFF)
+      // A. Sabuk Luar 20 - 60 NM: Grid Heksagon 5.0 NM
+      const stepOuterNM = 4.2;
+      const hexRadiusOuterPx = (stepOuterNM / Math.sqrt(3)) * scale;
+      for (let q = -18; q <= 18; q++) {
+        for (let r = -18; r <= 18; r++) {
+          const x_nm = stepOuterNM * (q + 0.5 * r);
+          const y_nm = stepOuterNM * (Math.sqrt(3) / 2) * r;
+          const dOrigin = Math.hypot(x_nm, y_nm);
+          const dShip = Math.hypot(x_nm - shipX_nm, y_nm - shipY_nm);
+          // Lewati area <= 20 NM dari kapal karena diisi oleh Grid Rapat Pancang 1 (Radius 20 NM)
+          if (dOrigin <= 61.5 && dShip > 19.6) {
+            const wKn = evaluateWindAtPoint(x_nm, y_nm, shipX_nm, shipY_nm);
+            drawHexagon(
+              ctxMap,
+              cx + x_nm * scale,
+              cy + y_nm * scale,
+              hexRadiusOuterPx * 0.94,
+              windToColor(wKn, false),
+              "#ffffff",
+              1.0
+            );
+          }
+        }
+      }
+      // B. Area Pancang 1 (Lingkaran Merah Radius 20 NM dari Kapal): Grid Rapat Sub-1km
+      const stepInnerNM = 1.4; // Representasi visual kisi mikro rapat di dalam radius 20 NM
+      const hexRadiusInnerPx = (stepInnerNM / Math.sqrt(3)) * scale;
+      for (let q = -20; q <= 20; q++) {
+        for (let r = -20; r <= 20; r++) {
+          const dx_nm = stepInnerNM * (q + 0.5 * r);
+          const dy_nm = stepInnerNM * (Math.sqrt(3) / 2) * r;
+          const dShip = Math.hypot(dx_nm, dy_nm);
+          const x_nm = shipX_nm + dx_nm;
+          const y_nm = shipY_nm + dy_nm;
+          const dOrigin = Math.hypot(x_nm, y_nm);
+          if (dShip <= 20.0 && dOrigin <= 60.0) {
+            const wKn = evaluateWindAtPoint(x_nm, y_nm, shipX_nm, shipY_nm);
+            drawHexagon(
+              ctxMap,
+              cx + x_nm * scale,
+              cy + y_nm * scale,
+              hexRadiusInnerPx * 0.95,
+              windToColor(wKn, true),
+              "rgba(255,255,255,0.45)",
+              0.5
+            );
+          }
+        }
+      }
+      ctxMap.restore();
+    }
+    // 2. Jika Tahap 1: Tampilkan Lingkaran Domain 20 NM untuk ke-6 Pancang Sekeliling
+    if (currentStage === 1) {
+      PANCANG_NODES.slice(1).forEach((node) => {
+        ctxMap.beginPath();
+        ctxMap.arc(cx + node.x_nm * scale, cy + node.y_nm * scale, 20 * scale, 0, Math.PI * 2);
+        ctxMap.fillStyle = "rgba(37, 99, 235, 0.08)";
+        ctxMap.fill();
+        ctxMap.setLineDash([5, 4]);
+        ctxMap.strokeStyle = "#3b82f6";
+        ctxMap.lineWidth = 1.5;
+        ctxMap.stroke();
+        ctxMap.setLineDash([]);
+      });
+    }
+    // 3. Lingkaran Panduan Sabuk 40 NM (Batas 60% Barnes & Posisi 6 Patokan Satelit)
+    ctxMap.beginPath();
+    ctxMap.arc(shipX_px, shipY_px, 40 * scale, 0, Math.PI * 2);
+    ctxMap.setLineDash([4, 4]);
+    ctxMap.strokeStyle = currentStage >= 3 ? "#f59e0b" : "rgba(100,116,139,0.5)";
+    ctxMap.lineWidth = currentStage >= 3 ? 2.0 : 1.2;
+    ctxMap.stroke();
+    ctxMap.setLineDash([]);
+    // 4. LINGKARAN MERAH: Area Pancang 1 / Zona Sensor 100% (TEPAT RADIUS 20 NM = 1/3 dari 60 NM)
+    ctxMap.beginPath();
+    ctxMap.arc(shipX_px, shipY_px, 20 * scale, 0, Math.PI * 2);
+    if (currentStage === 1) {
+      ctxMap.fillStyle = "rgba(220, 38, 38, 0.12)";
+      ctxMap.fill();
+    }
+    ctxMap.strokeStyle = "#dc2626";
+    ctxMap.lineWidth = 3.0;
+    ctxMap.stroke();
+    // Label pada Lingkaran Merah 20 NM
+    ctxMap.fillStyle = "#991b1b";
+    ctxMap.font = "bold 11px monospace";
+    ctxMap.textAlign = "center";
+    ctxMap.fillText("Pancang 1: Radius 20 NM (100% Sensor)", shipX_px, shipY_px - 20 * scale - 6);
+    // 5. Lingkaran Batas Cakrawala 60 NM
+    ctxMap.beginPath();
+    ctxMap.arc(cx, cy, 60 * scale, 0, Math.PI * 2);
+    ctxMap.strokeStyle = "#1e293b";
+    ctxMap.lineWidth = 3.0;
+    ctxMap.stroke();
+    // Teks Header & Footer Kanvas (Sesuai Gambar Referensi)
+    ctxMap.fillStyle = "#334155";
+    ctxMap.font = "bold 15px monospace";
+    ctxMap.textAlign = "center";
+    ctxMap.fillText("Batas Cakrawala 60 NM", cx, 26);
+    ctxMap.fillStyle = "#64748b";
+    ctxMap.fillText("#FFFFFF (Putih Kosong di Luar 60 NM)", cx, H - 14);
+    // 6. Gambar Paku Jejak (Breadcrumbs tiap 0.5 NM) di Tahap 4
+    if (currentStage === 4 && shipMoveNM > 0) {
+      ctxMap.beginPath();
+      ctxMap.moveTo(cx, cy);
+      ctxMap.lineTo(shipX_px, shipY_px);
+      ctxMap.strokeStyle = "#15803d";
+      ctxMap.lineWidth = 2;
+      ctxMap.stroke();
+      for (let d = 0; d < shipMoveNM; d += 2.0) {
+        ctxMap.beginPath();
+        ctxMap.arc(cx + d * scale, cy, 4, 0, Math.PI * 2);
+        ctxMap.fillStyle = "#15803d";
+        ctxMap.fill();
+        ctxMap.strokeStyle = "#ffffff";
+        ctxMap.lineWidth = 1.2;
+        ctxMap.stroke();
+      }
+    }
+    // 7. Gambar 7 Titik Biru Patokan Satelit
+    PANCANG_NODES.forEach((node) => {
+      const nx = cx + node.x_nm * scale;
+      const ny = cy + node.y_nm * scale;
+      ctxMap.beginPath();
+      ctxMap.arc(nx, ny, 6.5, 0, Math.PI * 2);
+      ctxMap.fillStyle = "#2563eb";
+      ctxMap.fill();
+      ctxMap.strokeStyle = "#ffffff";
+      ctxMap.lineWidth = 2;
+      ctxMap.stroke();
+    });
+    // 8. Gambar Titik Merah Posisi Kapal
+    ctxMap.beginPath();
+    ctxMap.arc(shipX_px, shipY_px, 8, 0, Math.PI * 2);
+    ctxMap.fillStyle = "#dc2626";
+    ctxMap.fill();
+    ctxMap.strokeStyle = "#ffffff";
+    ctxMap.lineWidth = 2.5;
+    ctxMap.stroke();
+  }
+  function renderProfile() {
+    const W = profCanvas.width;
+    const H = profCanvas.height;
+    ctxProf.clearRect(0, 0, W, H);
+    const padL = 48, padR = 24, padT = 30, padB = 42;
+    const plotW = W - padL - padR;
+    const plotH = H - padT - padB;
+    const nmToX = (nm) => padL + ((nm + 60) / 120) * plotW;
+    const knToY = (kn) => padT + plotH - ((kn - 5) / 35) * plotH;
+    const shipX_nm = currentStage === 4 ? shipMoveNM : 0.0;
+    // 1. Arsiran Zona Barnes RBF di Latar Belakang Grafik
+    const xM20 = nmToX(Math.max(-60, shipX_nm - 20));
+    const xP20 = nmToX(Math.min(60, shipX_nm + 20));
+    const xM40 = nmToX(Math.max(-60, shipX_nm - 40));
+    const xP40 = nmToX(Math.min(60, shipX_nm + 40));
+    // Sabuk 20-40 NM (60% Terangkat)
+    ctxProf.fillStyle = "rgba(245, 158, 11, 0.10)";
+    ctxProf.fillRect(xM40, padT, xP40 - xM40, plotH);
+    // Zona Inti Pancang 1: 0-20 NM (100% Sensor Kapal)
+    ctxProf.fillStyle = "rgba(220, 38, 38, 0.12)";
+    ctxProf.fillRect(xM20, padT, xP20 - xM20, plotH);
+    // 2. Grid Sumbu X (-60, -40, -20, 0, +20, +40, +60 NM) & Sumbu Y (Knots)
+    ctxProf.strokeStyle = "#e2e8f0";
+    ctxProf.lineWidth = 1;
+    [-60, -40, -20, 0, 20, 40, 60].forEach((nm) => {
+      const x = nmToX(nm);
+      ctxProf.beginPath();
+      ctxProf.moveTo(x, padT);
+      ctxProf.lineTo(x, padT + plotH);
+      ctxProf.stroke();
+      ctxProf.fillStyle = "#475569";
+      ctxProf.font = "11px monospace";
+      ctxProf.textAlign = "center";
+      ctxProf.fillText(`${nm > 0 ? "+" : ""}${nm} NM`, x, padT + plotH + 18);
+    });
+    [10, 15, 20, 25, 30, 35].forEach((kn) => {
+      const y = knToY(kn);
+      ctxProf.beginPath();
+      ctxProf.moveTo(padL, y);
+      ctxProf.lineTo(padL + plotW, y);
+      ctxProf.stroke();
+      ctxProf.fillStyle = "#64748b";
+      ctxProf.font = "11px monospace";
+      ctxProf.textAlign = "right";
+      ctxProf.fillText(`${kn} kn`, padL - 6, y + 4);
+    });
+    // 3. Garis Putus-Putus Baseline Satelit (Tebakan Awal)
+    const ySat = knToY(satWindKn);
+    ctxProf.beginPath();
+    ctxProf.setLineDash([6, 4]);
+    ctxProf.moveTo(nmToX(-60), ySat);
+    ctxProf.lineTo(nmToX(60), ySat);
+    ctxProf.strokeStyle = "#2563eb";
+    ctxProf.lineWidth = 2;
+    ctxProf.stroke();
+    ctxProf.setLineDash([]);
+    // 4. Kurva Tegas Permukaan Peta ("Kain Elastis" Hasil Asimilasi Barnes Plateau)
+    ctxProf.beginPath();
+    for (let nm = -60; nm <= 60; nm += 0.5) {
+      const wKn = evaluateWindAtPoint(nm, 0, shipX_nm, 0);
+      const px = nmToX(nm);
+      const py = knToY(wKn);
+      if (nm === -60) ctxProf.moveTo(px, py);
+      else ctxProf.lineTo(px, py);
+    }
+    ctxProf.strokeStyle = "#dc2626";
+    ctxProf.lineWidth = 3.2;
+    ctxProf.stroke();
+    // Label Keterangan Plateau di Atas Grafik
+    ctxProf.fillStyle = "#dc2626";
+    ctxProf.font = "bold 11px sans-serif";
+    ctxProf.textAlign = "center";
+    ctxProf.fillText("0–20 NM: 100% Sensor", (xM20 + xP20) / 2, padT + 14);
+    ctxProf.fillStyle = "#b45309";
+    ctxProf.fillText("20–40 NM: 60%", (xP20 + xP40) / 2, padT + 28);
+    ctxProf.fillStyle = "#2563eb";
+    ctxProf.fillText("50–60 NM: Satelit", nmToX(55), ySat - 8);
+  }
+  function setStage(s) {
+    currentStage = s;
+    for (let i = 1; i <= 4; i++) {
+      document.getElementById(`btn-s${i}`).classList.toggle("active", i === s);
+    }
+    if (s === 4 && shipMoveNM === 0) {
+      document.getElementById("sl-move").value = 18.0;
+    } else if (s < 4) {
+      document.getElementById("sl-move").value = 0.0;
+    }
+    updateSim();
+  }
+  function updateSim() {
+    sensorWindKn = parseFloat(document.getElementById("sl-sensor").value);
+    satWindKn = parseFloat(document.getElementById("sl-sat").value);
+    shipMoveNM = parseFloat(document.getElementById("sl-move").value);
+    document.getElementById("val-sensor").textContent = `${sensorWindKn.toFixed(1)} Knots`;
+    document.getElementById("val-sat").textContent = `${satWindKn.toFixed(1)} Knots`;
+    document.getElementById("val-move").textContent = `${shipMoveNM.toFixed(1)} NM`;
+    const descEl = document.getElementById("stageDesc");
+    const lift60Val = (satWindKn + 0.6 * (sensorWindKn - satWindKn)).toFixed(1);
+    if (currentStage === 1) {
+      descEl.innerHTML = `<strong>Penjelasan Tahap 1 (7 Tiang Pancang Satelit):</strong> Setiap 3 jam, kapal menerima paket Iridium <strong>96 Byte</strong> berisi 7 titik patokan. <strong>Pancang 1 (Lingkaran Merah)</strong> memiliki <strong>Radius 20 NM (1/3 dari 60 NM)</strong>, dikelilingi 6 Pancang pada jarak 40 NM yang masing-masing juga beradius 20 NM sehingga menutup penuh cakrawala <strong>60 NM</strong>.`;
+    } else if (currentStage === 2) {
+      descEl.innerHTML = `<strong>Penjelasan Tahap 2 (Grid Konsentris 20 NM vs 60 NM):</strong> Area <strong>Pancang 1 (Lingkaran Merah Radius 20 NM)</strong> dipecah menjadi kisi mikro rapat <strong>0.5 NM (926 meter / Sub-1 km)</strong>. Sabuk di luar lingkaran merah (<strong>20–60 NM</strong>) diisi kisi sinoptik <strong>5.0 NM</strong>.`;
+    } else if (currentStage === 3) {
+      descEl.innerHTML = `<strong>Penjelasan Tahap 3 (Efek Barnes RBF Plateau):</strong><br/>• <strong>0–20 NM (Pancang 1):</strong> Ikut sensor kapal <strong>100% (${sensorWindKn.toFixed(1)} kn)</strong>.<br/>• <strong>20–40 NM (Sabuk Tengah):</strong> Ikut terangkat <strong>60% (${lift60Val} kn)</strong>.<br/>• <strong>50–60 NM (Cincin Luar):</strong> Murni mengikuti satelit <strong>(${satWindKn.toFixed(1)} kn)</strong>.`;
+    } else {
+      descEl.innerHTML = `<strong>Penjelasan Tahap 4 (Gerak Kapal & Paku Jejak 0.5 NM):</strong> Saat kapal berlayar sejauh <strong>${shipMoveNM.toFixed(1)} NM</strong> selama jeda 3 jam, lingkaran merah <strong>Radius 20 NM (100% sensor)</strong> ikut bergerak bersama kapal (Estafet Heksagon) sambil menancapkan <strong>Paku Jejak (Breadcrumb)</strong> setiap 0.5 NM di belakang buritan.`;
+    }
+    renderMap();
+    renderProfile();
+  }
+  // Hover Inspeksi pada Kanvas Peta
+  mapCanvas.addEventListener("mousemove", (e) => {
+    const rect = mapCanvas.getBoundingClientRect();
+    const mx = ((e.clientX - rect.left) / rect.width) * mapCanvas.width;
+    const my = ((e.clientY - rect.top) / rect.height) * mapCanvas.height;
+    const scale = 3.6;
+    const x_nm = (mx - mapCanvas.width / 2) / scale;
+    const y_nm = (my - mapCanvas.height / 2) / scale;
+    const shipX_nm = currentStage === 4 ? shipMoveNM : 0.0;
+    const dOrigin = Math.hypot(x_nm, y_nm);
+    const dShip = Math.hypot(x_nm - shipX_nm, y_nm);
+    const box = document.getElementById("hoverReadout");
+    if (dOrigin > 60.0) {
+      box.innerHTML = `<strong>Inspeksi Kursor:</strong> Jarak Pusat = <strong>${dOrigin.toFixed(1)} NM</strong> (&gt; 60 NM) &rarr; <strong>Luar Cakrawala: Putih Kosong (#FFFFFF)</strong>.`;
+      return;
+    }
+    const w = getBarnesPlateauWeight(dShip);
+    const finalKn = evaluateWindAtPoint(x_nm, y_nm, shipX_nm, 0);
+    let zoneName = "Sabuk Transisi (40–50 NM)";
+    if (dShip <= 20.0) zoneName = "Pancang 1: Zona Inti Sub-1km (0–20 NM | 100% Sensor)";
+    else if (dShip <= 40.0) zoneName = "Sabuk Tengah (20–40 NM | Terangkat 60%)";
+    else if (dShip >= 50.0) zoneName = "Cincin Cakrawala Luar (50–60 NM | 100% Satelit)";
+    box.innerHTML = `<strong>Inspeksi Kursor:</strong> Jarak dari Kapal = <strong>${dShip.toFixed(1)} NM</strong> | Zona = <strong>${zoneName}</strong> | Bobot Sensor = <strong>${(w * 100).toFixed(0)}%</strong> | Angin Peta = <strong>${finalKn.toFixed(1)} Knots</strong>`;
+  });
+  updateSim();
+</script>
+</body>
+</html>
