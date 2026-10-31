@@ -547,59 +547,80 @@ function KartuA({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminGuru }) {
         ]}
       />
       <div className="mt-4 space-y-4">
-        <Adegan judul="Sub-bab 1 — Kelipatan" jenis="tepuk" kelas={kelas} kelamin={kelamin} penjelasan={["Kelipatan adalah lompatan yang sama, mulai dari bilangan itu sendiri.", "Nol tidak masuk daftar kelipatan."]}>
+        <Adegan judul="Sub-bab 1 — Kelipatan" jenis="tepuk" kelas={kelas} kelamin={kelamin} penjelasan={["Kelipatan adalah lompatan yang sama, mulai dari bilangan itu sendiri.", "Nol tidak masuk daftar kelipatan.", "Peta lompatan menaruh contoh 3 dan 4 di samping cerita tepuk."]}>
           <Dialog nama="Laras" anak="Ekor layanganku bertambah 4 setiap lompatan: 4, 8, 12, 16, 20." />
           <Dialog nama="Dimas" anak="Kenapa tidak mulai dari 0? 0 kali 4 kan 0." />
           <Dialog nama="Sena" anak="Di daftar tepuk, kita mulai dari 4. Nol tidak ditepuk." />
           <Dialog nama="Igil" anak="Benar. 0 kali 4 sama dengan 0, tetapi 0 bukan kelipatan 4." />
           <Papan anak="Kelipatan 4: 4, 8, 12, 16, 20, ..." />
           <PapanKelipatan />
+          <Dialog nama="Igil" anak="Peta lompatan mengingat caranya. Mulai dari bilangannya sendiri. Nol tidak ikut." />
+          <PetaContoh pusat="Lompat sama" cabang={[{ ikon: "🦘", judul: "Mulai", isi: "dari bilangannya" }, { ikon: "3️⃣", judul: "Contoh 3", isi: "3, 6, 9, 12" }, { ikon: "🚫", judul: "Bukan", isi: "0 tidak ikut" }]} kolom={["Bilangan", "Empat pertama"]} baris={[["3", "3 · 6 · 9 · 12"], ["4", "4 · 8 · 12 · 16"]]} />
           <KuisSuara id={idKuis("A", 0)} pertanyaan="Sebutkan empat kelipatan 6 yang pertama." periksa={kelipatanEnam} petunjuk="Mulai dari 6, lalu lompat 6 sebanyak tiga kali lagi." benar="6, 12, 18, dan 24." />
           <TulisBebas id={idKuis("A", 1)} judul="Lompatan kedelapan" visual={<Papan anak="8 · 16 · 24 · ..." />} pertanyaan="Tulis kelipatan 8 yang kelima." pesanSalah="Lompat 8 sebanyak lima kali, mulai dari 8." bantuan="8, 16, 24, 32, lalu 40." umpan="40." periksa={empatPuluh} alias={["40", "empat puluh"]} konteks="Kelipatan 8 yang kelima adalah 40." />
           <Dialog nama="Igil" anak="Kelipatan 5 melompat lima: 5, 10, 15, 20. Cara yang sama dipakai untuk 8 dan 9." />
           <Dialog nama="Laras" anak="Bilangan kelipatan 3 didapat dari 1 kali 3, 2 kali 3, 3 kali 3, dan seterusnya." />
+          <KuisSuara id={idKuis("B", 0)} pertanyaan="Sebutkan empat kelipatan 11 yang pertama." periksa={kelipatanSebelas} petunjuk="Mulai dari 11, lalu tambah 11." benar="11, 22, 33, dan 44." />
+          <TulisBebas id={idKuis("B", 1)} judul="Lompatan kesembilan" visual={<Papan anak="9 · 18 · 27 · ⬜" />} pertanyaan="Tulis kelipatan 9 yang keempat." pesanSalah="Lompat 9 sebanyak empat kali." bantuan="9, 18, 27, lalu 36." umpan="36." periksa={tigaPuluhEnam} alias={["36", "tiga puluh enam"]} konteks="Kelipatan 9 yang keempat adalah 36." />
+          <Pilih id={idKuis("A", 10)} pertanyaan="Kelipatan 8 yang keempat adalah..." visual={<Papan anak="8 · 16 · 24 · ⬜" />} pilihan={[{ huruf: "A", teks: "24" }, { huruf: "B", teks: "32" }, { huruf: "C", teks: "40" }, { huruf: "D", teks: "16" }]} benar="B" umpan="8, 16, 24, lalu 32." salah="Mulai dari 8, lompat empat kali." />
+          <SusunToken id={idKuis("A", 12)} perintah="Susun kelipatan 6 ini dari yang paling kecil." acak={["18", "6", "24", "12"]} benar={["6", "12", "18", "24"]} umpan="6, 12, 18, 24." />
         </Adegan>
 
-        <Adegan judul="Sub-bab 2 — Kelipatan persekutuan dan KPK" jenis="jadwal" kelas={kelas} kelamin={kelamin} penjelasan={["Tulis dua daftar kelipatan. Tandai yang sama.", "Yang paling kecil adalah KPK, waktu pertemuan terdekat."]}>
+        <Adegan judul="Sub-bab 2 — Kelipatan persekutuan dan KPK" jenis="jadwal" kelas={kelas} kelamin={kelamin} penjelasan={["Tulis dua daftar kelipatan. Tandai yang sama.", "Yang paling kecil adalah KPK, waktu pertemuan terdekat.", "Peta jadwal mengingat KPK 4 dan 6."]}>
           <Dialog nama="Laras" anak="Aku menaikkan layangan setiap 4 hari." />
           <Dialog nama="Dimas" anak="Aku setiap 6 hari. Hari ini, 5 September, kita bersama." />
           <Dialog nama="Sena" anak="Daftar 4 dan daftar 6 sama-sama punya 12 dan 24." />
           <Dialog nama="Igil" anak="Itu kelipatan persekutuan. Yang terkecil, 12, adalah KPK." />
           <DuaLompat />
           <KalenderTemu />
+          <Dialog nama="Igil" anak="Peta jadwal menaruh daftar 4 dan daftar 6. Yang sama dan paling kecil dipakai untuk hari berikutnya." />
+          <PetaContoh pusat="KPK 4 dan 6 = 12" cabang={[{ ikon: "4️⃣", judul: "Daftar 4", isi: "4, 8, 12, 16" }, { ikon: "6️⃣", judul: "Daftar 6", isi: "6, 12, 18, 24" }, { ikon: "📅", judul: "Jadwal", isi: "tambah KPK pada hari ini" }]} kolom={["Langkah", "Yang dilakukan"]} baris={[["1", "Tulis kelipatan"], ["2", "Tandai yang sama"], ["3", "Ambil yang terkecil"]]} />
           <KuisSuara id={idKuis("A", 2)} pertanyaan="Berapa KPK dari 5 dan 9?" periksa={empatPuluhLima} petunjuk="Tulis kelipatan 5 dan kelipatan 9 sampai ketemu yang sama dan paling kecil." benar="Empat puluh lima." />
           <TulisBebas id={idKuis("A", 3)} judul="Dua lompatan" visual={<Papan anak="KPK 6 dan 8" />} pertanyaan="Tulis KPK dari 6 dan 8." pesanSalah="Cari bilangan yang sama di kedua daftar, lalu ambil yang terkecil." bantuan="Kelipatan 6 dan 8 bertemu di 24." umpan="24." periksa={duaPuluhEmpat} alias={["24", "dua puluh empat"]} konteks="KPK 6 dan 8 adalah 24." />
           <Dialog nama="Igil" anak="Untuk tiga bilangan, caranya sama. Kelipatan 2, 3, dan 4 sama-sama bertemu di 12. KPK-nya 12." />
           <Dialog nama="Sena" anak="Jadwal bersama selalu memakai KPK, bukan jumlah dua bilangan." />
+          <KuisSuara id={idKuis("B", 2)} pertanyaan="Berapa KPK dari 3, 4, dan 5?" periksa={enamPuluh} petunjuk="Cari bilangan yang ada di ketiga daftar kelipatan." benar="Enam puluh." />
+          <TulisBebas id={idKuis("B", 3)} judul="Juli di bukit" visual={<Papan anak="Bersama 14 Juli. Laras tiap 5 hari. Dimas tiap 2 hari." />} pertanyaan="Tulis tanggal mereka bersama lagi." pesanSalah="Cari KPK 5 dan 2, lalu tambahkan pada tanggal 14." bantuan="KPK 5 dan 2 adalah 10. 14 + 10 = 24." umpan="24 Juli." periksa={tanggalDuaPuluhEmpat} alias={["24", "dua puluh empat"]} konteks="Mereka bersama lagi tanggal 24 Juli." />
+          <Pilih id={idKuis("A", 14)} pertanyaan="Laras setiap 4 hari, Dimas setiap 6 hari. Mereka bersama tanggal 5 September. Kapan mereka bersama lagi?" visual={<Papan anak="5 September + KPK(4, 6)" />} pilihan={[{ huruf: "A", teks: "11 September" }, { huruf: "B", teks: "17 September" }, { huruf: "C", teks: "9 September" }, { huruf: "D", teks: "24 September" }]} benar="B" umpan="KPK-nya 12. 5 + 12 = 17 September." salah="Tambahkan KPK pada tanggal 5, jangan menambahkan 4 atau 6 saja." />
+          <Pilih id={idKuis("B", 14)} pertanyaan="Tiga lonceng berbunyi setiap 6 menit, 10 menit, dan 15 menit. Mereka bersama lagi setelah..." visual={<Papan anak="6 · 10 · 15" />} pilihan={[{ huruf: "A", teks: "30 menit" }, { huruf: "B", teks: "60 menit" }, { huruf: "C", teks: "1 menit" }, { huruf: "D", teks: "31 menit" }]} benar="A" umpan="KPK 6, 10, dan 15 adalah 30. FPB ketiganya 1." salah="Cari kelipatan yang sama dan paling kecil." />
         </Adegan>
 
-        <Adegan judul="Sub-bab 3 — Faktor" jenis="pita" kelas={kelas} kelamin={kelamin} penjelasan={["Faktor membagi habis. Tidak boleh ada sisa.", "Faktor berpasangan. Kali dua pasangannya kembali ke bilangan semula."]}>
+        <Adegan judul="Sub-bab 3 — Faktor" jenis="pita" kelas={kelas} kelamin={kelamin} penjelasan={["Faktor membagi habis. Tidak boleh ada sisa.", "Faktor berpasangan. Kali dua pasangannya kembali ke bilangan semula.", "Peta pita menunjukkan pasangan 18."]}>
           <Dialog nama="Sena" anak="Pita ini 12 petak. Aku potong sama panjang, tanpa sisa." />
           <Dialog nama="Laras" anak="Kalau tiap potong 3 petak, dapat 4 potong. 3 kali 4 sama dengan 12." />
           <Dialog nama="Dimas" anak="Kalau dipaksa 5 petak, ada sisa. 5 bukan faktor 12." />
           <Dialog nama="Igil" anak="Faktor 12 adalah 1, 2, 3, 4, 6, dan 12. Pasangannya 1×12, 2×6, dan 3×4." />
           <PitaFaktor />
           <Papan anak="1 × 12    2 × 6    3 × 4" />
+          <Dialog nama="Laras" anak="Peta 18 memakai cara pasangan yang sama. Setiap pasangan dikali kembali menjadi 18." />
+          <PetaContoh pusat="Pasangan 18" cabang={[{ ikon: "1️⃣", judul: "1 dan 18", isi: "1 × 18 = 18" }, { ikon: "2️⃣", judul: "2 dan 9", isi: "2 × 9 = 18" }, { ikon: "3️⃣", judul: "3 dan 6", isi: "3 × 6 = 18" }]} kolom={["Kecil", "Pasangan"]} baris={[["1", "18"], ["2", "9"], ["3", "6"]]} />
           <KuisSuara id={idKuis("A", 4)} pertanyaan="Sebutkan semua faktor 16, dari yang kecil." periksa={faktorEnamBelas} petunjuk="Cari bilangan yang membagi 16 tanpa sisa." benar="1, 2, 4, 8, dan 16." />
           <TulisBebas id={idKuis("A", 5)} judul="Faktor dua puluh" visual={<Papan anak="Faktor dari 20" />} pertanyaan="Tulis semua faktor 20." pesanSalah="Yang membagi 20 tanpa sisa, urut dari yang kecil." bantuan="1, 2, 4, 5, 10, dan 20." umpan="1, 2, 4, 5, 10, 20." periksa={faktorDuaPuluh} alias={["1", "2", "4", "5", "10", "20"]} konteks="Faktor 20 adalah 1, 2, 4, 5, 10, dan 20." />
           <Dialog nama="Igil" anak="Faktor 18 berpasangan: 1 dengan 18, 2 dengan 9, 3 dengan 6. Jadi faktornya 1, 2, 3, 6, 9, dan 18." />
           <Dialog nama="Sena" anak="Cara pasangan ini juga dipakai untuk 24, 36, 54, 72, dan 96." />
+          <KuisSuara id={idKuis("B", 4)} pertanyaan="Sebutkan semua faktor 15." periksa={faktorLimaBelas} petunjuk="Cari yang membagi 15 tanpa sisa." benar="1, 3, 5, dan 15." />
+          <TulisBebas id={idKuis("B", 5)} judul="Faktor 28" visual={<Papan anak="Faktor dari 28" />} pertanyaan="Tulis semua faktor 28." pesanSalah="Urutkan dari yang kecil. Jangan ada yang sisa." bantuan="1, 2, 4, 7, 14, dan 28." umpan="1, 2, 4, 7, 14, 28." periksa={faktorDuaPuluhDelapan} alias={["1", "2", "4", "7", "14", "28"]} konteks="Faktor 28 adalah 1, 2, 4, 7, 14, dan 28." />
+          <SusunToken id={idKuis("B", 12)} perintah="Susun faktor 10 dari yang paling kecil." acak={["5", "1", "10", "2"]} benar={["1", "2", "5", "10"]} umpan="1, 2, 5, 10." />
         </Adegan>
 
-        <Adegan judul="Sub-bab 4 — Faktor persekutuan dan FPB" jenis="biji" kelas={kelas} kelamin={kelamin} penjelasan={["Faktor yang dimiliki kedua bilangan disebut faktor persekutuan.", "Yang paling besar adalah FPB. Itu juga banyak kelompok paling banyak."]}>
+        <Adegan judul="Sub-bab 4 — Faktor persekutuan dan FPB" jenis="biji" kelas={kelas} kelamin={kelamin} penjelasan={["Faktor yang dimiliki kedua bilangan disebut faktor persekutuan.", "Yang paling besar adalah FPB. Itu juga banyak kelompok paling banyak.", "Peta congklak mengingat FPB 12 dan 18."]}>
           <Dialog nama="Dimas" anak="Di congklak, biji merah untuk faktor 12. Biji biru untuk faktor 18." />
           <Dialog nama="Laras" anak="Lubang yang berisi dua warna: 1, 2, 3, dan 6." />
           <Dialog nama="Sena" anak="Yang terbesar 6. FPB 12 dan 18 adalah 6." />
           <Dialog nama="Igil" anak="Pita merah 24 dan pita putih 18. Ikat paling banyak ada 6. Tiap ikat: 4 merah dan 3 putih." />
           <LubangBiji />
           <Papan anak="24 ÷ 6 = 4 merah    18 ÷ 6 = 3 putih" />
+          <Dialog nama="Igil" anak="Peta congklak menaruh faktor yang sama. Yang terbesar itulah FPB." />
+          <PetaContoh pusat="FPB 12 dan 18 = 6" cabang={[{ ikon: "🔴", judul: "Sama", isi: "1, 2, 3, 6" }, { ikon: "🎀", judul: "24 dan 18", isi: "6 ikat" }, { ikon: "1️⃣", judul: "Tidak pasangan", isi: "FPB bisa 1" }]} kolom={["Ikat", "Isi"]} baris={[["6 ikat", "paling banyak"], ["Merah", "4 tiap ikat"], ["Putih", "3 tiap ikat"]]} />
           <KuisSuara id={idKuis("A", 6)} pertanyaan="Berapa FPB dari 8 dan 20?" periksa={empat} petunjuk="Cari faktor yang sama, lalu ambil yang terbesar." benar="Empat." />
           <TulisBebas id={idKuis("A", 7)} judul="Dua pita lain" visual={<Papan anak="FPB 12 dan 42" />} pertanyaan="Tulis FPB dari 12 dan 42." pesanSalah="Bandingkan faktor keduanya." bantuan="Faktor yang sama: 1, 2, 3, dan 6. Yang terbesar 6." umpan="6." periksa={enam} alias={["6", "enam"]} konteks="FPB 12 dan 42 adalah 6." />
           <Dialog nama="Igil" anak="FPB 6 dan 12 juga 6. FPB 12 dan 28 adalah 4. Kalau tidak ada prima yang berpasangan, seperti 15 dan 28, FPB-nya 1." />
           <Dialog nama="Laras" anak="Membagi barang jadi kelompok sama rata memakai FPB, bukan KPK." />
+          <KuisSuara id={idKuis("B", 6)} pertanyaan="Berapa FPB dari 15 dan 35?" periksa={lima} petunjuk="Lihat faktor yang sama, lalu pilih yang terbesar." benar="Lima." />
+          <TulisBebas id={idKuis("B", 7)} judul="Paket layangan" visual={<Papan anak="36 gulungan · 48 kertas · 24 stiker" />} pertanyaan="Tulis banyak paket paling banyak. Tiap jenis barang di setiap paket harus sama banyak." pesanSalah="Cari FPB dari 36, 48, dan 24." bantuan="FPB-nya 12. Tiap paket: 3 gulungan, 4 kertas, 2 stiker." umpan="12 paket." periksa={duaBelas} alias={["12", "dua belas"]} konteks="Paket paling banyak ada 12." />
         </Adegan>
 
-        <Adegan judul="Sub-bab 5 — Prima, pohon faktor, dan tangga bagi" jenis="saring" kelas={kelas} kelamin={kelamin} penjelasan={["Bilangan prima hanya dibagi 1 dan dirinya. Satu bukan prima.", "Pohon faktor dan tangga bagi membantu mencari KPK dan FPB."]}>
+        <Adegan judul="Sub-bab 5 — Prima, pohon faktor, dan tangga bagi" jenis="saring" kelas={kelas} kelamin={kelamin} penjelasan={["Bilangan prima hanya dibagi 1 dan dirinya. Satu bukan prima.", "Pohon faktor dan tangga bagi membantu mencari KPK dan FPB.", "Peta 72 dan 150 menunjukkan FPB dan KPK dari faktor prima."]}>
           <Dialog nama="Sena" anak="Prima hanya punya dua faktor: 1 dan bilangan itu sendiri." />
           <Dialog nama="Dimas" anak="Dua adalah prima terkecil. Tiga, lima, dan tujuh juga." />
           <Dialog nama="Laras" anak="Eratosthenes menyaring prima dengan mencoret kelipatan." />
@@ -612,61 +633,18 @@ function KartuA({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminGuru }) {
           <Dialog nama="Sena" anak="72 = 2 × 2 × 2 × 3 × 3. 150 = 2 × 3 × 5 × 5. Prima yang berpasangan, 2 dan 3, dikali sekali: FPB = 6." />
           <Dialog nama="Dimas" anak="KPK menulis pasangan itu sekali, lalu semua yang tidak berpasangan: 2 × 3 × 2 × 2 × 3 × 5 × 5 = 1.800." />
           <TanggaBagi />
-          <Dialog nama="Igil" anak="Di tangga, semua pembagi dikalikan untuk KPK. Hanya pembagi yang membagi semua bilangan dikalikan untuk FPB." />
-        </Adegan>
-
-        <Pilih id={idKuis("A", 10)} pertanyaan="Kelipatan 8 yang keempat adalah..." visual={<Papan anak="8 · 16 · 24 · ⬜" />} pilihan={[{ huruf: "A", teks: "24" }, { huruf: "B", teks: "32" }, { huruf: "C", teks: "40" }, { huruf: "D", teks: "16" }]} benar="B" umpan="8, 16, 24, lalu 32." salah="Mulai dari 8, lompat empat kali." />
-        <KuisCocok id={idKuis("A", 11)} perintah="Pasangkan soal dengan jawabannya." baris={[{ kiri: "KPK 4 dan 6", pilihan: PASANGAN_A, benar: "12" }, { kiri: "Pasangan faktor 3 pada 12", pilihan: PASANGAN_A, benar: "4" }, { kiri: "Bilangan prima terkecil", pilihan: PASANGAN_A, benar: "2" }]} umpan="12, 4, dan 2." />
-        <SusunToken id={idKuis("A", 12)} perintah="Susun kelipatan 6 ini dari yang paling kecil." acak={["18", "6", "24", "12"]} benar={["6", "12", "18", "24"]} umpan="6, 12, 18, 24." />
-        <KuisBenarSalah id={idKuis("A", 13)} perintah="Pilih benar atau salah." baris={[{ teks: "0 termasuk kelipatan 5.", benar: false }, { teks: "1 termasuk bilangan prima.", benar: false }, { teks: "FPB 9 dan 15 adalah 3.", benar: true }]} umpan="Dua pernyataan pertama salah. FPB 9 dan 15 memang 3." />
-        <Pilih id={idKuis("A", 14)} pertanyaan="Laras setiap 4 hari, Dimas setiap 6 hari. Mereka bersama tanggal 5 September. Kapan mereka bersama lagi?" visual={<Papan anak="5 September + KPK(4, 6)" />} pilihan={[{ huruf: "A", teks: "11 September" }, { huruf: "B", teks: "17 September" }, { huruf: "C", teks: "9 September" }, { huruf: "D", teks: "24 September" }]} benar="B" umpan="KPK-nya 12. 5 + 12 = 17 September." salah="Tambahkan KPK pada tanggal 5, jangan menambahkan 4 atau 6 saja." />
-      </div>
-    </KartuBingkai>
-  );
-}
-
-function KartuB({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminGuru }) {
-  const kartu = MODUL_MTK5_BAB2.kartu[1];
-  return (
-    <KartuBingkai>
-      <KepalaKartu ikon="🗺️🦉" judul="B. Peta KPK dan FPB" anak="Lima peta hitung" kelas={kelas} kelamin={kelamin} cuplikan={cuplikanKalimat(kartu.voice[0] ?? [])} />
-      <div className="mt-4 space-y-4">
-        <Adegan judul="Peta kelipatan" jenis="tepuk" kelas={kelas} kelamin={kelamin} penjelasan={["Kelipatan didapat dari kali 1, kali 2, kali 3, dan seterusnya.", "Nol tidak ditulis di daftar."]}>
-          <PetaContoh pusat="Lompat sama" cabang={[{ ikon: "🦘", judul: "Mulai", isi: "dari bilangannya" }, { ikon: "3️⃣", judul: "Contoh 3", isi: "3, 6, 9, 12" }, { ikon: "🚫", judul: "Bukan", isi: "0 tidak ikut" }]} kolom={["Bilangan", "Empat pertama"]} baris={[["3", "3 · 6 · 9 · 12"], ["4", "4 · 8 · 12 · 16"]]} />
-          <KuisSuara id={idKuis("B", 0)} pertanyaan="Sebutkan empat kelipatan 11 yang pertama." periksa={kelipatanSebelas} petunjuk="Mulai dari 11, lalu tambah 11." benar="11, 22, 33, dan 44." />
-          <TulisBebas id={idKuis("B", 1)} judul="Lompatan kesembilan" visual={<Papan anak="9 · 18 · 27 · ⬜" />} pertanyaan="Tulis kelipatan 9 yang keempat." pesanSalah="Lompat 9 sebanyak empat kali." bantuan="9, 18, 27, lalu 36." umpan="36." periksa={tigaPuluhEnam} alias={["36", "tiga puluh enam"]} konteks="Kelipatan 9 yang keempat adalah 36." />
-        </Adegan>
-
-        <Adegan judul="Peta KPK" jenis="jadwal" kelas={kelas} kelamin={kelamin} penjelasan={["Tandai bilangan yang muncul di setiap daftar.", "KPK adalah yang paling kecil di antara tanda itu."]}>
-          <PetaContoh pusat="KPK 4 dan 6 = 12" cabang={[{ ikon: "4️⃣", judul: "Daftar 4", isi: "4, 8, 12, 16" }, { ikon: "6️⃣", judul: "Daftar 6", isi: "6, 12, 18, 24" }, { ikon: "📅", judul: "Jadwal", isi: "tambah KPK pada hari ini" }]} kolom={["Langkah", "Yang dilakukan"]} baris={[["1", "Tulis kelipatan"], ["2", "Tandai yang sama"], ["3", "Ambil yang terkecil"]]} />
-          <KuisSuara id={idKuis("B", 2)} pertanyaan="Berapa KPK dari 3, 4, dan 5?" periksa={enamPuluh} petunjuk="Cari bilangan yang ada di ketiga daftar kelipatan." benar="Enam puluh." />
-          <TulisBebas id={idKuis("B", 3)} judul="Juli di bukit" visual={<Papan anak="Bersama 14 Juli. Laras tiap 5 hari. Dimas tiap 2 hari." />} pertanyaan="Tulis tanggal mereka bersama lagi." pesanSalah="Cari KPK 5 dan 2, lalu tambahkan pada tanggal 14." bantuan="KPK 5 dan 2 adalah 10. 14 + 10 = 24." umpan="24 Juli." periksa={tanggalDuaPuluhEmpat} alias={["24", "dua puluh empat"]} konteks="Mereka bersama lagi tanggal 24 Juli." />
-        </Adegan>
-
-        <Adegan judul="Peta faktor" jenis="pita" kelas={kelas} kelamin={kelamin} penjelasan={["Dua faktor yang dikalikan menghasilkan bilangan semula adalah pasangan.", "Tuliskan setiap bilangan sekali, dari yang kecil."]}>
-          <PetaContoh pusat="Pasangan 18" cabang={[{ ikon: "1️⃣", judul: "1 dan 18", isi: "1 × 18 = 18" }, { ikon: "2️⃣", judul: "2 dan 9", isi: "2 × 9 = 18" }, { ikon: "3️⃣", judul: "3 dan 6", isi: "3 × 6 = 18" }]} kolom={["Kecil", "Pasangan"]} baris={[["1", "18"], ["2", "9"], ["3", "6"]]} />
-          <KuisSuara id={idKuis("B", 4)} pertanyaan="Sebutkan semua faktor 15." periksa={faktorLimaBelas} petunjuk="Cari yang membagi 15 tanpa sisa." benar="1, 3, 5, dan 15." />
-          <TulisBebas id={idKuis("B", 5)} judul="Faktor 28" visual={<Papan anak="Faktor dari 28" />} pertanyaan="Tulis semua faktor 28." pesanSalah="Urutkan dari yang kecil. Jangan ada yang sisa." bantuan="1, 2, 4, 7, 14, dan 28." umpan="1, 2, 4, 7, 14, 28." periksa={faktorDuaPuluhDelapan} alias={["1", "2", "4", "7", "14", "28"]} konteks="Faktor 28 adalah 1, 2, 4, 7, 14, dan 28." />
-        </Adegan>
-
-        <Adegan judul="Peta FPB" jenis="biji" kelas={kelas} kelamin={kelamin} penjelasan={["Ambil faktor yang muncul di semua bilangan.", "FPB adalah yang terbesar. Banyak vas atau ikat paling banyak sama dengan FPB."]}>
-          <PetaContoh pusat="FPB 12 dan 18 = 6" cabang={[{ ikon: "🔴", judul: "Sama", isi: "1, 2, 3, 6" }, { ikon: "🎀", judul: "24 dan 18", isi: "6 ikat" }, { ikon: "1️⃣", judul: "Tidak pasangan", isi: "FPB bisa 1" }]} kolom={["Ikat", "Isi"]} baris={[["6 ikat", "paling banyak"], ["Merah", "4 tiap ikat"], ["Putih", "3 tiap ikat"]]} />
-          <KuisSuara id={idKuis("B", 6)} pertanyaan="Berapa FPB dari 15 dan 35?" periksa={lima} petunjuk="Lihat faktor yang sama, lalu pilih yang terbesar." benar="Lima." />
-          <TulisBebas id={idKuis("B", 7)} judul="Paket layangan" visual={<Papan anak="36 gulungan · 48 kertas · 24 stiker" />} pertanyaan="Tulis banyak paket paling banyak. Tiap jenis barang di setiap paket harus sama banyak." pesanSalah="Cari FPB dari 36, 48, dan 24." bantuan="FPB-nya 12. Tiap paket: 3 gulungan, 4 kertas, 2 stiker." umpan="12 paket." periksa={duaBelas} alias={["12", "dua belas"]} konteks="Paket paling banyak ada 12." />
-        </Adegan>
-
-        <Adegan judul="Peta prima dan tangga" jenis="saring" kelas={kelas} kelamin={kelamin} penjelasan={["Prima yang berpasangan dikali sekali untuk FPB.", "KPK memakai pasangan itu sekali, lalu semua prima yang tersisa."]}>
+          <Dialog nama="Igil" anak="Di tangga, semua pembagi dikalikan untuk KPK. Hanya pembagi yang membagi semua bilangan dikalikan untuk FPB. Peta ini merangkum 72 dan 150." />
           <PetaContoh pusat="72 dan 150" cabang={[{ ikon: "2️⃣", judul: "72", isi: "2 × 2 × 2 × 3 × 3" }, { ikon: "5️⃣", judul: "150", isi: "2 × 3 × 5 × 5" }, { ikon: "✅", judul: "Hasil", isi: "FPB 6 · KPK 1.800" }]} kolom={["Yang dikali", "Hasil"]} baris={[["FPB, yang berpasangan", "2 × 3 = 6"], ["KPK, pasangan + sisa", "1.800"]]} />
-          <p className="text-sm font-semibold text-slate-700">Sampai 30 ada 10 bilangan prima. Kalau saringan dilanjutkan sampai 100, bilangan primanya ada 25. Hari dan pasaran yang sama kembali pada KPK dari 7 dan 5. Jika Pahing jatuh pada Selasa, Pahing berikutnya jatuh pada Minggu.</p>
+          <Dialog nama="Laras" anak="Sampai 30 ada 10 bilangan prima. Kalau saringan dilanjutkan sampai 100, bilangan primanya ada 25." />
+          <Dialog nama="Sena" anak="Hari dan pasaran yang sama kembali pada KPK dari 7 dan 5. Jika Pahing jatuh pada Selasa, Pahing berikutnya jatuh pada Minggu." />
           <KuisSuara id={idKuis("B", 8)} pertanyaan="Sebutkan empat bilangan prima yang pertama." periksa={primaPertama} petunjuk="Mulai dari yang terkecil. Satu tidak ikut." benar="2, 3, 5, dan 7." />
           <TulisBebas id={idKuis("B", 9)} judul="Urai 96" visual={<Papan anak="96" />} pertanyaan="Tulis faktorisasi prima 96." pesanSalah="Bagi dua sampai tidak habis lagi, lalu lanjut ke prima berikutnya." bantuan="96 = 2 × 2 × 2 × 2 × 2 × 3." umpan="2 × 2 × 2 × 2 × 2 × 3." periksa={primaSembilanEnam} alias={["2", "3"]} konteks="96 = 2 × 2 × 2 × 2 × 2 × 3." />
+          <Pilih id={idKuis("B", 10)} pertanyaan="KPK dari 9 dan 12 adalah..." visual={<Papan anak="9 = 3 × 3    12 = 2 × 2 × 3" />} pilihan={[{ huruf: "A", teks: "3" }, { huruf: "B", teks: "36" }, { huruf: "C", teks: "108" }, { huruf: "D", teks: "12" }]} benar="B" umpan="2 × 2 × 3 × 3 = 36. 3 adalah FPB." salah="Ambil pangkat tertinggi tiap prima, lalu kalikan." />
+          <KuisCocok id={idKuis("A", 11)} perintah="Pasangkan soal dengan jawabannya." baris={[{ kiri: "KPK 4 dan 6", pilihan: PASANGAN_A, benar: "12" }, { kiri: "Pasangan faktor 3 pada 12", pilihan: PASANGAN_A, benar: "4" }, { kiri: "Bilangan prima terkecil", pilihan: PASANGAN_A, benar: "2" }]} umpan="12, 4, dan 2." />
+          <KuisCocok id={idKuis("B", 11)} perintah="Pasangkan soal dengan jawabannya." baris={[{ kiri: "FPB 20 dan 30", pilihan: PASANGAN_B, benar: "10" }, { kiri: "KPK 4 dan 5", pilihan: PASANGAN_B, benar: "20" }, { kiri: "Faktorisasi prima 30", pilihan: PASANGAN_B, benar: "2 × 3 × 5" }]} umpan="10, 20, dan 2 × 3 × 5." />
+          <KuisBenarSalah id={idKuis("A", 13)} perintah="Pilih benar atau salah." baris={[{ teks: "0 termasuk kelipatan 5.", benar: false }, { teks: "1 termasuk bilangan prima.", benar: false }, { teks: "FPB 9 dan 15 adalah 3.", benar: true }]} umpan="Dua pernyataan pertama salah. FPB 9 dan 15 memang 3." />
+          <KuisBenarSalah id={idKuis("B", 13)} perintah="Pilih benar atau salah." baris={[{ teks: "16 habis dibagi 6.", benar: false }, { teks: "KPK 2 dan 3 adalah 6.", benar: true }, { teks: "25 adalah bilangan prima.", benar: false }]} umpan="Hanya pernyataan kedua yang benar. 16 dibagi 6 bersisa. 25 = 5 × 5." />
         </Adegan>
-
-        <Pilih id={idKuis("B", 10)} pertanyaan="KPK dari 9 dan 12 adalah..." visual={<Papan anak="9 = 3 × 3    12 = 2 × 2 × 3" />} pilihan={[{ huruf: "A", teks: "3" }, { huruf: "B", teks: "36" }, { huruf: "C", teks: "108" }, { huruf: "D", teks: "12" }]} benar="B" umpan="2 × 2 × 3 × 3 = 36. 3 adalah FPB." salah="Ambil pangkat tertinggi tiap prima, lalu kalikan." />
-        <KuisCocok id={idKuis("B", 11)} perintah="Pasangkan soal dengan jawabannya." baris={[{ kiri: "FPB 20 dan 30", pilihan: PASANGAN_B, benar: "10" }, { kiri: "KPK 4 dan 5", pilihan: PASANGAN_B, benar: "20" }, { kiri: "Faktorisasi prima 30", pilihan: PASANGAN_B, benar: "2 × 3 × 5" }]} umpan="10, 20, dan 2 × 3 × 5." />
-        <SusunToken id={idKuis("B", 12)} perintah="Susun faktor 10 dari yang paling kecil." acak={["5", "1", "10", "2"]} benar={["1", "2", "5", "10"]} umpan="1, 2, 5, 10." />
-        <KuisBenarSalah id={idKuis("B", 13)} perintah="Pilih benar atau salah." baris={[{ teks: "16 habis dibagi 6.", benar: false }, { teks: "KPK 2 dan 3 adalah 6.", benar: true }, { teks: "25 adalah bilangan prima.", benar: false }]} umpan="Hanya pernyataan kedua yang benar. 16 dibagi 6 bersisa. 25 = 5 × 5." />
-        <Pilih id={idKuis("B", 14)} pertanyaan="Tiga lonceng berbunyi setiap 6 menit, 10 menit, dan 15 menit. Mereka bersama lagi setelah..." visual={<Papan anak="6 · 10 · 15" />} pilihan={[{ huruf: "A", teks: "30 menit" }, { huruf: "B", teks: "60 menit" }, { huruf: "C", teks: "1 menit" }, { huruf: "D", teks: "31 menit" }]} benar="A" umpan="KPK 6, 10, dan 15 adalah 30. FPB ketiganya 1." salah="Cari kelipatan yang sama dan paling kecil." />
       </div>
     </KartuBingkai>
   );
@@ -725,7 +703,6 @@ export default function NaskahMtk5Bab2({ kelas, kelamin }: { kelas?: string; kel
   return (
     <div className="space-y-5">
       <KartuA kelas={kelas} kelamin={kelamin} />
-      <KartuB kelas={kelas} kelamin={kelamin} />
       <KartuC kelas={kelas} kelamin={kelamin} />
       <div id={SLOT_AJUAN_SEBELUM_KARTU_D} />
       <GambarBukit jenis="kartu" />
