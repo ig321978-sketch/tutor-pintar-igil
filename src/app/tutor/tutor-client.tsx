@@ -460,8 +460,9 @@ export default function TutorAI() {
   sudutPandangRef.current = sudutPandang;
 
   useLayoutEffect(() => {
-    setSlotAjuan(document.getElementById(SLOT_AJUAN_SEBELUM_KARTU_D));
-  }, [penjelasanAktif, tahapBelajar]);
+    const simpul = document.getElementById(SLOT_AJUAN_SEBELUM_KARTU_D);
+    setSlotAjuan((lama) => (lama === simpul ? lama : simpul));
+  });
 
   useEffect(() => {
     if (namaDariProfilSesi) setNama(namaDariProfilSesi);
