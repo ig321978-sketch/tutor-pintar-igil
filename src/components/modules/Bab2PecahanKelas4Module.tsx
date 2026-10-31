@@ -208,7 +208,9 @@ const TOKEN_PRICE_RP = 500; // 1 Token IGIL = Rp 500
 
 export default function Bab2PecahanKelas4Module() {
   // Navigasi 6 Tab Standar IGIL
-  const [activeTab, setActiveTab] = useState<1 | 2 | 3 | 4 | 5 | 6>(1);
+  const [activeTab, setActiveTab] = useState<1 | 2 | 3 | 4 | 5 | 6 | 7>(1);
+  const [materiBagian, setMateriBagian] = useState<1 | 2 | 3 | 4 | 5>(1);
+  const [persenPetak, setPersenPetak] = useState<number>(75);
   const [soundEnabled, setSoundEnabled] = useState<boolean>(true);
 
   // Dompet Token IGIL (Latihan Maks 50 Token + Evaluasi Maks 100 Token = 150 Token = Rp 75.000)
@@ -530,7 +532,7 @@ export default function Bab2PecahanKelas4Module() {
   // Stopwatch Presisi untuk Tab 6 (Evaluasi)
   useEffect(() => {
     let interval: NodeJS.Timeout | null = null;
-    if (activeTab === 6 && timerRunning && !evalSubmitted) {
+    if (activeTab === 7 && timerRunning && !evalSubmitted) {
       const startTime = Date.now() - elapsedMs;
       interval = setInterval(() => {
         setElapsedMs(Date.now() - startTime);
@@ -543,7 +545,7 @@ export default function Bab2PecahanKelas4Module() {
 
   // Otomatis nyalakan timer saat masuk Tab 6
   useEffect(() => {
-    if (activeTab === 6 && !evalSubmitted && !timerRunning) {
+    if (activeTab === 7 && !evalSubmitted && !timerRunning) {
       setTimerRunning(true);
     }
   }, [activeTab, evalSubmitted, timerRunning]);
@@ -579,7 +581,7 @@ export default function Bab2PecahanKelas4Module() {
   }, []);
 
   useEffect(() => {
-    if (activeTab === 4) {
+    if (activeTab === 5) {
       setTimeout(() => drawCanvasGrid(), 50);
     }
   }, [activeTab, drawCanvasGrid]);
@@ -790,21 +792,22 @@ export default function Bab2PecahanKelas4Module() {
           </div>
         </div>
 
-        {/* Navigasi 6 Tab */}
+        {/* Navigasi 7 Tab */}
         <div className="max-w-6xl mx-auto px-4 pt-1 pb-2 flex overflow-x-auto gap-1.5 no-scrollbar">
           {[
             { id: 1, label: "1. Aktivasi Otak", icon: "🍕" },
-            { id: 2, label: "2. Eksperimen Materi", icon: "🔬" },
-            { id: 3, label: "3. Lab Timbangan PhET", icon: "⚖️" },
-            { id: 4, label: "4. Kanvas & Stempel", icon: "🎨" },
-            { id: 5, label: `5. Latihan (${practiceTokens}/50🪙)`, icon: "🎯" },
-            { id: 6, label: `6. Evaluasi (${evalTokens}/100🪙)`, icon: "🏆" },
+            { id: 2, label: "2. Materi Buku", icon: "📘" },
+            { id: 3, label: "3. Eksperimen Materi", icon: "🔬" },
+            { id: 4, label: "4. Lab Timbangan PhET", icon: "⚖️" },
+            { id: 5, label: "5. Kanvas & Stempel", icon: "🎨" },
+            { id: 6, label: `6. Latihan (${practiceTokens}/50🪙)`, icon: "🎯" },
+            { id: 7, label: `7. Evaluasi (${evalTokens}/100🪙)`, icon: "🏆" },
           ].map((tab) => (
             <button
               key={tab.id}
               onClick={() => {
                 triggerSound("click");
-                setActiveTab(tab.id as 1 | 2 | 3 | 4 | 5 | 6);
+                setActiveTab(tab.id as 1 | 2 | 3 | 4 | 5 | 6 | 7);
               }}
               className={`px-3.5 py-2 rounded-xl font-bold text-xs md:text-sm whitespace-nowrap transition-all flex items-center gap-1.5 ${
                 activeTab === tab.id
@@ -969,7 +972,7 @@ export default function Bab2PecahanKelas4Module() {
                     onClick={() => setActiveTab(2)}
                     className="underline font-black text-amber-300 hover:text-amber-200 ml-1"
                   >
-                    Tab 2: Eksperimen Materi →
+                    Tab 2: Materi Buku →
                   </button>
                 </div>
               )}
@@ -985,9 +988,411 @@ export default function Bab2PecahanKelas4Module() {
         )}
 
         {/* ============================================================ */}
-        {/* TAB 2: EKSPERIMEN MATERI 4 MISI ("UNLOCK BY DOING")          */}
+        {/* TAB 2: MATERI BUKU SISWA (LOKAL, TANPA API)                  */}
         {/* ============================================================ */}
         {activeTab === 2 && (
+          <div className="space-y-6">
+            <div className="bg-white rounded-3xl shadow-xl border border-slate-200 p-6 md:p-8 space-y-5">
+              <div className="flex flex-wrap items-start justify-between gap-4">
+                <div>
+                  <span className="bg-indigo-100 text-indigo-800 text-xs font-extrabold px-3 py-1 rounded-full uppercase">
+                    Buku Siswa • Bab 2 • Kelas IV
+                  </span>
+                  <h2 className="text-2xl md:text-3xl font-black text-slate-900 mt-2">
+                    Materi Pecahan dari Buku
+                  </h2>
+                  <p className="text-sm text-slate-600 mt-1 max-w-2xl">
+                    Lima bagian Bab 2: pembilang satu, penyebut sama, pecahan senilai, desimal, lalu persen.
+                  </p>
+                </div>
+                <button
+                  onClick={() =>
+                    speakText(
+                      "Bab dua pecahan. Kita belajar membandingkan pecahan, mencari pecahan senilai, membaca desimal, dan mengubahnya menjadi persen."
+                    )
+                  }
+                  className="px-4 py-2.5 rounded-2xl bg-indigo-600 hover:bg-indigo-700 text-white font-bold text-sm"
+                >
+                  🗣️ Dengarkan Tujuan
+                </button>
+              </div>
+
+              <div className="flex flex-wrap items-center gap-2 text-xs font-black">
+                <span className="px-3 py-1.5 rounded-full bg-indigo-950 text-amber-300">Pecahan</span>
+                <span className="text-slate-400">→</span>
+                {["Pembilang 1", "Penyebut sama", "Senilai", "Desimal", "Persen"].map((nama) => (
+                  <span key={nama} className="px-3 py-1.5 rounded-full bg-amber-100 text-amber-950 border border-amber-300">
+                    {nama}
+                  </span>
+                ))}
+              </div>
+            </div>
+
+            <div className="grid grid-cols-2 md:grid-cols-5 gap-3">
+              {[
+                { step: 1 as const, title: "A. Pembilang Satu", desc: "1/2 lebih besar dari 1/4" },
+                { step: 2 as const, title: "B. Penyebut Sama", desc: "Bandingkan pembilang" },
+                { step: 3 as const, title: "C. Pecahan Senilai", desc: "2/6 sama dengan 1/3" },
+                { step: 4 as const, title: "D. Desimal", desc: "Persepuluh dan perseratus" },
+                { step: 5 as const, title: "E. Persen", desc: "Dari seratus, lambang %" },
+              ].map((m) => (
+                <button
+                  key={m.step}
+                  onClick={() => {
+                    triggerSound("click");
+                    setMateriBagian(m.step);
+                  }}
+                  className={`p-4 rounded-2xl border-2 text-left transition-all ${
+                    materiBagian === m.step
+                      ? "bg-indigo-600 text-white border-indigo-700 shadow-lg scale-[1.02]"
+                      : "bg-white text-slate-700 border-slate-200 hover:border-indigo-300"
+                  }`}
+                >
+                  <div className="text-xs font-extrabold uppercase opacity-80">{m.title}</div>
+                  <div className="text-sm font-black mt-0.5">{m.desc}</div>
+                </button>
+              ))}
+            </div>
+
+            {materiBagian === 1 && (
+              <div className="bg-white rounded-3xl shadow-xl border border-slate-200 p-6 md:p-8 space-y-6">
+                <div className="flex flex-wrap items-center justify-between gap-3">
+                  <h3 className="text-2xl font-black text-slate-900">A. Pecahan dengan Pembilang Satu</h3>
+                  <button
+                    onClick={() =>
+                      speakText(
+                        "Satu pizza dibagi empat. Tiap anak mendapat satu per empat. Satu per dua lebih besar daripada satu per empat, karena potongannya lebih lebar."
+                      )
+                    }
+                    className="px-4 py-2 rounded-xl bg-indigo-600 text-white font-bold text-xs"
+                  >
+                    🗣️ Suara Penjelasan
+                  </button>
+                </div>
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                  <div className="rounded-3xl border-2 border-indigo-200 bg-indigo-50/70 p-5 text-center">
+                    <div className="text-xs font-extrabold uppercase text-indigo-700">Pizza dibagi 4 siswa</div>
+                    <InteractiveFractionCircle numerator={1} denominator={4} size={180} activeColor="#4f46e5" />
+                    <div className="mt-2 text-4xl font-black text-indigo-950">1/4</div>
+                    <p className="mt-2 text-sm font-semibold text-slate-600">
+                      Tiap anak mendapat 1 dari 4 bagian yang sama.
+                    </p>
+                  </div>
+                  <div className="rounded-3xl border-2 border-slate-200 bg-slate-50 p-5 space-y-3">
+                    <div className="text-center">
+                      <div className="text-xs font-bold text-amber-700 uppercase">Pembilang</div>
+                      <div className="text-5xl font-black text-amber-500">1</div>
+                      <div className="mx-auto my-2 h-1.5 w-24 rounded-full bg-slate-800" />
+                      <div className="text-5xl font-black text-indigo-600">4</div>
+                      <div className="text-xs font-bold text-indigo-700 uppercase">Penyebut</div>
+                    </div>
+                    <p className="text-sm font-semibold text-slate-700">
+                      Angka atas menghitung bagian yang diambil. Angka bawah menghitung seluruh potongan yang sama besar.
+                    </p>
+                  </div>
+                </div>
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                  <div className="rounded-2xl border-2 border-emerald-200 bg-emerald-50 p-4">
+                    <div className="flex items-center justify-center gap-3">
+                      <InteractiveFractionCircle numerator={1} denominator={2} size={110} activeColor="#4f46e5" />
+                      <span className="text-3xl font-black text-emerald-700">&gt;</span>
+                      <InteractiveFractionCircle numerator={1} denominator={4} size={110} activeColor="#e11d48" />
+                    </div>
+                    <p className="mt-2 text-center text-sm font-black text-emerald-950">1/2 &gt; 1/4. Daerah 1/2 lebih luas.</p>
+                  </div>
+                  <div className="rounded-2xl border-2 border-rose-200 bg-rose-50 p-4">
+                    <div className="flex items-center justify-center gap-3">
+                      <InteractiveFractionCircle numerator={1} denominator={10} size={110} activeColor="#e11d48" />
+                      <span className="text-3xl font-black text-rose-700">&lt;</span>
+                      <InteractiveFractionCircle numerator={1} denominator={5} size={110} activeColor="#4f46e5" />
+                    </div>
+                    <p className="mt-2 text-center text-sm font-black text-rose-950">1/10 &lt; 1/5. Penyebut lebih besar, potongan lebih kecil.</p>
+                  </div>
+                </div>
+                <div className="rounded-2xl border-2 border-amber-300 bg-amber-50 p-4 text-sm font-semibold text-amber-950">
+                  Tiara punya bawang putih 1/2 kg dan gula 1/4 kg. Bawang putih lebih berat, karena 1/2 &gt; 1/4.
+                </div>
+              </div>
+            )}
+
+            {materiBagian === 2 && (
+              <div className="bg-white rounded-3xl shadow-xl border border-slate-200 p-6 md:p-8 space-y-6">
+                <div className="flex flex-wrap items-center justify-between gap-3">
+                  <h3 className="text-2xl font-black text-slate-900">B. Pecahan dengan Penyebut Sama</h3>
+                  <button
+                    onClick={() =>
+                      speakText(
+                        "Penyebut yang sama berarti potongannya sama besar. Bandingkan pembilangnya. Tiga lebih besar dari dua, jadi tiga per enam lebih panjang dari dua per enam."
+                      )
+                    }
+                    className="px-4 py-2 rounded-xl bg-indigo-600 text-white font-bold text-xs"
+                  >
+                    🗣️ Suara Penjelasan
+                  </button>
+                </div>
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
+                  <div className="space-y-2 rounded-2xl border-2 border-slate-200 p-4">
+                    <div className="text-xs font-extrabold text-indigo-700">1/3 &lt; 2/3</div>
+                    <div className="flex h-12 overflow-hidden rounded-xl border-2 border-slate-800">
+                      <div className="flex w-1/3 items-center justify-center bg-indigo-600 font-black text-white">1/3</div>
+                    </div>
+                    <div className="flex h-12 overflow-hidden rounded-xl border-2 border-slate-800">
+                      <div className="flex w-2/3 items-center justify-center bg-indigo-600 font-black text-white">2/3</div>
+                    </div>
+                    <p className="text-sm font-semibold text-slate-600">Penyebut sama-sama 3. Pembilang 1 lebih kecil dari 2.</p>
+                  </div>
+                  <div className="space-y-2 rounded-2xl border-2 border-slate-200 p-4">
+                    <div className="text-xs font-extrabold text-amber-800">2/10 &gt; 1/10</div>
+                    <div className="grid h-12 grid-cols-10 overflow-hidden rounded-xl border-2 border-slate-800">
+                      {Array.from({ length: 10 }).map((_, i) => (
+                        <div key={i} className={`border-r border-slate-800 ${i < 2 ? "bg-amber-500" : "bg-white"}`} />
+                      ))}
+                    </div>
+                    <div className="grid h-12 grid-cols-10 overflow-hidden rounded-xl border-2 border-slate-800">
+                      {Array.from({ length: 10 }).map((_, i) => (
+                        <div key={`b-${i}`} className={`border-r border-slate-800 ${i < 1 ? "bg-rose-500" : "bg-white"}`} />
+                      ))}
+                    </div>
+                    <p className="text-sm font-semibold text-slate-600">Dua potong dari sepuluh lebih banyak daripada satu potong.</p>
+                  </div>
+                </div>
+                <div className="rounded-2xl border-2 border-emerald-300 bg-emerald-50 p-4">
+                  <p className="text-sm font-semibold text-emerald-950">
+                    Tongkat Asep 3/6 meter. Tongkat Azizah 2/6 meter. Penyebut sama, 3 &gt; 2, jadi tongkat Asep lebih panjang.
+                  </p>
+                  <div className="mt-3 grid grid-cols-6 gap-1">
+                    {Array.from({ length: 6 }).map((_, i) => (
+                      <div
+                        key={i}
+                        className={`h-8 rounded-md border ${i < 3 ? "bg-emerald-500 border-emerald-700" : "bg-white border-slate-300"}`}
+                      />
+                    ))}
+                  </div>
+                  <div className="mt-1 text-xs font-bold text-emerald-800">3/6 meter Asep</div>
+                  <div className="mt-2 grid grid-cols-6 gap-1">
+                    {Array.from({ length: 6 }).map((_, i) => (
+                      <div
+                        key={i}
+                        className={`h-8 rounded-md border ${i < 2 ? "bg-amber-400 border-amber-600" : "bg-white border-slate-300"}`}
+                      />
+                    ))}
+                  </div>
+                  <div className="mt-1 text-xs font-bold text-amber-800">2/6 meter Azizah</div>
+                </div>
+              </div>
+            )}
+
+            {materiBagian === 3 && (
+              <div className="bg-white rounded-3xl shadow-xl border border-slate-200 p-6 md:p-8 space-y-6">
+                <div className="flex flex-wrap items-center justify-between gap-3">
+                  <h3 className="text-2xl font-black text-slate-900">C. Pecahan Senilai</h3>
+                  <button
+                    onClick={() =>
+                      speakText(
+                        "Pecahan senilai luasnya sama. Dua per enam sama dengan satu per tiga. Kalikan atau bagikan pembilang dan penyebut dengan bilangan yang sama."
+                      )
+                    }
+                    className="px-4 py-2 rounded-xl bg-indigo-600 text-white font-bold text-xs"
+                  >
+                    🗣️ Suara Penjelasan
+                  </button>
+                </div>
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-5 items-center">
+                  <div className="rounded-3xl border-2 border-emerald-200 bg-emerald-50 p-4 text-center">
+                    <div className="text-xs font-extrabold uppercase text-emerald-800">Cokelat Putu</div>
+                    <div className="mt-3 flex items-center justify-center gap-3">
+                      <InteractiveFractionCircle numerator={2} denominator={6} size={120} activeColor="#10b981" />
+                      <span className="text-3xl font-black text-emerald-700">=</span>
+                      <InteractiveFractionCircle numerator={1} denominator={3} size={120} activeColor="#10b981" />
+                    </div>
+                    <p className="mt-2 text-lg font-black text-emerald-950">2/6 = 1/3</p>
+                    <p className="text-sm font-semibold text-slate-600">
+                      Batang dibagi 6, Putu mendapat 2. Batang dibagi 3, Putu mendapat 1. Luasnya sama.
+                    </p>
+                  </div>
+                  <div className="space-y-3 rounded-3xl border-2 border-slate-200 p-4">
+                    <div className="rounded-2xl bg-slate-900 p-4 text-center text-white">
+                      <div className="text-xl font-black">1/3 = (1 × 2) / (3 × 2) = 2/6</div>
+                      <div className="mt-2 text-xl font-black text-amber-300">2/6 = (2 ÷ 2) / (6 ÷ 2) = 1/3</div>
+                    </div>
+                    <p className="text-sm font-semibold text-slate-700">
+                      Kertas dilipat 4, satu kotak diwarnai: 1/4. Kertas lain dilipat 16, empat kotak diwarnai: 4/16. Luas warna itu sama, jadi 1/4 = 4/16.
+                    </p>
+                  </div>
+                </div>
+              </div>
+            )}
+
+            {materiBagian === 4 && (
+              <div className="bg-white rounded-3xl shadow-xl border border-slate-200 p-6 md:p-8 space-y-6">
+                <div className="flex flex-wrap items-center justify-between gap-3">
+                  <h3 className="text-2xl font-black text-slate-900">D. Desimal Persepuluhan dan Perseratusan</h3>
+                  <button
+                    onClick={() =>
+                      speakText(
+                        "Satu roti dari sepuluh ditulis nol koma satu. Satu biskuit dari seratus ditulis nol koma nol satu. Satu angka di belakang koma berarti persepuluh. Dua angka berarti perseratus."
+                      )
+                    }
+                    className="px-4 py-2 rounded-xl bg-indigo-600 text-white font-bold text-xs"
+                  >
+                    🗣️ Suara Penjelasan
+                  </button>
+                </div>
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
+                  <div className="rounded-3xl border-2 border-amber-200 bg-amber-50 p-4">
+                    <div className="text-xs font-extrabold uppercase text-amber-800">10 roti, 1 berselai</div>
+                    <div className="mt-3 grid grid-cols-5 gap-2">
+                      {Array.from({ length: 10 }).map((_, i) => (
+                        <div
+                          key={i}
+                          className={`flex h-12 items-center justify-center rounded-xl border-2 text-xl ${
+                            i < 1 ? "border-amber-700 bg-amber-400" : "border-amber-200 bg-white"
+                          }`}
+                        >
+                          🍞
+                        </div>
+                      ))}
+                    </div>
+                    <p className="mt-3 text-center text-2xl font-black text-amber-950">1/10 = 0,1</p>
+                    <p className="text-center text-sm font-semibold text-slate-600">Tiga roti berselai: 3/10 = 0,3</p>
+                  </div>
+                  <div className="rounded-3xl border-2 border-indigo-200 bg-indigo-50 p-4 text-center">
+                    <div className="text-xs font-extrabold uppercase text-indigo-800">100 biskuit, 25 berselai</div>
+                    <div className="mx-auto mt-3 grid w-40 grid-cols-10 gap-0.5 rounded-lg bg-slate-200 p-1">
+                      {Array.from({ length: 100 }).map((_, i) => (
+                        <div key={i} className={`aspect-square rounded-[1px] ${i < 25 ? "bg-indigo-600" : "bg-white"}`} />
+                      ))}
+                    </div>
+                    <p className="mt-3 text-lg font-black text-indigo-950">25/100 = 0,25</p>
+                    <p className="text-sm font-semibold text-slate-600">1/100 = 0,01 dan 7/100 = 0,07</p>
+                  </div>
+                </div>
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-3 text-sm font-bold">
+                  <div className="rounded-2xl bg-slate-900 p-4 text-white">1 angka di belakang koma → penyebut 10. Contoh 0,4 = 4/10.</div>
+                  <div className="rounded-2xl bg-slate-900 p-4 text-white">2 angka di belakang koma → penyebut 100. Contoh 0,25 = 25/100.</div>
+                </div>
+              </div>
+            )}
+
+            {materiBagian === 5 && (
+              <div className="bg-white rounded-3xl shadow-xl border border-slate-200 p-6 md:p-8 space-y-6">
+                <div className="flex flex-wrap items-center justify-between gap-3">
+                  <h3 className="text-2xl font-black text-slate-900">E. Desimal Perseratusan dan Persen</h3>
+                  <button
+                    onClick={() =>
+                      speakText(
+                        `Persen adalah pecahan berpenyebut seratus. Pada papan ini ${persenPetak} petak menyala, jadi nilainya ${persenPetak} persen. Dua puluh dari lima puluh siswa sama dengan empat puluh persen.`
+                      )
+                    }
+                    className="px-4 py-2 rounded-xl bg-indigo-600 text-white font-bold text-xs"
+                  >
+                    🗣️ Suara Penjelasan
+                  </button>
+                </div>
+                <p className="text-sm font-semibold text-slate-600">
+                  Di swalayan, diskon ditulis dengan lambang %. 5% artinya 5/100.
+                </p>
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-6 items-center">
+                  <div className="rounded-3xl border-2 border-slate-200 bg-slate-50 p-4">
+                    <div className="mx-auto grid max-w-[280px] grid-cols-10 gap-1">
+                      {Array.from({ length: 100 }).map((_, i) => (
+                        <button
+                          key={i}
+                          onClick={() => {
+                            triggerSound("click");
+                            setPersenPetak(i + 1);
+                          }}
+                          className={`aspect-square rounded-[4px] border ${
+                            i < persenPetak ? "border-indigo-800 bg-indigo-600" : "border-slate-300 bg-white"
+                          }`}
+                        />
+                      ))}
+                    </div>
+                  </div>
+                  <div className="space-y-3">
+                    <div className="flex flex-wrap gap-2">
+                      {[
+                        { val: 5, label: "5%" },
+                        { val: 25, label: "0,25" },
+                        { val: 35, label: "0,35" },
+                        { val: 40, label: "20/50" },
+                        { val: 60, label: "6/10" },
+                        { val: 75, label: "0,75" },
+                      ].map((pilihan) => (
+                        <button
+                          key={pilihan.val}
+                          onClick={() => {
+                            triggerSound("slice");
+                            setPersenPetak(pilihan.val);
+                          }}
+                          className={`rounded-xl border px-3 py-1.5 text-xs font-black ${
+                            persenPetak === pilihan.val
+                              ? "border-amber-600 bg-amber-400 text-slate-950"
+                              : "border-slate-300 bg-white text-slate-700"
+                          }`}
+                        >
+                          {pilihan.label}
+                        </button>
+                      ))}
+                    </div>
+                    <div className="grid grid-cols-3 gap-2 text-center">
+                      <div className="rounded-2xl border-2 border-indigo-200 bg-indigo-50 p-3">
+                        <div className="text-[11px] font-extrabold uppercase text-indigo-700">Perseratus</div>
+                        <div className="text-2xl font-black">{persenPetak}/100</div>
+                      </div>
+                      <div className="rounded-2xl border-2 border-emerald-200 bg-emerald-50 p-3">
+                        <div className="text-[11px] font-extrabold uppercase text-emerald-700">Desimal</div>
+                        <div className="text-2xl font-black">
+                          {persenPetak === 100 ? "1,00" : `0,${String(persenPetak).padStart(2, "0")}`}
+                        </div>
+                      </div>
+                      <div className="rounded-2xl border-2 border-amber-200 bg-amber-50 p-3">
+                        <div className="text-[11px] font-extrabold uppercase text-amber-800">Persen</div>
+                        <div className="text-2xl font-black">{persenPetak}%</div>
+                      </div>
+                    </div>
+                    <div className="rounded-2xl bg-slate-900 p-4 text-sm font-semibold text-white space-y-1">
+                      <p>0,75 = 75/100 = 75%.</p>
+                      <p>0,35 = 35%. Angka 2,46 = 246%.</p>
+                      <p>20 siswa dari 50: 20/50 = 40/100 = 40%.</p>
+                      <p>6 benar dari 10 soal: 6/10 = 60/100 = 60%.</p>
+                      <p>30 siswa dari 100 ikut lomba lari = 30%.</p>
+                      <p>Geser koma dua langkah ke kanan: 0,25 → 25%, dan 2,36 → 236%.</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            )}
+
+            <div className="flex flex-wrap justify-between gap-3">
+              <button
+                onClick={() => {
+                  triggerSound("click");
+                  if (materiBagian === 1) setActiveTab(1);
+                  else setMateriBagian((materiBagian - 1) as 1 | 2 | 3 | 4 | 5);
+                }}
+                className="px-5 py-2.5 rounded-xl bg-slate-200 text-slate-700 font-bold text-sm"
+              >
+                ← Kembali
+              </button>
+              <button
+                onClick={() => {
+                  triggerSound(materiBagian === 5 ? "fanfare" : "click");
+                  if (materiBagian === 5) setActiveTab(3);
+                  else setMateriBagian((materiBagian + 1) as 1 | 2 | 3 | 4 | 5);
+                }}
+                className="px-6 py-3 rounded-2xl bg-indigo-600 hover:bg-indigo-700 text-white font-extrabold text-sm shadow-md"
+              >
+                {materiBagian === 5 ? "Lanjut ke Eksperimen Materi →" : "Bagian berikutnya →"}
+              </button>
+            </div>
+          </div>
+        )}
+
+        {/* ============================================================ */}
+        {/* TAB 3: EKSPERIMEN MATERI 4 MISI ("UNLOCK BY DOING")          */}
+        {/* ============================================================ */}
+        {activeTab === 3 && (
           <div className="space-y-6">
             {/* Stepper 4 Misi Kurikulum Merdeka */}
             <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
@@ -1459,11 +1864,11 @@ export default function Bab2PecahanKelas4Module() {
                   <button
                     onClick={() => {
                       triggerSound("fanfare");
-                      setActiveTab(3);
+                      setActiveTab(4);
                     }}
                     className="px-6 py-3 rounded-2xl bg-emerald-600 hover:bg-emerald-700 text-white font-extrabold text-sm shadow-md"
                   >
-                    Buka Lab Timbangan PhET (Tab 3) →
+                    Buka Lab Timbangan PhET (Tab 4) →
                   </button>
                 </div>
               </div>
@@ -1472,9 +1877,9 @@ export default function Bab2PecahanKelas4Module() {
         )}
 
         {/* ============================================================ */}
-        {/* TAB 3: SIMULATOR PHET-STYLE (TIMBANGAN JUNGKAT-JUNGKIT)      */}
+        {/* TAB 4: SIMULATOR PHET-STYLE (TIMBANGAN JUNGKAT-JUNGKIT)      */}
         {/* ============================================================ */}
-        {activeTab === 3 && (
+        {activeTab === 4 && (
           <div className="bg-white rounded-3xl shadow-xl border border-slate-200 p-6 md:p-8 space-y-6">
             <div className="flex flex-wrap items-center justify-between gap-4 border-b border-slate-100 pb-4">
               <div>
@@ -1749,9 +2154,9 @@ export default function Bab2PecahanKelas4Module() {
         )}
 
         {/* ============================================================ */}
-        {/* TAB 4: SMART KANVAS + STEMPEL PECAHAN                        */}
+        {/* TAB 5: SMART KANVAS + STEMPEL PECAHAN                        */}
         {/* ============================================================ */}
-        {activeTab === 4 && (
+        {activeTab === 5 && (
           <div className="bg-white rounded-3xl shadow-xl border border-slate-200 p-6 md:p-8 space-y-5">
             <div className="flex flex-wrap items-center justify-between gap-3">
               <div>
@@ -1848,9 +2253,9 @@ export default function Bab2PecahanKelas4Module() {
         )}
 
         {/* ============================================================ */}
-        {/* TAB 5: 10 SOAL LATIHAN MANDIRI (+5 TOKEN / SOAL = 50 TOKEN)  */}
+        {/* TAB 6: 10 SOAL LATIHAN MANDIRI (+5 TOKEN / SOAL = 50 TOKEN)  */}
         {/* ============================================================ */}
-        {activeTab === 5 && (
+        {activeTab === 6 && (
           <div className="space-y-6">
             <div className="bg-white rounded-3xl shadow-lg border border-slate-200 p-6 flex flex-wrap items-center justify-between gap-4">
               <div>
@@ -2024,9 +2429,9 @@ export default function Bab2PecahanKelas4Module() {
         )}
 
         {/* ============================================================ */}
-        {/* TAB 6: 10 SOAL EVALUASI ANTI-CONTEK (+100 TOKEN & TIMER)     */}
+        {/* TAB 7: 10 SOAL EVALUASI ANTI-CONTEK (+100 TOKEN & TIMER)     */}
         {/* ============================================================ */}
-        {activeTab === 6 && (
+        {activeTab === 7 && (
           <div className="space-y-6">
             {/* Banner Status Kualifikasi Beasiswa Rp 300.000 */}
             <div className="bg-gradient-to-r from-slate-900 via-indigo-950 to-slate-900 text-white rounded-3xl p-6 shadow-xl border border-indigo-500/40">
