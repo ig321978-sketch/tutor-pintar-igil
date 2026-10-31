@@ -26,6 +26,16 @@ function angkaAman(nilai: unknown) {
   return angka;
 }
 
+function batasHalaman(langkah: LangkahQuest[], indeks: number) {
+  const tab = langkah[indeks]?.tab;
+  let awal = indeks;
+  let akhir = indeks;
+  if (!tab) return { awal, akhir };
+  while (awal > 0 && langkah[awal - 1]?.tab === tab) awal -= 1;
+  while (akhir < langkah.length - 1 && langkah[akhir + 1]?.tab === tab) akhir += 1;
+  return { awal, akhir };
+}
+
 function kelasTab(aktif: boolean, boleh: boolean) {
   if (aktif) return "border-white bg-white text-indigo-700 shadow-sm";
   if (boleh) return "border-indigo-200/40 text-indigo-100 hover:bg-indigo-500/40";
@@ -49,8 +59,11 @@ export function QuestLangkah({
   const [indeks, setIndeks] = useState(0);
   const [puncak, setPuncak] = useState(0);
   const sekarang = langkah[indeks] ?? langkah[0];
-  const kuis = sekarang?.kuis ?? [];
+  const { awal: awalHalaman, akhir: akhirHalaman } = batasHalaman(langkah, indeks);
+  const halaman = langkah.slice(awalHalaman, akhirHalaman + 1);
+  const kuis = halaman.flatMap((item) => item.kuis ?? []);
   const selesai = kuis.length === 0 || kuis.every((id) => sudahBenar(id));
+  const utuh = Boolean(sekarang?.tab) && halaman.length > 1;
   const tabUnik = langkah.reduce<string[]>((daftar, item) => {
     if (item.tab && !daftar.includes(item.tab)) daftar.push(item.tab);
     return daftar;
@@ -93,8 +106,8 @@ export function QuestLangkah({
   };
 
   const lanjut = () => {
-    if (!selesai) return;
-    const berikut = Math.min(langkah.length - 1, indeks + 1);
+    if (!selesai || akhirHalaman >= langkah.length - 1) return;
+    const berikut = akhirHalaman + 1;
     setIndeks(berikut);
     setPuncak((lama) => Math.max(lama, berikut));
   };
@@ -103,13 +116,20 @@ export function QuestLangkah({
     <section ref={akar} className="scroll-mt-24 space-y-4">
       <div className="overflow-hidden rounded-2xl bg-gradient-to-r from-indigo-700 via-indigo-600 to-violet-700 text-white shadow-lg">
         <div className="px-4 py-4">
-          <p className="w-fit rounded-full bg-indigo-900/50 px-3 py-1 text-xs font-semibold uppercase tracking-wider">
-            {sekarang.kelompok || sekarang.tab || sekarang.bagian}
-          </p>
-          <p className="mt-2 text-2xl font-extrabold tracking-tight">{sekarang.judul}</p>
-          <p className="mt-1 text-sm text-indigo-100">Langkah {indeks + 1} dari {langkah.length}</p>
+          {utuh ? (
+            sekarang.kelompok ? (
+              <p className="w-fit rounded-full bg-indigo-900/50 px-3 py-1 text-xs font-semibold uppercase tracking-wider">
+                {sekarang.kelompok}
+              </p>
+            ) : null
+          ) : (
+            <p className="w-fit rounded-full bg-indigo-900/50 px-3 py-1 text-xs font-semibold uppercase tracking-wider">
+              {sekarang.tab || sekarang.bagian}
+            </p>
+          )}
+          <p className="mt-2 text-2xl font-extrabold tracking-tight">{utuh ? sekarang.tab : sekarang.judul}</p>
         </div>
-        <div role="tablist" aria-label="Bagian materi" className="flex gap-1 overflow-x-auto border-t border-indigo-500/30 px-3 pb-2 pt-2">
+        <div role="tablist" aria-label="Bagian materi" className="flex flex-wrap gap-1 border-t border-indigo-500/30 px-3 pb-2 pt-2">
           {tabUnik.map((nama) => {
             const awal = langkah.findIndex((item) => item.tab === nama);
             const boleh = awal >= 0 && awal <= puncak;
@@ -124,7 +144,7 @@ export function QuestLangkah({
                 onClick={() => {
                   if (!aktif) ke(awal);
                 }}
-                className={`shrink-0 whitespace-nowrap rounded-lg px-4 py-2 text-sm font-bold ${kelasTab(aktif, boleh)}`}
+                className={`min-w-0 max-w-full whitespace-normal rounded-lg px-3 py-2 text-left text-sm font-bold leading-snug ${kelasTab(aktif, boleh)}`}
               >
                 {nama}
               </button>
@@ -132,11 +152,15 @@ export function QuestLangkah({
           })}
         </div>
       </div>
-      <div key={sekarang.kode} className="space-y-3">
-        {sekarang.isi}
+      <div className="space-y-8">
+        {halaman.map((item) => (
+          <div key={item.kode} className="space-y-3">
+            {item.isi}
+          </div>
+        ))}
       </div>
       {slot ? (
-        <div id={slot.id} className={sekarang.kode === slot.padaKode ? "mt-3" : "hidden"} />
+        <div id={slot.id} className={halaman.some((item) => item.kode === slot.padaKode) ? "mt-3" : "hidden"} />
       ) : null}
       {kuis.length > 0 && selesai ? (
         <p className="text-sm font-bold text-emerald-800">Pos ini selesai. Lanjut kalau sudah siap.</p>
@@ -147,13 +171,13 @@ export function QuestLangkah({
       <div className="flex flex-wrap items-center gap-2">
         <button
           type="button"
-          disabled={indeks === 0}
-          onClick={() => ke(indeks - 1)}
+          disabled={awalHalaman === 0}
+          onClick={() => ke(batasHalaman(langkah, awalHalaman - 1).awal)}
           className="rounded-full bg-white px-4 py-2 text-sm font-black text-[#1C01A5] ring-2 ring-[#1C01A5] disabled:opacity-40"
         >
           Kembali
         </button>
-        {indeks < langkah.length - 1 ? (
+        {akhirHalaman < langkah.length - 1 ? (
           <button
             type="button"
             disabled={!selesai}
