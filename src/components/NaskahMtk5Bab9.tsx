@@ -1,6 +1,7 @@
 "use client";
 
 import { GameDetektor, GameDompet, GameGrafik, GamePutar, GameSensus, GameUrai, GameUrutHarga, SaklarSuaraPermainan } from "@/components/GameMtk5Bab9";
+import GambarCerita from "@/components/GambarCerita";
 import HasilJawabanKuis from "@/components/HasilJawabanKuis";
 import KartuPoinPenting from "@/components/KartuPoinPenting";
 import { useKuisMateri } from "@/components/KuisMateriContext";
@@ -88,27 +89,18 @@ function Umpan({ status, teks }: { status: StatusJawabanKuis; teks: string }) {
 
 type JenisPasar = "sungai" | "rak" | "tiket" | "uang" | "pos" | "kartu";
 
+const GAMBAR_PASAR: Record<JenisPasar, { src: string; alt: string }> = {
+  sungai: { src: "/doodle-mtk/mtk-5-bab9-sungai.jpg", alt: "Saka, Leni, Farhan, dan Igil di dermaga Pasar Kapal Senja." },
+  rak: { src: "/doodle-mtk/mtk-5-bab9-rak.jpg", alt: "Enam rak tiket kosong di kios pasar. Saka, Leni, Farhan, dan Igil melihatnya." },
+  tiket: { src: "/doodle-mtk/mtk-5-bab9-tiket.jpg", alt: "Saka, Leni, dan Farhan membandingkan dua tiket kosong. Igil di meja." },
+  uang: { src: "/doodle-mtk/mtk-5-bab9-uang.jpg", alt: "Farhan menyusun lembar berwarna di meja pasar. Leni, Saka, dan Igil melihat." },
+  pos: { src: "/doodle-mtk/mtk-5-bab9-pos.jpg", alt: "Batu loncatan di tepi sungai. Igil di batu pertama." },
+  kartu: { src: "/doodle-mtk/mtk-5-bab9-kartu.jpg", alt: "Saka, Leni, Farhan, dan Igil memegang kartu kosong di tepi sungai." },
+};
+
 function GambarPasar({ jenis }: { jenis: JenisPasar }) {
-  return (
-    <svg viewBox="0 0 320 140" className="w-full rounded-2xl bg-sky-100" role="img" aria-label="Pasar Kapal Senja di tepi sungai">
-      <rect x="0" y="88" width="320" height="52" fill="#7dd3fc" />
-      <path d="M20 96 Q80 78 140 96 T260 90 T320 98 V140 H0 Z" fill="#38bdf8" />
-      <rect x="188" y="62" width="70" height="28" rx="6" fill="#fde68a" />
-      <polygon points="188,62 223,40 258,62" fill="#f59e0b" />
-      <rect x="214" y="74" width="16" height="16" fill="#1C01A5" />
-      <rect x="40" y="78" width="86" height="18" rx="8" fill="#0f766e" />
-      <polygon points="126,78 150,87 126,96" fill="#0f766e" />
-      <circle cx="58" cy="74" r="8" fill="#fcd34d" />
-      {jenis === "rak" ? <text x="16" y="28" fill="#1C01A5" fontSize="13" fontWeight="700">Enam rak tiket</text> : null}
-      {jenis === "tiket" ? <text x="16" y="28" fill="#1C01A5" fontSize="13" fontWeight="700">Bandingkan harga</text> : null}
-      {jenis === "uang" ? <text x="16" y="28" fill="#1C01A5" fontSize="13" fontWeight="700">Susun lembar uang</text> : null}
-      {jenis === "pos" ? <text x="16" y="28" fill="#1C01A5" fontSize="13" fontWeight="700">Sepuluh pos</text> : null}
-      <circle cx="276" cy="36" r="14" fill="#1C01A5" />
-      <circle cx="270" cy="32" r="3" fill="white" />
-      <circle cx="282" cy="32" r="3" fill="white" />
-      <path d="M270 42 Q276 46 282 42" stroke="white" fill="none" strokeWidth="2" />
-    </svg>
-  );
+  const gambar = GAMBAR_PASAR[jenis];
+  return <GambarCerita src={gambar.src} alt={gambar.alt} />;
 }
 
 function Adegan({ judul, jenis, kelas, kelamin, penjelasan, children }: { judul: string; jenis: JenisPasar; kelas?: string; kelamin?: KelaminGuru; penjelasan: string[]; children: ReactNode }) {

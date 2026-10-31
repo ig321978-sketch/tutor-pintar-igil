@@ -1,6 +1,7 @@
 "use client";
 
 import { GameBatang, GameEsSenja, GamePiktogram, GameSkala, GameTurus, SaklarSuaraPermainan } from "@/components/GameMtk5Bab8";
+import GambarCerita from "@/components/GambarCerita";
 import HasilJawabanKuis from "@/components/HasilJawabanKuis";
 import KartuPoinPenting from "@/components/KartuPoinPenting";
 import { useKuisMateri } from "@/components/KuisMateriContext";
@@ -366,85 +367,20 @@ function BatangGanda() {
   );
 }
 
-type JenisAdegan = "taman" | "turus" | "piktogram" | "batang" | "pos" | "meja" | "kartu";
+type JenisAdegan = "taman" | "piktogram" | "batang" | "pos" | "meja" | "kartu";
+
+const GAMBAR_TAMAN: Record<JenisAdegan, { src: string; alt: string }> = {
+  taman: { src: "/doodle-mtk/mtk-5-bab8-taman.jpg", alt: "Nadya, Reza, dan Omar di Taman Burung Senja. Igil bertopi biru di dahan." },
+  piktogram: { src: "/doodle-mtk/mtk-5-bab8-piktogram.jpg", alt: "Reza menyusun burung kertas. Nadya memegang kartu kosong. Igil di samping." },
+  batang: { src: "/doodle-mtk/mtk-5-bab8-batang.jpg", alt: "Nadya dan Omar melihat diagram batang di taman. Igil di ujung papan." },
+  pos: { src: "/doodle-mtk/mtk-5-bab8-pos.jpg", alt: "Batu loncatan di taman burung. Igil di batu pertama." },
+  meja: { src: "/doodle-mtk/mtk-5-bab8-meja.jpg", alt: "Meja kecil dengan kertas kosong di taman. Igil menunggu." },
+  kartu: { src: "/doodle-mtk/mtk-5-bab8-kartu.jpg", alt: "Nadya, Reza, Omar, dan Igil memegang kartu kosong di taman senja." },
+};
 
 function GambarTaman({ jenis }: { jenis: JenisAdegan }) {
-  if (jenis === "turus") {
-    return (
-      <svg viewBox="0 0 320 150" className="w-full rounded-2xl bg-amber-50" role="img" aria-label="Omar menulis turus di papan taman. Igil melihat dari dahan.">
-        <rect x="70" y="24" width="180" height="110" rx="12" fill="#fff7ed" stroke="#b45309" strokeWidth="4" />
-        <line x1="100" y1="40" x2="100" y2="100" stroke="#1C01A5" strokeWidth="5" />
-        <line x1="118" y1="40" x2="118" y2="100" stroke="#1C01A5" strokeWidth="5" />
-        <line x1="136" y1="40" x2="136" y2="100" stroke="#1C01A5" strokeWidth="5" />
-        <line x1="154" y1="40" x2="154" y2="100" stroke="#1C01A5" strokeWidth="5" />
-        <line x1="92" y1="96" x2="162" y2="44" stroke="#e11d48" strokeWidth="5" />
-        <circle cx="250" cy="46" r="16" fill="#fde68a" />
-        <circle cx="244" cy="44" r="2" fill="#1C01A5" />
-        <circle cx="254" cy="44" r="2" fill="#1C01A5" />
-        <path d="M246 52 Q250 56 254 52" fill="none" stroke="#1C01A5" strokeWidth="2" />
-      </svg>
-    );
-  }
-  if (jenis === "piktogram") {
-    return (
-      <svg viewBox="0 0 320 150" className="w-full rounded-2xl bg-rose-50" role="img" aria-label="Reza menyusun burung kertas. Nadya memegang kartu kunci. Igil di samping.">
-        <text x="24" y="36" fill="#9f1239" fontSize="16" fontWeight="700">1 burung = 4</text>
-        {["48", "108", "168", "228"].map((x) => (
-          <text key={x} x={x} y="100" fontSize="42">🐦</text>
-        ))}
-      </svg>
-    );
-  }
-  if (jenis === "batang") {
-    return (
-      <svg viewBox="0 0 320 150" className="w-full rounded-2xl bg-sky-50" role="img" aria-label="Nadya dan Omar membandingkan batang diagram. Igil berdiri di ujung skala.">
-        <line x1="40" y1="20" x2="40" y2="120" stroke="#1C01A5" strokeWidth="4" />
-        <line x1="40" y1="120" x2="280" y2="120" stroke="#1C01A5" strokeWidth="4" />
-        <rect x="70" y="70" width="28" height="50" fill="#38bdf8" />
-        <rect x="130" y="36" width="28" height="84" fill="#fbbf24" />
-        <rect x="190" y="54" width="28" height="66" fill="#34d399" />
-        <circle cx="270" cy="40" r="14" fill="#fde68a" />
-      </svg>
-    );
-  }
-  if (jenis === "pos") {
-    return (
-      <svg viewBox="0 0 320 120" className="w-full rounded-2xl bg-emerald-50" role="img" aria-label="Sepuluh batu pos di jalan taman. Igil di pos pertama.">
-        {Array.from({ length: 10 }, (_, indeks) => (
-          <g key={indeks}>
-            <rect x={16 + indeks * 30} y="48" width="20" height="36" rx="4" fill="#86efac" stroke="#166534" />
-            <text x={26 + indeks * 30} y="70" textAnchor="middle" fill="#14532d" fontSize="12" fontWeight="700">{indeks + 1}</text>
-          </g>
-        ))}
-        <circle cx="26" cy="34" r="12" fill="#fde68a" />
-      </svg>
-    );
-  }
-  if (jenis === "meja" || jenis === "kartu") {
-    return (
-      <svg viewBox="0 0 320 130" className="w-full rounded-2xl bg-violet-50" role="img" aria-label="Meja kertas di tepi taman. Igil menunggu di sudut meja.">
-        <rect x="40" y="36" width="200" height="70" rx="10" fill="#fff" stroke="#6d28d9" strokeWidth="4" />
-        <circle cx="270" cy="70" r="18" fill="#fde68a" />
-        <circle cx="264" cy="66" r="2" fill="#1C01A5" />
-        <circle cx="276" cy="66" r="2" fill="#1C01A5" />
-      </svg>
-    );
-  }
-  return (
-    <svg viewBox="0 0 320 160" className="w-full rounded-2xl bg-orange-50" role="img" aria-label="Taman Burung Senja. Nadya, Reza, Omar, dan Igil di bawah lentera.">
-      <rect x="0" y="90" width="320" height="70" fill="#86efac" />
-      <circle cx="250" cy="48" r="28" fill="#fb923c" />
-      <rect x="36" y="70" width="8" height="50" fill="#92400e" />
-      <circle cx="40" cy="62" r="16" fill="#fde68a" />
-      <circle cx="78" cy="108" r="16" fill="#fecdd3" />
-      <circle cx="124" cy="108" r="16" fill="#fde68a" />
-      <circle cx="170" cy="108" r="16" fill="#99f6e4" />
-      <text x="78" y="148" textAnchor="middle" fill="#1C01A5" fontSize="12" fontWeight="700">Nadya</text>
-      <text x="124" y="148" textAnchor="middle" fill="#1C01A5" fontSize="12" fontWeight="700">Reza</text>
-      <text x="170" y="148" textAnchor="middle" fill="#1C01A5" fontSize="12" fontWeight="700">Omar</text>
-      <text x="40" y="40" textAnchor="middle" fill="#1C01A5" fontSize="12" fontWeight="700">Igil</text>
-    </svg>
-  );
+  const gambar = GAMBAR_TAMAN[jenis];
+  return <GambarCerita src={gambar.src} alt={gambar.alt} />;
 }
 
 const JADWAL_ES = [
