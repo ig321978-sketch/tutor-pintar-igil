@@ -11,7 +11,7 @@ export const MODUL_MTK2_BAB1: ModulResmiPai = {
   id: "mtk-2-bab1",
   judul: JUDUL_MTK2_BAB1,
   pola:
-    /ayo membilang sampai( dengan)? 50|loker baru( di kelas malosi)?|kelas malosi|nilai tempat puluhan satuan|membandingkan dua bilangan atau lebih|bilangan cacah sampai 100/,
+    /ayo membilang sampai( dengan)? 50|loker baru( di kelas malosi)?|kelas malosi|nilai tempat puluhan satuan|membandingkan dua bilangan atau lebih|bilangan cacah sampai 100(?![.\d])/,
   motivasi:
     "Hore! Kamu sudah bantu Malosi merapikan tas di loker. Kelompokkan sepuluh-sepuluh, tulis puluhan dan satuan, lalu bandingkan bilangannya.",
   kunciJawaban: "B,C,A,B,A,B,A,B,C,A",

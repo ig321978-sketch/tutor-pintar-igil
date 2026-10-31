@@ -297,7 +297,12 @@ export function daftarIdKuisMateri(
     ];
   }
   if (adalahMtk5Bab1(kelas, mapel, materi)) {
-    return idKuisDariModulResmi(MODUL_MTK5_BAB1);
+    return [
+      ...MODUL_MTK5_BAB1.kartu.flatMap((kartu) =>
+        kartu.kuis.map((_, indeks) => idKuisKartuResmi(MODUL_MTK5_BAB1.id, kartu.kode, indeks)),
+      ),
+      idKuisTulisKartu(MODUL_MTK5_BAB1.id, "C"),
+    ];
   }
   if (adalahMtk5Bab2(kelas, mapel, materi)) {
     return [

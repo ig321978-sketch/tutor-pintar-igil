@@ -721,7 +721,7 @@ export function adalahMtk2(
 export function adalahJudulMtk2Bab1(mapel: string, materi: string): boolean {
   if (!adalahMapelMatematika(mapel)) return false;
   const judul = normJudul(materi);
-  return /ayo\s+membilang\s+sampai(\s+dengan)?\s+50/.test(judul) || /bilangan\s+cacah\s+sampai\s+100/.test(judul);
+  return /ayo\s+membilang\s+sampai(\s+dengan)?\s+50/.test(judul) || /bilangan\s+cacah\s+sampai\s+100(?![.\d])/.test(judul);
 }
 
 export function adalahMtk2Bab1(

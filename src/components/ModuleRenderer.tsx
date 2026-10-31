@@ -644,6 +644,20 @@ function ModuleRenderer({
       </div>
     );
   }
+  if (pakaiKartuMtk5Bab1) {
+    return (
+      <div className={className}>
+        <NaskahMtk5Bab1 kelas={kelas} kelamin={kelamin} />
+      </div>
+    );
+  }
+  if (pakaiKartuMtk5Bab2) {
+    return (
+      <div className={className}>
+        <NaskahMtk5Bab2 kelas={kelas} kelamin={kelamin} />
+      </div>
+    );
+  }
   if (modulMtk2) {
     return (
       <div className={className}>
@@ -729,20 +743,6 @@ function ModuleRenderer({
     return (
       <div className={className}>
         <NaskahMtk4Bab6 kelas={kelas} kelamin={kelamin} />
-      </div>
-    );
-  }
-  if (pakaiKartuMtk5Bab1) {
-    return (
-      <div className={className}>
-        <NaskahMtk5Bab1 kelas={kelas} kelamin={kelamin} />
-      </div>
-    );
-  }
-  if (pakaiKartuMtk5Bab2) {
-    return (
-      <div className={className}>
-        <NaskahMtk5Bab2 kelas={kelas} kelamin={kelamin} />
       </div>
     );
   }
