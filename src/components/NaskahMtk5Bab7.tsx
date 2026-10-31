@@ -430,9 +430,9 @@ function GameLipatLayang() {
     <div className="rounded-2xl border-2 border-rose-200 bg-white p-4">
       <p className="text-sm font-black text-[#1C01A5]">Game lipat layang</p>
       <svg viewBox="0 0 200 160" className="mx-auto mt-2 w-full max-w-[220px]" aria-hidden>
-        <polygon points="100,12 168,78 100,148 32,78" fill="#ffe4e6" stroke="#be123c" strokeWidth="4" />
-        {lipat === "tegak" ? <line x1="100" y1="12" x2="100" y2="148" stroke="#1C01A5" strokeWidth="3" strokeDasharray="5 4" /> : null}
-        {lipat === "mendatar" ? <line x1="32" y1="78" x2="168" y2="78" stroke="#1C01A5" strokeWidth="3" strokeDasharray="5 4" /> : null}
+        <polygon points="100,12 176,48 100,150 24,48" fill="#ffe4e6" stroke="#be123c" strokeWidth="4" />
+        {lipat === "tegak" ? <line x1="100" y1="12" x2="100" y2="150" stroke="#1C01A5" strokeWidth="3" strokeDasharray="5 4" /> : null}
+        {lipat === "mendatar" ? <line x1="24" y1="48" x2="176" y2="48" stroke="#1C01A5" strokeWidth="3" strokeDasharray="5 4" /> : null}
       </svg>
       <div className="mt-3 flex flex-wrap gap-2">
         <button type="button" onClick={() => setLipat("tegak")} className="rounded-full bg-rose-600 px-3 py-2 text-sm font-black text-white">Lipat tegak</button>

@@ -174,12 +174,12 @@ const BANGUN: Record<KunciBangun, ProfilBangun> = {
     diagonal: "2 diagonal saling tegak lurus. Satu di antaranya sumbu simetri",
     lipat: 1,
     putar: 1,
-    titik: "130,20 198,88 130,188 62,88",
+    titik: "130,16 214,58 130,194 46,58",
     warna: "#e11d48",
-    garisLipat: [[130, 20, 130, 188]],
+    garisLipat: [[130, 16, 130, 194]],
     garisDiagonal: [
-      [130, 20, 130, 188],
-      [62, 88, 198, 88],
+      [130, 16, 130, 194],
+      [46, 58, 214, 58],
     ],
   },
   trapesiumSamaKaki: {
