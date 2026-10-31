@@ -306,6 +306,26 @@ function menempel(putar: number, derajat: number) {
   return derajat % (360 / putar) === 0;
 }
 
+const TITIK_KELUARGA: Record<string, { titik: string; warna: string }> = {
+  Persegi: { titik: BANGUN.persegi.titik, warna: BANGUN.persegi.warna },
+  "Belah ketupat": { titik: BANGUN.belahKetupat.titik, warna: BANGUN.belahKetupat.warna },
+  "Persegi panjang": { titik: BANGUN.persegiPanjang.titik, warna: BANGUN.persegiPanjang.warna },
+  Jajargenjang: { titik: BANGUN.jajargenjang.titik, warna: BANGUN.jajargenjang.warna },
+  "Layang-layang": { titik: BANGUN.layang.titik, warna: BANGUN.layang.warna },
+  Trapesium: { titik: BANGUN.trapesiumSamaKaki.titik, warna: BANGUN.trapesiumSamaKaki.warna },
+  "Segi empat": { titik: "36,55 188,24 228,168 18,146", warna: "#64748b" },
+};
+
+export function SketsaBangun({ nama, className }: { nama: string; className?: string }) {
+  const gambar = TITIK_KELUARGA[nama];
+  if (!gambar) return null;
+  return (
+    <svg viewBox="0 0 260 210" className={className} aria-hidden>
+      <polygon points={gambar.titik} fill={gambar.warna} fillOpacity="0.9" stroke="#1C01A5" strokeWidth="10" strokeLinejoin="round" />
+    </svg>
+  );
+}
+
 function GambarBangun({
   kunci,
   lipat,

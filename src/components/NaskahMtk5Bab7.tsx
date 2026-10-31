@@ -1,6 +1,6 @@
 "use client";
 
-import { GameLaserLipat, GameRadarSudut, GameTebakBingkai, GameUbahKeluarga } from "@/components/GameMtk5Bab7";
+import { GameLaserLipat, GameRadarSudut, GameTebakBingkai, GameUbahKeluarga, SketsaBangun } from "@/components/GameMtk5Bab7";
 import GambarCerita from "@/components/GambarCerita";
 import HasilJawabanKuis from "@/components/HasilJawabanKuis";
 import KartuPoinPenting from "@/components/KartuPoinPenting";
@@ -399,12 +399,25 @@ function GameKeluarga() {
       <p className="mt-1 text-sm font-semibold text-slate-600">Pada bab ini, trapesium berarti minimal satu pasang sisi sejajar.</p>
       <div className="mt-3 flex flex-wrap gap-2">
         {KELUARGA.map((item) => (
-          <button key={item.nama} type="button" onClick={() => setNama(item.nama)} className={`rounded-full px-3 py-2 text-sm font-black ${nama === item.nama ? "bg-emerald-700 text-white" : "bg-emerald-50 text-emerald-950 ring-2 ring-emerald-200"}`}>{item.nama}</button>
+          <button key={item.nama} type="button" onClick={() => setNama(item.nama)} className={`flex w-[7.4rem] flex-col items-center gap-1 rounded-2xl px-2 py-2 text-sm font-black ${nama === item.nama ? "bg-emerald-700 text-white" : "bg-emerald-50 text-emerald-950 ring-2 ring-emerald-200"}`}>
+            <span className="w-full rounded-xl bg-white px-1">
+              <SketsaBangun nama={item.nama} className="h-14 w-full" />
+            </span>
+            {item.nama}
+          </button>
         ))}
       </div>
-      <div className="mt-3 flex flex-wrap gap-2">
+      <div className="mt-3 rounded-2xl bg-emerald-50 px-3 py-3">
+        <SketsaBangun nama={nama} className="mx-auto h-36 w-full max-w-[200px]" />
+        <p className="text-center text-sm font-black text-[#1C01A5]">{nama}</p>
+      </div>
+      <p className="mt-3 text-sm font-semibold text-slate-600">Bangun ini juga masuk keluarga berikut.</p>
+      <div className="mt-2 flex flex-wrap gap-2">
         {aktif.kelompok.map((kelompok) => (
-          <span key={kelompok} className="rounded-full bg-[#1C01A5] px-3 py-1 text-xs font-black text-white">{kelompok}</span>
+          <span key={kelompok} className="flex w-[7.4rem] flex-col items-center gap-1 rounded-2xl bg-white px-2 py-2 text-center text-xs font-black text-[#1C01A5] ring-2 ring-[#1C01A5]">
+            <SketsaBangun nama={kelompok} className="h-12 w-full" />
+            {kelompok}
+          </span>
         ))}
       </div>
     </div>
