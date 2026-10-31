@@ -400,57 +400,61 @@ const BACA_A = ["empat belas ribu lima ratus", "enam puluh enam ribu lima ratus"
 const HASIL_B = ["79.500", "60.000", "16.000"];
 const HASIL_D = ["26.932", "9.610", "30.000"];
 
-const GOLONGAN_LANGKAH: Record<string, { golongan: string; kelompok?: string }> = {
-  mulai: { golongan: "Tujuan Pembelajaran" },
-  "rak-tiket": { golongan: "Sub-bab", kelompok: "Membaca dan menulis" },
-  "rak-info": { golongan: "Sub-bab", kelompok: "Membaca dan menulis" },
-  a0: { golongan: "Sub-bab", kelompok: "Membaca dan menulis" },
-  a1: { golongan: "Sub-bab", kelompok: "Membaca dan menulis" },
-  b0: { golongan: "Sub-bab", kelompok: "Membaca dan menulis" },
-  b1: { golongan: "Sub-bab", kelompok: "Membaca dan menulis" },
-  a8: { golongan: "Sub-bab", kelompok: "Membaca dan menulis" },
-  a9: { golongan: "Sub-bab", kelompok: "Membaca dan menulis" },
-  a11: { golongan: "Sub-bab", kelompok: "Membaca dan menulis" },
-  brankas: { golongan: "Misi" },
-  "banding-papan": { golongan: "Sub-bab", kelompok: "Membandingkan" },
-  "banding-info": { golongan: "Sub-bab", kelompok: "Membandingkan" },
-  a2: { golongan: "Sub-bab", kelompok: "Membandingkan" },
-  a3: { golongan: "Sub-bab", kelompok: "Membandingkan" },
-  b2: { golongan: "Sub-bab", kelompok: "Membandingkan" },
-  b3: { golongan: "Sub-bab", kelompok: "Membandingkan" },
-  a10: { golongan: "Sub-bab", kelompok: "Membandingkan" },
-  a12: { golongan: "Sub-bab", kelompok: "Membandingkan" },
-  radar: { golongan: "Misi" },
-  "uang-tumpuk": { golongan: "Sub-bab", kelompok: "Menyusun bilangan" },
-  "uang-info": { golongan: "Sub-bab", kelompok: "Menyusun bilangan" },
-  a4: { golongan: "Sub-bab", kelompok: "Menyusun bilangan" },
-  a5: { golongan: "Sub-bab", kelompok: "Menyusun bilangan" },
-  b4: { golongan: "Sub-bab", kelompok: "Menyusun bilangan" },
-  b5: { golongan: "Sub-bab", kelompok: "Menyusun bilangan" },
-  kasir: { golongan: "Misi" },
-  tambah: { golongan: "Sub-bab", kelompok: "Operasi hitung" },
-  a6: { golongan: "Sub-bab", kelompok: "Operasi hitung" },
-  a7: { golongan: "Sub-bab", kelompok: "Operasi hitung" },
-  "kurang-kali": { golongan: "Sub-bab", kelompok: "Operasi hitung" },
-  "info-operasi": { golongan: "Sub-bab", kelompok: "Operasi hitung" },
-  b9: { golongan: "Sub-bab", kelompok: "Operasi hitung" },
-  b7: { golongan: "Sub-bab", kelompok: "Operasi hitung" },
-  warung: { golongan: "Sub-bab", kelompok: "Operasi hitung" },
-  b6: { golongan: "Sub-bab", kelompok: "Operasi hitung" },
-  b8: { golongan: "Sub-bab", kelompok: "Operasi hitung" },
-  b10: { golongan: "Sub-bab", kelompok: "Operasi hitung" },
-  b11: { golongan: "Sub-bab", kelompok: "Operasi hitung" },
-  b12: { golongan: "Sub-bab", kelompok: "Operasi hitung" },
-  kargo: { golongan: "Misi" },
-  pola: { golongan: "Misi" },
-  poin: { golongan: "Poin Penting" },
-  tanya: { golongan: "Poin Penting" },
+const TAB_A = { tab: "Sub-bab A", kelompok: "Membaca dan menulis" };
+const TAB_B = { tab: "Sub-bab B", kelompok: "Membandingkan" };
+const TAB_C = { tab: "Sub-bab C", kelompok: "Menyusun bilangan" };
+const TAB_D = { tab: "Sub-bab D", kelompok: "Operasi hitung" };
+const TAB_POIN = { tab: "Poin Penting" };
+
+const TAB_LANGKAH: Record<string, { tab: string; kelompok?: string }> = {
+  mulai: { tab: "Tujuan Pembelajaran" },
+  "rak-tiket": TAB_A,
+  "rak-info": TAB_A,
+  a0: TAB_A,
+  a1: TAB_A,
+  b0: TAB_A,
+  b1: TAB_A,
+  a8: TAB_A,
+  a9: TAB_A,
+  a11: TAB_A,
+  brankas: TAB_A,
+  "banding-papan": TAB_B,
+  "banding-info": TAB_B,
+  a2: TAB_B,
+  a3: TAB_B,
+  b2: TAB_B,
+  b3: TAB_B,
+  a10: TAB_B,
+  a12: TAB_B,
+  radar: TAB_B,
+  "uang-tumpuk": TAB_C,
+  "uang-info": TAB_C,
+  a4: TAB_C,
+  a5: TAB_C,
+  b4: TAB_C,
+  b5: TAB_C,
+  kasir: TAB_C,
+  tambah: TAB_D,
+  a6: TAB_D,
+  a7: TAB_D,
+  "kurang-kali": TAB_D,
+  "info-operasi": TAB_D,
+  b9: TAB_D,
+  b7: TAB_D,
+  warung: TAB_D,
+  b6: TAB_D,
+  b8: TAB_D,
+  b10: TAB_D,
+  b11: TAB_D,
+  b12: TAB_D,
+  kargo: TAB_D,
+  poin: TAB_POIN,
+  tanya: TAB_POIN,
 };
 
-function denganGolongan(daftar: LangkahQuest[]): LangkahQuest[] {
+function denganTab(daftar: LangkahQuest[]): LangkahQuest[] {
   return daftar.map((item) => {
-    if (/^d\d+$/.test(item.kode)) return { ...item, golongan: "Evaluasi" };
-    const meta = GOLONGAN_LANGKAH[item.kode];
+    const meta = TAB_LANGKAH[item.kode];
     return meta ? { ...item, ...meta } : item;
   });
 }
@@ -722,7 +726,7 @@ function langkahDermaga(kelas?: string, kelamin?: KelaminGuru): LangkahQuest[] {
     isi: <LembarEvaluasi nomor={nomor} kelas={kelas} kelamin={kelamin} />,
     kuis: [idKuis("D", nomor)],
   }));
-  return denganGolongan([
+  return denganTab([
     ...materi,
     {
       kode: "pola",
