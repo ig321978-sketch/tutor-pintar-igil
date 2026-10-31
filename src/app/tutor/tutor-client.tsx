@@ -34,7 +34,6 @@ import {
 } from "@/lib/cache-modul-lokal";
 import { kandidatKunciMateri, kunciMateriTutor } from "@/lib/kunci-siswa";
 import { adalahMtk6Bab3, naskahResmiJikaAda } from "@/lib/naskah-resmi";
-import { punyaLabSimulasiResmi } from "@/lib/lab-simulasi-resmi";
 import Bab3KubusBalokModule from "@/components/modules/Bab3KubusBalokModule";
 import { useUserRole } from "@/hooks/useUserRole";
 import {
@@ -423,9 +422,7 @@ export default function TutorAI() {
     judulMapelSesi,
     materiSesi,
   );
-  const labSendiri = punyaLabSimulasiResmi(judulKelasSesi, judulMapelSesi, materiSesi);
   const opsiBagian = daftarBagianModul(judulMapelSesi).filter((id) => {
-    if (id === "simulasi") return labSendiri;
     if (!kunciPublik) return true;
     if (id === "praktikum") return false;
     return true;
@@ -1292,7 +1289,6 @@ export default function TutorAI() {
     if (tahapBelajar === bagian) {
       setPesanGalat("");
       setPesanKunci("");
-      setTahapBelajar("pilih");
       return;
     }
     setPesanGalat("");
