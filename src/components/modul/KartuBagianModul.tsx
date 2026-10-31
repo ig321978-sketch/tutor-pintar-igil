@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useRef, useState, type ReactNode } from "react";
-import { Lock } from "lucide-react";
+import { BookOpen, ClipboardCheck, FlaskConical, Lock, PencilLine, Sparkles, Wrench, type LucideIcon } from "lucide-react";
 import {
   bagianWajibKuisMateriTuntas,
   type BagianIsi,
@@ -47,6 +47,15 @@ const META: Record<
 };
 
 const URUTAN: BagianIsi[] = ["silabus", "materi", "simulasi", "latihan", "praktikum", "ujian"];
+
+const IKON: Record<BagianIsi, LucideIcon> = {
+  silabus: BookOpen,
+  materi: Sparkles,
+  simulasi: FlaskConical,
+  latihan: PencilLine,
+  praktikum: Wrench,
+  ujian: ClipboardCheck,
+};
 
 export default function KartuBagianModul({
   daftar,
@@ -112,32 +121,38 @@ export default function KartuBagianModul({
 
   return (
     <div className="space-y-4">
-      <div role="tablist" aria-label="Bagian modul" className="flex gap-2 overflow-x-auto pb-1">
-        {URUTAN.map((id) => {
-          const tab = META[id];
-          const dipilih = id === idTampil;
-          const kunci = terkunci(id);
-          return (
-            <button
-              key={id}
-              type="button"
-              role="tab"
-              aria-selected={dipilih}
-              disabled={mengunciKlik || kunci}
-              onClick={() => pilih(id)}
-              className={`shrink-0 rounded-full px-3 py-2 text-sm font-black ${
-                dipilih
-                  ? "bg-[#1C01A5] text-white"
-                  : kunci
-                    ? "bg-slate-200 text-slate-400"
-                    : "bg-white text-[#1C01A5] ring-2 ring-[#1C01A5]"
-              }`}
-            >
-              {kunci ? <Lock className="mr-1 inline h-3.5 w-3.5" /> : null}
-              {tab.judul}
-            </button>
-          );
-        })}
+      <div className="rounded-3xl border-2 border-[#1C01A5]/15 bg-gradient-to-br from-[#F7F4FF] via-white to-[#FFF6D8] p-2 shadow-[inset_0_1px_0_#fff]">
+        <div role="tablist" aria-label="Bagian modul" className="flex flex-wrap gap-2">
+          {URUTAN.map((id, urutan) => {
+            const tab = META[id];
+            const dipilih = id === idTampil;
+            const kunci = terkunci(id);
+            const Ikon = kunci ? Lock : IKON[id];
+            return (
+              <button
+                key={id}
+                type="button"
+                role="tab"
+                aria-selected={dipilih}
+                disabled={mengunciKlik || kunci}
+                onClick={() => pilih(id)}
+                className={`inline-flex min-h-11 items-center gap-1.5 rounded-2xl px-3 py-2 text-sm font-black transition focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#F0AB00] disabled:cursor-not-allowed ${
+                  dipilih
+                    ? "bg-[#1C01A5] text-white shadow-[0_4px_0_#F0AB00]"
+                    : kunci
+                      ? "bg-slate-100 text-slate-400 shadow-[0_3px_0_#E2E8F0]"
+                      : "bg-white text-[#1C01A5] shadow-[0_3px_0_#D9D4F5] hover:-translate-y-0.5 hover:bg-[#FFF8E6]"
+                }`}
+              >
+                <span className={`grid h-5 w-5 shrink-0 place-items-center rounded-full text-[11px] ${dipilih ? "bg-[#F0AB00] text-[#1C01A5]" : kunci ? "bg-slate-200 text-slate-400" : "bg-[#EEF0FF] text-[#1C01A5]"}`}>
+                  {urutan + 1}
+                </span>
+                <Ikon className="h-4 w-4 shrink-0" aria-hidden />
+                {tab.judul}
+              </button>
+            );
+          })}
+        </div>
       </div>
 
       <article id={`kartu-bagian-${idTampil}`} className="overflow-hidden rounded-none border border-black bg-white">
