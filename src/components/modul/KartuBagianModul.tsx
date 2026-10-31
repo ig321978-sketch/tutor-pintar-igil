@@ -75,6 +75,7 @@ export default function KartuBagianModul({
   onPilih: (bagian: BagianIsi) => void;
 }) {
   const [indeks, setIndeks] = useState(0);
+  const daftarTab = useRef<HTMLDivElement>(null);
   const pilihInduk = useRef(onPilih);
   pilihInduk.current = onPilih;
   const daftarKunci = daftar.join("|");
@@ -110,6 +111,13 @@ export default function KartuBagianModul({
     }
   }
   const terbuka = adaIsi && !kartuTerkunci && (aktif === idTampil || (aktif === "pilih" && indeks === 0));
+  useEffect(() => {
+    const wadah = daftarTab.current;
+    const tombol = wadah?.querySelector<HTMLButtonElement>('[aria-selected="true"]');
+    if (!wadah || !tombol) return;
+    const kiri = tombol.getBoundingClientRect().left - wadah.getBoundingClientRect().left + wadah.scrollLeft - (wadah.clientWidth - tombol.offsetWidth) / 2;
+    wadah.scrollTo({ left: Math.max(0, kiri), behavior: "smooth" });
+  }, [idTampil]);
 
   const pilih = (id: BagianIsi) => {
     if (mengunciKlik || terkunci(id)) return;
@@ -122,7 +130,7 @@ export default function KartuBagianModul({
   return (
     <div className="space-y-4">
       <div className="rounded-3xl border-2 border-[#1C01A5]/15 bg-gradient-to-br from-[#F7F4FF] via-white to-[#FFF6D8] p-2 shadow-[inset_0_1px_0_#fff]">
-        <div role="tablist" aria-label="Bagian modul" className="flex flex-wrap gap-2">
+        <div ref={daftarTab} role="tablist" aria-label="Bagian modul" className="flex gap-2 overflow-x-auto overscroll-x-contain px-0.5 pb-1.5 [scrollbar-width:thin] [&::-webkit-scrollbar]:h-1.5 [&::-webkit-scrollbar-thumb]:rounded-full [&::-webkit-scrollbar-thumb]:bg-[#1C01A5]/35">
           {URUTAN.map((id, urutan) => {
             const tab = META[id];
             const dipilih = id === idTampil;
@@ -136,7 +144,7 @@ export default function KartuBagianModul({
                 aria-selected={dipilih}
                 disabled={mengunciKlik || kunci}
                 onClick={() => pilih(id)}
-                className={`inline-flex min-h-11 items-center gap-1.5 rounded-2xl px-3 py-2 text-sm font-black transition focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#F0AB00] disabled:cursor-not-allowed ${
+                className={`inline-flex min-h-11 shrink-0 items-center gap-1.5 rounded-2xl px-3 py-2 text-sm font-black transition focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#F0AB00] disabled:cursor-not-allowed ${
                   dipilih
                     ? "bg-[#1C01A5] text-white shadow-[0_4px_0_#F0AB00]"
                     : kunci
