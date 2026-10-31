@@ -1,5 +1,6 @@
 "use client";
 
+import { GameLaserLipat, GameRadarSudut, GameTebakBingkai, GameUbahKeluarga } from "@/components/GameMtk5Bab7";
 import GambarCerita from "@/components/GambarCerita";
 import HasilJawabanKuis from "@/components/HasilJawabanKuis";
 import KartuPoinPenting from "@/components/KartuPoinPenting";
@@ -486,6 +487,10 @@ function KartuA({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminGuru }) {
           <Dialog nama="Igil" anak="Sama kaki: minimal 2 sisi sama, 2 sudut sama, 1 simetri lipat, dan 1 simetri putar. Sama sisi: 3 sisi sama, 3 sudut sama, 3 simetri lipat, dan 3 simetri putar." />
           <Dialog nama="Beni" anak="Sama sisi punya semua ciri sama kaki, jadi ia boleh disebut sama kaki. Sebaliknya, sama kaki belum tentu sama sisi." />
           <GameSudutKetiga />
+          <Dialog nama="Igil" anak="Geser dua sudut pada radar layang. Sudut ketiga dihitung sendiri supaya jumlahnya tetap 180°." />
+          <GameRadarSudut />
+          <Dialog nama="Dara" anak="Putar segitiga dan nyalakan garis lipat. Lihat kapan bingkainya ketemu lagi." />
+          <GameLaserLipat kelompok="segitiga" />
         </Adegan>
 
         <Adegan judul="Sub-bab 2 — Trapesium dan jajargenjang" jenis="bingkai" kelas={kelas} kelamin={kelamin} penjelasan={["Segi empat dibatasi empat sisi.", "Trapesium pada bab ini punya minimal satu pasang sisi sejajar.", "Jajargenjang punya dua pasang sisi berhadapan yang sejajar."]}>
@@ -497,6 +502,8 @@ function KartuA({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminGuru }) {
           <Pilih id={idKuis("A", 9)} pertanyaan="Bolehkah jajargenjang disebut trapesium pada bab ini?" pilihan={[{ huruf: "A", teks: "Ya, karena ada sisi sejajar" }, { huruf: "B", teks: "Tidak, karena ia segitiga" }, { huruf: "C", teks: "Ya, karena ia trapesium sama kaki" }, { huruf: "D", teks: "Tidak, karena tidak punya sisi" }]} benar="A" umpan="Ada minimal satu pasang sisi sejajar, bahkan dua pasang." salah="Cek dulu apakah ada sisi yang sejajar." />
           <Pilih id={idKuis("B", 2)} pertanyaan="Apakah jajargenjang merupakan trapesium sama kaki?" pilihan={[{ huruf: "A", teks: "Ya, karena kakinya sama" }, { huruf: "B", teks: "Tidak, karena tidak punya simetri lipat" }, { huruf: "C", teks: "Ya, karena semua sudutnya siku" }, { huruf: "D", teks: "Tidak, karena ia bukan segi empat" }]} benar="B" umpan="Trapesium sama kaki punya simetri lipat. Jajargenjang biasa tidak." salah="Lihat simetri lipatnya, bukan hanya sisi sejajar." />
           <GameSejajar />
+          <Dialog nama="Beni" anak="Baca empat ciri bingkai ini, lalu pilih nama yang cocok." />
+          <GameTebakBingkai kelompok="trapesium" />
         </Adegan>
 
         <Adegan judul="Sub-bab 2 — Persegi panjang, belah ketupat, persegi, dan layang-layang" jenis="layang" kelas={kelas} kelamin={kelamin} penjelasan={["Persegi panjang, belah ketupat, persegi, dan layang-layang saling berkaitan.", "Ciri tambahan mengubah nama bangun.", "Satu diagonal layang-layang bisa menjadi garis lipat."]}>
@@ -530,6 +537,12 @@ function KartuA({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminGuru }) {
           />
           <GameKeluarga />
           <GameLipatLayang />
+          <Dialog nama="Tio" anak="Nyalakan garis lipat dan diagonal, lalu putar segi empat sampai bingkainya ketemu lagi." />
+          <GameLaserLipat kelompok="segi-empat" />
+          <Dialog nama="Dara" anak="Empat ciri lagi. Kali ini untuk belah ketupat dan layang-layang." />
+          <GameTebakBingkai kelompok="ketupat" />
+          <Dialog nama="Igil" anak="Ubah sudut dan sisi jajargenjang, lalu uji empat pernyataan keluarganya." />
+          <GameUbahKeluarga />
         </Adegan>
       </div>
     </KartuBingkai>
