@@ -8,6 +8,8 @@ export type LangkahQuest = {
   judul: string;
   isi: ReactNode;
   kuis?: string[];
+  golongan?: string;
+  kelompok?: string;
 };
 
 function indeksUjung(langkah: LangkahQuest[], sudahBenar: (id: string) => boolean) {
@@ -22,6 +24,18 @@ function angkaAman(nilai: unknown) {
   const angka = typeof nilai === "number" ? nilai : Number(nilai);
   if (!Number.isInteger(angka) || angka < 0) return 0;
   return angka;
+}
+
+const URUTAN_GOLONGAN = ["Tujuan Pembelajaran", "Sub-bab", "Misi", "Poin Penting", "Evaluasi"];
+
+function indeksAwal(langkah: LangkahQuest[], cocok: (item: LangkahQuest) => boolean) {
+  return langkah.findIndex((item) => cocok(item));
+}
+
+function kelasTab(aktif: boolean, boleh: boolean) {
+  if (aktif) return "bg-[#F0AB00] text-[#1C01A5] ring-2 ring-[#1C01A5]";
+  if (boleh) return "bg-white text-[#1C01A5] ring-2 ring-[#1C01A5]";
+  return "bg-slate-200 text-slate-400";
 }
 
 export function QuestLangkah({
@@ -43,9 +57,20 @@ export function QuestLangkah({
   const sekarang = langkah[indeks] ?? langkah[0];
   const kuis = sekarang?.kuis ?? [];
   const selesai = kuis.length === 0 || kuis.every((id) => sudahBenar(id));
-  const grup = langkah
+  const adaGolongan = langkah.some((item) => item.golongan);
+  const golonganAktif = sekarang?.golongan || sekarang?.bagian || "";
+  const dalamGolongan = langkah
     .map((item, urut) => ({ item, urut }))
-    .filter((entri) => entri.item.bagian === sekarang?.bagian);
+    .filter((entri) => (entri.item.golongan || entri.item.bagian) === golonganAktif);
+  const kelompokUnik = dalamGolongan.reduce<string[]>((daftar, entri) => {
+    const nama = entri.item.kelompok;
+    if (nama && !daftar.includes(nama)) daftar.push(nama);
+    return daftar;
+  }, []);
+  const halaman = sekarang?.kelompok
+    ? dalamGolongan.filter((entri) => entri.item.kelompok === sekarang.kelompok)
+    : dalamGolongan;
+  const grup = adaGolongan ? halaman : dalamGolongan;
   const lokal = Math.max(0, grup.findIndex((entri) => entri.urut === indeks));
 
   useEffect(() => {
@@ -84,6 +109,14 @@ export function QuestLangkah({
     setIndeks(tujuan);
   };
 
+  const keGolongan = (nama: string) => {
+    ke(indeksAwal(langkah, (item) => item.golongan === nama));
+  };
+
+  const keKelompok = (nama: string) => {
+    ke(indeksAwal(langkah, (item) => item.golongan === golonganAktif && item.kelompok === nama));
+  };
+
   const lanjut = () => {
     if (!selesai) return;
     const berikut = Math.min(langkah.length - 1, indeks + 1);
@@ -96,9 +129,9 @@ export function QuestLangkah({
       <div className="rounded-2xl border-2 border-[#1C01A5]/15 bg-[#F8F7FF] p-3">
         <div className="flex items-center justify-between gap-3">
           <p className="text-xs font-black uppercase tracking-wide text-[#1C01A5]">
-            Pos {lokal + 1} dari {grup.length}
+            {adaGolongan ? golonganAktif : `Pos ${lokal + 1} dari ${grup.length}`}
           </p>
-          <p className="text-xs font-bold text-slate-600">{sekarang.bagian}</p>
+          <p className="text-xs font-bold text-slate-600">{adaGolongan ? sekarang.kelompok || sekarang.judul : sekarang.bagian}</p>
         </div>
         <div className="mt-2 h-2 overflow-hidden rounded-full bg-white">
           <div
@@ -106,27 +139,71 @@ export function QuestLangkah({
             style={{ width: `${((indeks + 1) / langkah.length) * 100}%` }}
           />
         </div>
-        <div className="mt-3 flex gap-1.5 overflow-x-auto pb-1">
-          {grup.map((entri, urutLokal) => {
+        {adaGolongan ? (
+          <div role="tablist" aria-label="Jenis bagian" className="mt-3 flex gap-1.5 overflow-x-auto pb-1 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
+            {URUTAN_GOLONGAN.filter((nama) => langkah.some((item) => item.golongan === nama)).map((nama) => {
+              const awal = indeksAwal(langkah, (item) => item.golongan === nama);
+              const boleh = awal >= 0 && awal <= puncak;
+              const aktif = nama === golonganAktif;
+              return (
+                <button
+                  key={nama}
+                  type="button"
+                  role="tab"
+                  aria-selected={aktif}
+                  disabled={!boleh}
+                  onClick={() => {
+                    if (!aktif) keGolongan(nama);
+                  }}
+                  className={`shrink-0 rounded-full px-3 py-1.5 text-xs font-black ${kelasTab(aktif, boleh)}`}
+                >
+                  {nama}
+                </button>
+              );
+            })}
+          </div>
+        ) : null}
+        {adaGolongan && kelompokUnik.length > 1 ? (
+          <div role="tablist" aria-label="Sub-bab" className="mt-2 flex gap-1.5 overflow-x-auto pb-1 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
+            {kelompokUnik.map((nama) => {
+              const awal = indeksAwal(langkah, (item) => item.golongan === golonganAktif && item.kelompok === nama);
+              const boleh = awal >= 0 && awal <= puncak;
+              const aktif = nama === sekarang.kelompok;
+              return (
+                <button
+                  key={nama}
+                  type="button"
+                  role="tab"
+                  aria-selected={aktif}
+                  disabled={!boleh}
+                  onClick={() => {
+                    if (!aktif) keKelompok(nama);
+                  }}
+                  className={`shrink-0 rounded-full px-3 py-1.5 text-xs font-black ${kelasTab(aktif, boleh)}`}
+                >
+                  {nama}
+                </button>
+              );
+            })}
+          </div>
+        ) : null}
+        <div role="tablist" aria-label="Halaman pos" className="mt-2 flex gap-1.5 overflow-x-auto pb-1 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
+          {grup.map((entri) => {
             const aktif = entri.urut === indeks;
             const boleh = entri.urut <= puncak;
             return (
               <button
                 key={entri.item.kode}
                 type="button"
+                role="tab"
+                aria-selected={aktif}
                 disabled={!boleh}
                 title={entri.item.judul}
-                aria-label={`${entri.item.bagian}, pos ${urutLokal + 1}: ${entri.item.judul}`}
+                aria-label={`${entri.item.golongan || entri.item.bagian}: ${entri.item.judul}`}
                 onClick={() => ke(entri.urut)}
-                className={`h-9 min-w-9 shrink-0 rounded-full px-2 text-xs font-black ${
-                  aktif
-                    ? "bg-[#F0AB00] text-[#1C01A5] ring-2 ring-[#1C01A5]"
-                    : boleh
-                      ? "bg-[#1C01A5] text-white"
-                      : "bg-slate-200 text-slate-400"
-                }`}
+                className={`shrink-0 rounded-full px-3 py-1.5 text-xs font-black ${kelasTab(aktif, boleh)}`}
               >
-                {urutLokal + 1}
+                {adaGolongan ? entri.item.judul : entri.urut + 1}
               </button>
             );
           })}
