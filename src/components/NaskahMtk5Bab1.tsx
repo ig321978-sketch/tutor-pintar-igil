@@ -30,7 +30,6 @@ import {
   kurang54534,
   lebih86576,
   lebihKecil89876,
-  sisa23000,
   tulis15950,
   tulis34000,
   tulis38000,
