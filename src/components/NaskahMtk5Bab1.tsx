@@ -1,5 +1,6 @@
 "use client";
 
+import GambarCerita from "@/components/GambarCerita";
 import HasilJawabanKuis from "@/components/HasilJawabanKuis";
 import KartuPoinPenting from "@/components/KartuPoinPenting";
 import MisiPenjagaKebun from "@/components/MisiPenjagaKebun";
@@ -97,31 +98,19 @@ function Umpan({ status, teks }: { status: StatusJawabanKuis; teks: string }) {
   return <p className="mt-2 text-sm font-bold text-emerald-800">{teks}</p>;
 }
 
-function GambarDermaga({ jenis }: { jenis: "tiket" | "banding" | "uang" | "hitung" | "pos" | "meja" | "kartu" }) {
-  return (
-    <svg viewBox="0 0 520 220" className="w-full rounded-2xl border-2 border-[#1C01A5]/10 bg-[#ECFEFF]" role="img" aria-label="Dermaga lentera bersama Arun, Mira, Kiran, dan Igil">
-      <rect x="0" y="150" width="520" height="70" fill="#67E8F9" />
-      <rect x="70" y="128" width="250" height="16" rx="4" fill="#0F766E" />
-      <rect x="90" y="96" width="10" height="32" fill="#115E59" />
-      <rect x="180" y="96" width="10" height="32" fill="#115E59" />
-      <rect x="270" y="96" width="10" height="32" fill="#115E59" />
-      <circle cx="95" cy="84" r="10" fill="#F0AB00" stroke="#1C01A5" strokeWidth="2" />
-      <circle cx="185" cy="84" r="10" fill="#F0AB00" stroke="#1C01A5" strokeWidth="2" />
-      <circle cx="275" cy="84" r="10" fill="#F0AB00" stroke="#1C01A5" strokeWidth="2" />
-      {jenis === "tiket" ? <rect x="330" y="70" width="70" height="44" rx="6" fill="#fff" stroke="#1C01A5" strokeWidth="2" /> : null}
-      {jenis === "banding" ? <path d="M340 110 L370 70 L400 110" fill="none" stroke="#1C01A5" strokeWidth="3" /> : null}
-      {jenis === "uang" ? <rect x="330" y="78" width="78" height="36" rx="4" fill="#86EFAC" stroke="#1C01A5" strokeWidth="2" /> : null}
-      {jenis === "hitung" ? <rect x="330" y="64" width="54" height="64" rx="4" fill="#fff" stroke="#1C01A5" strokeWidth="2" /> : null}
-      {jenis === "pos" ? <rect x="340" y="60" width="18" height="70" fill="#B45309" /> : null}
-      <circle cx="430" cy="78" r="16" fill="#F8F4EC" stroke="#1C01A5" strokeWidth="2" />
-      <circle cx="424" cy="76" r="2.4" fill="#1C01A5" />
-      <circle cx="436" cy="76" r="2.4" fill="#1C01A5" />
-      <path d="M418 70 L430 60 L442 70" fill="#38BDF8" />
-      <circle cx="120" cy="150" r="12" fill="#99F6E4" stroke="#1C01A5" strokeWidth="2" />
-      <circle cx="190" cy="154" r="12" fill="#FECDD3" stroke="#1C01A5" strokeWidth="2" />
-      <circle cx="250" cy="150" r="12" fill="#BAE6FD" stroke="#1C01A5" strokeWidth="2" />
-    </svg>
-  );
+const GAMBAR_DERMAGA = {
+  tiket: { src: "/doodle-mtk/mtk-5-bab1-tiket.jpg", alt: "Arun, Mira, Kiran, dan Igil di dermaga lentera. Kiran memegang tiket kosong." },
+  banding: { src: "/doodle-mtk/mtk-5-bab1-banding.jpg", alt: "Dua papan congklak di dermaga. Arun, Mira, Kiran, dan Igil membandingkan isinya." },
+  uang: { src: "/doodle-mtk/mtk-5-bab1-uang.jpg", alt: "Tumpukan uang dan mangkuk koin di meja dermaga. Igil duduk di sampingnya." },
+  hitung: { src: "/doodle-mtk/mtk-5-bab1-hitung.jpg", alt: "Sempoa dan balok kayu di meja dermaga. Igil duduk di antara Arun, Mira, dan Kiran." },
+  pos: { src: "/doodle-mtk/mtk-5-bab1-pos.jpg", alt: "Lentera berjajar di dermaga. Igil berjalan di depan Arun, Mira, dan Kiran." },
+  meja: { src: "/doodle-mtk/mtk-5-bab1-meja.jpg", alt: "Meja kecil di dermaga dengan kertas kosong. Igil menunggu di samping." },
+  kartu: { src: "/doodle-mtk/mtk-5-bab1-kartu.jpg", alt: "Arun, Mira, Kiran, dan Igil memegang kartu kosong di dermaga lentera." },
+} as const;
+
+function GambarDermaga({ jenis }: { jenis: keyof typeof GAMBAR_DERMAGA }) {
+  const gambar = GAMBAR_DERMAGA[jenis];
+  return <GambarCerita src={gambar.src} alt={gambar.alt} />;
 }
 
 function Adegan({ judul, jenis, kelas, kelamin, penjelasan, children }: { judul: string; jenis: "tiket" | "banding" | "uang" | "hitung" | "pos" | "meja" | "kartu"; kelas?: string; kelamin?: KelaminGuru; penjelasan: string[]; children: ReactNode }) {

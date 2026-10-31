@@ -1,5 +1,6 @@
 "use client";
 
+import GambarCerita from "@/components/GambarCerita";
 import HasilJawabanKuis from "@/components/HasilJawabanKuis";
 import KartuPoinPenting from "@/components/KartuPoinPenting";
 import TujuanBelajar from "@/components/TujuanBelajar";
@@ -131,46 +132,20 @@ function Umpan({ status, teks }: { status: StatusJawabanKuis; teks: string }) {
   return <p className="mt-2 text-sm font-bold text-emerald-800">{teks}</p>;
 }
 
-function GambarBukit({ jenis }: { jenis: "tepuk" | "jadwal" | "pita" | "biji" | "saring" | "pos" | "meja" | "kartu" }) {
-  const judul: Record<typeof jenis, string> = {
-    tepuk: "Bukit senja, layangan di langit, tiga anak bertepuk, dan burung hantu Igil.",
-    jadwal: "Dua jalur layangan bertemu di bukit. Igil menunjuk hari pertemuan.",
-    pita: "Pita panjang di meja bengkel layangan, digunting menjadi bagian sama.",
-    biji: "Lubang congklak berisi biji dua warna, di samping gulungan pita.",
-    saring: "Papan bilangan dan pohon faktor di bukit. Igil memegang kapur.",
-    pos: "Sepuluh batu loncatan menuju puncak. Igil berdiri di batu pertama.",
-    meja: "Meja kecil di bukit dengan kertas kosong. Igil menunggu di samping.",
-    kartu: "Laras, Dimas, Sena, dan Igil memegang kartu kosong di bukit senja.",
-  };
-  return (
-    <svg viewBox="0 0 640 250" className="w-full rounded-xl border border-[#1C01A5]/10 bg-white" role="img" aria-label={judul[jenis]}>
-      <title>{judul[jenis]}</title>
-      <rect width="640" height="250" fill="#FFF6E8" />
-      <circle cx="520" cy="48" r="28" fill="#F0AB00" />
-      <path d="M0 168 C120 140 200 188 320 160 C440 132 520 176 640 150 L640 250 L0 250 Z" fill="#7C9A62" />
-      <path d="M0 190 C140 170 240 210 360 186 C480 162 560 200 640 178 L640 250 L0 250 Z" fill="#5E7D49" />
-      <path d="M150 78 L210 150 L118 132 Z" fill="#E11D48" />
-      <path d="M150 78 L118 132 L150 124 Z" fill="#FB7185" />
-      <path d="M210 150 Q180 168 150 150" fill="none" stroke="#1C01A5" strokeWidth="2" />
-      <line x1="168" y1="146" x2="250" y2="188" stroke="#1C01A5" strokeWidth="2" />
-      {jenis === "tepuk" ? <circle cx="250" cy="176" r="10" fill="#F0AB00" /> : null}
-      {jenis === "jadwal" ? <rect x="250" y="150" width="46" height="36" rx="4" fill="#fff" stroke="#1C01A5" strokeWidth="2" /> : null}
-      {jenis === "pita" ? <rect x="236" y="168" width="90" height="10" rx="5" fill="#E11D48" /> : null}
-      {jenis === "biji" ? <ellipse cx="286" cy="176" rx="28" ry="12" fill="#FDE68A" stroke="#1C01A5" strokeWidth="2" /> : null}
-      {jenis === "saring" ? <rect x="240" y="150" width="54" height="40" rx="4" fill="#fff" stroke="#1C01A5" strokeWidth="2" /> : null}
-      <circle cx="430" cy="150" r="16" fill="#F8F4EC" stroke="#1C01A5" strokeWidth="2" />
-      <circle cx="424" cy="148" r="3" fill="#1C01A5" />
-      <circle cx="436" cy="148" r="3" fill="#1C01A5" />
-      <path d="M424 156 Q430 160 436 156" fill="none" stroke="#1C01A5" strokeWidth="1.5" />
-      <path d="M418 142 L430 132 L442 142" fill="#38BDF8" />
-      <circle cx="150" cy="176" r="14" fill="#FBCFE8" stroke="#1C01A5" strokeWidth="2" />
-      <circle cx="196" cy="180" r="14" fill="#FDBA74" stroke="#1C01A5" strokeWidth="2" />
-      <circle cx="330" cy="178" r="14" fill="#FECACA" stroke="#1C01A5" strokeWidth="2" />
-      <rect x="138" y="190" width="24" height="22" rx="4" fill="#0F766E" />
-      <rect x="184" y="194" width="24" height="22" rx="4" fill="#C2410C" />
-      <rect x="318" y="192" width="24" height="22" rx="4" fill="#BE123C" />
-    </svg>
-  );
+const GAMBAR_BUKIT = {
+  tepuk: { src: "/doodle-mtk/mtk-5-bab2-tepuk.jpg", alt: "Laras, Dimas, dan Sena bertepuk di bukit senja. Igil berdiri di depan. Dua layangan di langit." },
+  jadwal: { src: "/doodle-mtk/mtk-5-bab2-jadwal.jpg", alt: "Dua layangan bertemu di langit senja. Igil menunjuk papan kosong." },
+  pita: { src: "/doodle-mtk/mtk-5-bab2-pita.jpg", alt: "Pita panjang di meja bengkel layangan, digunting menjadi bagian sama. Igil di atas gulungan." },
+  biji: { src: "/doodle-mtk/mtk-5-bab2-biji.jpg", alt: "Papan congklak berisi biji dua warna di bukit senja, di samping gulungan pita." },
+  saring: { src: "/doodle-mtk/mtk-5-bab2-saring.jpg", alt: "Papan dengan pohon lingkaran kosong di bukit. Igil memegang kapur." },
+  pos: { src: "/doodle-mtk/mtk-5-bab2-pos.jpg", alt: "Batu loncatan menuju puncak bukit. Igil berdiri di batu pertama." },
+  meja: { src: "/doodle-mtk/mtk-5-bab2-meja.jpg", alt: "Meja kecil di bukit dengan kertas kosong. Igil menunggu di samping." },
+  kartu: { src: "/doodle-mtk/mtk-5-bab2-kartu.jpg", alt: "Laras, Dimas, Sena, dan Igil memegang kartu kosong di bukit senja." },
+} as const;
+
+function GambarBukit({ jenis }: { jenis: keyof typeof GAMBAR_BUKIT }) {
+  const gambar = GAMBAR_BUKIT[jenis];
+  return <GambarCerita src={gambar.src} alt={gambar.alt} />;
 }
 
 function Adegan({
