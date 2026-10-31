@@ -27,9 +27,9 @@ function angkaAman(nilai: unknown) {
 }
 
 function kelasTab(aktif: boolean, boleh: boolean) {
-  if (aktif) return "bg-[#F0AB00] text-[#1C01A5] ring-2 ring-[#1C01A5]";
-  if (boleh) return "bg-white text-[#1C01A5] ring-2 ring-[#1C01A5]";
-  return "bg-slate-200 text-slate-400";
+  if (aktif) return "border-white bg-white text-indigo-700 shadow-sm";
+  if (boleh) return "border-indigo-200/40 text-indigo-100 hover:bg-indigo-500/40";
+  return "border-transparent text-indigo-200/35";
 }
 
 export function QuestLangkah({
@@ -101,20 +101,15 @@ export function QuestLangkah({
 
   return (
     <section ref={akar} className="scroll-mt-24 space-y-4">
-      <div className="rounded-2xl border-2 border-[#1C01A5]/15 bg-[#F8F7FF] p-3">
-        <div className="flex items-center justify-between gap-3">
-          <p className="text-xs font-black uppercase tracking-wide text-[#1C01A5]">
-            {sekarang.tab || sekarang.bagian}
+      <div className="overflow-hidden rounded-2xl bg-gradient-to-r from-indigo-700 via-indigo-600 to-violet-700 text-white shadow-lg">
+        <div className="px-4 py-4">
+          <p className="w-fit rounded-full bg-indigo-900/50 px-3 py-1 text-xs font-semibold uppercase tracking-wider">
+            {sekarang.kelompok || sekarang.tab || sekarang.bagian}
           </p>
-          {sekarang.kelompok ? <p className="text-xs font-bold text-slate-600">{sekarang.kelompok}</p> : null}
+          <p className="mt-2 text-2xl font-extrabold tracking-tight">{sekarang.judul}</p>
+          <p className="mt-1 text-sm text-indigo-100">Langkah {indeks + 1} dari {langkah.length}</p>
         </div>
-        <div className="mt-2 h-2 overflow-hidden rounded-full bg-white">
-          <div
-            className="h-full rounded-full bg-[#1C01A5]"
-            style={{ width: `${((indeks + 1) / langkah.length) * 100}%` }}
-          />
-        </div>
-        <div role="tablist" aria-label="Bagian materi" className="mt-3 flex flex-wrap gap-1.5">
+        <div role="tablist" aria-label="Bagian materi" className="flex gap-1 overflow-x-auto border-t border-indigo-500/30 px-3 pb-2 pt-2">
           {tabUnik.map((nama) => {
             const awal = langkah.findIndex((item) => item.tab === nama);
             const boleh = awal >= 0 && awal <= puncak;
@@ -129,17 +124,13 @@ export function QuestLangkah({
                 onClick={() => {
                   if (!aktif) ke(awal);
                 }}
-                className={`rounded-full px-3 py-1.5 text-xs font-black ${kelasTab(aktif, boleh)}`}
+                className={`shrink-0 whitespace-nowrap rounded-lg px-4 py-2 text-sm font-bold ${kelasTab(aktif, boleh)}`}
               >
                 {nama}
               </button>
             );
           })}
         </div>
-        <p className="mt-2 text-base font-black text-[#1C01A5]">{sekarang.judul}</p>
-        <p className="mt-1 text-xs font-semibold text-slate-500">
-          Langkah {indeks + 1} dari {langkah.length}
-        </p>
       </div>
       <div key={sekarang.kode} className="space-y-3">
         {sekarang.isi}
