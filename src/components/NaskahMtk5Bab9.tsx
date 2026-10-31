@@ -1,6 +1,6 @@
 "use client";
 
-import { GameBanding, GameRak, GameSusun, GameUrai, GameUrut, SaklarSuaraPermainan } from "@/components/GameMtk5Bab9";
+import { GameDetektor, GameDompet, GameGrafik, GamePutar, GameSensus, GameUrai, GameUrutHarga, SaklarSuaraPermainan } from "@/components/GameMtk5Bab9";
 import HasilJawabanKuis from "@/components/HasilJawabanKuis";
 import KartuPoinPenting from "@/components/KartuPoinPenting";
 import { useKuisMateri } from "@/components/KuisMateriContext";
@@ -363,7 +363,9 @@ function KartuA({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminGuru }) {
           ]}
           kaki="Nol di tengah tidak selalu diucapkan. 1.000.000 dibaca satu juta."
         />
-        <GameRak />
+        <GameSensus />
+        <GamePutar />
+        <GameDetektor />
         <KuisSuara id={idKuis("A", 0)} pertanyaan="Bacalah bilangan 250.014." periksa={baca250014} petunjuk="Baca kelompok kiri, sebut ribu, lalu baca kelompok kanan." benar="Dua ratus lima puluh ribu empat belas." />
         <TulisBebas id={idKuis("A", 1)} judul="Menulis bilangan" pertanyaan="Tuliskan angka untuk: empat ratus enam ribu tiga puluh." pesanSalah="Pakai titik ribuan. Rak yang kosong ditulis 0." bantuan="Enam rak: 4, 0, 6, lalu 0, 3, 0." umpan="406.030" periksa={tulis406030} alias={["406030", "406.030"]} konteks="Empat ratus enam ribu tiga puluh ditulis 406.030." />
         <Pilih id={idKuis("A", 2)} pertanyaan="Nilai angka 3 pada 739.254 adalah..." pilihan={[{ huruf: "A", teks: "3" }, { huruf: "B", teks: "300" }, { huruf: "C", teks: "3.000" }, { huruf: "D", teks: "30.000" }]} benar="D" umpan="Angka 3 berdiri di rak puluh ribuan. Nilainya 30.000." salah="Hitung dari kiri: 7, 3, 9, 2, 5, 4. Rak kedua adalah puluh ribuan." />
@@ -409,8 +411,8 @@ function KartuA({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminGuru }) {
           ]}
           kaki="Contoh yang sudah dihitung: 320.000 lebih besar daripada 280.000."
         />
-        <GameBanding />
-        <GameUrut />
+        <GameUrutHarga />
+        <GameGrafik />
         <KuisSuara id={idKuis("B", 0)} pertanyaan="Mana yang lebih besar, 681.240 atau 618.240?" periksa={lebih681240} petunjuk="Rak ratus ribuan sama. Geser ke rak puluh ribuan." benar="681.240 lebih besar karena 8 lebih besar daripada 1." />
         <TulisBebas id={idKuis("B", 1)} judul="Bilangan tengah" visual={<Papan anak="200.500    205.000    250.000" />} pertanyaan="Tuliskan bilangan yang ada di tengah jika diurutkan dari yang terkecil." pesanSalah="Bandingkan rak ratus ribuan dulu, lalu puluh ribuan." bantuan="Yang terkecil 200.500. Yang terbesar 250.000." umpan="205.000" periksa={tulis205000} alias={["205000", "205.000"]} konteks="Bilangan tengahnya 205.000." />
         <Pilih id={idKuis("B", 2)} pertanyaan="734.090 ... 734.900. Tanda yang tepat adalah..." pilihan={[{ huruf: "A", teks: "lebih besar" }, { huruf: "B", teks: "lebih kecil" }, { huruf: "C", teks: "sama dengan" }, { huruf: "D", teks: "tidak bisa dibanding" }]} benar="B" umpan="Rak ratusan 0 lebih kecil daripada 9. Jadi 734.090 lebih kecil." salah="Tiga rak kiri sama. Lihat rak ratusan." />
@@ -442,7 +444,7 @@ function KartuA({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminGuru }) {
           ]}
           kaki="Satu bilangan bisa disusun dengan banyak cara. Uraian rak adalah cara yang paling rapi."
         />
-        <GameSusun />
+        <GameDompet />
         <GameUrai />
         <KuisSuara id={idKuis("B", 4)} pertanyaan="Berapa jumlah 4 ratus ribuan, 2 ribuan, dan 5 satuan?" periksa={jawab402005} petunjuk="Jumlahkan nilai setiap rak. Rak yang tidak disebut tetap nol." benar="402.005." />
         <TulisBebas id={idKuis("B", 5)} judul="Menyusun lembar" pertanyaan="5 lembar seratus ribuan dan 2 lembar sepuluh ribuan. Tuliskan jumlahnya." pesanSalah="Kalikan dulu, lalu jumlahkan." bantuan="5 kali 100.000, lalu tambah 2 kali 10.000." umpan="520.000" periksa={tulis520000} alias={["520000", "520.000"]} konteks="Jumlahnya 520.000." />

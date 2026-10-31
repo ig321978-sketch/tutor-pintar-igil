@@ -1,4 +1,4 @@
-export type JenisSuara = "click" | "tally" | "pop" | "coin" | "wrong" | "fanfare";
+export type JenisSuara = "click" | "tally" | "pop" | "coin" | "wrong" | "fanfare" | "dial" | "cash";
 
 export function mainkanSuara(jenis: JenisSuara): void {
   if (typeof window === "undefined") return;
@@ -11,11 +11,11 @@ export function mainkanSuara(jenis: JenisSuara): void {
     const tutup = () => {
       window.setTimeout(() => void ctx.close(), 900);
     };
-    if (jenis === "click" || jenis === "pop") {
+    if (jenis === "click" || jenis === "pop" || jenis === "dial") {
       const osc = ctx.createOscillator();
       const gain = ctx.createGain();
-      osc.type = jenis === "pop" ? "triangle" : "sine";
-      osc.frequency.setValueAtTime(jenis === "pop" ? 580 : 460, sekarang);
+      osc.type = jenis === "click" ? "sine" : "triangle";
+      osc.frequency.setValueAtTime(jenis === "dial" ? 640 : jenis === "pop" ? 580 : 460, sekarang);
       osc.frequency.exponentialRampToValueAtTime(240, sekarang + 0.06);
       gain.gain.setValueAtTime(0.15, sekarang);
       gain.gain.linearRampToValueAtTime(0.01, sekarang + 0.06);
@@ -23,6 +23,19 @@ export function mainkanSuara(jenis: JenisSuara): void {
       gain.connect(ctx.destination);
       osc.start(sekarang);
       osc.stop(sekarang + 0.06);
+    } else if (jenis === "cash") {
+      [783.99, 1046.5].forEach((freq, indeks) => {
+        const osc = ctx.createOscillator();
+        const gain = ctx.createGain();
+        osc.type = "triangle";
+        osc.frequency.setValueAtTime(freq, sekarang + indeks * 0.06);
+        gain.gain.setValueAtTime(0.18, sekarang + indeks * 0.06);
+        gain.gain.exponentialRampToValueAtTime(0.008, sekarang + indeks * 0.06 + 0.18);
+        osc.connect(gain);
+        gain.connect(ctx.destination);
+        osc.start(sekarang + indeks * 0.06);
+        osc.stop(sekarang + indeks * 0.06 + 0.18);
+      });
     } else if (jenis === "tally") {
       const osc = ctx.createOscillator();
       const gain = ctx.createGain();
