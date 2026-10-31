@@ -45,6 +45,11 @@ export function kelasEmpatSd(kelas: string): boolean {
   return /^4\s*SD\b/i.test(k) || /^kelas\s*4(\s+SD)?\b/i.test(k);
 }
 
+export function kelasLimaSd(kelas: string): boolean {
+  const k = kelas.trim();
+  return /^5\s*SD\b/i.test(k) || /^kelas\s*5(\s+SD)?\b/i.test(k);
+}
+
 export function kelasEnamSd(kelas: string): boolean {
   const k = kelas.trim();
   return /^6\s*SD\b/i.test(k) || /^kelas\s*6(\s+SD)?\b/i.test(k);
