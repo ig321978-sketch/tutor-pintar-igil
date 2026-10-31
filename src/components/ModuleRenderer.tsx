@@ -26,6 +26,7 @@ import NaskahMtk4Bab3 from "@/components/NaskahMtk4Bab3";
 import NaskahMtk4Bab4 from "@/components/NaskahMtk4Bab4";
 import NaskahMtk4Bab5 from "@/components/NaskahMtk4Bab5";
 import NaskahMtk4Bab6 from "@/components/NaskahMtk4Bab6";
+import NaskahMtk5Bab2 from "@/components/NaskahMtk5Bab2";
 import NaskahMtk6Bab1 from "@/components/NaskahMtk6Bab1";
 import Bab2RasioModule from "@/components/modules/Bab2RasioModule";
 import Bab3KubusBalokModule from "@/components/modules/Bab3KubusBalokModule";
@@ -71,6 +72,7 @@ import {
   adalahJudulMtk4Bab4,
   adalahJudulMtk4Bab5,
   adalahJudulMtk4Bab6,
+  adalahJudulMtk5Bab2,
   adalahJudulMtk6Bab1,
   adalahJudulMtk6Bab2,
   adalahJudulMtk6Bab3,
@@ -128,7 +130,7 @@ import {
   naskahTampilanResmi,
 } from "@/lib/naskah-resmi";
 import { potongLengkap } from "@/lib/paket-lengkap-materi";
-import { kelasDuaSd, kelasEmpatSd, kelasEnamSd, kelasSatuSd, kelasTigaSd } from "@/lib/infografis-kelas1";
+import { kelasDuaSd, kelasEmpatSd, kelasEnamSd, kelasLimaSd, kelasSatuSd, kelasTigaSd } from "@/lib/infografis-kelas1";
 import { MODUL_MTK3_BAB1 } from "@/lib/modul-resmi-mtk-3-bab1";
 import { MODUL_MTK3_UKUR } from "@/lib/modul-resmi-mtk-3-ukur";
 import { MODUL_MTK3_KALIMAT } from "@/lib/modul-resmi-mtk-3-kalimat";
@@ -140,6 +142,7 @@ import { MODUL_MTK4_BAB3 } from "@/lib/modul-resmi-mtk-4-bab3";
 import { MODUL_MTK4_BAB4 } from "@/lib/modul-resmi-mtk-4-bab4";
 import { MODUL_MTK4_BAB5 } from "@/lib/modul-resmi-mtk-4-bab5";
 import { MODUL_MTK4_BAB6 } from "@/lib/modul-resmi-mtk-4-bab6";
+import { MODUL_MTK5_BAB2 } from "@/lib/modul-resmi-mtk-5-bab2";
 import { MODUL_MTK6_BAB1 } from "@/lib/modul-resmi-mtk-6-bab1";
 import { MODUL_MTK6_BAB2 } from "@/lib/modul-resmi-mtk-6-bab2";
 import { MODUL_MTK6_BAB3 } from "@/lib/modul-resmi-mtk-6-bab3";
@@ -384,6 +387,13 @@ function ModuleRenderer({
       kelasEmpatSd(kelas) &&
       (adalahJudulMtk4Bab6(mapel, materi) ||
         naskahTampilanModulResmi(MODUL_MTK4_BAB6, naskah)),
+    [naskah, mapel, materi, kelas],
+  );
+  const pakaiKartuMtk5Bab2 = useMemo(
+    () =>
+      kelasLimaSd(kelas) &&
+      (adalahJudulMtk5Bab2(mapel, materi) ||
+        naskahTampilanModulResmi(MODUL_MTK5_BAB2, naskah)),
     [naskah, mapel, materi, kelas],
   );
   const pakaiKartuMtk6Bab1 = useMemo(
@@ -709,6 +719,13 @@ function ModuleRenderer({
     return (
       <div className={className}>
         <NaskahMtk4Bab6 kelas={kelas} kelamin={kelamin} />
+      </div>
+    );
+  }
+  if (pakaiKartuMtk5Bab2) {
+    return (
+      <div className={className}>
+        <NaskahMtk5Bab2 kelas={kelas} kelamin={kelamin} />
       </div>
     );
   }
