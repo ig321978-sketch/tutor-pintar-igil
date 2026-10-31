@@ -22,7 +22,7 @@ import SimulasiMtk3Ukur from "@/components/modules/SimulasiMtk3Ukur";
 import SimulasiMtk3Bangun from "@/components/modules/SimulasiMtk3Bangun";
 import SimulasiMtk3Data from "@/components/modules/SimulasiMtk3Data";
 import SimulasiMtk4Bab1 from "@/components/modules/SimulasiMtk4Bab1";
-import SimulasiMtk4Bab2 from "@/components/modules/SimulasiMtk4Bab2";
+import Bab2PecahanKelas4Module from "@/components/modules/Bab2PecahanKelas4Module";
 import SimulasiMtk4Bab3 from "@/components/modules/SimulasiMtk4Bab3";
 import SimulasiMtk4Bab4 from "@/components/modules/SimulasiMtk4Bab4";
 import SimulasiPhetPenjumlahanKelas1 from "@/components/modules/SimulasiPhetPenjumlahanKelas1";
@@ -408,24 +408,8 @@ function PanelSimulasiData({
   );
 }
 
-function PanelSimulasiMtk4Pecahan({
-  kelas,
-  kelamin,
-  sudahLulus = false,
-  onSelesai,
-}: Pick<PanelSimulasiProps, "kelas" | "kelamin" | "sudahLulus" | "onSelesai">) {
-  const dicatat = useRef(sudahLulus);
-  return (
-    <SimulasiMtk4Bab2
-      kelas={kelas}
-      kelamin={kelamin}
-      onBenar={() => {
-        if (dicatat.current) return;
-        dicatat.current = true;
-        onSelesai?.(true, "Lab pecahan selesai.");
-      }}
-    />
-  );
+function PanelSimulasiMtk4Pecahan() {
+  return <Bab2PecahanKelas4Module />;
 }
 
 function PanelSimulasiMtk4Ukur({
@@ -583,7 +567,7 @@ export default function PanelSimulasiModul({
     return <PanelSimulasiCacah10000 kelas={kelas} kelamin={kelamin} sudahLulus={sudahLulus} onSelesai={onSelesai} />;
   }
   if (adalahMtk4Bab2(kelas, mapel, materi)) {
-    return <PanelSimulasiMtk4Pecahan kelas={kelas} kelamin={kelamin} sudahLulus={sudahLulus} onSelesai={onSelesai} />;
+    return <PanelSimulasiMtk4Pecahan />;
   }
   if (adalahMtk4Bab3(kelas, mapel, materi)) {
     return <PanelSimulasiMtk4Pola kelas={kelas} kelamin={kelamin} sudahLulus={sudahLulus} onSelesai={onSelesai} />;
