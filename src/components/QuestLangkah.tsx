@@ -116,18 +116,22 @@ export function QuestLangkah({
     <section ref={akar} className="scroll-mt-24 space-y-4">
       <div className="overflow-hidden rounded-2xl bg-gradient-to-r from-indigo-700 via-indigo-600 to-violet-700 text-white shadow-lg">
         <div className="px-4 py-4">
-          {utuh ? (
-            sekarang.kelompok ? (
-              <p className="w-fit rounded-full bg-indigo-900/50 px-3 py-1 text-xs font-semibold uppercase tracking-wider">
-                {sekarang.kelompok}
-              </p>
-            ) : null
-          ) : (
-            <p className="w-fit rounded-full bg-indigo-900/50 px-3 py-1 text-xs font-semibold uppercase tracking-wider">
-              {sekarang.tab || sekarang.bagian}
-            </p>
-          )}
-          <p className="mt-2 text-2xl font-extrabold tracking-tight">{utuh ? sekarang.tab : sekarang.judul}</p>
+          {(() => {
+            const lencana = sekarang.tab || sekarang.bagian;
+            const judulKepala = sekarang.kelompok || (utuh ? sekarang.tab : sekarang.judul);
+            return (
+              <>
+                {lencana.toLowerCase() !== (judulKepala || "").toLowerCase() ? (
+                  <p className="w-fit rounded-full bg-indigo-900/50 px-3 py-1 text-xs font-semibold uppercase tracking-wider">
+                    {lencana}
+                  </p>
+                ) : null}
+                <p className={`text-2xl font-extrabold tracking-tight ${lencana.toLowerCase() !== (judulKepala || "").toLowerCase() ? "mt-2" : ""}`}>
+                  {judulKepala}
+                </p>
+              </>
+            );
+          })()}
         </div>
         <div role="tablist" aria-label="Bagian materi" className="flex flex-wrap gap-1 border-t border-indigo-500/30 px-3 pb-2 pt-2">
           {tabUnik.map((nama) => {

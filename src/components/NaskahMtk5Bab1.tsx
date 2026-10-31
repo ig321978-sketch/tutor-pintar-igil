@@ -400,14 +400,14 @@ const BACA_A = ["empat belas ribu lima ratus", "enam puluh enam ribu lima ratus"
 const HASIL_B = ["79.500", "60.000", "16.000"];
 const HASIL_D = ["26.932", "9.610", "30.000"];
 
-const TAB_A = { tab: "Membaca, menulis, dan nilai tempat sampai 100.000", kelompok: "Sub-bab" };
-const TAB_B = { tab: "Membandingkan dan mengurutkan sampai 100.000", kelompok: "Sub-bab" };
-const TAB_C = { tab: "Komposisi dan dekomposisi sampai 100.000", kelompok: "Sub-bab" };
-const TAB_D = { tab: "Operasi hitung bilangan cacah sampai 100.000", kelompok: "Sub-bab" };
-const TAB_POIN = { tab: "Poin Penting" };
+const TAB_A = { tab: "Sub-Bab A", kelompok: "Membaca, menulis, dan nilai tempat sampai 100.000" };
+const TAB_B = { tab: "Sub-Bab B", kelompok: "Membandingkan dan mengurutkan sampai 100.000" };
+const TAB_C = { tab: "Sub-Bab C", kelompok: "Komposisi dan dekomposisi sampai 100.000" };
+const TAB_D = { tab: "Sub-Bab D", kelompok: "Operasi hitung bilangan cacah sampai 100.000" };
+const TAB_POIN = { tab: "Intisari" };
 
 const TAB_LANGKAH: Record<string, { tab: string; kelompok?: string }> = {
-  mulai: { tab: "Tujuan Pembelajaran" },
+  mulai: { tab: "Target" },
   "rak-tiket": TAB_A,
   "rak-info": TAB_A,
   a0: TAB_A,
