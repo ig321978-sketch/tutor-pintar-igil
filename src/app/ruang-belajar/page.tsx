@@ -2,7 +2,7 @@
 
 import { useRouter } from "next/navigation";
 import { useEffect, useMemo, useRef, useState } from "react";
-import { BookOpen, Sparkles, UploadCloud, X } from "lucide-react";
+import { Sparkles, UploadCloud, X } from "lucide-react";
 import PageShell from "@/components/PageShell";
 import PilihGuru from "@/components/PilihGuru";
 import { type KelaminGuru } from "@/lib/guru";
@@ -318,27 +318,12 @@ export default function RuangBelajarPage() {
           <h2 className="mb-4 text-lg font-extrabold text-[#1C01A5]">
             Pilih sumber pembelajaran
           </h2>
-        <div className="flex flex-col gap-2 rounded-2xl bg-[#F0AB00]/15 p-1">
-          <button
-            type="button"
-            onClick={() => {
-              setSumber("kurikulum");
-              setPesanGalat("");
-            }}
-            className={`flex w-full items-center justify-center gap-2 rounded-xl px-3 py-3 text-sm font-extrabold uppercase tracking-wide transition-all sm:text-base ${
-              sumber === "kurikulum"
-                ? "bg-[#1C01A5] text-white shadow-sm"
-                : "text-[#1C01A5] hover:text-[#1C01A5]"
-            }`}
-          >
-            <BookOpen className="h-5 w-5 shrink-0" />
-            <span>Materi Kurikulum Merdeka</span>
-          </button>
-          {kunciPublik ? null : (
+        {kunciPublik ? null : (
+          <div className="flex flex-col gap-2 rounded-2xl bg-[#F0AB00]/15 p-1">
             <button
               type="button"
               onClick={() => {
-                setSumber("unggah");
+                setSumber((sekarang) => (sekarang === "unggah" ? "kurikulum" : "unggah"));
                 setPesanGalat("");
               }}
               className={`flex w-full items-center justify-center gap-2 rounded-xl px-3 py-3 text-sm font-extrabold uppercase tracking-wide transition-all sm:text-base ${
@@ -350,10 +335,10 @@ export default function RuangBelajarPage() {
               <UploadCloud className="h-5 w-5 shrink-0" />
               <span>Unggah Halaman Buku</span>
             </button>
-          )}
-        </div>
+          </div>
+        )}
 
-        {sumber === "kurikulum" ? (
+        {kunciPublik || sumber === "kurikulum" ? (
           <>
             <div className="mt-6">
               <label className={kelasLabel}>Pilih mata pelajaran</label>
@@ -408,9 +393,7 @@ export default function RuangBelajarPage() {
                     {item}
                   </option>
                 ))}
-                {kunciPublik ? null : (
-                  <option value={OPSI_MATERI_LAIN}>{OPSI_MATERI_LAIN}</option>
-                )}
+                <option value={OPSI_MATERI_LAIN}>{OPSI_MATERI_LAIN}</option>
               </select>
               {pilihanMateri === OPSI_MATERI_LAIN ? (
                 <input
