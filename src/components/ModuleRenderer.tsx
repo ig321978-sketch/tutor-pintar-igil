@@ -33,6 +33,7 @@ import NaskahMtk5Bab4 from "@/components/NaskahMtk5Bab4";
 import NaskahMtk5Bab5 from "@/components/NaskahMtk5Bab5";
 import NaskahMtk5Bab6 from "@/components/NaskahMtk5Bab6";
 import NaskahMtk5Bab7 from "@/components/NaskahMtk5Bab7";
+import NaskahMtk5Bab8 from "@/components/NaskahMtk5Bab8";
 import NaskahMtk6Bab1 from "@/components/NaskahMtk6Bab1";
 import Bab2RasioModule from "@/components/modules/Bab2RasioModule";
 import Bab3KubusBalokModule from "@/components/modules/Bab3KubusBalokModule";
@@ -85,6 +86,7 @@ import {
   adalahJudulMtk5Bab5,
   adalahJudulMtk5Bab6,
   adalahJudulMtk5Bab7,
+  adalahJudulMtk5Bab8,
   adalahJudulMtk6Bab1,
   adalahJudulMtk6Bab2,
   adalahJudulMtk6Bab3,
@@ -161,6 +163,7 @@ import { MODUL_MTK5_BAB4 } from "@/lib/modul-resmi-mtk-5-bab4";
 import { MODUL_MTK5_BAB5 } from "@/lib/modul-resmi-mtk-5-bab5";
 import { MODUL_MTK5_BAB6 } from "@/lib/modul-resmi-mtk-5-bab6";
 import { MODUL_MTK5_BAB7 } from "@/lib/modul-resmi-mtk-5-bab7";
+import { MODUL_MTK5_BAB8 } from "@/lib/modul-resmi-mtk-5-bab8";
 import { MODUL_MTK6_BAB1 } from "@/lib/modul-resmi-mtk-6-bab1";
 import { MODUL_MTK6_BAB2 } from "@/lib/modul-resmi-mtk-6-bab2";
 import { MODUL_MTK6_BAB3 } from "@/lib/modul-resmi-mtk-6-bab3";
@@ -456,6 +459,13 @@ function ModuleRenderer({
         naskahTampilanModulResmi(MODUL_MTK5_BAB7, naskah)),
     [naskah, mapel, materi, kelas],
   );
+  const pakaiKartuMtk5Bab8 = useMemo(
+    () =>
+      kelasLimaSd(kelas) &&
+      (adalahJudulMtk5Bab8(mapel, materi) ||
+        naskahTampilanModulResmi(MODUL_MTK5_BAB8, naskah)),
+    [naskah, mapel, materi, kelas],
+  );
   const pakaiKartuMtk6Bab1 = useMemo(
     () =>
       kelasEnamSd(kelas) &&
@@ -556,7 +566,7 @@ function ModuleRenderer({
     return cariModulPai2DariNaskah(naskah);
   }, [naskah, mapel, materi, kelas]);
   const adaKartuMtk =
-    pakaiKartuMtkBab1 || pakaiKartuMtkBab2 || pakaiKartuMtkBab3 || pakaiKartuMtkBab4 || pakaiKartuMtkBab5 || pakaiKartuMtkBab6 || pakaiKartuMtkBab7 || pakaiKartuMtkBab8;
+    pakaiKartuMtkBab1 || pakaiKartuMtkBab2 || pakaiKartuMtkBab3 || pakaiKartuMtkBab4 || pakaiKartuMtkBab5 || pakaiKartuMtkBab6 || pakaiKartuMtkBab7 || pakaiKartuMtkBab8 || pakaiKartuMtk5Bab8;
   const modulResmiLain = useMemo(() => {
     if (kelasDuaSd(kelas) || modulPai2 || modulBindo2 || modulMtk2) return null;
     if (pakaiKartuBab1 || pakaiKartuBab2 || adaKartuMtk || modulPancasila || modulBindo || modulPjok || modulInggris || modulMusik || modulSeniRupa || modulKristen || modulKatolik || modulBuddha || modulHindu || modulKhonghucu) return null;
@@ -740,6 +750,13 @@ function ModuleRenderer({
     return (
       <div className={className}>
         <NaskahMtk5Bab7 kelas={kelas} kelamin={kelamin} />
+      </div>
+    );
+  }
+  if (pakaiKartuMtk5Bab8) {
+    return (
+      <div className={className}>
+        <NaskahMtk5Bab8 kelas={kelas} kelamin={kelamin} />
       </div>
     );
   }
