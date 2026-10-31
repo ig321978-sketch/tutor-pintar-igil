@@ -4,7 +4,7 @@ import GambarCerita from "@/components/GambarCerita";
 import HasilJawabanKuis from "@/components/HasilJawabanKuis";
 import KartuPoinPenting from "@/components/KartuPoinPenting";
 import MisiPenjagaKebun from "@/components/MisiPenjagaKebun";
-import PetaContoh from "@/components/PetaContoh";
+import TabelInfoGrafis from "@/components/TabelInfoGrafis";
 import SoalRekamSuara from "@/components/SoalRekamSuara";
 import TombolVoiceMateriPai1 from "@/components/TombolVoiceMateriPai1";
 import TujuanBelajar from "@/components/TujuanBelajar";
@@ -401,14 +401,25 @@ function KartuA({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminGuru }) {
       <KepalaKartu ikon="🏮🦉" judul="A. Dermaga Lentera" anak="Arun, Mira, Kiran, dan Igil" kelas={kelas} kelamin={kelamin} cuplikan={cuplikanKalimat(kartu.voice[0] ?? [])} />
       <TujuanBelajar butir={["Membaca dan menuliskan bilangan cacah sampai 100.000 serta menentukan nilai tempatnya.", "Membandingkan dan mengurutkan bilangan cacah sampai 100.000.", "Menyusun dan menguraikan bilangan sampai 100.000.", "Menghitung penjumlahan, pengurangan, perkalian, dan pembagian sampai 100.000."]} />
       <div className="mt-4 space-y-4">
-        <Adegan judul="Sub-bab 1 — Membaca, menulis, dan nilai tempat" jenis="tiket" kelas={kelas} kelamin={kelamin} penjelasan={["Bilangan sampai 99.999 memakai lima rak.", "Titik di antara ribuan hanya pemisah, bukan koma.", "Peta 66.500 menaruh tiap angka pada raknya."]}>
+        <Adegan judul="Sub-bab 1 — Membaca, menulis, dan nilai tempat" jenis="tiket" kelas={kelas} kelamin={kelamin} penjelasan={["Bilangan sampai 99.999 memakai lima rak.", "Titik di antara ribuan hanya pemisah, bukan koma.", "Infografis 66.500 menaruh tiap angka pada raknya."]}>
           <Dialog nama="Mira" anak="Empat belas ribu lima ratus. Aku tulis dari rak kiri: 1, 4, 5, lalu dua nol." />
           <Dialog nama="Igil" anak="Jadi 14.500. Rak puluhan dan satuan kosong, tetap ditulis 0." />
           <RakTiket />
           <Dialog nama="Arun" anak="Harga lentera 66.500 kubaca enam puluh enam ribu lima ratus." />
           <Dialog nama="Kiran" anak="Tiket pagi 26.932 kubaca dua puluh enam ribu sembilan ratus tiga puluh dua." />
-          <Dialog nama="Igil" anak="Aku bentangkan peta lentera 66.500. Angka kiri paling besar nilainya." />
-          <PetaContoh pusat="66.500" cabang={[{ ikon: "6️⃣", judul: "Puluh ribuan", isi: "60.000" }, { ikon: "6️⃣", judul: "Ribuan", isi: "6.000" }, { ikon: "5️⃣", judul: "Ratusan", isi: "500" }]} kolom={["Rak", "Nilai"]} baris={[["Puluhan", "0"], ["Satuan", "0"]]} />
+          <Dialog nama="Igil" anak="Aku bentangkan infografis lentera 66.500. Angka kiri paling besar nilainya." />
+          <TabelInfoGrafis
+            judul="Infografis: Nilai tempat 66.500"
+            kepala={["Rak", "Angka", "Nilai"]}
+            baris={[
+              ["Puluh ribuan", "6", "60.000"],
+              ["Ribuan", "6", "6.000"],
+              ["Ratusan", "5", "500"],
+              ["Puluhan", "0", "0"],
+              ["Satuan", "0", "0"],
+            ]}
+            kaki="Angka kiri paling besar nilainya."
+          />
           <KuisSuara id={idKuis("A", 0)} pertanyaan="Bacalah 44.567 dengan lengkap." periksa={baca44567} petunjuk="Sebut rak puluh ribuan, lalu sisa angkanya." benar="Empat puluh empat ribu lima ratus enam puluh tujuh." />
           <TulisBebas id={idKuis("A", 1)} judul="Tulis harga" visual={<Papan anak="lima belas ribu sembilan ratus lima puluh" />} pertanyaan="Tulis bilangan itu dengan angka." pesanSalah="Letakkan angka sesuai raknya. Rak kosong ditulis 0." bantuan="Lima belas ribu adalah 15. Sembilan ratus lima puluh melengkapi 15.950." umpan="15.950." periksa={tulis15950} alias={["15950", "15.950"]} konteks="Lima belas ribu sembilan ratus lima puluh ditulis 15.950." />
           <KuisSuara id={idKuis("B", 0)} pertanyaan="Bacalah 72.135 dengan lengkap." periksa={baca72135} petunjuk="Puluh ribuan dulu, lalu sisa bilangannya." benar="Tujuh puluh dua ribu seratus tiga puluh lima." />
@@ -419,12 +430,23 @@ function KartuA({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminGuru }) {
           <KuisBenarSalah id={idKuis("A", 11)} perintah="Pilih benar atau salah." baris={[{ teks: "Titik pada 14.500 adalah koma desimal.", benar: false }, { teks: "Pada 66.500, angka 6 yang kiri bernilai 60.000.", benar: true }, { teks: "100.000 dibaca sepuluh ribu.", benar: false }]} umpan="Titik itu pemisah ribuan. 100.000 dibaca seratus ribu." />
         </Adegan>
 
-        <Adegan judul="Sub-bab 2 — Membandingkan dan mengurutkan" jenis="banding" kelas={kelas} kelamin={kelamin} penjelasan={["Bandingkan rak paling kiri lebih dulu.", "Kalau rak itu sama, geser satu rak ke kanan.", "Peta perbandingan mengingat langkah dari kiri."]}>
+        <Adegan judul="Sub-bab 2 — Membandingkan dan mengurutkan" jenis="banding" kelas={kelas} kelamin={kelamin} penjelasan={["Bandingkan rak paling kiri lebih dulu.", "Kalau rak itu sama, geser satu rak ke kanan.", "Infografis perbandingan mengingat langkah dari kiri."]}>
           <Dialog nama="Kiran" anak="Ada dua papan congklak. Aku tidak langsung melihat angka paling belakang." />
           <Dialog nama="Igil" anak="Mulai dari puluh ribuan. Kalau sama, lihat ribuan." />
           <BandingHarga />
-          <Dialog nama="Mira" anak="Peta ini membandingkan 76.675 dan 67.765. Rak kiri yang lebih besar menang." />
-          <PetaContoh pusat="Dari kiri" cabang={[{ ikon: "7️⃣", judul: "76.675", isi: "lebih besar" }, { ikon: "6️⃣", judul: "67.765", isi: "lebih kecil" }, { ikon: "➡️", judul: "Geser", isi: "jika rak kiri sama" }]} kolom={["Langkah", "Yang dilihat"]} baris={[["1", "Puluh ribuan"], ["2", "Ribuan"], ["3", "Ratusan, puluhan, satuan"]]} />
+          <Dialog nama="Mira" anak="Infografis ini membandingkan 76.675 dan 67.765. Rak kiri yang lebih besar menang." />
+          <TabelInfoGrafis
+            judul="Infografis: Banding dari kiri"
+            kepala={["Langkah", "Yang dilihat", "Keputusan"]}
+            baris={[
+              ["1", "Puluh ribuan", "yang lebih besar menang"],
+              ["2", "Ribuan", "geser jika rak kiri sama"],
+              ["3", "Ratusan sampai satuan", "geser lagi"],
+              ["76.675", "rak kiri 7", "lebih besar"],
+              ["67.765", "rak kiri 6", "lebih kecil"],
+            ]}
+            kaki="76.675 lebih besar daripada 67.765."
+          />
           <KuisSuara id={idKuis("A", 2)} pertanyaan="Mana yang lebih kecil, 97.768 atau 89.876?" periksa={lebihKecil89876} petunjuk="Lihat rak puluh ribuan lebih dulu." benar="89.876 lebih kecil." />
           <TulisBebas id={idKuis("A", 3)} judul="Urutan murah" visual={<Papan anak="56.560 · 65.750 · 75.360" />} pertanyaan="Tulis ketiga harga itu dari yang paling murah." pesanSalah="Bandingkan puluh ribuan, lalu ribuan." bantuan="5 lebih kecil daripada 6, dan 6 lebih kecil daripada 7." umpan="56.560, 65.750, 75.360." periksa={urutMurah} alias={["56560", "65750", "75360"]} konteks="Urutan dari yang murah: 56.560, 65.750, 75.360." />
           <KuisSuara id={idKuis("B", 2)} pertanyaan="Mana yang lebih besar, 86.567 atau 86.576?" periksa={lebih86576} petunjuk="Rak kiri sama. Geser sampai ada rak yang berbeda." benar="86.576 lebih besar." />
@@ -438,15 +460,24 @@ function KartuA({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminGuru }) {
           <TumpukanUang />
           <Dialog nama="Igil" anak="Sepuluh keping seratusan dapat ditukar menjadi satu lembar seribuan. Karena itu satu bilangan bisa disusun dengan lebih dari satu cara." />
           <Dialog nama="Mira" anak="14.500 diurai menjadi 10.000 + 4.000 + 500 + 0 + 0." />
-          <Dialog nama="Arun" anak="Peta 45.600 menunjukkan dua susunan. Keduanya tetap 45.600." />
-          <PetaContoh pusat="45.600" cabang={[{ ikon: "4️⃣", judul: "Cara 1", isi: "4 puluh ribuan + 5 ribuan + 6 ratusan" }, { ikon: "3️⃣", judul: "Cara 2", isi: "3 puluh ribuan + 15 ribuan + 6 ratusan" }, { ikon: "🔁", judul: "Tukar", isi: "10 ratusan = 1 ribuan" }]} kolom={["Cara", "Isi"]} baris={[["Cara 1", "40.000 + 5.000 + 600"], ["Cara 2", "30.000 + 15.000 + 600"]]} />
+          <Dialog nama="Arun" anak="Infografis 45.600 menunjukkan dua susunan. Keduanya tetap 45.600." />
+          <TabelInfoGrafis
+            judul="Infografis: Dua susunan 45.600"
+            kepala={["Cara", "Isi", "Jumlah"]}
+            baris={[
+              ["Cara 1", "4 puluh ribuan + 5 ribuan + 6 ratusan", "45.600"],
+              ["Cara 2", "3 puluh ribuan + 15 ribuan + 6 ratusan", "45.600"],
+              ["Tukar", "10 ratusan = 1 ribuan", "tetap"],
+            ]}
+            kaki="Dua cara, satu bilangan."
+          />
           <KuisSuara id={idKuis("A", 4)} pertanyaan="Berapa jumlah 3 lembar sepuluh ribuan, 8 lembar seribuan, dan 6 keping seratusan?" periksa={uang38600} petunjuk="Kalikan banyak lembar dengan nilai pecahannya, lalu jumlahkan." benar="Tiga puluh delapan ribu enam ratus." />
           <TulisBebas id={idKuis("A", 5)} judul="Urai 57.500" visual={<Papan anak="57.500" />} pertanyaan="Urai 57.500 menurut raknya." pesanSalah="Tulis nilai puluh ribuan, ribuan, dan ratusan." bantuan="5 puluh ribuan, 7 ribuan, dan 5 ratusan." umpan="50.000 + 7.000 + 500." periksa={urai57500} alias={["50000", "7000", "500"]} konteks="57.500 = 50.000 + 7.000 + 500." />
           <KuisSuara id={idKuis("B", 4)} pertanyaan="Berapa 9 lembar sepuluh ribuan, 7 lembar seribuan, dan 5 keping seratusan?" periksa={komposisi97500} petunjuk="Kalikan, lalu jumlahkan." benar="Sembilan puluh tujuh ribu lima ratus." />
           <TulisBebas id={idKuis("B", 5)} judul="Tiga dan empat" visual={<Papan anak="3 lembar sepuluh ribuan + 4 lembar seribuan" />} pertanyaan="Tulis jumlah uang itu." pesanSalah="Puluh ribuan dan ribuan saja. Rak lain nol." bantuan="30.000 + 4.000 = 34.000." umpan="34.000." periksa={tulis34000} alias={["34000", "34.000"]} konteks="3 lembar sepuluh ribuan dan 4 lembar seribuan adalah 34.000." />
         </Adegan>
 
-        <Adegan judul="Sub-bab 4 — Penjumlahan, pengurangan, perkalian, dan pembagian" jenis="hitung" kelas={kelas} kelamin={kelamin} penjelasan={["Penjumlahan dan pengurangan dapat dihitung per rak atau bersusun pendek.", "Perkalian dapat dipecah. Pembagian membagi rata.", "Peta operasi merangkum hitungan di dermaga."]}>
+        <Adegan judul="Sub-bab 4 — Penjumlahan, pengurangan, perkalian, dan pembagian" jenis="hitung" kelas={kelas} kelamin={kelamin} penjelasan={["Penjumlahan dan pengurangan dapat dihitung per rak atau bersusun pendek.", "Perkalian dapat dipecah. Pembagian membagi rata.", "Infografis operasi merangkum hitungan di dermaga."]}>
           <Dialog nama="Arun" anak="Ibu memberi 57.500. Ayah memberi 22.000. Aku jumlahkan per rak." />
           <Dialog nama="Mira" anak="50.000 + 20.000 = 70.000. 7.000 + 2.000 = 9.000. 500 tetap 500. Jumlahnya 79.500." />
           <TabelTambah />
@@ -456,8 +487,18 @@ function KartuA({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminGuru }) {
           <TabelKurang />
           <Dialog nama="Mira" anak="12 angpau, masing-masing 5.000. Sepuluh kali 5.000 sama dengan 50.000. Dua kali 5.000 sama dengan 10.000. Jumlahnya 60.000." />
           <Dialog nama="Kiran" anak="64.000 dibagi rata kepada 4 anak. Setiap anak menerima 16.000." />
-          <Dialog nama="Igil" anak="Peta ini mengingat empat hitungan yang baru selesai. Warung buah masih menanti." />
-          <PetaContoh pusat="Empat operasi" cabang={[{ ikon: "➕", judul: "57.500 + 22.000", isi: "79.500" }, { ikon: "➖", judul: "47.900 − 45.750", isi: "2.150" }, { ikon: "✖️", judul: "12 × 5.000", isi: "60.000" }]} kolom={["Operasi", "Hasil"]} baris={[["64.000 ÷ 4", "16.000"], ["Cek balik", "kali atau bagi kebalikannya"]]} />
+          <Dialog nama="Igil" anak="Infografis ini mengingat empat hitungan yang baru selesai. Warung buah masih menanti." />
+          <TabelInfoGrafis
+            judul="Infografis: Empat operasi"
+            kepala={["Operasi", "Hitungan", "Hasil"]}
+            baris={[
+              ["Tambah", "57.500 + 22.000", "79.500"],
+              ["Kurang", "47.900 − 45.750", "2.150"],
+              ["Kali", "12 × 5.000", "60.000"],
+              ["Bagi", "64.000 ÷ 4", "16.000"],
+            ]}
+            kaki="Cek dengan operasi kebalikannya."
+          />
           <KuisCocok id={idKuis("B", 9)} perintah="Pasangkan operasi dengan hasilnya." baris={[{ kiri: "57.500 + 22.000", pilihan: HASIL_B, benar: "79.500" }, { kiri: "12 × 5.000", pilihan: HASIL_B, benar: "60.000" }, { kiri: "64.000 ÷ 4", pilihan: HASIL_B, benar: "16.000" }]} umpan="79.500, 60.000, dan 16.000." />
           <TulisBebas id={idKuis("B", 7)} judul="Jumlah bersusun" visual={<Papan anak="76.598 + 12.456" />} pertanyaan="Tulis hasil penjumlahan itu." pesanSalah="Mulai dari satuan. Kalau jumlah rak 10 atau lebih, teruskan 1 ke kiri." bantuan="Satuan 14, teruskan 1. Puluhan 15, teruskan 1. Hasilnya 89.054." umpan="89.054." periksa={jumlah89054} alias={["89054", "89.054"]} konteks="76.598 + 12.456 = 89.054." />
           <Dialog nama="Mira" anak="Di warung dermaga ada buah naga 15.000, jeruk 17.000, mangga 23.500, alpukat 32.000, dan kelengkeng 34.000." />
