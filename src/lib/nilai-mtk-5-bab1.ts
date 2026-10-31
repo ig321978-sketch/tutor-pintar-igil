@@ -62,17 +62,6 @@ export function kurang54534(teks: string): boolean {
   return ada(teks, "54534") || biasa(teks).includes("lima puluh empat ribu lima ratus tiga puluh empat");
 }
 
-export function baca72135(teks: string): boolean {
-  const k = biasa(teks);
-  const ekor = k.includes("seratus tiga puluh lima") || k.includes("satu ratus tiga puluh lima");
-  return ada(teks, "72135") || (k.includes("tujuh puluh dua ribu") && ekor);
-}
-
-export function tulis50303(teks: string): boolean {
-  const k = biasa(teks);
-  return ada(teks, "50303") || (k.includes("lima puluh ribu") && /tiga ratus tiga(?! puluh)/.test(k));
-}
-
 export function lebih86576(teks: string): boolean {
   return ada(teks, "86576") || biasa(teks).includes("delapan puluh enam ribu lima ratus tujuh puluh enam");
 }

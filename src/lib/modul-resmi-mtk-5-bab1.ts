@@ -171,8 +171,6 @@ D) 53.000`,
         },
       ],
       kuis: [
-        { pertanyaan: "Baca 72.135.", alias: ["72135", "tujuh puluh dua ribu seratus tiga puluh lima"] },
-        { pertanyaan: "Tulis lima puluh ribu tiga ratus tiga.", alias: ["50303", "50.303"] },
         { pertanyaan: "Mana yang lebih besar, 86.567 atau 86.576?", alias: ["86576", "86.576"] },
         { pertanyaan: "Isi bilangan yang hilang pada lompatan seratus.", alias: ["85450", "85.450"] },
         { pertanyaan: "9 puluh ribuan, 7 ribuan, dan 5 ratusan.", alias: ["97500", "97.500"] },
