@@ -28,6 +28,7 @@ import NaskahMtk4Bab5 from "@/components/NaskahMtk4Bab5";
 import NaskahMtk4Bab6 from "@/components/NaskahMtk4Bab6";
 import NaskahMtk5Bab1 from "@/components/NaskahMtk5Bab1";
 import NaskahMtk5Bab2 from "@/components/NaskahMtk5Bab2";
+import NaskahMtk5Bab3 from "@/components/NaskahMtk5Bab3";
 import NaskahMtk6Bab1 from "@/components/NaskahMtk6Bab1";
 import Bab2RasioModule from "@/components/modules/Bab2RasioModule";
 import Bab3KubusBalokModule from "@/components/modules/Bab3KubusBalokModule";
@@ -75,6 +76,7 @@ import {
   adalahJudulMtk4Bab6,
   adalahJudulMtk5Bab1,
   adalahJudulMtk5Bab2,
+  adalahJudulMtk5Bab3,
   adalahJudulMtk6Bab1,
   adalahJudulMtk6Bab2,
   adalahJudulMtk6Bab3,
@@ -146,6 +148,7 @@ import { MODUL_MTK4_BAB5 } from "@/lib/modul-resmi-mtk-4-bab5";
 import { MODUL_MTK4_BAB6 } from "@/lib/modul-resmi-mtk-4-bab6";
 import { MODUL_MTK5_BAB1 } from "@/lib/modul-resmi-mtk-5-bab1";
 import { MODUL_MTK5_BAB2 } from "@/lib/modul-resmi-mtk-5-bab2";
+import { MODUL_MTK5_BAB3 } from "@/lib/modul-resmi-mtk-5-bab3";
 import { MODUL_MTK6_BAB1 } from "@/lib/modul-resmi-mtk-6-bab1";
 import { MODUL_MTK6_BAB2 } from "@/lib/modul-resmi-mtk-6-bab2";
 import { MODUL_MTK6_BAB3 } from "@/lib/modul-resmi-mtk-6-bab3";
@@ -406,6 +409,13 @@ function ModuleRenderer({
         naskahTampilanModulResmi(MODUL_MTK5_BAB2, naskah)),
     [naskah, mapel, materi, kelas],
   );
+  const pakaiKartuMtk5Bab3 = useMemo(
+    () =>
+      kelasLimaSd(kelas) &&
+      (adalahJudulMtk5Bab3(mapel, materi) ||
+        naskahTampilanModulResmi(MODUL_MTK5_BAB3, naskah)),
+    [naskah, mapel, materi, kelas],
+  );
   const pakaiKartuMtk6Bab1 = useMemo(
     () =>
       kelasEnamSd(kelas) &&
@@ -655,6 +665,13 @@ function ModuleRenderer({
     return (
       <div className={className}>
         <NaskahMtk5Bab2 kelas={kelas} kelamin={kelamin} />
+      </div>
+    );
+  }
+  if (pakaiKartuMtk5Bab3) {
+    return (
+      <div className={className}>
+        <NaskahMtk5Bab3 kelas={kelas} kelamin={kelamin} />
       </div>
     );
   }
