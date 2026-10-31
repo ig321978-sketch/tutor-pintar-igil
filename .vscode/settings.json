@@ -1,0 +1,11 @@
+{
+  "task.allowAutomaticTasks": "off",
+  "task.autoDetect": "off",
+  "npm.autoDetect": "off",
+  "debug.javascript.autoAttachFilter": "disabled",
+  "terminal.integrated.enablePersistentSessions": false,
+  "terminal.integrated.persistentSessionReviveProcess": "never",
+  "livePreview.portNumber": 3000,
+  "livePreview.hostIP": "127.0.0.1",
+  "livePreview.openPreviewTarget": "Embedded Preview"
+}

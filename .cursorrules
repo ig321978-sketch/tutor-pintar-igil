@@ -1,0 +1,32 @@
+# Protokol eksekusi IGIL
+
+## Langsung di thread utama
+
+- Jangan mendelegasikan pekerjaan ke background subagent (`task` / `subagent`).
+- Baca dan tulis file langsung di obrolan utama.
+- Jangan menjalankan server yang tidak pernah selesai (`npm run dev`, `next dev`, `npm start`) tanpa konfirmasi tombol Run.
+- Cek tipe dan error dengan perintah sekali jalan yang langsung keluar, misalnya `npx tsc --noEmit`.
+- Setelah komponen UI atau modul berubah, buka Browser internal ke `http://localhost:3000`.
+
+## Terminal
+
+- Perintah panjang yang tetap hidup di foreground membuat tombol Run tidak muncul. Jangan mengulang perintah itu.
+- Jika port 3000 perlu dicek, pakai satu permintaan singkat (`curl` dengan batas waktu), lalu berhenti.
+
+## Modul 6 tab IGIL
+
+Setiap bab baru memakai enam tab, seluruhnya di klien:
+
+1. Aktivasi Otak
+2. Materi
+3. Eksperimen
+4. Kanvas
+5. Latihan
+6. Evaluasi
+
+- 100% client-side. Tidak ada panggilan API berbayar saat siswa belajar.
+- Biaya API: Rp 0.
+- 1 token = Rp 500.
+- Latihan: 10 soal, masing-masing 5 token.
+- Evaluasi: 10 soal, masing-masing 10 token.
+- Jumlah token satu bab: 10 × 5 + 10 × 10 = 150 token.
