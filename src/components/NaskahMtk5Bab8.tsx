@@ -1,6 +1,6 @@
 "use client";
 
-import { GameBatang, GameKeputusan, GamePiktogram, GameSkala, GameTurus } from "@/components/GameMtk5Bab8";
+import { GameBatang, GameEsSenja, GamePiktogram, GameSkala, GameTurus, SaklarSuaraPermainan } from "@/components/GameMtk5Bab8";
 import HasilJawabanKuis from "@/components/HasilJawabanKuis";
 import KartuPoinPenting from "@/components/KartuPoinPenting";
 import { useKuisMateri } from "@/components/KuisMateriContext";
@@ -497,7 +497,9 @@ function KartuA({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminGuru }) {
       <KepalaKartu ikon="🐦🦉" judul={kartu.judul} anak="Kios burung kertas" kelas={kelas} kelamin={kelamin} cuplikan={cuplikanKalimat(kartu.voice[0] ?? [])} />
       <div className="mt-4 space-y-8">
         <Adegan judul="Mengumpulkan data" jenis="taman" kelas={kelas} kelamin={kelamin} penjelasan={["Data adalah kumpulan informasi.", "Catatan yang tercecer mudah terlewat.", "Turus membantu menghitung frekuensi."]}>
+          <SaklarSuaraPermainan />
           <Dialog nama="Nadya" anak="Besok ada pasar senja. Kita perlu tahu warna burung yang disukai teman." />
+          <GameEsSenja />
           <Dialog nama="Igil" anak="Data adalah kumpulan informasi. Ia bisa berupa kata, angka, atau gambar." />
           <Dialog nama="Reza" anak="Aku tadi menulis di kertas kecil. Saat dihitung ulang, ada yang terlewat dan ada yang terhitung dua kali." />
           <Dialog nama="Omar" anak="Lebih rapi kalau jenisnya dicatat dulu, lalu setiap pilihan dapat satu garis." />
@@ -574,7 +576,6 @@ function KartuA({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminGuru }) {
           />
           <Dialog nama="Reza" anak="Data ini juga dipakai untuk es. Rasa yang terus naik perlu lebih banyak. Rasa yang terus turun dikurangi." />
           <Pilih id={idKuis("B", 7)} pertanyaan="Es mana yang perlu ditambah untuk besok sore?" visual={<TabelEs />} pilihan={[{ huruf: "A", teks: "melon, karena dulu angkanya besar" }, { huruf: "B", teks: "stroberi, karena terus naik" }, { huruf: "C", teks: "keduanya sama" }, { huruf: "D", teks: "tutup kios es" }]} benar="B" umpan="Stroberi naik. Melon turun, jadi melon dikurangi." salah="Lihat arah angka dari sore I sampai sore IV." />
-          <GameKeputusan />
           <p className="text-xs font-bold text-slate-500">{kartuB.judul}</p>
         </Adegan>
       </div>
