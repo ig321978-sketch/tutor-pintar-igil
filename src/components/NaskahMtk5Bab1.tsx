@@ -233,10 +233,12 @@ function TulisBebas({ id, judul, visual, pertanyaan, pesanSalah, bantuan, umpan,
   };
   return (
     <article className="rounded-2xl border-2 border-sky-200 bg-white p-4">
-      {judul ? <p className="text-sm font-black text-[#1C01A5]">{judul}</p> : null}
+      <p className="text-base font-extrabold text-[#1C01A5]">QUIZ TULIS:</p>
+      {judul ? <p className="mt-2 text-sm font-black text-[#1C01A5]">{judul}</p> : null}
       {visual ? <div className="mt-3">{visual}</div> : null}
+      <p className="mt-3 rounded-2xl border-2 border-[#1C01A5]/15 bg-[#F8F7FF] px-4 py-3 text-base font-extrabold text-[#1C01A5]">{pertanyaan}</p>
       <div className="mt-3">
-        <WritingCanvas pertanyaan={pertanyaan} onJawaban={(data) => { void nilai(data); }} />
+        <WritingCanvas onSubmit={nilai} />
       </div>
       <HasilJawabanKuis status={status} cuplikan={cuplikan || undefined} pesanSalah={pesanSalah} />
       {status === "salah" && salahKe >= 2 && bantuan ? <p className="mt-2 text-sm font-semibold text-amber-800">{bantuan}</p> : null}
