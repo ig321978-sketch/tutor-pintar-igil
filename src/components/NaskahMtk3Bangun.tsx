@@ -3,7 +3,7 @@
 import HasilJawabanKuis from "@/components/HasilJawabanKuis";
 import KartuPoinPenting from "@/components/KartuPoinPenting";
 import TujuanBelajar from "@/components/TujuanBelajar";
-import PetaContoh from "@/components/PetaContoh";
+import TabelInfoGrafis from "@/components/TabelInfoGrafis";
 import { useKuisMateri } from "@/components/KuisMateriContext";
 import MisiPenjagaKebun from "@/components/MisiPenjagaKebun";
 import { SLOT_AJUAN_SEBELUM_KARTU_D } from "@/components/NaskahMtk2Bab1";
@@ -533,21 +533,16 @@ function KartuA({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminGuru }) {
           <Dialog nama="Nisa" anak="Bingkai foto ini punya 4 sisi dan 4 sudut." />
           <Dialog nama="Farhan" anak="Titik P dan Q hanya bisa disambung satu ruas garis lurus. Panjangnya 7 cm." />
           <Dialog nama="Cinta" anak="Di penggaris, 1 cm terbagi 10 mm. Jadi 1 cm sama dengan 10 mm." />
-          <p className="pt-2 text-sm font-black uppercase tracking-wide text-[#1C01A5]">Infografis: Sisi</p>
-          <PetaContoh
-            pusat="Sisi"
-            cabang={[
-              { ikon: "📏", judul: "Ruas", isi: "panjang tetap" },
-              { ikon: "7", judul: "Contoh", isi: "ruas 7 cm" },
-              { ikon: "10", judul: "Kecil", isi: "1 cm = 10 mm" },
-            ]}
-            kolom={["Bangun", "Sisi", "Sudut"]}
+          <TabelInfoGrafis
+            judul="Infografis: Sisi"
+            kepala={["Bangun", "Sisi", "Sudut"]}
             baris={[
               ["segitiga", "3", "3"],
               ["bingkai", "4", "4"],
               ["segienam", "6", "6"],
               ["ruas PQ", "7 cm", "tetap"],
             ]}
+            kaki="Sisi adalah ruas garis. 1 cm = 10 mm."
           />
           <KuisSuara
             id={idKuis("A", 0)}
@@ -600,21 +595,16 @@ function KartuA({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminGuru }) {
           <Dialog nama="Igil" anak="Empat pensil bisa jadi persegi panjang. Empat sisi dan empat sudut." />
           <Dialog nama="Farhan" anak="Empat korek api sama panjang jadi persegi." />
           <Dialog nama="Nisa" anak="Lingkaran dibatasi garis lengkung. Ia tidak punya sudut." />
-          <p className="pt-2 text-sm font-black uppercase tracking-wide text-[#1C01A5]">Infografis: Nama</p>
-          <PetaContoh
-            pusat="Nama"
-            cabang={[
-              { ikon: "3", judul: "Tiga", isi: "segitiga" },
-              { ikon: "4", judul: "Empat", isi: "persegi" },
-              { ikon: "◯", judul: "Lengkung", isi: "lingkaran" },
-            ]}
-            kolom={["Sisi", "Nama", "Contoh"]}
+          <TabelInfoGrafis
+            judul="Infografis: Nama"
+            kepala={["Sisi", "Nama", "Contoh"]}
             baris={[
               ["3", "segitiga", "3 pensil"],
               ["4", "persegi panjang", "4 pensil"],
               ["4 sama", "persegi", "4 korek api"],
               ["lengkung", "lingkaran", "tanpa sudut"],
             ]}
+            kaki="Nama segi banyak mengikuti jumlah sisinya."
           />
           <KuisSuara
             id={idKuis("A", 2)}
@@ -667,21 +657,16 @@ function KartuA({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminGuru }) {
           <Dialog nama="Nisa" anak="Dua sisi yang bertemu siku disebut garis tegak lurus." />
           <Dialog nama="Farhan" anak="Ubin persegi punya 4 sudut siku." />
           <Dialog nama="Cinta" anak="Segitiga tidak bisa punya 3 sudut siku sekaligus." />
-          <p className="pt-2 text-sm font-black uppercase tracking-wide text-[#1C01A5]">Infografis: Siku</p>
-          <PetaContoh
-            pusat="Siku"
-            cabang={[
-              { ikon: "📘", judul: "90°", isi: "pojok buku" },
-              { ikon: "⊥", judul: "Tegak", isi: "bertemu siku" },
-              { ikon: "□", judul: "Ubin", isi: "4 sudut siku" },
-            ]}
-            kolom={["Benda", "Sudut", "Jenis"]}
+          <TabelInfoGrafis
+            judul="Infografis: Siku"
+            kepala={["Benda", "Sudut", "Jenis"]}
             baris={[
               ["buku", "90 derajat", "siku"],
               ["sisi buku", "bertemu siku", "tegak lurus"],
               ["ubin", "4 pojok", "siku"],
               ["segitiga", "bukan 3 siku", "tidak bisa"],
             ]}
+            kaki="Sudut siku tepat 90 derajat."
           />
           <KuisSuara
             id={idKuis("A", 4)}
@@ -734,20 +719,15 @@ function KartuA({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminGuru }) {
           <Dialog nama="Farhan" anak="Lebih kecil dari pojok buku." />
           <Dialog nama="Igil" anak="Sudut 50 derajat masih di bawah 90. Itu lancip." />
           <Dialog nama="Nisa" anak="Yang lebih kecil dari sudut siku disebut lancip." />
-          <p className="pt-2 text-sm font-black uppercase tracking-wide text-[#1C01A5]">Infografis: Lancip</p>
-          <PetaContoh
-            pusat="Lancip"
-            cabang={[
-              { ikon: "🚩", judul: "Runcing", isi: "ujung bendera" },
-              { ikon: "50", judul: "Contoh", isi: "50 derajat" },
-              { ikon: "<", judul: "Kecil", isi: "dari 90°" },
-            ]}
-            kolom={["Benda", "Ukuran", "Jenis"]}
+          <TabelInfoGrafis
+            judul="Infografis: Lancip"
+            kepala={["Benda", "Ukuran", "Jenis"]}
             baris={[
               ["bendera", "lebih kecil", "lancip"],
               ["busur", "50 derajat", "lancip"],
               ["gunting", "runcing", "lancip"],
             ]}
+            kaki="Sudut lancip lebih kecil dari 90 derajat."
           />
           <KuisSuara
             id={idKuis("A", 6)}
@@ -800,21 +780,16 @@ function KartuA({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminGuru }) {
           <Dialog nama="Nisa" anak="Sudut lurus tepat 180 derajat. Itu dua kali sudut siku." />
           <Dialog nama="Igil" anak="Sisi atas dan sisi bawah bingkai sejajar. Jaraknya tetap, tidak pernah bertemu." />
           <Dialog nama="Cinta" anak="Di buku, garis AB sejajar CD. Jarak antar petaknya sama." />
-          <p className="pt-2 text-sm font-black uppercase tracking-wide text-[#1C01A5]">Infografis: Tumpul dan sejajar</p>
-          <PetaContoh
-            pusat="Garis"
-            cabang={[
-              { ikon: ">", judul: "Tumpul", isi: "lebih dari 90°" },
-              { ikon: "—", judul: "Lurus", isi: "180 derajat" },
-              { ikon: "∥", judul: "Sejajar", isi: "jarak tetap" },
-            ]}
-            kolom={["Benda", "Ukuran", "Jenis"]}
+          <TabelInfoGrafis
+            judul="Infografis: Tumpul dan sejajar"
+            kepala={["Benda", "Ukuran", "Jenis"]}
             baris={[
               ["kipas", "lebih dari 90", "tumpul"],
               ["garis datar", "180 derajat", "lurus"],
               ["sisi bingkai", "jarak tetap", "sejajar"],
               ["petak 1", "jarak sama", "sejajar"],
             ]}
+            kaki="Tumpul lebih besar dari 90 derajat. Garis sejajar tidak bertemu."
           />
           <KuisSuara
             id={idKuis("A", 8)}

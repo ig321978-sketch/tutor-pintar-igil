@@ -3,7 +3,7 @@
 import HasilJawabanKuis from "@/components/HasilJawabanKuis";
 import KartuPoinPenting from "@/components/KartuPoinPenting";
 import TujuanBelajar from "@/components/TujuanBelajar";
-import PetaContoh from "@/components/PetaContoh";
+import TabelInfoGrafis from "@/components/TabelInfoGrafis";
 import { useKuisMateri } from "@/components/KuisMateriContext";
 import MisiPenjagaKebun from "@/components/MisiPenjagaKebun";
 import { SLOT_AJUAN_SEBELUM_KARTU_D } from "@/components/NaskahMtk2Bab1";
@@ -97,10 +97,6 @@ function Papan({ anak }: { anak: string }) {
       {anak}
     </p>
   );
-}
-
-function JudulInfografis({ judul }: { judul: string }) {
-  return <p className="pt-2 text-sm font-black uppercase tracking-wide text-[#1C01A5]">Infografis: {judul}</p>;
 }
 
 function KepalaKartu({
@@ -572,21 +568,16 @@ function KartuA({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminGuru }) {
           <Dialog nama="Naya" anak="Itu menyebut angka. Bacanya: empat ribu tujuh ratus dua puluh lima." />
           <Dialog nama="Igil" anak="4 di rak ribuan, 7 ratusan, 2 puluhan, 5 satuan. Titik bukan angka." />
           <Papan anak="4.725 = 4 ribuan + 7 ratusan + 2 puluhan + 5 satuan" />
-          <JudulInfografis judul="Membaca dan menulis" />
-          <PetaContoh
-            pusat="4.725"
-            cabang={[
-              { ikon: "🟦", judul: "Ribuan", isi: "4 × 1.000" },
-              { ikon: "🔵", judul: "Ratusan", isi: "7 × 100" },
-              { ikon: "🟨", judul: "Puluhan", isi: "2 × 10" },
-            ]}
-            kolom={["Rak", "Hitung", "Angka"]}
+          <TabelInfoGrafis
+            judul="Infografis: Membaca dan menulis"
+            kepala={["Rak", "Hitung", "Angka"]}
             baris={[
               ["ribuan", "4 × 1.000", "4"],
               ["ratusan", "7 × 100", "7"],
               ["puluhan", "2 × 10", "2"],
               ["satuan", "5 × 1", "5"],
             ]}
+            kaki="4.725 dibaca empat ribu tujuh ratus dua puluh lima."
           />
           <Papan anak="enam ribu delapan puluh empat" />
           <KuisSuara
@@ -641,21 +632,16 @@ function KartuA({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminGuru }) {
           <Dialog nama="Naya" anak="Satu puluhan berisi sepuluh. Pindah satu rak ke kiri, kali sepuluh." />
           <Dialog nama="Igil" anak="6.482 sama dengan 6.000 + 400 + 80 + 2." />
           <Papan anak="6.482 = 6.000 + 400 + 80 + 2" />
-          <JudulInfografis judul="Nilai tempat" />
-          <PetaContoh
-            pusat="8.359"
-            cabang={[
-              { ikon: "8", judul: "Ribuan", isi: "8.000" },
-              { ikon: "3", judul: "Ratusan", isi: "300" },
-              { ikon: "5", judul: "Puluhan", isi: "50" },
-            ]}
-            kolom={["Angka", "Rak", "Nilai"]}
+          <TabelInfoGrafis
+            judul="Infografis: Nilai tempat"
+            kepala={["Angka", "Rak", "Nilai"]}
             baris={[
               ["8", "ribuan", "8.000"],
               ["3", "ratusan", "300"],
               ["5", "puluhan", "50"],
               ["9", "satuan", "9"],
             ]}
+            kaki="8.359 = 8.000 + 300 + 50 + 9."
           />
           <KuisSuara
             id={idKuis("A", 2)}
@@ -710,20 +696,15 @@ function KartuA({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminGuru }) {
           <Dialog nama="Fikri" anak="Kalau 8.000 dan 7.999?" />
           <Dialog nama="Igil" anak="Ribuan sudah beda. 8.000 lebih besar." />
           <Papan anak="3.842 > 3.291    8.000 > 7.999" />
-          <JudulInfografis judul="Membandingkan" />
-          <PetaContoh
-            pusat="4.376"
-            cabang={[
-              { ikon: "1", judul: "Ribuan", isi: "4 dan 4, sama" },
-              { ikon: "2", judul: "Ratusan", isi: "3 dan 3, sama" },
-              { ikon: "3", judul: "Puluhan", isi: "7 lebih besar" },
-            ]}
-            kolom={["Langkah", "Periksa", "Hasil"]}
+          <TabelInfoGrafis
+            judul="Infografis: Membandingkan"
+            kepala={["Langkah", "Periksa", "Hasil"]}
             baris={[
               ["1", "ribuan", "sama"],
               ["2", "ratusan", "sama"],
               ["3", "puluhan", "4.376 lebih besar"],
             ]}
+            kaki="Bandingkan dari kiri. Begitu beda, berhenti."
           />
           <KuisSuara
             id={idKuis("A", 4)}
@@ -778,21 +759,16 @@ function KartuA({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminGuru }) {
           <Dialog nama="Fikri" anak="Di kelompok 2: 2.180 lalu 2.990." />
           <Dialog nama="Igil" anak="Jadi 2.180, 2.990, 6.290, 6.540, 9.050." />
           <Papan anak="2.180 < 2.990 < 6.290 < 6.540 < 9.050" />
-          <JudulInfografis judul="Mengurutkan" />
-          <PetaContoh
-            pusat="Urut"
-            cabang={[
-              { ikon: "1", judul: "1.000", isi: "1.940" },
-              { ikon: "3", judul: "3.000", isi: "3.612" },
-              { ikon: "5", judul: "5.000", isi: "5.080 lalu 5.208" },
-            ]}
-            kolom={["Urutan", "Bilangan", "Kelompok"]}
+          <TabelInfoGrafis
+            judul="Infografis: Mengurutkan"
+            kepala={["Urutan", "Bilangan", "Kelompok"]}
             baris={[
               ["1", "1.940", "ribuan 1"],
               ["2", "3.612", "ribuan 3"],
               ["3", "5.080", "ribuan 5"],
               ["4", "5.208", "ribuan 5"],
             ]}
+            kaki="Kelompokkan ribuan dulu, lalu rapikan."
           />
           <KuisSuara
             id={idKuis("A", 6)}
@@ -846,20 +822,15 @@ function KartuA({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminGuru }) {
           <Dialog nama="Aldi" anak="Nol di tengah tidak disebut." />
           <Dialog nama="Igil" anak="Tetap ditulis. Tanpa nol, 6.084 jadi 684." />
           <Papan anak={"6.084 = enam ribu delapan puluh empat\n6.840 = enam ribu delapan ratus empat puluh"} />
-          <JudulInfografis judul="Bilangan dengan angka nol" />
-          <PetaContoh
-            pusat="Nol"
-            cabang={[
-              { ikon: "6", judul: "6.084", isi: "delapan puluh empat" },
-              { ikon: "8", judul: "6.840", isi: "delapan ratus" },
-              { ikon: "0", judul: "Kosong", isi: "tetap ditulis" },
-            ]}
-            kolom={["Bilangan", "Rak", "Dibaca"]}
+          <TabelInfoGrafis
+            judul="Infografis: Bilangan dengan angka nol"
+            kepala={["Bilangan", "Rak", "Dibaca"]}
             baris={[
               ["6.084", "6 · 0 · 8 · 4", "enam ribu delapan puluh empat"],
               ["6.840", "6 · 8 · 4 · 0", "enam ribu delapan ratus empat puluh"],
               ["4.050", "4 · 0 · 5 · 0", "empat ribu lima puluh"],
             ]}
+            kaki="Nol tidak disebut, tetapi tetap ditulis."
           />
           <KuisSuara
             id={idKuis("A", 8)}

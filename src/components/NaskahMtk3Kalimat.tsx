@@ -3,7 +3,7 @@
 import HasilJawabanKuis from "@/components/HasilJawabanKuis";
 import KartuPoinPenting from "@/components/KartuPoinPenting";
 import TujuanBelajar from "@/components/TujuanBelajar";
-import PetaContoh from "@/components/PetaContoh";
+import TabelInfoGrafis from "@/components/TabelInfoGrafis";
 import { useKuisMateri } from "@/components/KuisMateriContext";
 import MisiPenjagaKebun from "@/components/MisiPenjagaKebun";
 import { SLOT_AJUAN_SEBELUM_KARTU_D } from "@/components/NaskahMtk2Bab1";
@@ -536,15 +536,9 @@ function KartuA({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminGuru }) {
           <Dialog nama="Cinta" anak="Kotaknya 15." />
           <Dialog nama="Igil" anak="Sampai 100 caranya sama. Farhan punya 30. Digabung jadi 50." />
           <Dialog nama="Farhan" anak="30 + kotak = 50. Kotaknya 20." />
-          <p className="pt-2 text-sm font-black uppercase tracking-wide text-[#1C01A5]">Infografis: Penjumlahan</p>
-          <PetaContoh
-            pusat="Tambah"
-            cabang={[
-              { ikon: "30", judul: "Ada", isi: "lampion Farhan" },
-              { ikon: "50", judul: "Jumlah", isi: "setelah digabung" },
-              { ikon: "20", judul: "Kotak", isi: "50 − 30" },
-            ]}
-            kolom={["Bagian", "Angka", "Cara"]}
+          <TabelInfoGrafis
+            judul="Infografis: Penjumlahan"
+            kepala={["Bagian", "Angka", "Cara"]}
             baris={[
               ["ada", "28", "sudah digantung"],
               ["jumlah", "45", "target"],
@@ -553,6 +547,7 @@ function KartuA({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminGuru }) {
               ["jumlah", "50", "digabung"],
               ["kotak", "20", "50 − 30"],
             ]}
+            kaki="Isi kotak didapat dengan mengurangkan jumlah."
           />
           <KuisSuara
             id={idKuis("A", 0)}
@@ -607,15 +602,9 @@ function KartuA({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminGuru }) {
           <Dialog nama="Nisa" anak="Jadi 15 lampion yang sudah dipasang." />
           <Dialog nama="Igil" anak="Di gudang ada 80. Yang masih di tali 45." />
           <Dialog nama="Cinta" anak="80 − kotak = 45. Kotaknya 35." />
-          <p className="pt-2 text-sm font-black uppercase tracking-wide text-[#1C01A5]">Infografis: Pengurangan</p>
-          <PetaContoh
-            pusat="Kurang"
-            cabang={[
-              { ikon: "80", judul: "Depan", isi: "semula di gudang" },
-              { ikon: "45", judul: "Sisa", isi: "masih di tali" },
-              { ikon: "35", judul: "Kotak", isi: "80 − 45" },
-            ]}
-            kolom={["Bagian", "Angka", "Cara"]}
+          <TabelInfoGrafis
+            judul="Infografis: Pengurangan"
+            kepala={["Bagian", "Angka", "Cara"]}
             baris={[
               ["depan", "80", "semula"],
               ["sisa", "45", "masih ada"],
@@ -624,6 +613,7 @@ function KartuA({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminGuru }) {
               ["sisa", "40", "masih ada"],
               ["kotak", "35", "75 − 40"],
             ]}
+            kaki="Kurangkan bilangan depan dengan sisanya."
           />
           <KuisSuara
             id={idKuis("A", 2)}
@@ -676,20 +666,15 @@ function KartuA({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminGuru }) {
           <Dialog nama="Igil" anak="54 kurang 16. Kotaknya 38." />
           <Dialog nama="Farhan" anak="Kalau kotak − 8 = 14, kotaknya di depan tanda kurang." />
           <Dialog nama="Cinta" anak="14 tambah 8. Kotaknya 22." />
-          <p className="pt-2 text-sm font-black uppercase tracking-wide text-[#1C01A5]">Infografis: Kotak di depan</p>
-          <PetaContoh
-            pusat="Di depan"
-            cabang={[
-              { ikon: "54", judul: "Tambah", isi: "kotak + 16" },
-              { ikon: "38", judul: "Kurang", isi: "54 − 16" },
-              { ikon: "22", judul: "Sisa", isi: "14 + 8" },
-            ]}
-            kolom={["Kalimat", "Cara", "Kotak"]}
+          <TabelInfoGrafis
+            judul="Infografis: Kotak di depan"
+            kepala={["Kalimat", "Cara", "Kotak"]}
             baris={[
               ["kotak + 16 = 54", "54 − 16", "38"],
               ["kotak − 8 = 14", "14 + 8", "22"],
               ["kotak − 12 = 26", "26 + 12", "38"],
             ]}
+            kaki="Kotak di depan tambah dicari dengan mengurangkan jumlah."
           />
           <KuisSuara
             id={idKuis("A", 4)}
@@ -742,20 +727,15 @@ function KartuA({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminGuru }) {
           <Dialog nama="Nisa" anak="Kalimat itu benar." />
           <Dialog nama="Cinta" anak="20 + 9 ditulis 30. Hitungnya 29." />
           <Dialog nama="Igil" anak="Itu salah. Bandingkan dengan hasil hitung." />
-          <p className="pt-2 text-sm font-black uppercase tracking-wide text-[#1C01A5]">Infografis: Cek kalimat</p>
-          <PetaContoh
-            pusat="Cek"
-            cabang={[
-              { ikon: "40", judul: "Hitung", isi: "22 + 18" },
-              { ikon: "=", judul: "Banding", isi: "sama dengan 40" },
-              { ikon: "✓", judul: "Putusan", isi: "kalimat benar" },
-            ]}
-            kolom={["Kalimat", "Hitung", "Hasil"]}
+          <TabelInfoGrafis
+            judul="Infografis: Cek kalimat"
+            kepala={["Kalimat", "Hitung", "Hasil"]}
             baris={[
               ["22 + 18 = 40", "40", "sama"],
               ["30 + 9 = 40", "39", "beda"],
               ["15 + 8 = 24", "23", "beda"],
             ]}
+            kaki="Kalimat benar bila hasil hitung sama dengan yang tertulis."
           />
           <KuisSuara
             id={idKuis("A", 6)}
@@ -810,15 +790,9 @@ function KartuA({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminGuru }) {
           <Dialog nama="Cinta" anak="Tulis kalimatnya dulu, baru dihitung." />
           <Dialog nama="Igil" anak="Farhan punya 19. Ia butuh 32. Kalimatnya 19 + kotak = 32." />
           <Dialog nama="Nisa" anak="32 kurang 19. Kotaknya 13." />
-          <p className="pt-2 text-sm font-black uppercase tracking-wide text-[#1C01A5]">Infografis: Cerita jadi kalimat</p>
-          <PetaContoh
-            pusat="Cerita"
-            cabang={[
-              { ikon: "19", judul: "Punya", isi: "lampion Farhan" },
-              { ikon: "32", judul: "Butuh", isi: "target" },
-              { ikon: "13", judul: "Isi", isi: "32 − 19" },
-            ]}
-            kolom={["Bagian", "Angka", "Cara"]}
+          <TabelInfoGrafis
+            judul="Infografis: Cerita jadi kalimat"
+            kepala={["Bagian", "Angka", "Cara"]}
             baris={[
               ["punya", "19", "Farhan"],
               ["butuh", "32", "target"],
@@ -827,6 +801,7 @@ function KartuA({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminGuru }) {
               ["jadi", "16", "setelah ditambah"],
               ["kotak", "6", "16 − 10"],
             ]}
+            kaki="Ubah cerita menjadi kalimat, baru cari isi kotak."
           />
           <KuisSuara
             id={idKuis("A", 8)}

@@ -1,7 +1,7 @@
 "use client";
 
 import HasilJawabanKuis from "@/components/HasilJawabanKuis";
-import PetaContoh from "@/components/PetaContoh";
+import TabelInfoGrafis from "@/components/TabelInfoGrafis";
 import KartuPoinPenting from "@/components/KartuPoinPenting";
 import TujuanBelajar from "@/components/TujuanBelajar";
 import { useKuisMateri } from "@/components/KuisMateriContext";
@@ -549,21 +549,16 @@ function KartuA({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminGuru }) {
           <Dialog nama="Cinta" anak="Buku tulis ini 30 cm. Ujung penggaris di angka 0." />
           <Dialog nama="Igil" anak="Lebar jalur kira-kira 2 m. Satu putaran jauh memakai km." />
           <Lambang ikon="📏" teks="cm · m · km" />
-          <p className="pt-2 text-sm font-black uppercase tracking-wide text-[#1C01A5]">Infografis: Panjang</p>
-          <PetaContoh
-            pusat="Panjang"
-            cabang={[
-              { ikon: "✏️", judul: "Pendek", isi: "buku, 30 cm" },
-              { ikon: "🏫", judul: "Sedang", isi: "jalur, m" },
-              { ikon: "🗺️", judul: "Jauh", isi: "putaran, km" },
-            ]}
-            kolom={["Benda", "Ukuran", "Satuan"]}
+          <TabelInfoGrafis
+            judul="Infografis: Panjang"
+            kepala={["Benda", "Ukuran", "Satuan"]}
             baris={[
               ["buku tulis", "30 cm", "cm"],
               ["botol", "20 cm", "cm"],
               ["jalur", "2 m", "m"],
               ["putaran jauh", "km", "km"],
             ]}
+            kaki="Pendek memakai cm. Jalur memakai m. Jauh memakai km."
           />
           <KuisSuara
             id={idKuis("A", 0)}
@@ -618,21 +613,16 @@ function KartuA({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminGuru }) {
           <Dialog nama="Cinta" anak="Jerigen air minum 5 kg." />
           <Dialog nama="Igil" anak="Karung beras dan berat badan memakai kg." />
           <Lambang ikon="⚖️" teks="g · kg" />
-          <p className="pt-2 text-sm font-black uppercase tracking-wide text-[#1C01A5]">Infografis: Berat</p>
-          <PetaContoh
-            pusat="Berat"
-            cabang={[
-              { ikon: "🧁", judul: "Ringan", isi: "gula, g" },
-              { ikon: "🪣", judul: "Berat", isi: "karung, kg" },
-              { ikon: "🔁", judul: "Tukar", isi: "1 kg = 1.000 g" },
-            ]}
-            kolom={["Benda", "Satuan", "Singkat"]}
+          <TabelInfoGrafis
+            judul="Infografis: Berat"
+            kepala={["Benda", "Satuan", "Singkat"]}
             baris={[
               ["biskuit", "30 g", "g"],
               ["gula pasir", "gram", "g"],
               ["jerigen", "5 kg", "kg"],
               ["karung beras", "kilogram", "kg"],
             ]}
+            kaki="Ringan memakai g. Berat memakai kg. 1 kg = 1.000 g."
           />
           <KuisSuara
             id={idKuis("A", 2)}
@@ -687,21 +677,16 @@ function KartuA({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminGuru }) {
           <Dialog nama="Cinta" anak="Berat botol ditimbang dengan timbangan." />
           <Dialog nama="Igil" anak="Mulai ukur dari angka 0." />
           <Lambang ikon="📏" teks="penggaris · meteran · timbangan" />
-          <p className="pt-2 text-sm font-black uppercase tracking-wide text-[#1C01A5]">Infografis: Alat ukur</p>
-          <PetaContoh
-            pusat="Alat"
-            cabang={[
-              { ikon: "📏", judul: "Pendek", isi: "penggaris" },
-              { ikon: "🪵", judul: "Panjang", isi: "meteran" },
-              { ikon: "⚖️", judul: "Berat", isi: "timbangan" },
-            ]}
-            kolom={["Benda", "Alat", "Diukur"]}
+          <TabelInfoGrafis
+            judul="Infografis: Alat ukur"
+            kepala={["Benda", "Alat", "Diukur"]}
             baris={[
               ["buku 30 cm", "penggaris", "panjang"],
               ["pintu", "meteran", "panjang"],
               ["meja", "meteran", "panjang"],
               ["botol", "timbangan", "berat"],
             ]}
+            kaki="Mulai ukur dari angka 0."
           />
           <KuisSuara
             id={idKuis("A", 4)}
@@ -756,15 +741,9 @@ function KartuA({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminGuru }) {
           <Dialog nama="Cinta" anak="Azizah setinggi 1 m 17 cm. Itu 117 cm." />
           <Dialog nama="Igil" anak="Dari m ke cm, kali 100. Dari km ke m, kali 1.000." />
           <Papan anak={"100 cm = 1 m\n1 km = 1.000 m"} />
-          <p className="pt-2 text-sm font-black uppercase tracking-wide text-[#1C01A5]">Infografis: Hubungan panjang</p>
-          <PetaContoh
-            pusat="Ubah panjang"
-            cabang={[
-              { ikon: "×100", judul: "m ke cm", isi: "kali 100" },
-              { ikon: "÷100", judul: "cm ke m", isi: "bagi 100" },
-              { ikon: "×1000", judul: "km ke m", isi: "kali 1.000" },
-            ]}
-            kolom={["Awal", "Hitung", "Hasil"]}
+          <TabelInfoGrafis
+            judul="Infografis: Hubungan panjang"
+            kepala={["Awal", "Hitung", "Hasil"]}
             baris={[
               ["100 cm", "100 ÷ 100", "1 m"],
               ["5.000 cm", "5.000 ÷ 100", "50 m"],
@@ -772,6 +751,7 @@ function KartuA({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminGuru }) {
               ["5 m", "5 × 100", "500 cm"],
               ["2 km", "2 × 1.000", "2.000 m"],
             ]}
+            kaki="100 cm = 1 m. 1 km = 1.000 m."
           />
           <KuisSuara
             id={idKuis("A", 6)}
@@ -826,21 +806,16 @@ function KartuA({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminGuru }) {
           <Dialog nama="Cinta" anak="Satu ons ada 100 g." />
           <Dialog nama="Igil" anak="Satu kg ada 10 ons. Dari g ke kg, bagi 1.000." />
           <Papan anak={"1 kg = 1.000 g\n1 ons = 100 g"} />
-          <p className="pt-2 text-sm font-black uppercase tracking-wide text-[#1C01A5]">Infografis: Hubungan berat</p>
-          <PetaContoh
-            pusat="Ubah berat"
-            cabang={[
-              { ikon: "×1000", judul: "kg ke g", isi: "kali 1.000" },
-              { ikon: "÷1000", judul: "g ke kg", isi: "bagi 1.000" },
-              { ikon: "100", judul: "Ons", isi: "1 ons = 100 g" },
-            ]}
-            kolom={["Awal", "Hitung", "Hasil"]}
+          <TabelInfoGrafis
+            judul="Infografis: Hubungan berat"
+            kepala={["Awal", "Hitung", "Hasil"]}
             baris={[
               ["1 kg", "1 × 1.000", "1.000 g"],
               ["1 ons", "100 g", "ringan"],
               ["4 kg", "4 × 1.000", "4.000 g"],
               ["4.000 g", "4.000 ÷ 1.000", "4 kg"],
             ]}
+            kaki="1 kg = 1.000 g. 1 ons = 100 g."
           />
           <KuisSuara
             id={idKuis("A", 8)}

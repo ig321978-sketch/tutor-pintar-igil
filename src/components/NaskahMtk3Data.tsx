@@ -3,7 +3,7 @@
 import HasilJawabanKuis from "@/components/HasilJawabanKuis";
 import KartuPoinPenting from "@/components/KartuPoinPenting";
 import TujuanBelajar from "@/components/TujuanBelajar";
-import PetaContoh from "@/components/PetaContoh";
+import TabelInfoGrafis from "@/components/TabelInfoGrafis";
 import { useKuisMateri } from "@/components/KuisMateriContext";
 import MisiPenjagaKebun from "@/components/MisiPenjagaKebun";
 import { SLOT_AJUAN_SEBELUM_KARTU_D } from "@/components/NaskahMtk2Bab1";
@@ -589,16 +589,17 @@ function KartuA({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminGuru }) {
             alias={["4 5 7 9", "4579", "empat lima tujuh sembilan"]}
             konteks="Urutan berat labu dari kecil ke besar adalah 4, 5, 7, 9."
           />
-          <p className="pt-2 text-sm font-black uppercase tracking-wide text-[#1C01A5]">Infografis: Urutkan data</p>
-          <PetaContoh
-            pusat="8 data"
-            cabang={[
-              { ikon: "🔹", judul: "Terkecil", isi: "ujung kiri: 6" },
-              { ikon: "🔸", judul: "Terbesar", isi: "ujung kanan: 10" },
-              { ikon: "🏆", judul: "Jangkauan", isi: "10 − 6 = 4" },
+          <TabelInfoGrafis
+            judul="Infografis: Urutkan data"
+            kepala={["Bagian", "Angka", "Arti"]}
+            baris={[
+              ["Awal", "8, 6, 9, 7, 6, 10, 6, 8", "belum urut"],
+              ["Setelah diurut", "6, 6, 6, 7, 8, 8, 9, 10", "kecil ke besar"],
+              ["Terkecil", "6", "ujung kiri"],
+              ["Terbesar", "10", "ujung kanan"],
+              ["Jangkauan", "10 − 6", "4"],
             ]}
-            kolom={["Awal", "Setelah diurut"]}
-            baris={[["8, 6, 9, 7, 6, 10, 6, 8", "6, 6, 6, 7, 8, 8, 9, 10"]]}
+            kaki="Angka 6 muncul 3 kali."
           />
           <Papan anak="Angka 6 muncul 3 kali" />
           <KuisSuara
@@ -684,15 +685,16 @@ function KartuA({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminGuru }) {
             alias={["15", "lima belas"]}
             konteks="Tiga ikatan turus lima sama dengan 15 pengunjung."
           />
-          <p className="pt-2 text-sm font-black uppercase tracking-wide text-[#1C01A5]">Infografis: Cek tabel</p>
-          <Tabel
-            kolom={["Nilai", "Turus", "Banyak siswa"]}
+          <TabelInfoGrafis
+            judul="Infografis: Cek tabel"
+            kepala={["Nilai", "Turus", "Banyak siswa"]}
             baris={[
               ["80", "||||", "4"],
               ["90", "卌 |||", "8"],
               ["100", "卌", "5"],
-              ["Jumlah", "", "17"],
+              ["Jumlah", "semua baris", "17"],
             ]}
+            kaki="Nilai 90 paling banyak: 8 siswa. Di atas 80 ada 13 siswa."
           />
           <Papan anak={"Nilai 90 paling banyak: 8 siswa.\nDi atas 80: 8 + 5 = 13 siswa."} />
           <KuisSuara
