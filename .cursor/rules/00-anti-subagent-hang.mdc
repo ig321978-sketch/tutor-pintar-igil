@@ -1,0 +1,11 @@
+---
+description: Cegah antrean subagen, terminal yang menggantung, dan preview yang tidak muncul
+alwaysApply: true
+---
+
+# Eksekusi langsung, tanpa antrean menggantung
+
+- Dilarang mendelegasikan tugas ke background subagent (`task` / `subagent`). Pembacaan dan penulisan file (`read_file`, `edit_file`, `write_to_file`) dijalankan langsung di obrolan utama.
+- Dilarang menjalankan perintah server yang berjalan terus-menerus (`npm run dev`, `next dev`, `npm start`) secara otomatis tanpa konfirmasi tombol Run. Perintah itu membuat sesi terminal menggantung dan tombol izin Run tidak muncul.
+- Untuk pengecekan error kode, gunakan hanya perintah sekali jalan yang langsung selesai, misalnya `npx tsc --noEmit`.
+- Setiap kali selesai membuat atau memperbarui komponen UI atau modul, panggil alat Browser (`cursor-ide-browser` / `@Browser`) ke `http://localhost:3000` agar pratinjau langsung muncul di editor.
