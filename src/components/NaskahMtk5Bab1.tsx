@@ -407,7 +407,7 @@ const TAB_D = { tab: "Sub-Bab D", kelompok: "Operasi hitung bilangan cacah sampa
 const TAB_POIN = { tab: "Intisari" };
 
 const TAB_LANGKAH: Record<string, { tab: string; kelompok?: string }> = {
-  mulai: { tab: "Target" },
+  mulai: { tab: "Target", kelompok: "Tujuan Pembelajaran" },
   "rak-tiket": TAB_A,
   "rak-info": TAB_A,
   a0: TAB_A,
