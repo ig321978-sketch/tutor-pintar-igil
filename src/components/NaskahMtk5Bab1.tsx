@@ -514,17 +514,15 @@ function langkahDermaga(kelas?: string, kelamin?: KelaminGuru): LangkahQuest[] {
     {
       kode: "a8",
       bagian: "Rak",
-      judul: "Nilai angka 7",
-      kuis: [idKuis("A", 8)],
+      judul: "Seratus ribu",
       isi: (
         <div className="space-y-3">
           <Dialog nama="Igil" anak="100.000 dibaca seratus ribu. Angka 1 berdiri di rak ratus ribuan. Lima rak di kanannya nol." />
-          <Pilih id={idKuis("A", 8)} pertanyaan="Pada 87.986, angka 7 bernilai..." visual={<Papan anak="8 7 . 9 8 6" />} pilihan={[{ huruf: "A", teks: "70" }, { huruf: "B", teks: "700" }, { huruf: "C", teks: "7.000" }, { huruf: "D", teks: "70.000" }]} benar="C" umpan="Angka 7 berdiri di rak ribuan. Nilainya 7.000." salah="Lihat rak tempat angka 7 berdiri." />
         </div>
       ),
     },
-    { kode: "a9", bagian: "Rak", judul: "Pasangkan bacaan", kuis: [idKuis("A", 9)], isi: <KuisCocok id={idKuis("A", 9)} perintah="Pasangkan bilangan dengan bacaannya." baris={[{ kiri: "14.500", pilihan: BACA_A, benar: "empat belas ribu lima ratus" }, { kiri: "66.500", pilihan: BACA_A, benar: "enam puluh enam ribu lima ratus" }, { kiri: "26.932", pilihan: BACA_A, benar: "dua puluh enam ribu sembilan ratus tiga puluh dua" }]} umpan="14.500, 66.500, dan 26.932 sudah pada bacaan yang tepat." /> },
-    { kode: "a11", bagian: "Rak", judul: "Benar atau salah", kuis: [idKuis("A", 11)], isi: <KuisBenarSalah id={idKuis("A", 11)} perintah="Pilih benar atau salah." baris={[{ teks: "Titik pada 14.500 adalah koma desimal.", benar: false }, { teks: "Pada 66.500, angka 6 yang kiri bernilai 60.000.", benar: true }, { teks: "100.000 dibaca sepuluh ribu.", benar: false }]} umpan="Titik itu pemisah ribuan. 100.000 dibaca seratus ribu." /> },
+    { kode: "a9", bagian: "Rak", judul: "Pasangkan bacaan", kuis: [idKuis("A", 8)], isi: <KuisCocok id={idKuis("A", 8)} perintah="Pasangkan bilangan dengan bacaannya." baris={[{ kiri: "14.500", pilihan: BACA_A, benar: "empat belas ribu lima ratus" }, { kiri: "66.500", pilihan: BACA_A, benar: "enam puluh enam ribu lima ratus" }, { kiri: "26.932", pilihan: BACA_A, benar: "dua puluh enam ribu sembilan ratus tiga puluh dua" }]} umpan="14.500, 66.500, dan 26.932 sudah pada bacaan yang tepat." /> },
+    { kode: "a11", bagian: "Rak", judul: "Benar atau salah", kuis: [idKuis("A", 10)], isi: <KuisBenarSalah id={idKuis("A", 10)} perintah="Pilih benar atau salah." baris={[{ teks: "Titik pada 14.500 adalah koma desimal.", benar: false }, { teks: "Pada 66.500, angka 6 yang kiri bernilai 60.000.", benar: true }, { teks: "100.000 dibaca sepuluh ribu.", benar: false }]} umpan="Titik itu pemisah ribuan. 100.000 dibaca seratus ribu." /> },
     {
       kode: "brankas",
       bagian: "Rak",
@@ -574,8 +572,8 @@ function langkahDermaga(kelas?: string, kelamin?: KelaminGuru): LangkahQuest[] {
     { kode: "a3", bagian: "Banding", judul: "Urutan murah", kuis: [idKuis("A", 3)], isi: <TulisBebas id={idKuis("A", 3)} judul="Urutan murah" visual={<Papan anak="56.560 · 65.750 · 75.360" />} pertanyaan="Tulis ketiga harga itu dari yang paling murah." pesanSalah="Bandingkan puluh ribuan, lalu ribuan." bantuan="5 lebih kecil daripada 6, dan 6 lebih kecil daripada 7." umpan="56.560, 65.750, 75.360." periksa={urutMurah} alias={["56560", "65750", "75360"]} konteks="Urutan dari yang murah: 56.560, 65.750, 75.360." /> },
     { kode: "b2", bagian: "Banding", judul: "Yang lebih besar", kuis: [idKuis("B", 0)], isi: <KuisSuara id={idKuis("B", 0)} pertanyaan="Mana yang lebih besar, 86.567 atau 86.576?" periksa={lebih86576} petunjuk="Rak kiri sama. Geser sampai ada rak yang berbeda." benar="86.576 lebih besar." /> },
     { kode: "b3", bagian: "Banding", judul: "Lompat seratus", kuis: [idKuis("B", 1)], isi: <TulisBebas id={idKuis("B", 1)} judul="Lompat seratus" visual={<Papan anak="85.350 · 85.400 · ⬜ · 85.500 · 85.550" />} pertanyaan="Tulis bilangan yang hilang." pesanSalah="Selisih tiap langkah 100." bantuan="85.400 + 100 = 85.500, jadi yang di tengah 85.450." umpan="85.450." periksa={isi85450} alias={["85450", "85.450"]} konteks="Bilangan yang hilang adalah 85.450." /> },
-    { kode: "a10", bagian: "Banding", judul: "Susun dari kecil", kuis: [idKuis("A", 10)], isi: <SusunToken id={idKuis("A", 10)} perintah="Susun dari yang paling kecil." acak={["78.897", "43.217", "56.475"]} benar={["43.217", "56.475", "78.897"]} umpan="43.217, 56.475, 78.897." /> },
-    { kode: "a12", bagian: "Banding", judul: "Selisih dua harga", kuis: [idKuis("A", 12)], isi: <Pilih id={idKuis("A", 12)} pertanyaan="Selisih 34.000 dan 30.000 adalah..." pilihan={[{ huruf: "A", teks: "4.000" }, { huruf: "B", teks: "19.000" }, { huruf: "C", teks: "49.000" }, { huruf: "D", teks: "2.000" }]} benar="A" umpan="34.000 − 30.000 = 4.000." salah="Kurangkan bilangan yang lebih kecil dari yang lebih besar." /> },
+    { kode: "a10", bagian: "Banding", judul: "Susun dari kecil", kuis: [idKuis("A", 9)], isi: <SusunToken id={idKuis("A", 9)} perintah="Susun dari yang paling kecil." acak={["78.897", "43.217", "56.475"]} benar={["43.217", "56.475", "78.897"]} umpan="43.217, 56.475, 78.897." /> },
+    { kode: "a12", bagian: "Banding", judul: "Selisih dua harga", kuis: [idKuis("A", 11)], isi: <Pilih id={idKuis("A", 11)} pertanyaan="Selisih 34.000 dan 30.000 adalah..." pilihan={[{ huruf: "A", teks: "4.000" }, { huruf: "B", teks: "19.000" }, { huruf: "C", teks: "49.000" }, { huruf: "D", teks: "2.000" }]} benar="A" umpan="34.000 − 30.000 = 4.000." salah="Kurangkan bilangan yang lebih kecil dari yang lebih besar." /> },
     {
       kode: "radar",
       bagian: "Banding",
