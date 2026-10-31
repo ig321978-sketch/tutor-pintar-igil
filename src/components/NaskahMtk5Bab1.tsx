@@ -1,5 +1,6 @@
 "use client";
 
+import { GameBrankasRak, GameKargoHitung, GameKasirUang, GameRadarBanding } from "@/components/GameMtk5Bab1";
 import GambarCerita from "@/components/GambarCerita";
 import HasilJawabanKuis from "@/components/HasilJawabanKuis";
 import KartuPoinPenting from "@/components/KartuPoinPenting";
@@ -427,6 +428,8 @@ function KartuA({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminGuru }) {
           <Pilih id={idKuis("A", 8)} pertanyaan="Pada 87.986, angka 7 bernilai..." visual={<Papan anak="8 7 . 9 8 6" />} pilihan={[{ huruf: "A", teks: "70" }, { huruf: "B", teks: "700" }, { huruf: "C", teks: "7.000" }, { huruf: "D", teks: "70.000" }]} benar="C" umpan="Angka 7 berdiri di rak ribuan. Nilainya 7.000." salah="Lihat rak tempat angka 7 berdiri." />
           <KuisCocok id={idKuis("A", 9)} perintah="Pasangkan bilangan dengan bacaannya." baris={[{ kiri: "14.500", pilihan: BACA_A, benar: "empat belas ribu lima ratus" }, { kiri: "66.500", pilihan: BACA_A, benar: "enam puluh enam ribu lima ratus" }, { kiri: "26.932", pilihan: BACA_A, benar: "dua puluh enam ribu sembilan ratus tiga puluh dua" }]} umpan="14.500, 66.500, dan 26.932 sudah pada bacaan yang tepat." />
           <KuisBenarSalah id={idKuis("A", 11)} perintah="Pilih benar atau salah." baris={[{ teks: "Titik pada 14.500 adalah koma desimal.", benar: false }, { teks: "Pada 66.500, angka 6 yang kiri bernilai 60.000.", benar: true }, { teks: "100.000 dibaca sepuluh ribu.", benar: false }]} umpan="Titik itu pemisah ribuan. 100.000 dibaca seratus ribu." />
+          <Dialog nama="Igil" anak="Sekarang putar lima roda brankas sampai sama dengan sandinya." />
+          <GameBrankasRak />
         </Adegan>
 
         <Adegan judul="Sub-bab 2 — Membandingkan dan mengurutkan" jenis="banding" kelas={kelas} kelamin={kelamin} penjelasan={["Bandingkan rak paling kiri lebih dulu.", "Kalau rak itu sama, geser satu rak ke kanan.", "Infografis perbandingan mengingat langkah dari kiri."]}>
@@ -452,6 +455,8 @@ function KartuA({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminGuru }) {
           <TulisBebas id={idKuis("B", 3)} judul="Lompat seratus" visual={<Papan anak="85.350 · 85.400 · ⬜ · 85.500 · 85.550" />} pertanyaan="Tulis bilangan yang hilang." pesanSalah="Selisih tiap langkah 100." bantuan="85.400 + 100 = 85.500, jadi yang di tengah 85.450." umpan="85.450." periksa={isi85450} alias={["85450", "85.450"]} konteks="Bilangan yang hilang adalah 85.450." />
           <SusunToken id={idKuis("A", 10)} perintah="Susun dari yang paling kecil." acak={["78.897", "43.217", "56.475"]} benar={["43.217", "56.475", "78.897"]} umpan="43.217, 56.475, 78.897." />
           <Pilih id={idKuis("A", 12)} pertanyaan="Selisih 34.000 dan 30.000 adalah..." pilihan={[{ huruf: "A", teks: "4.000" }, { huruf: "B", teks: "19.000" }, { huruf: "C", teks: "49.000" }, { huruf: "D", teks: "2.000" }]} benar="A" umpan="34.000 − 30.000 = 4.000." salah="Kurangkan bilangan yang lebih kecil dari yang lebih besar." />
+          <Dialog nama="Kiran" anak="Radar ini membandingkan dua bilangan dari rak kiri." />
+          <GameRadarBanding />
         </Adegan>
 
         <Adegan judul="Sub-bab 3 — Komposisi dan dekomposisi" jenis="uang" kelas={kelas} kelamin={kelamin} penjelasan={["Menyusun berarti menggabungkan nilai rak menjadi satu bilangan.", "Mengurai berarti memecah bilangan ke setiap rak.", "Satu bilangan dapat disusun dengan lebih dari satu cara."]}>
@@ -474,6 +479,8 @@ function KartuA({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminGuru }) {
           <TulisBebas id={idKuis("A", 5)} judul="Urai 57.500" visual={<Papan anak="57.500" />} pertanyaan="Urai 57.500 menurut raknya." pesanSalah="Tulis nilai puluh ribuan, ribuan, dan ratusan." bantuan="5 puluh ribuan, 7 ribuan, dan 5 ratusan." umpan="50.000 + 7.000 + 500." periksa={urai57500} alias={["50000", "7000", "500"]} konteks="57.500 = 50.000 + 7.000 + 500." />
           <KuisSuara id={idKuis("B", 4)} pertanyaan="Berapa 9 lembar sepuluh ribuan, 7 lembar seribuan, dan 5 keping seratusan?" periksa={komposisi97500} petunjuk="Kalikan, lalu jumlahkan." benar="Sembilan puluh tujuh ribu lima ratus." />
           <TulisBebas id={idKuis("B", 5)} judul="Tiga dan empat" visual={<Papan anak="3 lembar sepuluh ribuan + 4 lembar seribuan" />} pertanyaan="Tulis jumlah uang itu." pesanSalah="Puluh ribuan dan ribuan saja. Rak lain nol." bantuan="30.000 + 4.000 = 34.000." umpan="34.000." periksa={tulis34000} alias={["34000", "34.000"]} konteks="3 lembar sepuluh ribuan dan 4 lembar seribuan adalah 34.000." />
+          <Dialog nama="Mira" anak="Susun pecahan uang sampai jumlahnya sama dengan harga." />
+          <GameKasirUang />
         </Adegan>
 
         <Adegan judul="Sub-bab 4 — Penjumlahan, pengurangan, perkalian, dan pembagian" jenis="hitung" kelas={kelas} kelamin={kelamin} penjelasan={["Penjumlahan dan pengurangan dapat dihitung per rak atau bersusun pendek.", "Perkalian dapat dipecah. Pembagian membagi rata.", "Infografis operasi merangkum hitungan di dermaga."]}>
@@ -507,6 +514,8 @@ function KartuA({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminGuru }) {
           <SusunToken id={idKuis("B", 10)} perintah="Susun harga buah dari yang paling murah." acak={["34.000", "15.000", "23.500", "32.000", "17.000"]} benar={["15.000", "17.000", "23.500", "32.000", "34.000"]} umpan="15.000, 17.000, 23.500, 32.000, 34.000." />
           <KuisBenarSalah id={idKuis("B", 11)} perintah="Pilih benar atau salah." baris={[{ teks: "Kelengkeng 34.000 lebih mahal daripada alpukat 32.000.", benar: true }, { teks: "Tiga bungkus jeruk 17.000 sama dengan satu kelengkeng 34.000.", benar: false }, { teks: "Dua bungkus buah naga 15.000 lebih mahal daripada satu alpukat 32.000.", benar: false }]} umpan="Hanya pernyataan pertama yang benar. 3 × 17.000 = 51.000. 2 × 15.000 = 30.000." />
           <Pilih id={idKuis("B", 12)} pertanyaan="Untuk dua porsi yang sama, mana yang lebih hemat?" visual={<Papan anak="Paket A 27.500 · Paket B 53.000" />} pilihan={[{ huruf: "A", teks: "Paket B, hemat 2.000" }, { huruf: "B", teks: "Paket A, hemat 2.000" }, { huruf: "C", teks: "Keduanya sama" }, { huruf: "D", teks: "Paket B lebih mahal 2.000" }]} benar="A" umpan="Dua Paket A = 55.000. Paket B = 53.000. Paket B lebih hemat 2.000." salah="Bandingkan 2 × 27.500 dengan 53.000." />
+          <Dialog nama="Arun" anak="Geser kargo, lalu lihat hasil tambah, kurang, kali, atau bagi." />
+          <GameKargoHitung />
         </Adegan>
       </div>
     </KartuBingkai>
