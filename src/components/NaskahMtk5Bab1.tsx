@@ -402,10 +402,10 @@ const TAB_A = { tab: "Sub-Bab A", kelompok: "Membaca, menulis, dan nilai tempat 
 const TAB_B = { tab: "Sub-Bab B", kelompok: "Membandingkan dan mengurutkan sampai 100.000" };
 const TAB_C = { tab: "Sub-Bab C", kelompok: "Komposisi dan dekomposisi sampai 100.000" };
 const TAB_D = { tab: "Sub-Bab D", kelompok: "Operasi hitung bilangan cacah sampai 100.000" };
-const TAB_POIN = { tab: "Intisari" };
+const TAB_POIN = { tab: "Review" };
 
 const TAB_LANGKAH: Record<string, { tab: string; kelompok?: string }> = {
-  mulai: { tab: "Target", kelompok: "Tujuan Pembelajaran" },
+  mulai: { tab: "Review", kelompok: "Tujuan Pembelajaran" },
   "rak-tiket": TAB_A,
   "rak-info": TAB_A,
   a0: TAB_A,
@@ -448,6 +448,22 @@ const TAB_LANGKAH: Record<string, { tab: string; kelompok?: string }> = {
   tanya: TAB_POIN,
 };
 
+function kuisTab(daftar: LangkahQuest[], tab: string) {
+  return daftar.filter((item) => TAB_LANGKAH[item.kode]?.tab === tab).flatMap((item) => item.kuis ?? []);
+}
+
+function TargetPembelajaran({ sasaran }: { sasaran: { judul: string; kuis: string[] }[] }) {
+  const kuis = useKuisMateri();
+  const sudah = (id: string) => kuis?.sudahBenar(id) ?? false;
+  return (
+    <TujuanBelajar
+      judul="Target Pembelajaran"
+      butir={sasaran.map((item) => item.judul)}
+      selesai={sasaran.map((item) => item.kuis.length > 0 && item.kuis.every(sudah))}
+    />
+  );
+}
+
 function denganTab(daftar: LangkahQuest[]): LangkahQuest[] {
   return daftar.map((item) => {
     const meta = TAB_LANGKAH[item.kode];
@@ -462,17 +478,6 @@ function langkahDermaga(kelas?: string, kelamin?: KelaminGuru): LangkahQuest[] {
     idKuisTulisKartu(ID, "C"),
   ];
   const materi: LangkahQuest[] = [
-    {
-      kode: "mulai",
-      bagian: "Mulai",
-      judul: "Dermaga Lentera",
-      isi: (
-        <div className="space-y-3">
-          <KepalaKartu ikon="🏮🦉" judul="A. Dermaga Lentera" anak="Arun, Mira, Kiran, dan Igil" kelas={kelas} kelamin={kelamin} cuplikan={cuplikanKalimat(kartu.voice[0] ?? [])} />
-          <TujuanBelajar butir={["Membaca dan menuliskan bilangan cacah sampai 100.000 serta menentukan nilai tempatnya.", "Membandingkan dan mengurutkan bilangan cacah sampai 100.000.", "Menyusun dan menguraikan bilangan sampai 100.000.", "Menghitung penjumlahan, pengurangan, perkalian, dan pembagian sampai 100.000."]} />
-        </div>
-      ),
-    },
     {
       kode: "rak-tiket",
       bagian: "Rak",
@@ -718,6 +723,23 @@ function langkahDermaga(kelas?: string, kelamin?: KelaminGuru): LangkahQuest[] {
     isi: <LembarEvaluasi nomor={nomor} kelas={kelas} kelamin={kelamin} />,
     kuis: [idKuis("D", nomor)],
   }));
+  const sasaran = [
+    { judul: TAB_A.kelompok, kuis: kuisTab(materi, "Sub-Bab A") },
+    { judul: TAB_B.kelompok, kuis: kuisTab(materi, "Sub-Bab B") },
+    { judul: TAB_C.kelompok, kuis: kuisTab(materi, "Sub-Bab C") },
+    { judul: TAB_D.kelompok, kuis: kuisTab(materi, "Sub-Bab D") },
+  ];
+  const pembuka: LangkahQuest = {
+    kode: "mulai",
+    bagian: "Mulai",
+    judul: "Dermaga Lentera",
+    isi: (
+      <div className="space-y-3">
+        <KepalaKartu ikon="🏮🦉" judul="A. Dermaga Lentera" anak="Arun, Mira, Kiran, dan Igil" kelas={kelas} kelamin={kelamin} cuplikan={cuplikanKalimat(kartu.voice[0] ?? [])} />
+        <TargetPembelajaran sasaran={sasaran} />
+      </div>
+    ),
+  };
   return denganTab([
     ...materi,
     {
@@ -727,6 +749,7 @@ function langkahDermaga(kelas?: string, kelamin?: KelaminGuru): LangkahQuest[] {
       kuis: kuisPola,
       isi: <KartuC kelas={kelas} kelamin={kelamin} />,
     },
+    pembuka,
     {
       kode: "poin",
       bagian: "Poin",
@@ -760,7 +783,7 @@ function langkahDermaga(kelas?: string, kelamin?: KelaminGuru): LangkahQuest[] {
       isi: <p className="text-sm font-semibold leading-relaxed text-slate-700">Kalau ada yang masih bingung, tanyakan di sini. Kalau sudah jelas, tekan Lanjut.</p>,
     },
     ...evaluasi,
-  ]);
+  ]).map((item) => (item.tab === "Review" ? { ...item, bebas: true } : item));
 }
 
 
@@ -821,7 +844,7 @@ export default function NaskahMtk5Bab1({ kelas, kelamin }: { kelas?: string; kel
   const langkah = useMemo(() => langkahDermaga(kelas, kelamin), [kelas, kelamin]);
   return (
     <QuestLangkah
-      simpan="quest-mtk-5-bab1"
+      simpan="quest-mtk-5-bab1-v2"
       langkah={langkah}
       sudahBenar={sudahBenar}
       slot={{ id: SLOT_AJUAN_SEBELUM_KARTU_D, padaKode: "tanya" }}

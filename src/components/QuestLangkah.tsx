@@ -10,6 +10,7 @@ export type LangkahQuest = {
   kuis?: string[];
   tab?: string;
   kelompok?: string;
+  bebas?: boolean;
 };
 
 function indeksUjung(langkah: LangkahQuest[], sudahBenar: (id: string) => boolean) {
@@ -79,7 +80,8 @@ export function QuestLangkah({
         const data = JSON.parse(mentah) as { indeks?: number; puncak?: number };
         const ujung = indeksUjung(langkah, sudahBenar);
         const puncakAwal = Math.min(angkaAman(data.puncak), ujung, langkah.length - 1);
-        const indeksAwal = Math.min(angkaAman(data.indeks), puncakAwal);
+        const indeksMentah = Math.min(angkaAman(data.indeks), langkah.length - 1);
+        const indeksAwal = langkah[indeksMentah]?.bebas ? indeksMentah : Math.min(indeksMentah, puncakAwal);
         setPuncak(puncakAwal);
         setIndeks(indeksAwal);
       }
@@ -111,7 +113,8 @@ export function QuestLangkah({
   if (!sekarang) return null;
 
   const ke = (tujuan: number) => {
-    if (tujuan < 0 || tujuan > puncak || tujuan >= langkah.length) return;
+    if (tujuan < 0 || tujuan >= langkah.length) return;
+    if (!langkah[tujuan]?.bebas && tujuan > puncak) return;
     setIndeks(tujuan);
   };
 
@@ -149,7 +152,7 @@ export function QuestLangkah({
         <div ref={daftarTab} role="tablist" aria-label="Bagian materi" className="flex flex-nowrap gap-2 overflow-x-auto overscroll-x-contain border-t border-indigo-100 px-3 py-2.5 [scrollbar-width:thin] [&::-webkit-scrollbar]:h-1.5 [&::-webkit-scrollbar-thumb]:rounded-full [&::-webkit-scrollbar-thumb]:bg-indigo-300/70">
           {tabUnik.map((nama) => {
             const awal = langkah.findIndex((item) => item.tab === nama);
-            const boleh = awal >= 0 && awal <= puncak;
+            const boleh = awal >= 0 && (langkah[awal]?.bebas || awal <= puncak);
             const aktif = sekarang.tab === nama;
             return (
               <button
