@@ -1,6 +1,38 @@
 "use client";
 
+import { Coins } from "lucide-react";
 import { useEffect, useRef, useState, type ReactNode } from "react";
+import { bacaProgres } from "@/lib/progres";
+
+const TOKEN_SOAL_LATIHAN = 5;
+const TOKEN_SOAL_EVALUASI = 10;
+const MAKS_TOKEN_LATIHAN = 50;
+const MAKS_TOKEN_EVALUASI = 100;
+
+function samaTeks(a: string, b: string) {
+  return a.trim().toLowerCase() === b.trim().toLowerCase();
+}
+
+function tokenLatihanBabIni() {
+  if (typeof window === "undefined") return 0;
+  const params = new URLSearchParams(window.location.search);
+  const kelas = params.get("kelas") ?? "";
+  const mapel = params.get("mapel") ?? "";
+  const materi = params.get("materi") ?? "";
+  const data = bacaProgres();
+  const sesi = data.sesi.find(
+    (item) => samaTeks(item.kelas, kelas) && samaTeks(item.mapel, mapel) && samaTeks(item.materi, materi),
+  );
+  if (!sesi) return 0;
+  const jawaban = data.jawabanKuis[sesi.id] ?? {};
+  let jumlah = 0;
+  sesi.kunciJawaban.forEach((huruf, indeks) => {
+    const kunci = huruf.trim().toUpperCase().replace(/[^ABCD]/g, "").charAt(0);
+    const pilih = (jawaban[String(indeks + 1)] ?? "").trim().toUpperCase().charAt(0);
+    if (kunci && pilih === kunci) jumlah += TOKEN_SOAL_LATIHAN;
+  });
+  return Math.min(MAKS_TOKEN_LATIHAN, jumlah);
+}
 
 export type LangkahQuest = {
   kode: string;
@@ -60,6 +92,7 @@ export function QuestLangkah({
   const [siap, setSiap] = useState(false);
   const [indeks, setIndeks] = useState(0);
   const [puncak, setPuncak] = useState(0);
+  const [tokenLatihan, setTokenLatihan] = useState(0);
   const sekarang = langkah[indeks] ?? langkah[0];
   const { awal: awalHalaman, akhir: akhirHalaman } = batasHalaman(langkah, indeks);
   const halaman = langkah.slice(awalHalaman, akhirHalaman + 1);
@@ -102,6 +135,17 @@ export function QuestLangkah({
   }, [siap, indeks]);
 
   useEffect(() => {
+    const segarkan = () => setTokenLatihan(tokenLatihanBabIni());
+    segarkan();
+    window.addEventListener("focus", segarkan);
+    window.addEventListener("storage", segarkan);
+    return () => {
+      window.removeEventListener("focus", segarkan);
+      window.removeEventListener("storage", segarkan);
+    };
+  }, []);
+
+  useEffect(() => {
     if (!siap) return;
     const wadah = daftarTab.current;
     const tombol = wadah?.querySelector<HTMLButtonElement>('[aria-selected="true"]');
@@ -111,6 +155,17 @@ export function QuestLangkah({
   }, [siap, indeks]);
 
   if (!sekarang) return null;
+
+  const tokenEvaluasi = Math.min(
+    MAKS_TOKEN_EVALUASI,
+    langkah.reduce((jumlah, item) => {
+      if (item.bagian !== "Evaluasi") return jumlah;
+      const kuisItem = item.kuis ?? [];
+      if (kuisItem.length === 0 || kuisItem.some((id) => !sudahBenar(id))) return jumlah;
+      return jumlah + TOKEN_SOAL_EVALUASI;
+    }, 0),
+  );
+  const perolehanToken = tokenLatihan + tokenEvaluasi;
 
   const ke = (tujuan: number) => {
     if (tujuan < 0 || tujuan >= langkah.length) return;
@@ -129,7 +184,11 @@ export function QuestLangkah({
     <section ref={akar} className="scroll-mt-24 space-y-4">
       <div className="relative -mx-4 w-[calc(100%+2rem)] overflow-hidden rounded-none bg-gradient-to-br from-[#eef2ff] via-[#ece8ff] to-[#f7f3ff] text-[#1C01A5] shadow-[0_10px_24px_-18px_rgba(67,56,202,0.55)]">
         <div className="bg-[linear-gradient(115deg,#1C01A5_0%,#4c1d95_58%,#5b21b6_100%)] px-4 pb-4 pt-4">
-          <p className="text-2xl font-extrabold tracking-tight text-white">
+          <p className="inline-flex items-center gap-1.5 rounded-full bg-white/15 px-2.5 py-1 text-sm font-black text-white ring-1 ring-white/30" aria-label={`Perolehan ${perolehanToken} token`}>
+            <Coins className="h-4 w-4 text-[#F0AB00]" aria-hidden />
+            {perolehanToken} token
+          </p>
+          <p className="mt-2 text-2xl font-extrabold tracking-tight text-white">
             {sekarang.kelompok || (utuh ? sekarang.tab : sekarang.judul)}
           </p>
         </div>
