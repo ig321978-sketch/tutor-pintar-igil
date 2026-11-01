@@ -223,6 +223,7 @@ function ModuleRenderer({
   const pakaiKartuMtkBab1 = useMemo(
     () =>
       !kelasDuaSd(kelas) &&
+      !adalahJudulMtk1Bab9(mapel, materi) &&
       (adalahJudulMtk1Bab1(mapel, materi) ||
         (naskahTampilanResmi(naskah) &&
           /ayo\s+berhitung|ayo\s+membilang\s+sampai(\s+dengan)?\s+10\b|piknik buah rara|rara dan bimo|permen warna-warni sani/i.test(
@@ -909,6 +910,13 @@ function ModuleRenderer({
       </div>
     );
   }
+  if (pakaiKartuMtkBab9) {
+    return (
+      <div className={className}>
+        <NaskahMtk1Bab9 kelas={kelas} kelamin={kelamin} />
+      </div>
+    );
+  }
   if (pakaiKartuMtkBab1) {
     return (
       <div className={className}>
@@ -962,13 +970,6 @@ function ModuleRenderer({
     return (
       <div className={className}>
         <NaskahMtk1Bab8 kelas={kelas} kelamin={kelamin} />
-      </div>
-    );
-  }
-  if (pakaiKartuMtkBab9) {
-    return (
-      <div className={className}>
-        <NaskahMtk1Bab9 kelas={kelas} kelamin={kelamin} />
       </div>
     );
   }
