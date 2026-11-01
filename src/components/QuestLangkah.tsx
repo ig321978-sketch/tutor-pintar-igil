@@ -8,6 +8,7 @@ const TOKEN_SOAL_LATIHAN = 5;
 const TOKEN_SOAL_EVALUASI = 10;
 const MAKS_TOKEN_LATIHAN = 50;
 const MAKS_TOKEN_EVALUASI = 100;
+const HARGA_TOKEN_RP = 500;
 
 function samaTeks(a: string, b: string) {
   return a.trim().toLowerCase() === b.trim().toLowerCase();
@@ -184,11 +185,21 @@ export function QuestLangkah({
     <section ref={akar} className="scroll-mt-24 space-y-4">
       <div className="relative -mx-4 w-[calc(100%+2rem)] overflow-hidden rounded-none bg-gradient-to-br from-[#eef2ff] via-[#ece8ff] to-[#f7f3ff] text-[#1C01A5] shadow-[0_10px_24px_-18px_rgba(67,56,202,0.55)]">
         <div className="bg-[linear-gradient(115deg,#1C01A5_0%,#4c1d95_58%,#5b21b6_100%)] px-4 pb-4 pt-4">
-          <p className="inline-flex items-center gap-1.5 rounded-full bg-white/15 px-2.5 py-1 text-sm font-black text-white ring-1 ring-white/30" aria-label={`Perolehan ${perolehanToken} token`}>
-            <Coins className="h-4 w-4 text-[#F0AB00]" aria-hidden />
-            {perolehanToken} token
-          </p>
-          <p className="mt-2 text-2xl font-extrabold tracking-tight text-white">
+          <div className="inline-flex max-w-full items-center gap-3 rounded-2xl border-2 border-amber-400/80 bg-indigo-950/90 px-4 py-1.5 shadow-inner" aria-label={`Perolehan ${perolehanToken} token`}>
+            <Coins className="h-8 w-8 shrink-0 animate-bounce text-amber-400" aria-hidden />
+            <div className="min-w-0">
+              <div className="text-[11px] font-semibold uppercase tracking-wider text-amber-200">
+                Dompet Bab Ini (Maks 150)
+              </div>
+              <div className="flex flex-wrap items-baseline gap-x-2">
+                <span className="text-lg font-black text-amber-400">{perolehanToken} Token</span>
+                <span className="text-xs font-bold text-emerald-400">
+                  (= Rp {(perolehanToken * HARGA_TOKEN_RP).toLocaleString("id-ID")})
+                </span>
+              </div>
+            </div>
+          </div>
+          <p className="mt-3 text-2xl font-extrabold tracking-tight text-white">
             {sekarang.kelompok || (utuh ? sekarang.tab : sekarang.judul)}
           </p>
         </div>
