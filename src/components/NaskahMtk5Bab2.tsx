@@ -6,7 +6,7 @@ import KartuPoinPenting from "@/components/KartuPoinPenting";
 import TujuanBelajar from "@/components/TujuanBelajar";
 import TabelInfoGrafis from "@/components/TabelInfoGrafis";
 import { useKuisMateri } from "@/components/KuisMateriContext";
-import { useJudulDompetMateri } from "@/components/modul/KepalaDompetMateri";
+import { BingkaiTabMateri } from "@/components/modul/EmpatHalamanMateri";
 import MisiPenjagaKebun from "@/components/MisiPenjagaKebun";
 import { SLOT_AJUAN_SEBELUM_KARTU_D } from "@/components/NaskahMtk2Bab1";
 import SoalRekamSuara from "@/components/SoalRekamSuara";
@@ -1019,38 +1019,42 @@ const PASANGAN_A = ["12", "4", "2"];
 const PASANGAN_B = ["10", "20", "2 × 3 × 5"];
 const PASANGAN_D = ["56", "6", "2 × 3 × 7"];
 
-function KartuA({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminGuru }) {
+function KartuA({ kelas, kelamin, review }: { kelas?: string; kelamin?: KelaminGuru; review: ReactNode }) {
   const kartu = MODUL_MTK5_BAB2.kartu[0];
   const [tab, setTab] = useState(0);
-  const labelTab = ["Sub-Bab A", "Sub-Bab B", "Sub-Bab C", "Sub-Bab D", "Sub-Bab E"];
-  const judulSubbab = ["Kelipatan", "Kelipatan persekutuan", "Faktor", "Faktor persekutuan", "Menentukan KPK dan FPB"];
-  useJudulDompetMateri(judulSubbab[tab] ?? judulSubbab[0]);
-  return (
-    <KartuBingkai>
-      <KepalaKartu ikon="🪁👧👦🦉" judul="A. Bukit Layangan Senja" anak="Laras, Dimas, Sena, dan Igil" kelas={kelas} kelamin={kelamin} cuplikan={cuplikanKalimat(kartu.voice[0] ?? [])} />
-      <TujuanBelajar
-        butir={[
+  const judulSubbab = ["Kelipatan", "Kelipatan persekutuan", "Faktor", "Faktor persekutuan", "Menentukan KPK dan FPB"]
+  const tujuan = [
           "Menentukan kelipatan suatu bilangan.",
           "Menemukan kelipatan persekutuan dan KPK.",
           "Menentukan faktor dan pasangan faktor.",
           "Menemukan faktor persekutuan dan FPB.",
           "Memakai KPK dan FPB pada jadwal dan pembagian.",
           "Mengenal bilangan prima dan faktorisasi prima.",
-        ]}
-      />
-      <div className="mt-4 space-y-4">
-        <div className="flex flex-nowrap gap-2 overflow-x-auto" role="tablist" aria-label="Sub-bab materi">
-          {labelTab.map((teks, indeks) => (
-            <button key={teks} type="button" role="tab" aria-selected={tab === indeks} onClick={() => setTab(indeks)} className={`shrink-0 rounded-full px-3 py-2 text-sm font-black ${tab === indeks ? "bg-[#1C01A5] text-white shadow-[0_3px_0_#F0AB00]" : "bg-white text-[#1C01A5] ring-2 ring-sky-200"}`}>{teks}</button>
-          ))}
+        ];
+  const label = [...judulSubbab.map((_, indeks) => `Sub-Bab ${String.fromCharCode(65 + indeks)}`), "Review"];
+  const reviewAktif = tab === judulSubbab.length;
+  const judulBanner = reviewAktif ? "Tujuan Pembelajaran" : judulSubbab[tab] ?? judulSubbab[0];
+  return (
+    <BingkaiTabMateri label={label} judul={judulBanner} aktif={tab} onPilih={setTab}>
+      {reviewAktif ? (
+        <div className="space-y-5">
+          <KepalaKartu ikon="🪁👧👦🦉" judul="A. Bukit Layangan Senja" anak="Laras, Dimas, Sena, dan Igil" kelas={kelas} kelamin={kelamin} cuplikan={cuplikanKalimat(kartu.voice[0] ?? [])} />
+          <TujuanBelajar butir={tujuan} />
+          <p className="text-sm font-semibold leading-relaxed text-slate-700">Kalau ada yang masih bingung, tanyakan di sini.</p>
+          {review}
         </div>
-        {tab === 0 ? <SubbabKelipatan kelas={kelas} kelamin={kelamin} /> : null}
-        {tab === 1 ? <SubbabKpk kelas={kelas} kelamin={kelamin} /> : null}
-        {tab === 2 ? <SubbabFaktor kelas={kelas} kelamin={kelamin} /> : null}
-        {tab === 3 ? <SubbabFaktorPersekutuan kelas={kelas} kelamin={kelamin} /> : null}
-        {tab === 4 ? <SubbabTentukan kelas={kelas} kelamin={kelamin} /> : null}
-      </div>
-    </KartuBingkai>
+      ) : (
+        <div className="space-y-4">
+          {tab === 0 ? <SubbabKelipatan kelas={kelas} kelamin={kelamin} /> : null}
+          {tab === 1 ? <SubbabKpk kelas={kelas} kelamin={kelamin} /> : null}
+          {tab === 2 ? <SubbabFaktor kelas={kelas} kelamin={kelamin} /> : null}
+          {tab === 3 ? <SubbabFaktorPersekutuan kelas={kelas} kelamin={kelamin} /> : null}
+          {tab === 4 ? <SubbabTentukan kelas={kelas} kelamin={kelamin} /> : null}
+        </div>
+      )}
+      <div id={SLOT_AJUAN_SEBELUM_KARTU_D} className={reviewAktif ? "mt-3" : "hidden"} />
+      {reviewAktif ? <LembarEvaluasi kelas={kelas} kelamin={kelamin} /> : null}
+    </BingkaiTabMateri>
   );
 }
 
@@ -1105,11 +1109,13 @@ function LembarEvaluasi({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminG
 
 export default function NaskahMtk5Bab2({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminGuru }) {
   return (
-    <div className="space-y-5">
-      <KartuA kelas={kelas} kelamin={kelamin} />
-      <KartuC kelas={kelas} kelamin={kelamin} />
-      <div id={SLOT_AJUAN_SEBELUM_KARTU_D} />
-      <GambarBukit jenis="kartu" />
+    <KartuA
+      kelas={kelas}
+      kelamin={kelamin}
+      review={(
+        <>
+          <KartuC kelas={kelas} kelamin={kelamin} />
+<GambarBukit jenis="kartu" />
       <KartuPoinPenting
         kelas={kelas}
         kelamin={kelamin}
@@ -1130,7 +1136,8 @@ export default function NaskahMtk5Bab2({ kelas, kelamin }: { kelas?: string; kel
         ]}
         penutup="Daftar yang sama dan paling kecil itu KPK. Faktor yang sama dan paling besar itu FPB."
       />
-      <LembarEvaluasi kelas={kelas} kelamin={kelamin} />
-    </div>
+        </>
+      )}
+    />
   );
 }

@@ -5,8 +5,8 @@ import GambarCerita from "@/components/GambarCerita";
 import HasilJawabanKuis from "@/components/HasilJawabanKuis";
 import KartuPoinPenting from "@/components/KartuPoinPenting";
 import { useKuisMateri } from "@/components/KuisMateriContext";
-import { PagerSubbab, TabSubbab } from "@/components/modul/EmpatHalamanMateri";
-import { useJudulDompetMateri } from "@/components/modul/KepalaDompetMateri";
+import { BingkaiTabMateri, PagerSubbab } from "@/components/modul/EmpatHalamanMateri";
+import TujuanBelajar from "@/components/TujuanBelajar";
 import MisiPenjagaKebun from "@/components/MisiPenjagaKebun";
 import { SLOT_AJUAN_SEBELUM_KARTU_D } from "@/components/NaskahMtk2Bab1";
 import SoalRekamSuara from "@/components/SoalRekamSuara";
@@ -627,22 +627,34 @@ function SubbabKeluarga({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminG
   );
 }
 
-function KartuA({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminGuru }) {
+function KartuA({ kelas, kelamin, review }: { kelas?: string; kelamin?: KelaminGuru; review: ReactNode }) {
   const kartu = MODUL_MTK5_BAB7.kartu[0];
   const [tab, setTab] = useState(0);
-  const judulSubbab = ["Ciri segitiga: sisi dan sudut", "Jumlah sudut dan panjang sisi", "Trapesium dan jajargenjang", "Persegi panjang, belah ketupat, persegi, dan layang-layang"];
-  useJudulDompetMateri(judulSubbab[tab] ?? judulSubbab[0]);
+  const judulSubbab = ["Ciri segitiga: sisi dan sudut", "Jumlah sudut dan panjang sisi", "Trapesium dan jajargenjang", "Persegi panjang, belah ketupat, persegi, dan layang-layang"]
+  const tujuan = judulSubbab;
+  const label = [...judulSubbab.map((_, indeks) => `Sub-Bab ${String.fromCharCode(65 + indeks)}`), "Review"];
+  const reviewAktif = tab === judulSubbab.length;
+  const judulBanner = reviewAktif ? "Tujuan Pembelajaran" : judulSubbab[tab] ?? judulSubbab[0];
   return (
-    <KartuBingkai>
-      <KepalaKartu ikon="🪁🦉" judul={kartu.judul} anak="Empat sub-bab di padang layang" kelas={kelas} kelamin={kelamin} cuplikan={cuplikanKalimat(kartu.voice[0] ?? [])} />
-      <div className="mt-4 space-y-4">
-        <TabSubbab label={["Sub-Bab A", "Sub-Bab B", "Sub-Bab C", "Sub-Bab D"]} aktif={tab} onPilih={setTab} />
-        {tab === 0 ? <SubbabCiri kelas={kelas} kelamin={kelamin} /> : null}
-        {tab === 1 ? <SubbabJumlah kelas={kelas} kelamin={kelamin} /> : null}
-        {tab === 2 ? <SubbabTrapesium kelas={kelas} kelamin={kelamin} /> : null}
-        {tab === 3 ? <SubbabKeluarga kelas={kelas} kelamin={kelamin} /> : null}
-      </div>
-    </KartuBingkai>
+    <BingkaiTabMateri label={label} judul={judulBanner} aktif={tab} onPilih={setTab}>
+      {reviewAktif ? (
+        <div className="space-y-5">
+          <KepalaKartu ikon="🪁🦉" judul={kartu.judul} anak="Empat sub-bab di padang layang" kelas={kelas} kelamin={kelamin} cuplikan={cuplikanKalimat(kartu.voice[0] ?? [])} />
+          <TujuanBelajar butir={tujuan} />
+          <p className="text-sm font-semibold leading-relaxed text-slate-700">Kalau ada yang masih bingung, tanyakan di sini.</p>
+          {review}
+        </div>
+      ) : (
+        <div className="space-y-4">
+          {tab === 0 ? <SubbabCiri kelas={kelas} kelamin={kelamin} /> : null}
+          {tab === 1 ? <SubbabJumlah kelas={kelas} kelamin={kelamin} /> : null}
+          {tab === 2 ? <SubbabTrapesium kelas={kelas} kelamin={kelamin} /> : null}
+          {tab === 3 ? <SubbabKeluarga kelas={kelas} kelamin={kelamin} /> : null}
+        </div>
+      )}
+      <div id={SLOT_AJUAN_SEBELUM_KARTU_D} className={reviewAktif ? "mt-3" : "hidden"} />
+      {reviewAktif ? <LembarEvaluasi kelas={kelas} kelamin={kelamin} /> : null}
+    </BingkaiTabMateri>
   );
 }
 
@@ -697,11 +709,13 @@ function LembarEvaluasi({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminG
 
 export default function NaskahMtk5Bab7({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminGuru }) {
   return (
-    <div className="space-y-5">
-      <KartuA kelas={kelas} kelamin={kelamin} />
-      <KartuC kelas={kelas} kelamin={kelamin} />
-      <div id={SLOT_AJUAN_SEBELUM_KARTU_D} />
-      <GambarPadang jenis="kartu" />
+    <KartuA
+      kelas={kelas}
+      kelamin={kelamin}
+      review={(
+        <>
+          <KartuC kelas={kelas} kelamin={kelamin} />
+<GambarPadang jenis="kartu" />
       <KartuPoinPenting
         kelas={kelas}
         kelamin={kelamin}
@@ -720,7 +734,8 @@ export default function NaskahMtk5Bab7({ kelas, kelamin }: { kelas?: string; kel
         ]}
         penutup="Cek dua sisi dulu. Lalu lihat sudut, sisi sejajar, dan simetri."
       />
-      <LembarEvaluasi kelas={kelas} kelamin={kelamin} />
-    </div>
+        </>
+      )}
+    />
   );
 }

@@ -2,6 +2,7 @@
 
 import { useState, type ReactNode } from "react";
 import { useKuisMateri } from "@/components/KuisMateriContext";
+import { BalokDompet, useJudulDompetMateri, useKepalaDompetSendiri } from "@/components/modul/KepalaDompetMateri";
 
 export const LABEL_EMPAT_HALAMAN = ["1 · Cerita", "2 · Infografis", "3 · Pictorial", "4 · Lambang"] as const;
 
@@ -58,6 +59,48 @@ export function PagerSubbab({
     <EmpatHalaman judul={judul} halaman={halaman} setHalaman={setHalaman} selesai={selesai} selesaiTeks={selesaiTeks}>
       {isi[halaman] ?? null}
     </EmpatHalaman>
+  );
+}
+
+export function BingkaiTabMateri({
+  label,
+  judul,
+  aktif,
+  onPilih,
+  children,
+}: {
+  label: string[];
+  judul: string;
+  aktif: number;
+  onPilih: (indeks: number) => void;
+  children: ReactNode;
+}) {
+  useKepalaDompetSendiri();
+  useJudulDompetMateri(judul);
+  return (
+    <section className="scroll-mt-24 space-y-4">
+      <div className="relative -mx-4 w-[calc(100%+2rem)] overflow-hidden rounded-none bg-gradient-to-br from-[#eef2ff] via-[#ece8ff] to-[#f7f3ff] text-[#1C01A5] shadow-[0_10px_24px_-18px_rgba(67,56,202,0.55)]">
+        <BalokDompet judul={judul} />
+        <div role="tablist" aria-label="Bagian materi" className="flex flex-nowrap gap-2 overflow-x-auto overscroll-x-contain border-t border-indigo-100 px-3 py-2.5 [scrollbar-width:thin] [&::-webkit-scrollbar]:h-1.5 [&::-webkit-scrollbar-thumb]:rounded-full [&::-webkit-scrollbar-thumb]:bg-indigo-300/70">
+          {label.map((nama, indeks) => {
+            const nyala = aktif === indeks;
+            return (
+              <button
+                key={nama}
+                type="button"
+                role="tab"
+                aria-selected={nyala}
+                onClick={() => onPilih(indeks)}
+                className={`inline-flex min-h-10 shrink-0 items-center whitespace-nowrap rounded-full px-3.5 py-2 text-sm font-black transition ${nyala ? "bg-[#1C01A5] text-white shadow-[0_3px_0_#F0AB00]" : "bg-white/70 text-indigo-700 ring-1 ring-inset ring-indigo-200/80 hover:bg-white"}`}
+              >
+                {nama}
+              </button>
+            );
+          })}
+        </div>
+      </div>
+      {children}
+    </section>
   );
 }
 
