@@ -942,8 +942,31 @@ function tanpaBabModul(data: Record<string, Record<string, string[]>>) {
   return hasil;
 }
 
-export const DATA_KURIKULUM = tanpaBabModul(
-  saringKurikulumMerdeka(perluasKurikulumMerdeka(DATA_INTI_KURIKULUM)),
+export const JUDUL_MTK_1_BAB1 = "Bab 1: Ayo Membilang sampai dengan 10";
+
+const BAB_TERPASANG: Record<string, Record<string, string[]>> = {
+  "1 SD": {
+    Matematika: [JUDUL_MTK_1_BAB1],
+  },
+};
+
+function pasangBabSiap(data: Record<string, Record<string, string[]>>) {
+  const hasil: Record<string, Record<string, string[]>> = {};
+  for (const [kelas, mapel] of Object.entries(data)) {
+    hasil[kelas] = { ...mapel };
+    const tambahan = BAB_TERPASANG[kelas];
+    if (!tambahan) continue;
+    for (const [nama, bab] of Object.entries(tambahan)) {
+      if (nama in hasil[kelas]) hasil[kelas][nama] = [...bab];
+    }
+  }
+  return hasil;
+}
+
+export const DATA_KURIKULUM = pasangBabSiap(
+  tanpaBabModul(
+    saringKurikulumMerdeka(perluasKurikulumMerdeka(DATA_INTI_KURIKULUM)),
+  ),
 );
 
 export const DAFTAR_KELAS = Object.keys(DATA_KURIKULUM);
