@@ -135,7 +135,7 @@ export default function KartuBagianModul({
   return (
     <div className="space-y-4">
       <LabelBabModul kelas={kelas} materi={materi}>
-        <div ref={daftarTab} role="tablist" aria-label="Bagian modul" className="flex w-full flex-nowrap gap-2 overflow-x-auto overscroll-x-contain px-2 pb-3 [scrollbar-width:thin] [scrollbar-color:#F0AB00_transparent] [&::-webkit-scrollbar]:h-1.5 [&::-webkit-scrollbar-track]:bg-transparent [&::-webkit-scrollbar-thumb]:rounded-full [&::-webkit-scrollbar-thumb]:bg-[#F0AB00]">
+        <div ref={daftarTab} role="tablist" aria-label="Bagian modul" className="flex w-full flex-nowrap gap-2 overflow-x-auto overscroll-x-contain px-2 pb-3 [scrollbar-width:thin] [&::-webkit-scrollbar]:h-1.5 [&::-webkit-scrollbar-thumb]:rounded-full [&::-webkit-scrollbar-thumb]:bg-white/45">
           {URUTAN.map((id, urutan) => {
             const tab = META[id];
             const dipilih = id === idTampil;
@@ -151,13 +151,13 @@ export default function KartuBagianModul({
                 onClick={() => pilih(id)}
                 className={`inline-flex min-h-11 shrink-0 items-center gap-1.5 rounded-2xl px-3 py-2 text-sm font-black transition focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#F0AB00] disabled:cursor-not-allowed ${
                   dipilih
-                    ? "bg-[#F0AB00] text-[#1C01A5] shadow-[0_4px_0_#8A6800]"
+                    ? "bg-[#1C01A5] text-white shadow-[0_4px_0_#F0AB00]"
                     : kunci
                       ? "bg-slate-100 text-slate-400 shadow-[0_3px_0_#E2E8F0]"
-                      : "bg-[#F0AB00] text-[#1C01A5] shadow-[0_3px_0_#C49200] hover:-translate-y-0.5 hover:bg-[#FFD45A]"
+                      : "bg-white text-[#1C01A5] shadow-[0_3px_0_#D9D4F5] hover:-translate-y-0.5 hover:bg-[#FFF8E6]"
                 }`}
               >
-                <span className={`grid h-5 w-5 shrink-0 place-items-center rounded-full text-[11px] ${dipilih ? "bg-[#1C01A5] text-[#F0AB00]" : kunci ? "bg-slate-200 text-slate-400" : "bg-white text-[#1C01A5]"}`}>
+                <span className={`grid h-5 w-5 shrink-0 place-items-center rounded-full text-[11px] ${dipilih ? "bg-[#F0AB00] text-[#1C01A5]" : kunci ? "bg-slate-200 text-slate-400" : "bg-[#EEF0FF] text-[#1C01A5]"}`}>
                   {urutan + 1}
                 </span>
                 <Ikon className="h-4 w-4 shrink-0" aria-hidden />
