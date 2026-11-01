@@ -8,14 +8,6 @@ import {
   adalahNaskahInfografis,
   teksLisanInfografis,
 } from "@/lib/infografis-kelas1";
-import {
-  naskahTampilanPai1Bab1,
-  teksLisanPai1Bab1,
-} from "@/lib/naskah-resmi-pai-1-bab1";
-import {
-  naskahTampilanPai1Bab2,
-  teksLisanPai1Bab2,
-} from "@/lib/naskah-resmi-pai-1-bab2";
 import { teksLisanResmiJikaAda } from "@/lib/naskah-resmi";
 import {
   potongLengkap,
@@ -214,24 +206,6 @@ export function naskahTutorUntukSuara(
   nama = "",
   opsi?: { buangSubjudulVisual?: boolean; tanpaSapaan?: boolean },
 ): string {
-  if (naskahTampilanPai1Bab1(penjelasan)) {
-    const lisan = teksLisanPai1Bab1();
-    if (opsi?.tanpaSapaan) return lisan;
-    const sapaanAmanBab1 = naskahLisan(
-      nama ? sapaanTutorRingkas(nama, sapaan) : sapaan,
-      nama,
-    );
-    return [sapaanAmanBab1, lisan].filter(Boolean).join("\n\n");
-  }
-  if (naskahTampilanPai1Bab2(penjelasan)) {
-    const lisan = teksLisanPai1Bab2();
-    if (opsi?.tanpaSapaan) return lisan;
-    const sapaanAman = naskahLisan(
-      nama ? sapaanTutorRingkas(nama, sapaan) : sapaan,
-      nama,
-    );
-    return [sapaanAman, lisan].filter(Boolean).join("\n\n");
-  }
   const lisanResmi = teksLisanResmiJikaAda(penjelasan);
   if (lisanResmi) {
     if (opsi?.tanpaSapaan) return lisanResmi;

@@ -1,7 +1,0 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 180" role="img">
-  <rect width="640" height="180" rx="24" fill="#FFF1F2"/>
-  <rect x="40" y="36" width="220" height="108" rx="16" fill="#fff" stroke="#1C01A5" stroke-width="3"/>
-  <text x="58" y="78" font-family="ui-sans-serif,system-ui" font-size="18" font-weight="800" fill="#1C01A5">10 soal data</text>
-  <text x="58" y="112" font-family="ui-sans-serif,system-ui" font-size="16" fill="#1C01A5">urut · tabel · turus</text>
-  <text x="320" y="110" font-size="64"><;</text>
-</svg>
