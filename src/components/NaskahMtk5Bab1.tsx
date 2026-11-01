@@ -34,10 +34,10 @@ import {
   tulis15950,
   tulis26932,
   tulis34000,
+  tulis73420,
   tulis38000,
   uang38600,
   urai57500,
-  urutMurah,
 } from "@/lib/nilai-mtk-5-bab1";
 import type { CuplikanVoiceMateri } from "@/lib/naskah-voice-pai-1-bab2";
 import { bacaProgres } from "@/lib/progres";
@@ -380,6 +380,16 @@ function RakTiket() {
   );
 }
 
+function LambangBanding() {
+  return (
+    <div className="rounded-2xl border-2 border-[#1C01A5] bg-[#F8F7FF] px-3 py-4 text-center">
+      <p className="text-sm font-black uppercase tracking-wide text-[#1C01A5]">Lambang banding</p>
+      <p className="mt-3 text-xl font-black text-[#1C01A5]">56.560 &lt; 57.000</p>
+      <p className="mt-2 text-sm font-semibold text-slate-700">Rak puluh ribuan sama-sama 5. Di rak ribuan, 6 &lt; 7.</p>
+    </div>
+  );
+}
+
 function BandingHarga() {
   return (
     <div className="rounded-2xl border-2 border-amber-200 bg-amber-50 p-3">
@@ -447,6 +457,7 @@ function TabelKurang() {
 }
 
 const BACA_A = ["tiga puluh tujuh ribu dua ratus lima puluh", "delapan puluh ribu enam", "sembilan belas ribu empat ratus tiga puluh"];
+const TANDA_B = ["lebih besar", "lebih kecil", "sama besar"];
 const HASIL_B = ["79.500", "60.000", "16.000"];
 const HASIL_D = ["26.932", "9.610", "30.000"];
 
@@ -473,13 +484,19 @@ const TAB_LANGKAH: Record<string, { tab: string; kelompok?: string }> = {
   a17: TAB_A,
   a18: TAB_A,
   "banding-papan": TAB_B,
-  "banding-info": TAB_B,
   a2: TAB_B,
-  a3: TAB_B,
+  "b-kecil": TAB_B,
+  "banding-info": TAB_B,
   b2: TAB_B,
   b3: TAB_B,
+  "b-gambar": TAB_B,
   a10: TAB_B,
+  "b-benar": TAB_B,
+  "b-cocok": TAB_B,
+  "b-lambang": TAB_B,
   a12: TAB_B,
+  "b-tanda": TAB_B,
+  "b-terkecil": TAB_B,
   "uang-tumpuk": TAB_C,
   "uang-info": TAB_C,
   a4: TAB_C,
@@ -614,42 +631,84 @@ function langkahDermaga(kelas?: string, kelamin?: KelaminGuru): LangkahQuest[] {
       kode: "banding-papan",
       bagian: "Banding",
       judul: "Dua harga papan",
+      halaman: "1",
       isi: (
-        <LayarBab judul="Banding dari rak kiri" jenis="banding" kelas={kelas} kelamin={kelamin} penjelasan={["Bandingkan rak paling kiri lebih dulu.", "Kalau rak itu sama, geser satu rak ke kanan."]}>
+        <LayarBab judul="Halaman 1 · Cerita" jenis="banding" kelas={kelas} kelamin={kelamin} penjelasan={["Bandingkan rak paling kiri lebih dulu.", "Kalau rak itu sama, geser satu rak ke kanan."]}>
+          <p className="text-lg font-black text-[#1C01A5]">Banding dari rak kiri</p>
           <Dialog nama="Kiran" anak="Ada dua papan congklak. Aku tidak langsung melihat angka paling belakang." />
+          <Dialog nama="Mira" anak="Aku mulai dari rak kiri. Kalau sama, baru geser ke kanan." />
           <Dialog nama="Igil" anak="Mulai dari puluh ribuan. Kalau sama, lihat ribuan." />
           <BandingHarga />
         </LayarBab>
       ),
     },
+    { kode: "a2", bagian: "Banding", judul: "Yang lebih kecil", halaman: "1", kuis: [idKuis("A", 2)], isi: <KuisSuara id={idKuis("A", 2)} pertanyaan="Mana yang lebih kecil, 97.768 atau 89.876?" periksa={lebihKecil89876} petunjuk="Lihat rak puluh ribuan lebih dulu." benar="89.876 lebih kecil." /> },
+    { kode: "b-kecil", bagian: "Banding", judul: "Tulis yang kecil", halaman: "1", kuis: [idKuis("B", 11)], isi: <TulisBebas id={idKuis("B", 11)} judul="Yang lebih kecil" visual={<Papan anak="73.420 atau 78.150" />} pertanyaan="Tulis bilangan yang lebih kecil." pesanSalah="Bandingkan rak puluh ribuan, lalu ribuan." bantuan="Rak ribuan 3 lebih kecil daripada 8. Yang kecil 73.420." umpan="73.420." periksa={tulis73420} alias={["73420", "73.420"]} konteks="73.420 lebih kecil daripada 78.150." /> },
     {
       kode: "banding-info",
       bagian: "Banding",
-      judul: "Infografis perbandingan",
+      judul: "Infografis dua papan",
+      halaman: "2",
       isi: (
         <div className="space-y-3">
-          <Dialog nama="Mira" anak="Infografis ini membandingkan 76.675 dan 67.765. Rak kiri yang lebih besar menang." />
+          <p className="text-lg font-black text-[#1C01A5]">Halaman 2 · Infografis</p>
+          <Dialog nama="Igil" anak="Tabel warna ini membandingkan 56.560 dan 57.000. Rak kiri sama, jadi lihat ribuan." />
+          <div className="grid gap-2 sm:grid-cols-2">
+            <GambarRak digit={["5", "6", "5", "6", "0"]} judul="Papan 56.560" />
+            <GambarRak digit={["5", "7", "0", "0", "0"]} judul="Papan 57.000" />
+          </div>
           <TabelInfoGrafis
-            judul="Infografis: Banding dari kiri"
-            kepala={["Langkah", "Yang dilihat", "Keputusan"]}
+            judul="Infografis: Banding 56.560 dan 57.000"
+            kepala={["Rak", "56.560", "57.000"]}
             baris={[
-              ["1", "Puluh ribuan", "yang lebih besar menang"],
-              ["2", "Ribuan", "geser jika rak kiri sama"],
-              ["3", "Ratusan sampai satuan", "geser lagi"],
-              ["76.675", "rak kiri 7", "lebih besar"],
-              ["67.765", "rak kiri 6", "lebih kecil"],
+              ["Puluh ribuan", "5", "5"],
+              ["Ribuan", "6", "7"],
+              ["Ratusan", "5", "0"],
+              ["Puluhan", "6", "0"],
+              ["Satuan", "0", "0"],
             ]}
-            kaki="76.675 lebih besar daripada 67.765."
+            kaki="Di rak ribuan, 6 lebih kecil daripada 7."
           />
         </div>
       ),
     },
-    { kode: "a2", bagian: "Banding", judul: "Yang lebih kecil", kuis: [idKuis("A", 2)], isi: <KuisSuara id={idKuis("A", 2)} pertanyaan="Mana yang lebih kecil, 97.768 atau 89.876?" periksa={lebihKecil89876} petunjuk="Lihat rak puluh ribuan lebih dulu." benar="89.876 lebih kecil." /> },
-    { kode: "a3", bagian: "Banding", judul: "Urutan murah", kuis: [idKuis("A", 3)], isi: <TulisBebas id={idKuis("A", 3)} judul="Urutan murah" visual={<Papan anak="56.560 · 65.750 · 75.360" />} pertanyaan="Tulis ketiga harga itu dari yang paling murah." pesanSalah="Bandingkan puluh ribuan, lalu ribuan." bantuan="5 lebih kecil daripada 6, dan 6 lebih kecil daripada 7." umpan="56.560, 65.750, 75.360." periksa={urutMurah} alias={["56560", "65750", "75360"]} konteks="Urutan dari yang murah: 56.560, 65.750, 75.360." /> },
-    { kode: "b2", bagian: "Banding", judul: "Yang lebih besar", kuis: [idKuis("B", 0)], isi: <KuisSuara id={idKuis("B", 0)} pertanyaan="Mana yang lebih besar, 86.567 atau 86.576?" periksa={lebih86576} petunjuk="Rak kiri sama. Geser sampai ada rak yang berbeda." benar="86.576 lebih besar." /> },
-    { kode: "b3", bagian: "Banding", judul: "Lompat seratus", kuis: [idKuis("B", 1)], isi: <TulisBebas id={idKuis("B", 1)} judul="Lompat seratus" visual={<Papan anak="85.350 · 85.400 · ⬜ · 85.500 · 85.550" />} pertanyaan="Tulis bilangan yang hilang." pesanSalah="Selisih tiap langkah 100." bantuan="85.400 + 100 = 85.500, jadi yang di tengah 85.450." umpan="85.450." periksa={isi85450} alias={["85450", "85.450"]} konteks="Bilangan yang hilang adalah 85.450." /> },
-    { kode: "a10", bagian: "Banding", judul: "Susun dari kecil", kuis: [idKuis("A", 9)], isi: <SusunToken id={idKuis("A", 9)} perintah="Susun dari yang paling kecil." acak={["78.897", "43.217", "56.475"]} benar={["43.217", "56.475", "78.897"]} umpan="43.217, 56.475, 78.897." /> },
-    { kode: "a12", bagian: "Banding", judul: "Selisih dua harga", kuis: [idKuis("A", 11)], isi: <Pilih id={idKuis("A", 11)} pertanyaan="Selisih 34.000 dan 30.000 adalah..." pilihan={[{ huruf: "A", teks: "4.000" }, { huruf: "B", teks: "19.000" }, { huruf: "C", teks: "49.000" }, { huruf: "D", teks: "2.000" }]} benar="A" umpan="34.000 − 30.000 = 4.000." salah="Kurangkan bilangan yang lebih kecil dari yang lebih besar." /> },
+    { kode: "b2", bagian: "Banding", judul: "Yang lebih besar", halaman: "2", kuis: [idKuis("B", 0)], isi: <KuisSuara id={idKuis("B", 0)} pertanyaan="Mana yang lebih besar, 86.567 atau 86.576?" periksa={lebih86576} petunjuk="Rak kiri sama. Geser sampai ada rak yang berbeda." benar="86.576 lebih besar." /> },
+    { kode: "b3", bagian: "Banding", judul: "Lompat lima puluh", halaman: "2", kuis: [idKuis("B", 1)], isi: <TulisBebas id={idKuis("B", 1)} judul="Bilangan yang hilang" visual={<Papan anak="85.350 · 85.400 · ⬜ · 85.500 · 85.550" />} pertanyaan="Tulis bilangan yang hilang." pesanSalah="Selisih tiap langkah 50." bantuan="85.400 + 50 = 85.450." umpan="85.450." periksa={isi85450} alias={["85450", "85.450"]} konteks="Bilangan yang hilang adalah 85.450." /> },
+    {
+      kode: "b-gambar",
+      bagian: "Banding",
+      judul: "Gambar dua papan",
+      halaman: "3",
+      isi: (
+        <div className="space-y-3">
+          <p className="text-lg font-black text-[#1C01A5]">Halaman 3 · Gambar</p>
+          <p className="text-sm font-semibold text-slate-700">Contoh gambar dari cerita dan tabel. Rak ribuan yang beda diberi warna lebih terang.</p>
+          <div className="grid gap-2 sm:grid-cols-2">
+            <GambarRak digit={["5", "6", "5", "6", "0"]} judul="56.560" />
+            <GambarRak digit={["5", "7", "0", "0", "0"]} judul="57.000" />
+          </div>
+        </div>
+      ),
+    },
+    { kode: "a10", bagian: "Banding", judul: "Susun dari kecil", halaman: "3", kuis: [idKuis("A", 9)], isi: <SusunToken id={idKuis("A", 9)} perintah="Susun dari yang paling kecil." acak={["78.897", "43.217", "56.475"]} benar={["43.217", "56.475", "78.897"]} umpan="43.217, 56.475, 78.897." /> },
+    { kode: "b-benar", bagian: "Banding", judul: "Benar atau salah", halaman: "3", kuis: [idKuis("B", 12)], isi: <KuisBenarSalah id={idKuis("B", 12)} perintah="Pilih benar atau salah." baris={[{ teks: "48.300 lebih besar daripada 51.200.", benar: false }, { teks: "62.450 sama dengan 62.450.", benar: true }, { teks: "70.009 lebih kecil daripada 70.090.", benar: true }]} umpan="48 lebih kecil daripada 51. Dua bilangan yang sama tetap sama. Di 70.009 dan 70.090, rak puluhan 0 lebih kecil daripada 9." /> },
+    { kode: "b-cocok", bagian: "Banding", judul: "Pasangkan tanda", halaman: "3", kuis: [idKuis("B", 13)], isi: <KuisCocok id={idKuis("B", 13)} perintah="Pasangkan pasangan bilangan dengan keputusannya." baris={[{ kiri: "23.400 dan 23.040", pilihan: TANDA_B, benar: "lebih besar" }, { kiri: "15.800 dan 18.500", pilihan: TANDA_B, benar: "lebih kecil" }, { kiri: "90.100 dan 90.100", pilihan: TANDA_B, benar: "sama besar" }]} umpan="23.400 lebih besar, 15.800 lebih kecil, dan 90.100 sama besar." /> },
+    {
+      kode: "b-lambang",
+      bagian: "Banding",
+      judul: "Lambang banding",
+      halaman: "4",
+      isi: (
+        <div className="space-y-3">
+          <p className="text-lg font-black text-[#1C01A5]">Halaman 4 · Lambang</p>
+          <p className="text-sm font-semibold text-slate-700">Dua papan yang sama sekarang ditulis dengan tanda banding.</p>
+          <LambangBanding />
+        </div>
+      ),
+    },
+    { kode: "a12", bagian: "Banding", judul: "Selisih dua harga", halaman: "4", kuis: [idKuis("A", 11)], isi: <Pilih id={idKuis("A", 11)} pertanyaan="Selisih 34.000 dan 30.000 adalah..." pilihan={[{ huruf: "A", teks: "4.000" }, { huruf: "B", teks: "19.000" }, { huruf: "C", teks: "49.000" }, { huruf: "D", teks: "2.000" }]} benar="A" umpan="34.000 − 30.000 = 4.000." salah="Kurangkan bilangan yang lebih kecil dari yang lebih besar." /> },
+    { kode: "b-tanda", bagian: "Banding", judul: "Tanda yang tepat", halaman: "4", kuis: [idKuis("B", 14)], isi: <Pilih id={idKuis("B", 14)} pertanyaan="Tanda yang tepat untuk 41.250 ... 41.520 adalah..." pilihan={[{ huruf: "A", teks: "<" }, { huruf: "B", teks: ">" }, { huruf: "C", teks: "=" }, { huruf: "D", teks: "tidak ada" }]} benar="A" umpan="Rak ratusan 2 lebih kecil daripada 5, jadi 41.250 < 41.520." salah="Geser sampai ada rak yang berbeda." /> },
+    { kode: "b-terkecil", bagian: "Banding", judul: "Yang paling kecil", halaman: "4", kuis: [idKuis("B", 15)], isi: <Pilih id={idKuis("B", 15)} pertanyaan="Yang paling kecil di antara 12.800, 12.080, dan 12.008 adalah..." pilihan={[{ huruf: "A", teks: "12.800" }, { huruf: "B", teks: "12.080" }, { huruf: "C", teks: "12.008" }, { huruf: "D", teks: "12.880" }]} benar="C" umpan="12.008, lalu 12.080, lalu 12.800." salah="Bandingkan rak ratusan, puluhan, lalu satuan." /> },
     {
       kode: "uang-tumpuk",
       bagian: "Uang",
@@ -882,7 +941,7 @@ export default function NaskahMtk5Bab1({ kelas, kelamin }: { kelas?: string; kel
   const langkah = useMemo(() => langkahDermaga(kelas, kelamin), [kelas, kelamin]);
   return (
     <QuestLangkah
-      simpan="quest-mtk-5-bab1-v3"
+      simpan="quest-mtk-5-bab1-v4"
       langkah={langkah}
       sudahBenar={sudahBenar}
       slot={{ id: SLOT_AJUAN_SEBELUM_KARTU_D, padaKode: "tanya" }}

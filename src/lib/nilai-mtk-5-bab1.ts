@@ -43,6 +43,11 @@ export function tulis26932(teks: string): boolean {
   return ada(teks, "26932") || (k.includes("dua puluh enam ribu") && k.includes("sembilan ratus") && k.includes("tiga puluh dua"));
 }
 
+export function tulis73420(teks: string): boolean {
+  if (ada(teks, "78150") && !ada(teks, "73420")) return false;
+  return ada(teks, "73420") || biasa(teks).includes("tujuh puluh tiga ribu empat ratus dua puluh");
+}
+
 export function lebihKecil89876(teks: string): boolean {
   const k = biasa(teks);
   if (ada(teks, "97768") && !ada(teks, "89876") && !k.includes("delapan puluh sembilan")) return false;
