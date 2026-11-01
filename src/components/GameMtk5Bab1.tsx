@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, type ReactNode } from "react";
+import { useEffect, useRef, useState, type ReactNode } from "react";
 
 type JenisSuara = "click" | "dial" | "cash" | "coin" | "wrong" | "fanfare";
 
@@ -180,11 +180,18 @@ const RAK_BRANKAS = [
   { nama: "Satuan", kali: 1, warna: "border-violet-300 bg-violet-50" },
 ];
 
-export function GameBrankasRak() {
+export function GameBrankasRak({ onMenang }: { onMenang?: () => void } = {}) {
   const [target, setTarget] = useState(74520);
   const [roda, setRoda] = useState([0, 0, 0, 0, 0]);
+  const sudahMenang = useRef(false);
   const kini = roda[0] * 10000 + roda[1] * 1000 + roda[2] * 100 + roda[3] * 10 + roda[4];
   const terbuka = kini === target;
+
+  useEffect(() => {
+    if (!terbuka || sudahMenang.current) return;
+    sudahMenang.current = true;
+    onMenang?.();
+  }, [onMenang, terbuka]);
 
   const putar = (indeks: number, arah: 1 | -1) => {
     const berikut = [...roda];
@@ -224,11 +231,18 @@ export function GameBrankasRak() {
   );
 }
 
-export function GameRadarBanding() {
+export function GameRadarBanding({ onMenang }: { onMenang?: () => void } = {}) {
   const [kiri, setKiri] = useState(68450);
   const [kanan, setKanan] = useState(68910);
   const [pilih, setPilih] = useState<">" | "<" | null>(null);
+  const sudahMenang = useRef(false);
   const tepat = pilih !== null && ((kiri > kanan && pilih === ">") || (kiri < kanan && pilih === "<"));
+
+  useEffect(() => {
+    if (!tepat || sudahMenang.current) return;
+    sudahMenang.current = true;
+    onMenang?.();
+  }, [onMenang, tepat]);
 
   const baru = () => {
     mainkanSuara("click");
@@ -281,11 +295,18 @@ const LEMBAR = [
 
 const KOSONG: Record<number, number> = { 50000: 0, 20000: 0, 10000: 0, 5000: 0, 2000: 0, 1000: 0 };
 
-export function GameKasirUang() {
+export function GameKasirUang({ onMenang }: { onMenang?: () => void } = {}) {
   const [harga, setHarga] = useState(87000);
   const [lembar, setLembar] = useState<Record<number, number>>({ ...KOSONG });
+  const sudahMenang = useRef(false);
   const total = LEMBAR.reduce((jumlah, item) => jumlah + item.pecahan * (lembar[item.pecahan] ?? 0), 0);
   const pas = total === harga;
+
+  useEffect(() => {
+    if (!pas || sudahMenang.current) return;
+    sudahMenang.current = true;
+    onMenang?.();
+  }, [onMenang, pas]);
 
   return (
     <KartuGame judul="Game kasir: susun pecahan uang" anak="Tambah lembar sampai jumlahnya sama dengan harga.">
@@ -316,7 +337,13 @@ export function GameKasirUang() {
 
 type OperasiKargo = "+" | "-" | "x" | ":";
 
-export function GameKargoHitung() {
+export function GameKargoHitung({ onMenang }: { onMenang?: () => void } = {}) {
+  const sudahMenang = useRef(false);
+  const catatMain = () => {
+    if (sudahMenang.current) return;
+    sudahMenang.current = true;
+    onMenang?.();
+  };
   const [operasi, setOperasi] = useState<OperasiKargo>("+");
   const [kiri, setKiri] = useState(45000);
   const [kanan, setKanan] = useState(28500);
@@ -340,6 +367,7 @@ export function GameKargoHitung() {
 
   const ganti = (berikut: OperasiKargo) => {
     mainkanSuara("click");
+    catatMain();
     setOperasi(berikut);
     if (berikut === "x") {
       setKiri(15000);
@@ -367,11 +395,11 @@ export function GameKargoHitung() {
       </div>
       <label className="block text-sm font-bold text-slate-700">
         Nilai pertama: {tulisRibuan(kiri)}
-        <input type="range" min={operasi === "x" ? 5000 : 20000} max={operasi === "x" ? 24000 : operasi === ":" ? 96000 : 60000} step={operasi === ":" ? 1000 : 500} value={kiri} onChange={(event) => setKiri(Number(event.target.value))} className="mt-1 w-full accent-[#1C01A5]" />
+        <input type="range" min={operasi === "x" ? 5000 : 20000} max={operasi === "x" ? 24000 : operasi === ":" ? 96000 : 60000} step={operasi === ":" ? 1000 : 500} value={kiri} onChange={(event) => { catatMain(); setKiri(Number(event.target.value)); }} className="mt-1 w-full accent-[#1C01A5]" />
       </label>
       <label className="block text-sm font-bold text-slate-700">
         {kaliAtauBagi ? `Pengali atau pembagi: ${kanan}` : `Nilai kedua: ${tulisRibuan(kanan)}`}
-        <input type="range" min={kaliAtauBagi ? 2 : 10000} max={kaliAtauBagi ? 4 : 39000} step={kaliAtauBagi ? 1 : 500} value={kanan} onChange={(event) => setKanan(Number(event.target.value))} className="mt-1 w-full accent-amber-500" />
+        <input type="range" min={kaliAtauBagi ? 2 : 10000} max={kaliAtauBagi ? 4 : 39000} step={kaliAtauBagi ? 1 : 500} value={kanan} onChange={(event) => { catatMain(); setKanan(Number(event.target.value)); }} className="mt-1 w-full accent-amber-500" />
       </label>
       <p className="rounded-2xl bg-[#1C01A5] px-3 py-4 text-center text-xl font-black text-white">
         {tulisRibuan(kiri)} {tanda} {kaliAtauBagi ? kanan : tulisRibuan(kanan)} = <span className="text-emerald-300">{tulisRibuan(hasil)}</span>

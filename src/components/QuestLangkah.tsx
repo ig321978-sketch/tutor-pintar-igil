@@ -44,6 +44,7 @@ export type LangkahQuest = {
   tab?: string;
   kelompok?: string;
   bebas?: boolean;
+  halaman?: string;
 };
 
 function indeksUjung(langkah: LangkahQuest[], sudahBenar: (id: string) => boolean) {
@@ -60,13 +61,18 @@ function angkaAman(nilai: unknown) {
   return angka;
 }
 
+function kunciHalaman(item?: LangkahQuest) {
+  if (!item?.tab) return "";
+  return item.halaman ? `${item.tab}::${item.halaman}` : item.tab;
+}
+
 function batasHalaman(langkah: LangkahQuest[], indeks: number) {
-  const tab = langkah[indeks]?.tab;
+  const kunci = kunciHalaman(langkah[indeks]);
   let awal = indeks;
   let akhir = indeks;
-  if (!tab) return { awal, akhir };
-  while (awal > 0 && langkah[awal - 1]?.tab === tab) awal -= 1;
-  while (akhir < langkah.length - 1 && langkah[akhir + 1]?.tab === tab) akhir += 1;
+  if (!kunci) return { awal, akhir };
+  while (awal > 0 && kunciHalaman(langkah[awal - 1]) === kunci) awal -= 1;
+  while (akhir < langkah.length - 1 && kunciHalaman(langkah[akhir + 1]) === kunci) akhir += 1;
   return { awal, akhir };
 }
 

@@ -1,6 +1,5 @@
 "use client";
 
-import { GameBrankasRak, GameKargoHitung, GameKasirUang, GameRadarBanding } from "@/components/GameMtk5Bab1";
 import GambarCerita from "@/components/GambarCerita";
 import HasilJawabanKuis from "@/components/HasilJawabanKuis";
 import KartuPoinPenting from "@/components/KartuPoinPenting";
@@ -22,6 +21,7 @@ import {
   baca16667,
   baca25786,
   baca44567,
+  baca66500,
   isi85450,
   jumlah45750,
   jumlah55000,
@@ -32,6 +32,7 @@ import {
   lebih86576,
   lebihKecil89876,
   tulis15950,
+  tulis26932,
   tulis34000,
   tulis38000,
   uang38600,
@@ -303,6 +304,57 @@ function KuisBenarSalah({ id, perintah, baris, umpan }: { id: string; perintah: 
   );
 }
 
+function GambarRak({ digit, judul }: { digit: string[]; judul: string }) {
+  const nama = ["Puluh ribuan", "Ribuan", "Ratusan", "Puluhan", "Satuan"];
+  const warna = ["#e11d48", "#d97706", "#059669", "#0284c7", "#7c3aed"];
+  return (
+    <figure className="rounded-2xl border-2 border-sky-300 bg-white p-3">
+      <figcaption className="text-center text-sm font-black text-[#1C01A5]">{judul}</figcaption>
+      <div className="mt-3 grid grid-cols-5 gap-1">
+        {digit.map((angka, indeks) => (
+          <div key={nama[indeks]} className="text-center">
+            <div className="grid h-14 place-items-center rounded-xl text-2xl font-black text-white" style={{ background: warna[indeks] }}>{angka}</div>
+            <p className="mt-1 text-[10px] font-bold leading-tight text-slate-600">{nama[indeks]}</p>
+          </div>
+        ))}
+      </div>
+    </figure>
+  );
+}
+
+function BatangNilai() {
+  const batang = [
+    { nama: "10.000", lebar: "100%" },
+    { nama: "4.000", lebar: "40%" },
+    { nama: "500", lebar: "12%" },
+    { nama: "0", lebar: "4%" },
+    { nama: "0", lebar: "4%" },
+  ];
+  return (
+    <figure className="rounded-2xl border-2 border-amber-300 bg-amber-50 p-3">
+      <figcaption className="text-center text-sm font-black text-[#1C01A5]">Batang nilai tiket 14.500</figcaption>
+      <div className="mt-3 space-y-2">
+        {batang.map((item, indeks) => (
+          <div key={`${item.nama}-${indeks}`} className="grid grid-cols-[4.5rem_1fr] items-center gap-2">
+            <span className="text-xs font-black text-[#1C01A5]">{item.nama}</span>
+            <span className="h-4 rounded-full bg-[#1C01A5]" style={{ width: item.lebar }} />
+          </div>
+        ))}
+      </div>
+    </figure>
+  );
+}
+
+function LambangHitung() {
+  return (
+    <div className="rounded-2xl border-2 border-[#1C01A5] bg-[#F8F7FF] px-3 py-4 text-center">
+      <p className="text-sm font-black uppercase tracking-wide text-[#1C01A5]">Lambang angka</p>
+      <p className="mt-3 text-base font-black leading-relaxed text-[#1C01A5] sm:text-lg">14.500 = 1 × 10.000 + 4 × 1.000 + 5 × 100 + 0 × 10 + 0 × 1</p>
+      <p className="mt-2 text-sm font-semibold text-slate-700">Tiap angka dikali nilai raknya, lalu dijumlahkan.</p>
+    </div>
+  );
+}
+
 function RakTiket() {
   const rak = [
     { nama: "Puluh ribuan", angka: "1", nilai: "10.000" },
@@ -394,7 +446,7 @@ function TabelKurang() {
   );
 }
 
-const BACA_A = ["empat belas ribu lima ratus", "enam puluh enam ribu lima ratus", "dua puluh enam ribu sembilan ratus tiga puluh dua"];
+const BACA_A = ["tiga puluh tujuh ribu dua ratus lima puluh", "delapan puluh ribu enam", "sembilan belas ribu empat ratus tiga puluh"];
 const HASIL_B = ["79.500", "60.000", "16.000"];
 const HASIL_D = ["26.932", "9.610", "30.000"];
 
@@ -407,13 +459,19 @@ const TAB_POIN = { tab: "Review" };
 const TAB_LANGKAH: Record<string, { tab: string; kelompok?: string }> = {
   mulai: { tab: "Review", kelompok: "Tujuan Pembelajaran" },
   "rak-tiket": TAB_A,
-  "rak-info": TAB_A,
   a0: TAB_A,
   a1: TAB_A,
-  a8: TAB_A,
+  "rak-info": TAB_A,
+  a13: TAB_A,
+  a14: TAB_A,
+  "rak-gambar": TAB_A,
   a9: TAB_A,
   a11: TAB_A,
-  brankas: TAB_A,
+  a15: TAB_A,
+  "rak-abstrak": TAB_A,
+  a16: TAB_A,
+  a17: TAB_A,
+  a18: TAB_A,
   "banding-papan": TAB_B,
   "banding-info": TAB_B,
   a2: TAB_B,
@@ -422,14 +480,12 @@ const TAB_LANGKAH: Record<string, { tab: string; kelompok?: string }> = {
   b3: TAB_B,
   a10: TAB_B,
   a12: TAB_B,
-  radar: TAB_B,
   "uang-tumpuk": TAB_C,
   "uang-info": TAB_C,
   a4: TAB_C,
   a5: TAB_C,
   b4: TAB_C,
   b5: TAB_C,
-  kasir: TAB_C,
   tambah: TAB_D,
   a6: TAB_D,
   a7: TAB_D,
@@ -443,7 +499,6 @@ const TAB_LANGKAH: Record<string, { tab: string; kelompok?: string }> = {
   b10: TAB_D,
   b11: TAB_D,
   b12: TAB_D,
-  kargo: TAB_D,
   poin: TAB_POIN,
   tanya: TAB_POIN,
 };
@@ -482,63 +537,79 @@ function langkahDermaga(kelas?: string, kelamin?: KelaminGuru): LangkahQuest[] {
       kode: "rak-tiket",
       bagian: "Rak",
       judul: "Tiket 14.500",
+      halaman: "1",
       isi: (
-        <LayarBab judul="Membaca dari rak kiri" jenis="tiket" kelas={kelas} kelamin={kelamin} penjelasan={["Bilangan sampai 99.999 memakai lima rak.", "Titik di antara ribuan hanya pemisah, bukan koma."]}>
+        <LayarBab judul="Halaman 1 · Cerita" jenis="tiket" kelas={kelas} kelamin={kelamin} penjelasan={["Bilangan sampai 99.999 memakai lima rak.", "Titik di antara ribuan hanya pemisah, bukan koma."]}>
+          <p className="text-lg font-black text-[#1C01A5]">Membaca dari rak kiri</p>
+          <Dialog nama="Arun" anak="Aku mendengar empat belas ribu lima ratus. Kita baca dari rak kiri." />
           <Dialog nama="Mira" anak="Empat belas ribu lima ratus. Aku tulis dari rak kiri: 1, 4, 5, lalu dua nol." />
           <Dialog nama="Igil" anak="Jadi 14.500. Rak puluhan dan satuan kosong, tetap ditulis 0." />
           <RakTiket />
         </LayarBab>
       ),
     },
+    { kode: "a0", bagian: "Rak", judul: "Baca 44.567", halaman: "1", kuis: [idKuis("A", 0)], isi: <KuisSuara id={idKuis("A", 0)} pertanyaan="Bacalah 44.567 dengan lengkap." periksa={baca44567} petunjuk="Sebut rak puluh ribuan, lalu sisa angkanya." benar="Empat puluh empat ribu lima ratus enam puluh tujuh." /> },
+    { kode: "a1", bagian: "Rak", judul: "Tulis 15.950", halaman: "1", kuis: [idKuis("A", 1)], isi: <TulisBebas id={idKuis("A", 1)} judul="Tulis harga" visual={<Papan anak="lima belas ribu sembilan ratus lima puluh" />} pertanyaan="Tulis bilangan itu dengan angka." pesanSalah="Letakkan angka sesuai raknya. Rak kosong ditulis 0." bantuan="Lima belas ribu adalah 15. Sembilan ratus lima puluh melengkapi 15.950." umpan="15.950." periksa={tulis15950} alias={["15950", "15.950"]} konteks="Lima belas ribu sembilan ratus lima puluh ditulis 15.950." /> },
     {
       kode: "rak-info",
       bagian: "Rak",
-      judul: "Infografis 66.500",
+      judul: "Infografis 14.500",
+      halaman: "2",
       isi: (
         <div className="space-y-3">
-          <Dialog nama="Arun" anak="Harga lentera 66.500 kubaca enam puluh enam ribu lima ratus." />
-          <Dialog nama="Kiran" anak="Tiket pagi 26.932 kubaca dua puluh enam ribu sembilan ratus tiga puluh dua." />
-          <Dialog nama="Igil" anak="Aku bentangkan infografis lentera 66.500. Angka kiri paling besar nilainya." />
+          <p className="text-lg font-black text-[#1C01A5]">Halaman 2 · Infografis</p>
+          <Dialog nama="Igil" anak="Tabel warna ini membentangkan tiket 14.500. Rak kiri paling besar nilainya." />
+          <GambarRak digit={["1", "4", "5", "0", "0"]} judul="Diagram rak 14.500" />
           <TabelInfoGrafis
-            judul="Infografis: Nilai tempat 66.500"
+            judul="Infografis: Nilai tempat 14.500"
             kepala={["Rak", "Angka", "Nilai"]}
             baris={[
-              ["Puluh ribuan", "6", "60.000"],
-              ["Ribuan", "6", "6.000"],
+              ["Puluh ribuan", "1", "10.000"],
+              ["Ribuan", "4", "4.000"],
               ["Ratusan", "5", "500"],
               ["Puluhan", "0", "0"],
               ["Satuan", "0", "0"],
             ]}
-            kaki="Angka kiri paling besar nilainya."
+            kaki="10.000 + 4.000 + 500 = 14.500."
           />
         </div>
       ),
     },
-    { kode: "a0", bagian: "Rak", judul: "Baca 44.567", kuis: [idKuis("A", 0)], isi: <KuisSuara id={idKuis("A", 0)} pertanyaan="Bacalah 44.567 dengan lengkap." periksa={baca44567} petunjuk="Sebut rak puluh ribuan, lalu sisa angkanya." benar="Empat puluh empat ribu lima ratus enam puluh tujuh." /> },
-    { kode: "a1", bagian: "Rak", judul: "Tulis 15.950", kuis: [idKuis("A", 1)], isi: <TulisBebas id={idKuis("A", 1)} judul="Tulis harga" visual={<Papan anak="lima belas ribu sembilan ratus lima puluh" />} pertanyaan="Tulis bilangan itu dengan angka." pesanSalah="Letakkan angka sesuai raknya. Rak kosong ditulis 0." bantuan="Lima belas ribu adalah 15. Sembilan ratus lima puluh melengkapi 15.950." umpan="15.950." periksa={tulis15950} alias={["15950", "15.950"]} konteks="Lima belas ribu sembilan ratus lima puluh ditulis 15.950." /> },
+    { kode: "a13", bagian: "Rak", judul: "Baca 66.500", halaman: "2", kuis: [idKuis("A", 12)], isi: <KuisSuara id={idKuis("A", 12)} pertanyaan="Bacalah 66.500 dengan lengkap." periksa={baca66500} petunjuk="Sebut puluh ribuan, ribuan, lalu ratusan." benar="Enam puluh enam ribu lima ratus." /> },
+    { kode: "a14", bagian: "Rak", judul: "Tulis 26.932", halaman: "2", kuis: [idKuis("A", 13)], isi: <TulisBebas id={idKuis("A", 13)} judul="Tulis tiket pagi" visual={<Papan anak="dua puluh enam ribu sembilan ratus tiga puluh dua" />} pertanyaan="Tulis bilangan itu dengan angka." pesanSalah="Letakkan tiap bagian pada raknya. Rak yang kosong ditulis 0." bantuan="Dua puluh enam ribu adalah 26. Sembilan ratus tiga puluh dua melengkapi 26.932." umpan="26.932." periksa={tulis26932} alias={["26932", "26.932"]} konteks="Dua puluh enam ribu sembilan ratus tiga puluh dua ditulis 26.932." /> },
     {
-      kode: "a8",
+      kode: "rak-gambar",
       bagian: "Rak",
-      judul: "Seratus ribu",
+      judul: "Gambar tiket",
+      halaman: "3",
       isi: (
         <div className="space-y-3">
-          <Dialog nama="Igil" anak="100.000 dibaca seratus ribu. Angka 1 berdiri di rak ratus ribuan. Lima rak di kanannya nol." />
+          <p className="text-lg font-black text-[#1C01A5]">Halaman 3 · Gambar</p>
+          <p className="text-sm font-semibold text-slate-700">Contoh gambar dari cerita dan tabel. Rak berwarna memuat angkanya. Batang memuat nilai tiap rak.</p>
+          <GambarRak digit={["1", "4", "5", "0", "0"]} judul="Gambar rak tiket Mira" />
+          <BatangNilai />
         </div>
       ),
     },
-    { kode: "a9", bagian: "Rak", judul: "Pasangkan bacaan", kuis: [idKuis("A", 8)], isi: <KuisCocok id={idKuis("A", 8)} perintah="Pasangkan bilangan dengan bacaannya." baris={[{ kiri: "14.500", pilihan: BACA_A, benar: "empat belas ribu lima ratus" }, { kiri: "66.500", pilihan: BACA_A, benar: "enam puluh enam ribu lima ratus" }, { kiri: "26.932", pilihan: BACA_A, benar: "dua puluh enam ribu sembilan ratus tiga puluh dua" }]} umpan="14.500, 66.500, dan 26.932 sudah pada bacaan yang tepat." /> },
-    { kode: "a11", bagian: "Rak", judul: "Benar atau salah", kuis: [idKuis("A", 10)], isi: <KuisBenarSalah id={idKuis("A", 10)} perintah="Pilih benar atau salah." baris={[{ teks: "Titik pada 14.500 adalah koma desimal.", benar: false }, { teks: "Pada 66.500, angka 6 yang kiri bernilai 60.000.", benar: true }, { teks: "100.000 dibaca sepuluh ribu.", benar: false }]} umpan="Titik itu pemisah ribuan. 100.000 dibaca seratus ribu." /> },
+    { kode: "a9", bagian: "Rak", judul: "Pasangkan bacaan", halaman: "3", kuis: [idKuis("A", 8)], isi: <KuisCocok id={idKuis("A", 8)} perintah="Pasangkan bilangan dengan bacaannya." baris={[{ kiri: "37.250", pilihan: BACA_A, benar: "tiga puluh tujuh ribu dua ratus lima puluh" }, { kiri: "80.006", pilihan: BACA_A, benar: "delapan puluh ribu enam" }, { kiri: "19.430", pilihan: BACA_A, benar: "sembilan belas ribu empat ratus tiga puluh" }]} umpan="37.250, 80.006, dan 19.430 sudah pada bacaan yang tepat." /> },
+    { kode: "a11", bagian: "Rak", judul: "Benar atau salah", halaman: "3", kuis: [idKuis("A", 10)], isi: <KuisBenarSalah id={idKuis("A", 10)} perintah="Pilih benar atau salah." baris={[{ teks: "Titik pada 52.700 adalah koma desimal.", benar: false }, { teks: "Pada 64.000, angka 6 bernilai 60.000.", benar: true }, { teks: "90.005 dibaca sembilan ribu lima.", benar: false }]} umpan="Titik itu pemisah ribuan. Angka 6 di rak puluh ribuan bernilai 60.000. 90.005 dibaca sembilan puluh ribu lima." /> },
+    { kode: "a15", bagian: "Rak", judul: "Susun dari kecil", halaman: "3", kuis: [idKuis("A", 14)], isi: <SusunToken id={idKuis("A", 14)} perintah="Susun dari yang paling kecil." acak={["48.200", "8.420", "28.040"]} benar={["8.420", "28.040", "48.200"]} umpan="8.420, 28.040, 48.200." /> },
     {
-      kode: "brankas",
+      kode: "rak-abstrak",
       bagian: "Rak",
-      judul: "Brankas lima roda",
+      judul: "Lambang angka",
+      halaman: "4",
       isi: (
         <div className="space-y-3">
-          <Dialog nama="Igil" anak="Sekarang putar lima roda brankas sampai sama dengan sandinya." />
-          <GameBrankasRak />
+          <p className="text-lg font-black text-[#1C01A5]">Halaman 4 · Lambang</p>
+          <p className="text-sm font-semibold text-slate-700">Sekarang tiket yang sama ditulis dengan angka dan tanda kali.</p>
+          <LambangHitung />
         </div>
       ),
     },
+    { kode: "a16", bagian: "Rak", judul: "Nilai angka 7", halaman: "4", kuis: [idKuis("A", 15)], isi: <Pilih id={idKuis("A", 15)} pertanyaan="Nilai angka 7 pada 47.305 adalah..." pilihan={[{ huruf: "A", teks: "70.000" }, { huruf: "B", teks: "7.000" }, { huruf: "C", teks: "700" }, { huruf: "D", teks: "70" }]} benar="B" umpan="Angka 7 berdiri di rak ribuan, jadi nilainya 7.000." salah="Lihat rak tempat angka 7 berdiri." /> },
+    { kode: "a17", bagian: "Rak", judul: "Jumlah kali rak", halaman: "4", kuis: [idKuis("A", 16)], isi: <Pilih id={idKuis("A", 16)} pertanyaan="3 × 10.000 + 2 × 100 ditulis..." pilihan={[{ huruf: "A", teks: "30.200" }, { huruf: "B", teks: "32.000" }, { huruf: "C", teks: "3.200" }, { huruf: "D", teks: "30.020" }]} benar="A" umpan="30.000 + 200 = 30.200." salah="Kalikan dulu, lalu jumlahkan." /> },
+    { kode: "a18", bagian: "Rak", judul: "Jumlah tiga nilai", halaman: "4", kuis: [idKuis("A", 17)], isi: <Pilih id={idKuis("A", 17)} pertanyaan="50.000 + 800 + 6 = ..." pilihan={[{ huruf: "A", teks: "50.860" }, { huruf: "B", teks: "58.006" }, { huruf: "C", teks: "50.806" }, { huruf: "D", teks: "5.806" }]} benar="C" umpan="50.000 + 800 + 6 = 50.806." salah="Letakkan 800 di rak ratusan dan 6 di rak satuan." /> },
     {
       kode: "banding-papan",
       bagian: "Banding",
@@ -580,17 +651,6 @@ function langkahDermaga(kelas?: string, kelamin?: KelaminGuru): LangkahQuest[] {
     { kode: "a10", bagian: "Banding", judul: "Susun dari kecil", kuis: [idKuis("A", 9)], isi: <SusunToken id={idKuis("A", 9)} perintah="Susun dari yang paling kecil." acak={["78.897", "43.217", "56.475"]} benar={["43.217", "56.475", "78.897"]} umpan="43.217, 56.475, 78.897." /> },
     { kode: "a12", bagian: "Banding", judul: "Selisih dua harga", kuis: [idKuis("A", 11)], isi: <Pilih id={idKuis("A", 11)} pertanyaan="Selisih 34.000 dan 30.000 adalah..." pilihan={[{ huruf: "A", teks: "4.000" }, { huruf: "B", teks: "19.000" }, { huruf: "C", teks: "49.000" }, { huruf: "D", teks: "2.000" }]} benar="A" umpan="34.000 − 30.000 = 4.000." salah="Kurangkan bilangan yang lebih kecil dari yang lebih besar." /> },
     {
-      kode: "radar",
-      bagian: "Banding",
-      judul: "Radar banding",
-      isi: (
-        <div className="space-y-3">
-          <Dialog nama="Kiran" anak="Radar ini membandingkan dua bilangan dari rak kiri." />
-          <GameRadarBanding />
-        </div>
-      ),
-    },
-    {
       kode: "uang-tumpuk",
       bagian: "Uang",
       judul: "Uang Kiran",
@@ -627,17 +687,6 @@ function langkahDermaga(kelas?: string, kelamin?: KelaminGuru): LangkahQuest[] {
     { kode: "a5", bagian: "Uang", judul: "Urai 57.500", kuis: [idKuis("A", 5)], isi: <TulisBebas id={idKuis("A", 5)} judul="Urai 57.500" visual={<Papan anak="57.500" />} pertanyaan="Urai 57.500 menurut raknya." pesanSalah="Tulis nilai puluh ribuan, ribuan, dan ratusan." bantuan="5 puluh ribuan, 7 ribuan, dan 5 ratusan." umpan="50.000 + 7.000 + 500." periksa={urai57500} alias={["50000", "7000", "500"]} konteks="57.500 = 50.000 + 7.000 + 500." /> },
     { kode: "b4", bagian: "Uang", judul: "Sembilan puluh tujuh ribu", kuis: [idKuis("B", 2)], isi: <KuisSuara id={idKuis("B", 2)} pertanyaan="Berapa 9 lembar sepuluh ribuan, 7 lembar seribuan, dan 5 keping seratusan?" periksa={komposisi97500} petunjuk="Kalikan, lalu jumlahkan." benar="Sembilan puluh tujuh ribu lima ratus." /> },
     { kode: "b5", bagian: "Uang", judul: "Tiga dan empat", kuis: [idKuis("B", 3)], isi: <TulisBebas id={idKuis("B", 3)} judul="Tiga dan empat" visual={<Papan anak="3 lembar sepuluh ribuan + 4 lembar seribuan" />} pertanyaan="Tulis jumlah uang itu." pesanSalah="Puluh ribuan dan ribuan saja. Rak lain nol." bantuan="30.000 + 4.000 = 34.000." umpan="34.000." periksa={tulis34000} alias={["34000", "34.000"]} konteks="3 lembar sepuluh ribuan dan 4 lembar seribuan adalah 34.000." /> },
-    {
-      kode: "kasir",
-      bagian: "Uang",
-      judul: "Kasir dermaga",
-      isi: (
-        <div className="space-y-3">
-          <Dialog nama="Mira" anak="Susun pecahan uang sampai jumlahnya sama dengan harga." />
-          <GameKasirUang />
-        </div>
-      ),
-    },
     {
       kode: "tambah",
       bagian: "Hitung",
@@ -704,17 +753,6 @@ function langkahDermaga(kelas?: string, kelamin?: KelaminGuru): LangkahQuest[] {
     { kode: "b10", bagian: "Hitung", judul: "Urut harga buah", kuis: [idKuis("B", 8)], isi: <SusunToken id={idKuis("B", 8)} perintah="Susun harga buah dari yang paling murah." acak={["34.000", "15.000", "23.500", "32.000", "17.000"]} benar={["15.000", "17.000", "23.500", "32.000", "34.000"]} umpan="15.000, 17.000, 23.500, 32.000, 34.000." /> },
     { kode: "b11", bagian: "Hitung", judul: "Benar atau salah buah", kuis: [idKuis("B", 9)], isi: <KuisBenarSalah id={idKuis("B", 9)} perintah="Pilih benar atau salah." baris={[{ teks: "Kelengkeng 34.000 lebih mahal daripada alpukat 32.000.", benar: true }, { teks: "Tiga bungkus jeruk 17.000 sama dengan satu kelengkeng 34.000.", benar: false }, { teks: "Dua bungkus buah naga 15.000 lebih mahal daripada satu alpukat 32.000.", benar: false }]} umpan="Hanya pernyataan pertama yang benar. 3 × 17.000 = 51.000. 2 × 15.000 = 30.000." /> },
     { kode: "b12", bagian: "Hitung", judul: "Paket yang hemat", kuis: [idKuis("B", 10)], isi: <Pilih id={idKuis("B", 10)} pertanyaan="Untuk dua porsi yang sama, mana yang lebih hemat?" visual={<Papan anak="Paket A 27.500 · Paket B 53.000" />} pilihan={[{ huruf: "A", teks: "Paket B, hemat 2.000" }, { huruf: "B", teks: "Paket A, hemat 2.000" }, { huruf: "C", teks: "Keduanya sama" }, { huruf: "D", teks: "Paket B lebih mahal 2.000" }]} benar="A" umpan="Dua Paket A = 55.000. Paket B = 53.000. Paket B lebih hemat 2.000." salah="Bandingkan 2 × 27.500 dengan 53.000." /> },
-    {
-      kode: "kargo",
-      bagian: "Hitung",
-      judul: "Kargo dermaga",
-      isi: (
-        <div className="space-y-3">
-          <Dialog nama="Arun" anak="Geser kargo, lalu lihat hasil tambah, kurang, kali, atau bagi." />
-          <GameKargoHitung />
-        </div>
-      ),
-    },
   ];
   const evaluasi: LangkahQuest[] = Array.from({ length: 10 }, (_, nomor) => ({
     kode: `d${nomor}`,
@@ -844,7 +882,7 @@ export default function NaskahMtk5Bab1({ kelas, kelamin }: { kelas?: string; kel
   const langkah = useMemo(() => langkahDermaga(kelas, kelamin), [kelas, kelamin]);
   return (
     <QuestLangkah
-      simpan="quest-mtk-5-bab1-v2"
+      simpan="quest-mtk-5-bab1-v3"
       langkah={langkah}
       sudahBenar={sudahBenar}
       slot={{ id: SLOT_AJUAN_SEBELUM_KARTU_D, padaKode: "tanya" }}

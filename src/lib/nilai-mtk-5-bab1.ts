@@ -34,6 +34,15 @@ export function tulis15950(teks: string): boolean {
   return bacaan(teks, ["lima belas ribu", "sembilan ratus", "lima puluh"], "15950");
 }
 
+export function baca66500(teks: string): boolean {
+  return bacaan(teks, ["enam puluh enam ribu", "lima ratus"], "66500");
+}
+
+export function tulis26932(teks: string): boolean {
+  const k = biasa(teks);
+  return ada(teks, "26932") || (k.includes("dua puluh enam ribu") && k.includes("sembilan ratus") && k.includes("tiga puluh dua"));
+}
+
 export function lebihKecil89876(teks: string): boolean {
   const k = biasa(teks);
   if (ada(teks, "97768") && !ada(teks, "89876") && !k.includes("delapan puluh sembilan")) return false;
