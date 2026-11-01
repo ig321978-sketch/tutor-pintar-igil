@@ -413,6 +413,38 @@ function TumpukanUang() {
   );
 }
 
+function KepingUang() {
+  const kelompok = [
+    { nama: "10.000", banyak: 6, warna: "bg-emerald-600" },
+    { nama: "1.000", banyak: 3, warna: "bg-sky-600" },
+    { nama: "100", banyak: 5, warna: "bg-amber-500" },
+  ];
+  return (
+    <figure className="rounded-2xl border-2 border-emerald-300 bg-emerald-50 p-3">
+      <figcaption className="text-center text-sm font-black text-[#1C01A5]">Gambar uang 63.500</figcaption>
+      <div className="mt-3 space-y-2">
+        {kelompok.map((item) => (
+          <div key={item.nama} className="flex flex-wrap items-center gap-1">
+            {Array.from({ length: item.banyak }, (_, indeks) => (
+              <span key={`${item.nama}-${indeks}`} className={`grid h-8 min-w-14 place-items-center rounded-lg px-1 text-[10px] font-black text-white ${item.warna}`}>{item.nama}</span>
+            ))}
+          </div>
+        ))}
+      </div>
+    </figure>
+  );
+}
+
+function LambangSusun() {
+  return (
+    <div className="rounded-2xl border-2 border-[#1C01A5] bg-[#F8F7FF] px-3 py-4 text-center">
+      <p className="text-sm font-black uppercase tracking-wide text-[#1C01A5]">Lambang susun</p>
+      <p className="mt-3 text-base font-black leading-relaxed text-[#1C01A5] sm:text-lg">63.500 = 6 × 10.000 + 3 × 1.000 + 5 × 100</p>
+      <p className="mt-2 text-sm font-semibold text-slate-700">Satu ribuan dapat ditukar menjadi sepuluh ratusan. Jumlahnya tetap.</p>
+    </div>
+  );
+}
+
 function TabelTambah() {
   const kepala = ["Ribuan", "Ratusan", "Puluhan", "Satuan"];
   const atas = ["6", "4", "8", "0"];
@@ -458,6 +490,7 @@ function TabelKurang() {
 
 const BACA_A = ["tiga puluh tujuh ribu dua ratus lima puluh", "delapan puluh ribu enam", "sembilan belas ribu empat ratus tiga puluh"];
 const TANDA_B = ["lebih besar", "lebih kecil", "sama besar"];
+const SUSUN_C = ["28.300", "41.200", "15.050"];
 const HASIL_B = ["79.500", "60.000", "16.000"];
 const HASIL_D = ["26.932", "9.610", "30.000"];
 
@@ -498,11 +531,19 @@ const TAB_LANGKAH: Record<string, { tab: string; kelompok?: string }> = {
   "b-tanda": TAB_B,
   "b-terkecil": TAB_B,
   "uang-tumpuk": TAB_C,
-  "uang-info": TAB_C,
   a4: TAB_C,
   a5: TAB_C,
+  "uang-info": TAB_C,
   b4: TAB_C,
   b5: TAB_C,
+  "uang-gambar": TAB_C,
+  "c-susun": TAB_C,
+  "c-benar": TAB_C,
+  "c-cocok": TAB_C,
+  "uang-lambang": TAB_C,
+  "c-kali": TAB_C,
+  "c-urai": TAB_C,
+  "c-tukar": TAB_C,
   tambah: TAB_D,
   a6: TAB_D,
   a7: TAB_D,
@@ -713,39 +754,77 @@ function langkahDermaga(kelas?: string, kelamin?: KelaminGuru): LangkahQuest[] {
       kode: "uang-tumpuk",
       bagian: "Uang",
       judul: "Uang Kiran",
+      halaman: "1",
       isi: (
-        <LayarBab judul="Menyusun dan mengurai" jenis="uang" kelas={kelas} kelamin={kelamin} penjelasan={["Menyusun berarti menggabungkan nilai rak menjadi satu bilangan.", "Mengurai berarti memecah bilangan ke setiap rak.", "Satu bilangan dapat disusun dengan lebih dari satu cara."]}>
+        <LayarBab judul="Halaman 1 · Cerita" jenis="uang" kelas={kelas} kelamin={kelamin} penjelasan={["Menyusun berarti menggabungkan nilai rak menjadi satu bilangan.", "Mengurai berarti memecah bilangan ke setiap rak.", "Satu bilangan dapat disusun dengan lebih dari satu cara."]}>
+          <p className="text-lg font-black text-[#1C01A5]">Susun dari lembar terbesar</p>
           <Dialog nama="Kiran" anak="Uangku 6 lembar sepuluh ribuan, 3 lembar seribuan, dan 5 keping seratusan." />
-          <TumpukanUang />
+          <Dialog nama="Mira" anak="Aku jumlahkan dari yang terbesar. Enam puluh ribu, lalu tiga ribu, lalu lima ratus." />
           <Dialog nama="Igil" anak="Sepuluh keping seratusan dapat ditukar menjadi satu lembar seribuan. Karena itu satu bilangan bisa disusun dengan lebih dari satu cara." />
+          <TumpukanUang />
         </LayarBab>
       ),
     },
+    { kode: "a4", bagian: "Uang", judul: "Jumlah pecahan uang", halaman: "1", kuis: [idKuis("A", 4)], isi: <KuisSuara id={idKuis("A", 4)} pertanyaan="Berapa jumlah 3 lembar sepuluh ribuan, 8 lembar seribuan, dan 6 keping seratusan?" periksa={uang38600} petunjuk="Kalikan banyak lembar dengan nilai pecahannya, lalu jumlahkan." benar="Tiga puluh delapan ribu enam ratus." /> },
+    { kode: "a5", bagian: "Uang", judul: "Urai 57.500", halaman: "1", kuis: [idKuis("A", 5)], isi: <TulisBebas id={idKuis("A", 5)} judul="Urai 57.500" visual={<Papan anak="57.500" />} pertanyaan="Urai 57.500 menurut raknya." pesanSalah="Tulis nilai puluh ribuan, ribuan, dan ratusan." bantuan="5 puluh ribuan, 7 ribuan, dan 5 ratusan." umpan="50.000 + 7.000 + 500." periksa={urai57500} alias={["50000", "7000", "500"]} konteks="57.500 = 50.000 + 7.000 + 500." /> },
     {
       kode: "uang-info",
       bagian: "Uang",
-      judul: "Dua susunan 45.600",
+      judul: "Infografis 63.500",
+      halaman: "2",
       isi: (
         <div className="space-y-3">
-          <Dialog nama="Mira" anak="14.500 diurai menjadi 10.000 + 4.000 + 500 + 0 + 0." />
-          <Dialog nama="Arun" anak="Infografis 45.600 menunjukkan dua susunan. Keduanya tetap 45.600." />
-                    <TabelInfoGrafis
-            judul="Infografis: Dua susunan 45.600"
-            kepala={["Cara", "Isi", "Jumlah"]}
+          <p className="text-lg font-black text-[#1C01A5]">Halaman 2 · Infografis</p>
+          <Dialog nama="Igil" anak="Tabel warna ini membentangkan uang Kiran. Enam puluh ribu, tiga ribu, dan lima ratus." />
+          <GambarRak digit={["6", "3", "5", "0", "0"]} judul="Rak uang 63.500" />
+          <TabelInfoGrafis
+            judul="Infografis: Susunan 63.500"
+            kepala={["Cara", "Susunan", "Jumlah"]}
             baris={[
-              ["Cara 1", "4 puluh ribuan + 5 ribuan + 6 ratusan", "45.600"],
-              ["Cara 2", "3 puluh ribuan + 15 ribuan + 6 ratusan", "45.600"],
-              ["Tukar", "10 ratusan = 1 ribuan", "tetap"],
+              ["Cara 1", "6 puluh ribuan + 3 ribuan + 5 ratusan", "63.500"],
+              ["Cara 2", "6 puluh ribuan + 2 ribuan + 15 ratusan", "63.500"],
+              ["Tukar", "1 ribuan = 10 ratusan", "tetap"],
             ]}
-            kaki="Dua cara, satu bilangan."
+            kaki="60.000 + 3.000 + 500 = 63.500. Dua cara, satu bilangan."
           />
         </div>
       ),
     },
-    { kode: "a4", bagian: "Uang", judul: "Jumlah pecahan uang", kuis: [idKuis("A", 4)], isi: <KuisSuara id={idKuis("A", 4)} pertanyaan="Berapa jumlah 3 lembar sepuluh ribuan, 8 lembar seribuan, dan 6 keping seratusan?" periksa={uang38600} petunjuk="Kalikan banyak lembar dengan nilai pecahannya, lalu jumlahkan." benar="Tiga puluh delapan ribu enam ratus." /> },
-    { kode: "a5", bagian: "Uang", judul: "Urai 57.500", kuis: [idKuis("A", 5)], isi: <TulisBebas id={idKuis("A", 5)} judul="Urai 57.500" visual={<Papan anak="57.500" />} pertanyaan="Urai 57.500 menurut raknya." pesanSalah="Tulis nilai puluh ribuan, ribuan, dan ratusan." bantuan="5 puluh ribuan, 7 ribuan, dan 5 ratusan." umpan="50.000 + 7.000 + 500." periksa={urai57500} alias={["50000", "7000", "500"]} konteks="57.500 = 50.000 + 7.000 + 500." /> },
-    { kode: "b4", bagian: "Uang", judul: "Sembilan puluh tujuh ribu", kuis: [idKuis("B", 2)], isi: <KuisSuara id={idKuis("B", 2)} pertanyaan="Berapa 9 lembar sepuluh ribuan, 7 lembar seribuan, dan 5 keping seratusan?" periksa={komposisi97500} petunjuk="Kalikan, lalu jumlahkan." benar="Sembilan puluh tujuh ribu lima ratus." /> },
-    { kode: "b5", bagian: "Uang", judul: "Tiga dan empat", kuis: [idKuis("B", 3)], isi: <TulisBebas id={idKuis("B", 3)} judul="Tiga dan empat" visual={<Papan anak="3 lembar sepuluh ribuan + 4 lembar seribuan" />} pertanyaan="Tulis jumlah uang itu." pesanSalah="Puluh ribuan dan ribuan saja. Rak lain nol." bantuan="30.000 + 4.000 = 34.000." umpan="34.000." periksa={tulis34000} alias={["34000", "34.000"]} konteks="3 lembar sepuluh ribuan dan 4 lembar seribuan adalah 34.000." /> },
+    { kode: "b4", bagian: "Uang", judul: "Sembilan puluh tujuh ribu", halaman: "2", kuis: [idKuis("B", 2)], isi: <KuisSuara id={idKuis("B", 2)} pertanyaan="Berapa 9 lembar sepuluh ribuan, 7 lembar seribuan, dan 5 keping seratusan?" periksa={komposisi97500} petunjuk="Kalikan, lalu jumlahkan." benar="Sembilan puluh tujuh ribu lima ratus." /> },
+    { kode: "b5", bagian: "Uang", judul: "Tiga dan empat", halaman: "2", kuis: [idKuis("B", 3)], isi: <TulisBebas id={idKuis("B", 3)} judul="Tiga dan empat" visual={<Papan anak="3 lembar sepuluh ribuan + 4 lembar seribuan" />} pertanyaan="Tulis jumlah uang itu." pesanSalah="Puluh ribuan dan ribuan saja. Rak lain nol." bantuan="30.000 + 4.000 = 34.000." umpan="34.000." periksa={tulis34000} alias={["34000", "34.000"]} konteks="3 lembar sepuluh ribuan dan 4 lembar seribuan adalah 34.000." /> },
+    {
+      kode: "uang-gambar",
+      bagian: "Uang",
+      judul: "Gambar uang Kiran",
+      halaman: "3",
+      isi: (
+        <div className="space-y-3">
+          <p className="text-lg font-black text-[#1C01A5]">Halaman 3 · Gambar</p>
+          <p className="text-sm font-semibold text-slate-700">Contoh gambar dari cerita dan tabel. Lembar besar, lembar sedang, lalu keping kecil.</p>
+          <KepingUang />
+          <GambarRak digit={["6", "3", "5", "0", "0"]} judul="63.500" />
+        </div>
+      ),
+    },
+    { kode: "c-susun", bagian: "Uang", judul: "Susun hasil", halaman: "3", kuis: [idKuis("B", 16)], isi: <SusunToken id={idKuis("B", 16)} perintah="Susun dari hasil yang paling kecil." acak={["2 × 10.000 + 4 × 1.000", "2 × 1.000 + 4 × 100", "2 × 10.000 + 4 × 100"]} benar={["2 × 1.000 + 4 × 100", "2 × 10.000 + 4 × 100", "2 × 10.000 + 4 × 1.000"]} umpan="2.400, lalu 20.400, lalu 24.000." /> },
+    { kode: "c-benar", bagian: "Uang", judul: "Benar atau salah", halaman: "3", kuis: [idKuis("B", 17)], isi: <KuisBenarSalah id={idKuis("B", 17)} perintah="Pilih benar atau salah." baris={[{ teks: "4 lembar sepuluh ribuan dan 2 lembar seribuan sama dengan 42.000.", benar: true }, { teks: "8 keping seratusan sama dengan 8.000.", benar: false }, { teks: "7 lembar seribuan sama dengan 7.000.", benar: true }]} umpan="40.000 + 2.000 = 42.000. Delapan ratusan adalah 800, bukan 8.000. Tujuh ribuan adalah 7.000." /> },
+    { kode: "c-cocok", bagian: "Uang", judul: "Pasangkan susunan", halaman: "3", kuis: [idKuis("B", 18)], isi: <KuisCocok id={idKuis("B", 18)} perintah="Pasangkan susunan dengan jumlahnya." baris={[{ kiri: "2 puluh ribuan + 8 ribuan + 3 ratusan", pilihan: SUSUN_C, benar: "28.300" }, { kiri: "4 puluh ribuan + 1 ribuan + 2 ratusan", pilihan: SUSUN_C, benar: "41.200" }, { kiri: "1 puluh ribuan + 5 ribuan + 5 puluhan", pilihan: SUSUN_C, benar: "15.050" }]} umpan="28.300, 41.200, dan 15.050." /> },
+    {
+      kode: "uang-lambang",
+      bagian: "Uang",
+      judul: "Lambang susun",
+      halaman: "4",
+      isi: (
+        <div className="space-y-3">
+          <p className="text-lg font-black text-[#1C01A5]">Halaman 4 · Lambang</p>
+          <p className="text-sm font-semibold text-slate-700">Uang yang sama sekarang ditulis dengan tanda kali dan tambah.</p>
+          <LambangSusun />
+        </div>
+      ),
+    },
+    { kode: "c-kali", bagian: "Uang", judul: "Jumlah kali rak", halaman: "4", kuis: [idKuis("B", 19)], isi: <Pilih id={idKuis("B", 19)} pertanyaan="5 × 10.000 + 2 × 1.000 + 4 × 100 ditulis..." pilihan={[{ huruf: "A", teks: "52.400" }, { huruf: "B", teks: "52.040" }, { huruf: "C", teks: "5.240" }, { huruf: "D", teks: "50.240" }]} benar="A" umpan="50.000 + 2.000 + 400 = 52.400." salah="Kalikan dulu, lalu jumlahkan." /> },
+    { kode: "c-urai", bagian: "Uang", judul: "Urai 71.080", halaman: "4", kuis: [idKuis("B", 20)], isi: <Pilih id={idKuis("B", 20)} pertanyaan="71.080 diurai menurut raknya menjadi..." pilihan={[{ huruf: "A", teks: "70.000 + 1.000 + 80" }, { huruf: "B", teks: "70.000 + 1.000 + 800" }, { huruf: "C", teks: "7.000 + 100 + 80" }, { huruf: "D", teks: "71.000 + 800" }]} benar="A" umpan="71.080 = 70.000 + 1.000 + 80." salah="Letakkan 7 di puluh ribuan, 1 di ribuan, dan 8 di puluhan." /> },
+    { kode: "c-tukar", bagian: "Uang", judul: "Cara lain", halaman: "4", kuis: [idKuis("B", 21)], isi: <Pilih id={idKuis("B", 21)} pertanyaan="Cara lain menulis 2 × 10.000 + 12 × 1.000 adalah..." pilihan={[{ huruf: "A", teks: "3 × 10.000 + 2 × 1.000" }, { huruf: "B", teks: "2 × 10.000 + 1 × 1.000" }, { huruf: "C", teks: "12 × 10.000 + 2 × 1.000" }, { huruf: "D", teks: "2 × 1.000 + 12 × 100" }]} benar="A" umpan="20.000 + 12.000 = 32.000. Itu sama dengan 30.000 + 2.000." salah="Dua belas ribuan = 1 puluh ribuan + 2 ribuan." /> },
     {
       kode: "tambah",
       bagian: "Hitung",
@@ -941,7 +1020,7 @@ export default function NaskahMtk5Bab1({ kelas, kelamin }: { kelas?: string; kel
   const langkah = useMemo(() => langkahDermaga(kelas, kelamin), [kelas, kelamin]);
   return (
     <QuestLangkah
-      simpan="quest-mtk-5-bab1-v4"
+      simpan="quest-mtk-5-bab1-v5"
       langkah={langkah}
       sudahBenar={sudahBenar}
       slot={{ id: SLOT_AJUAN_SEBELUM_KARTU_D, padaKode: "tanya" }}
