@@ -16,6 +16,8 @@ import GambarCerita from "@/components/GambarCerita";
 import TombolVoiceMateriPai1 from "@/components/TombolVoiceMateriPai1";
 import WritingCanvas from "@/components/WritingCanvas";
 import { useKuisMateri } from "@/components/KuisMateriContext";
+import { QuestLangkah, type LangkahQuest } from "@/components/QuestLangkah";
+import { BenarSalahTiga, JudulHalaman, SusunTiga, empatHalaman } from "@/components/modul/GigitanQuest";
 import { SLOT_AJUAN_SEBELUM_KARTU_D } from "@/components/NaskahMtk2Bab1";
 import { kelasTombolHasilKuis, statusDariPilihan, type StatusJawabanKuis } from "@/lib/hasil-kuis";
 import { idKuisKartuResmi, idKuisTulisKartu } from "@/lib/kuis-materi";
@@ -530,321 +532,124 @@ function TulisBebas({
   );
 }
 
-function IsiKelompok({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminGuru }) {
+function IsiKelompok({ kelas, kelamin, halaman }: { kelas?: string; kelamin?: KelaminGuru; halaman: number }) {
   const [salahKanvas, setSalahKanvas] = useState(0);
   const kelompok = ["🍎 Buah", "🥕 Sayur"];
-  return (
-    <>
-      <JudulSubBab
-        judul="Sub-Bab A: Mengelompokkan Data"
-        kelas={kelas}
-        kelamin={kelamin}
-        naskah={[
-          "Kalau benda berserakan, kelompokkan dulu menurut jenisnya.",
-          "Gelas ada enam, piring ada empat, sendok ada delapan.",
-          "Satu jenis, satu kotak. Hitung isi setiap kotak.",
-        ]}
-      />
-      <div className="mt-4 space-y-3">
-        <Adegan
-          judul="Kantin yang berantakan"
-          src="/doodle-mtk/mtk-1-bab8-kantin.jpg"
-          alt="Meja kantin penuh gelas, piring, dan sendok. Rara dan Bimo terkejut. Tupai Igil memakai celemek."
-        >
-          <p className="text-sm font-semibold text-slate-700">
-            Sepulang istirahat, gelas, piring, dan sendok bertumpuk lalu runtuh.
-          </p>
+  if (halaman === 0) {
+    return (
+      <div className="space-y-3">
+        <JudulHalaman n={1} />
+        <JudulSubBab judul="Sub-Bab A: Mengelompokkan Data" kelas={kelas} kelamin={kelamin} naskah={["Kalau benda berserakan, kelompokkan dulu menurut jenisnya.", "Satu jenis, satu kotak."]} />
+        <Adegan judul="Kantin yang berantakan" src="/doodle-mtk/mtk-1-bab8-kantin.jpg" alt="Meja kantin penuh gelas, piring, dan sendok. Rara dan Bimo terkejut. Igil memakai celemek.">
+          <p className="text-sm font-semibold text-slate-700">Sepulang istirahat, gelas, piring, dan sendok bertumpuk lalu runtuh.</p>
           <Dialog nama="Rara" anak="Igil pasti marah. Kita tidak tahu mau mulai dari mana." />
           <Dialog nama="Bimo" anak="Ini terlalu banyak!" />
           <Dialog nama="Igil" anak="Namaku Igil! Rahasianya… kelompokkan dulu!" />
-          <KuisAkhirAdegan
-            idSuara={idKuis("A", 1)}
-            idKanvas={idKuis("A", 2)}
-            pertanyaanSuara="Rahasia Igil: apa yang dilakukan dulu?"
-            aliasSuara={["kelompokkan", "kelompok"]}
-            petunjukSuara="Ucapkan: kelompokkan."
-            pertanyaanKanvas="Tuliskan kata kelompokkan."
-            aliasKanvas={["kelompokkan", "kelompok"]}
-            konteksKanvas="Benda yang berserakan dikelompokkan dulu."
-          />
         </Adegan>
-        <Adegan
-          judul="Adegan 1 · Mulai dari mana?"
-          src="/doodle-mtk/mtk-1-bab8-adegan-1.jpg"
-          alt="Tiga kotak kosong berlabel gelas, piring, dan sendok. Benda masih berserakan di lantai."
-        >
-          <Dialog nama="Igil" anak="Aturan pertama: pisahkan berdasarkan jenis!" />
-          <Dialog nama="Bimo" anak="Jadi gelas ke kotak gelas?" />
-          <Dialog nama="Rara" anak="Aku ambil gelas!" />
-          <p className="text-sm font-black text-[#1C01A5]">Satu jenis, satu kotak.</p>
-          <KuisAkhirAdegan
-            idSuara={idKuis("A", 3)}
-            idKanvas={idKuis("A", 4)}
-            pertanyaanSuara="Gelas dimasukkan ke kotak apa?"
-            aliasSuara={["gelas"]}
-            petunjukSuara="Sebutkan nama kotaknya."
-            pertanyaanKanvas="Tuliskan kata gelas."
-            aliasKanvas={["gelas"]}
-            konteksKanvas="Gelas masuk ke kotak gelas."
-          />
-        </Adegan>
-        <Adegan
-          judul="Adegan 2 · Menghitung kelompok"
-          src="/doodle-mtk/mtk-1-bab8-adegan-2.jpg"
-          alt="Tiga kotak: gelas 6, piring 4, dan sendok 8."
-        >
-          <Dialog nama="Rara" anak="Gelas ada 6." />
-          <Dialog nama="Bimo" anak="Piring ada 4. Kalau ditanya yang paling banyak, aku masih harus hitung ulang." />
-          <Dialog nama="Igil" anak="Sendok ada 8. Ayo lihat cara yang lebih pintar." />
-          <KuisAkhirAdegan
-            idSuara={idKuis("A", 5)}
-            idKanvas={idKuis("A", 6)}
-            pertanyaanSuara="Sendok ada berapa?"
-            aliasSuara={["8", "delapan"]}
-            petunjukSuara="Ucapkan angkanya."
-            pertanyaanKanvas="Tuliskan angka banyak gelas."
-            aliasKanvas={["6", "enam"]}
-            konteksKanvas="Gelas ada 6."
-          />
-        </Adegan>
-        <TabelInfoGrafis
-          judul="Infografis: Daftar dan Tabel"
-          kepala={["Benda", "Banyaknya", "Baca"]}
-          baris={[
-            ["Gelas", "6", "sedang"],
-            ["Piring", "4", "paling sedikit"],
-            ["Sendok", "8", "paling banyak"],
-          ]}
-          kaki="Gelas ada enam, piring ada empat, sendok ada delapan."
-        />
+        <KuisAkhirAdegan idSuara={idKuis("A", 1)} idKanvas={idKuis("A", 2)} pertanyaanSuara="Rahasia Igil: apa yang dilakukan dulu?" aliasSuara={["kelompokkan", "kelompok"]} petunjukSuara="Ucapkan: kelompokkan." pertanyaanKanvas="Tuliskan kata kelompokkan." aliasKanvas={["kelompokkan", "kelompok"]} konteksKanvas="Benda yang berserakan dikelompokkan dulu." />
+      </div>
+    );
+  }
+  if (halaman === 1) {
+    return (
+      <div className="space-y-3">
+        <JudulHalaman n={2} />
+        <TabelInfoGrafis judul="Infografis: Daftar dan Tabel" kepala={["Benda", "Banyaknya", "Baca"]} baris={[["Gelas", "6", "sedang"], ["Piring", "4", "paling sedikit"], ["Sendok", "8", "paling banyak"]]} kaki="Satu jenis, satu baris." />
         <article className="rounded-2xl border-2 border-emerald-200 bg-emerald-50 px-4 py-3">
           <p className="text-sm font-black text-[#1C01A5]">Langkah mengelompokkan</p>
-          <p className="mt-1 text-sm font-semibold text-slate-700">
-            Lihat jenisnya, buat satu kotak untuk setiap jenis, pindahkan satu per satu, lalu hitung. Apel 4 dan pisang 2.
-          </p>
-          <p className="mt-2 text-sm font-black text-[#1C01A5]">Satu jenis, satu kotak.</p>
+          <p className="mt-1 text-sm font-semibold text-slate-700">Lihat jenisnya. Satu kotak untuk satu jenis. Pindahkan satu per satu, lalu hitung.</p>
         </article>
-        <KuisCocok
-          id={idKuis("B", 0)}
-          perintah="Pasangkan benda ke kelompoknya!"
-          baris={[
-            { kiri: "🍎 Apel", pilihan: kelompok, benar: "🍎 Buah" },
-            { kiri: "🥕 Wortel", pilihan: kelompok, benar: "🥕 Sayur" },
-            { kiri: "🍌 Pisang", pilihan: kelompok, benar: "🍎 Buah" },
-            { kiri: "🥦 Brokoli", pilihan: kelompok, benar: "🥕 Sayur" },
-          ]}
-          umpan="Apel dan pisang buah. Wortel dan brokoli sayur."
-        />
-        <TulisBebas
-          id={idKuisTulisKartu(ID, "A")}
-          pertanyaan="Apel ada 4 dan pisang ada 3. Tulis jumlah apel dan jumlah pisang!"
-          visual={<p className="text-center text-2xl">🍎🍎🍎🍎 · 🍌🍌🍌</p>}
-          pesanSalah="Apel empat. Pisang tiga."
-          umpan="Apel 4. Pisang 3."
-          konteks="Ada empat apel dan tiga pisang. Kedua angka harus tertulis."
-          periksa={apelPisang}
-          sesudahNilai={(benar) => setSalahKanvas((n) => (benar ? 0 : n + 1))}
-        />
-        {salahKanvas >= 2 ? (
-          <p className="text-sm font-bold text-[#1C01A5]">Kotak berkedip: apel 1, 2, 3, 4. Pisang 1, 2, 3.</p>
-        ) : null}
+        <KuisAkhirAdegan idSuara={idKuis("A", 3)} idKanvas={idKuis("A", 4)} pertanyaanSuara="Gelas dimasukkan ke kotak apa?" aliasSuara={["gelas"]} petunjukSuara="Sebutkan nama kotaknya." pertanyaanKanvas="Tuliskan kata gelas." aliasKanvas={["gelas"]} konteksKanvas="Gelas masuk ke kotak gelas." />
       </div>
-    </>
+    );
+  }
+  if (halaman === 2) {
+    return (
+      <div className="space-y-3">
+        <JudulHalaman n={3} />
+        <Adegan judul="Tiga kotak" src="/doodle-mtk/mtk-1-bab8-adegan-2.jpg" alt="Tiga kotak berisi gelas, piring, dan sendok.">
+          <Dialog nama="Igil" anak="Aturan pertama: pisahkan berdasarkan jenis!" />
+          <Dialog nama="Rara" anak="Aku ambil gelas!" />
+          <Dialog nama="Bimo" anak="Aku hitung isi setiap kotak." />
+        </Adegan>
+        <KuisAkhirAdegan idSuara={idKuis("A", 5)} idKanvas={idKuis("A", 6)} pertanyaanSuara="Sendok ada berapa?" aliasSuara={["8", "delapan"]} petunjukSuara="Ucapkan angkanya." pertanyaanKanvas="Tuliskan angka banyak gelas." aliasKanvas={["6", "enam"]} konteksKanvas="Gelas ada 6." />
+        <KuisCocok id={idKuis("B", 0)} perintah="Pasangkan benda ke kelompoknya!" baris={[{ kiri: "🍎 Apel", pilihan: kelompok, benar: "🍎 Buah" }, { kiri: "🥕 Wortel", pilihan: kelompok, benar: "🥕 Sayur" }, { kiri: "🍌 Pisang", pilihan: kelompok, benar: "🍎 Buah" }, { kiri: "🥦 Brokoli", pilihan: kelompok, benar: "🥕 Sayur" }]} umpan="Apel dan pisang buah. Wortel dan brokoli sayur." />
+        <SusunTiga id={idKuis("A", 13)} perintah="Susun dari yang paling sedikit." acak={["Sendok 8", "Piring 4", "Gelas 6"]} benar={["Piring 4", "Gelas 6", "Sendok 8"]} umpan="Piring 4, gelas 6, sendok 8." />
+        <BenarSalahTiga id={idKuis("A", 14)} perintah="Pilih benar atau salah." baris={[{ teks: "Satu jenis masuk ke satu kotak.", benar: true }, { teks: "Gelas dan sendok dicampur dalam satu kotak.", benar: false }, { teks: "Piring paling sedikit di tabel tadi.", benar: true }]} umpan="Satu jenis, satu kotak. Piring ada 4, paling sedikit." />
+      </div>
+    );
+  }
+  return (
+    <div className="space-y-3">
+      <JudulHalaman n={4} />
+      <p className="text-center text-2xl font-black text-[#1C01A5]">4 · 6 · 8</p>
+      <p className="text-sm font-semibold text-slate-700">Angka paling besar berarti paling banyak. Angka paling kecil berarti paling sedikit.</p>
+      <TulisBebas id={idKuisTulisKartu(ID, "A")} pertanyaan="Apel ada 4 dan pisang ada 3. Tulis jumlah apel dan jumlah pisang!" visual={<p className="text-center text-2xl">🍎🍎🍎🍎 · 🍌🍌🍌</p>} pesanSalah="Apel empat. Pisang tiga." umpan="Apel 4. Pisang 3." konteks="Ada empat apel dan tiga pisang. Kedua angka harus tertulis." periksa={apelPisang} sesudahNilai={(benar) => setSalahKanvas((n) => (benar ? 0 : n + 1))} />
+      {salahKanvas >= 2 ? <p className="text-sm font-bold text-[#1C01A5]">Kotak berkedip: apel 1, 2, 3, 4. Pisang 1, 2, 3.</p> : null}
+      <Pilih id={idKuis("A", 15)} pertanyaan="Di antara 4, 6, dan 8, mana yang paling banyak?" pilihan={[{ huruf: "A", teks: "4" }, { huruf: "B", teks: "6" }, { huruf: "C", teks: "8" }]} benar="C" umpan="8 lebih besar daripada 6 dan 4." salah="Pilih angka yang paling besar." />
+      <Pilih id={idKuis("A", 16)} pertanyaan="5 apel ditambah 2 pisang. Jumlahnya..." pilihan={[{ huruf: "A", teks: "7" }, { huruf: "B", teks: "3" }, { huruf: "C", teks: "10" }]} benar="A" umpan="5 + 2 = 7." salah="Jumlahkan kedua angkanya." />
+      <Pilih id={idKuis("A", 17)} pertanyaan="9 sendok, 2 hilang. Sisanya..." pilihan={[{ huruf: "A", teks: "11" }, { huruf: "B", teks: "7" }, { huruf: "C", teks: "6" }]} benar="B" umpan="9 − 2 = 7." salah="Kurangi yang hilang." />
+    </div>
   );
 }
 
-function IsiDiagram({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminGuru }) {
+function IsiDiagram({ kelas, kelamin, halaman }: { kelas?: string; kelamin?: KelaminGuru; halaman: number }) {
   const [suara, setSuara] = useState<StatusJawabanKuis>(null);
-  return (
-    <>
-      <JudulSubBab
-        judul="Sub-Bab B: Diagram Gambar"
-        kelas={kelas}
-        kelamin={kelamin}
-        naskah={[
-          "Piktogram memakai gambar. Satu gambar mewakili satu benda.",
-          "Baris terpanjang berarti paling banyak. Baris terpendek berarti paling sedikit.",
-          "Delapan dikurangi empat sama dengan empat.",
-          "Piktogram punya judul, label, dan gambar yang sejenis pada satu baris.",
-          "Selalu tanya, satu gambar mewakili berapa.",
-        ]}
-      />
-      <div className="mt-4 overflow-hidden rounded-2xl border-4 border-sky-400">
-        <p className="bg-[#1C01A5] px-3 py-2 text-center text-xs font-black uppercase text-white">
-          Infografis: Diagram buah
-        </p>
-        {[
-          ["Apel", "🍎", 7],
-          ["Pisang", "🍌", 3],
-          ["Anggur", "🍇", 5],
-        ].map(([nama, ikon, jumlah], indeks) => (
-          <div
-            key={String(nama)}
-            className={`grid grid-cols-[5.5rem_1fr_2rem] items-center gap-2 border-t border-sky-200 px-3 py-3 ${
-              indeks % 2 === 0 ? "bg-sky-50" : "bg-[#F0FDF4]"
-            }`}
-          >
-            <span className="text-sm font-black text-[#1C01A5]">{nama}</span>
-            <span className="text-xl leading-none">{String(ikon).repeat(Number(jumlah))}</span>
-            <span className="text-right text-lg font-black text-[#1C01A5]">{jumlah}</span>
-          </div>
-        ))}
-        <p className="border-t-4 border-teal-300 bg-emerald-50 px-3 py-3 text-center text-sm font-black text-[#1C01A5]">
-          Paling banyak apel 7. Paling sedikit pisang 3. Jumlah 15. Selisih 4.
-        </p>
-      </div>
-      <TabelInfoGrafis
-        judul="Infografis: Membaca Diagram"
-        kepala={["Baris", "Arti", "Jumlah"]}
-        baris={[
-          ["🐟 × 6 dan 🐢 × 4", "Ikan lebih banyak 2", "6 dan 4"],
-          ["🍪🍪🍪 · 1 gambar = 2", "3 × 2 biskuit", "6"],
-          ["🌻 × 5 dan 🌹 × 3", "Satu gambar = satu bunga", "5 dan 3"],
-        ]}
-        kaki="Satu jenis, satu baris. Lihat dulu, hitung kemudian."
-      />
-      <div className="mt-4 space-y-3">
-        <Adegan
-          judul="Adegan 3 · Rahasia piktogram"
-          src="/doodle-mtk/mtk-1-bab8-adegan-3.jpg"
-          alt="Papan piktogram: gelas 6, piring 4, sendok 8."
-        >
-          <p className="text-sm font-black text-[#1C01A5]">🥤 6 · 🍽️ 4 · 🥄 8</p>
+  if (halaman === 0) {
+    return (
+      <div className="space-y-3">
+        <JudulHalaman n={1} />
+        <JudulSubBab judul="Sub-Bab B: Diagram Gambar" kelas={kelas} kelamin={kelamin} naskah={["Satu gambar mewakili satu benda.", "Baris terpanjang berarti paling banyak."]} />
+        <Adegan judul="Rahasia piktogram" src="/doodle-mtk/mtk-1-bab8-adegan-3.jpg" alt="Papan piktogram gelas, piring, dan sendok.">
           <Dialog nama="Rara" anak="Aku bisa lihat langsung mana yang paling banyak!" />
-          <Dialog nama="Bimo" anak="Sendok! Barisannya paling panjang!" />
+          <Dialog nama="Bimo" anak="Baris yang paling panjang!" />
           <Dialog nama="Igil" anak="Ini diagram gambar. Setiap gambar sama dengan satu benda." />
-          <KuisAkhirAdegan
-            idSuara={idKuis("A", 7)}
-            idKanvas={idKuis("A", 8)}
-            pertanyaanSuara="Baris yang paling panjang adalah benda apa?"
-            aliasSuara={["sendok"]}
-            petunjukSuara="Sebutkan nama bendanya."
-            pertanyaanKanvas="Setiap gambar sama dengan berapa benda? Tuliskan angkanya."
-            aliasKanvas={["1", "satu"]}
-            konteksKanvas="Satu gambar sama dengan satu benda."
-          />
         </Adegan>
-        <Adegan
-          judul="Adegan 4 · Menjawab pertanyaan"
-          src="/doodle-mtk/mtk-1-bab8-adegan-4.jpg"
-          alt="Piktogram dengan tanda tanya. Baris piring paling pendek, baris sendok paling panjang."
-        >
-          <Dialog nama="Igil" anak="Mana yang paling sedikit?" />
-          <Dialog nama="Bimo" anak="Piring! Barisannya paling pendek!" />
-          <Dialog nama="Rara" anak="Sendok 8, piring 4. Selisihnya 4." />
-          <p className="text-sm font-black text-[#1C01A5]">8 – 4 = 4</p>
-          <KuisAkhirAdegan
-            idSuara={idKuis("A", 9)}
-            idKanvas={idKuis("A", 10)}
-            pertanyaanSuara="Benda apa yang paling sedikit?"
-            aliasSuara={["piring"]}
-            petunjukSuara="Sebutkan nama bendanya."
-            pertanyaanKanvas="Tuliskan 8 - 4 = 4."
-            aliasKanvas={["8 - 4 = 4", "8-4=4"]}
-            konteksKanvas="Sendok 8 dikurangi piring 4 sama dengan 4."
-          />
-        </Adegan>
-        <Adegan
-          judul="Adegan 5 · Kantin rapi kembali"
-          src="/doodle-mtk/mtk-1-bab8-adegan-5.jpg"
-          alt="Kantin bersih. Igil tersenyum. Igil duduk di bahu Rara."
-        >
+        <KuisAkhirAdegan idSuara={idKuis("A", 7)} idKanvas={idKuis("A", 8)} pertanyaanSuara="Baris yang paling panjang adalah benda apa?" aliasSuara={["sendok"]} petunjukSuara="Sebutkan nama bendanya." pertanyaanKanvas="Setiap gambar sama dengan berapa benda? Tuliskan angkanya." aliasKanvas={["1", "satu"]} konteksKanvas="Satu gambar sama dengan satu benda." />
+      </div>
+    );
+  }
+  if (halaman === 1) {
+    return (
+      <div className="space-y-3">
+        <JudulHalaman n={2} />
+        <TabelInfoGrafis judul="Infografis: Membaca Diagram" kepala={["Yang dilihat", "Arti", "Cara"]} baris={[["Baris paling panjang", "paling banyak", "bandingkan panjangnya"], ["Baris paling pendek", "paling sedikit", "bandingkan panjangnya"], ["Satu gambar", "satu benda", "hitung gambarnya"]]} kaki="Lihat dulu, hitung kemudian." />
+        <p className="text-center text-lg font-black text-[#1C01A5]">🥤 6 · 🍽️ 4 · 🥄 8</p>
+        <KuisAkhirAdegan idSuara={idKuis("A", 9)} idKanvas={idKuis("A", 10)} pertanyaanSuara="Benda apa yang paling sedikit?" aliasSuara={["piring"]} petunjukSuara="Sebutkan nama bendanya." pertanyaanKanvas="Tuliskan 8 - 4 = 4." aliasKanvas={["8 - 4 = 4", "8-4=4"]} konteksKanvas="Sendok 8 dikurangi piring 4 sama dengan 4." />
+      </div>
+    );
+  }
+  if (halaman === 2) {
+    return (
+      <div className="space-y-3">
+        <JudulHalaman n={3} />
+        <p className="text-center text-2xl">🐱🐱🐱🐱🐱 · 🐶🐶🐶 · 🐰🐰🐰🐰🐰🐰🐰</p>
+        <SoalRekamSuara id={idKuis("A", 0)} pertanyaan="Hewan apa yang paling banyak di diagram ini? Ucapkan dengan keras!" periksa={jawabKelinci} petunjuk="Lihat barisan yang paling panjang." sesudahNilai={(benar) => setSuara(benar ? "benar" : "salah")} />
+        {suara === "benar" ? <p className="text-sm font-bold text-emerald-800">Tok-tok! Matamu tajam!</p> : null}
+        {suara === "salah" ? <p className="text-sm font-bold text-rose-800">Lihat lagi! Barisan mana yang paling panjang?</p> : null}
+        <Adegan judul="Kantin rapi" src="/doodle-mtk/mtk-1-bab8-adegan-5.jpg" alt="Kantin bersih. Igil tersenyum.">
           <Dialog nama="Igil" anak="Kantinnya rapi sekali! Siapa yang mengajari kalian?" />
           <Dialog nama="Rara" anak="Igil!" />
           <Dialog nama="Igil" anak="Kalau benda banyak dan berserakan, kelompokkan, lalu gambar!" />
-          <Dialog nama="Igil" anak="Horeee! Kantin rapi!" />
-          <KuisAkhirAdegan
-            idSuara={idKuis("A", 11)}
-            idKanvas={idKuis("A", 12)}
-            pertanyaanSuara="Siapa yang mengajari Rara dan Bimo?"
-            aliasSuara={["tupi"]}
-            petunjukSuara="Sebutkan namanya."
-            pertanyaanKanvas="Tuliskan nama Igil."
-            aliasKanvas={["tupi"]}
-            konteksKanvas="Yang mengajari mereka adalah Igil."
-          />
         </Adegan>
-        <article className="rounded-2xl border-2 border-sky-200 bg-sky-50 px-4 py-3">
-          <p className="text-sm font-black text-[#1C01A5]">Apa itu piktogram?</p>
-          <ul className="mt-2 list-disc space-y-1 pl-5 text-sm font-semibold text-slate-700">
-            <li>Setiap gambar mewakili 1 benda, kecuali judulnya bilang lain.</li>
-            <li>Satu baris berisi gambar yang sejenis.</li>
-            <li>Gambar disusun dari kiri ke kanan.</li>
-            <li>Ada judul di atas diagram.</li>
-          </ul>
-          <p className="mt-2 text-sm font-semibold text-slate-700">🌻 Matahari 5. 🌹 Mawar 3.</p>
-        </article>
-        <article className="rounded-2xl border-2 border-cyan-300 bg-cyan-50 px-4 py-3">
-          <p className="text-sm font-black text-[#1C01A5]">Empat pertanyaan ajaib</p>
-          <p className="mt-1 text-sm font-semibold text-slate-700">
-            Apel 7, pisang 3, anggur 5. Paling banyak apel. Paling sedikit pisang. Jumlah 7 + 3 + 5 = 15. Selisih 7 – 3 = 4.
-          </p>
-          <p className="mt-2 text-sm font-black text-[#1C01A5]">Lihat dulu, hitung kemudian.</p>
-        </article>
-        <article className="rounded-2xl border-2 border-indigo-200 bg-indigo-50 px-4 py-3">
-          <p className="text-sm font-black text-[#1C01A5]">Membandingkan dua baris</p>
-          <p className="mt-1 text-sm font-semibold text-slate-700">Ikan 6 dan kura-kura 4. Ikan lebih banyak 2.</p>
-        </article>
-        <article className="rounded-2xl border-2 border-rose-200 bg-rose-50 px-4 py-3">
-          <p className="text-sm font-black text-[#1C01A5]">Satu gambar bisa mewakili dua benda</p>
-          <p className="mt-1 text-sm font-semibold text-slate-700">
-            Tiga gambar biskuit, dan 1 gambar = 2 biskuit. Jumlahnya 3 × 2 = 6. Selalu tanya: satu gambar mewakili berapa?
-          </p>
-        </article>
-        <article className="rounded-2xl border-2 border-slate-200 bg-slate-50 px-4 py-3">
-          <p className="text-sm font-black text-[#1C01A5]">Dari diagram ke tabel</p>
-          <p className="mt-1 text-sm font-semibold text-slate-700">Apel 7, pisang 3, anggur 5. Diagram dan tabel menunjukkan hal yang sama.</p>
-        </article>
-      </div>
-      <div className="mt-6 border-t-2 border-[#1C01A5]/10 pt-5">
-        <p className="text-base font-extrabold text-[#1C01A5]">QUIZ:</p>
-        <p className="mt-2 text-center text-sm font-black text-[#1C01A5]">🐱🐱🐱🐱🐱 · 🐶🐶🐶 · 🐰🐰🐰🐰🐰🐰🐰</p>
-        <SoalRekamSuara
-          id={idKuis("A", 0)}
-          pertanyaan="Hewan apa yang paling banyak di diagram ini? Ucapkan dengan keras!"
-          periksa={jawabKelinci}
-          petunjuk="Lihat barisan yang paling panjang."
-          sesudahNilai={(benar) => setSuara(benar ? "benar" : "salah")}
-        />
-        {suara === "benar" ? <p className="mt-2 text-sm font-bold text-emerald-800">Tok-tok! Matamu tajam!</p> : null}
-        {suara === "salah" ? (
-          <p className="mt-2 text-sm font-bold text-rose-800">Lihat lagi! Barisan mana yang paling panjang?</p>
-        ) : null}
-      </div>
-      <div className="mt-4 space-y-4">
+        <KuisAkhirAdegan idSuara={idKuis("A", 11)} idKanvas={idKuis("A", 12)} pertanyaanSuara="Siapa yang mengajari Rara dan Bimo?" aliasSuara={["igil"]} petunjukSuara="Sebutkan namanya." pertanyaanKanvas="Tuliskan nama Igil." aliasKanvas={["igil"]} konteksKanvas="Yang mengajari mereka adalah Igil." />
+        <SoalRekamSuara id={idKuis("B", 3)} pertanyaan="Kucing 4 ekor dan anjing 6 ekor. Berapa jumlah hewan semuanya?" periksa={jawabSepuluh} petunjuk="Jumlahkan 4 dan 6." />
         <SusunBentuk id={idKuis("B", 1)} />
-        <Pilih
-          id={idKuis("B", 2)}
-          pertanyaan="Baris mana yang salah karena gambarnya bercampur?"
-          pilihan={[
-            { huruf: "A", teks: "Anjing: 🐶🐶🐶🐶🐶" },
-            { huruf: "B", teks: "Kucing: 🐱🐱🐱🐱" },
-            { huruf: "C", teks: "Ikan: 🐟🐶🐱🐟🐶" },
-          ]}
-          benar="C"
-          umpan="Baris ikan isinya bercampur."
-          salah="Pilih baris yang tidak sejenis."
-        />
-        <div>
-          <p className="text-base font-extrabold text-[#1C01A5]">QUIZ:</p>
-          <SoalRekamSuara
-            id={idKuis("B", 3)}
-            pertanyaan="Kucing 4 ekor dan anjing 6 ekor. Berapa jumlah hewan semuanya?"
-            periksa={jawabSepuluh}
-            petunjuk="Jumlahkan 4 dan 6."
-          />
-        </div>
-        <TulisBebas
-          id={idKuisTulisKartu(ID, "B")}
-          pertanyaan="Bola 5, kelereng 3, boneka 2. Tulis ketiga jumlahnya!"
-          visual={<p className="text-center text-sm font-black text-[#1C01A5]">⚽ 5 · 🔴 3 · 🧸 2</p>}
-          pesanSalah="Tulis 5, 3, dan 2."
-          umpan="Bola 5, kelereng 3, boneka 2."
-          konteks="Tiga baris: lima bola, tiga kelereng, dua boneka."
-          periksa={bolaTiga}
-        />
+        <SusunTiga id={idKuis("B", 4)} perintah="Susun dari baris paling pendek." acak={["Kelinci", "Kucing", "Anjing"]} benar={["Anjing", "Kucing", "Kelinci"]} umpan="Anjing 3, kucing 5, kelinci 7." />
+        <BenarSalahTiga id={idKuis("B", 5)} perintah="Pilih benar atau salah." baris={[{ teks: "Satu gambar bisa berarti satu benda.", benar: true }, { teks: "Baris yang bercampur tetap mudah dibaca.", benar: false }, { teks: "Baris terpendek berarti paling sedikit.", benar: true }]} umpan="Satu gambar, satu benda. Baris harus sejenis." />
       </div>
-    </>
+    );
+  }
+  return (
+    <div className="space-y-3">
+      <JudulHalaman n={4} />
+      <p className="text-center text-xl font-black text-[#1C01A5]">1 gambar = 1 benda</p>
+      <p className="text-sm font-semibold text-slate-700">Kalau judul bilang 1 gambar = 2 benda, kalikan dulu, baru jumlahkan.</p>
+      <TulisBebas id={idKuisTulisKartu(ID, "B")} pertanyaan="Bola 5, kelereng 3, boneka 2. Tulis ketiga jumlahnya!" visual={<p className="text-center text-sm font-black text-[#1C01A5]">⚽ 5 · 🔴 3 · 🧸 2</p>} pesanSalah="Tulis 5, 3, dan 2." umpan="Bola 5, kelereng 3, boneka 2." konteks="Tiga baris: lima bola, tiga kelereng, dua boneka." periksa={bolaTiga} />
+      <Pilih id={idKuis("B", 2)} pertanyaan="Baris mana yang salah karena gambarnya bercampur?" pilihan={[{ huruf: "A", teks: "Anjing: 🐶🐶🐶🐶🐶" }, { huruf: "B", teks: "Kucing: 🐱🐱🐱🐱" }, { huruf: "C", teks: "Ikan: 🐟🐶🐱🐟🐶" }]} benar="C" umpan="Baris ikan isinya bercampur." salah="Pilih baris yang tidak sejenis." />
+      <Pilih id={idKuis("A", 18)} pertanyaan="3 gambar biskuit, dan 1 gambar = 2 biskuit. Jumlah biskuit..." pilihan={[{ huruf: "A", teks: "3" }, { huruf: "B", teks: "5" }, { huruf: "C", teks: "6" }]} benar="C" umpan="3 × 2 = 6." salah="Kalikan banyak gambar dengan 2." />
+      <Pilih id={idKuis("A", 19)} pertanyaan="Ikan 6 dan kura-kura 4. Ikan lebih banyak..." pilihan={[{ huruf: "A", teks: "2" }, { huruf: "B", teks: "10" }, { huruf: "C", teks: "4" }]} benar="A" umpan="6 − 4 = 2." salah="Kurangi yang lebih kecil dari yang lebih besar." />
+    </div>
   );
 }
 
@@ -872,7 +677,7 @@ function KartuC({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminGuru }) {
   );
 }
 
-function LembarEvaluasi({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminGuru }) {
+function LembarEvaluasi({ kelas, kelamin, nomor = 0 }: { kelas?: string; kelamin?: KelaminGuru; nomor?: number }) {
   const kuis = useKuisMateri();
   const kartu = MODUL_MTK1_BAB8.kartu[3];
   const nama = useMemo(() => bacaProgres().profil.nama.trim() || "Siswa", []);
@@ -892,25 +697,16 @@ function LembarEvaluasi({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminG
         : "Ayo bereskan gudang lagi bersama Igil, kamu pasti bisa!";
   const kelompok = ["🥤 Minuman", "🍪 Makanan"];
   return (
-    <KartuBingkai latar="bg-rose-50/80">
-      <KepalaKartu
-        ikon="📝📊"
-        judul={kartu.judul}
-        anak="Tantangan manajer data"
-        kelas={kelas}
-        kelamin={kelamin}
-        cuplikan={cuplikanDariNaskah(kartu.voice, 2_000, 3_000)}
-      />
-      <div className="mt-4 grid gap-2 rounded-2xl border-2 border-dashed border-[#1C01A5]/30 px-4 py-3 sm:grid-cols-3">
-        <p className="text-sm font-black text-[#1C01A5]">Nama: {nama}</p>
-        <p className="text-sm font-black text-[#1C01A5]">Kelas: 1</p>
-        <p className="text-sm font-black text-[#1C01A5]">Skor: {skor} / 10</p>
-      </div>
-      <p className="mt-3 text-sm font-black text-[#1C01A5]">
-        {lencana}. {pesan}
-      </p>
+    <div className="space-y-3">
+      {nomor === 0 ? (
+        <>
+          <KepalaKartu ikon="📝📊" judul={kartu.judul} anak="Tantangan manajer data" kelas={kelas} kelamin={kelamin} cuplikan={cuplikanDariNaskah(kartu.voice, 2_000, 3_000)} />
+          <p className="text-sm font-black text-[#1C01A5]">{nama} · Kelas 1 · Skor {skor} / 10</p>
+        </>
+      ) : null}
+      <p className="text-sm font-black text-[#1C01A5]">{lencana}. {pesan}</p>
       <div className="mt-4 space-y-4">
-        <TulisBebas
+        {nomor === 0 ? <TulisBebas
           id={idKuis("D", 0)}
           judul="1. Hitung ikonnya"
           visual={<p className="text-center text-sm font-black text-[#1C01A5]">🌻🌻🌻🌻🌻🌻</p>}
@@ -919,8 +715,8 @@ function LembarEvaluasi({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminG
           umpan="6 bunga matahari."
           alias={["6", "enam"]}
           periksa={jawabEnam}
-        />
-        <Pilih
+        /> : null}
+        {nomor === 1 ? <Pilih
           id={idKuis("D", 1)}
           pertanyaan="2. Kucing 3, anjing 5, ikan 4. Hewan apa yang paling banyak?"
           pilihan={[
@@ -931,8 +727,8 @@ function LembarEvaluasi({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminG
           benar="B"
           umpan="Anjing 5, barisnya paling panjang."
           salah="Bandingkan angkanya."
-        />
-        <div className="border-t-2 border-[#1C01A5]/10 pt-4">
+        /> : null}
+        {nomor === 2 ? <div className="border-t-2 border-[#1C01A5]/10 pt-4">
           <p className="text-base font-extrabold text-[#1C01A5]">QUIZ:</p>
           <p className="mt-2 text-sm font-semibold text-slate-700">
             Kucing 🐱🐱🐱🐱 dan ikan 🐠🐠🐠. Bimo berkata jumlahnya sama banyak.
@@ -943,8 +739,8 @@ function LembarEvaluasi({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminG
             periksa={adiSalah}
             petunjuk="Kucing ada 4, ikan ada 3."
           />
-        </div>
-        <Pilih
+        </div> : null}
+        {nomor === 3 ? <Pilih
           id={idKuis("D", 3)}
           pertanyaan="4. Apel 5, pisang 2, anggur 4. Diagram yang benar?"
           pilihan={[
@@ -955,8 +751,8 @@ function LembarEvaluasi({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminG
           benar="A"
           umpan="Judulnya buah. Apel 5, pisang 2, anggur 4."
           salah="Judul mengikuti jenis bendanya, dan angkanya tidak ditukar."
-        />
-        <TulisBebas
+        /> : null}
+        {nomor === 4 ? <TulisBebas
           id={idKuis("D", 4)}
           judul="5. Selisihnya berapa?"
           visual={<p className="text-center text-sm font-black text-[#1C01A5]">✏️ 8 · 🖍️ 3</p>}
@@ -966,8 +762,8 @@ function LembarEvaluasi({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminG
           alias={["5", "lima"]}
           konteks="Selisih 8 dan 3 adalah 5."
           periksa={selisihLima}
-        />
-        <KuisCocok
+        /> : null}
+        {nomor === 5 ? <KuisCocok
           id={idKuis("D", 5)}
           perintah="6. Pasangkan benda dengan kelompoknya!"
           baris={[
@@ -977,14 +773,14 @@ function LembarEvaluasi({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminG
             { kiri: "🍞 Roti", pilihan: kelompok, benar: "🍪 Makanan" },
           ]}
           umpan="Susu dan jus minuman. Biskuit dan roti makanan."
-        />
-        <SoalRekamSuara
+        /> : null}
+        {nomor === 6 ? <SoalRekamSuara
           id={idKuis("D", 6)}
           pertanyaan="7. Mobil 4, bus 2, motor 5. Kendaraan apa yang paling sedikit?"
           periksa={jawabBus}
           petunjuk="Baris yang paling pendek."
-        />
-        <Pilih
+        /> : null}
+        {nomor === 7 ? <Pilih
           id={idKuis("D", 7)}
           pertanyaan="8. Diagram kue menunjukkan cupcake 6 dan donat 4. Tabel yang benar?"
           pilihan={[
@@ -995,8 +791,8 @@ function LembarEvaluasi({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminG
           benar="A"
           umpan="Cupcake 6. Donat 4."
           salah="Angka mengikuti jumlah ikonnya."
-        />
-        <Pilih
+        /> : null}
+        {nomor === 8 ? <Pilih
           id={idKuis("D", 8)}
           pertanyaan="9. Satu ikon sama dengan 2 susu. Ada 4 ikon. Jumlah susu sebenarnya?"
           pilihan={[
@@ -1007,8 +803,8 @@ function LembarEvaluasi({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminG
           benar="C"
           umpan="4 × 2 = 8."
           salah="Kalikan jumlah ikon dengan 2."
-        />
-        <Pilih
+        /> : null}
+        {nomor === 9 ? <Pilih
           id={idKuis("D", 9)}
           pertanyaan="10. Merah paling banyak, hijau paling sedikit. Diagram yang benar?"
           pilihan={[
@@ -1019,17 +815,69 @@ function LembarEvaluasi({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminG
           benar="A"
           umpan="Merah 5 paling banyak. Hijau 1 paling sedikit."
           salah="Yang paling banyak angkanya paling besar."
-        />
-        <KuisTulisKartu
+        /> : null}
+        {nomor === 9 ? <KuisTulisKartu
           id={idKuisTulisKartu(ID, "D")}
           pertanyaan="Tulis kalimat kunci: Satu gambar = satu benda."
           alias={["satu gambar satu benda", "satu gambar = satu benda", "satu benda"]}
           konteks="Kalimat kuncinya: satu gambar sama dengan satu benda."
-        />
-        <p className="text-sm font-black text-[#1C01A5]">Hore! Kamu sudah bisa membaca diagram gambar.</p>
+        /> : null}
+        {nomor === 9 ? <p className="text-sm font-black text-[#1C01A5]">Hore! Kamu sudah bisa membaca diagram gambar.</p> : null}
       </div>
-    </KartuBingkai>
+    </div>
   );
+}
+
+function langkahBab8(kelas?: string, kelamin?: KelaminGuru): LangkahQuest[] {
+  const kartuA = MODUL_MTK1_BAB8.kartu[0];
+  const tabA = { tab: "Sub-Bab A", kelompok: "Mengelompokkan data" };
+  const tabB = { tab: "Sub-Bab B", kelompok: "Diagram gambar" };
+  const kuisMisi = [...Array.from({ length: 10 }, (_, indeks) => idKuis("C", indeks)), idKuisTulisKartu(ID, "C")];
+  const evaluasi: LangkahQuest[] = Array.from({ length: 10 }, (_, nomor) => ({
+    kode: `d${nomor}`,
+    bagian: "Evaluasi",
+    judul: `Soal ${nomor + 1}`,
+    isi: <LembarEvaluasi nomor={nomor} kelas={kelas} kelamin={kelamin} />,
+    kuis: nomor === 9 ? [idKuis("D", 9), idKuisTulisKartu(ID, "D")] : [idKuis("D", nomor)],
+  }));
+  return [
+    ...empatHalaman(tabA, "kelompok", [0, 1, 2, 3].map((halaman) => ({
+      isi: <IsiKelompok halaman={halaman} kelas={kelas} kelamin={kelamin} />,
+      kuis: [
+        [idKuis("A", 1), idKuis("A", 2)],
+        [idKuis("A", 3), idKuis("A", 4)],
+        [idKuis("A", 5), idKuis("A", 6), idKuis("B", 0), idKuis("A", 13), idKuis("A", 14)],
+        [idKuisTulisKartu(ID, "A"), idKuis("A", 15), idKuis("A", 16), idKuis("A", 17)],
+      ][halaman],
+    }))),
+    ...empatHalaman(tabB, "diagram", [0, 1, 2, 3].map((halaman) => ({
+      isi: <IsiDiagram halaman={halaman} kelas={kelas} kelamin={kelamin} />,
+      kuis: [
+        [idKuis("A", 7), idKuis("A", 8)],
+        [idKuis("A", 9), idKuis("A", 10)],
+        [idKuis("A", 0), idKuis("A", 11), idKuis("A", 12), idKuis("B", 1), idKuis("B", 4), idKuis("B", 5), idKuis("B", 3)],
+        [idKuisTulisKartu(ID, "B"), idKuis("B", 2), idKuis("A", 18), idKuis("A", 19)],
+      ][halaman],
+    }))),
+    { kode: "misi", bagian: "Misi", judul: "Misi bereskan kantin", kuis: kuisMisi, isi: <KartuC kelas={kelas} kelamin={kelamin} /> },
+    {
+      kode: "review",
+      bagian: "Review",
+      judul: "Tujuan Pembelajaran",
+      tab: "Review",
+      kelompok: "Tujuan Pembelajaran",
+      bebas: true,
+      isi: (
+        <div className="space-y-4">
+          <KepalaKartu ikon="🍎🦉📊" judul={kartuA.judul} kelas={kelas} kelamin={kelamin} cuplikan={cuplikanDariNaskah(kartuA.voice, 2_000, 3_000)} />
+          <TujuanBelajar butir={["Mengelompokkan benda menurut jenisnya.", "Menyusun dan membaca diagram gambar sederhana."]} />
+          <KartuPoinPenting kelas={kelas} kelamin={kelamin} cuplikan={cuplikanDariNaskah(MODUL_MTK1_BAB8.kartu[3].voice, 2_000, 3_000)} poin={["Satu jenis, satu kotak.", "Satu gambar sama dengan satu benda.", "Baris rapi, dari kiri ke kanan.", "Baris terpanjang berarti paling banyak.", "Jumlah semuanya ditambahkan. Selisihnya dikurangkan.", "Selalu pakai judul.", "Data harus benar dari awal."]} penutup="Satu jenis, satu kotak. Satu gambar, satu benda." />
+          <p className="text-sm font-semibold leading-relaxed text-slate-700">Kalau ada yang masih bingung, tanyakan di sini. Kalau sudah jelas, tekan Lanjut.</p>
+        </div>
+      ),
+    },
+    ...evaluasi,
+  ];
 }
 
 export default function NaskahMtk1Bab8({
@@ -1039,44 +887,16 @@ export default function NaskahMtk1Bab8({
   kelas?: string;
   kelamin?: KelaminGuru;
 }) {
-  const kartuA = MODUL_MTK1_BAB8.kartu[0];
+  const kuis = useKuisMateri();
+  const sudahBenar = (id: string) => kuis?.sudahBenar(id) ?? false;
+  const langkah = useMemo(() => langkahBab8(kelas, kelamin), [kelas, kelamin]);
   return (
-    <div className="space-y-5">
-      <KartuBingkai latar="bg-sky-50/80">
-        <KepalaKartu
-          ikon="🍎🦉📊"
-          judul={kartuA.judul}
-          kelas={kelas}
-          kelamin={kelamin}
-          cuplikan={cuplikanDariNaskah(kartuA.voice, 2_000, 3_000)}
-        />
-        <TujuanBelajar
-          butir={[
-            "Mengelompokkan benda menurut jenisnya.",
-            "Menyusun dan membaca diagram gambar sederhana.",
-          ]}
-        />
-        <IsiKelompok kelas={kelas} kelamin={kelamin} />
-        <IsiDiagram kelas={kelas} kelamin={kelamin} />
-      </KartuBingkai>
-      <KartuC kelas={kelas} kelamin={kelamin} />
-      <div id={SLOT_AJUAN_SEBELUM_KARTU_D} />
-      <KartuPoinPenting
-        kelas={kelas}
-        kelamin={kelamin}
-        cuplikan={cuplikanDariNaskah(MODUL_MTK1_BAB8.kartu[3].voice, 2_000, 3_000)}
-        poin={[
-          "Satu jenis, satu kotak.",
-          "Satu gambar sama dengan satu benda.",
-          "Baris rapi, dari kiri ke kanan.",
-          "Baris terpanjang berarti paling banyak.",
-          "Jumlah semuanya ditambahkan. Selisihnya dikurangkan.",
-          "Selalu pakai judul.",
-          "Data harus benar dari awal.",
-        ]}
-        penutup="Satu jenis, satu kotak. Satu gambar, satu benda, Igil pun tersenyum!"
-      />
-      <LembarEvaluasi kelas={kelas} kelamin={kelamin} />
-    </div>
+    <QuestLangkah
+      simpan="quest-mtk-1-bab8-v1"
+      langkah={langkah}
+      sudahBenar={sudahBenar}
+      slot={{ id: SLOT_AJUAN_SEBELUM_KARTU_D, padaKode: "review" }}
+      teksAkhir="Kantin rapi. Bab ini selesai."
+    />
   );
 }

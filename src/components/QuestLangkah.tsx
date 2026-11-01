@@ -55,11 +55,13 @@ export function QuestLangkah({
   langkah,
   sudahBenar,
   slot,
+  teksAkhir = "Perjalanan dermaga selesai.",
 }: {
   simpan: string;
   langkah: LangkahQuest[];
   sudahBenar: (id: string) => boolean;
   slot?: { id: string; padaKode: string };
+  teksAkhir?: string;
 }) {
   const akar = useRef<HTMLElement>(null);
   const daftarTab = useRef<HTMLDivElement>(null);
@@ -197,7 +199,7 @@ export function QuestLangkah({
             Lanjut
           </button>
         ) : (
-          <p className="text-sm font-black text-emerald-800">Perjalanan dermaga selesai.</p>
+          <p className="text-sm font-black text-emerald-800">{teksAkhir}</p>
         )}
       </div>
     </section>

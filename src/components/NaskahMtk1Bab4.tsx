@@ -16,6 +16,8 @@ import TabelInfoGrafis from "@/components/TabelInfoGrafis";
 import TombolVoiceMateriPai1 from "@/components/TombolVoiceMateriPai1";
 import WritingCanvas from "@/components/WritingCanvas";
 import { useKuisMateri } from "@/components/KuisMateriContext";
+import { QuestLangkah, type LangkahQuest } from "@/components/QuestLangkah";
+import { BenarSalahTiga, JudulHalaman, SusunTiga, empatHalaman } from "@/components/modul/GigitanQuest";
 import { SLOT_AJUAN_SEBELUM_KARTU_D } from "@/components/NaskahMtk2Bab1";
 import { kelasTombolHasilKuis, statusDariPilihan, type StatusJawabanKuis } from "@/lib/hasil-kuis";
 import { idKuisKartuResmi, idKuisTulisKartu } from "@/lib/kuis-materi";
@@ -335,307 +337,151 @@ function TulisBebas({
   );
 }
 
-function IsiBentuk({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminGuru }) {
+function IsiBentuk({ kelas, kelamin, halaman }: { kelas?: string; kelamin?: KelaminGuru; halaman: number }) {
   const [suara, setSuara] = useState<StatusJawabanKuis>(null);
-  return (
-    <>
-      <JudulSubBab
-        judul="Sub-Bab A: Mendeskripsikan Benda Berdasarkan Bentuk"
-        kelas={kelas}
-        kelamin={kelamin}
-        naskah={[
-          "Hari ini Rara dan Bimo jadi detektif bentuk di rumah Nenek.",
-          "Atap lancip namanya segitiga. Jam bulat namanya lingkaran.",
-          "Bingkai foto adalah persegi. Pintu adalah persegi panjang. Keduanya segi empat.",
-          "Dadu yang tebal adalah kubus. Kotak susu yang lebih panjang adalah balok.",
-        ]}
-      />
-      <div className="mt-4 space-y-3">
-        <article className="rounded-2xl border-2 border-[#16A34A]/25 bg-[#F0FDF4] px-4 py-3">
-          <GambarCerita
-            src="/doodle-mtk/mtk-1-bab4-adegan-1.jpg"
-            alt="Rumah Igil beratap segitiga. Matahari bulat. Rara berdiri di teras."
-          />
-          <p className="mt-2 text-center text-4xl font-normal" aria-hidden>
-            🏠 ☀️
-          </p>
-          <p className="mt-2 text-sm font-semibold text-slate-700">Rumah kuning, atap segitiga merah, dan matahari bulat.</p>
-        </article>
-        <Dialog nama="Igil" anak="Halo, Rara! Halo, Bimo! Hari ini kita main detektif bentuk, yuk!" />
-        <Dialog nama="Rara" anak="Asyik! Apa itu bentuk, Nek?" />
-        <Dialog nama="Igil" anak="Lihat atap rumah Nenek. Bentuknya apa?" />
-        <Dialog nama="Bimo" anak="Ujungnya lancip! Sisinya ada 1, 2, 3!" />
-        <Dialog nama="Igil" anak="Pintar! Itu namanya segitiga. Sisinya 3, sudutnya juga 3." />
-        <article className="rounded-2xl border-2 border-[#E23B3B]/25 bg-[#FFF1F2] px-4 py-3">
-          <p className="text-xs font-black uppercase text-[#9F1239]">Atap segitiga</p>
-          <GambarCerita src="/doodle-mtk/mtk-1-bab4-atap.jpg" alt="Atap rumah berbentuk segitiga dengan 3 sudut." />
-          <p className="mt-2 text-center text-4xl font-normal" aria-hidden>
-            🔺
-          </p>
-          <p className="text-center text-sm font-black text-[#1C01A5]">3 sisi · 3 sudut</p>
-        </article>
-        <KuisAkhirAdegan
-          idSuara={idKuis("A", 1)}
-          idKanvas={idKuis("A", 2)}
-          pertanyaanSuara="Atap rumah Nenek bentuknya apa?"
-          aliasSuara={["segitiga"]}
-          petunjukSuara="Sebutkan nama bentuknya."
-          pertanyaanKanvas="Atap itu punya berapa sisi? Tuliskan angkanya."
-          aliasKanvas={["3", "tiga"]}
-          konteksKanvas="Atap segitiga punya 3 sisi."
-        />
-        <GambarCerita
-          src="/doodle-mtk/mtk-1-bab4-adegan-2.jpg"
-          alt="Jam dinding bulat, pintu persegi panjang, dan bingkai foto persegi."
-        />
-        <p className="text-center text-4xl font-normal" aria-hidden>
-          ⏰ 🚪 🖼️
-        </p>
-        <Dialog nama="Rara" anak="Nek, jam dinding itu bulat! Tidak ada pojoknya." />
-        <Dialog nama="Igil" anak="Betul! Itu lingkaran. Tidak punya sudut, bisa menggelinding." />
-        <Dialog nama="Bimo" anak="Kalau bingkai foto ini, sisinya ada 4. Panjangnya sama semua!" />
-        <Dialog nama="Igil" anak="Hebat! Itu persegi." />
-        <Dialog nama="Rara" anak="Pintu juga sisinya 4, tapi ada yang panjang, ada yang pendek." />
-        <Dialog nama="Igil" anak="Itu persegi panjang. Persegi dan persegi panjang sama-sama segi empat." />
-        <TabelInfoGrafis
-          judul="Infografis: Bentuk di Rumah Nenek"
-          kepala={["Bentuk", "Ciri", "Contoh"]}
-          baris={[
-            ["🔺 Segitiga", "3 sisi, 3 sudut", "Atap"],
-            ["🟦 Segi empat", "4 sisi, 4 sudut", "Bingkai, pintu"],
-            ["⚪ Lengkung", "0 sudut, bulat", "Jam dinding"],
-          ]}
-          kaki="Jam, koin, dan roda termasuk bentuk lengkung. Namanya lingkaran."
-        />
-        <KuisAkhirAdegan
-          idSuara={idKuis("A", 3)}
-          idKanvas={idKuis("A", 4)}
-          pertanyaanSuara="Bingkai foto sisinya sama semua. Bentuknya apa?"
-          aliasSuara={["persegi"]}
-          petunjukSuara="Sebutkan nama bentuknya."
-          pertanyaanKanvas="Pintu punya berapa sisi? Tuliskan angkanya."
-          aliasKanvas={["4", "empat"]}
-          konteksKanvas="Pintu persegi panjang punya 4 sisi."
-        />
+  if (halaman === 0) {
+    return (
+      <div className="space-y-3">
+        <JudulHalaman n={1} />
+        <JudulSubBab judul="Sub-Bab A: Mendeskripsikan Benda Berdasarkan Bentuk" kelas={kelas} kelamin={kelamin} naskah={["Hari ini Rara dan Bimo jadi detektif bentuk di rumah Nenek.", "Atap lancip. Hitung sisinya."]} />
+        <GambarCerita src="/doodle-mtk/mtk-1-bab4-atap.jpg" alt="Atap rumah berbentuk segitiga." />
+        <Dialog nama="Igil" anak="Halo, Rara! Halo, Bimo! Hari ini kita main detektif bentuk!" />
+        <Dialog nama="Rara" anak="Apa itu bentuk, Nek?" />
+        <Dialog nama="Bimo" anak="Atapnya lancip. Sisinya ada 1, 2, 3!" />
+        <KuisAkhirAdegan idSuara={idKuis("A", 1)} idKanvas={idKuis("A", 2)} pertanyaanSuara="Atap rumah Nenek bentuknya apa?" aliasSuara={["segitiga"]} petunjukSuara="Sebutkan nama bentuknya." pertanyaanKanvas="Atap itu punya berapa sisi? Tuliskan angkanya." aliasKanvas={["3", "tiga"]} konteksKanvas="Atap segitiga punya 3 sisi." />
+      </div>
+    );
+  }
+  if (halaman === 1) {
+    return (
+      <div className="space-y-3">
+        <JudulHalaman n={2} />
+        <TabelInfoGrafis judul="Infografis: Bentuk di rumah Nenek" kepala={["Benda", "Ciri", "Nama"]} baris={[["Jam", "bulat, tanpa sudut", "lingkaran"], ["Bingkai foto", "4 sisi sama", "persegi"], ["Pintu", "4 sisi, ada yang panjang", "persegi panjang"]]} kaki="Persegi dan persegi panjang sama-sama segi empat." />
+        <KuisAkhirAdegan idSuara={idKuis("A", 3)} idKanvas={idKuis("A", 4)} pertanyaanSuara="Bingkai foto sisinya sama semua. Bentuknya apa?" aliasSuara={["persegi"]} petunjukSuara="Sebutkan nama bentuknya." pertanyaanKanvas="Pintu punya berapa sisi? Tuliskan angkanya." aliasKanvas={["4", "empat"]} konteksKanvas="Pintu persegi panjang punya 4 sisi." />
+      </div>
+    );
+  }
+  if (halaman === 2) {
+    return (
+      <div className="space-y-3">
+        <JudulHalaman n={3} />
         <GambarCerita src="/doodle-mtk/mtk-1-bab4-adegan-3.jpg" alt="Dadu berbentuk kubus dan kotak susu berbentuk balok." />
-        <p className="text-center text-4xl font-normal" aria-hidden>
-          🎲 🧃
-        </p>
-        <Dialog nama="Bimo" anak="Nek, dadu ini bisa dipegang. Tebal!" />
-        <Dialog nama="Igil" anak="Benar. Dadu itu kubus. Semua sisinya persegi yang sama besar." />
-        <Dialog nama="Rara" anak="Kalau kotak susu? Bentuknya lebih panjang." />
-        <Dialog nama="Igil" anak="Itu balok. Sisinya ada yang persegi panjang." />
-        <Dialog nama="Rara" anak="Yeay! Kita detektif bentuk!" />
-        <p className="rounded-2xl bg-[#F0FDF4] px-4 py-3 text-sm font-extrabold text-[#166534]">
-          Lencana: Detektif Bentuk Datar dan Detektif Bangun Ruang.
-        </p>
-        <KuisAkhirAdegan
-          idSuara={idKuis("A", 5)}
-          idKanvas={idKuis("A", 6)}
-          pertanyaanSuara="Dadu bentuknya apa?"
-          aliasSuara={["kubus"]}
-          petunjukSuara="Sebutkan nama bentuknya."
-          pertanyaanKanvas="Kotak susu bentuknya apa? Tuliskan namanya."
-          aliasKanvas={["balok"]}
-          konteksKanvas="Kotak susu berbentuk balok."
-        />
+        <p className="text-center text-4xl">🎲 🧃 ⏰</p>
+        <KuisAkhirAdegan idSuara={idKuis("A", 5)} idKanvas={idKuis("A", 6)} pertanyaanSuara="Dadu bentuknya apa?" aliasSuara={["kubus"]} petunjukSuara="Sebutkan nama bentuknya." pertanyaanKanvas="Kotak susu bentuknya apa? Tuliskan namanya." aliasKanvas={["balok"]} konteksKanvas="Kotak susu berbentuk balok." />
+        <SoalRekamSuara id={idKuis("A", 0)} pertanyaan="Rara melihat jam dinding di rumah Nenek. Jam itu bentuknya apa? Ayo sebutkan!" periksa={(transkrip) => jawabanTulisMemuatAlias(transkrip, ["lingkaran", "bulat"])} petunjuk="Sebutkan nama bentuknya." sesudahNilai={(benar) => setSuara(benar ? "benar" : "salah")} />
+        {suara === "benar" ? <p className="text-sm font-bold text-emerald-800">Jamnya tersenyum.</p> : null}
+        {suara === "salah" ? <p className="text-sm font-bold text-rose-800">Bentuknya bulat dan tidak punya sudut.</p> : null}
+        <SusunTiga id={idKuis("A", 7)} perintah="Susun dari sisi yang paling sedikit." acak={["Segi empat", "Lingkaran", "Segitiga"]} benar={["Lingkaran", "Segitiga", "Segi empat"]} umpan="Lingkaran tanpa sudut, segitiga 3, segi empat 4." />
+        <BenarSalahTiga id={idKuis("A", 8)} perintah="Pilih benar atau salah." baris={[{ teks: "Dadu tebal. Bentuknya kubus.", benar: true }, { teks: "Jam dinding punya sudut lancip.", benar: false }, { teks: "Pintu punya 4 sisi.", benar: true }]} umpan="Jam itu lingkaran." />
+        <SusunTiga id={idKuis("A", 9)} perintah="Susun benda dari yang pipih." acak={["Dadu", "Jam", "Kotak susu"]} benar={["Jam", "Dadu", "Kotak susu"]} umpan="Jam pipih. Dadu dan kotak susu tebal." />
       </div>
-      <div className="mt-6 border-t-2 border-[#1C01A5]/10 pt-5">
-        <p className="text-base font-extrabold text-[#1C01A5]">QUIZ:</p>
-        <p className="text-center text-4xl font-normal" aria-hidden>
-          ⏰
-        </p>
-        <SoalRekamSuara
-          id={idKuis("A", 0)}
-          pertanyaan="Rara melihat jam dinding di rumah Nenek. Jam itu bentuknya apa? Ayo sebutkan!"
-          periksa={(transkrip) => jawabanTulisMemuatAlias(transkrip, ["lingkaran", "bulat"])}
-          petunjuk="Sebutkan nama bentuknya."
-          sesudahNilai={(benar) => setSuara(benar ? "benar" : "salah")}
-        />
-        {suara === "benar" ? <p className="mt-2 text-sm font-bold text-emerald-800">⏰ Jamnya tersenyum. Bentuknya lingkaran.</p> : null}
-        {suara === "salah" ? (
-          <p className="mt-2 text-sm font-bold text-rose-800">Bentuknya bulat dan tidak punya sudut.</p>
-        ) : null}
-      </div>
-      <div className="mt-4">
-        <KuisTulisKartu
-          id={idKuisTulisKartu(ID, "A")}
-          pertanyaan="Gambarlah atap rumah Nenek, lalu tulis nama bentuknya. Bentuk itu punya 3 sisi."
-          alias={["segitiga", "3 sisi", "tiga sisi"]}
-          konteks="Atap rumah berbentuk segitiga dengan 3 sisi yang bertemu."
-          visual={<p className="text-center text-4xl font-normal">🏠</p>}
-        />
-      </div>
-    </>
+    );
+  }
+  return (
+    <div className="space-y-3">
+      <JudulHalaman n={4} />
+      <p className="text-center text-2xl font-black text-[#1C01A5]">3 · 4 · 0</p>
+      <KuisTulisKartu id={idKuisTulisKartu(ID, "A")} pertanyaan="Gambarlah atap rumah Nenek, lalu tulis nama bentuknya. Bentuk itu punya 3 sisi." alias={["segitiga", "3 sisi", "tiga sisi"]} konteks="Atap rumah berbentuk segitiga dengan 3 sisi yang bertemu." visual={<p className="text-center text-4xl">🏠</p>} />
+      <Pilih id={idKuis("A", 10)} pertanyaan="Segitiga punya sudut..." pilihan={[{ huruf: "A", teks: "3" }, { huruf: "B", teks: "4" }, { huruf: "C", teks: "0" }]} benar="A" umpan="Tiga sisi, tiga sudut." salah="Hitung ujung lancipnya." />
+      <Pilih id={idKuis("A", 11)} pertanyaan="Bentuk jam dinding adalah..." pilihan={[{ huruf: "A", teks: "kubus" }, { huruf: "B", teks: "lingkaran" }, { huruf: "C", teks: "balok" }]} benar="B" umpan="Bulat dan tanpa sudut." salah="Jam itu pipih dan bulat." />
+      <Pilih id={idKuis("A", 12)} pertanyaan="Kotak susu yang panjang adalah..." pilihan={[{ huruf: "A", teks: "balok" }, { huruf: "B", teks: "lingkaran" }, { huruf: "C", teks: "segitiga" }]} benar="A" umpan="Balok tebal dan ada sisi yang panjang." salah="Bukan bentuk pipih." />
+    </div>
   );
 }
 
-function IsiKelompok({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminGuru }) {
+function IsiKelompok({ kelas, kelamin, halaman }: { kelas?: string; kelamin?: KelaminGuru; halaman: number }) {
   const bentuk = ["Segitiga", "Lingkaran", "Kubus", "Balok"];
+  if (halaman === 0) {
+    return (
+      <div className="space-y-3">
+        <JudulHalaman n={1} />
+        <JudulSubBab judul="Sub-Bab B: Mengelompokkan Benda" kelas={kelas} kelamin={kelamin} naskah={["Benda dikelompokkan menurut bentuknya.", "Pipih namanya bentuk datar. Tebal namanya bangun ruang."]} />
+        <Dialog nama="Igil" anak="Ayo kelompokkan benda di rumah Nenek." />
+        <Dialog nama="Rara" anak="Yang pipih seperti kertas aku taruh di sini." />
+        <Dialog nama="Bimo" anak="Yang tebal dan bisa dipegang aku taruh di sana." />
+        <p className="text-center text-3xl">🔺🔺</p>
+        <SoalRekamSuara id={idKuis("B", 3)} pertanyaan="Hitung dengan suaramu! Ada 2 segitiga. Berapa jumlah semua sisinya?" periksa={(transkrip) => jawabanTulisMemuatAlias(transkrip, ["enam", "6"])} petunjuk="Ucapkan jumlah sisinya." />
+        <KuisAkhirAdegan idSuara={idKuis("A", 13)} idKanvas={idKuis("A", 14)} pertanyaanSuara="Benda yang pipih disebut apa?" aliasSuara={["bentuk datar", "datar"]} petunjukSuara="Sebutkan namanya." pertanyaanKanvas="Tuliskan: bentuk datar." aliasKanvas={["bentuk datar", "datar"]} konteksKanvas="Benda pipih disebut bentuk datar." />
+      </div>
+    );
+  }
+  if (halaman === 1) {
+    return (
+      <div className="space-y-3">
+        <JudulHalaman n={2} />
+        <TabelInfoGrafis judul="Infografis: Dua keluarga bentuk" kepala={["Keluarga", "Ciri", "Contoh"]} baris={[["Bentuk datar", "pipih", "segitiga, segi empat, lingkaran"], ["Bangun ruang", "tebal", "kubus dan balok"], ["Cara hitung", "sentuh satu per satu", "segitiga 3, segi empat 4"]]} kaki="Kubus dan balok punya 6 sisi." />
+        <KuisAkhirAdegan idSuara={idKuis("A", 15)} idKanvas={idKuis("A", 16)} pertanyaanSuara="Lingkaran punya berapa sudut?" aliasSuara={["0", "nol", "tidak ada"]} petunjukSuara="Ucapkan angkanya." pertanyaanKanvas="Tuliskan angka 0." aliasKanvas={["0", "nol"]} konteksKanvas="Lingkaran tidak punya sudut." />
+      </div>
+    );
+  }
+  if (halaman === 2) {
+    return (
+      <div className="space-y-3">
+        <JudulHalaman n={3} />
+        <p className="text-center text-3xl">🍕 🪙 🎲 🧃</p>
+        <KuisCocok id={idKuis("B", 0)} perintah="Tarik garis dari benda ke bentuknya!" baris={[{ kiri: "🍕 Potongan pizza", pilihan: bentuk, benar: "Segitiga" }, { kiri: "🪙 Koin", pilihan: bentuk, benar: "Lingkaran" }, { kiri: "🎲 Dadu", pilihan: bentuk, benar: "Kubus" }, { kiri: "🧃 Kotak susu", pilihan: bentuk, benar: "Balok" }]} umpan="Pizza segitiga, koin lingkaran, dadu kubus, kotak susu balok." />
+        <SusunTiga id={idKuis("A", 17)} perintah="Susun dari yang pipih ke yang tebal." acak={["Dadu", "Koin", "Kotak susu"]} benar={["Koin", "Dadu", "Kotak susu"]} umpan="Koin pipih. Dadu dan kotak susu tebal." />
+        <BenarSalahTiga id={idKuis("A", 18)} perintah="Pilih benar atau salah." baris={[{ teks: "Koin termasuk lingkaran.", benar: true }, { teks: "Dadu termasuk bentuk datar.", benar: false }, { teks: "Balok bisa dipegang.", benar: true }]} umpan="Dadu itu kubus, bangun ruang." />
+      </div>
+    );
+  }
   return (
-    <>
-      <JudulSubBab
-        judul="Sub-Bab B: Mengelompokkan Benda"
-        kelas={kelas}
-        kelamin={kelamin}
-        naskah={[
-          "Benda bisa dikelompokkan berdasarkan bentuknya.",
-          "Bentuk datar pipih seperti kertas: segitiga, segi empat, dan lingkaran.",
-          "Bangun ruang tebal dan bisa dipegang: kubus dan balok.",
-          "Hitung sisinya satu per satu. Segitiga 3, segi empat 4, lingkaran 0 sudut.",
-        ]}
-      />
-      <TabelInfoGrafis
-        judul="Infografis: Keluarga Bentuk Datar"
-        kepala={["Bentuk", "Sisi dan sudut", "Contoh"]}
-        baris={[
-          ["🔺 Segitiga", "3 sisi, 3 sudut", "Atap, semangka"],
-          ["🟦 Segi empat", "4 sisi, 4 sudut", "Buku, pintu, papan"],
-          ["⚪ Lingkaran", "0 sudut, bulat", "Koin, roda, piring"],
-        ]}
-        kaki="Pipih seperti kertas. Namanya bentuk datar."
-      />
-      <TabelInfoGrafis
-        judul="Infografis: Keluarga Bangun Ruang"
-        kepala={["Bentuk", "Ciri", "Contoh"]}
-        baris={[
-          ["🧊 Kubus", "6 sisi persegi sama", "Dadu, rubik"],
-          ["📦 Balok", "6 sisi, ada yang panjang", "Kotak susu, lemari"],
-        ]}
-        kaki="Tebal dan bisa dipegang. Namanya bangun ruang."
-      />
-      <div className="mt-4 grid gap-3">
-        <article className="rounded-2xl border-2 border-[#E23B3B]/25 bg-[#FFF1F2] px-4 py-3">
-          <p className="text-sm font-black text-[#9F1239]">Menghitung sisi</p>
-          <p className="mt-2 text-center text-4xl font-normal" aria-hidden>
-            🔺
-          </p>
-          <p className="mt-2 text-sm font-semibold text-slate-700">Sentuh sisi segitiga satu per satu: 1, 2, 3. Segitiga = 3 sisi.</p>
-        </article>
-        <article className="rounded-2xl border-2 border-[#0F766E] bg-[#F0FDFA] px-4 py-4">
-          <p className="text-sm font-black text-[#0F766E]">Rumus cepat</p>
-          <p className="mt-2 text-sm font-semibold text-slate-700">Segitiga 3, segi empat 4, lingkaran 0 sudut, kubus dan balok 6 sisi.</p>
-        </article>
-      </div>
-      <div className="mt-4 grid gap-3">
-        <KuisCocok
-          id={idKuis("B", 0)}
-          perintah="Tarik garis dari benda ke bentuknya!"
-          baris={[
-            { kiri: "🍕 Potongan pizza", pilihan: bentuk, benar: "Segitiga" },
-            { kiri: "🪙 Koin", pilihan: bentuk, benar: "Lingkaran" },
-            { kiri: "🎲 Dadu", pilihan: bentuk, benar: "Kubus" },
-            { kiri: "🧃 Kotak susu", pilihan: bentuk, benar: "Balok" },
-          ]}
-          umpan="Pizza segitiga, koin lingkaran, dadu kubus, kotak susu balok."
-        />
-        <Pilih
-          id={idKuis("B", 1)}
-          pertanyaan="Bentuk apa yang berikutnya?"
-          visual={<p>🔺 ⚪ 🟦 🔺 ⚪ 🟦 🔺 ⚪ ❓</p>}
-          pilihan={[
-            { huruf: "A", teks: "🔺 Segitiga" },
-            { huruf: "B", teks: "⚪ Lingkaran" },
-            { huruf: "C", teks: "🟦 Persegi" },
-          ]}
-          benar="C"
-          umpan="Polanya berulang: segitiga, lingkaran, persegi."
-          salah="Lihat tiga bentuk pertama, lalu ulangi."
-        />
-        <Pilih
-          id={idKuis("B", 2)}
-          pertanyaan="Mana yang bukan bangun ruang?"
-          pilihan={[
-            { huruf: "A", teks: "🎲 Dadu" },
-            { huruf: "B", teks: "📦 Kardus" },
-            { huruf: "C", teks: "🖼️ Bingkai foto" },
-            { huruf: "D", teks: "🧊 Es batu kotak" },
-          ]}
-          benar="C"
-          umpan="Bingkai foto pipih. Bentuknya persegi, bukan bangun ruang."
-          salah="Bangun ruang tebal dan bisa dipegang."
-        />
-        <div className="border-t-2 border-[#1C01A5]/10 pt-5">
-          <p className="text-base font-extrabold text-[#1C01A5]">QUIZ:</p>
-          <div className="text-center">
-            <IkonUlang ikon="🔺" jumlah={2} ukuran="text-3xl" />
-          </div>
-          <SoalRekamSuara
-            id={idKuis("B", 3)}
-            pertanyaan="Hitung dengan suaramu! Ada 2 segitiga. Berapa jumlah semua sisinya?"
-            periksa={(transkrip) => jawabanTulisMemuatAlias(transkrip, ["enam", "6"])}
-            petunjuk="Ucapkan jumlah sisinya."
-          />
-        </div>
-      </div>
-    </>
+    <div className="space-y-3">
+      <JudulHalaman n={4} />
+      <p className="text-center text-2xl font-black text-[#1C01A5]">3 · 4 · 6</p>
+      <Pilih id={idKuis("B", 1)} pertanyaan="Bentuk apa yang berikutnya?" visual={<p>🔺 ⚪ 🟦 🔺 ⚪ 🟦 🔺 ⚪ ❓</p>} pilihan={[{ huruf: "A", teks: "🔺 Segitiga" }, { huruf: "B", teks: "⚪ Lingkaran" }, { huruf: "C", teks: "🟦 Persegi" }]} benar="C" umpan="Polanya berulang: segitiga, lingkaran, persegi." salah="Lihat tiga bentuk pertama, lalu ulangi." />
+      <Pilih id={idKuis("B", 2)} pertanyaan="Mana yang bukan bangun ruang?" pilihan={[{ huruf: "A", teks: "🎲 Dadu" }, { huruf: "B", teks: "📦 Kardus" }, { huruf: "C", teks: "🖼️ Bingkai foto" }, { huruf: "D", teks: "🧊 Es batu kotak" }]} benar="C" umpan="Bingkai foto pipih. Bentuknya persegi, bukan bangun ruang." salah="Bangun ruang tebal dan bisa dipegang." />
+      <Pilih id={idKuis("A", 19)} pertanyaan="Kubus punya sisi..." pilihan={[{ huruf: "A", teks: "3" }, { huruf: "B", teks: "4" }, { huruf: "C", teks: "6" }]} benar="C" umpan="Dadu punya 6 sisi persegi." salah="Hitung semua muka dadu." />
+    </div>
   );
 }
 
-function IsiSusun({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminGuru }) {
+function IsiSusun({ kelas, kelamin, halaman }: { kelas?: string; kelamin?: KelaminGuru; halaman: number }) {
+  if (halaman === 0) {
+    return (
+      <div className="space-y-3">
+        <JudulHalaman n={1} />
+        <JudulSubBab judul="Sub-Bab C: Menyusun dan Mengurai Bentuk Bangun" kelas={kelas} kelamin={kelamin} naskah={["Dua bangun bisa digabung menjadi bentuk baru.", "Dua segitiga yang sama besar bisa menjadi segi empat."]} />
+        <Dialog nama="Rara" anak="Nek, dua segitiga ini bisa digabung?" />
+        <Dialog nama="Igil" anak="Bisa. Kalau ukurannya sama, jadinya segi empat." />
+        <Dialog nama="Bimo" anak="Aku susun kepala, badan, dan topi." />
+        <p className="text-center text-3xl">🔺 🔻</p>
+        <KuisAkhirAdegan idSuara={idKuis("A", 20)} idKanvas={idKuis("A", 21)} pertanyaanSuara="Dua segitiga yang sama digabung menjadi apa?" aliasSuara={["segi empat", "persegi", "persegi panjang"]} petunjukSuara="Sebutkan nama bentuknya." pertanyaanKanvas="Tuliskan: segi empat." aliasKanvas={["segi empat", "persegi"]} konteksKanvas="Dua segitiga yang sama bisa menjadi segi empat." />
+      </div>
+    );
+  }
+  if (halaman === 1) {
+    return (
+      <div className="space-y-3">
+        <JudulHalaman n={2} />
+        <TabelInfoGrafis judul="Infografis: Susun dan urai" kepala={["Bangun", "Digabung", "Hasil"]} baris={[["2 segitiga", "rapatkan", "segi empat"], ["1 segitiga + 1 persegi", "sisi 3 dan 4", "dihitung bersama"], ["Robot", "beberapa bentuk", "kepala, badan, topi"]]} kaki="Gabungkan pelan-pelan. Lalu hitung." />
+        <KuisAkhirAdegan idSuara={idKuis("A", 22)} idKanvas={idKuis("A", 23)} pertanyaanSuara="Sisi segitiga ada 3. Sisi persegi ada 4. Semuanya berapa?" aliasSuara={["7", "tujuh"]} petunjukSuara="Ucapkan angkanya." pertanyaanKanvas="Tuliskan 3 + 4 = 7." aliasKanvas={["3 + 4 = 7", "3+4=7"]} konteksKanvas="Tiga tambah empat sama dengan tujuh." />
+      </div>
+    );
+  }
+  if (halaman === 2) {
+    return (
+      <div className="space-y-3">
+        <JudulHalaman n={3} />
+        <p className="text-center text-3xl">🟦 + 🔺</p>
+        <KuisTulisKartu id={idKuisTulisKartu(ID, "B")} pertanyaan="Tuliskan angka jumlah sudut pada gambar ini." alias={["7", "tujuh", "4 + 3 = 7", "4+3=7"]} visual={<p className="text-center text-3xl">🟦 + 🔺</p>} konteks="Persegi punya 4 sudut dan segitiga punya 3 sudut. Jumlahnya 7." />
+        <SusunTiga id={idKuis("A", 24)} perintah="Susun robot dari atas ke bawah." acak={["Badan", "Topi", "Kepala"]} benar={["Topi", "Kepala", "Badan"]} umpan="Topi, kepala, lalu badan." />
+        <BenarSalahTiga id={idKuis("A", 25)} perintah="Pilih benar atau salah." baris={[{ teks: "Dua segitiga bisa digabung.", benar: true }, { teks: "Sudut persegi ada 3.", benar: false }, { teks: "Topi robot pada cerita ini segitiga.", benar: true }]} umpan="Persegi punya 4 sudut." />
+        <SusunTiga id={idKuis("A", 26)} perintah="Susun dari sudut yang paling sedikit." acak={["Persegi", "Lingkaran", "Segitiga"]} benar={["Lingkaran", "Segitiga", "Persegi"]} umpan="0, lalu 3, lalu 4." />
+      </div>
+    );
+  }
   return (
-    <>
-      <JudulSubBab
-        judul="Sub-Bab C: Menyusun dan Mengurai Bentuk Bangun"
-        kelas={kelas}
-        kelamin={kelamin}
-        naskah={[
-          "Dua bangun bisa digabung. Hasilnya bentuk baru.",
-          "Dua segitiga yang sama besar bisa menjadi segi empat.",
-          "Satu segitiga dan satu persegi. Sisinya 3 tambah 4 sama dengan 7.",
-        ]}
-      />
-      <div className="mt-4 grid gap-3">
-        <article className="rounded-2xl border-2 border-[#7C3AED]/25 bg-[#F5F3FF] px-4 py-3">
-          <p className="text-sm font-black text-[#5B21B6]">Gabungkan dua segitiga</p>
-          <p className="mt-2 text-center text-3xl font-normal" aria-hidden>
-            🔺 🔻
-          </p>
-          <p className="mt-2 text-sm font-semibold text-slate-700">Dua segitiga yang sama besar. Kalau digabung, bisa jadi segi empat.</p>
-        </article>
-        <article className="rounded-2xl border-2 border-[#0284C7]/25 bg-[#F0F9FF] px-4 py-3">
-          <p className="text-sm font-black text-[#0C4A6E]">Menjumlahkan sisi</p>
-          <p className="mt-2 text-center text-3xl font-normal" aria-hidden>
-            🔺 + 🟦
-          </p>
-          <p className="mt-2 text-sm font-semibold text-slate-700">1 segitiga dan 1 persegi. Sisi segitiga 3, sisi persegi 4. 3 + 4 = 7.</p>
-        </article>
-        <article className="rounded-2xl border-2 border-violet-300 bg-violet-50 px-4 py-3">
-          <p className="text-sm font-black text-[#92400E]">Menghitung benda</p>
-          <p className="mt-2 text-center text-3xl font-normal" aria-hidden>
-            🎲 🎲 📦 ⚽ 🧃
-          </p>
-          <p className="mt-2 text-sm font-semibold text-slate-700">Di meja ada dua dadu, satu kardus, satu bola, dan satu kotak susu. Kubusnya dua, yaitu kedua dadu.</p>
-        </article>
-        <article className="rounded-2xl border-2 border-[#7C3AED]/25 bg-[#F5F3FF] px-4 py-3">
-          <p className="text-sm font-black text-[#5B21B6]">Menghitung sudut</p>
-          <p className="mt-2 text-center text-3xl font-normal" aria-hidden>
-            🟦 🟦
-          </p>
-          <p className="mt-2 text-sm font-semibold text-slate-700">2 persegi. Sudutnya 4 + 4 = 8.</p>
-        </article>
-        <article className="rounded-2xl border-2 border-[#0F766E] bg-[#F0FDFA] px-4 py-3">
-          <p className="text-sm font-black text-[#0F766E]">Susun jadi benda baru</p>
-          <p className="mt-2 text-sm font-semibold text-slate-700">
-            Kepala persegi, dua mata lingkaran, badan persegi panjang, dua kaki persegi panjang, dan topi segitiga. Itu robot dari beberapa bentuk.
-          </p>
-          <p className="mt-2 text-center text-2xl font-normal" aria-hidden>
-            Kepala 🟦 · badan ▭ · kaki ▭▭ · topi 🔺
-          </p>
-        </article>
-      </div>
-      <div className="mt-4">
-        <KuisTulisKartu
-          id={idKuisTulisKartu(ID, "B")}
-          pertanyaan="Tuliskan angka jumlah sudut pada gambar ini."
-          alias={["7", "tujuh", "4 + 3 = 7", "4+3=7"]}
-          visual={<p className="text-center text-3xl font-black">🟦 + 🔺</p>}
-          konteks="Persegi punya 4 sudut dan segitiga punya 3 sudut. Jumlahnya 7."
-        />
-      </div>
-    </>
+    <div className="space-y-3">
+      <JudulHalaman n={4} />
+      <p className="text-center text-2xl font-black text-[#1C01A5]">4 + 3</p>
+      <Pilih id={idKuis("A", 27)} pertanyaan="4 + 3 = ..." pilihan={[{ huruf: "A", teks: "7" }, { huruf: "B", teks: "8" }, { huruf: "C", teks: "43" }]} benar="A" umpan="Empat sudut dan tiga sudut." salah="Jumlahkan, jangan disambung." />
+      <Pilih id={idKuis("A", 28)} pertanyaan="2 persegi. Jumlah sudutnya..." pilihan={[{ huruf: "A", teks: "4" }, { huruf: "B", teks: "6" }, { huruf: "C", teks: "8" }]} benar="C" umpan="4 + 4 = 8." salah="Setiap persegi punya 4 sudut." />
+      <Pilih id={idKuis("A", 29)} pertanyaan="Di meja: 2 dadu, 1 kardus, 1 bola, 1 kotak susu. Kubusnya ada..." pilihan={[{ huruf: "A", teks: "1" }, { huruf: "B", teks: "2" }, { huruf: "C", teks: "5" }]} benar="B" umpan="Kedua dadu berbentuk kubus." salah="Kardus dan kotak susu adalah balok." />
+    </div>
   );
 }
+
 
 function KotaBentuk({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminGuru }) {
   const kartu = MODUL_MTK1_BAB4.kartu[2];
@@ -945,6 +791,54 @@ function LembarEvaluasi({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminG
   );
 }
 
+function langkahBab4(kelas?: string, kelamin?: KelaminGuru): LangkahQuest[] {
+  const kartuA = MODUL_MTK1_BAB4.kartu[0];
+  const kuisMisi = [...Array.from({ length: 10 }, (_, indeks) => idKuis("C", indeks)), idKuisTulisKartu(ID, "C")];
+  const kuisEvaluasi = [...Array.from({ length: 10 }, (_, indeks) => idKuis("D", indeks)), idKuisTulisKartu(ID, "D")];
+  const butir = ["Mendeskripsikan benda di sekitar berdasarkan bentuknya.", "Mengelompokkan benda: segitiga, segi empat, bentuk lengkung, kubus, dan balok.", "Menyusun dan mengurai bentuk bangun."];
+  const poin = ["Segitiga, tiga sisi, tiga sudut.", "Segi empat, empat sisi, empat sudut.", "Lingkaran bulat, tanpa sudut, bisa menggelinding.", "Kubus seperti dadu, semua sisinya sama.", "Balok seperti kotak susu, lebih panjang.", "Sentuh setiap sisi sambil berhitung. Pipih berarti bentuk datar. Tebal berarti bangun ruang.", "Dua segitiga yang sama besar bisa digabung menjadi segi empat."];
+  const halaman = (Isi: (props: { kelas?: string; kelamin?: KelaminGuru; halaman: number }) => ReactNode, kuis: string[][]) =>
+    [0, 1, 2, 3].map((n) => ({ isi: <Isi halaman={n} kelas={kelas} kelamin={kelamin} />, kuis: kuis[n] }));
+  return [
+    ...empatHalaman({ tab: "Sub-Bab A", kelompok: "Mendeskripsikan bentuk" }, "bentuk", halaman(IsiBentuk, [
+      [idKuis("A", 1), idKuis("A", 2)],
+      [idKuis("A", 3), idKuis("A", 4)],
+      [idKuis("A", 5), idKuis("A", 6), idKuis("A", 0), idKuis("A", 7), idKuis("A", 8), idKuis("A", 9)],
+      [idKuisTulisKartu(ID, "A"), idKuis("A", 10), idKuis("A", 11), idKuis("A", 12)],
+    ])),
+    ...empatHalaman({ tab: "Sub-Bab B", kelompok: "Mengelompokkan benda" }, "kelompok", halaman(IsiKelompok, [
+      [idKuis("B", 3), idKuis("A", 13), idKuis("A", 14)],
+      [idKuis("A", 15), idKuis("A", 16)],
+      [idKuis("B", 0), idKuis("A", 17), idKuis("A", 18)],
+      [idKuis("B", 1), idKuis("B", 2), idKuis("A", 19)],
+    ])),
+    ...empatHalaman({ tab: "Sub-Bab C", kelompok: "Menyusun bentuk" }, "susun", halaman(IsiSusun, [
+      [idKuis("A", 20), idKuis("A", 21)],
+      [idKuis("A", 22), idKuis("A", 23)],
+      [idKuisTulisKartu(ID, "B"), idKuis("A", 24), idKuis("A", 25), idKuis("A", 26)],
+      [idKuis("A", 27), idKuis("A", 28), idKuis("A", 29)],
+    ])),
+    { kode: "misi", bagian: "Misi", judul: "Misi detektif bentuk", kuis: kuisMisi, isi: <KotaBentuk kelas={kelas} kelamin={kelamin} /> },
+    {
+      kode: "review",
+      bagian: "Review",
+      judul: "Tujuan Pembelajaran",
+      tab: "Review",
+      kelompok: "Tujuan Pembelajaran",
+      bebas: true,
+      isi: (
+        <div className="space-y-4">
+          <KepalaKartu ikon="🏠🔺🔍" judul={kartuA.judul} kelas={kelas} kelamin={kelamin} cuplikan={cuplikanDariNaskah(kartuA.voice, 2_000, 3_000)} />
+          <TujuanBelajar butir={butir} />
+          <KartuPoinPenting kelas={kelas} kelamin={kelamin} cuplikan={cuplikanDariNaskah(MODUL_MTK1_BAB4.kartu[3].voice, 2_000, 3_000)} poin={poin} penutup="Dadu itu kubus, kotak susu balok. Ayo cari bentuk di sekitar." />
+          <p className="text-sm font-semibold leading-relaxed text-slate-700">Kalau ada yang masih bingung, tanyakan di sini. Kalau sudah jelas, tekan Lanjut.</p>
+        </div>
+      ),
+    },
+    { kode: "evaluasi", bagian: "Evaluasi", judul: "Lembar evaluasi", isi: <LembarEvaluasi kelas={kelas} kelamin={kelamin} />, kuis: kuisEvaluasi },
+  ];
+}
+
 export default function NaskahMtk1Bab4({
   kelas = "1 SD",
   kelamin,
@@ -952,46 +846,16 @@ export default function NaskahMtk1Bab4({
   kelas?: string;
   kelamin?: KelaminGuru;
 }) {
-  const kartuA = MODUL_MTK1_BAB4.kartu[0];
+  const kuis = useKuisMateri();
+  const sudahBenar = (id: string) => kuis?.sudahBenar(id) ?? false;
+  const langkah = useMemo(() => langkahBab4(kelas, kelamin), [kelas, kelamin]);
   return (
-    <div className="space-y-5">
-      <KartuBingkai latar="bg-sky-50/80">
-        <KepalaKartu
-          ikon="🏠🔺🔍"
-          judul={kartuA.judul}
-          kelas={kelas}
-          kelamin={kelamin}
-          cuplikan={cuplikanDariNaskah(kartuA.voice, 2_000, 3_000)}
-        />
-        <TujuanBelajar
-          butir={[
-            "Mendeskripsikan benda di sekitar berdasarkan bentuknya.",
-            "Mengelompokkan benda: segitiga, segi empat, bentuk lengkung, kubus, dan balok.",
-            "Menyusun dan mengurai bentuk bangun.",
-          ]}
-        />
-        <IsiBentuk kelas={kelas} kelamin={kelamin} />
-        <IsiKelompok kelas={kelas} kelamin={kelamin} />
-        <IsiSusun kelas={kelas} kelamin={kelamin} />
-      </KartuBingkai>
-      <KotaBentuk kelas={kelas} kelamin={kelamin} />
-      <div id={SLOT_AJUAN_SEBELUM_KARTU_D} />
-      <KartuPoinPenting
-        kelas={kelas}
-        kelamin={kelamin}
-        cuplikan={cuplikanDariNaskah(MODUL_MTK1_BAB4.kartu[3].voice, 2_000, 3_000)}
-        poin={[
-          "Segitiga, tiga sisi, tiga sudut.",
-          "Segi empat, empat sisi, empat sudut.",
-          "Lingkaran bulat, tanpa sudut, bisa menggelinding.",
-          "Kubus seperti dadu, semua sisinya sama.",
-          "Balok seperti kotak susu, lebih panjang.",
-          "Sentuh setiap sisi sambil berhitung. Pipih berarti bentuk datar. Tebal berarti bangun ruang.",
-          "Dua segitiga yang sama besar bisa digabung menjadi segi empat.",
-        ]}
-        penutup="Tiga segitiga, empat segi empat. Bulat lingkaran, menggelinding cepat. Dadu itu kubus, kotak susu balok. Ayo cari bentuk, di sekitar pojok."
-      />
-      <LembarEvaluasi kelas={kelas} kelamin={kelamin} />
-    </div>
+    <QuestLangkah
+      simpan="quest-mtk-1-bab4-v1"
+      langkah={langkah}
+      sudahBenar={sudahBenar}
+      slot={{ id: SLOT_AJUAN_SEBELUM_KARTU_D, padaKode: "review" }}
+      teksAkhir="Detektif bentuk selesai. Bab ini selesai."
+    />
   );
 }

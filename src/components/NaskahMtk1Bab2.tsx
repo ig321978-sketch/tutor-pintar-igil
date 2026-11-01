@@ -11,6 +11,8 @@ import TujuanBelajar from "@/components/TujuanBelajar";
 import TombolVoiceMateriPai1 from "@/components/TombolVoiceMateriPai1";
 import { NamaDialog } from "@/components/IkonDialogMtk1";
 import { useKuisMateri } from "@/components/KuisMateriContext";
+import { QuestLangkah, type LangkahQuest } from "@/components/QuestLangkah";
+import { BenarSalahTiga, JudulHalaman, SusunTiga, empatHalaman } from "@/components/modul/GigitanQuest";
 import { SLOT_AJUAN_SEBELUM_KARTU_D } from "@/components/NaskahMtk2Bab1";
 import { kelasTombolHasilKuis, statusDariPilihan, type StatusJawabanKuis } from "@/lib/hasil-kuis";
 import { MISI_MTK1_BAB2, type MisiPetak, type WarnaPetak } from "@/lib/misi-kebun-mtk-1";
@@ -668,6 +670,215 @@ function LembarKerja() {
   );
 }
 
+function IsiCerita({ kelas = "1 SD", kelamin, halaman }: { kelas?: string; kelamin?: KelaminGuru; halaman: number }) {
+  if (halaman === 0) {
+    return (
+      <div className="space-y-3">
+        <JudulHalaman n={1} />
+        <JudulSubBab judul="Sub-Bab A: Cerita Penjumlahan" kelas={kelas} kelamin={kelamin} naskah={["Kita menggabungkan dua kelompok.", "Tanda tambah berarti digabung."]} />
+        <GambarCerita src="/doodle-mtk/mtk-1-bab2-lompat.jpg" alt="Anak bermain lompat tali. Dua anak berlari untuk ikut." />
+        <Dialog nama="Rara" warna="border-[#DB2777]/20 bg-[#FDF2F8]">Ada 4 anak yang sudah bermain lompat tali.</Dialog>
+        <Dialog nama="Bimo" warna="border-[#2563EB]/20 bg-[#EFF6FF]">Lihat, ada 2 anak yang datang lagi.</Dialog>
+        <Dialog nama="Igil" warna="border-amber-300 bg-amber-50">Hoo! Kalau digabung, jumlahnya menjadi lebih banyak.</Dialog>
+        <KuisAkhirAdegan idSuara={idKuis("A", 1)} idKanvas={idKuis("A", 2)} pertanyaanSuara="Ada 4 anak, lalu datang 2 anak. Berapa semuanya?" aliasSuara={["6", "enam"]} petunjukSuara="Ucapkan hasilnya." pertanyaanKanvas="Tuliskan 4 + 2 = 6." aliasKanvas={["4 + 2 = 6", "4+2=6"]} konteksKanvas="Empat anak ditambah dua anak sama dengan enam." />
+      </div>
+    );
+  }
+  if (halaman === 1) {
+    return (
+      <div className="space-y-3">
+        <JudulHalaman n={2} />
+        <TabelInfoGrafis judul="Infografis: Tanda tambah" kepala={["Tanda", "Arti", "Contoh"]} baris={[["+", "digabung", "dua kelompok"], ["=", "hasilnya", "yang sudah dihitung"], ["cerita", "cari dua jumlah", "lalu gabungkan"]]} kaki="Menjumlahkan berarti menggabungkan." />
+        <GambarCerita src="/doodle-mtk/mtk-1-bab2-pensil.jpg" alt="Tiga pensil merah dan empat pensil biru." />
+        <KuisAkhirAdegan idSuara={idKuis("A", 3)} idKanvas={idKuis("A", 4)} pertanyaanSuara="Ada 3 pensil merah dan 4 pensil biru. Semuanya berapa?" aliasSuara={["7", "tujuh"]} petunjukSuara="Ucapkan hasilnya." pertanyaanKanvas="Tuliskan 3 + 4 = 7." aliasKanvas={["3 + 4 = 7", "3+4=7"]} konteksKanvas="Tiga pensil merah ditambah empat pensil biru sama dengan tujuh." />
+      </div>
+    );
+  }
+  if (halaman === 2) {
+    return (
+      <div className="space-y-3">
+        <JudulHalaman n={3} />
+        <p className="text-center text-2xl">⚽⚽⚽⚽ + ⚽⚽⚽</p>
+        <SoalRekamSuara id={idKuis("A", 0)} pertanyaan="Ada 4 bola di keranjang dan 3 bola di luar. Semuanya berapa?" periksa={(transkrip) => jawabanTulisMemuatAlias(transkrip, ["7", "tujuh"])} petunjuk="Dengarkan, hitung, lalu jawab dengan suara." />
+        <SusunTiga id={idKuis("A", 13)} perintah="Susun langkah menjumlah." acak={["Hitung", "Gabungkan", "Cari dua kelompok"]} benar={["Cari dua kelompok", "Gabungkan", "Hitung"]} umpan="Cari, gabungkan, lalu hitung." />
+        <BenarSalahTiga id={idKuis("A", 14)} perintah="Pilih benar atau salah." baris={[{ teks: "Tanda + berarti digabung.", benar: true }, { teks: "Menjumlah membuat jumlah berkurang.", benar: false }, { teks: "Tanda = berarti hasilnya.", benar: true }]} umpan="Jumlah menjadi lebih banyak." />
+        <SusunTiga id={idKuis("A", 15)} perintah="Susun dari yang paling sedikit." acak={["4 anak", "2 anak", "6 anak"]} benar={["2 anak", "4 anak", "6 anak"]} umpan="2, lalu 4, lalu semuanya 6." />
+      </div>
+    );
+  }
+  return (
+    <div className="space-y-3">
+      <JudulHalaman n={4} />
+      <p className="text-center text-2xl font-black text-[#1C01A5]">+ &nbsp; =</p>
+      <KuisTulisKartu id={idKuisTulisKartu(ID, "A")} hanyaKanvas pertanyaan="Ada 5 apel di keranjang dan 2 apel di luar. Tuliskan operasinya." alias={kumpulkanAlias(["5 + 2 = 7", "5+2=7"])} konteks="Lima apel ditambah dua apel sama dengan tujuh." visual={<p className="text-center text-2xl">🍎🍎🍎🍎🍎 + 🍎🍎</p>} />
+      <KuisPilih id={idKuis("A", 5)} soal="Ada 4 mobil kuning dan 4 mobil merah. Semuanya ada berapa mobil?" benar="B" umpanBenar="Tepat! 4 + 4 = 8 mobil." pesanSalah="Hitung mobil kuning, lalu mobil merah." anak={<p className="text-2xl">🚗🚗🚗🚗 + 🚗🚗🚗🚗</p>} pilihan={[{ huruf: "A", teks: "7" }, { huruf: "B", teks: "8" }, { huruf: "C", teks: "9" }]} />
+      <KuisPilih id={idKuis("A", 16)} soal="3 + 5 = ..." benar="B" umpanBenar="3 + 5 = 8." pesanSalah="Gabungkan tiga dan lima." pilihan={[{ huruf: "A", teks: "7" }, { huruf: "B", teks: "8" }, { huruf: "C", teks: "35" }]} />
+      <KuisPilih id={idKuis("A", 17)} soal="2 + 2 = ..." benar="A" umpanBenar="Dua ditambah dua sama dengan empat." pesanSalah="Hitung semua." pilihan={[{ huruf: "A", teks: "4" }, { huruf: "B", teks: "2" }, { huruf: "C", teks: "22" }]} />
+    </div>
+  );
+}
+
+function IsiCara({ kelas = "1 SD", kelamin, halaman }: { kelas?: string; kelamin?: KelaminGuru; halaman: number }) {
+  if (halaman === 0) {
+    return (
+      <div className="space-y-3">
+        <JudulHalaman n={1} />
+        <JudulSubBab judul="Sub-Bab B: Berbagai Cara Melakukan Penjumlahan" kelas={kelas} kelamin={kelamin} naskah={["Ada empat cara menjumlah.", "Pasangan, hitung maju, berulang, dan teman sepuluh."]} />
+        <GambarCerita src="/doodle-mtk/mtk-1-bab2-pasangan.jpg" alt="Keranjang berisi apel merah dan apel hijau." />
+        <Dialog nama="Rara" warna="border-[#DB2777]/20 bg-[#FDF2F8]">Ada 5 apel. 3 apel merah.</Dialog>
+        <Dialog nama="Bimo" warna="border-[#2563EB]/20 bg-[#EFF6FF]">Sisanya apel hijau. Digabung menjadi 5.</Dialog>
+        <Dialog nama="Igil" warna="border-amber-300 bg-amber-50">Urutan boleh dibalik. Hasilnya tetap sama.</Dialog>
+        <KuisAkhirAdegan idSuara={idKuis("B", 0)} idKanvas={idKuis("B", 1)} pertanyaanSuara="Lima apel terdiri dari 3 merah dan berapa hijau?" aliasSuara={["2", "dua"]} petunjukSuara="Sebutkan bagian yang satunya." pertanyaanKanvas="Tuliskan 3 + 2 = 5." aliasKanvas={["3 + 2 = 5", "3+2=5", "2 + 3 = 5"]} konteksKanvas="Tiga apel merah ditambah dua apel hijau sama dengan lima." />
+      </div>
+    );
+  }
+  if (halaman === 1) {
+    return (
+      <div className="space-y-3">
+        <JudulHalaman n={2} />
+        <TabelInfoGrafis judul="Infografis: Empat cara menjumlah" kepala={["Cara", "Langkah", "Cek"]} baris={[["Pasangan", "bagi jadi dua bagian", "jumlahnya sama"], ["Maju", "berdiri di angka pertama", "lompat ke depan"], ["Berulang", "dua bilangan sama", "digabung"], ["Teman 10", "isi sampai sepuluh", "cari pasangannya"]]} kaki="Pilih cara yang paling mudah." />
+        <KuisAkhirAdegan idSuara={idKuis("B", 4)} pertanyaanSuara="Dari angka 5, lompat 3 langkah. Sekarang di angka berapa?" aliasSuara={["8", "delapan"]} petunjukSuara="Sebutkan angka tempat berakhir." />
+        <KuisTulisKartu id={idKuis("A", 18)} hanyaKanvas pertanyaan="Tuliskan 5 + 3 dan hasilnya." alias={kumpulkanAlias(["5 + 3 = 8", "5+3=8"])} konteks="Lima ditambah tiga sama dengan delapan." visual={<p className="text-center text-lg font-black text-[#1C01A5]">5, lalu tiga langkah</p>} />
+      </div>
+    );
+  }
+  if (halaman === 2) {
+    return (
+      <div className="space-y-3">
+        <JudulHalaman n={3} />
+        <p className="text-center text-2xl">🐞🐞🐞 + 🐞🐞🐞</p>
+        <KuisSusun id={idKuis("B", 3)} soal="Bimo di angka 5. Susun tiga langkah lompatannya." pool={[{ kunci: "8", tampil: "8" }, { kunci: "6", tampil: "6" }, { kunci: "7", tampil: "7" }]} benar={["6", "7", "8"]} umpanBenar="Benar! Lompatannya 6, 7, 8." pesanSalah="Mulai dari angka sesudah 5." />
+        <KuisAkhirAdegan idSuara={idKuis("B", 6)} pertanyaanSuara="3 + 3 hasilnya berapa?" aliasSuara={["6", "enam"]} petunjukSuara="Ucapkan hasilnya." />
+        <SusunTiga id={idKuis("B", 10)} perintah="Susun dari hasil yang paling kecil." acak={["4 + 4", "1 + 1", "2 + 2"]} benar={["1 + 1", "2 + 2", "4 + 4"]} umpan="2, lalu 4, lalu 8." />
+        <BenarSalahTiga id={idKuis("B", 11)} perintah="Pilih benar atau salah." baris={[{ teks: "2 + 2 adalah penjumlahan berulang.", benar: true }, { teks: "2 + 3 adalah dua bilangan yang sama.", benar: false }, { teks: "3 + 2 hasilnya sama dengan 2 + 3.", benar: true }]} umpan="Berulang berarti dua bilangan yang sama." />
+      </div>
+    );
+  }
+  return (
+    <div className="space-y-3">
+      <JudulHalaman n={4} />
+      <p className="text-center text-2xl font-black text-[#1C01A5]">8 + ? = 10</p>
+      <KuisAkhirAdegan idSuara={idKuis("B", 7)} idKanvas={idKuis("B", 8)} pertanyaanSuara="Agar 8 menjadi 10, tambah berapa?" aliasSuara={["2", "dua"]} petunjukSuara="Sebutkan teman sepuluhnya." pertanyaanKanvas="Tuliskan 8 + 2 = 10." aliasKanvas={["8 + 2 = 10", "8+2=10"]} konteksKanvas="Delapan ditambah dua sama dengan sepuluh." />
+      <SoalRekamSuara id={idKuis("B", 9)} pertanyaan="9 ditambah berapa sama dengan 10?" periksa={(transkrip) => jawabanTulisMemuatAlias(transkrip, ["1", "satu"])} petunjuk="Sebutkan bilangan temannya." />
+      <KuisTulisKartu id={idKuisTulisKartu(ID, "B")} hanyaKanvas pertanyaan="Tuliskan pasangan 4 dan 1 untuk bilangan 5." alias={kumpulkanAlias(["4 + 1 = 5", "4+1=5", "1 + 4 = 5"])} konteks="Empat ditambah satu sama dengan lima." visual={<p className="text-center text-2xl">🦋🦋🦋🦋 + 🦋</p>} />
+      <KuisPilih id={idKuis("B", 2)} soal="Mana pasangan lain yang juga menjadi 5?" benar="A" umpanBenar="Tepat! 4 dan 1 bersama-sama menjadi 5." pesanSalah="Jumlah dua bagian itu harus 5." pilihan={[{ huruf: "A", teks: "4 dan 1" }, { huruf: "B", teks: "2 dan 2" }, { huruf: "C", teks: "6 dan 1" }]} />
+      <KuisPilih id={idKuis("B", 5)} soal="Mana yang merupakan penjumlahan berulang?" benar="A" umpanBenar="Tepat! 2 + 2 = 4. Dua bilangan yang sama." pesanSalah="Cari dua bilangan yang sama." pilihan={[{ huruf: "A", teks: "2 + 2 = 4" }, { huruf: "B", teks: "2 + 3 = 5" }, { huruf: "C", teks: "1 + 4 = 5" }]} />
+      <KuisPilih id={idKuis("B", 12)} soal="7 + 3 = ..." benar="C" umpanBenar="7 + 3 = 10." pesanSalah="Isi sampai sepuluh." pilihan={[{ huruf: "A", teks: "9" }, { huruf: "B", teks: "11" }, { huruf: "C", teks: "10" }]} />
+    </div>
+  );
+}
+
+function IsiSoal({ kelas = "1 SD", kelamin, halaman }: { kelas?: string; kelamin?: KelaminGuru; halaman: number }) {
+  if (halaman === 0) {
+    return (
+      <div className="space-y-3">
+        <JudulHalaman n={1} />
+        <JudulSubBab judul="Sub-Bab C: Soal Cerita Penjumlahan" kelas={kelas} kelamin={kelamin} naskah={["Soal cerita punya dua jumlah.", "Cari angkanya, lalu gabungkan."]} />
+        <GambarCerita src="/doodle-mtk/mtk-1-bab2-cerita.jpg" alt="Empat burung di dahan. Dua burung terbang mendekat." />
+        <Dialog nama="Rara" warna="border-[#DB2777]/20 bg-[#FDF2F8]">Ada 4 burung di dahan. Datang lagi 2 burung.</Dialog>
+        <Dialog nama="Bimo" warna="border-[#2563EB]/20 bg-[#EFF6FF]">Ayo tulis operasinya.</Dialog>
+        <Dialog nama="Igil" warna="border-amber-300 bg-amber-50">Gabungkan, lalu hitung.</Dialog>
+        <KuisAkhirAdegan idSuara={idKuis("A", 6)} idKanvas={idKuis("A", 7)} pertanyaanSuara="Ada 4 burung, lalu datang 2 burung. Berapa semuanya?" aliasSuara={["6", "enam"]} petunjukSuara="Ucapkan hasilnya." pertanyaanKanvas="Tuliskan 4 + 2 = 6." aliasKanvas={["4 + 2 = 6", "4+2=6"]} konteksKanvas="Empat burung ditambah dua burung sama dengan enam." />
+      </div>
+    );
+  }
+  if (halaman === 1) {
+    return (
+      <div className="space-y-3">
+        <JudulHalaman n={2} />
+        <TabelInfoGrafis judul="Infografis: Membaca soal cerita" kepala={["Langkah", "Cari", "Lalu"]} baris={[["1", "dua jumlah", "tulis angkanya"], ["2", "kata datang atau lagi", "pakai +"], ["3", "hitung", "bacakan hasil"]]} kaki="Dua jumlah digabung." />
+        <KuisAkhirAdegan idSuara={idKuis("A", 8)} idKanvas={idKuis("A", 9)} pertanyaanSuara="Ada 5 siswa, lalu datang 3 siswa. Berapa semuanya?" aliasSuara={["8", "delapan"]} petunjukSuara="Ucapkan hasilnya." pertanyaanKanvas="Tuliskan 5 + 3 = 8." aliasKanvas={["5 + 3 = 8", "5+3=8"]} konteksKanvas="Lima siswa ditambah tiga siswa sama dengan delapan." />
+      </div>
+    );
+  }
+  if (halaman === 2) {
+    return (
+      <div className="space-y-3">
+        <JudulHalaman n={3} />
+        <p className="text-center text-2xl">🚲🚲🚲 + 🛺</p>
+        <SoalRekamSuara id={idKuis("A", 11)} pertanyaan="Roda sepeda ada 6. Roda becak ada 3. Semuanya berapa?" periksa={(transkrip) => jawabanTulisMemuatAlias(transkrip, ["9", "sembilan"])} petunjuk="Gabungkan enam dan tiga." />
+        <KuisTulisKartu id={idKuis("A", 12)} hanyaKanvas pertanyaan="Ada 2 kelereng merah dan 3 kelereng biru. Tuliskan cerita operasinya." alias={kumpulkanAlias(["2 + 3 = 5", "2+3=5", "3 + 2 = 5"])} konteks="Dua kelereng ditambah tiga kelereng sama dengan lima." visual={<p className="text-center text-2xl">🔴🔴 + 🔵🔵🔵</p>} />
+        <SusunTiga id={idKuis("A", 19)} perintah="Susun cara mengerjakan soal." acak={["Hitung", "Tulis +", "Cari angka"]} benar={["Cari angka", "Tulis +", "Hitung"]} umpan="Cari angka, tulis tambah, lalu hitung." />
+        <BenarSalahTiga id={idKuis("A", 20)} perintah="Pilih benar atau salah." baris={[{ teks: "Datang lagi artinya ditambah.", benar: true }, { teks: "3 sepeda dan 1 becak adalah 3 kendaraan.", benar: false }, { teks: "Dua kelereng dan tiga kelereng digabung.", benar: true }]} umpan="3 + 1 = 4 kendaraan." />
+        <SusunTiga id={idKuis("A", 21)} perintah="Susun dari yang paling kecil." acak={["6 roda", "3 roda", "9 roda"]} benar={["3 roda", "6 roda", "9 roda"]} umpan="3, 6, lalu semuanya 9." />
+      </div>
+    );
+  }
+  return (
+    <div className="space-y-3">
+      <JudulHalaman n={4} />
+      <p className="text-center text-2xl font-black text-[#1C01A5]">6 + 3</p>
+      <KuisPilih id={idKuis("A", 10)} soal="Ada 3 sepeda dan 1 becak. Berapa jumlah semua kendaraan?" benar="B" umpanBenar="Tepat! 3 + 1 = 4 kendaraan." pesanSalah="Jumlahkan sepeda dan becak." pilihan={[{ huruf: "A", teks: "3" }, { huruf: "B", teks: "4" }, { huruf: "C", teks: "5" }]} />
+      <KuisPilih id={idKuis("A", 22)} soal="6 + 3 = ..." benar="B" umpanBenar="Enam ditambah tiga sama dengan sembilan." pesanSalah="Gabungkan enam dan tiga." pilihan={[{ huruf: "A", teks: "8" }, { huruf: "B", teks: "9" }, { huruf: "C", teks: "63" }]} />
+      <KuisPilih id={idKuis("A", 23)} soal="5 + 3 = ..." benar="A" umpanBenar="Lima ditambah tiga sama dengan delapan." pesanSalah="Hitung siswa semuanya." pilihan={[{ huruf: "A", teks: "8" }, { huruf: "B", teks: "2" }, { huruf: "C", teks: "53" }]} />
+    </div>
+  );
+}
+
+function langkahBab2(kelas?: string, kelamin?: KelaminGuru): LangkahQuest[] {
+  const modul = MODUL_MTK1_BAB2;
+  const [kartuA, , kartuC, kartuD] = modul.kartu;
+  const kuisMisi = [...Array.from({ length: 10 }, (_, indeks) => idKuis("C", indeks)), idKuisTulisKartu(ID, "C")];
+  const kuisEvaluasi = [...Array.from({ length: 10 }, (_, indeks) => idKuis("D", indeks)), idKuisTulisKartu(ID, "D")];
+  const butir = ["Membuat cerita penjumlahan, lalu menulisnya dengan tanda + dan =.", "Menjumlah dengan pasangan bilangan, menghitung maju, penjumlahan berulang, dan pasangan yang hasilnya 10.", "Menyelesaikan soal cerita penjumlahan sampai 10."];
+  const poin = ["Menjumlahkan berarti menggabungkan dua kelompok menjadi satu.", "Tanda + berarti digabung. Tanda = berarti hasilnya.", "4 + 2 = 6 dibaca: empat ditambah dua hasilnya enam.", "Pasangan bilangan: sebagian ditambah sebagian sama dengan gabungan.", "Urutan boleh dibalik. 3 + 2 = 2 + 3.", "Menghitung maju: berdiri di angka pertama, lalu lompat ke depan.", "Penjumlahan berulang menggabungkan dua bilangan yang sama. 3 + 3 = 6.", "Teman sepuluh: 9 + 1, 8 + 2, 7 + 3, 6 + 4, dan 5 + 5.", "Pada soal cerita, cari dua jumlah, tulis operasinya, lalu hitung."];
+  const halaman = (Isi: (props: { kelas?: string; kelamin?: KelaminGuru; halaman: number }) => ReactNode, kuis: string[][]) =>
+    [0, 1, 2, 3].map((n) => ({ isi: <Isi halaman={n} kelas={kelas} kelamin={kelamin} />, kuis: kuis[n] }));
+  return [
+    ...empatHalaman({ tab: "Sub-Bab A", kelompok: "Cerita penjumlahan" }, "cerita", halaman(IsiCerita, [
+      [idKuis("A", 1), idKuis("A", 2)],
+      [idKuis("A", 3), idKuis("A", 4)],
+      [idKuis("A", 0), idKuis("A", 13), idKuis("A", 14), idKuis("A", 15)],
+      [idKuisTulisKartu(ID, "A"), idKuis("A", 5), idKuis("A", 16), idKuis("A", 17)],
+    ])),
+    ...empatHalaman({ tab: "Sub-Bab B", kelompok: "Cara menjumlah" }, "cara", halaman(IsiCara, [
+      [idKuis("B", 0), idKuis("B", 1)],
+      [idKuis("B", 4), idKuis("A", 18)],
+      [idKuis("B", 3), idKuis("B", 6), idKuis("B", 10), idKuis("B", 11)],
+      [idKuis("B", 7), idKuis("B", 8), idKuis("B", 9), idKuisTulisKartu(ID, "B"), idKuis("B", 2), idKuis("B", 5), idKuis("B", 12)],
+    ])),
+    ...empatHalaman({ tab: "Sub-Bab C", kelompok: "Soal cerita" }, "soal", halaman(IsiSoal, [
+      [idKuis("A", 6), idKuis("A", 7)],
+      [idKuis("A", 8), idKuis("A", 9)],
+      [idKuis("A", 11), idKuis("A", 12), idKuis("A", 19), idKuis("A", 20), idKuis("A", 21)],
+      [idKuis("A", 10), idKuis("A", 22), idKuis("A", 23)],
+    ])),
+    { kode: "misi", bagian: "Misi", judul: "Misi lapangan lompat", kuis: kuisMisi, isi: <MisiLapanganLompat /> },
+    {
+      kode: "review",
+      bagian: "Review",
+      judul: "Tujuan Pembelajaran",
+      tab: "Review",
+      kelompok: "Tujuan Pembelajaran",
+      bebas: true,
+      isi: (
+        <div className="space-y-4">
+          <p className="text-center text-4xl">👟👧🦉</p>
+          <h4 className="text-center text-lg font-black text-[#1C01A5]">{kartuA.judul}</h4>
+          <TombolVoiceMateriPai1 kelas={kelas} kelamin={kelamin} cuplikan={cuplikanDariNaskah(kartuA.voice, 2_000, 3_000)} />
+          <TujuanBelajar butir={butir} />
+          <KartuPoinPenting kelas={kelas} kelamin={kelamin} cuplikan={cuplikanDariNaskah(kartuD.voice.slice(0, 1), 2_000, 3_000)} poin={poin} penutup="Gabungkan dua kelompok, tulis operasinya, lalu hitung hasilnya." />
+          <p className="text-sm font-semibold text-slate-700">Kalau ada yang masih bingung, tanyakan di sini. Kalau sudah jelas, tekan Lanjut.</p>
+        </div>
+      ),
+    },
+    {
+      kode: "evaluasi",
+      bagian: "Evaluasi",
+      judul: "Lembar evaluasi",
+      isi: (
+        <div className="space-y-4">
+          <h4 className="text-center text-lg font-black text-[#1C01A5]">{kartuD.judul}</h4>
+          <TombolVoiceMateriPai1 kelas={kelas} kelamin={kelamin} cuplikan={cuplikanDariNaskah(kartuD.voice.slice(1), 2_000, 3_000)} />
+          <LembarKerja />
+          <KuisTulisKartu id={idKuisTulisKartu(ID, "D")} hanyaKanvas pertanyaan="Tuliskan kalimat kunci: Gabungkan dua kelompok, tulis operasinya, lalu hitung hasilnya." alias={kumpulkanAlias(["gabungkan dua kelompok", "tulis operasinya", "hitung hasilnya"])} konteks={kartuD.pengantar} />
+        </div>
+      ),
+      kuis: kuisEvaluasi,
+    },
+  ];
+}
+
 export default function NaskahMtk1Bab2({
   kelas = "1 SD",
   kelamin,
@@ -675,509 +886,17 @@ export default function NaskahMtk1Bab2({
   kelas?: string;
   kelamin?: KelaminGuru;
 }) {
-  const modul = MODUL_MTK1_BAB2;
-  const [kartuA, , kartuC, kartuD] = modul.kartu;
-
+  const kuis = useKuisMateri();
+  const sudahBenar = (id: string) => kuis?.sudahBenar(id) ?? false;
+  const langkah = useMemo(() => langkahBab2(kelas, kelamin), [kelas, kelamin]);
   return (
-    <div className="space-y-5">
-      <KartuBingkai latar="bg-sky-50/80">
-        <p className="text-center text-4xl font-normal" aria-hidden>
-          👟👧🦉
-        </p>
-        <h4 className="mt-3 text-center text-lg font-black tracking-wide text-[#1C01A5] sm:text-xl">{kartuA.judul}</h4>
-        <div className="mt-4">
-          <TombolVoiceMateriPai1 kelas={kelas} kelamin={kelamin} cuplikan={cuplikanDariNaskah(kartuA.voice, 2_000, 3_000)} />
-        </div>
-        <TujuanBelajar
-          butir={[
-            "Membuat cerita penjumlahan, lalu menulisnya dengan tanda + dan =.",
-            "Menjumlah dengan pasangan bilangan, menghitung maju, penjumlahan berulang, dan pasangan yang hasilnya 10.",
-            "Menyelesaikan soal cerita penjumlahan sampai 10.",
-          ]}
-        />
-
-        <JudulSubBab
-          judul="Sub-Bab A: Cerita Penjumlahan"
-          kelas={kelas}
-          kelamin={kelamin}
-          naskah={[
-            "Anak-anak, bagian ini tentang cerita penjumlahan.",
-            "Kita menggabungkan dua kelompok, lalu menulis operasinya.",
-            "Tanda tambah berarti digabung. Tanda sama dengan berarti hasilnya.",
-            "Ceritanya bermain lompat tali bersama Rara, Bimo, dan Igil. Ayo mulai.",
-          ]}
-        />
-        <div className="mt-4 space-y-3">
-          <GambarCerita
-            src="/doodle-mtk/mtk-1-bab2-lompat.jpg"
-            alt="Empat anak bermain lompat tali. Dua anak berlari untuk ikut. Igil si burung hantu ada di rumput."
-          />
-          <Dialog nama="Rara" warna="border-[#DB2777]/20 bg-[#FDF2F8]">
-            “Ada 4 anak yang sudah bermain lompat tali.”
-          </Dialog>
-          <Dialog nama="Bimo" warna="border-[#2563EB]/20 bg-[#EFF6FF]">
-            “Lihat, ada 2 anak yang datang lagi.”
-          </Dialog>
-          <Dialog nama="Igil" warna="border-amber-300 bg-amber-50">
-            “Hoo! Kalau digabung, jumlahnya menjadi lebih banyak.”
-          </Dialog>
-          <div className="grid gap-3 sm:grid-cols-2">
-            <article className="rounded-2xl border-2 border-[#E23B3B]/25 bg-[#FFF1F2] px-4 py-3">
-              <p className="text-xs font-black uppercase text-[#9F1239]">Mula-mula</p>
-              <IkonUlang ikon="🧒" jumlah={4} ukuran="text-3xl" />
-            </article>
-            <article className="rounded-2xl border-2 border-sky-300 bg-sky-50 px-4 py-3">
-              <p className="text-xs font-black uppercase text-[#0C4A6E]">Datang lagi</p>
-              <IkonUlang ikon="🧒" jumlah={2} ukuran="text-3xl" />
-            </article>
-          </div>
-          <p className="text-center text-4xl font-black text-[#1C01A5]">4 + 2 = 6</p>
-          <p className="text-center text-sm font-bold text-slate-600">Dibaca: empat ditambah dua hasilnya enam.</p>
-          <KuisAkhirAdegan
-            idSuara={idKuis("A", 1)}
-            idKanvas={idKuis("A", 2)}
-            pertanyaanSuara="Ada 4 anak, lalu datang 2 anak. Berapa semuanya?"
-            aliasSuara={["6", "enam"]}
-            petunjukSuara="Ucapkan hasilnya."
-            pertanyaanKanvas="Tuliskan 4 + 2 = 6."
-            aliasKanvas={["4 + 2 = 6", "4+2=6"]}
-            konteksKanvas="Empat anak ditambah dua anak sama dengan enam."
-          />
-          <article className="rounded-2xl border-2 border-[#0F766E] bg-[#F0FDFA] px-4 py-4">
-            <p className="text-sm font-black text-[#0F766E]">Tanda pada cerita penjumlahan</p>
-            <p className="mt-2 text-center text-4xl font-black text-[#1C01A5]">+ &nbsp; =</p>
-            <p className="mt-2 text-sm font-semibold text-slate-700">
-              Tanda + berarti dua kelompok digabung. Tanda = berarti hasilnya. Menjumlahkan berarti menggabungkan bersama.
-            </p>
-          </article>
-          <GambarCerita
-            src="/doodle-mtk/mtk-1-bab2-pensil.jpg"
-            alt="Tiga pensil merah di kiri meja dan empat pensil biru di kanan meja."
-          />
-          <Dialog nama="Rara" warna="border-[#DB2777]/20 bg-[#FDF2F8]">
-            “Pensil merahku ada 3.”
-          </Dialog>
-          <Dialog nama="Bimo" warna="border-[#2563EB]/20 bg-[#EFF6FF]">
-            “Pensil biruku ada 4. Semuanya ada 7 pensil.”
-          </Dialog>
-          <p className="text-center text-4xl font-black text-[#1C01A5]">3 + 4 = 7</p>
-          <p className="text-center text-sm font-bold text-slate-600">Dibaca: tiga ditambah empat hasilnya tujuh.</p>
-          <KuisAkhirAdegan
-            idSuara={idKuis("A", 3)}
-            idKanvas={idKuis("A", 4)}
-            pertanyaanSuara="Ada 3 pensil merah dan 4 pensil biru. Semuanya berapa?"
-            aliasSuara={["7", "tujuh"]}
-            petunjukSuara="Ucapkan hasilnya."
-            pertanyaanKanvas="Tuliskan 3 + 4 = 7."
-            aliasKanvas={["3 + 4 = 7", "3+4=7"]}
-            konteksKanvas="Tiga pensil merah ditambah empat pensil biru sama dengan tujuh."
-          />
-          <TabelInfoGrafis
-            judul="Infografis: Cerita Penjumlahan"
-            kepala={["Cerita", "Operasi", "Hasil"]}
-            baris={[
-              ["4 anak + 2 anak", "4 + 2", "6"],
-              ["3 pensil merah + 4 biru", "3 + 4", "7"],
-              ["4 mobil kuning + 4 merah", "4 + 4", "8"],
-              ["3 kue lapis + 5 bolu", "3 + 5", "8"],
-              ["4 bola + 3 bola", "4 + 3", "7"],
-              ["5 apel + 2 apel", "5 + 2", "7"],
-            ]}
-            kaki="Menjumlahkan berarti menggabungkan dua kelompok."
-          />
-          <KuisPilih
-            id={idKuis("A", 5)}
-            soal="Ada 4 mobil kuning dan 4 mobil merah. Semuanya ada berapa mobil?"
-            benar="B"
-            umpanBenar="Tepat! 4 + 4 = 8 mobil."
-            pesanSalah="Hitung mobil kuning, lalu mobil merah."
-            anak={<p className="text-2xl">🚗🚗🚗🚗 + 🚗🚗🚗🚗</p>}
-            pilihan={[
-              { huruf: "A", teks: "7" },
-              { huruf: "B", teks: "8" },
-              { huruf: "C", teks: "9" },
-            ]}
-          />
-          <div className="mt-6 border-t-2 border-[#1C01A5]/10 pt-5">
-            <p className="text-base font-extrabold text-[#1C01A5]">QUIZ:</p>
-            <p className="text-center text-2xl">⚽⚽⚽⚽ + ⚽⚽⚽</p>
-            <SoalRekamSuara
-              id={idKuis("A", 0)}
-              pertanyaan="Ada 4 bola di keranjang dan 3 bola di luar. Semuanya berapa?"
-              periksa={(transkrip) => jawabanTulisMemuatAlias(transkrip, ["7", "tujuh"])}
-              petunjuk="Dengarkan, hitung, lalu jawab dengan suara."
-            />
-          </div>
-          <KuisTulisKartu
-            id={idKuisTulisKartu(ID, "A")}
-            hanyaKanvas
-            pertanyaan="Ada 5 apel di keranjang dan 2 apel di luar. Tuliskan operasinya."
-            alias={kumpulkanAlias(["5 + 2 = 7", "5+2=7"])}
-            konteks="Lima apel ditambah dua apel sama dengan tujuh."
-            visual={<p className="text-center text-2xl">🍎🍎🍎🍎🍎 + 🍎🍎</p>}
-          />
-        </div>
-
-        <JudulSubBab
-          judul="Sub-Bab B: Berbagai Cara Melakukan Penjumlahan"
-          kelas={kelas}
-          kelamin={kelamin}
-          naskah={[
-            "Sekarang kita mencoba empat cara menjumlah.",
-            "Cara pertama, pasangan bilangan. Cara kedua, menghitung maju.",
-            "Cara ketiga, penjumlahan berulang. Cara keempat, pasangan yang hasilnya sepuluh.",
-          ]}
-        />
-        <div className="mt-4 space-y-3">
-          <TabelInfoGrafis
-            judul="Infografis: Empat Cara Menjumlah"
-            kepala={["Cara", "Contoh", "Hasil"]}
-            baris={[
-              ["Pasangan bilangan", "3 + 2", "5"],
-              ["Menghitung maju", "5 + 3", "8"],
-              ["Penjumlahan berulang", "4 + 4", "8"],
-              ["Hasilnya 10", "7 + 3", "10"],
-            ]}
-            kaki="Pilih cara yang paling mudah, lalu hitung dengan teliti."
-          />
-
-          <p className="text-sm font-black uppercase tracking-wide text-[#1C01A5]">1. Pasangan Bilangan</p>
-          <GambarCerita
-            src="/doodle-mtk/mtk-1-bab2-pasangan.jpg"
-            alt="Keranjang berisi tiga apel merah dan dua apel hijau. Rara dan Bimo menunjuk apel itu."
-          />
-          <Dialog nama="Rara" warna="border-[#DB2777]/20 bg-[#FDF2F8]">
-            “Ada 5 apel. 3 apel merah dan 2 apel hijau.”
-          </Dialog>
-          <Dialog nama="Bimo" warna="border-[#2563EB]/20 bg-[#EFF6FF]">
-            “3 dan 2 adalah dua bagian. Digabung menjadi 5.”
-          </Dialog>
-          <Ikatan gabungan={5} kiri={3} kanan={2} />
-          <p className="text-center text-2xl font-black text-[#1C01A5]">3 + 2 = 5</p>
-          <p className="text-center text-2xl font-black text-[#1C01A5]">2 + 3 = 5</p>
-          <p className="text-center text-sm font-bold text-slate-600">Dibalik, hasilnya tetap sama.</p>
-          <article className="rounded-2xl border-2 border-amber-300 bg-amber-50 px-4 py-3">
-            <p className="text-xs font-black uppercase text-[#92400E]">Kupu-kupu</p>
-            <p className="mt-2 text-2xl">🦋🦋🦋🦋 + 🦋</p>
-            <p className="mt-2 text-sm font-semibold text-slate-700">4 kupu-kupu kuning dan 1 kupu-kupu merah.</p>
-            <Ikatan gabungan={5} kiri={4} kanan={1} />
-            <p className="text-center text-2xl font-black text-[#1C01A5]">4 + 1 = 5</p>
-          </article>
-          <KuisAkhirAdegan
-            idSuara={idKuis("B", 0)}
-            idKanvas={idKuis("B", 1)}
-            pertanyaanSuara="Lima apel terdiri dari 3 merah dan berapa hijau?"
-            aliasSuara={["2", "dua"]}
-            petunjukSuara="Sebutkan bagian yang satunya."
-            pertanyaanKanvas="Tuliskan 3 + 2 = 5."
-            aliasKanvas={["3 + 2 = 5", "3+2=5", "2 + 3 = 5"]}
-            konteksKanvas="Tiga apel merah ditambah dua apel hijau sama dengan lima."
-          />
-          <KuisPilih
-            id={idKuis("B", 2)}
-            soal="Mana pasangan lain yang juga menjadi 5?"
-            benar="A"
-            umpanBenar="Tepat! 4 dan 1 bersama-sama menjadi 5."
-            pesanSalah="Jumlah dua bagian itu harus 5."
-            pilihan={[
-              { huruf: "A", teks: "4 dan 1" },
-              { huruf: "B", teks: "2 dan 2" },
-              { huruf: "C", teks: "6 dan 1" },
-            ]}
-          />
-
-          <p className="text-sm font-black uppercase tracking-wide text-[#1C01A5]">2. Menghitung Maju</p>
-          <GambarCerita
-            src="/doodle-mtk/mtk-1-bab2-maju.jpg"
-            alt="Bimo melompat di jalan batu. Rara dan Igil duduk di rumput menonton."
-          />
-          <Dialog nama="Bimo" warna="border-[#2563EB]/20 bg-[#EFF6FF]">
-            “Aku berdiri di angka 5. Aku melompat 3 langkah ke depan.”
-          </Dialog>
-          <Dialog nama="Rara" warna="border-[#DB2777]/20 bg-[#FDF2F8]">
-            “Enam, tujuh, delapan. Kamu sekarang di angka 8.”
-          </Dialog>
-          <GarisBilangan awal={5} langkah={3} />
-          <p className="text-center text-sm font-bold text-slate-600">5, lalu 6, 7, 8. Jadi 5 + 3 = 8.</p>
-          <p className="text-center text-4xl font-black text-[#1C01A5]">5 + 3 = 8</p>
-          <article className="rounded-2xl border-2 border-sky-300 bg-sky-50 px-4 py-3">
-            <p className="text-sm font-black text-[#0C4A6E]">Dari angka 1, lompat 2 langkah</p>
-            <GarisBilangan awal={1} langkah={2} />
-            <p className="mt-2 text-center text-2xl font-black text-[#1C01A5]">1 + 2 = 3</p>
-          </article>
-          <KuisSusun
-            id={idKuis("B", 3)}
-            soal="Bimo di angka 5. Susun tiga langkah lompatannya."
-            pool={[
-              { kunci: "8", tampil: "8" },
-              { kunci: "6", tampil: "6" },
-              { kunci: "7", tampil: "7" },
-            ]}
-            benar={["6", "7", "8"]}
-            umpanBenar="Benar! Lompatannya 6, 7, 8. Jadi 5 + 3 = 8."
-            pesanSalah="Mulai dari angka sesudah 5."
-          />
-          <KuisAkhirAdegan
-            idSuara={idKuis("B", 4)}
-            pertanyaanSuara="Dari angka 5, lompat 3 langkah. Sekarang di angka berapa?"
-            aliasSuara={["8", "delapan"]}
-            petunjukSuara="Sebutkan angka tempat berakhir."
-          />
-
-          <p className="text-sm font-black uppercase tracking-wide text-[#1C01A5]">3. Penjumlahan Berulang</p>
-          <GambarCerita
-            src="/doodle-mtk/mtk-1-bab2-berulang.jpg"
-            alt="Rara dan Igil melihat tiga kepik di daun lebar."
-          />
-          <Dialog nama="Igil" warna="border-amber-300 bg-amber-50">
-            “Penjumlahan berulang menggabungkan dua bilangan yang sama.”
-          </Dialog>
-          <div className="overflow-hidden rounded-2xl border-4 border-sky-400">
-            {[
-              ["1 + 1", "2"],
-              ["2 + 2", "4"],
-              ["3 + 3", "6"],
-              ["4 + 4", "8"],
-              ["5 + 5", "10"],
-            ].map(([operasi, hasil], indeks) => (
-              <div
-                key={operasi}
-                className={`grid grid-cols-2 px-3 py-2 text-center text-lg font-black text-[#1C01A5] ${
-                  indeks % 2 === 0 ? "bg-sky-50" : "bg-[#F0FDF4]"
-                }`}
-              >
-                <span>{operasi}</span>
-                <span>= {hasil}</span>
-              </div>
-            ))}
-          </div>
-          <KuisPilih
-            id={idKuis("B", 5)}
-            soal="Mana yang merupakan penjumlahan berulang?"
-            benar="A"
-            umpanBenar="Tepat! 2 + 2 = 4. Dua bilangan yang sama."
-            pesanSalah="Cari dua bilangan yang sama, dan hasilnya harus pas."
-            pilihan={[
-              { huruf: "A", teks: "2 + 2 = 4" },
-              { huruf: "B", teks: "2 + 3 = 5" },
-              { huruf: "C", teks: "1 + 4 = 5" },
-            ]}
-          />
-          <KuisAkhirAdegan
-            idSuara={idKuis("B", 6)}
-            pertanyaanSuara="3 + 3 hasilnya berapa?"
-            aliasSuara={["6", "enam"]}
-            petunjukSuara="Ucapkan hasilnya."
-          />
-
-          <p className="text-sm font-black uppercase tracking-wide text-[#1C01A5]">4. Penjumlahan yang Hasilnya 10</p>
-          <GambarCerita
-            src="/doodle-mtk/mtk-1-bab2-sepuluh.jpg"
-            alt="Bingkai sepuluh penuh: tujuh bola merah dan tiga bola biru. Rara, Bimo, dan Igil menghitung."
-          />
-          <Dialog nama="Bimo" warna="border-[#2563EB]/20 bg-[#EFF6FF]">
-            “Ada 7 bola merah dan 3 bola biru. Bingkainya penuh. Semuanya 10.”
-          </Dialog>
-          <Dialog nama="Rara" warna="border-[#DB2777]/20 bg-[#FDF2F8]">
-            “8 dan 2 juga sepuluh. 9 dan 1 juga sepuluh.”
-          </Dialog>
-          <div className="overflow-hidden rounded-2xl border-4 border-sky-400">
-            {[
-              ["9", "1"],
-              ["8", "2"],
-              ["7", "3"],
-              ["6", "4"],
-              ["5", "5"],
-            ].map(([kiri, kanan], indeks) => (
-              <div
-                key={kiri}
-                className={`grid grid-cols-3 items-center px-3 py-2 text-center ${
-                  indeks % 2 === 0 ? "bg-sky-50" : "bg-[#F0FDF4]"
-                }`}
-              >
-                <span className="text-2xl font-black text-[#1C01A5]">{kiri}</span>
-                <span className="text-2xl font-black text-[#1C01A5]">{kanan}</span>
-                <span className="text-lg font-black text-[#92400E]">= 10</span>
-              </div>
-            ))}
-          </div>
-          <p className="text-center text-sm font-bold text-slate-600">Dibalik tetap sama. 1 + 9 = 10. 2 + 8 = 10. 3 + 7 = 10.</p>
-          <KuisAkhirAdegan
-            idSuara={idKuis("B", 7)}
-            idKanvas={idKuis("B", 8)}
-            pertanyaanSuara="Agar 8 menjadi 10, tambah berapa?"
-            aliasSuara={["2", "dua"]}
-            petunjukSuara="Sebutkan teman sepuluhnya."
-            pertanyaanKanvas="Tuliskan 8 + 2 = 10."
-            aliasKanvas={["8 + 2 = 10", "8+2=10"]}
-            konteksKanvas="Delapan ditambah dua sama dengan sepuluh."
-          />
-          <div className="border-t-2 border-[#1C01A5]/10 pt-5">
-            <p className="text-base font-extrabold text-[#1C01A5]">QUIZ:</p>
-            <SoalRekamSuara
-              id={idKuis("B", 9)}
-              pertanyaan="9 ditambah berapa sama dengan 10?"
-              periksa={(transkrip) => jawabanTulisMemuatAlias(transkrip, ["1", "satu"])}
-              petunjuk="Sebutkan bilangan temannya."
-            />
-          </div>
-          <KuisTulisKartu
-            id={idKuisTulisKartu(ID, "B")}
-            hanyaKanvas
-            pertanyaan="Tuliskan pasangan 4 dan 1 untuk bilangan 5."
-            alias={kumpulkanAlias(["4 + 1 = 5", "4+1=5", "1 + 4 = 5"])}
-            konteks="Empat ditambah satu sama dengan lima."
-            visual={<p className="text-center text-2xl">🦋🦋🦋🦋 + 🦋</p>}
-          />
-        </div>
-
-        <JudulSubBab
-          judul="Sub-Bab C: Soal Cerita Penjumlahan"
-          kelas={kelas}
-          kelamin={kelamin}
-          naskah={[
-            "Soal cerita punya dua jumlah. Kita cari angkanya, lalu menggabungkannya.",
-            "Tulis operasinya. Hitung hasilnya. Lalu bacakan jawabannya.",
-            "Rara dan Bimo menghitung burung, teman di kelas, dan kendaraan.",
-          ]}
-        />
-        <div className="mt-4 space-y-3">
-          <GambarCerita
-            src="/doodle-mtk/mtk-1-bab2-cerita.jpg"
-            alt="Empat burung hinggap di dahan. Dua burung lain sedang terbang mendekat."
-          />
-          <Dialog nama="Rara" warna="border-[#DB2777]/20 bg-[#FDF2F8]">
-            “Ada 4 burung di dahan. Datang lagi 2 burung.”
-          </Dialog>
-          <Dialog nama="Igil" warna="border-amber-300 bg-amber-50">
-            “Penyelesaiannya: 4 + 2 = 6. Semuanya ada 6 burung.”
-          </Dialog>
-          <p className="text-center text-4xl font-black text-[#1C01A5]">4 + 2 = 6</p>
-          <KuisAkhirAdegan
-            idSuara={idKuis("A", 6)}
-            idKanvas={idKuis("A", 7)}
-            pertanyaanSuara="Ada 4 burung, lalu datang 2 burung. Berapa semuanya?"
-            aliasSuara={["6", "enam"]}
-            petunjukSuara="Ucapkan hasilnya."
-            pertanyaanKanvas="Tuliskan 4 + 2 = 6."
-            aliasKanvas={["4 + 2 = 6", "4+2=6"]}
-            konteksKanvas="Empat burung ditambah dua burung sama dengan enam."
-          />
-          <article className="rounded-2xl border-2 border-sky-300 bg-sky-50 px-4 py-3">
-            <p className="text-sm font-black text-[#0C4A6E]">Teman di kelas</p>
-            <p className="mt-2 text-sm font-semibold text-slate-700">Ada 5 siswa di kelas. Datang lagi 3 siswa.</p>
-            <p className="mt-2 text-center text-3xl font-black text-[#1C01A5]">5 + 3 = 8</p>
-            <p className="text-center text-sm font-bold text-slate-600">Di dalam kelas ada 8 siswa.</p>
-          </article>
-          <KuisAkhirAdegan
-            idSuara={idKuis("A", 8)}
-            idKanvas={idKuis("A", 9)}
-            pertanyaanSuara="Ada 5 siswa, lalu datang 3 siswa. Berapa semuanya?"
-            aliasSuara={["8", "delapan"]}
-            petunjukSuara="Ucapkan hasilnya."
-            pertanyaanKanvas="Tuliskan 5 + 3 = 8."
-            aliasKanvas={["5 + 3 = 8", "5+3=8"]}
-            konteksKanvas="Lima siswa ditambah tiga siswa sama dengan delapan."
-          />
-          <article className="rounded-2xl border-2 border-violet-300 bg-violet-50 px-4 py-3">
-            <p className="text-sm font-black text-[#5B21B6]">Sepeda dan becak</p>
-            <p className="mt-2 text-2xl">🚲🚲🚲 + 🛺</p>
-            <p className="mt-2 text-sm font-semibold text-slate-700">Ada 3 sepeda dan 1 becak. Semuanya ada 4 kendaraan.</p>
-            <p className="text-lg font-black text-[#1C01A5]">3 + 1 = 4</p>
-            <p className="mt-2 text-sm font-semibold text-slate-700">
-              Roda sepeda ada 6. Roda becak ada 3. Semuanya ada 9 roda.
-            </p>
-            <p className="text-lg font-black text-[#1C01A5]">6 + 3 = 9</p>
-          </article>
-          <KuisPilih
-            id={idKuis("A", 10)}
-            soal="Ada 3 sepeda dan 1 becak. Berapa jumlah semua kendaraan?"
-            benar="B"
-            umpanBenar="Tepat! 3 + 1 = 4 kendaraan."
-            pesanSalah="Jumlahkan sepeda dan becak."
-            pilihan={[
-              { huruf: "A", teks: "3" },
-              { huruf: "B", teks: "4" },
-              { huruf: "C", teks: "5" },
-            ]}
-          />
-          <div className="border-t-2 border-[#1C01A5]/10 pt-5">
-            <p className="text-base font-extrabold text-[#1C01A5]">QUIZ:</p>
-            <SoalRekamSuara
-              id={idKuis("A", 11)}
-              pertanyaan="Roda sepeda ada 6. Roda becak ada 3. Semuanya berapa?"
-              periksa={(transkrip) => jawabanTulisMemuatAlias(transkrip, ["9", "sembilan"])}
-              petunjuk="Gabungkan enam dan tiga."
-            />
-          </div>
-          <KuisTulisKartu
-            id={idKuis("A", 12)}
-            hanyaKanvas
-            pertanyaan="Ada 2 kelereng merah dan 3 kelereng biru. Tuliskan cerita operasinya."
-            alias={kumpulkanAlias(["2 + 3 = 5", "2+3=5", "3 + 2 = 5"])}
-            konteks="Dua kelereng ditambah tiga kelereng sama dengan lima."
-            visual={<p className="text-center text-2xl">🔴🔴 + 🔵🔵🔵</p>}
-          />
-          <p className="rounded-2xl bg-[#F0FDF4] px-4 py-3 text-sm font-extrabold text-[#166534]">
-            Rara dan Bimo sudah membuat cerita penjumlahan, menulis operasinya, dan menghitung hasilnya.
-          </p>
-        </div>
-      </KartuBingkai>
-
-      <KartuBingkai latar="bg-violet-50/80">
-        <p className="text-center text-4xl font-normal" aria-hidden>
-          👟🦉🏅
-        </p>
-        <h4 className="mt-3 text-center text-lg font-black tracking-wide text-[#1C01A5] sm:text-xl">Misi Lapangan Lompat</h4>
-        <p className="mt-1 text-center text-sm font-bold text-[#1C01A5]/70">
-          Sepuluh pos · menghitung, membaca, menulis, membandingkan
-        </p>
-        <div className="mt-4">
-          <TombolVoiceMateriPai1 kelas={kelas} kelamin={kelamin} cuplikan={cuplikanDariNaskah(kartuC.voice, 2_000, 3_000)} />
-        </div>
-        <MisiLapanganLompat />
-      </KartuBingkai>
-
-      <div id={SLOT_AJUAN_SEBELUM_KARTU_D} />
-
-      <KartuPoinPenting
-        kelas={kelas}
-        kelamin={kelamin}
-        cuplikan={cuplikanDariNaskah(kartuD.voice.slice(0, 1), 2_000, 3_000)}
-        poin={[
-          "Menjumlahkan berarti menggabungkan dua kelompok menjadi satu.",
-          "Tanda + berarti digabung. Tanda = berarti hasilnya.",
-          "4 + 2 = 6 dibaca: empat ditambah dua hasilnya enam.",
-          "Pasangan bilangan: sebagian ditambah sebagian sama dengan gabungan.",
-          "Urutan boleh dibalik. 3 + 2 = 2 + 3.",
-          "Menghitung maju: berdiri di angka pertama, lalu lompat ke depan.",
-          "Penjumlahan berulang menggabungkan dua bilangan yang sama. 3 + 3 = 6.",
-          "Teman sepuluh: 9 + 1, 8 + 2, 7 + 3, 6 + 4, dan 5 + 5.",
-          "Pada soal cerita, cari dua jumlah, tulis operasinya, lalu hitung.",
-        ]}
-        penutup="Kalimat kunci: “Gabungkan dua kelompok, tulis operasinya, lalu hitung hasilnya.”"
-      />
-
-      <KartuBingkai latar="bg-rose-50/80">
-        <p className="text-center text-4xl" aria-hidden>
-          📝⭐
-        </p>
-        <h4 className="mt-3 text-center text-lg font-black tracking-wide text-[#1C01A5] sm:text-xl">{kartuD.judul}</h4>
-        <p className="mt-1 text-center text-sm font-bold text-[#1C01A5]/70">
-          Tantangan Para Juara · Penjumlahan sampai dengan 10
-        </p>
-        <div className="mt-4">
-          <TombolVoiceMateriPai1 kelas={kelas} kelamin={kelamin} cuplikan={cuplikanDariNaskah(kartuD.voice.slice(1), 2_000, 3_000)} />
-        </div>
-        <LembarKerja />
-        <KuisTulisKartu
-          id={idKuisTulisKartu(ID, "D")}
-          hanyaKanvas
-          pertanyaan="Tuliskan kalimat kunci: Gabungkan dua kelompok, tulis operasinya, lalu hitung hasilnya."
-          alias={kumpulkanAlias(["gabungkan dua kelompok", "tulis operasinya", "hitung hasilnya"])}
-          konteks={kartuD.pengantar}
-        />
-      </KartuBingkai>
-    </div>
+    <QuestLangkah
+      simpan="quest-mtk-1-bab2-v1"
+      langkah={langkah}
+      sudahBenar={sudahBenar}
+      slot={{ id: SLOT_AJUAN_SEBELUM_KARTU_D, padaKode: "review" }}
+      teksAkhir="Lompat tali selesai. Bab ini selesai."
+    />
   );
 }
+

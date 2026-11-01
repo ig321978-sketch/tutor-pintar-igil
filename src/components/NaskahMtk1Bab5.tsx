@@ -16,6 +16,8 @@ import TabelInfoGrafis from "@/components/TabelInfoGrafis";
 import TombolVoiceMateriPai1 from "@/components/TombolVoiceMateriPai1";
 import WritingCanvas from "@/components/WritingCanvas";
 import { useKuisMateri } from "@/components/KuisMateriContext";
+import { QuestLangkah, type LangkahQuest } from "@/components/QuestLangkah";
+import { BenarSalahTiga, JudulHalaman, SusunTiga, empatHalaman } from "@/components/modul/GigitanQuest";
 import { SLOT_AJUAN_SEBELUM_KARTU_D } from "@/components/NaskahMtk2Bab1";
 import { kelasTombolHasilKuis, statusDariPilihan, type StatusJawabanKuis } from "@/lib/hasil-kuis";
 import { idKuisKartuResmi, idKuisTulisKartu } from "@/lib/kuis-materi";
@@ -512,398 +514,208 @@ function KartuBeda() {
   );
 }
 
-function IsiHitung({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminGuru }) {
+function IsiHitung({ kelas, kelamin, halaman }: { kelas?: string; kelamin?: KelaminGuru; halaman: number }) {
   const [suara, setSuara] = useState<StatusJawabanKuis>(null);
   const [salahKanvas, setSalahKanvas] = useState(0);
+  if (halaman === 0) {
+    return (
+      <div className="space-y-3">
+        <JudulHalaman n={1} />
+        <JudulSubBab judul="Sub-Bab A: Menghitung, Membaca, dan Menulis Bilangan" kelas={kelas} kelamin={kelamin} naskah={["Besok hari tujuh belas Agustus. Kampung memasang bendera kecil.", "Igil butuh bendera sebanyak angka di kertasnya."]} />
+        <Adegan judul="Pagi di gang kampung" src="/doodle-mtk/mtk-1-bab5-pagi.jpg" alt="Gang kampung berhias umbul-umbul. Bendera kecil mendarat di kaki Bimo.">
+          <Dialog nama="Igil" anak="Anak-anak, tolong pasang bendera kecil di sepanjang pagar!" />
+          <Dialog nama="Bimo" anak="Wah, pagarnya panjang sekali." />
+          <Dialog nama="Rara" anak="Igil memegang kertas. Angkanya begini." />
+          <p className="text-center text-3xl font-black text-[#1C01A5]">20</p>
+        </Adegan>
+        <KuisAkhirAdegan idSuara={idKuis("A", 1)} idKanvas={idKuis("A", 2)} pertanyaanSuara="Igil butuh berapa bendera?" aliasSuara={["20", "dua puluh"]} petunjukSuara="Ucapkan angkanya." pertanyaanKanvas="Tuliskan angka 20." aliasKanvas={["20", "dua puluh"]} konteksKanvas="Pagar butuh 20 bendera." />
+      </div>
+    );
+  }
+  if (halaman === 1) {
+    return (
+      <div className="space-y-3">
+        <JudulHalaman n={2} />
+        <TabelInfoGrafis judul="Infografis: Ikat bendera" kepala={["Langkah", "Aturan", "Hasil"]} baris={[["Kumpulkan", "setiap 10", "satu ikat"], ["Ikat", "pita rapat", "1 puluhan"], ["Sisa", "tidak diikat", "satuan"]]} kaki="Berantakan mudah salah. Ikat setiap sepuluh." />
+        <KuisAkhirAdegan idSuara={idKuis("A", 3)} idKanvas={idKuis("A", 4)} pertanyaanSuara="Bendera diikat setiap berapa?" aliasSuara={["10", "sepuluh"]} petunjukSuara="Ucapkan angkanya." pertanyaanKanvas="Tuliskan angka sepuluh." aliasKanvas={["10", "sepuluh"]} konteksKanvas="Setiap ikatan berisi 10 bendera." />
+      </div>
+    );
+  }
+  if (halaman === 2) {
+    return (
+      <div className="space-y-3">
+        <JudulHalaman n={3} />
+        <p className="text-center text-2xl">🎀 <IkonUlang ikon="🇮🇩" jumlah={10} ukuran="text-xl" /></p>
+        <KuisAkhirAdegan idSuara={idKuis("A", 5)} idKanvas={idKuis("A", 6)} pertanyaanSuara="Satu ikat isinya berapa bendera?" aliasSuara={["10", "sepuluh"]} petunjukSuara="Ucapkan angkanya." pertanyaanKanvas="Tuliskan 1 ikat = 10." aliasKanvas={["1 ikat = 10", "1ikat=10"]} konteksKanvas="Satu ikatan sama dengan sepuluh bendera." />
+        <p className="text-center text-2xl">🎀 <IkonUlang ikon="🇮🇩" jumlah={3} ukuran="text-xl" /></p>
+        <KuisAkhirAdegan idSuara={idKuis("A", 7)} idKanvas={idKuis("A", 8)} pertanyaanSuara="Satu ikat dan tiga bendera lepas. Semuanya berapa?" aliasSuara={["13", "tiga belas"]} petunjukSuara="Ucapkan angkanya." pertanyaanKanvas="Tuliskan angka 13." aliasKanvas={["13", "tiga belas"]} konteksKanvas="Satu puluhan dan tiga satuan sama dengan 13." />
+        <SusunTiga id={idKuis("A", 13)} perintah="Susun dari ikatan yang paling sedikit." acak={["2 ikat", "1 ikat", "0 ikat"]} benar={["0 ikat", "1 ikat", "2 ikat"]} umpan="Nol, satu, lalu dua ikat." />
+        <BenarSalahTiga id={idKuis("A", 14)} perintah="Pilih benar atau salah." baris={[{ teks: "Satu ikat berisi sepuluh bendera.", benar: true }, { teks: "Bendera lepas ikut dihitung.", benar: true }, { teks: "Dua ikat sama dengan sepuluh.", benar: false }]} umpan="Dua ikat sama dengan dua puluh." />
+        <SusunTiga id={idKuis("A", 15)} perintah="Susun cara menghitung." acak={["Ikat", "Hitung", "Kumpulkan"]} benar={["Kumpulkan", "Hitung", "Ikat"]} umpan="Kumpulkan, hitung sampai sepuluh, lalu ikat." />
+      </div>
+    );
+  }
   return (
-    <>
-      <JudulSubBab
-        judul="Sub-Bab A: Menghitung, Membaca, dan Menulis Bilangan"
-        kelas={kelas}
-        kelamin={kelamin}
-        naskah={[
-          "Besok hari tujuh belas Agustus. Kampung memasang bendera kecil.",
-          "Sepuluh bendera diikat jadi satu. Satu ikat sama dengan sepuluh. Itu satu puluhan.",
-          "Satu ikat dan tiga bendera lepas adalah tiga belas.",
-          "Belas artinya sepuluh lebih sedikit. Sebelas adalah nama istimewa.",
-          "Dua ikat penuh, lepasnya nol, sama dengan dua puluh. Merdeka!",
-        ]}
-      />
-      <div className="mt-4 space-y-3">
-        <Adegan
-          judul="Pagi di gang kampung"
-          src="/doodle-mtk/mtk-1-bab5-pagi.jpg"
-          alt="Gang kampung berhias umbul-umbul. Bendera kecil mendarat di kaki Bimo, Igil hinggap di pagar."
-        >
-          <p className="text-sm font-semibold text-slate-700">
-            Umbul-umbul merah putih berkibar. Satu bendera kecil terbang, lalu mendarat di kaki seorang anak.
-          </p>
-          <Dialog nama="Igil" anak="Anak-anak, tolong pasang bendera kecil di sepanjang pagar. Kita butuh dua puluh bendera!" />
-          <Dialog nama="Bimo" anak="Dua puluh?! Aku cuma bisa menghitung sampai sepuluh…" />
-          <Dialog nama="Igil" anak="Jangan khawatir! Rahasianya adalah ikatan ajaib!" />
-          <KuisAkhirAdegan
-            idSuara={idKuis("A", 1)}
-            idKanvas={idKuis("A", 2)}
-            pertanyaanSuara="Igil butuh berapa bendera?"
-            aliasSuara={["20", "dua puluh"]}
-            petunjukSuara="Ucapkan angkanya."
-            pertanyaanKanvas="Tuliskan angka 20."
-            aliasKanvas={["20", "dua puluh"]}
-            konteksKanvas="Pagar butuh 20 bendera."
-          />
-        </Adegan>
-        <Adegan
-          judul="Tumpukan bendera berantakan"
-          src="/doodle-mtk/mtk-1-bab5-adegan-1.jpg"
-          alt="Bimo menunjuk bendera yang berserakan di tikar, Bimo bingung, Igil mengawasi."
-        >
-          <Dialog nama="Bimo" anak="Satu, dua, tiga… eh, yang ini sudah belum, ya?" />
-          <Dialog nama="Bimo" anak="Aku jadi bingung!" />
-          <Dialog nama="Igil" anak="Kalau berantakan, gampang salah. Ayo kita ikat setiap sepuluh!" />
-          <KuisAkhirAdegan
-            idSuara={idKuis("A", 3)}
-            idKanvas={idKuis("A", 4)}
-            pertanyaanSuara="Bendera diikat setiap berapa?"
-            aliasSuara={["10", "sepuluh"]}
-            petunjukSuara="Ucapkan angkanya."
-            pertanyaanKanvas="Tuliskan angka sepuluh."
-            aliasKanvas={["10", "sepuluh"]}
-            konteksKanvas="Setiap ikatan berisi 10 bendera."
-          />
-        </Adegan>
-        <Adegan
-          judul="Ikatan ajaib pertama"
-          src="/doodle-mtk/mtk-1-bab5-adegan-2.jpg"
-          alt="Rara mengikat sepuluh bendera jadi satu ikatan dengan pita, Igil memperhatikan."
-        >
-          <Dialog nama="Rara" anak="Satu, dua, tiga… sembilan, sepuluh!" />
-          <Dialog nama="Igil" anak="Ikat! Sekarang ini 1 ikat isinya 10!" />
-          <p className="rounded-xl bg-white px-3 py-2 text-sm font-black text-[#1C01A5]">🎀 1 ikat = 10 bendera = 1 puluhan</p>
-          <KuisAkhirAdegan
-            idSuara={idKuis("A", 5)}
-            idKanvas={idKuis("A", 6)}
-            pertanyaanSuara="Satu ikat isinya berapa bendera?"
-            aliasSuara={["10", "sepuluh"]}
-            petunjukSuara="Ucapkan angkanya."
-            pertanyaanKanvas="Tuliskan 1 ikat = 10."
-            aliasKanvas={["1 ikat = 10", "1ikat=10"]}
-            konteksKanvas="Satu ikatan sama dengan sepuluh bendera."
-          />
-        </Adegan>
-        <Adegan
-          judul="Lahirnya angka belasan"
-          src="/doodle-mtk/mtk-1-bab5-adegan-3.jpg"
-          alt="Satu ikat bendera dan tiga bendera lepas, Bimo menunjuk, angkanya 13."
-        >
-          <Dialog nama="Bimo" anak="Ada satu ikat dan tiga bendera lepas. Jadi berapa?" />
-          <Dialog nama="Igil" anak="Mulai dari sepuluh, lalu lanjut: sebelas, dua belas, tiga belas!" />
-          <Dialog nama="Rara" anak="Jadi ada 13 bendera!" />
-          <p className="text-center text-3xl font-black">
-            <span className="text-blue-700">1</span>
-            <span className="text-sky-600">3</span>
-          </p>
-          <p className="text-sm font-semibold text-slate-700">Angka 1 artinya satu ikat. Angka 3 artinya tiga bendera lepas.</p>
-          <KuisAkhirAdegan
-            idSuara={idKuis("A", 7)}
-            idKanvas={idKuis("A", 8)}
-            pertanyaanSuara="Satu ikat dan tiga bendera lepas. Semuanya berapa?"
-            aliasSuara={["13", "tiga belas"]}
-            petunjukSuara="Ucapkan angkanya."
-            pertanyaanKanvas="Tuliskan angka 13."
-            aliasKanvas={["13", "tiga belas"]}
-            konteksKanvas="Satu puluhan dan tiga satuan sama dengan 13."
-          />
-        </Adegan>
-        <Adegan
-          judul="Kata belas yang ajaib"
-          src="/doodle-mtk/mtk-1-bab5-adegan-4.jpg"
-          alt="Papan tulis kampung berisi angka 11 sampai 19 dan kata belas. Bimo dan Rara melihatnya."
-        >
-          <Dialog nama="Bimo" anak="Kok namanya pakai belas semua?" />
-          <Dialog nama="Igil" anak="Belas artinya sepuluh lebih sedikit. Tiga belas sama dengan sepuluh dan tiga." />
-          <Dialog nama="Rara" anak="Tapi 11 bukan satu belas. Namanya sebelas!" />
-          <Dialog nama="Igil" anak="Betul! Sebelas itu angka istimewa." />
-          <KuisAkhirAdegan
-            idSuara={idKuis("A", 9)}
-            idKanvas={idKuis("A", 10)}
-            pertanyaanSuara="Tiga belas sama dengan sepuluh dan berapa?"
-            aliasSuara={["3", "tiga"]}
-            petunjukSuara="Ucapkan angkanya."
-            pertanyaanKanvas="Tuliskan nama angka 11."
-            aliasKanvas={["sebelas"]}
-            konteksKanvas="Angka 11 dibaca sebelas, bukan satu belas."
-          />
-        </Adegan>
-        <Adegan
-          judul="Dua ikat sama dengan dua puluh"
-          src="/doodle-mtk/mtk-1-bab5-adegan-5.jpg"
-          alt="Dua ikat bendera, angka 20, Rara, Bimo, dan Igil bersorak, kembang api di langit."
-        >
-          <Dialog nama="Bimo" anak="Ikatan kedua sudah penuh!" />
-          <Dialog nama="Igil" anak="Dua ikat, lepasnya nol. Itu 20, dua puluh!" />
-          <p className="text-center text-2xl font-black text-[#1C01A5]">🎀🎀 = 20</p>
-          <Dialog nama="Igil" anak="Horeee! Bendera untuk 17 Agustus sudah siap! Merdeka!" />
-          <KuisAkhirAdegan
-            idSuara={idKuis("A", 11)}
-            idKanvas={idKuis("A", 12)}
-            pertanyaanSuara="Dua ikat bendera sama dengan berapa?"
-            aliasSuara={["20", "dua puluh"]}
-            petunjukSuara="Ucapkan angkanya."
-            pertanyaanKanvas="Tuliskan 2 ikat = 20."
-            aliasKanvas={["2 ikat = 20", "2ikat=20"]}
-            konteksKanvas="Dua ikatan penuh sama dengan 20."
-          />
-        </Adegan>
-        <article className="rounded-2xl border-2 border-emerald-300 bg-emerald-50 px-4 py-3">
-          <p className="text-sm font-black text-[#1C01A5]">Kenali angka belasan</p>
-          <p className="mt-1 text-sm font-semibold text-slate-700">🎀 = 1 ikat isi 10. ● = 1 benda lepas.</p>
-          <div className="mt-3">
-            <TabelBelasan />
-          </div>
-        </article>
-        <TabelInfoGrafis
-          judul="Infografis: Menghitung Bendera"
-          kepala={["Gambar", "Cara baca", "Angka"]}
-          baris={[
-            ["🎀 ●●●", "Tiga belas", "13"],
-            ["🎀 ●●●●●", "Lima belas", "15"],
-            ["🎀🎀", "Dua puluh", "20"],
-          ]}
-          kaki="Satu ikat sepuluh. Lepasnya satuan. Dua ikat penuh sama dengan 20."
-        />
-      </div>
-      <div className="mt-6 border-t-2 border-[#1C01A5]/10 pt-5">
-        <p className="text-base font-extrabold text-[#1C01A5]">QUIZ:</p>
-        <p className="mt-2 text-center text-2xl">
-          🎀 <IkonUlang ikon="🇮🇩" jumlah={5} />
-        </p>
-        <SoalRekamSuara
-          id={idKuis("A", 0)}
-          pertanyaan="Ada satu ikat dan lima bendera lepas. Semuanya berapa? Ucapkan dengan keras!"
-          periksa={(transkrip) => jawabanTulisMemuatAlias(transkrip, ["lima belas", "15"])}
-          petunjuk="Sebutkan jumlah semuanya."
-          sesudahNilai={(benar) => setSuara(benar ? "benar" : "salah")}
-        />
-        {suara === "benar" ? <p className="mt-2 text-sm font-bold text-emerald-800">Cuit-cuit! Kamu hebat sekali!</p> : null}
-        {suara === "salah" ? (
-          <p className="mt-2 text-sm font-bold text-rose-800">Mulai dari sepuluh, lalu lanjut hitung bendera yang lepas.</p>
-        ) : null}
-      </div>
-      <div className="mt-4">
-        <KuisTulisKartu
-          id={idKuisTulisKartu(ID, "A")}
-          pertanyaan="Tulis angka banyaknya semua bendera!"
-          alias={["18", "delapan belas"]}
-          konteks="Satu ikat sepuluh bendera ditambah delapan bendera lepas sama dengan 18."
-          visual={
-            <p className="text-center text-2xl">
-              🎀 <IkonUlang ikon="🇮🇩" jumlah={8} ukuran="text-xl" />
-            </p>
-          }
-          sesudahNilai={(benar) => {
-            if (!benar) setSalahKanvas((jumlah) => jumlah + 1);
-          }}
-        />
-        {salahKanvas >= 2 ? (
-          <div className="mt-3 grid gap-2 sm:grid-cols-2">
-            <div className="rounded-xl border-2 border-blue-300 bg-blue-50 px-3 py-2 text-sm font-black text-blue-900">
-              Puluhan · 🎀 satu ikat
-            </div>
-            <div className="rounded-xl border-2 border-sky-300 bg-sky-50 px-3 py-2 text-sm font-black text-violet-950">
-              Satuan · delapan bendera lepas
-            </div>
-          </div>
-        ) : null}
-      </div>
-    </>
+    <div className="space-y-3">
+      <JudulHalaman n={4} />
+      <p className="text-center text-sm font-semibold text-slate-700">Belas artinya sepuluh lebih sedikit. Angka 11 namanya sebelas.</p>
+      <KuisAkhirAdegan idSuara={idKuis("A", 9)} idKanvas={idKuis("A", 10)} pertanyaanSuara="Tiga belas sama dengan sepuluh dan berapa?" aliasSuara={["3", "tiga"]} petunjukSuara="Ucapkan angkanya." pertanyaanKanvas="Tuliskan nama angka 11." aliasKanvas={["sebelas"]} konteksKanvas="Angka 11 dibaca sebelas, bukan satu belas." />
+      <p className="text-center text-3xl">🎀🎀</p>
+      <KuisAkhirAdegan idSuara={idKuis("A", 11)} idKanvas={idKuis("A", 12)} pertanyaanSuara="Dua ikat bendera sama dengan berapa?" aliasSuara={["20", "dua puluh"]} petunjukSuara="Ucapkan angkanya." pertanyaanKanvas="Tuliskan 2 ikat = 20." aliasKanvas={["2 ikat = 20", "2ikat=20"]} konteksKanvas="Dua ikatan penuh sama dengan 20." />
+      <p className="text-center text-2xl">🎀 <IkonUlang ikon="🇮🇩" jumlah={5} /></p>
+      <SoalRekamSuara id={idKuis("A", 0)} pertanyaan="Ada satu ikat dan lima bendera lepas. Semuanya berapa? Ucapkan dengan keras!" periksa={(transkrip) => jawabanTulisMemuatAlias(transkrip, ["lima belas", "15"])} petunjuk="Sebutkan jumlah semuanya." sesudahNilai={(benar) => setSuara(benar ? "benar" : "salah")} />
+      {suara === "benar" ? <p className="text-sm font-bold text-emerald-800">Cuit-cuit! Kamu hebat sekali!</p> : null}
+      {suara === "salah" ? <p className="text-sm font-bold text-rose-800">Mulai dari sepuluh, lalu lanjut hitung bendera yang lepas.</p> : null}
+      <KuisTulisKartu id={idKuisTulisKartu(ID, "A")} pertanyaan="Tulis angka banyaknya semua bendera!" alias={["18", "delapan belas"]} konteks="Satu ikat sepuluh bendera ditambah delapan bendera lepas sama dengan 18." visual={<p className="text-center text-2xl">🎀 <IkonUlang ikon="🇮🇩" jumlah={8} ukuran="text-xl" /></p>} sesudahNilai={(benar) => { if (!benar) setSalahKanvas((jumlah) => jumlah + 1); }} />
+      {salahKanvas >= 2 ? <p className="text-sm font-bold text-[#1C01A5]">Puluhan satu ikat. Satuan delapan bendera lepas.</p> : null}
+      <Pilih id={idKuis("A", 16)} pertanyaan="1 ikat dan 4 lepas ditulis..." pilihan={[{ huruf: "A", teks: "14" }, { huruf: "B", teks: "41" }, { huruf: "C", teks: "5" }]} benar="A" umpan="Puluhan dulu, baru satuan." salah="Angka 1 di kiri, angka 4 di kanan." />
+      <Pilih id={idKuis("A", 17)} pertanyaan="Nama angka 11 adalah..." pilihan={[{ huruf: "A", teks: "satu belas" }, { huruf: "B", teks: "sebelas" }, { huruf: "C", teks: "sepuluh" }]} benar="B" umpan="Sebelas adalah nama istimewa." salah="Bukan satu belas." />
+      <Pilih id={idKuis("A", 18)} pertanyaan="Dua ikat penuh, lepasnya nol. Angkanya..." pilihan={[{ huruf: "A", teks: "12" }, { huruf: "B", teks: "2" }, { huruf: "C", teks: "20" }]} benar="C" umpan="Dua puluhan sama dengan 20." salah="Dua ikat, bukan dua bendera." />
+    </div>
   );
 }
 
-function IsiMaju({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminGuru }) {
-  return (
-    <>
-      <JudulSubBab
-        judul="Sub-Bab B: Menghitung Maju dan Mundur"
-        kelas={kelas}
-        kelamin={kelamin}
-        naskah={[
-          "Sebelas, dua belas, tiga belas, empat belas, lima belas.",
-          "Enam belas, tujuh belas, delapan belas, sembilan belas, dua puluh.",
-          "Simpan sepuluh, lalu lanjut hitung. Jangan hitung ulang dari satu.",
-        ]}
-      />
-      <TabelInfoGrafis
-        judul="Infografis: Maju dan Mundur"
-        kepala={["Arah", "Urutan", "Contoh"]}
-        baris={[
-          ["Maju", "10, 11, 12, 13", "kecil ke besar"],
-          ["Mundur", "15, 14, 13, 12", "besar ke kecil"],
-          ["Lanjut", "11 sampai 17", "simpan 10 dulu"],
-        ]}
-        kaki="Simpan sepuluh, lalu lanjut hitung."
-      />
-      <div className="mt-4 space-y-3">
-        <article className="rounded-2xl border-2 border-violet-200 bg-violet-50 px-4 py-3">
-          <p className="text-sm font-black text-[#1C01A5]">Membilang lanjut</p>
-          <p className="mt-2 text-2xl">🎀 🍬🍬🍬🍬🍬🍬🍬</p>
-          <p className="mt-2 text-sm font-semibold text-slate-700">
-            Simpan 10 di kepala. Tunjuk permen: 11, 12, 13, 14, 15, 16, 17. Angka terakhir = 17.
-          </p>
-        </article>
-        <article className="rounded-2xl border-2 border-rose-200 bg-rose-50 px-4 py-3">
-          <p className="text-sm font-black text-[#1C01A5]">Garis bilangan 0–20</p>
-          <p className="mt-2 flex flex-wrap gap-1 text-sm font-black text-[#1C01A5]">
-            {Array.from({ length: 21 }, (_, angka) => (
-              <span key={angka}>{angka === 10 || angka === 20 ? `🚩${angka}` : angka}</span>
-            ))}
-          </p>
-          <p className="mt-2 text-sm font-semibold text-slate-700">
-            12 dan 19 puluhannya sama-sama 1. Satuannya 2 dan 9. 9 lebih besar, jadi 19 lebih besar dari 12.
-          </p>
-        </article>
+function IsiMaju({ kelas, kelamin, halaman }: { kelas?: string; kelamin?: KelaminGuru; halaman: number }) {
+  if (halaman === 0) {
+    return (
+      <div className="space-y-3">
+        <JudulHalaman n={1} />
+        <JudulSubBab judul="Sub-Bab B: Menghitung Maju dan Mundur" kelas={kelas} kelamin={kelamin} naskah={["Sebelas, dua belas, tiga belas, empat belas, lima belas.", "Ingat sepuluh, lalu lanjut hitung."]} />
+        <Adegan judul="Membilang di pagar" src="/doodle-mtk/mtk-1-bab5-adegan-4.jpg" alt="Papan angka 11 sampai 15. Rara menunjuk, Bimo mengikuti.">
+          <Dialog nama="Rara" anak="Aku mulai dari sebelas." />
+          <Dialog nama="Bimo" anak="Dua belas, tiga belas, empat belas..." />
+          <Dialog nama="Igil" anak="Ingat sepuluh di kepala. Jangan mulai lagi dari satu." />
+        </Adegan>
+        <KuisAkhirAdegan idSuara={idKuis("B", 4)} idKanvas={idKuis("B", 5)} pertanyaanSuara="Setelah empat belas, angka berapa?" aliasSuara={["15", "lima belas"]} petunjukSuara="Ucapkan angkanya." pertanyaanKanvas="Tuliskan 12, 13, 14." aliasKanvas={["12, 13, 14", "12 13 14"]} konteksKanvas="Maju satu-satu: dua belas, tiga belas, empat belas." />
+      </div>
+    );
+  }
+  if (halaman === 1) {
+    return (
+      <div className="space-y-3">
+        <JudulHalaman n={2} />
+        <TabelInfoGrafis judul="Infografis: Maju dan Mundur" kepala={["Arah", "Urutan", "Contoh"]} baris={[["Maju", "kecil ke besar", "11, 12, 13"], ["Mundur", "besar ke kecil", "15, 14, 13"], ["Lanjut", "ingat 10", "jangan ulang dari 1"]]} kaki="Maju bertambah. Mundur berkurang." />
+        <KuisAkhirAdegan idSuara={idKuis("B", 6)} idKanvas={idKuis("B", 7)} pertanyaanSuara="Sebelum lima belas, kalau mundur, angkanya berapa?" aliasSuara={["14", "empat belas"]} petunjukSuara="Ucapkan angkanya." pertanyaanKanvas="Tuliskan 15, 14, 13." aliasKanvas={["15, 14, 13", "15 14 13"]} konteksKanvas="Mundur: lima belas, empat belas, tiga belas." />
+      </div>
+    );
+  }
+  if (halaman === 2) {
+    return (
+      <div className="space-y-3">
+        <JudulHalaman n={3} />
+        <p className="text-center text-lg font-black text-[#1C01A5]">11 · 12 · 13 · 14 · 15 · 16 · 17</p>
         <SusunKereta />
+        <SusunTiga id={idKuis("B", 8)} perintah="Susun mundur dari 16." acak={["14", "15", "13"]} benar={["15", "14", "13"]} umpan="15, 14, lalu 13." />
+        <BenarSalahTiga id={idKuis("B", 9)} perintah="Pilih benar atau salah." baris={[{ teks: "Maju berarti angkanya bertambah.", benar: true }, { teks: "Setelah 19 adalah 18 kalau maju.", benar: false }, { teks: "Dua puluh ada sesudah sembilan belas.", benar: true }]} umpan="Maju dari 19 menuju 20." />
       </div>
-    </>
+    );
+  }
+  return (
+    <div className="space-y-3">
+      <JudulHalaman n={4} />
+      <p className="text-center text-2xl font-black text-[#1C01A5]">11 … 20</p>
+      <Pilih id={idKuis("B", 10)} pertanyaan="Setelah 16, angka majunya..." pilihan={[{ huruf: "A", teks: "15" }, { huruf: "B", teks: "17" }, { huruf: "C", teks: "61" }]} benar="B" umpan="16, lalu 17." salah="Maju bertambah satu." />
+      <Pilih id={idKuis("B", 11)} pertanyaan="Mundur tiga langkah dari 20 berhenti di..." pilihan={[{ huruf: "A", teks: "17" }, { huruf: "B", teks: "23" }, { huruf: "C", teks: "18" }]} benar="A" umpan="19, 18, 17." salah="Mundur berarti berkurang." />
+      <Pilih id={idKuis("B", 12)} pertanyaan="11, 12, 13, angka berikutnya..." pilihan={[{ huruf: "A", teks: "10" }, { huruf: "B", teks: "14" }, { huruf: "C", teks: "31" }]} benar="B" umpan="Tiga belas, lalu empat belas." salah="Lanjut satu langkah." />
+    </div>
   );
 }
 
-function IsiNilai({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminGuru }) {
+function IsiNilai({ kelas, kelamin, halaman }: { kelas?: string; kelamin?: KelaminGuru; halaman: number }) {
   const pilihanAngka = ["12", "19", "20"];
-  return (
-    <>
-      <JudulSubBab
-        judul="Sub-Bab C: Nilai Tempat"
-        kelas={kelas}
-        kelamin={kelamin}
-        naskah={[
-          "Rumah kiri untuk ikatan. Rumah kanan untuk benda yang lepas.",
-          "Tulis angka satu lebih dulu, baru satuannya. Empat belas adalah satu empat, bukan empat satu.",
-        ]}
-      />
-      <TabelInfoGrafis
-        judul="Infografis: Nilai Tempat"
-        kepala={["Angka", "Puluhan", "Satuan"]}
-        baris={[
-          ["13", "1 ikat", "3 lepas"],
-          ["16", "1 ikat", "6 lepas"],
-          ["18", "1 ikat", "8 lepas"],
-        ]}
-        kaki="Kiri puluhan, kanan satuan. 16 = 10 + 6."
-      />
-      <div className="mt-4 space-y-3">
-        <article className="rounded-2xl border-2 border-blue-200 bg-blue-50 px-4 py-3">
-          <p className="text-sm font-black text-[#1C01A5]">Rumah nilai tempat · 16</p>
-          <div className="mt-3 grid grid-cols-2 gap-2 text-center">
-            <div className="rounded-xl border-2 border-blue-400 bg-white px-3 py-2">
-              <p className="text-xs font-black text-blue-800">Puluhan</p>
-              <p className="text-3xl font-black text-blue-700">1</p>
-              <p className="text-sm">🎀</p>
-            </div>
-            <div className="rounded-xl border-2 border-sky-300 bg-white px-3 py-2">
-              <p className="text-xs font-black text-amber-800">Satuan</p>
-              <p className="text-3xl font-black text-amber-600">6</p>
-              <p className="text-sm">●●●●●●</p>
-            </div>
-          </div>
-          <p className="mt-2 text-sm font-black text-[#1C01A5]">16 = 10 + 6. Rumah kiri untuk ikatan, rumah kanan untuk yang lepas.</p>
-        </article>
-        <article className="rounded-2xl border-2 border-sky-200 bg-sky-50 px-4 py-3">
-          <p className="text-sm font-black text-[#1C01A5]">Bingkai sepuluh</p>
-          <div className="mt-3 grid gap-2 sm:grid-cols-2">
-            <BingkaiTitik titik={10} />
-            <BingkaiTitik titik={3} />
-          </div>
-          <p className="mt-2 text-sm font-semibold text-slate-700">Bingkai penuh = 10. Titik di bingkai kedua = 3. 10 + 3 = 13.</p>
-        </article>
-        <article className="rounded-2xl border-2 border-emerald-200 bg-emerald-50 px-4 py-3">
-          <p className="text-sm font-black text-[#1C01A5]">Pakai jari teman</p>
-          <p className="mt-2 text-2xl">🖐️🖐️ + ✋</p>
-          <p className="mt-2 text-sm font-semibold text-slate-700">Jari teman = 10. Jarimu = 4. Semuanya = 14.</p>
-        </article>
-        <article className="rounded-2xl border-2 border-cyan-300 bg-cyan-50 px-4 py-3">
-          <p className="text-sm font-black text-[#1C01A5]">Cara menulis angka belasan</p>
-          <p className="mt-2 text-center text-4xl font-black">
-            <span className="text-blue-700">1</span>
-            <span className="text-sky-600">4</span>
-          </p>
-          <p className="mt-2 text-sm font-semibold text-slate-700">
-            Tulis puluhan dulu, baru satuan. Empat belas ditulis 14, bukan 41. Tujuh belas ditulis 17, bukan 71.
-          </p>
-        </article>
-        <KuisCocok
-          id={idKuis("B", 0)}
-          perintah="Tarik garis dari gambar ke angka yang benar!"
-          baris={[
-            { kiri: "🎀 ●●", pilihan: pilihanAngka, benar: "12" },
-            { kiri: "🎀 ●●●●●●●●●", pilihan: pilihanAngka, benar: "19" },
-            { kiri: "🎀🎀", pilihan: pilihanAngka, benar: "20" },
-          ]}
-          umpan="Satu ikat dua lepas = 12. Satu ikat sembilan lepas = 19. Dua ikat = 20."
-        />
-        <div className="border-t-2 border-[#1C01A5]/10 pt-5">
-          <p className="text-base font-extrabold text-[#1C01A5]">QUIZ:</p>
-          <p className="mt-2 text-center text-4xl font-black">
-            <span className="text-blue-700">1</span>
-            <span className="text-sky-600">8</span>
-          </p>
-          <SoalRekamSuara
-            id={idKuis("B", 3)}
-            pertanyaan="Angka 18 punya berapa puluhan dan berapa satuan? Ucapkan!"
-            periksa={(transkrip) =>
-              ucapanMemuat(transkrip, [
-                ["satu puluhan", "1 puluhan", "satu ikat"],
-                ["delapan satuan", "8 satuan", "delapan"],
-              ])
-            }
-            petunjuk="Sebutkan puluhan dan satuannya."
-          />
-        </div>
-        <KuisTulisKartu
-          id={idKuisTulisKartu(ID, "B")}
-          pertanyaan="Tulis angka yang dibacakan Igil: enam belas!"
-          alias={["16", "enam belas"]}
-          konteks="Enam belas ditulis 16. Empat satu, yaitu 61, salah."
-          visual={<p className="text-center text-3xl">🐦 16</p>}
-        />
+  if (halaman === 0) {
+    return (
+      <div className="space-y-3">
+        <JudulHalaman n={1} />
+        <JudulSubBab judul="Sub-Bab C: Nilai Tempat" kelas={kelas} kelamin={kelamin} naskah={["Rak kiri untuk ikatan. Rak kanan untuk benda yang lepas.", "Tulis puluhan lebih dulu, baru satuannya."]} />
+        <Adegan judul="Dua rak angka" src="/doodle-mtk/mtk-1-bab5-adegan-3.jpg" alt="Satu ikat bendera di rak kiri dan bendera lepas di rak kanan.">
+          <Dialog nama="Igil" anak="Rak kiri untuk ikatan. Rak kanan untuk yang lepas." />
+          <Dialog nama="Rara" anak="Aku tulis angka kiri lebih dulu." />
+          <Dialog nama="Bimo" anak="Empat belas adalah satu dan empat, bukan empat dan satu." />
+        </Adegan>
+        <p className="text-center text-4xl font-black"><span className="text-blue-700">1</span><span className="text-sky-600">8</span></p>
+        <SoalRekamSuara id={idKuis("B", 3)} pertanyaan="Angka 18 punya berapa puluhan dan berapa satuan? Ucapkan!" periksa={(transkrip) => ucapanMemuat(transkrip, [["satu puluhan", "1 puluhan", "satu ikat"], ["delapan satuan", "8 satuan", "delapan"]])} petunjuk="Sebutkan puluhan dan satuannya." />
+        <KuisTulisKartu id={idKuisTulisKartu(ID, "B")} pertanyaan="Tulis angka yang dibacakan Igil: enam belas!" alias={["16", "enam belas"]} konteks="Enam belas ditulis 16. Empat satu, yaitu 61, salah." visual={<p className="text-center text-lg font-black text-[#1C01A5]">enam belas</p>} />
       </div>
-    </>
+    );
+  }
+  if (halaman === 1) {
+    return (
+      <div className="space-y-3">
+        <JudulHalaman n={2} />
+        <TabelInfoGrafis judul="Infografis: Nilai Tempat" kepala={["Rak", "Isi", "Contoh 13"]} baris={[["Kiri", "puluhan", "1 ikat"], ["Kanan", "satuan", "3 lepas"], ["Bacaan", "belasan", "tiga belas"]]} kaki="Kiri puluhan, kanan satuan." />
+        <KuisAkhirAdegan idSuara={idKuis("A", 19)} idKanvas={idKuis("A", 20)} pertanyaanSuara="Angka 15. Satuannya berapa?" aliasSuara={["5", "lima"]} petunjukSuara="Ucapkan angkanya." pertanyaanKanvas="Tuliskan 10 + 5." aliasKanvas={["10 + 5", "10+5"]} konteksKanvas="Lima belas sama dengan sepuluh tambah lima." />
+      </div>
+    );
+  }
+  if (halaman === 2) {
+    return (
+      <div className="space-y-3">
+        <JudulHalaman n={3} />
+        <p className="text-center text-2xl">🎀 <IkonUlang ikon="●" jumlah={3} /></p>
+        <KuisCocok id={idKuis("B", 0)} perintah="Tarik garis dari gambar ke angka yang benar!" baris={[{ kiri: "🎀 ●●", pilihan: pilihanAngka, benar: "12" }, { kiri: "🎀 ●●●●●●●●●", pilihan: pilihanAngka, benar: "19" }, { kiri: "🎀🎀", pilihan: pilihanAngka, benar: "20" }]} umpan="Satu ikat dua lepas = 12. Satu ikat sembilan lepas = 19. Dua ikat = 20." />
+        <SusunTiga id={idKuis("A", 21)} perintah="Susun dari satuan yang paling kecil." acak={["1 dan 8", "1 dan 2", "1 dan 5"]} benar={["1 dan 2", "1 dan 5", "1 dan 8"]} umpan="12, 15, lalu 18." />
+        <BenarSalahTiga id={idKuis("A", 22)} perintah="Pilih benar atau salah." baris={[{ teks: "Angka kiri adalah puluhan.", benar: true }, { teks: "41 sama dengan empat belas.", benar: false }, { teks: "Rak kanan untuk benda lepas.", benar: true }]} umpan="Empat belas ditulis 14." />
+      </div>
+    );
+  }
+  return (
+    <div className="space-y-3">
+      <JudulHalaman n={4} />
+      <p className="text-center text-2xl font-black text-[#1C01A5]">16 = 10 + 6</p>
+      <Pilih id={idKuis("A", 23)} pertanyaan="Puluhan pada angka 17 adalah..." pilihan={[{ huruf: "A", teks: "7" }, { huruf: "B", teks: "1" }, { huruf: "C", teks: "17" }]} benar="B" umpan="Angka kiri 1 berarti satu puluhan." salah="Lihat angka di kiri." />
+      <Pilih id={idKuis("A", 24)} pertanyaan="19 = 10 + ..." pilihan={[{ huruf: "A", teks: "9" }, { huruf: "B", teks: "1" }, { huruf: "C", teks: "19" }]} benar="A" umpan="Sembilan satuan." salah="Lihat angka kanan." />
+      <Pilih id={idKuis("A", 25)} pertanyaan="Tujuh belas ditulis..." pilihan={[{ huruf: "A", teks: "71" }, { huruf: "B", teks: "17" }, { huruf: "C", teks: "7" }]} benar="B" umpan="Puluhan dulu." salah="Bukan tujuh satu." />
+    </div>
   );
 }
 
-function IsiBanding({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminGuru }) {
-  return (
-    <>
-      <JudulSubBab
-        judul="Sub-Bab D: Membandingkan Bilangan"
-        kelas={kelas}
-        kelamin={kelamin}
-        naskah={[
-          "Kalau puluhannya sama, bandingkan satuannya. Sembilan belas lebih besar dari dua belas.",
-        ]}
-      />
-      <TabelInfoGrafis
-        judul="Infografis: Membandingkan"
-        kepala={["Pasangan", "Lihat", "Hasil"]}
-        baris={[
-          ["19 dan 12", "satuan 9 dan 2", "19 lebih besar"],
-          ["16 dan 13", "satuan 6 dan 3", "16 lebih besar"],
-          ["10 + 8 dan 16", "18 dan 16", "18 paling banyak"],
-        ]}
-        kaki="Puluhan sama? Lihat satuannya."
-      />
-      <div className="mt-4 space-y-3">
-        <article className="rounded-2xl border-2 border-rose-200 bg-rose-50 px-4 py-3">
-          <p className="text-sm font-black text-[#1C01A5]">Puluhan sama, lihat satuan</p>
-          <p className="mt-2 text-center text-3xl font-black text-[#1C01A5]">19 &gt; 12</p>
-          <p className="mt-2 text-sm font-semibold text-slate-700">
-            12 dan 19 puluhannya sama-sama 1. Satuannya 2 dan 9. 9 lebih besar, jadi 19 lebih besar dari 12.
-          </p>
-        </article>
-        <KartuBeda />
+function IsiBanding({ kelas, kelamin, halaman }: { kelas?: string; kelamin?: KelaminGuru; halaman: number }) {
+  if (halaman === 0) {
+    return (
+      <div className="space-y-3">
+        <JudulHalaman n={1} />
+        <JudulSubBab judul="Sub-Bab D: Membandingkan Bilangan" kelas={kelas} kelamin={kelamin} naskah={["Kalau puluhannya sama, lihat satuannya."]} />
+        <Adegan judul="Dua kantong bendera" src="/doodle-mtk/mtk-1-bab5-adegan-5.jpg" alt="Rara memegang kertas 19. Bimo memegang kertas 12.">
+          <Dialog nama="Rara" anak="Kantongku bertanda 19." />
+          <Dialog nama="Bimo" anak="Kantongku bertanda 12." />
+          <Dialog nama="Igil" anak="Puluhannya sama. Lihat angka kanannya." />
+        </Adegan>
+        <KuisAkhirAdegan idSuara={idKuis("A", 26)} idKanvas={idKuis("A", 27)} pertanyaanSuara="Yang lebih besar, 19 atau 12?" aliasSuara={["19", "sembilan belas"]} petunjukSuara="Ucapkan angkanya." pertanyaanKanvas="Tuliskan 19 > 12." aliasKanvas={["19 > 12", "19>12"]} konteksKanvas="Sembilan belas lebih besar daripada dua belas." />
       </div>
-    </>
+    );
+  }
+  if (halaman === 1) {
+    return (
+      <div className="space-y-3">
+        <JudulHalaman n={2} />
+        <TabelInfoGrafis judul="Infografis: Membandingkan" kepala={["Cek", "Cara", "Contoh"]} baris={[["Puluhan", "yang lebih banyak menang", "2 ikat dan 1 ikat"], ["Satuan", "kalau puluhan sama", "lihat angka kanan"], ["Tanda", "lebih besar atau lebih kecil", "pakai > atau <"]]} kaki="Puluhan sama? Lihat satuannya." />
+        <KuisAkhirAdegan idSuara={idKuis("A", 28)} idKanvas={idKuis("A", 29)} pertanyaanSuara="Yang lebih besar, 16 atau 13?" aliasSuara={["16", "enam belas"]} petunjukSuara="Ucapkan angkanya." pertanyaanKanvas="Tuliskan 16 > 13." aliasKanvas={["16 > 13", "16>13"]} konteksKanvas="Enam belas lebih besar daripada tiga belas." />
+      </div>
+    );
+  }
+  if (halaman === 2) {
+    return (
+      <div className="space-y-3">
+        <JudulHalaman n={3} />
+        <p className="text-center text-2xl">🎀●●●●● &nbsp; 🎀●●</p>
+        <KartuBeda />
+        <SusunTiga id={idKuis("A", 30)} perintah="Susun dari yang paling kecil." acak={["19", "12", "16"]} benar={["12", "16", "19"]} umpan="12, 16, lalu 19." />
+        <BenarSalahTiga id={idKuis("A", 31)} perintah="Pilih benar atau salah." baris={[{ teks: "19 lebih besar daripada 12.", benar: true }, { teks: "Puluhan 2 lebih kecil daripada puluhan 1.", benar: false }, { teks: "Kalau puluhan sama, lihat satuan.", benar: true }]} umpan="Dua puluhan lebih banyak daripada satu." />
+      </div>
+    );
+  }
+  return (
+    <div className="space-y-3">
+      <JudulHalaman n={4} />
+      <p className="text-center text-2xl font-black text-[#1C01A5]">&lt; &nbsp; &gt; &nbsp; =</p>
+      <Pilih id={idKuis("A", 32)} pertanyaan="14 ... 17. Tanda yang tepat..." pilihan={[{ huruf: "A", teks: ">" }, { huruf: "B", teks: "<" }, { huruf: "C", teks: "=" }]} benar="B" umpan="14 lebih kecil daripada 17." salah="Angka kiri lebih kecil." />
+      <Pilih id={idKuis("A", 33)} pertanyaan="10 + 8 dan 18. Keduanya..." pilihan={[{ huruf: "A", teks: "sama" }, { huruf: "B", teks: "10 lebih besar" }, { huruf: "C", teks: "18 lebih kecil" }]} benar="A" umpan="10 + 8 = 18." salah="Hitung dulu sepuluh tambah delapan." />
+      <Pilih id={idKuis("A", 34)} pertanyaan="Yang paling banyak..." pilihan={[{ huruf: "A", teks: "13" }, { huruf: "B", teks: "11" }, { huruf: "C", teks: "20" }]} benar="C" umpan="20 adalah dua puluhan." salah="Bandingkan puluhannya." />
+    </div>
   );
 }
+
 
 function KartuC({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminGuru }) {
   const kartu = MODUL_MTK1_BAB5.kartu[2];
@@ -1105,6 +917,59 @@ function LembarEvaluasi({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminG
   );
 }
 
+function langkahBab5(kelas?: string, kelamin?: KelaminGuru): LangkahQuest[] {
+  const kartuA = MODUL_MTK1_BAB5.kartu[0];
+  const kuisMisi = [...Array.from({ length: 10 }, (_, indeks) => idKuis("C", indeks)), idKuisTulisKartu(ID, "C")];
+  const kuisEvaluasi = [...Array.from({ length: 10 }, (_, indeks) => idKuis("D", indeks)), idKuisTulisKartu(ID, "D")];
+  const butir = ["Membilang, membaca, dan menulis bilangan 11 sampai 20.", "Menghitung maju dan mundur pada bilangan belasan.", "Mengenal puluhan dan satuan dengan mengelompokkan benda per sepuluh.", "Membandingkan bilangan sampai 20."];
+  const halaman = (Isi: (props: { kelas?: string; kelamin?: KelaminGuru; halaman: number }) => ReactNode, kuis: string[][]) =>
+    [0, 1, 2, 3].map((n) => ({ isi: <Isi halaman={n} kelas={kelas} kelamin={kelamin} />, kuis: kuis[n] }));
+  return [
+    ...empatHalaman({ tab: "Sub-Bab A", kelompok: "Membilang sampai 20" }, "hitung", halaman(IsiHitung, [
+      [idKuis("A", 1), idKuis("A", 2)],
+      [idKuis("A", 3), idKuis("A", 4)],
+      [idKuis("A", 5), idKuis("A", 6), idKuis("A", 7), idKuis("A", 8), idKuis("A", 13), idKuis("A", 14), idKuis("A", 15)],
+      [idKuis("A", 9), idKuis("A", 10), idKuis("A", 11), idKuis("A", 12), idKuis("A", 0), idKuisTulisKartu(ID, "A"), idKuis("A", 16), idKuis("A", 17), idKuis("A", 18)],
+    ])),
+    ...empatHalaman({ tab: "Sub-Bab B", kelompok: "Maju dan mundur" }, "maju", halaman(IsiMaju, [
+      [idKuis("B", 4), idKuis("B", 5)],
+      [idKuis("B", 6), idKuis("B", 7)],
+      [idKuis("B", 1), idKuis("B", 8), idKuis("B", 9)],
+      [idKuis("B", 10), idKuis("B", 11), idKuis("B", 12)],
+    ])),
+    ...empatHalaman({ tab: "Sub-Bab C", kelompok: "Nilai tempat" }, "nilai", halaman(IsiNilai, [
+      [idKuis("B", 3), idKuisTulisKartu(ID, "B")],
+      [idKuis("A", 19), idKuis("A", 20)],
+      [idKuis("B", 0), idKuis("A", 21), idKuis("A", 22)],
+      [idKuis("A", 23), idKuis("A", 24), idKuis("A", 25)],
+    ])),
+    ...empatHalaman({ tab: "Sub-Bab D", kelompok: "Membandingkan" }, "banding", halaman(IsiBanding, [
+      [idKuis("A", 26), idKuis("A", 27)],
+      [idKuis("A", 28), idKuis("A", 29)],
+      [idKuis("B", 2), idKuis("A", 30), idKuis("A", 31)],
+      [idKuis("A", 32), idKuis("A", 33), idKuis("A", 34)],
+    ])),
+    { kode: "misi", bagian: "Misi", judul: "Misi bendera", kuis: kuisMisi, isi: <KartuC kelas={kelas} kelamin={kelamin} /> },
+    {
+      kode: "review",
+      bagian: "Review",
+      judul: "Tujuan Pembelajaran",
+      tab: "Review",
+      kelompok: "Tujuan Pembelajaran",
+      bebas: true,
+      isi: (
+        <div className="space-y-4">
+          <KepalaKartu ikon="🇮🇩🎀🦉" judul={kartuA.judul} kelas={kelas} kelamin={kelamin} cuplikan={cuplikanDariNaskah(kartuA.voice, 2_000, 3_000)} />
+          <TujuanBelajar butir={butir} />
+          <KartuPoinPenting kelas={kelas} kelamin={kelamin} cuplikan={cuplikanDariNaskah(MODUL_MTK1_BAB5.kartu[3].voice, 2_000, 3_000)} poin={["Sepuluh diikat jadi satu. 1 ikat = 10 = 1 puluhan.", "Kiri puluhan, kanan satuan.", "Belas artinya sepuluh lebih sedikit. Tiga belas = 10 + 3.", "Ingat sepuluh, lalu lanjut hitung.", "Tulis puluhan dulu. 14, bukan 41.", "Dua ikat penuh = 20.", "Puluhan sama? Lihat satuannya. 19 lebih besar dari 12."]} penutup="Dua ikat penuh, jadi dua puluh. Kiri puluhan, kanan satuan." />
+          <p className="text-sm font-semibold leading-relaxed text-slate-700">Kalau ada yang masih bingung, tanyakan di sini. Kalau sudah jelas, tekan Lanjut.</p>
+        </div>
+      ),
+    },
+    { kode: "evaluasi", bagian: "Evaluasi", judul: "Lembar evaluasi", isi: <LembarEvaluasi kelas={kelas} kelamin={kelamin} />, kuis: kuisEvaluasi },
+  ];
+}
+
 export default function NaskahMtk1Bab5({
   kelas = "1 SD",
   kelamin,
@@ -1112,48 +977,16 @@ export default function NaskahMtk1Bab5({
   kelas?: string;
   kelamin?: KelaminGuru;
 }) {
-  const kartuA = MODUL_MTK1_BAB5.kartu[0];
+  const kuis = useKuisMateri();
+  const sudahBenar = (id: string) => kuis?.sudahBenar(id) ?? false;
+  const langkah = useMemo(() => langkahBab5(kelas, kelamin), [kelas, kelamin]);
   return (
-    <div className="space-y-5">
-      <KartuBingkai latar="bg-sky-50/80">
-        <KepalaKartu
-          ikon="🇮🇩🎀🦉"
-          judul={kartuA.judul}
-          kelas={kelas}
-          kelamin={kelamin}
-          cuplikan={cuplikanDariNaskah(kartuA.voice, 2_000, 3_000)}
-        />
-        <TujuanBelajar
-          butir={[
-            "Membilang, membaca, dan menulis bilangan 11 sampai 20.",
-            "Menghitung maju dan mundur pada bilangan belasan.",
-            "Mengenal puluhan dan satuan dengan mengelompokkan benda per sepuluh.",
-            "Membandingkan bilangan sampai 20.",
-          ]}
-        />
-        <IsiHitung kelas={kelas} kelamin={kelamin} />
-        <IsiMaju kelas={kelas} kelamin={kelamin} />
-        <IsiNilai kelas={kelas} kelamin={kelamin} />
-        <IsiBanding kelas={kelas} kelamin={kelamin} />
-      </KartuBingkai>
-      <KartuC kelas={kelas} kelamin={kelamin} />
-      <div id={SLOT_AJUAN_SEBELUM_KARTU_D} />
-      <KartuPoinPenting
-        kelas={kelas}
-        kelamin={kelamin}
-        cuplikan={cuplikanDariNaskah(MODUL_MTK1_BAB5.kartu[3].voice, 2_000, 3_000)}
-        poin={[
-          "Sepuluh diikat jadi satu. 1 ikat = 10 = 1 puluhan.",
-          "Kiri puluhan, kanan satuan.",
-          "Belas artinya sepuluh lebih sedikit. Tiga belas = 10 + 3.",
-          "Simpan sepuluh, lalu lanjut hitung.",
-          "Tulis puluhan dulu. 14, bukan 41.",
-          "Dua ikat penuh = 20.",
-          "Puluhan sama? Lihat satuannya. 19 lebih besar dari 12.",
-        ]}
-        penutup="Tiga belasan, empat belasan. Dua ikat penuh, jadi dua puluh. Kiri puluhan, kanan satuan. Ayo hitung lagi, sampai merdeka!"
-      />
-      <LembarEvaluasi kelas={kelas} kelamin={kelamin} />
-    </div>
+    <QuestLangkah
+      simpan="quest-mtk-1-bab5-v1"
+      langkah={langkah}
+      sudahBenar={sudahBenar}
+      slot={{ id: SLOT_AJUAN_SEBELUM_KARTU_D, padaKode: "review" }}
+      teksAkhir="Bendera siap. Bab ini selesai."
+    />
   );
 }
