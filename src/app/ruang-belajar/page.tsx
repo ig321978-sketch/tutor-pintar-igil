@@ -10,6 +10,7 @@ import {
   DATA_KURIKULUM,
   DAFTAR_KELAS,
   JUDUL_MTK_1_BAB1,
+  JUDUL_MTK_1_BAB2,
   OPSI_LAINNYA,
   daftarMapelUntukKelas,
   labelJenjangKelas,
@@ -239,13 +240,17 @@ export default function RuangBelajarPage() {
       guruKelamin,
     });
 
-    if (
-      sumber === "kurikulum" &&
-      kelas === "1 SD" &&
-      materi === JUDUL_MTK_1_BAB1
-    ) {
+    const jalurModul =
+      sumber === "kurikulum" && kelas === "1 SD"
+        ? materi === JUDUL_MTK_1_BAB1
+          ? "/ruang-belajar/mtk-1-bab1"
+          : materi === JUDUL_MTK_1_BAB2
+            ? "/ruang-belajar/mtk-1-bab2"
+            : ""
+        : "";
+    if (jalurModul) {
       router.push(
-        `/ruang-belajar/mtk-1-bab1?nama=${encodeURIComponent(nama.trim() || "Siswa")}`,
+        `${jalurModul}?nama=${encodeURIComponent(nama.trim() || "Siswa")}`,
       );
       return;
     }
@@ -272,8 +277,8 @@ export default function RuangBelajarPage() {
       judul="📚 Ruang Belajar"
       subjudul={
         kunciPublik
-          ? "Matematika kelas 1 SD, Bab 1 sudah siap di perangkat ini."
-          : "Bab 1 Matematika kelas 1 sudah terpasang. Bab lain masih kosong."
+          ? "Matematika kelas 1 SD, Bab 1 dan Bab 2 sudah siap di perangkat ini."
+          : "Bab 1 dan Bab 2 Matematika kelas 1 sudah terpasang. Bab lain masih kosong."
       }
     >
       <section className="grid gap-6">
@@ -512,7 +517,7 @@ export default function RuangBelajarPage() {
       </div>
       <p className="mt-3 flex items-center gap-2 text-sm text-slate-500">
         <Sparkles className="h-4 w-4 text-[#F0AB00]" />
-        Bab 1 Matematika kelas 1 terbuka di sini. Bab lain masih kosong.
+        Bab 1 dan Bab 2 Matematika kelas 1 terbuka di sini. Bab lain masih kosong.
       </p>
     </PageShell>
   );
