@@ -128,9 +128,8 @@ export function QuestLangkah({
   return (
     <section ref={akar} className="scroll-mt-24 space-y-4">
       <div className="relative -mx-4 w-[calc(100%+2rem)] overflow-hidden rounded-none bg-gradient-to-br from-[#eef2ff] via-[#ece8ff] to-[#f7f3ff] text-[#1C01A5] shadow-[0_10px_24px_-18px_rgba(67,56,202,0.55)]">
-        <div className="pointer-events-none absolute -right-6 -top-8 h-28 w-28 rounded-full bg-[#F0AB00]/20 blur-2xl" />
-        <div className="bg-[linear-gradient(105deg,#1C01A5_0%,#4c1d95_38%,#F0AB00_100%)] px-4 pb-4 pt-4">
-          <p className="text-2xl font-extrabold tracking-tight text-white [text-shadow:0_2px_8px_rgba(28,1,165,0.85)]">
+        <div className="bg-[linear-gradient(115deg,#1C01A5_0%,#4c1d95_58%,#5b21b6_100%)] px-4 pb-4 pt-4">
+          <p className="text-2xl font-extrabold tracking-tight text-white">
             {sekarang.kelompok || (utuh ? sekarang.tab : sekarang.judul)}
           </p>
         </div>
