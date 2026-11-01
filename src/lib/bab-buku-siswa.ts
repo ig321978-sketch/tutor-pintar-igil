@@ -73,6 +73,8 @@ export const BAB_BUKU_SISWA: Record<string, Record<string, string[]>> = {
       "Bab 6: Penjumlahan dan Pengurangan sampai dengan 20",
       "Bab 7: Mengukur Panjang Benda",
       "Bab 8: Mengenal Diagram",
+      // Halaman kosong untuk pola modul; bukan daftar isi buku siswa.
+      "Bab 9: CONTOH",
     ],
     [PJOK]: [
       "Bab 1: Bergerak Itu Sehat!",

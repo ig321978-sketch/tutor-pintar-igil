@@ -42,6 +42,7 @@ import {
   adalahMtk1Bab6,
   adalahMtk1Bab7,
   adalahMtk1Bab8,
+  adalahMtk1Bab9,
   adalahMtk3Bab1,
   adalahMtk3Ukur,
   adalahMtk3Kalimat,
@@ -421,6 +422,9 @@ export function daftarIdKuisMateri(
   }
   if (adalahMtk1Bab8(kelas, mapel, materi)) {
     return idKuisDariModulResmi(MODUL_MTK1_BAB8);
+  }
+  if (adalahMtk1Bab9(kelas, mapel, materi)) {
+    return [];
   }
   if (adalahPancasila1Bab1(kelas, mapel, materi)) {
     return idKuisDariModulResmi(MODUL_PANCASILA1_BAB1);
