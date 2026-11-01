@@ -5,6 +5,8 @@ import HasilJawabanKuis from "@/components/HasilJawabanKuis";
 import KartuPoinPenting from "@/components/KartuPoinPenting";
 import TabelInfoGrafis from "@/components/TabelInfoGrafis";
 import { useKuisMateri } from "@/components/KuisMateriContext";
+import { PagerSubbab, TabSubbab } from "@/components/modul/EmpatHalamanMateri";
+import { useJudulDompetMateri } from "@/components/modul/KepalaDompetMateri";
 import MisiPenjagaKebun from "@/components/MisiPenjagaKebun";
 import { SLOT_AJUAN_SEBELUM_KARTU_D } from "@/components/NaskahMtk2Bab1";
 import SoalRekamSuara from "@/components/SoalRekamSuara";
@@ -449,20 +451,52 @@ function SisaKotak() {
   );
 }
 
-function KartuA({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminGuru }) {
-  const kartu = MODUL_MTK5_BAB3.kartu[0];
+const PILIH_BENTUK = ["1/3", "2/7", "5/8"];
+const PILIH_BANDING = ["1/8", "3/4", "2/6"];
+const PILIH_SAMA = ["3/6", "5/7", "7/8"];
+
+function Irisan({ judul, penuh, isi, catatan }: { judul: string; penuh: number; isi: number; catatan: string }) {
   return (
-    <KartuBingkai>
-      <KepalaKartu ikon="🍞🦉" judul={kartu.judul} anak="Empat adegan di tepi sungai" kelas={kelas} kelamin={kelamin} cuplikan={cuplikanKalimat(kartu.voice[0] ?? [])} />
-      <div className="mt-4 space-y-8">
-        <Adegan judul="Sub-bab 1 — Bentuk pecahan" jenis="roti" kelas={kelas} kelamin={kelamin} penjelasan={["Pecahan adalah bagian dari sesuatu yang utuh.", "Angka atas pembilang. Angka bawah penyebut.", "Pecahan campuran menaruh bilangan bulat di depan."]}>
+    <div className="rounded-2xl border-2 border-amber-200 bg-amber-50 p-3">
+      <p className="text-sm font-black text-[#1C01A5]">{judul}</p>
+      <div className="mt-2 flex gap-1">
+        {Array.from({ length: penuh }, (_, indeks) => (
+          <span key={indeks} className={`h-8 flex-1 rounded ${indeks < isi ? "bg-amber-400" : "bg-white ring-1 ring-amber-300"}`} />
+        ))}
+      </div>
+      <p className="mt-2 text-sm font-semibold text-slate-700">{catatan}</p>
+    </div>
+  );
+}
+
+function Lambang({ judul, baris }: { judul: string; baris: string[] }) {
+  return (
+    <div className="rounded-2xl border-2 border-[#1C01A5]/20 bg-white p-3">
+      <p className="text-sm font-black text-[#1C01A5]">{judul}</p>
+      {baris.map((teks) => (
+        <p key={teks} className="mt-2 text-lg font-black text-[#1C01A5]">{teks}</p>
+      ))}
+    </div>
+  );
+}
+
+function SubbabBentuk({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminGuru }) {
+  return (
+    <PagerSubbab
+      judul="Bentuk pecahan"
+      selesaiTeks="Empat halaman bentuk pecahan selesai."
+      grup={[[idKuis("A", 0), idKuis("A", 1)], [idKuis("B", 0), idKuis("B", 1)], [idKuis("A", 15), idKuis("A", 16), idKuis("A", 17)], [idKuis("A", 13), idKuis("A", 18), idKuis("A", 19)]]}
+      isi={[
+        <>
+          <TombolVoiceMateriPai1 kelas={kelas} kelamin={kelamin} cuplikan={cuplikanKalimat(["Pecahan adalah bagian dari sesuatu yang utuh.", "Angka atas pembilang. Angka bawah penyebut.", "Pecahan campuran menaruh bilangan bulat di depan."])} />
           <Dialog nama="Sari" anak="Roti ini kupotong dua bagian sama besar. Satu bagian untuk Igil." />
           <Dialog nama="Bima" anak="Satu dari dua ditulis 1/2. Angka 1 di atas, angka 2 di bawah." />
           <Dialog nama="Wulan" anak="Angka atas disebut pembilang. Angka bawah disebut penyebut." />
           <Dialog nama="Igil" anak="Pecahan biasa hanya dua angka itu. Pecahan campuran menaruh bilangan bulat di depan, seperti 2 1/2." />
-          <RotiIris />
           <KuisSuara id={idKuis("A", 0)} pertanyaan="Satu roti dibagi 4 sama besar. Tiga bagian diambil. Sebutkan pecahannya." periksa={tigaPerEmpat} petunjuk="Pembilang 3, penyebut 4." benar="3/4." />
           <TulisBebas id={idKuis("A", 1)} judul="Dua dari lima" visual={<Papan anak="2 bagian dari 5" />} pertanyaan="Tulis pecahan untuk 2 bagian dari 5 bagian yang sama." pesanSalah="Angka yang diambil di atas, banyak bagian di bawah." bantuan="Pembilang 2, penyebut 5." umpan="2/5." periksa={duaPerLima} alias={["2/5", "dua per lima"]} konteks="2 bagian dari 5 ditulis 2/5." />
+        </>,
+        <>
           <Dialog nama="Igil" anak="Infografis ini mengingat nama bagiannya. Contohnya tetap 1/2." />
           <TabelInfoGrafis
             judul="Infografis: Bagian dari utuh"
@@ -476,36 +510,87 @@ function KartuA({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminGuru }) {
           />
           <KuisSuara id={idKuis("B", 0)} pertanyaan="Satu bagian dari dua bagian yang sama. Sebutkan pecahannya." periksa={satuPerDua} petunjuk="Satu di atas, dua di bawah." benar="1/2." />
           <TulisBebas id={idKuis("B", 1)} judul="Empat dari enam" visual={<Papan anak="4 bagian dari 6" />} pertanyaan="Tulis pecahan untuk 4 bagian dari 6 bagian yang sama." pesanSalah="Yang diambil di atas, seluruh bagian di bawah." bantuan="4/6. Boleh juga 2/3." umpan="4/6, senilai dengan 2/3." periksa={empatPerEnam} alias={["4/6", "2/3"]} konteks="4 bagian dari 6 ditulis 4/6." />
-        </Adegan>
+        </>,
+        <>
+          <GambarDapur jenis="roti" />
+          <RotiIris />
+          <Irisan judul="Gambar 3 bagian dari 8" penuh={8} isi={3} catatan="Kuning adalah bagian yang diambil. Putih masih utuh." />
+          <SusunToken id={idKuis("A", 15)} perintah="Susun dari yang paling kecil." acak={["1/2", "1/8", "1/4"]} benar={["1/8", "1/4", "1/2"]} umpan="1/8, lalu 1/4, lalu 1/2." />
+          <KuisBenarSalah id={idKuis("A", 16)} perintah="Pilih benar atau salah." baris={[{ teks: "3/4 berarti 3 bagian dari 4 bagian yang sama.", benar: true }, { teks: "Penyebut adalah angka yang di atas.", benar: false }, { teks: "2 1/3 adalah pecahan campuran.", benar: true }]} umpan="Penyebut ada di bawah. Campuran punya bilangan bulat di depan." />
+          <KuisCocok id={idKuis("A", 17)} perintah="Pasangkan bagian dengan pecahannya." baris={[{ kiri: "1 bagian dari 3", pilihan: PILIH_BENTUK, benar: "1/3" }, { kiri: "2 bagian dari 7", pilihan: PILIH_BENTUK, benar: "2/7" }, { kiri: "5 bagian dari 8", pilihan: PILIH_BENTUK, benar: "5/8" }]} umpan="1/3, 2/7, dan 5/8." />
+        </>,
+        <>
+          <Dialog nama="Igil" anak="Lambang ini memakai angka saja. Pembilang di atas, penyebut di bawah." />
+          <Lambang judul="Lambang pecahan" baris={["1/2 = 2/4", "2 1/2 = 5/2"]} />
+          <Pilih id={idKuis("A", 13)} pertanyaan="5/10 disederhanakan menjadi..." pilihan={[{ huruf: "A", teks: "5/5" }, { huruf: "B", teks: "1/2" }, { huruf: "C", teks: "1/5" }, { huruf: "D", teks: "10/5" }]} benar="B" umpan="Bagi pembilang dan penyebut dengan 5. 5/10 = 1/2." salah="Pembilang dan penyebut dibagi bilangan yang sama." />
+          <Pilih id={idKuis("A", 18)} pertanyaan="3/6 disederhanakan menjadi..." pilihan={[{ huruf: "A", teks: "3/3" }, { huruf: "B", teks: "1/2" }, { huruf: "C", teks: "1/3" }, { huruf: "D", teks: "6/3" }]} benar="B" umpan="Bagi pembilang dan penyebut dengan 3. 3/6 = 1/2." salah="Pembilang dan penyebut dibagi bilangan yang sama." />
+          <Pilih id={idKuis("A", 19)} pertanyaan="Yang merupakan pecahan campuran adalah..." pilihan={[{ huruf: "A", teks: "5/3" }, { huruf: "B", teks: "2 1/3" }, { huruf: "C", teks: "1/3" }, { huruf: "D", teks: "3/2" }]} benar="B" umpan="Campuran menaruh bilangan bulat di depan pecahan." salah="Pecahan biasa hanya punya pembilang dan penyebut." />
+        </>,
+      ]}
+    />
+  );
+}
 
-        <Adegan judul="Sub-bab 2 — Banding dan urut" jenis="lompat" kelas={kelas} kelamin={kelamin} penjelasan={["Ubah campuran menjadi pecahan biasa.", "Samakan penyebut, lalu bandingkan pembilang.", "Makin ke kanan pada garis, nilainya makin besar."]}>
+function SubbabBanding({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminGuru }) {
+  return (
+    <PagerSubbab
+      judul="Membandingkan dan mengurutkan pecahan"
+      selesaiTeks="Empat halaman membandingkan selesai."
+      grup={[[idKuis("A", 2), idKuis("A", 3)], [idKuis("B", 2), idKuis("B", 3)], [idKuis("A", 11), idKuis("A", 12), idKuis("A", 20)], [idKuis("A", 10), idKuis("A", 21), idKuis("A", 22)]]}
+      isi={[
+        <>
+          <TombolVoiceMateriPai1 kelas={kelas} kelamin={kelamin} cuplikan={cuplikanKalimat(["Ubah campuran menjadi pecahan biasa.", "Samakan penyebut, lalu bandingkan pembilang.", "Makin ke kanan pada garis, nilainya makin besar."])} />
           <Dialog nama="Sari" anak="Tiga lompatanku: 2 3/4 m, 3 1/2 m, dan 7/8 m." />
           <Dialog nama="Bima" anak="2 3/4 = (2 × 4 + 3) / 4 = 11/4. 3 1/2 = (3 × 2 + 1) / 2 = 7/2." />
           <Dialog nama="Wulan" anak="Penyebut 4, 2, dan 8. KPK-nya 8. 11/4 = 22/8. 7/2 = 28/8. 7/8 tetap 7/8." />
           <Dialog nama="Igil" anak="Pembilang 7, 22, dan 28. Dari yang terdekat: 7/8, lalu 2 3/4, lalu 3 1/2. Yang terjauh 3 1/2." />
-          <GarisLompat />
           <Dialog nama="Sari" anak="Ada juga tiga pita: 2 2/5 m, 2 1/4 m, dan 2 1/2 m. Urutannya masih kosong." />
-          <Dialog nama="Igil" anak="Infografis lompatan merangkum tiga cara. Pita belum diurut di tabel." />
-          <TabelInfoGrafis
-            judul="Infografis: Urutkan lompatan"
-            kepala={["Lompatan", "Pecahan biasa", "Penyebut 8"]}
-            baris={[
-              ["2 3/4", "11/4", "22/8"],
-              ["3 1/2", "7/2", "28/8"],
-              ["7/8", "7/8", "7/8"],
-            ]}
-            kaki="Dari yang kecil: 7/8, lalu 2 3/4, lalu 3 1/2."
-          />
           <KuisSuara id={idKuis("A", 2)} pertanyaan="Mana yang lebih kecil, 1/2 atau 1/5? Sebutkan pecahannya." periksa={lebihKecilSeperlima} petunjuk="Penyebut lebih besar tidak selalu berarti nilainya lebih besar." benar="1/5 lebih kecil." />
           <TulisBebas id={idKuis("A", 3)} judul="Tiga pita" visual={<Papan anak="2 2/5 m · 2 1/4 m · 2 1/2 m" />} pertanyaan="Tulis urutan pita dari yang terpendek." pesanSalah="Samakan penyebut 20, lalu bandingkan pembilang." bantuan="1/4 = 5/20, 2/5 = 8/20, 1/2 = 10/20." umpan="2 1/4, lalu 2 2/5, lalu 2 1/2." periksa={urutanPita} alias={["2 1/4", "2 2/5", "2 1/2"]} konteks="Urutan terpendek: 2 1/4, 2 2/5, 2 1/2." />
+        </>,
+        <>
+          <Dialog nama="Igil" anak="Infografis lompatan merangkum caranya. Hasil terjauh belum ditulis di tabel." />
+          <TabelInfoGrafis
+            judul="Infografis: Urutkan lompatan"
+            kepala={["Langkah", "Yang dikerjakan", "Contoh"]}
+            baris={[
+              ["Campuran", "ubah ke pecahan biasa", "2 3/4 menjadi 11/4"],
+              ["Penyebut", "cari KPK", "4, 2, dan 8"],
+              ["Pembilang", "bandingkan setelah sama", "yang besar lebih jauh"],
+            ]}
+            kaki="Samakan penyebut, lalu lihat pembilangnya."
+          />
           <KuisSuara id={idKuis("B", 2)} pertanyaan="Dari 2 3/4, 3 1/2, dan 7/8, lompatan mana yang terjauh?" periksa={lompatanTerjauh} petunjuk="Lihat pembilang setelah penyebutnya 8." benar="3 1/2." />
           <TulisBebas id={idKuis("B", 3)} judul="Penyebut 8" visual={<Papan anak="2 3/4 = ⬜/8" />} pertanyaan="Tulis 2 3/4 sebagai pecahan berpenyebut 8." pesanSalah="11/4 dikali 2 pada pembilang dan penyebut." bantuan="11/4 = 22/8." umpan="22/8." periksa={duaPuluhDuaPerDelapan} alias={["22/8"]} konteks="2 3/4 = 22/8." />
-          <Pilih id={idKuis("A", 10)} pertanyaan="Tanda yang tepat untuk 1/2 ... 1/3 adalah..." visual={<Papan anak="1/2  ?  1/3" />} pilihan={[{ huruf: "A", teks: "<" }, { huruf: "B", teks: ">" }, { huruf: "C", teks: "=" }, { huruf: "D", teks: "tidak bisa dibanding" }]} benar="B" umpan="1/2 = 3/6 dan 1/3 = 2/6. 3 lebih besar dari 2." salah="Samakan penyebutnya dulu." />
+        </>,
+        <>
+          <GambarDapur jenis="lompat" />
+          <Irisan judul="Gambar 1/4 dan 1/2" penuh={4} isi={1} catatan="Satu kotak kuning dari empat. Dua kotak kuning baru sama dengan 1/2." />
           <SusunToken id={idKuis("A", 11)} perintah="Susun dari yang paling kecil." acak={["3 1/2", "7/8", "2 3/4"]} benar={["7/8", "2 3/4", "3 1/2"]} umpan="7/8, lalu 2 3/4, lalu 3 1/2." />
           <KuisBenarSalah id={idKuis("A", 12)} perintah="Pilih benar atau salah." baris={[{ teks: "Penyebut yang lebih besar selalu membuat pecahan lebih besar.", benar: false }, { teks: "2 1/2 lebih besar dari 2 1/4.", benar: true }, { teks: "7/8 lebih besar dari 3 1/2.", benar: false }]} umpan="Hanya pernyataan kedua yang benar. 1/5 lebih kecil daripada 1/2." />
-        </Adegan>
+          <KuisCocok id={idKuis("A", 20)} perintah="Pasangkan pertanyaan dengan pecahannya." baris={[{ kiri: "Yang lebih kecil, 1/8 atau 1/3", pilihan: PILIH_BANDING, benar: "1/8" }, { kiri: "Yang lebih besar, 3/4 atau 1/4", pilihan: PILIH_BANDING, benar: "3/4" }, { kiri: "Yang lebih kecil, 2/6 atau 2/3", pilihan: PILIH_BANDING, benar: "2/6" }]} umpan="1/8, 3/4, dan 2/6." />
+        </>,
+        <>
+          <Dialog nama="Bima" anak="Lambang perbandingan memakai pecahan senilai. Penyebut disamakan, pembilang yang dibandingkan." />
+          <Lambang judul="Lambang banding" baris={["2/5 = 4/10", "1/5 = 2/10", "2/5 > 1/5"]} />
+          <Pilih id={idKuis("A", 10)} pertanyaan="Tanda yang tepat untuk 1/2 ... 1/3 adalah..." visual={<Papan anak="1/2  ?  1/3" />} pilihan={[{ huruf: "A", teks: "<" }, { huruf: "B", teks: ">" }, { huruf: "C", teks: "=" }, { huruf: "D", teks: "tidak bisa dibanding" }]} benar="B" umpan="1/2 = 3/6 dan 1/3 = 2/6. 3 lebih besar dari 2." salah="Samakan penyebutnya dulu." />
+          <Pilih id={idKuis("A", 21)} pertanyaan="Tanda yang tepat untuk 3/5 ... 3/7 adalah..." pilihan={[{ huruf: "A", teks: "<" }, { huruf: "B", teks: ">" }, { huruf: "C", teks: "=" }, { huruf: "D", teks: "tidak bisa dibanding" }]} benar="B" umpan="Pembilang sama. Penyebut 5 lebih kecil, jadi 3/5 lebih besar." salah="Penyebut yang lebih besar membuat potongannya lebih kecil." />
+          <Pilih id={idKuis("A", 22)} pertanyaan="Tanda yang tepat untuk 4/9 ... 5/9 adalah..." pilihan={[{ huruf: "A", teks: "<" }, { huruf: "B", teks: ">" }, { huruf: "C", teks: "=" }, { huruf: "D", teks: "tidak bisa dibanding" }]} benar="A" umpan="Penyebutnya sama. 4 lebih kecil daripada 5." salah="Kalau penyebut sama, bandingkan pembilangnya." />
+        </>,
+      ]}
+    />
+  );
+}
 
-        <Adegan judul="Sub-bab 3 — Jumlah, penyebut sama" jenis="tambah" kelas={kelas} kelamin={kelamin} penjelasan={["Kalau penyebutnya sama, jumlahkan pembilangnya.", "Penyebut tidak ikut dijumlah.", "Pada campuran, jumlahkan bulat dengan bulat, pecahan dengan pecahan."]}>
+function SubbabJumlahSama({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminGuru }) {
+  return (
+    <PagerSubbab
+      judul="Penjumlahan pecahan, penyebut sama"
+      selesaiTeks="Empat halaman penjumlahan selesai."
+      grup={[[idKuis("A", 4), idKuis("A", 5)], [idKuis("B", 4), idKuis("B", 5)], [idKuis("A", 23), idKuis("A", 24), idKuis("A", 25)], [idKuis("A", 26), idKuis("A", 27), idKuis("A", 28)]]}
+      isi={[
+        <>
+          <TombolVoiceMateriPai1 kelas={kelas} kelamin={kelamin} cuplikan={cuplikanKalimat(["Kalau penyebutnya sama, jumlahkan pembilangnya.", "Penyebut tidak ikut dijumlah.", "Pada campuran, jumlahkan bulat dengan bulat, pecahan dengan pecahan."])} />
           <Dialog nama="Wulan" anak="Roti ini 8 iris. Aku ambil 2 iris. Bima ambil 1 iris." />
           <Dialog nama="Bima" anak="2/8 + 1/8 = 3/8. Penyebutnya tetap 8." />
           <BatangDelapan />
@@ -515,6 +600,8 @@ function KartuA({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminGuru }) {
           <Dialog nama="Bima" anak="Cara lain: 11/5 + 16/5 = 27/5. Itu sama dengan 5 2/5." />
           <KuisSuara id={idKuis("A", 4)} pertanyaan="Berapa hasil 1/4 + 3/4?" periksa={hasilSatu} petunjuk="Penyebutnya sudah sama." benar="1, atau 4/4." />
           <TulisBebas id={idKuis("A", 5)} judul="Belanja dapur" visual={<Papan anak="1 1/2 kg + 2 1/2 kg" />} pertanyaan="Tulis berat seluruhnya." pesanSalah="Jumlahkan bulatnya, lalu pecahannya." bantuan="1 + 2 = 3. 1/2 + 1/2 = 1. Jadi 4." umpan="4 kg." periksa={hasilEmpat} alias={["4", "empat"]} konteks="1 1/2 + 2 1/2 = 4." />
+        </>,
+        <>
           <Dialog nama="Igil" anak="Infografis jumlah mengingat roti, kancing, dan pita." />
           <TabelInfoGrafis
             judul="Infografis: Penyebut sama"
@@ -528,10 +615,35 @@ function KartuA({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminGuru }) {
           />
           <KuisSuara id={idKuis("B", 4)} pertanyaan="Berapa hasil 2/8 + 1/8?" periksa={hasilTigaPerDelapan} petunjuk="Penyebutnya sama-sama 8." benar="3/8." />
           <TulisBebas id={idKuis("B", 5)} judul="Dua pita" visual={<Papan anak="2 1/5 + 3 1/5" />} pertanyaan="Tulis panjang kedua pita." pesanSalah="Jumlahkan 2 dengan 3, lalu 1/5 dengan 1/5." bantuan="5 dan 2/5." umpan="5 2/5. Bentuk biasa: 27/5." periksa={hasilLimaDuaPerLima} alias={["5 2/5", "27/5"]} konteks="2 1/5 + 3 1/5 = 5 2/5." />
-          <Pilih id={idKuis("A", 13)} pertanyaan="5/10 disederhanakan menjadi..." pilihan={[{ huruf: "A", teks: "5/5" }, { huruf: "B", teks: "1/2" }, { huruf: "C", teks: "1/5" }, { huruf: "D", teks: "10/5" }]} benar="B" umpan="Bagi pembilang dan penyebut dengan 5. 5/10 = 1/2." salah="Pembilang dan penyebut dibagi bilangan yang sama." />
-        </Adegan>
+        </>,
+        <>
+          <GambarDapur jenis="tambah" />
+          <Irisan judul="Gambar 2/9 ditambah 4/9" penuh={9} isi={6} catatan="Dua kotak lalu empat kotak. Penyebutnya tetap 9." />
+          <SusunToken id={idKuis("A", 23)} perintah="Susun dari yang paling kecil." acak={["5/7", "1/7", "3/7"]} benar={["1/7", "3/7", "5/7"]} umpan="1/7, lalu 3/7, lalu 5/7." />
+          <KuisBenarSalah id={idKuis("A", 24)} perintah="Pilih benar atau salah." baris={[{ teks: "2/9 + 4/9 = 6/9.", benar: true }, { teks: "2/9 + 4/9 = 6/18.", benar: false }, { teks: "Pada penyebut yang sama, penyebut ikut dijumlah.", benar: false }]} umpan="Pembilang dijumlah. Penyebut tetap." />
+          <KuisCocok id={idKuis("A", 25)} perintah="Pasangkan jumlah dengan hasilnya." baris={[{ kiri: "1/6 + 2/6", pilihan: PILIH_SAMA, benar: "3/6" }, { kiri: "3/7 + 2/7", pilihan: PILIH_SAMA, benar: "5/7" }, { kiri: "1/8 + 6/8", pilihan: PILIH_SAMA, benar: "7/8" }]} umpan="3/6, 5/7, dan 7/8." />
+        </>,
+        <>
+          <Dialog nama="Wulan" anak="Lambang penjumlahan ini hanya memakai penyebut yang sudah sama." />
+          <Lambang judul="Lambang jumlah" baris={["1/7 + 2/7 = 3/7", "4/9 + 1/9 = 5/9"]} />
+          <Pilih id={idKuis("A", 26)} pertanyaan="3/8 + 4/8 = ..." pilihan={[{ huruf: "A", teks: "7/8" }, { huruf: "B", teks: "7/16" }, { huruf: "C", teks: "1/8" }, { huruf: "D", teks: "12/8" }]} benar="A" umpan="Pembilang 3 + 4 = 7. Penyebut tetap 8." salah="Jangan jumlahkan penyebutnya." />
+          <Pilih id={idKuis("A", 27)} pertanyaan="4 1/6 + 1 2/6 = ..." pilihan={[{ huruf: "A", teks: "5 3/6" }, { huruf: "B", teks: "5 3/12" }, { huruf: "C", teks: "3 3/6" }, { huruf: "D", teks: "4 3/6" }]} benar="A" umpan="Bulat 4 + 1 = 5. Pecahan 1/6 + 2/6 = 3/6." salah="Jumlahkan bulat dengan bulat, pecahan dengan pecahan." />
+          <Pilih id={idKuis("A", 28)} pertanyaan="6/10 + 2/10 = ..." pilihan={[{ huruf: "A", teks: "8/20" }, { huruf: "B", teks: "8/10" }, { huruf: "C", teks: "4/10" }, { huruf: "D", teks: "12/10" }]} benar="B" umpan="6 + 2 = 8. Penyebut tetap 10." salah="Penyebut tidak dijumlah." />
+        </>,
+      ]}
+    />
+  );
+}
 
-        <Adegan judul="Sub-bab 4 — Jumlah, penyebut beda" jenis="beda" kelas={kelas} kelamin={kelamin} penjelasan={["Kalau penyebutnya beda, cari KPK dulu.", "Buat pecahan senilai, lalu jumlahkan pembilang.", "Jarak tiga warung dijumlah dengan penyebut 200."]}>
+function SubbabJumlahBeda({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminGuru }) {
+  return (
+    <PagerSubbab
+      judul="Penjumlahan pecahan, penyebut beda"
+      selesaiTeks="Empat halaman penyebut beda selesai."
+      grup={[[idKuis("A", 6), idKuis("A", 7)], [idKuis("B", 6), idKuis("B", 7)], [idKuis("B", 16), idKuis("B", 17), idKuis("A", 14)], [idKuis("B", 14), idKuis("B", 18), idKuis("B", 19)]]}
+      isi={[
+        <>
+          <TombolVoiceMateriPai1 kelas={kelas} kelamin={kelamin} cuplikan={cuplikanKalimat(["Kalau penyebutnya beda, cari KPK dulu.", "Buat pecahan senilai, lalu jumlahkan pembilang."])} />
           <Dialog nama="Sari" anak="1/2 roti ditambah 1/3 roti. KPK 2 dan 3 adalah 6. 1/2 = 3/6. 1/3 = 2/6. Jumlahnya 5/6." />
           <LidiEnam />
           <Dialog nama="Bima" anak="1/3 kertas ditambah 4/6 kertas. 1/3 = 2/6. 2/6 + 4/6 = 6/6, yaitu 1 kertas penuh." />
@@ -539,23 +651,50 @@ function KartuA({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminGuru }) {
           <Dialog nama="Igil" anak="1 1/2 = 300/200. 2 1/4 = 450/200. Ditambah 1/200 menjadi 751/200, yaitu 3 151/200 km." />
           <KuisSuara id={idKuis("A", 6)} pertanyaan="Berapa hasil 4/5 + 1/4?" periksa={hasilDuaPuluhSatuPerDuaPuluh} petunjuk="KPK dari 5 dan 4 adalah 20." benar="21/20, atau 1 1/20." />
           <TulisBebas id={idKuis("A", 7)} judul="Dua iris beda" visual={<Papan anak="3/5 + 1/3" />} pertanyaan="Tulis hasilnya." pesanSalah="KPK dari 5 dan 3 adalah 15." bantuan="9/15 + 5/15 = 14/15." umpan="14/15." periksa={hasilEmpatBelasPerLimaBelas} alias={["14/15"]} konteks="3/5 + 1/3 = 14/15." />
+        </>,
+        <>
           <Dialog nama="Igil" anak="Infografis ini merangkum dua roti dan jarak warung." />
           <TabelInfoGrafis
             judul="Infografis: Samakan penyebut"
-            kepala={["Hitungan", "Penyebut baru", "Hasil"]}
+            kepala={["Langkah", "Yang dikerjakan", "Contoh"]}
             baris={[
-              ["1/2 + 1/3", "6", "5/6"],
-              ["1/3 + 4/6", "6", "1"],
-              ["1 1/2 + 2 1/4 + 1/200", "200", "3 151/200"],
+              ["KPK", "cari kelipatan terdekat", "2 dan 3 bertemu di 6"],
+              ["Senilai", "kali pembilang dan penyebut", "1/2 menjadi 3/6"],
+              ["Jumlah", "pembilang saja", "penyebut baru tetap"],
             ]}
             kaki="Cari KPK, buat pecahan senilai, lalu jumlahkan pembilang."
           />
           <KuisSuara id={idKuis("B", 6)} pertanyaan="Berapa hasil 1/2 + 1/3?" periksa={hasilLimaPerEnam} petunjuk="Ubah keduanya ke penyebut 6." benar="5/6." />
           <TulisBebas id={idKuis("B", 7)} judul="Jarak tiga warung" visual={<Papan anak="1 1/2 + 2 1/4 + 1/200" />} pertanyaan="Tulis jarak seluruhnya." pesanSalah="Samakan ke penyebut 200." bantuan="300/200 + 450/200 + 1/200 = 751/200." umpan="3 151/200 km, atau 751/200 km." periksa={hasilJarak} alias={["3 151/200", "751/200"]} konteks="Jumlah jaraknya 3 151/200." />
+        </>,
+        <>
+          <GambarDapur jenis="beda" />
+          <Irisan judul="Gambar penyebut 12" penuh={12} isi={5} catatan="Lima kotak dari dua belas. Ini gambar, bukan hasil soal di bawah." />
+          <SusunToken id={idKuis("B", 16)} perintah="Susun dari yang paling kecil." acak={["7/9", "2/9", "4/9"]} benar={["2/9", "4/9", "7/9"]} umpan="2/9, lalu 4/9, lalu 7/9." />
+          <KuisBenarSalah id={idKuis("B", 17)} perintah="Pilih benar atau salah." baris={[{ teks: "KPK dari 4 dan 8 adalah 8.", benar: true }, { teks: "1/6 + 1/3 = 2/9.", benar: false }, { teks: "1/5 + 2/5 = 3/5.", benar: true }]} umpan="1/6 + 1/3 = 1/6 + 2/6 = 3/6. KPK 4 dan 8 adalah 8." />
           <KuisCocok id={idKuis("A", 14)} perintah="Pasangkan hitungan dengan hasilnya." baris={[{ kiri: "2/8 + 1/8", pilihan: PASANGAN_JUMLAH, benar: "3/8" }, { kiri: "2 1/5 + 3 1/5", pilihan: PASANGAN_JUMLAH, benar: "5 2/5" }, { kiri: "1/2 + 1/3", pilihan: PASANGAN_JUMLAH, benar: "5/6" }]} umpan="3/8, 5 2/5, dan 5/6." />
-        </Adegan>
+        </>,
+        <>
+          <Dialog nama="Sari" anak="Lambang ini mencontohkan penyebut yang berbeda, lalu disamakan." />
+          <Lambang judul="Lambang jumlah beda" baris={["1/2 + 1/4 = 2/4 + 1/4 = 3/4", "KPK(2, 4) = 4"]} />
+          <Pilih id={idKuis("B", 14)} pertanyaan="KPK dari 3 dan 6 adalah..." pilihan={[{ huruf: "A", teks: "3" }, { huruf: "B", teks: "9" }, { huruf: "C", teks: "6" }, { huruf: "D", teks: "18" }]} benar="C" umpan="Kelipatan 3 dan 6 bertemu paling dekat di 6." salah="KPK adalah kelipatan persekutuan yang terkecil, bukan yang terbesar." />
+          <Pilih id={idKuis("B", 18)} pertanyaan="1/4 + 1/6 = ..." pilihan={[{ huruf: "A", teks: "5/12" }, { huruf: "B", teks: "2/10" }, { huruf: "C", teks: "1/5" }, { huruf: "D", teks: "2/12" }]} benar="A" umpan="KPK 4 dan 6 adalah 12. 3/12 + 2/12 = 5/12." salah="Jangan jumlahkan penyebutnya. Samakan dulu." />
+          <Pilih id={idKuis("B", 19)} pertanyaan="2/5 + 1/2 = ..." pilihan={[{ huruf: "A", teks: "9/10" }, { huruf: "B", teks: "3/7" }, { huruf: "C", teks: "3/10" }, { huruf: "D", teks: "2/5" }]} benar="A" umpan="2/5 = 4/10. 1/2 = 5/10. Jumlah 9/10." salah="KPK 5 dan 2 adalah 10." />
+        </>,
+      ]}
+    />
+  );
+}
 
-        <Adegan judul="Sub-bab 5 — Selisih pecahan" jenis="kurang" kelas={kelas} kelamin={kelamin} penjelasan={["Kalau penyebutnya sama, kurangkan pembilangnya.", "Kalau beda, samakan penyebut dulu.", "Pada campuran, bulat dikurang bulat dan pecahan dikurang pecahan."]}>
+function SubbabSelisih({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminGuru }) {
+  return (
+    <PagerSubbab
+      judul="Pengurangan pecahan"
+      selesaiTeks="Empat halaman pengurangan selesai."
+      grup={[[idKuis("A", 8), idKuis("A", 9)], [idKuis("B", 8), idKuis("B", 9)], [idKuis("B", 13), idKuis("B", 11), idKuis("B", 10)], [idKuis("B", 12), idKuis("B", 20), idKuis("B", 21)]]}
+      isi={[
+        <>
+          <TombolVoiceMateriPai1 kelas={kelas} kelamin={kelamin} cuplikan={cuplikanKalimat(["Kalau penyebutnya sama, kurangkan pembilangnya.", "Kalau beda, samakan penyebut dulu.", "Pada campuran, bulat dikurang bulat dan pecahan dikurang pecahan."])} />
           <Dialog nama="Bima" anak="Kertas yang harus dilukis 2/3. Yang sudah 1/3. Sisa 2/3 − 1/3 = 1/3." />
           <Dialog nama="Sari" anak="Jalan ke dapur 5 2/3 km. Yang sudah ditempuh 2 1/3 km. Bulat 5 − 2 = 3. Pecahan 2/3 − 1/3 = 1/3. Sisa 3 1/3 km." />
           <Dialog nama="Wulan" anak="Tugas 2/3 kertas, yang sudah 1/2. KPK-nya 6. 2/3 = 4/6. 1/2 = 3/6. Sisa 1/6." />
@@ -564,26 +703,56 @@ function KartuA({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminGuru }) {
           <Dialog nama="Bima" anak="Cara lain: bulat 4 − 2 = 2. Pecahan 1/2 − 1/3 = 1/6. Jadi 2 1/6." />
           <KuisSuara id={idKuis("A", 8)} pertanyaan="Berapa hasil 2/7 − 1/7?" periksa={hasilSatuPerTujuh} petunjuk="Penyebutnya sudah sama." benar="1/7." />
           <TulisBebas id={idKuis("A", 9)} judul="Penyebut beda" visual={<Papan anak="1/3 − 1/5" />} pertanyaan="Tulis hasilnya." pesanSalah="KPK dari 3 dan 5 adalah 15." bantuan="5/15 − 3/15 = 2/15." umpan="2/15." periksa={hasilDuaPerLimaBelas} alias={["2/15"]} konteks="1/3 − 1/5 = 2/15." />
-          <Dialog nama="Igil" anak="Infografis selisih merangkum kertas, jalan, dan tali." />
+        </>,
+        <>
+          <Dialog nama="Igil" anak="Infografis selisih merangkum cara kertas, jalan, dan tali." />
           <TabelInfoGrafis
             judul="Infografis: Selisih pecahan"
-            kepala={["Hitungan", "Cara", "Hasil"]}
+            kepala={["Langkah", "Yang dikerjakan", "Catatan"]}
             baris={[
-              ["2/3 − 1/3", "penyebut sama", "1/3"],
-              ["5 2/3 − 2 1/3", "bulat, lalu pecahan", "3 1/3"],
-              ["2/3 − 1/2", "samakan ke 6", "1/6"],
-              ["4 1/2 − 2 1/3", "samakan ke 6", "2 1/6"],
+              ["Penyebut sama", "kurangi pembilang", "penyebut tetap"],
+              ["Penyebut beda", "samakan dulu", "pakai KPK"],
+              ["Campuran", "bulat, lalu pecahan", "pecahan yang kurang diubah"],
             ]}
-            kaki="Kurangkan pembilang. Penyebut tetap."
+            kaki="Kurangkan pembilang setelah penyebutnya sama."
           />
           <KuisSuara id={idKuis("B", 8)} pertanyaan="Persediaan 2 1/4 kg. Yang dipakai 2 1/5 kg. Berapa sisanya?" periksa={hasilSatuPerDuaPuluh} petunjuk="Bulatnya sama. Samakan pecahan ke penyebut 20." benar="1/20 kg." />
           <TulisBebas id={idKuis("B", 9)} judul="Sisa apel" visual={<Papan anak="8 apel · yang diberikan 6 · lalu 2 lagi" />} pertanyaan="Tulis pecahan sisa apel dari seluruh apel." pesanSalah="6/8 − 2/8." bantuan="Sisanya 4/8, senilai dengan 1/2." umpan="4/8, atau 1/2." periksa={hasilSetengah} alias={["4/8", "1/2"]} konteks="6/8 − 2/8 = 4/8." />
-          <KuisCocok id={idKuis("B", 10)} perintah="Pasangkan selisih dengan hasilnya." baris={[{ kiri: "2/3 − 1/3", pilihan: PASANGAN_SELISIH, benar: "1/3" }, { kiri: "5 2/3 − 2 1/3", pilihan: PASANGAN_SELISIH, benar: "3 1/3" }, { kiri: "2/3 − 1/2", pilihan: PASANGAN_SELISIH, benar: "1/6" }]} umpan="1/3, 3 1/3, dan 1/6." />
-          <KuisBenarSalah id={idKuis("B", 11)} perintah="Pilih benar atau salah." baris={[{ teks: "Pada penjumlahan penyebut sama, penyebut ikut dijumlahkan.", benar: false }, { teks: "1/3 + 4/6 = 1.", benar: true }, { teks: "5 2/3 − 2 1/3 = 3 1/3.", benar: true }]} umpan="Penyebut tidak ikut dijumlah. Dua pernyataan terakhir benar." />
-          <Pilih id={idKuis("B", 12)} pertanyaan="4 1/2 − 2 1/3 = ..." pilihan={[{ huruf: "A", teks: "2 1/6" }, { huruf: "B", teks: "2 1/5" }, { huruf: "C", teks: "6 5/6" }, { huruf: "D", teks: "1 1/6" }]} benar="A" umpan="27/6 − 14/6 = 13/6 = 2 1/6." salah="Samakan ke penyebut 6, lalu kurangkan." />
+        </>,
+        <>
+          <GambarDapur jenis="kurang" />
+          <Irisan judul="Gambar 5 dari 8, lalu 1 diambil" penuh={8} isi={4} catatan="Empat kotak masih kuning. Gambar ini tidak memakai angka soal di bawah." />
           <SusunToken id={idKuis("B", 13)} perintah="Susun dari yang paling kecil." acak={["1/2", "1/6", "1/3"]} benar={["1/6", "1/3", "1/2"]} umpan="1/6, lalu 1/3, lalu 1/2." />
-          <Pilih id={idKuis("B", 14)} pertanyaan="KPK dari 3 dan 6 adalah..." pilihan={[{ huruf: "A", teks: "3" }, { huruf: "B", teks: "9" }, { huruf: "C", teks: "6" }, { huruf: "D", teks: "18" }]} benar="C" umpan="Kelipatan 3 dan 6 bertemu paling dekat di 6." salah="KPK adalah kelipatan persekutuan yang terkecil, bukan yang terbesar." />
-        </Adegan>
+          <KuisBenarSalah id={idKuis("B", 11)} perintah="Pilih benar atau salah." baris={[{ teks: "Pada penjumlahan penyebut sama, penyebut ikut dijumlahkan.", benar: false }, { teks: "1/3 + 4/6 = 1.", benar: true }, { teks: "5 2/3 − 2 1/3 = 3 1/3.", benar: true }]} umpan="Penyebut tidak ikut dijumlah. Dua pernyataan terakhir benar." />
+          <KuisCocok id={idKuis("B", 10)} perintah="Pasangkan selisih dengan hasilnya." baris={[{ kiri: "2/3 − 1/3", pilihan: PASANGAN_SELISIH, benar: "1/3" }, { kiri: "5 2/3 − 2 1/3", pilihan: PASANGAN_SELISIH, benar: "3 1/3" }, { kiri: "2/3 − 1/2", pilihan: PASANGAN_SELISIH, benar: "1/6" }]} umpan="1/3, 3 1/3, dan 1/6." />
+        </>,
+        <>
+          <Dialog nama="Igil" anak="Lambang pengurangan memakai pembilang yang dikurangi. Penyebut tetap setelah disamakan." />
+          <Lambang judul="Lambang selisih" baris={["3/5 − 1/5 = 2/5", "4/7 − 2/7 = 2/7"]} />
+          <Pilih id={idKuis("B", 12)} pertanyaan="4 1/2 − 2 1/3 = ..." pilihan={[{ huruf: "A", teks: "2 1/6" }, { huruf: "B", teks: "2 1/5" }, { huruf: "C", teks: "6 5/6" }, { huruf: "D", teks: "1 1/6" }]} benar="A" umpan="27/6 − 14/6 = 13/6 = 2 1/6." salah="Samakan ke penyebut 6, lalu kurangkan." />
+          <Pilih id={idKuis("B", 20)} pertanyaan="5/8 − 1/8 = ..." pilihan={[{ huruf: "A", teks: "4/8" }, { huruf: "B", teks: "4/16" }, { huruf: "C", teks: "6/8" }, { huruf: "D", teks: "1/8" }]} benar="A" umpan="5 − 1 = 4. Penyebut tetap 8." salah="Jangan kurangkan penyebutnya." />
+          <Pilih id={idKuis("B", 21)} pertanyaan="3/4 − 1/2 = ..." pilihan={[{ huruf: "A", teks: "1/4" }, { huruf: "B", teks: "2/2" }, { huruf: "C", teks: "1/2" }, { huruf: "D", teks: "4/6" }]} benar="A" umpan="1/2 = 2/4. 3/4 − 2/4 = 1/4." salah="Samakan ke penyebut 4." />
+        </>,
+      ]}
+    />
+  );
+}
+
+function KartuA({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminGuru }) {
+  const kartu = MODUL_MTK5_BAB3.kartu[0];
+  const [tab, setTab] = useState(0);
+  const judulSubbab = ["Bentuk pecahan", "Membandingkan dan mengurutkan pecahan", "Penjumlahan pecahan, penyebut sama", "Penjumlahan pecahan, penyebut beda", "Pengurangan pecahan"];
+  useJudulDompetMateri(judulSubbab[tab] ?? judulSubbab[0]);
+  return (
+    <KartuBingkai>
+      <KepalaKartu ikon="🍞🦉" judul={kartu.judul} anak="Lima sub-bab di tepi sungai" kelas={kelas} kelamin={kelamin} cuplikan={cuplikanKalimat(kartu.voice[0] ?? [])} />
+      <div className="mt-4 space-y-4">
+        <TabSubbab label={["Sub-Bab A", "Sub-Bab B", "Sub-Bab C", "Sub-Bab D", "Sub-Bab E"]} aktif={tab} onPilih={setTab} />
+        {tab === 0 ? <SubbabBentuk kelas={kelas} kelamin={kelamin} /> : null}
+        {tab === 1 ? <SubbabBanding kelas={kelas} kelamin={kelamin} /> : null}
+        {tab === 2 ? <SubbabJumlahSama kelas={kelas} kelamin={kelamin} /> : null}
+        {tab === 3 ? <SubbabJumlahBeda kelas={kelas} kelamin={kelamin} /> : null}
+        {tab === 4 ? <SubbabSelisih kelas={kelas} kelamin={kelamin} /> : null}
       </div>
     </KartuBingkai>
   );

@@ -5,6 +5,8 @@ import GambarCerita from "@/components/GambarCerita";
 import HasilJawabanKuis from "@/components/HasilJawabanKuis";
 import KartuPoinPenting from "@/components/KartuPoinPenting";
 import { useKuisMateri } from "@/components/KuisMateriContext";
+import { PagerSubbab, TabSubbab } from "@/components/modul/EmpatHalamanMateri";
+import { useJudulDompetMateri } from "@/components/modul/KepalaDompetMateri";
 import MisiPenjagaKebun from "@/components/MisiPenjagaKebun";
 import { SLOT_AJUAN_SEBELUM_KARTU_D } from "@/components/NaskahMtk2Bab1";
 import SoalRekamSuara from "@/components/SoalRekamSuara";
@@ -443,120 +445,202 @@ function GameLipatLayang() {
   );
 }
 
-function KartuA({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminGuru }) {
-  const kartu = MODUL_MTK5_BAB7.kartu[0];
+const PILIH_JENIS = ["lancip", "siku-siku", "tumpul"];
+const PILIH_PASANG = ["1 pasang", "2 pasang", "0 pasang"];
+
+function Lambang({ judul, baris }: { judul: string; baris: string[] }) {
   return (
-    <KartuBingkai>
-      <KepalaKartu ikon="🪁🦉" judul={kartu.judul} anak="Empat adegan di padang layang" kelas={kelas} kelamin={kelamin} cuplikan={cuplikanKalimat(kartu.voice[0] ?? [])} />
-      <div className="mt-4 space-y-8">
-        <Adegan judul="Sub-bab 1 — Ciri-ciri segitiga: sisi dan sudut" jenis="padang" kelas={kelas} kelamin={kelamin} penjelasan={["Tiga batang dicek dengan menjumlahkan dua batang.", "Segitiga bisa lancip, siku-siku, atau tumpul.", "Jumlah seluruh sudutnya dibahas di adegan berikut."]}>
+    <div className="rounded-2xl border-2 border-[#1C01A5]/20 bg-white p-3">
+      <p className="text-sm font-black text-[#1C01A5]">{judul}</p>
+      {baris.map((teks) => <p key={teks} className="mt-2 text-lg font-black text-[#1C01A5]">{teks}</p>)}
+    </div>
+  );
+}
+
+function SubbabCiri({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminGuru }) {
+  return (
+    <PagerSubbab
+      judul="Ciri segitiga: sisi dan sudut"
+      selesaiTeks="Empat halaman ciri segitiga selesai."
+      grup={[[idKuis("A", 0), idKuis("A", 1)], [idKuis("A", 11), idKuis("A", 12)], [idKuis("A", 3), idKuis("A", 13), idKuis("A", 14)], [idKuis("A", 2), idKuis("A", 15), idKuis("A", 16)]]}
+      isi={[
+        <>
+          <TombolVoiceMateriPai1 kelas={kelas} kelamin={kelamin} cuplikan={cuplikanKalimat(["Tiga batang dicek dengan menjumlahkan dua batang.", "Segitiga bisa lancip, siku-siku, atau tumpul."])} />
           <Dialog nama="Dara" anak="Padang ini penuh kerangka layang. Aku ingin tahu, tiga batang mana yang benar-benar bisa menjadi segitiga." />
           <Dialog nama="Beni" anak="Jumlah dua batang harus lebih panjang daripada batang yang ketiga. Kalau hanya sama, atau malah lebih pendek, segitiga tidak jadi." />
-          <Dialog nama="Igil" anak="Lihat kerangka 5 cm, 6 cm, dan 7 cm. Setiap pasangan jumlahnya lebih panjang daripada batang yang tersisa." />
           <SegitigaContoh />
-          <Dialog nama="Tio" anak="Batang 5 cm, 4 cm, dan 12 cm tidak jadi. 5 + 4 = 9, masih lebih pendek daripada 12. Batang 10 cm, 5 cm, dan 15 cm juga tidak. 10 + 5 baru sama dengan 15, belum lebih panjang." />
-          <TabelInfoGrafis
-            judul="Infografis: Syarat tiga batang"
-            kepala={["Batang", "Cek", "Hasil"]}
-            baris={[
-              ["5, 6, 7", "jumlah dua batang lebih panjang", "bisa"],
-              ["4, 6, 6", "4 + 6 lebih panjang daripada 6", "bisa"],
-              ["5, 4, 12", "5 + 4 lebih pendek daripada 12", "tidak"],
-              ["10, 5, 15", "10 + 5 baru sama dengan 15", "tidak"],
-            ]}
-            kaki="Harus lebih panjang, bukan hanya sama."
-          />
+          <Dialog nama="Igil" anak="Dua sudut siku tidak muat dalam satu segitiga. Dua sudut tumpul juga tidak muat." />
+          <Dialog nama="Tio" anak="Kalau sudah jadi, lihat sudutnya. Semua lancip, ada yang siku, atau ada yang tumpul." />
           <KuisSuara id={idKuis("A", 0)} pertanyaan="Batang 8 cm, 3 cm, dan 4 cm. Bisa menjadi segitiga?" periksa={jawabTidak} petunjuk="Jumlahkan dua batang yang paling pendek, lalu bandingkan." benar="Tidak. 3 + 4 masih lebih pendek daripada 8." />
           <TulisBebas id={idKuis("A", 1)} judul="Enam, tujuh, delapan" visual={<Papan anak="6 cm · 7 cm · 8 cm" />} pertanyaan="Tulis bisa atau tidak." pesanSalah="Cek ketiga pasangan, jangan satu saja." bantuan="6 + 7 lebih panjang daripada 8. Tulis bisa." umpan="Bisa." periksa={jawabBisa} alias={["bisa"]} konteks="6, 7, dan 8 bisa menjadi segitiga." />
-          <Dialog nama="Dara" anak="Kalau sudah jadi segitiga, sudutnya juga punya nama. Semua sudut lancip: segitiga lancip. Satu sudut siku: segitiga siku-siku. Satu sudut tumpul: segitiga tumpul." />
-          <Dialog nama="Igil" anak="Dua sudut siku tidak muat. Dua sudut tumpul juga tidak muat. Nanti kita lihat mengapa, saat menjumlahkan sudutnya." />
-          <Pilih id={idKuis("A", 2)} pertanyaan="Sebuah segitiga punya sudut 110°. Jenis segitiga itu..." pilihan={[{ huruf: "A", teks: "lancip" }, { huruf: "B", teks: "siku-siku" }, { huruf: "C", teks: "tumpul" }, { huruf: "D", teks: "sama sisi" }]} benar="C" umpan="110° lebih besar daripada siku. Segitiganya tumpul." salah="Bandingkan 110° dengan sudut siku." />
-          <SusunToken id={idKuis("A", 3)} perintah="Susun cara mengecek tiga batang." acak={["Putuskan", "Bandingkan dengan batang ketiga", "Jumlahkan dua batang"]} benar={["Jumlahkan dua batang", "Bandingkan dengan batang ketiga", "Putuskan"]} umpan="Jumlahkan dua batang, bandingkan, lalu putuskan." pesanSalah="Mulai dari menjumlahkan dua batang." />
+        </>,
+        <>
+          <Dialog nama="Beni" anak="Infografis ini memakai kerangka lain. Hasil tiap baris sengaja tidak ditulis, supaya kamu yang menghitung." />
+          <TabelInfoGrafis judul="Infografis: Syarat tiga batang" kepala={["Batang", "Cek", "Yang dilihat"]} baris={[["5, 6, 7", "jumlah dua batang", "apakah lebih panjang"], ["4, 6, 6", "4 ditambah 6", "bandingkan dengan 6"], ["5, 4, 12", "5 ditambah 4", "bandingkan dengan 12"], ["10, 5, 15", "10 ditambah 5", "sama belum cukup"]]} kaki="Harus lebih panjang, bukan hanya sama." />
+          <KuisSuara id={idKuis("A", 11)} pertanyaan="Batang 3 cm, 4 cm, dan 5 cm. Bisa menjadi segitiga?" periksa={jawabBisa} petunjuk="Cek pasangan yang paling pendek." benar="Bisa. 3 + 4 lebih panjang daripada 5." />
+          <TulisBebas id={idKuis("A", 12)} judul="Dua, dua, enam" visual={<Papan anak="2 cm · 2 cm · 6 cm" />} pertanyaan="Tulis bisa atau tidak." pesanSalah="Jumlahkan dua batang yang pendek." bantuan="2 + 2 masih lebih pendek daripada 6." umpan="Tidak." periksa={jawabTidak} alias={["tidak"]} konteks="2, 2, dan 6 tidak bisa menjadi segitiga." />
+        </>,
+        <>
+          <GambarPadang jenis="padang" />
           <GameSedotan />
-        </Adegan>
+          <GameRadarSudut />
+          <SusunToken id={idKuis("A", 3)} perintah="Susun cara mengecek tiga batang." acak={["Putuskan", "Bandingkan dengan batang ketiga", "Jumlahkan dua batang"]} benar={["Jumlahkan dua batang", "Bandingkan dengan batang ketiga", "Putuskan"]} umpan="Jumlahkan dua batang, bandingkan, lalu putuskan." pesanSalah="Mulai dari menjumlahkan dua batang." />
+          <KuisBenarSalah id={idKuis("A", 13)} perintah="Pilih benar atau salah." baris={[{ teks: "Batang 3 cm, 3 cm, dan 3 cm bisa menjadi segitiga.", benar: true }, { teks: "Dua sudut siku muat dalam satu segitiga.", benar: false }, { teks: "Jumlah dua batang boleh hanya sama dengan batang ketiga.", benar: false }]} umpan="Harus lebih panjang. Dua sudut siku tidak muat." />
+          <KuisCocok id={idKuis("A", 14)} perintah="Pasangkan sudut dengan jenis segitiganya." baris={[{ kiri: "70°, 60°, 50°", pilihan: PILIH_JENIS, benar: "lancip" }, { kiri: "30°, 60°, 90°", pilihan: PILIH_JENIS, benar: "siku-siku" }, { kiri: "100°, 40°, 40°", pilihan: PILIH_JENIS, benar: "tumpul" }]} umpan="Lancip, siku-siku, dan tumpul." />
+        </>,
+        <>
+          <Dialog nama="Igil" anak="Lambang cek sisi: dua batang yang pendek harus lebih panjang daripada batang yang tersisa." />
+          <Lambang judul="Lambang segitiga" baris={["sisi pendek + sisi pendek > sisi panjang", "tumpul > 90°"]} />
+          <Pilih id={idKuis("A", 2)} pertanyaan="Sebuah segitiga punya sudut 110°. Jenis segitiga itu..." pilihan={[{ huruf: "A", teks: "lancip" }, { huruf: "B", teks: "siku-siku" }, { huruf: "C", teks: "tumpul" }, { huruf: "D", teks: "sama sisi" }]} benar="C" umpan="110° lebih besar daripada siku. Segitiganya tumpul." salah="Bandingkan 110° dengan sudut siku." />
+          <Pilih id={idKuis("A", 15)} pertanyaan="Batang 3 cm, 5 cm, dan 9 cm..." pilihan={[{ huruf: "A", teks: "bisa menjadi segitiga" }, { huruf: "B", teks: "tidak bisa menjadi segitiga" }, { huruf: "C", teks: "hanya butuh dua batang" }, { huruf: "D", teks: "selalu sama sisi" }]} benar="B" umpan="3 + 5 = 8, masih lebih pendek daripada 9." salah="Jumlahkan 3 dan 5, lalu bandingkan dengan 9." />
+          <Pilih id={idKuis("A", 16)} pertanyaan="Sebuah segitiga punya sudut 95°. Jenisnya..." pilihan={[{ huruf: "A", teks: "lancip" }, { huruf: "B", teks: "siku-siku" }, { huruf: "C", teks: "tumpul" }, { huruf: "D", teks: "sama sisi" }]} benar="C" umpan="95 lebih besar daripada 90." salah="Bandingkan 95 dengan 90." />
+        </>,
+      ]}
+    />
+  );
+}
 
-        <Adegan judul="Sub-bab 1 — Jumlah sudut dan panjang sisi" jenis="sudut" kelas={kelas} kelamin={kelamin} penjelasan={["Jumlah sudut dalam segitiga 180 derajat.", "Sisi yang sama membuat sudut yang sama.", "Simetri lipat dan simetri putar membedakan sama kaki dan sama sisi."]}>
+function SubbabJumlah({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminGuru }) {
+  return (
+    <PagerSubbab
+      judul="Jumlah sudut dan panjang sisi"
+      selesaiTeks="Empat halaman jumlah sudut selesai."
+      grup={[[idKuis("A", 4), idKuis("A", 5)], [idKuis("B", 0), idKuis("B", 1)], [idKuis("A", 7), idKuis("B", 12), idKuis("B", 13)], [idKuis("A", 6), idKuis("B", 6), idKuis("B", 7)]]}
+      isi={[
+        <>
+          <TombolVoiceMateriPai1 kelas={kelas} kelamin={kelamin} cuplikan={cuplikanKalimat(["Jumlah sudut dalam segitiga 180 derajat.", "Sisi yang sama membuat sudut yang sama."])} />
           <Dialog nama="Beni" anak="Aku menggunting tiga sudut segitiga, lalu menempelkannya. Mereka menjadi garis lurus." />
-          <Dialog nama="Igil" anak="Jumlah sudut dalam segitiga 180°. Contoh di layang kecil: 50° + 60° + 70° = 180°." />
+          <Dialog nama="Igil" anak="Jumlah sudut dalam segitiga 180°. Pada layang kecil, 50° ditambah 60° ditambah 70° juga 180°." />
+          <Dialog nama="Tio" anak="Sisa sudut didapat dari 180° dikurangi dua sudut yang sudah diketahui." />
+          <Dialog nama="Dara" anak="Sisi yang sama panjang membuat sudut di hadapannya sama besar." />
           <KuisSuara id={idKuis("A", 4)} pertanyaan="Dua sudut segitiga 35° dan 65°. Berapa sudut ketiganya?" periksa={hasil80} petunjuk="Jumlahkan dulu, lalu kurangkan dari 180." benar="80°." />
           <TulisBebas id={idKuis("A", 5)} judul="Siku-siku sama kaki" visual={<Papan anak="satu sudut siku · dua sudut lain sama" />} pertanyaan="Tulis besar satu sudut yang bukan siku." pesanSalah="Sisa setelah 90° masih dibagi dua." bantuan="180 − 90 = 90. 90 dibagi 2." umpan="45°." periksa={hasil45} alias={["45"]} konteks="Sudut yang bukan siku pada segitiga siku-siku sama kaki adalah 45 derajat." />
-          <Pilih id={idKuis("A", 6)} pertanyaan="Sudut segitiga sama sisi didapat dari 180° dibagi 3. Besar satu sudutnya..." pilihan={[{ huruf: "A", teks: "45°" }, { huruf: "B", teks: "90°" }, { huruf: "C", teks: "60°" }, { huruf: "D", teks: "120°" }]} benar="C" umpan="180 ÷ 3 = 60. Ketiga sudutnya sama besar." salah="Bagi 180 dengan 3." />
-          <Dialog nama="Tio" anak="Jadi sudut yang sama pada siku-siku sama kaki masing-masing 45°. Pada sama sisi, tiap sudut 60°." />
-          <TabelInfoGrafis
-            judul="Infografis: Sudut dalam segitiga"
-            kepala={["Kasus", "Cara", "Hasil"]}
-            baris={[
-              ["Semua segitiga", "jumlah tiga sudut", "180°"],
-              ["Contoh layang", "50 + 60 + 70", "180°"],
-              ["Sama sisi", "180 dibagi 3", "60°"],
-              ["Siku sama kaki", "sisa dibagi 2", "45°"],
-            ]}
-            kaki="Dua sudut siku tidak muat. Dua sudut tumpul juga tidak."
-          />
-          <Dialog nama="Dara" anak="Dari panjang sisinya ada tiga nama. Sama kaki punya minimal dua sisi sama. Sama sisi punya tiga sisi sama. Sembarang: ketiganya berbeda." />
-          <KuisCocok id={idKuis("A", 7)} perintah="Pasangkan panjang sisi dengan namanya." baris={[{ kiri: "3 sisi sama panjang", pilihan: JENIS_SISI, benar: "sama sisi" }, { kiri: "tepat 2 sisi sama panjang", pilihan: JENIS_SISI, benar: "sama kaki" }, { kiri: "semua sisi berbeda", pilihan: JENIS_SISI, benar: "sembarang" }]} umpan="Sama sisi, sama kaki, dan sembarang." />
+        </>,
+        <>
+          <Dialog nama="Igil" anak="Infografis simetri tidak menuliskan jumlahnya. Lipat atau putar, lalu hitung sendiri." />
+          <TabelInfoGrafis judul="Infografis: Simetri segitiga" kepala={["Bangun", "Yang dicek", "Cara"]} baris={[["Sama kaki", "garis lipat", "lipat pada puncak"], ["Sama sisi", "putaran", "putar sampai bingkai ketemu"], ["Sama sisi", "ciri sama kaki", "semua ciri sama kaki ada"], ["Sembarang", "sisi", "ketiganya berbeda"]]} kaki="Sama sisi boleh disebut sama kaki. Sama kaki belum tentu sama sisi." />
           <KuisSuara id={idKuis("B", 0)} pertanyaan="Segitiga sama kaki punya berapa simetri lipat?" periksa={hasil1} petunjuk="Lipat pada garis yang membagi dua sudut puncak." benar="1 simetri lipat." />
           <TulisBebas id={idKuis("B", 1)} judul="Putaran sama sisi" visual={<Papan anak="segitiga sama sisi diputar pada pusatnya" />} pertanyaan="Tulis banyak simetri putarnya." pesanSalah="Hitung berapa kali ia tepat menempati bingkainya dalam satu putaran." bantuan="Ada 3 posisi." umpan="3 simetri putar." periksa={hasil3} alias={["3"]} konteks="Segitiga sama sisi punya 3 simetri putar." />
-          <Dialog nama="Igil" anak="Sama kaki: minimal 2 sisi sama, 2 sudut sama, 1 simetri lipat, dan 1 simetri putar. Sama sisi: 3 sisi sama, 3 sudut sama, 3 simetri lipat, dan 3 simetri putar." />
-          <Dialog nama="Beni" anak="Sama sisi punya semua ciri sama kaki, jadi ia boleh disebut sama kaki. Sebaliknya, sama kaki belum tentu sama sisi." />
+        </>,
+        <>
+          <GambarPadang jenis="sudut" />
           <GameSudutKetiga />
-          <Dialog nama="Igil" anak="Geser dua sudut pada radar layang. Sudut ketiga dihitung sendiri supaya jumlahnya tetap 180°." />
-          <GameRadarSudut />
-          <Dialog nama="Dara" anak="Putar segitiga dan nyalakan garis lipat. Lihat kapan bingkainya ketemu lagi." />
           <GameLaserLipat kelompok="segitiga" />
-        </Adegan>
-
-        <Adegan judul="Sub-bab 2 — Trapesium dan jajargenjang" jenis="bingkai" kelas={kelas} kelamin={kelamin} penjelasan={["Segi empat dibatasi empat sisi.", "Trapesium pada bab ini punya minimal satu pasang sisi sejajar.", "Jajargenjang punya dua pasang sisi berhadapan yang sejajar."]}>
-          <Dialog nama="Tio" anak="Segi empat adalah bangun yang dibatasi empat sisi. Di gudang bingkai ada trapesium dan jajargenjang." />
-          <Dialog nama="Dara" anak="Di kelas empat, trapesium hanya punya satu pasang sisi sejajar. Di kelas lima, kita memakai pengertian yang lebih luas: minimal satu pasang." />
-          <Dialog nama="Igil" anak="Trapesium siku-siku punya satu sudut siku. Trapesium sama kaki punya satu simetri lipat." />
-          <Pilih id={idKuis("A", 8)} pertanyaan="Pada bab ini, trapesium adalah segi empat yang..." pilihan={[{ huruf: "A", teks: "semua sudutnya siku" }, { huruf: "B", teks: "punya minimal satu pasang sisi sejajar" }, { huruf: "C", teks: "semua sisinya sama" }, { huruf: "D", teks: "tidak punya sisi sejajar" }]} benar="B" umpan="Minimal satu pasang. Boleh lebih, nanti kita lihat pada jajargenjang." salah="Ingat kesepakatan bab ini: minimal satu pasang." />
-          <Dialog nama="Beni" anak="Jajargenjang punya dua pasang sisi berhadapan yang sejajar dan sama panjang. Sudut yang berhadapan juga sama besar." />
-          <Pilih id={idKuis("A", 9)} pertanyaan="Bolehkah jajargenjang disebut trapesium pada bab ini?" pilihan={[{ huruf: "A", teks: "Ya, karena ada sisi sejajar" }, { huruf: "B", teks: "Tidak, karena ia segitiga" }, { huruf: "C", teks: "Ya, karena ia trapesium sama kaki" }, { huruf: "D", teks: "Tidak, karena tidak punya sisi" }]} benar="A" umpan="Ada minimal satu pasang sisi sejajar, bahkan dua pasang." salah="Cek dulu apakah ada sisi yang sejajar." />
-          <Pilih id={idKuis("B", 2)} pertanyaan="Apakah jajargenjang merupakan trapesium sama kaki?" pilihan={[{ huruf: "A", teks: "Ya, karena kakinya sama" }, { huruf: "B", teks: "Tidak, karena tidak punya simetri lipat" }, { huruf: "C", teks: "Ya, karena semua sudutnya siku" }, { huruf: "D", teks: "Tidak, karena ia bukan segi empat" }]} benar="B" umpan="Trapesium sama kaki punya simetri lipat. Jajargenjang biasa tidak." salah="Lihat simetri lipatnya, bukan hanya sisi sejajar." />
-          <GameSejajar />
-          <Dialog nama="Beni" anak="Baca empat ciri bingkai ini, lalu pilih nama yang cocok." />
-          <GameTebakBingkai kelompok="trapesium" />
-        </Adegan>
-
-        <Adegan judul="Sub-bab 2 — Persegi panjang, belah ketupat, persegi, dan layang-layang" jenis="layang" kelas={kelas} kelamin={kelamin} penjelasan={["Persegi panjang, belah ketupat, persegi, dan layang-layang saling berkaitan.", "Ciri tambahan mengubah nama bangun.", "Satu diagonal layang-layang bisa menjadi garis lipat."]}>
-          <Dialog nama="Dara" anak="Persegi panjang: sisi berhadapan sejajar dan sama panjang, semua sudutnya siku." />
-          <Dialog nama="Tio" anak="Kalau satu sudut jajargenjang kita ubah sampai siku, sudut yang lain ikut berubah." />
-          <Pilih id={idKuis("A", 10)} pertanyaan="Jajargenjang yang salah satu sudutnya dijadikan siku menjadi..." pilihan={[{ huruf: "A", teks: "segitiga" }, { huruf: "B", teks: "persegi panjang" }, { huruf: "C", teks: "layang-layang" }, { huruf: "D", teks: "segitiga tumpul" }]} benar="B" umpan="Semua sudutnya ikut menjadi siku. Namanya persegi panjang." salah="Ingat bangun yang semua sudutnya siku dan sisi berhadapannya sama." />
-          <Pilih id={idKuis("B", 3)} pertanyaan="Apakah persegi panjang memiliki semua ciri jajargenjang?" pilihan={[{ huruf: "A", teks: "Ya" }, { huruf: "B", teks: "Tidak, karena sisinya tidak sejajar" }, { huruf: "C", teks: "Tidak, karena ia segitiga" }, { huruf: "D", teks: "Ya, tetapi hanya jika miring" }]} benar="A" umpan="Sisi berhadapan tetap sejajar dan sama panjang. Sudut berhadapan sama besar." salah="Cek sisi berhadapan dan sudut berhadapan." />
-          <Dialog nama="Igil" anak="Persegi panjang adalah jajargenjang yang salah satu sudutnya siku." />
-          <Dialog nama="Beni" anak="Belah ketupat: semua sisi sama panjang, sisi berhadapan sejajar, sudut berhadapan sama besar, dan diagonalnya saling tegak lurus." />
-          <KuisSuara id={idKuis("B", 4)} pertanyaan="Bolehkah belah ketupat disebut jajargenjang?" periksa={jawabYa} petunjuk="Cek apakah semua ciri jajargenjang ada padanya." benar="Ya. Semua ciri jajargenjang ada pada belah ketupat." />
-          <TulisBebas id={idKuis("B", 5)} judul="Menjadi persegi" visual={<Papan anak="belah ketupat · ciri apa yang ditambah?" />} pertanyaan="Tulis ciri sudut yang membuatnya menjadi persegi." pesanSalah="Lihat sudutnya, bukan panjang sisinya. Sisinya sudah sama." bantuan="Sudutnya harus siku." umpan="Sudut siku." periksa={jawabSiku} alias={["siku", "siku-siku"]} konteks="Belah ketupat menjadi persegi jika salah satu sudutnya siku." />
-          <Dialog nama="Tio" anak="Persegi adalah belah ketupat yang salah satu sudutnya siku. Ia juga persegi panjang yang sisi berurutannya sama panjang." />
+          <KuisCocok id={idKuis("A", 7)} perintah="Pasangkan panjang sisi dengan namanya." baris={[{ kiri: "3 sisi sama panjang", pilihan: JENIS_SISI, benar: "sama sisi" }, { kiri: "tepat 2 sisi sama panjang", pilihan: JENIS_SISI, benar: "sama kaki" }, { kiri: "semua sisi berbeda", pilihan: JENIS_SISI, benar: "sembarang" }]} umpan="Sama sisi, sama kaki, dan sembarang." />
+          <SusunToken id={idKuis("B", 12)} perintah="Susun dari yang paling kecil." acak={["70°", "50°", "60°"]} benar={["50°", "60°", "70°"]} umpan="50°, lalu 60°, lalu 70°." pesanSalah="Mulai dari yang paling kecil." />
+          <KuisBenarSalah id={idKuis("B", 13)} perintah="Pilih benar atau salah." baris={[{ teks: "Jumlah sudut dalam segitiga 180°.", benar: true }, { teks: "Dua sudut tumpul muat dalam satu segitiga.", benar: false }, { teks: "Segitiga sama sisi boleh disebut sama kaki.", benar: true }]} umpan="Dua sudut tumpul tidak muat. Jumlahnya akan melebihi 180°." />
+        </>,
+        <>
+          <Dialog nama="Tio" anak="Lambang jumlah sudut tetap 180°. Satu sudut sama sisi didapat dengan membagi jumlah itu menjadi tiga bagian yang sama." />
+          <Lambang judul="Lambang sudut" baris={["sudut 1 + sudut 2 + sudut 3 = 180°", "sisi sama → sudut sama"]} />
+          <Pilih id={idKuis("A", 6)} pertanyaan="Sudut segitiga sama sisi didapat dari 180° dibagi 3. Besar satu sudutnya..." pilihan={[{ huruf: "A", teks: "45°" }, { huruf: "B", teks: "90°" }, { huruf: "C", teks: "60°" }, { huruf: "D", teks: "120°" }]} benar="C" umpan="180 ÷ 3 = 60. Ketiga sudutnya sama besar." salah="Bagi 180 dengan 3." />
           <Pilih id={idKuis("B", 6)} pertanyaan="Bolehkah persegi disebut persegi panjang?" pilihan={[{ huruf: "A", teks: "Ya, karena semua sudutnya siku dan sisi berhadapan sama" }, { huruf: "B", teks: "Tidak, karena sisinya sama" }, { huruf: "C", teks: "Tidak, karena ia segitiga" }, { huruf: "D", teks: "Ya, karena tidak punya sudut siku" }]} benar="A" umpan="Semua ciri persegi panjang ada pada persegi." salah="Cek sudut siku dan sisi berhadapan." />
           <Pilih id={idKuis("B", 7)} pertanyaan="Bolehkah belah ketupat disebut layang-layang?" pilihan={[{ huruf: "A", teks: "Tidak, karena diagonalnya tidak tegak lurus" }, { huruf: "B", teks: "Ya, karena semua ciri layang-layang ada padanya" }, { huruf: "C", teks: "Tidak, karena ia bukan segi empat" }, { huruf: "D", teks: "Ya, karena tidak punya sisi sama" }]} benar="B" umpan="Belah ketupat adalah layang-layang yang kedua diagonalnya menjadi sumbu simetri." salah="Cek pasangan sisi berurutan dan diagonalnya." />
-          <KuisBenarSalah id={idKuis("B", 8)} perintah="Pilih benar atau salah." baris={[{ teks: "Batang 4 cm, 4 cm, dan 9 cm bisa menjadi segitiga.", benar: false }, { teks: "Sudut 20° pada segitiga termasuk sudut lancip.", benar: true }, { teks: "Semua belah ketupat adalah persegi.", benar: false }]} umpan="4 + 4 masih lebih pendek daripada 9. Belah ketupat menjadi persegi hanya jika ada sudut siku." />
-          <SusunToken id={idKuis("B", 9)} perintah="Susun dari yang paling umum ke yang paling khusus." acak={["Persegi", "Segi empat", "Persegi panjang", "Jajargenjang"]} benar={["Segi empat", "Jajargenjang", "Persegi panjang", "Persegi"]} umpan="Segi empat, jajargenjang, persegi panjang, lalu persegi." pesanSalah="Mulai dari bangun yang cirinya paling sedikit." />
-          <Pilih id={idKuis("B", 10)} pertanyaan="Garis lipat pada layang-layang yang membuat dua bagian menempel disebut..." pilihan={[{ huruf: "A", teks: "sisi miring" }, { huruf: "B", teks: "sumbu simetri" }, { huruf: "C", teks: "sudut tumpul" }, { huruf: "D", teks: "titik sudut" }]} benar="B" umpan="Satu diagonal layang-layang adalah sumbu simetri." salah="Ingat nama garis lipat yang membuat dua bagian menempel." />
-          <KuisCocok id={idKuis("B", 11)} perintah="Pasangkan bangun dengan banyak simetri lipatnya." baris={[{ kiri: "Trapesium sama kaki", pilihan: LIPAT, benar: "1" }, { kiri: "Persegi panjang", pilihan: LIPAT, benar: "2" }, { kiri: "Persegi", pilihan: LIPAT, benar: "4" }]} umpan="1, 2, dan 4." />
-          <TabelInfoGrafis
-            judul="Infografis: Keluarga segi empat"
-            kepala={["Bangun", "Ciri inti", "Juga disebut"]}
-            baris={[
-              ["Trapesium", "minimal 1 pasang sejajar", "segi empat"],
-              ["Jajargenjang", "2 pasang berhadapan sejajar", "trapesium"],
-              ["Persegi panjang", "jajargenjang + sudut siku", "sudutnya semua siku"],
-              ["Belah ketupat", "jajargenjang + sisi sama", "layang-layang"],
-              ["Persegi", "belah ketupat + sudut siku", "persegi panjang"],
-              ["Layang-layang", "1 diagonal adalah sumbu simetri", "2 pasang sisi berurutan"],
-            ]}
-            kaki="Jajargenjang bukan trapesium sama kaki."
-          />
+        </>,
+      ]}
+    />
+  );
+}
+
+function SubbabTrapesium({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminGuru }) {
+  return (
+    <PagerSubbab
+      judul="Trapesium dan jajargenjang"
+      selesaiTeks="Empat halaman trapesium selesai."
+      grup={[[idKuis("B", 14), idKuis("B", 15)], [idKuis("B", 16), idKuis("B", 17)], [idKuis("B", 18), idKuis("B", 19), idKuis("B", 20)], [idKuis("A", 8), idKuis("A", 9), idKuis("B", 2)]]}
+      isi={[
+        <>
+          <TombolVoiceMateriPai1 kelas={kelas} kelamin={kelamin} cuplikan={cuplikanKalimat(["Segi empat dibatasi empat sisi.", "Trapesium pada bab ini punya minimal satu pasang sisi sejajar."])} />
+          <Dialog nama="Tio" anak="Di gudang bingkai ada trapesium dan jajargenjang. Keduanya dibatasi empat sisi." />
+          <Dialog nama="Dara" anak="Di kelas lima, trapesium berarti ada sisi yang sejajar. Minimal satu pasang." />
+          <Dialog nama="Igil" anak="Ada bingkai yang kakinya sama dan bisa dilipat. Ada juga bingkai yang salah satu pojoknya siku." />
+          <Dialog nama="Beni" anak="Jajargenjang punya sisi berhadapan yang sejajar dan sama panjang." />
+          <KuisSuara id={idKuis("B", 14)} pertanyaan="Trapesium sama kaki punya berapa simetri lipat?" periksa={hasil1} petunjuk="Lipat bingkai itu pada garis tengah." benar="1 simetri lipat." />
+          <TulisBebas id={idKuis("B", 15)} judul="Layang tanpa sisi sejajar" visual={<Papan anak="tidak ada sisi yang sejajar" />} pertanyaan="Termasuk trapesium pada bab ini? Tulis ya atau tidak." pesanSalah="Cek dulu apakah ada sisi sejajar." bantuan="Tanpa sisi sejajar, ia bukan trapesium. Tulis tidak." umpan="Tidak." periksa={jawabTidak} alias={["tidak"]} konteks="Layang tanpa sisi sejajar bukan trapesium." />
+        </>,
+        <>
+          <GameSejajar />
+          <TabelInfoGrafis judul="Infografis: Bingkai segi empat" kepala={["Bingkai", "Yang dicek", "Cara"]} baris={[["Trapesium", "sisi sejajar", "cari pasangannya"], ["Trapesium sama kaki", "garis lipat", "lipat lalu hitung"], ["Trapesium siku", "pojok siku", "hitung pojok yang siku"], ["Jajargenjang", "sisi berhadapan", "cek dua pasang"]]} kaki="Nama mengikuti ciri yang kamu temukan." />
+          <KuisSuara id={idKuis("B", 16)} pertanyaan="Trapesium siku-siku punya berapa sudut siku?" periksa={hasil1} petunjuk="Hitung pojok yang pas dengan siku." benar="1 sudut siku." />
+          <TulisBebas id={idKuis("B", 17)} judul="Masih segi empat" visual={<Papan anak="trapesium siku-siku" />} pertanyaan="Termasuk segi empat? Tulis ya atau tidak." pesanSalah="Hitung sisinya." bantuan="Ia dibatasi empat sisi. Tulis ya." umpan="Ya." periksa={jawabYa} alias={["ya"]} konteks="Trapesium siku-siku adalah segi empat." />
+        </>,
+        <>
+          <GambarPadang jenis="bingkai" />
+          <GameTebakBingkai kelompok="trapesium" />
+          <SusunToken id={idKuis("B", 18)} perintah="Susun cara menamai bingkai." acak={["Beri nama", "Cek sudut", "Cek sisi sejajar"]} benar={["Cek sisi sejajar", "Cek sudut", "Beri nama"]} umpan="Cek sisi sejajar, cek sudut, lalu beri nama." pesanSalah="Mulai dari sisi yang sejajar." />
+          <KuisBenarSalah id={idKuis("B", 19)} perintah="Pilih benar atau salah." baris={[{ teks: "Jajargenjang punya dua pasang sisi berhadapan yang sejajar.", benar: true }, { teks: "Segi empat punya tiga sisi.", benar: false }, { teks: "Pada bab ini trapesium boleh punya lebih dari satu pasang sisi sejajar.", benar: true }]} umpan="Segi empat punya empat sisi. Trapesium di bab ini minimal satu pasang." />
+          <KuisCocok id={idKuis("B", 20)} perintah="Pasangkan bangun dengan sisi sejajarnya." baris={[{ kiri: "Trapesium dengan tepat satu pasang", pilihan: PILIH_PASANG, benar: "1 pasang" }, { kiri: "Jajargenjang", pilihan: PILIH_PASANG, benar: "2 pasang" }, { kiri: "Layang tanpa sisi sejajar", pilihan: PILIH_PASANG, benar: "0 pasang" }]} umpan="1 pasang, 2 pasang, dan 0 pasang." />
+        </>,
+        <>
+          <Dialog nama="Dara" anak="Lambang sejajar ditulis dua garis miring. Banyak pasangannya yang menentukan nama." />
+          <Lambang judul="Lambang sejajar" baris={["sejajar ditulis //", "jajargenjang: dua pasang //"]} />
+          <Pilih id={idKuis("A", 8)} pertanyaan="Pada bab ini, trapesium adalah segi empat yang..." pilihan={[{ huruf: "A", teks: "semua sudutnya siku" }, { huruf: "B", teks: "punya minimal satu pasang sisi sejajar" }, { huruf: "C", teks: "semua sisinya sama" }, { huruf: "D", teks: "tidak punya sisi sejajar" }]} benar="B" umpan="Minimal satu pasang. Boleh lebih, nanti kita lihat pada jajargenjang." salah="Ingat kesepakatan bab ini: minimal satu pasang." />
+          <Pilih id={idKuis("A", 9)} pertanyaan="Bolehkah jajargenjang disebut trapesium pada bab ini?" pilihan={[{ huruf: "A", teks: "Ya, karena ada sisi sejajar" }, { huruf: "B", teks: "Tidak, karena ia segitiga" }, { huruf: "C", teks: "Ya, karena ia trapesium sama kaki" }, { huruf: "D", teks: "Tidak, karena tidak punya sisi" }]} benar="A" umpan="Ada minimal satu pasang sisi sejajar, bahkan dua pasang." salah="Cek dulu apakah ada sisi yang sejajar." />
+          <Pilih id={idKuis("B", 2)} pertanyaan="Apakah jajargenjang merupakan trapesium sama kaki?" pilihan={[{ huruf: "A", teks: "Ya, karena kakinya sama" }, { huruf: "B", teks: "Tidak, karena tidak punya simetri lipat" }, { huruf: "C", teks: "Ya, karena semua sudutnya siku" }, { huruf: "D", teks: "Tidak, karena ia bukan segi empat" }]} benar="B" umpan="Trapesium sama kaki punya simetri lipat. Jajargenjang biasa tidak." salah="Lihat simetri lipatnya, bukan hanya sisi sejajar." />
+        </>,
+      ]}
+    />
+  );
+}
+
+function SubbabKeluarga({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminGuru }) {
+  return (
+    <PagerSubbab
+      judul="Persegi panjang, belah ketupat, persegi, dan layang-layang"
+      selesaiTeks="Empat halaman keluarga segi empat selesai."
+      grup={[[idKuis("B", 4), idKuis("B", 5)], [idKuis("B", 21), idKuis("B", 22)], [idKuis("B", 8), idKuis("B", 9), idKuis("B", 11)], [idKuis("A", 10), idKuis("B", 3), idKuis("B", 10)]]}
+      isi={[
+        <>
+          <TombolVoiceMateriPai1 kelas={kelas} kelamin={kelamin} cuplikan={cuplikanKalimat(["Persegi panjang, belah ketupat, persegi, dan layang-layang saling berkaitan.", "Ciri tambahan mengubah nama bangun."])} />
+          <Dialog nama="Dara" anak="Persegi panjang di padang ini: sisi berhadapan sama panjang, dan semua pojoknya siku." />
+          <Dialog nama="Tio" anak="Belah ketupat: semua sisinya sama panjang. Diagonalnya saling tegak lurus." />
+          <Dialog nama="Beni" anak="Layang-layang punya dua pasang sisi berurutan yang sama panjang." />
+          <Dialog nama="Igil" anak="Kalau satu sudut jajargenjang diubah, sudut yang lain ikut berubah." />
+          <KuisSuara id={idKuis("B", 4)} pertanyaan="Bolehkah belah ketupat disebut jajargenjang?" periksa={jawabYa} petunjuk="Cek apakah semua ciri jajargenjang ada padanya." benar="Ya. Semua ciri jajargenjang ada pada belah ketupat." />
+          <TulisBebas id={idKuis("B", 5)} judul="Menjadi persegi" visual={<Papan anak="belah ketupat · ciri apa yang ditambah?" />} pertanyaan="Tulis ciri sudut yang membuatnya menjadi persegi." pesanSalah="Lihat sudutnya, bukan panjang sisinya. Sisinya sudah sama." bantuan="Sudutnya harus siku." umpan="Sudut siku." periksa={jawabSiku} alias={["siku", "siku-siku"]} konteks="Belah ketupat menjadi persegi jika salah satu sudutnya siku." />
+        </>,
+        <>
+          <TabelInfoGrafis judul="Infografis: Keluarga segi empat" kepala={["Bangun", "Ciri inti", "Yang dicek"]} baris={[["Trapesium", "ada sisi sejajar", "hitung pasangannya"], ["Jajargenjang", "dua pasang berhadapan", "panjang dan sudut"], ["Persegi panjang", "semua sudut siku", "sisi berhadapan"], ["Belah ketupat", "semua sisi sama", "diagonal tegak lurus"], ["Layang-layang", "sisi berurutan", "garis lipatnya"], ["Persegi", "sisi sama dan sudut siku", "dua ciri sekaligus"]]} kaki="Satu ciri tambahan dapat mengubah nama bangun." />
+          <KuisSuara id={idKuis("B", 21)} pertanyaan="Layang-layang pada padang ini punya berapa sumbu simetri?" periksa={hasil1} petunjuk="Coba lipat pada tiap diagonal." benar="1 sumbu simetri." />
+          <TulisBebas id={idKuis("B", 22)} judul="Persegi dan belah ketupat" visual={<Papan anak="semua sisi persegi sama panjang" />} pertanyaan="Bolehkah persegi disebut belah ketupat? Tulis ya atau tidak." pesanSalah="Cek apakah semua sisinya sama." bantuan="Semua sisinya sama. Tulis ya." umpan="Ya." periksa={jawabYa} alias={["ya"]} konteks="Persegi boleh disebut belah ketupat." />
+        </>,
+        <>
+          <GambarPadang jenis="layang" />
           <GameKeluarga />
           <GameLipatLayang />
-          <Dialog nama="Tio" anak="Nyalakan garis lipat dan diagonal, lalu putar segi empat sampai bingkainya ketemu lagi." />
           <GameLaserLipat kelompok="segi-empat" />
-          <Dialog nama="Dara" anak="Empat ciri lagi. Kali ini untuk belah ketupat dan layang-layang." />
           <GameTebakBingkai kelompok="ketupat" />
-          <Dialog nama="Igil" anak="Ubah sudut dan sisi jajargenjang, lalu uji empat pernyataan keluarganya." />
           <GameUbahKeluarga />
-        </Adegan>
+          <KuisBenarSalah id={idKuis("B", 8)} perintah="Pilih benar atau salah." baris={[{ teks: "Batang 4 cm, 4 cm, dan 9 cm bisa menjadi segitiga.", benar: false }, { teks: "Sudut 20° pada segitiga termasuk sudut lancip.", benar: true }, { teks: "Semua belah ketupat adalah persegi.", benar: false }]} umpan="4 + 4 masih lebih pendek daripada 9. Belah ketupat menjadi persegi hanya jika ada sudut siku." />
+          <SusunToken id={idKuis("B", 9)} perintah="Susun dari yang paling umum ke yang paling khusus." acak={["Persegi", "Segi empat", "Persegi panjang", "Jajargenjang"]} benar={["Segi empat", "Jajargenjang", "Persegi panjang", "Persegi"]} umpan="Segi empat, jajargenjang, persegi panjang, lalu persegi." pesanSalah="Mulai dari bangun yang cirinya paling sedikit." />
+          <KuisCocok id={idKuis("B", 11)} perintah="Pasangkan bangun dengan banyak simetri lipatnya." baris={[{ kiri: "Trapesium sama kaki", pilihan: LIPAT, benar: "1" }, { kiri: "Persegi panjang", pilihan: LIPAT, benar: "2" }, { kiri: "Persegi", pilihan: LIPAT, benar: "4" }]} umpan="1, 2, dan 4." />
+        </>,
+        <>
+          <Dialog nama="Igil" anak="Lambang keluarga memakai tanda tambah untuk ciri yang ditambahkan." />
+          <Lambang judul="Lambang keluarga" baris={["ciri lama + ciri baru", "nama mengikuti ciri yang lengkap"]} />
+          <Pilih id={idKuis("A", 10)} pertanyaan="Jajargenjang yang salah satu sudutnya dijadikan siku menjadi..." pilihan={[{ huruf: "A", teks: "segitiga" }, { huruf: "B", teks: "persegi panjang" }, { huruf: "C", teks: "layang-layang" }, { huruf: "D", teks: "segitiga tumpul" }]} benar="B" umpan="Semua sudutnya ikut menjadi siku. Namanya persegi panjang." salah="Ingat bangun yang semua sudutnya siku dan sisi berhadapannya sama." />
+          <Pilih id={idKuis("B", 3)} pertanyaan="Apakah persegi panjang memiliki semua ciri jajargenjang?" pilihan={[{ huruf: "A", teks: "Ya" }, { huruf: "B", teks: "Tidak, karena sisinya tidak sejajar" }, { huruf: "C", teks: "Tidak, karena ia segitiga" }, { huruf: "D", teks: "Ya, tetapi hanya jika miring" }]} benar="A" umpan="Sisi berhadapan tetap sejajar dan sama panjang. Sudut berhadapan sama besar." salah="Cek sisi berhadapan dan sudut berhadapan." />
+          <Pilih id={idKuis("B", 10)} pertanyaan="Garis lipat pada layang-layang yang membuat dua bagian menempel disebut..." pilihan={[{ huruf: "A", teks: "sisi miring" }, { huruf: "B", teks: "sumbu simetri" }, { huruf: "C", teks: "sudut tumpul" }, { huruf: "D", teks: "titik sudut" }]} benar="B" umpan="Satu diagonal layang-layang adalah sumbu simetri." salah="Ingat nama garis lipat yang membuat dua bagian menempel." />
+        </>,
+      ]}
+    />
+  );
+}
+
+function KartuA({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminGuru }) {
+  const kartu = MODUL_MTK5_BAB7.kartu[0];
+  const [tab, setTab] = useState(0);
+  const judulSubbab = ["Ciri segitiga: sisi dan sudut", "Jumlah sudut dan panjang sisi", "Trapesium dan jajargenjang", "Persegi panjang, belah ketupat, persegi, dan layang-layang"];
+  useJudulDompetMateri(judulSubbab[tab] ?? judulSubbab[0]);
+  return (
+    <KartuBingkai>
+      <KepalaKartu ikon="🪁🦉" judul={kartu.judul} anak="Empat sub-bab di padang layang" kelas={kelas} kelamin={kelamin} cuplikan={cuplikanKalimat(kartu.voice[0] ?? [])} />
+      <div className="mt-4 space-y-4">
+        <TabSubbab label={["Sub-Bab A", "Sub-Bab B", "Sub-Bab C", "Sub-Bab D"]} aktif={tab} onPilih={setTab} />
+        {tab === 0 ? <SubbabCiri kelas={kelas} kelamin={kelamin} /> : null}
+        {tab === 1 ? <SubbabJumlah kelas={kelas} kelamin={kelamin} /> : null}
+        {tab === 2 ? <SubbabTrapesium kelas={kelas} kelamin={kelamin} /> : null}
+        {tab === 3 ? <SubbabKeluarga kelas={kelas} kelamin={kelamin} /> : null}
       </div>
     </KartuBingkai>
   );

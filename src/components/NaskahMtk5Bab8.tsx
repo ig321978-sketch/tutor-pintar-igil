@@ -5,6 +5,8 @@ import GambarCerita from "@/components/GambarCerita";
 import HasilJawabanKuis from "@/components/HasilJawabanKuis";
 import KartuPoinPenting from "@/components/KartuPoinPenting";
 import { useKuisMateri } from "@/components/KuisMateriContext";
+import { PagerSubbab, TabSubbab } from "@/components/modul/EmpatHalamanMateri";
+import { useJudulDompetMateri } from "@/components/modul/KepalaDompetMateri";
 import MisiPenjagaKebun from "@/components/MisiPenjagaKebun";
 import { SLOT_AJUAN_SEBELUM_KARTU_D } from "@/components/NaskahMtk2Bab1";
 import SoalRekamSuara from "@/components/SoalRekamSuara";
@@ -425,95 +427,163 @@ const DATA_BURUNG = [
   { nama: "Jalak", nilai: 11, warna: "#86efac" },
 ];
 
-function KartuA({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminGuru }) {
-  const kartu = MODUL_MTK5_BAB8.kartu[0];
-  const kartuB = MODUL_MTK5_BAB8.kartu[1];
+const PILIH_TURUS = ["3", "4", "5"];
+const PILIH_SIAPA = ["Nadya", "sama", "Reza"];
+
+function Lambang({ judul, baris }: { judul: string; baris: string[] }) {
   return (
-    <KartuBingkai>
-      <KepalaKartu ikon="🐦🦉" judul={kartu.judul} anak="Kios burung kertas" kelas={kelas} kelamin={kelamin} cuplikan={cuplikanKalimat(kartu.voice[0] ?? [])} />
-      <div className="mt-4 space-y-8">
-        <Adegan judul="Mengumpulkan data" jenis="taman" kelas={kelas} kelamin={kelamin} penjelasan={["Data adalah kumpulan informasi.", "Catatan yang tercecer mudah terlewat.", "Turus membantu menghitung frekuensi."]}>
-          <SaklarSuaraPermainan />
+    <div className="rounded-2xl border-2 border-[#1C01A5]/20 bg-white p-3">
+      <p className="text-sm font-black text-[#1C01A5]">{judul}</p>
+      {baris.map((teks) => <p key={teks} className="mt-2 text-lg font-black text-[#1C01A5]">{teks}</p>)}
+    </div>
+  );
+}
+
+function SubbabData({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminGuru }) {
+  return (
+    <PagerSubbab
+      judul="Mengumpulkan data"
+      selesaiTeks="Empat halaman data selesai."
+      grup={[[idKuis("A", 0), idKuis("A", 1)], [idKuis("A", 8), idKuis("A", 9)], [idKuis("A", 3), idKuis("A", 10), idKuis("A", 11)], [idKuis("A", 2), idKuis("A", 12), idKuis("A", 13)]]}
+      isi={[
+        <>
+          <TombolVoiceMateriPai1 kelas={kelas} kelamin={kelamin} cuplikan={cuplikanKalimat(["Data adalah kumpulan informasi.", "Turus membantu menghitung frekuensi."])} />
           <Dialog nama="Nadya" anak="Besok ada pasar senja. Kita perlu tahu warna burung yang disukai teman." />
-          <GameEsSenja />
           <Dialog nama="Igil" anak="Data adalah kumpulan informasi. Ia bisa berupa kata, angka, atau gambar." />
-          <Dialog nama="Reza" anak="Aku tadi menulis di kertas kecil. Saat dihitung ulang, ada yang terlewat dan ada yang terhitung dua kali." />
-          <Dialog nama="Omar" anak="Lebih rapi kalau jenisnya dicatat dulu, lalu setiap pilihan dapat satu garis." />
+          <Dialog nama="Reza" anak="Catatan yang tercecer mudah terlewat. Ada yang terhitung dua kali." />
+          <Dialog nama="Omar" anak="Jenisnya dicatat dulu. Setiap pilihan dapat satu garis. Garis itu disebut turus." />
           <DaftarWarna />
-          <Dialog nama="Igil" anak="Garis itu disebut turus. Empat garis tegak ditambah satu garis miring menjadi satu kelompok. Kelompok itu bernilai 5, jadi lebih mudah dihitung." />
-          <Dialog nama="Nadya" anak="Contoh kecil: empat teman memilih merah. Turusnya empat garis tegak. Frekuensinya 4. Frekuensi adalah bilangan yang menyatakan berapa kali suatu hal terjadi." />
-          <TabelInfoGrafis
-            judul="Infografis: Dari catatan ke frekuensi"
-            kepala={["Langkah", "Cara", "Hasil"]}
-            baris={[
-              ["Catat jenis", "tulis semua pilihan", "data mentah"],
-              ["Turus", "4 tegak + 1 miring", "1 kelompok = 5"],
-              ["Frekuensi", "hitung tiap jenis", "bilangan banyaknya"],
-            ]}
-            kaki="Satu kejadian dicatat satu garis."
-          />
-          <GameTurus />
           <KuisSuara id={idKuis("A", 0)} pertanyaan="Pada daftar 12 teman, berapa frekuensi warna biru?" periksa={jawab5} petunjuk="Hitung chip biru satu per satu." benar="Biru muncul 5 kali." />
           <TulisBebas id={idKuis("A", 1)} judul="Warna kuning" visual={<DaftarWarna />} pertanyaan="Tulis frekuensi warna kuning." pesanSalah="Hitung chip kuning pada daftar yang sama." bantuan="Kuning muncul 3 kali." umpan="Frekuensi kuning adalah 3." periksa={jawab3} alias={["3", "tiga"]} konteks="Frekuensi warna kuning adalah 3." />
-          <Pilih id={idKuis("A", 2)} pertanyaan="Warna yang paling banyak dipilih adalah..." pilihan={[{ huruf: "A", teks: "kuning" }, { huruf: "B", teks: "biru" }, { huruf: "C", teks: "hijau" }, { huruf: "D", teks: "merah" }]} benar="B" umpan="Biru lebih banyak daripada kuning, hijau, dan merah." salah="Bandingkan jumlah tiap warna pada daftar." />
+        </>,
+        <>
+          <Dialog nama="Igil" anak="Empat garis tegak ditambah satu garis miring menjadi satu kelompok. Kelompok itu lebih mudah dihitung." />
+          <TabelInfoGrafis judul="Infografis: Dari catatan ke frekuensi" kepala={["Langkah", "Cara", "Hasil"]} baris={[["Catat jenis", "tulis semua pilihan", "data mentah"], ["Turus", "satu kejadian satu garis", "kelompok lebih mudah"], ["Frekuensi", "hitung tiap jenis", "bilangan banyaknya"]]} kaki="Satu kejadian dicatat satu garis." />
+          <DaftarWarna />
+          <KuisSuara id={idKuis("A", 8)} pertanyaan="Pada daftar yang sama, berapa frekuensi warna hijau?" periksa={jawab2} petunjuk="Hitung chip hijau." benar="Hijau muncul 2 kali." />
+          <TulisBebas id={idKuis("A", 9)} judul="Warna merah" visual={<Papan anak="daftar 12 teman yang sama" />} pertanyaan="Tulis frekuensi warna merah." pesanSalah="Hitung chip merah." bantuan="Merah muncul 2 kali." umpan="2." periksa={jawab2} alias={["2", "dua"]} konteks="Frekuensi warna merah adalah 2." />
+        </>,
+        <>
+          <GambarTaman jenis="taman" />
+          <GameTurus />
+          <GameEsSenja />
           <SusunToken id={idKuis("A", 3)} perintah="Susun langkah mengolah data." acak={["Hitung frekuensi", "Buat turus", "Catat jenisnya"]} benar={["Catat jenisnya", "Buat turus", "Hitung frekuensi"]} umpan="Jenis dicatat, turus dibuat, lalu frekuensi dihitung." pesanSalah="Mulai dari jenisnya, baru garis, baru jumlah." />
-        </Adegan>
-        <Adegan judul="Piktogram" jenis="piktogram" kelas={kelas} kelamin={kelamin} penjelasan={["Piktogram memakai gambar.", "Setiap gambar punya nilai kunci yang sama.", "Setengah gambar mewakili setengah kunci."]}>
+          <KuisBenarSalah id={idKuis("A", 10)} perintah="Pilih benar atau salah." baris={[{ teks: "Satu kejadian dicatat satu garis.", benar: true }, { teks: "Satu kelompok turus bernilai 4.", benar: false }, { teks: "Frekuensi menyatakan berapa kali sesuatu terjadi.", benar: true }]} umpan="Kelompok turus adalah empat garis tegak dan satu garis miring." />
+          <KuisCocok id={idKuis("A", 11)} perintah="Pasangkan turus dengan nilainya." baris={[{ kiri: "|||", pilihan: PILIH_TURUS, benar: "3" }, { kiri: "||||", pilihan: PILIH_TURUS, benar: "4" }, { kiri: "||||/", pilihan: PILIH_TURUS, benar: "5" }]} umpan="3, 4, dan 5." />
+        </>,
+        <>
+          <Dialog nama="Omar" anak="Lambang frekuensi adalah banyak kejadian. Lambang turus memakai garis." />
+          <Lambang judul="Lambang data" baris={["1 kejadian = 1 garis", "frekuensi = banyak kejadian"]} />
+          <Pilih id={idKuis("A", 2)} pertanyaan="Warna yang paling banyak dipilih adalah..." pilihan={[{ huruf: "A", teks: "kuning" }, { huruf: "B", teks: "biru" }, { huruf: "C", teks: "hijau" }, { huruf: "D", teks: "merah" }]} benar="B" umpan="Biru lebih banyak daripada kuning, hijau, dan merah." salah="Bandingkan jumlah tiap warna pada daftar." />
+          <Pilih id={idKuis("A", 12)} pertanyaan="Empat garis tegak, tanpa garis miring. Nilainya..." pilihan={[{ huruf: "A", teks: "4" }, { huruf: "B", teks: "5" }, { huruf: "C", teks: "3" }, { huruf: "D", teks: "9" }]} benar="A" umpan="Empat garis tegak bernilai 4. Kelompok baru lengkap jika ada garis miring." salah="Hitung garis tegaknya." />
+          <Pilih id={idKuis("A", 13)} pertanyaan="Catatan yang tercecer mudah..." pilihan={[{ huruf: "A", teks: "terlewat saat dihitung" }, { huruf: "B", teks: "selalu tepat" }, { huruf: "C", teks: "menjadi diagram" }, { huruf: "D", teks: "tidak perlu dikumpulkan" }]} benar="A" umpan="Catatan yang tercecer mudah terlewat atau terhitung dua kali." salah="Ingat cerita kertas kecil Reza." />
+        </>,
+      ]}
+    />
+  );
+}
+
+function SubbabGambar({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminGuru }) {
+  return (
+    <PagerSubbab
+      judul="Piktogram"
+      selesaiTeks="Empat halaman piktogram selesai."
+      grup={[[idKuis("A", 4), idKuis("A", 5)], [idKuis("B", 8), idKuis("B", 9)], [idKuis("A", 7), idKuis("B", 10), idKuis("B", 11)], [idKuis("A", 6), idKuis("B", 6), idKuis("B", 12)]]}
+      isi={[
+        <>
+          <TombolVoiceMateriPai1 kelas={kelas} kelamin={kelamin} cuplikan={cuplikanKalimat(["Piktogram memakai gambar.", "Setiap gambar punya nilai kunci yang sama."])} />
           <Dialog nama="Reza" anak="Angka di tabel terasa sepi. Aku ingin tamu melihat burungnya." />
           <Dialog nama="Igil" anak="Itu piktogram. Setiap gambar mewakili nilai yang sama. Nilai itu disebut kunci." />
-          <Papan anak={"Kunci: 1 burung = 4 tamu\nSenin: 16 tamu  →  4 burung"} />
-          <Dialog nama="Omar" anak="Enam tamu belum cukup untuk dua burung. Satu burung penuh mewakili 4. Setengah burung mewakili 2. Jadi 6 tamu digambar 1 burung dan setengah." />
+          <Papan anak={"Kunci: 1 burung = 4 tamu\nSenin memakai beberapa burung penuh"} />
+          <Dialog nama="Omar" anak="Setengah burung mewakili setengah kunci. Sisa yang belum satu burung penuh digambar setengah." />
           <Dialog nama="Nadya" anak="Kalau gambarnya terlalu banyak, orang mengira tamunya lebih banyak." />
-          <TabelInfoGrafis
-            judul="Infografis: Kunci piktogram"
-            kepala={["Gambar", "Arti", "Contoh"]}
-            baris={[
-              ["1 burung", "4 tamu", "nilai kunci"],
-              ["setengah burung", "2 tamu", "setengah dari 4"],
-              ["4 burung", "16 tamu", "4 kali 4"],
-            ]}
-            kaki="Kunci yang sama dipakai untuk semua hari."
-          />
-          <GamePiktogram />
           <KuisSuara id={idKuis("A", 4)} pertanyaan="Kunci: 1 burung = 4 tamu. Ada 6 burung. Berapa jumlah tamunya?" periksa={jawab24} petunjuk="Kalikan banyak burung dengan kunci." benar="6 kali 4 sama dengan 24." />
           <TulisBebas id={idKuis("A", 5)} judul="Gambar penuh" visual={<Papan anak="Kunci: 1 burung = 4 tamu. Ada 10 tamu." />} pertanyaan="Tulis banyak gambar penuhnya saja." pesanSalah="Bagi 10 dengan 4. Sisanya belum satu gambar penuh." bantuan="10 dibagi 4 sama dengan 2 gambar penuh." umpan="Gambar penuhnya 2. Sisa 2 tamu baru setengah gambar." periksa={jawab2} alias={["2", "dua"]} konteks="Sepuluh tamu dengan kunci 4 menghasilkan 2 gambar penuh." />
-          <Pilih id={idKuis("A", 6)} pertanyaan="Kunci: 1 burung = 4 tamu. Ada 12 tamu. Gambar yang benar adalah..." pilihan={[{ huruf: "A", teks: "12 burung" }, { huruf: "B", teks: "3 burung" }, { huruf: "C", teks: "4 burung" }, { huruf: "D", teks: "1 burung" }]} benar="B" umpan="12 dibagi 4 sama dengan 3 burung." salah="Bagi jumlah tamu dengan nilai kunci." />
+        </>,
+        <>
+          <TabelInfoGrafis judul="Infografis: Kunci piktogram" kepala={["Gambar", "Arti", "Cara"]} baris={[["1 burung", "nilai kunci", "sama untuk semua hari"], ["setengah burung", "setengah kunci", "sisa yang belum penuh"], ["banyak burung", "kali kunci", "hitung jumlahnya"]]} kaki="Kunci yang sama dipakai untuk semua hari." />
+          <KuisSuara id={idKuis("B", 8)} pertanyaan="Kunci: 1 burung = 5 tamu. Ada 3 burung. Berapa jumlah tamunya?" periksa={jawab15} petunjuk="Kalikan banyak burung dengan kunci." benar="3 kali 5 sama dengan 15." />
+          <TulisBebas id={idKuis("B", 9)} judul="Satu burung dan setengah" visual={<Papan anak="Kunci: 1 burung = 4 tamu" />} pertanyaan="Tulis jumlah tamunya." pesanSalah="Setengah burung adalah setengah dari 4." bantuan="4 ditambah 2." umpan="6 tamu." periksa={jawab6} alias={["6", "enam"]} konteks="Satu burung dan setengah mewakili 6 tamu." />
+        </>,
+        <>
+          <GambarTaman jenis="piktogram" />
+          <GamePiktogram />
           <KuisCocok id={idKuis("A", 7)} perintah="Kunci tetap 1 burung = 4 tamu. Pasangkan jumlah tamu dengan banyak burung." baris={[{ kiri: "8 tamu", pilihan: PASANG_TAMU, benar: "2" }, { kiri: "12 tamu", pilihan: PASANG_TAMU, benar: "3" }, { kiri: "20 tamu", pilihan: PASANG_TAMU, benar: "5" }]} umpan="8 menjadi 2, 12 menjadi 3, dan 20 menjadi 5." />
-        </Adegan>
-        <Adegan judul="Diagram batang" jenis="batang" kelas={kelas} kelamin={kelamin} penjelasan={["Tinggi atau panjang batang harus sesuai angka.", "Skala yang berbeda tidak dibandingkan dari ukuran gambar.", "Diagram ganda butuh kategori dan skala yang sama."]}>
-          <Dialog nama="Omar" anak="Aku membuat persegi panjang. Tinggi batang harus ikut angka, tidak dikira-kira." />
-          <BatangTegak judul="Tamu kios, skala 0 sampai 20" data={DATA_WAKTU} />
-          <Dialog nama="Nadya" anak="Siang paling tinggi. Angkanya 16. Pagi 10 dan sore 12 lebih pendek." />
-          <BatangDatar data={DATA_WAKTU} />
-          <Dialog nama="Reza" anak="Saat batang dibaringkan, siang tetap yang paling panjang. Angka terbesar tidak berubah." />
-          <GameBatang />
-          <BatangTegak judul="Burung yang hinggap, skala 0 sampai 20" data={DATA_BURUNG} />
-          <KuisSuara id={idKuis("B", 0)} pertanyaan="Pada diagram burung yang hinggap, burung apa yang paling banyak?" periksa={jawabPerkutut} petunjuk="Cari batang yang paling tinggi." benar="Perkutut paling banyak, yaitu 15." />
-          <KuisSuara id={idKuis("B", 1)} pertanyaan="Berapa selisih perkutut dan merpati?" periksa={jawab6} petunjuk="Kurangkan angka yang lebih kecil dari yang lebih besar." benar="15 dikurangi 9 sama dengan 6." />
-          <Dialog nama="Igil" anak="Dua diagram bisa menulis angka yang sama, tetapi gambarnya beda tinggi jika skalanya beda. Bandingkan angkanya." />
-          <Pilih id={idKuis("B", 4)} pertanyaan="Dua diagram sama-sama menulis 9. Skala pertama sampai 10, skala kedua sampai 30. Banyak pengunjungnya..." visual={<GameSkalaMini />} pilihan={[{ huruf: "A", teks: "lebih banyak pada diagram yang batangnya lebih tinggi" }, { huruf: "B", teks: "sama, yaitu 9" }, { huruf: "C", teks: "lebih banyak pada skala yang lebih besar" }, { huruf: "D", teks: "tidak bisa diketahui" }]} benar="B" umpan="Keduanya 9. Skala mengubah tinggi gambar, bukan jumlahnya." salah="Baca angka di batang, bukan tinggi gambarnya." />
-          <GameSkala />
-          <Dialog nama="Nadya" anak="Aku dan Reza ingin satu diagram. Kategorinya hari yang sama, skalanya juga sama." />
-          <BatangGanda />
-          <Dialog nama="Omar" anak="Lihat Selasa. Dua batang sama tinggi. Keduanya 5." />
-          <Pilih id={idKuis("B", 3)} pertanyaan="Pada hari Rabu, burung siapa yang lebih banyak?" pilihan={[{ huruf: "A", teks: "Nadya, burung biru" }, { huruf: "B", teks: "Reza, burung kuning" }, { huruf: "C", teks: "sama banyak" }, { huruf: "D", teks: "tidak ada batang Rabu" }]} benar="B" umpan="Rabu: kuning 8, biru 3. Kuning lebih banyak." salah="Bandingkan dua batang pada hari Rabu saja." />
-          <TulisBebas id={idKuis("B", 2)} judul="Jumlah Kamis" visual={<BatangGanda />} pertanyaan="Tulis jumlah burung Nadya dan Reza pada hari Kamis." pesanSalah="Jumlahkan dua batang Kamis." bantuan="7 ditambah 6." umpan="7 + 6 = 13." periksa={jawab13} alias={["13", "tiga belas"]} konteks="Jumlah burung pada Kamis adalah 13." />
-          <KuisBenarSalah id={idKuis("B", 5)} perintah="Pilih benar atau salah." baris={[{ teks: "Tinggi batang boleh tidak sesuai angkanya.", benar: false }, { teks: "Diagram batang datar tetap memakai skala.", benar: true }, { teks: "Dua diagram berskala berbeda boleh dibandingkan hanya dari panjang gambarnya.", benar: false }]} umpan="Batang harus sesuai angka. Skala yang berbeda tidak dibandingkan dari gambarnya." />
+          <SusunToken id={idKuis("B", 10)} perintah="Susun cara membaca piktogram." acak={["Kalikan dengan kunci", "Tulis kunci", "Hitung gambar"]} benar={["Tulis kunci", "Hitung gambar", "Kalikan dengan kunci"]} umpan="Tulis kunci, hitung gambar, lalu kalikan." pesanSalah="Mulai dari kunci." />
+          <KuisBenarSalah id={idKuis("B", 11)} perintah="Pilih benar atau salah." baris={[{ teks: "Setengah gambar mewakili setengah kunci.", benar: true }, { teks: "Kunci boleh berbeda pada setiap baris dalam satu piktogram.", benar: false }, { teks: "Gambar yang terlalu banyak membuat jumlahnya terkesan lebih besar.", benar: true }]} umpan="Dalam satu piktogram, kunci gambarnya sama." />
+        </>,
+        <>
+          <Dialog nama="Igil" anak="Lambang piktogram: banyak gambar dikali kunci." />
+          <Lambang judul="Lambang piktogram" baris={["banyak gambar × kunci", "setengah gambar = setengah kunci"]} />
+          <Pilih id={idKuis("A", 6)} pertanyaan="Kunci: 1 burung = 4 tamu. Ada 12 tamu. Gambar yang benar adalah..." pilihan={[{ huruf: "A", teks: "12 burung" }, { huruf: "B", teks: "3 burung" }, { huruf: "C", teks: "4 burung" }, { huruf: "D", teks: "1 burung" }]} benar="B" umpan="12 dibagi 4 sama dengan 3 burung." salah="Bagi jumlah tamu dengan nilai kunci." />
           <Pilih id={idKuis("B", 6)} pertanyaan="Dua data boleh digabung menjadi diagram batang ganda jika..." pilihan={[{ huruf: "A", teks: "angkanya kebetulan sama" }, { huruf: "B", teks: "kategorinya sama dan skalanya sama" }, { huruf: "C", teks: "warnanya sama" }, { huruf: "D", teks: "tidak perlu kategori" }]} benar="B" umpan="Kategori yang sama dan skala yang sama membuat perbandingan adil." salah="Panjang batang hanya adil pada skala yang sama." />
-          <TabelInfoGrafis
-            judul="Infografis: Tiga diagram batang"
-            kepala={["Jenis", "Yang dilihat", "Syarat"]}
-            baris={[
-              ["Tegak", "tinggi batang", "sesuai skala"],
-              ["Datar", "panjang batang", "sesuai skala"],
-              ["Ganda", "dua warna", "kategori dan skala sama"],
-            ]}
-            kaki="Selasa pada diagram ganda sama-sama 5."
-          />
-          <Dialog nama="Reza" anak="Data ini juga dipakai untuk es. Rasa yang terus naik perlu lebih banyak. Rasa yang terus turun dikurangi." />
+          <Pilih id={idKuis("B", 12)} pertanyaan="Setengah dari kunci 4 adalah..." pilihan={[{ huruf: "A", teks: "2" }, { huruf: "B", teks: "4" }, { huruf: "C", teks: "8" }, { huruf: "D", teks: "1" }]} benar="A" umpan="Setengah dari 4 adalah 2." salah="Bagi 4 dengan 2." />
+        </>,
+      ]}
+    />
+  );
+}
+
+function SubbabBatang({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminGuru }) {
+  return (
+    <PagerSubbab
+      judul="Diagram batang"
+      selesaiTeks="Empat halaman diagram batang selesai."
+      grup={[[idKuis("B", 0), idKuis("B", 2)], [idKuis("B", 1), idKuis("B", 13)], [idKuis("B", 5), idKuis("B", 14), idKuis("B", 15)], [idKuis("B", 4), idKuis("B", 3), idKuis("B", 7)]]}
+      isi={[
+        <>
+          <TombolVoiceMateriPai1 kelas={kelas} kelamin={kelamin} cuplikan={cuplikanKalimat(["Tinggi batang harus sesuai angka.", "Diagram ganda butuh kategori dan skala yang sama."])} />
+          <Dialog nama="Omar" anak="Tinggi batang harus ikut angka. Tidak dikira-kira." />
+          <Dialog nama="Nadya" anak="Batang yang paling tinggi adalah yang angkanya paling besar." />
+          <Dialog nama="Reza" anak="Saat batang dibaringkan, urutannya tetap. Angka terbesar tidak berubah." />
+          <BatangTegak judul="Burung yang hinggap, skala 0 sampai 20" data={DATA_BURUNG} />
+          <BatangGanda />
+          <KuisSuara id={idKuis("B", 0)} pertanyaan="Pada diagram burung yang hinggap, burung apa yang paling banyak?" periksa={jawabPerkutut} petunjuk="Cari batang yang paling tinggi." benar="Perkutut paling banyak, yaitu 15." />
+          <TulisBebas id={idKuis("B", 2)} judul="Jumlah Kamis" visual={<BatangGanda />} pertanyaan="Tulis jumlah burung Nadya dan Reza pada hari Kamis." pesanSalah="Jumlahkan dua batang Kamis." bantuan="7 ditambah 6." umpan="7 + 6 = 13." periksa={jawab13} alias={["13", "tiga belas"]} konteks="Jumlah burung pada Kamis adalah 13." />
+        </>,
+        <>
+          <Dialog nama="Igil" anak="Dua diagram bisa menulis angka yang sama, tetapi gambarnya beda tinggi jika skalanya beda. Bandingkan angkanya." />
+          <TabelInfoGrafis judul="Infografis: Tiga diagram batang" kepala={["Jenis", "Yang dilihat", "Syarat"]} baris={[["Tegak", "tinggi batang", "sesuai skala"], ["Datar", "panjang batang", "sesuai skala"], ["Ganda", "dua warna", "kategori dan skala sama"]]} kaki="Baca angkanya, bukan kesan tinggi gambar." />
+          <BatangTegak judul="Burung yang hinggap" data={DATA_BURUNG} />
+          <BatangTegak judul="Tamu kios, skala 0 sampai 20" data={DATA_WAKTU} />
+          <KuisSuara id={idKuis("B", 1)} pertanyaan="Berapa selisih perkutut dan merpati?" periksa={jawab6} petunjuk="Kurangkan angka yang lebih kecil dari yang lebih besar." benar="15 dikurangi 9 sama dengan 6." />
+          <TulisBebas id={idKuis("B", 13)} judul="Selisih sore dan pagi" visual={<Papan anak="tamu kios · sore dan pagi" />} pertanyaan="Tulis selisih pengunjung sore dan pagi." pesanSalah="Kurangkan angka yang lebih kecil." bantuan="Sore 12. Pagi 10." umpan="2." periksa={jawab2} alias={["2", "dua"]} konteks="Selisih sore dan pagi adalah 2." />
+        </>,
+        <>
+          <GambarTaman jenis="batang" />
+          <BatangDatar data={DATA_WAKTU} />
+          <GameBatang />
+          <GameSkala />
+          <KuisBenarSalah id={idKuis("B", 5)} perintah="Pilih benar atau salah." baris={[{ teks: "Tinggi batang boleh tidak sesuai angkanya.", benar: false }, { teks: "Diagram batang datar tetap memakai skala.", benar: true }, { teks: "Dua diagram berskala berbeda boleh dibandingkan hanya dari panjang gambarnya.", benar: false }]} umpan="Batang harus sesuai angka. Skala yang berbeda tidak dibandingkan dari gambarnya." />
+          <SusunToken id={idKuis("B", 14)} perintah="Susun cara membaca diagram." acak={["Bandingkan", "Baca angka", "Baca skala"]} benar={["Baca skala", "Baca angka", "Bandingkan"]} umpan="Baca skala, baca angka, lalu bandingkan." pesanSalah="Mulai dari skalanya." />
+          <KuisCocok id={idKuis("B", 15)} perintah="Senin biru 6 dan kuning 2. Selasa keduanya 5. Kamis biru 7 dan kuning 6. Siapa yang lebih banyak?" baris={[{ kiri: "Senin", pilihan: PILIH_SIAPA, benar: "Nadya" }, { kiri: "Selasa", pilihan: PILIH_SIAPA, benar: "sama" }, { kiri: "Kamis", pilihan: PILIH_SIAPA, benar: "Nadya" }]} umpan="Nadya, sama, dan Nadya. Biru adalah Nadya." />
+        </>,
+        <>
+          <Dialog nama="Omar" anak="Lambang diagram membaca angka pada skala, lalu membandingkan." />
+          <Lambang judul="Lambang diagram" baris={["tinggi mengikuti skala", "baca angka pada batang"]} />
+          <Pilih id={idKuis("B", 4)} pertanyaan="Dua diagram sama-sama menulis 9. Skala pertama sampai 10, skala kedua sampai 30. Banyak pengunjungnya..." visual={<GameSkalaMini />} pilihan={[{ huruf: "A", teks: "lebih banyak pada diagram yang batangnya lebih tinggi" }, { huruf: "B", teks: "sama, yaitu 9" }, { huruf: "C", teks: "lebih banyak pada skala yang lebih besar" }, { huruf: "D", teks: "tidak bisa diketahui" }]} benar="B" umpan="Keduanya 9. Skala mengubah tinggi gambar, bukan jumlahnya." salah="Baca angka di batang, bukan tinggi gambarnya." />
+          <Pilih id={idKuis("B", 3)} pertanyaan="Pada hari Rabu, burung siapa yang lebih banyak?" visual={<BatangGanda />} pilihan={[{ huruf: "A", teks: "Nadya, burung biru" }, { huruf: "B", teks: "Reza, burung kuning" }, { huruf: "C", teks: "sama banyak" }, { huruf: "D", teks: "tidak ada batang Rabu" }]} benar="B" umpan="Rabu: kuning 8, biru 3. Kuning lebih banyak." salah="Bandingkan dua batang pada hari Rabu saja." />
           <Pilih id={idKuis("B", 7)} pertanyaan="Es mana yang perlu ditambah untuk besok sore?" visual={<TabelEs />} pilihan={[{ huruf: "A", teks: "melon, karena dulu angkanya besar" }, { huruf: "B", teks: "stroberi, karena terus naik" }, { huruf: "C", teks: "keduanya sama" }, { huruf: "D", teks: "tutup kios es" }]} benar="B" umpan="Stroberi naik. Melon turun, jadi melon dikurangi." salah="Lihat arah angka dari sore I sampai sore IV." />
-          <p className="text-xs font-bold text-slate-500">{kartuB.judul}</p>
-        </Adegan>
+        </>,
+      ]}
+    />
+  );
+}
+
+function KartuA({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminGuru }) {
+  const kartu = MODUL_MTK5_BAB8.kartu[0];
+  const [tab, setTab] = useState(0);
+  const judulSubbab = ["Mengumpulkan data", "Piktogram", "Diagram batang"];
+  useJudulDompetMateri(judulSubbab[tab] ?? judulSubbab[0]);
+  return (
+    <KartuBingkai>
+      <KepalaKartu ikon="🐦🦉" judul={kartu.judul} anak="Tiga sub-bab di taman burung" kelas={kelas} kelamin={kelamin} cuplikan={cuplikanKalimat(kartu.voice[0] ?? [])} />
+      <div className="mt-4 space-y-4">
+        <SaklarSuaraPermainan />
+        <TabSubbab label={["Sub-Bab A", "Sub-Bab B", "Sub-Bab C"]} aktif={tab} onPilih={setTab} />
+        {tab === 0 ? <SubbabData kelas={kelas} kelamin={kelamin} /> : null}
+        {tab === 1 ? <SubbabGambar kelas={kelas} kelamin={kelamin} /> : null}
+        {tab === 2 ? <SubbabBatang kelas={kelas} kelamin={kelamin} /> : null}
       </div>
     </KartuBingkai>
   );

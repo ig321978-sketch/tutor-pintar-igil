@@ -5,6 +5,8 @@ import GambarCerita from "@/components/GambarCerita";
 import HasilJawabanKuis from "@/components/HasilJawabanKuis";
 import KartuPoinPenting from "@/components/KartuPoinPenting";
 import { useKuisMateri } from "@/components/KuisMateriContext";
+import { PagerSubbab, TabSubbab } from "@/components/modul/EmpatHalamanMateri";
+import { useJudulDompetMateri } from "@/components/modul/KepalaDompetMateri";
 import MisiPenjagaKebun from "@/components/MisiPenjagaKebun";
 import { SLOT_AJUAN_SEBELUM_KARTU_D } from "@/components/NaskahMtk2Bab1";
 import SoalRekamSuara from "@/components/SoalRekamSuara";
@@ -317,141 +319,203 @@ function RakContoh() {
   );
 }
 
+const PILIH_TANDA = ["lebih besar", "lebih kecil", "sama"];
+const PILIH_UANG = ["600.000", "2.000", "50.000"];
+
+function rapat(teks: string) {
+  return teks.toLowerCase().replace(/[^a-z0-9]/g, "");
+}
+
+function baca170008(teks: string) {
+  const angka = teks.replace(/\D/g, "");
+  if (angka === "170008") return true;
+  const k = teks.toLowerCase();
+  if (k.includes("tujuh ratus") || k.includes("delapan puluh") || k.includes("delapan ratus") || k.includes("delapan belas")) return false;
+  return k.includes("seratus tujuh puluh ribu") && (k.trim().endsWith("delapan") || k.includes("ribu delapan"));
+}
+
+function tulis305040(teks: string) {
+  if (rapat(teks).includes("305040") && !rapat(teks).includes("3050400")) return teks.replace(/\D/g, "") === "305040";
+  const k = teks.toLowerCase();
+  return k.includes("tiga ratus lima ribu") && k.includes("empat puluh") && !k.includes("lima puluh");
+}
+
+function lebih430000(teks: string) {
+  if (teks.replace(/\D/g, "").includes("430000") && !teks.replace(/\D/g, "").includes("340000")) return true;
+  const k = teks.toLowerCase();
+  if (k.includes("tiga ratus empat puluh") && !k.includes("empat ratus tiga puluh")) return false;
+  return k.includes("empat ratus tiga puluh");
+}
+
+function tulis150000(teks: string) {
+  if (teks.replace(/\D/g, "") === "150000") return true;
+  const k = teks.toLowerCase();
+  return k.includes("seratus lima puluh ribu") && !k.includes("lima ratus");
+}
+
+function jawab320000(teks: string) {
+  if (teks.replace(/\D/g, "") === "320000") return true;
+  const k = teks.toLowerCase();
+  return k.includes("tiga ratus dua puluh ribu");
+}
+
+function tulis106000(teks: string) {
+  if (teks.replace(/\D/g, "") === "106000") return true;
+  const k = teks.toLowerCase();
+  return k.includes("seratus enam ribu") && !k.includes("enam puluh") && !k.includes("enam ratus");
+}
+
+function Lambang({ judul, baris }: { judul: string; baris: string[] }) {
+  return (
+    <div className="rounded-2xl border-2 border-[#1C01A5]/20 bg-white p-3">
+      <p className="text-sm font-black text-[#1C01A5]">{judul}</p>
+      {baris.map((teks) => <p key={teks} className="mt-2 text-lg font-black text-[#1C01A5]">{teks}</p>)}
+    </div>
+  );
+}
+
+function SubbabBaca({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminGuru }) {
+  return (
+    <PagerSubbab
+      judul="Membaca, menulis, dan nilai tempat"
+      selesaiTeks="Empat halaman nilai tempat selesai."
+      grup={[[idKuis("A", 0), idKuis("A", 1)], [idKuis("A", 6), idKuis("A", 7)], [idKuis("A", 5), idKuis("A", 4), idKuis("A", 8)], [idKuis("A", 2), idKuis("A", 3), idKuis("A", 9)]]}
+      isi={[
+        <>
+          <TombolVoiceMateriPai1 kelas={kelas} kelamin={kelamin} cuplikan={cuplikanKalimat(["Bilangan cacah sampai satu juta memakai enam rak.", "Titik memisahkan kelompok ribuan."])} />
+          <Dialog nama="Saka" anak="Tiket kapal ini tertulis 486.275. Angkanya panjang sekali." />
+          <Dialog nama="Leni" anak="Ada titik di tengah. Kelompok kiri 486. Kelompok kanan 275." />
+          <Dialog nama="Igil" anak="Baca kiri dulu, sebut ribu, lalu baca kanan. Nol di tengah tidak selalu disebut." />
+          <Dialog nama="Farhan" anak="Satu juta ditulis 1.000.000. Angka 1 diikuti enam nol." />
+          <RakContoh />
+          <KuisSuara id={idKuis("A", 0)} pertanyaan="Bacalah bilangan 250.014." periksa={baca250014} petunjuk="Baca kelompok kiri, sebut ribu, lalu baca kelompok kanan." benar="Dua ratus lima puluh ribu empat belas." />
+          <TulisBebas id={idKuis("A", 1)} judul="Menulis bilangan" pertanyaan="Tuliskan angka untuk: empat ratus enam ribu tiga puluh." pesanSalah="Pakai titik ribuan. Rak yang kosong ditulis 0." bantuan="Enam rak: 4, 0, 6, lalu 0, 3, 0." umpan="406.030" periksa={tulis406030} alias={["406030", "406.030"]} konteks="Empat ratus enam ribu tiga puluh ditulis 406.030." />
+        </>,
+        <>
+          <Dialog nama="Igil" anak="Nama rak disebut nilai tempat. Besar pada rak itu disebut nilai angka." />
+          <TabelInfoGrafis judul="Infografis: enam rak pada 486.275" kepala={["Rak", "Angka", "Nilai angka"]} baris={[["Ratus ribuan", "4", "400.000"], ["Puluh ribuan", "8", "80.000"], ["Ribuan", "6", "6.000"], ["Ratusan", "2", "200"], ["Puluhan", "7", "70"], ["Satuan", "5", "5"]]} kaki="Titik memisahkan kelompok ribuan. 1.000.000 dibaca satu juta." />
+          <KuisSuara id={idKuis("A", 6)} pertanyaan="Bacalah bilangan 170.008." periksa={baca170008} petunjuk="Baca kelompok kiri, sebut ribu, lalu angka di kanan." benar="Seratus tujuh puluh ribu delapan." />
+          <TulisBebas id={idKuis("A", 7)} judul="Menulis 305.040" pertanyaan="Tuliskan angka untuk: tiga ratus lima ribu empat puluh." pesanSalah="Rak yang kosong ditulis 0." bantuan="3, 0, 5, lalu 0, 4, 0." umpan="305.040" periksa={tulis305040} alias={["305040", "305.040"]} konteks="Tiga ratus lima ribu empat puluh ditulis 305.040." />
+        </>,
+        <>
+          <GambarPasar jenis="rak" />
+          <GameSensus />
+          <GamePutar />
+          <GameDetektor />
+          <SusunToken id={idKuis("A", 5)} perintah="Susun cara membaca bilangan yang ada titik ribuannya." acak={["Baca tiga angka kanan", "Lihat tiga angka kiri", "Sebut kata ribu"]} benar={["Lihat tiga angka kiri", "Sebut kata ribu", "Baca tiga angka kanan"]} umpan="Kiri dulu, sebut ribu, baru kanan." pesanSalah="Mulai dari kelompok di kiri titik." />
+          <KuisCocok id={idKuis("A", 4)} perintah="Pasangkan angka 4 dengan nilai angkanya." baris={[{ kiri: "4 pada 140.000", pilihan: PASANG_EMPAT, benar: "40.000" }, { kiri: "4 pada 14.000", pilihan: PASANG_EMPAT, benar: "4.000" }, { kiri: "4 pada 1.400", pilihan: PASANG_EMPAT, benar: "400" }]} umpan="40.000, 4.000, dan 400." />
+          <KuisBenarSalah id={idKuis("A", 8)} perintah="Pilih benar atau salah." baris={[{ teks: "Titik pada 486.275 memisahkan kelompok ribuan.", benar: true }, { teks: "Nol di tengah selalu diucapkan.", benar: false }, { teks: "1.000.000 dibaca satu juta.", benar: true }]} umpan="Nol di tengah tidak selalu disebut." />
+        </>,
+        <>
+          <Dialog nama="Leni" anak="Lambang nilai angka mengikuti rak tempat angka itu berdiri." />
+          <Lambang judul="Lambang rak" baris={["nilai tempat = nama rak", "nilai angka = besar pada rak itu"]} />
+          <Pilih id={idKuis("A", 2)} pertanyaan="Nilai angka 3 pada 739.254 adalah..." pilihan={[{ huruf: "A", teks: "3" }, { huruf: "B", teks: "300" }, { huruf: "C", teks: "3.000" }, { huruf: "D", teks: "30.000" }]} benar="D" umpan="Angka 3 berdiri di rak puluh ribuan. Nilainya 30.000." salah="Hitung dari kiri: 7, 3, 9, 2, 5, 4. Rak kedua adalah puluh ribuan." />
+          <Pilih id={idKuis("A", 3)} pertanyaan="Angka 9 pada 902.180 menempati rak..." pilihan={[{ huruf: "A", teks: "satuan" }, { huruf: "B", teks: "puluh ribuan" }, { huruf: "C", teks: "ratus ribuan" }, { huruf: "D", teks: "ribuan" }]} benar="C" umpan="Angka paling kiri pada bilangan enam rak adalah ratus ribuan." salah="Rak paling kiri untuk bilangan sampai 999.999 adalah ratus ribuan." />
+          <Pilih id={idKuis("A", 9)} pertanyaan="Nilai angka 5 pada 150.000 adalah..." pilihan={[{ huruf: "A", teks: "50.000" }, { huruf: "B", teks: "5.000" }, { huruf: "C", teks: "500" }, { huruf: "D", teks: "5" }]} benar="A" umpan="Angka 5 berdiri di rak puluh ribuan. Nilainya 50.000." salah="Lihat rak kedua dari kiri." />
+        </>,
+      ]}
+    />
+  );
+}
+
+function SubbabUrut({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminGuru }) {
+  return (
+    <PagerSubbab
+      judul="Mengurutkan dan membandingkan"
+      selesaiTeks="Empat halaman membandingkan selesai."
+      grup={[[idKuis("B", 0), idKuis("B", 1)], [idKuis("B", 8), idKuis("B", 9)], [idKuis("B", 10), idKuis("B", 11), idKuis("B", 12)], [idKuis("B", 2), idKuis("B", 3), idKuis("B", 13)]]}
+      isi={[
+        <>
+          <TombolVoiceMateriPai1 kelas={kelas} kelamin={kelamin} cuplikan={cuplikanKalimat(["Dua bilangan dibandingkan dari rak paling kiri.", "Jika rak kiri sama, geser ke kanan."])} />
+          <Dialog nama="Leni" anak="Ada dua tiket. Satu 320.000. Satu lagi 280.000. Mana yang lebih mahal?" />
+          <Dialog nama="Saka" anak="Aku lihat rak paling kiri. 3 lebih besar daripada 2, jadi 320.000 lebih mahal." />
+          <Dialog nama="Igil" anak="Kalau rak kiri sama, geser ke kanan sampai ada angka yang berbeda." />
+          <Dialog nama="Farhan" anak="Kalau semua rak sama, dua bilangan itu sama besar." />
+          <KuisSuara id={idKuis("B", 0)} pertanyaan="Mana yang lebih besar, 681.240 atau 618.240?" periksa={lebih681240} petunjuk="Rak ratus ribuan sama. Geser ke rak puluh ribuan." benar="681.240 lebih besar karena 8 lebih besar daripada 1." />
+          <TulisBebas id={idKuis("B", 1)} judul="Bilangan tengah" visual={<Papan anak="200.500    205.000    250.000" />} pertanyaan="Tuliskan bilangan yang ada di tengah jika diurutkan dari yang terkecil." pesanSalah="Bandingkan rak ratus ribuan dulu, lalu puluh ribuan." bantuan="Yang terkecil 200.500. Yang terbesar 250.000." umpan="205.000" periksa={tulis205000} alias={["205000", "205.000"]} konteks="Bilangan tengahnya 205.000." />
+        </>,
+        <>
+          <TabelInfoGrafis judul="Infografis: membandingkan dari kiri" kepala={["Langkah", "Yang dicek", "Keputusan"]} baris={[["1", "Ratus ribuan", "angka lebih besar menang"], ["2", "Puluh ribuan", "geser ke sini jika kiri sama"], ["3", "Ribuan sampai satuan", "lanjut sampai ada yang beda"], ["4", "Semua rak sama", "dua bilangan sama besar"]]} kaki="Mulai dari rak paling kiri." />
+          <KuisSuara id={idKuis("B", 8)} pertanyaan="Mana yang lebih besar, 430.000 atau 340.000?" periksa={lebih430000} petunjuk="Lihat rak ratus ribuan." benar="430.000 lebih besar." />
+          <TulisBebas id={idKuis("B", 9)} judul="Tiket tengah" visual={<Papan anak="150.000    105.000    510.000" />} pertanyaan="Tuliskan bilangan yang ada di tengah jika diurutkan dari yang terkecil." pesanSalah="Bandingkan rak paling kiri dulu." bantuan="Yang terkecil 105.000. Yang terbesar 510.000." umpan="150.000" periksa={tulis150000} alias={["150000", "150.000"]} konteks="Bilangan tengahnya 150.000." />
+        </>,
+        <>
+          <GambarPasar jenis="tiket" />
+          <GameUrutHarga />
+          <GameGrafik />
+          <SusunToken id={idKuis("B", 10)} perintah="Susun dari yang paling kecil." acak={["320.000", "280.000", "300.000"]} benar={["280.000", "300.000", "320.000"]} umpan="280.000, lalu 300.000, lalu 320.000." pesanSalah="Mulai dari rak ratus ribuan yang paling kecil." />
+          <KuisBenarSalah id={idKuis("B", 11)} perintah="Pilih benar atau salah." baris={[{ teks: "320.000 lebih besar daripada 280.000.", benar: true }, { teks: "Jika semua rak sama, dua bilangan itu berbeda.", benar: false }, { teks: "Pembandingan dimulai dari rak paling kiri.", benar: true }]} umpan="Rak yang sama membuat dua bilangan sama besar." />
+          <KuisCocok id={idKuis("B", 12)} perintah="Pasangkan pasangan tiket dengan tandanya." baris={[{ kiri: "450.100 dibanding 450.010", pilihan: PILIH_TANDA, benar: "lebih besar" }, { kiri: "450.100 dibanding 450.100", pilihan: PILIH_TANDA, benar: "sama" }, { kiri: "450.010 dibanding 450.100", pilihan: PILIH_TANDA, benar: "lebih kecil" }]} umpan="Lebih besar, sama, dan lebih kecil." />
+        </>,
+        <>
+          <Dialog nama="Saka" anak="Lambang banding memakai rak kiri. Angka yang lebih besar memenangkan tiketnya." />
+          <Lambang judul="Lambang banding" baris={["banding dari kiri", "rak sama → geser ke kanan"]} />
+          <Pilih id={idKuis("B", 2)} pertanyaan="734.090 ... 734.900. Tanda yang tepat adalah..." pilihan={[{ huruf: "A", teks: "lebih besar" }, { huruf: "B", teks: "lebih kecil" }, { huruf: "C", teks: "sama dengan" }, { huruf: "D", teks: "tidak bisa dibanding" }]} benar="B" umpan="Rak ratusan 0 lebih kecil daripada 9. Jadi 734.090 lebih kecil." salah="Tiga rak kiri sama. Lihat rak ratusan." />
+          <Pilih id={idKuis("B", 3)} pertanyaan="Urutan dari yang termurah ke yang termahal untuk 190.000, 901.000, dan 109.000 adalah..." pilihan={[{ huruf: "A", teks: "901.000, 190.000, 109.000" }, { huruf: "B", teks: "109.000, 190.000, 901.000" }, { huruf: "C", teks: "190.000, 109.000, 901.000" }, { huruf: "D", teks: "109.000, 901.000, 190.000" }]} benar="B" umpan="1 lebih kecil daripada 9 pada rak ratus ribuan. Lalu 109.000 lebih kecil daripada 190.000." salah="Mulai dari rak paling kiri." />
+          <Pilih id={idKuis("B", 13)} pertanyaan="500.600 dibanding 500.060 adalah..." pilihan={[{ huruf: "A", teks: "lebih besar" }, { huruf: "B", teks: "lebih kecil" }, { huruf: "C", teks: "sama dengan" }, { huruf: "D", teks: "tidak bisa dibanding" }]} benar="A" umpan="Rak ratusan 6 lebih besar daripada 0." salah="Tiga rak kiri sama. Lihat rak ratusan." />
+        </>,
+      ]}
+    />
+  );
+}
+
+function SubbabSusun({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminGuru }) {
+  return (
+    <PagerSubbab
+      judul="Komposisi dan dekomposisi"
+      selesaiTeks="Empat halaman menyusun selesai."
+      grup={[[idKuis("B", 4), idKuis("B", 5)], [idKuis("B", 14), idKuis("B", 15)], [idKuis("B", 7), idKuis("B", 16), idKuis("B", 17)], [idKuis("B", 6), idKuis("B", 18), idKuis("B", 19)]]}
+      isi={[
+        <>
+          <TombolVoiceMateriPai1 kelas={kelas} kelamin={kelamin} cuplikan={cuplikanKalimat(["Menyusun berarti menjumlahkan nilai setiap lembar.", "Mengurai berarti memecah bilangan ke raknya."])} />
+          <Dialog nama="Farhan" anak="Aku punya 2 lembar seratus ribuan, 3 lembar sepuluh ribuan, dan 4 lembar seribuan." />
+          <Dialog nama="Leni" anak="Nilai lembar dijumlahkan. Rak yang kosong tetap nol dan tidak menambah jumlah." />
+          <Dialog nama="Igil" anak="Bilangan yang sudah tersusun bisa diurai kembali ke tiap rak." />
+          <Dialog nama="Saka" anak="Satu bilangan bisa disusun dengan banyak cara. Uraian rak adalah cara yang paling rapi." />
+          <Papan anak="2 lembar seratus ribuan · 3 lembar sepuluh ribuan · 4 lembar seribuan" />
+          <KuisSuara id={idKuis("B", 4)} pertanyaan="Berapa jumlah 4 ratus ribuan, 2 ribuan, dan 5 satuan?" periksa={jawab402005} petunjuk="Jumlahkan nilai setiap rak. Rak yang tidak disebut tetap nol." benar="402.005." />
+          <TulisBebas id={idKuis("B", 5)} judul="Menyusun lembar" pertanyaan="5 lembar seratus ribuan dan 2 lembar sepuluh ribuan. Tuliskan jumlahnya." pesanSalah="Kalikan dulu, lalu jumlahkan." bantuan="5 kali 100.000, lalu tambah 2 kali 10.000." umpan="520.000" periksa={tulis520000} alias={["520000", "520.000"]} konteks="Jumlahnya 520.000." />
+        </>,
+        <>
+          <TabelInfoGrafis judul="Infografis: susun dan urai 234.000" kepala={["Lembar", "Banyak", "Jumlah"]} baris={[["100.000", "2", "200.000"], ["10.000", "3", "30.000"], ["1.000", "4", "4.000"], ["Uraian rak", "2, 3, dan 4", "234.000"]]} kaki="Rak yang kosong tetap nol." />
+          <KuisSuara id={idKuis("B", 14)} pertanyaan="Berapa jumlah 3 ratus ribuan dan 2 puluh ribuan?" periksa={jawab320000} petunjuk="Jumlahkan 300.000 dan 20.000." benar="320.000." />
+          <TulisBebas id={idKuis("B", 15)} judul="Seratus ribuan dan seribuan" pertanyaan="1 lembar seratus ribuan dan 6 lembar seribuan. Tuliskan jumlahnya." pesanSalah="Kalikan dulu, lalu jumlahkan." bantuan="100.000 ditambah 6.000." umpan="106.000" periksa={tulis106000} alias={["106000", "106.000"]} konteks="Jumlahnya 106.000." />
+        </>,
+        <>
+          <GambarPasar jenis="uang" />
+          <GameDompet />
+          <GameUrai />
+          <KuisBenarSalah id={idKuis("B", 7)} perintah="Pilih benar atau salah." baris={[{ teks: "450.200 lebih besar daripada 450.020.", benar: true }, { teks: "3 ratus ribuan ditambah 4 puluhan sama dengan 300.040.", benar: true }, { teks: "999.999 lebih besar daripada 1.000.000.", benar: false }]} umpan="Satu juta lebih besar daripada 999.999." />
+          <SusunToken id={idKuis("B", 16)} perintah="Susun cara menyusun lembar uang." acak={["Tulis bilangan", "Kalikan tiap lembar", "Jumlahkan"]} benar={["Kalikan tiap lembar", "Jumlahkan", "Tulis bilangan"]} umpan="Kalikan tiap lembar, jumlahkan, lalu tulis bilangannya." pesanSalah="Mulai dari mengalikan tiap lembar." />
+          <KuisCocok id={idKuis("B", 17)} perintah="Pasangkan hitungan dengan hasilnya." baris={[{ kiri: "6 × 100.000", pilihan: PILIH_UANG, benar: "600.000" }, { kiri: "2 × 1.000", pilihan: PILIH_UANG, benar: "2.000" }, { kiri: "5 × 10.000", pilihan: PILIH_UANG, benar: "50.000" }]} umpan="600.000, 2.000, dan 50.000." />
+        </>,
+        <>
+          <Dialog nama="Farhan" anak="Lambang susun mengalikan banyak lembar dengan nilainya, lalu menjumlahkan." />
+          <Lambang judul="Lambang susun" baris={["banyak × nilai lembar", "urai ke tiap rak"]} />
+          <Pilih id={idKuis("B", 6)} pertanyaan="Uraian yang tepat untuk 810.006 adalah..." pilihan={[{ huruf: "A", teks: "8 ratus ribuan, 1 puluh ribuan, dan 6 satuan" }, { huruf: "B", teks: "8 puluh ribuan, 1 ribuan, dan 6 ratusan" }, { huruf: "C", teks: "8 ratusan, 1 puluhan, dan 6 satuan" }, { huruf: "D", teks: "81 ratus ribuan dan 6 puluhan" }]} benar="A" umpan="Rak kosong tetap nol. Yang berisi hanya ratus ribuan, puluh ribuan, dan satuan." salah="Lihat posisi 8, 1, dan 6 dari kiri." />
+          <Pilih id={idKuis("B", 18)} pertanyaan="2 × 100.000 + 5 × 100 = ..." pilihan={[{ huruf: "A", teks: "200.500" }, { huruf: "B", teks: "250.000" }, { huruf: "C", teks: "200.050" }, { huruf: "D", teks: "25.000" }]} benar="A" umpan="200.000 ditambah 500 sama dengan 200.500." salah="Lima lembar seratusan adalah 500, bukan 50.000." />
+          <Pilih id={idKuis("B", 19)} pertanyaan="Uraian yang tepat untuk 700.008 adalah..." pilihan={[{ huruf: "A", teks: "7 ratus ribuan dan 8 satuan" }, { huruf: "B", teks: "7 puluh ribuan dan 8 ratusan" }, { huruf: "C", teks: "7 ribuan dan 8 puluhan" }, { huruf: "D", teks: "70 ratus ribuan dan 8 ratusan" }]} benar="A" umpan="7 di rak paling kiri. 8 di rak satuan. Rak di antaranya nol." salah="Hitung rak dari kiri." />
+        </>,
+      ]}
+    />
+  );
+}
+
 function KartuA({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminGuru }) {
   const kartu = MODUL_MTK5_BAB9.kartu[0];
-  const banding = MODUL_MTK5_BAB9.kartu[1];
+  const [tab, setTab] = useState(0);
+  const judulSubbab = ["Membaca, menulis, dan nilai tempat", "Mengurutkan dan membandingkan", "Komposisi dan dekomposisi"];
+  useJudulDompetMateri(judulSubbab[tab] ?? judulSubbab[0]);
   return (
     <KartuBingkai>
-      <KepalaKartu ikon="⛵🦉" judul={kartu.judul} anak="Saka, Leni, Farhan, dan Igil" kelas={kelas} kelamin={kelamin} cuplikan={cuplikanKalimat(kartu.voice[0] ?? [])} />
-      <SaklarSuaraPermainan />
-      <Adegan
-        judul="Membaca, menulis, dan nilai tempat sampai 1.000.000"
-        jenis="rak"
-        kelas={kelas}
-        kelamin={kelamin}
-        penjelasan={[
-          "Bilangan cacah sampai satu juta memakai enam rak.",
-          "Titik memisahkan kelompok ribuan.",
-          "Baca kelompok kiri, sebut kata ribu, lalu baca kelompok kanan.",
-        ]}
-      >
-        <Dialog nama="Saka" anak="Tiket kapal ini tertulis 486.275. Angkanya panjang sekali, Igil." />
-        <Dialog nama="Leni" anak="Ada titik di tengah. Kelompok kiri 486. Kelompok kanan 275." />
-        <Dialog nama="Igil" anak="Baca kiri dulu, sebut ribu, lalu baca kanan. Jadinya empat ratus delapan puluh enam ribu dua ratus tujuh puluh lima." />
-        <Dialog nama="Farhan" anak="Satu juta ditulis 1.000.000. Angka 1 diikuti enam nol." />
-        <Dialog nama="Igil" anak="Nol di tengah tidak selalu disebut. 105.008 dibaca seratus lima ribu delapan." />
-        <RakContoh />
-        <Dialog nama="Igil" anak="Nama rak disebut nilai tempat. Besar uang pada rak itu disebut nilai angka. Angka 4 berdiri di rak ratus ribuan, jadi nilainya 400.000." />
-        <TabelInfoGrafis
-          judul="Infografis: enam rak pada 486.275"
-          kepala={["Rak", "Angka", "Nilai angka"]}
-          baris={[
-            ["Ratus ribuan", "4", "400.000"],
-            ["Puluh ribuan", "8", "80.000"],
-            ["Ribuan", "6", "6.000"],
-            ["Ratusan", "2", "200"],
-            ["Puluhan", "7", "70"],
-            ["Satuan", "5", "5"],
-          ]}
-          kaki="Nol di tengah tidak selalu diucapkan. 1.000.000 dibaca satu juta."
-        />
-        <GameSensus />
-        <GamePutar />
-        <GameDetektor />
-        <KuisSuara id={idKuis("A", 0)} pertanyaan="Bacalah bilangan 250.014." periksa={baca250014} petunjuk="Baca kelompok kiri, sebut ribu, lalu baca kelompok kanan." benar="Dua ratus lima puluh ribu empat belas." />
-        <TulisBebas id={idKuis("A", 1)} judul="Menulis bilangan" pertanyaan="Tuliskan angka untuk: empat ratus enam ribu tiga puluh." pesanSalah="Pakai titik ribuan. Rak yang kosong ditulis 0." bantuan="Enam rak: 4, 0, 6, lalu 0, 3, 0." umpan="406.030" periksa={tulis406030} alias={["406030", "406.030"]} konteks="Empat ratus enam ribu tiga puluh ditulis 406.030." />
-        <Pilih id={idKuis("A", 2)} pertanyaan="Nilai angka 3 pada 739.254 adalah..." pilihan={[{ huruf: "A", teks: "3" }, { huruf: "B", teks: "300" }, { huruf: "C", teks: "3.000" }, { huruf: "D", teks: "30.000" }]} benar="D" umpan="Angka 3 berdiri di rak puluh ribuan. Nilainya 30.000." salah="Hitung dari kiri: 7, 3, 9, 2, 5, 4. Rak kedua adalah puluh ribuan." />
-        <Pilih id={idKuis("A", 3)} pertanyaan="Angka 9 pada 902.180 menempati rak..." pilihan={[{ huruf: "A", teks: "satuan" }, { huruf: "B", teks: "puluh ribuan" }, { huruf: "C", teks: "ratus ribuan" }, { huruf: "D", teks: "ribuan" }]} benar="C" umpan="Angka paling kiri pada bilangan enam rak adalah ratus ribuan." salah="Rak paling kiri untuk bilangan sampai 999.999 adalah ratus ribuan." />
-        <KuisCocok
-          id={idKuis("A", 4)}
-          perintah="Pasangkan angka 4 dengan nilai angkanya."
-          baris={[
-            { kiri: "4 pada 140.000", pilihan: PASANG_EMPAT, benar: "40.000" },
-            { kiri: "4 pada 14.000", pilihan: PASANG_EMPAT, benar: "4.000" },
-            { kiri: "4 pada 1.400", pilihan: PASANG_EMPAT, benar: "400" },
-          ]}
-          umpan="Rak puluh ribuan bernilai 40.000, rak ribuan bernilai 4.000, dan rak ratusan bernilai 400."
-        />
-        <SusunToken
-          id={idKuis("A", 5)}
-          perintah="Susun cara membaca bilangan yang ada titik ribuannya."
-          acak={["Baca tiga angka kanan", "Lihat tiga angka kiri", "Sebut kata ribu"]}
-          benar={["Lihat tiga angka kiri", "Sebut kata ribu", "Baca tiga angka kanan"]}
-          umpan="Kiri dulu, sebut ribu, baru kanan."
-          pesanSalah="Mulai dari kelompok di kiri titik."
-        />
-      </Adegan>
-      <Adegan
-        judul="Mengurutkan dan membandingkan sampai 1.000.000"
-        jenis="tiket"
-        kelas={kelas}
-        kelamin={kelamin}
-        penjelasan={banding.voice[0] ?? []}
-      >
-        <Dialog nama="Leni" anak="Ada dua tiket. Satu 320.000. Satu lagi 280.000. Mana yang lebih mahal?" />
-        <Dialog nama="Saka" anak="Aku lihat rak paling kiri. 3 lebih besar daripada 2. Jadi 320.000 lebih mahal." />
-        <Dialog nama="Igil" anak="Kalau rak kiri sama, geser ke kanan sampai ada angka yang berbeda. Kalau semua rak sama, dua bilangan itu sama besar." />
-        <Papan anak={"320.000  >  280.000"} />
-        <TabelInfoGrafis
-          judul="Infografis: membandingkan dari kiri"
-          kepala={["Langkah", "Yang dicek", "Keputusan"]}
-          baris={[
-            ["1", "Ratus ribuan", "Angka lebih besar menang"],
-            ["2", "Puluh ribuan", "Geser ke sini jika kiri sama"],
-            ["3", "Ribuan sampai satuan", "Lanjut sampai ada yang beda"],
-            ["4", "Semua rak sama", "Dua bilangan sama besar"],
-          ]}
-          kaki="Contoh yang sudah dihitung: 320.000 lebih besar daripada 280.000."
-        />
-        <GameUrutHarga />
-        <GameGrafik />
-        <KuisSuara id={idKuis("B", 0)} pertanyaan="Mana yang lebih besar, 681.240 atau 618.240?" periksa={lebih681240} petunjuk="Rak ratus ribuan sama. Geser ke rak puluh ribuan." benar="681.240 lebih besar karena 8 lebih besar daripada 1." />
-        <TulisBebas id={idKuis("B", 1)} judul="Bilangan tengah" visual={<Papan anak="200.500    205.000    250.000" />} pertanyaan="Tuliskan bilangan yang ada di tengah jika diurutkan dari yang terkecil." pesanSalah="Bandingkan rak ratus ribuan dulu, lalu puluh ribuan." bantuan="Yang terkecil 200.500. Yang terbesar 250.000." umpan="205.000" periksa={tulis205000} alias={["205000", "205.000"]} konteks="Bilangan tengahnya 205.000." />
-        <Pilih id={idKuis("B", 2)} pertanyaan="734.090 ... 734.900. Tanda yang tepat adalah..." pilihan={[{ huruf: "A", teks: "lebih besar" }, { huruf: "B", teks: "lebih kecil" }, { huruf: "C", teks: "sama dengan" }, { huruf: "D", teks: "tidak bisa dibanding" }]} benar="B" umpan="Rak ratusan 0 lebih kecil daripada 9. Jadi 734.090 lebih kecil." salah="Tiga rak kiri sama. Lihat rak ratusan." />
-        <Pilih id={idKuis("B", 3)} pertanyaan="Urutan dari yang termurah ke yang termahal untuk 190.000, 901.000, dan 109.000 adalah..." pilihan={[{ huruf: "A", teks: "901.000, 190.000, 109.000" }, { huruf: "B", teks: "109.000, 190.000, 901.000" }, { huruf: "C", teks: "190.000, 109.000, 901.000" }, { huruf: "D", teks: "109.000, 901.000, 190.000" }]} benar="B" umpan="1 lebih kecil daripada 9 pada rak ratus ribuan. Lalu 109.000 lebih kecil daripada 190.000." salah="Mulai dari rak paling kiri." />
-      </Adegan>
-      <Adegan
-        judul="Komposisi dan dekomposisi sampai 1.000.000"
-        jenis="uang"
-        kelas={kelas}
-        kelamin={kelamin}
-        penjelasan={[
-          "Menyusun berarti menjumlahkan nilai setiap lembar.",
-          "Mengurai berarti memecah bilangan ke raknya.",
-          "Rak yang kosong tetap nol dan tidak menambah jumlah.",
-        ]}
-      >
-        <Dialog nama="Farhan" anak="Aku punya 2 lembar seratus ribuan, 3 lembar sepuluh ribuan, dan 4 lembar seribuan." />
-        <Dialog nama="Leni" anak="200.000 ditambah 30.000 ditambah 4.000. Jumlahnya 234.000." />
-        <Dialog nama="Igil" anak="234.000 juga bisa diurai: 2 ratus ribuan, 3 puluh ribuan, dan 4 ribuan." />
-        <Papan anak={"2 × 100.000 + 3 × 10.000 + 4 × 1.000 = 234.000"} />
-        <TabelInfoGrafis
-          judul="Infografis: susun dan urai 234.000"
-          kepala={["Lembar", "Banyak", "Jumlah"]}
-          baris={[
-            ["100.000", "2", "200.000"],
-            ["10.000", "3", "30.000"],
-            ["1.000", "4", "4.000"],
-            ["Uraian rak", "2, 3, dan 4", "234.000"],
-          ]}
-          kaki="Satu bilangan bisa disusun dengan banyak cara. Uraian rak adalah cara yang paling rapi."
-        />
-        <GameDompet />
-        <GameUrai />
-        <KuisSuara id={idKuis("B", 4)} pertanyaan="Berapa jumlah 4 ratus ribuan, 2 ribuan, dan 5 satuan?" periksa={jawab402005} petunjuk="Jumlahkan nilai setiap rak. Rak yang tidak disebut tetap nol." benar="402.005." />
-        <TulisBebas id={idKuis("B", 5)} judul="Menyusun lembar" pertanyaan="5 lembar seratus ribuan dan 2 lembar sepuluh ribuan. Tuliskan jumlahnya." pesanSalah="Kalikan dulu, lalu jumlahkan." bantuan="5 kali 100.000, lalu tambah 2 kali 10.000." umpan="520.000" periksa={tulis520000} alias={["520000", "520.000"]} konteks="Jumlahnya 520.000." />
-        <Pilih id={idKuis("B", 6)} pertanyaan="Uraian yang tepat untuk 810.006 adalah..." pilihan={[{ huruf: "A", teks: "8 ratus ribuan, 1 puluh ribuan, dan 6 satuan" }, { huruf: "B", teks: "8 puluh ribuan, 1 ribuan, dan 6 ratusan" }, { huruf: "C", teks: "8 ratusan, 1 puluhan, dan 6 satuan" }, { huruf: "D", teks: "81 ratus ribuan dan 6 puluhan" }]} benar="A" umpan="Rak kosong tetap nol. Yang berisi hanya ratus ribuan, puluh ribuan, dan satuan." salah="Lihat posisi 8, 1, dan 6 dari kiri." />
-        <KuisBenarSalah
-          id={idKuis("B", 7)}
-          perintah="Pilih benar atau salah."
-          baris={[
-            { teks: "450.200 lebih besar daripada 450.020.", benar: true },
-            { teks: "3 ratus ribuan ditambah 4 puluhan sama dengan 300.040.", benar: true },
-            { teks: "999.999 lebih besar daripada 1.000.000.", benar: false },
-          ]}
-          umpan="450.200 menang di rak ratusan. 300.000 ditambah 40 tetap 300.040. Satu juta lebih besar daripada 999.999."
-        />
-      </Adegan>
+      <KepalaKartu ikon="⛵🦉" judul={kartu.judul} anak="Tiga sub-bab di pasar kapal" kelas={kelas} kelamin={kelamin} cuplikan={cuplikanKalimat(kartu.voice[0] ?? [])} />
+      <div className="mt-4 space-y-4">
+        <SaklarSuaraPermainan />
+        <TabSubbab label={["Sub-Bab A", "Sub-Bab B", "Sub-Bab C"]} aktif={tab} onPilih={setTab} />
+        {tab === 0 ? <SubbabBaca kelas={kelas} kelamin={kelamin} /> : null}
+        {tab === 1 ? <SubbabUrut kelas={kelas} kelamin={kelamin} /> : null}
+        {tab === 2 ? <SubbabSusun kelas={kelas} kelamin={kelamin} /> : null}
+      </div>
     </KartuBingkai>
   );
 }

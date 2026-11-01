@@ -5,6 +5,8 @@ import HasilJawabanKuis from "@/components/HasilJawabanKuis";
 import KartuPoinPenting from "@/components/KartuPoinPenting";
 import TabelInfoGrafis from "@/components/TabelInfoGrafis";
 import { useKuisMateri } from "@/components/KuisMateriContext";
+import { PagerSubbab, TabSubbab } from "@/components/modul/EmpatHalamanMateri";
+import { useJudulDompetMateri } from "@/components/modul/KepalaDompetMateri";
 import MisiPenjagaKebun from "@/components/MisiPenjagaKebun";
 import { SLOT_AJUAN_SEBELUM_KARTU_D } from "@/components/NaskahMtk2Bab1";
 import SoalRekamSuara from "@/components/SoalRekamSuara";
@@ -388,7 +390,7 @@ function BagianLuas() {
 
 function KawatPilih() {
   const [pilih, setPilih] = useState("");
-  const hasil = pilih === "15 × 15" ? "225. Ini yang paling luas." : pilih === "20 × 10" ? "200." : pilih === "5 × 25" ? "125." : "Ketuk salah satu bentangan.";
+  const hasil = pilih === "15 × 15" ? "Bentuk persegi. Hitung sisi kali sisi." : pilih === "20 × 10" ? "Bentuk panjang. Hitung panjang kali lebar." : pilih === "5 × 25" ? "Bentuk pipih. Hitung panjang kali lebar." : "Ketuk salah satu bentangan.";
   return (
     <div className="rounded-2xl border-2 border-orange-200 bg-white p-4">
       <p className="text-sm font-black text-[#1C01A5]">Kawat yang sama. Pilih bentangannya.</p>
@@ -402,140 +404,239 @@ function KawatPilih() {
   );
 }
 
-function KartuA({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminGuru }) {
-  const kartu = MODUL_MTK5_BAB5.kartu[0];
+const PILIH_PETAK = ["8", "12", "7"];
+const PILIH_KALI = ["21", "18", "16"];
+const PILIH_ALAS = ["12", "18", "10"];
+
+function Lambang({ judul, baris }: { judul: string; baris: string[] }) {
   return (
-    <KartuBingkai>
-      <KepalaKartu ikon="🟦🦉" judul={kartu.judul} anak="Lima adegan di tepi kanal" kelas={kelas} kelamin={kelamin} cuplikan={cuplikanKalimat(kartu.voice[0] ?? [])} />
-      <div className="mt-4 space-y-8">
-        <Adegan judul="Sub-bab 1 — Apa itu luas?" jenis="ubin" kelas={kelas} kelamin={kelamin} penjelasan={["Luas adalah ukuran daerah di dalam tepi.", "Satu petak 1 m kali 1 m sama dengan 1 meter persegi.", "Bentuk boleh berubah, luasnya tetap."]}>
+    <div className="rounded-2xl border-2 border-[#1C01A5]/20 bg-white p-3">
+      <p className="text-sm font-black text-[#1C01A5]">{judul}</p>
+      {baris.map((teks) => <p key={teks} className="mt-2 text-lg font-black text-[#1C01A5]">{teks}</p>)}
+    </div>
+  );
+}
+
+function SubbabLuas({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminGuru }) {
+  return (
+    <PagerSubbab
+      judul="Konsep luas daerah"
+      selesaiTeks="Empat halaman luas selesai."
+      grup={[[idKuis("A", 0), idKuis("A", 1)], [idKuis("B", 0), idKuis("B", 1)], [idKuis("A", 11), idKuis("A", 15), idKuis("A", 16)], [idKuis("A", 10), idKuis("A", 17), idKuis("A", 18)]]}
+      isi={[
+        <>
+          <TombolVoiceMateriPai1 kelas={kelas} kelamin={kelamin} cuplikan={cuplikanKalimat(["Luas adalah ukuran daerah di dalam tepi.", "Satu petak 1 m kali 1 m sama dengan 1 meter persegi."])} />
           <Dialog nama="Lala" anak="Luas daerah bangun datar adalah ukuran daerah di dalam tepinya. Satu petak 1 cm × 1 cm = 1 cm². Satu sentimeter persegi." />
           <Dialog nama="Gio" anak="Di kanal ini ubinnya lebih besar. 1 m × 1 m = 1 m². Satu meter persegi. Satu ubin menutup satu satuan luas." />
           <Dialog nama="Nia" anak="Lantai yang lebih besar butuh lebih banyak ubin. Kalau luasnya sama, banyak ubinnya juga sama." />
           <PetakIsi />
           <KuisSuara id={idKuis("A", 0)} pertanyaan="Lantai panjang 2 m dan lebar 4 m ditutup ubin 1 m². Berapa luasnya?" periksa={hasil8} petunjuk="Kalikan panjang dengan lebar." benar="8 m²." />
           <TulisBebas id={idKuis("A", 1)} judul="Petak rapat" visual={<Papan anak="3 baris · 5 kolom" />} pertanyaan="Tulis banyak petak utuhnya." pesanSalah="Kalikan baris dengan kolom." bantuan="3 × 5 = 15." umpan="15 satuan." periksa={hasil15} alias={["15"]} konteks="3 × 5 = 15." />
+        </>,
+        <>
           <Dialog nama="Igil" anak="Pada kertas petak, bangun A berisi 9 petak utuh. B berisi 12. C berisi 15. D berisi 16. Itu luas masing-masing." />
           <Dialog nama="Nia" anak="Aku memotong petak E, lalu menggesernya. Bentuknya berubah, luasnya tetap 9. Petak F tetap 15. Petak G tetap 9." />
+          <TabelInfoGrafis judul="Infografis: Petak dan denah" kepala={["Bagian", "Cara", "Catatan"]} baris={[["Ruang tamu", "hitung ubin", "satu ubin satu satuan"], ["Dua kamar", "dua daerah sama", "jumlahkan keduanya"], ["Dapur dan mandi", "ubin kecil", "ikut dijumlah"], ["Petak digeser", "bentuk berubah", "luas tetap"]]} kaki="Jumlahkan bagian denah. Bentuk berubah, luas tetap." />
           <KuisSuara id={idKuis("B", 0)} pertanyaan="Dua kamar masing-masing 9 m². Berapa luas keduanya?" periksa={hasil18} petunjuk="Kalikan 2 dengan 9." benar="18 m²." />
           <TulisBebas id={idKuis("B", 1)} judul="Denah lantai" visual={<Papan anak="tamu 13 · dua kamar 18 · dapur 6 · kamar mandi 2" />} pertanyaan="Tulis jumlah luasnya." pesanSalah="Jumlahkan keempat bagian." bantuan="13 + 18 + 6 + 2." umpan="39 m²." periksa={hasil39} alias={["39"]} konteks="13 + 18 + 6 + 2 = 39." />
-          <Dialog nama="Lala" anak="Infografis ini mengingat petak dan denah lantai." />
-          <TabelInfoGrafis
-            judul="Infografis: Petak dan denah"
-            kepala={["Bagian", "Cara", "Luas"]}
-            baris={[
-              ["Ruang tamu", "13 ubin", "13 m²"],
-              ["Dua kamar", "2 × 9", "18 m²"],
-              ["Dapur", "6 ubin", "6 m²"],
-              ["Kamar mandi", "2 ubin", "2 m²"],
-              ["Petak E", "digeser", "tetap 9"],
-            ]}
-            kaki="Total denah 39 m². Bentuk berubah, luas tetap."
-          />
-          <Pilih id={idKuis("A", 10)} pertanyaan="Dua lantai sama luas. Banyak ubin 1 m² yang menutupinya..." pilihan={[{ huruf: "A", teks: "tetap sama" }, { huruf: "B", teks: "selalu lebih banyak" }, { huruf: "C", teks: "selalu lebih sedikit" }, { huruf: "D", teks: "tidak bisa diketahui" }]} benar="A" umpan="Luas sama, banyak ubin sama." salah="Bandingkan luasnya dulu, baru hitung ubinnya." />
+        </>,
+        <>
+          <GambarUbin jenis="ubin" />
           <SusunToken id={idKuis("A", 11)} perintah="Susun cara menghitung luas dengan petak." acak={["Tulis satuan", "Tutup rapat", "Hitung petak"]} benar={["Tutup rapat", "Hitung petak", "Tulis satuan"]} umpan="Tutup dulu, hitung, lalu tulis satuannya." pesanSalah="Mulai dari menutup petak tanpa celah." />
-        </Adegan>
+          <KuisBenarSalah id={idKuis("A", 15)} perintah="Pilih benar atau salah." baris={[{ teks: "Luas adalah daerah di dalam tepi.", benar: true }, { teks: "Bentuk berubah selalu mengubah luas.", benar: false }, { teks: "1 m × 1 m = 1 m².", benar: true }]} umpan="Bentuk boleh berubah. Luasnya bisa tetap." />
+          <KuisCocok id={idKuis("A", 16)} perintah="Pasangkan petak dengan luasnya." baris={[{ kiri: "4 baris dan 2 kolom", pilihan: PILIH_PETAK, benar: "8" }, { kiri: "2 × 6", pilihan: PILIH_PETAK, benar: "12" }, { kiri: "7 petak utuh", pilihan: PILIH_PETAK, benar: "7" }]} umpan="8, 12, dan 7." />
+        </>,
+        <>
+          <Dialog nama="Lala" anak="Lambang luas petak adalah banyak petak utuh, atau panjang kali lebar." />
+          <Lambang judul="Lambang petak" baris={["1 × 1 = 1", "panjang × lebar"]} />
+          <Pilih id={idKuis("A", 10)} pertanyaan="Dua lantai sama luas. Banyak ubin 1 m² yang menutupinya..." pilihan={[{ huruf: "A", teks: "tetap sama" }, { huruf: "B", teks: "selalu lebih banyak" }, { huruf: "C", teks: "selalu lebih sedikit" }, { huruf: "D", teks: "tidak bisa diketahui" }]} benar="A" umpan="Luas sama, banyak ubin sama." salah="Bandingkan luasnya dulu, baru hitung ubinnya." />
+          <Pilih id={idKuis("A", 17)} pertanyaan="4 baris dan 3 kolom petak utuh. Luasnya..." pilihan={[{ huruf: "A", teks: "12" }, { huruf: "B", teks: "7" }, { huruf: "C", teks: "16" }, { huruf: "D", teks: "9" }]} benar="A" umpan="4 × 3 = 12." salah="Kalikan baris dengan kolom." />
+          <Pilih id={idKuis("A", 18)} pertanyaan="Dua daerah masing-masing 6 satuan. Jumlahnya..." pilihan={[{ huruf: "A", teks: "12" }, { huruf: "B", teks: "6" }, { huruf: "C", teks: "36" }, { huruf: "D", teks: "0" }]} benar="A" umpan="6 + 6 = 12." salah="Jumlahkan kedua daerah." />
+        </>,
+      ]}
+    />
+  );
+}
 
-        <Adegan judul="Sub-bab 2 — Persegi panjang dan persegi" jenis="petak" kelas={kelas} kelamin={kelamin} penjelasan={["Luas persegi panjang sama dengan panjang kali lebar.", "Luas persegi sama dengan sisi kali sisi.", "Persegi boleh dihitung sebagai persegi panjang."]}>
+function SubbabPersegi({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminGuru }) {
+  return (
+    <PagerSubbab
+      judul="Luas persegi panjang dan persegi"
+      selesaiTeks="Empat halaman persegi selesai."
+      grup={[[idKuis("A", 2), idKuis("A", 3)], [idKuis("B", 2), idKuis("B", 3)], [idKuis("B", 15), idKuis("B", 16), idKuis("B", 17)], [idKuis("A", 12), idKuis("A", 19), idKuis("A", 20)]]}
+      isi={[
+        <>
+          <TombolVoiceMateriPai1 kelas={kelas} kelamin={kelamin} cuplikan={cuplikanKalimat(["Luas persegi panjang sama dengan panjang kali lebar.", "Luas persegi sama dengan sisi kali sisi."])} />
           <Dialog nama="Gio" anak="Luas persegi panjang = panjang × lebar. Contohnya 5 × 2 = 10, 4 × 3 = 12, 2 × 3 = 6, dan 2 × 1 = 2." />
           <KuisSuara id={idKuis("A", 2)} pertanyaan="Persegi panjang panjang 6 cm dan lebar 4 cm. Berapa luasnya?" periksa={hasil24} petunjuk="Kalikan panjang dengan lebar." benar="24 cm²." />
           <TulisBebas id={idKuis("A", 3)} judul="Ubin persegi" visual={<Papan anak="persegi · sisi 6 cm" />} pertanyaan="Tulis luasnya." pesanSalah="Kalikan sisi dengan sisi." bantuan="6 × 6 = 36." umpan="36 cm²." periksa={hasil36} alias={["36"]} konteks="6 × 6 = 36." />
+        </>,
+        <>
           <Dialog nama="Lala" anak="Luas persegi = sisi × sisi. Keempat sisinya sama, jadi panjang dan lebarnya sama." />
+          <Dialog nama="Igil" anak="Pada petak buku, persegi A luasnya 1, B luasnya 4, C luasnya 9, dan D luasnya 16. Persegi juga boleh dihitung sebagai persegi panjang." />
+          <TabelInfoGrafis judul="Infografis: Kali ukuran" kepala={["Bangun", "Cara", "Contoh"]} baris={[["Persegi panjang", "panjang × lebar", "5 × 2 = 10"], ["Petak lain", "panjang × lebar", "4 × 3 = 12"], ["Persegi", "sisi × sisi", "4 × 4 = 16"], ["Persegi kecil", "sisi × sisi", "3 × 3 = 9"]]} kaki="Persegi adalah persegi panjang yang sisinya sama." />
           <KuisSuara id={idKuis("B", 2)} pertanyaan="Persegi dengan sisi 5 cm. Berapa luasnya?" periksa={hasil25} petunjuk="Kalikan sisi dengan sisi." benar="25 cm²." />
           <TulisBebas id={idKuis("B", 3)} judul="Sisi delapan" visual={<Papan anak="persegi · sisi 8 cm" />} pertanyaan="Tulis luasnya." pesanSalah="Kalikan sisi dengan sisi." bantuan="8 × 8 = 64." umpan="64 cm²." periksa={hasil64} alias={["64"]} konteks="8 × 8 = 64." />
-          <Dialog nama="Igil" anak="Pada petak buku, persegi A luasnya 1, B luasnya 4, C luasnya 9, dan D luasnya 16. Persegi juga boleh dihitung sebagai persegi panjang." />
-          <TabelInfoGrafis
-            judul="Infografis: Kali ukuran"
-            kepala={["Bangun", "Cara", "Contoh"]}
-            baris={[
-              ["Persegi panjang", "panjang × lebar", "5 × 2 = 10"],
-              ["Petak lain", "panjang × lebar", "4 × 3 = 12"],
-              ["Persegi", "sisi × sisi", "4 × 4 = 16"],
-              ["Persegi kecil", "sisi × sisi", "3 × 3 = 9"],
-            ]}
-            kaki="Persegi adalah persegi panjang yang sisinya sama."
-          />
+        </>,
+        <>
+          <GambarUbin jenis="petak" />
+          <SusunToken id={idKuis("B", 15)} perintah="Susun luas dari yang paling kecil." acak={["49", "4", "16"]} benar={["4", "16", "49"]} umpan="4, lalu 16, lalu 49." pesanSalah="Mulai dari yang paling kecil." />
+          <KuisBenarSalah id={idKuis("B", 16)} perintah="Pilih benar atau salah." baris={[{ teks: "Luas persegi panjang = panjang × lebar.", benar: true }, { teks: "Luas persegi = sisi + sisi.", benar: false }, { teks: "Persegi boleh dihitung sebagai persegi panjang.", benar: true }]} umpan="Persegi memakai sisi kali sisi, bukan sisi ditambah sisi." />
+          <KuisCocok id={idKuis("B", 17)} perintah="Pasangkan ukuran dengan luasnya." baris={[{ kiri: "7 × 3", pilihan: PILIH_KALI, benar: "21" }, { kiri: "9 × 2", pilihan: PILIH_KALI, benar: "18" }, { kiri: "4 × 4", pilihan: PILIH_KALI, benar: "16" }]} umpan="21, 18, dan 16." />
+        </>,
+        <>
+          <Dialog nama="Gio" anak="Lambang luas persegi panjang adalah panjang kali lebar. Persegi memakai sisi kali sisi." />
+          <Lambang judul="Lambang kali" baris={["panjang × lebar", "sisi × sisi"]} />
           <Pilih id={idKuis("A", 12)} pertanyaan="Luas persegi panjang sama dengan..." pilihan={[{ huruf: "A", teks: "panjang + lebar" }, { huruf: "B", teks: "panjang × lebar" }, { huruf: "C", teks: "2 × panjang saja" }, { huruf: "D", teks: "sisi + sisi" }]} benar="B" umpan="Panjang dikali lebar." salah="Yang dijumlah adalah keliling. Luas memakai kali." />
-        </Adegan>
+          <Pilih id={idKuis("A", 19)} pertanyaan="8 × 3 = ..." pilihan={[{ huruf: "A", teks: "24" }, { huruf: "B", teks: "11" }, { huruf: "C", teks: "16" }, { huruf: "D", teks: "32" }]} benar="A" umpan="8 × 3 = 24." salah="Kalikan panjang dengan lebar." />
+          <Pilih id={idKuis("A", 20)} pertanyaan="Persegi sisi 7 cm. Luasnya..." pilihan={[{ huruf: "A", teks: "49" }, { huruf: "B", teks: "14" }, { huruf: "C", teks: "28" }, { huruf: "D", teks: "36" }]} benar="A" umpan="7 × 7 = 49." salah="Kalikan sisi dengan sisi." />
+        </>,
+      ]}
+    />
+  );
+}
 
-        <Adegan judul="Sub-bab 3 — Segitiga dan dua segi empat" jenis="lipat" kelas={kelas} kelamin={kelamin} penjelasan={["Segitiga dihitung dari alas dan tinggi.", "Hasilnya diambil setengah.", "Jajargenjang memakai alas kali tinggi."]}>
+function SubbabAlas({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminGuru }) {
+  return (
+    <PagerSubbab
+      judul="Luas segitiga dan segi empat"
+      selesaiTeks="Empat halaman alas dan tinggi selesai."
+      grup={[[idKuis("A", 4), idKuis("A", 5)], [idKuis("B", 4), idKuis("B", 5)], [idKuis("A", 21), idKuis("A", 22), idKuis("A", 23)], [idKuis("A", 13), idKuis("A", 24), idKuis("A", 25)]]}
+      isi={[
+        <>
+          <TombolVoiceMateriPai1 kelas={kelas} kelamin={kelamin} cuplikan={cuplikanKalimat(["Segitiga dihitung dari alas dan tinggi.", "Hasilnya diambil setengah."])} />
           <Dialog nama="Nia" anak="Luas segitiga = setengah × alas × tinggi. Aku coba dua soal dulu, baru melipat kertas." />
+          <LipatSegitiga />
           <KuisSuara id={idKuis("A", 4)} pertanyaan="Segitiga alas 7 cm dan tinggi 4 cm. Berapa luasnya?" periksa={hasil14} petunjuk="Setengah dari alas kali tinggi." benar="14 cm²." />
           <TulisBebas id={idKuis("A", 5)} judul="Alas delapan" visual={<Papan anak="setengah × 8 × 3" />} pertanyaan="Tulis luas segitiga itu." pesanSalah="Kalikan dulu, lalu ambil setengah." bantuan="8 × 3 = 24. Setengahnya 12." umpan="12 cm²." periksa={hasil12} alias={["12"]} konteks="Setengah × 8 × 3 = 12." />
-          <LipatSegitiga />
+        </>,
+        <>
           <Dialog nama="Igil" anak="Model di buku: alas 4 dan tinggi 4 menjadi persegi panjang 4 × 2. Luasnya 8. Rumusnya tetap setengah × alas × tinggi." />
-          <Pilih id={idKuis("A", 13)} pertanyaan="Segitiga alas 5 cm dan tinggi 4 cm. Luasnya..." pilihan={[{ huruf: "A", teks: "20" }, { huruf: "B", teks: "10" }, { huruf: "C", teks: "9" }, { huruf: "D", teks: "4" }]} benar="B" umpan="Setengah × 5 × 4 = 10." salah="20 belum dibagi dua. Ambil setengahnya." />
-          <Dialog nama="Nia" anak="Model kedua: alas 5 dan tinggi 4. Setengah × 5 × 4 = 10. Sama dengan jawabanmu tadi." />
+          <Dialog nama="Nia" anak="Model kedua: alas 5 dan tinggi 4. Setengah × 5 × 4 = 10." />
           <Dialog nama="Gio" anak="Jajargenjang alas 4 dan tinggi 2. Luas = alas × tinggi = 4 × 2 = 8. Tidak dibagi dua." />
-          <KuisSuara id={idKuis("B", 4)} pertanyaan="Trapesium sisi atas 2 cm, sisi alas 5 cm, dan tinggi 2 cm. Berapa luasnya?" periksa={hasil7} petunjuk="Setengah dari jumlah dua sisi sejajar, kali tinggi." benar="7 cm²." />
           <Dialog nama="Lala" anak="Setengah × (2 + 5) × 2 = 7. Setelah ubinnya digeser, tersusun 7 petak juga. Luas trapesium = setengah × (sisi atas + sisi alas) × tinggi." />
+          <TabelInfoGrafis judul="Infografis: Alas dan tinggi" kepala={["Bangun", "Cara", "Contoh"]} baris={[["Segitiga", "setengah × alas × tinggi", "alas 4 tinggi 4"], ["Jajargenjang", "alas × tinggi", "4 × 2"], ["Trapesium", "setengah × (atas + alas) × tinggi", "atas 2 alas 5"]]} kaki="Segitiga dan trapesium memakai setengah. Jajargenjang tidak." />
+          <KuisSuara id={idKuis("B", 4)} pertanyaan="Trapesium sisi atas 2 cm, sisi alas 5 cm, dan tinggi 2 cm. Berapa luasnya?" periksa={hasil7} petunjuk="Setengah dari jumlah dua sisi sejajar, kali tinggi." benar="7 cm²." />
           <TulisBebas id={idKuis("B", 5)} judul="Jajargenjang lain" visual={<Papan anak="alas 6 · tinggi 3" />} pertanyaan="Tulis luas jajargenjang itu." pesanSalah="Kalikan alas dengan tinggi." bantuan="6 × 3 = 18." umpan="18 cm²." periksa={hasil18} alias={["18"]} konteks="6 × 3 = 18." />
-          <TabelInfoGrafis
-            judul="Infografis: Alas dan tinggi"
-            kepala={["Bangun", "Cara", "Contoh"]}
-            baris={[
-              ["Segitiga", "setengah × alas × tinggi", "8"],
-              ["Segitiga lain", "setengah × 5 × 4", "10"],
-              ["Jajargenjang", "alas × tinggi", "8"],
-              ["Trapesium", "setengah × (2 + 5) × 2", "7"],
-            ]}
-            kaki="Segitiga dan trapesium memakai setengah. Jajargenjang tidak."
-          />
-        </Adegan>
+        </>,
+        <>
+          <GambarUbin jenis="lipat" />
+          <SusunToken id={idKuis("A", 21)} perintah="Susun luas dari yang paling kecil." acak={["24", "6", "15"]} benar={["6", "15", "24"]} umpan="6, lalu 15, lalu 24." pesanSalah="Mulai dari yang paling kecil." />
+          <KuisBenarSalah id={idKuis("A", 22)} perintah="Pilih benar atau salah." baris={[{ teks: "Luas segitiga memakai setengah.", benar: true }, { teks: "Luas jajargenjang juga dibagi dua.", benar: false }, { teks: "Luas trapesium memakai setengah jumlah dua sisi sejajar, kali tinggi.", benar: true }]} umpan="Jajargenjang adalah alas kali tinggi, tanpa dibagi dua." />
+          <KuisCocok id={idKuis("A", 23)} perintah="Pasangkan ukuran dengan luasnya." baris={[{ kiri: "Setengah × 6 × 4", pilihan: PILIH_ALAS, benar: "12" }, { kiri: "Setengah × 6 × 6", pilihan: PILIH_ALAS, benar: "18" }, { kiri: "Setengah × (4 + 6) × 2", pilihan: PILIH_ALAS, benar: "10" }]} umpan="12, 18, dan 10." />
+        </>,
+        <>
+          <Dialog nama="Nia" anak="Lambang segitiga adalah setengah kali alas kali tinggi. Jajargenjang tidak dibagi dua." />
+          <Lambang judul="Lambang alas" baris={["setengah × alas × tinggi", "alas × tinggi"]} />
+          <Pilih id={idKuis("A", 13)} pertanyaan="Segitiga alas 5 cm dan tinggi 4 cm. Luasnya..." pilihan={[{ huruf: "A", teks: "20" }, { huruf: "B", teks: "10" }, { huruf: "C", teks: "9" }, { huruf: "D", teks: "4" }]} benar="B" umpan="Setengah × 5 × 4 = 10." salah="20 belum dibagi dua. Ambil setengahnya." />
+          <Pilih id={idKuis("A", 24)} pertanyaan="Setengah × 10 × 6 = ..." pilihan={[{ huruf: "A", teks: "30" }, { huruf: "B", teks: "60" }, { huruf: "C", teks: "16" }, { huruf: "D", teks: "8" }]} benar="A" umpan="10 × 6 = 60. Setengahnya 30." salah="Kalikan dulu, lalu ambil setengah." />
+          <Pilih id={idKuis("A", 25)} pertanyaan="Jajargenjang alas 7 cm dan tinggi 4 cm. Luasnya..." pilihan={[{ huruf: "A", teks: "28" }, { huruf: "B", teks: "14" }, { huruf: "C", teks: "11" }, { huruf: "D", teks: "32" }]} benar="A" umpan="7 × 4 = 28. Jajargenjang tidak dibagi dua." salah="Kalikan alas dengan tinggi." />
+        </>,
+      ]}
+    />
+  );
+}
 
-        <Adegan judul="Sub-bab 4 — Diagonal dan gabungan" jenis="layang" kelas={kelas} kelamin={kelamin} penjelasan={["Belah ketupat dan layang-layang memakai dua diagonal.", "Luasnya setengah kali kedua diagonal.", "Bangun gabungan dijumlah dari bagiannya."]}>
+function SubbabDiagonal({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminGuru }) {
+  return (
+    <PagerSubbab
+      judul="Luas diagonal dan gabungan"
+      selesaiTeks="Empat halaman gabungan selesai."
+      grup={[[idKuis("A", 6), idKuis("A", 7)], [idKuis("B", 6), idKuis("B", 7)], [idKuis("A", 26), idKuis("A", 27), idKuis("A", 14)], [idKuis("A", 28), idKuis("B", 18), idKuis("B", 19)]]}
+      isi={[
+        <>
+          <TombolVoiceMateriPai1 kelas={kelas} kelamin={kelamin} cuplikan={cuplikanKalimat(["Belah ketupat dan layang-layang memakai dua diagonal.", "Luasnya setengah kali kedua diagonal."])} />
           <Dialog nama="Igil" anak="Dua diagonal saling memotong. Luas belah ketupat dan layang-layang = setengah × diagonal 1 × diagonal 2." />
           <KuisSuara id={idKuis("A", 6)} pertanyaan="Belah ketupat diagonal 6 cm dan 4 cm. Berapa luasnya?" periksa={hasil12} petunjuk="Setengah dari perkalian kedua diagonal." benar="12 cm²." />
           <TulisBebas id={idKuis("A", 7)} judul="Layang lebar" visual={<Papan anak="setengah × 8 × 5" />} pertanyaan="Tulis luas layang-layang itu." pesanSalah="Kalikan kedua diagonal, lalu ambil setengah." bantuan="8 × 5 = 40. Setengahnya 20." umpan="20 cm²." periksa={hasil20} alias={["20"]} konteks="Setengah × 8 × 5 = 20." />
-          <KuisSuara id={idKuis("B", 6)} pertanyaan="Layang-layang diagonal 6 cm dan 8 cm. Berapa luasnya?" periksa={hasil24} petunjuk="Setengah dari 6 kali 8." benar="24 cm²." />
+        </>,
+        <>
           <Dialog nama="Nia" anak="Di buku, belah ketupat diagonal 2 dan 4. Setengah × 2 × 4 = 4. Ubinnya bisa disusun jadi persegi 2 × 2. Luasnya tetap 4." />
           <Dialog nama="Lala" anak="Layang-layang di buku diagonal 5 dan 4. Setengah × 5 × 4 = 10. Rumusnya sama dengan belah ketupat." />
-          <TulisBebas id={idKuis("B", 7)} judul="Dua bagian" visual={<Papan anak="bagian 10 dan bagian 5" />} pertanyaan="Tulis jumlah luasnya." pesanSalah="Jumlahkan kedua bagian." bantuan="10 + 5 = 15." umpan="15." periksa={hasil15} alias={["15"]} konteks="10 + 5 = 15." />
           <BagianLuas />
           <Dialog nama="Gio" anak="Cara pertama: layang-layang 10 ditambah segitiga setengah × 5 × 2 = 5. Jumlahnya 15." />
           <Dialog nama="Igil" anak="Cara kedua: jajargenjang 5 × 2 = 10 ditambah segitiga 5. Jumlahnya juga 15. Untuk luas, bagian-bagiannya dijumlah. Keliling hanya menghitung tepi luar." />
-          <TabelInfoGrafis
-            judul="Infografis: Diagonal dan gabungan"
-            kepala={["Bangun", "Cara", "Luas"]}
-            baris={[
-              ["Belah ketupat", "setengah × 2 × 4", "4"],
-              ["Layang-layang", "setengah × 5 × 4", "10"],
-              ["Gabungan", "10 + 5", "15"],
-            ]}
-            kaki="Dua cara boleh beda, luas gabungannya sama."
-          />
+          <TabelInfoGrafis judul="Infografis: Diagonal dan gabungan" kepala={["Bangun", "Cara", "Luas"]} baris={[["Belah ketupat", "setengah × dua diagonal", "contoh buku 4"], ["Layang-layang", "rumus yang sama", "contoh buku 10"], ["Gabungan", "jumlah bagian", "10 ditambah 5"]]} kaki="Dua cara boleh beda, luas gabungannya sama." />
+          <KuisSuara id={idKuis("B", 6)} pertanyaan="Layang-layang diagonal 6 cm dan 8 cm. Berapa luasnya?" periksa={hasil24} petunjuk="Setengah dari 6 kali 8." benar="24 cm²." />
+          <TulisBebas id={idKuis("B", 7)} judul="Dua bagian" visual={<Papan anak="bagian 10 dan bagian 5" />} pertanyaan="Tulis jumlah luasnya." pesanSalah="Jumlahkan kedua bagian." bantuan="10 + 5 = 15." umpan="15." periksa={hasil15} alias={["15"]} konteks="10 + 5 = 15." />
+        </>,
+        <>
+          <GambarUbin jenis="layang" />
+          <SusunToken id={idKuis("A", 26)} perintah="Susun luas dari yang paling kecil." acak={["27", "8", "18"]} benar={["8", "18", "27"]} umpan="8, lalu 18, lalu 27." pesanSalah="Mulai dari yang paling kecil." />
+          <KuisBenarSalah id={idKuis("A", 27)} perintah="Pilih benar atau salah." baris={[{ teks: "Luas belah ketupat = setengah × dua diagonal.", benar: true }, { teks: "Luas gabungan dihitung dengan mengalikan semua bagian.", benar: false }, { teks: "Dua cara berbeda boleh menghasilkan luas yang sama.", benar: true }]} umpan="Bagian gabungan dijumlah, tidak dikali." />
           <KuisCocok id={idKuis("A", 14)} perintah="Pasangkan bangun dengan luasnya." baris={[{ kiri: "Persegi panjang 5 × 2", pilihan: PASANGAN_LUAS, benar: "10" }, { kiri: "Persegi sisi 4", pilihan: PASANGAN_LUAS, benar: "16" }, { kiri: "Trapesium 2, 5, tinggi 2", pilihan: PASANGAN_LUAS, benar: "7" }]} umpan="10, 16, dan 7." />
-        </Adegan>
+        </>,
+        <>
+          <Dialog nama="Igil" anak="Lambang diagonal adalah setengah kali diagonal pertama kali diagonal kedua." />
+          <Lambang judul="Lambang diagonal" baris={["setengah × d1 × d2", "bagian + bagian"]} />
+          <Pilih id={idKuis("A", 28)} pertanyaan="Setengah × 7 × 4 = ..." pilihan={[{ huruf: "A", teks: "14" }, { huruf: "B", teks: "28" }, { huruf: "C", teks: "11" }, { huruf: "D", teks: "3" }]} benar="A" umpan="7 × 4 = 28. Setengahnya 14." salah="Kalikan dulu, lalu ambil setengah." />
+          <Pilih id={idKuis("B", 18)} pertanyaan="Setengah × 9 × 2 = ..." pilihan={[{ huruf: "A", teks: "9" }, { huruf: "B", teks: "18" }, { huruf: "C", teks: "7" }, { huruf: "D", teks: "11" }]} benar="A" umpan="9 × 2 = 18. Setengahnya 9." salah="Jangan lupa mengambil setengah." />
+          <Pilih id={idKuis("B", 19)} pertanyaan="Bagian 12 digabung bagian 7. Luasnya..." pilihan={[{ huruf: "A", teks: "19" }, { huruf: "B", teks: "84" }, { huruf: "C", teks: "5" }, { huruf: "D", teks: "12" }]} benar="A" umpan="12 + 7 = 19." salah="Jumlahkan kedua bagian." />
+        </>,
+      ]}
+    />
+  );
+}
 
-        <Adegan judul="Sub-bab 5 — Keliling sama, luas beda" jenis="kawat" kelas={kelas} kelamin={kelamin} penjelasan={["Kawat yang sama panjang bisa dibentuk ulang.", "Kelilingnya tetap.", "Luasnya bisa berbeda."]}>
+function SubbabKawat({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminGuru }) {
+  return (
+    <PagerSubbab
+      judul="Hubungan keliling dan luas"
+      selesaiTeks="Empat halaman kawat selesai."
+      grup={[[idKuis("A", 8), idKuis("A", 9)], [idKuis("B", 8), idKuis("B", 9)], [idKuis("B", 13), idKuis("B", 11), idKuis("B", 10)], [idKuis("B", 12), idKuis("B", 14), idKuis("B", 20)]]}
+      isi={[
+        <>
+          <TombolVoiceMateriPai1 kelas={kelas} kelamin={kelamin} cuplikan={cuplikanKalimat(["Kawat yang sama panjang bisa dibentuk ulang.", "Kelilingnya tetap. Luasnya bisa berbeda."])} />
           <Dialog nama="Gio" anak="Kawat ini 60 cm. Aku ubah bentuknya. Kelilingnya tetap 60 cm. Luas di dalamnya belum tentu sama." />
+          <KawatPilih />
           <KuisSuara id={idKuis("A", 8)} pertanyaan="Persegi panjang panjang 12 cm dan lebar 8 cm. Berapa luasnya?" periksa={hasil96} petunjuk="Kalikan panjang dengan lebar." benar="96 cm²." />
           <TulisBebas id={idKuis("A", 9)} judul="Petak 9 dan 5" visual={<Papan anak="panjang 9 · lebar 5" />} pertanyaan="Tulis luasnya." pesanSalah="Kalikan panjang dengan lebar." bantuan="9 × 5 = 45." umpan="45 cm²." periksa={hasil45} alias={["45"]} konteks="9 × 5 = 45." />
+        </>,
+        <>
+          <Dialog nama="Lala" anak="Bentangan 20 × 10 dan 10 × 20 luasnya sama. Bentangan 5 × 25 lebih pipih. Persegi 15 × 15 perlu dihitung sendiri." />
+          <Dialog nama="Igil" anak="Keliling sama belum tentu luasnya sama. Hitung tiap bentangan, lalu bandingkan." />
+          <TabelInfoGrafis judul="Infografis: Kawat yang sama" kepala={["Bentangan", "Cara", "Yang dicek"]} baris={[["20 × 10", "panjang × lebar", "hitung luasnya"], ["5 × 25", "panjang × lebar", "hitung luasnya"], ["15 × 15", "sisi × sisi", "hitung luasnya"]]} kaki="Kelilingnya tetap sama. Luasnya dihitung satu per satu." />
           <KuisSuara id={idKuis("B", 8)} pertanyaan="Kawat dibentangkan menjadi persegi sisi 15 cm. Berapa luasnya?" periksa={hasil225} petunjuk="Kalikan sisi dengan sisi." benar="225 cm²." />
           <TulisBebas id={idKuis("B", 9)} judul="Bentangan lebar" visual={<Papan anak="panjang 20 cm · lebar 10 cm" />} pertanyaan="Tulis luas bentangan itu." pesanSalah="Kalikan panjang dengan lebar." bantuan="20 × 10 = 200." umpan="200 cm²." periksa={hasil200} alias={["200"]} konteks="20 × 10 = 200." />
-          <KawatPilih />
-          <Dialog nama="Lala" anak="20 × 10 = 200. Dibolak-balik jadi 10 × 20, luasnya tetap 200. Bentangan 5 × 25 = 125. Persegi 15 × 15 = 225, ini yang paling luas." />
-          <Dialog nama="Igil" anak="Keliling sama belum tentu luasnya sama. Di antara bentangan itu, persegi yang paling luas." />
-          <TabelInfoGrafis
-            judul="Infografis: Kawat yang sama"
-            kepala={["Bentangan", "Cara", "Luas"]}
-            baris={[
-              ["20 × 10", "panjang × lebar", "200"],
-              ["5 × 25", "panjang × lebar", "125"],
-              ["15 × 15", "sisi × sisi", "225"],
-            ]}
-            kaki="225 yang paling luas. Kelilingnya tetap sama."
-          />
-          <KuisCocok id={idKuis("B", 10)} perintah="Pasangkan bentangan dengan luasnya." baris={[{ kiri: "20 × 10", pilihan: PASANGAN_KAWAT, benar: "200" }, { kiri: "5 × 25", pilihan: PASANGAN_KAWAT, benar: "125" }, { kiri: "15 × 15", pilihan: PASANGAN_KAWAT, benar: "225" }]} umpan="200, 125, dan 225." />
-          <KuisBenarSalah id={idKuis("B", 11)} perintah="Pilih benar atau salah." baris={[{ teks: "Keliling yang sama pasti luasnya sama.", benar: false }, { teks: "Persegi termasuk persegi panjang.", benar: true }, { teks: "15 × 15 lebih luas daripada 20 × 10.", benar: true }]} umpan="Keliling sama bisa luasnya beda. 225 lebih luas dari 200." />
-          <Pilih id={idKuis("B", 12)} pertanyaan="Belah ketupat diagonal 2 cm dan 4 cm. Luasnya..." pilihan={[{ huruf: "A", teks: "8" }, { huruf: "B", teks: "4" }, { huruf: "C", teks: "2" }, { huruf: "D", teks: "6" }]} benar="B" umpan="Setengah × 2 × 4 = 4." salah="8 belum dibagi dua." />
+        </>,
+        <>
+          <GambarUbin jenis="kawat" />
           <SusunToken id={idKuis("B", 13)} perintah="Susun dari yang paling kecil: trapesium 7, persegi panjang 10, persegi 16." acak={["16", "7", "10"]} benar={["7", "10", "16"]} umpan="7, lalu 10, lalu 16." pesanSalah="Bandingkan 7, 10, dan 16." />
+          <KuisBenarSalah id={idKuis("B", 11)} perintah="Pilih benar atau salah." baris={[{ teks: "Keliling yang sama pasti luasnya sama.", benar: false }, { teks: "Persegi termasuk persegi panjang.", benar: true }, { teks: "15 × 15 lebih luas daripada 20 × 10.", benar: true }]} umpan="Keliling sama bisa luasnya beda. 225 lebih luas dari 200." />
+          <KuisCocok id={idKuis("B", 10)} perintah="Pasangkan bentangan dengan luasnya." baris={[{ kiri: "20 × 10", pilihan: PASANGAN_KAWAT, benar: "200" }, { kiri: "5 × 25", pilihan: PASANGAN_KAWAT, benar: "125" }, { kiri: "15 × 15", pilihan: PASANGAN_KAWAT, benar: "225" }]} umpan="200, 125, dan 225." />
+        </>,
+        <>
+          <Dialog nama="Lala" anak="Lambang bentangan tetap panjang kali lebar, walaupun kelilingnya sama." />
+          <Lambang judul="Lambang bentangan" baris={["7 × 6 = 42", "keliling sama, luas boleh beda"]} />
+          <Pilih id={idKuis("B", 12)} pertanyaan="Belah ketupat diagonal 2 cm dan 4 cm. Luasnya..." pilihan={[{ huruf: "A", teks: "8" }, { huruf: "B", teks: "4" }, { huruf: "C", teks: "2" }, { huruf: "D", teks: "6" }]} benar="B" umpan="Setengah × 2 × 4 = 4." salah="8 belum dibagi dua." />
           <Pilih id={idKuis("B", 14)} pertanyaan="Layang-layang luas 10 digabung segitiga luas 5. Luas gabungannya..." pilihan={[{ huruf: "A", teks: "15" }, { huruf: "B", teks: "50" }, { huruf: "C", teks: "5" }, { huruf: "D", teks: "2" }]} benar="A" umpan="10 + 5 = 15. Bagiannya dijumlah." salah="Jangan dikalikan. Jumlahkan luas kedua bagian." />
-        </Adegan>
+          <Pilih id={idKuis("B", 20)} pertanyaan="8 × 6 = ..." pilihan={[{ huruf: "A", teks: "48" }, { huruf: "B", teks: "14" }, { huruf: "C", teks: "28" }, { huruf: "D", teks: "36" }]} benar="A" umpan="8 × 6 = 48." salah="Kalikan panjang dengan lebar." />
+        </>,
+      ]}
+    />
+  );
+}
+
+function KartuA({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminGuru }) {
+  const kartu = MODUL_MTK5_BAB5.kartu[0];
+  const [tab, setTab] = useState(0);
+  const judulSubbab = ["Konsep luas daerah", "Luas persegi panjang dan persegi", "Luas segitiga dan segi empat", "Luas diagonal dan gabungan", "Hubungan keliling dan luas"];
+  useJudulDompetMateri(judulSubbab[tab] ?? judulSubbab[0]);
+  return (
+    <KartuBingkai>
+      <KepalaKartu ikon="🟦🦉" judul={kartu.judul} anak="Lima sub-bab di tepi kanal" kelas={kelas} kelamin={kelamin} cuplikan={cuplikanKalimat(kartu.voice[0] ?? [])} />
+      <div className="mt-4 space-y-4">
+        <TabSubbab label={["Sub-Bab A", "Sub-Bab B", "Sub-Bab C", "Sub-Bab D", "Sub-Bab E"]} aktif={tab} onPilih={setTab} />
+        {tab === 0 ? <SubbabLuas kelas={kelas} kelamin={kelamin} /> : null}
+        {tab === 1 ? <SubbabPersegi kelas={kelas} kelamin={kelamin} /> : null}
+        {tab === 2 ? <SubbabAlas kelas={kelas} kelamin={kelamin} /> : null}
+        {tab === 3 ? <SubbabDiagonal kelas={kelas} kelamin={kelamin} /> : null}
+        {tab === 4 ? <SubbabKawat kelas={kelas} kelamin={kelamin} /> : null}
       </div>
     </KartuBingkai>
   );
 }
+
 
 function KartuC({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminGuru }) {
   const kartu = MODUL_MTK5_BAB5.kartu[2];
