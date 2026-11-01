@@ -129,25 +129,10 @@ export function QuestLangkah({
     <section ref={akar} className="scroll-mt-24 space-y-4">
       <div className="relative -mx-4 w-[calc(100%+2rem)] overflow-hidden rounded-none bg-gradient-to-br from-[#eef2ff] via-[#ece8ff] to-[#f7f3ff] text-[#1C01A5] shadow-[0_10px_24px_-18px_rgba(67,56,202,0.55)]">
         <div className="pointer-events-none absolute -right-6 -top-8 h-28 w-28 rounded-full bg-[#F0AB00]/20 blur-2xl" />
-        <div className="px-4 pb-4 pt-4">
-          {(() => {
-            const lencana = sekarang.tab || sekarang.bagian;
-            const judulKepala = sekarang.kelompok || (utuh ? sekarang.tab : sekarang.judul);
-            const beda = lencana.toLowerCase() !== (judulKepala || "").toLowerCase();
-            return (
-              <>
-                {beda ? (
-                  <p className="inline-flex items-center gap-1.5 rounded-full bg-white/80 px-3 py-1 text-[11px] font-black uppercase tracking-[0.16em] text-indigo-700 ring-1 ring-indigo-200">
-                    <span className="h-1.5 w-1.5 rounded-full bg-[#F0AB00]" />
-                    {lencana}
-                  </p>
-                ) : null}
-                <p className={`text-2xl font-extrabold tracking-tight text-[#1C01A5] ${beda ? "mt-2" : ""}`}>
-                  {judulKepala}
-                </p>
-              </>
-            );
-          })()}
+        <div className="bg-[linear-gradient(105deg,#1C01A5_0%,#4c1d95_38%,#F0AB00_100%)] px-4 pb-4 pt-4">
+          <p className="text-2xl font-extrabold tracking-tight text-white [text-shadow:0_2px_8px_rgba(28,1,165,0.85)]">
+            {sekarang.kelompok || (utuh ? sekarang.tab : sekarang.judul)}
+          </p>
         </div>
         <div ref={daftarTab} role="tablist" aria-label="Bagian materi" className="flex flex-nowrap gap-2 overflow-x-auto overscroll-x-contain border-t border-indigo-100 px-3 py-2.5 [scrollbar-width:thin] [&::-webkit-scrollbar]:h-1.5 [&::-webkit-scrollbar-thumb]:rounded-full [&::-webkit-scrollbar-thumb]:bg-indigo-300/70">
           {tabUnik.map((nama) => {
