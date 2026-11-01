@@ -134,9 +134,8 @@ export default function KartuBagianModul({
 
   return (
     <div className="space-y-4">
-      {kelas && materi ? <LabelBabModul kelas={kelas} materi={materi} /> : null}
-      <div className="rounded-3xl border-2 border-[#1C01A5]/15 bg-gradient-to-br from-[#F7F4FF] via-white to-[#FFF6D8] p-2 shadow-[inset_0_1px_0_#fff]">
-        <div ref={daftarTab} role="tablist" aria-label="Bagian modul" className="flex gap-2 overflow-x-auto overscroll-x-contain px-0.5 pb-1.5 [scrollbar-width:thin] [&::-webkit-scrollbar]:h-1.5 [&::-webkit-scrollbar-thumb]:rounded-full [&::-webkit-scrollbar-thumb]:bg-[#1C01A5]/35">
+      <LabelBabModul kelas={kelas} materi={materi}>
+        <div ref={daftarTab} role="tablist" aria-label="Bagian modul" className="flex w-full flex-nowrap gap-2 overflow-x-auto overscroll-x-contain px-2 pb-3 [scrollbar-width:thin] [&::-webkit-scrollbar]:h-1.5 [&::-webkit-scrollbar-thumb]:rounded-full [&::-webkit-scrollbar-thumb]:bg-white/45">
           {URUTAN.map((id, urutan) => {
             const tab = META[id];
             const dipilih = id === idTampil;
@@ -167,7 +166,7 @@ export default function KartuBagianModul({
             );
           })}
         </div>
-      </div>
+      </LabelBabModul>
 
       <article id={`kartu-bagian-${idTampil}`} className="overflow-hidden rounded-none border border-black bg-white">
         <p className="px-4 pt-3 text-xs font-black uppercase tracking-wide text-[#1C01A5]">
