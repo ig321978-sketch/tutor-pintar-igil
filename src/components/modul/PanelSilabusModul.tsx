@@ -45,9 +45,6 @@ export default function PanelSilabusModul({
   });
   return (
     <div className="space-y-5">
-      <p className="text-sm font-semibold text-[#1C01A5]/75">
-        Komponen utama Kurikulum Merdeka Kemendikbudristek.
-      </p>
       <div className="space-y-3">
         {silabus.map((item) => (
           <article
