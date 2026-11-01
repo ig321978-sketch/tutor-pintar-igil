@@ -38,8 +38,8 @@ function batasHalaman(langkah: LangkahQuest[], indeks: number) {
 
 function kelasTab(aktif: boolean, boleh: boolean) {
   if (aktif) return "bg-white text-indigo-800 shadow-[0_3px_0_#F0AB00]";
-  if (boleh) return "bg-white/12 text-white ring-1 ring-inset ring-white/30 hover:bg-white/20";
-  return "bg-white/5 text-white/35";
+  if (boleh) return "bg-white/70 text-indigo-700 ring-1 ring-inset ring-indigo-200/80 hover:bg-white";
+  return "bg-white/75 text-indigo-500";
 }
 
 export function QuestLangkah({
@@ -124,8 +124,8 @@ export function QuestLangkah({
 
   return (
     <section ref={akar} className="scroll-mt-24 space-y-4">
-      <div className="relative overflow-hidden rounded-2xl bg-gradient-to-br from-indigo-800 via-indigo-600 to-violet-600 text-white shadow-[0_12px_28px_-14px_rgba(49,46,129,0.85)]">
-        <div className="pointer-events-none absolute -right-6 -top-8 h-28 w-28 rounded-full bg-[#F0AB00]/30 blur-2xl" />
+      <div className="relative -mx-4 w-[calc(100%+2rem)] overflow-hidden rounded-none bg-gradient-to-br from-[#eef2ff] via-[#ece8ff] to-[#f7f3ff] text-[#1C01A5] shadow-[0_10px_24px_-18px_rgba(67,56,202,0.55)]">
+        <div className="pointer-events-none absolute -right-6 -top-8 h-28 w-28 rounded-full bg-[#F0AB00]/20 blur-2xl" />
         <div className="px-4 pb-4 pt-4">
           {(() => {
             const lencana = sekarang.tab || sekarang.bagian;
@@ -134,19 +134,19 @@ export function QuestLangkah({
             return (
               <>
                 {beda ? (
-                  <p className="inline-flex items-center gap-1.5 rounded-full bg-white/15 px-3 py-1 text-[11px] font-black uppercase tracking-[0.16em] text-amber-200 ring-1 ring-white/25">
+                  <p className="inline-flex items-center gap-1.5 rounded-full bg-white/80 px-3 py-1 text-[11px] font-black uppercase tracking-[0.16em] text-indigo-700 ring-1 ring-indigo-200">
                     <span className="h-1.5 w-1.5 rounded-full bg-[#F0AB00]" />
                     {lencana}
                   </p>
                 ) : null}
-                <p className={`text-2xl font-extrabold tracking-tight text-white ${beda ? "mt-2" : ""}`}>
+                <p className={`text-2xl font-extrabold tracking-tight text-[#1C01A5] ${beda ? "mt-2" : ""}`}>
                   {judulKepala}
                 </p>
               </>
             );
           })()}
         </div>
-        <div ref={daftarTab} role="tablist" aria-label="Bagian materi" className="flex flex-nowrap gap-2 overflow-x-auto overscroll-x-contain border-t border-white/15 px-3 py-2.5 [scrollbar-width:thin] [&::-webkit-scrollbar]:h-1.5 [&::-webkit-scrollbar-thumb]:rounded-full [&::-webkit-scrollbar-thumb]:bg-white/40">
+        <div ref={daftarTab} role="tablist" aria-label="Bagian materi" className="flex flex-nowrap gap-2 overflow-x-auto overscroll-x-contain border-t border-indigo-100 px-3 py-2.5 [scrollbar-width:thin] [&::-webkit-scrollbar]:h-1.5 [&::-webkit-scrollbar-thumb]:rounded-full [&::-webkit-scrollbar-thumb]:bg-indigo-300/70">
           {tabUnik.map((nama) => {
             const awal = langkah.findIndex((item) => item.tab === nama);
             const boleh = awal >= 0 && awal <= puncak;
