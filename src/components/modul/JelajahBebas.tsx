@@ -2,7 +2,7 @@
 
 import { createContext, useContext, type ReactNode } from "react";
 
-const KonteksJelajahBebas = createContext(false);
+const KonteksJelajahBebas = createContext(true);
 
 export function PenyediaJelajahBebas({
   nilai,

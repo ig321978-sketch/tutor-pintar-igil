@@ -437,7 +437,7 @@ export default function TutorAI() {
       ),
     [judulKelasSesi, judulMapelSesi, judulMateriSesi, params],
   );
-  const jelajahBebas = params.get("cek") === "1" || adalahAdmin;
+  const jelajahBebas = true;
   const kuisMateriTuntas =
     jelajahBebas ||
     kuisMateriSudahTuntas(kuisMateriSelesai, idKuisMateri);
