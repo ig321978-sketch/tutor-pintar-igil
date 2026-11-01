@@ -25,14 +25,14 @@ export default function LabelBabModul({
   const lencana = nomor ? `${tulisKelas(kelas)} • Bab ${nomor}` : tulisKelas(kelas);
   const adaJudul = Boolean(kelas.trim() && materi.trim());
   return (
-    <div className="-mx-2 w-[calc(100%+1rem)] bg-white text-[#1C01A5]">
+    <div className="-mx-2 w-[calc(100%+1rem)] bg-gradient-to-r from-indigo-900 via-blue-900 to-indigo-950 text-white">
       {adaJudul ? (
         <div className="px-4 py-3">
           <div className="flex flex-wrap items-center gap-2">
             <span className="rounded-full border border-indigo-500 bg-indigo-700/80 px-2.5 py-0.5 text-xs font-bold uppercase tracking-wider text-amber-300">
               {lencana}
             </span>
-            <span className="rounded-full border border-emerald-600/30 bg-emerald-50 px-2 py-0.5 text-xs font-semibold text-emerald-800">
+            <span className="rounded-full border border-emerald-400/40 bg-emerald-500/20 px-2 py-0.5 text-xs font-semibold text-emerald-300">
               Zero-Cost Client-Side
             </span>
           </div>
