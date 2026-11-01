@@ -71,7 +71,7 @@ function batasHalaman(langkah: LangkahQuest[], indeks: number) {
 }
 
 function kelasTab(aktif: boolean, boleh: boolean) {
-  if (aktif) return "bg-white text-indigo-800 shadow-[0_3px_0_#F0AB00]";
+  if (aktif) return "bg-[#1C01A5] text-white shadow-[0_3px_0_#F0AB00]";
   if (boleh) return "bg-white/70 text-indigo-700 ring-1 ring-inset ring-indigo-200/80 hover:bg-white";
   return "bg-white/75 text-indigo-500";
 }
