@@ -18,7 +18,7 @@ import { MISI_MTK5_BAB2, TEMA_MTK5_BAB2 } from "@/lib/misi-mtk-5-bab2";
 import { MODUL_MTK5_BAB2 } from "@/lib/modul-resmi-mtk-5-bab2";
 import {
   duaBelas,
-  duaPuluhEmpat,
+  duaPuluhDelapan,
   empat,
   empatPuluh,
   empatPuluhDua,
@@ -37,7 +37,6 @@ import {
   primaSembilanEnam,
   primaTigaEnam,
   sembilanBukanPrima,
-  tanggalDuaPuluhEmpat,
   tiga,
   tigaPuluhEnam,
   tigaPuluhLima,
@@ -605,6 +604,143 @@ function SubbabKelipatan({ kelas, kelamin }: { kelas?: string; kelamin?: Kelamin
   );
 }
 
+function DaftarHijau({ judul, daftar, hijau }: { judul: string; daftar: number[]; hijau: number[] }) {
+  return (
+    <p className="text-sm font-bold text-slate-700">
+      {judul}{" "}
+      {daftar.map((angka) => (
+        <span key={`${judul}-${angka}`} className={`mx-1 inline-block rounded-full px-2 py-1 font-black ${hijau.includes(angka) ? "bg-emerald-500 text-white" : "bg-white text-[#1C01A5]"}`}>{angka}</span>
+      ))}
+    </p>
+  );
+}
+
+function GambarTemuKpk() {
+  const baris = [
+    { nama: "Lompat 4", langkah: 4, banyak: 6 },
+    { nama: "Lompat 6", langkah: 6, banyak: 4 },
+  ];
+  return (
+    <div className="space-y-3 rounded-2xl border-2 border-amber-200 bg-amber-50 p-3">
+      <p className="text-sm font-black text-[#1C01A5]">Gambar pertemuan lompatan</p>
+      {baris.map((barisItem) => (
+        <div key={barisItem.nama}>
+          <p className="text-sm font-black text-[#1C01A5]">{barisItem.nama}</p>
+          <div className="mt-1 space-y-1">
+            {Array.from({ length: barisItem.banyak }, (_, kali) => {
+              const hasil = barisItem.langkah * (kali + 1);
+              const temu = hasil === 12 || hasil === 24;
+              return (
+                <div key={hasil} className="flex items-center gap-2">
+                  <div className="flex flex-wrap gap-0.5">
+                    {Array.from({ length: barisItem.langkah }, (_, kotak) => (
+                      <span key={kotak} className={`h-2.5 w-2.5 rounded-sm ${temu ? "bg-emerald-500" : "bg-amber-400"}`} />
+                    ))}
+                  </div>
+                  <span className={`text-sm font-black ${temu ? "text-emerald-700" : "text-[#1C01A5]"}`}>{hasil}</span>
+                </div>
+              );
+            })}
+          </div>
+        </div>
+      ))}
+      <p className="text-sm font-semibold text-emerald-800">Titik hijau bertemu. Yang paling kecil, 12, adalah KPK.</p>
+    </div>
+  );
+}
+
+function LambangKpk() {
+  return (
+    <div className="rounded-2xl border-2 border-[#1C01A5]/20 bg-white p-3">
+      <p className="text-sm font-black text-[#1C01A5]">Lambang KPK 4 dan 6</p>
+      <p className="mt-2 text-lg font-black text-[#1C01A5]">4 × 1 = 4 &nbsp; 4 × 2 = 8 &nbsp; 4 × 3 = <span className="text-emerald-700">12</span></p>
+      <p className="mt-1 text-lg font-black text-[#1C01A5]">6 × 1 = 6 &nbsp; 6 × 2 = <span className="text-emerald-700">12</span></p>
+      <p className="mt-2 text-sm font-semibold text-emerald-800">KPK(4, 6) = 12</p>
+    </div>
+  );
+}
+
+const PILIHAN_KPK = ["44", "70", "55"];
+const HALAMAN_B = ["1 · Cerita", "2 · Infografis", "3 · Pictorial", "4 · Lambang"];
+
+function SubbabKpk({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminGuru }) {
+  const kuis = useKuisMateri();
+  const [halaman, setHalaman] = useState(0);
+  const grup = [
+    [idKuis("A", 2), idKuis("A", 3)],
+    [idKuis("B", 2), idKuis("B", 3)],
+    [idKuis("B", 15), idKuis("B", 16), idKuis("B", 17)],
+    [idKuis("A", 14), idKuis("B", 14), idKuis("B", 18)],
+  ];
+  const selesai = grup[halaman].every((id) => kuis?.sudahBenar(id));
+  return (
+    <section className="space-y-4 border-b-4 border-[#1C01A5] pb-8">
+      <p className="text-xl font-black leading-snug text-[#1C01A5]">Kelipatan persekutuan</p>
+      <p className="text-lg font-black text-[#1C01A5]">Halaman {HALAMAN_B[halaman]}</p>
+      {halaman === 0 ? (
+        <>
+          <TombolVoiceMateriPai1 kelas={kelas} kelamin={kelamin} cuplikan={cuplikanKalimat(["Tulis dua daftar kelipatan. Tandai yang sama.", "Yang paling kecil adalah KPK, waktu pertemuan terdekat."])} />
+          <GambarBukit jenis="jadwal" />
+          <Dialog nama="Laras" anak="Aku menaikkan layangan setiap 4 hari." />
+          <Dialog nama="Dimas" anak="Aku setiap 6 hari. Hari ini, 5 September, kita bersama." />
+          <Dialog nama="Sena" anak="Daftar 4 dan daftar 6 sama-sama punya 12 dan 24." />
+          <Dialog nama="Igil" anak="Itu kelipatan persekutuan. Yang terkecil, 12, adalah KPK." />
+          <DuaLompat />
+          <KuisSuara id={idKuis("A", 2)} pertanyaan="Berapa KPK dari 5 dan 9?" periksa={empatPuluhLima} petunjuk="Tulis kelipatan 5 dan kelipatan 9 sampai ketemu yang sama dan paling kecil." benar="Empat puluh lima." />
+          <TulisBebas id={idKuis("A", 3)} judul="Dua lompatan lain" visual={<Papan anak="8 · 16 · 24 · …    10 · 20 · 30 · …" />} pertanyaan="Tulis KPK dari 8 dan 10." pesanSalah="Cari bilangan yang sama di kedua daftar, lalu ambil yang terkecil." bantuan="Kelipatan 8 dan 10 bertemu di 40." umpan="40." periksa={empatPuluh} alias={["40", "empat puluh"]} konteks="KPK 8 dan 10 adalah 40." />
+        </>
+      ) : null}
+      {halaman === 1 ? (
+        <>
+          <Dialog nama="Igil" anak="Infografis jadwal menaruh daftar 4 dan daftar 6. Yang sama dan paling kecil dipakai untuk hari berikutnya." />
+          <div className="space-y-2 rounded-2xl border-2 border-amber-200 bg-amber-50 p-3">
+            <DaftarHijau judul="Lompat 4" daftar={[4, 8, 12]} hijau={[12]} />
+            <DaftarHijau judul="Lompat 6" daftar={[6, 12, 18]} hijau={[12]} />
+            <DaftarHijau judul="Yang sama" daftar={[12, 24]} hijau={[12, 24]} />
+          </div>
+          <TabelInfoGrafis
+            judul="Infografis: KPK 4 dan 6"
+            kepala={["Langkah", "Yang dilakukan", "Contoh"]}
+            baris={[
+              ["1", "Tulis kelipatan", "4, 8, 12 dan 6, 12, 18"],
+              ["2", "Tandai yang sama", "12 dan 24"],
+              ["3", "Ambil yang terkecil", "12"],
+            ]}
+            kaki="KPK 4 dan 6 adalah 12."
+          />
+          <KuisSuara id={idKuis("B", 2)} pertanyaan="Berapa KPK dari 3, 4, dan 5?" periksa={enamPuluh} petunjuk="Cari bilangan yang ada di ketiga daftar kelipatan." benar="Enam puluh." />
+          <TulisBebas id={idKuis("B", 3)} judul="Lompat empat dan tujuh" visual={<Papan anak="4 · 8 · 12 · …    7 · 14 · 21 · …" />} pertanyaan="Tulis KPK dari 4 dan 7." pesanSalah="Cari bilangan yang sama, lalu ambil yang terkecil." bantuan="4, 8, 12, 16, 20, 24, 28. Tujuh berhenti di 28." umpan="28." periksa={duaPuluhDelapan} alias={["28", "dua puluh delapan"]} konteks="KPK 4 dan 7 adalah 28." />
+        </>
+      ) : null}
+      {halaman === 2 ? (
+        <>
+          <GambarTemuKpk />
+          <KalenderTemu />
+          <SusunToken id={idKuis("B", 15)} perintah="Susun kelipatan persekutuan 11 dan 3 dari yang kecil." acak={["99", "33", "66"]} benar={["33", "66", "99"]} umpan="33, 66, 99." />
+          <KuisBenarSalah id={idKuis("B", 16)} perintah="Pilih benar atau salah." baris={[{ teks: "26 adalah kelipatan persekutuan 2 dan 13.", benar: true }, { teks: "27 adalah kelipatan persekutuan 9 dan 6.", benar: false }, { teks: "25 adalah kelipatan persekutuan 4 dan 6.", benar: false }]} umpan="26 ada di daftar 2 dan daftar 13. 27 tidak habis dibagi 6. 25 tidak habis dibagi 4." />
+          <KuisCocok id={idKuis("B", 17)} perintah="Pasangkan pasangan bilangan dengan KPK-nya." baris={[{ kiri: "KPK 11 dan 4", pilihan: PILIHAN_KPK, benar: "44" }, { kiri: "KPK 7 dan 10", pilihan: PILIHAN_KPK, benar: "70" }, { kiri: "KPK 11 dan 5", pilihan: PILIHAN_KPK, benar: "55" }]} umpan="44, 70, dan 55." />
+        </>
+      ) : null}
+      {halaman === 3 ? (
+        <>
+          <Dialog nama="Igil" anak="Untuk tiga bilangan, caranya sama. Kelipatan 2, 3, dan 4 sama-sama bertemu di 12. KPK-nya 12." />
+          <Dialog nama="Sena" anak="Jadwal bersama selalu memakai KPK, bukan jumlah dua bilangan." />
+          <LambangKpk />
+          <Pilih id={idKuis("A", 14)} pertanyaan="Mereka bersama tanggal 10 Oktober. Laras setiap 3 hari. Dimas setiap 7 hari. Kapan mereka bersama lagi?" visual={<Papan anak="10 Oktober + KPK(3, 7)" />} pilihan={[{ huruf: "A", teks: "13 Oktober" }, { huruf: "B", teks: "17 Oktober" }, { huruf: "C", teks: "31 Oktober" }, { huruf: "D", teks: "21 Oktober" }]} benar="C" umpan="KPK 3 dan 7 adalah 21. 10 + 21 = 31 Oktober." salah="Cari KPK dulu, lalu tambahkan pada tanggal 10." />
+          <Pilih id={idKuis("B", 14)} pertanyaan="Tiga lonceng berbunyi setiap 6 menit, 10 menit, dan 15 menit. Mereka bersama lagi setelah..." visual={<Papan anak="6 · 10 · 15" />} pilihan={[{ huruf: "A", teks: "30 menit" }, { huruf: "B", teks: "60 menit" }, { huruf: "C", teks: "1 menit" }, { huruf: "D", teks: "31 menit" }]} benar="A" umpan="KPK 6, 10, dan 15 adalah 30." salah="Cari kelipatan yang sama dan paling kecil." />
+          <Pilih id={idKuis("B", 18)} pertanyaan="KPK dari 7 dan 9 adalah..." pilihan={[{ huruf: "A", teks: "16" }, { huruf: "B", teks: "63" }, { huruf: "C", teks: "21" }, { huruf: "D", teks: "28" }]} benar="B" umpan="7 × 9 = 63. Itu pertemuan pertama." salah="Tulis dua daftar sampai ketemu yang sama dan paling kecil." />
+        </>
+      ) : null}
+      <div className="flex flex-wrap items-center gap-2">
+        <button type="button" disabled={halaman === 0} onClick={() => setHalaman((n) => n - 1)} className="rounded-full bg-white px-4 py-2 text-sm font-black text-[#1C01A5] ring-2 ring-[#1C01A5]/20 disabled:opacity-40">Kembali</button>
+        {halaman < 3 ? (
+          <button type="button" disabled={!selesai} onClick={() => setHalaman((n) => n + 1)} className="rounded-full bg-[#1C01A5] px-4 py-2 text-sm font-black text-white disabled:opacity-40">Lanjut</button>
+        ) : selesai ? <p className="text-sm font-bold text-emerald-800">Empat halaman kelipatan persekutuan selesai.</p> : null}
+      </div>
+    </section>
+  );
+}
+
 const PASANGAN_A = ["12", "4", "2"];
 const PASANGAN_B = ["10", "20", "2 × 3 × 5"];
 const PASANGAN_D = ["56", "6", "2 × 3 × 7"];
@@ -633,35 +769,7 @@ function KartuA({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminGuru }) {
           ))}
         </div>
         {tab === 0 ? <SubbabKelipatan kelas={kelas} kelamin={kelamin} /> : null}
-        {tab === 1 ? (
-        <Adegan judul="Sub-bab 2 — Kelipatan persekutuan dan KPK" jenis="jadwal" kelas={kelas} kelamin={kelamin} penjelasan={["Tulis dua daftar kelipatan. Tandai yang sama.", "Yang paling kecil adalah KPK, waktu pertemuan terdekat.", "Infografis jadwal mengingat KPK 4 dan 6."]}>
-          <Dialog nama="Laras" anak="Aku menaikkan layangan setiap 4 hari." />
-          <Dialog nama="Dimas" anak="Aku setiap 6 hari. Hari ini, 5 September, kita bersama." />
-          <Dialog nama="Sena" anak="Daftar 4 dan daftar 6 sama-sama punya 12 dan 24." />
-          <Dialog nama="Igil" anak="Itu kelipatan persekutuan. Yang terkecil, 12, adalah KPK." />
-          <DuaLompat />
-          <KalenderTemu />
-          <Dialog nama="Igil" anak="Infografis jadwal menaruh daftar 4 dan daftar 6. Yang sama dan paling kecil dipakai untuk hari berikutnya." />
-          <TabelInfoGrafis
-            judul="Infografis: KPK 4 dan 6"
-            kepala={["Langkah", "Yang dilakukan", "Contoh"]}
-            baris={[
-              ["1", "Tulis kelipatan", "4, 8, 12 dan 6, 12, 18"],
-              ["2", "Tandai yang sama", "12 dan 24"],
-              ["3", "Ambil yang terkecil", "12"],
-            ]}
-            kaki="KPK 4 dan 6 adalah 12."
-          />
-          <KuisSuara id={idKuis("A", 2)} pertanyaan="Berapa KPK dari 5 dan 9?" periksa={empatPuluhLima} petunjuk="Tulis kelipatan 5 dan kelipatan 9 sampai ketemu yang sama dan paling kecil." benar="Empat puluh lima." />
-          <TulisBebas id={idKuis("A", 3)} judul="Dua lompatan" visual={<Papan anak="KPK 6 dan 8" />} pertanyaan="Tulis KPK dari 6 dan 8." pesanSalah="Cari bilangan yang sama di kedua daftar, lalu ambil yang terkecil." bantuan="Kelipatan 6 dan 8 bertemu di 24." umpan="24." periksa={duaPuluhEmpat} alias={["24", "dua puluh empat"]} konteks="KPK 6 dan 8 adalah 24." />
-          <Dialog nama="Igil" anak="Untuk tiga bilangan, caranya sama. Kelipatan 2, 3, dan 4 sama-sama bertemu di 12. KPK-nya 12." />
-          <Dialog nama="Sena" anak="Jadwal bersama selalu memakai KPK, bukan jumlah dua bilangan." />
-          <KuisSuara id={idKuis("B", 2)} pertanyaan="Berapa KPK dari 3, 4, dan 5?" periksa={enamPuluh} petunjuk="Cari bilangan yang ada di ketiga daftar kelipatan." benar="Enam puluh." />
-          <TulisBebas id={idKuis("B", 3)} judul="Juli di bukit" visual={<Papan anak="Bersama 14 Juli. Laras tiap 5 hari. Dimas tiap 2 hari." />} pertanyaan="Tulis tanggal mereka bersama lagi." pesanSalah="Cari KPK 5 dan 2, lalu tambahkan pada tanggal 14." bantuan="KPK 5 dan 2 adalah 10. 14 + 10 = 24." umpan="24 Juli." periksa={tanggalDuaPuluhEmpat} alias={["24", "dua puluh empat"]} konteks="Mereka bersama lagi tanggal 24 Juli." />
-          <Pilih id={idKuis("A", 14)} pertanyaan="Laras setiap 4 hari, Dimas setiap 6 hari. Mereka bersama tanggal 5 September. Kapan mereka bersama lagi?" visual={<Papan anak="5 September + KPK(4, 6)" />} pilihan={[{ huruf: "A", teks: "11 September" }, { huruf: "B", teks: "17 September" }, { huruf: "C", teks: "9 September" }, { huruf: "D", teks: "24 September" }]} benar="B" umpan="KPK-nya 12. 5 + 12 = 17 September." salah="Tambahkan KPK pada tanggal 5, jangan menambahkan 4 atau 6 saja." />
-          <Pilih id={idKuis("B", 14)} pertanyaan="Tiga lonceng berbunyi setiap 6 menit, 10 menit, dan 15 menit. Mereka bersama lagi setelah..." visual={<Papan anak="6 · 10 · 15" />} pilihan={[{ huruf: "A", teks: "30 menit" }, { huruf: "B", teks: "60 menit" }, { huruf: "C", teks: "1 menit" }, { huruf: "D", teks: "31 menit" }]} benar="A" umpan="KPK 6, 10, dan 15 adalah 30. FPB ketiganya 1." salah="Cari kelipatan yang sama dan paling kecil." />
-        </Adegan>
-        ) : null}
+        {tab === 1 ? <SubbabKpk kelas={kelas} kelamin={kelamin} /> : null}
         {tab === 2 ? (
         <Adegan judul="Sub-bab 3 — Faktor" jenis="pita" kelas={kelas} kelamin={kelamin} penjelasan={["Faktor membagi habis. Tidak boleh ada sisa.", "Faktor berpasangan. Kali dua pasangannya kembali ke bilangan semula.", "Infografis pita menunjukkan pasangan 18."]}>
           <Dialog nama="Sena" anak="Pita ini 12 petak. Aku potong sama panjang, tanpa sisa." />

@@ -135,6 +135,10 @@ export function duaPuluhEmpat(teks: string): boolean {
   return tepat(teks, "24");
 }
 
+export function duaPuluhDelapan(teks: string): boolean {
+  return tepat(teks, "28");
+}
+
 export function enamPuluh(teks: string): boolean {
   return tepat(teks, "60");
 }
