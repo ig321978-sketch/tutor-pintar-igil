@@ -12,6 +12,7 @@ import {
   JUDUL_MTK_1_BAB1,
   JUDUL_MTK_1_BAB2,
   JUDUL_MTK_1_BAB3,
+  JUDUL_MTK_1_BAB4,
   OPSI_LAINNYA,
   daftarMapelUntukKelas,
   labelJenjangKelas,
@@ -249,7 +250,9 @@ export default function RuangBelajarPage() {
             ? "/ruang-belajar/mtk-1-bab2"
             : materi === JUDUL_MTK_1_BAB3
               ? "/ruang-belajar/mtk-1-bab3"
-              : ""
+              : materi === JUDUL_MTK_1_BAB4
+                ? "/ruang-belajar/mtk-1-bab4"
+                : ""
         : "";
     if (jalurModul) {
       router.push(
@@ -280,8 +283,8 @@ export default function RuangBelajarPage() {
       judul="📚 Ruang Belajar"
       subjudul={
         kunciPublik
-          ? "Matematika kelas 1 SD, Bab 1, Bab 2, dan Bab 3 sudah siap di perangkat ini."
-          : "Bab 1, Bab 2, dan Bab 3 Matematika kelas 1 sudah terpasang. Bab lain masih kosong."
+          ? "Matematika kelas 1 SD, Bab 1, Bab 2, Bab 3, dan Bab 4 sudah siap di perangkat ini."
+          : "Bab 1, Bab 2, Bab 3, dan Bab 4 Matematika kelas 1 sudah terpasang. Bab lain masih kosong."
       }
     >
       <section className="grid gap-6">
@@ -520,7 +523,7 @@ export default function RuangBelajarPage() {
       </div>
       <p className="mt-3 flex items-center gap-2 text-sm text-slate-500">
         <Sparkles className="h-4 w-4 text-[#F0AB00]" />
-        Bab 1, Bab 2, dan Bab 3 Matematika kelas 1 terbuka di sini. Bab lain masih kosong.
+        Bab 1, Bab 2, Bab 3, dan Bab 4 Matematika kelas 1 terbuka di sini. Bab lain masih kosong.
       </p>
     </PageShell>
   );

@@ -945,10 +945,11 @@ function tanpaBabModul(data: Record<string, Record<string, string[]>>) {
 export const JUDUL_MTK_1_BAB1 = "Bab 1: Ayo Membilang sampai dengan 10";
 export const JUDUL_MTK_1_BAB2 = "Bab 2: Penjumlahan sampai dengan 10";
 export const JUDUL_MTK_1_BAB3 = "Bab 3: Pengurangan sampai dengan 10";
+export const JUDUL_MTK_1_BAB4 = "Bab 4: Mengenal Bentuk";
 
 const BAB_TERPASANG: Record<string, Record<string, string[]>> = {
   "1 SD": {
-    Matematika: [JUDUL_MTK_1_BAB1, JUDUL_MTK_1_BAB2, JUDUL_MTK_1_BAB3],
+    Matematika: [JUDUL_MTK_1_BAB1, JUDUL_MTK_1_BAB2, JUDUL_MTK_1_BAB3, JUDUL_MTK_1_BAB4],
   },
 };
 
