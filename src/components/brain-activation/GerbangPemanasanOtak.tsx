@@ -12,11 +12,13 @@ export default function GerbangPemanasanOtak({
   kelas,
   mapel,
   materi,
+  lewati = false,
   children,
 }: {
   kelas: string;
   mapel: string;
   materi: string;
+  lewati?: boolean;
   children: ReactElement<{ onPilih: (bagian: BagianIsi) => void }>;
 }) {
   const modul = pemanasanUntukSesi(kelas, mapel, materi);
@@ -32,7 +34,7 @@ export default function GerbangPemanasanOtak({
     setMode(pemanasanSelesaiHariIni(modul.moduleId) ? "buka" : "penuh");
   }, [modul]);
 
-  if (!modul) return children;
+  if (lewati || !modul) return children;
   if (mode === "cek") return null;
 
   const pilihAsli = children.props.onPilih;

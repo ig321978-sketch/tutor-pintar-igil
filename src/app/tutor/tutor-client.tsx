@@ -68,6 +68,7 @@ import PemutarAudioGuru, {
 import { KuisMateriProvider } from "@/components/KuisMateriContext";
 import GerbangPemanasanOtak from "@/components/brain-activation/GerbangPemanasanOtak";
 import KartuBagianModul from "@/components/modul/KartuBagianModul";
+import { PenyediaJelajahBebas } from "@/components/modul/JelajahBebas";
 import PanelLatihanModul from "@/components/modul/PanelLatihanModul";
 import PanelMateriModul from "@/components/modul/PanelMateriModul";
 import PanelPraktikumModul from "@/components/modul/PanelPraktikumModul";
@@ -436,10 +437,10 @@ export default function TutorAI() {
       ),
     [judulKelasSesi, judulMapelSesi, judulMateriSesi, params],
   );
-  const kuisMateriTuntas = kuisMateriSudahTuntas(
-    kuisMateriSelesai,
-    idKuisMateri,
-  );
+  const jelajahBebas = params.get("cek") === "1" || adalahAdmin;
+  const kuisMateriTuntas =
+    jelajahBebas ||
+    kuisMateriSudahTuntas(kuisMateriSelesai, idKuisMateri);
   const isGenerating =
     statusKurikulum === "memuat" ||
     statusGlobal === "memuat" ||
@@ -1790,6 +1791,7 @@ export default function TutorAI() {
           ) : null}
 
           <div className="space-y-8">
+            <PenyediaJelajahBebas nilai={jelajahBebas}>
             <KuisMateriProvider
               selesai={kuisMateriSelesai}
               onBenar={tandaiKuisMateriBenar}
@@ -1798,6 +1800,7 @@ export default function TutorAI() {
               kelas={judulKelasSesi}
               mapel={judulMapelSesi}
               materi={judulMateriSesi}
+              lewati={jelajahBebas}
             >
             <KartuBagianModul
               daftar={opsiBagian}
@@ -2074,6 +2077,7 @@ export default function TutorAI() {
             />
             </GerbangPemanasanOtak>
             </KuisMateriProvider>
+            </PenyediaJelajahBebas>
           </div>
           </>
           )}

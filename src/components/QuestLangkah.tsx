@@ -2,6 +2,7 @@
 
 import { useEffect, useRef, useState, type ReactNode } from "react";
 import { BalokDompet, useJudulDompetMateri, useKepalaDompetSendiri } from "@/components/modul/KepalaDompetMateri";
+import { useJelajahBebas } from "@/components/modul/JelajahBebas";
 
 export type LangkahQuest = {
   kode: string;
@@ -73,7 +74,9 @@ export function QuestLangkah({
   const { awal: awalHalaman, akhir: akhirHalaman } = batasHalaman(langkah, indeks);
   const halaman = langkah.slice(awalHalaman, akhirHalaman + 1);
   const kuis = halaman.flatMap((item) => item.kuis ?? []);
-  const selesai = kuis.length === 0 || kuis.every((id) => sudahBenar(id));
+  const jelajah = useJelajahBebas();
+  const kuisSelesai = kuis.length === 0 || kuis.every((id) => sudahBenar(id));
+  const selesai = jelajah || kuisSelesai;
   const utuh = Boolean(sekarang?.tab) && halaman.length > 1;
   const tabUnik = langkah.reduce<string[]>((daftar, item) => {
     if (item.tab && !daftar.includes(item.tab)) daftar.push(item.tab);
@@ -126,12 +129,12 @@ export function QuestLangkah({
 
   const ke = (tujuan: number) => {
     if (tujuan < 0 || tujuan >= langkah.length) return;
-    if (!langkah[tujuan]?.bebas && tujuan > puncak) return;
+    if (!jelajah && !langkah[tujuan]?.bebas && tujuan > puncak) return;
     setIndeks(tujuan);
   };
 
   const lanjut = () => {
-    if (!selesai || akhirHalaman >= langkah.length - 1) return;
+    if ((!jelajah && !selesai) || akhirHalaman >= langkah.length - 1) return;
     const berikut = akhirHalaman + 1;
     setIndeks(berikut);
     setPuncak((lama) => Math.max(lama, berikut));
@@ -144,7 +147,7 @@ export function QuestLangkah({
         <div ref={daftarTab} role="tablist" aria-label="Bagian materi" className="flex flex-nowrap gap-2 overflow-x-auto overscroll-x-contain border-t border-indigo-100 px-3 py-2.5 [scrollbar-width:thin] [&::-webkit-scrollbar]:h-1.5 [&::-webkit-scrollbar-thumb]:rounded-full [&::-webkit-scrollbar-thumb]:bg-indigo-300/70">
           {tabUnik.map((nama) => {
             const awal = langkah.findIndex((item) => item.tab === nama);
-            const boleh = awal >= 0 && (langkah[awal]?.bebas || awal <= puncak);
+            const boleh = jelajah || (awal >= 0 && (langkah[awal]?.bebas || awal <= puncak));
             const aktif = sekarang.tab === nama;
             return (
               <button
@@ -174,10 +177,10 @@ export function QuestLangkah({
       {slot ? (
         <div id={slot.id} className={halaman.some((item) => item.kode === slot.padaKode) ? "mt-3" : "hidden"} />
       ) : null}
-      {kuis.length > 0 && selesai ? (
+      {!jelajah && kuis.length > 0 && kuisSelesai ? (
         <p className="text-sm font-bold text-emerald-800">Pos ini selesai. Lanjut kalau sudah siap.</p>
       ) : null}
-      {kuis.length > 0 && !selesai ? (
+      {!jelajah && kuis.length > 0 && !kuisSelesai ? (
         <p className="text-sm font-semibold text-slate-600">Selesaikan pos ini, lalu lanjut.</p>
       ) : null}
       <div className="flex flex-wrap items-center gap-2">
