@@ -37,9 +37,9 @@ function batasHalaman(langkah: LangkahQuest[], indeks: number) {
 }
 
 function kelasTab(aktif: boolean, boleh: boolean) {
-  if (aktif) return "border-white bg-white text-indigo-700 shadow-sm";
-  if (boleh) return "border-indigo-200/40 text-indigo-100 hover:bg-indigo-500/40";
-  return "border-transparent text-indigo-200/35";
+  if (aktif) return "bg-white text-indigo-800 shadow-[0_3px_0_#F0AB00]";
+  if (boleh) return "bg-white/12 text-white ring-1 ring-inset ring-white/30 hover:bg-white/20";
+  return "bg-white/5 text-white/35";
 }
 
 export function QuestLangkah({
@@ -54,6 +54,7 @@ export function QuestLangkah({
   slot?: { id: string; padaKode: string };
 }) {
   const akar = useRef<HTMLElement>(null);
+  const daftarTab = useRef<HTMLDivElement>(null);
   const sekali = useRef(false);
   const [siap, setSiap] = useState(false);
   const [indeks, setIndeks] = useState(0);
@@ -98,6 +99,15 @@ export function QuestLangkah({
     akar.current?.scrollIntoView({ block: "start" });
   }, [siap, indeks]);
 
+  useEffect(() => {
+    if (!siap) return;
+    const wadah = daftarTab.current;
+    const tombol = wadah?.querySelector<HTMLButtonElement>('[aria-selected="true"]');
+    if (!wadah || !tombol) return;
+    const kiri = tombol.getBoundingClientRect().left - wadah.getBoundingClientRect().left + wadah.scrollLeft - (wadah.clientWidth - tombol.offsetWidth) / 2;
+    wadah.scrollTo({ left: Math.max(0, kiri), behavior: "smooth" });
+  }, [siap, indeks]);
+
   if (!sekarang) return null;
 
   const ke = (tujuan: number) => {
@@ -114,26 +124,29 @@ export function QuestLangkah({
 
   return (
     <section ref={akar} className="scroll-mt-24 space-y-4">
-      <div className="overflow-hidden rounded-2xl bg-gradient-to-r from-indigo-700 via-indigo-600 to-violet-700 text-white shadow-lg">
-        <div className="px-4 py-4">
+      <div className="relative overflow-hidden rounded-2xl bg-gradient-to-br from-indigo-800 via-indigo-600 to-violet-600 text-white shadow-[0_12px_28px_-14px_rgba(49,46,129,0.85)]">
+        <div className="pointer-events-none absolute -right-6 -top-8 h-28 w-28 rounded-full bg-[#F0AB00]/30 blur-2xl" />
+        <div className="px-4 pb-4 pt-4">
           {(() => {
             const lencana = sekarang.tab || sekarang.bagian;
             const judulKepala = sekarang.kelompok || (utuh ? sekarang.tab : sekarang.judul);
+            const beda = lencana.toLowerCase() !== (judulKepala || "").toLowerCase();
             return (
               <>
-                {lencana.toLowerCase() !== (judulKepala || "").toLowerCase() ? (
-                  <p className="w-fit rounded-full bg-indigo-900/50 px-3 py-1 text-xs font-semibold uppercase tracking-wider">
+                {beda ? (
+                  <p className="inline-flex items-center gap-1.5 rounded-full bg-white/15 px-3 py-1 text-[11px] font-black uppercase tracking-[0.16em] text-amber-200 ring-1 ring-white/25">
+                    <span className="h-1.5 w-1.5 rounded-full bg-[#F0AB00]" />
                     {lencana}
                   </p>
                 ) : null}
-                <p className={`text-2xl font-extrabold tracking-tight ${lencana.toLowerCase() !== (judulKepala || "").toLowerCase() ? "mt-2" : ""}`}>
+                <p className={`text-2xl font-extrabold tracking-tight text-white ${beda ? "mt-2" : ""}`}>
                   {judulKepala}
                 </p>
               </>
             );
           })()}
         </div>
-        <div role="tablist" aria-label="Bagian materi" className="flex flex-wrap gap-1 border-t border-indigo-500/30 px-3 pb-2 pt-2">
+        <div ref={daftarTab} role="tablist" aria-label="Bagian materi" className="flex flex-nowrap gap-2 overflow-x-auto overscroll-x-contain border-t border-white/15 px-3 py-2.5 [scrollbar-width:thin] [&::-webkit-scrollbar]:h-1.5 [&::-webkit-scrollbar-thumb]:rounded-full [&::-webkit-scrollbar-thumb]:bg-white/40">
           {tabUnik.map((nama) => {
             const awal = langkah.findIndex((item) => item.tab === nama);
             const boleh = awal >= 0 && awal <= puncak;
@@ -148,7 +161,7 @@ export function QuestLangkah({
                 onClick={() => {
                   if (!aktif) ke(awal);
                 }}
-                className={`min-w-0 max-w-full whitespace-normal rounded-lg px-3 py-2 text-left text-sm font-bold leading-snug ${kelasTab(aktif, boleh)}`}
+                className={`inline-flex min-h-10 shrink-0 items-center whitespace-nowrap rounded-full px-3.5 py-2 text-sm font-black transition disabled:cursor-not-allowed ${kelasTab(aktif, boleh)}`}
               >
                 {nama}
               </button>
