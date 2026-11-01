@@ -36,12 +36,6 @@ function batasHalaman(langkah: LangkahQuest[], indeks: number) {
   return { awal, akhir };
 }
 
-function kelasTab(aktif: boolean, boleh: boolean) {
-  if (aktif) return "border-white bg-white text-indigo-700 shadow-sm";
-  if (boleh) return "border-indigo-200/40 text-indigo-100 hover:bg-indigo-500/40";
-  return "border-transparent text-indigo-200/35";
-}
-
 export function QuestLangkah({
   simpan,
   langkah,
@@ -63,7 +57,6 @@ export function QuestLangkah({
   const halaman = langkah.slice(awalHalaman, akhirHalaman + 1);
   const kuis = halaman.flatMap((item) => item.kuis ?? []);
   const selesai = kuis.length === 0 || kuis.every((id) => sudahBenar(id));
-  const utuh = Boolean(sekarang?.tab) && halaman.length > 1;
   const tabUnik = langkah.reduce<string[]>((daftar, item) => {
     if (item.tab && !daftar.includes(item.tab)) daftar.push(item.tab);
     return daftar;
@@ -114,30 +107,13 @@ export function QuestLangkah({
 
   return (
     <section ref={akar} className="scroll-mt-24 space-y-4">
-      <div className="overflow-hidden rounded-2xl bg-gradient-to-r from-indigo-700 via-indigo-600 to-violet-700 text-white shadow-lg">
-        <div className="px-4 py-4">
-          {(() => {
-            const lencana = sekarang.tab || sekarang.bagian;
-            const judulKepala = sekarang.kelompok || (utuh ? sekarang.tab : sekarang.judul);
-            return (
-              <>
-                {lencana.toLowerCase() !== (judulKepala || "").toLowerCase() ? (
-                  <p className="w-fit rounded-full bg-indigo-900/50 px-3 py-1 text-xs font-semibold uppercase tracking-wider">
-                    {lencana}
-                  </p>
-                ) : null}
-                <p className={`text-2xl font-extrabold tracking-tight ${lencana.toLowerCase() !== (judulKepala || "").toLowerCase() ? "mt-2" : ""}`}>
-                  {judulKepala}
-                </p>
-              </>
-            );
-          })()}
-        </div>
-        <div role="tablist" aria-label="Bagian materi" className="flex flex-wrap gap-1 border-t border-indigo-500/30 px-3 pb-2 pt-2">
+      {tabUnik.length > 0 ? (
+        <div role="tablist" aria-label="Bagian materi" className="grid grid-cols-2 gap-3 sm:grid-cols-3">
           {tabUnik.map((nama) => {
             const awal = langkah.findIndex((item) => item.tab === nama);
             const boleh = awal >= 0 && awal <= puncak;
             const aktif = sekarang.tab === nama;
+            const anak = langkah.find((item) => item.tab === nama)?.kelompok;
             return (
               <button
                 key={nama}
@@ -148,14 +124,23 @@ export function QuestLangkah({
                 onClick={() => {
                   if (!aktif) ke(awal);
                 }}
-                className={`min-w-0 max-w-full whitespace-normal rounded-lg px-3 py-2 text-left text-sm font-bold leading-snug ${kelasTab(aktif, boleh)}`}
+                className={`rounded-2xl border-2 p-4 text-left transition-all disabled:cursor-not-allowed ${
+                  aktif
+                    ? "scale-[1.02] border-indigo-700 bg-indigo-600 text-white shadow-lg"
+                    : boleh
+                      ? "border-slate-200 bg-white text-slate-700 hover:border-indigo-300"
+                      : "border-slate-100 bg-slate-50 text-slate-300"
+                }`}
               >
-                {nama}
+                <div className="text-xs font-extrabold uppercase opacity-80">{nama}</div>
+                {anak && anak.toLowerCase() !== nama.toLowerCase() ? (
+                  <div className="mt-0.5 text-sm font-black leading-snug">{anak}</div>
+                ) : null}
               </button>
             );
           })}
         </div>
-      </div>
+      ) : null}
       <div className="space-y-8">
         {halaman.map((item) => (
           <div key={item.kode} className="space-y-3">
