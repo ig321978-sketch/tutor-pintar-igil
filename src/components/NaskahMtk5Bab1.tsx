@@ -10,6 +10,7 @@ import TombolVoiceMateriPai1 from "@/components/TombolVoiceMateriPai1";
 import TujuanBelajar from "@/components/TujuanBelajar";
 import WritingCanvas from "@/components/WritingCanvas";
 import { useKuisMateri } from "@/components/KuisMateriContext";
+import { PictorialMateriBab1Kelas5 } from "@/components/PictorialMateriBab1Kelas5";
 import { QuestLangkah, type LangkahQuest } from "@/components/QuestLangkah";
 import { SLOT_AJUAN_SEBELUM_KARTU_D } from "@/components/NaskahMtk2Bab1";
 import type { KelaminGuru } from "@/lib/guru";
@@ -605,6 +606,19 @@ function TargetPembelajaran({ sasaran }: { sasaran: { judul: string; kuis: strin
   );
 }
 
+function GiliranPictorial({ awal, berikut }: { awal: ReactNode; berikut: ReactNode }) {
+  const [urut, setUrut] = useState(0);
+  return (
+    <div className="space-y-3">
+      <p className="text-lg font-black text-[#1C01A5]">Halaman 3 · Pictorial</p>
+      {urut === 0 ? awal : berikut}
+      <button type="button" onClick={() => setUrut((n) => (n === 0 ? 1 : 0))} className="rounded-full bg-[#1C01A5] px-4 py-2 text-sm font-black uppercase tracking-wide text-white">
+        Akses pictorial berikutnya
+      </button>
+    </div>
+  );
+}
+
 function denganTab(daftar: LangkahQuest[]): LangkahQuest[] {
   return daftar.map((item) => {
     const meta = TAB_LANGKAH[item.kode];
@@ -669,12 +683,16 @@ function langkahDermaga(kelas?: string, kelamin?: KelaminGuru): LangkahQuest[] {
       judul: "Gambar tiket",
       halaman: "3",
       isi: (
-        <div className="space-y-3">
-          <p className="text-lg font-black text-[#1C01A5]">Halaman 3 · Gambar</p>
-          <p className="text-sm font-semibold text-slate-700">Contoh gambar dari cerita dan tabel. Rak berwarna memuat angkanya. Batang memuat nilai tiap rak.</p>
-          <GambarRak digit={["1", "4", "5", "0", "0"]} judul="Gambar rak tiket Mira" />
-          <BatangNilai />
-        </div>
+        <GiliranPictorial
+          awal={
+            <div className="space-y-3">
+              <p className="text-sm font-semibold text-slate-700">Contoh gambar dari cerita dan tabel. Rak berwarna memuat angkanya. Batang memuat nilai tiap rak.</p>
+              <GambarRak digit={["1", "4", "5", "0", "0"]} judul="Gambar rak tiket Mira" />
+              <BatangNilai />
+            </div>
+          }
+          berikut={<PictorialMateriBab1Kelas5 subbab="A" />}
+        />
       ),
     },
     { kode: "a9", bagian: "Rak", judul: "Pasangkan bacaan", halaman: "3", kuis: [idKuis("A", 8)], isi: <KuisCocok id={idKuis("A", 8)} perintah="Pasangkan bilangan dengan bacaannya." baris={[{ kiri: "37.250", pilihan: BACA_A, benar: "tiga puluh tujuh ribu dua ratus lima puluh" }, { kiri: "80.006", pilihan: BACA_A, benar: "delapan puluh ribu enam" }, { kiri: "19.430", pilihan: BACA_A, benar: "sembilan belas ribu empat ratus tiga puluh" }]} umpan="37.250, 80.006, dan 19.430 sudah pada bacaan yang tepat." /> },
@@ -749,14 +767,18 @@ function langkahDermaga(kelas?: string, kelamin?: KelaminGuru): LangkahQuest[] {
       judul: "Gambar dua papan",
       halaman: "3",
       isi: (
-        <div className="space-y-3">
-          <p className="text-lg font-black text-[#1C01A5]">Halaman 3 · Gambar</p>
-          <p className="text-sm font-semibold text-slate-700">Contoh gambar dari cerita dan tabel. Rak ribuan yang beda diberi warna lebih terang.</p>
-          <div className="grid gap-2 sm:grid-cols-2">
-            <GambarRak digit={["5", "6", "5", "6", "0"]} judul="56.560" />
-            <GambarRak digit={["5", "7", "0", "0", "0"]} judul="57.000" />
-          </div>
-        </div>
+        <GiliranPictorial
+          awal={
+            <div className="space-y-3">
+              <p className="text-sm font-semibold text-slate-700">Contoh gambar dari cerita dan tabel. Rak ribuan yang beda diberi warna lebih terang.</p>
+              <div className="grid gap-2 sm:grid-cols-2">
+                <GambarRak digit={["5", "6", "5", "6", "0"]} judul="56.560" />
+                <GambarRak digit={["5", "7", "0", "0", "0"]} judul="57.000" />
+              </div>
+            </div>
+          }
+          berikut={<PictorialMateriBab1Kelas5 subbab="B" />}
+        />
       ),
     },
     { kode: "a10", bagian: "Banding", judul: "Susun dari kecil", halaman: "3", kuis: [idKuis("A", 9)], isi: <SusunToken id={idKuis("A", 9)} perintah="Susun dari yang paling kecil." acak={["78.897", "43.217", "56.475"]} benar={["43.217", "56.475", "78.897"]} umpan="43.217, 56.475, 78.897." /> },
@@ -826,12 +848,16 @@ function langkahDermaga(kelas?: string, kelamin?: KelaminGuru): LangkahQuest[] {
       judul: "Gambar uang Kiran",
       halaman: "3",
       isi: (
-        <div className="space-y-3">
-          <p className="text-lg font-black text-[#1C01A5]">Halaman 3 · Gambar</p>
-          <p className="text-sm font-semibold text-slate-700">Contoh gambar dari cerita dan tabel. Lembar besar, lembar sedang, lalu keping kecil.</p>
-          <KepingUang />
-          <GambarRak digit={["6", "3", "5", "0", "0"]} judul="63.500" />
-        </div>
+        <GiliranPictorial
+          awal={
+            <div className="space-y-3">
+              <p className="text-sm font-semibold text-slate-700">Contoh gambar dari cerita dan tabel. Lembar besar, lembar sedang, lalu keping kecil.</p>
+              <KepingUang />
+              <GambarRak digit={["6", "3", "5", "0", "0"]} judul="63.500" />
+            </div>
+          }
+          berikut={<PictorialMateriBab1Kelas5 subbab="C" />}
+        />
       ),
     },
     { kode: "c-susun", bagian: "Uang", judul: "Susun hasil", halaman: "3", kuis: [idKuis("B", 16)], isi: <SusunToken id={idKuis("B", 16)} perintah="Susun dari hasil yang paling kecil." acak={["2 × 10.000 + 4 × 1.000", "2 × 1.000 + 4 × 100", "2 × 10.000 + 4 × 100"]} benar={["2 × 1.000 + 4 × 100", "2 × 10.000 + 4 × 100", "2 × 10.000 + 4 × 1.000"]} umpan="2.400, lalu 20.400, lalu 24.000." /> },
@@ -903,12 +929,16 @@ function langkahDermaga(kelas?: string, kelamin?: KelaminGuru): LangkahQuest[] {
       judul: "Gambar empat operasi",
       halaman: "3",
       isi: (
-        <div className="space-y-3">
-          <p className="text-lg font-black text-[#1C01A5]">Halaman 3 · Gambar</p>
-          <p className="text-sm font-semibold text-slate-700">Contoh gambar dari cerita dan tabel. Warna mengikuti jenis hitungannya.</p>
-          <GambarOperasi />
-          <TabelKurang />
-        </div>
+        <GiliranPictorial
+          awal={
+            <div className="space-y-3">
+              <p className="text-sm font-semibold text-slate-700">Contoh gambar dari cerita dan tabel. Warna mengikuti jenis hitungannya.</p>
+              <GambarOperasi />
+              <TabelKurang />
+            </div>
+          }
+          berikut={<PictorialMateriBab1Kelas5 subbab="D" />}
+        />
       ),
     },
     { kode: "b10", bagian: "Hitung", judul: "Urut harga buah", halaman: "3", kuis: [idKuis("B", 8)], isi: <SusunToken id={idKuis("B", 8)} perintah="Susun harga buah dari yang paling murah." acak={["34.000", "15.000", "23.500", "32.000", "17.000"]} benar={["15.000", "17.000", "23.500", "32.000", "34.000"]} umpan="15.000, 17.000, 23.500, 32.000, 34.000." /> },
