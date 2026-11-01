@@ -1801,6 +1801,8 @@ export default function TutorAI() {
             >
             <KartuBagianModul
               daftar={opsiBagian}
+              kelas={judulKelasSesi}
+              materi={judulMateriSesi}
               aktif={tahapBelajar}
               materiTuntas={kuisMateriTuntas}
               mengunciKlik={isGenerating}
