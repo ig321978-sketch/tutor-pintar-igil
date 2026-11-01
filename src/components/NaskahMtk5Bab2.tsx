@@ -17,14 +17,14 @@ import { idKuisKartuResmi, idKuisTulisKartu } from "@/lib/kuis-materi";
 import { MISI_MTK5_BAB2, TEMA_MTK5_BAB2 } from "@/lib/misi-mtk-5-bab2";
 import { MODUL_MTK5_BAB2 } from "@/lib/modul-resmi-mtk-5-bab2";
 import {
-  duaBelas,
   duaPuluhDelapan,
   empat,
   empatPuluh,
   empatPuluhDua,
   empatPuluhLima,
-  enam,
   enamPuluh,
+  sebelas,
+  tujuh,
   faktorDuaPuluh,
   faktorDuaPuluhDelapan,
   faktorEnamBelas,
@@ -741,6 +741,279 @@ function SubbabKpk({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminGuru }
   );
 }
 
+function GambarPasangan({ judul, pasangan }: { judul: string; pasangan: Array<[string, string]> }) {
+  return (
+    <div className="rounded-2xl border-2 border-rose-200 bg-white p-3">
+      <p className="text-sm font-black text-[#1C01A5]">{judul}</p>
+      <div className="mt-2 space-y-2">
+        {pasangan.map(([kiri, kanan]) => (
+          <div key={`${judul}-${kiri}`} className="flex items-center gap-2">
+            <span className="w-8 text-center text-lg font-black text-[#1C01A5]">{kiri}</span>
+            <span className="text-sm font-black text-slate-500">×</span>
+            <span className="w-8 text-center text-lg font-black text-emerald-700">{kanan}</span>
+            <span className="h-3 flex-1 rounded bg-rose-300" />
+          </div>
+        ))}
+      </div>
+    </div>
+  );
+}
+
+const PILIHAN_PASANGAN = ["5", "7", "11"];
+const HALAMAN_C = ["1 · Cerita", "2 · Infografis", "3 · Pictorial", "4 · Lambang"];
+
+function SubbabFaktor({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminGuru }) {
+  const kuis = useKuisMateri();
+  const [halaman, setHalaman] = useState(0);
+  const grup = [
+    [idKuis("A", 4), idKuis("A", 5)],
+    [idKuis("B", 4), idKuis("B", 5)],
+    [idKuis("B", 12), idKuis("A", 19), idKuis("A", 20)],
+    [idKuis("A", 21), idKuis("A", 22), idKuis("A", 23)],
+  ];
+  const selesai = grup[halaman].every((id) => kuis?.sudahBenar(id));
+  return (
+    <section className="space-y-4 border-b-4 border-[#1C01A5] pb-8">
+      <p className="text-xl font-black leading-snug text-[#1C01A5]">Faktor</p>
+      <p className="text-lg font-black text-[#1C01A5]">Halaman {HALAMAN_C[halaman]}</p>
+      {halaman === 0 ? (
+        <>
+          <TombolVoiceMateriPai1 kelas={kelas} kelamin={kelamin} cuplikan={cuplikanKalimat(["Faktor membagi habis. Tidak boleh ada sisa.", "Faktor berpasangan. Kali dua pasangannya kembali ke bilangan semula."])} />
+          <GambarBukit jenis="pita" />
+          <Dialog nama="Sena" anak="Pita ini 12 petak. Aku potong sama panjang, tanpa sisa." />
+          <Dialog nama="Laras" anak="Kalau tiap potong 3 petak, dapat 4 potong. 3 kali 4 sama dengan 12." />
+          <Dialog nama="Dimas" anak="Kalau dipaksa 5 petak, ada sisa. 5 bukan faktor 12." />
+          <Dialog nama="Igil" anak="Faktor 12 adalah 1, 2, 3, 4, 6, dan 12. Pasangannya 1×12, 2×6, dan 3×4." />
+          <PitaDiam />
+          <Papan anak="1 × 12    2 × 6    3 × 4" />
+          <KuisSuara id={idKuis("A", 4)} pertanyaan="Sebutkan semua faktor 16, dari yang kecil." periksa={faktorEnamBelas} petunjuk="Cari bilangan yang membagi 16 tanpa sisa." benar="1, 2, 4, 8, dan 16." />
+          <TulisBebas id={idKuis("A", 5)} judul="Faktor dua puluh" visual={<Papan anak="Faktor dari 20" />} pertanyaan="Tulis semua faktor 20." pesanSalah="Yang membagi 20 tanpa sisa, urut dari yang kecil." bantuan="1, 2, 4, 5, 10, dan 20." umpan="1, 2, 4, 5, 10, 20." periksa={faktorDuaPuluh} alias={["1", "2", "4", "5", "10", "20"]} konteks="Faktor 20 adalah 1, 2, 4, 5, 10, dan 20." />
+        </>
+      ) : null}
+      {halaman === 1 ? (
+        <>
+          <Dialog nama="Laras" anak="Infografis 18 memakai cara pasangan yang sama. Setiap pasangan dikali kembali menjadi 18." />
+          <Dialog nama="Igil" anak="Faktor 18 berpasangan: 1 dengan 18, 2 dengan 9, 3 dengan 6. Jadi faktornya 1, 2, 3, 6, 9, dan 18." />
+          <GambarPasangan judul="Pasangan 18" pasangan={[["1", "18"], ["2", "9"], ["3", "6"]]} />
+          <TabelInfoGrafis
+            judul="Infografis: Pasangan faktor 18"
+            kepala={["Kecil", "Pasangan", "Kali"]}
+            baris={[
+              ["1", "18", "1 × 18"],
+              ["2", "9", "2 × 9"],
+              ["3", "6", "3 × 6"],
+            ]}
+            kaki="Faktor 18: 1, 2, 3, 6, 9, dan 18."
+          />
+          <KuisSuara id={idKuis("B", 4)} pertanyaan="Sebutkan semua faktor 15." periksa={faktorLimaBelas} petunjuk="Cari yang membagi 15 tanpa sisa." benar="1, 3, 5, dan 15." />
+          <TulisBebas id={idKuis("B", 5)} judul="Faktor 28" visual={<Papan anak="Faktor dari 28" />} pertanyaan="Tulis semua faktor 28." pesanSalah="Urutkan dari yang kecil. Jangan ada yang sisa." bantuan="1, 2, 4, 7, 14, dan 28." umpan="1, 2, 4, 7, 14, 28." periksa={faktorDuaPuluhDelapan} alias={["1", "2", "4", "7", "14", "28"]} konteks="Faktor 28 adalah 1, 2, 4, 7, 14, dan 28." />
+        </>
+      ) : null}
+      {halaman === 2 ? (
+        <>
+          <GambarPasangan judul="Gambar pasangan 12" pasangan={[["1", "12"], ["2", "6"], ["3", "4"]]} />
+          <GambarPasangan judul="Gambar pasangan 18" pasangan={[["1", "18"], ["2", "9"], ["3", "6"]]} />
+          <SusunToken id={idKuis("B", 12)} perintah="Susun faktor 10 dari yang paling kecil." acak={["5", "1", "10", "2"]} benar={["1", "2", "5", "10"]} umpan="1, 2, 5, 10." />
+          <KuisBenarSalah id={idKuis("A", 19)} perintah="Pilih benar atau salah." baris={[{ teks: "7 adalah faktor 14.", benar: true }, { teks: "4 adalah faktor 22.", benar: false }, { teks: "9 adalah faktor 27.", benar: true }]} umpan="14 = 7 × 2. 22 dibagi 4 bersisa. 27 = 9 × 3." />
+          <KuisCocok id={idKuis("A", 20)} perintah="Pasangkan bilangan dengan pasangan faktornya." baris={[{ kiri: "Pasangan 4 pada 20", pilihan: PILIHAN_PASANGAN, benar: "5" }, { kiri: "Pasangan 6 pada 42", pilihan: PILIHAN_PASANGAN, benar: "7" }, { kiri: "Pasangan 2 pada 22", pilihan: PILIHAN_PASANGAN, benar: "11" }]} umpan="5, 7, dan 11." />
+        </>
+      ) : null}
+      {halaman === 3 ? (
+        <>
+          <Dialog nama="Sena" anak="Cara pasangan ini juga dipakai untuk bilangan yang lebih besar." />
+          <div className="rounded-2xl border-2 border-[#1C01A5]/20 bg-white p-3">
+            <p className="text-sm font-black text-[#1C01A5]">Lambang faktor 12</p>
+            <p className="mt-2 text-lg font-black text-[#1C01A5]">12 = 1 × 12</p>
+            <p className="text-lg font-black text-[#1C01A5]">12 = 2 × 6</p>
+            <p className="text-lg font-black text-[#1C01A5]">12 = 3 × 4</p>
+          </div>
+          <Pilih id={idKuis("A", 21)} pertanyaan="Pasangan faktor 3 pada 21 adalah..." pilihan={[{ huruf: "A", teks: "5" }, { huruf: "B", teks: "6" }, { huruf: "C", teks: "7" }, { huruf: "D", teks: "9" }]} benar="C" umpan="3 × 7 = 21." salah="Cari bilangan yang dikali 3 menjadi 21." />
+          <Pilih id={idKuis("A", 22)} pertanyaan="Mana yang bukan faktor 30?" pilihan={[{ huruf: "A", teks: "5" }, { huruf: "B", teks: "6" }, { huruf: "C", teks: "8" }, { huruf: "D", teks: "10" }]} benar="C" umpan="30 dibagi 8 bersisa. 5, 6, dan 10 membagi 30." salah="Coba bagi 30 satu per satu." />
+          <Pilih id={idKuis("A", 23)} pertanyaan="Hasil 11 × 2 adalah..." pilihan={[{ huruf: "A", teks: "13" }, { huruf: "B", teks: "22" }, { huruf: "C", teks: "9" }, { huruf: "D", teks: "24" }]} benar="B" umpan="11 × 2 = 22. Jadi 2 dan 11 faktor 22." salah="Kalikan 11 dengan 2." />
+        </>
+      ) : null}
+      <div className="flex flex-wrap items-center gap-2">
+        <button type="button" disabled={halaman === 0} onClick={() => setHalaman((n) => n - 1)} className="rounded-full bg-white px-4 py-2 text-sm font-black text-[#1C01A5] ring-2 ring-[#1C01A5]/20 disabled:opacity-40">Kembali</button>
+        {halaman < 3 ? (
+          <button type="button" disabled={!selesai} onClick={() => setHalaman((n) => n + 1)} className="rounded-full bg-[#1C01A5] px-4 py-2 text-sm font-black text-white disabled:opacity-40">Lanjut</button>
+        ) : selesai ? <p className="text-sm font-bold text-emerald-800">Empat halaman faktor selesai.</p> : null}
+      </div>
+    </section>
+  );
+}
+
+const PILIHAN_FPB = ["19", "29", "31"];
+const HALAMAN_D = ["1 · Cerita", "2 · Infografis", "3 · Pictorial", "4 · Lambang"];
+
+function SubbabFaktorPersekutuan({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminGuru }) {
+  const kuis = useKuisMateri();
+  const [halaman, setHalaman] = useState(0);
+  const grup = [
+    [idKuis("A", 6), idKuis("A", 7)],
+    [idKuis("B", 6), idKuis("B", 7)],
+    [idKuis("B", 25), idKuis("B", 13), idKuis("B", 27)],
+    [idKuis("B", 19), idKuis("B", 20), idKuis("B", 21)],
+  ];
+  const selesai = grup[halaman].every((id) => kuis?.sudahBenar(id));
+  return (
+    <section className="space-y-4 border-b-4 border-[#1C01A5] pb-8">
+      <p className="text-xl font-black leading-snug text-[#1C01A5]">Faktor persekutuan</p>
+      <p className="text-lg font-black text-[#1C01A5]">Halaman {HALAMAN_D[halaman]}</p>
+      {halaman === 0 ? (
+        <>
+          <TombolVoiceMateriPai1 kelas={kelas} kelamin={kelamin} cuplikan={cuplikanKalimat(["Faktor yang dimiliki kedua bilangan disebut faktor persekutuan.", "Yang paling besar adalah FPB."])} />
+          <GambarBukit jenis="biji" />
+          <Dialog nama="Dimas" anak="Di congklak, biji merah untuk faktor 12. Biji biru untuk faktor 18." />
+          <Dialog nama="Laras" anak="Lubang yang berisi dua warna: 1, 2, 3, dan 6." />
+          <Dialog nama="Sena" anak="Yang terbesar 6. FPB 12 dan 18 adalah 6." />
+          <Dialog nama="Igil" anak="Faktor persekutuan adalah faktor yang dimiliki bersama. FPB adalah yang paling besar." />
+          <KuisSuara id={idKuis("A", 6)} pertanyaan="Berapa FPB dari 8 dan 20?" periksa={empat} petunjuk="Cari faktor yang sama, lalu ambil yang terbesar." benar="Empat." />
+          <TulisBebas id={idKuis("A", 7)} judul="Dua bilangan lain" visual={<Papan anak="FPB 14 dan 21" />} pertanyaan="Tulis FPB dari 14 dan 21." pesanSalah="Bandingkan faktor keduanya, lalu ambil yang terbesar." bantuan="Faktor yang sama: 1 dan 7. Yang terbesar 7." umpan="7." periksa={tujuh} alias={["7", "tujuh"]} konteks="FPB 14 dan 21 adalah 7." />
+        </>
+      ) : null}
+      {halaman === 1 ? (
+        <>
+          <Dialog nama="Igil" anak="Pita merah 24 dan pita putih 18. Ikat paling banyak ada 6. Tiap ikat: 4 merah dan 3 putih." />
+          <Dialog nama="Laras" anak="Membagi barang jadi kelompok sama rata memakai FPB, bukan KPK." />
+          <Papan anak="24 ÷ 6 = 4 merah    18 ÷ 6 = 3 putih" />
+          <TabelInfoGrafis
+            judul="Infografis: FPB 12 dan 18"
+            kepala={["Yang sama", "Ikat", "Isi"]}
+            baris={[
+              ["1, 2, 3, 6", "6 ikat", "paling banyak"],
+              ["Pita merah 24", "6 ikat", "4 tiap ikat"],
+              ["Pita putih 18", "6 ikat", "3 tiap ikat"],
+            ]}
+            kaki="FPB 12 dan 18 adalah 6."
+          />
+          <KuisSuara id={idKuis("B", 6)} pertanyaan="Berapa FPB dari 15 dan 35?" periksa={lima} petunjuk="Lihat faktor yang sama, lalu pilih yang terbesar." benar="Lima." />
+          <TulisBebas id={idKuis("B", 7)} judul="Dua pita kecil" visual={<Papan anak="FPB 22 dan 33" />} pertanyaan="Tulis FPB dari 22 dan 33." pesanSalah="Cari faktor yang sama, lalu ambil yang terbesar." bantuan="Keduanya punya faktor 11. Itu yang terbesar." umpan="11." periksa={sebelas} alias={["11", "sebelas"]} konteks="FPB 22 dan 33 adalah 11." />
+        </>
+      ) : null}
+      {halaman === 2 ? (
+        <>
+          <LubangBiji />
+          <Papan anak="24 ÷ 6 = 4 merah    18 ÷ 6 = 3 putih" />
+          <SusunToken id={idKuis("B", 25)} perintah="Susun faktor persekutuan 28 dan 42 dari yang kecil." acak={["14", "1", "7", "2"]} benar={["1", "2", "7", "14"]} umpan="1, 2, 7, 14. Yang terbesar, 14, adalah FPB." />
+          <KuisBenarSalah id={idKuis("B", 13)} perintah="Pilih benar atau salah." baris={[{ teks: "8 adalah FPB 8 dan 12.", benar: false }, { teks: "1 adalah FPB 8 dan 15.", benar: true }, { teks: "9 adalah FPB 18 dan 27.", benar: true }]} umpan="FPB 8 dan 12 adalah 4. FPB 8 dan 15 adalah 1. FPB 18 dan 27 adalah 9." />
+          <KuisCocok id={idKuis("B", 27)} perintah="Pasangkan pasangan bilangan dengan FPB-nya." baris={[{ kiri: "FPB 38 dan 57", pilihan: PILIHAN_FPB, benar: "19" }, { kiri: "FPB 58 dan 87", pilihan: PILIHAN_FPB, benar: "29" }, { kiri: "FPB 62 dan 93", pilihan: PILIHAN_FPB, benar: "31" }]} umpan="19, 29, dan 31." />
+        </>
+      ) : null}
+      {halaman === 3 ? (
+        <>
+          <Dialog nama="Igil" anak="FPB 6 dan 12 juga 6. FPB 12 dan 28 adalah 4. Kalau tidak ada prima yang berpasangan, seperti 15 dan 28, FPB-nya 1." />
+          <div className="rounded-2xl border-2 border-[#1C01A5]/20 bg-white p-3">
+            <p className="text-sm font-black text-[#1C01A5]">Lambang FPB 12 dan 18</p>
+            <p className="mt-2 text-lg font-black text-[#1C01A5]">12 = 2 × 2 × 3</p>
+            <p className="text-lg font-black text-[#1C01A5]">18 = 2 × 3 × 3</p>
+            <p className="mt-2 text-sm font-semibold text-emerald-800">FPB(12, 18) = 2 × 3 = 6</p>
+          </div>
+          <Pilih id={idKuis("B", 19)} pertanyaan="FPB dari 45 dan 30 adalah..." pilihan={[{ huruf: "A", teks: "5" }, { huruf: "B", teks: "15" }, { huruf: "C", teks: "10" }, { huruf: "D", teks: "3" }]} benar="B" umpan="Faktor yang sama dan terbesar adalah 15." salah="Cari faktor yang dimiliki 45 dan 30, lalu ambil yang terbesar." />
+          <Pilih id={idKuis("B", 20)} pertanyaan="FPB dari 52 dan 78 adalah..." pilihan={[{ huruf: "A", teks: "13" }, { huruf: "B", teks: "26" }, { huruf: "C", teks: "2" }, { huruf: "D", teks: "6" }]} benar="B" umpan="52 = 2 × 2 × 13. 78 = 2 × 3 × 13. FPB = 2 × 13 = 26." salah="Ambil faktor prima yang berpasangan." />
+          <Pilih id={idKuis("B", 21)} pertanyaan="Ada 46 pita merah dan 69 pita putih. Ikat paling banyak ada..." pilihan={[{ huruf: "A", teks: "23" }, { huruf: "B", teks: "2" }, { huruf: "C", teks: "3" }, { huruf: "D", teks: "46" }]} benar="A" umpan="FPB 46 dan 69 adalah 23. Tiap ikat: 2 merah dan 3 putih." salah="Ikat paling banyak memakai FPB, bukan jumlah pita." />
+        </>
+      ) : null}
+      <div className="flex flex-wrap items-center gap-2">
+        <button type="button" disabled={halaman === 0} onClick={() => setHalaman((n) => n - 1)} className="rounded-full bg-white px-4 py-2 text-sm font-black text-[#1C01A5] ring-2 ring-[#1C01A5]/20 disabled:opacity-40">Kembali</button>
+        {halaman < 3 ? (
+          <button type="button" disabled={!selesai} onClick={() => setHalaman((n) => n + 1)} className="rounded-full bg-[#1C01A5] px-4 py-2 text-sm font-black text-white disabled:opacity-40">Lanjut</button>
+        ) : selesai ? <p className="text-sm font-bold text-emerald-800">Empat halaman faktor persekutuan selesai.</p> : null}
+      </div>
+    </section>
+  );
+}
+
+const PILIHAN_URAI = ["2 × 2 × 5", "3 × 3 × 5", "3 × 3 × 7"];
+const HALAMAN_E = ["1 · Cerita", "2 · Infografis", "3 · Pictorial", "4 · Lambang"];
+
+function SubbabTentukan({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminGuru }) {
+  const kuis = useKuisMateri();
+  const [halaman, setHalaman] = useState(0);
+  const grup = [
+    [idKuis("A", 8), idKuis("A", 9)],
+    [idKuis("B", 8), idKuis("B", 9)],
+    [idKuis("B", 11), idKuis("A", 13), idKuis("A", 11)],
+    [idKuis("B", 10), idKuis("B", 23), idKuis("B", 24)],
+  ];
+  const selesai = grup[halaman].every((id) => kuis?.sudahBenar(id));
+  return (
+    <section className="space-y-4 border-b-4 border-[#1C01A5] pb-8">
+      <p className="text-xl font-black leading-snug text-[#1C01A5]">Menentukan KPK dan FPB</p>
+      <p className="text-lg font-black text-[#1C01A5]">Halaman {HALAMAN_E[halaman]}</p>
+      {halaman === 0 ? (
+        <>
+          <TombolVoiceMateriPai1 kelas={kelas} kelamin={kelamin} cuplikan={cuplikanKalimat(["Bilangan prima hanya dibagi 1 dan dirinya. Satu bukan prima.", "Faktorisasi prima mengurai sampai ujungnya prima."])} />
+          <GambarBukit jenis="saring" />
+          <Dialog nama="Sena" anak="Prima hanya punya dua faktor: 1 dan bilangan itu sendiri." />
+          <Dialog nama="Laras" anak="Eratosthenes menyaring prima dengan mencoret kelipatan." />
+          <Dialog nama="Igil" anak="Coret 1 dulu. Satu bukan bilangan prima. Bilangan yang diambil sendiri tidak dicoret." />
+          <div className="grid gap-2 sm:grid-cols-2">
+            <p className="rounded-2xl border-2 border-emerald-300 bg-emerald-50 p-3 text-sm font-black text-emerald-800">5. Faktornya 1 dan 5. Prima.</p>
+            <p className="rounded-2xl border-2 border-rose-200 bg-rose-50 p-3 text-sm font-black text-rose-800">4. Faktornya 1, 2, dan 4. Bukan prima.</p>
+          </div>
+          <KuisSuara id={idKuis("A", 8)} pertanyaan="Apakah 9 termasuk bilangan prima? Jawab ya atau bukan, lalu beri alasan singkat." periksa={sembilanBukanPrima} petunjuk="Coba bagi 9 dengan 3." benar="Bukan. 9 = 3 × 3." />
+          <TulisBebas id={idKuis("A", 9)} judul="Pohon 36" visual={<Papan anak="36 = ⬜ × ⬜ × ⬜ × ⬜" />} pertanyaan="Tulis faktorisasi prima 36." pesanSalah="Urai sampai semuanya prima." bantuan="36 = 2 × 2 × 3 × 3." umpan="2 × 2 × 3 × 3." periksa={primaTigaEnam} alias={["2", "2", "3", "3"]} konteks="36 = 2 × 2 × 3 × 3." />
+        </>
+      ) : null}
+      {halaman === 1 ? (
+        <>
+          <Dialog nama="Igil" anak="Infografis ini mengingat cara mengenali prima sebelum mengurai bilangan." />
+          <TabelInfoGrafis
+            judul="Infografis: Mengenal prima"
+            kepala={["Cek", "Keputusan", "Contoh"]}
+            baris={[
+              ["1", "bukan prima", "hanya satu faktor"],
+              ["Dua faktor", "prima", "1 dan dirinya"],
+              ["4", "bukan prima", "4 = 2 × 2"],
+            ]}
+            kaki="Prima hanya dibagi 1 dan dirinya."
+          />
+          <KuisSuara id={idKuis("B", 8)} pertanyaan="Sebutkan empat bilangan prima yang pertama." periksa={primaPertama} petunjuk="Mulai dari yang terkecil. Satu tidak ikut." benar="2, 3, 5, dan 7." />
+          <TulisBebas id={idKuis("B", 9)} judul="Urai 96" visual={<Papan anak="96" />} pertanyaan="Tulis faktorisasi prima 96." pesanSalah="Bagi dua sampai tidak habis lagi, lalu lanjut ke prima berikutnya." bantuan="96 = 2 × 2 × 2 × 2 × 2 × 3." umpan="2 × 2 × 2 × 2 × 2 × 3." periksa={primaSembilanEnam} alias={["2", "3"]} konteks="96 = 2 × 2 × 2 × 2 × 2 × 3." />
+        </>
+      ) : null}
+      {halaman === 2 ? (
+        <>
+          <Dialog nama="Igil" anak="Coret 1 dulu. Lalu coret kelipatan 2, 3, 5, 7, dan seterusnya. Bilangan yang diambil sendiri tidak dicoret." />
+          <PrimaDiam />
+          <Dialog nama="Laras" anak="Sampai 30 ada 10 bilangan prima. Kalau saringan dilanjutkan sampai 100, bilangan primanya ada 25." />
+          <Dialog nama="Sena" anak="Hari dan pasaran yang sama kembali pada KPK dari 7 dan 5. Jika Pahing jatuh pada Selasa, Pahing berikutnya jatuh pada Minggu." />
+          <PohonEnamPuluh />
+          <Dialog nama="Igil" anak="12 = 2 × 2 × 3. 196 = 2 × 2 × 7 × 7. 300 = 2 × 2 × 3 × 5 × 5. Pohon 270 boleh dimulai dari 2 × 135 atau dari 10 × 27, asal ujungnya prima: 2 × 3 × 3 × 3 × 5." />
+          <TanggaBagi />
+          <SusunToken id={idKuis("B", 11)} perintah="Susun faktor prima 70 dari yang kecil." acak={["7", "2", "5"]} benar={["2", "5", "7"]} umpan="2, 5, 7." />
+          <KuisBenarSalah id={idKuis("A", 13)} perintah="Pilih benar atau salah." baris={[{ teks: "25 adalah bilangan prima.", benar: false }, { teks: "1 termasuk bilangan prima.", benar: false }, { teks: "31 adalah bilangan prima.", benar: true }]} umpan="25 = 5 × 5. Satu bukan prima. 31 hanya dibagi 1 dan 31." />
+          <KuisCocok id={idKuis("A", 11)} perintah="Pasangkan bilangan dengan faktorisasi primanya." baris={[{ kiri: "20", pilihan: PILIHAN_URAI, benar: "2 × 2 × 5" }, { kiri: "45", pilihan: PILIHAN_URAI, benar: "3 × 3 × 5" }, { kiri: "63", pilihan: PILIHAN_URAI, benar: "3 × 3 × 7" }]} umpan="2 × 2 × 5, 3 × 3 × 5, dan 3 × 3 × 7." />
+        </>
+      ) : null}
+      {halaman === 3 ? (
+        <>
+          <Dialog nama="Dimas" anak="Dua adalah prima terkecil. Tiga, lima, dan tujuh juga." />
+          <Dialog nama="Sena" anak="72 = 2 × 2 × 2 × 3 × 3. 150 = 2 × 3 × 5 × 5. Prima yang berpasangan, 2 dan 3, dikali sekali: FPB = 6." />
+          <Dialog nama="Dimas" anak="KPK menulis pasangan itu sekali, lalu semua yang tidak berpasangan: 2 × 3 × 2 × 2 × 3 × 5 × 5 = 1.800." />
+          <Dialog nama="Igil" anak="Di tangga, semua pembagi dikalikan untuk KPK. Hanya pembagi yang membagi semua bilangan dikalikan untuk FPB." />
+          <div className="rounded-2xl border-2 border-[#1C01A5]/20 bg-white p-3">
+            <p className="text-sm font-black text-[#1C01A5]">Lambang 72 dan 150</p>
+            <p className="mt-2 text-lg font-black text-[#1C01A5]">72 = 2 × 2 × 2 × 3 × 3</p>
+            <p className="text-lg font-black text-[#1C01A5]">150 = 2 × 3 × 5 × 5</p>
+            <p className="mt-2 text-sm font-semibold text-emerald-800">FPB = 2 × 3 = 6</p>
+            <p className="text-sm font-semibold text-emerald-800">KPK = 2 × 2 × 2 × 3 × 3 × 5 × 5 = 1.800</p>
+          </div>
+          <Pilih id={idKuis("B", 10)} pertanyaan="KPK dari 9 dan 12 adalah..." visual={<Papan anak="9 = 3 × 3    12 = 2 × 2 × 3" />} pilihan={[{ huruf: "A", teks: "3" }, { huruf: "B", teks: "36" }, { huruf: "C", teks: "108" }, { huruf: "D", teks: "12" }]} benar="B" umpan="2 × 2 × 3 × 3 = 36." salah="Ambil pangkat tertinggi tiap prima, lalu kalikan." />
+          <Pilih id={idKuis("B", 23)} pertanyaan="FPB dari 28 dan 63 adalah..." pilihan={[{ huruf: "A", teks: "7" }, { huruf: "B", teks: "9" }, { huruf: "C", teks: "3" }, { huruf: "D", teks: "21" }]} benar="A" umpan="28 = 2 × 2 × 7. 63 = 3 × 3 × 7. FPB = 7." salah="Ambil faktor prima yang berpasangan." />
+          <Pilih id={idKuis("B", 24)} pertanyaan="Faktorisasi prima 98 adalah..." pilihan={[{ huruf: "A", teks: "2 × 7 × 7" }, { huruf: "B", teks: "2 × 7" }, { huruf: "C", teks: "7 × 7" }, { huruf: "D", teks: "2 × 49" }]} benar="A" umpan="98 = 2 × 49, dan 49 = 7 × 7." salah="Urai sampai semuanya prima. 49 masih bisa dibagi." />
+        </>
+      ) : null}
+      <div className="flex flex-wrap items-center gap-2">
+        <button type="button" disabled={halaman === 0} onClick={() => setHalaman((n) => n - 1)} className="rounded-full bg-white px-4 py-2 text-sm font-black text-[#1C01A5] ring-2 ring-[#1C01A5]/20 disabled:opacity-40">Kembali</button>
+        {halaman < 3 ? (
+          <button type="button" disabled={!selesai} onClick={() => setHalaman((n) => n + 1)} className="rounded-full bg-[#1C01A5] px-4 py-2 text-sm font-black text-white disabled:opacity-40">Lanjut</button>
+        ) : selesai ? <p className="text-sm font-bold text-emerald-800">Empat halaman KPK dan FPB selesai.</p> : null}
+      </div>
+    </section>
+  );
+}
+
 const PASANGAN_A = ["12", "4", "2"];
 const PASANGAN_B = ["10", "20", "2 × 3 × 5"];
 const PASANGAN_D = ["56", "6", "2 × 3 × 7"];
@@ -770,98 +1043,9 @@ function KartuA({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminGuru }) {
         </div>
         {tab === 0 ? <SubbabKelipatan kelas={kelas} kelamin={kelamin} /> : null}
         {tab === 1 ? <SubbabKpk kelas={kelas} kelamin={kelamin} /> : null}
-        {tab === 2 ? (
-        <Adegan judul="Sub-bab 3 — Faktor" jenis="pita" kelas={kelas} kelamin={kelamin} penjelasan={["Faktor membagi habis. Tidak boleh ada sisa.", "Faktor berpasangan. Kali dua pasangannya kembali ke bilangan semula.", "Infografis pita menunjukkan pasangan 18."]}>
-          <Dialog nama="Sena" anak="Pita ini 12 petak. Aku potong sama panjang, tanpa sisa." />
-          <Dialog nama="Laras" anak="Kalau tiap potong 3 petak, dapat 4 potong. 3 kali 4 sama dengan 12." />
-          <Dialog nama="Dimas" anak="Kalau dipaksa 5 petak, ada sisa. 5 bukan faktor 12." />
-          <Dialog nama="Igil" anak="Faktor 12 adalah 1, 2, 3, 4, 6, dan 12. Pasangannya 1×12, 2×6, dan 3×4." />
-          <PitaDiam />
-          <Papan anak="1 × 12    2 × 6    3 × 4" />
-          <Dialog nama="Laras" anak="Infografis 18 memakai cara pasangan yang sama. Setiap pasangan dikali kembali menjadi 18." />
-          <TabelInfoGrafis
-            judul="Infografis: Pasangan faktor 18"
-            kepala={["Kecil", "Pasangan", "Kali"]}
-            baris={[
-              ["1", "18", "1 × 18"],
-              ["2", "9", "2 × 9"],
-              ["3", "6", "3 × 6"],
-            ]}
-            kaki="Faktor 18: 1, 2, 3, 6, 9, dan 18."
-          />
-          <KuisSuara id={idKuis("A", 4)} pertanyaan="Sebutkan semua faktor 16, dari yang kecil." periksa={faktorEnamBelas} petunjuk="Cari bilangan yang membagi 16 tanpa sisa." benar="1, 2, 4, 8, dan 16." />
-          <TulisBebas id={idKuis("A", 5)} judul="Faktor dua puluh" visual={<Papan anak="Faktor dari 20" />} pertanyaan="Tulis semua faktor 20." pesanSalah="Yang membagi 20 tanpa sisa, urut dari yang kecil." bantuan="1, 2, 4, 5, 10, dan 20." umpan="1, 2, 4, 5, 10, 20." periksa={faktorDuaPuluh} alias={["1", "2", "4", "5", "10", "20"]} konteks="Faktor 20 adalah 1, 2, 4, 5, 10, dan 20." />
-          <Dialog nama="Igil" anak="Faktor 18 berpasangan: 1 dengan 18, 2 dengan 9, 3 dengan 6. Jadi faktornya 1, 2, 3, 6, 9, dan 18." />
-          <Dialog nama="Sena" anak="Cara pasangan ini juga dipakai untuk 24, 36, 54, 72, dan 96." />
-          <KuisSuara id={idKuis("B", 4)} pertanyaan="Sebutkan semua faktor 15." periksa={faktorLimaBelas} petunjuk="Cari yang membagi 15 tanpa sisa." benar="1, 3, 5, dan 15." />
-          <TulisBebas id={idKuis("B", 5)} judul="Faktor 28" visual={<Papan anak="Faktor dari 28" />} pertanyaan="Tulis semua faktor 28." pesanSalah="Urutkan dari yang kecil. Jangan ada yang sisa." bantuan="1, 2, 4, 7, 14, dan 28." umpan="1, 2, 4, 7, 14, 28." periksa={faktorDuaPuluhDelapan} alias={["1", "2", "4", "7", "14", "28"]} konteks="Faktor 28 adalah 1, 2, 4, 7, 14, dan 28." />
-          <SusunToken id={idKuis("B", 12)} perintah="Susun faktor 10 dari yang paling kecil." acak={["5", "1", "10", "2"]} benar={["1", "2", "5", "10"]} umpan="1, 2, 5, 10." />
-        </Adegan>
-        ) : null}
-        {tab === 3 ? (
-        <Adegan judul="Sub-bab 4 — Faktor persekutuan dan FPB" jenis="biji" kelas={kelas} kelamin={kelamin} penjelasan={["Faktor yang dimiliki kedua bilangan disebut faktor persekutuan.", "Yang paling besar adalah FPB. Itu juga banyak kelompok paling banyak.", "Infografis congklak mengingat FPB 12 dan 18."]}>
-          <Dialog nama="Dimas" anak="Di congklak, biji merah untuk faktor 12. Biji biru untuk faktor 18." />
-          <Dialog nama="Laras" anak="Lubang yang berisi dua warna: 1, 2, 3, dan 6." />
-          <Dialog nama="Sena" anak="Yang terbesar 6. FPB 12 dan 18 adalah 6." />
-          <Dialog nama="Igil" anak="Pita merah 24 dan pita putih 18. Ikat paling banyak ada 6. Tiap ikat: 4 merah dan 3 putih." />
-          <LubangBiji />
-          <Papan anak="24 ÷ 6 = 4 merah    18 ÷ 6 = 3 putih" />
-          <Dialog nama="Igil" anak="Infografis congklak menaruh faktor yang sama. Yang terbesar itulah FPB." />
-          <TabelInfoGrafis
-            judul="Infografis: FPB 12 dan 18"
-            kepala={["Yang sama", "Ikat", "Isi"]}
-            baris={[
-              ["1, 2, 3, 6", "6 ikat", "paling banyak"],
-              ["Pita merah 24", "6 ikat", "4 tiap ikat"],
-              ["Pita putih 18", "6 ikat", "3 tiap ikat"],
-            ]}
-            kaki="FPB 12 dan 18 adalah 6."
-          />
-          <KuisSuara id={idKuis("A", 6)} pertanyaan="Berapa FPB dari 8 dan 20?" periksa={empat} petunjuk="Cari faktor yang sama, lalu ambil yang terbesar." benar="Empat." />
-          <TulisBebas id={idKuis("A", 7)} judul="Dua pita lain" visual={<Papan anak="FPB 12 dan 42" />} pertanyaan="Tulis FPB dari 12 dan 42." pesanSalah="Bandingkan faktor keduanya." bantuan="Faktor yang sama: 1, 2, 3, dan 6. Yang terbesar 6." umpan="6." periksa={enam} alias={["6", "enam"]} konteks="FPB 12 dan 42 adalah 6." />
-          <Dialog nama="Igil" anak="FPB 6 dan 12 juga 6. FPB 12 dan 28 adalah 4. Kalau tidak ada prima yang berpasangan, seperti 15 dan 28, FPB-nya 1." />
-          <Dialog nama="Laras" anak="Membagi barang jadi kelompok sama rata memakai FPB, bukan KPK." />
-          <KuisSuara id={idKuis("B", 6)} pertanyaan="Berapa FPB dari 15 dan 35?" periksa={lima} petunjuk="Lihat faktor yang sama, lalu pilih yang terbesar." benar="Lima." />
-          <TulisBebas id={idKuis("B", 7)} judul="Paket layangan" visual={<Papan anak="36 gulungan · 48 kertas · 24 stiker" />} pertanyaan="Tulis banyak paket paling banyak. Tiap jenis barang di setiap paket harus sama banyak." pesanSalah="Cari FPB dari 36, 48, dan 24." bantuan="FPB-nya 12. Tiap paket: 3 gulungan, 4 kertas, 2 stiker." umpan="12 paket." periksa={duaBelas} alias={["12", "dua belas"]} konteks="Paket paling banyak ada 12." />
-        </Adegan>
-        ) : null}
-        {tab === 4 ? (
-        <Adegan judul="Sub-bab 5 — Prima, pohon faktor, dan tangga bagi" jenis="saring" kelas={kelas} kelamin={kelamin} penjelasan={["Bilangan prima hanya dibagi 1 dan dirinya. Satu bukan prima.", "Pohon faktor dan tangga bagi membantu mencari KPK dan FPB.", "Infografis 72 dan 150 menunjukkan FPB dan KPK dari faktor prima."]}>
-          <Dialog nama="Sena" anak="Prima hanya punya dua faktor: 1 dan bilangan itu sendiri." />
-          <Dialog nama="Dimas" anak="Dua adalah prima terkecil. Tiga, lima, dan tujuh juga." />
-          <Dialog nama="Laras" anak="Eratosthenes menyaring prima dengan mencoret kelipatan." />
-          <Dialog nama="Igil" anak="Coret 1 dulu. Lalu coret kelipatan 2, 3, 5, 7, dan seterusnya. Bilangan yang diambil sendiri tidak dicoret." />
-          <PrimaDiam />
-          <KuisSuara id={idKuis("A", 8)} pertanyaan="Apakah 9 termasuk bilangan prima? Jawab ya atau bukan, lalu beri alasan singkat." periksa={sembilanBukanPrima} petunjuk="Coba bagi 9 dengan 3." benar="Bukan. 9 = 3 × 3." />
-          <TulisBebas id={idKuis("A", 9)} judul="Pohon 36" visual={<Papan anak="36 = ⬜ × ⬜ × ⬜ × ⬜" />} pertanyaan="Tulis faktorisasi prima 36." pesanSalah="Urai sampai semuanya prima." bantuan="36 = 2 × 2 × 3 × 3." umpan="2 × 2 × 3 × 3." periksa={primaTigaEnam} alias={["2", "2", "3", "3"]} konteks="36 = 2 × 2 × 3 × 3." />
-          <PohonEnamPuluh />
-          <Dialog nama="Igil" anak="12 = 2 × 2 × 3. 196 = 2 × 2 × 7 × 7. 300 = 2 × 2 × 3 × 5 × 5. Pohon 270 boleh dimulai dari 2 × 135 atau dari 10 × 27, asal ujungnya prima: 2 × 3 × 3 × 3 × 5." />
-          <Dialog nama="Sena" anak="72 = 2 × 2 × 2 × 3 × 3. 150 = 2 × 3 × 5 × 5. Prima yang berpasangan, 2 dan 3, dikali sekali: FPB = 6." />
-          <Dialog nama="Dimas" anak="KPK menulis pasangan itu sekali, lalu semua yang tidak berpasangan: 2 × 3 × 2 × 2 × 3 × 5 × 5 = 1.800." />
-          <TanggaBagi />
-          <Dialog nama="Igil" anak="Di tangga, semua pembagi dikalikan untuk KPK. Hanya pembagi yang membagi semua bilangan dikalikan untuk FPB. Infografis ini merangkum 72 dan 150." />
-          <TabelInfoGrafis
-            judul="Infografis: 72 dan 150"
-            kepala={["Bilangan", "Faktor prima", "Hasil"]}
-            baris={[
-              ["72", "2 × 2 × 2 × 3 × 3", "pasangan untuk FPB"],
-              ["150", "2 × 3 × 5 × 5", "sisa untuk KPK"],
-              ["FPB", "2 × 3", "6"],
-              ["KPK", "pasangan + sisa", "1.800"],
-            ]}
-            kaki="FPB mengalikan yang berpasangan. KPK memakai pangkat tertinggi."
-          />
-          <Dialog nama="Laras" anak="Sampai 30 ada 10 bilangan prima. Kalau saringan dilanjutkan sampai 100, bilangan primanya ada 25." />
-          <Dialog nama="Sena" anak="Hari dan pasaran yang sama kembali pada KPK dari 7 dan 5. Jika Pahing jatuh pada Selasa, Pahing berikutnya jatuh pada Minggu." />
-          <KuisSuara id={idKuis("B", 8)} pertanyaan="Sebutkan empat bilangan prima yang pertama." periksa={primaPertama} petunjuk="Mulai dari yang terkecil. Satu tidak ikut." benar="2, 3, 5, dan 7." />
-          <TulisBebas id={idKuis("B", 9)} judul="Urai 96" visual={<Papan anak="96" />} pertanyaan="Tulis faktorisasi prima 96." pesanSalah="Bagi dua sampai tidak habis lagi, lalu lanjut ke prima berikutnya." bantuan="96 = 2 × 2 × 2 × 2 × 2 × 3." umpan="2 × 2 × 2 × 2 × 2 × 3." periksa={primaSembilanEnam} alias={["2", "3"]} konteks="96 = 2 × 2 × 2 × 2 × 2 × 3." />
-          <Pilih id={idKuis("B", 10)} pertanyaan="KPK dari 9 dan 12 adalah..." visual={<Papan anak="9 = 3 × 3    12 = 2 × 2 × 3" />} pilihan={[{ huruf: "A", teks: "3" }, { huruf: "B", teks: "36" }, { huruf: "C", teks: "108" }, { huruf: "D", teks: "12" }]} benar="B" umpan="2 × 2 × 3 × 3 = 36. 3 adalah FPB." salah="Ambil pangkat tertinggi tiap prima, lalu kalikan." />
-          <KuisCocok id={idKuis("A", 11)} perintah="Pasangkan soal dengan jawabannya." baris={[{ kiri: "KPK 4 dan 6", pilihan: PASANGAN_A, benar: "12" }, { kiri: "Pasangan faktor 3 pada 12", pilihan: PASANGAN_A, benar: "4" }, { kiri: "Bilangan prima terkecil", pilihan: PASANGAN_A, benar: "2" }]} umpan="12, 4, dan 2." />
-          <KuisCocok id={idKuis("B", 11)} perintah="Pasangkan soal dengan jawabannya." baris={[{ kiri: "FPB 20 dan 30", pilihan: PASANGAN_B, benar: "10" }, { kiri: "KPK 4 dan 5", pilihan: PASANGAN_B, benar: "20" }, { kiri: "Faktorisasi prima 30", pilihan: PASANGAN_B, benar: "2 × 3 × 5" }]} umpan="10, 20, dan 2 × 3 × 5." />
-          <KuisBenarSalah id={idKuis("A", 13)} perintah="Pilih benar atau salah." baris={[{ teks: "0 termasuk kelipatan 5.", benar: false }, { teks: "1 termasuk bilangan prima.", benar: false }, { teks: "FPB 9 dan 15 adalah 3.", benar: true }]} umpan="Dua pernyataan pertama salah. FPB 9 dan 15 memang 3." />
-          <KuisBenarSalah id={idKuis("B", 13)} perintah="Pilih benar atau salah." baris={[{ teks: "16 habis dibagi 6.", benar: false }, { teks: "KPK 2 dan 3 adalah 6.", benar: true }, { teks: "25 adalah bilangan prima.", benar: false }]} umpan="Hanya pernyataan kedua yang benar. 16 dibagi 6 bersisa. 25 = 5 × 5." />
-        </Adegan>
-        ) : null}
+        {tab === 2 ? <SubbabFaktor kelas={kelas} kelamin={kelamin} /> : null}
+        {tab === 3 ? <SubbabFaktorPersekutuan kelas={kelas} kelamin={kelamin} /> : null}
+        {tab === 4 ? <SubbabTentukan kelas={kelas} kelamin={kelamin} /> : null}
       </div>
     </KartuBingkai>
   );

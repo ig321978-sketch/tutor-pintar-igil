@@ -159,6 +159,14 @@ export function enam(teks: string): boolean {
   return tepat(teks, "6");
 }
 
+export function tujuh(teks: string): boolean {
+  return tepat(teks, "7");
+}
+
+export function sebelas(teks: string): boolean {
+  return tepat(teks, "11");
+}
+
 export function tiga(teks: string): boolean {
   return tepat(teks, "3");
 }
