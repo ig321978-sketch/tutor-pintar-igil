@@ -6,6 +6,7 @@ import KartuPoinPenting from "@/components/KartuPoinPenting";
 import TujuanBelajar from "@/components/TujuanBelajar";
 import TabelInfoGrafis from "@/components/TabelInfoGrafis";
 import { useKuisMateri } from "@/components/KuisMateriContext";
+import { useJudulDompetMateri } from "@/components/modul/KepalaDompetMateri";
 import MisiPenjagaKebun from "@/components/MisiPenjagaKebun";
 import { SLOT_AJUAN_SEBELUM_KARTU_D } from "@/components/NaskahMtk2Bab1";
 import SoalRekamSuara from "@/components/SoalRekamSuara";
@@ -1022,6 +1023,8 @@ function KartuA({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminGuru }) {
   const kartu = MODUL_MTK5_BAB2.kartu[0];
   const [tab, setTab] = useState(0);
   const labelTab = ["Sub-Bab A", "Sub-Bab B", "Sub-Bab C", "Sub-Bab D", "Sub-Bab E"];
+  const judulSubbab = ["Kelipatan", "Kelipatan persekutuan", "Faktor", "Faktor persekutuan", "Menentukan KPK dan FPB"];
+  useJudulDompetMateri(judulSubbab[tab] ?? judulSubbab[0]);
   return (
     <KartuBingkai>
       <KepalaKartu ikon="🪁👧👦🦉" judul="A. Bukit Layangan Senja" anak="Laras, Dimas, Sena, dan Igil" kelas={kelas} kelamin={kelamin} cuplikan={cuplikanKalimat(kartu.voice[0] ?? [])} />

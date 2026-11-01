@@ -3,6 +3,7 @@
 import { memo } from "react";
 import { Loader2, Sparkles } from "lucide-react";
 import ModuleRenderer from "@/components/ModuleRenderer";
+import { KepalaDompetMateri, PenyediaDompetMateri, judulAwalDompet } from "@/components/modul/KepalaDompetMateri";
 import TungguNaskah from "@/components/modul/TungguNaskah";
 import { type GambarSisipan } from "@/components/GambarDoodle";
 import { jenjangGuru, type KelaminGuru } from "@/lib/guru";
@@ -52,22 +53,25 @@ function PanelMateriModul({
         )}
       </div>
       )}
-      {memuat && !naskah ? <TungguNaskah /> : null}
-      {naskah ? (
-        <div className="pt-1">
-          <ModuleRenderer
-            konten={naskah}
-            mapel={mapel}
-            materi={materi}
-            kelas={kelas}
-            kelamin={kelamin}
-            className="mt-1"
-            gambarSisipan={gambarSisipan}
-            doodleMemuat={doodleMemuat}
-            sembunyikanJudulUtama
-          />
-        </div>
-      ) : null}
+      <PenyediaDompetMateri key={`${kelas}|${mapel}|${materi}`} judulAwal={judulAwalDompet(kelas, mapel, materi)}>
+        <KepalaDompetMateri />
+        {memuat && !naskah ? <TungguNaskah /> : null}
+        {naskah ? (
+          <div className="pt-1">
+            <ModuleRenderer
+              konten={naskah}
+              mapel={mapel}
+              materi={materi}
+              kelas={kelas}
+              kelamin={kelamin}
+              className="mt-1"
+              gambarSisipan={gambarSisipan}
+              doodleMemuat={doodleMemuat}
+              sembunyikanJudulUtama
+            />
+          </div>
+        ) : null}
+      </PenyediaDompetMateri>
     </article>
   );
 }
