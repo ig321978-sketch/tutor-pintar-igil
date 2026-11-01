@@ -58,8 +58,6 @@ export function ruteAsetIkonPublik(pathname: string): boolean {
 export function ruteHalamanPublikSaatTerkunci(pathname: string): boolean {
   return (
     pathname === "/" ||
-    pathname === "/tutor" ||
-    pathname.startsWith("/tutor/") ||
     pathname === "/ruang-belajar" ||
     pathname.startsWith("/ruang-belajar/") ||
     ruteAsetIkonPublik(pathname)
@@ -68,11 +66,6 @@ export function ruteHalamanPublikSaatTerkunci(pathname: string): boolean {
 
 export function ruteApiPublikSaatTerkunci(pathname: string): boolean {
   return (
-    pathname === "/api/tutor" ||
-    pathname.startsWith("/api/tutor/") ||
-    pathname === "/api/modul" ||
-    pathname.startsWith("/api/modul/") ||
-    pathname === "/api/kuis-tulis" ||
     pathname === "/api/tts"
   );
 }

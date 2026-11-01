@@ -24,6 +24,27 @@ function ruteMasuk(pathname: string): boolean {
   );
 }
 
+function ruteModulLama(pathname: string): boolean {
+  return (
+    pathname === "/tutor" ||
+    pathname.startsWith("/tutor/") ||
+    pathname === "/admin" ||
+    pathname.startsWith("/admin/") ||
+    pathname === "/studio-kreator" ||
+    pathname.startsWith("/studio-kreator/") ||
+    pathname === "/rapor" ||
+    pathname.startsWith("/rapor/") ||
+    pathname === "/ranking" ||
+    pathname.startsWith("/ranking/") ||
+    pathname === "/laboratorium" ||
+    pathname.startsWith("/laboratorium/") ||
+    pathname === "/simulasi-praktikum" ||
+    pathname.startsWith("/simulasi-praktikum/") ||
+    pathname === "/simulasi-embed" ||
+    pathname.startsWith("/simulasi-embed/")
+  );
+}
+
 function ruteSitusDitutup(pathname: string): boolean {
   return pathname === "/situs-ditutup" || pathname.startsWith("/situs-ditutup/");
 }
@@ -81,6 +102,9 @@ function tolakPublik(request: NextRequest) {
 
 export async function middleware(request: NextRequest) {
   const { pathname } = request.nextUrl;
+  if (ruteModulLama(pathname)) {
+    return tanpaCache(NextResponse.redirect(new URL("/ruang-belajar", request.url)));
+  }
   const kunciPublik = situsHanyaAdmin();
 
   if (kunciPublik) {
@@ -90,7 +114,7 @@ export async function middleware(request: NextRequest) {
     const sesi = await sesiAdmin(request);
     if (sesi.admin) {
       if (ruteSitusDitutup(pathname)) {
-        return tanpaCache(NextResponse.redirect(new URL("/tutor", request.url)));
+        return tanpaCache(NextResponse.redirect(new URL("/ruang-belajar", request.url)));
       }
       return sesi.response;
     }
@@ -107,7 +131,7 @@ export async function middleware(request: NextRequest) {
   }
 
   if (ruteSitusDitutup(pathname)) {
-    return tanpaCache(NextResponse.redirect(new URL("/tutor", request.url)));
+    return tanpaCache(NextResponse.redirect(new URL("/ruang-belajar", request.url)));
   }
 
   if (!ruteAdmin(pathname)) {

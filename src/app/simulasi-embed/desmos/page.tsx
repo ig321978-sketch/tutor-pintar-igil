@@ -1,14 +1,5 @@
-import { Suspense } from "react";
-import DesmosClient from "./desmos-client";
+import { redirect } from "next/navigation";
 
-export default function HalamanEmbedDesmos() {
-  return (
-    <Suspense
-      fallback={
-        <p className="p-6 text-center font-extrabold">Menyiapkan Desmos...</p>
-      }
-    >
-      <DesmosClient />
-    </Suspense>
-  );
+export default function HalamanDesmos() {
+  redirect("/ruang-belajar");
 }

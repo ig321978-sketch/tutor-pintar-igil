@@ -1,6 +1,5 @@
 "use client";
 
-import { useRouter } from "next/navigation";
 import { useEffect, useMemo, useRef, useState } from "react";
 import { Sparkles, UploadCloud, X } from "lucide-react";
 import PageShell from "@/components/PageShell";
@@ -66,7 +65,6 @@ function kompresGambar(file: File): Promise<string> {
 }
 
 export default function RuangBelajarPage() {
-  const router = useRouter();
   const inputBerkasRef = useRef<HTMLInputElement | null>(null);
   const { adalahAdmin } = useUserRole();
   const kunciPublik = situsHanyaAdmin() && !adalahAdmin;
@@ -210,8 +208,8 @@ export default function RuangBelajarPage() {
       return;
     }
     if (sumber === "kurikulum") {
-      if (!mapel.trim() || !materi.trim()) {
-        setPesanGalat("Mohon isi mata pelajaran dan materi pembahasan.");
+      if (!mapel.trim()) {
+        setPesanGalat("Mohon pilih mata pelajaran.");
         return;
       }
       window.sessionStorage.removeItem(KUNCI_HALAMAN_BUKU);
@@ -252,18 +250,7 @@ export default function RuangBelajarPage() {
       }
     }
 
-    const query = new URLSearchParams({
-      nama: nama.trim() || "Siswa",
-      kelas,
-      mode: sumber === "unggah" ? "gambar" : "teks",
-      mulai: "1",
-      guru: guruKelamin,
-    });
-    if (sumber === "kurikulum") {
-      query.set("mapel", mapel);
-      query.set("materi", materi);
-    }
-    router.push(`/tutor?${query.toString()}`);
+    setPesanGalat("");
   };
 
   return (
@@ -272,7 +259,7 @@ export default function RuangBelajarPage() {
       subjudul={
         kunciPublik
           ? "Pilot project: Matematika kelas 1 sampai 6 SD."
-          : "Pilih sumber pembelajaran, pilih guru pengajar, lalu mulai sesi belajar di halaman Tutor."
+          : "Pilih jenjang dan guru. Modul pembelajaran masih kosong."
       }
     >
       <section className="grid gap-6">
@@ -511,7 +498,7 @@ export default function RuangBelajarPage() {
       </div>
       <p className="mt-3 flex items-center gap-2 text-sm text-slate-500">
         <Sparkles className="h-4 w-4 text-[#F0AB00]" />
-        Tombol ini membuka AI Tutor sesuai sumber yang dipilih.
+        Kerangka modul dikosongkan. Bab baru akan diisi di sini.
       </p>
     </PageShell>
   );

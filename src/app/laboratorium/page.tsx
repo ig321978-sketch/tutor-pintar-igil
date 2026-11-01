@@ -1,5 +1,5 @@
 import { redirect } from "next/navigation";
 
-export default function LaboratoriumPage() {
-  redirect("/simulasi-praktikum");
+export default function HalamanLaboratorium() {
+  redirect("/ruang-belajar");
 }

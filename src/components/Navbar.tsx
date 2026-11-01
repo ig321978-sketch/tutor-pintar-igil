@@ -7,24 +7,7 @@ import { Menu, X } from "lucide-react";
 import { useUserRole } from "@/hooks/useUserRole";
 import { situsHanyaAdmin } from "@/lib/situs-hanya-admin";
 
-const MENU = [
-  { href: "/tutor", label: "🤖 AI Tutor" },
-  { href: "/ruang-belajar", label: "📚 Ruang Belajar" },
-  { href: "/simulasi-praktikum", label: "🧪 Simulasi Praktikum" },
-  { href: "/rapor", label: "📊 Rapor Siswa" },
-  { href: "/ranking", label: "🏆 Ranking Nasional" },
-] as const;
-
-const MENU_ADMIN = [
-  ...MENU,
-  { href: "/studio-kreator", label: "🛠️ Studio Kreator" },
-  { href: "/admin", label: "🛡️ Dasbor Admin" },
-] as const;
-
-const MENU_PUBLIK_PAI1 = [
-  { href: "/tutor", label: "🤖 AI Tutor" },
-  { href: "/ruang-belajar", label: "📚 Ruang Belajar" },
-] as const;
+const MENU = [{ href: "/ruang-belajar", label: "📚 Ruang Belajar" }] as const;
 
 function tautanAktif(pathname: string, href: string): boolean {
   return pathname === href || pathname.startsWith(`${href}/`);
@@ -34,15 +17,11 @@ export default function Navbar() {
   const pathname = usePathname();
   const router = useRouter();
   const [terbuka, setTerbuka] = useState(false);
-  const { adalahAdmin, user, memuat, keluar } = useUserRole();
+  const { user, memuat, keluar } = useUserRole();
 
   if (pathname.startsWith("/simulasi-embed")) return null;
 
-  const menu = adalahAdmin
-    ? MENU_ADMIN
-    : situsHanyaAdmin()
-      ? MENU_PUBLIK_PAI1
-      : MENU;
+  const menu = MENU;
 
   async function klikKeluar() {
     await keluar();
@@ -55,7 +34,7 @@ export default function Navbar() {
     <header className="sticky top-0 z-40 border-b border-[#1C01A5]/10 bg-white">
       <nav className="flex w-full items-center justify-between gap-4 px-2 py-3">
         <Link
-          href="/tutor"
+          href="/ruang-belajar"
           className="igil-tanpa-tepi shrink-0 rounded-xl px-2 py-1 text-xl font-extrabold tracking-tight text-[#1C01A5]"
           onClick={() => setTerbuka(false)}
         >

@@ -1,4 +1,3 @@
-import { terapkanBabBukuSiswa } from "@/lib/bab-buku-siswa";
 import {
   daftarMapelResmi,
   perluasKurikulumMerdeka,
@@ -934,8 +933,17 @@ const DATA_INTI_KURIKULUM: Record<string, Record<string, string[]>> = {
   },
 };
 
-export const DATA_KURIKULUM = saringKurikulumMerdeka(
-  terapkanBabBukuSiswa(perluasKurikulumMerdeka(DATA_INTI_KURIKULUM)),
+function tanpaBabModul(data: Record<string, Record<string, string[]>>) {
+  const hasil: Record<string, Record<string, string[]>> = {};
+  for (const [kelas, mapel] of Object.entries(data)) {
+    hasil[kelas] = {};
+    for (const nama of Object.keys(mapel)) hasil[kelas][nama] = [];
+  }
+  return hasil;
+}
+
+export const DATA_KURIKULUM = tanpaBabModul(
+  saringKurikulumMerdeka(perluasKurikulumMerdeka(DATA_INTI_KURIKULUM)),
 );
 
 export const DAFTAR_KELAS = Object.keys(DATA_KURIKULUM);

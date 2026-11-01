@@ -9,8 +9,8 @@ import { kelasKotak, kelasLabel, kelasTombolUtama } from "@/lib/tema";
 export default function LoginClient() {
   const router = useRouter();
   const params = useSearchParams();
-  const nextMentah = params.get("next") || "/tutor";
-  const next = nextMentah.startsWith("/") ? nextMentah : "/tutor";
+  const nextMentah = params.get("next") || "/ruang-belajar";
+  const next = nextMentah.startsWith("/") && !nextMentah.startsWith("/tutor") ? nextMentah : "/ruang-belajar";
   const [email, setEmail] = useState("");
   const [sandi, setSandi] = useState("");
   const [pesan, setPesan] = useState("");

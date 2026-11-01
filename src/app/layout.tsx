@@ -22,9 +22,8 @@ const notoNaskh = Noto_Naskh_Arabic({
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://igiligil.xyz"),
-  title: "$IGIL · Tutor AI Kurikulum Merdeka",
-  description:
-    "Ruang belajar, tutor AI, rapor, dan ranking nasional untuk siswa Kurikulum Merdeka.",
+  title: "$IGIL · Ruang Belajar",
+  description: "Ruang Belajar IGIL. Modul masih kosong.",
   applicationName: "IGIL",
   icons: {
     icon: [

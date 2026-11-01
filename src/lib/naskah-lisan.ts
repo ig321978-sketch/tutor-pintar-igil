@@ -3,16 +3,6 @@ import {
   sapaanTutorRingkas,
   sapaanVoiceTutor,
 } from "@/lib/nama-siswa";
-import { pecahBlokKartu } from "@/lib/konsep-materi";
-import {
-  adalahNaskahInfografis,
-  teksLisanInfografis,
-} from "@/lib/infografis-kelas1";
-import { teksLisanResmiJikaAda } from "@/lib/naskah-resmi";
-import {
-  potongLengkap,
-  teksLisanDaftarLengkap,
-} from "@/lib/paket-lengkap-materi";
 import { ucapkanLatexUntukSuara } from "@/lib/latex-ke-teks";
 import {
   ucapkanHurufVariabelTerisolasi,
@@ -206,41 +196,14 @@ export function naskahTutorUntukSuara(
   nama = "",
   opsi?: { buangSubjudulVisual?: boolean; tanpaSapaan?: boolean },
 ): string {
-  const lisanResmi = teksLisanResmiJikaAda(penjelasan);
-  if (lisanResmi) {
-    if (opsi?.tanpaSapaan) return lisanResmi;
-    const sapaanAman = naskahLisan(
-      nama ? sapaanTutorRingkas(nama, sapaan) : sapaan,
-      nama,
-    );
-    return [sapaanAman, lisanResmi].filter(Boolean).join("\n\n");
-  }
-  if (adalahNaskahInfografis(penjelasan)) {
-    const lisan = teksLisanInfografis(penjelasan);
-    if (opsi?.tanpaSapaan) return lisan;
-    const sapaanAman = naskahLisan(
-      nama ? sapaanTutorRingkas(nama, sapaan) : sapaan,
-      nama,
-    );
-    return [sapaanAman, lisan].filter(Boolean).join("\n\n");
-  }
-  const { tubuh, lengkap } = potongLengkap(penjelasan);
-  const kartu = pecahBlokKartu(tubuh || penjelasan)
-    .map((item) => {
-      const tanpaKunci = buangBlokKunci(item);
-      const isi = opsi?.buangSubjudulVisual
-        ? buangSubjudulVisualKartu(tanpaKunci)
-        : tanpaKunci;
-      return naskahLisan(isi, nama);
-    })
-    .filter(Boolean);
-  const lisanLengkap = lengkap.length ? teksLisanDaftarLengkap(lengkap) : "";
-  if (opsi?.tanpaSapaan) {
-    return [...kartu, lisanLengkap].filter(Boolean).join("\n\n");
-  }
+  const isi = naskahLisan(
+    opsi?.buangSubjudulVisual ? buangSubjudulVisualKartu(penjelasan) : penjelasan,
+    nama,
+  );
+  if (opsi?.tanpaSapaan) return isi;
   const sapaanAman = naskahLisan(
     nama ? sapaanTutorRingkas(nama, sapaan) : sapaan,
     nama,
   );
-  return [sapaanAman, ...kartu, lisanLengkap].filter(Boolean).join("\n\n");
+  return [sapaanAman, isi].filter(Boolean).join("\n\n");
 }

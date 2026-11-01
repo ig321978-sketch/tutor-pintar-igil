@@ -13,18 +13,18 @@ export const metadata: Metadata = {
 export default function HalamanSitusDitutup() {
   return (
     <PageShell
-      judul="Materi ini masih dikunci"
-      subjudul="Publik saat ini hanya dapat membuka materi resmi Kelas 1 SD yang sudah dikunci. Materi dan fitur lain tetap terkunci."
+      judul="Ruang Belajar"
+      subjudul="Modul masih kosong. Ruang Belajar tetap terbuka."
     >
       <div className="flex flex-wrap gap-3">
         <Link
           href="/ruang-belajar"
           className={`${kelasTombolUtama} igil-tombol inline-flex rounded-full px-5 py-3 text-sm font-bold`}
         >
-          Belajar PAI Kelas 1 SD
+          Buka Ruang Belajar
         </Link>
         <Link
-          href="/login?next=/tutor"
+          href="/login?next=/ruang-belajar"
           className="igil-tombol inline-flex rounded-full border-2 border-[#1C01A5] px-5 py-3 text-sm font-bold text-[#1C01A5]"
         >
           Masuk sebagai admin
