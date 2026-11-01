@@ -345,33 +345,6 @@ function KuisBenarSalah({ id, perintah, baris, umpan }: { id: string; perintah: 
   );
 }
 
-function PapanKelipatan() {
-  const [langkah, setLangkah] = useState(4);
-  const [pilih, setPilih] = useState<number | null>(null);
-  const cocok = pilih !== null && pilih % langkah === 0;
-  return (
-    <div className="rounded-2xl border-2 border-sky-200 bg-white p-3">
-      <p className="text-sm font-black text-[#1C01A5]">Papan tepuk kelipatan</p>
-      <div className="mt-2 flex flex-wrap gap-2">
-        {[3, 4, 6].map((angka) => (
-          <button key={angka} type="button" onClick={() => { setLangkah(angka); setPilih(null); }} className={`rounded-full px-3 py-1 text-sm font-black ${langkah === angka ? "bg-[#1C01A5] text-white" : "bg-sky-100 text-[#1C01A5]"}`}>Kelipatan {angka}</button>
-        ))}
-      </div>
-      <div className="mt-3 grid grid-cols-6 gap-1">
-        {Array.from({ length: 24 }, (_, indeks) => indeks + 1).map((angka) => {
-          const nyala = angka % langkah === 0;
-          return (
-            <button key={angka} type="button" onClick={() => setPilih(angka)} className={`rounded-lg py-2 text-sm font-black ${nyala ? "bg-amber-300 text-[#1C01A5]" : "bg-slate-100 text-slate-600"} ${pilih === angka ? "ring-2 ring-[#1C01A5]" : ""}`}>{angka}</button>
-          );
-        })}
-      </div>
-      <p className="mt-2 text-sm font-semibold text-slate-700">
-        {pilih === null ? `Kotak kuning adalah kelipatan ${langkah}. Nol tidak ikut.` : cocok ? `${pilih} adalah kelipatan ${langkah}, karena ${pilih / langkah} × ${langkah} = ${pilih}.` : `${pilih} bukan kelipatan ${langkah}. Ada sisa kalau dibagi.`}
-      </p>
-    </div>
-  );
-}
-
 function DuaLompat() {
   const empat = [4, 8, 12, 16, 20, 24];
   const enam = [6, 12, 18, 24];
@@ -400,25 +373,16 @@ function KalenderTemu() {
   );
 }
 
-function PitaFaktor() {
-  const [bagi, setBagi] = useState(3);
-  const habis = 12 % bagi === 0;
-  const potong = habis ? 12 / bagi : 0;
+function PitaDiam() {
   return (
     <div className="rounded-2xl border-2 border-rose-200 bg-white p-3">
-      <p className="text-sm font-black text-[#1C01A5]">Pita 12 petak</p>
+      <p className="text-sm font-black text-[#1C01A5]">Pita 12 petak, dibagi 3</p>
       <div className="mt-2 flex gap-1">
-        {Array.from({ length: 12 }, (_, indeks) => {
-          const warna = habis ? ["bg-rose-400", "bg-amber-300", "bg-teal-400", "bg-sky-400"][Math.floor(indeks / bagi) % 4] : "bg-slate-300";
-          return <span key={indeks} className={`h-8 flex-1 rounded ${warna}`} />;
-        })}
-      </div>
-      <div className="mt-3 flex flex-wrap gap-2">
-        {[1, 2, 3, 4, 5, 6, 12].map((angka) => (
-          <button key={angka} type="button" onClick={() => setBagi(angka)} className={`rounded-full px-3 py-1 text-sm font-black ${bagi === angka ? "bg-[#1C01A5] text-white" : "bg-rose-100 text-[#1C01A5]"}`}>Bagi {angka}</button>
+        {Array.from({ length: 12 }, (_, indeks) => (
+          <span key={indeks} className={`h-8 flex-1 rounded ${["bg-rose-400", "bg-amber-300", "bg-teal-400", "bg-sky-400"][Math.floor(indeks / 3)]}`} />
         ))}
       </div>
-      <p className="mt-2 text-sm font-semibold text-slate-700">{habis ? `Habis. ${potong} potong, tiap potong ${bagi} petak. ${bagi} adalah faktor 12.` : `Ada sisa. ${bagi} bukan faktor 12.`}</p>
+      <p className="mt-2 text-sm font-semibold text-slate-700">Empat potong. Tiap potong 3 petak. 3 adalah faktor 12. Potong dengan angka lain ada di Simulasi.</p>
     </div>
   );
 }
@@ -442,39 +406,17 @@ function LubangBiji() {
   );
 }
 
-const LANGKAH_SARING = [
-  "Belum disaring. Semua bilangan masih ada.",
-  "Coret 1. Satu bukan bilangan prima.",
-  "Ambil 2. Coret kelipatan 2 yang berikutnya.",
-  "Ambil 3. Coret kelipatan 3 yang berikutnya.",
-  "Ambil 5. Coret kelipatan 5 yang berikutnya.",
-  "Ambil 7. Kelipatan 7 yang lain sudah hilang. Yang tersisa adalah prima.",
-];
-
-function saring(angka: number, langkah: number): boolean {
-  if (langkah >= 1 && angka === 1) return true;
-  if (langkah >= 2 && angka % 2 === 0 && angka !== 2) return true;
-  if (langkah >= 3 && angka % 3 === 0 && angka !== 3) return true;
-  if (langkah >= 4 && angka % 5 === 0 && angka !== 5) return true;
-  if (langkah >= 5 && angka % 7 === 0 && angka !== 7) return true;
-  return false;
-}
-
-function SaringanPrima() {
-  const [langkah, setLangkah] = useState(0);
-  const sisa = Array.from({ length: 30 }, (_, indeks) => indeks + 1).filter((angka) => !saring(angka, langkah) && !(langkah >= 1 && angka === 1));
+function PrimaDiam() {
+  const prima = [2, 3, 5, 7, 11, 13, 17, 19, 23, 29];
   return (
     <div className="rounded-2xl border-2 border-violet-200 bg-white p-3">
-      <p className="text-sm font-black text-[#1C01A5]">Saringan Eratosthenes, 1 sampai 30</p>
-      <div className="mt-2 grid grid-cols-6 gap-1">
-        {Array.from({ length: 30 }, (_, indeks) => indeks + 1).map((angka) => {
-          const hilang = saring(angka, langkah);
-          return <span key={angka} className={`rounded-lg py-2 text-center text-sm font-black ${hilang ? "bg-slate-200 text-slate-400 line-through" : "bg-violet-100 text-[#1C01A5]"}`}>{angka}</span>;
-        })}
+      <p className="text-sm font-black text-[#1C01A5]">Prima sampai 30</p>
+      <div className="mt-2 flex flex-wrap gap-2">
+        {prima.map((angka) => (
+          <span key={angka} className="rounded-lg bg-violet-100 px-3 py-2 text-sm font-black text-[#1C01A5]">{angka}</span>
+        ))}
       </div>
-      <p className="mt-2 text-sm font-semibold text-slate-700">{LANGKAH_SARING[langkah]}</p>
-      {langkah === 5 ? <p className="mt-1 text-sm font-bold text-violet-800">Prima sampai 30: {sisa.join(", ")}. Ada {sisa.length} bilangan.</p> : null}
-      <button type="button" onClick={() => setLangkah((lama) => (lama >= 5 ? 0 : lama + 1))} className="mt-3 rounded-full bg-violet-700 px-4 py-2 text-sm font-black text-white">{langkah >= 5 ? "Ulangi saringan" : "Saring berikutnya"}</button>
+      <p className="mt-2 text-sm font-semibold text-slate-700">Ada 10 bilangan. Satu tidak ikut. Saringan langkah demi langkah ada di Simulasi.</p>
     </div>
   );
 }
@@ -527,12 +469,150 @@ function TanggaBagi() {
   );
 }
 
+const PILIHAN_LOMPAT = ["15", "27", "30"];
+
+function LompatDiam({ judul, daftar }: { judul: string; daftar: number[] }) {
+  return (
+    <div className="rounded-2xl border-2 border-sky-200 bg-white p-3">
+      <p className="text-sm font-black text-[#1C01A5]">{judul}</p>
+      <div className="mt-2 flex flex-wrap gap-2">
+        {daftar.map((angka) => (
+          <span key={angka} className="rounded-full bg-amber-300 px-3 py-2 text-lg font-black text-[#1C01A5]">{angka}</span>
+        ))}
+      </div>
+      <p className="mt-2 text-sm font-semibold text-slate-700">Lompatan mulai dari bilangan itu sendiri. Nol tidak ikut.</p>
+    </div>
+  );
+}
+
+function GambarKelipatan({ judul, langkah, banyak }: { judul: string; langkah: number; banyak: number }) {
+  return (
+    <div className="rounded-2xl border-2 border-amber-200 bg-amber-50 p-3">
+      <p className="text-sm font-black text-[#1C01A5]">{judul}</p>
+      <div className="mt-2 space-y-2">
+        {Array.from({ length: banyak }, (_, kali) => {
+          const hasil = langkah * (kali + 1);
+          return (
+            <div key={hasil} className="flex items-center gap-2">
+              <span className="w-14 shrink-0 text-sm font-black text-[#1C01A5]">{langkah} × {kali + 1}</span>
+              <div className="flex min-w-0 flex-1 flex-wrap gap-1">
+                {Array.from({ length: kali + 1 }, (_, grup) => (
+                  <span key={grup} className="flex gap-0.5 rounded-md bg-white px-1 py-1">
+                    {Array.from({ length: langkah }, (_, kotak) => (
+                      <span key={kotak} className="h-2.5 w-2.5 rounded-sm bg-amber-400" />
+                    ))}
+                  </span>
+                ))}
+              </div>
+              <span className="w-8 shrink-0 text-right text-lg font-black text-emerald-700">{hasil}</span>
+            </div>
+          );
+        })}
+      </div>
+    </div>
+  );
+}
+
+function LambangKelipatan() {
+  return (
+    <div className="rounded-2xl border-2 border-[#1C01A5]/20 bg-white p-3">
+      <p className="text-sm font-black text-[#1C01A5]">Lambang kelipatan 4</p>
+      {[1, 2, 3, 4, 5].map((angka) => (
+        <p key={angka} className="mt-1 text-lg font-black text-[#1C01A5]">4 × {angka} = <span className="text-emerald-700">{4 * angka}</span></p>
+      ))}
+      <p className="mt-2 text-sm font-semibold text-rose-800">0 × 4 = 0, tetapi 0 bukan kelipatan 4.</p>
+    </div>
+  );
+}
+
+const HALAMAN_A = ["1 · Cerita", "2 · Infografis", "3 · Pictorial", "4 · Lambang"];
+
+function SubbabKelipatan({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminGuru }) {
+  const kuis = useKuisMateri();
+  const [halaman, setHalaman] = useState(0);
+  const grup = [
+    [idKuis("A", 0), idKuis("A", 1)],
+    [idKuis("B", 0), idKuis("B", 1)],
+    [idKuis("A", 12), idKuis("A", 17), idKuis("A", 18)],
+    [idKuis("A", 10), idKuis("A", 15), idKuis("A", 16)],
+  ];
+  const selesai = grup[halaman].every((id) => kuis?.sudahBenar(id));
+  return (
+    <section className="space-y-4 border-b-4 border-[#1C01A5] pb-8">
+      <p className="text-xl font-black leading-snug text-[#1C01A5]">Kelipatan</p>
+      <p className="text-lg font-black text-[#1C01A5]">Halaman {HALAMAN_A[halaman]}</p>
+      {halaman === 0 ? (
+        <>
+          <TombolVoiceMateriPai1 kelas={kelas} kelamin={kelamin} cuplikan={cuplikanKalimat(["Kelipatan adalah lompatan yang sama, mulai dari bilangan itu sendiri.", "Nol tidak masuk daftar kelipatan."])} />
+          <GambarBukit jenis="tepuk" />
+          <Dialog nama="Laras" anak="Ekor layanganku bertambah 4 setiap lompatan: 4, 8, 12, 16, 20." />
+          <Dialog nama="Dimas" anak="Kenapa tidak mulai dari 0? 0 kali 4 kan 0." />
+          <Dialog nama="Sena" anak="Di daftar tepuk, kita mulai dari 4. Nol tidak ditepuk." />
+          <Dialog nama="Igil" anak="Benar. 0 kali 4 sama dengan 0, tetapi 0 bukan kelipatan 4." />
+          <Papan anak="Kelipatan 4: 4, 8, 12, 16, 20, ..." />
+          <LompatDiam judul="Lompatan ekor layangan" daftar={[4, 8, 12, 16, 20]} />
+          <KuisSuara id={idKuis("A", 0)} pertanyaan="Sebutkan empat kelipatan 6 yang pertama." periksa={kelipatanEnam} petunjuk="Mulai dari 6, lalu lompat 6 sebanyak tiga kali lagi." benar="6, 12, 18, dan 24." />
+          <TulisBebas id={idKuis("A", 1)} judul="Lompatan kedelapan" visual={<Papan anak="8 · 16 · 24 · ..." />} pertanyaan="Tulis kelipatan 8 yang kelima." pesanSalah="Lompat 8 sebanyak lima kali, mulai dari 8." bantuan="8, 16, 24, 32, lalu 40." umpan="40." periksa={empatPuluh} alias={["40", "empat puluh"]} konteks="Kelipatan 8 yang kelima adalah 40." />
+        </>
+      ) : null}
+      {halaman === 1 ? (
+        <>
+          <Dialog nama="Igil" anak="Infografis lompatan mengingat caranya. Mulai dari bilangannya sendiri. Nol tidak ikut." />
+          <LompatDiam judul="Empat lompatan 3" daftar={[3, 6, 9, 12]} />
+          <LompatDiam judul="Empat lompatan 4" daftar={[4, 8, 12, 16]} />
+          <TabelInfoGrafis
+            judul="Infografis: Lompat sama"
+            kepala={["Bilangan", "Empat pertama", "Catatan"]}
+            baris={[
+              ["3", "3, 6, 9, 12", "mulai dari 3"],
+              ["4", "4, 8, 12, 16", "mulai dari 4"],
+              ["0", "tidak ikut", "bukan kelipatan"],
+            ]}
+            kaki="Lompatan mulai dari bilangannya sendiri."
+          />
+          <KuisSuara id={idKuis("B", 0)} pertanyaan="Sebutkan empat kelipatan 11 yang pertama." periksa={kelipatanSebelas} petunjuk="Mulai dari 11, lalu tambah 11." benar="11, 22, 33, dan 44." />
+          <TulisBebas id={idKuis("B", 1)} judul="Lompatan kesembilan" visual={<Papan anak="9 · 18 · 27 · ⬜" />} pertanyaan="Tulis kelipatan 9 yang keempat." pesanSalah="Lompat 9 sebanyak empat kali." bantuan="9, 18, 27, lalu 36." umpan="36." periksa={tigaPuluhEnam} alias={["36", "tiga puluh enam"]} konteks="Kelipatan 9 yang keempat adalah 36." />
+        </>
+      ) : null}
+      {halaman === 2 ? (
+        <>
+          <GambarKelipatan judul="Gambar lompatan 4" langkah={4} banyak={5} />
+          <GambarKelipatan judul="Gambar lompatan 3" langkah={3} banyak={4} />
+          <p className="rounded-2xl border-2 border-rose-200 bg-rose-50 px-3 py-2 text-sm font-black text-rose-800 line-through">0</p>
+          <p className="text-sm font-semibold text-slate-700">Nol tidak masuk daftar kelipatan.</p>
+          <SusunToken id={idKuis("A", 12)} perintah="Susun kelipatan 7 ini dari yang paling kecil." acak={["21", "7", "28", "14"]} benar={["7", "14", "21", "28"]} umpan="7, 14, 21, 28." />
+          <KuisBenarSalah id={idKuis("A", 17)} perintah="Pilih benar atau salah." baris={[{ teks: "33 adalah kelipatan 11.", benar: true }, { teks: "16 adalah kelipatan 5.", benar: false }, { teks: "55 adalah kelipatan 11.", benar: true }]} umpan="33 = 3 × 11. 16 dibagi 5 bersisa. 55 = 5 × 11." />
+          <KuisCocok id={idKuis("A", 18)} perintah="Pasangkan lompatan dengan hasilnya." baris={[{ kiri: "Kelipatan 5 yang ketiga", pilihan: PILIHAN_LOMPAT, benar: "15" }, { kiri: "Kelipatan 9 yang ketiga", pilihan: PILIHAN_LOMPAT, benar: "27" }, { kiri: "Kelipatan 10 yang ketiga", pilihan: PILIHAN_LOMPAT, benar: "30" }]} umpan="15, 27, dan 30." />
+        </>
+      ) : null}
+      {halaman === 3 ? (
+        <>
+          <Dialog nama="Igil" anak="Kelipatan 5 melompat lima: 5, 10, 15, 20. Cara yang sama dipakai untuk 8 dan 9." />
+          <Dialog nama="Laras" anak="Bilangan kelipatan 3 didapat dari 1 kali 3, 2 kali 3, 3 kali 3, dan seterusnya." />
+          <LambangKelipatan />
+          <Pilih id={idKuis("A", 10)} pertanyaan="Kelipatan 8 yang keempat adalah..." visual={<Papan anak="8 · 16 · 24 · ⬜" />} pilihan={[{ huruf: "A", teks: "24" }, { huruf: "B", teks: "32" }, { huruf: "C", teks: "40" }, { huruf: "D", teks: "16" }]} benar="B" umpan="8, 16, 24, lalu 32." salah="Mulai dari 8, lompat empat kali." />
+          <Pilih id={idKuis("A", 15)} pertanyaan="Kelipatan 13 yang pertama adalah..." pilihan={[{ huruf: "A", teks: "0" }, { huruf: "B", teks: "1" }, { huruf: "C", teks: "13" }, { huruf: "D", teks: "26" }]} benar="C" umpan="Kelipatan dimulai dari bilangan itu sendiri. 1 × 13 = 13." salah="Jangan mulai dari nol atau dari satu." />
+          <Pilih id={idKuis("A", 16)} pertanyaan="Hasil 13 × 3 adalah..." pilihan={[{ huruf: "A", teks: "16" }, { huruf: "B", teks: "39" }, { huruf: "C", teks: "10" }, { huruf: "D", teks: "23" }]} benar="B" umpan="13 × 3 = 39. Itu kelipatan 13 yang ketiga." salah="Kalikan 13 dengan 3." />
+        </>
+      ) : null}
+      <div className="flex flex-wrap items-center gap-2">
+        <button type="button" disabled={halaman === 0} onClick={() => setHalaman((n) => n - 1)} className="rounded-full bg-white px-4 py-2 text-sm font-black text-[#1C01A5] ring-2 ring-[#1C01A5]/20 disabled:opacity-40">Kembali</button>
+        {halaman < 3 ? (
+          <button type="button" disabled={!selesai} onClick={() => setHalaman((n) => n + 1)} className="rounded-full bg-[#1C01A5] px-4 py-2 text-sm font-black text-white disabled:opacity-40">Lanjut</button>
+        ) : selesai ? <p className="text-sm font-bold text-emerald-800">Empat halaman kelipatan selesai.</p> : null}
+      </div>
+    </section>
+  );
+}
+
 const PASANGAN_A = ["12", "4", "2"];
 const PASANGAN_B = ["10", "20", "2 × 3 × 5"];
 const PASANGAN_D = ["56", "6", "2 × 3 × 7"];
 
 function KartuA({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminGuru }) {
   const kartu = MODUL_MTK5_BAB2.kartu[0];
+  const [tab, setTab] = useState(0);
+  const labelTab = ["Sub-Bab A", "Sub-Bab B", "Sub-Bab C", "Sub-Bab D", "Sub-Bab E"];
   return (
     <KartuBingkai>
       <KepalaKartu ikon="🪁👧👦🦉" judul="A. Bukit Layangan Senja" anak="Laras, Dimas, Sena, dan Igil" kelas={kelas} kelamin={kelamin} cuplikan={cuplikanKalimat(kartu.voice[0] ?? [])} />
@@ -547,34 +627,13 @@ function KartuA({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminGuru }) {
         ]}
       />
       <div className="mt-4 space-y-4">
-        <Adegan judul="Sub-bab 1 — Kelipatan" jenis="tepuk" kelas={kelas} kelamin={kelamin} penjelasan={["Kelipatan adalah lompatan yang sama, mulai dari bilangan itu sendiri.", "Nol tidak masuk daftar kelipatan.", "Infografis lompatan menaruh contoh 3 dan 4 di samping cerita tepuk."]}>
-          <Dialog nama="Laras" anak="Ekor layanganku bertambah 4 setiap lompatan: 4, 8, 12, 16, 20." />
-          <Dialog nama="Dimas" anak="Kenapa tidak mulai dari 0? 0 kali 4 kan 0." />
-          <Dialog nama="Sena" anak="Di daftar tepuk, kita mulai dari 4. Nol tidak ditepuk." />
-          <Dialog nama="Igil" anak="Benar. 0 kali 4 sama dengan 0, tetapi 0 bukan kelipatan 4." />
-          <Papan anak="Kelipatan 4: 4, 8, 12, 16, 20, ..." />
-          <PapanKelipatan />
-          <Dialog nama="Igil" anak="Infografis lompatan mengingat caranya. Mulai dari bilangannya sendiri. Nol tidak ikut." />
-          <TabelInfoGrafis
-            judul="Infografis: Lompat sama"
-            kepala={["Bilangan", "Empat pertama", "Catatan"]}
-            baris={[
-              ["3", "3, 6, 9, 12", "mulai dari 3"],
-              ["4", "4, 8, 12, 16", "mulai dari 4"],
-              ["0", "tidak ikut", "bukan kelipatan"],
-            ]}
-            kaki="Lompatan mulai dari bilangannya sendiri."
-          />
-          <KuisSuara id={idKuis("A", 0)} pertanyaan="Sebutkan empat kelipatan 6 yang pertama." periksa={kelipatanEnam} petunjuk="Mulai dari 6, lalu lompat 6 sebanyak tiga kali lagi." benar="6, 12, 18, dan 24." />
-          <TulisBebas id={idKuis("A", 1)} judul="Lompatan kedelapan" visual={<Papan anak="8 · 16 · 24 · ..." />} pertanyaan="Tulis kelipatan 8 yang kelima." pesanSalah="Lompat 8 sebanyak lima kali, mulai dari 8." bantuan="8, 16, 24, 32, lalu 40." umpan="40." periksa={empatPuluh} alias={["40", "empat puluh"]} konteks="Kelipatan 8 yang kelima adalah 40." />
-          <Dialog nama="Igil" anak="Kelipatan 5 melompat lima: 5, 10, 15, 20. Cara yang sama dipakai untuk 8 dan 9." />
-          <Dialog nama="Laras" anak="Bilangan kelipatan 3 didapat dari 1 kali 3, 2 kali 3, 3 kali 3, dan seterusnya." />
-          <KuisSuara id={idKuis("B", 0)} pertanyaan="Sebutkan empat kelipatan 11 yang pertama." periksa={kelipatanSebelas} petunjuk="Mulai dari 11, lalu tambah 11." benar="11, 22, 33, dan 44." />
-          <TulisBebas id={idKuis("B", 1)} judul="Lompatan kesembilan" visual={<Papan anak="9 · 18 · 27 · ⬜" />} pertanyaan="Tulis kelipatan 9 yang keempat." pesanSalah="Lompat 9 sebanyak empat kali." bantuan="9, 18, 27, lalu 36." umpan="36." periksa={tigaPuluhEnam} alias={["36", "tiga puluh enam"]} konteks="Kelipatan 9 yang keempat adalah 36." />
-          <Pilih id={idKuis("A", 10)} pertanyaan="Kelipatan 8 yang keempat adalah..." visual={<Papan anak="8 · 16 · 24 · ⬜" />} pilihan={[{ huruf: "A", teks: "24" }, { huruf: "B", teks: "32" }, { huruf: "C", teks: "40" }, { huruf: "D", teks: "16" }]} benar="B" umpan="8, 16, 24, lalu 32." salah="Mulai dari 8, lompat empat kali." />
-          <SusunToken id={idKuis("A", 12)} perintah="Susun kelipatan 6 ini dari yang paling kecil." acak={["18", "6", "24", "12"]} benar={["6", "12", "18", "24"]} umpan="6, 12, 18, 24." />
-        </Adegan>
-
+        <div className="flex flex-nowrap gap-2 overflow-x-auto" role="tablist" aria-label="Sub-bab materi">
+          {labelTab.map((teks, indeks) => (
+            <button key={teks} type="button" role="tab" aria-selected={tab === indeks} onClick={() => setTab(indeks)} className={`shrink-0 rounded-full px-3 py-2 text-sm font-black ${tab === indeks ? "bg-[#1C01A5] text-white shadow-[0_3px_0_#F0AB00]" : "bg-white text-[#1C01A5] ring-2 ring-sky-200"}`}>{teks}</button>
+          ))}
+        </div>
+        {tab === 0 ? <SubbabKelipatan kelas={kelas} kelamin={kelamin} /> : null}
+        {tab === 1 ? (
         <Adegan judul="Sub-bab 2 — Kelipatan persekutuan dan KPK" jenis="jadwal" kelas={kelas} kelamin={kelamin} penjelasan={["Tulis dua daftar kelipatan. Tandai yang sama.", "Yang paling kecil adalah KPK, waktu pertemuan terdekat.", "Infografis jadwal mengingat KPK 4 dan 6."]}>
           <Dialog nama="Laras" anak="Aku menaikkan layangan setiap 4 hari." />
           <Dialog nama="Dimas" anak="Aku setiap 6 hari. Hari ini, 5 September, kita bersama." />
@@ -602,13 +661,14 @@ function KartuA({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminGuru }) {
           <Pilih id={idKuis("A", 14)} pertanyaan="Laras setiap 4 hari, Dimas setiap 6 hari. Mereka bersama tanggal 5 September. Kapan mereka bersama lagi?" visual={<Papan anak="5 September + KPK(4, 6)" />} pilihan={[{ huruf: "A", teks: "11 September" }, { huruf: "B", teks: "17 September" }, { huruf: "C", teks: "9 September" }, { huruf: "D", teks: "24 September" }]} benar="B" umpan="KPK-nya 12. 5 + 12 = 17 September." salah="Tambahkan KPK pada tanggal 5, jangan menambahkan 4 atau 6 saja." />
           <Pilih id={idKuis("B", 14)} pertanyaan="Tiga lonceng berbunyi setiap 6 menit, 10 menit, dan 15 menit. Mereka bersama lagi setelah..." visual={<Papan anak="6 · 10 · 15" />} pilihan={[{ huruf: "A", teks: "30 menit" }, { huruf: "B", teks: "60 menit" }, { huruf: "C", teks: "1 menit" }, { huruf: "D", teks: "31 menit" }]} benar="A" umpan="KPK 6, 10, dan 15 adalah 30. FPB ketiganya 1." salah="Cari kelipatan yang sama dan paling kecil." />
         </Adegan>
-
+        ) : null}
+        {tab === 2 ? (
         <Adegan judul="Sub-bab 3 — Faktor" jenis="pita" kelas={kelas} kelamin={kelamin} penjelasan={["Faktor membagi habis. Tidak boleh ada sisa.", "Faktor berpasangan. Kali dua pasangannya kembali ke bilangan semula.", "Infografis pita menunjukkan pasangan 18."]}>
           <Dialog nama="Sena" anak="Pita ini 12 petak. Aku potong sama panjang, tanpa sisa." />
           <Dialog nama="Laras" anak="Kalau tiap potong 3 petak, dapat 4 potong. 3 kali 4 sama dengan 12." />
           <Dialog nama="Dimas" anak="Kalau dipaksa 5 petak, ada sisa. 5 bukan faktor 12." />
           <Dialog nama="Igil" anak="Faktor 12 adalah 1, 2, 3, 4, 6, dan 12. Pasangannya 1×12, 2×6, dan 3×4." />
-          <PitaFaktor />
+          <PitaDiam />
           <Papan anak="1 × 12    2 × 6    3 × 4" />
           <Dialog nama="Laras" anak="Infografis 18 memakai cara pasangan yang sama. Setiap pasangan dikali kembali menjadi 18." />
           <TabelInfoGrafis
@@ -629,7 +689,8 @@ function KartuA({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminGuru }) {
           <TulisBebas id={idKuis("B", 5)} judul="Faktor 28" visual={<Papan anak="Faktor dari 28" />} pertanyaan="Tulis semua faktor 28." pesanSalah="Urutkan dari yang kecil. Jangan ada yang sisa." bantuan="1, 2, 4, 7, 14, dan 28." umpan="1, 2, 4, 7, 14, 28." periksa={faktorDuaPuluhDelapan} alias={["1", "2", "4", "7", "14", "28"]} konteks="Faktor 28 adalah 1, 2, 4, 7, 14, dan 28." />
           <SusunToken id={idKuis("B", 12)} perintah="Susun faktor 10 dari yang paling kecil." acak={["5", "1", "10", "2"]} benar={["1", "2", "5", "10"]} umpan="1, 2, 5, 10." />
         </Adegan>
-
+        ) : null}
+        {tab === 3 ? (
         <Adegan judul="Sub-bab 4 — Faktor persekutuan dan FPB" jenis="biji" kelas={kelas} kelamin={kelamin} penjelasan={["Faktor yang dimiliki kedua bilangan disebut faktor persekutuan.", "Yang paling besar adalah FPB. Itu juga banyak kelompok paling banyak.", "Infografis congklak mengingat FPB 12 dan 18."]}>
           <Dialog nama="Dimas" anak="Di congklak, biji merah untuk faktor 12. Biji biru untuk faktor 18." />
           <Dialog nama="Laras" anak="Lubang yang berisi dua warna: 1, 2, 3, dan 6." />
@@ -655,13 +716,14 @@ function KartuA({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminGuru }) {
           <KuisSuara id={idKuis("B", 6)} pertanyaan="Berapa FPB dari 15 dan 35?" periksa={lima} petunjuk="Lihat faktor yang sama, lalu pilih yang terbesar." benar="Lima." />
           <TulisBebas id={idKuis("B", 7)} judul="Paket layangan" visual={<Papan anak="36 gulungan · 48 kertas · 24 stiker" />} pertanyaan="Tulis banyak paket paling banyak. Tiap jenis barang di setiap paket harus sama banyak." pesanSalah="Cari FPB dari 36, 48, dan 24." bantuan="FPB-nya 12. Tiap paket: 3 gulungan, 4 kertas, 2 stiker." umpan="12 paket." periksa={duaBelas} alias={["12", "dua belas"]} konteks="Paket paling banyak ada 12." />
         </Adegan>
-
+        ) : null}
+        {tab === 4 ? (
         <Adegan judul="Sub-bab 5 — Prima, pohon faktor, dan tangga bagi" jenis="saring" kelas={kelas} kelamin={kelamin} penjelasan={["Bilangan prima hanya dibagi 1 dan dirinya. Satu bukan prima.", "Pohon faktor dan tangga bagi membantu mencari KPK dan FPB.", "Infografis 72 dan 150 menunjukkan FPB dan KPK dari faktor prima."]}>
           <Dialog nama="Sena" anak="Prima hanya punya dua faktor: 1 dan bilangan itu sendiri." />
           <Dialog nama="Dimas" anak="Dua adalah prima terkecil. Tiga, lima, dan tujuh juga." />
           <Dialog nama="Laras" anak="Eratosthenes menyaring prima dengan mencoret kelipatan." />
           <Dialog nama="Igil" anak="Coret 1 dulu. Lalu coret kelipatan 2, 3, 5, 7, dan seterusnya. Bilangan yang diambil sendiri tidak dicoret." />
-          <SaringanPrima />
+          <PrimaDiam />
           <KuisSuara id={idKuis("A", 8)} pertanyaan="Apakah 9 termasuk bilangan prima? Jawab ya atau bukan, lalu beri alasan singkat." periksa={sembilanBukanPrima} petunjuk="Coba bagi 9 dengan 3." benar="Bukan. 9 = 3 × 3." />
           <TulisBebas id={idKuis("A", 9)} judul="Pohon 36" visual={<Papan anak="36 = ⬜ × ⬜ × ⬜ × ⬜" />} pertanyaan="Tulis faktorisasi prima 36." pesanSalah="Urai sampai semuanya prima." bantuan="36 = 2 × 2 × 3 × 3." umpan="2 × 2 × 3 × 3." periksa={primaTigaEnam} alias={["2", "2", "3", "3"]} konteks="36 = 2 × 2 × 3 × 3." />
           <PohonEnamPuluh />
@@ -691,6 +753,7 @@ function KartuA({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminGuru }) {
           <KuisBenarSalah id={idKuis("A", 13)} perintah="Pilih benar atau salah." baris={[{ teks: "0 termasuk kelipatan 5.", benar: false }, { teks: "1 termasuk bilangan prima.", benar: false }, { teks: "FPB 9 dan 15 adalah 3.", benar: true }]} umpan="Dua pernyataan pertama salah. FPB 9 dan 15 memang 3." />
           <KuisBenarSalah id={idKuis("B", 13)} perintah="Pilih benar atau salah." baris={[{ teks: "16 habis dibagi 6.", benar: false }, { teks: "KPK 2 dan 3 adalah 6.", benar: true }, { teks: "25 adalah bilangan prima.", benar: false }]} umpan="Hanya pernyataan kedua yang benar. 16 dibagi 6 bersisa. 25 = 5 × 5." />
         </Adegan>
+        ) : null}
       </div>
     </KartuBingkai>
   );
