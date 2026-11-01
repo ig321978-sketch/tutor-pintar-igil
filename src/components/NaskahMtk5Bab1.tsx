@@ -446,27 +446,54 @@ function LambangSusun() {
 }
 
 function TabelTambah() {
-  const kepala = ["Ribuan", "Ratusan", "Puluhan", "Satuan"];
-  const atas = ["6", "4", "8", "0"];
-  const bawah = ["2", "7", "5", "0"];
-  const hasil = ["9", "2", "3", "0"];
-  const titip = ["+1", "+1", "", ""];
-  const pra = ["7", "5", "", ""];
-  const utuh = ["", "12", "13", ""];
+  const kepala = ["Puluh ribuan", "Ribuan", "Ratusan", "Puluhan", "Satuan"];
+  const atas = ["5", "7", "5", "0", "0"];
+  const bawah = ["2", "2", "0", "0", "0"];
+  const hasil = ["7", "9", "5", "0", "0"];
   return (
     <div className="overflow-x-auto rounded-2xl border-2 border-sky-200 bg-white p-3">
-      <p className="text-sm font-black text-[#1C01A5]">6.480 + 2.750, cara bersusun pendek</p>
-      <div className="mt-2 grid grid-cols-4 gap-1 text-center">
-        {kepala.map((nama) => <p key={nama} className="text-[10px] font-bold text-slate-500">{nama}</p>)}
-        {utuh.map((teks, indeks) => <p key={`u-${indeks}`} className="text-xs font-black text-rose-600">{teks}</p>)}
-        {titip.map((teks, indeks) => <p key={`t-${indeks}`} className="text-xs font-black text-rose-600">{teks}</p>)}
+      <p className="text-sm font-black text-[#1C01A5]">57.500 + 22.000</p>
+      <div className="mt-2 grid grid-cols-5 gap-1 text-center">
+        {kepala.map((nama) => <p key={nama} className="text-[10px] font-bold leading-tight text-slate-500">{nama}</p>)}
         {atas.map((teks, indeks) => <p key={`a-${indeks}`} className="text-3xl font-black text-[#1C01A5]">{teks}</p>)}
-        {pra.map((teks, indeks) => <p key={`p-${indeks}`} className="text-xs font-black text-rose-600">{teks}</p>)}
         {bawah.map((teks, indeks) => <p key={`b-${indeks}`} className="text-3xl font-black text-[#1C01A5]">{indeks === 0 ? `+${teks}` : teks}</p>)}
-        <p className="col-span-4 border-t-2 border-[#1C01A5]" />
+        <p className="col-span-5 border-t-2 border-[#1C01A5]" />
         {hasil.map((teks, indeks) => <p key={`h-${indeks}`} className="text-3xl font-black text-emerald-700">{teks}</p>)}
       </div>
-      <p className="mt-2 text-sm font-semibold text-slate-700">Puluhan 8 + 5 = 13. Tulis 3, teruskan +1 ke ratusan. Ratusan 4 + 7 + 1 = 12. Tulis 2, teruskan +1 ke ribuan. Hasilnya 9.230.</p>
+      <p className="mt-2 text-sm font-semibold text-slate-700">Tiap rak dijumlahkan dari kanan. Tidak ada rak yang mencapai 10. Hasilnya 79.500.</p>
+    </div>
+  );
+}
+
+function GambarOperasi() {
+  const kartu = [
+    { judul: "Tambah", isi: "57.500 + 22.000", hasil: "79.500", warna: "border-sky-300 bg-sky-50" },
+    { judul: "Kurang", isi: "47.900 − 45.750", hasil: "2.150", warna: "border-rose-300 bg-rose-50" },
+    { judul: "Kali", isi: "12 × 5.000", hasil: "60.000", warna: "border-amber-300 bg-amber-50" },
+    { judul: "Bagi", isi: "64.000 ÷ 4", hasil: "16.000", warna: "border-emerald-300 bg-emerald-50" },
+  ];
+  return (
+    <div className="grid gap-2 sm:grid-cols-2">
+      {kartu.map((item) => (
+        <div key={item.judul} className={`rounded-2xl border-2 px-3 py-3 text-center ${item.warna}`}>
+          <p className="text-xs font-black uppercase tracking-wide text-[#1C01A5]">{item.judul}</p>
+          <p className="mt-1 text-sm font-bold text-slate-700">{item.isi}</p>
+          <p className="mt-1 text-2xl font-black text-emerald-700">{item.hasil}</p>
+        </div>
+      ))}
+    </div>
+  );
+}
+
+function LambangOperasi() {
+  return (
+    <div className="rounded-2xl border-2 border-[#1C01A5] bg-[#F8F7FF] px-3 py-4 text-center">
+      <p className="text-sm font-black uppercase tracking-wide text-[#1C01A5]">Lambang hitung</p>
+      <p className="mt-3 text-base font-black leading-relaxed text-[#1C01A5] sm:text-lg">57.500 + 22.000 = 79.500</p>
+      <p className="mt-1 text-base font-black leading-relaxed text-[#1C01A5] sm:text-lg">47.900 − 45.750 = 2.150</p>
+      <p className="mt-1 text-base font-black leading-relaxed text-[#1C01A5] sm:text-lg">12 × 5.000 = 60.000</p>
+      <p className="mt-1 text-base font-black leading-relaxed text-[#1C01A5] sm:text-lg">64.000 ÷ 4 = 16.000</p>
+      <p className="mt-2 text-sm font-semibold text-slate-700">Jumlah dari kanan. Kali dapat dipecah. Bagi berarti dibagi rata.</p>
     </div>
   );
 }
@@ -491,7 +518,7 @@ function TabelKurang() {
 const BACA_A = ["tiga puluh tujuh ribu dua ratus lima puluh", "delapan puluh ribu enam", "sembilan belas ribu empat ratus tiga puluh"];
 const TANDA_B = ["lebih besar", "lebih kecil", "sama besar"];
 const SUSUN_C = ["28.300", "41.200", "15.050"];
-const HASIL_B = ["79.500", "60.000", "16.000"];
+const HASIL_OP = ["25.000", "27.000", "8.000"];
 const HASIL_D = ["26.932", "9.610", "30.000"];
 
 const TAB_A = { tab: "Sub-Bab A", kelompok: "Membaca, menulis, dan nilai tempat sampai 100.000" };
@@ -547,16 +574,17 @@ const TAB_LANGKAH: Record<string, { tab: string; kelompok?: string }> = {
   tambah: TAB_D,
   a6: TAB_D,
   a7: TAB_D,
-  "kurang-kali": TAB_D,
   "info-operasi": TAB_D,
-  b9: TAB_D,
-  b7: TAB_D,
-  warung: TAB_D,
   b6: TAB_D,
-  b8: TAB_D,
+  b7: TAB_D,
+  "hitung-gambar": TAB_D,
   b10: TAB_D,
   b11: TAB_D,
+  b9: TAB_D,
+  "hitung-lambang": TAB_D,
+  b8: TAB_D,
   b12: TAB_D,
+  "d-bagi": TAB_D,
   poin: TAB_POIN,
   tanya: TAB_POIN,
 };
@@ -829,36 +857,30 @@ function langkahDermaga(kelas?: string, kelamin?: KelaminGuru): LangkahQuest[] {
       kode: "tambah",
       bagian: "Hitung",
       judul: "Jumlah per rak",
+      halaman: "1",
       isi: (
-        <LayarBab judul="Hitung dari kanan" jenis="hitung" kelas={kelas} kelamin={kelamin} penjelasan={["Penjumlahan dan pengurangan dapat dihitung per rak atau bersusun pendek.", "Perkalian dapat dipecah. Pembagian membagi rata."]}>
+        <LayarBab judul="Halaman 1 · Cerita" jenis="hitung" kelas={kelas} kelamin={kelamin} penjelasan={["Penjumlahan dan pengurangan dihitung dari rak kanan.", "Perkalian dapat dipecah. Pembagian membagi rata."]}>
+          <p className="text-lg font-black text-[#1C01A5]">Hitung dari kanan</p>
           <Dialog nama="Arun" anak="Ibu memberi 57.500. Ayah memberi 22.000. Aku jumlahkan per rak." />
           <Dialog nama="Mira" anak="50.000 + 20.000 = 70.000. 7.000 + 2.000 = 9.000. 500 tetap 500. Jumlahnya 79.500." />
+          <Dialog nama="Igil" anak="Arun membawa 47.900 dan membayar 45.750. Sisa uangnya 2.150." />
+          <Dialog nama="Kiran" anak="12 angpau, masing-masing 5.000, menjadi 60.000. 64.000 dibagi rata kepada 4 anak, masing-masing 16.000." />
           <TabelTambah />
         </LayarBab>
       ),
     },
-    { kode: "a6", bagian: "Hitung", judul: "Tambah 32.500", kuis: [idKuis("A", 6)], isi: <KuisSuara id={idKuis("A", 6)} pertanyaan="Berapa 32.500 ditambah 13.250?" periksa={jumlah45750} petunjuk="Jumlahkan tiap rak dari kanan." benar="Empat puluh lima ribu tujuh ratus lima puluh." /> },
-    { kode: "a7", bagian: "Hitung", judul: "Kurangi bersusun", kuis: [idKuis("A", 7)], isi: <TulisBebas id={idKuis("A", 7)} judul="Kurangi bersusun" visual={<Papan anak="67.987 − 13.453" />} pertanyaan="Tulis hasil pengurangan itu." pesanSalah="Kurangi tiap rak dari kanan." bantuan="Tidak ada rak yang perlu memberi 1. Hasilnya 54.534." umpan="54.534." periksa={kurang54534} alias={["54534", "54.534"]} konteks="67.987 − 13.453 = 54.534." /> },
-    {
-      kode: "kurang-kali",
-      bagian: "Hitung",
-      judul: "Sisa, kali, dan bagi",
-      isi: (
-        <div className="space-y-3">
-          <Dialog nama="Igil" anak="Arun membawa 47.900 dan membayar 45.750. Sisa uangnya 2.150." />
-          <TabelKurang />
-          <Dialog nama="Mira" anak="12 angpau, masing-masing 5.000. Sepuluh kali 5.000 sama dengan 50.000. Dua kali 5.000 sama dengan 10.000. Jumlahnya 60.000." />
-          <Dialog nama="Kiran" anak="64.000 dibagi rata kepada 4 anak. Setiap anak menerima 16.000." />
-        </div>
-      ),
-    },
+    { kode: "a6", bagian: "Hitung", judul: "Tambah 32.500", halaman: "1", kuis: [idKuis("A", 6)], isi: <KuisSuara id={idKuis("A", 6)} pertanyaan="Berapa 32.500 ditambah 13.250?" periksa={jumlah45750} petunjuk="Jumlahkan tiap rak dari kanan." benar="Empat puluh lima ribu tujuh ratus lima puluh." /> },
+    { kode: "a7", bagian: "Hitung", judul: "Kurangi bersusun", halaman: "1", kuis: [idKuis("A", 7)], isi: <TulisBebas id={idKuis("A", 7)} judul="Kurangi bersusun" visual={<Papan anak="67.987 − 13.453" />} pertanyaan="Tulis hasil pengurangan itu." pesanSalah="Kurangi tiap rak dari kanan." bantuan="Tidak ada rak yang perlu memberi 1. Hasilnya 54.534." umpan="54.534." periksa={kurang54534} alias={["54534", "54.534"]} konteks="67.987 − 13.453 = 54.534." /> },
     {
       kode: "info-operasi",
       bagian: "Hitung",
       judul: "Infografis empat operasi",
+      halaman: "2",
       isi: (
         <div className="space-y-3">
-          <Dialog nama="Igil" anak="Infografis ini mengingat empat hitungan yang baru selesai. Warung buah masih menanti." />
+          <p className="text-lg font-black text-[#1C01A5]">Halaman 2 · Infografis</p>
+          <Dialog nama="Igil" anak="Tabel warna ini mengingat empat hitungan dari cerita. Jumlahnya 79.500." />
+          <GambarRak digit={["7", "9", "5", "0", "0"]} judul="Jumlah 79.500" />
           <TabelInfoGrafis
             judul="Infografis: Empat operasi"
             kepala={["Operasi", "Hitungan", "Hasil"]}
@@ -873,24 +895,41 @@ function langkahDermaga(kelas?: string, kelamin?: KelaminGuru): LangkahQuest[] {
         </div>
       ),
     },
-    { kode: "b9", bagian: "Hitung", judul: "Pasangkan operasi", kuis: [idKuis("B", 7)], isi: <KuisCocok id={idKuis("B", 7)} perintah="Pasangkan operasi dengan hasilnya." baris={[{ kiri: "57.500 + 22.000", pilihan: HASIL_B, benar: "79.500" }, { kiri: "12 × 5.000", pilihan: HASIL_B, benar: "60.000" }, { kiri: "64.000 ÷ 4", pilihan: HASIL_B, benar: "16.000" }]} umpan="79.500, 60.000, dan 16.000." /> },
-    { kode: "b7", bagian: "Hitung", judul: "Jumlah bersusun", kuis: [idKuis("B", 5)], isi: <TulisBebas id={idKuis("B", 5)} judul="Jumlah bersusun" visual={<Papan anak="76.598 + 12.456" />} pertanyaan="Tulis hasil penjumlahan itu." pesanSalah="Mulai dari satuan. Kalau jumlah rak 10 atau lebih, teruskan 1 ke kiri." bantuan="Satuan 14, teruskan 1. Puluhan 15, teruskan 1. Hasilnya 89.054." umpan="89.054." periksa={jumlah89054} alias={["89054", "89.054"]} konteks="76.598 + 12.456 = 89.054." /> },
+    { kode: "b6", bagian: "Hitung", judul: "Dua kali 27.500", halaman: "2", kuis: [idKuis("B", 4)], isi: <KuisSuara id={idKuis("B", 4)} pertanyaan="Berapa dua kali 27.500?" periksa={jumlah55000} petunjuk="27.500 + 27.500, atau 2 × 27.500." benar="Lima puluh lima ribu." /> },
+    { kode: "b7", bagian: "Hitung", judul: "Jumlah bersusun", halaman: "2", kuis: [idKuis("B", 5)], isi: <TulisBebas id={idKuis("B", 5)} judul="Jumlah bersusun" visual={<Papan anak="76.598 + 12.456" />} pertanyaan="Tulis hasil penjumlahan itu." pesanSalah="Mulai dari satuan. Kalau jumlah rak 10 atau lebih, teruskan 1 ke kiri." bantuan="Satuan 14, teruskan 1. Puluhan 15, teruskan 1. Hasilnya 89.054." umpan="89.054." periksa={jumlah89054} alias={["89054", "89.054"]} konteks="76.598 + 12.456 = 89.054." /> },
     {
-      kode: "warung",
+      kode: "hitung-gambar",
       bagian: "Hitung",
-      judul: "Warung buah",
+      judul: "Gambar empat operasi",
+      halaman: "3",
       isi: (
         <div className="space-y-3">
-          <Dialog nama="Mira" anak="Di warung dermaga ada buah naga 15.000, jeruk 17.000, mangga 23.500, alpukat 32.000, dan kelengkeng 34.000." />
-          <Dialog nama="Arun" anak="Paket A berharga 27.500 untuk satu porsi. Paket B berharga 53.000 untuk dua porsi." />
+          <p className="text-lg font-black text-[#1C01A5]">Halaman 3 · Gambar</p>
+          <p className="text-sm font-semibold text-slate-700">Contoh gambar dari cerita dan tabel. Warna mengikuti jenis hitungannya.</p>
+          <GambarOperasi />
+          <TabelKurang />
         </div>
       ),
     },
-    { kode: "b6", bagian: "Hitung", judul: "Dua kali 27.500", kuis: [idKuis("B", 4)], isi: <KuisSuara id={idKuis("B", 4)} pertanyaan="Berapa dua kali 27.500?" periksa={jumlah55000} petunjuk="27.500 + 27.500, atau 2 × 27.500." benar="Lima puluh lima ribu." /> },
-    { kode: "b8", bagian: "Hitung", judul: "Sisa belanja", kuis: [idKuis("B", 6)], isi: <Pilih id={idKuis("B", 6)} pertanyaan="Seseorang membawa 100.000. Ia membeli dua bungkus 23.500 dan dua bungkus 15.000. Sisa uangnya..." pilihan={[{ huruf: "A", teks: "23.000" }, { huruf: "B", teks: "47.000" }, { huruf: "C", teks: "77.000" }, { huruf: "D", teks: "53.000" }]} benar="A" umpan="2 × 23.500 = 47.000. 2 × 15.000 = 30.000. 100.000 − 47.000 − 30.000 = 23.000." salah="Kalikan dulu, lalu kurangkan dari 100.000." /> },
-    { kode: "b10", bagian: "Hitung", judul: "Urut harga buah", kuis: [idKuis("B", 8)], isi: <SusunToken id={idKuis("B", 8)} perintah="Susun harga buah dari yang paling murah." acak={["34.000", "15.000", "23.500", "32.000", "17.000"]} benar={["15.000", "17.000", "23.500", "32.000", "34.000"]} umpan="15.000, 17.000, 23.500, 32.000, 34.000." /> },
-    { kode: "b11", bagian: "Hitung", judul: "Benar atau salah buah", kuis: [idKuis("B", 9)], isi: <KuisBenarSalah id={idKuis("B", 9)} perintah="Pilih benar atau salah." baris={[{ teks: "Kelengkeng 34.000 lebih mahal daripada alpukat 32.000.", benar: true }, { teks: "Tiga bungkus jeruk 17.000 sama dengan satu kelengkeng 34.000.", benar: false }, { teks: "Dua bungkus buah naga 15.000 lebih mahal daripada satu alpukat 32.000.", benar: false }]} umpan="Hanya pernyataan pertama yang benar. 3 × 17.000 = 51.000. 2 × 15.000 = 30.000." /> },
-    { kode: "b12", bagian: "Hitung", judul: "Paket yang hemat", kuis: [idKuis("B", 10)], isi: <Pilih id={idKuis("B", 10)} pertanyaan="Untuk dua porsi yang sama, mana yang lebih hemat?" visual={<Papan anak="Paket A 27.500 · Paket B 53.000" />} pilihan={[{ huruf: "A", teks: "Paket B, hemat 2.000" }, { huruf: "B", teks: "Paket A, hemat 2.000" }, { huruf: "C", teks: "Keduanya sama" }, { huruf: "D", teks: "Paket B lebih mahal 2.000" }]} benar="A" umpan="Dua Paket A = 55.000. Paket B = 53.000. Paket B lebih hemat 2.000." salah="Bandingkan 2 × 27.500 dengan 53.000." /> },
+    { kode: "b10", bagian: "Hitung", judul: "Urut harga buah", halaman: "3", kuis: [idKuis("B", 8)], isi: <SusunToken id={idKuis("B", 8)} perintah="Susun harga buah dari yang paling murah." acak={["34.000", "15.000", "23.500", "32.000", "17.000"]} benar={["15.000", "17.000", "23.500", "32.000", "34.000"]} umpan="15.000, 17.000, 23.500, 32.000, 34.000." /> },
+    { kode: "b11", bagian: "Hitung", judul: "Benar atau salah buah", halaman: "3", kuis: [idKuis("B", 9)], isi: <KuisBenarSalah id={idKuis("B", 9)} perintah="Pilih benar atau salah." baris={[{ teks: "Kelengkeng 34.000 lebih mahal daripada alpukat 32.000.", benar: true }, { teks: "Tiga bungkus jeruk 17.000 sama dengan satu kelengkeng 34.000.", benar: false }, { teks: "Dua bungkus buah naga 15.000 lebih mahal daripada satu alpukat 32.000.", benar: false }]} umpan="Hanya pernyataan pertama yang benar. 3 × 17.000 = 51.000. 2 × 15.000 = 30.000." /> },
+    { kode: "b9", bagian: "Hitung", judul: "Pasangkan operasi", halaman: "3", kuis: [idKuis("B", 7)], isi: <KuisCocok id={idKuis("B", 7)} perintah="Pasangkan operasi dengan hasilnya." baris={[{ kiri: "18.000 + 7.000", pilihan: HASIL_OP, benar: "25.000" }, { kiri: "9 × 3.000", pilihan: HASIL_OP, benar: "27.000" }, { kiri: "48.000 ÷ 6", pilihan: HASIL_OP, benar: "8.000" }]} umpan="25.000, 27.000, dan 8.000." /> },
+    {
+      kode: "hitung-lambang",
+      bagian: "Hitung",
+      judul: "Lambang hitung",
+      halaman: "4",
+      isi: (
+        <div className="space-y-3">
+          <p className="text-lg font-black text-[#1C01A5]">Halaman 4 · Lambang</p>
+          <p className="text-sm font-semibold text-slate-700">Empat hitungan dari cerita sekarang ditulis dengan tanda operasi.</p>
+          <LambangOperasi />
+        </div>
+      ),
+    },
+    { kode: "b8", bagian: "Hitung", judul: "Sisa belanja", halaman: "4", kuis: [idKuis("B", 6)], isi: <Pilih id={idKuis("B", 6)} pertanyaan="Seseorang membawa 100.000. Ia membeli dua bungkus 23.500 dan dua bungkus 15.000. Sisa uangnya..." pilihan={[{ huruf: "A", teks: "23.000" }, { huruf: "B", teks: "47.000" }, { huruf: "C", teks: "77.000" }, { huruf: "D", teks: "53.000" }]} benar="A" umpan="2 × 23.500 = 47.000. 2 × 15.000 = 30.000. 100.000 − 47.000 − 30.000 = 23.000." salah="Kalikan dulu, lalu kurangkan dari 100.000." /> },
+    { kode: "b12", bagian: "Hitung", judul: "Paket yang hemat", halaman: "4", kuis: [idKuis("B", 10)], isi: <Pilih id={idKuis("B", 10)} pertanyaan="Untuk dua porsi yang sama, mana yang lebih hemat?" visual={<Papan anak="Paket A 27.500 · Paket B 53.000" />} pilihan={[{ huruf: "A", teks: "Paket B, hemat 2.000" }, { huruf: "B", teks: "Paket A, hemat 2.000" }, { huruf: "C", teks: "Keduanya sama" }, { huruf: "D", teks: "Paket B lebih mahal 2.000" }]} benar="A" umpan="Dua Paket A = 55.000. Paket B = 53.000. Paket B lebih hemat 2.000." salah="Bandingkan 2 × 27.500 dengan 53.000." /> },
+    { kode: "d-bagi", bagian: "Hitung", judul: "Bagi rata", halaman: "4", kuis: [idKuis("B", 22)], isi: <Pilih id={idKuis("B", 22)} pertanyaan="36.000 ÷ 3 = ..." pilihan={[{ huruf: "A", teks: "12.000" }, { huruf: "B", teks: "10.800" }, { huruf: "C", teks: "13.000" }, { huruf: "D", teks: "9.000" }]} benar="A" umpan="36.000 ÷ 3 = 12.000." salah="Bagi 36 ribuan menjadi 3 bagian yang sama." /> },
   ];
   const evaluasi: LangkahQuest[] = Array.from({ length: 10 }, (_, nomor) => ({
     kode: `d${nomor}`,
@@ -1020,7 +1059,7 @@ export default function NaskahMtk5Bab1({ kelas, kelamin }: { kelas?: string; kel
   const langkah = useMemo(() => langkahDermaga(kelas, kelamin), [kelas, kelamin]);
   return (
     <QuestLangkah
-      simpan="quest-mtk-5-bab1-v5"
+      simpan="quest-mtk-5-bab1-v6"
       langkah={langkah}
       sudahBenar={sudahBenar}
       slot={{ id: SLOT_AJUAN_SEBELUM_KARTU_D, padaKode: "tanya" }}
