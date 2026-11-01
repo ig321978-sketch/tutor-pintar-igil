@@ -13,6 +13,7 @@ import {
   JUDUL_MTK_1_BAB2,
   JUDUL_MTK_1_BAB3,
   JUDUL_MTK_1_BAB4,
+  JUDUL_MTK_5_BAB8,
   OPSI_LAINNYA,
   daftarMapelUntukKelas,
   labelJenjangKelas,
@@ -242,18 +243,19 @@ export default function RuangBelajarPage() {
       guruKelamin,
     });
 
+    const jalurKelas: Record<string, string> =
+      kelas === "1 SD"
+        ? {
+            [JUDUL_MTK_1_BAB1]: "/ruang-belajar/mtk-1-bab1",
+            [JUDUL_MTK_1_BAB2]: "/ruang-belajar/mtk-1-bab2",
+            [JUDUL_MTK_1_BAB3]: "/ruang-belajar/mtk-1-bab3",
+            [JUDUL_MTK_1_BAB4]: "/ruang-belajar/mtk-1-bab4",
+          }
+        : kelas === "5 SD"
+          ? { [JUDUL_MTK_5_BAB8]: "/ruang-belajar/mtk-5-bab8" }
+          : {};
     const jalurModul =
-      sumber === "kurikulum" && kelas === "1 SD"
-        ? materi === JUDUL_MTK_1_BAB1
-          ? "/ruang-belajar/mtk-1-bab1"
-          : materi === JUDUL_MTK_1_BAB2
-            ? "/ruang-belajar/mtk-1-bab2"
-            : materi === JUDUL_MTK_1_BAB3
-              ? "/ruang-belajar/mtk-1-bab3"
-              : materi === JUDUL_MTK_1_BAB4
-                ? "/ruang-belajar/mtk-1-bab4"
-                : ""
-        : "";
+      sumber === "kurikulum" ? (jalurKelas[materi] ?? "") : "";
     if (jalurModul) {
       router.push(
         `${jalurModul}?nama=${encodeURIComponent(nama.trim() || "Siswa")}`,
@@ -283,8 +285,8 @@ export default function RuangBelajarPage() {
       judul="📚 Ruang Belajar"
       subjudul={
         kunciPublik
-          ? "Matematika kelas 1 SD, Bab 1, Bab 2, Bab 3, dan Bab 4 sudah siap di perangkat ini."
-          : "Bab 1, Bab 2, Bab 3, dan Bab 4 Matematika kelas 1 sudah terpasang. Bab lain masih kosong."
+          ? "Matematika kelas 1 SD Bab 1–4 dan Matematika kelas 5 SD Bab 8 sudah siap di perangkat ini."
+          : "Bab 1–4 Matematika kelas 1 dan Bab 8 Matematika kelas 5 sudah terpasang. Bab lain masih kosong."
       }
     >
       <section className="grid gap-6">
@@ -523,7 +525,7 @@ export default function RuangBelajarPage() {
       </div>
       <p className="mt-3 flex items-center gap-2 text-sm text-slate-500">
         <Sparkles className="h-4 w-4 text-[#F0AB00]" />
-        Bab 1, Bab 2, Bab 3, dan Bab 4 Matematika kelas 1 terbuka di sini. Bab lain masih kosong.
+        Bab 1–4 Matematika kelas 1 dan Bab 8 Matematika kelas 5 terbuka di sini. Bab lain masih kosong.
       </p>
     </PageShell>
   );
