@@ -4,6 +4,12 @@ function pecahBab(materi: string) {
   return { nomor: cocok[1], judul: cocok[2].trim() || materi.trim() };
 }
 
+function tulisKelas(kelas: string) {
+  const bersih = kelas.trim();
+  if (/^kelas\b/i.test(bersih)) return bersih;
+  return `Kelas ${bersih}`;
+}
+
 export default function LabelBabModul({
   kelas,
   materi,
@@ -12,7 +18,7 @@ export default function LabelBabModul({
   materi: string;
 }) {
   const { nomor, judul } = pecahBab(materi);
-  const lencana = nomor ? `Kelas ${kelas.trim()} • Bab ${nomor}` : `Kelas ${kelas.trim()}`;
+  const lencana = nomor ? `${tulisKelas(kelas)} • Bab ${nomor}` : tulisKelas(kelas);
   return (
     <div className="rounded-2xl bg-gradient-to-r from-indigo-900 via-blue-900 to-indigo-950 px-4 py-3 text-white shadow-lg">
       <div className="flex items-center gap-3">

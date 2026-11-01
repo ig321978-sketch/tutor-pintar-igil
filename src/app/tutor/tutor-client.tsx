@@ -68,7 +68,6 @@ import PemutarAudioGuru, {
 import { KuisMateriProvider } from "@/components/KuisMateriContext";
 import GerbangPemanasanOtak from "@/components/brain-activation/GerbangPemanasanOtak";
 import KartuBagianModul from "@/components/modul/KartuBagianModul";
-import LabelBabModul from "@/components/modul/LabelBabModul";
 import PanelLatihanModul from "@/components/modul/PanelLatihanModul";
 import PanelMateriModul from "@/components/modul/PanelMateriModul";
 import PanelPraktikumModul from "@/components/modul/PanelPraktikumModul";
@@ -1770,9 +1769,6 @@ export default function TutorAI() {
               >
                 <ArrowLeft className="w-5 h-5" /> Ganti Materi
               </button>
-              <div className="mb-4">
-                <LabelBabModul kelas={judulKelasSesi} materi={judulMateriSesi} />
-              </div>
               <Bab3KubusBalokModule />
             </>
           ) : (
@@ -1805,8 +1801,6 @@ export default function TutorAI() {
             >
             <KartuBagianModul
               daftar={opsiBagian}
-              kelas={judulKelasSesi}
-              materi={judulMateriSesi}
               aktif={tahapBelajar}
               materiTuntas={kuisMateriTuntas}
               mengunciKlik={isGenerating}

@@ -3,9 +3,11 @@
 import { memo } from "react";
 import { Loader2, Sparkles } from "lucide-react";
 import ModuleRenderer from "@/components/ModuleRenderer";
+import LabelBabModul from "@/components/modul/LabelBabModul";
 import TungguNaskah from "@/components/modul/TungguNaskah";
 import { type GambarSisipan } from "@/components/GambarDoodle";
 import { jenjangGuru, type KelaminGuru } from "@/lib/guru";
+import { adalahMtk4Bab2 } from "@/lib/naskah-resmi";
 
 function PanelMateriModul({
   mapel = "",
@@ -29,6 +31,7 @@ function PanelMateriModul({
   kelamin?: KelaminGuru;
 }) {
   const tanpaDoodleHero = Boolean(kelas) && jenjangGuru(kelas) === "SD";
+  const labelSudahAda = adalahMtk4Bab2(kelas, mapel, materi);
 
   return (
     <article className="space-y-5">
@@ -52,6 +55,9 @@ function PanelMateriModul({
         )}
       </div>
       )}
+      {kelas && materi && !labelSudahAda ? (
+        <LabelBabModul kelas={kelas} materi={materi} />
+      ) : null}
       {memuat && !naskah ? <TungguNaskah /> : null}
       {naskah ? (
         <div className="pt-1">

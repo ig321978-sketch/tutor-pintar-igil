@@ -8,7 +8,6 @@ import {
   type BagianModul,
 } from "@/lib/bagian-modul";
 import { PESAN_KUNCI_KUIS_MATERI } from "@/lib/kuis-materi";
-import LabelBabModul from "@/components/modul/LabelBabModul";
 import TungguNaskah, { TEKS_MENYUSUN_NASKAH } from "@/components/modul/TungguNaskah";
 
 const META: Record<
@@ -66,8 +65,6 @@ export default function KartuBagianModul({
   mengunciKlik = false,
   menyusun,
   onPilih,
-  kelas,
-  materi,
 }: {
   daftar: BagianIsi[];
   aktif: BagianModul;
@@ -76,8 +73,6 @@ export default function KartuBagianModul({
   mengunciKlik?: boolean;
   menyusun?: Partial<Record<BagianIsi, boolean>>;
   onPilih: (bagian: BagianIsi) => void;
-  kelas?: string;
-  materi?: string;
 }) {
   const [indeks, setIndeks] = useState(0);
   const daftarTab = useRef<HTMLDivElement>(null);
@@ -134,7 +129,6 @@ export default function KartuBagianModul({
 
   return (
     <div className="space-y-4">
-      {kelas && materi ? <LabelBabModul kelas={kelas} materi={materi} /> : null}
       <div className="rounded-3xl border-2 border-[#1C01A5]/15 bg-gradient-to-br from-[#F7F4FF] via-white to-[#FFF6D8] p-2 shadow-[inset_0_1px_0_#fff]">
         <div ref={daftarTab} role="tablist" aria-label="Bagian modul" className="flex gap-2 overflow-x-auto overscroll-x-contain px-0.5 pb-1.5 [scrollbar-width:thin] [&::-webkit-scrollbar]:h-1.5 [&::-webkit-scrollbar-thumb]:rounded-full [&::-webkit-scrollbar-thumb]:bg-[#1C01A5]/35">
           {URUTAN.map((id, urutan) => {
