@@ -68,6 +68,7 @@ import PemutarAudioGuru, {
 import { KuisMateriProvider } from "@/components/KuisMateriContext";
 import GerbangPemanasanOtak from "@/components/brain-activation/GerbangPemanasanOtak";
 import KartuBagianModul from "@/components/modul/KartuBagianModul";
+import LabelBabModul from "@/components/modul/LabelBabModul";
 import PanelLatihanModul from "@/components/modul/PanelLatihanModul";
 import PanelMateriModul from "@/components/modul/PanelMateriModul";
 import PanelPraktikumModul from "@/components/modul/PanelPraktikumModul";
@@ -1769,6 +1770,9 @@ export default function TutorAI() {
               >
                 <ArrowLeft className="w-5 h-5" /> Ganti Materi
               </button>
+              <div className="mb-4">
+                <LabelBabModul kelas={judulKelasSesi} materi={judulMateriSesi} />
+              </div>
               <Bab3KubusBalokModule />
             </>
           ) : (
@@ -1781,15 +1785,6 @@ export default function TutorAI() {
             >
               <ArrowLeft className="w-5 h-5" /> Ganti Materi
             </button>
-            <p className="text-xs font-extrabold uppercase tracking-[0.18em] text-[#F0AB00]">
-              Modul belajar
-            </p>
-            <h1 className="mt-1 text-3xl font-black text-[#1C01A5]">
-              {judulMateriSesi}
-            </h1>
-            <p className="mt-1 text-sm font-bold text-[#1C01A5]/70">
-              {judulMapelSesi} · Kelas {judulKelasSesi}
-            </p>
           </div>
 
           {pesanKunci ? (
@@ -1810,6 +1805,8 @@ export default function TutorAI() {
             >
             <KartuBagianModul
               daftar={opsiBagian}
+              kelas={judulKelasSesi}
+              materi={judulMateriSesi}
               aktif={tahapBelajar}
               materiTuntas={kuisMateriTuntas}
               mengunciKlik={isGenerating}
