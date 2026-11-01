@@ -6,6 +6,7 @@ import KartuPoinPenting from "@/components/KartuPoinPenting";
 import TujuanBelajar from "@/components/TujuanBelajar";
 import TabelInfoGrafis from "@/components/TabelInfoGrafis";
 import { useKuisMateri } from "@/components/KuisMateriContext";
+import { useJelajahBebas } from "@/components/modul/JelajahBebas";
 import { BingkaiTabMateri } from "@/components/modul/EmpatHalamanMateri";
 import MisiPenjagaKebun from "@/components/MisiPenjagaKebun";
 import { SLOT_AJUAN_SEBELUM_KARTU_D } from "@/components/NaskahMtk2Bab1";
@@ -536,7 +537,7 @@ function SubbabKelipatan({ kelas, kelamin }: { kelas?: string; kelamin?: Kelamin
     [idKuis("A", 12), idKuis("A", 17), idKuis("A", 18)],
     [idKuis("A", 10), idKuis("A", 15), idKuis("A", 16)],
   ];
-  const selesai = grup[halaman].every((id) => kuis?.sudahBenar(id));
+  const selesai = useJelajahBebas() || grup[halaman].every((id) => kuis?.sudahBenar(id));
   return (
     <section className="space-y-4 border-b-4 border-[#1C01A5] pb-8">
       <p className="text-xl font-black leading-snug text-[#1C01A5]">Kelipatan</p>
@@ -673,7 +674,7 @@ function SubbabKpk({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminGuru }
     [idKuis("B", 15), idKuis("B", 16), idKuis("B", 17)],
     [idKuis("A", 14), idKuis("B", 14), idKuis("B", 18)],
   ];
-  const selesai = grup[halaman].every((id) => kuis?.sudahBenar(id));
+  const selesai = useJelajahBebas() || grup[halaman].every((id) => kuis?.sudahBenar(id));
   return (
     <section className="space-y-4 border-b-4 border-[#1C01A5] pb-8">
       <p className="text-xl font-black leading-snug text-[#1C01A5]">Kelipatan persekutuan</p>
@@ -772,7 +773,7 @@ function SubbabFaktor({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminGur
     [idKuis("B", 12), idKuis("A", 19), idKuis("A", 20)],
     [idKuis("A", 21), idKuis("A", 22), idKuis("A", 23)],
   ];
-  const selesai = grup[halaman].every((id) => kuis?.sudahBenar(id));
+  const selesai = useJelajahBebas() || grup[halaman].every((id) => kuis?.sudahBenar(id));
   return (
     <section className="space-y-4 border-b-4 border-[#1C01A5] pb-8">
       <p className="text-xl font-black leading-snug text-[#1C01A5]">Faktor</p>
@@ -855,7 +856,7 @@ function SubbabFaktorPersekutuan({ kelas, kelamin }: { kelas?: string; kelamin?:
     [idKuis("B", 25), idKuis("B", 13), idKuis("B", 27)],
     [idKuis("B", 19), idKuis("B", 20), idKuis("B", 21)],
   ];
-  const selesai = grup[halaman].every((id) => kuis?.sudahBenar(id));
+  const selesai = useJelajahBebas() || grup[halaman].every((id) => kuis?.sudahBenar(id));
   return (
     <section className="space-y-4 border-b-4 border-[#1C01A5] pb-8">
       <p className="text-xl font-black leading-snug text-[#1C01A5]">Faktor persekutuan</p>
@@ -936,7 +937,7 @@ function SubbabTentukan({ kelas, kelamin }: { kelas?: string; kelamin?: KelaminG
     [idKuis("B", 11), idKuis("A", 13), idKuis("A", 11)],
     [idKuis("B", 10), idKuis("B", 23), idKuis("B", 24)],
   ];
-  const selesai = grup[halaman].every((id) => kuis?.sudahBenar(id));
+  const selesai = useJelajahBebas() || grup[halaman].every((id) => kuis?.sudahBenar(id));
   return (
     <section className="space-y-4 border-b-4 border-[#1C01A5] pb-8">
       <p className="text-xl font-black leading-snug text-[#1C01A5]">Menentukan KPK dan FPB</p>

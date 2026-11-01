@@ -2,14 +2,17 @@
 
 import { useState, type ReactNode } from "react";
 import { useKuisMateri } from "@/components/KuisMateriContext";
+import { useJelajahBebas } from "@/components/modul/JelajahBebas";
 import { BalokDompet, useJudulDompetMateri, useKepalaDompetSendiri } from "@/components/modul/KepalaDompetMateri";
 
 export const LABEL_EMPAT_HALAMAN = ["1 · Cerita", "2 · Infografis", "3 · Pictorial", "4 · Lambang"] as const;
 
 export function useHalamanKuis(grup: string[][]) {
   const kuis = useKuisMateri();
+  const jelajah = useJelajahBebas();
   const [halaman, setHalaman] = useState(0);
-  const selesai = (grup[halaman] ?? []).every((id) => Boolean(kuis?.sudahBenar(id)));
+  const selesaiKuis = (grup[halaman] ?? []).every((id) => Boolean(kuis?.sudahBenar(id)));
+  const selesai = jelajah || selesaiKuis;
   return { halaman, setHalaman, selesai };
 }
 
