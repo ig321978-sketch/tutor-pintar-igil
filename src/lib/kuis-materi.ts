@@ -5,3 +5,7 @@ export function idKuisKartuResmi(
 ): string {
   return `${modulId}-${kodeKartu}-${indeks}`;
 }
+
+export function idKuisTulisKartu(modulId: string, kodeKartu: string): string {
+  return `${modulId}-${kodeKartu}-tulis`;
+}
