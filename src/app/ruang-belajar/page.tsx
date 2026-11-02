@@ -10,7 +10,7 @@ import {
   DATA_KURIKULUM,
   DAFTAR_KELAS,
   JUDUL_MTK_1_BAB1,
-  JUDUL_MTK_1_BAB1_LAMA,
+  JUDUL_MTK_1_BAB1_BARU,
   JUDUL_MTK_1_BAB2,
   JUDUL_MTK_1_BAB3,
   JUDUL_MTK_1_BAB4,
@@ -252,7 +252,7 @@ export default function RuangBelajarPage() {
       kelas === "1 SD"
         ? {
             [JUDUL_MTK_1_BAB1]: "/ruang-belajar/mtk-1-bab1",
-            [JUDUL_MTK_1_BAB1_LAMA]: "/ruang-belajar/mtk-1-bab1-lama",
+            [JUDUL_MTK_1_BAB1_BARU]: "/ruang-belajar/mtk-1-bab1-baru",
             [JUDUL_MTK_1_BAB2]: "/ruang-belajar/mtk-1-bab2",
             [JUDUL_MTK_1_BAB3]: "/ruang-belajar/mtk-1-bab3",
             [JUDUL_MTK_1_BAB4]: "/ruang-belajar/mtk-1-bab4",
@@ -299,8 +299,8 @@ export default function RuangBelajarPage() {
       judul="📚 Ruang Belajar"
       subjudul={
         kunciPublik
-          ? "Matematika kelas 1 SD Bab 1–5, termasuk Bab 1 yang lama, kelas 4 SD Bab 2, kelas 5 SD Bab 8, serta kelas 6 SD Bab 1 dan Bab 3 sudah siap di perangkat ini."
-          : "Bab 1–5 Matematika kelas 1, termasuk Bab 1 yang lama, Bab 2 kelas 4, Bab 8 kelas 5, serta Bab 1 dan Bab 3 kelas 6 sudah terpasang. Bab lain masih kosong."
+          ? "Matematika kelas 1 SD Bab 1–5, kelas 4 SD Bab 2, kelas 5 SD Bab 8, serta kelas 6 SD Bab 1 dan Bab 3 sudah siap di perangkat ini. Bab 1 kelas 1 memakai modul lama."
+          : "Bab 1–5 Matematika kelas 1, Bab 2 kelas 4, Bab 8 kelas 5, serta Bab 1 dan Bab 3 kelas 6 sudah terpasang. Bab 1 kelas 1 memakai modul lama."
       }
     >
       <section className="grid gap-6">
@@ -539,7 +539,7 @@ export default function RuangBelajarPage() {
       </div>
       <p className="mt-3 flex items-center gap-2 text-sm text-slate-500">
         <Sparkles className="h-4 w-4 text-[#F0AB00]" />
-        Bab 1–5 Matematika kelas 1, termasuk Bab 1 yang lama, Bab 2 kelas 4, Bab 8 kelas 5, serta Bab 1 dan Bab 3 kelas 6 terbuka di sini. Bab lain masih kosong.
+        Bab 1–5 Matematika kelas 1, Bab 2 kelas 4, Bab 8 kelas 5, serta Bab 1 dan Bab 3 kelas 6 terbuka di sini. Bab 1 kelas 1 memakai modul lama.
       </p>
     </PageShell>
   );
