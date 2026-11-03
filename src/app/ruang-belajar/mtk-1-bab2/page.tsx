@@ -2,7 +2,7 @@
 
 import { Suspense } from "react";
 import { useSearchParams } from "next/navigation";
-import MatematikaKelas1Bab2, {
+import MatematikaKelas1Bab2Hibrida, {
   type ChapterCompletionPayload,
 } from "@/components/modul/MatematikaKelas1Bab2";
 
@@ -21,7 +21,7 @@ function ModulBab2() {
   const params = useSearchParams();
   const nama = params.get("nama")?.trim() || "Sahabat Cilik IGIL";
   return (
-    <MatematikaKelas1Bab2 studentName={nama} onChapterComplete={catatLokal} />
+    <MatematikaKelas1Bab2Hibrida studentName={nama} onChapterComplete={catatLokal} />
   );
 }
 
