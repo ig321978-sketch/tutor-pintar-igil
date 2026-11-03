@@ -60,6 +60,8 @@ export function ruteHalamanPublikSaatTerkunci(pathname: string): boolean {
     pathname === "/" ||
     pathname === "/ruang-belajar" ||
     pathname.startsWith("/ruang-belajar/") ||
+    pathname === "/modul-preview" ||
+    pathname.startsWith("/modul-preview/") ||
     ruteAsetIkonPublik(pathname)
   );
 }
