@@ -378,18 +378,13 @@ function buatSoal(): Soal[] {
 
 function BurungHantu({ size = 52 }: { size?: number }) {
   return (
-    <svg width={size} height={size} viewBox="0 0 64 64" className="shrink-0" aria-hidden>
-      <circle cx="32" cy="32" r="30" fill="#1e1b4b" stroke="#fbbf24" strokeWidth="3" />
-      <polygon points="16,18 22,8 26,18" fill="#f59e0b" />
-      <polygon points="48,18 42,8 38,18" fill="#f59e0b" />
-      <ellipse cx="32" cy="36" rx="18" ry="17" fill="#4f46e5" />
-      <ellipse cx="32" cy="40" rx="12" ry="11" fill="#e0e7ff" />
-      <circle cx="24" cy="27" r="7" fill="#ffffff" stroke="#1e1b4b" strokeWidth="2" />
-      <circle cx="40" cy="27" r="7" fill="#ffffff" stroke="#1e1b4b" strokeWidth="2" />
-      <circle cx="24" cy="27" r="3.5" fill="#0f172a" />
-      <circle cx="40" cy="27" r="3.5" fill="#0f172a" />
-      <polygon points="29,31 35,31 32,37" fill="#f59e0b" />
-    </svg>
+    <img
+      src="/icon-192.png"
+      alt=""
+      width={size}
+      height={size}
+      className="shrink-0"
+    />
   );
 }
 
@@ -557,7 +552,6 @@ export default function MatematikaKelas1Bab1({
   onChapterComplete,
 }: IGILModuleProps) {
   const [kartu, setKartu] = useState<1 | 2 | 3 | 4 | 5 | 6>(1);
-  const [suaraNyala, setSuaraNyala] = useState(true);
   const [kartu2Terbuka, setKartu2Terbuka] = useState(false);
   const [kartu5Terbuka, setKartu5Terbuka] = useState(false);
   const [kartu6Terbuka, setKartu6Terbuka] = useState(false);
@@ -634,12 +628,9 @@ export default function MatematikaKelas1Bab1({
   const [rubrik, setRubrik] = useState<PracticumEvaluationRubric | null>(null);
   const totalBekal = apelBekal + rotiBekal + kejuBekal;
 
-  const sfx = useCallback(
-    (jenis: JenisSuara) => {
-      if (suaraNyala) putarSuara(jenis);
-    },
-    [suaraNyala],
-  );
+  const sfx = useCallback((jenis: JenisSuara) => {
+    putarSuara(jenis);
+  }, []);
 
   const bicara = (teks: string) => {
     if (typeof window === "undefined" || !("speechSynthesis" in window)) return;
@@ -1063,7 +1054,7 @@ export default function MatematikaKelas1Bab1({
 
   return (
     <div className="min-h-screen bg-amber-50 text-slate-800 font-sans pb-16">
-      <header className="sticky top-0 z-30 bg-indigo-950 text-white shadow-lg">
+      <header className="sticky top-0 z-30 bg-[#1C01A5] text-white shadow-lg">
         <div className="max-w-6xl mx-auto px-4 py-3 flex flex-wrap items-center justify-between gap-3">
           <div className="flex items-center gap-3">
             <BurungHantu />
@@ -1073,9 +1064,6 @@ export default function MatematikaKelas1Bab1({
             </div>
           </div>
           <div className="flex items-center gap-2">
-            <button type="button" onClick={() => setSuaraNyala((v) => !v)} className="px-3 py-1.5 rounded-xl bg-indigo-800 text-xs font-bold">
-              {suaraNyala ? "Suara nyala" : "Suara mati"}
-            </button>
             <div className="bg-slate-950 border-2 border-amber-400 rounded-2xl px-4 py-1">
               <div className="text-[10px] text-amber-200 font-bold">Token bab ini</div>
               <div className="text-base font-black text-amber-300">{tokenBab} / 150</div>
