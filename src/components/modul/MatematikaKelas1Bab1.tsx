@@ -388,6 +388,20 @@ function BurungHantu({ size = 52 }: { size?: number }) {
   );
 }
 
+function IkonToken({ size = 46 }: { size?: number }) {
+  return (
+    <svg width={size} height={size} viewBox="0 0 64 64" className="shrink-0" aria-hidden>
+      <circle cx="32" cy="32" r="30" fill="#F0AB00" />
+      <circle cx="32" cy="32" r="24" fill="#FFE08A" />
+      <circle cx="32" cy="32" r="20" fill="none" stroke="#1C01A5" strokeWidth="2.5" />
+      <path
+        d="M32 16.8 36.7 26.3 47 27.8 39.5 35.1 41.3 45.4 32 40.5 22.7 45.4 24.5 35.1 17 27.8 27.3 26.3 Z"
+        fill="#1C01A5"
+      />
+    </svg>
+  );
+}
+
 function Jari({ jumlah }: { jumlah: number }) {
   const kiri = Math.min(5, jumlah);
   const kanan = Math.max(0, jumlah - 5);
@@ -1054,7 +1068,7 @@ export default function MatematikaKelas1Bab1({
 
   return (
     <div className="min-h-screen bg-amber-50 text-slate-800 font-sans pb-16">
-      <header className="sticky top-0 z-30 bg-[#1C01A5] text-white shadow-lg">
+      <header className="sticky top-0 z-30 mx-3 rounded-3xl bg-[#1C01A5] text-white shadow-lg">
         <div className="max-w-6xl mx-auto px-4 py-3 flex flex-wrap items-center justify-between gap-3">
           <div className="flex items-center gap-3">
             <BurungHantu />
@@ -1063,14 +1077,15 @@ export default function MatematikaKelas1Bab1({
               <h1 className="text-lg md:text-xl font-black">Ayo Membilang sampai dengan 10</h1>
             </div>
           </div>
-          <div className="flex items-center gap-2">
-            <div className="bg-slate-950 border-2 border-amber-400 rounded-2xl px-4 py-1">
+          <div className="flex w-full items-center justify-between gap-3 rounded-2xl border-2 border-[#F0AB00] bg-[#1C01A5] px-3 py-1.5 sm:w-auto">
+            <div>
               <div className="text-[10px] text-amber-200 font-bold">Token bab ini</div>
               <div className="text-base font-black text-amber-300">{tokenBab} / 150</div>
               <div className="text-[10px] text-slate-300">
                 Latihan {tokenLatihan}/30 • Ujian {tokenUjian}/70 • Praktikum {tokenPraktik}/50
               </div>
             </div>
+            <IkonToken />
           </div>
         </div>
         <div className="max-w-6xl mx-auto px-4 pb-3 flex gap-1.5 overflow-x-auto">
