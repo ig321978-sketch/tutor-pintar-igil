@@ -66,7 +66,9 @@ export async function POST(req: Request) {
 
     const kelamin = normalisasiKelaminTts(body.kelamin ?? body.gender);
     const kelas = typeof body.kelas === "string" ? body.kelas : "3 SD";
-    const hasil = await sintesisElevenLabs(naskah, kelamin, kelas);
+    const hasil = await sintesisElevenLabs(naskah, kelamin, kelas, {
+      tetap: body.suaraTetap === true,
+    });
     return NextResponse.json({
       berhasil: true,
       sumber: "elevenlabs",

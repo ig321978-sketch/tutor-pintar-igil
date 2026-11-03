@@ -370,7 +370,9 @@ export async function siapkanKeduaSuaraGuru(): Promise<{
 export async function suaraElevenGuru(
   kelamin: KelaminTts,
   kelas = "3 SD",
+  tetap = false,
 ): Promise<string> {
+  if (tetap) return slotSuaraGuru(kelas, kelamin).id;
   const dariEnv = idSuaraDariEnv(kelas, kelamin);
   if (dariEnv) return dariEnv;
   const kunci = kunciApiEleven();
@@ -446,12 +448,13 @@ export async function sintesisElevenLabs(
   teks: string,
   kelamin: KelaminTts,
   kelas = "3 SD",
+  opsi: { tetap?: boolean } = {},
 ): Promise<{ audio: Buffer; mime: string; durasiDetik: number; suara: string }> {
   const kunci = kunciApiEleven();
   if (!kunci) {
     throw new Error("ELEVENLABS_API_KEY belum disetel.");
   }
-  let suara = await suaraElevenGuru(kelamin, kelas);
+  let suara = await suaraElevenGuru(kelamin, kelas, opsi.tetap === true);
   const potongan = potongNaskahEleven(teks);
   if (potongan.length === 0) {
     throw new Error("Naskah suara kosong.");

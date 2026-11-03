@@ -18,10 +18,11 @@ export function kunciCacheAudioTts(
   teks: string,
   kelamin: string,
   kelas: string,
-  opsi?: { tanpaNotasi?: boolean },
+  opsi?: { tanpaNotasi?: boolean; suaraTetap?: boolean },
 ): string {
   const mode = opsi?.tanpaNotasi ? "cerita" : "rumus";
-  return `v3|${mode}|${kelamin}|${kelas}|${teks.replace(/\s+/g, " ").trim()}`;
+  const slot = opsi?.suaraTetap ? "|slot" : "";
+  return `v3|${mode}|${kelamin}|${kelas}${slot}|${teks.replace(/\s+/g, " ").trim()}`;
 }
 
 function bukaDb(): Promise<IDBDatabase | null> {

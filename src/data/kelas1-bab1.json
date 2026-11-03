@@ -15,97 +15,188 @@
     "capaian_pembelajaran": "Peserta didik menunjukkan pemahaman dan memiliki intuisi bilangan (number sense) pada bilangan cacah sampai 10, termasuk membaca, menulis, menentukan nilai tempat, membandingkan, mengurutkan, serta melakukan komposisi (menyusun) dan dekomposisi (mengurai) bilangan.",
     "tujuan_pembelajaran": [
       "TP 1.1: Membilang dan menunjukkan jumlah benda konkret dari 1 sampai 10 secara tepat.",
-      "TP 1.2: Menggunakan Bingkai 10 (Ten-Frame) untuk mengenali pola bilangan secara visual tanpa menghitung dari satu.",
-      "TP 1.3: Mengurai dan menyusun bilangan sampai 10 menggunakan Pasangan Bilangan (Number Bond).",
-      "TP 1.4: Membandingkan dua kelompok benda menggunakan istilah 'Lebih Banyak', 'Lebih Sedikit', dan 'Sama Dengan'."
+      "TP 1.2: Memetakan konsep bilangan melalui Peta Pikiran (Mind-Mapping) dan Tabel Infografis.",
+      "TP 1.3: Menerjemahkan benda nyata (Concrete) ke dalam bentuk Diagram (Pictorial) seperti Bingkai 10 dan Pasangan Bilangan.",
+      "TP 1.4: Menuliskan lambang bilangan dan perbandingan dalam bentuk Angka & Simbol (Abstract)."
     ],
     "peta_24_halaman_smicpa": [
-      { "rentang": "Halaman 1–4", "tahap": "S - Story", "deskripsi": "Cerita kontekstual sehari-hari tentang benda di sekitar rumah dan sekolah." },
-      { "rentang": "Halaman 5–8", "tahap": "M - Manipulative", "deskripsi": "Eksplorasi alat peraga konkret dengan Bingkai 10 (Ten-Frame)." },
-      { "rentang": "Halaman 9–12", "tahap": "I - Image", "deskripsi": "Representasi gambar piktorial kelompok benda 1 sampai 10." },
-      { "rentang": "Halaman 13–16", "tahap": "C - Concrete Connection", "deskripsi": "Menghubungkan jumlah benda nyata dengan lambang bilangan." },
-      { "rentang": "Halaman 17–20", "tahap": "P - Pattern", "deskripsi": "Pola Pasangan Bilangan (Number Bond) untuk menyusun dan mengurai angka." },
-      { "rentang": "Halaman 21–24", "tahap": "A - Abstract", "deskripsi": "Operasi simbol angka dan tanda perbandingan (>, <, =)." }
+      {
+        "rentang": "Halaman 1–4",
+        "tahap": "S — Story (Cerita)",
+        "deskripsi": "Cerita kontekstual sehari-hari tentang petualangan Budi menghitung benda di kebun dan rumah."
+      },
+      {
+        "rentang": "Halaman 5–8",
+        "tahap": "M — Mind-Mapping (Peta Pikiran)",
+        "deskripsi": "Peta cabang visual yang menghubungkan seluruh konsep inti Bilangan 1–10 dalam satu pandangan."
+      },
+      {
+        "rentang": "Halaman 9–12",
+        "tahap": "I — Infografis (Tabel Rangkuman)",
+        "deskripsi": "Tabel ringkasan lambang angka, nama bilangan, kelompok benda, dan pasangan penguraiannya."
+      },
+      {
+        "rentang": "Halaman 13–16",
+        "tahap": "C — Concrete (Ilustrasi Benda Nyata)",
+        "deskripsi": "Menghitung objek benda nyata (apel, kelereng, kue) secara langsung satu per satu."
+      },
+      {
+        "rentang": "Halaman 17–20",
+        "tahap": "P — Pictorial (Diagram)",
+        "deskripsi": "Mengubah benda nyata menjadi diagram petak Bingkai 10 (Ten-Frame) dan diagram cabang Number Bond."
+      },
+      {
+        "rentang": "Halaman 21–24",
+        "tahap": "A — Abstract (Angka)",
+        "deskripsi": "Operasi lambang angka murni (1–10) serta simbol perbandingan matematika (>, <, =)."
+      }
     ]
   },
   "materi_pages": [
     {
       "page_number": 1,
-      "smicpa_code": "S & C",
-      "smicpa_stage": "Story & Concrete (Cerita & Benda Nyata)",
-      "title": "Membilang Benda Satu per Satu (1 sampai 10)",
-      "story_text": "Pagi ini Budi membantu Kakek memetik buah apel merah di kebun. Agar tidak salah hitung, Kakek mengajarkan Budi cara membilang sambil menunjuk apel satu per satu.",
+      "smicpa_code": "S",
+      "smicpa_stage": "Story (Cerita)",
+      "title": "Panen Buah di Kebun Kakek",
+      "story_text": "Hari Minggu pagi, Budi berkunjung ke kebun Kakek di desa. Di sana ada pohon apel merah yang sedang berbuah lebat, keranjang bambu, dan piring-piring kue buatan Nenek. Kakek meminta bantuan Budi menghitung hasil panen agar bisa dibagikan kepada tetangga secara adil.",
       "concept_explanation": [
-        "Membilang artinya menyebutkan angka secara berurutan (1, 2, 3, 4, 5, 6...) sambil menunjuk tepat satu benda.",
-        "Satu benda hanya boleh ditunjuk satu kali.",
-        "Angka terakhir yang diucapkan adalah JUMLAH seluruh benda tersebut."
+        "Matematika selalu dimulai dari peristiwa nyata di sekitar kita.",
+        "Dalam cerita Kakek dan Budi, kita butuh cara untuk mengetahui: Berapa banyak apel yang dipetik? Apakah keranjangnya cukup? Siapa yang mendapat lebih banyak?",
+        "Dari cerita inilah kita mulai belajar membilang angka 1 sampai 10."
       ],
-      "key_formula": "Angka Terakhir yang Disebut = Jumlah Seluruh Benda",
+      "key_formula": "Masalah Sehari-hari → Diselesaikan dengan Membilang secara Tepat",
       "visual_board": {
-        "title": "Ilustrasi Membilang 6 Apel Kakek",
-        "items": ["1️⃣ 🍎", "2️⃣ 🍎", "3️⃣ 🍎", "4️⃣ 🍎", "5️⃣ 🍎", "6️⃣ 🍎"],
-        "caption": "Angka terakhir yang disebut adalah 6, maka jumlah seluruh apel adalah 6 buah."
+        "type": "story",
+        "title": "Alur Cerita Petualangan Budi di Kebun Kakek",
+        "story_scenes": [
+          { "step": "Adegan 1", "icon": "🌳🍎", "text": "Budi memetik apel merah langsung dari pohon Kakek." },
+          { "step": "Adegan 2", "icon": "🧺🔢", "text": "Budi menyusun apel ke dalam keranjang bersekat 10 agar mudah dihitung." },
+          { "step": "Adegan 3", "icon": "🍽️🧁", "text": "Budi membagi kue Nenek ke dalam dua piring dan membandingkan jumlahnya." }
+        ],
+        "caption": "Tahap S (Story): Anak memahami alasan mengapa mereka perlu belajar berhitung lewat alur cerita."
       }
     },
     {
       "page_number": 2,
-      "smicpa_code": "M & I",
-      "smicpa_stage": "Manipulative & Image (Bingkai 10 / Ten-Frame)",
-      "title": "Melihat Jumlah Cepat dengan Bingkai 10",
-      "story_text": "Menghitung benda yang berserakan sering membuat kita lupa mana yang sudah dihitung. Karena itu kita menggunakan kotak ajaib bernama Bingkai 10 (Ten-Frame).",
+      "smicpa_code": "M",
+      "smicpa_stage": "Mind-Mapping (Peta Pikiran)",
+      "title": "Peta Pikiran Bilangan 1 sampai 10",
+      "story_text": "Sebelum masuk ke hitungan detail, mari kita lihat gambaran besar (helikopter) dari seluruh ilmu yang akan kita kuasai di Bab 1 melalui Peta Pikiran.",
       "concept_explanation": [
-        "Bingkai 10 memiliki 10 kotak yang terbagi menjadi 5 kotak di baris atas dan 5 kotak di baris bawah.",
-        "Jika baris atas penuh semua, kita langsung tahu jumlahnya 5 tanpa perlu menghitung dari 1 lagi!",
-        "Jika baris atas penuh (5) dan baris bawah terisi 2, maka jumlahnya adalah 5 ditambah 2 sama dengan 7."
+        "Pusat pikiran kita di Bab 1 adalah BILANGAN 1 SAMPAI 10.",
+        "Dari pusat tersebut, bercabang menjadi 4 kemampuan utama: (1) Membilang Urut, (2) Pola Bingkai 10, (3) Pasangan Bilangan, dan (4) Membandingkan Jumlah.",
+        "Dengan Peta Pikiran, otak kita tahu hubungan antar-materi dan tidak mudah lupa."
       ],
-      "key_formula": "Baris Atas Penuh = 5  |  Semua Kotak Penuh = 10",
+      "key_formula": "Bilangan 1–10 = Membilang + Bingkai 10 + Pasangan Bilangan + Perbandingan",
       "visual_board": {
-        "title": "Pola Bingkai 10 untuk Bilangan 7",
-        "items": ["🍎", "🍎", "🍎", "🍎", "🍎", "🍎", "🍎", "⬜", "⬜", "⬜"],
-        "caption": "5 apel di atas + 2 apel di bawah = 7 apel (menyisakan 3 kotak kosong)."
+        "type": "mind_map",
+        "title": "Peta Pikiran (Mind-Map) Bab 1",
+        "center_node": "🔢 BILANGAN 1 SAMPAI 10",
+        "branches": [
+          { "title": "1. Membilang Urut", "detail": "Menunjuk 1 benda = 1 angka (1 s/d 10)" },
+          { "title": "2. Bingkai 10 (Ten-Frame)", "detail": "Baris atas 5 + Baris bawah 5 = 10" },
+          { "title": "3. Pasangan Bilangan", "detail": "Mengurai 1 angka menjadi 2 bagian (8 = 5 dan 3)" },
+          { "title": "4. Perbandingan", "detail": "Lebih Banyak (>), Lebih Sedikit (<), Sama (=)" }
+        ],
+        "caption": "Tahap M (Mind-Mapping): Anak merangkum peta cabang konsep di kepalanya sebelum menghafal."
       }
     },
     {
       "page_number": 3,
-      "smicpa_code": "P",
-      "smicpa_stage": "Pattern (Pola Pasangan Bilangan / Number Bond)",
-      "title": "Mengurai Satu Bilangan Menjadi Dua Bagian",
-      "story_text": "Ibu memiliki 8 kue bolu dan ingin menaruhnya ke dalam 2 piring. Ternyata angka 8 bisa dibagi menjadi beberapa pasangan angka yang berbeda!",
+      "smicpa_code": "I",
+      "smicpa_stage": "Infografis (Tabel Rangkuman)",
+      "title": "Tabel Rangkuman Bilangan 1 sampai 10",
+      "story_text": "Agar mudah mencari informasi secara cepat, kita menyusun rangkuman angka 1 sampai 10 ke dalam bentuk Tabel Infografis yang rapi.",
       "concept_explanation": [
-        "Pasangan Bilangan (Number Bond) menunjukkan hubungan antara Jumlah Seluruhnya (Induk) dan Bagian-Bagiannya.",
-        "Bilangan 8 dapat diurai menjadi pasangan 5 dan 3, atau 4 dan 4, atau 6 dan 2.",
-        "Jika kita gabungkan kembali kedua bagian tersebut, hasilnya tetap kembali menjadi 8."
+        "Tabel Infografis menyandingkan Lambang Angka, Cara Baca (Nama Bilangan), Wujud Benda, dan Pasangan Penguraiannya.",
+        "Perhatikan bagaimana setiap angka bertambah tepat 1 benda dibanding angka sebelumnya.",
+        "Gunakan tabel di sebelah kanan sebagai kamus cepat saat kamu berlatih."
       ],
-      "key_formula": "8 = 5 + 3   |   8 = 6 + 2   |   8 = 4 + 4",
+      "key_formula": "Setiap naik 1 tingkat di tabel = bertambah 1 satuan (+1)",
       "visual_board": {
-        "title": "Contoh Pasangan Bilangan 8",
-        "items": ["🧁🧁🧁🧁🧁 (5 Kue)", "➕", "🧁🧁🧁 (3 Kue)", "🟰", "8 Kue"],
-        "caption": "Piring pertama berisi 5 kue dan piring kedua berisi 3 kue. Totalnya tetap 8 kue."
+        "type": "infografis",
+        "title": "Infografis Tabel Rangkuman Bilangan Penting",
+        "table_rows": [
+          { "angka": "5", "nama": "Lima", "benda": "🍎🍎🍎🍎🍎", "pasangan": "5 = 3 + 2" },
+          { "angka": "6", "nama": "Enam", "benda": "🍎🍎🍎🍎🍎 🍎", "pasangan": "6 = 5 + 1" },
+          { "angka": "7", "nama": "Tujuh", "benda": "🍎🍎🍎🍎🍎 🍎🍎", "pasangan": "7 = 5 + 2" },
+          { "angka": "8", "nama": "Delapan", "benda": "🍎🍎🍎🍎🍎 🍎🍎🍎", "pasangan": "8 = 5 + 3" },
+          { "angka": "9", "nama": "Sembilan", "benda": "🍎🍎🍎🍎🍎 🍎🍎🍎🍎", "pasangan": "9 = 5 + 4" },
+          { "angka": "10", "nama": "Sepuluh", "benda": "🍎🍎🍎🍎🍎 🍎🍎🍎🍎🍎", "pasangan": "10 = 5 + 5" }
+        ],
+        "caption": "Tahap I (Infografis): Ringkasan terstruktur dalam bentuk tabel agar mudah dipindai mata."
       }
     },
     {
       "page_number": 4,
-      "smicpa_code": "A",
-      "smicpa_stage": "Abstract (Simbol Perbandingan Matematika)",
-      "title": "Membandingkan Dua Kelompok Benda (>, <, =)",
-      "story_text": "Di taman bunga ada 7 ekor kupu-kupu dan 4 ekor lebah. Setelah mampu membilang masing-masing kelompok, kita bisa membandingkan mana yang lebih banyak.",
+      "smicpa_code": "C",
+      "smicpa_stage": "Concrete (Ilustrasi Benda Nyata)",
+      "title": "Menghitung Benda Nyata Satu per Satu",
+      "story_text": "Sekarang kita masuk ke tahap Concrete (Benda Nyata). Sebelum melihat diagram atau rumus, kita wajib melihat wujud benda aslinya seperti apel merah, kue bolu, dan kelereng.",
       "concept_explanation": [
-        "Gunakan tanda LEBIH BANYAK (>) jika bilangan di sebelah kiri lebih besar daripada bilangan di kanan.",
-        "Gunakan tanda LEBIH SEDIKIT (<) jika bilangan di sebelah kiri lebih kecil daripada bilangan di kanan.",
-        "Gunakan tanda SAMA DENGAN (=) jika kedua kelompok memiliki jumlah yang sama persis."
+        "Prinsip Korespondensi Satu-Satu: sentuh 1 benda nyata sambil mengucapkan 1 angka.",
+        "Jangan melompati benda dan jangan menunjuk benda yang sama dua kali.",
+        "Angka terakhir yang kamu sebutkan saat menunjuk benda terakhir adalah jumlah keseluruhan benda nyata tersebut."
       ],
-      "key_formula": "7 > 4 (Lebih Banyak)  |  4 < 7 (Lebih Sedikit)  |  5 = 5 (Sama Dengan)",
+      "key_formula": "1 Sentuhan Benda Nyata = 1 Hitungan Angka",
       "visual_board": {
-        "title": "Perbandingan 7 Kupu-kupu vs 4 Lebah",
-        "items": ["🦋🦋🦋🦋🦋🦋🦋 (7)", " > ", "🐝🐝🐝🐝 (4)"],
-        "caption": "Karena 7 lebih besar dari 4, mulut tanda perbandingan menghadap ke angka 7 (7 > 4)."
+        "type": "concrete",
+        "title": "Ilustrasi Benda Nyata (Concrete Objects)",
+        "concrete_groups": [
+          { "label": "6 Buah Apel Merah", "items": ["🍎", "🍎", "🍎", "🍎", "🍎", "🍎"] },
+          { "label": "8 Butir Kelereng Biru", "items": ["🔮", "🔮", "🔮", "🔮", "🔮", "🔮", "🔮", "🔮"] }
+        ],
+        "caption": "Tahap C (Concrete): Anak mengamati dan membilang ilustrasi objek nyata yang akrab dalam keseharian."
+      }
+    },
+    {
+      "page_number": 5,
+      "smicpa_code": "P",
+      "smicpa_stage": "Pictorial (Diagram)",
+      "title": "Mengubah Benda Nyata Menjadi Diagram",
+      "story_text": "Menggambar buah apel atau kelereng satu per satu membutuhkan waktu lama. Di tahap Pictorial, kita mengganti benda nyata menjadi Diagram Titik Petak (Ten-Frame) dan Diagram Cabang (Number Bond).",
+      "concept_explanation": [
+        "1 buah apel nyata kini cukup diwakili oleh 1 bulatan titik (🔵) di dalam Diagram Petak 10.",
+        "6 apel nyata berubah menjadi 5 titik di baris atas dan 1 titik di baris bawah.",
+        "Diagram Cabang (Number Bond) menunjukkan bagaimana 1 lingkaran induk dipecah menjadi 2 lingkaran cabang."
+      ],
+      "key_formula": "Benda Nyata (🍎) → Diwakili Diagram Titik (🔵) & Diagram Cabang",
+      "visual_board": {
+        "type": "pictorial",
+        "title": "Diagram Petak 10 & Diagram Cabang untuk Bilangan 7",
+        "ten_frame_dots": [true, true, true, true, true, true, true, false, false, false],
+        "bond_diagram": { "whole": 7, "part1": 5, "part2": 2 },
+        "caption": "Tahap P (Pictorial): Anak beralih dari gambar buah menuju model diagram terukur."
+      }
+    },
+    {
+      "page_number": 6,
+      "smicpa_code": "A",
+      "smicpa_stage": "Abstract (Angka)",
+      "title": "Lambang Angka & Simbol Matematika",
+      "story_text": "Setelah paham cerita, peta pikiran, tabel, benda nyata, dan diagram, barulah kita siap menggunakan bahasa matematika murni yaitu Angka dan Simbol (Abstract).",
+      "concept_explanation": [
+        "Kita tidak perlu lagi menggambar apel atau kotak titik; cukup menuliskan lambang angkanya: 7, 8, 9, 10.",
+        "Penggabungan ditulis dengan tanda tambah (+), misalnya: 5 + 3 = 8.",
+        "Perbandingan ditulis dengan simbol: > (lebih banyak dari), < (lebih sedikit dari), dan = (sama dengan)."
+      ],
+      "key_formula": "5 + 3 = 8   |   7 > 4   |   4 < 7   |   6 = 6",
+      "visual_board": {
+        "type": "abstract",
+        "title": "Notasi Angka & Persamaan Abstrak Murni",
+        "equations": [
+          { "label": "Komposisi Bilangan", "math": "5 + 3 = 8" },
+          { "label": "Dekomposisi Bilangan", "math": "9 = 5 + 4" },
+          { "label": "Simbol Perbandingan", "math": "8 > 5   dan   4 < 9" }
+        ],
+        "caption": "Tahap A (Abstract): Puncak SMICPA—anak menguasai operasi angka tanpa bingung maknanya."
       }
     }
   ],
   "simulasi_missions": [
     {
       "id": 1,
-      "title": "Simulasi 1: Eksperimen Bingkai 10 (Ten-Frame)",
+      "title": "Simulasi 1: Eksperimen Bingkai 10 (Concrete ke Pictorial)",
       "instruction": "Sentuh kotak-kotak di bawah ini untuk memasukkan atau mengambil Apel Merah sampai jumlahnya tepat 8 buah!",
       "mode": "ten_frame",
       "item_emoji": "🍎",
@@ -116,7 +207,7 @@
     },
     {
       "id": 2,
-      "title": "Simulasi 2: Laboratorium Pasangan Bilangan (Number Bond)",
+      "title": "Simulasi 2: Laboratorium Diagram Pasangan Bilangan (Pictorial)",
       "instruction": "Jumlah seluruh kue adalah 9. Piring Kiri sudah berisi 4 kue. Tekan tombol (+) atau (-) pada Piring Kanan agar totalnya menjadi 9!",
       "mode": "number_bond",
       "item_emoji": "🧁",
@@ -127,7 +218,7 @@
     },
     {
       "id": 3,
-      "title": "Simulasi 3: Timbangan Perbandingan Bilangan",
+      "title": "Simulasi 3: Timbangan Simbol Perbandingan (Abstract)",
       "instruction": "Amati kelompok Kelereng dan Bintang di bawah ini, lalu tekan tombol tanda perbandingan yang tepat!",
       "mode": "comparison",
       "left_group": { "emoji": "🔮", "name": "Kelereng Biru", "count": 5 },
@@ -139,15 +230,15 @@
   "practice_questions": [
     {
       "id": 1,
-      "question": "Di baris atas Bingkai 10 sudah penuh berisi 5 apel, dan di baris bawah ada 2 apel. Berapa jumlah seluruh apel?",
-      "visual_hint": "🍎🍎🍎🍎🍎 (5) + 🍎🍎 (2)",
-      "options": ["6 Apel", "7 Apel", "8 Apel", "9 Apel"],
+      "question": "Di baris atas Diagram Bingkai 10 sudah penuh berisi 5 titik, dan di baris bawah ada 2 titik. Berapa jumlah seluruhnya?",
+      "visual_hint": "🔵🔵🔵🔵🔵 (5) + 🔵🔵 (2)",
+      "options": ["6", "7", "8", "9"],
       "correct_index": 1,
-      "explanation": "Baris atas yang penuh bernilai 5. Ditambah 2 apel di baris bawah: 5 + 2 = 7 apel."
+      "explanation": "Baris atas yang penuh bernilai 5. Ditambah 2 di baris bawah: 5 + 2 = 7."
     },
     {
       "id": 2,
-      "question": "Bilangan 8 jika dipecah menjadi pasangan bilangan terdiri dari 5 dan ...",
+      "question": "Bilangan 8 jika dipecah pada Diagram Cabang (Number Bond) terdiri dari pasangan 5 dan ...",
       "visual_hint": "8 = 5 + [ ? ]",
       "options": ["2", "3", "4", "5"],
       "correct_index": 1,
@@ -155,22 +246,22 @@
     },
     {
       "id": 3,
-      "question": "Di meja ada 6 pensil merah dan 9 pensil biru. Kalimat perbandingan yang benar adalah...",
-      "visual_hint": "🖍️ 6 Pensil Merah  vs  🖊️ 9 Pensil Biru",
+      "question": "Di meja ada 6 pensil merah dan 9 pensil biru. Simbol perbandingan abstrak yang benar adalah...",
+      "visual_hint": "6  ...  9",
       "options": [
-        "6 lebih banyak daripada 9",
-        "6 sama dengan 9",
-        "6 lebih sedikit daripada 9",
-        "9 lebih sedikit daripada 6"
+        "6 > 9 (Lebih Banyak)",
+        "6 = 9 (Sama Dengan)",
+        "6 < 9 (Lebih Sedikit)",
+        "9 < 6 (Lebih Sedikit)"
       ],
       "correct_index": 2,
-      "explanation": "Karena angka 6 datang sebelum angka 9 saat membilang, maka 6 lebih sedikit daripada 9 (6 < 9)."
+      "explanation": "Karena angka 6 lebih kecil daripada 9, maka ditulis 6 < 9 (6 lebih sedikit daripada 9)."
     }
   ],
   "exam_questions": [
     {
       "id": 1,
-      "question": "Sebuah Bingkai 10 (Ten-Frame) hanya menyisakan 1 kotak kosong. Berapa jumlah benda di dalamnya?",
+      "question": "Sebuah Diagram Bingkai 10 (Ten-Frame) hanya menyisakan 1 kotak kosong. Berapa lambang bilangan yang tepat?",
       "options": ["7", "8", "9", "10"],
       "correct_index": 2
     },
@@ -182,19 +273,19 @@
     },
     {
       "id": 3,
-      "question": "Manakah perbandingan di bawah ini yang BENAR?",
+      "question": "Manakah kalimat matematika (Abstract) di bawah ini yang BENAR?",
       "options": [
-        "8 lebih banyak daripada 5",
-        "4 lebih banyak daripada 7",
-        "9 lebih sedikit daripada 6",
-        "5 sama dengan 8"
+        "8 > 5 (8 lebih banyak daripada 5)",
+        "4 > 7 (4 lebih banyak daripada 7)",
+        "9 < 6 (9 lebih sedikit daripada 6)",
+        "5 = 8 (5 sama dengan 8)"
       ],
       "correct_index": 0
     }
   ],
   "practicum_task": {
     "title": "Praktikum Sintesis: Merancang Keranjang Bekal Piknik Sekolah",
-    "scenario": "Kamu diminta menyiapkan tepat 10 potong buah untuk bekal piknik yang terdiri dari Apel Merah dan Pisang Kuning. Aturannya: jumlah Apel Merah harus LEBIH BANYAK daripada Pisang Kuning, dan tidak boleh ada yang 0.",
+    "scenario": "Kamu diminta menyiapkan tepat 10 potong buah untuk bekal piknik yang terdiri dari Apel Merah dan Pisang Kuning. Aturannya: jumlah Apel Merah harus LEBIH BANYAK (>) daripada Pisang Kuning, dan tidak boleh ada yang 0.",
     "question_prompt": "Tuliskan berapa Apel Merah dan berapa Pisang Kuning yang kamu pilih supaya jumlahnya pas 10, lalu jelaskan dengan kalimatmu sendiri mengapa pilihanmu sudah memenuhi syarat!"
   }
 }
