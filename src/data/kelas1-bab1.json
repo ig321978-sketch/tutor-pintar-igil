@@ -1,0 +1,69 @@
+{
+  "chapter_id": "k1-mat-bab1",
+  "grade": 1,
+  "subject": "Matematika — Kurikulum Merdeka",
+  "title": "Bab 1: Ayo Membilang sampai dengan 10",
+  "total_pages": 24,
+  "tokens_reward": {
+    "practice": 30,
+    "exam": 70,
+    "practicum": 50
+  },
+  "pages": [
+    {
+      "page_number": 1,
+      "smicpa_stage": "S - Story & C - Concrete",
+      "stage_label": "Cerita & Benda Nyata",
+      "title": "Panen Apel di Kebun Kakek",
+      "story_text": "Pagi ini Budi membantu Kakek memetik buah apel merah di kebun. Kakek meminta Budi memasukkan tepat 6 buah apel ke dalam keranjang kotak sepuluh (Ten-Frame).",
+      "instruction": "Sentuh kotak kosong di sebelah kanan untuk memasukkan 6 buah apel merah!",
+      "canvas_mode": "ten_frame",
+      "item_emoji": "🍎",
+      "item_name": "Apel Merah",
+      "initial_count": 0,
+      "target_count": 6,
+      "success_feedback": "Hebat! Kamu berhasil memasukkan tepat 6 buah apel merah ke dalam bingkai."
+    },
+    {
+      "page_number": 2,
+      "smicpa_stage": "P - Pictorial",
+      "stage_label": "Visual Bingkai 10 (Ten-Frame)",
+      "title": "Melengkapi Kotak Kelereng",
+      "story_text": "Di dalam kotak sudah ada 4 butir kelereng biru milik Budi. Budi ingin jumlah kelerengnya menjadi 9 butir.",
+      "instruction": "Tambahkan kelereng pada kotak di kanan sampai jumlah seluruhnya menjadi 9!",
+      "canvas_mode": "ten_frame",
+      "item_emoji": "🔮",
+      "item_name": "Kelereng Biru",
+      "initial_count": 4,
+      "target_count": 9,
+      "success_feedback": "Tepat sekali! 4 kelereng ditambah 5 kelereng baru menjadi 9 kelereng."
+    },
+    {
+      "page_number": 3,
+      "smicpa_stage": "P - Pictorial & A - Abstract",
+      "stage_label": "Pasangan Bilangan (Number Bond)",
+      "title": "Memecah Bilangan 8",
+      "story_text": "Ibu memiliki 8 potong kue bolu yang akan ditaruh ke dalam dua piring. Piring pertama sudah berisi 5 kue.",
+      "instruction": "Berapa kue yang harus ditaruh di piring kedua agar jumlahnya pas 8? Tekan tombol (+) atau (-) di piring kanan!",
+      "canvas_mode": "number_bond",
+      "item_emoji": "🧁",
+      "whole_number": 8,
+      "known_part": 5,
+      "target_missing_part": 3,
+      "success_feedback": "Luar biasa! Bilangan 8 tersusun dari pasangan 5 dan 3."
+    },
+    {
+      "page_number": 4,
+      "smicpa_stage": "A - Abstract",
+      "stage_label": "Perbandingan Bilangan",
+      "title": "Mana yang Lebih Banyak?",
+      "story_text": "Di taman ada kelompok kupu-kupu dan kelompok lebah yang sedang hinggap di bunga. Ayo amati jumlah keduanya di kanvas kanan!",
+      "instruction": "Bandingkan jumlah 7 Kupu-kupu dan 4 Lebah, lalu pilih tanda perbandingan yang benar!",
+      "canvas_mode": "comparison",
+      "left_group": { "emoji": "🦋", "name": "Kupu-kupu", "count": 7 },
+      "right_group": { "emoji": "🐝", "name": "Lebah", "count": 4 },
+      "correct_relation": "LEBIH_BANYAK",
+      "success_feedback": "Benar! 7 Kupu-kupu LEBIH BANYAK daripada 4 Lebah (7 > 4)."
+    }
+  ]
+}
