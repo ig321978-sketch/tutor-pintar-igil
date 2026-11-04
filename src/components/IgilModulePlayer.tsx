@@ -388,6 +388,65 @@ function DottedNumberTracingCanvas({
 // KOMPONEN UTAMA MODUL IGIL (MATEMATIKA KELAS 1 SD - BAB 1)
 // ============================================================================
 
+function IkonTab({ id }: { id: MainTabId }) {
+  const garis = {
+    viewBox: "0 0 24 24",
+    className: "h-5 w-5 shrink-0",
+    fill: "none",
+    stroke: "currentColor",
+    strokeWidth: 2,
+    strokeLinecap: "round" as const,
+    strokeLinejoin: "round" as const,
+    "aria-hidden": true,
+  };
+  if (id === "silabus") {
+    return (
+      <svg {...garis}>
+        <rect x="5" y="3" width="14" height="18" rx="2" />
+        <path d="M8 8h8M8 12h8M8 16h5" />
+      </svg>
+    );
+  }
+  if (id === "materi") {
+    return (
+      <svg {...garis}>
+        <path d="M4 5.5A2.5 2.5 0 0 1 6.5 3H20v16H6.5A2.5 2.5 0 0 0 4 21.5z" />
+        <path d="M4 5.5A2.5 2.5 0 0 1 6.5 8H20" />
+      </svg>
+    );
+  }
+  if (id === "simulasi") {
+    return (
+      <svg {...garis}>
+        <path d="M9 3h6M10 3v5L5.5 18A2 2 0 0 0 7.3 21h9.4a2 2 0 0 0 1.8-3L14 8V3" />
+        <path d="M8.2 14h7.6" />
+      </svg>
+    );
+  }
+  if (id === "latihan") {
+    return (
+      <svg {...garis}>
+        <path d="M4 20h4l10.5-10.5a2.1 2.1 0 0 0-3-3L5 17v3z" />
+        <path d="M13.5 6.5l3 3" />
+      </svg>
+    );
+  }
+  if (id === "ujian") {
+    return (
+      <svg {...garis}>
+        <rect x="5" y="3" width="14" height="18" rx="2" />
+        <path d="M8 12.5l2.2 2.2L16 9" />
+      </svg>
+    );
+  }
+  return (
+    <svg {...garis}>
+      <circle cx="12" cy="12" r="3" />
+      <path d="M12 3v2.2M12 18.8V21M3 12h2.2M18.8 12H21M5.6 5.6l1.6 1.6M16.8 16.8l1.6 1.6M18.4 5.6l-1.6 1.6M7.2 16.8l-1.6 1.6" />
+    </svg>
+  );
+}
+
 export default function IgilModulePlayer() {
   // 1. State Navigasi Tab Utama (Langsung mengaktifkan Tab Silabus)
   const [activeMainTab, setActiveMainTab] = useState<MainTabId>("silabus");
@@ -632,8 +691,9 @@ export default function IgilModulePlayer() {
                     color: isActive ? "#F0AB00" : "#FFFFFF",
                     borderColor: isActive ? "#F0AB00" : "#FFFFFF",
                   }}
-                  className="px-5 py-2.5 rounded-xl font-black text-sm md:text-base border-2 transition-all shrink-0"
+                  className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl font-black text-sm md:text-base border-2 transition-all shrink-0"
                 >
+                  <IkonTab id={tab.id} />
                   {tab.label}
                 </button>
               );
