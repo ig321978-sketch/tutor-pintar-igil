@@ -548,7 +548,7 @@ export default function IgilModulePlayer() {
                     color: isActive ? "#FFE566" : "#FFFFFF",
                     borderColor: isActive ? "#FFE566" : "#FFFFFF",
                   }}
-                  className="inline-flex items-center gap-2 px-5 py-2.5 rounded-none font-black text-sm md:text-base border-2 transition-all shrink-0"
+                  className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl font-black text-sm md:text-base border-2 transition-all shrink-0"
                 >
                   <IkonTab id={tab.id} />
                   {tab.label}
