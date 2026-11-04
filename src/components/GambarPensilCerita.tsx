@@ -65,8 +65,10 @@ export default function GambarPensilCerita({
 }) {
   const gambar = GAMBAR[sceneType];
   return (
-    <div className="aspect-video w-full overflow-hidden rounded-2xl border-2 border-[#334155]/30 shadow-inner">
-      <img src={gambar.src} alt={gambar.alt} className="h-full w-full object-cover" />
-    </div>
+    <img
+      src={gambar.src}
+      alt={gambar.alt}
+      className="h-52 w-full rounded-2xl border-2 border-[#334155]/30 object-cover shadow-inner"
+    />
   );
 }

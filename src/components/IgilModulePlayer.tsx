@@ -331,7 +331,6 @@ export default function IgilModulePlayer() {
 
   // 4. State Halaman Materi (Sub-Bab A/B/C/D + Pengunci Scroll Vertikal SMICPA)
   const [activeSubBab, setActiveSubBab] = useState<SubBabId>("A");
-  const [indeksCerita, setIndeksCerita] = useState(0);
   const [unlockedSmicpaStage, setUnlockedSmicpaStage] = useState<number>(1); // 1=Story .. 6=Abstract
   const [concreteCounter, setConcreteCounter] = useState<number>(3);
 
@@ -516,18 +515,6 @@ export default function IgilModulePlayer() {
   const currentSubContent = SUB_BABS[activeSubBab];
   const [kodeSubBab, ...sisaJudulSub] = currentSubContent.fullTitle.split(": ");
   const judulSubBab = sisaJudulSub.join(": ");
-  const ceritaAktif =
-    currentSubContent.stories[indeksCerita] ?? currentSubContent.stories[0];
-  const geserCerita = (arah: 1 | -1) => {
-    setIndeksCerita((saatIni) => {
-      const jumlah = currentSubContent.stories.length;
-      return (saatIni + arah + jumlah) % jumlah;
-    });
-  };
-
-  useEffect(() => {
-    setIndeksCerita(0);
-  }, [activeSubBab]);
 
   return (
     <div className={`min-h-screen w-full bg-white text-[#334155] pb-16 ${fontAnak.className}`}>
@@ -826,103 +813,31 @@ export default function IgilModulePlayer() {
               </span>
             </div>
 
-            <div className="mx-auto w-full overflow-hidden">
+            <div className="w-full overflow-x-auto pb-3">
               <div
-                key={ceritaAktif.id}
-                role="button"
-                tabIndex={0}
-                aria-label="Sentuh untuk menampilkan slide berikutnya di tengah"
-                onClick={() => geserCerita(1)}
-                onKeyDown={(kejadian) => {
-                  if (kejadian.key === "ArrowLeft") {
-                    kejadian.preventDefault();
-                    geserCerita(-1);
-                    return;
-                  }
-                  if (
-                    kejadian.key !== "Enter" &&
-                    kejadian.key !== " " &&
-                    kejadian.key !== "ArrowRight"
-                  ) {
-                    return;
-                  }
-                  kejadian.preventDefault();
-                  geserCerita(1);
-                }}
-                className="igil-slide-cerita w-full cursor-pointer bg-[#FFFDF9] border-2 border-[#EF4444] rounded-3xl p-4 space-y-3 shadow-sm"
+                className="flex flex-nowrap gap-5"
+                style={{ minWidth: currentSubContent.stories.length * 320 }}
               >
-                <div className="flex items-center justify-between gap-3">
-                  <span className="text-xs font-black text-[#1C01A5]">
-                    Slide Cerita {currentSubContent.stories.indexOf(ceritaAktif) + 1} /{" "}
-                    {currentSubContent.stories.length}
-                  </span>
-                  <button
-                    type="button"
-                    onClick={(kejadian) => {
-                      kejadian.stopPropagation();
-                      speakGuru(ceritaAktif.voiceNarration);
-                    }}
-                    className="px-4 py-2 rounded-xl bg-[#1C01A5] text-[#FFE566] font-black text-xs flex items-center gap-1.5 shadow"
-                  >
-                    🔊 Dengarkan Suara Guru
-                  </button>
-                </div>
-
-                <div className="relative">
-                  <GambarPensilCerita sceneType={ceritaAktif.sceneType} />
-                  <button
-                    type="button"
-                    aria-label="Slide sebelumnya"
-                    onClick={(kejadian) => {
-                      kejadian.stopPropagation();
-                      geserCerita(-1);
-                    }}
-                    className="igil-panah-slide absolute inset-y-0 left-0 z-10 flex w-16 items-center justify-center rounded-l-2xl"
-                  >
-                    <svg viewBox="0 0 24 24" className="h-7 w-7" aria-hidden="true">
-                      <path
-                        d="M14.5 6 L9 12 L14.5 18"
-                        fill="none"
-                        stroke="#fff"
-                        strokeWidth="1.75"
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                      />
-                    </svg>
-                  </button>
-                  <button
-                    type="button"
-                    aria-label="Slide berikutnya"
-                    onClick={(kejadian) => {
-                      kejadian.stopPropagation();
-                      geserCerita(1);
-                    }}
-                    className="igil-panah-slide absolute inset-y-0 right-0 z-10 flex w-16 items-center justify-center rounded-r-2xl"
-                  >
-                    <svg viewBox="0 0 24 24" className="h-7 w-7" aria-hidden="true">
-                      <path
-                        d="M9.5 6 L15 12 L9.5 18"
-                        fill="none"
-                        stroke="#fff"
-                        strokeWidth="1.75"
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                      />
-                    </svg>
-                  </button>
-                </div>
-              </div>
-              <p className="mt-3 text-center text-xs font-bold text-[#334155]">
-                Sentuh panah atau gambar. Slide berikutnya berhenti di tengah.
-              </p>
-              <div className="mt-2 flex items-center justify-center gap-2" aria-hidden>
-                {currentSubContent.stories.map((st) => (
-                  <span
+                {currentSubContent.stories.map((st, idx) => (
+                  <div
                     key={st.id}
-                    className={`h-2.5 rounded-full ${
-                      st.id === ceritaAktif.id ? "w-6 bg-[#1C01A5]" : "w-2.5 bg-[#1C01A5]/25"
-                    }`}
-                  />
+                    className="w-[300px] bg-[#FFFDF9] border-2 border-[#EF4444] rounded-3xl p-4 space-y-3 shrink-0 shadow-sm"
+                  >
+                    <div className="flex items-center justify-between">
+                      <span className="text-xs font-black text-[#1C01A5]">
+                        Slide Cerita {idx + 1} / {currentSubContent.stories.length}
+                      </span>
+                      <button
+                        type="button"
+                        onClick={() => speakGuru(st.voiceNarration)}
+                        className="px-4 py-2 rounded-xl bg-[#1C01A5] text-[#FFE566] font-black text-xs flex items-center gap-1.5 shadow"
+                      >
+                        🔊 Dengarkan Suara Guru
+                      </button>
+                    </div>
+
+                    <GambarPensilCerita sceneType={st.sceneType} />
+                  </div>
                 ))}
               </div>
             </div>
