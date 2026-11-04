@@ -766,7 +766,7 @@ export default function IgilModulePlayer() {
           {/* Tab sub-bab dan judul menempel di bawah tab utama */}
           <div className="sticky top-[74px] z-30 border-b border-slate-200 bg-white/95 py-2 backdrop-blur">
             <div className="overflow-x-auto py-3">
-              <div className="flex flex-nowrap items-center gap-2.5 min-w-max">
+              <div className="flex flex-nowrap items-center gap-2.5 min-w-max px-3">
                 {(["A", "B", "C", "D"] as SubBabId[]).map((subId) => {
                   const sub = SUB_BABS[subId];
                   const isSelected = activeSubBab === subId;
