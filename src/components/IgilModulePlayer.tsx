@@ -867,33 +867,22 @@ export default function IgilModulePlayer() {
                 </span>
               </div>
 
-              <div className="w-full overflow-x-auto pb-3">
-                <div className="flex flex-nowrap gap-5 min-w-[960px]">
-                  {currentSubContent.mindMaps.map((mm) => (
-                    <div
-                      key={mm.stepNumber}
-                      className="igil-kartu-lancip w-1/3 bg-[#FFFBEB] border-2 border-[#F59E0B] rounded-l-3xl p-5 space-y-3 shrink-0"
-                    >
-                      <div className="flex items-center justify-between">
-                        <span className="text-2xl">{mm.icon}</span>
-                        <button
-                          type="button"
-                          onClick={() => speakGuru(`${mm.stepTitle}. ${mm.stepDesc}`)}
-                          className="px-3 py-1 rounded-xl bg-white text-[#92400E] border border-[#F59E0B] text-xs font-black"
-                        >
-                          🔊 Suara
-                        </button>
-                      </div>
-                      <h3 className="text-base font-black text-[#1C01A5]">{mm.stepTitle}</h3>
-                      <p className="text-xs text-[#334155] leading-relaxed">{mm.stepDesc}</p>
-                      <div className="bg-white p-3 rounded-2xl border border-[#F59E0B] text-center space-y-1">
-                        <div className="text-xs font-bold text-slate-600">{mm.flowFrom}</div>
-                        <div className="text-sm font-black text-[#1C01A5]">⬇️</div>
-                        <div className="text-xs font-black text-[#92400E]">{mm.flowTo}</div>
-                      </div>
+              <div className="flex flex-col gap-3">
+                {currentSubContent.mindMaps.map((mm) => (
+                  <div key={mm.stepNumber} className="igil-kartu-lancip w-full px-5 pt-12 pb-14">
+                    <div className="flex items-center justify-between">
+                      <span className="text-2xl">{mm.icon}</span>
+                      <button
+                        type="button"
+                        onClick={() => speakGuru(`${mm.stepTitle}. ${mm.stepDesc}`)}
+                        className="px-3 py-1 rounded-xl bg-white text-[#92400E] border border-[#F59E0B] text-xs font-black"
+                      >
+                        🔊 Suara
+                      </button>
                     </div>
-                  ))}
-                </div>
+                    <h3 className="mt-3 text-base font-black text-[#1C01A5]">{mm.stepTitle}</h3>
+                  </div>
+                ))}
               </div>
 
               <div className="flex justify-end">

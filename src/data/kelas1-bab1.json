@@ -45,7 +45,7 @@
       "mindMaps": [
         {
           "stepNumber": 1,
-          "stepTitle": "1. Kelompokkan yang sama",
+          "stepTitle": "1. Kelompokkan Mainan",
           "stepDesc": "Di taman, kumpulkan jungkat-jungkit, ayunan, dan perosotan. Benda yang sama masuk satu kelompok.",
           "icon": "🧒",
           "flowFrom": "Benda di taman",
@@ -53,7 +53,7 @@
         },
         {
           "stepNumber": 2,
-          "stepTitle": "2. Hitung satu per satu",
+          "stepTitle": "2. Hitung Satu per satu",
           "stepDesc": "Hitung sepeda dulu. Sesudah itu hitung kursi. Lanjut ke buku, layang-layang, balon, kelereng, dan bola.",
           "icon": "👆",
           "flowFrom": "Satu kelompok",
@@ -61,7 +61,7 @@
         },
         {
           "stepNumber": 3,
-          "stepTitle": "3. Baca dan tulis",
+          "stepTitle": "3. Sebutkan dan Tuliskan",
           "stepDesc": "Ucapkan nama bilangannya. Tuliskan angkanya. Hitung sampai sepuluh.",
           "icon": "✏️",
           "flowFrom": "Hasil hitungan",
