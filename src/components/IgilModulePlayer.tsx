@@ -6,6 +6,7 @@ import { normalisasiKelaminGuru, profilGuru } from "@/lib/guru";
 import { bacaProgres } from "@/lib/progres";
 import { hentikanAudioGuruAktif, mintaAudioTts } from "@/lib/putar-tts-klien";
 import materiBab1 from "@/data/kelas1-bab1.json";
+import GambarPensilCerita from "@/components/GambarPensilCerita";
 
 const fontAnak = Nunito({
   subsets: ["latin"],
@@ -93,154 +94,6 @@ interface QuestionItem {
 const SUB_BABS = materiBab1.subBabs as Record<SubBabId, SubBabContent>;
 const PRACTICE_QUESTIONS = materiBab1.practiceQuestions as QuestionItem[];
 const FORMAL_EXAM_QUESTIONS = materiBab1.examQuestions as QuestionItem[];
-
-// ============================================================================
-// SUB-KOMPONEN GAMBAR PENSIL WARNA (COLORED PENCIL SVG ILLUSTRATION)
-// ============================================================================
-
-function ColoredPencilStoryIllustration({
-  sceneType,
-}: {
-  sceneType: StorySlideItem["sceneType"];
-}) {
-  return (
-    <svg
-      viewBox="0 0 420 220"
-      className="w-full h-52 rounded-2xl border-2 border-[#334155]/30 bg-[#FFFDF9] shadow-inner"
-    >
-      <defs>
-        {/* Filter tekstur goresan pensil warna halus */}
-        <pattern
-          id="pencilHatch"
-          width="8"
-          height="8"
-          patternTransform="rotate(35 0 0)"
-          patternUnits="userSpaceOnUse"
-        >
-          <line x1="0" y1="0" x2="0" y2="8" stroke="#FDE68A" strokeWidth="1.5" opacity="0.35" />
-        </pattern>
-      </defs>
-
-      {/* Latar Langit & Rumput Arsiran Pensil Warna */}
-      <rect x="0" y="0" width="420" height="220" fill="#FEFCE8" />
-      <rect x="0" y="0" width="420" height="220" fill="url(#pencilHatch)" />
-      <path
-        d="M 0 155 Q 110 135 220 155 T 420 150 L 420 220 L 0 220 Z"
-        fill="#86EFAC"
-        stroke="#166534"
-        strokeWidth="2.5"
-        strokeDasharray="6 2"
-      />
-      <circle
-        cx="365"
-        cy="42"
-        r="22"
-        fill="#FDE047"
-        stroke="#CA8A04"
-        strokeWidth="2.5"
-        strokeDasharray="4 2"
-      />
-
-      {sceneType === "garden-visit" && (
-        <g>
-          {/* Pohon Kebun Kakek */}
-          <rect x="75" y="95" width="24" height="65" fill="#92400E" stroke="#451A03" strokeWidth="2" />
-          <circle cx="87" cy="72" r="42" fill="#4ADE80" stroke="#15803D" strokeWidth="2.5" strokeDasharray="5 2" />
-          <circle cx="72" cy="65" r="7" fill="#EF4444" />
-          <circle cx="102" cy="58" r="7" fill="#EF4444" />
-          <circle cx="88" cy="84" r="7" fill="#EF4444" />
-          {/* Maskot IGIL & Anak-Anak (Tanpa Teks Cerita) */}
-          <circle cx="210" cy="135" r="22" fill="#FDE68A" stroke="#1C01A5" strokeWidth="2.5" />
-          <text x="210" y="143" textAnchor="middle" fontSize="24">
-            🦉
-          </text>
-          <circle cx="268" cy="138" r="20" fill="#FCA5A5" stroke="#991B1B" strokeWidth="2" />
-          <text x="268" y="145" textAnchor="middle" fontSize="22">
-            👧🏻
-          </text>
-          <circle cx="318" cy="138" r="20" fill="#93C5FD" stroke="#1E3A8A" strokeWidth="2" />
-          <text x="318" y="145" textAnchor="middle" fontSize="22">
-            👧🏽
-          </text>
-        </g>
-      )}
-
-      {sceneType === "picking-fruits" && (
-        <g>
-          <rect x="60" y="110" width="120" height="55" rx="12" fill="#FDE68A" stroke="#92400E" strokeWidth="2.5" strokeDasharray="5 2" />
-          <text x="85" y="145" fontSize="24">🍎</text>
-          <text x="115" y="145" fontSize="24">🍎</text>
-          <text x="145" y="145" fontSize="24">🍎</text>
-
-          <rect x="230" y="110" width="135" height="55" rx="12" fill="#FED7AA" stroke="#9A3412" strokeWidth="2.5" strokeDasharray="5 2" />
-          <text x="248" y="145" fontSize="22">🍊</text>
-          <text x="275" y="145" fontSize="22">🍊</text>
-          <text x="302" y="145" fontSize="22">🍌</text>
-          <text x="328" y="145" fontSize="22">🍌</text>
-        </g>
-      )}
-
-      {sceneType === "counting-table" && (
-        <g>
-          <rect x="55" y="115" width="310" height="20" rx="6" fill="#D97706" stroke="#78350F" strokeWidth="2" />
-          <text x="95" y="105" fontSize="26">🍎</text>
-          <text x="135" y="105" fontSize="26">🍎</text>
-          <text x="175" y="105" fontSize="26">🍎</text>
-          <text x="235" y="105" fontSize="26">🍊</text>
-          <text x="275" y="105" fontSize="26">🍊</text>
-          <text x="315" y="105" fontSize="26">🍌</text>
-        </g>
-      )}
-
-      {sceneType === "empty-basket" && (
-        <g>
-          <ellipse cx="210" cy="135" rx="85" ry="28" fill="#FFFFFF" stroke="#334155" strokeWidth="3" strokeDasharray="6 3" />
-          <ellipse cx="210" cy="135" rx="60" ry="16" fill="#F8FAFC" stroke="#94A3B8" strokeWidth="2" />
-          <text x="115" y="95" fontSize="28">👦🏾</text>
-          <text x="285" y="95" fontSize="28">👦🏻</text>
-        </g>
-      )}
-
-      {sceneType === "comparing-scales" && (
-        <g>
-          <polygon points="210,95 185,155 235,155" fill="#93C5FD" stroke="#1E3A8A" strokeWidth="2.5" />
-          <line x1="95" y1="88" x2="325" y2="108" stroke="#334155" strokeWidth="4" />
-          <rect x="65" y="55" width="65" height="32" rx="6" fill="#FCA5A5" stroke="#991B1B" strokeWidth="2" />
-          <rect x="290" y="75" width="65" height="32" rx="6" fill="#FDE68A" stroke="#92400E" strokeWidth="2" />
-        </g>
-      )}
-
-      {sceneType === "frog-river" && (
-        <g>
-          <rect x="0" y="125" width="420" height="55" fill="#93C5FD" opacity="0.7" />
-          {[0, 1, 2, 3, 4, 5].map((i) => (
-            <ellipse
-              key={i}
-              cx={55 + i * 62}
-              cy={152}
-              rx="22"
-              ry="12"
-              fill="#CBD5E1"
-              stroke="#334155"
-              strokeWidth="2"
-            />
-          ))}
-          <text x="175" y="142" fontSize="28">🐸</text>
-        </g>
-      )}
-
-      {sceneType === "number-tree" && (
-        <g>
-          <line x1="210" y1="58" x2="135" y2="128" stroke="#166534" strokeWidth="4" strokeDasharray="5 2" />
-          <line x1="210" y1="58" x2="285" y2="128" stroke="#166534" strokeWidth="4" strokeDasharray="5 2" />
-          <circle cx="210" cy="58" r="26" fill="#FDE047" stroke="#CA8A04" strokeWidth="2.5" />
-          <circle cx="135" cy="128" r="24" fill="#FCA5A5" stroke="#991B1B" strokeWidth="2.5" />
-          <circle cx="285" cy="128" r="24" fill="#93C5FD" stroke="#1E3A8A" strokeWidth="2.5" />
-        </g>
-      )}
-    </svg>
-  );
-}
 
 // ============================================================================
 // SUB-KOMPONEN KANVAS TULIS TITIK-TITIK ANGKA (DOTTED NUMBER TRACING CANVAS)
@@ -938,7 +791,7 @@ export default function IgilModulePlayer() {
                     </div>
 
                     {/* Ilustrasi Pensil Warna Tanpa Teks Cerita agar Anak Fokus Mendengar */}
-                    <ColoredPencilStoryIllustration sceneType={st.sceneType} />
+                    <GambarPensilCerita sceneType={st.sceneType} />
                   </div>
                 ))}
               </div>
