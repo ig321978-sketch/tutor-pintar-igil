@@ -1011,7 +1011,7 @@ export default function IgilModulePlayer() {
                         🔊 Suara
                       </button>
                     </div>
-                    <div className="grid grid-cols-2 gap-2">
+                    <div className="flex flex-col gap-2">
                       {URUTAN_HITUNG.map((item) => (
                         <div
                           key={item.angka}
