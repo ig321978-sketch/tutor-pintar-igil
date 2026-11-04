@@ -628,8 +628,10 @@ export default function IgilModulePlayer() {
             <div className="flex items-center gap-4">
               <img
                 src="/icon-192.png"
-                alt="IGIL"
-                className="w-14 h-14 md:w-16 md:h-16 rounded-2xl object-cover shadow shrink-0"
+                alt="burung hantu IGIL"
+                width={64}
+                height={64}
+                className="w-14 h-14 md:w-16 md:h-16 shrink-0"
               />
 
               {/* Label Mapel/Kelas (#F0AB00 H2/H3 Kapital Tanpa Kartu) & Nama Bab (Putih H1 Tanpa Kartu) */}
