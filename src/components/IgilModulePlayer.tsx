@@ -760,12 +760,12 @@ export default function IgilModulePlayer() {
           </div>
 
           {/* --------------------------------------------------------------- */}
-          {/* SLIDED COMPONENT 1: STORY (3 GAMBAR PENSIL WARNA • TANPA TEKS)  */}
+          {/* SLIDED COMPONENT 1: STORY (3 GAMBAR DOODLE BERWARNA • TANPA TEKS) */}
           {/* --------------------------------------------------------------- */}
           <div className="space-y-3 border-b-2 border-slate-200 pb-6">
             <div className="flex items-center justify-between">
               <span className="px-3 py-1 rounded-full bg-[#FEE2E2] text-[#991B1B] font-black text-xs">
-                TAHAP 1 [S] • STORY (CERITA PENSIL WARNA TANPA TEKS — FOKUS MENDENGAR)
+                TAHAP 1 [S] • STORY (CERITA DOODLE BERWARNA TANPA TEKS — FOKUS MENDENGAR)
               </span>
               <span className="text-xs font-bold text-slate-500">Geser Kiri-Kanan ↔️</span>
             </div>
@@ -790,7 +790,7 @@ export default function IgilModulePlayer() {
                       </button>
                     </div>
 
-                    {/* Ilustrasi Pensil Warna Tanpa Teks Cerita agar Anak Fokus Mendengar */}
+                    {/* Ilustrasi doodle berwarna tanpa teks cerita agar anak fokus mendengar */}
                     <GambarPensilCerita sceneType={st.sceneType} />
                   </div>
                 ))}
