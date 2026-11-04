@@ -60,21 +60,15 @@ const GAMBAR: Record<AdeganCerita, { src: string; alt: string }> = {
 
 export default function GambarPensilCerita({
   sceneType,
-  ringkas = false,
 }: {
   sceneType: AdeganCerita;
-  ringkas?: boolean;
 }) {
   const gambar = GAMBAR[sceneType];
   return (
     <img
       src={gambar.src}
       alt={gambar.alt}
-      className={
-        ringkas
-          ? "h-28 w-full rounded-xl border border-[#334155]/20 object-cover object-[center_62%]"
-          : "h-52 w-full rounded-2xl border-2 border-[#334155]/30 object-cover shadow-inner"
-      }
+      className="h-52 w-full rounded-2xl border-2 border-[#334155]/30 object-cover shadow-inner"
     />
   );
 }
