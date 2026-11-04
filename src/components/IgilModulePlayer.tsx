@@ -832,7 +832,7 @@ export default function IgilModulePlayer() {
                         onClick={() => speakGuru(st.voiceNarration)}
                         className="px-4 py-2 rounded-xl bg-[#1C01A5] text-[#FFE566] font-black text-xs flex items-center gap-1.5 shadow"
                       >
-                        🔊 Dengarkan Suara Guru
+                        🔊 Suara Guru
                       </button>
                     </div>
 
