@@ -764,42 +764,41 @@ export default function IgilModulePlayer() {
       {/* =================================================================== */}
       {activeMainTab === "materi" && (
         <section className="w-[98%] mx-auto mt-3 bg-white px-2 md:px-6 space-y-6">
-          {/* Tombol Tab Sub-Bab Bergaya Slide & Floating di Bawah Tab Utama (Secondary Colors) */}
-          <div className="sticky top-[74px] z-30 bg-white/95 backdrop-blur py-2 border-b border-slate-200 overflow-x-auto">
-            <div className="flex flex-nowrap items-center gap-2.5 min-w-max">
-              {(["A", "B", "C", "D"] as SubBabId[]).map((subId) => {
-                const sub = SUB_BABS[subId];
-                const isSelected = activeSubBab === subId;
-                const isDone = completedSubBabs.includes(subId);
-                return (
-                  <button
-                    key={subId}
-                    type="button"
-                    onClick={() => {
-                      setActiveSubBab(subId);
-                      setUnlockedSmicpaStage(1);
-                    }}
-                    style={{
-                      backgroundColor: sub.secondaryBg,
-                      borderColor: isSelected ? "#1C01A5" : sub.secondaryBorder,
-                      color: sub.secondaryText,
-                    }}
-                    className={`px-4 py-2 rounded-2xl font-black text-xs md:text-sm border-2 transition-all shrink-0 ${
-                      isSelected ? "ring-2 ring-[#1C01A5] scale-105 shadow" : "opacity-85"
-                    }`}
-                  >
-                    {sub.codeTitle} {isDone ? "✅" : ""}
-                  </button>
-                );
-              })}
+          {/* Tab sub-bab dan judul menempel di bawah tab utama */}
+          <div className="sticky top-[74px] z-30 border-b border-slate-200 bg-white/95 py-2 backdrop-blur">
+            <div className="overflow-x-auto">
+              <div className="flex flex-nowrap items-center gap-2.5 min-w-max">
+                {(["A", "B", "C", "D"] as SubBabId[]).map((subId) => {
+                  const sub = SUB_BABS[subId];
+                  const isSelected = activeSubBab === subId;
+                  const isDone = completedSubBabs.includes(subId);
+                  return (
+                    <button
+                      key={subId}
+                      type="button"
+                      onClick={() => {
+                        setActiveSubBab(subId);
+                        setUnlockedSmicpaStage(1);
+                      }}
+                      style={{
+                        backgroundColor: sub.secondaryBg,
+                        borderColor: isSelected ? "#1C01A5" : sub.secondaryBorder,
+                        color: sub.secondaryText,
+                      }}
+                      className={`px-4 py-2 rounded-2xl font-black text-xs md:text-sm border-2 transition-all shrink-0 ${
+                        isSelected ? "ring-2 ring-[#1C01A5] scale-105 shadow" : "opacity-85"
+                      }`}
+                    >
+                      {sub.codeTitle} {isDone ? "✅" : ""}
+                    </button>
+                  );
+                })}
+              </div>
             </div>
-          </div>
 
-          {/* Judul Sub-bab: kode di atas, nama bab di bawah */}
-          <div className="pt-1">
-            <h2 className="text-xl md:text-2xl font-black text-[#1C01A5]">
+            <h2 className="pt-3 text-xl font-black md:text-2xl">
               <span className="block text-[#F0AB00]">{kodeSubBab}</span>
-              <span className="block">{judulSubBab}</span>
+              <span className="block text-[#1C01A5]">{judulSubBab}</span>
             </h2>
           </div>
 
