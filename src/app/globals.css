@@ -310,14 +310,14 @@ a.igil-tombol:active {
 /* Atas lancip ke dalam, bawah lancip ke luar. Isi kartu berada di dalam garis. */
 .igil-kartu-lancip::before {
   background: #f59e0b;
-  clip-path: polygon(0 0, 50% 22px, 100% 0, 100% calc(100% - 28px), 50% 100%, 0 calc(100% - 28px));
+  clip-path: polygon(0 0, 50% 28px, 100% 0, 100% calc(100% - 28px), 50% 100%, 0 calc(100% - 28px));
 }
 
 .igil-kartu-lancip::after {
   background: #fffbeb;
   clip-path: polygon(
     2px 3px,
-    50% 25px,
+    50% 31px,
     calc(100% - 2px) 3px,
     calc(100% - 2px) calc(100% - 31px),
     50% calc(100% - 3px),
