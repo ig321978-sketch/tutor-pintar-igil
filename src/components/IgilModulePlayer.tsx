@@ -321,6 +321,111 @@ function IkonTab({ id }: { id: MainTabId }) {
   );
 }
 
+const CABANG_TAMAN: Record<string, { judul: string; kata: string[] }> = {
+  "A-S1": { judul: "Bermain aman", kata: ["Malosi", "teman", "gembira"] },
+  "A-S2": { judul: "Kelompok yang sama", kata: ["jungkat-jungkit", "ayunan", "perosotan"] },
+  "A-S3": { judul: "Satu lalu yang lain", kata: ["sepeda dulu", "lalu kursi"] },
+  "A-S4": { judul: "Sampai sepuluh", kata: ["buku", "layang-layang", "balon", "kelereng", "bola"] },
+};
+
+const WARNA_CABANG = ["#E98989", "#F0AB00", "#7FCB96", "#1C01A5"] as const;
+
+const NASKAH_PETA_TAMAN =
+  "Peta pikiran taman bermain. Malosi dan teman-teman bermain dengan gembira dan aman. Kelompokkan jungkat-jungkit, ayunan, dan perosotan. Hitung sepeda dulu, lalu hitung kursi. Kelompokkan buku, layang-layang, balon, kelereng, dan bola. Hitung satu per satu sampai sepuluh. Kemudian baca dan tulis angkanya.";
+
+function PetaPikiranTaman({
+  cerita,
+  onSuara,
+}: {
+  cerita: StorySlideItem[];
+  onSuara: (teks: string) => void;
+}) {
+  return (
+    <div className="rounded-[2rem] border-2 border-[#F0AB00] bg-[#FFFBEB] p-4 md:p-6">
+      <div className="mb-4 flex justify-end">
+        <button
+          type="button"
+          onClick={() => onSuara(NASKAH_PETA_TAMAN)}
+          className="px-4 py-2 rounded-xl bg-[#1C01A5] text-[#FFE566] font-black text-xs shadow"
+        >
+          🔊 Dengarkan Peta Pikiran
+        </button>
+      </div>
+
+      <div className="grid grid-cols-1 gap-3 md:grid-cols-[1fr_13rem_1fr] md:grid-rows-2 md:gap-x-10 md:gap-y-4">
+        <div className="order-1 flex items-center justify-center md:col-start-2 md:row-start-1 md:row-span-2">
+          <div className="flex h-36 w-36 flex-col items-center justify-center rounded-full border-4 border-[#FFE566] bg-[#1C01A5] px-3 text-center shadow-md md:h-44 md:w-44">
+            <span className="text-sm font-black leading-tight text-white md:text-base">
+              Taman Bermain
+            </span>
+            <span className="mt-1 text-xs font-black text-[#FFE566]">Hitung, baca, tulis</span>
+          </div>
+        </div>
+
+        {cerita.map((slide, indeks) => {
+          const cabang = CABANG_TAMAN[slide.id];
+          if (!cabang) return null;
+          const warna = WARNA_CABANG[indeks % WARNA_CABANG.length];
+          const kiri = indeks % 2 === 0;
+          return (
+            <div
+              key={slide.id}
+              style={{ borderColor: warna }}
+              className={`relative rounded-3xl border-2 bg-white p-3 shadow-sm ${
+                indeks === 0
+                  ? "order-2 md:col-start-1 md:row-start-1"
+                  : indeks === 1
+                    ? "order-3 md:col-start-3 md:row-start-1"
+                    : indeks === 2
+                      ? "order-4 md:col-start-1 md:row-start-2"
+                      : "order-5 md:col-start-3 md:row-start-2"
+              }`}
+            >
+              <span
+                aria-hidden
+                className={`absolute top-1/2 hidden h-1 w-8 -translate-y-1/2 bg-[#F0AB00] md:block ${
+                  kiri ? "-right-8" : "-left-8"
+                }`}
+              />
+              <div className="mb-2 flex items-center gap-2">
+                <span
+                  style={{ backgroundColor: warna, color: warna === "#1C01A5" ? "#FFE566" : "#1C01A5" }}
+                  className="flex h-7 w-7 shrink-0 items-center justify-center rounded-full text-sm font-black"
+                >
+                  {indeks + 1}
+                </span>
+                <h3 className="text-sm font-black text-[#1C01A5] md:text-base">{cabang.judul}</h3>
+              </div>
+              <GambarPensilCerita sceneType={slide.sceneType} ringkas />
+              <div className="mt-2 flex flex-wrap gap-1.5">
+                {cabang.kata.map((kata) => (
+                  <span
+                    key={kata}
+                    className="rounded-full bg-[#FFFBEB] px-2 py-0.5 text-[11px] font-bold text-[#1C01A5]"
+                  >
+                    {kata}
+                  </span>
+                ))}
+              </div>
+            </div>
+          );
+        })}
+      </div>
+
+      <div className="mt-5 flex flex-wrap items-center justify-center gap-2 text-center">
+        {["Kelompokkan", "Hitung satu-satu", "Baca dan tulis"].map((langkah, indeks) => (
+          <React.Fragment key={langkah}>
+            {indeks > 0 && <span className="font-black text-[#F0AB00]">→</span>}
+            <span className="rounded-full border-2 border-[#F0AB00] bg-white px-3 py-1 text-xs font-black text-[#1C01A5]">
+              {langkah}
+            </span>
+          </React.Fragment>
+        ))}
+      </div>
+    </div>
+  );
+}
+
 export default function IgilModulePlayer() {
   // 1. State Navigasi Tab Utama (Langsung mengaktifkan Tab Silabus)
   const [activeMainTab, setActiveMainTab] = useState<MainTabId>("silabus");
@@ -870,6 +975,12 @@ export default function IgilModulePlayer() {
                 </span>
               </div>
 
+              {activeSubBab === "A" ? (
+                <PetaPikiranTaman
+                  cerita={currentSubContent.stories}
+                  onSuara={(teks) => speakGuru(teks)}
+                />
+              ) : (
               <div className="w-full overflow-x-auto pb-3">
                 <div className="flex flex-nowrap gap-5 min-w-[960px]">
                   {currentSubContent.mindMaps.map((mm) => (
@@ -898,6 +1009,7 @@ export default function IgilModulePlayer() {
                   ))}
                 </div>
               </div>
+              )}
 
               <div className="flex justify-end">
                 <button

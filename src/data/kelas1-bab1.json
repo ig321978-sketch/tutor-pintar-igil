@@ -45,27 +45,27 @@
       "mindMaps": [
         {
           "stepNumber": 1,
-          "stepTitle": "1. Kumpulkan & Klasifikasikan",
-          "stepDesc": "Keluarkan semua buah dari keranjang lalu pisahkan ke dalam kotak masing-masing sesuai jenis buahnya.",
-          "icon": "🧺",
-          "flowFrom": "Buah Campur di Keranjang",
-          "flowTo": "Kotak Apel, Jeruk & Pisang"
+          "stepTitle": "1. Kelompokkan yang sama",
+          "stepDesc": "Di taman, kumpulkan jungkat-jungkit, ayunan, dan perosotan. Benda yang sama masuk satu kelompok.",
+          "icon": "🛝",
+          "flowFrom": "Benda di taman",
+          "flowTo": "Kelompok yang sama"
         },
         {
           "stepNumber": 2,
-          "stepTitle": "2. Hitung Satu per Satu",
-          "stepDesc": "Tunjuk dan hitung buah di dalam setiap kotak klasifikasi secara berurutan mulai dari satu.",
+          "stepTitle": "2. Hitung satu per satu",
+          "stepDesc": "Hitung sepeda dulu. Sesudah itu hitung kursi. Lanjut ke buku, layang-layang, balon, kelereng, dan bola.",
           "icon": "👆",
-          "flowFrom": "Kotak Klasifikasi Buah",
-          "flowTo": "Pasangkan 1 Jari = 1 Buah"
+          "flowFrom": "Satu kelompok",
+          "flowTo": "Satu, dua, tiga, ..."
         },
         {
           "stepNumber": 3,
-          "stepTitle": "3. Baca & Tulis Lambangnya",
-          "stepDesc": "Ucapkan nama bilangannya dengan lantang, tuliskan lambang angkanya, lalu jumlahkan total buahnya.",
-          "icon": "✍️",
-          "flowFrom": "Hasil Hitungan Buah",
-          "flowTo": "Angka (3, 5, 7) & Nama Kata"
+          "stepTitle": "3. Baca dan tulis",
+          "stepDesc": "Ucapkan nama bilangannya. Tuliskan angkanya. Hitung sampai sepuluh.",
+          "icon": "✏️",
+          "flowFrom": "Hasil hitungan",
+          "flowTo": "Angka 1 sampai 10"
         }
       ],
       "infografisData": [
