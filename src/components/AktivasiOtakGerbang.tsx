@@ -49,26 +49,56 @@ function halamanGerbang(pathname: string): boolean {
   return pathname === "/ruang-belajar";
 }
 
-function bacaPeta(): Record<string, number> {
+type JejakSesi = {
+  waktu: number;
+  main: number;
+};
+
+function bacaPeta(): Record<string, JejakSesi> {
   try {
     const mentah = window.localStorage.getItem(KUNCI_PETA);
     if (!mentah) return {};
-    const data = JSON.parse(mentah) as Record<string, number>;
-    return data && typeof data === "object" ? data : {};
+    const data = JSON.parse(mentah) as Record<string, unknown>;
+    if (!data || typeof data !== "object") return {};
+    const peta: Record<string, JejakSesi> = {};
+    for (const [akun, nilai] of Object.entries(data)) {
+      const jejak = normalisasiJejak(nilai);
+      if (jejak) peta[akun] = jejak;
+    }
+    return peta;
   } catch {
     return {};
   }
 }
 
-function perluAktivasi(akun: string): boolean {
-  const terakhir = bacaPeta()[akun];
-  if (typeof terakhir !== "number") return true;
-  return Date.now() - terakhir >= ENAM_JAM;
+function normalisasiJejak(nilai: unknown): JejakSesi | null {
+  if (typeof nilai === "number" && Number.isFinite(nilai)) {
+    return { waktu: nilai, main: -1 };
+  }
+  if (!nilai || typeof nilai !== "object") return null;
+  const waktu = (nilai as { waktu?: unknown }).waktu;
+  const main = (nilai as { main?: unknown }).main;
+  if (typeof waktu !== "number" || !Number.isFinite(waktu)) return null;
+  if (typeof main !== "number" || !Number.isInteger(main)) return null;
+  return { waktu, main };
 }
 
-function catatAktivasi(akun: string) {
+function perluAktivasi(akun: string): boolean {
+  const jejak = bacaPeta()[akun];
+  if (!jejak) return true;
+  return Date.now() - jejak.waktu >= ENAM_JAM;
+}
+
+function mainSesiIni(akun: string): IdMain {
+  const terakhir = bacaPeta()[akun]?.main ?? -1;
+  const indeks = (terakhir + 1) % PILIHAN_MAIN.length;
+  return PILIHAN_MAIN[indeks].id;
+}
+
+function catatAktivasi(akun: string, main: IdMain) {
   const peta = bacaPeta();
-  peta[akun] = Date.now();
+  const indeks = PILIHAN_MAIN.findIndex((item) => item.id === main);
+  peta[akun] = { waktu: Date.now(), main: indeks < 0 ? 0 : indeks };
   window.localStorage.setItem(KUNCI_PETA, JSON.stringify(peta));
 }
 
@@ -495,6 +525,7 @@ export default function AktivasiOtakGerbang() {
     void kunciAkun().then((kunci) => {
       if (batal) return;
       setAkun(kunci);
+      setMain(mainSesiIni(kunci));
       setTampil(perluAktivasi(kunci));
     });
     return () => {
@@ -505,7 +536,7 @@ export default function AktivasiOtakGerbang() {
   const selesai = () => {
     if (akun) {
       try {
-        catatAktivasi(akun);
+        catatAktivasi(akun, main);
       } catch {
         // Mode privat tidak menyimpan jejak.
       }
@@ -526,27 +557,10 @@ export default function AktivasiOtakGerbang() {
             <div>
               <p className="text-xs font-black uppercase tracking-wider text-[#F0AB00]">Aktivasi otak</p>
               <h1 className="text-xl font-black text-white md:text-2xl">Main santai sebelum belajar</h1>
-              <p className="mt-1 text-sm font-bold text-white/80">Tiga permainan bebas. Bukan soal pelajaran.</p>
+              <p className="mt-1 text-sm font-bold text-white/80">
+                {PILIHAN_MAIN.find((item) => item.id === main)?.nama}. Bukan soal pelajaran.
+              </p>
             </div>
-          </div>
-
-          <div className="grid grid-cols-3 gap-2">
-            {PILIHAN_MAIN.map((item) => {
-              const aktif = main === item.id;
-              return (
-                <button
-                  key={item.id}
-                  type="button"
-                  aria-pressed={aktif}
-                  onClick={() => setMain(item.id)}
-                  className={`rounded-2xl px-2 py-3 text-xs font-black sm:text-sm ${
-                    aktif ? "bg-[#F0AB00] text-[#1C01A5]" : "bg-[#EEF2FF] text-[#1C01A5]"
-                  }`}
-                >
-                  {item.nama}
-                </button>
-              );
-            })}
           </div>
 
           {main === "berkata" ? <MainBerkata /> : null}
