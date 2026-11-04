@@ -72,7 +72,7 @@ export default function GambarPensilCerita({
       alt={gambar.alt}
       className={
         ringkas
-          ? "h-16 w-full rounded-xl border border-[#334155]/20 object-cover"
+          ? "h-28 w-full rounded-xl border border-[#334155]/20 object-cover object-[center_62%]"
           : "h-52 w-full rounded-2xl border-2 border-[#334155]/30 object-cover shadow-inner"
       }
     />
