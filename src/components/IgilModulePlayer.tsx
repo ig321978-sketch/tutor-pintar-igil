@@ -879,20 +879,12 @@ export default function IgilModulePlayer() {
                     }}
                     className="igil-panah-slide absolute inset-y-0 left-0 z-10 flex w-16 items-center justify-center rounded-l-2xl"
                   >
-                    <svg viewBox="0 0 24 24" className="h-12 w-12" aria-hidden="true">
+                    <svg viewBox="0 0 24 24" className="h-7 w-7" aria-hidden="true">
                       <path
-                        d="M14.5 5 L8 12 L14.5 19"
-                        fill="none"
-                        stroke="#1C01A5"
-                        strokeWidth="5"
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                      />
-                      <path
-                        d="M14.5 5 L8 12 L14.5 19"
+                        d="M14.5 6 L9 12 L14.5 18"
                         fill="none"
                         stroke="#fff"
-                        strokeWidth="2.5"
+                        strokeWidth="1.75"
                         strokeLinecap="round"
                         strokeLinejoin="round"
                       />
@@ -907,20 +899,12 @@ export default function IgilModulePlayer() {
                     }}
                     className="igil-panah-slide absolute inset-y-0 right-0 z-10 flex w-16 items-center justify-center rounded-r-2xl"
                   >
-                    <svg viewBox="0 0 24 24" className="h-12 w-12" aria-hidden="true">
+                    <svg viewBox="0 0 24 24" className="h-7 w-7" aria-hidden="true">
                       <path
-                        d="M9.5 5 L16 12 L9.5 19"
-                        fill="none"
-                        stroke="#1C01A5"
-                        strokeWidth="5"
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                      />
-                      <path
-                        d="M9.5 5 L16 12 L9.5 19"
+                        d="M9.5 6 L15 12 L9.5 18"
                         fill="none"
                         stroke="#fff"
-                        strokeWidth="2.5"
+                        strokeWidth="1.75"
                         strokeLinecap="round"
                         strokeLinejoin="round"
                       />

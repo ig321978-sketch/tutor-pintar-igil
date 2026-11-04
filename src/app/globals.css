@@ -307,13 +307,23 @@ button.igil-panah-slide {
   box-shadow: none;
 }
 
+button.igil-panah-slide svg {
+  opacity: 0.28;
+}
+
 button.igil-panah-slide:hover,
-button.igil-panah-slide:active {
+button.igil-panah-slide:active,
+button.igil-panah-slide:focus-visible {
   transform: none;
-  background: rgb(255 255 255 / 0.2);
+  background: transparent;
   filter: none;
   box-shadow: none;
   border-color: transparent;
+}
+
+button.igil-panah-slide:hover svg,
+button.igil-panah-slide:focus-visible svg {
+  opacity: 0.72;
 }
 
 @media (prefers-reduced-motion: reduce) {
