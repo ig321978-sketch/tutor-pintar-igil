@@ -513,8 +513,7 @@ export default function IgilModulePlayer() {
   // ============================================================================
 
   const currentSubContent = SUB_BABS[activeSubBab];
-  const [kodeSubBab, ...sisaJudulSub] = currentSubContent.fullTitle.split(": ");
-  const judulSubBab = sisaJudulSub.join(": ");
+  const judulSubBab = currentSubContent.fullTitle.split(": ").slice(1).join(": ");
 
   return (
     <div className={`min-h-screen w-full bg-white text-[#334155] pb-16 ${fontAnak.className}`}>
@@ -796,9 +795,8 @@ export default function IgilModulePlayer() {
               </div>
             </div>
 
-            <h2 className="pt-3 text-xl font-black md:text-2xl">
-              <span className="block text-[#F0AB00]">{kodeSubBab}</span>
-              <span className="block text-[#1C01A5]">{judulSubBab}</span>
+            <h2 className="pt-3 text-xl font-black text-[#1C01A5] md:text-2xl">
+              {judulSubBab}
             </h2>
           </div>
 
