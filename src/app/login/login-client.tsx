@@ -71,7 +71,7 @@ export default function LoginClient() {
     >
       <form
         onSubmit={(e) => void kirim(e)}
-        className="mx-auto max-w-md space-y-4 rounded-3xl border border-[#0F74B8]/15 bg-white p-6 shadow-sm"
+        className="mx-auto max-w-md space-y-4 rounded-3xl border border-[#1C01A5]/15 bg-white p-6 shadow-sm"
       >
         <label className="block">
           <span className={kelasLabel}>Email</span>

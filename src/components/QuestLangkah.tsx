@@ -46,7 +46,7 @@ function batasHalaman(langkah: LangkahQuest[], indeks: number) {
 }
 
 function kelasTab(aktif: boolean, boleh: boolean) {
-  if (aktif) return "bg-[#9AD8FF] text-[#17324A] shadow-[0_3px_0_#FFC56D]";
+  if (aktif) return "bg-[#1C01A5] text-white shadow-[0_3px_0_#FF7A00]";
   if (boleh) return "bg-white/70 text-indigo-700 ring-1 ring-inset ring-indigo-200/80 hover:bg-white";
   return "bg-white/75 text-indigo-500";
 }
@@ -142,7 +142,7 @@ export function QuestLangkah({
 
   return (
     <section ref={akar} className="scroll-mt-24 space-y-4">
-      <div className="relative -mx-4 w-[calc(100%+2rem)] overflow-hidden rounded-none bg-gradient-to-br from-[#eef2ff] via-[#ece8ff] to-[#f7f3ff] text-[#0F74B8] shadow-[0_10px_24px_-18px_rgba(67,56,202,0.55)]">
+      <div className="relative -mx-4 w-[calc(100%+2rem)] overflow-hidden rounded-none bg-gradient-to-br from-[#eef2ff] via-[#ece8ff] to-[#f7f3ff] text-[#1C01A5] shadow-[0_10px_24px_-18px_rgba(67,56,202,0.55)]">
         <BalokDompet judul={judulKepala} />
         <div ref={daftarTab} role="tablist" aria-label="Bagian materi" className="flex flex-nowrap gap-2 overflow-x-auto overscroll-x-contain border-t border-indigo-100 px-3 py-2.5 [scrollbar-width:thin] [&::-webkit-scrollbar]:h-1.5 [&::-webkit-scrollbar-thumb]:rounded-full [&::-webkit-scrollbar-thumb]:bg-indigo-300/70">
           {tabUnik.map((nama) => {
@@ -188,7 +188,7 @@ export function QuestLangkah({
           type="button"
           disabled={awalHalaman === 0}
           onClick={() => ke(batasHalaman(langkah, awalHalaman - 1).awal)}
-          className="rounded-full bg-white px-4 py-2 text-sm font-black text-[#0F74B8] ring-2 ring-[#0F74B8] disabled:opacity-40"
+          className="rounded-full bg-white px-4 py-2 text-sm font-black text-[#1C01A5] ring-2 ring-[#1C01A5] disabled:opacity-40"
         >
           Kembali
         </button>
@@ -197,7 +197,7 @@ export function QuestLangkah({
             type="button"
             disabled={!selesai}
             onClick={lanjut}
-            className="rounded-full bg-[#9AD8FF] px-4 py-2 text-sm font-black text-[#17324A] disabled:opacity-40"
+            className="rounded-full bg-[#1C01A5] px-4 py-2 text-sm font-black text-white disabled:opacity-40"
           >
             Lanjut
           </button>

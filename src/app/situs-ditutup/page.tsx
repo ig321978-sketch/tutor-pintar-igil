@@ -25,7 +25,7 @@ export default function HalamanSitusDitutup() {
         </Link>
         <Link
           href="/login?next=/ruang-belajar"
-          className="igil-tombol inline-flex rounded-full border-2 border-[#9AD8FF] px-5 py-3 text-sm font-bold text-[#0F74B8]"
+          className="igil-tombol inline-flex rounded-full border-2 border-[#1C01A5] px-5 py-3 text-sm font-bold text-[#1C01A5]"
         >
           Masuk sebagai admin
         </Link>

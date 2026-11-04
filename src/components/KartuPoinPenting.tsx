@@ -24,7 +24,7 @@ export default function KartuPoinPenting({
       <p className="text-center text-4xl" aria-hidden>
         🔑
       </p>
-      <h4 className="mt-3 text-center text-lg font-black tracking-wide text-[#0F74B8] sm:text-xl">
+      <h4 className="mt-3 text-center text-lg font-black tracking-wide text-[#1C01A5] sm:text-xl">
         D. Poin Penting
       </h4>
       {gambar ? (
@@ -32,7 +32,7 @@ export default function KartuPoinPenting({
         <img
           src={gambar.src}
           alt={gambar.alt}
-          className="mt-4 w-full rounded-xl border border-[#0F74B8]/10 bg-white object-cover"
+          className="mt-4 w-full rounded-xl border border-[#1C01A5]/10 bg-white object-cover"
         />
       ) : null}
       <div className="mt-4">
@@ -44,7 +44,7 @@ export default function KartuPoinPenting({
         ))}
       </ul>
       {penutup ? (
-        <p className="mt-4 rounded-2xl bg-violet-100 px-4 py-3 text-sm font-extrabold text-[#0F74B8]">
+        <p className="mt-4 rounded-2xl bg-violet-100 px-4 py-3 text-sm font-extrabold text-[#1C01A5]">
           {penutup}
         </p>
       ) : null}

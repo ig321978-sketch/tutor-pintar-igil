@@ -56,8 +56,8 @@ export default function PilihGuru({
               }}
               className={`flex w-full items-center gap-4 rounded-2xl border-2 p-4 text-left transition-all ${
                 aktif
-                  ? "border-[#9AD8FF] bg-[#9AD8FF]/5"
-                  : "border-[#9AD8FF] bg-white"
+                  ? "border-[#1C01A5] bg-[#1C01A5]/5"
+                  : "border-[#1C01A5] bg-white"
               }`}
             >
               {/* eslint-disable-next-line @next/next/no-img-element */}
@@ -67,7 +67,7 @@ export default function PilihGuru({
                 className="h-32 w-32 shrink-0 rounded-2xl object-cover"
               />
               <div className="min-w-0">
-                <p className="text-lg font-extrabold text-[#0F74B8]">{guru.nama}</p>
+                <p className="text-lg font-extrabold text-[#1C01A5]">{guru.nama}</p>
                 <p className="text-sm text-slate-600">{guru.peran}</p>
               </div>
             </button>

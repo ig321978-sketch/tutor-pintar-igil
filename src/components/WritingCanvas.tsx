@@ -38,7 +38,7 @@ export default function WritingCanvas({
     ctx.lineCap = "round";
     ctx.lineJoin = "round";
     ctx.lineWidth = 3.2;
-    ctx.strokeStyle = "#0F74B8";
+    ctx.strokeStyle = "#1C01A5";
     ctx.fillStyle = "#FFFDF6";
     ctx.fillRect(0, 0, lebar, tinggi);
     setAdaCoretan(false);
@@ -127,7 +127,7 @@ export default function WritingCanvas({
   return (
     <div className="space-y-3">
       <div className="space-y-2">
-        <div className="overflow-hidden rounded-2xl border-2 border-dashed border-[#0F74B8]/25 bg-[#FFFDF6]">
+        <div className="overflow-hidden rounded-2xl border-2 border-dashed border-[#1C01A5]/25 bg-[#FFFDF6]">
           <canvas
             ref={canvasRef}
             className="block h-[220px] w-full cursor-crosshair touch-none"
@@ -142,7 +142,7 @@ export default function WritingCanvas({
           type="button"
           disabled={disabled || mengirim}
           onClick={hapusCoretan}
-          className="rounded-xl border-2 border-[#0F74B8]/20 bg-white px-4 py-2 text-sm font-black text-[#0F74B8] hover:bg-[#F8F7FF]"
+          className="rounded-xl border-2 border-[#1C01A5]/20 bg-white px-4 py-2 text-sm font-black text-[#1C01A5] hover:bg-[#F8F7FF]"
         >
           Hapus Coretan
         </button>

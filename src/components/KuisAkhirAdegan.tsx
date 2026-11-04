@@ -27,8 +27,8 @@ export default function KuisAkhirAdegan({
   visualKanvas?: ReactNode;
 }) {
   return (
-    <div className="mt-3 space-y-3 border-t-2 border-[#FFC56D] pt-3">
-      <p className="text-xs font-black uppercase tracking-wide text-[#0F74B8]">Kuis suara</p>
+    <div className="mt-3 space-y-3 border-t-2 border-[#FF7A00] pt-3">
+      <p className="text-xs font-black uppercase tracking-wide text-[#1C01A5]">Kuis suara</p>
       <SoalRekamSuara
         id={idSuara}
         pertanyaan={pertanyaanSuara}

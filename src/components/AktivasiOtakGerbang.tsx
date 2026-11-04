@@ -225,25 +225,25 @@ function MainBerkata() {
       <p className="text-sm font-bold text-[#334155] md:text-base">
         Ada tulisan IGIL berkata? Tiru gerakannya. Tidak ada? Tekan Diam.
       </p>
-      <div className="rounded-3xl bg-[#9AD8FF] px-5 py-6 text-center text-[#17324A]">
-        <p className={`text-sm font-black ${perintah.berkata ? "text-[#17324A]" : "text-[#17324A]/70"}`}>
+      <div className="rounded-3xl bg-[#1C01A5] px-5 py-6 text-center text-white">
+        <p className={`text-sm font-black ${perintah.berkata ? "text-[#FF7A00]" : "text-white/70"}`}>
           {perintah.berkata ? "IGIL berkata" : "Tidak ada kata ajaib"}
         </p>
         <p className="mt-2 text-5xl" aria-hidden>
           {gerakan.emoji}
         </p>
         <p className="mt-1 text-2xl font-black">{gerakan.nama}</p>
-        <p className="mt-3 text-xs font-bold text-[#17324A]/75">
+        <p className="mt-3 text-xs font-bold text-white/80">
           Giliran {ronde} dari 5 · Tepat {tepat}
         </p>
       </div>
       {selesaiMain ? (
-        <div className="rounded-3xl bg-[#8EE4A6]/30 px-4 py-5 text-center">
-          <p className="text-lg font-black text-[#0F74B8]">Permainan selesai. Asyik!</p>
+        <div className="rounded-3xl bg-[#1C01A5]/30 px-4 py-5 text-center">
+          <p className="text-lg font-black text-[#1C01A5]">Permainan selesai. Asyik!</p>
           <button
             type="button"
             onClick={ulang}
-            className="mt-3 rounded-2xl bg-[#FFC56D] px-5 py-2.5 text-sm font-black text-[#0F74B8]"
+            className="mt-3 rounded-2xl bg-[#FF7A00] px-5 py-2.5 text-sm font-black text-[#1C01A5]"
           >
             Main lagi
           </button>
@@ -254,16 +254,16 @@ function MainBerkata() {
             const aktif = pilihan === item.id;
             const warna =
               aktif && hasil === "benar"
-                ? "border-[#9AD8FF] bg-[#8EE4A6]"
+                ? "border-[#1C01A5] bg-[#1C01A5]"
                 : aktif && hasil === "salah"
-                  ? "border-[#9AD8FF] bg-[#FFC56D]"
-                  : "border-[#0F74B8]/20 bg-white";
+                  ? "border-[#1C01A5] bg-[#FF7A00]"
+                  : "border-[#1C01A5]/20 bg-white";
             return (
               <button
                 key={item.id}
                 type="button"
                 onClick={() => pilih(item.id)}
-                className={`rounded-2xl border-2 px-3 py-4 text-base font-black text-[#0F74B8] ${warna}`}
+                className={`rounded-2xl border-2 px-3 py-4 text-base font-black text-[#1C01A5] ${warna}`}
               >
                 <span className="mr-1 text-2xl" aria-hidden>
                   {item.emoji}
@@ -275,12 +275,12 @@ function MainBerkata() {
           <button
             type="button"
             onClick={() => pilih("diam")}
-            className={`col-span-2 rounded-2xl border-2 px-3 py-4 text-base font-black text-[#0F74B8] ${
+            className={`col-span-2 rounded-2xl border-2 px-3 py-4 text-base font-black text-[#1C01A5] ${
               pilihan === "diam" && hasil === "benar"
-                ? "border-[#9AD8FF] bg-[#8EE4A6]"
+                ? "border-[#1C01A5] bg-[#1C01A5]"
                 : pilihan === "diam" && hasil === "salah"
-                  ? "border-[#9AD8FF] bg-[#FFC56D]"
-                  : "border-[#9AD8FF] bg-[#FFC56D]"
+                  ? "border-[#1C01A5] bg-[#FF7A00]"
+                  : "border-[#1C01A5] bg-[#FF7A00]"
             }`}
           >
             Diam
@@ -288,7 +288,7 @@ function MainBerkata() {
         </div>
       )}
       {hasil && !selesaiMain ? (
-        <p className="text-center text-sm font-black text-[#0F74B8]">
+        <p className="text-center text-sm font-black text-[#1C01A5]">
           {hasil === "benar" ? "Tepat!" : "Hampir! Lihat lagi kata ajaibnya."}
         </p>
       ) : null}
@@ -392,8 +392,8 @@ function MainKartu() {
               aria-label={muka ? item.nama : "Kartu tertutup"}
               className={`flex h-20 items-center justify-center rounded-2xl border-2 text-3xl sm:h-24 ${
                 muka
-                  ? "border-[#FFC56D] bg-white"
-                  : "border-[#9AD8FF] bg-[#9AD8FF] text-[#17324A]"
+                  ? "border-[#FF7A00] bg-white"
+                  : "border-[#1C01A5] bg-[#1C01A5] text-white"
               }`}
             >
               {muka ? item.emoji : "★"}
@@ -402,12 +402,12 @@ function MainKartu() {
         })}
       </div>
       {menang ? (
-        <div className="rounded-3xl bg-[#8EE4A6]/30 px-4 py-4 text-center">
-          <p className="text-lg font-black text-[#0F74B8]">Semua kembar ketemu!</p>
+        <div className="rounded-3xl bg-[#1C01A5]/30 px-4 py-4 text-center">
+          <p className="text-lg font-black text-[#1C01A5]">Semua kembar ketemu!</p>
           <button
             type="button"
             onClick={acakLagi}
-            className="mt-3 rounded-2xl bg-[#FFC56D] px-5 py-2.5 text-sm font-black text-[#0F74B8]"
+            className="mt-3 rounded-2xl bg-[#FF7A00] px-5 py-2.5 text-sm font-black text-[#1C01A5]"
           >
             Acak lagi
           </button>
@@ -483,23 +483,23 @@ function MainBalon() {
           className="pointer-events-none absolute left-1/2 w-24 -translate-x-1/2"
           style={{ top: `${posisi}%` }}
         >
-          <div className="relative mx-auto h-24 w-20 rounded-full bg-[#FFC56D] shadow-md">
+          <div className="relative mx-auto h-24 w-20 rounded-full bg-[#FF7A00] shadow-md">
             <span className="absolute left-3 top-3 h-5 w-3 rounded-full bg-white/70" />
           </div>
-          <div className="mx-auto -mt-1 h-3 w-3 rotate-45 bg-[#FFC56D]" />
+          <div className="mx-auto -mt-1 h-3 w-3 rotate-45 bg-[#FF7A00]" />
           <div className="mx-auto h-12 w-px bg-[#334155]/30" />
         </div>
-        <div className="pointer-events-none absolute inset-x-0 bottom-0 h-2 bg-[#9AD8FF]/10" />
-        <p className="pointer-events-none absolute left-4 top-4 rounded-full bg-white px-3 py-1 text-xs font-black text-[#0F74B8]">
+        <div className="pointer-events-none absolute inset-x-0 bottom-0 h-2 bg-[#1C01A5]/10" />
+        <p className="pointer-events-none absolute left-4 top-4 rounded-full bg-white px-3 py-1 text-xs font-black text-[#1C01A5]">
           Tepukan {tepukan}
         </p>
         {jatuh ? (
           <div className="absolute inset-0 flex flex-col items-center justify-center gap-3 bg-white/80">
-            <p className="text-lg font-black text-[#0F74B8]">Balon jatuh.</p>
+            <p className="text-lg font-black text-[#1C01A5]">Balon jatuh.</p>
             <button
               type="button"
               onClick={ulang}
-              className="rounded-2xl bg-[#FFC56D] px-5 py-2.5 text-sm font-black text-[#0F74B8]"
+              className="rounded-2xl bg-[#FF7A00] px-5 py-2.5 text-sm font-black text-[#1C01A5]"
             >
               Main lagi
             </button>
@@ -550,14 +550,14 @@ export default function AktivasiOtakGerbang() {
     <div className={`fixed inset-0 z-50 flex flex-col bg-white text-[#334155] ${fontAnak.className}`}>
       <div className="flex-1 overflow-y-auto px-4 py-4 md:px-8 md:py-6">
         <div className="mx-auto w-full max-w-3xl space-y-4">
-          <div className="flex items-center gap-3 rounded-3xl bg-[#9AD8FF] p-5 text-[#17324A] shadow-lg">
-            <div className="flex h-14 w-14 shrink-0 items-center justify-center rounded-2xl bg-[#FFC56D] text-3xl" aria-hidden>
+          <div className="flex items-center gap-3 rounded-3xl bg-[#1C01A5] p-5 text-white shadow-lg">
+            <div className="flex h-14 w-14 shrink-0 items-center justify-center rounded-2xl bg-[#FF7A00] text-3xl" aria-hidden>
               🦉
             </div>
             <div>
-              <p className="text-xs font-black uppercase tracking-wider text-[#17324A]">Aktivasi otak</p>
-              <h1 className="text-xl font-black text-[#17324A] md:text-2xl">Main santai sebelum belajar</h1>
-              <p className="mt-1 text-sm font-bold text-[#17324A]/75">
+              <p className="text-xs font-black uppercase tracking-wider text-[#FF7A00]">Aktivasi otak</p>
+              <h1 className="text-xl font-black text-white md:text-2xl">Main santai sebelum belajar</h1>
+              <p className="mt-1 text-sm font-bold text-white/80">
                 {PILIHAN_MAIN.find((item) => item.id === main)?.nama}. Bukan soal pelajaran.
               </p>
             </div>
@@ -568,13 +568,13 @@ export default function AktivasiOtakGerbang() {
           {main === "balon" ? <MainBalon /> : null}
         </div>
       </div>
-      <div className="border-t border-[#0F74B8]/10 bg-white px-4 py-4 md:px-8">
+      <div className="border-t border-[#1C01A5]/10 bg-white px-4 py-4 md:px-8">
         <div className="mx-auto flex w-full max-w-3xl flex-col items-center justify-between gap-3 sm:flex-row">
-          <p className="text-sm font-bold text-[#0F74B8]">Boleh berhenti kapan saja, lalu lanjut belajar.</p>
+          <p className="text-sm font-bold text-[#1C01A5]">Boleh berhenti kapan saja, lalu lanjut belajar.</p>
           <button
             type="button"
             onClick={selesai}
-            className="shrink-0 rounded-2xl border-2 border-[#FFC56D] bg-[#FFC56D] px-8 py-3.5 text-base font-black text-[#17324A]"
+            className="shrink-0 rounded-2xl border-2 border-[#FF7A00] bg-[#FF7A00] px-8 py-3.5 text-base font-black text-[#1C01A5]"
           >
             Lanjut belajar
           </button>

@@ -34,7 +34,7 @@ function IkonUlang({ ikon, jumlah, ukuran = "text-2xl" }: { ikon: string; jumlah
 function GambarCerita({ src, alt }: { src: string; alt: string }) {
   return (
     // eslint-disable-next-line @next/next/no-img-element
-    <img src={src} alt={alt} className="mt-3 w-full rounded-xl border border-[#0F74B8]/10 bg-white object-cover" />
+    <img src={src} alt={alt} className="mt-3 w-full rounded-xl border border-[#1C01A5]/10 bg-white object-cover" />
   );
 }
 
@@ -68,7 +68,7 @@ function KuisPilih({
   const [pilih, setPilih] = useState("");
   const status = statusDariPilihan(pilih, benar);
   return (
-    <article className="rounded-2xl border-2 border-[#0F74B8]/15 bg-white p-4">
+    <article className="rounded-2xl border-2 border-[#1C01A5]/15 bg-white p-4">
       <p className="text-sm font-semibold leading-relaxed text-slate-700">{soal}</p>
       {anak ? <div className="mt-3">{anak}</div> : null}
       <div className="mt-3 grid gap-2">
@@ -84,7 +84,7 @@ function KuisPilih({
               pilih,
               item.huruf,
               benar,
-              "bg-[#9AD8FF] text-[#17324A] hover:bg-[#5EBEFF]",
+              "bg-[#1C01A5] text-white hover:bg-[#16017a]",
             )}`}
           >
             {item.huruf}. {item.teks}
@@ -128,14 +128,14 @@ function KuisSusun({
     setStatus("salah");
   };
   return (
-    <article className="rounded-2xl border-2 border-[#0F74B8]/15 bg-[#F8F7FF] p-4">
+    <article className="rounded-2xl border-2 border-[#1C01A5]/15 bg-[#F8F7FF] p-4">
       <p className="text-sm font-semibold leading-relaxed text-slate-700">{soal}</p>
       <div className="mt-3 flex min-h-14 flex-wrap gap-2 rounded-xl bg-white px-3 py-3">
         {susun.length === 0 ? <p className="text-sm font-bold text-slate-400">Ketuk angka untuk menyusun.</p> : null}
         {susun.map((kunci) => {
           const item = pool.find((calon) => calon.kunci === kunci);
           return (
-            <span key={kunci} className="rounded-xl bg-[#9AD8FF] px-3 py-2 text-sm font-black text-[#17324A]">
+            <span key={kunci} className="rounded-xl bg-[#1C01A5] px-3 py-2 text-sm font-black text-white">
               {item?.tampil}
             </span>
           );
@@ -150,7 +150,7 @@ function KuisSusun({
               setStatus(null);
               setSusun((lama) => [...lama, item.kunci]);
             }}
-            className="rounded-xl border-2 border-[#0F74B8]/20 bg-white px-3 py-2 text-sm font-black text-[#0F74B8]"
+            className="rounded-xl border-2 border-[#1C01A5]/20 bg-white px-3 py-2 text-sm font-black text-[#1C01A5]"
           >
             {item.tampil}
           </button>
@@ -163,14 +163,14 @@ function KuisSusun({
             setStatus(null);
             setSusun((lama) => lama.slice(0, -1));
           }}
-          className="rounded-xl border-2 border-[#0F74B8]/20 px-4 py-2 text-sm font-black text-[#0F74B8]"
+          className="rounded-xl border-2 border-[#1C01A5]/20 px-4 py-2 text-sm font-black text-[#1C01A5]"
         >
           Urungkan
         </button>
         <button
           type="button"
           onClick={periksa}
-          className="rounded-xl bg-[#9AD8FF] px-4 py-2 text-sm font-black text-[#17324A] hover:bg-[#5EBEFF]"
+          className="rounded-xl bg-[#1C01A5] px-4 py-2 text-sm font-black text-white hover:bg-[#16017a]"
         >
           Periksa
         </button>
@@ -196,7 +196,7 @@ function JudulSubBab({
 }) {
   return (
     <>
-      <h5 className="mt-5 text-left text-base font-black tracking-wide text-[#0F74B8] sm:text-lg">{judul}</h5>
+      <h5 className="mt-5 text-left text-base font-black tracking-wide text-[#1C01A5] sm:text-lg">{judul}</h5>
       <div className="mt-4">
         <TombolVoiceMateriPai1 kelas={kelas} kelamin={kelamin} cuplikan={cuplikanDariNaskah([naskah], 2_000, 3_000)} />
       </div>
@@ -216,14 +216,14 @@ function Dialog({ nama, warna, children }: { nama: string; warna: string; childr
 function TabelNilaiTempat({ puluhan, satuan, hasil }: { puluhan: number; satuan: number; hasil: number }) {
   return (
     <div className="overflow-hidden rounded-2xl border-4 border-sky-400">
-      <div className="grid grid-cols-3 bg-[#9AD8FF] px-3 py-2 text-center text-[10px] font-black uppercase text-[#17324A] sm:text-xs">
+      <div className="grid grid-cols-3 bg-[#1C01A5] px-3 py-2 text-center text-[10px] font-black uppercase text-white sm:text-xs">
         <span>Puluhan</span>
         <span>Satuan</span>
         <span>Bilangan</span>
       </div>
       <div className="grid grid-cols-3 items-center bg-sky-50 px-3 py-3 text-center">
-        <span className="text-3xl font-black text-[#0F74B8]">{puluhan}</span>
-        <span className="text-3xl font-black text-[#0F74B8]">{satuan}</span>
+        <span className="text-3xl font-black text-[#1C01A5]">{puluhan}</span>
+        <span className="text-3xl font-black text-[#1C01A5]">{satuan}</span>
         <span className="text-3xl font-black text-emerald-700">{hasil}</span>
       </div>
     </div>
@@ -386,7 +386,7 @@ function BendaPetak({ ikon, jumlah, petunjuk }: { ikon: string; jumlah: number; 
           >
             {ikon}
           </span>
-          {petunjuk >= 2 ? <span className="mt-1 h-2 w-2 rounded-full bg-[#9AD8FF]" aria-hidden /> : null}
+          {petunjuk >= 2 ? <span className="mt-1 h-2 w-2 rounded-full bg-[#1C01A5]" aria-hidden /> : null}
         </span>
       ))}
     </div>
@@ -444,7 +444,7 @@ function MisiLokerKelas() {
               type="button"
               onClick={() => setAktif(indeks)}
               className={`rounded-xl border-2 px-2 py-1 text-lg font-black ${
-                indeks === aktif ? "border-[#9AD8FF] bg-[#9AD8FF] text-[#17324A]" : KELAS_PETAK[MISI_LOKER[indeks].warna]
+                indeks === aktif ? "border-[#1C01A5] bg-[#1C01A5] text-white" : KELAS_PETAK[MISI_LOKER[indeks].warna]
               }`}
               aria-label={`Pintu ${indeks + 1}${selesai ? ", selesai" : ""}`}
             >
@@ -456,33 +456,33 @@ function MisiLokerKelas() {
           🏆
         </span>
       </div>
-      <div className="flex flex-wrap gap-2 text-sm font-black text-[#0F74B8]">
+      <div className="flex flex-wrap gap-2 text-sm font-black text-[#1C01A5]">
         <span className="rounded-full bg-emerald-100 px-3 py-1">Hijau · menghitung</span>
         <span className="rounded-full bg-sky-100 px-3 py-1">Biru · membaca</span>
         <span className="rounded-full bg-amber-100 px-3 py-1">Kuning · menulis</span>
         <span className="rounded-full bg-violet-100 px-3 py-1">Ungu · membandingkan</span>
       </div>
-      <p className="text-sm font-bold text-[#0F74B8]">
+      <p className="text-sm font-bold text-[#1C01A5]">
         Bintang loker {bintang}/10 · Daun rapi {daun} 🍃
       </p>
       <article className={`rounded-2xl border-2 px-4 py-4 ${KELAS_PETAK[misi.warna]}`}>
-        <p className="text-xs font-black uppercase tracking-wide text-[#0F74B8]">
+        <p className="text-xs font-black uppercase tracking-wide text-[#1C01A5]">
           Pintu {aktif + 1} · {misi.warna} · {misi.misi}
         </p>
-        <p className="mt-2 text-sm font-black text-[#0F74B8]">Igil</p>
+        <p className="mt-2 text-sm font-black text-[#1C01A5]">Igil</p>
         <p className="text-sm font-semibold text-slate-700">“{misi.narasi}”</p>
         {misi.mode === "kanvas" ? null : misi.angka ? (
-          <p className={`mt-3 text-center text-6xl font-black text-[#0F74B8] ${kini.petunjuk >= 1 ? "loker-goyang" : ""}`}>
+          <p className={`mt-3 text-center text-6xl font-black text-[#1C01A5] ${kini.petunjuk >= 1 ? "loker-goyang" : ""}`}>
             {misi.angka}
           </p>
         ) : misi.mode === "pilih" ? (
           <div className="mt-3 grid gap-3 sm:grid-cols-2">
             <div>
-              <p className="text-center text-xs font-black uppercase text-[#0F74B8]">Kelompok pertama</p>
+              <p className="text-center text-xs font-black uppercase text-[#1C01A5]">Kelompok pertama</p>
               <BendaPetak ikon={misi.ikon} jumlah={misi.jumlah} petunjuk={kini.petunjuk} />
             </div>
             <div>
-              <p className="text-center text-xs font-black uppercase text-[#0F74B8]">Kelompok kedua</p>
+              <p className="text-center text-xs font-black uppercase text-[#1C01A5]">Kelompok kedua</p>
               <BendaPetak ikon={misi.kananIkon ?? misi.ikon} jumlah={misi.kananJumlah ?? 0} petunjuk={kini.petunjuk} />
             </div>
           </div>
@@ -490,7 +490,7 @@ function MisiLokerKelas() {
           <BendaPetak ikon={misi.ikon} jumlah={misi.jumlah} petunjuk={kini.petunjuk} />
         )}
         {kini.petunjuk >= 3 ? (
-          <p className="mt-3 rounded-xl bg-white px-3 py-2 text-sm font-bold text-[#0F74B8]">{misi.bersama}</p>
+          <p className="mt-3 rounded-xl bg-white px-3 py-2 text-sm font-bold text-[#1C01A5]">{misi.bersama}</p>
         ) : null}
         {kini.petunjuk > 0 && !kini.selesai ? (
           <p className="mt-2 text-sm font-semibold text-amber-800">Belum tepat. Daunmu tetap aman. Coba lagi.</p>
@@ -532,7 +532,7 @@ function MisiLokerKelas() {
                   if (benar) kuis?.tandaiBenar(idKuis("C", aktif));
                   catat(aktif, benar);
                 }}
-                className="rounded-xl bg-[#9AD8FF] px-3 py-2 text-sm font-black text-[#17324A] hover:bg-[#5EBEFF]"
+                className="rounded-xl bg-[#1C01A5] px-3 py-2 text-sm font-black text-white hover:bg-[#16017a]"
               >
                 Kelompok {pilih}
               </button>
@@ -689,7 +689,7 @@ export default function NaskahMtk2Bab1({
         <p className="text-center text-4xl" aria-hidden>
           🏫🎒🦉
         </p>
-        <h4 className="mt-3 text-center text-lg font-black tracking-wide text-[#0F74B8] sm:text-xl">{kartuA.judul}</h4>
+        <h4 className="mt-3 text-center text-lg font-black tracking-wide text-[#1C01A5] sm:text-xl">{kartuA.judul}</h4>
         <div className="mt-4">
           <TombolVoiceMateriPai1 kelas={kelas} kelamin={kelamin} cuplikan={cuplikanDariNaskah(kartuA.voice, 2_000, 3_000)} />
         </div>
@@ -733,7 +733,7 @@ export default function NaskahMtk2Bab1({
           <article className="rounded-2xl border-2 border-[#E23B3B]/25 bg-[#FFF1F2] px-4 py-3">
             <p className="text-xs font-black uppercase text-[#9F1239]">Baris tas di loker</p>
             <p className="mt-2 text-sm font-semibold text-slate-700">Baris 1: 10 tas. Baris 2: 10 tas. Baris 3: 6 tas.</p>
-            <p className="mt-2 text-2xl font-black text-[#0F74B8]">10 + 10 + 6 = 26</p>
+            <p className="mt-2 text-2xl font-black text-[#1C01A5]">10 + 10 + 6 = 26</p>
             <p className="text-sm font-bold text-slate-700">26 dibaca dua puluh enam.</p>
           </article>
           <Dialog nama="Malosi" warna="border-[#2563EB]/20 bg-[#EFF6FF]">
@@ -763,7 +763,7 @@ export default function NaskahMtk2Bab1({
             “Kelompokkan setiap 10 benda. Satu ikat pensil = 10. Satu wadah telur = 10.”
           </Dialog>
           <div className="overflow-hidden rounded-2xl border-4 border-sky-400">
-            <div className="grid grid-cols-2 bg-[#9AD8FF] px-3 py-2 text-[10px] font-black uppercase text-[#17324A] sm:text-xs">
+            <div className="grid grid-cols-2 bg-[#1C01A5] px-3 py-2 text-[10px] font-black uppercase text-white sm:text-xs">
               <span>Kelompok 10</span>
               <span>Bilangan</span>
             </div>
@@ -781,7 +781,7 @@ export default function NaskahMtk2Bab1({
                 }`}
               >
                 <span>{kiri}</span>
-                <span className="font-black text-[#0F74B8]">{kanan}</span>
+                <span className="font-black text-[#1C01A5]">{kanan}</span>
               </div>
             ))}
           </div>
@@ -805,7 +805,7 @@ export default function NaskahMtk2Bab1({
           <Dialog nama="Lili" warna="border-violet-300 bg-violet-50">
             “Lalu 23, 24, 25, 26, 27, 28, 29, 30.”
           </Dialog>
-          <p className="text-center text-lg font-black tracking-wide text-[#0F74B8]">
+          <p className="text-center text-lg font-black tracking-wide text-[#1C01A5]">
             20 · 21 · 22 · 23 · 24 · 25 · 26 · 27 · 28 · 29 · 30
           </p>
           <KuisSusun
@@ -824,7 +824,7 @@ export default function NaskahMtk2Bab1({
           <Dialog nama="Halim" warna="border-cyan-300 bg-cyan-50">
             “Sekarang mundur dari 30: 30, 29, 28.”
           </Dialog>
-          <p className="text-center text-lg font-black tracking-wide text-[#0F74B8]">
+          <p className="text-center text-lg font-black tracking-wide text-[#1C01A5]">
             30 · 29 · 28 · 27 · 26 · 25 · 24 · 23 · 22 · 21 · 20
           </p>
           <KuisAkhirAdegan
@@ -858,7 +858,7 @@ export default function NaskahMtk2Bab1({
           </Dialog>
           <TabelNilaiTempat puluhan={2} satuan={6} hasil={26} />
           <p className="text-sm font-semibold text-slate-700">26 bisa ditulis dengan tiga cara.</p>
-          <ul className="space-y-2 text-sm font-bold text-[#0F74B8]">
+          <ul className="space-y-2 text-sm font-bold text-[#1C01A5]">
             <li>26 satuan</li>
             <li>1 puluhan dan 16 satuan</li>
             <li>2 puluhan dan 6 satuan</li>
@@ -917,7 +917,7 @@ export default function NaskahMtk2Bab1({
           <Dialog nama="Igil" warna="border-amber-300 bg-amber-50">
             “Ayo hitung. Ternyata ada 26 permen.”
           </Dialog>
-          <p className="text-center text-3xl font-black text-[#0F74B8]">26</p>
+          <p className="text-center text-3xl font-black text-[#1C01A5]">26</p>
           <Dialog nama="Tika" warna="border-[#DB2777]/20 bg-[#FDF2F8]">
             “Aku bawa 32 permen. Siapa yang lebih banyak?”
           </Dialog>
@@ -934,7 +934,7 @@ export default function NaskahMtk2Bab1({
           <Dialog nama="Igil" warna="border-amber-300 bg-amber-50">
             “Lihat puluhan dulu. 3 puluhan lebih banyak daripada 2 puluhan. Jadi 32 lebih besar dari 26.”
           </Dialog>
-          <p className="text-center text-4xl font-black text-[#0F74B8]">32 &gt; 26</p>
+          <p className="text-center text-4xl font-black text-[#1C01A5]">32 &gt; 26</p>
           <KuisAkhirAdegan
             idSuara={idKuis("B", 2)}
             idKanvas={idKuis("B", 3)}
@@ -989,8 +989,8 @@ export default function NaskahMtk2Bab1({
         <p className="text-center text-4xl" aria-hidden>
           🏫⭐🏆
         </p>
-        <h4 className="mt-3 text-center text-lg font-black tracking-wide text-[#0F74B8] sm:text-xl">{kartuC.judul}</h4>
-        <p className="mt-1 text-center text-sm font-bold text-[#0F74B8]/70">
+        <h4 className="mt-3 text-center text-lg font-black tracking-wide text-[#1C01A5] sm:text-xl">{kartuC.judul}</h4>
+        <p className="mt-1 text-center text-sm font-bold text-[#1C01A5]/70">
           Sepuluh pintu · menghitung, membaca, menulis, membandingkan
         </p>
         <div className="mt-4">
@@ -1024,8 +1024,8 @@ export default function NaskahMtk2Bab1({
         <p className="text-center text-4xl" aria-hidden>
           📝⭐
         </p>
-        <h4 className="mt-3 text-center text-lg font-black tracking-wide text-[#0F74B8] sm:text-xl">{kartuD.judul}</h4>
-        <p className="mt-1 text-center text-sm font-bold text-[#0F74B8]/70">
+        <h4 className="mt-3 text-center text-lg font-black tracking-wide text-[#1C01A5] sm:text-xl">{kartuD.judul}</h4>
+        <p className="mt-1 text-center text-sm font-bold text-[#1C01A5]/70">
           Tantangan Para Juara · Ayo Membilang sampai dengan 50
         </p>
         <div className="mt-4">
