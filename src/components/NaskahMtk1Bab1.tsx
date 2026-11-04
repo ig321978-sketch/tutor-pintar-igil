@@ -51,7 +51,7 @@ function IkonUlang({ ikon, jumlah, ukuran = "text-2xl" }: { ikon: string; jumlah
 function GambarCerita({ src, alt }: { src: string; alt: string }) {
   return (
     // eslint-disable-next-line @next/next/no-img-element
-    <img src={src} alt={alt} className="mt-3 w-full rounded-xl border border-[#1C01A5]/10 bg-white object-cover" />
+    <img src={src} alt={alt} className="mt-3 w-full rounded-xl border border-[#0F74B8]/10 bg-white object-cover" />
   );
 }
 
@@ -89,7 +89,7 @@ function KuisPilih({
   const [pilih, setPilih] = useState("");
   const status = statusDariPilihan(pilih, benar);
   return (
-    <article className="rounded-2xl border-2 border-[#1C01A5]/15 bg-white p-4">
+    <article className="rounded-2xl border-2 border-[#0F74B8]/15 bg-white p-4">
       <p className="text-sm font-semibold leading-relaxed text-slate-700">{soal}</p>
       {anak ? <div className="mt-3">{anak}</div> : null}
       <div className="mt-3 grid gap-2">
@@ -105,7 +105,7 @@ function KuisPilih({
               pilih,
               item.huruf,
               benar,
-              "bg-[#1C01A5] text-white hover:bg-[#16017a]",
+              "bg-[#9AD8FF] text-[#17324A] hover:bg-[#5EBEFF]",
             )}`}
           >
             {item.huruf}. {item.teks}
@@ -140,8 +140,8 @@ function KuisCocokAngka() {
     setStatus("salah");
   };
   return (
-    <article className="rounded-2xl border-2 border-[#1C01A5]/15 bg-sky-50 p-4">
-      <p className="text-sm font-black text-[#1C01A5]">Quiz 1. Tarik setiap kelompok ke angkanya.</p>
+    <article className="rounded-2xl border-2 border-[#0F74B8]/15 bg-sky-50 p-4">
+      <p className="text-sm font-black text-[#0F74B8]">Quiz 1. Tarik setiap kelompok ke angkanya.</p>
       <p className="mt-1 text-sm font-semibold text-slate-600">Pilih angka yang pas untuk setiap kelompok.</p>
       <div className="mt-3 grid gap-3">
         {baris.map((item) => (
@@ -152,7 +152,7 @@ function KuisCocokAngka() {
                 const terpilih = pilih[item.label] === angka;
                 const dasar = terpilih
                   ? "bg-emerald-500 text-white"
-                  : "bg-[#1C01A5] text-white hover:bg-[#16017a]";
+                  : "bg-[#9AD8FF] text-[#17324A] hover:bg-[#5EBEFF]";
                 return (
                   <button
                     key={angka}
@@ -178,7 +178,7 @@ function KuisCocokAngka() {
       <button
         type="button"
         onClick={periksa}
-        className="mt-3 rounded-xl bg-[#1C01A5] px-4 py-2 text-sm font-black text-white hover:bg-[#16017a]"
+        className="mt-3 rounded-xl bg-[#9AD8FF] px-4 py-2 text-sm font-black text-[#17324A] hover:bg-[#5EBEFF]"
       >
         Periksa
       </button>
@@ -223,14 +223,14 @@ function KuisSusun({
     setStatus("salah");
   };
   return (
-    <article className="rounded-2xl border-2 border-[#1C01A5]/15 bg-[#F8F7FF] p-4">
+    <article className="rounded-2xl border-2 border-[#0F74B8]/15 bg-[#F8F7FF] p-4">
       <p className="text-sm font-semibold leading-relaxed text-slate-700">{soal}</p>
       <div className="mt-3 flex min-h-14 flex-wrap gap-2 rounded-xl bg-white px-3 py-3">
         {susun.length === 0 ? <p className="text-sm font-bold text-slate-400">Ketuk benda untuk menyusun.</p> : null}
         {susun.map((kunci) => {
           const item = pool.find((calon) => calon.kunci === kunci);
           return (
-            <span key={kunci} className="rounded-xl bg-[#1C01A5] px-3 py-2 text-sm font-black text-white">
+            <span key={kunci} className="rounded-xl bg-[#9AD8FF] px-3 py-2 text-sm font-black text-[#17324A]">
               {item?.tampil}
             </span>
           );
@@ -245,7 +245,7 @@ function KuisSusun({
               setStatus(null);
               setSusun((lama) => [...lama, item.kunci]);
             }}
-            className="rounded-xl border-2 border-[#1C01A5]/20 bg-white px-3 py-2 text-sm font-black text-[#1C01A5]"
+            className="rounded-xl border-2 border-[#0F74B8]/20 bg-white px-3 py-2 text-sm font-black text-[#0F74B8]"
           >
             {item.tampil}
           </button>
@@ -258,14 +258,14 @@ function KuisSusun({
             setStatus(null);
             setSusun((lama) => lama.slice(0, -1));
           }}
-          className="rounded-xl border-2 border-[#1C01A5]/20 px-4 py-2 text-sm font-black text-[#1C01A5]"
+          className="rounded-xl border-2 border-[#0F74B8]/20 px-4 py-2 text-sm font-black text-[#0F74B8]"
         >
           Urungkan
         </button>
         <button
           type="button"
           onClick={periksa}
-          className="rounded-xl bg-[#1C01A5] px-4 py-2 text-sm font-black text-white hover:bg-[#16017a]"
+          className="rounded-xl bg-[#9AD8FF] px-4 py-2 text-sm font-black text-[#17324A] hover:bg-[#5EBEFF]"
         >
           Periksa
         </button>
@@ -291,7 +291,7 @@ function JudulSubBab({
 }) {
   return (
     <>
-      <h5 className="mt-5 text-left text-base font-black tracking-wide text-[#1C01A5] sm:text-lg">{judul}</h5>
+      <h5 className="mt-5 text-left text-base font-black tracking-wide text-[#0F74B8] sm:text-lg">{judul}</h5>
       <div className="mt-4">
         <TombolVoiceMateriPai1 kelas={kelas} kelamin={kelamin} cuplikan={cuplikanDariNaskah([naskah], 2_000, 3_000)} />
       </div>
@@ -472,7 +472,7 @@ function BendaPetak({
           >
             {ikon}
           </span>
-          {petunjuk >= 2 ? <span className="mt-1 h-2 w-2 rounded-full bg-[#1C01A5]" aria-hidden /> : null}
+          {petunjuk >= 2 ? <span className="mt-1 h-2 w-2 rounded-full bg-[#9AD8FF]" aria-hidden /> : null}
         </span>
       ))}
     </div>
@@ -538,7 +538,7 @@ function MisiKebunAngka() {
               type="button"
               onClick={() => setAktif(indeks)}
               className={`rounded-xl border-2 px-2 py-1 text-lg font-black ${
-                indeks === aktif ? "border-[#1C01A5] bg-[#1C01A5] text-white" : KELAS_PETAK[MISI_KEBUN[indeks].warna]
+                indeks === aktif ? "border-[#9AD8FF] bg-[#9AD8FF] text-[#17324A]" : KELAS_PETAK[MISI_KEBUN[indeks].warna]
               }`}
               aria-label={`Petak ${indeks + 1}${selesai ? ", selesai" : ""}`}
             >
@@ -550,39 +550,39 @@ function MisiKebunAngka() {
           🏆
         </span>
       </div>
-      <div className="flex flex-wrap gap-2 text-sm font-black text-[#1C01A5]">
+      <div className="flex flex-wrap gap-2 text-sm font-black text-[#0F74B8]">
         <span className="rounded-full bg-emerald-100 px-3 py-1">Hijau · menghitung</span>
         <span className="rounded-full bg-sky-100 px-3 py-1">Biru · membaca</span>
         <span className="rounded-full bg-amber-100 px-3 py-1">Kuning · menulis</span>
         <span className="rounded-full bg-violet-100 px-3 py-1">Ungu · membandingkan</span>
       </div>
-      <p className="text-sm font-bold text-[#1C01A5]">
+      <p className="text-sm font-bold text-[#0F74B8]">
         Bintang kebun {bintang}/10 · Daun ajaib {daun} 🍃
       </p>
       <article className={`rounded-2xl border-2 px-4 py-4 ${KELAS_PETAK[misi.warna]}`}>
-        <p className="text-xs font-black uppercase tracking-wide text-[#1C01A5]">
+        <p className="text-xs font-black uppercase tracking-wide text-[#0F74B8]">
           Petak {aktif + 1} · {misi.warna} · {misi.misi}
         </p>
-        <p className="mt-2 text-sm font-black text-[#1C01A5]">Kiko</p>
+        <p className="mt-2 text-sm font-black text-[#0F74B8]">Kiko</p>
         <p className="text-sm font-semibold text-slate-700">“{misi.narasi}”</p>
         {misi.mode === "kanvas" ? null : (
           <>
             {misi.angka ? (
               <p
-                className={`mt-3 text-center text-6xl font-black text-[#1C01A5] ${kini.petunjuk >= 1 ? "kebun-goyang" : ""}`}
+                className={`mt-3 text-center text-6xl font-black text-[#0F74B8] ${kini.petunjuk >= 1 ? "kebun-goyang" : ""}`}
               >
                 {misi.angka}
-                {kini.petunjuk >= 2 ? <span className="mx-auto mt-2 block h-2 w-2 rounded-full bg-[#1C01A5]" /> : null}
+                {kini.petunjuk >= 2 ? <span className="mx-auto mt-2 block h-2 w-2 rounded-full bg-[#9AD8FF]" /> : null}
               </p>
             ) : null}
             {misi.mode === "pilih" ? (
               <div className="mt-3 grid gap-3 sm:grid-cols-2">
                 <div>
-                  <p className="text-center text-xs font-black uppercase text-[#1C01A5]">Kelompok pertama</p>
+                  <p className="text-center text-xs font-black uppercase text-[#0F74B8]">Kelompok pertama</p>
                   <BendaPetak ikon={misi.ikon} jumlah={misi.jumlah} petunjuk={kini.petunjuk} />
                 </div>
                 <div>
-                  <p className="text-center text-xs font-black uppercase text-[#1C01A5]">Kelompok kedua</p>
+                  <p className="text-center text-xs font-black uppercase text-[#0F74B8]">Kelompok kedua</p>
                   <BendaPetak ikon={misi.kananIkon ?? misi.ikon} jumlah={misi.kananJumlah ?? 0} petunjuk={kini.petunjuk} />
                 </div>
               </div>
@@ -592,7 +592,7 @@ function MisiKebunAngka() {
           </>
         )}
         {kini.petunjuk >= 3 ? (
-          <p className="mt-3 rounded-xl bg-white px-3 py-2 text-sm font-bold text-[#1C01A5]">{misi.bersama}</p>
+          <p className="mt-3 rounded-xl bg-white px-3 py-2 text-sm font-bold text-[#0F74B8]">{misi.bersama}</p>
         ) : null}
         {kini.petunjuk > 0 && !kini.selesai ? (
           <p className="mt-2 text-sm font-semibold text-amber-800">
@@ -607,7 +607,7 @@ function MisiKebunAngka() {
           <button
             type="button"
             onClick={mintaPetunjuk}
-            className="mt-3 rounded-xl border-2 border-[#1C01A5]/20 bg-white px-4 py-2 text-sm font-black text-[#1C01A5]"
+            className="mt-3 rounded-xl border-2 border-[#0F74B8]/20 bg-white px-4 py-2 text-sm font-black text-[#0F74B8]"
           >
             Minta petunjuk
           </button>
@@ -655,7 +655,7 @@ function MisiKebunAngka() {
                 className={`rounded-xl px-3 py-2 text-left text-sm font-bold ${
                   kini.selesai && huruf === misi.benarPilih
                     ? "bg-emerald-600 text-white"
-                    : "bg-[#1C01A5] text-white hover:bg-[#16017a]"
+                    : "bg-[#9AD8FF] text-[#17324A] hover:bg-[#5EBEFF]"
                 }`}
               >
                 {teks}
@@ -684,7 +684,7 @@ function MisiKebunAngka() {
                 <p className="text-center text-3xl" aria-hidden>
                   🌷🌼🌻🌺🌹🌸💐
                 </p>
-                <p className="mt-2 text-center text-sm font-black text-[#1C01A5]">Bunga pelangi tumbuh di kebun Kiko.</p>
+                <p className="mt-2 text-center text-sm font-black text-[#0F74B8]">Bunga pelangi tumbuh di kebun Kiko.</p>
               </>
             }
           />
@@ -702,23 +702,23 @@ function LembarKerja() {
   );
   return (
     <div className="mt-5 space-y-5">
-      <div className="grid gap-3 rounded-2xl border-2 border-dashed border-[#1C01A5]/25 bg-white p-4 sm:grid-cols-2">
-        <label className="text-xs font-black uppercase tracking-wide text-[#1C01A5]">
+      <div className="grid gap-3 rounded-2xl border-2 border-dashed border-[#0F74B8]/25 bg-white p-4 sm:grid-cols-2">
+        <label className="text-xs font-black uppercase tracking-wide text-[#0F74B8]">
           Nama
           <input
             value={nama}
             onChange={(e) => setNama(e.target.value)}
-            className="mt-1 w-full rounded-xl border-2 border-[#1C01A5]/20 px-3 py-2 text-sm font-bold text-[#1C01A5]"
+            className="mt-1 w-full rounded-xl border-2 border-[#0F74B8]/20 px-3 py-2 text-sm font-bold text-[#0F74B8]"
             placeholder="______________________"
           />
         </label>
-        <label className="text-xs font-black uppercase tracking-wide text-[#1C01A5]">
+        <label className="text-xs font-black uppercase tracking-wide text-[#0F74B8]">
           Tanggal
           <input
             type="date"
             value={tanggal}
             onChange={(e) => setTanggal(e.target.value)}
-            className="mt-1 w-full rounded-xl border-2 border-[#1C01A5]/20 px-3 py-2 text-sm font-bold text-[#1C01A5]"
+            className="mt-1 w-full rounded-xl border-2 border-[#0F74B8]/20 px-3 py-2 text-sm font-bold text-[#0F74B8]"
           />
         </label>
       </div>
@@ -757,10 +757,10 @@ function LembarKerja() {
         pertanyaan="3. Tuliskan angka yang hilang pada roket bilangan."
         alias={kumpulkanAlias(["5", "lima"])}
         konteks="Urutan 3, 4, angka hilang, 6, 7. Jawabannya 5."
-        visual={<p className="text-center text-lg font-black text-[#1C01A5]">🚀 3 - 4 - _ - 6 - 7</p>}
+        visual={<p className="text-center text-lg font-black text-[#0F74B8]">🚀 3 - 4 - _ - 6 - 7</p>}
       />
 
-      <div className="rounded-2xl border-2 border-[#1C01A5]/15 bg-[#FFF1F2] p-4">
+      <div className="rounded-2xl border-2 border-[#0F74B8]/15 bg-[#FFF1F2] p-4">
         <IkonUlang ikon="🍒" jumlah={6} />
         <p className="mt-2 text-sm font-semibold text-slate-700">
           4. Dina berkata, “Ada 5 ceri.” Apakah Dina benar? Jelaskan dengan suara.
@@ -784,7 +784,7 @@ function LembarKerja() {
         pertanyaan="5. Lengkapi tanda perbandingan. Pilihan: <, >, atau =. Tulis tanda di antara 4 dan 6."
         alias={kumpulkanAlias(["<", "4 < 6", "4<6"])}
         konteks="Bebek 4 lebih sedikit daripada kelinci 6. Tandanya kurang dari."
-        visual={<p className="text-center text-lg font-black text-[#1C01A5]">🦆🦆🦆🦆 4 &nbsp;&nbsp; □ &nbsp;&nbsp; 6 🐇🐇🐇🐇🐇🐇</p>}
+        visual={<p className="text-center text-lg font-black text-[#0F74B8]">🦆🦆🦆🦆 4 &nbsp;&nbsp; □ &nbsp;&nbsp; 6 🐇🐇🐇🐇🐇🐇</p>}
       />
 
       <KuisPilih
@@ -846,10 +846,10 @@ function LembarKerja() {
         ]}
       />
 
-      <div className="rounded-2xl border-2 border-[#1C01A5]/15 bg-[#EFF6FF] p-4">
-        <p className="text-sm font-bold text-[#1C01A5]">Rara · 6 balon</p>
+      <div className="rounded-2xl border-2 border-[#0F74B8]/15 bg-[#EFF6FF] p-4">
+        <p className="text-sm font-bold text-[#0F74B8]">Rara · 6 balon</p>
         <IkonUlang ikon="🎈" jumlah={6} ukuran="text-xl" />
-        <p className="mt-2 text-sm font-bold text-[#1C01A5]">Bimo · 8 balon</p>
+        <p className="mt-2 text-sm font-bold text-[#0F74B8]">Bimo · 8 balon</p>
         <IkonUlang ikon="🎈" jumlah={8} ukuran="text-xl" />
         <p className="mt-2 text-sm font-semibold text-slate-700">
           10. Siapa yang memiliki balon lebih banyak? Berapa selisih jumlah balon mereka?
@@ -880,7 +880,7 @@ function IsiHitung({ kelas = "1 SD", kelamin, halaman }: { kelas?: string; kelam
         <GambarCerita src="/doodle-mtk/mtk-1-bab1-apel.jpg" alt="Piring berisi apel." />
         <IkonUlang ikon="🍎" jumlah={3} ukuran="text-3xl" />
         <KuisAkhirAdegan idSuara={idKuis("A", 2)} pertanyaanSuara="Ada berapa apel di piring?" aliasSuara={["3", "tiga"]} petunjukSuara="Ucapkan angkanya." />
-        <KuisTulisKartu id={idKuis("A", 1)} hanyaKanvas pertanyaan="Tebalkan angka berikut: 3" alias={kumpulkanAlias(["3", "tiga"])} konteks="Ada 3 apel. Lambang bilangannya 3." visual={<p className="text-center text-7xl font-black text-transparent" style={{ WebkitTextStroke: "3px #1C01A5" }}>3</p>} />
+        <KuisTulisKartu id={idKuis("A", 1)} hanyaKanvas pertanyaan="Tebalkan angka berikut: 3" alias={kumpulkanAlias(["3", "tiga"])} konteks="Ada 3 apel. Lambang bilangannya 3." visual={<p className="text-center text-7xl font-black text-transparent" style={{ WebkitTextStroke: "3px #0F74B8" }}>3</p>} />
       </div>
     );
   }
@@ -902,7 +902,7 @@ function IsiHitung({ kelas = "1 SD", kelamin, halaman }: { kelas?: string; kelam
         <GambarCerita src="/doodle-mtk/mtk-1-bab1-urut.jpg" alt="Tiga apel, empat pisang, dan lima jeruk." />
         <IkonUlang ikon="🍌" jumlah={4} ukuran="text-3xl" />
         <KuisAkhirAdegan idSuara={idKuis("A", 5)} idKanvas={idKuis("A", 6)} pertanyaanSuara="Urutan dari yang paling sedikit: tiga, empat, lalu berapa?" aliasSuara={["5", "lima"]} petunjukSuara="Sebutkan angka terakhir." pertanyaanKanvas="Tuliskan urutan 3, 4, 5." aliasKanvas={["3, 4, 5", "3 4 5", "345"]} konteksKanvas="Apel 3, pisang 4, jeruk 5." />
-        <p className="text-center text-5xl font-black text-[#1C01A5]">0</p>
+        <p className="text-center text-5xl font-black text-[#0F74B8]">0</p>
         <KuisAkhirAdegan idSuara={idKuis("A", 11)} idKanvas={idKuis("A", 12)} pertanyaanSuara="Piring kosong. Berapa jumlah buahnya?" aliasSuara={["0", "nol"]} petunjukSuara="Ucapkan nol atau angka 0." pertanyaanKanvas="Tuliskan lambang bilangan nol." aliasKanvas={["0", "nol"]} konteksKanvas="Piring kosong. Banyaknya 0. Dibaca nol." />
         <KuisAkhirAdegan idSuara={idKuis("A", 13)} pertanyaanSuara="Bagaimana cara membaca lambang 8?" aliasSuara={["delapan"]} petunjukSuara="Sebutkan nama bilangannya." />
         <SoalRekamSuara id={idKuis("A", 0)} pertanyaan="Di atas tikar ada tujuh mangga. Berapa jumlah mangganya?" periksa={(transkrip) => jawabanTulisMemuatAlias(transkrip, ["tujuh", "7", "ada tujuh mangga"])} petunjuk="Dengarkan, hitung, lalu jawab dengan suara." />
@@ -916,7 +916,7 @@ function IsiHitung({ kelas = "1 SD", kelamin, halaman }: { kelas?: string; kelam
   return (
     <div className="space-y-3">
       <JudulHalaman n={4} />
-      <p className="text-center text-2xl font-black text-[#1C01A5]">0 1 2 3 4 5 6 7 8 9 10</p>
+      <p className="text-center text-2xl font-black text-[#0F74B8]">0 1 2 3 4 5 6 7 8 9 10</p>
       <KuisTulisKartu id={idKuisTulisKartu(ID1, "A")} hanyaKanvas pertanyaan="Hitung bintang. Tuliskan lambang bilangannya." alias={kumpulkanAlias(["6", "enam"])} konteks="Ada 6 bintang. Lambangnya 6." visual={<IkonUlang ikon="⭐" jumlah={6} ukuran="text-3xl" />} />
       <KuisPilih id={idKuis("A", 17)} soal="Lambang tujuh adalah..." benar="B" umpanBenar="Tujuh ditulis 7." pesanSalah="Ingat nama dan lambangnya." pilihan={[{ huruf: "A", teks: "6" }, { huruf: "B", teks: "7" }, { huruf: "C", teks: "8" }]} />
       <KuisPilih id={idKuis("A", 18)} soal="Setelah 4, angka majunya..." benar="A" umpanBenar="4, lalu 5." pesanSalah="Maju bertambah satu." pilihan={[{ huruf: "A", teks: "5" }, { huruf: "B", teks: "3" }, { huruf: "C", teks: "14" }]} />
@@ -967,7 +967,7 @@ function IsiBanding({ kelas = "1 SD", kelamin, halaman }: { kelas?: string; kela
   return (
     <div className="space-y-3">
       <JudulHalaman n={4} />
-      <p className="text-center text-2xl font-black text-[#1C01A5]">&lt; &nbsp; &gt; &nbsp; =</p>
+      <p className="text-center text-2xl font-black text-[#0F74B8]">&lt; &nbsp; &gt; &nbsp; =</p>
       <KuisTulisKartu id={idKuisTulisKartu(ID1, "B")} hanyaKanvas pertanyaan="Tulis jumlah kura-kura, tanda < > atau =, lalu jumlah kelinci. Contoh: 3 < 5." alias={kumpulkanAlias(["3 < 5", "3<5", "tiga lebih sedikit daripada lima"])} konteks="Kura-kura 3. Kelinci 5." visual={<div className="text-center text-2xl">🐢 🐢 🐢 &nbsp;&nbsp; 🐰 🐰 🐰 🐰 🐰</div>} />
       <KuisPilih id={idKuis("B", 2)} soal="Pilih keranjang yang berisi buah paling banyak." benar="B" umpanBenar="Tepat! Enam lebih banyak daripada lima dan empat." pesanSalah="Hitung setiap keranjang." pilihan={[{ huruf: "A", teks: "Keranjang A · 🍊 🍊 🍊 🍊" }, { huruf: "B", teks: "Keranjang B · 🍎 🍎 🍎 🍎 🍎 🍎" }, { huruf: "C", teks: "Keranjang C · 🍐 🍐 🍐 🍐 🍐" }]} />
       <KuisPilih id={idKuis("A", 23)} soal="8 ... 5. Tanda yang tepat..." benar="A" umpanBenar="Mulut terbuka ke 8." pesanSalah="8 lebih besar." pilihan={[{ huruf: "A", teks: ">" }, { huruf: "B", teks: "<" }, { huruf: "C", teks: "=" }]} />
@@ -987,7 +987,7 @@ function IsiMaju({ kelas = "1 SD", kelamin, halaman }: { kelas?: string; kelamin
         <Dialog nama="Rara" warna="border-[#DB2777]/20 bg-[#FDF2F8]">Satu, dua, tiga.</Dialog>
         <Dialog nama="Bimo" warna="border-[#2563EB]/20 bg-[#EFF6FF]">Lalu angka berikutnya.</Dialog>
         <KuisAkhirAdegan idSuara={idKuis("B", 4)} pertanyaanSuara="Urutan maju: 1, 2, 3, lalu berapa?" aliasSuara={["4", "empat"]} petunjukSuara="Sebutkan bilangan berikutnya." />
-        <KuisTulisKartu id={idKuis("B", 10)} hanyaKanvas pertanyaan="Tuliskan 1, 2, 3, 4." alias={kumpulkanAlias(["1, 2, 3, 4", "1 2 3 4"])} konteks="Maju satu per satu." visual={<p className="text-center text-lg font-black text-[#1C01A5]">1 · 2 · 3 · ?</p>} />
+        <KuisTulisKartu id={idKuis("B", 10)} hanyaKanvas pertanyaan="Tuliskan 1, 2, 3, 4." alias={kumpulkanAlias(["1, 2, 3, 4", "1 2 3 4"])} konteks="Maju satu per satu." visual={<p className="text-center text-lg font-black text-[#0F74B8]">1 · 2 · 3 · ?</p>} />
       </div>
     );
   }
@@ -997,7 +997,7 @@ function IsiMaju({ kelas = "1 SD", kelamin, halaman }: { kelas?: string; kelamin
         <JudulHalaman n={2} />
         <TabelInfoGrafis judul="Infografis: Maju dan mundur" kepala={["Arah", "Dari", "Contoh"]} baris={[["Maju", "kecil ke besar", "1, 2, 3"], ["Mundur", "besar ke kecil", "10, 9, 8"], ["Langkah", "satu-satu", "jangan lompat"]]} kaki="Naik dihitung maju. Turun dihitung mundur." />
         <KuisAkhirAdegan idSuara={idKuis("B", 5)} pertanyaanSuara="Saat menghitung mundur, setelah 10 adalah berapa?" aliasSuara={["9", "sembilan"]} petunjukSuara="Sebutkan bilangan yang lebih kecil satu langkah." />
-        <KuisTulisKartu id={idKuis("B", 11)} hanyaKanvas pertanyaan="Tuliskan 10, 9, 8." alias={kumpulkanAlias(["10, 9, 8", "10 9 8"])} konteks="Mundur dari sepuluh." visual={<p className="text-center text-lg font-black text-[#1C01A5]">10 · ? · ?</p>} />
+        <KuisTulisKartu id={idKuis("B", 11)} hanyaKanvas pertanyaan="Tuliskan 10, 9, 8." alias={kumpulkanAlias(["10, 9, 8", "10 9 8"])} konteks="Mundur dari sepuluh." visual={<p className="text-center text-lg font-black text-[#0F74B8]">10 · ? · ?</p>} />
       </div>
     );
   }
@@ -1005,7 +1005,7 @@ function IsiMaju({ kelas = "1 SD", kelamin, halaman }: { kelas?: string; kelamin
     return (
       <div className="space-y-3">
         <JudulHalaman n={3} />
-        <p className="text-center text-lg font-black text-[#1C01A5]">1 · 2 · 3 · 4 · 5 · 6 · 7 · 8 · 9 · 10</p>
+        <p className="text-center text-lg font-black text-[#0F74B8]">1 · 2 · 3 · 4 · 5 · 6 · 7 · 8 · 9 · 10</p>
         <SoalRekamSuara id={idKuis("B", 3)} pertanyaan="Ada delapan burung di pohon. Sebutkan bilangan sebelum delapan." periksa={(transkrip) => jawabanTulisMemuatAlias(transkrip, ["tujuh", "7"])} petunjuk="Dengarkan, lalu jawab dengan suara." />
         <KuisSusun id={idKuis("B", 1)} soal="Susun bilangan dari yang kecil ke yang besar." pool={[{ kunci: "6", tampil: "6" }, { kunci: "4", tampil: "4" }, { kunci: "5", tampil: "5" }, { kunci: "2", tampil: "2" }, { kunci: "3", tampil: "3" }]} benar={["2", "3", "4", "5", "6"]} umpanBenar="Benar! 2, 3, 4, 5, 6." pesanSalah="Mulai dari bilangan paling kecil." />
         <KuisSusun id={idKuis("B", 8)} soal="Susun bilangan dari yang besar ke yang kecil." pool={[{ kunci: "8", tampil: "8" }, { kunci: "10", tampil: "10" }, { kunci: "7", tampil: "7" }, { kunci: "9", tampil: "9" }]} benar={["10", "9", "8", "7"]} umpanBenar="Benar! 10, 9, 8, 7." pesanSalah="Mulai dari bilangan paling besar." />
@@ -1016,7 +1016,7 @@ function IsiMaju({ kelas = "1 SD", kelamin, halaman }: { kelas?: string; kelamin
   return (
     <div className="space-y-3">
       <JudulHalaman n={4} />
-      <p className="text-center text-2xl font-black text-[#1C01A5]">1 … 10</p>
+      <p className="text-center text-2xl font-black text-[#0F74B8]">1 … 10</p>
       <KuisPilih id={idKuis("B", 13)} soal="Setelah 6, angka majunya..." benar="B" umpanBenar="6, lalu 7." pesanSalah="Maju bertambah satu." pilihan={[{ huruf: "A", teks: "5" }, { huruf: "B", teks: "7" }, { huruf: "C", teks: "8" }]} />
       <KuisPilih id={idKuis("B", 14)} soal="Sebelum 8 adalah..." benar="A" umpanBenar="Tujuh ada sebelum delapan." pesanSalah="Mundur satu langkah." pilihan={[{ huruf: "A", teks: "7" }, { huruf: "B", teks: "9" }, { huruf: "C", teks: "10" }]} />
       <KuisPilih id={idKuis("B", 15)} soal="10, 9, 8. Angka berikutnya..." benar="C" umpanBenar="Mundur menuju 7." pesanSalah="Mundur berkurang satu." pilihan={[{ huruf: "A", teks: "11" }, { huruf: "B", teks: "6" }, { huruf: "C", teks: "7" }]} />
@@ -1061,7 +1061,7 @@ function IsiPasangan({ kelas = "1 SD", kelamin, halaman }: { kelas?: string; kel
   return (
     <div className="space-y-3">
       <JudulHalaman n={4} />
-      <p className="text-center text-2xl font-black text-[#1C01A5]">2 + 3 = 5</p>
+      <p className="text-center text-2xl font-black text-[#0F74B8]">2 + 3 = 5</p>
       <KuisPilih id={idKuis("B", 9)} soal="Mana pasangan bilangan untuk 5?" benar="A" umpanBenar="Tepat! 2 dan 3 bersama-sama menjadi 5." pesanSalah="Jumlahnya harus 5." pilihan={[{ huruf: "A", teks: "2 dan 3" }, { huruf: "B", teks: "4 dan 4" }, { huruf: "C", teks: "1 dan 6" }]} />
       <KuisPilih id={idKuis("A", 30)} soal="1 dan 3 adalah pasangan untuk..." benar="B" umpanBenar="1 + 3 = 4." pesanSalah="Jumlahkan dua kelompok." pilihan={[{ huruf: "A", teks: "3" }, { huruf: "B", teks: "4" }, { huruf: "C", teks: "5" }]} />
       <KuisPilih id={idKuis("A", 31)} soal="4 dan 4 digabung menjadi..." benar="C" umpanBenar="4 + 4 = 8." pesanSalah="Dua kelompok yang sama." pilihan={[{ huruf: "A", teks: "4" }, { huruf: "B", teks: "6" }, { huruf: "C", teks: "8" }]} />
@@ -1110,7 +1110,7 @@ function langkahBab1(kelas?: string, kelamin?: KelaminGuru): LangkahQuest[] {
       kuis: kuisMisi,
       isi: (
         <div className="space-y-3">
-          <h4 className="text-center text-lg font-black text-[#1C01A5]">Misi Penjaga Kebun Angka</h4>
+          <h4 className="text-center text-lg font-black text-[#0F74B8]">Misi Penjaga Kebun Angka</h4>
           <TombolVoiceMateriPai1 kelas={kelas} kelamin={kelamin} cuplikan={cuplikanDariNaskah(kartuC.voice, 2_000, 3_000)} />
           <MisiKebunAngka />
         </div>
@@ -1126,7 +1126,7 @@ function langkahBab1(kelas?: string, kelamin?: KelaminGuru): LangkahQuest[] {
       isi: (
         <div className="space-y-4">
           <p className="text-center text-4xl">🌳🧺🦉</p>
-          <h4 className="text-center text-lg font-black text-[#1C01A5]">{kartuA.judul}</h4>
+          <h4 className="text-center text-lg font-black text-[#0F74B8]">{kartuA.judul}</h4>
           <TombolVoiceMateriPai1 kelas={kelas} kelamin={kelamin} cuplikan={cuplikanDariNaskah(kartuA.voice, 2_000, 3_000)} />
           <TujuanBelajar butir={butir} />
           <KartuPoinPenting kelas={kelas} kelamin={kelamin} cuplikan={cuplikanDariNaskah(kartuD.voice.slice(0, 1), 2_000, 3_000)} poin={poin} penutup="Hitung satu per satu, tulis angkanya, bandingkan, lalu cari pasangan bilangannya." />
@@ -1140,7 +1140,7 @@ function langkahBab1(kelas?: string, kelamin?: KelaminGuru): LangkahQuest[] {
       judul: "Lembar evaluasi",
       isi: (
         <div className="space-y-4">
-          <h4 className="text-center text-lg font-black text-[#1C01A5]">{kartuD.judul}</h4>
+          <h4 className="text-center text-lg font-black text-[#0F74B8]">{kartuD.judul}</h4>
           <TombolVoiceMateriPai1 kelas={kelas} kelamin={kelamin} cuplikan={cuplikanDariNaskah(kartuD.voice.slice(1), 2_000, 3_000)} />
           <LembarKerja />
           <KuisTulisKartu id={idKuisTulisKartu(ID1, "D")} hanyaKanvas pertanyaan="Tuliskan kalimat kunci: Hitung satu per satu, tulis angkanya, lalu bandingkan jumlahnya." alias={kumpulkanAlias(["hitung satu per satu", "tulis angkanya", "bandingkan jumlahnya"])} konteks={kartuD.pengantar} />

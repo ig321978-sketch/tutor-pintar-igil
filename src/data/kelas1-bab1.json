@@ -13,9 +13,9 @@
       "codeTitle": "Sub-Bab A (1–10)",
       "fullTitle": "Sub-Bab A: Menghitung, Membaca, dan Menulis Bilangan 1 sampai 10",
       "targetDescription": "Siswa mampu menghitung banyak benda 1 sampai 10, membaca nama bilangannya, dan menuliskan lambang angkanya dengan benar.",
-      "secondaryBg": "#FEE2E2",
-      "secondaryBorder": "#EF4444",
-      "secondaryText": "#991B1B",
+      "secondaryBg": "#FFE8CC",
+      "secondaryBorder": "#FFC56D",
+      "secondaryText": "#17324A",
       "stories": [
         {
           "id": "A-S1",
@@ -160,9 +160,9 @@
       "codeTitle": "Sub-Bab B (Nol & Banding)",
       "fullTitle": "Sub-Bab B: Mengenal Bilangan 0 dan Membandingkan Banyak Benda",
       "targetDescription": "Siswa memahami konsep bilangan 0 (kosong) serta membandingkan dua kelompok benda (Lebih Banyak, Lebih Sedikit, atau Sama Banyak).",
-      "secondaryBg": "#FEF3C7",
-      "secondaryBorder": "#F59E0B",
-      "secondaryText": "#92400E",
+      "secondaryBg": "#E5F6FF",
+      "secondaryBorder": "#9AD8FF",
+      "secondaryText": "#17324A",
       "stories": [
         {
           "id": "B-S1",
@@ -301,9 +301,9 @@
       "codeTitle": "Sub-Bab C (Maju-Mundur)",
       "fullTitle": "Sub-Bab C: Menghitung Maju (1–10) dan Menghitung Mundur (10–1)",
       "targetDescription": "Siswa mampu mengurutkan bilangan secara maju dari 1 ke 10 (+1) serta menghitung mundur dari 10 ke 1 (-1).",
-      "secondaryBg": "#DCFCE7",
-      "secondaryBorder": "#22C55E",
-      "secondaryText": "#166534",
+      "secondaryBg": "#E5F9EC",
+      "secondaryBorder": "#8EE4A6",
+      "secondaryText": "#17324A",
       "stories": [
         {
           "id": "C-S1",
@@ -442,9 +442,9 @@
       "codeTitle": "Sub-Bab D (Pasangan)",
       "fullTitle": "Sub-Bab D: Menemukan Pasangan Bilangan (Number Bonds) sampai 10",
       "targetDescription": "Siswa mampu menguraikan dan menyusun pasangan bilangan (Number Bonds) yang membentuk suatu bilangan hingga 10.",
-      "secondaryBg": "#DBEAFE",
-      "secondaryBorder": "#3B82F6",
-      "secondaryText": "#1E3A8A",
+      "secondaryBg": "#DFF6FF",
+      "secondaryBorder": "#5EBEFF",
+      "secondaryText": "#17324A",
       "stories": [
         {
           "id": "D-S1",

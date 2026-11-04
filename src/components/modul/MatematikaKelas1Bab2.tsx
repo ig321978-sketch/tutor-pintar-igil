@@ -325,7 +325,7 @@ const PRACTICE_QUESTIONS: PracticeQuestion[] = [
   {
     id: 1,
     storyCharacter: "Kira",
-    themeGradient: "bg-[#F0AB00]",
+    themeGradient: "bg-[#FFC56D]",
     badgeTitle: "Menggabungkan 2 Kelompok",
     prompt:
       "Kira menggabungkan 3 apel merah di keranjang kiri dan 4 apel hijau di keranjang kanan. Berapa jumlah apel Kira seluruhnya? (3 + 4 = ...)",
@@ -340,7 +340,7 @@ const PRACTICE_QUESTIONS: PracticeQuestion[] = [
   {
     id: 2,
     storyCharacter: "Upe",
-    themeGradient: "bg-[#F0AB00]",
+    themeGradient: "bg-[#FFC56D]",
     badgeTitle: "Cerita Bertambah",
     prompt:
       "Ada 4 anak bermain lompat tali di taman. Datang lagi 2 anak ikut bergabung. Berapa jumlah anak semuanya sekarang? (4 + 2 = ...)",
@@ -355,7 +355,7 @@ const PRACTICE_QUESTIONS: PracticeQuestion[] = [
   {
     id: 3,
     storyCharacter: "Malosi",
-    themeGradient: "bg-[#F0AB00]",
+    themeGradient: "bg-[#FFC56D]",
     badgeTitle: "Strategi Hitung Maju",
     prompt:
       "Katak Malosi berada di batu angka 5, lalu melompat MAJU 3 langkah ke kanan. Di batu angka berapakah Malosi berhenti? (5 + 3 = ...)",
@@ -370,7 +370,7 @@ const PRACTICE_QUESTIONS: PracticeQuestion[] = [
   {
     id: 4,
     storyCharacter: "Tora",
-    themeGradient: "bg-[#F0AB00]",
+    themeGradient: "bg-[#FFC56D]",
     badgeTitle: "Pasangan Bilangan",
     prompt:
       "Perhatikan Pohon Pasangan Bilangan Tora! Jika bagian 6 dan bagian 3 digabungkan (6 + 3), bilangan utuh yang terbentuk adalah...",
@@ -385,7 +385,7 @@ const PRACTICE_QUESTIONS: PracticeQuestion[] = [
   {
     id: 5,
     storyCharacter: "Kira",
-    themeGradient: "bg-[#F0AB00]",
+    themeGradient: "bg-[#FFC56D]",
     badgeTitle: "Penjumlahan Jadi 10",
     prompt:
       "Kira menyusun 7 keping merah dan 3 keping biru ke dalam Bingkai 10. Berapa jumlah seluruh keping Kira sekarang? (7 + 3 = ...)",
@@ -400,7 +400,7 @@ const PRACTICE_QUESTIONS: PracticeQuestion[] = [
   {
     id: 6,
     storyCharacter: "Upe",
-    themeGradient: "bg-[#F0AB00]",
+    themeGradient: "bg-[#FFC56D]",
     badgeTitle: "Pasangan Penggenap 10",
     prompt:
       "Bingkai 10 milik Upe sudah berisi 6 keping merah. Berapa keping biru lagi yang harus ditambahkan agar penuh menjadi 10? (6 + ... = 10)",
@@ -415,7 +415,7 @@ const PRACTICE_QUESTIONS: PracticeQuestion[] = [
   {
     id: 7,
     storyCharacter: "Tora",
-    themeGradient: "bg-[#F0AB00]",
+    themeGradient: "bg-[#FFC56D]",
     badgeTitle: "Penjumlahan Bilangan Nol",
     prompt:
       "Tora memegang piring berisi 8 donat coklat, sedangkan piring di sebelahnya kosong (0 donat). Berapakah hasil dari 8 + 0?",
@@ -430,7 +430,7 @@ const PRACTICE_QUESTIONS: PracticeQuestion[] = [
   {
     id: 8,
     storyCharacter: "Malosi",
-    themeGradient: "bg-[#F0AB00]",
+    themeGradient: "bg-[#FFC56D]",
     badgeTitle: "Sifat Pertukaran Domino",
     prompt:
       "Malosi memutar kartu domino penjumlahan. Jika 2 + 5 = 7, maka hasil dari 5 + 2 adalah...",
@@ -445,7 +445,7 @@ const PRACTICE_QUESTIONS: PracticeQuestion[] = [
   {
     id: 9,
     storyCharacter: "Kira",
-    themeGradient: "bg-[#F0AB00]",
+    themeGradient: "bg-[#FFC56D]",
     badgeTitle: "Pasangan Kembar 10",
     prompt:
       "Ibu memberi Kira 5 pensil warna pagi ini, lalu Ayah memberi lagi 5 pensil warna sore ini. Berapa jumlah pensil warna Kira seluruhnya?",
@@ -460,7 +460,7 @@ const PRACTICE_QUESTIONS: PracticeQuestion[] = [
   {
     id: 10,
     storyCharacter: "Upe",
-    themeGradient: "bg-[#F0AB00]",
+    themeGradient: "bg-[#FFC56D]",
     badgeTitle: "Kalimat Senilai",
     prompt:
       "Manakah pasangan penjumlahan di bawah ini yang memiliki hasil SAMA DENGAN 4 + 5?",
@@ -830,7 +830,7 @@ export default function MatematikaKelas1Bab2Hibrida({
       ctx.clearRect(0, 0, canvas.width, canvas.height);
       ctx.fillStyle = "#FFFFFF";
       ctx.fillRect(0, 0, canvas.width, canvas.height);
-      ctx.strokeStyle = "#F0AB00";
+      ctx.strokeStyle = "#FFC56D";
       ctx.lineWidth = 1.5;
       ctx.setLineDash([4, 4]);
       ctx.beginPath();
@@ -850,13 +850,13 @@ export default function MatematikaKelas1Bab2Hibrida({
         const isHit = passedIndices.includes(idx);
         ctx.beginPath();
         ctx.arc(wp.x, wp.y, 13, 0, Math.PI * 2);
-        ctx.fillStyle = isHit ? "#7FCB96" : "#E98989";
+        ctx.fillStyle = isHit ? "#8EE4A6" : "#FFC56D";
         ctx.fill();
         ctx.lineWidth = 2.5;
-        ctx.strokeStyle = "#1C01A5";
+        ctx.strokeStyle = "#0F74B8";
         ctx.stroke();
         ctx.font = `bold 11px ${fontAnak.style.fontFamily}`;
-        ctx.fillStyle = "#1C01A5";
+        ctx.fillStyle = "#0F74B8";
         ctx.fillText(String(idx + 1), wp.x, wp.y + 1);
       });
     },
@@ -870,7 +870,7 @@ export default function MatematikaKelas1Bab2Hibrida({
     ctx.clearRect(0, 0, canvas.width, canvas.height);
     ctx.fillStyle = "#FFFFFF";
     ctx.fillRect(0, 0, canvas.width, canvas.height);
-    ctx.strokeStyle = "#1C01A5";
+    ctx.strokeStyle = "#0F74B8";
     ctx.lineWidth = 1.5;
     ctx.setLineDash([5, 5]);
     ctx.beginPath();
@@ -923,7 +923,7 @@ export default function MatematikaKelas1Bab2Hibrida({
     const y = (e.clientY - rect.top) * (canvas.height / rect.height);
     const ctx = canvas.getContext("2d");
     if (ctx) {
-      ctx.fillStyle = "#F0AB00";
+      ctx.fillStyle = "#FFC56D";
       ctx.beginPath();
       ctx.arc(x, y, 6, 0, Math.PI * 2);
       ctx.fill();
@@ -949,7 +949,7 @@ export default function MatematikaKelas1Bab2Hibrida({
     const y = (e.clientY - rect.top) * (canvas.height / rect.height);
     const ctx = canvas.getContext("2d");
     if (ctx) {
-      ctx.fillStyle = "#1C01A5";
+      ctx.fillStyle = "#0F74B8";
       ctx.beginPath();
       ctx.arc(x, y, 6, 0, Math.PI * 2);
       ctx.fill();
@@ -1267,7 +1267,7 @@ export default function MatematikaKelas1Bab2Hibrida({
             height="135"
             rx="18"
             fill="#FFFFFF"
-            stroke="#1C01A5"
+            stroke="#0F74B8"
             strokeWidth="4"
           />
           {Array.from({ length: 10 }).map((_, idx) => {
@@ -1285,15 +1285,15 @@ export default function MatematikaKelas1Bab2Hibrida({
                   width="66"
                   height="58"
                   rx="10"
-                  fill={isRed ? "#E98989" : isBlue ? "#7FCB96" : "#FFFFFF"}
-                  stroke="#1C01A5"
+                  fill={isRed ? "#FFC56D" : isBlue ? "#8EE4A6" : "#FFFFFF"}
+                  stroke="#0F74B8"
                   strokeWidth="2"
                 />
                 {isRed && (
-                  <circle cx={x + 33} cy={y + 29} r="17" fill="#E98989" stroke="#E98989" strokeWidth="2" />
+                  <circle cx={x + 33} cy={y + 29} r="17" fill="#FFC56D" stroke="#FFC56D" strokeWidth="2" />
                 )}
                 {isBlue && (
-                  <circle cx={x + 33} cy={y + 29} r="17" fill="#7FCB96" stroke="#7FCB96" strokeWidth="2" />
+                  <circle cx={x + 33} cy={y + 29} r="17" fill="#8EE4A6" stroke="#8EE4A6" strokeWidth="2" />
                 )}
               </g>
             );
@@ -1304,8 +1304,8 @@ export default function MatematikaKelas1Bab2Hibrida({
     if (type === "merge-baskets") {
       return (
         <svg viewBox="0 0 400 135" className="w-full max-w-lg mx-auto">
-          <rect x="10" y="15" width="150" height="105" rx="16" fill="#FFFFFF" stroke="#E98989" strokeWidth="3" />
-          <text x="85" y="34" textAnchor="middle" fontSize="12" fontWeight="bold" fill="#1C01A5">
+          <rect x="10" y="15" width="150" height="105" rx="16" fill="#FFFFFF" stroke="#FFC56D" strokeWidth="3" />
+          <text x="85" y="34" textAnchor="middle" fontSize="12" fontWeight="bold" fill="#0F74B8">
             Kelompok Kiri ({paramA})
           </text>
           {Array.from({ length: paramA }).map((_, i) => (
@@ -1314,14 +1314,14 @@ export default function MatematikaKelas1Bab2Hibrida({
               cx={38 + (i % 4) * 32}
               cy={62 + Math.floor(i / 4) * 30}
               r="11"
-              fill="#E98989"
+              fill="#FFC56D"
             />
           ))}
-          <text x="200" y="78" textAnchor="middle" fontSize="32" fontWeight="900" fill="#1C01A5">
+          <text x="200" y="78" textAnchor="middle" fontSize="32" fontWeight="900" fill="#0F74B8">
             +
           </text>
-          <rect x="240" y="15" width="150" height="105" rx="16" fill="#FFFFFF" stroke="#7FCB96" strokeWidth="3" />
-          <text x="315" y="34" textAnchor="middle" fontSize="12" fontWeight="bold" fill="#1C01A5">
+          <rect x="240" y="15" width="150" height="105" rx="16" fill="#FFFFFF" stroke="#8EE4A6" strokeWidth="3" />
+          <text x="315" y="34" textAnchor="middle" fontSize="12" fontWeight="bold" fill="#0F74B8">
             Kelompok Kanan ({paramB})
           </text>
           {Array.from({ length: paramB }).map((_, i) => (
@@ -1330,7 +1330,7 @@ export default function MatematikaKelas1Bab2Hibrida({
               cx={268 + (i % 4) * 32}
               cy={62 + Math.floor(i / 4) * 30}
               r="11"
-              fill="#7FCB96"
+              fill="#8EE4A6"
             />
           ))}
         </svg>
@@ -1340,8 +1340,8 @@ export default function MatematikaKelas1Bab2Hibrida({
       const target = Math.min(10, paramA + paramB);
       return (
         <svg viewBox="0 0 400 125" className="w-full max-w-lg mx-auto">
-          <rect x="6" y="6" width="388" height="113" rx="16" fill="#FFFFFF" stroke="#1C01A5" strokeWidth="2.5" />
-          <line x1="24" y1="88" x2="376" y2="88" stroke="#1C01A5" strokeWidth="4" />
+          <rect x="6" y="6" width="388" height="113" rx="16" fill="#FFFFFF" stroke="#0F74B8" strokeWidth="2.5" />
+          <line x1="24" y1="88" x2="376" y2="88" stroke="#0F74B8" strokeWidth="4" />
           {Array.from({ length: 11 }).map((_, idx) => {
             const x = 26 + idx * 34.5;
             const isStart = idx === paramA;
@@ -1352,11 +1352,11 @@ export default function MatematikaKelas1Bab2Hibrida({
                   cx={x}
                   cy="88"
                   r={isStart || isEnd ? 11 : 7}
-                  fill={isStart ? "#F0AB00" : isEnd ? "#7FCB96" : "#FFFFFF"}
-                  stroke="#1C01A5"
+                  fill={isStart ? "#FFC56D" : isEnd ? "#8EE4A6" : "#FFFFFF"}
+                  stroke="#0F74B8"
                   strokeWidth="2"
                 />
-                <text x={x} y="110" textAnchor="middle" fontSize="12" fontWeight="bold" fill="#1C01A5">
+                <text x={x} y="110" textAnchor="middle" fontSize="12" fontWeight="bold" fill="#0F74B8">
                   {idx}
                 </text>
               </g>
@@ -1370,13 +1370,13 @@ export default function MatematikaKelas1Bab2Hibrida({
                 key={sIdx}
                 d={`M ${fromX} 78 Q ${(fromX + toX) / 2} 32 ${toX} 78`}
                 fill="none"
-                stroke="#1C01A5"
+                stroke="#0F74B8"
                 strokeWidth="3"
                 strokeDasharray="4 2"
               />
             );
           })}
-          <text x="200" y="25" textAnchor="middle" fontSize="12" fontWeight="bold" fill="#1C01A5">
+          <text x="200" y="25" textAnchor="middle" fontSize="12" fontWeight="bold" fill="#0F74B8">
             Mulai di Batu {paramA}, Lompat Maju +{paramB} Langkah
           </text>
         </svg>
@@ -1385,23 +1385,23 @@ export default function MatematikaKelas1Bab2Hibrida({
     if (type === "domino-flip") {
       return (
         <svg viewBox="0 0 360 130" className="w-full max-w-md mx-auto">
-          <rect x="20" y="20" width="130" height="80" rx="12" fill="#FFFFFF" stroke="#F0AB00" strokeWidth="3" />
-          <line x1="85" y1="20" x2="85" y2="100" stroke="#F0AB00" strokeWidth="3" />
-          <text x="52" y="70" textAnchor="middle" fontSize="26" fontWeight="900" fill="#1C01A5">
+          <rect x="20" y="20" width="130" height="80" rx="12" fill="#FFFFFF" stroke="#FFC56D" strokeWidth="3" />
+          <line x1="85" y1="20" x2="85" y2="100" stroke="#FFC56D" strokeWidth="3" />
+          <text x="52" y="70" textAnchor="middle" fontSize="26" fontWeight="900" fill="#0F74B8">
             {paramA}
           </text>
-          <text x="118" y="70" textAnchor="middle" fontSize="26" fontWeight="900" fill="#1C01A5">
+          <text x="118" y="70" textAnchor="middle" fontSize="26" fontWeight="900" fill="#0F74B8">
             {paramB}
           </text>
-          <text x="180" y="68" textAnchor="middle" fontSize="24" fontWeight="900" fill="#1C01A5">
+          <text x="180" y="68" textAnchor="middle" fontSize="24" fontWeight="900" fill="#0F74B8">
             ⇄
           </text>
-          <rect x="210" y="20" width="130" height="80" rx="12" fill="#FFFFFF" stroke="#7FCB96" strokeWidth="3" />
-          <line x1="275" y1="20" x2="275" y2="100" stroke="#7FCB96" strokeWidth="3" />
-          <text x="242" y="70" textAnchor="middle" fontSize="26" fontWeight="900" fill="#1C01A5">
+          <rect x="210" y="20" width="130" height="80" rx="12" fill="#FFFFFF" stroke="#8EE4A6" strokeWidth="3" />
+          <line x1="275" y1="20" x2="275" y2="100" stroke="#8EE4A6" strokeWidth="3" />
+          <text x="242" y="70" textAnchor="middle" fontSize="26" fontWeight="900" fill="#0F74B8">
             {paramB}
           </text>
-          <text x="308" y="70" textAnchor="middle" fontSize="26" fontWeight="900" fill="#1C01A5">
+          <text x="308" y="70" textAnchor="middle" fontSize="26" fontWeight="900" fill="#0F74B8">
             {paramA}
           </text>
         </svg>
@@ -1410,19 +1410,19 @@ export default function MatematikaKelas1Bab2Hibrida({
     // Default: number-bond-sum
     return (
       <svg viewBox="0 0 340 145" className="w-full max-w-md mx-auto">
-        <rect x="8" y="8" width="324" height="129" rx="16" fill="#FFFFFF" stroke="#1C01A5" strokeWidth="3" />
-        <line x1="105" y1="42" x2="215" y2="72" stroke="#1C01A5" strokeWidth="5" />
-        <line x1="105" y1="104" x2="215" y2="72" stroke="#1C01A5" strokeWidth="5" />
-        <circle cx="105" cy="42" r="24" fill="#F0AB00" stroke="#1C01A5" strokeWidth="3" />
-        <text x="105" y="50" textAnchor="middle" fontSize="19" fontWeight="900" fill="#1C01A5">
+        <rect x="8" y="8" width="324" height="129" rx="16" fill="#FFFFFF" stroke="#0F74B8" strokeWidth="3" />
+        <line x1="105" y1="42" x2="215" y2="72" stroke="#0F74B8" strokeWidth="5" />
+        <line x1="105" y1="104" x2="215" y2="72" stroke="#0F74B8" strokeWidth="5" />
+        <circle cx="105" cy="42" r="24" fill="#FFC56D" stroke="#0F74B8" strokeWidth="3" />
+        <text x="105" y="50" textAnchor="middle" fontSize="19" fontWeight="900" fill="#0F74B8">
           {paramA}
         </text>
-        <circle cx="105" cy="104" r="24" fill="#7FCB96" stroke="#1C01A5" strokeWidth="3" />
-        <text x="105" y="112" textAnchor="middle" fontSize="19" fontWeight="900" fill="#1C01A5">
+        <circle cx="105" cy="104" r="24" fill="#8EE4A6" stroke="#0F74B8" strokeWidth="3" />
+        <text x="105" y="112" textAnchor="middle" fontSize="19" fontWeight="900" fill="#0F74B8">
           {paramB}
         </text>
-        <circle cx="220" cy="72" r="28" fill="#F0AB00" stroke="#F0AB00" strokeWidth="4" />
-        <text x="220" y="80" textAnchor="middle" fontSize="22" fontWeight="900" fill="#1C01A5">
+        <circle cx="220" cy="72" r="28" fill="#FFC56D" stroke="#FFC56D" strokeWidth="4" />
+        <text x="220" y="80" textAnchor="middle" fontSize="22" fontWeight="900" fill="#0F74B8">
           ?
         </text>
       </svg>
@@ -1439,51 +1439,51 @@ export default function MatematikaKelas1Bab2Hibrida({
   // RENDER UTAMA FORMULA HIBRIDA 4-TEMPLATE (MAX-W-[1440PX])
   // ============================================================================
   return (
-    <div className={`min-h-screen bg-[#FFFFFF] text-[#1C01A5] p-3 lg:p-6 select-none ${fontAnak.className}`}>
+    <div className={`min-h-screen bg-[#FFFFFF] text-[#0F74B8] p-3 lg:p-6 select-none ${fontAnak.className}`}>
       <div className="max-w-[1440px] mx-auto space-y-4">
         {/* ================================================================= */}
         {/* TEMPLATE 1 + 4 HUD: FLOATING CLOUD HEADER & BENTO TOKEN WALLET    */}
         {/* ================================================================= */}
-        <header className="bg-[#FFFFFF] backdrop-blur rounded-[32px] p-4 shadow-xl border-b-8 border-[#1C01A5] flex flex-col xl:flex-row items-center justify-between gap-4">
+        <header className="bg-[#FFFFFF] backdrop-blur rounded-[32px] p-4 shadow-xl border-b-8 border-[#5EBEFF] flex flex-col xl:flex-row items-center justify-between gap-4">
           <div className="flex items-center gap-4">
-            <div className="w-18 h-18 rounded-3xl bg-[#F0AB00] p-1 shadow-md shrink-0">
-              <div className="w-16 h-16 bg-[#1C01A5] rounded-[20px] flex items-center justify-center">
+            <div className="w-18 h-18 rounded-3xl bg-[#FFC56D] p-1 shadow-md shrink-0">
+              <div className="w-16 h-16 bg-[#9AD8FF] rounded-[20px] flex items-center justify-center">
                 <svg viewBox="0 0 80 80" className="w-14 h-14">
-                  <ellipse cx="40" cy="46" rx="24" ry="26" fill="#F0AB00" />
+                  <ellipse cx="40" cy="46" rx="24" ry="26" fill="#FFC56D" />
                   <ellipse cx="40" cy="50" rx="16" ry="18" fill="#FFFFFF" />
-                  <circle cx="30" cy="34" r="10" fill="#FFFFFF" stroke="#F0AB00" strokeWidth="2.5" />
-                  <circle cx="50" cy="34" r="10" fill="#FFFFFF" stroke="#F0AB00" strokeWidth="2.5" />
-                  <circle cx="30" cy="34" r="5" fill="#1C01A5" />
-                  <circle cx="50" cy="34" r="5" fill="#1C01A5" />
-                  <polygon points="40,38 35,46 45,46" fill="#F0AB00" />
-                  <polygon points="40,6 20,16 40,22 60,16" fill="#1C01A5" />
+                  <circle cx="30" cy="34" r="10" fill="#FFFFFF" stroke="#FFC56D" strokeWidth="2.5" />
+                  <circle cx="50" cy="34" r="10" fill="#FFFFFF" stroke="#FFC56D" strokeWidth="2.5" />
+                  <circle cx="30" cy="34" r="5" fill="#0F74B8" />
+                  <circle cx="50" cy="34" r="5" fill="#0F74B8" />
+                  <polygon points="40,38 35,46 45,46" fill="#FFC56D" />
+                  <polygon points="40,6 20,16 40,22 60,16" fill="#0F74B8" />
                 </svg>
               </div>
             </div>
             <div>
               <div className="flex items-center gap-2 flex-wrap">
-                <span className="bg-[#1C01A5] text-[#FFFFFF] text-xs font-black px-3 py-0.5 rounded-full">
+                <span className="bg-[#9AD8FF] text-[#17324A] text-xs font-black px-3 py-0.5 rounded-full">
                   KELAS 1 SD • BAB 2 • FORMULA HIBRIDA 4-TEMPLATE
                 </span>
-                <span className="bg-[#FFFFFF] text-[#1C01A5] text-xs font-black px-3 py-0.5 rounded-full border border-[#F0AB00]">
+                <span className="bg-[#FFFFFF] text-[#0F74B8] text-xs font-black px-3 py-0.5 rounded-full border border-[#FFC56D]">
                   🏝️ SPLASH MAP + 🧰 POLYPAD TOYBOX + ✍️ KANVAS 50/50 + 🔊 KHAN STAGE
                 </span>
                 {comboStreak > 0 && (
-                  <span className="bg-[#E98989] text-[#1C01A5] text-xs font-black px-3 py-0.5 rounded-full animate-bounce">
+                  <span className="bg-[#FFC56D] text-[#17324A] text-xs font-black px-3 py-0.5 rounded-full animate-bounce">
                     🔥 STREAK {comboStreak}x!
                   </span>
                 )}
               </div>
-              <h1 className="text-xl md:text-2xl font-black text-[#1C01A5] mt-1">
+              <h1 className="text-xl md:text-2xl font-black text-[#0F74B8] mt-1">
                 {CHAPTER_COMPETENCY_METADATA.chapterTitle}
               </h1>
-              <p className="text-xs text-[#1C01A5]">
+              <p className="text-xs text-[#0F74B8]">
                 {CHAPTER_COMPETENCY_METADATA.textbookReference}
               </p>
             </div>
           </div>
           <div className="flex flex-wrap items-center gap-3">
-            <div className="bg-[#F0AB00] text-[#1C01A5] px-4 py-2.5 rounded-2xl border-b-4 border-[#F0AB00]">
+            <div className="bg-[#FFC56D] text-[#17324A] px-4 py-2.5 rounded-2xl border-b-4 border-[#E8A04A]">
               <div className="text-[10px] font-black uppercase">Tiket Kualifikasi Bab</div>
               <div className="text-xl font-black">
                 🪙 {totalTokens} <span className="text-xs">/ 150 Token IGIL</span>
@@ -1492,7 +1492,7 @@ export default function MatematikaKelas1Bab2Hibrida({
             <button
               type="button"
               onClick={() => speakIGIL(mascotSpeech)}
-              className="bg-[#1C01A5] text-[#FFFFFF] font-black px-4 py-3 rounded-2xl border-b-4 border-[#1C01A5] active:border-b-0 active:translate-y-0.5 text-xs flex items-center gap-1.5 shadow hover:opacity-90"
+              className="bg-[#9AD8FF] text-[#17324A] font-black px-4 py-3 rounded-2xl border-b-4 border-[#5EBEFF] active:border-b-0 active:translate-y-0.5 text-xs flex items-center gap-1.5 shadow hover:opacity-90"
             >
               🔊 Suara IGIL
             </button>
@@ -1558,10 +1558,10 @@ export default function MatematikaKelas1Bab2Hibrida({
                 }}
                 className={`p-3 rounded-3xl border-b-8 transition-all text-left flex items-center gap-2.5 ${
                   !isl.unlocked
-                    ? "bg-[#FFFFFF] text-[#1C01A5]/40 border-[#1C01A5]/30 cursor-not-allowed"
+                    ? "bg-[#FFFFFF] text-[#0F74B8]/40 border-[#0F74B8]/30 cursor-not-allowed"
                     : isActive
-                    ? "bg-[#F0AB00] text-[#1C01A5] border-[#F0AB00] scale-105 shadow-xl"
-                    : "bg-[#FFFFFF] text-[#1C01A5] border-[#1C01A5] active:border-b-0 active:translate-y-1 hover:opacity-90"
+                    ? "bg-[#FFC56D] text-[#17324A] border-[#FFC56D] scale-105 shadow-xl"
+                    : "bg-[#FFFFFF] text-[#0F74B8] border-[#9AD8FF] active:border-b-0 active:translate-y-1 hover:opacity-90"
                 }`}
               >
                 <span className="text-2xl">{isl.unlocked ? isl.icon : "🔒"}</span>
@@ -1569,7 +1569,7 @@ export default function MatematikaKelas1Bab2Hibrida({
                   <div className="font-black text-xs truncate">{isl.island}</div>
                   <div
                     className={`text-[10px] font-bold truncate ${
-                      isActive ? "text-[#1C01A5]" : "text-[#1C01A5]"
+                      isActive ? "text-[#0F74B8]" : "text-[#0F74B8]"
                     }`}
                   >
                     {isl.role}
@@ -1588,16 +1588,16 @@ export default function MatematikaKelas1Bab2Hibrida({
             {/* PULAU 1 (KARTU 1): SPLASHLEARN ISLAND MAP & BRAIN HOOK 3+2=5   */}
             {/* ------------------------------------------------------------- */}
             {activeCard === 1 && (
-              <section className="bg-[#FFFFFF] rounded-[32px] p-5 md:p-6 shadow-2xl border-4 border-[#7FCB96] space-y-5">
-                <div className="bg-[#F0AB00] text-[#1C01A5] p-5 rounded-3xl flex flex-col sm:flex-row items-center justify-between gap-4">
+              <section className="bg-[#FFFFFF] rounded-[32px] p-5 md:p-6 shadow-2xl border-4 border-[#8EE4A6] space-y-5">
+                <div className="bg-[#FFC56D] text-[#17324A] p-5 rounded-3xl flex flex-col sm:flex-row items-center justify-between gap-4">
                   <div>
-                    <span className="bg-[#FFFFFF] text-[#1C01A5] text-xs font-black px-3 py-1 rounded-full">
+                    <span className="bg-[#FFFFFF] text-[#0F74B8] text-xs font-black px-3 py-1 rounded-full">
                       🏝️ PULAU 1 • BUKU KEMENDIKBUDRISTEK HALAMAN 33–60
                     </span>
                     <h2 className="text-xl md:text-2xl font-black mt-2">
                       Kepulauan Penjumlahan: Menggabungkan &amp; Menambah Benda
                     </h2>
-                    <p className="text-xs text-[#1C01A5] mt-1">
+                    <p className="text-xs text-[#0F74B8] mt-1">
                       Bantu Kira, Upe, Malosi, dan Tora menaklukkan 6 Pulau Penjumlahan sampai dengan 10!
                     </p>
                   </div>
@@ -1608,16 +1608,16 @@ export default function MatematikaKelas1Bab2Hibrida({
                         "Selamat datang di Kepulauan Penjumlahan! Sentuh 3 burung merah dan 2 burung biru di bawah agar berkumpul di dahan pohon!"
                       )
                     }
-                    className="bg-[#FFFFFF] text-[#1C01A5] font-black px-4 py-2.5 rounded-2xl border-b-4 border-[#F0AB00] text-xs shrink-0"
+                    className="bg-[#FFFFFF] text-[#0F74B8] font-black px-4 py-2.5 rounded-2xl border-b-4 border-[#E8A04A] text-xs shrink-0"
                   >
                     🔊 Dengarkan Misi Pulau 1
                   </button>
                 </div>
                 {/* Brain Hook Motorik: Tap-to-Merge 3 Burung Merah + 2 Burung Biru = 5 */}
-                <div className="bg-[#1C01A5] text-[#FFFFFF] rounded-3xl p-5 border-b-8 border-[#1C01A5] space-y-4">
+                <div className="bg-[#9AD8FF] text-[#17324A] rounded-3xl p-5 border-b-8 border-[#5EBEFF] space-y-4">
                   <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2">
                     <div>
-                      <span className="bg-[#F0AB00] text-[#1C01A5] text-xs font-black px-3 py-0.5 rounded-full">
+                      <span className="bg-[#FFC56D] text-[#17324A] text-xs font-black px-3 py-0.5 rounded-full">
                         ✨ BRAIN HOOK MOTORIK (TAP-TO-MERGE: 3 + 2 = 5)
                       </span>
                       <h3 className="text-lg font-black mt-1">
@@ -1625,8 +1625,8 @@ export default function MatematikaKelas1Bab2Hibrida({
                       </h3>
                     </div>
                     <div className="bg-[#FFFFFF] px-4 py-2 rounded-2xl text-center">
-                      <div className="text-[10px] text-[#1C01A5] font-bold">Kalimat Penjumlahan</div>
-                      <div className="text-2xl font-black text-[#1C01A5]">
+                      <div className="text-[10px] text-[#0F74B8] font-bold">Kalimat Penjumlahan</div>
+                      <div className="text-2xl font-black text-[#0F74B8]">
                         {hookRedBirds.length} + {hookBlueBirds.length} ={" "}
                         {hookRedBirds.length + hookBlueBirds.length}
                       </div>
@@ -1634,8 +1634,8 @@ export default function MatematikaKelas1Bab2Hibrida({
                   </div>
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                     {/* Kelompok 3 Burung Merah */}
-                    <div className="bg-[#1C01A5]/60 p-4 rounded-2xl border border-[#1C01A5]/40 space-y-2">
-                      <div className="text-xs font-black text-[#FFE566]">
+                    <div className="bg-[#9AD8FF]/60 p-4 rounded-2xl border border-[#0F74B8]/40 space-y-2">
+                      <div className="text-xs font-black text-[#17324A]">
                         Kelompok Kiri: Sentuh 3 Burung Merah ({hookRedBirds.length}/3)
                       </div>
                       <div className="grid grid-cols-3 gap-2">
@@ -1648,8 +1648,8 @@ export default function MatematikaKelas1Bab2Hibrida({
                               onClick={() => handleTapRedBird(id)}
                               className={`h-20 rounded-2xl border-b-4 font-black flex flex-col items-center justify-center transition-all ${
                                 joined
-                                  ? "bg-[#E98989] text-[#1C01A5] border-[#E98989] scale-105"
-                                  : "bg-[#FFFFFF] text-[#1C01A5] border-[#E98989] animate-pulse"
+                                  ? "bg-[#FFC56D] text-[#17324A] border-[#FFC56D] scale-105"
+                                  : "bg-[#FFFFFF] text-[#0F74B8] border-[#FFC56D] animate-pulse"
                               }`}
                             >
                               <span className="text-2xl">🐦</span>
@@ -1662,8 +1662,8 @@ export default function MatematikaKelas1Bab2Hibrida({
                       </div>
                     </div>
                     {/* Kelompok 2 Burung Biru */}
-                    <div className="bg-[#1C01A5]/60 p-4 rounded-2xl border border-[#1C01A5]/40 space-y-2">
-                      <div className="text-xs font-black text-[#FFE566]">
+                    <div className="bg-[#9AD8FF]/60 p-4 rounded-2xl border border-[#0F74B8]/40 space-y-2">
+                      <div className="text-xs font-black text-[#17324A]">
                         Kelompok Kanan: Sentuh 2 Burung Biru ({hookBlueBirds.length}/2)
                       </div>
                       <div className="grid grid-cols-2 gap-2">
@@ -1676,8 +1676,8 @@ export default function MatematikaKelas1Bab2Hibrida({
                               onClick={() => handleTapBlueBird(id)}
                               className={`h-20 rounded-2xl border-b-4 font-black flex flex-col items-center justify-center transition-all ${
                                 joined
-                                  ? "bg-[#7FCB96] text-[#1C01A5] border-[#7FCB96] scale-105"
-                                  : "bg-[#FFFFFF] text-[#1C01A5] border-[#7FCB96] animate-pulse"
+                                  ? "bg-[#8EE4A6] text-[#17324A] border-[#8EE4A6] scale-105"
+                                  : "bg-[#FFFFFF] text-[#0F74B8] border-[#8EE4A6] animate-pulse"
                               }`}
                             >
                               <span className="text-2xl">🐦</span>
@@ -1691,8 +1691,8 @@ export default function MatematikaKelas1Bab2Hibrida({
                     </div>
                   </div>
                   {card2Unlocked && (
-                    <div className="bg-[#7FCB96] border-2 border-[#7FCB96] rounded-2xl p-3.5 flex flex-col sm:flex-row items-center justify-between gap-3">
-                      <span className="text-xs md:text-sm font-black text-[#1C01A5]">
+                    <div className="bg-[#8EE4A6] border-2 border-[#8EE4A6] rounded-2xl p-3.5 flex flex-col sm:flex-row items-center justify-between gap-3">
+                      <span className="text-xs md:text-sm font-black text-[#0F74B8]">
                         🎉 3 Burung Merah + 2 Burung Biru = 5 Burung! Pulau 2, 3, dan 4 sekarang terbuka!
                       </span>
                       <button
@@ -1701,7 +1701,7 @@ export default function MatematikaKelas1Bab2Hibrida({
                           playSound("fanfare");
                           setActiveCard(2);
                         }}
-                        className="bg-[#F0AB00] text-[#1C01A5] font-black px-4 py-2 rounded-xl border-b-4 border-[#F0AB00] text-xs shrink-0"
+                        className="bg-[#FFC56D] text-[#17324A] font-black px-4 py-2 rounded-xl border-b-4 border-[#E8A04A] text-xs shrink-0"
                       >
                         Berlayar ke Pulau 2 (7 Motorik) ➡️
                       </button>
@@ -1714,13 +1714,13 @@ export default function MatematikaKelas1Bab2Hibrida({
             {/* PULAU 2 (KARTU 2): 7 STASIUN MOTORIK PENJUMLAHAN (0% UJIAN)    */}
             {/* ------------------------------------------------------------- */}
             {activeCard === 2 && (
-              <section className="bg-[#FFFFFF] rounded-[32px] p-5 md:p-6 shadow-2xl border-4 border-[#F0AB00] space-y-5">
+              <section className="bg-[#FFFFFF] rounded-[32px] p-5 md:p-6 shadow-2xl border-4 border-[#FFC56D] space-y-5">
                 <div className="flex flex-wrap items-center justify-between gap-2">
                   <div>
-                    <span className="bg-[#F0AB00] text-[#1C01A5] text-xs font-black px-3 py-0.5 rounded-full">
+                    <span className="bg-[#FFC56D] text-[#17324A] text-xs font-black px-3 py-0.5 rounded-full">
                       🎡 PULAU 2 • 7 STASIUN MOTORIK SENTUHAN JARI (0% SOAL UJIAN)
                     </span>
-                    <h2 className="text-lg md:text-xl font-black text-[#1C01A5] mt-1">
+                    <h2 className="text-lg md:text-xl font-black text-[#0F74B8] mt-1">
                       Eksplorasi 7 Mekanika Penjumlahan Bersama Kira, Upe, Malosi &amp; Tora
                     </h2>
                   </div>
@@ -1745,8 +1745,8 @@ export default function MatematikaKelas1Bab2Hibrida({
                       }}
                       className={`p-2.5 rounded-2xl font-black text-xs border-b-4 flex flex-col items-center gap-1 transition-all ${
                         motoricStation === st.id
-                          ? "bg-[#F0AB00] text-[#1C01A5] border-[#F0AB00] scale-105 shadow"
-                          : "bg-[#FFFFFF] text-[#1C01A5] border-[#1C01A5] hover:opacity-90"
+                          ? "bg-[#FFC56D] text-[#17324A] border-[#FFC56D] scale-105 shadow"
+                          : "bg-[#FFFFFF] text-[#0F74B8] border-[#9AD8FF] hover:opacity-90"
                       }`}
                     >
                       <span className="text-xl">{st.icon}</span>
@@ -1756,13 +1756,13 @@ export default function MatematikaKelas1Bab2Hibrida({
                 </div>
                 {/* STASIUN 1: GABUNGKAN 2 KERANJANG APEL (TAP-TO-MERGE) */}
                 {motoricStation === 1 && (
-                  <div className="bg-[#FFFFFF] p-5 rounded-3xl border-2 border-[#1C01A5] space-y-4">
-                    <h3 className="font-black text-base text-[#1C01A5]">
+                  <div className="bg-[#FFFFFF] p-5 rounded-3xl border-2 border-[#9AD8FF] space-y-4">
+                    <h3 className="font-black text-base text-[#0F74B8]">
                       🍎 Stasiun Motorik 1: Sentuh &amp; Gabungkan Dua Keranjang Apel Kira
                     </h3>
                     <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
-                      <div className="bg-[#FFFFFF] p-3.5 rounded-2xl border-2 border-[#1C01A5] flex items-center justify-between">
-                        <span className="text-xs font-black text-[#1C01A5]">
+                      <div className="bg-[#FFFFFF] p-3.5 rounded-2xl border-2 border-[#9AD8FF] flex items-center justify-between">
+                        <span className="text-xs font-black text-[#0F74B8]">
                           Keranjang Kiri: {st1LeftApples} Apel
                         </span>
                         <div className="flex gap-1.5">
@@ -1778,14 +1778,14 @@ export default function MatematikaKelas1Bab2Hibrida({
                             onClick={() =>
                               setSt1LeftApples((v) => Math.min(10 - st1RightApples, v + 1))
                             }
-                            className="px-3 py-1 bg-[#1C01A5] text-[#FFFFFF] rounded-xl font-black"
+                            className="px-3 py-1 bg-[#9AD8FF] text-[#17324A] rounded-xl font-black"
                           >
                             +
                           </button>
                         </div>
                       </div>
-                      <div className="bg-[#FFFFFF] p-3.5 rounded-2xl border-2 border-[#1C01A5] flex items-center justify-between">
-                        <span className="text-xs font-black text-[#1C01A5]">
+                      <div className="bg-[#FFFFFF] p-3.5 rounded-2xl border-2 border-[#9AD8FF] flex items-center justify-between">
+                        <span className="text-xs font-black text-[#0F74B8]">
                           Keranjang Kanan: {st1RightApples} Apel
                         </span>
                         <div className="flex gap-1.5">
@@ -1801,7 +1801,7 @@ export default function MatematikaKelas1Bab2Hibrida({
                             onClick={() =>
                               setSt1RightApples((v) => Math.min(10 - st1LeftApples, v + 1))
                             }
-                            className="px-3 py-1 bg-[#1C01A5] text-[#FFFFFF] rounded-xl font-black"
+                            className="px-3 py-1 bg-[#9AD8FF] text-[#17324A] rounded-xl font-black"
                           >
                             +
                           </button>
@@ -1809,7 +1809,7 @@ export default function MatematikaKelas1Bab2Hibrida({
                       </div>
                     </div>
                     {renderAdditionVisualSVG("merge-baskets", st1LeftApples, st1RightApples)}
-                    <div className="bg-[#FFFFFF] p-3.5 rounded-2xl border-2 border-[#1C01A5] text-center font-black text-lg text-[#1C01A5]">
+                    <div className="bg-[#FFFFFF] p-3.5 rounded-2xl border-2 border-[#9AD8FF] text-center font-black text-lg text-[#0F74B8]">
                       Kalimat Penjumlahan Kira: {st1LeftApples} + {st1RightApples} ={" "}
                       {st1LeftApples + st1RightApples} (
                       {NUMBER_WORDS[st1LeftApples + st1RightApples]})
@@ -1818,9 +1818,9 @@ export default function MatematikaKelas1Bab2Hibrida({
                 )}
                 {/* STASIUN 2: PASANGKAN KARTU KALIMAT PENJUMLAHAN & BINTANG */}
                 {motoricStation === 2 && (
-                  <div className="bg-[#FFFFFF] p-5 rounded-3xl border-2 border-[#1C01A5] space-y-4">
+                  <div className="bg-[#FFFFFF] p-5 rounded-3xl border-2 border-[#9AD8FF] space-y-4">
                     <div className="flex items-center justify-between">
-                      <h3 className="font-black text-base text-[#1C01A5]">
+                      <h3 className="font-black text-base text-[#0F74B8]">
                         🔗 Stasiun Motorik 2: Pasangkan Kartu Penjumlahan dengan Bintang Upe
                       </h3>
                       <button
@@ -1829,7 +1829,7 @@ export default function MatematikaKelas1Bab2Hibrida({
                           setSt2MatchedSums([]);
                           setSt2SelectedSum(null);
                         }}
-                        className="bg-[#FFFFFF] text-[#1C01A5] font-black px-3 py-1 rounded-xl border border-[#1C01A5] text-xs"
+                        className="bg-[#FFFFFF] text-[#0F74B8] font-black px-3 py-1 rounded-xl border border-[#9AD8FF] text-xs"
                       >
                         🔄 Ulangi
                       </button>
@@ -1856,10 +1856,10 @@ export default function MatematikaKelas1Bab2Hibrida({
                             }}
                             className={`py-3.5 rounded-2xl font-black text-lg border-b-4 ${
                               matched
-                                ? "bg-[#F0AB00] text-[#1C01A5] border-[#F0AB00]"
+                                ? "bg-[#FFC56D] text-[#17324A] border-[#FFC56D]"
                                 : selected
-                                ? "bg-[#F0AB00] text-[#1C01A5] border-[#F0AB00] scale-105"
-                                : "bg-[#FFFFFF] text-[#1C01A5] border-[#1C01A5]"
+                                ? "bg-[#FFC56D] text-[#17324A] border-[#FFC56D] scale-105"
+                                : "bg-[#FFFFFF] text-[#0F74B8] border-[#9AD8FF]"
                             }`}
                           >
                             {card.label} {matched ? "✅" : ""}
@@ -1887,8 +1887,8 @@ export default function MatematikaKelas1Bab2Hibrida({
                             }}
                             className={`p-3 rounded-2xl border-b-4 flex flex-wrap gap-1 items-center justify-center min-h-[78px] ${
                               matched
-                                ? "bg-[#FFFFFF] border-[#F0AB00]"
-                                : "bg-[#FFFFFF] border-[#1C01A5] hover:opacity-90"
+                                ? "bg-[#FFFFFF] border-[#FFC56D]"
+                                : "bg-[#FFFFFF] border-[#9AD8FF] hover:opacity-90"
                             }`}
                           >
                             {Array.from({ length: starCount }).map((_, i) => (
@@ -1904,9 +1904,9 @@ export default function MatematikaKelas1Bab2Hibrida({
                 )}
                 {/* STASIUN 3: KANVAS 50/50 ANTI-JIPLAK HASIL PENJUMLAHAN */}
                 {motoricStation === 3 && (
-                  <div className="bg-[#FFFFFF] p-5 rounded-3xl border-2 border-[#1C01A5] space-y-4">
+                  <div className="bg-[#FFFFFF] p-5 rounded-3xl border-2 border-[#9AD8FF] space-y-4">
                     <div className="flex flex-wrap items-center justify-between gap-2">
-                      <h3 className="font-black text-base text-[#1C01A5]">
+                      <h3 className="font-black text-base text-[#0F74B8]">
                         ✍️ Stasiun Motorik 3: Tulis Angka Hasil Penjumlahan di Kanvas 50/50
                       </h3>
                       <div className="flex gap-1.5 flex-wrap">
@@ -1925,8 +1925,8 @@ export default function MatematikaKelas1Bab2Hibrida({
                             }}
                             className={`px-3 py-1 rounded-xl font-black text-xs border-b-2 ${
                               targetSumDigit === item.ans
-                                ? "bg-[#1C01A5] text-[#FFFFFF] border-[#1C01A5]"
-                                : "bg-[#FFFFFF] text-[#1C01A5] border-[#1C01A5]"
+                                ? "bg-[#9AD8FF] text-[#17324A] border-[#9AD8FF]"
+                                : "bg-[#FFFFFF] text-[#0F74B8] border-[#9AD8FF]"
                             }`}
                           >
                             {item.eq}
@@ -1935,8 +1935,8 @@ export default function MatematikaKelas1Bab2Hibrida({
                       </div>
                     </div>
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                      <div className="bg-[#FFFFFF] p-3.5 rounded-2xl border-2 border-[#1C01A5] text-center space-y-2">
-                        <div className="text-xs font-black text-[#1C01A5]">
+                      <div className="bg-[#FFFFFF] p-3.5 rounded-2xl border-2 border-[#9AD8FF] text-center space-y-2">
+                        <div className="text-xs font-black text-[#0F74B8]">
                           50% KIRI: TEBALKAN TITIK ANGKA {targetSumDigit}
                         </div>
                         <canvas
@@ -1947,11 +1947,11 @@ export default function MatematikaKelas1Bab2Hibrida({
                           onMouseMove={handleGuidedPointerMove}
                           onMouseUp={() => setIsDrawingGuided(false)}
                           onMouseLeave={() => setIsDrawingGuided(false)}
-                          className="w-full max-w-[220px] mx-auto rounded-2xl border-2 border-[#1C01A5] cursor-crosshair"
+                          className="w-full max-w-[220px] mx-auto rounded-2xl border-2 border-[#9AD8FF] cursor-crosshair"
                         />
                       </div>
-                      <div className="bg-[#FFFFFF] p-3.5 rounded-2xl border-2 border-[#1C01A5] text-center space-y-2">
-                        <div className="text-xs font-black text-[#1C01A5]">
+                      <div className="bg-[#FFFFFF] p-3.5 rounded-2xl border-2 border-[#9AD8FF] text-center space-y-2">
+                        <div className="text-xs font-black text-[#0F74B8]">
                           50% KANAN: TULIS MANDIRI ANGKA {targetSumDigit}
                         </div>
                         <canvas
@@ -1962,7 +1962,7 @@ export default function MatematikaKelas1Bab2Hibrida({
                           onMouseMove={handleFreehandPointerMove}
                           onMouseUp={() => setIsDrawingFreehand(false)}
                           onMouseLeave={() => setIsDrawingFreehand(false)}
-                          className="w-full max-w-[220px] mx-auto rounded-2xl border-2 border-[#1C01A5] cursor-crosshair"
+                          className="w-full max-w-[220px] mx-auto rounded-2xl border-2 border-[#9AD8FF] cursor-crosshair"
                         />
                       </div>
                     </div>
@@ -1970,14 +1970,14 @@ export default function MatematikaKelas1Bab2Hibrida({
                       <button
                         type="button"
                         onClick={() => resetDualCanvas(targetSumDigit)}
-                        className="bg-[#FFFFFF] text-[#1C01A5] font-black px-4 py-2 rounded-xl text-xs"
+                        className="bg-[#FFFFFF] text-[#0F74B8] font-black px-4 py-2 rounded-xl text-xs"
                       >
                         🗑️ Bersihkan
                       </button>
                       <button
                         type="button"
                         onClick={evaluateDualCanvasGeometry}
-                        className="bg-[#F0AB00] text-[#1C01A5] font-black px-5 py-2 rounded-xl border-b-4 border-[#F0AB00] text-xs"
+                        className="bg-[#FFC56D] text-[#17324A] font-black px-5 py-2 rounded-xl border-b-4 border-[#E8A04A] text-xs"
                       >
                         ✅ Periksa Geometri Tulisan Saya
                       </button>
@@ -1986,9 +1986,9 @@ export default function MatematikaKelas1Bab2Hibrida({
                 )}
                 {/* STASIUN 4: LOMPATAN KATAK MAJU (COUNTING ON) */}
                 {motoricStation === 4 && (
-                  <div className="bg-[#FFFFFF] p-5 rounded-3xl border-2 border-[#F0AB00] space-y-4">
+                  <div className="bg-[#FFFFFF] p-5 rounded-3xl border-2 border-[#FFC56D] space-y-4">
                     <div className="flex flex-wrap items-center justify-between gap-2">
-                      <h3 className="font-black text-base text-[#1C01A5]">
+                      <h3 className="font-black text-base text-[#0F74B8]">
                         🐸 Stasiun Motorik 4: Garis Bilangan Lompatan Maju bersama Malosi
                       </h3>
                       <div className="flex gap-2">
@@ -1998,7 +1998,7 @@ export default function MatematikaKelas1Bab2Hibrida({
                             playSound("pop");
                             setSt4StartStone((s) => Math.min(6, s + 1));
                           }}
-                          className="bg-[#F0AB00] text-[#1C01A5] font-black px-3 py-1.5 rounded-xl text-xs"
+                          className="bg-[#FFC56D] text-[#17324A] font-black px-3 py-1.5 rounded-xl text-xs"
                         >
                           Ubah Batu Awal ({st4StartStone})
                         </button>
@@ -2008,16 +2008,16 @@ export default function MatematikaKelas1Bab2Hibrida({
                             playSound("pop");
                             setSt4JumpCount((j) => (j >= 4 ? 1 : j + 1));
                           }}
-                          className="bg-[#F0AB00] text-[#1C01A5] font-black px-3 py-1.5 rounded-xl text-xs"
+                          className="bg-[#FFC56D] text-[#17324A] font-black px-3 py-1.5 rounded-xl text-xs"
                         >
                           Ubah Lompatan (+{st4JumpCount})
                         </button>
                       </div>
                     </div>
                     {renderAdditionVisualSVG("jump-line", st4StartStone, st4JumpCount)}
-                    <div className="bg-[#FFFFFF] p-3.5 rounded-2xl border-2 border-[#F0AB00] text-center font-black text-sm">
+                    <div className="bg-[#FFFFFF] p-3.5 rounded-2xl border-2 border-[#FFC56D] text-center font-black text-sm">
                       Mulai di {st4StartStone}, melompat maju {st4JumpCount} langkah → Mendarat di{" "}
-                      <span className="text-lg text-[#1C01A5]">
+                      <span className="text-lg text-[#0F74B8]">
                         {st4StartStone + st4JumpCount}
                       </span>
                     </div>
@@ -2025,13 +2025,13 @@ export default function MatematikaKelas1Bab2Hibrida({
                 )}
                 {/* STASIUN 5: MESIN PENGGENAP 10 (MAKE-10 TEN FRAME) */}
                 {motoricStation === 5 && (
-                  <div className="bg-[#FFFFFF] p-5 rounded-3xl border-2 border-[#1C01A5] space-y-4">
+                  <div className="bg-[#FFFFFF] p-5 rounded-3xl border-2 border-[#9AD8FF] space-y-4">
                     <div className="flex flex-wrap items-center justify-between gap-2">
                       <div>
-                        <h3 className="font-black text-base text-[#1C01A5]">
+                        <h3 className="font-black text-base text-[#0F74B8]">
                           🔟 Stasiun Motorik 5: Sentuh Petak Kosong Agar Genap 10!
                         </h3>
-                        <p className="text-xs text-[#1C01A5]">
+                        <p className="text-xs text-[#0F74B8]">
                           Ada {st5BaseTenRed} keping merah. Sentuh tombol <strong>+1 Keping Biru</strong> sampai Bingkai 10 penuh!
                         </p>
                       </div>
@@ -2044,7 +2044,7 @@ export default function MatematikaKelas1Bab2Hibrida({
                               setSt5BaseTenRed(r);
                               setSt5AddedBlue(0);
                             }}
-                            className="bg-[#FFFFFF] px-3 py-1 rounded-xl border border-[#1C01A5] font-black text-xs"
+                            className="bg-[#FFFFFF] px-3 py-1 rounded-xl border border-[#9AD8FF] font-black text-xs"
                           >
                             Awal {r} Merah
                           </button>
@@ -2052,8 +2052,8 @@ export default function MatematikaKelas1Bab2Hibrida({
                       </div>
                     </div>
                     {renderAdditionVisualSVG("ten-frame-pair", st5BaseTenRed, st5AddedBlue)}
-                    <div className="flex items-center justify-between bg-[#FFFFFF] p-3.5 rounded-2xl border-2 border-[#1C01A5]">
-                      <span className="font-black text-sm text-[#1C01A5]">
+                    <div className="flex items-center justify-between bg-[#FFFFFF] p-3.5 rounded-2xl border-2 border-[#9AD8FF]">
+                      <span className="font-black text-sm text-[#0F74B8]">
                         {st5BaseTenRed} Merah + {st5AddedBlue} Biru ={" "}
                         {st5BaseTenRed + st5AddedBlue}
                       </span>
@@ -2071,7 +2071,7 @@ export default function MatematikaKelas1Bab2Hibrida({
                             }
                           }
                         }}
-                        className="bg-[#1C01A5] text-[#FFFFFF] font-black px-4 py-2 rounded-xl border-b-4 border-[#1C01A5] text-xs"
+                        className="bg-[#9AD8FF] text-[#17324A] font-black px-4 py-2 rounded-xl border-b-4 border-[#5EBEFF] text-xs"
                       >
                         ➕ Sentuh Tambah 1 Keping Biru
                       </button>
@@ -2080,9 +2080,9 @@ export default function MatematikaKelas1Bab2Hibrida({
                 )}
                 {/* STASIUN 6: PUTAR DOMINO PERTUKARAN (KOMUTATIF) */}
                 {motoricStation === 6 && (
-                  <div className="bg-[#FFFFFF] p-5 rounded-3xl border-2 border-[#1C01A5] space-y-4">
+                  <div className="bg-[#FFFFFF] p-5 rounded-3xl border-2 border-[#9AD8FF] space-y-4">
                     <div className="flex items-center justify-between">
-                      <h3 className="font-black text-base text-[#1C01A5]">
+                      <h3 className="font-black text-base text-[#0F74B8]">
                         🔄 Stasiun Motorik 6: Putar Domino Pertukaran bersama Tora
                       </h3>
                       <button
@@ -2096,7 +2096,7 @@ export default function MatematikaKelas1Bab2Hibrida({
                             }!`
                           );
                         }}
-                        className="bg-[#1C01A5] text-[#FFFFFF] font-black px-4 py-2 rounded-xl border-b-4 border-[#1C01A5] text-xs"
+                        className="bg-[#9AD8FF] text-[#17324A] font-black px-4 py-2 rounded-xl border-b-4 border-[#5EBEFF] text-xs"
                       >
                         🔄 Putar Domino 180°
                       </button>
@@ -2119,7 +2119,7 @@ export default function MatematikaKelas1Bab2Hibrida({
                             setSt6DominoA(pair.a);
                             setSt6DominoB(pair.b);
                           }}
-                          className="px-3 py-1 bg-[#FFFFFF] rounded-xl border border-[#1C01A5] text-xs font-black"
+                          className="px-3 py-1 bg-[#FFFFFF] rounded-xl border border-[#9AD8FF] text-xs font-black"
                         >
                           Domino {pair.a} &amp; {pair.b}
                         </button>
@@ -2129,9 +2129,9 @@ export default function MatematikaKelas1Bab2Hibrida({
                 )}
                 {/* STASIUN 7: PENJUMLAHAN DENGAN BILANGAN NOL */}
                 {motoricStation === 7 && (
-                  <div className="bg-[#FFFFFF] p-5 rounded-3xl border-2 border-[#F0AB00] space-y-4">
+                  <div className="bg-[#FFFFFF] p-5 rounded-3xl border-2 border-[#FFC56D] space-y-4">
                     <div className="flex items-center justify-between">
-                      <h3 className="font-black text-base text-[#1C01A5]">
+                      <h3 className="font-black text-base text-[#0F74B8]">
                         🍩 Stasiun Motorik 7: Piring Donat &amp; Piring Kosong (Tambah Nol)
                       </h3>
                       <div className="flex gap-1.5">
@@ -2140,7 +2140,7 @@ export default function MatematikaKelas1Bab2Hibrida({
                             key={n}
                             type="button"
                             onClick={() => setSt7PlateCakeCount(n)}
-                            className="px-3 py-1 bg-[#FFFFFF] rounded-xl border border-[#F0AB00] font-black text-xs"
+                            className="px-3 py-1 bg-[#FFFFFF] rounded-xl border border-[#FFC56D] font-black text-xs"
                           >
                             {n} Donat + 0
                           </button>
@@ -2148,7 +2148,7 @@ export default function MatematikaKelas1Bab2Hibrida({
                       </div>
                     </div>
                     {renderAdditionVisualSVG("merge-baskets", st7PlateCakeCount, 0)}
-                    <div className="bg-[#FFFFFF] p-3.5 rounded-2xl border-2 border-[#F0AB00] text-center font-black text-base">
+                    <div className="bg-[#FFFFFF] p-3.5 rounded-2xl border-2 border-[#FFC56D] text-center font-black text-base">
                       {st7PlateCakeCount} + 0 = {st7PlateCakeCount} (Ditambah 0 tidak mengubah jumlah benda!)
                     </div>
                   </div>
@@ -2159,10 +2159,10 @@ export default function MatematikaKelas1Bab2Hibrida({
             {/* PULAU 3 (KARTU 3): POLYPAD 3-PANEL TOYBOX & KANVAS 50/50       */}
             {/* ------------------------------------------------------------- */}
             {activeCard === 3 && (
-              <section className="bg-[#1C01A5] text-[#FFFFFF] rounded-[32px] p-5 md:p-6 shadow-2xl border-4 border-[#1C01A5] space-y-5">
+              <section className="bg-[#9AD8FF] text-[#17324A] rounded-[32px] p-5 md:p-6 shadow-2xl border-4 border-[#9AD8FF] space-y-5">
                 <div className="flex flex-wrap items-center justify-between gap-2">
                   <div>
-                    <span className="bg-[#1C01A5] text-[#FFFFFF] text-xs font-black px-3 py-0.5 rounded-full">
+                    <span className="bg-[#9AD8FF] text-[#17324A] text-xs font-black px-3 py-0.5 rounded-full">
                       🧰 PULAU 3 • POLYPAD 3-PANEL DIGITAL TOYBOX &amp; KANVAS 50/50
                     </span>
                     <h2 className="text-xl font-black mt-1">
@@ -2172,15 +2172,15 @@ export default function MatematikaKelas1Bab2Hibrida({
                   <button
                     type="button"
                     onClick={() => setToyboxTrayItems([])}
-                    className="bg-[#1C01A5] text-[#FFFFFF] font-black px-4 py-2 rounded-xl border-b-4 border-[#1C01A5] text-xs"
+                    className="bg-[#9AD8FF] text-[#17324A] font-black px-4 py-2 rounded-xl border-b-4 border-[#5EBEFF] text-xs"
                   >
                     🗑️ Kosongkan Meja Peraga
                   </button>
                 </div>
                 {/* 3-Panel Polypad Workspace */}
                 <div className="grid grid-cols-1 md:grid-cols-12 gap-4">
-                  <div className="md:col-span-4 bg-[#1C01A5] p-4 rounded-2xl border border-[#1C01A5] space-y-2.5">
-                    <div className="text-xs font-black text-[#FFE566] uppercase">
+                  <div className="md:col-span-4 bg-[#9AD8FF] p-4 rounded-2xl border border-[#9AD8FF] space-y-2.5">
+                    <div className="text-xs font-black text-[#17324A] uppercase">
                       1. Laci Alat Peraga (Sentuh untuk Tambah ke Meja)
                     </div>
                     <div className="grid grid-cols-2 gap-2">
@@ -2199,24 +2199,24 @@ export default function MatematikaKelas1Bab2Hibrida({
                               resetDualCanvas(next.length % 10);
                             }
                           }}
-                          className="bg-[#1C01A5] p-3 rounded-2xl border-b-4 border-[#1C01A5] flex flex-col items-center gap-1 hover:opacity-90"
+                          className="bg-[#9AD8FF] p-3 rounded-2xl border-b-4 border-[#5EBEFF] flex flex-col items-center gap-1 hover:opacity-90"
                         >
                           <span className="text-3xl">{item.icon}</span>
                           <span className="text-xs font-black">+1 {item.name}</span>
                         </button>
                       ))}
                     </div>
-                    <div className="bg-[#1C01A5] p-3 rounded-xl text-xs space-y-1">
-                      <div className="text-[#FFE566] font-bold">Persamaan di Meja:</div>
-                      <div className="text-lg font-black text-[#FFE566]">
+                    <div className="bg-[#9AD8FF] p-3 rounded-xl text-xs space-y-1">
+                      <div className="text-[#17324A] font-bold">Persamaan di Meja:</div>
+                      <div className="text-lg font-black text-[#17324A]">
                         {toyboxTrayItems.filter((x) => x === "🍓").length} 🍓 +{" "}
                         {toyboxTrayItems.filter((x) => x === "🍌").length} 🍌 ={" "}
                         {toyboxTrayItems.length}
                       </div>
                     </div>
                   </div>
-                  <div className="md:col-span-8 bg-[#FFFFFF] text-[#1C01A5] p-4 rounded-2xl border-4 border-[#1C01A5] space-y-3">
-                    <div className="text-xs font-black text-[#1C01A5] uppercase">
+                  <div className="md:col-span-8 bg-[#FFFFFF] text-[#0F74B8] p-4 rounded-2xl border-4 border-[#9AD8FF] space-y-3">
+                    <div className="text-xs font-black text-[#0F74B8] uppercase">
                       2. Meja Bingkai 10 Polypad (Sentuh Buah di Petak untuk Menghapus)
                     </div>
                     <div className="grid grid-cols-5 gap-2">
@@ -2235,8 +2235,8 @@ export default function MatematikaKelas1Bab2Hibrida({
                             }}
                             className={`h-16 rounded-2xl border-2 flex items-center justify-center text-3xl ${
                               fruit
-                                ? "bg-[#FFFFFF] border-[#F0AB00]"
-                                : "bg-[#FFFFFF] border-dashed border-[#1C01A5] text-xs text-[#1C01A5]"
+                                ? "bg-[#FFFFFF] border-[#FFC56D]"
+                                : "bg-[#FFFFFF] border-dashed border-[#9AD8FF] text-xs text-[#0F74B8]"
                             }`}
                           >
                             {fruit || idx + 1}
@@ -2248,8 +2248,8 @@ export default function MatematikaKelas1Bab2Hibrida({
                 </div>
                 {/* Kanvas 50/50 di Bawah Meja Polypad */}
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                  <div className="bg-[#FFFFFF] text-[#1C01A5] p-4 rounded-2xl border-4 border-[#1C01A5] text-center space-y-2">
-                    <div className="text-xs font-black text-[#1C01A5]">
+                  <div className="bg-[#FFFFFF] text-[#0F74B8] p-4 rounded-2xl border-4 border-[#9AD8FF] text-center space-y-2">
+                    <div className="text-xs font-black text-[#0F74B8]">
                       50% KIRI: AREA TERPANDU (ANGKA {targetSumDigit})
                     </div>
                     <canvas
@@ -2260,11 +2260,11 @@ export default function MatematikaKelas1Bab2Hibrida({
                       onMouseMove={handleGuidedPointerMove}
                       onMouseUp={() => setIsDrawingGuided(false)}
                       onMouseLeave={() => setIsDrawingGuided(false)}
-                      className="w-full max-w-[220px] mx-auto rounded-2xl border-2 border-[#1C01A5] cursor-crosshair"
+                      className="w-full max-w-[220px] mx-auto rounded-2xl border-2 border-[#9AD8FF] cursor-crosshair"
                     />
                   </div>
-                  <div className="bg-[#FFFFFF] text-[#1C01A5] p-4 rounded-2xl border-4 border-[#1C01A5] text-center space-y-2">
-                    <div className="text-xs font-black text-[#1C01A5]">
+                  <div className="bg-[#FFFFFF] text-[#0F74B8] p-4 rounded-2xl border-4 border-[#9AD8FF] text-center space-y-2">
+                    <div className="text-xs font-black text-[#0F74B8]">
                       50% KANAN: AREA MANDIRI ANTI-JIPLAK (ANGKA {targetSumDigit})
                     </div>
                     <canvas
@@ -2275,7 +2275,7 @@ export default function MatematikaKelas1Bab2Hibrida({
                       onMouseMove={handleFreehandPointerMove}
                       onMouseUp={() => setIsDrawingFreehand(false)}
                       onMouseLeave={() => setIsDrawingFreehand(false)}
-                      className="w-full max-w-[220px] mx-auto rounded-2xl border-2 border-[#1C01A5] cursor-crosshair"
+                      className="w-full max-w-[220px] mx-auto rounded-2xl border-2 border-[#9AD8FF] cursor-crosshair"
                     />
                   </div>
                 </div>
@@ -2288,8 +2288,8 @@ export default function MatematikaKelas1Bab2Hibrida({
                         onClick={() => resetDualCanvas(d)}
                         className={`w-8 h-8 rounded-lg font-black text-xs ${
                           targetSumDigit === d
-                            ? "bg-[#F0AB00] text-[#1C01A5]"
-                            : "bg-[#1C01A5] text-[#FFFFFF]"
+                            ? "bg-[#FFC56D] text-[#17324A]"
+                            : "bg-[#9AD8FF] text-[#17324A]"
                         }`}
                       >
                         {d}
@@ -2299,7 +2299,7 @@ export default function MatematikaKelas1Bab2Hibrida({
                   <button
                     type="button"
                     onClick={evaluateDualCanvasGeometry}
-                    className="bg-[#F0AB00] text-[#1C01A5] font-black px-5 py-2.5 rounded-xl border-b-4 border-[#F0AB00] text-xs"
+                    className="bg-[#FFC56D] text-[#17324A] font-black px-5 py-2.5 rounded-xl border-b-4 border-[#E8A04A] text-xs"
                   >
                     ✅ Nilai Geometri Tulisan Saya {geometryScore !== null ? `(${geometryScore}%)` : ""}
                   </button>
@@ -2310,7 +2310,7 @@ export default function MatematikaKelas1Bab2Hibrida({
             {/* PULAU 4 (KARTU 4): KHAN KIDS AUDIO-FIRST STAGE (+30 TOKEN)     */}
             {/* ------------------------------------------------------------- */}
             {activeCard === 4 && (
-              <section className="bg-[#FFFFFF] rounded-[32px] p-5 md:p-6 shadow-2xl border-4 border-[#E98989] space-y-4">
+              <section className="bg-[#FFFFFF] rounded-[32px] p-5 md:p-6 shadow-2xl border-4 border-[#FFC56D] space-y-4">
                 <div className="grid grid-cols-5 sm:grid-cols-10 gap-2">
                   {PRACTICE_QUESTIONS.map((q, idx) => {
                     const ans = practiceAnswers[q.id];
@@ -2325,12 +2325,12 @@ export default function MatematikaKelas1Bab2Hibrida({
                         }}
                         className={`py-2.5 rounded-2xl font-black text-xs border-b-4 ${
                           currentPracticeIdx === idx
-                            ? "bg-[#1C01A5] text-[#FFFFFF] border-[#1C01A5] scale-105"
+                            ? "bg-[#9AD8FF] text-[#17324A] border-[#9AD8FF] scale-105"
                             : ans
                             ? isRight
-                              ? "bg-[#7FCB96] text-[#1C01A5] border-[#7FCB96]"
-                              : "bg-[#E98989] text-[#1C01A5] border-[#E98989]"
-                            : "bg-[#FFFFFF] text-[#1C01A5] border-[#1C01A5]"
+                              ? "bg-[#8EE4A6] text-[#17324A] border-[#8EE4A6]"
+                              : "bg-[#FFC56D] text-[#17324A] border-[#FFC56D]"
+                            : "bg-[#FFFFFF] text-[#0F74B8] border-[#9AD8FF]"
                         }`}
                       >
                         #{idx + 1}
@@ -2345,10 +2345,10 @@ export default function MatematikaKelas1Bab2Hibrida({
                   return (
                     <div className="space-y-4">
                       <div
-                        className={`${q.themeGradient} text-[#1C01A5] p-4 rounded-3xl flex items-center justify-between gap-3`}
+                        className={`${q.themeGradient} text-[#0F74B8] p-4 rounded-3xl flex items-center justify-between gap-3`}
                       >
                         <div>
-                          <span className="text-[11px] font-black uppercase bg-[#1C01A5] text-[#FFFFFF] px-3 py-0.5 rounded-full">
+                          <span className="text-[11px] font-black uppercase bg-[#9AD8FF] text-[#17324A] px-3 py-0.5 rounded-full">
                             Panggung Suara #{q.id} • Bersama {q.storyCharacter} • {q.badgeTitle}
                           </span>
                           <p className="text-sm md:text-base font-black mt-1.5">{q.prompt}</p>
@@ -2356,7 +2356,7 @@ export default function MatematikaKelas1Bab2Hibrida({
                         <button
                           type="button"
                           onClick={() => speakIGIL(q.prompt)}
-                          className="bg-[#FFFFFF] text-[#1C01A5] font-black px-4 py-2.5 rounded-2xl border-b-4 border-[#1C01A5] text-xs shrink-0"
+                          className="bg-[#FFFFFF] text-[#0F74B8] font-black px-4 py-2.5 rounded-2xl border-b-4 border-[#5EBEFF] text-xs shrink-0"
                         >
                           🔊 Bacakan
                         </button>
@@ -2373,9 +2373,9 @@ export default function MatematikaKelas1Bab2Hibrida({
                               className={`py-4 px-4 rounded-3xl font-black text-lg border-b-8 flex items-center justify-center gap-2 transition-all ${
                                 isChosen
                                   ? opt === q.correctAnswer
-                                    ? "bg-[#7FCB96] text-[#1C01A5] border-[#7FCB96] scale-105"
-                                    : "bg-[#E98989] text-[#1C01A5] border-[#E98989]"
-                                  : "bg-[#FFFFFF] text-[#1C01A5] border-[#F0AB00] active:border-b-0 active:translate-y-1 hover:opacity-90"
+                                    ? "bg-[#8EE4A6] text-[#17324A] border-[#8EE4A6] scale-105"
+                                    : "bg-[#FFC56D] text-[#17324A] border-[#FFC56D]"
+                                  : "bg-[#FFFFFF] text-[#0F74B8] border-[#FFC56D] active:border-b-0 active:translate-y-1 hover:opacity-90"
                               }`}
                             >
                               <span className="text-sm opacity-75">🔊</span>
@@ -2388,8 +2388,8 @@ export default function MatematikaKelas1Bab2Hibrida({
                         <div
                           className={`p-4 rounded-2xl border-2 text-xs space-y-1 ${
                             isCorrect
-                              ? "bg-[#7FCB96] border-[#7FCB96] text-[#1C01A5]"
-                              : "bg-[#E98989] border-[#E98989] text-[#1C01A5]"
+                              ? "bg-[#8EE4A6] border-[#8EE4A6] text-[#0F74B8]"
+                              : "bg-[#FFC56D] border-[#FFC56D] text-[#0F74B8]"
                           }`}
                         >
                           <div className="font-black text-sm">
@@ -2405,7 +2405,7 @@ export default function MatematikaKelas1Bab2Hibrida({
                           type="button"
                           disabled={currentPracticeIdx === 0}
                           onClick={() => setCurrentPracticeIdx((i) => Math.max(0, i - 1))}
-                          className="px-4 py-2 rounded-xl bg-[#FFFFFF] text-[#1C01A5] font-black text-xs disabled:opacity-40"
+                          className="px-4 py-2 rounded-xl bg-[#FFFFFF] text-[#0F74B8] font-black text-xs disabled:opacity-40"
                         >
                           ⬅️ Sebelumnya
                         </button>
@@ -2417,7 +2417,7 @@ export default function MatematikaKelas1Bab2Hibrida({
                                 Math.min(PRACTICE_QUESTIONS.length - 1, i + 1)
                               )
                             }
-                            className="px-5 py-2 rounded-xl bg-[#1C01A5] text-[#FFFFFF] font-black text-xs border-b-4 border-[#1C01A5]"
+                            className="px-5 py-2 rounded-xl bg-[#9AD8FF] text-[#17324A] font-black text-xs border-b-4 border-[#5EBEFF]"
                           >
                             Berikutnya ➡️
                           </button>
@@ -2431,7 +2431,7 @@ export default function MatematikaKelas1Bab2Hibrida({
                                 setExamElapsedDeci(0);
                                 setActiveCard(5);
                               }}
-                              className="px-5 py-2 rounded-xl bg-[#1C01A5] text-[#FFFFFF] font-black text-xs border-b-4 border-[#1C01A5]"
+                              className="px-5 py-2 rounded-xl bg-[#9AD8FF] text-[#17324A] font-black text-xs border-b-4 border-[#5EBEFF]"
                             >
                               Buka Pulau 5 (Ujian Gerbang 1) 🏰
                             </button>
@@ -2447,10 +2447,10 @@ export default function MatematikaKelas1Bab2Hibrida({
             {/* PULAU 5 (KARTU 5): BENTENG UJIAN GERBANG 1 (+70 TOKEN IGIL)    */}
             {/* ------------------------------------------------------------- */}
             {activeCard === 5 && (
-              <section className="bg-[#FFFFFF] rounded-[32px] p-5 md:p-6 shadow-2xl border-4 border-[#1C01A5] space-y-4">
-                <div className="bg-[#1C01A5] text-[#FFFFFF] p-4 rounded-2xl flex flex-wrap items-center justify-between gap-2">
+              <section className="bg-[#FFFFFF] rounded-[32px] p-5 md:p-6 shadow-2xl border-4 border-[#9AD8FF] space-y-4">
+                <div className="bg-[#9AD8FF] text-[#17324A] p-4 rounded-2xl flex flex-wrap items-center justify-between gap-2">
                   <div>
-                    <span className="text-[11px] font-black text-[#FFE566] uppercase">
+                    <span className="text-[11px] font-black text-[#17324A] uppercase">
                       🏰 PULAU 5 • GERBANG 1: SI PALING PINTAR (WAJIB 100/100)
                     </span>
                     <h2 className="text-base font-black">
@@ -2458,15 +2458,15 @@ export default function MatematikaKelas1Bab2Hibrida({
                     </h2>
                   </div>
                   <div className="flex items-center gap-2 text-xs font-bold">
-                    <span className="bg-[#1C01A5] px-3 py-1.5 rounded-xl">
+                    <span className="bg-[#9AD8FF] px-3 py-1.5 rounded-xl">
                       🔄 Percobaan #{examAttempts}
                     </span>
-                    <span className="bg-[#1C01A5] px-3 py-1.5 rounded-xl text-[#FFE566]">
+                    <span className="bg-[#9AD8FF] px-3 py-1.5 rounded-xl text-[#17324A]">
                       ⏱️ {formatStopwatch(examElapsedDeci)}
                     </span>
                     <span
                       className={`px-3 py-1.5 rounded-xl ${
-                        focusLossCount === 0 ? "bg-[#7FCB96] text-[#1C01A5]" : "bg-[#E98989] text-[#1C01A5]"
+                        focusLossCount === 0 ? "bg-[#8EE4A6] text-[#17324A]" : "bg-[#FFC56D] text-[#17324A]"
                       }`}
                     >
                       👀 Pindah Tab: {focusLossCount}x
@@ -2481,10 +2481,10 @@ export default function MatematikaKelas1Bab2Hibrida({
                       onClick={() => setCurrentExamIdx(idx)}
                       className={`py-2 rounded-xl font-black text-xs border-b-4 ${
                         currentExamIdx === idx
-                          ? "bg-[#1C01A5] text-[#FFFFFF] border-[#1C01A5]"
+                          ? "bg-[#9AD8FF] text-[#17324A] border-[#9AD8FF]"
                           : examAnswers[q.id]
-                          ? "bg-[#FFFFFF] text-[#1C01A5] border-[#1C01A5]"
-                          : "bg-[#FFFFFF] text-[#1C01A5] border-[#1C01A5]"
+                          ? "bg-[#FFFFFF] text-[#0F74B8] border-[#9AD8FF]"
+                          : "bg-[#FFFFFF] text-[#0F74B8] border-[#9AD8FF]"
                       }`}
                     >
                       {idx + 1}
@@ -2496,14 +2496,14 @@ export default function MatematikaKelas1Bab2Hibrida({
                   const chosen = examAnswers[q.id];
                   return (
                     <div className="space-y-4">
-                      <div className="bg-[#FFFFFF] p-4 rounded-2xl border-2 border-[#1C01A5] flex items-center justify-between gap-2">
-                        <p className="text-sm md:text-base font-black text-[#1C01A5]">
+                      <div className="bg-[#FFFFFF] p-4 rounded-2xl border-2 border-[#9AD8FF] flex items-center justify-between gap-2">
+                        <p className="text-sm md:text-base font-black text-[#0F74B8]">
                           {q.id}. {q.questionText}
                         </p>
                         <button
                           type="button"
                           onClick={() => speakIGIL(q.questionText)}
-                          className="bg-[#1C01A5] text-[#FFFFFF] text-xs font-black px-3 py-2 rounded-xl shrink-0"
+                          className="bg-[#9AD8FF] text-[#17324A] text-xs font-black px-3 py-2 rounded-xl shrink-0"
                         >
                           🔊 Soal
                         </button>
@@ -2520,13 +2520,13 @@ export default function MatematikaKelas1Bab2Hibrida({
                               className={`py-3.5 px-4 rounded-2xl font-black text-base border-b-4 ${
                                 examSubmitted
                                   ? opt === q.correctAnswer
-                                    ? "bg-[#7FCB96] text-[#1C01A5] border-[#7FCB96]"
+                                    ? "bg-[#8EE4A6] text-[#17324A] border-[#8EE4A6]"
                                     : isSelected
-                                    ? "bg-[#E98989] text-[#1C01A5] border-[#E98989]"
-                                    : "bg-[#FFFFFF] text-[#1C01A5] border-[#1C01A5]"
+                                    ? "bg-[#FFC56D] text-[#17324A] border-[#FFC56D]"
+                                    : "bg-[#FFFFFF] text-[#0F74B8] border-[#9AD8FF]"
                                   : isSelected
-                                  ? "bg-[#1C01A5] text-[#FFFFFF] border-[#1C01A5] scale-105"
-                                  : "bg-[#FFFFFF] text-[#1C01A5] border-[#1C01A5] hover:opacity-90"
+                                  ? "bg-[#9AD8FF] text-[#17324A] border-[#9AD8FF] scale-105"
+                                  : "bg-[#FFFFFF] text-[#0F74B8] border-[#9AD8FF] hover:opacity-90"
                               }`}
                             >
                               {opt}
@@ -2539,7 +2539,7 @@ export default function MatematikaKelas1Bab2Hibrida({
                           type="button"
                           disabled={currentExamIdx === 0}
                           onClick={() => setCurrentExamIdx((i) => Math.max(0, i - 1))}
-                          className="px-4 py-2 rounded-xl bg-[#FFFFFF] text-[#1C01A5] font-black text-xs disabled:opacity-40"
+                          className="px-4 py-2 rounded-xl bg-[#FFFFFF] text-[#0F74B8] font-black text-xs disabled:opacity-40"
                         >
                           ⬅️ Sebelumnya
                         </button>
@@ -2549,7 +2549,7 @@ export default function MatematikaKelas1Bab2Hibrida({
                             onClick={() =>
                               setCurrentExamIdx((i) => Math.min(examQuestions.length - 1, i + 1))
                             }
-                            className="px-5 py-2 rounded-xl bg-[#1C01A5] text-[#FFFFFF] font-black text-xs border-b-4 border-[#1C01A5]"
+                            className="px-5 py-2 rounded-xl bg-[#9AD8FF] text-[#17324A] font-black text-xs border-b-4 border-[#5EBEFF]"
                           >
                             Berikutnya ➡️
                           </button>
@@ -2557,7 +2557,7 @@ export default function MatematikaKelas1Bab2Hibrida({
                           <button
                             type="button"
                             onClick={handleSubmitExam}
-                            className="px-6 py-2.5 rounded-xl bg-[#F0AB00] text-[#1C01A5] font-black text-xs border-b-4 border-[#F0AB00]"
+                            className="px-6 py-2.5 rounded-xl bg-[#FFC56D] text-[#17324A] font-black text-xs border-b-4 border-[#E8A04A]"
                           >
                             ✅ Kumpulkan Nilai Ujian
                           </button>
@@ -2570,8 +2570,8 @@ export default function MatematikaKelas1Bab2Hibrida({
                   <div
                     className={`p-4 rounded-2xl border-2 flex flex-col sm:flex-row items-center justify-between gap-3 ${
                       examScore === 100 && !dwellTimeWarning
-                        ? "bg-[#7FCB96] border-[#7FCB96] text-[#1C01A5]"
-                        : "bg-[#E98989] border-[#E98989] text-[#1C01A5]"
+                        ? "bg-[#8EE4A6] border-[#8EE4A6] text-[#0F74B8]"
+                        : "bg-[#FFC56D] border-[#FFC56D] text-[#0F74B8]"
                     }`}
                   >
                     <div className="font-black text-sm">
@@ -2585,7 +2585,7 @@ export default function MatematikaKelas1Bab2Hibrida({
                       <button
                         type="button"
                         onClick={handleRetryExam}
-                        className="bg-[#FFFFFF] text-[#1C01A5] font-black px-4 py-2 rounded-xl border-b-4 border-[#1C01A5] text-xs"
+                        className="bg-[#FFFFFF] text-[#0F74B8] font-black px-4 py-2 rounded-xl border-b-4 border-[#5EBEFF] text-xs"
                       >
                         🔄 Ulangi Ujian Acak
                       </button>
@@ -2593,7 +2593,7 @@ export default function MatematikaKelas1Bab2Hibrida({
                         <button
                           type="button"
                           onClick={() => setActiveCard(6)}
-                          className="bg-[#F0AB00] text-[#1C01A5] font-black px-4 py-2 rounded-xl border-b-4 border-[#F0AB00] text-xs"
+                          className="bg-[#FFC56D] text-[#17324A] font-black px-4 py-2 rounded-xl border-b-4 border-[#E8A04A] text-xs"
                         >
                           Masuk Pulau 6 (Praktikum) 🍱
                         </button>
@@ -2607,10 +2607,10 @@ export default function MatematikaKelas1Bab2Hibrida({
             {/* PULAU 6 (KARTU 6): STUDIO PRAKTIKUM 2 KOTAK BEKAL SEHAT        */}
             {/* ------------------------------------------------------------- */}
             {activeCard === 6 && (
-              <section className="bg-[#FFFFFF] rounded-[32px] p-5 md:p-6 shadow-2xl border-4 border-[#7FCB96] space-y-5">
-                <div className="bg-[#F0AB00] text-[#1C01A5] p-4 rounded-3xl flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+              <section className="bg-[#FFFFFF] rounded-[32px] p-5 md:p-6 shadow-2xl border-4 border-[#8EE4A6] space-y-5">
+                <div className="bg-[#FFC56D] text-[#17324A] p-4 rounded-3xl flex flex-col sm:flex-row sm:items-center justify-between gap-3">
                   <div>
-                    <span className="bg-[#F0AB00] text-[#1C01A5] text-xs font-black px-3 py-0.5 rounded-full">
+                    <span className="bg-[#FFC56D] text-[#17324A] text-xs font-black px-3 py-0.5 rounded-full">
                       🍱 PULAU 6 • GERBANG 2: SI PALING KREATIF (SKOR 0–1.000 POIN)
                     </span>
                     <h2 className="text-lg font-black mt-1">
@@ -2623,8 +2623,8 @@ export default function MatematikaKelas1Bab2Hibrida({
                       onClick={() => setPracticumMode("single")}
                       className={`px-3 py-1.5 rounded-xl text-xs font-black ${
                         practicumMode === "single"
-                          ? "bg-[#F0AB00] text-[#1C01A5]"
-                          : "bg-[#FFFFFF] text-[#1C01A5]"
+                          ? "bg-[#FFC56D] text-[#17324A]"
+                          : "bg-[#FFFFFF] text-[#0F74B8]"
                       }`}
                     >
                       Bab Tunggal
@@ -2634,8 +2634,8 @@ export default function MatematikaKelas1Bab2Hibrida({
                       onClick={() => setPracticumMode("cross4")}
                       className={`px-3 py-1.5 rounded-xl text-xs font-black ${
                         practicumMode === "cross4"
-                          ? "bg-[#F0AB00] text-[#1C01A5]"
-                          : "bg-[#FFFFFF] text-[#1C01A5]"
+                          ? "bg-[#FFC56D] text-[#17324A]"
+                          : "bg-[#FFFFFF] text-[#0F74B8]"
                       }`}
                     >
                       Sintesis 4 Bab
@@ -2647,17 +2647,17 @@ export default function MatematikaKelas1Bab2Hibrida({
                     {completedOtherChapters.slice(0, 3).map((ch) => (
                       <div
                         key={ch.chapterId}
-                        className="bg-[#FFFFFF] p-2.5 rounded-xl border border-[#F0AB00]"
+                        className="bg-[#FFFFFF] p-2.5 rounded-xl border border-[#FFC56D]"
                       >
-                        <div className="font-black text-[#1C01A5]">{ch.subject}</div>
-                        <p className="text-[11px] text-[#1C01A5]">{ch.practicumSynthesisHook}</p>
+                        <div className="font-black text-[#0F74B8]">{ch.subject}</div>
+                        <p className="text-[11px] text-[#0F74B8]">{ch.practicumSynthesisHook}</p>
                       </div>
                     ))}
                   </div>
                 )}
-                <div className="bg-[#FFFFFF] p-4 rounded-2xl border-2 border-[#F0AB00] space-y-4">
+                <div className="bg-[#FFFFFF] p-4 rounded-2xl border-2 border-[#FFC56D] space-y-4">
                   <div className="flex flex-wrap items-center justify-between gap-2">
-                    <span className="text-xs font-black text-[#1C01A5]">
+                    <span className="text-xs font-black text-[#0F74B8]">
                       Pilih Buah lalu Sentuh Petak Kotak Bekal Kira &amp; Upe (Target: Masing-Masing Genap 10 &amp; Saling Bertukar Porsi):
                     </span>
                     <div className="flex gap-2">
@@ -2672,8 +2672,8 @@ export default function MatematikaKelas1Bab2Hibrida({
                           onClick={() => setActiveBentoTool(t.id)}
                           className={`px-3 py-1.5 rounded-xl font-black text-xs border-b-2 ${
                             activeBentoTool === t.id
-                              ? "bg-[#F0AB00] text-[#1C01A5] border-[#F0AB00]"
-                              : "bg-[#FFFFFF] text-[#1C01A5] border-[#1C01A5]"
+                              ? "bg-[#FFC56D] text-[#17324A] border-[#FFC56D]"
+                              : "bg-[#FFFFFF] text-[#0F74B8] border-[#9AD8FF]"
                           }`}
                         >
                           {t.label}
@@ -2682,8 +2682,8 @@ export default function MatematikaKelas1Bab2Hibrida({
                     </div>
                   </div>
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                    <div className="bg-[#FFFFFF] p-3.5 rounded-2xl border-2 border-[#1C01A5] space-y-2">
-                      <div className="text-xs font-black text-[#1C01A5] flex justify-between">
+                    <div className="bg-[#FFFFFF] p-3.5 rounded-2xl border-2 border-[#9AD8FF] space-y-2">
+                      <div className="text-xs font-black text-[#0F74B8] flex justify-between">
                         <span>🍱 Kotak Bekal Kira (Bingkai 10)</span>
                         <span>
                           {kiraStraw}🍓 + {kiraBan}🍌 = {kiraTotal}
@@ -2703,15 +2703,15 @@ export default function MatematikaKelas1Bab2Hibrida({
                                 return next;
                               });
                             }}
-                            className="h-12 rounded-xl bg-[#FFFFFF] border border-[#1C01A5] flex items-center justify-center text-xl hover:opacity-90"
+                            className="h-12 rounded-xl bg-[#FFFFFF] border border-[#9AD8FF] flex items-center justify-center text-xl hover:opacity-90"
                           >
                             {cell === "strawberry" ? "🍓" : cell === "banana" ? "🍌" : "➕"}
                           </button>
                         ))}
                       </div>
                     </div>
-                    <div className="bg-[#FFFFFF] p-3.5 rounded-2xl border-2 border-[#1C01A5] space-y-2">
-                      <div className="text-xs font-black text-[#1C01A5] flex justify-between">
+                    <div className="bg-[#FFFFFF] p-3.5 rounded-2xl border-2 border-[#9AD8FF] space-y-2">
+                      <div className="text-xs font-black text-[#0F74B8] flex justify-between">
                         <span>🍱 Kotak Bekal Upe (Pertukaran)</span>
                         <span>
                           {upeStraw}🍓 + {upeBan}🍌 = {upeTotal}
@@ -2731,7 +2731,7 @@ export default function MatematikaKelas1Bab2Hibrida({
                                 return next;
                               });
                             }}
-                            className="h-12 rounded-xl bg-[#FFFFFF] border border-[#1C01A5] flex items-center justify-center text-xl hover:opacity-90"
+                            className="h-12 rounded-xl bg-[#FFFFFF] border border-[#9AD8FF] flex items-center justify-center text-xl hover:opacity-90"
                           >
                             {cell === "strawberry" ? "🍓" : cell === "banana" ? "🍌" : "➕"}
                           </button>
@@ -2743,8 +2743,8 @@ export default function MatematikaKelas1Bab2Hibrida({
                     <div
                       className={`p-2.5 rounded-xl border ${
                         kiraTotal === 10 && upeTotal === 10
-                          ? "bg-[#FFFFFF] border-[#F0AB00] text-[#1C01A5]"
-                          : "bg-[#FFFFFF] border-[#F0AB00] text-[#1C01A5]"
+                          ? "bg-[#FFFFFF] border-[#FFC56D] text-[#0F74B8]"
+                          : "bg-[#FFFFFF] border-[#FFC56D] text-[#0F74B8]"
                       }`}
                     >
                       Total Buah: Kira ({kiraTotal}) &amp; Upe ({upeTotal}){" "}
@@ -2753,8 +2753,8 @@ export default function MatematikaKelas1Bab2Hibrida({
                     <div
                       className={`p-2.5 rounded-xl border ${
                         isCommutativeBoxes
-                          ? "bg-[#FFFFFF] border-[#F0AB00] text-[#1C01A5]"
-                          : "bg-[#FFFFFF] border-[#F0AB00] text-[#1C01A5]"
+                          ? "bg-[#FFFFFF] border-[#FFC56D] text-[#0F74B8]"
+                          : "bg-[#FFFFFF] border-[#FFC56D] text-[#0F74B8]"
                       }`}
                     >
                       Sifat Pertukaran: {kiraStraw}+{kiraBan} ⇄ {upeStraw}+{upeBan}{" "}
@@ -2762,15 +2762,15 @@ export default function MatematikaKelas1Bab2Hibrida({
                     </div>
                   </div>
                 </div>
-                <div className="bg-[#FFFFFF] p-4 rounded-2xl border-2 border-[#F0AB00] space-y-3">
+                <div className="bg-[#FFFFFF] p-4 rounded-2xl border-2 border-[#FFC56D] space-y-3">
                   <div className="flex items-center justify-between">
-                    <h3 className="font-black text-sm text-[#1C01A5]">
+                    <h3 className="font-black text-sm text-[#0F74B8]">
                       📝 Laporan Ilmiah Koki Cilik
                     </h3>
                     <button
                       type="button"
                       onClick={fillGuidedReportTemplate}
-                      className="bg-[#F0AB00] text-[#1C01A5] font-black px-3 py-1.5 rounded-xl border-b-4 border-[#F0AB00] text-xs"
+                      className="bg-[#FFC56D] text-[#17324A] font-black px-3 py-1.5 rounded-xl border-b-4 border-[#E8A04A] text-xs"
                     >
                       ✨ Bantu Susun Kalimat Laporan
                     </button>
@@ -2780,32 +2780,32 @@ export default function MatematikaKelas1Bab2Hibrida({
                     value={studentReportText}
                     onChange={(e) => setStudentReportText(e.target.value)}
                     placeholder="Klik tombol kuning di atas atau ceritakan kalimat penjumlahan kedua kotak bekal sehatmu..."
-                    className="w-full p-3 rounded-xl border-2 border-[#F0AB00] bg-[#FFFFFF] text-xs md:text-sm font-medium"
+                    className="w-full p-3 rounded-xl border-2 border-[#FFC56D] bg-[#FFFFFF] text-xs md:text-sm font-medium"
                   />
                   <button
                     type="button"
                     onClick={handleEvaluatePracticum}
-                    className="w-full py-3.5 rounded-2xl bg-[#F0AB00] text-[#1C01A5] font-black text-sm border-b-4 border-[#F0AB00]"
+                    className="w-full py-3.5 rounded-2xl bg-[#FFC56D] text-[#17324A] font-black text-sm border-b-4 border-[#E8A04A]"
                   >
                     🚀 Kirim Praktikum &amp; Hitung Skor Kualitas AI (0–1.000 Poin)
                   </button>
                 </div>
                 {practicumRubric && (
-                  <div className="bg-[#1C01A5] text-[#FFFFFF] p-5 rounded-3xl border-4 border-[#FFE566] space-y-3">
+                  <div className="bg-[#9AD8FF] text-[#17324A] p-5 rounded-3xl border-4 border-[#FFC56D] space-y-3">
                     <div className="flex items-center justify-between">
                       <div>
-                        <span className="text-xs font-black text-[#FFE566]">
+                        <span className="text-xs font-black text-[#17324A]">
                           🏅 SERTIFIKAT RUBRIK KUALITAS PRAKTIKUM IGIL
                         </span>
                         <h4 className="text-lg font-black">{studentName}</h4>
                       </div>
-                      <div className="bg-[#F0AB00] text-[#1C01A5] px-4 py-2 rounded-2xl font-black text-2xl">
+                      <div className="bg-[#FFC56D] text-[#17324A] px-4 py-2 rounded-2xl font-black text-2xl">
                         {practicumRubric.totalQualityScore} / 1.000
                       </div>
                     </div>
-                    <p className="text-xs text-[#FFFFFF]">{practicumRubric.aiFeedbackSummary}</p>
+                    <p className="text-xs text-[#17324A]">{practicumRubric.aiFeedbackSummary}</p>
                     {chapterCompletedFlag && (
-                      <div className="text-xs font-black text-[#FFE566]">
+                      <div className="text-xs font-black text-[#17324A]">
                         ✅ Bab 2 Tuntas Paripurna (150/150 Token IGIL).
                       </div>
                     )}
@@ -2818,26 +2818,26 @@ export default function MatematikaKelas1Bab2Hibrida({
           {/* PANEL SAMPING BENTO (4 KOLOM PERSISTEN DI LAYAR LEBAR)          */}
           {/* =============================================================== */}
           <aside className="lg:col-span-4 space-y-4">
-            <div className="bg-[#FFFFFF] rounded-[28px] p-4 shadow-xl border-4 border-[#1C01A5] space-y-3">
+            <div className="bg-[#FFFFFF] rounded-[28px] p-4 shadow-xl border-4 border-[#9AD8FF] space-y-3">
               <div className="flex items-center gap-3">
-                <div className="w-12 h-12 rounded-2xl bg-[#FFFFFF] border-2 border-[#F0AB00] flex items-center justify-center text-2xl">
+                <div className="w-12 h-12 rounded-2xl bg-[#FFFFFF] border-2 border-[#FFC56D] flex items-center justify-center text-2xl">
                   🦉
                 </div>
                 <div>
-                  <div className="text-xs font-black uppercase text-[#1C01A5]">
+                  <div className="text-xs font-black uppercase text-[#0F74B8]">
                     Panggung Suara IGIL &amp; {activeCompanion}
                   </div>
-                  <div className="text-sm font-black text-[#1C01A5]">
+                  <div className="text-sm font-black text-[#0F74B8]">
                     Pemandu Audio-First
                   </div>
                 </div>
               </div>
-              <div className="bg-[#FFFFFF] p-3.5 rounded-2xl border border-[#1C01A5] text-xs font-bold text-[#1C01A5]">
+              <div className="bg-[#FFFFFF] p-3.5 rounded-2xl border border-[#9AD8FF] text-xs font-bold text-[#0F74B8]">
                 &quot;{mascotSpeech}&quot;
               </div>
             </div>
-            <div className="bg-[#1C01A5] text-[#FFFFFF] rounded-[28px] p-4 shadow-xl border-2 border-[#1C01A5]/40 space-y-3">
-              <div className="text-xs font-black text-[#FFE566] uppercase">
+            <div className="bg-[#9AD8FF] text-[#17324A] rounded-[28px] p-4 shadow-xl border-2 border-[#0F74B8]/40 space-y-3">
+              <div className="text-xs font-black text-[#17324A] uppercase">
                 🎹 Papan Suara Pasangan Genap 10
               </div>
               <div className="grid grid-cols-2 gap-1.5 text-xs">
@@ -2856,15 +2856,15 @@ export default function MatematikaKelas1Bab2Hibrida({
                       playSound("note", idx * 2);
                       speakIGIL(eq.replace("+", "ditambah").replace("=", "sama dengan"));
                     }}
-                    className="bg-[#FFFFFF] p-2.5 rounded-xl border border-[#1C01A5] font-black text-[#1C01A5] text-center hover:opacity-90"
+                    className="bg-[#FFFFFF] p-2.5 rounded-xl border border-[#9AD8FF] font-black text-[#0F74B8] text-center hover:opacity-90"
                   >
                     🔊 {eq}
                   </button>
                 ))}
               </div>
             </div>
-            <div className="bg-[#FFFFFF] rounded-[28px] p-4 shadow-xl border-4 border-[#F0AB00] space-y-2.5">
-              <h3 className="font-black text-sm text-[#1C01A5]">
+            <div className="bg-[#FFFFFF] rounded-[28px] p-4 shadow-xl border-4 border-[#FFC56D] space-y-2.5">
+              <h3 className="font-black text-sm text-[#0F74B8]">
                 🌟 Album Lencana Kepulauan Bab 2
               </h3>
               <div className="grid grid-cols-2 gap-2 text-xs">
@@ -2878,8 +2878,8 @@ export default function MatematikaKelas1Bab2Hibrida({
                     key={b.name}
                     className={`p-2.5 rounded-2xl border-2 flex items-center gap-2 font-black ${
                       b.ok
-                        ? "bg-[#FFFFFF] border-[#F0AB00] text-[#1C01A5]"
-                        : "bg-[#FFFFFF] border-[#1C01A5] text-[#1C01A5]"
+                        ? "bg-[#FFFFFF] border-[#FFC56D] text-[#0F74B8]"
+                        : "bg-[#FFFFFF] border-[#9AD8FF] text-[#0F74B8]"
                     }`}
                   >
                     <span className="text-xl">{b.ok ? b.icon : "🔒"}</span>

@@ -8,7 +8,7 @@ import type { LangkahQuest } from "@/components/QuestLangkah";
 const NAMA_HALAMAN = ["Cerita", "Infografis", "Pictorial", "Lambang"] as const;
 
 export function JudulHalaman({ n }: { n: 1 | 2 | 3 | 4 }) {
-  return <p className="text-lg font-black text-[#1C01A5]">Halaman {n} · {NAMA_HALAMAN[n - 1]}</p>;
+  return <p className="text-lg font-black text-[#0F74B8]">Halaman {n} · {NAMA_HALAMAN[n - 1]}</p>;
 }
 
 export function empatHalaman(
@@ -48,7 +48,7 @@ export function SusunTiga({
   return (
     <article className="rounded-2xl border-2 border-sky-200 bg-sky-50 p-4">
       <p className="text-sm font-black text-sky-950">{perintah}</p>
-      <p className="mt-2 text-lg font-black text-[#1C01A5]">{urut.join(" · ") || "…"}</p>
+      <p className="mt-2 text-lg font-black text-[#0F74B8]">{urut.join(" · ") || "…"}</p>
       <div className="mt-3 flex flex-wrap gap-2">
         {sisa.map((item) => (
           <button
@@ -59,7 +59,7 @@ export function SusunTiga({
               setUrut(berikut);
               if (berikut.length === benar.length && berikut.every((nilai, indeks) => nilai === benar[indeks])) kuis?.tandaiBenar(id);
             }}
-            className="rounded-xl bg-white px-3 py-2 text-sm font-black text-[#1C01A5] ring-2 ring-sky-200"
+            className="rounded-xl bg-white px-3 py-2 text-sm font-black text-[#0F74B8] ring-2 ring-sky-200"
           >
             {item}
           </button>
@@ -68,7 +68,7 @@ export function SusunTiga({
       {urut.length === benar.length ? <HasilJawabanKuis status={tepat ? "benar" : "salah"} pesanSalah="Coba urutan yang lain." /> : null}
       {tepat ? <p className="mt-2 text-sm font-bold text-emerald-800">{umpan}</p> : null}
       {urut.length > 0 && !tepat ? (
-        <button type="button" onClick={() => setUrut([])} className="mt-3 text-sm font-black text-[#1C01A5]">Ulangi</button>
+        <button type="button" onClick={() => setUrut([])} className="mt-3 text-sm font-black text-[#0F74B8]">Ulangi</button>
       ) : null}
     </article>
   );
@@ -107,7 +107,7 @@ export function BenarSalahTiga({
                   key={String(nilai)}
                   type="button"
                   onClick={() => pilihBaris(indeks, nilai)}
-                  className={`rounded-full px-3 py-1 text-sm font-black ${pilih[indeks] === nilai ? "bg-[#1C01A5] text-white" : "bg-amber-100 text-[#1C01A5]"}`}
+                  className={`rounded-full px-3 py-1 text-sm font-black ${pilih[indeks] === nilai ? "bg-[#9AD8FF] text-[#17324A]" : "bg-amber-100 text-[#0F74B8]"}`}
                 >
                   {nilai ? "Benar" : "Salah"}
                 </button>

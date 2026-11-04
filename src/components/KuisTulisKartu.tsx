@@ -63,14 +63,14 @@ export default function KuisTulisKartu({
       className={
         rapat
           ? "space-y-3"
-          : "mt-6 space-y-3 border-t-2 border-[#1C01A5]/10 pt-5"
+          : "mt-6 space-y-3 border-t-2 border-[#0F74B8]/10 pt-5"
       }
     >
-      <p className="text-base font-extrabold leading-relaxed text-[#1C01A5]">
+      <p className="text-base font-extrabold leading-relaxed text-[#0F74B8]">
         QUIZ TULIS:
       </p>
       {visual ? <div>{visual}</div> : null}
-      <p className="rounded-2xl border-2 border-[#1C01A5]/15 bg-[#F8F7FF] px-4 py-3 text-base font-extrabold leading-relaxed text-[#1C01A5]">
+      <p className="rounded-2xl border-2 border-[#0F74B8]/15 bg-[#F8F7FF] px-4 py-3 text-base font-extrabold leading-relaxed text-[#0F74B8]">
         {pertanyaan}
       </p>
       <WritingCanvas

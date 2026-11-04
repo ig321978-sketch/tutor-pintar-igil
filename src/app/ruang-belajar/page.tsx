@@ -302,8 +302,8 @@ export default function RuangBelajarPage() {
       }
     >
       <section className="grid gap-6">
-        <div className="rounded-3xl border border-[#1C01A5]/15 bg-white p-6 shadow-sm">
-          <h2 className="mb-4 text-lg font-extrabold text-[#1C01A5]">Profil sesi</h2>
+        <div className="rounded-3xl border border-[#0F74B8]/15 bg-white p-6 shadow-sm">
+          <h2 className="mb-4 text-lg font-extrabold text-[#0F74B8]">Profil sesi</h2>
           <div className="grid gap-4">
             <div>
               <label className={kelasLabel}>Nama Siswa</label>
@@ -340,12 +340,12 @@ export default function RuangBelajarPage() {
           </div>
         </div>
 
-        <div className="rounded-3xl border border-[#1C01A5]/15 bg-white p-6 shadow-sm">
-          <h2 className="mb-4 text-lg font-extrabold text-[#1C01A5]">
+        <div className="rounded-3xl border border-[#0F74B8]/15 bg-white p-6 shadow-sm">
+          <h2 className="mb-4 text-lg font-extrabold text-[#0F74B8]">
             Pilih sumber pembelajaran
           </h2>
         {kunciPublik ? null : (
-          <div className="flex flex-col gap-2 rounded-2xl bg-[#F0AB00]/15 p-1">
+          <div className="flex flex-col gap-2 rounded-2xl bg-[#FFC56D]/15 p-1">
             <button
               type="button"
               onClick={() => {
@@ -354,8 +354,8 @@ export default function RuangBelajarPage() {
               }}
               className={`flex w-full items-center justify-center gap-2 rounded-xl px-3 py-3 text-sm font-extrabold uppercase tracking-wide transition-all sm:text-base ${
                 sumber === "unggah"
-                  ? "bg-[#1C01A5] text-white shadow-sm"
-                  : "text-[#1C01A5] hover:text-[#1C01A5]"
+                  ? "bg-[#9AD8FF] text-[#17324A] shadow-sm"
+                  : "text-[#0F74B8] hover:text-[#0F74B8]"
               }`}
             >
               <UploadCloud className="h-5 w-5 shrink-0" />
@@ -449,13 +449,13 @@ export default function RuangBelajarPage() {
               }}
               className={`flex flex-col items-center justify-center w-full min-h-40 border-2 border-dashed rounded-2xl cursor-pointer transition-colors ${
                 sedangSeret
-                  ? "border-[#F0AB00] bg-white"
-                  : "border-[#1C01A5]/30 bg-white hover:bg-[#FFF8E8]"
+                  ? "border-[#FFC56D] bg-white"
+                  : "border-[#0F74B8]/30 bg-white hover:bg-[#FFF8E8]"
               }`}
             >
-              <UploadCloud className="w-10 h-10 text-[#1C01A5] mb-3" />
+              <UploadCloud className="w-10 h-10 text-[#0F74B8] mb-3" />
               <p className="mb-2 text-sm text-slate-600 font-bold">
-                <span className="text-[#1C01A5]">Klik untuk mengunggah</span> atau seret foto kemari
+                <span className="text-[#0F74B8]">Klik untuk mengunggah</span> atau seret foto kemari
               </p>
               <p className="text-xs text-slate-500 font-medium">
                 Bisa beberapa halaman. PNG atau JPG, maks. 5MB per halaman, hingga {BATAS_HALAMAN} halaman.
@@ -480,7 +480,7 @@ export default function RuangBelajarPage() {
                     <img
                       src={src}
                       alt={`Halaman buku ${indeks + 1}`}
-                      className="h-32 w-full rounded-xl object-cover border border-[#1C01A5]/15"
+                      className="h-32 w-full rounded-xl object-cover border border-[#0F74B8]/15"
                     />
                     <button
                       type="button"
@@ -505,8 +505,8 @@ export default function RuangBelajarPage() {
         )}
         </div>
 
-        <div className="rounded-3xl border border-[#1C01A5]/15 bg-white p-6 shadow-sm">
-          <h2 className="mb-4 text-lg font-extrabold text-[#1C01A5]">
+        <div className="rounded-3xl border border-[#0F74B8]/15 bg-white p-6 shadow-sm">
+          <h2 className="mb-4 text-lg font-extrabold text-[#0F74B8]">
             Pilih guru pengajar
           </h2>
           <PilihGuru
@@ -529,14 +529,14 @@ export default function RuangBelajarPage() {
           type="button"
           onClick={() => void mulaiPembelajaran()}
           disabled={menyiapkanSapaan}
-          className={`${kelasTombolUtama} flex w-full items-center justify-center gap-2 rounded-xl px-6 py-4 text-center text-lg font-extrabold tracking-wide shadow-md shadow-[#1C01A5]/20 disabled:opacity-70`}
+          className={`${kelasTombolUtama} flex w-full items-center justify-center gap-2 rounded-xl px-6 py-4 text-center text-lg font-extrabold tracking-wide shadow-md shadow-[#0F74B8]/20 disabled:opacity-70`}
         >
           <Sparkles className="h-5 w-5" />
           {menyiapkanSapaan ? "Menyiapkan sesi..." : "MULAI PEMBELAJARAN"}
         </button>
       </div>
       <p className="mt-3 flex items-center gap-2 text-sm text-slate-500">
-        <Sparkles className="h-4 w-4 text-[#F0AB00]" />
+        <Sparkles className="h-4 w-4 text-[#17324A]" />
         Bab 1–5 Matematika kelas 1, Bab 2 kelas 4, Bab 8 kelas 5, serta Bab 1 dan Bab 3 kelas 6 terbuka di sini. Bab 1 kelas 1 memakai modul lama.
       </p>
     </PageShell>

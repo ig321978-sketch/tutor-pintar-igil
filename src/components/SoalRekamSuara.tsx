@@ -139,8 +139,8 @@ export default function SoalRekamSuara({
   };
 
   return (
-    <div className="rounded-2xl border-2 border-[#1C01A5]/15 bg-[#F8F7FF] p-4">
-      <div className="text-base font-extrabold leading-relaxed text-[#1C01A5]">
+    <div className="rounded-2xl border-2 border-[#0F74B8]/15 bg-[#F8F7FF] p-4">
+      <div className="text-base font-extrabold leading-relaxed text-[#0F74B8]">
         {pertanyaan}
       </div>
       <div className="mt-3 flex flex-wrap items-center gap-3">
@@ -150,7 +150,7 @@ export default function SoalRekamSuara({
           className={`inline-flex items-center gap-2 rounded-xl px-4 py-3 font-extrabold shadow-md ${
             rekam
               ? "bg-rose-500 text-white"
-              : "bg-[#1C01A5] text-white hover:bg-[#16017a]"
+              : "bg-[#9AD8FF] text-[#17324A] hover:bg-[#5EBEFF]"
           }`}
         >
           {rekam ? (

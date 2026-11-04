@@ -36,7 +36,7 @@ export function NamaDialog({
 }) {
   const ikon = nama === "Igil" ? IKON[igil] : IKON[nama];
   return (
-    <p className="flex items-center gap-2 text-xs font-black uppercase tracking-wide text-[#1C01A5]">
+    <p className="flex items-center gap-2 text-xs font-black uppercase tracking-wide text-[#0F74B8]">
       {ikon ? (
         <span className="text-2xl font-normal leading-none" aria-hidden>
           {ikon}

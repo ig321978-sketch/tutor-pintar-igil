@@ -12,11 +12,11 @@ export default function TabelInfoGrafis({
   return (
     <div className="mt-4 overflow-hidden rounded-2xl border-4 border-sky-400">
       {judul ? (
-        <p className="bg-[#16017a] px-3 py-2 text-center text-xs font-black uppercase tracking-wide text-white">
+        <p className="bg-[#5EBEFF] px-3 py-2 text-center text-xs font-black uppercase tracking-wide text-[#17324A]">
           {judul}
         </p>
       ) : null}
-      <div className="grid grid-cols-3 bg-[#1C01A5] px-3 py-2 text-[10px] font-black uppercase text-white sm:text-xs">
+      <div className="grid grid-cols-3 bg-[#9AD8FF] px-3 py-2 text-[10px] font-black uppercase text-[#17324A] sm:text-xs">
         {kepala.map((item) => (
           <span key={item}>{item}</span>
         ))}
@@ -30,11 +30,11 @@ export default function TabelInfoGrafis({
         >
           <span className="text-lg leading-tight">{isi[0]}</span>
           <span>{isi[1]}</span>
-          <span className="text-lg font-black text-[#1C01A5]">{isi[2]}</span>
+          <span className="text-lg font-black text-[#0F74B8]">{isi[2]}</span>
         </div>
       ))}
       {kaki ? (
-        <p className="border-t-4 border-sky-400 bg-emerald-50 px-3 py-3 text-center text-lg font-black text-[#1C01A5]">
+        <p className="border-t-4 border-sky-400 bg-emerald-50 px-3 py-3 text-center text-lg font-black text-[#0F74B8]">
           {kaki}
         </p>
       ) : null}

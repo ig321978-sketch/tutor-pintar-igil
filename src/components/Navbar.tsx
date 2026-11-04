@@ -31,14 +31,14 @@ export default function Navbar() {
   }
 
   return (
-    <header className="sticky top-0 z-40 border-b border-[#1C01A5]/10 bg-white">
+    <header className="sticky top-0 z-40 border-b border-[#0F74B8]/10 bg-white">
       <nav className="flex w-full items-center justify-between gap-4 px-2 py-3">
         <Link
           href="/ruang-belajar"
-          className="igil-tanpa-tepi shrink-0 rounded-xl px-2 py-1 text-xl font-extrabold tracking-tight text-[#1C01A5]"
+          className="igil-tanpa-tepi shrink-0 rounded-xl px-2 py-1 text-xl font-extrabold tracking-tight text-[#0F74B8]"
           onClick={() => setTerbuka(false)}
         >
-          <span className="mr-1 text-[#F0AB00]">🎓</span>$IGIL
+          <span className="mr-1 text-[#C65A00]">🎓</span>$IGIL
         </Link>
 
         <div className="hidden items-center gap-1 lg:flex">
@@ -50,8 +50,8 @@ export default function Navbar() {
                 href={item.href}
                 className={`igil-tombol rounded-full px-3 py-2 text-sm font-bold transition-colors ${
                   aktif
-                    ? "border-[#FFE566] bg-[#1C01A5] text-white"
-                    : "border-[#1C01A5] text-[#1C01A5] hover:bg-[#F0AB00]/15 hover:text-[#F0AB00]"
+                    ? "border-[#FFC56D] bg-[#FFC56D] text-[#17324A]"
+                    : "border-[#9AD8FF] text-[#0F74B8] hover:bg-[#FFC56D]/15 hover:text-[#C65A00]"
                 }`}
               >
                 {item.label}
@@ -62,14 +62,14 @@ export default function Navbar() {
             <button
               type="button"
               onClick={() => void klikKeluar()}
-              className="igil-tombol rounded-full border-[#1C01A5] px-3 py-2 text-sm font-bold text-[#1C01A5] hover:bg-[#F0AB00]/15"
+              className="igil-tombol rounded-full border-[#9AD8FF] px-3 py-2 text-sm font-bold text-[#0F74B8] hover:bg-[#FFC56D]/15"
             >
               Keluar
             </button>
           ) : !memuat ? (
             <Link
               href="/login"
-              className="igil-tombol rounded-full border-[#1C01A5] px-3 py-2 text-sm font-bold text-[#1C01A5] hover:bg-[#F0AB00]/15"
+              className="igil-tombol rounded-full border-[#9AD8FF] px-3 py-2 text-sm font-bold text-[#0F74B8] hover:bg-[#FFC56D]/15"
             >
               Masuk
             </Link>
@@ -78,7 +78,7 @@ export default function Navbar() {
 
         <button
           type="button"
-          className="rounded-xl border-2 border-[#1C01A5] p-2 text-[#1C01A5] lg:hidden"
+          className="rounded-xl border-2 border-[#9AD8FF] p-2 text-[#0F74B8] lg:hidden"
           onClick={() => setTerbuka((nilai) => !nilai)}
           aria-label={terbuka ? "Tutup menu" : "Buka menu"}
         >
@@ -87,7 +87,7 @@ export default function Navbar() {
       </nav>
 
       {terbuka ? (
-        <div className="space-y-1 border-t border-[#1C01A5]/10 bg-white px-2 py-3 lg:hidden">
+        <div className="space-y-1 border-t border-[#0F74B8]/10 bg-white px-2 py-3 lg:hidden">
           {menu.map((item) => {
             const aktif = tautanAktif(pathname, item.href);
             return (
@@ -97,8 +97,8 @@ export default function Navbar() {
                 onClick={() => setTerbuka(false)}
                 className={`igil-tombol block rounded-xl px-3 py-2 text-sm font-bold ${
                   aktif
-                    ? "border-[#FFE566] bg-[#1C01A5] text-white"
-                    : "border-[#1C01A5] text-[#1C01A5] hover:bg-[#F0AB00]/15"
+                    ? "border-[#FFC56D] bg-[#FFC56D] text-[#17324A]"
+                    : "border-[#9AD8FF] text-[#0F74B8] hover:bg-[#FFC56D]/15"
                 }`}
               >
                 {item.label}
@@ -109,7 +109,7 @@ export default function Navbar() {
             <button
               type="button"
               onClick={() => void klikKeluar()}
-              className="igil-tombol block w-full rounded-xl border-[#1C01A5] px-3 py-2 text-left text-sm font-bold text-[#1C01A5]"
+              className="igil-tombol block w-full rounded-xl border-[#9AD8FF] px-3 py-2 text-left text-sm font-bold text-[#0F74B8]"
             >
               Keluar
             </button>
@@ -117,7 +117,7 @@ export default function Navbar() {
             <Link
               href="/login"
               onClick={() => setTerbuka(false)}
-              className="igil-tombol block rounded-xl border-[#1C01A5] px-3 py-2 text-sm font-bold text-[#1C01A5]"
+              className="igil-tombol block rounded-xl border-[#9AD8FF] px-3 py-2 text-sm font-bold text-[#0F74B8]"
             >
               Masuk
             </Link>
