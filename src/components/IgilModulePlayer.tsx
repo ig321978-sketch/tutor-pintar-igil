@@ -96,8 +96,206 @@ const PRACTICE_QUESTIONS = materiBab1.practiceQuestions as QuestionItem[];
 const FORMAL_EXAM_QUESTIONS = materiBab1.examQuestions as QuestionItem[];
 
 // ============================================================================
-// SUB-KOMPONEN KANVAS TULIS TITIK-TITIK ANGKA (DOTTED NUMBER TRACING CANVAS)
+// SUB-KOMPONEN KANVAS TULIS ANGKA (SATU GARIS TEBAL, DINILAI DARI BENTUKNYA)
 // ============================================================================
+
+type Titik = { x: number; y: number };
+
+function elips(cx: number, cy: number, rx: number, ry: number, n = 40): Titik[] {
+  const titik: Titik[] = [];
+  for (let i = 0; i <= n; i++) {
+    const sudut = -Math.PI / 2 + (i / n) * Math.PI * 2;
+    titik.push({ x: cx + Math.cos(sudut) * rx, y: cy + Math.sin(sudut) * ry });
+  }
+  return titik;
+}
+
+const BENTUK_ANGKA: Record<number, Titik[][]> = {
+  0: [elips(85, 75, 34, 50)],
+  1: [
+    [
+      { x: 68, y: 38 },
+      { x: 92, y: 22 },
+      { x: 92, y: 128 },
+    ],
+  ],
+  2: [
+    [
+      { x: 48, y: 52 },
+      { x: 62, y: 28 },
+      { x: 98, y: 22 },
+      { x: 124, y: 42 },
+      { x: 112, y: 66 },
+      { x: 40, y: 124 },
+      { x: 130, y: 126 },
+    ],
+  ],
+  3: [
+    [
+      { x: 48, y: 36 },
+      { x: 86, y: 20 },
+      { x: 122, y: 38 },
+      { x: 112, y: 60 },
+      { x: 78, y: 72 },
+      { x: 118, y: 92 },
+      { x: 112, y: 118 },
+      { x: 72, y: 132 },
+      { x: 44, y: 112 },
+    ],
+  ],
+  4: [
+    [
+      { x: 108, y: 22 },
+      { x: 38, y: 92 },
+      { x: 134, y: 92 },
+    ],
+    [
+      { x: 108, y: 22 },
+      { x: 108, y: 130 },
+    ],
+  ],
+  5: [
+    [
+      { x: 120, y: 26 },
+      { x: 48, y: 28 },
+      { x: 44, y: 66 },
+      { x: 90, y: 58 },
+      { x: 124, y: 80 },
+      { x: 116, y: 116 },
+      { x: 72, y: 132 },
+      { x: 42, y: 108 },
+    ],
+  ],
+  6: [
+    [
+      { x: 114, y: 38 },
+      { x: 78, y: 20 },
+      { x: 46, y: 48 },
+      { x: 40, y: 92 },
+      { x: 58, y: 124 },
+      { x: 100, y: 128 },
+      { x: 124, y: 102 },
+      { x: 106, y: 78 },
+      { x: 58, y: 82 },
+    ],
+  ],
+  7: [
+    [
+      { x: 40, y: 30 },
+      { x: 128, y: 28 },
+      { x: 62, y: 128 },
+    ],
+  ],
+  8: [
+    [
+      { x: 85, y: 74 },
+      { x: 52, y: 56 },
+      { x: 50, y: 34 },
+      { x: 85, y: 20 },
+      { x: 118, y: 36 },
+      { x: 116, y: 58 },
+      { x: 85, y: 74 },
+      { x: 50, y: 96 },
+      { x: 52, y: 120 },
+      { x: 85, y: 132 },
+      { x: 120, y: 116 },
+      { x: 118, y: 94 },
+      { x: 85, y: 74 },
+    ],
+  ],
+  9: [
+    [
+      { x: 98, y: 78 },
+      { x: 62, y: 62 },
+      { x: 48, y: 40 },
+      { x: 72, y: 20 },
+      { x: 112, y: 28 },
+      { x: 124, y: 52 },
+      { x: 106, y: 76 },
+      { x: 84, y: 92 },
+      { x: 66, y: 126 },
+      { x: 44, y: 110 },
+    ],
+  ],
+};
+
+function bentukAngka(angka: number): Titik[][] {
+  return BENTUK_ANGKA[angka] ?? BENTUK_ANGKA[0];
+}
+
+function sampelJalur(goresan: Titik[][], langkah: number): Titik[] {
+  const hasil: Titik[] = [];
+  for (const gores of goresan) {
+    if (gores.length === 0) continue;
+    hasil.push(gores[0]);
+    let tertinggal = 0;
+    for (let i = 1; i < gores.length; i++) {
+      const a = gores[i - 1];
+      const b = gores[i];
+      const dx = b.x - a.x;
+      const dy = b.y - a.y;
+      const jarak = Math.hypot(dx, dy);
+      if (jarak === 0) continue;
+      let posisi = langkah - tertinggal;
+      while (posisi <= jarak) {
+        const t = posisi / jarak;
+        hasil.push({ x: a.x + dx * t, y: a.y + dy * t });
+        posisi += langkah;
+      }
+      tertinggal = jarak - (posisi - langkah);
+    }
+  }
+  return hasil;
+}
+
+function jarakTerdekat(titik: Titik, acuan: Titik[]) {
+  let terkecil = Infinity;
+  for (const a of acuan) {
+    const jarak = Math.hypot(titik.x - a.x, titik.y - a.y);
+    if (jarak < terkecil) terkecil = jarak;
+  }
+  return terkecil;
+}
+
+function panjangJalur(goresan: Titik[][]) {
+  let total = 0;
+  for (const gores of goresan) {
+    for (let i = 1; i < gores.length; i++) {
+      total += Math.hypot(gores[i].x - gores[i - 1].x, gores[i].y - gores[i - 1].y);
+    }
+  }
+  return total;
+}
+
+/** Coretan lulus hanya jika mengikuti garis angka, bukan karena banyak goresan. */
+function coretanMengikutiAngka(goresan: Titik[][], angka: number) {
+  const acuan = sampelJalur(bentukAngka(angka), 6);
+  const jejak = sampelJalur(goresan, 4);
+  if (jejak.length < 12 || acuan.length < 8) return false;
+  if (panjangJalur(goresan) < panjangJalur(bentukAngka(angka)) * 0.55) return false;
+
+  const ambang = 16;
+  const bagian = 8;
+  const ukuran = Math.ceil(acuan.length / bagian);
+  for (let i = 0; i < bagian; i++) {
+    const potong = acuan.slice(i * ukuran, (i + 1) * ukuran);
+    if (potong.length === 0) continue;
+    let kena = 0;
+    for (const titik of potong) {
+      if (jarakTerdekat(titik, jejak) <= ambang) kena += 1;
+    }
+    if (kena / potong.length < 0.7) return false;
+  }
+
+  let dekat = 0;
+  let sangatJauh = 0;
+  for (const titik of jejak) {
+    const jarak = jarakTerdekat(titik, acuan);
+    if (jarak <= ambang) dekat += 1;
+    if (jarak > 28) sangatJauh += 1;
+  }
+  return dekat / jejak.length >= 0.82 && sangatJauh / jejak.length <= 0.08;
+}
 
 function DottedNumberTracingCanvas({
   digit,
@@ -107,10 +305,12 @@ function DottedNumberTracingCanvas({
   onCompletedTrace?: () => void;
 }) {
   const canvasRef = useRef<HTMLCanvasElement | null>(null);
-  const [isDrawing, setIsDrawing] = useState<boolean>(false);
-  const [strokeCount, setStrokeCount] = useState<number>(0);
+  const goresanRef = useRef<Titik[][]>([]);
+  const sedangRef = useRef(false);
+  const [lulus, setLulus] = useState(false);
+  const [pernahCoba, setPernahCoba] = useState(false);
 
-  const drawDottedGuide = useCallback(() => {
+  const gambarUlang = useCallback(() => {
     const canvas = canvasRef.current;
     if (!canvas) return;
     const ctx = canvas.getContext("2d");
@@ -120,87 +320,85 @@ function DottedNumberTracingCanvas({
     ctx.fillStyle = "#FFFFFF";
     ctx.fillRect(0, 0, canvas.width, canvas.height);
 
-    // Garis buku tulis lembut
-    ctx.strokeStyle = "#E2E8F0";
-    ctx.lineWidth = 1;
-    ctx.beginPath();
-    ctx.moveTo(0, canvas.height / 2);
-    ctx.lineTo(canvas.width, canvas.height / 2);
-    ctx.stroke();
-
-    // Angka titik-titik (Dotted Guide) untuk diikuti jari anak
-    ctx.save();
-    ctx.font = `bold 115px ${fontAnak.style.fontFamily}`;
-    ctx.textAlign = "center";
-    ctx.textBaseline = "middle";
     ctx.strokeStyle = "#94A3B8";
-    ctx.lineWidth = 4;
-    ctx.setLineDash([5, 7]);
-    ctx.strokeText(String(digit), canvas.width / 2, canvas.height / 2 + 6);
-    ctx.restore();
+    ctx.lineWidth = 16;
+    ctx.lineCap = "round";
+    ctx.lineJoin = "round";
+    ctx.setLineDash([]);
+    for (const gores of bentukAngka(digit)) {
+      if (gores.length < 2) continue;
+      ctx.beginPath();
+      ctx.moveTo(gores[0].x, gores[0].y);
+      for (let i = 1; i < gores.length; i++) ctx.lineTo(gores[i].x, gores[i].y);
+      ctx.stroke();
+    }
+
+    ctx.strokeStyle = "#1C01A5";
+    ctx.lineWidth = 7;
+    for (const gores of goresanRef.current) {
+      if (gores.length < 2) continue;
+      ctx.beginPath();
+      ctx.moveTo(gores[0].x, gores[0].y);
+      for (let i = 1; i < gores.length; i++) ctx.lineTo(gores[i].x, gores[i].y);
+      ctx.stroke();
+    }
   }, [digit]);
 
   useEffect(() => {
-    drawDottedGuide();
-    setStrokeCount(0);
-  }, [drawDottedGuide]);
+    goresanRef.current = [];
+    sedangRef.current = false;
+    setLulus(false);
+    setPernahCoba(false);
+    gambarUlang();
+  }, [gambarUlang]);
 
-  const getCoords = (
-    e: React.MouseEvent<HTMLCanvasElement> | React.TouchEvent<HTMLCanvasElement>
-  ) => {
+  const koordinat = (e: React.PointerEvent<HTMLCanvasElement>) => {
     const canvas = canvasRef.current;
     if (!canvas) return { x: 0, y: 0 };
     const rect = canvas.getBoundingClientRect();
-    if ("touches" in e && e.touches.length > 0) {
-      return {
-        x: (e.touches[0].clientX - rect.left) * (canvas.width / rect.width),
-        y: (e.touches[0].clientY - rect.top) * (canvas.height / rect.height),
-      };
-    }
-    const me = e as React.MouseEvent<HTMLCanvasElement>;
     return {
-      x: (me.clientX - rect.left) * (canvas.width / rect.width),
-      y: (me.clientY - rect.top) * (canvas.height / rect.height),
+      x: (e.clientX - rect.left) * (canvas.width / rect.width),
+      y: (e.clientY - rect.top) * (canvas.height / rect.height),
     };
   };
 
-  const startDraw = (
-    e: React.MouseEvent<HTMLCanvasElement> | React.TouchEvent<HTMLCanvasElement>
-  ) => {
-    const canvas = canvasRef.current;
-    if (!canvas) return;
-    const ctx = canvas.getContext("2d");
-    if (!ctx) return;
-    const { x, y } = getCoords(e);
-    ctx.strokeStyle = "#1C01A5";
-    ctx.lineWidth = 8;
-    ctx.lineCap = "round";
-    ctx.lineJoin = "round";
-    ctx.beginPath();
-    ctx.moveTo(x, y);
-    setIsDrawing(true);
+  const mulai = (e: React.PointerEvent<HTMLCanvasElement>) => {
+    const titik = koordinat(e);
+    sedangRef.current = true;
+    goresanRef.current.push([titik]);
+    try {
+      e.currentTarget.setPointerCapture(e.pointerId);
+    } catch {
+      /* Browser menolak tangkapan jika jari sudah lepas. */
+    }
+    gambarUlang();
   };
 
-  const moveDraw = (
-    e: React.MouseEvent<HTMLCanvasElement> | React.TouchEvent<HTMLCanvasElement>
-  ) => {
-    if (!isDrawing) return;
-    const canvas = canvasRef.current;
-    if (!canvas) return;
-    const ctx = canvas.getContext("2d");
-    if (!ctx) return;
-    const { x, y } = getCoords(e);
-    ctx.lineTo(x, y);
-    ctx.stroke();
-    setStrokeCount((prev) => {
-      const next = prev + 1;
-      if (next === 18 && onCompletedTrace) onCompletedTrace();
-      return next;
-    });
+  const geser = (e: React.PointerEvent<HTMLCanvasElement>) => {
+    if (!sedangRef.current) return;
+    const gores = goresanRef.current[goresanRef.current.length - 1];
+    if (!gores) return;
+    gores.push(koordinat(e));
+    gambarUlang();
   };
 
-  const endDraw = () => {
-    setIsDrawing(false);
+  const selesai = () => {
+    if (!sedangRef.current) return;
+    sedangRef.current = false;
+    const adaGoresan = goresanRef.current.some((gores) => gores.length > 1);
+    if (!adaGoresan) return;
+    setPernahCoba(true);
+    const mirip = coretanMengikutiAngka(goresanRef.current, digit);
+    setLulus(mirip);
+    if (mirip && onCompletedTrace) onCompletedTrace();
+  };
+
+  const ulangi = () => {
+    goresanRef.current = [];
+    sedangRef.current = false;
+    setLulus(false);
+    setPernahCoba(false);
+    gambarUlang();
   };
 
   return (
@@ -209,28 +407,22 @@ function DottedNumberTracingCanvas({
         ref={canvasRef}
         width={170}
         height={150}
-        onMouseDown={startDraw}
-        onMouseMove={moveDraw}
-        onMouseUp={endDraw}
-        onMouseLeave={endDraw}
-        onTouchStart={startDraw}
-        onTouchMove={moveDraw}
-        onTouchEnd={endDraw}
+        onPointerDown={mulai}
+        onPointerMove={geser}
+        onPointerUp={selesai}
+        onPointerCancel={selesai}
         className="w-[170px] h-[150px] rounded-2xl border-2 border-[#1C01A5] bg-white cursor-crosshair touch-none shadow-sm"
       />
       <div className="flex items-center gap-2">
         <button
           type="button"
-          onClick={() => {
-            drawDottedGuide();
-            setStrokeCount(0);
-          }}
+          onClick={ulangi}
           className="px-3 py-1 rounded-xl bg-slate-100 hover:bg-slate-200 text-[#334155] text-xs font-bold border border-slate-300"
         >
           Ulangi Tulis
         </button>
         <span className="text-xs font-bold text-[#1C01A5]">
-          {strokeCount >= 15 ? "✅ Bagus!" : "Ikuti Titik-Titik"}
+          {lulus ? "✅ Bagus!" : pernahCoba ? "Belum mirip" : "Ikuti garisnya"}
         </span>
       </div>
     </div>
@@ -969,7 +1161,7 @@ export default function IgilModulePlayer() {
                                 .join("")}
                         </div>
                         <div className="text-[11px] font-bold text-slate-500">
-                          Ikuti titik angka {currentSubContent.infografisData[0].countNum} 👉
+                          Ikuti garis angka {currentSubContent.infografisData[0].countNum} 👉
                         </div>
                       </div>
                       <DottedNumberTracingCanvas
