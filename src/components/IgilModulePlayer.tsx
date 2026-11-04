@@ -722,19 +722,16 @@ export default function IgilModulePlayer() {
             </div>
           </div>
 
-          {/* HALAMAN 1 SILABUS: MAKSIMAL 2 KARTU LEBAR SEJAJAR (GESER KIRI-KANAN DI HP) */}
           {silabusPage === 1 && (
-            <div className="w-full overflow-x-auto pb-3">
-              <div className="flex flex-nowrap gap-5 min-w-[720px]">
-                {/* Kartu 1: Komponen Silabus Kurikulum Merdeka */}
-                <div className="w-1/2 bg-[#EFF6FF] border-2 border-[#3B82F6] rounded-3xl p-5 space-y-3">
+            <div className="flex w-full flex-col gap-5">
+                <div className="w-full bg-[#EFF6FF] border-2 border-[#3B82F6] rounded-3xl p-5 space-y-3">
                   <div className="inline-block px-3 py-1 rounded-full bg-[#1C01A5] text-[#FFE566] text-xs font-black">
                     KOMPONEN SILABUS KURIKULUM MERDEKA
                   </div>
                   <h3 className="text-lg font-black text-[#1C01A5]">
                     Fase A • Elemen Bilangan (Kelas 1 SD/MI)
                   </h3>
-                  <ul className="text-xs md:text-sm space-y-2 text-[#334155]">
+                  <ul className="text-base md:text-lg leading-relaxed space-y-3 text-[#334155]">
                     <li>
                       • <strong>Capaian Pembelajaran (CP):</strong> Siswa menunjukkan pemahaman dan intuisi bilangan (<em>number sense</em>) pada bilangan cacah sampai 10.
                     </li>
@@ -747,15 +744,14 @@ export default function IgilModulePlayer() {
                   </ul>
                 </div>
 
-                {/* Kartu 2: Sistem Tiket Token 30/70/50 & Kolam Beasiswa 90:10 */}
-                <div className="w-1/2 bg-[#FFFBEB] border-2 border-[#F59E0B] rounded-3xl p-5 space-y-3">
+                <div className="w-full bg-[#FFFBEB] border-2 border-[#F59E0B] rounded-3xl p-5 space-y-3">
                   <div className="inline-block px-3 py-1 rounded-full bg-[#1C01A5] text-[#FFE566] text-xs font-black">
                     ARSITEKTUR LEARN-TO-EARN &amp; KOLAM BEASISWA 90:10
                   </div>
                   <h3 className="text-lg font-black text-[#1C01A5]">
                     Distribusi 150 Token Emas &amp; Kualifikasi Bulanan
                   </h3>
-                  <ul className="text-xs md:text-sm space-y-2 text-[#334155]">
+                  <ul className="text-base md:text-lg leading-relaxed space-y-3 text-[#334155]">
                     <li>
                       • <strong>Komponen Latihan (30 Token Emas):</strong> 10 soal terbimbing (LOTS 30%, MOTS 30%, HOTS 40%) lengkap dengan pembahasan langsung.
                     </li>
@@ -767,16 +763,12 @@ export default function IgilModulePlayer() {
                     </li>
                   </ul>
                 </div>
-              </div>
             </div>
           )}
 
-          {/* HALAMAN 2 SILABUS: KARTU TARGET PEMBELAJARAN DENGAN AUTO-CHECKLIST */}
           {silabusPage === 2 && (
-            <div className="w-full overflow-x-auto pb-3">
-              <div className="flex flex-nowrap gap-5 min-w-[720px]">
-                {/* Kartu 1: Target Sub-Bab A & Sub-Bab B */}
-                <div className="w-1/2 bg-[#F0FDF4] border-2 border-[#22C55E] rounded-3xl p-5 space-y-3">
+            <div className="flex w-full flex-col gap-5">
+                <div className="w-full bg-[#F0FDF4] border-2 border-[#22C55E] rounded-3xl p-5 space-y-3">
                   <h3 className="text-base md:text-lg font-black text-[#166534]">
                     📋 Daftar Target Pembelajaran (Sub-Bab A &amp; B)
                   </h3>
@@ -798,16 +790,15 @@ export default function IgilModulePlayer() {
                           {isDone ? "✓" : ""}
                         </div>
                         <div>
-                          <div className="font-black text-sm text-[#1C01A5]">{sub.fullTitle}</div>
-                          <p className="text-xs text-[#334155] mt-0.5">{sub.targetDescription}</p>
+                          <div className="font-black text-lg text-[#1C01A5]">{sub.fullTitle}</div>
+                          <p className="text-base md:text-lg leading-relaxed text-[#334155] mt-1">{sub.targetDescription}</p>
                         </div>
                       </div>
                     );
                   })}
                 </div>
 
-                {/* Kartu 2: Target Sub-Bab C & Sub-Bab D */}
-                <div className="w-1/2 bg-[#EFF6FF] border-2 border-[#3B82F6] rounded-3xl p-5 space-y-3">
+                <div className="w-full bg-[#EFF6FF] border-2 border-[#3B82F6] rounded-3xl p-5 space-y-3">
                   <h3 className="text-base md:text-lg font-black text-[#1E3A8A]">
                     📋 Daftar Target Pembelajaran (Sub-Bab C &amp; D)
                   </h3>
@@ -829,14 +820,13 @@ export default function IgilModulePlayer() {
                           {isDone ? "✓" : ""}
                         </div>
                         <div>
-                          <div className="font-black text-sm text-[#1C01A5]">{sub.fullTitle}</div>
-                          <p className="text-xs text-[#334155] mt-0.5">{sub.targetDescription}</p>
+                          <div className="font-black text-lg text-[#1C01A5]">{sub.fullTitle}</div>
+                          <p className="text-base md:text-lg leading-relaxed text-[#334155] mt-1">{sub.targetDescription}</p>
                         </div>
                       </div>
                     );
                   })}
                 </div>
-              </div>
             </div>
           )}
 
