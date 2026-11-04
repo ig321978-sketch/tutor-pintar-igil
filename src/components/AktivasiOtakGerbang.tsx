@@ -3,9 +3,7 @@
 import { useEffect, useRef, useState } from "react";
 import { usePathname } from "next/navigation";
 import { Nunito } from "next/font/google";
-import { normalisasiKelaminGuru, profilGuru } from "@/lib/guru";
 import { bacaProgres } from "@/lib/progres";
-import { hentikanAudioGuruAktif, mintaAudioTts } from "@/lib/putar-tts-klien";
 
 const fontAnak = Nunito({
   subsets: ["latin"],
@@ -15,6 +13,37 @@ const fontAnak = Nunito({
 
 const ENAM_JAM = 6 * 60 * 60 * 1000;
 const KUNCI_PETA = "igil-aktivasi-otak-v1";
+
+type IdMain = "berkata" | "kartu" | "balon";
+
+const PILIHAN_MAIN: { id: IdMain; nama: string }[] = [
+  { id: "berkata", nama: "IGIL Berkata" },
+  { id: "kartu", nama: "Kartu Kembar" },
+  { id: "balon", nama: "Jaga Balon" },
+];
+
+let audioCtx: AudioContext | null = null;
+
+function bunyi(hz: number, dur = 0.14) {
+  const AudioCtx =
+    window.AudioContext ||
+    (window as Window & { webkitAudioContext?: typeof AudioContext }).webkitAudioContext;
+  if (!AudioCtx) return;
+  if (!audioCtx) audioCtx = new AudioCtx();
+  void audioCtx.resume();
+  const now = audioCtx.currentTime;
+  const osc = audioCtx.createOscillator();
+  const gain = audioCtx.createGain();
+  osc.type = "sine";
+  osc.frequency.setValueAtTime(hz, now);
+  gain.gain.setValueAtTime(0.0001, now);
+  gain.gain.exponentialRampToValueAtTime(0.06, now + 0.02);
+  gain.gain.exponentialRampToValueAtTime(0.0001, now + dur);
+  osc.connect(gain);
+  gain.connect(audioCtx.destination);
+  osc.start(now);
+  osc.stop(now + dur);
+}
 
 function halamanGerbang(pathname: string): boolean {
   return pathname === "/ruang-belajar";
@@ -57,14 +86,411 @@ async function kunciAkun(): Promise<string> {
   return `profil:${nama}|${kelas}`;
 }
 
+const GERAKAN = [
+  { id: "bintang", nama: "Tepuk bintang", emoji: "⭐" },
+  { id: "lompat", nama: "Lompat", emoji: "🦘" },
+  { id: "putar", nama: "Putar", emoji: "🌀" },
+  { id: "duduk", nama: "Duduk", emoji: "🪑" },
+] as const;
+
+type IdGerakan = (typeof GERAKAN)[number]["id"];
+
+type Perintah = {
+  berkata: boolean;
+  gerakan: IdGerakan;
+};
+
+function perintahBaru(sebelum?: Perintah): Perintah {
+  let berikutnya: Perintah = {
+    berkata: Math.random() < 0.55,
+    gerakan: GERAKAN[Math.floor(Math.random() * GERAKAN.length)].id,
+  };
+  let jaga = 0;
+  while (
+    sebelum &&
+    berikutnya.berkata === sebelum.berkata &&
+    berikutnya.gerakan === sebelum.gerakan &&
+    jaga < 6
+  ) {
+    berikutnya = {
+      berkata: Math.random() < 0.55,
+      gerakan: GERAKAN[Math.floor(Math.random() * GERAKAN.length)].id,
+    };
+    jaga += 1;
+  }
+  return berikutnya;
+}
+
+function jawabanBerkataBenar(perintah: Perintah, pilihan: string) {
+  if (perintah.berkata) return pilihan === perintah.gerakan;
+  return pilihan === "diam";
+}
+
+function MainBerkata() {
+  const hidup = useRef(true);
+  const timer = useRef(0);
+  const kunci = useRef(false);
+  const awal = useRef(perintahBaru());
+  const perintahRef = useRef(awal.current);
+  const rondeRef = useRef(1);
+  const [perintah, setPerintah] = useState(awal.current);
+  const [ronde, setRonde] = useState(1);
+  const [tepat, setTepat] = useState(0);
+  const [hasil, setHasil] = useState<"benar" | "salah" | null>(null);
+  const [pilihan, setPilihan] = useState<string | null>(null);
+  const [selesaiMain, setSelesaiMain] = useState(false);
+
+  useEffect(() => {
+    hidup.current = true;
+    return () => {
+      hidup.current = false;
+      window.clearTimeout(timer.current);
+    };
+  }, []);
+
+  const gerakan = GERAKAN.find((item) => item.id === perintah.gerakan) ?? GERAKAN[0];
+
+  const pilih = (id: string) => {
+    if (kunci.current || selesaiMain) return;
+    kunci.current = true;
+    const benar = jawabanBerkataBenar(perintahRef.current, id);
+    setPilihan(id);
+    setHasil(benar ? "benar" : "salah");
+    if (benar) setTepat((nilai) => nilai + 1);
+    bunyi(benar ? 680 : 170, benar ? 0.1 : 0.16);
+    timer.current = window.setTimeout(() => {
+      if (!hidup.current) return;
+      setHasil(null);
+      setPilihan(null);
+      kunci.current = false;
+      if (rondeRef.current >= 5) {
+        setSelesaiMain(true);
+        bunyi(784, 0.18);
+        return;
+      }
+      rondeRef.current += 1;
+      setRonde(rondeRef.current);
+      const next = perintahBaru(perintahRef.current);
+      perintahRef.current = next;
+      setPerintah(next);
+    }, 700);
+  };
+
+  const ulang = () => {
+    window.clearTimeout(timer.current);
+    const next = perintahBaru();
+    perintahRef.current = next;
+    rondeRef.current = 1;
+    kunci.current = false;
+    setPerintah(next);
+    setRonde(1);
+    setTepat(0);
+    setHasil(null);
+    setPilihan(null);
+    setSelesaiMain(false);
+  };
+
+  return (
+    <div className="space-y-4">
+      <p className="text-sm font-bold text-[#334155] md:text-base">
+        Ada tulisan IGIL berkata? Tiru gerakannya. Tidak ada? Tekan Diam.
+      </p>
+      <div className="rounded-3xl bg-[#1C01A5] px-5 py-6 text-center text-white">
+        <p className={`text-sm font-black ${perintah.berkata ? "text-[#F0AB00]" : "text-white/70"}`}>
+          {perintah.berkata ? "IGIL berkata" : "Tidak ada kata ajaib"}
+        </p>
+        <p className="mt-2 text-5xl" aria-hidden>
+          {gerakan.emoji}
+        </p>
+        <p className="mt-1 text-2xl font-black">{gerakan.nama}</p>
+        <p className="mt-3 text-xs font-bold text-white/80">
+          Giliran {ronde} dari 5 · Tepat {tepat}
+        </p>
+      </div>
+      {selesaiMain ? (
+        <div className="rounded-3xl bg-[#7FCB96]/30 px-4 py-5 text-center">
+          <p className="text-lg font-black text-[#1C01A5]">Permainan selesai. Asyik!</p>
+          <button
+            type="button"
+            onClick={ulang}
+            className="mt-3 rounded-2xl bg-[#F0AB00] px-5 py-2.5 text-sm font-black text-[#1C01A5]"
+          >
+            Main lagi
+          </button>
+        </div>
+      ) : (
+        <div className="grid grid-cols-2 gap-3">
+          {GERAKAN.map((item) => {
+            const aktif = pilihan === item.id;
+            const warna =
+              aktif && hasil === "benar"
+                ? "border-[#1C01A5] bg-[#7FCB96]"
+                : aktif && hasil === "salah"
+                  ? "border-[#1C01A5] bg-[#E98989]"
+                  : "border-[#1C01A5]/20 bg-white";
+            return (
+              <button
+                key={item.id}
+                type="button"
+                onClick={() => pilih(item.id)}
+                className={`rounded-2xl border-2 px-3 py-4 text-base font-black text-[#1C01A5] ${warna}`}
+              >
+                <span className="mr-1 text-2xl" aria-hidden>
+                  {item.emoji}
+                </span>
+                {item.nama}
+              </button>
+            );
+          })}
+          <button
+            type="button"
+            onClick={() => pilih("diam")}
+            className={`col-span-2 rounded-2xl border-2 px-3 py-4 text-base font-black text-[#1C01A5] ${
+              pilihan === "diam" && hasil === "benar"
+                ? "border-[#1C01A5] bg-[#7FCB96]"
+                : pilihan === "diam" && hasil === "salah"
+                  ? "border-[#1C01A5] bg-[#E98989]"
+                  : "border-[#1C01A5] bg-[#F0AB00]"
+            }`}
+          >
+            Diam
+          </button>
+        </div>
+      )}
+      {hasil && !selesaiMain ? (
+        <p className="text-center text-sm font-black text-[#1C01A5]">
+          {hasil === "benar" ? "Tepat!" : "Hampir! Lihat lagi kata ajaibnya."}
+        </p>
+      ) : null}
+    </div>
+  );
+}
+
+const HEWAN = [
+  { id: "burung", nama: "Burung hantu", emoji: "🦉" },
+  { id: "kucing", nama: "Kucing", emoji: "🐱" },
+  { id: "katak", nama: "Katak", emoji: "🐸" },
+  { id: "ikan", nama: "Ikan", emoji: "🐟" },
+] as const;
+
+type KartuHewan = {
+  kunci: string;
+  hewan: (typeof HEWAN)[number]["id"];
+  nama: string;
+  emoji: string;
+};
+
+function dekBaru(): KartuHewan[] {
+  const dek: KartuHewan[] = HEWAN.flatMap((hewan) =>
+    [0, 1].map((salinan) => ({
+      kunci: `${hewan.id}-${salinan}`,
+      hewan: hewan.id,
+      nama: hewan.nama,
+      emoji: hewan.emoji,
+    })),
+  );
+  for (let i = dek.length - 1; i > 0; i -= 1) {
+    const j = Math.floor(Math.random() * (i + 1));
+    const simpan = dek[i];
+    dek[i] = dek[j];
+    dek[j] = simpan;
+  }
+  return dek;
+}
+
+function MainKartu() {
+  const hidup = useRef(true);
+  const timer = useRef(0);
+  const [kartu, setKartu] = useState<KartuHewan[]>(() => dekBaru());
+  const [terbuka, setTerbuka] = useState<string[]>([]);
+  const [cocok, setCocok] = useState<string[]>([]);
+  const [kunci, setKunci] = useState(false);
+
+  useEffect(() => {
+    hidup.current = true;
+    return () => {
+      hidup.current = false;
+      window.clearTimeout(timer.current);
+    };
+  }, []);
+
+  const menang = cocok.length === kartu.length;
+
+  const buka = (item: KartuHewan) => {
+    if (kunci || cocok.includes(item.kunci) || terbuka.includes(item.kunci)) return;
+    const berikutnya = [...terbuka, item.kunci];
+    setTerbuka(berikutnya);
+    bunyi(520, 0.08);
+    if (berikutnya.length < 2) return;
+    const [a, b] = berikutnya;
+    const kartuA = kartu.find((kartuItem) => kartuItem.kunci === a);
+    const kartuB = kartu.find((kartuItem) => kartuItem.kunci === b);
+    const sama = Boolean(kartuA && kartuB && kartuA.hewan === kartuB.hewan);
+    setKunci(true);
+    timer.current = window.setTimeout(() => {
+      if (!hidup.current) return;
+      if (sama) {
+        setCocok((daftar) => [...daftar, a, b]);
+        bunyi(740, 0.12);
+      }
+      setTerbuka([]);
+      setKunci(false);
+    }, sama ? 380 : 750);
+  };
+
+  const acakLagi = () => {
+    window.clearTimeout(timer.current);
+    setKartu(dekBaru());
+    setTerbuka([]);
+    setCocok([]);
+    setKunci(false);
+  };
+
+  return (
+    <div className="space-y-4">
+      <p className="text-sm font-bold text-[#334155] md:text-base">
+        Buka dua kartu. Cari gambar hewan yang sama.
+      </p>
+      <div className="grid grid-cols-4 gap-2 sm:gap-3">
+        {kartu.map((item) => {
+          const muka = terbuka.includes(item.kunci) || cocok.includes(item.kunci);
+          return (
+            <button
+              key={item.kunci}
+              type="button"
+              onClick={() => buka(item)}
+              aria-label={muka ? item.nama : "Kartu tertutup"}
+              className={`flex h-20 items-center justify-center rounded-2xl border-2 text-3xl sm:h-24 ${
+                muka
+                  ? "border-[#F0AB00] bg-white"
+                  : "border-[#1C01A5] bg-[#1C01A5] text-[#F0AB00]"
+              }`}
+            >
+              {muka ? item.emoji : "★"}
+            </button>
+          );
+        })}
+      </div>
+      {menang ? (
+        <div className="rounded-3xl bg-[#7FCB96]/30 px-4 py-4 text-center">
+          <p className="text-lg font-black text-[#1C01A5]">Semua kembar ketemu!</p>
+          <button
+            type="button"
+            onClick={acakLagi}
+            className="mt-3 rounded-2xl bg-[#F0AB00] px-5 py-2.5 text-sm font-black text-[#1C01A5]"
+          >
+            Acak lagi
+          </button>
+        </div>
+      ) : (
+        <p className="text-center text-sm font-bold text-[#334155]">
+          Pasangan ketemu: {cocok.length / 2} dari 4
+        </p>
+      )}
+    </div>
+  );
+}
+
+function MainBalon() {
+  const y = useRef(10);
+  const v = useRef(0);
+  const jatuhRef = useRef(false);
+  const [posisi, setPosisi] = useState(10);
+  const [tepukan, setTepukan] = useState(0);
+  const [jatuh, setJatuh] = useState(false);
+
+  useEffect(() => {
+    let raf = 0;
+    let lalu = performance.now();
+    const loop = (now: number) => {
+      const dt = Math.min(1.6, (now - lalu) / 16.67);
+      lalu = now;
+      if (!jatuhRef.current) {
+        v.current = Math.min(7, v.current + 0.11 * dt);
+        y.current += v.current * dt * 0.55;
+        if (y.current < 0) {
+          y.current = 0;
+          v.current = 0.4;
+        }
+        if (y.current >= 68) {
+          y.current = 68;
+          jatuhRef.current = true;
+          setJatuh(true);
+          bunyi(120, 0.22);
+        }
+        setPosisi(y.current);
+      }
+      raf = requestAnimationFrame(loop);
+    };
+    raf = requestAnimationFrame(loop);
+    return () => cancelAnimationFrame(raf);
+  }, []);
+
+  const tepuk = () => {
+    if (jatuhRef.current) return;
+    v.current = -5.2;
+    setTepukan((nilai) => nilai + 1);
+    bunyi(560, 0.07);
+  };
+
+  const ulang = () => {
+    y.current = 10;
+    v.current = 0;
+    jatuhRef.current = false;
+    setPosisi(10);
+    setTepukan(0);
+    setJatuh(false);
+  };
+
+  return (
+    <div className="space-y-4">
+      <p className="text-sm font-bold text-[#334155] md:text-base">
+        Tepuk balon supaya tetap melayang. Jangan sampai jatuh.
+      </p>
+      <div className="relative h-80 overflow-hidden rounded-3xl bg-[#EEF2FF]">
+        <button
+          type="button"
+          onClick={tepuk}
+          disabled={jatuh}
+          aria-label="Tepuk balon"
+          className="absolute inset-0"
+        />
+        <div
+          className="pointer-events-none absolute left-1/2 w-24 -translate-x-1/2"
+          style={{ top: `${posisi}%` }}
+        >
+          <div className="relative mx-auto h-24 w-20 rounded-full bg-[#E98989] shadow-md">
+            <span className="absolute left-3 top-3 h-5 w-3 rounded-full bg-white/70" />
+          </div>
+          <div className="mx-auto -mt-1 h-3 w-3 rotate-45 bg-[#E98989]" />
+          <div className="mx-auto h-12 w-px bg-[#334155]/30" />
+        </div>
+        <div className="pointer-events-none absolute inset-x-0 bottom-0 h-2 bg-[#1C01A5]/10" />
+        <p className="pointer-events-none absolute left-4 top-4 rounded-full bg-white px-3 py-1 text-xs font-black text-[#1C01A5]">
+          Tepukan {tepukan}
+        </p>
+        {jatuh ? (
+          <div className="absolute inset-0 flex flex-col items-center justify-center gap-3 bg-white/80">
+            <p className="text-lg font-black text-[#1C01A5]">Balon jatuh.</p>
+            <button
+              type="button"
+              onClick={ulang}
+              className="rounded-2xl bg-[#F0AB00] px-5 py-2.5 text-sm font-black text-[#1C01A5]"
+            >
+              Main lagi
+            </button>
+          </div>
+        ) : null}
+      </div>
+    </div>
+  );
+}
+
 export default function AktivasiOtakGerbang() {
   const pathname = usePathname();
   const [akun, setAkun] = useState("");
   const [tampil, setTampil] = useState(false);
-  const [apel, setApel] = useState<number[]>([]);
-  const [jeruk, setJeruk] = useState<number[]>([]);
-  const audioRef = useRef<HTMLAudioElement | null>(null);
-  const giliran = useRef(0);
+  const [main, setMain] = useState<IdMain>("berkata");
 
   useEffect(() => {
     if (!halamanGerbang(pathname)) {
@@ -82,39 +508,6 @@ export default function AktivasiOtakGerbang() {
     };
   }, [pathname]);
 
-  useEffect(() => {
-    return () => {
-      audioRef.current?.pause();
-    };
-  }, []);
-
-  const bicara = (teks: string) => {
-    const naskah = teks.replace(/\s+/g, " ").trim();
-    if (!naskah) return;
-    const urutan = ++giliran.current;
-    const profil = bacaProgres().profil;
-    const kelamin = normalisasiKelaminGuru(profil.guruKelamin);
-    const kelas = profil.kelas.trim() || "1 SD";
-    hentikanAudioGuruAktif();
-    audioRef.current?.pause();
-    void mintaAudioTts(naskah, kelamin, kelas).then((hasil) => {
-      if (urutan !== giliran.current) return;
-      if (!hasil?.url) {
-        const guru = profilGuru(kelas, kelamin);
-        const ucapan = new SpeechSynthesisUtterance(naskah);
-        ucapan.lang = "id-ID";
-        ucapan.rate = guru.laju;
-        ucapan.pitch = guru.nada;
-        window.speechSynthesis.speak(ucapan);
-        return;
-      }
-      const audio = audioRef.current ?? new Audio();
-      audioRef.current = audio;
-      audio.src = hasil.url;
-      void audio.play().catch(() => undefined);
-    });
-  };
-
   const selesai = () => {
     if (akun) {
       try {
@@ -123,140 +516,57 @@ export default function AktivasiOtakGerbang() {
         // Mode privat tidak menyimpan jejak.
       }
     }
-    audioRef.current?.pause();
     setTampil(false);
-    bicara("Otakmu sudah segar dan siap belajar di IGIL.");
   };
 
   if (!tampil || !halamanGerbang(pathname)) return null;
 
-  const total = apel.length + jeruk.length;
-
   return (
-    <div className={`fixed inset-0 z-50 overflow-y-auto bg-white text-[#334155] p-4 md:p-8 ${fontAnak.className}`}>
-      <div className="mx-auto flex min-h-full w-full max-w-5xl flex-col justify-between gap-6">
-        <div className="w-full space-y-6">
-          <div className="flex w-full flex-col items-center justify-between gap-4 rounded-3xl bg-[#1C01A5] p-5 text-white shadow-lg md:flex-row">
-            <div className="flex items-center gap-3">
-              <div className="flex h-14 w-14 shrink-0 items-center justify-center rounded-2xl bg-[#F0AB00] text-3xl font-black text-[#1C01A5]">
-                🦉
-              </div>
-              <div>
-                <div className="text-xs font-black uppercase tracking-wider text-[#F0AB00] md:text-sm">
-                  Aktivasi otak
-                </div>
-                <h1 className="text-xl font-black text-white md:text-2xl">
-                  Senam Otak &amp; Irama Buah Kebun Kakek
-                </h1>
-              </div>
+    <div className={`fixed inset-0 z-50 flex flex-col bg-white text-[#334155] ${fontAnak.className}`}>
+      <div className="flex-1 overflow-y-auto px-4 py-4 md:px-8 md:py-6">
+        <div className="mx-auto w-full max-w-3xl space-y-4">
+          <div className="flex items-center gap-3 rounded-3xl bg-[#1C01A5] p-5 text-white shadow-lg">
+            <div className="flex h-14 w-14 shrink-0 items-center justify-center rounded-2xl bg-[#F0AB00] text-3xl" aria-hidden>
+              🦉
             </div>
-            <button
-              type="button"
-              onClick={() =>
-                bicara(
-                  "Selamat datang di IGIL! Sentuh 5 Apel Merah dengan tangan kirimu dan 5 Jeruk Kuning dengan tangan kananmu sambil berhitung lantang!",
-                )
-              }
-              className="shrink-0 rounded-2xl bg-[#F0AB00] px-4 py-2.5 text-xs font-black text-[#1C01A5] md:text-sm"
-            >
-              Dengarkan Panduan IGIL
-            </button>
-          </div>
-
-          <div className="w-full overflow-x-auto pb-3">
-            <div className="flex min-w-[680px] flex-nowrap gap-5">
-              <div className="w-1/2 space-y-4 rounded-3xl border-2 border-[#EF4444] bg-[#FEE2E2] p-5">
-                <div className="flex items-center justify-between">
-                  <h2 className="text-base font-black text-[#991B1B] md:text-lg">
-                    Tangan Kiri: Sentuh 5 Apel Merah
-                  </h2>
-                  <span className="rounded-full bg-white px-3 py-1 text-xs font-black text-[#991B1B]">
-                    {apel.length} / 5 Apel
-                  </span>
-                </div>
-                <p className="text-xs text-[#334155] md:text-sm">
-                  Sentuh buah apel satu per satu untuk mengaktifkan fokus visual dan motorik kirimu!
-                </p>
-                <div className="flex items-center justify-between gap-2 pt-2">
-                  {[1, 2, 3, 4, 5].map((id) => {
-                    const aktif = apel.includes(id);
-                    return (
-                      <button
-                        key={id}
-                        type="button"
-                        onClick={() => {
-                          if (aktif) return;
-                          const next = [...apel, id];
-                          setApel(next);
-                          bicara(`Apel ${next.length}`);
-                        }}
-                        className={`flex h-16 w-14 flex-col items-center justify-center rounded-2xl border-2 font-black ${
-                          aktif
-                            ? "scale-105 border-[#991B1B] bg-[#EF4444] text-white"
-                            : "border-[#EF4444] bg-white text-[#334155]"
-                        }`}
-                      >
-                        <span className="text-2xl">🍎</span>
-                        <span className="text-xs">{aktif ? id : "?"}</span>
-                      </button>
-                    );
-                  })}
-                </div>
-              </div>
-
-              <div className="w-1/2 space-y-4 rounded-3xl border-2 border-[#F59E0B] bg-[#FEF3C7] p-5">
-                <div className="flex items-center justify-between">
-                  <h2 className="text-base font-black text-[#92400E] md:text-lg">
-                    Tangan Kanan: Sentuh 5 Jeruk Kuning
-                  </h2>
-                  <span className="rounded-full bg-white px-3 py-1 text-xs font-black text-[#92400E]">
-                    {jeruk.length} / 5 Jeruk
-                  </span>
-                </div>
-                <p className="text-xs text-[#334155] md:text-sm">
-                  Sentuh buah jeruk satu per satu untuk menyeimbangkan koordinasi otak kanan dan kirimu!
-                </p>
-                <div className="flex items-center justify-between gap-2 pt-2">
-                  {[1, 2, 3, 4, 5].map((id) => {
-                    const aktif = jeruk.includes(id);
-                    return (
-                      <button
-                        key={id}
-                        type="button"
-                        onClick={() => {
-                          if (aktif) return;
-                          const next = [...jeruk, id];
-                          setJeruk(next);
-                          bicara(`Jeruk ${next.length}`);
-                        }}
-                        className={`flex h-16 w-14 flex-col items-center justify-center rounded-2xl border-2 font-black ${
-                          aktif
-                            ? "scale-105 border-[#92400E] bg-[#F59E0B] text-white"
-                            : "border-[#F59E0B] bg-white text-[#334155]"
-                        }`}
-                      >
-                        <span className="text-2xl">🍊</span>
-                        <span className="text-xs">{aktif ? id : "?"}</span>
-                      </button>
-                    );
-                  })}
-                </div>
-              </div>
+            <div>
+              <p className="text-xs font-black uppercase tracking-wider text-[#F0AB00]">Aktivasi otak</p>
+              <h1 className="text-xl font-black text-white md:text-2xl">Main santai sebelum belajar</h1>
+              <p className="mt-1 text-sm font-bold text-white/80">Tiga permainan bebas. Bukan soal pelajaran.</p>
             </div>
           </div>
+
+          <div className="grid grid-cols-3 gap-2">
+            {PILIHAN_MAIN.map((item) => {
+              const aktif = main === item.id;
+              return (
+                <button
+                  key={item.id}
+                  type="button"
+                  aria-pressed={aktif}
+                  onClick={() => setMain(item.id)}
+                  className={`rounded-2xl px-2 py-3 text-xs font-black sm:text-sm ${
+                    aktif ? "bg-[#F0AB00] text-[#1C01A5]" : "bg-[#EEF2FF] text-[#1C01A5]"
+                  }`}
+                >
+                  {item.nama}
+                </button>
+              );
+            })}
+          </div>
+
+          {main === "berkata" ? <MainBerkata /> : null}
+          {main === "kartu" ? <MainKartu /> : null}
+          {main === "balon" ? <MainBalon /> : null}
         </div>
-
-        <div className="flex flex-col items-center justify-between gap-4 rounded-3xl border-2 border-[#3B82F6] bg-[#DBEAFE] p-5 sm:flex-row">
-          <div className="text-sm font-black text-[#1E3A8A] md:text-base">
-            Status aktivasi otak: {total} / 10 buah tersentuh{" "}
-            {total === 10
-              ? "— Luar biasa! Otak kiri dan kanan siap."
-              : "Sentuh buah di atas, atau langsung lanjut belajar."}
-          </div>
+      </div>
+      <div className="border-t border-[#1C01A5]/10 bg-white px-4 py-4 md:px-8">
+        <div className="mx-auto flex w-full max-w-3xl flex-col items-center justify-between gap-3 sm:flex-row">
+          <p className="text-sm font-bold text-[#1C01A5]">Boleh berhenti kapan saja, lalu lanjut belajar.</p>
           <button
             type="button"
             onClick={selesai}
-            className="shrink-0 rounded-2xl border-2 border-[#F0AB00] bg-[#1C01A5] px-8 py-3.5 text-base font-black text-[#F0AB00] shadow-md"
+            className="shrink-0 rounded-2xl border-2 border-[#F0AB00] bg-[#1C01A5] px-8 py-3.5 text-base font-black text-[#F0AB00]"
           >
             Lanjut belajar
           </button>
