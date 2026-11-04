@@ -301,6 +301,21 @@ a.igil-tombol:active {
   animation: igil-slide-cerita 0.45s ease;
 }
 
+button.igil-panah-slide {
+  background: transparent;
+  border-color: transparent;
+  box-shadow: none;
+}
+
+button.igil-panah-slide:hover,
+button.igil-panah-slide:active {
+  transform: none;
+  background: rgb(255 255 255 / 0.2);
+  filter: none;
+  box-shadow: none;
+  border-color: transparent;
+}
+
 @media (prefers-reduced-motion: reduce) {
   .igil-slide-cerita {
     animation: none;

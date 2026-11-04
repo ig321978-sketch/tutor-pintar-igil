@@ -518,6 +518,12 @@ export default function IgilModulePlayer() {
   const judulSubBab = sisaJudulSub.join(": ");
   const ceritaAktif =
     currentSubContent.stories[indeksCerita] ?? currentSubContent.stories[0];
+  const geserCerita = (arah: 1 | -1) => {
+    setIndeksCerita((saatIni) => {
+      const jumlah = currentSubContent.stories.length;
+      return (saatIni + arah + jumlah) % jumlah;
+    });
+  };
 
   useEffect(() => {
     setIndeksCerita(0);
@@ -820,23 +826,28 @@ export default function IgilModulePlayer() {
               </span>
             </div>
 
-            <div className="mx-auto w-full max-w-2xl overflow-hidden">
+            <div className="mx-auto w-full overflow-hidden">
               <div
                 key={ceritaAktif.id}
                 role="button"
                 tabIndex={0}
                 aria-label="Sentuh untuk menampilkan slide berikutnya di tengah"
-                onClick={() =>
-                  setIndeksCerita(
-                    (saatIni) => (saatIni + 1) % currentSubContent.stories.length,
-                  )
-                }
+                onClick={() => geserCerita(1)}
                 onKeyDown={(kejadian) => {
-                  if (kejadian.key !== "Enter" && kejadian.key !== " ") return;
+                  if (kejadian.key === "ArrowLeft") {
+                    kejadian.preventDefault();
+                    geserCerita(-1);
+                    return;
+                  }
+                  if (
+                    kejadian.key !== "Enter" &&
+                    kejadian.key !== " " &&
+                    kejadian.key !== "ArrowRight"
+                  ) {
+                    return;
+                  }
                   kejadian.preventDefault();
-                  setIndeksCerita(
-                    (saatIni) => (saatIni + 1) % currentSubContent.stories.length,
-                  );
+                  geserCerita(1);
                 }}
                 className="igil-slide-cerita w-full cursor-pointer bg-[#FFFDF9] border-2 border-[#EF4444] rounded-3xl p-4 space-y-3 shadow-sm"
               >
@@ -857,10 +868,68 @@ export default function IgilModulePlayer() {
                   </button>
                 </div>
 
-                <GambarPensilCerita sceneType={ceritaAktif.sceneType} />
+                <div className="relative">
+                  <GambarPensilCerita sceneType={ceritaAktif.sceneType} />
+                  <button
+                    type="button"
+                    aria-label="Slide sebelumnya"
+                    onClick={(kejadian) => {
+                      kejadian.stopPropagation();
+                      geserCerita(-1);
+                    }}
+                    className="igil-panah-slide absolute inset-y-0 left-0 z-10 flex w-16 items-center justify-center rounded-l-2xl"
+                  >
+                    <svg viewBox="0 0 24 24" className="h-12 w-12" aria-hidden="true">
+                      <path
+                        d="M14.5 5 L8 12 L14.5 19"
+                        fill="none"
+                        stroke="#1C01A5"
+                        strokeWidth="5"
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                      />
+                      <path
+                        d="M14.5 5 L8 12 L14.5 19"
+                        fill="none"
+                        stroke="#fff"
+                        strokeWidth="2.5"
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                      />
+                    </svg>
+                  </button>
+                  <button
+                    type="button"
+                    aria-label="Slide berikutnya"
+                    onClick={(kejadian) => {
+                      kejadian.stopPropagation();
+                      geserCerita(1);
+                    }}
+                    className="igil-panah-slide absolute inset-y-0 right-0 z-10 flex w-16 items-center justify-center rounded-r-2xl"
+                  >
+                    <svg viewBox="0 0 24 24" className="h-12 w-12" aria-hidden="true">
+                      <path
+                        d="M9.5 5 L16 12 L9.5 19"
+                        fill="none"
+                        stroke="#1C01A5"
+                        strokeWidth="5"
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                      />
+                      <path
+                        d="M9.5 5 L16 12 L9.5 19"
+                        fill="none"
+                        stroke="#fff"
+                        strokeWidth="2.5"
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                      />
+                    </svg>
+                  </button>
+                </div>
               </div>
               <p className="mt-3 text-center text-xs font-bold text-[#334155]">
-                Sentuh gambar untuk geser. Slide berikutnya berhenti di tengah.
+                Sentuh panah atau gambar. Slide berikutnya berhenti di tengah.
               </p>
               <div className="mt-2 flex items-center justify-center gap-2" aria-hidden>
                 {currentSubContent.stories.map((st) => (
