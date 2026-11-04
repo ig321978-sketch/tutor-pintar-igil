@@ -753,10 +753,6 @@ export default function IgilModulePlayer() {
             <h2 className="text-xl md:text-2xl font-black text-[#1C01A5]">
               {currentSubContent.fullTitle}
             </h2>
-            <p className="text-xs md:text-sm text-[#334155] mt-0.5">
-              Geser kartu ke kiri-kanan pada setiap tahap SMICPA, lalu klik tombol{" "}
-              <strong>LANJUTKAN</strong> di pojok kanan bawah untuk membuka tahap berikutnya!
-            </p>
           </div>
 
           {/* --------------------------------------------------------------- */}
@@ -765,9 +761,8 @@ export default function IgilModulePlayer() {
           <div className="space-y-3 border-b-2 border-slate-200 pb-6">
             <div className="flex items-center justify-between">
               <span className="px-3 py-1 rounded-full bg-[#FEE2E2] text-[#991B1B] font-black text-xs">
-                TAHAP 1 [S] • STORY (CERITA DOODLE BERWARNA TANPA TEKS — FOKUS MENDENGAR)
+                Tahap 1: Story
               </span>
-              <span className="text-xs font-bold text-slate-500">Geser Kiri-Kanan ↔️</span>
             </div>
 
             <div className="w-full overflow-x-auto pb-3">
@@ -821,9 +816,8 @@ export default function IgilModulePlayer() {
             <div ref={mindMapRef} className="space-y-3 border-b-2 border-slate-200 pb-6 pt-2">
               <div className="flex items-center justify-between">
                 <span className="px-3 py-1 rounded-full bg-[#FEF3C7] text-[#92400E] font-black text-xs">
-                  TAHAP 2 [M] • MIND-MAPPING (PETA PIKIRAN METODE PEMECAHAN MASALAH)
+                  Tahap 2: Mind-Map
                 </span>
-                <span className="text-xs font-bold text-slate-500">Geser Kiri-Kanan ↔️</span>
               </div>
 
               <div className="w-full overflow-x-auto pb-3">
@@ -880,9 +874,8 @@ export default function IgilModulePlayer() {
             <div ref={infografisRef} className="space-y-3 border-b-2 border-slate-200 pb-6 pt-2">
               <div className="flex items-center justify-between">
                 <span className="px-3 py-1 rounded-full bg-[#DCFCE7] text-[#166534] font-black text-xs">
-                  TAHAP 3 [I] • INFOGRAFIS (3 SLIDE TABEL RINGKASAN, SUARA &amp; KANVAS TITIK)
+                  Tahap 3: Infografis
                 </span>
-                <span className="text-xs font-bold text-slate-500">Geser Kiri-Kanan ↔️</span>
               </div>
 
               <div className="w-full overflow-x-auto pb-3">
@@ -1009,9 +1002,8 @@ export default function IgilModulePlayer() {
             <div ref={concreteRef} className="space-y-3 border-b-2 border-slate-200 pb-6 pt-2">
               <div className="flex items-center justify-between">
                 <span className="px-3 py-1 rounded-full bg-[#DBEAFE] text-[#1E3A8A] font-black text-xs">
-                  TAHAP 4 [C] • CONCRETE (3 SLIDE PERMAINAN PANDUAN BENDA NYATA &amp; KANVAS)
+                  Tahap 4: Concrete
                 </span>
-                <span className="text-xs font-bold text-slate-500">Geser Kiri-Kanan ↔️</span>
               </div>
 
               <div className="w-full overflow-x-auto pb-3">
@@ -1095,9 +1087,8 @@ export default function IgilModulePlayer() {
             <div ref={pictorialRef} className="space-y-3 border-b-2 border-slate-200 pb-6 pt-2">
               <div className="flex items-center justify-between">
                 <span className="px-3 py-1 rounded-full bg-[#FEF3C7] text-[#92400E] font-black text-xs">
-                  TAHAP 5 [P] • PICTORIAL (3 SLIDE DIAGRAM TEN-FRAME &amp; NUMBER BOND)
+                  Tahap 5: Picture
                 </span>
-                <span className="text-xs font-bold text-slate-500">Geser Kiri-Kanan ↔️</span>
               </div>
 
               <div className="w-full overflow-x-auto pb-3">
@@ -1202,9 +1193,8 @@ export default function IgilModulePlayer() {
             <div ref={abstractRef} className="space-y-4 pt-2 pb-6">
               <div className="flex items-center justify-between">
                 <span className="px-3 py-1 rounded-full bg-[#1C01A5] text-[#FFE566] font-black text-xs">
-                  TAHAP 6 [A] • ABSTRACT (3 SLIDE SIMBOL ANGKA &amp; NOTASI MATEMATIKA)
+                  Tahap 6: Abstract
                 </span>
-                <span className="text-xs font-bold text-slate-500">Geser Kiri-Kanan ↔️</span>
               </div>
 
               <div className="w-full overflow-x-auto pb-3">
