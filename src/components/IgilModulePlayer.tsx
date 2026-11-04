@@ -335,6 +335,8 @@ export default function IgilModulePlayer() {
   const [concreteCounter, setConcreteCounter] = useState<number>(3);
 
   // Ref untuk auto-scroll mulus saat tombol floating-end LANJUTKAN diklik
+  const tabUtamaRef = useRef<HTMLDivElement | null>(null);
+  const [batasTabSubBab, setBatasTabSubBab] = useState(74);
   const mindMapRef = useRef<HTMLDivElement | null>(null);
   const infografisRef = useRef<HTMLDivElement | null>(null);
   const concreteRef = useRef<HTMLDivElement | null>(null);
@@ -458,6 +460,19 @@ export default function IgilModulePlayer() {
     };
   }, []);
 
+  useEffect(() => {
+    const el = tabUtamaRef.current;
+    if (!el) return;
+    const ukur = () => {
+      const atas = Number.parseFloat(getComputedStyle(el).top);
+      setBatasTabSubBab((Number.isFinite(atas) ? atas : 0) + el.offsetHeight);
+    };
+    ukur();
+    const pengamat = new ResizeObserver(ukur);
+    pengamat.observe(el);
+    return () => pengamat.disconnect();
+  }, []);
+
   // ============================================================================
   // HANDLER KUNCI SCROLL VERTIKAL SMICPA (MATERI)
   // ============================================================================
@@ -565,7 +580,7 @@ export default function IgilModulePlayer() {
       {/* =================================================================== */}
       {/* TOMBOL TAB UTAMA (FLOATING & SLIDE KIRI-KANAN • DASAR #1C01A5)      */}
       {/* =================================================================== */}
-      <div className="sticky top-2 z-40 w-[99%] mx-auto px-1 md:px-3 mt-3">
+      <div ref={tabUtamaRef} className="sticky top-2 z-40 w-[99%] mx-auto px-1 md:px-3 mt-3">
         <nav className="w-full bg-[#1C01A5] rounded-none p-2 shadow-lg overflow-x-auto">
           <div className="flex flex-nowrap items-center gap-2 min-w-max">
             {(
@@ -764,7 +779,10 @@ export default function IgilModulePlayer() {
       {activeMainTab === "materi" && (
         <section className="w-[98%] mx-auto mt-3 bg-white px-2 md:px-6 space-y-6">
           {/* Tab sub-bab dan judul menempel di bawah tab utama */}
-          <div className="sticky top-[74px] z-30 border-b border-slate-200 bg-white/95 py-2 backdrop-blur">
+          <div
+            className="sticky z-30 border-b border-slate-200 bg-white/95 py-2 backdrop-blur"
+            style={{ top: batasTabSubBab }}
+          >
             <div className="overflow-x-auto py-3">
               <div className="flex flex-nowrap items-center gap-2.5 min-w-max px-3">
                 {(["A", "B", "C", "D"] as SubBabId[]).map((subId) => {
@@ -869,7 +887,12 @@ export default function IgilModulePlayer() {
 
               <div className="flex flex-col">
                 {currentSubContent.mindMaps.map((mm) => (
-                  <div key={mm.stepNumber} className="igil-kartu-lancip w-full px-5 pt-12 pb-14">
+                  <div
+                    key={mm.stepNumber}
+                    className={`igil-kartu-lancip w-full px-5 pb-14 ${
+                      mm.stepNumber === 1 ? "igil-kartu-awal pt-5" : "pt-12"
+                    }`}
+                  >
                     <div className="flex items-center justify-between">
                       <span className="text-2xl">{mm.icon}</span>
                       <button
