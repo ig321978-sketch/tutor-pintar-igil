@@ -331,6 +331,7 @@ export default function IgilModulePlayer() {
 
   // 4. State Halaman Materi (Sub-Bab A/B/C/D + Pengunci Scroll Vertikal SMICPA)
   const [activeSubBab, setActiveSubBab] = useState<SubBabId>("A");
+  const [indeksCerita, setIndeksCerita] = useState(0);
   const [unlockedSmicpaStage, setUnlockedSmicpaStage] = useState<number>(1); // 1=Story .. 6=Abstract
   const [concreteCounter, setConcreteCounter] = useState<number>(3);
 
@@ -392,38 +393,62 @@ export default function IgilModulePlayer() {
 
   const audioGuru = useRef<HTMLAudioElement | null>(null);
   const giliranSuara = useRef(0);
+  const lepasJedaCerita = useRef<(() => void) | null>(null);
 
-  const ucapkanCadangan = (naskah: string, kelas: string, kelamin: ReturnType<typeof normalisasiKelaminGuru>) => {
-    if (!("speechSynthesis" in window)) return;
+  const ucapkanCadangan = (
+    naskah: string,
+    kelas: string,
+    kelamin: ReturnType<typeof normalisasiKelaminGuru>,
+    selesai?: () => void,
+  ) => {
+    if (!("speechSynthesis" in window)) {
+      selesai?.();
+      return;
+    }
     const guru = profilGuru(kelas, kelamin);
     const utterance = new SpeechSynthesisUtterance(naskah);
     utterance.lang = "id-ID";
     utterance.rate = guru.laju;
     utterance.pitch = guru.nada;
+    utterance.onend = () => selesai?.();
+    utterance.onerror = () => selesai?.();
     window.speechSynthesis.speak(utterance);
   };
 
-  const speakGuru = useCallback((text: string) => {
+  const speakGuru = useCallback((text: string, selesai?: () => void) => {
     const naskah = text.replace(/\s+/g, " ").trim();
     if (!naskah || typeof window === "undefined") return;
+    if (selesai) {
+      lepasJedaCerita.current = selesai;
+    } else {
+      lepasJedaCerita.current?.();
+      lepasJedaCerita.current = null;
+    }
     const giliran = ++giliranSuara.current;
     const profil = bacaProgres().profil;
     const kelamin = normalisasiKelaminGuru(profil.guruKelamin);
     const kelas = profil.kelas.trim() || "1 SD";
+    const tutup = () => {
+      if (giliran !== giliranSuara.current) return;
+      if (lepasJedaCerita.current !== selesai) return;
+      selesai?.();
+      lepasJedaCerita.current = null;
+    };
     hentikanAudioGuruAktif();
     audioGuru.current?.pause();
     void mintaAudioTts(naskah, kelamin, kelas).then((hasil) => {
       if (giliran !== giliranSuara.current) return;
       if (!hasil?.url) {
-        ucapkanCadangan(naskah, kelas, kelamin);
+        ucapkanCadangan(naskah, kelas, kelamin, selesai ? tutup : undefined);
         return;
       }
       const audio = audioGuru.current ?? new Audio();
       audioGuru.current = audio;
+      audio.onended = selesai ? tutup : null;
       audio.src = hasil.url;
       void audio.play().catch(() => {
         if (giliran !== giliranSuara.current) return;
-        ucapkanCadangan(naskah, kelas, kelamin);
+        ucapkanCadangan(naskah, kelas, kelamin, selesai ? tutup : undefined);
       });
     });
   }, []);
@@ -491,6 +516,12 @@ export default function IgilModulePlayer() {
   const currentSubContent = SUB_BABS[activeSubBab];
   const [kodeSubBab, ...sisaJudulSub] = currentSubContent.fullTitle.split(": ");
   const judulSubBab = sisaJudulSub.join(": ");
+  const ceritaAktif =
+    currentSubContent.stories[indeksCerita] ?? currentSubContent.stories[0];
+
+  useEffect(() => {
+    setIndeksCerita(0);
+  }, [activeSubBab]);
 
   return (
     <div className={`min-h-screen w-full bg-white text-[#334155] pb-16 ${fontAnak.className}`}>
@@ -789,32 +820,56 @@ export default function IgilModulePlayer() {
               </span>
             </div>
 
-            <div className="w-full overflow-x-auto pb-3">
+            <div className="mx-auto w-full max-w-2xl overflow-hidden">
               <div
-                className="flex flex-nowrap gap-5"
-                style={{ minWidth: currentSubContent.stories.length * 320 }}
+                key={ceritaAktif.id}
+                role="button"
+                tabIndex={0}
+                aria-label="Sentuh untuk menampilkan slide berikutnya di tengah"
+                onClick={() =>
+                  setIndeksCerita(
+                    (saatIni) => (saatIni + 1) % currentSubContent.stories.length,
+                  )
+                }
+                onKeyDown={(kejadian) => {
+                  if (kejadian.key !== "Enter" && kejadian.key !== " ") return;
+                  kejadian.preventDefault();
+                  setIndeksCerita(
+                    (saatIni) => (saatIni + 1) % currentSubContent.stories.length,
+                  );
+                }}
+                className="igil-slide-cerita w-full cursor-pointer bg-[#FFFDF9] border-2 border-[#EF4444] rounded-3xl p-4 space-y-3 shadow-sm"
               >
-                {currentSubContent.stories.map((st, idx) => (
-                  <div
-                    key={st.id}
-                    className="w-[300px] bg-[#FFFDF9] border-2 border-[#EF4444] rounded-3xl p-4 space-y-3 shrink-0 shadow-sm"
+                <div className="flex items-center justify-between gap-3">
+                  <span className="text-xs font-black text-[#1C01A5]">
+                    Slide Cerita {currentSubContent.stories.indexOf(ceritaAktif) + 1} /{" "}
+                    {currentSubContent.stories.length}
+                  </span>
+                  <button
+                    type="button"
+                    onClick={(kejadian) => {
+                      kejadian.stopPropagation();
+                      speakGuru(ceritaAktif.voiceNarration);
+                    }}
+                    className="px-4 py-2 rounded-xl bg-[#1C01A5] text-[#FFE566] font-black text-xs flex items-center gap-1.5 shadow"
                   >
-                    <div className="flex items-center justify-between">
-                      <span className="text-xs font-black text-[#1C01A5]">
-                        Slide Cerita {idx + 1} / {currentSubContent.stories.length}
-                      </span>
-                      <button
-                        type="button"
-                        onClick={() => speakGuru(st.voiceNarration)}
-                        className="px-4 py-2 rounded-xl bg-[#1C01A5] text-[#FFE566] font-black text-xs flex items-center gap-1.5 shadow"
-                      >
-                        🔊 Dengarkan Suara Guru
-                      </button>
-                    </div>
+                    🔊 Dengarkan Suara Guru
+                  </button>
+                </div>
 
-                    {/* Ilustrasi doodle berwarna tanpa teks cerita agar anak fokus mendengar */}
-                    <GambarPensilCerita sceneType={st.sceneType} />
-                  </div>
+                <GambarPensilCerita sceneType={ceritaAktif.sceneType} />
+              </div>
+              <p className="mt-3 text-center text-xs font-bold text-[#334155]">
+                Sentuh gambar untuk geser. Slide berikutnya berhenti di tengah.
+              </p>
+              <div className="mt-2 flex items-center justify-center gap-2" aria-hidden>
+                {currentSubContent.stories.map((st) => (
+                  <span
+                    key={st.id}
+                    className={`h-2.5 rounded-full ${
+                      st.id === ceritaAktif.id ? "w-6 bg-[#1C01A5]" : "w-2.5 bg-[#1C01A5]/25"
+                    }`}
+                  />
                 ))}
               </div>
             </div>

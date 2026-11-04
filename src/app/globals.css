@@ -287,3 +287,22 @@ a.igil-tombol:active {
   font-family: ui-sans-serif, system-ui, sans-serif !important;
   paint-order: stroke fill;
 }
+
+@keyframes igil-slide-cerita {
+  from {
+    transform: translateX(100%);
+  }
+  to {
+    transform: translateX(0);
+  }
+}
+
+.igil-slide-cerita {
+  animation: igil-slide-cerita 0.45s ease;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .igil-slide-cerita {
+    animation: none;
+  }
+}
