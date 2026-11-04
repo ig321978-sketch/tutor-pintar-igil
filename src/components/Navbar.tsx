@@ -50,7 +50,7 @@ export default function Navbar() {
                 href={item.href}
                 className={`igil-tombol rounded-full px-3 py-2 text-sm font-bold transition-colors ${
                   aktif
-                    ? "border-[#F0AB00] bg-[#1C01A5] text-white"
+                    ? "border-[#FFE566] bg-[#1C01A5] text-white"
                     : "border-[#1C01A5] text-[#1C01A5] hover:bg-[#F0AB00]/15 hover:text-[#F0AB00]"
                 }`}
               >
@@ -97,7 +97,7 @@ export default function Navbar() {
                 onClick={() => setTerbuka(false)}
                 className={`igil-tombol block rounded-xl px-3 py-2 text-sm font-bold ${
                   aktif
-                    ? "border-[#F0AB00] bg-[#1C01A5] text-white"
+                    ? "border-[#FFE566] bg-[#1C01A5] text-white"
                     : "border-[#1C01A5] text-[#1C01A5] hover:bg-[#F0AB00]/15"
                 }`}
               >

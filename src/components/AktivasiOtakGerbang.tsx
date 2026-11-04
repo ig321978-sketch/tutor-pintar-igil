@@ -226,7 +226,7 @@ function MainBerkata() {
         Ada tulisan IGIL berkata? Tiru gerakannya. Tidak ada? Tekan Diam.
       </p>
       <div className="rounded-3xl bg-[#1C01A5] px-5 py-6 text-center text-white">
-        <p className={`text-sm font-black ${perintah.berkata ? "text-[#F0AB00]" : "text-white/70"}`}>
+        <p className={`text-sm font-black ${perintah.berkata ? "text-[#FFE566]" : "text-white/70"}`}>
           {perintah.berkata ? "IGIL berkata" : "Tidak ada kata ajaib"}
         </p>
         <p className="mt-2 text-5xl" aria-hidden>
@@ -393,7 +393,7 @@ function MainKartu() {
               className={`flex h-20 items-center justify-center rounded-2xl border-2 text-3xl sm:h-24 ${
                 muka
                   ? "border-[#F0AB00] bg-white"
-                  : "border-[#1C01A5] bg-[#1C01A5] text-[#F0AB00]"
+                  : "border-[#1C01A5] bg-[#1C01A5] text-[#FFE566]"
               }`}
             >
               {muka ? item.emoji : "★"}
@@ -555,7 +555,7 @@ export default function AktivasiOtakGerbang() {
               🦉
             </div>
             <div>
-              <p className="text-xs font-black uppercase tracking-wider text-[#F0AB00]">Aktivasi otak</p>
+              <p className="text-xs font-black uppercase tracking-wider text-[#FFE566]">Aktivasi otak</p>
               <h1 className="text-xl font-black text-white md:text-2xl">Main santai sebelum belajar</h1>
               <p className="mt-1 text-sm font-bold text-white/80">
                 {PILIHAN_MAIN.find((item) => item.id === main)?.nama}. Bukan soal pelajaran.
@@ -574,7 +574,7 @@ export default function AktivasiOtakGerbang() {
           <button
             type="button"
             onClick={selesai}
-            className="shrink-0 rounded-2xl border-2 border-[#F0AB00] bg-[#1C01A5] px-8 py-3.5 text-base font-black text-[#F0AB00]"
+            className="shrink-0 rounded-2xl border-2 border-[#FFE566] bg-[#1C01A5] px-8 py-3.5 text-base font-black text-[#FFE566]"
           >
             Lanjut belajar
           </button>

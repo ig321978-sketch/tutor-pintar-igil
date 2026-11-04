@@ -636,7 +636,7 @@ export default function IgilModulePlayer() {
 
               {/* Label Mapel/Kelas (#F0AB00 H2/H3 Kapital Tanpa Kartu) & Nama Bab (Putih H1 Tanpa Kartu) */}
               <div>
-                <h2 className="text-sm md:text-lg font-black uppercase tracking-wider text-[#F0AB00]">
+                <h2 className="text-sm md:text-lg font-black uppercase tracking-wider text-[#FFE566]">
                   {materiBab1.subjectLabel}
                 </h2>
                 <h1 className="text-lg md:text-2xl lg:text-3xl font-black text-white leading-tight">
@@ -690,8 +690,8 @@ export default function IgilModulePlayer() {
                   }}
                   style={{
                     backgroundColor: "#1C01A5",
-                    color: isActive ? "#F0AB00" : "#FFFFFF",
-                    borderColor: isActive ? "#F0AB00" : "#FFFFFF",
+                    color: isActive ? "#FFE566" : "#FFFFFF",
+                    borderColor: isActive ? "#FFE566" : "#FFFFFF",
                   }}
                   className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl font-black text-sm md:text-base border-2 transition-all shrink-0"
                 >
@@ -728,7 +728,7 @@ export default function IgilModulePlayer() {
               <div className="flex flex-nowrap gap-5 min-w-[720px]">
                 {/* Kartu 1: Komponen Silabus Kurikulum Merdeka */}
                 <div className="w-1/2 bg-[#EFF6FF] border-2 border-[#3B82F6] rounded-3xl p-5 space-y-3">
-                  <div className="inline-block px-3 py-1 rounded-full bg-[#1C01A5] text-[#F0AB00] text-xs font-black">
+                  <div className="inline-block px-3 py-1 rounded-full bg-[#1C01A5] text-[#FFE566] text-xs font-black">
                     KOMPONEN SILABUS KURIKULUM MERDEKA
                   </div>
                   <h3 className="text-lg font-black text-[#1C01A5]">
@@ -749,7 +749,7 @@ export default function IgilModulePlayer() {
 
                 {/* Kartu 2: Sistem Tiket Token 30/70/50 & Kolam Beasiswa 90:10 */}
                 <div className="w-1/2 bg-[#FFFBEB] border-2 border-[#F59E0B] rounded-3xl p-5 space-y-3">
-                  <div className="inline-block px-3 py-1 rounded-full bg-[#1C01A5] text-[#F0AB00] text-xs font-black">
+                  <div className="inline-block px-3 py-1 rounded-full bg-[#1C01A5] text-[#FFE566] text-xs font-black">
                     ARSITEKTUR LEARN-TO-EARN &amp; KOLAM BEASISWA 90:10
                   </div>
                   <h3 className="text-lg font-black text-[#1C01A5]">
@@ -861,7 +861,7 @@ export default function IgilModulePlayer() {
                   window.scrollTo({ top: 0, behavior: "smooth" });
                 }
               }}
-              className="px-8 py-3 rounded-2xl bg-[#1C01A5] text-[#F0AB00] border-2 border-[#F0AB00] font-black text-sm shadow-md"
+              className="px-8 py-3 rounded-2xl bg-[#1C01A5] text-[#FFE566] border-2 border-[#FFE566] font-black text-sm shadow-md"
             >
               LANJUT
             </button>
@@ -941,7 +941,7 @@ export default function IgilModulePlayer() {
                       <button
                         type="button"
                         onClick={() => speakGuru(st.voiceNarration)}
-                        className="px-4 py-2 rounded-xl bg-[#1C01A5] text-[#F0AB00] font-black text-xs flex items-center gap-1.5 shadow"
+                        className="px-4 py-2 rounded-xl bg-[#1C01A5] text-[#FFE566] font-black text-xs flex items-center gap-1.5 shadow"
                       >
                         🔊 Dengarkan Suara Guru
                       </button>
@@ -964,7 +964,7 @@ export default function IgilModulePlayer() {
                     "Tahap Cerita selesai! Sekarang mari kita lihat Peta Pikiran atau Mind-Mapping untuk memecahkan masalah tadi."
                   )
                 }
-                className="px-6 py-2.5 rounded-2xl bg-[#1C01A5] text-[#F0AB00] border-2 border-[#F0AB00] font-black text-xs md:text-sm shadow-md"
+                className="px-6 py-2.5 rounded-2xl bg-[#1C01A5] text-[#FFE566] border-2 border-[#FFE566] font-black text-xs md:text-sm shadow-md"
               >
                 LANJUTKAN KE MIND-MAPPING ⬇️
               </button>
@@ -1022,7 +1022,7 @@ export default function IgilModulePlayer() {
                       "Peta Pikiran sudah jelas! Sekarang kita buka Tabel Ringkasan Infografis."
                     )
                   }
-                  className="px-6 py-2.5 rounded-2xl bg-[#1C01A5] text-[#F0AB00] border-2 border-[#F0AB00] font-black text-xs md:text-sm shadow-md"
+                  className="px-6 py-2.5 rounded-2xl bg-[#1C01A5] text-[#FFE566] border-2 border-[#FFE566] font-black text-xs md:text-sm shadow-md"
                 >
                   LANJUTKAN KE INFOGRAFIS ⬇️
                 </button>
@@ -1051,7 +1051,7 @@ export default function IgilModulePlayer() {
                     </h3>
                     <table className="w-full text-xs border-collapse bg-white rounded-2xl overflow-hidden">
                       <thead>
-                        <tr className="bg-[#1C01A5] text-[#F0AB00]">
+                        <tr className="bg-[#1C01A5] text-[#FFE566]">
                           <th className="p-2.5 text-left">Jenis Buah</th>
                           <th className="p-2.5 text-center">Angka</th>
                           <th className="p-2.5 text-left">Dengan Kata</th>
@@ -1080,7 +1080,7 @@ export default function IgilModulePlayer() {
                     </h3>
                     <table className="w-full text-xs border-collapse bg-white rounded-2xl overflow-hidden">
                       <thead>
-                        <tr className="bg-[#1C01A5] text-[#F0AB00]">
+                        <tr className="bg-[#1C01A5] text-[#FFE566]">
                           <th className="p-2.5 text-left">Gambar Buah</th>
                           <th className="p-2.5 text-center">Tombol Suara</th>
                         </tr>
@@ -1099,7 +1099,7 @@ export default function IgilModulePlayer() {
                               <button
                                 type="button"
                                 onClick={() => speakGuru(row.voiceSentence)}
-                                className="px-3 py-1.5 rounded-xl bg-[#1C01A5] text-[#F0AB00] font-black text-xs"
+                                className="px-3 py-1.5 rounded-xl bg-[#1C01A5] text-[#FFE566] font-black text-xs"
                               >
                                 🔊 &quot;{row.voiceSentence}&quot;
                               </button>
@@ -1151,7 +1151,7 @@ export default function IgilModulePlayer() {
                       "Infografis selesai! Sekarang ayo kita praktikkan langsung dengan Benda Nyata pada tahap Concrete."
                     )
                   }
-                  className="px-6 py-2.5 rounded-2xl bg-[#1C01A5] text-[#F0AB00] border-2 border-[#F0AB00] font-black text-xs md:text-sm shadow-md"
+                  className="px-6 py-2.5 rounded-2xl bg-[#1C01A5] text-[#FFE566] border-2 border-[#FFE566] font-black text-xs md:text-sm shadow-md"
                 >
                   LANJUTKAN KE CONCRETE ⬇️
                 </button>
@@ -1185,7 +1185,7 @@ export default function IgilModulePlayer() {
                         <button
                           type="button"
                           onClick={() => speakGuru(cSlide.voiceGuide)}
-                          className="px-3 py-1 rounded-xl bg-[#1C01A5] text-[#F0AB00] font-black text-xs"
+                          className="px-3 py-1 rounded-xl bg-[#1C01A5] text-[#FFE566] font-black text-xs"
                         >
                           🔊 Panduan Suara
                         </button>
@@ -1237,7 +1237,7 @@ export default function IgilModulePlayer() {
                       "Tahap Benda Nyata selesai! Sekarang kita ubah benda nyata tadi menjadi Diagram pada tahap Pictorial."
                     )
                   }
-                  className="px-6 py-2.5 rounded-2xl bg-[#1C01A5] text-[#F0AB00] border-2 border-[#F0AB00] font-black text-xs md:text-sm shadow-md"
+                  className="px-6 py-2.5 rounded-2xl bg-[#1C01A5] text-[#FFE566] border-2 border-[#FFE566] font-black text-xs md:text-sm shadow-md"
                 >
                   LANJUTKAN KE PICTORIAL ⬇️
                 </button>
@@ -1344,7 +1344,7 @@ export default function IgilModulePlayer() {
                       "Diagram Pictorial sudah kita kuasai! Terakhir, mari kita lihat simbol matematika murni pada tahap Abstract."
                     )
                   }
-                  className="px-6 py-2.5 rounded-2xl bg-[#1C01A5] text-[#F0AB00] border-2 border-[#F0AB00] font-black text-xs md:text-sm shadow-md"
+                  className="px-6 py-2.5 rounded-2xl bg-[#1C01A5] text-[#FFE566] border-2 border-[#FFE566] font-black text-xs md:text-sm shadow-md"
                 >
                   LANJUTKAN KE ABSTRACT ⬇️
                 </button>
@@ -1358,7 +1358,7 @@ export default function IgilModulePlayer() {
           {unlockedSmicpaStage >= 6 && (
             <div ref={abstractRef} className="space-y-4 pt-2 pb-6">
               <div className="flex items-center justify-between">
-                <span className="px-3 py-1 rounded-full bg-[#1C01A5] text-[#F0AB00] font-black text-xs">
+                <span className="px-3 py-1 rounded-full bg-[#1C01A5] text-[#FFE566] font-black text-xs">
                   TAHAP 6 [A] • ABSTRACT (3 SLIDE SIMBOL ANGKA &amp; NOTASI MATEMATIKA)
                 </span>
                 <span className="text-xs font-bold text-slate-500">Geser Kiri-Kanan ↔️</span>
@@ -1378,7 +1378,7 @@ export default function IgilModulePlayer() {
                         <button
                           type="button"
                           onClick={() => speakGuru(aSlide.voiceReadout)}
-                          className="px-3 py-1 rounded-xl bg-[#1C01A5] text-[#F0AB00] text-xs font-black"
+                          className="px-3 py-1 rounded-xl bg-[#1C01A5] text-[#FFE566] text-xs font-black"
                         >
                           🔊 Lafalkan
                         </button>
@@ -1386,7 +1386,7 @@ export default function IgilModulePlayer() {
                       <div className="text-3xl md:text-4xl font-black text-[#1C01A5] py-2">
                         {aSlide.symbolLarge}
                       </div>
-                      <div className="text-sm font-black text-[#F59E0B] bg-[#1C01A5] py-1.5 px-3 rounded-xl">
+                      <div className="text-sm font-black text-[#FFE566] bg-[#1C01A5] py-1.5 px-3 rounded-xl">
                         {aSlide.wordLarge}
                       </div>
                       <div className="text-xs font-bold text-[#334155]">{aSlide.mathNotation}</div>
@@ -1412,7 +1412,7 @@ export default function IgilModulePlayer() {
                 <button
                   type="button"
                   onClick={handleCompleteCurrentSubBab}
-                  className="px-8 py-3.5 rounded-2xl bg-[#1C01A5] text-[#F0AB00] border-2 border-[#F0AB00] font-black text-xs md:text-sm shadow-lg"
+                  className="px-8 py-3.5 rounded-2xl bg-[#1C01A5] text-[#FFE566] border-2 border-[#FFE566] font-black text-xs md:text-sm shadow-lg"
                 >
                   {activeSubBab !== "D"
                     ? `SELESAIKAN SUB-BAB ${activeSubBab} & LANJUTKAN ➡️`
@@ -1431,7 +1431,7 @@ export default function IgilModulePlayer() {
         <section className="w-[98%] mx-auto mt-4 bg-[#EFF6FF] border-2 border-[#3B82F6] rounded-3xl p-5 md:p-7 space-y-5">
           <div className="flex flex-wrap items-center justify-between gap-3">
             <div>
-              <span className="px-3 py-1 rounded-full bg-[#1C01A5] text-[#F0AB00] font-black text-xs">
+              <span className="px-3 py-1 rounded-full bg-[#1C01A5] text-[#FFE566] font-black text-xs">
                 LABORATORIUM SIMULASI PhET-STYLE (SIMULASI {simIndex + 1} DARI 4)
               </span>
               <h2 className="text-xl md:text-2xl font-black text-[#1C01A5] mt-1">
@@ -1450,7 +1450,7 @@ export default function IgilModulePlayer() {
                   onClick={() => setSimIndex(idx)}
                   className={`px-3.5 py-2 rounded-xl font-black text-xs border-2 ${
                     simIndex === idx
-                      ? "bg-[#1C01A5] text-[#F0AB00] border-[#F0AB00]"
+                      ? "bg-[#1C01A5] text-[#FFE566] border-[#FFE566]"
                       : "bg-white text-[#1C01A5] border-[#3B82F6]"
                   }`}
                 >
@@ -1632,7 +1632,7 @@ export default function IgilModulePlayer() {
                       onClick={() => setSimFrogStone(n)}
                       className={`w-16 h-16 rounded-2xl font-black flex flex-col items-center justify-center border-2 shrink-0 ${
                         simFrogStone === n
-                          ? "bg-[#1C01A5] text-[#F0AB00] border-[#F0AB00] scale-105"
+                          ? "bg-[#1C01A5] text-[#FFE566] border-[#FFE566] scale-105"
                           : "bg-slate-50 text-[#334155] border-slate-300"
                       }`}
                     >
@@ -1700,7 +1700,7 @@ export default function IgilModulePlayer() {
                   window.scrollTo({ top: 0, behavior: "smooth" });
                 }
               }}
-              className="px-8 py-3 rounded-2xl bg-[#1C01A5] text-[#F0AB00] border-2 border-[#F0AB00] font-black text-sm shadow-md"
+              className="px-8 py-3 rounded-2xl bg-[#1C01A5] text-[#FFE566] border-2 border-[#FFE566] font-black text-sm shadow-md"
             >
               {simIndex < 3 ? "LANJUTKAN KE SIMULASI BERIKUTNYA ➡️" : "LANJUTKAN KE LATIHAN ➡️"}
             </button>
@@ -1723,7 +1723,7 @@ export default function IgilModulePlayer() {
               <>
                 <div className="flex flex-wrap items-center justify-between gap-2">
                   <div>
-                    <span className="px-3 py-1 rounded-full bg-[#1C01A5] text-[#F0AB00] font-black text-xs">
+                    <span className="px-3 py-1 rounded-full bg-[#1C01A5] text-[#FFE566] font-black text-xs">
                       SOAL LATIHAN {q.id} DARI 10 • LEVEL: {q.level}
                     </span>
                     <h2 className="text-lg md:text-xl font-black text-[#1C01A5] mt-1">
@@ -1733,7 +1733,7 @@ export default function IgilModulePlayer() {
                   <button
                     type="button"
                     onClick={() => speakGuru(q.prompt)}
-                    className="px-4 py-2 rounded-xl bg-[#1C01A5] text-[#F0AB00] font-black text-xs"
+                    className="px-4 py-2 rounded-xl bg-[#1C01A5] text-[#FFE566] font-black text-xs"
                   >
                     🔊 Bacakan Soal
                   </button>
@@ -1837,7 +1837,7 @@ export default function IgilModulePlayer() {
                           setActiveMainTab("ujian");
                         }
                       }}
-                      className="px-8 py-3 rounded-2xl bg-[#1C01A5] text-[#F0AB00] border-2 border-[#F0AB00] font-black text-xs md:text-sm shadow-md"
+                      className="px-8 py-3 rounded-2xl bg-[#1C01A5] text-[#FFE566] border-2 border-[#FFE566] font-black text-xs md:text-sm shadow-md"
                     >
                       {practiceIdx < PRACTICE_QUESTIONS.length - 1
                         ? "LANJUTKAN ➡️"
@@ -1858,14 +1858,14 @@ export default function IgilModulePlayer() {
         <section className="w-[98%] mx-auto mt-4 bg-[#FFF1F2] border-2 border-[#EF4444] rounded-3xl p-5 md:p-7 space-y-5">
           <div className="flex flex-wrap items-center justify-between gap-2 bg-[#1C01A5] text-white p-4 rounded-2xl">
             <div>
-              <span className="text-xs font-black text-[#F0AB00] uppercase">
+              <span className="text-xs font-black text-[#FFE566] uppercase">
                 LEMBAR UJIAN FORMAL STANDAR HOTS (70 TOKEN EMAS • WAJIB 100%)
               </span>
               <h2 className="text-base md:text-lg font-black">
                 Sensor Lokal &quot;Si Paling Pintar&quot;: Aktif (1 Wajah Siswa Terverifikasi)
               </h2>
             </div>
-            <span className="px-3 py-1 rounded-xl bg-white/15 text-[#F0AB00] font-black text-xs">
+            <span className="px-3 py-1 rounded-xl bg-white/15 text-[#FFE566] font-black text-xs">
               Percobaan Ke-{examAttempts} {examFirstTryPerfect ? "🏅 Si Paling Pintar" : ""}
             </span>
           </div>
@@ -1909,7 +1909,7 @@ export default function IgilModulePlayer() {
                               }
                               className={`p-3 rounded-2xl font-black text-sm text-left border-2 transition-all ${
                                 isSelected
-                                  ? "bg-[#1C01A5] text-[#F0AB00] border-[#F0AB00]"
+                                  ? "bg-[#1C01A5] text-[#FFE566] border-[#FFE566]"
                                   : "bg-white hover:bg-[#FFF1F2] text-[#334155] border-slate-300"
                               }`}
                             >
@@ -1936,7 +1936,7 @@ export default function IgilModulePlayer() {
                     <button
                       type="button"
                       onClick={() => setExamIdx((i) => i + 1)}
-                      className="px-7 py-3 rounded-2xl bg-[#1C01A5] text-[#F0AB00] border-2 border-[#F0AB00] font-black text-xs"
+                      className="px-7 py-3 rounded-2xl bg-[#1C01A5] text-[#FFE566] border-2 border-[#FFE566] font-black text-xs"
                     >
                       SOAL BERIKUTNYA ➡️
                     </button>
@@ -1988,7 +1988,7 @@ export default function IgilModulePlayer() {
                         <button
                           type="button"
                           onClick={() => setActiveMainTab("praktikum")}
-                          className="px-5 py-2 rounded-xl bg-[#1C01A5] text-[#F0AB00] font-black text-xs"
+                          className="px-5 py-2 rounded-xl bg-[#1C01A5] text-[#FFE566] font-black text-xs"
                         >
                           BUKA PRAKTIKUM SINTESIS ➡️
                         </button>
@@ -2020,7 +2020,7 @@ export default function IgilModulePlayer() {
               <button
                 type="button"
                 onClick={() => setActiveMainTab("ujian")}
-                className="px-6 py-2.5 rounded-2xl bg-[#1C01A5] text-[#F0AB00] font-black text-xs"
+                className="px-6 py-2.5 rounded-2xl bg-[#1C01A5] text-[#FFE566] font-black text-xs"
               >
                 Kembali ke Ujian Formal
               </button>
@@ -2029,7 +2029,7 @@ export default function IgilModulePlayer() {
             <>
               <div className="bg-[#1C01A5] text-white p-4 rounded-2xl flex flex-wrap items-center justify-between gap-2">
                 <div>
-                  <span className="text-xs font-black text-[#F0AB00] uppercase">
+                  <span className="text-xs font-black text-[#FFE566] uppercase">
                     KOMPONEN 6 • PRAKTIKUM SINTESIS (50 TOKEN EMAS • ON-SUBMIT HIDDEN GRADING)
                   </span>
                   <h2 className="text-lg font-black">
@@ -2074,7 +2074,7 @@ export default function IgilModulePlayer() {
                             setPracReadingTables(5);
                             setPracReadingChairs(5);
                           }}
-                          className="px-2.5 py-1 bg-[#1C01A5] text-[#F0AB00] rounded-lg"
+                          className="px-2.5 py-1 bg-[#1C01A5] text-[#FFE566] rounded-lg"
                         >
                           Set 5 = 5
                         </button>
@@ -2115,7 +2115,7 @@ export default function IgilModulePlayer() {
                             "Tugas Praktikum berhasil diserahkan! Nilai kualitasmu telah disimpan secara rahasia oleh sistem untuk kualifikasi Kolam Beasiswa 90 persen di akhir bulan."
                           );
                         }}
-                        className="px-5 py-2.5 rounded-xl bg-[#1C01A5] text-[#F0AB00] border-2 border-[#F0AB00] font-black text-xs"
+                        className="px-5 py-2.5 rounded-xl bg-[#1C01A5] text-[#FFE566] border-2 border-[#FFE566] font-black text-xs"
                       >
                         🚀 SERAHKAN PRAKTIKUM
                       </button>

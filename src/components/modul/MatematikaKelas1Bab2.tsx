@@ -1635,7 +1635,7 @@ export default function MatematikaKelas1Bab2Hibrida({
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                     {/* Kelompok 3 Burung Merah */}
                     <div className="bg-[#1C01A5]/60 p-4 rounded-2xl border border-[#1C01A5]/40 space-y-2">
-                      <div className="text-xs font-black text-[#F0AB00]">
+                      <div className="text-xs font-black text-[#FFE566]">
                         Kelompok Kiri: Sentuh 3 Burung Merah ({hookRedBirds.length}/3)
                       </div>
                       <div className="grid grid-cols-3 gap-2">
@@ -1663,7 +1663,7 @@ export default function MatematikaKelas1Bab2Hibrida({
                     </div>
                     {/* Kelompok 2 Burung Biru */}
                     <div className="bg-[#1C01A5]/60 p-4 rounded-2xl border border-[#1C01A5]/40 space-y-2">
-                      <div className="text-xs font-black text-[#F0AB00]">
+                      <div className="text-xs font-black text-[#FFE566]">
                         Kelompok Kanan: Sentuh 2 Burung Biru ({hookBlueBirds.length}/2)
                       </div>
                       <div className="grid grid-cols-2 gap-2">
@@ -2180,7 +2180,7 @@ export default function MatematikaKelas1Bab2Hibrida({
                 {/* 3-Panel Polypad Workspace */}
                 <div className="grid grid-cols-1 md:grid-cols-12 gap-4">
                   <div className="md:col-span-4 bg-[#1C01A5] p-4 rounded-2xl border border-[#1C01A5] space-y-2.5">
-                    <div className="text-xs font-black text-[#F0AB00] uppercase">
+                    <div className="text-xs font-black text-[#FFE566] uppercase">
                       1. Laci Alat Peraga (Sentuh untuk Tambah ke Meja)
                     </div>
                     <div className="grid grid-cols-2 gap-2">
@@ -2207,8 +2207,8 @@ export default function MatematikaKelas1Bab2Hibrida({
                       ))}
                     </div>
                     <div className="bg-[#1C01A5] p-3 rounded-xl text-xs space-y-1">
-                      <div className="text-[#F0AB00] font-bold">Persamaan di Meja:</div>
-                      <div className="text-lg font-black text-[#F0AB00]">
+                      <div className="text-[#FFE566] font-bold">Persamaan di Meja:</div>
+                      <div className="text-lg font-black text-[#FFE566]">
                         {toyboxTrayItems.filter((x) => x === "🍓").length} 🍓 +{" "}
                         {toyboxTrayItems.filter((x) => x === "🍌").length} 🍌 ={" "}
                         {toyboxTrayItems.length}
@@ -2450,7 +2450,7 @@ export default function MatematikaKelas1Bab2Hibrida({
               <section className="bg-[#FFFFFF] rounded-[32px] p-5 md:p-6 shadow-2xl border-4 border-[#1C01A5] space-y-4">
                 <div className="bg-[#1C01A5] text-[#FFFFFF] p-4 rounded-2xl flex flex-wrap items-center justify-between gap-2">
                   <div>
-                    <span className="text-[11px] font-black text-[#F0AB00] uppercase">
+                    <span className="text-[11px] font-black text-[#FFE566] uppercase">
                       🏰 PULAU 5 • GERBANG 1: SI PALING PINTAR (WAJIB 100/100)
                     </span>
                     <h2 className="text-base font-black">
@@ -2461,7 +2461,7 @@ export default function MatematikaKelas1Bab2Hibrida({
                     <span className="bg-[#1C01A5] px-3 py-1.5 rounded-xl">
                       🔄 Percobaan #{examAttempts}
                     </span>
-                    <span className="bg-[#1C01A5] px-3 py-1.5 rounded-xl text-[#F0AB00]">
+                    <span className="bg-[#1C01A5] px-3 py-1.5 rounded-xl text-[#FFE566]">
                       ⏱️ {formatStopwatch(examElapsedDeci)}
                     </span>
                     <span
@@ -2791,10 +2791,10 @@ export default function MatematikaKelas1Bab2Hibrida({
                   </button>
                 </div>
                 {practicumRubric && (
-                  <div className="bg-[#1C01A5] text-[#FFFFFF] p-5 rounded-3xl border-4 border-[#F0AB00] space-y-3">
+                  <div className="bg-[#1C01A5] text-[#FFFFFF] p-5 rounded-3xl border-4 border-[#FFE566] space-y-3">
                     <div className="flex items-center justify-between">
                       <div>
-                        <span className="text-xs font-black text-[#F0AB00]">
+                        <span className="text-xs font-black text-[#FFE566]">
                           🏅 SERTIFIKAT RUBRIK KUALITAS PRAKTIKUM IGIL
                         </span>
                         <h4 className="text-lg font-black">{studentName}</h4>
@@ -2805,7 +2805,7 @@ export default function MatematikaKelas1Bab2Hibrida({
                     </div>
                     <p className="text-xs text-[#FFFFFF]">{practicumRubric.aiFeedbackSummary}</p>
                     {chapterCompletedFlag && (
-                      <div className="text-xs font-black text-[#F0AB00]">
+                      <div className="text-xs font-black text-[#FFE566]">
                         ✅ Bab 2 Tuntas Paripurna (150/150 Token IGIL).
                       </div>
                     )}
@@ -2837,7 +2837,7 @@ export default function MatematikaKelas1Bab2Hibrida({
               </div>
             </div>
             <div className="bg-[#1C01A5] text-[#FFFFFF] rounded-[28px] p-4 shadow-xl border-2 border-[#1C01A5]/40 space-y-3">
-              <div className="text-xs font-black text-[#F0AB00] uppercase">
+              <div className="text-xs font-black text-[#FFE566] uppercase">
                 🎹 Papan Suara Pasangan Genap 10
               </div>
               <div className="grid grid-cols-2 gap-1.5 text-xs">
