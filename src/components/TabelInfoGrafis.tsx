@@ -12,7 +12,7 @@ export default function TabelInfoGrafis({
   return (
     <div className="mt-4 overflow-hidden rounded-2xl border-4 border-sky-400">
       {judul ? (
-        <p className="bg-[#16017a] px-3 py-2 text-center text-xs font-black uppercase tracking-wide text-[#1C01A5]">
+        <p className="bg-[#16017a] px-3 py-2 text-center text-xs font-black uppercase tracking-wide text-white">
           {judul}
         </p>
       ) : null}

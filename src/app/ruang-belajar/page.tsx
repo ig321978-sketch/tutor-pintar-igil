@@ -345,7 +345,7 @@ export default function RuangBelajarPage() {
             Pilih sumber pembelajaran
           </h2>
         {kunciPublik ? null : (
-          <div className="flex flex-col gap-2 rounded-2xl bg-[#FF7A00]/15 p-1">
+          <div className="flex flex-col gap-2 rounded-2xl bg-[#F0AB00]/15 p-1">
             <button
               type="button"
               onClick={() => {
@@ -449,7 +449,7 @@ export default function RuangBelajarPage() {
               }}
               className={`flex flex-col items-center justify-center w-full min-h-40 border-2 border-dashed rounded-2xl cursor-pointer transition-colors ${
                 sedangSeret
-                  ? "border-[#FF7A00] bg-white"
+                  ? "border-[#F0AB00] bg-white"
                   : "border-[#1C01A5]/30 bg-white hover:bg-[#FFF8E8]"
               }`}
             >
@@ -536,7 +536,7 @@ export default function RuangBelajarPage() {
         </button>
       </div>
       <p className="mt-3 flex items-center gap-2 text-sm text-slate-500">
-        <Sparkles className="h-4 w-4 text-[#1C01A5]" />
+        <Sparkles className="h-4 w-4 text-[#F0AB00]" />
         Bab 1–5 Matematika kelas 1, Bab 2 kelas 4, Bab 8 kelas 5, serta Bab 1 dan Bab 3 kelas 6 terbuka di sini. Bab 1 kelas 1 memakai modul lama.
       </p>
     </PageShell>

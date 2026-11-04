@@ -12,7 +12,7 @@ export default function PageShell({
   return (
     <main className="flex-1 bg-white text-slate-700">
       <div className="w-full px-2 py-8 sm:py-10">
-        <p className="mb-2 text-xs font-extrabold uppercase tracking-[0.2em] text-[#FF7A00]">
+        <p className="mb-2 text-xs font-extrabold uppercase tracking-[0.2em] text-[#F0AB00]">
           $IGIL · Kurikulum Merdeka
         </p>
         <h1 className="text-3xl font-extrabold tracking-tight text-[#1C01A5] sm:text-4xl">

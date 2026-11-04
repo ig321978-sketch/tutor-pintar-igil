@@ -38,7 +38,7 @@ export default function Navbar() {
           className="igil-tanpa-tepi shrink-0 rounded-xl px-2 py-1 text-xl font-extrabold tracking-tight text-[#1C01A5]"
           onClick={() => setTerbuka(false)}
         >
-          <span className="mr-1 text-[#FF7A00]">🎓</span>$IGIL
+          <span className="mr-1 text-[#F0AB00]">🎓</span>$IGIL
         </Link>
 
         <div className="hidden items-center gap-1 lg:flex">
@@ -50,8 +50,8 @@ export default function Navbar() {
                 href={item.href}
                 className={`igil-tombol rounded-full px-3 py-2 text-sm font-bold transition-colors ${
                   aktif
-                    ? "border-[#FF7A00] bg-[#FF7A00] text-[#1C01A5]"
-                    : "border-[#1C01A5] text-[#1C01A5] hover:bg-[#FF7A00]/15 hover:text-[#FF7A00]"
+                    ? "border-[#FFE566] bg-[#1C01A5] text-white"
+                    : "border-[#1C01A5] text-[#1C01A5] hover:bg-[#F0AB00]/15 hover:text-[#F0AB00]"
                 }`}
               >
                 {item.label}
@@ -62,14 +62,14 @@ export default function Navbar() {
             <button
               type="button"
               onClick={() => void klikKeluar()}
-              className="igil-tombol rounded-full border-[#1C01A5] px-3 py-2 text-sm font-bold text-[#1C01A5] hover:bg-[#FF7A00]/15"
+              className="igil-tombol rounded-full border-[#1C01A5] px-3 py-2 text-sm font-bold text-[#1C01A5] hover:bg-[#F0AB00]/15"
             >
               Keluar
             </button>
           ) : !memuat ? (
             <Link
               href="/login"
-              className="igil-tombol rounded-full border-[#1C01A5] px-3 py-2 text-sm font-bold text-[#1C01A5] hover:bg-[#FF7A00]/15"
+              className="igil-tombol rounded-full border-[#1C01A5] px-3 py-2 text-sm font-bold text-[#1C01A5] hover:bg-[#F0AB00]/15"
             >
               Masuk
             </Link>
@@ -97,8 +97,8 @@ export default function Navbar() {
                 onClick={() => setTerbuka(false)}
                 className={`igil-tombol block rounded-xl px-3 py-2 text-sm font-bold ${
                   aktif
-                    ? "border-[#FF7A00] bg-[#FF7A00] text-[#1C01A5]"
-                    : "border-[#1C01A5] text-[#1C01A5] hover:bg-[#FF7A00]/15"
+                    ? "border-[#FFE566] bg-[#1C01A5] text-white"
+                    : "border-[#1C01A5] text-[#1C01A5] hover:bg-[#F0AB00]/15"
                 }`}
               >
                 {item.label}

@@ -124,16 +124,16 @@ export function useKepalaDompetSendiri() {
 export function BalokDompet({ judul }: { judul: string }) {
   const token = useTokenBab();
   return (
-    <div className="bg-[#1C01A5] px-4 pb-4 pt-4">
-      <div className="inline-flex max-w-full items-center gap-3 rounded-2xl border-2 border-[#FF7A00] bg-white px-4 py-1.5 shadow-sm" aria-label={`Perolehan ${token} token`}>
-        <Coins className="h-8 w-8 shrink-0 animate-bounce text-[#FF7A00]" aria-hidden />
+    <div className="bg-[linear-gradient(115deg,#1C01A5_0%,#4c1d95_58%,#5b21b6_100%)] px-4 pb-4 pt-4">
+      <div className="inline-flex max-w-full items-center gap-3 rounded-2xl border-2 border-amber-400/80 bg-indigo-950/90 px-4 py-1.5 shadow-inner" aria-label={`Perolehan ${token} token`}>
+        <Coins className="h-8 w-8 shrink-0 animate-bounce text-amber-400" aria-hidden />
         <div className="min-w-0">
-          <div className="text-[11px] font-semibold uppercase tracking-wider text-[#1C01A5]">
+          <div className="text-[11px] font-semibold uppercase tracking-wider text-amber-200">
             Dompet Bab Ini (Maks 150)
           </div>
           <div className="flex flex-wrap items-baseline gap-x-2">
-            <span className="text-lg font-black text-[#FF7A00]">{token} Token</span>
-            <span className="text-xs font-bold text-[#FF7A00]">
+            <span className="text-lg font-black text-amber-400">{token} Token</span>
+            <span className="text-xs font-bold text-emerald-400">
               (= Rp {(token * HARGA_TOKEN_RP).toLocaleString("id-ID")})
             </span>
           </div>
