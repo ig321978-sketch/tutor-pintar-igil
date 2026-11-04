@@ -798,7 +798,7 @@ export default function IgilModulePlayer() {
           {/* Judul Sub-bab: kode di atas, nama bab di bawah */}
           <div className="pt-1">
             <h2 className="text-xl md:text-2xl font-black text-[#1C01A5]">
-              <span className="block">{kodeSubBab}</span>
+              <span className="block text-[#F0AB00]">{kodeSubBab}</span>
               <span className="block">{judulSubBab}</span>
             </h2>
           </div>
