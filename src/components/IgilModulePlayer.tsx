@@ -2,6 +2,9 @@
 
 import React, { useState, useEffect, useRef, useCallback } from "react";
 import { Nunito } from "next/font/google";
+import { normalisasiKelaminGuru, profilGuru } from "@/lib/guru";
+import { bacaProgres } from "@/lib/progres";
+import { hentikanAudioGuruAktif, mintaAudioTts } from "@/lib/putar-tts-klien";
 import materiBab1 from "@/data/kelas1-bab1.json";
 
 const fontAnak = Nunito({
@@ -459,21 +462,51 @@ export default function IgilModulePlayer() {
     materiBab1.tokens.practice + materiBab1.tokens.exam + materiBab1.tokens.practicum;
 
   // ============================================================================
-  // SUARA GURU LOKAL (WEB SPEECH API - RP 0 BIAYA API)
+  // SUARA GURU SESUAI PILIHAN DI RUANG BELAJAR
   // ============================================================================
 
+  const audioGuru = useRef<HTMLAudioElement | null>(null);
+  const giliranSuara = useRef(0);
+
+  const ucapkanCadangan = (naskah: string, kelas: string, kelamin: ReturnType<typeof normalisasiKelaminGuru>) => {
+    if (!("speechSynthesis" in window)) return;
+    const guru = profilGuru(kelas, kelamin);
+    const utterance = new SpeechSynthesisUtterance(naskah);
+    utterance.lang = "id-ID";
+    utterance.rate = guru.laju;
+    utterance.pitch = guru.nada;
+    window.speechSynthesis.speak(utterance);
+  };
+
   const speakGuru = useCallback((text: string) => {
-    if (typeof window === "undefined" || !("speechSynthesis" in window)) return;
-    try {
-      window.speechSynthesis.cancel();
-      const utterance = new SpeechSynthesisUtterance(text);
-      utterance.lang = "id-ID";
-      utterance.rate = 0.94;
-      utterance.pitch = 1.08;
-      window.speechSynthesis.speak(utterance);
-    } catch {
-      // Abaikan jika perangkat tidak mendukung SpeechSynthesis
-    }
+    const naskah = text.replace(/\s+/g, " ").trim();
+    if (!naskah || typeof window === "undefined") return;
+    const giliran = ++giliranSuara.current;
+    const profil = bacaProgres().profil;
+    const kelamin = normalisasiKelaminGuru(profil.guruKelamin);
+    const kelas = profil.kelas.trim() || "1 SD";
+    hentikanAudioGuruAktif();
+    audioGuru.current?.pause();
+    void mintaAudioTts(naskah, kelamin, kelas).then((hasil) => {
+      if (giliran !== giliranSuara.current) return;
+      if (!hasil?.url) {
+        ucapkanCadangan(naskah, kelas, kelamin);
+        return;
+      }
+      const audio = audioGuru.current ?? new Audio();
+      audioGuru.current = audio;
+      audio.src = hasil.url;
+      void audio.play().catch(() => {
+        if (giliran !== giliranSuara.current) return;
+        ucapkanCadangan(naskah, kelas, kelamin);
+      });
+    });
+  }, []);
+
+  useEffect(() => {
+    return () => {
+      audioGuru.current?.pause();
+    };
   }, []);
 
   // ============================================================================
