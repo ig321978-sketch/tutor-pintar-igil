@@ -308,7 +308,7 @@ button.igil-panah-slide {
 }
 
 button.igil-panah-slide svg {
-  opacity: 0.28;
+  opacity: 0.64;
 }
 
 button.igil-panah-slide:hover,
@@ -323,7 +323,7 @@ button.igil-panah-slide:focus-visible {
 
 button.igil-panah-slide:hover svg,
 button.igil-panah-slide:focus-visible svg {
-  opacity: 0.72;
+  opacity: 0.86;
 }
 
 @media (prefers-reduced-motion: reduce) {
