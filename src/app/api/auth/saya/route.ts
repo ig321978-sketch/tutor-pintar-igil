@@ -8,6 +8,7 @@ export async function GET() {
   return NextResponse.json({
     berhasil: true,
     masuk: Boolean(sesi.user),
+    id: sesi.user?.id ?? null,
     peran: sesi.peran,
     adalahAdmin: sesi.adalahAdmin,
   });

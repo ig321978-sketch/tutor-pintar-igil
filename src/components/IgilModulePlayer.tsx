@@ -388,16 +388,8 @@ function DottedNumberTracingCanvas({
 // KOMPONEN UTAMA MODUL IGIL (MATEMATIKA KELAS 1 SD - BAB 1)
 // ============================================================================
 
-const SIX_HOURS_MS = 6 * 60 * 60 * 1000;
-const BRAIN_STORAGE_KEY = "igil_brain_activation_mat_k1_b1_ts";
-
 export default function IgilModulePlayer() {
-  // 1. State Fitur Brain Activation (Tampil setiap 6 jam sekali saat dibuka)
-  const [showBrainActivation, setShowBrainActivation] = useState<boolean>(true);
-  const [brainApplesTapped, setBrainApplesTapped] = useState<number[]>([]);
-  const [brainOrangesTapped, setBrainOrangesTapped] = useState<number[]>([]);
-
-  // 2. State Navigasi Tab Utama (Langsung mengaktifkan Tab Silabus)
+  // 1. State Navigasi Tab Utama (Langsung mengaktifkan Tab Silabus)
   const [activeMainTab, setActiveMainTab] = useState<MainTabId>("silabus");
 
   // 3. State Halaman Silabus (2 Halaman: 1 = Komponen Silabus, 2 = Target Pembelajaran)
@@ -510,44 +502,6 @@ export default function IgilModulePlayer() {
   }, []);
 
   // ============================================================================
-  // CEK INTERVAL 6 JAM UNTUK FITUR "BRAIN ACTIVATION"
-  // ============================================================================
-
-  useEffect(() => {
-    if (typeof window === "undefined") return;
-    try {
-      const lastShownRaw = window.localStorage.getItem(BRAIN_STORAGE_KEY);
-      if (lastShownRaw) {
-        const elapsed = Date.now() - Number(lastShownRaw);
-        if (elapsed < SIX_HOURS_MS) {
-          setShowBrainActivation(false);
-        } else {
-          setShowBrainActivation(true);
-        }
-      } else {
-        setShowBrainActivation(true);
-      }
-    } catch {
-      setShowBrainActivation(true);
-    }
-  }, []);
-
-  const handleFinishBrainActivation = () => {
-    if (typeof window !== "undefined") {
-      try {
-        window.localStorage.setItem(BRAIN_STORAGE_KEY, String(Date.now()));
-      } catch {
-        // Abaikan jika mode privat memblokir storage
-      }
-    }
-    setShowBrainActivation(false);
-    setActiveMainTab("silabus");
-    speakGuru(
-      "Otakmu sudah segar dan siap belajar! Selamat datang di Halaman Utama Modul Matematika Kelas 1 Bab 1."
-    );
-  };
-
-  // ============================================================================
   // HANDLER KUNCI SCROLL VERTIKAL SMICPA (MATERI)
   // ============================================================================
 
@@ -596,150 +550,6 @@ export default function IgilModulePlayer() {
     }
   };
 
-  // ============================================================================
-  // RENDER 1: FITUR "BRAIN ACTIVATION" (TAMPIL SETIAP 6 JAM SEKALI)
-  // ============================================================================
-
-  if (showBrainActivation) {
-    const totalBrainTapped = brainApplesTapped.length + brainOrangesTapped.length;
-    return (
-      <div className={`min-h-screen w-full bg-white text-[#334155] p-4 md:p-8 flex flex-col justify-between ${fontAnak.className}`}>
-        <div className="max-w-5xl mx-auto w-full space-y-6">
-          {/* Header Brain Activation */}
-          <div className="w-full bg-[#1C01A5] rounded-3xl p-5 text-white flex flex-col md:flex-row items-center justify-between gap-4 shadow-lg">
-            <div className="flex items-center gap-3">
-              <div className="w-14 h-14 rounded-2xl bg-[#F0AB00] text-[#1C01A5] flex items-center justify-center text-3xl font-black shrink-0">
-                🦉
-              </div>
-              <div>
-                <div className="text-xs md:text-sm font-black text-[#F0AB00] uppercase tracking-wider">
-                  FITUR AKTIVASI OTAK (TAMPIL SETIAP 6 JAM SEKALI)
-                </div>
-                <h1 className="text-xl md:text-2xl font-black text-white">
-                  Brain Activation Bab 1: Senam Otak &amp; Irama Buah Kebun Kakek
-                </h1>
-              </div>
-            </div>
-            <button
-              type="button"
-              onClick={() =>
-                speakGuru(
-                  "Selamat datang di Brain Activation Bab 1! Sentuh 5 Apel Merah dengan tangan kirimu dan 5 Jeruk Kuning dengan tangan kananmu sambil berhitung lantang!"
-                )
-              }
-              className="px-4 py-2.5 rounded-2xl bg-[#F0AB00] text-[#1C01A5] font-black text-xs md:text-sm shrink-0"
-            >
-              🔊 Dengarkan Panduan IGIL
-            </button>
-          </div>
-
-          {/* 2 Kartu Sejajar (Bisa Digeser Kiri-Kanan di HP agar Tidak Bertumpuk) */}
-          <div className="w-full overflow-x-auto pb-3">
-            <div className="flex flex-nowrap gap-5 min-w-[680px]">
-              {/* Kartu 1: Aktivasi Otak Kanan (Sentuh 5 Apel Merah) */}
-              <div className="w-1/2 bg-[#FEE2E2] border-2 border-[#EF4444] rounded-3xl p-5 space-y-4">
-                <div className="flex items-center justify-between">
-                  <h2 className="text-base md:text-lg font-black text-[#991B1B]">
-                    🖐️ Tangan Kiri: Sentuh 5 Apel Merah
-                  </h2>
-                  <span className="px-3 py-1 rounded-full bg-white text-[#991B1B] font-black text-xs">
-                    {brainApplesTapped.length} / 5 Apel
-                  </span>
-                </div>
-                <p className="text-xs md:text-sm text-[#334155]">
-                  Sentuh buah apel satu per satu untuk mengaktifkan fokus visual dan motorik kirimu!
-                </p>
-                <div className="flex items-center justify-between gap-2 pt-2">
-                  {[1, 2, 3, 4, 5].map((id) => {
-                    const active = brainApplesTapped.includes(id);
-                    return (
-                      <button
-                        key={id}
-                        type="button"
-                        onClick={() => {
-                          if (!active) {
-                            const next = [...brainApplesTapped, id];
-                            setBrainApplesTapped(next);
-                            speakGuru(`Apel ${next.length}`);
-                          }
-                        }}
-                        className={`w-14 h-16 rounded-2xl font-black flex flex-col items-center justify-center border-2 transition-all ${
-                          active
-                            ? "bg-[#EF4444] text-white border-[#991B1B] scale-105"
-                            : "bg-white text-[#334155] border-[#EF4444]"
-                        }`}
-                      >
-                        <span className="text-2xl">🍎</span>
-                        <span className="text-xs">{active ? id : "?"}</span>
-                      </button>
-                    );
-                  })}
-                </div>
-              </div>
-
-              {/* Kartu 2: Aktivasi Otak Kiri (Sentuh 5 Jeruk Kuning) */}
-              <div className="w-1/2 bg-[#FEF3C7] border-2 border-[#F59E0B] rounded-3xl p-5 space-y-4">
-                <div className="flex items-center justify-between">
-                  <h2 className="text-base md:text-lg font-black text-[#92400E]">
-                    🤚 Tangan Kanan: Sentuh 5 Jeruk Kuning
-                  </h2>
-                  <span className="px-3 py-1 rounded-full bg-white text-[#92400E] font-black text-xs">
-                    {brainOrangesTapped.length} / 5 Jeruk
-                  </span>
-                </div>
-                <p className="text-xs md:text-sm text-[#334155]">
-                  Sentuh buah jeruk satu per satu untuk menyeimbangkan koordinasi otak kanan dan kirimu!
-                </p>
-                <div className="flex items-center justify-between gap-2 pt-2">
-                  {[1, 2, 3, 4, 5].map((id) => {
-                    const active = brainOrangesTapped.includes(id);
-                    return (
-                      <button
-                        key={id}
-                        type="button"
-                        onClick={() => {
-                          if (!active) {
-                            const next = [...brainOrangesTapped, id];
-                            setBrainOrangesTapped(next);
-                            speakGuru(`Jeruk ${next.length}`);
-                          }
-                        }}
-                        className={`w-14 h-16 rounded-2xl font-black flex flex-col items-center justify-center border-2 transition-all ${
-                          active
-                            ? "bg-[#F59E0B] text-white border-[#92400E] scale-105"
-                            : "bg-white text-[#334155] border-[#F59E0B]"
-                        }`}
-                      >
-                        <span className="text-2xl">🍊</span>
-                        <span className="text-xs">{active ? id : "?"}</span>
-                      </button>
-                    );
-                  })}
-                </div>
-              </div>
-            </div>
-          </div>
-
-          {/* Bar Status Kesiapan Otak & Tombol LANJUT BELAJAR */}
-          <div className="bg-[#DBEAFE] border-2 border-[#3B82F6] rounded-3xl p-5 flex flex-col sm:flex-row items-center justify-between gap-4">
-            <div className="text-sm md:text-base font-black text-[#1E3A8A]">
-              🧠 Status Aktivasi Otak Bab 1: {totalBrainTapped} / 10 Buah Tersentuh{" "}
-              {totalBrainTapped === 10
-                ? "— Luar Biasa! Otak Kiri & Kanan Siap 100%!"
-                : "(Sentuh buah di atas atau langsung klik Lanjut Belajar)"}
-            </div>
-            <button
-              type="button"
-              onClick={handleFinishBrainActivation}
-              className="px-8 py-3.5 rounded-2xl bg-[#1C01A5] text-[#F0AB00] border-2 border-[#F0AB00] font-black text-base shadow-md hover:opacity-95 shrink-0"
-            >
-              LANJUT BELAJAR ➡️
-            </button>
-          </div>
-        </div>
-      </div>
-    );
-  }
 
   // ============================================================================
   // RENDER 2: HALAMAN UTAMA MODUL (SELEBAR MONITOR • DASAR PUTIH)
@@ -783,14 +593,6 @@ export default function IgilModulePlayer() {
 
             {/* Kanan: Kartu Point Token */}
             <div className="flex items-center gap-3 shrink-0">
-              <button
-                type="button"
-                onClick={() => setShowBrainActivation(true)}
-                className="px-3 py-2 rounded-xl bg-white/10 hover:bg-white/20 text-white border border-white/30 text-xs font-bold"
-                title="Buka Brain Activation"
-              >
-                🧠 Brain Activation
-              </button>
               <div className="bg-white text-[#1C01A5] px-4 py-2.5 rounded-2xl border-2 border-[#F0AB00] shadow-sm">
                 <div className="text-[10px] font-black uppercase tracking-wider text-[#334155]">
                   KARTU POINT TOKEN IGIL

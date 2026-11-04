@@ -1,5 +1,6 @@
 import type { Metadata, Viewport } from "next";
 import { Geist, Geist_Mono, Noto_Naskh_Arabic } from "next/font/google";
+import AktivasiOtakGerbang from "@/components/AktivasiOtakGerbang";
 import BersihkanCacheKlien from "@/components/BersihkanCacheKlien";
 import Navbar from "@/components/Navbar";
 import "./globals.css";
@@ -54,6 +55,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
         <BersihkanCacheKlien />
         <Navbar />
         {children}
+        <AktivasiOtakGerbang />
       </body>
     </html>
   );
