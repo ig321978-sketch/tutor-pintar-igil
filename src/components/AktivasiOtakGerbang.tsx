@@ -392,10 +392,9 @@ function MainKartu() {
 }
 
 function MainBalon() {
-  const y = useRef(10);
-  const v = useRef(0);
+  const y = useRef(6);
   const jatuhRef = useRef(false);
-  const [posisi, setPosisi] = useState(10);
+  const [posisi, setPosisi] = useState(6);
   const [tepukan, setTepukan] = useState(0);
   const [jatuh, setJatuh] = useState(false);
 
@@ -403,17 +402,12 @@ function MainBalon() {
     let raf = 0;
     let lalu = performance.now();
     const loop = (now: number) => {
-      const dt = Math.min(1.6, (now - lalu) / 16.67);
+      const detik = Math.min(0.05, (now - lalu) / 1000);
       lalu = now;
       if (!jatuhRef.current) {
-        v.current = Math.min(7, v.current + 0.11 * dt);
-        y.current += v.current * dt * 0.55;
-        if (y.current < 0) {
-          y.current = 0;
-          v.current = 0.4;
-        }
-        if (y.current >= 68) {
-          y.current = 68;
+        y.current += 9 * detik;
+        if (y.current >= 72) {
+          y.current = 72;
           jatuhRef.current = true;
           setJatuh(true);
           bunyi(120, 0.22);
@@ -428,16 +422,16 @@ function MainBalon() {
 
   const tepuk = () => {
     if (jatuhRef.current) return;
-    v.current = -5.2;
+    y.current = Math.max(0, y.current - 24);
+    setPosisi(y.current);
     setTepukan((nilai) => nilai + 1);
     bunyi(560, 0.07);
   };
 
   const ulang = () => {
-    y.current = 10;
-    v.current = 0;
+    y.current = 6;
     jatuhRef.current = false;
-    setPosisi(10);
+    setPosisi(6);
     setTepukan(0);
     setJatuh(false);
   };
