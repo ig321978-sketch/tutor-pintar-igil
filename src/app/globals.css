@@ -294,6 +294,10 @@ a.igil-tombol:active {
   background: transparent;
 }
 
+.igil-kartu-lancip + .igil-kartu-lancip {
+  margin-top: -16px;
+}
+
 .igil-kartu-lancip::before,
 .igil-kartu-lancip::after {
   content: "";

@@ -867,7 +867,7 @@ export default function IgilModulePlayer() {
                 </span>
               </div>
 
-              <div className="flex flex-col gap-3">
+              <div className="flex flex-col">
                 {currentSubContent.mindMaps.map((mm) => (
                   <div key={mm.stepNumber} className="igil-kartu-lancip w-full px-5 pt-12 pb-14">
                     <div className="flex items-center justify-between">
