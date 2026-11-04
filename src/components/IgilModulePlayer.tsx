@@ -468,6 +468,8 @@ export default function IgilModulePlayer() {
   // ============================================================================
 
   const currentSubContent = SUB_BABS[activeSubBab];
+  const [kodeSubBab, ...sisaJudulSub] = currentSubContent.fullTitle.split(": ");
+  const judulSubBab = sisaJudulSub.join(": ");
 
   return (
     <div className={`min-h-screen w-full bg-white text-[#334155] pb-16 ${fontAnak.className}`}>
@@ -475,7 +477,7 @@ export default function IgilModulePlayer() {
       {/* BANNER #1C01A5 TANPA DEGRADASI HAMPIR SELEBAR LAYAR MONITOR         */}
       {/* =================================================================== */}
       <div className="w-full pt-2 px-1 md:px-3 bg-white">
-        <header className="w-[99%] mx-auto bg-[#1C01A5] rounded-3xl px-4 py-4 md:px-7 md:py-5 shadow-md overflow-x-auto">
+        <header className="w-[99%] mx-auto bg-[#1C01A5] rounded-none px-4 py-4 md:px-7 md:py-5 shadow-md overflow-x-auto">
           <div className="flex flex-nowrap items-center justify-between gap-6 min-w-[660px]">
             {/* Kiri: Ikon Favicon IGIL + Label H2/H3 #F0AB00 + Label H1 Putih (Tanpa Kartu Pembungkus) */}
             <div className="flex items-center gap-4">
@@ -520,7 +522,7 @@ export default function IgilModulePlayer() {
       {/* TOMBOL TAB UTAMA (FLOATING & SLIDE KIRI-KANAN • DASAR #1C01A5)      */}
       {/* =================================================================== */}
       <div className="sticky top-2 z-40 w-[99%] mx-auto px-1 md:px-3 mt-3">
-        <nav className="w-full bg-[#1C01A5] rounded-2xl p-2 shadow-lg overflow-x-auto">
+        <nav className="w-full bg-[#1C01A5] rounded-none p-2 shadow-lg overflow-x-auto">
           <div className="flex flex-nowrap items-center gap-2 min-w-max">
             {(
               [
@@ -546,7 +548,7 @@ export default function IgilModulePlayer() {
                     color: isActive ? "#FFE566" : "#FFFFFF",
                     borderColor: isActive ? "#FFE566" : "#FFFFFF",
                   }}
-                  className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl font-black text-sm md:text-base border-2 transition-all shrink-0"
+                  className="inline-flex items-center gap-2 px-5 py-2.5 rounded-none font-black text-sm md:text-base border-2 transition-all shrink-0"
                 >
                   <IkonTab id={tab.id} />
                   {tab.label}
@@ -748,10 +750,11 @@ export default function IgilModulePlayer() {
             </div>
           </div>
 
-          {/* Judul Sub-bab Berwarna #1C01A5 Tanpa Kartu Pembungkus di Atas Latar Putih */}
+          {/* Judul Sub-bab: kode di atas, nama bab di bawah */}
           <div className="pt-1">
             <h2 className="text-xl md:text-2xl font-black text-[#1C01A5]">
-              {currentSubContent.fullTitle}
+              <span className="block">{kodeSubBab}</span>
+              <span className="block">{judulSubBab}</span>
             </h2>
           </div>
 
