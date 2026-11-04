@@ -567,18 +567,11 @@ export default function IgilModulePlayer() {
           <div className="flex flex-nowrap items-center justify-between gap-6 min-w-[660px]">
             {/* Kiri: Ikon Favicon IGIL + Label H2/H3 #F0AB00 + Label H1 Putih (Tanpa Kartu Pembungkus) */}
             <div className="flex items-center gap-4">
-              {/* Ikon Favicon IGIL di sebelah kiri */}
-              <div className="w-14 h-14 md:w-16 md:h-16 rounded-2xl bg-[#F0AB00] flex items-center justify-center shadow shrink-0">
-                <svg viewBox="0 0 80 80" className="w-12 h-12">
-                  <ellipse cx="40" cy="46" rx="24" ry="26" fill="#1C01A5" />
-                  <ellipse cx="40" cy="50" rx="15" ry="17" fill="#FFFFFF" />
-                  <circle cx="30" cy="34" r="9" fill="#FFFFFF" stroke="#F0AB00" strokeWidth="2.5" />
-                  <circle cx="50" cy="34" r="9" fill="#FFFFFF" stroke="#F0AB00" strokeWidth="2.5" />
-                  <circle cx="30" cy="34" r="4.5" fill="#1C01A5" />
-                  <circle cx="50" cy="34" r="4.5" fill="#1C01A5" />
-                  <polygon points="40,38 35,46 45,46" fill="#F0AB00" />
-                </svg>
-              </div>
+              <img
+                src="/icon-192.png"
+                alt="IGIL"
+                className="w-14 h-14 md:w-16 md:h-16 rounded-2xl object-cover shadow shrink-0"
+              />
 
               {/* Label Mapel/Kelas (#F0AB00 H2/H3 Kapital Tanpa Kartu) & Nama Bab (Putih H1 Tanpa Kartu) */}
               <div>
@@ -664,30 +657,6 @@ export default function IgilModulePlayer() {
                   ? "Halaman 1: Komponen Silabus & Metode 24 Halaman SMICPA"
                   : "Halaman 2: Target Pembelajaran & Checklist Ketuntasan Sub-Bab"}
               </h2>
-            </div>
-            <div className="flex gap-2">
-              <button
-                type="button"
-                onClick={() => setSilabusPage(1)}
-                className={`px-3.5 py-1.5 rounded-xl font-black text-xs border-2 ${
-                  silabusPage === 1
-                    ? "bg-[#1C01A5] text-[#F0AB00] border-[#F0AB00]"
-                    : "bg-white text-[#1C01A5] border-[#1C01A5]"
-                }`}
-              >
-                Hal. 1 (Komponen)
-              </button>
-              <button
-                type="button"
-                onClick={() => setSilabusPage(2)}
-                className={`px-3.5 py-1.5 rounded-xl font-black text-xs border-2 ${
-                  silabusPage === 2
-                    ? "bg-[#1C01A5] text-[#F0AB00] border-[#F0AB00]"
-                    : "bg-white text-[#1C01A5] border-[#1C01A5]"
-                }`}
-              >
-                Hal. 2 (Target Checklist)
-              </button>
             </div>
           </div>
 
@@ -832,7 +801,7 @@ export default function IgilModulePlayer() {
               }}
               className="px-8 py-3 rounded-2xl bg-[#1C01A5] text-[#F0AB00] border-2 border-[#F0AB00] font-black text-sm shadow-md"
             >
-              {silabusPage === 1 ? "LANJUT KE TARGET PEMBELAJARAN ➡️" : "LANJUT KE MATERI ➡️"}
+              LANJUT
             </button>
           </div>
         </section>
