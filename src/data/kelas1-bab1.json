@@ -1,291 +1,1015 @@
 {
-  "chapter_id": "k1-mat-bab1",
-  "grade": 1,
-  "subject": "Matematika Kelas 1 SD — Kurikulum Merdeka",
-  "title": "Bab 1: Ayo Membilang 1 sampai dengan 10",
-  "total_pages": 24,
-  "tokens_reward": {
+  "chapterId": "k1-mat-bab1",
+  "subjectLabel": "MATEMATIKA - KELAS 1 SD",
+  "title": "BAB 1: AYO MEMBILANG SAMPAI DENGAN 10",
+  "tokens": {
     "practice": 30,
     "exam": 70,
     "practicum": 50
   },
-  "silabus": {
-    "fase": "Fase A (Kelas 1 SD — Semester 1)",
-    "elemen": "Bilangan (Numbers & Number Sense)",
-    "capaian_pembelajaran": "Peserta didik menunjukkan pemahaman dan memiliki intuisi bilangan (number sense) pada bilangan cacah sampai 10, termasuk membaca, menulis, menentukan nilai tempat, membandingkan, mengurutkan, serta melakukan komposisi (menyusun) dan dekomposisi (mengurai) bilangan.",
-    "tujuan_pembelajaran": [
-      "TP 1.1: Membilang dan menunjukkan jumlah benda konkret dari 1 sampai 10 secara tepat.",
-      "TP 1.2: Memetakan konsep bilangan melalui Peta Pikiran (Mind-Mapping) dan Tabel Infografis.",
-      "TP 1.3: Menerjemahkan benda nyata (Concrete) ke dalam bentuk Diagram (Pictorial) seperti Bingkai 10 dan Pasangan Bilangan.",
-      "TP 1.4: Menuliskan lambang bilangan dan perbandingan dalam bentuk Angka & Simbol (Abstract)."
-    ],
-    "peta_24_halaman_smicpa": [
-      {
-        "rentang": "Halaman 1–4",
-        "tahap": "S — Story (Cerita)",
-        "deskripsi": "Cerita kontekstual sehari-hari tentang petualangan Budi menghitung benda di kebun dan rumah."
-      },
-      {
-        "rentang": "Halaman 5–8",
-        "tahap": "M — Mind-Mapping (Peta Pikiran)",
-        "deskripsi": "Peta cabang visual yang menghubungkan seluruh konsep inti Bilangan 1–10 dalam satu pandangan."
-      },
-      {
-        "rentang": "Halaman 9–12",
-        "tahap": "I — Infografis (Tabel Rangkuman)",
-        "deskripsi": "Tabel ringkasan lambang angka, nama bilangan, kelompok benda, dan pasangan penguraiannya."
-      },
-      {
-        "rentang": "Halaman 13–16",
-        "tahap": "C — Concrete (Ilustrasi Benda Nyata)",
-        "deskripsi": "Menghitung objek benda nyata (apel, kelereng, kue) secara langsung satu per satu."
-      },
-      {
-        "rentang": "Halaman 17–20",
-        "tahap": "P — Pictorial (Diagram)",
-        "deskripsi": "Mengubah benda nyata menjadi diagram petak Bingkai 10 (Ten-Frame) dan diagram cabang Number Bond."
-      },
-      {
-        "rentang": "Halaman 21–24",
-        "tahap": "A — Abstract (Angka)",
-        "deskripsi": "Operasi lambang angka murni (1–10) serta simbol perbandingan matematika (>, <, =)."
-      }
-    ]
+  "subBabs": {
+    "A": {
+      "id": "A",
+      "codeTitle": "Sub-Bab A (1–10)",
+      "fullTitle": "Sub-Bab A: Menghitung, Membaca, dan Menulis Bilangan 1 sampai 10",
+      "targetDescription": "Siswa mampu menghitung banyak benda 1 sampai 10, membaca nama bilangannya, dan menuliskan lambang angkanya dengan benar.",
+      "secondaryBg": "#FEE2E2",
+      "secondaryBorder": "#EF4444",
+      "secondaryText": "#991B1B",
+      "stories": [
+        {
+          "id": "A-S1",
+          "titleHint": "Gambar 1: Kebun Kakek",
+          "voiceNarration": "Pada hari Minggu yang cerah, IGIL bersama Kira dan Upe pergi mengunjungi kebun buah milik Kakek di desa. Pohon-pohon di sana berbuah sangat lebat.",
+          "sceneType": "garden-visit"
+        },
+        {
+          "id": "A-S2",
+          "titleHint": "Gambar 2: Memetik Buah",
+          "voiceNarration": "Kira memetik buah apel merah yang manis, sedangkan Upe memetik buah jeruk kuning dan pisang emas. Mereka menaruhnya ke dalam keranjang bambu.",
+          "sceneType": "picking-fruits"
+        },
+        {
+          "id": "A-S3",
+          "titleHint": "Gambar 3: Menghitung Bersama",
+          "voiceNarration": "Sesampainya di teras rumah Kakek, mereka ingin tahu berapa banyak masing-masing buah yang berhasil dipetik. Ayo kita bantu mereka!",
+          "sceneType": "counting-table"
+        }
+      ],
+      "mindMaps": [
+        {
+          "stepNumber": 1,
+          "stepTitle": "1. Kumpulkan & Klasifikasikan",
+          "stepDesc": "Keluarkan semua buah dari keranjang lalu pisahkan ke dalam kotak masing-masing sesuai jenis buahnya.",
+          "icon": "🧺",
+          "flowFrom": "Buah Campur di Keranjang",
+          "flowTo": "Kotak Apel, Jeruk & Pisang"
+        },
+        {
+          "stepNumber": 2,
+          "stepTitle": "2. Hitung Satu per Satu",
+          "stepDesc": "Tunjuk dan hitung buah di dalam setiap kotak klasifikasi secara berurutan mulai dari satu.",
+          "icon": "👆",
+          "flowFrom": "Kotak Klasifikasi Buah",
+          "flowTo": "Pasangkan 1 Jari = 1 Buah"
+        },
+        {
+          "stepNumber": 3,
+          "stepTitle": "3. Baca & Tulis Lambangnya",
+          "stepDesc": "Ucapkan nama bilangannya dengan lantang, tuliskan lambang angkanya, lalu jumlahkan total buahnya.",
+          "icon": "✍️",
+          "flowFrom": "Hasil Hitungan Buah",
+          "flowTo": "Angka (3, 5, 7) & Nama Kata"
+        }
+      ],
+      "infografisData": [
+        {
+          "fruitName": "Buah Apel",
+          "emoji": "🍎",
+          "countNum": 3,
+          "countWord": "Tiga",
+          "voiceSentence": "Buah Apel ada tiga"
+        },
+        {
+          "fruitName": "Buah Jeruk",
+          "emoji": "🍊",
+          "countNum": 5,
+          "countWord": "Lima",
+          "voiceSentence": "Buah Jeruk ada lima"
+        },
+        {
+          "fruitName": "Buah Pisang",
+          "emoji": "🍌",
+          "countNum": 7,
+          "countWord": "Tujuh",
+          "voiceSentence": "Buah Pisang ada tujuh"
+        }
+      ],
+      "concreteSlides": [
+        {
+          "title": "Eksplorasi Benda Nyata 1: Kotak Apel Merah Kira",
+          "emoji": "🍎",
+          "targetCount": 3,
+          "voiceGuide": "Sentuh setiap buah apel merah untuk menghitungnya: Satu, Dua, Tiga! Lalu tebalkan angka 3 di kanvas samping."
+        },
+        {
+          "title": "Eksplorasi Benda Nyata 2: Kotak Jeruk Kuning Upe",
+          "emoji": "🍊",
+          "targetCount": 5,
+          "voiceGuide": "Sentuh setiap buah jeruk kuning: Satu, Dua, Tiga, Empat, Lima! Ada 5 buah jeruk."
+        },
+        {
+          "title": "Eksplorasi Benda Nyata 3: Kotak Pisang Emas Kakek",
+          "emoji": "🍌",
+          "targetCount": 7,
+          "voiceGuide": "Sentuh setiap buah pisang emas sampai tujuh: 5 di baris atas dan 2 di baris bawah menjadi 7 pisang!"
+        }
+      ],
+      "pictorialSlides": [
+        {
+          "title": "Diagram 1: Bingkai 10 (Ten-Frame) Bilangan 4",
+          "diagramType": "ten-frame",
+          "numberA": 4,
+          "numberB": 0,
+          "caption": "4 titik hijau menempati 4 kotak pada baris pertama Bingkai 10."
+        },
+        {
+          "title": "Diagram 2: Bingkai 10 (Ten-Frame) Bilangan 6",
+          "diagramType": "ten-frame",
+          "numberA": 6,
+          "numberB": 0,
+          "caption": "Baris atas penuh 5 titik ditambah 1 titik di baris bawah mewakili bilangan 6."
+        },
+        {
+          "title": "Diagram 3: Diagram Balok Bertingkat (2, 5, dan 8)",
+          "diagramType": "bar-blocks",
+          "numberA": 8,
+          "numberB": 5,
+          "caption": "Diagram petak memudahkan kita melihat tinggi bilangan 8 dibanding 5."
+        }
+      ],
+      "abstractSlides": [
+        {
+          "symbolLarge": "4  &  6",
+          "wordLarge": "EMPAT  &  ENAM",
+          "mathNotation": "4 = Empat   |   6 = Enam",
+          "voiceReadout": "Lambang bilangan 4 dibaca Empat. Lambang bilangan 6 dibaca Enam."
+        },
+        {
+          "symbolLarge": "8  &  9",
+          "wordLarge": "DELAPAN  &  SEMBILAN",
+          "mathNotation": "8 = Delapan   |   9 = Sembilan",
+          "voiceReadout": "Lambang bilangan 8 dibaca Delapan. Lambang bilangan 9 dibaca Sembilan."
+        },
+        {
+          "symbolLarge": "10",
+          "wordLarge": "SEPULUH",
+          "mathNotation": "5 + 5 = 10 (Sepuluh)",
+          "voiceReadout": "Lambang bilangan 10 terdiri dari angka 1 dan 0, dibaca Sepuluh."
+        }
+      ]
+    },
+    "B": {
+      "id": "B",
+      "codeTitle": "Sub-Bab B (Nol & Banding)",
+      "fullTitle": "Sub-Bab B: Mengenal Bilangan 0 dan Membandingkan Banyak Benda",
+      "targetDescription": "Siswa memahami konsep bilangan 0 (kosong) serta membandingkan dua kelompok benda (Lebih Banyak, Lebih Sedikit, atau Sama Banyak).",
+      "secondaryBg": "#FEF3C7",
+      "secondaryBorder": "#F59E0B",
+      "secondaryText": "#92400E",
+      "stories": [
+        {
+          "id": "B-S1",
+          "titleHint": "Gambar 1: Piring Buah yang Habis Dimakan",
+          "voiceNarration": "Setelah selesai menghitung buah, Malosi dan Tora ikut menikmati buah apel di piring kayu. Semua apel di piring itu habis dimakan hingga piringnya kosong.",
+          "sceneType": "empty-basket"
+        },
+        {
+          "id": "B-S2",
+          "titleHint": "Gambar 2: Membandingkan Dua Keranjang",
+          "voiceNarration": "Upe kemudian meletakkan keranjang mangga dan keranjang stroberi secara berdampingan. Ia ingin tahu keranjang mana yang isinya lebih banyak.",
+          "sceneType": "comparing-scales"
+        },
+        {
+          "id": "B-S3",
+          "titleHint": "Gambar 3: Memasangkan Benda Satu per Satu",
+          "voiceNarration": "IGIL memberi ide cerdas: hubungkan satu mangga dengan satu stroberi menggunakan tali. Keranjang yang masih punya sisa buah berarti lebih banyak!",
+          "sceneType": "counting-table"
+        }
+      ],
+      "mindMaps": [
+        {
+          "stepNumber": 1,
+          "stepTitle": "1. Periksa Wadah Kosong (0)",
+          "stepDesc": "Jika tidak ada satu pun benda di dalam piring atau kotak, maka jumlahnya adalah Nol (0).",
+          "icon": "⭕",
+          "flowFrom": "Wadah Kosong Tanpa Benda",
+          "flowTo": "Lambang Bilangan 0 (Nol)"
+        },
+        {
+          "stepNumber": 2,
+          "stepTitle": "2. Pasangkan Satu-Satu",
+          "stepDesc": "Jejerkan Kelompok A di baris atas dan Kelompok B di baris bawah, lalu tarik garis pasangan.",
+          "icon": "🔗",
+          "flowFrom": "Kelompok A vs Kelompok B",
+          "flowTo": "Garis Pasangan Satu-Satu"
+        },
+        {
+          "stepNumber": 3,
+          "stepTitle": "3. Tentukan Perbandingannya",
+          "stepDesc": "Kelompok yang bersisa disebut Lebih Banyak; yang habis duluan disebut Lebih Sedikit.",
+          "icon": "⚖️",
+          "flowFrom": "Cek Sisa Pasangan",
+          "flowTo": "Lebih Banyak / Lebih Sedikit / Sama"
+        }
+      ],
+      "infografisData": [
+        {
+          "fruitName": "Piring Kosong",
+          "emoji": "🍽️",
+          "countNum": 0,
+          "countWord": "Nol",
+          "voiceSentence": "Buah di piring kosong ada nol"
+        },
+        {
+          "fruitName": "Buah Mangga",
+          "emoji": "🥭",
+          "countNum": 6,
+          "countWord": "Enam",
+          "voiceSentence": "Buah Mangga ada enam"
+        },
+        {
+          "fruitName": "Buah Stroberi",
+          "emoji": "🍓",
+          "countNum": 4,
+          "countWord": "Empat",
+          "voiceSentence": "Buah Stroberi ada empat"
+        }
+      ],
+      "concreteSlides": [
+        {
+          "title": "Eksplorasi 1: Mengenal Wadah Kosong (Bilangan 0)",
+          "emoji": "🍓",
+          "targetCount": 0,
+          "voiceGuide": "Perhatikan wadah yang kosong melompong ini. Karena tidak ada buah, tuliskan angka 0 di kanvas!"
+        },
+        {
+          "title": "Eksplorasi 2: Memasangkan 6 Mangga dengan 4 Stroberi",
+          "emoji": "🥭",
+          "targetCount": 6,
+          "voiceGuide": "6 mangga lebih banyak dari 4 stroberi karena ada 2 mangga yang tidak mendapat pasangan."
+        },
+        {
+          "title": "Eksplorasi 3: Kelompok Sama Banyak (5 = 5)",
+          "emoji": "🍊",
+          "targetCount": 5,
+          "voiceGuide": "5 jeruk berpasangan pas dengan 5 apel tanpa sisa. Artinya kedua kelompok Sama Banyak!"
+        }
+      ],
+      "pictorialSlides": [
+        {
+          "title": "Diagram 1: Bingkai 10 Kosong (Bilangan 0)",
+          "diagramType": "ten-frame",
+          "numberA": 0,
+          "numberB": 0,
+          "caption": "Seluruh 10 petak berwarna putih bersih, mewakili bilangan 0."
+        },
+        {
+          "title": "Diagram 2: Perbandingan Diagram Batang (7 Lebih Banyak dari 3)",
+          "diagramType": "bar-blocks",
+          "numberA": 7,
+          "numberB": 3,
+          "caption": "Baris 7 petak lebih panjang 4 kotak dibandingkan baris 3 petak."
+        },
+        {
+          "title": "Diagram 3: Perbandingan Sama Banyak (8 dan 8)",
+          "diagramType": "bar-blocks",
+          "numberA": 8,
+          "numberB": 8,
+          "caption": "Kedua baris diagram memiliki panjang yang sama persis (8 = 8)."
+        }
+      ],
+      "abstractSlides": [
+        {
+          "symbolLarge": "0",
+          "wordLarge": "NOL (KOSONG)",
+          "mathNotation": "0 < 1   |   0 artinya tidak ada benda",
+          "voiceReadout": "Angka 0 dibaca Nol, nilainya lebih kecil dari 1."
+        },
+        {
+          "symbolLarge": "7  >  4",
+          "wordLarge": "7 LEBIH BANYAK DARI 4",
+          "mathNotation": "7 Lebih dari 4   |   4 Kurang dari 7",
+          "voiceReadout": "7 lebih banyak dari 4, dan 4 lebih sedikit dari 7."
+        },
+        {
+          "symbolLarge": "6  =  6",
+          "wordLarge": "6 SAMA BANYAK DENGAN 6",
+          "mathNotation": "6 Sama dengan 6",
+          "voiceReadout": "6 sama banyak dengan 6."
+        }
+      ]
+    },
+    "C": {
+      "id": "C",
+      "codeTitle": "Sub-Bab C (Maju-Mundur)",
+      "fullTitle": "Sub-Bab C: Menghitung Maju (1–10) dan Menghitung Mundur (10–1)",
+      "targetDescription": "Siswa mampu mengurutkan bilangan secara maju dari 1 ke 10 (+1) serta menghitung mundur dari 10 ke 1 (-1).",
+      "secondaryBg": "#DCFCE7",
+      "secondaryBorder": "#22C55E",
+      "secondaryText": "#166534",
+      "stories": [
+        {
+          "id": "C-S1",
+          "titleHint": "Gambar 1: Batu Loncatan di Sungai Kebun",
+          "voiceNarration": "Di pinggir kebun Kakek terdapat sungai kecil yang jernih dengan deretan 10 batu loncatan bernomor urut dari 1 sampai 10.",
+          "sceneType": "frog-river"
+        },
+        {
+          "id": "C-S2",
+          "titleHint": "Gambar 2: Katak Hijau Melompat Maju",
+          "voiceNarration": "Malosi mengamati seekor katak hijau yang melompat maju dari batu nomor 1 menuju batu nomor 10. Setiap lompatan angkanya bertambah satu.",
+          "sceneType": "frog-river"
+        },
+        {
+          "id": "C-S3",
+          "titleHint": "Gambar 3: Katak Melompat Mundur Kembali",
+          "voiceNarration": "Setelah sampai di batu nomor 10, katak itu berbalik arah dan melompat mundur: 10, 9, 8, 7, hingga kembali ke tepi sungai!",
+          "sceneType": "frog-river"
+        }
+      ],
+      "mindMaps": [
+        {
+          "stepNumber": 1,
+          "stepTitle": "1. Kenali Titik Awal",
+          "stepDesc": "Lihat nomor batu tempat kita berdiri sekarang sebelum mulai melompat.",
+          "icon": "🪨",
+          "flowFrom": "Posisi Batu Awal",
+          "flowTo": "Tentukan Arah Lompatan"
+        },
+        {
+          "stepNumber": 2,
+          "stepTitle": "2. Hitung Maju (+1)",
+          "stepDesc": "Saat bergerak ke kanan (maju), tambahkan 1 pada setiap langkah: 1, 2, 3, 4, 5, 6, 7, 8, 9, 10.",
+          "icon": "➡️",
+          "flowFrom": "Lompat ke Kanan",
+          "flowTo": "Angka Semakin Besar (+1)"
+        },
+        {
+          "stepNumber": 3,
+          "stepTitle": "3. Hitung Mundur (-1)",
+          "stepDesc": "Saat bergerak ke kiri (mundur), kurangi 1 pada setiap langkah: 10, 9, 8, 7, 6, 5, 4, 3, 2, 1.",
+          "icon": "⬅️",
+          "flowFrom": "Lompat ke Kiri",
+          "flowTo": "Angka Semakin Kecil (-1)"
+        }
+      ],
+      "infografisData": [
+        {
+          "fruitName": "Batu Awal Empat",
+          "emoji": "🐸",
+          "countNum": 4,
+          "countWord": "Empat",
+          "voiceSentence": "Katak di batu empat"
+        },
+        {
+          "fruitName": "Lompat Maju Satu",
+          "emoji": "🌿",
+          "countNum": 5,
+          "countWord": "Lima",
+          "voiceSentence": "Maju satu langkah menjadi lima"
+        },
+        {
+          "fruitName": "Lompat Maju Lagi",
+          "emoji": "🌸",
+          "countNum": 6,
+          "countWord": "Enam",
+          "voiceSentence": "Maju satu langkah lagi menjadi enam"
+        }
+      ],
+      "concreteSlides": [
+        {
+          "title": "Eksplorasi 1: Menyusun 4 Anak Tangga Maju",
+          "emoji": "🪜",
+          "targetCount": 4,
+          "voiceGuide": "Hitung maju anak tangga bersama Malosi: 1, 2, 3, 4! Lalu tulis angka 4."
+        },
+        {
+          "title": "Eksplorasi 2: Melompati 6 Batu Sungai",
+          "emoji": "🪨",
+          "targetCount": 6,
+          "voiceGuide": "Setelah batu ke-5 adalah batu ke-6. Ayo tebalkan angka 6!"
+        },
+        {
+          "title": "Eksplorasi 3: Hitung Mundur Peluncuran Roket Air",
+          "emoji": "🚀",
+          "targetCount": 8,
+          "voiceGuide": "Hitung mundur dari 10: 10, 9, 8! Sekarang kita berada di angka 8."
+        }
+      ],
+      "pictorialSlides": [
+        {
+          "title": "Diagram 1: Tangga Naik Menghitung Maju (1 sampai 7)",
+          "diagramType": "bar-blocks",
+          "numberA": 6,
+          "numberB": 7,
+          "caption": "Setiap naik satu anak tangga ke kanan, tinggi balok bertambah 1 petak."
+        },
+        {
+          "title": "Diagram 2: Tangga Turun Menghitung Mundur (9 ke 8)",
+          "diagramType": "bar-blocks",
+          "numberA": 9,
+          "numberB": 8,
+          "caption": "Saat menghitung mundur dari 9, tinggi balok berkurang 1 menjadi 8."
+        },
+        {
+          "title": "Diagram 3: Bingkai 10 Urutan Penuh",
+          "diagramType": "ten-frame",
+          "numberA": 10,
+          "numberB": 0,
+          "caption": "Urutan puncak membilang maju pada Bab 1 berhenti di 10 petak penuh."
+        }
+      ],
+      "abstractSlides": [
+        {
+          "symbolLarge": "1 → 2 → 3 → 4 → 5",
+          "wordLarge": "BARISAN HITUNG MAJU AWAL",
+          "mathNotation": "Bertambah 1 setiap langkah ke kanan",
+          "voiceReadout": "Menghitung maju: Satu, Dua, Tiga, Empat, Lima."
+        },
+        {
+          "symbolLarge": "6 → 7 → 8 → 9 → 10",
+          "wordLarge": "BARISAN HITUNG MAJU LANJUTAN",
+          "mathNotation": "Setelah 8 adalah 9, setelah 9 adalah 10",
+          "voiceReadout": "Enam, Tujuh, Delapan, Sembilan, Sepuluh."
+        },
+        {
+          "symbolLarge": "10 → 9 → 8 → 7 → 6",
+          "wordLarge": "BARISAN HITUNG MUNDUR",
+          "mathNotation": "Berkurang 1 setiap langkah ke kiri",
+          "voiceReadout": "Menghitung mundur: Sepuluh, Sembilan, Delapan, Tujuh, Enam."
+        }
+      ]
+    },
+    "D": {
+      "id": "D",
+      "codeTitle": "Sub-Bab D (Pasangan)",
+      "fullTitle": "Sub-Bab D: Menemukan Pasangan Bilangan (Number Bonds) sampai 10",
+      "targetDescription": "Siswa mampu menguraikan dan menyusun pasangan bilangan (Number Bonds) yang membentuk suatu bilangan hingga 10.",
+      "secondaryBg": "#DBEAFE",
+      "secondaryBorder": "#3B82F6",
+      "secondaryText": "#1E3A8A",
+      "stories": [
+        {
+          "id": "D-S1",
+          "titleHint": "Gambar 1: Membagi Buah ke Dua Piring",
+          "voiceNarration": "Menjelang sore, Tora ingin mengemas 8 buah jambu air dari kebun Kakek ke dalam dua kantong bekal untuk dibawa pulang.",
+          "sceneType": "number-tree"
+        },
+        {
+          "id": "D-S2",
+          "titleHint": "Gambar 2: Mencoba Berbagai Kombinasi",
+          "voiceNarration": "Jika kantong kiri diisi 5 jambu, ternyata kantong kanan berisi 3 jambu. Tetapi jika kantong kiri diisi 4 jambu, kantong kanan berisi 4 jambu!",
+          "sceneType": "number-tree"
+        },
+        {
+          "id": "D-S3",
+          "titleHint": "Gambar 3: Pohon Pasangan Bilangan IGIL",
+          "voiceNarration": "IGIL menjelaskan bahwa satu bilangan utuh dapat diuraikan menjadi berbagai pasangan bilangan yang jika digabungkan jumlahnya tetap sama!",
+          "sceneType": "number-tree"
+        }
+      ],
+      "mindMaps": [
+        {
+          "stepNumber": 1,
+          "stepTitle": "1. Tentukan Bilangan Utuh",
+          "stepDesc": "Taruh jumlah seluruh benda di lingkaran induk (atas) pada Pohon Pasangan Bilangan.",
+          "icon": "🟡",
+          "flowFrom": "Total Benda Utuh (Misal 8)",
+          "flowTo": "Lingkaran Induk Atas"
+        },
+        {
+          "stepNumber": 2,
+          "stepTitle": "2. Bagi ke Cabang Kiri",
+          "stepDesc": "Pindahkan sebagian benda ke cabang pertama (kiri) dan hitung jumlahnya.",
+          "icon": "↙️",
+          "flowFrom": "Lingkaran Induk",
+          "flowTo": "Cabang Bagian Pertama"
+        },
+        {
+          "stepNumber": 3,
+          "stepTitle": "3. Hitung Sisa di Cabang Kanan",
+          "stepDesc": "Sisa benda otomatis masuk ke cabang kedua (kanan) sehingga Bagian Kiri + Kanan = Utuh.",
+          "icon": "↘️",
+          "flowFrom": "Sisa Benda",
+          "flowTo": "Pasangan Bilangan Lengkap"
+        }
+      ],
+      "infografisData": [
+        {
+          "fruitName": "Pasangan 6 (4 & 2)",
+          "emoji": "🍐",
+          "countNum": 6,
+          "countWord": "Enam",
+          "voiceSentence": "Enam terdiri dari empat dan dua"
+        },
+        {
+          "fruitName": "Pasangan 8 (5 & 3)",
+          "emoji": "🍎",
+          "countNum": 8,
+          "countWord": "Delapan",
+          "voiceSentence": "Delapan terdiri dari lima dan tiga"
+        },
+        {
+          "fruitName": "Pasangan 9 (6 & 3)",
+          "emoji": "🍊",
+          "countNum": 9,
+          "countWord": "Sembilan",
+          "voiceSentence": "Sembilan terdiri dari enam dan tiga"
+        }
+      ],
+      "concreteSlides": [
+        {
+          "title": "Eksplorasi 1: Menguraikan 6 Jambu (4 dan 2)",
+          "emoji": "🍐",
+          "targetCount": 6,
+          "voiceGuide": "6 jambu dibagi menjadi 4 di piring kiri dan 2 di piring kanan. Tebalkan angka 6!"
+        },
+        {
+          "title": "Eksplorasi 2: Menguraikan 8 Apel (5 dan 3)",
+          "emoji": "🍎",
+          "targetCount": 8,
+          "voiceGuide": "5 apel dan 3 apel membentuk bilangan utuh 8. Ayo tulis angka 8!"
+        },
+        {
+          "title": "Eksplorasi 3: Menguraikan 9 Jeruk (6 dan 3)",
+          "emoji": "🍊",
+          "targetCount": 9,
+          "voiceGuide": "6 jeruk dan 3 jeruk jika digabungkan berjumlah 9 jeruk!"
+        }
+      ],
+      "pictorialSlides": [
+        {
+          "title": "Diagram 1: Pasangan Bilangan (Number Bond) 7 → 4 dan 3",
+          "diagramType": "number-bond",
+          "numberA": 7,
+          "numberB": 4,
+          "caption": "Lingkaran utuh 7 bercabang menjadi bagian 4 dan bagian 3."
+        },
+        {
+          "title": "Diagram 2: Pasangan Bilangan (Number Bond) 9 → 5 dan 4",
+          "diagramType": "number-bond",
+          "numberA": 9,
+          "numberB": 5,
+          "caption": "Lingkaran utuh 9 bercabang menjadi bagian 5 dan bagian 4."
+        },
+        {
+          "title": "Diagram 3: Pasangan Bilangan (Number Bond) 10 → 6 dan 4",
+          "diagramType": "number-bond",
+          "numberA": 10,
+          "numberB": 6,
+          "caption": "Lingkaran utuh 10 bercabang menjadi bagian 6 dan bagian 4."
+        }
+      ],
+      "abstractSlides": [
+        {
+          "symbolLarge": "7  =  4  dan  3",
+          "wordLarge": "PASANGAN BILANGAN 7",
+          "mathNotation": "4 + 3 = 7   |   3 + 4 = 7",
+          "voiceReadout": "7 dapat diuraikan menjadi pasangan bilangan 4 dan 3."
+        },
+        {
+          "symbolLarge": "9  =  5  dan  4",
+          "wordLarge": "PASANGAN BILANGAN 9",
+          "mathNotation": "5 + 4 = 9   |   6 + 3 = 9",
+          "voiceReadout": "9 dapat diuraikan menjadi pasangan 5 dan 4, atau 6 dan 3."
+        },
+        {
+          "symbolLarge": "10  =  6  dan  4",
+          "wordLarge": "PASANGAN PENGGENAP 10",
+          "mathNotation": "1&9 • 2&8 • 3&7 • 4&6 • 5&5",
+          "voiceReadout": "Pasangan bilangan yang menghasilkan 10 adalah 1 dan 9, 2 dan 8, 3 dan 7, 4 dan 6, serta 5 dan 5."
+        }
+      ]
+    }
   },
-  "materi_pages": [
-    {
-      "page_number": 1,
-      "smicpa_code": "S",
-      "smicpa_stage": "Story (Cerita)",
-      "title": "Panen Buah di Kebun Kakek",
-      "story_text": "Hari Minggu pagi, Budi berkunjung ke kebun Kakek di desa. Di sana ada pohon apel merah yang sedang berbuah lebat, keranjang bambu, dan piring-piring kue buatan Nenek. Kakek meminta bantuan Budi menghitung hasil panen agar bisa dibagikan kepada tetangga secara adil.",
-      "concept_explanation": [
-        "Matematika selalu dimulai dari peristiwa nyata di sekitar kita.",
-        "Dalam cerita Kakek dan Budi, kita butuh cara untuk mengetahui: Berapa banyak apel yang dipetik? Apakah keranjangnya cukup? Siapa yang mendapat lebih banyak?",
-        "Dari cerita inilah kita mulai belajar membilang angka 1 sampai 10."
-      ],
-      "key_formula": "Masalah Sehari-hari → Diselesaikan dengan Membilang secara Tepat",
-      "visual_board": {
-        "type": "story",
-        "title": "Alur Cerita Petualangan Budi di Kebun Kakek",
-        "story_scenes": [
-          { "step": "Adegan 1", "icon": "🌳🍎", "text": "Budi memetik apel merah langsung dari pohon Kakek." },
-          { "step": "Adegan 2", "icon": "🧺🔢", "text": "Budi menyusun apel ke dalam keranjang bersekat 10 agar mudah dihitung." },
-          { "step": "Adegan 3", "icon": "🍽️🧁", "text": "Budi membagi kue Nenek ke dalam dua piring dan membandingkan jumlahnya." }
-        ],
-        "caption": "Tahap S (Story): Anak memahami alasan mengapa mereka perlu belajar berhitung lewat alur cerita."
-      }
-    },
-    {
-      "page_number": 2,
-      "smicpa_code": "M",
-      "smicpa_stage": "Mind-Mapping (Peta Pikiran)",
-      "title": "Peta Pikiran Bilangan 1 sampai 10",
-      "story_text": "Sebelum masuk ke hitungan detail, mari kita lihat gambaran besar (helikopter) dari seluruh ilmu yang akan kita kuasai di Bab 1 melalui Peta Pikiran.",
-      "concept_explanation": [
-        "Pusat pikiran kita di Bab 1 adalah BILANGAN 1 SAMPAI 10.",
-        "Dari pusat tersebut, bercabang menjadi 4 kemampuan utama: (1) Membilang Urut, (2) Pola Bingkai 10, (3) Pasangan Bilangan, dan (4) Membandingkan Jumlah.",
-        "Dengan Peta Pikiran, otak kita tahu hubungan antar-materi dan tidak mudah lupa."
-      ],
-      "key_formula": "Bilangan 1–10 = Membilang + Bingkai 10 + Pasangan Bilangan + Perbandingan",
-      "visual_board": {
-        "type": "mind_map",
-        "title": "Peta Pikiran (Mind-Map) Bab 1",
-        "center_node": "🔢 BILANGAN 1 SAMPAI 10",
-        "branches": [
-          { "title": "1. Membilang Urut", "detail": "Menunjuk 1 benda = 1 angka (1 s/d 10)" },
-          { "title": "2. Bingkai 10 (Ten-Frame)", "detail": "Baris atas 5 + Baris bawah 5 = 10" },
-          { "title": "3. Pasangan Bilangan", "detail": "Mengurai 1 angka menjadi 2 bagian (8 = 5 dan 3)" },
-          { "title": "4. Perbandingan", "detail": "Lebih Banyak (>), Lebih Sedikit (<), Sama (=)" }
-        ],
-        "caption": "Tahap M (Mind-Mapping): Anak merangkum peta cabang konsep di kepalanya sebelum menghafal."
-      }
-    },
-    {
-      "page_number": 3,
-      "smicpa_code": "I",
-      "smicpa_stage": "Infografis (Tabel Rangkuman)",
-      "title": "Tabel Rangkuman Bilangan 1 sampai 10",
-      "story_text": "Agar mudah mencari informasi secara cepat, kita menyusun rangkuman angka 1 sampai 10 ke dalam bentuk Tabel Infografis yang rapi.",
-      "concept_explanation": [
-        "Tabel Infografis menyandingkan Lambang Angka, Cara Baca (Nama Bilangan), Wujud Benda, dan Pasangan Penguraiannya.",
-        "Perhatikan bagaimana setiap angka bertambah tepat 1 benda dibanding angka sebelumnya.",
-        "Gunakan tabel di sebelah kanan sebagai kamus cepat saat kamu berlatih."
-      ],
-      "key_formula": "Setiap naik 1 tingkat di tabel = bertambah 1 satuan (+1)",
-      "visual_board": {
-        "type": "infografis",
-        "title": "Infografis Tabel Rangkuman Bilangan Penting",
-        "table_rows": [
-          { "angka": "5", "nama": "Lima", "benda": "🍎🍎🍎🍎🍎", "pasangan": "5 = 3 + 2" },
-          { "angka": "6", "nama": "Enam", "benda": "🍎🍎🍎🍎🍎 🍎", "pasangan": "6 = 5 + 1" },
-          { "angka": "7", "nama": "Tujuh", "benda": "🍎🍎🍎🍎🍎 🍎🍎", "pasangan": "7 = 5 + 2" },
-          { "angka": "8", "nama": "Delapan", "benda": "🍎🍎🍎🍎🍎 🍎🍎🍎", "pasangan": "8 = 5 + 3" },
-          { "angka": "9", "nama": "Sembilan", "benda": "🍎🍎🍎🍎🍎 🍎🍎🍎🍎", "pasangan": "9 = 5 + 4" },
-          { "angka": "10", "nama": "Sepuluh", "benda": "🍎🍎🍎🍎🍎 🍎🍎🍎🍎🍎", "pasangan": "10 = 5 + 5" }
-        ],
-        "caption": "Tahap I (Infografis): Ringkasan terstruktur dalam bentuk tabel agar mudah dipindai mata."
-      }
-    },
-    {
-      "page_number": 4,
-      "smicpa_code": "C",
-      "smicpa_stage": "Concrete (Ilustrasi Benda Nyata)",
-      "title": "Menghitung Benda Nyata Satu per Satu",
-      "story_text": "Sekarang kita masuk ke tahap Concrete (Benda Nyata). Sebelum melihat diagram atau rumus, kita wajib melihat wujud benda aslinya seperti apel merah, kue bolu, dan kelereng.",
-      "concept_explanation": [
-        "Prinsip Korespondensi Satu-Satu: sentuh 1 benda nyata sambil mengucapkan 1 angka.",
-        "Jangan melompati benda dan jangan menunjuk benda yang sama dua kali.",
-        "Angka terakhir yang kamu sebutkan saat menunjuk benda terakhir adalah jumlah keseluruhan benda nyata tersebut."
-      ],
-      "key_formula": "1 Sentuhan Benda Nyata = 1 Hitungan Angka",
-      "visual_board": {
-        "type": "concrete",
-        "title": "Ilustrasi Benda Nyata (Concrete Objects)",
-        "concrete_groups": [
-          { "label": "6 Buah Apel Merah", "items": ["🍎", "🍎", "🍎", "🍎", "🍎", "🍎"] },
-          { "label": "8 Butir Kelereng Biru", "items": ["🔮", "🔮", "🔮", "🔮", "🔮", "🔮", "🔮", "🔮"] }
-        ],
-        "caption": "Tahap C (Concrete): Anak mengamati dan membilang ilustrasi objek nyata yang akrab dalam keseharian."
-      }
-    },
-    {
-      "page_number": 5,
-      "smicpa_code": "P",
-      "smicpa_stage": "Pictorial (Diagram)",
-      "title": "Mengubah Benda Nyata Menjadi Diagram",
-      "story_text": "Menggambar buah apel atau kelereng satu per satu membutuhkan waktu lama. Di tahap Pictorial, kita mengganti benda nyata menjadi Diagram Titik Petak (Ten-Frame) dan Diagram Cabang (Number Bond).",
-      "concept_explanation": [
-        "1 buah apel nyata kini cukup diwakili oleh 1 bulatan titik (🔵) di dalam Diagram Petak 10.",
-        "6 apel nyata berubah menjadi 5 titik di baris atas dan 1 titik di baris bawah.",
-        "Diagram Cabang (Number Bond) menunjukkan bagaimana 1 lingkaran induk dipecah menjadi 2 lingkaran cabang."
-      ],
-      "key_formula": "Benda Nyata (🍎) → Diwakili Diagram Titik (🔵) & Diagram Cabang",
-      "visual_board": {
-        "type": "pictorial",
-        "title": "Diagram Petak 10 & Diagram Cabang untuk Bilangan 7",
-        "ten_frame_dots": [true, true, true, true, true, true, true, false, false, false],
-        "bond_diagram": { "whole": 7, "part1": 5, "part2": 2 },
-        "caption": "Tahap P (Pictorial): Anak beralih dari gambar buah menuju model diagram terukur."
-      }
-    },
-    {
-      "page_number": 6,
-      "smicpa_code": "A",
-      "smicpa_stage": "Abstract (Angka)",
-      "title": "Lambang Angka & Simbol Matematika",
-      "story_text": "Setelah paham cerita, peta pikiran, tabel, benda nyata, dan diagram, barulah kita siap menggunakan bahasa matematika murni yaitu Angka dan Simbol (Abstract).",
-      "concept_explanation": [
-        "Kita tidak perlu lagi menggambar apel atau kotak titik; cukup menuliskan lambang angkanya: 7, 8, 9, 10.",
-        "Penggabungan ditulis dengan tanda tambah (+), misalnya: 5 + 3 = 8.",
-        "Perbandingan ditulis dengan simbol: > (lebih banyak dari), < (lebih sedikit dari), dan = (sama dengan)."
-      ],
-      "key_formula": "5 + 3 = 8   |   7 > 4   |   4 < 7   |   6 = 6",
-      "visual_board": {
-        "type": "abstract",
-        "title": "Notasi Angka & Persamaan Abstrak Murni",
-        "equations": [
-          { "label": "Komposisi Bilangan", "math": "5 + 3 = 8" },
-          { "label": "Dekomposisi Bilangan", "math": "9 = 5 + 4" },
-          { "label": "Simbol Perbandingan", "math": "8 > 5   dan   4 < 9" }
-        ],
-        "caption": "Tahap A (Abstract): Puncak SMICPA—anak menguasai operasi angka tanpa bingung maknanya."
-      }
-    }
-  ],
-  "simulasi_missions": [
+  "practiceQuestions": [
     {
       "id": 1,
-      "title": "Simulasi 1: Eksperimen Bingkai 10 (Concrete ke Pictorial)",
-      "instruction": "Sentuh kotak-kotak di bawah ini untuk memasukkan atau mengambil Apel Merah sampai jumlahnya tepat 8 buah!",
-      "mode": "ten_frame",
-      "item_emoji": "🍎",
-      "item_name": "Apel Merah",
-      "initial_count": 3,
-      "target_count": 8,
-      "success_message": "Simulasi 1 Berhasil! Kamu melihat bahwa 8 apel adalah 5 di baris atas + 3 di baris bawah."
-    },
-    {
-      "id": 2,
-      "title": "Simulasi 2: Laboratorium Diagram Pasangan Bilangan (Pictorial)",
-      "instruction": "Jumlah seluruh kue adalah 9. Piring Kiri sudah berisi 4 kue. Tekan tombol (+) atau (-) pada Piring Kanan agar totalnya menjadi 9!",
-      "mode": "number_bond",
-      "item_emoji": "🧁",
-      "whole_number": 9,
-      "known_part": 4,
-      "target_missing_part": 5,
-      "success_message": "Simulasi 2 Berhasil! Pasangan bilangan dari 4 untuk membentuk 9 adalah 5."
-    },
-    {
-      "id": 3,
-      "title": "Simulasi 3: Timbangan Simbol Perbandingan (Abstract)",
-      "instruction": "Amati kelompok Kelereng dan Bintang di bawah ini, lalu tekan tombol tanda perbandingan yang tepat!",
-      "mode": "comparison",
-      "left_group": { "emoji": "🔮", "name": "Kelereng Biru", "count": 5 },
-      "right_group": { "emoji": "⭐", "name": "Bintang Emas", "count": 8 },
-      "correct_relation": "LEBIH_SEDIKIT",
-      "success_message": "Simulasi 3 Berhasil! 5 Kelereng Biru LEBIH SEDIKIT daripada 8 Bintang Emas (5 < 8)."
-    }
-  ],
-  "practice_questions": [
-    {
-      "id": 1,
-      "question": "Di baris atas Diagram Bingkai 10 sudah penuh berisi 5 titik, dan di baris bawah ada 2 titik. Berapa jumlah seluruhnya?",
-      "visual_hint": "🔵🔵🔵🔵🔵 (5) + 🔵🔵 (2)",
-      "options": ["6", "7", "8", "9"],
-      "correct_index": 1,
-      "explanation": "Baris atas yang penuh bernilai 5. Ditambah 2 di baris bawah: 5 + 2 = 7."
-    },
-    {
-      "id": 2,
-      "question": "Bilangan 8 jika dipecah pada Diagram Cabang (Number Bond) terdiri dari pasangan 5 dan ...",
-      "visual_hint": "8 = 5 + [ ? ]",
-      "options": ["2", "3", "4", "5"],
-      "correct_index": 1,
-      "explanation": "Hitung maju dari 5 sampai 8: 6, 7, 8 (ada 3 langkah). Jadi pasangan 5 supaya menjadi 8 adalah 3."
-    },
-    {
-      "id": 3,
-      "question": "Di meja ada 6 pensil merah dan 9 pensil biru. Simbol perbandingan abstrak yang benar adalah...",
-      "visual_hint": "6  ...  9",
+      "level": "LOTS (30%)",
+      "prompt": "Hitunglah berapa banyak buah apel merah yang dipetik Kira pada kotak di bawah ini!",
+      "visualEmojis": [
+        "🍎",
+        "🍎",
+        "🍎",
+        "🍎",
+        "🍎",
+        "🍎"
+      ],
       "options": [
-        "6 > 9 (Lebih Banyak)",
-        "6 = 9 (Sama Dengan)",
-        "6 < 9 (Lebih Sedikit)",
-        "9 < 6 (Lebih Sedikit)"
+        "5",
+        "6",
+        "7",
+        "8"
       ],
-      "correct_index": 2,
-      "explanation": "Karena angka 6 lebih kecil daripada 9, maka ditulis 6 < 9 (6 lebih sedikit daripada 9)."
-    }
-  ],
-  "exam_questions": [
-    {
-      "id": 1,
-      "question": "Sebuah Diagram Bingkai 10 (Ten-Frame) hanya menyisakan 1 kotak kosong. Berapa lambang bilangan yang tepat?",
-      "options": ["7", "8", "9", "10"],
-      "correct_index": 2
+      "correctAnswer": "6",
+      "explanation": "Jika dihitung satu per satu mulai dari kiri, terdapat tepat 6 buah apel merah."
     },
     {
       "id": 2,
-      "question": "Ibu memiliki 10 jeruk yang dibagi ke dua keranjang. Jika keranjang pertama berisi 6 jeruk, berapa isi keranjang kedua?",
-      "options": ["3 jeruk", "4 jeruk", "5 jeruk", "6 jeruk"],
-      "correct_index": 1
+      "level": "LOTS (30%)",
+      "prompt": "Semua buah jeruk di keranjang Upe sudah habis dibagikan sehingga keranjangnya kosong. Lambang bilangannya adalah...",
+      "visualEmojis": [],
+      "options": [
+        "0",
+        "1",
+        "5",
+        "10"
+      ],
+      "correctAnswer": "0",
+      "explanation": "Keranjang kosong tanpa satu pun buah dilambangkan dengan bilangan 0 (Nol)."
     },
     {
       "id": 3,
-      "question": "Manakah kalimat matematika (Abstract) di bawah ini yang BENAR?",
-      "options": [
-        "8 > 5 (8 lebih banyak daripada 5)",
-        "4 > 7 (4 lebih banyak daripada 7)",
-        "9 < 6 (9 lebih sedikit daripada 6)",
-        "5 = 8 (5 sama dengan 8)"
+      "level": "LOTS (30%)",
+      "prompt": "Malosi menyebutkan nama bilangan 'DELAPAN'. Manakah lambang angka yang benar?",
+      "visualEmojis": [
+        "🍌",
+        "🍌",
+        "🍌",
+        "🍌",
+        "🍌",
+        "🍌",
+        "🍌",
+        "🍌"
       ],
-      "correct_index": 0
+      "options": [
+        "6",
+        "7",
+        "8",
+        "9"
+      ],
+      "correctAnswer": "8",
+      "explanation": "Nama bilangan 'Delapan' ditulis dengan lambang angka 8."
+    },
+    {
+      "id": 4,
+      "level": "MOTS (30%)",
+      "prompt": "Bandingkan dua kelompok buah berikut! Kelompok Stroberi (7) ... daripada Kelompok Mangga (5).",
+      "visualEmojis": [
+        "🍓",
+        "🍓",
+        "🍓",
+        "🍓",
+        "🍓",
+        "🍓",
+        "🍓"
+      ],
+      "secondaryGroupEmojis": [
+        "🥭",
+        "🥭",
+        "🥭",
+        "🥭",
+        "🥭"
+      ],
+      "options": [
+        "Lebih banyak",
+        "Lebih sedikit",
+        "Sama banyak",
+        "Kurang dari"
+      ],
+      "correctAnswer": "Lebih banyak",
+      "explanation": "Saat dipasangkan satu per satu, 7 stroberi masih menyisakan 2 buah dibanding 5 mangga. Jadi 7 lebih banyak dari 5."
+    },
+    {
+      "id": 5,
+      "level": "MOTS (30%)",
+      "prompt": "Katak hijau melompat MAJU secara berurutan di batu sungai: 4, 5, 6, [...], 8. Nomor batu yang terlewat adalah...",
+      "visualEmojis": [
+        "🪨4",
+        "🪨5",
+        "🪨6",
+        "🐸?",
+        "🪨8"
+      ],
+      "options": [
+        "5",
+        "6",
+        "7",
+        "9"
+      ],
+      "correctAnswer": "7",
+      "explanation": "Menghitung maju berarti bertambah 1 setiap lompatan. Setelah 6 dan sebelum 8 adalah 7."
+    },
+    {
+      "id": 6,
+      "level": "MOTS (30%)",
+      "prompt": "Tora menguraikan 8 buah pir ke dalam dua piring. Jika piring pertama berisi 5 pir, berapa pir di piring kedua?",
+      "visualEmojis": [
+        "🍐",
+        "🍐",
+        "🍐",
+        "🍐",
+        "🍐"
+      ],
+      "secondaryGroupEmojis": [
+        "❓",
+        "❓",
+        "❓"
+      ],
+      "options": [
+        "2",
+        "3",
+        "4",
+        "5"
+      ],
+      "correctAnswer": "3",
+      "explanation": "Pasangan bilangan dari 8 adalah 5 dan 3, sebab 5 ditambah 3 berjumlah 8."
+    },
+    {
+      "id": 7,
+      "level": "HOTS (40%)",
+      "prompt": "Kira memiliki 5 apel. Upe memiliki buah jeruk yang jumlahnya LEBIH BANYAK dari apel Kira, tetapi KURANG DARI 7. Berapa jumlah jeruk Upe?",
+      "visualEmojis": [
+        "🍎",
+        "🍎",
+        "🍎",
+        "🍎",
+        "🍎"
+      ],
+      "options": [
+        "4",
+        "5",
+        "6",
+        "7"
+      ],
+      "correctAnswer": "6",
+      "explanation": "Bilangan yang lebih banyak dari 5 (di atas 5) tetapi kurang dari 7 (di bawah 7) adalah 6."
+    },
+    {
+      "id": 8,
+      "level": "HOTS (40%)",
+      "prompt": "Malosi berdiri di batu nomor 9, lalu ia melompat MUNDUR sebanyak 3 kali satu per satu. Di batu nomor berapakah Malosi sekarang?",
+      "visualEmojis": [
+        "🪨9",
+        "⬅️8",
+        "⬅️7",
+        "🐸?"
+      ],
+      "options": [
+        "5",
+        "6",
+        "7",
+        "8"
+      ],
+      "correctAnswer": "6",
+      "explanation": "Dari batu 9 melompat mundur 3 kali: lompatan ke-1 di 8, ke-2 di 7, dan ke-3 mendarat di batu 6."
+    },
+    {
+      "id": 9,
+      "level": "HOTS (40%)",
+      "prompt": "Agar kotak Bingkai 10 milik Tora terisi penuh (10 buah), ia menggabungkan 2 keranjang yang jumlah buahnya SAMA BANYAK. Berapa isi masing-masing keranjang?",
+      "visualEmojis": [
+        "🍓",
+        "🍓",
+        "🍓",
+        "🍓",
+        "🍓"
+      ],
+      "secondaryGroupEmojis": [
+        "🍓",
+        "🍓",
+        "🍓",
+        "🍓",
+        "🍓"
+      ],
+      "options": [
+        "4 dan 4",
+        "5 dan 5",
+        "6 dan 4",
+        "7 dan 3"
+      ],
+      "correctAnswer": "5 dan 5",
+      "explanation": "Pasangan bilangan yang kembar (sama banyak) dan menghasilkan 10 adalah 5 dan 5."
+    },
+    {
+      "id": 10,
+      "level": "HOTS (40%)",
+      "prompt": "Di meja ada 6 mangga dan 4 apel. Berapa buah apel lagi yang harus dipetik Kakek agar banyak apel menjadi SAMA BANYAK dengan mangga?",
+      "visualEmojis": [
+        "🥭",
+        "🥭",
+        "🥭",
+        "🥭",
+        "🥭",
+        "🥭"
+      ],
+      "secondaryGroupEmojis": [
+        "🍎",
+        "🍎",
+        "🍎",
+        "🍎"
+      ],
+      "options": [
+        "1 apel",
+        "2 apel",
+        "3 apel",
+        "4 apel"
+      ],
+      "correctAnswer": "2 apel",
+      "explanation": "Pasangan bilangan 6 adalah 4 dan 2. Agar 4 apel menjadi sama banyak dengan 6 mangga, dibutuhkan 2 apel lagi."
     }
   ],
-  "practicum_task": {
-    "title": "Praktikum Sintesis: Merancang Keranjang Bekal Piknik Sekolah",
-    "scenario": "Kamu diminta menyiapkan tepat 10 potong buah untuk bekal piknik yang terdiri dari Apel Merah dan Pisang Kuning. Aturannya: jumlah Apel Merah harus LEBIH BANYAK (>) daripada Pisang Kuning, dan tidak boleh ada yang 0.",
-    "question_prompt": "Tuliskan berapa Apel Merah dan berapa Pisang Kuning yang kamu pilih supaya jumlahnya pas 10, lalu jelaskan dengan kalimatmu sendiri mengapa pilihanmu sudah memenuhi syarat!"
-  }
+  "examQuestions": [
+    {
+      "id": 1,
+      "level": "HOTS UJIAN FORMAL",
+      "prompt": "1. Perhatikan pola kotak buah Kakek! Kotak pertama berisi 4 jeruk, kotak kedua 6 jeruk, dan kotak ketiga 8 jeruk. Jika pola selalu bertambah 2, berapa jeruk pada kotak keempat?",
+      "visualEmojis": [
+        "🍊4",
+        "🍊6",
+        "🍊8",
+        "🍊?"
+      ],
+      "options": [
+        "7",
+        "9",
+        "10",
+        "6"
+      ],
+      "correctAnswer": "10",
+      "explanation": "Polanya melompat maju 2 angka: 4, 6, 8, lalu 8 + 2 = 10."
+    },
+    {
+      "id": 2,
+      "level": "HOTS UJIAN FORMAL",
+      "prompt": "2. Kira memiliki 7 stroberi. Upe memiliki 3 stroberi. Jika Kira memberikan 2 stroberinya kepada Upe, siapakah yang memiliki stroberi lebih banyak sekarang?",
+      "visualEmojis": [
+        "🍓",
+        "🍓",
+        "🍓",
+        "🍓",
+        "🍓",
+        "🍓",
+        "🍓"
+      ],
+      "secondaryGroupEmojis": [
+        "🍓",
+        "🍓",
+        "🍓"
+      ],
+      "options": [
+        "Sama banyak (masing-masing 5)",
+        "Kira lebih banyak",
+        "Upe lebih banyak",
+        "Keduanya menjadi 0"
+      ],
+      "correctAnswer": "Sama banyak (masing-masing 5)",
+      "explanation": "Stroberi Kira berkurang 2 menjadi 5 (7-2=5), sedangkan punya Upe bertambah 2 menjadi 5 (3+2=5). Keduanya menjadi sama banyak."
+    },
+    {
+      "id": 3,
+      "level": "HOTS UJIAN FORMAL",
+      "prompt": "3. Aku adalah sebuah bilangan. Jika kamu menghitung mundur 2 langkah dari angka 10, kamu akan menemukanku. Pasangan bilanganku jika diuraikan adalah...",
+      "visualEmojis": [
+        "🔟",
+        "⬅️9",
+        "⬅️?"
+      ],
+      "options": [
+        "5 dan 3",
+        "4 dan 3",
+        "6 dan 3",
+        "5 dan 4"
+      ],
+      "correctAnswer": "5 dan 3",
+      "explanation": "Mundur 2 langkah dari 10 adalah 8. Pasangan bilangan yang membentuk 8 adalah 5 dan 3."
+    },
+    {
+      "id": 4,
+      "level": "HOTS UJIAN FORMAL",
+      "prompt": "4. Pada sebuah Bingkai 10, baris atas terisi penuh dan baris bawah masih menyisakan 3 kotak kosong. Berapa banyak benda di dalam Bingkai 10 tersebut?",
+      "visualEmojis": [
+        "🔴",
+        "🔴",
+        "🔴",
+        "🔴",
+        "🔴",
+        "🔴",
+        "🔴"
+      ],
+      "options": [
+        "6",
+        "7",
+        "8",
+        "3"
+      ],
+      "correctAnswer": "7",
+      "explanation": "Bingkai 10 memiliki 10 kotak. Jika 3 kotak kosong, maka yang terisi adalah pasangan 10 dari 3, yaitu 7."
+    },
+    {
+      "id": 5,
+      "level": "HOTS UJIAN FORMAL",
+      "prompt": "5. Malosi menyusun kartu bilangan dari yang PALING BANYAK ke PALING SEDIKIT: [9], [7], [...], [3], [1]. Kartu bilangan manakah yang tepat untuk mengisi bagian tengah?",
+      "visualEmojis": [
+        "9️⃣",
+        "7️⃣",
+        "❓",
+        "3️⃣",
+        "1️⃣"
+      ],
+      "options": [
+        "4",
+        "5",
+        "6",
+        "8"
+      ],
+      "correctAnswer": "5",
+      "explanation": "Bilangan di antara 7 dan 3 yang memiliki jarak mundur teratur (selisih 2) adalah 5."
+    },
+    {
+      "id": 6,
+      "level": "HOTS UJIAN FORMAL",
+      "prompt": "6. Tora memiliki 3 keranjang: Keranjang A berisi 6 apel, Keranjang B berisi 0 apel, dan Keranjang C berisi 9 apel. Urutan keranjang dari yang PALING SEDIKIT adalah...",
+      "visualEmojis": [
+        "🧺A(6)",
+        "🧺B(0)",
+        "🧺C(9)"
+      ],
+      "options": [
+        "Keranjang B, Keranjang A, Keranjang C",
+        "Keranjang A, Keranjang B, Keranjang C",
+        "Keranjang C, Keranjang A, Keranjang B",
+        "Keranjang B, Keranjang C, Keranjang A"
+      ],
+      "correctAnswer": "Keranjang B, Keranjang A, Keranjang C",
+      "explanation": "Urutan dari terkecil adalah 0 (Keranjang B), lalu 6 (Keranjang A), dan 9 (Keranjang C)."
+    },
+    {
+      "id": 7,
+      "level": "HOTS UJIAN FORMAL",
+      "prompt": "7. Untuk mengisi 1 kotak paket buah dibutuhkan tepat 10 jeruk. Kakek sudah memasukkan 4 jeruk besar dan 3 jeruk kecil. Berapa jeruk lagi agar kotak itu penuh?",
+      "visualEmojis": [
+        "🍊",
+        "🍊",
+        "🍊",
+        "🍊",
+        "🍊",
+        "🍊",
+        "🍊"
+      ],
+      "options": [
+        "2 jeruk",
+        "3 jeruk",
+        "4 jeruk",
+        "5 jeruk"
+      ],
+      "correctAnswer": "3 jeruk",
+      "explanation": "4 jeruk dan 3 jeruk berjumlah 7 jeruk. Pasangan dari 7 untuk mencapai 10 adalah 3 jeruk lagi."
+    },
+    {
+      "id": 8,
+      "level": "HOTS UJIAN FORMAL",
+      "prompt": "8. Katak A melompat maju 4 langkah dari batu 2. Katak B melompat mundur 2 langkah dari batu 9. Siapakah yang berhenti di batu dengan angka lebih besar?",
+      "visualEmojis": [
+        "🐸A(2→+4)",
+        "🐸B(9→-2)"
+      ],
+      "options": [
+        "Katak B (di batu 7)",
+        "Katak A (di batu 6)",
+        "Keduanya di batu yang sama",
+        "Katak A (di batu 8)"
+      ],
+      "correctAnswer": "Katak B (di batu 7)",
+      "explanation": "Katak A berhenti di batu 6 (2+4=6), sedangkan Katak B berhenti di batu 7 (9-2=7). Angka 7 lebih besar dari 6."
+    },
+    {
+      "id": 9,
+      "level": "HOTS UJIAN FORMAL",
+      "prompt": "9. Kira ingin membagi 9 kue kepada dua sahabatnya sehingga tidak ada piring yang kosong dan jumlah di kedua piring tidak boleh sama. Pasangan manakah yang benar?",
+      "visualEmojis": [
+        "🧁",
+        "🧁",
+        "🧁",
+        "🧁",
+        "🧁",
+        "🧁",
+        "🧁",
+        "🧁",
+        "🧁"
+      ],
+      "options": [
+        "6 dan 3",
+        "5 dan 5",
+        "9 dan 0",
+        "4 dan 4"
+      ],
+      "correctAnswer": "6 dan 3",
+      "explanation": "6 dan 3 berjumlah 9, tidak ada piring yang 0, dan jumlahnya berbeda. (5&5=10, 4&4=8, 9&0 ada yang kosong)."
+    },
+    {
+      "id": 10,
+      "level": "HOTS UJIAN FORMAL",
+      "prompt": "10. Di taman ada 5 kupu-kupu kuning dan 3 kupu-kupu biru Hinggap di bunga. Jika jumlah bunga di taman tepat SAMA BANYAK dengan seluruh kupu-kupu, berapa banyak bunga di taman?",
+      "visualEmojis": [
+        "🦋",
+        "🦋",
+        "🦋",
+        "🦋",
+        "🦋",
+        "🦋",
+        "🦋",
+        "🦋"
+      ],
+      "options": [
+        "7 bunga",
+        "8 bunga",
+        "9 bunga",
+        "10 bunga"
+      ],
+      "correctAnswer": "8 bunga",
+      "explanation": "5 kupu-kupu kuning dan 3 kupu-kupu biru membentuk bilangan 8. Karena sama banyak, maka bunga di taman juga ada 8."
+    }
+  ]
 }
