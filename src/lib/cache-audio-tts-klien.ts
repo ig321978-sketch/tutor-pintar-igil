@@ -22,7 +22,7 @@ export function kunciCacheAudioTts(
 ): string {
   const mode = opsi?.tanpaNotasi ? "cerita" : "rumus";
   const slot = opsi?.suaraTetap ? "|slot" : "";
-  return `v3|${mode}|${kelamin}|${kelas}${slot}|${teks.replace(/\s+/g, " ").trim()}`;
+  return `v4|id|${mode}|${kelamin}|${kelas}${slot}|${teks.replace(/\s+/g, " ").trim()}`;
 }
 
 function bukaDb(): Promise<IDBDatabase | null> {

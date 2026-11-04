@@ -5,7 +5,13 @@ const URL_DASAR = "https://api.elevenlabs.io/v1";
 const BATAS_KARAKTER = 4000;
 const SAMPLE_RATE = 24_000;
 const JEDA_ANTAR_BLOK_MS = 160;
-const MODEL_BAWAAN = "eleven_multilingual_v2";
+const MODEL_BAWAAN = "eleven_flash_v2_5";
+const KODE_BAHASA_INDONESIA = "id";
+const MODEL_TANPA_KUNCI_BAHASA = new Set([
+  "eleven_multilingual_v1",
+  "eleven_multilingual_v2",
+  "eleven_monolingual_v1",
+]);
 
 type SuaraEleven = {
   voice_id?: string;
@@ -28,7 +34,9 @@ function kunciApiEleven(): string {
 }
 
 function modelEleven(): string {
-  return process.env.ELEVENLABS_MODEL?.trim() || MODEL_BAWAAN;
+  const dariEnv = process.env.ELEVENLABS_MODEL?.trim();
+  if (dariEnv && !MODEL_TANPA_KUNCI_BAHASA.has(dariEnv)) return dariEnv;
+  return MODEL_BAWAAN;
 }
 
 type SlotSuaraGuru = {
@@ -318,6 +326,9 @@ function skorSuaraMilik(
   }
   if (/igil|guru/.test(nama)) skor += 8;
   if (/\bid\b|indonesia|indonesian/.test(`${nama} ${bahasa}`)) skor += 12;
+  if (/\bms\b|malay|melayu/.test(`${nama} ${bahasa}`) && !/indonesia|indonesian/.test(`${nama} ${bahasa}`)) {
+    skor -= 40;
+  }
   if (/narrat|teacher|educat|calm|warm|soft|friendly/.test(nama)) skor += 4;
   return skor;
 }
@@ -429,6 +440,7 @@ async function sintesisSatu(
       body: JSON.stringify({
         text: teks,
         model_id: modelEleven(),
+        language_code: KODE_BAHASA_INDONESIA,
         voice_settings: {
           ...pengaturanSuaraJenjang(kelas),
           use_speaker_boost: true,
