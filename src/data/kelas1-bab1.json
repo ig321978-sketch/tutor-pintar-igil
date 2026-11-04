@@ -19,21 +19,27 @@
       "stories": [
         {
           "id": "A-S1",
-          "titleHint": "Gambar 1: Kebun Kakek",
-          "voiceNarration": "Pada hari Minggu yang cerah, IGIL bersama Kira dan Upe pergi mengunjungi kebun buah milik Kakek di desa. Pohon-pohon di sana berbuah sangat lebat.",
-          "sceneType": "garden-visit"
+          "titleHint": "Gambar 1: Di Taman Bermain",
+          "voiceNarration": "Malosi dan teman-teman bermain di taman. Mereka gembira sekali. Mereka bermain dengan aman.",
+          "sceneType": "playground-play"
         },
         {
           "id": "A-S2",
-          "titleHint": "Gambar 2: Memetik Buah",
-          "voiceNarration": "Kira memetik buah apel merah yang manis, sedangkan Upe memetik buah jeruk kuning dan pisang emas. Mereka menaruhnya ke dalam keranjang bambu.",
-          "sceneType": "picking-fruits"
+          "titleHint": "Gambar 2: Jungkat-jungkit, Ayunan, Perosotan",
+          "voiceNarration": "Di taman ada jungkat-jungkit, ayunan, dan perosotan. Kelompokkan benda yang sama. Lalu hitung satu per satu.",
+          "sceneType": "playground-rides"
         },
         {
           "id": "A-S3",
-          "titleHint": "Gambar 3: Menghitung Bersama",
-          "voiceNarration": "Sesampainya di teras rumah Kakek, mereka ingin tahu berapa banyak masing-masing buah yang berhasil dipetik. Ayo kita bantu mereka!",
-          "sceneType": "counting-table"
+          "titleHint": "Gambar 3: Sepeda dan Kursi",
+          "voiceNarration": "Ada sepeda dan kursi di taman. Hitung sepedanya dulu. Sesudah itu, hitung kursinya.",
+          "sceneType": "playground-bikes"
+        },
+        {
+          "id": "A-S4",
+          "titleHint": "Gambar 4: Buku, Layang-layang, Balon, Kelereng, Bola",
+          "voiceNarration": "Masih ada buku, layang-layang, balon, kelereng, dan bola. Kelompokkan yang sama. Ayo hitung sampai sepuluh.",
+          "sceneType": "playground-toys"
         }
       ],
       "mindMaps": [

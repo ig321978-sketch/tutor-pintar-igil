@@ -27,7 +27,18 @@ interface StorySlideItem {
   id: string;
   titleHint: string;
   voiceNarration: string; // Diperdengarkan lewat Suara Guru TANPA teks cerita di layar
-  sceneType: "garden-visit" | "picking-fruits" | "counting-table" | "empty-basket" | "comparing-scales" | "frog-river" | "number-tree";
+  sceneType:
+    | "garden-visit"
+    | "picking-fruits"
+    | "counting-table"
+    | "empty-basket"
+    | "comparing-scales"
+    | "frog-river"
+    | "number-tree"
+    | "playground-play"
+    | "playground-rides"
+    | "playground-bikes"
+    | "playground-toys";
 }
 
 interface MindMapSlideItem {
@@ -47,7 +58,7 @@ interface SubBabContent {
   secondaryBg: string;
   secondaryBorder: string;
   secondaryText: string;
-  stories: [StorySlideItem, StorySlideItem, StorySlideItem];
+  stories: StorySlideItem[];
   mindMaps: [MindMapSlideItem, MindMapSlideItem, MindMapSlideItem];
   infografisData: {
     fruitName: string;
@@ -779,15 +790,18 @@ export default function IgilModulePlayer() {
             </div>
 
             <div className="w-full overflow-x-auto pb-3">
-              <div className="flex flex-nowrap gap-5 min-w-[960px]">
+              <div
+                className="flex flex-nowrap gap-5"
+                style={{ minWidth: currentSubContent.stories.length * 320 }}
+              >
                 {currentSubContent.stories.map((st, idx) => (
                   <div
                     key={st.id}
-                    className="w-1/3 bg-[#FFFDF9] border-2 border-[#EF4444] rounded-3xl p-4 space-y-3 shrink-0 shadow-sm"
+                    className="w-[300px] bg-[#FFFDF9] border-2 border-[#EF4444] rounded-3xl p-4 space-y-3 shrink-0 shadow-sm"
                   >
                     <div className="flex items-center justify-between">
                       <span className="text-xs font-black text-[#1C01A5]">
-                        Slide Cerita {idx + 1} / 3
+                        Slide Cerita {idx + 1} / {currentSubContent.stories.length}
                       </span>
                       <button
                         type="button"
