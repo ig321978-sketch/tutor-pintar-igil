@@ -298,20 +298,26 @@ a.igil-tombol:active {
 .igil-kartu-lancip::after {
   content: "";
   position: absolute;
+  inset: 0;
   pointer-events: none;
   z-index: -1;
 }
 
-/* Atas lancip ke dalam, bawah lancip ke luar. */
+/* Atas lancip ke dalam, bawah lancip ke luar. Isi kartu berada di dalam garis. */
 .igil-kartu-lancip::before {
-  inset: 0;
   background: #f59e0b;
   clip-path: polygon(0 0, 50% 22px, 100% 0, 100% calc(100% - 28px), 50% 100%, 0 calc(100% - 28px));
 }
 
 .igil-kartu-lancip::after {
-  inset: 2px;
   background: #fffbeb;
-  clip-path: polygon(0 0, 50% 18px, 100% 0, 100% calc(100% - 28px), 50% 100%, 0 calc(100% - 28px));
+  clip-path: polygon(
+    2px 3px,
+    50% 25px,
+    calc(100% - 2px) 3px,
+    calc(100% - 2px) calc(100% - 31px),
+    50% calc(100% - 3px),
+    2px calc(100% - 31px)
+  );
 }
 
