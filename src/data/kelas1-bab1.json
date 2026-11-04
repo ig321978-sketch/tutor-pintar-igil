@@ -47,7 +47,7 @@
           "stepNumber": 1,
           "stepTitle": "1. Kelompokkan yang sama",
           "stepDesc": "Di taman, kumpulkan jungkat-jungkit, ayunan, dan perosotan. Benda yang sama masuk satu kelompok.",
-          "icon": "🛝",
+          "icon": "🧒",
           "flowFrom": "Benda di taman",
           "flowTo": "Kelompok yang sama"
         },
