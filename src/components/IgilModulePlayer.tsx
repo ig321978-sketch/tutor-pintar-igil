@@ -1,7 +1,14 @@
 "use client";
 
 import React, { useState, useEffect, useRef, useCallback } from "react";
+import { Nunito } from "next/font/google";
 import materiBab1 from "@/data/kelas1-bab1.json";
+
+const fontAnak = Nunito({
+  subsets: ["latin"],
+  weight: ["500", "600", "700", "800", "900"],
+  display: "swap",
+});
 
 // ============================================================================
 // TIPE DATA & KONTRAK INTEGRASI CETAK BIRU IGIL
@@ -267,7 +274,7 @@ function DottedNumberTracingCanvas({
 
     // Angka titik-titik (Dotted Guide) untuk diikuti jari anak
     ctx.save();
-    ctx.font = "bold 115px 'Cavolini', 'Comic Sans MS', cursive, sans-serif";
+    ctx.font = `bold 115px ${fontAnak.style.fontFamily}`;
     ctx.textAlign = "center";
     ctx.textBaseline = "middle";
     ctx.strokeStyle = "#94A3B8";
@@ -563,13 +570,7 @@ export default function IgilModulePlayer() {
   if (showBrainActivation) {
     const totalBrainTapped = brainApplesTapped.length + brainOrangesTapped.length;
     return (
-      <div
-        style={{
-          fontFamily:
-            "'Cavolini', 'Congenial Light', 'Quicksand', 'Nunito', 'Comic Sans MS', cursive, sans-serif",
-        }}
-        className="min-h-screen w-full bg-white text-[#334155] p-4 md:p-8 flex flex-col justify-between"
-      >
+      <div className={`min-h-screen w-full bg-white text-[#334155] p-4 md:p-8 flex flex-col justify-between ${fontAnak.className}`}>
         <div className="max-w-5xl mx-auto w-full space-y-6">
           {/* Header Brain Activation */}
           <div className="w-full bg-[#1C01A5] rounded-3xl p-5 text-white flex flex-col md:flex-row items-center justify-between gap-4 shadow-lg">
@@ -714,13 +715,7 @@ export default function IgilModulePlayer() {
   const currentSubContent = SUB_BABS[activeSubBab];
 
   return (
-    <div
-      style={{
-        fontFamily:
-          "'Cavolini', 'Congenial Light', 'Quicksand', 'Nunito', 'Comic Sans MS', cursive, sans-serif",
-      }}
-      className="min-h-screen w-full bg-white text-[#334155] pb-16"
-    >
+    <div className={`min-h-screen w-full bg-white text-[#334155] pb-16 ${fontAnak.className}`}>
       {/* =================================================================== */}
       {/* BANNER #1C01A5 TANPA DEGRADASI HAMPIR SELEBAR LAYAR MONITOR         */}
       {/* =================================================================== */}
