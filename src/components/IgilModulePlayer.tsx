@@ -109,12 +109,12 @@ const DAFTAR_MAINAN = [
   { id: "ayunan", nama: "Ayunan", jumlah: 2 },
   { id: "perosotan", nama: "Perosotan", jumlah: 3 },
   { id: "sepeda", nama: "Sepeda", jumlah: 4 },
-  { id: "kursi", nama: "Kursi", jumlah: 4 },
-  { id: "balon", nama: "Balon", jumlah: 7 },
-  { id: "buku", nama: "Buku", jumlah: 3 },
-  { id: "layangan", nama: "Layangan", jumlah: 2 },
-  { id: "kelereng", nama: "Kelereng", jumlah: 10 },
-  { id: "bola", nama: "Bola", jumlah: 4 },
+  { id: "kursi", nama: "Kursi", jumlah: 5 },
+  { id: "balon", nama: "Balon", jumlah: 6 },
+  { id: "buku", nama: "Buku", jumlah: 7 },
+  { id: "layangan", nama: "Layangan", jumlah: 8 },
+  { id: "kelereng", nama: "Kelereng", jumlah: 9 },
+  { id: "bola", nama: "Bola", jumlah: 10 },
 ] as const;
 
 const SEBUTAN_ANGKA = [
