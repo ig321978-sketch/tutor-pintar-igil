@@ -145,7 +145,7 @@ const SEBUTAN_ANGKA = [
 ];
 
 const SUARA_KELOMPOK =
-  "Tekan kartu mainan. Angka jumlahnya muncul di kolom jumlah.";
+  "Tekan kartu mainan. Angkanya naik satu per satu sampai jumlahnya pas.";
 const SUARA_HITUNG =
   "Hitung satu per satu. Satu sepeda. Dua sepeda. Tiga kursi. Empat kursi. Lima buku. Enam layang-layang. Tujuh balon. Delapan kelereng. Sembilan kelereng. Sepuluh bola.";
 const SUARA_SEBUT =
@@ -463,7 +463,9 @@ export default function IgilModulePlayer() {
 
   // 4. State Halaman Materi (Sub-Bab A/B/C/D + Pengunci Scroll Vertikal SMICPA)
   const [activeSubBab, setActiveSubBab] = useState<SubBabId>("A");
-  const [jumlahMainanTerbuka, setJumlahMainanTerbuka] = useState<Record<string, boolean>>({});
+  const [angkaMainan, setAngkaMainan] = useState<Record<string, number>>({});
+  const angkaMainanRef = useRef<Record<string, number>>({});
+  const jedaMainanRef = useRef<Record<string, number>>({});
   const [unlockedSmicpaStage, setUnlockedSmicpaStage] = useState<number>(1); // 1=Story .. 6=Abstract
   const [concreteCounter, setConcreteCounter] = useState<number>(3);
 
@@ -475,6 +477,39 @@ export default function IgilModulePlayer() {
   const concreteRef = useRef<HTMLDivElement | null>(null);
   const pictorialRef = useRef<HTMLDivElement | null>(null);
   const abstractRef = useRef<HTMLDivElement | null>(null);
+
+  const tekanMainan = useCallback((id: string, target: number) => {
+    const jedaLama = jedaMainanRef.current[id];
+    if (jedaLama) {
+      window.clearInterval(jedaLama);
+      delete jedaMainanRef.current[id];
+    }
+    if ((angkaMainanRef.current[id] ?? 0) >= target) {
+      angkaMainanRef.current[id] = 0;
+      setAngkaMainan((prev) => ({ ...prev, [id]: 0 }));
+      return;
+    }
+    let nilai = 1;
+    angkaMainanRef.current[id] = 1;
+    setAngkaMainan((prev) => ({ ...prev, [id]: 1 }));
+    if (target <= 1) return;
+    jedaMainanRef.current[id] = window.setInterval(() => {
+      nilai += 1;
+      angkaMainanRef.current[id] = nilai;
+      setAngkaMainan((prev) => ({ ...prev, [id]: nilai }));
+      if (nilai >= target) {
+        window.clearInterval(jedaMainanRef.current[id]);
+        delete jedaMainanRef.current[id];
+      }
+    }, 380);
+  }, []);
+
+  useEffect(() => {
+    const jeda = jedaMainanRef.current;
+    return () => {
+      for (const id of Object.keys(jeda)) window.clearInterval(jeda[id]);
+    };
+  }, []);
 
   // 5. State Halaman Simulasi PhET-Style (4 Simulasi: 1 per Sub-Bab)
   const [simIndex, setSimIndex] = useState<number>(0); // 0..3
@@ -1089,19 +1124,15 @@ export default function IgilModulePlayer() {
                     </div>
                     <div className="flex flex-col gap-2">
                       {DAFTAR_MAINAN.map((item) => {
-                        const terbuka = !!jumlahMainanTerbuka[item.id];
+                        const angka = angkaMainan[item.id] ?? 0;
+                        const terbuka = angka > 0;
                         return (
                           <div key={item.id} className="grid grid-cols-2 gap-2">
                             <button
                               type="button"
                               aria-label={item.nama}
                               aria-pressed={terbuka}
-                              onClick={() =>
-                                setJumlahMainanTerbuka((prev) => ({
-                                  ...prev,
-                                  [item.id]: !prev[item.id],
-                                }))
-                              }
+                              onClick={() => tekanMainan(item.id, item.jumlah)}
                               className={`flex items-center gap-2 rounded-2xl border-2 bg-white px-2 py-2 text-left ${
                                 terbuka ? "border-[#1C01A5]" : "border-[#86EFAC]"
                               }`}
@@ -1117,7 +1148,7 @@ export default function IgilModulePlayer() {
                               }`}
                             >
                               {terbuka ? (
-                                <span className="text-3xl font-black text-[#1C01A5]">{item.jumlah}</span>
+                                <span className="text-3xl font-black text-[#1C01A5]">{angka}</span>
                               ) : null}
                             </div>
                           </div>
