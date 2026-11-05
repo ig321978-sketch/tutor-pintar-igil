@@ -145,7 +145,7 @@ const SEBUTAN_ANGKA = [
 ];
 
 const SUARA_KELOMPOK =
-  "Tekan kartu mainan. Angkanya naik satu per satu sampai jumlahnya pas.";
+  "Tekan kartu mainan. Setiap tekan, angkanya bertambah satu, sampai jumlahnya pas.";
 const SUARA_HITUNG =
   "Hitung satu per satu. Satu sepeda. Dua sepeda. Tiga kursi. Empat kursi. Lima buku. Enam layang-layang. Tujuh balon. Delapan kelereng. Sembilan kelereng. Sepuluh bola.";
 const SUARA_SEBUT =
@@ -465,7 +465,6 @@ export default function IgilModulePlayer() {
   const [activeSubBab, setActiveSubBab] = useState<SubBabId>("A");
   const [angkaMainan, setAngkaMainan] = useState<Record<string, number>>({});
   const angkaMainanRef = useRef<Record<string, number>>({});
-  const jedaMainanRef = useRef<Record<string, number>>({});
   const [unlockedSmicpaStage, setUnlockedSmicpaStage] = useState<number>(1); // 1=Story .. 6=Abstract
   const [concreteCounter, setConcreteCounter] = useState<number>(3);
 
@@ -479,36 +478,10 @@ export default function IgilModulePlayer() {
   const abstractRef = useRef<HTMLDivElement | null>(null);
 
   const tekanMainan = useCallback((id: string, target: number) => {
-    const jedaLama = jedaMainanRef.current[id];
-    if (jedaLama) {
-      window.clearInterval(jedaLama);
-      delete jedaMainanRef.current[id];
-    }
-    if ((angkaMainanRef.current[id] ?? 0) >= target) {
-      angkaMainanRef.current[id] = 0;
-      setAngkaMainan((prev) => ({ ...prev, [id]: 0 }));
-      return;
-    }
-    let nilai = 1;
-    angkaMainanRef.current[id] = 1;
-    setAngkaMainan((prev) => ({ ...prev, [id]: 1 }));
-    if (target <= 1) return;
-    jedaMainanRef.current[id] = window.setInterval(() => {
-      nilai += 1;
-      angkaMainanRef.current[id] = nilai;
-      setAngkaMainan((prev) => ({ ...prev, [id]: nilai }));
-      if (nilai >= target) {
-        window.clearInterval(jedaMainanRef.current[id]);
-        delete jedaMainanRef.current[id];
-      }
-    }, 380);
-  }, []);
-
-  useEffect(() => {
-    const jeda = jedaMainanRef.current;
-    return () => {
-      for (const id of Object.keys(jeda)) window.clearInterval(jeda[id]);
-    };
+    const sekarang = angkaMainanRef.current[id] ?? 0;
+    const berikut = sekarang >= target ? 0 : sekarang + 1;
+    angkaMainanRef.current[id] = berikut;
+    setAngkaMainan((prev) => ({ ...prev, [id]: berikut }));
   }, []);
 
   // 5. State Halaman Simulasi PhET-Style (4 Simulasi: 1 per Sub-Bab)
