@@ -840,16 +840,16 @@ export default function IgilModulePlayer() {
           <span className="igil-goyang pointer-events-none absolute left-[46%] top-1 text-2xl" aria-hidden="true">⭐</span>
           <span className="igil-lompat pointer-events-none absolute bottom-1 left-[58%] text-xl" aria-hidden="true">✨</span>
           <span className="igil-goyang pointer-events-none absolute right-2 top-1 text-xl" aria-hidden="true">🌈</span>
-          <div className="relative overflow-x-auto">
-            <div className="flex min-w-[660px] flex-nowrap items-center justify-between gap-6">
-              <div className="flex items-center gap-4">
-                <span className="igil-lompat flex h-[4.5rem] w-[4.5rem] shrink-0 items-center justify-center rounded-full border-4 border-white bg-[#FFE566] shadow-[0_4px_0_rgba(0,0,0,0.25)] md:h-20 md:w-20">
+          <div className="relative">
+            <div className="flex flex-wrap items-center justify-between gap-4">
+              <div className="flex min-w-[260px] flex-1 items-center gap-4">
+                <span className="igil-lompat block h-[4.5rem] w-[4.5rem] shrink-0 overflow-hidden rounded-full border-4 border-white bg-[#FFE566] shadow-[0_4px_0_rgba(0,0,0,0.25)] md:h-20 md:w-20">
                   <img
                     src="/icon-192.png"
                     alt="burung hantu IGIL"
-                    width={64}
-                    height={64}
-                    className="h-14 w-14 md:h-16 md:w-16"
+                    width={80}
+                    height={80}
+                    className="h-full w-full rounded-full object-cover"
                   />
                 </span>
                 <div className="space-y-1.5">
@@ -867,7 +867,7 @@ export default function IgilModulePlayer() {
                   KARTU POINT TOKEN IGIL
                 </div>
                 <div className="flex items-center gap-2 text-xl font-black text-[#1C01A5] md:text-2xl">
-                  <span className="igil-lompat inline-block text-3xl" aria-hidden="true">🪙</span>
+                  <span className="igil-lompat inline-block text-3xl" aria-hidden="true">💰</span>
                   <span>{totalTokens}</span>
                   <span className="text-xs text-[#F0AB00]">/ {batasToken} Token Emas</span>
                 </div>
