@@ -1070,16 +1070,22 @@ export default function IgilModulePlayer() {
                         🔊 Suara Guru IGIL
                       </button>
                     </div>
-                    <div className="grid grid-cols-2 gap-2">
+                    <div className="grid grid-cols-3 gap-1.5">
                       <div className="text-center text-xs font-black tracking-wide text-[#166534]">MAINAN</div>
-                      <div className="text-center text-xs font-black tracking-wide text-[#166534]">JUMLAH</div>
+                      <div className="text-center text-[10px] font-black leading-tight tracking-wide text-[#166534] sm:text-xs">
+                        JUMLAH DENGAN ANGKA
+                      </div>
+                      <div className="text-center text-[10px] font-black leading-tight tracking-wide text-[#166534] sm:text-xs">
+                        JUMLAH DENGAN KATA
+                      </div>
                     </div>
                     <div className="flex flex-col gap-2">
                       {DAFTAR_MAINAN.map((item) => {
                         const angka = angkaMainan[item.id] ?? 0;
                         const terbuka = angka > 0;
+                        const kata = SEBUTAN_ANGKA[angka - 1] ?? String(angka);
                         return (
-                          <div key={item.id} className="grid grid-cols-2 gap-2">
+                          <div key={item.id} className="grid grid-cols-3 gap-1.5">
                             <button
                               type="button"
                               aria-label={item.nama}
@@ -1090,22 +1096,33 @@ export default function IgilModulePlayer() {
                                   speakGuru(SEBUTAN_ANGKA[angka - 1] ?? String(angka));
                                 }
                               }}
-                              className={`flex items-center gap-2 rounded-2xl border-2 bg-white px-2 py-2 text-left ${
+                              className={`flex min-w-0 items-center gap-1.5 rounded-2xl border-2 bg-white px-1.5 py-2 text-left ${
                                 terbuka ? "border-[#1C01A5]" : "border-[#86EFAC]"
                               }`}
                             >
                               <IkonMainan jenis={item.id} />
-                              <span className="text-[11px] font-black leading-tight text-[#1C01A5]">
+                              <span className="min-w-0 text-[11px] font-black leading-tight text-[#1C01A5]">
                                 {item.nama}
                               </span>
                             </button>
                             <div
-                              className={`flex min-h-14 items-center justify-center rounded-2xl border-2 bg-white ${
+                              className={`flex min-h-14 min-w-0 items-center justify-center rounded-2xl border-2 bg-white ${
                                 terbuka ? "border-solid border-[#1C01A5]" : "border-dashed border-[#86EFAC]"
                               }`}
                             >
                               {terbuka ? (
                                 <span className="text-3xl font-black text-[#1C01A5]">{angka}</span>
+                              ) : null}
+                            </div>
+                            <div
+                              className={`flex min-h-14 min-w-0 items-center justify-center rounded-2xl border-2 bg-white px-1 ${
+                                terbuka ? "border-solid border-[#1C01A5]" : "border-dashed border-[#86EFAC]"
+                              }`}
+                            >
+                              {terbuka ? (
+                                <span className="text-center text-sm font-black leading-tight text-[#1C01A5] sm:text-base">
+                                  {kata}
+                                </span>
                               ) : null}
                             </div>
                           </div>
