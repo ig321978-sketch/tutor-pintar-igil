@@ -144,7 +144,7 @@ const SEBUTAN_ANGKA = [
 ];
 
 const SUARA_KELOMPOK =
-  "Kelompokkan mainan dan hitung satu-satu. Tekan ikon mainan. Setiap tekan, angkanya naik satu, sampai jumlahnya pas.";
+  "Kelompok mainan dan jumlahnya. Tekan ikon mainan. Setiap tekan, angkanya naik satu, sampai jumlahnya pas.";
 const SUARA_HITUNG =
   "Hitung satu per satu. Satu sepeda. Dua sepeda. Tiga kursi. Empat kursi. Lima buku. Enam layang-layang. Tujuh balon. Delapan kelereng. Sembilan kelereng. Sepuluh bola.";
 const SUARA_SEBUT =
@@ -1060,14 +1060,14 @@ export default function IgilModulePlayer() {
                   <div className="bg-[#F0FDF4] border-2 border-[#22C55E] rounded-3xl p-4 space-y-3">
                     <div className="flex items-center justify-between gap-3">
                       <h3 className="min-w-0 text-base font-black leading-snug text-[#1C01A5]">
-                        Kelompokkan Mainan dan Hitung satu-satu
+                        Kelompok mainan dan Jumlahnya
                       </h3>
                       <button
                         type="button"
                         onClick={() => speakGuru(SUARA_KELOMPOK)}
                         className="px-3 py-1 rounded-xl bg-white text-[#166534] border border-[#22C55E] text-xs font-black shrink-0"
                       >
-                        🔊 Suara Guru IGIL
+                        🔊 Suara Guru
                       </button>
                     </div>
                     <div className="grid grid-cols-2 gap-2">
