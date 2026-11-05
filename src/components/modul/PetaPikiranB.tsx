@@ -2,6 +2,7 @@
 
 import React, { useState } from "react";
 import { MulutBuaya } from "./gambar-banding-b";
+import { LencanaSuara } from "./tahap-b-gaya";
 
 /* ------------------------------------------------------------------------ */
 /* Tahap 2: Mind-map Sub-Bab B. Peta jalan bagi anak: akar di atas, empat     */
@@ -125,13 +126,13 @@ export function PetaPikiranB({
                 <span className="block text-base font-black leading-tight text-[#1C01A5]">
                   {l.stepTitle.replace(/^\d+\.\s*/, "")}
                 </span>
-                <span
-                  className={`inline-block rounded-full border-2 px-2 py-0.5 text-base font-black ${
-                    sudah ? "border-[#16A34A] bg-[#DCFCE7] text-[#166534]" : "border-[#1C01A5] bg-white text-[#1C01A5]"
-                  }`}
-                >
-                  {sudah ? "✔" : "🔊"}
-                </span>
+                {sudah ? (
+                  <span className="inline-block rounded-full border-2 border-[#16A34A] bg-[#DCFCE7] px-2 py-0.5 text-base font-black text-[#166534]">
+                    ✔
+                  </span>
+                ) : (
+                  <LencanaSuara kelas="h-9 w-9" />
+                )}
               </span>
             </button>
           </React.Fragment>

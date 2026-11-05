@@ -36,9 +36,11 @@ import {
   GAYA_KOTAK,
   GAYA_MEJA,
   GAYA_POSTER,
+  LencanaSuara,
   PitaTahap,
   SpiralBuku,
   SuaraCtx,
+  TombolSuaraGuru,
   useBicara,
   zonaDi,
 } from "./tahap-b-gaya";
@@ -64,7 +66,7 @@ function KatakBicara({ pendek, teks }: { pendek: string; teks?: string }) {
       <KatakWajah kelas="h-14 w-20 shrink-0 igil-lompat" />
       <span className="relative flex min-w-0 flex-1 items-center justify-between gap-2 rounded-3xl rounded-bl-md border-4 border-[#1C01A5] bg-white px-3 py-2 text-lg font-black leading-snug text-[#1C01A5]">
         <span className="min-w-0">{pendek}</span>
-        <span aria-hidden="true">🔊</span>
+        <LencanaSuara />
       </span>
     </button>
   );
@@ -175,13 +177,7 @@ export function InfografisMajuMundurC({ speakGuru }: { speakGuru: (teks: string)
       <PitaTahap ikon="📰" nama="INFOGRAFIS" cara="Lihat dan dengar" warna="#16A34A" />
       <div className="flex items-center justify-between gap-2">
         <h3 className="min-w-0 text-xl font-black leading-tight text-[#1C01A5]">Tangga Maju dan Mundur</h3>
-        <button
-          type="button"
-          onClick={() => speakGuru(SUARA_INFO)}
-          className="shrink-0 rounded-full border-[3px] border-[#FFE566] bg-[#1C01A5] px-3 py-2 text-xs font-black text-[#FFE566] shadow-md"
-        >
-          🔊 Suara Guru
-        </button>
+        <TombolSuaraGuru onClick={() => speakGuru(SUARA_INFO)} />
       </div>
 
       <PanelPoster
@@ -286,9 +282,7 @@ export function InfografisMajuMundurC({ speakGuru }: { speakGuru: (teks: string)
               <span className="text-3xl">{g.ikon}</span>
               <span className="text-base font-black leading-tight text-[#14532D]">{g.nama}</span>
               <span className="text-[11px] font-black leading-tight text-[#1C01A5]/80">{g.ket}</span>
-              <span className="text-sm" aria-hidden="true">
-                🔊
-              </span>
+              <LencanaSuara kelas="h-7 w-7" />
             </button>
           ))}
         </div>
@@ -1802,14 +1796,8 @@ function PoinPentingC({ speakGuru, onSelesai }: { speakGuru: (t: string) => void
   return (
     <>
       <div className="flex items-center justify-between gap-2">
-        <h3 className="text-xl font-black text-[#1C01A5]">⭐ Poin Penting</h3>
-        <button
-          type="button"
-          onClick={() => speakGuru(SUARA_POIN)}
-          className="shrink-0 rounded-full border-[3px] border-[#FFE566] bg-[#1C01A5] px-3 py-2 text-xs font-black text-[#FFE566] shadow-md"
-        >
-          🔊 Suara Guru
-        </button>
+        <h3 className="min-w-0 flex-1 text-xl font-black text-[#1C01A5]">⭐ Poin Penting</h3>
+        <TombolSuaraGuru onClick={() => speakGuru(SUARA_POIN)} />
       </div>
       <div className="space-y-2">
         {POIN_C.map((p) => (
@@ -1825,7 +1813,7 @@ function PoinPentingC({ speakGuru, onSelesai }: { speakGuru: (t: string) => void
                 <span className="text-3xl">{p.ikon}</span>
                 {p.nama}
               </span>
-              <span aria-hidden="true">🔊</span>
+              <LencanaSuara />
             </span>
             <Rantai deret={p.deret} warna={p.warna} />
           </button>

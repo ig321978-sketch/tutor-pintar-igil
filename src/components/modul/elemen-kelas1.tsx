@@ -3,6 +3,7 @@
 import React, { useCallback, useEffect, useRef, useState } from "react";
 import { Nunito } from "next/font/google";
 import { IkonMainan } from "./ikon-mainan";
+import { TombolSuaraGuru } from "./tahap-b-gaya";
 import {
   bangunTitikAngka,
   bangunTitikJumlah,
@@ -68,14 +69,8 @@ export function RakBendaNyata({
 export function KepalaConcrete({ judul, onSuara }: { judul: string; onSuara: () => void }) {
   return (
     <div className="flex items-center justify-between gap-3">
-      <h3 className="min-w-0 text-base font-black leading-snug text-[#1C01A5]">{judul}</h3>
-      <button
-        type="button"
-        onClick={onSuara}
-        className="shrink-0 rounded-xl border border-[#3B82F6] bg-white px-3 py-1 text-xs font-black text-[#1E3A8A]"
-      >
-        🔊 Suara Guru
-      </button>
+      <h3 className="min-w-0 flex-1 break-words text-base font-black leading-snug text-[#1C01A5]">{judul}</h3>
+      <TombolSuaraGuru kecil onClick={onSuara} />
     </div>
   );
 }

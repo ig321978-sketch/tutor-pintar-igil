@@ -13,9 +13,11 @@ import {
   GAYA_KOTAK,
   GAYA_MEJA,
   GAYA_POSTER,
+  LencanaSuara,
   PitaTahap,
   SpiralBuku,
   SuaraCtx,
+  TombolSuaraGuru,
   letakMeja,
   useBicara,
   zonaDi,
@@ -145,7 +147,7 @@ function BuayaBicara({ pendek, teks, arah = "kiri" }: { pendek: string; teks?: s
       <MulutBuaya arah={arah} kelas="h-14 w-24 shrink-0 igil-lompat" />
       <span className="relative flex min-w-0 flex-1 items-center justify-between gap-2 rounded-3xl rounded-bl-md border-4 border-[#1C01A5] bg-white px-3 py-2 text-lg font-black leading-snug text-[#1C01A5]">
         <span className="min-w-0">{pendek}</span>
-        <span aria-hidden="true">🔊</span>
+        <LencanaSuara />
       </span>
     </button>
   );
@@ -177,16 +179,10 @@ export function JudulGame({
           <p className="text-[10px] font-black uppercase tracking-wide text-[#1C01A5]/70">
             {nomor} dari {total}
           </p>
-          <h3 className="truncate text-xl font-black leading-tight text-[#1C01A5]">{judul}</h3>
+          <h3 className="break-words text-xl font-black leading-tight text-[#1C01A5]">{judul}</h3>
         </div>
       </div>
-      <button
-        type="button"
-        onClick={onSuara}
-        className="shrink-0 rounded-full border-[3px] border-[#FFE566] bg-[#1C01A5] px-3 py-2 text-xs font-black text-[#FFE566] shadow-md"
-      >
-        🔊 Suara Guru
-      </button>
+      <TombolSuaraGuru onClick={onSuara} />
     </div>
   );
 }
@@ -407,14 +403,7 @@ export function PanelPoster({
           {nomor}
         </span>
         <h4 className="min-w-0 flex-1 text-base font-black leading-tight tracking-wide text-white">{judul}</h4>
-        <button
-          type="button"
-          aria-label={`Dengarkan: ${judul}`}
-          onClick={() => speakGuru(suara)}
-          className="shrink-0 rounded-full border-2 border-white bg-white/20 px-2 py-1 text-xs font-black text-white"
-        >
-          🔊
-        </button>
+        <TombolSuaraGuru kecil label={`Dengarkan: ${judul}`} onClick={() => speakGuru(suara)} />
       </header>
       <div className="space-y-2 p-3">{children}</div>
     </section>
@@ -485,13 +474,7 @@ export function InfografisBandingB({ speakGuru }: { speakGuru: (teks: string) =>
       <PitaTahap ikon="📰" nama="INFOGRAFIS" cara="Lihat dan dengar" warna="#16A34A" />
       <div className="flex items-center justify-between gap-2">
         <h3 className="min-w-0 text-xl font-black leading-tight text-[#1C01A5]">Cara Membandingkan Benda</h3>
-        <button
-          type="button"
-          onClick={() => speakGuru(SUARA_INFO)}
-          className="shrink-0 rounded-full border-[3px] border-[#FFE566] bg-[#1C01A5] px-3 py-2 text-xs font-black text-[#FFE566] shadow-md"
-        >
-          🔊 Suara Guru
-        </button>
+        <TombolSuaraGuru onClick={() => speakGuru(SUARA_INFO)} />
       </div>
 
       <PanelPoster

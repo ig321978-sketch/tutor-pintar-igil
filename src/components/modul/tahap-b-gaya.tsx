@@ -39,16 +39,69 @@ export const ALAS = "rounded-3xl border-4 border-[#A8672D] bg-[#FBE3BC] shadow-[
 
 /* ------------------------------- Pita tahap ------------------------------ */
 
+/**
+ * Tombol Suara Guru baku. Selalu diletakkan di baris sendiri atau di pita,
+ * tidak pernah berdampingan dengan judul, supaya judul tidak terpotong.
+ */
+export function TombolSuaraGuru({
+  onClick,
+  kelas = "",
+  label = "Suara Guru",
+  kecil = false,
+}: {
+  onClick: () => void;
+  kelas?: string;
+  label?: string;
+  kecil?: boolean;
+}) {
+  return (
+    <button
+      type="button"
+      onClick={onClick}
+      aria-label={label}
+      title={label}
+      className={`flex shrink-0 items-center justify-center rounded-full border-[3px] border-[#FFE566] bg-[#1C01A5] p-0 text-[#FFE566] shadow-md ${
+        kecil ? "h-10 w-10" : "h-12 w-12"
+      } ${kelas}`}
+    >
+      <svg viewBox="0 0 24 24" className={kecil ? "h-6 w-6" : "h-7 w-7"} aria-hidden="true">
+        <path d="M4 9.5 H8 L13 5 V19 L8 14.5 H4 Z" fill="currentColor" stroke="currentColor" strokeWidth="1.4" strokeLinejoin="round" />
+        <path d="M16 9 Q18.6 12 16 15" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
+        <path d="M18.4 6.4 Q22.4 12 18.4 17.6" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
+      </svg>
+    </button>
+  );
+}
+
+/** Lencana speaker hiasan di dalam kartu atau gelembung yang seluruhnya bisa diketuk. */
+export function LencanaSuara({ kelas = "h-9 w-9" }: { kelas?: string }) {
+  return (
+    <span
+      aria-hidden="true"
+      className={`flex shrink-0 items-center justify-center rounded-full border-[3px] border-[#FFE566] bg-[#1C01A5] text-[#FFE566] ${kelas}`}
+    >
+      <svg viewBox="0 0 24 24" className="h-[62%] w-[62%]">
+        <path d="M4 9.5 H8 L13 5 V19 L8 14.5 H4 Z" fill="currentColor" stroke="currentColor" strokeWidth="1.4" strokeLinejoin="round" />
+        <path d="M16 9 Q18.6 12 16 15" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
+        <path d="M18.4 6.4 Q22.4 12 18.4 17.6" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
+      </svg>
+    </span>
+  );
+}
+
 export function PitaTahap({
   ikon,
   nama,
   cara,
   warna,
+  aksi,
 }: {
   ikon: string;
   nama: string;
   cara: string;
   warna: string;
+  /** Tombol di ujung kanan pita, misalnya Suara Guru. */
+  aksi?: React.ReactNode;
 }) {
   return (
     <div
@@ -58,10 +111,29 @@ export function PitaTahap({
       <span className="text-3xl leading-none" aria-hidden="true">
         {ikon}
       </span>
-      <div className="min-w-0">
+      <div className="min-w-0 flex-1">
         <p className="text-[11px] font-black tracking-widest text-white/90">{nama}</p>
         <p className="text-sm font-black leading-tight text-white">{cara}</p>
       </div>
+      {aksi}
+    </div>
+  );
+}
+
+/** Judul kartu dengan tombol Suara Guru di baris sendiri, rata kanan. Judul tampil utuh. */
+export function JudulKartuSuara({
+  judul,
+  onSuara,
+  kelasJudul = "text-xl",
+}: {
+  judul: string;
+  onSuara: () => void;
+  kelasJudul?: string;
+}) {
+  return (
+    <div className="flex items-center justify-between gap-2">
+      <h3 className={`min-w-0 flex-1 break-words font-black leading-tight text-[#1C01A5] ${kelasJudul}`}>{judul}</h3>
+      <TombolSuaraGuru onClick={onSuara} />
     </div>
   );
 }
@@ -98,7 +170,7 @@ export function CatatanTempel({ pendek, teks }: { pendek: string; teks?: string 
           <span aria-hidden="true">📝 </span>
           {pendek}
         </span>
-        <span aria-hidden="true">🔊</span>
+        <LencanaSuara />
       </span>
     </button>
   );
@@ -118,7 +190,7 @@ export function CatatanPensil({ pendek, teks }: { pendek: string; teks?: string 
         <span aria-hidden="true">✏️ </span>
         {pendek}
       </span>
-      <span aria-hidden="true">🔊</span>
+      <LencanaSuara />
     </button>
   );
 }

@@ -10,6 +10,7 @@ import { CeritaBandingB } from "@/components/modul/CeritaBandingB";
 import { PetaPikiranB } from "@/components/modul/PetaPikiranB";
 import { CeritaMajuMundurC, KatakWajah } from "@/components/modul/gambar-maju-mundur-c";
 import { CeritaBilanganA, KelinciWajah } from "@/components/modul/gambar-bilangan-a";
+import { TombolSuaraGuru } from "@/components/modul/tahap-b-gaya";
 import {
   AbstractBilanganA,
   ConcreteBilanganA,
@@ -443,20 +444,14 @@ function KartuSilabus({
       className="space-y-4 rounded-3xl border-2 p-4 md:rounded-[2rem] md:border-4"
       style={{ borderColor: tepi, backgroundColor: latar }}
     >
-      <div className="flex flex-col items-start gap-3 sm:flex-row sm:justify-between">
-        <div className="space-y-2">
+      <div className="flex items-start justify-between gap-3">
+        <div className="min-w-0 flex-1 space-y-2">
           <span className="inline-block rounded-full bg-[#1C01A5] px-3 py-1 text-[11px] font-black text-[#FFE566]">
             {lencana}
           </span>
-          <h3 className="text-xl font-black leading-tight text-[#1C01A5] md:text-2xl">{judul}</h3>
+          <h3 className="break-words text-xl font-black leading-tight text-[#1C01A5] md:text-2xl">{judul}</h3>
         </div>
-        <button
-          type="button"
-          onClick={() => bicara(teksSuara)}
-          className="shrink-0 rounded-full border-2 border-[#FFE566] bg-[#1C01A5] px-3 py-1.5 text-xs font-black text-[#FFE566] md:border-4"
-        >
-          🔊 Suara Guru
-        </button>
+        <TombolSuaraGuru kecil label="Suara Guru" onClick={() => bicara(teksSuara)} />
       </div>
       {children}
     </div>
@@ -1189,13 +1184,7 @@ export default function IgilModulePlayer() {
                           </span>
                           {isDone ? "Sudah selesai!" : "Belum, ayo mulai!"}
                         </div>
-                        <button
-                          type="button"
-                          onClick={() => speakGuru(`${sub.fullTitle}. ${sub.targetDescription}`)}
-                          className="rounded-full border-2 border-[#FFE566] bg-[#1C01A5] px-3 py-1.5 text-xs font-black text-[#FFE566] md:border-4"
-                        >
-                          🔊 Suara Guru
-                        </button>
+                        <TombolSuaraGuru kecil label="Suara Guru" onClick={() => speakGuru(`${sub.fullTitle}. ${sub.targetDescription}`)} />
                       </div>
                     </div>
                   );
@@ -1335,13 +1324,7 @@ export default function IgilModulePlayer() {
                       <span className="text-xs font-black text-[#1C01A5]">
                         Slide Cerita {idx + 1} / {currentSubContent.stories.length}
                       </span>
-                      <button
-                        type="button"
-                        onClick={() => speakGuru(st.voiceNarration)}
-                        className="px-4 py-2 rounded-xl bg-[#1C01A5] text-[#FFE566] font-black text-xs flex items-center gap-1.5 shadow"
-                      >
-                        🔊 Suara Guru
-                      </button>
+                      <TombolSuaraGuru kecil label="Suara Guru" onClick={() => speakGuru(st.voiceNarration)} />
                     </div>
 
                     <GambarPensilCerita
@@ -1412,13 +1395,7 @@ export default function IgilModulePlayer() {
                   >
                     <div className="flex items-center justify-between">
                       <span className="text-2xl">{mm.icon}</span>
-                      <button
-                        type="button"
-                        onClick={() => speakGuru(`${mm.stepTitle}. ${mm.stepDesc}`)}
-                        className="px-3 py-1 rounded-xl bg-white text-[#92400E] border border-[#F59E0B] text-xs font-black"
-                      >
-                        🔊 Suara
-                      </button>
+                      <TombolSuaraGuru kecil label="Suara" onClick={() => speakGuru(`${mm.stepTitle}. ${mm.stepDesc}`)} />
                     </div>
                     <h3 className="mt-3 text-base font-black text-[#1C01A5]">{mm.stepTitle}</h3>
                   </div>
@@ -1515,13 +1492,7 @@ export default function IgilModulePlayer() {
                                     .join("")}
                             </td>
                             <td className="p-2.5 text-center">
-                              <button
-                                type="button"
-                                onClick={() => speakGuru(row.voiceSentence)}
-                                className="px-3 py-1.5 rounded-xl bg-[#1C01A5] text-[#FFE566] font-black text-xs"
-                              >
-                                🔊 &quot;{row.voiceSentence}&quot;
-                              </button>
+                              <TombolSuaraGuru kecil label="Dengarkan kalimat" onClick={() => speakGuru(row.voiceSentence)} />
                             </td>
                           </tr>
                         ))}
@@ -1644,13 +1615,7 @@ export default function IgilModulePlayer() {
                         <span className="text-xs font-black text-[#1C01A5]">
                           Concrete Slide {idx + 1} / 3
                         </span>
-                        <button
-                          type="button"
-                          onClick={() => speakGuru(cSlide.voiceGuide)}
-                          className="px-3 py-1 rounded-xl bg-[#1C01A5] text-[#FFE566] font-black text-xs"
-                        >
-                          🔊 Panduan Suara
-                        </button>
+                        <TombolSuaraGuru kecil label="Panduan Suara" onClick={() => speakGuru(cSlide.voiceGuide)} />
                       </div>
                       <h3 className="text-sm font-black text-[#1E3A8A]">{cSlide.title}</h3>
 
@@ -1776,13 +1741,7 @@ export default function IgilModulePlayer() {
                         <span className="text-xs font-black text-[#1C01A5]">
                           Pictorial Slide {idx + 1} / 3
                         </span>
-                        <button
-                          type="button"
-                          onClick={() => speakGuru(`${pSlide.title}. ${pSlide.caption}`)}
-                          className="px-3 py-1 rounded-xl bg-white text-[#92400E] border border-[#F59E0B] text-xs font-black"
-                        >
-                          🔊 Suara
-                        </button>
+                        <TombolSuaraGuru kecil label="Suara" onClick={() => speakGuru(`${pSlide.title}. ${pSlide.caption}`)} />
                       </div>
                       <h3 className="text-sm font-black text-[#1C01A5]">{pSlide.title}</h3>
 
@@ -1908,13 +1867,7 @@ export default function IgilModulePlayer() {
                         <span className="text-xs font-black text-[#1C01A5]">
                           Abstract Slide {idx + 1} / 3
                         </span>
-                        <button
-                          type="button"
-                          onClick={() => speakGuru(aSlide.voiceReadout)}
-                          className="px-3 py-1 rounded-xl bg-[#1C01A5] text-[#FFE566] text-xs font-black"
-                        >
-                          🔊 Lafalkan
-                        </button>
+                        <TombolSuaraGuru kecil label="Lafalkan" onClick={() => speakGuru(aSlide.voiceReadout)} />
                       </div>
                       <div className="text-3xl md:text-4xl font-black text-[#1C01A5] py-2">
                         {aSlide.symbolLarge}
@@ -2264,13 +2217,7 @@ export default function IgilModulePlayer() {
                       {q.prompt}
                     </h2>
                   </div>
-                  <button
-                    type="button"
-                    onClick={() => speakGuru(q.prompt)}
-                    className="px-4 py-2 rounded-xl bg-[#1C01A5] text-[#FFE566] font-black text-xs"
-                  >
-                    🔊 Bacakan Soal
-                  </button>
+                  <TombolSuaraGuru kecil label="Bacakan Soal" onClick={() => speakGuru(q.prompt)} />
                 </div>
 
                 {/* 2 Kartu Sejajar: Visualisasi Concrete/Pictorial & Pilihan Jawaban */}

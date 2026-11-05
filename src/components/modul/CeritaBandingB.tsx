@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useEffect, useRef, useState } from "react";
+import { TombolSuaraGuru } from "./tahap-b-gaya";
 
 export const BIRU = "#1C01A5";
 export const EMAS = "#F0AB00";
@@ -450,15 +451,7 @@ export function BukuCerita({
                 >
                   {i + 1}
                 </span>
-                <button
-                  type="button"
-                  onClick={() => dengar(c)}
-                  className={`flex items-center gap-1.5 rounded-full border-4 border-[#FFE566] bg-[#1C01A5] px-4 py-2 text-sm font-black text-[#FFE566] shadow-[0_4px_0_rgba(28,1,165,0.3)] ${
-                    aktif ? "igil-lompat" : ""
-                  }`}
-                >
-                  🔊 Suara Guru
-                </button>
+                <TombolSuaraGuru onClick={() => dengar(c)} kelas={aktif ? "igil-lompat" : ""} />
               </div>
 
               <button
