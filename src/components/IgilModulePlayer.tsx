@@ -7,6 +7,7 @@ import materiBab1 from "@/data/kelas1-bab1.json";
 import GambarPensilCerita from "@/components/GambarPensilCerita";
 import { IkonMainan } from "@/components/modul/ikon-mainan";
 import { AdeganBandingB } from "@/components/modul/gambar-banding-b";
+import { PetaPikiranB } from "@/components/modul/PetaPikiranB";
 import {
   AbstractBandingB,
   ConcreteBandingB,
@@ -1224,6 +1225,13 @@ export default function IgilModulePlayer() {
                 </span>
               </div>
 
+              {activeSubBab === "B" ? (
+                <PetaPikiranB
+                  langkah={currentSubContent.mindMaps}
+                  judul={judulSubBab}
+                  speakGuru={speakGuru}
+                />
+              ) : (
               <div className="flex flex-col">
                 {currentSubContent.mindMaps.map((mm) => (
                   <div
@@ -1246,6 +1254,7 @@ export default function IgilModulePlayer() {
                   </div>
                 ))}
               </div>
+              )}
 
               <div className="flex justify-end">
                 <button
