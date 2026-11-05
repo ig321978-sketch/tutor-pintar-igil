@@ -461,7 +461,8 @@ export default function IgilModulePlayer() {
 
   const tekanMainan = useCallback((id: string, target: number) => {
     const sekarang = angkaMainanRef.current[id] ?? 0;
-    const berikut = sekarang >= target ? 0 : sekarang + 1;
+    if (sekarang >= target) return sekarang;
+    const berikut = sekarang + 1;
     angkaMainanRef.current[id] = berikut;
     setAngkaMainan((prev) => ({ ...prev, [id]: berikut }));
     return berikut;
@@ -1069,8 +1070,9 @@ export default function IgilModulePlayer() {
                               aria-label={item.nama}
                               aria-pressed={terbuka}
                               onClick={() => {
+                                const sebelumnya = angkaMainanRef.current[item.id] ?? 0;
                                 const angka = tekanMainan(item.id, item.jumlah);
-                                if (angka > 0) {
+                                if (angka > sebelumnya) {
                                   speakGuru(SEBUTAN_ANGKA[angka - 1] ?? String(angka));
                                 }
                               }}
