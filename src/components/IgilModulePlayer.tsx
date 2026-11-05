@@ -181,6 +181,27 @@ const KARTU_GAMBAR = [
   },
 ] as const;
 
+const KARTU_LAMBANG = [
+  {
+    id: "layangan",
+    nama: "Layangan",
+    jumlah: 8,
+    suara: "Layangan. Geser manik di rak sampai barisnya penuh. Lalu tulis lambangnya, dan ucapkan sekali.",
+  },
+  {
+    id: "kelereng",
+    nama: "Kelereng",
+    jumlah: 9,
+    suara: "Kelereng. Geser manik di rak sampai barisnya penuh. Lalu tulis lambangnya, dan ucapkan sekali.",
+  },
+  {
+    id: "bola",
+    nama: "Bola",
+    jumlah: 10,
+    suara: "Bola. Geser manik di rak sampai barisnya penuh. Lalu tulis lambangnya, dan ucapkan sekali.",
+  },
+] as const;
+
 const ALIAS_BILANGAN = [
   "satu",
   "dua",
@@ -301,6 +322,32 @@ function DiagramMainan({ jenis, terisi, kapasitas }: { jenis: string; terisi: nu
           {i < terisi ? <GambarDiagram jenis={jenis} /> : null}
         </span>
       ))}
+    </div>
+  );
+}
+
+function RakManik({ terisi, kapasitas }: { terisi: number; kapasitas: number }) {
+  const atas = Math.min(5, kapasitas);
+  const bawah = Math.max(0, kapasitas - 5);
+  const baris = (mulai: number, jumlah: number) => (
+    <div className="flex justify-center gap-1.5">
+      {Array.from({ length: jumlah }, (_, i) => {
+        const isi = mulai + i < terisi;
+        return (
+          <span
+            key={mulai + i}
+            className={`h-7 w-7 rounded-full border-2 ${
+              isi ? "border-[#1C01A5] bg-[#F0AB00]" : "border-dashed border-[#F0AB00] bg-white"
+            }`}
+          />
+        );
+      })}
+    </div>
+  );
+  return (
+    <div className="flex w-full flex-col gap-2 rounded-2xl border border-[#1C01A5] bg-white px-2 py-3">
+      {baris(0, atas)}
+      {bawah > 0 ? baris(atas, bawah) : null}
     </div>
   );
 }
@@ -663,6 +710,14 @@ export default function IgilModulePlayer() {
   const [suaraGambar, setSuaraGambar] = useState<Record<string, boolean>>({});
   const [rekamGambar, setRekamGambar] = useState(false);
   const [pesanGambar, setPesanGambar] = useState("");
+  const [hitungLambang, setHitungLambang] = useState<Record<string, number>>({});
+  const hitungLambangRef = useRef<Record<string, number>>({});
+  const [indeksLambang, setIndeksLambang] = useState(0);
+  const [tulisLambang, setTulisLambang] = useState<Record<string, boolean>>({});
+  const [suaraLambang, setSuaraLambang] = useState<Record<string, boolean>>({});
+  const [rekamLambang, setRekamLambang] = useState(false);
+  const [pesanLambang, setPesanLambang] = useState("");
+  const selesaiBabRef = useRef<HTMLDivElement | null>(null);
 
   const sentuhBendaNyata = useCallback((id: string, target: number) => {
     const sekarang = sentuhNyataRef.current[id] ?? 0;
@@ -682,6 +737,15 @@ export default function IgilModulePlayer() {
     return berikut;
   }, []);
 
+  const geserManik = useCallback((id: string, target: number) => {
+    const sekarang = hitungLambangRef.current[id] ?? 0;
+    if (sekarang >= target) return sekarang;
+    const berikut = sekarang + 1;
+    hitungLambangRef.current[id] = berikut;
+    setHitungLambang((prev) => ({ ...prev, [id]: berikut }));
+    return berikut;
+  }, []);
+
   const hentikanRekamConcrete = useCallback(() => {
     giliranRekam.current += 1;
     sibukRekamRef.current = false;
@@ -694,9 +758,10 @@ export default function IgilModulePlayer() {
     }
     setRekamConcrete(false);
     setRekamGambar(false);
+    setRekamLambang(false);
   }, []);
 
-  const mulaiRekamConcrete = useCallback((id: string, jumlah: number, panel: "concrete" | "gambar" = "concrete") => {
+  const mulaiRekamConcrete = useCallback((id: string, jumlah: number, panel: "concrete" | "gambar" | "lambang" = "concrete") => {
     if (sibukRekamRef.current) {
       hentikanRekamConcrete();
       return;
@@ -705,9 +770,10 @@ export default function IgilModulePlayer() {
     giliranSuara.current += 1;
     const masih = () => giliran === giliranRekam.current;
     const keGambar = panel === "gambar";
-    const taruhPesan = keGambar ? setPesanGambar : setPesanConcrete;
-    const taruhRekam = keGambar ? setRekamGambar : setRekamConcrete;
-    const taruhSuara = keGambar ? setSuaraGambar : setSuaraConcrete;
+    const keLambang = panel === "lambang";
+    const taruhPesan = keLambang ? setPesanLambang : keGambar ? setPesanGambar : setPesanConcrete;
+    const taruhRekam = keLambang ? setRekamLambang : keGambar ? setRekamGambar : setRekamConcrete;
+    const taruhSuara = keLambang ? setSuaraLambang : keGambar ? setSuaraGambar : setSuaraConcrete;
     const win = window as Window & {
       SpeechRecognition?: new () => MesinDengar;
       webkitSpeechRecognition?: new () => MesinDengar;
@@ -721,6 +787,7 @@ export default function IgilModulePlayer() {
     taruhPesan("");
     setRekamConcrete(panel === "concrete");
     setRekamGambar(panel === "gambar");
+    setRekamLambang(panel === "lambang");
     let diterima = false;
     let ditutup = false;
     let adaTeks = false;
@@ -2026,6 +2093,123 @@ export default function IgilModulePlayer() {
                 </span>
               </div>
 
+              {activeSubBab === "A" ? (
+                <div className="rounded-3xl border-2 border-[#1C01A5] bg-slate-50 p-4 space-y-3">
+                  {(() => {
+                    const kartu = KARTU_LAMBANG[indeksLambang];
+                    const hitung = hitungLambang[kartu.id] ?? 0;
+                    const tulis = tulisLambang[kartu.id] === true;
+                    const suara = suaraLambang[kartu.id] === true;
+                    const terakhir = indeksLambang >= KARTU_LAMBANG.length - 1;
+                    return (
+                      <>
+                        <div className="flex items-center justify-between gap-3">
+                          <h3 className="min-w-0 text-base font-black leading-snug text-[#1C01A5]">
+                            {kartu.nama}
+                          </h3>
+                          <button
+                            type="button"
+                            onClick={() => speakGuru(kartu.suara)}
+                            className="shrink-0 rounded-xl border border-[#1C01A5] bg-white px-3 py-1 text-xs font-black text-[#1C01A5]"
+                          >
+                            🔊 Suara Guru
+                          </button>
+                        </div>
+                        <p className="text-xs font-bold text-[#1C01A5]">
+                          Lambang {indeksLambang + 1} dari {KARTU_LAMBANG.length}.{" "}
+                          {suara
+                            ? "Lambangnya sudah diucapkan."
+                            : "Geser manik di rak, lalu ucapkan lambangnya satu kali."}
+                        </p>
+                        <p className="text-center text-sm font-black text-[#1C01A5]">
+                          {kartu.nama} = {suara ? kartu.jumlah : "□"}
+                        </p>
+                        <div className="grid grid-cols-2 gap-2">
+                          <div className="text-center text-xs font-black tracking-wide text-[#1C01A5]">RAK</div>
+                          <div className="text-center text-xs font-black tracking-wide text-[#1C01A5]">LAMBANG</div>
+                        </div>
+                        <div className="grid grid-cols-2 gap-2">
+                          <button
+                            type="button"
+                            aria-label={kartu.nama}
+                            aria-pressed={hitung > 0}
+                            onClick={() => geserManik(kartu.id, kartu.jumlah)}
+                            className={`flex min-w-0 flex-col gap-2 rounded-2xl border-2 bg-white px-2 py-2 text-left ${
+                              hitung > 0 ? "border-[#1C01A5]" : "border-[#93C5FD]"
+                            }`}
+                          >
+                            <span className="text-[11px] font-black leading-tight text-[#1C01A5]">{kartu.nama}</span>
+                            <RakManik terisi={hitung} kapasitas={kartu.jumlah} />
+                          </button>
+                          <button
+                            type="button"
+                            aria-label={suara ? `${kartu.jumlah} ${SEBUTAN_ANGKA[kartu.jumlah - 1]}` : "Jawab dengan suara"}
+                            onClick={() => {
+                              if (suara) return;
+                              mulaiRekamConcrete(kartu.id, kartu.jumlah, "lambang");
+                            }}
+                            className={`flex min-h-16 min-w-0 flex-col items-center justify-center rounded-2xl border-2 bg-white px-2 py-1 ${
+                              suara
+                                ? "border-solid border-[#1C01A5]"
+                                : rekamLambang
+                                  ? "border-solid border-[#F0AB00]"
+                                  : "border-dashed border-[#1C01A5]"
+                            }`}
+                          >
+                            {suara ? (
+                              <>
+                                <span className="text-3xl font-black leading-none text-[#1C01A5]">{kartu.jumlah}</span>
+                                <span className="text-sm font-black leading-tight text-[#1C01A5]">
+                                  {SEBUTAN_ANGKA[kartu.jumlah - 1]}
+                                </span>
+                              </>
+                            ) : (
+                              <span className="text-center text-sm font-black leading-tight text-[#1C01A5]">
+                                {rekamLambang ? "Mendengarkan..." : "Jawab dengan suara"}
+                              </span>
+                            )}
+                          </button>
+                        </div>
+                        {pesanLambang ? (
+                          <p className="text-center text-xs font-bold text-[#1C01A5]">{pesanLambang}</p>
+                        ) : null}
+                        <div className="flex flex-col items-center gap-2 rounded-2xl border border-[#1C01A5] bg-white p-3">
+                          <div className="text-xs font-black text-[#1C01A5]">Tulis lambang di atas, kata di bawah</div>
+                          <DottedNumberTracingCanvas
+                            key={`lambang-${kartu.id}`}
+                            digit={kartu.jumlah}
+                            kata={SEBUTAN_ANGKA[kartu.jumlah - 1]}
+                            onCompletedTrace={() =>
+                              setTulisLambang((prev) => ({ ...prev, [kartu.id]: true }))
+                            }
+                          />
+                          <p className="text-xs font-bold text-[#1C01A5]">
+                            {tulis ? "Lambangmu sudah pas." : "Ikuti titik lambangnya."}
+                          </p>
+                        </div>
+                        <div className="flex justify-end">
+                          <button
+                            type="button"
+                            onClick={() => {
+                              hentikanRekamConcrete();
+                              setPesanLambang("");
+                              if (!terakhir) {
+                                setIndeksLambang((urut) => urut + 1);
+                                abstractRef.current?.scrollIntoView({ behavior: "smooth", block: "start" });
+                                return;
+                              }
+                              selesaiBabRef.current?.scrollIntoView({ behavior: "smooth", block: "center" });
+                            }}
+                            className="rounded-2xl border-2 border-[#FFE566] bg-[#1C01A5] px-6 py-2.5 text-xs font-black text-[#FFE566] shadow-md"
+                          >
+                            LANJUTKAN ⬇️
+                          </button>
+                        </div>
+                      </>
+                    );
+                  })()}
+                </div>
+              ) : (
               <div className="w-full overflow-x-auto pb-3">
                 <div className="flex flex-nowrap gap-5 min-w-[960px]">
                   {currentSubContent.abstractSlides.map((aSlide, idx) => (
@@ -2056,9 +2240,10 @@ export default function IgilModulePlayer() {
                   ))}
                 </div>
               </div>
+              )}
 
               {/* Tombol KEMBALI (untuk Sub-Bab B, C, D) & LANJUTKAN ke Sub-Bab Berikutnya */}
-              <div className="flex items-center justify-between pt-4 border-t-2 border-slate-200">
+              <div ref={selesaiBabRef} className="flex items-center justify-between pt-4 border-t-2 border-slate-200">
                 {activeSubBab !== "A" ? (
                   <button
                     type="button"
