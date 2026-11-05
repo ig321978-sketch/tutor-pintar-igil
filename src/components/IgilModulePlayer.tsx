@@ -407,6 +407,85 @@ const SUB_ANAK: Record<SubBabId, { emoji: string }> = {
   D: { emoji: "🧩" },
 };
 
+function KartuSilabus({
+  tepi,
+  latar,
+  lencana,
+  judul,
+  teksSuara,
+  bicara,
+  children,
+}: {
+  tepi: string;
+  latar: string;
+  lencana: string;
+  judul: string;
+  teksSuara: string;
+  bicara: (teks: string) => void;
+  children: React.ReactNode;
+}) {
+  return (
+    <div
+      className="space-y-3 rounded-[2rem] border-4 p-4"
+      style={{ borderColor: tepi, backgroundColor: latar, boxShadow: `0 6px 0 ${tepi}66` }}
+    >
+      <div className="flex items-start justify-between gap-2">
+        <div className="space-y-1.5">
+          <span className="inline-block rounded-full bg-[#1C01A5] px-3 py-1 text-[11px] font-black text-[#FFE566]">
+            {lencana}
+          </span>
+          <h3 className="text-xl font-black leading-tight text-[#1C01A5] md:text-2xl">{judul}</h3>
+        </div>
+        <button
+          type="button"
+          onClick={() => bicara(teksSuara)}
+          className="shrink-0 rounded-full border-4 border-[#FFE566] bg-[#1C01A5] px-3 py-1.5 text-xs font-black text-[#FFE566] shadow-[0_3px_0_rgba(28,1,165,0.3)]"
+        >
+          🔊 Suara Guru
+        </button>
+      </div>
+      {children}
+    </div>
+  );
+}
+
+function BarisIkon({
+  emoji,
+  warna,
+  judul,
+  children,
+}: {
+  emoji: string;
+  warna: string;
+  judul: string;
+  children: React.ReactNode;
+}) {
+  return (
+    <div className="flex items-start gap-3 rounded-3xl border-2 border-white bg-white/80 p-3">
+      <span
+        className="flex h-12 w-12 shrink-0 items-center justify-center rounded-full border-4 border-white text-2xl shadow"
+        style={{ backgroundColor: warna }}
+        aria-hidden="true"
+      >
+        {emoji}
+      </span>
+      <div className="min-w-0">
+        <div className="text-lg font-black text-[#1C01A5]">{judul}</div>
+        <div className="text-base leading-relaxed text-[#334155] md:text-lg">{children}</div>
+      </div>
+    </div>
+  );
+}
+
+const TAHAP_SILABUS = [
+  { emoji: "📖", nama: "Story (Cerita)", warna: "#FFD6D6" },
+  { emoji: "🌳", nama: "Mind-Mapping (Peta Pikiran)", warna: "#FFE9A8" },
+  { emoji: "📊", nama: "Infografis (Tabel Data)", warna: "#CDEFD8" },
+  { emoji: "🧺", nama: "Concrete (Benda Nyata)", warna: "#DDD8FF" },
+  { emoji: "🖼️", nama: "Pictorial (Diagram)", warna: "#FFD9B0" },
+  { emoji: "🔢", nama: "Abstract (Simbol Angka)", warna: "#C8EAFB" },
+];
+
 export default function IgilModulePlayer() {
   // 1. State Navigasi Tab Utama (Langsung mengaktifkan Tab Silabus)
   const [activeMainTab, setActiveMainTab] = useState<MainTabId>("silabus");
@@ -940,138 +1019,205 @@ export default function IgilModulePlayer() {
       {/* 1. HALAMAN SILABUS (2 HALAMAN: KOMPONEN SILABUS & TARGET CHECKLIST) */}
       {/* =================================================================== */}
       {activeMainTab === "silabus" && (
-        <section className="w-[98%] mx-auto mt-4 bg-white p-4 md:p-6 space-y-6">
-          <div className="flex items-center justify-between border-b-2 border-[#1C01A5]/15 pb-3">
-            <div>
-              <span className="text-xs font-black uppercase text-[#1C01A5]">
+        <section
+          className="relative mx-auto mt-4 w-[98%] space-y-5 rounded-[2rem] border-4 border-dashed border-[#FFE566] bg-[#FFFDF2] p-4 md:p-6"
+          style={{
+            backgroundImage: "radial-gradient(#FFEFB0 2px, transparent 2px)",
+            backgroundSize: "26px 26px",
+          }}
+        >
+          <div className="flex items-center justify-between gap-3">
+            <div className="space-y-2">
+              <span className="inline-block rounded-full bg-[#1C01A5] px-3 py-1 text-xs font-black text-[#FFE566]">
                 HALAMAN SILABUS ({silabusPage} DARI 2)
               </span>
-              <h2 className="text-xl md:text-2xl font-black text-[#1C01A5]">
-                {silabusPage === 1
-                  ? "Halaman 1: Komponen Silabus & Metode 24 Halaman SMICPA"
-                  : "Halaman 2: Target Pembelajaran & Checklist Ketuntasan Sub-Bab"}
+              <h2 className="text-2xl font-black text-[#1C01A5] md:text-3xl">
+                {silabusPage === 1 ? "🗺️ Peta Petualangan Kita" : "🎯 Target Belajar Kita"}
               </h2>
             </div>
+            <span className="igil-lompat shrink-0 text-5xl" aria-hidden="true">
+              🦉
+            </span>
           </div>
 
           {silabusPage === 1 && (
             <div className="flex w-full flex-col gap-5">
-                <div className="w-full bg-[#EFF6FF] border-2 border-[#3B82F6] rounded-3xl p-5 space-y-3">
-                  <div className="inline-block px-3 py-1 rounded-full bg-[#1C01A5] text-[#FFE566] text-xs font-black">
-                    KOMPONEN SILABUS KURIKULUM MERDEKA
-                  </div>
-                  <h3 className="text-lg font-black text-[#1C01A5]">
-                    Fase A • Elemen Bilangan (Kelas 1 SD/MI)
-                  </h3>
-                  <ul className="text-base md:text-lg leading-relaxed space-y-3 text-[#334155]">
-                    <li>
-                      • <strong>Capaian Pembelajaran (CP):</strong> Siswa menunjukkan pemahaman dan intuisi bilangan (<em>number sense</em>) pada bilangan cacah sampai 10.
-                    </li>
-                    <li>
-                      • <strong>Referensi Buku Resmi:</strong> Buku Siswa Matematika Kelas I Kemendikbudristek (Bab 1: Ayo Membilang sampai dengan 10, Halaman 1–32).
-                    </li>
-                    <li>
-                      • <strong>Metode Pedagogis SMICPA:</strong> Story (Cerita), Mind-Mapping (Peta Pikiran), Infografis (Tabel Data), Concrete (Benda Nyata), Pictorial (Diagram), dan Abstract (Simbol Angka).
-                    </li>
-                  </ul>
-                </div>
+              <KartuSilabus
+                tepi="#E98989"
+                latar="#FFF1F1"
+                lencana="KOMPONEN SILABUS KURIKULUM MERDEKA"
+                judul="🌈 Fase A • Elemen Bilangan (Kelas 1 SD/MI)"
+                bicara={speakGuru}
+                teksSuara="Kita belajar bilangan sampai sepuluh. Bukunya bernama Ayo Membilang sampai dengan Sepuluh. Kita melewati enam tahap seru: cerita, peta pikiran, infografis, benda nyata, gambar, dan simbol angka."
+              >
+                <BarisIkon emoji="🧠" warna="#FFD6D6" judul="Capaian Pembelajaran (CP)">
+                  Siswa menunjukkan pemahaman dan intuisi bilangan (<em>number sense</em>) pada bilangan cacah sampai 10.
+                </BarisIkon>
+                <BarisIkon emoji="📖" warna="#FFE9A8" judul="Referensi Buku Resmi">
+                  Buku Siswa Matematika Kelas I Kemendikbudristek (Bab 1: Ayo Membilang sampai dengan 10, Halaman 1–32).
+                </BarisIkon>
+                <BarisIkon emoji="🚀" warna="#CDEFD8" judul="Metode Pedagogis SMICPA">
+                  <span className="flex flex-wrap gap-2 pt-1">
+                    {TAHAP_SILABUS.map((s, i) => (
+                      <span
+                        key={s.nama}
+                        className="inline-flex items-center gap-1.5 rounded-full border-2 border-[#1C01A5]/25 px-3 py-1 text-sm font-black text-[#1C01A5]"
+                        style={{ backgroundColor: s.warna }}
+                      >
+                        <span aria-hidden="true">{s.emoji}</span>
+                        {i + 1}. {s.nama}
+                      </span>
+                    ))}
+                  </span>
+                </BarisIkon>
+              </KartuSilabus>
 
-                <div className="w-full bg-[#FFFBEB] border-2 border-[#F59E0B] rounded-3xl p-5 space-y-3">
-                  <div className="inline-block px-3 py-1 rounded-full bg-[#1C01A5] text-[#FFE566] text-xs font-black">
-                    ARSITEKTUR LEARN-TO-EARN &amp; KOLAM BEASISWA 90:10
-                  </div>
-                  <h3 className="text-lg font-black text-[#1C01A5]">
-                    Distribusi 150 Token Emas &amp; Kualifikasi Bulanan
-                  </h3>
-                  <ul className="text-base md:text-lg leading-relaxed space-y-3 text-[#334155]">
-                    <li>
-                      • <strong>Komponen Latihan (30 Token Emas):</strong> 10 soal terbimbing (LOTS 30%, MOTS 30%, HOTS 40%) lengkap dengan pembahasan langsung.
-                    </li>
-                    <li>
-                      • <strong>Komponen Ujian Mandiri (70 Token Emas):</strong> 10 soal formal HOTS. Wajib meraih nilai sempurna <strong>100/100</strong> untuk membuka Praktikum.
-                    </li>
-                    <li>
-                      • <strong>Komponen Praktikum Sintesis (50 Token Emas):</strong> Proyek perancangan terpadu yang dinilai secara tertutup (<em>On-Submit Hidden Grading</em>).
-                    </li>
-                  </ul>
+              <KartuSilabus
+                tepi="#F0AB00"
+                latar="#FFF8DC"
+                lencana="ARSITEKTUR LEARN-TO-EARN & KOLAM BEASISWA 90:10"
+                judul="💰 Distribusi 150 Token Emas & Kualifikasi Bulanan"
+                bicara={speakGuru}
+                teksSuara="Ada seratus lima puluh token emas untuk dikumpulkan. Latihan memberi tiga puluh token. Ujian memberi tujuh puluh token, dan kamu harus mendapat nilai seratus. Praktikum memberi lima puluh token."
+              >
+                <div className="grid gap-3 md:grid-cols-3">
+                  {[
+                    {
+                      emoji: "✏️",
+                      nama: "Komponen Latihan",
+                      token: materiBab1.tokens.practice,
+                      warna: "#DDD8FF",
+                      isi: "10 soal terbimbing (LOTS 30%, MOTS 30%, HOTS 40%) lengkap dengan pembahasan langsung.",
+                    },
+                    {
+                      emoji: "🏆",
+                      nama: "Komponen Ujian Mandiri",
+                      token: materiBab1.tokens.exam,
+                      warna: "#FFD9B0",
+                      isi: "10 soal formal HOTS. Wajib meraih nilai sempurna 100/100 untuk membuka Praktikum.",
+                    },
+                    {
+                      emoji: "🎨",
+                      nama: "Komponen Praktikum Sintesis",
+                      token: materiBab1.tokens.practicum,
+                      warna: "#C8EAFB",
+                      isi: "Proyek perancangan terpadu yang dinilai secara tertutup (On-Submit Hidden Grading).",
+                    },
+                  ].map((k) => (
+                    <div
+                      key={k.nama}
+                      className="space-y-1 rounded-3xl border-4 border-white p-3 text-center shadow"
+                      style={{ backgroundColor: k.warna }}
+                    >
+                      <div className="igil-lompat text-4xl" aria-hidden="true">
+                        {k.emoji}
+                      </div>
+                      <div className="text-lg font-black text-[#1C01A5]">{k.nama}</div>
+                      <div className="inline-block rounded-full border-4 border-white bg-[#FFE566] px-3 py-0.5 text-xl font-black text-[#1C01A5]">
+                        💰 {k.token} Token Emas
+                      </div>
+                      <p className="text-sm leading-snug text-[#334155] md:text-base">{k.isi}</p>
+                    </div>
+                  ))}
                 </div>
+              </KartuSilabus>
             </div>
           )}
 
           {silabusPage === 2 && (
             <div className="flex w-full flex-col gap-5">
-                <div className="w-full bg-[#F0FDF4] border-2 border-[#22C55E] rounded-3xl p-5 space-y-3">
-                  <h3 className="text-base md:text-lg font-black text-[#166534]">
-                    📋 Daftar Target Pembelajaran (Sub-Bab A &amp; B)
-                  </h3>
-                  {(["A", "B"] as SubBabId[]).map((id) => {
-                    const isDone = completedSubBabs.includes(id);
-                    const sub = SUB_BABS[id];
-                    return (
-                      <div
-                        key={id}
-                        className="bg-white p-3.5 rounded-2xl border-2 border-[#86EFAC] flex items-start gap-3"
-                      >
-                        <div
-                          className={`w-7 h-7 rounded-lg flex items-center justify-center font-black text-sm shrink-0 ${
-                            isDone
-                              ? "bg-[#22C55E] text-white"
-                              : "bg-slate-100 text-slate-400 border border-slate-300"
-                          }`}
-                        >
-                          {isDone ? "✓" : ""}
-                        </div>
-                        <div>
-                          <div className="font-black text-lg text-[#1C01A5]">{sub.fullTitle}</div>
-                          <p className="text-base md:text-lg leading-relaxed text-[#334155] mt-1">{sub.targetDescription}</p>
-                        </div>
-                      </div>
-                    );
-                  })}
+              <div className="flex flex-wrap items-center justify-between gap-3 rounded-[2rem] border-4 border-[#7FCB96] bg-[#EEFBF1] px-4 py-3 shadow-[0_5px_0_rgba(127,203,150,0.5)]">
+                <div className="text-lg font-black text-[#166534]">
+                  📋 Bintang Kita: {completedSubBabs.length} dari 4 sub-bab
                 </div>
+                <div className="flex gap-1 text-3xl" aria-hidden="true">
+                  {(["A", "B", "C", "D"] as SubBabId[]).map((id) => (
+                    <span key={id} className={completedSubBabs.includes(id) ? "igil-lompat" : "opacity-40"}>
+                      {completedSubBabs.includes(id) ? "⭐" : "☆"}
+                    </span>
+                  ))}
+                </div>
+              </div>
 
-                <div className="w-full bg-[#EFF6FF] border-2 border-[#3B82F6] rounded-3xl p-5 space-y-3">
-                  <h3 className="text-base md:text-lg font-black text-[#1E3A8A]">
-                    📋 Daftar Target Pembelajaran (Sub-Bab C &amp; D)
-                  </h3>
-                  {(["C", "D"] as SubBabId[]).map((id) => {
-                    const isDone = completedSubBabs.includes(id);
-                    const sub = SUB_BABS[id];
-                    return (
-                      <div
-                        key={id}
-                        className="bg-white p-3.5 rounded-2xl border-2 border-[#93C5FD] flex items-start gap-3"
-                      >
-                        <div
-                          className={`w-7 h-7 rounded-lg flex items-center justify-center font-black text-sm shrink-0 ${
-                            isDone
-                              ? "bg-[#22C55E] text-white"
-                              : "bg-slate-100 text-slate-400 border border-slate-300"
+              <div className="grid gap-4 md:grid-cols-2">
+                {(["A", "B", "C", "D"] as SubBabId[]).map((id) => {
+                  const isDone = completedSubBabs.includes(id);
+                  const sub = SUB_BABS[id];
+                  return (
+                    <div
+                      key={id}
+                      className="space-y-3 rounded-[2rem] border-4 p-4"
+                      style={{
+                        borderColor: sub.secondaryBorder,
+                        backgroundColor: sub.secondaryBg,
+                        boxShadow: `0 6px 0 ${sub.secondaryBorder}88`,
+                      }}
+                    >
+                      <div className="flex items-start gap-3">
+                        <span
+                          className={`flex h-14 w-14 shrink-0 items-center justify-center rounded-full border-4 border-white text-3xl shadow ${
+                            isDone ? "igil-lompat" : ""
                           }`}
+                          style={{ backgroundColor: sub.secondaryBorder }}
+                          aria-hidden="true"
                         >
-                          {isDone ? "✓" : ""}
+                          {SUB_ANAK[id].emoji}
+                        </span>
+                        <div className="min-w-0 flex-1">
+                          <div className="text-lg font-black leading-tight" style={{ color: sub.secondaryText }}>
+                            {sub.fullTitle}
+                          </div>
                         </div>
-                        <div>
-                          <div className="font-black text-lg text-[#1C01A5]">{sub.fullTitle}</div>
-                          <p className="text-base md:text-lg leading-relaxed text-[#334155] mt-1">{sub.targetDescription}</p>
-                        </div>
+                        <button
+                          type="button"
+                          onClick={() => speakGuru(`${sub.fullTitle}. ${sub.targetDescription}`)}
+                          className="shrink-0 rounded-full border-4 border-[#FFE566] bg-[#1C01A5] px-3 py-1.5 text-xs font-black text-[#FFE566] shadow-[0_3px_0_rgba(28,1,165,0.3)]"
+                        >
+                          🔊 Suara Guru
+                        </button>
                       </div>
-                    );
-                  })}
-                </div>
+                      <p className="rounded-2xl bg-white/80 p-3 text-base leading-relaxed text-[#334155] md:text-lg">
+                        {sub.targetDescription}
+                      </p>
+                      <div
+                        className={`inline-flex items-center gap-2 rounded-full border-4 px-4 py-1.5 text-base font-black ${
+                          isDone
+                            ? "border-white bg-[#22C55E] text-white"
+                            : "border-white bg-white text-[#64748B]"
+                        }`}
+                      >
+                        <span className="text-2xl" aria-hidden="true">
+                          {isDone ? "⭐" : "🎯"}
+                        </span>
+                        {isDone ? "Sudah selesai!" : "Belum, ayo mulai!"}
+                      </div>
+                    </div>
+                  );
+                })}
+              </div>
             </div>
           )}
 
           {/* Tombol KEMBALI dan LANJUT di Akhir Halaman Silabus */}
-          <div className="flex items-center justify-between pt-2">
+          <div className="flex items-center justify-between gap-3 pt-2">
             <button
               type="button"
               disabled={silabusPage === 1}
               onClick={() => setSilabusPage(1)}
-              className="px-6 py-3 rounded-2xl bg-slate-200 text-[#334155] font-black text-sm disabled:opacity-40"
+              className="rounded-full border-4 border-white bg-[#E2E8F0] px-6 py-3 text-base font-black text-[#334155] shadow-[0_4px_0_rgba(0,0,0,0.2)] disabled:opacity-40"
             >
               ⬅️ KEMBALI
             </button>
+
+            <span className="flex items-center gap-2" aria-hidden="true">
+              {[1, 2].map((n) => (
+                <span
+                  key={n}
+                  className="block h-4 w-4 rounded-full border-2 border-[#1C01A5]"
+                  style={{ backgroundColor: n === silabusPage ? "#FFE566" : "#FFFFFF" }}
+                />
+              ))}
+            </span>
 
             <button
               type="button"
@@ -1083,9 +1229,9 @@ export default function IgilModulePlayer() {
                   window.scrollTo({ top: 0, behavior: "smooth" });
                 }
               }}
-              className="px-8 py-3 rounded-2xl bg-[#1C01A5] text-[#FFE566] border-2 border-[#FFE566] font-black text-sm shadow-md"
+              className="igil-lompat rounded-full border-4 border-[#FFE566] bg-[#1C01A5] px-8 py-3 text-base font-black text-[#FFE566] shadow-[0_5px_0_rgba(240,171,0,0.7)]"
             >
-              LANJUT
+              LANJUT ➡️
             </button>
           </div>
         </section>
