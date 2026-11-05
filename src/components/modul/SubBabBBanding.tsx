@@ -53,7 +53,7 @@ const MERAH_MUDA = "#E98989";
 
 export const STIKER = "rounded-3xl border-4 border-[#1C01A5] bg-white shadow-[0_5px_0_rgba(28,1,165,0.22)]";
 
-export const kata = (n: number) => SEBUTAN_ANGKA[n - 1] ?? String(n);
+export const kata = (n: number) => (n === 0 ? "Nol" : (SEBUTAN_ANGKA[n - 1] ?? String(n)));
 
 const NAMA: Record<string, string> = {
   sepeda: "Sepeda",

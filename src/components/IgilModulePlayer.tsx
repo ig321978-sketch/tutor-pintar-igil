@@ -9,6 +9,13 @@ import { IkonMainan } from "@/components/modul/ikon-mainan";
 import { CeritaBandingB } from "@/components/modul/CeritaBandingB";
 import { PetaPikiranB } from "@/components/modul/PetaPikiranB";
 import { CeritaMajuMundurC, KatakWajah } from "@/components/modul/gambar-maju-mundur-c";
+import { CeritaBilanganA, KelinciWajah } from "@/components/modul/gambar-bilangan-a";
+import {
+  AbstractBilanganA,
+  ConcreteBilanganA,
+  InfografisBilanganA,
+  PictureBilanganA,
+} from "@/components/modul/SubBabABilangan";
 import {
   AbstractMajuMundurC,
   ConcreteMajuMundurC,
@@ -276,7 +283,7 @@ function jarakHuruf(a: string, b: string): number {
 }
 
 function ucapanMemuatBilangan(teks: string, jumlah: number): boolean {
-  const kata = ALIAS_BILANGAN[jumlah - 1];
+  const kata = jumlah === 0 ? "nol" : ALIAS_BILANGAN[jumlah - 1];
   if (!kata) return false;
   const bersih = teks
     .toLowerCase()
@@ -290,8 +297,8 @@ function ucapanMemuatBilangan(teks: string, jumlah: number): boolean {
     .filter(Boolean)
     .map((bagian) => bagian.replace(/(.)\1{2,}/g, "$1"));
   const angka = String(jumlah);
-  const inggris = ["one", "two", "three", "four", "five", "six", "seven", "eight", "nine", "ten"][jumlah - 1];
-  const dekat = jumlah === 6 ? ["anang", "enang"] : [];
+  const inggris = jumlah === 0 ? "zero" : ["one", "two", "three", "four", "five", "six", "seven", "eight", "nine", "ten"][jumlah - 1];
+  const dekat = jumlah === 6 ? ["anang", "enang"] : jumlah === 0 ? ["nul", "noll", "kosong"] : [];
   if (token.some((bagian) => bagian === kata || bagian === angka || bagian === inggris || dekat.includes(bagian))) return true;
   if (bersih.replace(/ /g, "").includes(kata)) return true;
   return token.some((bagian) => bagian.length >= 3 && jarakHuruf(bagian, kata) <= 1);
@@ -1307,7 +1314,9 @@ export default function IgilModulePlayer() {
               </span>
             </div>
 
-            {activeSubBab === "B" ? (
+            {activeSubBab === "A" ? (
+              <CeritaBilanganA cerita={currentSubContent.stories} speakGuru={speakGuru} />
+            ) : activeSubBab === "B" ? (
               <CeritaBandingB cerita={currentSubContent.stories} speakGuru={speakGuru} />
             ) : activeSubBab === "C" ? (
               <CeritaMajuMundurC cerita={currentSubContent.stories} speakGuru={speakGuru} />
@@ -1372,7 +1381,14 @@ export default function IgilModulePlayer() {
                 </span>
               </div>
 
-              {activeSubBab === "B" ? (
+              {activeSubBab === "A" ? (
+                <PetaPikiranB
+                  langkah={currentSubContent.mindMaps}
+                  judul={judulSubBab}
+                  speakGuru={speakGuru}
+                  maskot={<KelinciWajah kelas="h-14 w-20 igil-lompat" />}
+                />
+              ) : activeSubBab === "B" ? (
                 <PetaPikiranB
                   langkah={currentSubContent.mindMaps}
                   judul={judulSubBab}
@@ -1440,69 +1456,7 @@ export default function IgilModulePlayer() {
               </div>
 
               {activeSubBab === "A" ? (
-                <div className="flex flex-col gap-3">
-                  <div className="bg-[#F0FDF4] border-2 border-[#22C55E] rounded-3xl p-4 space-y-3">
-                    <div className="flex items-center justify-between gap-3">
-                      <h3 className="min-w-0 text-base font-black leading-snug text-[#1C01A5]">
-                        Kelompok mainan dan Jumlahnya
-                      </h3>
-                      <button
-                        type="button"
-                        onClick={() => speakGuru(SUARA_KELOMPOK)}
-                        className="px-3 py-1 rounded-xl bg-white text-[#166534] border border-[#22C55E] text-xs font-black shrink-0"
-                      >
-                        🔊 Suara Guru
-                      </button>
-                    </div>
-                    <div className="grid grid-cols-2 gap-2">
-                      <div className="text-center text-xs font-black tracking-wide text-[#166534]">MAINAN</div>
-                      <div className="text-center text-xs font-black tracking-wide text-[#166534]">JUMLAH</div>
-                    </div>
-                    <div className="flex flex-col gap-2">
-                      {DAFTAR_MAINAN.map((item) => {
-                        const angka = angkaMainan[item.id] ?? 0;
-                        const terbuka = angka > 0;
-                        const kata = SEBUTAN_ANGKA[angka - 1] ?? String(angka);
-                        return (
-                          <div key={item.id} className="grid grid-cols-2 gap-2">
-                            <button
-                              type="button"
-                              aria-label={item.nama}
-                              aria-pressed={terbuka}
-                              onClick={() => {
-                                const sebelumnya = angkaMainanRef.current[item.id] ?? 0;
-                                const angka = tekanMainan(item.id, item.jumlah);
-                                if (angka > sebelumnya) {
-                                  speakGuru(SEBUTAN_ANGKA[angka - 1] ?? String(angka));
-                                }
-                              }}
-                              className={`flex min-w-0 items-center gap-2 rounded-2xl border-2 bg-white px-2 py-2 text-left ${
-                                terbuka ? "border-[#1C01A5]" : "border-[#86EFAC]"
-                              }`}
-                            >
-                              <IkonMainan jenis={item.id} />
-                              <span className="min-w-0 text-[11px] font-black leading-tight text-[#1C01A5]">
-                                {item.nama}
-                              </span>
-                            </button>
-                            <div
-                              className={`flex min-h-14 min-w-0 flex-col items-center justify-center rounded-2xl border-2 bg-white py-1 ${
-                                terbuka ? "border-solid border-[#1C01A5]" : "border-dashed border-[#86EFAC]"
-                              }`}
-                            >
-                              {terbuka ? (
-                                <>
-                                  <span className="text-3xl font-black leading-none text-[#1C01A5]">{angka}</span>
-                                  <span className="text-sm font-black leading-tight text-[#1C01A5]">{kata}</span>
-                                </>
-                              ) : null}
-                            </div>
-                          </div>
-                        );
-                      })}
-                    </div>
-                  </div>
-                </div>
+                <InfografisBilanganA speakGuru={speakGuru} />
               ) : activeSubBab === "B" ? (
                 <InfografisBandingB speakGuru={speakGuru} />
               ) : activeSubBab === "C" ? (
@@ -1637,309 +1591,19 @@ export default function IgilModulePlayer() {
               </div>
 
               {activeSubBab === "A" ? (
-                <div className="rounded-3xl border-2 border-[#3B82F6] bg-[#EFF6FF] p-4 space-y-3">
-                  {(() => {
-                    const kegiatan = KEGIATAN_CONCRETE[indeksKegiatan];
-                    const pictorial = indeksKegiatan >= KEGIATAN_CONCRETE.length - 1;
-                    const lanjut = () => {
-                      hentikanRekamConcrete();
-                      setPesanConcrete("");
-                      if (!pictorial) {
-                        setIndeksKegiatan((urut) => urut + 1);
-                        concreteRef.current?.scrollIntoView({ behavior: "smooth", block: "start" });
-                        return;
-                      }
-                      handleUnlockNextSmicpa(
-                        5,
-                        pictorialRef,
-                        "Enam kegiatan benda nyata sudah siap. Sekarang kita lihat gambarnya."
-                      );
-                    };
-                    const nomor = `Kegiatan ${indeksKegiatan + 1} dari ${KEGIATAN_CONCRETE.length}.`;
-                    if (kegiatan.id === "bilang") {
-                      const kartu = TULIS_MAINAN;
-                      const hitung = sentuhNyata[kartu.id] ?? 0;
-                      const suara = suaraConcrete[kartu.id] === true;
-                      return (
-                        <>
-                          <KepalaConcrete judul="Membilang" onSuara={() => speakGuru(kartu.suara)} />
-                          <p className="text-xs font-bold text-[#1E3A8A]">
-                            {nomor} {kartu.nama}.{" "}
-                            {suara
-                              ? "Jumlahnya sudah diucapkan."
-                              : hitung >= kartu.jumlah
-                                ? "Tempatnya penuh. Hitung mainannya, lalu ucapkan sekali."
-                                : "Tekan tempat kosong. Setiap tekan, mainan baru muncul."}
-                          </p>
-                          <button
-                            type="button"
-                            aria-label={hitung >= kartu.jumlah ? `${kartu.nama} sudah penuh` : `Tambah ${kartu.nama}`}
-                            aria-pressed={hitung >= kartu.jumlah}
-                            onClick={() => sentuhBendaNyata(kartu.id, kartu.jumlah)}
-                            className="w-full rounded-2xl border-2 border-[#93C5FD] bg-white px-3 py-3"
-                          >
-                            <RakBendaNyata jenis={kartu.id} terisi={hitung} kapasitas={kartu.jumlah} />
-                          </button>
-                          <TombolJawabanSuara
-                            sudah={suara}
-                            jumlah={kartu.jumlah}
-                            kata={SEBUTAN_ANGKA[kartu.jumlah - 1]}
-                            sedang={rekamConcrete}
-                            pesan={pesanConcrete}
-                            onTekan={() => mulaiRekamConcrete(kartu.id, kartu.jumlah)}
-                          />
-                          {pesanConcrete ? (
-                            <p className="text-center text-xs font-bold text-[#1C01A5]">{pesanConcrete}</p>
-                          ) : null}
-                          <TombolLanjutConcrete pictorial={false} onClick={lanjut} />
-                        </>
-                      );
-                    }
-                    if (kegiatan.id === "pasang") {
-                      return (
-                        <>
-                          <KepalaConcrete judul={kegiatan.nama} onSuara={() => speakGuru(SUARA_PASANG)} />
-                          <p className="text-xs font-bold text-[#1E3A8A]">
-                            {nomor} {pasangBenar ? "Kelompoknya sama banyak." : "Tekan kelompok yang sama banyak."}
-                          </p>
-                          <div className="rounded-2xl border-2 border-[#1C01A5] bg-white px-3 py-3">
-                            <p className="mb-2 text-center text-xs font-black text-[#1E3A8A]">Perosotan</p>
-                            <RakBendaNyata jenis="perosotan" terisi={PASANG_TARGET} kapasitas={PASANG_TARGET} rapat />
-                          </div>
-                          <div className="grid grid-cols-3 gap-2">
-                            {PILIHAN_PASANG.map((jumlah, urut) => {
-                              const pas = pasangBenar && jumlah === PASANG_TARGET;
-                              return (
-                                <button
-                                  key={`${jumlah}-${urut}`}
-                                  type="button"
-                                  aria-label={`Pilihan kelompok ${urut + 1}`}
-                                  aria-pressed={pas}
-                                  onClick={() => {
-                                    if (pasangBenar) return;
-                                    if (jumlah === PASANG_TARGET) {
-                                      setPasangBenar(true);
-                                      setPesanPasang("Pas. Kelompoknya sama banyak.");
-                                      return;
-                                    }
-                                    setPesanPasang("Hitung lagi. Cari yang sama banyak.");
-                                  }}
-                                  className={`rounded-2xl border-2 bg-white px-1 py-2 ${
-                                    pas ? "border-[#1C01A5]" : "border-[#93C5FD]"
-                                  }`}
-                                >
-                                  <RakBendaNyata jenis="perosotan" terisi={jumlah} kapasitas={jumlah} rapat />
-                                </button>
-                              );
-                            })}
-                          </div>
-                          {pesanPasang ? (
-                            <p className="text-center text-xs font-bold text-[#1C01A5]">{pesanPasang}</p>
-                          ) : null}
-                          <TombolLanjutConcrete pictorial={false} onClick={lanjut} />
-                        </>
-                      );
-                    }
-                    if (kegiatan.id === "banding") {
-                      const palingBanyak = Math.max(...BANDING_PASANGAN.map((kelompok) => kelompok.jumlah));
-                      return (
-                        <>
-                          <KepalaConcrete judul={kegiatan.nama} onSuara={() => speakGuru(SUARA_BANDING)} />
-                          <p className="text-xs font-bold text-[#1E3A8A]">
-                            {nomor} {bandingBenar ? "Kelompok ini lebih banyak." : "Tekan kelompok yang lebih banyak."}
-                          </p>
-                          <div className="grid grid-cols-2 gap-2">
-                            {BANDING_PASANGAN.map((kelompok) => {
-                              const pas = bandingBenar && kelompok.jumlah === palingBanyak;
-                              return (
-                                <button
-                                  key={kelompok.id}
-                                  type="button"
-                                  aria-label={kelompok.id === "kiri" ? "Banding kiri" : "Banding kanan"}
-                                  aria-pressed={pas}
-                                  onClick={() => {
-                                    if (bandingBenar) return;
-                                    if (kelompok.jumlah === palingBanyak) {
-                                      setBandingBenar(true);
-                                      setPesanBanding("Betul. Kelompok ini lebih banyak.");
-                                      return;
-                                    }
-                                    setPesanBanding("Yang ini lebih sedikit. Tekan yang lebih banyak.");
-                                  }}
-                                  className={`rounded-2xl border-2 bg-white px-2 py-3 ${
-                                    pas ? "border-[#1C01A5]" : "border-[#93C5FD]"
-                                  }`}
-                                >
-                                  <RakBendaNyata jenis="perosotan" terisi={kelompok.jumlah} kapasitas={kelompok.jumlah} rapat />
-                                </button>
-                              );
-                            })}
-                          </div>
-                          {pesanBanding ? (
-                            <p className="text-center text-xs font-bold text-[#1C01A5]">{pesanBanding}</p>
-                          ) : null}
-                          <TombolLanjutConcrete pictorial={false} onClick={lanjut} />
-                        </>
-                      );
-                    }
-                    if (kegiatan.id === "urut") {
-                      const sisa = URUTAN_AWAL.filter((id) => !urutPilih.includes(id));
-                      return (
-                        <>
-                          <KepalaConcrete judul={kegiatan.nama} onSuara={() => speakGuru(SUARA_URUT)} />
-                          <p className="text-xs font-bold text-[#1E3A8A]">
-                            {nomor}{" "}
-                            {urutPilih.length >= URUTAN_BENAR.length
-                              ? "Urutannya pas. Dari sedikit ke banyak."
-                              : "Tekan dari yang paling sedikit."}
-                          </p>
-                          <div className="grid grid-cols-2 gap-2">
-                            {sisa.map((id) => {
-                              const kartu = KARTU_CONCRETE.find((item) => item.id === id)!;
-                              return (
-                                <button
-                                  key={id}
-                                  type="button"
-                                  aria-label={`Susun ${kartu.nama}`}
-                                  onClick={() => {
-                                    if (urutPilih.length >= URUTAN_BENAR.length) return;
-                                    if (id !== URUTAN_BENAR[urutPilih.length]) {
-                                      setPesanUrut("Belum. Cari kelompok yang lebih sedikit.");
-                                      return;
-                                    }
-                                    const berikut = [...urutPilih, id];
-                                    setUrutPilih(berikut);
-                                    setPesanUrut(
-                                      berikut.length === URUTAN_BENAR.length
-                                        ? "Urutannya pas. Dari sedikit ke banyak."
-                                        : "Benar. Lanjut ke kelompok berikutnya."
-                                    );
-                                  }}
-                                  className="rounded-2xl border-2 border-[#93C5FD] bg-white px-2 py-2"
-                                >
-                                  <RakBendaNyata jenis={kartu.id} terisi={kartu.jumlah} kapasitas={kartu.jumlah} rapat />
-                                  <p className="mt-1 text-center text-[11px] font-black leading-tight text-[#1C01A5]">
-                                    {kartu.nama}
-                                  </p>
-                                </button>
-                              );
-                            })}
-                          </div>
-                          <div className="rounded-2xl border-2 border-dashed border-[#93C5FD] bg-white p-2">
-                            <p className="mb-2 text-center text-[11px] font-black text-[#1E3A8A]">Dari sedikit ke banyak</p>
-                            <div className="flex min-h-14 flex-wrap items-center justify-center gap-2">
-                              {urutPilih.length === 0 ? (
-                                <span className="text-xs font-bold text-[#1E3A8A]">Susunan muncul di sini.</span>
-                              ) : (
-                                urutPilih.map((id) => {
-                                  const kartu = KARTU_CONCRETE.find((item) => item.id === id)!;
-                                  return (
-                                    <div key={id} className="w-16">
-                                      <RakBendaNyata jenis={kartu.id} terisi={kartu.jumlah} kapasitas={kartu.jumlah} rapat />
-                                    </div>
-                                  );
-                                })
-                              )}
-                            </div>
-                          </div>
-                          {pesanUrut ? (
-                            <p className="text-center text-xs font-bold text-[#1C01A5]">{pesanUrut}</p>
-                          ) : null}
-                          <TombolLanjutConcrete pictorial={false} onClick={lanjut} />
-                        </>
-                      );
-                    }
-                    if (kegiatan.id === "cerita") {
-                      const suara = suaraConcrete.cerita === true;
-                      return (
-                        <>
-                          <KepalaConcrete judul={kegiatan.nama} onSuara={() => speakGuru(SUARA_CERITA)} />
-                          <p className="text-xs font-bold text-[#1E3A8A]">
-                            {nomor} Di taman ada jungkat-jungkit. Ayunan ikut datang.{" "}
-                            {suara
-                              ? "Jumlahnya sudah diucapkan."
-                              : ceritaDatang
-                                ? "Hitung semua mainan, lalu ucapkan sekali."
-                                : "Tekan tombol supaya ayunan datang."}
-                          </p>
-                          <div className="grid grid-cols-2 gap-2">
-                            <div className="rounded-2xl border-2 border-[#1C01A5] bg-white px-2 py-2">
-                              <RakBendaNyata jenis="jungkat" terisi={CERITA_JUNGKAT} kapasitas={CERITA_JUNGKAT} rapat />
-                              <p className="mt-1 text-center text-[11px] font-black text-[#1C01A5]">Jungkat-jungkit</p>
-                            </div>
-                            <div
-                              className={`rounded-2xl border-2 bg-white px-2 py-2 ${
-                                ceritaDatang ? "border-[#1C01A5]" : "border-dashed border-[#93C5FD]"
-                              }`}
-                            >
-                              {ceritaDatang ? (
-                                <RakBendaNyata jenis="ayunan" terisi={CERITA_AYUNAN} kapasitas={CERITA_AYUNAN} rapat />
-                              ) : (
-                                <div className="flex h-9 items-center justify-center text-[11px] font-bold text-[#1E3A8A]">
-                                  Ayunan belum datang
-                                </div>
-                              )}
-                              <p className="mt-1 text-center text-[11px] font-black text-[#1C01A5]">Ayunan</p>
-                            </div>
-                          </div>
-                          {ceritaDatang ? (
-                            <TombolJawabanSuara
-                              sudah={suara}
-                              jumlah={CERITA_JUMLAH}
-                              kata={SEBUTAN_ANGKA[CERITA_JUMLAH - 1]}
-                              sedang={rekamConcrete}
-                              pesan={pesanConcrete}
-                              onTekan={() => mulaiRekamConcrete("cerita", CERITA_JUMLAH)}
-                            />
-                          ) : (
-                            <button
-                              type="button"
-                              onClick={() => setCeritaDatang(true)}
-                              className="w-full rounded-2xl border-2 border-[#93C5FD] bg-white px-3 py-3 text-sm font-black text-[#1C01A5]"
-                            >
-                              Datangkan ayunan
-                            </button>
-                          )}
-                          {pesanConcrete ? (
-                            <p className="text-center text-xs font-bold text-[#1C01A5]">{pesanConcrete}</p>
-                          ) : null}
-                          <TombolLanjutConcrete pictorial={false} onClick={lanjut} />
-                        </>
-                      );
-                    }
-                    const tulis = tulisConcrete[TULIS_MAINAN.id] === true;
-                    return (
-                      <>
-                        <KepalaConcrete judul={kegiatan.nama} onSuara={() => speakGuru(SUARA_TULIS)} />
-                        <p className="text-xs font-bold text-[#1E3A8A]">
-                          {nomor} Lihat sepedanya, lalu tulis angka di atas dan kata di bawah.
-                        </p>
-                        <div className="rounded-2xl border-2 border-[#1C01A5] bg-white px-3 py-3">
-                          <RakBendaNyata
-                            jenis={TULIS_MAINAN.id}
-                            terisi={TULIS_MAINAN.jumlah}
-                            kapasitas={TULIS_MAINAN.jumlah}
-                          />
-                        </div>
-                        <div className="flex flex-col items-center gap-2 rounded-2xl border border-[#93C5FD] bg-white p-3">
-                          <div className="text-xs font-black text-[#1E3A8A]">Tulis angka di atas, kata di bawah</div>
-                          <DottedNumberTracingCanvas
-                            key={TULIS_MAINAN.id}
-                            digit={TULIS_MAINAN.jumlah}
-                            kata={SEBUTAN_ANGKA[TULIS_MAINAN.jumlah - 1]}
-                            onCompletedTrace={() =>
-                              setTulisConcrete((prev) => ({ ...prev, [TULIS_MAINAN.id]: true }))
-                            }
-                          />
-                          <p className="text-xs font-bold text-[#1C01A5]">
-                            {tulis ? "Tulisanmu pas." : "Ikuti titik sampai mirip."}
-                          </p>
-                        </div>
-                        <TombolLanjutConcrete pictorial onClick={lanjut} />
-                      </>
-                    );
-                  })()}
-                </div>
+                <ConcreteBilanganA
+                  speakGuru={speakGuru}
+                  panel={panelConcrete}
+                  hentikan={hentikanRekamConcrete}
+                  gulir={() => concreteRef.current?.scrollIntoView({ behavior: "smooth", block: "start" })}
+                  onSelesai={() =>
+                    handleUnlockNextSmicpa(
+                      5,
+                      pictorialRef,
+                      "Delapan kegiatan benda nyata sudah siap. Sekarang kita lihat gambarnya."
+                    )
+                  }
+                />
               ) : activeSubBab === "B" ? (
                 <ConcreteBandingB
                   speakGuru={speakGuru}
@@ -2058,130 +1722,19 @@ export default function IgilModulePlayer() {
               </div>
 
               {activeSubBab === "A" ? (
-                <div className="rounded-3xl border-2 border-[#F59E0B] bg-[#FFFBEB] p-4 space-y-3">
-                  {(() => {
-                    const kartu = KARTU_GAMBAR[indeksGambar];
-                    const hitung = hitungGambar[kartu.id] ?? 0;
-                    const tulis = tulisGambar[kartu.id] === true;
-                    const suara = suaraGambar[kartu.id] === true;
-                    const terakhir = indeksGambar >= KARTU_GAMBAR.length - 1;
-                    return (
-                      <>
-                        <div className="flex items-center justify-between gap-3">
-                          <h3 className="min-w-0 text-base font-black leading-snug text-[#1C01A5]">
-                            {kartu.nama}
-                          </h3>
-                          <button
-                            type="button"
-                            onClick={() => speakGuru(kartu.suara)}
-                            className="shrink-0 rounded-xl border border-[#F59E0B] bg-white px-3 py-1 text-xs font-black text-[#92400E]"
-                          >
-                            🔊 Suara Guru
-                          </button>
-                        </div>
-                        <p className="text-xs font-bold text-[#92400E]">
-                          Diagram {indeksGambar + 1} dari {KARTU_GAMBAR.length}.{" "}
-                          {suara
-                            ? "Jumlahnya sudah diucapkan."
-                            : "Tekan diagram, lalu ucapkan jumlahnya satu kali."}
-                        </p>
-                        <div className="grid grid-cols-2 gap-2">
-                          <div className="text-center text-xs font-black tracking-wide text-[#92400E]">MAINAN</div>
-                          <div className="text-center text-xs font-black tracking-wide text-[#92400E]">JUMLAH</div>
-                        </div>
-                        <div className="grid grid-cols-2 gap-2">
-                          <button
-                            type="button"
-                            aria-label={kartu.nama}
-                            aria-pressed={hitung > 0}
-                            onClick={() => tambahDiagram(kartu.id, kartu.jumlah)}
-                            className={`flex min-w-0 flex-col gap-2 rounded-2xl border-2 bg-white px-2 py-2 text-left ${
-                              hitung > 0 ? "border-[#1C01A5]" : "border-[#F0AB00]"
-                            }`}
-                          >
-                            <span className="text-[11px] font-black leading-tight text-[#1C01A5]">{kartu.nama}</span>
-                            <DiagramMainan jenis={kartu.id} terisi={hitung} kapasitas={kartu.jumlah} />
-                          </button>
-                          <button
-                            type="button"
-                            aria-label={suara ? `${kartu.jumlah} ${SEBUTAN_ANGKA[kartu.jumlah - 1]}` : "Jawab dengan suara"}
-                            onClick={() => {
-                              if (suara) return;
-                              mulaiRekamConcrete(kartu.id, kartu.jumlah, "gambar");
-                            }}
-                            className={`flex min-h-16 min-w-0 flex-col items-center justify-center rounded-2xl border-2 bg-white px-2 py-1 ${
-                              suara
-                                ? "border-solid border-[#1C01A5]"
-                                : rekamGambar
-                                  ? "border-solid border-[#F0AB00]"
-                                  : "border-dashed border-[#F0AB00]"
-                            }`}
-                          >
-                            {suara ? (
-                              <>
-                                <span className="text-3xl font-black leading-none text-[#1C01A5]">{kartu.jumlah}</span>
-                                <span className="text-sm font-black leading-tight text-[#1C01A5]">
-                                  {SEBUTAN_ANGKA[kartu.jumlah - 1]}
-                                </span>
-                              </>
-                            ) : (
-                              <span className="text-center text-sm font-black leading-tight text-[#1C01A5]">
-                                {rekamGambar
-                                  ? pesanGambar.startsWith("Memeriksa")
-                                    ? "Memeriksa..."
-                                    : "Mendengarkan..."
-                                  : "Jawab dengan suara"}
-                              </span>
-                            )}
-                          </button>
-                        </div>
-                        {pesanGambar ? (
-                          <p className="text-center text-xs font-bold text-[#1C01A5]">{pesanGambar}</p>
-                        ) : null}
-                        <div className="space-y-3">
-                          <div className="flex flex-col items-center gap-2 rounded-2xl border border-[#F0AB00] bg-white p-3">
-                            <div className="text-xs font-black text-[#92400E]">
-                              Tulis angka di atas, kata di bawah
-                            </div>
-                            <DottedNumberTracingCanvas
-                              key={`gambar-${kartu.id}`}
-                              digit={kartu.jumlah}
-                              kata={SEBUTAN_ANGKA[kartu.jumlah - 1]}
-                              onCompletedTrace={() =>
-                                setTulisGambar((prev) => ({ ...prev, [kartu.id]: true }))
-                              }
-                            />
-                            <p className="text-xs font-bold text-[#1C01A5]">
-                              {tulis ? "Tulisanmu pas." : "Ikuti titik sampai mirip."}
-                            </p>
-                          </div>
-                          <div className="flex justify-end">
-                            <button
-                              type="button"
-                              onClick={() => {
-                                hentikanRekamConcrete();
-                                setPesanGambar("");
-                                if (!terakhir) {
-                                  setIndeksGambar((urut) => urut + 1);
-                                  pictorialRef.current?.scrollIntoView({ behavior: "smooth", block: "start" });
-                                  return;
-                                }
-                                handleUnlockNextSmicpa(
-                                  6,
-                                  abstractRef,
-                                  "Tiga diagram sudah pas. Ayo lihat lambang angkanya."
-                                );
-                              }}
-                              className="rounded-2xl border-2 border-[#FFE566] bg-[#1C01A5] px-6 py-2.5 text-xs font-black text-[#FFE566] shadow-md"
-                            >
-                              {terakhir ? "LANJUTKAN KE ABSTRACT ⬇️" : "LANJUTKAN ⬇️"}
-                            </button>
-                          </div>
-                        </div>
-                      </>
-                    );
-                  })()}
-                </div>
+                <PictureBilanganA
+                  speakGuru={speakGuru}
+                  panel={panelGambar}
+                  hentikan={hentikanRekamConcrete}
+                  gulir={() => pictorialRef.current?.scrollIntoView({ behavior: "smooth", block: "start" })}
+                  onSelesai={() =>
+                    handleUnlockNextSmicpa(
+                      6,
+                      abstractRef,
+                      "Empat diagram sudah pas. Ayo lihat lambang angkanya."
+                    )
+                  }
+                />
               ) : activeSubBab === "B" ? (
                 <PictureBandingB
                   speakGuru={speakGuru}
@@ -2320,121 +1873,13 @@ export default function IgilModulePlayer() {
               </div>
 
               {activeSubBab === "A" ? (
-                <div className="rounded-3xl border-2 border-[#1C01A5] bg-slate-50 p-4 space-y-3">
-                  {(() => {
-                    const kartu = KARTU_LAMBANG[indeksLambang];
-                    const hitung = hitungLambang[kartu.id] ?? 0;
-                    const tulis = tulisLambang[kartu.id] === true;
-                    const suara = suaraLambang[kartu.id] === true;
-                    const terakhir = indeksLambang >= KARTU_LAMBANG.length - 1;
-                    return (
-                      <>
-                        <div className="flex items-center justify-between gap-3">
-                          <h3 className="min-w-0 text-base font-black leading-snug text-[#1C01A5]">
-                            {kartu.nama}
-                          </h3>
-                          <button
-                            type="button"
-                            onClick={() => speakGuru(kartu.suara)}
-                            className="shrink-0 rounded-xl border border-[#1C01A5] bg-white px-3 py-1 text-xs font-black text-[#1C01A5]"
-                          >
-                            🔊 Suara Guru
-                          </button>
-                        </div>
-                        <p className="text-xs font-bold text-[#1C01A5]">
-                          Lambang {indeksLambang + 1} dari {KARTU_LAMBANG.length}.{" "}
-                          {suara
-                            ? "Lambangnya sudah diucapkan."
-                            : "Geser manik di rak, lalu ucapkan lambangnya satu kali."}
-                        </p>
-                        <p className="text-center text-sm font-black text-[#1C01A5]">
-                          {kartu.nama} = {suara ? kartu.jumlah : "□"}
-                        </p>
-                        <div className="grid grid-cols-2 gap-2">
-                          <div className="text-center text-xs font-black tracking-wide text-[#1C01A5]">RAK</div>
-                          <div className="text-center text-xs font-black tracking-wide text-[#1C01A5]">LAMBANG</div>
-                        </div>
-                        <div className="grid grid-cols-2 gap-2">
-                          <button
-                            type="button"
-                            aria-label={kartu.nama}
-                            aria-pressed={hitung > 0}
-                            onClick={() => geserManik(kartu.id, kartu.jumlah)}
-                            className={`flex min-w-0 flex-col gap-2 rounded-2xl border-2 bg-white px-2 py-2 text-left ${
-                              hitung > 0 ? "border-[#1C01A5]" : "border-[#93C5FD]"
-                            }`}
-                          >
-                            <span className="text-[11px] font-black leading-tight text-[#1C01A5]">{kartu.nama}</span>
-                            <RakManik terisi={hitung} kapasitas={kartu.jumlah} />
-                          </button>
-                          <button
-                            type="button"
-                            aria-label={suara ? `${kartu.jumlah} ${SEBUTAN_ANGKA[kartu.jumlah - 1]}` : "Jawab dengan suara"}
-                            onClick={() => {
-                              if (suara) return;
-                              mulaiRekamConcrete(kartu.id, kartu.jumlah, "lambang");
-                            }}
-                            className={`flex min-h-16 min-w-0 flex-col items-center justify-center rounded-2xl border-2 bg-white px-2 py-1 ${
-                              suara
-                                ? "border-solid border-[#1C01A5]"
-                                : rekamLambang
-                                  ? "border-solid border-[#F0AB00]"
-                                  : "border-dashed border-[#1C01A5]"
-                            }`}
-                          >
-                            {suara ? (
-                              <>
-                                <span className="text-3xl font-black leading-none text-[#1C01A5]">{kartu.jumlah}</span>
-                                <span className="text-sm font-black leading-tight text-[#1C01A5]">
-                                  {SEBUTAN_ANGKA[kartu.jumlah - 1]}
-                                </span>
-                              </>
-                            ) : (
-                              <span className="text-center text-sm font-black leading-tight text-[#1C01A5]">
-                                {rekamLambang ? "Mendengarkan..." : "Jawab dengan suara"}
-                              </span>
-                            )}
-                          </button>
-                        </div>
-                        {pesanLambang ? (
-                          <p className="text-center text-xs font-bold text-[#1C01A5]">{pesanLambang}</p>
-                        ) : null}
-                        <div className="flex flex-col items-center gap-2 rounded-2xl border border-[#1C01A5] bg-white p-3">
-                          <div className="text-xs font-black text-[#1C01A5]">Tulis lambang di atas, kata di bawah</div>
-                          <DottedNumberTracingCanvas
-                            key={`lambang-${kartu.id}`}
-                            digit={kartu.jumlah}
-                            kata={SEBUTAN_ANGKA[kartu.jumlah - 1]}
-                            onCompletedTrace={() =>
-                              setTulisLambang((prev) => ({ ...prev, [kartu.id]: true }))
-                            }
-                          />
-                          <p className="text-xs font-bold text-[#1C01A5]">
-                            {tulis ? "Lambangmu sudah pas." : "Ikuti titik lambangnya."}
-                          </p>
-                        </div>
-                        <div className="flex justify-end">
-                          <button
-                            type="button"
-                            onClick={() => {
-                              hentikanRekamConcrete();
-                              setPesanLambang("");
-                              if (!terakhir) {
-                                setIndeksLambang((urut) => urut + 1);
-                                abstractRef.current?.scrollIntoView({ behavior: "smooth", block: "start" });
-                                return;
-                              }
-                              selesaiBabRef.current?.scrollIntoView({ behavior: "smooth", block: "center" });
-                            }}
-                            className="rounded-2xl border-2 border-[#FFE566] bg-[#1C01A5] px-6 py-2.5 text-xs font-black text-[#FFE566] shadow-md"
-                          >
-                            LANJUTKAN ⬇️
-                          </button>
-                        </div>
-                      </>
-                    );
-                  })()}
-                </div>
+                <AbstractBilanganA
+                  speakGuru={speakGuru}
+                  panel={panelLambang}
+                  hentikan={hentikanRekamConcrete}
+                  gulir={() => abstractRef.current?.scrollIntoView({ behavior: "smooth", block: "start" })}
+                  onSelesai={() => selesaiBabRef.current?.scrollIntoView({ behavior: "smooth", block: "center" })}
+                />
               ) : activeSubBab === "B" ? (
                 <AbstractBandingB
                   speakGuru={speakGuru}

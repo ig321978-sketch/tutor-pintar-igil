@@ -10,9 +10,9 @@
   "subBabs": {
     "A": {
       "id": "A",
-      "codeTitle": "Sub-Bab A (1–10)",
-      "fullTitle": "Sub-Bab A: Menghitung, Membaca, dan Menulis Bilangan 1 sampai 10",
-      "targetDescription": "Siswa mampu menghitung banyak benda 1 sampai 10, membaca nama bilangannya, dan menuliskan lambang angkanya dengan benar.",
+      "codeTitle": "Sub-Bab A (0–10)",
+      "fullTitle": "Sub-Bab A: Menghitung, Membaca, dan Menulis Bilangan (0 sampai 10)",
+      "targetDescription": "Siswa mampu menghitung banyak benda 1 sampai 10, mengenal bilangan 0 (nol) pada wadah kosong, membaca nama bilangannya, dan menuliskan lambang angkanya dengan benar.",
       "secondaryBg": "#FEE2E2",
       "secondaryBorder": "#EF4444",
       "secondaryText": "#991B1B",
@@ -40,6 +40,12 @@
           "titleHint": "Gambar 4: Buku, Layang-layang, Balon, Kelereng, Bola",
           "voiceNarration": "Masih ada buku, layang-layang, balon, kelereng, dan bola. Kelompokkan yang sama. Ayo hitung sampai sepuluh.",
           "sceneType": "playground-toys"
+        },
+        {
+          "id": "A-S5",
+          "titleHint": "Gambar 5: Keranjang Kosong — Mengenal Bilangan 0 (Nol)",
+          "voiceNarration": "Lihat lagi dua keranjang di taman. Satu keranjang berisi sepuluh bola. Satu keranjang di sebelahnya tidak ada isinya. Banyak isi keranjang yang kosong adalah 0. Lambang 0 dibaca nol.",
+          "sceneType": "empty-basket"
         }
       ],
       "mindMaps": [
@@ -53,22 +59,37 @@
         },
         {
           "stepNumber": 2,
-          "stepTitle": "2. Hitung Satu per satu",
+          "stepTitle": "2. Hitung Satu per Satu",
           "stepDesc": "Hitung sepeda dulu. Sesudah itu hitung kursi. Lanjut ke buku, layang-layang, balon, kelereng, dan bola.",
           "icon": "👆",
           "flowFrom": "Satu kelompok",
-          "flowTo": "Satu, dua, tiga, ..."
+          "flowTo": "Satu, dua, tiga, ... sampai sepuluh"
         },
         {
           "stepNumber": 3,
-          "stepTitle": "3. Sebutkan dan Tuliskan",
-          "stepDesc": "Ucapkan nama bilangannya. Tuliskan angkanya. Hitung sampai sepuluh.",
+          "stepTitle": "3. Kenali Wadah Kosong (0)",
+          "stepDesc": "Lihat keranjang yang tidak ada isinya di taman. Jika tidak ada benda sama sekali, banyaknya adalah 0 dan dibaca nol.",
+          "icon": "🧺",
+          "flowFrom": "Keranjang tanpa isi",
+          "flowTo": "Bilangan 0 (Nol)"
+        },
+        {
+          "stepNumber": 4,
+          "stepTitle": "4. Sebutkan dan Tuliskan (0–10)",
+          "stepDesc": "Ucapkan nama bilangannya dari nol sampai sepuluh. Tuliskan lambang angkanya 0 sampai 10.",
           "icon": "✏️",
           "flowFrom": "Hasil hitungan",
-          "flowTo": "Angka 1 sampai 10"
+          "flowTo": "Angka 0 sampai 10"
         }
       ],
       "infografisData": [
+        {
+          "fruitName": "Keranjang Kosong",
+          "emoji": "🧺",
+          "countNum": 0,
+          "countWord": "Nol",
+          "voiceSentence": "Bola di keranjang kosong ada nol"
+        },
         {
           "fruitName": "Buah Apel",
           "emoji": "🍎",
@@ -109,6 +130,12 @@
           "emoji": "🍌",
           "targetCount": 7,
           "voiceGuide": "Sentuh setiap buah pisang emas sampai tujuh: 5 di baris atas dan 2 di baris bawah menjadi 7 pisang!"
+        },
+        {
+          "title": "Eksplorasi Benda Nyata 4: Keranjang Kosong di Taman (Bilangan 0)",
+          "emoji": "⚽",
+          "targetCount": 0,
+          "voiceGuide": "Lihat keranjang di taman yang tidak ada isinya. Karena kosong tanpa bola, banyaknya adalah 0. Tuliskan angka 0 di kanvas!"
         }
       ],
       "pictorialSlides": [
@@ -132,9 +159,22 @@
           "numberA": 8,
           "numberB": 5,
           "caption": "Diagram petak memudahkan kita melihat tinggi bilangan 8 dibanding 5."
+        },
+        {
+          "title": "Diagram 4: Bingkai 10 Kosong (Bilangan 0)",
+          "diagramType": "ten-frame",
+          "numberA": 0,
+          "numberB": 0,
+          "caption": "Seluruh 10 petak pada Bingkai 10 kosong tanpa titik, mewakili bilangan 0 (nol)."
         }
       ],
       "abstractSlides": [
+        {
+          "symbolLarge": "0",
+          "wordLarge": "NOL (KOSONG)",
+          "mathNotation": "0 = Nol (Tidak ada benda di keranjang)",
+          "voiceReadout": "Lambang bilangan 0 dibaca Nol. Artinya tidak ada benda di dalam keranjang."
+        },
         {
           "symbolLarge": "4  &  6",
           "wordLarge": "EMPAT  &  ENAM",
