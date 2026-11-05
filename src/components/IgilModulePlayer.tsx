@@ -892,7 +892,7 @@ export default function IgilModulePlayer() {
       {/* TOMBOL TAB UTAMA (FLOATING & SLIDE KIRI-KANAN • DASAR #1C01A5)      */}
       {/* =================================================================== */}
       <div ref={tabUtamaRef} className="sticky top-2 z-40 w-[99%] mx-auto px-1 md:px-3 mt-3">
-        <nav className="w-full overflow-x-auto rounded-[2rem] border-4 border-[#FFE566] bg-[#1C01A5] p-2 shadow-[0_6px_0_rgba(28,1,165,0.35)]">
+        <nav className="w-full overflow-x-auto rounded-[2rem] border-4 border-[#FFE566] bg-[#1C01A5] p-2 pb-3 shadow-[0_6px_0_rgba(28,1,165,0.35)] [scrollbar-color:#FFE566_#1C01A5] [scrollbar-width:thin]">
           <div className="flex min-w-max flex-nowrap items-center gap-2.5">
             {(
               [
