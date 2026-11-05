@@ -105,11 +105,18 @@ interface QuestionItem {
 
 const SUB_BABS = materiBab1.subBabs as Record<SubBabId, SubBabContent>;
 
-const KELOMPOK_MAINAN = [
-  { nama: "Wahana", isi: "Jungkat-jungkit, ayunan, dan perosotan" },
-  { nama: "Sepeda dan kursi", isi: "🚲 Sepeda   ·   🪑 Kursi" },
-  { nama: "Mainan kecil", isi: "📚 Buku  ·  Layang-layang  ·  🎈 Balon  ·  Kelereng  ·  ⚽ Bola" },
-];
+const DAFTAR_MAINAN = [
+  { id: "jungkat", nama: "Jungkat-jungkit", jumlah: 1 },
+  { id: "ayunan", nama: "Ayunan", jumlah: 2 },
+  { id: "perosotan", nama: "Perosotan", jumlah: 3 },
+  { id: "sepeda", nama: "Sepeda", jumlah: 4 },
+  { id: "kursi", nama: "Kursi", jumlah: 4 },
+  { id: "balon", nama: "Balon", jumlah: 7 },
+  { id: "buku", nama: "Buku", jumlah: 3 },
+  { id: "layangan", nama: "Layangan", jumlah: 2 },
+  { id: "kelereng", nama: "Kelereng", jumlah: 10 },
+  { id: "bola", nama: "Bola", jumlah: 4 },
+] as const;
 
 const URUTAN_HITUNG = [
   { angka: 1, lambang: "🚲", nama: "Sepeda" },
@@ -138,7 +145,7 @@ const SEBUTAN_ANGKA = [
 ];
 
 const SUARA_KELOMPOK =
-  "Kelompokkan mainan yang sama. Wahana satu kelompok. Sepeda dan kursi satu kelompok. Buku, layang-layang, balon, kelereng, dan bola satu kelompok.";
+  "Tekan kartu mainan. Angka jumlahnya muncul di kolom jumlah.";
 const SUARA_HITUNG =
   "Hitung satu per satu. Satu sepeda. Dua sepeda. Tiga kursi. Empat kursi. Lima buku. Enam layang-layang. Tujuh balon. Delapan kelereng. Sembilan kelereng. Sepuluh bola.";
 const SUARA_SEBUT =
@@ -149,6 +156,92 @@ const FORMAL_EXAM_QUESTIONS = materiBab1.examQuestions as QuestionItem[];
 // ============================================================================
 // SUB-KOMPONEN KANVAS TULIS ANGKA (TITIK-TITIK BENTUK HURUF)
 // ============================================================================
+
+function IkonMainan({ jenis }: { jenis: string }) {
+  const garis = {
+    fill: "none",
+    stroke: "#1C01A5",
+    strokeWidth: 2,
+    strokeLinecap: "round" as const,
+    strokeLinejoin: "round" as const,
+  };
+  return (
+    <svg viewBox="0 0 48 48" className="h-8 w-8 shrink-0" aria-hidden="true">
+      {jenis === "jungkat" && (
+        <>
+          <path d="M24 32 L17 44 H31 Z" {...garis} fill="#F0AB00" />
+          <path d="M5 31 L43 15" {...garis} strokeWidth={3} />
+          <circle cx="9" cy="28" r="3.2" {...garis} fill="#E98989" />
+          <circle cx="39" cy="17" r="3.2" {...garis} fill="#7FCB96" />
+        </>
+      )}
+      {jenis === "ayunan" && (
+        <>
+          <path d="M10 8 H38" {...garis} />
+          <path d="M16 8 L14 32" {...garis} />
+          <path d="M32 8 L34 32" {...garis} />
+          <path d="M12 32 H36" {...garis} strokeWidth={3} />
+          <rect x="14" y="32" width="20" height="6" rx="2" {...garis} fill="#F0AB00" />
+        </>
+      )}
+      {jenis === "perosotan" && (
+        <>
+          <path d="M8 8 V42 M16 8 V26 M8 16 H16 M8 24 H16" {...garis} />
+          <path d="M16 12 H28 C38 12 40 24 40 42" stroke="#F0AB00" strokeWidth={6} fill="none" strokeLinecap="round" />
+          <path d="M16 12 H28 C38 12 40 24 40 42" {...garis} />
+        </>
+      )}
+      {jenis === "sepeda" && (
+        <>
+          <circle cx="14" cy="32" r="8" {...garis} />
+          <circle cx="34" cy="32" r="8" {...garis} />
+          <path d="M14 32 L22 16 H32 L34 32 L22 32 Z" {...garis} />
+          <circle cx="22" cy="16" r="2.2" fill="#1C01A5" />
+        </>
+      )}
+      {jenis === "kursi" && (
+        <>
+          <path d="M12 10 V28 H36" {...garis} />
+          <path d="M14 28 V42 M34 28 V42" {...garis} />
+          <path d="M10 28 H38" {...garis} strokeWidth={4} />
+        </>
+      )}
+      {jenis === "balon" && (
+        <>
+          <ellipse cx="24" cy="18" rx="11" ry="13" {...garis} fill="#E98989" />
+          <path d="M24 31 L21 36 H27 Z" fill="#1C01A5" />
+          <path d="M24 36 Q18 42 26 46" {...garis} />
+        </>
+      )}
+      {jenis === "buku" && (
+        <>
+          <path d="M8 10 H24 V40 H8 Z" {...garis} fill="#7FCB96" />
+          <path d="M24 10 H40 V40 H24 Z" {...garis} fill="#F0AB00" />
+          <path d="M24 10 V40" {...garis} />
+        </>
+      )}
+      {jenis === "layangan" && (
+        <>
+          <polygon points="24,4 42,24 24,42 6,24" {...garis} fill="#E98989" />
+          <path d="M24 4 V42 M6 24 H42" {...garis} />
+          <path d="M24 42 Q30 46 22 48" {...garis} />
+        </>
+      )}
+      {jenis === "kelereng" && (
+        <>
+          <circle cx="24" cy="24" r="13" {...garis} fill="#7FCB96" />
+          <ellipse cx="19" cy="19" rx="4" ry="2.2" fill="#FFFFFF" />
+        </>
+      )}
+      {jenis === "bola" && (
+        <>
+          <circle cx="24" cy="24" r="14" {...garis} fill="#F0AB00" />
+          <path d="M10 24 H38 M24 10 C16 18 16 30 24 38 M24 10 C32 18 32 30 24 38" {...garis} />
+        </>
+      )}
+    </svg>
+  );
+}
 
 function DottedNumberTracingCanvas({
   digit,
@@ -370,6 +463,7 @@ export default function IgilModulePlayer() {
 
   // 4. State Halaman Materi (Sub-Bab A/B/C/D + Pengunci Scroll Vertikal SMICPA)
   const [activeSubBab, setActiveSubBab] = useState<SubBabId>("A");
+  const [jumlahMainanTerbuka, setJumlahMainanTerbuka] = useState<Record<string, boolean>>({});
   const [unlockedSmicpaStage, setUnlockedSmicpaStage] = useState<number>(1); // 1=Story .. 6=Abstract
   const [concreteCounter, setConcreteCounter] = useState<number>(3);
 
@@ -989,15 +1083,47 @@ export default function IgilModulePlayer() {
                         🔊 Suara
                       </button>
                     </div>
-                    {KELOMPOK_MAINAN.map((kelompok) => (
-                      <div
-                        key={kelompok.nama}
-                        className="bg-white rounded-2xl border border-[#86EFAC] px-3 py-2"
-                      >
-                        <div className="text-xs font-black text-[#166534]">{kelompok.nama}</div>
-                        <div className="text-sm font-bold text-[#334155]">{kelompok.isi}</div>
-                      </div>
-                    ))}
+                    <div className="grid grid-cols-2 gap-2">
+                      <div className="text-center text-xs font-black tracking-wide text-[#166534]">MAINAN</div>
+                      <div className="text-center text-xs font-black tracking-wide text-[#166534]">JUMLAH</div>
+                    </div>
+                    <div className="flex flex-col gap-2">
+                      {DAFTAR_MAINAN.map((item) => {
+                        const terbuka = !!jumlahMainanTerbuka[item.id];
+                        return (
+                          <div key={item.id} className="grid grid-cols-2 gap-2">
+                            <button
+                              type="button"
+                              aria-label={item.nama}
+                              aria-pressed={terbuka}
+                              onClick={() =>
+                                setJumlahMainanTerbuka((prev) => ({
+                                  ...prev,
+                                  [item.id]: !prev[item.id],
+                                }))
+                              }
+                              className={`flex items-center gap-2 rounded-2xl border-2 bg-white px-2 py-2 text-left ${
+                                terbuka ? "border-[#1C01A5]" : "border-[#86EFAC]"
+                              }`}
+                            >
+                              <IkonMainan jenis={item.id} />
+                              <span className="text-[11px] font-black leading-tight text-[#1C01A5]">
+                                {item.nama}
+                              </span>
+                            </button>
+                            <div
+                              className={`flex min-h-14 items-center justify-center rounded-2xl border-2 bg-white ${
+                                terbuka ? "border-solid border-[#1C01A5]" : "border-dashed border-[#86EFAC]"
+                              }`}
+                            >
+                              {terbuka ? (
+                                <span className="text-3xl font-black text-[#1C01A5]">{item.jumlah}</span>
+                              ) : null}
+                            </div>
+                          </div>
+                        );
+                      })}
+                    </div>
                   </div>
 
                   <div className="bg-[#F0FDF4] border-2 border-[#22C55E] rounded-3xl p-4 space-y-3">
