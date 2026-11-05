@@ -75,7 +75,7 @@ export function PetaPikiranB({
       <div className="flex items-end gap-2">
         <MulutBuaya arah="kiri" kelas="h-14 w-24 igil-lompat" />
         <div className="min-w-0 flex-1 rounded-3xl rounded-bl-md border-4 border-[#1C01A5] bg-white px-3 py-2 text-sm font-black leading-snug text-[#1C01A5]">
-          Ayo ikuti jalannya! Ketuk tiap bulatan untuk mendengar langkahnya.
+          Ketuk bulatan! 👆
         </div>
       </div>
 
@@ -123,24 +123,12 @@ export function PetaPikiranB({
                 <span className="block text-base font-black leading-tight text-[#1C01A5]">
                   {l.stepTitle.replace(/^\d+\.\s*/, "")}
                 </span>
-                <span className="block text-sm font-bold leading-snug text-[#1F2937]">{l.stepDesc}</span>
-                {l.flowFrom && l.flowTo ? (
-                  <span
-                    className={`flex flex-wrap items-center gap-1 pt-1 text-[11px] font-black text-[#1C01A5] ${
-                      kiri ? "" : "justify-end"
-                    }`}
-                  >
-                    <span className="rounded-full bg-white px-2 py-0.5">{l.flowFrom}</span>
-                    <span aria-hidden="true">➜</span>
-                    <span className="rounded-full bg-white px-2 py-0.5">{l.flowTo}</span>
-                  </span>
-                ) : null}
                 <span
-                  className={`inline-block rounded-full border-2 px-2 py-0.5 text-[11px] font-black ${
+                  className={`inline-block rounded-full border-2 px-2 py-0.5 text-base font-black ${
                     sudah ? "border-[#16A34A] bg-[#DCFCE7] text-[#166534]" : "border-[#1C01A5] bg-white text-[#1C01A5]"
                   }`}
                 >
-                  {sudah ? "✔ Sudah didengar" : "🔊 Ketuk untuk dengar"}
+                  {sudah ? "✔" : "🔊"}
                 </span>
               </span>
             </button>
@@ -156,11 +144,11 @@ export function PetaPikiranB({
         ))}
       </div>
       <p
-        className={`rounded-2xl border-4 px-3 py-2 text-center text-sm font-black leading-snug ${
+        className={`rounded-2xl border-4 px-3 py-2 text-center text-xl font-black leading-snug ${
           semua ? "igil-muncul border-[#7FCB96] bg-[#E8F7EE] text-[#14532D]" : "border-dashed border-[#1C01A5]/40 bg-white/80 text-[#1C01A5]"
         }`}
       >
-        {semua ? "🌟 Hebat! Kamu sudah mendengar semua langkah." : "Kumpulkan empat bintang dengan mendengar semua langkah."}
+        {semua ? "🌟 Hebat!" : "⭐ ⭐ ⭐ ⭐"}
       </p>
     </div>
   );

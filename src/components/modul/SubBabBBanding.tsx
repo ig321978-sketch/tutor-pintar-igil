@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useCallback, useRef, useState } from "react";
+import React, { useCallback, useContext, useEffect, useMemo, useRef, useState } from "react";
 import { IkonMainan } from "./ikon-mainan";
 import { GarisBilanganKatak, MulutBuaya, type ArahBuaya } from "./gambar-banding-b";
 import { DottedNumberTracingCanvas, SEBUTAN_ANGKA } from "./elemen-kelas1";
@@ -15,7 +15,9 @@ import {
   GAYA_POSTER,
   PitaTahap,
   SpiralBuku,
+  SuaraCtx,
   letakMeja,
+  useBicara,
   zonaDi,
 } from "./tahap-b-gaya";
 
@@ -104,32 +106,48 @@ function Letusan({ id }: { id: number }) {
   );
 }
 
-function KabarChip({ kabar }: { kabar: Kabar }) {
+/** Umpan balik: layar hanya "Hebat!" atau "Coba lagi". Isi pesan dibacakan Suara Guru. */
+function KabarChip({ kabar, bicara = true }: { kabar: Kabar; bicara?: boolean }) {
+  const ucap = useContext(SuaraCtx);
+  useEffect(() => {
+    if (bicara && kabar?.teks) ucap(kabar.teks);
+  }, [kabar, bicara, ucap]);
   if (!kabar || !kabar.teks) return null;
   return (
     <p
       key={kabar.teks}
       role="status"
-      className={`igil-muncul rounded-2xl border-4 px-3 py-2 text-center text-sm font-black leading-snug ${
+      aria-label={kabar.teks}
+      className={`igil-muncul rounded-2xl border-4 px-3 py-2 text-center text-xl font-black leading-snug ${
         kabar.ok
           ? "border-[#7FCB96] bg-[#E8F7EE] text-[#14532D]"
           : "border-[#E98989] bg-[#FDECEC] text-[#7F1D1D]"
       }`}
     >
-      {kabar.ok ? "🌟 " : "🤔 "}
-      {kabar.teks}
+      {kabar.ok ? "🌟 Hebat!" : "🤔 Coba lagi"}
     </p>
   );
 }
 
-function BuayaBicara({ teks, arah = "kiri" }: { teks: string; arah?: ArahBuaya }) {
+const KABAR_TULIS_OK: Kabar = { teks: "Tulisanmu sudah pas.", ok: true };
+
+/** Buaya dan gelembung kata pendek. Diketuk, buaya membacakan petunjuk lengkapnya. */
+function BuayaBicara({ pendek, teks, arah = "kiri" }: { pendek: string; teks?: string; arah?: ArahBuaya }) {
+  const ucap = useContext(SuaraCtx);
+  const isi = teks ?? pendek;
   return (
-    <div className="flex items-end gap-2">
-      <MulutBuaya arah={arah} kelas="h-14 w-24 igil-lompat" />
-      <div className="relative min-w-0 flex-1 rounded-3xl rounded-bl-md border-4 border-[#1C01A5] bg-white px-3 py-2 text-sm font-black leading-snug text-[#1C01A5]">
-        {teks}
-      </div>
-    </div>
+    <button
+      type="button"
+      aria-label={`Dengarkan: ${isi}`}
+      onClick={() => ucap(isi)}
+      className="igil-tanpa-tepi flex w-full items-end gap-2 text-left"
+    >
+      <MulutBuaya arah={arah} kelas="h-14 w-24 shrink-0 igil-lompat" />
+      <span className="relative flex min-w-0 flex-1 items-center justify-between gap-2 rounded-3xl rounded-bl-md border-4 border-[#1C01A5] bg-white px-3 py-2 text-lg font-black leading-snug text-[#1C01A5]">
+        <span className="min-w-0">{pendek}</span>
+        <span aria-hidden="true">🔊</span>
+      </span>
+    </button>
   );
 }
 
@@ -300,6 +318,7 @@ function JawabSuara({
     new Set([jumlah, jumlah > 1 ? jumlah - 1 : jumlah + 2, jumlah < 10 ? jumlah + 1 : jumlah - 2])
   ).sort((a, b) => a - b);
   const tampilPesan = panel.sedang ? "" : panel.pesan;
+  const kabarPesan = useMemo<Kabar>(() => (tampilPesan ? { teks: tampilPesan, ok: false } : null), [tampilPesan]);
 
   return (
     <div className="space-y-2">
@@ -319,13 +338,13 @@ function JawabSuara({
       />
       {sudah ? null : (
         <>
-          <KabarChip kabar={lokal ?? (tampilPesan ? { teks: tampilPesan, ok: false } : null)} />
+          <KabarChip kabar={lokal ?? kabarPesan} />
           <button
             type="button"
             onClick={() => setPilihan((b) => !b)}
             className="mx-auto block rounded-full border-2 border-dashed border-[#1C01A5]/50 bg-white px-4 py-1 text-xs font-black text-[#1C01A5]"
           >
-            Tidak bisa bicara? Pilih angkanya
+            🔢 Pilih angka
           </button>
           {pilihan ? (
             <div className="grid grid-cols-3 gap-2">
@@ -387,7 +406,7 @@ function PanelPoster({
         <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-white text-lg font-black text-[#1C01A5]">
           {nomor}
         </span>
-        <h4 className="min-w-0 flex-1 text-sm font-black leading-tight tracking-wide text-white">{judul}</h4>
+        <h4 className="min-w-0 flex-1 text-base font-black leading-tight tracking-wide text-white">{judul}</h4>
         <button
           type="button"
           aria-label={`Dengarkan: ${judul}`}
@@ -463,7 +482,7 @@ function BarisPasangan({
 export function InfografisBandingB({ speakGuru }: { speakGuru: (teks: string) => void }) {
   return (
     <div className="space-y-3 rounded-[2rem] border-4 border-[#16A34A] bg-[#F0FDF4] p-3" style={GAYA_POSTER}>
-      <PitaTahap ikon="📰" nama="INFOGRAFIS" cara="Baca dan dengarkan. Belum ada yang dijawab." warna="#16A34A" />
+      <PitaTahap ikon="📰" nama="INFOGRAFIS" cara="Lihat dan dengar" warna="#16A34A" />
       <div className="flex items-center justify-between gap-2">
         <h3 className="min-w-0 text-xl font-black leading-tight text-[#1C01A5]">Cara Membandingkan Benda</h3>
         <button
@@ -494,9 +513,6 @@ export function InfografisBandingB({ speakGuru }: { speakGuru: (teks: string) =>
             <BadgeJumlah n={4} />
           </div>
         </div>
-        <p className="rounded-xl bg-[#EFF6FF] px-2 py-1 text-center text-sm font-black text-[#1C01A5]">
-          Enam lebih banyak dari empat.
-        </p>
       </PanelPoster>
 
       <PanelPoster
@@ -507,9 +523,6 @@ export function InfografisBandingB({ speakGuru }: { speakGuru: (teks: string) =>
         suara="Satu kursi, satu balon. Balon habis, tapi dua kursi tidak punya pasangan. Jadi kursi lebih banyak."
       >
         <BarisPasangan atas={6} bawah={4} jenisAtas="kursi" jenisBawah="balon" />
-        <p className="rounded-xl bg-[#FFF3C4] px-2 py-1 text-center text-sm font-black text-[#92400E]">
-          Yang tidak punya pasangan berarti lebih banyak.
-        </p>
       </PanelPoster>
 
       <PanelPoster
@@ -520,9 +533,6 @@ export function InfografisBandingB({ speakGuru }: { speakGuru: (teks: string) =>
         suara="Tiga sepeda dan tiga balon. Semua punya pasangan. Tidak ada sisa. Jadi sama banyak."
       >
         <BarisPasangan atas={3} bawah={3} jenisAtas="sepeda" jenisBawah="balon" />
-        <p className="rounded-xl bg-[#F3E8FF] px-2 py-1 text-center text-sm font-black text-[#5B21B6]">
-          Semua punya pasangan. Tidak ada sisa. Sama banyak.
-        </p>
       </PanelPoster>
 
       <PanelPoster
@@ -533,9 +543,6 @@ export function InfografisBandingB({ speakGuru }: { speakGuru: (teks: string) =>
         suara="Di garis bilangan, makin ke kanan makin banyak. Katak jingga berhenti di tujuh. Katak biru di tiga. Tujuh lebih banyak dari tiga."
       >
         <GarisBilanganKatak posisiBiru={3} posisiJingga={7} />
-        <p className="rounded-xl bg-[#ECFEFF] px-2 py-1 text-center text-sm font-black text-[#155E75]">
-          Ke kanan makin banyak. Ke kiri makin sedikit.
-        </p>
       </PanelPoster>
 
       <PanelPoster
@@ -560,18 +567,22 @@ export function InfografisBandingB({ speakGuru }: { speakGuru: (teks: string) =>
                   <span>{c.b}</span>
                 </div>
                 <MulutBuaya arah={h.arah} kelas="mx-auto h-9 w-[4.5rem]" />
-                <p className="text-[11px] font-black leading-tight text-[#7F1D1D]">{c.nama}</p>
               </div>
             );
           })}
         </div>
       </PanelPoster>
 
-      <div className="rounded-2xl border-4 border-dashed border-[#16A34A] bg-white px-3 py-2 text-sm font-black leading-relaxed text-[#14532D]">
-        <p>📌 INGAT</p>
-        <p>1. Pasangkan satu-satu.</p>
-        <p>2. Lihat siapa yang tersisa.</p>
-        <p>3. Pilih tandanya.</p>
+      <div className="flex items-center justify-around gap-2 rounded-2xl border-4 border-dashed border-[#16A34A] bg-white px-2 py-3 text-center text-base font-black leading-tight text-[#14532D]">
+        <span>
+          <span className="block text-3xl">🔗</span>1 Pasangkan
+        </span>
+        <span>
+          <span className="block text-3xl">🔎</span>2 Lihat sisa
+        </span>
+        <span>
+          <span className="block text-3xl">🐊</span>3 Pilih tanda
+        </span>
       </div>
     </div>
   );
@@ -641,6 +652,7 @@ function LangkahBilang({
     <>
       <JudulGame nomor={nomor} total={JUMLAH_KEGIATAN} judul="Membilang" onSuara={() => speakGuru(SUARA_BILANG)} warna="#FDE68A" />
       <BuayaBicara
+        pendek={suara ? "Hebat!" : penuh ? "Ucapkan jumlahnya" : "Pindahkan satu-satu"}
         teks={
           suara
             ? "Hebat! Jumlahnya sudah kamu ucapkan."
@@ -651,7 +663,7 @@ function LangkahBilang({
       />
       <div className={`relative space-y-3 p-3 ${ALAS}`}>
         <p className="text-xs font-black tracking-wide text-[#6B3F12]">
-          🪑 DI MEJA: {sisaDiMeja} {NAMA[jenis].toLowerCase()}
+          🪑 DI MEJA: {sisaDiMeja}
         </p>
         <div
           className="mx-auto grid w-full gap-2"
@@ -685,7 +697,7 @@ function LangkahBilang({
           data-zona="keranjang"
           className="min-h-24 rounded-2xl border-4 border-dashed border-[#7C4A1D] bg-[#F3C98A] p-2"
         >
-          <p className="mb-1 text-xs font-black tracking-wide text-[#6B3F12]">🧺 KERANJANG: seret atau ketuk bendanya ke sini</p>
+          <p className="mb-1 text-xs font-black tracking-wide text-[#6B3F12]">🧺 KERANJANG</p>
           <div className="flex flex-wrap gap-2">
             {pindah.map((idx, n) => (
               <span key={idx} className="igil-muncul relative">
@@ -760,11 +772,12 @@ function LangkahPasang({ speakGuru, lanjut, nomor }: PropsLangkah) {
       : fase === "sisa"
         ? "Balonnya habis. Siapa kursi yang tidak punya balon? Ketuk dia!"
         : "Hore! Semua sudah ketemu.";
+  const hintPendek = fase === "pasang" ? "Pasangkan!" : fase === "sisa" ? "Mana yang sendiri?" : "Hore!";
 
   return (
     <>
       <JudulGame nomor={nomor} total={JUMLAH_KEGIATAN} judul="Memasangkan" onSuara={() => speakGuru(SUARA_PASANG)} warna="#FBCFE8" />
-      <BuayaBicara teks={hint} />
+      <BuayaBicara pendek={hintPendek} teks={hint} />
       <div className={`relative space-y-3 p-3 ${ALAS}`}>
         <div className="grid grid-cols-6 gap-1.5 pt-3">
           {Array.from({ length: KURSI }, (_, k) => {
@@ -803,7 +816,7 @@ function LangkahPasang({ speakGuru, lanjut, nomor }: PropsLangkah) {
           })}
         </div>
         <div className="rounded-2xl border-2 border-dashed border-[#7C4A1D] bg-[#F3C98A] p-2">
-          <p className="mb-1 text-xs font-black tracking-wide text-[#6B3F12]">🎈 BALON: pegang, lalu letakkan di kursi</p>
+          <p className="mb-1 text-xs font-black tracking-wide text-[#6B3F12]">🎈 BALON</p>
           <div className="grid grid-cols-4 gap-2">
             {Array.from({ length: BALON }, (_, b) => {
               const idx = balonTerpasang.indexOf(b);
@@ -930,7 +943,10 @@ function LangkahBanding({ speakGuru, lanjut, nomor }: PropsLangkah) {
   return (
     <>
       <JudulGame nomor={nomor} total={JUMLAH_KEGIATAN} judul="Membandingkan" onSuara={() => speakGuru(SUARA_BANDING)} warna="#FDE68A" />
-      <BuayaBicara teks={`Putaran ${putaran + 1} dari ${PUTARAN_BANDING.length}. ${data.perintah}`} />
+      <BuayaBicara
+        pendek={data.kunci === "sama" ? "Sama banyak?" : data.perintah.includes("sedikit") ? "Pilih paling sedikit" : "Pilih paling banyak"}
+        teks={`Putaran ${putaran + 1} dari ${PUTARAN_BANDING.length}. ${data.perintah}`}
+      />
       <div key={putaran} className="relative grid grid-cols-2 gap-2">
         {kotak("kiri", data.kiri)}
         {kotak("kanan", data.kanan)}
@@ -1013,7 +1029,7 @@ function LangkahUrut({ speakGuru, lanjut, nomor }: PropsLangkah) {
   return (
     <>
       <JudulGame nomor={nomor} total={JUMLAH_KEGIATAN} judul="Mengurutkan" onSuara={() => speakGuru(SUARA_URUT)} warna="#BBF7D0" />
-      <BuayaBicara teks="Seret kelompok ke kotak bernomor. Kotak 1 untuk yang paling sedikit!" />
+      <BuayaBicara pendek="Sedikit ke banyak" teks="Seret kelompok ke kotak bernomor. Kotak 1 untuk yang paling sedikit!" />
       <div className="relative space-y-3">
         <div className="grid grid-cols-2 gap-2">
           {KELOMPOK_URUT.map((k) =>
@@ -1094,6 +1110,7 @@ function LangkahCerita({
     <>
       <JudulGame nomor={nomor} total={JUMLAH_KEGIATAN} judul="Cerita" onSuara={() => speakGuru(SUARA_CERITA)} warna="#E9D5FF" />
       <BuayaBicara
+        pendek={!datang ? "Wei memberi Kira" : suara ? "Siapa lebih banyak?" : "Ucapkan jumlah Kira"}
         teks={
           !datang
             ? "Kira punya tiga layang-layang. Tika punya empat. Lalu Wei memberi Kira dua lagi."
@@ -1120,7 +1137,7 @@ function LangkahCerita({
           <JawabSuara id="b-cerita" jumlah={5} panel={panel} />
           {suara ? (
             <>
-              <p className="text-center text-base font-black text-[#1C01A5]">Siapa yang punya lebih banyak?</p>
+              
               <div className="grid grid-cols-2 gap-2">
                 {(["Kira", "Tika"] as const).map((nama) => (
                   <button
@@ -1163,7 +1180,7 @@ function LangkahTulis({ speakGuru, lanjut, nomor }: PropsLangkah) {
   return (
     <>
       <JudulGame nomor={nomor} total={JUMLAH_KEGIATAN} judul="Menulis" onSuara={() => speakGuru(SUARA_TULIS)} warna="#FED7AA" />
-      <BuayaBicara teks="Lihat dua kelompok. Tulis jumlah yang lebih banyak, ya!" />
+      <BuayaBicara pendek="Tulis yang banyak" teks="Lihat dua kelompok. Tulis jumlah yang lebih banyak, ya!" />
       <div className="grid grid-cols-2 gap-2">
         {[
           { jenis: "balon", jumlah: 7 },
@@ -1178,19 +1195,25 @@ function LangkahTulis({ speakGuru, lanjut, nomor }: PropsLangkah) {
           </div>
         ))}
       </div>
-      <p className="text-center text-base font-black text-[#1C01A5]">Tulis jumlah kelompok yang lebih banyak.</p>
       <div className={`flex flex-col items-center gap-2 p-3 ${STIKER}`}>
-        <div className="text-sm font-black text-[#1C01A5]">✏️ Tulis angka di atas, kata di bawah</div>
+        <div className="text-lg font-black text-[#1C01A5]">✏️ Tulis</div>
         <DottedNumberTracingCanvas key="b-tulis" digit={7} kata={kata(7)} onCompletedTrace={() => setLulus(true)} />
-        <KabarChip kabar={lulus ? { teks: "Tulisanmu pas.", ok: true } : null} />
-        {lulus ? null : <p className="text-xs font-bold text-[#1C01A5]">Ikuti titik sampai mirip.</p>}
+        <KabarChip kabar={lulus ? KABAR_TULIS_OK : null} />
       </div>
       <TombolLanjut teks="LANJUTKAN KE PICTORIAL ⬇️" onClick={lanjut} />
     </>
   );
 }
 
-export function ConcreteBandingB({ speakGuru, panel, hentikan, gulir, onSelesai }: Umum) {
+export function ConcreteBandingB(props: Umum) {
+  return (
+    <SuaraCtx.Provider value={props.speakGuru}>
+      <ConcreteIsi {...props} />
+    </SuaraCtx.Provider>
+  );
+}
+
+function ConcreteIsi({ speakGuru, panel, hentikan, gulir, onSelesai }: Umum) {
   const [indeks, setIndeks] = useState(0);
   const langkah = LANGKAH_CONCRETE[indeks];
   const terakhir = indeks >= LANGKAH_CONCRETE.length - 1;
@@ -1209,7 +1232,7 @@ export function ConcreteBandingB({ speakGuru, panel, hentikan, gulir, onSelesai 
 
   return (
     <div className="space-y-3 rounded-[2rem] border-4 border-[#A8672D] p-3" style={GAYA_MEJA}>
-      <PitaTahap ikon="🧸" nama="CONCRETE" cara="Pegang dan pindahkan benda nyata." warna="#8A5322" />
+      <PitaTahap ikon="🧸" nama="CONCRETE" cara="Pegang dan pindahkan!" warna="#8A5322" />
       <div className="flex items-center gap-1.5" aria-label={`Kegiatan ${langkah.kegiatan} dari ${JUMLAH_KEGIATAN}`}>
         {Array.from({ length: JUMLAH_KEGIATAN }, (_, i) => (
           <span
@@ -1244,6 +1267,7 @@ type KartuGambar = {
   bawah: { nama: string; jumlah: number };
   kunci: number;
   tugas: string;
+  tugasPendek: string;
   hasil: string;
   catatan?: string;
   suara: string;
@@ -1259,6 +1283,7 @@ const KARTU_GAMBAR_B: KartuGambar[] = [
     bawah: { nama: "Balon", jumlah: 3 },
     kunci: 5,
     tugas: "Ucapkan jumlah baris yang lebih banyak.",
+    tugasPendek: "Siapa lebih banyak?",
     hasil: "Baris atas punya sisa. Baris atas lebih banyak.",
     suara: "Warnai dua baris petak. Kotak biru untuk kursi, bulat jingga untuk balon. Lihat garis pasangannya. Lalu ucapkan jumlah baris yang lebih banyak.",
     bantuan: "Ketuk tiap baris untuk mewarnai petaknya. Lihat petak yang tidak punya pasangan.",
@@ -1271,6 +1296,7 @@ const KARTU_GAMBAR_B: KartuGambar[] = [
     bawah: { nama: "Bola", jumlah: 6 },
     kunci: 6,
     tugas: "Ucapkan jumlah batang yang lebih pendek.",
+    tugasPendek: "Siapa lebih pendek?",
     hasil: "Batang buku lebih panjang. Buku lebih banyak dari bola.",
     suara: "Warnai dua batang. Lihat mana yang lebih pendek. Lalu ucapkan jumlah batang yang pendek.",
     bantuan: "Ketuk tiap batang untuk mewarnainya. Batang yang lebih pendek berarti lebih sedikit.",
@@ -1283,6 +1309,7 @@ const KARTU_GAMBAR_B: KartuGambar[] = [
     bawah: { nama: "Kelereng", jumlah: 8 },
     kunci: 8,
     tugas: "Ucapkan jumlah di salah satu bingkai.",
+    tugasPendek: "Berapa banyaknya?",
     hasil: "Tidak ada petak sisa. Sama banyak.",
     suara: "Warnai dua bingkai. Lalu ucapkan jumlah di salah satu bingkai, dan tulis.",
     bantuan: "Warnai dua bingkai sampai penuh. Lihat apakah ada petak sisa.",
@@ -1295,6 +1322,7 @@ const KARTU_GAMBAR_B: KartuGambar[] = [
     bawah: { nama: "Katak jingga", jumlah: 7 },
     kunci: 7,
     tugas: "Ucapkan bilangan katak yang lebih jauh ke kanan.",
+    tugasPendek: "Siapa lebih jauh?",
     hasil: "Katak jingga lebih jauh ke kanan. Jumlahnya lebih banyak.",
     catatan: "Ke kanan berarti lebih banyak. Ke kiri berarti lebih sedikit.",
     suara:
@@ -1380,6 +1408,7 @@ function IsiKartuGambar({
   const penuh = hAtas >= kapAtas && hBawah >= kapBawah;
   const terakhir = indeks >= total - 1;
   const sudahPenuh = useRef(false);
+  useBicara(suara, `${kartu.hasil}${kartu.catatan ? " " + kartu.catatan : ""}`);
 
   const cekPenuh = () => {
     if (!sudahPenuh.current && refAtas.current >= kapAtas && refBawah.current >= kapBawah) {
@@ -1418,7 +1447,7 @@ function IsiKartuGambar({
         onSuara={() => speakGuru(kartu.suara)}
         warna="#FDE68A"
       />
-      <CatatanTempel teks={hint} />
+      <CatatanTempel pendek={suara ? "Hebat!" : penuh ? kartu.tugasPendek : "Warnai petaknya!"} teks={hint} />
 
       <div className="relative space-y-2 rounded-lg border-[3px] border-[#6B7280] bg-white/90 p-3 shadow-[3px_4px_0_rgba(0,0,0,0.12)]">
         {kartu.bentuk === "garis" ? null : <LegendaGambar atas={kartu.atas.nama} bawah={kartu.bawah.nama} />}
@@ -1543,7 +1572,7 @@ function IsiKartuGambar({
                   hAtas < kapAtas ? "igil-lompat" : ""
                 }`}
               >
-                🐸 Ketuk katak biru
+                🐸 Biru
               </button>
               <button
                 type="button"
@@ -1552,7 +1581,7 @@ function IsiKartuGambar({
                   hBawah < kapBawah ? "igil-lompat" : ""
                 }`}
               >
-                🐸 Ketuk katak jingga
+                🐸 Jingga
               </button>
             </div>
           </div>
@@ -1560,28 +1589,25 @@ function IsiKartuGambar({
         <Letusan id={letusan.id} />
       </div>
 
-      <p className="text-center text-base font-black text-[#1C01A5]">{kartu.tugas}</p>
       <JawabSuara id={kartu.id} jumlah={kartu.kunci} panel={panel} siap={penuh} belumSiap="Warnai diagramnya dulu, ya." />
 
       {suara ? (
         <div className="igil-muncul space-y-2 rounded-3xl border-4 border-[#7FCB96] bg-[#E8F7EE] p-3 text-center">
-          <p className="text-base font-black leading-snug text-[#1C01A5]">🌟 {kartu.hasil}</p>
+          <p className="text-3xl">🌟</p>
           <TandaBuaya kiri={kartu.atas.jumlah} kanan={kartu.bawah.jumlah} />
-          {kartu.catatan ? <p className="text-sm font-black text-[#92400E]">{kartu.catatan}</p> : null}
         </div>
       ) : null}
 
       {kartu.bentuk === "bingkai" ? (
         <div className={`flex flex-col items-center gap-2 p-3 ${STIKER}`}>
-          <div className="text-sm font-black text-[#1C01A5]">✏️ Tulis angka di atas, kata di bawah</div>
+          <div className="text-lg font-black text-[#1C01A5]">✏️ Tulis</div>
           <DottedNumberTracingCanvas
             key={`gambar-${kartu.id}`}
             digit={kartu.kunci}
             kata={kata(kartu.kunci)}
             onCompletedTrace={() => setLulus(true)}
           />
-          <KabarChip kabar={lulus ? { teks: "Tulisanmu pas.", ok: true } : null} />
-          {lulus ? null : <p className="text-xs font-bold text-[#1C01A5]">Ikuti titik sampai mirip.</p>}
+          <KabarChip kabar={lulus ? KABAR_TULIS_OK : null} />
         </div>
       ) : null}
 
@@ -1590,7 +1616,15 @@ function IsiKartuGambar({
   );
 }
 
-export function PictureBandingB({ speakGuru, panel, hentikan, gulir, onSelesai }: Umum) {
+export function PictureBandingB(props: Umum) {
+  return (
+    <SuaraCtx.Provider value={props.speakGuru}>
+      <PictureIsi {...props} />
+    </SuaraCtx.Provider>
+  );
+}
+
+function PictureIsi({ speakGuru, panel, hentikan, gulir, onSelesai }: Umum) {
   const [indeks, setIndeks] = useState(0);
   const kartu = KARTU_GAMBAR_B[indeks];
   const terakhir = indeks >= KARTU_GAMBAR_B.length - 1;
@@ -1609,7 +1643,7 @@ export function PictureBandingB({ speakGuru, panel, hentikan, gulir, onSelesai }
   return (
     <div className="space-y-3 rounded-2xl border-4 border-[#6B7280] p-3 pt-0" style={GAYA_KERTAS}>
       <SpiralBuku />
-      <PitaTahap ikon="🖍️" nama="PICTURE" cara="Lihat gambarnya, lalu warnai petaknya." warna="#B45309" />
+      <PitaTahap ikon="🖍️" nama="PICTURE" cara="Lihat dan warnai" warna="#B45309" />
       <div className="flex items-center gap-1.5">
         {KARTU_GAMBAR_B.map((k, i) => (
           <span
@@ -1645,6 +1679,7 @@ type KartuLambang = {
   suara: string;
   salahTanda: string;
   kalimat: string;
+  pendek: string;
   tulis: boolean;
   tambahan: "kilat" | "urut" | null;
 };
@@ -1661,6 +1696,7 @@ const KARTU_LAMBANG_B: KartuLambang[] = [
       "Lihat dua bilangan. Pilih tandanya. Ingat, mulut buaya menghadap yang lebih banyak. Lalu ucapkan bilangan yang lebih banyak.",
     salahTanda: "Belum. Mulut buaya menghadap bilangan yang lebih banyak.",
     kalimat: "Sembilan lebih banyak dari enam. Enam lebih sedikit dari sembilan.",
+    pendek: "Pilih tanda",
     tulis: false,
     tambahan: "kilat",
   },
@@ -1674,6 +1710,7 @@ const KARTU_LAMBANG_B: KartuLambang[] = [
     suara: "Lihat dua bilangan. Pilih tandanya. Lalu ucapkan bilangan yang lebih sedikit.",
     salahTanda: "Belum. Mulut buaya menghadap bilangan yang lebih banyak.",
     kalimat: "Empat lebih sedikit dari delapan. Delapan lebih banyak dari empat.",
+    pendek: "Pilih tanda",
     tulis: false,
     tambahan: "urut",
   },
@@ -1687,6 +1724,7 @@ const KARTU_LAMBANG_B: KartuLambang[] = [
     suara: "Lihat dua bilangan. Pilih tandanya. Lalu ucapkan dan tulis bilangannya.",
     salahTanda: "Belum. Kalau sama banyak, buaya menutup mulut.",
     kalimat: "Enam sama dengan enam. Enam sama banyak dengan enam.",
+    pendek: "Pilih tanda",
     tulis: true,
     tambahan: null,
   },
@@ -1708,7 +1746,7 @@ function LatihanKilat() {
   const [jawab, setJawab] = useState<(string | null)[]>(() => SOAL_KILAT.map(() => null));
   return (
     <div className="igil-muncul space-y-2 rounded-lg border-[3px] border-[#1C01A5] bg-white/90 p-3">
-      <p className="text-sm font-black text-[#1C01A5]">✏️ Latihan kilat: isi tanda yang pas</p>
+      <p className="text-sm font-black text-[#1C01A5]">✏️ Isi tanda</p>
       {SOAL_KILAT.map(([a, b], i) => {
         const kunci = hubungan(a, b).tanda;
         const j = jawab[i];
@@ -1758,9 +1796,10 @@ function UrutAngka() {
   const [pilih, setPilih] = useState<number[]>([]);
   const [salah, setSalah] = useState<number | null>(null);
   const selesai = pilih.length >= urut.length;
+  useBicara(selesai, "Urutannya pas. Dari kecil ke besar.");
   return (
     <div className="igil-muncul space-y-2 rounded-lg border-[3px] border-[#1C01A5] bg-white/90 p-3">
-      <p className="text-sm font-black text-[#1C01A5]">✏️ Ketuk angka dari yang terkecil</p>
+      <p className="text-sm font-black text-[#1C01A5]">✏️ Kecil ke besar</p>
       <div className="flex items-center justify-center gap-2">
         {DERET_URUT.map((n) => (
           <button
@@ -1797,7 +1836,7 @@ function UrutAngka() {
           </React.Fragment>
         ))}
       </div>
-      {selesai ? <p className="text-center text-sm font-black text-[#166534]">🌟 Urutannya pas. Dari kecil ke besar.</p> : null}
+      {selesai ? <p className="text-center text-xl font-black text-[#166534]">🌟 Hebat!</p> : null}
     </div>
   );
 }
@@ -1824,6 +1863,7 @@ function IsiKartuLambang({
   const letusan = useLetusan();
   const benar = pilih === kunciTanda;
   const suara = panel.suara[kartu.id] === true;
+  useBicara(suara, kartu.kalimat);
 
   const ketukTanda = (tanda: string) => {
     if (benar) return;
@@ -1845,7 +1885,7 @@ function IsiKartuLambang({
         onSuara={() => speakGuru(kartu.suara)}
         warna="#C7D2FE"
       />
-      <CatatanPensil teks={suara ? "Hebat! Kamu pintar sekali." : kartu.bantuan} />
+      <CatatanPensil pendek={suara ? "Hebat!" : benar ? "Ucapkan!" : kartu.pendek} teks={suara ? "Hebat! Kamu pintar sekali." : kartu.bantuan} />
 
       <div className="relative flex items-center justify-center gap-4 rounded-lg border-[3px] border-[#1C01A5] bg-white/90 py-6 shadow-[3px_4px_0_rgba(28,1,165,0.18)]">
         <span className="w-16 text-center text-8xl font-black leading-none text-[#1C01A5]">{kartu.kiri}</span>
@@ -1875,15 +1915,13 @@ function IsiKartuLambang({
             onClick={() => ketukTanda(p.tanda)}
             className="flex flex-col items-center gap-0.5 rounded-lg border-[3px] border-[#1C01A5] bg-[#FFE566] px-1 py-2 shadow-[0_4px_0_rgba(28,1,165,0.3)]"
           >
-            <span className="text-5xl font-black leading-none text-[#1C01A5]">{p.tanda}</span>
-            <span className="text-[11px] font-black leading-tight text-[#1C01A5]">{p.nama}</span>
+            <span className="text-6xl font-black leading-none text-[#1C01A5]">{p.tanda}</span>
           </button>
         ))}
       </div>
 
       <KabarChip kabar={kabar} />
 
-      <p className="text-center text-base font-black text-[#1C01A5]">{kartu.tugas}</p>
       <JawabSuara
         id={kartu.id}
         jumlah={kartu.kunciSuara}
@@ -1897,7 +1935,7 @@ function IsiKartuLambang({
           <p className="text-5xl font-black leading-tight text-[#1C01A5]">
             {kartu.kiri} {kunciTanda} {kartu.kanan}
           </p>
-          <p className="text-base font-black leading-snug text-[#1C01A5]">🌟 {kartu.kalimat}</p>
+          <p className="text-3xl">🌟</p>
         </div>
       ) : null}
 
@@ -1906,15 +1944,14 @@ function IsiKartuLambang({
 
       {suara && kartu.tulis ? (
         <div className="flex flex-col items-center gap-2 rounded-lg border-[3px] border-[#1C01A5] bg-white/90 p-3">
-          <div className="text-sm font-black text-[#1C01A5]">✏️ Tulis lambang di atas, kata di bawah</div>
+          <div className="text-lg font-black text-[#1C01A5]">✏️ Tulis</div>
           <DottedNumberTracingCanvas
             key={`lambang-${kartu.id}`}
             digit={kartu.kunciSuara}
             kata={kata(kartu.kunciSuara)}
             onCompletedTrace={() => setLulus(true)}
           />
-          <KabarChip kabar={lulus ? { teks: "Lambangmu sudah pas.", ok: true } : null} />
-          {lulus ? null : <p className="text-xs font-bold text-[#1C01A5]">Ikuti titik lambangnya.</p>}
+          <KabarChip kabar={lulus ? KABAR_TULIS_OK : null} />
         </div>
       ) : null}
 
@@ -1923,7 +1960,15 @@ function IsiKartuLambang({
   );
 }
 
-export function AbstractBandingB({ speakGuru, panel, hentikan, gulir, onSelesai }: Umum) {
+export function AbstractBandingB(props: Umum) {
+  return (
+    <SuaraCtx.Provider value={props.speakGuru}>
+      <AbstractIsi {...props} />
+    </SuaraCtx.Provider>
+  );
+}
+
+function AbstractIsi({ speakGuru, panel, hentikan, gulir, onSelesai }: Umum) {
   const [indeks, setIndeks] = useState(0);
   const kartu = KARTU_LAMBANG_B[indeks];
   const terakhir = indeks >= KARTU_LAMBANG_B.length - 1;
@@ -1941,7 +1986,7 @@ export function AbstractBandingB({ speakGuru, panel, hentikan, gulir, onSelesai 
 
   return (
     <div className="space-y-3 rounded-2xl border-4 border-[#1C01A5] p-3" style={GAYA_KOTAK}>
-      <PitaTahap ikon="✏️" nama="ABSTRACT" cara="Hanya angka dan tanda. Tanpa gambar." warna="#1C01A5" />
+      <PitaTahap ikon="✏️" nama="ABSTRACT" cara="Angka dan tanda" warna="#1C01A5" />
       <div className="flex items-center gap-1.5">
         {KARTU_LAMBANG_B.map((k, i) => (
           <span

@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useEffect, useRef, useState } from "react";
+import React, { createContext, useContext, useEffect, useRef, useState } from "react";
 
 /* ------------------------------------------------------------------------ */
 /* Identitas empat tahap Sub-Bab B. Setiap tahap punya "dunia" sendiri:       */
@@ -68,24 +68,58 @@ export function PitaTahap({
 
 /* ----------------------- Pengganti buaya bicara per tahap ---------------- */
 
-/** Picture: catatan tempel kuning, seperti catatan guru di buku gambar. */
-export function CatatanTempel({ teks }: { teks: string }) {
+/**
+ * Suara Guru untuk seluruh tahap Sub-Bab B. Siswa kelas 1 belum lancar membaca,
+ * jadi layar hanya memuat kata pendek. Penjelasan dan instruksi dibacakan.
+ */
+export const SuaraCtx = createContext<(teks: string) => void>(() => {});
+
+/** Bacakan teks satu kali, tepat ketika `aktif` berubah menjadi benar. */
+export function useBicara(aktif: boolean, teks: string) {
+  const bicara = useContext(SuaraCtx);
+  useEffect(() => {
+    if (aktif) bicara(teks);
+  }, [aktif, teks, bicara]);
+}
+
+/** Picture: catatan tempel kuning. Layar memuat kata pendek, ketuk untuk mendengar. */
+export function CatatanTempel({ pendek, teks }: { pendek: string; teks?: string }) {
+  const bicara = useContext(SuaraCtx);
   return (
-    <div className="relative -rotate-1 rounded-md bg-[#FFF176] px-3 pb-2 pt-4 text-sm font-black leading-snug text-[#1C01A5] shadow-[3px_4px_0_rgba(0,0,0,0.14)]">
+    <button
+      type="button"
+      aria-label={`Dengarkan: ${teks ?? pendek}`}
+      onClick={() => bicara(teks ?? pendek)}
+      className="igil-tanpa-tepi relative block w-full -rotate-1 rounded-md bg-[#FFF176] px-3 pb-2 pt-4 text-left text-lg font-black leading-snug text-[#1C01A5] shadow-[3px_4px_0_rgba(0,0,0,0.14)]"
+    >
       <span className="absolute -top-2 left-1/2 h-4 w-14 -translate-x-1/2 rotate-2 bg-[#F0AB00]/60" aria-hidden="true" />
-      <span aria-hidden="true">📝 </span>
-      {teks}
-    </div>
+      <span className="flex items-center justify-between gap-2">
+        <span>
+          <span aria-hidden="true">📝 </span>
+          {pendek}
+        </span>
+        <span aria-hidden="true">🔊</span>
+      </span>
+    </button>
   );
 }
 
-/** Abstract: satu baris tulisan pensil. Tanpa gambar. */
-export function CatatanPensil({ teks }: { teks: string }) {
+/** Abstract: satu baris tulisan pensil. Tanpa gambar. Ketuk untuk mendengar. */
+export function CatatanPensil({ pendek, teks }: { pendek: string; teks?: string }) {
+  const bicara = useContext(SuaraCtx);
   return (
-    <p className="border-b-2 border-dashed border-[#1C01A5]/40 pb-1 text-sm font-black leading-snug text-[#1C01A5]">
-      <span aria-hidden="true">✏️ </span>
-      {teks}
-    </p>
+    <button
+      type="button"
+      aria-label={`Dengarkan: ${teks ?? pendek}`}
+      onClick={() => bicara(teks ?? pendek)}
+      className="igil-tanpa-tepi flex w-full items-center justify-between gap-2 border-b-2 border-dashed border-[#1C01A5]/40 pb-1 text-left text-lg font-black leading-snug text-[#1C01A5]"
+    >
+      <span>
+        <span aria-hidden="true">✏️ </span>
+        {pendek}
+      </span>
+      <span aria-hidden="true">🔊</span>
+    </button>
   );
 }
 
