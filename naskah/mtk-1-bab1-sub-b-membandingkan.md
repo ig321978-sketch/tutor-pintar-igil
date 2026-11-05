@@ -24,6 +24,16 @@ Naskah ini dibuat tanpa panggilan API. Seluruh isinya untuk dijalankan di klien,
 8. **Semua jumlah di dalam 10.**
 9. Setiap kartu punya satu kalimat bantuan (`bantuan`) yang tampil di layar. Kalimat itu pendek dan tidak berisi jawaban.
 
+10. **Empat tahap harus terasa berbeda.** Bukan hanya jenis permainannya, tetapi juga dunia visual dan cara tangan anak bekerja:
+
+| | Infografis | Concrete | Picture | Abstract |
+|---|---|---|---|---|
+| Dunia | Poster hijau, panel bernomor | Meja kayu, alas kain | Buku gambar, kertas bergaris, spiral | Buku tulis kotak-kotak |
+| Isi | Rangkuman, tidak ada soal | Benda nyata berwarna, miring, berbayang | Petak kotak dan bulat, batang, garis bilangan | Hanya angka dan tanda |
+| Aksi anak | Membaca dan mendengar | Memegang: seret dan pindahkan | Mewarnai petak | Memilih tanda, menulis, menyusun angka |
+| Pendamping | Judul panel dan tombol dengar | Buaya bicara | Catatan tempel kuning | Satu baris tulisan pensil |
+| Gambar benda | Ada, tanpa interaksi | Ada, bisa dipegang | Diganti simbol (kotak, bulat) | Tidak ada |
+
 Kata dan tanda yang dipakai konsisten di semua tahap:
 
 | Hubungan | Kalimat baku | Tanda | Dibaca |
@@ -83,34 +93,35 @@ Suara Guru: "Empat langkah membandingkan. Satu, hitung dulu. Dua, pasangkan satu
 
 ---
 
-## Tahap 3 · Infografis (tabel dua kelompok, ketuk manual)
+## Tahap 3 · Infografis (poster rangkuman, dibaca dan didengar, bukan permainan)
 
-Judul: **Dua Kelompok dan Hasilnya**
-Tombol: **🔊 Suara Guru**
-Kolom: **KELOMPOK KIRI | KELOMPOK KANAN | HASIL**
+Judul: **Cara Membandingkan Benda**
+Pita tahap: 📰 INFOGRAFIS · "Baca dan dengarkan. Belum ada yang dijawab."
+Tombol: **🔊 Suara Guru** (membaca ringkasan), dan satu tombol 🔊 kecil di tiap panel.
 
-Cara kerja: ketuk ikon kiri, angkanya naik satu sampai jumlah sebenarnya lalu berhenti dan tidak kembali ke nol. Ketuk ikon kanan, sama. Setelah kedua sisi penuh, kolom HASIL menampilkan kalimat baku dan tandanya di bawah kalimat. Setiap ketukan, guru menyebut kata bilangannya. Angka di sel tampil besar dan kata di bawahnya.
+Ini poster rangkuman. Tidak ada soal, tidak ada ketukan yang menghasilkan jawaban. Anak membaca dan mendengar. Lima panel bernomor, lalu kotak INGAT.
 
-| # | Kiri | Kanan | Hasil yang tampil | Tanda yang tampil |
-|---|---|---|---|---|
-| 1 | Sepeda 3 | Balon 3 | Sepeda sama banyak dengan balon. | `3 = 3` |
-| 2 | Kursi 6 | Buku 4 | Kursi lebih banyak dari buku. | `6 > 4` |
-| 3 | Bola 5 | Layangan 8 | Bola lebih sedikit dari layangan. | `5 < 8` |
-| 4 | Buku 7 | Kelereng 7 | Buku sama banyak dengan kelereng. | `7 = 7` |
-| 5 | Kelereng 10 | Bola 9 | Kelereng lebih banyak dari bola. | `10 > 9` |
+| Panel | Judul | Isi | Kalimat |
+|---|---|---|---|
+| 1 | LIHAT DUA KELOMPOK | Kursi 6 dan buku 4, jumlah di bawah tiap kelompok | Enam lebih banyak dari empat. |
+| 2 | PASANGKAN SATU-SATU | Enam kursi dan empat balon dihubungkan garis. Dua kursi sisa diberi lingkaran emas | Yang tidak punya pasangan berarti lebih banyak. |
+| 3 | SAMA BANYAK | Tiga sepeda dan tiga balon, semua berpasangan | Semua punya pasangan. Tidak ada sisa. Sama banyak. |
+| 4 | GARIS BILANGAN | Katak biru di 3, katak jingga di 7 | Ke kanan makin banyak. Ke kiri makin sedikit. |
+| 5 | TANDA MULUT BUAYA | `9 > 6`, `4 < 8`, `6 = 6`, masing-masing dengan mulut buaya dan namanya | Mulut buaya selalu terbuka ke bilangan yang lebih banyak. |
 
-Suara Guru (tombol): "Dua kelompok dan hasilnya. Ketuk ikon di kiri, lalu di kanan. Setiap ketuk, angkanya naik satu. Setelah kedua kelompok penuh, lihat hasilnya dan tandanya."
+Kotak INGAT: 1. Pasangkan satu-satu. 2. Lihat siapa yang tersisa. 3. Pilih tandanya.
+
+Suara Guru (tombol utama): "Ini poster rangkuman. Baca dan dengarkan setiap bagian. Belum ada yang perlu diketuk untuk menjawab. Kita akan bermain di tahap berikutnya."
 
 Catatan:
-- Baris 5 sengaja selisih satu supaya anak tahu beda sedikit pun tetap beda.
-- Tanda di kolom HASIL hanya contoh. Belum ada tugas memilih tanda di tahap ini.
-- Tanda ditulis besar di bawah kalimat. Di bawah tanda ada gambar mulut buaya kecil yang menghadap ke bilangan lebih banyak. Baris `=` memakai buaya yang menutup mulut.
+- Tahap ini boleh menyebut angka dan tanda karena fungsinya contoh.
+- Tahap ini tidak memakai buaya yang berbicara. Buaya hanya muncul sebagai gambar tanda di panel 5.
 
 ---
 
 ## Tahap 4 · Concrete (6 kegiatan, kartu satu layar)
 
-Benda tampil sebagai ikon di petak. Petak kosong berbingkai putus-putus. Tiap ketuk memunculkan satu benda sampai penuh.
+Dunia: meja kayu dengan alas kain. Pita tahap: 🧸 CONCRETE · "Pegang dan pindahkan benda nyata." Benda tampil berwarna penuh, miring, dan berbayang seperti diletakkan di meja. Anak memegang bendanya: seret ke tujuan, atau ketuk sebagai cadangan.
 
 ### Kegiatan 1 · Membilang (dengan suara)
 
@@ -122,15 +133,16 @@ Dua kartu berurutan.
 | 2 | Balon | 4 |
 
 - Judul kartu: "Membilang".
-- `bantuan`: "Ketuk tempat kosong sampai penuh. Hitung bendanya, lalu ucapkan sekali."
-- Suara Guru: "Hitung bendanya satu per satu. Lalu ucapkan jumlahnya sekali saja."
+- Cara kerja: benda tersebar di meja. Anak memindahkan satu per satu ke keranjang (seret atau ketuk). Tiap benda di keranjang diberi nomor 1, 2, 3 sambil dihitung.
+- `bantuan`: "Pegang bendanya satu per satu. Pindahkan ke keranjang sambil menghitung!"
+- Suara Guru: "Pegang bendanya satu per satu. Pindahkan ke keranjang sambil menghitung. Lalu ucapkan jumlahnya sekali saja."
 - Tombol "Jawab dengan suara" menampilkan angka dan kata setelah ucapan diterima.
 - Tanpa kanvas.
 
 ### Kegiatan 2 · Memasangkan (tanpa suara, tanpa kanvas)
 
 - Atas: enam kursi. Bawah: empat balon.
-- Anak mengetuk satu kursi, lalu satu balon, sehingga keduanya berpasangan. Ulangi sampai balon habis.
+- Anak memegang satu balon dan menyeretnya ke satu kursi (cadangan: ketuk balon, lalu ketuk kursi). Balon menempel di kursi dengan nomor pasangan. Ulangi sampai balon habis.
 - Setelah balon habis, anak mengetuk kursi yang tidak berpasangan. Dua kursi harus diketuk. Salah ketuk memberi pesan ringan dan tidak mengunci.
 - `bantuan`: "Pasangkan satu kursi dengan satu balon. Lalu ketuk benda yang tidak punya pasangan."
 - Pesan benar: "Pas. Kursi yang tidak berpasangan masih ada. Jadi kursi lebih banyak."
@@ -155,13 +167,13 @@ Tiga putaran. Tiap putaran menampilkan dua kelompok. Tugas anak berbeda-beda.
 ### Kegiatan 4 · Mengurutkan (tanpa suara, tanpa kanvas)
 
 - Empat kelompok tampil acak: Balon 9, Kursi 2, Buku 4, Bola 6.
-- Anak mengetuk dari yang paling sedikit sampai yang paling banyak. Urutan salah tidak mengunci.
-- `bantuan`: "Ketuk dari kelompok yang paling sedikit."
+- Anak menyeret kelompok ke empat kotak bernomor 1 sampai 4 (cadangan: ketuk kelompok, otomatis ke kotak berikutnya). Kotak 1 untuk yang paling sedikit. Salah tempat tidak mengunci.
+- `bantuan`: "Seret kelompok ke kotak bernomor. Kotak 1 untuk yang paling sedikit!"
 - Kunci: Kursi 2, Buku 4, Bola 6, Balon 9.
 - Pesan benar tiap langkah: "Benar. Lanjut ke kelompok berikutnya."
 - Pesan salah: "Belum. Cari kelompok yang lebih sedikit."
 - Pesan selesai: "Urutannya pas. Dari sedikit ke banyak."
-- Suara Guru: "Susun kelompok dari yang paling sedikit sampai yang paling banyak."
+- Suara Guru: "Seret kelompok ke kotak bernomor. Mulai dari yang paling sedikit sampai yang paling banyak."
 
 ### Kegiatan 5 · Cerita (dengan suara)
 

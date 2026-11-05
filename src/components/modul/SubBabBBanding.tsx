@@ -1,9 +1,23 @@
 "use client";
 
-import React, { useCallback, useEffect, useRef, useState } from "react";
+import React, { useCallback, useRef, useState } from "react";
 import { IkonMainan } from "./ikon-mainan";
 import { GarisBilanganKatak, MulutBuaya, type ArahBuaya } from "./gambar-banding-b";
 import { DottedNumberTracingCanvas, SEBUTAN_ANGKA } from "./elemen-kelas1";
+import {
+  ALAS,
+  BendaSeret,
+  CatatanPensil,
+  CatatanTempel,
+  GAYA_KERTAS,
+  GAYA_KOTAK,
+  GAYA_MEJA,
+  GAYA_POSTER,
+  PitaTahap,
+  SpiralBuku,
+  letakMeja,
+  zonaDi,
+} from "./tahap-b-gaya";
 
 /* ------------------------------------------------------------------------ */
 /* Sub-Bab B: Membandingkan Banyak Benda. Semua di klien, tanpa API.          */
@@ -52,13 +66,6 @@ const NAMA: Record<string, string> = {
 function hubungan(kiri: number, kanan: number): { tanda: string; arah: ArahBuaya } {
   if (kiri === kanan) return { tanda: "=", arah: "tutup" };
   return kiri > kanan ? { tanda: ">", arah: "kiri" } : { tanda: "<", arah: "kanan" };
-}
-
-function kalimatHubungan(a: string, b: string, kiri: number, kanan: number): string {
-  if (kiri === kanan) return `${a} sama banyak dengan ${b.toLowerCase()}.`;
-  return kiri > kanan
-    ? `${a} lebih banyak dari ${b.toLowerCase()}.`
-    : `${a} lebih sedikit dari ${b.toLowerCase()}.`;
 }
 
 /* ------------------------------ Perangkat ------------------------------- */
@@ -184,36 +191,27 @@ function KelompokBenda({
   jenis,
   jumlah,
   baruDari = 999,
+  nyata = false,
 }: {
   jenis: string;
   jumlah: number;
   baruDari?: number;
+  nyata?: boolean;
 }) {
   return (
     <div className="flex flex-wrap items-center justify-center gap-1.5">
       {Array.from({ length: jumlah }, (_, i) => (
         <span key={i} className={i >= baruDari ? "igil-muncul" : ""}>
-          <IkonMainan jenis={jenis} kelas="h-9 w-9 shrink-0" />
+          {nyata ? (
+            <span className="block" style={letakMeja(i)}>
+              <IkonMainan jenis={jenis} besar kelas="h-9 w-9 shrink-0 drop-shadow-[0_3px_2px_rgba(90,50,10,0.45)]" />
+            </span>
+          ) : (
+            <IkonMainan jenis={jenis} kelas="h-9 w-9 shrink-0" />
+          )}
         </span>
       ))}
     </div>
-  );
-}
-
-function PetakWajah({ baris }: { baris: "atas" | "bawah" }) {
-  const isi = baris === "atas" ? "#93C5FD" : "#FDE68A";
-  const garis = baris === "atas" ? BIRU : EMAS_TUA;
-  return (
-    <svg viewBox="0 0 40 40" className="igil-muncul block w-full" aria-hidden="true">
-      {baris === "atas" ? (
-        <rect x="3" y="3" width="34" height="34" rx="10" fill={isi} stroke={garis} strokeWidth="3" />
-      ) : (
-        <circle cx="20" cy="20" r="17" fill={isi} stroke={garis} strokeWidth="3" />
-      )}
-      <circle cx="14" cy="17" r="2.6" fill={BIRU} />
-      <circle cx="26" cy="17" r="2.6" fill={BIRU} />
-      <path d="M13 25 Q20 32 27 25" fill="none" stroke={BIRU} strokeWidth="2.6" strokeLinecap="round" />
-    </svg>
   );
 }
 
@@ -358,131 +356,112 @@ function JawabSuara({
 }
 
 /* ------------------------------------------------------------------------ */
-/* Tahap 3: Infografis                                                        */
+/* Tahap 3: Infografis. Poster untuk dibaca dan didengar. Bukan permainan.    */
 /* ------------------------------------------------------------------------ */
 
-const BARIS_INFO = [
-  { kiri: { jenis: "sepeda", jumlah: 3 }, kanan: { jenis: "balon", jumlah: 3 } },
-  { kiri: { jenis: "kursi", jumlah: 6 }, kanan: { jenis: "buku", jumlah: 4 } },
-  { kiri: { jenis: "bola", jumlah: 5 }, kanan: { jenis: "layangan", jumlah: 8 } },
-  { kiri: { jenis: "buku", jumlah: 7 }, kanan: { jenis: "kelereng", jumlah: 7 } },
-  { kiri: { jenis: "kelereng", jumlah: 10 }, kanan: { jenis: "bola", jumlah: 9 } },
-];
-
 const SUARA_INFO =
-  "Dua kelompok dan hasilnya. Ketuk ikon di kiri, lalu di kanan. Setiap ketuk, angkanya naik satu. Setelah kedua kelompok penuh, lihat hasilnya dan tandanya.";
+  "Ini poster rangkuman. Baca dan dengarkan setiap bagian. Belum ada yang perlu diketuk untuk menjawab. Kita akan bermain di tahap berikutnya.";
 
-const POLA_TITIK = (warna: string) => ({
-  backgroundImage: `radial-gradient(${warna} 2px, transparent 2px)`,
-  backgroundSize: "22px 22px",
-});
-
-function BarisInfo({
-  b,
+function PanelPoster({
   nomor,
-  angka,
-  ketuk,
+  judul,
+  warna,
+  suara,
+  speakGuru,
+  children,
 }: {
-  b: (typeof BARIS_INFO)[number];
   nomor: number;
-  angka: Record<string, number>;
-  ketuk: (kunci: string, target: number) => void;
+  judul: string;
+  warna: string;
+  suara: string;
+  speakGuru: (t: string) => void;
+  children: React.ReactNode;
 }) {
-  const kk = `${nomor}k`;
-  const kr = `${nomor}r`;
-  const n1 = angka[kk] ?? 0;
-  const n2 = angka[kr] ?? 0;
-  const penuh = n1 >= b.kiri.jumlah && n2 >= b.kanan.jumlah;
-  const letusan = useLetusan();
-  const picuLetusan = letusan.picu;
-  useEffect(() => {
-    if (penuh) picuLetusan();
-  }, [penuh, picuLetusan]);
-
-  const sel = (kunci: string, jenis: string, n: number, target: number) => (
-    <button
-      type="button"
-      aria-label={`${NAMA[jenis]}${n > 0 ? ` ${n}` : ""}`}
-      aria-pressed={n > 0}
-      onClick={() => ketuk(kunci, target)}
-      className={`flex min-w-0 flex-col items-center gap-1 rounded-3xl border-4 px-2 py-2 ${
-        n >= target ? "border-[#7FCB96] bg-[#E8F7EE]" : "border-[#1C01A5] bg-white"
-      } ${n === 0 ? "igil-lompat" : ""}`}
-    >
-      <IkonMainan jenis={jenis} besar kelas="h-14 w-14 shrink-0" />
-      <span className="text-xs font-black text-[#1C01A5]">{NAMA[jenis]}</span>
-      <span
-        key={n}
-        className={`flex h-16 w-16 flex-col items-center justify-center rounded-full border-4 ${
-          n > 0 ? "igil-muncul border-[#1C01A5] bg-[#FFE566]" : "border-dashed border-[#1C01A5]/40 bg-white"
-        }`}
-      >
-        {n > 0 ? (
-          <>
-            <span className="text-3xl font-black leading-none text-[#1C01A5]">{n}</span>
-            <span className="text-[10px] font-black leading-tight text-[#1C01A5]">{kata(n)}</span>
-          </>
-        ) : (
-          <span className="text-2xl font-black text-[#1C01A5]/30">?</span>
-        )}
-      </span>
-    </button>
-  );
-
   return (
-    <div className={`relative space-y-3 p-3 ${STIKER}`}>
-      <div className="grid grid-cols-[1fr_auto_1fr] items-center gap-2">
-        {sel(kk, b.kiri.jenis, n1, b.kiri.jumlah)}
-        <span className="flex h-9 w-9 items-center justify-center rounded-full bg-[#1C01A5] text-xs font-black text-[#FFE566]">
-          VS
+    <section className="overflow-hidden rounded-2xl border-4 bg-white shadow-[0_4px_0_rgba(22,101,52,0.25)]" style={{ borderColor: warna }}>
+      <header className="flex items-center gap-2 px-3 py-2" style={{ backgroundColor: warna }}>
+        <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-white text-lg font-black text-[#1C01A5]">
+          {nomor}
         </span>
-        {sel(kr, b.kanan.jenis, n2, b.kanan.jumlah)}
+        <h4 className="min-w-0 flex-1 text-sm font-black leading-tight tracking-wide text-white">{judul}</h4>
+        <button
+          type="button"
+          aria-label={`Dengarkan: ${judul}`}
+          onClick={() => speakGuru(suara)}
+          className="shrink-0 rounded-full border-2 border-white bg-white/20 px-2 py-1 text-xs font-black text-white"
+        >
+          🔊
+        </button>
+      </header>
+      <div className="space-y-2 p-3">{children}</div>
+    </section>
+  );
+}
+
+function BadgeJumlah({ n, kelas = "" }: { n: number; kelas?: string }) {
+  return (
+    <span
+      className={`inline-flex items-baseline gap-1 rounded-full border-2 border-[#1C01A5] bg-[#FFE566] px-3 py-0.5 ${kelas}`}
+    >
+      <span className="text-xl font-black text-[#1C01A5]">{n}</span>
+      <span className="text-[11px] font-black text-[#1C01A5]">{kata(n)}</span>
+    </span>
+  );
+}
+
+function BarisPasangan({
+  atas,
+  bawah,
+  jenisAtas,
+  jenisBawah,
+}: {
+  atas: number;
+  bawah: number;
+  jenisAtas: string;
+  jenisBawah: string;
+}) {
+  const kolom = Math.max(atas, bawah);
+  const gaya = { gridTemplateColumns: `repeat(${kolom}, minmax(0, 1fr))` };
+  const pasang = Math.min(atas, bawah);
+  return (
+    <div className="space-y-0.5">
+      <div className="grid gap-1" style={gaya}>
+        {Array.from({ length: atas }, (_, i) => (
+          <span
+            key={i}
+            className={`flex justify-center rounded-lg ${i >= bawah ? "bg-[#FFF3C4] ring-2 ring-[#F0AB00]" : ""}`}
+          >
+            <IkonMainan jenis={jenisAtas} kelas="h-8 w-8 shrink-0" />
+          </span>
+        ))}
       </div>
-      <div
-        className={`flex min-h-28 flex-col items-center justify-center gap-1 rounded-2xl border-4 px-2 py-2 text-center ${
-          penuh ? "igil-muncul border-solid border-[#1C01A5] bg-[#FFFBEB]" : "border-dashed border-[#1C01A5]/40 bg-white"
-        }`}
-      >
-        <span className="text-[10px] font-black tracking-widest text-[#1C01A5]/70">HASIL</span>
-        {penuh ? (
-          <>
-            <span className="text-base font-black leading-snug text-[#1C01A5]">
-              {kalimatHubungan(NAMA[b.kiri.jenis], NAMA[b.kanan.jenis], b.kiri.jumlah, b.kanan.jumlah)}
-            </span>
-            <TandaBuaya kiri={b.kiri.jumlah} kanan={b.kanan.jumlah} />
-          </>
-        ) : (
-          <span className="text-sm font-black text-[#1C01A5]/50">Ketuk dua kelompok sampai penuh</span>
-        )}
+      <div className="grid h-5 gap-1" style={gaya}>
+        {Array.from({ length: kolom }, (_, i) => (
+          <span key={i} className="flex justify-center">
+            {i < pasang ? <span className="h-full w-0.5 rounded-full bg-[#1C01A5]" /> : null}
+          </span>
+        ))}
       </div>
-      <Letusan id={letusan.id} />
+      <div className="grid gap-1" style={gaya}>
+        {Array.from({ length: bawah }, (_, i) => (
+          <span
+            key={i}
+            className={`flex justify-center rounded-lg ${i >= atas ? "bg-[#FFF3C4] ring-2 ring-[#F0AB00]" : ""}`}
+          >
+            <IkonMainan jenis={jenisBawah} kelas="h-8 w-8 shrink-0" />
+          </span>
+        ))}
+      </div>
     </div>
   );
 }
 
 export function InfografisBandingB({ speakGuru }: { speakGuru: (teks: string) => void }) {
-  const [angka, setAngka] = useState<Record<string, number>>({});
-  const angkaRef = useRef<Record<string, number>>({});
-
-  const ketuk = useCallback(
-    (kunci: string, target: number) => {
-      const sekarang = angkaRef.current[kunci] ?? 0;
-      if (sekarang >= target) return;
-      const berikut = sekarang + 1;
-      angkaRef.current[kunci] = berikut;
-      setAngka((prev) => ({ ...prev, [kunci]: berikut }));
-      speakGuru(kata(berikut));
-    },
-    [speakGuru]
-  );
-
   return (
-    <div
-      className="space-y-3 rounded-[2rem] border-4 border-[#22C55E] bg-[#F0FDF4] p-3"
-      style={POLA_TITIK("#BBF7D0")}
-    >
+    <div className="space-y-3 rounded-[2rem] border-4 border-[#16A34A] bg-[#F0FDF4] p-3" style={GAYA_POSTER}>
+      <PitaTahap ikon="📰" nama="INFOGRAFIS" cara="Baca dan dengarkan. Belum ada yang dijawab." warna="#16A34A" />
       <div className="flex items-center justify-between gap-2">
-        <h3 className="min-w-0 text-xl font-black leading-tight text-[#1C01A5]">Dua Kelompok dan Hasilnya</h3>
+        <h3 className="min-w-0 text-xl font-black leading-tight text-[#1C01A5]">Cara Membandingkan Benda</h3>
         <button
           type="button"
           onClick={() => speakGuru(SUARA_INFO)}
@@ -491,19 +470,104 @@ export function InfografisBandingB({ speakGuru }: { speakGuru: (teks: string) =>
           🔊 Suara Guru
         </button>
       </div>
-      <BuayaBicara teks="Ketuk gambarnya satu per satu. Angkanya naik sendiri. Kalau dua-duanya penuh, lihat siapa yang menang!" />
-      <div className="grid grid-cols-2 gap-2">
-        <div className="rounded-full bg-[#1C01A5] py-1 text-center text-xs font-black tracking-wide text-[#FFE566]">
-          KELOMPOK KIRI
+
+      <PanelPoster
+        nomor={1}
+        judul="LIHAT DUA KELOMPOK"
+        warna="#2563EB"
+        speakGuru={speakGuru}
+        suara="Ada enam kursi dan empat buku. Enam lebih banyak dari empat. Empat lebih sedikit dari enam."
+      >
+        <div className="grid grid-cols-2 gap-2 text-center">
+          <div className="space-y-1">
+            <p className="text-xs font-black text-[#1C01A5]">Kursi</p>
+            <KelompokBenda jenis="kursi" jumlah={6} />
+            <BadgeJumlah n={6} />
+          </div>
+          <div className="space-y-1">
+            <p className="text-xs font-black text-[#1C01A5]">Buku</p>
+            <KelompokBenda jenis="buku" jumlah={4} />
+            <BadgeJumlah n={4} />
+          </div>
         </div>
-        <div className="rounded-full bg-[#1C01A5] py-1 text-center text-xs font-black tracking-wide text-[#FFE566]">
-          KELOMPOK KANAN
+        <p className="rounded-xl bg-[#EFF6FF] px-2 py-1 text-center text-sm font-black text-[#1C01A5]">
+          Enam lebih banyak dari empat.
+        </p>
+      </PanelPoster>
+
+      <PanelPoster
+        nomor={2}
+        judul="PASANGKAN SATU-SATU"
+        warna="#D97706"
+        speakGuru={speakGuru}
+        suara="Satu kursi, satu balon. Balon habis, tapi dua kursi tidak punya pasangan. Jadi kursi lebih banyak."
+      >
+        <BarisPasangan atas={6} bawah={4} jenisAtas="kursi" jenisBawah="balon" />
+        <p className="rounded-xl bg-[#FFF3C4] px-2 py-1 text-center text-sm font-black text-[#92400E]">
+          Yang tidak punya pasangan berarti lebih banyak.
+        </p>
+      </PanelPoster>
+
+      <PanelPoster
+        nomor={3}
+        judul="SAMA BANYAK"
+        warna="#7C3AED"
+        speakGuru={speakGuru}
+        suara="Tiga sepeda dan tiga balon. Semua punya pasangan. Tidak ada sisa. Jadi sama banyak."
+      >
+        <BarisPasangan atas={3} bawah={3} jenisAtas="sepeda" jenisBawah="balon" />
+        <p className="rounded-xl bg-[#F3E8FF] px-2 py-1 text-center text-sm font-black text-[#5B21B6]">
+          Semua punya pasangan. Tidak ada sisa. Sama banyak.
+        </p>
+      </PanelPoster>
+
+      <PanelPoster
+        nomor={4}
+        judul="GARIS BILANGAN"
+        warna="#0891B2"
+        speakGuru={speakGuru}
+        suara="Di garis bilangan, makin ke kanan makin banyak. Katak jingga berhenti di tujuh. Katak biru di tiga. Tujuh lebih banyak dari tiga."
+      >
+        <GarisBilanganKatak posisiBiru={3} posisiJingga={7} />
+        <p className="rounded-xl bg-[#ECFEFF] px-2 py-1 text-center text-sm font-black text-[#155E75]">
+          Ke kanan makin banyak. Ke kiri makin sedikit.
+        </p>
+      </PanelPoster>
+
+      <PanelPoster
+        nomor={5}
+        judul="TANDA MULUT BUAYA"
+        warna="#DC2626"
+        speakGuru={speakGuru}
+        suara="Mulut buaya selalu terbuka ke bilangan yang lebih banyak. Sembilan lebih banyak dari enam. Empat lebih sedikit dari delapan. Enam sama dengan enam, mulut buaya menutup."
+      >
+        <div className="grid grid-cols-3 gap-1.5 text-center">
+          {[
+            { a: 9, b: 6, nama: "lebih banyak dari" },
+            { a: 4, b: 8, nama: "lebih sedikit dari" },
+            { a: 6, b: 6, nama: "sama dengan" },
+          ].map((c) => {
+            const h = hubungan(c.a, c.b);
+            return (
+              <div key={c.nama} className="space-y-1 rounded-xl bg-[#FEF2F2] px-1 py-2">
+                <div className="flex items-center justify-center gap-1 text-2xl font-black leading-none text-[#1C01A5]">
+                  <span>{c.a}</span>
+                  <span className="rounded-lg bg-[#1C01A5] px-1.5 text-[#FFE566]">{h.tanda}</span>
+                  <span>{c.b}</span>
+                </div>
+                <MulutBuaya arah={h.arah} kelas="mx-auto h-9 w-[4.5rem]" />
+                <p className="text-[11px] font-black leading-tight text-[#7F1D1D]">{c.nama}</p>
+              </div>
+            );
+          })}
         </div>
-      </div>
-      <div className="flex flex-col gap-4">
-        {BARIS_INFO.map((b, i) => (
-          <BarisInfo key={i} b={b} nomor={i} angka={angka} ketuk={ketuk} />
-        ))}
+      </PanelPoster>
+
+      <div className="rounded-2xl border-4 border-dashed border-[#16A34A] bg-white px-3 py-2 text-sm font-black leading-relaxed text-[#14532D]">
+        <p>📌 INGAT</p>
+        <p>1. Pasangkan satu-satu.</p>
+        <p>2. Lihat siapa yang tersisa.</p>
+        <p>3. Pilih tandanya.</p>
       </div>
     </div>
   );
@@ -533,10 +597,12 @@ const LANGKAH_CONCRETE: Langkah[] = [
 
 const JUMLAH_KEGIATAN = 6;
 
-const SUARA_BILANG = "Hitung bendanya satu per satu. Lalu ucapkan jumlahnya sekali saja.";
-const SUARA_PASANG = "Satu kursi, satu balon. Pasangkan sampai ada yang habis. Lalu cari yang tidak punya pasangan.";
+const SUARA_BILANG =
+  "Pegang bendanya satu per satu. Pindahkan ke keranjang sambil menghitung. Lalu ucapkan jumlahnya sekali saja.";
+const SUARA_PASANG =
+  "Pegang balon, lalu letakkan di kursi. Satu kursi, satu balon. Pasangkan sampai ada yang habis. Lalu cari kursi yang tidak punya pasangan.";
 const SUARA_BANDING = "Lihat dua kelompok. Baca perintahnya, lalu ketuk jawabannya.";
-const SUARA_URUT = "Susun kelompok dari yang paling sedikit sampai yang paling banyak.";
+const SUARA_URUT = "Seret kelompok ke kotak bernomor. Mulai dari yang paling sedikit sampai yang paling banyak.";
 const SUARA_CERITA =
   "Kira punya layang-layang. Tika juga punya. Wei memberi lagi pada Kira. Hitung milik Kira, lalu bandingkan dengan Tika.";
 const SUARA_TULIS = "Hitung kedua kelompok. Pilih yang lebih banyak, lalu tulis jumlahnya.";
@@ -552,62 +618,84 @@ function LangkahBilang({
 }: PropsLangkah & { langkah: Langkah; panel: PanelSuara }) {
   const jenis = langkah.jenis ?? "kursi";
   const jumlah = langkah.jumlah ?? 1;
-  const [hitung, setHitung] = useState(0);
-  const hitungRef = useRef(0);
+  const [pindah, setPindah] = useState<number[]>([]);
   const letusan = useLetusan();
   const id = `b-bilang-${jenis}`;
   const suara = panel.suara[id] === true;
-  const penuh = hitung >= jumlah;
-  const ketuk = () => {
-    if (hitungRef.current >= jumlah) return;
-    hitungRef.current += 1;
-    setHitung(hitungRef.current);
-    if (hitungRef.current >= jumlah) letusan.picu();
+  const penuh = pindah.length >= jumlah;
+
+  const pindahkan = (i: number) => {
+    if (pindah.includes(i)) return;
+    const baru = [...pindah, i];
+    setPindah(baru);
+    if (baru.length >= jumlah) letusan.picu();
   };
-  const kolom = jumlah <= 3 ? jumlah : jumlah <= 4 ? 2 : 3;
+  const kolom = jumlah <= 4 ? 2 : 3;
+  const sisaDiMeja = jumlah - pindah.length;
+
   return (
     <>
-      <JudulGame nomor={nomor} total={JUMLAH_KEGIATAN} judul="Membilang" onSuara={() => speakGuru(SUARA_BILANG)} warna="#BFDBFE" />
+      <JudulGame nomor={nomor} total={JUMLAH_KEGIATAN} judul="Membilang" onSuara={() => speakGuru(SUARA_BILANG)} warna="#FDE68A" />
       <BuayaBicara
         teks={
           suara
             ? "Hebat! Jumlahnya sudah kamu ucapkan."
             : penuh
-              ? "Penuh! Hitung bendanya, lalu ucapkan sekali."
-              : `Ketuk kotak kosong sampai penuh. Ada ${NAMA[jenis].toLowerCase()} yang menunggu!`
+              ? "Semua sudah di keranjang! Lihat nomor terakhir, lalu ucapkan jumlahnya."
+              : `Pegang ${NAMA[jenis].toLowerCase()}-nya satu per satu. Pindahkan ke keranjang sambil menghitung!`
         }
       />
-      <button
-        type="button"
-        aria-label={penuh ? `${NAMA[jenis]} sudah penuh` : `Tambah ${NAMA[jenis]}`}
-        aria-pressed={penuh}
-        onClick={ketuk}
-        className={`relative block w-full p-3 ${STIKER}`}
-      >
-        <span
+      <div className={`relative space-y-3 p-3 ${ALAS}`}>
+        <p className="text-xs font-black tracking-wide text-[#6B3F12]">
+          🪑 DI MEJA: {sisaDiMeja} {NAMA[jenis].toLowerCase()}
+        </p>
+        <div
           className="mx-auto grid w-full gap-2"
-          style={{ gridTemplateColumns: `repeat(${kolom}, minmax(0, 1fr))`, maxWidth: 300 }}
+          style={{ gridTemplateColumns: `repeat(${kolom}, minmax(0, 1fr))`, maxWidth: 320 }}
         >
-          {Array.from({ length: jumlah }, (_, i) => (
-            <span
-              key={i}
-              className={`flex aspect-square items-center justify-center rounded-2xl border-4 ${
-                i < hitung ? "border-[#1C01A5] bg-[#EFF6FF]" : "border-dashed border-[#93C5FD] bg-white"
-              }`}
-            >
-              {i < hitung ? (
-                <span className="igil-muncul">
-                  <IkonMainan jenis={jenis} besar kelas="h-14 w-14" />
+          {Array.from({ length: jumlah }, (_, i) =>
+            pindah.includes(i) ? (
+              <span
+                key={i}
+                className="flex aspect-[4/3] items-center justify-center rounded-2xl border-2 border-dashed border-[#A8672D]/50"
+              />
+            ) : (
+              <BendaSeret
+                key={i}
+                id={`o${i}`}
+                label={`${NAMA[jenis]} ${i + 1}, pindahkan ke keranjang`}
+                onKetuk={() => pindahkan(i)}
+                onLepas={(_, x, y) => {
+                  if (zonaDi(x, y) === "keranjang") pindahkan(i);
+                }}
+                kelas="flex aspect-[4/3] items-center justify-center"
+              >
+                <span className="block" style={letakMeja(i)}>
+                  <IkonMainan jenis={jenis} besar kelas="h-16 w-16 drop-shadow-[0_5px_3px_rgba(90,50,10,0.45)]" />
                 </span>
-              ) : (
-                <span className="text-3xl font-black text-[#93C5FD]">+</span>
-              )}
-            </span>
-          ))}
-        </span>
+              </BendaSeret>
+            )
+          )}
+        </div>
+        <div
+          data-zona="keranjang"
+          className="min-h-24 rounded-2xl border-4 border-dashed border-[#7C4A1D] bg-[#F3C98A] p-2"
+        >
+          <p className="mb-1 text-xs font-black tracking-wide text-[#6B3F12]">🧺 KERANJANG: seret atau ketuk bendanya ke sini</p>
+          <div className="flex flex-wrap gap-2">
+            {pindah.map((idx, n) => (
+              <span key={idx} className="igil-muncul relative">
+                <IkonMainan jenis={jenis} kelas="h-11 w-11 shrink-0" />
+                <span className="absolute -right-1 -top-2 flex h-6 w-6 items-center justify-center rounded-full border-2 border-white bg-[#1C01A5] text-xs font-black text-[#FFE566]">
+                  {n + 1}
+                </span>
+              </span>
+            ))}
+          </div>
+        </div>
         <Letusan id={letusan.id} />
-      </button>
-      <JawabSuara id={id} jumlah={jumlah} panel={panel} siap={penuh} belumSiap="Isi semua kotak sampai penuh dulu, ya." />
+      </div>
+      <JawabSuara id={id} jumlah={jumlah} panel={panel} siap={penuh} belumSiap="Pindahkan semua benda ke keranjang dulu, ya." />
       <TombolLanjut teks="LANJUTKAN ⬇️" onClick={lanjut} />
     </>
   );
@@ -618,7 +706,7 @@ const WARNA_PASANG = [MERAH_MUDA, EMAS_TUA, HIJAU, "#60A5FA"];
 function LangkahPasang({ speakGuru, lanjut, nomor }: PropsLangkah) {
   const KURSI = 6;
   const BALON = 4;
-  const [pilihKursi, setPilihKursi] = useState<number | null>(null);
+  const [pilihBalon, setPilihBalon] = useState<number | null>(null);
   const [pasangan, setPasangan] = useState<{ k: number; b: number }[]>([]);
   const [sisa, setSisa] = useState<number[]>([]);
   const [kabar, setKabar] = useState<Kabar>(null);
@@ -626,6 +714,15 @@ function LangkahPasang({ speakGuru, lanjut, nomor }: PropsLangkah) {
   const kursiTerpasang = pasangan.map((p) => p.k);
   const balonTerpasang = pasangan.map((p) => p.b);
   const fase = balonTerpasang.length >= BALON ? (sisa.length >= KURSI - BALON ? "selesai" : "sisa") : "pasang";
+
+  const pasangkan = (b: number, k: number) => {
+    if (fase !== "pasang") return;
+    if (balonTerpasang.includes(b) || kursiTerpasang.includes(k)) return;
+    const baru = [...pasangan, { k, b }];
+    setPasangan(baru);
+    setPilihBalon(null);
+    setKabar(baru.length >= BALON ? { teks: "Balonnya habis! Sekarang cari kursi yang sendirian.", ok: true } : null);
+  };
 
   const ketukKursi = (k: number) => {
     if (fase === "selesai") return;
@@ -646,37 +743,26 @@ function LangkahPasang({ speakGuru, lanjut, nomor }: PropsLangkah) {
       return;
     }
     if (kursiTerpasang.includes(k)) return;
-    setPilihKursi(k);
-    setKabar(null);
-  };
-  const ketukBalon = (b: number) => {
-    if (fase !== "pasang") return;
-    if (balonTerpasang.includes(b)) return;
-    if (pilihKursi === null) {
-      setKabar({ teks: "Ketuk satu kursi dulu.", ok: false });
+    if (pilihBalon === null) {
+      setKabar({ teks: "Pegang satu balon dulu. Seret ke kursi, atau ketuk balon lalu ketuk kursi.", ok: false });
       return;
     }
-    const baru = [...pasangan, { k: pilihKursi, b }];
-    setPasangan(baru);
-    setPilihKursi(null);
-    setKabar(
-      baru.length >= BALON ? { teks: "Balonnya habis! Sekarang cari kursi yang sendirian.", ok: true } : null
-    );
+    pasangkan(pilihBalon, k);
   };
 
   const hint =
     fase === "pasang"
-      ? "Ketuk satu kursi, lalu satu balon. Mereka jadi sepasang!"
+      ? "Seret balon ke kursi. Satu balon untuk satu kursi!"
       : fase === "sisa"
-        ? "Balonnya habis. Siapa kursi yang tidak punya pasangan? Ketuk dia!"
+        ? "Balonnya habis. Siapa kursi yang tidak punya balon? Ketuk dia!"
         : "Hore! Semua sudah ketemu.";
 
   return (
     <>
       <JudulGame nomor={nomor} total={JUMLAH_KEGIATAN} judul="Memasangkan" onSuara={() => speakGuru(SUARA_PASANG)} warna="#FBCFE8" />
       <BuayaBicara teks={hint} />
-      <div className={`relative space-y-3 p-3 ${STIKER}`}>
-        <div className="grid grid-cols-6 gap-1.5">
+      <div className={`relative space-y-3 p-3 ${ALAS}`}>
+        <div className="grid grid-cols-6 gap-1.5 pt-3">
           {Array.from({ length: KURSI }, (_, k) => {
             const idx = kursiTerpasang.indexOf(k);
             const warna = idx >= 0 ? WARNA_PASANG[idx] : sisa.includes(k) ? EMAS_TUA : null;
@@ -685,53 +771,71 @@ function LangkahPasang({ speakGuru, lanjut, nomor }: PropsLangkah) {
               <button
                 key={k}
                 type="button"
+                data-zona={`kursi-${k}`}
                 aria-label={`Kursi ${k + 1}`}
                 onClick={() => ketukKursi(k)}
-                className={`relative flex h-16 w-full items-center justify-center rounded-2xl border-4 bg-white ${
-                  pilihKursi === k ? "igil-lompat bg-[#FFF7CC]" : ""
+                className={`relative flex h-16 w-full items-center justify-center rounded-2xl border-4 bg-[#FFF6E5] ${
+                  pilihBalon !== null && idx < 0 && fase === "pasang" ? "igil-lompat" : ""
                 } ${sendiri ? "igil-goyang" : ""}`}
-                style={{ borderColor: warna ?? (pilihKursi === k ? EMAS_TUA : "#93C5FD") }}
+                style={{ borderColor: warna ?? "#A8672D" }}
               >
                 <IkonMainan jenis="kursi" kelas="h-10 w-10 shrink-0" />
                 {idx >= 0 ? (
-                  <span
-                    className="absolute -right-1.5 -top-2 flex h-6 w-6 items-center justify-center rounded-full border-2 border-white text-xs font-black text-white"
-                    style={{ backgroundColor: warna ?? BIRU }}
-                  >
-                    {idx + 1}
-                  </span>
+                  <>
+                    <span className="igil-muncul pointer-events-none absolute -right-2 -top-4 block">
+                      <IkonMainan jenis="balon" kelas="h-8 w-8" />
+                    </span>
+                    <span
+                      className="absolute -bottom-2 -right-1.5 flex h-6 w-6 items-center justify-center rounded-full border-2 border-white text-xs font-black text-white"
+                      style={{ backgroundColor: warna ?? BIRU }}
+                    >
+                      {idx + 1}
+                    </span>
+                  </>
                 ) : null}
                 {sisa.includes(k) ? <span className="absolute -bottom-3 text-lg">😮</span> : null}
               </button>
             );
           })}
         </div>
-        <div className="grid grid-cols-6 gap-1.5">
-          {Array.from({ length: BALON }, (_, b) => {
-            const idx = balonTerpasang.indexOf(b);
-            return (
-              <button
-                key={b}
-                type="button"
-                aria-label={`Balon ${b + 1}`}
-                onClick={() => ketukBalon(b)}
-                className={`relative flex h-16 w-full items-center justify-center rounded-2xl border-4 bg-white ${
-                  idx < 0 && pilihKursi !== null ? "igil-lompat" : ""
-                }`}
-                style={{ borderColor: idx >= 0 ? WARNA_PASANG[idx] : "#93C5FD" }}
-              >
-                <IkonMainan jenis="balon" kelas="h-10 w-10 shrink-0" />
-                {idx >= 0 ? (
+        <div className="rounded-2xl border-2 border-dashed border-[#7C4A1D] bg-[#F3C98A] p-2">
+          <p className="mb-1 text-xs font-black tracking-wide text-[#6B3F12]">🎈 BALON: pegang, lalu letakkan di kursi</p>
+          <div className="grid grid-cols-4 gap-2">
+            {Array.from({ length: BALON }, (_, b) => {
+              const idx = balonTerpasang.indexOf(b);
+              if (idx >= 0) {
+                return (
                   <span
-                    className="absolute -right-1.5 -top-2 flex h-6 w-6 items-center justify-center rounded-full border-2 border-white text-xs font-black text-white"
-                    style={{ backgroundColor: WARNA_PASANG[idx] }}
-                  >
-                    {idx + 1}
+                    key={b}
+                    className="flex h-16 items-center justify-center rounded-2xl border-2 border-dashed border-[#A8672D]/50"
+                  />
+                );
+              }
+              return (
+                <BendaSeret
+                  key={b}
+                  id={`b${b}`}
+                  aktif={fase === "pasang"}
+                  label={`Balon ${b + 1}`}
+                  onKetuk={() => {
+                    setPilihBalon((p) => (p === b ? null : b));
+                    setKabar(null);
+                  }}
+                  onLepas={(_, x, y) => {
+                    const z = zonaDi(x, y);
+                    if (z && z.startsWith("kursi-")) pasangkan(b, Number(z.slice(6)));
+                  }}
+                  kelas={`flex h-16 items-center justify-center rounded-2xl ${
+                    pilihBalon === b ? "igil-lompat bg-[#FFF2B8] ring-4 ring-[#F0AB00]" : ""
+                  }`}
+                >
+                  <span className="block" style={letakMeja(b + 2)}>
+                    <IkonMainan jenis="balon" besar kelas="h-14 w-14 drop-shadow-[0_5px_3px_rgba(90,50,10,0.45)]" />
                   </span>
-                ) : null}
-              </button>
-            );
-          })}
+                </BendaSeret>
+              );
+            })}
+          </div>
         </div>
         <Letusan id={letusan.id} />
       </div>
@@ -808,13 +912,13 @@ function LangkahBanding({ speakGuru, lanjut, nomor }: PropsLangkah) {
             ? "igil-muncul border-[#7FCB96] bg-[#E8F7EE]"
             : keliru
               ? "igil-goyang border-[#E98989] bg-[#FDECEC]"
-              : "border-[#1C01A5] bg-white shadow-[0_4px_0_rgba(28,1,165,0.22)]"
+              : "border-[#A8672D] bg-[#FFF1D6] shadow-[0_4px_0_rgba(120,70,20,0.35)]"
         }`}
       >
-        <span className="rounded-full bg-[#1C01A5] px-3 py-0.5 text-xs font-black text-[#FFE566]">
+        <span className="rounded-full bg-[#6B3F12] px-3 py-0.5 text-xs font-black text-[#FFE9B8]">
           {NAMA[kelompok.jenis]}
         </span>
-        <KelompokBenda jenis={kelompok.jenis} jumlah={kelompok.jumlah} />
+        <KelompokBenda jenis={kelompok.jenis} jumlah={kelompok.jumlah} nyata />
       </button>
     );
   };
@@ -865,61 +969,94 @@ const KELOMPOK_URUT = [
 
 function LangkahUrut({ speakGuru, lanjut, nomor }: PropsLangkah) {
   const terurut = [...KELOMPOK_URUT].sort((a, b) => a.jumlah - b.jumlah);
-  const [pilih, setPilih] = useState<string[]>([]);
+  const [slot, setSlot] = useState<(string | null)[]>(() => terurut.map(() => null));
   const [kabar, setKabar] = useState<Kabar>(null);
   const [keliru, setKeliru] = useState<string | null>(null);
   const letusan = useLetusan();
-  const selesai = pilih.length >= terurut.length;
-  const ketuk = (id: string) => {
-    if (selesai || pilih.includes(id)) return;
-    if (terurut[pilih.length].id === id) {
-      const baru = [...pilih, id];
-      setPilih(baru);
+  const terisi = slot.filter(Boolean).length;
+  const selesai = terisi >= terurut.length;
+
+  const taruh = (id: string, i: number) => {
+    if (selesai || slot.includes(id) || slot[i]) return;
+    if (terurut[i].id === id) {
+      const baru = [...slot];
+      baru[i] = id;
+      setSlot(baru);
       setKeliru(null);
-      if (baru.length >= terurut.length) {
+      if (baru.filter(Boolean).length >= terurut.length) {
         setKabar({ teks: "Urutannya pas. Dari sedikit ke banyak.", ok: true });
         letusan.picu();
       } else {
-        setKabar({ teks: "Benar. Lanjut ke kelompok berikutnya.", ok: true });
+        setKabar({ teks: "Benar. Letakkan kelompok berikutnya.", ok: true });
       }
     } else {
       setKeliru(id);
-      setKabar({ teks: "Belum. Cari kelompok yang lebih sedikit.", ok: false });
+      setKabar({ teks: "Belum di tempat yang pas. Hitung dulu, mana yang lebih sedikit.", ok: false });
     }
   };
+  const ketuk = (id: string) => {
+    const i = slot.findIndex((s) => s === null);
+    if (i >= 0) taruh(id, i);
+  };
+
+  const kartu = (k: (typeof KELOMPOK_URUT)[number]) => (
+    <div className="flex min-w-0 flex-col items-center gap-1 rounded-2xl border-4 border-[#A8672D] bg-[#FFF1D6] px-1 py-2 shadow-[0_4px_0_rgba(120,70,20,0.35)]">
+      <span className="rounded-full bg-[#6B3F12] px-3 py-0.5 text-xs font-black text-[#FFE9B8]">{NAMA[k.jenis]}</span>
+      <KelompokBenda jenis={k.jenis} jumlah={k.jumlah} nyata />
+    </div>
+  );
+
   return (
     <>
       <JudulGame nomor={nomor} total={JUMLAH_KEGIATAN} judul="Mengurutkan" onSuara={() => speakGuru(SUARA_URUT)} warna="#BBF7D0" />
-      <BuayaBicara teks="Ketuk dari kelompok yang paling sedikit. Nomor 1, 2, 3, 4!" />
-      <div className="relative grid grid-cols-2 gap-3">
-        {KELOMPOK_URUT.map((k) => {
-          const nomorUrut = pilih.indexOf(k.id);
-          return (
-            <button
-              key={k.id}
-              type="button"
-              aria-label={`Kelompok ${NAMA[k.jenis]}`}
-              onClick={() => ketuk(k.id)}
-              className={`relative flex min-w-0 flex-col items-center gap-2 rounded-3xl border-4 px-2 py-3 ${
-                nomorUrut >= 0
-                  ? "igil-muncul border-[#7FCB96] bg-[#E8F7EE]"
-                  : keliru === k.id
-                    ? "igil-goyang border-[#E98989] bg-[#FDECEC]"
-                    : "border-[#1C01A5] bg-white shadow-[0_4px_0_rgba(28,1,165,0.22)]"
-              }`}
-            >
-              <span className="rounded-full bg-[#1C01A5] px-3 py-0.5 text-xs font-black text-[#FFE566]">
-                {NAMA[k.jenis]}
-              </span>
-              <KelompokBenda jenis={k.jenis} jumlah={k.jumlah} />
-              {nomorUrut >= 0 ? (
-                <span className="absolute -right-2 -top-3 flex h-9 w-9 items-center justify-center rounded-full border-4 border-white bg-[#1C01A5] text-lg font-black text-[#FFE566]">
-                  {nomorUrut + 1}
-                </span>
-              ) : null}
-            </button>
-          );
-        })}
+      <BuayaBicara teks="Seret kelompok ke kotak bernomor. Kotak 1 untuk yang paling sedikit!" />
+      <div className="relative space-y-3">
+        <div className="grid grid-cols-2 gap-2">
+          {KELOMPOK_URUT.map((k) =>
+            slot.includes(k.id) ? (
+              <span
+                key={k.id}
+                className="flex min-h-24 items-center justify-center rounded-2xl border-2 border-dashed border-[#A8672D]/50"
+              />
+            ) : (
+              <BendaSeret
+                key={k.id}
+                id={k.id}
+                label={`Kelompok ${NAMA[k.jenis]}`}
+                onKetuk={ketuk}
+                onLepas={(_, x, y) => {
+                  const z = zonaDi(x, y);
+                  if (z && z.startsWith("slot-")) taruh(k.id, Number(z.slice(5)));
+                }}
+                kelas={keliru === k.id ? "igil-goyang" : ""}
+              >
+                {kartu(k)}
+              </BendaSeret>
+            )
+          )}
+        </div>
+        <div className="rounded-2xl border-4 border-dashed border-[#7C4A1D] bg-[#F3C98A] p-2">
+          <p className="mb-2 text-xs font-black tracking-wide text-[#6B3F12]">📏 SEDIKIT → BANYAK</p>
+          <div className="grid grid-cols-2 gap-2">
+            {terurut.map((_, i) => {
+              const isi = KELOMPOK_URUT.find((k) => k.id === slot[i]);
+              return (
+                <div
+                  key={i}
+                  data-zona={`slot-${i}`}
+                  className={`relative flex min-h-24 items-center justify-center rounded-2xl border-4 px-1 py-2 ${
+                    isi ? "igil-muncul border-[#7FCB96] bg-[#E8F7EE]" : "border-dashed border-[#7C4A1D]/60 bg-[#FFF6E5]"
+                  }`}
+                >
+                  <span className="absolute -left-2 -top-3 flex h-8 w-8 items-center justify-center rounded-full border-4 border-white bg-[#1C01A5] text-base font-black text-[#FFE566]">
+                    {i + 1}
+                  </span>
+                  {isi ? <KelompokBenda jenis={isi.jenis} jumlah={isi.jumlah} /> : null}
+                </div>
+              );
+            })}
+          </div>
+        </div>
         <Letusan id={letusan.id} />
       </div>
       <KabarChip kabar={kabar} />
@@ -943,9 +1080,9 @@ function LangkahCerita({
   const jumlahKira = datang ? 5 : 3;
 
   const kelompok = (nama: string, jumlah: number, baruDari?: number) => (
-    <div className="flex min-w-0 flex-col items-center gap-2 rounded-3xl border-4 border-[#1C01A5] bg-white px-2 py-3 shadow-[0_4px_0_rgba(28,1,165,0.22)]">
-      <span className="rounded-full bg-[#1C01A5] px-4 py-0.5 text-sm font-black text-[#FFE566]">{nama}</span>
-      <KelompokBenda jenis="layangan" jumlah={jumlah} baruDari={baruDari} />
+    <div className="flex min-w-0 flex-col items-center gap-2 rounded-3xl border-4 border-[#A8672D] bg-[#FFF1D6] px-2 py-3 shadow-[0_4px_0_rgba(120,70,20,0.35)]">
+      <span className="rounded-full bg-[#6B3F12] px-4 py-0.5 text-sm font-black text-[#FFE9B8]">{nama}</span>
+      <KelompokBenda jenis="layangan" jumlah={jumlah} baruDari={baruDari} nyata />
     </div>
   );
 
@@ -1030,10 +1167,10 @@ function LangkahTulis({ speakGuru, lanjut, nomor }: PropsLangkah) {
         ].map((k) => (
           <div
             key={k.jenis}
-            className="flex min-w-0 flex-col items-center gap-2 rounded-3xl border-4 border-[#1C01A5] bg-white px-2 py-3 shadow-[0_4px_0_rgba(28,1,165,0.22)]"
+            className="flex min-w-0 flex-col items-center gap-2 rounded-3xl border-4 border-[#A8672D] bg-[#FFF1D6] px-2 py-3 shadow-[0_4px_0_rgba(120,70,20,0.35)]"
           >
-            <span className="rounded-full bg-[#1C01A5] px-3 py-0.5 text-xs font-black text-[#FFE566]">{NAMA[k.jenis]}</span>
-            <KelompokBenda jenis={k.jenis} jumlah={k.jumlah} />
+            <span className="rounded-full bg-[#6B3F12] px-3 py-0.5 text-xs font-black text-[#FFE9B8]">{NAMA[k.jenis]}</span>
+            <KelompokBenda jenis={k.jenis} jumlah={k.jumlah} nyata />
           </div>
         ))}
       </div>
@@ -1067,10 +1204,8 @@ export function ConcreteBandingB({ speakGuru, panel, hentikan, gulir, onSelesai 
   const dasar = { speakGuru, lanjut, nomor: langkah.kegiatan, judul: langkah.judul };
 
   return (
-    <div
-      className="space-y-3 rounded-[2rem] border-4 border-[#3B82F6] bg-[#EFF6FF] p-3"
-      style={POLA_TITIK("#BFDBFE")}
-    >
+    <div className="space-y-3 rounded-[2rem] border-4 border-[#A8672D] p-3" style={GAYA_MEJA}>
+      <PitaTahap ikon="🧸" nama="CONCRETE" cara="Pegang dan pindahkan benda nyata." warna="#8A5322" />
       <div className="flex items-center gap-1.5" aria-label={`Kegiatan ${langkah.kegiatan} dari ${JUMLAH_KEGIATAN}`}>
         {Array.from({ length: JUMLAH_KEGIATAN }, (_, i) => (
           <span
@@ -1121,8 +1256,8 @@ const KARTU_GAMBAR_B: KartuGambar[] = [
     kunci: 5,
     tugas: "Ucapkan jumlah baris yang lebih banyak.",
     hasil: "Baris atas punya sisa. Baris atas lebih banyak.",
-    suara: "Bangun dua baris. Lihat garis pasangannya. Lalu ucapkan jumlah baris yang lebih banyak.",
-    bantuan: "Ketuk baris atas dan baris bawah sampai petaknya pas. Lihat petak yang tidak punya pasangan.",
+    suara: "Warnai dua baris petak. Kotak biru untuk kursi, bulat jingga untuk balon. Lihat garis pasangannya. Lalu ucapkan jumlah baris yang lebih banyak.",
+    bantuan: "Ketuk tiap baris untuk mewarnai petaknya. Lihat petak yang tidak punya pasangan.",
   },
   {
     id: "b-gambar-p2",
@@ -1133,8 +1268,8 @@ const KARTU_GAMBAR_B: KartuGambar[] = [
     kunci: 6,
     tugas: "Ucapkan jumlah batang yang lebih pendek.",
     hasil: "Batang buku lebih panjang. Buku lebih banyak dari bola.",
-    suara: "Bangun dua batang. Lihat mana yang lebih pendek. Lalu ucapkan jumlah batang yang pendek.",
-    bantuan: "Ketuk dua batang sampai pas. Batang yang lebih pendek berarti lebih sedikit.",
+    suara: "Warnai dua batang. Lihat mana yang lebih pendek. Lalu ucapkan jumlah batang yang pendek.",
+    bantuan: "Ketuk tiap batang untuk mewarnainya. Batang yang lebih pendek berarti lebih sedikit.",
   },
   {
     id: "b-gambar-p3",
@@ -1145,8 +1280,8 @@ const KARTU_GAMBAR_B: KartuGambar[] = [
     kunci: 8,
     tugas: "Ucapkan jumlah di salah satu bingkai.",
     hasil: "Tidak ada petak sisa. Sama banyak.",
-    suara: "Isi dua bingkai. Lalu ucapkan jumlah di salah satu bingkai, dan tulis.",
-    bantuan: "Isi dua bingkai sampai penuh. Lihat apakah ada petak sisa.",
+    suara: "Warnai dua bingkai. Lalu ucapkan jumlah di salah satu bingkai, dan tulis.",
+    bantuan: "Warnai dua bingkai sampai penuh. Lihat apakah ada petak sisa.",
   },
   {
     id: "b-gambar-p4",
@@ -1164,13 +1299,52 @@ const KARTU_GAMBAR_B: KartuGambar[] = [
   },
 ];
 
+/** Petak gambar: kotak untuk baris atas, bulat untuk baris bawah. Diwarnai dengan krayon. */
 function Petak({ baris, terisi }: { baris: "atas" | "bawah"; terisi: boolean }) {
-  return terisi ? (
-    <span className="block w-full">
-      <PetakWajah baris={baris} />
-    </span>
-  ) : (
-    <span className="block aspect-square w-full rounded-xl border-4 border-dashed border-[#F0AB00] bg-white" />
+  const bulat = baris === "bawah";
+  const warna = bulat ? "#FB923C" : "#60A5FA";
+  const bentuk = (props: {
+    fill: string;
+    fillOpacity?: number;
+    stroke: string;
+    strokeWidth: number;
+    strokeDasharray?: string;
+  }) =>
+    bulat ? (
+      <circle cx="20" cy="20" r="16" {...props} />
+    ) : (
+      <rect x="4" y="4" width="32" height="32" rx="5" {...props} />
+    );
+  return (
+    <svg viewBox="0 0 40 40" className={`block w-full ${terisi ? "igil-muncul" : ""}`} aria-hidden="true">
+      {terisi ? (
+        <>
+          {bentuk({ fill: warna, fillOpacity: 0.8, stroke: "#374151", strokeWidth: 2.2 })}
+          <path
+            d="M11 29 L29 11 M11 21 L21 11 M19 29 L29 19"
+            stroke="#FFFFFF"
+            strokeOpacity="0.55"
+            strokeWidth="3"
+            strokeLinecap="round"
+          />
+        </>
+      ) : (
+        bentuk({ fill: "none", stroke: "#9CA3AF", strokeWidth: 2.4, strokeDasharray: "4 3" })
+      )}
+    </svg>
+  );
+}
+
+function LegendaGambar({ atas, bawah }: { atas: string; bawah: string }) {
+  return (
+    <div className="flex flex-wrap items-center justify-center gap-x-4 gap-y-1 rounded-lg border-2 border-dashed border-[#9CA3AF] bg-white px-2 py-1 text-xs font-black text-[#374151]">
+      <span className="flex items-center gap-1">
+        <span className="block h-4 w-4 rounded-sm border-2 border-[#374151] bg-[#60A5FA]" aria-hidden="true" />= 1 {atas}
+      </span>
+      <span className="flex items-center gap-1">
+        <span className="block h-4 w-4 rounded-full border-2 border-[#374151] bg-[#FB923C]" aria-hidden="true" />= 1 {bawah}
+      </span>
+    </div>
   );
 }
 
@@ -1240,9 +1414,10 @@ function IsiKartuGambar({
         onSuara={() => speakGuru(kartu.suara)}
         warna="#FDE68A"
       />
-      <BuayaBicara teks={hint} />
+      <CatatanTempel teks={hint} />
 
-      <div className={`relative p-3 ${STIKER}`}>
+      <div className="relative space-y-2 rounded-lg border-[3px] border-[#6B7280] bg-white/90 p-3 shadow-[3px_4px_0_rgba(0,0,0,0.12)]">
+        {kartu.bentuk === "garis" ? null : <LegendaGambar atas={kartu.atas.nama} bawah={kartu.bawah.nama} />}
         {kartu.bentuk === "pasangan" ? (
           <div className="space-y-1">
             <button
@@ -1251,7 +1426,7 @@ function IsiKartuGambar({
               onClick={tambahAtas}
               className="igil-tanpa-tepi block w-full space-y-1 text-left"
             >
-              <span className="inline-block rounded-full bg-[#1C01A5] px-3 py-0.5 text-xs font-black text-[#FFE566]">
+              <span className="inline-block border-b-2 border-[#6B7280] px-1 text-sm font-black text-[#374151]">
                 {kartu.atas.nama}
               </span>
               <span className="grid justify-center gap-1.5" style={gayaKolom}>
@@ -1280,7 +1455,7 @@ function IsiKartuGambar({
               onClick={tambahBawah}
               className="igil-tanpa-tepi block w-full space-y-1 text-left"
             >
-              <span className="inline-block rounded-full bg-[#1C01A5] px-3 py-0.5 text-xs font-black text-[#FFE566]">
+              <span className="inline-block border-b-2 border-[#6B7280] px-1 text-sm font-black text-[#374151]">
                 {kartu.bawah.nama}
               </span>
               <span className="grid justify-center gap-1.5" style={gayaKolom}>
@@ -1305,14 +1480,14 @@ function IsiKartuGambar({
                 onClick={b.ketuk}
                 className="igil-tanpa-tepi block w-full space-y-1 text-left"
               >
-                <span className="inline-block rounded-full bg-[#1C01A5] px-3 py-0.5 text-xs font-black text-[#FFE566]">
+                <span className="inline-block border-b-2 border-[#6B7280] px-1 text-sm font-black text-[#374151]">
                   Batang {b.data.nama}
                 </span>
                 <span className="flex gap-1">
                   {Array.from({ length: b.data.jumlah }, (_, i) =>
                     i < b.h ? (
                       <span key={i} className="block w-8 shrink-0">
-                        <PetakWajah baris={b.sisi} />
+                        <Petak baris={b.sisi} terisi />
                       </span>
                     ) : (
                       <span
@@ -1338,9 +1513,9 @@ function IsiKartuGambar({
                 type="button"
                 aria-label={`Bingkai ${b.data.nama}`}
                 onClick={b.ketuk}
-                className="space-y-1 rounded-2xl border-4 border-[#F0AB00] bg-[#FFFBEB] p-2 text-left"
+                className="space-y-1 rounded-lg border-[3px] border-[#6B7280] bg-white p-2 text-left"
               >
-                <span className="block rounded-full bg-[#1C01A5] px-2 py-0.5 text-center text-xs font-black text-[#FFE566]">
+                <span className="block border-b-2 border-[#6B7280] px-1 text-center text-sm font-black text-[#374151]">
                   {b.data.nama}
                 </span>
                 <span className="grid grid-cols-[repeat(4,minmax(0,2.5rem))] justify-center gap-1">
@@ -1382,7 +1557,7 @@ function IsiKartuGambar({
       </div>
 
       <p className="text-center text-base font-black text-[#1C01A5]">{kartu.tugas}</p>
-      <JawabSuara id={kartu.id} jumlah={kartu.kunci} panel={panel} siap={penuh} belumSiap="Bangun diagramnya dulu, ya." />
+      <JawabSuara id={kartu.id} jumlah={kartu.kunci} panel={panel} siap={penuh} belumSiap="Warnai diagramnya dulu, ya." />
 
       {suara ? (
         <div className="igil-muncul space-y-2 rounded-3xl border-4 border-[#7FCB96] bg-[#E8F7EE] p-3 text-center">
@@ -1428,10 +1603,9 @@ export function PictureBandingB({ speakGuru, panel, hentikan, gulir, onSelesai }
   };
 
   return (
-    <div
-      className="space-y-3 rounded-[2rem] border-4 border-[#F59E0B] bg-[#FFFBEB] p-3"
-      style={POLA_TITIK("#FDE68A")}
-    >
+    <div className="space-y-3 rounded-2xl border-4 border-[#6B7280] p-3 pt-0" style={GAYA_KERTAS}>
+      <SpiralBuku />
+      <PitaTahap ikon="🖍️" nama="PICTURE" cara="Lihat gambarnya, lalu warnai petaknya." warna="#B45309" />
       <div className="flex items-center gap-1.5">
         {KARTU_GAMBAR_B.map((k, i) => (
           <span
@@ -1468,6 +1642,7 @@ type KartuLambang = {
   salahTanda: string;
   kalimat: string;
   tulis: boolean;
+  tambahan: "kilat" | "urut" | null;
 };
 
 const KARTU_LAMBANG_B: KartuLambang[] = [
@@ -1477,12 +1652,13 @@ const KARTU_LAMBANG_B: KartuLambang[] = [
     kanan: 6,
     tugas: "Ucapkan bilangan yang lebih banyak.",
     kunciSuara: 9,
-    bantuan: "Pilih tandanya. Mulut buaya menghadap bilangan yang lebih banyak. Lalu ucapkan sekali.",
+    bantuan: "Pilih tandanya. Mulut tanda selalu terbuka ke bilangan yang lebih banyak. Lalu ucapkan sekali.",
     suara:
       "Lihat dua bilangan. Pilih tandanya. Ingat, mulut buaya menghadap yang lebih banyak. Lalu ucapkan bilangan yang lebih banyak.",
     salahTanda: "Belum. Mulut buaya menghadap bilangan yang lebih banyak.",
     kalimat: "Sembilan lebih banyak dari enam. Enam lebih sedikit dari sembilan.",
     tulis: false,
+    tambahan: "kilat",
   },
   {
     id: "b-lambang-l2",
@@ -1490,11 +1666,12 @@ const KARTU_LAMBANG_B: KartuLambang[] = [
     kanan: 8,
     tugas: "Ucapkan bilangan yang lebih sedikit.",
     kunciSuara: 4,
-    bantuan: "Pilih tandanya. Mulut buaya menghadap bilangan yang lebih banyak. Lalu ucapkan sekali.",
+    bantuan: "Pilih tandanya. Mulut tanda selalu terbuka ke bilangan yang lebih banyak. Lalu ucapkan sekali.",
     suara: "Lihat dua bilangan. Pilih tandanya. Lalu ucapkan bilangan yang lebih sedikit.",
     salahTanda: "Belum. Mulut buaya menghadap bilangan yang lebih banyak.",
     kalimat: "Empat lebih sedikit dari delapan. Delapan lebih banyak dari empat.",
     tulis: false,
+    tambahan: "urut",
   },
   {
     id: "b-lambang-l3",
@@ -1507,6 +1684,7 @@ const KARTU_LAMBANG_B: KartuLambang[] = [
     salahTanda: "Belum. Kalau sama banyak, buaya menutup mulut.",
     kalimat: "Enam sama dengan enam. Enam sama banyak dengan enam.",
     tulis: true,
+    tambahan: null,
   },
 ];
 
@@ -1515,6 +1693,110 @@ const PILIHAN_TANDA: { tanda: string; arah: ArahBuaya; nama: string }[] = [
   { tanda: "<", arah: "kanan", nama: "lebih sedikit dari" },
   { tanda: "=", arah: "tutup", nama: "sama dengan" },
 ];
+
+const SOAL_KILAT: [number, number][] = [
+  [2, 8],
+  [7, 7],
+  [5, 1],
+];
+
+function LatihanKilat() {
+  const [jawab, setJawab] = useState<(string | null)[]>(() => SOAL_KILAT.map(() => null));
+  return (
+    <div className="igil-muncul space-y-2 rounded-lg border-[3px] border-[#1C01A5] bg-white/90 p-3">
+      <p className="text-sm font-black text-[#1C01A5]">✏️ Latihan kilat: isi tanda yang pas</p>
+      {SOAL_KILAT.map(([a, b], i) => {
+        const kunci = hubungan(a, b).tanda;
+        const j = jawab[i];
+        const benar = j === kunci;
+        return (
+          <div key={i} className="flex items-center justify-center gap-2">
+            <span className="w-9 text-center text-4xl font-black text-[#1C01A5]">{a}</span>
+            <span
+              className={`flex h-12 w-12 items-center justify-center rounded-lg border-[3px] text-3xl font-black ${
+                j === null
+                  ? "border-dashed border-[#1C01A5]/50 text-[#1C01A5]/30"
+                  : benar
+                    ? "igil-muncul border-[#7FCB96] bg-[#E8F7EE] text-[#166534]"
+                    : "igil-goyang border-[#E98989] bg-[#FDECEC] text-[#991B1B]"
+              }`}
+            >
+              {j ?? "?"}
+            </span>
+            <span className="w-9 text-center text-4xl font-black text-[#1C01A5]">{b}</span>
+            <span className="flex gap-1">
+              {[">", "<", "="].map((tt) => (
+                <button
+                  key={tt}
+                  type="button"
+                  aria-label={`Tanda ${tt} untuk ${a} dan ${b}`}
+                  onClick={() => {
+                    if (benar) return;
+                    setJawab((prev) => prev.map((x, n) => (n === i ? tt : x)));
+                  }}
+                  className="h-11 w-11 rounded-lg border-[3px] border-[#1C01A5] bg-[#FFE566] text-2xl font-black text-[#1C01A5]"
+                >
+                  {tt}
+                </button>
+              ))}
+            </span>
+          </div>
+        );
+      })}
+    </div>
+  );
+}
+
+const DERET_URUT = [7, 3, 9, 5];
+
+function UrutAngka() {
+  const urut = [...DERET_URUT].sort((a, b) => a - b);
+  const [pilih, setPilih] = useState<number[]>([]);
+  const [salah, setSalah] = useState<number | null>(null);
+  const selesai = pilih.length >= urut.length;
+  return (
+    <div className="igil-muncul space-y-2 rounded-lg border-[3px] border-[#1C01A5] bg-white/90 p-3">
+      <p className="text-sm font-black text-[#1C01A5]">✏️ Ketuk angka dari yang terkecil</p>
+      <div className="flex items-center justify-center gap-2">
+        {DERET_URUT.map((n) => (
+          <button
+            key={n}
+            type="button"
+            aria-label={`Angka ${n}`}
+            onClick={() => {
+              if (selesai || pilih.includes(n)) return;
+              if (urut[pilih.length] === n) {
+                setPilih((p) => [...p, n]);
+                setSalah(null);
+              } else {
+                setSalah(n);
+              }
+            }}
+            className={`h-16 w-16 rounded-lg border-[3px] text-4xl font-black text-[#1C01A5] ${
+              pilih.includes(n)
+                ? "border-[#7FCB96] bg-[#E8F7EE] opacity-60"
+                : salah === n
+                  ? "igil-goyang border-[#E98989] bg-[#FDECEC]"
+                  : "border-[#1C01A5] bg-[#FFE566]"
+            }`}
+          >
+            {n}
+          </button>
+        ))}
+      </div>
+      <div className="flex min-h-12 items-center justify-center gap-2 text-4xl font-black text-[#1C01A5]">
+        {pilih.length === 0 ? <span className="text-base text-[#1C01A5]/50">... &lt; ... &lt; ... &lt; ...</span> : null}
+        {pilih.map((n, i) => (
+          <React.Fragment key={n}>
+            {i > 0 ? <span className="text-[#166534]">&lt;</span> : null}
+            <span className="igil-muncul">{n}</span>
+          </React.Fragment>
+        ))}
+      </div>
+      {selesai ? <p className="text-center text-sm font-black text-[#166534]">🌟 Urutannya pas. Dari kecil ke besar.</p> : null}
+    </div>
+  );
+}
 
 function IsiKartuLambang({
   kartu,
@@ -1559,17 +1841,15 @@ function IsiKartuLambang({
         onSuara={() => speakGuru(kartu.suara)}
         warna="#C7D2FE"
       />
-      <BuayaBicara teks={suara ? "Hebat! Kamu pintar sekali." : kartu.bantuan} />
+      <CatatanPensil teks={suara ? "Hebat! Kamu pintar sekali." : kartu.bantuan} />
 
-      <div className={`relative flex items-center justify-center gap-3 py-5 ${STIKER}`}>
-        <span className="flex h-24 w-20 items-center justify-center rounded-3xl bg-[#EFF6FF] text-7xl font-black leading-none text-[#1C01A5]">
-          {kartu.kiri}
-        </span>
+      <div className="relative flex items-center justify-center gap-4 rounded-lg border-[3px] border-[#1C01A5] bg-white/90 py-6 shadow-[3px_4px_0_rgba(28,1,165,0.18)]">
+        <span className="w-16 text-center text-8xl font-black leading-none text-[#1C01A5]">{kartu.kiri}</span>
         <span
           key={pilih ?? "kosong"}
-          className={`flex h-20 w-20 items-center justify-center rounded-3xl border-4 text-5xl font-black ${
+          className={`flex h-20 w-20 items-center justify-center rounded-lg border-[3px] text-6xl font-black ${
             pilih === null
-              ? "border-dashed border-[#1C01A5] bg-white text-[#1C01A5]/30"
+              ? "border-dashed border-[#1C01A5]/60 text-[#1C01A5]/30"
               : benar
                 ? "igil-muncul border-solid border-[#7FCB96] bg-[#E8F7EE] text-[#166534]"
                 : "igil-goyang border-solid border-[#E98989] bg-[#FDECEC] text-[#991B1B]"
@@ -1578,9 +1858,7 @@ function IsiKartuLambang({
         >
           {pilih ?? "?"}
         </span>
-        <span className="flex h-24 w-20 items-center justify-center rounded-3xl bg-[#EFF6FF] text-7xl font-black leading-none text-[#1C01A5]">
-          {kartu.kanan}
-        </span>
+        <span className="w-16 text-center text-8xl font-black leading-none text-[#1C01A5]">{kartu.kanan}</span>
         <Letusan id={letusan.id} />
       </div>
 
@@ -1591,10 +1869,10 @@ function IsiKartuLambang({
             type="button"
             aria-label={`Tanda ${p.nama}`}
             onClick={() => ketukTanda(p.tanda)}
-            className="flex flex-col items-center gap-1 rounded-3xl border-4 border-[#1C01A5] bg-[#FFE566] px-2 py-2 shadow-[0_5px_0_rgba(28,1,165,0.3)]"
+            className="flex flex-col items-center gap-0.5 rounded-lg border-[3px] border-[#1C01A5] bg-[#FFE566] px-1 py-2 shadow-[0_4px_0_rgba(28,1,165,0.3)]"
           >
-            <span className="text-4xl font-black leading-none text-[#1C01A5]">{p.tanda}</span>
-            <MulutBuaya arah={p.arah} kelas="h-9 w-[4.5rem]" />
+            <span className="text-5xl font-black leading-none text-[#1C01A5]">{p.tanda}</span>
+            <span className="text-[11px] font-black leading-tight text-[#1C01A5]">{p.nama}</span>
           </button>
         ))}
       </div>
@@ -1611,14 +1889,19 @@ function IsiKartuLambang({
       />
 
       {suara ? (
-        <div className="igil-muncul space-y-2 rounded-3xl border-4 border-[#7FCB96] bg-[#E8F7EE] p-3 text-center">
-          <TandaBuaya kiri={kartu.kiri} kanan={kartu.kanan} />
+        <div className="igil-muncul space-y-1 rounded-lg border-[3px] border-[#7FCB96] bg-[#E8F7EE] p-3 text-center">
+          <p className="text-5xl font-black leading-tight text-[#1C01A5]">
+            {kartu.kiri} {kunciTanda} {kartu.kanan}
+          </p>
           <p className="text-base font-black leading-snug text-[#1C01A5]">🌟 {kartu.kalimat}</p>
         </div>
       ) : null}
 
+      {suara && kartu.tambahan === "kilat" ? <LatihanKilat /> : null}
+      {suara && kartu.tambahan === "urut" ? <UrutAngka /> : null}
+
       {suara && kartu.tulis ? (
-        <div className={`flex flex-col items-center gap-2 p-3 ${STIKER}`}>
+        <div className="flex flex-col items-center gap-2 rounded-lg border-[3px] border-[#1C01A5] bg-white/90 p-3">
           <div className="text-sm font-black text-[#1C01A5]">✏️ Tulis lambang di atas, kata di bawah</div>
           <DottedNumberTracingCanvas
             key={`lambang-${kartu.id}`}
@@ -1653,10 +1936,8 @@ export function AbstractBandingB({ speakGuru, panel, hentikan, gulir, onSelesai 
   };
 
   return (
-    <div
-      className="space-y-3 rounded-[2rem] border-4 border-[#1C01A5] bg-slate-50 p-3"
-      style={POLA_TITIK("#C7D2FE")}
-    >
+    <div className="space-y-3 rounded-2xl border-4 border-[#1C01A5] p-3" style={GAYA_KOTAK}>
+      <PitaTahap ikon="✏️" nama="ABSTRACT" cara="Hanya angka dan tanda. Tanpa gambar." warna="#1C01A5" />
       <div className="flex items-center gap-1.5">
         {KARTU_LAMBANG_B.map((k, i) => (
           <span
