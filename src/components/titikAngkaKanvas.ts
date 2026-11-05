@@ -328,7 +328,7 @@ export function bangunTitikAngka(angka: number, keluargaFont: string): Titik[][]
 }
 
 export const LEBAR_KANVAS_JUMLAH = 340;
-export const TINGGI_KANVAS_JUMLAH = 300;
+export const TINGGI_KANVAS_JUMLAH = 400;
 
 /** Angka di atas, kata bilangan di bawah, pada kanvas yang lebih luas. */
 export function bangunTitikJumlah(
@@ -352,8 +352,8 @@ export function bangunTitikJumlah(
   ctx.fillStyle = "#000000";
   ctx.textAlign = "center";
   ctx.textBaseline = "middle";
-  gambarTeksPas(ctx, String(angka), keluargaFont, lebar / 2, 78, 120, 150, 110);
-  gambarTeksPas(ctx, kata, keluargaFont, lebar / 2, 210, 84, 300, 100);
+  gambarTeksPas(ctx, String(angka), keluargaFont, lebar / 2, 115, 160, 180, 150);
+  gambarTeksPas(ctx, kata, keluargaFont, lebar / 2, 300, 92, 300, 120);
 
   const hasil = rasterKeTitik(ctx, lebar, tinggi);
   cacheTitik.set(kunci, hasil);
