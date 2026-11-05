@@ -426,11 +426,11 @@ function KartuSilabus({
 }) {
   return (
     <div
-      className="space-y-3 rounded-[2rem] border-4 p-4"
-      style={{ borderColor: tepi, backgroundColor: latar, boxShadow: `0 6px 0 ${tepi}66` }}
+      className="space-y-4 rounded-3xl border-2 p-4 md:rounded-[2rem] md:border-4"
+      style={{ borderColor: tepi, backgroundColor: latar }}
     >
-      <div className="flex items-start justify-between gap-2">
-        <div className="space-y-1.5">
+      <div className="flex flex-col items-start gap-3 sm:flex-row sm:justify-between">
+        <div className="space-y-2">
           <span className="inline-block rounded-full bg-[#1C01A5] px-3 py-1 text-[11px] font-black text-[#FFE566]">
             {lencana}
           </span>
@@ -439,7 +439,7 @@ function KartuSilabus({
         <button
           type="button"
           onClick={() => bicara(teksSuara)}
-          className="shrink-0 rounded-full border-4 border-[#FFE566] bg-[#1C01A5] px-3 py-1.5 text-xs font-black text-[#FFE566] shadow-[0_3px_0_rgba(28,1,165,0.3)]"
+          className="shrink-0 rounded-full border-2 border-[#FFE566] bg-[#1C01A5] px-3 py-1.5 text-xs font-black text-[#FFE566] md:border-4"
         >
           🔊 Suara Guru
         </button>
@@ -461,16 +461,16 @@ function BarisIkon({
   children: React.ReactNode;
 }) {
   return (
-    <div className="flex items-start gap-3 rounded-3xl border-2 border-white bg-white/80 p-3">
+    <div className="flex items-start gap-3 py-1">
       <span
-        className="flex h-12 w-12 shrink-0 items-center justify-center rounded-full border-4 border-white text-2xl shadow"
+        className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full text-2xl"
         style={{ backgroundColor: warna }}
         aria-hidden="true"
       >
         {emoji}
       </span>
       <div className="min-w-0">
-        <div className="text-lg font-black text-[#1C01A5]">{judul}</div>
+        <div className="mb-1 text-lg font-black text-[#1C01A5]">{judul}</div>
         <div className="text-base leading-relaxed text-[#334155] md:text-lg">{children}</div>
       </div>
     </div>
@@ -908,7 +908,7 @@ export default function IgilModulePlayer() {
       {/* =================================================================== */}
       <div className="w-full pt-2 px-1 md:px-3 bg-white">
         <header
-          className="relative mx-auto w-[99%] overflow-hidden rounded-[2rem] border-4 border-[#FFE566] bg-[#1C01A5] px-4 py-4 shadow-[0_6px_0_rgba(240,171,0,0.55)] md:px-7 md:py-5"
+          className="relative mx-auto w-[99%] overflow-hidden rounded-3xl border-2 border-[#FFE566] bg-[#1C01A5] px-4 py-5 md:rounded-[2rem] md:border-4 md:px-7 md:py-5 md:shadow-[0_6px_0_rgba(240,171,0,0.55)]"
           style={{
             backgroundImage:
               "radial-gradient(rgba(255,229,102,0.28) 3px, transparent 3px), radial-gradient(rgba(127,203,150,0.3) 2px, transparent 2px)",
@@ -916,13 +916,13 @@ export default function IgilModulePlayer() {
             backgroundPosition: "0 0, 10px 10px",
           }}
         >
-          <span className="igil-goyang pointer-events-none absolute left-[46%] top-1 text-2xl" aria-hidden="true">⭐</span>
-          <span className="igil-lompat pointer-events-none absolute bottom-1 left-[58%] text-xl" aria-hidden="true">✨</span>
-          <span className="igil-goyang pointer-events-none absolute right-2 top-1 text-xl" aria-hidden="true">🌈</span>
+          <span className="igil-goyang pointer-events-none absolute left-[46%] top-1 hidden text-2xl md:block" aria-hidden="true">⭐</span>
+          <span className="igil-lompat pointer-events-none absolute bottom-1 left-[58%] hidden text-xl md:block" aria-hidden="true">✨</span>
+          <span className="igil-goyang pointer-events-none absolute right-2 top-1 hidden text-xl md:block" aria-hidden="true">🌈</span>
           <div className="relative">
             <div className="flex flex-wrap items-center justify-between gap-4">
-              <div className="flex min-w-[260px] flex-1 items-center gap-4">
-                <span className="igil-lompat block h-[4.5rem] w-[4.5rem] shrink-0 overflow-hidden rounded-full border-4 border-white bg-[#FFE566] shadow-[0_4px_0_rgba(0,0,0,0.25)] md:h-20 md:w-20">
+              <div className="flex min-w-[240px] flex-1 items-center gap-3 md:gap-4">
+                <span className="igil-lompat block h-14 w-14 shrink-0 overflow-hidden rounded-full border-2 border-white bg-[#FFE566] md:h-20 md:w-20 md:border-4 md:shadow-[0_4px_0_rgba(0,0,0,0.25)]">
                   <img
                     src="/icon-192.png"
                     alt="burung hantu IGIL"
@@ -941,7 +941,7 @@ export default function IgilModulePlayer() {
                 </div>
               </div>
 
-              <div className="shrink-0 rounded-3xl border-4 border-[#F0AB00] bg-white px-4 py-2.5 shadow-[0_4px_0_rgba(240,171,0,0.7)]">
+              <div className="w-full rounded-2xl bg-white px-3 py-2 sm:w-auto md:rounded-3xl md:border-4 md:border-[#F0AB00] md:px-4 md:py-2.5 md:shadow-[0_4px_0_rgba(240,171,0,0.7)]">
                 <div className="text-[10px] font-black uppercase tracking-wider text-[#334155]">
                   KARTU POINT TOKEN IGIL
                 </div>
@@ -950,15 +950,15 @@ export default function IgilModulePlayer() {
                   <span>{totalTokens}</span>
                   <span className="text-xs text-[#F0AB00]">/ {batasToken} Token Emas</span>
                 </div>
-                <div className="mt-1 flex flex-wrap gap-1 text-[11px] font-black text-[#1C01A5]">
+                <div className="mt-2 flex flex-wrap gap-1.5 text-[11px] font-black text-[#1C01A5]">
                   <span className="rounded-full bg-[#DDD8FF] px-2 py-0.5">
-                    ✏️ Latihan {practiceTokens}/{materiBab1.tokens.practice}
+                    ✏️ <span className="hidden sm:inline">Latihan </span>{practiceTokens}/{materiBab1.tokens.practice}
                   </span>
                   <span className="rounded-full bg-[#FFD9B0] px-2 py-0.5">
-                    🏆 Ujian {examTokens}/{materiBab1.tokens.exam}
+                    🏆 <span className="hidden sm:inline">Ujian </span>{examTokens}/{materiBab1.tokens.exam}
                   </span>
                   <span className="rounded-full bg-[#C8EAFB] px-2 py-0.5">
-                    🎨 Praktikum {practicumTokens}/{materiBab1.tokens.practicum}
+                    🎨 <span className="hidden sm:inline">Praktikum </span>{practicumTokens}/{materiBab1.tokens.practicum}
                   </span>
                 </div>
               </div>
@@ -971,7 +971,7 @@ export default function IgilModulePlayer() {
       {/* TOMBOL TAB UTAMA (FLOATING & SLIDE KIRI-KANAN • DASAR #1C01A5)      */}
       {/* =================================================================== */}
       <div ref={tabUtamaRef} className="sticky top-2 z-40 w-[99%] mx-auto px-1 md:px-3 mt-3">
-        <nav className="w-full overflow-x-auto rounded-[2rem] border-4 border-[#FFE566] bg-[#1C01A5] p-2 pb-3 shadow-[0_6px_0_rgba(28,1,165,0.35)] [scrollbar-color:#FFE566_#1C01A5] [scrollbar-width:thin]">
+        <nav className="w-full overflow-x-auto rounded-3xl border-2 border-[#FFE566] bg-[#1C01A5] p-2 pb-3 md:rounded-[2rem] md:border-4 md:shadow-[0_6px_0_rgba(28,1,165,0.35)] [scrollbar-color:#FFE566_#1C01A5] [scrollbar-width:thin]">
           <div className="flex min-w-max flex-nowrap items-center gap-2.5">
             {(
               [
@@ -998,13 +998,13 @@ export default function IgilModulePlayer() {
                     color: "#1C01A5",
                     borderColor: isActive ? "#FFFFFF" : "#1C01A5",
                   }}
-                  className={`inline-flex shrink-0 items-center gap-2 rounded-full border-4 px-4 py-2 text-sm font-black transition-all md:text-base ${
+                  className={`inline-flex shrink-0 items-center gap-2 rounded-full border-2 px-3 py-1.5 text-sm font-black transition-all md:border-4 md:px-4 md:py-2 md:text-base ${
                     isActive
-                      ? "-translate-y-0.5 scale-110 shadow-[0_5px_0_#F0AB00]"
-                      : "opacity-95 shadow-[0_3px_0_rgba(0,0,0,0.3)]"
+                      ? "scale-105 md:-translate-y-0.5 md:scale-110 md:shadow-[0_5px_0_#F0AB00]"
+                      : "opacity-95 md:shadow-[0_3px_0_rgba(0,0,0,0.3)]"
                   }`}
                 >
-                  <span className={`text-2xl leading-none ${isActive ? "igil-lompat" : ""}`} aria-hidden="true">
+                  <span className={`text-xl leading-none md:text-2xl ${isActive ? "igil-lompat" : ""}`} aria-hidden="true">
                     {gaya.emoji}
                   </span>
                   {tab.label}
@@ -1020,7 +1020,7 @@ export default function IgilModulePlayer() {
       {/* =================================================================== */}
       {activeMainTab === "silabus" && (
         <section
-          className="relative mx-auto mt-4 w-[98%] space-y-5 rounded-[2rem] border-4 border-dashed border-[#FFE566] bg-[#FFFDF2] p-4 md:p-6"
+          className="relative mx-auto mt-4 w-[98%] space-y-7 rounded-[2rem] bg-[#FFFDF2] p-3 md:space-y-5 md:border-4 md:border-dashed md:border-[#FFE566] md:p-6"
           style={{
             backgroundImage: "radial-gradient(#FFEFB0 2px, transparent 2px)",
             backgroundSize: "26px 26px",
@@ -1041,7 +1041,7 @@ export default function IgilModulePlayer() {
           </div>
 
           {silabusPage === 1 && (
-            <div className="flex w-full flex-col gap-5">
+            <div className="flex w-full flex-col gap-8 md:gap-5">
               <KartuSilabus
                 tepi="#E98989"
                 latar="#FFF1F1"
@@ -1057,11 +1057,11 @@ export default function IgilModulePlayer() {
                   Buku Siswa Matematika Kelas I Kemendikbudristek (Bab 1: Ayo Membilang sampai dengan 10, Halaman 1–32).
                 </BarisIkon>
                 <BarisIkon emoji="🚀" warna="#CDEFD8" judul="Metode Pedagogis SMICPA">
-                  <span className="flex flex-wrap gap-2 pt-1">
+                  <span className="flex flex-wrap gap-2.5 pt-2">
                     {TAHAP_SILABUS.map((s, i) => (
                       <span
                         key={s.nama}
-                        className="inline-flex items-center gap-1.5 rounded-full border-2 border-[#1C01A5]/25 px-3 py-1 text-sm font-black text-[#1C01A5]"
+                        className="inline-flex items-center gap-1.5 rounded-full px-3 py-1.5 text-sm font-black text-[#1C01A5]"
                         style={{ backgroundColor: s.warna }}
                       >
                         <span aria-hidden="true">{s.emoji}</span>
@@ -1080,7 +1080,7 @@ export default function IgilModulePlayer() {
                 bicara={speakGuru}
                 teksSuara="Ada seratus lima puluh token emas untuk dikumpulkan. Latihan memberi tiga puluh token. Ujian memberi tujuh puluh token, dan kamu harus mendapat nilai seratus. Praktikum memberi lima puluh token."
               >
-                <div className="grid gap-3 md:grid-cols-3">
+                <div className="grid gap-4 md:grid-cols-3">
                   {[
                     {
                       emoji: "✏️",
@@ -1106,14 +1106,14 @@ export default function IgilModulePlayer() {
                   ].map((k) => (
                     <div
                       key={k.nama}
-                      className="space-y-1 rounded-3xl border-4 border-white p-3 text-center shadow"
+                      className="space-y-2 rounded-2xl p-4 text-center md:rounded-3xl md:border-4 md:border-white md:shadow"
                       style={{ backgroundColor: k.warna }}
                     >
-                      <div className="igil-lompat text-4xl" aria-hidden="true">
+                      <div className="igil-lompat text-3xl md:text-4xl" aria-hidden="true">
                         {k.emoji}
                       </div>
                       <div className="text-lg font-black text-[#1C01A5]">{k.nama}</div>
-                      <div className="inline-block rounded-full border-4 border-white bg-[#FFE566] px-3 py-0.5 text-xl font-black text-[#1C01A5]">
+                      <div className="inline-block rounded-full bg-[#FFE566] px-3 py-0.5 text-xl font-black text-[#1C01A5]">
                         💰 {k.token} Token Emas
                       </div>
                       <p className="text-sm leading-snug text-[#334155] md:text-base">{k.isi}</p>
@@ -1125,8 +1125,8 @@ export default function IgilModulePlayer() {
           )}
 
           {silabusPage === 2 && (
-            <div className="flex w-full flex-col gap-5">
-              <div className="flex flex-wrap items-center justify-between gap-3 rounded-[2rem] border-4 border-[#7FCB96] bg-[#EEFBF1] px-4 py-3 shadow-[0_5px_0_rgba(127,203,150,0.5)]">
+            <div className="flex w-full flex-col gap-8 md:gap-5">
+              <div className="flex flex-wrap items-center justify-between gap-3 rounded-3xl bg-[#EEFBF1] px-4 py-3 md:border-4 md:border-[#7FCB96]">
                 <div className="text-lg font-black text-[#166534]">
                   📋 Bintang Kita: {completedSubBabs.length} dari 4 sub-bab
                 </div>
@@ -1139,23 +1139,19 @@ export default function IgilModulePlayer() {
                 </div>
               </div>
 
-              <div className="grid gap-4 md:grid-cols-2">
+              <div className="grid gap-6 md:grid-cols-2 md:gap-4">
                 {(["A", "B", "C", "D"] as SubBabId[]).map((id) => {
                   const isDone = completedSubBabs.includes(id);
                   const sub = SUB_BABS[id];
                   return (
                     <div
                       key={id}
-                      className="space-y-3 rounded-[2rem] border-4 p-4"
-                      style={{
-                        borderColor: sub.secondaryBorder,
-                        backgroundColor: sub.secondaryBg,
-                        boxShadow: `0 6px 0 ${sub.secondaryBorder}88`,
-                      }}
+                      className="space-y-3 rounded-3xl border-2 p-4 md:rounded-[2rem] md:border-4"
+                      style={{ borderColor: sub.secondaryBorder, backgroundColor: sub.secondaryBg }}
                     >
-                      <div className="flex items-start gap-3">
+                      <div className="flex items-center gap-3">
                         <span
-                          className={`flex h-14 w-14 shrink-0 items-center justify-center rounded-full border-4 border-white text-3xl shadow ${
+                          className={`flex h-12 w-12 shrink-0 items-center justify-center rounded-full text-3xl ${
                             isDone ? "igil-lompat" : ""
                           }`}
                           style={{ backgroundColor: sub.secondaryBorder }}
@@ -1163,33 +1159,29 @@ export default function IgilModulePlayer() {
                         >
                           {SUB_ANAK[id].emoji}
                         </span>
-                        <div className="min-w-0 flex-1">
-                          <div className="text-lg font-black leading-tight" style={{ color: sub.secondaryText }}>
-                            {sub.fullTitle}
-                          </div>
+                        <div className="min-w-0 flex-1 text-lg font-black leading-tight" style={{ color: sub.secondaryText }}>
+                          {sub.fullTitle}
+                        </div>
+                      </div>
+                      <p className="text-base leading-relaxed text-[#334155] md:text-lg">{sub.targetDescription}</p>
+                      <div className="flex flex-wrap items-center gap-3 pt-1">
+                        <div
+                          className={`inline-flex items-center gap-2 rounded-full px-4 py-1.5 text-base font-black ${
+                            isDone ? "bg-[#22C55E] text-white" : "bg-white text-[#64748B]"
+                          }`}
+                        >
+                          <span className="text-xl" aria-hidden="true">
+                            {isDone ? "⭐" : "🎯"}
+                          </span>
+                          {isDone ? "Sudah selesai!" : "Belum, ayo mulai!"}
                         </div>
                         <button
                           type="button"
                           onClick={() => speakGuru(`${sub.fullTitle}. ${sub.targetDescription}`)}
-                          className="shrink-0 rounded-full border-4 border-[#FFE566] bg-[#1C01A5] px-3 py-1.5 text-xs font-black text-[#FFE566] shadow-[0_3px_0_rgba(28,1,165,0.3)]"
+                          className="rounded-full border-2 border-[#FFE566] bg-[#1C01A5] px-3 py-1.5 text-xs font-black text-[#FFE566] md:border-4"
                         >
                           🔊 Suara Guru
                         </button>
-                      </div>
-                      <p className="rounded-2xl bg-white/80 p-3 text-base leading-relaxed text-[#334155] md:text-lg">
-                        {sub.targetDescription}
-                      </p>
-                      <div
-                        className={`inline-flex items-center gap-2 rounded-full border-4 px-4 py-1.5 text-base font-black ${
-                          isDone
-                            ? "border-white bg-[#22C55E] text-white"
-                            : "border-white bg-white text-[#64748B]"
-                        }`}
-                      >
-                        <span className="text-2xl" aria-hidden="true">
-                          {isDone ? "⭐" : "🎯"}
-                        </span>
-                        {isDone ? "Sudah selesai!" : "Belum, ayo mulai!"}
                       </div>
                     </div>
                   );
@@ -1199,12 +1191,12 @@ export default function IgilModulePlayer() {
           )}
 
           {/* Tombol KEMBALI dan LANJUT di Akhir Halaman Silabus */}
-          <div className="flex items-center justify-between gap-3 pt-2">
+          <div className="flex items-center justify-between gap-3 pt-4">
             <button
               type="button"
               disabled={silabusPage === 1}
               onClick={() => setSilabusPage(1)}
-              className="rounded-full border-4 border-white bg-[#E2E8F0] px-6 py-3 text-base font-black text-[#334155] shadow-[0_4px_0_rgba(0,0,0,0.2)] disabled:opacity-40"
+              className="rounded-full bg-[#E2E8F0] px-5 py-3 text-base font-black text-[#334155] disabled:opacity-40"
             >
               ⬅️ KEMBALI
             </button>
@@ -1229,7 +1221,7 @@ export default function IgilModulePlayer() {
                   window.scrollTo({ top: 0, behavior: "smooth" });
                 }
               }}
-              className="igil-lompat rounded-full border-4 border-[#FFE566] bg-[#1C01A5] px-8 py-3 text-base font-black text-[#FFE566] shadow-[0_5px_0_rgba(240,171,0,0.7)]"
+              className="rounded-full border-2 border-[#FFE566] bg-[#1C01A5] px-7 py-3 text-base font-black text-[#FFE566] md:border-4"
             >
               LANJUT ➡️
             </button>
@@ -1264,14 +1256,13 @@ export default function IgilModulePlayer() {
                         backgroundColor: isSelected ? "#FFFFFF" : sub.secondaryBg,
                         borderColor: isSelected ? "#1C01A5" : sub.secondaryBorder,
                         color: sub.secondaryText,
-                        boxShadow: isSelected ? "0 5px 0 #1C01A5" : `0 3px 0 ${sub.secondaryBorder}`,
                       }}
-                      className={`relative inline-flex shrink-0 items-center gap-2 rounded-full border-4 py-1.5 pl-1.5 pr-4 text-sm font-black transition-all md:text-base ${
-                        isSelected ? "-translate-y-0.5 scale-110" : "opacity-90"
+                      className={`relative inline-flex shrink-0 items-center gap-2 rounded-full border-2 py-1 pl-1 pr-4 text-sm font-black transition-all md:border-4 md:py-1.5 md:pl-1.5 md:text-base ${
+                        isSelected ? "scale-105 md:scale-110" : "opacity-90"
                       }`}
                     >
                       <span
-                        className={`flex h-10 w-10 items-center justify-center rounded-full border-4 border-white text-xl shadow ${
+                        className={`flex h-9 w-9 items-center justify-center rounded-full border-2 border-white text-xl md:h-10 md:w-10 md:border-4 ${
                           isSelected ? "igil-lompat" : ""
                         }`}
                         style={{ backgroundColor: sub.secondaryBorder }}
