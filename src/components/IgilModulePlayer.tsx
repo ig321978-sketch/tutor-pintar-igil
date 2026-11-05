@@ -1,18 +1,28 @@
 "use client";
 
 import React, { useState, useEffect, useRef, useCallback } from "react";
-import { Nunito } from "next/font/google";
 import { pilihSuaraIndonesia } from "@/lib/guru";
 import { hentikanAudioGuruAktif } from "@/lib/putar-tts-klien";
 import materiBab1 from "@/data/kelas1-bab1.json";
 import GambarPensilCerita from "@/components/GambarPensilCerita";
-import { bangunTitikAngka, bangunTitikJumlah, coretanMengikutiJejak, LEBAR_KANVAS_JUMLAH, TINGGI_KANVAS_JUMLAH, type Titik } from "@/components/titikAngkaKanvas";
-
-const fontAnak = Nunito({
-  subsets: ["latin"],
-  weight: ["500", "600", "700", "800", "900"],
-  display: "swap",
-});
+import { IkonMainan } from "@/components/modul/ikon-mainan";
+import { AdeganBandingB } from "@/components/modul/gambar-banding-b";
+import {
+  AbstractBandingB,
+  ConcreteBandingB,
+  InfografisBandingB,
+  PictureBandingB,
+  type PanelSuara,
+} from "@/components/modul/SubBabBBanding";
+import {
+  DottedNumberTracingCanvas,
+  KepalaConcrete,
+  RakBendaNyata,
+  SEBUTAN_ANGKA,
+  TombolJawabanSuara,
+  TombolLanjutConcrete,
+  fontAnak,
+} from "@/components/modul/elemen-kelas1";
 
 // ============================================================================
 // TIPE DATA & KONTRAK INTEGRASI CETAK BIRU IGIL
@@ -37,7 +47,11 @@ interface StorySlideItem {
     | "playground-play"
     | "playground-rides"
     | "playground-bikes"
-    | "playground-toys";
+    | "playground-toys"
+    | "banding-sepeda-burung"
+    | "banding-kursi-balon"
+    | "banding-kelereng"
+    | "banding-bola-renggang";
 }
 
 interface MindMapSlideItem {
@@ -58,7 +72,7 @@ interface SubBabContent {
   secondaryBorder: string;
   secondaryText: string;
   stories: StorySlideItem[];
-  mindMaps: [MindMapSlideItem, MindMapSlideItem, MindMapSlideItem];
+  mindMaps: MindMapSlideItem[];
   infografisData: {
     fruitName: string;
     emoji: string;
@@ -116,19 +130,6 @@ const DAFTAR_MAINAN = [
   { id: "kelereng", nama: "Kelereng", jumlah: 9 },
   { id: "bola", nama: "Bola", jumlah: 10 },
 ] as const;
-
-const SEBUTAN_ANGKA = [
-  "Satu",
-  "Dua",
-  "Tiga",
-  "Empat",
-  "Lima",
-  "Enam",
-  "Tujuh",
-  "Delapan",
-  "Sembilan",
-  "Sepuluh",
-];
 
 const SUARA_KELOMPOK =
   "Kelompok mainan dan jumlahnya. Tekan ikon mainan. Setiap tekan, angkanya naik satu, sampai jumlahnya pas.";
@@ -359,110 +360,6 @@ function DiagramMainan({ jenis, terisi, kapasitas }: { jenis: string; terisi: nu
   );
 }
 
-function RakBendaNyata({
-  jenis,
-  terisi,
-  kapasitas,
-  rapat = false,
-}: {
-  jenis: string;
-  terisi: number;
-  kapasitas: number;
-  rapat?: boolean;
-}) {
-  const kolom = rapat ? (kapasitas <= 2 ? kapasitas : 2) : kapasitas <= 3 ? kapasitas : 2;
-  return (
-    <div
-      className={`mx-auto grid w-full ${rapat ? "gap-1" : "gap-2"}`}
-      style={{
-        gridTemplateColumns: `repeat(${kolom}, minmax(0, 1fr))`,
-        maxWidth: rapat ? (kapasitas === 1 ? 52 : 148) : kapasitas === 1 ? 112 : 280,
-      }}
-    >
-      {Array.from({ length: kapasitas }, (_, i) => (
-        <span
-          key={i}
-          className={`flex items-center justify-center border-2 ${
-            rapat ? "h-9 rounded-xl" : "aspect-square rounded-2xl"
-          } ${i < terisi ? "border-[#1C01A5] bg-white" : "border-dashed border-[#93C5FD] bg-white"}`}
-        >
-          {i < terisi ? <IkonMainan jenis={jenis} besar={!rapat} /> : null}
-        </span>
-      ))}
-    </div>
-  );
-}
-
-function KepalaConcrete({ judul, onSuara }: { judul: string; onSuara: () => void }) {
-  return (
-    <div className="flex items-center justify-between gap-3">
-      <h3 className="min-w-0 text-base font-black leading-snug text-[#1C01A5]">{judul}</h3>
-      <button
-        type="button"
-        onClick={onSuara}
-        className="shrink-0 rounded-xl border border-[#3B82F6] bg-white px-3 py-1 text-xs font-black text-[#1E3A8A]"
-      >
-        🔊 Suara Guru
-      </button>
-    </div>
-  );
-}
-
-function TombolLanjutConcrete({ pictorial, onClick }: { pictorial: boolean; onClick: () => void }) {
-  return (
-    <div className="flex justify-end">
-      <button
-        type="button"
-        onClick={onClick}
-        className="rounded-2xl border-2 border-[#FFE566] bg-[#1C01A5] px-6 py-2.5 text-xs font-black text-[#FFE566] shadow-md"
-      >
-        {pictorial ? "LANJUTKAN KE PICTORIAL ⬇️" : "LANJUTKAN ⬇️"}
-      </button>
-    </div>
-  );
-}
-
-function TombolJawabanSuara({
-  sudah,
-  jumlah,
-  kata,
-  sedang,
-  pesan,
-  onTekan,
-}: {
-  sudah: boolean;
-  jumlah: number;
-  kata: string;
-  sedang: boolean;
-  pesan: string;
-  onTekan: () => void;
-}) {
-  return (
-    <button
-      type="button"
-      aria-label={sudah ? `${jumlah} ${kata}` : "Jawab dengan suara"}
-      onClick={() => {
-        if (sudah) return;
-        onTekan();
-      }}
-      className={`flex min-h-16 w-full min-w-0 flex-col items-center justify-center rounded-2xl border-2 bg-white px-2 py-1 ${
-        sudah ? "border-solid border-[#1C01A5]" : sedang ? "border-solid border-[#F0AB00]" : "border-dashed border-[#93C5FD]"
-      }`}
-    >
-      {sudah ? (
-        <>
-          <span className="text-3xl font-black leading-none text-[#1C01A5]">{jumlah}</span>
-          <span className="text-sm font-black leading-tight text-[#1C01A5]">{kata}</span>
-        </>
-      ) : (
-        <span className="text-center text-sm font-black leading-tight text-[#1C01A5]">
-          {sedang ? (pesan.startsWith("Memeriksa") ? "Memeriksa..." : "Mendengarkan...") : "Jawab dengan suara"}
-        </span>
-      )}
-    </button>
-  );
-}
-
 function RakManik({ terisi, kapasitas }: { terisi: number; kapasitas: number }) {
   const atas = Math.min(5, kapasitas);
   const bawah = Math.max(0, kapasitas - 5);
@@ -485,250 +382,6 @@ function RakManik({ terisi, kapasitas }: { terisi: number; kapasitas: number }) 
     <div className="flex w-full flex-col gap-2 rounded-2xl border border-[#1C01A5] bg-white px-2 py-3">
       {baris(0, atas)}
       {bawah > 0 ? baris(atas, bawah) : null}
-    </div>
-  );
-}
-
-function IkonMainan({ jenis, besar = false }: { jenis: string; besar?: boolean }) {
-  const garis = {
-    fill: "none",
-    stroke: "#1C01A5",
-    strokeWidth: 2,
-    strokeLinecap: "round" as const,
-    strokeLinejoin: "round" as const,
-  };
-  return (
-    <svg viewBox="0 0 48 48" className={besar ? "h-14 w-14 shrink-0" : "h-8 w-8 shrink-0"} aria-hidden="true">
-      {jenis === "jungkat" && (
-        <>
-          <path d="M24 32 L17 44 H31 Z" {...garis} fill="#F0AB00" />
-          <path d="M5 31 L43 15" {...garis} strokeWidth={3} />
-          <circle cx="9" cy="28" r="3.2" {...garis} fill="#E98989" />
-          <circle cx="39" cy="17" r="3.2" {...garis} fill="#7FCB96" />
-        </>
-      )}
-      {jenis === "ayunan" && (
-        <>
-          <path d="M10 8 H38" {...garis} />
-          <path d="M16 8 L14 32" {...garis} />
-          <path d="M32 8 L34 32" {...garis} />
-          <path d="M12 32 H36" {...garis} strokeWidth={3} />
-          <rect x="14" y="32" width="20" height="6" rx="2" {...garis} fill="#F0AB00" />
-        </>
-      )}
-      {jenis === "perosotan" && (
-        <>
-          <path d="M8 8 V42 M16 8 V26 M8 16 H16 M8 24 H16" {...garis} />
-          <path d="M16 12 H28 C38 12 40 24 40 42" stroke="#F0AB00" strokeWidth={6} fill="none" strokeLinecap="round" />
-          <path d="M16 12 H28 C38 12 40 24 40 42" {...garis} />
-        </>
-      )}
-      {jenis === "sepeda" && (
-        <>
-          <circle cx="14" cy="32" r="8" {...garis} />
-          <circle cx="34" cy="32" r="8" {...garis} />
-          <path d="M14 32 L22 16 H32 L34 32 L22 32 Z" {...garis} />
-          <circle cx="22" cy="16" r="2.2" fill="#1C01A5" />
-        </>
-      )}
-      {jenis === "kursi" && (
-        <>
-          <path d="M12 10 V28 H36" {...garis} />
-          <path d="M14 28 V42 M34 28 V42" {...garis} />
-          <path d="M10 28 H38" {...garis} strokeWidth={4} />
-        </>
-      )}
-      {jenis === "balon" && (
-        <>
-          <ellipse cx="24" cy="18" rx="11" ry="13" {...garis} fill="#E98989" />
-          <path d="M24 31 L21 36 H27 Z" fill="#1C01A5" />
-          <path d="M24 36 Q18 42 26 46" {...garis} />
-        </>
-      )}
-      {jenis === "buku" && (
-        <>
-          <path d="M8 10 H24 V40 H8 Z" {...garis} fill="#7FCB96" />
-          <path d="M24 10 H40 V40 H24 Z" {...garis} fill="#F0AB00" />
-          <path d="M24 10 V40" {...garis} />
-        </>
-      )}
-      {jenis === "layangan" && (
-        <>
-          <polygon points="24,4 42,24 24,42 6,24" {...garis} fill="#E98989" />
-          <path d="M24 4 V42 M6 24 H42" {...garis} />
-          <path d="M24 42 Q30 46 22 48" {...garis} />
-        </>
-      )}
-      {jenis === "kelereng" && (
-        <>
-          <circle cx="24" cy="24" r="13" {...garis} fill="#7FCB96" />
-          <ellipse cx="19" cy="19" rx="4" ry="2.2" fill="#FFFFFF" />
-        </>
-      )}
-      {jenis === "bola" && (
-        <>
-          <circle cx="24" cy="24" r="14" {...garis} fill="#F0AB00" />
-          <path d="M10 24 H38 M24 10 C16 18 16 30 24 38 M24 10 C32 18 32 30 24 38" {...garis} />
-        </>
-      )}
-    </svg>
-  );
-}
-
-function DottedNumberTracingCanvas({
-  digit,
-  kata,
-  onCompletedTrace,
-}: {
-  digit: number;
-  kata?: string;
-  onCompletedTrace?: () => void;
-}) {
-  const lebar = kata ? LEBAR_KANVAS_JUMLAH : 170;
-  const tinggi = kata ? TINGGI_KANVAS_JUMLAH : 150;
-  const canvasRef = useRef<HTMLCanvasElement | null>(null);
-  const goresanRef = useRef<Titik[][]>([]);
-  const jejakRef = useRef<Titik[][]>([]);
-  const sedangRef = useRef(false);
-  const [lulus, setLulus] = useState(false);
-  const [pernahCoba, setPernahCoba] = useState(false);
-
-  const gambarUlang = useCallback(() => {
-    const canvas = canvasRef.current;
-    if (!canvas) return;
-    const ctx = canvas.getContext("2d");
-    if (!ctx) return;
-
-    ctx.clearRect(0, 0, canvas.width, canvas.height);
-    ctx.fillStyle = "#FFFFFF";
-    ctx.fillRect(0, 0, canvas.width, canvas.height);
-
-    ctx.fillStyle = "#64748B";
-    for (const gores of jejakRef.current) {
-      for (const titik of gores) {
-        ctx.beginPath();
-        ctx.arc(titik.x, titik.y, 3.4, 0, Math.PI * 2);
-        ctx.fill();
-      }
-    }
-
-    ctx.strokeStyle = "#1C01A5";
-    ctx.lineWidth = 7;
-    ctx.lineCap = "round";
-    ctx.lineJoin = "round";
-    for (const gores of goresanRef.current) {
-      if (gores.length < 2) continue;
-      ctx.beginPath();
-      ctx.moveTo(gores[0].x, gores[0].y);
-      for (let i = 1; i < gores.length; i++) ctx.lineTo(gores[i].x, gores[i].y);
-      ctx.stroke();
-    }
-  }, []);
-
-  useEffect(() => {
-    let batal = false;
-    goresanRef.current = [];
-    jejakRef.current = [];
-    sedangRef.current = false;
-    setLulus(false);
-    setPernahCoba(false);
-    gambarUlang();
-    const siapkan = async () => {
-      try {
-        await document.fonts.load(`900 120px ${fontAnak.style.fontFamily}`);
-      } catch {
-        /* Huruf cadangan tetap bisa dijadikan titik. */
-      }
-      if (batal) return;
-      jejakRef.current = kata
-        ? bangunTitikJumlah(digit, kata, fontAnak.style.fontFamily)
-        : bangunTitikAngka(digit, fontAnak.style.fontFamily);
-      gambarUlang();
-    };
-    void siapkan();
-    return () => {
-      batal = true;
-    };
-  }, [digit, kata, gambarUlang]);
-
-  const koordinat = (e: React.PointerEvent<HTMLCanvasElement>) => {
-    const canvas = canvasRef.current;
-    if (!canvas) return { x: 0, y: 0 };
-    const rect = canvas.getBoundingClientRect();
-    return {
-      x: (e.clientX - rect.left) * (canvas.width / rect.width),
-      y: (e.clientY - rect.top) * (canvas.height / rect.height),
-    };
-  };
-
-  const mulai = (e: React.PointerEvent<HTMLCanvasElement>) => {
-    const titik = koordinat(e);
-    sedangRef.current = true;
-    goresanRef.current.push([titik]);
-    try {
-      e.currentTarget.setPointerCapture(e.pointerId);
-    } catch {
-      /* Browser menolak tangkapan jika jari sudah lepas. */
-    }
-    gambarUlang();
-  };
-
-  const geser = (e: React.PointerEvent<HTMLCanvasElement>) => {
-    if (!sedangRef.current) return;
-    const gores = goresanRef.current[goresanRef.current.length - 1];
-    if (!gores) return;
-    gores.push(koordinat(e));
-    gambarUlang();
-  };
-
-  const selesai = () => {
-    if (!sedangRef.current) return;
-    sedangRef.current = false;
-    const adaGoresan = goresanRef.current.some((gores) => gores.length > 1);
-    if (!adaGoresan) return;
-    setPernahCoba(true);
-    const mirip = coretanMengikutiJejak(goresanRef.current, jejakRef.current);
-    setLulus(mirip);
-    if (mirip && onCompletedTrace) onCompletedTrace();
-  };
-
-  const ulangi = () => {
-    goresanRef.current = [];
-    sedangRef.current = false;
-    setLulus(false);
-    setPernahCoba(false);
-    gambarUlang();
-  };
-
-  return (
-    <div className={`flex flex-col items-center gap-2 ${kata ? "w-full" : ""}`}>
-      <canvas
-        ref={canvasRef}
-        width={lebar}
-        height={tinggi}
-        onPointerDown={mulai}
-        onPointerMove={geser}
-        onPointerUp={selesai}
-        onPointerCancel={selesai}
-        style={kata ? { aspectRatio: `${lebar} / ${tinggi}` } : undefined}
-        className={
-          kata
-            ? "h-auto w-full max-w-[340px] rounded-2xl border-2 border-[#1C01A5] bg-white cursor-crosshair touch-none shadow-sm"
-            : "w-[170px] h-[150px] rounded-2xl border-2 border-[#1C01A5] bg-white cursor-crosshair touch-none shadow-sm"
-        }
-      />
-      <div className="flex items-center gap-2">
-        <button
-          type="button"
-          onClick={ulangi}
-          className="px-3 py-1 rounded-xl bg-slate-100 hover:bg-slate-200 text-[#334155] text-xs font-bold border border-slate-300"
-        >
-          Ulangi Tulis
-        </button>
-        <span className="text-xs font-bold text-[#1C01A5]">
-          {lulus ? "✅ Bagus!" : pernahCoba ? "Belum mirip" : "Ikuti titik-titik"}
-        </span>
-      </div>
     </div>
   );
 }
@@ -1024,6 +677,28 @@ export default function IgilModulePlayer() {
       mesinDengarRef.current = null;
     };
   }, []);
+
+  const panelConcrete: PanelSuara = {
+    sedang: rekamConcrete,
+    pesan: pesanConcrete,
+    suara: suaraConcrete,
+    mulai: (id, jumlah) => mulaiRekamConcrete(id, jumlah, "concrete"),
+    bersih: () => setPesanConcrete(""),
+  };
+  const panelGambar: PanelSuara = {
+    sedang: rekamGambar,
+    pesan: pesanGambar,
+    suara: suaraGambar,
+    mulai: (id, jumlah) => mulaiRekamConcrete(id, jumlah, "gambar"),
+    bersih: () => setPesanGambar(""),
+  };
+  const panelLambang: PanelSuara = {
+    sedang: rekamLambang,
+    pesan: pesanLambang,
+    suara: suaraLambang,
+    mulai: (id, jumlah) => mulaiRekamConcrete(id, jumlah, "lambang"),
+    bersih: () => setPesanLambang(""),
+  };
 
   // 5. State Halaman Simulasi PhET-Style (4 Simulasi: 1 per Sub-Bab)
   const [simIndex, setSimIndex] = useState<number>(0); // 0..3
@@ -1506,7 +1181,13 @@ export default function IgilModulePlayer() {
                       </button>
                     </div>
 
-                    <GambarPensilCerita sceneType={st.sceneType} />
+                    {activeSubBab === "B" ? (
+                      <AdeganBandingB jenis={st.sceneType} />
+                    ) : (
+                      <GambarPensilCerita
+                        sceneType={st.sceneType as Parameters<typeof GambarPensilCerita>[0]["sceneType"]}
+                      />
+                    )}
                   </div>
                 ))}
               </div>
@@ -1656,6 +1337,8 @@ export default function IgilModulePlayer() {
                     </div>
                   </div>
                 </div>
+              ) : activeSubBab === "B" ? (
+                <InfografisBandingB speakGuru={speakGuru} />
               ) : (
               <div className="w-full overflow-x-auto pb-3">
                 <div className="flex flex-nowrap gap-5 min-w-[1050px]">
@@ -2089,6 +1772,20 @@ export default function IgilModulePlayer() {
                     );
                   })()}
                 </div>
+              ) : activeSubBab === "B" ? (
+                <ConcreteBandingB
+                  speakGuru={speakGuru}
+                  panel={panelConcrete}
+                  hentikan={hentikanRekamConcrete}
+                  gulir={() => concreteRef.current?.scrollIntoView({ behavior: "smooth", block: "start" })}
+                  onSelesai={() =>
+                    handleUnlockNextSmicpa(
+                      5,
+                      pictorialRef,
+                      "Enam kegiatan benda nyata sudah siap. Sekarang kita lihat gambarnya."
+                    )
+                  }
+                />
               ) : (
               <div className="w-full overflow-x-auto pb-3">
                 <div className="flex flex-nowrap gap-5 min-w-[1050px]">
@@ -2147,7 +1844,7 @@ export default function IgilModulePlayer() {
               </div>
               )}
 
-              {activeSubBab !== "A" ? (
+              {activeSubBab !== "A" && activeSubBab !== "B" ? (
               <div className="flex justify-end">
                 <button
                   type="button"
@@ -2303,6 +2000,20 @@ export default function IgilModulePlayer() {
                     );
                   })()}
                 </div>
+              ) : activeSubBab === "B" ? (
+                <PictureBandingB
+                  speakGuru={speakGuru}
+                  panel={panelGambar}
+                  hentikan={hentikanRekamConcrete}
+                  gulir={() => pictorialRef.current?.scrollIntoView({ behavior: "smooth", block: "start" })}
+                  onSelesai={() =>
+                    handleUnlockNextSmicpa(
+                      6,
+                      abstractRef,
+                      "Empat diagram sudah pas. Ayo lihat lambang angkanya."
+                    )
+                  }
+                />
               ) : (
               <>
               <div className="w-full overflow-x-auto pb-3">
@@ -2528,6 +2239,14 @@ export default function IgilModulePlayer() {
                     );
                   })()}
                 </div>
+              ) : activeSubBab === "B" ? (
+                <AbstractBandingB
+                  speakGuru={speakGuru}
+                  panel={panelLambang}
+                  hentikan={hentikanRekamConcrete}
+                  gulir={() => abstractRef.current?.scrollIntoView({ behavior: "smooth", block: "start" })}
+                  onSelesai={() => selesaiBabRef.current?.scrollIntoView({ behavior: "smooth", block: "center" })}
+                />
               ) : (
               <div className="w-full overflow-x-auto pb-3">
                 <div className="flex flex-nowrap gap-5 min-w-[960px]">

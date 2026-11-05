@@ -157,56 +157,70 @@
     },
     "B": {
       "id": "B",
-      "codeTitle": "Sub-Bab B (Nol & Banding)",
-      "fullTitle": "Sub-Bab B: Mengenal Bilangan 0 dan Membandingkan Banyak Benda",
-      "targetDescription": "Siswa memahami konsep bilangan 0 (kosong) serta membandingkan dua kelompok benda (Lebih Banyak, Lebih Sedikit, atau Sama Banyak).",
+      "codeTitle": "Sub-Bab B (Banding Benda)",
+      "fullTitle": "Sub-Bab B: Membandingkan Banyak Benda",
+      "targetDescription": "Siswa mampu membandingkan dua kelompok benda dengan memasangkan satu per satu, lalu menyebut sama banyak, lebih banyak, atau lebih sedikit, dan memilih tanda > < =.",
       "secondaryBg": "#FEF3C7",
       "secondaryBorder": "#F59E0B",
       "secondaryText": "#92400E",
       "stories": [
         {
           "id": "B-S1",
-          "titleHint": "Gambar 1: Piring Buah yang Habis Dimakan",
-          "voiceNarration": "Setelah selesai menghitung buah, Malosi dan Tora ikut menikmati buah apel di piring kayu. Semua apel di piring itu habis dimakan hingga piringnya kosong.",
-          "sceneType": "empty-basket"
+          "titleHint": "Gambar 1: Sepeda dan Burung",
+          "voiceNarration": "Halim berbaris di taman bersama tiga sepeda. Tiga burung hinggap, satu di setiap sepeda. Tidak ada burung yang menganggur. Tidak ada sepeda yang kosong. Sepeda dan burung sama banyak.",
+          "sceneType": "banding-sepeda-burung"
         },
         {
           "id": "B-S2",
-          "titleHint": "Gambar 2: Membandingkan Dua Keranjang",
-          "voiceNarration": "Upe kemudian meletakkan keranjang mangga dan keranjang stroberi secara berdampingan. Ia ingin tahu keranjang mana yang isinya lebih banyak.",
-          "sceneType": "comparing-scales"
+          "titleHint": "Gambar 2: Balon untuk Kursi",
+          "voiceNarration": "Wei menata enam kursi di bawah pohon. Ia mengikat satu balon di setiap kursi. Setelah empat kursi punya balon, balonnya habis. Dua kursi masih polos. Jadi kursi lebih banyak dari balon. Balon lebih sedikit dari kursi.",
+          "sceneType": "banding-kursi-balon"
         },
         {
           "id": "B-S3",
-          "titleHint": "Gambar 3: Memasangkan Benda Satu per Satu",
-          "voiceNarration": "IGIL memberi ide cerdas: hubungkan satu mangga dengan satu stroberi menggunakan tali. Keranjang yang masih punya sisa buah berarti lebih banyak!",
-          "sceneType": "counting-table"
+          "titleHint": "Gambar 3: Kelereng Kira dan Tika",
+          "voiceNarration": "Kira dan Tika bermain kelereng. Kira menjajarkan lima kelerengnya. Tika menjajarkan delapan kelerengnya. Mereka mencocokkan satu per satu. Kelereng Tika punya sisa. Tika punya lebih banyak. Kira punya lebih sedikit.",
+          "sceneType": "banding-kelereng"
+        },
+        {
+          "id": "B-S4",
+          "titleHint": "Gambar 4: Jangan Tertipu Panjangnya",
+          "voiceNarration": "Halim punya lima bola. Ia merapatkannya jadi barisan pendek. Wei juga punya lima bola. Ia merenggangkannya jadi barisan panjang. Barisan Wei kelihatan lebih panjang. Apakah bolanya lebih banyak? Ayo pasangkan satu per satu. Semua bola punya pasangan. Jadi sama banyak.",
+          "sceneType": "banding-bola-renggang"
         }
       ],
       "mindMaps": [
         {
           "stepNumber": 1,
-          "stepTitle": "1. Periksa Wadah Kosong (0)",
-          "stepDesc": "Jika tidak ada satu pun benda di dalam piring atau kotak, maka jumlahnya adalah Nol (0).",
-          "icon": "⭕",
-          "flowFrom": "Wadah Kosong Tanpa Benda",
-          "flowTo": "Lambang Bilangan 0 (Nol)"
+          "stepTitle": "1. Hitung Dulu",
+          "stepDesc": "Hitung benda di kelompok kiri. Hitung benda di kelompok kanan.",
+          "icon": "🧮",
+          "flowFrom": "Dua Kelompok Benda",
+          "flowTo": "Dua Jumlah"
         },
         {
           "stepNumber": 2,
-          "stepTitle": "2. Pasangkan Satu-Satu",
-          "stepDesc": "Jejerkan Kelompok A di baris atas dan Kelompok B di baris bawah, lalu tarik garis pasangan.",
+          "stepTitle": "2. Pasangkan Satu per Satu",
+          "stepDesc": "Satu benda kiri dipasangkan dengan satu benda kanan. Lakukan sampai ada yang habis.",
           "icon": "🔗",
-          "flowFrom": "Kelompok A vs Kelompok B",
-          "flowTo": "Garis Pasangan Satu-Satu"
+          "flowFrom": "Dua Jumlah",
+          "flowTo": "Pasangan dan Sisa"
         },
         {
           "stepNumber": 3,
-          "stepTitle": "3. Tentukan Perbandingannya",
-          "stepDesc": "Kelompok yang bersisa disebut Lebih Banyak; yang habis duluan disebut Lebih Sedikit.",
-          "icon": "⚖️",
-          "flowFrom": "Cek Sisa Pasangan",
-          "flowTo": "Lebih Banyak / Lebih Sedikit / Sama"
+          "stepTitle": "3. Lihat Sisanya",
+          "stepDesc": "Tidak ada sisa berarti sama banyak. Kelompok yang punya sisa lebih banyak. Kelompok yang habis lebih sedikit.",
+          "icon": "🔎",
+          "flowFrom": "Pasangan dan Sisa",
+          "flowTo": "Sama, Lebih Banyak, Lebih Sedikit"
+        },
+        {
+          "stepNumber": 4,
+          "stepTitle": "4. Pilih Tanda Buaya",
+          "stepDesc": "Mulut buaya selalu menghadap bilangan yang lebih banyak. Kalau sama banyak, buaya tidak memilih.",
+          "icon": "🐊",
+          "flowFrom": "Sama, Lebih Banyak, Lebih Sedikit",
+          "flowTo": "Tanda Lebih Banyak, Lebih Sedikit, Sama Dengan"
         }
       ],
       "infografisData": [
