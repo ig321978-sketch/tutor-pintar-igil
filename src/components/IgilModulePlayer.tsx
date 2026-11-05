@@ -173,18 +173,64 @@ const ALIAS_BILANGAN = [
   "sepuluh",
 ];
 
+function jarakHuruf(a: string, b: string): number {
+  if (a === b) return 0;
+  if (Math.abs(a.length - b.length) > 1) return 2;
+  const baris = new Array<number>(b.length + 1);
+  for (let j = 0; j <= b.length; j++) baris[j] = j;
+  for (let i = 1; i <= a.length; i++) {
+    let sebelumnya = baris[0];
+    baris[0] = i;
+    for (let j = 1; j <= b.length; j++) {
+      const simpan = baris[j];
+      const biaya = a[i - 1] === b[j - 1] ? 0 : 1;
+      baris[j] = Math.min(baris[j] + 1, baris[j - 1] + 1, sebelumnya + biaya);
+      sebelumnya = simpan;
+    }
+  }
+  return baris[b.length];
+}
+
 function ucapanMemuatBilangan(teks: string, jumlah: number): boolean {
   const kata = ALIAS_BILANGAN[jumlah - 1];
   if (!kata) return false;
-  const token = teks
+  const bersih = teks
     .toLowerCase()
+    .normalize("NFD")
+    .replace(/[\u0300-\u036f]/g, "")
     .replace(/[^a-z0-9]+/g, " ")
-    .trim()
+    .trim();
+  if (!bersih) return false;
+  const token = bersih
     .split(/\s+/)
-    .filter(Boolean);
-  if (token.length === 0) return false;
+    .filter(Boolean)
+    .map((bagian) => bagian.replace(/(.)\1{2,}/g, "$1"));
   const angka = String(jumlah);
-  return token.some((bagian) => bagian === kata || bagian === angka);
+  if (token.some((bagian) => bagian === kata || bagian === angka)) return true;
+  if (bersih.replace(/ /g, "").includes(kata)) return true;
+  return token.some((bagian) => bagian.length >= 3 && jarakHuruf(bagian, kata) <= 1);
+}
+
+function rapikanSampel(sampel: Float32Array): Float32Array {
+  const jendela = 160;
+  const ambang = 0.008;
+  const keras = (awal: number) => {
+    const akhir = Math.min(sampel.length, awal + jendela);
+    let jumlah = 0;
+    for (let i = awal; i < akhir; i++) jumlah += sampel[i] * sampel[i];
+    return Math.sqrt(jumlah / Math.max(1, akhir - awal));
+  };
+  let mula = 0;
+  let ujung = sampel.length;
+  while (mula + jendela < ujung && keras(mula) < ambang) mula += jendela;
+  while (ujung - jendela > mula && keras(ujung - jendela) < ambang) ujung -= jendela;
+  const dari = Math.max(0, mula - 1600);
+  const sampai = Math.min(sampel.length, ujung + 1600);
+  const inti = sampel.subarray(dari, Math.max(dari + 1, sampai));
+  const pinggir = 1600;
+  const keluar = new Float32Array(inti.length + pinggir * 2);
+  keluar.set(inti, pinggir);
+  return keluar;
 }
 
 function keEnamBelasRibu(masukan: Float32Array, dari: number): Float32Array {
@@ -342,7 +388,7 @@ function siapkanTulisUcapan(): Promise<MesinTulis> {
         dtype: "q8",
       });
       return async (audio: Float32Array) => {
-        const hasil = await mesin(audio, { language: "indonesian", task: "transcribe" });
+        const hasil = await mesin(rapikanSampel(audio), { language: "indonesian", task: "transcribe" });
         return (hasil.text ?? "").replace(/\[[^\]]*\]/g, " ");
       };
     })().catch((galat) => {
@@ -773,10 +819,60 @@ export default function IgilModulePlayer() {
     const masih = () => giliran === giliranRekam.current;
     void siapkanTulisUcapan().catch(() => undefined);
     const tangkap = tangkapSuara(masih);
+    let diterima = false;
+    const terima = () => {
+      if (diterima || !masih()) return;
+      diterima = true;
+      tangkap.henti();
+      try {
+        mesinConcreteRef.current?.abort();
+      } catch {
+        /* Mesin sudah berhenti. */
+      }
+      mesinConcreteRef.current = null;
+      sibukRekamRef.current = false;
+      setSuaraConcrete((prev) => ({ ...prev, [id]: true }));
+      setPesanConcrete("");
+      setRekamConcrete(false);
+    };
+    const win = window as Window & {
+      SpeechRecognition?: new () => MesinUcapan;
+      webkitSpeechRecognition?: new () => MesinUcapan;
+    };
+    const Konstruktor = win.SpeechRecognition ?? win.webkitSpeechRecognition;
+    if (Konstruktor) {
+      try {
+        const mesin = new Konstruktor();
+        mesin.lang = "id-ID";
+        mesin.continuous = true;
+        mesin.interimResults = true;
+        mesin.maxAlternatives = 5;
+        mesin.onresult = (peristiwa) => {
+          if (!masih() || diterima) return;
+          const bagian: string[] = [];
+          for (let i = 0; i < peristiwa.results.length; i++) {
+            const alternatif = peristiwa.results[i];
+            const batas = Math.min(alternatif?.length ?? 0, 5);
+            for (let j = 0; j < batas; j++) {
+              const potong = alternatif[j]?.transcript;
+              if (potong) bagian.push(potong);
+            }
+          }
+          if (ucapanMemuatBilangan(bagian.join(" "), jumlah)) terima();
+        };
+        mesin.onerror = () => {
+          /* Jika layanan peramban gagal, rekaman tetap diperiksa. */
+        };
+        mesinConcreteRef.current = mesin;
+        mesin.start();
+      } catch {
+        mesinConcreteRef.current = null;
+      }
+    }
     void (async () => {
       try {
         const sampel = await tangkap.selesai;
-        if (!masih()) return;
+        if (!masih() || diterima) return;
         if (tangkap.ditolak()) {
           setPesanConcrete("Izinkan mikrofon, lalu tekan lagi.");
           return;
@@ -787,17 +883,16 @@ export default function IgilModulePlayer() {
         }
         setPesanConcrete("Memeriksa suara...");
         const teks = await tulisUcapanLokal(sampel);
-        if (!masih()) return;
+        if (!masih() || diterima) return;
         if (ucapanMemuatBilangan(teks, jumlah)) {
-          setSuaraConcrete((prev) => ({ ...prev, [id]: true }));
-          setPesanConcrete("");
+          terima();
           return;
         }
         setPesanConcrete("Belum pas. Coba lagi.");
       } catch {
-        if (masih()) setPesanConcrete("Belum terdengar. Ucapkan jumlahnya satu kali.");
+        if (masih() && !diterima) setPesanConcrete("Belum terdengar. Ucapkan jumlahnya satu kali.");
       } finally {
-        if (masih()) {
+        if (masih() && !diterima) {
           sibukRekamRef.current = false;
           setRekamConcrete(false);
         }
