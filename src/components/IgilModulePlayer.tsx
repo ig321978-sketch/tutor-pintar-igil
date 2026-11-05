@@ -132,6 +132,28 @@ const SEBUTAN_ANGKA = [
 
 const SUARA_KELOMPOK =
   "Kelompok mainan dan jumlahnya. Tekan ikon mainan. Setiap tekan, angkanya naik satu, sampai jumlahnya pas.";
+
+const STASIUN_NYATA = [
+  {
+    id: "perosotan",
+    judul: "Perosotan di taman",
+    jumlah: 3,
+    suara: "Sentuh perosotan satu per satu. Berhenti kalau sudah tiga. Lalu tulis angkanya.",
+  },
+  {
+    id: "sepeda",
+    judul: "Sepeda di taman",
+    jumlah: 4,
+    suara: "Sentuh sepeda satu per satu. Berhenti kalau sudah empat. Lalu tulis angkanya.",
+  },
+  {
+    id: "kelereng",
+    judul: "Kelereng sampai sepuluh",
+    jumlah: 10,
+    suara: "Sentuh kelereng satu per satu. Berhenti kalau sudah sepuluh. Lalu tulis angkanya.",
+  },
+] as const;
+
 const PRACTICE_QUESTIONS = materiBab1.practiceQuestions as QuestionItem[];
 const FORMAL_EXAM_QUESTIONS = materiBab1.examQuestions as QuestionItem[];
 
@@ -465,6 +487,18 @@ export default function IgilModulePlayer() {
     const berikut = sekarang + 1;
     angkaMainanRef.current[id] = berikut;
     setAngkaMainan((prev) => ({ ...prev, [id]: berikut }));
+    return berikut;
+  }, []);
+
+  const [sentuhNyata, setSentuhNyata] = useState<Record<string, number>>({});
+  const sentuhNyataRef = useRef<Record<string, number>>({});
+
+  const sentuhBendaNyata = useCallback((id: string, target: number) => {
+    const sekarang = sentuhNyataRef.current[id] ?? 0;
+    if (sekarang >= target) return sekarang;
+    const berikut = sekarang + 1;
+    sentuhNyataRef.current[id] = berikut;
+    setSentuhNyata((prev) => ({ ...prev, [id]: berikut }));
     return berikut;
   }, []);
 
@@ -1232,6 +1266,87 @@ export default function IgilModulePlayer() {
                 </span>
               </div>
 
+              {activeSubBab === "A" ? (
+                <div className="flex flex-col gap-3">
+                  {STASIUN_NYATA.map((stasiun) => {
+                    const hitung = sentuhNyata[stasiun.id] ?? 0;
+                    const pas = hitung >= stasiun.jumlah;
+                    const kata = SEBUTAN_ANGKA[hitung - 1] ?? "";
+                    return (
+                      <div
+                        key={stasiun.id}
+                        className="space-y-3 rounded-3xl border-2 border-[#3B82F6] bg-[#EFF6FF] p-4"
+                      >
+                        <div className="flex items-center justify-between gap-3">
+                          <h3 className="min-w-0 text-base font-black leading-snug text-[#1C01A5]">
+                            {stasiun.judul}
+                          </h3>
+                          <button
+                            type="button"
+                            onClick={() => speakGuru(stasiun.suara)}
+                            className="shrink-0 rounded-xl border border-[#3B82F6] bg-white px-3 py-1 text-xs font-black text-[#1E3A8A]"
+                          >
+                            🔊 Suara Guru
+                          </button>
+                        </div>
+                        <p className="text-xs font-bold text-[#1E3A8A]">
+                          {pas ? "Jumlahnya pas. Tulis angkanya." : "Sentuh mainan berbingkai emas."}
+                        </p>
+                        <div className="flex flex-wrap gap-2">
+                          {Array.from({ length: stasiun.jumlah }, (_, i) => {
+                            const nyala = i < hitung;
+                            const giliran = i === hitung;
+                            return (
+                              <button
+                                key={i}
+                                type="button"
+                                aria-label={`${stasiun.judul} ${i + 1}`}
+                                onClick={() => {
+                                  if (!giliran) return;
+                                  const sebelumnya = sentuhNyataRef.current[stasiun.id] ?? 0;
+                                  const angka = sentuhBendaNyata(stasiun.id, stasiun.jumlah);
+                                  if (angka > sebelumnya) {
+                                    speakGuru(SEBUTAN_ANGKA[angka - 1] ?? String(angka));
+                                  }
+                                }}
+                                className={`flex h-14 w-14 items-center justify-center rounded-2xl border-2 bg-white ${
+                                  nyala
+                                    ? "border-solid border-[#1C01A5]"
+                                    : giliran
+                                      ? "border-solid border-[#F0AB00]"
+                                      : "border-dashed border-[#93C5FD]"
+                                }`}
+                              >
+                                <span className={nyala || giliran ? "" : "opacity-40"}>
+                                  <IkonMainan jenis={stasiun.id} />
+                                </span>
+                              </button>
+                            );
+                          })}
+                        </div>
+                        <div
+                          className={`flex min-h-16 flex-col items-center justify-center rounded-2xl border-2 bg-white py-1 ${
+                            hitung > 0 ? "border-solid border-[#1C01A5]" : "border-dashed border-[#93C5FD]"
+                          }`}
+                        >
+                          {hitung > 0 ? (
+                            <>
+                              <span className="text-3xl font-black leading-none text-[#1C01A5]">{hitung}</span>
+                              <span className="text-sm font-black leading-tight text-[#1C01A5]">{kata}</span>
+                            </>
+                          ) : null}
+                        </div>
+                        {pas ? (
+                          <div className="flex flex-col items-center gap-2">
+                            <div className="text-xs font-black text-[#1E3A8A]">Tulis {kata}</div>
+                            <DottedNumberTracingCanvas digit={stasiun.jumlah} />
+                          </div>
+                        ) : null}
+                      </div>
+                    );
+                  })}
+                </div>
+              ) : (
               <div className="w-full overflow-x-auto pb-3">
                 <div className="flex flex-nowrap gap-5 min-w-[1050px]">
                   {currentSubContent.concreteSlides.map((cSlide, idx) => (
@@ -1287,6 +1402,7 @@ export default function IgilModulePlayer() {
                   ))}
                 </div>
               </div>
+              )}
 
               <div className="flex justify-end">
                 <button
