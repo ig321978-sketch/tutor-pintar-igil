@@ -192,17 +192,21 @@ function KelompokBenda({
   jumlah,
   baruDari = 999,
   nyata = false,
+  kecil = false,
 }: {
   jenis: string;
   jumlah: number;
   baruDari?: number;
   nyata?: boolean;
+  kecil?: boolean;
 }) {
   return (
-    <div className="flex flex-wrap items-center justify-center gap-1.5">
+    <div className={`flex flex-wrap items-center justify-center ${kecil ? "gap-0.5" : "gap-1.5"}`}>
       {Array.from({ length: jumlah }, (_, i) => (
         <span key={i} className={i >= baruDari ? "igil-muncul" : ""}>
-          {nyata ? (
+          {kecil ? (
+            <IkonMainan jenis={jenis} kelas="h-5 w-5 shrink-0" />
+          ) : nyata ? (
             <span className="block" style={letakMeja(i)}>
               <IkonMainan jenis={jenis} besar kelas="h-9 w-9 shrink-0 drop-shadow-[0_3px_2px_rgba(90,50,10,0.45)]" />
             </span>
@@ -701,7 +705,7 @@ function LangkahBilang({
   );
 }
 
-const WARNA_PASANG = [MERAH_MUDA, EMAS_TUA, HIJAU, "#60A5FA"];
+const WARNA_PASANG = [MERAH_MUDA, "#A78BFA", HIJAU, "#60A5FA"];
 
 function LangkahPasang({ speakGuru, lanjut, nomor }: PropsLangkah) {
   const KURSI = 6;
@@ -1037,21 +1041,21 @@ function LangkahUrut({ speakGuru, lanjut, nomor }: PropsLangkah) {
         </div>
         <div className="rounded-2xl border-4 border-dashed border-[#7C4A1D] bg-[#F3C98A] p-2">
           <p className="mb-2 text-xs font-black tracking-wide text-[#6B3F12]">📏 SEDIKIT → BANYAK</p>
-          <div className="grid grid-cols-2 gap-2">
+          <div className="grid grid-cols-4 gap-1.5">
             {terurut.map((_, i) => {
               const isi = KELOMPOK_URUT.find((k) => k.id === slot[i]);
               return (
                 <div
                   key={i}
                   data-zona={`slot-${i}`}
-                  className={`relative flex min-h-24 items-center justify-center rounded-2xl border-4 px-1 py-2 ${
+                  className={`relative flex min-h-20 items-center justify-center rounded-xl border-4 px-0.5 py-2 ${
                     isi ? "igil-muncul border-[#7FCB96] bg-[#E8F7EE]" : "border-dashed border-[#7C4A1D]/60 bg-[#FFF6E5]"
                   }`}
                 >
                   <span className="absolute -left-2 -top-3 flex h-8 w-8 items-center justify-center rounded-full border-4 border-white bg-[#1C01A5] text-base font-black text-[#FFE566]">
                     {i + 1}
                   </span>
-                  {isi ? <KelompokBenda jenis={isi.jenis} jumlah={isi.jumlah} /> : null}
+                  {isi ? <KelompokBenda jenis={isi.jenis} jumlah={isi.jumlah} kecil /> : null}
                 </div>
               );
             })}
