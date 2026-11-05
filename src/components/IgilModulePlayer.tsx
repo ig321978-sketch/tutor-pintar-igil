@@ -160,6 +160,27 @@ const KARTU_CONCRETE = [
   },
 ] as const;
 
+const KARTU_GAMBAR = [
+  {
+    id: "kursi",
+    nama: "Kursi",
+    jumlah: 5,
+    suara: "Kursi. Tekan diagram sampai kotaknya pas. Lalu tulis, dan jawab dengan suara satu kali.",
+  },
+  {
+    id: "balon",
+    nama: "Balon",
+    jumlah: 6,
+    suara: "Balon. Tekan diagram sampai lingkarannya pas. Lalu tulis, dan jawab dengan suara satu kali.",
+  },
+  {
+    id: "buku",
+    nama: "Buku",
+    jumlah: 7,
+    suara: "Buku. Tekan diagram sampai halamannya pas. Lalu tulis, dan jawab dengan suara satu kali.",
+  },
+] as const;
+
 const ALIAS_BILANGAN = [
   "satu",
   "dua",
@@ -429,6 +450,50 @@ const FORMAL_EXAM_QUESTIONS = materiBab1.examQuestions as QuestionItem[];
 // ============================================================================
 // SUB-KOMPONEN KANVAS TULIS ANGKA (TITIK-TITIK BENTUK HURUF)
 // ============================================================================
+
+function GambarDiagram({ jenis }: { jenis: string }) {
+  if (jenis === "balon") {
+    return (
+      <svg viewBox="0 0 24 24" className="h-4 w-4" aria-hidden="true">
+        <circle cx="12" cy="9" r="5.5" fill="#3B82F6" stroke="#1C01A5" strokeWidth="1.6" />
+        <path d="M12 14.5 V21" stroke="#1C01A5" strokeWidth="1.6" strokeLinecap="round" />
+      </svg>
+    );
+  }
+  if (jenis === "buku") {
+    return (
+      <svg viewBox="0 0 24 24" className="h-4 w-4" aria-hidden="true">
+        <rect x="3.5" y="5" width="8" height="14" rx="1" fill="#7FCB96" stroke="#1C01A5" strokeWidth="1.6" />
+        <rect x="12.5" y="5" width="8" height="14" rx="1" fill="#F0AB00" stroke="#1C01A5" strokeWidth="1.6" />
+      </svg>
+    );
+  }
+  return (
+    <svg viewBox="0 0 24 24" className="h-4 w-4" aria-hidden="true">
+      <path d="M7 7 V15 H18" fill="none" stroke="#1C01A5" strokeWidth="1.8" strokeLinejoin="round" />
+      <path d="M5 15 H19" stroke="#F0AB00" strokeWidth="3" strokeLinecap="round" />
+      <path d="M8 15 V20 M16 15 V20" stroke="#1C01A5" strokeWidth="1.8" strokeLinecap="round" />
+    </svg>
+  );
+}
+
+function DiagramMainan({ jenis, terisi, kapasitas }: { jenis: string; terisi: number; kapasitas: number }) {
+  const kolom = kapasitas === 6 ? 3 : kapasitas === 7 ? 4 : 5;
+  return (
+    <div className="grid w-full gap-1" style={{ gridTemplateColumns: `repeat(${kolom}, minmax(0, 1fr))` }}>
+      {Array.from({ length: kapasitas }, (_, i) => (
+        <span
+          key={i}
+          className={`flex aspect-square items-center justify-center rounded-md border ${
+            i < terisi ? "border-[#1C01A5] bg-white" : "border-dashed border-[#F0AB00] bg-[#FFFBEB]"
+          }`}
+        >
+          {i < terisi ? <GambarDiagram jenis={jenis} /> : null}
+        </span>
+      ))}
+    </div>
+  );
+}
 
 function IkonMainan({ jenis }: { jenis: string }) {
   const garis = {
@@ -781,6 +846,13 @@ export default function IgilModulePlayer() {
   const giliranRekam = useRef(0);
   const giliranSuara = useRef(0);
   const sibukRekamRef = useRef(false);
+  const [hitungGambar, setHitungGambar] = useState<Record<string, number>>({});
+  const hitungGambarRef = useRef<Record<string, number>>({});
+  const [indeksGambar, setIndeksGambar] = useState(0);
+  const [tulisGambar, setTulisGambar] = useState<Record<string, boolean>>({});
+  const [suaraGambar, setSuaraGambar] = useState<Record<string, boolean>>({});
+  const [rekamGambar, setRekamGambar] = useState(false);
+  const [pesanGambar, setPesanGambar] = useState("");
 
   const sentuhBendaNyata = useCallback((id: string, target: number) => {
     const sekarang = sentuhNyataRef.current[id] ?? 0;
@@ -788,6 +860,15 @@ export default function IgilModulePlayer() {
     const berikut = sekarang + 1;
     sentuhNyataRef.current[id] = berikut;
     setSentuhNyata((prev) => ({ ...prev, [id]: berikut }));
+    return berikut;
+  }, []);
+
+  const tambahDiagram = useCallback((id: string, target: number) => {
+    const sekarang = hitungGambarRef.current[id] ?? 0;
+    if (sekarang >= target) return sekarang;
+    const berikut = sekarang + 1;
+    hitungGambarRef.current[id] = berikut;
+    setHitungGambar((prev) => ({ ...prev, [id]: berikut }));
     return berikut;
   }, []);
 
@@ -803,9 +884,10 @@ export default function IgilModulePlayer() {
       /* Mesin sudah berhenti. */
     }
     setRekamConcrete(false);
+    setRekamGambar(false);
   }, []);
 
-  const mulaiRekamConcrete = useCallback((id: string, jumlah: number) => {
+  const mulaiRekamConcrete = useCallback((id: string, jumlah: number, panel: "concrete" | "gambar" = "concrete") => {
     if (sibukRekamRef.current) {
       hentikanRekamConcrete();
       return;
@@ -814,8 +896,13 @@ export default function IgilModulePlayer() {
     giliranSuara.current += 1;
     sibukRekamRef.current = true;
     hentikanAudioGuruAktif();
-    setPesanConcrete("");
-    setRekamConcrete(true);
+    const keGambar = panel === "gambar";
+    const taruhPesan = keGambar ? setPesanGambar : setPesanConcrete;
+    const taruhRekam = keGambar ? setRekamGambar : setRekamConcrete;
+    const taruhSuara = keGambar ? setSuaraGambar : setSuaraConcrete;
+    taruhPesan("");
+    setRekamConcrete(panel === "concrete");
+    setRekamGambar(panel === "gambar");
     const masih = () => giliran === giliranRekam.current;
     void siapkanTulisUcapan().catch(() => undefined);
     const tangkap = tangkapSuara(masih);
@@ -831,9 +918,9 @@ export default function IgilModulePlayer() {
       }
       mesinConcreteRef.current = null;
       sibukRekamRef.current = false;
-      setSuaraConcrete((prev) => ({ ...prev, [id]: true }));
-      setPesanConcrete("");
-      setRekamConcrete(false);
+      taruhSuara((prev) => ({ ...prev, [id]: true }));
+      taruhPesan("");
+      taruhRekam(false);
     };
     const win = window as Window & {
       SpeechRecognition?: new () => MesinUcapan;
@@ -874,27 +961,27 @@ export default function IgilModulePlayer() {
         const sampel = await tangkap.selesai;
         if (!masih() || diterima) return;
         if (tangkap.ditolak()) {
-          setPesanConcrete("Izinkan mikrofon, lalu tekan lagi.");
+          taruhPesan("Izinkan mikrofon, lalu tekan lagi.");
           return;
         }
         if (!sampel || energiSuara(sampel) < 0.00004) {
-          setPesanConcrete("Belum terdengar. Ucapkan jumlahnya satu kali.");
+          taruhPesan("Belum terdengar. Ucapkan jumlahnya satu kali.");
           return;
         }
-        setPesanConcrete("Memeriksa suara...");
+        taruhPesan("Memeriksa suara...");
         const teks = await tulisUcapanLokal(sampel);
         if (!masih() || diterima) return;
         if (ucapanMemuatBilangan(teks, jumlah)) {
           terima();
           return;
         }
-        setPesanConcrete("Belum pas. Coba lagi.");
+        taruhPesan("Belum pas. Coba lagi.");
       } catch {
-        if (masih() && !diterima) setPesanConcrete("Belum terdengar. Ucapkan jumlahnya satu kali.");
+        if (masih() && !diterima) taruhPesan("Belum terdengar. Ucapkan jumlahnya satu kali.");
       } finally {
         if (masih() && !diterima) {
           sibukRekamRef.current = false;
-          setRekamConcrete(false);
+          taruhRekam(false);
         }
       }
     })();
@@ -1880,7 +1967,7 @@ export default function IgilModulePlayer() {
           )}
 
           {/* --------------------------------------------------------------- */}
-          {/* SLIDED COMPONENT 5: PICTORIAL (3 SLIDE DIAGRAM ANGKA BERBEDA)   */}
+          {/* SLIDED COMPONENT 5: PICTURE (DIAGRAM MAINAN + KANVAS)          */}
           {/* --------------------------------------------------------------- */}
           {unlockedSmicpaStage >= 5 && (
             <div ref={pictorialRef} className="space-y-3 border-b-2 border-slate-200 pb-6 pt-2">
@@ -1890,6 +1977,133 @@ export default function IgilModulePlayer() {
                 </span>
               </div>
 
+              {activeSubBab === "A" ? (
+                <div className="rounded-3xl border-2 border-[#F59E0B] bg-[#FFFBEB] p-4 space-y-3">
+                  {(() => {
+                    const kartu = KARTU_GAMBAR[indeksGambar];
+                    const hitung = hitungGambar[kartu.id] ?? 0;
+                    const tulis = tulisGambar[kartu.id] === true;
+                    const suara = suaraGambar[kartu.id] === true;
+                    const terakhir = indeksGambar >= KARTU_GAMBAR.length - 1;
+                    return (
+                      <>
+                        <div className="flex items-center justify-between gap-3">
+                          <h3 className="min-w-0 text-base font-black leading-snug text-[#1C01A5]">
+                            {kartu.nama}
+                          </h3>
+                          <button
+                            type="button"
+                            onClick={() => speakGuru(kartu.suara)}
+                            className="shrink-0 rounded-xl border border-[#F59E0B] bg-white px-3 py-1 text-xs font-black text-[#92400E]"
+                          >
+                            🔊 Suara Guru
+                          </button>
+                        </div>
+                        <p className="text-xs font-bold text-[#92400E]">
+                          Diagram {indeksGambar + 1} dari {KARTU_GAMBAR.length}.{" "}
+                          {suara
+                            ? "Jumlahnya sudah diucapkan."
+                            : "Tekan diagram, lalu ucapkan jumlahnya satu kali."}
+                        </p>
+                        <div className="grid grid-cols-2 gap-2">
+                          <div className="text-center text-xs font-black tracking-wide text-[#92400E]">MAINAN</div>
+                          <div className="text-center text-xs font-black tracking-wide text-[#92400E]">JUMLAH</div>
+                        </div>
+                        <div className="grid grid-cols-2 gap-2">
+                          <button
+                            type="button"
+                            aria-label={kartu.nama}
+                            aria-pressed={hitung > 0}
+                            onClick={() => tambahDiagram(kartu.id, kartu.jumlah)}
+                            className={`flex min-w-0 flex-col gap-2 rounded-2xl border-2 bg-white px-2 py-2 text-left ${
+                              hitung > 0 ? "border-[#1C01A5]" : "border-[#F0AB00]"
+                            }`}
+                          >
+                            <span className="text-[11px] font-black leading-tight text-[#1C01A5]">{kartu.nama}</span>
+                            <DiagramMainan jenis={kartu.id} terisi={hitung} kapasitas={kartu.jumlah} />
+                          </button>
+                          <button
+                            type="button"
+                            aria-label={suara ? `${kartu.jumlah} ${SEBUTAN_ANGKA[kartu.jumlah - 1]}` : "Jawab dengan suara"}
+                            onClick={() => {
+                              if (suara) return;
+                              mulaiRekamConcrete(kartu.id, kartu.jumlah, "gambar");
+                            }}
+                            className={`flex min-h-16 min-w-0 flex-col items-center justify-center rounded-2xl border-2 bg-white px-2 py-1 ${
+                              suara
+                                ? "border-solid border-[#1C01A5]"
+                                : rekamGambar
+                                  ? "border-solid border-[#F0AB00]"
+                                  : "border-dashed border-[#F0AB00]"
+                            }`}
+                          >
+                            {suara ? (
+                              <>
+                                <span className="text-3xl font-black leading-none text-[#1C01A5]">{kartu.jumlah}</span>
+                                <span className="text-sm font-black leading-tight text-[#1C01A5]">
+                                  {SEBUTAN_ANGKA[kartu.jumlah - 1]}
+                                </span>
+                              </>
+                            ) : (
+                              <span className="text-center text-sm font-black leading-tight text-[#1C01A5]">
+                                {rekamGambar
+                                  ? pesanGambar.startsWith("Memeriksa")
+                                    ? "Memeriksa..."
+                                    : "Mendengarkan..."
+                                  : "Jawab dengan suara"}
+                              </span>
+                            )}
+                          </button>
+                        </div>
+                        {pesanGambar ? (
+                          <p className="text-center text-xs font-bold text-[#1C01A5]">{pesanGambar}</p>
+                        ) : null}
+                        <div className="space-y-3">
+                          <div className="flex flex-col items-center gap-2 rounded-2xl border border-[#F0AB00] bg-white p-3">
+                            <div className="text-xs font-black text-[#92400E]">
+                              Tulis angka di atas, kata di bawah
+                            </div>
+                            <DottedNumberTracingCanvas
+                              key={`gambar-${kartu.id}`}
+                              digit={kartu.jumlah}
+                              kata={SEBUTAN_ANGKA[kartu.jumlah - 1]}
+                              onCompletedTrace={() =>
+                                setTulisGambar((prev) => ({ ...prev, [kartu.id]: true }))
+                              }
+                            />
+                            <p className="text-xs font-bold text-[#1C01A5]">
+                              {tulis ? "Tulisanmu pas." : "Ikuti titik sampai mirip."}
+                            </p>
+                          </div>
+                          <div className="flex justify-end">
+                            <button
+                              type="button"
+                              onClick={() => {
+                                hentikanRekamConcrete();
+                                setPesanGambar("");
+                                if (!terakhir) {
+                                  setIndeksGambar((urut) => urut + 1);
+                                  pictorialRef.current?.scrollIntoView({ behavior: "smooth", block: "start" });
+                                  return;
+                                }
+                                handleUnlockNextSmicpa(
+                                  6,
+                                  abstractRef,
+                                  "Tiga diagram sudah pas. Ayo lihat lambang angkanya."
+                                );
+                              }}
+                              className="rounded-2xl border-2 border-[#FFE566] bg-[#1C01A5] px-6 py-2.5 text-xs font-black text-[#FFE566] shadow-md"
+                            >
+                              {terakhir ? "LANJUTKAN KE ABSTRACT ⬇️" : "LANJUTKAN ⬇️"}
+                            </button>
+                          </div>
+                        </div>
+                      </>
+                    );
+                  })()}
+                </div>
+              ) : (
+              <>
               <div className="w-full overflow-x-auto pb-3">
                 <div className="flex flex-nowrap gap-5 min-w-[960px]">
                   {currentSubContent.pictorialSlides.map((pSlide, idx) => (
@@ -1911,7 +2125,6 @@ export default function IgilModulePlayer() {
                       </div>
                       <h3 className="text-sm font-black text-[#1C01A5]">{pSlide.title}</h3>
 
-                      {/* Visualisasi Diagram Pictorial */}
                       {pSlide.diagramType === "ten-frame" && (
                         <div className="grid grid-cols-5 gap-1.5 bg-white p-3 rounded-2xl border-2 border-[#1C01A5]">
                           {Array.from({ length: 10 }).map((_, i) => (
@@ -1982,6 +2195,8 @@ export default function IgilModulePlayer() {
                   LANJUTKAN KE ABSTRACT ⬇️
                 </button>
               </div>
+              </>
+              )}
             </div>
           )}
 
