@@ -1705,7 +1705,7 @@ function IsiKartuLambangC({
               </span>
             ) : null}
             <span
-              className={`flex h-14 min-w-0 max-w-[3.2rem] flex-1 items-center justify-center rounded-xl border-4 text-3xl font-black text-[#1C01A5] ${
+              className={`flex h-14 min-w-0 max-w-[3.2rem] flex-1 items-center justify-center rounded-xl border-4 ${n !== null && n >= 10 ? "text-2xl" : "text-3xl"} font-black text-[#1C01A5] ${
                 n === null
                   ? dipilih
                     ? "igil-muncul border-[#7FCB96] bg-[#E8F7EE]"
