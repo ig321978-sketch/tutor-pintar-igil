@@ -36,7 +36,7 @@ export type PanelSuara = {
   bersih: () => void;
 };
 
-type Umum = {
+export type Umum = {
   speakGuru: (teks: string) => void;
   panel: PanelSuara;
   hentikan: () => void;
@@ -44,16 +44,16 @@ type Umum = {
   onSelesai: () => void;
 };
 
-type Kabar = { teks: string; ok: boolean } | null;
+export type Kabar = { teks: string; ok: boolean } | null;
 
 const BIRU = "#1C01A5";
 const EMAS_TUA = "#F0AB00";
 const HIJAU = "#7FCB96";
 const MERAH_MUDA = "#E98989";
 
-const STIKER = "rounded-3xl border-4 border-[#1C01A5] bg-white shadow-[0_5px_0_rgba(28,1,165,0.22)]";
+export const STIKER = "rounded-3xl border-4 border-[#1C01A5] bg-white shadow-[0_5px_0_rgba(28,1,165,0.22)]";
 
-const kata = (n: number) => SEBUTAN_ANGKA[n - 1] ?? String(n);
+export const kata = (n: number) => SEBUTAN_ANGKA[n - 1] ?? String(n);
 
 const NAMA: Record<string, string> = {
   sepeda: "Sepeda",
@@ -72,7 +72,7 @@ function hubungan(kiri: number, kanan: number): { tanda: string; arah: ArahBuaya
 
 /* ------------------------------ Perangkat ------------------------------- */
 
-function useLetusan() {
+export function useLetusan() {
   const [id, setId] = useState(0);
   const picu = useCallback(() => setId((n) => n + 1), []);
   return { id, picu };
@@ -89,7 +89,7 @@ const ARAH_BINTANG = [
   [-85, 0],
 ];
 
-function Letusan({ id }: { id: number }) {
+export function Letusan({ id }: { id: number }) {
   if (!id) return null;
   return (
     <span key={id} className="pointer-events-none absolute inset-0 z-20 overflow-hidden" aria-hidden="true">
@@ -107,7 +107,7 @@ function Letusan({ id }: { id: number }) {
 }
 
 /** Umpan balik: layar hanya "Hebat!" atau "Coba lagi". Isi pesan dibacakan Suara Guru. */
-function KabarChip({ kabar, bicara = true }: { kabar: Kabar; bicara?: boolean }) {
+export function KabarChip({ kabar, bicara = true }: { kabar: Kabar; bicara?: boolean }) {
   const ucap = useContext(SuaraCtx);
   useEffect(() => {
     if (bicara && kabar?.teks) ucap(kabar.teks);
@@ -129,7 +129,7 @@ function KabarChip({ kabar, bicara = true }: { kabar: Kabar; bicara?: boolean })
   );
 }
 
-const KABAR_TULIS_OK: Kabar = { teks: "Tulisanmu sudah pas.", ok: true };
+export const KABAR_TULIS_OK: Kabar = { teks: "Tulisanmu sudah pas.", ok: true };
 
 /** Buaya dan gelembung kata pendek. Diketuk, buaya membacakan petunjuk lengkapnya. */
 function BuayaBicara({ pendek, teks, arah = "kiri" }: { pendek: string; teks?: string; arah?: ArahBuaya }) {
@@ -151,7 +151,7 @@ function BuayaBicara({ pendek, teks, arah = "kiri" }: { pendek: string; teks?: s
   );
 }
 
-function JudulGame({
+export function JudulGame({
   nomor,
   total,
   judul,
@@ -191,7 +191,7 @@ function JudulGame({
   );
 }
 
-function TombolLanjut({ teks, onClick }: { teks: string; onClick: () => void }) {
+export function TombolLanjut({ teks, onClick }: { teks: string; onClick: () => void }) {
   return (
     <div className="flex justify-end pt-1">
       <button
@@ -298,7 +298,7 @@ function TombolSuara({
   );
 }
 
-function JawabSuara({
+export function JawabSuara({
   id,
   jumlah,
   panel,
@@ -385,7 +385,7 @@ function JawabSuara({
 const SUARA_INFO =
   "Ini poster rangkuman. Baca dan dengarkan setiap bagian. Belum ada yang perlu diketuk untuk menjawab. Kita akan bermain di tahap berikutnya.";
 
-function PanelPoster({
+export function PanelPoster({
   nomor,
   judul,
   warna,

@@ -49,10 +49,12 @@ export function PetaPikiranB({
   langkah,
   judul,
   speakGuru,
+  maskot,
 }: {
   langkah: LangkahPeta[];
   judul: string;
   speakGuru: (teks: string) => void;
+  maskot?: React.ReactNode;
 }) {
   const [didengar, setDidengar] = useState<number[]>([]);
   const semua = didengar.length >= langkah.length;
@@ -73,7 +75,7 @@ export function PetaPikiranB({
       }}
     >
       <div className="flex items-end gap-2">
-        <MulutBuaya arah="kiri" kelas="h-14 w-24 igil-lompat" />
+        {maskot ?? <MulutBuaya arah="kiri" kelas="h-14 w-24 igil-lompat" />}
         <div className="min-w-0 flex-1 rounded-3xl rounded-bl-md border-4 border-[#1C01A5] bg-white px-3 py-2 text-sm font-black leading-snug text-[#1C01A5]">
           Ketuk bulatan! 👆
         </div>

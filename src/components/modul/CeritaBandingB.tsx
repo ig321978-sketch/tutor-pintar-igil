@@ -2,17 +2,17 @@
 
 import React, { useEffect, useRef, useState } from "react";
 
-const BIRU = "#1C01A5";
-const EMAS = "#F0AB00";
-const KUNING = "#FFE566";
-const HIJAU = "#7FCB96";
-const MERAH_MUDA = "#E98989";
-const WARNA = [MERAH_MUDA, EMAS, HIJAU, KUNING];
+export const BIRU = "#1C01A5";
+export const EMAS = "#F0AB00";
+export const KUNING = "#FFE566";
+export const HIJAU = "#7FCB96";
+export const MERAH_MUDA = "#E98989";
+export const WARNA = [MERAH_MUDA, EMAS, HIJAU, KUNING];
 
-const BAWAH = { transformBox: "fill-box" as const, transformOrigin: "50% 100%" };
-const TENGAH = { transformBox: "fill-box" as const, transformOrigin: "50% 50%" };
+export const BAWAH = { transformBox: "fill-box" as const, transformOrigin: "50% 100%" };
+export const TENGAH = { transformBox: "fill-box" as const, transformOrigin: "50% 50%" };
 
-interface Cerita {
+export interface Cerita {
   id: string;
   voiceNarration: string;
   sceneType: string;
@@ -22,7 +22,7 @@ interface Cerita {
 /* Potongan gambar kecil yang dipakai ulang                            */
 /* ------------------------------------------------------------------ */
 
-function Mata({ x, y, r = 2.6 }: { x: number; y: number; r?: number }) {
+export function Mata({ x, y, r = 2.6 }: { x: number; y: number; r?: number }) {
   return (
     <g>
       <circle cx={x} cy={y} r={r} fill={BIRU} />
@@ -31,11 +31,11 @@ function Mata({ x, y, r = 2.6 }: { x: number; y: number; r?: number }) {
   );
 }
 
-function Pipi({ x, y, r = 3 }: { x: number; y: number; r?: number }) {
+export function Pipi({ x, y, r = 3 }: { x: number; y: number; r?: number }) {
   return <ellipse cx={x} cy={y} rx={r} ry={r * 0.65} fill={MERAH_MUDA} opacity={0.65} />;
 }
 
-function Senyum({ x, y, l = 5 }: { x: number; y: number; l?: number }) {
+export function Senyum({ x, y, l = 5 }: { x: number; y: number; l?: number }) {
   return (
     <path
       d={`M${x - l} ${y} Q${x} ${y + l} ${x + l} ${y}`}
@@ -47,7 +47,7 @@ function Senyum({ x, y, l = 5 }: { x: number; y: number; l?: number }) {
   );
 }
 
-function Anak({ x, y, rambut, pita }: { x: number; y: number; rambut: string; pita?: boolean }) {
+export function Anak({ x, y, rambut, pita }: { x: number; y: number; rambut: string; pita?: boolean }) {
   return (
     <g transform={`translate(${x} ${y})`}>
       <circle r="19" fill="#FFE0BD" stroke={BIRU} strokeWidth="2.6" />
@@ -88,7 +88,7 @@ function Burung({ x, y, warna = MERAH_MUDA }: { x: number; y: number; warna?: st
   );
 }
 
-function Bunga({ x, y, warna }: { x: number; y: number; warna: string }) {
+export function Bunga({ x, y, warna }: { x: number; y: number; warna: string }) {
   return (
     <g transform={`translate(${x} ${y})`}>
       <path d="M0 4 V17" stroke="#3E8E5A" strokeWidth="2.4" strokeLinecap="round" />
@@ -108,7 +108,7 @@ function Bunga({ x, y, warna }: { x: number; y: number; warna: string }) {
   );
 }
 
-function Awan({ x, y, kelas }: { x: number; y: number; kelas: string }) {
+export function Awan({ x, y, kelas }: { x: number; y: number; kelas: string }) {
   return (
     <g className={kelas}>
       <g transform={`translate(${x} ${y})`}>
@@ -121,7 +121,7 @@ function Awan({ x, y, kelas }: { x: number; y: number; kelas: string }) {
   );
 }
 
-function Matahari() {
+export function Matahari() {
   return (
     <g>
       <g className="igil-putar" style={{ ...TENGAH }}>
@@ -151,7 +151,7 @@ function Matahari() {
   );
 }
 
-function Latar() {
+export function Latar() {
   return (
     <>
       <rect x="0" y="0" width="300" height="208" fill="#DFF1FF" />
@@ -396,12 +396,18 @@ const HALAMAN = [
   { tepi: "#6D5BDE", latar: "#EEF0FF" },
 ];
 
-export function CeritaBandingB({
+export function CeritaBandingB(props: { cerita: Cerita[]; speakGuru: (teks: string) => void }) {
+  return <BukuCerita {...props} adegan={(c) => <Adegan jenis={c.sceneType} />} />;
+}
+
+export function BukuCerita({
   cerita,
   speakGuru,
+  adegan,
 }: {
   cerita: Cerita[];
   speakGuru: (teks: string) => void;
+  adegan: (c: Cerita, i: number) => React.ReactNode;
 }) {
   const [bicara, setBicara] = useState<string | null>(null);
   const waktu = useRef<ReturnType<typeof setTimeout> | null>(null);
@@ -463,7 +469,7 @@ export function CeritaBandingB({
                   aktif ? "ring-4 ring-[#FFE566]" : ""
                 }`}
               >
-                <Adegan jenis={c.sceneType} />
+                {adegan(c, i)}
                 {aktif ? (
                   <>
                     <span className="igil-lompat absolute left-3 top-3 text-2xl" aria-hidden="true">
