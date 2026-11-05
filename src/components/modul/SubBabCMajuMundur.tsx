@@ -112,7 +112,7 @@ const SUARA_INFO =
 function TanggaMini({ arah }: { arah: "naik" | "turun" }) {
   return (
     <svg
-      viewBox="0 0 300 120"
+      viewBox="0 0 300 130"
       className="block h-auto w-full"
       role="img"
       aria-label={arah === "naik" ? "Tangga balok naik satu sampai sepuluh" : "Tangga balok turun sepuluh sampai satu"}
@@ -127,7 +127,7 @@ function TanggaMini({ arah }: { arah: "naik" | "turun" }) {
         return (
           <g key={i}>
             <rect x={x} y={108 - h} width="27" height={h} rx="3" fill={warnaBalok(n)} stroke={BIRU} strokeWidth="2" />
-            <text x={cx} y={108 - h + 14} textAnchor="middle" fontSize="12" fontWeight="900" fill={BIRU}>
+            <text x={cx} y={123} textAnchor="middle" fontSize="12" fontWeight="900" fill={BIRU}>
               {n}
             </text>
             <polygon
@@ -377,7 +377,7 @@ function LangkahTangga({
       />
       <div className={`relative space-y-3 p-3 ${ALAS}`}>
         <div data-zona="tangga" className="rounded-2xl border-4 border-dashed border-[#7C4A1D] bg-[#FFF6E5] p-2">
-          <p className="mb-1 text-xs font-black tracking-wide text-[#6B3F12]">🪜 TANGGA UPE</p>
+          <p className="mb-1 text-xs font-black tracking-wide text-[#6B3F12]">🧱 TANGGA UPE</p>
           <div className="flex items-end gap-1.5">
             {angka.map((n, i) => {
               const terisi = i < pakai.length;
@@ -908,7 +908,7 @@ function LangkahTulis({ speakGuru, lanjut, nomor }: PropsLangkah) {
                 </span>
               ) : null}
               <span
-                className={`flex h-14 w-[3.4rem] shrink-0 items-center justify-center rounded-[50%] border-4 text-2xl font-black text-[#1C01A5] ${
+                className={`flex aspect-square min-w-0 max-w-[3.4rem] flex-1 items-center justify-center rounded-[50%] border-4 text-2xl font-black text-[#1C01A5] ${
                   n === null
                     ? lulus
                       ? "igil-muncul border-[#7FCB96] bg-[#E8F7EE]"
@@ -1221,7 +1221,7 @@ function LabRoket({ speakGuru }: { speakGuru: (t: string) => void }) {
 }
 
 const TAB_LAB = [
-  { id: "tangga" as const, ikon: "🪜", nama: "Tangga" },
+  { id: "tangga" as const, ikon: "🧱", nama: "Tangga" },
   { id: "titik" as const, ikon: "⛵", nama: "Titik" },
   { id: "roket" as const, ikon: "🚀", nama: "Roket" },
 ];
@@ -1378,7 +1378,7 @@ const KARTU_GAMBAR_C: KartuGambarC[] = [
   {
     id: "c-gambar-p4",
     bentuk: "titik",
-    judul: "Hubungkan Titik",
+    judul: "Titik Bintang",
     kunci: 10,
     pendekBantu: "Hubungkan titik!",
     tugasPendek: "Ucapkan yang terakhir",
@@ -1705,7 +1705,7 @@ function IsiKartuLambangC({
               </span>
             ) : null}
             <span
-              className={`flex h-14 w-[3.1rem] shrink-0 items-center justify-center rounded-xl border-4 text-3xl font-black text-[#1C01A5] ${
+              className={`flex h-14 min-w-0 max-w-[3.2rem] flex-1 items-center justify-center rounded-xl border-4 text-3xl font-black text-[#1C01A5] ${
                 n === null
                   ? dipilih
                     ? "igil-muncul border-[#7FCB96] bg-[#E8F7EE]"

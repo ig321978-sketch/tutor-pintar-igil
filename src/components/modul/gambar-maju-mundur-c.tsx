@@ -139,7 +139,7 @@ function Anak10({ n, tinggi, nyala, nomor }: { n: number; tinggi: number; nyala:
       />
       <text
         x={x + LEBAR_ANAK_TANGGA / 2}
-        y={LANTAI - tinggi + 14}
+        y={nomor >= 3 ? LANTAI - tinggi + 14 : LANTAI - tinggi - 4}
         textAnchor="middle"
         fontSize="11.5"
         fontWeight="900"
@@ -172,7 +172,7 @@ function AdeganNaik() {
         <Tokoh x={X_AWAL + 2 * LEBAR_ANAK_TANGGA + 12.5} y={LANTAI - 30} rambut={BIRU} baju={EMAS} s={0.9} />
       </g>
       <g className="igil-denyut" style={TENGAH}>
-        <PanahLengkung d="M98 104 Q112 82 124 98" kepala="127,90 128,104 116,100" warna={EMAS} />
+        <PanahLengkung d="M104 98 Q120 76 133 108" kepala="127,104 139,105 133,118" warna={EMAS} />
       </g>
     </>
   );
@@ -273,10 +273,10 @@ function AdeganKatakBatu() {
         );
       })}
       <g className="igil-lompat" style={BAWAH}>
-        <KatakSVG x={pusat(6)} y={146} s={1.15} />
+        <KatakSVG x={pusat(6)} y={146} s={1.2} />
       </g>
-      <PanahLengkung d="M176 94 Q192 72 204 112" kepala="198,106 211,108 205,119" warna={EMAS} />
-      <PanahLengkung d="M154 94 Q138 72 126 112" kepala="132,106 119,108 125,119" warna={BIRU} />
+      <PanahLengkung d="M182 106 Q195 80 194 114" kepala="188,108 200,108 194,122" warna={EMAS} />
+      <PanahLengkung d="M148 106 Q135 80 136 114" kepala="130,108 142,108 136,122" warna={BIRU} />
     </>
   );
 }
