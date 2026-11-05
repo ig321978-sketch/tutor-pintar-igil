@@ -391,64 +391,21 @@ function RakManik({ terisi, kapasitas }: { terisi: number; kapasitas: number }) 
 // KOMPONEN UTAMA MODUL IGIL (MATEMATIKA KELAS 1 SD - BAB 1)
 // ============================================================================
 
-function IkonTab({ id }: { id: MainTabId }) {
-  const garis = {
-    viewBox: "0 0 24 24",
-    className: "h-5 w-5 shrink-0",
-    fill: "none",
-    stroke: "currentColor",
-    strokeWidth: 2,
-    strokeLinecap: "round" as const,
-    strokeLinejoin: "round" as const,
-    "aria-hidden": true,
-  };
-  if (id === "silabus") {
-    return (
-      <svg {...garis}>
-        <rect x="5" y="3" width="14" height="18" rx="2" />
-        <path d="M8 8h8M8 12h8M8 16h5" />
-      </svg>
-    );
-  }
-  if (id === "materi") {
-    return (
-      <svg {...garis}>
-        <path d="M4 5.5A2.5 2.5 0 0 1 6.5 3H20v16H6.5A2.5 2.5 0 0 0 4 21.5z" />
-        <path d="M4 5.5A2.5 2.5 0 0 1 6.5 8H20" />
-      </svg>
-    );
-  }
-  if (id === "simulasi") {
-    return (
-      <svg {...garis}>
-        <path d="M9 3h6M10 3v5L5.5 18A2 2 0 0 0 7.3 21h9.4a2 2 0 0 0 1.8-3L14 8V3" />
-        <path d="M8.2 14h7.6" />
-      </svg>
-    );
-  }
-  if (id === "latihan") {
-    return (
-      <svg {...garis}>
-        <path d="M4 20h4l10.5-10.5a2.1 2.1 0 0 0-3-3L5 17v3z" />
-        <path d="M13.5 6.5l3 3" />
-      </svg>
-    );
-  }
-  if (id === "ujian") {
-    return (
-      <svg {...garis}>
-        <rect x="5" y="3" width="14" height="18" rx="2" />
-        <path d="M8 12.5l2.2 2.2L16 9" />
-      </svg>
-    );
-  }
-  return (
-    <svg {...garis}>
-      <circle cx="12" cy="12" r="3" />
-      <path d="M12 3v2.2M12 18.8V21M3 12h2.2M18.8 12H21M5.6 5.6l1.6 1.6M16.8 16.8l1.6 1.6M18.4 5.6l-1.6 1.6M7.2 16.8l-1.6 1.6" />
-    </svg>
-  );
-}
+const TAB_ANAK: Record<MainTabId, { emoji: string; warna: string }> = {
+  silabus: { emoji: "🗺️", warna: "#FFD6D6" },
+  materi: { emoji: "📚", warna: "#FFE9A8" },
+  simulasi: { emoji: "🧪", warna: "#CDEFD8" },
+  latihan: { emoji: "✏️", warna: "#DDD8FF" },
+  ujian: { emoji: "🏆", warna: "#FFD9B0" },
+  praktikum: { emoji: "🎨", warna: "#C8EAFB" },
+};
+
+const SUB_ANAK: Record<SubBabId, { emoji: string }> = {
+  A: { emoji: "🔢" },
+  B: { emoji: "🐊" },
+  C: { emoji: "🐸" },
+  D: { emoji: "🧩" },
+};
 
 export default function IgilModulePlayer() {
   // 1. State Navigasi Tab Utama (Langsung mengaktifkan Tab Silabus)
@@ -871,40 +828,59 @@ export default function IgilModulePlayer() {
       {/* BANNER #1C01A5 TANPA DEGRADASI HAMPIR SELEBAR LAYAR MONITOR         */}
       {/* =================================================================== */}
       <div className="w-full pt-2 px-1 md:px-3 bg-white">
-        <header className="w-[99%] mx-auto bg-[#1C01A5] rounded-none px-4 py-4 md:px-7 md:py-5 shadow-md overflow-x-auto">
-          <div className="flex flex-nowrap items-center justify-between gap-6 min-w-[660px]">
-            {/* Kiri: Ikon Favicon IGIL + Label H2/H3 #F0AB00 + Label H1 Putih (Tanpa Kartu Pembungkus) */}
-            <div className="flex items-center gap-4">
-              <img
-                src="/icon-192.png"
-                alt="burung hantu IGIL"
-                width={64}
-                height={64}
-                className="w-14 h-14 md:w-16 md:h-16 shrink-0"
-              />
-
-              {/* Label Mapel/Kelas (#F0AB00 H2/H3 Kapital Tanpa Kartu) & Nama Bab (Putih H1 Tanpa Kartu) */}
-              <div>
-                <h2 className="text-sm md:text-lg font-black uppercase tracking-wider text-[#FFE566]">
-                  {materiBab1.subjectLabel}
-                </h2>
-                <h1 className="text-lg md:text-2xl lg:text-3xl font-black text-white leading-tight">
-                  {materiBab1.title}
-                </h1>
+        <header
+          className="relative mx-auto w-[99%] overflow-hidden rounded-[2rem] border-4 border-[#FFE566] bg-[#1C01A5] px-4 py-4 shadow-[0_6px_0_rgba(240,171,0,0.55)] md:px-7 md:py-5"
+          style={{
+            backgroundImage:
+              "radial-gradient(rgba(255,229,102,0.28) 3px, transparent 3px), radial-gradient(rgba(127,203,150,0.3) 2px, transparent 2px)",
+            backgroundSize: "40px 40px, 20px 20px",
+            backgroundPosition: "0 0, 10px 10px",
+          }}
+        >
+          <span className="igil-goyang pointer-events-none absolute left-[46%] top-1 text-2xl" aria-hidden="true">⭐</span>
+          <span className="igil-lompat pointer-events-none absolute bottom-1 left-[58%] text-xl" aria-hidden="true">✨</span>
+          <span className="igil-goyang pointer-events-none absolute right-2 top-1 text-xl" aria-hidden="true">🌈</span>
+          <div className="relative overflow-x-auto">
+            <div className="flex min-w-[660px] flex-nowrap items-center justify-between gap-6">
+              <div className="flex items-center gap-4">
+                <span className="igil-lompat flex h-[4.5rem] w-[4.5rem] shrink-0 items-center justify-center rounded-full border-4 border-white bg-[#FFE566] shadow-[0_4px_0_rgba(0,0,0,0.25)] md:h-20 md:w-20">
+                  <img
+                    src="/icon-192.png"
+                    alt="burung hantu IGIL"
+                    width={64}
+                    height={64}
+                    className="h-14 w-14 md:h-16 md:w-16"
+                  />
+                </span>
+                <div className="space-y-1.5">
+                  <h2 className="inline-block rounded-full border-2 border-white bg-[#FFE566] px-3 py-0.5 text-xs font-black uppercase tracking-wider text-[#1C01A5] md:text-sm">
+                    {materiBab1.subjectLabel}
+                  </h2>
+                  <h1 className="text-xl font-black leading-tight text-white [text-shadow:0_3px_0_rgba(0,0,0,0.3)] md:text-3xl">
+                    {materiBab1.title}
+                  </h1>
+                </div>
               </div>
-            </div>
 
-            {/* Kanan: Kartu Point Token */}
-            <div className="flex items-center gap-3 shrink-0">
-              <div className="bg-white text-[#1C01A5] px-4 py-2.5 rounded-2xl border-2 border-[#F0AB00] shadow-sm">
+              <div className="shrink-0 rounded-3xl border-4 border-[#F0AB00] bg-white px-4 py-2.5 shadow-[0_4px_0_rgba(240,171,0,0.7)]">
                 <div className="text-[10px] font-black uppercase tracking-wider text-[#334155]">
                   KARTU POINT TOKEN IGIL
                 </div>
-                <div className="text-lg md:text-xl font-black text-[#1C01A5]">
-                  🪙 {totalTokens} <span className="text-xs text-[#F0AB00]">/ {batasToken} Token Emas</span>
+                <div className="flex items-center gap-2 text-xl font-black text-[#1C01A5] md:text-2xl">
+                  <span className="igil-lompat inline-block text-3xl" aria-hidden="true">🪙</span>
+                  <span>{totalTokens}</span>
+                  <span className="text-xs text-[#F0AB00]">/ {batasToken} Token Emas</span>
                 </div>
-                <div className="text-[10px] font-bold text-[#334155]">
-                  Latihan: {practiceTokens}/{materiBab1.tokens.practice} • Ujian: {examTokens}/{materiBab1.tokens.exam} • Praktikum: {practicumTokens}/{materiBab1.tokens.practicum}
+                <div className="mt-1 flex flex-wrap gap-1 text-[11px] font-black text-[#1C01A5]">
+                  <span className="rounded-full bg-[#DDD8FF] px-2 py-0.5">
+                    ✏️ Latihan {practiceTokens}/{materiBab1.tokens.practice}
+                  </span>
+                  <span className="rounded-full bg-[#FFD9B0] px-2 py-0.5">
+                    🏆 Ujian {examTokens}/{materiBab1.tokens.exam}
+                  </span>
+                  <span className="rounded-full bg-[#C8EAFB] px-2 py-0.5">
+                    🎨 Praktikum {practicumTokens}/{materiBab1.tokens.practicum}
+                  </span>
                 </div>
               </div>
             </div>
@@ -916,8 +892,8 @@ export default function IgilModulePlayer() {
       {/* TOMBOL TAB UTAMA (FLOATING & SLIDE KIRI-KANAN • DASAR #1C01A5)      */}
       {/* =================================================================== */}
       <div ref={tabUtamaRef} className="sticky top-2 z-40 w-[99%] mx-auto px-1 md:px-3 mt-3">
-        <nav className="w-full bg-[#1C01A5] rounded-none p-2 shadow-lg overflow-x-auto">
-          <div className="flex flex-nowrap items-center gap-2 min-w-max">
+        <nav className="w-full overflow-x-auto rounded-[2rem] border-4 border-[#FFE566] bg-[#1C01A5] p-2 shadow-[0_6px_0_rgba(28,1,165,0.35)]">
+          <div className="flex min-w-max flex-nowrap items-center gap-2.5">
             {(
               [
                 { id: "silabus", label: "Silabus" },
@@ -929,6 +905,7 @@ export default function IgilModulePlayer() {
               ] as { id: MainTabId; label: string }[]
             ).map((tab) => {
               const isActive = activeMainTab === tab.id;
+              const gaya = TAB_ANAK[tab.id];
               return (
                 <button
                   key={tab.id}
@@ -938,13 +915,19 @@ export default function IgilModulePlayer() {
                     window.scrollTo({ top: 0, behavior: "smooth" });
                   }}
                   style={{
-                    backgroundColor: "#1C01A5",
-                    color: isActive ? "#FFE566" : "#FFFFFF",
-                    borderColor: isActive ? "#FFE566" : "#FFFFFF",
+                    backgroundColor: isActive ? "#FFE566" : gaya.warna,
+                    color: "#1C01A5",
+                    borderColor: isActive ? "#FFFFFF" : "#1C01A5",
                   }}
-                  className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl font-black text-sm md:text-base border-2 transition-all shrink-0"
+                  className={`inline-flex shrink-0 items-center gap-2 rounded-full border-4 px-4 py-2 text-sm font-black transition-all md:text-base ${
+                    isActive
+                      ? "-translate-y-0.5 scale-110 shadow-[0_5px_0_#F0AB00]"
+                      : "opacity-95 shadow-[0_3px_0_rgba(0,0,0,0.3)]"
+                  }`}
                 >
-                  <IkonTab id={tab.id} />
+                  <span className={`text-2xl leading-none ${isActive ? "igil-lompat" : ""}`} aria-hidden="true">
+                    {gaya.emoji}
+                  </span>
                   {tab.label}
                 </button>
               );
@@ -1132,15 +1115,33 @@ export default function IgilModulePlayer() {
                         setActiveSubBab(subId);
                       }}
                       style={{
-                        backgroundColor: sub.secondaryBg,
+                        backgroundColor: isSelected ? "#FFFFFF" : sub.secondaryBg,
                         borderColor: isSelected ? "#1C01A5" : sub.secondaryBorder,
                         color: sub.secondaryText,
+                        boxShadow: isSelected ? "0 5px 0 #1C01A5" : `0 3px 0 ${sub.secondaryBorder}`,
                       }}
-                      className={`px-4 py-2 rounded-2xl font-black text-xs md:text-sm border-2 transition-all shrink-0 ${
-                        isSelected ? "ring-2 ring-[#1C01A5] scale-105 shadow" : "opacity-85"
+                      className={`relative inline-flex shrink-0 items-center gap-2 rounded-full border-4 py-1.5 pl-1.5 pr-4 text-sm font-black transition-all md:text-base ${
+                        isSelected ? "-translate-y-0.5 scale-110" : "opacity-90"
                       }`}
                     >
-                      {sub.codeTitle} {isDone ? "✅" : ""}
+                      <span
+                        className={`flex h-10 w-10 items-center justify-center rounded-full border-4 border-white text-xl shadow ${
+                          isSelected ? "igil-lompat" : ""
+                        }`}
+                        style={{ backgroundColor: sub.secondaryBorder }}
+                        aria-hidden="true"
+                      >
+                        {SUB_ANAK[subId].emoji}
+                      </span>
+                      <span className="leading-tight">
+                        <span className="block text-[10px] font-black uppercase tracking-wider opacity-70">Sub-Bab {subId}</span>
+                        {sub.codeTitle.replace(/^Sub-Bab [A-D]\s*\(?/, "").replace(/\)$/, "")}
+                      </span>
+                      {isDone ? (
+                        <span className="absolute -right-1 -top-2 text-xl" aria-label="selesai">
+                          ✅
+                        </span>
+                      ) : null}
                     </button>
                   );
                 })}
