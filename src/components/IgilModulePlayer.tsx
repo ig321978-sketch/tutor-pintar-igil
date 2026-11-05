@@ -180,15 +180,27 @@ function ucapanMemuatBilangan(teks: string, jumlah: number): boolean {
   return bersih.includes(kata) || bersih.includes(String(jumlah));
 }
 
+type HasilUcapan = {
+  length: number;
+  [index: number]: { transcript: string };
+};
+
 type MesinUcapan = {
   lang: string;
   continuous: boolean;
   interimResults: boolean;
+  maxAlternatives: number;
+  processLocally: boolean;
   start: () => void;
   stop: () => void;
-  onresult: ((event: { results: ArrayLike<ArrayLike<{ transcript: string }>> }) => void) | null;
+  abort: () => void;
+  onresult: ((event: { results: ArrayLike<HasilUcapan> }) => void) | null;
   onerror: ((event: { error: string }) => void) | null;
   onend: (() => void) | null;
+};
+
+type KonstruktorUcapan = (new () => MesinUcapan) & {
+  available?: (opsi: { langs: string[]; processLocally: boolean }) => Promise<string>;
 };
 
 const PRACTICE_QUESTIONS = materiBab1.practiceQuestions as QuestionItem[];
@@ -546,6 +558,9 @@ export default function IgilModulePlayer() {
   const [rekamConcrete, setRekamConcrete] = useState(false);
   const [pesanConcrete, setPesanConcrete] = useState("");
   const mesinConcreteRef = useRef<MesinUcapan | null>(null);
+  const giliranRekam = useRef(0);
+  const giliranSuara = useRef(0);
+  const rekamLokalRef = useRef(false);
 
   const sentuhBendaNyata = useCallback((id: string, target: number) => {
     const sekarang = sentuhNyataRef.current[id] ?? 0;
@@ -557,12 +572,15 @@ export default function IgilModulePlayer() {
   }, []);
 
   const hentikanRekamConcrete = useCallback(() => {
+    giliranRekam.current += 1;
+    const mesin = mesinConcreteRef.current;
+    mesinConcreteRef.current = null;
     try {
-      mesinConcreteRef.current?.stop();
+      if (mesin && typeof mesin.abort === "function") mesin.abort();
+      else mesin?.stop();
     } catch {
       /* Mesin sudah berhenti. */
     }
-    mesinConcreteRef.current = null;
     setRekamConcrete(false);
   }, []);
 
@@ -571,57 +589,133 @@ export default function IgilModulePlayer() {
       hentikanRekamConcrete();
       return;
     }
+    const giliran = ++giliranRekam.current;
+    giliranSuara.current += 1;
     hentikanAudioGuruAktif();
+    setPesanConcrete("");
     const win = window as Window & {
-      SpeechRecognition?: new () => MesinUcapan;
-      webkitSpeechRecognition?: new () => MesinUcapan;
+      SpeechRecognition?: KonstruktorUcapan;
+      webkitSpeechRecognition?: KonstruktorUcapan;
     };
     const Konstruktor = win.SpeechRecognition ?? win.webkitSpeechRecognition;
     if (!Konstruktor) {
       setPesanConcrete("Peramban ini belum bisa merekam. Buka di Chrome, lalu izinkan mikrofon.");
       return;
     }
-    const mesin = new Konstruktor();
-    mesin.lang = "id-ID";
-    mesin.continuous = false;
-    mesin.interimResults = false;
-    mesin.onresult = (peristiwa) => {
-      const teks = peristiwa.results[0]?.[0]?.transcript ?? "";
-      if (ucapanMemuatBilangan(teks, jumlah)) {
+
+    const dengarkan = (percobaan: number) => {
+      if (giliran !== giliranRekam.current) return;
+      const mesin = new Konstruktor();
+      mesin.lang = "id-ID";
+      mesin.continuous = true;
+      mesin.interimResults = true;
+      mesin.maxAlternatives = 3;
+      try {
+        mesin.processLocally = rekamLokalRef.current;
+      } catch {
+        /* Peramban ini tidak punya pengenal suara di perangkat. */
+      }
+      let mengulang = false;
+      let sudah = false;
+      let terdengar = false;
+      const lepas = () => {
+        if (mesinConcreteRef.current === mesin) mesinConcreteRef.current = null;
+        setRekamConcrete(false);
+      };
+      const kumpulkan = (peristiwa: { results: ArrayLike<HasilUcapan> }) => {
+        const bagian: string[] = [];
+        for (let i = 0; i < peristiwa.results.length; i++) {
+          const alternatif = peristiwa.results[i];
+          const batas = Math.min(alternatif?.length ?? 0, 3);
+          for (let j = 0; j < batas; j++) {
+            const teks = alternatif[j]?.transcript;
+            if (teks) bagian.push(teks);
+          }
+        }
+        return bagian.join(" ");
+      };
+      mesin.onresult = (peristiwa) => {
+        if (sudah || giliran !== giliranRekam.current) return;
+        const teks = kumpulkan(peristiwa);
+        if (!teks.trim()) return;
+        terdengar = true;
+        if (!ucapanMemuatBilangan(teks, jumlah)) return;
+        sudah = true;
         setSuaraConcrete((prev) => ({ ...prev, [id]: true }));
         setPesanConcrete("");
-      } else {
-        setPesanConcrete("Belum pas. Coba lagi.");
+        try {
+          mesin.stop();
+        } catch {
+          /* Mesin sudah berhenti. */
+        }
+      };
+      mesin.onerror = (peristiwa) => {
+        const kode = peristiwa.error;
+        if (kode === "aborted" || kode === "no-speech") return;
+        if (kode === "not-allowed") {
+          setPesanConcrete("Izinkan mikrofon, lalu tekan lagi.");
+          lepas();
+          return;
+        }
+        if (kode === "network" && percobaan < 1 && giliran === giliranRekam.current) {
+          mengulang = true;
+          try {
+            mesin.abort();
+          } catch {
+            /* Mesin sudah berhenti. */
+          }
+          window.setTimeout(() => dengarkan(percobaan + 1), 350);
+          return;
+        }
+        setPesanConcrete("Belum terdengar. Tekan lagi, lalu ucapkan angkanya.");
+        lepas();
+      };
+      mesin.onend = () => {
+        if (mengulang || giliran !== giliranRekam.current) return;
+        if (!sudah && terdengar) setPesanConcrete("Belum pas. Coba lagi.");
+        lepas();
+      };
+      try {
+        mesinConcreteRef.current = mesin;
+        mesin.start();
+        setRekamConcrete(true);
+        setPesanConcrete("");
+        window.setTimeout(() => {
+          if (giliran !== giliranRekam.current || mesinConcreteRef.current !== mesin || sudah) return;
+          try {
+            mesin.stop();
+          } catch {
+            /* Mesin sudah berhenti. */
+          }
+        }, 4000);
+      } catch {
+        lepas();
+        setPesanConcrete("Mikrofon belum bisa dimulai.");
       }
     };
-    mesin.onerror = (peristiwa) => {
-      if (peristiwa.error === "not-allowed") {
-        setPesanConcrete("Izinkan mikrofon, lalu coba lagi.");
-      } else if (peristiwa.error !== "aborted" && peristiwa.error !== "no-speech") {
-        setPesanConcrete("Rekaman terganggu. Coba lagi.");
-      }
-      setRekamConcrete(false);
-    };
-    mesin.onend = () => {
-      mesinConcreteRef.current = null;
-      setRekamConcrete(false);
-    };
-    try {
-      mesinConcreteRef.current = mesin;
-      mesin.start();
-      setRekamConcrete(true);
-      setPesanConcrete("");
-    } catch {
-      mesinConcreteRef.current = null;
-      setRekamConcrete(false);
-      setPesanConcrete("Mikrofon belum bisa dimulai.");
-    }
+
+    dengarkan(0);
   }, [hentikanRekamConcrete]);
 
   useEffect(() => {
+    const win = window as Window & {
+      SpeechRecognition?: KonstruktorUcapan;
+      webkitSpeechRecognition?: KonstruktorUcapan;
+    };
+    const Konstruktor = win.SpeechRecognition ?? win.webkitSpeechRecognition;
+    if (Konstruktor?.available) {
+      void Konstruktor.available({ langs: ["id-ID"], processLocally: true })
+        .then((status) => {
+          rekamLokalRef.current = status === "available";
+        })
+        .catch(() => {
+          rekamLokalRef.current = false;
+        });
+    }
     return () => {
+      giliranRekam.current += 1;
       try {
-        mesinConcreteRef.current?.stop();
+        mesinConcreteRef.current?.abort?.();
       } catch {
         /* Mesin sudah berhenti. */
       }
@@ -677,7 +771,6 @@ export default function IgilModulePlayer() {
   // SUARA GURU IGIL — Web Speech API di peramban, tanpa API eksternal
   // ============================================================================
 
-  const giliranSuara = useRef(0);
   const lepasJedaCerita = useRef<(() => void) | null>(null);
 
   const speakGuru = useCallback((text: string, selesai?: () => void) => {
@@ -1420,7 +1513,7 @@ export default function IgilModulePlayer() {
                           Mainan {indeksConcrete + 1} dari {KARTU_CONCRETE.length}.{" "}
                           {suara
                             ? "Jumlahnya sudah diucapkan."
-                            : "Tekan kartu jumlah, lalu ucapkan banyak mainannya."}
+                            : "Tekan kartu jumlah, lalu jawab dengan suara."}
                         </p>
                         <div className="grid grid-cols-2 gap-2">
                           <div className="text-center text-xs font-black tracking-wide text-[#1E3A8A]">MAINAN</div>
@@ -1449,7 +1542,7 @@ export default function IgilModulePlayer() {
                           </button>
                           <button
                             type="button"
-                            aria-label={suara ? `${kartu.jumlah} ${SEBUTAN_ANGKA[kartu.jumlah - 1]}` : "Isi suara"}
+                            aria-label={suara ? `${kartu.jumlah} ${SEBUTAN_ANGKA[kartu.jumlah - 1]}` : "Jawab dengan suara"}
                             onClick={() => {
                               if (suara) return;
                               mulaiRekamConcrete(kartu.id, kartu.jumlah);
@@ -1470,12 +1563,15 @@ export default function IgilModulePlayer() {
                                 </span>
                               </>
                             ) : (
-                              <span className="text-center text-xs font-black leading-tight text-[#1C01A5]">
-                                {rekamConcrete ? "Mendengarkan..." : pesanConcrete || "Isi suara"}
+                              <span className="text-center text-sm font-black leading-tight text-[#1C01A5]">
+                                {rekamConcrete ? "Mendengarkan..." : "Jawab dengan suara"}
                               </span>
                             )}
                           </button>
                         </div>
+                        {pesanConcrete ? (
+                          <p className="text-center text-xs font-bold text-[#1C01A5]">{pesanConcrete}</p>
+                        ) : null}
                         {pas ? (
                           <div className="space-y-3">
                             <div className="flex flex-col items-center gap-2 rounded-2xl border border-[#93C5FD] bg-white p-3">
