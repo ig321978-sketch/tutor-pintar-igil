@@ -117,19 +117,6 @@ const DAFTAR_MAINAN = [
   { id: "bola", nama: "Bola", jumlah: 4 },
 ] as const;
 
-const URUTAN_HITUNG = [
-  { angka: 1, lambang: "🚲", nama: "Sepeda" },
-  { angka: 2, lambang: "🚲", nama: "Sepeda" },
-  { angka: 3, lambang: "🪑", nama: "Kursi" },
-  { angka: 4, lambang: "🪑", nama: "Kursi" },
-  { angka: 5, lambang: "📚", nama: "Buku" },
-  { angka: 6, lambang: "🪁", nama: "Layang-layang" },
-  { angka: 7, lambang: "🎈", nama: "Balon" },
-  { angka: 8, lambang: "🔵", nama: "Kelereng" },
-  { angka: 9, lambang: "🔵", nama: "Kelereng" },
-  { angka: 10, lambang: "⚽", nama: "Bola" },
-];
-
 const SEBUTAN_ANGKA = [
   "Satu",
   "Dua",
@@ -145,10 +132,6 @@ const SEBUTAN_ANGKA = [
 
 const SUARA_KELOMPOK =
   "Kelompok mainan dan jumlahnya. Tekan ikon mainan. Setiap tekan, angkanya naik satu, sampai jumlahnya pas.";
-const SUARA_HITUNG =
-  "Hitung satu per satu. Satu sepeda. Dua sepeda. Tiga kursi. Empat kursi. Lima buku. Enam layang-layang. Tujuh balon. Delapan kelereng. Sembilan kelereng. Sepuluh bola.";
-const SUARA_SEBUT =
-  "Sebutkan dan tuliskan. Satu, dua, tiga, empat, lima, enam, tujuh, delapan, sembilan, sepuluh.";
 const PRACTICE_QUESTIONS = materiBab1.practiceQuestions as QuestionItem[];
 const FORMAL_EXAM_QUESTIONS = materiBab1.examQuestions as QuestionItem[];
 
@@ -1115,59 +1098,6 @@ export default function IgilModulePlayer() {
                           </div>
                         );
                       })}
-                    </div>
-                  </div>
-
-                  <div className="bg-[#F0FDF4] border-2 border-[#22C55E] rounded-3xl p-4 space-y-3">
-                    <div className="flex items-center justify-between gap-3">
-                      <h3 className="text-base font-black text-[#1C01A5]">2. Hitung Satu per satu</h3>
-                      <button
-                        type="button"
-                        onClick={() => speakGuru(SUARA_HITUNG)}
-                        className="px-3 py-1 rounded-xl bg-white text-[#166534] border border-[#22C55E] text-xs font-black shrink-0"
-                      >
-                        🔊 Suara
-                      </button>
-                    </div>
-                    <div className="flex flex-col gap-2">
-                      {URUTAN_HITUNG.map((item) => (
-                        <div
-                          key={item.angka}
-                          className="bg-white rounded-2xl border border-[#86EFAC] px-3 py-2 flex items-center gap-2"
-                        >
-                          <span className="text-lg font-black text-[#1C01A5] w-6">{item.angka}</span>
-                          <span className="text-xl">{item.lambang}</span>
-                          <span className="text-xs font-bold text-[#334155]">{item.nama}</span>
-                        </div>
-                      ))}
-                    </div>
-                  </div>
-
-                  <div className="bg-[#F0FDF4] border-2 border-[#22C55E] rounded-3xl p-4 space-y-3">
-                    <div className="flex items-center justify-between gap-3">
-                      <h3 className="text-base font-black text-[#1C01A5]">3. Sebutkan dan Tuliskan</h3>
-                      <button
-                        type="button"
-                        onClick={() => speakGuru(SUARA_SEBUT)}
-                        className="px-3 py-1 rounded-xl bg-white text-[#166534] border border-[#22C55E] text-xs font-black shrink-0"
-                      >
-                        🔊 Suara
-                      </button>
-                    </div>
-                    <div className="grid grid-cols-2 gap-2">
-                      {SEBUTAN_ANGKA.map((kata, indeks) => (
-                        <div
-                          key={kata}
-                          className="bg-white rounded-2xl border border-[#86EFAC] px-3 py-2 flex items-center justify-between"
-                        >
-                          <span className="text-lg font-black text-[#1C01A5]">{indeks + 1}</span>
-                          <span className="text-sm font-black text-[#166534]">{kata}</span>
-                        </div>
-                      ))}
-                    </div>
-                    <div className="bg-white rounded-2xl border border-[#86EFAC] p-3 flex flex-col items-center gap-2">
-                      <div className="text-xs font-black text-[#166534]">Tuliskan sepuluh</div>
-                      <DottedNumberTracingCanvas digit={10} />
                     </div>
                   </div>
                 </div>
