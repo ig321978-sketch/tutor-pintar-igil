@@ -145,7 +145,7 @@ const SEBUTAN_ANGKA = [
 ];
 
 const SUARA_KELOMPOK =
-  "Tekan kartu mainan. Setiap tekan, angkanya bertambah satu, sampai jumlahnya pas.";
+  "Kelompokkan mainan dan hitung satu-satu. Tekan ikon mainan. Setiap tekan, angkanya naik satu, sampai jumlahnya pas.";
 const SUARA_HITUNG =
   "Hitung satu per satu. Satu sepeda. Dua sepeda. Tiga kursi. Empat kursi. Lima buku. Enam layang-layang. Tujuh balon. Delapan kelereng. Sembilan kelereng. Sepuluh bola.";
 const SUARA_SEBUT =
@@ -482,6 +482,7 @@ export default function IgilModulePlayer() {
     const berikut = sekarang >= target ? 0 : sekarang + 1;
     angkaMainanRef.current[id] = berikut;
     setAngkaMainan((prev) => ({ ...prev, [id]: berikut }));
+    return berikut;
   }, []);
 
   // 5. State Halaman Simulasi PhET-Style (4 Simulasi: 1 per Sub-Bab)
@@ -1082,13 +1083,15 @@ export default function IgilModulePlayer() {
                 <div className="flex flex-col gap-3">
                   <div className="bg-[#F0FDF4] border-2 border-[#22C55E] rounded-3xl p-4 space-y-3">
                     <div className="flex items-center justify-between gap-3">
-                      <h3 className="text-base font-black text-[#1C01A5]">1. Kelompokkan Mainan</h3>
+                      <h3 className="min-w-0 text-base font-black leading-snug text-[#1C01A5]">
+                        Kelompokkan Mainan dan Hitung satu-satu
+                      </h3>
                       <button
                         type="button"
                         onClick={() => speakGuru(SUARA_KELOMPOK)}
                         className="px-3 py-1 rounded-xl bg-white text-[#166534] border border-[#22C55E] text-xs font-black shrink-0"
                       >
-                        🔊 Suara
+                        🔊 Suara Guru
                       </button>
                     </div>
                     <div className="grid grid-cols-2 gap-2">
@@ -1105,7 +1108,12 @@ export default function IgilModulePlayer() {
                               type="button"
                               aria-label={item.nama}
                               aria-pressed={terbuka}
-                              onClick={() => tekanMainan(item.id, item.jumlah)}
+                              onClick={() => {
+                                const angka = tekanMainan(item.id, item.jumlah);
+                                if (angka > 0) {
+                                  speakGuru(SEBUTAN_ANGKA[angka - 1] ?? String(angka));
+                                }
+                              }}
                               className={`flex items-center gap-2 rounded-2xl border-2 bg-white px-2 py-2 text-left ${
                                 terbuka ? "border-[#1C01A5]" : "border-[#86EFAC]"
                               }`}
