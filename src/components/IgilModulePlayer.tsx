@@ -133,26 +133,63 @@ const SEBUTAN_ANGKA = [
 const SUARA_KELOMPOK =
   "Kelompok mainan dan jumlahnya. Tekan ikon mainan. Setiap tekan, angkanya naik satu, sampai jumlahnya pas.";
 
-const STASIUN_NYATA = [
+const KARTU_CONCRETE = [
+  {
+    id: "jungkat",
+    nama: "Jungkat-jungkit",
+    jumlah: 1,
+    suara: "Jungkat-jungkit. Tekan ikonnya sampai jumlahnya pas. Lalu tulis dan ucapkan satu.",
+  },
+  {
+    id: "ayunan",
+    nama: "Ayunan",
+    jumlah: 2,
+    suara: "Ayunan. Tekan ikonnya sampai jumlahnya pas. Lalu tulis dan ucapkan dua.",
+  },
   {
     id: "perosotan",
-    judul: "Perosotan di taman",
+    nama: "Perosotan",
     jumlah: 3,
-    suara: "Sentuh perosotan satu per satu. Berhenti kalau sudah tiga. Lalu tulis angkanya.",
+    suara: "Perosotan. Tekan ikonnya sampai jumlahnya pas. Lalu tulis dan ucapkan tiga.",
   },
   {
     id: "sepeda",
-    judul: "Sepeda di taman",
+    nama: "Sepeda",
     jumlah: 4,
-    suara: "Sentuh sepeda satu per satu. Berhenti kalau sudah empat. Lalu tulis angkanya.",
-  },
-  {
-    id: "kelereng",
-    judul: "Kelereng sampai sepuluh",
-    jumlah: 10,
-    suara: "Sentuh kelereng satu per satu. Berhenti kalau sudah sepuluh. Lalu tulis angkanya.",
+    suara: "Sepeda. Tekan ikonnya sampai jumlahnya pas. Lalu tulis dan ucapkan empat.",
   },
 ] as const;
+
+const ALIAS_BILANGAN = [
+  "satu",
+  "dua",
+  "tiga",
+  "empat",
+  "lima",
+  "enam",
+  "tujuh",
+  "delapan",
+  "sembilan",
+  "sepuluh",
+];
+
+function ucapanMemuatBilangan(teks: string, jumlah: number): boolean {
+  const bersih = teks.toLowerCase().replace(/[^a-z0-9\s]/g, " ");
+  const kata = ALIAS_BILANGAN[jumlah - 1];
+  if (!kata) return false;
+  return bersih.includes(kata) || bersih.includes(String(jumlah));
+}
+
+type MesinUcapan = {
+  lang: string;
+  continuous: boolean;
+  interimResults: boolean;
+  start: () => void;
+  stop: () => void;
+  onresult: ((event: { results: ArrayLike<ArrayLike<{ transcript: string }>> }) => void) | null;
+  onerror: ((event: { error: string }) => void) | null;
+  onend: (() => void) | null;
+};
 
 const PRACTICE_QUESTIONS = materiBab1.practiceQuestions as QuestionItem[];
 const FORMAL_EXAM_QUESTIONS = materiBab1.examQuestions as QuestionItem[];
@@ -492,6 +529,12 @@ export default function IgilModulePlayer() {
 
   const [sentuhNyata, setSentuhNyata] = useState<Record<string, number>>({});
   const sentuhNyataRef = useRef<Record<string, number>>({});
+  const [indeksConcrete, setIndeksConcrete] = useState(0);
+  const [tulisConcrete, setTulisConcrete] = useState<Record<string, boolean>>({});
+  const [suaraConcrete, setSuaraConcrete] = useState<Record<string, boolean>>({});
+  const [rekamConcrete, setRekamConcrete] = useState(false);
+  const [pesanConcrete, setPesanConcrete] = useState("");
+  const mesinConcreteRef = useRef<MesinUcapan | null>(null);
 
   const sentuhBendaNyata = useCallback((id: string, target: number) => {
     const sekarang = sentuhNyataRef.current[id] ?? 0;
@@ -500,6 +543,78 @@ export default function IgilModulePlayer() {
     sentuhNyataRef.current[id] = berikut;
     setSentuhNyata((prev) => ({ ...prev, [id]: berikut }));
     return berikut;
+  }, []);
+
+  const hentikanRekamConcrete = useCallback(() => {
+    try {
+      mesinConcreteRef.current?.stop();
+    } catch {
+      /* Mesin sudah berhenti. */
+    }
+    mesinConcreteRef.current = null;
+    setRekamConcrete(false);
+  }, []);
+
+  const mulaiRekamConcrete = useCallback((id: string, jumlah: number) => {
+    if (mesinConcreteRef.current) {
+      hentikanRekamConcrete();
+      return;
+    }
+    hentikanAudioGuruAktif();
+    const win = window as Window & {
+      SpeechRecognition?: new () => MesinUcapan;
+      webkitSpeechRecognition?: new () => MesinUcapan;
+    };
+    const Konstruktor = win.SpeechRecognition ?? win.webkitSpeechRecognition;
+    if (!Konstruktor) {
+      setPesanConcrete("Peramban ini belum bisa merekam. Buka di Chrome, lalu izinkan mikrofon.");
+      return;
+    }
+    const mesin = new Konstruktor();
+    mesin.lang = "id-ID";
+    mesin.continuous = false;
+    mesin.interimResults = false;
+    mesin.onresult = (peristiwa) => {
+      const teks = peristiwa.results[0]?.[0]?.transcript ?? "";
+      if (ucapanMemuatBilangan(teks, jumlah)) {
+        setSuaraConcrete((prev) => ({ ...prev, [id]: true }));
+        setPesanConcrete("Suaramu pas.");
+      } else {
+        setPesanConcrete(`Coba ucapkan ${SEBUTAN_ANGKA[jumlah - 1]} lagi.`);
+      }
+    };
+    mesin.onerror = (peristiwa) => {
+      if (peristiwa.error === "not-allowed") {
+        setPesanConcrete("Izinkan mikrofon, lalu coba lagi.");
+      } else if (peristiwa.error !== "aborted" && peristiwa.error !== "no-speech") {
+        setPesanConcrete("Rekaman terganggu. Coba lagi.");
+      }
+      setRekamConcrete(false);
+    };
+    mesin.onend = () => {
+      mesinConcreteRef.current = null;
+      setRekamConcrete(false);
+    };
+    try {
+      mesinConcreteRef.current = mesin;
+      mesin.start();
+      setRekamConcrete(true);
+      setPesanConcrete(`Ucapkan ${SEBUTAN_ANGKA[jumlah - 1]}.`);
+    } catch {
+      mesinConcreteRef.current = null;
+      setRekamConcrete(false);
+      setPesanConcrete("Mikrofon belum bisa dimulai.");
+    }
+  }, [hentikanRekamConcrete]);
+
+  useEffect(() => {
+    return () => {
+      try {
+        mesinConcreteRef.current?.stop();
+      } catch {
+        /* Mesin sudah berhenti. */
+      }
+    };
   }, []);
 
   // 5. State Halaman Simulasi PhET-Style (4 Simulasi: 1 per Sub-Bab)
@@ -1267,84 +1382,137 @@ export default function IgilModulePlayer() {
               </div>
 
               {activeSubBab === "A" ? (
-                <div className="flex flex-col gap-3">
-                  {STASIUN_NYATA.map((stasiun) => {
-                    const hitung = sentuhNyata[stasiun.id] ?? 0;
-                    const pas = hitung >= stasiun.jumlah;
+                <div className="rounded-3xl border-2 border-[#3B82F6] bg-[#EFF6FF] p-4 space-y-3">
+                  {(() => {
+                    const kartu = KARTU_CONCRETE[indeksConcrete];
+                    const hitung = sentuhNyata[kartu.id] ?? 0;
+                    const pas = hitung >= kartu.jumlah;
                     const kata = SEBUTAN_ANGKA[hitung - 1] ?? "";
+                    const tulis = tulisConcrete[kartu.id] === true;
+                    const suara = suaraConcrete[kartu.id] === true;
+                    const siapLanjut = tulis && suara;
+                    const terakhir = indeksConcrete >= KARTU_CONCRETE.length - 1;
                     return (
-                      <div
-                        key={stasiun.id}
-                        className="space-y-3 rounded-3xl border-2 border-[#3B82F6] bg-[#EFF6FF] p-4"
-                      >
+                      <>
                         <div className="flex items-center justify-between gap-3">
                           <h3 className="min-w-0 text-base font-black leading-snug text-[#1C01A5]">
-                            {stasiun.judul}
+                            {kartu.nama}
                           </h3>
                           <button
                             type="button"
-                            onClick={() => speakGuru(stasiun.suara)}
+                            onClick={() => speakGuru(kartu.suara)}
                             className="shrink-0 rounded-xl border border-[#3B82F6] bg-white px-3 py-1 text-xs font-black text-[#1E3A8A]"
                           >
                             🔊 Suara Guru
                           </button>
                         </div>
                         <p className="text-xs font-bold text-[#1E3A8A]">
-                          {pas ? "Jumlahnya pas. Tulis angkanya." : "Sentuh mainan berbingkai emas."}
+                          Mainan {indeksConcrete + 1} dari {KARTU_CONCRETE.length}.{" "}
+                          {pas ? "Jumlahnya pas. Tulis dan ucapkan." : "Tekan ikon mainan sampai jumlahnya pas."}
                         </p>
-                        <div className="flex flex-wrap gap-2">
-                          {Array.from({ length: stasiun.jumlah }, (_, i) => {
-                            const nyala = i < hitung;
-                            const giliran = i === hitung;
-                            return (
-                              <button
-                                key={i}
-                                type="button"
-                                aria-label={`${stasiun.judul} ${i + 1}`}
-                                onClick={() => {
-                                  if (!giliran) return;
-                                  const sebelumnya = sentuhNyataRef.current[stasiun.id] ?? 0;
-                                  const angka = sentuhBendaNyata(stasiun.id, stasiun.jumlah);
-                                  if (angka > sebelumnya) {
-                                    speakGuru(SEBUTAN_ANGKA[angka - 1] ?? String(angka));
-                                  }
-                                }}
-                                className={`flex h-14 w-14 items-center justify-center rounded-2xl border-2 bg-white ${
-                                  nyala
-                                    ? "border-solid border-[#1C01A5]"
-                                    : giliran
-                                      ? "border-solid border-[#F0AB00]"
-                                      : "border-dashed border-[#93C5FD]"
-                                }`}
-                              >
-                                <span className={nyala || giliran ? "" : "opacity-40"}>
-                                  <IkonMainan jenis={stasiun.id} />
-                                </span>
-                              </button>
-                            );
-                          })}
+                        <div className="grid grid-cols-2 gap-2">
+                          <div className="text-center text-xs font-black tracking-wide text-[#1E3A8A]">MAINAN</div>
+                          <div className="text-center text-xs font-black tracking-wide text-[#1E3A8A]">JUMLAH</div>
                         </div>
-                        <div
-                          className={`flex min-h-16 flex-col items-center justify-center rounded-2xl border-2 bg-white py-1 ${
-                            hitung > 0 ? "border-solid border-[#1C01A5]" : "border-dashed border-[#93C5FD]"
-                          }`}
-                        >
-                          {hitung > 0 ? (
-                            <>
-                              <span className="text-3xl font-black leading-none text-[#1C01A5]">{hitung}</span>
-                              <span className="text-sm font-black leading-tight text-[#1C01A5]">{kata}</span>
-                            </>
-                          ) : null}
+                        <div className="grid grid-cols-2 gap-2">
+                          <button
+                            type="button"
+                            aria-label={kartu.nama}
+                            aria-pressed={hitung > 0}
+                            onClick={() => {
+                              const sebelumnya = sentuhNyataRef.current[kartu.id] ?? 0;
+                              const angka = sentuhBendaNyata(kartu.id, kartu.jumlah);
+                              if (angka > sebelumnya) {
+                                speakGuru(SEBUTAN_ANGKA[angka - 1] ?? String(angka));
+                              }
+                            }}
+                            className={`flex min-w-0 items-center gap-2 rounded-2xl border-2 bg-white px-2 py-2 text-left ${
+                              hitung > 0 ? "border-[#1C01A5]" : "border-[#93C5FD]"
+                            }`}
+                          >
+                            <IkonMainan jenis={kartu.id} />
+                            <span className="min-w-0 text-[11px] font-black leading-tight text-[#1C01A5]">
+                              {kartu.nama}
+                            </span>
+                          </button>
+                          <div
+                            className={`flex min-h-16 min-w-0 flex-col items-center justify-center rounded-2xl border-2 bg-white py-1 ${
+                              hitung > 0 ? "border-solid border-[#1C01A5]" : "border-dashed border-[#93C5FD]"
+                            }`}
+                          >
+                            {hitung > 0 ? (
+                              <>
+                                <span className="text-3xl font-black leading-none text-[#1C01A5]">{hitung}</span>
+                                <span className="text-sm font-black leading-tight text-[#1C01A5]">{kata}</span>
+                              </>
+                            ) : null}
+                          </div>
                         </div>
                         {pas ? (
-                          <div className="flex flex-col items-center gap-2">
-                            <div className="text-xs font-black text-[#1E3A8A]">Tulis {kata}</div>
-                            <DottedNumberTracingCanvas digit={stasiun.jumlah} />
+                          <div className="space-y-3">
+                            <div className="flex flex-col items-center gap-2 rounded-2xl border border-[#93C5FD] bg-white p-3">
+                              <div className="text-xs font-black text-[#1E3A8A]">
+                                Kanvas: tulis {SEBUTAN_ANGKA[kartu.jumlah - 1]}
+                              </div>
+                              <DottedNumberTracingCanvas
+                                key={kartu.id}
+                                digit={kartu.jumlah}
+                                onCompletedTrace={() =>
+                                  setTulisConcrete((prev) => ({ ...prev, [kartu.id]: true }))
+                                }
+                              />
+                              <p className="text-xs font-bold text-[#1C01A5]">
+                                {tulis ? "Tulisanmu pas." : "Ikuti titik sampai mirip."}
+                              </p>
+                            </div>
+                            <div className="space-y-2 rounded-2xl border border-[#93C5FD] bg-white p-3">
+                              <div className="text-xs font-black text-[#1E3A8A]">
+                                Suara: ucapkan {SEBUTAN_ANGKA[kartu.jumlah - 1]}
+                              </div>
+                              <button
+                                type="button"
+                                onClick={() => mulaiRekamConcrete(kartu.id, kartu.jumlah)}
+                                className={`rounded-xl px-4 py-2 text-xs font-black ${
+                                  rekamConcrete
+                                    ? "bg-[#E98989] text-[#1C01A5]"
+                                    : "bg-[#1C01A5] text-[#FFE566]"
+                                }`}
+                              >
+                                {suara ? "Suara sudah pas" : rekamConcrete ? "Berhenti" : "🎤 Isi suara"}
+                              </button>
+                              <p className="text-xs font-bold text-[#1C01A5]">
+                                {suara ? "Suaramu pas." : pesanConcrete || "Tekan tombol, lalu ucapkan jumlahnya."}
+                              </p>
+                            </div>
+                            <div className="flex justify-end">
+                              <button
+                                type="button"
+                                disabled={!siapLanjut}
+                                onClick={() => {
+                                  if (!siapLanjut) return;
+                                  hentikanRekamConcrete();
+                                  setPesanConcrete("");
+                                  if (!terakhir) {
+                                    setIndeksConcrete((urut) => urut + 1);
+                                    concreteRef.current?.scrollIntoView({ behavior: "smooth", block: "start" });
+                                    return;
+                                  }
+                                  handleUnlockNextSmicpa(
+                                    5,
+                                    pictorialRef,
+                                    "Empat mainan sudah dihitung, ditulis, dan diucapkan. Sekarang kita lihat gambarnya."
+                                  );
+                                }}
+                                className="rounded-2xl border-2 border-[#FFE566] bg-[#1C01A5] px-6 py-2.5 text-xs font-black text-[#FFE566] shadow-md disabled:opacity-40"
+                              >
+                                {terakhir ? "LANJUTKAN KE PICTORIAL ⬇️" : "LANJUTKAN ⬇️"}
+                              </button>
+                            </div>
                           </div>
                         ) : null}
-                      </div>
+                      </>
                     );
-                  })}
+                  })()}
                 </div>
               ) : (
               <div className="w-full overflow-x-auto pb-3">
@@ -1404,6 +1572,7 @@ export default function IgilModulePlayer() {
               </div>
               )}
 
+              {activeSubBab !== "A" ? (
               <div className="flex justify-end">
                 <button
                   type="button"
@@ -1419,6 +1588,7 @@ export default function IgilModulePlayer() {
                   LANJUTKAN KE PICTORIAL ⬇️
                 </button>
               </div>
+              ) : null}
             </div>
           )}
 
