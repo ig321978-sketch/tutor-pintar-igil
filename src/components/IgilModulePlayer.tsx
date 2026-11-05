@@ -6,7 +6,7 @@ import { hentikanAudioGuruAktif } from "@/lib/putar-tts-klien";
 import materiBab1 from "@/data/kelas1-bab1.json";
 import GambarPensilCerita from "@/components/GambarPensilCerita";
 import { IkonMainan } from "@/components/modul/ikon-mainan";
-import { AdeganBandingB } from "@/components/modul/gambar-banding-b";
+import { CeritaBandingB } from "@/components/modul/CeritaBandingB";
 import { PetaPikiranB } from "@/components/modul/PetaPikiranB";
 import {
   AbstractBandingB,
@@ -1162,6 +1162,9 @@ export default function IgilModulePlayer() {
               </span>
             </div>
 
+            {activeSubBab === "B" ? (
+              <CeritaBandingB cerita={currentSubContent.stories} speakGuru={speakGuru} />
+            ) : (
             <div className="w-full overflow-x-auto pb-3">
               <div
                 className="flex flex-nowrap gap-5"
@@ -1185,17 +1188,14 @@ export default function IgilModulePlayer() {
                       </button>
                     </div>
 
-                    {activeSubBab === "B" ? (
-                      <AdeganBandingB jenis={st.sceneType} />
-                    ) : (
-                      <GambarPensilCerita
-                        sceneType={st.sceneType as Parameters<typeof GambarPensilCerita>[0]["sceneType"]}
-                      />
-                    )}
+                    <GambarPensilCerita
+                      sceneType={st.sceneType as Parameters<typeof GambarPensilCerita>[0]["sceneType"]}
+                    />
                   </div>
                 ))}
               </div>
             </div>
+            )}
 
             <div className="flex justify-end">
               <button

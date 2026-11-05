@@ -363,11 +363,32 @@ a.igil-tombol:active {
   100% { transform: translate(calc(-50% + var(--dx)), calc(-50% + var(--dy))) scale(1.3) rotate(200deg); opacity: 0; }
 }
 
+@keyframes igil-awan {
+  0%, 100% { transform: translateX(0); }
+  50% { transform: translateX(22px); }
+}
+
+@keyframes igil-putar {
+  to { transform: rotate(360deg); }
+}
+
+@keyframes igil-denyut {
+  0%, 100% { transform: scale(1); opacity: 1; }
+  50% { transform: scale(1.08); opacity: 0.6; }
+}
+
+.igil-awan { animation: igil-awan 7s ease-in-out infinite; }
+.igil-awan-lambat { animation-duration: 11s; }
+.igil-putar { animation: igil-putar 24s linear infinite; }
+.igil-putar-cepat { animation: igil-putar 3.5s linear infinite; }
+.igil-denyut { animation: igil-denyut 1.2s ease-in-out infinite; }
+
 .igil-muncul { animation: igil-muncul 0.45s ease-out both; }
 .igil-goyang { animation: igil-goyang 0.8s ease-in-out infinite; }
 .igil-lompat { animation: igil-lompat 0.9s ease-in-out infinite; }
 .igil-bintang { animation: igil-bintang 0.9s ease-out forwards; }
 
 @media (prefers-reduced-motion: reduce) {
-  .igil-muncul, .igil-goyang, .igil-lompat, .igil-bintang { animation: none; }
+  .igil-muncul, .igil-goyang, .igil-lompat, .igil-bintang,
+  .igil-awan, .igil-putar, .igil-putar-cepat, .igil-denyut { animation: none; }
 }
