@@ -2,9 +2,8 @@
 
 import React, { useState, useEffect, useRef, useCallback } from "react";
 import { Nunito } from "next/font/google";
-import { normalisasiKelaminGuru, profilGuru } from "@/lib/guru";
-import { bacaProgres } from "@/lib/progres";
-import { hentikanAudioGuruAktif, mintaAudioTts } from "@/lib/putar-tts-klien";
+import { pilihSuaraIndonesia } from "@/lib/guru";
+import { hentikanAudioGuruAktif } from "@/lib/putar-tts-klien";
 import materiBab1 from "@/data/kelas1-bab1.json";
 import GambarPensilCerita from "@/components/GambarPensilCerita";
 import { bangunTitikAngka, coretanMengikutiJejak, type Titik } from "@/components/titikAngkaKanvas";
@@ -531,32 +530,11 @@ export default function IgilModulePlayer() {
     materiBab1.tokens.practice + materiBab1.tokens.exam + materiBab1.tokens.practicum;
 
   // ============================================================================
-  // SUARA GURU SESUAI PILIHAN DI RUANG BELAJAR
+  // SUARA GURU IGIL — Web Speech API di peramban, tanpa API eksternal
   // ============================================================================
 
-  const audioGuru = useRef<HTMLAudioElement | null>(null);
   const giliranSuara = useRef(0);
   const lepasJedaCerita = useRef<(() => void) | null>(null);
-
-  const ucapkanCadangan = (
-    naskah: string,
-    kelas: string,
-    kelamin: ReturnType<typeof normalisasiKelaminGuru>,
-    selesai?: () => void,
-  ) => {
-    if (!("speechSynthesis" in window)) {
-      selesai?.();
-      return;
-    }
-    const guru = profilGuru(kelas, kelamin);
-    const utterance = new SpeechSynthesisUtterance(naskah);
-    utterance.lang = "id-ID";
-    utterance.rate = guru.laju;
-    utterance.pitch = guru.nada;
-    utterance.onend = () => selesai?.();
-    utterance.onerror = () => selesai?.();
-    window.speechSynthesis.speak(utterance);
-  };
 
   const speakGuru = useCallback((text: string, selesai?: () => void) => {
     const naskah = text.replace(/\s+/g, " ").trim();
@@ -568,9 +546,6 @@ export default function IgilModulePlayer() {
       lepasJedaCerita.current = null;
     }
     const giliran = ++giliranSuara.current;
-    const profil = bacaProgres().profil;
-    const kelamin = normalisasiKelaminGuru(profil.guruKelamin);
-    const kelas = profil.kelas.trim() || "1 SD";
     const tutup = () => {
       if (giliran !== giliranSuara.current) return;
       if (lepasJedaCerita.current !== selesai) return;
@@ -578,27 +553,28 @@ export default function IgilModulePlayer() {
       lepasJedaCerita.current = null;
     };
     hentikanAudioGuruAktif();
-    audioGuru.current?.pause();
-    void mintaAudioTts(naskah, kelamin, kelas).then((hasil) => {
+    if (!("speechSynthesis" in window)) {
+      tutup();
+      return;
+    }
+    const ucapan = new SpeechSynthesisUtterance(naskah);
+    ucapan.lang = "id-ID";
+    ucapan.rate = 0.95;
+    ucapan.pitch = 1.12;
+    const suara = pilihSuaraIndonesia("wanita");
+    if (suara) ucapan.voice = suara;
+    ucapan.onend = selesai ? tutup : null;
+    ucapan.onerror = selesai ? tutup : null;
+    window.setTimeout(() => {
       if (giliran !== giliranSuara.current) return;
-      if (!hasil?.url) {
-        ucapkanCadangan(naskah, kelas, kelamin, selesai ? tutup : undefined);
-        return;
-      }
-      const audio = audioGuru.current ?? new Audio();
-      audioGuru.current = audio;
-      audio.onended = selesai ? tutup : null;
-      audio.src = hasil.url;
-      void audio.play().catch(() => {
-        if (giliran !== giliranSuara.current) return;
-        ucapkanCadangan(naskah, kelas, kelamin, selesai ? tutup : undefined);
-      });
-    });
+      window.speechSynthesis.speak(ucapan);
+    }, 40);
   }, []);
 
   useEffect(() => {
+    window.speechSynthesis?.getVoices();
     return () => {
-      audioGuru.current?.pause();
+      hentikanAudioGuruAktif();
     };
   }, []);
 
@@ -1091,7 +1067,7 @@ export default function IgilModulePlayer() {
                         onClick={() => speakGuru(SUARA_KELOMPOK)}
                         className="px-3 py-1 rounded-xl bg-white text-[#166534] border border-[#22C55E] text-xs font-black shrink-0"
                       >
-                        🔊 Suara Guru
+                        🔊 Suara Guru IGIL
                       </button>
                     </div>
                     <div className="grid grid-cols-2 gap-2">
