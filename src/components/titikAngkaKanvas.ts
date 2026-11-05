@@ -262,6 +262,48 @@ function telusuriRangka(bin: Uint8Array, w: number, h: number): Titik[][] {
 
 const cacheTitik = new Map<string, Titik[][]>();
 
+function rasterKeTitik(
+  ctx: CanvasRenderingContext2D,
+  lebar: number,
+  tinggi: number,
+): Titik[][] {
+  const piksel = ctx.getImageData(0, 0, lebar, tinggi).data;
+  const bin = new Uint8Array(lebar * tinggi);
+  for (let i = 0; i < bin.length; i++) {
+    if (piksel[i * 4 + 3] > 150) bin[i] = 1;
+  }
+  rangkaTulang(bin, lebar, tinggi);
+  pangkasEkor(bin, lebar, tinggi, 8);
+  return telusuriRangka(bin, lebar, tinggi)
+    .map((gores) => sampelJalur([gores], 12))
+    .filter((gores) => gores.length >= 2);
+}
+
+function gambarTeksPas(
+  ctx: CanvasRenderingContext2D,
+  teks: string,
+  keluargaFont: string,
+  x: number,
+  y: number,
+  ukuranAwal: number,
+  batasLebar: number,
+  batasTinggi: number,
+) {
+  let ukuran = ukuranAwal;
+  ctx.font = `900 ${ukuran}px ${keluargaFont}`;
+  const ukur = ctx.measureText(teks);
+  const lebarHuruf = Math.max(ukur.width, 1);
+  const tinggiHuruf = Math.max(
+    (ukur.actualBoundingBoxAscent || ukuran * 0.72) +
+      (ukur.actualBoundingBoxDescent || ukuran * 0.18),
+    1,
+  );
+  const muat = Math.min(batasLebar / lebarHuruf, batasTinggi / tinggiHuruf, 1);
+  ukuran = Math.max(28, Math.floor(ukuran * muat));
+  ctx.font = `900 ${ukuran}px ${keluargaFont}`;
+  ctx.fillText(teks, x, y);
+}
+
 /** Titik-titik di tengah huruf angka, supaya bentuknya mengikuti huruf yang sebenarnya. */
 export function bangunTitikAngka(angka: number, keluargaFont: string): Titik[][] {
   const kunci = `${keluargaFont}|${angka}`;
@@ -278,30 +320,42 @@ export function bangunTitikAngka(angka: number, keluargaFont: string): Titik[][]
   ctx.fillStyle = "#000000";
   ctx.textAlign = "center";
   ctx.textBaseline = "middle";
-  const teks = String(angka);
-  let ukuran = 120;
-  ctx.font = `900 ${ukuran}px ${keluargaFont}`;
-  const ukur = ctx.measureText(teks);
-  const lebarHuruf = Math.max(ukur.width, 1);
-  const tinggiHuruf = Math.max(
-    (ukur.actualBoundingBoxAscent || ukuran * 0.72) + (ukur.actualBoundingBoxDescent || ukuran * 0.18),
-    1
-  );
-  const muat = Math.min(132 / lebarHuruf, 120 / tinggiHuruf, 1);
-  ukuran = Math.max(64, Math.floor(ukuran * muat));
-  ctx.font = `900 ${ukuran}px ${keluargaFont}`;
-  ctx.fillText(teks, LEBAR / 2, TINGGI / 2 + 1);
+  gambarTeksPas(ctx, String(angka), keluargaFont, LEBAR / 2, TINGGI / 2 + 1, 120, 132, 120);
 
-  const piksel = ctx.getImageData(0, 0, LEBAR, TINGGI).data;
-  const bin = new Uint8Array(LEBAR * TINGGI);
-  for (let i = 0; i < bin.length; i++) {
-    if (piksel[i * 4 + 3] > 150) bin[i] = 1;
-  }
-  rangkaTulang(bin, LEBAR, TINGGI);
-  pangkasEkor(bin, LEBAR, TINGGI, 8);
-  const hasil = telusuriRangka(bin, LEBAR, TINGGI)
-    .map((gores) => sampelJalur([gores], 12))
-    .filter((gores) => gores.length >= 2);
+  const hasil = rasterKeTitik(ctx, LEBAR, TINGGI);
+  cacheTitik.set(kunci, hasil);
+  return hasil;
+}
+
+export const LEBAR_KANVAS_JUMLAH = 340;
+export const TINGGI_KANVAS_JUMLAH = 300;
+
+/** Angka di atas, kata bilangan di bawah, pada kanvas yang lebih luas. */
+export function bangunTitikJumlah(
+  angka: number,
+  kata: string,
+  keluargaFont: string,
+): Titik[][] {
+  const kunci = `${keluargaFont}|jumlah|${angka}|${kata}`;
+  const tersimpan = cacheTitik.get(kunci);
+  if (tersimpan) return tersimpan;
+
+  const lebar = LEBAR_KANVAS_JUMLAH;
+  const tinggi = TINGGI_KANVAS_JUMLAH;
+  const kanvas = document.createElement("canvas");
+  kanvas.width = lebar;
+  kanvas.height = tinggi;
+  const ctx = kanvas.getContext("2d", { willReadFrequently: true });
+  if (!ctx) return [];
+
+  ctx.clearRect(0, 0, lebar, tinggi);
+  ctx.fillStyle = "#000000";
+  ctx.textAlign = "center";
+  ctx.textBaseline = "middle";
+  gambarTeksPas(ctx, String(angka), keluargaFont, lebar / 2, 78, 120, 150, 110);
+  gambarTeksPas(ctx, kata, keluargaFont, lebar / 2, 210, 84, 300, 100);
+
+  const hasil = rasterKeTitik(ctx, lebar, tinggi);
   cacheTitik.set(kunci, hasil);
   return hasil;
 }

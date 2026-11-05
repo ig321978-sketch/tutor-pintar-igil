@@ -6,7 +6,7 @@ import { pilihSuaraIndonesia } from "@/lib/guru";
 import { hentikanAudioGuruAktif } from "@/lib/putar-tts-klien";
 import materiBab1 from "@/data/kelas1-bab1.json";
 import GambarPensilCerita from "@/components/GambarPensilCerita";
-import { bangunTitikAngka, coretanMengikutiJejak, type Titik } from "@/components/titikAngkaKanvas";
+import { bangunTitikAngka, bangunTitikJumlah, coretanMengikutiJejak, LEBAR_KANVAS_JUMLAH, TINGGI_KANVAS_JUMLAH, type Titik } from "@/components/titikAngkaKanvas";
 
 const fontAnak = Nunito({
   subsets: ["latin"],
@@ -286,11 +286,15 @@ function IkonMainan({ jenis }: { jenis: string }) {
 
 function DottedNumberTracingCanvas({
   digit,
+  kata,
   onCompletedTrace,
 }: {
   digit: number;
+  kata?: string;
   onCompletedTrace?: () => void;
 }) {
+  const lebar = kata ? LEBAR_KANVAS_JUMLAH : 170;
+  const tinggi = kata ? TINGGI_KANVAS_JUMLAH : 150;
   const canvasRef = useRef<HTMLCanvasElement | null>(null);
   const goresanRef = useRef<Titik[][]>([]);
   const jejakRef = useRef<Titik[][]>([]);
@@ -345,14 +349,16 @@ function DottedNumberTracingCanvas({
         /* Huruf cadangan tetap bisa dijadikan titik. */
       }
       if (batal) return;
-      jejakRef.current = bangunTitikAngka(digit, fontAnak.style.fontFamily);
+      jejakRef.current = kata
+        ? bangunTitikJumlah(digit, kata, fontAnak.style.fontFamily)
+        : bangunTitikAngka(digit, fontAnak.style.fontFamily);
       gambarUlang();
     };
     void siapkan();
     return () => {
       batal = true;
     };
-  }, [digit, gambarUlang]);
+  }, [digit, kata, gambarUlang]);
 
   const koordinat = (e: React.PointerEvent<HTMLCanvasElement>) => {
     const canvas = canvasRef.current;
@@ -404,16 +410,21 @@ function DottedNumberTracingCanvas({
   };
 
   return (
-    <div className="flex flex-col items-center gap-2">
+    <div className={`flex flex-col items-center gap-2 ${kata ? "w-full" : ""}`}>
       <canvas
         ref={canvasRef}
-        width={170}
-        height={150}
+        width={lebar}
+        height={tinggi}
         onPointerDown={mulai}
         onPointerMove={geser}
         onPointerUp={selesai}
         onPointerCancel={selesai}
-        className="w-[170px] h-[150px] rounded-2xl border-2 border-[#1C01A5] bg-white cursor-crosshair touch-none shadow-sm"
+        style={kata ? { aspectRatio: `${lebar} / ${tinggi}` } : undefined}
+        className={
+          kata
+            ? "h-auto w-full max-w-[340px] rounded-2xl border-2 border-[#1C01A5] bg-white cursor-crosshair touch-none shadow-sm"
+            : "w-[170px] h-[150px] rounded-2xl border-2 border-[#1C01A5] bg-white cursor-crosshair touch-none shadow-sm"
+        }
       />
       <div className="flex items-center gap-2">
         <button
@@ -1469,11 +1480,12 @@ export default function IgilModulePlayer() {
                           <div className="space-y-3">
                             <div className="flex flex-col items-center gap-2 rounded-2xl border border-[#93C5FD] bg-white p-3">
                               <div className="text-xs font-black text-[#1E3A8A]">
-                                Kanvas: tulis {SEBUTAN_ANGKA[kartu.jumlah - 1]}
+                                Tulis angka di atas, kata di bawah
                               </div>
                               <DottedNumberTracingCanvas
                                 key={kartu.id}
                                 digit={kartu.jumlah}
+                                kata={SEBUTAN_ANGKA[kartu.jumlah - 1]}
                                 onCompletedTrace={() =>
                                   setTulisConcrete((prev) => ({ ...prev, [kartu.id]: true }))
                                 }
