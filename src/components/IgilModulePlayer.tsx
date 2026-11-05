@@ -749,7 +749,7 @@ export default function IgilModulePlayer() {
   const [activeSubBab, setActiveSubBab] = useState<SubBabId>("A");
   const [angkaMainan, setAngkaMainan] = useState<Record<string, number>>({});
   const angkaMainanRef = useRef<Record<string, number>>({});
-  const [unlockedSmicpaStage, setUnlockedSmicpaStage] = useState<number>(1); // 1=Story .. 6=Abstract
+  const [unlockedSmicpaStage, setUnlockedSmicpaStage] = useState<number>(6); // 1=Story .. 6=Abstract; semua tahap terbuka
   const [concreteCounter, setConcreteCounter] = useState<number>(3);
 
   // Ref untuk auto-scroll mulus saat tombol floating-end LANJUTKAN diklik
@@ -1043,7 +1043,6 @@ export default function IgilModulePlayer() {
     if (currIdx < order.length - 1) {
       const nextSub = order[currIdx + 1];
       setActiveSubBab(nextSub);
-      setUnlockedSmicpaStage(1);
       window.scrollTo({ top: 0, behavior: "smooth" });
       speakGuru(
         `Selamat! Sub-Bab ${activeSubBab} selesai dan Target Pembelajaran di Silabus telah tercentang otomatis. Sekarang kita masuk ke Sub-Bab ${nextSub}.`
@@ -1062,7 +1061,6 @@ export default function IgilModulePlayer() {
     const currIdx = order.indexOf(activeSubBab);
     if (currIdx > 0) {
       setActiveSubBab(order[currIdx - 1]);
-      setUnlockedSmicpaStage(1);
       window.scrollTo({ top: 0, behavior: "smooth" });
     }
   };
@@ -1340,7 +1338,6 @@ export default function IgilModulePlayer() {
                       type="button"
                       onClick={() => {
                         setActiveSubBab(subId);
-                        setUnlockedSmicpaStage(1);
                       }}
                       style={{
                         backgroundColor: sub.secondaryBg,
@@ -1682,7 +1679,6 @@ export default function IgilModulePlayer() {
                     const hitung = sentuhNyata[kartu.id] ?? 0;
                     const tulis = tulisConcrete[kartu.id] === true;
                     const suara = suaraConcrete[kartu.id] === true;
-                    const siapLanjut = tulis && suara;
                     const terakhir = indeksConcrete >= KARTU_CONCRETE.length - 1;
                     return (
                       <>
@@ -1781,9 +1777,7 @@ export default function IgilModulePlayer() {
                             <div className="flex justify-end">
                               <button
                                 type="button"
-                                disabled={!siapLanjut}
                                 onClick={() => {
-                                  if (!siapLanjut) return;
                                   hentikanRekamConcrete();
                                   setPesanConcrete("");
                                   if (!terakhir) {
