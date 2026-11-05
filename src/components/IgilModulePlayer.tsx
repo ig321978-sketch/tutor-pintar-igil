@@ -578,9 +578,9 @@ export default function IgilModulePlayer() {
       const teks = peristiwa.results[0]?.[0]?.transcript ?? "";
       if (ucapanMemuatBilangan(teks, jumlah)) {
         setSuaraConcrete((prev) => ({ ...prev, [id]: true }));
-        setPesanConcrete("Suaramu pas.");
+        setPesanConcrete("");
       } else {
-        setPesanConcrete(`Coba ucapkan ${SEBUTAN_ANGKA[jumlah - 1]} lagi.`);
+        setPesanConcrete("Belum pas. Coba lagi.");
       }
     };
     mesin.onerror = (peristiwa) => {
@@ -599,7 +599,7 @@ export default function IgilModulePlayer() {
       mesinConcreteRef.current = mesin;
       mesin.start();
       setRekamConcrete(true);
-      setPesanConcrete(`Ucapkan ${SEBUTAN_ANGKA[jumlah - 1]}.`);
+      setPesanConcrete("");
     } catch {
       mesinConcreteRef.current = null;
       setRekamConcrete(false);
@@ -1387,7 +1387,6 @@ export default function IgilModulePlayer() {
                     const kartu = KARTU_CONCRETE[indeksConcrete];
                     const hitung = sentuhNyata[kartu.id] ?? 0;
                     const pas = hitung >= kartu.jumlah;
-                    const kata = SEBUTAN_ANGKA[hitung - 1] ?? "";
                     const tulis = tulisConcrete[kartu.id] === true;
                     const suara = suaraConcrete[kartu.id] === true;
                     const siapLanjut = tulis && suara;
@@ -1408,7 +1407,9 @@ export default function IgilModulePlayer() {
                         </div>
                         <p className="text-xs font-bold text-[#1E3A8A]">
                           Mainan {indeksConcrete + 1} dari {KARTU_CONCRETE.length}.{" "}
-                          {pas ? "Jumlahnya pas. Tulis dan ucapkan." : "Tekan ikon mainan sampai jumlahnya pas."}
+                          {suara
+                            ? "Jumlahnya sudah diucapkan."
+                            : "Tekan kartu jumlah, lalu ucapkan banyak mainannya."}
                         </p>
                         <div className="grid grid-cols-2 gap-2">
                           <div className="text-center text-xs font-black tracking-wide text-[#1E3A8A]">MAINAN</div>
@@ -1435,18 +1436,34 @@ export default function IgilModulePlayer() {
                               {kartu.nama}
                             </span>
                           </button>
-                          <div
-                            className={`flex min-h-16 min-w-0 flex-col items-center justify-center rounded-2xl border-2 bg-white py-1 ${
-                              hitung > 0 ? "border-solid border-[#1C01A5]" : "border-dashed border-[#93C5FD]"
+                          <button
+                            type="button"
+                            aria-label={suara ? `${kartu.jumlah} ${SEBUTAN_ANGKA[kartu.jumlah - 1]}` : "Isi suara"}
+                            onClick={() => {
+                              if (suara) return;
+                              mulaiRekamConcrete(kartu.id, kartu.jumlah);
+                            }}
+                            className={`flex min-h-16 min-w-0 flex-col items-center justify-center rounded-2xl border-2 bg-white px-2 py-1 ${
+                              suara
+                                ? "border-solid border-[#1C01A5]"
+                                : rekamConcrete
+                                  ? "border-solid border-[#F0AB00]"
+                                  : "border-dashed border-[#93C5FD]"
                             }`}
                           >
-                            {hitung > 0 ? (
+                            {suara ? (
                               <>
-                                <span className="text-3xl font-black leading-none text-[#1C01A5]">{hitung}</span>
-                                <span className="text-sm font-black leading-tight text-[#1C01A5]">{kata}</span>
+                                <span className="text-3xl font-black leading-none text-[#1C01A5]">{kartu.jumlah}</span>
+                                <span className="text-sm font-black leading-tight text-[#1C01A5]">
+                                  {SEBUTAN_ANGKA[kartu.jumlah - 1]}
+                                </span>
                               </>
-                            ) : null}
-                          </div>
+                            ) : (
+                              <span className="text-center text-xs font-black leading-tight text-[#1C01A5]">
+                                {rekamConcrete ? "Mendengarkan..." : pesanConcrete || "Isi suara"}
+                              </span>
+                            )}
+                          </button>
                         </div>
                         {pas ? (
                           <div className="space-y-3">
@@ -1463,25 +1480,6 @@ export default function IgilModulePlayer() {
                               />
                               <p className="text-xs font-bold text-[#1C01A5]">
                                 {tulis ? "Tulisanmu pas." : "Ikuti titik sampai mirip."}
-                              </p>
-                            </div>
-                            <div className="space-y-2 rounded-2xl border border-[#93C5FD] bg-white p-3">
-                              <div className="text-xs font-black text-[#1E3A8A]">
-                                Suara: ucapkan {SEBUTAN_ANGKA[kartu.jumlah - 1]}
-                              </div>
-                              <button
-                                type="button"
-                                onClick={() => mulaiRekamConcrete(kartu.id, kartu.jumlah)}
-                                className={`rounded-xl px-4 py-2 text-xs font-black ${
-                                  rekamConcrete
-                                    ? "bg-[#E98989] text-[#1C01A5]"
-                                    : "bg-[#1C01A5] text-[#FFE566]"
-                                }`}
-                              >
-                                {suara ? "Suara sudah pas" : rekamConcrete ? "Berhenti" : "🎤 Isi suara"}
-                              </button>
-                              <p className="text-xs font-bold text-[#1C01A5]">
-                                {suara ? "Suaramu pas." : pesanConcrete || "Tekan tombol, lalu ucapkan jumlahnya."}
                               </p>
                             </div>
                             <div className="flex justify-end">
