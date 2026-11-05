@@ -683,6 +683,7 @@ export default function IgilModulePlayer() {
     pesan: pesanConcrete,
     suara: suaraConcrete,
     mulai: (id, jumlah) => mulaiRekamConcrete(id, jumlah, "concrete"),
+    tandai: (id) => setSuaraConcrete((prev) => ({ ...prev, [id]: true })),
     bersih: () => setPesanConcrete(""),
   };
   const panelGambar: PanelSuara = {
@@ -690,6 +691,7 @@ export default function IgilModulePlayer() {
     pesan: pesanGambar,
     suara: suaraGambar,
     mulai: (id, jumlah) => mulaiRekamConcrete(id, jumlah, "gambar"),
+    tandai: (id) => setSuaraGambar((prev) => ({ ...prev, [id]: true })),
     bersih: () => setPesanGambar(""),
   };
   const panelLambang: PanelSuara = {
@@ -697,6 +699,7 @@ export default function IgilModulePlayer() {
     pesan: pesanLambang,
     suara: suaraLambang,
     mulai: (id, jumlah) => mulaiRekamConcrete(id, jumlah, "lambang"),
+    tandai: (id) => setSuaraLambang((prev) => ({ ...prev, [id]: true })),
     bersih: () => setPesanLambang(""),
   };
 
