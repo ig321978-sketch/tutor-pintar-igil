@@ -9,6 +9,12 @@ import { situsHanyaAdmin } from "@/lib/situs-hanya-admin";
 
 const MENU = [{ href: "/ruang-belajar", label: "📚 Ruang Belajar" }] as const;
 
+/** Menu 2 dan 3 masih tahap tinjau: hanya tampil untuk admin sampai data nyata tersambung. */
+const MENU_TINJAU = [
+  { href: "/rapor", label: "📊 Rapor & Sertifikat" },
+  { href: "/ranking", label: "🏆 Ranking & Beasiswa" },
+] as const;
+
 function tautanAktif(pathname: string, href: string): boolean {
   return pathname === href || pathname.startsWith(`${href}/`);
 }
@@ -17,11 +23,11 @@ export default function Navbar() {
   const pathname = usePathname();
   const router = useRouter();
   const [terbuka, setTerbuka] = useState(false);
-  const { user, memuat, keluar } = useUserRole();
+  const { user, memuat, keluar, adalahAdmin } = useUserRole();
 
   if (pathname.startsWith("/simulasi-embed")) return null;
 
-  const menu = MENU;
+  const menu: readonly { href: string; label: string }[] = adalahAdmin ? [...MENU, ...MENU_TINJAU] : MENU;
 
   async function klikKeluar() {
     await keluar();

@@ -32,10 +32,6 @@ function ruteModulLama(pathname: string): boolean {
     pathname.startsWith("/admin/") ||
     pathname === "/studio-kreator" ||
     pathname.startsWith("/studio-kreator/") ||
-    pathname === "/rapor" ||
-    pathname.startsWith("/rapor/") ||
-    pathname === "/ranking" ||
-    pathname.startsWith("/ranking/") ||
     pathname === "/laboratorium" ||
     pathname.startsWith("/laboratorium/") ||
     pathname === "/simulasi-praktikum" ||

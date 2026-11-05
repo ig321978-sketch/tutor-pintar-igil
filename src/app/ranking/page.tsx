@@ -1,5 +1,10 @@
-import { redirect } from "next/navigation";
+import type { Metadata } from "next";
+import RankingHalaman from "@/components/rapor/RankingHalaman";
+
+export const metadata: Metadata = {
+  title: "$IGIL · Ranking & Beasiswa",
+};
 
 export default function HalamanRanking() {
-  redirect("/ruang-belajar");
+  return <RankingHalaman />;
 }
