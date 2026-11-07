@@ -351,18 +351,337 @@
       "id": "B",
       "codeTitle": "Sub-Bab B (Berbagai Cara)",
       "fullTitle": "Sub-Bab B: Berbagai Cara Melakukan Pengurangan",
-      "targetDescription": "Siswa mengurangkan sampai 10 dengan pasangan bilangan, menghitung mundur, dan pengurangan dari 10.",
+      "targetDescription": "Siswa mengurangkan sampai 10 dengan tiga cara: pasangan bilangan (gabungan dan sebagian, satu bagan menghasilkan dua pengurangan), menghitung mundur pada garis bilangan 0 sampai 10 termasuk pengurangan dengan nol, dan pengurangan dari 10 memakai bingkai sepuluh.",
       "secondaryBg": "#FEF3C7",
       "secondaryBorder": "#F59E0B",
       "secondaryText": "#92400E",
-      "segeraHadir": true,
-      "stories": [],
-      "mindMaps": [],
-      "infografisData": [],
-      "concreteSlides": [],
-      "pictorialSlides": [],
-      "abstractSlides": [],
-      "interactiveGames": []
+      "stories": [
+        {
+          "id": "B3-S1",
+          "titleHint": "Telur di Piring",
+          "sceneType": "telur-pasangan",
+          "voiceNarration": "Igil bertanya: bagaimana caramu melakukan pengurangan? Jelaskan caranya. Cara pertama memakai pasangan bilangan. Ada enam telur di piring. Empat telur masih utuh. Dua telur pecah. Enam adalah gabungan. Empat dan dua adalah sebagian. Empat dan dua jika digabung menjadi enam. Enam dikurangi dua sama dengan empat. Enam dikurangi empat sama dengan dua."
+        },
+        {
+          "id": "B3-S2",
+          "titleHint": "Balon Merah dan Kuning",
+          "sceneType": "balon-pasangan",
+          "voiceNarration": "Kira membawa tujuh balon. Lima balon berwarna merah. Dua balon berwarna kuning. Tujuh adalah gabungan. Lima dan dua adalah sebagian. Lima dan dua jika digabung menjadi tujuh. Tujuh dikurangi lima sama dengan dua. Tujuh dikurangi dua sama dengan lima."
+        },
+        {
+          "id": "B3-S3",
+          "titleHint": "Mobil Kosong",
+          "sceneType": "mobil-nol",
+          "voiceNarration": "Mula-mula ada tiga orang di dalam mobil. Sebanyak tiga orang turun dari mobil. Sekarang tidak ada orang di dalam mobil. Tiga dan nol jika digabung menjadi tiga. Tiga dikurangi tiga sama dengan nol. Tiga dikurangi nol sama dengan tiga."
+        },
+        {
+          "id": "B3-S4",
+          "titleHint": "Lompat Mundur di Batu",
+          "sceneType": "lompat-mundur-tiga",
+          "voiceNarration": "Cara kedua adalah menghitung mundur. Upe berdiri di batu angka tiga. Upe melompat dua langkah ke belakang. Dua, satu. Upe mendarat di angka satu. Tiga dikurangi dua sama dengan satu."
+        },
+        {
+          "id": "B3-S5",
+          "titleHint": "Kira Melompat Mundur",
+          "sceneType": "lompat-mundur-lima",
+          "voiceNarration": "Kira berdiri di angka lima. Kira melompat tiga langkah ke belakang. Empat, tiga, dua. Kira mendarat di angka dua. Lima dikurangi tiga sama dengan dua. Menghitung mundur artinya menyebut angka dari besar ke kecil."
+        },
+        {
+          "id": "B3-S6",
+          "titleHint": "Sepuluh Bola",
+          "sceneType": "sepuluh-bola",
+          "voiceNarration": "Cara ketiga adalah pengurangan dari sepuluh. Ada sepuluh bola. Tujuh bola merah dan tiga bola biru. Kita tulis sepuluh dikurangi tujuh sama dengan tiga. Kita juga bisa menulis sepuluh dikurangi tiga sama dengan tujuh. Sekarang giliranmu: pilih satu cara, lalu jelaskan kepada temanmu."
+        }
+      ],
+      "mindMaps": [
+        {
+          "stepNumber": 1,
+          "stepTitle": "1. Pisahkan Gabungan",
+          "stepDesc": "Satu kelompok benda boleh dipisah menjadi dua bagian. Kelompok utuhnya disebut gabungan. Dua bagiannya disebut sebagian. Enam telur dipisah menjadi empat utuh dan dua pecah.",
+          "icon": "🥚",
+          "flowFrom": "Satu kelompok benda",
+          "flowTo": "Gabungan dan dua sebagian"
+        },
+        {
+          "stepNumber": 2,
+          "stepTitle": "2. Gambar Bagan Pasangan",
+          "stepDesc": "Tulis gabungan di lingkaran besar sebelah kiri. Tulis dua sebagian di lingkaran kecil sebelah kanan. Empat dan dua jika digabung menjadi enam.",
+          "icon": "🔵",
+          "flowFrom": "Gabungan dan sebagian",
+          "flowTo": "Bagan pasangan bilangan"
+        },
+        {
+          "stepNumber": 3,
+          "stepTitle": "3. Satu Bagan, Dua Pengurangan",
+          "stepDesc": "Dari satu bagan kita bisa menulis dua pengurangan. Gabungan dikurangi sebagian pertama menghasilkan sebagian kedua, dan sebaliknya. Enam kurang dua sama dengan empat. Enam kurang empat sama dengan dua.",
+          "icon": "✌️",
+          "flowFrom": "Bagan pasangan",
+          "flowTo": "Dua kalimat pengurangan"
+        },
+        {
+          "stepNumber": 4,
+          "stepTitle": "4. Hitung Mundur",
+          "stepDesc": "Mulai dari bilangan yang dikurangi. Lompat ke belakang sebanyak bilangan pengurang. Angka tempat mendarat adalah hasilnya. Lima, lompat tiga ke belakang, mendarat di dua.",
+          "icon": "🐸",
+          "flowFrom": "Bilangan awal",
+          "flowTo": "Angka tempat mendarat"
+        },
+        {
+          "stepNumber": 5,
+          "stepTitle": "5. Nol dan Bilangan Sama",
+          "stepDesc": "Kalau yang dikurangi nol, jawabannya tetap sama dengan bilangan awal. Kalau yang dikurangi sama besar dengan bilangan awal, jawabannya nol. Lima kurang nol sama dengan lima. Lima kurang lima sama dengan nol.",
+          "icon": "0️⃣",
+          "flowFrom": "Pengurang nol atau sama",
+          "flowTo": "Hasil tetap atau nol"
+        },
+        {
+          "stepNumber": 6,
+          "stepTitle": "6. Pengurangan dari 10",
+          "stepDesc": "Bingkai sepuluh punya sepuluh petak. Petak yang terisi dan petak yang kosong jika digabung menjadi sepuluh. Sepuluh kurang tujuh sama dengan tiga, karena tiga petak masih kosong.",
+          "icon": "🔟",
+          "flowFrom": "Bingkai sepuluh",
+          "flowTo": "Petak yang kosong"
+        }
+      ],
+      "infografisData": [
+        {
+          "fruitName": "Pasangan Bilangan: Gabungan dan Sebagian (6 = 4 + 2)",
+          "emoji": "🥚",
+          "countNum": 6,
+          "countWord": "Enam",
+          "voiceSentence": "Enam telur terdiri dari empat telur utuh dan dua telur pecah. Enam adalah gabungan. Empat dan dua adalah sebagian."
+        },
+        {
+          "fruitName": "Satu Bagan, Dua Pengurangan",
+          "emoji": "✌️",
+          "countNum": 2,
+          "countWord": "Dua",
+          "voiceSentence": "Dari bagan enam, empat, dua, kita bisa menulis dua pengurangan. Enam dikurangi dua sama dengan empat. Enam dikurangi empat sama dengan dua."
+        },
+        {
+          "fruitName": "Gabungan Selalu Paling Besar",
+          "emoji": "🔵",
+          "countNum": 1,
+          "countWord": "Satu",
+          "voiceSentence": "Gabungan adalah bilangan yang paling besar di bagan, dan selalu ditulis pertama pada kalimat pengurangan."
+        },
+        {
+          "fruitName": "Menghitung Mundur di Garis Bilangan (5 − 3 = 2)",
+          "emoji": "🐸",
+          "countNum": 3,
+          "countWord": "Tiga",
+          "voiceSentence": "Mulai di lima. Lompat tiga langkah ke belakang: empat, tiga, dua. Mendarat di dua. Lima dikurangi tiga sama dengan dua."
+        },
+        {
+          "fruitName": "Tiga Langkah Menghitung Mundur",
+          "emoji": "👣",
+          "countNum": 3,
+          "countWord": "Tiga",
+          "voiceSentence": "Langkah satu, tunjuk bilangan awal. Langkah dua, lompat ke belakang sebanyak pengurang, sambil menyebut angka. Langkah tiga, angka tempat mendarat adalah hasilnya."
+        },
+        {
+          "fruitName": "Pengurangan dengan Nol dan Bilangan yang Sama",
+          "emoji": "0️⃣",
+          "countNum": 0,
+          "countWord": "Nol",
+          "voiceSentence": "Bilangan dikurangi nol hasilnya tetap sama. Bilangan dikurangi bilangan yang sama hasilnya nol."
+        },
+        {
+          "fruitName": "Pengurangan dari 10 dan Pasangan Sepuluh",
+          "emoji": "🔟",
+          "countNum": 10,
+          "countWord": "Sepuluh",
+          "voiceSentence": "Sepuluh kurang tujuh sama dengan tiga. Sepuluh kurang tiga sama dengan tujuh. Pasangan sepuluh: satu dan sembilan, dua dan delapan, tiga dan tujuh, empat dan enam, lima dan lima."
+        },
+        {
+          "fruitName": "Tiga Cara Mengurangkan",
+          "emoji": "🧰",
+          "countNum": 3,
+          "countWord": "Tiga",
+          "voiceSentence": "Tiga cara mengurangkan: pasangan bilangan, menghitung mundur, dan pengurangan dari sepuluh. Boleh memilih cara yang paling kamu suka, lalu periksa dengan menggabungkan."
+        }
+      ],
+      "concreteSlides": [
+        {
+          "title": "Telur Utuh, Telur Pecah (6 − 2, 8 − 3)",
+          "emoji": "🥚",
+          "targetCount": 5,
+          "voiceGuide": "Ketuk telur yang pecah. Lalu hitung telur yang masih utuh."
+        },
+        {
+          "title": "Balon Dua Warna (7 = 5 + 2, 9 = 6 + 3)",
+          "emoji": "🎈",
+          "targetCount": 6,
+          "voiceGuide": "Seret balon ke keranjang yang warnanya sama. Lalu tulis dua pengurangan."
+        },
+        {
+          "title": "Lompat Mundur di Batu (3 − 2, 5 − 3, 7 − 4)",
+          "emoji": "🪨",
+          "targetCount": 3,
+          "voiceGuide": "Ketuk batu satu langkah ke belakang, lagi dan lagi, sampai langkahnya cukup."
+        },
+        {
+          "title": "Kantong Sepuluh Bola (10 − 7, 10 − 10, 10 − 4)",
+          "emoji": "⚽",
+          "targetCount": 6,
+          "voiceGuide": "Ambil bola yang diminta dari kantong. Lalu hitung bola yang masih tinggal."
+        }
+      ],
+      "pictorialSlides": [
+        {
+          "title": "Bagan Pasangan: Cari Sebagian (6, 7, 3, 8)",
+          "diagramType": "number-bond",
+          "numberA": 6,
+          "numberB": 4,
+          "caption": "Lingkaran kuning besar adalah gabungan. Dua lingkaran kecil adalah sebagian. Cari lingkaran yang kosong."
+        },
+        {
+          "title": "Garis Bilangan: Lompat ke Belakang (5 − 1, 6 − 3, 9 − 4)",
+          "diagramType": "number-line",
+          "numberA": 5,
+          "numberB": 1,
+          "caption": "Ketuk angka satu langkah ke kiri. Setiap lompatan membuat satu busur."
+        },
+        {
+          "title": "Bingkai Sepuluh: Warnai yang Kosong (10 − 6, 10 − 4, 10 − 9)",
+          "diagramType": "ten-frame",
+          "numberA": 10,
+          "numberB": 6,
+          "caption": "Titik merah adalah petak yang terisi. Petak kosong diwarnai biru. Banyaknya biru adalah hasilnya."
+        }
+      ],
+      "abstractSlides": [
+        {
+          "symbolLarge": "6 − 2 = 4  |  6 − 4 = 2",
+          "wordLarge": "SATU BAGAN, DUA PENGURANGAN",
+          "mathNotation": "7 − 5 = 2   |   7 − 2 = 5",
+          "voiceReadout": "Enam dikurangi dua sama dengan empat. Enam dikurangi empat sama dengan dua. Tujuh dikurangi lima sama dengan dua. Tujuh dikurangi dua sama dengan lima."
+        },
+        {
+          "symbolLarge": "5 − 3 = 2",
+          "wordLarge": "HITUNG MUNDUR",
+          "mathNotation": "5 → 4 → 3 → 2",
+          "voiceReadout": "Lima dikurangi tiga. Mundur: empat, tiga, dua. Hasilnya dua."
+        },
+        {
+          "symbolLarge": "10 − 7 = 3",
+          "wordLarge": "PENGURANGAN DARI 10",
+          "mathNotation": "10 − 7 = 3   |   10 − 3 = 7   |   10 − 10 = 0   |   10 − 0 = 10",
+          "voiceReadout": "Sepuluh dikurangi tujuh sama dengan tiga. Sepuluh dikurangi tiga sama dengan tujuh. Sepuluh dikurangi sepuluh sama dengan nol. Sepuluh dikurangi nol sama dengan sepuluh."
+        }
+      ],
+      "interactiveGames": [
+        {
+          "gameId": "subB3-game-1",
+          "gameNumber": 1,
+          "stage": "Concrete",
+          "gameType": "tap-to-crack",
+          "title": "Telur Utuh, Telur Pecah",
+          "bookReference": "Buku Siswa Hlm. 88",
+          "objective": "Memisahkan satu kelompok benda menjadi dua bagian dan melihat pengurangannya.",
+          "mechanicDescription": "Dua ronde (6 telur dengan 2 pecah; 8 telur dengan 3 pecah). Siswa mengetuk telur yang pecah, lalu melihat dua kalimat pengurangan dari pisahan itu, lalu mengucapkan telur yang masih utuh.",
+          "voiceGuide": "Ketuk telur yang pecah. Lalu ucapkan berapa telur yang masih utuh."
+        },
+        {
+          "gameId": "subB3-game-2",
+          "gameNumber": 2,
+          "stage": "Concrete",
+          "gameType": "drag-to-sort-two-baskets",
+          "title": "Balon Dua Warna",
+          "bookReference": "Buku Siswa Hlm. 89",
+          "objective": "Memahami gabungan dan dua sebagian dengan memilah benda, lalu menulis dua pengurangan.",
+          "mechanicDescription": "Dua ronde (7 balon: 5 merah 2 kuning; 9 balon: 6 merah 3 kuning). Siswa menyeret atau mengetuk balon ke keranjang yang warnanya sama, lalu memilih hasil dua pengurangan dari pisahan itu.",
+          "voiceGuide": "Seret balon ke keranjang yang warnanya sama. Setelah itu pilih hasil dua pengurangannya, dan ucapkan hasil yang terakhir."
+        },
+        {
+          "gameId": "subB3-game-3",
+          "gameNumber": 3,
+          "stage": "Concrete",
+          "gameType": "hop-back-stones",
+          "title": "Lompat Mundur di Batu",
+          "bookReference": "Buku Siswa Hlm. 94-95",
+          "objective": "Menghitung mundur dengan melompat satu langkah ke belakang pada batu bernomor.",
+          "mechanicDescription": "Tiga ronde (3 − 2, 5 − 3, 7 − 4). Siswa mengetuk batu yang tepat satu langkah di belakang posisi anak, berulang sebanyak pengurang, lalu mengucapkan angka tempat mendarat.",
+          "voiceGuide": "Ketuk batu satu langkah ke belakang, sebanyak yang diminta. Lalu ucapkan angka tempatmu mendarat."
+        },
+        {
+          "gameId": "subB3-game-4",
+          "gameNumber": 4,
+          "stage": "Concrete",
+          "gameType": "take-from-bag",
+          "title": "Kantong Sepuluh Bola",
+          "bookReference": "Buku Siswa Hlm. 98",
+          "objective": "Mengurangkan dari 10 dengan mengambil bola dari kantong, termasuk sisa nol.",
+          "mechanicDescription": "Tiga ronde (10 bola: 7 merah 3 biru, ambil merah; 10 bola merah semua, ambil semua; 10 bola: 4 merah 6 biru, ambil merah). Siswa mengetuk bola yang diminta, lalu mengucapkan bola yang tinggal di kantong.",
+          "voiceGuide": "Ketuk bola yang diminta untuk diambil dari kantong. Lalu hitung bola yang masih tinggal dan ucapkan banyaknya."
+        },
+        {
+          "gameId": "subB3-game-5",
+          "gameNumber": 5,
+          "stage": "Picture",
+          "gameType": "complete-number-bond",
+          "title": "Bagan Pasangan: Cari Sebagian",
+          "bookReference": "Buku Siswa Hlm. 88-92",
+          "objective": "Menemukan lingkaran yang kosong pada bagan pasangan bilangan. Hanya diagram.",
+          "mechanicDescription": "Empat ronde (6 = 4 + ?, 7 = 2 + ?, 3 = 3 + ?, 8 = ? + 3). Siswa memilih angka untuk lingkaran kosong, lalu membaca dua kalimat pengurangan dari bagan itu.",
+          "voiceGuide": "Cari angka untuk lingkaran yang kosong. Gabungan dikurangi sebagian yang ada, hasilnya sebagian yang kosong. Ucapkan jawaban ronde terakhir."
+        },
+        {
+          "gameId": "subB3-game-6",
+          "gameNumber": 6,
+          "stage": "Picture",
+          "gameType": "hop-back-number-line",
+          "title": "Garis Bilangan: Lompat ke Belakang",
+          "bookReference": "Buku Siswa Hlm. 94-97",
+          "objective": "Menghitung mundur pada garis bilangan 0 sampai 10. Hanya diagram.",
+          "mechanicDescription": "Tiga ronde (5 − 1, 6 − 3, 9 − 4). Siswa mengetuk angka satu langkah ke kiri dari titik awal, berulang sebanyak pengurang; setiap lompatan menggambar satu busur. Terakhir ucapkan angka tempat mendarat.",
+          "voiceGuide": "Ketuk angka satu langkah ke kiri, lagi dan lagi, sebanyak yang diminta. Lalu ucapkan angka tempat berhenti."
+        },
+        {
+          "gameId": "subB3-game-7",
+          "gameNumber": 7,
+          "stage": "Picture",
+          "gameType": "color-ten-frame-empty",
+          "title": "Bingkai Sepuluh: Warnai yang Kosong",
+          "bookReference": "Buku Siswa Hlm. 99-100",
+          "objective": "Mengurangkan dari 10 dengan mewarnai petak yang kosong pada bingkai sepuluh. Hanya diagram.",
+          "mechanicDescription": "Tiga ronde (terisi 6, terisi 4, terisi 9). Siswa mengetuk petak kosong untuk mewarnainya biru sampai bingkai penuh, lalu membaca dua kalimat pengurangan dari 10 dan mengucapkan banyaknya petak biru.",
+          "voiceGuide": "Warnai petak yang kosong sampai bingkai penuh. Hitung petak biru, itu hasil sepuluh kurang yang terisi. Ucapkan jawaban ronde terakhir."
+        },
+        {
+          "gameId": "subB3-game-8",
+          "gameNumber": 8,
+          "stage": "Abstract",
+          "gameType": "pick-two-true-sentences",
+          "title": "Dua Kalimat dari Satu Bagan",
+          "bookReference": "Buku Siswa Hlm. 88-90",
+          "objective": "Memilih dua kalimat pengurangan yang benar dari satu bagan pasangan bilangan.",
+          "mechanicDescription": "Empat ronde (6-4-2, 7-5-2, 3-3-0, 10-7-3). Setiap ronde ada empat kartu kalimat, dua benar dan dua keliru. Siswa mengetuk dua kartu yang benar.",
+          "voiceGuide": "Lihat bilangan di bagan. Pilih dua kartu kalimat pengurangan yang benar. Ucapkan hasil kalimat pertama pada ronde terakhir."
+        },
+        {
+          "gameId": "subB3-game-9",
+          "gameNumber": 9,
+          "stage": "Abstract",
+          "gameType": "count-back-chain",
+          "title": "Hitung Mundur Berantai",
+          "bookReference": "Buku Siswa Hlm. 94-96",
+          "objective": "Menyebut angka berurutan dari besar ke kecil sampai mendapat hasil pengurangan.",
+          "mechanicDescription": "Tiga ronde (5 − 2, 8 − 3, 10 − 4). Siswa memilih angka yang satu lebih kecil dari angka sebelumnya sebanyak pengurang; rantai angka tampil makin panjang sampai hasil.",
+          "voiceGuide": "Dari angka awal, pilih angka yang satu lebih kecil, berulang sebanyak pengurang. Angka terakhir adalah hasilnya. Ucapkan hasil ronde terakhir."
+        },
+        {
+          "gameId": "subB3-game-10",
+          "gameNumber": 10,
+          "stage": "Abstract",
+          "gameType": "voice-and-trace",
+          "title": "Kanvas Guratan dan Suara",
+          "bookReference": "Buku Siswa Hlm. 91-93, 99",
+          "objective": "Mengucapkan dan menuliskan hasil pengurangan, lalu membuat kalimat sendiri (Ayo Mencoba).",
+          "mechanicDescription": "Ronde 1: 10 − 6 = 4, ucapkan dan guratkan. Ronde 2: siswa memilih bilangan awal dan pengurang sendiri (pengurang boleh nol atau sama dengan bilangan awal), lalu mengucapkan dan menggurat hasilnya.",
+          "voiceGuide": "Ucapkan hasil pengurangan, lalu guratkan angkanya di kanvas. Setelah itu buat kalimat pengurangan milikmu sendiri."
+        }
+      ]
     },
     "C": {
       "id": "C",
@@ -469,22 +788,8 @@
     {
       "id": 5,
       "level": "MOTS (30%)",
-      "prompt": "Cara membaca 8 − 3 = 5 yang tepat adalah...",
-      "visualEmojis": [],
-      "options": [
-        "delapan ditambah tiga sama dengan lima",
-        "tiga dikurangi delapan sama dengan lima",
-        "delapan dikurangi tiga sama dengan lima",
-        "delapan dikurangi lima sama dengan tiga"
-      ]
-    },
-    {
-      "id": 6,
-      "level": "MOTS (30%)",
-      "prompt": "Ada 9 balon. Lalu 4 balon pecah. Bilangan mula-mula pada cerita ini adalah...",
+      "prompt": "Ada 7 balon. 5 balon berwarna merah, sisanya kuning. Pada bagan pasangan: gabungan 7, sebagian 5, sebagian ... Berapa balon kuning?",
       "visualEmojis": [
-        "🎈",
-        "🎈",
         "🎈",
         "🎈",
         "🎈",
@@ -494,10 +799,22 @@
         "🎈"
       ],
       "options": [
-        "4",
+        "2",
+        "12",
         "5",
-        "13",
-        "9"
+        "3"
+      ]
+    },
+    {
+      "id": 6,
+      "level": "MOTS (30%)",
+      "prompt": "Aku di angka 5. Aku melompat 3 langkah ke belakang. Aku mendarat di angka...",
+      "visualEmojis": [],
+      "options": [
+        "8",
+        "3",
+        "2",
+        "1"
       ]
     },
     {
@@ -586,13 +903,13 @@
     {
       "id": 3,
       "level": "HOTS UJIAN FORMAL",
-      "prompt": "3. Dalam kalimat 9 − 4 = 5, bilangan yang menunjukkan sisa adalah...",
+      "prompt": "3. Pada bagan pasangan, gabungan 8 dan sebagian 3. Angka sebagian yang lain adalah...",
       "visualEmojis": [],
       "options": [
-        "9",
+        "11",
+        "5",
         "4",
-        "0",
-        "5"
+        "6"
       ]
     },
     {
@@ -622,25 +939,25 @@
     {
       "id": 6,
       "level": "HOTS UJIAN FORMAL",
-      "prompt": "6. Cara membaca 7 − 4 = 3 yang tepat adalah...",
+      "prompt": "6. Aku di angka 9. Aku melompat 4 langkah ke belakang. Aku mendarat di angka...",
       "visualEmojis": [],
       "options": [
-        "tujuh dikurangi empat sama dengan tiga",
-        "tujuh ditambah empat sama dengan tiga",
-        "empat dikurangi tujuh sama dengan tiga",
-        "tujuh dikurangi tiga sama dengan empat"
+        "13",
+        "6",
+        "4",
+        "5"
       ]
     },
     {
       "id": 7,
       "level": "HOTS UJIAN FORMAL",
-      "prompt": "7. Pada 8 − 5 = ..., bilangan 5 menunjukkan...",
+      "prompt": "7. Pada bagan pasangan, gabungan 10 dan sebagian 7. Sebagian yang lain adalah...",
       "visualEmojis": [],
       "options": [
-        "benda yang tersisa",
-        "benda yang berkurang",
-        "benda mula-mula",
-        "hasil penjumlahan"
+        "17",
+        "3",
+        "7",
+        "10"
       ]
     },
     {
