@@ -1037,7 +1037,7 @@ export default function MatematikaKelas1Bab5({
     setChapterCompletedFlag(true);
     playSound("fanfare");
     const tokenBab = Math.min(150, practiceTokens + examTokens + 50);
-    speakIGIL(`Selamat ${studentName}! Skor karyamu ${totalQualityScore} dari 1000. Token bab ini sekarang ${tokenBab}.`);
+    speakIGIL(`Selamat ${studentName}! Skor karyamu ${totalQualityScore} dari 1000. Poin bab ini sekarang ${tokenBab}.`);
     onChapterComplete?.({
       chapterId: CHAPTER_COMPETENCY_METADATA.chapterId,
       studentId,
@@ -1093,7 +1093,7 @@ export default function MatematikaKelas1Bab5({
           <div className="flex items-center gap-3 rounded-2xl border-b-4 border-slate-700 bg-slate-900 px-4 py-2.5 text-white">
             <div className="text-right">
               <div className="text-[11px] font-bold uppercase tracking-wider text-amber-300">Dompet bab</div>
-              <div className="text-xl font-black text-amber-400">{totalTokens} / 150 Token</div>
+              <div className="text-xl font-black text-amber-400">{totalTokens} / 150 Poin</div>
               <div className="text-[10px] text-slate-300">Latihan {practiceTokens}/30 • Ujian {examTokens}/70 • Praktikum {practicumTokens}/50</div>
             </div>
             <button type="button" onClick={() => speakIGIL(`Halo ${studentName}! Kita belajar bilangan 11 sampai 20 bersama Kira, Upe, Malosi, dan Tora.`)} className="rounded-xl border-b-4 border-amber-600 bg-amber-400 px-3 py-2 text-xs font-extrabold text-slate-950">
@@ -1151,7 +1151,7 @@ export default function MatematikaKelas1Bab5({
               </div>
               <div className="space-y-2 rounded-2xl border-2 border-emerald-200 bg-emerald-50/70 p-4">
                 <h3 className="text-sm font-black text-emerald-950">Dua gerbang bab ini</h3>
-                <p className="rounded-xl border border-emerald-200 bg-white p-2.5 text-xs text-slate-700">Sepuluh latihan paling banyak 30 token. Ujian 100 memberi 70 token.</p>
+                <p className="rounded-xl border border-emerald-200 bg-white p-2.5 text-xs text-slate-700">Sepuluh latihan paling banyak 30 poin. Ujian 100 memberi 70 poin.</p>
                 <p className="rounded-xl border border-emerald-200 bg-white p-2.5 text-xs text-slate-700">Skor karya dihitung di perangkat: 300 + 250 + 200 + 250 = 1.000 poin.</p>
               </div>
             </div>
@@ -1330,7 +1330,7 @@ export default function MatematikaKelas1Bab5({
           <section className="space-y-4 rounded-3xl border-2 border-sky-200 bg-white p-5 shadow-md">
             <div className="flex flex-wrap items-center justify-between gap-2">
               <h2 className="text-lg font-black text-slate-900">Latihan bilangan 11 sampai 20</h2>
-              <div className="rounded-2xl border border-amber-300 bg-amber-100 px-3.5 py-1.5 text-xs font-black text-amber-950">Token latihan {practiceTokens} / 30</div>
+              <div className="rounded-2xl border border-amber-300 bg-amber-100 px-3.5 py-1.5 text-xs font-black text-amber-950">Poin latihan {practiceTokens} / 30</div>
             </div>
             <div className="grid grid-cols-5 gap-1.5 sm:grid-cols-10">
               {PRACTICE_QUESTIONS.map((q, idx) => {
@@ -1365,7 +1365,7 @@ export default function MatematikaKelas1Bab5({
                   </div>
                   {selected ? (
                     <div className={`rounded-2xl border-2 p-3 text-xs ${benar ? "border-emerald-400 bg-emerald-50 text-emerald-950" : "border-rose-400 bg-rose-50 text-rose-950"}`}>
-                      <div className="text-sm font-black">{benar ? "Jawaban benar. +3 token." : "Belum tepat."}</div>
+                      <div className="text-sm font-black">{benar ? "Jawaban benar. +3 poin." : "Belum tepat."}</div>
                       <p>{q.explanation}</p>
                     </div>
                   ) : null}

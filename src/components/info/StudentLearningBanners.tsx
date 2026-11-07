@@ -138,7 +138,7 @@ export function BannerCooldownUjian({ nextRetryAllowedAt, onBukaMateri, onCobaLa
 }
 
 /* ------------------------------------------------------------------ */
-/* b) Batas token harian tercapai                                      */
+/* b) Batas poin harian tercapai                                      */
 /* ------------------------------------------------------------------ */
 
 export type BannerBatasTokenHarianProps = {
@@ -155,16 +155,16 @@ export function BannerBatasTokenHarian({ batasBabPerHari, onLanjutBab, className
       <KerangkaBanner role="status" gaya="biru" ikon="🌟" judul="Hebat! Kamu rajin sekali hari ini">
         <p className="text-sm font-semibold leading-relaxed text-indigo-100 sm:text-base">
           {batasBabPerHari
-            ? `Token dari ${batasBabPerHari} bab hari ini sudah penuh. `
-            : "Batas token hari ini sudah tercapai. "}
-          Kamu tetap boleh lanjut belajar bab berikutnya sekarang juga. Token baru akan terbuka besok pagi.
+            ? `Poin dari ${batasBabPerHari} bab hari ini sudah penuh. `
+            : "Batas poin hari ini sudah tercapai. "}
+          Kamu tetap boleh lanjut belajar bab berikutnya sekarang juga. Poin baru akan terbuka besok pagi.
         </p>
         <ul className="grid gap-2 sm:grid-cols-2">
           <li className="rounded-2xl bg-white/10 p-3 text-sm font-bold ring-1 ring-white/20">
             ✅ Belajar bab berikutnya <span className="text-amber-300">boleh sekarang</span>
           </li>
           <li className="rounded-2xl bg-white/10 p-3 text-sm font-bold ring-1 ring-white/20">
-            🌅 Token baru terbuka <span className="text-amber-300">besok pagi</span>
+            🌅 Poin baru terbuka <span className="text-amber-300">besok pagi</span>
           </li>
         </ul>
         {onLanjutBab ? (

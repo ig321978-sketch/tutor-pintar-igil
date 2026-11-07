@@ -779,7 +779,7 @@ export default function IgilModulePlayer() {
   const [pracReasoningText, setPracReasoningText] = useState<string>("");
   const [pracSubmitted, setPracSubmitted] = useState<boolean>(false);
 
-  // 9. Perhitungan Kartu Point Token (30 Latihan + 70 Ujian + 50 Praktikum = 150 Token)
+  // 9. Perhitungan Kartu Poin (Latihan 30 + Ujian 70 per bab, Praktikum 50 per blok 4 bab)
   const practiceCorrectCount = PRACTICE_QUESTIONS.filter(
     (q) => practiceAnswers[q.id] === q.correctAnswer
   ).length;
@@ -957,7 +957,7 @@ export default function IgilModulePlayer() {
                 <div className="flex items-center gap-2 text-xl font-black text-[#1C01A5] md:text-2xl">
                   <span className="igil-lompat inline-block text-3xl" aria-hidden="true">💰</span>
                   <span>{totalTokens}</span>
-                  <span className="text-xs text-[#F0AB00]">/ {batasToken} Token Emas</span>
+                  <span className="text-xs text-[#F0AB00]">/ {batasToken} Poin</span>
                 </div>
                 <div className="mt-2 flex flex-wrap gap-1.5 text-[11px] font-black text-[#1C01A5]">
                   <span className="rounded-full bg-[#DDD8FF] px-2 py-0.5">
@@ -1085,9 +1085,9 @@ export default function IgilModulePlayer() {
                 tepi="#F0AB00"
                 latar="#FFF8DC"
                 lencana="ARSITEKTUR LEARN-TO-EARN & KOLAM BEASISWA 90:10"
-                judul="💰 Distribusi 150 Token Emas & Kualifikasi Bulanan"
+                judul="💰 Poin dari Latihan, Ujian, dan Praktikum"
                 bicara={speakGuru}
-                teksSuara="Ada seratus lima puluh token emas untuk dikumpulkan. Latihan memberi tiga puluh token. Ujian memberi tujuh puluh token, dan kamu harus mendapat nilai seratus. Praktikum memberi lima puluh token."
+                teksSuara="Ada tiga sumber poin. Latihan memberi tiga puluh poin di setiap bab. Ujian memberi tujuh puluh poin, dan kamu harus mendapat nilai seratus. Praktikum memberi lima puluh poin, sekali setelah empat bab selesai."
               >
                 <div className="grid gap-4 md:grid-cols-3">
                   {[
@@ -1123,7 +1123,7 @@ export default function IgilModulePlayer() {
                       </div>
                       <div className="text-lg font-black text-[#1C01A5]">{k.nama}</div>
                       <div className="inline-block rounded-full bg-[#FFE566] px-3 py-0.5 text-xl font-black text-[#1C01A5]">
-                        💰 {k.token} Token Emas
+                        💰 {k.token} Poin
                       </div>
                       <p className="text-sm leading-snug text-[#334155] md:text-base">{k.isi}</p>
                     </div>
@@ -2275,7 +2275,7 @@ export default function IgilModulePlayer() {
                               : "bg-[#FEE2E2] text-[#991B1B]"
                           }`}
                         >
-                          {isRight ? "✅ Benar! (+3 Token Emas): " : "💡 Pembahasan Guru: "}
+                          {isRight ? "✅ Benar! (+3 Poin): " : "💡 Pembahasan Guru: "}
                           {q.explanation}
                         </div>
                       )}
@@ -2607,7 +2607,7 @@ export default function IgilModulePlayer() {
 
               {pracSubmitted && (
                 <div className="bg-white p-4 rounded-2xl border-2 border-[#1C01A5] text-xs font-bold text-[#1C01A5]">
-                  ✅ <strong>Status On-Submit Hidden Grading:</strong> Tugas Praktikum telah dinilai 1 kali di latar belakang berdasarkan 4 Parameter Resmi (Akurasi Solusi 30%, Sintesis Lintas-4-Bab 25%, Kemandirian Pengerjaan 20%, Penalaran &amp; Penjelasan 25%) dan disimpan tersembunyi hingga pembukaan peringkat beasiswa akhir bulan. (+50 Token Emas Tercatat).
+                  ✅ <strong>Status On-Submit Hidden Grading:</strong> Tugas Praktikum telah dinilai 1 kali di latar belakang berdasarkan 4 Parameter Resmi (Akurasi Solusi 30%, Sintesis Lintas-4-Bab 25%, Kemandirian Pengerjaan 20%, Penalaran &amp; Penjelasan 25%) dan disimpan tersembunyi hingga pembukaan peringkat beasiswa akhir bulan. (+50 Poin Tercatat).
                 </div>
               )}
             </>

@@ -23,11 +23,11 @@
  *                               Area Mandiri Murni Anti-Jiplak (Rp 0 biaya API).
  *   4) Khan Kids Audio-First  : Panggung soal minim teks dengan tombol 🔊 Suara di
  *                               setiap soal dan di setiap tombol pilihan jawaban.
- * - Tokenomics     : Floating Utility Token (Tanpa konversi Rupiah di UI).
- *                    Total 150 Token IGIL/Bab:
- *                    • Pulau 4 (Latihan)   : Maks. 30 Token (+3 Token/soal)
- *                    • Pulau 5 (Ujian)     : Maks. 70 Token (+7 Token/soal)
- *                    • Pulau 6 (Praktikum) : Maks. 50 Token + Skor 0–1.000 Poin
+ * - Tokenomics     : Floating Utility Poin (Tanpa konversi Rupiah di UI).
+ *                    Total 150 Poin/Bab:
+ *                    • Pulau 4 (Latihan)   : Maks. 30 Poin (+3 Poin/soal)
+ *                    • Pulau 5 (Ujian)     : Maks. 70 Poin (+7 Poin/soal)
+ *                    • Pulau 6 (Praktikum) : Maks. 50 Poin + Skor 0–1.000 Poin
  *
  * ----------------------------------------------------------------------------
  * 2. NASKAH PULAU 1 (KARTU 1) — PETA KEPULAUAN, 2 GERBANG & BRAIN HOOK
@@ -645,7 +645,7 @@ export default function MatematikaKelas1Bab2Hibrida({
   const [card2Unlocked, setCard2Unlocked] = useState<boolean>(false);
   const [card5Unlocked, setCard5Unlocked] = useState<boolean>(false);
   const [card6Unlocked, setCard6Unlocked] = useState<boolean>(false);
-  // Tokenomics Floating (Tanpa Konversi Rupiah: 30 + 70 + 50 = 150 Token IGIL)
+  // Tokenomics Floating (Tanpa Konversi Rupiah: 30 + 70 + 50 = 150 Poin)
   const [practiceTokens, setPracticeTokens] = useState<number>(0);
   const [examTokens, setExamTokens] = useState<number>(0);
   const [practicumTokens, setPracticumTokens] = useState<number>(0);
@@ -696,11 +696,11 @@ export default function MatematikaKelas1Bab2Hibrida({
   const [geometryFeedback, setGeometryFeedback] = useState<string>(
     "Tebalkan titik angka hasil penjumlahan di Kanvas Kiri (50%), lalu tulis sendiri di Kanvas Kanan (50%)!"
   );
-  // Pulau 4: 10 Soal Latihan Audio-First Stage (+30 Token)
+  // Pulau 4: 10 Soal Latihan Audio-First Stage (+30 Poin)
   const [currentPracticeIdx, setCurrentPracticeIdx] = useState<number>(0);
   const [practiceAnswers, setPracticeAnswers] = useState<Record<number, string>>({});
   const [claimedPracticeIds, setClaimedPracticeIds] = useState<number[]>([]);
-  // Pulau 5: 10 Soal Ujian Anti-Contek Gerbang 1 (+70 Token)
+  // Pulau 5: 10 Soal Ujian Anti-Contek Gerbang 1 (+70 Poin)
   const [examQuestions, setExamQuestions] = useState<ExamQuestion[]>(() =>
     generateDynamicExamQuestions()
   );
@@ -714,7 +714,7 @@ export default function MatematikaKelas1Bab2Hibrida({
   const [focusLossCount, setFocusLossCount] = useState<number>(0);
   const [dwellTimeWarning, setDwellTimeWarning] = useState<boolean>(false);
   const examTimerRef = useRef<ReturnType<typeof setInterval> | null>(null);
-  // Pulau 6: Studio Praktikum 2 Kotak Bekal Sehat Lintas-4-Bab (+50 Token & 1.000 Poin)
+  // Pulau 6: Studio Praktikum 2 Kotak Bekal Sehat Lintas-4-Bab (+50 Poin & 1.000 Poin)
   const [practicumMode, setPracticumMode] = useState<"single" | "cross4">("cross4");
   const [activeBentoTool, setActiveBentoTool] = useState<BentoCellFruit>("strawberry");
   const [kiraLunchCells, setKiraLunchCells] = useState<BentoCellFruit[]>(() => [
@@ -1226,7 +1226,7 @@ export default function MatematikaKelas1Bab2Hibrida({
     setChapterCompletedFlag(true);
     playSound("fanfare");
     speakIGIL(
-      `Luar biasa ${studentName}! Praktikum penjumlahanmu meraih skor kualitas ${totalQualityScore} dari 1000 poin dan kamu mengantongi 150 Token IGIL penuh!`
+      `Luar biasa ${studentName}! Praktikum penjumlahanmu meraih skor kualitas ${totalQualityScore} dari 1000 poin dan kamu mengantongi 150 Poin penuh!`
     );
     const payload: ChapterCompletionPayload = {
       chapterId: CHAPTER_COMPETENCY_METADATA.chapterId,
@@ -1486,7 +1486,7 @@ export default function MatematikaKelas1Bab2Hibrida({
             <div className="bg-[#F0AB00] text-[#1C01A5] px-4 py-2.5 rounded-2xl border-b-4 border-[#F0AB00]">
               <div className="text-[10px] font-black uppercase">Tiket Kualifikasi Bab</div>
               <div className="text-xl font-black">
-                🪙 {totalTokens} <span className="text-xs">/ 150 Token IGIL</span>
+                🪙 {totalTokens} <span className="text-xs">/ 150 Poin</span>
               </div>
             </div>
             <button
@@ -1527,14 +1527,14 @@ export default function MatematikaKelas1Bab2Hibrida({
             {
               id: 4 as const,
               island: "Pulau 4: Panggung Suara",
-              role: "Latihan (+30 Token)",
+              role: "Latihan (+30 Poin)",
               icon: "🎯",
               unlocked: card2Unlocked,
             },
             {
               id: 5 as const,
               island: "Pulau 5: Benteng Ujian",
-              role: "Gerbang 1 (+70 Token)",
+              role: "Gerbang 1 (+70 Poin)",
               icon: "🏰",
               unlocked: card5Unlocked,
             },
@@ -2394,7 +2394,7 @@ export default function MatematikaKelas1Bab2Hibrida({
                         >
                           <div className="font-black text-sm">
                             {isCorrect
-                              ? "🪙 JAWABAN BENAR! (+3 Token IGIL)"
+                              ? "🪙 JAWABAN BENAR! (+3 Poin)"
                               : "💡 Pembahasan IGIL:"}
                           </div>
                           <p>{q.explanation}</p>
@@ -2454,7 +2454,7 @@ export default function MatematikaKelas1Bab2Hibrida({
                       🏰 PULAU 5 • GERBANG TANTANGAN MANDIRI (WAJIB 100/100)
                     </span>
                     <h2 className="text-base font-black">
-                      Ujian Evaluasi Penjumlahan Anti-Contek (+70 Token IGIL)
+                      Ujian Evaluasi Penjumlahan Anti-Contek (+70 Poin)
                     </h2>
                   </div>
                   <div className="flex items-center gap-2 text-xs font-bold">
@@ -2806,7 +2806,7 @@ export default function MatematikaKelas1Bab2Hibrida({
                     <p className="text-xs text-[#FFFFFF]">{practicumRubric.aiFeedbackSummary}</p>
                     {chapterCompletedFlag && (
                       <div className="text-xs font-black text-[#FFE566]">
-                        ✅ Bab 2 Tuntas Paripurna (150/150 Token IGIL).
+                        ✅ Bab 2 Tuntas Paripurna (150/150 Poin).
                       </div>
                     )}
                   </div>

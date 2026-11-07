@@ -16,10 +16,10 @@ import {
 const ranking = data.rankingPage;
 const skema = ranking.scholarshipScheme9010;
 const bab1 = data.raporPage.sampleChaptersProgress[0];
-const BAB_PER_BLOK = data.tokenEconomy.perBlockChapters;
-const POIN_LATIHAN = data.tokenEconomy.perChapterTokens.practice;
-const POIN_UJIAN = data.tokenEconomy.perChapterTokens.exam;
-const POIN_PRAKTIKUM = data.tokenEconomy.perChapterTokens.practicum;
+const BAB_PER_BLOK = data.pointEconomy.perBlockChapters;
+const POIN_LATIHAN = data.pointEconomy.perChapterPoints.practice;
+const POIN_UJIAN = data.pointEconomy.perChapterPoints.exam;
+const POIN_PRAKTIKUM = data.pointEconomy.perChapterPoints.practicum;
 const POIN_BLOK_PENUH = (POIN_LATIHAN + POIN_UJIAN) * BAB_PER_BLOK + POIN_PRAKTIKUM;
 /** Praktikum hanya bisa dikirim setelah satu blok penuh (4 bab) lulus Ujian 100%. */
 const PRAKTIKUM_SAYA_DIKIRIM =
@@ -79,7 +79,7 @@ function TabPeringkat() {
   const sisa = useMemo(() => (menit ? sisaWaktu() : null), [menit]);
 
   const praktikumSaya = PRAKTIKUM_SAYA_DIKIRIM ? POIN_PRAKTIKUM : 0;
-  const tokenSaya = bab1.practiceTokens + bab1.examTokens + praktikumSaya;
+  const tokenSaya = bab1.practicePoints + bab1.examPoints + praktikumSaya;
   const lencanaSaya = bab1.firstTryPerfect ? 1 : 0;
 
   const papan = useMemo<BarisPapan[]>(() => {
@@ -90,10 +90,10 @@ function TabPeringkat() {
       provinsi: s.province,
       lencana: s.firstTryPerfectCount,
       praktikumSiap: s.hiddenGradingReady,
-      latihan: s.practiceTokens,
-      ujian: s.examTokens,
-      praktikum: s.practicumTokens,
-      token: s.practiceTokens + s.examTokens + s.practicumTokens,
+      latihan: s.practicePoints,
+      ujian: s.examPoints,
+      praktikum: s.practicumPoints,
+      token: s.practicePoints + s.examPoints + s.practicumPoints,
       milikPengguna: false,
     }));
     const saya = {
@@ -103,8 +103,8 @@ function TabPeringkat() {
       provinsi: "",
       lencana: lencanaSaya,
       praktikumSiap: PRAKTIKUM_SAYA_DIKIRIM,
-      latihan: bab1.practiceTokens,
-      ujian: bab1.examTokens,
+      latihan: bab1.practicePoints,
+      ujian: bab1.examPoints,
       praktikum: praktikumSaya,
       token: tokenSaya,
       milikPengguna: true,

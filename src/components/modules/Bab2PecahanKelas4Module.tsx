@@ -211,7 +211,7 @@ export default function Bab2PecahanKelas4Module() {
   const [persenPetak, setPersenPetak] = useState<number>(75);
   const [soundEnabled, setSoundEnabled] = useState<boolean>(true);
 
-  // Dompet Token IGIL (Latihan Maks 50 Token + Evaluasi Maks 100 Token = 150 Token = Rp 75.000)
+  // Dompet Poin (Latihan Maks 50 Poin + Evaluasi Maks 100 Poin = 150 Poin = Rp 75.000)
   const [practiceTokens, setPracticeTokens] = useState<number>(0);
   const [evalTokens, setEvalTokens] = useState<number>(0);
   const totalTokens = practiceTokens + evalTokens;
@@ -682,7 +682,7 @@ export default function Bab2PecahanKelas4Module() {
 
   const handleSubmitEvaluation = () => {
     if (Object.keys(evalAnswers).length < evalQuestions.length) {
-      alert("Harap jawab ke-10 soal Evaluasi terlebih dahulu sebelum menambang Token Beasiswa!");
+      alert("Harap jawab ke-10 soal Evaluasi terlebih dahulu sebelum menambang Poin!");
       return;
     }
 
@@ -699,7 +699,7 @@ export default function Bab2PecahanKelas4Module() {
     const finalScore = correctCount * 10;
     setEvalScore(finalScore);
 
-    // Aturan IGIL: +10 Token per soal evaluasi benar (100 Token jika Nilai 100% Sempurna)
+    // Aturan IGIL: +10 Poin per soal evaluasi benar (100 Poin jika Nilai 100% Sempurna)
     const earned = correctCount * 10;
     setEvalTokens((prev) => Math.max(prev, earned));
 
@@ -763,7 +763,7 @@ export default function Bab2PecahanKelas4Module() {
             </div>
           </div>
 
-          {/* Panel Dompet Token Real-Time */}
+          {/* Panel Dompet Poin Real-Time */}
           <div className="flex items-center gap-3">
             <button
               onClick={() => setSoundEnabled(!soundEnabled)}
@@ -2255,16 +2255,16 @@ export default function Bab2PecahanKelas4Module() {
             <div className="bg-white rounded-3xl shadow-lg border border-slate-200 p-6 flex flex-wrap items-center justify-between gap-4">
               <div>
                 <span className="bg-indigo-100 text-indigo-800 text-xs font-extrabold px-3 py-1 rounded-full uppercase">
-                  Latihan Mandiri Bervisual • +5 Token / Soal Benar
+                  Latihan Mandiri Bervisual • +5 Poin / Soal Benar
                 </span>
                 <h2 className="text-2xl font-black text-slate-900 mt-1">
-                  10 Misi Latihan Pecahan (Total 50 Token = Rp 25.000)
+                  10 Misi Latihan Pecahan (Total 50 Poin = Rp 25.000)
                 </h2>
               </div>
 
               <div className="flex items-center gap-3">
                 <div className="bg-amber-50 border-2 border-amber-300 px-4 py-2 rounded-2xl text-right">
-                  <div className="text-[11px] font-bold text-amber-800 uppercase">Token Latihan Terkumpul</div>
+                  <div className="text-[11px] font-bold text-amber-800 uppercase">Poin Latihan Terkumpul</div>
                   <div className="text-lg font-black text-amber-950">
                     {practiceTokens} / 50 🪙
                   </div>
@@ -2364,7 +2364,7 @@ export default function Bab2PecahanKelas4Module() {
                           <span className="text-xs font-black uppercase bg-slate-100 text-slate-700 px-3 py-1 rounded-full">
                             Soal Latihan #{idx + 1}
                           </span>
-                          <span className="text-xs font-extrabold text-amber-600">+5 Token (Rp 2.500)</span>
+                          <span className="text-xs font-extrabold text-amber-600">+5 Poin (Rp 2.500)</span>
                         </div>
                         <p className="text-sm text-slate-600 font-medium">{q.story}</p>
                         <h3 className="text-base md:text-lg font-extrabold text-slate-900">{q.question}</h3>
@@ -2395,7 +2395,7 @@ export default function Bab2PecahanKelas4Module() {
                               onClick={() => handleCheckPractice(q)}
                               className="px-5 py-2 rounded-xl bg-amber-400 hover:bg-amber-500 text-slate-950 font-black text-xs shadow-sm"
                             >
-                              ✔ Periksa Jawaban & Tambang +5 Token
+                              ✔ Periksa Jawaban & Tambang +5 Poin
                             </button>
                           </div>
                         ) : (
@@ -2408,7 +2408,7 @@ export default function Bab2PecahanKelas4Module() {
                           >
                             <div>
                               {isCorrect
-                                ? "✅ BENAR! Kamu menambang +5 Token IGIL (Senilai Rp 2.500)!"
+                                ? "✅ BENAR! Kamu menambang +5 Poin (Senilai Rp 2.500)!"
                                 : `❌ Kurang tepat. Jawaban yang benar adalah ${q.correctAnswer}.`}
                             </div>
                             <div className="mt-1 font-normal opacity-90">{q.explanation}</div>
@@ -2444,8 +2444,8 @@ export default function Bab2PecahanKelas4Module() {
                     Evaluasi Resmi Bab 2: Wajib Nilai 100% Sempurna
                   </h2>
                   <p className="text-xs md:text-sm text-indigo-200 mt-1">
-                    Target Beasiswa Rp 300.000/bulan membutuhkan 4 Bab Lulus 100% (600 Token). Bab ini bernilai{" "}
-                    <strong>150 Token (Rp 75.000)</strong>. Peringkat ditentukan oleh jumlah percobaan paling sedikit &
+                    Target Beasiswa Rp 300.000/bulan membutuhkan 4 Bab Lulus 100% (600 Poin). Bab ini bernilai{" "}
+                    <strong>150 Poin (Rp 75.000)</strong>. Peringkat ditentukan oleh jumlah percobaan paling sedikit &
                     waktu tercepat!
                   </p>
                 </div>
@@ -2457,7 +2457,7 @@ export default function Bab2PecahanKelas4Module() {
                     <div className="text-2xl font-mono font-black text-amber-400">{formatTime(elapsedMs)}</div>
                   </div>
                   <div className="text-center">
-                    <div className="text-[10px] uppercase text-slate-400 font-bold">Token Evaluasi</div>
+                    <div className="text-[10px] uppercase text-slate-400 font-bold">Poin Evaluasi</div>
                     <div className="text-xl font-black text-emerald-400">{evalTokens} / 100 🪙</div>
                   </div>
                 </div>
@@ -2480,7 +2480,7 @@ export default function Bab2PecahanKelas4Module() {
                 {evalScore === 100 ? (
                   <p className="text-sm md:text-base font-bold max-w-2xl mx-auto">
                     LUAR BIASA! Kamu meraih NILAI SEMPURNA 100% dan menambang penuh{" "}
-                    <span className="underline">100 Token Evaluasi (Rp 50.000)</span>! Bab 2 ini resmi dinyatakan LULUS
+                    <span className="underline">100 Poin Evaluasi (Rp 50.000)</span>! Bab 2 ini resmi dinyatakan LULUS
                     KUALIFIKASI BEASISWA di Papan Peringkat Kelas 4.
                   </p>
                 ) : (
@@ -2520,7 +2520,7 @@ export default function Bab2PecahanKelas4Module() {
                       <span className="text-xs font-black uppercase bg-indigo-100 text-indigo-900 px-3 py-1 rounded-full">
                         Evaluasi #{idx + 1} dari 10
                       </span>
-                      <span className="text-xs font-extrabold text-emerald-700">+10 Token (Rp 5.000)</span>
+                      <span className="text-xs font-extrabold text-emerald-700">+10 Poin (Rp 5.000)</span>
                     </div>
 
                     <p className="text-sm text-slate-600">{q.story}</p>
@@ -2552,7 +2552,7 @@ export default function Bab2PecahanKelas4Module() {
                           isCorrect ? "bg-emerald-100 text-emerald-900" : "bg-rose-100 text-rose-900"
                         }`}
                       >
-                        {isCorrect ? "✅ Benar (+10 Token)" : `❌ Jawaban seharusnya: ${q.correctAnswer}`} —{" "}
+                        {isCorrect ? "✅ Benar (+10 Poin)" : `❌ Jawaban seharusnya: ${q.correctAnswer}`} —{" "}
                         {q.explanation}
                       </div>
                     )}
@@ -2567,7 +2567,7 @@ export default function Bab2PecahanKelas4Module() {
                   onClick={handleSubmitEvaluation}
                   className="w-full md:w-auto px-10 py-4 rounded-2xl bg-gradient-to-r from-amber-400 to-amber-500 hover:from-amber-500 hover:to-amber-600 text-slate-950 font-black text-base shadow-lg transition transform hover:scale-[1.01]"
                 >
-                  🚀 Kunci Jawaban & Validasi 100 Token Beasiswa Sekarang!
+                  🚀 Kunci Jawaban & Validasi 100 Poin Sekarang!
                 </button>
               </div>
             )}

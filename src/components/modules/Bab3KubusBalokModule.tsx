@@ -1550,7 +1550,7 @@ export default function Bab3KubusBalokModule() {
     });
   };
 
-  // Handler Menjawab Soal & Klaim Token
+  // Handler Menjawab Soal & Klaim Poin
   const handleCheckAnswer = (q: QuestionItem) => {
     const chosen = selectedAnswers[q.id];
     if (!chosen) return;
@@ -1588,7 +1588,7 @@ export default function Bab3KubusBalokModule() {
                 <div className="text-[10px] uppercase tracking-wider font-extrabold opacity-80">
                   Dompet Belajar IGIL
                 </div>
-                <div className="text-base leading-none">{earnedTokens} Token</div>
+                <div className="text-base leading-none">{earnedTokens} Poin</div>
               </div>
             </div>
             <div className="bg-emerald-500/20 border border-emerald-300/40 text-emerald-100 px-3 py-2 rounded-xl text-xs font-semibold">
@@ -2228,7 +2228,7 @@ export default function Bab3KubusBalokModule() {
                 🎯 Latihan Pemahaman Bab 3 (10 Soal Kurikulum Merdeka)
               </h2>
               <p className="text-sm text-slate-600">
-                Seluruh pemeriksaan jawaban dilakukan secara instan di perambanmu tanpa memotong kuota server. Setiap jawaban benar pada percobaan pertama memberikan <strong>+5 Token IGIL</strong>!
+                Seluruh pemeriksaan jawaban dilakukan secara instan di perambanmu tanpa memotong kuota server. Setiap jawaban benar pada percobaan pertama memberikan <strong>+5 Poin</strong>!
               </p>
             </div>
 
@@ -2245,7 +2245,7 @@ export default function Bab3KubusBalokModule() {
                     </span>
                     {claimedQuestionIds.includes(q.id) && (
                       <span className="text-xs font-bold text-emerald-600 bg-emerald-50 px-2.5 py-1 rounded-full">
-                        ✓ +5 Token Diklaim
+                        ✓ +5 Poin Diklaim
                       </span>
                     )}
                   </div>
@@ -2316,7 +2316,7 @@ export default function Bab3KubusBalokModule() {
                   🏆 Lembar Evaluasi Bab 3 (Angka Unik Per Siswa)
                 </h2>
                 <p className="text-sm text-slate-600 mt-1">
-                  Setiap siswa mendapatkan kombinasi ukuran balok, matriks tinggi menara, dan koordinat yang berbeda. Menyelesaikan soal evaluasi bernilai <strong>+10 Token IGIL</strong> per soal!
+                  Setiap siswa mendapatkan kombinasi ukuran balok, matriks tinggi menara, dan koordinat yang berbeda. Menyelesaikan soal evaluasi bernilai <strong>+10 Poin</strong> per soal!
                 </p>
               </div>
               <button
@@ -2342,7 +2342,7 @@ export default function Bab3KubusBalokModule() {
                     </span>
                     {claimedQuestionIds.includes(q.id) && (
                       <span className="text-xs font-bold text-emerald-600 bg-emerald-50 px-2.5 py-1 rounded-full">
-                        ⭐ +10 Token Ditambang
+                        ⭐ +10 Poin Ditambang
                       </span>
                     )}
                   </div>
@@ -2376,7 +2376,7 @@ export default function Bab3KubusBalokModule() {
                         disabled={!userChoice}
                         className="px-5 py-2 rounded-xl bg-amber-500 hover:bg-amber-600 disabled:bg-slate-300 text-slate-950 font-extrabold text-sm"
                       >
-                        Kirim & Tambang Token
+                        Kirim & Tambang Poin
                       </button>
                     ) : (
                       <div
@@ -2387,7 +2387,7 @@ export default function Bab3KubusBalokModule() {
                         }`}
                       >
                         <div className="font-extrabold">
-                          {isCorrect ? "🌟 Tepat Sekali! +10 Token IGIL" : `❌ Belum Tepat. Kunci Jawaban: ${q.correctAnswer}`}
+                          {isCorrect ? "🌟 Tepat Sekali! +10 Poin" : `❌ Belum Tepat. Kunci Jawaban: ${q.correctAnswer}`}
                         </div>
                         <p className="mt-1 text-xs leading-relaxed">{q.explanation}</p>
                       </div>

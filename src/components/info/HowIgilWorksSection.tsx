@@ -259,7 +259,7 @@ function RumusToken() {
 
       <div className="rounded-3xl border-2 border-indigo-100 bg-indigo-50/40 p-4">
         <p className="text-sm font-black text-indigo-950">
-          📖 Belajar dengan metode SMICPA: 6 tahap, 24 halaman per bab
+          📖 Belajar dengan metode SMICPA
         </p>
         <ol className="mt-2 grid grid-cols-3 gap-2 sm:grid-cols-6">
           {TAHAP_SMICPA.map((t) => (

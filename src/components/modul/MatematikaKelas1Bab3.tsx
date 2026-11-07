@@ -998,7 +998,7 @@ export default function MatematikaKelas1Bab3({
     setChapterCompletedFlag(true);
     playSound("fanfare");
     const tokenBab = Math.min(150, practiceTokens + examTokens + 50);
-    speakIGIL(`Selamat ${studentName}! Skor karyamu ${totalQualityScore} dari 1000. Token bab ini sekarang ${tokenBab}.`);
+    speakIGIL(`Selamat ${studentName}! Skor karyamu ${totalQualityScore} dari 1000. Poin bab ini sekarang ${tokenBab}.`);
     onChapterComplete?.({
       chapterId: CHAPTER_COMPETENCY_METADATA.chapterId,
       studentId,
@@ -1069,7 +1069,7 @@ export default function MatematikaKelas1Bab3({
           <div className="flex items-center gap-3 rounded-2xl border-b-4 border-slate-700 bg-slate-900 px-4 py-2.5 text-white">
             <div className="text-right">
               <div className="text-[11px] font-bold tracking-wider text-amber-300 uppercase">Dompet Kualifikasi Bab</div>
-              <div className="text-xl font-black text-amber-400">{totalTokens} <span className="text-xs text-slate-300">/ 150 Token</span></div>
+              <div className="text-xl font-black text-amber-400">{totalTokens} <span className="text-xs text-slate-300">/ 150 Poin</span></div>
               <div className="text-[10px] text-slate-300">Latihan {practiceTokens}/30 • Ujian {examTokens}/70 • Praktikum {practicumTokens}/50</div>
             </div>
             <button
@@ -1137,10 +1137,10 @@ export default function MatematikaKelas1Bab3({
                 <div className="space-y-2 text-xs text-slate-700">
                   <div className="rounded-xl border border-emerald-200 bg-white p-2.5">
                     <span className="font-black text-sky-700">Gerbang 1 — 10 latihan dan ujian 100.</span>
-                    <p className="mt-0.5">Sepuluh latihan memberi paling banyak 30 token. Ujian wajib 100 untuk 70 token. Waktu tidak menentukan pemenang, hanya agar soal dibaca dengan sungguh-sungguh.</p>
+                    <p className="mt-0.5">Sepuluh latihan memberi paling banyak 30 poin. Ujian wajib 100 untuk 70 poin. Waktu tidak menentukan pemenang, hanya agar soal dibaca dengan sungguh-sungguh.</p>
                   </div>
                   <div className="rounded-xl border border-emerald-200 bg-white p-2.5">
-                    <span className="font-black text-emerald-700">Gerbang 2 — praktikum 50 token.</span>
+                    <span className="font-black text-emerald-700">Gerbang 2 — praktikum 50 poin.</span>
                     <p className="mt-0.5">Skor karya dihitung di perangkat ini: akurasi 300, sintesis 250, visual 200, dan laporan 250. Jumlah paling tinggi 1.000 poin.</p>
                   </div>
                 </div>
@@ -1429,10 +1429,10 @@ export default function MatematikaKelas1Bab3({
           <section className="space-y-4 rounded-3xl border-2 border-sky-200 bg-white p-5 shadow-md">
             <div className="flex flex-col justify-between gap-2 sm:flex-row sm:items-center">
               <div>
-                <span className="text-xs font-extrabold text-sky-700 uppercase">Kartu 4 • Satu layar, satu soal • 3 token jika benar</span>
+                <span className="text-xs font-extrabold text-sky-700 uppercase">Kartu 4 • Satu layar, satu soal • 3 poin jika benar</span>
                 <h2 className="text-lg font-black text-slate-900">Latihan pengurangan</h2>
               </div>
-              <div className="rounded-2xl border border-amber-300 bg-amber-100 px-3.5 py-1.5 text-xs font-black text-amber-950">Token latihan: {practiceTokens} / 30</div>
+              <div className="rounded-2xl border border-amber-300 bg-amber-100 px-3.5 py-1.5 text-xs font-black text-amber-950">Poin latihan: {practiceTokens} / 30</div>
             </div>
             <div className="grid grid-cols-5 gap-1.5 sm:grid-cols-10">
               {PRACTICE_QUESTIONS.map((q, idx) => {
@@ -1478,7 +1478,7 @@ export default function MatematikaKelas1Bab3({
               </div>
               {jawabanLatihan ? (
                 <div className={`space-y-1 rounded-2xl border-2 p-3.5 text-xs ${jawabanLatihan === soalLatihan.correctAnswer ? "border-emerald-400 bg-emerald-50 text-emerald-950" : "border-rose-400 bg-rose-50 text-rose-950"}`}>
-                  <div className="text-sm font-black">{jawabanLatihan === soalLatihan.correctAnswer ? "Benar. Token latihan tercatat sekali." : "Belum tepat. Baca penjelasan ini."}</div>
+                  <div className="text-sm font-black">{jawabanLatihan === soalLatihan.correctAnswer ? "Benar. Poin latihan tercatat sekali." : "Belum tepat. Baca penjelasan ini."}</div>
                   <p>{soalLatihan.explanation}</p>
                 </div>
               ) : null}
@@ -1499,7 +1499,7 @@ export default function MatematikaKelas1Bab3({
             <div className="flex flex-wrap items-center justify-between gap-2 rounded-2xl bg-slate-900 p-3.5 text-white">
               <div>
                 <span className="text-[11px] font-extrabold text-amber-400 uppercase">Gerbang 1 • Nilai 100 membuka praktikum</span>
-                <h2 className="text-base font-black">Ujian pengurangan • 70 token</h2>
+                <h2 className="text-base font-black">Ujian pengurangan • 70 poin</h2>
               </div>
               <div className="flex flex-wrap items-center gap-2 text-xs">
                 <span className="rounded-xl border border-slate-700 bg-slate-800 px-3 py-1.5 font-bold">Percobaan ke-{examAttempts}</span>
@@ -1570,7 +1570,7 @@ export default function MatematikaKelas1Bab3({
                       {dwellTimeWarning
                         ? "Ulangi ujian dan baca setiap soal. Waktu dihitung sejak kartu ujian dibuka."
                         : examScore === 100
-                          ? "Kamu menerima 70 token dan dapat masuk ke kartu praktikum."
+                          ? "Kamu menerima 70 poin dan dapat masuk ke kartu praktikum."
                           : "Soal berikutnya memakai angka yang berbeda. Tidak ada panggilan jaringan."}
                     </p>
                   </div>
@@ -1704,7 +1704,7 @@ export default function MatematikaKelas1Bab3({
                 <div className="space-y-1 rounded-2xl border border-slate-700 bg-slate-800/90 p-3.5 text-xs text-slate-200">
                   <div className="font-black text-amber-300">Catatan IGIL</div>
                   <p>{practicumRubric.aiFeedbackSummary}</p>
-                  {chapterCompletedFlag ? <p className="pt-1 font-bold text-emerald-300">Bab ini tuntas di perangkat. Token bab: {totalTokens} dari 150. Tidak ada data yang dikirim ke jaringan.</p> : null}
+                  {chapterCompletedFlag ? <p className="pt-1 font-bold text-emerald-300">Bab ini tuntas di perangkat. Poin bab: {totalTokens} dari 150. Tidak ada data yang dikirim ke jaringan.</p> : null}
                 </div>
               </div>
             ) : null}

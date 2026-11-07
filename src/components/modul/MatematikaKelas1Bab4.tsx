@@ -945,7 +945,7 @@ export default function MatematikaKelas1Bab4({
     setChapterCompletedFlag(true);
     playSound("fanfare");
     const tokenBab = Math.min(150, practiceTokens + examTokens + 50);
-    speakIGIL(`Selamat ${studentName}! Skor karyamu ${totalQualityScore} dari 1000. Token bab ini sekarang ${tokenBab}.`);
+    speakIGIL(`Selamat ${studentName}! Skor karyamu ${totalQualityScore} dari 1000. Poin bab ini sekarang ${tokenBab}.`);
     onChapterComplete?.({
       chapterId: CHAPTER_COMPETENCY_METADATA.chapterId,
       studentId,
@@ -1015,7 +1015,7 @@ export default function MatematikaKelas1Bab4({
           <div className="flex items-center gap-3 rounded-2xl border-b-4 border-slate-700 bg-slate-900 px-4 py-2.5 text-white">
             <div className="text-right">
               <div className="text-[11px] font-bold tracking-wider text-amber-300 uppercase">Dompet Kualifikasi Bab</div>
-              <div className="text-xl font-black text-amber-400">{totalTokens} <span className="text-xs text-slate-300">/ 150 Token</span></div>
+              <div className="text-xl font-black text-amber-400">{totalTokens} <span className="text-xs text-slate-300">/ 150 Poin</span></div>
               <div className="text-[10px] text-slate-300">Latihan {practiceTokens}/30 • Ujian {examTokens}/70 • Praktikum {practicumTokens}/50</div>
             </div>
             <button type="button" onClick={() => speakIGIL(`Halo ${studentName}! Di Bab 4 kita mengenal segitiga, segi empat, lingkaran, dan pola bentuk.`)} className="rounded-xl border-b-4 border-amber-600 bg-amber-400 px-3 py-2 text-xs font-extrabold text-slate-950">Suara IGIL</button>
@@ -1054,8 +1054,8 @@ export default function MatematikaKelas1Bab4({
               <div className="space-y-2 rounded-2xl border-2 border-emerald-200 bg-emerald-50/70 p-4">
                 <h3 className="text-sm font-black text-emerald-950">Dua gerbang bab ini</h3>
                 <div className="space-y-2 text-xs text-slate-700">
-                  <div className="rounded-xl border border-emerald-200 bg-white p-2.5"><span className="font-black text-sky-700">Gerbang 1 — latihan dan ujian 100.</span><p className="mt-0.5">Sepuluh latihan paling banyak 30 token. Ujian 100 memberi 70 token.</p></div>
-                  <div className="rounded-xl border border-emerald-200 bg-white p-2.5"><span className="font-black text-emerald-700">Gerbang 2 — praktikum 50 token.</span><p className="mt-0.5">Skor karya dihitung di perangkat: 300 + 250 + 200 + 250 = 1.000 poin.</p></div>
+                  <div className="rounded-xl border border-emerald-200 bg-white p-2.5"><span className="font-black text-sky-700">Gerbang 1 — latihan dan ujian 100.</span><p className="mt-0.5">Sepuluh latihan paling banyak 30 poin. Ujian 100 memberi 70 poin.</p></div>
+                  <div className="rounded-xl border border-emerald-200 bg-white p-2.5"><span className="font-black text-emerald-700">Gerbang 2 — praktikum 50 poin.</span><p className="mt-0.5">Skor karya dihitung di perangkat: 300 + 250 + 200 + 250 = 1.000 poin.</p></div>
                 </div>
               </div>
             </div>
@@ -1240,10 +1240,10 @@ export default function MatematikaKelas1Bab4({
           <section className="space-y-4 rounded-3xl border-2 border-sky-200 bg-white p-5 shadow-md">
             <div className="flex flex-col justify-between gap-2 sm:flex-row sm:items-center">
               <div>
-                <span className="text-xs font-extrabold text-sky-700 uppercase">Kartu 4 • Satu layar, satu soal • 3 token jika benar</span>
+                <span className="text-xs font-extrabold text-sky-700 uppercase">Kartu 4 • Satu layar, satu soal • 3 poin jika benar</span>
                 <h2 className="text-lg font-black text-slate-900">Latihan mengenal bentuk</h2>
               </div>
-              <div className="rounded-2xl border border-amber-300 bg-amber-100 px-3.5 py-1.5 text-xs font-black text-amber-950">Token latihan: {practiceTokens} / 30</div>
+              <div className="rounded-2xl border border-amber-300 bg-amber-100 px-3.5 py-1.5 text-xs font-black text-amber-950">Poin latihan: {practiceTokens} / 30</div>
             </div>
             <div className="grid grid-cols-5 gap-1.5 sm:grid-cols-10">
               {PRACTICE_QUESTIONS.map((q, idx) => {
@@ -1265,7 +1265,7 @@ export default function MatematikaKelas1Bab4({
                   return <button key={opt} type="button" onClick={() => handleSelectPracticeAnswer(soalLatihan, opt)} className={`rounded-2xl border-b-4 px-4 py-3 text-sm font-black md:text-base ${dipilih ? (opt === soalLatihan.correctAnswer ? "border-emerald-700 bg-emerald-500 text-white" : "border-rose-700 bg-rose-500 text-white") : "border-slate-300 bg-white text-slate-800"}`}>{opt}</button>;
                 })}
               </div>
-              {jawabanLatihan ? <div className={`space-y-1 rounded-2xl border-2 p-3.5 text-xs ${jawabanLatihan === soalLatihan.correctAnswer ? "border-emerald-400 bg-emerald-50 text-emerald-950" : "border-rose-400 bg-rose-50 text-rose-950"}`}><div className="text-sm font-black">{jawabanLatihan === soalLatihan.correctAnswer ? "Benar. Token latihan tercatat sekali." : "Belum tepat. Baca penjelasan ini."}</div><p>{soalLatihan.explanation}</p></div> : null}
+              {jawabanLatihan ? <div className={`space-y-1 rounded-2xl border-2 p-3.5 text-xs ${jawabanLatihan === soalLatihan.correctAnswer ? "border-emerald-400 bg-emerald-50 text-emerald-950" : "border-rose-400 bg-rose-50 text-rose-950"}`}><div className="text-sm font-black">{jawabanLatihan === soalLatihan.correctAnswer ? "Benar. Poin latihan tercatat sekali." : "Belum tepat. Baca penjelasan ini."}</div><p>{soalLatihan.explanation}</p></div> : null}
               <div className="flex items-center justify-between pt-2">
                 <button type="button" disabled={currentPracticeIdx === 0} onClick={() => setCurrentPracticeIdx((i) => Math.max(0, i - 1))} className="rounded-xl bg-slate-200 px-4 py-2 text-xs font-bold disabled:opacity-40">Soal sebelumnya</button>
                 {currentPracticeIdx < PRACTICE_QUESTIONS.length - 1 ? <button type="button" onClick={() => setCurrentPracticeIdx((i) => Math.min(PRACTICE_QUESTIONS.length - 1, i + 1))} className="rounded-xl border-b-4 border-sky-800 bg-sky-600 px-4 py-2 text-xs font-black text-white">Soal berikutnya</button> : card5Unlocked ? <button type="button" onClick={() => { playSound("fanfare"); setActiveCard(5); }} className="rounded-xl border-b-4 border-amber-600 bg-amber-400 px-4 py-2 text-xs font-black text-slate-950">Buka ujian</button> : null}
@@ -1279,7 +1279,7 @@ export default function MatematikaKelas1Bab4({
             <div className="flex flex-wrap items-center justify-between gap-2 rounded-2xl bg-slate-900 p-3.5 text-white">
               <div>
                 <span className="text-[11px] font-extrabold text-amber-400 uppercase">Gerbang 1 • Nilai 100 membuka praktikum</span>
-                <h2 className="text-base font-black">Ujian mengenal bentuk • 70 token</h2>
+                <h2 className="text-base font-black">Ujian mengenal bentuk • 70 poin</h2>
               </div>
               <div className="flex flex-wrap gap-2 text-xs">
                 <span className="rounded-xl border border-slate-700 bg-slate-800 px-3 py-1.5 font-bold">Percobaan ke-{examAttempts}</span>
@@ -1315,7 +1315,7 @@ export default function MatematikaKelas1Bab4({
                 <div className="flex flex-col justify-between gap-2 sm:flex-row sm:items-center">
                   <div>
                     <h3 className="text-base font-black">{dwellTimeWarning ? "Pengerjaan kurang dari 25 detik" : examScore === 100 ? "Nilai 100. Praktikum terbuka." : `Skor ujian ${examScore}/100. Syarat praktikum adalah 100.`}</h3>
-                    <p className="text-xs">{dwellTimeWarning ? "Ulangi ujian dan baca setiap soal." : examScore === 100 ? "Kamu menerima 70 token." : "Soal berikutnya memakai angka yang berbeda."}</p>
+                    <p className="text-xs">{dwellTimeWarning ? "Ulangi ujian dan baca setiap soal." : examScore === 100 ? "Kamu menerima 70 poin." : "Soal berikutnya memakai angka yang berbeda."}</p>
                   </div>
                   <div className="flex shrink-0 gap-2">
                     <button type="button" onClick={handleRetryExam} className="rounded-xl border-b-4 border-slate-400 bg-white px-4 py-2 text-xs font-black text-slate-900">Ulangi ujian</button>
@@ -1419,7 +1419,7 @@ export default function MatematikaKelas1Bab4({
                 </div>
                 <div className="space-y-1 rounded-2xl border border-slate-700 bg-slate-800/90 p-3.5 text-xs text-slate-200">
                   <p>{practicumRubric.aiFeedbackSummary}</p>
-                  {chapterCompletedFlag ? <p className="pt-1 font-bold text-emerald-300">Bab ini tuntas di perangkat. Token bab: {totalTokens} dari 150. Tidak ada data yang dikirim ke jaringan.</p> : null}
+                  {chapterCompletedFlag ? <p className="pt-1 font-bold text-emerald-300">Bab ini tuntas di perangkat. Poin bab: {totalTokens} dari 150. Tidak ada data yang dikirim ke jaringan.</p> : null}
                 </div>
               </div>
             ) : null}

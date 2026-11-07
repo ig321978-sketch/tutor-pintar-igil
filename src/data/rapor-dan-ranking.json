@@ -20,15 +20,15 @@
       "badge": "Skema 90:10"
     }
   ],
-  "tokenEconomy": {
-    "perChapterTokens": {
+  "pointEconomy": {
+    "perChapterPoints": {
       "practice": 30,
       "exam": 70,
       "practicum": 50,
       "total": 100
     },
     "perBlockChapters": 4,
-    "perBlockTotalTokens": 450,
+    "perBlockTotalPoints": 450,
     "monthlyResetRule": "Setiap akhir bulan (pukul 23:59 WIB), pg_cron mengunci daftar pemenang pada Papan Kualifikasi Beasiswa dan me-reset Poin Kualifikasi bulanan (Latihan 30 & Ujian 70 per bab, Praktikum 50 per blok 4 bab = 450 Poin Kualifikasi per blok) kembali ke 0 tanpa menghapus progres ketuntasan bab maupun sertifikat yang sudah diraih siswa."
   },
   "raporPage": {
@@ -162,13 +162,13 @@
         "subBabsCompleted": ["A", "B", "C", "D"],
         "totalSubBabs": 4,
         "practiceScore": 100,
-        "practiceTokens": 30,
+        "practicePoints": 30,
         "examScore": 100,
         "examAttempts": 1,
-        "examTokens": 70,
+        "examPoints": 70,
         "firstTryPerfect": true,
         "practicumSubmitted": false,
-        "practicumTokens": 0,
+        "practicumPoints": 0,
         "hiddenGrading": {
           "isHidden": true,
           "announcementDate": "Akhir Bulan Berjalan (23:59 WIB)"
@@ -219,10 +219,10 @@
         "grade": "Kelas 1 SD",
         "city": "Bandung",
         "province": "Jawa Barat",
-        "practiceTokens": 120,
-        "examTokens": 280,
-        "practicumTokens": 50,
-        "totalMonthlyTokens": 450,
+        "practicePoints": 120,
+        "examPoints": 280,
+        "practicumPoints": 50,
+        "totalMonthlyPoints": 450,
         "chaptersCompleted": 4,
         "firstTryPerfectCount": 4,
         "hiddenGradingReady": true
@@ -233,10 +233,10 @@
         "grade": "Kelas 1 SD",
         "city": "Surabaya",
         "province": "Jawa Timur",
-        "practiceTokens": 120,
-        "examTokens": 280,
-        "practicumTokens": 50,
-        "totalMonthlyTokens": 450,
+        "practicePoints": 120,
+        "examPoints": 280,
+        "practicumPoints": 50,
+        "totalMonthlyPoints": 450,
         "chaptersCompleted": 4,
         "firstTryPerfectCount": 3,
         "hiddenGradingReady": true
@@ -247,10 +247,10 @@
         "grade": "Kelas 2 SD",
         "city": "Yogyakarta",
         "province": "DI Yogyakarta",
-        "practiceTokens": 120,
-        "examTokens": 280,
-        "practicumTokens": 50,
-        "totalMonthlyTokens": 450,
+        "practicePoints": 120,
+        "examPoints": 280,
+        "practicumPoints": 50,
+        "totalMonthlyPoints": 450,
         "chaptersCompleted": 4,
         "firstTryPerfectCount": 3,
         "hiddenGradingReady": true
@@ -261,10 +261,10 @@
         "grade": "Kelas 3 SD",
         "city": "Makassar",
         "province": "Sulawesi Selatan",
-        "practiceTokens": 90,
-        "examTokens": 210,
-        "practicumTokens": 0,
-        "totalMonthlyTokens": 300,
+        "practicePoints": 90,
+        "examPoints": 210,
+        "practicumPoints": 0,
+        "totalMonthlyPoints": 300,
         "chaptersCompleted": 3,
         "firstTryPerfectCount": 3,
         "hiddenGradingReady": false
@@ -275,10 +275,10 @@
         "grade": "Kelas 6 SD",
         "city": "Medan",
         "province": "Sumatera Utara",
-        "practiceTokens": 90,
-        "examTokens": 210,
-        "practicumTokens": 0,
-        "totalMonthlyTokens": 300,
+        "practicePoints": 90,
+        "examPoints": 210,
+        "practicumPoints": 0,
+        "totalMonthlyPoints": 300,
         "chaptersCompleted": 3,
         "firstTryPerfectCount": 2,
         "hiddenGradingReady": false

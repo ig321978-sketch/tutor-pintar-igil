@@ -21,7 +21,7 @@ import {
 import { SertifikatDigital, kodeVerifikasi, type PenerimaSertifikat } from "./SertifikatDigital";
 
 const rapor = data.raporPage;
-const ekonomi = data.tokenEconomy;
+const ekonomi = data.pointEconomy;
 const bab1 = rapor.sampleChaptersProgress[0];
 
 type BabRapor = {
@@ -44,10 +44,10 @@ const BAB_KELAS1: BabRapor[] = [
     subBab: [...bab1.subBabsCompleted],
     totalSubBab: bab1.totalSubBabs,
     skorLatihan: bab1.practiceScore,
-    tokenLatihan: bab1.practiceTokens,
+    tokenLatihan: bab1.practicePoints,
     skorUjian: bab1.examScore,
     percobaan: bab1.examAttempts,
-    tokenUjian: bab1.examTokens,
+    tokenUjian: bab1.examPoints,
     lulusPertama: bab1.firstTryPerfect,
   },
   ...[
@@ -74,8 +74,8 @@ const BAB_KELAS1: BabRapor[] = [
  * (tugas sintesis lintas-4-bab), terbuka setelah keempat bab lulus Ujian 100%.
  */
 const BAB_PER_BLOK = ekonomi.perBlockChapters;
-const POIN_PRAKTIKUM = ekonomi.perChapterTokens.practicum;
-const POIN_PER_BLOK_PENUH = (ekonomi.perChapterTokens.practice + ekonomi.perChapterTokens.exam) * BAB_PER_BLOK + POIN_PRAKTIKUM;
+const POIN_PRAKTIKUM = ekonomi.perChapterPoints.practicum;
+const POIN_PER_BLOK_PENUH = (ekonomi.perChapterPoints.practice + ekonomi.perChapterPoints.exam) * BAB_PER_BLOK + POIN_PRAKTIKUM;
 const BAB_BLOK_1 = BAB_KELAS1.slice(0, BAB_PER_BLOK);
 const UJIAN_SEMPURNA_BLOK_1 = BAB_BLOK_1.filter((b) => b.skorUjian === 100).length;
 const PRAKTIKUM_BLOK_1_TERBUKA = UJIAN_SEMPURNA_BLOK_1 === BAB_PER_BLOK;
@@ -128,9 +128,9 @@ function KartuDompet({ profil, tokenSaatIni }: { profil: PenerimaSertifikat; tok
       </div>
 
       <div className="mt-4 grid grid-cols-3 gap-2">
-        <Ubin ikon="✏️" judul="Latihan" nilai={angkaId(tokenSaatIni.latihan)} catatan={`${ekonomi.perChapterTokens.practice} / bab`} />
-        <Ubin ikon="📝" judul="Ujian" nilai={angkaId(tokenSaatIni.ujian)} catatan={`${ekonomi.perChapterTokens.exam} / bab`} />
-        <Ubin ikon="🧪" judul="Praktikum" nilai={angkaId(tokenSaatIni.praktikum)} catatan={`${ekonomi.perChapterTokens.practicum} / ${ekonomi.perBlockChapters} bab`} />
+        <Ubin ikon="✏️" judul="Latihan" nilai={angkaId(tokenSaatIni.latihan)} catatan={`${ekonomi.perChapterPoints.practice} / bab`} />
+        <Ubin ikon="📝" judul="Ujian" nilai={angkaId(tokenSaatIni.ujian)} catatan={`${ekonomi.perChapterPoints.exam} / bab`} />
+        <Ubin ikon="🧪" judul="Praktikum" nilai={angkaId(tokenSaatIni.praktikum)} catatan={`${ekonomi.perChapterPoints.practicum} / ${ekonomi.perBlockChapters} bab`} />
       </div>
 
       <div className="mt-4 rounded-2xl bg-white/10 p-3 ring-1 ring-white/20">
@@ -142,7 +142,7 @@ function KartuDompet({ profil, tokenSaatIni }: { profil: PenerimaSertifikat; tok
           <div className="h-full rounded-full bg-amber-400" style={{ width: `${Math.min(100, (total / penuh) * 100)}%` }} />
         </div>
         <p className="mt-1 text-[11px] font-semibold text-indigo-200">
-          {penuh} Poin Kualifikasi penuh per blok {BAB_PER_BLOK} bab ({ekonomi.perChapterTokens.practice + ekonomi.perChapterTokens.exam} per bab
+          {penuh} Poin Kualifikasi penuh per blok {BAB_PER_BLOK} bab ({ekonomi.perChapterPoints.practice + ekonomi.perChapterPoints.exam} per bab
           + {POIN_PRAKTIKUM} Praktikum). Poin tidak punya nilai tukar tetap dan dipakai untuk peringkat beasiswa.
         </p>
       </div>
@@ -150,7 +150,7 @@ function KartuDompet({ profil, tokenSaatIni }: { profil: PenerimaSertifikat; tok
       <p className="mt-3 flex items-start gap-2 rounded-2xl bg-amber-400 p-3 text-sm font-black leading-snug text-indigo-950">
         <span aria-hidden="true">♻️</span>
         <span>
-          Token kualifikasi di-reset ke 0 setiap akhir bulan saat pengumuman beasiswa, tetapi status ketuntasan bab dan
+          Poin kualifikasi di-reset ke 0 setiap akhir bulan saat pengumuman beasiswa, tetapi status ketuntasan bab dan
           Sertifikat Kelulusanmu tersimpan selamanya!
         </span>
       </p>
@@ -258,13 +258,13 @@ function KartuBab({ bab, nomor }: { bab: BabRapor; nomor: number }) {
         <Langkah
           aktif={bab.skorLatihan !== null}
           label="✏️ Latihan Terbimbing"
-          token={ekonomi.perChapterTokens.practice}
-          catatan={bab.skorLatihan !== null ? `Skor ${bab.skorLatihan}/100 · token sudah diklaim` : "10 soal dengan pembahasan guru"}
+          token={ekonomi.perChapterPoints.practice}
+          catatan={bab.skorLatihan !== null ? `Skor ${bab.skorLatihan}/100 · poin sudah diklaim` : "10 soal dengan pembahasan guru"}
         />
         <Langkah
           aktif={ujianSempurna}
           label="📝 Ujian Mandiri"
-          token={ekonomi.perChapterTokens.exam}
+          token={ekonomi.perChapterPoints.exam}
           catatan={
             bab.skorUjian !== null
               ? `Skor terbaik ${bab.skorUjian}/100 · ${bab.percobaan}x percobaan`

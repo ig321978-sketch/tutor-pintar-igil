@@ -875,7 +875,7 @@ export default function MatematikaKelas5Bab8({
               {soundOn ? "Suara nyala" : "Suara mati"}
             </button>
             <div className="rounded-2xl border-2 border-amber-400 bg-slate-950 px-4 py-1">
-              <div className="text-[10px] font-bold uppercase text-amber-200">Token bab ini</div>
+              <div className="text-[10px] font-bold uppercase text-amber-200">Poin bab ini</div>
               <div className="text-base font-black text-amber-400">{totalTokens} / 150</div>
             </div>
           </div>
@@ -932,11 +932,11 @@ export default function MatematikaKelas5Bab8({
               </div>
               <div className="space-y-1.5 rounded-2xl border-2 border-amber-300 bg-amber-50/80 p-3.5">
                 <div className="font-black uppercase text-amber-900">Gerbang 1</div>
-                <p>Sepuluh latihan memberi paling banyak 30 token. Ujian harus 100 untuk 70 token dan membuka praktikum. Lama waktu tidak menjadi juara.</p>
+                <p>Sepuluh latihan memberi paling banyak 30 poin. Ujian harus 100 untuk 70 poin dan membuka praktikum. Lama waktu tidak menjadi juara.</p>
               </div>
               <div className="space-y-1.5 rounded-2xl border-2 border-emerald-300 bg-emerald-50/80 p-3.5">
                 <div className="font-black uppercase text-emerald-900">Gerbang 2</div>
-                <p>Peringkat karya memakai skor 0–1.000: akurasi 300, sintesis 250, visual 200, dan laporan 250. Token bab ini bukan uang.</p>
+                <p>Peringkat karya memakai skor 0–1.000: akurasi 300, sintesis 250, visual 200, dan laporan 250. Poin bab ini bukan uang.</p>
               </div>
             </div>
             <div className="grid items-center gap-5 rounded-3xl bg-slate-900 p-5 text-white md:grid-cols-2">
@@ -1362,7 +1362,7 @@ export default function MatematikaKelas5Bab8({
                 </div>
                 {practiceChecked[soalLatihan.id] ? (
                   <p className={`rounded-xl p-3 text-xs font-semibold ${practiceAnswers[soalLatihan.id] === soalLatihan.correctAnswer ? "bg-emerald-100" : "bg-rose-100"}`}>
-                    {practiceAnswers[soalLatihan.id] === soalLatihan.correctAnswer ? "Benar. +3 token, sekali untuk soal ini." : `Kunci: ${soalLatihan.correctAnswer}.`} {soalLatihan.explanation}
+                    {practiceAnswers[soalLatihan.id] === soalLatihan.correctAnswer ? "Benar. +3 poin, sekali untuk soal ini." : `Kunci: ${soalLatihan.correctAnswer}.`} {soalLatihan.explanation}
                   </p>
                 ) : null}
                 <div className="flex items-center justify-between">
@@ -1438,7 +1438,7 @@ export default function MatematikaKelas5Bab8({
                 <span className="rounded-full bg-emerald-100 px-3 py-1 text-xs font-black uppercase text-emerald-800">Gerbang 2 • skor 0–1.000</span>
                 <h2 className="mt-1 text-xl font-black">Kantin sehat: data, luas, dan gizi</h2>
               </div>
-              <div className="rounded-xl bg-indigo-950 px-3.5 py-2 text-xs font-black text-amber-300">+50 token</div>
+              <div className="rounded-xl bg-indigo-950 px-3.5 py-2 text-xs font-black text-amber-300">+50 poin</div>
             </div>
             <div className="grid grid-cols-2 gap-2 text-[11px] md:grid-cols-4">
               {[CHAPTER_COMPETENCY_METADATA, ...completedOtherChapters.slice(0, 3)].map((ch, idx) => (
@@ -1511,7 +1511,7 @@ export default function MatematikaKelas5Bab8({
               <div className="space-y-3 rounded-2xl border-2 border-amber-400 bg-indigo-950 p-5 text-white">
                 <div className="flex flex-wrap items-center justify-between gap-2">
                   <h3 className="text-xl font-black">Skor karya {evaluatedRubric.totalQualityScore} / 1.000</h3>
-                  <span className="rounded-xl bg-emerald-500 px-3 py-1.5 text-xs font-black text-slate-950">Token bab {totalTokens} / 150</span>
+                  <span className="rounded-xl bg-emerald-500 px-3 py-1.5 text-xs font-black text-slate-950">Poin bab {totalTokens} / 150</span>
                 </div>
                 <div className="grid grid-cols-2 gap-2 text-xs md:grid-cols-4">
                   <div className="rounded-xl bg-slate-900 p-3">Akurasi {evaluatedRubric.accuracyScore}/300</div>
