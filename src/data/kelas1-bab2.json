@@ -621,18 +621,330 @@
       "id": "C",
       "codeTitle": "Sub-Bab C (Soal Cerita)",
       "fullTitle": "Sub-Bab C: Soal Cerita Penjumlahan",
-      "targetDescription": "Siswa menyelesaikan soal cerita penjumlahan sampai 10 dengan menulis penyelesaian dan jawaban kalimat.",
+      "targetDescription": "Siswa menyelesaikan soal cerita penjumlahan sampai 10: membaca cerita, mencari dua bilangan, memilih tanda tambah, menulis penyelesaian, menjawab dengan kalimat lengkap, lalu memeriksa dan menceritakan hasilnya.",
       "secondaryBg": "#DCFCE7",
       "secondaryBorder": "#22C55E",
       "secondaryText": "#166534",
-      "segeraHadir": true,
-      "stories": [],
-      "mindMaps": [],
-      "infografisData": [],
-      "concreteSlides": [],
-      "pictorialSlides": [],
-      "abstractSlides": [],
-      "interactiveGames": []
+      "stories": [
+        {
+          "id": "C2-S1",
+          "titleHint": "Burung di Dahan",
+          "sceneType": "burung-dahan",
+          "voiceNarration": "Ada empat burung di pohon. Datang lagi dua burung. Igil bertanya: berapa jumlah semua burung? Ini namanya soal cerita. Empat ditambah dua sama dengan enam. Semuanya ada enam burung."
+        },
+        {
+          "id": "C2-S2",
+          "titleHint": "Pensil Halim",
+          "sceneType": "pensil-halim",
+          "voiceNarration": "Halim mempunyai tiga pensil merah di tangan kiri. Halim juga mempunyai empat pensil hijau di tangan kanan. Berapa jumlah semua pensil Halim? Tiga ditambah empat sama dengan tujuh. Halim memiliki tujuh pensil."
+        },
+        {
+          "id": "C2-S3",
+          "titleHint": "Siswa di Kelas",
+          "sceneType": "siswa-kelas",
+          "voiceNarration": "Ada lima siswa di dalam kelas. Datang lagi tiga siswa dari pintu. Berapakah jumlah semua siswa sekarang? Lima ditambah tiga sama dengan delapan. Di dalam kelas ada delapan siswa."
+        },
+        {
+          "id": "C2-S4",
+          "titleHint": "Sepeda dan Becak",
+          "sceneType": "sepeda-becak",
+          "voiceNarration": "Di jalan ada tiga sepeda. Ada satu becak. Berapa jumlah semua kendaraan? Tiga ditambah satu sama dengan empat. Semuanya ada empat kendaraan. Satu cerita bisa punya dua pertanyaan. Berapa jumlah semua rodanya? Tiap sepeda punya dua roda, jadi tiga sepeda ada enam roda. Becak punya tiga roda. Enam ditambah tiga sama dengan sembilan roda."
+        },
+        {
+          "id": "C2-S5",
+          "titleHint": "Motor dan Mobil",
+          "sceneType": "motor-mobil",
+          "voiceNarration": "Di tempat parkir ada tiga motor. Ada dua mobil. Berapa jumlah semua kendaraan? Tiga ditambah dua sama dengan lima. Semuanya ada lima kendaraan."
+        },
+        {
+          "id": "C2-S6",
+          "titleHint": "Stoples Kelereng",
+          "sceneType": "stoples-kelereng",
+          "voiceNarration": "Tika membuat ceritanya sendiri. Dia punya dua stoples. Di stoples pertama ada kelereng merah. Di stoples kedua ada kelereng biru. Kalimat penjumlahannya masih kosong. Ayo buat ceritamu sendiri, gambar, tulis kalimatnya, hitung hasilnya, lalu ceritakan di depan kelas."
+        }
+      ],
+      "mindMaps": [
+        {
+          "stepNumber": 1,
+          "stepTitle": "1. Baca Ceritanya",
+          "stepDesc": "Baca atau dengar ceritanya sampai selesai. Soal cerita punya tiga bagian: berapa yang ada, berapa yang datang lagi, dan pertanyaannya.",
+          "icon": "📖",
+          "flowFrom": "Cerita",
+          "flowTo": "Tiga bagian"
+        },
+        {
+          "stepNumber": 2,
+          "stepTitle": "2. Cari Bilangannya",
+          "stepDesc": "Temukan dua bilangan di dalam cerita. Ada empat burung, datang lagi dua burung. Empat dan dua yang kita pakai. Kata pohon dan kelas hanya hiasan cerita.",
+          "icon": "🔍",
+          "flowFrom": "Tiga bagian",
+          "flowTo": "Dua bilangan"
+        },
+        {
+          "stepNumber": 3,
+          "stepTitle": "3. Pilih Tanda Tambah",
+          "stepDesc": "Kata datang lagi, ditambah, bergabung, dan jumlah semua memberi petunjuk bahwa bendanya bertambah. Kita pakai tanda tambah.",
+          "icon": "➕",
+          "flowFrom": "Kata petunjuk",
+          "flowTo": "Tanda tambah"
+        },
+        {
+          "stepNumber": 4,
+          "stepTitle": "4. Tulis dan Hitung",
+          "stepDesc": "Tulis penyelesaian: bilangan pertama, tanda tambah, bilangan kedua, tanda sama dengan, lalu hasilnya. Hitung dengan cara yang kamu suka: gambar, garis bilangan, jari, atau pasangan bilangan.",
+          "icon": "✏️",
+          "flowFrom": "Kalimat penjumlahan",
+          "flowTo": "Hasil"
+        },
+        {
+          "stepNumber": 5,
+          "stepTitle": "5. Jawab dengan Kalimat",
+          "stepDesc": "Tulis jawaban dalam kalimat lengkap. Semuanya ada enam burung. Jangan lupa nama bendanya.",
+          "icon": "💬",
+          "flowFrom": "Hasil",
+          "flowTo": "Kalimat jawaban"
+        },
+        {
+          "stepNumber": 6,
+          "stepTitle": "6. Periksa dan Ceritakan",
+          "stepDesc": "Periksa dengan cara lain, misalnya tukar tempat atau menghitung maju. Setelah yakin, ceritakan hasilnya di depan kelas.",
+          "icon": "🌟",
+          "flowFrom": "Jawaban",
+          "flowTo": "Cerita di kelas"
+        }
+      ],
+      "infografisData": [
+        {
+          "fruitName": "Tiga bagian soal cerita (4 burung, datang lagi 2)",
+          "emoji": "🐦",
+          "countNum": 6,
+          "countWord": "Enam",
+          "voiceSentence": "Soal cerita punya tiga bagian: yang ada, yang datang lagi, dan pertanyaan."
+        },
+        {
+          "fruitName": "Kata petunjuk tambah",
+          "emoji": "➕",
+          "countNum": 5,
+          "countWord": "Lima",
+          "voiceSentence": "Datang lagi, diberi lagi, bergabung, jumlah semua, dan semuanya adalah petunjuk tambah."
+        },
+        {
+          "fruitName": "Tulis penyelesaian (4 + 2 = 6)",
+          "emoji": "✏️",
+          "countNum": 6,
+          "countWord": "Enam",
+          "voiceSentence": "Empat ditambah dua sama dengan enam."
+        },
+        {
+          "fruitName": "Jawaban kalimat",
+          "emoji": "💬",
+          "countNum": 6,
+          "countWord": "Enam",
+          "voiceSentence": "Semuanya ada enam burung. Hasil dan nama benda ditulis lengkap."
+        },
+        {
+          "fruitName": "Satu cerita, dua pertanyaan (3 sepeda dan 1 becak)",
+          "emoji": "🚲",
+          "countNum": 9,
+          "countWord": "Sembilan",
+          "voiceSentence": "Kendaraan tiga ditambah satu sama dengan empat. Roda enam ditambah tiga sama dengan sembilan."
+        },
+        {
+          "fruitName": "Periksa jawabanmu",
+          "emoji": "🔄",
+          "countNum": 6,
+          "countWord": "Enam",
+          "voiceSentence": "Periksa dengan tukar tempat, hitung maju, jari, atau gambar."
+        },
+        {
+          "fruitName": "Buat ceritamu sendiri",
+          "emoji": "🎤",
+          "countNum": 5,
+          "countWord": "Lima",
+          "voiceSentence": "Buat cerita, gambar, tulis kalimat penjumlahan, hitung hasilnya, lalu sampaikan di kelas."
+        }
+      ],
+      "concreteSlides": [
+        {
+          "title": "Isi Dua Stoples lalu Tuang (3 + 2, 3 + 4, 4 + 5)",
+          "emoji": "🔴",
+          "targetCount": 9,
+          "voiceGuide": "Dengar ceritanya, isi dua stoples, tuang jadi satu, lalu ucapkan berapa semuanya."
+        },
+        {
+          "title": "Hitung Roda (1 motor + 1 mobil, 2 sepeda + 1 becak, 3 sepeda + 1 becak)",
+          "emoji": "🚲",
+          "targetCount": 9,
+          "voiceGuide": "Ketuk tiap kendaraan untuk menghitung rodanya, lalu ucapkan berapa semua roda."
+        },
+        {
+          "title": "Parkiran Pilih-Pilih (3 motor + 2 mobil, 4 sepeda + 2 becak, 4 motor + 3 sepeda)",
+          "emoji": "🅿️",
+          "targetCount": 7,
+          "voiceGuide": "Seret hanya kendaraan yang disebut di cerita ke tempat parkir, lalu ucapkan jumlah semuanya."
+        },
+        {
+          "title": "Susun Cerita dengan Kartu (3 + 4, 5 + 3, 4 + 2)",
+          "emoji": "🃏",
+          "targetCount": 6,
+          "voiceGuide": "Ketuk tiga kartu cerita berurutan, lalu ucapkan jumlah semuanya."
+        }
+      ],
+      "pictorialSlides": [
+        {
+          "title": "Ambil dari Cerita (4 + 2, 3 + 4, 6 + 4)",
+          "diagramType": "story-text",
+          "numberA": 6,
+          "numberB": 4,
+          "caption": "Ketuk bilangan dan kata petunjuk di dalam cerita, lalu pilih hasilnya."
+        },
+        {
+          "title": "Cerita ke Gambar (3 + 4, 6 + 3, 5 + 3)",
+          "diagramType": "picture-choice",
+          "numberA": 5,
+          "numberB": 3,
+          "caption": "Dengar cerita, lalu pilih gambar dua kelompok yang cocok."
+        },
+        {
+          "title": "Tabel Hitung Kendaraan (3 + 1, 3 + 2, 4 + 3)",
+          "diagramType": "tally-table",
+          "numberA": 4,
+          "numberB": 3,
+          "caption": "Hitung tiap jenis kendaraan, isi tabel, lalu isi jumlah semua."
+        }
+      ],
+      "abstractSlides": [
+        {
+          "symbolLarge": "5 + 3 = 8",
+          "wordLarge": "TULIS PENYELESAIAN DAN JAWABAN",
+          "mathNotation": "Di dalam kelas ada 8 siswa.   |   Halim memiliki 7 pensil.",
+          "voiceReadout": "Lima ditambah tiga sama dengan delapan. Di dalam kelas ada delapan siswa."
+        },
+        {
+          "symbolLarge": "1 + 8 = 9",
+          "wordLarge": "PASANGAN SEMBILAN",
+          "mathNotation": "1 + 8   |   2 + 7   |   3 + 6   |   4 + 5",
+          "voiceReadout": "Satu ditambah delapan sama dengan sembilan. Dua ditambah tujuh sama dengan sembilan."
+        },
+        {
+          "symbolLarge": "6 + 4 = 10",
+          "wordLarge": "KANVAS GURATAN DAN SUARA",
+          "mathNotation": "6 + 4 = 10   |   cerita stoples sendiri",
+          "voiceReadout": "Enam ditambah empat sama dengan sepuluh. Sekarang buat cerita stoples kelerengmu sendiri."
+        }
+      ],
+      "interactiveGames": [
+        {
+          "gameId": "subC-game-1",
+          "gameNumber": 1,
+          "stage": "Concrete",
+          "gameType": "tap-fill-and-pour",
+          "title": "Isi Dua Stoples lalu Tuang",
+          "bookReference": "Buku Siswa Hlm. 70, 73",
+          "objective": "Mengubah cerita menjadi dua kelompok benda lalu menggabungkannya.",
+          "mechanicDescription": "Siswa mendengar cerita, mengetuk stoples untuk memasukkan benda sebanyak cerita (3 + 2, 3 + 4, 4 + 5), menuang jadi satu, lalu mengucapkan jumlah semuanya.",
+          "voiceGuide": "Dengar ceritanya, isi dua stoples, tuang jadi satu, lalu ucapkan berapa semuanya."
+        },
+        {
+          "gameId": "subC-game-2",
+          "gameNumber": 2,
+          "stage": "Concrete",
+          "gameType": "tap-count-wheels",
+          "title": "Hitung Roda",
+          "bookReference": "Buku Siswa Hlm. 69, 72",
+          "objective": "Menjawab pertanyaan kedua dari satu cerita: berapa jumlah semua roda.",
+          "mechanicDescription": "Siswa mengetuk tiap kendaraan, rodanya bertambah (sepeda 2, becak 3, motor 2, mobil 4), lalu membaca kalimat penjumlahan roda (2 + 4, 4 + 3, 6 + 3).",
+          "voiceGuide": "Ketuk tiap kendaraan untuk menghitung rodanya, lalu ucapkan berapa semua roda."
+        },
+        {
+          "gameId": "subC-game-3",
+          "gameNumber": 3,
+          "stage": "Concrete",
+          "gameType": "drag-select-relevant",
+          "title": "Parkiran Pilih-Pilih",
+          "bookReference": "Buku Siswa Hlm. 69, 72",
+          "objective": "Memilih keterangan yang dipakai dalam cerita dan mengabaikan yang lain.",
+          "mechanicDescription": "Siswa menyeret atau mengetuk hanya kendaraan yang disebut di cerita ke tempat parkir; kendaraan lain digoyang dan tidak ikut dihitung (3 + 2, 4 + 2, 4 + 3).",
+          "voiceGuide": "Seret hanya kendaraan yang disebut di cerita, lalu ucapkan jumlah semuanya."
+        },
+        {
+          "gameId": "subC-game-4",
+          "gameNumber": 4,
+          "stage": "Concrete",
+          "gameType": "sequence-story-cards",
+          "title": "Susun Cerita dengan Kartu",
+          "bookReference": "Buku Siswa Hlm. 65, 67, 68",
+          "objective": "Mengenali tiga bagian soal cerita: yang ada, yang ditambahkan, dan pertanyaan.",
+          "mechanicDescription": "Siswa mengetuk tiga kartu cerita yang tercampur secara berurutan, mendengar cerita utuh, lalu mengucapkan jumlahnya (3 + 4, 5 + 3, 4 + 2).",
+          "voiceGuide": "Ketuk tiga kartu cerita berurutan, lalu ucapkan jumlah semuanya."
+        },
+        {
+          "gameId": "subC-game-5",
+          "gameNumber": 5,
+          "stage": "Picture",
+          "gameType": "tap-words-in-story",
+          "title": "Ambil dari Cerita",
+          "bookReference": "Buku Siswa Hlm. 65, 67, 71",
+          "objective": "Mengubah cerita menjadi kalimat matematika.",
+          "mechanicDescription": "Siswa mengetuk bilangan pertama, bilangan kedua, dan kata petunjuk tambah di dalam teks cerita, lalu memilih hasil (4 + 2, 3 + 4, 6 + 4).",
+          "voiceGuide": "Ketuk bilangan dan kata petunjuk di cerita, lalu pilih hasilnya."
+        },
+        {
+          "gameId": "subC-game-6",
+          "gameNumber": 6,
+          "stage": "Picture",
+          "gameType": "choose-matching-picture",
+          "title": "Cerita ke Gambar",
+          "bookReference": "Buku Siswa Hlm. 70",
+          "objective": "Menggambar cerita dengan memilih gambar dua kelompok yang cocok.",
+          "mechanicDescription": "Siswa mendengar cerita dan memilih satu dari tiga gambar dua kelompok; pengecoh memuat jumlah salah atau benda tertukar (3 + 4, 6 + 3, 5 + 3).",
+          "voiceGuide": "Dengar ceritanya, lalu pilih gambar yang cocok."
+        },
+        {
+          "gameId": "subC-game-7",
+          "gameNumber": 7,
+          "stage": "Picture",
+          "gameType": "fill-tally-table",
+          "title": "Tabel Hitung Kendaraan",
+          "bookReference": "Buku Siswa Hlm. 69, 72",
+          "objective": "Menghitung tiap jenis benda, mencatat di tabel, lalu menjumlahkan.",
+          "mechanicDescription": "Siswa menghitung dua jenis kendaraan pada gambar, mengisi dua baris tabel, lalu mengisi jumlah semua kendaraan (3 + 1, 3 + 2, 4 + 3).",
+          "voiceGuide": "Hitung tiap jenis kendaraan, isi tabel, lalu isi jumlah semua."
+        },
+        {
+          "gameId": "subC-game-8",
+          "gameNumber": 8,
+          "stage": "Abstract",
+          "gameType": "build-solution-and-answer",
+          "title": "Tulis Penyelesaian dan Jawaban",
+          "bookReference": "Buku Siswa Hlm. 65, 67, 68",
+          "objective": "Menulis penyelesaian dan jawaban kalimat yang memuat hasil dan nama benda.",
+          "mechanicDescription": "Siswa menyusun kalimat penjumlahan dari kartu, memilih hasil, lalu memilih nama benda untuk melengkapi kalimat jawaban (5 + 3 siswa, 3 + 4 pensil).",
+          "voiceGuide": "Susun penyelesaian dengan kartu, lalu lengkapi kalimat jawaban."
+        },
+        {
+          "gameId": "subC-game-9",
+          "gameNumber": 9,
+          "stage": "Abstract",
+          "gameType": "find-sentences-nine",
+          "title": "Pasangan Sembilan",
+          "bookReference": "Buku Siswa Hlm. 71 (Evaluasi 4)",
+          "objective": "Menyusun operasi penjumlahan yang hasilnya 9.",
+          "mechanicDescription": "Siswa memilih satu bilangan di baris atas dan satu di baris bawah, lalu menemukan empat kalimat berbeda yang hasilnya 9 (tukar tempat juga boleh).",
+          "voiceGuide": "Cari empat kalimat penjumlahan yang hasilnya sembilan, lalu ucapkan sembilan."
+        },
+        {
+          "gameId": "subC-game-10",
+          "gameNumber": 10,
+          "stage": "Abstract",
+          "gameType": "canvas-trace-and-voice",
+          "title": "Kanvas Guratan dan Suara",
+          "bookReference": "Buku Siswa Hlm. 66, 71, 73",
+          "objective": "Menyatakan hasil dengan suara dan tulisan, lalu membuat cerita sendiri.",
+          "mechanicDescription": "Ronde 1: cerita 6 siswa + 4 siswa dengan suara dan guratan angka 10. Ronde 2 (Ayo Berkarya): siswa mengatur dua stoples kelereng sendiri, jumlahnya paling banyak 10, lalu menjelaskan cara.",
+          "voiceGuide": "Ucapkan hasilnya, lalu guratkan angkanya di kanvas."
+        }
+      ]
     }
   },
   "practiceQuestions": [

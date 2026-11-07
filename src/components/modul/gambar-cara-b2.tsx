@@ -55,7 +55,7 @@ function PanahEmas({ x1, x2, y }: { x1: number; x2: number; y: number }) {
   );
 }
 
-function Lencana({ x, y, teks, r = 17 }: { x: number; y: number; teks: string; r?: number }) {
+export function Lencana({ x, y, teks, r = 17 }: { x: number; y: number; teks: string; r?: number }) {
   return (
     <g className="igil-lompat" style={BAWAH}>
       <circle cx={x} cy={y} r={r} fill={EMAS} stroke={BIRU} strokeWidth="3" />
@@ -358,7 +358,7 @@ function AdeganBingkai() {
 }
 
 /** Wajah Igil tanpa pembungkus svg, dipakai di dalam adegan. */
-function IgilWajahIsi() {
+export function IgilWajahIsi() {
   return (
     <>
       <path d="M24 28 L16 6 L42 18 Z M96 28 L104 6 L78 18 Z" fill="#8B7CF6" stroke={BIRU} strokeWidth="3.2" strokeLinejoin="round" />

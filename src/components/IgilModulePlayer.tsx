@@ -21,6 +21,13 @@ import {
   InfografisCaraB,
   PictureCaraB,
 } from "@/components/modul/SubBabB2Cara";
+import { CeritaSoalC, PETA_PIKIRAN_C2 } from "@/components/modul/gambar-soal-cerita-c2";
+import {
+  AbstractSoalC,
+  ConcreteSoalC,
+  InfografisSoalC,
+  PictureSoalC,
+} from "@/components/modul/SubBabC2SoalCerita";
 import GambarPensilCerita from "@/components/GambarPensilCerita";
 import { IkonMainan } from "@/components/modul/ikon-mainan";
 import { CeritaBandingB } from "@/components/modul/CeritaBandingB";
@@ -958,6 +965,7 @@ export default function IgilModulePlayer({ bab = "mtk-1-bab1" }: { bab?: BabModu
 
   const currentSubContent = SUB_BABS[activeSubBab];
   const subB2 = adaBab2 && activeSubBab === "B";
+  const subC2 = adaBab2 && activeSubBab === "C";
   const judulSubBab = currentSubContent.fullTitle.split(": ").slice(1).join(": ");
 
   return (
@@ -1380,7 +1388,9 @@ export default function IgilModulePlayer({ bab = "mtk-1-bab1" }: { bab?: BabModu
               </span>
             </div>
 
-            {subB2 ? (
+            {subC2 ? (
+              <CeritaSoalC speakGuru={speakGuru} />
+            ) : subB2 ? (
               <CeritaCaraB speakGuru={speakGuru} />
             ) : adaBab2 ? (
               <CeritaPenjumlahanA speakGuru={speakGuru} />
@@ -1447,7 +1457,14 @@ export default function IgilModulePlayer({ bab = "mtk-1-bab1" }: { bab?: BabModu
                 </span>
               </div>
 
-              {subB2 ? (
+              {subC2 ? (
+                <PetaPikiranB
+                  langkah={PETA_PIKIRAN_C2}
+                  judul={judulSubBab}
+                  speakGuru={speakGuru}
+                  maskot={<IgilWajah kelas="h-14 w-20 igil-lompat" />}
+                />
+              ) : subB2 ? (
                 <PetaPikiranB
                   langkah={PETA_PIKIRAN_B2}
                   judul={judulSubBab}
@@ -1536,7 +1553,9 @@ export default function IgilModulePlayer({ bab = "mtk-1-bab1" }: { bab?: BabModu
                 </span>
               </div>
 
-              {subB2 ? (
+              {subC2 ? (
+                <InfografisSoalC speakGuru={speakGuru} />
+              ) : subB2 ? (
                 <InfografisCaraB speakGuru={speakGuru} />
               ) : adaBab2 ? (
                 <InfografisPenjumlahanA speakGuru={speakGuru} />
@@ -1671,7 +1690,21 @@ export default function IgilModulePlayer({ bab = "mtk-1-bab1" }: { bab?: BabModu
                 </span>
               </div>
 
-              {subB2 ? (
+              {subC2 ? (
+                <ConcreteSoalC
+                  speakGuru={speakGuru}
+                  panel={panelConcrete}
+                  hentikan={hentikanRekamConcrete}
+                  gulir={() => concreteRef.current?.scrollIntoView({ behavior: "smooth", block: "start" })}
+                  onSelesai={() =>
+                    handleUnlockNextSmicpa(
+                      5,
+                      pictorialRef,
+                      "Empat permainan benda nyata sudah selesai. Sekarang kita lihat gambarnya."
+                    )
+                  }
+                />
+              ) : subB2 ? (
                 <ConcreteCaraB
                   speakGuru={speakGuru}
                   panel={panelConcrete}
@@ -1838,7 +1871,21 @@ export default function IgilModulePlayer({ bab = "mtk-1-bab1" }: { bab?: BabModu
                 </span>
               </div>
 
-              {subB2 ? (
+              {subC2 ? (
+                <PictureSoalC
+                  speakGuru={speakGuru}
+                  panel={panelGambar}
+                  hentikan={hentikanRekamConcrete}
+                  gulir={() => pictorialRef.current?.scrollIntoView({ behavior: "smooth", block: "start" })}
+                  onSelesai={() =>
+                    handleUnlockNextSmicpa(
+                      6,
+                      abstractRef,
+                      "Tiga permainan gambar sudah selesai. Ayo lihat lambang angkanya."
+                    )
+                  }
+                />
+              ) : subB2 ? (
                 <PictureCaraB
                   speakGuru={speakGuru}
                   panel={panelGambar}
@@ -2025,7 +2072,15 @@ export default function IgilModulePlayer({ bab = "mtk-1-bab1" }: { bab?: BabModu
                 </span>
               </div>
 
-              {subB2 ? (
+              {subC2 ? (
+                <AbstractSoalC
+                  speakGuru={speakGuru}
+                  panel={panelLambang}
+                  hentikan={hentikanRekamConcrete}
+                  gulir={() => abstractRef.current?.scrollIntoView({ behavior: "smooth", block: "start" })}
+                  onSelesai={() => selesaiBabRef.current?.scrollIntoView({ behavior: "smooth", block: "center" })}
+                />
+              ) : subB2 ? (
                 <AbstractCaraB
                   speakGuru={speakGuru}
                   panel={panelLambang}
