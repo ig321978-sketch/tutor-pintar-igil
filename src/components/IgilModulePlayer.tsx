@@ -763,7 +763,7 @@ export default function IgilModulePlayer() {
   const [practiceIdx, setPracticeIdx] = useState<number>(0);
   const [practiceAnswers, setPracticeAnswers] = useState<Record<number, string>>({});
 
-  // 7. State Halaman Ujian Formal (10 Soal 100% HOTS + Sensor Wajah Lokal)
+  // 7. State Halaman Ujian Formal (10 Soal 100% HOTS, tanpa kamera)
   const [examIdx, setExamIdx] = useState<number>(0);
   const [examAnswers, setExamAnswers] = useState<Record<number, string>>({});
   const [examSubmitted, setExamSubmitted] = useState<boolean>(false);
@@ -2343,11 +2343,11 @@ export default function IgilModulePlayer() {
                 LEMBAR UJIAN FORMAL STANDAR HOTS (70 TOKEN EMAS • WAJIB 100%)
               </span>
               <h2 className="text-base md:text-lg font-black">
-                Sensor Lokal &quot;Si Paling Pintar&quot;: Aktif (1 Wajah Siswa Terverifikasi)
+                Sesi Belajar Sah: Tervalidasi Server
               </h2>
             </div>
             <span className="px-3 py-1 rounded-xl bg-white/15 text-[#FFE566] font-black text-xs">
-              Percobaan Ke-{examAttempts} {examFirstTryPerfect ? "🏅 Si Paling Pintar" : ""}
+              Percobaan Ke-{examAttempts} {examFirstTryPerfect ? "🏅 Papan Kualifikasi Beasiswa" : ""}
             </span>
           </div>
 

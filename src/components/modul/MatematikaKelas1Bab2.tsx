@@ -1135,7 +1135,7 @@ export default function MatematikaKelas1Bab2Hibrida({
       setCard6Unlocked(true);
       playSound("fanfare");
       speakIGIL(
-        "Sempurna 100 dari 100! Kamu lulus Gerbang 1 Si Paling Pintar dan membuka Pulau 6 Studio Praktikum!"
+        "Sempurna 100 dari 100! Kamu lulus Gerbang Tantangan Mandiri dan membuka Pulau 6 Studio Praktikum!"
       );
     } else {
       playSound("wrong");
@@ -2451,7 +2451,7 @@ export default function MatematikaKelas1Bab2Hibrida({
                 <div className="bg-[#1C01A5] text-[#FFFFFF] p-4 rounded-2xl flex flex-wrap items-center justify-between gap-2">
                   <div>
                     <span className="text-[11px] font-black text-[#FFE566] uppercase">
-                      🏰 PULAU 5 • GERBANG 1: SI PALING PINTAR (WAJIB 100/100)
+                      🏰 PULAU 5 • GERBANG TANTANGAN MANDIRI (WAJIB 100/100)
                     </span>
                     <h2 className="text-base font-black">
                       Ujian Evaluasi Penjumlahan Anti-Contek (+70 Token IGIL)

@@ -87,8 +87,7 @@ Setiap modul bab WAJIB memiliki **5 Tab Komponen** berurutan (Simulasi digabung 
 4. **Ujian (70 Token)**: 10 soal evaluasi mandiri. WAJIB lulus mutlak 100% untuk membuka kunci Praktikum. Tanpa kamera dan tanpa MediaPipe: Materi, Latihan, Ujian, dan Praktikum 100% tidak memakai kamera. Kamera hanya dipakai pada panggilan verifikasi lisan 2 menit di akhir bulan untuk kandidat penerima beasiswa (Bagian 7), tanpa direkam.
 5. **Praktikum (50 Token)**: Tugas sintesis lintas-4-bab (terbuka setelah lulus Ujian 100%).
 
-- Nilai konversi: 1 token = Rp 500.
-- Jumlah token penuh (Latihan 30 + Ujian 70 + Praktikum 50) = 150 token.
+- **Poin Kualifikasi (istilah resmi pengganti "token"):** Latihan 30 + Ujian 70 + Praktikum 50 = **150 Poin Kualifikasi per bab**. Poin Kualifikasi BUKAN uang tunai dan TIDAK memiliki nilai tukar tetap (tidak ada kurs rupiah per poin, tidak boleh ditampilkan di UI, JSON, maupun SQL). Poin hanya indikator capaian belajar untuk menentukan peringkat kandidat penerima beasiswa bulanan dari Kolam Beasiswa masing-masing fase (`FASE_A`, `FASE_B`, `FASE_C`). Nominal beasiswa ditentukan dari isi Kolam Beasiswa fase pada akhir bulan, bukan dari jumlah poin.
 
 ---
 

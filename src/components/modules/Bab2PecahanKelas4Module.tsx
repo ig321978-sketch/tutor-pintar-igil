@@ -204,8 +204,6 @@ interface QuestionItem {
   explanation: string;
 }
 
-const TOKEN_PRICE_RP = 500; // 1 Token IGIL = Rp 500
-
 export default function Bab2PecahanKelas4Module() {
   // Navigasi 6 Tab Standar IGIL
   const [activeTab, setActiveTab] = useState<1 | 2 | 3 | 4 | 5 | 6 | 7>(1);
@@ -782,10 +780,7 @@ export default function Bab2PecahanKelas4Module() {
                   Dompet Bab Ini (Maks 150)
                 </div>
                 <div className="flex items-baseline gap-2">
-                  <span className="text-lg font-black text-amber-400">{totalTokens} Token</span>
-                  <span className="text-xs font-bold text-emerald-400">
-                    (= Rp {(totalTokens * TOKEN_PRICE_RP).toLocaleString("id-ID")})
-                  </span>
+                  <span className="text-lg font-black text-amber-400">{totalTokens} Poin Kualifikasi</span>
                 </div>
               </div>
             </div>
@@ -2271,7 +2266,7 @@ export default function Bab2PecahanKelas4Module() {
                 <div className="bg-amber-50 border-2 border-amber-300 px-4 py-2 rounded-2xl text-right">
                   <div className="text-[11px] font-bold text-amber-800 uppercase">Token Latihan Terkumpul</div>
                   <div className="text-lg font-black text-amber-950">
-                    {practiceTokens} / 50 🪙 (Rp {(practiceTokens * TOKEN_PRICE_RP).toLocaleString("id-ID")})
+                    {practiceTokens} / 50 🪙
                   </div>
                 </div>
                 <button

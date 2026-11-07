@@ -15,7 +15,6 @@ import {
   SpanduContoh,
   SubTabBar,
   angkaId,
-  rupiah,
   useHariIni,
   useProfilSiswa,
 } from "./umum";
@@ -35,7 +34,6 @@ type BabRapor = {
   skorUjian: number | null;
   percobaan: number;
   tokenUjian: number;
-  wajahValid: boolean;
   siPalingPintar: boolean;
   praktikum: boolean;
   tokenPraktikum: number;
@@ -52,7 +50,6 @@ const BAB_KELAS1: BabRapor[] = [
     skorUjian: bab1.examScore,
     percobaan: bab1.examAttempts,
     tokenUjian: bab1.examTokens,
-    wajahValid: bab1.cameraVerifiedOneFace,
     siPalingPintar: bab1.siPalingPintar,
     praktikum: bab1.practicumSubmitted,
     tokenPraktikum: bab1.practicumTokens,
@@ -72,7 +69,6 @@ const BAB_KELAS1: BabRapor[] = [
     skorUjian: null,
     percobaan: 0,
     tokenUjian: 0,
-    wajahValid: false,
     siPalingPintar: false,
     praktikum: false,
     tokenPraktikum: 0,
@@ -116,7 +112,7 @@ function KartuDompet({ profil, tokenSaatIni }: { profil: PenerimaSertifikat; tok
           🧒
         </div>
         <div className="min-w-0 flex-1">
-          <p className="text-[11px] font-black uppercase tracking-wider text-amber-300">Dompet Token Bulan Ini</p>
+          <p className="text-[11px] font-black uppercase tracking-wider text-amber-300">Poin Kualifikasi Bulan Ini</p>
           <p className="break-words text-xl font-black leading-tight sm:text-2xl">{profil.nama}</p>
           <p className="text-sm font-semibold text-indigo-100">
             {profil.kelas} · {profil.kota}
@@ -133,16 +129,14 @@ function KartuDompet({ profil, tokenSaatIni }: { profil: PenerimaSertifikat; tok
 
       <div className="mt-4 rounded-2xl bg-white/10 p-3 ring-1 ring-white/20">
         <div className="flex items-center justify-between gap-2 text-sm font-black">
-          <span>Setara {rupiah(total * ekonomi.tokenValueRupiah)}</span>
-          <span className="text-amber-300">
-            1 token = {rupiah(ekonomi.tokenValueRupiah)}
-          </span>
+          <span>{angkaId(total)} Poin Kualifikasi</span>
+          <span className="text-amber-300">Bukan uang tunai</span>
         </div>
-        <div className="mt-2 h-3 overflow-hidden rounded-full bg-indigo-950/60" role="img" aria-label={`${total} dari ${penuh} token`}>
+        <div className="mt-2 h-3 overflow-hidden rounded-full bg-indigo-950/60" role="img" aria-label={`${total} dari ${penuh} Poin Kualifikasi`}>
           <div className="h-full rounded-full bg-amber-400" style={{ width: `${Math.min(100, (total / penuh) * 100)}%` }} />
         </div>
         <p className="mt-1 text-[11px] font-semibold text-indigo-200">
-          {penuh} token penuh per bab = {rupiah(penuh * ekonomi.tokenValueRupiah)}
+          {penuh} Poin Kualifikasi penuh per bab. Poin tidak punya nilai tukar tetap dan dipakai untuk peringkat beasiswa.
         </p>
       </div>
 
@@ -222,10 +216,10 @@ function KartuBab({ bab, nomor }: { bab: BabRapor; nomor: number }) {
         </div>
         {bab.siPalingPintar ? (
           <span
-            title={rapor.siPalingPintarSpec.badgeLabel}
+            title="Papan Kualifikasi Beasiswa"
             className="shrink-0 rounded-full bg-amber-400 px-2.5 py-1 text-xs font-black text-indigo-950 shadow"
           >
-            🌟 Pintar
+            🌟 Kualifikasi
           </span>
         ) : null}
       </header>
@@ -280,8 +274,7 @@ function KartuBab({ bab, nomor }: { bab: BabRapor; nomor: number }) {
 
       {bab.siPalingPintar ? (
         <p className="mt-3 rounded-xl bg-amber-50 p-2 text-xs font-bold leading-snug text-indigo-950">
-          🌟 Lulus Ujian 100% di percobaan pertama
-          {bab.wajahValid ? " dengan 1 wajah valid di kamera" : ""}.
+          🌟 Lulus Ujian 100% di percobaan pertama · Sesi Belajar Sah (Tervalidasi Server).
         </p>
       ) : null}
     </article>
@@ -319,7 +312,11 @@ function PanelPenilaianRahasia({ terkunci }: { terkunci: boolean }) {
                 style={{ width: `${p.weightPercent * 3.3}%` }}
               />
             </div>
-            <p className="mt-1.5 text-xs font-semibold leading-snug text-slate-600">{p.desc}</p>
+            <p className="mt-1.5 text-xs font-semibold leading-snug text-slate-600">
+              {p.id === "independence"
+                ? "Kejujuran pengerjaan mandiri berdasarkan rekam jejak percobaan dan sesi belajar yang Tervalidasi Server."
+                : p.desc}
+            </p>
             <p className="mt-1 text-xs font-black text-[#1C01A5]">{terkunci ? "🔒 Skor tersembunyi" : "Skor terbuka"}</p>
           </li>
         ))}
@@ -332,14 +329,19 @@ function PanelPenilaianRahasia({ terkunci }: { terkunci: boolean }) {
   );
 }
 
+const SYARAT_PAPAN_KUALIFIKASI = [
+  "Lulus Ujian Mandiri mutlak 100/100 pada percobaan pertama (First-Try Perfect).",
+  "Sesi belajar dan jawaban Ujian tercatat sah dan Tervalidasi Server, tanpa bantuan kamera.",
+  "Seluruh 4 sub-bab pada modul Materi SMICPA telah tercentang tuntas.",
+] as const;
+
 function PanelPintar() {
-  const spek = rapor.siPalingPintarSpec;
   return (
     <section className="rounded-3xl border-2 border-amber-400 bg-amber-50 p-4 shadow-sm sm:p-5">
-      <h3 className="text-lg font-black text-indigo-950">{spek.badgeLabel}</h3>
+      <h3 className="text-lg font-black text-indigo-950">🌟 Papan Kualifikasi Beasiswa</h3>
       <p className="mt-1 text-sm font-semibold text-slate-600">Lencana emas menyala kalau kamu memenuhi semua syarat ini:</p>
       <ol className="mt-3 space-y-2">
-        {spek.criteria.map((syarat, i) => (
+        {SYARAT_PAPAN_KUALIFIKASI.map((syarat, i) => (
           <li key={syarat} className="flex items-start gap-3 rounded-2xl bg-white p-3">
             <span
               aria-hidden="true"
@@ -352,8 +354,11 @@ function PanelPintar() {
         ))}
       </ol>
       <p className="mt-3 flex items-start gap-2 rounded-2xl bg-[#1C01A5] p-3 text-xs font-bold leading-snug text-white">
-        <span aria-hidden="true">📷</span>
-        <span>{spek.privacyNote}</span>
+        <span aria-hidden="true">🛡️</span>
+        <span>
+          Tervalidasi Server: jawaban dan sesi belajar dicek oleh server IGIL. Tidak ada kamera dan tidak ada data
+          biometrik yang dipakai untuk belajar maupun ujian.
+        </span>
       </p>
     </section>
   );

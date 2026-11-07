@@ -16,7 +16,6 @@ import {
 const ranking = data.rankingPage;
 const skema = ranking.scholarshipScheme9010;
 const kolam = skema.currentMonthPoolSummary;
-const ekonomi = data.tokenEconomy;
 const bab1 = data.raporPage.sampleChaptersProgress[0];
 
 type BarisPapan = {
@@ -116,7 +115,7 @@ function TabPeringkat() {
             <p className="text-3xl font-black text-amber-300">{angkaId(tokenSaya)}</p>
           </div>
           <div className="rounded-2xl bg-white/10 p-3 ring-1 ring-white/20">
-            <p className="text-[11px] font-black uppercase text-indigo-100">Si Pintar</p>
+            <p className="text-[11px] font-black uppercase text-indigo-100">Kualifikasi</p>
             <p className="text-3xl font-black text-amber-300">🌟{lencanaSaya}</p>
           </div>
         </div>
@@ -194,7 +193,7 @@ function TabPeringkat() {
                   </span>
                   <span
                     className="rounded-full bg-amber-50 px-2.5 py-0.5 text-xs font-black text-indigo-950 md:bg-transparent md:px-0 md:text-center md:text-sm"
-                    title="Lencana Si Paling Pintar"
+                    title="Papan Kualifikasi Beasiswa"
                   >
                     🌟 {b.lencana}
                   </span>
@@ -214,9 +213,9 @@ function TabPeringkat() {
 
       <p className="rounded-2xl border-2 border-indigo-100 bg-indigo-50/40 p-3 text-sm font-semibold leading-relaxed text-indigo-950">
         <span aria-hidden="true">📌 </span>
-        Pada akhir bulan, peringkat pemenang beasiswa ditentukan dari gabungan Token Kualifikasi Bulanan (30/70/50),
-        lencana Si Paling Pintar (lulus 100% percobaan pertama dengan kamera valid 1 wajah), dan pembukaan skor
-        tersembunyi Praktikum (Hidden Grading).
+        Pada akhir bulan, peringkat kandidat penerima beasiswa ditentukan dari gabungan Poin Kualifikasi Bulanan
+        (30/70/50), status Papan Kualifikasi Beasiswa (lulus Ujian 100% pada percobaan pertama dengan sesi belajar
+        Tervalidasi Server), dan pembukaan skor tersembunyi Praktikum (Hidden Grading).
       </p>
     </div>
   );
@@ -331,7 +330,8 @@ function TabBeasiswa() {
         </div>
         <p className="rounded-2xl bg-amber-50 p-3 text-sm font-black text-indigo-950">
           <Koin kelas="mr-1 h-5 w-5" />
-          Setara {angkaId(kolam.equivalentTokens)} token ({rupiah(ekonomi.tokenValueRupiah)} per token)
+          Poin Kualifikasi bukan uang tunai dan tidak punya nilai tukar tetap. Poin hanya menentukan peringkat kandidat di
+          fase ini.
         </p>
       </section>
 
