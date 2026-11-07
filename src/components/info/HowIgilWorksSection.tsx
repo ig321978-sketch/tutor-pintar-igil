@@ -193,7 +193,7 @@ function AlurDana({ faseAnak }: { faseAnak?: KodeFase }) {
               <span className="min-w-0 flex-1">🖥️ Kolam Operasional</span>
             </p>
             <ul className="mt-2 space-y-1.5 text-xs font-semibold leading-snug text-slate-600">
-              <li>• Biaya server yang sebenarnya</li>
+              <li>• Biaya server dan potongan payment gateway yang sebenarnya</li>
               <li>• Biaya hidup layak founder (ada batas atas)</li>
               <li className="font-black text-[#1C01A5]">
                 • Sisa surplus 100% kembali ke Kantong Beasiswa, dibagi menurut jumlah pelanggan aktif tiap fase

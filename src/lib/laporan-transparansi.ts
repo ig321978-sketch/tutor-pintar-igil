@@ -54,6 +54,7 @@ export const DATA_LAPORAN: MasukanBulan[] = [
       { nama: "Database & akun", keterangan: "Menyimpan progres dan Poin Kualifikasi", rupiah: 48_000 },
       { nama: "Domain", keterangan: "igiligil.xyz", rupiah: 12_000 },
       { nama: "Penilaian AI Praktikum", keterangan: "1 panggilan per penyerahan Praktikum", rupiah: 9_000 },
+      { nama: "Biaya payment gateway", keterangan: "Potongan per transaksi dari penyedia pembayaran", rupiah: 130_000 },
     ],
     plafonFounder: 2_200_000,
     bukti: [
@@ -74,12 +75,13 @@ export const DATA_LAPORAN: MasukanBulan[] = [
       { nama: "Database & akun", keterangan: "Menyimpan progres dan Poin Kualifikasi", rupiah: 110_000 },
       { nama: "Domain", keterangan: "igiligil.xyz", rupiah: 12_000 },
       { nama: "Penilaian AI Praktikum", keterangan: "1 panggilan per penyerahan Praktikum", rupiah: 38_000 },
+      { nama: "Biaya payment gateway", keterangan: "Potongan per transaksi dari penyedia pembayaran", rupiah: 315_000 },
     ],
     plafonFounder: 2_200_000,
     penyaluran: {
       tanggal: "31 Oktober 2026",
       penerima: { FASE_A: 30, FASE_B: 30, FASE_C: 25 },
-      disalurkan: { FASE_A: 17_000_000, FASE_B: 14_166_667, FASE_C: 11_333_333 },
+      disalurkan: { FASE_A: 16_500_000, FASE_B: 14_000_000, FASE_C: 11_000_000 },
       rujukanBatch: "BEASISWA-IGIL-2026-10",
     },
     bukti: [
@@ -102,12 +104,13 @@ export const DATA_LAPORAN: MasukanBulan[] = [
       { nama: "Database & akun", keterangan: "Menyimpan progres dan Poin Kualifikasi", rupiah: 95_000 },
       { nama: "Domain", keterangan: "igiligil.xyz", rupiah: 12_000 },
       { nama: "Penilaian AI Praktikum", keterangan: "1 panggilan per penyerahan Praktikum", rupiah: 21_000 },
+      { nama: "Biaya payment gateway", keterangan: "Potongan per transaksi dari penyedia pembayaran", rupiah: 189_000 },
     ],
     plafonFounder: 2_200_000,
     penyaluran: {
       tanggal: "30 September 2026",
       penerima: { FASE_A: 20, FASE_B: 18, FASE_C: 15 },
-      disalurkan: { FASE_A: 10_002_667, FASE_B: 8_184_000, FASE_C: 6_365_333 },
+      disalurkan: { FASE_A: 9_800_000, FASE_B: 8_000_000, FASE_C: 6_200_000 },
       rujukanBatch: "BEASISWA-IGIL-2026-09",
     },
     bukti: [
@@ -229,7 +232,7 @@ export function hitungLaporan(m: MasukanBulan): HasilLaporan {
       {
         label: "Pemakaian Kolam Operasional habis terbagi",
         cocok: totalBiayaServer + plafonDiambil + surplus === operasional10 || tersedia === 0,
-        rumus: "Biaya server + biaya hidup founder + surplus = Kolam Operasional",
+        rumus: "Biaya server + payment gateway + biaya hidup founder + surplus = Kolam Operasional",
       },
       {
         label: "Biaya hidup founder tidak melewati plafon",
@@ -278,9 +281,9 @@ export function buatCsvLaporan(h: HasilLaporan): string {
   ];
   for (const f of URUTAN_FASE) baris.push(["Pemasukan", NAMA_FASE[f].kelas, h.masukan.pemasukan[f]]);
   baris.push(["Pembagian", "Kantong Beasiswa 90%", h.beasiswa90], ["Pembagian", "Kolam Operasional 10%", h.operasional10]);
-  for (const b of h.masukan.biayaServer) baris.push(["Biaya server", b.nama, b.rupiah]);
+  for (const b of h.masukan.biayaServer) baris.push(["Biaya operasional", b.nama, b.rupiah]);
   baris.push(
-    ["Operasional", "Total biaya server", h.totalBiayaServer],
+    ["Operasional", "Total biaya operasional nyata (server dan payment gateway)", h.totalBiayaServer],
     ["Operasional", "Biaya hidup layak founder (plafon " + h.masukan.plafonFounder + ")", h.plafonDiambil],
     ["Operasional", "Surplus dilimpahkan ke beasiswa", h.surplus],
   );

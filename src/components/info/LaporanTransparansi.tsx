@@ -199,26 +199,26 @@ export default function LaporanTransparansi() {
           <BagianJudul
             ikon="2️⃣"
             judul="Langkah 2 · Pemakaian Kolam Operasional (10%)"
-            isi="Hanya dua hal yang boleh dibayar dari kolam ini. Sisa yang ada 100% kembali ke beasiswa."
+            isi="Hanya biaya nyata (server dan potongan payment gateway) dan biaya hidup layak founder yang boleh dibayar dari kolam ini. Potongan gateway ditanggung kolam ini, jadi 90% beasiswa tetap dihitung dari seluruh pemasukan. Sisa yang ada 100% kembali ke beasiswa."
           />
           {ditutup ? (
             <BilahPembagian
               label="Pemakaian kolam operasional"
               bagian={[
-                { nama: "Biaya server yang sebenarnya", nilai: h.totalBiayaServer, warna: "bg-indigo-300 text-indigo-950" },
+                { nama: "Biaya nyata (server & payment gateway)", nilai: h.totalBiayaServer, warna: "bg-indigo-300 text-indigo-950" },
                 { nama: "Biaya hidup layak founder (ada plafon)", nilai: h.plafonDiambil, warna: "bg-[#1C01A5] text-white" },
                 { nama: "Surplus kembali ke Kantong Beasiswa", nilai: h.surplus, warna: "bg-amber-400 text-indigo-950" },
               ]}
             />
           ) : (
             <p className="rounded-2xl bg-amber-50 p-3 text-sm font-bold leading-snug text-indigo-950">
-              Bulan masih berjalan. Biaya server sampai hari ini sudah tercatat di bawah. Biaya hidup founder dan surplus
+              Bulan masih berjalan. Biaya server dan payment gateway sampai hari ini sudah tercatat di bawah. Biaya hidup founder dan surplus
               baru dihitung saat bulan ditutup.
             </p>
           )}
 
           <div className="rounded-2xl bg-indigo-50/40 p-3">
-            <p className="text-sm font-black text-indigo-950">🧾 Rincian biaya server{ditutup ? "" : " sampai hari ini"}</p>
+            <p className="text-sm font-black text-indigo-950">🧾 Rincian biaya nyata{ditutup ? "" : " sampai hari ini"}</p>
             <ul className="mt-2 space-y-2">
               {h.masukan.biayaServer.map((b) => (
                 <li key={b.nama} className="flex items-start gap-2 text-sm">
@@ -239,7 +239,7 @@ export default function LaporanTransparansi() {
                 <span className="shrink-0 font-black tabular-nums text-emerald-900">{rupiah(0)}</span>
               </li>
               <li className="flex items-center gap-2 border-t border-indigo-100 pt-2 text-sm font-black text-indigo-950">
-                <span className="min-w-0 flex-1">Total biaya server</span>
+                <span className="min-w-0 flex-1">Total biaya nyata</span>
                 <span className="shrink-0 tabular-nums">{rupiah(h.totalBiayaServer)}</span>
               </li>
             </ul>
@@ -249,7 +249,7 @@ export default function LaporanTransparansi() {
             <div className="rounded-2xl bg-indigo-50/40 p-3">
               <p className="text-sm font-black text-indigo-950">🏠 Biaya hidup layak founder</p>
               <p className="mt-1 text-xs font-semibold leading-relaxed text-slate-600">
-                Diambil hanya dari yang tersisa setelah biaya server ({rupiah(tersedia)}), dan tidak pernah melewati
+                Diambil hanya dari yang tersisa setelah biaya nyata ({rupiah(tersedia)}), dan tidak pernah melewati
                 plafon bulanan {rupiah(h.masukan.plafonFounder)}.
               </p>
               <div
@@ -341,7 +341,7 @@ export default function LaporanTransparansi() {
         <section className="rounded-3xl bg-gradient-to-br from-indigo-900 via-violet-900 to-indigo-950 p-4 text-white shadow-lg sm:p-5">
           <h3 className="text-lg font-black">Yang tidak ada di laporan ini</h3>
           <ul className="mt-2 space-y-1.5 text-sm font-semibold leading-snug text-indigo-100">
-            <li>• Kolam Operasional hanya dipakai untuk biaya server dan biaya hidup layak founder (ada plafon). Sisanya kembali ke beasiswa.</li>
+            <li>• Kolam Operasional hanya dipakai untuk biaya server, potongan payment gateway, dan biaya hidup layak founder (ada plafon). Sisanya kembali ke beasiswa.</li>
             <li>• Poin Kualifikasi bukan uang. Nominal beasiswa ditentukan dari isi kantong fase, bukan jumlah poin.</li>
             <li>• Laporan ini tidak memuat data pribadi anak, nomor rekening, maupun NISN.</li>
           </ul>
