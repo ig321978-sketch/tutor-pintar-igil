@@ -19,16 +19,16 @@ export default function DasborInformasi() {
       <HowIgilWorksSection faseAnak={fase} namaAnak={profil.nama} />
       <div className="mx-auto w-full max-w-5xl px-2">
         <Link
-          href="/transparansi"
+          href="/ranking"
           className="igil-tombol flex items-center gap-3 rounded-3xl border-amber-400 bg-amber-400 p-4 text-indigo-950 shadow-md hover:bg-amber-300"
         >
           <span aria-hidden="true" className="text-3xl">
             🔍
           </span>
           <span className="min-w-0 flex-1">
-            <span className="block text-base font-black leading-tight">Lihat Laporan Penggunaan Dana</span>
+            <span className="block text-base font-black leading-tight">Lihat Laporan Dana Beasiswa</span>
             <span className="block text-sm font-semibold leading-snug">
-              Ke mana uang langganan pergi, setiap bulan, lengkap dengan cek hitung.
+              Total dana, kolam beasiswa, dan penerima setiap bulan. Buka tab Laporan Penyaluran Beasiswa.
             </span>
           </span>
           <span aria-hidden="true" className="text-2xl font-black">

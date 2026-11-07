@@ -1,5 +1,5 @@
 {
-  "version": "1.0.0",
+  "version": "1.1.0",
   "navigationMenu": [
     {
       "id": "ruang-belajar",
@@ -21,28 +21,27 @@
     }
   ],
   "tokenEconomy": {
-    "tokenValueRupiah": 500,
     "perChapterTokens": {
       "practice": 30,
       "exam": 70,
       "practicum": 50,
-      "total": 150
+      "total": 100
     },
     "perBlockChapters": 4,
-    "perBlockTotalTokens": 600,
-    "monthlyResetRule": "Setiap akhir bulan (pukul 23:59 WIB), pg_cron mengunci daftar pemenang beasiswa dan me-reset token kualifikasi bulanan (30/70/50) kembali ke 0 tanpa menghapus progres ketuntasan bab maupun sertifikat yang sudah diraih siswa."
+    "perBlockTotalTokens": 450,
+    "monthlyResetRule": "Setiap akhir bulan (pukul 23:59 WIB), pg_cron mengunci daftar pemenang pada Papan Kualifikasi Beasiswa dan me-reset Poin Kualifikasi bulanan (Latihan 30 & Ujian 70 per bab, Praktikum 50 per blok 4 bab = 450 Poin Kualifikasi per blok) kembali ke 0 tanpa menghapus progres ketuntasan bab maupun sertifikat yang sudah diraih siswa."
   },
   "raporPage": {
     "header": {
       "badge": "PORTAL AKADEMIK & PORTOFOLIO SISWA IGIL",
       "title": "📊 Rapor Ketuntasan & Sertifikat Kelulusan Digital",
-      "subtitle": "Pantau ketuntasan belajar metode SMICPA, perolehan token kualifikasi bulanan, hasil evaluasi Praktikum, dan unduh Sertifikat Kelulusan resmi tanpa biaya tambahan."
+      "subtitle": "Pantau ketuntasan belajar metode SMICPA, perolehan Poin Kualifikasi bulanan, hasil evaluasi Praktikum lintas-4-bab, dan unduh Sertifikat Kelulusan resmi tanpa biaya tambahan."
     },
     "subTabs": [
       {
         "id": "rapor-ketuntasan",
-        "label": "📋 Rapor Ketuntasan & Token",
-        "description": "Rekap capaian per bab (Materi SMICPA, Latihan 30 Token, Ujian 70 Token, Praktikum 50 Token) dan status kandidat Si Paling Pintar."
+        "label": "📋 Rapor Ketuntasan & Poin",
+        "description": "Rekap capaian per bab (Materi SMICPA, Latihan 30 Poin Kualifikasi, Ujian 70 Poin Kualifikasi), Praktikum 50 Poin Kualifikasi per blok 4 bab, dan status kandidat Papan Kualifikasi Beasiswa."
       },
       {
         "id": "sertifikat-kelulusan",
@@ -57,7 +56,7 @@
         "code": "A+",
         "label": "ISTIMEWA (LULUS SEMPURNA)",
         "colorTheme": "indigo-amber",
-        "description": "Menuntaskan seluruh tahapan SMICPA, lulus Ujian Mandiri 100%, dan menyelesaikan Praktikum Sintesis."
+        "description": "Menuntaskan seluruh tahapan SMICPA, lulus Ujian Mandiri 100%, dan menyelesaikan Praktikum Sintesis lintas-4-bab."
       },
       {
         "minScore": 80,
@@ -88,7 +87,7 @@
       "title": "Penilaian Rahasia Praktikum Lintas-4-Bab (On-Submit Hidden Grading)",
       "lockedStatusBadge": "🔒 TERSEMBUNYI HINGGA AKHIR BULAN (is_hidden = true)",
       "unlockedStatusBadge": "🔓 HASIL PENILAIAN AKHIR BULAN TERBUKA",
-      "explanation": "Saat siswa menyerahkan Praktikum, sistem menilai 4 parameter secara otomatis dan menyimpannya secara rahasia di Supabase hingga pengumuman resmi akhir bulan agar persaingan tetap jujur.",
+      "explanation": "Saat siswa menyerahkan Praktikum (setelah 4 bab dalam 1 blok lulus Ujian 100%), sistem menilai 4 parameter secara otomatis dan menyimpannya secara rahasia di Supabase hingga pengumuman resmi akhir bulan agar persaingan tetap jujur.",
       "parameters": [
         {
           "id": "accuracy",
@@ -106,7 +105,7 @@
           "id": "independence",
           "label": "Kemandirian Belajar",
           "weightPercent": 20,
-          "desc": "Kejujuran pengerjaan mandiri berdasarkan rekam jejak percobaan dan validasi sensor kamera lokal."
+          "desc": "Kejujuran pengerjaan mandiri berdasarkan rekam jejak percobaan dan konsistensi penalaran mandiri di server & verifikasi lisan pencairan."
         },
         {
           "id": "reasoning",
@@ -115,15 +114,6 @@
           "desc": "Kejelasan anak dalam menuliskan atau menceritakan alasan penyelesaian masalah."
         }
       ]
-    },
-    "siPalingPintarSpec": {
-      "badgeLabel": "🌟 Kandidat Si Paling Pintar",
-      "criteria": [
-        "Lulus Ujian Mandiri mutlak 100/100 pada percobaan pertama (First-Try Perfect).",
-        "Sensor deteksi wajah lokal di browser (MediaPipe) memvalidasi tepat 1 wajah siswa secara konsisten selama ujian tanpa bantuan orang lain di layar.",
-        "Seluruh 4 sub-bab pada modul Materi SMICPA telah tercentang tuntas."
-      ],
-      "privacyNote": "Rekaman kamera 100% diproses lokal di peramban (client-side) dan TIDAK pernah diunggah ke server demi privasi anak SD."
     },
     "certificateTemplate": {
       "issuerName": "IGIL — Interactive & Gamified Intelligent Learning",
@@ -176,10 +166,9 @@
         "examScore": 100,
         "examAttempts": 1,
         "examTokens": 70,
-        "cameraVerifiedOneFace": true,
-        "siPalingPintar": true,
-        "practicumSubmitted": true,
-        "practicumTokens": 50,
+        "firstTryPerfect": true,
+        "practicumSubmitted": false,
+        "practicumTokens": 0,
         "hiddenGrading": {
           "isHidden": true,
           "announcementDate": "Akhir Bulan Berjalan (23:59 WIB)"
@@ -191,50 +180,44 @@
     "header": {
       "badge": "KOMPETISI JUJUR & TRANSPARANSI DANA SOSIAL 90:10",
       "title": "🏆 Perankingan Nasional & Laporan Penyaluran Beasiswa",
-      "subtitle": "Papan peringkat kualifikasi bulanan siswa SD se-Indonesia serta laporan terbuka Kolam Beasiswa 90:10."
+      "subtitle": "Papan Kualifikasi Beasiswa bulanan siswa SD se-Indonesia serta laporan terbuka Kolam Beasiswa 90:10."
     },
     "subTabs": [
       {
         "id": "papan-peringkat",
         "label": "🥇 Peringkat Nasional Bulanan",
-        "description": "Urutan capaian token kualifikasi bulanan (30/70/50) dan status Kandidat Si Paling Pintar per jenjang Kelas 1–6 SD."
+        "description": "Urutan capaian Poin Kualifikasi bulanan (100 per bab + 50 Praktikum per blok 4 bab = 450 Poin per blok) dan status kandidat Papan Kualifikasi Beasiswa per jenjang Kelas 1–6 SD."
       },
       {
         "id": "laporan-beasiswa",
         "label": "🤝 Laporan Penyaluran Beasiswa (90:10)",
-        "description": "Transparansi mutlak alokasi 90% Kolam Beasiswa + limpahan surplus operasional beserta daftar penerima beasiswa bulanan."
+        "description": "Jumlah siswa, total dana, Kolam Beasiswa, dan daftar penerima beasiswa setiap bulan beserta sisa dana yang belum disalurkan."
       }
     ],
     "gradeFilters": ["Semua Kelas", "Kelas 1 SD", "Kelas 2 SD", "Kelas 3 SD", "Kelas 4 SD", "Kelas 5 SD", "Kelas 6 SD"],
+    "publicRecipientPrivacyPolicy": {
+      "displayFormat": "Nama Depan + Inisial Nama Belakang (contoh: Kirana D.) + Kelas + Kota/Provinsi + Kode Bukti Penyaluran",
+      "explanation": "Demi perlindungan privasi anak SD sekaligus menjaga akuntabilitas publik, nama penerima beasiswa dan peserta di Papan Kualifikasi Beasiswa ditampilkan menggunakan Nama Depan + Inisial Nama Belakang beserta Kelas, Kota/Provinsi, dan Kode Bukti Penyaluran Unik. Nama lengkap dan status pencairan utuh hanya tampil di dalam sesi aplikasi milik akun keluarga masing-masing."
+    },
     "scholarshipScheme9010": {
-      "title": "Arsitektur Ekonomi Sosial IGIL: Skema 90:10 + Plafon Hidup Layak",
+      "title": "Skema 90:10",
       "pillars": [
         {
           "percentage": "90%",
-          "title": "Langsung ke Kolam Beasiswa Siswa",
-          "description": "90% dari seluruh pendapatan langganan bulanan dikunci langsung ke dalam Kolam Beasiswa Nasional untuk dibagikan kepada siswa berprestasi setiap akhir bulan."
+          "title": "Kolam Beasiswa",
+          "description": "Dibagikan kepada siswa penerima beasiswa."
         },
         {
           "percentage": "10%",
-          "title": "Kolam Operasional Hemat & Surplus Kembali ke Beasiswa",
-          "description": "10% digunakan hanya untuk biaya server riil (mendekati Rp 0 berkat arsitektur Generate Once, Cache Forever) dan plafon biaya hidup layak bulanan founder. Seluruh 100% surplus sisanya otomatis dilimpahkan kembali ke Kolam Beasiswa."
+          "title": "Kolam Operasional",
+          "description": "Untuk menjalankan IGIL."
         }
-      ],
-      "currentMonthPoolSummary": {
-        "periodLabel": "Siklus Bulan Berjalan",
-        "DirectScholarship90PercentRupiah": 45000000,
-        "operational10PercentRupiah": 5000000,
-        "realServerCostRupiah": 350000,
-        "founderLivingCapStatus": "Terpenuhi Sesuai Plafon",
-        "operationalSurplusReturnedRupiah": 1650000,
-        "totalActiveScholarshipPoolRupiah": 46650000,
-        "equivalentTokens": 93300
-      }
+      ]
     },
     "leaderboardSample": [
       {
         "rank": 1,
-        "studentName": "Raka Pratama",
+        "studentName": "Raka P.",
         "grade": "Kelas 1 SD",
         "city": "Bandung",
         "province": "Jawa Barat",
@@ -243,12 +226,12 @@
         "practicumTokens": 50,
         "totalMonthlyTokens": 450,
         "chaptersCompleted": 4,
-        "siPalingPintarCount": 4,
+        "firstTryPerfectCount": 4,
         "hiddenGradingReady": true
       },
       {
         "rank": 2,
-        "studentName": "Salsa Azzahra",
+        "studentName": "Salsa A.",
         "grade": "Kelas 1 SD",
         "city": "Surabaya",
         "province": "Jawa Timur",
@@ -257,12 +240,12 @@
         "practicumTokens": 50,
         "totalMonthlyTokens": 450,
         "chaptersCompleted": 4,
-        "siPalingPintarCount": 3,
+        "firstTryPerfectCount": 3,
         "hiddenGradingReady": true
       },
       {
         "rank": 3,
-        "studentName": "Dimas Nugroho",
+        "studentName": "Dimas N.",
         "grade": "Kelas 2 SD",
         "city": "Yogyakarta",
         "province": "DI Yogyakarta",
@@ -271,12 +254,12 @@
         "practicumTokens": 50,
         "totalMonthlyTokens": 450,
         "chaptersCompleted": 4,
-        "siPalingPintarCount": 3,
+        "firstTryPerfectCount": 3,
         "hiddenGradingReady": true
       },
       {
         "rank": 4,
-        "studentName": "Nadya Putri",
+        "studentName": "Nadya P.",
         "grade": "Kelas 3 SD",
         "city": "Makassar",
         "province": "Sulawesi Selatan",
@@ -285,12 +268,12 @@
         "practicumTokens": 0,
         "totalMonthlyTokens": 300,
         "chaptersCompleted": 3,
-        "siPalingPintarCount": 3,
+        "firstTryPerfectCount": 3,
         "hiddenGradingReady": false
       },
       {
         "rank": 5,
-        "studentName": "Fajar Ramadhan",
+        "studentName": "Fajar R.",
         "grade": "Kelas 6 SD",
         "city": "Medan",
         "province": "Sumatera Utara",
@@ -299,52 +282,43 @@
         "practicumTokens": 0,
         "totalMonthlyTokens": 300,
         "chaptersCompleted": 3,
-        "siPalingPintarCount": 2,
+        "firstTryPerfectCount": 2,
         "hiddenGradingReady": false
       }
     ],
-    "scholarshipDisbursementReports": [
+    "laporanBeasiswa": [
       {
-        "batchId": "BEASISWA-IGIL-2026-10",
+        "id": "2026-11",
+        "periodLabel": "November 2026",
+        "status": "berjalan",
+        "jumlahSiswa": 500,
+        "totalDanaRupiah": 50000000,
+        "surplusRupiah": 0,
+        "penerima": [],
+        "alasanBelumTerdistribusi": "Bulan masih berjalan. Penerima beasiswa ditetapkan dan dana disalurkan setelah bulan ditutup pada akhir bulan (pukul 23:59 WIB)."
+      },
+      {
+        "id": "2026-10",
         "periodLabel": "Oktober 2026",
-        "status": "TELAH DISALURKAN 100%",
-        "disbursementDate": "31 Oktober 2026",
-        "totalPoolRupiah": 42500000,
-        "from90PercentRupiah": 40500000,
-        "fromOperationalSurplusRupiah": 2000000,
-        "totalRecipients": 85,
-        "topRecipientsHighlight": [
-          {
-            "studentName": "Kirana Dewi",
-            "grade": "Kelas 1 SD",
-            "city": "Denpasar, Bali",
-            "tokensAchieved": 600,
-            "hiddenPracticumScore": 98.5,
-            "category": "Juara 1 Nasional & Si Paling Pintar",
-            "scholarshipAmountRupiah": 1500000,
-            "verificationCode": "IGIL-BEA-2610-001"
-          },
-          {
-            "studentName": "Bima Sakti",
-            "grade": "Kelas 4 SD",
-            "city": "Semarang, Jawa Tengah",
-            "tokensAchieved": 600,
-            "hiddenPracticumScore": 97.0,
-            "category": "Juara 2 Nasional & Si Paling Pintar",
-            "scholarshipAmountRupiah": 1250000,
-            "verificationCode": "IGIL-BEA-2610-002"
-          },
-          {
-            "studentName": "Aulia Rahman",
-            "grade": "Kelas 6 SD",
-            "city": "Palembang, Sumatera Selatan",
-            "tokensAchieved": 600,
-            "hiddenPracticumScore": 96.2,
-            "category": "Juara 3 Nasional & Si Paling Pintar",
-            "scholarshipAmountRupiah": 1000000,
-            "verificationCode": "IGIL-BEA-2610-003"
-          }
-        ]
+        "status": "ditutup",
+        "jumlahSiswa": 450,
+        "totalDanaRupiah": 45000000,
+        "surplusRupiah": 2000000,
+        "penerima": [
+          { "nama": "Kirana D.", "kelas": "Kelas 1 SD", "kota": "Denpasar, Bali", "nominalRupiah": 3500000 },
+          { "nama": "Raka P.", "kelas": "Kelas 1 SD", "kota": "Bandung, Jawa Barat", "nominalRupiah": 3000000 },
+          { "nama": "Bima S.", "kelas": "Kelas 4 SD", "kota": "Semarang, Jawa Tengah", "nominalRupiah": 3000000 },
+          { "nama": "Aulia R.", "kelas": "Kelas 6 SD", "kota": "Palembang, Sumatera Selatan", "nominalRupiah": 3000000 },
+          { "nama": "Salsa A.", "kelas": "Kelas 2 SD", "kota": "Surabaya, Jawa Timur", "nominalRupiah": 2500000 },
+          { "nama": "Nadya P.", "kelas": "Kelas 3 SD", "kota": "Makassar, Sulawesi Selatan", "nominalRupiah": 2500000 },
+          { "nama": "Fajar R.", "kelas": "Kelas 5 SD", "kota": "Medan, Sumatera Utara", "nominalRupiah": 2500000 },
+          { "nama": "Dimas N.", "kelas": "Kelas 2 SD", "kota": "Yogyakarta, DI Yogyakarta", "nominalRupiah": 2000000 },
+          { "nama": "Rafi H.", "kelas": "Kelas 3 SD", "kota": "Malang, Jawa Timur", "nominalRupiah": 2000000 },
+          { "nama": "Zahra L.", "kelas": "Kelas 4 SD", "kota": "Padang, Sumatera Barat", "nominalRupiah": 2000000 },
+          { "nama": "Intan W.", "kelas": "Kelas 5 SD", "kota": "Balikpapan, Kalimantan Timur", "nominalRupiah": 2000000 },
+          { "nama": "Gilang M.", "kelas": "Kelas 6 SD", "kota": "Pontianak, Kalimantan Barat", "nominalRupiah": 2000000 }
+        ],
+        "alasanBelumTerdistribusi": "Hanya 12 siswa yang memenuhi semua syarat bulan ini: Ujian 100%, Praktikum sudah dinilai, dan verifikasi lisan lolos. Dana yang tidak terpakai tidak hangus dan dibawa ke Kolam Beasiswa bulan berikutnya."
       }
     ]
   }

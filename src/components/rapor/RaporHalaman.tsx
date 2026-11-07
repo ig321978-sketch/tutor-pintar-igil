@@ -34,7 +34,7 @@ type BabRapor = {
   skorUjian: number | null;
   percobaan: number;
   tokenUjian: number;
-  siPalingPintar: boolean;
+  lulusPertama: boolean;
 };
 
 const BAB_KELAS1: BabRapor[] = [
@@ -48,7 +48,7 @@ const BAB_KELAS1: BabRapor[] = [
     skorUjian: bab1.examScore,
     percobaan: bab1.examAttempts,
     tokenUjian: bab1.examTokens,
-    siPalingPintar: bab1.siPalingPintar,
+    lulusPertama: bab1.firstTryPerfect,
   },
   ...[
     ["k1-mat-bab2", JUDUL_MTK_1_BAB2],
@@ -65,7 +65,7 @@ const BAB_KELAS1: BabRapor[] = [
     skorUjian: null,
     percobaan: 0,
     tokenUjian: 0,
-    siPalingPintar: false,
+    lulusPertama: false,
   })),
 ];
 
@@ -221,7 +221,7 @@ function KartuBab({ bab, nomor }: { bab: BabRapor; nomor: number }) {
             </span>
           )}
         </div>
-        {bab.siPalingPintar ? (
+        {bab.lulusPertama ? (
           <span
             title="Papan Kualifikasi Beasiswa"
             className="shrink-0 rounded-full bg-amber-400 px-2.5 py-1 text-xs font-black text-indigo-950 shadow"
@@ -273,7 +273,7 @@ function KartuBab({ bab, nomor }: { bab: BabRapor; nomor: number }) {
         />
       </div>
 
-      {bab.siPalingPintar ? (
+      {bab.lulusPertama ? (
         <p className="mt-3 rounded-xl bg-amber-50 p-2 text-xs font-bold leading-snug text-indigo-950">
           🌟 Lulus Ujian 100% di percobaan pertama · Sesi Belajar Sah (Tervalidasi Server).
         </p>

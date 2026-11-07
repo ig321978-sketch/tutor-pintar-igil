@@ -15,7 +15,6 @@ import {
 
 const ranking = data.rankingPage;
 const skema = ranking.scholarshipScheme9010;
-const kolam = skema.currentMonthPoolSummary;
 const bab1 = data.raporPage.sampleChaptersProgress[0];
 const BAB_PER_BLOK = data.tokenEconomy.perBlockChapters;
 const POIN_LATIHAN = data.tokenEconomy.perChapterTokens.practice;
@@ -81,7 +80,7 @@ function TabPeringkat() {
 
   const praktikumSaya = PRAKTIKUM_SAYA_DIKIRIM ? POIN_PRAKTIKUM : 0;
   const tokenSaya = bab1.practiceTokens + bab1.examTokens + praktikumSaya;
-  const lencanaSaya = bab1.siPalingPintar ? 1 : 0;
+  const lencanaSaya = bab1.firstTryPerfect ? 1 : 0;
 
   const papan = useMemo<BarisPapan[]>(() => {
     const dasar = ranking.leaderboardSample.map((s) => ({
@@ -89,7 +88,7 @@ function TabPeringkat() {
       kelas: s.grade,
       kota: s.city,
       provinsi: s.province,
-      lencana: s.siPalingPintarCount,
+      lencana: s.firstTryPerfectCount,
       praktikumSiap: s.hiddenGradingReady,
       latihan: s.practiceTokens,
       ujian: s.examTokens,
@@ -113,7 +112,7 @@ function TabPeringkat() {
     return [...dasar, saya]
       .sort((a, b) => b.token - a.token || b.lencana - a.lencana)
       .map((b, i) => ({ ...b, rank: i + 1 }));
-  }, [nama, kelas, kota, tokenSaya, lencanaSaya]);
+  }, [nama, kelas, kota, tokenSaya, lencanaSaya, praktikumSaya]);
 
   const saya = papan.find((b) => b.milikPengguna);
   const tampil = papan.filter((b) => filter === ranking.gradeFilters[0] || b.kelas === filter);
@@ -248,67 +247,43 @@ function TabPeringkat() {
   );
 }
 
-function AliranDana() {
-  const plafon = kolam.operational10PercentRupiah - kolam.realServerCostRupiah - kolam.operationalSurplusReturnedRupiah;
-  const potong = [
-    { label: "Biaya server riil", nilai: kolam.realServerCostRupiah, warna: "bg-indigo-300 text-indigo-950" },
-    { label: "Plafon hidup layak founder", nilai: plafon, warna: "bg-[#1C01A5] text-white" },
-    { label: "Surplus kembali ke beasiswa", nilai: kolam.operationalSurplusReturnedRupiah, warna: "bg-amber-400 text-indigo-950" },
-  ];
-  const jumlah = kolam.operational10PercentRupiah;
+type Penerima = { nama: string; kelas: string; kota: string; nominalRupiah: number };
+type LaporanBulan = {
+  id: string;
+  periodLabel: string;
+  status: string;
+  jumlahSiswa: number;
+  totalDanaRupiah: number;
+  surplusRupiah: number;
+  penerima: Penerima[];
+  alasanBelumTerdistribusi: string;
+};
+const LAPORAN = ranking.laporanBeasiswa as LaporanBulan[];
+
+function KartuAngka({ ikon, judul, nilai, catatan, sorot }: { ikon: string; judul: string; nilai: string; catatan?: string; sorot?: boolean }) {
   return (
-    <section className="rounded-3xl border-2 border-indigo-100 bg-white p-4 shadow-sm sm:p-5">
-      <h3 className="text-base font-black text-indigo-950">🔎 Ke mana 10% Kolam Operasional pergi?</h3>
-      <div className="mt-3 flex h-10 overflow-hidden rounded-full ring-1 ring-indigo-100" role="img" aria-label="Pembagian kolam operasional">
-        {potong.map((p) => (
-          <div
-            key={p.label}
-            className={`flex items-center justify-center text-[11px] font-black ${p.warna}`}
-            style={{ width: `${(p.nilai / jumlah) * 100}%` }}
-          >
-            {Math.round((p.nilai / jumlah) * 100)}%
-          </div>
-        ))}
-      </div>
-      <ul className="mt-3 space-y-1.5">
-        {potong.map((p) => (
-          <li key={p.label} className="flex items-center gap-2 text-sm font-bold text-indigo-950">
-            <span aria-hidden="true" className={`h-3.5 w-3.5 shrink-0 rounded-full ${p.warna.split(" ")[0]}`} />
-            <span className="min-w-0 flex-1">{p.label}</span>
-            <span className="shrink-0 tabular-nums">{rupiah(p.nilai)}</span>
-          </li>
-        ))}
-      </ul>
-      <p className="mt-2 text-xs font-semibold text-slate-500">
-        Status plafon biaya hidup layak founder: {kolam.founderLivingCapStatus}.
+    <div className={`rounded-2xl border-2 border-indigo-100 p-3 shadow-sm ${sorot ? "bg-amber-400" : "bg-white"}`}>
+      <p className="text-2xl leading-none" aria-hidden="true">
+        {ikon}
       </p>
-    </section>
+      <p className="mt-1 text-xs font-black leading-tight text-indigo-950/80">{judul}</p>
+      <p className="mt-1 break-words text-lg font-black leading-tight text-indigo-950">{nilai}</p>
+      {catatan ? <p className="mt-1 text-[11px] font-bold leading-snug text-indigo-950/70">{catatan}</p> : null}
+    </div>
   );
 }
 
 function TabBeasiswa() {
   const [p90, p10] = skema.pillars;
-  const metrik = [
-    { ikon: "🎯", judul: "Dana Langsung 90%", nilai: rupiah(kolam.DirectScholarship90PercentRupiah), warna: "bg-white" },
-    {
-      ikon: "🖥️",
-      judul: "Biaya Server Riil & Operasional",
-      nilai: rupiah(kolam.operational10PercentRupiah - kolam.operationalSurplusReturnedRupiah),
-      warna: "bg-white",
-    },
-    {
-      ikon: "♻️",
-      judul: "Surplus Operasional Dikembalikan",
-      nilai: rupiah(kolam.operationalSurplusReturnedRupiah),
-      warna: "bg-white",
-    },
-    {
-      ikon: "🏆",
-      judul: "Total Kolam Beasiswa Aktif",
-      nilai: rupiah(kolam.totalActiveScholarshipPoolRupiah),
-      warna: "bg-amber-400",
-    },
-  ];
+  const [idAktif, setIdAktif] = useState(LAPORAN[0].id);
+  const lap = LAPORAN.find((l) => l.id === idAktif) ?? LAPORAN[0];
+
+  const dari90 = Math.round(lap.totalDanaRupiah * 0.9);
+  // Surplus (jika ada) langsung digabung ke Kolam Beasiswa.
+  const kolamBeasiswa = dari90 + lap.surplusRupiah;
+  const terdistribusi = lap.penerima.reduce((n, p) => n + p.nominalRupiah, 0);
+  const belum = kolamBeasiswa - terdistribusi;
+
   return (
     <div className="space-y-4">
       <section className="overflow-hidden rounded-3xl bg-gradient-to-br from-indigo-900 via-violet-900 to-indigo-950 p-4 text-white shadow-lg sm:p-6">
@@ -316,7 +291,7 @@ function TabBeasiswa() {
         <div
           className="mt-4 flex h-14 overflow-hidden rounded-2xl text-xl font-black"
           role="img"
-          aria-label="Diagram pembagian 90 persen beasiswa dan 10 persen operasional"
+          aria-label="Diagram pembagian 90 persen Kolam Beasiswa dan 10 persen Kolam Operasional"
         >
           <div className="flex items-center justify-center bg-amber-400 text-indigo-950" style={{ width: "90%" }}>
             90%
@@ -325,111 +300,101 @@ function TabBeasiswa() {
             10%
           </div>
         </div>
-        <div className="mt-4 grid gap-3 md:grid-cols-2">
+        <div className="mt-3 grid gap-2 sm:grid-cols-2">
           {[p90, p10].map((p, i) => (
-            <div key={p.percentage} className="rounded-2xl bg-white/10 p-3 ring-1 ring-white/20">
-              <p className="flex items-center gap-2">
-                <span
-                  className={`rounded-full px-3 py-0.5 text-lg font-black ${i === 0 ? "bg-amber-400 text-indigo-950" : "bg-white text-[#1C01A5]"}`}
-                >
-                  {p.percentage}
-                </span>
-                <span className="min-w-0 flex-1 text-sm font-black leading-snug">{p.title}</span>
-              </p>
-              <p className="mt-2 text-xs font-semibold leading-relaxed text-indigo-100">{p.description}</p>
-            </div>
+            <p key={p.percentage} className="flex items-center gap-2 rounded-2xl bg-white/10 p-3 ring-1 ring-white/20">
+              <span
+                className={`rounded-full px-3 py-0.5 text-lg font-black ${i === 0 ? "bg-amber-400 text-indigo-950" : "bg-white text-[#1C01A5]"}`}
+              >
+                {p.percentage}
+              </span>
+              <span className="min-w-0 flex-1 text-sm font-black leading-snug">{p.title}</span>
+            </p>
           ))}
         </div>
       </section>
 
-      <section aria-label="Metrik kolam bulan berjalan" className="space-y-2">
-        <h3 className="text-base font-black text-indigo-950">📅 {kolam.periodLabel}</h3>
-        <div className="grid grid-cols-2 gap-2 md:grid-cols-4">
-          {metrik.map((m) => (
-            <div key={m.judul} className={`rounded-2xl border-2 border-indigo-100 p-3 shadow-sm ${m.warna}`}>
-              <p className="text-2xl leading-none" aria-hidden="true">
-                {m.ikon}
-              </p>
-              <p className="mt-1 text-xs font-black leading-tight text-indigo-950/80">{m.judul}</p>
-              <p className="mt-1 break-words text-base font-black leading-tight text-indigo-950 sm:text-lg">{m.nilai}</p>
-            </div>
-          ))}
+      <div className="flex gap-2 overflow-x-auto pb-1" role="group" aria-label="Pilih bulan laporan">
+        {LAPORAN.map((l) => {
+          const menyala = l.id === lap.id;
+          return (
+            <button
+              key={l.id}
+              type="button"
+              aria-pressed={menyala}
+              onClick={() => setIdAktif(l.id)}
+              className={`shrink-0 rounded-full px-4 py-2 text-sm font-black ${
+                menyala
+                  ? "border-amber-400 bg-amber-400 text-indigo-950"
+                  : "border-[#1C01A5] bg-white text-[#1C01A5] hover:bg-indigo-50"
+              }`}
+            >
+              {l.periodLabel}
+              {l.status === "berjalan" ? " (berjalan)" : ""}
+            </button>
+          );
+        })}
+      </div>
+
+      <section aria-label={`Ringkasan dana ${lap.periodLabel}`} className="space-y-2">
+        <h3 className="text-base font-black text-indigo-950">📅 {lap.periodLabel}</h3>
+        <div className="grid grid-cols-2 gap-2 md:grid-cols-3">
+          <KartuAngka ikon="👧" judul="Jumlah Siswa" nilai={`${angkaId(lap.jumlahSiswa)} siswa`} />
+          <KartuAngka ikon="💰" judul="Total Dana" nilai={rupiah(lap.totalDanaRupiah)} />
+          <div className="col-span-2 md:col-span-1">
+            <KartuAngka
+              ikon="🏆"
+              judul="Kolam Beasiswa"
+              nilai={rupiah(kolamBeasiswa)}
+              catatan={lap.surplusRupiah > 0 ? `Sudah termasuk surplus ${rupiah(lap.surplusRupiah)}` : undefined}
+              sorot
+            />
+          </div>
         </div>
-        <p className="rounded-2xl bg-amber-50 p-3 text-sm font-black text-indigo-950">
-          <Koin kelas="mr-1 h-5 w-5" />
-          Poin Kualifikasi bukan uang tunai dan tidak punya nilai tukar tetap. Poin hanya menentukan peringkat kandidat di
-          fase ini.
+      </section>
+
+      <section aria-label="Beasiswa terdistribusikan" className="overflow-hidden rounded-3xl border-2 border-indigo-100 bg-white shadow-sm">
+        <header className="flex items-center gap-2 bg-[#1C01A5] p-4 text-white">
+          <p className="min-w-0 flex-1 text-base font-black leading-tight">✅ Beasiswa Terdistribusikan</p>
+          <span className="shrink-0 rounded-full bg-amber-400 px-3 py-1 text-sm font-black text-indigo-950">
+            {rupiah(terdistribusi)}
+          </span>
+        </header>
+        {lap.penerima.length === 0 ? (
+          <p className="p-4 text-sm font-bold text-slate-500">Belum ada penerima. Daftar muncul setelah bulan ditutup.</p>
+        ) : (
+          <ul>
+            {lap.penerima.map((p) => (
+              <li key={p.nama + p.kota} className="flex items-center gap-3 border-t border-indigo-100 px-4 py-3 first:border-t-0">
+                <div className="min-w-0 flex-1">
+                  <p className="break-words text-sm font-black leading-tight text-indigo-950">{p.nama}</p>
+                  <p className="text-xs font-semibold text-slate-500">
+                    {p.kelas} · {p.kota}
+                  </p>
+                </div>
+                <span className="shrink-0 text-sm font-black tabular-nums text-indigo-950">{rupiah(p.nominalRupiah)}</span>
+              </li>
+            ))}
+          </ul>
+        )}
+      </section>
+
+      <section aria-label="Beasiswa belum terdistribusikan" className="rounded-3xl border-2 border-amber-400 bg-amber-50 p-4 shadow-sm">
+        <div className="flex items-center gap-2">
+          <p className="min-w-0 flex-1 text-base font-black leading-tight text-indigo-950">⏳ Beasiswa Belum Terdistribusikan</p>
+          <span className="shrink-0 rounded-full bg-amber-400 px-3 py-1 text-sm font-black text-indigo-950">{rupiah(belum)}</span>
+        </div>
+        <p className="mt-2 text-sm font-semibold leading-relaxed text-indigo-950">
+          <span className="font-black">Alasan: </span>
+          {lap.alasanBelumTerdistribusi}
         </p>
       </section>
 
-      <AliranDana />
-
-      <section aria-label="Arsip penyaluran beasiswa" className="space-y-3">
-        <h3 className="text-base font-black text-indigo-950">📚 Arsip Penyaluran Bulanan</h3>
-        {ranking.scholarshipDisbursementReports.map((r) => (
-          <article key={r.batchId} className="overflow-hidden rounded-3xl border-2 border-indigo-100 bg-white shadow-sm">
-            <header className="flex flex-wrap items-center gap-2 bg-[#1C01A5] p-4 text-white">
-              <div className="min-w-0 flex-1">
-                <p className="text-lg font-black">{r.periodLabel}</p>
-                <p className="text-xs font-semibold text-indigo-200">
-                  Disalurkan {r.disbursementDate} · {r.batchId}
-                </p>
-              </div>
-              <span className="rounded-full bg-emerald-400 px-3 py-1 text-xs font-black text-emerald-950">
-                ✓ {r.status}
-              </span>
-            </header>
-            <div className="grid grid-cols-2 gap-2 p-3 sm:grid-cols-4">
-              {[
-                ["Total kolam", rupiah(r.totalPoolRupiah)],
-                ["Dari 90%", rupiah(r.from90PercentRupiah)],
-                ["Dari surplus", rupiah(r.fromOperationalSurplusRupiah)],
-                ["Penerima", `${angkaId(r.totalRecipients)} siswa`],
-              ].map(([k, v]) => (
-                <div key={k} className="rounded-2xl bg-indigo-50/40 p-2.5">
-                  <p className="text-[11px] font-black uppercase text-indigo-950/60">{k}</p>
-                  <p className="text-sm font-black text-indigo-950">{v}</p>
-                </div>
-              ))}
-            </div>
-            <ul className="space-y-2 p-3 pt-0">
-              {r.topRecipientsHighlight.map((s, i) => (
-                <li key={s.verificationCode} className="rounded-2xl border-2 border-indigo-100 p-3">
-                  <div className="flex items-start gap-3">
-                    <Medali rank={i + 1} />
-                    <div className="min-w-0 flex-1">
-                      <p className="break-words text-sm font-black text-indigo-950">{s.studentName}</p>
-                      <p className="text-xs font-semibold text-slate-500">
-                        {s.grade} · {s.city}
-                      </p>
-                      <p className="mt-0.5 text-xs font-bold text-[#1C01A5]">{s.category}</p>
-                    </div>
-                    <span className="shrink-0 rounded-full bg-amber-400 px-3 py-1 text-sm font-black text-indigo-950">
-                      {rupiah(s.scholarshipAmountRupiah)}
-                    </span>
-                  </div>
-                  <dl className="mt-2 grid grid-cols-2 gap-2 text-xs">
-                    <div className="rounded-xl bg-indigo-50/40 p-2">
-                      <dt className="font-bold text-slate-500">Total token</dt>
-                      <dd className="font-black text-indigo-950">
-                        <Koin kelas="mr-1 h-4 w-4" />
-                        {angkaId(s.tokensAchieved)}
-                      </dd>
-                    </div>
-                    <div className="rounded-xl bg-indigo-50/40 p-2">
-                      <dt className="font-bold text-slate-500">Skor akhir Praktikum</dt>
-                      <dd className="font-black text-indigo-950">{s.hiddenPracticumScore}</dd>
-                    </div>
-                  </dl>
-                  <p className="mt-2 break-all rounded-xl bg-[#1C01A5] px-2.5 py-1.5 font-mono text-xs font-black text-amber-300">
-                    {s.verificationCode}
-                  </p>
-                </li>
-              ))}
-            </ul>
-          </article>
-        ))}
-      </section>
+      <p className="rounded-2xl bg-amber-50 p-3 text-sm font-black text-indigo-950">
+        <Koin kelas="mr-1 h-5 w-5" />
+        Poin Kualifikasi bukan uang tunai dan tidak punya nilai tukar tetap. Poin hanya menentukan peringkat kandidat di
+        fase ini.
+      </p>
     </div>
   );
 }
