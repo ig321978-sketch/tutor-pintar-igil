@@ -122,9 +122,12 @@ Pada tahap Pilot Project, platform IGIL HANYA melayani jenjang Sekolah Dasar (Ke
 ---
 
 ## 7. DELAPAN PINTU PERTAHANAN ANTI-KECURANGAN (5 ATURAN SERVER + 3 GERBANG PENCAIRAN)
-Skema final ada di `supabase/migrations/01_igil_eight_gates_schema.sql`. Tidak ada tabel vektor wajah, tidak ada kolom gambar, tidak ada NIK, tidak ada nomor Kartu Keluarga, dan tidak ada nomor rekening di tabel IGIL.
+Skema final ada di `supabase/migrations/01_igil_eight_gates_schema.sql` dan `supabase/migrations/02_parent_pin_in_app.sql`. Tidak ada tabel vektor wajah, tidak ada kolom gambar, tidak ada NIK, tidak ada nomor Kartu Keluarga, dan tidak ada nomor rekening di tabel IGIL.
 
-Seluruh penjelasan cara kerja, undangan sapaan, dan hasil beasiswa hanya ditampilkan di aplikasi pada akun yang sedang login. IGIL tidak mengirim email dan tidak mengirim WhatsApp kepada orang tua.
+Seluruh informasi, peringatan, dan alur verifikasi IGIL berjalan **100% In-App (Hanya di Dalam Aplikasi untuk Akun yang Login)**:
+
+- **Larangan Notifikasi Eksternal (Zero Email & Zero WhatsApp):** Sistem DILARANG mengirim pemberitahuan apa pun ke Email atau WhatsApp orang tua. Seluruh informasi aturan, status token, jeda ujian, pengumuman nominasi pemenang, pemilihan slot kalender 3 hari, hingga akses ruang panggilan 2 menit HANYA ditampilkan di dalam aplikasi sesuai sesi akun yang sedang login. OTP ponsel, SMS, dan surel tidak dipakai.
+- **Pengganti OTP Ponsel dengan In-App Parental PIN:** Pengaturan rekening orang tua tidak memakai kode OTP ponsel. Penggantinya **6-Digit PIN Keamanan Orang Tua (`parent_pin_hash`)** yang diverifikasi langsung di dalam aplikasi. PIN tidak disimpan. Yang disimpan hanya bcrypt di `private.household_pins.parent_pin_hash`, tidak pernah dikirim ke klien. SHA-256 tidak dipakai untuk PIN karena enam digit mudah ditebak ulang. Lima kali gagal mengunci percobaan selama 15 menit. Mengubah `payout_holder_name` atau `gateway_payout_ref` wajib memasukkan PIN yang cocok.
 
 ### A. SAAT BERLANGGANAN & BELAJAR HARIAN (OTOMATIS DI SERVER SUPABASE)
 1. **Data Pendaftaran Minimalis, HMAC-SHA256 NISN, & Kode Undangan Rumah:**
