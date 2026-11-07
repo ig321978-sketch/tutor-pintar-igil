@@ -5,11 +5,10 @@ import { createContext, useContext, useEffect, useLayoutEffect, useState, type R
 import { bacaProgres } from "@/lib/progres";
 import { subbabBukuSiswa } from "@/lib/subbab-buku-siswa";
 
-const TOKEN_SOAL_LATIHAN = 5;
-const TOKEN_SOAL_EVALUASI = 10;
-const MAKS_TOKEN_LATIHAN = 50;
-const MAKS_TOKEN_EVALUASI = 100;
-const HARGA_TOKEN_RP = 500;
+const TOKEN_SOAL_LATIHAN = 3;
+const TOKEN_SOAL_EVALUASI = 7;
+const MAKS_TOKEN_LATIHAN = 30;
+const MAKS_TOKEN_EVALUASI = 70;
 
 type KonteksDompet = {
   judul: string;
@@ -129,13 +128,10 @@ export function BalokDompet({ judul }: { judul: string }) {
         <Coins className="h-8 w-8 shrink-0 animate-bounce text-amber-400" aria-hidden />
         <div className="min-w-0">
           <div className="text-[11px] font-semibold uppercase tracking-wider text-amber-200">
-            Dompet Bab Ini (Maks 150)
+            Dompet Bab Ini (Maks 100)
           </div>
           <div className="flex flex-wrap items-baseline gap-x-2">
             <span className="text-lg font-black text-amber-400">{token} Poin</span>
-            <span className="text-xs font-bold text-emerald-400">
-              (= Rp {(token * HARGA_TOKEN_RP).toLocaleString("id-ID")})
-            </span>
           </div>
         </div>
       </div>

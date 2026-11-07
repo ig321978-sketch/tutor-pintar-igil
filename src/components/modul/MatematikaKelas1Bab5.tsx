@@ -1037,7 +1037,7 @@ export default function MatematikaKelas1Bab5({
     setChapterCompletedFlag(true);
     playSound("fanfare");
     const tokenBab = Math.min(150, practiceTokens + examTokens + 50);
-    speakIGIL(`Selamat ${studentName}! Skor karyamu ${totalQualityScore} dari 1000. Poin bab ini sekarang ${tokenBab}.`);
+    speakIGIL(`Selamat ${studentName}! Skor karyamu ${totalQualityScore} dari 1000. Poin Latihan dan Ujian bab ini sekarang ${practiceTokens + examTokens}.`);
     onChapterComplete?.({
       chapterId: CHAPTER_COMPETENCY_METADATA.chapterId,
       studentId,
@@ -1093,7 +1093,7 @@ export default function MatematikaKelas1Bab5({
           <div className="flex items-center gap-3 rounded-2xl border-b-4 border-slate-700 bg-slate-900 px-4 py-2.5 text-white">
             <div className="text-right">
               <div className="text-[11px] font-bold uppercase tracking-wider text-amber-300">Dompet bab</div>
-              <div className="text-xl font-black text-amber-400">{totalTokens} / 150 Poin</div>
+              <div className="text-xl font-black text-amber-400">{practiceTokens + examTokens} / 100 Poin</div>
               <div className="text-[10px] text-slate-300">Latihan {practiceTokens}/30 • Ujian {examTokens}/70 • Praktikum {practicumTokens}/50</div>
             </div>
             <button type="button" onClick={() => speakIGIL(`Halo ${studentName}! Kita belajar bilangan 11 sampai 20 bersama Kira, Upe, Malosi, dan Tora.`)} className="rounded-xl border-b-4 border-amber-600 bg-amber-400 px-3 py-2 text-xs font-extrabold text-slate-950">

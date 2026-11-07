@@ -792,7 +792,7 @@ export default function IgilModulePlayer() {
   const practicumTokens = pracSubmitted ? materiBab1.tokens.practicum : 0;
   const totalTokens = practiceTokens + examTokens + practicumTokens;
   const batasToken =
-    materiBab1.tokens.practice + materiBab1.tokens.exam + materiBab1.tokens.practicum;
+    materiBab1.tokens.practice + materiBab1.tokens.exam;
 
   // ============================================================================
   // SUARA GURU IGIL — Web Speech API di peramban, tanpa API eksternal
@@ -956,7 +956,7 @@ export default function IgilModulePlayer() {
                 </div>
                 <div className="flex items-center gap-2 text-xl font-black text-[#1C01A5] md:text-2xl">
                   <span className="igil-lompat inline-block text-3xl" aria-hidden="true">💰</span>
-                  <span>{totalTokens}</span>
+                  <span>{practiceTokens + examTokens}</span>
                   <span className="text-xs text-[#F0AB00]">/ {batasToken} Poin</span>
                 </div>
                 <div className="mt-2 flex flex-wrap gap-1.5 text-[11px] font-black text-[#1C01A5]">

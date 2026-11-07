@@ -24,7 +24,7 @@
  *   4) Khan Kids Audio-First  : Panggung soal minim teks dengan tombol 🔊 Suara di
  *                               setiap soal dan di setiap tombol pilihan jawaban.
  * - Tokenomics     : Floating Utility Poin (Tanpa konversi Rupiah di UI).
- *                    Total 150 Poin/Bab:
+ *                    Latihan + Ujian 100 Poin/Bab, Praktikum 50 Poin per blok 4 bab:
  *                    • Pulau 4 (Latihan)   : Maks. 30 Poin (+3 Poin/soal)
  *                    • Pulau 5 (Ujian)     : Maks. 70 Poin (+7 Poin/soal)
  *                    • Pulau 6 (Praktikum) : Maks. 50 Poin + Skor 0–1.000 Poin
@@ -122,7 +122,7 @@ export interface ChapterCompletionPayload {
   practiceTokensEarned: number;   // Maks 30
   examTokensEarned: number;       // Maks 70
   practicumTokensEarned: number;  // Maks 50
-  totalChapterTokens: number;     // Maks 150
+  totalChapterTokens: number;     // Maks 100 (Latihan + Ujian)
   examScore: number;              // Wajib 100
   practicumRubric: PracticumEvaluationRubric;
   telemetry: {
@@ -645,7 +645,7 @@ export default function MatematikaKelas1Bab2Hibrida({
   const [card2Unlocked, setCard2Unlocked] = useState<boolean>(false);
   const [card5Unlocked, setCard5Unlocked] = useState<boolean>(false);
   const [card6Unlocked, setCard6Unlocked] = useState<boolean>(false);
-  // Tokenomics Floating (Tanpa Konversi Rupiah: 30 + 70 + 50 = 150 Poin)
+  // Tokenomics Floating (Tanpa Konversi Rupiah: Latihan 30 + Ujian 70 = 100 Poin per bab)
   const [practiceTokens, setPracticeTokens] = useState<number>(0);
   const [examTokens, setExamTokens] = useState<number>(0);
   const [practicumTokens, setPracticumTokens] = useState<number>(0);
@@ -1226,7 +1226,7 @@ export default function MatematikaKelas1Bab2Hibrida({
     setChapterCompletedFlag(true);
     playSound("fanfare");
     speakIGIL(
-      `Luar biasa ${studentName}! Praktikum penjumlahanmu meraih skor kualitas ${totalQualityScore} dari 1000 poin dan kamu mengantongi 150 Poin penuh!`
+      `Luar biasa ${studentName}! Praktikum penjumlahanmu meraih skor kualitas ${totalQualityScore} dari 1000 poin dan poin Praktikum tercatat!`
     );
     const payload: ChapterCompletionPayload = {
       chapterId: CHAPTER_COMPETENCY_METADATA.chapterId,
@@ -1486,7 +1486,7 @@ export default function MatematikaKelas1Bab2Hibrida({
             <div className="bg-[#F0AB00] text-[#1C01A5] px-4 py-2.5 rounded-2xl border-b-4 border-[#F0AB00]">
               <div className="text-[10px] font-black uppercase">Tiket Kualifikasi Bab</div>
               <div className="text-xl font-black">
-                🪙 {totalTokens} <span className="text-xs">/ 150 Poin</span>
+                🪙 {practiceTokens + examTokens} <span className="text-xs">/ 100 Poin</span>
               </div>
             </div>
             <button
@@ -2806,7 +2806,7 @@ export default function MatematikaKelas1Bab2Hibrida({
                     <p className="text-xs text-[#FFFFFF]">{practicumRubric.aiFeedbackSummary}</p>
                     {chapterCompletedFlag && (
                       <div className="text-xs font-black text-[#FFE566]">
-                        ✅ Bab 2 Tuntas Paripurna (150/150 Poin).
+                        ✅ Bab 2 Tuntas Paripurna (100/100 Poin Latihan dan Ujian).
                       </div>
                     )}
                   </div>

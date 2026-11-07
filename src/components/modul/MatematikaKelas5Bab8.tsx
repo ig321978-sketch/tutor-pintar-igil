@@ -876,7 +876,7 @@ export default function MatematikaKelas5Bab8({
             </button>
             <div className="rounded-2xl border-2 border-amber-400 bg-slate-950 px-4 py-1">
               <div className="text-[10px] font-bold uppercase text-amber-200">Poin bab ini</div>
-              <div className="text-base font-black text-amber-400">{totalTokens} / 150</div>
+              <div className="text-base font-black text-amber-400">{practiceTokens + examTokens} / 100</div>
             </div>
           </div>
         </div>
@@ -1511,7 +1511,7 @@ export default function MatematikaKelas5Bab8({
               <div className="space-y-3 rounded-2xl border-2 border-amber-400 bg-indigo-950 p-5 text-white">
                 <div className="flex flex-wrap items-center justify-between gap-2">
                   <h3 className="text-xl font-black">Skor karya {evaluatedRubric.totalQualityScore} / 1.000</h3>
-                  <span className="rounded-xl bg-emerald-500 px-3 py-1.5 text-xs font-black text-slate-950">Poin bab {totalTokens} / 150</span>
+                  <span className="rounded-xl bg-emerald-500 px-3 py-1.5 text-xs font-black text-slate-950">Poin bab {practiceTokens + examTokens} / 100</span>
                 </div>
                 <div className="grid grid-cols-2 gap-2 text-xs md:grid-cols-4">
                   <div className="rounded-xl bg-slate-900 p-3">Akurasi {evaluatedRubric.accuracyScore}/300</div>

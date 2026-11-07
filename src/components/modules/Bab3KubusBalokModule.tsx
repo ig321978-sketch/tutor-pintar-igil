@@ -1557,7 +1557,7 @@ export default function Bab3KubusBalokModule() {
     setSubmittedQuiz((prev) => ({ ...prev, [q.id]: true }));
 
     if (chosen === q.correctAnswer && !claimedQuestionIds.includes(q.id)) {
-      const reward = q.category === "evaluasi" ? 10 : 5;
+      const reward = q.category === "evaluasi" ? 7 : 3;
       setEarnedTokens((prev) => prev + reward);
       setClaimedQuestionIds((prev) => [...prev, q.id]);
     }
@@ -2228,7 +2228,7 @@ export default function Bab3KubusBalokModule() {
                 🎯 Latihan Pemahaman Bab 3 (10 Soal Kurikulum Merdeka)
               </h2>
               <p className="text-sm text-slate-600">
-                Seluruh pemeriksaan jawaban dilakukan secara instan di perambanmu tanpa memotong kuota server. Setiap jawaban benar pada percobaan pertama memberikan <strong>+5 Poin</strong>!
+                Seluruh pemeriksaan jawaban dilakukan secara instan di perambanmu tanpa memotong kuota server. Setiap jawaban benar pada percobaan pertama memberikan <strong>+3 Poin</strong>!
               </p>
             </div>
 
@@ -2245,7 +2245,7 @@ export default function Bab3KubusBalokModule() {
                     </span>
                     {claimedQuestionIds.includes(q.id) && (
                       <span className="text-xs font-bold text-emerald-600 bg-emerald-50 px-2.5 py-1 rounded-full">
-                        ✓ +5 Poin Diklaim
+                        ✓ +3 Poin Diklaim
                       </span>
                     )}
                   </div>
@@ -2316,7 +2316,7 @@ export default function Bab3KubusBalokModule() {
                   🏆 Lembar Evaluasi Bab 3 (Angka Unik Per Siswa)
                 </h2>
                 <p className="text-sm text-slate-600 mt-1">
-                  Setiap siswa mendapatkan kombinasi ukuran balok, matriks tinggi menara, dan koordinat yang berbeda. Menyelesaikan soal evaluasi bernilai <strong>+10 Poin</strong> per soal!
+                  Setiap siswa mendapatkan kombinasi ukuran balok, matriks tinggi menara, dan koordinat yang berbeda. Menyelesaikan soal evaluasi bernilai <strong>+7 Poin</strong> per soal!
                 </p>
               </div>
               <button
@@ -2342,7 +2342,7 @@ export default function Bab3KubusBalokModule() {
                     </span>
                     {claimedQuestionIds.includes(q.id) && (
                       <span className="text-xs font-bold text-emerald-600 bg-emerald-50 px-2.5 py-1 rounded-full">
-                        ⭐ +10 Poin Ditambang
+                        ⭐ +7 Poin Ditambang
                       </span>
                     )}
                   </div>
@@ -2387,7 +2387,7 @@ export default function Bab3KubusBalokModule() {
                         }`}
                       >
                         <div className="font-extrabold">
-                          {isCorrect ? "🌟 Tepat Sekali! +10 Poin" : `❌ Belum Tepat. Kunci Jawaban: ${q.correctAnswer}`}
+                          {isCorrect ? "🌟 Tepat Sekali! +7 Poin" : `❌ Belum Tepat. Kunci Jawaban: ${q.correctAnswer}`}
                         </div>
                         <p className="mt-1 text-xs leading-relaxed">{q.explanation}</p>
                       </div>

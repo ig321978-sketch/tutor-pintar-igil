@@ -945,7 +945,7 @@ export default function MatematikaKelas1Bab4({
     setChapterCompletedFlag(true);
     playSound("fanfare");
     const tokenBab = Math.min(150, practiceTokens + examTokens + 50);
-    speakIGIL(`Selamat ${studentName}! Skor karyamu ${totalQualityScore} dari 1000. Poin bab ini sekarang ${tokenBab}.`);
+    speakIGIL(`Selamat ${studentName}! Skor karyamu ${totalQualityScore} dari 1000. Poin Latihan dan Ujian bab ini sekarang ${practiceTokens + examTokens}.`);
     onChapterComplete?.({
       chapterId: CHAPTER_COMPETENCY_METADATA.chapterId,
       studentId,
@@ -1015,7 +1015,7 @@ export default function MatematikaKelas1Bab4({
           <div className="flex items-center gap-3 rounded-2xl border-b-4 border-slate-700 bg-slate-900 px-4 py-2.5 text-white">
             <div className="text-right">
               <div className="text-[11px] font-bold tracking-wider text-amber-300 uppercase">Dompet Kualifikasi Bab</div>
-              <div className="text-xl font-black text-amber-400">{totalTokens} <span className="text-xs text-slate-300">/ 150 Poin</span></div>
+              <div className="text-xl font-black text-amber-400">{practiceTokens + examTokens} <span className="text-xs text-slate-300">/ 100 Poin</span></div>
               <div className="text-[10px] text-slate-300">Latihan {practiceTokens}/30 • Ujian {examTokens}/70 • Praktikum {practicumTokens}/50</div>
             </div>
             <button type="button" onClick={() => speakIGIL(`Halo ${studentName}! Di Bab 4 kita mengenal segitiga, segi empat, lingkaran, dan pola bentuk.`)} className="rounded-xl border-b-4 border-amber-600 bg-amber-400 px-3 py-2 text-xs font-extrabold text-slate-950">Suara IGIL</button>
@@ -1419,7 +1419,7 @@ export default function MatematikaKelas1Bab4({
                 </div>
                 <div className="space-y-1 rounded-2xl border border-slate-700 bg-slate-800/90 p-3.5 text-xs text-slate-200">
                   <p>{practicumRubric.aiFeedbackSummary}</p>
-                  {chapterCompletedFlag ? <p className="pt-1 font-bold text-emerald-300">Bab ini tuntas di perangkat. Poin bab: {totalTokens} dari 150. Tidak ada data yang dikirim ke jaringan.</p> : null}
+                  {chapterCompletedFlag ? <p className="pt-1 font-bold text-emerald-300">Bab ini tuntas di perangkat. Poin Latihan dan Ujian: {practiceTokens + examTokens} dari 100. Tidak ada data yang dikirim ke jaringan.</p> : null}
                 </div>
               </div>
             ) : null}
