@@ -47,6 +47,8 @@ export default function LoginClient() {
         situsHanyaAdmin() &&
         (next.startsWith("/rapor") ||
           next.startsWith("/ranking") ||
+          next.startsWith("/dasbor") ||
+          next.startsWith("/daftar") ||
           next.startsWith("/simulasi") ||
           next.startsWith("/admin") ||
           next.startsWith("/studio-kreator"))

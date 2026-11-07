@@ -13,6 +13,8 @@ const MENU = [{ href: "/ruang-belajar", label: "📚 Ruang Belajar" }] as const;
 const MENU_TINJAU = [
   { href: "/rapor", label: "📊 Rapor & Sertifikat" },
   { href: "/ranking", label: "🏆 Ranking & Beasiswa" },
+  { href: "/dasbor", label: "🏠 Dasbor & Info" },
+  { href: "/daftar", label: "📝 Pendaftaran Anak" },
 ] as const;
 
 function tautanAktif(pathname: string, href: string): boolean {

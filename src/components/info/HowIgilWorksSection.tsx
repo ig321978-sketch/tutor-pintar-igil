@@ -2,9 +2,12 @@
 
 import Link from "next/link";
 import { useId, useState } from "react";
+import type { KodePhase } from "@/lib/fase";
+
+export type KodeFase = KodePhase;
 
 type Fase = {
-  kode: "FASE_A" | "FASE_B" | "FASE_C";
+  kode: KodeFase;
   huruf: string;
   kelas: string;
   penjelasan: string;
@@ -16,21 +19,21 @@ const DAFTAR_FASE: readonly Fase[] = [
     huruf: "A",
     kelas: "Kelas 1–2",
     penjelasan:
-      "Siswa Kelas 1 dan 2 hanya bersaing dengan sesama Kelas 1 dan 2. Token hanya bisa dikumpulkan di modul Fase A.",
+      "Siswa Kelas 1 dan 2 hanya bersaing dengan sesama Kelas 1 dan 2. Poin Kualifikasi hanya bisa dikumpulkan di modul Fase A.",
   },
   {
     kode: "FASE_B",
     huruf: "B",
     kelas: "Kelas 3–4",
     penjelasan:
-      "Siswa Kelas 3 dan 4 hanya bersaing dengan sesama Kelas 3 dan 4. Token hanya bisa dikumpulkan di modul Fase B.",
+      "Siswa Kelas 3 dan 4 hanya bersaing dengan sesama Kelas 3 dan 4. Poin Kualifikasi hanya bisa dikumpulkan di modul Fase B.",
   },
   {
     kode: "FASE_C",
     huruf: "C",
     kelas: "Kelas 5–6",
     penjelasan:
-      "Siswa Kelas 5 dan 6 hanya bersaing dengan sesama Kelas 5 dan 6. Token hanya bisa dikumpulkan di modul Fase C.",
+      "Siswa Kelas 5 dan 6 hanya bersaing dengan sesama Kelas 5 dan 6. Poin Kualifikasi hanya bisa dikumpulkan di modul Fase C.",
   },
 ];
 
@@ -56,8 +59,8 @@ const LENCANA_PRIVASI = [
   },
   {
     ikon: "📷",
-    judul: "0% Kamera Saat Belajar",
-    isi: "Kamera tidak dipakai di Materi dan Latihan. Tidak ada foto atau rekaman anak yang diunggah.",
+    judul: "Tanpa Kamera Saat Materi, Latihan, Ujian, & Praktikum",
+    isi: "Anak belajar dan mengerjakan soal tanpa kamera sama sekali. Panggilan kamera 2 menit hanya dilakukan di akhir bulan, khusus verifikasi lisan kandidat penerima beasiswa, dan tidak direkam.",
   },
   {
     ikon: "💳",
@@ -113,8 +116,8 @@ function JudulBagian({ lencana, judul, id, isi }: { lencana: string; judul: stri
   );
 }
 
-function AlurDana() {
-  const [fase, setFase] = useState<Fase["kode"]>("FASE_A");
+function AlurDana({ faseAnak }: { faseAnak?: KodeFase }) {
+  const [fase, setFase] = useState<KodeFase>(faseAnak ?? "FASE_A");
   const [langganan, setLangganan] = useState(100000);
   const aktif = DAFTAR_FASE.find((f) => f.kode === fase) ?? DAFTAR_FASE[0];
   const beasiswa = Math.round(langganan * 0.9);
@@ -160,6 +163,15 @@ function AlurDana() {
                   >
                     <span className="block text-[11px] font-black leading-none">FASE {f.huruf}</span>
                     <span className="block text-sm font-black leading-tight">{f.kelas}</span>
+                    {f.kode === faseAnak ? (
+                      <span
+                        className={`mt-1 inline-block whitespace-nowrap rounded-full px-2 py-0.5 text-[10px] font-black leading-none ${
+                          menyala ? "bg-amber-400 text-indigo-950" : "bg-[#1C01A5] text-amber-300"
+                        }`}
+                      >
+                        ⭐ Anakmu
+                      </span>
+                    ) : null}
                   </button>
                 );
               })}
@@ -246,7 +258,7 @@ function RumusToken() {
               {k.ikon}
             </p>
             <p className="text-3xl font-black text-[#1C01A5]">{k.nilai}</p>
-            <p className="text-sm font-black text-indigo-950">Token {k.nama}</p>
+            <p className="text-sm font-black text-indigo-950">Poin {k.nama}</p>
             <p className="mt-1 text-xs font-semibold leading-snug text-slate-600">{k.syarat}</p>
           </div>,
           <span key={`${k.nama}-tanda`} className="text-center text-3xl font-black leading-none text-amber-500" aria-hidden="true">
@@ -255,7 +267,7 @@ function RumusToken() {
         ])}
         <div className="rounded-2xl bg-amber-400 p-4 text-center shadow-md md:w-48">
           <p className="text-4xl font-black text-indigo-950">150</p>
-          <p className="text-sm font-black text-indigo-950">Token per bab</p>
+          <p className="text-sm font-black text-indigo-950">Poin Kualifikasi per bab</p>
           <p className="mt-1 rounded-full bg-[#1C01A5] px-2 py-0.5 text-[11px] font-black text-amber-300">
             Terbit sekali per bab
           </p>
@@ -277,8 +289,8 @@ function RumusToken() {
           ))}
         </ol>
         <p className="mt-3 rounded-2xl bg-white p-3 text-xs font-semibold leading-relaxed text-slate-600">
-          Token adalah poin kualifikasi untuk peringkat, bukan uang tunai. Beasiswa dibagikan akhir bulan kepada pemenang
-          peringkat di fase masing-masing. Semua yang dipelajari anak tetap tersimpan setelah token direset tiap bulan.
+          Poin Kualifikasi dipakai untuk peringkat, bukan uang tunai dan bukan janji bayaran per poin. Beasiswa dibagikan akhir bulan kepada pemenang
+          peringkat di fase masing-masing. Semua yang dipelajari anak tetap tersimpan setelah poin direset tiap bulan.
         </p>
       </div>
     </div>
@@ -348,13 +360,20 @@ export type HowIgilWorksSectionProps = {
   ctaHref?: string;
   ctaLabel?: string;
   className?: string;
+  /** Fase profil anak yang sedang login. Diagram 90:10 langsung terbuka di fase ini dan diberi tanda "Fase anakmu". */
+  faseAnak?: KodeFase;
+  /** Nama panggilan anak untuk sapaan di header (opsional). */
+  namaAnak?: string;
 };
 
 export default function HowIgilWorksSection({
   ctaHref,
   ctaLabel = "Mulai Belajar Bersama Anak",
   className = "",
+  faseAnak,
+  namaAnak,
 }: HowIgilWorksSectionProps) {
+  const profilFase = faseAnak ? DAFTAR_FASE.find((f) => f.kode === faseAnak) : undefined;
   const idDana = useId();
   const idToken = useId();
   const idPrivasi = useId();
@@ -374,9 +393,15 @@ export default function HowIgilWorksSection({
         </span>
         <h2 className="relative mt-3 break-words text-2xl font-black leading-tight sm:text-4xl">Bagaimana IGIL Bekerja?</h2>
         <p className="relative mt-2 max-w-3xl text-sm font-semibold leading-relaxed text-indigo-100 sm:text-base">
-          Anak belajar, mengumpulkan token, dan bersaing secara adil dengan teman satu jenjang. Berikut penjelasan
+          Anak belajar, mengumpulkan Poin Kualifikasi, dan bersaing secara adil dengan teman satu jenjang. Berikut penjelasan
           lengkapnya, tanpa istilah rumit.
         </p>
+        {profilFase ? (
+          <p className="relative mt-3 inline-block rounded-2xl bg-white/15 px-3 py-2 text-sm font-black text-amber-300 ring-1 ring-white/25">
+            {namaAnak ? `${namaAnak} berada di ` : "Anakmu berada di "}
+            {`FASE ${profilFase.huruf} (${profilFase.kelas})`}
+          </p>
+        ) : null}
       </header>
 
       <div className="space-y-4" aria-labelledby={idDana}>
@@ -386,15 +411,15 @@ export default function HowIgilWorksSection({
           judul="90% untuk Beasiswa, Dibagi per Fase"
           isi="Ketuk fase di bawah untuk melihat kantong beasiswanya. Setiap fase punya kantong dan papan peringkat sendiri, jadi anak Kelas 1 tidak bersaing dengan anak Kelas 6."
         />
-        <AlurDana />
+        <AlurDana key={faseAnak ?? "umum"} faseAnak={faseAnak} />
       </div>
 
       <div className="space-y-4" aria-labelledby={idToken}>
         <JudulBagian
           id={idToken}
-          lencana="2 · Cara mengumpulkan token"
-          judul="150 Token Setiap Bab"
-          isi="Setiap bab menghasilkan token satu kali saja. Tidak bisa diulang untuk menambah token."
+          lencana="2 · Cara mengumpulkan poin"
+          judul="150 Poin Kualifikasi Setiap Bab"
+          isi="Setiap bab menghasilkan Poin Kualifikasi satu kali saja. Tidak bisa diulang untuk menambah poin."
         />
         <RumusToken />
       </div>

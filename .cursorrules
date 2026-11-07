@@ -56,7 +56,7 @@ Patuhi batas teritorial file sesuai peran model yang sedang dipilih oleh Kapten 
    - Fokus membangun dan mempercantik komponen UI/UX di `src/components/*.tsx` dan `src/app/**` menggunakan Tailwind CSS dan SVG interaktif.
    - DILARANG menghapus atau merusak struktur data di dalam `src/data/*.json`.
 3. **Meja Mesin Backend & Keamanan (`Grok 4.7`):**
-   - Fokus mengerjakan `supabase/*.sql`, koneksi `src/lib/supabase.ts`, pengaman RLS, fungsi RPC PostgreSQL, `pg_cron`, sensor kamera lokal (MediaPipe), dan perbaikan bug/error terminal.
+   - Fokus mengerjakan `supabase/*.sql`, koneksi `src/lib/supabase.ts`, pengaman RLS, fungsi RPC PostgreSQL, `pg_cron`, dan perbaikan bug/error terminal.
    - DILARANG mengubah tema warna dan tata letak visual Tailwind yang sudah dirapikan di `.tsx`.
 
 ---
@@ -84,7 +84,7 @@ Setiap modul bab WAJIB memiliki **5 Tab Komponen** berurutan (Simulasi digabung 
    - Memuat **Simulasi / Alat Peraga Interaktif** langsung di dalam alur Materi.
    - Wajib dilengkapi pembaca suara guru Bahasa Indonesia gratis (`Web Speech API` `id-ID`).
 3. **Latihan (30 Token)**: 10 soal latihan terbimbing dengan pembahasan guru langsung di tiap soal.
-4. **Ujian (70 Token)**: 10 soal evaluasi mandiri. WAJIB lulus mutlak 100% untuk membuka kunci Praktikum. Dilengkapi deteksi wajah lokal di browser (MediaPipe) untuk menandai kandidat "Si Paling Pintar" (lulus 100% percobaan pertama dengan kamera valid 1 wajah).
+4. **Ujian (70 Token)**: 10 soal evaluasi mandiri. WAJIB lulus mutlak 100% untuk membuka kunci Praktikum. Tanpa kamera dan tanpa MediaPipe: Materi, Latihan, Ujian, dan Praktikum 100% tidak memakai kamera. Kamera hanya dipakai pada panggilan verifikasi lisan 2 menit di akhir bulan untuk kandidat penerima beasiswa (Bagian 7), tanpa direkam.
 5. **Praktikum (50 Token)**: Tugas sintesis lintas-4-bab (terbuka setelah lulus Ujian 100%).
 
 - Nilai konversi: 1 token = Rp 500.

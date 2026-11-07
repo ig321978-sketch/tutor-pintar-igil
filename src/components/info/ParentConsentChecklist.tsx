@@ -19,7 +19,7 @@ const POIN_PERSETUJUAN = [
     id: "uji",
     ikon: "🗣️",
     judul: "Anak akan menjawab sendiri saat pencairan",
-    isi: "Saya paham bahwa pencairan beasiswa akhir bulan mewajibkan anak menjawab sendiri 1 soal lisan (sekitar 2 menit) pada jendela pilih jadwal selama 3 hari.",
+    isi: "Saya paham bahwa pencairan beasiswa akhir bulan mewajibkan anak menjawab sendiri 1 soal lisan (sekitar 2 menit, lewat panggilan kamera yang tidak direkam) pada jendela pilih jadwal selama 3 hari.",
   },
 ] as const;
 
