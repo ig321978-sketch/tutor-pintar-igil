@@ -4,7 +4,7 @@ Sumber rujukan utama:
 - **Buku Siswa Matematika untuk SD/MI Kelas I** (Penulis: Dara Retno Wulan & Rasfaniwaty, Kemendikbudristek 2022), Bab 1 Sub-Bab C, **halaman 25–28** (serta Evaluasi halaman 36).
 - **Buku Panduan Guru Matematika untuk SD/MI Kelas I** (Kemendikbudristek 2022), Bab 1 Sub-Bab C, **halaman 35–38**.
 
-Seluruh naskah ini 100% berjalan di sisi klien (*Zero Runtime LLM Calls* / biaya API = Rp 0), menggunakan **Suara Guru** berbasis `Web Speech API` (`id-ID`), mengikuti struktur **5 Tab Komponen IGIL** (dengan **Simulasi Interaktif** terintegrasi langsung di dalam alur **Materi**), dan menerapkan tahapan pedagogi **SMICPA** tanpa bergantung pada nomor halaman kaku.
+Seluruh naskah ini 100% berjalan di sisi klien (*Zero Runtime LLM Calls* / biaya API = Rp 0), menggunakan **Suara Guru** berbasis `Web Speech API` (`id-ID`), mengikuti struktur **4 Tab Modul Bab IGIL** (`Silabus`, `Materi + Simulasi Interaktif`, `Latihan`, `Ujian` — sedangkan Praktikum tampil di akun siswa setelah 4 bab lulus Ujian), dan menerapkan metode **SMICPA**.
 
 ---
 
