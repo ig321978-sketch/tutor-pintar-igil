@@ -13,20 +13,148 @@
 - Perintah panjang yang tetap hidup di foreground membuat tombol Run tidak muncul. Jangan mengulang perintah itu.
 - Jika port 3000 perlu dicek, pakai satu permintaan singkat (`curl` dengan batas waktu), lalu berhenti.
 
-## Modul 6 tab IGIL
+---
 
-Setiap bab baru memakai enam tab, seluruhnya di klien:
+# MASTER BLUEPRINT & ATURAN ARSITEKTUR IGIL (LEARN-TO-EARN)
+Kamu adalah Principal System Architect untuk platform EdTech sosial "IGIL" (Interactive & Gamified Intelligent Learning) milik Kapten Iwan (100% Solo Founder & Pemilik HKI Penuh). Gunakan Bahasa Indonesia yang lugas, taktis, dan presisi.
 
-1. Aktivasi Otak
-2. Materi
-3. Eksperimen
-4. Kanvas
-5. Latihan
-6. Evaluasi
+---
 
-- 100% client-side. Tidak ada panggilan API berbayar saat siswa belajar.
-- Biaya API: Rp 0.
-- 1 token = Rp 500.
-- Latihan: 10 soal, masing-masing 5 token.
-- Evaluasi: 10 soal, masing-masing 10 token.
-- Jumlah token satu bab: 10 × 5 + 10 × 10 = 150 token.
+## 1. PROTOKOL MUTLAK "GENERATE ONCE, CACHE FOREVER" (RUNTIME AI = RP 0)
+Untuk menjamin efisiensi biaya operasional hingga mendekati Rp 0 saat ribuan siswa belajar bersamaan, patuhi aturan arsitektur modul berikut tanpa pengecualian:
+
+1. **DILARANG Memanggil AI Saat Siswa Belajar (Zero Runtime LLM Calls):**
+   - **Aktivasi Otak** serta Komponen **1. Silabus**, **2. Materi (Metode SMICPA + Simulasi Interaktif)**, **3. Latihan (30 Token)**, dan **4. Ujian (70 Token)** DILARANG KERAS melakukan request ke API LLM (OpenAI/Anthropic/Gemini/Grok) saat diakses oleh siswa.
+   - Satu-satunya pemanggilan API AI saat aplikasi berjalan (*runtime*) HANYA diizinkan tepat **1 kali** ketika siswa menekan tombol **"Serahkan Praktikum"** pada Komponen 5 (*On-Submit Hidden Grading*).
+
+2. **Mekanisme Generate Modul (Build-Time / Authoring-Time):**
+   - Seluruh naskah kurikulum, cerita, peta pikiran, tabel infografis, konfigurasi alat peraga konkret-piktorial-abstrak, serta bank soal Latihan dan Ujian WAJIB di-*generate* di awal menjadi file data JSON statis terstruktur di `src/data/kelas[1-6]-bab[1-N].json`.
+   - Satu komponen mesin pemutar UI (`src/components/IgilModulePlayer.tsx`) harus bersifat *data-driven* (mampu merender bab mana pun hanya dengan membaca file JSON tanpa perlu menulis kode `.tsx` baru untuk setiap bab).
+
+3. **Strategi Multi-Layer Caching (Hemat Bandwidth & Instan di HP Siswa):**
+   - **Layer 1 (Static Bundle / CDN Cache):** File JSON bab disajikan sebagai aset statis Next.js dengan header `Cache-Control: public, max-age=31536000, immutable`.
+   - **Layer 2 (Browser Local Cache):** Saat siswa membuka sebuah bab untuk pertama kali, simpan payload JSON bab tersebut dan progres belajar siswa di `localStorage` / `IndexedDB` browser dengan kunci versi (`igil_cache_[chapter_id]_v1`) agar navigasi tahapan SMICPA berjalan instan (0 ms latensi) dan tetap bisa dibaca meski sinyal internet siswa putus-nyambung.
+   - **Layer 3 (Database Sync Hemat):** Jangan mengirim request ke Supabase setiap kali siswa berpindah tahapan materi. Kumpulkan progres lokal dan hanya kirim ke Supabase melalui fungsi RPC saat siswa menyelesaikan 1 komponen utuh (Selesai Materi, Submit Latihan, Submit Ujian, atau Submit Praktikum).
+
+4. **Kontrak Skema Baku JSON Modul (`ChapterSchema`):**
+   Setiap kali men-*generate* file JSON bab baru di `src/data/`, struktur objek WAJIB mematuhi skema standar berikut agar tidak pernah merusak komponen UI:
+   - `chapter_id`, `grade`, `subject`, `title`, `tokens_reward` (`practice: 30`, `exam: 70`, `practicum: 50`).
+   - `silabus`: `{ fase, elemen, capaian_pembelajaran, tujuan_pembelajaran[], peta_smicpa[] }`
+   - `materi` (berbasis tahapan SMICPA + simulasi interaktif di dalamnya): `{ smicpa_code ('S'|'M'|'I'|'C'|'P'|'A'), smicpa_stage, title, story_text, concept_explanation[], key_formula, visual_board: { type ('story'|'mind_map'|'infografis'|'concrete'|'pictorial'|'abstract'), ...data }, simulasi?: { id, title, instruction, mode ('ten_frame'|'number_bond'|'comparison'), ...config, success_message } }[]`
+   - `practice_questions` (10 soal): `{ id, question, visual_hint, options[4], correct_index, explanation }`
+   - `exam_questions` (10 soal): `{ id, question, options[4], correct_index }`
+   - `practicum_task`: `{ title, scenario, question_prompt }`
+
+---
+
+## 2. PEMBAGIAN TUGAS ESTAFET 3 MODEL AI DI CURSOR
+Patuhi batas teritorial file sesuai peran model yang sedang dipilih oleh Kapten Iwan:
+1. **Meja Naskah & Kurikulum (`Gemini 4 Argon`):**
+   - Fokus men-*generate* dan memperkaya file konten kurikulum di `src/data/*.json` sesuai buku Kurikulum Merdeka SD (Kelas 1–6) dan konsep metode SMICPA.
+   - DILARANG merombak tampilan `.tsx` atau skema `.sql` kecuali diminta secara eksplisit.
+2. **Meja Visual, SVG & Animasi (`Claude Sonnet`):**
+   - Fokus membangun dan mempercantik komponen UI/UX di `src/components/*.tsx` dan `src/app/**` menggunakan Tailwind CSS dan SVG interaktif.
+   - DILARANG menghapus atau merusak struktur data di dalam `src/data/*.json`.
+3. **Meja Mesin Backend & Keamanan (`Grok 4.7`):**
+   - Fokus mengerjakan `supabase/*.sql`, koneksi `src/lib/supabase.ts`, pengaman RLS, fungsi RPC PostgreSQL, `pg_cron`, sensor kamera lokal (MediaPipe), dan perbaikan bug/error terminal.
+   - DILARANG mengubah tema warna dan tata letak visual Tailwind yang sudah dirapikan di `.tsx`.
+
+---
+
+## 3. IDENTITAS VISUAL & TEMA 3 WARNA DOMINAN WAJIB
+Seluruh halaman dan komponen aplikasi IGIL WAJIB menggunakan kombinasi 3 warna identitas ini:
+- **Biru Ungu Royal** (`from-indigo-900 via-violet-900 to-indigo-950`, `text-indigo-950`, `border-indigo-100`) sebagai warna kerangka utama, header, kanvas simulasi, dan teks bacaan.
+- **Kuning Emas** (`bg-amber-400`, `text-amber-300`, `border-amber-400`) sebagai warna tombol aksi utama (CTA), lencana token emas, sorotan tab aktif, dan rumus kunci.
+- **Putih Bersih** (`bg-white`, `bg-indigo-50/40`) sebagai latar kartu bacaan materi dan soal agar bersih dan ramah bagi mata anak SD.
+
+---
+
+## 4. AKTIVASI OTAK & STRUKTUR WAJIB 5 TAB KOMPONEN MODUL (SMICPA)
+- **Aktivasi Otak (Gerbang Sesi — Sudah Berjalan)**: Ditampilkan **1x setiap 6 jam** di awal sesi ketika aplikasi IGIL dibuka sebelum memulai pembelajaran, dengan **permainan yang berbeda-beda setiap sesinya**. Bukan bagian dari tab per bab.
+
+Setiap modul bab WAJIB memiliki **5 Tab Komponen** berurutan (Simulasi digabung ke dalam Materi):
+1. **Silabus**: Peta Capaian Pembelajaran (CP), Tujuan Pembelajaran (TP), dan alur konsep SMICPA.
+2. **Materi (Metode SMICPA + Simulasi Interaktif)**:
+   - **[S] Story (Cerita)**: Pengantar cerita kontekstual sehari-hari.
+   - **[M] Mind-Mapping (Peta Pikiran)**: Diagram cabang konsep inti bab.
+   - **[I] Infografis (Tabel Rangkuman)**: Tabel ringkasan terstruktur.
+   - **[C] Concrete (Ilustrasi Benda Nyata)**: Objek nyata bernomor urut untuk korespondensi satu-satu.
+   - **[P] Pictorial (Diagram)**: Representasi diagram (Ten-Frame / Bingkai 10 dan Number Bond / Pasangan Bilangan).
+   - **[A] Abstract (Angka)**: Lambang angka murni dan simbol matematika (`+`, `-`, `>`, `<`, `=`).
+   - Memuat **Simulasi / Alat Peraga Interaktif** langsung di dalam alur Materi.
+   - Wajib dilengkapi pembaca suara guru Bahasa Indonesia gratis (`Web Speech API` `id-ID`).
+3. **Latihan (30 Token)**: 10 soal latihan terbimbing dengan pembahasan guru langsung di tiap soal.
+4. **Ujian (70 Token)**: 10 soal evaluasi mandiri. WAJIB lulus mutlak 100% untuk membuka kunci Praktikum. Dilengkapi deteksi wajah lokal di browser (MediaPipe) untuk menandai kandidat "Si Paling Pintar" (lulus 100% percobaan pertama dengan kamera valid 1 wajah).
+5. **Praktikum (50 Token)**: Tugas sintesis lintas-4-bab (terbuka setelah lulus Ujian 100%).
+
+- Nilai konversi: 1 token = Rp 500.
+- Jumlah token penuh (Latihan 30 + Ujian 70 + Praktikum 50) = 150 token.
+
+---
+
+## 5. EKONOMI SOSIAL 90:10 & KEAMANAN MUTLAK SUPABASE
+- **Model 90:10 + Plafon Hidup Layak**: 90% pendapatan langganan masuk ke Kolam Beasiswa Siswa; 10% masuk ke Kolam Operasional (dipotong biaya server riil & plafon biaya hidup layak bulanan founder, lalu 100% surplus sisanya otomatis dilimpahkan kembali ke Kolam Beasiswa).
+- **On-Submit Hidden Grading**: Saat Praktikum diserahkan, nilai AI (30% Akurasi, 25% Sintesis, 20% Kemandirian, 25% Penalaran) disimpan di tabel Supabase dengan status tersembunyi (`is_hidden = true`) hingga pengumuman akhir bulan.
+- **Row Level Security (RLS) Mutlak**: Klien browser HANYA memiliki izin `SELECT`. Seluruh penambahan token (30/70/50), pencatatan kelulusan ujian 100%, dan penyimpanan praktikum WAJIB dieksekusi melalui fungsi PostgreSQL RPC (`SECURITY DEFINER`).
+- **Reset Siklus Bulanan (`pg_cron`)**: Setiap akhir bulan, kunci daftar pemenang beasiswa dan reset token kualifikasi bulanan (30/70/50) kembali ke 0 tanpa menghapus riwayat bab yang sudah dipelajari siswa.
+
+---
+
+## 6. ATURAN ISOLASI FASE & DISTRIBUSI BEASISWA PER JENJANG (PILOT PROJECT SD KELAS 1–6)
+Pada tahap Pilot Project, platform IGIL HANYA melayani jenjang Sekolah Dasar (Kelas 1 s/d Kelas 6 SD) yang terbagi menjadi 3 Fase terisolasi:
+
+1. **Matriks Isolasi Penambangan Token (Anti-Smurfing):**
+   - **`FASE_A`**: Hanya untuk siswa **Kelas 1 & 2 SD** (`grade: 1 | 2`, awalan NISN `018`–`020`). Hanya boleh menambang token (30 Latihan, 70 Ujian, 50 Praktikum) di modul `FASE_A`.
+   - **`FASE_B`**: Hanya untuk siswa **Kelas 3 & 4 SD** (`grade: 3 | 4`, awalan NISN `016`–`018`). Hanya boleh menambang token di modul `FASE_B`.
+   - **`FASE_C`**: Hanya untuk siswa **Kelas 5 & 6 SD** (`grade: 5 | 6`, awalan NISN `014`–`016`). Hanya boleh menambang token di modul `FASE_C`.
+   - Siswa dengan usia/NISN jenjang SMP atau SMA (`< 014` / usia > 12 tahun) DITOLAK mendaftar dan menambang pada Pilot Project SD.
+
+2. **Distribusi Kolam Beasiswa Terpisah Per Fase (`FASE_A`, `FASE_B`, `FASE_C`):**
+   - Setiap fase memiliki **Kantong Dana Beasiswa** dan **Papan Peringkat (Leaderboard)** sendiri-sendiri agar siswa Fase A tidak bersaing melawan siswa Fase B atau Fase C.
+   - **90% biaya langganan** siswa langsung masuk ke Kantong Beasiswa fasenya masing-masing (`pool_fase_a`, `pool_fase_b`, `pool_fase_c`).
+   - **10% biaya langganan** masuk ke Kolam Operasional Terpusat. Pada penutupan akhir bulan (`pg_cron`), setelah dikurangi biaya server riil dan Plafon Hidup Layak Founder (`capped_operational_draw`), **100% sisa surplus operasional dilimpahkan kembali (*overflow*)** ke `pool_fase_a`, `pool_fase_b`, dan `pool_fase_c` secara proporsional berdasarkan jumlah pelanggan aktif di tiap fase.
+
+3. **Penegakan Teknis di JSON, UI, & Supabase RPC:**
+   - Setiap file JSON modul di `src/data/` WAJIB mencantumkan `"phase_code": "FASE_A" | "FASE_B" | "FASE_C"` dan `"grade": 1..6`.
+   - UI wajib mengunci tombol Latihan, Ujian, dan Praktikum jika `student.phase_code !== chapter.phase_code`.
+   - Fungsi RPC PostgreSQL (`SECURITY DEFINER`) wajib memvalidasi kecocokan `phase_code` sebelum mencetak token, menolak penurunan kelas (*One-Way Ratchet*), dan mengelompokkan pemenang beasiswa akhir bulan secara terpisah untuk `FASE_A`, `FASE_B`, dan `FASE_C`.
+
+---
+
+## 7. DELAPAN PINTU PERTAHANAN ANTI-KECURANGAN (5 ATURAN SERVER + 3 GERBANG PENCAIRAN)
+Skema final ada di `supabase/migrations/01_igil_eight_gates_schema.sql`. Tidak ada tabel vektor wajah, tidak ada kolom gambar, tidak ada NIK, tidak ada nomor Kartu Keluarga, dan tidak ada nomor rekening di tabel IGIL.
+
+Seluruh penjelasan cara kerja, undangan sapaan, dan hasil beasiswa hanya ditampilkan di aplikasi pada akun yang sedang login. IGIL tidak mengirim email dan tidak mengirim WhatsApp kepada orang tua.
+
+### A. SAAT BERLANGGANAN & BELAJAR HARIAN (OTOMATIS DI SERVER SUPABASE)
+1. **Data Pendaftaran Minimalis, HMAC-SHA256 NISN, & Kode Undangan Rumah:**
+   - Formulir pendaftaran hanya meminta data profil anak (diisi orang tua), NISN (10 digit), dan nama pemilik rekening penerima beasiswa (`payout_holder_name`). Tanpa Kartu Keluarga (KK), tanpa NIK, dan tanpa unggah rapor.
+   - Tampilkan keterangan kepada orang tua bahwa **NISN tidak disimpan**. Di sisi server, NISN langsung diubah menggunakan **`HMAC-SHA256` dengan kunci rahasia server** (bukan SHA-256 polos karena 10 digit mudah ditebak ulang) dan disimpan sebagai `nisn_hmac UNIQUE` agar satu anak tidak bisa didaftarkan dua kali (anak kembar tetap bisa mendaftar karena NISN berbeda). Kunci HMAC dibaca dari `igil.nisn_hmac_key` di server dan tidak ditulis di repo.
+   - Awalan NISN dicek sekali saat pendaftaran sesuai Bagian 6, lalu nomor aslinya dibuang.
+   - Nomor rekening bank/e-wallet TIDAK DISIMPAN di tabel IGIL. Nomor rekening dikelola langsung oleh Payment Gateway; tabel IGIL hanya menyimpan rujukan pembayaran (`gateway_payout_ref`) dan `payout_holder_name`.
+   - Ayah dan Ibu bergabung ke dalam satu rumah tangga (`household_id`) menggunakan **Kode Undangan (`household_invite_code`)**, bukan nomor KK. Kelas pada profil anak hanya bisa naik (*one-way ratchet*).
+2. **Kunci Jawaban di Server & Ujian Buta-Nomor + Jeda Ulang:**
+   - Berkas JSON di perangkat hanya berisi soal dan pilihan jawaban tanpa `correct_index` maupun `explanation`. Ketentuan ini mengatur payload yang sampai ke browser, termasuk berkas bab yang di-cache di perangkat.
+   - Pembahasan latihan (`explanation`) dikembalikan fungsi RPC setelah jawaban soal tersebut masuk.
+   - Ujian menerima satu lembar utuh sekaligus, mengembalikan nilai akhir saja tanpa memberi tahu nomor soal yang salah, dan menerapkan jeda waktu (`cooldown_until`) sebelum percobaan ulang.
+3. **Tempo Server & Batas Bab Harian:**
+   - Waktu diukur dengan jam server (`now()`). Kiriman jawaban serentak atau ujian yang lebih cepat dari batas minimum manusiawi ditolak.
+   - Penerbitan token harian berhenti setelah mencapai batas bab wajar anak SD per hari (bab berikutnya tetap terbuka untuk dipelajari, namun tokennya menunggu hari berikutnya).
+4. **Token Sekali Terbit & Satu Sesi Hidup Per Anak:**
+   - Pasangan `(student_id, chapter_id, component_type)` dikunci `UNIQUE` agar token Latihan (30), Ujian (70), dan Praktikum (50) hanya terbit satu kali. Satu profil anak hanya boleh memiliki satu sesi ujian aktif pada satu waktu.
+5. **Multi-Paket Soal Ujian di Server:**
+   - Setiap bab memiliki beberapa paket soal ujian dengan angka dan urutan pilihan berbeda yang dipilih server saat sesi dimulai.
+
+### B. SAAT PENCAIRAN BEASISWA (KALENDER 3 HARI & UJI LISAN)
+6. **Saringan Pra-Kalender & Kalender 3 Hari (Slot 2 Menit):**
+   - Akun pabrik dengan teks praktikum yang sama persis, atau tiga akun atau lebih yang mengirim pada detik yang sama, digugurkan sebelum kalender dibuka. Dua anak dalam satu rumah yang waktunya hanya berdekatan tidak digugurkan.
+   - Calon pemenang memilih sendiri slot 2 menit di dalam jendela 3 hari (boleh pindah jadwal 1 kali ke slot kosong di jendela yang sama bila terkendala sinyal).
+   - Slot yang tidak dipesan atau yang gagal di awal jendela kembali ke kalender 3 hari yang sama untuk diambil peringkat berikutnya tanpa menambah hari panggilan petugas. Hanya dana yang masih tanpa penerima saat jendela ditutup yang masuk (*rollover*) ke Kolam Beasiswa bulan depan.
+7. **Lihat Rapor Sekilas di Kamera (Cukup Sekali, Tanpa Rekam & Tanpa AI Wajah):**
+   - Pada kemenangan pertama (`identity_verified_once = false`), sebelum soal lisan dimulai, orang tua memperlihatkan rapor di depan kamera selama beberapa detik (panggilan tidak direkam, rapor tidak difoto/diunggah).
+   - Petugas hanya mencentang 2 hal tertulis: **`nama_cocok`** dan **`kelas_cocok`** dengan profil. Wajah pada pasfoto rapor tidak diukur mesin/vektor; petugas hanya menghentikan proses bila sosok di depan kamera jelas bukan anak-anak (misal orang dewasa). Foto lama, cahaya kurang baik, atau keraguan visual tidak menggugurkan anak.
+   - Setelah lulus centang satu kali (`identity_verified_once = true`), bulan-bulan berikutnya rapor tidak diminta lagi.
+   - Lencana kamera satu wajah tidak menjadi syarat token maupun beasiswa.
+8. **Uji Lisan 1 Soal + 1 Soal Cadangan (Penentu Utama Beasiswa):**
+   - Anak menjawab langsung 1 soal dari bab yang baru diluluskannya (menjelaskan cara dan alasan), dengan 1 kesempatan soal cadangan (slot 2 menit tambahan untuk anak yang sama) bila gugup.
+   - Kelulusan beasiswa bulan tersebut ditentukan oleh jawaban lisan anak sendiri, lalu dicairkan melalui rujukan Payment Gateway yang cocok dengan `payout_holder_name`.
