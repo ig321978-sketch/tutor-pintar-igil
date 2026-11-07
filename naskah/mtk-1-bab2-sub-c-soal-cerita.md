@@ -62,9 +62,11 @@ Tiga bagian soal cerita, Kata petunjuk tambah, Tulis penyelesaian, Jawaban kalim
 | 2 | Concrete | Hitung Roda | Ketuk tiap kendaraan, roda bertambah, lalu baca kalimat penjumlahan roda | Satu cerita, pertanyaan roda |
 | 3 | Concrete | Parkiran Pilih-Pilih | Seret atau ketuk hanya kendaraan yang disebut dalam cerita, abaikan yang lain | Memilih keterangan yang dipakai |
 | 4 | Concrete | Susun Cerita dengan Kartu | Ketuk tiga kartu cerita berurutan: ada, datang lagi, pertanyaan | Tiga bagian soal cerita |
-| 5 | Picture | Ambil dari Cerita | Ketuk bilangan dan kata petunjuk di dalam teks cerita, lalu pilih hasil | Dari cerita ke kalimat matematika |
-| 6 | Picture | Cerita ke Gambar | Dengar cerita, pilih gambar dua kelompok yang cocok | Menggambar cerita |
-| 7 | Picture | Tabel Hitung Kendaraan | Hitung tiap jenis kendaraan, isi tabel, lalu isi jumlah semua | Menghitung dan mencatat |
+| 5 | Picture | Cerita ke Model Batang | Warnai satu batang untuk yang ada dan satu batang untuk yang datang lagi, lalu ketuk angka di ujung batang gabungan pada penggaris | Dari cerita ke model batang |
+| 6 | Picture | Cerita ke Diagram | Dengar cerita, pilih bingkai sepuluh, garis bilangan, atau model batang yang cocok (bentuk berganti tiap soal) | Memilih diagram yang tepat |
+| 7 | Picture | Tabel Hitung Cerita | Hitung titik pada tiap baris tabel, isi angkanya, lalu isi jumlah semua | Menghitung dan mencatat |
+
+Batas Concrete dan Picture: Picture tidak memuat gambar benda nyata. Nama benda hanya muncul sebagai kata di teks cerita.
 | 8 | Abstract | Tulis Penyelesaian dan Jawaban | Susun kalimat penjumlahan dengan kartu, lalu lengkapi kalimat jawaban dengan hasil dan nama benda | Penyelesaian dan jawaban kalimat |
 | 9 | Abstract | Pasangan Sembilan | Pilih dua bilangan, cari empat kalimat berbeda yang hasilnya 9 | Evaluasi 4 buku |
 | 10 | Abstract | Kanvas Guratan dan Suara | Ucapkan hasil, guratkan angka. Lalu Ayo Berkarya: buat cerita stoples sendiri | Ayo Mencoba dan Ayo Berkarya |

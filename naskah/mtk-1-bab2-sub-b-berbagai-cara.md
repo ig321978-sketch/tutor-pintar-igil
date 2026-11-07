@@ -35,10 +35,10 @@ Pasangan bilangan, Menghitung maju, Penjumlahan berulang, Hasilnya 10, Tukar tem
 | No | Tahap | Permainan | Cara main | Cara |
 | --- | --- | --- | --- | --- |
 | 1 | Concrete | Dua Keranjang Apel | Seret atau ketuk buah ke keranjang, lalu tukar tempat dua kelompok | Pasangan bilangan |
-| 2 | Concrete | Lompat di Petak Angka | Ketuk petak berikutnya satu per satu | Menghitung maju |
+| 2 | Concrete | Hitung Maju dengan Kue | Di kotak sudah ada kue. Seret kue dari meja ke kotak satu per satu sambil menghitung maju | Menghitung maju |
 | 3 | Concrete | Kepik Kembar | Tambah totol sayap kanan sampai sama dengan kiri | Penjumlahan berulang |
 | 4 | Concrete | Sepuluh Jari | Buka jari sesuai perintah, jari sisanya otomatis tertutup | Hasilnya 10 |
-| 5 | Picture | Isi Bagan Pasangan | Pilih angka untuk tiga lingkaran bagan, lalu baca dua kalimat | Pasangan bilangan |
+| 5 | Picture | Isi Bagan Pasangan | Hitung titik merah dan biru, pilih angka untuk tiga lingkaran bagan, lalu baca dua kalimat | Pasangan bilangan |
 | 6 | Picture | Tabel Tambah di Garis Bilangan | Ketuk petak hasil pada garis bilangan untuk tiap baris tabel | Menghitung maju |
 | 7 | Picture | Kartu Dua Bingkai | Cari dua kartu bingkai yang jika digabung penuh sepuluh | Hasilnya 10 |
 | 8 | Abstract | Susun Tukar Tempat | Susun kalimat kebalikan dari kartu angka dan simbol | Pasangan bilangan |

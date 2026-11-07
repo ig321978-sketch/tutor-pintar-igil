@@ -123,7 +123,7 @@ export function Kepik({ kiri, kanan, kelas = "h-auto w-full max-w-[220px]" }: { 
 /** Bingkai sepuluh kecil: bola merah dan bola biru, sisanya kosong (hlm. 62). */
 export function BingkaiMini({ merah, biru, kelas = "w-full max-w-[130px]" }: { merah: number; biru: number; kelas?: string }) {
   return (
-    <svg viewBox="0 0 110 46" className={`mx-auto block h-auto ${kelas}`} role="img" aria-label={`Bingkai sepuluh: ${merah} bola merah, ${biru} bola biru`}>
+    <svg viewBox="0 0 110 46" className={`mx-auto block h-auto ${kelas}`} role="img" aria-label={`Bingkai sepuluh: ${merah} titik merah, ${biru} titik biru`}>
       <rect x="2" y="2" width="106" height="42" rx="5" fill="#FFFFFF" stroke={BIRU} strokeWidth="2.4" />
       <path d="M2 23 H108 M23 2 V44 M44 2 V44 M65 2 V44 M86 2 V44" stroke="#C7D2FE" strokeWidth="1.6" />
       {Array.from({ length: 10 }, (_, i) => {

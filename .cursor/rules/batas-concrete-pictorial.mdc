@@ -1,0 +1,16 @@
+---
+description: Batas ketat Tahap 4 Concrete dan Tahap 5 Picture (Pictorial) pada modul SMICPA
+alwaysApply: true
+---
+
+# Batas Concrete dan Picture
+
+Dua tahap ini harus berbeda jelas.
+
+- **Concrete (Tahap 4)**: benda nyata. Anak memegang, menyeret, memasukkan, dan menghitung benda satu-satu. Gambar benda berwarna (apel, kue, kelereng, jari, kendaraan) hanya di tahap ini.
+- **Picture (Tahap 5)**: diagram, tanpa gambar benda. Bentuk yang boleh: bingkai sepuluh, bagan pasangan bilangan, garis bilangan, model batang, titik atau lingkaran polos, goresan tally, dan tabel. Anak mewarnai, menandai, mengisi, menjodohkan, atau memilih. Anak tidak memindahkan benda.
+- Cerita di Picture ditulis sebagai teks. Nama benda boleh muncul sebagai kata, tidak sebagai emoji atau gambar.
+- Tahap Concrete tidak memakai garis bilangan, bagan pasangan, atau model batang. Itu milik Picture.
+- Komponen diagram bersama ada di `src/components/modul/diagram-pictorial.tsx` (`BarisTitik`, `DuaKelompokTitik`, `Tally`, `BatangSepuluh`, `GarisMini`). Bingkai sepuluh memakai `BingkaiMini` dan bagan pasangan memakai `Bagan`.
+- Warna diagram: merah untuk yang ada, biru untuk yang datang lagi.
+- Sebelum menambah game Picture, cek: apakah ada emoji benda atau tindakan memindahkan benda? Jika ya, itu Concrete.

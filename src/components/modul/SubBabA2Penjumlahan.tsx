@@ -3,7 +3,8 @@
 import { BingkaiTahap } from "@/components/modul/BingkaiTahap";
 import React, { useContext, useState } from "react";
 import { DottedNumberTracingCanvas } from "./elemen-kelas1";
-import { Bagan } from "./gambar-pasangan-d";
+import { BatangSepuluh, Tally, TeksCerita, WARNA_ADA } from "./diagram-pictorial";
+import { BingkaiMini } from "./gambar-cara-b2";
 import { IgilWajah, PensilIkon } from "./gambar-penjumlahan-a2";
 import {
   JawabSuara,
@@ -40,8 +41,9 @@ import {
 /* Sepuluh permainan, semuanya beda cara main:                                */
 /*  Concrete: 1 Teman Datang Lagi (ketuk), 2 Kotak Pensil (seret),            */
 /*            3 Lengkapi Cerita (isi kalimat), 4 Tebak Dua Piring (tebak).    */
-/*  Picture:  5 Bingkai Sepuluh Dua Warna (warnai), 6 Hitung lalu Pindahkan   */
-/*            (bagan), 7 Jodohkan Gambar dan Kalimat (pasangkan).             */
+/*  Picture:  (diagram saja, tanpa gambar benda; lihat diagram-pictorial.tsx) */
+/*            5 Bingkai Sepuluh Dua Warna (warnai), 6 Goresan Tally           */
+/*            (gambar goresan), 7 Jodohkan Diagram dan Kalimat (pasangkan).   */
 /*  Abstract: 8 Susun Kalimat (kartu simbol), 9 Detektif Angka Hilang,        */
 /*            10 Kanvas Guratan dan Suara (tulis dan ucapkan).                */
 /* ------------------------------------------------------------------------ */
@@ -945,8 +947,8 @@ export const KERTAS_GAMBAR =
 /* --------- Permainan 5. Bingkai Sepuluh Dua Warna (hlm. 47) --------------- */
 
 const RONDE_BINGKAI = [
-  { ikonA: "🟢", ikonB: "🟡", a: 4, b: 2, nama: "bola" },
-  { ikonA: "🍎", ikonB: "🍏", a: 6, b: 2, nama: "apel" },
+  { a: 4, b: 2, nama: "bola" },
+  { a: 6, b: 2, nama: "apel" },
 ];
 
 function RondeBingkai({ ronde, panel, onBeres }: { ronde: number; panel: PanelSuara; onBeres: () => void }) {
@@ -988,18 +990,11 @@ function RondeBingkai({ ronde, panel, onBeres }: { ronde: number; panel: PanelSu
   return (
     <>
       <CatatanTempel
-        pendek={suara ? "Hebat!" : beres ? "Ucapkan: semuanya" : "Warnai kotak untuk yang datang"}
-        teks={`Ada ${kataK(d.a)} ${d.nama} berwarna pertama. Datang lagi ${kataK(d.b)} ${d.nama} berwarna kedua. Ketuk kotak kosong untuk mewarnai yang datang lagi.`}
+        pendek={suara ? "Hebat!" : beres ? "Ucapkan: semuanya" : "Warnai biru yang datang lagi"}
+        teks={`Ada ${kataK(d.a)} ${d.nama}. Titik merah di bingkai mewakili ${d.nama} yang sudah ada. Datang lagi ${kataK(d.b)} ${d.nama}. Ketuk kotak kosong untuk mewarnainya biru.`}
       />
       <div className={KERTAS_GAMBAR}>
-        <div className="grid grid-cols-2 gap-2">
-          <div className="rounded-2xl border-4 border-dashed border-[#9CA3AF] bg-white px-1 py-2">
-            <Kelompok ikon={d.ikonA} n={d.a} />
-          </div>
-          <div className="rounded-2xl border-4 border-dashed border-[#9CA3AF] bg-white px-1 py-2">
-            <Kelompok ikon={d.ikonB} n={d.b} />
-          </div>
-        </div>
+        <TeksCerita baris={[`Ada ${d.a} ${d.nama}.`, `Datang lagi ${d.b} ${d.nama}.`, "Berapa jumlah semuanya?"]} />
         <div className="mx-auto grid max-w-[300px] grid-cols-5 gap-1.5 rounded-2xl border-4 border-[#1C01A5] bg-white p-2">
           {Array.from({ length: 10 }, (_, i) => {
             const awal = i < d.a;
@@ -1012,14 +1007,14 @@ function RondeBingkai({ ronde, panel, onBeres }: { ronde: number; panel: PanelSu
                 disabled={awal}
                 onClick={() => ketuk(i)}
                 className={`aspect-square w-full rounded-full border-4 border-[#1C01A5] p-0 shadow-[0_3px_0_rgba(28,1,165,0.22)] ${
-                  awal ? "bg-[#F0AB00]" : baru ? "igil-muncul bg-[#7FCB96]" : "bg-white"
+                  awal ? "bg-[#E11D48]" : baru ? "igil-muncul bg-[#38BDF8]" : "bg-white"
                 }`}
               />
             );
           })}
         </div>
         <p className="text-center text-sm font-black text-[#1C01A5]">
-          Emas {d.a} • Hijau {jumlah}
+          Merah {d.a} • Biru {jumlah}
         </p>
         {beres ? <Persamaan a={d.a} b={d.b} c={bukaC ? c : "?"} /> : null}
         <Letusan id={letusan.id} />
@@ -1035,13 +1030,13 @@ function KartuBingkai({ speakGuru, lanjut, nomor, panel, teksLanjut }: PropsLang
       nomor={nomor}
       judul="Bingkai Sepuluh Dua Warna"
       warna="#FDE68A"
-      petunjuk="Kotak emas adalah benda yang sudah ada. Ketuk kotak kosong untuk mewarnai benda yang datang lagi. Lalu ucapkan berapa semuanya."
+      petunjuk="Titik merah adalah benda yang sudah ada. Ketuk kotak kosong untuk mewarnai biru benda yang datang lagi. Lalu ucapkan berapa semuanya."
       speakGuru={speakGuru}
       panel={panel}
       id="a2-bingkai"
       jumlahRonde={RONDE_BINGKAI.length}
       kunciAkhir={8}
-      belumSiap="Warnai kotak untuk benda yang datang lagi dulu, ya."
+      belumSiap="Warnai biru kotak untuk yang datang lagi dulu, ya."
       teksLanjut={teksLanjut}
       lanjut={lanjut}
       isi={(r, beres) => <RondeBingkai ronde={r} panel={panel} onBeres={beres} />}
@@ -1049,126 +1044,97 @@ function KartuBingkai({ speakGuru, lanjut, nomor, panel, teksLanjut }: PropsLang
   );
 }
 
-/* --------- Permainan 6. Hitung lalu Pindahkan (hlm. 47-48) ---------------- */
+/* --------- Permainan 6. Goresan Tally (hlm. 47-48) ------------------------ */
 
-const RONDE_JEMBATAN = [
-  { ikon: "🐰", a: 3, b: 4 },
-  { ikon: "🍓", a: 3, b: 2 },
-  { ikon: "🌼", a: 4, b: 4 },
+const RONDE_TALLY = [
+  { a: 2, b: 3, nama: "pensil" },
+  { a: 4, b: 3, nama: "anak" },
+  { a: 5, b: 4, nama: "buku" },
 ];
 
-const TITIK_BAGAN = [
-  { cx: 132, cy: 22, r: 19 },
-  { cx: 132, cy: 78, r: 19 },
-  { cx: 38, cy: 50, r: 27 },
-];
-
-function RondeJembatan({ ronde, panel, onBeres }: { ronde: number; panel: PanelSuara; onBeres: () => void }) {
-  const d = RONDE_JEMBATAN[ronde];
+function RondeTally({ ronde, panel, onBeres }: { ronde: number; panel: PanelSuara; onBeres: () => void }) {
+  const d = RONDE_TALLY[ronde];
   const c = d.a + d.b;
-  const [hA, setHA] = useState(0);
-  const [hB, setHB] = useState(0);
-  const [salin, setSalin] = useState(0);
+  const [nA, setNA] = useState(0);
+  const [nB, setNB] = useState(0);
   const [kabar, setKabar] = useState<Kabar>(null);
   const letusan = useLetusan();
-  const siapA = hA >= d.a;
-  const siapB = hB >= d.b;
-  const siapSemua = siapA && siapB;
-  const beres = salin >= 3;
-  const akhir = ronde === RONDE_JEMBATAN.length - 1;
-  const suara = panel.suara["a2-jembatan"] === true && akhir;
+  const beres = nA === d.a && nB === d.b;
+  const akhir = ronde === RONDE_TALLY.length - 1;
+  const suara = panel.suara["a2-tally"] === true && akhir;
   const bukaC = !akhir || suara;
-  useBicara(beres, `${ucapTambah(d.a, d.b, c)}.`);
+  useBicara(beres, `${ucapTambah(d.a, d.b, c)}. Semua goresan ada ${kataK(c)}.`);
 
-  const hitungKe = (g: "a" | "b") => {
-    if (g === "a" && !siapA) setHA((n) => n + 1);
-    if (g === "b" && !siapB) setHB((n) => n + 1);
-  };
-
-  const salinKe = (urutan: number) => {
-    if (!siapSemua) {
-      setKabar({ teks: "Hitung dulu kedua kelompok, ya.", ok: false });
-      return;
-    }
+  const ubah = (g: "a" | "b", arah: 1 | -1) => {
     if (beres) return;
-    if (urutan !== salin) {
-      setKabar({
-        teks: salin === 0 ? "Mulai dari lingkaran Sebagian yang atas." : salin === 1 ? "Sekarang lingkaran Sebagian yang bawah." : "Terakhir, lingkaran Gabungan.",
-        ok: false,
-      });
+    const target = g === "a" ? d.a : d.b;
+    const kini = g === "a" ? nA : nB;
+    if (arah === 1 && kini >= target) {
+      setKabar({ teks: `Cukup! Ceritanya hanya ${target}.`, ok: false });
       return;
     }
+    if (arah === -1 && kini <= 0) return;
     setKabar(null);
-    const baru = salin + 1;
-    setSalin(baru);
-    if (baru >= 3) {
+    const baru = kini + arah;
+    if (g === "a") setNA(baru);
+    else setNB(baru);
+    const jadiA = g === "a" ? baru : nA;
+    const jadiB = g === "b" ? baru : nB;
+    if (jadiA === d.a && jadiB === d.b) {
       letusan.picu();
       onBeres();
     }
   };
 
-  const nilaiBagan = {
-    a: siapA ? d.a : "?",
-    b: siapB ? d.b : "?",
-    g: siapSemua ? c : "?",
-  } as const;
-
-  const kelompok = (g: "a" | "b", n: number, h: number) => (
-    <div className="rounded-2xl border-4 border-dashed border-[#9CA3AF] bg-white px-1 py-2">
-      <span className="flex flex-wrap items-center justify-center gap-1 text-3xl leading-none">
-        {Array.from({ length: n }, (_, i) => (
-          <button
-            key={i}
-            type="button"
-            aria-label={`Hitung ${g === "a" ? "kelompok kiri" : "kelompok kanan"} ${i + 1}`}
-            onClick={() => hitungKe(g)}
-            className={`igil-tanpa-tepi rounded-full p-0.5 leading-none ${i < h ? "bg-[#FFE566] ring-2 ring-[#1C01A5]" : ""}`}
-          >
-            {d.ikon}
-          </button>
-        ))}
-      </span>
-      <p className="text-center text-sm font-black text-[#1C01A5]">Terhitung {h}</p>
+  const baris = (g: "a" | "b", judul: string, n: number, warna: string) => (
+    <div className="space-y-1 rounded-2xl border-4 border-dashed border-[#9CA3AF] bg-white px-2 py-2">
+      <p className="text-sm font-black" style={{ color: warna }}>
+        {judul}
+      </p>
+      <div className="flex items-center gap-2">
+        <button
+          type="button"
+          aria-label={`Hapus satu goresan ${judul}`}
+          onClick={() => ubah(g, -1)}
+          className={TOMBOL_KECIL}
+        >
+          −
+        </button>
+        <div className="flex min-h-[44px] flex-1 items-center justify-center">
+          <Tally n={n} kelas="w-full max-w-[120px]" />
+        </div>
+        <button
+          type="button"
+          aria-label={`Tambah satu goresan ${judul}`}
+          onClick={() => ubah(g, 1)}
+          className={TOMBOL_KECIL}
+        >
+          +
+        </button>
+      </div>
+      <p className="text-center text-sm font-black text-[#1C01A5]">Goresan {n}</p>
     </div>
   );
 
   return (
     <>
       <CatatanTempel
-        pendek={suara ? "Hebat!" : beres ? "Ucapkan: semuanya" : !siapSemua ? "Ketuk gambar untuk menghitung" : "Ketuk lingkaran, pindahkan ke kalimat"}
-        teks="Pertama, ketuk tiap gambar untuk menghitung. Lalu ketuk lingkaran pada bagan secara berurutan untuk memindahkan angkanya ke kalimat matematika."
+        pendek={suara ? "Hebat!" : beres ? "Ucapkan: semua goresan" : "Gambar goresan tally"}
+        teks="Baca ceritanya. Tekan tanda tambah untuk menggambar satu goresan, sebanyak bilangan pada cerita. Goresan kelima mencoret miring."
       />
       <div className={KERTAS_GAMBAR}>
-        <div className="grid grid-cols-2 gap-2">
-          {kelompok("a", d.a, hA)}
-          {kelompok("b", d.b, hB)}
-        </div>
-        <div className="relative mx-auto w-full max-w-[220px]">
-          <Bagan
-            gabungan={nilaiBagan.g}
-            a={nilaiBagan.a}
-            b={nilaiBagan.b}
-            nyala={siapSemua && !beres ? [(["a", "b", "g"] as const)[salin]] : []}
-          />
-          {TITIK_BAGAN.map((t, i) => (
-            <button
-              key={i}
-              type="button"
-              aria-label={i === 2 ? "Lingkaran Gabungan" : i === 0 ? "Lingkaran Sebagian atas" : "Lingkaran Sebagian bawah"}
-              onClick={() => salinKe(i)}
-              className="igil-tanpa-tepi absolute -translate-x-1/2 -translate-y-1/2 rounded-full bg-transparent p-0"
-              style={{ left: `${t.cx / 1.7}%`, top: `${t.cy}%`, width: `${(t.r * 2) / 1.7}%`, aspectRatio: "1 / 1" }}
-            />
-          ))}
-        </div>
-        <Persamaan
-          a={salin > 0 ? d.a : null}
-          b={salin > 1 ? d.b : null}
-          c={salin > 2 ? (bukaC ? c : "?") : null}
-          t1={salin > 0 ? "+" : null}
-          t2={salin > 1 ? "=" : null}
-          nyala={siapSemua && !beres ? [salin === 0 ? 0 : salin === 1 ? 2 : 4] : []}
-        />
+        <TeksCerita baris={[`Ada ${d.a} ${d.nama}.`, `Datang lagi ${d.b} ${d.nama}.`, "Berapa jumlah semuanya?"]} />
+        {baris("a", `Yang ada: ${d.a}`, nA, WARNA_ADA)}
+        {baris("b", `Datang lagi: ${d.b}`, nB, "#0369A1")}
+        {beres ? (
+          <div className="igil-muncul space-y-1 rounded-2xl border-4 border-[#1C01A5] bg-[#FFFBEB] px-2 py-2">
+            <p className="text-sm font-black text-[#1C01A5]">Semua goresan digabung</p>
+            <div className="flex justify-center">
+              <Tally n={c} kelas="w-full max-w-[200px]" />
+            </div>
+            <Persamaan a={d.a} b={d.b} c={bukaC ? c : "?"} kecil />
+          </div>
+        ) : null}
         <Letusan id={letusan.id} />
       </div>
       <KabarChip kabar={kabar} />
@@ -1176,35 +1142,50 @@ function RondeJembatan({ ronde, panel, onBeres }: { ronde: number; panel: PanelS
   );
 }
 
-function KartuJembatan({ speakGuru, lanjut, nomor, panel, teksLanjut }: PropsLangkah) {
+function KartuTally({ speakGuru, lanjut, nomor, panel, teksLanjut }: PropsLangkah) {
   return (
     <GameRonde
       nomor={nomor}
-      judul="Hitung lalu Pindahkan"
+      judul="Goresan Tally"
       warna="#FDE68A"
-      petunjuk="Ketuk tiap gambar untuk menghitung. Lalu ketuk lingkaran pada bagan secara berurutan, supaya angkanya pindah ke kalimat matematika. Terakhir, ucapkan berapa semuanya."
+      petunjuk="Baca ceritanya. Gambar goresan tally untuk yang ada, lalu untuk yang datang lagi. Setelah itu gabungkan, dan ucapkan berapa semua goresan."
       speakGuru={speakGuru}
       panel={panel}
-      id="a2-jembatan"
-      jumlahRonde={RONDE_JEMBATAN.length}
-      kunciAkhir={8}
-      belumSiap="Pindahkan angka ke kalimat dulu, ya."
+      id="a2-tally"
+      jumlahRonde={RONDE_TALLY.length}
+      kunciAkhir={9}
+      belumSiap="Gambar goresan untuk kedua kelompok dulu, ya."
       teksLanjut={teksLanjut}
       lanjut={lanjut}
-      isi={(r, beres) => <RondeJembatan ronde={r} panel={panel} onBeres={beres} />}
+      isi={(r, beres) => <RondeTally ronde={r} panel={panel} onBeres={beres} />}
     />
   );
 }
 
-/* --------- Permainan 7. Jodohkan Gambar dan Kalimat (hlm. 49) ------------- */
+/* --------- Permainan 7. Jodohkan Diagram dan Kalimat (hlm. 49) ------------ */
 
-const GAMBAR_JODOH = [
-  { ikon: "🦆", a: 5, b: 2, nama: "bebek" },
-  { ikon: "⚽", a: 3, b: 3, nama: "bola" },
-  { ikon: "🍎", a: 6, b: 3, nama: "apel" },
-];
+const DIAGRAM_JODOH = [
+  { bentuk: "bingkai", label: "Bingkai sepuluh", a: 6, b: 3 },
+  { bentuk: "tally", label: "Goresan tally", a: 4, b: 3 },
+  { bentuk: "batang", label: "Model batang", a: 5, b: 3 },
+] as const;
 const URUT_PITA = [1, 2, 0];
 const WARNA_JODOH = ["#F0AB00", "#7FCB96", "#E98989"];
+
+function GambarJodoh({ i }: { i: number }) {
+  const g = DIAGRAM_JODOH[i];
+  if (g.bentuk === "bingkai") return <BingkaiMini merah={g.a} biru={g.b} kelas="mx-auto block w-full max-w-[150px]" />;
+  if (g.bentuk === "tally") {
+    return (
+      <span className="flex items-center justify-center gap-2">
+        <Tally n={g.a} kelas="w-[88px]" />
+        <span className="h-8 w-1 rounded-full bg-[#1C01A5]/40" aria-hidden="true" />
+        <Tally n={g.b} kelas="w-[60px]" />
+      </span>
+    );
+  }
+  return <BatangSepuluh a={g.a} b={g.b} kelas="mx-auto w-full max-w-[220px]" />;
+}
 
 function RondeJodoh({ speakGuru, panel, onBeres }: { speakGuru: (t: string) => void; panel: PanelSuara; onBeres: () => void }) {
   const [pilih, setPilih] = useState<number | null>(null);
@@ -1214,7 +1195,7 @@ function RondeJodoh({ speakGuru, panel, onBeres }: { speakGuru: (t: string) => v
   const letusan = useLetusan();
   const beres = cocok.every(Boolean);
   const suara = panel.suara["a2-jodoh"] === true;
-  useBicara(suara, "Tiga cerita sudah berjodoh. Lima ditambah dua sama dengan tujuh. Ada tujuh bebek.");
+  useBicara(suara, "Tiga diagram sudah berjodoh. Empat ditambah tiga sama dengan tujuh. Ada tujuh goresan.");
 
   const ketukGambar = (i: number) => {
     if (cocok[i] || beres) return;
@@ -1224,7 +1205,7 @@ function RondeJodoh({ speakGuru, panel, onBeres }: { speakGuru: (t: string) => v
   const ketukPita = (k: number) => {
     if (cocok[k] || beres) return;
     if (pilih === null) {
-      setKabar({ teks: "Pilih gambarnya dulu, ya.", ok: false });
+      setKabar({ teks: "Pilih diagramnya dulu, ya.", ok: false });
       return;
     }
     if (pilih === k) {
@@ -1234,7 +1215,7 @@ function RondeJodoh({ speakGuru, panel, onBeres }: { speakGuru: (t: string) => v
       setPilih(null);
       setKeliru(null);
       setKabar(null);
-      const g = GAMBAR_JODOH[k];
+      const g = DIAGRAM_JODOH[k];
       speakGuru(`${ucapTambah(g.a, g.b, g.a + g.b)}.`);
       if (baru.every(Boolean)) {
         letusan.picu();
@@ -1242,33 +1223,30 @@ function RondeJodoh({ speakGuru, panel, onBeres }: { speakGuru: (t: string) => v
       }
     } else {
       setKeliru(k);
-      setKabar({ teks: "Belum cocok. Hitung gambarnya lagi, ya.", ok: false });
+      setKabar({ teks: "Belum cocok. Hitung diagramnya lagi, ya.", ok: false });
     }
   };
 
   return (
     <>
       <CatatanTempel
-        pendek={suara ? "Hebat!" : beres ? "Ucapkan: jumlah bebek" : "Jodohkan gambar dan kalimat"}
-        teks="Ketuk satu gambar, lalu ketuk kalimat penjumlahan yang cocok."
+        pendek={suara ? "Hebat!" : beres ? "Ucapkan: jumlah goresan" : "Jodohkan diagram dan kalimat"}
+        teks="Ketuk satu diagram, lalu ketuk kalimat penjumlahan yang cocok. Merah dan biru menunjukkan dua kelompok."
       />
       <div className={KERTAS_GAMBAR}>
         <div className="space-y-2">
-          {GAMBAR_JODOH.map((g, i) => (
+          {DIAGRAM_JODOH.map((g, i) => (
             <button
-              key={g.nama}
+              key={g.bentuk}
               type="button"
-              aria-label={`Gambar ${g.nama}`}
+              aria-label={`Diagram ${g.label}`}
               onClick={() => ketukGambar(i)}
               className={`igil-tanpa-tepi relative block w-full rounded-2xl border-4 bg-white px-2 py-2 ${
                 pilih === i ? "ring-4 ring-[#F0AB00]" : ""
               } ${cocok[i] ? "border-[#7FCB96]" : "border-[#1C01A5]"}`}
             >
-              <span className="flex items-center justify-center gap-2">
-                <Kelompok ikon={g.ikon} n={g.a} kelas="text-2xl" />
-                <span className="text-sm font-black text-[#1C01A5]">dan</span>
-                <Kelompok ikon={g.ikon} n={g.b} kelas="text-2xl" />
-              </span>
+              <GambarJodoh i={i} />
+              <span className="mt-1 block text-center text-xs font-black text-[#1C01A5]/70">{g.label}</span>
               {cocok[i] ? (
                 <span
                   className="absolute -right-2 -top-2 flex h-7 w-7 items-center justify-center rounded-full border-2 border-[#1C01A5] text-sm font-black text-[#1C01A5]"
@@ -1285,7 +1263,7 @@ function RondeJodoh({ speakGuru, panel, onBeres }: { speakGuru: (t: string) => v
         </p>
         <div className="space-y-2">
           {URUT_PITA.map((k) => {
-            const g = GAMBAR_JODOH[k];
+            const g = DIAGRAM_JODOH[k];
             return (
               <button
                 key={k}
@@ -1320,15 +1298,15 @@ function KartuJodoh({ speakGuru, lanjut, nomor, panel, teksLanjut }: PropsLangka
   return (
     <GameRonde
       nomor={nomor}
-      judul="Jodohkan Gambar dan Kalimat"
+      judul="Jodohkan Diagram dan Kalimat"
       warna="#FDE68A"
-      petunjuk="Ketuk satu gambar, lalu ketuk kalimat penjumlahan yang cocok. Setelah ketiganya berjodoh, ucapkan berapa jumlah semua bebek."
+      petunjuk="Ketuk satu diagram, lalu ketuk kalimat penjumlahan yang cocok. Setelah ketiganya berjodoh, ucapkan berapa jumlah semua goresan pada diagram tally."
       speakGuru={speakGuru}
       panel={panel}
       id="a2-jodoh"
       jumlahRonde={1}
       kunciAkhir={7}
-      belumSiap="Jodohkan ketiga gambar dulu, ya."
+      belumSiap="Jodohkan ketiga diagram dulu, ya."
       teksLanjut={teksLanjut}
       lanjut={lanjut}
       isi={(_, beres) => <RondeJodoh speakGuru={speakGuru} panel={panel} onBeres={beres} />}
@@ -1336,10 +1314,10 @@ function KartuJodoh({ speakGuru, lanjut, nomor, panel, teksLanjut }: PropsLangka
   );
 }
 
-type TipePicture = "bingkai" | "jembatan" | "jodoh";
+type TipePicture = "bingkai" | "tally" | "jodoh";
 const KARTU_PICTURE: { nomor: number; tipe: TipePicture }[] = [
   { nomor: 5, tipe: "bingkai" },
-  { nomor: 6, tipe: "jembatan" },
+  { nomor: 6, tipe: "tally" },
   { nomor: 7, tipe: "jodoh" },
 ];
 
@@ -1387,7 +1365,7 @@ function PictureIsi({ speakGuru, panel, hentikan, gulir, onSelesai }: Umum) {
       </div>
       <div key={kartu.tipe} className="space-y-3">
         {kartu.tipe === "bingkai" ? <KartuBingkai {...dasar} /> : null}
-        {kartu.tipe === "jembatan" ? <KartuJembatan {...dasar} /> : null}
+        {kartu.tipe === "tally" ? <KartuTally {...dasar} /> : null}
         {kartu.tipe === "jodoh" ? <KartuJodoh {...dasar} /> : null}
       </div>
     </BingkaiTahap>

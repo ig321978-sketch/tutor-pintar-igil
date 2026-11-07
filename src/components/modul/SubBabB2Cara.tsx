@@ -4,6 +4,7 @@ import { BingkaiTahap } from "@/components/modul/BingkaiTahap";
 import React, { useContext, useState } from "react";
 import { DottedNumberTracingCanvas } from "./elemen-kelas1";
 import { BingkaiMini, Kepik } from "./gambar-cara-b2";
+import { DuaKelompokTitik, TeksCerita } from "./diagram-pictorial";
 import { Bagan } from "./gambar-pasangan-d";
 import {
   GameRonde,
@@ -54,11 +55,12 @@ import {
 /* Semua di klien, tanpa API. Naskah: naskah/mtk-1-bab2-sub-b-berbagai-cara.md.  */
 /*                                                                            */
 /* Sepuluh permainan, semuanya beda cara main:                                */
-/*  Concrete: 1 Dua Keranjang Apel (seret dan tukar), 2 Lompat di Petak Angka  */
-/*            (ketuk petak), 3 Kepik Kembar (samakan totol), 4 Sepuluh Jari    */
-/*            (buka jari).                                                    */
-/*  Picture:  5 Isi Bagan Pasangan (pilih angka), 6 Tabel Tambah di Garis      */
-/*            Bilangan (ketuk hasil), 7 Kartu Dua Bingkai (cari pasangan).     */
+/*  Concrete: 1 Dua Keranjang Apel (seret dan tukar), 2 Hitung Maju dengan Kue */
+/*            (seret kue, hitung maju), 3 Kepik Kembar (samakan totol),        */
+/*            4 Sepuluh Jari (buka jari).                                     */
+/*  Picture:  (diagram saja, tanpa gambar benda; lihat diagram-pictorial.tsx) */
+/*            5 Isi Bagan Pasangan (titik, pilih angka), 6 Tabel Tambah di     */
+/*            Garis Bilangan (ketuk hasil), 7 Kartu Dua Bingkai (cari pasangan).*/
 /*  Abstract: 8 Susun Tukar Tempat (kartu angka), 9 Kembar atau Bukan?         */
 /*            (tentukan, cari hasil), 10 Kanvas Guratan dan Suara.             */
 /* ------------------------------------------------------------------------ */
@@ -82,7 +84,11 @@ function DeretPetak({
       <div className="grid grid-cols-10 gap-0.5" aria-hidden="true">
         {Array.from({ length: 10 }, (_, i) => (
           <span key={i} className="flex h-7 items-end justify-center text-xl leading-none">
-            {tanda === i + 1 ? <span className="igil-lompat">🧒</span> : null}
+            {tanda === i + 1 ? (
+              <span className="igil-lompat font-black text-[#E11D48]" style={{ fontSize: "1.4rem" }}>
+                ▼
+              </span>
+            ) : null}
           </span>
         ))}
       </div>
@@ -383,96 +389,117 @@ function LangkahKeranjang({ speakGuru, lanjut, nomor, panel, teksLanjut }: Props
   );
 }
 
-/* --------- Permainan 2. Lompat di Petak Angka (hlm. 55-58) ---------------- */
+/* --------- Permainan 2. Hitung Maju dengan Kue (hlm. 55-58) --------------- */
+/* Benda nyata: kue di kotak dan kue di meja. Anak memindahkan kue satu-satu,  */
+/* sambil menghitung maju dari bilangan pertama. Garis bilangan baru dipakai   */
+/* di Tahap 5 (Picture).                                                       */
 
-const RONDE_LOMPAT: [number, number][] = [
+const RONDE_MAJU: [number, number][] = [
   [1, 2],
   [4, 3],
   [5, 3],
 ];
 
-function RondeLompat({ ronde, panel, onBeres }: { ronde: number; panel: PanelSuara; onBeres: () => void }) {
-  const [a, b] = RONDE_LOMPAT[ronde];
+function RondeMaju({ ronde, panel, onBeres }: { ronde: number; panel: PanelSuara; onBeres: () => void }) {
+  const [a, b] = RONDE_MAJU[ronde];
   const c = a + b;
   const ucap = useContext(SuaraCtx);
-  const [lompat, setLompat] = useState(0);
-  const [kabar, setKabar] = useState<Kabar>(null);
+  const [pindah, setPindah] = useState(0);
   const letusan = useLetusan();
-  const posisi = a + lompat;
-  const beres = lompat >= b;
-  const akhir = ronde === RONDE_LOMPAT.length - 1;
-  const suara = panel.suara["b2-lompat"] === true && akhir;
+  const beres = pindah >= b;
+  const akhir = ronde === RONDE_MAJU.length - 1;
+  const suara = panel.suara["b2-maju"] === true && akhir;
   const bukaC = !akhir || suara;
   useBicara(beres, `${ucapTambah(a, b, c)}.`);
 
-  const ketuk = (n: number) => {
+  const taruh = () => {
     if (beres) return;
-    if (n === posisi + 1) {
-      setKabar(null);
-      const baru = lompat + 1;
-      setLompat(baru);
-      ucap(kataK(n));
-      if (baru >= b) {
-        letusan.picu();
-        onBeres();
-      }
-    } else if (n <= posisi) {
-      setKabar({ teks: "Petak itu sudah dilewati. Lompat ke depan, ya.", ok: false });
-    } else {
-      setKabar({ teks: "Lompat satu petak saja, ke petak berikutnya.", ok: false });
+    const baru = pindah + 1;
+    setPindah(baru);
+    ucap(kataK(a + baru));
+    if (baru >= b) {
+      letusan.picu();
+      onBeres();
     }
   };
 
-  const jejak = Array.from({ length: lompat }, (_, i) => a + i + 1);
+  const sisa = b - pindah;
 
   return (
     <>
       <IgilBicara
-        pendek={suara ? "Hebat!" : beres ? "Ucapkan: berapa sekarang?" : `Lompat ${kataK(b)} petak ke depan!`}
-        teks={`Kira berdiri di angka ${kataK(a)}. Ketuk petak berikutnya satu per satu. Lompat ${kataK(b)} kali. Lalu ucapkan Kira ada di angka berapa.`}
+        pendek={suara ? "Hebat!" : beres ? "Ucapkan: berapa kue sekarang?" : `Pindahkan ${kataK(b)} kue ke kotak!`}
+        teks={`Di kotak sudah ada ${kataK(a)} kue. Di meja ada ${kataK(b)} kue lagi. Seret kue dari meja ke kotak satu per satu, atau ketuk kuenya. Mulai menghitung dari ${kataK(a)}, lalu hitung maju. Terakhir, ucapkan berapa kue di kotak.`}
       />
       <div className={`${ALAS} relative space-y-3 p-3`}>
-        <DeretPetak
-          tanda={posisi}
-          sorot={Array.from({ length: lompat + 1 }, (_, i) => a + i)}
-          onKetuk={ketuk}
-          mati={beres}
-        />
-        <div className="flex flex-wrap items-center justify-center gap-2">
-          <span className="rounded-full border-4 border-[#1C01A5] bg-white px-3 py-0.5 text-sm font-black text-[#1C01A5]">Mulai {a}</span>
-          <span className="rounded-full border-4 border-[#1C01A5] bg-[#FFE566] px-3 py-0.5 text-sm font-black text-[#1C01A5]">
-            Lompatan {lompat} dari {b}
-          </span>
+        <div className="space-y-1 rounded-2xl border-4 border-dashed border-[#A8672D] bg-white/70 p-2">
+          <p className="text-center text-sm font-black text-[#1C01A5]/70">Kue di meja</p>
+          <div className="flex min-h-[64px] flex-wrap items-end justify-center gap-3">
+            {Array.from({ length: sisa }, (_, i) => (
+              <BendaSeret
+                key={`${pindah}-${i}`}
+                id={String(i)}
+                aktif={!beres}
+                label="kue di meja"
+                onKetuk={taruh}
+                onLepas={(_, x, y) => {
+                  if (zonaDi(x, y) === "b2-kotak") taruh();
+                }}
+              >
+                <span className="text-5xl leading-none">🍪</span>
+              </BendaSeret>
+            ))}
+            {beres ? (
+              <span className="text-3xl" aria-hidden="true">
+                ✅
+              </span>
+            ) : null}
+          </div>
         </div>
-        {jejak.length > 0 ? (
+        <div
+          data-zona="b2-kotak"
+          className="space-y-1 rounded-3xl border-4 border-[#1C01A5] bg-[#F3C98A] px-2 py-2 shadow-[0_4px_0_rgba(28,1,165,0.22)]"
+        >
+          <p className="text-center text-sm font-black text-[#1C01A5]/70">Kotak kue</p>
+          <div className="flex min-h-[72px] flex-wrap content-center items-center justify-center gap-1 rounded-2xl border-4 border-dashed border-[#A8672D] bg-white/80 p-1">
+            {Array.from({ length: a + pindah }, (_, i) => (
+              <span key={i} className={`text-4xl leading-none ${i >= a ? "igil-muncul" : ""}`} aria-hidden="true">
+                🍪
+              </span>
+            ))}
+          </div>
+          <p className="text-center text-sm font-black text-[#1C01A5]">
+            Mulai {a} • Dipindah {pindah} dari {b}
+          </p>
+        </div>
+        {pindah > 0 ? (
           <p className="igil-muncul text-center text-lg font-black text-[#1C01A5]">
-            {a} → {jejak.join(", ")}
+            {a} → {Array.from({ length: pindah }, (_, i) => a + i + 1).join(", ")}
           </p>
         ) : null}
         <Persamaan a={a} b={b} c={beres && bukaC ? c : "?"} />
-        <KabarChip kabar={kabar} />
         <Letusan id={letusan.id} />
       </div>
     </>
   );
 }
 
-function LangkahLompat({ speakGuru, lanjut, nomor, panel, teksLanjut }: PropsLangkah) {
+function LangkahMaju({ speakGuru, lanjut, nomor, panel, teksLanjut }: PropsLangkah) {
   return (
     <GameRonde
       nomor={nomor}
-      judul="Lompat di Petak Angka"
+      judul="Hitung Maju dengan Kue"
       warna="#FFE566"
-      petunjuk="Kira berdiri di satu angka. Ketuk petak berikutnya satu per satu untuk melompat ke depan. Setelah selesai melompat, ucapkan Kira ada di angka berapa."
+      petunjuk="Di kotak sudah ada beberapa kue. Seret kue dari meja ke kotak satu per satu, atau ketuk kuenya. Hitung maju mulai dari bilangan pertama. Setelah selesai, ucapkan berapa kue di kotak."
       speakGuru={speakGuru}
       panel={panel}
-      id="b2-lompat"
-      jumlahRonde={RONDE_LOMPAT.length}
+      id="b2-maju"
+      jumlahRonde={RONDE_MAJU.length}
       kunciAkhir={8}
-      belumSiap="Selesaikan lompatannya dulu, ya."
+      belumSiap="Pindahkan semua kue dari meja dulu, ya."
       teksLanjut={teksLanjut}
       lanjut={lanjut}
-      isi={(r, beres) => <RondeLompat ronde={r} panel={panel} onBeres={beres} />}
+      isi={(r, beres) => <RondeMaju ronde={r} panel={panel} onBeres={beres} />}
     />
   );
 }
@@ -697,10 +724,10 @@ function LangkahJari({ speakGuru, lanjut, nomor, panel, teksLanjut }: PropsLangk
 
 /* --------- Pembungkus Concrete -------------------------------------------- */
 
-type TipeConcrete = "keranjang" | "lompat" | "kepik" | "jari";
+type TipeConcrete = "keranjang" | "maju" | "kepik" | "jari";
 const LANGKAH_CONCRETE: { nomor: number; tipe: TipeConcrete }[] = [
   { nomor: 1, tipe: "keranjang" },
-  { nomor: 2, tipe: "lompat" },
+  { nomor: 2, tipe: "maju" },
   { nomor: 3, tipe: "kepik" },
   { nomor: 4, tipe: "jari" },
 ];
@@ -749,7 +776,7 @@ function ConcreteIsi({ speakGuru, panel, hentikan, gulir, onSelesai }: Umum) {
       </div>
       <div key={indeks} className="space-y-3">
         {langkah.tipe === "keranjang" ? <LangkahKeranjang {...dasar} /> : null}
-        {langkah.tipe === "lompat" ? <LangkahLompat {...dasar} /> : null}
+        {langkah.tipe === "maju" ? <LangkahMaju {...dasar} /> : null}
         {langkah.tipe === "kepik" ? <LangkahKepik {...dasar} /> : null}
         {langkah.tipe === "jari" ? <LangkahJari {...dasar} /> : null}
       </div>
@@ -764,9 +791,9 @@ function ConcreteIsi({ speakGuru, panel, hentikan, gulir, onSelesai }: Umum) {
 /* --------- Permainan 5. Isi Bagan Pasangan (hlm. 51-54) ------------------- */
 
 const RONDE_BAGAN = [
-  { ikonA: "🍎", ikonB: "🍏", a: 3, b: 2 },
-  { ikonA: "🌼", ikonB: "🌷", a: 2, b: 4 },
-  { ikonA: "🍓", ikonB: "🍇", a: 6, b: 3 },
+  { a: 3, b: 2, nama: "apel" },
+  { a: 2, b: 4, nama: "bunga" },
+  { a: 6, b: 3, nama: "stroberi" },
 ];
 
 function RondeBagan({ ronde, panel, onBeres }: { ronde: number; panel: PanelSuara; onBeres: () => void }) {
@@ -799,7 +826,7 @@ function RondeBagan({ ronde, panel, onBeres }: { ronde: number; panel: PanelSuar
     } else {
       setKeliru(n);
       setKabar({
-        teks: sasaran === "g" ? "Gabungan adalah semuanya. Hitung semua gambar." : "Hitung gambar kelompok ini, ya.",
+        teks: sasaran === "g" ? "Gabungan adalah semuanya. Hitung semua titik." : "Hitung titik kelompok ini, ya.",
         ok: false,
       });
     }
@@ -812,16 +839,12 @@ function RondeBagan({ ronde, panel, onBeres }: { ronde: number; panel: PanelSuar
     <>
       <CatatanTempel
         pendek={suara ? "Hebat!" : beres ? "Ucapkan: semuanya" : `Isi ${label}`}
-        teks="Hitung gambarnya. Isi bagan pasangan bilangan secara berurutan: Sebagian atas, Sebagian bawah, lalu Gabungan. Pilih angka yang tepat."
+        teks="Hitung titik merah dan titik biru. Isi bagan pasangan bilangan secara berurutan: Sebagian atas, Sebagian bawah, lalu Gabungan. Pilih angka yang tepat."
       />
       <div className={KERTAS_GAMBAR}>
-        <div className="grid grid-cols-2 gap-2">
-          <div className="rounded-2xl border-4 border-dashed border-[#9CA3AF] bg-white px-1 py-2">
-            <Kelompok ikon={d.ikonA} n={d.a} />
-          </div>
-          <div className="rounded-2xl border-4 border-dashed border-[#9CA3AF] bg-white px-1 py-2">
-            <Kelompok ikon={d.ikonB} n={d.b} />
-          </div>
+        <TeksCerita baris={[`Ada ${d.a} ${d.nama}.`, `Ada ${d.b} ${d.nama} lagi.`, "Berapa semuanya?"]} />
+        <div className="rounded-2xl border-4 border-dashed border-[#9CA3AF] bg-white px-2 py-2">
+          <DuaKelompokTitik a={d.a} b={d.b} />
         </div>
         <Bagan
           gabungan={langkah > 2 ? c : "?"}
@@ -851,7 +874,7 @@ function KartuBagan({ speakGuru, lanjut, nomor, panel, teksLanjut }: PropsLangka
       nomor={nomor}
       judul="Isi Bagan Pasangan"
       warna="#FDE68A"
-      petunjuk="Hitung gambar tiap kelompok. Lalu isi bagan pasangan bilangan dengan memilih angka yang tepat. Setelah itu, ucapkan jumlah semuanya."
+      petunjuk="Hitung titik tiap kelompok. Lalu isi bagan pasangan bilangan dengan memilih angka yang tepat. Setelah itu, ucapkan jumlah semuanya."
       speakGuru={speakGuru}
       panel={panel}
       id="b2-bagan"

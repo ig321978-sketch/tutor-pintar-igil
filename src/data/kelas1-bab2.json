@@ -160,21 +160,21 @@
           "diagramType": "ten-frame",
           "numberA": 4,
           "numberB": 2,
-          "caption": "Kotak emas untuk benda yang sudah ada, kotak hijau untuk benda yang datang lagi."
+          "caption": "Titik merah untuk yang sudah ada, kotak biru untuk yang datang lagi."
         },
         {
-          "title": "Hitung lalu Pindahkan (3 + 4, 3 + 2, 4 + 4)",
-          "diagramType": "number-bond",
-          "numberA": 3,
-          "numberB": 4,
-          "caption": "Hitung gambar, lalu pindahkan angka dari bagan pasangan bilangan ke kalimat penjumlahan."
+          "title": "Goresan Tally (2 + 3, 4 + 3, 5 + 4)",
+          "diagramType": "tally",
+          "numberA": 4,
+          "numberB": 3,
+          "caption": "Gambar goresan tiap kelompok, empat tegak dan kelima mencoret miring."
         },
         {
-          "title": "Jodohkan Gambar dan Kalimat (5 + 2, 3 + 3, 6 + 3)",
+          "title": "Jodohkan Diagram dan Kalimat (6 + 3, 4 + 3, 5 + 3)",
           "diagramType": "bar-blocks",
           "numberA": 5,
-          "numberB": 2,
-          "caption": "Jodohkan tiap gambar dengan kalimat penjumlahan yang cocok."
+          "numberB": 3,
+          "caption": "Jodohkan tiap diagram dengan kalimat penjumlahan yang cocok."
         }
       ],
       "abstractSlides": [
@@ -250,30 +250,30 @@
           "title": "Bingkai Sepuluh Dua Warna",
           "bookReference": "Buku Siswa Hlm. 47 No. 2",
           "objective": "Menunjukkan penjumlahan pada diagram Bingkai 10 dengan dua warna.",
-          "mechanicDescription": "Dua ronde: 4 + 2 bola dan 6 + 2 apel. Kotak emas sudah terisi, siswa mewarnai kotak hijau untuk benda yang datang lagi.",
-          "voiceGuide": "Warnai kotak untuk benda yang datang lagi, lalu ucapkan berapa semuanya."
+          "mechanicDescription": "Dua ronde: 4 + 2 bola dan 6 + 2 apel. Cerita ditulis sebagai teks. Titik merah di bingkai sepuluh sudah terisi, siswa mewarnai biru kotak untuk yang datang lagi. Tanpa gambar benda.",
+          "voiceGuide": "Warnai biru kotak untuk yang datang lagi, lalu ucapkan berapa semuanya."
         },
         {
           "gameId": "subA-game-6",
           "gameNumber": 6,
           "stage": "Pictorial",
-          "gameType": "count-then-bond",
-          "title": "Hitung lalu Pindahkan",
+          "gameType": "draw-tally-strokes",
+          "title": "Goresan Tally",
           "bookReference": "Buku Siswa Hlm. 47–48 No. 3–4",
-          "objective": "Menghubungkan gambar, bagan pasangan bilangan, dan kalimat penjumlahan.",
-          "mechanicDescription": "Tiga ronde: siswa menghitung tiap gambar, lalu mengetuk lingkaran bagan berurutan untuk memindahkan angka ke kalimat a + b = c.",
-          "voiceGuide": "Hitung gambarnya, ketuk lingkaran secara berurutan, lalu ucapkan berapa semuanya."
+          "objective": "Menggambarkan dua kelompok dengan goresan tally, lalu menggabungkannya menjadi kalimat penjumlahan.",
+          "mechanicDescription": "Tiga ronde cerita teks (2 + 3, 4 + 3, 5 + 4). Siswa menekan tanda tambah untuk menggambar goresan tally tiap kelompok (goresan kelima mencoret miring), lalu melihat goresan digabung dan kalimat a + b = c.",
+          "voiceGuide": "Gambar goresan untuk tiap kelompok, lihat gabungannya, lalu ucapkan berapa semua goresan."
         },
         {
           "gameId": "subA-game-7",
           "gameNumber": 7,
           "stage": "Pictorial",
-          "gameType": "picture-sentence-matcher",
-          "title": "Jodohkan Gambar dan Kalimat",
+          "gameType": "diagram-sentence-matcher",
+          "title": "Jodohkan Diagram dan Kalimat",
           "bookReference": "Buku Siswa Hlm. 49 No. 5",
-          "objective": "Memasangkan gambar dua kelompok dengan kalimat penjumlahan yang tepat.",
-          "mechanicDescription": "Siswa mengetuk satu gambar lalu kalimatnya: 5 + 2 = 7, 3 + 3 = 6, 6 + 3 = 9. Jodoh yang benar diberi nomor warna.",
-          "voiceGuide": "Jodohkan ketiga gambar, lalu ucapkan berapa jumlah semua bebek."
+          "objective": "Memasangkan diagram dua kelompok (bingkai sepuluh, goresan tally, model batang) dengan kalimat penjumlahan yang tepat.",
+          "mechanicDescription": "Siswa mengetuk satu diagram lalu kalimatnya: bingkai 6 + 3 = 9, goresan 4 + 3 = 7, batang 5 + 3 = 8. Jodoh yang benar diberi nomor warna.",
+          "voiceGuide": "Jodohkan ketiga diagram, lalu ucapkan berapa jumlah semua goresan pada diagram tally."
         },
         {
           "gameId": "subA-game-8",
@@ -443,10 +443,10 @@
           "voiceGuide": "Seret semua buah ke keranjang, tukar tempat dua kelompok, lalu ucapkan berapa semua buah."
         },
         {
-          "title": "Lompat di Petak Angka (1 + 2, 4 + 3, 5 + 3)",
-          "emoji": "🏃",
+          "title": "Hitung Maju dengan Kue (1 + 2, 4 + 3, 5 + 3)",
+          "emoji": "🍪",
           "targetCount": 8,
-          "voiceGuide": "Ketuk petak berikutnya satu per satu untuk melompat ke depan, lalu ucapkan Kira ada di angka berapa."
+          "voiceGuide": "Seret kue dari meja ke kotak satu per satu, hitung maju, lalu ucapkan berapa kue di kotak."
         },
         {
           "title": "Kepik Kembar (2 + 2, 3 + 3, 4 + 4)",
@@ -467,7 +467,7 @@
           "diagramType": "number-bond",
           "numberA": 3,
           "numberB": 2,
-          "caption": "Hitung gambar, lalu isi lingkaran Sebagian dan Gabungan pada bagan pasangan bilangan."
+          "caption": "Hitung titik merah dan biru, lalu isi lingkaran Sebagian dan Gabungan pada bagan pasangan bilangan."
         },
         {
           "title": "Tabel Tambah di Garis Bilangan (tambah 1, 2, 3)",
@@ -520,12 +520,12 @@
           "gameId": "subB-game-2",
           "gameNumber": 2,
           "stage": "Concrete",
-          "gameType": "tap-to-hop",
-          "title": "Lompat di Petak Angka",
+          "gameType": "drag-to-container",
+          "title": "Hitung Maju dengan Kue",
           "bookReference": "Buku Siswa Hlm. 55–58",
-          "objective": "Menghitung maju di garis bilangan: mulai dari bilangan pertama, lompat sebanyak bilangan kedua.",
-          "mechanicDescription": "Siswa mengetuk petak berikutnya satu per satu (1 + 2, 4 + 3, 5 + 3), lalu mengucapkan angka tempat Kira mendarat.",
-          "voiceGuide": "Ketuk petak berikutnya satu per satu, lalu ucapkan Kira ada di angka berapa."
+          "objective": "Menghitung maju dengan benda nyata: mulai dari bilangan pertama, lalu pindahkan kue satu per satu.",
+          "mechanicDescription": "Di kotak sudah ada a kue, di meja ada b kue (1 + 2, 4 + 3, 5 + 3). Siswa menyeret kue ke kotak satu per satu sambil menghitung maju dari a, lalu mengucapkan jumlah kue di kotak.",
+          "voiceGuide": "Seret kue dari meja ke kotak satu per satu, hitung maju, lalu ucapkan berapa kue di kotak."
         },
         {
           "gameId": "subB-game-3",
@@ -557,8 +557,8 @@
           "title": "Isi Bagan Pasangan",
           "bookReference": "Buku Siswa Hlm. 51–54",
           "objective": "Mengisi bagan pasangan bilangan dari gambar, lalu membaca dua kalimat tukar tempat.",
-          "mechanicDescription": "Siswa menghitung gambar dan memilih angka untuk Sebagian atas, Sebagian bawah, dan Gabungan (3 + 2, 2 + 4, 6 + 3).",
-          "voiceGuide": "Hitung gambar tiap kelompok, isi bagan pasangan bilangan, lalu ucapkan jumlah semuanya."
+          "mechanicDescription": "Siswa menghitung titik merah dan titik biru dari cerita teks, lalu memilih angka untuk Sebagian atas, Sebagian bawah, dan Gabungan (3 + 2, 2 + 4, 6 + 3).",
+          "voiceGuide": "Hitung titik tiap kelompok, isi bagan pasangan bilangan, lalu ucapkan jumlah semuanya."
         },
         {
           "gameId": "subB-game-6",
@@ -792,25 +792,25 @@
       ],
       "pictorialSlides": [
         {
-          "title": "Ambil dari Cerita (4 + 2, 3 + 4, 6 + 4)",
-          "diagramType": "story-text",
-          "numberA": 6,
-          "numberB": 4,
-          "caption": "Ketuk bilangan dan kata petunjuk di dalam cerita, lalu pilih hasilnya."
-        },
-        {
-          "title": "Cerita ke Gambar (3 + 4, 6 + 3, 5 + 3)",
-          "diagramType": "picture-choice",
+          "title": "Cerita ke Model Batang (4 + 2, 3 + 4, 5 + 3)",
+          "diagramType": "bar-model",
           "numberA": 5,
           "numberB": 3,
-          "caption": "Dengar cerita, lalu pilih gambar dua kelompok yang cocok."
+          "caption": "Warnai dua batang sesuai cerita, lalu baca jumlahnya pada penggaris."
         },
         {
-          "title": "Tabel Hitung Kendaraan (3 + 1, 3 + 2, 4 + 3)",
-          "diagramType": "tally-table",
+          "title": "Cerita ke Diagram (3 + 4, 5 + 2, 6 + 2)",
+          "diagramType": "diagram-choice",
+          "numberA": 6,
+          "numberB": 2,
+          "caption": "Dengar cerita, lalu pilih bingkai sepuluh, garis bilangan, atau model batang yang cocok."
+        },
+        {
+          "title": "Tabel Hitung Cerita (3 + 1, 3 + 2, 4 + 3)",
+          "diagramType": "dot-table",
           "numberA": 4,
           "numberB": 3,
-          "caption": "Hitung tiap jenis kendaraan, isi tabel, lalu isi jumlah semua."
+          "caption": "Hitung titik tiap baris, isi tabel, lalu isi jumlah semua."
         }
       ],
       "abstractSlides": [
@@ -882,34 +882,34 @@
           "gameId": "subC-game-5",
           "gameNumber": 5,
           "stage": "Picture",
-          "gameType": "tap-words-in-story",
-          "title": "Ambil dari Cerita",
+          "gameType": "color-bar-model",
+          "title": "Cerita ke Model Batang",
           "bookReference": "Buku Siswa Hlm. 65, 67, 71",
-          "objective": "Mengubah cerita menjadi kalimat matematika.",
-          "mechanicDescription": "Siswa mengetuk bilangan pertama, bilangan kedua, dan kata petunjuk tambah di dalam teks cerita, lalu memilih hasil (4 + 2, 3 + 4, 6 + 4).",
-          "voiceGuide": "Ketuk bilangan dan kata petunjuk di cerita, lalu pilih hasilnya."
+          "objective": "Mengubah cerita menjadi model batang, lalu membaca jumlah semua pada penggaris.",
+          "mechanicDescription": "Tiga ronde (4 + 2, 3 + 4, 5 + 3). Siswa mewarnai satu batang untuk yang ada dan satu batang untuk yang datang lagi, lalu mengetuk angka di ujung batang gabungan pada penggaris.",
+          "voiceGuide": "Warnai kedua batang, ketuk angka di ujung batang gabungan, lalu ucapkan jumlah semua."
         },
         {
           "gameId": "subC-game-6",
           "gameNumber": 6,
           "stage": "Picture",
-          "gameType": "choose-matching-picture",
-          "title": "Cerita ke Gambar",
+          "gameType": "choose-matching-diagram",
+          "title": "Cerita ke Diagram",
           "bookReference": "Buku Siswa Hlm. 70",
-          "objective": "Menggambar cerita dengan memilih gambar dua kelompok yang cocok.",
-          "mechanicDescription": "Siswa mendengar cerita dan memilih satu dari tiga gambar dua kelompok; pengecoh memuat jumlah salah atau benda tertukar (3 + 4, 6 + 3, 5 + 3).",
-          "voiceGuide": "Dengar ceritanya, lalu pilih gambar yang cocok."
+          "objective": "Memilih diagram (bingkai sepuluh, garis bilangan, model batang) yang cocok dengan cerita.",
+          "mechanicDescription": "Tiga ronde, tiap ronde bentuk diagram berbeda. Siswa mendengar cerita dan memilih satu dari tiga diagram; pengecoh memuat bilangan salah atau kelompok tertukar (3 + 4, 5 + 2, 6 + 2).",
+          "voiceGuide": "Dengar ceritanya, pilih diagram yang cocok, lalu ucapkan jumlah semua."
         },
         {
           "gameId": "subC-game-7",
           "gameNumber": 7,
           "stage": "Picture",
-          "gameType": "fill-tally-table",
-          "title": "Tabel Hitung Kendaraan",
+          "gameType": "fill-dot-table",
+          "title": "Tabel Hitung Cerita",
           "bookReference": "Buku Siswa Hlm. 69, 72",
-          "objective": "Menghitung tiap jenis benda, mencatat di tabel, lalu menjumlahkan.",
-          "mechanicDescription": "Siswa menghitung dua jenis kendaraan pada gambar, mengisi dua baris tabel, lalu mengisi jumlah semua kendaraan (3 + 1, 3 + 2, 4 + 3).",
-          "voiceGuide": "Hitung tiap jenis kendaraan, isi tabel, lalu isi jumlah semua."
+          "objective": "Menghitung titik pada tiap baris tabel, mencatat angkanya, lalu menjumlahkan.",
+          "mechanicDescription": "Siswa mendengar cerita dua jenis kendaraan, menghitung titik pada dua baris tabel, mengisi angkanya, lalu mengisi jumlah semua kendaraan (3 + 1, 3 + 2, 4 + 3). Nama kendaraan hanya berupa kata.",
+          "voiceGuide": "Hitung titik tiap baris, isi tabel, lalu isi jumlah semua."
         },
         {
           "gameId": "subC-game-8",

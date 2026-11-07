@@ -33,10 +33,12 @@ Poster untuk dibaca dan didengar. Tidak ada soal. Isinya: datang lagi, menggabun
 3. Lengkapi Cerita: isi tiga kotak pada kalimat cerita. Dua ronde: mobil `4 + 4 = 8` dan kue `3 + 5 = 8`.
 4. Tebak Dua Piring: tebak dulu, buka kain, hitung kelereng. Ronde `5 + 3 = 8` dan `4 + 5 = 9`.
 
-### Tahap 5. Picture (3 permainan)
-5. Bingkai Sepuluh Dua Warna: warnai kotak untuk yang datang. Ronde `4 + 2` dan `6 + 2`.
-6. Hitung lalu Pindahkan: hitung gambar, lalu pindahkan angka dari diagram pasangan ke kalimat. Ronde `3 + 4`, `3 + 2`, `4 + 4`.
-7. Jodohkan Gambar dan Kalimat: `5 + 2 = 7`, `3 + 3 = 6`, `6 + 3 = 9` (mengikuti hlm. 49).
+### Tahap 5. Picture (3 permainan, diagram saja)
+Batas ketat: Concrete memakai benda nyata yang dipegang dan dipindah. Picture tidak memakai gambar benda. Cerita ditulis sebagai teks, lalu anak bekerja pada diagram (bingkai sepuluh, titik, goresan tally, model batang). Aturan lengkap ada di `.cursor/rules/batas-concrete-pictorial.mdc`.
+
+5. Bingkai Sepuluh Dua Warna: titik merah sudah ada, anak mewarnai biru kotak untuk yang datang lagi. Ronde `4 + 2` dan `6 + 2`.
+6. Goresan Tally: anak menggambar goresan tally untuk tiap kelompok (goresan kelima mencoret miring), lalu melihat gabungannya. Ronde `2 + 3`, `4 + 3`, `5 + 4`.
+7. Jodohkan Diagram dan Kalimat: bingkai `6 + 3 = 9`, goresan `4 + 3 = 7`, batang `5 + 3 = 8`. Tiga bentuk diagram, tiga kalimat.
 
 ### Tahap 6. Abstract (3 permainan)
 8. Susun Kalimat: pilih tanda `+` lalu `=`. Ronde `4 + 2 = 6`, `5 + 3 = 8`, `3 + 4 = 7`.

@@ -2,7 +2,17 @@
 
 import { BingkaiTahap } from "@/components/modul/BingkaiTahap";
 import React, { useContext, useState } from "react";
+import {
+  BarisTitik,
+  BatangSepuluh,
+  DuaKelompokTitik,
+  GarisMini,
+  TeksCerita,
+  WARNA_ADA,
+  WARNA_DATANG,
+} from "./diagram-pictorial";
 import { DottedNumberTracingCanvas } from "./elemen-kelas1";
+import { BingkaiMini } from "./gambar-cara-b2";
 import { Kendaraan, NAMA_KENDARAAN, RODA_PER, type JenisKendaraan } from "./gambar-soal-cerita-c2";
 import {
   GameRonde,
@@ -55,8 +65,10 @@ import {
 /*  Concrete: 1 Isi Dua Stoples lalu Tuang (ketuk stoples), 2 Hitung Roda      */
 /*            (ketuk kendaraan), 3 Parkiran Pilih-Pilih (seret yang disebut),  */
 /*            4 Susun Cerita dengan Kartu (urutkan).                           */
-/*  Picture:  5 Ambil dari Cerita (ketuk kata di teks), 6 Cerita ke Gambar     */
-/*            (pilih gambar), 7 Tabel Hitung Kendaraan (isi tabel).            */
+/*  Picture:  (diagram saja, tanpa gambar benda; lihat diagram-pictorial.tsx) */
+/*            5 Cerita ke Model Batang (warnai batang, baca penggaris),        */
+/*            6 Cerita ke Diagram (pilih bingkai, garis, batang),              */
+/*            7 Tabel Hitung Cerita (strip titik, isi tabel).                  */
 /*  Abstract: 8 Tulis Penyelesaian dan Jawaban (kartu dan kalimat),            */
 /*            9 Pasangan Sembilan (cari kalimat), 10 Kanvas Guratan dan Suara. */
 /* ------------------------------------------------------------------------ */
@@ -66,29 +78,6 @@ import {
 type KelompokK = { jenis: JenisKendaraan; n: number };
 
 const ulang = (k: KelompokK): JenisKendaraan[] => Array.from({ length: k.n }, () => k.jenis);
-
-/** Teks cerita. Diketuk, Suara Guru membacakannya. */
-function TeksCerita({ baris }: { baris: string[] }) {
-  const ucap = useContext(SuaraCtx);
-  const semua = baris.join(" ");
-  return (
-    <button
-      type="button"
-      aria-label={`Dengarkan cerita: ${semua}`}
-      onClick={() => ucap(semua)}
-      className="igil-tanpa-tepi flex w-full items-center justify-between gap-2 rounded-2xl border-4 border-dashed border-[#9CA3AF] bg-white px-3 py-2 text-left"
-    >
-      <span className="min-w-0 space-y-0.5">
-        {baris.map((b, i) => (
-          <span key={i} className="block text-lg font-black leading-snug text-[#1C01A5]">
-            {b}
-          </span>
-        ))}
-      </span>
-      <LencanaSuara />
-    </button>
-  );
-}
 
 const CHIP_BIRU = "rounded-full border-4 border-[#1C01A5] bg-white px-3 py-0.5 text-sm font-black text-[#1C01A5]";
 const CHIP_EMAS = "rounded-full border-4 border-[#1C01A5] bg-[#FFE566] px-3 py-0.5 text-sm font-black text-[#1C01A5]";
@@ -974,295 +963,284 @@ function ConcreteIsi({ speakGuru, panel, hentikan, gulir, onSelesai }: Umum) {
 }
 
 /* ------------------------------------------------------------------------ */
-/* Tahap 5: Picture. Tiga permainan dengan gambar dan tabel.                  */
+/* Tahap 5: Picture. Tiga permainan diagram (tanpa gambar benda).             */
 /* ------------------------------------------------------------------------ */
 
-/* --------- Permainan 5. Ambil dari Cerita (hlm. 65, 67-68, 71) ------------ */
+/* --------- Permainan 5. Cerita ke Model Batang (hlm. 65, 67-68, 71) ------- */
+/* Diagram murni: dua batang petak dan penggaris. Tanpa gambar benda.          */
 
-type Tok = { t: string; k?: "a" | "b" | "tanda" };
-
-const RONDE_AMBIL: { a: number; b: number; baris: Tok[][] }[] = [
-  {
-    a: 4,
-    b: 2,
-    baris: [
-      [{ t: "Ada" }, { t: "4", k: "a" }, { t: "burung" }, { t: "di" }, { t: "pohon." }],
-      [{ t: "Datang lagi", k: "tanda" }, { t: "2", k: "b" }, { t: "burung." }],
-      [{ t: "Berapa" }, { t: "jumlah" }, { t: "semua" }, { t: "burung?" }],
-    ],
-  },
-  {
-    a: 3,
-    b: 4,
-    baris: [
-      [{ t: "Halim" }, { t: "mempunyai" }, { t: "3", k: "a" }, { t: "pensil" }, { t: "merah." }],
-      [{ t: "Halim" }, { t: "mempunyai" }, { t: "4", k: "b" }, { t: "pensil" }, { t: "hijau." }],
-      [{ t: "Berapa" }, { t: "jumlah semua", k: "tanda" }, { t: "pensil" }, { t: "Halim?" }],
-    ],
-  },
-  {
-    a: 6,
-    b: 4,
-    baris: [
-      [{ t: "Ada" }, { t: "6", k: "a" }, { t: "siswa" }, { t: "di" }, { t: "dalam" }, { t: "kelas." }],
-      [{ t: "Datang lagi", k: "tanda" }, { t: "4", k: "b" }, { t: "siswa." }],
-      [{ t: "Berapakah" }, { t: "jumlah" }, { t: "semua" }, { t: "siswa" }, { t: "sekarang?" }],
-    ],
-  },
+const RONDE_BATANG = [
+  { a: 4, b: 2, nama: "burung" },
+  { a: 3, b: 4, nama: "pensil" },
+  { a: 5, b: 3, nama: "siswa" },
 ];
 
-const PETUNJUK_AMBIL = [
-  "Cari bilangan pertama di dalam cerita.",
-  "Sekarang cari bilangan yang kedua.",
-  "Cari kata yang memberi petunjuk tambah.",
-];
-
-function RondeAmbil({ ronde, panel, onBeres }: { ronde: number; panel: PanelSuara; onBeres: () => void }) {
-  const d = RONDE_AMBIL[ronde];
+function RondeBatang({ ronde, panel, onBeres }: { ronde: number; panel: PanelSuara; onBeres: () => void }) {
+  const d = RONDE_BATANG[ronde];
   const c = d.a + d.b;
-  const urutanJenis: ("a" | "b" | "tanda")[] = ["a", "b", "tanda"];
-  const [langkah, setLangkah] = useState(0);
-  const [salah, setSalah] = useState<string | null>(null);
+  const [nA, setNA] = useState(0);
+  const [nB, setNB] = useState(0);
+  const [skala, setSkala] = useState(false);
   const [keliru, setKeliru] = useState<number | null>(null);
   const [kabar, setKabar] = useState<Kabar>(null);
   const letusan = useLetusan();
-  const beres = langkah >= 4;
-  const akhir = ronde === RONDE_AMBIL.length - 1;
-  const suara = panel.suara["c2-ambil"] === true && akhir;
+  const batangSiap = nA === d.a && nB === d.b;
+  const akhir = ronde === RONDE_BATANG.length - 1;
+  const suara = panel.suara["c2-batang"] === true && akhir;
   const bukaC = !akhir || suara;
-  useBicara(beres, `${ucapTambah(d.a, d.b, c)}.`);
+  useBicara(skala, `${ucapTambah(d.a, d.b, c)}. Batang jumlah berakhir di angka ${kataK(c)}.`);
 
-  const ketukKata = (kode: string, k: Tok["k"]) => {
-    if (langkah >= 3) return;
-    if (k === urutanJenis[langkah]) {
-      setSalah(null);
-      setKabar(null);
-      setLangkah(langkah + 1);
-    } else {
-      setSalah(kode);
-      setKabar({ teks: PETUNJUK_AMBIL[langkah], ok: false });
+  const ubah = (g: "a" | "b", arah: 1 | -1) => {
+    if (batangSiap) return;
+    const target = g === "a" ? d.a : d.b;
+    const kini = g === "a" ? nA : nB;
+    if (arah === 1 && kini >= target) {
+      setKabar({ teks: `Cukup! Ceritanya hanya ${target}.`, ok: false });
+      return;
     }
+    if (arah === -1 && kini <= 0) return;
+    setKabar(null);
+    if (g === "a") setNA(kini + arah);
+    else setNB(kini + arah);
   };
 
-  const pilih = (n: number) => {
-    if (langkah !== 3) return;
+  const pilihSkala = (n: number) => {
+    if (!batangSiap || skala) return;
     if (n === c) {
       setKeliru(null);
       setKabar(null);
-      setLangkah(4);
+      setSkala(true);
       letusan.picu();
       onBeres();
     } else {
       setKeliru(n);
-      setKabar({ teks: "Hitung lagi, ya. Kamu pasti bisa.", ok: false });
+      setKabar({ teks: "Lihat ujung batang yang panjang. Angka di bawahnya adalah jumlah semua.", ok: false });
     }
   };
 
-  const sudahDiambil = (k: Tok["k"]) => k !== undefined && urutanJenis.indexOf(k) < langkah;
-  const kalimat = d.baris.map((b) => b.map((t) => t.t).join(" ")).join(" ");
+  const stepper = (g: "a" | "b", judul: string, n: number, warna: string) => (
+    <div className="space-y-1 rounded-2xl border-4 border-dashed border-[#9CA3AF] bg-white px-2 py-2">
+      <p className="text-sm font-black" style={{ color: warna }}>
+        {judul}
+      </p>
+      <div className="flex items-center gap-2">
+        <button type="button" aria-label={`Kurangi petak ${judul}`} onClick={() => ubah(g, -1)} className={TOMBOL_KECIL}>
+          −
+        </button>
+        <div className="min-w-0 flex-1">
+          {g === "a" ? <BatangSepuluh a={n} /> : <BatangSepuluh a={0} b={n} />}
+        </div>
+        <button type="button" aria-label={`Tambah petak ${judul}`} onClick={() => ubah(g, 1)} className={TOMBOL_KECIL}>
+          +
+        </button>
+      </div>
+      <p className="text-center text-sm font-black text-[#1C01A5]">Petak {n}</p>
+    </div>
+  );
 
   return (
     <>
       <CatatanTempel
-        pendek={suara ? "Hebat!" : beres ? "Ucapkan: hasilnya" : langkah >= 3 ? "Pilih hasilnya" : "Ketuk bagian cerita yang dicari"}
-        teks={`Dengar ceritanya. ${kalimat} Ketuk bilangan pertama, bilangan kedua, lalu kata yang memberi petunjuk tambah. Setelah itu pilih hasilnya.`}
+        pendek={suara ? "Hebat!" : skala ? "Ucapkan: jumlah semua" : batangSiap ? "Ketuk angka di ujung batang" : "Warnai batang sesuai cerita"}
+        teks="Baca ceritanya. Tekan tanda tambah untuk mewarnai petak pada batang, sebanyak bilangan di cerita. Lalu lihat batang gabungan, dan ketuk angka di ujungnya pada penggaris."
       />
       <div className={KERTAS_GAMBAR}>
-        <div className="space-y-1 rounded-2xl border-4 border-dashed border-[#9CA3AF] bg-white px-2 py-2">
-          {d.baris.map((baris, bi) => (
-            <p key={bi} className="flex flex-wrap items-center gap-x-1.5 gap-y-1 text-lg font-black leading-snug text-[#1C01A5]">
-              {baris.map((tok, ti) => {
-                const kode = `${bi}-${ti}`;
-                const diambil = sudahDiambil(tok.k);
+        <TeksCerita baris={[`Ada ${d.a} ${d.nama}.`, `Datang lagi ${d.b} ${d.nama}.`, `Berapa jumlah semua ${d.nama}?`]} />
+        {stepper("a", `Batang yang ada: ${d.a}`, nA, WARNA_ADA)}
+        {stepper("b", `Batang datang lagi: ${d.b}`, nB, "#0369A1")}
+        {batangSiap ? (
+          <div className="igil-muncul space-y-1 rounded-2xl border-4 border-[#1C01A5] bg-[#FFFBEB] px-2 py-2">
+            <p className="text-sm font-black text-[#1C01A5]">Dua batang digabung</p>
+            <BatangSepuluh a={d.a} b={d.b} />
+            <div className="grid grid-cols-10 gap-0.5" role="group" aria-label="Penggaris satu sampai sepuluh">
+              {Array.from({ length: 10 }, (_, i) => {
+                const n = i + 1;
                 return (
                   <button
-                    key={`${kode}-${salah === kode ? "x" : "o"}`}
+                    key={n}
                     type="button"
-                    aria-label={`Kata ${tok.t}`}
-                    disabled={langkah >= 3}
-                    onClick={() => ketukKata(kode, tok.k)}
-                    className={`igil-tanpa-tepi rounded-lg px-1 text-lg font-black leading-snug ${
-                      diambil ? "bg-[#FFE566] ring-2 ring-[#F0AB00]" : "bg-[#F3F4F6]"
-                    } ${salah === kode ? "igil-goyang" : ""}`}
+                    aria-label={`Angka ${n}`}
+                    disabled={skala}
+                    onClick={() => pilihSkala(n)}
+                    className={`flex aspect-square w-full items-center justify-center rounded-md border-[3px] border-[#1C01A5] p-0 text-sm font-black leading-none text-[#1C01A5] ${
+                      skala && n === c ? "bg-[#F0AB00]" : keliru === n ? "igil-goyang bg-[#FECACA]" : "bg-[#EDE9FE]"
+                    }`}
                   >
-                    {tok.t}
+                    {n}
                   </button>
                 );
               })}
-            </p>
-          ))}
-        </div>
-        <Persamaan
-          a={langkah > 0 ? d.a : null}
-          t1={langkah > 2 ? "+" : null}
-          b={langkah > 1 ? d.b : null}
-          t2={langkah > 2 ? "=" : null}
-          c={langkah > 3 ? (bukaC ? c : "?") : langkah === 3 ? "?" : null}
-          nyala={beres || langkah >= 3 ? [] : [langkah === 2 ? 1 : langkah === 0 ? 0 : 2]}
-        />
-        {langkah === 3 ? <PilihAngka opsi={opsiTiga(c)} keliru={keliru} onPilih={pilih} /> : null}
-        <KabarChip kabar={kabar} />
+            </div>
+          </div>
+        ) : null}
+        {skala ? <Persamaan a={d.a} b={d.b} c={bukaC ? c : "?"} kecil /> : null}
         <Letusan id={letusan.id} />
       </div>
+      <KabarChip kabar={kabar} />
     </>
   );
 }
 
-function KartuAmbil({ speakGuru, lanjut, nomor, panel, teksLanjut }: PropsLangkah) {
+function KartuBatang({ speakGuru, lanjut, nomor, panel, teksLanjut }: PropsLangkah) {
   return (
     <GameRonde
       nomor={nomor}
-      judul="Ambil dari Cerita"
+      judul="Cerita ke Model Batang"
       warna="#FDE68A"
-      petunjuk="Ketuk bagian cerita yang kita perlukan: bilangan pertama, bilangan kedua, lalu kata yang memberi petunjuk tambah. Kalimat penjumlahan akan terisi. Terakhir pilih hasilnya dan ucapkan."
+      petunjuk="Baca ceritanya. Warnai satu batang untuk yang ada, dan satu batang untuk yang datang lagi. Lalu lihat batang gabungan, ketuk angka di ujungnya pada penggaris, dan ucapkan jumlah semua."
       speakGuru={speakGuru}
       panel={panel}
-      id="c2-ambil"
-      jumlahRonde={RONDE_AMBIL.length}
-      kunciAkhir={10}
-      belumSiap="Isi kalimat penjumlahan dari cerita dulu, ya."
+      id="c2-batang"
+      jumlahRonde={RONDE_BATANG.length}
+      kunciAkhir={8}
+      belumSiap="Warnai batang dan baca penggarisnya dulu, ya."
       teksLanjut={teksLanjut}
       lanjut={lanjut}
-      isi={(r, beres) => <RondeAmbil ronde={r} panel={panel} onBeres={beres} />}
+      isi={(r, beres) => <RondeBatang ronde={r} panel={panel} onBeres={beres} />}
     />
   );
 }
 
-/* --------- Permainan 6. Cerita ke Gambar (hlm. 70) ------------------------ */
+/* --------- Permainan 6. Cerita ke Diagram (hlm. 70) ----------------------- */
+/* Tiap ronde memakai bentuk diagram yang berbeda: bingkai, garis, batang.     */
 
-const RONDE_GAMBAR: {
-  ikonA: string;
-  ikonB: string;
-  a: number;
-  b: number;
+type OpsiDiagram = { a: number; b: number };
+type RondeCocokData = {
+  bentuk: "bingkai" | "garis" | "batang";
+  judul: string;
   cerita: string[];
-  pilihan: [number, number][];
-}[] = [
+  opsi: OpsiDiagram[];
+  benar: number;
+};
+
+const RONDE_COCOK: RondeCocokData[] = [
   {
-    ikonA: "🍊",
-    ikonB: "🍌",
-    a: 3,
-    b: 4,
-    cerita: ["Wei membawa 3 jeruk.", "Wei membawa 4 pisang.", "Berapa jumlah semua buah Wei?"],
-    pilihan: [
-      [4, 3],
-      [3, 4],
-      [3, 3],
+    bentuk: "bingkai",
+    judul: "Pilih bingkai sepuluh yang cocok",
+    cerita: ["Ada 3 siswa.", "Datang lagi 4 siswa.", "Merah = yang ada. Biru = datang lagi."],
+    opsi: [
+      { a: 3, b: 3 },
+      { a: 3, b: 4 },
+      { a: 4, b: 3 },
     ],
+    benar: 1,
   },
   {
-    ikonA: "🌹",
-    ikonB: "🌼",
-    a: 6,
-    b: 3,
-    cerita: ["Tika memetik 6 mawar.", "Tika memetik 3 melati.", "Berapa jumlah semua bunga Tika?"],
-    pilihan: [
-      [6, 3],
-      [6, 2],
-      [5, 3],
+    bentuk: "garis",
+    judul: "Pilih garis bilangan yang cocok",
+    cerita: ["Ada 5 kue.", "Datang lagi 2 kue.", "Mulai dari 5, lalu hitung maju."],
+    opsi: [
+      { a: 5, b: 3 },
+      { a: 2, b: 5 },
+      { a: 5, b: 2 },
     ],
+    benar: 2,
   },
   {
-    ikonA: "🐰",
-    ikonB: "🐔",
-    a: 5,
-    b: 3,
-    cerita: ["Upe punya 5 kelinci.", "Upe punya 3 ayam.", "Berapa jumlah semua hewan Upe?"],
-    pilihan: [
-      [5, 4],
-      [3, 5],
-      [5, 3],
+    bentuk: "batang",
+    judul: "Pilih model batang yang cocok",
+    cerita: ["Ada 6 bunga.", "Datang lagi 2 bunga.", "Merah = yang ada. Biru = datang lagi."],
+    opsi: [
+      { a: 6, b: 2 },
+      { a: 6, b: 3 },
+      { a: 5, b: 2 },
     ],
+    benar: 0,
   },
 ];
 
-function RondeGambar({ ronde, panel, onBeres }: { ronde: number; panel: PanelSuara; onBeres: () => void }) {
-  const d = RONDE_GAMBAR[ronde];
-  const c = d.a + d.b;
-  const [benar, setBenar] = useState<number | null>(null);
+function DiagramOpsi({ bentuk, a, b }: { bentuk: RondeCocokData["bentuk"]; a: number; b: number }) {
+  if (bentuk === "bingkai") return <BingkaiMini merah={a} biru={b} kelas="mx-auto block w-full max-w-[150px]" />;
+  if (bentuk === "garis") return <GarisMini mulai={a} lompat={b} />;
+  return <BatangSepuluh a={a} b={b} kelas="mx-auto w-full max-w-[230px]" />;
+}
+
+function RondeCocok({ ronde, panel, onBeres }: { ronde: number; panel: PanelSuara; onBeres: () => void }) {
+  const d = RONDE_COCOK[ronde];
+  const bnr = d.opsi[d.benar];
+  const c = bnr.a + bnr.b;
+  const [terpilih, setTerpilih] = useState<number | null>(null);
   const [keliru, setKeliru] = useState<number | null>(null);
   const [kabar, setKabar] = useState<Kabar>(null);
   const letusan = useLetusan();
-  const akhir = ronde === RONDE_GAMBAR.length - 1;
-  const suara = panel.suara["c2-gambar"] === true && akhir;
+  const beres = terpilih === d.benar;
+  const akhir = ronde === RONDE_COCOK.length - 1;
+  const suara = panel.suara["c2-cocok"] === true && akhir;
   const bukaC = !akhir || suara;
-  const beres = benar !== null;
-  useBicara(beres, `${ucapTambah(d.a, d.b, c)}.`);
+  useBicara(beres, `${ucapTambah(bnr.a, bnr.b, c)}.`);
 
-  const pilih = (i: number) => {
+  const ketuk = (i: number) => {
     if (beres) return;
-    const [x, y] = d.pilihan[i];
-    if (x === d.a && y === d.b) {
+    if (i === d.benar) {
+      setTerpilih(i);
       setKeliru(null);
       setKabar(null);
-      setBenar(i);
       letusan.picu();
       onBeres();
     } else {
       setKeliru(i);
-      setKabar({ teks: "Hitung gambarnya lagi dan cocokkan dengan ceritanya. Lihat juga benda mana yang jumlahnya berapa.", ok: false });
+      setKabar({ teks: "Cocokkan bilangan di cerita dengan diagramnya, ya.", ok: false });
     }
   };
 
   return (
     <>
       <CatatanTempel
-        pendek={suara ? "Hebat!" : beres ? "Ucapkan: jumlah semuanya" : "Pilih gambar yang cocok"}
-        teks={`Dengar ceritanya. ${d.cerita.join(" ")} Pilih gambar yang paling cocok dengan cerita itu. Lalu ucapkan jumlah semuanya.`}
+        pendek={suara ? "Hebat!" : beres ? "Ucapkan: jumlah semua" : "Pilih diagram yang cocok"}
+        teks={`Dengar ceritanya. ${d.cerita.join(" ")} ${d.judul}.`}
       />
       <div className={KERTAS_GAMBAR}>
         <TeksCerita baris={d.cerita} />
-        <div className="grid gap-1.5">
-          {d.pilihan.map(([x, y], i) => (
+        <p className="text-center text-sm font-black text-[#1C01A5]/70">{d.judul}</p>
+        <div className="space-y-2">
+          {d.opsi.map((o, i) => (
             <button
-              key={`${i}-${keliru === i ? "x" : "o"}`}
+              key={`${ronde}-${i}`}
               type="button"
-              aria-label={`Gambar pilihan ${i + 1}: ${x} dan ${y}`}
-              disabled={beres && benar !== i}
-              onClick={() => pilih(i)}
-              className={`flex items-center justify-center gap-2 rounded-2xl border-4 bg-white px-2 py-1.5 shadow-[0_3px_0_rgba(28,1,165,0.2)] ${
-                benar === i ? "border-[#16A34A] bg-[#DCFCE7]" : "border-[#1C01A5]"
-              } ${keliru === i ? "igil-goyang" : ""} ${beres && benar !== i ? "opacity-40" : ""}`}
+              aria-label={`Diagram ${i + 1}`}
+              disabled={beres && i !== d.benar}
+              onClick={() => ketuk(i)}
+              className={`igil-tanpa-tepi relative block w-full rounded-2xl border-4 bg-white px-2 py-2 ${
+                beres && i === d.benar ? "border-[#7FCB96] bg-[#E8F7EE]" : "border-[#1C01A5]"
+              } ${keliru === i ? "igil-goyang" : ""} ${beres && i !== d.benar ? "opacity-50" : ""}`}
             >
-              <span className="min-w-0 flex-1">
-                <Kelompok ikon={d.ikonA} n={x} kelas="text-xl" />
-              </span>
-              <span className="text-2xl font-black text-[#1C01A5]">+</span>
-              <span className="min-w-0 flex-1">
-                <Kelompok ikon={d.ikonB} n={y} kelas="text-xl" />
+              <DiagramOpsi bentuk={d.bentuk} a={o.a} b={o.b} />
+              <span className="absolute -left-2 -top-2 flex h-7 w-7 items-center justify-center rounded-full border-2 border-[#1C01A5] bg-[#FFE566] text-sm font-black text-[#1C01A5]">
+                {i + 1}
               </span>
             </button>
           ))}
         </div>
-        {beres ? <Persamaan a={d.a} b={d.b} c={bukaC ? c : "?"} kecil /> : null}
-        <KabarChip kabar={kabar} />
+        {beres ? <Persamaan a={bnr.a} b={bnr.b} c={bukaC ? c : "?"} kecil /> : null}
         <Letusan id={letusan.id} />
       </div>
+      <KabarChip kabar={kabar} />
     </>
   );
 }
 
-function KartuGambar({ speakGuru, lanjut, nomor, panel, teksLanjut }: PropsLangkah) {
+function KartuCocok({ speakGuru, lanjut, nomor, panel, teksLanjut }: PropsLangkah) {
   return (
     <GameRonde
       nomor={nomor}
-      judul="Cerita ke Gambar"
+      judul="Cerita ke Diagram"
       warna="#FDE68A"
-      petunjuk="Dengar ceritanya. Pilih gambar dua kelompok yang cocok dengan cerita. Perhatikan benda dan jumlahnya. Lalu ucapkan jumlah semuanya."
+      petunjuk="Dengar ceritanya. Pilih satu dari tiga diagram yang cocok dengan cerita. Bentuk diagramnya berganti tiap soal: bingkai sepuluh, garis bilangan, lalu model batang. Terakhir, ucapkan jumlah semua."
       speakGuru={speakGuru}
       panel={panel}
-      id="c2-gambar"
-      jumlahRonde={RONDE_GAMBAR.length}
+      id="c2-cocok"
+      jumlahRonde={RONDE_COCOK.length}
       kunciAkhir={8}
-      belumSiap="Pilih gambar yang cocok dengan ceritanya dulu, ya."
+      belumSiap="Pilih diagram yang cocok dulu, ya."
       teksLanjut={teksLanjut}
       lanjut={lanjut}
-      isi={(r, beres) => <RondeGambar ronde={r} panel={panel} onBeres={beres} />}
+      isi={(r, beres) => <RondeCocok ronde={r} panel={panel} onBeres={beres} />}
     />
   );
 }
 
-/* --------- Permainan 7. Tabel Hitung Kendaraan (hlm. 69, 72) -------------- */
+/* --------- Permainan 7. Tabel Hitung Cerita (hlm. 69, 72) ----------------- */
+/* Tabel dengan strip titik. Nama kendaraan hanya kata, bukan gambar.          */
 
 const RONDE_TABEL: { a: KelompokK; b: KelompokK }[] = [
   { a: { jenis: "sepeda", n: 3 }, b: { jenis: "becak", n: 1 } },
@@ -1297,40 +1275,46 @@ function RondeTabel({ ronde, panel, onBeres }: { ronde: number; panel: PanelSuar
     } else {
       setKeliru(n);
       setKabar({
-        teks: langkah === 2 ? "Jumlah semua adalah dua kelompok digabung. Tambahkan lagi." : "Hitung kendaraan jenis ini satu per satu, ya.",
+        teks: langkah === 2 ? "Jumlah semua adalah dua baris titik digabung. Tambahkan lagi." : "Hitung titik pada baris ini satu per satu, ya.",
         ok: false,
       });
     }
   };
 
   const baris = [
-    { k: d.a, sel: 0 },
-    { k: d.b, sel: 1 },
+    { k: d.a, sel: 0, warna: WARNA_ADA },
+    { k: d.b, sel: 1, warna: WARNA_DATANG },
   ];
 
   return (
     <>
       <CatatanTempel
-        pendek={suara ? "Hebat!" : beres ? "Ucapkan: jumlah semua" : langkah === 2 ? "Isi jumlah semua" : "Hitung tiap jenis, isi tabel"}
-        teks={`Lihat gambar kendaraan. Hitung ${NAMA_KENDARAAN[d.a.jenis]} dan ${NAMA_KENDARAAN[d.b.jenis]}. Isi tabel dari atas ke bawah dengan memilih angka. Terakhir isi jumlah semua kendaraan.`}
+        pendek={suara ? "Hebat!" : beres ? "Ucapkan: jumlah semua" : langkah === 2 ? "Isi jumlah semua" : "Hitung titik, isi tabel"}
+        teks={`Dengar ceritanya. Hitung titik pada baris ${NAMA_KENDARAAN[d.a.jenis]} dan baris ${NAMA_KENDARAAN[d.b.jenis]}. Isi tabel dari atas ke bawah dengan memilih angka. Terakhir isi jumlah semua kendaraan.`}
       />
       <div className={KERTAS_GAMBAR}>
-        <div className="flex flex-wrap items-end justify-center gap-1 rounded-2xl border-4 border-[#1C01A5] bg-white p-2">
-          {[...ulang(d.a), ...ulang(d.b)].map((j, i) => (
-            <Kendaraan key={i} jenis={j} kelas="w-[52px]" />
-          ))}
-        </div>
+        <TeksCerita
+          baris={[
+            `Ada ${d.a.n} ${NAMA_KENDARAAN[d.a.jenis]}.`,
+            `Ada ${d.b.n} ${NAMA_KENDARAAN[d.b.jenis]}.`,
+            "Berapa jumlah semua kendaraan?",
+          ]}
+        />
         <div className="overflow-hidden rounded-2xl border-4 border-[#1C01A5] bg-white">
-          {baris.map(({ k, sel }) => (
-            <div key={sel} className="flex items-center gap-2 border-b-4 border-[#1C01A5] px-2 py-1">
-              <Kendaraan jenis={k.jenis} kelas="w-12" />
-              <span className="min-w-0 flex-1 text-base font-black capitalize text-[#1C01A5]">{NAMA_KENDARAAN[k.jenis]}</span>
+          {baris.map(({ k, sel, warna }) => (
+            <div key={sel} className="flex items-center gap-2 border-b-4 border-[#1C01A5] px-2 py-2">
+              <span className="w-[72px] shrink-0 text-base font-black capitalize text-[#1C01A5]">{NAMA_KENDARAAN[k.jenis]}</span>
+              <span className="min-w-0 flex-1">
+                <BarisTitik n={k.n} warna={warna} />
+              </span>
               <Kotak v={langkah > sel ? nilai[sel] : "?"} nyala={langkah === sel} kecil />
             </div>
           ))}
-          <div className="flex items-center gap-2 bg-[#FFF7CC] px-2 py-1">
-            <span className="flex w-12 justify-center text-2xl">➕</span>
-            <span className="min-w-0 flex-1 text-base font-black text-[#1C01A5]">Jumlah semua</span>
+          <div className="flex items-center gap-2 bg-[#FFF7CC] px-2 py-2">
+            <span className="w-[72px] shrink-0 text-base font-black text-[#1C01A5]">Jumlah semua</span>
+            <span className="min-w-0 flex-1">
+              <DuaKelompokTitik a={d.a.n} b={d.b.n} />
+            </span>
             <Kotak v={langkah > 2 ? c : "?"} nyala={langkah === 2} kecil />
           </div>
         </div>
@@ -1346,9 +1330,9 @@ function KartuTabel({ speakGuru, lanjut, nomor, panel, teksLanjut }: PropsLangka
   return (
     <GameRonde
       nomor={nomor}
-      judul="Tabel Hitung Kendaraan"
+      judul="Tabel Hitung Cerita"
       warna="#FDE68A"
-      petunjuk="Hitung tiap jenis kendaraan di gambar. Isi tabel dari atas ke bawah dengan memilih angka. Terakhir isi jumlah semua kendaraan, lalu ucapkan."
+      petunjuk="Dengar ceritanya. Hitung titik pada tiap baris tabel. Isi tabel dari atas ke bawah dengan memilih angka. Terakhir isi jumlah semua kendaraan, lalu ucapkan."
       speakGuru={speakGuru}
       panel={panel}
       id="c2-tabel"
@@ -1364,10 +1348,10 @@ function KartuTabel({ speakGuru, lanjut, nomor, panel, teksLanjut }: PropsLangka
 
 /* --------- Pembungkus Picture --------------------------------------------- */
 
-type TipePicture = "ambil" | "gambar" | "tabel";
+type TipePicture = "batang" | "cocok" | "tabel";
 const KARTU_PICTURE: { nomor: number; tipe: TipePicture }[] = [
-  { nomor: 5, tipe: "ambil" },
-  { nomor: 6, tipe: "gambar" },
+  { nomor: 5, tipe: "batang" },
+  { nomor: 6, tipe: "cocok" },
   { nomor: 7, tipe: "tabel" },
 ];
 
@@ -1414,8 +1398,8 @@ function PictureIsi({ speakGuru, panel, hentikan, gulir, onSelesai }: Umum) {
         ))}
       </div>
       <div key={kartu.tipe} className="space-y-3">
-        {kartu.tipe === "ambil" ? <KartuAmbil {...dasar} /> : null}
-        {kartu.tipe === "gambar" ? <KartuGambar {...dasar} /> : null}
+        {kartu.tipe === "batang" ? <KartuBatang {...dasar} /> : null}
+        {kartu.tipe === "cocok" ? <KartuCocok {...dasar} /> : null}
         {kartu.tipe === "tabel" ? <KartuTabel {...dasar} /> : null}
       </div>
     </BingkaiTahap>
