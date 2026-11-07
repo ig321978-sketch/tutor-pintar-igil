@@ -20,6 +20,7 @@ import {
   PicturePasanganD,
 } from "@/components/modul/SubBabDPasangan";
 import { TombolSuaraGuru } from "@/components/modul/tahap-b-gaya";
+import { BingkaiTahap } from "@/components/modul/BingkaiTahap";
 import {
   AbstractBilanganA,
   ConcreteBilanganA,
@@ -1290,12 +1291,7 @@ export default function IgilModulePlayer() {
           {/* --------------------------------------------------------------- */}
           {/* SLIDED COMPONENT 1: STORY (3 GAMBAR DOODLE BERWARNA • TANPA TEKS) */}
           {/* --------------------------------------------------------------- */}
-          <div className="space-y-3 border-b-2 border-slate-200 pb-6">
-            <div className="flex items-center justify-between">
-              <span className="px-3 py-1 rounded-full bg-[#FEE2E2] text-[#991B1B] font-black text-xs">
-                Tahap 1: Story
-              </span>
-            </div>
+          <BingkaiTahap tahap={1} label="Tahap 1: Story">
 
             {activeSubBab === "A" ? (
               <CeritaBilanganA cerita={currentSubContent.stories} speakGuru={speakGuru} />
@@ -1347,18 +1343,13 @@ export default function IgilModulePlayer() {
                 LANJUTKAN KE MIND-MAPPING ⬇️
               </button>
             </div>
-          </div>
+          </BingkaiTahap>
 
           {/* --------------------------------------------------------------- */}
           {/* SLIDED COMPONENT 2: MIND-MAPPING (3 SLIDE DIAGRAM ALUR METODE)  */}
           {/* --------------------------------------------------------------- */}
           {unlockedSmicpaStage >= 2 && (
-            <div ref={mindMapRef} className="space-y-3 border-b-2 border-slate-200 pb-6 pt-2">
-              <div className="flex items-center justify-between">
-                <span className="px-3 py-1 rounded-full bg-[#FEF3C7] text-[#92400E] font-black text-xs">
-                  Tahap 2: Mind-Map
-                </span>
-              </div>
+            <BingkaiTahap tahap={2} label="Tahap 2: Mind-Map" ref={mindMapRef}>
 
               {activeSubBab === "A" ? (
                 <PetaPikiranB
@@ -1421,19 +1412,14 @@ export default function IgilModulePlayer() {
                   LANJUTKAN KE INFOGRAFIS ⬇️
                 </button>
               </div>
-            </div>
+            </BingkaiTahap>
           )}
 
           {/* --------------------------------------------------------------- */}
           {/* SLIDED COMPONENT 3: INFOGRAFIS (3 SLIDE TABEL RINGKASAN DATA)   */}
           {/* --------------------------------------------------------------- */}
           {unlockedSmicpaStage >= 3 && (
-            <div ref={infografisRef} className="space-y-3 border-b-2 border-slate-200 pb-6 pt-2">
-              <div className="flex items-center justify-between">
-                <span className="px-3 py-1 rounded-full bg-[#DCFCE7] text-[#166534] font-black text-xs">
-                  Tahap 3: Infografis
-                </span>
-              </div>
+            <BingkaiTahap tahap={3} label="Tahap 3: Infografis" ref={infografisRef}>
 
               {activeSubBab === "A" ? (
                 <InfografisBilanganA speakGuru={speakGuru} />
@@ -1552,19 +1538,14 @@ export default function IgilModulePlayer() {
                   LANJUTKAN KE CONCRETE ⬇️
                 </button>
               </div>
-            </div>
+            </BingkaiTahap>
           )}
 
           {/* --------------------------------------------------------------- */}
           {/* SLIDED COMPONENT 4: CONCRETE (3 SLIDE BENDA NYATA + KANVAS)     */}
           {/* --------------------------------------------------------------- */}
           {unlockedSmicpaStage >= 4 && (
-            <div ref={concreteRef} className="space-y-3 border-b-2 border-slate-200 pb-6 pt-2">
-              <div className="flex items-center justify-between">
-                <span className="px-3 py-1 rounded-full bg-[#DBEAFE] text-[#1E3A8A] font-black text-xs">
-                  Tahap 4: Concrete
-                </span>
-              </div>
+            <BingkaiTahap tahap={4} label="Tahap 4: Concrete" ref={concreteRef}>
 
               {activeSubBab === "A" ? (
                 <ConcreteBilanganA
@@ -1691,19 +1672,14 @@ export default function IgilModulePlayer() {
                 </button>
               </div>
               ) : null}
-            </div>
+            </BingkaiTahap>
           )}
 
           {/* --------------------------------------------------------------- */}
           {/* SLIDED COMPONENT 5: PICTURE (DIAGRAM MAINAN + KANVAS)          */}
           {/* --------------------------------------------------------------- */}
           {unlockedSmicpaStage >= 5 && (
-            <div ref={pictorialRef} className="space-y-3 border-b-2 border-slate-200 pb-6 pt-2">
-              <div className="flex items-center justify-between">
-                <span className="px-3 py-1 rounded-full bg-[#FEF3C7] text-[#92400E] font-black text-xs">
-                  Tahap 5: Picture
-                </span>
-              </div>
+            <BingkaiTahap tahap={5} label="Tahap 5: Picture" ref={pictorialRef}>
 
               {activeSubBab === "A" ? (
                 <PictureBilanganA
@@ -1850,19 +1826,14 @@ export default function IgilModulePlayer() {
               </div>
               </>
               )}
-            </div>
+            </BingkaiTahap>
           )}
 
           {/* --------------------------------------------------------------- */}
           {/* SLIDED COMPONENT 6: ABSTRACT (3 SLIDE ANGKA & SIMBOL MURNI)     */}
           {/* --------------------------------------------------------------- */}
           {unlockedSmicpaStage >= 6 && (
-            <div ref={abstractRef} className="space-y-4 pt-2 pb-6">
-              <div className="flex items-center justify-between">
-                <span className="px-3 py-1 rounded-full bg-[#1C01A5] text-[#FFE566] font-black text-xs">
-                  Tahap 6: Abstract
-                </span>
-              </div>
+            <BingkaiTahap tahap={6} label="Tahap 6: Abstract" ref={abstractRef}>
 
               {activeSubBab === "A" ? (
                 <AbstractBilanganA
@@ -1947,7 +1918,7 @@ export default function IgilModulePlayer() {
                     : "SELESAIKAN MATERI & LANJUT KE SIMULASI ➡️"}
                 </button>
               </div>
-            </div>
+            </BingkaiTahap>
           )}
         </section>
       )}
