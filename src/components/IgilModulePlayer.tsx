@@ -104,6 +104,8 @@ interface SubBabContent {
   secondaryBg: string;
   secondaryBorder: string;
   secondaryText: string;
+  /** Sub-bab yang naskah dan permainannya belum dibuat. */
+  segeraHadir?: boolean;
   stories: StorySlideItem[];
   mindMaps: MindMapSlideItem[];
   infografisData: {
@@ -171,8 +173,8 @@ const POIN_BAWAAN = { practice: 30, exam: 70, practicum: 50 };
 const SUB_ANAK_BAB2: Record<SubBabId, { emoji: string }> = {
   A: { emoji: "➕" },
   B: { emoji: "🧮" },
-  C: { emoji: "🔁" },
-  D: { emoji: "📖" },
+  C: { emoji: "📖" },
+  D: { emoji: "🔁" },
 };
 
 const DAFTAR_MAINAN = [
@@ -1341,21 +1343,21 @@ export default function IgilModulePlayer({ bab = "mtk-1-bab1" }: { bab?: BabModu
             </h2>
           </div>
 
-          {adaBab2 && activeSubBab !== "A" ? (
+          {currentSubContent.segeraHadir ? (
             <div className="space-y-4 rounded-3xl border-4 border-dashed border-[#FFE566] bg-[#FFFDF2] p-8 text-center">
               <div className="igil-lompat text-6xl" aria-hidden="true">🚧</div>
               <h3 className="text-xl font-black text-[#1C01A5] md:text-2xl">
                 Sub-Bab {activeSubBab} segera hadir
               </h3>
               <p className="mx-auto max-w-xl text-base leading-relaxed text-[#334155] md:text-lg">
-                Guru IGIL masih menyiapkan permainan untuk bagian ini. Sementara itu, kamu boleh main Sub-Bab A lagi, ya.
+                Guru IGIL masih menyiapkan permainan untuk bagian ini. Sementara itu, kamu boleh main Sub-Bab {daftarSub[0]} lagi, ya.
               </p>
               <button
                 type="button"
-                onClick={() => setActiveSubBab("A")}
+                onClick={() => setActiveSubBab(daftarSub[0])}
                 className="rounded-full border-2 border-[#FFE566] bg-[#1C01A5] px-6 py-3 text-sm font-black text-[#FFE566] md:text-base"
               >
-                ⬅️ KEMBALI KE SUB-BAB A
+                ⬅️ KEMBALI KE SUB-BAB {daftarSub[0]}
               </button>
             </div>
           ) : (
