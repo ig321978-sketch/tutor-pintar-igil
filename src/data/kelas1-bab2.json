@@ -1,0 +1,1185 @@
+{
+  "chapterId": "k1-mat-bab2",
+  "chapter_id": "k1-mat-bab2",
+  "phase_code": "FASE_A",
+  "grade": 1,
+  "subjectLabel": "MATEMATIKA - KELAS 1 SD",
+  "title": "BAB 2: PENJUMLAHAN SAMPAI DENGAN 10",
+  "tokens": {
+    "practice": 30,
+    "exam": 70,
+    "practicum": 50
+  },
+  "subBabs": {
+    "A": {
+      "id": "A",
+      "codeTitle": "Sub-Bab A (Cerita Penjumlahan)",
+      "fullTitle": "Sub-Bab A: Cerita Penjumlahan (Menggabungkan & Bertambah)",
+      "targetDescription": "Siswa memahami penjumlahan sebagai menggabungkan dan bertambah, menulis dan membaca kalimat matematika dengan tanda + dan =, serta menjumlahkan sampai 10 dengan benda, gambar, dan simbol.",
+      "secondaryBg": "#FEE2E2",
+      "secondaryBorder": "#EF4444",
+      "secondaryText": "#991B1B",
+      "stories": [
+        {
+          "id": "A2-S1",
+          "titleHint": "Lompat Tali",
+          "voiceNarration": "Di halaman sekolah, empat anak bermain lompat tali. Tidak lama kemudian, datang lagi dua anak. Mereka ikut bermain. Sekarang ada enam anak. Anak yang bermain bertambah.",
+          "sceneType": "tali-datang-lagi"
+        },
+        {
+          "id": "A2-S2",
+          "titleHint": "Igil di Papan",
+          "voiceNarration": "Igil menulis cerita lompat tali di papan. Mula-mula empat anak. Datang lagi dua anak. Semuanya enam anak. Kita tulis: empat, tanda tambah, dua, tanda sama dengan, enam. Kita baca: empat ditambah dua sama dengan enam.",
+          "sceneType": "papan-kalimat"
+        },
+        {
+          "id": "A2-S3",
+          "titleHint": "Pensil Digabung",
+          "voiceNarration": "Kira punya tiga pensil merah. Upe punya empat pensil biru. Mereka menggabungkan semua pensil ke satu kotak. Sekarang ada tujuh pensil. Menjumlahkan artinya menggabungkan.",
+          "sceneType": "pensil-digabung"
+        },
+        {
+          "id": "A2-S4",
+          "titleHint": "Mobil Mainan",
+          "voiceNarration": "Malosi bermain mobil mainan di atas karpet. Ada empat mobil kuning dan empat mobil merah. Empat ditambah empat sama dengan delapan. Semuanya ada delapan mobil.",
+          "sceneType": "mobil-mainan"
+        },
+        {
+          "id": "A2-S5",
+          "titleHint": "Bebek di Kolam",
+          "voiceNarration": "Di kolam ada lima bebek yang sedang berenang. Lalu datang lagi dua bebek. Lima ditambah dua sama dengan tujuh. Sekarang ada tujuh bebek di kolam.",
+          "sceneType": "bebek-kolam"
+        },
+        {
+          "id": "A2-S6",
+          "titleHint": "Ayo Bermain",
+          "voiceNarration": "Ayo bermain! Upe menaruh lima kelereng di satu piring. Wei menaruh tiga kelereng di piring yang lain. Berapa jumlah semua kelereng? Lima ditambah tiga sama dengan delapan.",
+          "sceneType": "dua-piring-kelereng"
+        }
+      ],
+      "mindMaps": [
+        {
+          "stepNumber": 1,
+          "stepTitle": "1. Lihat Mula-mula",
+          "stepDesc": "Hitung dulu benda yang sudah ada. Itu bilangan mula-mula. Di lompat tali, mula-mula ada empat anak.",
+          "icon": "👀",
+          "flowFrom": "Cerita atau gambar",
+          "flowTo": "Bilangan mula-mula"
+        },
+        {
+          "stepNumber": 2,
+          "stepTitle": "2. Datang Lagi atau Digabung",
+          "stepDesc": "Ada yang datang lagi, atau dua kelompok digabung. Bendanya jadi lebih banyak. Itu namanya menjumlahkan, dan kita pakai tanda tambah.",
+          "icon": "➕",
+          "flowFrom": "Datang lagi atau digabung",
+          "flowTo": "Tanda tambah (+)"
+        },
+        {
+          "stepNumber": 3,
+          "stepTitle": "3. Hitung Semuanya",
+          "stepDesc": "Hitung semua benda yang sudah bersama. Hasilnya ditulis setelah tanda sama dengan. Empat anak ditambah dua anak, semuanya enam anak.",
+          "icon": "🔢",
+          "flowFrom": "Semua benda bersama",
+          "flowTo": "Hasil setelah tanda sama dengan (=)"
+        },
+        {
+          "stepNumber": 4,
+          "stepTitle": "4. Tulis dan Baca",
+          "stepDesc": "Tulis kalimat matematika: empat tambah dua sama dengan enam. Lalu baca: empat ditambah dua sama dengan enam.",
+          "icon": "📝",
+          "flowFrom": "4 + 2 = 6",
+          "flowTo": "Empat ditambah dua sama dengan enam"
+        }
+      ],
+      "infografisData": [
+        {
+          "fruitName": "Anak Lompat Tali (4 + 2)",
+          "emoji": "🧒",
+          "countNum": 6,
+          "countWord": "Enam",
+          "voiceSentence": "Empat anak bermain lompat tali ditambah dua anak yang baru datang, semuanya enam anak."
+        },
+        {
+          "fruitName": "Pensil Kira dan Upe (3 + 4)",
+          "emoji": "✏️",
+          "countNum": 7,
+          "countWord": "Tujuh",
+          "voiceSentence": "Tiga pensil merah digabung empat pensil biru, semuanya tujuh pensil."
+        },
+        {
+          "fruitName": "Mobil Malosi (4 + 4)",
+          "emoji": "🚗",
+          "countNum": 8,
+          "countWord": "Delapan",
+          "voiceSentence": "Empat mobil kuning ditambah empat mobil merah, semuanya delapan mobil."
+        },
+        {
+          "fruitName": "Bebek di Kolam (5 + 2)",
+          "emoji": "🦆",
+          "countNum": 7,
+          "countWord": "Tujuh",
+          "voiceSentence": "Lima bebek di kolam ditambah dua bebek yang datang, semuanya tujuh bebek."
+        },
+        {
+          "fruitName": "Kelereng di Dua Piring (5 + 3)",
+          "emoji": "🔵",
+          "countNum": 8,
+          "countWord": "Delapan",
+          "voiceSentence": "Lima kelereng di satu piring ditambah tiga kelereng di piring lain, semuanya delapan kelereng."
+        }
+      ],
+      "concreteSlides": [
+        {
+          "title": "Teman Datang Lagi (4 + 2 = 6)",
+          "emoji": "🧒",
+          "targetCount": 6,
+          "voiceGuide": "Ketuk dua teman yang menunggu supaya ikut bermain, lalu ucapkan berapa semua anak."
+        },
+        {
+          "title": "Kotak Pensil Kira (3 + 4 = 7)",
+          "emoji": "✏️",
+          "targetCount": 7,
+          "voiceGuide": "Seret semua pensil ke kotak pensil, lalu ucapkan berapa semua pensil."
+        },
+        {
+          "title": "Lengkapi Cerita (4 + 4 = 8 dan 3 + 5 = 8)",
+          "emoji": "🚗",
+          "targetCount": 8,
+          "voiceGuide": "Hitung bendanya, isi kotak kosong pada cerita, lalu ucapkan berapa semuanya."
+        },
+        {
+          "title": "Tebak Dua Piring (5 + 3 = 8 dan 4 + 5 = 9)",
+          "emoji": "🔵",
+          "targetCount": 9,
+          "voiceGuide": "Tebak jumlah kelereng, buka kain, hitung, lalu ucapkan jumlahnya."
+        }
+      ],
+      "pictorialSlides": [
+        {
+          "title": "Bingkai Sepuluh Dua Warna (4 + 2 dan 6 + 2)",
+          "diagramType": "ten-frame",
+          "numberA": 4,
+          "numberB": 2,
+          "caption": "Kotak emas untuk benda yang sudah ada, kotak hijau untuk benda yang datang lagi."
+        },
+        {
+          "title": "Hitung lalu Pindahkan (3 + 4, 3 + 2, 4 + 4)",
+          "diagramType": "number-bond",
+          "numberA": 3,
+          "numberB": 4,
+          "caption": "Hitung gambar, lalu pindahkan angka dari bagan pasangan bilangan ke kalimat penjumlahan."
+        },
+        {
+          "title": "Jodohkan Gambar dan Kalimat (5 + 2, 3 + 3, 6 + 3)",
+          "diagramType": "bar-blocks",
+          "numberA": 5,
+          "numberB": 2,
+          "caption": "Jodohkan tiap gambar dengan kalimat penjumlahan yang cocok."
+        }
+      ],
+      "abstractSlides": [
+        {
+          "symbolLarge": "4 + 2 = 6",
+          "wordLarge": "TANDA TAMBAH (+) DAN SAMA DENGAN (=)",
+          "mathNotation": "4 + 2 = 6   |   5 + 3 = 8",
+          "voiceReadout": "Empat ditambah dua sama dengan enam. Lima ditambah tiga sama dengan delapan."
+        },
+        {
+          "symbolLarge": "5 + 2 = ?",
+          "wordLarge": "DETEKTIF ANGKA HILANG",
+          "mathNotation": "5 + 2 = 7   |   3 + 4 = 7   |   6 + 3 = 9",
+          "voiceReadout": "Lima ditambah dua sama dengan tujuh. Tiga ditambah empat sama dengan tujuh. Enam ditambah tiga sama dengan sembilan."
+        },
+        {
+          "symbolLarge": "5 + 3 = 8",
+          "wordLarge": "TULIS DAN UCAPKAN",
+          "mathNotation": "5 + 3 = 8   |   kalimatku sendiri",
+          "voiceReadout": "Lima ditambah tiga sama dengan delapan. Sekarang buat kalimat penjumlahanmu sendiri."
+        }
+      ],
+      "interactiveGames": [
+        {
+          "gameId": "subA-game-1",
+          "gameNumber": 1,
+          "stage": "Concrete",
+          "gameType": "tap-to-join",
+          "title": "Teman Datang Lagi",
+          "bookReference": "Buku Siswa Hlm. 43–44",
+          "objective": "Memahami penjumlahan sebagai bertambahnya anak yang ikut bermain.",
+          "mechanicDescription": "Siswa mengetuk 2 anak yang menunggu supaya ikut 4 anak yang bermain lompat tali, lalu mengucapkan jumlah semuanya.",
+          "voiceGuide": "Ketuk anak yang menunggu supaya ikut bermain. Setelah semua ikut, ucapkan berapa semua anak."
+        },
+        {
+          "gameId": "subA-game-2",
+          "gameNumber": 2,
+          "stage": "Concrete",
+          "gameType": "drag-to-container",
+          "title": "Kotak Pensil Kira",
+          "bookReference": "Buku Siswa Hlm. 45",
+          "objective": "Menggabungkan dua kelompok benda nyata menjadi satu kelompok.",
+          "mechanicDescription": "Siswa menyeret 3 pensil merah dan 4 pensil biru ke satu kotak pensil, lalu mengucapkan jumlah semua pensil.",
+          "voiceGuide": "Seret semua pensil ke kotak pensil, lalu ucapkan berapa semua pensil."
+        },
+        {
+          "gameId": "subA-game-3",
+          "gameNumber": 3,
+          "stage": "Concrete",
+          "gameType": "story-fill-in",
+          "title": "Lengkapi Cerita",
+          "bookReference": "Buku Siswa Hlm. 46",
+          "objective": "Mengubah gambar dua kelompok menjadi cerita penjumlahan.",
+          "mechanicDescription": "Dua ronde: 4 mobil kuning + 4 mobil merah, lalu 3 kue lapis + 5 kue bolu. Siswa menghitung dan mengisi tiga kotak kosong pada cerita.",
+          "voiceGuide": "Hitung bendanya satu per satu, isi kotak kosong, lalu ucapkan berapa semuanya."
+        },
+        {
+          "gameId": "subA-game-4",
+          "gameNumber": 4,
+          "stage": "Concrete",
+          "gameType": "guess-then-count",
+          "title": "Tebak Dua Piring",
+          "bookReference": "Buku Siswa Hlm. 50 (Ayo Bermain)",
+          "objective": "Menaksir jumlah gabungan, lalu membuktikannya dengan menghitung.",
+          "mechanicDescription": "Dua ronde: piring ditutup kain. Siswa menebak jumlah semua kelereng, membuka kain, mengetuk tiap kelereng untuk menghitung, lalu mengucapkan jumlahnya.",
+          "voiceGuide": "Tebak dulu, buka kain, hitung kelereng, lalu ucapkan berapa semuanya."
+        },
+        {
+          "gameId": "subA-game-5",
+          "gameNumber": 5,
+          "stage": "Pictorial",
+          "gameType": "ten-frame-two-color",
+          "title": "Bingkai Sepuluh Dua Warna",
+          "bookReference": "Buku Siswa Hlm. 47 No. 2",
+          "objective": "Menunjukkan penjumlahan pada diagram Bingkai 10 dengan dua warna.",
+          "mechanicDescription": "Dua ronde: 4 + 2 bola dan 6 + 2 apel. Kotak emas sudah terisi, siswa mewarnai kotak hijau untuk benda yang datang lagi.",
+          "voiceGuide": "Warnai kotak untuk benda yang datang lagi, lalu ucapkan berapa semuanya."
+        },
+        {
+          "gameId": "subA-game-6",
+          "gameNumber": 6,
+          "stage": "Pictorial",
+          "gameType": "count-then-bond",
+          "title": "Hitung lalu Pindahkan",
+          "bookReference": "Buku Siswa Hlm. 47–48 No. 3–4",
+          "objective": "Menghubungkan gambar, bagan pasangan bilangan, dan kalimat penjumlahan.",
+          "mechanicDescription": "Tiga ronde: siswa menghitung tiap gambar, lalu mengetuk lingkaran bagan berurutan untuk memindahkan angka ke kalimat a + b = c.",
+          "voiceGuide": "Hitung gambarnya, ketuk lingkaran secara berurutan, lalu ucapkan berapa semuanya."
+        },
+        {
+          "gameId": "subA-game-7",
+          "gameNumber": 7,
+          "stage": "Pictorial",
+          "gameType": "picture-sentence-matcher",
+          "title": "Jodohkan Gambar dan Kalimat",
+          "bookReference": "Buku Siswa Hlm. 49 No. 5",
+          "objective": "Memasangkan gambar dua kelompok dengan kalimat penjumlahan yang tepat.",
+          "mechanicDescription": "Siswa mengetuk satu gambar lalu kalimatnya: 5 + 2 = 7, 3 + 3 = 6, 6 + 3 = 9. Jodoh yang benar diberi nomor warna.",
+          "voiceGuide": "Jodohkan ketiga gambar, lalu ucapkan berapa jumlah semua bebek."
+        },
+        {
+          "gameId": "subA-game-8",
+          "gameNumber": 8,
+          "stage": "Abstract",
+          "gameType": "symbol-card-builder",
+          "title": "Susun Kalimat",
+          "bookReference": "Buku Siswa Hlm. 44",
+          "objective": "Memilih simbol + dan = yang tepat pada kalimat penjumlahan.",
+          "mechanicDescription": "Tiga ronde: 4 ? 2 ? 6, 5 ? 3 ? 8, 3 ? 4 ? 7. Siswa memilih kartu simbol untuk kotak yang menyala; kartu > dan < menjadi pengecoh.",
+          "voiceGuide": "Pilih kartu simbol yang tepat, lalu ucapkan hasilnya."
+        },
+        {
+          "gameId": "subA-game-9",
+          "gameNumber": 9,
+          "stage": "Abstract",
+          "gameType": "missing-number-detective",
+          "title": "Detektif Angka Hilang",
+          "bookReference": "Pengayaan dari Buku Siswa Hlm. 46–49",
+          "objective": "Menemukan jumlah atau penambah yang hilang pada kalimat penjumlahan.",
+          "mechanicDescription": "Empat kasus: 5 + 2 = ?, 3 + ? = 7, 2 + 5 = ?, 6 + 3 = ?. Siswa membaca petunjuk lalu memilih angka.",
+          "voiceGuide": "Baca petunjuk, pilih angka yang tepat, lalu ucapkan hasil kasus terakhir."
+        },
+        {
+          "gameId": "subA-game-10",
+          "gameNumber": 10,
+          "stage": "Abstract",
+          "gameType": "canvas-trace-and-voice",
+          "title": "Kanvas Guratan dan Suara",
+          "bookReference": "Buku Siswa Hlm. 44–50",
+          "objective": "Menyatakan hasil penjumlahan dengan suara dan tulisan, lalu membuat kalimat sendiri.",
+          "mechanicDescription": "Ronde 1: 5 + 3 = ? dengan suara dan guratan angka 8. Ronde 2 (Ayo Mencoba): siswa memilih dua bilangan sendiri, jumlahnya paling banyak 10.",
+          "voiceGuide": "Ucapkan hasilnya, lalu guratkan angkanya di kanvas."
+        }
+      ]
+    },
+    "B": {
+      "id": "B",
+      "codeTitle": "Sub-Bab B (Strategi Penjumlahan)",
+      "fullTitle": "Sub-Bab B: Berbagai Cara Melakukan Penjumlahan",
+      "targetDescription": "Siswa mampu melakukan penjumlahan sampai dengan 10 menggunakan empat strategi resmi di buku: Pasangan Bilangan (Number Bond), Menghitung Maju pada petak bilangan, Penjumlahan Berulang (Ganda), serta Penjumlahan yang Hasilnya 10 menggunakan jari tangan dan Bingkai 10.",
+      "secondaryBg": "#FEF3C7",
+      "secondaryBorder": "#F59E0B",
+      "secondaryText": "#92400E",
+      "stories": [
+        {
+          "id": "B-S1",
+          "titleHint": "Gambar 1: Cara Pertama — Pasangan Bilangan Apel & Kupu-Kupu",
+          "voiceNarration": "Di atas meja ada lima buah apel yang terdiri dari tiga apel merah dan dua apel hijau. Kira menjumlahkannya dengan cara pasangan bilangan. Tiga sebagai sebagian dan dua sebagai sebagian jika digabungkan menjadi lima sebagai gabungan. Tiga ditambah dua hasilnya lima, dan dua ditambah tiga hasilnya juga lima.",
+          "sceneType": "number-tree"
+        },
+        {
+          "id": "B-S2",
+          "titleHint": "Gambar 2: Cara Kedua — Menghitung Maju di Petak Bilangan",
+          "voiceNarration": "Upe bermain lompat petak bilangan satu sampai sepuluh. Mula-mula Upe berdiri di angka lima, lalu melompat tiga langkah ke depan: enam, tujuh, delapan. Jadi lima ditambah tiga hasilnya adalah delapan.",
+          "sceneType": "frog-river"
+        },
+        {
+          "id": "B-S3",
+          "titleHint": "Gambar 3: Pola Menghitung Maju Bertambah Satu, Dua, dan Tiga",
+          "voiceNarration": "Malosi memperhatikan pola saat menghitung maju di petak bilangan. Satu ditambah dua hasilnya tiga, dua ditambah dua hasilnya empat, tiga ditambah dua hasilnya lima, dan empat ditambah dua hasilnya enam. Setiap bilangan awal naik satu, hasilnya juga naik satu.",
+          "sceneType": "playground-rides"
+        },
+        {
+          "id": "B-S4",
+          "titleHint": "Gambar 4: Cara Ketiga — Penjumlahan Berulang pada Sayap Kepik",
+          "voiceNarration": "Wei mengamati kepik merah di daun taman. Sayap kiri dan sayap kanan kepik memiliki jumlah bulatan hitam yang sama banyak. Satu tambah satu sama dengan dua, dua tambah dua sama dengan empat, tiga tambah tiga sama dengan enam, empat tambah empat sama dengan delapan, dan lima tambah lima sama dengan sepuluh.",
+          "sceneType": "garden-visit"
+        },
+        {
+          "id": "B-S5",
+          "titleHint": "Gambar 5: Rahasia Penjumlahan Hampir Kembar (3 + 3 dan 3 + 4)",
+          "voiceNarration": "Igil si burung hantu membisikkan trik cerdas kepada Kira. Jika kita sudah hafal tiga ditambah tiga sama dengan enam, maka tiga ditambah empat pasti satu lebih banyak dari enam, yaitu tujuh.",
+          "sceneType": "playground-play"
+        },
+        {
+          "id": "B-S6",
+          "titleHint": "Gambar 6: Cara Keempat — Jari Tangan & Bingkai 10 Penggenap Sepuluh",
+          "voiceNarration": "Upe membuka delapan jari tangannya dan melipat dua jari lainnya. Semuanya ada sepuluh jari. Di meja, Kira juga menyusun tujuh bola merah dan tiga bola biru hingga memenuhi bingkai sepuluh. Tujuh ditambah tiga hasilnya adalah sepuluh.",
+          "sceneType": "counting-table"
+        }
+      ],
+      "mindMaps": [
+        {
+          "stepNumber": 1,
+          "stepTitle": "1. Strategi Pasangan Bilangan (Number Bond)",
+          "stepDesc": "Satukan dua lingkaran Sebagian menjadi satu lingkaran Gabungan. Urutan cabang boleh ditukar dan hasilnya tetap sama (3 + 2 = 5 dan 2 + 3 = 5).",
+          "icon": "🟡",
+          "flowFrom": "Sebagian + Sebagian",
+          "flowTo": "Lingkaran Gabungan"
+        },
+        {
+          "stepNumber": 2,
+          "stepTitle": "2. Strategi Menghitung Maju (Petak 1–10)",
+          "stepDesc": "Berdiri di bilangan pertama, lalu melompat maju ke kanan sebanyak bilangan kedua (misal dari 5 melompat 3 langkah: 6, 7, 8).",
+          "icon": "🐸",
+          "flowFrom": "Titik Awal 5 (+3 Lompatan)",
+          "flowTo": "Mendarat di Angka 8"
+        },
+        {
+          "stepNumber": 3,
+          "stepTitle": "3. Strategi Penjumlahan Berulang (Kembar)",
+          "stepDesc": "Hafalkan pasangan kembar seperti sayap kepik: 0+0=0, 1+1=2, 2+2=4, 3+3=6, 4+4=8, dan 5+5=10 untuk menghitung cepat.",
+          "icon": "🐞",
+          "flowFrom": "Dua Bilangan Kembar",
+          "flowTo": "Hasil Genap 0, 2, 4, 6, 8, 10"
+        },
+        {
+          "stepNumber": 4,
+          "stepTitle": "4. Strategi Pasangan Penggenap 10",
+          "stepDesc": "Gunakan 10 jari tangan atau Bingkai 10 dua warna untuk mengenali pasangan yang berjumlah 10: 9+1, 8+2, 7+3, 6+4, dan 5+5.",
+          "icon": "🔟",
+          "flowFrom": "Jari Tangan / Bingkai 10",
+          "flowTo": "Pasangan Berjumlah 10"
+        }
+      ],
+      "infografisData": [
+        {
+          "fruitName": "Pasangan Apel (3 + 2 & 2 + 3)",
+          "emoji": "🍎",
+          "countNum": 5,
+          "countWord": "Lima",
+          "voiceSentence": "Tiga apel merah ditambah dua apel hijau menjadi lima apel, sama dengan dua ditambah tiga."
+        },
+        {
+          "fruitName": "Lompat Maju (4 + 3)",
+          "emoji": "🐸",
+          "countNum": 7,
+          "countWord": "Tujuh",
+          "voiceSentence": "Dari petak empat melompat maju tiga langkah: lima, enam, tujuh."
+        },
+        {
+          "fruitName": "Sayap Kepik Kembar (3 + 3)",
+          "emoji": "🐞",
+          "countNum": 6,
+          "countWord": "Enam",
+          "voiceSentence": "Tiga bulatan di sayap kiri ditambah tiga bulatan di sayap kanan kepik hasilnya adalah enam."
+        },
+        {
+          "fruitName": "Sayap Kepik Kembar (4 + 4)",
+          "emoji": "🐞",
+          "countNum": 8,
+          "countWord": "Delapan",
+          "voiceSentence": "Empat bulatan ditambah empat bulatan pada sayap kepik hasilnya adalah delapan."
+        },
+        {
+          "fruitName": "Penggenap Sepuluh (8 + 2 & 7 + 3)",
+          "emoji": "🔴",
+          "countNum": 10,
+          "countWord": "Sepuluh",
+          "voiceSentence": "Delapan ditambah dua sama dengan sepuluh, dan tujuh ditambah tiga sama dengan sepuluh."
+        }
+      ],
+      "concreteSlides": [
+        {
+          "title": "Permainan Concrete 1: Pasangan Kupu-Kupu Dua Warna (4 + 1 = 5)",
+          "emoji": "🦋",
+          "targetCount": 5,
+          "voiceGuide": "Empat kupu-kupu kuning di bunga kiri digabungkan dengan satu kupu-kupu merah di bunga kanan menjadi lima kupu-kupu. Tukar posisinya untuk melihat satu ditambah empat juga lima.",
+          "game": {
+            "gameId": "subB-game-1",
+            "gameNumber": 1,
+            "stage": "concrete",
+            "gameType": "butterfly-wing-bond",
+            "title": "Pasangan Kupu-Kupu & Tukar Cabang",
+            "bookPageRef": "Buku Siswa Hlm. 51–52",
+            "instruction": "Satukan 4 kupu-kupu kuning dan 1 kupu-kupu merah ke bunga Gabungan, lalu tekan tombol Tukar Posisi untuk membuktikan 4 + 1 = 5 dan 1 + 4 = 5!",
+            "partA": 4,
+            "partB": 1,
+            "targetTotal": 5,
+            "winCondition": "Kelima kupu-kupu berkumpul di bunga Gabungan dan kedua kalimat 4 + 1 = 5 serta 1 + 4 = 5 terbuka."
+          }
+        },
+        {
+          "title": "Permainan Concrete 2: Papan Lompat Petak Bilangan (5 + 3 = 8)",
+          "emoji": "🐸",
+          "targetCount": 8,
+          "voiceGuide": "Taruh pion di petak angka lima, lalu ketuk tombol lompat maju sebanyak tiga kali: enam, tujuh, delapan. Jadi lima ditambah tiga hasilnya adalah delapan.",
+          "game": {
+            "gameId": "subB-game-2",
+            "gameNumber": 2,
+            "stage": "concrete",
+            "gameType": "number-track-hopper",
+            "title": "Lompat Maju Petak Bilangan 1–10",
+            "bookPageRef": "Buku Siswa Hlm. 55–57",
+            "instruction": "Mulai dari petak angka 5, ketuk tombol 'Lompat Maju (+1)' sebanyak 3 kali, lalu pilih angka tempat kamu berhenti!",
+            "startNumber": 5,
+            "jumpSteps": 3,
+            "targetTotal": 8,
+            "winCondition": "Pion melompat 3 kali (6, 7, 8) dan siswa memilih angka 8."
+          }
+        },
+        {
+          "title": "Permainan Concrete 3: Lukis Bintik Kembar Sayap Kepik (4 + 4 = 8)",
+          "emoji": "🐞",
+          "targetCount": 8,
+          "voiceGuide": "Sayap kiri kepik memiliki empat bintik hitam. Ketuk sayap kanan kepik untuk melukis empat bintik kembarnya, lalu hitung jumlah seluruh bintik: empat ditambah empat sama dengan delapan.",
+          "game": {
+            "gameId": "subB-game-3",
+            "gameNumber": 3,
+            "stage": "concrete",
+            "gameType": "ladybug-twin-painter",
+            "title": "Lukis Bintik Kembar Sayap Kepik",
+            "bookPageRef": "Buku Siswa Hlm. 59–60",
+            "instruction": "Sayap kiri kepik punya 4 bintik. Ketuk sayap kanan sebanyak 4 kali agar jumlah bintiknya kembar, lalu pilih hasil 4 + 4!",
+            "leftWingDots": 4,
+            "rightWingDots": 4,
+            "targetTotal": 8,
+            "winCondition": "Sayap kanan memiliki 4 bintik dan siswa memilih hasil 8."
+          }
+        },
+        {
+          "title": "Permainan Concrete 4: Lipat & Buka 10 Jari Tangan (8 + 2 = 10)",
+          "emoji": "🖐️",
+          "targetCount": 10,
+          "voiceGuide": "Lihat sepuluh jari tangan di layar. Ada delapan jari yang terbuka dan dua jari yang terlipat. Jika digabungkan semuanya tetap sepuluh jari: delapan ditambah dua sama dengan sepuluh.",
+          "game": {
+            "gameId": "subB-game-4",
+            "gameNumber": 4,
+            "stage": "concrete",
+            "gameType": "ten-fingers-folder",
+            "title": "Lipat & Buka 10 Jari Tangan",
+            "bookPageRef": "Buku Siswa Hlm. 61",
+            "instruction": "Ketuk 2 jari tangan untuk melipatnya sehingga tersisa 8 jari terbuka, lalu pilih kalimat penjumlahan yang sesuai!",
+            "openFingers": 8,
+            "foldedFingers": 2,
+            "targetTotal": 10,
+            "winCondition": "8 jari terbuka, 2 jari terlipat, dan operasi 8 + 2 = 10 dipilih."
+          }
+        }
+      ],
+      "pictorialSlides": [
+        {
+          "title": "Permainan Pictorial 5: Diagram Pasangan Bilangan Pita (4 + 3 = 7)",
+          "diagramType": "number-bond",
+          "numberA": 7,
+          "numberB": 4,
+          "caption": "Sebagian 4 pita merah dan Sebagian 3 pita biru bergabung menjadi Gabungan 7 pita (4 + 3 = 7).",
+          "game": {
+            "gameId": "subB-game-5",
+            "gameNumber": 5,
+            "stage": "pictorial",
+            "gameType": "dual-direction-bond",
+            "title": "Lengkapi Diagram Pasangan Bilangan (4 + 3 = 7)",
+            "bookPageRef": "Buku Siswa Hlm. 53–54",
+            "instruction": "Lihat cabang Sebagian [4] dan Sebagian [3]. Ketuk lingkaran Gabungan untuk mengisi 7 titik dan membuka kalimat 4 + 3 = 7!",
+            "partA": 4,
+            "partB": 3,
+            "targetTotal": 7,
+            "winCondition": "Lingkaran Gabungan terisi 7 dan kalimat 4 + 3 = 7 terbuka."
+          }
+        },
+        {
+          "title": "Permainan Pictorial 6: Menara Kembar & Tetangganya (3 + 3 = 6 jadi 3 + 4 = 7)",
+          "diagramType": "comparison",
+          "numberA": 6,
+          "numberB": 7,
+          "caption": "Menara kembar 3 + 3 berjumlah 6 petak, sehingga menara 3 + 4 tepat satu petak lebih tinggi yaitu 7 petak.",
+          "game": {
+            "gameId": "subB-game-6",
+            "gameNumber": 6,
+            "stage": "pictorial",
+            "gameType": "near-doubles-tower",
+            "title": "Menara Kembar 3+3 ke 3+4",
+            "bookPageRef": "Buku Siswa Hlm. 59",
+            "instruction": "Kita tahu 3 + 3 = 6 petak. Tambahkan 1 petak emas di atas menara kedua untuk melihat hasil 3 + 4!",
+            "doubleBase": 6,
+            "nearDoubleTarget": 7,
+            "winCondition": "1 petak emas ditambahkan di puncak menara kedua dan siswa memilih angka 7."
+          }
+        },
+        {
+          "title": "Permainan Pictorial 7: Bingkai 10 Penggenap Sepuluh (7 + 3 = 10)",
+          "diagramType": "ten-frame",
+          "numberA": 10,
+          "numberB": 0,
+          "caption": "7 bola merah ditambah 3 bola biru mengisi penuh 10 petak pada Bingkai 10 dan menyisakan 0 petak kosong.",
+          "game": {
+            "gameId": "subB-game-7",
+            "gameNumber": 7,
+            "stage": "pictorial",
+            "gameType": "make-ten-frame-filler",
+            "title": "Penuhkan Bingkai 10 (7 Bola Merah + 3 Bola Biru)",
+            "bookPageRef": "Buku Siswa Hlm. 62–64",
+            "instruction": "Bingkai 10 sudah berisi 7 bola merah. Ketuk kotak kosong yang tersisa untuk menaruh bola biru sampai penuh 10!",
+            "redBalls": 7,
+            "blueBallsNeeded": 3,
+            "targetTotal": 10,
+            "winCondition": "3 petak kosong terisi bola biru dan siswa menjawab pasangan 7 adalah 3."
+          }
+        }
+      ],
+      "abstractSlides": [
+        {
+          "symbolLarge": "1+3=4 • 2+3=5 • 3+3=6 • 4+3=7 • 5+3=8",
+          "wordLarge": "POLA MENGHITUNG MAJU (+1, +2, +3)",
+          "mathNotation": "Saat bilangan pertama bertambah 1, hasil penjumlahan juga bertambah 1",
+          "voiceReadout": "Satu tambah tiga sama dengan empat, dua tambah tiga sama dengan lima, tiga tambah tiga sama dengan enam, empat tambah tiga sama dengan tujuh, lima tambah tiga sama dengan delapan.",
+          "game": {
+            "gameId": "subB-game-8",
+            "gameNumber": 8,
+            "stage": "abstract",
+            "gameType": "pattern-ladder-solver",
+            "title": "Tangga Pola Operasi Penjumlahan",
+            "bookPageRef": "Buku Siswa Hlm. 57–58 No. 2–5",
+            "instruction": "Perhatikan pola tangga penjumlahan: 1+3=4, 2+3=5, 3+3=6. Pilih dua jawaban berurutan untuk 4+3 dan 5+3!",
+            "sequence": [
+              "1 + 3 = 4",
+              "2 + 3 = 5",
+              "3 + 3 = 6",
+              "4 + 3 = ?",
+              "5 + 3 = ?"
+            ],
+            "missingAnswers": [
+              "7",
+              "8"
+            ],
+            "winCondition": "Siswa memilih 7 dan 8 untuk melengkapi tangga pola."
+          }
+        },
+        {
+          "symbolLarge": "9+1=10 • 8+2=10 • 7+3=10 • 6+4=10 • 5+5=10",
+          "wordLarge": "PASANGAN PENGGENAP SEPULUH",
+          "mathNotation": "1+9=10 • 2+8=10 • 3+7=10 • 4+6=10 • 5+5=10",
+          "voiceReadout": "Sembilan tambah satu sama dengan sepuluh, delapan tambah dua sama dengan sepuluh, tujuh tambah tiga sama dengan sepuluh, enam tambah empat sama dengan sepuluh, lima tambah lima sama dengan sepuluh.",
+          "game": {
+            "gameId": "subB-game-9",
+            "gameNumber": 9,
+            "stage": "abstract",
+            "gameType": "make-ten-card-pairs",
+            "title": "Jodohkan Kartu Penggenap 10",
+            "bookPageRef": "Buku Siswa Hlm. 62–63",
+            "instruction": "Ketuk dua kartu bilangan yang jika dijumlahkan hasilnya tepat 10!",
+            "pairs": [
+              [
+                9,
+                1
+              ],
+              [
+                8,
+                2
+              ],
+              [
+                7,
+                3
+              ],
+              [
+                6,
+                4
+              ],
+              [
+                5,
+                5
+              ]
+            ],
+            "winCondition": "Kelima pasangan pasangan kartu penggenap 10 berhasil dijodohkan."
+          }
+        },
+        {
+          "symbolLarge": "1+1=2 • 2+2=4 • 3+3=6 • 4+4=8 • 5+5=10",
+          "wordLarge": "PENJUMLAHAN BERULANG (KEMBAR)",
+          "mathNotation": "0+0=0   |   4 + 4 = 8 (Delapan)",
+          "voiceReadout": "Nol tambah nol sama dengan nol, satu tambah satu sama dengan dua, dua tambah dua sama dengan empat, tiga tambah tiga sama dengan enam, empat tambah empat sama dengan delapan, lima tambah lima sama dengan sepuluh.",
+          "game": {
+            "gameId": "subB-game-10",
+            "gameNumber": 10,
+            "stage": "abstract",
+            "gameType": "strategy-selector-canvas",
+            "title": "Kanvas Tulis & Suara Penjumlahan Berulang (4 + 4 = 8)",
+            "bookPageRef": "Buku Siswa Hlm. 60 & 64",
+            "instruction": "Selesaikan penjumlahan berulang 4 + 4 = [ ? ] dengan menebalkan angka 8 dan kata Delapan di kanvas, lalu ucapkan 'delapan'!",
+            "targetDigit": 8,
+            "targetWord": "Delapan",
+            "voiceAccepted": [
+              "8",
+              "delapan"
+            ],
+            "winCondition": "Guratan kanvas angka 8 lulus dan ucapan suara 'delapan' diterima."
+          }
+        }
+      ],
+      "interactiveGames": [
+        {
+          "gameId": "subB-game-1",
+          "gameNumber": 1,
+          "stage": "Concrete",
+          "gameType": "butterfly-wing-bond",
+          "title": "Pasangan Kupu-Kupu Dua Warna (4 + 1 = 5 & 1 + 4 = 5)",
+          "bookReference": "Buku Siswa Hlm. 51–52",
+          "objective": "Memahami strategi pasangan bilangan dan melihat bahwa urutan kedua bagian dapat ditukar dengan hasil gabungan yang tetap sama.",
+          "mechanicDescription": "Siswa memindahkan 4 kupu-kupu kuning dan 1 kupu-kupu merah ke taman Gabungan, lalu menekan tombol Tukar Cabang untuk membandingkan 4 + 1 = 5 dan 1 + 4 = 5.",
+          "voiceGuide": "Satukan empat kupu-kupu kuning dan satu kupu-kupu merah ke lingkaran gabungan, lalu lihat hasilnya."
+        },
+        {
+          "gameId": "subB-game-2",
+          "gameNumber": 2,
+          "stage": "Concrete",
+          "gameType": "number-track-hopper",
+          "title": "Lompat Maju Petak Bilangan 1–10 (5 + 3 = 8)",
+          "bookReference": "Buku Siswa Hlm. 55–57",
+          "objective": "Melakukan penjumlahan dengan cara menghitung maju (counting on) pada lintasan petak bilangan 1 sampai 10.",
+          "mechanicDescription": "Siswa menempatkan pion di petak angka 5, lalu mengetuk tombol Lompat Maju sebanyak 3 kali (melewati 6, 7, dan berhenti di 8).",
+          "voiceGuide": "Mulai dari angka lima, melompatlah tiga langkah ke depan: enam, tujuh, delapan."
+        },
+        {
+          "gameId": "subB-game-3",
+          "gameNumber": 3,
+          "stage": "Concrete",
+          "gameType": "ladybug-twin-painter",
+          "title": "Lukis Bintik Kembar Sayap Kepik (4 + 4 = 8)",
+          "bookReference": "Buku Siswa Hlm. 59–60",
+          "objective": "Menguasai konsep penjumlahan berulang (doubles) melalui simetri bintik pada kedua sayap kepik.",
+          "mechanicDescription": "Sayap kiri kepik memiliki 4 bintik hitam. Siswa mengetuk sayap kanan untuk melukis 4 bintik kembarnya, lalu memilih hasil 4 + 4 = 8.",
+          "voiceGuide": "Lukis empat bintik hitam pada sayap kanan kepik supaya sama dengan sayap kiri, lalu pilih hasil empat ditambah empat."
+        },
+        {
+          "gameId": "subB-game-4",
+          "gameNumber": 4,
+          "stage": "Concrete",
+          "gameType": "ten-fingers-folder",
+          "title": "Lipat & Buka 10 Jari Tangan (8 + 2 = 10)",
+          "bookReference": "Buku Siswa Hlm. 61",
+          "objective": "Menemukan pasangan penjumlahan yang hasilnya 10 menggunakan peraga 10 jari tangan.",
+          "mechanicDescription": "Siswa mengetuk 2 jari tangan agar terlipat sehingga tampak 8 jari terbuka dan 2 jari tertutup, lalu memilih kalimat 8 + 2 = 10.",
+          "voiceGuide": "Ada delapan jari terbuka dan dua jari tertutup, semuanya berjumlah sepuluh jari."
+        },
+        {
+          "gameId": "subB-game-5",
+          "gameNumber": 5,
+          "stage": "Pictorial",
+          "gameType": "dual-direction-bond",
+          "title": "Diagram Pasangan Bilangan Pita (4 + 3 = 7)",
+          "bookReference": "Buku Siswa Hlm. 53–54",
+          "objective": "Menyelesaikan operasi penjumlahan menggunakan diagram Number Bond.",
+          "mechanicDescription": "Siswa mengetuk cabang Sebagian 4 dan Sebagian 3 agar titik-titiknya mengisi lingkaran Gabungan 7 dan membuka persamaan 4 + 3 = 7.",
+          "voiceGuide": "Gabungkan cabang empat dan cabang tiga ke lingkaran gabungan untuk menemukan hasil empat ditambah tiga."
+        },
+        {
+          "gameId": "subB-game-6",
+          "gameNumber": 6,
+          "stage": "Pictorial",
+          "gameType": "near-doubles-tower",
+          "title": "Menara Kembar & Tetangganya (3 + 3 = 6 ke 3 + 4 = 7)",
+          "bookReference": "Buku Siswa Hlm. 59",
+          "objective": "Menggunakan fakta penjumlahan berulang (3 + 3 = 6) untuk menentukan hasil penjumlahan hampir kembar (3 + 4 = 7).",
+          "mechanicDescription": "Siswa mengamati dua menara kembar 3 petak + 3 petak = 6, lalu menambahkan 1 petak emas pada menara kedua untuk melihat bahwa 3 + 4 = 7.",
+          "voiceGuide": "Jika tiga ditambah tiga sama dengan enam, tambahkan satu petak lagi untuk melihat hasil tiga ditambah empat."
+        },
+        {
+          "gameId": "subB-game-7",
+          "gameNumber": 7,
+          "stage": "Pictorial",
+          "gameType": "make-ten-frame-filler",
+          "title": "Bingkai 10 Penggenap Sepuluh (7 + 3 = 10)",
+          "bookReference": "Buku Siswa Hlm. 62–64",
+          "objective": "Menemukan bilangan pasangan yang menggenapkan suatu bilangan menjadi 10 pada Bingkai 10.",
+          "mechanicDescription": "Bingkai 10 telah berisi 7 bola merah. Siswa mengetuk 3 petak kosong yang tersisa untuk mengisinya dengan bola biru hingga genap 10.",
+          "voiceGuide": "Tujuh bola merah sudah ada di bingkai sepuluh. Ketuk petak yang kosong dengan bola biru sampai penuh sepuluh."
+        },
+        {
+          "gameId": "subB-game-8",
+          "gameNumber": 8,
+          "stage": "Abstract",
+          "gameType": "pattern-ladder-solver",
+          "title": "Tangga Pola Hitung Maju (+3)",
+          "bookReference": "Buku Siswa Hlm. 57–58 No. 2–5",
+          "objective": "Mengenali keteraturan pola hasil penjumlahan berurutan pada tabel operasi hitung.",
+          "mechanicDescription": "Siswa melengkapi dua baris terakhir pada tangga pola: 1+3=4, 2+3=5, 3+3=6, 4+3=[7], dan 5+3=[8].",
+          "voiceGuide": "Lengkapi hasil pada tangga pola penjumlahan empat ditambah tiga dan lima ditambah tiga."
+        },
+        {
+          "gameId": "subB-game-9",
+          "gameNumber": 9,
+          "stage": "Abstract",
+          "gameType": "make-ten-card-pairs",
+          "title": "Jodohkan Kartu Penggenap 10",
+          "bookReference": "Buku Siswa Hlm. 62–63",
+          "objective": "Memasangkan dua lambang bilangan yang jika dijumlahkan menghasilkan 10 secara cepat.",
+          "mechanicDescription": "Siswa menjodohkan 5 pasang kartu angka yang berjumlah 10: (9 dan 1), (8 dan 2), (7 dan 3), (6 dan 4), serta (5 dan 5).",
+          "voiceGuide": "Pasangkan dua kartu bilangan yang jika dijumlahkan hasilnya tepat sepuluh."
+        },
+        {
+          "gameId": "subB-game-10",
+          "gameNumber": 10,
+          "stage": "Abstract",
+          "gameType": "strategy-selector-canvas",
+          "title": "Kanvas Tulis & Suara Penjumlahan Berulang (4 + 4 = 8)",
+          "bookReference": "Buku Siswa Hlm. 60 & 64",
+          "objective": "Menuliskan hasil operasi penjumlahan berulang di kanvas dan melafalkannya dengan benar.",
+          "mechanicDescription": "Siswa menebalkan angka 8 dan kata Delapan pada kanvas untuk menyelesaikan 4 + 4 = 8, lalu mengucapkan 'delapan' melalui mikrofon.",
+          "voiceGuide": "Empat ditambah empat hasilnya adalah delapan. Tebalkan angka delapan di kanvas lalu ucapkan dengan lantang."
+        }
+      ]
+    }
+  },
+  "practiceQuestions": [
+    {
+      "id": 1,
+      "level": "LOTS (30%)",
+      "prompt": "Ada 4 anak sedang bermain lompat tali di halaman. Datang lagi 2 anak ikut bermain hingga sekarang ada 6 anak. Kalimat matematika penjumlahannya adalah...",
+      "visualEmojis": [
+        "🧒",
+        "🧒",
+        "🧒",
+        "🧒",
+        "🧒",
+        "🧒"
+      ],
+      "options": [
+        "4 + 1 = 5",
+        "4 + 2 = 6",
+        "4 + 3 = 7",
+        "5 + 2 = 7"
+      ]
+    },
+    {
+      "id": 2,
+      "level": "LOTS (30%)",
+      "prompt": "Kira mempunyai 3 apel merah dan 2 apel hijau. Pada diagram pasangan bilangan, jika 3 dan 2 digabungkan ke lingkaran Gabungan, berapakah hasilnya?",
+      "visualEmojis": [
+        "🍎",
+        "🍎",
+        "🍎",
+        "🍎",
+        "🍎"
+      ],
+      "options": [
+        "4",
+        "5",
+        "6",
+        "7"
+      ]
+    },
+    {
+      "id": 3,
+      "level": "LOTS (30%)",
+      "prompt": "Seekor kepik memiliki 3 bulatan hitam di sayap kiri dan 3 bulatan hitam di sayap kanan (3 + 3). Berapa jumlah semua bulatan pada sayap kepik itu?",
+      "visualEmojis": [
+        "🐞",
+        "🐞",
+        "🐞",
+        "🐞",
+        "🐞",
+        "🐞"
+      ],
+      "options": [
+        "4",
+        "5",
+        "6",
+        "8"
+      ]
+    },
+    {
+      "id": 4,
+      "level": "MOTS (30%)",
+      "prompt": "Upe berdiri di petak angka 5, lalu ia melompat maju 3 langkah ke depan. Di petak angka berapakah Upe berhenti sekarang?",
+      "visualEmojis": [
+        "🐸",
+        "🐸",
+        "🐸",
+        "🐸",
+        "🐸",
+        "🐸",
+        "🐸",
+        "🐸"
+      ],
+      "options": [
+        "6",
+        "7",
+        "8",
+        "9"
+      ]
+    },
+    {
+      "id": 5,
+      "level": "MOTS (30%)",
+      "prompt": "Di taman ada 4 kupu-kupu kuning dan 1 kupu-kupu merah sehingga 4 + 1 = 5. Jika urutannya ditukar menjadi 1 + 4, berapakah hasilnya?",
+      "visualEmojis": [
+        "🦋",
+        "🦋",
+        "🦋",
+        "🦋",
+        "🦋"
+      ],
+      "options": [
+        "3",
+        "4",
+        "5",
+        "6"
+      ]
+    },
+    {
+      "id": 6,
+      "level": "MOTS (30%)",
+      "prompt": "Wei membuka 8 jari tangannya. Berapa jari tangan lagi yang masih terlipat dari 10 jari tangan Wei?",
+      "visualEmojis": [
+        "☝️",
+        "☝️",
+        "☝️",
+        "☝️",
+        "☝️",
+        "☝️",
+        "☝️",
+        "☝️"
+      ],
+      "options": [
+        "1",
+        "2",
+        "3",
+        "4"
+      ]
+    },
+    {
+      "id": 7,
+      "level": "HOTS (40%)",
+      "prompt": "Malosi sudah hafal penjumlahan berulang 3 + 3 = 6. Dengan menggunakan bantuan itu, berapakah hasil dari 3 + 4?",
+      "visualEmojis": [
+        "⭐",
+        "⭐",
+        "⭐",
+        "⭐",
+        "⭐",
+        "⭐",
+        "⭐"
+      ],
+      "options": [
+        "5",
+        "6",
+        "7",
+        "8"
+      ]
+    },
+    {
+      "id": 8,
+      "level": "HOTS (40%)",
+      "prompt": "Pada sebuah Bingkai 10 sudah terdapat 7 bola merah. Berapa bola biru yang harus ditambahkan Kira supaya Bingkai 10 terisi penuh 10 bola?",
+      "visualEmojis": [
+        "🔴",
+        "🔴",
+        "🔴",
+        "🔴",
+        "🔴",
+        "🔴",
+        "🔴"
+      ],
+      "options": [
+        "2",
+        "3",
+        "4",
+        "5"
+      ]
+    },
+    {
+      "id": 9,
+      "level": "HOTS (40%)",
+      "prompt": "Perhatikan pola penjumlahan berurutan berikut: 1 + 3 = 4, 2 + 3 = 5, 3 + 3 = 6. Operasi manakah yang merupakan kelanjutan tepat di bawahnya?",
+      "visualEmojis": [
+        "📘",
+        "📘",
+        "📘",
+        "📘",
+        "📘",
+        "📘",
+        "📘"
+      ],
+      "options": [
+        "4 + 2 = 6",
+        "4 + 3 = 7",
+        "4 + 4 = 8",
+        "5 + 3 = 8"
+      ]
+    },
+    {
+      "id": 10,
+      "level": "HOTS (40%)",
+      "prompt": "Igil ingin memilih dua stoples kelereng yang jika digabungkan berjumlah tepat 10 kelereng. Pasangan operasi manakah yang harus dipilih Igil?",
+      "visualEmojis": [
+        "🔮",
+        "🔮",
+        "🔮",
+        "🔮",
+        "🔮",
+        "🔮",
+        "🔮",
+        "🔮",
+        "🔮",
+        "🔮"
+      ],
+      "options": [
+        "6 + 3 = 9",
+        "6 + 4 = 10",
+        "5 + 4 = 9",
+        "7 + 2 = 9"
+      ]
+    }
+  ],
+  "examQuestions": [
+    {
+      "id": 1,
+      "level": "HOTS UJIAN FORMAL",
+      "prompt": "1. Kira menggabungkan 5 pita kuning dan 2 pita biru. Pada diagram pasangan bilangan, berapakah angka yang mengisi lingkaran Gabungan?",
+      "visualEmojis": [
+        "🎀",
+        "🎀",
+        "🎀",
+        "🎀",
+        "🎀",
+        "🎀",
+        "🎀"
+      ],
+      "options": [
+        "6",
+        "7",
+        "8",
+        "9"
+      ]
+    },
+    {
+      "id": 2,
+      "level": "HOTS UJIAN FORMAL",
+      "prompt": "2. Katak hijau mulai dari petak angka 4, lalu melompat maju 3 langkah ke depan. Kalimat matematika yang sesuai dengan lompatan katak tersebut adalah...",
+      "visualEmojis": [
+        "🐸",
+        "🐸",
+        "🐸",
+        "🐸",
+        "🐸",
+        "🐸",
+        "🐸"
+      ],
+      "options": [
+        "4 + 2 = 6",
+        "4 + 3 = 7",
+        "4 + 4 = 8",
+        "3 + 5 = 8"
+      ]
+    },
+    {
+      "id": 3,
+      "level": "HOTS UJIAN FORMAL",
+      "prompt": "3. Malosi menggambar seekor kepik yang kedua sayapnya memiliki jumlah bintik sama banyak. Jika jumlah seluruh bintik di punggung kepik adalah 8, maka operasi penjumlahan berulangnya adalah...",
+      "visualEmojis": [
+        "🐞",
+        "🐞",
+        "🐞",
+        "🐞",
+        "🐞",
+        "🐞",
+        "🐞",
+        "🐞"
+      ],
+      "options": [
+        "3 + 3 = 6",
+        "4 + 4 = 8",
+        "5 + 3 = 8",
+        "6 + 2 = 8"
+      ]
+    },
+    {
+      "id": 4,
+      "level": "HOTS UJIAN FORMAL",
+      "prompt": "4. Upe tahu bahwa 4 + 4 = 8. Jika Upe menambahkan 1 jeruk lagi pada kelompok kedua sehingga menjadi 4 + 5, berapakah hasilnya sekarang?",
+      "visualEmojis": [
+        "🍊",
+        "🍊",
+        "🍊",
+        "🍊",
+        "🍊",
+        "🍊",
+        "🍊",
+        "🍊",
+        "🍊"
+      ],
+      "options": [
+        "7",
+        "8",
+        "9",
+        "10"
+      ]
+    },
+    {
+      "id": 5,
+      "level": "HOTS UJIAN FORMAL",
+      "prompt": "5. Sebuah Bingkai 10 berisi 9 bola merah dan 1 bola biru hingga seluruh 10 petaknya penuh. Kalimat penjumlahan yang benar adalah...",
+      "visualEmojis": [
+        "🔴",
+        "🔴",
+        "🔴",
+        "🔴",
+        "🔴",
+        "🔴",
+        "🔴",
+        "🔴",
+        "🔴",
+        "🔴"
+      ],
+      "options": [
+        "8 + 2 = 10",
+        "9 + 1 = 10",
+        "7 + 3 = 10",
+        "5 + 5 = 10"
+      ]
+    },
+    {
+      "id": 6,
+      "level": "HOTS UJIAN FORMAL",
+      "prompt": "6. Jika pada Bingkai 10 diketahui 2 + 8 = 10, maka pasangan penjumlahan kebalikannya yang juga menghasilkan 10 adalah...",
+      "visualEmojis": [
+        "🔵",
+        "🔵",
+        "🔵",
+        "🔵",
+        "🔵",
+        "🔵",
+        "🔵",
+        "🔵",
+        "🔵",
+        "🔵"
+      ],
+      "options": [
+        "7 + 3 = 10",
+        "8 + 2 = 10",
+        "6 + 4 = 10",
+        "9 + 1 = 10"
+      ]
+    },
+    {
+      "id": 7,
+      "level": "HOTS UJIAN FORMAL",
+      "prompt": "7. Wei ingin mengisi dua piring dengan kue mangkuk yang jumlahnya SAMA BANYAK sehingga totalnya tepat 10 kue. Operasi penjumlahan berulang yang tepat adalah...",
+      "visualEmojis": [
+        "🧁",
+        "🧁",
+        "🧁",
+        "🧁",
+        "🧁",
+        "🧁",
+        "🧁",
+        "🧁",
+        "🧁",
+        "🧁"
+      ],
+      "options": [
+        "4 + 4 = 8",
+        "5 + 5 = 10",
+        "6 + 4 = 10",
+        "7 + 3 = 10"
+      ]
+    },
+    {
+      "id": 8,
+      "level": "HOTS UJIAN FORMAL",
+      "prompt": "8. Mula-mula Upe berdiri di petak angka 2. Ia melompat maju 3 langkah, lalu melompat maju lagi 2 langkah. Di petak angka berapakah Upe berhenti?",
+      "visualEmojis": [
+        "👟",
+        "👟",
+        "👟",
+        "👟",
+        "👟",
+        "👟",
+        "👟"
+      ],
+      "options": [
+        "5",
+        "6",
+        "7",
+        "8"
+      ]
+    },
+    {
+      "id": 9,
+      "level": "HOTS UJIAN FORMAL",
+      "prompt": "9. Kira sudah memiliki 6 bunga melati. Berapa bunga melati lagi yang harus dipetik Kira supaya jumlah bunganya menjadi 9?",
+      "visualEmojis": [
+        "🌼",
+        "🌼",
+        "🌼",
+        "🌼",
+        "🌼",
+        "🌼"
+      ],
+      "options": [
+        "2",
+        "3",
+        "4",
+        "5"
+      ]
+    },
+    {
+      "id": 10,
+      "level": "HOTS UJIAN FORMAL",
+      "prompt": "10. Di meja ada dua piring yang awalnya sama-sama kosong (0 + 0 = 0). Lalu Igil menaruh 6 buah pisang ke piring pertama. Berapa jumlah pisang di kedua piring sekarang?",
+      "visualEmojis": [
+        "🍌",
+        "🍌",
+        "🍌",
+        "🍌",
+        "🍌",
+        "🍌"
+      ],
+      "options": [
+        "0",
+        "5",
+        "6",
+        "7"
+      ]
+    }
+  ]
+}
