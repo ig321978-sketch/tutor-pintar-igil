@@ -46,9 +46,9 @@ import {
 /*            10 Kanvas Guratan dan Suara (tulis dan ucapkan).                */
 /* ------------------------------------------------------------------------ */
 
-const TOTAL_GAME = 10;
+export const TOTAL_GAME = 10;
 
-type PropsLangkah = {
+export type PropsLangkah = {
   speakGuru: (t: string) => void;
   lanjut: () => void;
   nomor: number;
@@ -56,24 +56,24 @@ type PropsLangkah = {
   teksLanjut: string;
 };
 
-const kataK = (n: number) => kata(n).toLowerCase();
-const ucapTambah = (a: number, b: number, c: number) => `${kataK(a)} ditambah ${kataK(b)} sama dengan ${kataK(c)}`;
+export const kataK = (n: number) => kata(n).toLowerCase();
+export const ucapTambah = (a: number, b: number, c: number) => `${kataK(a)} ditambah ${kataK(b)} sama dengan ${kataK(c)}`;
 
 /** Tiga pilihan angka di sekitar kunci. Urutan diputar supaya kunci tidak selalu di tengah. */
-function opsiTiga(n: number): number[] {
+export function opsiTiga(n: number): number[] {
   const mulai = n <= 1 ? 1 : n >= 10 ? 8 : n - 1;
   const dasar = [mulai, mulai + 1, mulai + 2];
   const putar = n % 3;
   return [...dasar.slice(putar), ...dasar.slice(0, putar)];
 }
 
-const TOMBOL_KECIL =
+export const TOMBOL_KECIL =
   "mx-auto block rounded-full border-4 border-[#1C01A5] bg-white px-5 py-2 text-base font-black text-[#1C01A5] shadow-[0_4px_0_rgba(28,1,165,0.22)]";
 
 /* ------------------------------ Bagian bersama -------------------------- */
 
 /** Igil dan gelembung kata pendek. Diketuk, Igil membacakan petunjuk lengkapnya. */
-function IgilBicara({ pendek, teks }: { pendek: string; teks?: string }) {
+export function IgilBicara({ pendek, teks }: { pendek: string; teks?: string }) {
   const ucap = useContext(SuaraCtx);
   const isi = teks ?? pendek;
   return (
@@ -92,9 +92,9 @@ function IgilBicara({ pendek, teks }: { pendek: string; teks?: string }) {
   );
 }
 
-type Isi = number | "?" | null;
+export type Isi = number | "?" | null;
 
-function Kotak({ v, nyala, kecil }: { v: Isi; nyala?: boolean; kecil?: boolean }) {
+export function Kotak({ v, nyala, kecil }: { v: Isi; nyala?: boolean; kecil?: boolean }) {
   const ukuran = kecil ? "h-11 w-11 text-2xl" : "h-14 w-14 text-4xl";
   const warna =
     v === null ? "border-dashed border-[#1C01A5]/50 bg-white" : v === "?" ? "border-[#1C01A5] bg-[#FFE566]" : "border-[#1C01A5] bg-white";
@@ -109,7 +109,7 @@ function Kotak({ v, nyala, kecil }: { v: Isi; nyala?: boolean; kecil?: boolean }
   );
 }
 
-function Tanda({ t, nyala, kecil }: { t: string | null; nyala?: boolean; kecil?: boolean }) {
+export function Tanda({ t, nyala, kecil }: { t: string | null; nyala?: boolean; kecil?: boolean }) {
   const ukuran = kecil ? "h-9 w-9 text-2xl" : "h-11 w-11 text-3xl";
   return (
     <span
@@ -123,7 +123,7 @@ function Tanda({ t, nyala, kecil }: { t: string | null; nyala?: boolean; kecil?:
 }
 
 /** Kalimat matematika `a + b = c`. Nyala memakai indeks 0 sampai 4 (a, tambah, b, sama dengan, c). */
-function Persamaan({
+export function Persamaan({
   a,
   b,
   c,
@@ -152,7 +152,7 @@ function Persamaan({
   );
 }
 
-function Kelompok({ ikon, n, kelas = "text-3xl" }: { ikon: string; n: number; kelas?: string }) {
+export function Kelompok({ ikon, n, kelas = "text-3xl" }: { ikon: string; n: number; kelas?: string }) {
   return (
     <span className={`flex flex-wrap items-center justify-center gap-1 leading-none ${kelas}`}>
       {Array.from({ length: n }, (_, i) => (
@@ -162,7 +162,7 @@ function Kelompok({ ikon, n, kelas = "text-3xl" }: { ikon: string; n: number; ke
   );
 }
 
-function PilihAngka({
+export function PilihAngka({
   opsi,
   keliru,
   onPilih,
@@ -194,7 +194,7 @@ function PilihAngka({
 }
 
 /** Pembungkus permainan berronde: judul, penanda ronde, isi per ronde, lalu suara dan tombol lanjut. */
-function GameRonde({
+export function GameRonde({
   nomor,
   judul,
   warna,
@@ -939,7 +939,7 @@ function ConcreteIsi({ speakGuru, panel, hentikan, gulir, onSelesai }: Umum) {
 /* Tahap 5: Picture. Tiga permainan dengan gambar dan diagram.                */
 /* ------------------------------------------------------------------------ */
 
-const KERTAS_GAMBAR =
+export const KERTAS_GAMBAR =
   "relative space-y-3 rounded-lg border-[3px] border-[#6B7280] bg-white/90 p-3 shadow-[3px_4px_0_rgba(0,0,0,0.12)]";
 
 /* --------- Permainan 5. Bingkai Sepuluh Dua Warna (hlm. 47) --------------- */
@@ -1398,7 +1398,7 @@ function PictureIsi({ speakGuru, panel, hentikan, gulir, onSelesai }: Umum) {
 /* Tahap 6: Abstract. Tiga permainan angka dan simbol, lalu Poin Penting.     */
 /* ------------------------------------------------------------------------ */
 
-const KERTAS_ANGKA = "relative space-y-3 rounded-lg border-[3px] border-[#1C01A5] bg-white/90 p-3";
+export const KERTAS_ANGKA = "relative space-y-3 rounded-lg border-[3px] border-[#1C01A5] bg-white/90 p-3";
 
 /* --------- Permainan 8. Susun Kalimat (hlm. 44) --------------------------- */
 
