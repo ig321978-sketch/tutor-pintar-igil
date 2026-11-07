@@ -687,18 +687,337 @@
       "id": "C",
       "codeTitle": "Sub-Bab C (Hubungan Penjumlahan dan Pengurangan)",
       "fullTitle": "Sub-Bab C: Hubungan Penjumlahan dan Pengurangan",
-      "targetDescription": "Siswa memahami bahwa penjumlahan dan pengurangan saling berlawanan dan memakai keluarga bilangan untuk memeriksa jawaban.",
+      "targetDescription": "Siswa memahami bahwa penjumlahan dan pengurangan saling berkebalikan. Dari satu keluarga bilangan (misal 4, 3, 7) siswa menulis dua penjumlahan dan dua pengurangan, memeriksa jawaban dengan operasi kebalikan, mencari bilangan yang hilang, dan memilih tanda + atau − yang tepat.",
       "secondaryBg": "#DCFCE7",
       "secondaryBorder": "#22C55E",
       "secondaryText": "#166534",
-      "segeraHadir": true,
-      "stories": [],
-      "mindMaps": [],
-      "infografisData": [],
-      "concreteSlides": [],
-      "pictorialSlides": [],
-      "abstractSlides": [],
-      "interactiveGames": []
+      "stories": [
+        {
+          "id": "C3-S1",
+          "titleHint": "Kelinci di Kandang",
+          "sceneType": "kelinci-gabung",
+          "voiceNarration": "Ada kandang kelinci di halaman. Empat kelinci berwarna cokelat. Tiga kelinci berwarna hitam. Berapa jumlah semua kelinci? Kelinci cokelat ditambah kelinci hitam. Empat ditambah tiga sama dengan tujuh. Kalau kelinci hitam ditambah kelinci cokelat, tiga ditambah empat juga sama dengan tujuh. Jumlahnya tetap sama."
+        },
+        {
+          "id": "C3-S2",
+          "titleHint": "Kelinci yang Pergi",
+          "sceneType": "kelinci-pergi",
+          "voiceNarration": "Sekarang kita lihat kelinci yang pergi. Ada tujuh kelinci. Ada berapa kelinci cokelat? Kelinci hitam pergi dari kandang. Tujuh dikurangi tiga sama dengan empat. Ada empat kelinci cokelat. Ada berapa kelinci hitam? Sekarang kelinci cokelat yang pergi. Tujuh dikurangi empat sama dengan tiga. Ada tiga kelinci hitam."
+        },
+        {
+          "id": "C3-S3",
+          "titleHint": "Kaos di Jemuran",
+          "sceneType": "jemuran-kaos",
+          "voiceNarration": "Ibu menjemur kaos. Tiga kaos berwarna kuning. Dua kaos berwarna merah muda. Tiga ditambah dua sama dengan lima. Dua ditambah tiga juga sama dengan lima. Kalau dua kaos merah muda diambil, tinggal tiga kaos kuning. Lima dikurangi dua sama dengan tiga. Kalau tiga kaos kuning diambil, tinggal dua. Lima dikurangi tiga sama dengan dua."
+        },
+        {
+          "id": "C3-S4",
+          "titleHint": "Kepik di Atas Daun",
+          "sceneType": "kepik-daun",
+          "voiceNarration": "Ada kepik di atas daun. Tiga kepik duduk di daun. Satu kepik sedang terbang. Semua kepik ada empat. Tiga ditambah satu sama dengan empat. Kalau satu kepik terbang pergi, tinggal tiga. Empat dikurangi satu sama dengan tiga. Penjumlahan dan pengurangan saling berhubungan."
+        },
+        {
+          "id": "C3-S5",
+          "titleHint": "Papan Tulis Wei",
+          "sceneType": "papan-tulis-hilang",
+          "voiceNarration": "Wei melihat papan tulis. Di papan ada soal: enam ditambah berapa sama dengan sembilan. Wei berpikir: pengurangan adalah kebalikan dari penjumlahan. Jadi Wei menghitung sembilan dikurangi enam sama dengan tiga. Angka yang hilang adalah tiga. Lalu Wei memeriksa: enam ditambah tiga sama dengan sembilan. Cocok!"
+        },
+        {
+          "id": "C3-S6",
+          "titleHint": "Teman-Teman dan Sepeda",
+          "sceneType": "sepeda-teman",
+          "voiceNarration": "Tika dan teman-teman berkumpul di teras. Ada enam anak yang duduk dan dua anak bersepeda. Semua anak ada delapan. Enam ditambah dua sama dengan delapan. Dua ditambah enam juga sama dengan delapan. Kalau dua anak bersepeda pergi, tinggal enam anak. Delapan dikurangi dua sama dengan enam. Sekarang giliranmu: ambil benda bersama temanmu, buat cerita penjumlahan, lalu buat cerita pengurangannya. Jelaskan hubungannya."
+        }
+      ],
+      "mindMaps": [
+        {
+          "stepNumber": 1,
+          "stepTitle": "1. Gabungkan Dua Kelompok",
+          "stepDesc": "Dua kelompok benda boleh digabung. Empat kelinci cokelat digabung dengan tiga kelinci hitam menjadi tujuh kelinci. Kita tulis empat tambah tiga sama dengan tujuh.",
+          "icon": "🐰",
+          "flowFrom": "Dua kelompok benda",
+          "flowTo": "Penjumlahan"
+        },
+        {
+          "stepNumber": 2,
+          "stepTitle": "2. Tukar Tempat",
+          "stepDesc": "Dalam penjumlahan, dua kelompok boleh bertukar tempat. Empat tambah tiga sama dengan tujuh. Tiga tambah empat juga sama dengan tujuh. Jumlahnya tetap sama.",
+          "icon": "🔄",
+          "flowFrom": "Penjumlahan",
+          "flowTo": "Jumlah tetap sama"
+        },
+        {
+          "stepNumber": 3,
+          "stepTitle": "3. Pisahkan Salah Satu",
+          "stepDesc": "Dari kelompok yang sudah digabung, kita boleh mengambil salah satu kelompok. Ada tujuh kelinci. Tiga kelinci hitam pergi. Tinggal empat kelinci cokelat.",
+          "icon": "🚪",
+          "flowFrom": "Kelompok gabungan",
+          "flowTo": "Pengurangan"
+        },
+        {
+          "stepNumber": 4,
+          "stepTitle": "4. Dua Kalimat Pengurangan",
+          "stepDesc": "Satu keluarga bilangan punya dua pengurangan. Tujuh kurang tiga sama dengan empat. Tujuh kurang empat sama dengan tiga. Bilangan terbesar ditulis paling depan.",
+          "icon": "✌️",
+          "flowFrom": "Keluarga bilangan",
+          "flowTo": "Dua pengurangan"
+        },
+        {
+          "stepNumber": 5,
+          "stepTitle": "5. Kebalikan",
+          "stepDesc": "Pengurangan adalah kebalikan dari penjumlahan. Tiga tambah empat sama dengan tujuh, maka tujuh kurang tiga sama dengan empat. Maju tiga langkah, lalu mundur tiga langkah, kita kembali ke tempat semula.",
+          "icon": "↩️",
+          "flowFrom": "Penjumlahan",
+          "flowTo": "Pengurangan"
+        },
+        {
+          "stepNumber": 6,
+          "stepTitle": "6. Periksa dan Cari yang Hilang",
+          "stepDesc": "Periksa pengurangan dengan penjumlahan, dan periksa penjumlahan dengan pengurangan. Untuk mencari angka yang hilang, pakai kebalikan. Enam tambah berapa sama dengan sembilan? Hitung sembilan kurang enam.",
+          "icon": "🔍",
+          "flowFrom": "Kebalikan",
+          "flowTo": "Jawaban terbukti"
+        }
+      ],
+      "infografisData": [
+        {
+          "fruitName": "Keluarga Bilangan 4, 3, 7",
+          "emoji": "🐰",
+          "countNum": 7,
+          "countWord": "Tujuh",
+          "voiceSentence": "Empat, tiga, dan tujuh adalah satu keluarga bilangan. Dari keluarga ini kita bisa menulis empat kalimat: empat tambah tiga sama dengan tujuh, tiga tambah empat sama dengan tujuh, tujuh kurang tiga sama dengan empat, dan tujuh kurang empat sama dengan tiga."
+        },
+        {
+          "fruitName": "Dua Tambah, Dua Kurang",
+          "emoji": "✌️",
+          "countNum": 5,
+          "countWord": "Lima",
+          "voiceSentence": "Satu keluarga bilangan punya dua penjumlahan dan dua pengurangan. Contohnya keluarga tiga, dua, lima. Tiga tambah dua, dua tambah tiga, lima kurang dua, lima kurang tiga."
+        },
+        {
+          "fruitName": "Kebalikan: Pergi dan Pulang",
+          "emoji": "↩️",
+          "countNum": 7,
+          "countWord": "Tujuh",
+          "voiceSentence": "Penjumlahan itu maju. Pengurangan itu mundur. Tiga tambah empat sama dengan tujuh. Tujuh kurang empat sama dengan tiga. Pengurangan membawa kita pulang ke bilangan semula."
+        },
+        {
+          "fruitName": "Tukar Tempat Hanya untuk Penjumlahan",
+          "emoji": "🔄",
+          "countNum": 7,
+          "countWord": "Tujuh",
+          "voiceSentence": "Empat tambah tiga sama dengan tiga tambah empat. Penjumlahan boleh bertukar tempat. Pengurangan tidak boleh: tujuh kurang tiga tidak sama dengan tiga kurang tujuh."
+        },
+        {
+          "fruitName": "Periksa dengan Kebalikan",
+          "emoji": "✅",
+          "countNum": 9,
+          "countWord": "Sembilan",
+          "voiceSentence": "Periksa pengurangan dengan penjumlahan. Sembilan kurang empat sama dengan lima. Periksa: lima tambah empat sama dengan sembilan. Cocok. Periksa penjumlahan dengan pengurangan."
+        },
+        {
+          "fruitName": "Cari yang Hilang",
+          "emoji": "🔍",
+          "countNum": 9,
+          "countWord": "Sembilan",
+          "voiceSentence": "Enam tambah berapa sama dengan sembilan? Pakai kebalikan: sembilan kurang enam sama dengan tiga. Angka yang hilang adalah tiga. Periksa: enam tambah tiga sama dengan sembilan."
+        },
+        {
+          "fruitName": "Pilih Tanda + atau −",
+          "emoji": "➕",
+          "countNum": 8,
+          "countWord": "Delapan",
+          "voiceSentence": "Empat ○ empat sama dengan delapan. Delapan lebih besar dari empat, jadi tandanya tambah. Tujuh ○ tiga sama dengan empat. Empat lebih kecil dari tujuh, jadi tandanya kurang."
+        },
+        {
+          "fruitName": "Ayo Mencoba Bersama Teman",
+          "emoji": "🤝",
+          "countNum": 8,
+          "countWord": "Delapan",
+          "voiceSentence": "Ambil benda bersama temanmu. Buat cerita penjumlahan, lalu buat cerita pengurangannya dari bilangan yang sama. Jelaskan hubungannya kepada temanmu."
+        }
+      ],
+      "concreteSlides": [
+        {
+          "title": "Kelinci Masuk Kandang (4 + 3, 3 + 4)",
+          "emoji": "🐰",
+          "targetCount": 8,
+          "voiceGuide": "Ketuk kelinci masuk ke kandang. Hitung semuanya."
+        },
+        {
+          "title": "Kaos Diambil dan Dikembalikan",
+          "emoji": "👕",
+          "targetCount": 8,
+          "voiceGuide": "Ambil kaos dari jemuran lalu kembalikan. Lihat bagaimana kembali ke jumlah semula."
+        },
+        {
+          "title": "Seret Kartu ke Kandang (keluarga bilangan)",
+          "emoji": "🃏",
+          "targetCount": 5,
+          "voiceGuide": "Seret kartu benda ke tempat yang tepat. Susun satu keluarga bilangan."
+        },
+        {
+          "title": "Gelas Penutup (cari yang hilang)",
+          "emoji": "🥤",
+          "targetCount": 5,
+          "voiceGuide": "Ada kelereng di bawah gelas. Hitung yang terlihat, lalu pakai kebalikan untuk menebak yang tersembunyi."
+        }
+      ],
+      "pictorialSlides": [
+        {
+          "title": "Segitiga Keluarga (7, 4, 3)",
+          "diagramType": "fact-triangle",
+          "numberA": 4,
+          "numberB": 3,
+          "caption": "Bilangan terbesar ada di puncak segitiga. Dua bilangan lain di kaki. Dari tiga bilangan ini lahir empat kalimat."
+        },
+        {
+          "title": "Garis Bilangan: Pergi dan Pulang",
+          "diagramType": "number-line",
+          "numberA": 5,
+          "numberB": 3,
+          "caption": "Maju untuk menjumlah, mundur untuk mengurang. Mundur sebanyak yang kita maju, kita kembali ke awal."
+        },
+        {
+          "title": "Tabel Empat Kalimat",
+          "diagramType": "table",
+          "numberA": 8,
+          "numberB": 2,
+          "caption": "Isi empat kalimat dari satu keluarga bilangan: dua penjumlahan dan dua pengurangan."
+        }
+      ],
+      "abstractSlides": [
+        {
+          "symbolLarge": "4 + 3 = 7  |  7 − 3 = 4",
+          "wordLarge": "KEBALIKAN",
+          "mathNotation": "3 + 4 = 7   |   7 − 4 = 3",
+          "voiceReadout": "Empat tambah tiga sama dengan tujuh. Tujuh kurang tiga sama dengan empat. Tiga tambah empat sama dengan tujuh. Tujuh kurang empat sama dengan tiga."
+        },
+        {
+          "symbolLarge": "6 + ? = 9  →  9 − 6 = 3",
+          "wordLarge": "CARI YANG HILANG",
+          "mathNotation": "? − 5 = 2  →  2 + 5 = 7",
+          "voiceReadout": "Enam tambah berapa sama dengan sembilan. Hitung sembilan kurang enam sama dengan tiga. Berapa kurang lima sama dengan dua. Hitung dua tambah lima sama dengan tujuh."
+        },
+        {
+          "symbolLarge": "7 ○ 2 = 9  →  +",
+          "wordLarge": "PILIH TANDA",
+          "mathNotation": "9 ○ 4 = 5  →  −",
+          "voiceReadout": "Tujuh bulat dua sama dengan sembilan. Sembilan lebih besar, tandanya tambah. Sembilan bulat empat sama dengan lima. Lima lebih kecil, tandanya kurang."
+        }
+      ],
+      "interactiveGames": [
+        {
+          "gameId": "subC3-game-1",
+          "gameNumber": 1,
+          "stage": "Concrete",
+          "gameType": "tap-to-gather",
+          "title": "Kelinci Masuk Kandang",
+          "bookReference": "Buku Siswa Hlm. 101",
+          "objective": "Menggabungkan dua kelompok benda dan melihat penjumlahan boleh bertukar tempat.",
+          "mechanicDescription": "Dua ronde. Siswa mengetuk kelinci cokelat dan hitam masuk kandang, lalu menukar urutan dan membuktikan jumlahnya tetap. Ronde akhir: ucapkan jumlah semua kelinci.",
+          "voiceGuide": "Ketuk kelinci masuk ke kandang. Lalu ucapkan berapa semua kelinci."
+        },
+        {
+          "gameId": "subC3-game-2",
+          "gameNumber": 2,
+          "stage": "Concrete",
+          "gameType": "tap-take-return",
+          "title": "Kaos Diambil dan Dikembalikan",
+          "bookReference": "Buku Siswa Hlm. 101",
+          "objective": "Merasakan pengurangan sebagai kebalikan penjumlahan dengan mengambil dan mengembalikan benda.",
+          "mechanicDescription": "Siswa mengambil kaos dari jemuran (pengurangan) lalu mengembalikannya (penjumlahan) dan melihat dua kalimat berhubungan. Ronde akhir: ucapkan jumlah kaos setelah dikembalikan.",
+          "voiceGuide": "Ambil kaos dari tali, lalu kembalikan. Ucapkan jumlah kaos sekarang."
+        },
+        {
+          "gameId": "subC3-game-3",
+          "gameNumber": 3,
+          "stage": "Concrete",
+          "gameType": "drag-and-drop",
+          "title": "Seret Kartu ke Kandang",
+          "bookReference": "Buku Siswa Hlm. 102",
+          "objective": "Menyusun satu keluarga bilangan dengan menyeret kartu benda ke tempat yang tepat.",
+          "mechanicDescription": "Siswa menyeret kartu bilangan ke kandang gabungan dan dua kandang sebagian, sehingga terbentuk dua penjumlahan dan dua pengurangan. Ronde akhir: ucapkan bagian yang hilang.",
+          "voiceGuide": "Seret kartu ke kandang yang tepat. Lalu ucapkan bagian yang hilang."
+        },
+        {
+          "gameId": "subC3-game-4",
+          "gameNumber": 4,
+          "stage": "Concrete",
+          "gameType": "cover-and-guess",
+          "title": "Gelas Penutup",
+          "bookReference": "Buku Siswa Hlm. 103",
+          "objective": "Mencari bilangan yang hilang dengan kebalikan, lalu membuktikan dengan membuka gelas.",
+          "mechanicDescription": "Sebagian kelereng tertutup gelas. Siswa memakai gabungan dan bagian yang terlihat untuk menebak, lalu mengangkat gelas untuk memeriksa. Ronde akhir: ucapkan jumlah kelereng di bawah gelas.",
+          "voiceGuide": "Hitung yang terlihat. Pakai kebalikan, lalu ucapkan kelereng di bawah gelas."
+        },
+        {
+          "gameId": "subC3-game-5",
+          "gameNumber": 5,
+          "stage": "Pictorial",
+          "gameType": "fact-triangle",
+          "title": "Segitiga Keluarga",
+          "bookReference": "Buku Siswa Hlm. 103",
+          "objective": "Membaca satu segitiga bilangan menjadi empat kalimat dan mencari bilangan yang disembunyikan.",
+          "mechanicDescription": "Segitiga memuat gabungan di puncak dan dua sebagian di kaki. Salah satu bilangan disembunyikan. Siswa memilih bilangan itu lalu membaca empat kalimat. Ronde akhir: ucapkan bilangan tersembunyi.",
+          "voiceGuide": "Lihat segitiga keluarga. Cari bilangan yang tertutup."
+        },
+        {
+          "gameId": "subC3-game-6",
+          "gameNumber": 6,
+          "stage": "Pictorial",
+          "gameType": "number-line-return",
+          "title": "Garis Bilangan: Pergi dan Pulang",
+          "bookReference": "Buku Siswa Hlm. 104",
+          "objective": "Melihat bahwa maju lalu mundur sama banyak membawa kita kembali ke awal.",
+          "mechanicDescription": "Siswa melompat maju sejumlah langkah, lalu melompat mundur kembali ke bilangan awal. Ronde akhir: ucapkan bilangan tempat tiba.",
+          "voiceGuide": "Lompat maju, lalu lompat mundur. Ucapkan tempat kamu tiba."
+        },
+        {
+          "gameId": "subC3-game-7",
+          "gameNumber": 7,
+          "stage": "Pictorial",
+          "gameType": "fill-table",
+          "title": "Tabel Empat Kalimat",
+          "bookReference": "Buku Siswa Hlm. 104",
+          "objective": "Melengkapi tabel empat kalimat satu keluarga bilangan.",
+          "mechanicDescription": "Siswa memilih angka untuk sel kosong pada tabel dua penjumlahan dan dua pengurangan. Ronde akhir: ucapkan angka pada sel yang tersisa.",
+          "voiceGuide": "Isi sel yang kosong. Lalu ucapkan angka terakhir yang tertutup."
+        },
+        {
+          "gameId": "subC3-game-8",
+          "gameNumber": 8,
+          "stage": "Abstract",
+          "gameType": "circle-the-same",
+          "title": "Lingkari Hasil yang Sama",
+          "bookReference": "Buku Siswa Hlm. 105",
+          "objective": "Mengenali dua kalimat satu keluarga yang hasilnya sama dan memeriksa dengan kebalikan.",
+          "mechanicDescription": "Siswa melingkari kalimat yang hasilnya sama dengan soal, lalu memeriksa dengan operasi kebalikan.",
+          "voiceGuide": "Lingkari kalimat yang hasilnya sama. Lalu periksa dengan kebalikan."
+        },
+        {
+          "gameId": "subC3-game-9",
+          "gameNumber": 9,
+          "stage": "Abstract",
+          "gameType": "find-missing",
+          "title": "Cari yang Hilang",
+          "bookReference": "Buku Siswa Hlm. 105",
+          "objective": "Mencari bilangan yang hilang pada kalimat penjumlahan atau pengurangan memakai kebalikan.",
+          "mechanicDescription": "Papan tulis Wei menampilkan kalimat dengan satu bilangan hilang. Siswa memilih operasi kebalikan lalu mengucapkan bilangan yang hilang.",
+          "voiceGuide": "Pakai kebalikan untuk mencari bilangan yang hilang."
+        },
+        {
+          "gameId": "subC3-game-10",
+          "gameNumber": 10,
+          "stage": "Abstract",
+          "gameType": "choose-sign-and-build",
+          "title": "Tanda dan Susun Kalimat",
+          "bookReference": "Buku Siswa Hlm. 105",
+          "objective": "Memilih tanda + atau − dan menyusun kalimat dari ubin angka.",
+          "mechanicDescription": "Empat ronde: pilih tanda yang tepat, lalu susun tiga ubin angka dan satu ubin tanda menjadi kalimat yang benar. Ronde akhir: ucapkan hasil kalimat yang tertutup.",
+          "voiceGuide": "Pilih tanda, susun kalimat, lalu ucapkan hasilnya."
+        }
+      ]
     },
     "D": {
       "id": "D",
@@ -820,22 +1139,13 @@
     {
       "id": 7,
       "level": "HOTS (40%)",
-      "prompt": "Kira punya 8 pensil. Kira memberikan beberapa pensil kepada Upe. Sekarang pensil Kira tersisa 5. Berapa pensil yang Kira berikan?",
-      "visualEmojis": [
-        "✏️",
-        "✏️",
-        "✏️",
-        "✏️",
-        "✏️",
-        "✏️",
-        "✏️",
-        "✏️"
-      ],
+      "prompt": "Diketahui 4 + 3 = 7. Kalimat pengurangan yang berhubungan dengan kalimat itu adalah...",
+      "visualEmojis": [],
       "options": [
-        "2",
-        "5",
-        "3",
-        "13"
+        "4 − 3 = 7",
+        "7 + 3 = 4",
+        "3 − 4 = 7",
+        "7 − 3 = 4"
       ]
     },
     {
@@ -852,14 +1162,14 @@
     },
     {
       "id": 9,
-      "level": "HOTS (40%)",
-      "prompt": "Manakah pengurangan yang hasilnya 0?",
+      "level": "MOTS (30%)",
+      "prompt": "6 + ... = 9. Angka yang hilang adalah...",
       "visualEmojis": [],
       "options": [
-        "5 − 0 = ...",
-        "5 − 1 = ...",
-        "5 − 4 = ...",
-        "5 − 5 = ..."
+        "15",
+        "3",
+        "4",
+        "2"
       ]
     },
     {
@@ -915,13 +1225,13 @@
     {
       "id": 4,
       "level": "HOTS UJIAN FORMAL",
-      "prompt": "4. Ada 4 ekor ikan di akuarium. Semua ikan dipindahkan ke kolam. Berapa ikan yang tersisa di akuarium?",
+      "prompt": "4. 7 ○ 2 = 9. Tanda yang tepat untuk mengisi ○ adalah...",
       "visualEmojis": [],
       "options": [
-        "4",
-        "8",
-        "1",
-        "0"
+        "−",
+        "=",
+        "+",
+        ">"
       ]
     },
     {
@@ -951,13 +1261,13 @@
     {
       "id": 7,
       "level": "HOTS UJIAN FORMAL",
-      "prompt": "7. Pada bagan pasangan, gabungan 10 dan sebagian 7. Sebagian yang lain adalah...",
+      "prompt": "7. ... + 4 = 9. Angka yang hilang adalah...",
       "visualEmojis": [],
       "options": [
-        "17",
-        "3",
-        "7",
-        "10"
+        "13",
+        "6",
+        "4",
+        "5"
       ]
     },
     {
