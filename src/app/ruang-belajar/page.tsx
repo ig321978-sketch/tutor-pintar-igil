@@ -512,7 +512,10 @@ export default function RuangBelajarPage() {
           <PilihGuru
             kelas={kelas}
             nilai={guruKelamin}
-            onGanti={setGuruKelamin}
+            onGanti={(kelamin) => {
+              setGuruKelamin(kelamin);
+              simpanProfil({ guruKelamin: kelamin });
+            }}
             tanpaLabel
           />
         </div>

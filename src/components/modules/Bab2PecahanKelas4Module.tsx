@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useState, useEffect, useRef, useCallback } from "react";
+import { ucapkanGuruModul } from "@/lib/suara-guru-modul";
 
 // ==========================================
 // 1. MESIN SUARA LOKAL (WEB AUDIO SYNTHESIZER - RP 0)
@@ -282,13 +283,7 @@ export default function Bab2PecahanKelas4Module() {
 
   // Helper Suara Guru AI (Web Speech API - Rp 0)
   const speakText = (text: string) => {
-    if (typeof window === "undefined" || !("speechSynthesis" in window)) return;
-    window.speechSynthesis.cancel();
-    const utterance = new SpeechSynthesisUtterance(text);
-    utterance.lang = "id-ID";
-    utterance.rate = 0.95;
-    utterance.pitch = 1.05;
-    window.speechSynthesis.speak(utterance);
+    ucapkanGuruModul(text, { kelas: "4 SD" });
   };
 
   // Trigger suara dengan pengecekan mute

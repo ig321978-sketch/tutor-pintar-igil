@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useCallback, useEffect, useRef, useState } from "react";
+import { ucapkanGuruModul } from "@/lib/suara-guru-modul";
 import { catatUjianLulus } from "@/lib/praktikum-blok";
 
 export interface ChapterCompetencyMetadata {
@@ -673,17 +674,7 @@ export default function MatematikaKelas1Bab5({
 
   const speakIGIL = useCallback((text: string) => {
     setMascotSpeech(text);
-    if (typeof window === "undefined" || !("speechSynthesis" in window)) return;
-    try {
-      window.speechSynthesis.cancel();
-      const utterance = new SpeechSynthesisUtterance(text);
-      utterance.lang = "id-ID";
-      utterance.rate = 0.96;
-      utterance.pitch = 1.1;
-      window.speechSynthesis.speak(utterance);
-    } catch {
-      // Suara perangkat tidak tersedia.
-    }
+    ucapkanGuruModul(text, { kelas: "1 SD" });
   }, []);
 
   const bukaKartu2 = useCallback(() => {

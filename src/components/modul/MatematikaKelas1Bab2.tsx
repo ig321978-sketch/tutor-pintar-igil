@@ -88,6 +88,7 @@
  * ============================================================================
  */
 import React, { useState, useEffect, useRef, useCallback } from "react";
+import { ucapkanGuruModul } from "@/lib/suara-guru-modul";
 import Link from "next/link";
 import { catatUjianLulus } from "@/lib/praktikum-blok";
 import { Nunito } from "next/font/google";
@@ -738,17 +739,7 @@ export default function MatematikaKelas1Bab2Hibrida({
   // ============================================================================
   const speakIGIL = useCallback((text: string) => {
     setMascotSpeech(text);
-    if (typeof window === "undefined" || !("speechSynthesis" in window)) return;
-    try {
-      window.speechSynthesis.cancel();
-      const utterance = new SpeechSynthesisUtterance(text);
-      utterance.lang = "id-ID";
-      utterance.rate = 0.95;
-      utterance.pitch = 1.12;
-      window.speechSynthesis.speak(utterance);
-    } catch {
-      // Fallback hening
-    }
+    ucapkanGuruModul(text, { kelas: "1 SD" });
   }, []);
   // ============================================================================
   // MESIN KANVAS 50/50 ANTI-JIPLAK & PENILAI GEOMETRI LOKAL (RP 0 API)

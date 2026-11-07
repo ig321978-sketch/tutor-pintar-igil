@@ -3,8 +3,7 @@
 import React, { useState, useEffect, useRef, useCallback } from "react";
 import Link from "next/link";
 import { catatUjianLulus } from "@/lib/praktikum-blok";
-import { pilihSuaraIndonesia } from "@/lib/guru";
-import { hentikanAudioGuruAktif } from "@/lib/putar-tts-klien";
+import { hentikanSuaraGuruModul, ucapkanGuruModul } from "@/lib/suara-guru-modul";
 import materiBab1 from "@/data/kelas1-bab1.json";
 import materiBab2 from "@/data/kelas1-bab2.json";
 import materiBab3 from "@/data/kelas1-bab3.json";
@@ -693,6 +692,7 @@ export default function IgilModulePlayer({ bab = "mtk-1-bab1" }: { bab?: BabModu
     }
     const giliran = ++giliranRekam.current;
     giliranSuara.current += 1;
+    hentikanSuaraGuruModul();
     const masih = () => giliran === giliranRekam.current;
     const keGambar = panel === "gambar";
     const keLambang = panel === "lambang";
@@ -884,35 +884,24 @@ export default function IgilModulePlayer({ bab = "mtk-1-bab1" }: { bab?: BabModu
       lepasJedaCerita.current = null;
     }
     const giliran = ++giliranSuara.current;
-    const tutup = () => {
-      if (giliran !== giliranSuara.current) return;
-      if (lepasJedaCerita.current !== selesai) return;
-      selesai?.();
-      lepasJedaCerita.current = null;
-    };
-    hentikanAudioGuruAktif();
-    if (!("speechSynthesis" in window)) {
-      tutup();
-      return;
-    }
-    const ucapan = new SpeechSynthesisUtterance(naskah);
-    ucapan.lang = "id-ID";
-    ucapan.rate = 0.95;
-    ucapan.pitch = 1.12;
-    const suara = pilihSuaraIndonesia("wanita");
-    if (suara) ucapan.voice = suara;
-    ucapan.onend = selesai ? tutup : null;
-    ucapan.onerror = selesai ? tutup : null;
-    window.setTimeout(() => {
-      if (giliran !== giliranSuara.current) return;
-      window.speechSynthesis.speak(ucapan);
-    }, 40);
+    // Guru yang bersuara adalah guru pilihan siswa (Bu Sari atau Pak Budi) dari PilihGuru.
+    ucapkanGuruModul(naskah, {
+      kelas: "1 SD",
+      selesai: selesai
+        ? () => {
+            if (giliran !== giliranSuara.current) return;
+            if (lepasJedaCerita.current !== selesai) return;
+            selesai();
+            lepasJedaCerita.current = null;
+          }
+        : undefined,
+    });
   }, []);
 
   useEffect(() => {
     window.speechSynthesis?.getVoices();
     return () => {
-      hentikanAudioGuruAktif();
+      hentikanSuaraGuruModul();
     };
   }, []);
 

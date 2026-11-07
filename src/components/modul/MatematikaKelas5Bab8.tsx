@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useCallback, useEffect, useRef, useState } from "react";
+import { ucapkanGuruModul } from "@/lib/suara-guru-modul";
 import { catatUjianLulus } from "@/lib/praktikum-blok";
 
 export interface ChapterCompetencyMetadata {
@@ -489,12 +490,7 @@ export default function MatematikaKelas5Bab8({
   }, [soundOn]);
 
   const speakIGIL = (text: string) => {
-    if (typeof window === "undefined" || !("speechSynthesis" in window)) return;
-    window.speechSynthesis.cancel();
-    const u = new SpeechSynthesisUtterance(text);
-    u.lang = "id-ID";
-    u.rate = 0.96;
-    window.speechSynthesis.speak(u);
+    ucapkanGuruModul(text, { kelas: "5 SD" });
   };
 
   const [hookSolved, setHookSolved] = useState(false);
