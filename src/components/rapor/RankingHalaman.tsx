@@ -17,6 +17,14 @@ const ranking = data.rankingPage;
 const skema = ranking.scholarshipScheme9010;
 const kolam = skema.currentMonthPoolSummary;
 const bab1 = data.raporPage.sampleChaptersProgress[0];
+const BAB_PER_BLOK = data.tokenEconomy.perBlockChapters;
+const POIN_LATIHAN = data.tokenEconomy.perChapterTokens.practice;
+const POIN_UJIAN = data.tokenEconomy.perChapterTokens.exam;
+const POIN_PRAKTIKUM = data.tokenEconomy.perChapterTokens.practicum;
+const POIN_BLOK_PENUH = (POIN_LATIHAN + POIN_UJIAN) * BAB_PER_BLOK + POIN_PRAKTIKUM;
+/** Praktikum hanya bisa dikirim setelah satu blok penuh (4 bab) lulus Ujian 100%. */
+const PRAKTIKUM_SAYA_DIKIRIM =
+  bab1.practicumSubmitted && data.raporPage.sampleChaptersProgress.length >= BAB_PER_BLOK;
 
 type BarisPapan = {
   rank: number;
@@ -26,6 +34,9 @@ type BarisPapan = {
   provinsi: string;
   lencana: number;
   praktikumSiap: boolean;
+  latihan: number;
+  ujian: number;
+  praktikum: number;
   token: number;
   milikPengguna: boolean;
 };
@@ -68,7 +79,8 @@ function TabPeringkat() {
   const menit = usePenandaMenit();
   const sisa = useMemo(() => (menit ? sisaWaktu() : null), [menit]);
 
-  const tokenSaya = bab1.practiceTokens + bab1.examTokens + (bab1.practicumSubmitted ? bab1.practicumTokens : 0);
+  const praktikumSaya = PRAKTIKUM_SAYA_DIKIRIM ? POIN_PRAKTIKUM : 0;
+  const tokenSaya = bab1.practiceTokens + bab1.examTokens + praktikumSaya;
   const lencanaSaya = bab1.siPalingPintar ? 1 : 0;
 
   const papan = useMemo<BarisPapan[]>(() => {
@@ -79,7 +91,10 @@ function TabPeringkat() {
       provinsi: s.province,
       lencana: s.siPalingPintarCount,
       praktikumSiap: s.hiddenGradingReady,
-      token: s.totalMonthlyTokens,
+      latihan: s.practiceTokens,
+      ujian: s.examTokens,
+      praktikum: s.practicumTokens,
+      token: s.practiceTokens + s.examTokens + s.practicumTokens,
       milikPengguna: false,
     }));
     const saya = {
@@ -88,7 +103,10 @@ function TabPeringkat() {
       kota,
       provinsi: "",
       lencana: lencanaSaya,
-      praktikumSiap: bab1.practicumSubmitted,
+      praktikumSiap: PRAKTIKUM_SAYA_DIKIRIM,
+      latihan: bab1.practiceTokens,
+      ujian: bab1.examTokens,
+      praktikum: praktikumSaya,
       token: tokenSaya,
       milikPengguna: true,
     };
@@ -111,7 +129,7 @@ function TabPeringkat() {
             <p className="text-3xl font-black text-amber-300">#{saya?.rank ?? "–"}</p>
           </div>
           <div className="rounded-2xl bg-white/10 p-3 ring-1 ring-white/20">
-            <p className="text-[11px] font-black uppercase text-indigo-100">Token</p>
+            <p className="text-[11px] font-black uppercase text-indigo-100">Poin</p>
             <p className="text-3xl font-black text-amber-300">{angkaId(tokenSaya)}</p>
           </div>
           <div className="rounded-2xl bg-white/10 p-3 ring-1 ring-white/20">
@@ -155,7 +173,7 @@ function TabPeringkat() {
           <span>Kelas</span>
           <span className="text-center">🌟</span>
           <span>Praktikum</span>
-          <span className="text-right">Token</span>
+          <span className="text-right">Poin</span>
         </div>
         {tampil.length === 0 ? (
           <p className="p-6 text-center text-sm font-bold text-slate-500">Belum ada siswa di jenjang ini bulan ini.</p>
@@ -182,6 +200,10 @@ function TabPeringkat() {
                     {b.kota}
                     {b.provinsi ? `, ${b.provinsi}` : ""}
                   </p>
+                  <p className="mt-0.5 text-[11px] font-semibold leading-snug text-slate-500">
+                    Latihan {angkaId(b.latihan)} + Ujian {angkaId(b.ujian)} + Praktikum {angkaId(b.praktikum)} ={" "}
+                    <span className="font-black text-indigo-950">{angkaId(b.token)}</span>
+                  </p>
                 </div>
                 <span className="whitespace-nowrap rounded-full bg-amber-400 px-3 py-1 text-sm font-black text-indigo-950 md:order-last md:justify-self-end">
                   <Koin kelas="mr-1 h-4 w-4" />
@@ -202,7 +224,8 @@ function TabPeringkat() {
                       b.praktikumSiap ? "bg-emerald-100 text-emerald-900" : "bg-slate-100 text-slate-500"
                     }`}
                   >
-                    {b.praktikumSiap ? "✓ Diserahkan" : "Belum"}
+                    <span className="md:hidden">Praktikum: </span>
+                    {b.praktikumSiap ? "✓ Sudah dikirim" : "Belum dikirim"}
                   </span>
                 </div>
               </li>
@@ -213,9 +236,13 @@ function TabPeringkat() {
 
       <p className="rounded-2xl border-2 border-indigo-100 bg-indigo-50/40 p-3 text-sm font-semibold leading-relaxed text-indigo-950">
         <span aria-hidden="true">📌 </span>
-        Pada akhir bulan, peringkat kandidat penerima beasiswa ditentukan dari gabungan Poin Kualifikasi Bulanan
-        (30/70/50), status Papan Kualifikasi Beasiswa (lulus Ujian 100% pada percobaan pertama dengan sesi belajar
-        Tervalidasi Server), dan pembukaan skor tersembunyi Praktikum (Hidden Grading).
+        Cara membaca poin: Latihan {POIN_LATIHAN} dan Ujian {POIN_UJIAN} didapat di setiap bab. Praktikum {POIN_PRAKTIKUM}{" "}
+        didapat sekali per blok {BAB_PER_BLOK} bab, setelah keempat bab lulus Ujian 100%. Jadi satu blok penuh ={" "}
+        {(POIN_LATIHAN + POIN_UJIAN) * BAB_PER_BLOK} + {POIN_PRAKTIKUM} = {POIN_BLOK_PENUH} Poin Kualifikasi. &quot;Sudah dikirim&quot; hanya
+        berarti Praktikum sudah diserahkan. Skornya masih tersembunyi sampai pengumuman.
+        <br />
+        Jika poin sama, urutan ditentukan oleh jumlah 🌟 (Ujian 100% di percobaan pertama). Pada akhir bulan, kandidat
+        penerima beasiswa ditentukan dari peringkat ini dan pembukaan skor tersembunyi Praktikum (Hidden Grading).
       </p>
     </div>
   );

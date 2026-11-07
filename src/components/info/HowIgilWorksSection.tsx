@@ -242,9 +242,9 @@ function AlurDana({ faseAnak }: { faseAnak?: KodeFase }) {
 
 function RumusToken() {
   const kartu = [
-    { ikon: "✏️", nilai: 30, nama: "Latihan", syarat: "10 soal terbimbing dengan pembahasan guru" },
-    { ikon: "📝", nilai: 70, nama: "Ujian", syarat: "Lulus 100% (nilai sempurna)" },
-    { ikon: "🧪", nilai: 50, nama: "Praktikum", syarat: "Tugas sintesis lintas 4 bab" },
+    { ikon: "✏️", nilai: 30, nama: "Latihan", waktu: "di setiap bab", syarat: "10 soal terbimbing dengan pembahasan guru" },
+    { ikon: "📝", nilai: 70, nama: "Ujian", waktu: "di setiap bab", syarat: "Lulus 100% (nilai sempurna)" },
+    { ikon: "🧪", nilai: 50, nama: "Praktikum", waktu: "sekali per 4 bab", syarat: "Tugas sintesis 4 bab, terbuka setelah Ujian 100%" },
   ];
   return (
     <div className="space-y-4">
@@ -259,6 +259,7 @@ function RumusToken() {
             </p>
             <p className="text-3xl font-black text-[#1C01A5]">{k.nilai}</p>
             <p className="text-sm font-black text-indigo-950">Poin {k.nama}</p>
+            <p className="text-xs font-black text-[#1C01A5]">{k.waktu}</p>
             <p className="mt-1 text-xs font-semibold leading-snug text-slate-600">{k.syarat}</p>
           </div>,
           <span key={`${k.nama}-tanda`} className="text-center text-3xl font-black leading-none text-amber-500" aria-hidden="true">
@@ -266,10 +267,11 @@ function RumusToken() {
           </span>,
         ])}
         <div className="rounded-2xl bg-amber-400 p-4 text-center shadow-md md:w-48">
-          <p className="text-4xl font-black text-indigo-950">150</p>
-          <p className="text-sm font-black text-indigo-950">Poin Kualifikasi per bab</p>
+          <p className="text-4xl font-black text-indigo-950">450</p>
+          <p className="text-sm font-black text-indigo-950">Poin Kualifikasi per blok 4 bab</p>
+          <p className="mt-0.5 text-xs font-bold text-indigo-950/80">(30 + 70) × 4 bab + 50</p>
           <p className="mt-1 rounded-full bg-[#1C01A5] px-2 py-0.5 text-[11px] font-black text-amber-300">
-            Terbit sekali per bab
+            Terbit sekali saja
           </p>
         </div>
       </div>
@@ -418,8 +420,8 @@ export default function HowIgilWorksSection({
         <JudulBagian
           id={idToken}
           lencana="2 · Cara mengumpulkan poin"
-          judul="150 Poin Kualifikasi Setiap Bab"
-          isi="Setiap bab menghasilkan Poin Kualifikasi satu kali saja. Tidak bisa diulang untuk menambah poin."
+          judul="450 Poin Kualifikasi Setiap Blok 4 Bab"
+          isi="Latihan dan Ujian memberi poin di setiap bab. Praktikum memberi 50 poin sekali setelah 4 bab selesai. Setiap poin terbit satu kali saja dan tidak bisa diulang untuk menambah poin."
         />
         <RumusToken />
       </div>
