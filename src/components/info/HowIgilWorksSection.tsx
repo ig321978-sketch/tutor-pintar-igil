@@ -118,7 +118,7 @@ function JudulBagian({ lencana, judul, id, isi }: { lencana: string; judul: stri
 
 function AlurDana({ faseAnak }: { faseAnak?: KodeFase }) {
   const [fase, setFase] = useState<KodeFase>(faseAnak ?? "FASE_A");
-  const [langganan, setLangganan] = useState(100000);
+  const [langganan, setLangganan] = useState(500000);
   const aktif = DAFTAR_FASE.find((f) => f.kode === fase) ?? DAFTAR_FASE[0];
   const beasiswa = Math.round(langganan * 0.9);
   const operasional = langganan - beasiswa;
@@ -139,11 +139,11 @@ function AlurDana({ faseAnak }: { faseAnak?: KodeFase }) {
           ↓
         </p>
 
-        <div className="grid gap-3 md:grid-cols-[3fr_2fr]">
+        <div>
           <div className="rounded-2xl bg-amber-400 p-3 text-indigo-950">
             <p className="flex items-center gap-2 text-sm font-black">
               <span className="rounded-full bg-[#1C01A5] px-2.5 py-0.5 text-base text-amber-300">90%</span>
-              <span className="min-w-0 flex-1">🎓 Kantong Beasiswa (pilih fase)</span>
+              <span className="min-w-0 flex-1">🎓 Kolam Beasiswa (pilih fase)</span>
             </p>
             <div role="tablist" aria-label="Pilih fase" className="mt-2 grid grid-cols-3 gap-2">
               {DAFTAR_FASE.map((f) => {
@@ -178,34 +178,15 @@ function AlurDana({ faseAnak }: { faseAnak?: KodeFase }) {
             </div>
             <div role="tabpanel" className="mt-2 rounded-xl bg-white p-3">
               <p className="text-sm font-black text-[#1C01A5]">
-                Kantong dan Papan Peringkat {aktif.kode.replace("_", " ")} sendiri
+                Kolam dan Papan Peringkat {aktif.kode.replace("_", " ")} sendiri
               </p>
               <p className="mt-1 text-xs font-semibold leading-relaxed text-slate-600">{aktif.penjelasan}</p>
               <p className="mt-2 rounded-lg bg-indigo-50/60 p-2 text-xs font-bold leading-snug text-indigo-950">
-                Isi kantong ini: 90% langganan siswa {aktif.kelas} + bagian limpahan surplus operasional.
+                Isi kolam ini: 90% langganan siswa {aktif.kelas}.
               </p>
             </div>
           </div>
-
-          <div className="rounded-2xl bg-white p-3 text-indigo-950">
-            <p className="flex items-center gap-2 text-sm font-black">
-              <span className="rounded-full bg-amber-400 px-2.5 py-0.5 text-base text-indigo-950">10%</span>
-              <span className="min-w-0 flex-1">🖥️ Kolam Operasional</span>
-            </p>
-            <ul className="mt-2 space-y-1.5 text-xs font-semibold leading-snug text-slate-600">
-              <li>• Biaya server dan potongan payment gateway yang sebenarnya</li>
-              <li>• Biaya hidup layak founder (ada batas atas)</li>
-              <li className="font-black text-[#1C01A5]">
-                • Sisa surplus 100% kembali ke Kantong Beasiswa, dibagi menurut jumlah pelanggan aktif tiap fase
-              </li>
-            </ul>
-          </div>
         </div>
-
-        <p className="mt-3 flex items-center justify-center gap-2 text-center text-xs font-bold text-amber-200">
-          <span aria-hidden="true">♻️</span>
-          Surplus tidak dikantongi. Ia kembali ke beasiswa anak-anak.
-        </p>
       </div>
 
       <div className="rounded-3xl border-2 border-indigo-100 bg-white p-4 shadow-sm">
@@ -215,20 +196,20 @@ function AlurDana({ faseAnak }: { faseAnak?: KodeFase }) {
         <input
           id={idRentang}
           type="range"
-          min={10000}
-          max={500000}
-          step={10000}
+          min={50000}
+          max={5000000}
+          step={50000}
           value={langganan}
           onChange={(e) => setLangganan(Number(e.target.value))}
           className="mt-2 w-full accent-[#1C01A5]"
         />
         <div className="mt-2 grid grid-cols-2 gap-2 text-center">
           <div className="rounded-2xl bg-amber-400 p-3">
-            <p className="text-[11px] font-black uppercase text-indigo-950/80">Ke Kantong Beasiswa</p>
+            <p className="text-[11px] font-black uppercase text-indigo-950/80">Ke Kolam Beasiswa (90%)</p>
             <p className="text-lg font-black text-indigo-950">{rupiah(beasiswa)}</p>
           </div>
           <div className="rounded-2xl bg-indigo-50/60 p-3">
-            <p className="text-[11px] font-black uppercase text-indigo-950/70">Ke Kolam Operasional</p>
+            <p className="text-[11px] font-black uppercase text-indigo-950/70">Ke Kolam Operasional (10%)</p>
             <p className="text-lg font-black text-indigo-950">{rupiah(operasional)}</p>
           </div>
         </div>
@@ -411,7 +392,7 @@ export default function HowIgilWorksSection({
           id={idDana}
           lencana="1 · Ke mana uang langganan pergi"
           judul="90% untuk Beasiswa, Dibagi per Fase"
-          isi="Ketuk fase di bawah untuk melihat kantong beasiswanya. Setiap fase punya kantong dan papan peringkat sendiri, jadi anak Kelas 1 tidak bersaing dengan anak Kelas 6."
+          isi="Langganan dibagi 90% Kolam Beasiswa dan 10% Kolam Operasional. Ketuk fase di bawah untuk melihat kolam beasiswanya. Setiap fase punya kolam dan papan peringkat sendiri, jadi anak Kelas 1 tidak bersaing dengan anak Kelas 6."
         />
         <AlurDana key={faseAnak ?? "umum"} faseAnak={faseAnak} />
       </div>

@@ -204,13 +204,11 @@
       "pillars": [
         {
           "percentage": "90%",
-          "title": "Kolam Beasiswa",
-          "description": "Dibagikan kepada siswa penerima beasiswa."
+          "title": "Kolam Beasiswa"
         },
         {
           "percentage": "10%",
-          "title": "Kolam Operasional",
-          "description": "Untuk menjalankan IGIL."
+          "title": "Kolam Operasional"
         }
       ]
     },
@@ -293,7 +291,7 @@
         "status": "berjalan",
         "jumlahSiswa": 500,
         "totalDanaRupiah": 50000000,
-        "surplusRupiah": 0,
+        "kolamBeasiswaRupiah": 45000000,
         "penerima": [],
         "alasanBelumTerdistribusi": "Bulan masih berjalan. Penerima beasiswa ditetapkan dan dana disalurkan setelah bulan ditutup pada akhir bulan (pukul 23:59 WIB)."
       },
@@ -303,7 +301,7 @@
         "status": "ditutup",
         "jumlahSiswa": 450,
         "totalDanaRupiah": 45000000,
-        "surplusRupiah": 2000000,
+        "kolamBeasiswaRupiah": 40500000,
         "penerima": [
           { "nama": "Kirana D.", "kelas": "Kelas 1 SD", "kota": "Denpasar, Bali", "nominalRupiah": 3500000 },
           { "nama": "Raka P.", "kelas": "Kelas 1 SD", "kota": "Bandung, Jawa Barat", "nominalRupiah": 3000000 },

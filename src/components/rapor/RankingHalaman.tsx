@@ -254,7 +254,7 @@ type LaporanBulan = {
   status: string;
   jumlahSiswa: number;
   totalDanaRupiah: number;
-  surplusRupiah: number;
+  kolamBeasiswaRupiah: number;
   penerima: Penerima[];
   alasanBelumTerdistribusi: string;
 };
@@ -278,9 +278,7 @@ function TabBeasiswa() {
   const [idAktif, setIdAktif] = useState(LAPORAN[0].id);
   const lap = LAPORAN.find((l) => l.id === idAktif) ?? LAPORAN[0];
 
-  const dari90 = Math.round(lap.totalDanaRupiah * 0.9);
-  // Surplus (jika ada) langsung digabung ke Kolam Beasiswa.
-  const kolamBeasiswa = dari90 + lap.surplusRupiah;
+  const kolamBeasiswa = lap.kolamBeasiswaRupiah;
   const terdistribusi = lap.penerima.reduce((n, p) => n + p.nominalRupiah, 0);
   const belum = kolamBeasiswa - terdistribusi;
 
@@ -346,7 +344,6 @@ function TabBeasiswa() {
               ikon="🏆"
               judul="Kolam Beasiswa"
               nilai={rupiah(kolamBeasiswa)}
-              catatan={lap.surplusRupiah > 0 ? `Sudah termasuk surplus ${rupiah(lap.surplusRupiah)}` : undefined}
               sorot
             />
           </div>
