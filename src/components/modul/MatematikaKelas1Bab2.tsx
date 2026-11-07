@@ -88,6 +88,8 @@
  * ============================================================================
  */
 import React, { useState, useEffect, useRef, useCallback } from "react";
+import Link from "next/link";
+import { catatUjianLulus } from "@/lib/praktikum-blok";
 import { Nunito } from "next/font/google";
 
 const fontAnak = Nunito({
@@ -193,7 +195,6 @@ interface ExamQuestion {
   correctAnswer: string;
   explanation: string;
 }
-type BentoCellFruit = "empty" | "strawberry" | "banana";
 const NUMBER_WORDS: Record<number, string> = {
   0: "Nol",
   1: "Satu",
@@ -286,38 +287,6 @@ const DIGIT_WAYPOINTS: Record<number, Waypoint[]> = {
     { x: 95, y: 185 },
   ],
 };
-const DEFAULT_CROSS_CHAPTERS: ChapterCompetencyMetadata[] = [
-  {
-    chapterId: "IPAS-K1-B2",
-    grade: 1,
-    subject: "IPAS",
-    chapterNumber: 2,
-    chapterTitle: "Tubuhku Sehat & Buah Bergizi",
-    textbookReference: "Kurikulum Merdeka Fase A — Mengenal Makanan Sehat",
-    coreSkills: ["Memilih buah kaya vitamin", "Menjaga kesehatan tubuh"],
-    practicumSynthesisHook: "Gabungkan Stroberi merah dan Pisang kuning hingga genap 10 di kotak bekal.",
-  },
-  {
-    chapterId: "BINDO-K1-B2",
-    grade: 1,
-    subject: "Bahasa Indonesia",
-    chapterNumber: 2,
-    chapterTitle: "Ayo Bermain & Bercerita Runtut",
-    textbookReference: "Buku Bahasa Indonesia SD Kelas I Kemendikbudristek Bab 2",
-    coreSkills: ["Menulis kalimat cerita sederhana", "Menceritakan kegiatan"],
-    practicumSynthesisHook: "Tuliskan laporan kalimat penjumlahan kedua kotak bekal dengan jelas.",
-  },
-  {
-    chapterId: "PANCASILA-K1-B2",
-    grade: 1,
-    subject: "Pancasila",
-    chapterNumber: 2,
-    chapterTitle: "Aturan Berbagi Adil Bersama Sahabat",
-    textbookReference: "Pendidikan Pancasila SD Kelas I Kemendikbudristek Bab 2",
-    coreSkills: ["Berbagi makanan secara adil", "Peduli sesama teman"],
-    practicumSynthesisHook: "Terapkan sifat pertukaran (a+b = b+a = 10) agar bekal Kira dan Upe sama adil.",
-  },
-];
 // ============================================================================
 // BANK 10 SOAL LATIHAN AUDIO-FIRST STAGE (PULAU 4)
 // ============================================================================
@@ -635,21 +604,14 @@ function generateDynamicExamQuestions(): ExamQuestion[] {
 // KOMPONEN UTAMA FORMULA HIBRIDA 4-TEMPLATE (MATEMATIKA KELAS 1 BAB 2)
 // ============================================================================
 export default function MatematikaKelas1Bab2Hibrida({
-  studentId = "SISWA-K1-HIBRIDA",
-  studentName = "Sahabat Cilik IGIL",
-  completedOtherChapters = DEFAULT_CROSS_CHAPTERS,
-  onChapterComplete,
 }: IGILModuleProps) {
   // Navigasi 6 Pulau Petualangan (SplashLearn Island Map Style)
   const [activeCard, setActiveCard] = useState<1 | 2 | 3 | 4 | 5 | 6>(1);
   const [card2Unlocked, setCard2Unlocked] = useState<boolean>(false);
   const [card5Unlocked, setCard5Unlocked] = useState<boolean>(false);
-  const [card6Unlocked, setCard6Unlocked] = useState<boolean>(false);
   // Tokenomics Floating (Tanpa Konversi Rupiah: Latihan 30 + Ujian 70 = 100 Poin per bab)
   const [practiceTokens, setPracticeTokens] = useState<number>(0);
   const [examTokens, setExamTokens] = useState<number>(0);
-  const [practicumTokens, setPracticumTokens] = useState<number>(0);
-  const totalTokens = practiceTokens + examTokens + practicumTokens;
   // HUD Gamifikasi & Pemandu Audio-First
   const [comboStreak, setComboStreak] = useState<number>(0);
   const [activeCompanion, setActiveCompanion] = useState<"Kira" | "Upe" | "Malosi" | "Tora">(
@@ -714,36 +676,6 @@ export default function MatematikaKelas1Bab2Hibrida({
   const [focusLossCount, setFocusLossCount] = useState<number>(0);
   const [dwellTimeWarning, setDwellTimeWarning] = useState<boolean>(false);
   const examTimerRef = useRef<ReturnType<typeof setInterval> | null>(null);
-  // Pulau 6: Studio Praktikum 2 Kotak Bekal Sehat Lintas-4-Bab (+50 Poin & 1.000 Poin)
-  const [practicumMode, setPracticumMode] = useState<"single" | "cross4">("cross4");
-  const [activeBentoTool, setActiveBentoTool] = useState<BentoCellFruit>("strawberry");
-  const [kiraLunchCells, setKiraLunchCells] = useState<BentoCellFruit[]>(() => [
-    "strawberry",
-    "strawberry",
-    "strawberry",
-    "strawberry",
-    "strawberry",
-    "strawberry",
-    "banana",
-    "banana",
-    "banana",
-    "banana",
-  ]);
-  const [upeLunchCells, setUpeLunchCells] = useState<BentoCellFruit[]>(() => [
-    "strawberry",
-    "strawberry",
-    "strawberry",
-    "strawberry",
-    "banana",
-    "banana",
-    "banana",
-    "banana",
-    "banana",
-    "banana",
-  ]);
-  const [studentReportText, setStudentReportText] = useState<string>("");
-  const [practicumRubric, setPracticumRubric] = useState<PracticumEvaluationRubric | null>(null);
-  const [chapterCompletedFlag, setChapterCompletedFlag] = useState<boolean>(false);
   // ============================================================================
   // WEB AUDIO API SYNTHESIZER (100% CLIENT-SIDE ZERO COST)
   // ============================================================================
@@ -1132,10 +1064,10 @@ export default function MatematikaKelas1Bab2Hibrida({
     setDwellTimeWarning(false);
     if (calculatedScore === 100) {
       setExamTokens(70);
-      setCard6Unlocked(true);
+      catatUjianLulus("mtk-1-bab2");
       playSound("fanfare");
       speakIGIL(
-        "Sempurna 100 dari 100! Kamu lulus Gerbang Tantangan Mandiri dan membuka Pulau 6 Studio Praktikum!"
+        "Sempurna 100 dari 100! Kamu lulus Gerbang Tantangan Mandiri. Ujian bab ini selesai!"
       );
     } else {
       playSound("wrong");
@@ -1155,97 +1087,6 @@ export default function MatematikaKelas1Bab2Hibrida({
     setDwellTimeWarning(false);
     setExamStartTime(Date.now());
     setExamElapsedDeci(0);
-  };
-  // Hitung isi 2 Kotak Bekal di Pulau 6 secara real-time
-  const kiraStraw = kiraLunchCells.filter((c) => c === "strawberry").length;
-  const kiraBan = kiraLunchCells.filter((c) => c === "banana").length;
-  const kiraTotal = kiraStraw + kiraBan;
-  const upeStraw = upeLunchCells.filter((c) => c === "strawberry").length;
-  const upeBan = upeLunchCells.filter((c) => c === "banana").length;
-  const upeTotal = upeStraw + upeBan;
-  const isCommutativeBoxes =
-    kiraTotal === 10 &&
-    upeTotal === 10 &&
-    kiraStraw === upeBan &&
-    kiraBan === upeStraw &&
-    kiraStraw > 0 &&
-    kiraBan > 0;
-  const fillGuidedReportTemplate = () => {
-    playSound("pop");
-    const template = `Saya bersama Kira, Upe, Malosi, dan Tora menyusun 2 Kotak Bekal Sehat Berjumlah 10. Pada Kotak Bekal Kira (IPAS), saya menggabungkan ${kiraStraw} stroberi dan ${kiraBan} pisang sehingga kalimat penjumlahannya ${kiraStraw} + ${kiraBan} = ${kiraTotal}. Pada Kotak Bekal Upe (Pancasila), saya menerapkan sifat pertukaran penjumlahan ${upeStraw} + ${upeBan} = ${upeTotal} agar kedua sahabat mendapat porsi genap 10 yang adil.`;
-    setStudentReportText(template);
-  };
-  const handleEvaluatePracticum = () => {
-    const reportWords = studentReportText
-      .trim()
-      .split(/\s+/)
-      .filter(Boolean).length;
-    if (reportWords < 8) {
-      playSound("wrong");
-      speakIGIL(
-        "Klik tombol Bantu Susun Kalimat Laporan atau tulis minimal 8 kata penjelasan ilmiah terlebih dahulu ya!"
-      );
-      return;
-    }
-    let accuracyScore = 110;
-    if (kiraTotal === 10) accuracyScore += 80;
-    if (upeTotal === 10) accuracyScore += 70;
-    if (isCommutativeBoxes) accuracyScore += 40;
-    accuracyScore = Math.min(300, accuracyScore);
-    let synthesisScore = practicumMode === "cross4" ? 160 : 120;
-    const lowerReport = studentReportText.toLowerCase();
-    if (lowerReport.includes("stroberi") || lowerReport.includes("pisang")) synthesisScore += 30;
-    if (lowerReport.includes("pertukaran") || lowerReport.includes("adil")) synthesisScore += 30;
-    if (lowerReport.includes("+") || lowerReport.includes("10")) synthesisScore += 30;
-    synthesisScore = Math.min(250, synthesisScore);
-    let optimizationVisualScore = 100;
-    if (kiraTotal === 10 && upeTotal === 10) optimizationVisualScore += 50;
-    if (isCommutativeBoxes) optimizationVisualScore += 50;
-    optimizationVisualScore = Math.min(200, optimizationVisualScore);
-    let reasoningReportScore = Math.min(180, reportWords * 5);
-    if (/\d/.test(studentReportText)) reasoningReportScore += 40;
-    if (lowerReport.includes("sehingga") || lowerReport.includes("agar")) {
-      reasoningReportScore += 30;
-    }
-    reasoningReportScore = Math.min(250, reasoningReportScore);
-    const totalQualityScore =
-      accuracyScore + synthesisScore + optimizationVisualScore + reasoningReportScore;
-    const rubricResult: PracticumEvaluationRubric = {
-      accuracyScore,
-      synthesisScore,
-      optimizationVisualScore,
-      reasoningReportScore,
-      totalQualityScore,
-      aiFeedbackSummary:
-        totalQualityScore >= 850
-          ? "Karya Praktikum Koki Cilik Istimewa (Kandidat Juara Beasiswa IGIL)! Kedua kotak bekal berjumlah tepat 10 dan membuktikan sifat pertukaran penjumlahan (a + b = b + a) secara visual dan ilmiah!"
-          : "Kotak Bekal sudah bagus! Untuk meraih 1.000 poin sempurna, pastikan Kotak Kira dan Kotak Upe masing-masing penuh 10 buah dengan porsi saling bertukar (misalnya 6+4 dan 4+6).",
-    };
-    setPracticumRubric(rubricResult);
-    setPracticumTokens(50);
-    setChapterCompletedFlag(true);
-    playSound("fanfare");
-    speakIGIL(
-      `Luar biasa ${studentName}! Praktikum penjumlahanmu meraih skor kualitas ${totalQualityScore} dari 1000 poin dan poin Praktikum tercatat!`
-    );
-    const payload: ChapterCompletionPayload = {
-      chapterId: CHAPTER_COMPETENCY_METADATA.chapterId,
-      studentId,
-      practiceTokensEarned: 30,
-      examTokensEarned: 70,
-      practicumTokensEarned: 50,
-      totalChapterTokens: 150,
-      examScore: 100,
-      practicumRubric: rubricResult,
-      telemetry: {
-        attemptCount: examAttempts,
-        examDurationSeconds: Math.max(25, Math.round(examElapsedDeci / 10)),
-        tabSwitchCount: focusLossCount,
-        isHumanTimingValid: true,
-        completedAtISO: new Date().toISOString(),
-      },
-    };
-    onChapterComplete?.(payload);
   };
   // ============================================================================
   // RENDERER VISUAL SOAL DINAMIS BERWARNA CERAH (PULAU 4 & PULAU 5)
@@ -1501,7 +1342,7 @@ export default function MatematikaKelas1Bab2Hibrida({
         {/* ================================================================= */}
         {/* SPLASHLEARN STYLE 6 ISLAND NAVIGATION BAR                         */}
         {/* ================================================================= */}
-        <nav className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-2.5">
+        <nav className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-2.5">
           {[
             {
               id: 1 as const,
@@ -1537,13 +1378,6 @@ export default function MatematikaKelas1Bab2Hibrida({
               role: "Gerbang 1 (+70 Poin)",
               icon: "🏰",
               unlocked: card5Unlocked,
-            },
-            {
-              id: 6 as const,
-              island: "Pulau 6: Dapur Koki",
-              role: "Praktikum (+50 & 1000)",
-              icon: "🍱",
-              unlocked: card6Unlocked,
             },
           ].map((isl) => {
             const isActive = activeCard === isl.id;
@@ -2578,8 +2412,8 @@ export default function MatematikaKelas1Bab2Hibrida({
                       {dwellTimeWarning
                         ? "⚠️ Pengerjaan di bawah 25 detik! Silakan ulangi dengan teliti."
                         : examScore === 100
-                        ? "🎉 SEMPURNA 100/100! GERBANG 2 (PULAU 6 PRAKTIKUM) TERBUKA!"
-                        : `Skor Kamu: ${examScore}/100 (Wajib 100/100 untuk Buka Praktikum)`}
+                        ? "🎉 SEMPURNA 100/100! UJIAN BAB 2 LULUS!"
+                        : `Skor Kamu: ${examScore}/100 (Wajib 100/100 untuk lulus)`}
                     </div>
                     <div className="flex gap-2">
                       <button
@@ -2589,226 +2423,15 @@ export default function MatematikaKelas1Bab2Hibrida({
                       >
                         🔄 Ulangi Ujian Acak
                       </button>
-                      {card6Unlocked && (
-                        <button
-                          type="button"
-                          onClick={() => setActiveCard(6)}
-                          className="bg-[#F0AB00] text-[#1C01A5] font-black px-4 py-2 rounded-xl border-b-4 border-[#F0AB00] text-xs"
+                      {examScore === 100 && !dwellTimeWarning && (
+                        <Link
+                          href="/praktikum/mtk-1-blok1"
+                          className="igil-tombol bg-[#F0AB00] text-[#1C01A5] font-black px-4 py-2 rounded-xl border-b-4 border-[#F0AB00] text-xs"
                         >
-                          Masuk Pulau 6 (Praktikum) 🍱
-                        </button>
+                          Lihat Praktikum Blok
+                        </Link>
                       )}
                     </div>
-                  </div>
-                )}
-              </section>
-            )}
-            {/* ------------------------------------------------------------- */}
-            {/* PULAU 6 (KARTU 6): STUDIO PRAKTIKUM 2 KOTAK BEKAL SEHAT        */}
-            {/* ------------------------------------------------------------- */}
-            {activeCard === 6 && (
-              <section className="bg-[#FFFFFF] rounded-[32px] p-5 md:p-6 shadow-2xl border-4 border-[#7FCB96] space-y-5">
-                <div className="bg-[#F0AB00] text-[#1C01A5] p-4 rounded-3xl flex flex-col sm:flex-row sm:items-center justify-between gap-3">
-                  <div>
-                    <span className="bg-[#F0AB00] text-[#1C01A5] text-xs font-black px-3 py-0.5 rounded-full">
-                      🍱 PULAU 6 • GERBANG 2: SI PALING KREATIF (SKOR 0–1.000 POIN)
-                    </span>
-                    <h2 className="text-lg font-black mt-1">
-                      Koki Cilik: Rancang 2 Kotak Bekal Sehat Genap 10 &amp; Pertukaran Adil
-                    </h2>
-                  </div>
-                  <div className="flex gap-1.5">
-                    <button
-                      type="button"
-                      onClick={() => setPracticumMode("single")}
-                      className={`px-3 py-1.5 rounded-xl text-xs font-black ${
-                        practicumMode === "single"
-                          ? "bg-[#F0AB00] text-[#1C01A5]"
-                          : "bg-[#FFFFFF] text-[#1C01A5]"
-                      }`}
-                    >
-                      Bab Tunggal
-                    </button>
-                    <button
-                      type="button"
-                      onClick={() => setPracticumMode("cross4")}
-                      className={`px-3 py-1.5 rounded-xl text-xs font-black ${
-                        practicumMode === "cross4"
-                          ? "bg-[#F0AB00] text-[#1C01A5]"
-                          : "bg-[#FFFFFF] text-[#1C01A5]"
-                      }`}
-                    >
-                      Sintesis 4 Bab
-                    </button>
-                  </div>
-                </div>
-                {practicumMode === "cross4" && (
-                  <div className="grid grid-cols-1 sm:grid-cols-3 gap-2 text-xs">
-                    {completedOtherChapters.slice(0, 3).map((ch) => (
-                      <div
-                        key={ch.chapterId}
-                        className="bg-[#FFFFFF] p-2.5 rounded-xl border border-[#F0AB00]"
-                      >
-                        <div className="font-black text-[#1C01A5]">{ch.subject}</div>
-                        <p className="text-[11px] text-[#1C01A5]">{ch.practicumSynthesisHook}</p>
-                      </div>
-                    ))}
-                  </div>
-                )}
-                <div className="bg-[#FFFFFF] p-4 rounded-2xl border-2 border-[#F0AB00] space-y-4">
-                  <div className="flex flex-wrap items-center justify-between gap-2">
-                    <span className="text-xs font-black text-[#1C01A5]">
-                      Pilih Buah lalu Sentuh Petak Kotak Bekal Kira &amp; Upe (Target: Masing-Masing Genap 10 &amp; Saling Bertukar Porsi):
-                    </span>
-                    <div className="flex gap-2">
-                      {[
-                        { id: "strawberry" as const, label: "🍓 Stroberi" },
-                        { id: "banana" as const, label: "🍌 Pisang" },
-                        { id: "empty" as const, label: "🧹 Kosongkan" },
-                      ].map((t) => (
-                        <button
-                          key={t.id}
-                          type="button"
-                          onClick={() => setActiveBentoTool(t.id)}
-                          className={`px-3 py-1.5 rounded-xl font-black text-xs border-b-2 ${
-                            activeBentoTool === t.id
-                              ? "bg-[#F0AB00] text-[#1C01A5] border-[#F0AB00]"
-                              : "bg-[#FFFFFF] text-[#1C01A5] border-[#1C01A5]"
-                          }`}
-                        >
-                          {t.label}
-                        </button>
-                      ))}
-                    </div>
-                  </div>
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                    <div className="bg-[#FFFFFF] p-3.5 rounded-2xl border-2 border-[#1C01A5] space-y-2">
-                      <div className="text-xs font-black text-[#1C01A5] flex justify-between">
-                        <span>🍱 Kotak Bekal Kira (Bingkai 10)</span>
-                        <span>
-                          {kiraStraw}🍓 + {kiraBan}🍌 = {kiraTotal}
-                        </span>
-                      </div>
-                      <div className="grid grid-cols-5 gap-1.5">
-                        {kiraLunchCells.map((cell, idx) => (
-                          <button
-                            key={idx}
-                            type="button"
-                            onClick={() => {
-                              playSound("pop");
-                              setKiraLunchCells((prev) => {
-                                const next = [...prev];
-                                next[idx] =
-                                  next[idx] === activeBentoTool ? "empty" : activeBentoTool;
-                                return next;
-                              });
-                            }}
-                            className="h-12 rounded-xl bg-[#FFFFFF] border border-[#1C01A5] flex items-center justify-center text-xl hover:opacity-90"
-                          >
-                            {cell === "strawberry" ? "🍓" : cell === "banana" ? "🍌" : "➕"}
-                          </button>
-                        ))}
-                      </div>
-                    </div>
-                    <div className="bg-[#FFFFFF] p-3.5 rounded-2xl border-2 border-[#1C01A5] space-y-2">
-                      <div className="text-xs font-black text-[#1C01A5] flex justify-between">
-                        <span>🍱 Kotak Bekal Upe (Pertukaran)</span>
-                        <span>
-                          {upeStraw}🍓 + {upeBan}🍌 = {upeTotal}
-                        </span>
-                      </div>
-                      <div className="grid grid-cols-5 gap-1.5">
-                        {upeLunchCells.map((cell, idx) => (
-                          <button
-                            key={idx}
-                            type="button"
-                            onClick={() => {
-                              playSound("pop");
-                              setUpeLunchCells((prev) => {
-                                const next = [...prev];
-                                next[idx] =
-                                  next[idx] === activeBentoTool ? "empty" : activeBentoTool;
-                                return next;
-                              });
-                            }}
-                            className="h-12 rounded-xl bg-[#FFFFFF] border border-[#1C01A5] flex items-center justify-center text-xl hover:opacity-90"
-                          >
-                            {cell === "strawberry" ? "🍓" : cell === "banana" ? "🍌" : "➕"}
-                          </button>
-                        ))}
-                      </div>
-                    </div>
-                  </div>
-                  <div className="grid grid-cols-2 gap-2 text-xs font-black text-center">
-                    <div
-                      className={`p-2.5 rounded-xl border ${
-                        kiraTotal === 10 && upeTotal === 10
-                          ? "bg-[#FFFFFF] border-[#F0AB00] text-[#1C01A5]"
-                          : "bg-[#FFFFFF] border-[#F0AB00] text-[#1C01A5]"
-                      }`}
-                    >
-                      Total Buah: Kira ({kiraTotal}) &amp; Upe ({upeTotal}){" "}
-                      {kiraTotal === 10 && upeTotal === 10 ? "✅ Genap 10" : "(Target: 10 & 10)"}
-                    </div>
-                    <div
-                      className={`p-2.5 rounded-xl border ${
-                        isCommutativeBoxes
-                          ? "bg-[#FFFFFF] border-[#F0AB00] text-[#1C01A5]"
-                          : "bg-[#FFFFFF] border-[#F0AB00] text-[#1C01A5]"
-                      }`}
-                    >
-                      Sifat Pertukaran: {kiraStraw}+{kiraBan} ⇄ {upeStraw}+{upeBan}{" "}
-                      {isCommutativeBoxes ? "✅ Komutatif Sempurna!" : "(Tukar Porsi)"}
-                    </div>
-                  </div>
-                </div>
-                <div className="bg-[#FFFFFF] p-4 rounded-2xl border-2 border-[#F0AB00] space-y-3">
-                  <div className="flex items-center justify-between">
-                    <h3 className="font-black text-sm text-[#1C01A5]">
-                      📝 Laporan Ilmiah Koki Cilik
-                    </h3>
-                    <button
-                      type="button"
-                      onClick={fillGuidedReportTemplate}
-                      className="bg-[#F0AB00] text-[#1C01A5] font-black px-3 py-1.5 rounded-xl border-b-4 border-[#F0AB00] text-xs"
-                    >
-                      ✨ Bantu Susun Kalimat Laporan
-                    </button>
-                  </div>
-                  <textarea
-                    rows={3}
-                    value={studentReportText}
-                    onChange={(e) => setStudentReportText(e.target.value)}
-                    placeholder="Klik tombol kuning di atas atau ceritakan kalimat penjumlahan kedua kotak bekal sehatmu..."
-                    className="w-full p-3 rounded-xl border-2 border-[#F0AB00] bg-[#FFFFFF] text-xs md:text-sm font-medium"
-                  />
-                  <button
-                    type="button"
-                    onClick={handleEvaluatePracticum}
-                    className="w-full py-3.5 rounded-2xl bg-[#F0AB00] text-[#1C01A5] font-black text-sm border-b-4 border-[#F0AB00]"
-                  >
-                    🚀 Kirim Praktikum &amp; Hitung Skor Kualitas AI (0–1.000 Poin)
-                  </button>
-                </div>
-                {practicumRubric && (
-                  <div className="bg-[#1C01A5] text-[#FFFFFF] p-5 rounded-3xl border-4 border-[#FFE566] space-y-3">
-                    <div className="flex items-center justify-between">
-                      <div>
-                        <span className="text-xs font-black text-[#FFE566]">
-                          🏅 SERTIFIKAT RUBRIK KUALITAS PRAKTIKUM IGIL
-                        </span>
-                        <h4 className="text-lg font-black">{studentName}</h4>
-                      </div>
-                      <div className="bg-[#F0AB00] text-[#1C01A5] px-4 py-2 rounded-2xl font-black text-2xl">
-                        {practicumRubric.totalQualityScore} / 1.000
-                      </div>
-                    </div>
-                    <p className="text-xs text-[#FFFFFF]">{practicumRubric.aiFeedbackSummary}</p>
-                    {chapterCompletedFlag && (
-                      <div className="text-xs font-black text-[#FFE566]">
-                        ✅ Bab 2 Tuntas Paripurna (100/100 Poin Latihan dan Ujian).
-                      </div>
-                    )}
                   </div>
                 )}
               </section>
@@ -2871,8 +2494,7 @@ export default function MatematikaKelas1Bab2Hibrida({
                 {[
                   { name: "Pohon Pipit", ok: card2Unlocked, icon: "🐦" },
                   { name: "Kanvas 50/50", ok: (geometryScore ?? 0) >= 80, icon: "✍️" },
-                  { name: "Lulus Gerbang 1", ok: card6Unlocked, icon: "🏰" },
-                  { name: "Koki Kreatif", ok: chapterCompletedFlag, icon: "🍱" },
+                  { name: "Lulus Gerbang 1", ok: examTokens === 70, icon: "🏰" },
                 ].map((b) => (
                   <div
                     key={b.name}

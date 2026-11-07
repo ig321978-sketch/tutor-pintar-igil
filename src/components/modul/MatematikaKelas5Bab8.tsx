@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useCallback, useEffect, useRef, useState } from "react";
+import { catatUjianLulus } from "@/lib/praktikum-blok";
 
 export interface ChapterCompetencyMetadata {
   chapterId: string;
@@ -69,39 +70,6 @@ export const CHAPTER_COMPETENCY_METADATA: ChapterCompetencyMetadata = {
   practicumSynthesisHook:
     "Sajikan data pengamatan ke dalam piktogram berskala serta diagram batang ganda untuk mendukung keputusan.",
 };
-
-const BAB_LAIN: ChapterCompetencyMetadata[] = [
-  {
-    chapterId: "MAT-K5-B5",
-    grade: 5,
-    subject: "Matematika",
-    chapterNumber: 5,
-    chapterTitle: "Luas Daerah Bangun Datar",
-    textbookReference: "Buku Matematika Kelas V, Bab 5, Halaman 131–162",
-    coreSkills: ["Menghitung luas persegi panjang, persegi, segitiga, dan bangun gabungan"],
-    practicumSynthesisHook: "Rancang panjang dan lebar petak agar luasnya memenuhi target.",
-  },
-  {
-    chapterId: "IPAS-K5-GIZI",
-    grade: 5,
-    subject: "IPAS",
-    chapterNumber: 4,
-    chapterTitle: "Nutrisi, Kalori, dan Kesehatan Organ Pencernaan",
-    textbookReference: "Buku IPAS Kelas V Kemendikbudristek",
-    coreSkills: ["Menyeimbangkan energi harian dari karbohidrat, protein, dan sayur"],
-    practicumSynthesisHook: "Susun porsi makan siang sesuai kebutuhan kalori anak usia 10–12 tahun.",
-  },
-  {
-    chapterId: "BIND-K5-LAPORAN",
-    grade: 5,
-    subject: "Bahasa Indonesia",
-    chapterNumber: 6,
-    chapterTitle: "Teks Laporan Hasil Pengamatan",
-    textbookReference: "Buku Bahasa Indonesia Kelas V Kemendikbudristek",
-    coreSkills: ["Menulis laporan fakta dari grafik dan kesimpulan yang logis"],
-    practicumSynthesisHook: "Tuliskan laporan berdasarkan angka pada tabel dan diagram.",
-  },
-];
 
 type Suara = "click" | "pop" | "laser" | "coin" | "wrong" | "fanfare";
 
@@ -497,16 +465,6 @@ const SEBARAN = [
   { year: "2021", laki: 16, perempuan: 18 },
 ];
 
-const MENU = [
-  { id: "nasiPutih", name: "Nasi putih (100 g)", kcal: 175, group: "Karbohidrat" },
-  { id: "nasiJagung", name: "Nasi jagung (100 g)", kcal: 150, group: "Karbohidrat" },
-  { id: "dagingSapi", name: "Daging sapi (100 g)", kcal: 280, group: "Protein hewani" },
-  { id: "dagingAyam", name: "Daging ayam (100 g)", kcal: 240, group: "Protein hewani" },
-  { id: "tempeGoreng", name: "Tempe goreng (100 g)", kcal: 200, group: "Protein nabati" },
-  { id: "tahuGoreng", name: "Tahu goreng (100 g)", kcal: 115, group: "Protein nabati" },
-  { id: "sayurHijau", name: "Sayuran hijau (100 g)", kcal: 50, group: "Serat dan vitamin" },
-];
-
 const DONAT = [
   { h: "Senin", c: 3, kj: 6, s: 4, kc: 4 },
   { h: "Selasa", c: 4, kj: 4, s: 6, kc: 3 },
@@ -517,21 +475,15 @@ const DONAT = [
 ];
 
 export default function MatematikaKelas5Bab8({
-  studentId = "SISWA-DEMO-01",
   studentName = "Penjelajah Muda",
-  completedOtherChapters = BAB_LAIN,
-  onChapterComplete,
 }: IGILModuleProps) {
   const [activeCard, setActiveCard] = useState<1 | 2 | 3 | 4 | 5 | 6>(1);
   const [soundOn, setSoundOn] = useState(true);
   const [card2Unlocked, setCard2Unlocked] = useState(false);
   const [card5Unlocked, setCard5Unlocked] = useState(false);
-  const [card6Unlocked, setCard6Unlocked] = useState(false);
   const [claimedPracticeIds, setClaimedPracticeIds] = useState<number[]>([]);
   const [examTokens, setExamTokens] = useState(0);
-  const [practicumTokens, setPracticumTokens] = useState(0);
   const practiceTokens = Math.min(30, claimedPracticeIds.length * 3);
-  const totalTokens = practiceTokens + examTokens + practicumTokens;
   const sfx = useCallback((type: Suara) => {
     if (soundOn) playSound(type);
   }, [soundOn]);
@@ -582,25 +534,6 @@ export default function MatematikaKelas5Bab8({
   const [examDurationSec, setExamDurationSec] = useState(0);
   const [tabSwitchCount, setTabSwitchCount] = useState(0);
   const [timingValid, setTimingValid] = useState(true);
-
-  const [menuPortions, setMenuPortions] = useState<Record<string, number>>({
-    nasiPutih: 1,
-    nasiJagung: 0,
-    dagingSapi: 0,
-    dagingAyam: 1,
-    tempeGoreng: 1,
-    tahuGoreng: 1,
-    sayurHijau: 2,
-  });
-  const [gardenLengthM, setGardenLengthM] = useState(6);
-  const [gardenWidthM, setGardenWidthM] = useState(5);
-  const [practicumChartMode, setPracticumChartMode] = useState<"batang" | "piktogram">("batang");
-  const [studentReportText, setStudentReportText] = useState("");
-  const [evaluatedRubric, setEvaluatedRubric] = useState<PracticumEvaluationRubric | null>(null);
-
-  const totalCalories = MENU.reduce((acc, item) => acc + item.kcal * (menuPortions[item.id] || 0), 0);
-  const activeMenuCount = MENU.filter((item) => (menuPortions[item.id] || 0) > 0).length;
-  const gardenAreaM2 = gardenLengthM * gardenWidthM;
 
   useEffect(() => {
     setPracticeQuestions(buatSoalData());
@@ -690,15 +623,13 @@ export default function MatematikaKelas5Bab8({
     });
   };
 
-  const bukaKartu = (id: 1 | 2 | 3 | 4 | 5 | 6, terkunci: boolean) => {
+  const bukaKartu = (id: 1 | 2 | 3 | 4 | 5, terkunci: boolean) => {
     if (terkunci) {
       sfx("wrong");
       if (id <= 4) {
         window.alert("Selesaikan teka-teki donat Anggi di kartu 1 dahulu.");
       } else if (id === 5) {
         window.alert("Periksa ke-10 soal latihan dahulu.");
-      } else {
-        window.alert("Nilai ujian harus 100 untuk membuka praktikum.");
       }
       return;
     }
@@ -739,86 +670,13 @@ export default function MatematikaKelas5Bab8({
     setExamSubmitted(true);
     if (manusia) setExamTokens((prev) => Math.max(prev, benar * 7));
     if (skor === 100 && manusia) {
-      setCard6Unlocked(true);
+      catatUjianLulus("mtk-5-bab8");
       sfx("fanfare");
     } else {
       sfx("wrong");
     }
   };
 
-  const nilaiPraktikum = async () => {
-    const selisihKalori =
-      totalCalories >= 650 && totalCalories <= 750 ? 0 : Math.min(200, Math.abs(totalCalories - 700));
-    const luasPas = gardenAreaM2 >= 24 && gardenAreaM2 <= 36;
-    const accuracyScore = Math.min(
-      300,
-      Math.max(120, Math.round(300 - selisihKalori * 0.6 - (luasPas ? 0 : 50))),
-    );
-    const adaKarbo = (menuPortions.nasiPutih || 0) + (menuPortions.nasiJagung || 0) > 0;
-    const adaProtein =
-      (menuPortions.dagingSapi || 0) +
-        (menuPortions.dagingAyam || 0) +
-        (menuPortions.tempeGoreng || 0) +
-        (menuPortions.tahuGoreng || 0) >
-      0;
-    const adaSayur = (menuPortions.sayurHijau || 0) >= 1;
-    let synthesisScore = 100;
-    if (adaKarbo) synthesisScore += 45;
-    if (adaProtein) synthesisScore += 45;
-    if (adaSayur && luasPas) synthesisScore += 60;
-    synthesisScore = Math.min(250, synthesisScore);
-    const variasi = Math.min(100, activeMenuCount * 22);
-    const seimbang =
-      totalCalories >= 680 && totalCalories <= 720 ? 100 : totalCalories >= 650 && totalCalories <= 750 ? 85 : 55;
-    const optimizationVisualScore = Math.min(200, variasi + seimbang);
-    const bersih = studentReportText.trim();
-    const kata = bersih ? bersih.split(/\s+/).length : 0;
-    let reasoningReportScore = Math.min(150, kata * 6);
-    if (/\d+/.test(bersih)) reasoningReportScore += 50;
-    if (/kalori|kkal|luas|sayur|diagram|seimbang|protein/i.test(bersih)) reasoningReportScore += 50;
-    reasoningReportScore = Math.min(250, reasoningReportScore);
-    const totalQualityScore = accuracyScore + synthesisScore + optimizationVisualScore + reasoningReportScore;
-    const rubric: PracticumEvaluationRubric = {
-      accuracyScore,
-      synthesisScore,
-      optimizationVisualScore,
-      reasoningReportScore,
-      totalQualityScore,
-      aiFeedbackSummary:
-        totalQualityScore >= 880
-          ? "Karya ini tepat: kalori ada di rentang 650–750 kkal, luas kebun sesuai target, dan laporan menyebut angkanya."
-          : totalQualityScore >= 720
-            ? "Diagram dan rancangan sudah menyatukan data, luas, dan gizi. Dekatkan kalori ke 700 kkal dan tulis angkanya di laporan."
-            : "Sesuaikan porsi agar 650–750 kkal, atur luas kebun 24–36 m², lalu tulis alasan dengan angka.",
-    };
-    sfx("fanfare");
-    setEvaluatedRubric(rubric);
-    setPracticumTokens(50);
-    const tokenUjian = Math.max(examTokens, 70);
-    await onChapterComplete?.({
-      chapterId: CHAPTER_COMPETENCY_METADATA.chapterId,
-      studentId,
-      practiceTokensEarned: practiceTokens,
-      examTokensEarned: tokenUjian,
-      practicumTokensEarned: 50,
-      totalChapterTokens: practiceTokens + tokenUjian + 50,
-      examScore: 100,
-      practicumRubric: rubric,
-      telemetry: {
-        attemptCount,
-        examDurationSeconds: examDurationSec,
-        tabSwitchCount,
-        isHumanTimingValid: timingValid,
-        completedAtISO: new Date().toISOString(),
-      },
-      auditTrail: examQuestions.map((q) => ({
-        questionId: q.id,
-        questionText: q.question,
-        selectedAnswer: examAnswers[q.id] || "",
-        isCorrect: examAnswers[q.id] === q.correctAnswer,
-      })),
-    });
-  };
 
   const soalLatihan = practiceQuestions[practiceIndex];
   const soalUjian = examQuestions[examIndex];
@@ -829,7 +687,6 @@ export default function MatematikaKelas5Bab8({
     { id: 3 as const, label: "3. Simulasi & Kanvas", ikon: card2Unlocked ? "🔬" : "🔒", terkunci: !card2Unlocked },
     { id: 4 as const, label: `4. Latihan (${practiceTokens}/30)`, ikon: card2Unlocked ? "🎯" : "🔒", terkunci: !card2Unlocked },
     { id: 5 as const, label: `5. Ujian (${examTokens}/70)`, ikon: card5Unlocked ? "🏆" : "🔒", terkunci: !card5Unlocked },
-    { id: 6 as const, label: `6. Praktikum (${practicumTokens}/50)`, ikon: card6Unlocked ? "🎨" : "🔒", terkunci: !card6Unlocked },
   ];
 
   const batangSoal = (soal: SoalData) => {
@@ -862,7 +719,7 @@ export default function MatematikaKelas5Bab8({
       <header className="border-b border-indigo-700/60 bg-gradient-to-r from-indigo-950 via-slate-900 to-indigo-950 text-white shadow-lg">
         <div className="mx-auto flex max-w-6xl flex-wrap items-center justify-between gap-3 px-4 py-2.5">
           <div className="flex items-center gap-3">
-            <IgilOwl mood={card6Unlocked ? "proud" : "happy"} />
+            <IgilOwl mood={examTokens >= 70 ? "proud" : "happy"} />
             <div>
               <span className="rounded-full border border-indigo-600 bg-indigo-800 px-2.5 py-0.5 text-[11px] font-black uppercase text-amber-300">
                 Kelas 5 SD • Bab 8 • Hlm. 235–272
@@ -932,7 +789,7 @@ export default function MatematikaKelas5Bab8({
               </div>
               <div className="space-y-1.5 rounded-2xl border-2 border-amber-300 bg-amber-50/80 p-3.5">
                 <div className="font-black uppercase text-amber-900">Gerbang 1</div>
-                <p>Sepuluh latihan memberi paling banyak 30 poin. Ujian harus 100 untuk 70 poin dan membuka praktikum. Lama waktu tidak menjadi juara.</p>
+                <p>Sepuluh latihan memberi paling banyak 30 poin. Ujian harus 100 untuk 70 poin. Lama waktu tidak menjadi juara.</p>
               </div>
               <div className="space-y-1.5 rounded-2xl border-2 border-emerald-300 bg-emerald-50/80 p-3.5">
                 <div className="font-black uppercase text-emerald-900">Gerbang 2</div>
@@ -1387,7 +1244,7 @@ export default function MatematikaKelas5Bab8({
             <div className="flex flex-wrap items-center justify-between gap-2 rounded-2xl bg-slate-900 p-4 text-white">
               <div>
                 <span className="rounded-full bg-amber-400 px-2.5 py-0.5 text-[11px] font-black uppercase text-slate-950">Percobaan ke-{attemptCount}</span>
-                <h2 className="mt-1 text-base font-black">Ujian Bab 8. Nilai 100 membuka praktikum.</h2>
+                <h2 className="mt-1 text-base font-black">Ujian Bab 8. Wajib nilai 100.</h2>
               </div>
               <div className="text-xs">Pindah layar: {tabSwitchCount}</div>
             </div>
@@ -1401,7 +1258,7 @@ export default function MatematikaKelas5Bab8({
                 <div className="text-2xl font-black">Skor {examScore}/100 • {examDurationSec} detik</div>
                 {!timingValid ? <p className="text-xs font-bold text-rose-700">Di bawah 25 detik. Ulangi sambil membaca soal.</p> : null}
                 {examScore === 100 && timingValid ? (
-                  <button type="button" onClick={() => { sfx("fanfare"); setActiveCard(6); }} className="rounded-2xl border-b-4 border-emerald-800 bg-emerald-600 px-8 py-3 text-sm font-black text-white">Masuk praktikum</button>
+                  <p className="text-sm font-black text-emerald-800">Ujian lulus. Praktikum terbuka setelah empat bab dalam blok ini lulus.</p>
                 ) : (
                   <p className="text-xs font-semibold">Ujian perlu 100. Angka soal berikutnya berbeda.</p>
                 )}
@@ -1431,99 +1288,6 @@ export default function MatematikaKelas5Bab8({
           </section>
         ) : null}
 
-        {activeCard === 6 ? (
-          <section className="space-y-4 rounded-3xl border-2 border-emerald-400 bg-white p-6 shadow-xl">
-            <div className="flex flex-wrap items-center justify-between gap-2">
-              <div>
-                <span className="rounded-full bg-emerald-100 px-3 py-1 text-xs font-black uppercase text-emerald-800">Gerbang 2 • skor 0–1.000</span>
-                <h2 className="mt-1 text-xl font-black">Kantin sehat: data, luas, dan gizi</h2>
-              </div>
-              <div className="rounded-xl bg-indigo-950 px-3.5 py-2 text-xs font-black text-amber-300">+50 poin</div>
-            </div>
-            <div className="grid grid-cols-2 gap-2 text-[11px] md:grid-cols-4">
-              {[CHAPTER_COMPETENCY_METADATA, ...completedOtherChapters.slice(0, 3)].map((ch, idx) => (
-                <div key={ch.chapterId} className="rounded-xl border border-slate-200 bg-slate-50 p-2.5">
-                  <div className="font-black uppercase text-indigo-700">{idx + 1}. {ch.subject}</div>
-                  <div className="font-extrabold">{ch.chapterTitle}</div>
-                </div>
-              ))}
-            </div>
-            <div className="grid items-start gap-5 md:grid-cols-2">
-              <div className="space-y-2 rounded-2xl border border-slate-200 bg-slate-50 p-4">
-                <p className="text-xs font-black uppercase">Porsi makan siang, target 650–750 kkal</p>
-                {MENU.map((item) => (
-                  <div key={item.id} className="flex items-center justify-between rounded-xl border border-slate-200 bg-white px-3 py-1 text-xs">
-                    <span><strong>{item.name}</strong> <span className="text-slate-500">({item.kcal} kkal, {item.group})</span></span>
-                    <span className="flex items-center gap-2">
-                      <button type="button" onClick={() => { sfx("pop"); setMenuPortions((p) => ({ ...p, [item.id]: Math.max(0, (p[item.id] || 0) - 1) })); }} className="h-6 w-6 rounded bg-slate-200 font-black">-</button>
-                      <span className="w-5 text-center font-black">{menuPortions[item.id] || 0}</span>
-                      <button type="button" onClick={() => { sfx("pop"); setMenuPortions((p) => ({ ...p, [item.id]: Math.min(3, (p[item.id] || 0) + 1) })); }} className="h-6 w-6 rounded bg-indigo-600 font-black text-white">+</button>
-                    </span>
-                  </div>
-                ))}
-                <div className="space-y-2 rounded-xl border border-slate-200 bg-white p-3 text-xs">
-                  <div className="font-black text-indigo-900">Luas kebun sayur, target 24–36 m²</div>
-                  <label className="flex items-center justify-between">Panjang {gardenLengthM} m<input type="range" min={3} max={10} value={gardenLengthM} onChange={(e) => setGardenLengthM(Number(e.target.value))} className="w-28 accent-emerald-600" /></label>
-                  <label className="flex items-center justify-between">Lebar {gardenWidthM} m<input type="range" min={3} max={8} value={gardenWidthM} onChange={(e) => setGardenWidthM(Number(e.target.value))} className="w-28 accent-emerald-600" /></label>
-                  <div className="font-black text-emerald-700">{gardenLengthM} × {gardenWidthM} = {gardenAreaM2} m²</div>
-                </div>
-              </div>
-              <div className="space-y-3">
-                <div className="space-y-2 rounded-2xl bg-slate-900 p-4 text-white">
-                  <div className="flex items-center justify-between text-xs font-bold">
-                    <span className={totalCalories >= 650 && totalCalories <= 750 ? "text-emerald-400" : "text-amber-300"}>Total {totalCalories} kkal</span>
-                    <span className="flex gap-1">
-                      <button type="button" onClick={() => setPracticumChartMode("batang")} className={`rounded px-2 py-0.5 text-[10px] font-black ${practicumChartMode === "batang" ? "bg-amber-400 text-slate-950" : "bg-slate-800"}`}>Batang</button>
-                      <button type="button" onClick={() => setPracticumChartMode("piktogram")} className={`rounded px-2 py-0.5 text-[10px] font-black ${practicumChartMode === "piktogram" ? "bg-amber-400 text-slate-950" : "bg-slate-800"}`}>Piktogram</button>
-                    </span>
-                  </div>
-                  {practicumChartMode === "batang" ? MENU.map((item) => {
-                    const sub = item.kcal * (menuPortions[item.id] || 0);
-                    return (
-                      <div key={item.id} className="flex items-center gap-2 text-[10px]">
-                        <span className="w-28 truncate">{item.name}</span>
-                        <span className="h-3.5 flex-1 overflow-hidden rounded bg-slate-800"><span style={{ width: `${Math.min(100, (sub / 350) * 100)}%` }} className="block h-full bg-emerald-400" /></span>
-                        <span className="w-10 text-right">{sub}</span>
-                      </div>
-                    );
-                  }) : (
-                    <div className="space-y-1 text-[10px]">
-                      <p className="font-bold text-amber-300">1 baterai = 50 kkal</p>
-                      {MENU.filter((x) => (menuPortions[x.id] || 0) > 0).map((item) => {
-                        const sub = item.kcal * (menuPortions[item.id] || 0);
-                        return (
-                          <div key={item.id} className="flex justify-between rounded bg-slate-800 px-2 py-1">
-                            <span className="w-28 truncate">{item.name}</span>
-                            <span>{"🔋".repeat(Math.max(1, Math.round(sub / 50)))}</span>
-                            <span>{sub}</span>
-                          </div>
-                        );
-                      })}
-                    </div>
-                  )}
-                </div>
-                <label className="block text-xs font-black">Laporan: sebut kalori, luas, dan alasan gizi</label>
-                <textarea value={studentReportText} onChange={(e) => setStudentReportText(e.target.value)} rows={4} placeholder="Total energi makan siang ... kkal. Kebun sayur ... m kali ... m, luas ... m²." className="w-full rounded-xl border-2 border-slate-200 p-3 text-xs outline-none focus:border-indigo-600" />
-                <button type="button" onClick={() => void nilaiPraktikum()} className="w-full rounded-2xl border-b-4 border-amber-600 bg-amber-400 py-3 text-xs font-black">Hitung skor karya di perangkat ini</button>
-              </div>
-            </div>
-            {evaluatedRubric ? (
-              <div className="space-y-3 rounded-2xl border-2 border-amber-400 bg-indigo-950 p-5 text-white">
-                <div className="flex flex-wrap items-center justify-between gap-2">
-                  <h3 className="text-xl font-black">Skor karya {evaluatedRubric.totalQualityScore} / 1.000</h3>
-                  <span className="rounded-xl bg-emerald-500 px-3 py-1.5 text-xs font-black text-slate-950">Poin bab {practiceTokens + examTokens} / 100</span>
-                </div>
-                <div className="grid grid-cols-2 gap-2 text-xs md:grid-cols-4">
-                  <div className="rounded-xl bg-slate-900 p-3">Akurasi {evaluatedRubric.accuracyScore}/300</div>
-                  <div className="rounded-xl bg-slate-900 p-3">Sintesis {evaluatedRubric.synthesisScore}/250</div>
-                  <div className="rounded-xl bg-slate-900 p-3">Visual {evaluatedRubric.optimizationVisualScore}/200</div>
-                  <div className="rounded-xl bg-slate-900 p-3">Laporan {evaluatedRubric.reasoningReportScore}/250</div>
-                </div>
-                <p className="rounded-xl bg-indigo-900/60 p-3 text-xs">{evaluatedRubric.aiFeedbackSummary}</p>
-              </div>
-            ) : null}
-          </section>
-        ) : null}
       </main>
     </div>
   );

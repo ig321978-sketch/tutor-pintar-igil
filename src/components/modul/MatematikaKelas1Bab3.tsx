@@ -1,6 +1,8 @@
 "use client";
 
 import React, { useCallback, useEffect, useRef, useState } from "react";
+import Link from "next/link";
+import { catatUjianLulus } from "@/lib/praktikum-blok";
 
 export interface ChapterCompetencyMetadata {
   chapterId: string;
@@ -103,39 +105,6 @@ interface CanvasStampItem {
   symbol: string;
   label: string;
 }
-
-const DEFAULT_CROSS_CHAPTERS: ChapterCompetencyMetadata[] = [
-  {
-    chapterId: "IPAS-K1-B3",
-    grade: 1,
-    subject: "IPAS",
-    chapterNumber: 3,
-    chapterTitle: "Merawat Tanaman & Panen Buah Kebun Sekolah",
-    textbookReference: "Kurikulum Merdeka Fase A — Mengenal Hasil Kebun & Lingkungan Bersih",
-    coreSkills: ["Memanen buah matang dengan tertib", "Mengelola sampah organik daun kering"],
-    practicumSynthesisHook: "Hitung sisa buah di pohon setelah sebagian dipanen dan bersihkan daun gugur hingga 0.",
-  },
-  {
-    chapterId: "BINDO-K1-B3",
-    grade: 1,
-    subject: "Bahasa Indonesia",
-    chapterNumber: 3,
-    chapterTitle: "Awas Kuman! & Menulis Cerita Pengalaman",
-    textbookReference: "Buku Bahasa Indonesia SD Kelas I Kemendikbudristek Bab 3",
-    coreSkills: ["Menulis kalimat cerita pengurangan", "Menceritakan kegiatan menjaga kebersihan"],
-    practicumSynthesisHook: "Susun laporan tertulis mengenai hasil panen yang dibagikan dan sisa di keranjang.",
-  },
-  {
-    chapterId: "PANCASILA-K1-B3",
-    grade: 1,
-    subject: "Pancasila",
-    chapterNumber: 3,
-    chapterTitle: "Gotong Royong & Berbagi Hasil Panen dengan Tetangga",
-    textbookReference: "Pendidikan Pancasila SD Kelas I Kemendikbudristek Bab 3",
-    coreSkills: ["Berbagi kepada teman yang membutuhkan", "Bekerja bakti membersihkan halaman"],
-    practicumSynthesisHook: "Bagikan buah hasil panen kepada sahabat dan hitung selisihnya secara transparan.",
-  },
-];
 
 const PRACTICE_QUESTIONS: PracticeQuestion[] = [
   {
@@ -577,19 +546,13 @@ function kalimatSelisih(kiri: number, kanan: number) {
 }
 
 export default function MatematikaKelas1Bab3({
-  studentId = "SISWA-K1-DEMO",
   studentName = "Sahabat Cilik IGIL",
-  completedOtherChapters = DEFAULT_CROSS_CHAPTERS,
-  onChapterComplete,
 }: IGILModuleProps) {
   const [activeCard, setActiveCard] = useState<1 | 2 | 3 | 4 | 5 | 6>(1);
   const [card2Unlocked, setCard2Unlocked] = useState(false);
   const [card5Unlocked, setCard5Unlocked] = useState(false);
-  const [card6Unlocked, setCard6Unlocked] = useState(false);
   const [practiceTokens, setPracticeTokens] = useState(0);
   const [examTokens, setExamTokens] = useState(0);
-  const [practicumTokens, setPracticumTokens] = useState(0);
-  const totalTokens = practiceTokens + examTokens + practicumTokens;
 
   const [poppedBalloonIds, setPoppedBalloonIds] = useState<number[]>([]);
   const [activeSubChapter, setActiveSubChapter] = useState<"A" | "B" | "C" | "D">("A");
@@ -632,14 +595,6 @@ export default function MatematikaKelas1Bab3({
   const ujianBerjalanRef = useRef(false);
   const fokusTerakhirRef = useRef(0);
 
-  const [practicumMode, setPracticumMode] = useState<"single" | "cross4">("cross4");
-  const [harvestInitialTen] = useState(10);
-  const [sharedToNeighbors, setSharedToNeighbors] = useState(4);
-  const [upeBasketCount, setUpeBasketCount] = useState(3);
-  const [fallenLeavesCleaned, setFallenLeavesCleaned] = useState(5);
-  const [studentReportText, setStudentReportText] = useState("");
-  const [practicumRubric, setPracticumRubric] = useState<PracticumEvaluationRubric | null>(null);
-  const [chapterCompletedFlag, setChapterCompletedFlag] = useState(false);
 
   const playSound = useCallback((type: SoundType) => {
     if (typeof window === "undefined") return;
@@ -915,9 +870,9 @@ export default function MatematikaKelas1Bab3({
     setDwellTimeWarning(false);
     if (calculatedScore === 100) {
       setExamTokens(70);
-      setCard6Unlocked(true);
+      catatUjianLulus("mtk-1-bab3");
       playSound("fanfare");
-      speakIGIL("Nilai kamu 100. Gerbang praktikum sudah terbuka.");
+      speakIGIL("Nilai kamu 100. Ujian bab ini lulus.");
     } else {
       playSound("wrong");
       speakIGIL(`Nilai kamu ${calculatedScore}. Ulangi ujian dengan soal baru sampai nilainya 100.`);
@@ -938,85 +893,7 @@ export default function MatematikaKelas1Bab3({
     setExamElapsedDeci(0);
   };
 
-  const susunLaporan = () => {
-    const sisa = harvestInitialTen - sharedToNeighbors;
-    const daunSisa = 5 - fallenLeavesCleaned;
-    const kalimatDaun =
-      daunSisa === 0
-        ? `Kami membersihkan 5 daun gugur sebanyak ${fallenLeavesCleaned} daun sehingga sisanya 5 - ${fallenLeavesCleaned} = 0.`
-        : `Kami membersihkan 5 daun gugur sebanyak ${fallenLeavesCleaned} daun sehingga sisanya 5 - ${fallenLeavesCleaned} = ${daunSisa}.`;
-    return `Saya bersama Kira, Upe, Malosi, dan Tora mengelola panen kebun sekolah. Dari ${harvestInitialTen} apel di Bingkai 10, kami berbagi ${sharedToNeighbors} apel kepada tetangga sehingga sisa apel Kira adalah ${harvestInitialTen} - ${sharedToNeighbors} = ${sisa} apel. Selisih sisa apel Kira dengan keranjang Upe adalah ${kalimatSelisih(sisa, upeBasketCount)}. ${kalimatDaun}`;
-  };
 
-  const handleEvaluatePracticum = () => {
-    const sisaKira = harvestInitialTen - sharedToNeighbors;
-    const selisih = sisaKira - upeBasketCount;
-    const sisaDaun = 5 - fallenLeavesCleaned;
-    const reportWords = studentReportText.trim().split(/\s+/).filter(Boolean).length;
-    if (reportWords < 8) {
-      playSound("wrong");
-      speakIGIL("Tuliskan laporan minimal 8 kata, atau gunakan tombol bantu susun kalimat.");
-      return;
-    }
-    let accuracyScore = 120;
-    if (sharedToNeighbors === 4 && sisaKira === 6) accuracyScore += 70;
-    if (selisih === 3) accuracyScore += 60;
-    if (sisaDaun === 0) accuracyScore += 50;
-    accuracyScore = Math.min(300, accuracyScore);
-
-    let synthesisScore = practicumMode === "cross4" ? 160 : 120;
-    const lowerReport = studentReportText.toLowerCase();
-    if (lowerReport.includes("apel") || lowerReport.includes("panen") || lowerReport.includes("daun")) synthesisScore += 30;
-    if (lowerReport.includes("tetangga") || lowerReport.includes("berbagi") || lowerReport.includes("selisih")) synthesisScore += 30;
-    if (lowerReport.includes("-") || lowerReport.includes("sisa") || lowerReport.includes("0")) synthesisScore += 30;
-    synthesisScore = Math.min(250, synthesisScore);
-
-    let optimizationVisualScore = 100;
-    if (sisaKira === 6 && upeBasketCount === 3) optimizationVisualScore += 50;
-    if (fallenLeavesCleaned === 5) optimizationVisualScore += 50;
-    optimizationVisualScore = Math.min(200, optimizationVisualScore);
-
-    let reasoningReportScore = Math.min(180, reportWords * 5);
-    if (/\d/.test(studentReportText)) reasoningReportScore += 40;
-    if (lowerReport.includes("sehingga") || lowerReport.includes("karena") || lowerReport.includes("selisih")) reasoningReportScore += 30;
-    reasoningReportScore = Math.min(250, reasoningReportScore);
-
-    const totalQualityScore = accuracyScore + synthesisScore + optimizationVisualScore + reasoningReportScore;
-    const rubricResult: PracticumEvaluationRubric = {
-      accuracyScore,
-      synthesisScore,
-      optimizationVisualScore,
-      reasoningReportScore,
-      totalQualityScore,
-      aiFeedbackSummary:
-        totalQualityScore >= 850
-          ? "Karya praktikum istimewa. Kamu memadukan pengurangan dari 10 (10 - 4 = 6), selisih dua keranjang (6 - 3 = 3), dan pembersihan habis (5 - 5 = 0) dalam laporan yang runtut."
-          : "Rancangan kebun sudah berjalan. Untuk skor yang lebih tinggi, bagikan tepat 4 apel (10 - 4 = 6), isi keranjang Upe 3 apel (6 - 3 = 3), dan bersihkan seluruh 5 daun (5 - 5 = 0).",
-    };
-    setPracticumRubric(rubricResult);
-    setPracticumTokens(50);
-    setChapterCompletedFlag(true);
-    playSound("fanfare");
-    const tokenBab = Math.min(150, practiceTokens + examTokens + 50);
-    speakIGIL(`Selamat ${studentName}! Skor karyamu ${totalQualityScore} dari 1000. Poin Latihan dan Ujian bab ini sekarang ${practiceTokens + examTokens}.`);
-    onChapterComplete?.({
-      chapterId: CHAPTER_COMPETENCY_METADATA.chapterId,
-      studentId,
-      practiceTokensEarned: practiceTokens,
-      examTokensEarned: examTokens,
-      practicumTokensEarned: 50,
-      totalChapterTokens: tokenBab,
-      examScore: examTokens === 70 ? 100 : examScore,
-      practicumRubric: rubricResult,
-      telemetry: {
-        attemptCount: examAttempts,
-        examDurationSeconds: Math.max(1, Math.round(examElapsedDeci / 10)),
-        tabSwitchCount: focusLossCount,
-        isHumanTimingValid: examTokens === 70,
-        completedAtISO: new Date().toISOString(),
-      },
-    });
-  };
 
   const kartu = [
     { id: 1 as const, label: "1. Silabus & Hook", icon: "🗺️", unlocked: true },
@@ -1024,16 +901,12 @@ export default function MatematikaKelas1Bab3({
     { id: 3 as const, label: "3. Lab & Kanvas", icon: "🔬", unlocked: card2Unlocked },
     { id: 4 as const, label: "4. Latihan (+30)", icon: "🎯", unlocked: card2Unlocked },
     { id: 5 as const, label: "5. Ujian (+70)", icon: "🏆", unlocked: card5Unlocked },
-    { id: 6 as const, label: "6. Praktikum (+50)", icon: "🎨", unlocked: card6Unlocked },
   ];
   const soalLatihan = PRACTICE_QUESTIONS[currentPracticeIdx];
   const jawabanLatihan = soalLatihan ? practiceAnswers[soalLatihan.id] : undefined;
   const soalUjian = examQuestions[currentExamIdx];
   const jawabanUjian = soalUjian ? examAnswers[soalUjian.id] : undefined;
   const utuh = subDFactPartA + subDFactPartB;
-  const sisaPanen = harvestInitialTen - sharedToNeighbors;
-  const selisihPanen = sisaPanen - upeBasketCount;
-  const sisaDaun = 5 - fallenLeavesCleaned;
   const kelompokB = Math.min(subCCompareGroupB, subCCompareGroupA);
 
   return (
@@ -1070,7 +943,7 @@ export default function MatematikaKelas1Bab3({
             <div className="text-right">
               <div className="text-[11px] font-bold tracking-wider text-amber-300 uppercase">Dompet Kualifikasi Bab</div>
               <div className="text-xl font-black text-amber-400">{practiceTokens + examTokens} <span className="text-xs text-slate-300">/ 100 Poin</span></div>
-              <div className="text-[10px] text-slate-300">Latihan {practiceTokens}/30 • Ujian {examTokens}/70 • Praktikum {practicumTokens}/50</div>
+              <div className="text-[10px] text-slate-300">Latihan {practiceTokens}/30 • Ujian {examTokens}/70</div>
             </div>
             <button
               type="button"
@@ -1140,8 +1013,8 @@ export default function MatematikaKelas1Bab3({
                     <p className="mt-0.5">Sepuluh latihan memberi paling banyak 30 poin. Ujian wajib 100 untuk 70 poin. Waktu tidak menentukan pemenang, hanya agar soal dibaca dengan sungguh-sungguh.</p>
                   </div>
                   <div className="rounded-xl border border-emerald-200 bg-white p-2.5">
-                    <span className="font-black text-emerald-700">Gerbang 2 — praktikum 50 poin.</span>
-                    <p className="mt-0.5">Skor karya dihitung di perangkat ini: akurasi 300, sintesis 250, visual 200, dan laporan 250. Jumlah paling tinggi 1.000 poin.</p>
+                    <span className="font-black text-emerald-700">Gerbang 2 — Praktikum 4 bab, 50 poin.</span>
+                    <p className="mt-0.5">Setelah empat bab dalam satu blok lulus Ujian 100%, Praktikum lintas 4 bab terbuka di halaman tersendiri. Terbit sekali per blok.</p>
                   </div>
                 </div>
               </div>
@@ -1498,7 +1371,7 @@ export default function MatematikaKelas1Bab3({
           <section className="space-y-4 rounded-3xl border-2 border-sky-200 bg-white p-5 shadow-md">
             <div className="flex flex-wrap items-center justify-between gap-2 rounded-2xl bg-slate-900 p-3.5 text-white">
               <div>
-                <span className="text-[11px] font-extrabold text-amber-400 uppercase">Gerbang 1 • Nilai 100 membuka praktikum</span>
+                <span className="text-[11px] font-extrabold text-amber-400 uppercase">Gerbang 1 • Ujian wajib nilai 100</span>
                 <h2 className="text-base font-black">Ujian pengurangan • 70 poin</h2>
               </div>
               <div className="flex flex-wrap items-center gap-2 text-xs">
@@ -1564,20 +1437,20 @@ export default function MatematikaKelas1Bab3({
                 <div className="flex flex-col justify-between gap-2 sm:flex-row sm:items-center">
                   <div>
                     <h3 className="text-base font-black">
-                      {dwellTimeWarning ? "Pengerjaan kurang dari 25 detik" : examScore === 100 ? "Nilai 100. Praktikum terbuka." : `Skor ujian ${examScore}/100. Syarat praktikum adalah 100.`}
+                      {dwellTimeWarning ? "Pengerjaan kurang dari 25 detik" : examScore === 100 ? "Nilai 100. Ujian bab ini lulus." : `Skor ujian ${examScore}/100. Syarat lulus adalah 100.`}
                     </h3>
                     <p className="text-xs">
                       {dwellTimeWarning
                         ? "Ulangi ujian dan baca setiap soal. Waktu dihitung sejak kartu ujian dibuka."
                         : examScore === 100
-                          ? "Kamu menerima 70 poin dan dapat masuk ke kartu praktikum."
+                          ? "Kamu menerima 70 poin. Praktikum terbuka setelah empat bab dalam blok ini lulus."
                           : "Soal berikutnya memakai angka yang berbeda. Tidak ada panggilan jaringan."}
                     </p>
                   </div>
                   <div className="flex shrink-0 gap-2">
                     <button type="button" onClick={handleRetryExam} className="rounded-xl border-b-4 border-slate-400 bg-white px-4 py-2 text-xs font-black text-slate-900">Ulangi ujian</button>
-                    {card6Unlocked ? (
-                      <button type="button" onClick={() => { playSound("fanfare"); setActiveCard(6); }} className="rounded-xl border-b-4 border-amber-600 bg-amber-400 px-4 py-2 text-xs font-black text-slate-950">Masuk praktikum</button>
+                    {examScore === 100 && !dwellTimeWarning ? (
+                      <Link href="/praktikum/mtk-1-blok1" className="igil-tombol rounded-xl border-b-4 border-amber-600 bg-amber-400 px-4 py-2 text-xs font-black text-slate-950">Lihat Praktikum Blok</Link>
                     ) : null}
                   </div>
                 </div>
@@ -1586,130 +1459,6 @@ export default function MatematikaKelas1Bab3({
           </section>
         ) : null}
 
-        {activeCard === 6 ? (
-          <section className="space-y-5 rounded-3xl border-2 border-emerald-300 bg-white p-5 shadow-md">
-            <div className="space-y-3 rounded-2xl bg-gradient-to-r from-emerald-900 to-teal-900 p-4 text-white">
-              <div className="flex flex-col justify-between gap-2 md:flex-row md:items-center">
-                <div>
-                  <span className="rounded-full bg-amber-400 px-2.5 py-0.5 text-xs font-black text-slate-950">Gerbang 2 • skor 0 sampai 1.000 • tanpa stopwatch</span>
-                  <h2 className="mt-1 text-lg font-black">Manajer kebun cilik: berbagi apel dan bersih daun</h2>
-                </div>
-                <div className="flex gap-2">
-                  <button type="button" onClick={() => { playSound("click"); setPracticumMode("single"); }} className={`rounded-xl border-b-2 px-3 py-1.5 text-xs font-black ${practicumMode === "single" ? "border-amber-600 bg-amber-400 text-slate-950" : "border-white/20 bg-white/10 text-white"}`}>Bab ini saja</button>
-                  <button type="button" onClick={() => { playSound("click"); setPracticumMode("cross4"); }} className={`rounded-xl border-b-2 px-3 py-1.5 text-xs font-black ${practicumMode === "cross4" ? "border-amber-600 bg-amber-400 text-slate-950" : "border-white/20 bg-white/10 text-white"}`}>Lintas bab</button>
-                </div>
-              </div>
-              {practicumMode === "cross4" ? (
-                <div className="grid grid-cols-1 gap-2 text-xs sm:grid-cols-2 md:grid-cols-4">
-                  <div className="rounded-xl border border-white/15 bg-white/10 p-2.5">
-                    <div className="font-black text-amber-300">1. Matematika</div>
-                    <p className="text-[11px] text-emerald-100">Kurangi dari 10, cari selisih, dan habiskan daun sampai 0.</p>
-                  </div>
-                  {completedOtherChapters.slice(0, 3).map((ch, idx) => (
-                    <div key={ch.chapterId} className="rounded-xl border border-white/15 bg-white/10 p-2.5">
-                      <div className="font-black text-amber-300">{idx + 2}. {ch.subject}</div>
-                      <p className="text-[11px] text-emerald-100">{ch.practicumSynthesisHook}</p>
-                    </div>
-                  ))}
-                </div>
-              ) : (
-                <p className="text-xs text-emerald-100">Kelola 10 apel bersama Kira dan Upe, hitung sisa, bandingkan selisih, lalu bersihkan daun sampai 0.</p>
-              )}
-            </div>
-
-            <div className="grid grid-cols-1 gap-4 lg:grid-cols-2">
-              <div className="space-y-3 rounded-2xl border-2 border-emerald-200 bg-emerald-50/70 p-4">
-                <h3 className="text-sm font-black text-emerald-950">Tiga syarat kebun</h3>
-                <ul className="space-y-1 rounded-xl border border-emerald-200 bg-white p-3 text-xs text-slate-700">
-                  <li>Dari 10 apel, berbagi 4 kepada tetangga. Sisa Kira harus 6. Kalimatnya 10 - 4 = 6.</li>
-                  <li>Keranjang Upe berisi 3 apel. Selisih dengan sisa Kira adalah 6 - 3 = 3.</li>
-                  <li>Bersihkan 5 daun gugur sampai sisanya 0. Kalimatnya 5 - 5 = 0.</li>
-                </ul>
-                <div className="space-y-2.5 text-xs">
-                  <label className="flex items-center justify-between rounded-xl border border-slate-200 bg-white p-2.5 font-bold">
-                    Apel dibagikan: {sharedToNeighbors}. Sisa: {sisaPanen}
-                    <input type="range" min={1} max={8} value={sharedToNeighbors} onChange={(e) => setSharedToNeighbors(Number(e.target.value))} className="accent-rose-600" />
-                  </label>
-                  <label className="flex items-center justify-between rounded-xl border border-slate-200 bg-white p-2.5 font-bold">
-                    Keranjang Upe: {upeBasketCount} apel
-                    <input type="range" min={1} max={6} value={upeBasketCount} onChange={(e) => setUpeBasketCount(Number(e.target.value))} className="accent-sky-600" />
-                  </label>
-                  <div className="flex flex-wrap items-center justify-between gap-2 rounded-xl border border-slate-200 bg-white p-2.5 font-bold">
-                    Daun dibersihkan dari 5
-                    <span className="flex gap-1">
-                      {[1, 2, 3, 4, 5].map((val) => (
-                        <button key={val} type="button" onClick={() => setFallenLeavesCleaned(val)} className={`rounded-lg px-2.5 py-1 font-black ${fallenLeavesCleaned === val ? "bg-emerald-600 text-white" : "bg-slate-100"}`}>-{val}</button>
-                      ))}
-                    </span>
-                  </div>
-                </div>
-              </div>
-              <div className="space-y-3 rounded-2xl border-2 border-sky-200 bg-sky-50/70 p-4">
-                <h3 className="text-sm font-black text-sky-950">Gambar panen dan selisih</h3>
-                {gambarBingkaiSepuluh(10, sharedToNeighbors)}
-                <div className="grid grid-cols-1 gap-2 text-xs sm:grid-cols-3">
-                  <div className={`rounded-xl border p-2 text-center font-bold ${sisaPanen === 6 ? "border-emerald-400 bg-emerald-100 text-emerald-900" : "border-amber-400 bg-amber-100 text-amber-900"}`}>
-                    Sisa: 10 - {sharedToNeighbors} = {sisaPanen} {sisaPanen === 6 ? "pas" : "(target 6)"}
-                  </div>
-                  <div className={`rounded-xl border p-2 text-center font-bold ${selisihPanen === 3 ? "border-emerald-400 bg-emerald-100 text-emerald-900" : "border-amber-400 bg-amber-100 text-amber-900"}`}>
-                    Selisih: {kalimatSelisih(sisaPanen, upeBasketCount)} {selisihPanen === 3 ? "pas" : "(target 6 - 3)"}
-                  </div>
-                  <div className={`rounded-xl border p-2 text-center font-bold ${sisaDaun === 0 ? "border-emerald-400 bg-emerald-100 text-emerald-900" : "border-amber-400 bg-amber-100 text-amber-900"}`}>
-                    Daun: 5 - {fallenLeavesCleaned} = {sisaDaun} {sisaDaun === 0 ? "bersih" : "(target 0)"}
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <div className="space-y-3 rounded-2xl border-2 border-amber-200 bg-amber-50/70 p-4">
-              <div className="flex flex-col justify-between gap-2 sm:flex-row sm:items-center">
-                <div>
-                  <h3 className="text-sm font-black text-amber-950">Laporan siswa</h3>
-                  <p className="text-xs text-slate-600">Tulis sisa apel, selisih dengan keranjang Upe, dan sisa daun.</p>
-                </div>
-                <button type="button" onClick={() => { playSound("pop"); setStudentReportText(susunLaporan()); }} className="shrink-0 rounded-xl border-b-4 border-amber-600 bg-amber-400 px-3 py-1.5 text-xs font-black text-slate-950">
-                  Bantu susun kalimat
-                </button>
-              </div>
-              <textarea
-                rows={4}
-                value={studentReportText}
-                onChange={(e) => setStudentReportText(e.target.value)}
-                placeholder="Contoh: Dari 10 apel, saya berbagi 4 apel kepada tetangga sehingga tersisa 10 - 4 = 6 apel."
-                className="w-full select-text rounded-xl border-2 border-amber-300 bg-white p-3 text-xs font-medium focus:border-sky-600 focus:outline-none md:text-sm"
-              />
-              <button type="button" onClick={handleEvaluatePracticum} className="w-full rounded-2xl border-b-4 border-emerald-800 bg-emerald-600 py-3 text-sm font-black text-white">
-                Hitung skor karya di perangkat ini
-              </button>
-            </div>
-
-            {practicumRubric ? (
-              <div className="space-y-4 rounded-3xl border-b-4 border-slate-950 bg-slate-900 p-5 text-white">
-                <div className="flex flex-col justify-between gap-2 border-b border-slate-700 pb-3 md:flex-row md:items-center">
-                  <div>
-                    <span className="text-xs font-extrabold text-amber-400 uppercase">Rubrik karya • dihitung di perangkat</span>
-                    <h3 className="text-lg font-black">{studentName} • {CHAPTER_COMPETENCY_METADATA.chapterId}</h3>
-                  </div>
-                  <div className="rounded-2xl bg-amber-400 px-4 py-2 text-center text-slate-950">
-                    <div className="text-[10px] font-black uppercase">Total skor</div>
-                    <div className="text-2xl font-black">{practicumRubric.totalQualityScore} / 1.000</div>
-                  </div>
-                </div>
-                <div className="grid grid-cols-2 gap-3 text-xs md:grid-cols-4">
-                  <div className="rounded-2xl border border-slate-700 bg-slate-800 p-3"><div className="font-bold text-slate-400">Akurasi</div><div className="mt-1 text-xl font-black text-emerald-400">{practicumRubric.accuracyScore} / 300</div></div>
-                  <div className="rounded-2xl border border-slate-700 bg-slate-800 p-3"><div className="font-bold text-slate-400">Sintesis</div><div className="mt-1 text-xl font-black text-sky-400">{practicumRubric.synthesisScore} / 250</div></div>
-                  <div className="rounded-2xl border border-slate-700 bg-slate-800 p-3"><div className="font-bold text-slate-400">Visual</div><div className="mt-1 text-xl font-black text-amber-400">{practicumRubric.optimizationVisualScore} / 200</div></div>
-                  <div className="rounded-2xl border border-slate-700 bg-slate-800 p-3"><div className="font-bold text-slate-400">Laporan</div><div className="mt-1 text-xl font-black text-purple-400">{practicumRubric.reasoningReportScore} / 250</div></div>
-                </div>
-                <div className="space-y-1 rounded-2xl border border-slate-700 bg-slate-800/90 p-3.5 text-xs text-slate-200">
-                  <div className="font-black text-amber-300">Catatan IGIL</div>
-                  <p>{practicumRubric.aiFeedbackSummary}</p>
-                  {chapterCompletedFlag ? <p className="pt-1 font-bold text-emerald-300">Bab ini tuntas di perangkat. Poin Latihan dan Ujian: {practiceTokens + examTokens} dari 100. Tidak ada data yang dikirim ke jaringan.</p> : null}
-                </div>
-              </div>
-            ) : null}
-          </section>
-        ) : null}
       </div>
     </div>
   );

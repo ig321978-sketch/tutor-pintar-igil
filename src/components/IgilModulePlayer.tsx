@@ -1,6 +1,8 @@
 "use client";
 
 import React, { useState, useEffect, useRef, useCallback } from "react";
+import Link from "next/link";
+import { catatUjianLulus } from "@/lib/praktikum-blok";
 import { pilihSuaraIndonesia } from "@/lib/guru";
 import { hentikanAudioGuruAktif } from "@/lib/putar-tts-klien";
 import materiBab1 from "@/data/kelas1-bab1.json";
@@ -44,7 +46,7 @@ import {
 // TIPE DATA & KONTRAK INTEGRASI CETAK BIRU IGIL
 // ============================================================================
 
-type MainTabId = "silabus" | "materi" | "simulasi" | "latihan" | "ujian" | "praktikum";
+type MainTabId = "silabus" | "materi" | "simulasi" | "latihan" | "ujian";
 type SubBabId = "A" | "B" | "C" | "D";
 type SmicpaStageId = "story" | "mindmap" | "infografis" | "concrete" | "pictorial" | "abstract";
 
@@ -412,7 +414,6 @@ const TAB_ANAK: Record<MainTabId, { emoji: string; warna: string }> = {
   simulasi: { emoji: "🧪", warna: "#CDEFD8" },
   latihan: { emoji: "✏️", warna: "#DDD8FF" },
   ujian: { emoji: "🏆", warna: "#FFD9B0" },
-  praktikum: { emoji: "🎨", warna: "#C8EAFB" },
 };
 
 const SUB_ANAK: Record<SubBabId, { emoji: string }> = {
@@ -771,14 +772,6 @@ export default function IgilModulePlayer() {
   const [examFirstTryPerfect, setExamFirstTryPerfect] = useState<boolean>(false);
   const [examAttempts, setExamAttempts] = useState<number>(1);
 
-  // 8. State Halaman Praktikum Sintesis (Cetak Biru IGIL: 4 Parameter Hidden Grading)
-  const [pracRedApples, setPracRedApples] = useState<number>(6);
-  const [pracYellowOranges, setPracYellowOranges] = useState<number>(4);
-  const [pracReadingTables, setPracReadingTables] = useState<number>(5);
-  const [pracReadingChairs, setPracReadingChairs] = useState<number>(5);
-  const [pracReasoningText, setPracReasoningText] = useState<string>("");
-  const [pracSubmitted, setPracSubmitted] = useState<boolean>(false);
-
   // 9. Perhitungan Kartu Poin (Latihan 30 + Ujian 70 per bab, Praktikum 50 per blok 4 bab)
   const practiceCorrectCount = PRACTICE_QUESTIONS.filter(
     (q) => practiceAnswers[q.id] === q.correctAnswer
@@ -789,8 +782,6 @@ export default function IgilModulePlayer() {
     practiceCorrectCount * tokenPerSoal,
   );
   const examTokens = examScore === 100 ? materiBab1.tokens.exam : 0;
-  const practicumTokens = pracSubmitted ? materiBab1.tokens.practicum : 0;
-  const totalTokens = practiceTokens + examTokens + practicumTokens;
   const batasToken =
     materiBab1.tokens.practice + materiBab1.tokens.exam;
 
@@ -952,7 +943,7 @@ export default function IgilModulePlayer() {
 
               <div className="w-full rounded-2xl bg-white px-3 py-2 sm:w-auto md:rounded-3xl md:border-4 md:border-[#F0AB00] md:px-4 md:py-2.5 md:shadow-[0_4px_0_rgba(240,171,0,0.7)]">
                 <div className="text-[10px] font-black uppercase tracking-wider text-[#334155]">
-                  KARTU POINT TOKEN IGIL
+                  KARTU POIN IGIL
                 </div>
                 <div className="flex items-center gap-2 text-xl font-black text-[#1C01A5] md:text-2xl">
                   <span className="igil-lompat inline-block text-3xl" aria-hidden="true">💰</span>
@@ -965,9 +956,6 @@ export default function IgilModulePlayer() {
                   </span>
                   <span className="rounded-full bg-[#FFD9B0] px-2 py-0.5">
                     🏆 <span className="hidden sm:inline">Ujian </span>{examTokens}/{materiBab1.tokens.exam}
-                  </span>
-                  <span className="rounded-full bg-[#C8EAFB] px-2 py-0.5">
-                    🎨 <span className="hidden sm:inline">Praktikum </span>{practicumTokens}/{materiBab1.tokens.practicum}
                   </span>
                 </div>
               </div>
@@ -989,7 +977,6 @@ export default function IgilModulePlayer() {
                 { id: "simulasi", label: "Simulasi" },
                 { id: "latihan", label: "Latihan" },
                 { id: "ujian", label: "Ujian" },
-                { id: "praktikum", label: "Praktikum" },
               ] as { id: MainTabId; label: string }[]
             ).map((tab) => {
               const isActive = activeMainTab === tab.id;
@@ -1103,14 +1090,14 @@ export default function IgilModulePlayer() {
                       nama: "Komponen Ujian Mandiri",
                       token: materiBab1.tokens.exam,
                       warna: "#FFD9B0",
-                      isi: "10 soal formal HOTS. Wajib meraih nilai sempurna 100/100 untuk membuka Praktikum.",
+                      isi: "10 soal formal HOTS. Wajib meraih nilai sempurna 100/100 agar bab ini lulus.",
                     },
                     {
                       emoji: "🎨",
-                      nama: "Komponen Praktikum Sintesis",
+                      nama: "Praktikum Lintas 4 Bab",
                       token: materiBab1.tokens.practicum,
                       warna: "#C8EAFB",
-                      isi: "Proyek perancangan terpadu yang dinilai secara tertutup (On-Submit Hidden Grading).",
+                      isi: "Satu tugas terpadu untuk empat bab. Terbuka setelah keempat bab lulus Ujian 100%, terbit sekali per blok, dinilai tertutup.",
                     },
                   ].map((k) => (
                     <div
@@ -2432,6 +2419,7 @@ export default function IgilModulePlayer() {
                         const score = right * 10;
                         setExamScore(score);
                         setExamSubmitted(true);
+                        if (score === 100) catatUjianLulus("mtk-1-bab1");
                         if (score === 100 && examAttempts === 1) {
                           setExamFirstTryPerfect(true);
                         }
@@ -2448,8 +2436,8 @@ export default function IgilModulePlayer() {
                     <div className="font-black text-sm text-[#1C01A5]">
                       Nilai Ujian Formal: {examScore} / 100{" "}
                       {examScore === 100
-                        ? "🎉 (Lulus Mutlak 100%! Gembok Praktikum Terbuka)"
-                        : "⚠️ (Wajib 100/100 untuk membuka Praktikum)"}
+                        ? "🎉 (Lulus Mutlak 100%!)"
+                        : "⚠️ (Wajib 100/100 untuk lulus)"}
                     </div>
                     <div className="flex gap-2">
                       {examScore < 100 ? (
@@ -2466,13 +2454,12 @@ export default function IgilModulePlayer() {
                           🔄 Ulangi Ujian
                         </button>
                       ) : (
-                        <button
-                          type="button"
-                          onClick={() => setActiveMainTab("praktikum")}
-                          className="px-5 py-2 rounded-xl bg-[#1C01A5] text-[#FFE566] font-black text-xs"
+                        <Link
+                          href="/praktikum/mtk-1-blok1"
+                          className="igil-tombol px-5 py-2 rounded-xl bg-[#1C01A5] text-[#FFE566] font-black text-xs"
                         >
-                          BUKA PRAKTIKUM SINTESIS ➡️
-                        </button>
+                          LIHAT PRAKTIKUM BLOK ➡️
+                        </Link>
                       )}
                     </div>
                   </div>
@@ -2483,137 +2470,6 @@ export default function IgilModulePlayer() {
         </section>
       )}
 
-      {/* =================================================================== */}
-      {/* 6. HALAMAN PRAKTIKUM (CETAK BIRU IGIL • LATAR HIJAU LEMBUT)         */}
-      {/* =================================================================== */}
-      {activeMainTab === "praktikum" && (
-        <section className="w-[98%] mx-auto mt-4 bg-[#F0FDF4] border-2 border-[#22C55E] rounded-3xl p-5 md:p-7 space-y-5">
-          {examScore < 100 ? (
-            <div className="bg-white p-6 rounded-3xl border-2 border-[#EF4444] text-center space-y-3">
-              <div className="text-4xl">🔒</div>
-              <h2 className="text-xl font-black text-[#1C01A5]">
-                Halaman Praktikum Masih Terkunci
-              </h2>
-              <p className="text-xs md:text-sm text-[#334155]">
-                Sesuai Cetak Biru Utama Platform IGIL, siswa wajib meraih nilai mutlak{" "}
-                <strong>100/100</strong> pada Komponen Ujian Mandiri terlebih dahulu.
-              </p>
-              <button
-                type="button"
-                onClick={() => setActiveMainTab("ujian")}
-                className="px-6 py-2.5 rounded-2xl bg-[#1C01A5] text-[#FFE566] font-black text-xs"
-              >
-                Kembali ke Ujian Formal
-              </button>
-            </div>
-          ) : (
-            <>
-              <div className="bg-[#1C01A5] text-white p-4 rounded-2xl flex flex-wrap items-center justify-between gap-2">
-                <div>
-                  <span className="text-xs font-black text-[#FFE566] uppercase">
-                    KOMPONEN 6 • PRAKTIKUM SINTESIS (50 TOKEN EMAS • ON-SUBMIT HIDDEN GRADING)
-                  </span>
-                  <h2 className="text-lg font-black">
-                    Proyek Terpadu: Merancang Kebun Buah &amp; Taman Baca Kakek (Sintesis 4 Bab)
-                  </h2>
-                </div>
-              </div>
-
-              {/* 2 Kartu Sejajar: Simulator Rakitan & Kolom Penalaran Siswa */}
-              <div className="w-full overflow-x-auto pb-2">
-                <div className="flex flex-nowrap gap-5 min-w-[700px]">
-                  <div className="w-1/2 bg-white rounded-3xl p-5 border-2 border-[#86EFAC] space-y-3">
-                    <h3 className="font-black text-base text-[#166534]">
-                      1. Rakitan Simulasi Kebun Buah (Target Pasangan = 10 &amp; Sama Banyak 5=5)
-                    </h3>
-                    <div className="space-y-2.5 text-xs font-bold">
-                      <div className="flex justify-between items-center bg-[#FEE2E2] p-2.5 rounded-xl">
-                        <span>🍎 Pohon Apel: {pracRedApples}</span>
-                        <input
-                          type="range"
-                          min={1}
-                          max={9}
-                          value={pracRedApples}
-                          onChange={(e) => setPracRedApples(Number(e.target.value))}
-                        />
-                      </div>
-                      <div className="flex justify-between items-center bg-[#FEF3C7] p-2.5 rounded-xl">
-                        <span>🍊 Pohon Jeruk: {pracYellowOranges}</span>
-                        <input
-                          type="range"
-                          min={1}
-                          max={9}
-                          value={pracYellowOranges}
-                          onChange={(e) => setPracYellowOranges(Number(e.target.value))}
-                        />
-                      </div>
-                      <div className="flex justify-between items-center bg-[#DBEAFE] p-2.5 rounded-xl">
-                        <span>🪑 Meja Baca ({pracReadingTables}) vs 🗑️ Tempat Sampah ({pracReadingChairs})</span>
-                        <button
-                          type="button"
-                          onClick={() => {
-                            setPracReadingTables(5);
-                            setPracReadingChairs(5);
-                          }}
-                          className="px-2.5 py-1 bg-[#1C01A5] text-[#FFE566] rounded-lg"
-                        >
-                          Set 5 = 5
-                        </button>
-                      </div>
-                    </div>
-                  </div>
-
-                  <div className="w-1/2 bg-white rounded-3xl p-5 border-2 border-[#86EFAC] space-y-3">
-                    <h3 className="font-black text-base text-[#1C01A5]">
-                      2. Penalaran &amp; Penjelasan Tertulis/Lisan Siswa
-                    </h3>
-                    <textarea
-                      rows={4}
-                      value={pracReasoningText}
-                      onChange={(e) => setPracReasoningText(e.target.value)}
-                      placeholder="Ceritakan dengan bahasamu sendiri berapa pohon apel dan jeruk yang kamu tanam agar berjumlah 10..."
-                      className="w-full p-3 rounded-2xl border-2 border-slate-300 text-xs"
-                    />
-                    <div className="flex items-center justify-between gap-2">
-                      <button
-                        type="button"
-                        onClick={() =>
-                          setPracReasoningText(
-                            `Aku menanam ${pracRedApples} pohon apel dan ${pracYellowOranges} pohon jeruk supaya jumlahnya pas ${
-                              pracRedApples + pracYellowOranges
-                            } pohon. Aku juga menaruh ${pracReadingTables} meja dan ${pracReadingChairs} tempat sampah agar sama banyak.`
-                          )
-                        }
-                        className="px-3 py-2 rounded-xl bg-[#FEF3C7] text-[#92400E] font-black text-xs"
-                      >
-                        ✨ Contoh Bahasa Anak SD
-                      </button>
-                      <button
-                        type="button"
-                        onClick={() => {
-                          setPracSubmitted(true);
-                          speakGuru(
-                            "Tugas Praktikum berhasil diserahkan! Nilai kualitasmu telah disimpan secara rahasia oleh sistem untuk kualifikasi Kolam Beasiswa 90 persen di akhir bulan."
-                          );
-                        }}
-                        className="px-5 py-2.5 rounded-xl bg-[#1C01A5] text-[#FFE566] border-2 border-[#FFE566] font-black text-xs"
-                      >
-                        🚀 SERAHKAN PRAKTIKUM
-                      </button>
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-              {pracSubmitted && (
-                <div className="bg-white p-4 rounded-2xl border-2 border-[#1C01A5] text-xs font-bold text-[#1C01A5]">
-                  ✅ <strong>Status On-Submit Hidden Grading:</strong> Tugas Praktikum telah dinilai 1 kali di latar belakang berdasarkan 4 Parameter Resmi (Akurasi Solusi 30%, Sintesis Lintas-4-Bab 25%, Kemandirian Pengerjaan 20%, Penalaran &amp; Penjelasan 25%) dan disimpan tersembunyi hingga pembukaan peringkat beasiswa akhir bulan. (+50 Poin Tercatat).
-                </div>
-              )}
-            </>
-          )}
-        </section>
-      )}
     </div>
   );
 }

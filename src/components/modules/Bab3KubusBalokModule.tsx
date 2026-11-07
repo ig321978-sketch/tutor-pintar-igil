@@ -1603,7 +1603,7 @@ export default function Bab3KubusBalokModule() {
             { id: "pemanasan", label: "🧠 1. Aktivasi Otak" },
             { id: "materi", label: "📖 2. Eksplorasi Materi" },
             { id: "simulator", label: "🧊 3. Lab Spasial 3D & Peta" },
-            { id: "praktikum", label: "✏️ 4. Kanvas Praktikum" },
+            { id: "praktikum", label: "✏️ 4. Kanvas Motorik" },
             { id: "latihan", label: "🎯 5. Latihan (10 Soal)" },
             { id: "evaluasi", label: "🏆 6. Evaluasi Anti-Contek" },
           ].map((tab) => (
@@ -2156,12 +2156,12 @@ export default function Bab3KubusBalokModule() {
         )}
 
         {/* ================================================================
-            TAB 4: KANVAS PRAKTIKUM SPASIAL (ZERO-COST CLIENT-SIDE)
+            TAB 4: KANVAS MOTORIK SPASIAL (ZERO-COST CLIENT-SIDE)
         ================================================================ */}
         {activeTab === "praktikum" && (
           <div>
             <span className="text-xs font-bold uppercase text-indigo-600 bg-indigo-50 px-3 py-1 rounded-full">
-              Praktikum Motorik & Visualisasi (Biaya API Rp 0)
+              Latihan Motorik & Visualisasi (Biaya API Rp 0)
             </span>
             <h2 className="text-xl font-extrabold text-slate-800 mt-2">
               Misi Menggambar Proyeksi Tampak Atas & Tampak Depan

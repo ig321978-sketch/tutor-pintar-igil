@@ -1,0 +1,58 @@
+{
+  "bloks": [
+    {
+      "blok_id": "mtk-1-blok1",
+      "phase_code": "FASE_A",
+      "grade": 1,
+      "subject": "Matematika",
+      "title": "Praktikum Blok 1: Kebun Apel Bu Guru",
+      "points_reward": 50,
+      "chapters": [
+        { "chapter_id": "mtk-1-bab1", "number": 1, "title": "Ayo Membilang sampai dengan 10", "href": "/ruang-belajar/mtk-1-bab1" },
+        { "chapter_id": "mtk-1-bab2", "number": 2, "title": "Penjumlahan sampai dengan 10", "href": "/ruang-belajar/mtk-1-bab2" },
+        { "chapter_id": "mtk-1-bab3", "number": 3, "title": "Pengurangan sampai dengan 10", "href": "/ruang-belajar/mtk-1-bab3" },
+        { "chapter_id": "mtk-1-bab4", "number": 4, "title": "Mengenal Bentuk", "href": "/ruang-belajar/mtk-1-bab4" }
+      ],
+      "practicum_task": {
+        "title": "Kebun Apel Bu Guru",
+        "scenario": "Hari ini Kira dan Upe membantu Bu Guru di kebun apel sekolah. Mereka memetik apel, menaruhnya di keranjang, lalu membagikannya ke teman. Ayo bantu mereka memakai semua yang sudah kamu pelajari di empat bab.",
+        "steps": [
+          {
+            "step_id": "langkah-1",
+            "chapter_id": "mtk-1-bab1",
+            "label": "Membilang",
+            "question": "Kira menaruh apel di keranjang merah. Hitung satu per satu. Ada berapa apel?",
+            "visual": { "emoji": "🍎", "count": 7 },
+            "options": ["6", "7", "8", "9"]
+          },
+          {
+            "step_id": "langkah-2",
+            "chapter_id": "mtk-1-bab2",
+            "label": "Penjumlahan",
+            "question": "Upe menambah 2 apel lagi ke keranjang merah. Sekarang ada berapa apel semuanya?",
+            "visual": { "emoji": "🍎", "count": 2 },
+            "options": ["8", "9", "10", "11"]
+          },
+          {
+            "step_id": "langkah-3",
+            "chapter_id": "mtk-1-bab3",
+            "label": "Pengurangan",
+            "question": "Kira membagikan 4 apel kepada teman. Sekarang tersisa berapa apel di keranjang?",
+            "visual": { "emoji": "🍎", "count": 4 },
+            "options": ["4", "5", "6", "7"]
+          },
+          {
+            "step_id": "langkah-4",
+            "chapter_id": "mtk-1-bab4",
+            "label": "Mengenal bentuk",
+            "question": "Kotak tempat apel punya 4 sisi lurus. Pintu kebun berbentuk seperti kotak itu juga. Bentuk apakah itu?",
+            "visual": { "emoji": "🟦", "count": 1 },
+            "options": ["Lingkaran", "Segitiga", "Segi empat", "Garis lengkung"]
+          }
+        ],
+        "question_prompt": "Ceritakan dengan kata-katamu sendiri: apa yang terjadi pada apel Kira dari awal sampai akhir? Sebutkan angkanya dan jelaskan mengapa jumlahnya berubah.",
+        "min_words": 8
+      }
+    }
+  ]
+}
