@@ -1,0 +1,683 @@
+{
+  "chapterId": "k1-mat-bab3",
+  "chapter_id": "k1-mat-bab3",
+  "phase_code": "FASE_A",
+  "grade": 1,
+  "subjectLabel": "MATEMATIKA - KELAS 1 SD",
+  "title": "BAB 3: PENGURANGAN SAMPAI DENGAN 10",
+  "tokens": {
+    "practice": 30,
+    "exam": 70,
+    "practicum": 50
+  },
+  "subBabs": {
+    "A": {
+      "id": "A",
+      "codeTitle": "Sub-Bab A (Cerita Pengurangan)",
+      "fullTitle": "Sub-Bab A: Cerita Pengurangan (Berkurang & Tersisa)",
+      "targetDescription": "Siswa memahami pengurangan sebagai berkurangnya jumlah benda, mengenali mula-mula, berkurang, dan sisa, menulis dan membaca kalimat matematika dengan tanda − dan =, mengenal sisa nol, serta mengurangkan sampai 10 dengan benda, gambar, dan simbol.",
+      "secondaryBg": "#FEE2E2",
+      "secondaryBorder": "#EF4444",
+      "secondaryText": "#991B1B",
+      "stories": [
+        {
+          "id": "A3-S1",
+          "titleHint": "Bermain Tutup Mata",
+          "sceneType": "tutup-mata-pulang",
+          "voiceNarration": "Enam sekawan sedang bermain tutup mata. Tetapi, Malosi dan Tika harus pulang. Sekarang tersisa Kira, Upe, Wei, dan Halim. Apakah jumlah anak menjadi lebih sedikit? Ya. Mula-mula enam anak, berkurang dua anak, sisanya empat anak."
+        },
+        {
+          "id": "A3-S2",
+          "titleHint": "Igil Menulis di Papan",
+          "sceneType": "papan-kurang",
+          "voiceNarration": "Igil menulis cerita tutup mata di papan. Mula-mula enam anak. Berkurang dua anak. Sisanya empat anak. Tanda kurang dipakai untuk pengurangan. Kita tulis: enam, tanda kurang, dua, tanda sama dengan, empat. Kita baca: enam dikurangi dua sama dengan empat. Boleh juga dibaca: enam dikurangi dua hasilnya empat. Pengurangan artinya jumlah yang berkurang."
+        },
+        {
+          "id": "A3-S3",
+          "titleHint": "Kue Ibu",
+          "sceneType": "kue-ibu",
+          "voiceNarration": "Ibu mempunyai enam kue. Upe memakan satu kue. Sisa kue Ibu adalah lima. Kita tulis: enam kurang satu sama dengan lima. Enam dikurangi satu hasilnya lima."
+        },
+        {
+          "id": "A3-S4",
+          "titleHint": "Mobil Kosong",
+          "sceneType": "mobil-turun",
+          "voiceNarration": "Mula-mula ada tiga orang di dalam mobil. Sebanyak tiga orang turun dari mobil. Sekarang tidak ada orang dalam mobil. Tiga dikurangi tiga hasilnya nol. Nol artinya tidak ada yang tersisa."
+        },
+        {
+          "id": "A3-S5",
+          "titleHint": "Kupu-kupu Terbang",
+          "sceneType": "kupu-terbang",
+          "voiceNarration": "Ada enam kupu-kupu di bunga. Lalu dua kupu-kupu terbang. Sekarang tersisa empat kupu-kupu di bunga. Enam dikurangi dua sama dengan empat."
+        },
+        {
+          "id": "A3-S6",
+          "titleHint": "Ayo Bermain Kelereng",
+          "sceneType": "kelereng-ambil",
+          "voiceNarration": "Ayo bermain! Kira menaruh lima kelereng di atas piring. Kira mengambil satu kelereng. Sekarang tersisa empat kelereng. Lima dikurangi satu sama dengan empat. Sekarang giliranmu: buat cerita pengurangan, lalu minta temanmu menjawabnya."
+        }
+      ],
+      "mindMaps": [
+        {
+          "stepNumber": 1,
+          "stepTitle": "1. Hitung Mula-mula",
+          "stepDesc": "Hitung dulu semua benda sebelum ada yang pergi. Itu bilangan mula-mula. Di permainan tutup mata, mula-mula ada enam anak.",
+          "icon": "👀",
+          "flowFrom": "Cerita atau gambar",
+          "flowTo": "Bilangan mula-mula"
+        },
+        {
+          "stepNumber": 2,
+          "stepTitle": "2. Cari yang Berkurang",
+          "stepDesc": "Cari benda yang pergi, turun, dimakan, terbang, atau pecah. Banyaknya adalah bilangan yang berkurang. Dua anak pulang, jadi berkurang dua.",
+          "icon": "👋",
+          "flowFrom": "Bilangan mula-mula",
+          "flowTo": "Bilangan yang berkurang"
+        },
+        {
+          "stepNumber": 3,
+          "stepTitle": "3. Pakai Tanda Kurang",
+          "stepDesc": "Bendanya jadi lebih sedikit. Itu namanya mengurangi, dan kita pakai tanda kurang. Pengurangan artinya jumlah yang berkurang.",
+          "icon": "➖",
+          "flowFrom": "Yang berkurang",
+          "flowTo": "Tanda kurang"
+        },
+        {
+          "stepNumber": 4,
+          "stepTitle": "4. Hitung Sisanya",
+          "stepDesc": "Hitung benda yang masih tinggal. Itu sisanya. Boleh mencoret atau menyingkirkan benda satu per satu, lalu menghitung yang tinggal. Enam kurangi dua, sisanya empat.",
+          "icon": "🔢",
+          "flowFrom": "Tanda kurang",
+          "flowTo": "Sisa benda"
+        },
+        {
+          "stepNumber": 5,
+          "stepTitle": "5. Tulis dan Baca",
+          "stepDesc": "Tulis kalimat matematika: enam kurang dua sama dengan empat. Lalu baca: enam dikurangi dua sama dengan empat, atau enam dikurangi dua hasilnya empat.",
+          "icon": "📝",
+          "flowFrom": "Sisa benda",
+          "flowTo": "Kalimat pengurangan"
+        },
+        {
+          "stepNumber": 6,
+          "stepTitle": "6. Periksa dengan Menggabung",
+          "stepDesc": "Periksa jawabanmu dengan penjumlahan. Sisa empat digabung dengan yang pergi dua, hasilnya enam lagi. Kalau sama dengan mula-mula, jawabanmu benar.",
+          "icon": "✅",
+          "flowFrom": "Kalimat pengurangan",
+          "flowTo": "Jawaban terperiksa"
+        }
+      ],
+      "infografisData": [
+        {
+          "fruitName": "Berkurang: Anak Tutup Mata (6 − 2)",
+          "emoji": "🧒",
+          "countNum": 4,
+          "countWord": "Empat",
+          "voiceSentence": "Enam anak bermain tutup mata. Dua anak pulang. Sisanya empat anak."
+        },
+        {
+          "fruitName": "Tiga Bagian Cerita: Mula-mula, Berkurang, Sisa",
+          "emoji": "📋",
+          "countNum": 3,
+          "countWord": "Tiga",
+          "voiceSentence": "Setiap cerita pengurangan punya tiga bagian: mula-mula, berkurang, dan sisa."
+        },
+        {
+          "fruitName": "Tanda Kurang (−) dan Sama dengan (=)",
+          "emoji": "➖",
+          "countNum": 2,
+          "countWord": "Dua",
+          "voiceSentence": "Tanda kurang dibaca dikurangi. Tanda sama dengan menunjukkan sisanya."
+        },
+        {
+          "fruitName": "Cara Membaca 6 − 2 = 4",
+          "emoji": "📖",
+          "countNum": 4,
+          "countWord": "Empat",
+          "voiceSentence": "Enam dikurangi dua sama dengan empat. Juga boleh dibaca enam dikurangi dua hasilnya empat."
+        },
+        {
+          "fruitName": "Kata Kunci Pengurangan",
+          "emoji": "🔑",
+          "countNum": 7,
+          "countWord": "Tujuh",
+          "voiceSentence": "Kata kunci pengurangan: pulang, turun, dimakan, terbang, pecah, diambil, dan hilang."
+        },
+        {
+          "fruitName": "Sisa Nol dan Tidak Ada yang Berkurang",
+          "emoji": "0️⃣",
+          "countNum": 0,
+          "countWord": "Nol",
+          "voiceSentence": "Tiga dikurangi tiga hasilnya nol. Lima dikurangi nol hasilnya lima."
+        },
+        {
+          "fruitName": "Tambah dan Kurang Berlawanan",
+          "emoji": "↔️",
+          "countNum": 2,
+          "countWord": "Dua",
+          "voiceSentence": "Tambah membuat benda lebih banyak. Kurang membuat benda lebih sedikit."
+        },
+        {
+          "fruitName": "Tiga Cara Melihat Sisa: Benda, Gambar, Angka",
+          "emoji": "🪜",
+          "countNum": 3,
+          "countWord": "Tiga",
+          "voiceSentence": "Kita bisa melihat sisa dengan benda nyata, dengan diagram yang dicoret, atau dengan angka."
+        }
+      ],
+      "concreteSlides": [
+        {
+          "title": "Teman Pulang, Sisa Berapa? (6 − 2 = 4)",
+          "emoji": "🧒",
+          "targetCount": 4,
+          "voiceGuide": "Ketuk anak yang pulang. Lalu hitung anak yang masih tinggal."
+        },
+        {
+          "title": "Kue Ibu untuk Upe (6 − 1 = 5)",
+          "emoji": "🧁",
+          "targetCount": 5,
+          "voiceGuide": "Seret kue ke Upe, atau ketuk kuenya. Lalu hitung kue yang masih ada di piring."
+        },
+        {
+          "title": "Lengkapi Cerita Pengurangan (7 − 2, 3 − 3, 6 − 2)",
+          "emoji": "🦋",
+          "targetCount": 4,
+          "voiceGuide": "Hitung benda yang tersisa. Isi kotak mula-mula, berkurang, dan sisa."
+        },
+        {
+          "title": "Tebak Sisa Kelereng (7 − 2, 9 − 4)",
+          "emoji": "🔴",
+          "targetCount": 5,
+          "voiceGuide": "Tebak dulu sisanya. Ambil kelereng ke kantong, lalu hitung yang tinggal."
+        }
+      ],
+      "pictorialSlides": [
+        {
+          "title": "Bingkai Sepuluh Dicoret (6 − 2 dan 8 − 3)",
+          "diagramType": "ten-frame",
+          "numberA": 6,
+          "numberB": 2,
+          "caption": "Titik merah adalah yang mula-mula ada. Titik yang dicoret adalah yang berkurang."
+        },
+        {
+          "title": "Goresan Tally Dicoret (5 − 2, 7 − 4, 9 − 3)",
+          "diagramType": "bar-blocks",
+          "numberA": 5,
+          "numberB": 2,
+          "caption": "Coret goresan sebanyak yang berkurang, lalu hitung goresan yang tinggal."
+        },
+        {
+          "title": "Jodohkan Diagram dan Kalimat (8 − 3, 6 − 2, 7 − 5)",
+          "diagramType": "bar-blocks",
+          "numberA": 8,
+          "numberB": 3,
+          "caption": "Bingkai sepuluh, goresan tally, dan model batang dijodohkan dengan kalimat pengurangannya."
+        }
+      ],
+      "abstractSlides": [
+        {
+          "symbolLarge": "6 − 2 = 4",
+          "wordLarge": "TANDA KURANG (−) DAN SAMA DENGAN (=)",
+          "mathNotation": "6 − 2 = 4   |   5 − 1 = 4",
+          "voiceReadout": "Enam dikurangi dua sama dengan empat. Lima dikurangi satu sama dengan empat."
+        },
+        {
+          "symbolLarge": "5 − 5 = 0",
+          "wordLarge": "SISA NOL",
+          "mathNotation": "3 − 3 = 0   |   5 − 5 = 0",
+          "voiceReadout": "Tiga dikurangi tiga hasilnya nol. Lima dikurangi lima hasilnya nol."
+        },
+        {
+          "symbolLarge": "7 − 0 = 7",
+          "wordLarge": "TIDAK ADA YANG BERKURANG",
+          "mathNotation": "5 − 0 = 5   |   7 − 0 = 7",
+          "voiceReadout": "Lima dikurangi nol hasilnya lima. Tujuh dikurangi nol hasilnya tujuh."
+        }
+      ],
+      "interactiveGames": [
+        {
+          "gameId": "subA3-game-1",
+          "gameNumber": 1,
+          "stage": "Concrete",
+          "gameType": "tap-to-remove",
+          "title": "Teman Pulang, Sisa Berapa?",
+          "bookReference": "Buku Siswa Hlm. 77–78",
+          "objective": "Memahami pengurangan sebagai berkurangnya jumlah anak yang bermain.",
+          "mechanicDescription": "Dua ronde. Siswa mengetuk anak yang pulang (6 anak, 2 pulang; lalu 7 anak, 3 pulang) sampai jumlah yang pulang sesuai cerita, lalu mengucapkan sisa anak.",
+          "voiceGuide": "Ketuk anak yang harus pulang. Setelah semua pulang, ucapkan berapa anak yang masih tinggal."
+        },
+        {
+          "gameId": "subA3-game-2",
+          "gameNumber": 2,
+          "stage": "Concrete",
+          "gameType": "drag-to-eat",
+          "title": "Kue Ibu untuk Upe",
+          "bookReference": "Buku Siswa Hlm. 79",
+          "objective": "Menghubungkan pengurangan dengan benda yang diambil dan dimakan.",
+          "mechanicDescription": "Dua ronde (6 − 1, 8 − 3). Siswa menyeret atau mengetuk kue dari piring ke Upe sebanyak yang dimakan, lalu mengucapkan sisa kue.",
+          "voiceGuide": "Seret kue dari piring ke Upe, atau ketuk kuenya. Setelah Upe selesai makan, ucapkan sisa kue."
+        },
+        {
+          "gameId": "subA3-game-3",
+          "gameNumber": 3,
+          "stage": "Concrete",
+          "gameType": "fill-the-story",
+          "title": "Lengkapi Cerita Pengurangan",
+          "bookReference": "Buku Siswa Hlm. 79, 81",
+          "objective": "Mengisi mula-mula, berkurang, dan sisa pada cerita, termasuk sisa nol.",
+          "mechanicDescription": "Tiga ronde: kelereng 7 − 2, mobil 3 − 3 (sisa nol), kupu-kupu 6 − 2. Siswa mengisi tiga kotak tiap cerita dengan memilih angka.",
+          "voiceGuide": "Hitung bendanya. Isi kotak mula-mula, berkurang, dan sisa. Lalu ucapkan sisa pada cerita terakhir."
+        },
+        {
+          "gameId": "subA3-game-4",
+          "gameNumber": 4,
+          "stage": "Concrete",
+          "gameType": "predict-then-check",
+          "title": "Tebak Sisa Kelereng",
+          "bookReference": "Buku Siswa Hlm. 80",
+          "objective": "Memperkirakan sisa, lalu membuktikannya dengan benda nyata (Ayo Bermain).",
+          "mechanicDescription": "Dua ronde (7 − 2, 9 − 4). Siswa menebak sisa, mengambil kelereng ke kantong, lalu mengetuk tiap kelereng yang tinggal sambil menghitung.",
+          "voiceGuide": "Tebak dulu sisanya. Ambil kelereng ke kantong, lalu hitung kelereng yang tinggal."
+        },
+        {
+          "gameId": "subA3-game-5",
+          "gameNumber": 5,
+          "stage": "Picture",
+          "gameType": "cross-out-ten-frame",
+          "title": "Bingkai Sepuluh Dicoret",
+          "bookReference": "Buku Siswa Hlm. 82–83",
+          "objective": "Menunjukkan yang berkurang pada bingkai sepuluh dengan mencoret titik.",
+          "mechanicDescription": "Dua ronde (6 − 2, 8 − 3). Siswa mencoret titik sebanyak yang berkurang pada bingkai sepuluh, lalu menghitung titik yang tidak dicoret. Hanya diagram, tanpa gambar benda.",
+          "voiceGuide": "Coret titik sebanyak yang berkurang, lalu ucapkan berapa titik yang tidak dicoret."
+        },
+        {
+          "gameId": "subA3-game-6",
+          "gameNumber": 6,
+          "stage": "Picture",
+          "gameType": "cross-out-tally",
+          "title": "Goresan Tally Dicoret",
+          "bookReference": "Buku Siswa Hlm. 83–84",
+          "objective": "Mewakili pengurangan dengan goresan tally yang dicoret.",
+          "mechanicDescription": "Tiga ronde (5 − 2, 7 − 4, 9 − 3). Siswa mencoret goresan sebanyak yang berkurang, lalu menghitung goresan yang tinggal. Hanya diagram.",
+          "voiceGuide": "Coret goresan sebanyak yang berkurang, lalu ucapkan berapa goresan yang tinggal."
+        },
+        {
+          "gameId": "subA3-game-7",
+          "gameNumber": 7,
+          "stage": "Picture",
+          "gameType": "match-diagram-sentence",
+          "title": "Jodohkan Diagram dan Kalimat",
+          "bookReference": "Buku Siswa Hlm. 83–84",
+          "objective": "Menghubungkan tiga bentuk diagram dengan kalimat pengurangan yang tepat.",
+          "mechanicDescription": "Siswa menjodohkan bingkai sepuluh 8 − 3, goresan tally 6 − 2, dan model batang 7 − 5 dengan kalimat pengurangannya, lalu mengucapkan sisa goresan tally.",
+          "voiceGuide": "Ketuk satu diagram, lalu ketuk kalimat pengurangan yang cocok. Setelah semua berjodoh, ucapkan sisa goresan tally."
+        },
+        {
+          "gameId": "subA3-game-8",
+          "gameNumber": 8,
+          "stage": "Abstract",
+          "gameType": "build-sentence",
+          "title": "Susun Kalimat",
+          "bookReference": "Buku Siswa Hlm. 78",
+          "objective": "Memilih tanda kurang dan sama dengan untuk melengkapi kalimat pengurangan.",
+          "mechanicDescription": "Tiga ronde (3 − 3 = 0, 5 − 1 = 4, 6 − 2 = 4). Siswa memilih kartu simbol − lalu = untuk kotak yang menyala.",
+          "voiceGuide": "Lengkapi kalimat matematika. Pilih kartu simbol yang tepat untuk kotak yang menyala. Terakhir, ucapkan hasilnya."
+        },
+        {
+          "gameId": "subA3-game-9",
+          "gameNumber": 9,
+          "stage": "Abstract",
+          "gameType": "missing-number",
+          "title": "Detektif Angka Hilang",
+          "bookReference": "Buku Siswa Hlm. 83–85",
+          "objective": "Menemukan sisa atau bilangan yang berkurang pada kalimat pengurangan.",
+          "mechanicDescription": "Empat kasus (5 − 2 = ?, 7 − ? = 4, 9 − 4 = ?, 8 − 5 = ?) dengan petunjuk tertulis.",
+          "voiceGuide": "Temukan angka yang hilang pada kalimat pengurangan. Baca petunjuknya, lalu pilih angka yang tepat."
+        },
+        {
+          "gameId": "subA3-game-10",
+          "gameNumber": 10,
+          "stage": "Abstract",
+          "gameType": "voice-and-trace",
+          "title": "Kanvas Guratan dan Suara",
+          "bookReference": "Buku Siswa Hlm. 80, 87",
+          "objective": "Mengucapkan dan menuliskan sisa, lalu membuat kalimat pengurangan sendiri (Ayo Bermain dan Ayo Mencoba).",
+          "mechanicDescription": "Ronde 1: 5 − 1 = 4, ucapkan dan guratkan. Ronde 2: siswa memilih mula-mula dan berkurang sendiri (sisa paling sedikit 1), lalu mengucapkan dan menggurat hasilnya.",
+          "voiceGuide": "Ucapkan hasil pengurangan, lalu guratkan angkanya di kanvas. Setelah itu, buat kalimat pengurangan milikmu sendiri."
+        }
+      ]
+    },
+    "B": {
+      "id": "B",
+      "codeTitle": "Sub-Bab B (Berbagai Cara)",
+      "fullTitle": "Sub-Bab B: Berbagai Cara Melakukan Pengurangan",
+      "targetDescription": "Siswa mengurangkan sampai 10 dengan pasangan bilangan, menghitung mundur, dan pengurangan dari 10.",
+      "secondaryBg": "#FEF3C7",
+      "secondaryBorder": "#F59E0B",
+      "secondaryText": "#92400E",
+      "segeraHadir": true,
+      "stories": [],
+      "mindMaps": [],
+      "infografisData": [],
+      "concreteSlides": [],
+      "pictorialSlides": [],
+      "abstractSlides": [],
+      "interactiveGames": []
+    },
+    "C": {
+      "id": "C",
+      "codeTitle": "Sub-Bab C (Hubungan Penjumlahan dan Pengurangan)",
+      "fullTitle": "Sub-Bab C: Hubungan Penjumlahan dan Pengurangan",
+      "targetDescription": "Siswa memahami bahwa penjumlahan dan pengurangan saling berlawanan dan memakai keluarga bilangan untuk memeriksa jawaban.",
+      "secondaryBg": "#DCFCE7",
+      "secondaryBorder": "#22C55E",
+      "secondaryText": "#166534",
+      "segeraHadir": true,
+      "stories": [],
+      "mindMaps": [],
+      "infografisData": [],
+      "concreteSlides": [],
+      "pictorialSlides": [],
+      "abstractSlides": [],
+      "interactiveGames": []
+    },
+    "D": {
+      "id": "D",
+      "codeTitle": "Sub-Bab D (Soal Cerita Pengurangan)",
+      "fullTitle": "Sub-Bab D: Soal Cerita Pengurangan",
+      "targetDescription": "Siswa menyelesaikan soal cerita pengurangan satu langkah: membaca cerita, menulis kalimat pengurangan, dan menjawab dengan kalimat lengkap.",
+      "secondaryBg": "#EDE9FE",
+      "secondaryBorder": "#8B5CF6",
+      "secondaryText": "#5B21B6",
+      "segeraHadir": true,
+      "stories": [],
+      "mindMaps": [],
+      "infografisData": [],
+      "concreteSlides": [],
+      "pictorialSlides": [],
+      "abstractSlides": [],
+      "interactiveGames": []
+    }
+  },
+  "practiceQuestions": [
+    {
+      "id": 1,
+      "level": "LOTS (30%)",
+      "prompt": "Ada 6 anak bermain tutup mata. Lalu 2 anak pulang. Kalimat pengurangan yang tepat adalah...",
+      "visualEmojis": [
+        "🧒",
+        "🧒",
+        "🧒",
+        "🧒",
+        "🧒",
+        "🧒"
+      ],
+      "options": [
+        "6 + 2 = 8",
+        "6 − 2 = 4",
+        "6 − 4 = 2",
+        "4 − 2 = 6"
+      ]
+    },
+    {
+      "id": 2,
+      "level": "LOTS (30%)",
+      "prompt": "Tanda yang dipakai untuk pengurangan adalah...",
+      "visualEmojis": [],
+      "options": [
+        "+ (tambah)",
+        "= (sama dengan)",
+        "> (lebih dari)",
+        "− (kurang)"
+      ]
+    },
+    {
+      "id": 3,
+      "level": "LOTS (30%)",
+      "prompt": "Ibu mempunyai 6 kue. Upe memakan 1 kue. Berapa sisa kue Ibu?",
+      "visualEmojis": [
+        "🧁",
+        "🧁",
+        "🧁",
+        "🧁",
+        "🧁",
+        "🧁"
+      ],
+      "options": [
+        "7",
+        "5",
+        "6",
+        "4"
+      ]
+    },
+    {
+      "id": 4,
+      "level": "MOTS (30%)",
+      "prompt": "Mula-mula ada 3 orang di dalam mobil. Sebanyak 3 orang turun. Berapa orang yang masih ada di dalam mobil?",
+      "visualEmojis": [
+        "🧑",
+        "🧑",
+        "🧑"
+      ],
+      "options": [
+        "0",
+        "1",
+        "3",
+        "6"
+      ]
+    },
+    {
+      "id": 5,
+      "level": "MOTS (30%)",
+      "prompt": "Cara membaca 8 − 3 = 5 yang tepat adalah...",
+      "visualEmojis": [],
+      "options": [
+        "delapan ditambah tiga sama dengan lima",
+        "tiga dikurangi delapan sama dengan lima",
+        "delapan dikurangi tiga sama dengan lima",
+        "delapan dikurangi lima sama dengan tiga"
+      ]
+    },
+    {
+      "id": 6,
+      "level": "MOTS (30%)",
+      "prompt": "Ada 9 balon. Lalu 4 balon pecah. Bilangan mula-mula pada cerita ini adalah...",
+      "visualEmojis": [
+        "🎈",
+        "🎈",
+        "🎈",
+        "🎈",
+        "🎈",
+        "🎈",
+        "🎈",
+        "🎈",
+        "🎈"
+      ],
+      "options": [
+        "4",
+        "5",
+        "13",
+        "9"
+      ]
+    },
+    {
+      "id": 7,
+      "level": "HOTS (40%)",
+      "prompt": "Kira punya 8 pensil. Kira memberikan beberapa pensil kepada Upe. Sekarang pensil Kira tersisa 5. Berapa pensil yang Kira berikan?",
+      "visualEmojis": [
+        "✏️",
+        "✏️",
+        "✏️",
+        "✏️",
+        "✏️",
+        "✏️",
+        "✏️",
+        "✏️"
+      ],
+      "options": [
+        "2",
+        "5",
+        "3",
+        "13"
+      ]
+    },
+    {
+      "id": 8,
+      "level": "HOTS (40%)",
+      "prompt": "Cerita manakah yang cocok dengan 7 − 3 = 4?",
+      "visualEmojis": [],
+      "options": [
+        "Ada 7 bebek. Datang lagi 3 bebek. Semuanya ada 4 bebek.",
+        "Ada 7 burung di dahan. Sebanyak 3 burung terbang. Tersisa 4 burung.",
+        "Ada 3 burung di dahan. Datang lagi 4 burung. Semuanya ada 7 burung.",
+        "Ada 4 burung di dahan. Sebanyak 3 burung terbang. Tersisa 7 burung."
+      ]
+    },
+    {
+      "id": 9,
+      "level": "HOTS (40%)",
+      "prompt": "Manakah pengurangan yang hasilnya 0?",
+      "visualEmojis": [],
+      "options": [
+        "5 − 0 = ...",
+        "5 − 1 = ...",
+        "5 − 4 = ...",
+        "5 − 5 = ..."
+      ]
+    },
+    {
+      "id": 10,
+      "level": "HOTS (40%)",
+      "prompt": "Upe menulis 4 − 6 = 2. Menurutmu, apa yang keliru?",
+      "visualEmojis": [],
+      "options": [
+        "Tanda kurang salah ditulis.",
+        "Hasilnya harus 10.",
+        "Mula-mula hanya 4, jadi tidak bisa berkurang 6.",
+        "Tidak ada yang keliru."
+      ]
+    }
+  ],
+  "examQuestions": [
+    {
+      "id": 1,
+      "level": "HOTS UJIAN FORMAL",
+      "prompt": "1. Ada 7 kelereng di piring. Halim mengambil 2 kelereng. Berapa kelereng yang tersisa?",
+      "visualEmojis": [],
+      "options": [
+        "9",
+        "4",
+        "5",
+        "6"
+      ]
+    },
+    {
+      "id": 2,
+      "level": "HOTS UJIAN FORMAL",
+      "prompt": "2. Ada 6 kupu-kupu di bunga. Lalu 2 kupu-kupu terbang. Kalimat pengurangan yang tepat adalah...",
+      "visualEmojis": [],
+      "options": [
+        "6 − 2 = 4",
+        "6 + 2 = 8",
+        "2 − 6 = 4",
+        "6 − 4 = 2"
+      ]
+    },
+    {
+      "id": 3,
+      "level": "HOTS UJIAN FORMAL",
+      "prompt": "3. Dalam kalimat 9 − 4 = 5, bilangan yang menunjukkan sisa adalah...",
+      "visualEmojis": [],
+      "options": [
+        "9",
+        "4",
+        "0",
+        "5"
+      ]
+    },
+    {
+      "id": 4,
+      "level": "HOTS UJIAN FORMAL",
+      "prompt": "4. Ada 4 ekor ikan di akuarium. Semua ikan dipindahkan ke kolam. Berapa ikan yang tersisa di akuarium?",
+      "visualEmojis": [],
+      "options": [
+        "4",
+        "8",
+        "1",
+        "0"
+      ]
+    },
+    {
+      "id": 5,
+      "level": "HOTS UJIAN FORMAL",
+      "prompt": "5. Ada 10 apel di keranjang. Kira mengambil 3 apel. Berapa apel yang tersisa?",
+      "visualEmojis": [],
+      "options": [
+        "13",
+        "7",
+        "6",
+        "8"
+      ]
+    },
+    {
+      "id": 6,
+      "level": "HOTS UJIAN FORMAL",
+      "prompt": "6. Cara membaca 7 − 4 = 3 yang tepat adalah...",
+      "visualEmojis": [],
+      "options": [
+        "tujuh dikurangi empat sama dengan tiga",
+        "tujuh ditambah empat sama dengan tiga",
+        "empat dikurangi tujuh sama dengan tiga",
+        "tujuh dikurangi tiga sama dengan empat"
+      ]
+    },
+    {
+      "id": 7,
+      "level": "HOTS UJIAN FORMAL",
+      "prompt": "7. Pada 8 − 5 = ..., bilangan 5 menunjukkan...",
+      "visualEmojis": [],
+      "options": [
+        "benda yang tersisa",
+        "benda yang berkurang",
+        "benda mula-mula",
+        "hasil penjumlahan"
+      ]
+    },
+    {
+      "id": 8,
+      "level": "HOTS UJIAN FORMAL",
+      "prompt": "8. Ada beberapa anak bermain. Setelah 3 anak pulang, tersisa 4 anak. Berapa anak yang bermain mula-mula?",
+      "visualEmojis": [],
+      "options": [
+        "1",
+        "6",
+        "7",
+        "12"
+      ]
+    },
+    {
+      "id": 9,
+      "level": "HOTS UJIAN FORMAL",
+      "prompt": "9. Pengurangan manakah yang sisanya sama dengan bilangan mula-mulanya?",
+      "visualEmojis": [],
+      "options": [
+        "8 − 8",
+        "8 − 1",
+        "8 − 0",
+        "8 − 4"
+      ]
+    },
+    {
+      "id": 10,
+      "level": "HOTS UJIAN FORMAL",
+      "prompt": "10. Kira berkata: 5 − 2 = 7. Mengapa jawaban Kira pasti keliru?",
+      "visualEmojis": [],
+      "options": [
+        "Karena 7 lebih besar dari 5, padahal benda berkurang.",
+        "Karena tanda kurang tidak boleh dipakai.",
+        "Karena hasilnya harus 0.",
+        "Karena 2 lebih kecil dari 5."
+      ]
+    }
+  ]
+}

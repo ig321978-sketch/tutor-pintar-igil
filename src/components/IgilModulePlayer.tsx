@@ -7,6 +7,14 @@ import { pilihSuaraIndonesia } from "@/lib/guru";
 import { hentikanAudioGuruAktif } from "@/lib/putar-tts-klien";
 import materiBab1 from "@/data/kelas1-bab1.json";
 import materiBab2 from "@/data/kelas1-bab2.json";
+import materiBab3 from "@/data/kelas1-bab3.json";
+import { CeritaPenguranganA, PETA_PIKIRAN_A3 } from "@/components/modul/gambar-pengurangan-a3";
+import {
+  AbstractPenguranganA,
+  ConcretePenguranganA,
+  InfografisPenguranganA,
+  PicturePenguranganA,
+} from "@/components/modul/SubBabA3Pengurangan";
 import { CeritaPenjumlahanA, PETA_PIKIRAN_A2, IgilWajah } from "@/components/modul/gambar-penjumlahan-a2";
 import {
   AbstractPenjumlahanA,
@@ -166,7 +174,7 @@ interface QuestionItem {
 // ============================================================================
 
 /** Bab yang bisa diputar. Isinya dibaca dari berkas JSON bab (tanpa kunci jawaban). */
-export type BabModul = "mtk-1-bab1" | "mtk-1-bab2";
+export type BabModul = "mtk-1-bab1" | "mtk-1-bab2" | "mtk-1-bab3";
 
 interface MateriBab {
   subjectLabel: string;
@@ -180,6 +188,7 @@ interface MateriBab {
 const MATERI_BAB: Record<BabModul, MateriBab> = {
   "mtk-1-bab1": materiBab1 as unknown as MateriBab,
   "mtk-1-bab2": materiBab2 as unknown as MateriBab,
+  "mtk-1-bab3": materiBab3 as unknown as MateriBab,
 };
 
 const POIN_BAWAAN = { practice: 30, exam: 70, practicum: 50 };
@@ -189,6 +198,13 @@ const SUB_ANAK_BAB2: Record<SubBabId, { emoji: string }> = {
   B: { emoji: "🧮" },
   C: { emoji: "📖" },
   D: { emoji: "🔁" },
+};
+
+const SUB_ANAK_BAB3: Record<SubBabId, { emoji: string }> = {
+  A: { emoji: "➖" },
+  B: { emoji: "🧮" },
+  C: { emoji: "🔁" },
+  D: { emoji: "📖" },
 };
 
 const DAFTAR_MAINAN = [
@@ -549,14 +565,18 @@ const TAHAP_SILABUS = [
 ];
 
 export default function IgilModulePlayer({ bab = "mtk-1-bab1" }: { bab?: BabModul }) {
-  const adaBab2 = bab === "mtk-1-bab2";
+  const adaBab3 = bab === "mtk-1-bab3";
+  /** Bab bergaya baru (Bab 2 dan Bab 3): tanpa tab Simulasi, Latihan terbuka setelah materi tersedia selesai. */
+  const adaBab2 = bab === "mtk-1-bab2" || adaBab3;
   const materi = MATERI_BAB[bab];
   const SUB_BABS = materi.subBabs as Record<SubBabId, SubBabContent>;
   const daftarSub = Object.keys(materi.subBabs) as SubBabId[];
   const PRACTICE_QUESTIONS = materi.practiceQuestions ?? [];
   const FORMAL_EXAM_QUESTIONS = materi.examQuestions ?? [];
   const poin = materi.tokens ?? POIN_BAWAAN;
-  const peta = adaBab2 ? SUB_ANAK_BAB2 : SUB_ANAK;
+  const peta = adaBab3 ? SUB_ANAK_BAB3 : adaBab2 ? SUB_ANAK_BAB2 : SUB_ANAK;
+  /** Sub-bab yang sudah punya naskah dan permainan. Sub-bab "segera hadir" tidak menahan Latihan dan Ujian. */
+  const daftarSubTersedia = daftarSub.filter((id) => !SUB_BABS[id].segeraHadir);
 
   // 1. State Navigasi Tab Utama (Langsung mengaktifkan Tab Silabus)
   const [activeMainTab, setActiveMainTab] = useState<MainTabId>("silabus");
@@ -846,7 +866,7 @@ export default function IgilModulePlayer({ bab = "mtk-1-bab1" }: { bab?: BabModu
   const batasToken =
     poin.practice + poin.exam;
   // Bab 2: Latihan dan Ujian baru terbuka setelah semua sub-bab materi selesai.
-  const materiSelesai = !adaBab2 || daftarSub.every((id) => completedSubBabs.includes(id));
+  const materiSelesai = !adaBab2 || daftarSubTersedia.every((id) => completedSubBabs.includes(id));
 
   // ============================================================================
   // SUARA GURU IGIL — Web Speech API di peramban, tanpa API eksternal
@@ -929,7 +949,7 @@ export default function IgilModulePlayer({ bab = "mtk-1-bab1" }: { bab?: BabModu
     if (!completedSubBabs.includes(activeSubBab)) {
       setCompletedSubBabs((prev) => [...prev, activeSubBab]);
     }
-    const order = daftarSub;
+    const order = daftarSubTersedia;
     const currIdx = order.indexOf(activeSubBab);
     if (currIdx < order.length - 1) {
       const nextSub = order[currIdx + 1];
@@ -964,8 +984,8 @@ export default function IgilModulePlayer({ bab = "mtk-1-bab1" }: { bab?: BabModu
   // ============================================================================
 
   const currentSubContent = SUB_BABS[activeSubBab];
-  const subB2 = adaBab2 && activeSubBab === "B";
-  const subC2 = adaBab2 && activeSubBab === "C";
+  const subB2 = bab === "mtk-1-bab2" && activeSubBab === "B";
+  const subC2 = bab === "mtk-1-bab2" && activeSubBab === "C";
   const judulSubBab = currentSubContent.fullTitle.split(": ").slice(1).join(": ");
 
   return (
@@ -1114,20 +1134,26 @@ export default function IgilModulePlayer({ bab = "mtk-1-bab1" }: { bab?: BabModu
                 judul="🌈 Fase A • Elemen Bilangan (Kelas 1 SD/MI)"
                 bicara={speakGuru}
                 teksSuara={
-                  adaBab2
+                  adaBab3
+                    ? "Kita belajar mengurangkan sampai sepuluh. Bukunya bernama Pengurangan sampai dengan Sepuluh. Kita melewati enam tahap seru: cerita, peta pikiran, infografis, benda nyata, gambar, dan simbol angka."
+                    : adaBab2
                     ? "Kita belajar menjumlahkan sampai sepuluh. Bukunya bernama Penjumlahan sampai dengan Sepuluh. Kita melewati enam tahap seru: cerita, peta pikiran, infografis, benda nyata, gambar, dan simbol angka."
                     : "Kita belajar bilangan sampai sepuluh. Bukunya bernama Ayo Membilang sampai dengan Sepuluh. Kita melewati enam tahap seru: cerita, peta pikiran, infografis, benda nyata, gambar, dan simbol angka."
                 }
               >
                 <BarisIkon emoji="🧠" warna="#FFD6D6" judul="Capaian Pembelajaran (CP)">
-                  {adaBab2 ? (
+                  {adaBab3 ? (
+                    <>Siswa mengurangkan bilangan cacah sampai 10 dengan benda nyata, gambar, dan simbol, lalu menuliskannya sebagai kalimat matematika.</>
+                  ) : adaBab2 ? (
                     <>Siswa menjumlahkan bilangan cacah sampai 10 dengan benda nyata, gambar, dan simbol, lalu menuliskannya sebagai kalimat matematika.</>
                   ) : (
                     <>Siswa menunjukkan pemahaman dan intuisi bilangan (<em>number sense</em>) pada bilangan cacah sampai 10.</>
                   )}
                 </BarisIkon>
                 <BarisIkon emoji="📖" warna="#FFE9A8" judul="Referensi Buku Resmi">
-                  {adaBab2
+                  {adaBab3
+                    ? "Buku Siswa Matematika Kelas I Kemendikbudristek (Bab 3: Pengurangan sampai dengan 10)."
+                    : adaBab2
                     ? "Buku Siswa Matematika Kelas I Kemendikbudristek (Bab 2: Penjumlahan sampai dengan 10)."
                     : "Buku Siswa Matematika Kelas I Kemendikbudristek (Bab 1: Ayo Membilang sampai dengan 10, Halaman 1–32)."}
                 </BarisIkon>
@@ -1392,6 +1418,8 @@ export default function IgilModulePlayer({ bab = "mtk-1-bab1" }: { bab?: BabModu
               <CeritaSoalC speakGuru={speakGuru} />
             ) : subB2 ? (
               <CeritaCaraB speakGuru={speakGuru} />
+            ) : adaBab3 ? (
+              <CeritaPenguranganA speakGuru={speakGuru} />
             ) : adaBab2 ? (
               <CeritaPenjumlahanA speakGuru={speakGuru} />
             ) : activeSubBab === "A" ? (
@@ -1467,6 +1495,13 @@ export default function IgilModulePlayer({ bab = "mtk-1-bab1" }: { bab?: BabModu
               ) : subB2 ? (
                 <PetaPikiranB
                   langkah={PETA_PIKIRAN_B2}
+                  judul={judulSubBab}
+                  speakGuru={speakGuru}
+                  maskot={<IgilWajah kelas="h-14 w-20 igil-lompat" />}
+                />
+              ) : adaBab3 ? (
+                <PetaPikiranB
+                  langkah={PETA_PIKIRAN_A3}
                   judul={judulSubBab}
                   speakGuru={speakGuru}
                   maskot={<IgilWajah kelas="h-14 w-20 igil-lompat" />}
@@ -1557,6 +1592,8 @@ export default function IgilModulePlayer({ bab = "mtk-1-bab1" }: { bab?: BabModu
                 <InfografisSoalC speakGuru={speakGuru} />
               ) : subB2 ? (
                 <InfografisCaraB speakGuru={speakGuru} />
+              ) : adaBab3 ? (
+                <InfografisPenguranganA speakGuru={speakGuru} />
               ) : adaBab2 ? (
                 <InfografisPenjumlahanA speakGuru={speakGuru} />
               ) : activeSubBab === "A" ? (
@@ -1706,6 +1743,20 @@ export default function IgilModulePlayer({ bab = "mtk-1-bab1" }: { bab?: BabModu
                 />
               ) : subB2 ? (
                 <ConcreteCaraB
+                  speakGuru={speakGuru}
+                  panel={panelConcrete}
+                  hentikan={hentikanRekamConcrete}
+                  gulir={() => concreteRef.current?.scrollIntoView({ behavior: "smooth", block: "start" })}
+                  onSelesai={() =>
+                    handleUnlockNextSmicpa(
+                      5,
+                      pictorialRef,
+                      "Empat permainan benda nyata sudah selesai. Sekarang kita lihat gambarnya."
+                    )
+                  }
+                />
+              ) : adaBab3 ? (
+                <ConcretePenguranganA
                   speakGuru={speakGuru}
                   panel={panelConcrete}
                   hentikan={hentikanRekamConcrete}
@@ -1887,6 +1938,20 @@ export default function IgilModulePlayer({ bab = "mtk-1-bab1" }: { bab?: BabModu
                 />
               ) : subB2 ? (
                 <PictureCaraB
+                  speakGuru={speakGuru}
+                  panel={panelGambar}
+                  hentikan={hentikanRekamConcrete}
+                  gulir={() => pictorialRef.current?.scrollIntoView({ behavior: "smooth", block: "start" })}
+                  onSelesai={() =>
+                    handleUnlockNextSmicpa(
+                      6,
+                      abstractRef,
+                      "Tiga permainan gambar sudah selesai. Ayo lihat lambang angkanya."
+                    )
+                  }
+                />
+              ) : adaBab3 ? (
+                <PicturePenguranganA
                   speakGuru={speakGuru}
                   panel={panelGambar}
                   hentikan={hentikanRekamConcrete}
@@ -2088,6 +2153,14 @@ export default function IgilModulePlayer({ bab = "mtk-1-bab1" }: { bab?: BabModu
                   gulir={() => abstractRef.current?.scrollIntoView({ behavior: "smooth", block: "start" })}
                   onSelesai={() => selesaiBabRef.current?.scrollIntoView({ behavior: "smooth", block: "center" })}
                 />
+              ) : adaBab3 ? (
+                <AbstractPenguranganA
+                  speakGuru={speakGuru}
+                  panel={panelLambang}
+                  hentikan={hentikanRekamConcrete}
+                  gulir={() => abstractRef.current?.scrollIntoView({ behavior: "smooth", block: "start" })}
+                  onSelesai={() => selesaiBabRef.current?.scrollIntoView({ behavior: "smooth", block: "center" })}
+                />
               ) : adaBab2 ? (
                 <AbstractPenjumlahanA
                   speakGuru={speakGuru}
@@ -2174,7 +2247,7 @@ export default function IgilModulePlayer({ bab = "mtk-1-bab1" }: { bab?: BabModu
                   onClick={handleCompleteCurrentSubBab}
                   className="px-8 py-3.5 rounded-2xl bg-[#1C01A5] text-[#FFE566] border-2 border-[#FFE566] font-black text-xs md:text-sm shadow-lg"
                 >
-                  {activeSubBab !== daftarSub[daftarSub.length - 1]
+                  {activeSubBab !== daftarSubTersedia[daftarSubTersedia.length - 1]
                     ? `SELESAIKAN SUB-BAB ${activeSubBab} & LANJUTKAN ➡️`
                     : adaBab2
                       ? "SELESAIKAN MATERI & LANJUT KE LATIHAN ➡️"
