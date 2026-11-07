@@ -429,20 +429,26 @@ export function BukuCerita({
 
   return (
     <div className="w-full overflow-x-auto pb-3 [scroll-snap-type:x_mandatory]">
-      <div className="flex flex-nowrap gap-5 px-1 pt-2">
+      <div className="flex flex-nowrap gap-5 pl-1 pr-3 pt-2">
         {cerita.map((c, i) => {
           const h = HALAMAN[i % HALAMAN.length];
           const aktif = bicara === c.id;
           return (
             <div
               key={c.id}
-              className="relative w-[300px] shrink-0 space-y-3 rounded-[2rem] border-4 p-3 [scroll-snap-align:start]"
+              className="relative w-[300px] shrink-0 space-y-3 rounded-l-md rounded-r-[2rem] border-4 border-l-[14px] py-3 pl-2 pr-3 [scroll-snap-align:start]"
               style={{
                 borderColor: h.tepi,
                 backgroundColor: h.latar,
-                boxShadow: `0 7px 0 ${h.tepi}66`,
+                // Halaman buku: punggung berwarna di kiri, tepi kertas bertumpuk di kanan.
+                boxShadow: `inset 12px 0 14px -10px rgba(0,0,0,0.22), 3px 0 0 #FFFFFF, 5px 0 0 ${h.tepi}99, 7px 0 0 #FFFFFF, 8px 0 0 ${h.tepi}99, 0 7px 0 ${h.tepi}66`,
               }}
             >
+              <span
+                aria-hidden="true"
+                className="pointer-events-none absolute bottom-0 right-0 h-7 w-7 rounded-br-[2rem]"
+                style={{ background: `linear-gradient(135deg, transparent 50%, ${h.tepi}88 50%)` }}
+              />
               <div className="flex items-center justify-between gap-2">
                 <span
                   className="flex h-12 w-12 items-center justify-center rounded-full border-4 border-white text-2xl font-black text-white shadow"

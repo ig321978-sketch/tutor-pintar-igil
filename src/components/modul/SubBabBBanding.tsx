@@ -1,5 +1,6 @@
 "use client";
 
+import { BingkaiTahap } from "@/components/modul/BingkaiTahap";
 import React, { useCallback, useContext, useEffect, useMemo, useRef, useState } from "react";
 import { IkonMainan } from "./ikon-mainan";
 import { GarisBilanganKatak, MulutBuaya, type ArahBuaya } from "./gambar-banding-b";
@@ -9,13 +10,8 @@ import {
   BendaSeret,
   CatatanPensil,
   CatatanTempel,
-  GAYA_KERTAS,
-  GAYA_KOTAK,
-  GAYA_MEJA,
-  GAYA_POSTER,
   LencanaSuara,
   PitaTahap,
-  SpiralBuku,
   SuaraCtx,
   TombolSuaraGuru,
   letakMeja,
@@ -470,7 +466,7 @@ function BarisPasangan({
 
 export function InfografisBandingB({ speakGuru }: { speakGuru: (teks: string) => void }) {
   return (
-    <div className="space-y-3 rounded-[2rem] border-4 border-[#16A34A] bg-[#F0FDF4] p-3" style={GAYA_POSTER}>
+    <BingkaiTahap tahap={3} className="space-y-3">
       <PitaTahap ikon="📰" nama="INFOGRAFIS" cara="Lihat dan dengar" warna="#16A34A" />
       <div className="flex items-center justify-between gap-2">
         <h3 className="min-w-0 text-xl font-black leading-tight text-[#1C01A5]">Cara Membandingkan Benda</h3>
@@ -567,7 +563,7 @@ export function InfografisBandingB({ speakGuru }: { speakGuru: (teks: string) =>
           <span className="block text-3xl">🐊</span>3 Pilih tanda
         </span>
       </div>
-    </div>
+    </BingkaiTahap>
   );
 }
 
@@ -1214,7 +1210,7 @@ function ConcreteIsi({ speakGuru, panel, hentikan, gulir, onSelesai }: Umum) {
   const dasar = { speakGuru, lanjut, nomor: langkah.kegiatan, judul: langkah.judul };
 
   return (
-    <div className="space-y-3 rounded-[2rem] border-4 border-[#A8672D] p-3" style={GAYA_MEJA}>
+    <BingkaiTahap tahap={4} className="space-y-3">
       <PitaTahap ikon="🧸" nama="CONCRETE" cara="Pegang dan pindahkan!" warna="#8A5322" />
       <div className="flex items-center gap-1.5" aria-label={`Kegiatan ${langkah.kegiatan} dari ${JUMLAH_KEGIATAN}`}>
         {Array.from({ length: JUMLAH_KEGIATAN }, (_, i) => (
@@ -1234,7 +1230,7 @@ function ConcreteIsi({ speakGuru, panel, hentikan, gulir, onSelesai }: Umum) {
         {langkah.tipe === "cerita" ? <LangkahCerita panel={panel} {...dasar} /> : null}
         {langkah.tipe === "tulis" ? <LangkahTulis {...dasar} /> : null}
       </div>
-    </div>
+    </BingkaiTahap>
   );
 }
 
@@ -1624,8 +1620,7 @@ function PictureIsi({ speakGuru, panel, hentikan, gulir, onSelesai }: Umum) {
   };
 
   return (
-    <div className="space-y-3 rounded-2xl border-4 border-[#6B7280] p-3 pt-0" style={GAYA_KERTAS}>
-      <SpiralBuku />
+    <BingkaiTahap tahap={5} className="space-y-3">
       <PitaTahap ikon="🖍️" nama="PICTURE" cara="Lihat dan warnai" warna="#B45309" />
       <div className="flex items-center gap-1.5">
         {KARTU_GAMBAR_B.map((k, i) => (
@@ -1644,7 +1639,7 @@ function PictureIsi({ speakGuru, panel, hentikan, gulir, onSelesai }: Umum) {
         panel={panel}
         lanjut={lanjut}
       />
-    </div>
+    </BingkaiTahap>
   );
 }
 
@@ -1968,7 +1963,7 @@ function AbstractIsi({ speakGuru, panel, hentikan, gulir, onSelesai }: Umum) {
   };
 
   return (
-    <div className="space-y-3 rounded-2xl border-4 border-[#1C01A5] p-3" style={GAYA_KOTAK}>
+    <BingkaiTahap tahap={6} className="space-y-3">
       <PitaTahap ikon="✏️" nama="ABSTRACT" cara="Angka dan tanda" warna="#1C01A5" />
       <div className="flex items-center gap-1.5">
         {KARTU_LAMBANG_B.map((k, i) => (
@@ -1987,6 +1982,6 @@ function AbstractIsi({ speakGuru, panel, hentikan, gulir, onSelesai }: Umum) {
         panel={panel}
         lanjut={lanjut}
       />
-    </div>
+    </BingkaiTahap>
   );
 }

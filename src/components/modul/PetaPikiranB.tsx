@@ -3,6 +3,7 @@
 import React, { useState } from "react";
 import { MulutBuaya } from "./gambar-banding-b";
 import { LencanaSuara } from "./tahap-b-gaya";
+import { BingkaiTahap } from "./BingkaiTahap";
 
 /* ------------------------------------------------------------------------ */
 /* Tahap 2: Mind-map Sub-Bab B. Peta jalan bagi anak: akar di atas, empat     */
@@ -66,15 +67,7 @@ export function PetaPikiranB({
   };
 
   return (
-    <div
-      className="space-y-1 rounded-[2rem] border-4 border-[#FFE566] p-3"
-      style={{
-        backgroundColor: "#F0F9FF",
-        backgroundImage:
-          "radial-gradient(#FFFFFF 3px, transparent 3px), radial-gradient(#DBEAFE 2px, transparent 2px)",
-        backgroundSize: "34px 34px, 17px 17px",
-      }}
-    >
+    <BingkaiTahap tahap={2} className="space-y-1">
       <div className="flex items-end gap-2">
         {maskot ?? <MulutBuaya arah="kiri" kelas="h-14 w-24 igil-lompat" />}
         <div className="min-w-0 flex-1 rounded-3xl rounded-bl-md border-4 border-[#1C01A5] bg-white px-3 py-2 text-sm font-black leading-snug text-[#1C01A5]">
@@ -153,6 +146,6 @@ export function PetaPikiranB({
       >
         {semua ? "🌟 Hebat!" : "⭐ ⭐ ⭐ ⭐"}
       </p>
-    </div>
+    </BingkaiTahap>
   );
 }
