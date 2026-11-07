@@ -12,6 +12,13 @@ import { CeritaBandingB } from "@/components/modul/CeritaBandingB";
 import { PetaPikiranB } from "@/components/modul/PetaPikiranB";
 import { CeritaMajuMundurC, KatakWajah } from "@/components/modul/gambar-maju-mundur-c";
 import { CeritaBilanganA, KelinciWajah } from "@/components/modul/gambar-bilangan-a";
+import { CeritaPasanganD, PETA_PIKIRAN_D, TupaiWajah } from "@/components/modul/gambar-pasangan-d";
+import {
+  AbstractPasanganD,
+  ConcretePasanganD,
+  InfografisPasanganD,
+  PicturePasanganD,
+} from "@/components/modul/SubBabDPasangan";
 import { TombolSuaraGuru } from "@/components/modul/tahap-b-gaya";
 import {
   AbstractBilanganA,
@@ -1296,6 +1303,8 @@ export default function IgilModulePlayer() {
               <CeritaBandingB cerita={currentSubContent.stories} speakGuru={speakGuru} />
             ) : activeSubBab === "C" ? (
               <CeritaMajuMundurC cerita={currentSubContent.stories} speakGuru={speakGuru} />
+            ) : activeSubBab === "D" ? (
+              <CeritaPasanganD speakGuru={speakGuru} />
             ) : (
             <div className="w-full overflow-x-auto pb-3">
               <div
@@ -1371,6 +1380,13 @@ export default function IgilModulePlayer() {
                   speakGuru={speakGuru}
                   maskot={<KatakWajah kelas="h-14 w-20 igil-lompat" />}
                 />
+              ) : activeSubBab === "D" ? (
+                <PetaPikiranB
+                  langkah={PETA_PIKIRAN_D}
+                  judul={judulSubBab}
+                  speakGuru={speakGuru}
+                  maskot={<TupaiWajah kelas="h-14 w-20 igil-lompat" />}
+                />
               ) : (
               <div className="flex flex-col">
                 {currentSubContent.mindMaps.map((mm) => (
@@ -1425,6 +1441,8 @@ export default function IgilModulePlayer() {
                 <InfografisBandingB speakGuru={speakGuru} />
               ) : activeSubBab === "C" ? (
                 <InfografisMajuMundurC speakGuru={speakGuru} />
+              ) : activeSubBab === "D" ? (
+                <InfografisPasanganD speakGuru={speakGuru} />
               ) : (
               <div className="w-full overflow-x-auto pb-3">
                 <div className="flex flex-nowrap gap-5 min-w-[1050px]">
@@ -1590,6 +1608,20 @@ export default function IgilModulePlayer() {
                     )
                   }
                 />
+              ) : activeSubBab === "D" ? (
+                <ConcretePasanganD
+                  speakGuru={speakGuru}
+                  panel={panelConcrete}
+                  hentikan={hentikanRekamConcrete}
+                  gulir={() => concreteRef.current?.scrollIntoView({ behavior: "smooth", block: "start" })}
+                  onSelesai={() =>
+                    handleUnlockNextSmicpa(
+                      5,
+                      pictorialRef,
+                      "Enam kegiatan benda nyata sudah siap. Sekarang kita lihat gambarnya."
+                    )
+                  }
+                />
               ) : (
               <div className="w-full overflow-x-auto pb-3">
                 <div className="flex flex-nowrap gap-5 min-w-[1050px]">
@@ -1642,7 +1674,7 @@ export default function IgilModulePlayer() {
               </div>
               )}
 
-              {activeSubBab !== "A" && activeSubBab !== "B" && activeSubBab !== "C" ? (
+              {activeSubBab !== "A" && activeSubBab !== "B" && activeSubBab !== "C" && activeSubBab !== "D" ? (
               <div className="flex justify-end">
                 <button
                   type="button"
@@ -1712,6 +1744,20 @@ export default function IgilModulePlayer() {
                       6,
                       abstractRef,
                       "Empat diagram sudah pas. Ayo lihat lambang angkanya."
+                    )
+                  }
+                />
+              ) : activeSubBab === "D" ? (
+                <PicturePasanganD
+                  speakGuru={speakGuru}
+                  panel={panelGambar}
+                  hentikan={hentikanRekamConcrete}
+                  gulir={() => pictorialRef.current?.scrollIntoView({ behavior: "smooth", block: "start" })}
+                  onSelesai={() =>
+                    handleUnlockNextSmicpa(
+                      6,
+                      abstractRef,
+                      "Tujuh kartu diagram sudah selesai. Ayo lihat lambang angkanya."
                     )
                   }
                 />
@@ -1836,6 +1882,14 @@ export default function IgilModulePlayer() {
                 />
               ) : activeSubBab === "C" ? (
                 <AbstractMajuMundurC
+                  speakGuru={speakGuru}
+                  panel={panelLambang}
+                  hentikan={hentikanRekamConcrete}
+                  gulir={() => abstractRef.current?.scrollIntoView({ behavior: "smooth", block: "start" })}
+                  onSelesai={() => selesaiBabRef.current?.scrollIntoView({ behavior: "smooth", block: "center" })}
+                />
+              ) : activeSubBab === "D" ? (
+                <AbstractPasanganD
                   speakGuru={speakGuru}
                   panel={panelLambang}
                   hentikan={hentikanRekamConcrete}
