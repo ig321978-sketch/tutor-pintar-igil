@@ -48,6 +48,7 @@ export default function LoginClient() {
         (next.startsWith("/rapor") ||
           next.startsWith("/ranking") ||
           next.startsWith("/dasbor") ||
+          next.startsWith("/transparansi") ||
           next.startsWith("/daftar") ||
           next.startsWith("/simulasi") ||
           next.startsWith("/admin") ||

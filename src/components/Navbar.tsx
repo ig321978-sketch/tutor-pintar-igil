@@ -14,6 +14,7 @@ const MENU_TINJAU = [
   { href: "/rapor", label: "📊 Rapor & Sertifikat" },
   { href: "/ranking", label: "🏆 Ranking & Beasiswa" },
   { href: "/dasbor", label: "🏠 Dasbor & Info" },
+  { href: "/transparansi", label: "🔍 Laporan Transparansi" },
   { href: "/daftar", label: "📝 Pendaftaran Anak" },
 ] as const;
 
