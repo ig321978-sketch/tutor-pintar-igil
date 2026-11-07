@@ -37,6 +37,9 @@ yarn-error.log*
 # batch generate naskah SD
 scripts/naskah-sd-progress.json
 
+# kunci jawaban utuh. Jangan di-import komponen frontend.
+/src/content-master/
+
 # vercel
 .vercel
 

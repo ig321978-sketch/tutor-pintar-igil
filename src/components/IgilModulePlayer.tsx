@@ -133,8 +133,8 @@ interface QuestionItem {
   visualEmojis: string[];
   secondaryGroupEmojis?: string[];
   options: string[];
-  correctAnswer: string;
-  explanation: string;
+  correctAnswer?: string;
+  explanation?: string;
 }
 
 // ============================================================================
@@ -775,7 +775,7 @@ export default function IgilModulePlayer() {
   const [examIdx, setExamIdx] = useState<number>(0);
   const [examAnswers, setExamAnswers] = useState<Record<number, string>>({});
   const [examSubmitted, setExamSubmitted] = useState<boolean>(false);
-  const [examScore, setExamScore] = useState<number>(0);
+  const [examScore, setExamScore] = useState<number | null>(null);
   const [examFirstTryPerfect, setExamFirstTryPerfect] = useState<boolean>(false);
   const [examAttempts, setExamAttempts] = useState<number>(1);
 
@@ -2245,7 +2245,8 @@ export default function IgilModulePlayer() {
             const q = PRACTICE_QUESTIONS[practiceIdx];
             const chosen = practiceAnswers[q.id];
             const isAnswered = Boolean(chosen);
-            const isRight = chosen === q.correctAnswer;
+            const adaKunci = typeof q.correctAnswer === "string";
+            const isRight = adaKunci && chosen === q.correctAnswer;
 
             return (
               <>
@@ -2296,9 +2297,11 @@ export default function IgilModulePlayer() {
                               }
                               className={`p-3.5 rounded-2xl font-black text-base border-2 transition-all ${
                                 selected
-                                  ? opt === q.correctAnswer
-                                    ? "bg-[#22C55E] text-white border-[#166534]"
-                                    : "bg-[#EF4444] text-white border-[#991B1B]"
+                                  ? !adaKunci
+                                    ? "bg-[#1C01A5] text-[#FFE566] border-[#FFE566]"
+                                    : opt === q.correctAnswer
+                                      ? "bg-[#22C55E] text-white border-[#166534]"
+                                      : "bg-[#EF4444] text-white border-[#991B1B]"
                                   : "bg-[#FFFBEB] hover:bg-[#FEF3C7] text-[#1C01A5] border-[#F59E0B]"
                               }`}
                             >
@@ -2308,7 +2311,7 @@ export default function IgilModulePlayer() {
                         })}
                       </div>
 
-                      {isAnswered && (
+                      {isAnswered && adaKunci && q.explanation ? (
                         <div
                           className={`p-3 rounded-2xl text-xs font-bold ${
                             isRight
@@ -2319,7 +2322,7 @@ export default function IgilModulePlayer() {
                           {isRight ? "✅ Benar! (+3 Poin): " : "💡 Pembahasan Guru: "}
                           {q.explanation}
                         </div>
-                      )}
+                      ) : null}
                     </div>
                   </div>
                 </div>
@@ -2466,6 +2469,14 @@ export default function IgilModulePlayer() {
                     <button
                       type="button"
                       onClick={() => {
+                        const adaKunci = FORMAL_EXAM_QUESTIONS.every(
+                          (item) => typeof item.correctAnswer === "string",
+                        );
+                        if (!adaKunci) {
+                          setExamScore(null);
+                          setExamSubmitted(true);
+                          return;
+                        }
                         let right = 0;
                         FORMAL_EXAM_QUESTIONS.forEach((item) => {
                           if (examAnswers[item.id] === item.correctAnswer) right += 1;
@@ -2488,13 +2499,23 @@ export default function IgilModulePlayer() {
                 {examSubmitted && (
                   <div className="bg-white p-4 rounded-2xl border-2 border-[#1C01A5] flex flex-wrap items-center justify-between gap-3">
                     <div className="font-black text-sm text-[#1C01A5]">
-                      Nilai Ujian Formal: {examScore} / 100{" "}
-                      {examScore === 100
-                        ? "🎉 (Lulus Mutlak 100%!)"
-                        : "⚠️ (Wajib 100/100 untuk lulus)"}
+                      {examScore === null
+                        ? "Lembar ujian tercatat. Nilai akhir dihitung di server."
+                        : `Nilai Ujian Formal: ${examScore} / 100 ${
+                            examScore === 100
+                              ? "🎉 (Lulus Mutlak 100%!)"
+                              : "⚠️ (Wajib 100/100 untuk lulus)"
+                          }`}
                     </div>
                     <div className="flex gap-2">
-                      {examScore < 100 ? (
+                      {examScore === 100 ? (
+                        <Link
+                          href="/praktikum/mtk-1-blok1"
+                          className="igil-tombol px-5 py-2 rounded-xl bg-[#1C01A5] text-[#FFE566] font-black text-xs"
+                        >
+                          LIHAT PRAKTIKUM BLOK ➡️
+                        </Link>
+                      ) : examScore !== null ? (
                         <button
                           type="button"
                           onClick={() => {
@@ -2507,14 +2528,7 @@ export default function IgilModulePlayer() {
                         >
                           🔄 Ulangi Ujian
                         </button>
-                      ) : (
-                        <Link
-                          href="/praktikum/mtk-1-blok1"
-                          className="igil-tombol px-5 py-2 rounded-xl bg-[#1C01A5] text-[#FFE566] font-black text-xs"
-                        >
-                          LIHAT PRAKTIKUM BLOK ➡️
-                        </Link>
-                      )}
+                      ) : null}
                     </div>
                   </div>
                 )}

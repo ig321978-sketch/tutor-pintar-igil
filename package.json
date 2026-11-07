@@ -11,7 +11,8 @@
     "build": "next build",
     "start": "next start",
     "lint": "eslint",
-    "naskah-sd": "node scripts/generate-kunci-naskah-sd.mjs"
+    "naskah-sd": "node scripts/generate-kunci-naskah-sd.mjs",
+    "sync:keys": "node scripts/sync-question-keys.mjs"
   },
   "dependencies": {
     "@google/genai": "^2.20.0",

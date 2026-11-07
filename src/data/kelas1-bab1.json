@@ -777,9 +777,7 @@
         "2 dan 3",
         "2 dan 4",
         "3 dan 3"
-      ],
-      "correctAnswer": "2 dan 3",
-      "explanation": "Lima kue jika dipisahkan menjadi 2 donat di piring pertama akan menyisakan 3 kue di piring kedua. Jadi pasangan bilangan untuk 5 adalah 2 dan 3."
+      ]
     },
     {
       "id": 2,
@@ -799,9 +797,7 @@
         "6",
         "7",
         "8"
-      ],
-      "correctAnswer": "7",
-      "explanation": "Lingkaran Gabungan memuat jumlah seluruh benda setelah disatukan. Tiga bola digabungkan dengan empat bola menghasilkan 7 bola."
+      ]
     },
     {
       "id": 3,
@@ -820,9 +816,7 @@
         "3 dan 3",
         "4 dan 2",
         "5 dan 1"
-      ],
-      "correctAnswer": "3 dan 3",
-      "explanation": "Pasangan bilangan kembar atau sama banyak yang jika digabungkan berjumlah 6 adalah 3 dan 3."
+      ]
     },
     {
       "id": 4,
@@ -843,9 +837,7 @@
         "3",
         "4",
         "5"
-      ],
-      "correctAnswer": "3",
-      "explanation": "Dari 8 buah pir, jika 5 buah sudah ditaruh di piring pertama, maka tersisa 3 buah pir untuk piring kedua. Pasangan 8 adalah 5 dan 3."
+      ]
     },
     {
       "id": 5,
@@ -867,9 +859,7 @@
         "3",
         "4",
         "6"
-      ],
-      "correctAnswer": "3",
-      "explanation": "Sembilan balon dipisahkan menjadi 6 balon biru dan 3 balon kuning, karena 6 dan 3 digabungkan menjadi 9."
+      ]
     },
     {
       "id": 6,
@@ -886,9 +876,7 @@
         "5",
         "6",
         "7"
-      ],
-      "correctAnswer": "6",
-      "explanation": "Bingkai 10 memuat 10 benda. Karena sudah ada 4 apel, maka pasangan dari 4 supaya genap menjadi 10 adalah 6 apel lagi."
+      ]
     },
     {
       "id": 7,
@@ -909,9 +897,7 @@
         "3 dan 4",
         "3 dan 5",
         "4 dan 5"
-      ],
-      "correctAnswer": "3 dan 5",
-      "explanation": "Delapan mobil-mobilan dapat dipisahkan menjadi 3 dan 5 karena jika 3 dan 5 digabungkan hasilnya tepat 8."
+      ]
     },
     {
       "id": 8,
@@ -932,9 +918,7 @@
         "2",
         "3",
         "4"
-      ],
-      "correctAnswer": "3",
-      "explanation": "Perhatikan cabang kelompok 5 kelereng. Jika 5 kelereng dipisahkan menjadi 2 di cabang kiri, maka cabang pasangannya berisi 3 kelereng."
+      ]
     },
     {
       "id": 9,
@@ -954,9 +938,7 @@
         "4 dan 3",
         "5 dan 2",
         "4 dan 4"
-      ],
-      "correctAnswer": "4 dan 3",
-      "explanation": "Empat dan tiga jika digabungkan berjumlah 7, dan 4 jeruk di keranjang kiri tepat satu lebih banyak daripada 3 jeruk di keranjang kanan."
+      ]
     },
     {
       "id": 10,
@@ -979,9 +961,7 @@
         "5 dan 5",
         "6 dan 4",
         "7 dan 3"
-      ],
-      "correctAnswer": "5 dan 5",
-      "explanation": "Pasangan dua bilangan yang sama banyak dan jika digabungkan menghasilkan 10 adalah 5 dan 5."
+      ]
     }
   ],
   "examQuestions": [
@@ -1002,9 +982,7 @@
         "4 dan 2",
         "6 dan 0",
         "4 dan 3"
-      ],
-      "correctAnswer": "4 dan 2",
-      "explanation": "Empat dan dua jika digabungkan berjumlah 6, tidak ada kotak yang bernilai 0, dan jumlah keduanya tidak sama."
+      ]
     },
     {
       "id": 2,
@@ -1026,9 +1004,7 @@
         "5 dan 4",
         "5 dan 3",
         "4 dan 4"
-      ],
-      "correctAnswer": "5 dan 4",
-      "explanation": "Tumpukan kiri dari 7 diambil 2 menjadi 5, sedangkan tumpukan kanan dari 2 bertambah 2 menjadi 4. Jumlahnya tetap 9 yaitu pasangan 5 dan 4."
+      ]
     },
     {
       "id": 3,
@@ -1050,9 +1026,7 @@
         "3 dan 3",
         "4 dan 2",
         "5 dan 1"
-      ],
-      "correctAnswer": "3 dan 3",
-      "explanation": "Pada cabang 6 biskuit, jika dipisahkan lagi menjadi dua bagian yang sama banyak maka masing-masing cabang berisi 3 dan 3."
+      ]
     },
     {
       "id": 4,
@@ -1072,9 +1046,7 @@
         "2",
         "3",
         "4"
-      ],
-      "correctAnswer": "2",
-      "explanation": "Tujuh burung dipisahkan menjadi 5 burung di dahan atas dan 2 burung di dahan bawah, karena pasangan 5 untuk menjadi 7 adalah 2."
+      ]
     },
     {
       "id": 5,
@@ -1090,9 +1062,7 @@
         "5",
         "6",
         "7"
-      ],
-      "correctAnswer": "5",
-      "explanation": "Target jumlah bintang yang diinginkan Igil adalah 8. Pasangan dari 3 supaya menjadi 8 adalah 5 bintang lagi."
+      ]
     },
     {
       "id": 6,
@@ -1115,9 +1085,7 @@
         "3",
         "4",
         "5"
-      ],
-      "correctAnswer": "3",
-      "explanation": "Empat bunga dan tiga bunga jika digabungkan berjumlah 7 bunga. Pasangan dari 7 supaya mencapai 10 adalah 3 bunga pada tangkai ketiga."
+      ]
     },
     {
       "id": 7,
@@ -1134,9 +1102,7 @@
         "2 dan 6",
         "4 dan 5",
         "4 dan 6"
-      ],
-      "correctAnswer": "4 dan 5",
-      "explanation": "Dari keempat kartu tersebut, kartu 4 dan kartu 5 jika digabungkan menghasilkan bilangan 9."
+      ]
     },
     {
       "id": 8,
@@ -1154,9 +1120,7 @@
         "4",
         "5",
         "6"
-      ],
-      "correctAnswer": "5",
-      "explanation": "Tas yang kosong bernilai 0. Jika 5 layang-layang digabungkan dengan 0, maka jumlah keseluruhannya tetap 5 layang-layang."
+      ]
     },
     {
       "id": 9,
@@ -1177,9 +1141,7 @@
         "5 dan 3",
         "6 dan 2",
         "8 dan 0"
-      ],
-      "correctAnswer": "6 dan 2",
-      "explanation": "Pasangan dari 8 yang bagian pertamanya lebih banyak dari 5 dan tidak ada ember kosong adalah 6 dan 2."
+      ]
     },
     {
       "id": 10,
@@ -1198,9 +1160,7 @@
         "3",
         "4",
         "5"
-      ],
-      "correctAnswer": "3",
-      "explanation": "Jumlah seluruh penghapus adalah 9. Karena Kira sudah memiliki 6 penghapus, maka pasangan dari 6 untuk menjadi 9 adalah 3 penghapus milik Upe."
+      ]
     }
   ]
 }
