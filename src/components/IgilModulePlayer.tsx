@@ -575,10 +575,17 @@ function ucapanMemuatBilangan(teks: string, jumlah: number): boolean {
           "twenty",
         ][jumlah - 1];
   const dekat = jumlah === 6 ? ["anang", "enang"] : jumlah === 0 ? ["nul", "noll", "kosong"] : [];
-  if (token.some((bagian) => bagian === kata || bagian === angka || bagian === inggris || dekat.includes(bagian))) return true;
-  if (bersih.replace(/ /g, "").includes(kata.replace(/ /g, ""))) return true;
+  // "empat belas" bukan "empat": bilangan tunggal yang diikuti belas/puluh/ratus/ribu bilangan lain.
+  const sambungan = ["belas", "puluh", "ratus", "ribu"];
+  const berdiri = (i: number) => !sambungan.includes(token[i + 1] ?? "");
+  if (token.some((bagian, i) => (bagian === kata || bagian === angka || bagian === inggris || dekat.includes(bagian)) && berdiri(i))) return true;
+  // Pengenal suara kadang menulis "14" sebagai "4 belas".
+  if (jumlah >= 11 && jumlah <= 19 && token.some((bagian, i) => bagian === String(jumlah - 10) && token[i + 1] === "belas")) return true;
+  const gabung = bersih.replace(/ /g, "");
+  const tanpaSambungan = kata.includes(" ") ? gabung : gabung.replace(new RegExp(`${kata}(belas|puluh|ratus|ribu)`, "g"), "");
+  if (tanpaSambungan.includes(kata.replace(/ /g, ""))) return true;
   if (kata.includes(" ")) return false;
-  return token.some((bagian) => bagian.length >= 3 && jarakHuruf(bagian, kata) <= 1);
+  return token.some((bagian, i) => bagian.length >= 3 && jarakHuruf(bagian, kata) <= 1 && berdiri(i));
 }
 
 type PotongUcapan = {
