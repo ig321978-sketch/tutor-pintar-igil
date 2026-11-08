@@ -1,0 +1,867 @@
+{
+  "chapterId": "k2-mat-bab1",
+  "chapter_id": "k2-mat-bab1",
+  "phase_code": "FASE_A",
+  "grade": 2,
+  "subjectLabel": "MATEMATIKA - KELAS 2 SD",
+  "title": "BAB 1: AYO MEMBILANG SAMPAI DENGAN 50",
+  "silabusElemen": "🌈 Fase A • Elemen Bilangan (Kelas 2 SD/MI)",
+  "suaraPerangkatSaja": true,
+  "tokens": {
+    "practice": 30,
+    "exam": 70,
+    "practicum": 50
+  },
+  "subBabs": {
+    "A": {
+      "id": "A",
+      "codeTitle": "Sub-Bab A (Menghitung, Membaca, dan Menulis)",
+      "fullTitle": "Sub-Bab A: Menghitung, Membaca, dan Menulis Bilangan sampai dengan 50",
+      "targetDescription": "Siswa menghitung banyak benda sampai 50 satu per satu dan dengan mengelompokkan setiap sepuluh, membaca dan menulis lambang serta nama bilangan 21 sampai 50, menyatakan bilangan sebagai puluhan ditambah satuan, menghitung maju dan mundur, melengkapi urutan bilangan, serta menebak banyak benda lalu membuktikannya dengan menghitung.",
+      "secondaryBg": "#DBEAFE",
+      "secondaryBorder": "#2563EB",
+      "secondaryText": "#1E3A8A",
+      "silabus": {
+        "teksSuara": "Kita belajar menghitung, membaca, dan menulis bilangan sampai lima puluh. Bukunya bernama Ayo Membilang sampai dengan Lima Puluh. Kita menghitung tas di loker satu per satu, mengelompokkan setiap sepuluh benda, membaca dan menulis nama bilangan dua puluh satu sampai lima puluh, menghitung maju dan mundur, serta menebak lalu membuktikan. Kita melewati enam tahap seru: cerita, peta pikiran, infografis, benda nyata, gambar, dan simbol.",
+        "cp": "Siswa menghitung banyak benda sampai 50 dengan menghitung satu per satu dan mengelompokkan setiap sepuluh, membaca dan menulis lambang serta nama bilangan sampai 50, menghitung maju dan mundur, melengkapi urutan bilangan, serta memperkirakan banyak benda lalu membuktikannya.",
+        "referensi": "Buku Siswa Matematika Kelas II Kemendikbudristek (Bab 1: Ayo Membilang sampai dengan 50, Sub-Bab A hlm. 3–16)."
+      },
+      "stories": [
+        {
+          "id": "K2A-S1",
+          "titleHint": "Loker Baru di Kelas Malosi",
+          "sceneType": "loker-baru",
+          "voiceNarration": "Loker baru di kelas Malosi! Hari pertama masuk sekolah telah tiba. Malosi dan teman-temannya sangat senang. Sekarang ada loker baru di kelas Malosi. Loker baru ini dipakai untuk menyimpan tas supaya kelas rapi. Ibu guru meminta setiap anak memasukkan tasnya ke loker. Rak loker ini masih kosong. Menurut kamu, berapa banyak anak di kelas Malosi? Bagaimana cara kamu mendapatkan jawabannya?"
+        },
+        {
+          "id": "K2A-S2",
+          "titleHint": "Tas Masuk Loker Bergantian",
+          "sceneType": "tas-bergantian",
+          "voiceNarration": "Anak-anak menyimpan tas secara bergantian. Satu anak, satu tas, satu loker. Tidak ada yang berebut. Malosi mendapat giliran yang terakhir. Karena setiap anak membawa satu tas, banyak tas sama dengan banyak anak. Jadi kalau kita tahu banyak tas di loker, kita tahu banyak anak di kelas. Nah, bagaimana cara menghitung banyak tas dengan benar? Kita hitung satu per satu."
+        },
+        {
+          "id": "K2A-S3",
+          "titleHint": "Dua Puluh Enam Tas",
+          "sceneType": "dua-puluh-enam",
+          "voiceNarration": "Semua anak sudah meletakkan tas di dalam loker. Sekarang kita hitung tas satu per satu, dan setiap tas hanya dihitung satu kali. Baris bawah dari satu sampai sepuluh. Baris tengah dari sebelas sampai dua puluh. Baris atas dari dua puluh satu sampai dua puluh enam. Ada dua puluh enam tas di dalam loker. Dua puluh enam ditulis 26. Karena banyak tas sama dengan banyak anak, ada dua puluh enam anak di kelas Malosi. Apakah jawabanmu sama?"
+        },
+        {
+          "id": "K2A-S4",
+          "titleHint": "Kelompok Sepuluh",
+          "sceneType": "kelompok-sepuluh",
+          "voiceNarration": "Untuk menghitung benda yang banyak, kita boleh mengelompokkan setiap sepuluh benda. Satu ikat berisi sepuluh pensil. Satu wadah berisi sepuluh telur. Satu ikat berisi sepuluh lidi. Satu susun berisi sepuluh balok. Satu bingkai berisi sepuluh kancing. Satu kantong berisi sepuluh kacang. Mengelompokkan setiap sepuluh benda membuat kita lebih mudah dan lebih cepat menghitung. Satu kelompok sepuluh disebut satu puluhan. Dua kelompok, dua puluh. Tiga kelompok, tiga puluh. Empat kelompok, empat puluh. Lima kelompok, lima puluh."
+        },
+        {
+          "id": "K2A-S5",
+          "titleHint": "Sepuluh, Sepuluh, Enam",
+          "sceneType": "sepuluh-sepuluh-enam",
+          "voiceNarration": "Sekarang kita hitung tas dengan cara mengelompokkan setiap sepuluh tas. Ada sepuluh tas pada baris pertama. Ada sepuluh tas pada baris kedua. Sepuluh ditambah sepuluh sama dengan dua puluh. Ada enam tas pada baris ketiga. Dua puluh ditambah enam sama dengan dua puluh enam. Hasilnya sama dengan hitungan satu per satu, yaitu dua puluh enam tas. Menghitung dengan kelompok sepuluh lebih cepat dan tidak mudah salah."
+        },
+        {
+          "id": "K2A-S6",
+          "titleHint": "Maju dan Mundur di Jalur Bilangan",
+          "sceneType": "jalur-bilangan",
+          "voiceNarration": "Kita juga bisa menghitung maju dan menghitung mundur. Menghitung maju dari dua puluh sampai tiga puluh: dua puluh, dua puluh satu, dua puluh dua, dan seterusnya sampai tiga puluh. Menghitung mundur dari tiga puluh sampai dua puluh: tiga puluh, dua puluh sembilan, dua puluh delapan, dan seterusnya sampai dua puluh. Perhatikan nama bilangannya: dua puluh dan satuannya. Ayo bacalah dengan suara nyaring, lalu hitung maju dan mundur bersama Igil."
+        }
+      ],
+      "mindMaps": [
+        {
+          "stepNumber": 1,
+          "stepTitle": "1. Hitung Satu per Satu",
+          "stepDesc": "Sentuh setiap benda satu kali sambil menyebut bilangannya. Tandai benda yang sudah dihitung supaya tidak terhitung dua kali dan tidak ada yang terlewat. Bilangan terakhir yang disebut adalah banyak benda seluruhnya. Itulah korespondensi satu-satu, dasar dari semua berhitung.",
+          "icon": "🔢",
+          "flowFrom": "Hitung benda",
+          "flowTo": "Kelompokkan sepuluh"
+        },
+        {
+          "stepNumber": 2,
+          "stepTitle": "2. Kelompokkan Sepuluh",
+          "stepDesc": "Benda yang banyak lebih mudah dihitung kalau dikelompokkan setiap sepuluh: satu ikat pensil, satu wadah telur, satu susun balok, satu bingkai sepuluh. Satu kelompok sepuluh disebut satu puluhan. Metode kotak sepuluh seperti ini dipakai di banyak negara, misalnya di Singapura, supaya anak melihat sepuluh sekaligus tanpa menghitung satu-satu.",
+          "icon": "📦",
+          "flowFrom": "Kelompokkan sepuluh",
+          "flowTo": "Puluhan dan sisanya"
+        },
+        {
+          "stepNumber": 3,
+          "stepTitle": "3. Puluhan dan Sisanya",
+          "stepDesc": "Hitung dulu kelompok sepuluh: sepuluh, dua puluh, tiga puluh, empat puluh, lima puluh. Lalu tambahkan benda yang tersisa. Dua kelompok sepuluh dan enam benda lagi adalah 20 + 6 = 26. Menghitung loncat sepuluh lalu menambah satu-satu disebut hitung meloncat, dan sangat membantu saat bilangannya sudah besar.",
+          "icon": "➕",
+          "flowFrom": "Puluhan dan sisanya",
+          "flowTo": "Baca dan tulis"
+        },
+        {
+          "stepNumber": 4,
+          "stepTitle": "4. Baca dan Tulis",
+          "stepDesc": "Bilangan 21 sampai 50 ditulis dengan dua angka. Angka di kiri menunjukkan banyak puluhan, angka di kanan menunjukkan banyak satuan. Cara membacanya: nama puluhan lalu nama satuan, misalnya 26 dibaca dua puluh enam, 31 dibaca tiga puluh satu, 47 dibaca empat puluh tujuh. Kelipatan sepuluh dibaca tanpa satuan: dua puluh, tiga puluh, empat puluh, lima puluh.",
+          "icon": "🗣️",
+          "flowFrom": "Baca dan tulis",
+          "flowTo": "Maju dan mundur"
+        },
+        {
+          "stepNumber": 5,
+          "stepTitle": "5. Maju dan Mundur",
+          "stepDesc": "Menghitung maju berarti bilangan makin besar, satu demi satu. Menghitung mundur berarti bilangan makin kecil. Di jalur bilangan, bilangan setelah dan sebelum sebuah bilangan selalu berbeda satu. Setelah 29 datang 30, dan sebelum 30 ada 29. Melengkapi urutan bilangan yang hilang melatih kita mengingat bilangan dengan tepat.",
+          "icon": "🛤️",
+          "flowFrom": "Maju dan mundur",
+          "flowTo": "Tebak dan buktikan"
+        },
+        {
+          "stepNumber": 6,
+          "stepTitle": "6. Tebak dan Buktikan",
+          "stepDesc": "Sebelum menghitung, kira-kira dulu banyak bendanya. Pakai patokan sepuluh: apakah benda ini sebanyak satu, dua, atau tiga kelompok sepuluh? Lalu hitung untuk membuktikan, dan bandingkan tebakan dengan hasil hitungan. Memperkirakan melatih perasaan bilangan, dan menghitung memastikan jawaban yang tepat.",
+          "icon": "🔍",
+          "flowFrom": "Tebak dan buktikan",
+          "flowTo": "Bilangan sampai 50"
+        }
+      ],
+      "infografisData": [
+        {
+          "fruitName": "Hitung Tas Satu per Satu",
+          "emoji": "🎒",
+          "countNum": 26,
+          "countWord": "Dua puluh enam",
+          "voiceSentence": "Tas di loker dihitung satu per satu, tiap tas hanya sekali. Baris pertama sepuluh, baris kedua sepuluh, baris ketiga enam. Ada dua puluh enam tas, jadi ada dua puluh enam anak."
+        },
+        {
+          "fruitName": "Kelompok Sepuluh",
+          "emoji": "📦",
+          "countNum": 10,
+          "countWord": "Sepuluh",
+          "voiceSentence": "Satu ikat pensil, satu wadah telur, satu ikat lidi, satu susun balok, satu bingkai kancing, dan satu kantong kacang masing-masing berisi sepuluh. Mengelompokkan sepuluh memudahkan menghitung."
+        },
+        {
+          "fruitName": "Puluhan sampai Lima Puluh",
+          "emoji": "🔟",
+          "countNum": 50,
+          "countWord": "Lima puluh",
+          "voiceSentence": "Sepuluh, dua puluh, tiga puluh, empat puluh, lima puluh. Satu kelompok sepuluh disebut satu puluhan."
+        },
+        {
+          "fruitName": "Bilangan 21 sampai 25",
+          "emoji": "📋",
+          "countNum": 25,
+          "countWord": "Dua puluh lima",
+          "voiceSentence": "Dua puluh ditambah satu sampai lima. Nama bilangannya nama puluhan lalu nama satuan: dua puluh satu sampai dua puluh lima."
+        },
+        {
+          "fruitName": "Bilangan 26 sampai 30",
+          "emoji": "📈",
+          "countNum": 30,
+          "countWord": "Tiga puluh",
+          "voiceSentence": "Dua puluh ditambah enam sampai sembilan menjadi dua puluh enam sampai dua puluh sembilan. Dua puluh ditambah sepuluh menjadi tiga puluh."
+        },
+        {
+          "fruitName": "Sampai Lima Puluh: Pola Namanya",
+          "emoji": "🗣️",
+          "countNum": 47,
+          "countWord": "Empat puluh tujuh",
+          "voiceSentence": "Sebut nama puluhan dulu, lalu nama satuan. Tiga puluh satu, empat puluh empat, empat puluh tujuh. Kalau satuannya nol, hanya nama puluhan."
+        },
+        {
+          "fruitName": "Maju dan Mundur",
+          "emoji": "↔️",
+          "countNum": 30,
+          "countWord": "Tiga puluh",
+          "voiceSentence": "Maju berarti bilangan makin besar, mundur berarti makin kecil. Di jalur bilangan, sesudah dua puluh sembilan datang tiga puluh dan sebelum tiga puluh ada dua puluh sembilan."
+        },
+        {
+          "fruitName": "Papan 1 sampai 50",
+          "emoji": "🧩",
+          "countNum": 50,
+          "countWord": "Lima puluh",
+          "voiceSentence": "Setiap baris berisi sepuluh bilangan. Turun satu baris berarti lebih sepuluh, geser satu kotak ke kanan berarti lebih satu. Bilangan puluhan diberi warna merah."
+        },
+        {
+          "fruitName": "Tebak dan Buktikan",
+          "emoji": "🔍",
+          "countNum": 3,
+          "countWord": "Tiga",
+          "voiceSentence": "Tebak dulu dengan patokan sepuluh, hitung sepuluh-sepuluh, lalu bandingkan tebakan dengan hasil hitungan."
+        }
+      ],
+      "concreteSlides": [
+        {
+          "title": "Ikat Sepuluh Pensil",
+          "emoji": "✏️",
+          "targetCount": 41,
+          "voiceGuide": "Ketuk pensil untuk memilih tepat sepuluh, lalu ikat. Ikat berkali-kali sampai sisanya kurang dari sepuluh, lalu hitung semuanya."
+        },
+        {
+          "title": "Hitung Tas di Loker",
+          "emoji": "🎒",
+          "targetCount": 37,
+          "voiceGuide": "Ketuk setiap tas satu kali sambil menyebut bilangannya. Tas yang sudah dihitung diberi angka, lalu pilih banyak tas seluruhnya."
+        },
+        {
+          "title": "Susun Balok Jadi Puluhan",
+          "emoji": "🧱",
+          "targetCount": 31,
+          "voiceGuide": "Seret balok ke susun sampai penuh sepuluh. Penuhi susun pertama dulu, lalu susun berikutnya, dan taruh sisanya di kotak sisa."
+        },
+        {
+          "title": "Tebak Isi Kantong Kelereng",
+          "emoji": "🔵",
+          "targetCount": 35,
+          "voiceGuide": "Tebak dulu banyak kelereng, lalu hitung satu per satu untuk membuktikan. Setiap sepuluh kelereng punya warna tepi yang sama."
+        }
+      ],
+      "pictorialSlides": [
+        {
+          "title": "Warnai Lima Bingkai",
+          "diagramType": "five-ten-frames",
+          "numberA": 47,
+          "numberB": 5,
+          "caption": "Warnai bulatan sebanyak yang diminta. Isi satu bingkai sampai penuh sepuluh, baru bingkai berikutnya."
+        },
+        {
+          "title": "Tarik Garis Berurutan",
+          "diagramType": "connect-numbered-dots",
+          "numberA": 50,
+          "numberB": 13,
+          "caption": "Hubungkan titik bernomor dari bilangan terkecil sampai terbesar, satu demi satu."
+        },
+        {
+          "title": "Jalur Bilangan",
+          "diagramType": "number-path",
+          "numberA": 50,
+          "numberB": 10,
+          "caption": "Lengkapi jalur bilangan maju dan mundur. Maju makin besar, mundur makin kecil."
+        }
+      ],
+      "abstractSlides": [
+        {
+          "symbolLarge": "26",
+          "wordLarge": "DUA PULUH ENAM",
+          "mathNotation": "20 + 6 = 26",
+          "voiceReadout": "Jodohkan lambang bilangan dengan cara membacanya. Dua puluh enam ditulis dua puluh ditambah enam. Baca nama puluhannya dulu, lalu satuannya."
+        },
+        {
+          "symbolLarge": "47",
+          "wordLarge": "EMPAT PULUH TUJUH",
+          "mathNotation": "40 + 7 = 47",
+          "voiceReadout": "Detektif bilangan memakai petunjuk: setelah, sebelum, di antara, dan puluhan ditambah satuan. Empat puluh tujuh ditulis empat dan tujuh, bukan tujuh dan empat."
+        },
+        {
+          "symbolLarge": "26",
+          "wordLarge": "KANVAS",
+          "mathNotation": "2 puluhan + 6 satuan",
+          "voiceReadout": "Baca nama bilangannya, ucapkan, lalu guratkan angkanya di kanvas. Dua puluh enam ditulis dengan angka dua lalu angka enam."
+        }
+      ],
+      "interactiveGames": [
+        {
+          "gameId": "subK2A-game-1",
+          "gameNumber": 1,
+          "stage": "Concrete",
+          "gameType": "select-and-bundle-tens",
+          "title": "Ikat Sepuluh Pensil",
+          "bookReference": "Buku Siswa hlm. 5–6 (mengelompokkan setiap 10 benda: ikat pensil, wadah telur, ikat lidi)",
+          "objective": "Mengelompokkan benda sepuluh-sepuluh dan menghitung dengan puluhan ditambah sisa.",
+          "mechanicDescription": "Tiga ronde (23, 32, dan 41 pensil). Siswa memilih tepat sepuluh pensil lalu mengikatnya, berkali-kali sampai sisa kurang dari sepuluh, lalu memilih banyak pensil seluruhnya. Terakhir ucapkan banyak pensil.",
+          "voiceGuide": "Pilih sepuluh pensil, ikat, ulangi, lalu hitung semuanya."
+        },
+        {
+          "gameId": "subK2A-game-2",
+          "gameNumber": 2,
+          "stage": "Concrete",
+          "gameType": "tap-count-in-order",
+          "title": "Hitung Tas di Loker",
+          "bookReference": "Buku Siswa hlm. 3–4 dan 9 (Loker Baru di Kelas Malosi: 26 tas)",
+          "objective": "Menghitung satu per satu dengan korespondensi satu-satu dan melihat kelompok sepuluh pada baris loker.",
+          "mechanicDescription": "Tiga ronde (18, 26, dan 37 tas). Siswa mengetuk setiap tas satu kali sehingga bernomor, sepuluh pertama bertepi hijau, sepuluh berikutnya biru, lalu kuning. Terakhir ucapkan banyak tas.",
+          "voiceGuide": "Ketuk setiap tas satu kali sambil menyebut bilangannya."
+        },
+        {
+          "gameId": "subK2A-game-3",
+          "gameNumber": 3,
+          "stage": "Concrete",
+          "gameType": "drag-to-ten-stacks",
+          "title": "Susun Balok Jadi Puluhan",
+          "bookReference": "Buku Siswa hlm. 6 (satu susun berisi 10 balok; 10, 20, 30, 40, 50)",
+          "objective": "Menyusun balok menjadi susun sepuluh, lalu menjumlah susun dan balok lepas.",
+          "mechanicDescription": "Tiga ronde (14, 22, dan 31 balok). Siswa menyeret balok ke susun sampai penuh sepuluh, susun pertama dulu, lalu sisanya ke kotak sisa, kemudian memilih banyak balok seluruhnya. Terakhir ucapkan banyak balok.",
+          "voiceGuide": "Seret balok ke susun sepuluh, sisanya ke kotak sisa."
+        },
+        {
+          "gameId": "subK2A-game-4",
+          "gameNumber": 4,
+          "stage": "Concrete",
+          "gameType": "estimate-then-count",
+          "title": "Tebak Isi Kantong Kelereng",
+          "bookReference": "Buku Siswa hlm. 11 dan 23–25 (Ayo Mencoba: menebak lalu membuktikan); Ayo Berlatih nomor 1",
+          "objective": "Memperkirakan banyak benda dengan patokan sepuluh lalu membuktikannya dengan menghitung.",
+          "mechanicDescription": "Tiga ronde (18, 27, dan 35 kelereng). Siswa mengatur tebakan, menghitung kelereng satu per satu dengan warna tepi tiap sepuluh, lalu membandingkan tebakan dengan hitungan. Terakhir ucapkan banyak kelereng.",
+          "voiceGuide": "Tebak dulu, lalu hitung untuk membuktikan."
+        },
+        {
+          "gameId": "subK2A-game-5",
+          "gameNumber": 5,
+          "stage": "Picture",
+          "gameType": "color-five-ten-frames",
+          "title": "Warnai Lima Bingkai",
+          "bookReference": "Buku Siswa hlm. 5–9 (bingkai sepuluh dan kelompok sepuluh); hlm. 12–13 (Ayo Berlatih nomor 1 dan 2)",
+          "objective": "Menyatakan bilangan dengan bingkai sepuluh: bingkai penuh dulu, lalu sisanya.",
+          "mechanicDescription": "Tiga ronde (26, 38, dan 47 bulatan). Siswa mewarnai kotak pada lima bingkai sepuluh, bingkai pertama sampai penuh dulu, lalu menekan periksa. Terakhir ucapkan banyak bulatan.",
+          "voiceGuide": "Warnai bulatan, isi bingkai penuh dulu."
+        },
+        {
+          "gameId": "subK2A-game-6",
+          "gameNumber": 6,
+          "stage": "Picture",
+          "gameType": "connect-numbered-dots",
+          "title": "Tarik Garis Berurutan",
+          "bookReference": "Buku Siswa hlm. 16 (Ayo Berlatih nomor 6: tarik garis dari bilangan 20–35 secara berurutan)",
+          "objective": "Mengurutkan bilangan dengan menghubungkan titik bernomor secara berurutan.",
+          "mechanicDescription": "Tiga ronde (20 sampai 35, 31 sampai 42, dan 38 sampai 50). Siswa mengetuk bilangan terkecil dulu lalu bilangan berikutnya sehingga garis tersambung. Titik tersebar, jadi harus dicari.",
+          "voiceGuide": "Ketuk bilangan berikutnya, satu demi satu."
+        },
+        {
+          "gameId": "subK2A-game-7",
+          "gameNumber": 7,
+          "stage": "Picture",
+          "gameType": "complete-number-path",
+          "title": "Jalur Bilangan",
+          "bookReference": "Buku Siswa hlm. 10 (menghitung maju 20–30 dan mundur 30–20); hlm. 15 (Ayo Berlatih nomor 5)",
+          "objective": "Melengkapi bilangan yang hilang pada jalur menghitung maju dan mundur.",
+          "mechanicDescription": "Tiga ronde (maju 20 sampai 30, mundur 30 sampai 20, maju 41 sampai 50). Siswa mengetuk kotak kosong lalu memilih bilangan yang tepat.",
+          "voiceGuide": "Ketuk kotak kosong, lalu pilih bilangannya."
+        },
+        {
+          "gameId": "subK2A-game-8",
+          "gameNumber": 8,
+          "stage": "Abstract",
+          "gameType": "match-numeral-to-name",
+          "title": "Jodohkan Lambang dan Nama",
+          "bookReference": "Buku Siswa hlm. 7–8 (Tabel 1.1: lambang dan cara membaca bilangan 21–30); hlm. 14 (Ayo Berlatih nomor 3)",
+          "objective": "Menjodohkan lambang bilangan dengan cara membacanya.",
+          "mechanicDescription": "Tiga ronde, masing-masing empat pasang (21, 25, 29, 30; 31, 36, 40, 44; 27, 38, 45, 50). Siswa mengetuk lambang lalu namanya.",
+          "voiceGuide": "Ketuk lambang, lalu nama yang cocok."
+        },
+        {
+          "gameId": "subK2A-game-9",
+          "gameNumber": 9,
+          "stage": "Abstract",
+          "gameType": "clue-detective",
+          "title": "Detektif Bilangan Misterius",
+          "bookReference": "Buku Siswa hlm. 10 dan 15 (urutan bilangan; sebelum dan sesudah); hlm. 7–8 (puluhan ditambah satuan)",
+          "objective": "Menemukan bilangan dari petunjuk: setelah, sebelum, di antara, puluhan ditambah satuan, dan nama bilangan.",
+          "mechanicDescription": "Empat ronde, tiap ronde dua petunjuk. Siswa memilih bilangan yang cocok dengan semua petunjuk. Terakhir ucapkan bilangan itu.",
+          "voiceGuide": "Baca petunjuk, lalu pilih bilangannya."
+        },
+        {
+          "gameId": "subK2A-game-10",
+          "gameNumber": 10,
+          "stage": "Abstract",
+          "gameType": "say-and-trace",
+          "title": "Kanvas Guratan dan Suara",
+          "bookReference": "Buku Siswa hlm. 11 (Ayo Mencoba: 24 dibaca dua puluh empat); hlm. 14 (menulis lambang dan cara membaca)",
+          "objective": "Membaca nama bilangan, mengucapkannya, dan menulis lambangnya.",
+          "mechanicDescription": "Dua ronde. Ronde 1 dua puluh enam. Ronde 2 siswa memilih satu dari tiga bilangan (31, 38, 45). Siswa mengucapkan namanya lalu menggurat lambangnya.",
+          "voiceGuide": "Ucapkan bilangannya, lalu guratkan lambangnya."
+        }
+      ]
+    },
+    "B": {
+      "id": "B",
+      "codeTitle": "Sub-Bab B (Nilai Tempat)",
+      "fullTitle": "Sub-Bab B: Nilai Tempat",
+      "targetDescription": "Siswa menyatakan sepuluh benda yang dikelompokkan sebagai satu puluhan dan benda sisanya sebagai satuan, menuliskan banyak benda dalam tabel nilai tempat, membaca angka kiri sebagai puluhan dan angka kanan sebagai satuan, menjelaskan nilai angka menurut letaknya, menukar sepuluh satuan dengan satu puluhan, serta menuliskan satu bilangan dengan beberapa cara dan memilih cara yang paling ringkas.",
+      "secondaryBg": "#FCE7F3",
+      "secondaryBorder": "#DB2777",
+      "secondaryText": "#831843",
+      "silabus": {
+        "teksSuara": "Kita belajar nilai tempat. Bukunya bernama Ayo Membilang sampai dengan Lima Puluh, bagian nilai tempat. Sepuluh benda yang dikelompokkan disebut satu puluhan. Benda yang tersisa disebut satuan. Kita mengisi tabel nilai tempat, membaca angka kiri sebagai puluhan dan angka kanan sebagai satuan, menukar sepuluh satuan dengan satu puluhan, dan menulis satu bilangan dengan beberapa cara. Kita melewati enam tahap seru: cerita, peta pikiran, infografis, benda nyata, gambar, dan simbol.",
+        "cp": "Siswa menyatakan sepuluh benda yang dikelompokkan sebagai satu puluhan dan benda sisanya sebagai satuan, mengisi tabel nilai tempat, membaca angka kiri sebagai puluhan dan angka kanan sebagai satuan, menukar sepuluh satuan dengan satu puluhan, serta menuliskan satu bilangan sampai 50 dengan beberapa cara.",
+        "referensi": "Buku Siswa Matematika Kelas II Kemendikbudristek (Bab 1: Ayo Membilang sampai dengan 50, Sub-Bab B hlm. 17–22)."
+      },
+      "stories": [
+        {
+          "id": "K2B-S1",
+          "titleHint": "Malosi Bermain Balok",
+          "sceneType": "main-balok",
+          "voiceNarration": "Malosi sedang bermain balok. Balok-balok berserakan di lantai. Malosi ingin tahu berapa banyak balok yang ia punya. Kalau dihitung satu per satu, bisa lama dan mudah salah. Ada cara yang lebih rapi, yaitu memakai nilai tempat. Kita menghitung banyak benda dengan memakai puluhan dan satuan. Ayo kita lihat caranya bersama Malosi."
+        },
+        {
+          "id": "K2B-S2",
+          "titleHint": "Satu Puluhan dan Empat Satuan",
+          "sceneType": "satu-puluhan",
+          "voiceNarration": "Sepuluh balok disusun menjadi satu batang. Satu batang berisi sepuluh balok disebut satu puluhan. Balok yang tersisa, tidak sampai sepuluh, disebut satuan. Di sini ada satu puluhan dan empat satuan. Kita tulis di tabel nilai tempat. Satu di kolom puluhan dan empat di kolom satuan. Satu puluhan dan empat satuan sama dengan empat belas."
+        },
+        {
+          "id": "K2B-S3",
+          "titleHint": "Tabel Nilai Tempat",
+          "sceneType": "tabel-nilai-tempat",
+          "voiceNarration": "Ini adalah tabel nilai tempat. Kolom kiri untuk puluhan, kolom kanan untuk satuan. Dua batang berarti dua puluhan, dan delapan balok lepas berarti delapan satuan. Tulis dua di kolom puluhan dan delapan di kolom satuan. Dua puluhan dan delapan satuan sama dengan dua puluh delapan. Angka di sebelah kiri menunjukkan banyak puluhan, dan angka di sebelah kanan menunjukkan banyak satuan."
+        },
+        {
+          "id": "K2B-S4",
+          "titleHint": "Cara 1: Dua Puluh Enam Satuan",
+          "sceneType": "cara-satu",
+          "voiceNarration": "Malosi punya dua puluh enam balok. Ia menuliskannya dengan tiga cara. Cara pertama, semua balok dibiarkan lepas. Nol puluhan dan dua puluh enam satuan. Dua puluh enam adalah dua puluh enam satuan. Cara ini benar, tetapi kita harus menghitung dua puluh enam balok satu per satu."
+        },
+        {
+          "id": "K2B-S5",
+          "titleHint": "Cara 2: Satu Puluhan Enam Belas Satuan",
+          "sceneType": "cara-dua",
+          "voiceNarration": "Cara kedua. Malosi menyusun sepuluh balok menjadi satu batang. Sisanya masih lepas, ada enam belas balok. Satu puluhan dan enam belas satuan. Dua puluh enam adalah satu puluhan dan enam belas satuan. Periksa: sepuluh ditambah enam belas sama dengan dua puluh enam. Cara ini juga benar, tetapi masih ada sepuluh balok lepas yang bisa disusun lagi."
+        },
+        {
+          "id": "K2B-S6",
+          "titleHint": "Cara 3: Dua Puluhan Enam Satuan",
+          "sceneType": "cara-tiga",
+          "voiceNarration": "Cara ketiga. Malosi menyusun semua sepuluh balok yang bisa disusun. Ada dua batang dan enam balok lepas. Dua puluhan dan enam satuan. Dua puluh enam adalah dua puluhan dan enam satuan. Ini cara yang paling ringkas, karena satuannya kurang dari sepuluh. Jadi bilangan dua puluh enam bisa ditulis dengan tiga cara. Kita menuliskan dua puluh enam dengan dua puluhan dan enam satuan. Setiap cara menghasilkan jumlah yang sama."
+        }
+      ],
+      "mindMaps": [
+        {
+          "stepNumber": 1,
+          "stepTitle": "1. Kelompokkan Sepuluh",
+          "stepDesc": "Susun setiap sepuluh benda menjadi satu kelompok, misalnya satu batang balok. Balok Dienes adalah alat peraga yang dipakai di banyak sekolah: satu kubus kecil untuk satu satuan, satu batang sepuluh ruas untuk satu puluhan. Dengan alat ini, sepuluh terlihat sekaligus sebagai satu benda.",
+          "icon": "🧱",
+          "flowFrom": "Kelompokkan sepuluh",
+          "flowTo": "Puluhan dan satuan"
+        },
+        {
+          "stepNumber": 2,
+          "stepTitle": "2. Puluhan dan Satuan",
+          "stepDesc": "Satu kelompok sepuluh disebut satu puluhan. Benda yang tersisa, kurang dari sepuluh, disebut satuan. Empat belas adalah satu puluhan dan empat satuan. Dua puluh delapan adalah dua puluhan dan delapan satuan.",
+          "icon": "🔟",
+          "flowFrom": "Puluhan dan satuan",
+          "flowTo": "Tabel nilai tempat"
+        },
+        {
+          "stepNumber": 3,
+          "stepTitle": "3. Tabel Nilai Tempat",
+          "stepDesc": "Tabel nilai tempat punya dua kolom. Kolom kiri untuk puluhan dan kolom kanan untuk satuan. Tuliskan banyak puluhan dan banyak satuan. Bilangan yang terbentuk dibaca dari kiri: puluhan dulu, lalu satuan. Papan manik emas Montessori memakai ide yang sama.",
+          "icon": "📋",
+          "flowFrom": "Tabel nilai tempat",
+          "flowTo": "Nilai angka"
+        },
+        {
+          "stepNumber": 4,
+          "stepTitle": "4. Nilai Angka",
+          "stepDesc": "Letak angka menentukan nilainya. Pada 26, angka 2 ada di tempat puluhan jadi nilainya 20, dan angka 6 ada di tempat satuan jadi nilainya 6. Karena itu 26 dan 62 berbeda, dan 24 tidak sama dengan 42. Itulah mengapa dinamakan nilai tempat.",
+          "icon": "🔍",
+          "flowFrom": "Nilai angka",
+          "flowTo": "Tukar sepuluh satuan"
+        },
+        {
+          "stepNumber": 5,
+          "stepTitle": "5. Tukar Sepuluh Satuan",
+          "stepDesc": "Sepuluh satuan bisa ditukar menjadi satu puluhan, dan satu puluhan bisa dibuka lagi menjadi sepuluh satuan. Nilainya tidak berubah. Karena itu 26 bisa ditulis 26 satuan, 1 puluhan 16 satuan, atau 2 puluhan 6 satuan. Pertukaran ini juga dipakai nanti saat menjumlah dan mengurang dengan meminjam atau menyimpan.",
+          "icon": "🔁",
+          "flowFrom": "Tukar sepuluh satuan",
+          "flowTo": "Cara paling ringkas"
+        },
+        {
+          "stepNumber": 6,
+          "stepTitle": "6. Cara Paling Ringkas",
+          "stepDesc": "Tukarkan semua sepuluh satuan sampai satuannya kurang dari sepuluh. Itulah cara menulis yang paling ringkas dan paling umum: dua puluhan dan enam satuan. Periksa selalu dengan menghitung nilainya: 20 ditambah 6 sama dengan 26.",
+          "icon": "⭐",
+          "flowFrom": "Cara paling ringkas",
+          "flowTo": "Nilai tempat siap dipakai"
+        }
+      ],
+      "infografisData": [
+        {
+          "fruitName": "Tabel Nilai Tempat",
+          "emoji": "📋",
+          "countNum": 14,
+          "countWord": "Empat belas",
+          "voiceSentence": "Kolom kiri untuk puluhan, kolom kanan untuk satuan. Satu puluhan dan empat satuan sama dengan empat belas. Dua puluhan dan delapan satuan sama dengan dua puluh delapan."
+        },
+        {
+          "fruitName": "Berapa Puluhan, Berapa Satuan?",
+          "emoji": "🔢",
+          "countNum": 25,
+          "countWord": "Dua puluh lima",
+          "voiceSentence": "Angka di kiri adalah banyak puluhan, angka di kanan adalah banyak satuan. Dua puluh lima adalah dua puluhan dan lima satuan."
+        },
+        {
+          "fruitName": "Balok Dienes",
+          "emoji": "🧱",
+          "countNum": 10,
+          "countWord": "Sepuluh",
+          "voiceSentence": "Satu kubus kecil satu satuan. Satu batang sepuluh kubus satu puluhan. Alat ini dibuat oleh Zoltan Dienes dan dipakai guru di banyak negara."
+        },
+        {
+          "fruitName": "Tiga Cara Menulis 26",
+          "emoji": "🧮",
+          "countNum": 26,
+          "countWord": "Dua puluh enam",
+          "voiceSentence": "Dua puluh enam adalah dua puluh enam satuan, satu puluhan enam belas satuan, atau dua puluhan enam satuan. Ketiganya sama nilainya."
+        },
+        {
+          "fruitName": "Tukar Sepuluh Satuan",
+          "emoji": "🔁",
+          "countNum": 10,
+          "countWord": "Sepuluh",
+          "voiceSentence": "Sepuluh satuan bisa ditukar menjadi satu puluhan, dan satu puluhan bisa dibuka menjadi sepuluh satuan. Nilainya tetap sama."
+        },
+        {
+          "fruitName": "Nilai Angka",
+          "emoji": "🔍",
+          "countNum": 20,
+          "countWord": "Dua puluh",
+          "voiceSentence": "Letak angka menentukan nilainya. Pada dua puluh enam, angka dua bernilai dua puluh dan angka enam bernilai enam. Dua puluh empat berbeda dengan empat puluh dua."
+        },
+        {
+          "fruitName": "Manik Emas Montessori",
+          "emoji": "🟡",
+          "countNum": 10,
+          "countWord": "Sepuluh",
+          "voiceSentence": "Maria Montessori membuat manik emas. Satu manik satu satuan, sepuluh manik dalam satu batang satu puluhan."
+        },
+        {
+          "fruitName": "Garis Bilangan Puluhan",
+          "emoji": "📏",
+          "countNum": 34,
+          "countWord": "Tiga puluh empat",
+          "voiceSentence": "Melompat sepuluh-sepuluh di garis bilangan. Tiga puluh empat dicari dari tiga puluh, lalu maju empat langkah."
+        },
+        {
+          "fruitName": "Cara Paling Ringkas",
+          "emoji": "⭐",
+          "countNum": 46,
+          "countWord": "Empat puluh enam",
+          "voiceSentence": "Tukar semua sepuluh satuan sampai satuannya kurang dari sepuluh. Empat puluh enam paling ringkas ditulis empat puluhan dan enam satuan."
+        }
+      ],
+      "concreteSlides": [
+        {
+          "title": "Papan Nilai Tempat",
+          "emoji": "🧱",
+          "targetCount": 48,
+          "voiceGuide": "Seret batang puluhan ke kolom Puluhan dan kubus satuan ke kolom Satuan sampai bilangannya terbentuk."
+        },
+        {
+          "title": "Mesin Tukar",
+          "emoji": "🔁",
+          "targetCount": 34,
+          "voiceGuide": "Tukar sepuluh satuan menjadi satu puluhan, atau buka satu puluhan menjadi sepuluh satuan. Nilainya tidak pernah berubah."
+        },
+        {
+          "title": "Pesanan Toko Kelereng",
+          "emoji": "🛍️",
+          "targetCount": 41,
+          "voiceGuide": "Ambil kantong penuh lebih dulu, satu kantong berisi sepuluh kelereng, lalu tambahkan kelereng lepas untuk sisanya."
+        },
+        {
+          "title": "Hitung Loncat Sepuluh",
+          "emoji": "🥚",
+          "targetCount": 27,
+          "voiceGuide": "Ketuk rak telur dari kiri sambil menghitung loncat sepuluh, lalu ketuk telur lepas dan hitung satu per satu."
+        }
+      ],
+      "pictorialSlides": [
+        {
+          "title": "Isi Tabel dari Batang",
+          "diagramType": "rods-to-table",
+          "numberA": 45,
+          "numberB": 5,
+          "caption": "Hitung batang dan kotak kecil, lalu isi tabel nilai tempat. Satu batang satu puluhan, satu kotak satu satuan."
+        },
+        {
+          "title": "Tempatkan di Garis Bilangan",
+          "diagramType": "place-on-number-line",
+          "numberA": 48,
+          "numberB": 8,
+          "caption": "Ketuk bilangan puluhannya dulu, lalu maju sebanyak satuannya di garis bilangan."
+        },
+        {
+          "title": "Pilih Semua Cara",
+          "diagramType": "number-bond-multi-select",
+          "numberA": 28,
+          "numberB": 18,
+          "caption": "Pilih semua bagan pasangan yang nilainya sama dengan bilangan di atas."
+        }
+      ],
+      "abstractSlides": [
+        {
+          "symbolLarge": "26 = 20 + 6",
+          "wordLarge": "ISI TITIK-TITIK",
+          "mathNotation": "26 = 2 puluhan + 6 satuan",
+          "voiceReadout": "Isi titik-titik: dua puluh enam sama dengan dua puluhan ditambah enam satuan. Angka kiri adalah puluhan dan angka kanan adalah satuan."
+        },
+        {
+          "symbolLarge": "19 < 32 < 35",
+          "wordLarge": "URUTKAN KARTU",
+          "mathNotation": "3 puluhan 2 satuan = 32",
+          "voiceReadout": "Ubah dulu setiap kartu menjadi satu bilangan. Puluhan dikali sepuluh, lalu tambah satuannya. Setelah itu urutkan dari yang terkecil."
+        },
+        {
+          "symbolLarge": "35",
+          "wordLarge": "KANVAS",
+          "mathNotation": "3 puluhan + 5 satuan = 35",
+          "voiceReadout": "Sebutkan puluhan dan satuannya, ucapkan bilangannya, lalu guratkan angkanya di kanvas. Tiga puluh lima ditulis dengan angka tiga lalu angka lima."
+        }
+      ],
+      "interactiveGames": [
+        {
+          "gameId": "subK2B-game-1",
+          "gameNumber": 1,
+          "stage": "Concrete",
+          "gameType": "drag-rods-and-cubes",
+          "title": "Papan Nilai Tempat",
+          "bookReference": "Buku Siswa hlm. 17 (tabel nilai tempat, 10 balok disusun jadi 1 puluhan); hlm. 20 (Ayo Mencoba)",
+          "objective": "Membangun bilangan dengan batang puluhan dan kubus satuan di papan nilai tempat.",
+          "mechanicDescription": "Empat ronde (14, 27, 35, dan 48). Siswa menyeret batang puluhan ke kolom Puluhan dan kubus satuan ke kolom Satuan, boleh mengeluarkannya lagi, lalu menekan periksa. Terakhir ucapkan bilangan.",
+          "voiceGuide": "Seret batang ke Puluhan dan kubus ke Satuan."
+        },
+        {
+          "gameId": "subK2B-game-2",
+          "gameNumber": 2,
+          "stage": "Concrete",
+          "gameType": "regroup-ten-ones",
+          "title": "Mesin Tukar",
+          "bookReference": "Buku Siswa hlm. 18–19 (Malosi menulis 26 dengan tiga cara: 26 satuan, 1 puluhan 16 satuan, 2 puluhan 6 satuan)",
+          "objective": "Menukar sepuluh satuan dengan satu puluhan dan sebaliknya, dan menyadari nilainya tetap.",
+          "mechanicDescription": "Tiga ronde (0 puluhan 26 satuan jadi 2 puluhan 6 satuan; lalu jadi 1 puluhan 16 satuan; 1 puluhan 24 satuan jadi 3 puluhan 4 satuan). Siswa menekan tombol tukar atau buka sampai tujuan tercapai.",
+          "voiceGuide": "Tukar sepuluh satuan atau buka satu puluhan."
+        },
+        {
+          "gameId": "subK2B-game-3",
+          "gameNumber": 3,
+          "stage": "Concrete",
+          "gameType": "drag-to-basket-order",
+          "title": "Pesanan Toko Kelereng",
+          "bookReference": "Buku Siswa hlm. 5 dan 17 (satu kantong berisi 10; puluhan dan satuan)",
+          "objective": "Memenuhi pesanan dengan kantong penuh lebih dulu lalu kelereng lepas.",
+          "mechanicDescription": "Tiga ronde (23, 38, dan 41 kelereng). Siswa menyeret kantong penuh dan kelereng lepas ke keranjang, boleh mengeluarkannya lagi, lalu menekan periksa. Terakhir ucapkan banyak kelereng.",
+          "voiceGuide": "Seret kantong dan kelereng ke keranjang."
+        },
+        {
+          "gameId": "subK2B-game-4",
+          "gameNumber": 4,
+          "stage": "Concrete",
+          "gameType": "skip-count-by-tens",
+          "title": "Hitung Loncat Sepuluh",
+          "bookReference": "Buku Siswa hlm. 6 dan 9 (menghitung setiap 10: 10, 20, 30; lalu menambah sisanya)",
+          "objective": "Menghitung loncat sepuluh lalu melanjutkan satu per satu.",
+          "mechanicDescription": "Tiga ronde (3 rak dan 4 telur; 4 rak dan 2 telur; 2 rak dan 7 telur). Siswa mengetuk rak dari kiri sambil menyebut kelipatan sepuluh, lalu telur lepas satu per satu, kemudian memilih banyak telur. Terakhir ucapkan banyak telur.",
+          "voiceGuide": "Ketuk rak sepuluh-sepuluh, lalu telur lepas."
+        },
+        {
+          "gameId": "subK2B-game-5",
+          "gameNumber": 5,
+          "stage": "Picture",
+          "gameType": "rods-to-place-value-table",
+          "title": "Isi Tabel dari Batang",
+          "bookReference": "Buku Siswa hlm. 17 dan 21 (Ayo Berlatih nomor 1: lengkapi tabel nilai tempat)",
+          "objective": "Mengisi tabel nilai tempat dari diagram batang dan kotak.",
+          "mechanicDescription": "Tiga ronde (26, 38, dan 45). Siswa menghitung batang dan kotak kecil, memilih angka untuk kolom puluhan dan satuan, lalu menekan periksa. Terakhir ucapkan bilangan.",
+          "voiceGuide": "Isi kolom puluhan dan satuan."
+        },
+        {
+          "gameId": "subK2B-game-6",
+          "gameNumber": 6,
+          "stage": "Picture",
+          "gameType": "place-on-number-line",
+          "title": "Tempatkan di Garis Bilangan",
+          "bookReference": "Buku Siswa hlm. 17–19 (puluhan dan satuan); garis bilangan puluhan sebagai pengayaan",
+          "objective": "Menempatkan bilangan di garis bilangan lewat puluhan dulu lalu satuan.",
+          "mechanicDescription": "Tiga ronde (34, 27, dan 48). Siswa mengetuk bilangan puluhannya di garis bilangan 0 sampai 50, lalu memperbesar dan mengetuk bilangannya.",
+          "voiceGuide": "Ketuk puluhannya, lalu maju sebanyak satuannya."
+        },
+        {
+          "gameId": "subK2B-game-7",
+          "gameNumber": 7,
+          "stage": "Picture",
+          "gameType": "multi-select-number-bonds",
+          "title": "Pilih Semua Cara",
+          "bookReference": "Buku Siswa hlm. 22 (Ayo Berlatih nomor 4: 46 sebagai 4 puluhan 6 satuan, 3 puluhan 16 satuan, atau 2 puluhan 16 satuan)",
+          "objective": "Memilih semua cara menulis satu bilangan dengan puluhan dan satuan yang nilainya sama.",
+          "mechanicDescription": "Tiga ronde (46, 35, dan 28), tiap ronde empat kartu bagan pasangan dan tiga di antaranya benar. Siswa memilih semua yang benar lalu menekan periksa.",
+          "voiceGuide": "Pilih semua bagan yang nilainya sama."
+        },
+        {
+          "gameId": "subK2B-game-8",
+          "gameNumber": 8,
+          "stage": "Abstract",
+          "gameType": "fill-the-blanks",
+          "title": "Isi Titik-Titik",
+          "bookReference": "Buku Siswa hlm. 21 (Ayo Berlatih nomor 2: 24 = ... puluhan + ... satuan, dan seterusnya)",
+          "objective": "Menuliskan bilangan sebagai puluhan ditambah satuan.",
+          "mechanicDescription": "Empat ronde (24, 26, 32, dan 35). Siswa mengetuk titik lalu memilih angkanya untuk puluhan dan satuan, kemudian menekan periksa. Terakhir ucapkan bilangan.",
+          "voiceGuide": "Isi puluhan dan satuan."
+        },
+        {
+          "gameId": "subK2B-game-9",
+          "gameNumber": 9,
+          "stage": "Abstract",
+          "gameType": "order-place-value-cards",
+          "title": "Urutkan Kartu Nilai Tempat",
+          "bookReference": "Buku Siswa hlm. 22 (Ayo Berlatih nomor 3: 2 puluhan dan 15 satuan, 2 puluhan dan 23 satuan)",
+          "objective": "Mengubah kartu puluhan dan satuan menjadi satu bilangan lalu mengurutkannya dari yang terkecil.",
+          "mechanicDescription": "Tiga ronde (tiga kartu, tiga kartu, empat kartu). Siswa mengetuk kartu yang bernilai paling kecil dulu, lalu berikutnya.",
+          "voiceGuide": "Ubah jadi satu bilangan, lalu urutkan."
+        },
+        {
+          "gameId": "subK2B-game-10",
+          "gameNumber": 10,
+          "stage": "Abstract",
+          "gameType": "say-and-trace",
+          "title": "Kanvas Guratan dan Suara",
+          "bookReference": "Buku Siswa hlm. 17 dan 19 (puluhan dan satuan menjadi bilangan); hlm. 22",
+          "objective": "Menyebut puluhan dan satuan, mengucapkan bilangan, dan menulis lambangnya.",
+          "mechanicDescription": "Dua ronde. Ronde 1 dua puluhan dan enam satuan. Ronde 2 siswa memilih satu dari tiga bilangan (35, 43, 48). Siswa mengucapkan bilangannya lalu menggurat lambangnya.",
+          "voiceGuide": "Ucapkan bilangannya, lalu guratkan lambangnya."
+        }
+      ]
+    },
+    "C": {
+      "id": "C",
+      "codeTitle": "Sub-Bab C (Membandingkan Bilangan)",
+      "fullTitle": "Sub-Bab C: Membandingkan Dua Bilangan atau Lebih",
+      "targetDescription": "Siswa membandingkan dua bilangan atau lebih sampai 50 memakai nilai tempat, menentukan bilangan yang lebih besar dan lebih kecil, serta mengurutkan bilangan.",
+      "secondaryBg": "#DCFCE7",
+      "secondaryBorder": "#16A34A",
+      "secondaryText": "#14532D",
+      "segeraHadir": true,
+      "silabus": {
+        "teksSuara": "Sub-Bab C membandingkan dua bilangan atau lebih. Bagian ini segera hadir. Guru IGIL masih menyiapkan permainannya.",
+        "cp": "Siswa membandingkan dua bilangan atau lebih sampai 50 memakai nilai tempat, menentukan bilangan yang lebih besar dan lebih kecil, serta mengurutkan bilangan.",
+        "referensi": "Buku Siswa Matematika Kelas II Kemendikbudristek (Bab 1: Ayo Membilang sampai dengan 50, Sub-Bab C hlm. 23–29)."
+      },
+      "stories": [],
+      "mindMaps": [],
+      "infografisData": [],
+      "concreteSlides": [],
+      "pictorialSlides": [],
+      "abstractSlides": [],
+      "interactiveGames": []
+    }
+  },
+  "practiceQuestions": [
+    {
+      "id": 1,
+      "level": "LOTS (30%)",
+      "prompt": "Bu guru ingin menghitung pensil yang berserakan di meja, banyaknya lebih dari 30. Cara yang memudahkan adalah...",
+      "visualEmojis": [
+        "✏️"
+      ],
+      "options": [
+        "menebak saja tanpa menghitung",
+        "menghitung hanya pensil yang berwarna merah",
+        "menghitung dari bilangan yang paling besar",
+        "mengelompokkan setiap 10 pensil, lalu menghitung kelompoknya"
+      ]
+    },
+    {
+      "id": 2,
+      "level": "LOTS (30%)",
+      "prompt": "Pada tabel nilai tempat, kolom di sebelah kiri dipakai untuk...",
+      "visualEmojis": [
+        "📋"
+      ],
+      "options": [
+        "puluhan",
+        "satuan",
+        "jumlah semua benda",
+        "nama bilangan"
+      ]
+    },
+    {
+      "id": 3,
+      "level": "MOTS (30%)",
+      "prompt": "Ada 2 ikat pensil, setiap ikat berisi 10 pensil, ditambah 6 pensil lepas. Banyak pensil seluruhnya adalah...",
+      "visualEmojis": [
+        "🎀"
+      ],
+      "options": [
+        "16",
+        "20",
+        "26",
+        "36"
+      ]
+    },
+    {
+      "id": 4,
+      "level": "LOTS (30%)",
+      "prompt": "Sepuluh balok disusun menjadi satu batang. Satu batang itu disebut...",
+      "visualEmojis": [
+        "🧱"
+      ],
+      "options": [
+        "satu satuan",
+        "dua puluhan",
+        "sepuluh puluhan",
+        "satu puluhan"
+      ]
+    },
+    {
+      "id": 5,
+      "level": "MOTS (30%)",
+      "prompt": "Bilangan 38 dibaca...",
+      "visualEmojis": [
+        "🗣️"
+      ],
+      "options": [
+        "tiga puluh delapan",
+        "delapan puluh tiga",
+        "tiga delapan",
+        "tiga puluh sembilan"
+      ]
+    },
+    {
+      "id": 6,
+      "level": "MOTS (30%)",
+      "prompt": "Pada tabel nilai tempat, puluhan 2 dan satuan 8. Bilangan yang terbentuk adalah...",
+      "visualEmojis": [],
+      "options": [
+        "20",
+        "28",
+        "29",
+        "38"
+      ]
+    },
+    {
+      "id": 7,
+      "level": "HOTS (40%)",
+      "prompt": "Tika menghitung mundur mulai dari 30 sampai 26, satu demi satu. Bilangan yang ia sebut adalah...",
+      "visualEmojis": [],
+      "options": [
+        "30, 28, 26",
+        "30, 29, 28, 27, 26",
+        "26, 27, 28, 29, 30",
+        "30, 29, 28, 27, 25"
+      ]
+    },
+    {
+      "id": 8,
+      "level": "HOTS (40%)",
+      "prompt": "Lili menulis 46 sebagai 3 puluhan dan 16 satuan. Pernyataan yang benar adalah...",
+      "visualEmojis": [],
+      "options": [
+        "salah, karena puluhan pada 46 harus selalu 4",
+        "salah, karena satuan tidak boleh lebih dari 9 dalam cara apa pun",
+        "benar, karena 30 + 16 = 46, tetapi cara paling ringkas adalah 4 puluhan dan 6 satuan",
+        "benar, dan itu cara yang paling ringkas"
+      ]
+    },
+    {
+      "id": 9,
+      "level": "HOTS (40%)",
+      "prompt": "Malosi menghitung 20 + 7, sedangkan Kira menghitung 27 satu per satu. Pernyataan yang benar adalah...",
+      "visualEmojis": [],
+      "options": [
+        "hanya Malosi yang benar, hasilnya dua puluh enam",
+        "hanya Kira yang benar, hasilnya dua puluh delapan",
+        "keduanya salah, hasilnya tiga puluh",
+        "keduanya benar, hasilnya sama-sama dua puluh tujuh"
+      ]
+    },
+    {
+      "id": 10,
+      "level": "HOTS (40%)",
+      "prompt": "Malosi mempunyai 31 balok. Ia sudah menyusun 2 batang, masing-masing 10 balok. Pernyataan yang benar adalah...",
+      "visualEmojis": [],
+      "options": [
+        "masih ada 11 balok lepas, dan 10 di antaranya bisa disusun menjadi 1 batang lagi",
+        "masih ada 1 balok lepas dan tidak bisa disusun lagi",
+        "masih ada 21 balok lepas",
+        "masih ada 11 balok lepas dan tidak bisa disusun lagi"
+      ]
+    }
+  ]
+}

@@ -5,6 +5,7 @@ import React, { useCallback, useContext, useEffect, useMemo, useRef, useState } 
 import { IkonMainan } from "./ikon-mainan";
 import { GarisBilanganKatak, MulutBuaya, type ArahBuaya } from "./gambar-banding-b";
 import { DottedNumberTracingCanvas, SEBUTAN_ANGKA } from "./elemen-kelas1";
+import { NamaBilangan } from "./data-k2";
 import {
   ALAS,
   BendaSeret,
@@ -64,7 +65,7 @@ const KATA_BELAS = [
   "Dua puluh",
 ];
 
-export const kata = (n: number) => (n === 0 ? "Nol" : n > 10 && n <= 20 ? KATA_BELAS[n - 11] : (SEBUTAN_ANGKA[n - 1] ?? String(n)));
+export const kata = (n: number) => (n === 0 ? "Nol" : n > 10 && n <= 20 ? KATA_BELAS[n - 11] : n > 20 ? NamaBilangan(n) : (SEBUTAN_ANGKA[n - 1] ?? String(n)));
 
 const NAMA: Record<string, string> = {
   sepeda: "Sepeda",

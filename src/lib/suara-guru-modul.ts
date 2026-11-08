@@ -86,6 +86,11 @@ export type OpsiSuaraGuruModul = {
   kelamin?: KelaminGuru;
   /** Dipanggil sekali saat suara selesai atau gagal, hanya jika belum diganti ucapan lain. */
   selesai?: () => void;
+  /**
+   * Murni Web Speech API bawaan perangkat (id-ID). Tidak mencari berkas audio statis dan tidak mencatat
+   * ucapan ke naskah penulisan, jadi tidak pernah memakai kuota layanan suara berbayar.
+   */
+  perangkatSaja?: boolean;
 };
 
 /**
@@ -127,6 +132,11 @@ export function ucapkanGuruModul(teks: string, opsi: OpsiSuaraGuruModul = {}): v
       window.speechSynthesis.speak(ucapan);
     }, 40);
   };
+
+  if (opsi.perangkatSaja) {
+    cadangan();
+    return;
+  }
 
   void (async () => {
     let hasil: Awaited<ReturnType<typeof mintaAudioTts>> = null;

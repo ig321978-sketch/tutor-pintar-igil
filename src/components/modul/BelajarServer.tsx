@@ -244,6 +244,10 @@ export function UjianServer({
   const [percobaan, setPercobaan] = useState(1);
 
   const idAnak = profil.status === "siap" ? (profil.aktif?.id ?? null) : null;
+  // Praktikum Blok baru ada untuk Kelas 1; bab lain mengarah ke Rapor sampai blok mereka dibuka.
+  const adaPraktikumBlok = bab.startsWith("mtk-1-");
+  const hrefPraktikum = adaPraktikumBlok ? "/praktikum/mtk-1-blok1" : "/rapor";
+  const labelPraktikum = adaPraktikumBlok ? "LIHAT PRAKTIKUM BLOK" : "LIHAT RAPOR";
 
   const muatStatus = useCallback(async () => {
     if (!idAnak) return;
@@ -359,10 +363,10 @@ export function UjianServer({
         <h2 className="text-lg font-black text-[#166534] md:text-xl">Ujian bab ini sudah lulus 100%</h2>
         <p className="text-sm font-bold text-[#334155] md:text-base">Poin Ujian sudah dicatat server. Lanjutkan ke bab berikutnya atau Praktikum Blok.</p>
         <Link
-          href="/praktikum/mtk-1-blok1"
+          href={hrefPraktikum}
           className="inline-block rounded-2xl bg-[#1C01A5] px-5 py-2 text-xs font-black text-[#FFE566] md:text-sm"
         >
-          LIHAT PRAKTIKUM BLOK ➡️
+          {labelPraktikum} ➡️
         </Link>
       </section>
     );
@@ -421,10 +425,10 @@ export function UjianServer({
         <div className="flex flex-wrap justify-center gap-2">
           {lulus ? (
             <Link
-              href="/praktikum/mtk-1-blok1"
+              href={hrefPraktikum}
               className="rounded-xl bg-[#1C01A5] px-5 py-2 text-xs font-black text-[#FFE566] md:text-sm"
             >
-              LIHAT PRAKTIKUM BLOK ➡️
+              {labelPraktikum} ➡️
             </Link>
           ) : (
             <button
