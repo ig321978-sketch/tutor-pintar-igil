@@ -803,7 +803,7 @@ const REFLEKSI = [
   "Aku sudah bisa pengurangan yang hasilnya kurang dari 20.",
 ];
 
-function Refleksi({ speakGuru }: { speakGuru: (t: string) => void }) {
+export function Refleksi({ speakGuru }: { speakGuru: (t: string) => void }) {
   const [iya, setIya] = useState<boolean[]>(() => REFLEKSI.map(() => false));
   return (
     <div className="space-y-1.5 rounded-3xl border-4 border-[#1C01A5] bg-[#F5F3FF] px-2 py-2">

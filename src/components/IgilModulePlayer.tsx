@@ -15,6 +15,13 @@ import materiBab3 from "@/data/kelas1-bab3.json";
 import materiBab4 from "@/data/kelas1-bab4.json";
 import materiBab5 from "@/data/kelas1-bab5.json";
 import materiBab6 from "@/data/kelas1-bab6.json";
+import { CeritaKurangC, PETA_PIKIRAN_C6 } from "@/components/modul/gambar-kurang-c6";
+import {
+  AbstractKurangC,
+  ConcreteKurangC,
+  InfografisKurangC,
+  PictureKurangC,
+} from "@/components/modul/SubBabC6Kurang";
 import { CeritaTambahB, PETA_PIKIRAN_B6 } from "@/components/modul/gambar-tambah-b6";
 import {
   AbstractTambahB,
@@ -1132,6 +1139,7 @@ export default function IgilModulePlayer({ bab = "mtk-1-bab1" }: { bab?: BabModu
   const subB3 = bab === "mtk-1-bab3" && activeSubBab === "B";
   const subA6 = bab === "mtk-1-bab6" && activeSubBab === "A";
   const subB6 = bab === "mtk-1-bab6" && activeSubBab === "B";
+  const subC6 = bab === "mtk-1-bab6" && activeSubBab === "C";
   const subA5 = bab === "mtk-1-bab5" && activeSubBab === "A";
   const subB5 = bab === "mtk-1-bab5" && activeSubBab === "B";
   const subC5 = bab === "mtk-1-bab5" && activeSubBab === "C";
@@ -1300,6 +1308,8 @@ export default function IgilModulePlayer({ bab = "mtk-1-bab1" }: { bab?: BabModu
                     ? "Kita belajar lebih dari, kurang dari, dan selisih. Bukunya bernama Penjumlahan dan Pengurangan sampai dengan Dua Puluh, bagian mengenal konsep lebih dari, kurang dari, dan selisih. Kita memasangkan benda satu-satu, menyebut lebihnya dan kurangnya, lalu mencari selisih dengan mengurangkan bilangan yang besar dengan bilangan yang kecil. Kita melewati enam tahap seru: cerita, peta pikiran, infografis, benda nyata, gambar, dan simbol."
                     : subB6
                     ? "Kita belajar penjumlahan yang hasilnya kurang dari dua puluh. Bukunya bernama Penjumlahan dan Pengurangan sampai dengan Dua Puluh, bagian penjumlahan. Kita menjumlahkan satuan dengan satuan dan puluhan dengan satuan, memakai cara menghitung maju, menghitung dengan sepuluh, penjumlahan berulang, pasangan bilangan, dan nilai tempat. Kita melewati enam tahap seru: cerita, peta pikiran, infografis, benda nyata, gambar, dan simbol."
+                    : subC6
+                    ? "Kita belajar pengurangan yang hasilnya kurang dari dua puluh. Bukunya bernama Penjumlahan dan Pengurangan sampai dengan Dua Puluh, bagian pengurangan. Kita mengurangkan bilangan satuan dari bilangan belasan dengan menghitung mundur, pasangan bilangan, dan nilai tempat, lalu memeriksa hasilnya dengan penjumlahan. Kita melewati enam tahap seru: cerita, peta pikiran, infografis, benda nyata, gambar, dan simbol."
                     : adaBab6
                     ? "Kita belajar penjumlahan dan pengurangan sampai dua puluh. Bukunya bernama Penjumlahan dan Pengurangan sampai dengan Dua Puluh. Kita melewati enam tahap seru: cerita, peta pikiran, infografis, benda nyata, gambar, dan simbol."
                     : subD5
@@ -1328,6 +1338,8 @@ export default function IgilModulePlayer({ bab = "mtk-1-bab1" }: { bab?: BabModu
                     <>Siswa membandingkan dua kelompok benda dengan memasangkan satu-satu, menyatakan perbandingan dengan kata lebih dari, kurang dari, lebihnya, kurangnya, beda, dan selisih, serta mencari selisih dengan mengurangkan bilangan yang besar dengan bilangan yang kecil.</>
                   ) : subB6 ? (
                     <>Siswa menjumlahkan bilangan satuan dengan satuan dan bilangan puluhan dengan satuan yang hasilnya kurang dari 20 dengan berbagai cara, yaitu menghitung maju, menghitung dengan 10, penjumlahan berulang, pasangan bilangan, dan nilai tempat, serta menyelesaikan soal cerita penjumlahan.</>
+                  ) : subC6 ? (
+                    <>Siswa mengurangkan bilangan satuan dari bilangan belasan yang hasilnya kurang dari 20 dengan berbagai cara, yaitu menghitung mundur, pasangan bilangan, dan nilai tempat, memeriksa hasil pengurangan dengan penjumlahan, serta menyelesaikan soal cerita pengurangan.</>
                   ) : adaBab6 ? (
                     <>Siswa menyelesaikan penjumlahan dan pengurangan bilangan cacah sampai 20 dengan berbagai cara, serta menyelesaikan masalah yang berkaitan dengan lebih dari, kurang dari, dan selisih.</>
                   ) : subD5 ? (
@@ -1357,6 +1369,8 @@ export default function IgilModulePlayer({ bab = "mtk-1-bab1" }: { bab?: BabModu
                     ? "Buku Siswa Matematika Kelas I Kemendikbudristek (Bab 6: Penjumlahan dan Pengurangan sampai dengan 20, Sub-Bab A hlm. 176–182)."
                     : subB6
                     ? "Buku Siswa Matematika Kelas I Kemendikbudristek (Bab 6: Penjumlahan dan Pengurangan sampai dengan 20, Sub-Bab B hlm. 182–189)."
+                    : subC6
+                    ? "Buku Siswa Matematika Kelas I Kemendikbudristek (Bab 6: Penjumlahan dan Pengurangan sampai dengan 20, Sub-Bab C hlm. 189–195)."
                     : adaBab6
                     ? "Buku Siswa Matematika Kelas I Kemendikbudristek (Bab 6: Penjumlahan dan Pengurangan sampai dengan 20, hlm. 175–196)."
                     : subD5
@@ -1644,6 +1658,8 @@ export default function IgilModulePlayer({ bab = "mtk-1-bab1" }: { bab?: BabModu
               <CeritaSelisihA speakGuru={speakGuru} />
             ) : subB6 ? (
               <CeritaTambahB speakGuru={speakGuru} />
+            ) : subC6 ? (
+              <CeritaKurangC speakGuru={speakGuru} />
             ) : subA5 ? (
               <CeritaBelasA speakGuru={speakGuru} />
             ) : subB5 ? (
@@ -1780,6 +1796,13 @@ export default function IgilModulePlayer({ bab = "mtk-1-bab1" }: { bab?: BabModu
               ) : subB6 ? (
                 <PetaPikiranB
                   langkah={PETA_PIKIRAN_B6}
+                  judul={judulSubBab}
+                  speakGuru={speakGuru}
+                  maskot={<IgilWajah kelas="h-14 w-20 igil-lompat" />}
+                />
+              ) : subC6 ? (
+                <PetaPikiranB
+                  langkah={PETA_PIKIRAN_C6}
                   judul={judulSubBab}
                   speakGuru={speakGuru}
                   maskot={<IgilWajah kelas="h-14 w-20 igil-lompat" />}
@@ -1936,6 +1959,8 @@ export default function IgilModulePlayer({ bab = "mtk-1-bab1" }: { bab?: BabModu
                 <InfografisSelisihA speakGuru={speakGuru} />
               ) : subB6 ? (
                 <InfografisTambahB speakGuru={speakGuru} />
+              ) : subC6 ? (
+                <InfografisKurangC speakGuru={speakGuru} />
               ) : subA5 ? (
                 <InfografisBelasA speakGuru={speakGuru} />
               ) : subB5 ? (
@@ -2180,6 +2205,20 @@ export default function IgilModulePlayer({ bab = "mtk-1-bab1" }: { bab?: BabModu
                       5,
                       pictorialRef,
                       "Empat permainan benda nyata sudah selesai. Sekarang kita lihat penjumlahan dalam diagram."
+                    )
+                  }
+                />
+              ) : subC6 ? (
+                <ConcreteKurangC
+                  speakGuru={speakGuru}
+                  panel={panelConcrete}
+                  hentikan={hentikanRekamConcrete}
+                  gulir={() => concreteRef.current?.scrollIntoView({ behavior: "smooth", block: "start" })}
+                  onSelesai={() =>
+                    handleUnlockNextSmicpa(
+                      5,
+                      pictorialRef,
+                      "Empat permainan benda nyata sudah selesai. Sekarang kita lihat pengurangan dalam diagram."
                     )
                   }
                 />
@@ -2546,6 +2585,20 @@ export default function IgilModulePlayer({ bab = "mtk-1-bab1" }: { bab?: BabModu
                     )
                   }
                 />
+              ) : subC6 ? (
+                <PictureKurangC
+                  speakGuru={speakGuru}
+                  panel={panelGambar}
+                  hentikan={hentikanRekamConcrete}
+                  gulir={() => pictorialRef.current?.scrollIntoView({ behavior: "smooth", block: "start" })}
+                  onSelesai={() =>
+                    handleUnlockNextSmicpa(
+                      6,
+                      abstractRef,
+                      "Tiga permainan diagram sudah selesai. Ayo kita mengurangkan dengan angka dan tanda."
+                    )
+                  }
+                />
               ) : subA5 ? (
                 <PictureBelasA
                   speakGuru={speakGuru}
@@ -2881,6 +2934,14 @@ export default function IgilModulePlayer({ bab = "mtk-1-bab1" }: { bab?: BabModu
                 />
               ) : subB6 ? (
                 <AbstractTambahB
+                  speakGuru={speakGuru}
+                  panel={panelLambang}
+                  hentikan={hentikanRekamConcrete}
+                  gulir={() => abstractRef.current?.scrollIntoView({ behavior: "smooth", block: "start" })}
+                  onSelesai={() => selesaiBabRef.current?.scrollIntoView({ behavior: "smooth", block: "center" })}
+                />
+              ) : subC6 ? (
+                <AbstractKurangC
                   speakGuru={speakGuru}
                   panel={panelLambang}
                   hentikan={hentikanRekamConcrete}

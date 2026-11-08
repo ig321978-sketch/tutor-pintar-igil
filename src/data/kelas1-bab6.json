@@ -701,18 +701,344 @@
       "id": "C",
       "codeTitle": "Sub-Bab C (Pengurangan Kurang dari 20)",
       "fullTitle": "Sub-Bab C: Pengurangan yang Hasilnya Kurang dari 20",
-      "targetDescription": "Sub-Bab C sedang disiapkan.",
+      "targetDescription": "Siswa mengurangkan bilangan satuan dari bilangan belasan dengan hasil kurang dari 20 dengan berbagai cara, yaitu menghitung mundur, pasangan bilangan, dan nilai tempat, memeriksa hasil pengurangan dengan penjumlahan, memilih cara yang paling mudah, serta menyelesaikan soal cerita pengurangan.",
       "secondaryBg": "#FEF3C7",
       "secondaryBorder": "#D97706",
       "secondaryText": "#78350F",
-      "segeraHadir": true,
-      "stories": [],
-      "mindMaps": [],
-      "infografisData": [],
-      "concreteSlides": [],
-      "pictorialSlides": [],
-      "abstractSlides": [],
-      "interactiveGames": []
+      "stories": [
+        {
+          "id": "C6-S1",
+          "titleHint": "Apel Tika Dimakan Ulat",
+          "sceneType": "apel-dimakan-ulat",
+          "voiceNarration": "Masih ingatkah kamu cerita Ibu dan Tika? Ibu punya tujuh donat, Tika punya enam donat, dan selisihnya tujuh dikurangi enam sama dengan satu. Kita sudah belajar pengurangan satuan dengan satuan. Sekarang kita belajar pengurangan puluhan dengan satuan. Tika membeli lima belas apel. Ternyata tiga apel dimakan ulat. Berapakah sisa apel Tika yang masih bagus? Sisanya adalah lima belas dikurangi tiga. Kita bisa menghitungnya dengan beberapa cara."
+        },
+        {
+          "id": "C6-S2",
+          "titleHint": "Menghitung Mundur",
+          "sceneType": "menghitung-mundur",
+          "voiceNarration": "Cara pertama adalah menghitung mundur. Mulai dari lima belas, lalu hitung mundur tiga kali. Empat belas, tiga belas, dua belas. Jadi lima belas dikurangi tiga sama dengan dua belas. Sisa apel Tika adalah dua belas."
+        },
+        {
+          "id": "C6-S3",
+          "titleHint": "Pasangan Bilangan",
+          "sceneType": "pasangan-bilangan-kurang",
+          "voiceNarration": "Cara kedua adalah pasangan bilangan. Lima belas bisa dipisah menjadi sepuluh dan lima. Lima dikurangi tiga sama dengan dua. Lalu sepuluh ditambah dua sama dengan dua belas. Jadi lima belas dikurangi tiga sama dengan dua belas."
+        },
+        {
+          "id": "C6-S4",
+          "titleHint": "Nilai Tempat",
+          "sceneType": "nilai-tempat-kurang",
+          "voiceNarration": "Cara ketiga adalah nilai tempat. Lima belas adalah satu puluhan dan lima satuan. Kita kurangkan satuannya, lima dikurangi tiga sama dengan dua. Puluhannya tetap satu. Jadi lima belas dikurangi tiga sama dengan dua belas. Sisa apel Tika adalah dua belas."
+        },
+        {
+          "id": "C6-S5",
+          "titleHint": "Bolu Kukus Ibu",
+          "sceneType": "bolu-kukus-ibu",
+          "voiceNarration": "Ibu membeli tiga belas bolu kukus. Malosi memakan dua bolu kukus. Berapakah sisa bolu kukus Ibu sekarang? Tiga belas adalah satu kotak berisi sepuluh dan tiga bolu lepas. Malosi memakan dua bolu lepas, jadi tinggal satu bolu lepas. Sepuluh ditambah satu sama dengan sebelas. Jadi tiga belas dikurangi dua sama dengan sebelas."
+        },
+        {
+          "id": "C6-S6",
+          "titleHint": "Pensil Wei dan Kira",
+          "sceneType": "pensil-wei-kira",
+          "voiceNarration": "Wei mempunyai sebelas pensil warna. Pensil warna Kira tiga kurangnya dari pensil warna Wei. Berapa banyak pensil warna Kira? Sebelas dikurangi tiga sama dengan delapan. Jadi pensil warna Kira ada delapan. Kalau pensil warna Kira dan Wei digabungkan, delapan ditambah sebelas sama dengan sembilan belas."
+        }
+      ],
+      "mindMaps": [
+        {
+          "stepNumber": 1,
+          "stepTitle": "1. Baca Ceritanya",
+          "stepDesc": "Baca cerita dengan teliti. Kata sisa, dimakan, diambil, dan pergi menandakan pengurangan. Tentukan bilangan mula-mula dan banyak yang berkurang.",
+          "icon": "📖",
+          "flowFrom": "Cerita pengurangan",
+          "flowTo": "Menghitung mundur"
+        },
+        {
+          "stepNumber": 2,
+          "stepTitle": "2. Menghitung Mundur",
+          "stepDesc": "Mulai dari bilangan yang besar, lalu hitung mundur sebanyak bilangan yang dikurangkan. Lima belas, lalu empat belas, tiga belas, dua belas.",
+          "icon": "⏪",
+          "flowFrom": "Menghitung mundur",
+          "flowTo": "Pasangan bilangan"
+        },
+        {
+          "stepNumber": 3,
+          "stepTitle": "3. Pasangan Bilangan",
+          "stepDesc": "Pisahkan belasan menjadi sepuluh dan satuan. Lima belas dipisah menjadi sepuluh dan lima. Lima dikurangi tiga sama dengan dua, lalu sepuluh ditambah dua sama dengan dua belas.",
+          "icon": "🧩",
+          "flowFrom": "Pasangan bilangan",
+          "flowTo": "Nilai tempat"
+        },
+        {
+          "stepNumber": 4,
+          "stepTitle": "4. Nilai Tempat",
+          "stepDesc": "Kurangkan satuan dengan satuan, sedangkan puluhannya tetap. Lima dikurangi tiga sama dengan dua, puluhan tetap satu, jadi hasilnya dua belas.",
+          "icon": "🏷️",
+          "flowFrom": "Nilai tempat",
+          "flowTo": "Cek dengan menambah"
+        },
+        {
+          "stepNumber": 5,
+          "stepTitle": "5. Cek dengan Menambah",
+          "stepDesc": "Periksa hasil pengurangan dengan penjumlahan. Dua belas ditambah tiga sama dengan lima belas, jadi lima belas dikurangi tiga memang dua belas.",
+          "icon": "🔄",
+          "flowFrom": "Cek dengan menambah",
+          "flowTo": "Pilih cara termudah"
+        },
+        {
+          "stepNumber": 6,
+          "stepTitle": "6. Pilih Cara dan Buat Ceritamu",
+          "stepDesc": "Pilih cara yang paling mudah, lalu jelaskan alasannya. Buat cerita pengurangan sendiri, misalnya apel di pohon, tulis operasinya, dan selesaikan.",
+          "icon": "✍️",
+          "flowFrom": "Pilih cara termudah",
+          "flowTo": "Buat ceritamu"
+        }
+      ],
+      "infografisData": [
+        {
+          "fruitName": "Sisa Apel Tika",
+          "emoji": "🍎",
+          "countNum": 12,
+          "countWord": "Dua belas",
+          "voiceSentence": "Tika membeli lima belas apel. Tiga apel dimakan ulat. Sisanya lima belas dikurangi tiga sama dengan dua belas."
+        },
+        {
+          "fruitName": "Menghitung Mundur",
+          "emoji": "⏪",
+          "countNum": 12,
+          "countWord": "Dua belas",
+          "voiceSentence": "Mulai dari lima belas, hitung mundur tiga kali: empat belas, tiga belas, dua belas."
+        },
+        {
+          "fruitName": "Pasangan Bilangan",
+          "emoji": "🧩",
+          "countNum": 12,
+          "countWord": "Dua belas",
+          "voiceSentence": "Lima belas dipisah menjadi sepuluh dan lima. Lima dikurangi tiga sama dengan dua. Sepuluh ditambah dua sama dengan dua belas."
+        },
+        {
+          "fruitName": "Nilai Tempat",
+          "emoji": "🏷️",
+          "countNum": 12,
+          "countWord": "Dua belas",
+          "voiceSentence": "Lima belas adalah satu puluhan dan lima satuan. Satuan dikurangi satuan, lima dikurangi tiga sama dengan dua. Puluhannya tetap satu."
+        },
+        {
+          "fruitName": "Kebalikan Penjumlahan",
+          "emoji": "🔄",
+          "countNum": 15,
+          "countWord": "Lima belas",
+          "voiceSentence": "Utuhnya lima belas, diambil tiga, sisanya dua belas. Dua belas ditambah tiga kembali menjadi lima belas, jadi pengurangan bisa diperiksa dengan penjumlahan."
+        },
+        {
+          "fruitName": "Garis Bilangan Mundur",
+          "emoji": "📏",
+          "countNum": 12,
+          "countWord": "Dua belas",
+          "voiceSentence": "Mulai dari lima belas, melompat tiga kali ke kiri, mendarat di dua belas."
+        },
+        {
+          "fruitName": "Pilih Cara Termudah",
+          "emoji": "✅",
+          "countNum": 13,
+          "countWord": "Tiga belas",
+          "voiceSentence": "Pilih cara yang paling mudah menurutmu. Menghitung mundur untuk yang dikurangkan kecil, pasangan bilangan atau nilai tempat untuk belasan."
+        },
+        {
+          "fruitName": "Satuan Habis",
+          "emoji": "🔟",
+          "countNum": 10,
+          "countWord": "Sepuluh",
+          "voiceSentence": "Enam belas dikurangi enam sama dengan sepuluh. Satuannya nol, puluhannya tetap satu, jadi hasilnya sepuluh."
+        },
+        {
+          "fruitName": "Kata Pengurangan",
+          "emoji": "🗣️",
+          "countNum": 11,
+          "countWord": "Sebelas",
+          "voiceSentence": "Kata sisa, dikurangi, diambil, dimakan, dan pergi menandakan pengurangan. Tiga belas bolu kukus dimakan dua, sisanya sebelas."
+        }
+      ],
+      "concreteSlides": [
+        {
+          "title": "Apel Dimakan Ulat",
+          "emoji": "🍎",
+          "targetCount": 11,
+          "voiceGuide": "Ketuk apel yang dimakan ulat sambil mendengar bilangan yang menghitung mundur, lalu pilih sisa apel yang masih bagus."
+        },
+        {
+          "title": "Kotak Bolu Kukus",
+          "emoji": "🧁",
+          "targetCount": 13,
+          "voiceGuide": "Seret bolu lepas ke perut Malosi sebanyak yang dimakan. Kotak sepuluh tidak disentuh. Hitung sisa lepas lalu tambahkan sepuluh."
+        },
+        {
+          "title": "Kembalikan Apel",
+          "emoji": "🔄",
+          "targetCount": 16,
+          "voiceGuide": "Seret apel yang dimakan ulat kembali ke keranjang, lalu hitung berapa apel mula-mula. Penjumlahan memeriksa pengurangan."
+        },
+        {
+          "title": "Kartu Peran Bilangan",
+          "emoji": "🃏",
+          "targetCount": 13,
+          "voiceGuide": "Hitung benda di kelompok mula-mula, diambil, dan sisa. Lalu seret kartu angka ke kelompok yang cocok."
+        }
+      ],
+      "pictorialSlides": [
+        {
+          "title": "Mundur di Garis Bilangan",
+          "diagramType": "number-line-back",
+          "numberA": 19,
+          "numberB": 5,
+          "caption": "Mulai dari bilangan pertama, ketuk bilangan di sebelah kiri satu per satu sebanyak bilangan yang dikurangkan, lalu pilih sisanya."
+        },
+        {
+          "title": "Bagan Pasangan",
+          "diagramType": "number-bond",
+          "numberA": 19,
+          "numberB": 4,
+          "caption": "Pisahkan belasan menjadi sepuluh dan satuan, kurangkan satuannya, lalu tambahkan sepuluh."
+        },
+        {
+          "title": "Isi Tabel Pengurangan",
+          "diagramType": "place-value-table",
+          "numberA": 18,
+          "numberB": 8,
+          "caption": "Isi kotak satuan dengan satuan dikurangi satuan, lalu isi kotak puluhan. Kalau satuannya habis, tulis nol."
+        }
+      ],
+      "abstractSlides": [
+        {
+          "symbolLarge": "18 – 3 = 15",
+          "wordLarge": "RANTAI PENGURANGAN",
+          "mathNotation": "17 = 10 + 7 • 7 – 4 = 3 • 10 + 3 = 13",
+          "voiceReadout": "Pisahkan belasan menjadi sepuluh dan satuan. Tujuh belas dipisah menjadi sepuluh dan tujuh. Tujuh dikurangi empat sama dengan tiga. Sepuluh ditambah tiga sama dengan tiga belas."
+        },
+        {
+          "symbolLarge": "15 – 3 = 12",
+          "wordLarge": "KELUARGA KALIMAT",
+          "mathNotation": "12 + 3 = 15 • 3 + 12 = 15 • 15 – 12 = 3",
+          "voiceReadout": "Satu kalimat pengurangan punya keluarga kalimat yang benar. Dua belas ditambah tiga sama dengan lima belas. Tiga ditambah dua belas sama dengan lima belas. Lima belas dikurangi dua belas sama dengan tiga."
+        },
+        {
+          "symbolLarge": "12",
+          "wordLarge": "DUA BELAS",
+          "mathNotation": "15 – 3 = 12 • 17 – 3 = 14",
+          "voiceReadout": "Kurangkan dua bilangan, ucapkan hasilnya, lalu guratkan lambangnya di kanvas. Dua belas ditulis dengan angka satu dan angka dua."
+        }
+      ],
+      "interactiveGames": [
+        {
+          "gameId": "subC6-game-1",
+          "gameNumber": 1,
+          "stage": "Concrete",
+          "gameType": "tap-count-back",
+          "title": "Apel Dimakan Ulat",
+          "bookReference": "Buku Siswa hlm. 189 (Tika membeli 15 apel, 3 dimakan ulat); hlm. 190 (Menghitung Mundur)",
+          "objective": "Menghitung mundur: mulai dari bilangan apel semula, lalu mundur satu untuk setiap apel yang dimakan ulat.",
+          "mechanicDescription": "Tiga ronde (15 – 3, 17 – 4, 16 – 5). Siswa mengetuk apel yang dimakan ulat sambil mendengar bilangan yang menghitung mundur, lalu memilih sisanya. Terakhir ucapkan sisa apel.",
+          "voiceGuide": "Ketuk apel yang dimakan ulat, lalu pilih sisanya."
+        },
+        {
+          "gameId": "subC6-game-2",
+          "gameNumber": 2,
+          "stage": "Concrete",
+          "gameType": "drag-loose-from-ten-box",
+          "title": "Kotak Bolu Kukus",
+          "bookReference": "Buku Siswa hlm. 192 (Ayo Berlatih nomor 4: 13 bolu kukus, Malosi memakan 2); hlm. 190 (pasangan bilangan)",
+          "objective": "Pengurangan belasan: kotak sepuluh tidak disentuh, satuan lepas dikurangi, lalu ditambah sepuluh.",
+          "mechanicDescription": "Tiga ronde (13 – 2, 18 – 4, 19 – 6). Siswa menyeret bolu lepas ke perut Malosi, memilih bolu lepas yang tersisa, lalu memilih sepuluh ditambah sisa. Terakhir ucapkan sisa bolu kukus.",
+          "voiceGuide": "Seret bolu lepas ke perut Malosi, lalu hitung sisanya."
+        },
+        {
+          "gameId": "subC6-game-3",
+          "gameNumber": 3,
+          "stage": "Concrete",
+          "gameType": "drag-back-check",
+          "title": "Kembalikan Apel",
+          "bookReference": "Buku Siswa hlm. 189–190; pengayaan hubungan penjumlahan dan pengurangan",
+          "objective": "Memeriksa pengurangan dengan penjumlahan: mengembalikan benda yang diambil dan menghitung bilangan mula-mula.",
+          "mechanicDescription": "Tiga ronde (sisa 12 dan 3 dimakan, sisa 13 dan 4 dimakan, sisa 11 dan 5 dimakan). Siswa menyeret apel yang dimakan ulat kembali ke keranjang lalu memilih banyak apel mula-mula. Terakhir ucapkan banyak apel mula-mula.",
+          "voiceGuide": "Seret apel kembali ke keranjang, lalu pilih mula-mula."
+        },
+        {
+          "gameId": "subC6-game-4",
+          "gameNumber": 4,
+          "stage": "Concrete",
+          "gameType": "drag-number-roles",
+          "title": "Kartu Peran Bilangan",
+          "bookReference": "Buku Siswa hlm. 189 (15 apel, 3 dimakan, sisa 12); hlm. 192 (nomor 4)",
+          "objective": "Mengenali peran bilangan dalam pengurangan: mula-mula, diambil, dan sisa.",
+          "mechanicDescription": "Tiga ronde (15 – 3 apel, 13 – 2 bolu kukus, 18 – 5 pensil). Siswa menghitung benda di tiga kelompok lalu menyeret kartu angka ke kelompok yang cocok. Terakhir ucapkan banyak sisa.",
+          "voiceGuide": "Hitung benda, lalu seret kartu angka ke kelompok yang cocok."
+        },
+        {
+          "gameId": "subC6-game-5",
+          "gameNumber": 5,
+          "stage": "Picture",
+          "gameType": "number-line-hops-back",
+          "title": "Mundur di Garis Bilangan",
+          "bookReference": "Buku Siswa hlm. 190–191 (Ayo Berlatih nomor 1: 15 – 4 dan 15 – 2 dengan menghitung mundur)",
+          "objective": "Menghitung mundur pada garis bilangan: melompat ke kiri sebanyak bilangan yang dikurangkan dan mendarat di sisa.",
+          "mechanicDescription": "Tiga ronde (15 – 3, 18 – 5, 19 – 5). Siswa mengetuk bilangan di sebelah kiri satu per satu lalu memilih tempat mendarat. Terakhir ucapkan sisanya.",
+          "voiceGuide": "Ketuk bilangan di kiri satu per satu, lalu pilih tempat mendarat."
+        },
+        {
+          "gameId": "subC6-game-6",
+          "gameNumber": 6,
+          "stage": "Picture",
+          "gameType": "number-bond-split",
+          "title": "Bagan Pasangan",
+          "bookReference": "Buku Siswa hlm. 190–192 (Ayo Berlatih nomor 2: 17 – 4, 16 – 3, 19 – 6)",
+          "objective": "Memisahkan belasan menjadi sepuluh dan satuan dengan bagan pasangan, lalu mengurangkan satuannya.",
+          "mechanicDescription": "Tiga ronde (16 – 3, 18 – 6, 19 – 4). Siswa memilih pasangan bilangan yang tepat, mengurangkan satuannya, lalu menambahkan sepuluh. Terakhir ucapkan sisanya.",
+          "voiceGuide": "Pilih pasangan bilangan, kurangkan satuannya, lalu tambahkan sepuluh."
+        },
+        {
+          "gameId": "subC6-game-7",
+          "gameNumber": 7,
+          "stage": "Picture",
+          "gameType": "fill-place-value-table",
+          "title": "Isi Tabel Pengurangan",
+          "bookReference": "Buku Siswa hlm. 190 (Nilai Tempat: 15 – 3); hlm. 192 (nomor 3: 16 – 4 dan 17 – 5)",
+          "objective": "Mengisi tabel puluhan dan satuan untuk pengurangan: satuan dikurangi satuan, puluhan tetap, dan satuan habis ditulis nol.",
+          "mechanicDescription": "Tiga ronde (16 – 4, 17 – 5, 18 – 8). Siswa memilih angka untuk kotak satuan lalu kotak puluhan. Terakhir ucapkan sisanya.",
+          "voiceGuide": "Isi kotak satuan dulu, lalu kotak puluhan."
+        },
+        {
+          "gameId": "subC6-game-8",
+          "gameNumber": 8,
+          "stage": "Abstract",
+          "gameType": "subtract-chain",
+          "title": "Rantai Pengurangan",
+          "bookReference": "Buku Siswa hlm. 190 dan 191–192 (pasangan bilangan)",
+          "objective": "Pengurangan dengan angka: belasan sebagai sepuluh dan satuan, satuan dikurangi, lalu sepuluh ditambah hasilnya.",
+          "mechanicDescription": "Lima ronde (17 – 4, 15 – 4, 19 – 7, 14 – 3, 18 – 3). Tiga langkah tiap ronde, siswa memilih angka yang tepat. Terakhir ucapkan sisanya.",
+          "voiceGuide": "Isi tiga langkah: satuan belasan, satuan dikurangi, lalu sepuluh ditambah hasilnya."
+        },
+        {
+          "gameId": "subC6-game-9",
+          "gameNumber": 9,
+          "stage": "Abstract",
+          "gameType": "fact-family-select",
+          "title": "Keluarga Kalimat",
+          "bookReference": "Buku Siswa hlm. 189–190; pengayaan hubungan penjumlahan dan pengurangan; Evaluasi hlm. 193–194",
+          "objective": "Menemukan kalimat penjumlahan dan pengurangan yang benar dan berhubungan dengan satu kalimat pengurangan.",
+          "mechanicDescription": "Empat ronde (15 – 3 = 12, 17 – 5 = 12, 13 – 2 = 11, 18 – 6 = 12). Siswa mengetuk semua kalimat yang benar dari enam kalimat lalu menekan periksa. Terakhir ucapkan sisanya.",
+          "voiceGuide": "Ketuk semua kalimat yang benar, lalu tekan periksa."
+        },
+        {
+          "gameId": "subC6-game-10",
+          "gameNumber": 10,
+          "stage": "Abstract",
+          "gameType": "say-and-trace",
+          "title": "Kanvas Guratan dan Suara",
+          "bookReference": "Buku Siswa hlm. 191 (Ayo Mencoba: kartu A 16, 17, 18 dan kartu B 2, 3, 4)",
+          "objective": "Mengurangkan dua bilangan dengan cara yang dipilih sendiri, mengucapkan hasilnya, dan menulis lambangnya.",
+          "mechanicDescription": "Dua ronde. Ronde 1 15 – 3. Ronde 2 siswa memilih satu kartu dari kelompok A (16, 17, 18) dan satu kartu dari kelompok B (2, 3, 4). Siswa mengucapkan hasilnya lalu menggurat lambangnya.",
+          "voiceGuide": "Kurangkan, ucapkan, lalu guratkan lambangnya."
+        }
+      ]
     }
   },
   "practiceQuestions": [
@@ -733,20 +1059,6 @@
     {
       "id": 2,
       "level": "LOTS (30%)",
-      "prompt": "Ibu punya 7 donat dan Tika punya 6 donat. Jumlah donat Ibu dan Tika adalah...",
-      "visualEmojis": [
-        "🍩"
-      ],
-      "options": [
-        "1",
-        "12",
-        "13",
-        "14"
-      ]
-    },
-    {
-      "id": 3,
-      "level": "LOTS (30%)",
       "prompt": "Upe punya 12 pensil dan Malosi punya 3 pensil. Jumlah pensil mereka adalah...",
       "visualEmojis": [
         "✏️"
@@ -759,22 +1071,21 @@
       ]
     },
     {
-      "id": 4,
-      "level": "MOTS (30%)",
-      "prompt": "Ada 5 bunga dan 7 kupu-kupu. Selisih banyak kupu-kupu dan bunga adalah...",
+      "id": 3,
+      "level": "LOTS (30%)",
+      "prompt": "Tika membeli 15 apel. Ternyata 3 apel dimakan ulat. Sisa apel Tika yang masih bagus adalah...",
       "visualEmojis": [
-        "🦋",
-        "🌸"
+        "🍎"
       ],
       "options": [
-        "1",
-        "2",
-        "3",
-        "12"
+        "10",
+        "12",
+        "13",
+        "18"
       ]
     },
     {
-      "id": 5,
+      "id": 4,
       "level": "MOTS (30%)",
       "prompt": "Wei punya 7 boneka dan Kira punya 9 boneka. Banyak boneka Wei adalah...",
       "visualEmojis": [
@@ -782,33 +1093,45 @@
       ],
       "options": [
         "2 lebihnya dari boneka Kira",
-        "2 kurangnya dari boneka Kira",
         "7 lebihnya dari boneka Kira",
+        "2 kurangnya dari boneka Kira",
         "9 kurangnya dari boneka Kira"
       ]
     },
     {
-      "id": 6,
+      "id": 5,
       "level": "MOTS (30%)",
       "prompt": "Halim menghitung 7 + 6 dengan menggenapkan 10. Angka 6 dipisah menjadi 3 dan 3. Langkah yang benar adalah...",
       "visualEmojis": [],
       "options": [
-        "7 + 3 = 10, lalu 10 + 3 = 13",
         "7 + 3 = 10, lalu 10 + 6 = 16",
+        "7 + 3 = 10, lalu 10 + 3 = 13",
         "7 + 6 = 12, lalu 12 + 3 = 15",
         "7 + 3 = 9, lalu 9 + 3 = 12"
       ]
     },
     {
-      "id": 7,
-      "level": "HOTS (40%)",
-      "prompt": "Ada 6 mobil-mobilan dan 9 pesawat. Cara mencari selisihnya yang benar adalah...",
+      "id": 6,
+      "level": "MOTS (30%)",
+      "prompt": "Untuk menghitung 17 – 4 dengan pasangan bilangan, langkah yang benar adalah...",
       "visualEmojis": [],
       "options": [
-        "9 + 6 = 15, karena kedua bilangan dijumlahkan",
-        "6 – 9 = 3, karena bilangan yang kecil dikurangi bilangan yang besar",
-        "9 – 6 = 4, karena bilangan yang besar dikurangi bilangan yang kecil",
-        "9 – 6 = 3, karena bilangan yang besar dikurangi bilangan yang kecil"
+        "17 dipisah menjadi 10 dan 7, lalu 7 – 4 = 3 dan 10 + 3 = 13",
+        "17 dipisah menjadi 10 dan 7, lalu 7 + 4 = 11 dan 10 + 11 = 21",
+        "17 dipisah menjadi 1 dan 7, lalu 7 – 4 = 3 dan 1 + 3 = 4",
+        "17 dipisah menjadi 10 dan 7, lalu 7 – 4 = 3 dan 10 – 3 = 7"
+      ]
+    },
+    {
+      "id": 7,
+      "level": "HOTS (40%)",
+      "prompt": "Malosi punya 5 kelereng. Halim punya 2 kelereng lebihnya dari Malosi. Pernyataan yang benar adalah...",
+      "visualEmojis": [],
+      "options": [
+        "Halim punya 3 kelereng, karena 5 – 2 = 3",
+        "Halim punya 2 kelereng, karena selisihnya 2",
+        "Halim punya 10 kelereng, karena 5 + 5 = 10",
+        "Halim punya 7 kelereng, karena 5 + 2 = 7"
       ]
     },
     {
@@ -826,13 +1149,15 @@
     {
       "id": 9,
       "level": "HOTS (40%)",
-      "prompt": "Malosi punya 5 kelereng. Halim punya 2 kelereng lebihnya dari Malosi. Pernyataan yang benar adalah...",
-      "visualEmojis": [],
+      "prompt": "Ibu membeli 13 bolu kukus. Malosi memakan 2 bolu kukus. Pernyataan yang benar adalah...",
+      "visualEmojis": [
+        "🧁"
+      ],
       "options": [
-        "Halim punya 3 kelereng, karena 5 – 2 = 3",
-        "Halim punya 2 kelereng, karena selisihnya 2",
-        "Halim punya 7 kelereng, karena 5 + 2 = 7",
-        "Halim punya 10 kelereng, karena 5 + 5 = 10"
+        "sisa bolu kukus Ibu 15, karena 13 + 2 = 15",
+        "sisa bolu kukus Ibu 11, karena puluhan 1 dikurangi 2 dan satuan tetap 3",
+        "sisa bolu kukus Ibu 11, karena puluhan tetap 1 dan satuan 3 – 2 = 1",
+        "sisa bolu kukus Ibu 1, karena 3 – 2 = 1 saja"
       ]
     },
     {

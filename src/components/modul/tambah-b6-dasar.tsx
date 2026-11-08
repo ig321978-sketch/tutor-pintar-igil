@@ -141,8 +141,11 @@ export function GarisLompat({
         return <path key={`${a}-${n}`} d={`M${x(a)} 52 Q${tengah} 18 ${x(n)} 52`} fill="none" stroke={BIRU_B5} strokeWidth="2.8" strokeLinecap="round" />;
       })}
       <g>
-        <circle cx={x(mulai)} cy="12" r="9" fill="#FFE566" stroke={BIRU} strokeWidth="2.4" />
-        <path d={`M${x(mulai)} 21 V50`} stroke={BIRU} strokeWidth="2" strokeLinecap="round" strokeDasharray="1 5" />
+        <circle cx={x(mulai)} cy="12" r="10" fill="#FFE566" stroke={BIRU} strokeWidth="2.4" />
+        <text x={x(mulai)} y="16.5" textAnchor="middle" fontSize="11" fontWeight="900" fill={BIRU}>
+          {mulai}
+        </text>
+        <path d={`M${x(mulai)} 22 V50`} stroke={BIRU} strokeWidth="2" strokeLinecap="round" strokeDasharray="1 5" />
       </g>
     </svg>
   );

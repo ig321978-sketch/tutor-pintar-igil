@@ -75,8 +75,8 @@ Soal terakhir tiap permainan meminta jawaban lisan lewat suara (`id-ID`). Bila m
 ## Poin Penting (6 kartu)
 Jumlah artinya digabung · Menghitung maju · Genapkan sepuluh · Penjumlahan berulang · Pasangan bilangan · Nilai tempat. Ditambah "Cara menyebutkan", "Ayo Bermain di rumah" (pilih dua bilangan, misalnya 2 dan 13, jumlahkan dengan cara yang paling mudah, lalu jelaskan alasannya) dan Refleksi dari Catatanku buku (hlm. 196).
 
-## Bank soal Bab 6 (Sub-Bab A dan B)
-- Sub-Bab B menyumbang 5 soal pada Latihan dan 5 soal pada tiap paket Ujian. Komposisi lengkap ada di naskah Sub-Bab A. Kunci hanya di `supabase/seed/02_kelas1_bab6_keys.sql` (tidak ikut repo).
+## Bank soal Bab 6
+- Sub-Bab B menyumbang 4 soal pada Latihan dan 4 soal pada tiap paket Ujian. Komposisi lengkap (A3 + B4 + C3) ada di naskah Sub-Bab C. Kunci hanya di `supabase/seed/02_kelas1_bab6_keys.sql` (tidak ikut repo).
 
 ## Status sub-bab lain
-Sub-Bab A sudah tersedia. Sub-Bab C (Pengurangan yang Hasilnya Kurang dari 20) berstatus "segera hadir".
+Sub-Bab A dan Sub-Bab C (Pengurangan yang Hasilnya Kurang dari 20) sudah tersedia. Semua sub-bab Bab 6 sudah tayang.

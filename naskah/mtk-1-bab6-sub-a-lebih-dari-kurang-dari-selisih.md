@@ -70,10 +70,8 @@ Soal terakhir tiap permainan meminta jawaban lisan lewat suara (`id-ID`). Bila m
 ## Poin Penting (6 kartu)
 Lebih dari, kurang dari · Lebihnya dan kurangnya · Beda atau selisih · Besar dikurangi kecil · Selisih di garis bilangan · Cari yang belum diketahui. Ditambah "Cara menyebutkan", "Ayo Bermain di rumah" (dua kelompok benda, misalnya sendok dan garpu, dihitung, dipasangkan, lalu diceritakan) dan Refleksi dari Catatanku buku (hlm. 196).
 
-## Bank soal Bab 6 (Sub-Bab A dan B)
-- Latihan: 10 soal (3 LOTS, 3 MOTS, 4 HOTS): 5 dari Sub-Bab A dan 5 dari Sub-Bab B, dengan pembahasan dari server.
-- Ujian: 3 paket × 10 soal HOTS, tiap paket 5 soal A dan 5 soal B. Kunci hanya di `supabase/seed/02_kelas1_bab6_keys.sql` (tidak ikut repo).
-- Sebaran kunci tiap set 3, 3, 2, 2 atau 3, 2, 3, 2 (opsi bilangan diurutkan otomatis).
+## Bank soal Bab 6
+- Sub-Bab A menyumbang 3 soal pada Latihan dan 3 soal pada tiap paket Ujian. Komposisi lengkap (A3 + B4 + C3) ada di naskah Sub-Bab C. Kunci hanya di `supabase/seed/02_kelas1_bab6_keys.sql` (tidak ikut repo).
 
 ## Status sub-bab lain
-Sub-Bab B (Penjumlahan yang Hasilnya Kurang dari 20) sudah tersedia. Sub-Bab C (Pengurangan yang Hasilnya Kurang dari 20) berstatus "segera hadir".
+Sub-Bab B (Penjumlahan yang Hasilnya Kurang dari 20) dan Sub-Bab C (Pengurangan yang Hasilnya Kurang dari 20) sudah tersedia. Semua sub-bab Bab 6 sudah tayang.
