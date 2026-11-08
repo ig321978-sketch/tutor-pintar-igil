@@ -1020,15 +1020,6 @@ export default function IgilModulePlayer({ bab = "mtk-1-bab1" }: { bab?: BabModu
           <div className="relative">
             <div className="flex flex-wrap items-center justify-between gap-4">
               <div className="flex min-w-[240px] flex-1 items-center gap-3 md:gap-4">
-                <span className="igil-lompat block h-14 w-14 shrink-0 overflow-hidden rounded-full border-2 border-white bg-[#FFE566] md:h-20 md:w-20 md:border-4 md:shadow-[0_4px_0_rgba(0,0,0,0.25)]">
-                  <img
-                    src="/icon-192.png"
-                    alt="burung hantu IGIL"
-                    width={80}
-                    height={80}
-                    className="h-full w-full rounded-full object-cover"
-                  />
-                </span>
                 <div className="space-y-1.5">
                   <h2 className="inline-block rounded-full border-2 border-white bg-[#FFE566] px-3 py-0.5 text-xs font-black uppercase tracking-wider text-[#1C01A5] md:text-sm">
                     {materi.subjectLabel}
@@ -1039,23 +1030,34 @@ export default function IgilModulePlayer({ bab = "mtk-1-bab1" }: { bab?: BabModu
                 </div>
               </div>
 
-              <div className="w-full rounded-2xl bg-white px-3 py-2 sm:w-auto md:rounded-3xl md:border-4 md:border-[#F0AB00] md:px-4 md:py-2.5 md:shadow-[0_4px_0_rgba(240,171,0,0.7)]">
-                <div className="text-[10px] font-black uppercase tracking-wider text-[#334155]">
-                  KARTU POIN IGIL
+              <div className="flex w-full items-center justify-between gap-3 rounded-2xl bg-white px-3 py-2 sm:w-auto md:rounded-3xl md:border-4 md:border-[#F0AB00] md:px-4 md:py-2.5 md:shadow-[0_4px_0_rgba(240,171,0,0.7)]">
+                <div className="min-w-0">
+                  <div className="text-[10px] font-black uppercase tracking-wider text-[#334155]">
+                    KARTU POIN IGIL
+                  </div>
+                  <div className="flex items-center gap-2 text-xl font-black text-[#1C01A5] md:text-2xl">
+                    <span className="igil-lompat inline-block text-3xl" aria-hidden="true">💰</span>
+                    <span>{practiceTokens + examTokens}</span>
+                    <span className="text-xs text-[#F0AB00]">/ {batasToken} Poin</span>
+                  </div>
+                  <div className="mt-2 flex flex-wrap gap-1.5 text-[11px] font-black text-[#1C01A5]">
+                    <span className="rounded-full bg-[#DDD8FF] px-2 py-0.5">
+                      ✏️ <span className="hidden sm:inline">Latihan </span>{practiceTokens}/{poin.practice}
+                    </span>
+                    <span className="rounded-full bg-[#FFD9B0] px-2 py-0.5">
+                      🏆 <span className="hidden sm:inline">Ujian </span>{examTokens}/{poin.exam}
+                    </span>
+                  </div>
                 </div>
-                <div className="flex items-center gap-2 text-xl font-black text-[#1C01A5] md:text-2xl">
-                  <span className="igil-lompat inline-block text-3xl" aria-hidden="true">💰</span>
-                  <span>{practiceTokens + examTokens}</span>
-                  <span className="text-xs text-[#F0AB00]">/ {batasToken} Poin</span>
-                </div>
-                <div className="mt-2 flex flex-wrap gap-1.5 text-[11px] font-black text-[#1C01A5]">
-                  <span className="rounded-full bg-[#DDD8FF] px-2 py-0.5">
-                    ✏️ <span className="hidden sm:inline">Latihan </span>{practiceTokens}/{poin.practice}
-                  </span>
-                  <span className="rounded-full bg-[#FFD9B0] px-2 py-0.5">
-                    🏆 <span className="hidden sm:inline">Ujian </span>{examTokens}/{poin.exam}
-                  </span>
-                </div>
+                <span className="igil-lompat block h-14 w-14 shrink-0 overflow-hidden rounded-full border-2 border-[#F0AB00] bg-[#FFE566] md:h-16 md:w-16 md:border-4">
+                  <img
+                    src="/icon-192.png"
+                    alt="burung hantu IGIL"
+                    width={64}
+                    height={64}
+                    className="h-full w-full rounded-full object-cover"
+                  />
+                </span>
               </div>
             </div>
           </div>
