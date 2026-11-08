@@ -67,8 +67,8 @@ Soal terakhir tiap permainan meminta jawaban lisan lewat suara (`id-ID`). Bila m
 Hitung maju · Hitung mundur · Satu lebih, satu kurang · Tetangga bilangan · Kisi dan garis bilangan · Maju lalu mundur. Ditambah "Cara menyebutkan", "Ayo Bermain di rumah" (hitung langkah naik dan turun tangga), dan Refleksi.
 
 ## Bank soal Bab 5
-- Latihan dan Ujian Bab 5 memuat soal Sub-Bab A, B, dan C (lihat naskah Sub-Bab C untuk komposisi terbaru).
-- Sub-Bab B menyumbang 3 soal pada Latihan dan 3 soal pada tiap paket Ujian. Kunci hanya di `supabase/seed/02_kelas1_bab5_keys.sql` (tidak ikut repo).
+- Latihan dan Ujian Bab 5 memuat soal Sub-Bab A, B, C, dan D (lihat naskah Sub-Bab D untuk komposisi terbaru).
+- Sub-Bab B menyumbang 2 soal pada Latihan dan 2 soal pada tiap paket Ujian. Kunci hanya di `supabase/seed/02_kelas1_bab5_keys.sql` (tidak ikut repo).
 
 ## Status sub-bab lain
-Sub-Bab C (Nilai Tempat) sudah tersedia. Sub-Bab D (Membandingkan Bilangan) berstatus "segera hadir".
+Sub-Bab C (Nilai Tempat) dan Sub-Bab D (Membandingkan Bilangan) sudah tersedia. Semua sub-bab Bab 5 sudah tayang.

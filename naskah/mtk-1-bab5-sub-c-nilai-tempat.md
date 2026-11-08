@@ -69,9 +69,8 @@ Soal terakhir tiap permainan meminta jawaban lisan lewat suara (`id-ID`). Bila m
 ## Poin Penting (6 kartu)
 Satu puluhan · Satuan · Tabel nilai tempat · Baca angkanya · Tulis kalimatnya · Angka sama, tempat beda. Ditambah "Cara menyebutkan", "Ayo Bermain di rumah" (mengikat sepuluh benda dan menulis hasilnya), dan Refleksi.
 
-## Bank soal Bab 5 (Sub-Bab A, B, dan C)
-- Latihan: 10 soal (3 LOTS, 3 MOTS, 4 HOTS): 3 dari Sub-Bab A, 3 dari Sub-Bab B, 4 dari Sub-Bab C, dengan pembahasan dari server.
-- Ujian: 3 paket × 10 soal HOTS, tiap paket 3 soal A, 3 soal B, dan 4 soal C. Kunci hanya di `supabase/seed/02_kelas1_bab5_keys.sql` (tidak ikut repo).
+## Bank soal Bab 5
+- Sub-Bab C menyumbang 3 soal pada Latihan dan 3 soal pada tiap paket Ujian. Komposisi lengkap (A, B, C, dan D) ada di naskah Sub-Bab D. Kunci hanya di `supabase/seed/02_kelas1_bab5_keys.sql` (tidak ikut repo).
 
 ## Status sub-bab lain
-Sub-Bab D (Membandingkan Bilangan) berstatus "segera hadir".
+Sub-Bab D (Membandingkan Bilangan) sudah tersedia. Semua sub-bab Bab 5 sudah tayang.

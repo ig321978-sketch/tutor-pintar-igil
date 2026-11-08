@@ -1022,19 +1022,345 @@
     "D": {
       "id": "D",
       "codeTitle": "Sub-Bab D (Membandingkan Bilangan)",
-      "fullTitle": "Sub-Bab D: Membandingkan Bilangan",
-      "targetDescription": "Sub-Bab D sedang disiapkan.",
+      "fullTitle": "Sub-Bab D: Membandingkan dan Mengurutkan Bilangan",
+      "targetDescription": "Siswa membandingkan banyak benda dan bilangan sampai 20 dengan kata lebih banyak, lebih sedikit, dan sama banyak, menentukan yang paling banyak dan paling sedikit di antara tiga kelompok, mengurutkan bilangan dari terkecil dan dari terbesar, serta membandingkan bilangan dengan puluhan dan satuan atau garis bilangan.",
       "secondaryBg": "#FCE7F3",
       "secondaryBorder": "#DB2777",
       "secondaryText": "#831843",
-      "segeraHadir": true,
-      "stories": [],
-      "mindMaps": [],
-      "infografisData": [],
-      "concreteSlides": [],
-      "pictorialSlides": [],
-      "abstractSlides": [],
-      "interactiveGames": []
+      "stories": [
+        {
+          "id": "D5-S1",
+          "titleHint": "Kelereng Halim dan Upe",
+          "sceneType": "dua-kelompok-kelereng",
+          "voiceNarration": "Halim memiliki lima belas kelereng. Upe memiliki sebelas kelereng. Kelereng siapa yang lebih banyak? Kelereng siapa yang lebih sedikit? Bagaimana kita tahu? Kita hitung dulu. Lima belas lebih banyak dari sebelas, dan sebelas lebih sedikit dari lima belas. Jadi kelereng Halim lebih banyak dari kelereng Upe, dan kelereng Upe lebih sedikit dari kelereng Halim."
+        },
+        {
+          "id": "D5-S2",
+          "titleHint": "Pasangkan Satu-Satu",
+          "sceneType": "pasangkan-satu-satu",
+          "voiceNarration": "Ada cara lain untuk membandingkan, yaitu memasangkan satu-satu. Setiap benda di kelompok pertama dipasangkan dengan satu benda di kelompok kedua. Benda yang tidak punya pasangan adalah sisanya. Kelompok yang masih punya sisa adalah kelompok yang lebih banyak. Di gambar ini, titik merah masih punya sisa tiga, jadi titik merah lebih banyak tiga daripada titik biru."
+        },
+        {
+          "id": "D5-S3",
+          "titleHint": "Jeruk Kira, Tika, dan Wei",
+          "sceneType": "tiga-kelompok-jeruk",
+          "voiceNarration": "Kira mempunyai sepuluh jeruk. Tika mempunyai empat belas jeruk. Wei mempunyai dua belas jeruk. Jeruk siapa yang paling banyak? Jeruk siapa yang paling sedikit? Tika mempunyai jeruk paling banyak. Kira mempunyai jeruk paling sedikit. Kalau ada tiga kelompok atau lebih, kita memakai kata paling banyak dan paling sedikit."
+        },
+        {
+          "id": "D5-S4",
+          "titleHint": "Baris Bilangan Berurutan",
+          "sceneType": "baris-bilangan",
+          "voiceNarration": "Bilangan sepuluh, empat belas, dan dua belas dapat kita urutkan. Urutan dari bilangan terkecil adalah sepuluh, dua belas, empat belas. Urutan dari bilangan terbesar adalah empat belas, dua belas, sepuluh. Ayo berbaris seperti angka-angka ini! Dari kiri ke kanan, bilangannya makin besar."
+        },
+        {
+          "id": "D5-S5",
+          "titleHint": "Ayo Berkarya: Dua Stoples",
+          "sceneType": "dua-stoples",
+          "voiceNarration": "Ayo berkarya! Ada dua stoples kelereng. Stoples A berisi tiga belas kelereng, yaitu satu puluhan dan tiga satuan. Stoples B berisi enam belas kelereng, yaitu satu puluhan dan enam satuan. Kita bandingkan. Puluhannya sama, jadi kita lihat satuannya. Tiga lebih sedikit dari enam. Jadi kelereng di stoples A lebih sedikit dari stoples B."
+        },
+        {
+          "id": "D5-S6",
+          "titleHint": "Bandingkan di Garis Bilangan",
+          "sceneType": "garis-bilangan-banding",
+          "voiceNarration": "Garis bilangan juga membantu kita membandingkan. Di garis bilangan, bilangan yang berada lebih ke kanan lebih besar. Lima belas berada di sebelah kanan sebelas, jadi lima belas lebih besar dari sebelas. Dan sebelas berada di sebelah kiri lima belas, jadi sebelas lebih kecil dari lima belas."
+        }
+      ],
+      "mindMaps": [
+        {
+          "stepNumber": 1,
+          "stepTitle": "1. Hitung Masing-Masing",
+          "stepDesc": "Hitung banyak benda di setiap kelompok dengan teliti, satu per satu. Jangan menebak dari kelihatannya saja, karena kelompok yang tersebar bisa tampak lebih banyak padahal tidak.",
+          "icon": "🔢",
+          "flowFrom": "Dua kelompok",
+          "flowTo": "Hitung masing-masing"
+        },
+        {
+          "stepNumber": 2,
+          "stepTitle": "2. Pasangkan Satu-Satu",
+          "stepDesc": "Pasangkan satu benda dari kelompok pertama dengan satu benda dari kelompok kedua. Kelompok yang masih punya benda tanpa pasangan adalah kelompok yang lebih banyak. Banyak sisanya menunjukkan berapa lebihnya.",
+          "icon": "🔗",
+          "flowFrom": "Hitung masing-masing",
+          "flowTo": "Pasangkan satu-satu"
+        },
+        {
+          "stepNumber": 3,
+          "stepTitle": "3. Lebih Banyak, Lebih Sedikit",
+          "stepDesc": "Untuk dua kelompok: lima belas lebih banyak dari sebelas, dan sebelas lebih sedikit dari lima belas. Kalau jumlahnya sama, kita bilang sama banyak.",
+          "icon": "⚖️",
+          "flowFrom": "Pasangkan satu-satu",
+          "flowTo": "Lebih banyak, lebih sedikit"
+        },
+        {
+          "stepNumber": 4,
+          "stepTitle": "4. Paling Banyak, Paling Sedikit",
+          "stepDesc": "Untuk tiga kelompok atau lebih: ada yang paling banyak dan ada yang paling sedikit. Pada sepuluh, dua belas, dan empat belas, empat belas paling banyak dan sepuluh paling sedikit.",
+          "icon": "🏆",
+          "flowFrom": "Lebih banyak, lebih sedikit",
+          "flowTo": "Paling banyak, paling sedikit"
+        },
+        {
+          "stepNumber": 5,
+          "stepTitle": "5. Urutkan Bilangan",
+          "stepDesc": "Urutan dari terkecil: sepuluh, dua belas, empat belas. Urutan dari terbesar: empat belas, dua belas, sepuluh. Dari terkecil ke terbesar mirip menghitung maju, dan dari terbesar ke terkecil mirip menghitung mundur.",
+          "icon": "📶",
+          "flowFrom": "Paling banyak, paling sedikit",
+          "flowTo": "Mengurutkan bilangan"
+        },
+        {
+          "stepNumber": 6,
+          "stepTitle": "6. Cek dengan Puluhan dan Garis Bilangan",
+          "stepDesc": "Bandingkan puluhan lebih dulu. Kalau puluhannya sama, bandingkan satuannya. Di garis bilangan, bilangan yang lebih ke kanan lebih besar.",
+          "icon": "📏",
+          "flowFrom": "Mengurutkan bilangan",
+          "flowTo": "Puluhan, satuan, garis bilangan"
+        }
+      ],
+      "infografisData": [
+        {
+          "fruitName": "Bandingkan Dua Kelompok",
+          "emoji": "⚖️",
+          "countNum": 15,
+          "countWord": "Lima belas",
+          "voiceSentence": "Lima belas kelereng Halim lebih banyak dari sebelas kelereng Upe. Sebelas lebih sedikit dari lima belas."
+        },
+        {
+          "fruitName": "Pasangkan Satu-Satu",
+          "emoji": "🔗",
+          "countNum": 8,
+          "countWord": "Delapan",
+          "voiceSentence": "Titik yang tidak punya pasangan adalah sisanya. Kelompok yang punya sisa lebih banyak."
+        },
+        {
+          "fruitName": "Paling Banyak, Paling Sedikit",
+          "emoji": "🏆",
+          "countNum": 14,
+          "countWord": "Empat belas",
+          "voiceSentence": "Pada sepuluh, dua belas, dan empat belas jeruk, empat belas paling banyak dan sepuluh paling sedikit."
+        },
+        {
+          "fruitName": "Urutkan Bilangan",
+          "emoji": "📶",
+          "countNum": 14,
+          "countWord": "Empat belas",
+          "voiceSentence": "Dari terkecil: sepuluh, dua belas, empat belas. Dari terbesar: empat belas, dua belas, sepuluh."
+        },
+        {
+          "fruitName": "Kata Pembanding",
+          "emoji": "💬",
+          "countNum": 12,
+          "countWord": "Dua belas",
+          "voiceSentence": "Lebih banyak, lebih sedikit, sama banyak, paling banyak, dan paling sedikit."
+        },
+        {
+          "fruitName": "Tanda Lebih dari, Kurang dari, Sama dengan",
+          "emoji": "🔣",
+          "countNum": 15,
+          "countWord": "Lima belas",
+          "voiceSentence": "Tanda yang terbuka menghadap bilangan yang lebih besar. Lima belas lebih dari sebelas."
+        },
+        {
+          "fruitName": "Puluhan Dulu, Baru Satuan",
+          "emoji": "🔟",
+          "countNum": 13,
+          "countWord": "Tiga belas",
+          "voiceSentence": "Bandingkan puluhan lebih dulu. Kalau sama, bandingkan satuan. Tiga belas lebih kecil dari tujuh belas."
+        },
+        {
+          "fruitName": "Garis Bilangan",
+          "emoji": "📏",
+          "countNum": 15,
+          "countWord": "Lima belas",
+          "voiceSentence": "Bilangan yang lebih ke kanan lebih besar. Lima belas ada di kanan sebelas."
+        },
+        {
+          "fruitName": "Sama Banyak",
+          "emoji": "🟰",
+          "countNum": 12,
+          "countWord": "Dua belas",
+          "voiceSentence": "Dua belas dan dua belas sama banyak. Kalau dipasangkan, tidak ada sisa."
+        }
+      ],
+      "concreteSlides": [
+        {
+          "title": "Pasangkan Kelereng",
+          "emoji": "🔗",
+          "targetCount": 16,
+          "voiceGuide": "Ketuk kelereng untuk memasangkannya satu-satu dengan kelereng kelompok lain. Pilih kelompok yang lebih banyak dan berapa lebihnya. Ucapkan banyak kelereng pada kelompok yang lebih banyak."
+        },
+        {
+          "title": "Susun Keranjang Jeruk",
+          "emoji": "🍊",
+          "targetCount": 19,
+          "voiceGuide": "Hitung jeruk di setiap keranjang, lalu seret keranjang ke urutan dari paling sedikit atau paling banyak. Ucapkan banyak jeruk pada keranjang yang paling banyak."
+        },
+        {
+          "title": "Timbangan Kelereng",
+          "emoji": "⚖️",
+          "targetCount": 13,
+          "voiceGuide": "Tambah atau kurangi kelereng di pan kiri sampai lebih banyak, sama banyak, atau lebih sedikit dari pan kanan. Ucapkan banyak kelereng di pan kanan."
+        },
+        {
+          "title": "Pasang Kartu Kata",
+          "emoji": "🃏",
+          "targetCount": 18,
+          "voiceGuide": "Seret kartu lebih banyak, lebih sedikit, paling banyak, atau paling sedikit ke kelompok yang tepat. Ucapkan banyak benda pada kelompok yang paling banyak."
+        }
+      ],
+      "pictorialSlides": [
+        {
+          "title": "Lengkapi Kalimat",
+          "diagramType": "ten-frame-compare",
+          "numberA": 13,
+          "numberB": 16,
+          "caption": "Hitung titik pada gambar A dan gambar B, lalu lengkapi kalimat dengan kata banyak atau sedikit."
+        },
+        {
+          "title": "Gambar Mana?",
+          "diagramType": "ten-frame-three",
+          "numberA": 10,
+          "numberB": 18,
+          "caption": "Pilih gambar bingkai sepuluh yang titiknya paling banyak dan yang paling sedikit."
+        },
+        {
+          "title": "Letakkan di Garis Bilangan",
+          "diagramType": "number-line-place",
+          "numberA": 10,
+          "numberB": 17,
+          "caption": "Taruh tiga bilangan pada garis bilangan, lalu cari bilangan yang terbesar di sebelah paling kanan."
+        }
+      ],
+      "abstractSlides": [
+        {
+          "symbolLarge": "15 > 11",
+          "wordLarge": "TANDA PEMBANDING",
+          "mathNotation": "15 > 11 • 11 < 15 • 12 = 12",
+          "voiceReadout": "Bandingkan dua bilangan lalu pilih tanda yang tepat. Lima belas lebih dari sebelas. Sebelas kurang dari lima belas. Dua belas sama dengan dua belas."
+        },
+        {
+          "symbolLarge": "10, 12, 14",
+          "wordLarge": "URUTKAN BILANGAN",
+          "mathNotation": "terkecil: 10, 12, 14 • terbesar: 14, 12, 10",
+          "voiceReadout": "Urutkan bilangan dari yang terkecil atau dari yang terbesar. Dari terkecil: sepuluh, dua belas, empat belas."
+        },
+        {
+          "symbolLarge": "13 ? 17",
+          "wordLarge": "BILANGAN LEBIH BESAR",
+          "mathNotation": "13 < 17 • 17 lebih besar dari 13",
+          "voiceReadout": "Bandingkan dua bilangan, ucapkan bilangan yang lebih besar, lalu guratkan lambangnya di kanvas. Tujuh belas lebih besar dari tiga belas."
+        }
+      ],
+      "interactiveGames": [
+        {
+          "gameId": "subD5-game-1",
+          "gameNumber": 1,
+          "stage": "Concrete",
+          "gameType": "pair-by-tapping",
+          "title": "Pasangkan Kelereng",
+          "bookReference": "Buku Siswa hlm. 165 (Halim 15 kelereng, Upe 11 kelereng); pengayaan korespondensi satu-satu",
+          "objective": "Membandingkan dua kelompok dengan memasangkan satu-satu; kelompok yang punya sisa lebih banyak dan sisanya menunjukkan lebihnya.",
+          "mechanicDescription": "Tiga ronde (15 dan 11, 8 dan 12, 16 dan 13). Siswa mengetuk kelereng untuk memasangkannya, memilih kelompok yang lebih banyak, lalu memilih banyak sisa. Terakhir ucapkan banyak kelereng pada kelompok yang lebih banyak.",
+          "voiceGuide": "Ketuk kelereng untuk memasangkan, lalu pilih yang lebih banyak."
+        },
+        {
+          "gameId": "subD5-game-2",
+          "gameNumber": 2,
+          "stage": "Concrete",
+          "gameType": "drag-order-baskets",
+          "title": "Susun Keranjang Jeruk",
+          "bookReference": "Buku Siswa hlm. 166 (jeruk Kira, Tika, dan Wei)",
+          "objective": "Menentukan yang paling banyak, di tengah, dan paling sedikit di antara tiga kelompok, lalu mengurutkannya.",
+          "mechanicDescription": "Tiga ronde (10, 14, 12 dari paling sedikit; 11, 18, 13 dari paling banyak; 15, 12, 19 dari paling sedikit). Siswa menghitung jeruk lalu menyeret keranjang ke tempat urutan. Terakhir ucapkan banyak jeruk pada keranjang yang paling banyak.",
+          "voiceGuide": "Seret keranjang ke tempat urutan yang tepat."
+        },
+        {
+          "gameId": "subD5-game-3",
+          "gameNumber": 3,
+          "stage": "Concrete",
+          "gameType": "balance-goal",
+          "title": "Timbangan Kelereng",
+          "bookReference": "Buku Siswa pengayaan (timbangan: lebih banyak, sama banyak, lebih sedikit)",
+          "objective": "Memahami lebih banyak, sama banyak, dan lebih sedikit lewat keseimbangan timbangan.",
+          "mechanicDescription": "Tiga ronde dengan tujuan lebih banyak, sama banyak, dan lebih sedikit dari pan kanan (12, 14, dan 13 kelereng). Siswa menambah atau mengurangi kelereng di pan kiri lalu menekan periksa. Terakhir ucapkan banyak kelereng di pan kanan.",
+          "voiceGuide": "Tambah atau kurangi kelereng sampai tujuan tercapai."
+        },
+        {
+          "gameId": "subD5-game-4",
+          "gameNumber": 4,
+          "stage": "Concrete",
+          "gameType": "drag-word-cards",
+          "title": "Pasang Kartu Kata",
+          "bookReference": "Buku Siswa hlm. 165–166 (kata lebih banyak, lebih sedikit, paling banyak, paling sedikit)",
+          "objective": "Memakai kata pembanding yang tepat untuk kelompok benda.",
+          "mechanicDescription": "Tiga ronde (15 dan 11 kupu-kupu, 9 dan 13 mobil, 12, 18, dan 10 apel). Siswa menghitung lalu menyeret kartu kata ke kelompok yang tepat. Terakhir ucapkan banyak apel pada kelompok yang paling banyak.",
+          "voiceGuide": "Seret kartu kata ke kelompok yang tepat."
+        },
+        {
+          "gameId": "subD5-game-5",
+          "gameNumber": 5,
+          "stage": "Picture",
+          "gameType": "complete-sentence",
+          "title": "Lengkapi Kalimat",
+          "bookReference": "Buku Siswa hlm. 167 (Ayo Berlatih nomor 2); hlm. 172 (Evaluasi nomor 6)",
+          "objective": "Melengkapi kalimat perbandingan dengan kata banyak atau sedikit berdasarkan diagram bingkai sepuluh.",
+          "mechanicDescription": "Empat ronde (15 dan 11, 12 dan 17, 14 dan 10, 13 dan 16). Siswa memilih kata banyak atau sedikit pada dua kalimat. Terakhir ucapkan banyak titik pada gambar yang lebih banyak.",
+          "voiceGuide": "Pilih banyak atau sedikit untuk melengkapi kedua kalimat."
+        },
+        {
+          "gameId": "subD5-game-6",
+          "gameNumber": 6,
+          "stage": "Picture",
+          "gameType": "pick-picture",
+          "title": "Gambar Mana?",
+          "bookReference": "Buku Siswa hlm. 168 (Ayo Berlatih nomor 3)",
+          "objective": "Menentukan gambar dengan titik paling banyak dan paling sedikit di antara tiga bingkai sepuluh.",
+          "mechanicDescription": "Tiga ronde (17, 11, 14; 13, 19, 12; 15, 10, 18). Siswa memilih gambar yang paling banyak lalu yang paling sedikit. Terakhir ucapkan banyak titik pada gambar yang paling banyak.",
+          "voiceGuide": "Hitung titik, lalu pilih gambar yang paling banyak dan paling sedikit."
+        },
+        {
+          "gameId": "subD5-game-7",
+          "gameNumber": 7,
+          "stage": "Picture",
+          "gameType": "place-on-number-line",
+          "title": "Letakkan di Garis Bilangan",
+          "bookReference": "Buku Siswa hlm. 168–169 dan 172 (mengurutkan bilangan); pengayaan garis bilangan",
+          "objective": "Menaruh bilangan pada garis bilangan dan mengenali bahwa bilangan terbesar ada di kanan.",
+          "mechanicDescription": "Tiga ronde (13, 11, 18; 15, 19, 12; 14, 10, 17). Siswa memilih kartu bilangan lalu mengetuk tempatnya pada garis, kemudian mengetuk bendera bilangan terbesar. Terakhir ucapkan bilangan terbesar.",
+          "voiceGuide": "Taruh bilangan di garis, lalu ketuk yang terbesar."
+        },
+        {
+          "gameId": "subD5-game-8",
+          "gameNumber": 8,
+          "stage": "Abstract",
+          "gameType": "compare-symbol",
+          "title": "Tanda Pembanding",
+          "bookReference": "Buku Siswa hlm. 165 (15 lebih banyak dari 11); pengayaan tanda lebih dari, kurang dari, sama dengan",
+          "objective": "Membandingkan dua bilangan dengan puluhan dan satuan lalu memilih tanda yang tepat.",
+          "mechanicDescription": "Lima ronde (15 dan 11, 12 dan 17, 14 dan 14, 10 dan 13, 19 dan 16). Siswa memilih lebih dari, kurang dari, atau sama dengan. Terakhir ucapkan bilangan yang lebih besar.",
+          "voiceGuide": "Pilih tanda yang tepat untuk dua bilangan."
+        },
+        {
+          "gameId": "subD5-game-9",
+          "gameNumber": 9,
+          "stage": "Abstract",
+          "gameType": "order-numbers",
+          "title": "Urutkan Bilangan",
+          "bookReference": "Buku Siswa hlm. 168–169 (Ayo Berlatih nomor 4 dan 5); hlm. 172 (Evaluasi nomor 7)",
+          "objective": "Mengurutkan tiga bilangan dari yang terkecil dan dari yang terbesar.",
+          "mechanicDescription": "Empat ronde (13, 11, 18 dari terkecil; 14, 11, 10 dari terbesar; 18, 10, 13 dari terkecil; 16, 12, 19 dari terbesar). Siswa mengetuk bilangan satu per satu menurut urutan. Terakhir ucapkan bilangan yang terbesar.",
+          "voiceGuide": "Ketuk bilangan menurut urutan yang diminta."
+        },
+        {
+          "gameId": "subD5-game-10",
+          "gameNumber": 10,
+          "stage": "Abstract",
+          "gameType": "say-and-trace",
+          "title": "Kanvas Guratan dan Suara",
+          "bookReference": "Buku Siswa hlm. 169 (Ayo Mencoba: pilih tiga bilangan; bilangan yang paling besar)",
+          "objective": "Membandingkan dua bilangan, mengucapkan yang lebih besar, dan menulis lambangnya dengan dua angka.",
+          "mechanicDescription": "Dua ronde. Ronde 1 bandingkan 13 dan 17. Ronde 2 siswa memilih satu dari tiga pasangan bilangan. Siswa mengucapkan bilangan yang lebih besar lalu menggurat lambangnya.",
+          "voiceGuide": "Bandingkan, ucapkan yang lebih besar, lalu guratkan lambangnya."
+        }
+      ]
     }
   },
   "practiceQuestions": [
@@ -1054,44 +1380,6 @@
     },
     {
       "id": 2,
-      "level": "LOTS (30%)",
-      "prompt": "Halim menghitung maju: 10, 11, 12, ... Bilangan yang disebut setelah 12 adalah...",
-      "visualEmojis": [],
-      "options": [
-        "11",
-        "13",
-        "14",
-        "21"
-      ]
-    },
-    {
-      "id": 3,
-      "level": "LOTS (30%)",
-      "prompt": "Halim punya 10 kelereng dalam kantong dan 5 kelereng di luar kantong. Nilai tempat 15 adalah...",
-      "visualEmojis": [
-        "🔵"
-      ],
-      "options": [
-        "1 puluhan dan 5 satuan",
-        "5 puluhan dan 1 satuan",
-        "1 puluhan dan 1 satuan",
-        "15 puluhan dan 0 satuan"
-      ]
-    },
-    {
-      "id": 4,
-      "level": "MOTS (30%)",
-      "prompt": "Lambang bilangan tujuh belas adalah...",
-      "visualEmojis": [],
-      "options": [
-        "7",
-        "16",
-        "17",
-        "18"
-      ]
-    },
-    {
-      "id": 5,
       "level": "MOTS (30%)",
       "prompt": "Badan ulat bilangan bertuliskan 15 dan 14. Ulat itu menghitung mundur. Dua badan berikutnya bertuliskan...",
       "visualEmojis": [
@@ -1105,7 +1393,59 @@
       ]
     },
     {
+      "id": 3,
+      "level": "LOTS (30%)",
+      "prompt": "Halim punya 10 kelereng dalam kantong dan 5 kelereng di luar kantong. Nilai tempat 15 adalah...",
+      "visualEmojis": [
+        "🔵"
+      ],
+      "options": [
+        "5 puluhan dan 1 satuan",
+        "1 puluhan dan 5 satuan",
+        "1 puluhan dan 1 satuan",
+        "15 puluhan dan 0 satuan"
+      ]
+    },
+    {
+      "id": 4,
+      "level": "LOTS (30%)",
+      "prompt": "Halim punya 15 kelereng dan Upe punya 11 kelereng. Pernyataan yang benar adalah...",
+      "visualEmojis": [
+        "🔵"
+      ],
+      "options": [
+        "kelereng Upe lebih banyak dari kelereng Halim",
+        "kelereng Halim dan kelereng Upe sama banyak",
+        "kelereng Halim lebih sedikit dari kelereng Upe",
+        "kelereng Halim lebih banyak dari kelereng Upe"
+      ]
+    },
+    {
+      "id": 5,
+      "level": "MOTS (30%)",
+      "prompt": "Lambang bilangan tujuh belas adalah...",
+      "visualEmojis": [],
+      "options": [
+        "7",
+        "16",
+        "17",
+        "18"
+      ]
+    },
+    {
       "id": 6,
+      "level": "HOTS (40%)",
+      "prompt": "Wei menghitung maju dari 14 dan berkata, \"14, 15, 17, 18.\" Kesalahan Wei adalah...",
+      "visualEmojis": [],
+      "options": [
+        "melewatkan bilangan 16",
+        "melewatkan bilangan 15",
+        "menghitung mundur, bukan maju",
+        "mulai dari bilangan 13"
+      ]
+    },
+    {
+      "id": 7,
       "level": "MOTS (30%)",
       "prompt": "Pada tabel nilai tempat, kolom puluhan berisi 1 dan kolom satuan berisi 4. Bilangan yang ditunjukkan adalah...",
       "visualEmojis": [],
@@ -1117,29 +1457,15 @@
       ]
     },
     {
-      "id": 7,
-      "level": "HOTS (40%)",
-      "prompt": "Halim ingin menghitung 17 kelereng dengan rapi. Langkah yang paling tepat adalah...",
-      "visualEmojis": [
-        "📦"
-      ],
-      "options": [
-        "mengisi kotak dengan 7 kelereng, lalu menebak sisanya",
-        "mengambil 10 kelereng lalu berhenti menghitung",
-        "menaruh semua kelereng di luar kotak lalu menghitung asal-asalan",
-        "mengisi satu kotak sepuluh sampai penuh, lalu menghitung 7 kelereng sisanya"
-      ]
-    },
-    {
       "id": 8,
       "level": "HOTS (40%)",
-      "prompt": "Wei menghitung maju dari 14 dan berkata, \"14, 15, 17, 18.\" Kesalahan Wei adalah...",
+      "prompt": "Malosi punya 13 bola, Wei punya 11 bola, dan Kira punya 10 bola. Pernyataan yang benar adalah...",
       "visualEmojis": [],
       "options": [
-        "melewatkan bilangan 15",
-        "menghitung mundur, bukan maju",
-        "mulai dari bilangan 13",
-        "melewatkan bilangan 16"
+        "urutan dari yang terbanyak adalah 10, 11, 13, jadi Malosi paling banyak dan Kira paling sedikit",
+        "urutan dari yang terbanyak adalah 13, 11, 10, jadi Malosi paling banyak dan Kira paling sedikit",
+        "urutan dari yang terbanyak adalah 13, 11, 10, jadi Kira paling banyak dan Malosi paling sedikit",
+        "urutan dari yang terbanyak adalah 11, 13, 10, jadi Wei paling banyak dan Kira paling sedikit"
       ]
     },
     {
@@ -1148,22 +1474,22 @@
       "prompt": "Wei berkata, \"Pada bilangan 11, kedua angka 1 nilainya sama.\" Pernyataan Wei...",
       "visualEmojis": [],
       "options": [
-        "keliru, karena angka 1 di kiri bernilai 10 dan angka 1 di kanan bernilai 1",
         "benar, karena kedua angkanya sama-sama 1",
         "keliru, karena kedua angka 1 sama-sama bernilai 10",
-        "benar, karena 1 + 1 = 11"
+        "benar, karena 1 + 1 = 11",
+        "keliru, karena angka 1 di kiri bernilai 10 dan angka 1 di kanan bernilai 1"
       ]
     },
     {
       "id": 10,
       "level": "HOTS (40%)",
-      "prompt": "Tika punya 13 lidi. Ia mengikat 10 lidi menjadi satu ikat, lalu menemukan 2 lidi lagi dan menaruhnya bersama lidi lepas. Nilai tempat bilangan lidi Tika sekarang adalah...",
+      "prompt": "Halim punya 1 puluhan dan 5 satuan kelereng, sedangkan Upe punya 1 puluhan dan 1 satuan. Cara membandingkan yang tepat adalah...",
       "visualEmojis": [],
       "options": [
-        "1 puluhan dan 3 satuan",
-        "1 puluhan dan 5 satuan",
-        "2 puluhan dan 3 satuan",
-        "2 puluhan dan 5 satuan"
+        "puluhannya sama, lalu bandingkan satuannya: 5 lebih besar dari 1, jadi kelereng Halim lebih banyak",
+        "bandingkan satuannya dulu: 1 lebih kecil dari 5, jadi kelereng Upe lebih banyak",
+        "puluhannya sama, jadi kelereng mereka sama banyak",
+        "angka 5 dan 1 bukan tempat puluhan, jadi tidak bisa dibandingkan"
       ]
     }
   ]
