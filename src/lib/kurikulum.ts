@@ -947,6 +947,7 @@ export const JUDUL_MTK_1_BAB2 = "Bab 2: Penjumlahan sampai dengan 10";
 export const JUDUL_MTK_1_BAB3 = "Bab 3: Pengurangan sampai dengan 10";
 export const JUDUL_MTK_1_BAB4 = "Bab 4: Mengenal Bentuk";
 export const JUDUL_MTK_1_BAB5 = "Bab 5: Ayo Membilang sampai dengan 20";
+export const JUDUL_MTK_1_BAB6 = "Bab 6: Penjumlahan dan Pengurangan sampai dengan 20";
 export const JUDUL_MTK_4_BAB2 = "Bab 2: Pecahan";
 export const JUDUL_MTK_5_BAB8 =
   "Bab 8: Data (Tabel Frekuensi, Piktogram, dan Diagram Batang)";
@@ -955,7 +956,7 @@ export const JUDUL_MTK_6_BAB3 = "Bab 3: Kubus dan Balok";
 
 const BAB_TERPASANG: Record<string, Record<string, string[]>> = {
   "1 SD": {
-    Matematika: [JUDUL_MTK_1_BAB1, JUDUL_MTK_1_BAB2, JUDUL_MTK_1_BAB3, JUDUL_MTK_1_BAB4, JUDUL_MTK_1_BAB5],
+    Matematika: [JUDUL_MTK_1_BAB1, JUDUL_MTK_1_BAB2, JUDUL_MTK_1_BAB3, JUDUL_MTK_1_BAB4, JUDUL_MTK_1_BAB5, JUDUL_MTK_1_BAB6],
   },
   "4 SD": {
     Matematika: [JUDUL_MTK_4_BAB2],

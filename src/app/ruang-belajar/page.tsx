@@ -14,6 +14,7 @@ import {
   JUDUL_MTK_1_BAB3,
   JUDUL_MTK_1_BAB4,
   JUDUL_MTK_1_BAB5,
+  JUDUL_MTK_1_BAB6,
   JUDUL_MTK_4_BAB2,
   JUDUL_MTK_5_BAB8,
   JUDUL_MTK_6_BAB1,
@@ -255,6 +256,7 @@ export default function RuangBelajarPage() {
             [JUDUL_MTK_1_BAB3]: "/ruang-belajar/mtk-1-bab3",
             [JUDUL_MTK_1_BAB4]: "/ruang-belajar/mtk-1-bab4",
             [JUDUL_MTK_1_BAB5]: "/ruang-belajar/mtk-1-bab5",
+            [JUDUL_MTK_1_BAB6]: "/ruang-belajar/mtk-1-bab6",
           }
         : kelas === "4 SD"
           ? { [JUDUL_MTK_4_BAB2]: "/ruang-belajar/mtk-4-bab2" }

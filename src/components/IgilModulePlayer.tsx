@@ -14,6 +14,21 @@ import materiBab2 from "@/data/kelas1-bab2.json";
 import materiBab3 from "@/data/kelas1-bab3.json";
 import materiBab4 from "@/data/kelas1-bab4.json";
 import materiBab5 from "@/data/kelas1-bab5.json";
+import materiBab6 from "@/data/kelas1-bab6.json";
+import { CeritaTambahB, PETA_PIKIRAN_B6 } from "@/components/modul/gambar-tambah-b6";
+import {
+  AbstractTambahB,
+  ConcreteTambahB,
+  InfografisTambahB,
+  PictureTambahB,
+} from "@/components/modul/SubBabB6Tambah";
+import { CeritaSelisihA, PETA_PIKIRAN_A6 } from "@/components/modul/gambar-selisih-a6";
+import {
+  AbstractSelisihA,
+  ConcreteSelisihA,
+  InfografisSelisihA,
+  PictureSelisihA,
+} from "@/components/modul/SubBabA6Selisih";
 import { CeritaBelasA, PETA_PIKIRAN_A5 } from "@/components/modul/gambar-belas-a5";
 import {
   AbstractBelasA,
@@ -248,7 +263,7 @@ interface QuestionItem {
 // ============================================================================
 
 /** Bab yang bisa diputar. Isinya dibaca dari berkas JSON bab (tanpa kunci jawaban). */
-export type BabModul = "mtk-1-bab1" | "mtk-1-bab2" | "mtk-1-bab3" | "mtk-1-bab4" | "mtk-1-bab5";
+export type BabModul = "mtk-1-bab1" | "mtk-1-bab2" | "mtk-1-bab3" | "mtk-1-bab4" | "mtk-1-bab5" | "mtk-1-bab6";
 
 interface MateriBab {
   /** Kode bab di server (mis. k1-mat-bab3). Dipakai untuk RPC Latihan dan Ujian. */
@@ -267,6 +282,7 @@ const MATERI_BAB: Record<BabModul, MateriBab> = {
   "mtk-1-bab3": materiBab3 as unknown as MateriBab,
   "mtk-1-bab4": materiBab4 as unknown as MateriBab,
   "mtk-1-bab5": materiBab5 as unknown as MateriBab,
+  "mtk-1-bab6": materiBab6 as unknown as MateriBab,
 };
 
 const POIN_BAWAAN = { practice: 30, exam: 70, practicum: 50 };
@@ -297,6 +313,13 @@ const SUB_ANAK_BAB5: Record<SubBabId, { emoji: string }> = {
   B: { emoji: "↔️" },
   C: { emoji: "🏷️" },
   D: { emoji: "⚖️" },
+};
+
+const SUB_ANAK_BAB6: Record<SubBabId, { emoji: string }> = {
+  A: { emoji: "🔍" },
+  B: { emoji: "➕" },
+  C: { emoji: "➖" },
+  D: { emoji: "🧮" },
 };
 
 const DAFTAR_MAINAN = [
@@ -696,8 +719,9 @@ export default function IgilModulePlayer({ bab = "mtk-1-bab1" }: { bab?: BabModu
   const adaBab3 = bab === "mtk-1-bab3";
   const adaBab4 = bab === "mtk-1-bab4";
   const adaBab5 = bab === "mtk-1-bab5";
-  /** Bab bergaya baru (Bab 2 sampai Bab 5): tanpa tab Simulasi, Latihan terbuka setelah materi tersedia selesai. */
-  const adaBab2 = bab === "mtk-1-bab2" || adaBab3 || adaBab4 || adaBab5;
+  const adaBab6 = bab === "mtk-1-bab6";
+  /** Bab bergaya baru (Bab 2 sampai Bab 6): tanpa tab Simulasi, Latihan terbuka setelah materi tersedia selesai. */
+  const adaBab2 = bab === "mtk-1-bab2" || adaBab3 || adaBab4 || adaBab5 || adaBab6;
   const materi = MATERI_BAB[bab];
   const SUB_BABS = materi.subBabs as Record<SubBabId, SubBabContent>;
   const daftarSub = Object.keys(materi.subBabs) as SubBabId[];
@@ -706,7 +730,7 @@ export default function IgilModulePlayer({ bab = "mtk-1-bab1" }: { bab?: BabModu
   const idBabServer = materi.chapter_id ?? "";
   const profilBelajar = useProfilBelajar();
   const poin = materi.tokens ?? POIN_BAWAAN;
-  const peta = adaBab5 ? SUB_ANAK_BAB5 : adaBab4 ? SUB_ANAK_BAB4 : adaBab3 ? SUB_ANAK_BAB3 : adaBab2 ? SUB_ANAK_BAB2 : SUB_ANAK;
+  const peta = adaBab6 ? SUB_ANAK_BAB6 : adaBab5 ? SUB_ANAK_BAB5 : adaBab4 ? SUB_ANAK_BAB4 : adaBab3 ? SUB_ANAK_BAB3 : adaBab2 ? SUB_ANAK_BAB2 : SUB_ANAK;
   /** Sub-bab yang sudah punya naskah dan permainan. Sub-bab "segera hadir" tidak menahan Latihan dan Ujian. */
   const daftarSubTersedia = daftarSub.filter((id) => !SUB_BABS[id].segeraHadir);
 
@@ -1106,6 +1130,8 @@ export default function IgilModulePlayer({ bab = "mtk-1-bab1" }: { bab?: BabModu
   const subB2 = bab === "mtk-1-bab2" && activeSubBab === "B";
   const subC2 = bab === "mtk-1-bab2" && activeSubBab === "C";
   const subB3 = bab === "mtk-1-bab3" && activeSubBab === "B";
+  const subA6 = bab === "mtk-1-bab6" && activeSubBab === "A";
+  const subB6 = bab === "mtk-1-bab6" && activeSubBab === "B";
   const subA5 = bab === "mtk-1-bab5" && activeSubBab === "A";
   const subB5 = bab === "mtk-1-bab5" && activeSubBab === "B";
   const subC5 = bab === "mtk-1-bab5" && activeSubBab === "C";
@@ -1270,7 +1296,13 @@ export default function IgilModulePlayer({ bab = "mtk-1-bab1" }: { bab?: BabModu
                 judul={adaBab4 ? "🌈 Fase A • Elemen Geometri (Kelas 1 SD/MI)" : "🌈 Fase A • Elemen Bilangan (Kelas 1 SD/MI)"}
                 bicara={speakGuru}
                 teksSuara={
-                  subD5
+                  subA6
+                    ? "Kita belajar lebih dari, kurang dari, dan selisih. Bukunya bernama Penjumlahan dan Pengurangan sampai dengan Dua Puluh, bagian mengenal konsep lebih dari, kurang dari, dan selisih. Kita memasangkan benda satu-satu, menyebut lebihnya dan kurangnya, lalu mencari selisih dengan mengurangkan bilangan yang besar dengan bilangan yang kecil. Kita melewati enam tahap seru: cerita, peta pikiran, infografis, benda nyata, gambar, dan simbol."
+                    : subB6
+                    ? "Kita belajar penjumlahan yang hasilnya kurang dari dua puluh. Bukunya bernama Penjumlahan dan Pengurangan sampai dengan Dua Puluh, bagian penjumlahan. Kita menjumlahkan satuan dengan satuan dan puluhan dengan satuan, memakai cara menghitung maju, menghitung dengan sepuluh, penjumlahan berulang, pasangan bilangan, dan nilai tempat. Kita melewati enam tahap seru: cerita, peta pikiran, infografis, benda nyata, gambar, dan simbol."
+                    : adaBab6
+                    ? "Kita belajar penjumlahan dan pengurangan sampai dua puluh. Bukunya bernama Penjumlahan dan Pengurangan sampai dengan Dua Puluh. Kita melewati enam tahap seru: cerita, peta pikiran, infografis, benda nyata, gambar, dan simbol."
+                    : subD5
                     ? "Kita belajar membandingkan bilangan. Bukunya bernama Ayo Membilang sampai dengan Dua Puluh, bagian membandingkan bilangan. Kita membandingkan dua kelompok dengan kata lebih banyak dan lebih sedikit, mencari yang paling banyak dan paling sedikit, lalu mengurutkan bilangan dari yang terkecil atau yang terbesar. Kita melewati enam tahap seru: cerita, peta pikiran, infografis, benda nyata, gambar, dan simbol."
                     : subC5
                     ? "Kita belajar nilai tempat. Bukunya bernama Ayo Membilang sampai dengan Dua Puluh, bagian nilai tempat. Sepuluh benda yang digabungkan disebut satu puluhan. Benda yang tersisa disebut satuan. Kita mengisi tabel nilai tempat, membaca angka kiri sebagai puluhan dan angka kanan sebagai satuan, lalu menulis kalimatnya. Kita melewati enam tahap seru: cerita, peta pikiran, infografis, benda nyata, gambar, dan simbol."
@@ -1292,7 +1324,13 @@ export default function IgilModulePlayer({ bab = "mtk-1-bab1" }: { bab?: BabModu
                 }
               >
                 <BarisIkon emoji="🧠" warna="#FFD6D6" judul="Capaian Pembelajaran (CP)">
-                  {subD5 ? (
+                  {subA6 ? (
+                    <>Siswa membandingkan dua kelompok benda dengan memasangkan satu-satu, menyatakan perbandingan dengan kata lebih dari, kurang dari, lebihnya, kurangnya, beda, dan selisih, serta mencari selisih dengan mengurangkan bilangan yang besar dengan bilangan yang kecil.</>
+                  ) : subB6 ? (
+                    <>Siswa menjumlahkan bilangan satuan dengan satuan dan bilangan puluhan dengan satuan yang hasilnya kurang dari 20 dengan berbagai cara, yaitu menghitung maju, menghitung dengan 10, penjumlahan berulang, pasangan bilangan, dan nilai tempat, serta menyelesaikan soal cerita penjumlahan.</>
+                  ) : adaBab6 ? (
+                    <>Siswa menyelesaikan penjumlahan dan pengurangan bilangan cacah sampai 20 dengan berbagai cara, serta menyelesaikan masalah yang berkaitan dengan lebih dari, kurang dari, dan selisih.</>
+                  ) : subD5 ? (
                     <>Siswa membandingkan banyak benda dan bilangan sampai 20 dengan kata lebih banyak, lebih sedikit, dan sama banyak, menentukan yang paling banyak dan paling sedikit, serta mengurutkan bilangan dari yang terkecil dan dari yang terbesar.</>
                   ) : subC5 ? (
                     <>Siswa menyatakan sepuluh benda yang digabungkan sebagai satu puluhan dan benda yang tersisa sebagai satuan, mengisi tabel nilai tempat, membaca angka kiri sebagai puluhan dan angka kanan sebagai satuan, serta menulis kalimat nilai tempat bilangan 10 sampai 20.</>
@@ -1315,7 +1353,13 @@ export default function IgilModulePlayer({ bab = "mtk-1-bab1" }: { bab?: BabModu
                   )}
                 </BarisIkon>
                 <BarisIkon emoji="📖" warna="#FFE9A8" judul="Referensi Buku Resmi">
-                  {subD5
+                  {subA6
+                    ? "Buku Siswa Matematika Kelas I Kemendikbudristek (Bab 6: Penjumlahan dan Pengurangan sampai dengan 20, Sub-Bab A hlm. 176–182)."
+                    : subB6
+                    ? "Buku Siswa Matematika Kelas I Kemendikbudristek (Bab 6: Penjumlahan dan Pengurangan sampai dengan 20, Sub-Bab B hlm. 182–189)."
+                    : adaBab6
+                    ? "Buku Siswa Matematika Kelas I Kemendikbudristek (Bab 6: Penjumlahan dan Pengurangan sampai dengan 20, hlm. 175–196)."
+                    : subD5
                     ? "Buku Siswa Matematika Kelas I Kemendikbudristek (Bab 5: Ayo Membilang sampai dengan 20, Sub-Bab D hlm. 165–173)."
                     : subC5
                     ? "Buku Siswa Matematika Kelas I Kemendikbudristek (Bab 5: Ayo Membilang sampai dengan 20, Sub-Bab C hlm. 160–164)."
@@ -1596,7 +1640,11 @@ export default function IgilModulePlayer({ bab = "mtk-1-bab1" }: { bab?: BabModu
               </span>
             </div>
 
-            {subA5 ? (
+            {subA6 ? (
+              <CeritaSelisihA speakGuru={speakGuru} />
+            ) : subB6 ? (
+              <CeritaTambahB speakGuru={speakGuru} />
+            ) : subA5 ? (
               <CeritaBelasA speakGuru={speakGuru} />
             ) : subB5 ? (
               <CeritaUrutB speakGuru={speakGuru} />
@@ -1718,6 +1766,20 @@ export default function IgilModulePlayer({ bab = "mtk-1-bab1" }: { bab?: BabModu
               ) : subB3 ? (
                 <PetaPikiranB
                   langkah={PETA_PIKIRAN_B3}
+                  judul={judulSubBab}
+                  speakGuru={speakGuru}
+                  maskot={<IgilWajah kelas="h-14 w-20 igil-lompat" />}
+                />
+              ) : subA6 ? (
+                <PetaPikiranB
+                  langkah={PETA_PIKIRAN_A6}
+                  judul={judulSubBab}
+                  speakGuru={speakGuru}
+                  maskot={<IgilWajah kelas="h-14 w-20 igil-lompat" />}
+                />
+              ) : subB6 ? (
+                <PetaPikiranB
+                  langkah={PETA_PIKIRAN_B6}
                   judul={judulSubBab}
                   speakGuru={speakGuru}
                   maskot={<IgilWajah kelas="h-14 w-20 igil-lompat" />}
@@ -1870,6 +1932,10 @@ export default function IgilModulePlayer({ bab = "mtk-1-bab1" }: { bab?: BabModu
                 <InfografisHubunganC speakGuru={speakGuru} />
               ) : subB3 ? (
                 <InfografisPenguranganB speakGuru={speakGuru} />
+              ) : subA6 ? (
+                <InfografisSelisihA speakGuru={speakGuru} />
+              ) : subB6 ? (
+                <InfografisTambahB speakGuru={speakGuru} />
               ) : subA5 ? (
                 <InfografisBelasA speakGuru={speakGuru} />
               ) : subB5 ? (
@@ -2086,6 +2152,34 @@ export default function IgilModulePlayer({ bab = "mtk-1-bab1" }: { bab?: BabModu
                       5,
                       pictorialRef,
                       "Empat permainan benda nyata sudah selesai. Sekarang kita lihat gambarnya."
+                    )
+                  }
+                />
+              ) : subA6 ? (
+                <ConcreteSelisihA
+                  speakGuru={speakGuru}
+                  panel={panelConcrete}
+                  hentikan={hentikanRekamConcrete}
+                  gulir={() => concreteRef.current?.scrollIntoView({ behavior: "smooth", block: "start" })}
+                  onSelesai={() =>
+                    handleUnlockNextSmicpa(
+                      5,
+                      pictorialRef,
+                      "Empat permainan benda nyata sudah selesai. Sekarang kita lihat selisih dalam diagram."
+                    )
+                  }
+                />
+              ) : subB6 ? (
+                <ConcreteTambahB
+                  speakGuru={speakGuru}
+                  panel={panelConcrete}
+                  hentikan={hentikanRekamConcrete}
+                  gulir={() => concreteRef.current?.scrollIntoView({ behavior: "smooth", block: "start" })}
+                  onSelesai={() =>
+                    handleUnlockNextSmicpa(
+                      5,
+                      pictorialRef,
+                      "Empat permainan benda nyata sudah selesai. Sekarang kita lihat penjumlahan dalam diagram."
                     )
                   }
                 />
@@ -2424,6 +2518,34 @@ export default function IgilModulePlayer({ bab = "mtk-1-bab1" }: { bab?: BabModu
                     )
                   }
                 />
+              ) : subA6 ? (
+                <PictureSelisihA
+                  speakGuru={speakGuru}
+                  panel={panelGambar}
+                  hentikan={hentikanRekamConcrete}
+                  gulir={() => pictorialRef.current?.scrollIntoView({ behavior: "smooth", block: "start" })}
+                  onSelesai={() =>
+                    handleUnlockNextSmicpa(
+                      6,
+                      abstractRef,
+                      "Tiga permainan diagram sudah selesai. Ayo kita mencari selisih dengan angka dan tanda."
+                    )
+                  }
+                />
+              ) : subB6 ? (
+                <PictureTambahB
+                  speakGuru={speakGuru}
+                  panel={panelGambar}
+                  hentikan={hentikanRekamConcrete}
+                  gulir={() => pictorialRef.current?.scrollIntoView({ behavior: "smooth", block: "start" })}
+                  onSelesai={() =>
+                    handleUnlockNextSmicpa(
+                      6,
+                      abstractRef,
+                      "Tiga permainan diagram sudah selesai. Ayo kita menjumlahkan dengan angka dan tanda."
+                    )
+                  }
+                />
               ) : subA5 ? (
                 <PictureBelasA
                   speakGuru={speakGuru}
@@ -2743,6 +2865,22 @@ export default function IgilModulePlayer({ bab = "mtk-1-bab1" }: { bab?: BabModu
                 />
               ) : subB3 ? (
                 <AbstractPenguranganB
+                  speakGuru={speakGuru}
+                  panel={panelLambang}
+                  hentikan={hentikanRekamConcrete}
+                  gulir={() => abstractRef.current?.scrollIntoView({ behavior: "smooth", block: "start" })}
+                  onSelesai={() => selesaiBabRef.current?.scrollIntoView({ behavior: "smooth", block: "center" })}
+                />
+              ) : subA6 ? (
+                <AbstractSelisihA
+                  speakGuru={speakGuru}
+                  panel={panelLambang}
+                  hentikan={hentikanRekamConcrete}
+                  gulir={() => abstractRef.current?.scrollIntoView({ behavior: "smooth", block: "start" })}
+                  onSelesai={() => selesaiBabRef.current?.scrollIntoView({ behavior: "smooth", block: "center" })}
+                />
+              ) : subB6 ? (
+                <AbstractTambahB
                   speakGuru={speakGuru}
                   panel={panelLambang}
                   hentikan={hentikanRekamConcrete}
