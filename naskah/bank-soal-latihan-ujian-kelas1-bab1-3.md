@@ -43,4 +43,12 @@ Soal ditulis mengikuti pola jenis soal yang lazim pada asesmen sumatif dan AKM k
 
 ## Paket ujian tambahan
 
-Saat ini setiap bab punya satu paket (`paket-1`). `mulai_ujian` sudah memilih paket acak bila ada lebih dari satu. Untuk menambah paket, isi `examPackages` pada master (`packageCode`, `questions`) dan jalankan `npm run sync:keys`.
+Setiap bab aktif (Bab 1, 2, 3) kini punya tiga paket Ujian: `paket-1`, `paket-2`, `paket-3`, masing-masing 10 soal HOTS. `mulai_ujian` memilih satu paket secara acak saat sesi dimulai. Paket tambahan memakai sebaran sub-bab yang sama dengan `paket-1`, tetapi angka, tokoh, dan konteks cerita berbeda. Id soal tiap paket diberi awalan berbeda (`U`, `V`, `W`) dan letak kunci diseimbangkan per paket.
+
+Naskah paket tambahan ada di `src/content-master/paket-ujian-bab1-3.mjs` (tidak di-commit, berisi kunci). Untuk menambah atau mengubah paket: ubah berkas itu, jalankan `node src/content-master/bank-soal-bab1-3.mjs` lalu `npm run sync:keys`. Master memakai `examPackages` (`packageCode`, `questions`). Setelah sinkron, tiap seed bab harus berisi 40 baris (10 Latihan + 30 Ujian) dan berkas `src/data` tidak boleh memuat `correct_index`, `explanation`, `examQuestions`, maupun `examPackages`.
+
+## Pendaftaran anak
+
+Layar `/daftar` kini tersambung ke server. Alur: akun orang tua (buat atau masuk), lalu rumah (buat dengan nama pemilik rekening dan PIN 6 angka, atau gabung dengan kode undangan), lalu profil anak (nama panggilan, kelas, NISN). Jalur server: `GET /api/daftar/status` dan `POST /api/daftar/anak` (RPC `buat_rumah` atau `gabung_rumah`, `pasang_pin_ortu`, `daftar_anak`), serta `POST /api/auth/buat-akun`. NISN hanya diteruskan ke RPC dan diubah menjadi HMAC-SHA256; layar mengosongkan NISN setelah dikirim. Migrasi `04_status_pin_ortu.sql` menambah fungsi `status_pin_ortu()`.
+
+Syarat di server sebelum pendaftaran berhasil: migrasi 01 sampai 04 diterapkan, ekstensi `pgcrypto` aktif, pengaturan `igil.nisn_hmac_key` (minimal 32 karakter) terpasang, dan "Confirm email" di Supabase Auth dimatikan agar orang tua langsung masuk tanpa email.

@@ -139,8 +139,16 @@ export function PanelProfilBelajar({ profil, kembaliKe }: { profil: ProfilBelaja
   }
   if (profil.status === "belum_ada_anak") {
     return (
-      <div className={GAYA_PANEL}>
-        👧 Akun ini belum punya profil anak. Profil anak diperlukan agar jawaban bisa dinilai dan poin tercatat.
+      <div className={`${GAYA_PANEL} flex flex-wrap items-center justify-between gap-3`}>
+        <span>
+          👧 Akun ini belum punya profil anak. Profil anak diperlukan agar jawaban bisa dinilai dan poin tercatat.
+        </span>
+        <Link
+          href="/daftar"
+          className="rounded-full border-2 border-[#FFE566] bg-[#1C01A5] px-5 py-2 text-xs font-black text-[#FFE566] md:text-sm"
+        >
+          DAFTARKAN ANAK ➡️
+        </Link>
       </div>
     );
   }

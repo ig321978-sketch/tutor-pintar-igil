@@ -59,6 +59,7 @@ export function ruteHalamanPublikSaatTerkunci(pathname: string): boolean {
   return (
     pathname === "/" ||
     pathname === "/ranking" ||
+    pathname === "/daftar" ||
     pathname.startsWith("/praktikum/") ||
     pathname === "/ruang-belajar" ||
     pathname.startsWith("/ruang-belajar/") ||
@@ -72,6 +73,8 @@ export function ruteApiPublikSaatTerkunci(pathname: string): boolean {
   return (
     pathname === "/api/tts" ||
     // Latihan dan Ujian dinilai di server. Akses dijaga akun masuk dan RLS/RPC Supabase.
+    pathname === "/api/daftar/status" ||
+    pathname === "/api/daftar/anak" ||
     pathname === "/api/belajar/profil" ||
     pathname === "/api/belajar/latihan" ||
     pathname === "/api/belajar/ujian/mulai" ||

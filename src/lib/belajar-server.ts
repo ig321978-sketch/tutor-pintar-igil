@@ -57,6 +57,18 @@ const PESAN_RAMAH: Array<[RegExp, string]> = [
   [/masih dalam jeda/i, "Ujian ini sedang dalam jeda sebelum bisa diulang."],
   [/Paket ujian belum tersedia|Kunci ujian kosong|Soal latihan tidak tersedia|Bab tidak tersedia/i, "Soal bab ini belum tersedia di server."],
   [/Sesi ujian/i, "Sesi ujian tidak ditemukan atau sudah ditutup."],
+  [/Masuk diperlukan/i, "Masuk dulu ke akun orang tua."],
+  [/Akun ini sudah punya rumah/i, "Akun ini sudah tergabung di sebuah rumah."],
+  [/Kode undangan tidak cocok/i, "Kode undangan tidak cocok. Periksa lagi kodenya."],
+  [/Rumah belum dibuat/i, "Rumah belum dibuat untuk akun ini."],
+  [/Kelas di luar SD/i, "Kelas harus antara 1 sampai 6 SD."],
+  [/NISN harus 10 digit/i, "NISN harus 10 angka."],
+  [/NISN tidak sesuai fase/i, "Awalan NISN tidak sesuai dengan kelas yang dipilih. Periksa kelas atau NISN anak."],
+  [/NISN ini sudah terdaftar/i, "NISN ini sudah terdaftar di IGIL. Satu anak hanya bisa punya satu profil."],
+  [/Pendaftaran jenjang ini ditutup/i, "Pendaftaran untuk jenjang ini belum dibuka. IGIL baru melayani SD kelas 1 sampai 6."],
+  [/Kunci HMAC NISN belum dipasang/i, "Pendaftaran belum aktif di server. Mohon coba lagi nanti."],
+  [/PIN harus 6 digit/i, "PIN harus 6 angka."],
+  [/PIN sudah dipasang/i, "Rumah ini sudah punya PIN."],
 ];
 
 export function pesanGalat(error: { message?: string } | null): string {
