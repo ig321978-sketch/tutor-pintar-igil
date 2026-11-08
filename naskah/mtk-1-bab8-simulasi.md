@@ -31,7 +31,13 @@ Tujuan belajar: survei, diagram gambar tegak dan mendatar, satu gambar satu data
 - **Alat bandingkan:** ketuk dua nama pada diagram. Selisih ditandai merah pada kolom yang lebih tinggi dan ditulis sebagai kalimat dengan pengurangannya ("Wortel 2 lebih banyak dari Kol. 4 − 2 = 2"). Ketukan ketiga memulai ulang.
 - **Coba ini!** (1) Tambah anak sampai ada satu kolom paling tinggi. (2) Ubah diagram menjadi mendatar. Apakah datanya berubah? (3) Ketuk dua nama untuk mencari selisihnya. (4) Ganti lambang menjadi lingkaran. Apakah banyaknya sama?
 
+## Alur satu layar
+- Satu simulasi per layar, ditandai "Simulasi 1 dari 2" dan "Simulasi 2 dari 2". Tidak ada loncat bebas antar simulasi.
+- Tombol **LANJUTKAN KE SIMULASI BERIKUTNYA** pindah dari Simulasi 1 ke Simulasi 2. Di Simulasi 2 tombolnya menjadi **LANJUTKAN KE LATIHAN**.
+- Tombol LANJUTKAN baru aktif setelah siswa menyentuh simulasinya sekali (menyeret atau mengetuk benda, plus atau minus, pilihan tampilan, atau tombol Rapikan, Acak, dan Reset). Tombol suara tidak dihitung. Selama belum, tampil petunjuk "Mainkan dulu simulasinya, ya.".
+- Tombol KEMBALI di Simulasi 2 membawa siswa ke Simulasi 1. Keadaan kedua simulasi dipertahankan selama tab terbuka.
+
 ## Catatan integrasi
-- Urutan tab Bab 8: Silabus, Materi, Simulasi, Latihan, Ujian. Simulasi tidak mengunci dan tidak membuka apa pun. Latihan tetap terbuka setelah semua sub-bab Materi selesai.
+- Urutan tab Bab 8: Silabus, Materi, Simulasi, Latihan, Ujian. Simulasi tidak memberi poin dan tidak membuka kunci apa pun. Latihan tetap terbuka setelah semua sub-bab Materi selesai, dan tab Latihan tetap bisa dibuka langsung dari bilah tab.
 - Tab Simulasi baru tampil di bab yang sudah punya simulasi. Bab 2 sampai 7 belum punya, jadi tabnya belum tampil.
 - Sub-bab tidak memakai kunci jawaban, jadi tidak ada data baru di `src/data/` dan tidak ada seed SQL.

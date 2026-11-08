@@ -12,6 +12,7 @@ Setiap simulasi baru wajib memenuhi ini:
 - **Eksplorasi bebas.** Tidak ada skor, waktu, atau benar-salah. Salah letak dijawab dengan petunjuk pendek, bukan hukuman.
 - **Satu model, banyak perwakilan terhubung.** Mengubah model mengubah benda, daftar, turus, tabel, diagram, dan kalimat seketika. Siswa boleh menyalakan atau mematikan tiap perwakilan dan menukar bentuknya.
 - **Manipulasi langsung.** Seret, atau ketuk lalu ketuk tujuan, dengan jalur papan ketik (Enter). Tombol plus dan minus besar. Benda yang diseret diabaikan saat membaca zona tujuan.
+- **Alur satu layar.** Satu simulasi per layar ("Simulasi 1 dari N"). Tombol LANJUTKAN KE SIMULASI BERIKUTNYA bergerak berurutan, dan simulasi terakhir memakai LANJUTKAN KE LATIHAN. Tombol aktif setelah siswa menyentuh simulasinya sekali (tombol suara tidak dihitung), dengan petunjuk "Mainkan dulu simulasinya, ya." selama belum. Keadaan simulasi dipertahankan saat KEMBALI.
 - **Reset Semua** mengembalikan model dan semua pilihan tampilan.
 - **Kartu "Coba ini!"** berisi 3 sampai 4 langkah selidik tanpa kunci jawaban, dengan tombol suara.
 - **Batas wajar.** Bilangan tetap dalam jangkauan kelas, skala tetap tidak berubah-ubah.

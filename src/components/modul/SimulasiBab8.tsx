@@ -939,8 +939,40 @@ function SimulasiDiagram({ speakGuru }: { speakGuru: (t: string) => void }) {
 /* Pembungkus tab Simulasi Bab 8                                            */
 /* ======================================================================== */
 
+const LANGKAH_SIM = [
+  { judul: "Simulasi 1 dari 2", sub: "Sub-Bab A • Laboratorium Data" },
+  { judul: "Simulasi 2 dari 2", sub: "Sub-Bab B • Pabrik Diagram" },
+] as const;
+
 export default function SimulasiBab8({ speakGuru, onKeLatihan }: { speakGuru: (t: string) => void; onKeLatihan: () => void }) {
-  const [aktif, setAktif] = useState<"A" | "B">("A");
+  /** Satu simulasi per layar. LANJUTKAN berurutan, dan Latihan baru dituju setelah simulasi terakhir dimainkan. */
+  const [langkah, setLangkah] = useState<0 | 1>(0);
+  const [dimainkan, setDimainkan] = useState<[boolean, boolean]>([false, false]);
+  const siap = dimainkan[langkah];
+  const terakhir = langkah === LANGKAH_SIM.length - 1;
+
+  /** Menyentuh benda, tombol, atau kotak centang di dalam simulasi dihitung sebagai "dimainkan". Tombol suara tidak dihitung. */
+  const tandai = (e: React.SyntheticEvent) => {
+    const t = e.target as HTMLElement;
+    if (!t.closest('button, [role="button"], [role="checkbox"]')) return;
+    if (t.closest('[aria-label^="Dengarkan"]')) return;
+    setDimainkan((prev) => (prev[langkah] ? prev : langkah === 0 ? [true, prev[1]] : [prev[0], true]));
+  };
+  const tandaiKunci = (e: React.KeyboardEvent) => {
+    if (e.key === "Enter" || e.key === " ") tandai(e);
+  };
+
+  const ke = (tujuan: 0 | 1) => {
+    setLangkah(tujuan);
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  };
+
+  const lanjut = () => {
+    if (!siap) return;
+    if (terakhir) onKeLatihan();
+    else ke(1);
+  };
+
   return (
     <section className="mx-auto mt-4 w-[98%] space-y-4 rounded-3xl border-2 border-indigo-100 bg-indigo-50/40 p-3 md:p-6" aria-label="Laboratorium Simulasi Bab 8">
       <div className="flex flex-wrap items-center justify-between gap-2">
@@ -958,35 +990,58 @@ export default function SimulasiBab8({ speakGuru, onKeLatihan }: { speakGuru: (t
         />
       </div>
 
-      <div className="flex flex-wrap gap-2" role="tablist" aria-label="Pilih simulasi">
-        {(
-          [
-            { id: "A", judul: "Simulasi 1", sub: "Sub-Bab A • Laboratorium Data" },
-            { id: "B", judul: "Simulasi 2", sub: "Sub-Bab B • Pabrik Diagram" },
-          ] as const
-        ).map((s) => (
-          <button
-            key={s.id}
-            type="button"
-            role="tab"
-            aria-selected={aktif === s.id}
-            onClick={() => setAktif(s.id)}
-            className={`rounded-2xl border-4 px-3 py-1.5 text-left font-black ${
-              aktif === s.id ? "border-[#F0AB00] bg-[#1C01A5] text-[#FFE566]" : "border-[#1C01A5]/30 bg-white text-[#1C01A5]"
+      <div className="flex items-center gap-2" aria-label={`${LANGKAH_SIM[langkah].judul}`} role="group">
+        {LANGKAH_SIM.map((s, i) => (
+          <div
+            key={s.judul}
+            aria-current={i === langkah ? "step" : undefined}
+            className={`min-w-0 flex-1 rounded-2xl border-4 px-3 py-1.5 font-black ${
+              i === langkah
+                ? "border-[#F0AB00] bg-[#1C01A5] text-[#FFE566]"
+                : dimainkan[i]
+                  ? "border-[#7FCB96] bg-[#E8F7EE] text-[#14532D]"
+                  : "border-[#1C01A5]/30 bg-white text-[#1C01A5]/60"
             }`}
           >
-            <span className="block text-sm leading-tight">{s.judul}</span>
-            <span className="block text-[10px] uppercase tracking-wide opacity-80">{s.sub}</span>
-          </button>
+            <span className="block text-sm leading-tight">
+              {dimainkan[i] && i !== langkah ? "✔ " : ""}
+              {s.judul}
+            </span>
+            <span className="block text-[10px] uppercase leading-tight tracking-wide opacity-80">{s.sub}</span>
+          </div>
         ))}
       </div>
 
-      {aktif === "A" ? <SimulasiData speakGuru={speakGuru} /> : <SimulasiDiagram speakGuru={speakGuru} />}
+      <div hidden={langkah !== 0} onPointerDownCapture={tandai} onClickCapture={tandai} onKeyDownCapture={tandaiKunci}>
+        <SimulasiData speakGuru={speakGuru} />
+      </div>
+      <div hidden={langkah !== 1} onPointerDownCapture={tandai} onClickCapture={tandai} onKeyDownCapture={tandaiKunci}>
+        <SimulasiDiagram speakGuru={speakGuru} />
+      </div>
 
-      <div className="flex justify-end pt-1">
-        <button type="button" onClick={onKeLatihan} className={`${TOMBOL_UTAMA} px-6 py-3`}>
-          LANJUTKAN KE LATIHAN ➡️
-        </button>
+      <div className="flex flex-wrap items-start justify-between gap-2 pt-1">
+        {langkah > 0 ? (
+          <button type="button" onClick={() => ke(0)} className={TOMBOL_BIASA}>
+            ⬅️ KEMBALI
+          </button>
+        ) : (
+          <span />
+        )}
+        <div className="flex flex-col items-end gap-1">
+          <button
+            type="button"
+            onClick={lanjut}
+            aria-disabled={!siap}
+            className={`${TOMBOL_UTAMA} px-6 py-3 ${siap ? "" : "opacity-50"}`}
+          >
+            {terakhir ? "LANJUTKAN KE LATIHAN ➡️" : "LANJUTKAN KE SIMULASI BERIKUTNYA ➡️"}
+          </button>
+          {siap ? null : (
+            <p role="status" className="text-xs font-black text-[#1C01A5]/80">
+              Mainkan dulu simulasinya, ya.
+            </p>
+          )}
+        </div>
       </div>
     </section>
   );
