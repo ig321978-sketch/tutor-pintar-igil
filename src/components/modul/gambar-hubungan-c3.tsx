@@ -141,7 +141,7 @@ export function KepikSVG({ kelas = "h-10 w-10", terbang = false }: { kelas?: str
   );
 }
 
-function KepikG({ x, y, s = 1, terbang = false, putar = 0 }: { x: number; y: number; s?: number; terbang?: boolean; putar?: number }) {
+export function KepikG({ x, y, s = 1, terbang = false, putar = 0 }: { x: number; y: number; s?: number; terbang?: boolean; putar?: number }) {
   return (
     <g transform={`translate(${x} ${y}) rotate(${putar}) scale(${s}) translate(-20 -18)`}>
       <BadanKepik terbang={terbang} />
@@ -239,7 +239,7 @@ export function SegitigaBilangan({
 
 /* ------------------------------ Potongan adegan ---------------------------- */
 
-function KotakHitung({ x, y, w = 116, teks, ukuran = 20 }: { x: number; y: number; w?: number; teks: string; ukuran?: number }) {
+export function KotakHitung({ x, y, w = 116, teks, ukuran = 20 }: { x: number; y: number; w?: number; teks: string; ukuran?: number }) {
   return (
     <g>
       <rect x={x} y={y} width={w} height="34" rx="14" fill="#FFFFFF" stroke={BIRU} strokeWidth="3" />
@@ -266,7 +266,7 @@ function Kandang({ x, y, w = 112, h = 70 }: { x: number; y: number; w?: number; 
   );
 }
 
-function Daun({ x, y }: { x: number; y: number }) {
+export function Daun({ x, y }: { x: number; y: number }) {
   return (
     <g transform={`translate(${x} ${y})`}>
       <path d="M0 40 Q10 -20 120 -4 Q150 20 112 52 Q50 80 0 40 Z" fill="#4ADE80" stroke={BIRU} strokeWidth="3" strokeLinejoin="round" />

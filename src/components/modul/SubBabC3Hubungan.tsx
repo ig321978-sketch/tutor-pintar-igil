@@ -93,7 +93,7 @@ function BolaS({ warna, kelas = "h-11 w-11" }: { warna: string; kelas?: string }
 }
 
 /** Kalimat ringkas satu baris, muat dua sejajar di layar ponsel. Nyala memakai indeks 0 sampai 4. */
-function Kalimat({ a, t, b, c, nyala = [] }: { a: Isi; t: string; b: Isi; c: Isi; nyala?: number[] }) {
+export function Kalimat({ a, t, b, c, nyala = [] }: { a: Isi; t: string; b: Isi; c: Isi; nyala?: number[] }) {
   const tok: (Isi | string)[] = [a, t, b, "=", c];
   const baca = tok.map((x) => (x === null ? "kosong" : x === "?" ? "tanda tanya" : x)).join(" ");
   return (
@@ -110,8 +110,8 @@ function Kalimat({ a, t, b, c, nyala = [] }: { a: Isi; t: string; b: Isi; c: Isi
     </span>
   );
 }
-const KT = (p: { a: Isi; b: Isi; c: Isi; nyala?: number[] }) => <Kalimat a={p.a} t="+" b={p.b} c={p.c} nyala={p.nyala} />;
-const KK = (p: { a: Isi; b: Isi; c: Isi; nyala?: number[] }) => <Kalimat a={p.a} t="−" b={p.b} c={p.c} nyala={p.nyala} />;
+export const KT = (p: { a: Isi; b: Isi; c: Isi; nyala?: number[] }) => <Kalimat a={p.a} t="+" b={p.b} c={p.c} nyala={p.nyala} />;
+export const KK = (p: { a: Isi; b: Isi; c: Isi; nyala?: number[] }) => <Kalimat a={p.a} t="−" b={p.b} c={p.c} nyala={p.nyala} />;
 
 /**
  * Empat kalimat satu keluarga, disusun seperti tabel buku hlm. 102:

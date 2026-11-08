@@ -1023,18 +1023,337 @@
       "id": "D",
       "codeTitle": "Sub-Bab D (Soal Cerita Pengurangan)",
       "fullTitle": "Sub-Bab D: Soal Cerita Pengurangan",
-      "targetDescription": "Siswa menyelesaikan soal cerita pengurangan satu langkah: membaca cerita, menulis kalimat pengurangan, dan menjawab dengan kalimat lengkap.",
+      "targetDescription": "Siswa menyelesaikan soal cerita pengurangan: membaca cerita, menemukan mula-mula, yang pergi, dan sisa, mengenali kata kunci, menulis kalimat pengurangan, mencari sisa, yang pergi, dan mula-mula, mengurangi dua kali, memeriksa dengan penjumlahan, lalu menjawab dengan kalimat lengkap. Siswa juga membuat soal cerita sendiri.",
       "secondaryBg": "#EDE9FE",
       "secondaryBorder": "#8B5CF6",
       "secondaryText": "#5B21B6",
-      "segeraHadir": true,
-      "stories": [],
-      "mindMaps": [],
-      "infografisData": [],
-      "concreteSlides": [],
-      "pictorialSlides": [],
-      "abstractSlides": [],
-      "interactiveGames": []
+      "stories": [
+        {
+          "id": "D3-S1",
+          "titleHint": "Burung di Dahan Pohon",
+          "sceneType": "burung-pohon",
+          "voiceNarration": "Lihat burung di dahan pohon. Mula-mula ada delapan burung di pohon. Sebanyak dua burung terbang. Berapakah sisa burung sekarang? Delapan dikurangi dua sama dengan enam. Sekarang ada enam burung tersisa."
+        },
+        {
+          "id": "D3-S2",
+          "titleHint": "Kepik di Atas Daun",
+          "sceneType": "kepik-daun",
+          "voiceNarration": "Ada kepik di atas daun. Mula-mula ada sepuluh kepik di atas daun. Sebanyak dua kepik terbang. Berapakah sisa kepik sekarang? Sepuluh dikurangi dua sama dengan delapan. Sekarang tersisa delapan kepik."
+        },
+        {
+          "id": "D3-S3",
+          "titleHint": "Siswa di Dalam Kelas",
+          "sceneType": "siswa-kelas",
+          "voiceNarration": "Di dalam kelas ada tujuh siswa. Lima siswa masih di dalam kelas. Siswa lainnya pergi. Berapa banyak siswa yang pergi? Yang kita cari sekarang adalah bagian yang pergi. Tujuh dikurangi lima sama dengan dua. Ada dua siswa yang pergi."
+        },
+        {
+          "id": "D3-S4",
+          "titleHint": "Bola di Dalam Kardus",
+          "sceneType": "bola-kardus",
+          "voiceNarration": "Kira mempunyai sepuluh bola. Tiga bola ada di luar kardus. Berapa banyak bola di dalam kardus? Sepuluh dikurangi tiga sama dengan tujuh. Ada tujuh bola di dalam kardus."
+        },
+        {
+          "id": "D3-S5",
+          "titleHint": "Kira Memberi Bola kepada Tika",
+          "sceneType": "beri-bola",
+          "voiceNarration": "Kira mempunyai sepuluh bola. Beberapa bola diberikan kepada Tika. Sisa bola Kira adalah enam. Berapa bola yang diberikan kepada Tika? Yang hilang adalah bola yang diberikan. Sepuluh dikurangi enam sama dengan empat. Ada empat bola yang diberikan kepada Tika. Periksa: enam ditambah empat sama dengan sepuluh."
+        },
+        {
+          "id": "D3-S6",
+          "titleHint": "Kelereng Malosi",
+          "sceneType": "kelereng-dua-kali",
+          "voiceNarration": "Malosi mempunyai sembilan kelereng. Malosi memberi Kira dua kelereng. Malosi juga memberi Upe empat kelereng. Berapakah sisa kelereng Malosi? Kita kurangi dua kali. Sembilan dikurangi dua sama dengan tujuh. Tujuh dikurangi empat sama dengan tiga. Sisa kelereng Malosi ada tiga."
+        }
+      ],
+      "mindMaps": [
+        {
+          "stepNumber": 1,
+          "stepTitle": "1. Baca Pelan-Pelan",
+          "stepDesc": "Baca ceritanya sampai selesai. Tanyakan pada dirimu: siapa atau apa yang ada di cerita? Ada berapa mula-mula? Apa yang terjadi? Apa yang ditanyakan?",
+          "icon": "📖",
+          "flowFrom": "Soal cerita",
+          "flowTo": "Pemahaman"
+        },
+        {
+          "stepNumber": 2,
+          "stepTitle": "2. Mula-Mula, Pergi, Sisa",
+          "stepDesc": "Cerita pengurangan punya tiga bagian. Mula-mula adalah jumlah di awal. Pergi adalah yang berkurang. Sisa adalah yang masih tinggal. Delapan burung, dua terbang, sisa enam.",
+          "icon": "🧩",
+          "flowFrom": "Cerita",
+          "flowTo": "Tiga bagian"
+        },
+        {
+          "stepNumber": 3,
+          "stepTitle": "3. Cari Kata Kunci",
+          "stepDesc": "Kata terbang, pergi, diberikan, dimakan, dan diambil memberi tahu kita bahwa jumlahnya berkurang. Kalau ada kata itu, kita pakai tanda kurang.",
+          "icon": "🔑",
+          "flowFrom": "Kata kunci",
+          "flowTo": "Tanda + atau −"
+        },
+        {
+          "stepNumber": 4,
+          "stepTitle": "4. Tulis Kalimat Matematika",
+          "stepDesc": "Tulis kalimatnya dengan tiga kotak. Kotak pertama mula-mula, kotak kedua yang berkurang, kotak ketiga hasilnya. Delapan kurang dua sama dengan enam.",
+          "icon": "✍️",
+          "flowFrom": "Tiga bagian",
+          "flowTo": "Kalimat matematika"
+        },
+        {
+          "stepNumber": 5,
+          "stepTitle": "5. Apa yang Dicari?",
+          "stepDesc": "Kadang yang dicari adalah sisa. Kadang yang dicari adalah yang pergi. Kadang yang dicari adalah mula-mula. Pada soal dua kali mengurangi, kita kurangi satu per satu dari kiri ke kanan.",
+          "icon": "❓",
+          "flowFrom": "Yang dicari",
+          "flowTo": "Cara menghitung"
+        },
+        {
+          "stepNumber": 6,
+          "stepTitle": "6. Jawab dan Periksa",
+          "stepDesc": "Tulis jawaban dalam satu kalimat lengkap dengan bendanya. Lalu periksa dengan penjumlahan. Sisa ditambah yang pergi harus sama dengan mula-mula.",
+          "icon": "✅",
+          "flowFrom": "Hasil hitung",
+          "flowTo": "Kalimat jawaban"
+        }
+      ],
+      "infografisData": [
+        {
+          "fruitName": "Mula-Mula, Pergi, Sisa",
+          "emoji": "🐦",
+          "countNum": 6,
+          "countWord": "Enam",
+          "voiceSentence": "Setiap cerita pengurangan punya tiga bagian. Mula-mula adalah jumlah di awal. Pergi adalah yang berkurang. Sisa adalah yang masih tinggal. Mula-mula ada delapan burung. Dua burung terbang. Sisa enam burung. Delapan dikurangi dua sama dengan enam."
+        },
+        {
+          "fruitName": "Kata Kunci",
+          "emoji": "🔑",
+          "countNum": 6,
+          "countWord": "Enam",
+          "voiceSentence": "Kata terbang, pergi, diberikan, dimakan, diambil, dan hilang berarti jumlahnya berkurang. Pakai tanda kurang. Kata datang, bergabung, dan ditambah berarti jumlahnya bertambah. Pakai tanda tambah."
+        },
+        {
+          "fruitName": "Lima Langkah",
+          "emoji": "🪜",
+          "countNum": 5,
+          "countWord": "Lima",
+          "voiceSentence": "Satu, baca ceritanya pelan-pelan. Dua, lingkari angkanya. Tiga, kotaki kata kunci. Empat, tulis kalimat matematikanya. Lima, periksa dan jawab dengan kalimat lengkap."
+        },
+        {
+          "fruitName": "Model Batang",
+          "emoji": "🧱",
+          "countNum": 7,
+          "countWord": "Tujuh",
+          "voiceSentence": "Kotak merah adalah sisa. Kotak yang dicoret adalah yang pergi. Seluruh batang adalah mula-mula. Sepuluh dikurangi tiga sama dengan tujuh."
+        },
+        {
+          "fruitName": "Apa yang Dicari",
+          "emoji": "❓",
+          "countNum": 3,
+          "countWord": "Tiga",
+          "voiceSentence": "Kadang yang dicari adalah sisa. Kadang yang pergi. Kadang mula-mula. Delapan kurang dua sama dengan enam. Tujuh kurang lima sama dengan dua. Untuk mencari mula-mula, empat ditambah tiga sama dengan tujuh."
+        },
+        {
+          "fruitName": "Kurangi Dua Kali",
+          "emoji": "✌️",
+          "countNum": 3,
+          "countWord": "Tiga",
+          "voiceSentence": "Sembilan dikurangi dua sama dengan tujuh. Tujuh dikurangi empat sama dengan tiga. Cara lain: dua ditambah empat sama dengan enam, lalu sembilan dikurangi enam sama dengan tiga."
+        },
+        {
+          "fruitName": "Kalimat Jawaban",
+          "emoji": "💬",
+          "countNum": 6,
+          "countWord": "Enam",
+          "voiceSentence": "Tulis jawabanmu dalam satu kalimat lengkap. Sebut bendanya dan satuannya. Sisa burung ada enam ekor. Siswa yang pergi ada dua orang. Bola di dalam kardus ada tujuh buah."
+        },
+        {
+          "fruitName": "Ayo Berkarya",
+          "emoji": "🎨",
+          "countNum": 6,
+          "countWord": "Enam",
+          "voiceSentence": "Buat soal cerita pengurangan buatanmu sendiri. Pilih topik, tentukan mula-mula, tentukan yang pergi, tulis ceritanya, tulis kalimat matematika, lalu tukar soalmu dengan temanmu."
+        }
+      ],
+      "concreteSlides": [
+        {
+          "title": "Burung Terbang (8 − 2, 7 − 3, 9 − 4)",
+          "emoji": "🐦",
+          "targetCount": 9,
+          "voiceGuide": "Ketuk burung supaya terbang, lalu hitung burung yang masih hinggap."
+        },
+        {
+          "title": "Siswa Pergi dari Kelas (7 − 5, 9 − 6, 8 − 3)",
+          "emoji": "🧒",
+          "targetCount": 9,
+          "voiceGuide": "Ketuk siswa yang masih di kelas. Yang lain pergi lewat pintu. Hitung yang pergi."
+        },
+        {
+          "title": "Bola ke Dalam Kardus (10 − 3, 9 − 4, 8 − 5)",
+          "emoji": "⚽",
+          "targetCount": 10,
+          "voiceGuide": "Seret bola ke kardus sampai di luar tersisa sebanyak soal. Hitung bola di dalam kardus."
+        },
+        {
+          "title": "Kelereng untuk Dua Teman (9 − 2 − 4)",
+          "emoji": "🔵",
+          "targetCount": 10,
+          "voiceGuide": "Beri Kira dulu, lalu Upe. Kurangi dua kali dan hitung sisa kelereng Malosi."
+        }
+      ],
+      "pictorialSlides": [
+        {
+          "title": "Batang Cerita (9 − 4)",
+          "diagramType": "bar-model",
+          "numberA": 9,
+          "numberB": 4,
+          "caption": "Satu kotak mewakili satu benda. Kotak merah adalah sisa. Kotak yang dicoret adalah yang pergi. Seluruh batang adalah mula-mula."
+        },
+        {
+          "title": "Jodohkan Cerita dan Batang",
+          "diagramType": "story-bar-match",
+          "numberA": 9,
+          "numberB": 3,
+          "caption": "Ada cerita yang mencari sisa, ada yang mencari yang pergi, dan ada yang mencari mula-mula. Lihat angka yang diketahui dan bagian yang bertanda tanya."
+        },
+        {
+          "title": "Dua Lompatan Mundur (9 − 2 − 4)",
+          "diagramType": "number-line-two-jumps",
+          "numberA": 9,
+          "numberB": 2,
+          "caption": "Mundur dua kali di garis bilangan. Cara lain: gabungkan dulu dua dan empat menjadi enam, lalu mundur enam sekali jalan."
+        }
+      ],
+      "abstractSlides": [
+        {
+          "symbolLarge": "8 − 2 = 6  |  4 + 3 = 7",
+          "wordLarge": "KATA KUNCI",
+          "mathNotation": "terbang → −   datang → +",
+          "voiceReadout": "Delapan dikurangi dua sama dengan enam. Empat ditambah tiga sama dengan tujuh. Kata terbang berarti kurang. Kata datang berarti tambah."
+        },
+        {
+          "symbolLarge": "10 − 2 = 8",
+          "wordLarge": "KOTAK PENYELESAIAN",
+          "mathNotation": "9 − 2 − 4 = 3",
+          "voiceReadout": "Isi kotak penyelesaian dari kiri ke kanan. Sepuluh dikurangi dua sama dengan delapan. Sembilan dikurangi dua dikurangi empat sama dengan tiga."
+        },
+        {
+          "symbolLarge": "? − 3 = 4",
+          "wordLarge": "SOALKU",
+          "mathNotation": "4 + 3 = 7",
+          "voiceReadout": "Berapa dikurangi tiga sama dengan empat? Pakai kebalikan. Empat ditambah tiga sama dengan tujuh."
+        }
+      ],
+      "interactiveGames": [
+        {
+          "gameId": "subD3-game-1",
+          "gameNumber": 1,
+          "stage": "Concrete",
+          "gameType": "tap-to-fly",
+          "title": "Burung Terbang",
+          "bookReference": "Buku Siswa Hlm. 106",
+          "objective": "Memahami mula-mula, pergi, dan sisa dengan menerbangkan burung.",
+          "mechanicDescription": "Tiga ronde. Siswa mengetuk burung supaya terbang sebanyak yang pergi, lalu memilih sisa burung. Ronde akhir: ucapkan sisa burung.",
+          "voiceGuide": "Ketuk burung supaya terbang. Lalu ucapkan berapa sisa burung."
+        },
+        {
+          "gameId": "subD3-game-2",
+          "gameNumber": 2,
+          "stage": "Concrete",
+          "gameType": "tap-to-keep",
+          "title": "Siswa Pergi dari Kelas",
+          "bookReference": "Buku Siswa Hlm. 107",
+          "objective": "Mencari bagian yang pergi dari jumlah mula-mula dan yang masih tinggal.",
+          "mechanicDescription": "Tiga ronde. Siswa mengetuk siswa yang masih di kelas, yang lain pergi lewat pintu, lalu memilih banyak yang pergi. Ronde akhir: ucapkan yang pergi.",
+          "voiceGuide": "Ketuk siswa yang tinggal. Lalu ucapkan berapa siswa yang pergi."
+        },
+        {
+          "gameId": "subD3-game-3",
+          "gameNumber": 3,
+          "stage": "Concrete",
+          "gameType": "drag-to-box",
+          "title": "Bola ke Dalam Kardus",
+          "bookReference": "Buku Siswa Hlm. 107",
+          "objective": "Menentukan banyak benda di dalam wadah dari jumlah seluruhnya dan yang di luar.",
+          "mechanicDescription": "Tiga ronde. Siswa menyeret bola ke kardus sampai di luar tersisa sebanyak soal, lalu menghitung bola di dalam kardus. Ronde akhir: ucapkan bola di dalam kardus.",
+          "voiceGuide": "Seret bola ke kardus. Lalu ucapkan berapa bola di dalam kardus."
+        },
+        {
+          "gameId": "subD3-game-4",
+          "gameNumber": 4,
+          "stage": "Concrete",
+          "gameType": "tap-give-twice",
+          "title": "Kelereng untuk Dua Teman",
+          "bookReference": "Buku Siswa Hlm. 108",
+          "objective": "Mengurangi dua kali secara berurutan.",
+          "mechanicDescription": "Tiga ronde. Siswa memberi kelereng kepada Kira lalu Upe dengan mengetuk, melihat dua kalimat pengurangan, lalu memilih sisa. Ronde akhir: ucapkan sisa kelereng.",
+          "voiceGuide": "Beri Kira dulu, lalu Upe. Lalu ucapkan sisa kelereng Malosi."
+        },
+        {
+          "gameId": "subD3-game-5",
+          "gameNumber": 5,
+          "stage": "Pictorial",
+          "gameType": "tap-cross-bar",
+          "title": "Batang Cerita",
+          "bookReference": "Buku Siswa Hlm. 106",
+          "objective": "Menghubungkan cerita dengan model batang dan melihat sisa sebagai kotak yang tidak dicoret.",
+          "mechanicDescription": "Tiga ronde. Siswa membaca cerita teks, mengetuk kotak merah untuk mencoret yang pergi, lalu memilih sisa. Ronde akhir: ucapkan sisanya.",
+          "voiceGuide": "Coret kotak yang pergi. Lalu ucapkan berapa sisanya."
+        },
+        {
+          "gameId": "subD3-game-6",
+          "gameNumber": 6,
+          "stage": "Pictorial",
+          "gameType": "match-story-bar",
+          "title": "Jodohkan Cerita dan Batang",
+          "bookReference": "Buku Siswa Hlm. 106-108",
+          "objective": "Mengenali tiga jenis pertanyaan soal cerita: mencari sisa, yang pergi, dan mula-mula.",
+          "mechanicDescription": "Dua ronde. Siswa menjodohkan tiga cerita teks dengan tiga model batang. Ronde akhir: ucapkan jumlah mula-mula pada cerita C.",
+          "voiceGuide": "Jodohkan cerita dengan batang. Lalu ucapkan jumlah mula-mula pada cerita C."
+        },
+        {
+          "gameId": "subD3-game-7",
+          "gameNumber": 7,
+          "stage": "Pictorial",
+          "gameType": "number-line-jump",
+          "title": "Dua Lompatan Mundur",
+          "bookReference": "Buku Siswa Hlm. 108",
+          "objective": "Mengurangi dua kali di garis bilangan dan membandingkannya dengan cara menggabung dulu.",
+          "mechanicDescription": "Tiga ronde. Siswa mengetuk angka tempat mendarat untuk dua lompatan mundur, lalu melihat cara lain. Ronde akhir: setelah lompatan pertama, ucapkan hasil akhir.",
+          "voiceGuide": "Mundur dua kali di garis bilangan. Lalu ucapkan hasil akhirnya."
+        },
+        {
+          "gameId": "subD3-game-8",
+          "gameNumber": 8,
+          "stage": "Abstract",
+          "gameType": "keyword-detective",
+          "title": "Detektif Kata Kunci",
+          "bookReference": "Buku Siswa Hlm. 106 (metode CUBES)",
+          "objective": "Menemukan angka dan kata kunci, lalu memilih tanda + atau − dari cerita.",
+          "mechanicDescription": "Tiga ronde, empat langkah: lingkari angka, kotaki kata kunci, pilih tanda, hitung. Ronde akhir: ucapkan hasilnya.",
+          "voiceGuide": "Jadilah detektif soal cerita. Lalu ucapkan hasilnya."
+        },
+        {
+          "gameId": "subD3-game-9",
+          "gameNumber": 9,
+          "stage": "Abstract",
+          "gameType": "fill-boxes",
+          "title": "Isi Kotak Penyelesaian",
+          "bookReference": "Buku Siswa Hlm. 106-108",
+          "objective": "Menulis kalimat pengurangan satu langkah dan dua langkah pada kotak penyelesaian.",
+          "mechanicDescription": "Lima ronde. Siswa mengisi kotak dengan papan angka, kotak demi kotak, sesuai cerita buku. Ronde akhir: sembilan kurang dua kurang empat, ucapkan hasilnya.",
+          "voiceGuide": "Isi kotak penyelesaian. Lalu ucapkan hasil akhirnya."
+        },
+        {
+          "gameId": "subD3-game-10",
+          "gameNumber": 10,
+          "stage": "Abstract",
+          "gameType": "create-story",
+          "title": "Soal Ceritaku",
+          "bookReference": "Buku Siswa Hlm. 113 (Ayo Berkarya)",
+          "objective": "Membuat soal cerita pengurangan sendiri dan mencari mula-mula dengan kebalikan.",
+          "mechanicDescription": "Dua ronde. Ronde pertama: siswa memilih topik, mengatur mula-mula dan yang pergi, lalu menjawab soalnya sendiri dan memeriksanya. Ronde akhir: mencari mula-mula pada soal ? − 3 = 4, ucapkan jawabannya.",
+          "voiceGuide": "Buat dan jawab soalmu. Lalu ucapkan jumlah mula-mula pada soal terakhir."
+        }
+      ]
     }
   },
   "practiceQuestions": [
@@ -1060,13 +1379,13 @@
     {
       "id": 2,
       "level": "LOTS (30%)",
-      "prompt": "Tanda yang dipakai untuk pengurangan adalah...",
+      "prompt": "Ada 8 burung di pohon. Sebanyak 2 burung terbang. Kata yang menunjukkan jumlahnya harus dikurangi adalah...",
       "visualEmojis": [],
       "options": [
-        "+ (tambah)",
-        "= (sama dengan)",
-        "> (lebih dari)",
-        "− (kurang)"
+        "burung",
+        "pohon",
+        "terbang",
+        "Ada"
       ]
     },
     {
@@ -1237,13 +1556,13 @@
     {
       "id": 5,
       "level": "HOTS UJIAN FORMAL",
-      "prompt": "5. Ada 10 apel di keranjang. Kira mengambil 3 apel. Berapa apel yang tersisa?",
+      "prompt": "5. Malosi punya 9 kelereng. Malosi memberi Kira 2 kelereng dan memberi Upe 4 kelereng. Berapa sisa kelereng Malosi?",
       "visualEmojis": [],
       "options": [
-        "13",
+        "15",
+        "3",
         "7",
-        "6",
-        "8"
+        "5"
       ]
     },
     {
