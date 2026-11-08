@@ -1,0 +1,537 @@
+{
+  "chapterId": "k1-mat-bab5",
+  "chapter_id": "k1-mat-bab5",
+  "phase_code": "FASE_A",
+  "grade": 1,
+  "subjectLabel": "MATEMATIKA - KELAS 1 SD",
+  "title": "BAB 5: AYO MEMBILANG SAMPAI DENGAN 20",
+  "tokens": {
+    "practice": 30,
+    "exam": 70,
+    "practicum": 50
+  },
+  "subBabs": {
+    "A": {
+      "id": "A",
+      "codeTitle": "Sub-Bab A (Menghitung, Membaca, Menulis)",
+      "fullTitle": "Sub-Bab A: Menghitung, Membaca, dan Menulis Bilangan sampai 20",
+      "targetDescription": "Siswa menghitung banyak benda sampai 20 dengan korespondensi satu-satu dan strategi sepuluh dulu, membaca dan menulis lambang serta nama bilangan 11 sampai 20, menyatakan bilangan 11 sampai 20 sebagai sepuluh ditambah satuannya, mengenali letaknya pada garis bilangan, serta memperkirakan banyak benda lalu membuktikannya dengan menghitung.",
+      "secondaryBg": "#DBEAFE",
+      "secondaryBorder": "#2563EB",
+      "secondaryText": "#1E3A8A",
+      "stories": [
+        {
+          "id": "A5-S1",
+          "titleHint": "Merapikan Mainan",
+          "sceneType": "merapikan-mainan",
+          "voiceNarration": "Merapikan mainan! Halim dan Malosi selesai bermain kelereng. Mereka merapikan kelerengnya. Halim menghitung banyak kelereng: sembilan, sepuluh, sebelas, dan seterusnya. Lalu kelereng disimpan ke dalam stoples. Halim selalu ingat pesan Ibu: selesai bermain, rapikan mainanmu. Sekarang, berapa banyak kelereng Halim? Ayo kita bantu Halim menghitungnya."
+        },
+        {
+          "id": "A5-S2",
+          "titleHint": "Sepuluh Dulu, Lalu Sisanya",
+          "sceneType": "sepuluh-dulu",
+          "voiceNarration": "Igil punya cara menghitung yang rapi. Isi dulu kotak dengan sepuluh kelereng sampai penuh. Kotak yang penuh berisi sepuluh, kita tidak perlu menghitungnya lagi. Ada satu kelereng di luar kotak. Sepuluh ditambah satu menjadi sebelas. Jadi kelereng ini sebelas. Sebelas artinya sepuluh dan satu lagi."
+        },
+        {
+          "id": "A5-S3",
+          "titleHint": "Sampai Lima Belas",
+          "sceneType": "sampai-lima-belas",
+          "voiceNarration": "Halim terus menghitung kelereng di luar kotak. Sebelas, dua belas, tiga belas, empat belas, lima belas. Kotak berisi sepuluh, di luar kotak ada lima. Sepuluh ditambah lima menjadi lima belas. Ternyata Halim mempunyai lima belas kelereng. Perhatikan nama bilangannya. Setelah sebelas dan dua belas, nama bilangan memakai kata belas: tiga belas, empat belas, lima belas. Belas berarti sepuluh dan beberapa lagi."
+        },
+        {
+          "id": "A5-S4",
+          "titleHint": "Dua Kotak Penuh, Dua Puluh",
+          "sceneType": "dua-puluh",
+          "voiceNarration": "Bagaimana kalau kelerengnya lebih banyak? Enam belas, tujuh belas, delapan belas, sembilan belas. Kalau kelereng di luar kotak sudah sepuluh, isi satu kotak lagi sampai penuh. Dua kotak penuh berarti sepuluh ditambah sepuluh. Hasilnya dua puluh. Dua puluh adalah bilangan terbesar yang kita pelajari di bab ini."
+        },
+        {
+          "id": "A5-S5",
+          "titleHint": "Siapa Lebih Banyak?",
+          "sceneType": "membandingkan-benda",
+          "voiceNarration": "Kira dan Wei mengambil benda di sekitar mereka, lebih dari sepuluh. Kira mengambil tiga belas, Wei mengambil lima belas. Mereka menghitung dan menulis hasilnya di buku. Lalu mereka membandingkan. Benda siapa yang lebih banyak? Bagaimana kamu tahu? Kita bisa membandingkan lewat sepuluh dan sisanya. Sepuluh sama, sisa Wei lima, sisa Kira tiga. Lima lebih banyak dari tiga, jadi benda Wei lebih banyak."
+        },
+        {
+          "id": "A5-S6",
+          "titleHint": "Tebak dan Buktikan",
+          "sceneType": "tebak-dan-buktikan",
+          "voiceNarration": "Tika melihat stoples penuh kelereng. Berapa banyak isinya? Tebak dulu! Kita boleh menebak atau mengira-ngira banyak benda. Setelah itu, hitung kelerengnya untuk membuktikan tebakanmu. Tebakan yang meleset tidak apa-apa. Menebak lalu membuktikan melatih kemampuan berhitung. Pernahkah kamu salah menghitung? Biasanya karena ada yang terhitung dua kali, atau terlewat. Tandai setiap benda yang sudah kamu hitung."
+        }
+      ],
+      "mindMaps": [
+        {
+          "stepNumber": 1,
+          "stepTitle": "1. Hitung Satu per Satu",
+          "stepDesc": "Sentuh setiap benda satu kali sambil menyebut bilangannya. Tandai benda yang sudah dihitung supaya tidak terhitung dua kali dan tidak ada yang terlewat. Itulah korespondensi satu-satu.",
+          "icon": "🔢",
+          "flowFrom": "Benda yang banyak",
+          "flowTo": "Hitung satu per satu"
+        },
+        {
+          "stepNumber": 2,
+          "stepTitle": "2. Isi Sepuluh Dulu",
+          "stepDesc": "Kumpulkan sepuluh benda dalam satu kotak, bingkai sepuluh, atau satu lingkaran. Sepuluh yang penuh dianggap satu kelompok, jadi tidak perlu dihitung dari awal lagi. Cara ini mirip menggabung satuan menjadi satu puluhan.",
+          "icon": "📦",
+          "flowFrom": "Hitung satu per satu",
+          "flowTo": "Kelompok sepuluh"
+        },
+        {
+          "stepNumber": 3,
+          "stepTitle": "3. Tambah Sisanya",
+          "stepDesc": "Hitung benda yang berada di luar kelompok sepuluh. Sepuluh ditambah sisanya adalah banyak seluruh benda. Misalnya sepuluh ditambah empat menjadi empat belas, dan sepuluh ditambah sepuluh menjadi dua puluh.",
+          "icon": "➕",
+          "flowFrom": "Kelompok sepuluh",
+          "flowTo": "Sepuluh ditambah sisa"
+        },
+        {
+          "stepNumber": 4,
+          "stepTitle": "4. Baca dan Tulis",
+          "stepDesc": "Bilangan 11 sampai 20 ditulis dengan dua angka. Angka kiri berarti satu puluhan, angka kanan berarti satuannya. Nama bilangan 13 sampai 19 memakai kata belas, seperti tiga belas dan empat belas. Bilangan 20 dibaca dua puluh.",
+          "icon": "🗣️",
+          "flowFrom": "Sepuluh ditambah sisa",
+          "flowTo": "Lambang dan nama bilangan"
+        },
+        {
+          "stepNumber": 5,
+          "stepTitle": "5. Cek di Garis Bilangan",
+          "stepDesc": "Mulai dari 10 di garis bilangan, lalu melompat ke kanan sebanyak sisanya. Lompat empat kali dari 10 mendarat di 14. Garis bilangan menunjukkan bahwa bilangan makin ke kanan makin besar.",
+          "icon": "📏",
+          "flowFrom": "Lambang dan nama bilangan",
+          "flowTo": "Garis bilangan"
+        },
+        {
+          "stepNumber": 6,
+          "stepTitle": "6. Tebak dan Buktikan",
+          "stepDesc": "Kira-kira dulu banyak bendanya, lalu hitung untuk membuktikan. Bandingkan tebakan dengan hasil hitungan. Menebak melatih perasaan bilangan, dan menghitung memastikan jawaban yang tepat.",
+          "icon": "🔍",
+          "flowFrom": "Garis bilangan",
+          "flowTo": "Tebak dan buktikan"
+        }
+      ],
+      "infografisData": [
+        {
+          "fruitName": "Sepuluh Dulu, Lalu Sisanya",
+          "emoji": "📦",
+          "countNum": 13,
+          "countWord": "Tiga belas",
+          "voiceSentence": "Isi satu bingkai sampai penuh, yaitu sepuluh. Hitung sisanya di bingkai kedua. Sepuluh ditambah tiga menjadi tiga belas."
+        },
+        {
+          "fruitName": "Bilangan 11 sampai 15",
+          "emoji": "🔢",
+          "countNum": 15,
+          "countWord": "Lima belas",
+          "voiceSentence": "Sebelas, dua belas, tiga belas, empat belas, dan lima belas. Masing-masing sepuluh ditambah satu sampai lima."
+        },
+        {
+          "fruitName": "Bilangan 16 sampai 20",
+          "emoji": "🔟",
+          "countNum": 20,
+          "countWord": "Dua puluh",
+          "voiceSentence": "Enam belas sampai sembilan belas memakai kata belas. Dua puluh adalah sepuluh ditambah sepuluh."
+        },
+        {
+          "fruitName": "Pasangan Bilangan",
+          "emoji": "🧮",
+          "countNum": 14,
+          "countWord": "Empat belas",
+          "voiceSentence": "Empat belas terdiri dari sepuluh dan empat. Tujuh belas terdiri dari sepuluh dan tujuh."
+        },
+        {
+          "fruitName": "Satu Puluhan, Berapa Satuan",
+          "emoji": "🏷️",
+          "countNum": 13,
+          "countWord": "Tiga belas",
+          "voiceSentence": "Angka kiri adalah banyak puluhan, angka kanan adalah banyak satuan. Tiga belas adalah satu puluhan dan tiga satuan."
+        },
+        {
+          "fruitName": "Garis Bilangan 10 sampai 20",
+          "emoji": "📏",
+          "countNum": 15,
+          "countWord": "Lima belas",
+          "voiceSentence": "Mulai dari sepuluh, melompat lima kali ke kanan, mendarat di lima belas. Makin ke kanan makin besar."
+        },
+        {
+          "fruitName": "Dua Puluh: Dua Bingkai Penuh",
+          "emoji": "🔲",
+          "countNum": 20,
+          "countWord": "Dua puluh",
+          "voiceSentence": "Dua bingkai penuh berisi sepuluh ditambah sepuluh. Hasilnya dua puluh."
+        },
+        {
+          "fruitName": "Lingkari Setiap Sepuluh",
+          "emoji": "⭕",
+          "countNum": 14,
+          "countWord": "Empat belas",
+          "voiceSentence": "Lingkari sepuluh benda, lalu hitung sisanya. Sepuluh ditambah empat sama dengan empat belas."
+        },
+        {
+          "fruitName": "Tebak dan Buktikan",
+          "emoji": "🔍",
+          "countNum": 17,
+          "countWord": "Tujuh belas",
+          "voiceSentence": "Tebak banyak benda, hitung untuk membuktikan, lalu bandingkan tebakan dengan hasil hitungan."
+        }
+      ],
+      "concreteSlides": [
+        {
+          "title": "Isi Kotak Sepuluh",
+          "emoji": "📦",
+          "targetCount": 18,
+          "voiceGuide": "Seret kelereng ke kotak sepuluh sampai penuh, lalu taruh sisanya di luar kotak. Ucapkan banyak kelereng seluruhnya."
+        },
+        {
+          "title": "Hitung Satu per Satu",
+          "emoji": "🔢",
+          "targetCount": 17,
+          "voiceGuide": "Ketuk setiap benda satu kali sambil menyebut bilangannya. Bilangan terakhir adalah jumlah semuanya."
+        },
+        {
+          "title": "Ikat Sepuluh Pensil",
+          "emoji": "🎀",
+          "targetCount": 19,
+          "voiceGuide": "Pilih tepat sepuluh pensil lalu ikat. Hitung pensil yang tidak diikat. Ucapkan jumlah seluruhnya."
+        },
+        {
+          "title": "Tebak Isi Stoples",
+          "emoji": "🫙",
+          "targetCount": 15,
+          "voiceGuide": "Tebak banyak kelereng di stoples, lalu hitung untuk membuktikan. Ucapkan banyak kelereng sebenarnya."
+        }
+      ],
+      "pictorialSlides": [
+        {
+          "title": "Warnai Dua Bingkai",
+          "diagramType": "double-ten-frame",
+          "numberA": 10,
+          "numberB": 9,
+          "caption": "Warnai bulatan merah di dua bingkai sepuluh sebanyak yang diminta. Bingkai pertama penuh, sisanya di bingkai kedua."
+        },
+        {
+          "title": "Jodohkan Gambar dan Pasangan",
+          "diagramType": "number-bond-match",
+          "numberA": 10,
+          "numberB": 8,
+          "caption": "Jodohkan gambar dua bingkai dengan bagan pasangan bilangan yang cocok."
+        },
+        {
+          "title": "Loncat di Garis Bilangan",
+          "diagramType": "number-line-hop",
+          "numberA": 10,
+          "numberB": 8,
+          "caption": "Mulai dari sepuluh, melompat ke kanan satu langkah setiap kali sampai jumlah lompatan cukup."
+        }
+      ],
+      "abstractSlides": [
+        {
+          "symbolLarge": "10 + 8 = 18",
+          "wordLarge": "SEPULUH DITAMBAH",
+          "mathNotation": "10 + 3 = 13 • 10 + 7 = 17 • 10 + 8 = 18",
+          "voiceReadout": "Sepuluh ditambah tiga menjadi tiga belas. Sepuluh ditambah tujuh menjadi tujuh belas. Sepuluh ditambah delapan menjadi delapan belas."
+        },
+        {
+          "symbolLarge": "Siapa aku?",
+          "wordLarge": "DETEKTIF BILANGAN",
+          "mathNotation": "setelah 14 → 15 • sebelum 20 → 19",
+          "voiceReadout": "Baca petunjuk, lalu temukan bilangan misterius. Bilangan setelah empat belas adalah lima belas. Bilangan sebelum dua puluh adalah sembilan belas."
+        },
+        {
+          "symbolLarge": "12",
+          "wordLarge": "DUA BELAS",
+          "mathNotation": "12 = 10 + 2 • 15 = 10 + 5 • 20 = 10 + 10",
+          "voiceReadout": "Baca nama bilangan, ucapkan, lalu guratkan lambangnya di kanvas. Dua belas ditulis dengan angka satu dan angka dua."
+        }
+      ],
+      "interactiveGames": [
+        {
+          "gameId": "subA5-game-1",
+          "gameNumber": 1,
+          "stage": "Concrete",
+          "gameType": "drag-fill-ten",
+          "title": "Isi Kotak Sepuluh",
+          "bookReference": "Buku Siswa hlm. 147–149",
+          "objective": "Menghitung banyak benda dengan strategi sepuluh dulu: mengisi kotak sepuluh sampai penuh, lalu menaruh sisanya di luar kotak.",
+          "mechanicDescription": "Tiga ronde (12, 15, dan 18 kelereng). Siswa menyeret kelereng ke kotak sepuluh sampai penuh, baru ke luar kotak, lalu melihat kalimat 10 + sisa = jumlah. Terakhir ucapkan banyak kelereng seluruhnya.",
+          "voiceGuide": "Seret kelereng ke kotak sepuluh sampai penuh, lalu taruh sisanya di luar."
+        },
+        {
+          "gameId": "subA5-game-2",
+          "gameNumber": 2,
+          "stage": "Concrete",
+          "gameType": "tap-count",
+          "title": "Hitung Satu per Satu",
+          "bookReference": "Buku Siswa hlm. 148–149, 153",
+          "objective": "Menghitung benda satu-satu tanpa terlewat dan tanpa terhitung dua kali; bilangan terakhir menyatakan jumlah.",
+          "mechanicDescription": "Tiga ronde (11 bola, 14 mobil, 17 apel). Siswa mengetuk benda satu kali, benda diberi angka, sepuluh pertama bertepi hijau, sisanya biru. Lalu memilih jumlah semuanya. Terakhir ucapkan jumlahnya.",
+          "voiceGuide": "Ketuk setiap benda satu kali sambil menyebut bilangannya."
+        },
+        {
+          "gameId": "subA5-game-3",
+          "gameNumber": 3,
+          "stage": "Concrete",
+          "gameType": "select-bundle",
+          "title": "Ikat Sepuluh Pensil",
+          "bookReference": "Buku Siswa hlm. 153 (Lingkari setiap 10 benda); pengayaan bundling Dienes dan Montessori",
+          "objective": "Mengelompokkan tepat sepuluh benda menjadi satu ikat lalu menghitung sisanya.",
+          "mechanicDescription": "Tiga ronde (13, 16, dan 19 pensil). Siswa memilih tepat sepuluh pensil lalu menekan Ikat Sepuluh, kemudian memilih banyak pensil yang tidak diikat. Terakhir ucapkan jumlah seluruhnya.",
+          "voiceGuide": "Pilih tepat sepuluh pensil, ikat, lalu hitung sisanya."
+        },
+        {
+          "gameId": "subA5-game-4",
+          "gameNumber": 4,
+          "stage": "Concrete",
+          "gameType": "estimate-and-count",
+          "title": "Tebak Isi Stoples",
+          "bookReference": "Buku Siswa hlm. 156–158 (Memperkirakan Banyak Benda, Ayo Bermain)",
+          "objective": "Menebak banyak benda, membuktikan dengan menghitung, lalu membandingkan tebakan dengan hitungan.",
+          "mechanicDescription": "Tiga ronde (12, 17, dan 15 kelereng). Siswa mengatur tebakan dengan tombol plus dan minus, menghitung kelereng satu per satu, lalu melihat selisih tebakan dan hitungan. Terakhir ucapkan banyak kelereng sebenarnya.",
+          "voiceGuide": "Atur tebakanmu, lalu hitung kelereng untuk membuktikan."
+        },
+        {
+          "gameId": "subA5-game-5",
+          "gameNumber": 5,
+          "stage": "Picture",
+          "gameType": "color-ten-frames",
+          "title": "Warnai Dua Bingkai",
+          "bookReference": "Buku Siswa hlm. 154 (nomor 4)",
+          "objective": "Mewarnai bulatan pada dua bingkai sepuluh sebanyak yang diminta.",
+          "mechanicDescription": "Tiga ronde (13, 16, dan 19 bulatan). Siswa mengetuk kotak untuk mewarnai, lalu menekan Periksa. Setelah benar, sepuluh pertama berwarna merah dan sisanya biru. Terakhir ucapkan banyak bulatan yang diwarnai.",
+          "voiceGuide": "Ketuk kotak untuk mewarnai, lalu tekan Periksa."
+        },
+        {
+          "gameId": "subA5-game-6",
+          "gameNumber": 6,
+          "stage": "Picture",
+          "gameType": "match-diagram",
+          "title": "Jodohkan Gambar dan Pasangan",
+          "bookReference": "Buku Siswa hlm. 152 (nomor 1: tarik garis, temukan pasangan)",
+          "objective": "Menjodohkan gambar dua bingkai dengan bagan pasangan bilangan.",
+          "mechanicDescription": "Dua ronde, masing-masing tiga pasang. Siswa mengetuk gambar di kiri lalu bagan di kanan. Terakhir ucapkan bilangan terbesar pada ronde terakhir.",
+          "voiceGuide": "Ketuk gambar dua bingkai lalu bagan pasangan yang cocok."
+        },
+        {
+          "gameId": "subA5-game-7",
+          "gameNumber": 7,
+          "stage": "Picture",
+          "gameType": "number-line-hop",
+          "title": "Loncat di Garis Bilangan",
+          "bookReference": "Buku Siswa hlm. 148–150 (pasangan bilangan); pengayaan garis bilangan",
+          "objective": "Melompat dari 10 di garis bilangan sebanyak sisanya dan mendarat di bilangan yang tepat.",
+          "mechanicDescription": "Tiga ronde (3, 6, dan 8 lompatan dari 10). Siswa mengetuk bilangan berikutnya di sebelah kanan, satu langkah setiap lompatan. Terakhir ucapkan bilangan tempat mendarat.",
+          "voiceGuide": "Ketuk bilangan berikutnya di kanan, satu lompatan satu langkah."
+        },
+        {
+          "gameId": "subA5-game-8",
+          "gameNumber": 8,
+          "stage": "Abstract",
+          "gameType": "fill-equation",
+          "title": "Isi Kalimat Bilangan",
+          "bookReference": "Buku Siswa hlm. 155 (nomor 5 dan 6)",
+          "objective": "Melengkapi kalimat 10 ditambah sekian menjadi sekian, termasuk kalimat yang bagian tengahnya hilang.",
+          "mechanicDescription": "Lima ronde. Dua kalimat kata, tiga persamaan, satu di antaranya mencari bagian yang hilang. Siswa mengetuk angka yang benar. Terakhir ucapkan hasilnya.",
+          "voiceGuide": "Ketuk angka yang melengkapi kalimat bilangan."
+        },
+        {
+          "gameId": "subA5-game-9",
+          "gameNumber": 9,
+          "stage": "Abstract",
+          "gameType": "clue-detective",
+          "title": "Detektif Bilangan Misterius",
+          "bookReference": "Buku Siswa pengayaan (membaca dan menulis bilangan)",
+          "objective": "Menalar bilangan dari petunjuk berupa urutan, nama, dan sepuluh ditambah satuan.",
+          "mechanicDescription": "Empat ronde dengan dua petunjuk tiap ronde. Siswa memilih bilangan yang cocok dengan semua petunjuk. Terakhir ucapkan bilangan itu.",
+          "voiceGuide": "Baca petunjuk lalu pilih bilangan yang cocok."
+        },
+        {
+          "gameId": "subA5-game-10",
+          "gameNumber": 10,
+          "stage": "Abstract",
+          "gameType": "say-and-trace",
+          "title": "Kanvas Guratan dan Suara",
+          "bookReference": "Buku Siswa hlm. 148–150 (lambang dan nama bilangan)",
+          "objective": "Membaca nama bilangan, mengucapkannya, dan menulis lambangnya dengan dua angka.",
+          "mechanicDescription": "Dua ronde. Ronde 1 dua belas. Ronde 2 siswa memilih sendiri lima belas, tujuh belas, atau dua puluh. Siswa mengucapkan nama bilangan lalu menggurat lambangnya.",
+          "voiceGuide": "Baca nama bilangan, ucapkan, lalu guratkan lambangnya."
+        }
+      ]
+    },
+    "B": {
+      "id": "B",
+      "codeTitle": "Sub-Bab B (Menghitung Maju dan Mundur)",
+      "fullTitle": "Sub-Bab B: Menghitung Maju dan Mundur",
+      "targetDescription": "Sub-Bab B sedang disiapkan.",
+      "secondaryBg": "#DCFCE7",
+      "secondaryBorder": "#16A34A",
+      "secondaryText": "#14532D",
+      "segeraHadir": true,
+      "stories": [],
+      "mindMaps": [],
+      "infografisData": [],
+      "concreteSlides": [],
+      "pictorialSlides": [],
+      "abstractSlides": [],
+      "interactiveGames": []
+    },
+    "C": {
+      "id": "C",
+      "codeTitle": "Sub-Bab C (Nilai Tempat)",
+      "fullTitle": "Sub-Bab C: Nilai Tempat",
+      "targetDescription": "Sub-Bab C sedang disiapkan.",
+      "secondaryBg": "#FEF3C7",
+      "secondaryBorder": "#D97706",
+      "secondaryText": "#78350F",
+      "segeraHadir": true,
+      "stories": [],
+      "mindMaps": [],
+      "infografisData": [],
+      "concreteSlides": [],
+      "pictorialSlides": [],
+      "abstractSlides": [],
+      "interactiveGames": []
+    },
+    "D": {
+      "id": "D",
+      "codeTitle": "Sub-Bab D (Membandingkan Bilangan)",
+      "fullTitle": "Sub-Bab D: Membandingkan Bilangan",
+      "targetDescription": "Sub-Bab D sedang disiapkan.",
+      "secondaryBg": "#FCE7F3",
+      "secondaryBorder": "#DB2777",
+      "secondaryText": "#831843",
+      "segeraHadir": true,
+      "stories": [],
+      "mindMaps": [],
+      "infografisData": [],
+      "concreteSlides": [],
+      "pictorialSlides": [],
+      "abstractSlides": [],
+      "interactiveGames": []
+    }
+  },
+  "practiceQuestions": [
+    {
+      "id": 1,
+      "level": "LOTS (30%)",
+      "prompt": "Kotak sepuluh Halim sudah penuh, dan di luar kotak ada 4 kelereng. Banyak kelereng Halim adalah...",
+      "visualEmojis": [
+        "🔵"
+      ],
+      "options": [
+        "4",
+        "13",
+        "14",
+        "41"
+      ]
+    },
+    {
+      "id": 2,
+      "level": "LOTS (30%)",
+      "prompt": "Bilangan 16 dibaca...",
+      "visualEmojis": [],
+      "options": [
+        "enam puluh",
+        "enam belas",
+        "satu enam",
+        "tujuh belas"
+      ]
+    },
+    {
+      "id": 3,
+      "level": "LOTS (30%)",
+      "prompt": "10 ditambah 7 menjadi...",
+      "visualEmojis": [],
+      "options": [
+        "16",
+        "17",
+        "18",
+        "71"
+      ]
+    },
+    {
+      "id": 4,
+      "level": "MOTS (30%)",
+      "prompt": "Kira menghitung 13 pensil. Ia mengikat 10 pensil menjadi satu ikat. Pensil yang tidak diikat ada...",
+      "visualEmojis": [
+        "✏️"
+      ],
+      "options": [
+        "3",
+        "4",
+        "5",
+        "13"
+      ]
+    },
+    {
+      "id": 5,
+      "level": "MOTS (30%)",
+      "prompt": "Lambang bilangan tujuh belas adalah...",
+      "visualEmojis": [],
+      "options": [
+        "7",
+        "16",
+        "17",
+        "18"
+      ]
+    },
+    {
+      "id": 6,
+      "level": "MOTS (30%)",
+      "prompt": "Di garis bilangan, Wei mulai dari 10 lalu melompat 6 kali ke kanan. Wei mendarat di...",
+      "visualEmojis": [],
+      "options": [
+        "6",
+        "10",
+        "15",
+        "16"
+      ]
+    },
+    {
+      "id": 7,
+      "level": "HOTS (40%)",
+      "prompt": "Halim ingin menghitung 17 kelereng dengan rapi. Langkah yang paling tepat adalah...",
+      "visualEmojis": [
+        "📦"
+      ],
+      "options": [
+        "mengisi kotak dengan 7 kelereng, lalu menebak sisanya",
+        "mengambil 10 kelereng lalu berhenti menghitung",
+        "menaruh semua kelereng di luar kotak lalu menghitung asal-asalan",
+        "mengisi satu kotak sepuluh sampai penuh, lalu menghitung 7 kelereng sisanya"
+      ]
+    },
+    {
+      "id": 8,
+      "level": "HOTS (40%)",
+      "prompt": "Upe menghitung kancing dan hasilnya 14, tetapi ia tahu satu kancing terhitung dua kali. Banyak kancing sebenarnya adalah...",
+      "visualEmojis": [],
+      "options": [
+        "13",
+        "14",
+        "15",
+        "16"
+      ]
+    },
+    {
+      "id": 9,
+      "level": "HOTS (40%)",
+      "prompt": "Kira punya 13 pensil dan Wei punya 15 pensil. Pernyataan yang benar adalah...",
+      "visualEmojis": [],
+      "options": [
+        "pensil Wei lebih banyak, karena sama-sama 10 dan sisa Wei 5 lebih besar dari sisa Kira 3",
+        "pensil Kira lebih banyak, karena sisa Kira 3 lebih besar dari sisa Wei 5",
+        "pensil Wei lebih banyak, karena 15 lebih kecil dari 13",
+        "pensil mereka sama banyak, karena sama-sama lebih dari 10"
+      ]
+    },
+    {
+      "id": 10,
+      "level": "HOTS (40%)",
+      "prompt": "Wei menulis, sepuluh ditambah sembilan sama dengan dua puluh. Kesalahan Wei adalah...",
+      "visualEmojis": [],
+      "options": [
+        "hasilnya seharusnya delapan belas",
+        "hasilnya seharusnya sembilan belas",
+        "tanda sama dengan tidak boleh dipakai",
+        "sepuluh tidak boleh ditambah"
+      ]
+    }
+  ]
+}

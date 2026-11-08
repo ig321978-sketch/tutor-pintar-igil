@@ -51,7 +51,20 @@ const MERAH_MUDA = "#E98989";
 
 export const STIKER = "rounded-3xl border-4 border-[#1C01A5] bg-white shadow-[0_5px_0_rgba(28,1,165,0.22)]";
 
-export const kata = (n: number) => (n === 0 ? "Nol" : (SEBUTAN_ANGKA[n - 1] ?? String(n)));
+const KATA_BELAS = [
+  "Sebelas",
+  "Dua belas",
+  "Tiga belas",
+  "Empat belas",
+  "Lima belas",
+  "Enam belas",
+  "Tujuh belas",
+  "Delapan belas",
+  "Sembilan belas",
+  "Dua puluh",
+];
+
+export const kata = (n: number) => (n === 0 ? "Nol" : n > 10 && n <= 20 ? KATA_BELAS[n - 11] : (SEBUTAN_ANGKA[n - 1] ?? String(n)));
 
 const NAMA: Record<string, string> = {
   sepeda: "Sepeda",

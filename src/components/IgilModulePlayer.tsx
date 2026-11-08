@@ -13,6 +13,14 @@ import materiBab1 from "@/data/kelas1-bab1.json";
 import materiBab2 from "@/data/kelas1-bab2.json";
 import materiBab3 from "@/data/kelas1-bab3.json";
 import materiBab4 from "@/data/kelas1-bab4.json";
+import materiBab5 from "@/data/kelas1-bab5.json";
+import { CeritaBelasA, PETA_PIKIRAN_A5 } from "@/components/modul/gambar-belas-a5";
+import {
+  AbstractBelasA,
+  ConcreteBelasA,
+  InfografisBelasA,
+  PictureBelasA,
+} from "@/components/modul/SubBabA5Belas";
 import { CeritaBentukA, PETA_PIKIRAN_A4 } from "@/components/modul/gambar-bentuk-a4";
 import { CeritaKelompokB, PETA_PIKIRAN_B4 } from "@/components/modul/gambar-kelompok-b4";
 import { CeritaSusunC, PETA_PIKIRAN_C4 } from "@/components/modul/gambar-susun-c4";
@@ -219,7 +227,7 @@ interface QuestionItem {
 // ============================================================================
 
 /** Bab yang bisa diputar. Isinya dibaca dari berkas JSON bab (tanpa kunci jawaban). */
-export type BabModul = "mtk-1-bab1" | "mtk-1-bab2" | "mtk-1-bab3" | "mtk-1-bab4";
+export type BabModul = "mtk-1-bab1" | "mtk-1-bab2" | "mtk-1-bab3" | "mtk-1-bab4" | "mtk-1-bab5";
 
 interface MateriBab {
   /** Kode bab di server (mis. k1-mat-bab3). Dipakai untuk RPC Latihan dan Ujian. */
@@ -237,6 +245,7 @@ const MATERI_BAB: Record<BabModul, MateriBab> = {
   "mtk-1-bab2": materiBab2 as unknown as MateriBab,
   "mtk-1-bab3": materiBab3 as unknown as MateriBab,
   "mtk-1-bab4": materiBab4 as unknown as MateriBab,
+  "mtk-1-bab5": materiBab5 as unknown as MateriBab,
 };
 
 const POIN_BAWAAN = { practice: 30, exam: 70, practicum: 50 };
@@ -260,6 +269,13 @@ const SUB_ANAK_BAB4: Record<SubBabId, { emoji: string }> = {
   B: { emoji: "🧺" },
   C: { emoji: "🧩" },
   D: { emoji: "⭐" },
+};
+
+const SUB_ANAK_BAB5: Record<SubBabId, { emoji: string }> = {
+  A: { emoji: "🔢" },
+  B: { emoji: "↔️" },
+  C: { emoji: "🏷️" },
+  D: { emoji: "⚖️" },
 };
 
 const DAFTAR_MAINAN = [
@@ -391,6 +407,16 @@ const ALIAS_BILANGAN = [
   "delapan",
   "sembilan",
   "sepuluh",
+  "sebelas",
+  "dua belas",
+  "tiga belas",
+  "empat belas",
+  "lima belas",
+  "enam belas",
+  "tujuh belas",
+  "delapan belas",
+  "sembilan belas",
+  "dua puluh",
 ];
 
 function jarakHuruf(a: string, b: string): number {
@@ -426,10 +452,35 @@ function ucapanMemuatBilangan(teks: string, jumlah: number): boolean {
     .filter(Boolean)
     .map((bagian) => bagian.replace(/(.)\1{2,}/g, "$1"));
   const angka = String(jumlah);
-  const inggris = jumlah === 0 ? "zero" : ["one", "two", "three", "four", "five", "six", "seven", "eight", "nine", "ten"][jumlah - 1];
+  const inggris =
+    jumlah === 0
+      ? "zero"
+      : [
+          "one",
+          "two",
+          "three",
+          "four",
+          "five",
+          "six",
+          "seven",
+          "eight",
+          "nine",
+          "ten",
+          "eleven",
+          "twelve",
+          "thirteen",
+          "fourteen",
+          "fifteen",
+          "sixteen",
+          "seventeen",
+          "eighteen",
+          "nineteen",
+          "twenty",
+        ][jumlah - 1];
   const dekat = jumlah === 6 ? ["anang", "enang"] : jumlah === 0 ? ["nul", "noll", "kosong"] : [];
   if (token.some((bagian) => bagian === kata || bagian === angka || bagian === inggris || dekat.includes(bagian))) return true;
-  if (bersih.replace(/ /g, "").includes(kata)) return true;
+  if (bersih.replace(/ /g, "").includes(kata.replace(/ /g, ""))) return true;
+  if (kata.includes(" ")) return false;
   return token.some((bagian) => bagian.length >= 3 && jarakHuruf(bagian, kata) <= 1);
 }
 
@@ -622,8 +673,9 @@ const TAHAP_SILABUS = [
 export default function IgilModulePlayer({ bab = "mtk-1-bab1" }: { bab?: BabModul }) {
   const adaBab3 = bab === "mtk-1-bab3";
   const adaBab4 = bab === "mtk-1-bab4";
-  /** Bab bergaya baru (Bab 2 sampai Bab 4): tanpa tab Simulasi, Latihan terbuka setelah materi tersedia selesai. */
-  const adaBab2 = bab === "mtk-1-bab2" || adaBab3 || adaBab4;
+  const adaBab5 = bab === "mtk-1-bab5";
+  /** Bab bergaya baru (Bab 2 sampai Bab 5): tanpa tab Simulasi, Latihan terbuka setelah materi tersedia selesai. */
+  const adaBab2 = bab === "mtk-1-bab2" || adaBab3 || adaBab4 || adaBab5;
   const materi = MATERI_BAB[bab];
   const SUB_BABS = materi.subBabs as Record<SubBabId, SubBabContent>;
   const daftarSub = Object.keys(materi.subBabs) as SubBabId[];
@@ -632,7 +684,7 @@ export default function IgilModulePlayer({ bab = "mtk-1-bab1" }: { bab?: BabModu
   const idBabServer = materi.chapter_id ?? "";
   const profilBelajar = useProfilBelajar();
   const poin = materi.tokens ?? POIN_BAWAAN;
-  const peta = adaBab4 ? SUB_ANAK_BAB4 : adaBab3 ? SUB_ANAK_BAB3 : adaBab2 ? SUB_ANAK_BAB2 : SUB_ANAK;
+  const peta = adaBab5 ? SUB_ANAK_BAB5 : adaBab4 ? SUB_ANAK_BAB4 : adaBab3 ? SUB_ANAK_BAB3 : adaBab2 ? SUB_ANAK_BAB2 : SUB_ANAK;
   /** Sub-bab yang sudah punya naskah dan permainan. Sub-bab "segera hadir" tidak menahan Latihan dan Ujian. */
   const daftarSubTersedia = daftarSub.filter((id) => !SUB_BABS[id].segeraHadir);
 
@@ -1032,6 +1084,7 @@ export default function IgilModulePlayer({ bab = "mtk-1-bab1" }: { bab?: BabModu
   const subB2 = bab === "mtk-1-bab2" && activeSubBab === "B";
   const subC2 = bab === "mtk-1-bab2" && activeSubBab === "C";
   const subB3 = bab === "mtk-1-bab3" && activeSubBab === "B";
+  const subA5 = bab === "mtk-1-bab5" && activeSubBab === "A";
   const subB4 = bab === "mtk-1-bab4" && activeSubBab === "B";
   const subC4 = bab === "mtk-1-bab4" && activeSubBab === "C";
   const subC3 = bab === "mtk-1-bab3" && activeSubBab === "C";
@@ -1186,7 +1239,9 @@ export default function IgilModulePlayer({ bab = "mtk-1-bab1" }: { bab?: BabModu
                 judul={adaBab4 ? "🌈 Fase A • Elemen Geometri (Kelas 1 SD/MI)" : "🌈 Fase A • Elemen Bilangan (Kelas 1 SD/MI)"}
                 bicara={speakGuru}
                 teksSuara={
-                  subC4
+                  adaBab5
+                    ? "Kita belajar menghitung, membaca, dan menulis bilangan sampai dua puluh. Bukunya bernama Ayo Membilang sampai dengan Dua Puluh. Kita mengisi sepuluh dulu, lalu menghitung sisanya, membaca nama bilangan sebelas sampai dua puluh, dan menuliskan lambangnya. Kita melewati enam tahap seru: cerita, peta pikiran, infografis, benda nyata, gambar, dan simbol."
+                    : subC4
                     ? "Kita belajar menyusun dan mengurai bentuk. Bukunya bernama Mengenal Bentuk, bagian menyusun dan mengurai bentuk bangun. Kita menggabungkan bentuk menjadi bangun baru, lalu menguraikannya kembali menjadi bagian-bagiannya. Kita melewati enam tahap seru: cerita, peta pikiran, infografis, benda nyata, gambar, dan simbol."
                     : subB4
                     ? "Kita belajar mengelompokkan benda. Bukunya bernama Mengenal Bentuk, bagian mengelompokkan benda. Kita mengelompokkan benda menurut satu aturan, yaitu bentuk, warna, atau ukuran. Kita melewati enam tahap seru: cerita, peta pikiran, infografis, benda nyata, gambar, dan simbol."
@@ -1200,7 +1255,9 @@ export default function IgilModulePlayer({ bab = "mtk-1-bab1" }: { bab?: BabModu
                 }
               >
                 <BarisIkon emoji="🧠" warna="#FFD6D6" judul="Capaian Pembelajaran (CP)">
-                  {subC4 ? (
+                  {adaBab5 ? (
+                    <>Siswa menghitung banyak benda sampai 20, membaca dan menulis lambang serta nama bilangan 11 sampai 20, menyatakannya sebagai sepuluh ditambah satuannya, dan memperkirakan banyak benda lalu membuktikannya dengan menghitung.</>
+                  ) : subC4 ? (
                     <>Siswa menyusun beberapa bentuk menjadi bangun baru, menguraikan bangun menjadi bagian-bagiannya, menyebutkan jenis dan banyak bagian penyusunnya, serta menghitung banyak keping atau lidi yang dipakai.</>
                   ) : subB4 ? (
                     <>Siswa mengelompokkan benda di sekitarnya menurut satu aturan (bentuk, warna, atau ukuran), memberi nama kelompok, dan menghitung banyak anggota setiap kelompok.</>
@@ -1215,7 +1272,9 @@ export default function IgilModulePlayer({ bab = "mtk-1-bab1" }: { bab?: BabModu
                   )}
                 </BarisIkon>
                 <BarisIkon emoji="📖" warna="#FFE9A8" judul="Referensi Buku Resmi">
-                  {subC4
+                  {adaBab5
+                    ? "Buku Siswa Matematika Kelas I Kemendikbudristek (Bab 5: Ayo Membilang sampai dengan 20, Sub-Bab A hlm. 147–158)."
+                    : subC4
                     ? "Buku Siswa Matematika Kelas I Kemendikbudristek (Bab 4: Mengenal Bentuk, Sub-Bab C hlm. 134–139)."
                     : subB4
                     ? "Buku Siswa Matematika Kelas I Kemendikbudristek (Bab 4: Mengenal Bentuk, Sub-Bab B hlm. 127–133)."
@@ -1484,7 +1543,9 @@ export default function IgilModulePlayer({ bab = "mtk-1-bab1" }: { bab?: BabModu
               </span>
             </div>
 
-            {subC2 ? (
+            {subA5 ? (
+              <CeritaBelasA speakGuru={speakGuru} />
+            ) : subC2 ? (
               <CeritaSoalC speakGuru={speakGuru} />
             ) : subB2 ? (
               <CeritaCaraB speakGuru={speakGuru} />
@@ -1598,6 +1659,13 @@ export default function IgilModulePlayer({ bab = "mtk-1-bab1" }: { bab?: BabModu
               ) : subB3 ? (
                 <PetaPikiranB
                   langkah={PETA_PIKIRAN_B3}
+                  judul={judulSubBab}
+                  speakGuru={speakGuru}
+                  maskot={<IgilWajah kelas="h-14 w-20 igil-lompat" />}
+                />
+              ) : subA5 ? (
+                <PetaPikiranB
+                  langkah={PETA_PIKIRAN_A5}
                   judul={judulSubBab}
                   speakGuru={speakGuru}
                   maskot={<IgilWajah kelas="h-14 w-20 igil-lompat" />}
@@ -1722,6 +1790,8 @@ export default function IgilModulePlayer({ bab = "mtk-1-bab1" }: { bab?: BabModu
                 <InfografisHubunganC speakGuru={speakGuru} />
               ) : subB3 ? (
                 <InfografisPenguranganB speakGuru={speakGuru} />
+              ) : subA5 ? (
+                <InfografisBelasA speakGuru={speakGuru} />
               ) : subC4 ? (
                 <InfografisSusunC speakGuru={speakGuru} />
               ) : subB4 ? (
@@ -1930,6 +2000,20 @@ export default function IgilModulePlayer({ bab = "mtk-1-bab1" }: { bab?: BabModu
                       5,
                       pictorialRef,
                       "Empat permainan benda nyata sudah selesai. Sekarang kita lihat gambarnya."
+                    )
+                  }
+                />
+              ) : subA5 ? (
+                <ConcreteBelasA
+                  speakGuru={speakGuru}
+                  panel={panelConcrete}
+                  hentikan={hentikanRekamConcrete}
+                  gulir={() => concreteRef.current?.scrollIntoView({ behavior: "smooth", block: "start" })}
+                  onSelesai={() =>
+                    handleUnlockNextSmicpa(
+                      5,
+                      pictorialRef,
+                      "Empat permainan benda nyata sudah selesai. Sekarang kita lihat bilangannya dalam diagram."
                     )
                   }
                 />
@@ -2212,6 +2296,20 @@ export default function IgilModulePlayer({ bab = "mtk-1-bab1" }: { bab?: BabModu
                     )
                   }
                 />
+              ) : subA5 ? (
+                <PictureBelasA
+                  speakGuru={speakGuru}
+                  panel={panelGambar}
+                  hentikan={hentikanRekamConcrete}
+                  gulir={() => pictorialRef.current?.scrollIntoView({ behavior: "smooth", block: "start" })}
+                  onSelesai={() =>
+                    handleUnlockNextSmicpa(
+                      6,
+                      abstractRef,
+                      "Tiga permainan diagram sudah selesai. Ayo kita baca dan tulis bilangannya dengan angka."
+                    )
+                  }
+                />
               ) : subC4 ? (
                 <PictureSusunC
                   speakGuru={speakGuru}
@@ -2475,6 +2573,14 @@ export default function IgilModulePlayer({ bab = "mtk-1-bab1" }: { bab?: BabModu
                 />
               ) : subB3 ? (
                 <AbstractPenguranganB
+                  speakGuru={speakGuru}
+                  panel={panelLambang}
+                  hentikan={hentikanRekamConcrete}
+                  gulir={() => abstractRef.current?.scrollIntoView({ behavior: "smooth", block: "start" })}
+                  onSelesai={() => selesaiBabRef.current?.scrollIntoView({ behavior: "smooth", block: "center" })}
+                />
+              ) : subA5 ? (
+                <AbstractBelasA
                   speakGuru={speakGuru}
                   panel={panelLambang}
                   hentikan={hentikanRekamConcrete}

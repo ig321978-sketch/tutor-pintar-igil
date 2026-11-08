@@ -1,6 +1,6 @@
 import IgilModulePlayer, { type BabModul } from "@/components/IgilModulePlayer";
 
-const BAB_VALID: BabModul[] = ["mtk-1-bab1", "mtk-1-bab2", "mtk-1-bab3", "mtk-1-bab4"];
+const BAB_VALID: BabModul[] = ["mtk-1-bab1", "mtk-1-bab2", "mtk-1-bab3", "mtk-1-bab4", "mtk-1-bab5"];
 
 export default async function ModulPreviewPage({
   searchParams,
