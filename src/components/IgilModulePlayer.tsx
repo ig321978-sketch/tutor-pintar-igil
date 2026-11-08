@@ -582,12 +582,13 @@ function RakManik({ terisi, kapasitas }: { terisi: number; kapasitas: number }) 
 // KOMPONEN UTAMA MODUL IGIL (MATEMATIKA KELAS 1 SD - BAB 1)
 // ============================================================================
 
-const TAB_ANAK: Record<MainTabId, { emoji: string; warna: string }> = {
-  silabus: { emoji: "🗺️", warna: "#FFD6D6" },
-  materi: { emoji: "📚", warna: "#FFE9A8" },
-  simulasi: { emoji: "🧪", warna: "#CDEFD8" },
-  latihan: { emoji: "✏️", warna: "#DDD8FF" },
-  ujian: { emoji: "🏆", warna: "#FFD9B0" },
+/** `aktif` = warna tombol saat tab sedang dibuka. Tab yang tidak aktif berwarna putih. */
+const TAB_ANAK: Record<MainTabId, { emoji: string; aktif: string }> = {
+  silabus: { emoji: "🗺️", aktif: "#FF9FA8" },
+  materi: { emoji: "📚", aktif: "#FFD84D" },
+  simulasi: { emoji: "🧪", aktif: "#7FDBA3" },
+  latihan: { emoji: "✏️", aktif: "#B8ADFF" },
+  ujian: { emoji: "🏆", aktif: "#FFAE5C" },
 };
 
 const SUB_ANAK: Record<SubBabId, { emoji: string }> = {
@@ -1164,12 +1165,12 @@ export default function IgilModulePlayer({ bab = "mtk-1-bab1" }: { bab?: BabModu
           <div className="flex min-w-max flex-nowrap items-center gap-2.5">
             {(
               [
-                { id: "silabus", label: "Silabus" },
-                { id: "materi", label: "Materi" },
-                { id: "simulasi", label: "Simulasi" },
-                { id: "latihan", label: "Latihan" },
-                { id: "ujian", label: "Ujian" },
-              ] as { id: MainTabId; label: string }[]
+                { id: "silabus", label: "Silabus", keterangan: "Target & Capaian" },
+                { id: "materi", label: "Materi", keterangan: "Metode SMICPA" },
+                { id: "simulasi", label: "Simulasi", keterangan: "Metode PhET" },
+                { id: "latihan", label: "Latihan", keterangan: "40% HOTS" },
+                { id: "ujian", label: "Ujian", keterangan: "100% HOTS" },
+              ] as { id: MainTabId; label: string; keterangan: string }[]
             )
               .filter((tab) => !(adaBab2 && tab.id === "simulasi"))
               .map((tab) => {
@@ -1179,25 +1180,31 @@ export default function IgilModulePlayer({ bab = "mtk-1-bab1" }: { bab?: BabModu
                 <button
                   key={tab.id}
                   type="button"
+                  aria-current={isActive ? "page" : undefined}
                   onClick={() => {
                     setActiveMainTab(tab.id);
                     window.scrollTo({ top: 0, behavior: "smooth" });
                   }}
                   style={{
-                    backgroundColor: isActive ? "#FFE566" : gaya.warna,
+                    backgroundColor: isActive ? gaya.aktif : "#FFFFFF",
                     color: "#1C01A5",
-                    borderColor: isActive ? "#FFFFFF" : "#1C01A5",
+                    borderColor: isActive ? "#FFE566" : "#FFFFFF",
                   }}
-                  className={`inline-flex shrink-0 items-center gap-2 rounded-full border-2 px-3 py-1.5 text-sm font-black transition-all md:border-4 md:px-4 md:py-2 md:text-base ${
+                  className={`inline-flex shrink-0 items-center gap-2 rounded-full border-2 px-3 py-1.5 text-left font-black transition-all md:border-4 md:px-4 md:py-2 ${
                     isActive
                       ? "scale-105 md:-translate-y-0.5 md:scale-110 md:shadow-[0_5px_0_#F0AB00]"
-                      : "opacity-95 md:shadow-[0_3px_0_rgba(0,0,0,0.3)]"
+                      : "md:shadow-[0_3px_0_rgba(0,0,0,0.3)]"
                   }`}
                 >
                   <span className={`text-xl leading-none md:text-2xl ${isActive ? "igil-lompat" : ""}`} aria-hidden="true">
                     {gaya.emoji}
                   </span>
-                  {tab.label}
+                  <span className="leading-tight">
+                    <span className="block text-sm md:text-base">{tab.label}</span>
+                    <span className="block text-[10px] font-extrabold uppercase tracking-wide opacity-75 md:text-xs">
+                      {tab.keterangan}
+                    </span>
+                  </span>
                 </button>
               );
             })}
@@ -1476,13 +1483,17 @@ export default function IgilModulePlayer({ bab = "mtk-1-bab1" }: { bab?: BabModu
                       onClick={() => {
                         setActiveSubBab(subId);
                       }}
+                      aria-current={isSelected ? "true" : undefined}
                       style={{
-                        backgroundColor: isSelected ? "#FFFFFF" : sub.secondaryBg,
-                        borderColor: isSelected ? "#1C01A5" : sub.secondaryBorder,
+                        backgroundColor: isSelected
+                          ? `color-mix(in srgb, ${sub.secondaryBorder} 38%, white)`
+                          : "#FFFFFF",
+                        borderColor: isSelected ? sub.secondaryBorder : "#CBD5E1",
                         color: sub.secondaryText,
+                        boxShadow: isSelected ? `0 4px 0 ${sub.secondaryBorder}` : undefined,
                       }}
                       className={`relative inline-flex shrink-0 items-center gap-2 rounded-full border-2 py-1 pl-1 pr-4 text-sm font-black transition-all md:border-4 md:py-1.5 md:pl-1.5 md:text-base ${
-                        isSelected ? "scale-105 md:scale-110" : "opacity-90"
+                        isSelected ? "scale-105 md:scale-110" : ""
                       }`}
                     >
                       <span
