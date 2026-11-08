@@ -694,18 +694,344 @@
       "id": "C",
       "codeTitle": "Sub-Bab C (Menyusun dan Mengurai Bentuk)",
       "fullTitle": "Sub-Bab C: Menyusun dan Mengurai Bentuk Bangun",
-      "targetDescription": "Sub-Bab C sedang disiapkan.",
+      "targetDescription": "Siswa menggabungkan dua atau lebih bangun datar menjadi bangun baru, menguraikan bangun gabungan menjadi bagian-bagiannya, menyebutkan jenis dan banyak bagian penyusun (misalnya kereta: 5 segi empat, 1 segitiga, 3 bentuk lengkung), serta menghitung banyak keping dan lidi dengan penjumlahan dan pengurangan sederhana.",
       "secondaryBg": "#FEF3C7",
       "secondaryBorder": "#D97706",
       "secondaryText": "#78350F",
-      "segeraHadir": true,
-      "stories": [],
-      "mindMaps": [],
-      "infografisData": [],
-      "concreteSlides": [],
-      "pictorialSlides": [],
-      "abstractSlides": [],
-      "interactiveGames": []
+      "stories": [
+        {
+          "id": "C4-S1",
+          "titleHint": "Dua Segitiga Kertas",
+          "sceneType": "dua-segitiga-di-meja",
+          "voiceNarration": "Upe dan Wei punya dua kertas berbentuk segitiga yang sama besar. Satu berwarna merah dan satu berwarna biru. Upe berkata, kalau digabung, kertas ini akan menjadi segitiga. Wei berkata, kalau digabung, kertas ini akan menjadi segi empat. Siapa yang benar? Igil mengajak kita mencoba. Gabungkan dua segitiga yang sama. Bentuk apa yang kamu temukan?"
+        },
+        {
+          "id": "C4-S2",
+          "titleHint": "Dua Cara Menggabung",
+          "sceneType": "dua-cara-menggabungkan",
+          "voiceNarration": "Ternyata Upe dan Wei sama-sama benar! Kalau dua segitiga yang sama besar dirapatkan pada sisi yang tegak, hasilnya segitiga yang lebih besar. Kalau dirapatkan pada sisi yang miring, hasilnya segi empat. Dua segitiga yang sama bisa menjadi bangun yang berbeda, tergantung cara kita menggabungkannya. Menggabungkan beberapa bentuk menjadi bangun baru disebut menyusun."
+        },
+        {
+          "id": "C4-S3",
+          "titleHint": "Bangun yang Baru",
+          "sceneType": "bangun-datar-digabung",
+          "voiceNarration": "Bukan hanya segitiga yang bisa digabung. Potongan biru yang sudut bawahnya terpotong dapat digabung dengan segitiga merah kecil, dan menjadi segi empat yang utuh. Bentuk bulat yang tinggal tiga perempat dapat digabung dengan potongan seperempat, dan menjadi bulat penuh. Dua bangun datar dapat digabungkan. Hasilnya adalah bangun baru."
+        },
+        {
+          "id": "C4-S4",
+          "titleHint": "Kereta dari Balok",
+          "sceneType": "kereta-dari-bentuk",
+          "voiceNarration": "Halim punya kereta mainan dari balok kayu. Ayo amati bentuk bangun pada kereta itu. Cerobongnya segi empat. Mesinnya segi empat. Kabin merah dan jendelanya juga segi empat, dan gerbong biru yang panjang segi empat juga. Jadi segi empat ada lima. Moncong keretanya segitiga, ada satu. Rodanya bentuk lengkung, ada tiga. Kereta ini disusun dari lima segi empat, satu segitiga, dan tiga bentuk lengkung."
+        },
+        {
+          "id": "C4-S5",
+          "titleHint": "Mengurai Rumah Mainan",
+          "sceneType": "mengurai-rumah",
+          "voiceNarration": "Setelah menyusun, kita juga bisa mengurai. Mengurai artinya memisahkan sebuah bangun menjadi bagian-bagiannya. Malosi menguraikan rumah mainan. Atapnya segitiga. Dindingnya segi empat. Pintunya segi empat, dan jendelanya juga segi empat. Kalau bagian-bagian itu disusun lagi, rumahnya kembali utuh. Menyusun dan mengurai seperti dua arah yang saling berlawanan."
+        },
+        {
+          "id": "C4-S6",
+          "titleHint": "Rumah dari Lidi",
+          "sceneType": "bermain-lidi",
+          "voiceNarration": "Ayo bermain! Tika, Kira, dan Halim menyiapkan lidi yang sama panjang. Mereka menyusunnya menjadi bentuk yang mereka suka. Tiga lidi bisa menjadi segitiga. Empat lidi bisa menjadi segi empat. Lalu Halim membuat rumah. Segi empat untuk dindingnya, dan dua lidi lagi untuk atapnya. Jadi rumah itu memakai enam lidi. Kamu juga boleh membuat bentuk yang kamu suka."
+        }
+      ],
+      "mindMaps": [
+        {
+          "stepNumber": 1,
+          "stepTitle": "1. Amati Bagiannya",
+          "stepDesc": "Lihat bangun atau gambar itu dengan teliti. Tanyakan pada dirimu: bangun ini tersusun dari bagian apa saja? Tunjuk bagian-bagiannya satu per satu supaya tidak ada yang terlewat.",
+          "icon": "👀",
+          "flowFrom": "Bangun di depan mata",
+          "flowTo": "Bagian-bagiannya"
+        },
+        {
+          "stepNumber": 2,
+          "stepTitle": "2. Kenali Tiap Bentuk",
+          "stepDesc": "Sebutkan nama setiap bagian. Apakah bagian ini segi empat, segitiga, atau bentuk lengkung? Ingat ciri-cirinya: segi empat punya empat sisi lurus, segitiga punya tiga sisi lurus, dan bentuk lengkung tidak punya sisi lurus.",
+          "icon": "🔎",
+          "flowFrom": "Bagian-bagiannya",
+          "flowTo": "Jenis tiap bentuk"
+        },
+        {
+          "stepNumber": 3,
+          "stepTitle": "3. Gabungkan Jadi Bangun Baru",
+          "stepDesc": "Rapatkan dua bagian atau lebih pada sisi yang pas. Dua bangun datar yang digabung menghasilkan bangun baru. Itulah yang disebut menyusun. Dua segitiga yang sama besar bisa menjadi segitiga yang lebih besar, atau menjadi segi empat.",
+          "icon": "🧩",
+          "flowFrom": "Jenis tiap bentuk",
+          "flowTo": "Bangun baru"
+        },
+        {
+          "stepNumber": 4,
+          "stepTitle": "4. Beri Nama Bangun Baru",
+          "stepDesc": "Perhatikan bangun yang terbentuk. Hitung sisinya dan lihat pojoknya. Tiga sisi lurus berarti segitiga, empat sisi lurus berarti segi empat. Cara menggabungkan yang berbeda bisa menghasilkan bangun yang berbeda.",
+          "icon": "🏷️",
+          "flowFrom": "Bangun baru",
+          "flowTo": "Nama bangun baru"
+        },
+        {
+          "stepNumber": 5,
+          "stepTitle": "5. Uraikan Kembali",
+          "stepDesc": "Coba pisahkan bangun itu kembali menjadi bagian-bagiannya. Itulah yang disebut mengurai. Bagian yang kamu dapat sama dengan bagian yang tadi kamu gabungkan. Menyusun dan mengurai adalah dua arah yang berlawanan.",
+          "icon": "🔧",
+          "flowFrom": "Nama bangun baru",
+          "flowTo": "Bagian kembali"
+        },
+        {
+          "stepNumber": 6,
+          "stepTitle": "6. Hitung dan Periksa",
+          "stepDesc": "Hitung banyak bagian setiap jenis, lalu jumlahkan semuanya. Kereta mainan punya lima segi empat, satu segitiga, dan tiga bentuk lengkung, jadi semuanya sembilan bagian. Kalau ada yang dilepas, banyak bagian yang tersisa berkurang.",
+          "icon": "🔢",
+          "flowFrom": "Bagian kembali",
+          "flowTo": "Banyak bagian"
+        }
+      ],
+      "infografisData": [
+        {
+          "fruitName": "Menyusun dan Mengurai",
+          "emoji": "🧩",
+          "countNum": 2,
+          "countWord": "Dua",
+          "voiceSentence": "Menyusun menggabungkan beberapa bentuk menjadi bangun baru. Mengurai memisahkan bangun menjadi bagian-bagiannya. Keduanya berlawanan arah."
+        },
+        {
+          "fruitName": "Dua Segitiga, Dua Cara",
+          "emoji": "🔺",
+          "countNum": 2,
+          "countWord": "Dua",
+          "voiceSentence": "Dua segitiga yang sama dirapatkan pada sisi tegak menjadi segitiga besar, dan pada sisi miring menjadi segi empat."
+        },
+        {
+          "fruitName": "Bangun Lain Bisa Digabung",
+          "emoji": "⭕",
+          "countNum": 2,
+          "countWord": "Dua",
+          "voiceSentence": "Dua persegi menjadi persegi panjang. Tiga perempat bulat ditambah seperempat bulat menjadi bulat penuh."
+        },
+        {
+          "fruitName": "Kereta dari Bentuk",
+          "emoji": "🚂",
+          "countNum": 9,
+          "countWord": "Sembilan",
+          "voiceSentence": "Kereta mainan tersusun dari lima segi empat, satu segitiga, dan tiga bentuk lengkung, semuanya sembilan bagian."
+        },
+        {
+          "fruitName": "Rumah dan Penyusunnya",
+          "emoji": "🏠",
+          "countNum": 4,
+          "countWord": "Empat",
+          "voiceSentence": "Atap rumah segitiga. Dinding, pintu, dan jendela segi empat. Jadi ada satu segitiga dan tiga segi empat."
+        },
+        {
+          "fruitName": "Susun dan Urai Itu Hitungan",
+          "emoji": "➕",
+          "countNum": 9,
+          "countWord": "Sembilan",
+          "voiceSentence": "Menyusun menambah bagian: 5 + 1 + 3 = 9. Mengurai mengurangi bagian: 9 − 3 = 6."
+        },
+        {
+          "fruitName": "Berapa Lidi?",
+          "emoji": "🪵",
+          "countNum": 6,
+          "countWord": "Enam",
+          "voiceSentence": "Segitiga memakai 3 lidi, segi empat 4 lidi, rumah 6 lidi karena sisi atas dinding juga menjadi dasar atap."
+        },
+        {
+          "fruitName": "Kreasi dari Bentuk",
+          "emoji": "🚀",
+          "countNum": 5,
+          "countWord": "Lima",
+          "voiceSentence": "Roket tersusun dari satu segi empat, tiga segitiga, dan satu bentuk lengkung. Tangram Tiongkok memakai tujuh keping."
+        },
+        {
+          "fruitName": "Ayo Berkarya",
+          "emoji": "✂️",
+          "countNum": 4,
+          "countWord": "Empat",
+          "voiceSentence": "Warnai bentuk pada kertas, gunting, susun menjadi gambar menarik, lalu ceritakan bentuk yang dipakai."
+        }
+      ],
+      "concreteSlides": [
+        {
+          "title": "Gabung Dua Keping Kertas",
+          "emoji": "🧩",
+          "targetCount": 2,
+          "voiceGuide": "Seret keping kertas ke papan yang membuat bentuk sesuai target. Kertas boleh diputar dan dibalik. Ucapkan berapa keping kertas yang kamu gabungkan."
+        },
+        {
+          "title": "Pas atau Tidak?",
+          "emoji": "🍞",
+          "targetCount": 3,
+          "voiceGuide": "Lihat bangun yang kurang satu potongan, lalu pilih potongan yang pas. Ucapkan berapa sisi lurus pada atap segitiga."
+        },
+        {
+          "title": "Bangun Kereta Balok",
+          "emoji": "🚂",
+          "targetCount": 5,
+          "voiceGuide": "Seret setiap balok ke bayangannya di papan kereta. Setelah kereta jadi, ucapkan berapa balok segi empat pada kereta."
+        },
+        {
+          "title": "Susun Lidi",
+          "emoji": "🪵",
+          "targetCount": 6,
+          "voiceGuide": "Susun segitiga, segi empat, lalu rumah dari lidi yang sama panjang. Ketuk garis putus-putus untuk meletakkan lidi. Ucapkan berapa lidi untuk rumah."
+        }
+      ],
+      "pictorialSlides": [
+        {
+          "title": "Garis Potong",
+          "diagramType": "cut-line",
+          "numberA": 4,
+          "numberB": 0,
+          "caption": "Pilih bangun polos yang garis potongnya tepat untuk menguraikannya menjadi bagian yang diminta."
+        },
+        {
+          "title": "Jodohkan Keping dan Bangun",
+          "diagramType": "match-compose",
+          "numberA": 6,
+          "numberB": 0,
+          "caption": "Jodohkan sepasang keping polos dengan bangun gabungannya, lalu hitung semua keping."
+        },
+        {
+          "title": "Tunjuk dan Hitung",
+          "diagramType": "tap-count",
+          "numberA": 7,
+          "numberB": 0,
+          "caption": "Tunjuk semua bagian dengan jenis bentuk yang sama pada bangun gabungan, lalu hitung semua bagian."
+        }
+      ],
+      "abstractSlides": [
+        {
+          "symbolLarge": "benar • salah",
+          "wordLarge": "BENAR ATAU SALAH",
+          "mathNotation": "5 + 1 + 3 = 9",
+          "voiceReadout": "Dengarkan kalimat tentang menyusun dan mengurai, lalu ketuk Benar atau Salah."
+        },
+        {
+          "symbolLarge": "3 + 3 = 6",
+          "wordLarge": "HITUNG KEPING",
+          "mathNotation": "8 − 3 = 5",
+          "voiceReadout": "Baca cerita keping dan lidi, lalu ketuk angka hasil menyusun atau mengurai."
+        },
+        {
+          "symbolLarge": "4",
+          "wordLarge": "EMPAT LIDI",
+          "mathNotation": "segitiga 3 • segi empat 4 • rumah 6",
+          "voiceReadout": "Ucapkan banyak lidi, lalu guratkan angkanya di kanvas."
+        }
+      ],
+      "interactiveGames": [
+        {
+          "gameId": "subC4-game-1",
+          "gameNumber": 1,
+          "stage": "Concrete",
+          "gameType": "drag-compose",
+          "title": "Gabung Dua Keping Kertas",
+          "bookReference": "Buku Siswa hlm. 134–135",
+          "objective": "Menyusun dua keping kertas nyata menjadi bangun baru sesuai target.",
+          "mechanicDescription": "Tiga ronde: dua segitiga menjadi segitiga besar, dua segitiga menjadi persegi panjang, dua persegi menjadi persegi panjang. Siswa menyeret keping ke papan (boleh diputar dan dibalik). Terakhir ucapkan banyak keping kertas yang digabung.",
+          "voiceGuide": "Seret keping ke papan sampai bentuknya sesuai target."
+        },
+        {
+          "gameId": "subC4-game-2",
+          "gameNumber": 2,
+          "stage": "Concrete",
+          "gameType": "choose-piece",
+          "title": "Pas atau Tidak?",
+          "bookReference": "Buku Siswa hlm. 135–136",
+          "objective": "Memilih potongan yang pas, sama bentuk dan sama besar, untuk melengkapi bangun yang kurang satu bagian.",
+          "mechanicDescription": "Empat ronde (roti, bolu, keju, rumah kardus). Siswa memilih satu dari beberapa potongan. Terakhir ucapkan banyak sisi lurus pada atap segitiga.",
+          "voiceGuide": "Pilih potongan yang pas bentuk dan besarnya."
+        },
+        {
+          "gameId": "subC4-game-3",
+          "gameNumber": 3,
+          "stage": "Concrete",
+          "gameType": "drag-silhouette",
+          "title": "Bangun Kereta Balok",
+          "bookReference": "Buku Siswa hlm. 136–137",
+          "objective": "Menyusun kereta dari sembilan balok dengan mencocokkan bentuk dan besar pada bayangan.",
+          "mechanicDescription": "Satu ronde dengan sembilan balok (5 segi empat, 1 segitiga, 3 lengkung). Siswa menyeret balok ke bayangan yang sama. Terakhir ucapkan banyak balok segi empat.",
+          "voiceGuide": "Seret balok ke bayangannya di papan kereta."
+        },
+        {
+          "gameId": "subC4-game-4",
+          "gameNumber": 4,
+          "stage": "Concrete",
+          "gameType": "tap-build",
+          "title": "Susun Lidi",
+          "bookReference": "Buku Siswa hlm. 138 (pengayaan lidi)",
+          "objective": "Menyusun segitiga, segi empat, dan rumah dari lidi yang sama panjang sambil menghitung lidi.",
+          "mechanicDescription": "Tiga ronde. Siswa mengetuk garis putus-putus untuk meletakkan lidi. Rumah memakai 6 lidi karena dasar atap sama dengan sisi atas dinding. Terakhir ucapkan banyak lidi rumah.",
+          "voiceGuide": "Ketuk garis putus-putus untuk meletakkan lidi."
+        },
+        {
+          "gameId": "subC4-game-5",
+          "gameNumber": 5,
+          "stage": "Picture",
+          "gameType": "cut-line",
+          "title": "Garis Potong",
+          "bookReference": "Buku Siswa hlm. 134–135",
+          "objective": "Memilih garis potong yang tepat untuk menguraikan bangun polos menjadi bagian yang diminta.",
+          "mechanicDescription": "Tiga ronde: dua segitiga, dua persegi panjang yang sama, empat persegi kecil. Siswa memilih bangun dengan garis putus-putus yang tepat. Terakhir ucapkan banyak bagian yang dihasilkan.",
+          "voiceGuide": "Pilih bangun yang garis potongnya tepat."
+        },
+        {
+          "gameId": "subC4-game-6",
+          "gameNumber": 6,
+          "stage": "Picture",
+          "gameType": "match-compose",
+          "title": "Jodohkan Keping dan Bangun",
+          "bookReference": "Buku Siswa hlm. 134–135",
+          "objective": "Menjodohkan pasangan keping polos dengan bangun gabungan hasilnya.",
+          "mechanicDescription": "Tiga pasang keping dijodohkan dengan bangun gabungan. Siswa mengetuk keping di kolom kiri lalu bangun di kolom kanan. Terakhir ucapkan banyak keping di kolom kiri.",
+          "voiceGuide": "Ketuk sepasang keping lalu bangun gabungannya."
+        },
+        {
+          "gameId": "subC4-game-7",
+          "gameNumber": 7,
+          "stage": "Picture",
+          "gameType": "tap-count",
+          "title": "Tunjuk dan Hitung",
+          "bookReference": "Buku Siswa hlm. 136–137",
+          "objective": "Mengenali jenis bentuk penyusun pada bangun gabungan polos dan menghitung banyak bagiannya.",
+          "mechanicDescription": "Dua bangun gabungan. Untuk tiap bangun siswa mengetuk semua bagian segi empat, segitiga, dan bentuk lengkung. Terakhir ucapkan banyak bagian semuanya.",
+          "voiceGuide": "Pilih jenis bentuk lalu ketuk semua bagian yang jenisnya sama."
+        },
+        {
+          "gameId": "subC4-game-8",
+          "gameNumber": 8,
+          "stage": "Abstract",
+          "gameType": "true-false",
+          "title": "Benar atau Salah",
+          "bookReference": "Buku Siswa hlm. 134–139",
+          "objective": "Menilai kebenaran kalimat tentang menyusun dan mengurai.",
+          "mechanicDescription": "Lima kalimat. Siswa mengetuk Benar atau Salah dan mendengar alasannya. Terakhir ucapkan banyak bagian kereta semuanya.",
+          "voiceGuide": "Ketuk Benar atau Salah."
+        },
+        {
+          "gameId": "subC4-game-9",
+          "gameNumber": 9,
+          "stage": "Abstract",
+          "gameType": "number-keypad",
+          "title": "Hitung Keping",
+          "bookReference": "Buku Siswa hlm. 138–139",
+          "objective": "Menghitung hasil menyusun (penjumlahan) dan mengurai (pengurangan) keping dan lidi.",
+          "mechanicDescription": "Tiga cerita angka (3+3, 8−3, 3+4). Siswa mengetuk angka jawaban. Terakhir ucapkan banyak lidi semuanya.",
+          "voiceGuide": "Ketuk angka hasil menyusun atau mengurai."
+        },
+        {
+          "gameId": "subC4-game-10",
+          "gameNumber": 10,
+          "stage": "Abstract",
+          "gameType": "say-and-trace",
+          "title": "Kanvas Guratan dan Suara",
+          "bookReference": "Buku Siswa hlm. 138–139 (Ayo Mencoba)",
+          "objective": "Menyebut dan menulis banyak lidi atau bagian pada bangun yang disusun.",
+          "mechanicDescription": "Dua ronde. Ronde 1 lidi untuk segi empat. Ronde 2 siswa memilih sendiri satu hitungan. Siswa mengucapkan banyaknya lalu menggurat angkanya.",
+          "voiceGuide": "Ucapkan banyaknya, lalu guratkan angkanya."
+        }
+      ]
     }
   },
   "practiceQuestions": [
@@ -738,13 +1064,13 @@
     {
       "id": 3,
       "level": "LOTS (30%)",
-      "prompt": "Kue talam, kue lapis hijau, dan kue lupis dimasukkan ke nampan hijau. Banyak kue di nampan hijau adalah...",
+      "prompt": "Wei menggabungkan dua segitiga yang sama besar pada sisi yang tegak sehingga menjadi segitiga yang lebih besar. Kegiatan menggabungkan bentuk ini disebut...",
       "visualEmojis": [],
       "options": [
-        "2",
-        "3",
-        "4",
-        "6"
+        "mengurai",
+        "menyusun",
+        "menghapus",
+        "mengelompokkan"
       ]
     },
     {
@@ -776,13 +1102,15 @@
     {
       "id": 6,
       "level": "MOTS (30%)",
-      "prompt": "Kue risol dan kue lupis sama-sama berbentuk segitiga, tetapi warnanya berbeda. Aturan yang membuat keduanya satu kelompok adalah menurut...",
-      "visualEmojis": [],
+      "prompt": "Kereta mainan tersusun dari 5 segi empat, 1 segitiga, dan 3 bentuk lengkung. Banyak bagian kereta semuanya adalah...",
+      "visualEmojis": [
+        "🚂"
+      ],
       "options": [
-        "warna",
-        "bentuk",
-        "ukuran",
-        "rasa"
+        "6",
+        "8",
+        "9",
+        "10"
       ]
     },
     {
@@ -815,25 +1143,27 @@
     {
       "id": 9,
       "level": "HOTS (40%)",
-      "prompt": "Kira memutar penggaris segitiga sampai posisinya terbalik. Setelah diputar, penggaris itu...",
+      "prompt": "Upe berkata, \"Dua segitiga yang sama besar hanya bisa menjadi segitiga yang lebih besar.\" Pernyataan Upe...",
       "visualEmojis": [],
       "options": [
-        "tetap segitiga karena masih punya 3 sisi dan 3 sudut",
-        "berubah menjadi segi empat",
-        "berubah menjadi lengkung",
-        "tidak punya bentuk lagi"
+        "keliru, karena jika dirapatkan pada sisi miring hasilnya bisa segi empat",
+        "benar, karena segitiga tidak bisa menjadi bangun lain",
+        "benar, karena sisi miring tidak bisa dirapatkan",
+        "keliru, karena hasilnya selalu bulat"
       ]
     },
     {
       "id": 10,
       "level": "HOTS (40%)",
-      "prompt": "Bu guru membawa kue lupis, kue lapis, dan kue cucur yang bulat. Urutan bentuknya yang tepat adalah...",
-      "visualEmojis": [],
+      "prompt": "Rumah lidi punya dinding segi empat yang memakai 4 lidi dan atap segitiga. Sisi atas dinding juga menjadi dasar atap, jadi tidak perlu lidi tambahan di sana. Banyak lidi rumah itu semuanya adalah...",
+      "visualEmojis": [
+        "🏠"
+      ],
       "options": [
-        "segi empat, segitiga, lengkung",
-        "segitiga, segi empat, lengkung",
-        "lengkung, segitiga, segi empat",
-        "segitiga, lengkung, segi empat"
+        "3",
+        "6",
+        "7",
+        "8"
       ]
     }
   ]

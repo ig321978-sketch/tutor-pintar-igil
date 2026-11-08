@@ -10,7 +10,7 @@ Semua tahap berjalan di peramban siswa. Tidak ada panggilan API saat belajar. Su
 |---|---|---|
 | A | Mendeskripsikan Bentuk | Sudah terbit. |
 | B | Mengelompokkan Benda | Mengelompokkan menurut bentuk, warna, dan ukuran. Menebak aturan. Menghitung anggota kelompok. |
-| C | Menyusun dan Mengurai Bentuk | Segera hadir. |
+| C | Menyusun dan Mengurai Bentuk | Sudah terbit. Lihat `mtk-1-bab4-sub-c-menyusun-dan-mengurai-bentuk.md`. |
 
 ## 2. Sub-Bab B: Mengelompokkan Benda
 
@@ -67,4 +67,4 @@ Penutup: Poin Penting (lima kartu bersuara), cara menyebutkan aturan kelompok, t
 
 ## 3. Latihan dan Ujian
 
-Latihan dan Ujian bab ini mencakup Sub-Bab A dan B. Latihan 10 soal (3 LOTS, 3 MOTS, 4 HOTS) dengan pembahasan, 30 Poin Kualifikasi: 6 soal Sub-Bab A dan 4 soal Sub-Bab B. Ujian 10 soal, 70 Poin Kualifikasi, wajib 100%. Ujian punya tiga paket (`paket-1`, `paket-2`, `paket-3`), masing-masing 6 soal Sub-Bab A dan 4 soal Sub-Bab B, dengan soal berbeda yang dipilih server. Soal dan pilihan ada di berkas publik. Kunci dan pembahasan hanya di server.
+Latihan dan Ujian bab ini mencakup Sub-Bab A, B, dan C (komposisi: 3 soal A, 3 soal B, 4 soal C per Latihan dan per paket Ujian). Latihan 10 soal (3 LOTS, 3 MOTS, 4 HOTS) dengan pembahasan, 30 Poin Kualifikasi. Ujian 10 soal, 70 Poin Kualifikasi, wajib 100%. Ujian punya tiga paket (`paket-1`, `paket-2`, `paket-3`) dengan soal berbeda yang dipilih server. Soal dan pilihan ada di berkas publik. Kunci dan pembahasan hanya di server.

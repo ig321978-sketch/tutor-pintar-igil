@@ -9,10 +9,10 @@ Semua tahap berjalan di peramban siswa. Tidak ada panggilan API saat belajar. Su
 | Sub-bab | Judul | Isi |
 |---|---|---|
 | A | Mendeskripsikan Bentuk | Tiga bentuk: lengkung, segitiga, segi empat. Sisi dan sudut. Mencari, menamai, dan menghitung ciri benda. |
-| B | Mengelompokkan Benda | Segera hadir. |
-| C | Menyusun dan Mengurai Bentuk | Segera hadir. |
+| B | Mengelompokkan Benda | Sudah terbit. Lihat `mtk-1-bab4-sub-b-mengelompokkan-benda.md`. |
+| C | Menyusun dan Mengurai Bentuk | Sudah terbit. Lihat `mtk-1-bab4-sub-c-menyusun-dan-mengurai-bentuk.md`. |
 
-Sub-Bab A sudah dibuat. Sub-Bab B dan C tampil sebagai "segera hadir" dan dikerjakan satu per satu atas perintah Kapten. Selama itu, Latihan dan Ujian bab ini mencakup Sub-Bab A.
+Sub-Bab A, B, dan C sudah dibuat. Latihan dan Ujian bab ini mencakup ketiganya.
 
 ## 2. Sub-Bab A: Mendeskripsikan Benda Berdasarkan Bentuk
 
