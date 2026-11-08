@@ -245,10 +245,10 @@ export function TabelNilai({
       aria-label={`Tabel nilai tempat: ${puluhan === null ? "kosong" : puluhan} puluhan, ${satuan === null ? "kosong" : satuan} satuan`}
       className={`mx-auto grid w-full grid-cols-2 overflow-hidden rounded-xl border-4 border-[#1C01A5] bg-white text-center ${kelas}`}
     >
-      <span role="columnheader" className={`border-r-2 border-[#1C01A5]/50 bg-[#E9D8F3] font-black text-[#1C01A5] ${kecil ? "py-0.5 text-xs" : "py-1 text-sm"}`}>
+      <span role="columnheader" className={`border-r-2 border-[#1C01A5]/50 bg-[#E9D8F3] font-black text-[#1C01A5] ${kecil ? "py-0.5 text-[10px] leading-tight" : "py-1 text-sm"}`}>
         Puluhan
       </span>
-      <span role="columnheader" className={`bg-[#E9D8F3] font-black text-[#1C01A5] ${kecil ? "py-0.5 text-xs" : "py-1 text-sm"}`}>
+      <span role="columnheader" className={`bg-[#E9D8F3] font-black text-[#1C01A5] ${kecil ? "py-0.5 text-[10px] leading-tight" : "py-1 text-sm"}`}>
         Satuan
       </span>
       <span role="cell" className={`border-r-2 border-[#1C01A5]/50 font-black text-[#B91C1C] ${kecil ? "py-1 text-2xl" : "py-2 text-4xl"}`}>
