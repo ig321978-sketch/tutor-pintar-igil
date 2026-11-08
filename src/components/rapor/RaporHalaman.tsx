@@ -9,6 +9,7 @@ import {
   JUDUL_MTK_1_BAB5,
   JUDUL_MTK_1_BAB6,
   JUDUL_MTK_1_BAB7,
+  JUDUL_MTK_1_BAB8,
 } from "@/lib/kurikulum";
 import {
   KepalaHalaman,
@@ -59,11 +60,12 @@ const BAB_KELAS1: BabRapor[] = [
     ["k1-mat-bab5", JUDUL_MTK_1_BAB5],
     ["k1-mat-bab6", JUDUL_MTK_1_BAB6],
     ["k1-mat-bab7", JUDUL_MTK_1_BAB7],
+    ["k1-mat-bab8", JUDUL_MTK_1_BAB8],
   ].map(([id, judul]) => ({
     id,
     judul,
     subBab: [],
-    totalSubBab: id === "k1-mat-bab7" ? 2 : id === "k1-mat-bab6" ? 3 : 4,
+    totalSubBab: id === "k1-mat-bab8" || id === "k1-mat-bab7" ? 2 : id === "k1-mat-bab6" ? 3 : 4,
     skorLatihan: null,
     tokenLatihan: 0,
     skorUjian: null,
