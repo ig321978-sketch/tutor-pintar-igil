@@ -60,8 +60,8 @@ Soal terakhir tiap permainan meminta jawaban lisan lewat suara (`id-ID`). Bila m
 Cara menyebutkan bilangan belas · Sepuluh dulu · Satu puluhan dan satuan · Garis bilangan · Dua puluh · "Ayo Bermain di rumah" dan Refleksi.
 
 ## Bank soal
-- Latihan dan Ujian Bab 5 memuat soal Sub-Bab A dan Sub-Bab B (lihat naskah Sub-Bab B untuk komposisinya).
-- Sub-Bab A menyumbang 5 soal pada Latihan dan 5 soal pada tiap paket Ujian (3 paket HOTS). Kunci hanya di `supabase/seed/02_kelas1_bab5_keys.sql` (tidak ikut repo).
+- Latihan dan Ujian Bab 5 memuat soal Sub-Bab A, B, dan C (lihat naskah Sub-Bab C untuk komposisi terbaru).
+- Sub-Bab A menyumbang 3 soal pada Latihan dan 3 soal pada tiap paket Ujian. Kunci hanya di `supabase/seed/02_kelas1_bab5_keys.sql` (tidak ikut repo).
 
 ## Status sub-bab lain
-Sub-Bab B (Menghitung Maju dan Mundur) sudah tersedia. Sub-Bab C (Nilai Tempat) dan D (Membandingkan Bilangan) berstatus "segera hadir".
+Sub-Bab B dan C sudah tersedia. Sub-Bab D (Membandingkan Bilangan) berstatus "segera hadir".

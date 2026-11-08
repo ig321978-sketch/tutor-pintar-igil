@@ -66,9 +66,9 @@ Soal terakhir tiap permainan meminta jawaban lisan lewat suara (`id-ID`). Bila m
 ## Poin Penting (6 kartu)
 Hitung maju · Hitung mundur · Satu lebih, satu kurang · Tetangga bilangan · Kisi dan garis bilangan · Maju lalu mundur. Ditambah "Cara menyebutkan", "Ayo Bermain di rumah" (hitung langkah naik dan turun tangga), dan Refleksi.
 
-## Bank soal Bab 5 (Sub-Bab A dan B)
-- Latihan: 10 soal (3 LOTS, 3 MOTS, 4 HOTS), 5 dari Sub-Bab A dan 5 dari Sub-Bab B, dengan pembahasan dari server.
-- Ujian: 3 paket × 10 soal HOTS, tiap paket 5 soal Sub-Bab A dan 5 soal Sub-Bab B. Kunci hanya di `supabase/seed/02_kelas1_bab5_keys.sql` (tidak ikut repo).
+## Bank soal Bab 5
+- Latihan dan Ujian Bab 5 memuat soal Sub-Bab A, B, dan C (lihat naskah Sub-Bab C untuk komposisi terbaru).
+- Sub-Bab B menyumbang 3 soal pada Latihan dan 3 soal pada tiap paket Ujian. Kunci hanya di `supabase/seed/02_kelas1_bab5_keys.sql` (tidak ikut repo).
 
 ## Status sub-bab lain
-Sub-Bab C (Nilai Tempat) dan D (Membandingkan Bilangan) berstatus "segera hadir".
+Sub-Bab C (Nilai Tempat) sudah tersedia. Sub-Bab D (Membandingkan Bilangan) berstatus "segera hadir".

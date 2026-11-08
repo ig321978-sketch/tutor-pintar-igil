@@ -679,19 +679,345 @@
     "C": {
       "id": "C",
       "codeTitle": "Sub-Bab C (Nilai Tempat)",
-      "fullTitle": "Sub-Bab C: Nilai Tempat",
-      "targetDescription": "Sub-Bab C sedang disiapkan.",
+      "fullTitle": "Sub-Bab C: Nilai Tempat Puluhan dan Satuan",
+      "targetDescription": "Siswa menyatakan sepuluh benda yang digabungkan sebagai satu puluhan dan benda yang tersisa sebagai satuan, mengisi tabel nilai tempat puluhan dan satuan, membaca angka kiri sebagai puluhan dan angka kanan sebagai satuan, menulis kalimat nilai tempat bilangan 10 sampai 20, serta memahami bahwa angka yang sama dapat bernilai berbeda menurut tempatnya.",
       "secondaryBg": "#FEF3C7",
       "secondaryBorder": "#D97706",
       "secondaryText": "#78350F",
-      "segeraHadir": true,
-      "stories": [],
-      "mindMaps": [],
-      "infografisData": [],
-      "concreteSlides": [],
-      "pictorialSlides": [],
-      "abstractSlides": [],
-      "interactiveGames": []
+      "stories": [
+        {
+          "id": "C5-S1",
+          "titleHint": "Kantong Sepuluh Kelereng",
+          "sceneType": "kantong-kelereng",
+          "voiceNarration": "Halim punya lima belas kelereng. Dapatkah kamu menemukan pasangan bilangan dari lima belas? Halim memasukkan sepuluh kelereng ke dalam satu kantong. Sepuluh kelereng yang digabungkan disebut satu puluhan. Masih ada lima kelereng di luar kantong. Satu kelereng disebut satu satuan, jadi lima kelereng adalah lima satuan. Nilai tempat lima belas adalah satu puluhan dan lima satuan. Sepuluh dan lima menjadi lima belas."
+        },
+        {
+          "id": "C5-S2",
+          "titleHint": "Sepuluh Pensil Diikat",
+          "sceneType": "ikat-pensil",
+          "voiceNarration": "Kira mengikat sepuluh pensil menjadi satu ikat. Satu ikat berisi sepuluh pensil, itulah satu puluhan. Kira masih punya tiga pensil yang tidak diikat. Tiga pensil itu adalah tiga satuan. Jadi satu puluhan dan tiga satuan sama dengan tiga belas."
+        },
+        {
+          "id": "C5-S3",
+          "titleHint": "Menara Sepuluh Balok",
+          "sceneType": "menara-balok",
+          "voiceNarration": "Wei menyusun balok menjadi satu menara. Menara itu berisi sepuluh balok, jadi satu puluhan. Di sebelahnya ada empat balok lepas, jadi empat satuan. Satu puluhan dan empat satuan sama dengan empat belas."
+        },
+        {
+          "id": "C5-S4",
+          "titleHint": "Ayo Mencoba: Ikat Lidi",
+          "sceneType": "ayo-mencoba-lidi",
+          "voiceNarration": "Ayo mencoba bersama Tika! Tika membawa lidi. Dia mengambil sepuluh lidi lalu mengikatnya. Dia menghitung lidi yang tidak diikat, ada dua. Tika menulis hasilnya di tabel: satu puluhan dan dua satuan sama dengan dua belas. Lalu dia menyampaikan hasilnya kepada temannya."
+        },
+        {
+          "id": "C5-S5",
+          "titleHint": "Papan Nilai Tempat",
+          "sceneType": "papan-nilai-tempat",
+          "voiceNarration": "Ini papan nilai tempat. Papan ini punya dua kolom, puluhan dan satuan. Bilangan dua angka ditulis dengan dua angka. Angka di sebelah kiri menunjukkan banyak puluhan. Angka di sebelah kanan menunjukkan banyak satuan. Pada lima belas, angka satu di kiri berarti satu puluhan, dan angka lima di kanan berarti lima satuan."
+        },
+        {
+          "id": "C5-S6",
+          "titleHint": "Angka Sama, Nilai Berbeda",
+          "sceneType": "angka-sama-nilai-berbeda",
+          "voiceNarration": "Kira melihat bilangan sebelas. Ada dua angka satu, tetapi nilainya berbeda! Angka satu di sebelah kiri berada di tempat puluhan, jadi nilainya sepuluh. Angka satu di sebelah kanan berada di tempat satuan, jadi nilainya satu. Angka yang sama bisa punya nilai berbeda, tergantung tempatnya. Sepuluh dan satu menjadi sebelas."
+        }
+      ],
+      "mindMaps": [
+        {
+          "stepNumber": 1,
+          "stepTitle": "1. Ikat Sepuluh",
+          "stepDesc": "Kumpulkan sepuluh benda lalu ikat, masukkan ke kantong, atau susun menjadi menara. Sepuluh benda yang digabungkan disebut satu puluhan. Seperti menukar sepuluh keping satuan dengan satu batang puluhan.",
+          "icon": "🎀",
+          "flowFrom": "Sepuluh benda",
+          "flowTo": "Satu puluhan"
+        },
+        {
+          "stepNumber": 2,
+          "stepTitle": "2. Hitung Satuan",
+          "stepDesc": "Benda yang tidak ikut diikat berdiri sendiri. Satu benda disebut satu satuan. Hitung berapa banyak benda yang lepas itu. Banyaknya selalu kurang dari sepuluh.",
+          "icon": "🔢",
+          "flowFrom": "Satu puluhan",
+          "flowTo": "Satuan"
+        },
+        {
+          "stepNumber": 3,
+          "stepTitle": "3. Isi Tabel Nilai Tempat",
+          "stepDesc": "Tabel nilai tempat punya dua kolom: puluhan di kiri dan satuan di kanan. Tulis banyak puluhan di kolom puluhan, dan banyak satuan di kolom satuan.",
+          "icon": "📋",
+          "flowFrom": "Satuan",
+          "flowTo": "Tabel nilai tempat"
+        },
+        {
+          "stepNumber": 4,
+          "stepTitle": "4. Baca Angkanya",
+          "stepDesc": "Angka di kiri menunjukkan puluhan dan angka di kanan menunjukkan satuan. Pada tiga belas, angka satu berarti satu puluhan dan angka tiga berarti tiga satuan.",
+          "icon": "🔍",
+          "flowFrom": "Tabel nilai tempat",
+          "flowTo": "Membaca angka"
+        },
+        {
+          "stepNumber": 5,
+          "stepTitle": "5. Tulis Kalimatnya",
+          "stepDesc": "Tulis nilai tempat seperti ini: satu puluhan dan tiga satuan sama dengan tiga belas. Puluhan dan satuan digabung menjadi satu bilangan, yaitu sepuluh ditambah tiga.",
+          "icon": "✍️",
+          "flowFrom": "Membaca angka",
+          "flowTo": "Kalimat nilai tempat"
+        },
+        {
+          "stepNumber": 6,
+          "stepTitle": "6. Angka Sama, Tempat Beda",
+          "stepDesc": "Angka yang sama bisa punya nilai berbeda. Pada sebelas, angka satu di kiri bernilai sepuluh, sedangkan angka satu di kanan bernilai satu. Nilai sebuah angka bergantung pada tempatnya.",
+          "icon": "⚖️",
+          "flowFrom": "Kalimat nilai tempat",
+          "flowTo": "Nilai angka bergantung tempat"
+        }
+      ],
+      "infografisData": [
+        {
+          "fruitName": "Sepuluh Benda = 1 Puluhan",
+          "emoji": "🎀",
+          "countNum": 10,
+          "countWord": "Sepuluh",
+          "voiceSentence": "Sepuluh pensil yang diikat, sepuluh kelereng dalam satu kantong, atau sepuluh balok yang disusun menjadi satu menara adalah satu puluhan."
+        },
+        {
+          "fruitName": "Satuan: Benda yang Sendirian",
+          "emoji": "☝️",
+          "countNum": 5,
+          "countWord": "Lima",
+          "voiceSentence": "Satu benda yang berdiri sendiri adalah satu satuan. Lima kelereng lepas adalah lima satuan."
+        },
+        {
+          "fruitName": "Tabel Nilai Tempat",
+          "emoji": "📋",
+          "countNum": 15,
+          "countWord": "Lima belas",
+          "voiceSentence": "Tabel punya kolom puluhan di kiri dan satuan di kanan. Lima belas adalah satu puluhan dan lima satuan."
+        },
+        {
+          "fruitName": "Tiga Benda, Tiga Tabel",
+          "emoji": "🧺",
+          "countNum": 14,
+          "countWord": "Empat belas",
+          "voiceSentence": "Lima belas kelereng, tiga belas pensil, dan empat belas balok masing-masing punya satu puluhan dengan satuan yang berbeda."
+        },
+        {
+          "fruitName": "Baca Angkanya",
+          "emoji": "🔍",
+          "countNum": 13,
+          "countWord": "Tiga belas",
+          "voiceSentence": "Angka kiri menunjukkan puluhan dan angka kanan menunjukkan satuan. Tiga belas adalah satu puluhan dan tiga satuan."
+        },
+        {
+          "fruitName": "Nilai Tempat 10 sampai 20",
+          "emoji": "📊",
+          "countNum": 20,
+          "countWord": "Dua puluh",
+          "voiceSentence": "Sepuluh adalah satu puluhan nol satuan. Sebelas sampai sembilan belas satu puluhan dengan satuan satu sampai sembilan. Dua puluh adalah dua puluhan nol satuan."
+        },
+        {
+          "fruitName": "Tulis Kalimatnya",
+          "emoji": "✍️",
+          "countNum": 13,
+          "countWord": "Tiga belas",
+          "voiceSentence": "Satu puluhan dan tiga satuan sama dengan tiga belas, yaitu sepuluh ditambah tiga."
+        },
+        {
+          "fruitName": "Angka Sama, Nilai Berbeda",
+          "emoji": "⚖️",
+          "countNum": 11,
+          "countWord": "Sebelas",
+          "voiceSentence": "Pada sebelas, angka satu di kiri bernilai sepuluh dan angka satu di kanan bernilai satu."
+        },
+        {
+          "fruitName": "Bingkai Sepuluh Tegak",
+          "emoji": "🔲",
+          "countNum": 14,
+          "countWord": "Empat belas",
+          "voiceSentence": "Satu bingkai penuh adalah satu puluhan. Bingkai satunya berisi satuan. Satu puluhan dan empat satuan sama dengan empat belas."
+        }
+      ],
+      "concreteSlides": [
+        {
+          "title": "Sortir ke Papan Nilai Tempat",
+          "emoji": "🧺",
+          "targetCount": 15,
+          "voiceGuide": "Seret ikatan sepuluh ke kolom puluhan dan benda lepas ke kolom satuan. Ucapkan banyak benda seluruhnya."
+        },
+        {
+          "title": "Tukar Sepuluh",
+          "emoji": "🔁",
+          "targetCount": 20,
+          "voiceGuide": "Pilih sepuluh kubus satuan lalu tukar dengan satu batang puluhan. Ucapkan banyak kubus seluruhnya."
+        },
+        {
+          "title": "Toko Pensil",
+          "emoji": "✏️",
+          "targetCount": 12,
+          "voiceGuide": "Layani pesanan dengan kotak sepuluh pensil dan pensil satuan. Ucapkan banyak pensil seluruhnya."
+        },
+        {
+          "title": "Papan Kartu Angka",
+          "emoji": "🃏",
+          "targetCount": 18,
+          "voiceGuide": "Hitung ikatan dan benda lepas, lalu taruh kartu angka di kolom puluhan dan satuan. Ucapkan bilangannya."
+        }
+      ],
+      "pictorialSlides": [
+        {
+          "title": "Warnai Puluhan dan Satuan",
+          "diagramType": "vertical-ten-frames",
+          "numberA": 10,
+          "numberB": 6,
+          "caption": "Warnai satu bingkai penuh untuk satu puluhan dan lingkaran di bingkai satunya untuk satuan."
+        },
+        {
+          "title": "Lingkari Puluhan",
+          "diagramType": "dot-cluster-ring",
+          "numberA": 10,
+          "numberB": 7,
+          "caption": "Lingkari tepat sepuluh titik sebagai satu puluhan, lalu hitung titik yang tidak dilingkari sebagai satuan."
+        },
+        {
+          "title": "Pilih Tabel yang Cocok",
+          "diagramType": "bar-diagram-table",
+          "numberA": 10,
+          "numberB": 9,
+          "caption": "Hitung batang sepuluh dan kotak kecil pada diagram, lalu pilih tabel nilai tempat yang cocok."
+        }
+      ],
+      "abstractSlides": [
+        {
+          "symbolLarge": "1 | 5",
+          "wordLarge": "MESIN DIGIT",
+          "mathNotation": "1 puluhan dan 5 satuan = 15 • 2 puluhan dan 0 satuan = 20",
+          "voiceReadout": "Atur angka puluhan di kiri dan angka satuan di kanan sesuai soal. Satu puluhan dan lima satuan sama dengan lima belas."
+        },
+        {
+          "symbolLarge": "1 1",
+          "wordLarge": "NILAI ANGKA",
+          "mathNotation": "11: kiri = 10, kanan = 1 • 20: kiri = 20, kanan = 0",
+          "voiceReadout": "Angka yang sama bisa punya nilai berbeda. Pada sebelas, angka satu di kiri bernilai sepuluh dan angka satu di kanan bernilai satu."
+        },
+        {
+          "symbolLarge": "1 puluhan dan 4 satuan",
+          "wordLarge": "EMPAT BELAS",
+          "mathNotation": "14 = 10 + 4",
+          "voiceReadout": "Baca nilai tempatnya, ucapkan bilangannya, lalu guratkan lambangnya di kanvas. Satu puluhan dan empat satuan sama dengan empat belas."
+        }
+      ],
+      "interactiveGames": [
+        {
+          "gameId": "subC5-game-1",
+          "gameNumber": 1,
+          "stage": "Concrete",
+          "gameType": "drag-sort-columns",
+          "title": "Sortir ke Papan Nilai Tempat",
+          "bookReference": "Buku Siswa hlm. 161–162 (10 kelereng dalam kantong, 10 pensil diikat, 10 balok disusun)",
+          "objective": "Memilah ikatan sepuluh sebagai satu puluhan dan benda lepas sebagai satuan ke papan nilai tempat.",
+          "mechanicDescription": "Tiga ronde (13 pensil, 14 balok, 15 kelereng). Siswa menyeret ikatan sepuluh ke kolom puluhan dan benda lepas ke kolom satuan, lalu membaca kalimat nilai tempat. Terakhir ucapkan banyak benda seluruhnya.",
+          "voiceGuide": "Seret ikatan sepuluh ke puluhan dan benda lepas ke satuan."
+        },
+        {
+          "gameId": "subC5-game-2",
+          "gameNumber": 2,
+          "stage": "Concrete",
+          "gameType": "trade-ten",
+          "title": "Tukar Sepuluh",
+          "bookReference": "Buku Siswa pengayaan Dienes dan Montessori (menukar sepuluh satuan dengan satu puluhan)",
+          "objective": "Memahami bahwa sepuluh satuan digabung menjadi satu puluhan.",
+          "mechanicDescription": "Tiga ronde (12, 17, dan 20 kubus). Siswa memilih tepat sepuluh kubus lalu menukarnya dengan satu batang, sampai kubus tersisa kurang dari sepuluh. Terakhir ucapkan banyak kubus seluruhnya.",
+          "voiceGuide": "Pilih sepuluh kubus lalu tukar dengan satu batang."
+        },
+        {
+          "gameId": "subC5-game-3",
+          "gameNumber": 3,
+          "stage": "Concrete",
+          "gameType": "build-order",
+          "title": "Toko Pensil",
+          "bookReference": "Buku Siswa hlm. 162 (Ayo Mencoba: ambil 10 lalu ikat)",
+          "objective": "Menyusun sejumlah benda dari kelompok sepuluh dan benda satuan menurut pesanan.",
+          "mechanicDescription": "Tiga ronde (1 puluhan dan 6 satuan, tujuh belas, dua belas). Siswa mengetuk kotak sepuluh pensil dan pensil satuan untuk mengisi keranjang, lalu mengirim pesanan. Terakhir ucapkan banyak pensil seluruhnya.",
+          "voiceGuide": "Isi keranjang dengan kotak sepuluh dan pensil satuan."
+        },
+        {
+          "gameId": "subC5-game-4",
+          "gameNumber": 4,
+          "stage": "Concrete",
+          "gameType": "drag-digit-cards",
+          "title": "Papan Kartu Angka",
+          "bookReference": "Buku Siswa hlm. 163 (Ayo Berlatih nomor 1)",
+          "objective": "Menghitung ikatan sepuluh dan benda lepas lalu menuliskannya dengan kartu angka pada tabel nilai tempat.",
+          "mechanicDescription": "Tiga ronde (13 kelereng, 12 pensil, 18 balok). Siswa menyeret kartu angka ke kolom puluhan dan kolom satuan. Terakhir ucapkan bilangan yang ditunjukkan papan.",
+          "voiceGuide": "Taruh kartu angka yang tepat di kolom puluhan dan satuan."
+        },
+        {
+          "gameId": "subC5-game-5",
+          "gameNumber": 5,
+          "stage": "Picture",
+          "gameType": "color-vertical-frames",
+          "title": "Warnai Puluhan dan Satuan",
+          "bookReference": "Buku Siswa hlm. 164 (nomor 3: Tunjukkan 1 puluhan dan 3 satuan)",
+          "objective": "Menunjukkan puluhan dan satuan dengan mewarnai bingkai sepuluh tegak.",
+          "mechanicDescription": "Tiga ronde (1 puluhan dan 3, 8, dan 6 satuan). Siswa mewarnai satu bingkai penuh dan lingkaran satuan di bingkai lain, lalu menekan Periksa. Terakhir ucapkan bilangan yang ditunjukkan.",
+          "voiceGuide": "Warnai satu bingkai penuh dan lingkaran satuan, lalu tekan Periksa."
+        },
+        {
+          "gameId": "subC5-game-6",
+          "gameNumber": 6,
+          "stage": "Picture",
+          "gameType": "ring-ten-dots",
+          "title": "Lingkari Puluhan",
+          "bookReference": "Buku Siswa hlm. 164 (nomor 2: Warnai dan hitunglah); hlm. 153 (lingkari setiap 10 benda)",
+          "objective": "Melingkari sepuluh titik sebagai satu puluhan dan menghitung sisanya sebagai satuan.",
+          "mechanicDescription": "Tiga ronde (13, 18, dan 17 titik). Siswa memilih tepat sepuluh titik lalu menekan Lingkari, kemudian memilih banyak titik di luar lingkaran. Terakhir ucapkan banyak titik seluruhnya.",
+          "voiceGuide": "Pilih sepuluh titik, lingkari, lalu hitung sisanya."
+        },
+        {
+          "gameId": "subC5-game-7",
+          "gameNumber": 7,
+          "stage": "Picture",
+          "gameType": "match-diagram-table",
+          "title": "Pilih Tabel yang Cocok",
+          "bookReference": "Buku Siswa hlm. 163 (nomor 1: isi tabel dari gambar)",
+          "objective": "Mencocokkan diagram batang dengan tabel nilai tempat, termasuk menghindari kolom yang tertukar.",
+          "mechanicDescription": "Empat ronde (14, 12, 16, dan 19). Siswa memilih satu dari tiga tabel yang cocok dengan diagram batang. Terakhir ucapkan bilangan yang ditunjukkan diagram.",
+          "voiceGuide": "Hitung batang dan kotak kecil, lalu pilih tabel yang cocok."
+        },
+        {
+          "gameId": "subC5-game-8",
+          "gameNumber": 8,
+          "stage": "Abstract",
+          "gameType": "digit-machine",
+          "title": "Mesin Digit",
+          "bookReference": "Buku Siswa hlm. 161–163 (tabel nilai tempat); pengayaan kartu nilai tempat",
+          "objective": "Mengubah soal nilai tempat dalam berbagai bentuk menjadi angka puluhan dan angka satuan.",
+          "mechanicDescription": "Lima ronde (lima belas, 10 + 8, sepuluh, dua puluh, 19). Siswa mengatur panah atas dan bawah pada kolom puluhan dan satuan lalu menekan Periksa. Terakhir ucapkan bilangannya.",
+          "voiceGuide": "Atur kolom puluhan dan satuan dengan panah, lalu tekan Periksa."
+        },
+        {
+          "gameId": "subC5-game-9",
+          "gameNumber": 9,
+          "stage": "Abstract",
+          "gameType": "digit-value-detective",
+          "title": "Detektif Nilai Angka",
+          "bookReference": "Buku Siswa pengayaan (nilai angka bergantung tempatnya)",
+          "objective": "Menentukan nilai sebuah angka menurut tempatnya, misalnya angka 1 di kiri dan di kanan pada 11.",
+          "mechanicDescription": "Lima ronde dengan satu angka yang ditandai. Siswa memilih nilai angka itu. Terakhir ucapkan nilainya.",
+          "voiceGuide": "Tentukan nilai angka yang ditandai menurut tempatnya."
+        },
+        {
+          "gameId": "subC5-game-10",
+          "gameNumber": 10,
+          "stage": "Abstract",
+          "gameType": "say-and-trace",
+          "title": "Kanvas Guratan dan Suara",
+          "bookReference": "Buku Siswa hlm. 162 (tulis hasilnya: puluhan dan satuan = bilangan)",
+          "objective": "Membaca nilai tempat, mengucapkan bilangannya, dan menulis lambangnya dengan dua angka.",
+          "mechanicDescription": "Dua ronde. Ronde 1 satu puluhan dan empat satuan. Ronde 2 siswa memilih satu dari tiga nilai tempat. Siswa mengucapkan bilangannya lalu menggurat lambangnya.",
+          "voiceGuide": "Baca nilai tempat, ucapkan bilangannya, lalu guratkan lambangnya."
+        }
+      ]
     },
     "D": {
       "id": "D",
@@ -741,31 +1067,19 @@
     {
       "id": 3,
       "level": "LOTS (30%)",
-      "prompt": "Kira menghitung mundur: 15, 14, ... Bilangan yang disebut setelah 14 adalah...",
-      "visualEmojis": [],
+      "prompt": "Halim punya 10 kelereng dalam kantong dan 5 kelereng di luar kantong. Nilai tempat 15 adalah...",
+      "visualEmojis": [
+        "🔵"
+      ],
       "options": [
-        "12",
-        "13",
-        "15",
-        "16"
+        "1 puluhan dan 5 satuan",
+        "5 puluhan dan 1 satuan",
+        "1 puluhan dan 1 satuan",
+        "15 puluhan dan 0 satuan"
       ]
     },
     {
       "id": 4,
-      "level": "MOTS (30%)",
-      "prompt": "Kira menghitung 13 pensil. Ia mengikat 10 pensil menjadi satu ikat. Pensil yang tidak diikat ada...",
-      "visualEmojis": [
-        "✏️"
-      ],
-      "options": [
-        "3",
-        "4",
-        "5",
-        "13"
-      ]
-    },
-    {
-      "id": 5,
       "level": "MOTS (30%)",
       "prompt": "Lambang bilangan tujuh belas adalah...",
       "visualEmojis": [],
@@ -777,7 +1091,7 @@
       ]
     },
     {
-      "id": 6,
+      "id": 5,
       "level": "MOTS (30%)",
       "prompt": "Badan ulat bilangan bertuliskan 15 dan 14. Ulat itu menghitung mundur. Dua badan berikutnya bertuliskan...",
       "visualEmojis": [
@@ -788,6 +1102,18 @@
         "16 dan 17",
         "14 dan 13",
         "12 dan 11"
+      ]
+    },
+    {
+      "id": 6,
+      "level": "MOTS (30%)",
+      "prompt": "Pada tabel nilai tempat, kolom puluhan berisi 1 dan kolom satuan berisi 4. Bilangan yang ditunjukkan adalah...",
+      "visualEmojis": [],
+      "options": [
+        "5",
+        "14",
+        "15",
+        "41"
       ]
     },
     {
@@ -819,25 +1145,25 @@
     {
       "id": 9,
       "level": "HOTS (40%)",
-      "prompt": "Wei menulis, sepuluh ditambah sembilan sama dengan dua puluh. Kesalahan Wei adalah...",
+      "prompt": "Wei berkata, \"Pada bilangan 11, kedua angka 1 nilainya sama.\" Pernyataan Wei...",
       "visualEmojis": [],
       "options": [
-        "hasilnya seharusnya sembilan belas",
-        "hasilnya seharusnya delapan belas",
-        "tanda sama dengan tidak boleh dipakai",
-        "sepuluh tidak boleh ditambah"
+        "keliru, karena angka 1 di kiri bernilai 10 dan angka 1 di kanan bernilai 1",
+        "benar, karena kedua angkanya sama-sama 1",
+        "keliru, karena kedua angka 1 sama-sama bernilai 10",
+        "benar, karena 1 + 1 = 11"
       ]
     },
     {
       "id": 10,
       "level": "HOTS (40%)",
-      "prompt": "Kira berdiri di bilangan 12, melangkah maju 3 kali, lalu melangkah mundur 3 kali. Kira berhenti di bilangan...",
+      "prompt": "Tika punya 13 lidi. Ia mengikat 10 lidi menjadi satu ikat, lalu menemukan 2 lidi lagi dan menaruhnya bersama lidi lepas. Nilai tempat bilangan lidi Tika sekarang adalah...",
       "visualEmojis": [],
       "options": [
-        "9",
-        "12",
-        "15",
-        "18"
+        "1 puluhan dan 3 satuan",
+        "1 puluhan dan 5 satuan",
+        "2 puluhan dan 3 satuan",
+        "2 puluhan dan 5 satuan"
       ]
     }
   ]

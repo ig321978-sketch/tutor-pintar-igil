@@ -21,6 +21,13 @@ import {
   InfografisBelasA,
   PictureBelasA,
 } from "@/components/modul/SubBabA5Belas";
+import { CeritaNilaiC, PETA_PIKIRAN_C5 } from "@/components/modul/gambar-nilai-c5";
+import {
+  AbstractNilaiC,
+  ConcreteNilaiC,
+  InfografisNilaiC,
+  PictureNilaiC,
+} from "@/components/modul/SubBabC5Nilai";
 import { CeritaUrutB, PETA_PIKIRAN_B5 } from "@/components/modul/gambar-urut-b5";
 import {
   AbstractUrutB,
@@ -1094,6 +1101,7 @@ export default function IgilModulePlayer({ bab = "mtk-1-bab1" }: { bab?: BabModu
   const subB3 = bab === "mtk-1-bab3" && activeSubBab === "B";
   const subA5 = bab === "mtk-1-bab5" && activeSubBab === "A";
   const subB5 = bab === "mtk-1-bab5" && activeSubBab === "B";
+  const subC5 = bab === "mtk-1-bab5" && activeSubBab === "C";
   const subB4 = bab === "mtk-1-bab4" && activeSubBab === "B";
   const subC4 = bab === "mtk-1-bab4" && activeSubBab === "C";
   const subC3 = bab === "mtk-1-bab3" && activeSubBab === "C";
@@ -1254,7 +1262,9 @@ export default function IgilModulePlayer({ bab = "mtk-1-bab1" }: { bab?: BabModu
                 judul={adaBab4 ? "🌈 Fase A • Elemen Geometri (Kelas 1 SD/MI)" : "🌈 Fase A • Elemen Bilangan (Kelas 1 SD/MI)"}
                 bicara={speakGuru}
                 teksSuara={
-                  subB5
+                  subC5
+                    ? "Kita belajar nilai tempat. Bukunya bernama Ayo Membilang sampai dengan Dua Puluh, bagian nilai tempat. Sepuluh benda yang digabungkan disebut satu puluhan. Benda yang tersisa disebut satuan. Kita mengisi tabel nilai tempat, membaca angka kiri sebagai puluhan dan angka kanan sebagai satuan, lalu menulis kalimatnya. Kita melewati enam tahap seru: cerita, peta pikiran, infografis, benda nyata, gambar, dan simbol."
+                    : subB5
                     ? "Kita belajar menghitung maju dan mundur. Bukunya bernama Ayo Membilang sampai dengan Dua Puluh, bagian menghitung maju dan mundur. Menghitung maju berarti mulai dari bilangan kecil menuju bilangan besar. Menghitung mundur berarti mulai dari bilangan besar menuju bilangan kecil. Langkahnya selalu sama, satu demi satu. Kita melewati enam tahap seru: cerita, peta pikiran, infografis, benda nyata, gambar, dan simbol."
                     : adaBab5
                     ? "Kita belajar menghitung, membaca, dan menulis bilangan sampai dua puluh. Bukunya bernama Ayo Membilang sampai dengan Dua Puluh. Kita mengisi sepuluh dulu, lalu menghitung sisanya, membaca nama bilangan sebelas sampai dua puluh, dan menuliskan lambangnya. Kita melewati enam tahap seru: cerita, peta pikiran, infografis, benda nyata, gambar, dan simbol."
@@ -1272,7 +1282,9 @@ export default function IgilModulePlayer({ bab = "mtk-1-bab1" }: { bab?: BabModu
                 }
               >
                 <BarisIkon emoji="🧠" warna="#FFD6D6" judul="Capaian Pembelajaran (CP)">
-                  {subB5 ? (
+                  {subC5 ? (
+                    <>Siswa menyatakan sepuluh benda yang digabungkan sebagai satu puluhan dan benda yang tersisa sebagai satuan, mengisi tabel nilai tempat, membaca angka kiri sebagai puluhan dan angka kanan sebagai satuan, serta menulis kalimat nilai tempat bilangan 10 sampai 20.</>
+                  ) : subB5 ? (
                     <>Siswa menghitung maju dan menghitung mundur dengan langkah yang sama pada bilangan sampai 20, menemukan bilangan yang hilang pada deret, menyebutkan bilangan sebelum, sesudah, dan di antara, serta menunjukkan maju dan mundur pada kisi dan garis bilangan.</>
                   ) : adaBab5 ? (
                     <>Siswa menghitung banyak benda sampai 20, membaca dan menulis lambang serta nama bilangan 11 sampai 20, menyatakannya sebagai sepuluh ditambah satuannya, dan memperkirakan banyak benda lalu membuktikannya dengan menghitung.</>
@@ -1291,7 +1303,9 @@ export default function IgilModulePlayer({ bab = "mtk-1-bab1" }: { bab?: BabModu
                   )}
                 </BarisIkon>
                 <BarisIkon emoji="📖" warna="#FFE9A8" judul="Referensi Buku Resmi">
-                  {subB5
+                  {subC5
+                    ? "Buku Siswa Matematika Kelas I Kemendikbudristek (Bab 5: Ayo Membilang sampai dengan 20, Sub-Bab C hlm. 160–164)."
+                    : subB5
                     ? "Buku Siswa Matematika Kelas I Kemendikbudristek (Bab 5: Ayo Membilang sampai dengan 20, Sub-Bab B hlm. 158–160)."
                     : adaBab5
                     ? "Buku Siswa Matematika Kelas I Kemendikbudristek (Bab 5: Ayo Membilang sampai dengan 20, Sub-Bab A hlm. 147–158)."
@@ -1572,6 +1586,8 @@ export default function IgilModulePlayer({ bab = "mtk-1-bab1" }: { bab?: BabModu
               <CeritaBelasA speakGuru={speakGuru} />
             ) : subB5 ? (
               <CeritaUrutB speakGuru={speakGuru} />
+            ) : subC5 ? (
+              <CeritaNilaiC speakGuru={speakGuru} />
             ) : subC2 ? (
               <CeritaSoalC speakGuru={speakGuru} />
             ) : subB2 ? (
@@ -1704,6 +1720,13 @@ export default function IgilModulePlayer({ bab = "mtk-1-bab1" }: { bab?: BabModu
                   speakGuru={speakGuru}
                   maskot={<IgilWajah kelas="h-14 w-20 igil-lompat" />}
                 />
+              ) : subC5 ? (
+                <PetaPikiranB
+                  langkah={PETA_PIKIRAN_C5}
+                  judul={judulSubBab}
+                  speakGuru={speakGuru}
+                  maskot={<IgilWajah kelas="h-14 w-20 igil-lompat" />}
+                />
               ) : subC4 ? (
                 <PetaPikiranB
                   langkah={PETA_PIKIRAN_C4}
@@ -1828,6 +1851,8 @@ export default function IgilModulePlayer({ bab = "mtk-1-bab1" }: { bab?: BabModu
                 <InfografisBelasA speakGuru={speakGuru} />
               ) : subB5 ? (
                 <InfografisUrutB speakGuru={speakGuru} />
+              ) : subC5 ? (
+                <InfografisNilaiC speakGuru={speakGuru} />
               ) : subC4 ? (
                 <InfografisSusunC speakGuru={speakGuru} />
               ) : subB4 ? (
@@ -2064,6 +2089,20 @@ export default function IgilModulePlayer({ bab = "mtk-1-bab1" }: { bab?: BabModu
                       5,
                       pictorialRef,
                       "Empat permainan benda nyata sudah selesai. Sekarang kita lihat maju dan mundur dalam diagram."
+                    )
+                  }
+                />
+              ) : subC5 ? (
+                <ConcreteNilaiC
+                  speakGuru={speakGuru}
+                  panel={panelConcrete}
+                  hentikan={hentikanRekamConcrete}
+                  gulir={() => concreteRef.current?.scrollIntoView({ behavior: "smooth", block: "start" })}
+                  onSelesai={() =>
+                    handleUnlockNextSmicpa(
+                      5,
+                      pictorialRef,
+                      "Empat permainan benda nyata sudah selesai. Sekarang kita lihat puluhan dan satuan dalam diagram."
                     )
                   }
                 />
@@ -2374,6 +2413,20 @@ export default function IgilModulePlayer({ bab = "mtk-1-bab1" }: { bab?: BabModu
                     )
                   }
                 />
+              ) : subC5 ? (
+                <PictureNilaiC
+                  speakGuru={speakGuru}
+                  panel={panelGambar}
+                  hentikan={hentikanRekamConcrete}
+                  gulir={() => pictorialRef.current?.scrollIntoView({ behavior: "smooth", block: "start" })}
+                  onSelesai={() =>
+                    handleUnlockNextSmicpa(
+                      6,
+                      abstractRef,
+                      "Tiga permainan diagram sudah selesai. Ayo kita baca dan tulis nilai tempat dengan angka."
+                    )
+                  }
+                />
               ) : subC4 ? (
                 <PictureSusunC
                   speakGuru={speakGuru}
@@ -2653,6 +2706,14 @@ export default function IgilModulePlayer({ bab = "mtk-1-bab1" }: { bab?: BabModu
                 />
               ) : subB5 ? (
                 <AbstractUrutB
+                  speakGuru={speakGuru}
+                  panel={panelLambang}
+                  hentikan={hentikanRekamConcrete}
+                  gulir={() => abstractRef.current?.scrollIntoView({ behavior: "smooth", block: "start" })}
+                  onSelesai={() => selesaiBabRef.current?.scrollIntoView({ behavior: "smooth", block: "center" })}
+                />
+              ) : subC5 ? (
+                <AbstractNilaiC
                   speakGuru={speakGuru}
                   panel={panelLambang}
                   hentikan={hentikanRekamConcrete}
