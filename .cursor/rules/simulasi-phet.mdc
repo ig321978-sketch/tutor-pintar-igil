@@ -18,4 +18,7 @@ Setiap simulasi baru wajib memenuhi ini:
 - **Batas wajar.** Bilangan tetap dalam jangkauan kelas, skala tetap tidak berubah-ubah.
 - **Tanpa jaringan dan tanpa LLM.** Suara memakai `speakGuru` (guru pilihan siswa). Tema warna biru ungu royal, kuning emas, putih.
 - **Naskah.** Tiap bab menulis `naskah/mtk-<kelas>-bab<N>-simulasi.md` berisi tujuan belajar, model, kontrol, perwakilan, dan kartu "Coba ini!".
+- **Pilih metode yang cocok, jangan semua.** Metode yang dipakai: PhET (eksplorasi bebas), mesin keadaan (urutan proses dengan syarat perpindahan), skenario kontekstual (keputusan dengan akibat cerita), lab virtual 2D (alat ukur atau susun di kanvas), lab 3D (hanya bila isi bab memang bangun ruang, mis. Kelas 6 Kubus dan Balok; muat malas). CPA sudah di Materi. Penilaian per bab ada di `naskah/mtk-1-bab8-simulasi.md`. Semua wajib gratis dan tanpa panggilan API oleh siswa.
+- **Logika murni dipisah dari tampilan** (`*.ts` tanpa React) dan diuji di Node untuk mesin keadaan dan skenario.
+- **Ucapan simulasi** yang tetap (teks adegan, stasiun, "Coba ini") dibuat audio statisnya mengikuti `audio-guru-statis.mdc`. Kalimat yang berubah mengikuti data pengguna memakai suara perangkat.
 - Aturan Concrete dan Picture tetap berlaku untuk tahap Materi. Simulasi boleh menukar lambang benda dan lingkaran polos, karena itu perwakilan, bukan tahap.

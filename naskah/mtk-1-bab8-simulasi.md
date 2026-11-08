@@ -1,6 +1,34 @@
-# Matematika Kelas 1 · Bab 8 · Tab Simulasi (bergaya PhET)
+# Matematika Kelas 1 · Bab 8 · Tab Simulasi (empat simulasi, tiga metode)
 
-Komponen: `src/components/modul/SimulasiBab8.tsx`, dipasang di tab **Simulasi** pemutar `IgilModulePlayer.tsx` (hanya Bab 1 dan Bab 8 yang punya tab ini). Tidak ada pemanggilan jaringan, tidak ada skor, tidak ada poin. Suara memakai Suara Guru pilihan siswa lewat `speakGuru`.
+Komponen: `src/components/modul/SimulasiBab8.tsx` (pembungkus alur), dipasang di tab **Simulasi** pemutar `IgilModulePlayer.tsx` (hanya Bab 1 dan Bab 8 yang punya tab ini). Tidak ada pemanggilan jaringan, tidak ada skor, tidak ada poin. Suara memakai Suara Guru pilihan siswa lewat `speakGuru`.
+
+| No | Simulasi | Metode | Berkas |
+|----|----------|--------|--------|
+| 1 | Laboratorium Data: Toko Mainan (Sub-Bab A) | PhET | `SimulasiBab8.tsx` |
+| 2 | Pabrik Diagram Gambar (Sub-Bab B) | PhET | `SimulasiBab8.tsx` |
+| 3 | Mesin Data Ajaib | Mesin keadaan (state machine) | `SimulasiMesinData.tsx`, logika `mesin-data-bab8.ts` |
+| 4 | Skenario: Sekretaris Kelas | Skenario kontekstual | `SimulasiSkenarioPesta.tsx`, logika `skenario-pesta-bab8.ts` |
+
+Logika simulasi 3 dan 4 murni (tanpa React) dan diuji terpisah di Node: 54 kasus untuk mesin keadaan dan 76 kasus untuk skenario.
+
+## Penilaian metode untuk Kelas 1 SD
+Syarat: gratis, tanpa panggilan API oleh siswa, bisa berjalan di ponsel murah. Semua metode di bawah memenuhi syarat itu secara teknis. Yang membedakan adalah kecocokan dengan isi bab dan usia 6 sampai 7 tahun.
+
+| Bab | PhET (eksplorasi bebas) | Mesin keadaan | Skenario kontekstual | Lab virtual 2D | Lab 3D |
+|-----|-------------------------|---------------|----------------------|----------------|--------|
+| 1 Membilang sampai 10 | Tinggi (sudah ada) | Rendah | Sedang | Rendah | Tidak cocok |
+| 2 Penjumlahan sampai 10 | Tinggi | Sedang (mesin tambah) | Tinggi (warung, belanja) | Rendah | Tidak cocok |
+| 3 Pengurangan sampai 10 | Tinggi | Sedang (mesin kurang) | Tinggi | Rendah | Tidak cocok |
+| 4 Mengenal Bentuk | Sedang | Rendah | Sedang | **Tinggi** (papan paku dan tangram: susun dan urai) | Tidak cocok (bentuk datar) |
+| 5 Membilang sampai 20 | Tinggi (nilai tempat) | Sedang | Sedang | Rendah | Tidak cocok |
+| 6 Jumlah dan kurang sampai 20 | Tinggi | **Tinggi** (katak di garis bilangan: posisi = keadaan, loncat = aksi) | Tinggi | Rendah | Tidak cocok |
+| 7 Mengukur Panjang | Tinggi | Sedang | Sedang | **Tinggi** (penggaris dan satuan tidak baku di meja maya) | Tidak cocok |
+| **8 Mengenal Diagram** | **Tinggi (dibuat)** | **Tinggi (dibuat)** | **Tinggi (dibuat)** | Rendah (tumpang tindih dengan Simulasi 1 dan 2) | Tidak cocok |
+
+Catatan:
+- **CPA** sudah menjadi alur Materi, jadi tidak diulang di tab Simulasi.
+- **Lab 3D** (three.js bebas lisensi, berjalan lokal) tidak cocok untuk satu pun bab Kelas 1: bab bentuknya datar, dan diagram 3D justru menyesatkan. Metode ini cocok untuk **Kelas 6 Bab 3 Kubus dan Balok** (putar, hitung sisi, rusuk, dan titik sudut). Biayanya: ukuran paket sekitar 600 KB, jadi harus dimuat malas hanya saat tab dibuka.
+- **Lab virtual 2D** layak untuk Bab 4 dan Bab 7, bukan Bab 8.
 
 ## Standar PhET yang dipakai
 1. **Eksplorasi bebas.** Tidak ada nilai, waktu, atau benar-salah. Salah letak hanya dijawab dengan petunjuk.
@@ -31,11 +59,37 @@ Tujuan belajar: survei, diagram gambar tegak dan mendatar, satu gambar satu data
 - **Alat bandingkan:** ketuk dua nama pada diagram. Selisih ditandai merah pada kolom yang lebih tinggi dan ditulis sebagai kalimat dengan pengurangannya ("Wortel 2 lebih banyak dari Kol. 4 − 2 = 2"). Ketukan ketiga memulai ulang.
 - **Coba ini!** (1) Tambah anak sampai ada satu kolom paling tinggi. (2) Ubah diagram menjadi mendatar. Apakah datanya berubah? (3) Ketuk dua nama untuk mencari selisihnya. (4) Ganti lambang menjadi lingkaran. Apakah banyaknya sama?
 
+## Simulasi 3 · Mesin Data Ajaib (mesin keadaan)
+Tujuan belajar: urutan siklus data (tanya, turus, tabel, diagram, cerita) dan mengapa urutan itu penting.
+
+- **Keadaan:** Tanya → Turus → Tabel → Diagram → Cerita → Selesai. Setiap perpindahan punya syarat (guard): semua teman tercatat, semua baris tabel terisi, diagram sama dengan tabel.
+- **Peta stasiun:** lima lingkaran dengan panah. Keadaan sekarang bercincin emas, yang sudah dilewati hijau bercentang, yang belum bergembok. Mengetuk stasiun yang boleh dituju memindahkan mesin (mundur selalu boleh dan data tetap).
+- **Mesin menolak, dan mengatakan alasannya:** melompat ("Mesin tidak bisa melompat ke Diagram. Selesaikan stasiun Tanya dulu."), maju sebelum lengkap ("Turus belum lengkap. Masih ada 9 teman yang belum dicatat."), mewarnai lebih dari tabel ("Gambar Mangga sudah sama dengan tabel. Jangan lebih."). Penolakan dihitung dan ditampilkan sebagai informasi, bukan nilai.
+- **Riwayat mesin:** daftar perpindahan yang berhasil ("Tanya → Turus") dan jumlah penolakan.
+- **Dua ronde data:** Buah Kesukaan (Jeruk 4, Apel 3, Mangga 2) dan Hewan Kesukaan (Ayam 3, Bebek 2, Kelinci 5). "Putar lagi" bergantian.
+- **Selesai** bila mesin mencapai keadaan Selesai.
+- **Coba ini!** (1) Tekan stasiun Diagram sebelum waktunya. Apa kata mesin? (2) Selesaikan semua stasiun sampai Selesai. (3) Putar lagi dengan data baru. Apakah urutannya tetap sama?
+
+## Simulasi 4 · Skenario: Sekretaris Kelas (skenario kontekstual)
+Tujuan belajar: memakai data untuk mengambil keputusan nyata, memilih cara mencari data dan cara menyajikannya, dan membaca data (banyaknya, paling banyak, selisih).
+
+- **Cerita:** Bu Guru akan membeli buah (atau mainan) yang paling disukai teman-teman. Anak menjadi Sekretaris Kelas.
+- **Tujuh adegan:** Mulai, Cara, Kumpul, Sajikan, Baca, Putuskan, Akhir.
+  - **Cara:** menebak, bertanya ke dua teman, atau bertanya ke semua teman dan mencatat. Pilihan yang kurang tepat dijawab dengan akibat dalam cerita, lalu anak mencoba lagi.
+  - **Kumpul:** ketuk 14 atau 15 teman satu per satu, jawabannya masuk catatan turus.
+  - **Sajikan:** tabel, diagram gambar, atau daftar kalimat. Ketiganya benar. "Diingat di kepala saja" ditolak dengan alasan.
+  - **Baca:** tiga pertanyaan Bu Guru dari sajian yang dipilih (banyaknya, paling disukai, selisih).
+  - **Putuskan:** beli sama banyak (akibat: yang paling disukai kurang kebagian), beli satu jenis saja (akibat: teman lain kecewa), atau beli sesuai data (pesta berhasil).
+  - **Akhir:** ringkasan dan ajakan main lagi dengan data baru.
+- **Dua varian data:** Pesta Buah (Jeruk 3, Apel 5, Mangga 2, Belimbing 4) dan Mainan untuk Sudut Bermain (Pesawat 3, Mobil-mobilan 4, Boneka 2, Bola 6). Urutan pilihan diputar antarvarian supaya jawaban benar tidak selalu di tempat yang sama.
+- **Selesai** bila skenario mencapai adegan Akhir. Salah pilih tidak menghukum, hanya menambah hitungan "mencoba lagi" yang ditampilkan di akhir sebagai pujian.
+- **Coba ini!** (1) Pilih cara yang salah dulu. Apa kata Bu Guru? (2) Sajikan dengan tabel, lalu main lagi dan sajikan dengan diagram. Mana yang lebih mudah dibaca? (3) Coba membeli sama banyak. Apa akibatnya bagi teman-teman?
+
 ## Alur satu layar
-- Satu simulasi per layar, ditandai "Simulasi 1 dari 2" dan "Simulasi 2 dari 2". Tidak ada loncat bebas antar simulasi.
-- Tombol **LANJUTKAN KE SIMULASI BERIKUTNYA** pindah dari Simulasi 1 ke Simulasi 2. Di Simulasi 2 tombolnya menjadi **LANJUTKAN KE LATIHAN**.
-- Tombol LANJUTKAN baru aktif setelah siswa menyentuh simulasinya sekali (menyeret atau mengetuk benda, plus atau minus, pilihan tampilan, atau tombol Rapikan, Acak, dan Reset). Tombol suara tidak dihitung. Selama belum, tampil petunjuk "Mainkan dulu simulasinya, ya.".
-- Tombol KEMBALI di Simulasi 2 membawa siswa ke Simulasi 1. Keadaan kedua simulasi dipertahankan selama tab terbuka.
+- Satu simulasi per layar, ditandai "Simulasi 1 dari 4" sampai "Simulasi 4 dari 4", lengkap dengan nama metodenya. Tidak ada loncat bebas antar simulasi.
+- Tombol **LANJUTKAN KE SIMULASI BERIKUTNYA** berpindah berurutan. Di Simulasi 4 tombolnya menjadi **LANJUTKAN KE LATIHAN**.
+- Tombol LANJUTKAN baru aktif setelah simulasinya dimainkan. Simulasi 1 dan 2 (PhET): setelah disentuh sekali (menyeret atau mengetuk benda, plus atau minus, pilihan tampilan, atau tombol Rapikan, Acak, dan Reset; tombol suara tidak dihitung). Simulasi 3: setelah mesin mencapai Selesai. Simulasi 4: setelah skenario mencapai adegan Akhir. Selama belum, tampil petunjuk yang sesuai.
+- Tombol KEMBALI membawa siswa ke simulasi sebelumnya. Keadaan semua simulasi dipertahankan selama tab terbuka.
 
 ## Catatan integrasi
 - Urutan tab Bab 8: Silabus, Materi, Simulasi, Latihan, Ujian. Simulasi tidak memberi poin dan tidak membuka kunci apa pun. Latihan tetap terbuka setelah semua sub-bab Materi selesai, dan tab Latihan tetap bisa dibuka langsung dari bilah tab.
