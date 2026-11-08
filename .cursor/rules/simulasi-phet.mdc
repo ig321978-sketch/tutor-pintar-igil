@@ -1,11 +1,11 @@
 ---
-description: Standar Tab Simulasi bergaya PhET pada modul Matematika (mulai Bab 8)
+description: Standar Tab Simulasi bergaya PhET pada modul Matematika (Kelas 1 Bab 1 sampai 8 sudah ada)
 alwaysApply: true
 ---
 
 # Tab Simulasi bergaya PhET
 
-Tab **Simulasi** berada di antara Materi dan Latihan. Tab hanya tampil di bab yang sudah punya simulasi (Bab 1 lama, Bab 8 dan seterusnya). Simulasi tidak mengunci Latihan dan tidak memberi Poin Kualifikasi.
+Tab **Simulasi** berada di antara Materi dan Latihan. Tab hanya tampil di bab yang terdaftar di `SIMULASI_BAB` (`IgilModulePlayer.tsx`); Kelas 1 Bab 1 sampai 8 sudah terdaftar. Bab baru: buat `SimulasiBab<N>.tsx` dengan `simulasi-alur.tsx`, lalu daftarkan. Simulasi tidak mengunci Latihan dan tidak memberi Poin Kualifikasi. Peta simulasi Kelas 1 ada di `naskah/mtk-1-simulasi-bab1-7.md` dan `naskah/mtk-1-bab8-simulasi.md`.
 
 Setiap simulasi baru wajib memenuhi ini:
 
