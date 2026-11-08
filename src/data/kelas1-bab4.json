@@ -1,0 +1,522 @@
+{
+  "chapterId": "k1-mat-bab4",
+  "chapter_id": "k1-mat-bab4",
+  "phase_code": "FASE_A",
+  "grade": 1,
+  "subjectLabel": "MATEMATIKA - KELAS 1 SD",
+  "title": "BAB 4: MENGENAL BENTUK",
+  "tokens": {
+    "practice": 30,
+    "exam": 70,
+    "practicum": 50
+  },
+  "subBabs": {
+    "A": {
+      "id": "A",
+      "codeTitle": "Sub-Bab A (Mendeskripsikan Bentuk)",
+      "fullTitle": "Sub-Bab A: Mendeskripsikan Benda Berdasarkan Bentuk",
+      "targetDescription": "Siswa mengenali dan menyebutkan tiga bentuk benda (bentuk lengkung, segitiga, dan segi empat), mendeskripsikan benda dengan menghitung sisi lurus dan sudutnya, mengelompokkan benda yang bentuknya sama, serta menyadari bahwa bentuk tidak berubah karena posisi atau ukuran.",
+      "secondaryBg": "#DBEAFE",
+      "secondaryBorder": "#2563EB",
+      "secondaryText": "#1E3A8A",
+      "stories": [
+        {
+          "id": "A4-S1",
+          "titleHint": "Piknik Bersama",
+          "sceneType": "piknik-bersama",
+          "voiceNarration": "Piknik bersama! Kira, Upe, Wei, Halim, Malosi, dan Tika berpiknik di taman. Setiap teman membawa makanan. Ada donat yang bulat. Ada irisan semangka yang runcing. Ada kue lapis yang berpojok empat. Bentuk apa saja yang kamu temukan? Dapatkah kamu mengelompokkannya?"
+        },
+        {
+          "id": "A4-S2",
+          "titleHint": "Tiga Bentuk di Papan",
+          "sceneType": "papan-tiga-bentuk",
+          "voiceNarration": "Igil menggambar tiga bentuk di papan. Bentuk pertama bernama bentuk lengkung. Tepinya melengkung dan tidak punya sudut. Bentuk kedua bernama segitiga. Punya tiga sisi lurus dan tiga sudut. Bentuk ketiga bernama segi empat. Punya empat sisi lurus dan empat sudut. Semua benda di sekitar kita bisa kita kelompokkan dengan tiga bentuk ini."
+        },
+        {
+          "id": "A4-S3",
+          "titleHint": "Benda Bentuk Lengkung",
+          "sceneType": "benda-lengkung",
+          "voiceNarration": "Lihat meja makan Tika! Jam dinding, piring, donat, melon, dan telur. Semuanya punya tepi yang melengkung. Kita tidak menemukan ujung yang runcing, dan tidak ada sudut. Benda seperti ini berbentuk lengkung. Ada yang bulat, ada juga yang lonjong seperti telur. Keduanya tetap bentuk lengkung."
+        },
+        {
+          "id": "A4-S4",
+          "titleHint": "Benda Bentuk Segitiga",
+          "sceneType": "benda-segitiga",
+          "voiceNarration": "Halim menemukan benda berbentuk segitiga. Ada tenda, irisan semangka, kue risol, penggaris segitiga, dan kue lupis. Ujung-ujungnya runcing. Hitung sisinya: satu, dua, tiga. Hitung sudutnya: satu, dua, tiga. Segitiga punya tiga sisi lurus dan tiga sudut."
+        },
+        {
+          "id": "A4-S5",
+          "titleHint": "Benda Bentuk Segi Empat",
+          "sceneType": "benda-segi-empat",
+          "voiceNarration": "Wei mencari benda di dalam rumah. Jendela, pintu, bingkai foto, bendera, kue lapis, dan buku. Semuanya berbentuk segi empat. Hitung sisinya: satu, dua, tiga, empat. Hitung sudutnya: satu, dua, tiga, empat. Segi empat punya empat sisi lurus dan empat sudut."
+        },
+        {
+          "id": "A4-S6",
+          "titleHint": "Ayo Bermain Bentuk",
+          "sceneType": "bermain-bentuk-tubuh",
+          "voiceNarration": "Ayo bermain! Bentuk apa yang bisa dibuat dengan tubuh kita? Tiga teman berdiri melingkar membuat bentuk lengkung. Dua teman membuat atap dengan lengan membentuk segitiga. Satu teman membuat bingkai dengan jari membentuk segi empat. Sekarang giliranmu: buat bentuk dengan teman-temanmu, lalu tebak bentuk apa itu."
+        }
+      ],
+      "mindMaps": [
+        {
+          "stepNumber": 1,
+          "stepTitle": "1. Amati Bendanya",
+          "stepDesc": "Lihat benda dengan teliti, seperti detektif. Jangan lihat warnanya atau kegunaannya dulu. Lihat garis tepinya saja. Donat, jam dinding, dan telur kelihatan sama-sama membulat.",
+          "icon": "👀",
+          "flowFrom": "Benda di sekitar",
+          "flowTo": "Garis tepi benda"
+        },
+        {
+          "stepNumber": 2,
+          "stepTitle": "2. Rasakan Tepinya",
+          "stepDesc": "Telusuri tepi benda dengan jari. Kalau jarimu mengikuti garis yang melengkung terus, itu bentuk lengkung. Kalau jarimu berjalan lurus lalu berbelok di sudut, itu bentuk bersisi lurus.",
+          "icon": "☝️",
+          "flowFrom": "Garis tepi benda",
+          "flowTo": "Lurus atau melengkung"
+        },
+        {
+          "stepNumber": 3,
+          "stepTitle": "3. Hitung Sisi dan Sudut",
+          "stepDesc": "Hitung garis lurusnya, itu sisi. Hitung pojok tempat dua garis bertemu, itu sudut. Tiga sisi dan tiga sudut itu segitiga. Empat sisi dan empat sudut itu segi empat. Tidak ada sisi lurus dan sudut, itu bentuk lengkung.",
+          "icon": "🔢",
+          "flowFrom": "Lurus atau melengkung",
+          "flowTo": "Banyak sisi dan sudut"
+        },
+        {
+          "stepNumber": 4,
+          "stepTitle": "4. Beri Nama Bentuknya",
+          "stepDesc": "Sebut namanya dengan lengkap. Ada bentuk lengkung, segitiga, dan segi empat. Pintu, jendela, buku, dan bingkai foto semuanya segi empat, walaupun ukurannya berbeda.",
+          "icon": "🏷️",
+          "flowFrom": "Banyak sisi dan sudut",
+          "flowTo": "Nama bentuk"
+        },
+        {
+          "stepNumber": 5,
+          "stepTitle": "5. Kelompokkan",
+          "stepDesc": "Kumpulkan benda yang bentuknya sama ke dalam satu kelompok. Donat, piring, dan melon masuk kelompok bentuk lengkung. Tenda dan irisan semangka masuk kelompok segitiga. Buku dan pintu masuk kelompok segi empat.",
+          "icon": "🧺",
+          "flowFrom": "Nama bentuk",
+          "flowTo": "Kelompok bentuk"
+        },
+        {
+          "stepNumber": 6,
+          "stepTitle": "6. Cek dari Posisi Lain",
+          "stepDesc": "Putar bendanya, miringkan, atau balik. Segitiga yang terbalik tetap segitiga. Segi empat yang miring tetap segi empat. Bentuk tidak berubah karena posisinya berubah, dan tidak berubah karena ukurannya berbeda.",
+          "icon": "🔄",
+          "flowFrom": "Kelompok bentuk",
+          "flowTo": "Bentuk tetap walau diputar"
+        }
+      ],
+      "infografisData": [
+        {
+          "fruitName": "Tiga Bentuk di Sekitar Kita",
+          "emoji": "🔷",
+          "countNum": 3,
+          "countWord": "Tiga",
+          "voiceSentence": "Benda di sekitar kita punya tiga bentuk: bentuk lengkung, segitiga, dan segi empat."
+        },
+        {
+          "fruitName": "Ciri-ciri Tiga Bentuk",
+          "emoji": "📋",
+          "countNum": 3,
+          "countWord": "Tiga",
+          "voiceSentence": "Bentuk lengkung: nol sisi lurus, nol sudut. Segitiga: tiga sisi lurus, tiga sudut. Segi empat: empat sisi lurus, empat sudut."
+        },
+        {
+          "fruitName": "Bentuk Lengkung: Bulat dan Lonjong",
+          "emoji": "🟡",
+          "countNum": 0,
+          "countWord": "Nol",
+          "voiceSentence": "Piring bulat dan telur lonjong. Keduanya bentuk lengkung dan tidak punya sudut."
+        },
+        {
+          "fruitName": "Segitiga Selalu Segitiga",
+          "emoji": "🔺",
+          "countNum": 3,
+          "countWord": "Tiga",
+          "voiceSentence": "Segitiga tegak, terbalik, atau miring tetap punya tiga sisi dan tiga sudut."
+        },
+        {
+          "fruitName": "Segi Empat, Ukuran Beda",
+          "emoji": "🟩",
+          "countNum": 4,
+          "countWord": "Empat",
+          "voiceSentence": "Persegi, persegi panjang, dan segi empat miring semuanya punya empat sisi dan empat sudut."
+        },
+        {
+          "fruitName": "Benda dan Bentuknya",
+          "emoji": "🧺",
+          "countNum": 3,
+          "countWord": "Tiga",
+          "voiceSentence": "Donat, piring, dan jam dinding lengkung. Tenda dan irisan semangka segitiga. Pintu dan buku segi empat."
+        },
+        {
+          "fruitName": "Cara Mendeskripsikan Benda",
+          "emoji": "🗣️",
+          "countNum": 4,
+          "countWord": "Empat",
+          "voiceSentence": "Lihat, raba, hitung, lalu sebut. Jendela berbentuk segi empat. Jendela punya empat sisi lurus dan empat sudut."
+        },
+        {
+          "fruitName": "Kue Tradisional Kita",
+          "emoji": "🍰",
+          "countNum": 3,
+          "countWord": "Tiga",
+          "voiceSentence": "Kue lupis segitiga. Kue lapis segi empat. Kue cucur bulat, jadi lengkung."
+        }
+      ],
+      "concreteSlides": [
+        {
+          "title": "Keranjang Tiga Bentuk",
+          "emoji": "🧺",
+          "targetCount": 3,
+          "voiceGuide": "Seret setiap benda ke keranjang yang bentuknya sama. Lalu ucapkan banyak benda di keranjang lengkung."
+        },
+        {
+          "title": "Berburu Bentuk di Kamar",
+          "emoji": "🔎",
+          "targetCount": 4,
+          "voiceGuide": "Ketuk semua benda yang bentuknya sama dengan yang diminta. Ucapkan banyak benda segi empat yang ketemu."
+        },
+        {
+          "title": "Bayangan Siapa Ini?",
+          "emoji": "❓",
+          "targetCount": 0,
+          "voiceGuide": "Lihat garis tepi bayangan benda, lalu pilih nama bentuknya."
+        },
+        {
+          "title": "Papan Paku dan Karet Gelang",
+          "emoji": "📌",
+          "targetCount": 4,
+          "voiceGuide": "Bentangkan karet gelang di paku sampai membentuk segitiga dan segi empat. Ucapkan banyak sudut segi empat."
+        }
+      ],
+      "pictorialSlides": [
+        {
+          "title": "Warnai Menurut Nama",
+          "diagramType": "shape-diagram",
+          "numberA": 3,
+          "numberB": 3,
+          "caption": "Warnai bentuk polos menurut namanya. Kuning lengkung, merah muda segitiga, hijau segi empat."
+        },
+        {
+          "title": "Tabel Tally Bentuk",
+          "diagramType": "shape-tally",
+          "numberA": 9,
+          "numberB": 0,
+          "caption": "Hitung bentuk, lalu catat dengan goresan tally di tabel."
+        },
+        {
+          "title": "Hubungkan Garis Putus-putus",
+          "diagramType": "shape-dotted",
+          "numberA": 3,
+          "numberB": 0,
+          "caption": "Sambung garis putus-putus sampai bentuknya utuh, lalu sebut namanya."
+        }
+      ],
+      "abstractSlides": [
+        {
+          "symbolLarge": "3 sisi • 3 sudut",
+          "wordLarge": "SEGITIGA",
+          "mathNotation": "lengkung 0 • segitiga 3 • segi empat 4",
+          "voiceReadout": "Segitiga: tiga sisi lurus, tiga sudut. Segi empat: empat sisi lurus, empat sudut. Bentuk lengkung: nol sisi lurus, nol sudut."
+        },
+        {
+          "symbolLarge": "Siapa aku?",
+          "wordLarge": "DETEKTIF BENTUK",
+          "mathNotation": "banyak sudut = banyak sisi",
+          "voiceReadout": "Baca petunjuk, lalu sebut nama bentuk. Pada bentuk bersisi lurus, banyak sudut sama dengan banyak sisi."
+        },
+        {
+          "symbolLarge": "3",
+          "wordLarge": "TIGA SUDUT",
+          "mathNotation": "segitiga → 3 • segi empat → 4 • lengkung → 0",
+          "voiceReadout": "Ucapkan banyak sudut bentuk pilihanmu, lalu guratkan angkanya di kanvas."
+        }
+      ],
+      "interactiveGames": [
+        {
+          "gameId": "subA4-game-1",
+          "gameNumber": 1,
+          "stage": "Concrete",
+          "gameType": "drag-sort",
+          "title": "Keranjang Tiga Bentuk",
+          "bookReference": "Buku Siswa hlm. 117–119",
+          "objective": "Mengelompokkan benda nyata berdasarkan bentuk lengkung, segitiga, dan segi empat.",
+          "mechanicDescription": "Dua ronde (6 dan 9 benda). Siswa menyeret benda ke keranjang yang bentuknya sama, lalu mengucapkan banyak benda di keranjang lengkung.",
+          "voiceGuide": "Seret benda ke keranjang yang bentuknya sama. Ucapkan banyak benda di keranjang lengkung."
+        },
+        {
+          "gameId": "subA4-game-2",
+          "gameNumber": 2,
+          "stage": "Concrete",
+          "gameType": "find-and-tap",
+          "title": "Berburu Bentuk di Kamar",
+          "bookReference": "Buku Siswa hlm. 119, 122 (Ayo Mencoba)",
+          "objective": "Mencari benda berbentuk tertentu di dalam kamar.",
+          "mechanicDescription": "Tiga ronde: lengkung, segitiga, segi empat. Siswa mengetuk semua benda yang cocok lalu mengucapkan banyak benda segi empat.",
+          "voiceGuide": "Ketuk semua benda yang bentuknya sama dengan yang diminta."
+        },
+        {
+          "gameId": "subA4-game-3",
+          "gameNumber": 3,
+          "stage": "Concrete",
+          "gameType": "silhouette-guess",
+          "title": "Bayangan Siapa Ini?",
+          "bookReference": "Buku Siswa hlm. 117–119",
+          "objective": "Mengenali bentuk dari garis tepi bayangan benda.",
+          "mechanicDescription": "Empat ronde. Siswa memilih nama bentuk dari bayangan hitam sebuah benda, lalu benda muncul berwarna.",
+          "voiceGuide": "Lihat garis tepi bayangan, lalu pilih nama bentuknya."
+        },
+        {
+          "gameId": "subA4-game-4",
+          "gameNumber": 4,
+          "stage": "Concrete",
+          "gameType": "geoboard",
+          "title": "Papan Paku dan Karet Gelang",
+          "bookReference": "Buku Siswa hlm. 120 (Ayo Bermain)",
+          "objective": "Membentuk segitiga dan segi empat dengan karet gelang di papan paku.",
+          "mechanicDescription": "Dua ronde. Siswa mengetuk 3 paku untuk segitiga dan 4 paku untuk segi empat. Karet harus membentuk bentuk tertutup tanpa bersilang. Terakhir ucapkan banyak sudut segi empat.",
+          "voiceGuide": "Ketuk paku berurutan sampai karet membentuk bentuk yang diminta."
+        },
+        {
+          "gameId": "subA4-game-5",
+          "gameNumber": 5,
+          "stage": "Picture",
+          "gameType": "coloring",
+          "title": "Warnai Menurut Nama",
+          "bookReference": "Buku Siswa hlm. 121–122",
+          "objective": "Mewarnai bentuk polos menurut nama bentuknya, termasuk bentuk miring dan terbalik.",
+          "mechanicDescription": "Dua ronde (6 dan 10 bentuk). Siswa memilih krayon menurut nama bentuk lalu mengetuk bentuk. Terakhir ucapkan banyak segitiga merah muda.",
+          "voiceGuide": "Pilih krayon lalu warnai bentuk yang cocok."
+        },
+        {
+          "gameId": "subA4-game-6",
+          "gameNumber": 6,
+          "stage": "Picture",
+          "gameType": "tally-table",
+          "title": "Tabel Tally Bentuk",
+          "bookReference": "Buku Siswa hlm. 122",
+          "objective": "Menghitung bentuk dan mencatatnya dengan goresan tally.",
+          "mechanicDescription": "Dua ronde. Siswa menandai bentuk sambil menghitung, lalu membuat goresan tally di tabel sampai pas. Terakhir ucapkan jumlah semua bentuk.",
+          "voiceGuide": "Hitung bentuk lalu catat dengan goresan tally."
+        },
+        {
+          "gameId": "subA4-game-7",
+          "gameNumber": 7,
+          "stage": "Picture",
+          "gameType": "connect-dotted",
+          "title": "Hubungkan Garis Putus-putus",
+          "bookReference": "Buku Siswa hlm. 121 (nomor 3)",
+          "objective": "Menyambung garis putus-putus menjadi bentuk utuh dan menyebut namanya.",
+          "mechanicDescription": "Tiga ronde: lengkung, segi empat, segitiga. Siswa mengetuk setiap garis putus-putus lalu memilih nama. Terakhir ucapkan banyak garis lurus pada segitiga.",
+          "voiceGuide": "Sambung garisnya lalu pilih nama bentuknya."
+        },
+        {
+          "gameId": "subA4-game-8",
+          "gameNumber": 8,
+          "stage": "Abstract",
+          "gameType": "match-words",
+          "title": "Kartu Ciri-ciri",
+          "bookReference": "Buku Siswa hlm. 122–123",
+          "objective": "Menjodohkan kartu ciri (sisi dan sudut) dengan nama bentuk.",
+          "mechanicDescription": "Empat ronde. Tiga ronde memilih nama dari kartu ciri, satu ronde memilih kartu ciri dari nama. Terakhir ucapkan banyak sisi lurus bentuk lengkung.",
+          "voiceGuide": "Jodohkan kartu ciri dengan nama bentuk."
+        },
+        {
+          "gameId": "subA4-game-9",
+          "gameNumber": 9,
+          "stage": "Abstract",
+          "gameType": "clue-detective",
+          "title": "Detektif Bentuk Misterius",
+          "bookReference": "Buku Siswa pengayaan (Van Hiele tingkat 1)",
+          "objective": "Menalar nama bentuk dari petunjuk ciri berupa kata dan angka.",
+          "mechanicDescription": "Empat ronde dengan satu sampai tiga petunjuk. Terakhir ucapkan banyak sudut bentuk itu.",
+          "voiceGuide": "Baca petunjuk lalu pilih nama bentuk."
+        },
+        {
+          "gameId": "subA4-game-10",
+          "gameNumber": 10,
+          "stage": "Abstract",
+          "gameType": "say-and-trace",
+          "title": "Kanvas Guratan dan Suara",
+          "bookReference": "Buku Siswa hlm. 123 (Ayo Mencoba)",
+          "objective": "Menyebut dan menulis banyak sudut sebuah bentuk.",
+          "mechanicDescription": "Dua ronde. Ronde 1 segitiga. Ronde 2 siswa memilih sendiri satu bentuk. Siswa mengucapkan banyak sudut lalu menggurat angkanya.",
+          "voiceGuide": "Ucapkan banyak sudut, lalu guratkan angkanya."
+        }
+      ]
+    },
+    "B": {
+      "id": "B",
+      "codeTitle": "Sub-Bab B (Mengelompokkan Benda)",
+      "fullTitle": "Sub-Bab B: Mengelompokkan Benda",
+      "targetDescription": "Sub-Bab B sedang disiapkan.",
+      "secondaryBg": "#DCFCE7",
+      "secondaryBorder": "#16A34A",
+      "secondaryText": "#14532D",
+      "segeraHadir": true,
+      "stories": [],
+      "mindMaps": [],
+      "infografisData": [],
+      "concreteSlides": [],
+      "pictorialSlides": [],
+      "abstractSlides": [],
+      "interactiveGames": []
+    },
+    "C": {
+      "id": "C",
+      "codeTitle": "Sub-Bab C (Menyusun dan Mengurai Bentuk)",
+      "fullTitle": "Sub-Bab C: Menyusun dan Mengurai Bentuk Bangun",
+      "targetDescription": "Sub-Bab C sedang disiapkan.",
+      "secondaryBg": "#FEF3C7",
+      "secondaryBorder": "#D97706",
+      "secondaryText": "#78350F",
+      "segeraHadir": true,
+      "stories": [],
+      "mindMaps": [],
+      "infografisData": [],
+      "concreteSlides": [],
+      "pictorialSlides": [],
+      "abstractSlides": [],
+      "interactiveGames": []
+    }
+  },
+  "practiceQuestions": [
+    {
+      "id": 1,
+      "level": "LOTS (30%)",
+      "prompt": "Donat Kira bentuknya bulat dan tepinya melengkung. Donat itu berbentuk...",
+      "visualEmojis": [
+        "🍩"
+      ],
+      "options": [
+        "lengkung",
+        "segitiga",
+        "segi empat",
+        "garis lurus"
+      ]
+    },
+    {
+      "id": 2,
+      "level": "LOTS (30%)",
+      "prompt": "Penggaris Wei punya 3 sisi lurus dan 3 sudut. Penggaris itu berbentuk...",
+      "visualEmojis": [],
+      "options": [
+        "lengkung",
+        "segi empat",
+        "segitiga",
+        "garis lurus"
+      ]
+    },
+    {
+      "id": 3,
+      "level": "LOTS (30%)",
+      "prompt": "Buku Upe berbentuk segi empat. Berapa banyak sudut buku itu?",
+      "visualEmojis": [
+        "📘"
+      ],
+      "options": [
+        "0",
+        "3",
+        "4",
+        "5"
+      ]
+    },
+    {
+      "id": 4,
+      "level": "MOTS (30%)",
+      "prompt": "Tika mencari benda yang berbentuk segitiga. Benda yang tepat adalah...",
+      "visualEmojis": [
+        "🍉"
+      ],
+      "options": [
+        "irisan semangka",
+        "jam dinding",
+        "pintu",
+        "telur"
+      ]
+    },
+    {
+      "id": 5,
+      "level": "MOTS (30%)",
+      "prompt": "Jam dinding, piring, dan telur dimasukkan ke satu keranjang. Nama keranjang yang cocok adalah...",
+      "visualEmojis": [
+        "🕐",
+        "🍽️",
+        "🥚"
+      ],
+      "options": [
+        "segitiga",
+        "segi empat",
+        "bentuk bersudut",
+        "bentuk lengkung"
+      ]
+    },
+    {
+      "id": 6,
+      "level": "MOTS (30%)",
+      "prompt": "Segitiga punya 3 sudut dan segi empat punya 4 sudut. Jika digabung, banyak sudut semuanya ada...",
+      "visualEmojis": [],
+      "options": [
+        "6",
+        "7",
+        "8",
+        "12"
+      ]
+    },
+    {
+      "id": 7,
+      "level": "HOTS (40%)",
+      "prompt": "Pintu rumah Malosi berbentuk persegi panjang dan jendelanya berbentuk persegi. Pernyataan yang benar adalah...",
+      "visualEmojis": [
+        "🚪",
+        "🪟"
+      ],
+      "options": [
+        "pintu segi empat, jendela segitiga",
+        "keduanya segitiga karena berpojok",
+        "keduanya segi empat karena sama-sama punya 4 sisi lurus dan 4 sudut",
+        "keduanya lengkung karena berbingkai"
+      ]
+    },
+    {
+      "id": 8,
+      "level": "HOTS (40%)",
+      "prompt": "Kira memutar penggaris segitiga sampai posisinya terbalik. Setelah diputar, penggaris itu...",
+      "visualEmojis": [],
+      "options": [
+        "berubah menjadi segi empat",
+        "tetap segitiga karena masih punya 3 sisi dan 3 sudut",
+        "berubah menjadi lengkung",
+        "tidak punya bentuk lagi"
+      ]
+    },
+    {
+      "id": 9,
+      "level": "HOTS (40%)",
+      "prompt": "Upe berkata, \"Telur lonjong, jadi telur bukan bentuk lengkung.\" Pernyataan Upe...",
+      "visualEmojis": [
+        "🥚"
+      ],
+      "options": [
+        "benar, karena hanya yang bulat yang lengkung",
+        "benar, karena telur punya satu sudut",
+        "salah, karena telur berbentuk segitiga",
+        "salah, karena telur tepinya melengkung dan tidak punya sudut"
+      ]
+    },
+    {
+      "id": 10,
+      "level": "HOTS (40%)",
+      "prompt": "Bu guru membawa kue lupis, kue lapis, dan kue cucur yang bulat. Urutan bentuknya yang tepat adalah...",
+      "visualEmojis": [],
+      "options": [
+        "segitiga, segi empat, lengkung",
+        "segi empat, segitiga, lengkung",
+        "lengkung, segitiga, segi empat",
+        "segitiga, lengkung, segi empat"
+      ]
+    }
+  ]
+}
