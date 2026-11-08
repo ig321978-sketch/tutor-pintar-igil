@@ -1,0 +1,835 @@
+{
+  "chapterId": "k1-mat-bab7",
+  "chapter_id": "k1-mat-bab7",
+  "phase_code": "FASE_A",
+  "grade": 1,
+  "subjectLabel": "MATEMATIKA - KELAS 1 SD",
+  "title": "BAB 7: MENGUKUR PANJANG BENDA",
+  "tokens": {
+    "practice": 30,
+    "exam": 70,
+    "practicum": 50
+  },
+  "subBabs": {
+    "A": {
+      "id": "A",
+      "codeTitle": "Sub-Bab A (Membandingkan dan Mengurutkan Panjang Benda)",
+      "fullTitle": "Sub-Bab A: Membandingkan dan Mengurutkan Panjang Benda",
+      "targetDescription": "Siswa membandingkan tinggi dan panjang dua benda dengan kata lebih tinggi, lebih pendek, lebih panjang, dan sama tinggi, membandingkan tiga benda atau lebih dengan kata paling tinggi, paling pendek, dan paling panjang, mengurutkan benda dari yang paling pendek atau paling tinggi, membandingkan posisi benda dengan kata lebih tinggi, lebih rendah, paling tinggi, dan paling rendah, serta memahami bahwa benda dibandingkan dari garis awal yang sama.",
+      "secondaryBg": "#E0F2FE",
+      "secondaryBorder": "#0284C7",
+      "secondaryText": "#0C4A6E",
+      "stories": [
+        {
+          "id": "A7-S1",
+          "titleHint": "Mencuci Tangan",
+          "sceneType": "anak-berbaris-tinggi",
+          "voiceNarration": "Waktu istirahat telah tiba. Para siswa akan memakan bekal mereka. Kira, Upe, Malosi, dan Wei segera berbaris. Mereka berdiri berjajar dengan tertib dan menunggu giliran untuk mencuci tangan. Mereka mematuhi pesan Ibu Guru, kita harus mencuci tangan sebelum makan. Coba urutkan siswa berdasarkan tinggi badannya. Bagaimana kamu mengetahuinya? Tinggi badan kita berbeda-beda. Itu adalah ciptaan Tuhan yang harus disyukuri. Kita harus saling menghargai."
+        },
+        {
+          "id": "A7-S2",
+          "titleHint": "Lebih Tinggi, Lebih Pendek",
+          "sceneType": "pohon-lebih-tinggi",
+          "voiceNarration": "Ayo kita amati pohon pisang. Pohon mana yang paling tinggi? Pohon mana yang paling pendek? Kita bandingkan tinggi pohon A dan pohon B. Pohon A lebih tinggi dari pohon B. Pohon B lebih pendek dari pohon A. Kita dapat membandingkan tinggi dua benda. Kita menggunakan kata lebih tinggi dan lebih pendek."
+        },
+        {
+          "id": "A7-S3",
+          "titleHint": "Sama Tinggi",
+          "sceneType": "pohon-sama-tinggi",
+          "voiceNarration": "Sekarang kita bandingkan tinggi pohon B dan pohon C. Ujung atas kedua pohon sama tinggi. Pohon B sama tinggi dengan pohon C. Dua benda ada yang sama tingginya. Kita menggunakan kata sama tinggi untuk membandingkannya."
+        },
+        {
+          "id": "A7-S4",
+          "titleHint": "Paling Tinggi, Paling Pendek",
+          "sceneType": "pohon-paling-tinggi",
+          "voiceNarration": "Kita bandingkan pohon A, B, C, dan D. Pohon A lebih tinggi dari pohon B, C, dan D. Jadi pohon A paling tinggi. Pohon D lebih pendek dari pohon A, B, dan C. Jadi pohon D paling pendek. Urutan pohon dari yang paling tinggi adalah A, B, C, dan D, atau A, C, B, dan D, karena pohon B dan pohon C sama tinggi. Kita dapat membandingkan tinggi tiga benda atau lebih. Kita menggunakan kata paling tinggi dan paling pendek."
+        },
+        {
+          "id": "A7-S5",
+          "titleHint": "Pensil Warna",
+          "sceneType": "pensil-garis-awal",
+          "voiceNarration": "Amati pensil warna. Semua pensil dimulai dari garis awal yang sama. Pensil hijau lebih pendek dari pensil merah. Pensil merah lebih pendek dari pensil biru. Pensil hijau lebih pendek dari pensil merah dan biru, jadi pensil hijau paling pendek. Pensil biru lebih panjang dari pensil hijau dan merah, jadi pensil biru paling panjang. Kita dapat membandingkan panjang benda. Kita menggunakan kata lebih panjang, lebih pendek, paling panjang, dan paling pendek."
+        },
+        {
+          "id": "A7-S6",
+          "titleHint": "Kupu-Kupu Terbang",
+          "sceneType": "kupu-kupu-terbang",
+          "voiceNarration": "Di taman ada tiga kupu-kupu, yaitu kuning, merah, dan hijau. Kupu-kupu kuning terbang tinggi. Kupu-kupu merah terbang lebih tinggi dari kupu-kupu kuning. Kupu-kupu hijau terbang lebih tinggi dari kupu-kupu merah dan kupu-kupu kuning. Jadi kupu-kupu hijau terbang paling tinggi dan kupu-kupu kuning terbang paling rendah. Kita dapat membandingkan posisi benda. Kita menggunakan kata lebih tinggi, lebih rendah, paling tinggi, dan paling rendah."
+        }
+      ],
+      "mindMaps": [
+        {
+          "stepNumber": 1,
+          "stepTitle": "1. Amati dan Sejajarkan",
+          "stepDesc": "Amati benda yang akan dibandingkan. Letakkan benda pada garis awal yang sama, supaya ujungnya bisa dibandingkan dengan adil.",
+          "icon": "👀",
+          "flowFrom": "Amati benda",
+          "flowTo": "Sejajarkan"
+        },
+        {
+          "stepNumber": 2,
+          "stepTitle": "2. Dua Benda",
+          "stepDesc": "Bandingkan dua benda dengan kata lebih tinggi dan lebih pendek. Kalau ujung atasnya sama, gunakan kata sama tinggi.",
+          "icon": "↕️",
+          "flowFrom": "Sejajarkan",
+          "flowTo": "Dua benda"
+        },
+        {
+          "stepNumber": 3,
+          "stepTitle": "3. Tiga Benda atau Lebih",
+          "stepDesc": "Bandingkan tiga benda atau lebih dengan kata paling tinggi dan paling pendek. Cari benda yang lebih tinggi dari semua yang lain.",
+          "icon": "🌴",
+          "flowFrom": "Dua benda",
+          "flowTo": "Tiga benda atau lebih"
+        },
+        {
+          "stepNumber": 4,
+          "stepTitle": "4. Urutkan",
+          "stepDesc": "Susun benda dari yang paling pendek sampai paling tinggi, atau sebaliknya. Kalau ada dua benda sama tinggi, urutannya boleh bertukar.",
+          "icon": "🔢",
+          "flowFrom": "Tiga benda atau lebih",
+          "flowTo": "Urutkan"
+        },
+        {
+          "stepNumber": 5,
+          "stepTitle": "5. Panjang dan Posisi",
+          "stepDesc": "Untuk panjang, gunakan lebih panjang, lebih pendek, paling panjang, dan paling pendek. Untuk posisi, gunakan lebih tinggi, lebih rendah, paling tinggi, dan paling rendah.",
+          "icon": "📏",
+          "flowFrom": "Urutkan",
+          "flowTo": "Panjang dan posisi"
+        },
+        {
+          "stepNumber": 6,
+          "stepTitle": "6. Ceritakan dan Syukuri",
+          "stepDesc": "Buat kalimat perbandingan dari benda di sekitarmu. Tinggi badan kita berbeda-beda, itu ciptaan Tuhan yang harus disyukuri dan kita saling menghargai.",
+          "icon": "🙏",
+          "flowFrom": "Panjang dan posisi",
+          "flowTo": "Ceritakan dan syukuri"
+        }
+      ],
+      "infografisData": [
+        {
+          "fruitName": "Berjajar Menurut Tinggi",
+          "emoji": "🧒",
+          "countNum": 4,
+          "countWord": "Empat",
+          "voiceSentence": "Kira, Upe, Malosi, dan Wei berbaris. Dari yang paling pendek sampai paling tinggi: Kira, Wei, Upe, Malosi. Tinggi badan kita berbeda-beda, itu ciptaan Tuhan yang harus disyukuri."
+        },
+        {
+          "fruitName": "Lebih Tinggi, Lebih Pendek",
+          "emoji": "🌴",
+          "countNum": 2,
+          "countWord": "Dua",
+          "voiceSentence": "Pohon A lebih tinggi dari pohon B. Pohon B lebih pendek dari pohon A. Untuk dua benda kita memakai kata lebih."
+        },
+        {
+          "fruitName": "Sama Tinggi",
+          "emoji": "🟰",
+          "countNum": 2,
+          "countWord": "Dua",
+          "voiceSentence": "Pohon B sama tinggi dengan pohon C. Ujung atas kedua pohon sejajar."
+        },
+        {
+          "fruitName": "Paling Tinggi, Paling Pendek",
+          "emoji": "🥇",
+          "countNum": 4,
+          "countWord": "Empat",
+          "voiceSentence": "Di antara empat pohon, pohon A paling tinggi dan pohon D paling pendek. Untuk tiga benda atau lebih kita memakai kata paling."
+        },
+        {
+          "fruitName": "Dua Urutan yang Benar",
+          "emoji": "🔢",
+          "countNum": 4,
+          "countWord": "Empat",
+          "voiceSentence": "Urutan dari paling tinggi adalah A, B, C, D atau A, C, B, D, karena pohon B dan pohon C sama tinggi sehingga boleh bertukar."
+        },
+        {
+          "fruitName": "Lebih Panjang, Lebih Pendek",
+          "emoji": "✏️",
+          "countNum": 3,
+          "countWord": "Tiga",
+          "voiceSentence": "Pensil biru paling panjang, pensil merah di tengah, dan pensil hijau paling pendek."
+        },
+        {
+          "fruitName": "Mulai dari Garis Awal",
+          "emoji": "📍",
+          "countNum": 2,
+          "countWord": "Dua",
+          "voiceSentence": "Benda yang dibandingkan harus dimulai dari garis awal yang sama supaya perbandingannya adil."
+        },
+        {
+          "fruitName": "Posisi: Tinggi dan Rendah",
+          "emoji": "🦋",
+          "countNum": 3,
+          "countWord": "Tiga",
+          "voiceSentence": "Kupu-kupu hijau terbang paling tinggi, merah di tengah, dan kuning paling rendah. Untuk posisi kita memakai lebih tinggi dan lebih rendah."
+        },
+        {
+          "fruitName": "Kata Perbandingan",
+          "emoji": "🗣️",
+          "countNum": 10,
+          "countWord": "Sepuluh",
+          "voiceSentence": "Dua benda memakai kata lebih. Tiga benda atau lebih memakai kata paling. Kalau sama, pakai sama tinggi atau sama panjang."
+        }
+      ],
+      "concreteSlides": [
+        {
+          "title": "Berbaris Menurut Tinggi",
+          "emoji": "🧒",
+          "targetCount": 3,
+          "voiceGuide": "Seret anak-anak ke tempatnya supaya berbaris dari yang paling pendek atau dari yang paling tinggi. Bandingkan tinggi badan mereka."
+        },
+        {
+          "title": "Sejajarkan di Garis Awal",
+          "emoji": "✏️",
+          "targetCount": 3,
+          "voiceGuide": "Ketuk setiap pensil untuk menggesernya ke garis awal yang sama, lalu pilih pensil yang paling panjang atau paling pendek."
+        },
+        {
+          "title": "Kartu Kata Perbandingan",
+          "emoji": "🃏",
+          "targetCount": 3,
+          "voiceGuide": "Bandingkan tinggi pohon pisang, lalu seret kartu kata lebih tinggi, lebih pendek, atau sama tinggi ke kalimat yang tepat."
+        },
+        {
+          "title": "Kupu-Kupu Terbang",
+          "emoji": "🦋",
+          "targetCount": 2,
+          "voiceGuide": "Dengarkan petunjuk, lalu seret kupu-kupu, burung, atau balon ke ketinggian yang tepat."
+        }
+      ],
+      "pictorialSlides": [
+        {
+          "title": "Pilih Batang",
+          "diagramType": "bar-compare",
+          "numberA": 18,
+          "numberB": 10,
+          "caption": "Batang polos dimulai dari garis awal yang sama. Ketuk batang yang paling panjang, yang paling pendek, atau yang sama panjang."
+        },
+        {
+          "title": "Susun Tangga Batang",
+          "diagramType": "bar-staircase",
+          "numberA": 5,
+          "numberB": 1,
+          "caption": "Ketuk batang satu per satu dari yang paling pendek atau dari yang paling tinggi sampai tersusun menjadi tangga."
+        },
+        {
+          "title": "Jodohkan Diagram dan Kalimat",
+          "diagramType": "match-diagram",
+          "numberA": 3,
+          "numberB": 3,
+          "caption": "Ketuk satu diagram batang, lalu ketuk kalimat perbandingan yang cocok dengannya."
+        }
+      ],
+      "abstractSlides": [
+        {
+          "symbolLarge": "hijau < merah < biru",
+          "wordLarge": "TEKA-TEKI PEMBANDING",
+          "mathNotation": "kuning < merah = biru < hijau",
+          "voiceReadout": "Baca petunjuk perbandingan lalu urutkan. Pensil hijau lebih pendek dari merah, merah lebih pendek dari biru, jadi biru paling panjang."
+        },
+        {
+          "symbolLarge": "benar? salah?",
+          "wordLarge": "BENAR ATAU SALAH",
+          "mathNotation": "Kira < Upe < Wei < Malosi",
+          "voiceReadout": "Baca keterangan tentang urutan, lalu putuskan setiap kalimat benar atau salah. Kira paling pendek dan Malosi paling tinggi."
+        },
+        {
+          "symbolLarge": "3",
+          "wordLarge": "TIGA",
+          "mathNotation": "Kira < Upe < Wei < Malosi • 3 anak lebih tinggi dari Kira",
+          "voiceReadout": "Hitung berapa benda yang lebih tinggi atau lebih panjang, ucapkan hasilnya, lalu guratkan angkanya di kanvas. Tiga ditulis dengan angka tiga."
+        }
+      ],
+      "interactiveGames": [
+        {
+          "gameId": "subA7-game-1",
+          "gameNumber": 1,
+          "stage": "Concrete",
+          "gameType": "drag-order-by-height",
+          "title": "Berbaris Menurut Tinggi",
+          "bookReference": "Buku Siswa hlm. 199 (Kira, Upe, Malosi, dan Wei berbaris menurut tinggi badan); hlm. 204 (Ayo Bermain: berbaris bersama 6 teman)",
+          "objective": "Mengurutkan tinggi badan: menyusun anak dari yang paling pendek atau dari yang paling tinggi, termasuk dua anak yang sama tinggi.",
+          "mechanicDescription": "Tiga ronde (3 anak dari yang pendek, 4 anak dari yang pendek, 4 anak dari yang tinggi dengan dua anak sama tinggi). Siswa menyeret anak ke tempat berbaris. Terakhir ucapkan berapa anak yang lebih pendek dari anak yang paling tinggi.",
+          "voiceGuide": "Seret anak ke tempatnya sesuai tinggi badan."
+        },
+        {
+          "gameId": "subA7-game-2",
+          "gameNumber": 2,
+          "stage": "Concrete",
+          "gameType": "tap-align-start-line",
+          "title": "Sejajarkan di Garis Awal",
+          "bookReference": "Buku Siswa hlm. 202 (pensil warna biru, merah, dan hijau dibandingkan panjangnya)",
+          "objective": "Membandingkan dengan adil: menggeser benda ke garis awal yang sama sebelum membandingkan panjangnya.",
+          "mechanicDescription": "Tiga ronde (3 pensil paling panjang, 3 pensil paling pendek, 4 pensil paling panjang). Siswa mengetuk setiap pensil untuk menggesernya ke garis awal, lalu memilih pensil yang diminta. Terakhir ucapkan berapa pensil yang lebih pendek dari pensil yang paling panjang.",
+          "voiceGuide": "Geser semua pensil ke garis awal, lalu pilih yang diminta."
+        },
+        {
+          "gameId": "subA7-game-3",
+          "gameNumber": 3,
+          "stage": "Concrete",
+          "gameType": "drag-word-cards",
+          "title": "Kartu Kata Perbandingan",
+          "bookReference": "Buku Siswa hlm. 200–201 (pohon pisang A, B, C, dan D: lebih tinggi, lebih pendek, sama tinggi)",
+          "objective": "Membandingkan tinggi benda dengan kata lebih tinggi, lebih pendek, dan sama tinggi.",
+          "mechanicDescription": "Tiga ronde (2, 3, dan 4 kalimat tentang pohon pisang). Siswa menyeret kartu kata ke kalimat yang tepat. Terakhir ucapkan berapa pohon yang lebih pendek dari pohon A.",
+          "voiceGuide": "Seret kartu kata ke kalimat perbandingan yang tepat."
+        },
+        {
+          "gameId": "subA7-game-4",
+          "gameNumber": 4,
+          "stage": "Concrete",
+          "gameType": "drag-to-height-by-clues",
+          "title": "Kupu-Kupu Terbang",
+          "bookReference": "Buku Siswa hlm. 203 (tiga kupu-kupu terbang); hlm. 207 (Ayo Berlatih nomor 7: burung terbang)",
+          "objective": "Membandingkan posisi benda dengan kata lebih tinggi, lebih rendah, paling tinggi, dan paling rendah berdasarkan petunjuk.",
+          "mechanicDescription": "Tiga ronde (3 kupu-kupu, 3 burung, 4 balon). Siswa mendengar petunjuk lalu menyeret setiap benda ke ketinggiannya. Terakhir ucapkan berapa balon yang lebih tinggi dari balon merah.",
+          "voiceGuide": "Dengarkan petunjuk, lalu seret ke ketinggian yang tepat."
+        },
+        {
+          "gameId": "subA7-game-5",
+          "gameNumber": 5,
+          "stage": "Picture",
+          "gameType": "tap-the-bar",
+          "title": "Pilih Batang",
+          "bookReference": "Buku Siswa hlm. 202 (membandingkan panjang pensil); hlm. 205–207 (Ayo Berlatih nomor 1 sampai 6)",
+          "objective": "Membandingkan panjang batang polos dari garis awal yang sama: yang paling panjang, paling pendek, dan sama panjang.",
+          "mechanicDescription": "Tiga ronde (3 batang paling panjang, 4 batang sama panjang dengan batang A, 4 batang paling pendek). Siswa mengetuk batang yang diminta. Terakhir ucapkan berapa batang yang lebih panjang dari batang D.",
+          "voiceGuide": "Ketuk batang yang diminta."
+        },
+        {
+          "gameId": "subA7-game-6",
+          "gameNumber": 6,
+          "stage": "Picture",
+          "gameType": "tap-sequence-staircase",
+          "title": "Susun Tangga Batang",
+          "bookReference": "Buku Siswa hlm. 201 (urutan pohon dari paling tinggi dan paling pendek); hlm. 206 (nomor 4 dan 5)",
+          "objective": "Mengurutkan batang dari yang paling pendek atau dari yang paling tinggi dengan mengetuk batang berurutan.",
+          "mechanicDescription": "Tiga ronde (3 batang dari yang pendek, 4 batang dari yang tinggi, 5 batang dari yang pendek). Siswa mengetuk batang satu per satu sampai membentuk tangga. Terakhir ucapkan berapa batang yang lebih tinggi dari batang yang paling pendek.",
+          "voiceGuide": "Ketuk batang berurutan sampai menjadi tangga."
+        },
+        {
+          "gameId": "subA7-game-7",
+          "gameNumber": 7,
+          "stage": "Picture",
+          "gameType": "match-diagram-sentence",
+          "title": "Jodohkan Diagram dan Kalimat",
+          "bookReference": "Buku Siswa hlm. 200–202 (kalimat perbandingan tinggi dan panjang)",
+          "objective": "Menjodohkan diagram batang dengan kalimat perbandingan yang tepat.",
+          "mechanicDescription": "Tiga ronde (3 diagram tegak, 3 diagram datar, 3 diagram tegak yang lebih sulit). Siswa mengetuk satu diagram lalu kalimat yang cocok. Terakhir ucapkan pada diagram ketiga ada berapa batang yang lebih tinggi dari batang L.",
+          "voiceGuide": "Ketuk diagram, lalu ketuk kalimat yang cocok."
+        },
+        {
+          "gameId": "subA7-game-8",
+          "gameNumber": 8,
+          "stage": "Abstract",
+          "gameType": "clue-riddle",
+          "title": "Teka-Teki Pembanding",
+          "bookReference": "Buku Siswa hlm. 202 (pensil hijau, merah, dan biru); hlm. 203 (kupu-kupu terbang)",
+          "objective": "Menyimpulkan urutan dari petunjuk perbandingan yang saling berkaitan.",
+          "mechanicDescription": "Lima ronde (pensil, pohon, nama anak, burung, dan tali). Siswa membaca petunjuk lalu memilih yang paling tinggi, paling pendek, atau paling panjang. Terakhir ucapkan berapa tali yang lebih pendek dari tali hijau.",
+          "voiceGuide": "Baca petunjuk, lalu pilih jawabannya."
+        },
+        {
+          "gameId": "subA7-game-9",
+          "gameNumber": 9,
+          "stage": "Abstract",
+          "gameType": "true-or-false",
+          "title": "Benar atau Salah",
+          "bookReference": "Buku Siswa hlm. 201 (urutan dan sama tinggi); hlm. 205–207 (Ayo Berlatih); pengayaan penalaran berantai",
+          "objective": "Memutuskan benar atau salahnya kalimat perbandingan berdasarkan keterangan urutan.",
+          "mechanicDescription": "Tiga ronde, tiap ronde tiga kalimat. Siswa membaca keterangan lalu menekan benar atau salah. Terakhir ucapkan berapa burung yang terbang lebih rendah dari burung X.",
+          "voiceGuide": "Baca keterangan, lalu tekan benar atau salah."
+        },
+        {
+          "gameId": "subA7-game-10",
+          "gameNumber": 10,
+          "stage": "Abstract",
+          "gameType": "say-and-trace",
+          "title": "Kanvas Guratan dan Suara",
+          "bookReference": "Buku Siswa hlm. 204 (Ayo Mencoba: amati 3 benda di sekitar kalian dan bandingkan panjangnya)",
+          "objective": "Menghitung banyak benda yang lebih tinggi atau lebih panjang, mengucapkannya, dan menulis lambangnya.",
+          "mechanicDescription": "Dua ronde. Ronde 1 ada berapa anak yang lebih tinggi dari Kira. Ronde 2 siswa memilih sendiri 3, 4, atau 5 benda lalu menghitung benda yang lebih panjang dari yang paling pendek. Siswa mengucapkan hasilnya lalu menggurat lambangnya.",
+          "voiceGuide": "Hitung, ucapkan, lalu guratkan lambangnya."
+        }
+      ]
+    },
+    "B": {
+      "id": "B",
+      "codeTitle": "Sub-Bab B (Mengukur Panjang Benda)",
+      "fullTitle": "Sub-Bab B: Mengukur Panjang Benda",
+      "targetDescription": "Siswa mengukur panjang benda dengan satuan tidak baku seperti jengkal, telapak kaki, depa, stik es krim, pensil, koin, sedotan, dan penjepit kertas, mengukur dengan cara yang benar (mulai dari ujung, rapat, tidak bertumpuk, tidak miring, dan satu jenis alat ukur), menulis hasil dengan angka dan nama alat ukur, menjelaskan mengapa alat ukur berbeda memberi hasil berbeda, mengukur dengan kotak pada kertas berpetak, membandingkan hasil pengukuran, serta menebak panjang sebelum mengukur.",
+      "secondaryBg": "#FCE7F3",
+      "secondaryBorder": "#DB2777",
+      "secondaryText": "#831843",
+      "stories": [
+        {
+          "id": "B7-S1",
+          "titleHint": "Tinggi Badan Malosi",
+          "sceneType": "tinggi-malosi",
+          "voiceNarration": "Malosi adalah siswa paling tinggi di kelas. Menurut kamu, berapa kira-kira tinggi badan Malosi? Kita bisa mengukur tinggi badan Malosi. Kita juga bisa mengukur panjang benda. Kita bisa mengukurnya menggunakan jengkal, telapak kaki, atau benda lain di sekitar kita. Sebelum mengukur, coba tebak dulu berapa panjangnya."
+        },
+        {
+          "id": "B7-S2",
+          "titleHint": "Alat Ukur di Sekitar",
+          "sceneType": "alat-ukur-sekitar",
+          "voiceNarration": "Inilah benda yang bisa kita pakai untuk mengukur. Ada jengkal, telapak kaki, dan depa. Ada stik es krim, pensil, koin, sedotan, dan penjepit kertas. Kamu juga boleh memakai benda lain di sekitarmu. Benda yang dipakai untuk mengukur disebut alat ukur."
+        },
+        {
+          "id": "B7-S3",
+          "titleHint": "Mengukur Meja dengan Sedotan",
+          "sceneType": "meja-sedotan",
+          "voiceNarration": "Bagaimana cara mengukur meja menggunakan sedotan? Mulai dari ujung meja. Taruh sedotan satu per satu, rapat, tidak bertumpuk, dan tidak miring. Lalu hitung banyak sedotannya. Satu, dua, tiga, empat. Panjang meja adalah empat sedotan."
+        },
+        {
+          "id": "B7-S4",
+          "titleHint": "Cara Mengukur yang Benar",
+          "sceneType": "cara-mengukur-benar",
+          "voiceNarration": "Inilah cara mengukur yang benar. Pertama, mulai dari ujung benda. Kedua, alat ukur rapat. Ketiga, alat ukur tidak bertumpuk. Keempat, alat ukur tidak miring. Gambar yang bertanda centang hijau itu benar. Gambar yang bertanda silang merah itu salah. Ingat juga, gunakan satu jenis alat ukur yang sama dari awal sampai akhir."
+        },
+        {
+          "id": "B7-S5",
+          "titleHint": "Mengukur dengan Jengkal",
+          "sceneType": "meja-jengkal",
+          "voiceNarration": "Bagaimana cara mengukur meja dengan jengkal tangan? Rentangkan jari-jarimu, lalu pindahkan tanganmu satu per satu. Ujung kelingking menyentuh tempat ujung jempol untuk jengkal berikutnya. Satu, dua, tiga, empat, lima. Panjang meja adalah lima jengkal tangan. Jengkal tangan setiap orang berbeda."
+        },
+        {
+          "id": "B7-S6",
+          "titleHint": "Buku Diukur Dua Cara",
+          "sceneType": "buku-dua-alat-ukur",
+          "voiceNarration": "Berapa panjang buku? Kalau diukur dengan stik es krim, panjang buku adalah dua stik es krim. Kalau diukur dengan koin, panjang buku adalah dua belas koin. Mengapa hasilnya berbeda? Karena panjang stik es krim dan koin berbeda. Hasil pengukuran buku dengan stik es krim dan koin berbeda. Jadi kalau kita membandingkan, pakai alat ukur yang sama."
+        }
+      ],
+      "mindMaps": [
+        {
+          "stepNumber": 1,
+          "stepTitle": "1. Tebak Dulu",
+          "stepDesc": "Sebelum mengukur, tebak kira-kira berapa panjangnya. Tebakan membantu kita memeriksa apakah hasil ukur masuk akal.",
+          "icon": "🤔",
+          "flowFrom": "Tebak dulu",
+          "flowTo": "Pilih alat ukur"
+        },
+        {
+          "stepNumber": 2,
+          "stepTitle": "2. Pilih Alat Ukur",
+          "stepDesc": "Pilih alat ukur seperti jengkal, telapak kaki, depa, stik es krim, pensil, koin, sedotan, atau penjepit kertas. Pakai satu jenis saja sampai selesai.",
+          "icon": "🧰",
+          "flowFrom": "Pilih alat ukur",
+          "flowTo": "Ukur dengan benar"
+        },
+        {
+          "stepNumber": 3,
+          "stepTitle": "3. Ukur dengan Benar",
+          "stepDesc": "Mulai dari ujung benda. Letakkan alat ukur rapat, tidak bertumpuk, dan tidak miring. Pindahkan alat ukur satu per satu.",
+          "icon": "📏",
+          "flowFrom": "Ukur dengan benar",
+          "flowTo": "Tulis hasilnya"
+        },
+        {
+          "stepNumber": 4,
+          "stepTitle": "4. Tulis Hasilnya",
+          "stepDesc": "Hitung banyak alat ukur, lalu tulis dengan angka dan nama alat ukurnya. Contohnya panjang meja adalah 4 sedotan.",
+          "icon": "✍️",
+          "flowFrom": "Tulis hasilnya",
+          "flowTo": "Bandingkan hasilnya"
+        },
+        {
+          "stepNumber": 5,
+          "stepTitle": "5. Bandingkan Hasilnya",
+          "stepDesc": "Alat ukur yang berbeda memberi hasil yang berbeda. Kalau alat ukurnya sama, angka yang lebih besar berarti benda yang lebih panjang.",
+          "icon": "⚖️",
+          "flowFrom": "Bandingkan hasilnya",
+          "flowTo": "Pakai dalam hidup"
+        },
+        {
+          "stepNumber": 6,
+          "stepTitle": "6. Pakai dalam Hidup",
+          "stepDesc": "Gunakan ukuran untuk menjaga diri, misalnya jarak aman membaca buku kira-kira 3 jengkal supaya mata sehat. Ayo ukur kakimu sendiri.",
+          "icon": "👣",
+          "flowFrom": "Pakai dalam hidup",
+          "flowTo": "Ukur kakimu"
+        }
+      ],
+      "infografisData": [
+        {
+          "fruitName": "Ayo Kita Ukur",
+          "emoji": "📏",
+          "countNum": 2,
+          "countWord": "Dua",
+          "voiceSentence": "Malosi siswa paling tinggi. Kita bisa mengukur tinggi badannya dan panjang benda. Mengukur berarti membandingkan benda dengan alat ukur."
+        },
+        {
+          "fruitName": "Alat Ukur di Sekitar",
+          "emoji": "🧰",
+          "countNum": 8,
+          "countWord": "Delapan",
+          "voiceSentence": "Jengkal, telapak kaki, depa, stik es krim, pensil, koin, sedotan, dan penjepit kertas bisa dipakai untuk mengukur."
+        },
+        {
+          "fruitName": "Empat Cara Mengukur yang Benar",
+          "emoji": "✅",
+          "countNum": 4,
+          "countWord": "Empat",
+          "voiceSentence": "Mulai dari ujung benda. Alat ukur rapat. Alat ukur tidak bertumpuk. Alat ukur tidak miring."
+        },
+        {
+          "fruitName": "Benar atau Salah",
+          "emoji": "❌",
+          "countNum": 6,
+          "countWord": "Enam",
+          "voiceSentence": "Satu cara benar dan lima cara salah: bukan dari ujung, ada celah, bertumpuk, miring, dan alat ukur campur."
+        },
+        {
+          "fruitName": "Menulis Hasil Ukur",
+          "emoji": "✍️",
+          "countNum": 4,
+          "countWord": "Empat",
+          "voiceSentence": "Tulis hasil dengan angka dan nama alat ukur. Panjang meja adalah 4 sedotan, atau 5 jengkal tangan."
+        },
+        {
+          "fruitName": "Alat Ukur Berbeda, Hasil Berbeda",
+          "emoji": "⚖️",
+          "countNum": 12,
+          "countWord": "Dua belas",
+          "voiceSentence": "Buku diukur dengan 2 stik es krim atau 12 koin. Alat ukur yang lebih panjang menghasilkan angka yang lebih sedikit."
+        },
+        {
+          "fruitName": "Mengukur di Kertas Berpetak",
+          "emoji": "🟦",
+          "countNum": 9,
+          "countWord": "Sembilan",
+          "voiceSentence": "Pensil A 5 kotak, pensil B 9 kotak, pensil C 3 kotak. Pensil B lebih panjang 4 kotak dari pensil A."
+        },
+        {
+          "fruitName": "Tebakan dan Hasil",
+          "emoji": "🤔",
+          "countNum": 5,
+          "countWord": "Lima",
+          "voiceSentence": "Meja ditebak 4 jengkal dan hasil pengukurannya 5 jengkal. Selisih tebakan dan hasil adalah 1."
+        },
+        {
+          "fruitName": "Jarak Aman",
+          "emoji": "👀",
+          "countNum": 4,
+          "countWord": "Empat",
+          "voiceSentence": "Jarak aman membaca buku sekitar 3 jengkal, dan menonton di depan laptop atau ponsel sekitar 4 jengkal, supaya mata sehat."
+        }
+      ],
+      "concreteSlides": [
+        {
+          "title": "Tebak, Lalu Ukur",
+          "emoji": "🤔",
+          "targetCount": 6,
+          "voiceGuide": "Tebak dulu berapa stik es krim yang muat, lalu taruh stik satu per satu dari ujung kiri dan hitung hasilnya."
+        },
+        {
+          "title": "Susun Sedotan",
+          "emoji": "📏",
+          "targetCount": 4,
+          "voiceGuide": "Seret sedotan ke tempat kosong pertama dari ujung kiri meja. Sedotan harus rapat dan tanpa celah."
+        },
+        {
+          "title": "Dua Alat Ukur, Hasil Berbeda",
+          "emoji": "⚖️",
+          "targetCount": 3,
+          "voiceGuide": "Hitung dua rantai alat ukur untuk benda yang sama, lalu pilih alasan mengapa hasilnya berbeda."
+        },
+        {
+          "title": "Tumpuk Balok",
+          "emoji": "🧱",
+          "targetCount": 7,
+          "voiceGuide": "Seret balok ke menara sampai setinggi pohon, tekan periksa, lalu hitung balok untuk mengetahui tinggi pohon."
+        }
+      ],
+      "pictorialSlides": [
+        {
+          "title": "Warnai Kotak",
+          "diagramType": "grid-mark-cells",
+          "numberA": 9,
+          "numberB": 7,
+          "caption": "Ketuk kotak di bawah batang satu per satu dari ujung kiri tanpa ada yang terlewat, lalu pilih panjang batang dalam kotak."
+        },
+        {
+          "title": "Bandingkan dalam Kotak",
+          "diagramType": "grid-compare-bars",
+          "numberA": 8,
+          "numberB": 2,
+          "caption": "Hitung kotak sebuah batang, pilih lebih panjang atau lebih pendek, lalu pilih batang yang paling panjang atau paling pendek."
+        },
+        {
+          "title": "Tabel Tebakan dan Hasil",
+          "diagramType": "measurement-table",
+          "numberA": 9,
+          "numberB": 4,
+          "caption": "Hitung kotak pada batang untuk mengisi hasil pengukuran, lalu cari selisih tebakan dan hasil."
+        }
+      ],
+      "abstractSlides": [
+        {
+          "symbolLarge": "1 2 3 4 5",
+          "wordLarge": "LIMA ATURAN EMAS",
+          "mathNotation": "ujung • rapat • tidak bertumpuk • tidak miring • alat sama",
+          "voiceReadout": "Ada lima aturan emas mengukur panjang. Mulai dari ujung, alat ukur rapat, tidak bertumpuk, tidak miring, dan pakai alat ukur yang sama."
+        },
+        {
+          "symbolLarge": "7 > 5",
+          "wordLarge": "LEBIH DARI, KURANG DARI",
+          "mathNotation": "7 – 5 = 2 • 4 < 9 • 6 = 6",
+          "voiceReadout": "Dua benda diukur dengan alat ukur yang sama. Bilangan yang lebih besar berarti benda yang lebih panjang. Tujuh lebih dari lima dan selisihnya dua."
+        },
+        {
+          "symbolLarge": "4",
+          "wordLarge": "EMPAT",
+          "mathNotation": "Panjang meja = 4 sedotan • 8 jengkal",
+          "voiceReadout": "Ucapkan hasil pengukuran, lalu guratkan angkanya di kanvas. Empat ditulis dengan angka empat."
+        }
+      ],
+      "interactiveGames": [
+        {
+          "gameId": "subB7-game-1",
+          "gameNumber": 1,
+          "stage": "Concrete",
+          "gameType": "estimate-and-lay-units",
+          "title": "Tebak, Lalu Ukur",
+          "bookReference": "Buku Siswa hlm. 208 (berapa kira-kira tinggi badan Malosi); hlm. 211 (Ayo Mencoba: tebakanku dan hasil pengukuranku)",
+          "objective": "Menebak panjang lebih dulu, lalu mengukur dengan stik es krim yang ditaruh satu per satu dari ujung benda dan membandingkan tebakan dengan hasil.",
+          "mechanicDescription": "Tiga ronde (buku 4 stik, kotak pensil 5 stik, papan nama 6 stik). Siswa memilih tebakan, menaruh stik satu per satu, lalu memilih hasil ukur. Terakhir ucapkan panjang papan nama dalam stik es krim.",
+          "voiceGuide": "Tebak, taruh stik satu per satu, lalu pilih hasilnya."
+        },
+        {
+          "gameId": "subB7-game-2",
+          "gameNumber": 2,
+          "stage": "Concrete",
+          "gameType": "drag-straws-from-edge",
+          "title": "Susun Sedotan",
+          "bookReference": "Buku Siswa hlm. 209 (cara mengukur meja dengan sedotan; mulai dari ujung benda, alat ukur rapat)",
+          "objective": "Mengukur dengan cara yang benar: menaruh sedotan mulai dari ujung benda, rapat, dan tanpa celah.",
+          "mechanicDescription": "Tiga ronde (meja 3, 5, dan 4 sedotan). Siswa menyeret sedotan ke tempat kosong pertama dari ujung kiri meja, lalu memilih panjang meja. Terakhir ucapkan panjang meja dalam sedotan.",
+          "voiceGuide": "Seret sedotan ke tempat kosong pertama dari ujung meja."
+        },
+        {
+          "gameId": "subB7-game-3",
+          "gameNumber": 3,
+          "stage": "Concrete",
+          "gameType": "tap-count-two-units",
+          "title": "Dua Alat Ukur, Hasil Berbeda",
+          "bookReference": "Buku Siswa hlm. 210 (panjang buku diukur dengan stik es krim dan dengan koin)",
+          "objective": "Menyadari bahwa benda yang sama diukur dengan alat ukur berbeda menghasilkan angka berbeda.",
+          "mechanicDescription": "Tiga ronde (buku dengan stik dan koin, meja dengan sedotan dan penjepit kertas, pita dengan stik dan koin). Siswa mengetuk alat ukur dari kiri untuk menghitung, memilih hasil, lalu memilih alasan hasilnya berbeda. Terakhir ucapkan hasil ukur dengan stik es krim.",
+          "voiceGuide": "Hitung dua rantai alat ukur, lalu pilih alasannya."
+        },
+        {
+          "gameId": "subB7-game-4",
+          "gameNumber": 4,
+          "stage": "Concrete",
+          "gameType": "drag-blocks-tower",
+          "title": "Tumpuk Balok",
+          "bookReference": "Buku Siswa hlm. 212 (Ayo Berlatih nomor 2: tinggi hewan diukur dengan kotak)",
+          "objective": "Mengukur tinggi dengan satuan balok: menumpuk balok setinggi benda lalu menghitungnya.",
+          "mechanicDescription": "Tiga ronde (pohon 4, 6, dan 7 balok). Siswa menyeret balok ke menara sampai setinggi pohon, menekan periksa, lalu memilih tinggi pohon. Terakhir ucapkan tinggi pohon dalam balok.",
+          "voiceGuide": "Seret balok sampai menara sama tinggi dengan pohon."
+        },
+        {
+          "gameId": "subB7-game-5",
+          "gameNumber": 5,
+          "stage": "Picture",
+          "gameType": "mark-grid-cells",
+          "title": "Warnai Kotak",
+          "bookReference": "Buku Siswa hlm. 212–213 (Ayo Berlatih nomor 2 dan 4: pengukuran dengan kotak pada kertas berpetak)",
+          "objective": "Mengukur panjang pada kertas berpetak dengan menandai kotak satu per satu dari ujung kiri.",
+          "mechanicDescription": "Tiga ronde (batang 6, 9, dan 7 kotak). Siswa mengetuk kotak berurutan dari ujung kiri, lalu memilih panjang batang. Terakhir ucapkan panjang batang.",
+          "voiceGuide": "Ketuk kotak dari ujung kiri, lalu pilih panjangnya."
+        },
+        {
+          "gameId": "subB7-game-6",
+          "gameNumber": 6,
+          "stage": "Picture",
+          "gameType": "grid-compare-bars",
+          "title": "Bandingkan dalam Kotak",
+          "bookReference": "Buku Siswa hlm. 213 (Ayo Berlatih nomor 4: pensil A, B, dan C); hlm. 216 (Evaluasi nomor 6: pita A, B, dan C)",
+          "objective": "Membandingkan panjang tiga batang pada kertas berpetak dengan kata lebih panjang, lebih pendek, paling panjang, dan paling pendek.",
+          "mechanicDescription": "Tiga ronde. Tiap ronde siswa menghitung kotak sebuah batang, memilih lebih panjang atau lebih pendek, lalu memilih batang yang paling panjang atau paling pendek. Terakhir ucapkan selisih batang yang paling panjang dan paling pendek.",
+          "voiceGuide": "Hitung kotak, bandingkan, lalu pilih yang paling."
+        },
+        {
+          "gameId": "subB7-game-7",
+          "gameNumber": 7,
+          "stage": "Picture",
+          "gameType": "fill-measurement-table",
+          "title": "Tabel Tebakan dan Hasil",
+          "bookReference": "Buku Siswa hlm. 211 (Ayo Mencoba: Tabel Pengukuran Panjang dengan tebakanku dan hasil pengukuranku)",
+          "objective": "Mengisi tabel pengukuran dan mencari selisih tebakan dengan hasil pengukuran.",
+          "mechanicDescription": "Tiga ronde (meja tebakan 4 hasil 5, buku tebakan 8 hasil 5, pita tebakan 4 hasil 9). Siswa menghitung kotak untuk hasil lalu mencari selisih; tabel bertambah satu baris tiap ronde. Terakhir ucapkan selisih pita.",
+          "voiceGuide": "Hitung hasil ukur, lalu cari selisihnya."
+        },
+        {
+          "gameId": "subB7-game-8",
+          "gameNumber": 8,
+          "stage": "Abstract",
+          "gameType": "find-the-broken-rule",
+          "title": "Detektif Cara Mengukur",
+          "bookReference": "Buku Siswa hlm. 209 (empat cara mengukur yang benar); Evaluasi hlm. 216 (nomor 7: Kira mengukur kotak pensilnya)",
+          "objective": "Menemukan langkah mengukur yang salah dan aturan mengukur yang dilanggar.",
+          "mechanicDescription": "Lima ronde (bertumpuk, bukan dari ujung, miring, ada celah, dan alat ukur campur). Siswa mengetuk langkah yang salah lalu memilih aturan yang dilanggar dari lima aturan emas. Terakhir ucapkan banyak aturan emas.",
+          "voiceGuide": "Ketuk langkah yang salah, lalu pilih aturan yang dilanggar."
+        },
+        {
+          "gameId": "subB7-game-9",
+          "gameNumber": 9,
+          "stage": "Abstract",
+          "gameType": "symbol-and-difference",
+          "title": "Lambang dan Selisih Panjang",
+          "bookReference": "Buku Siswa hlm. 213 (Pensil A lebih ... dari pensil B); pengayaan lambang lebih dari, kurang dari, dan sama dengan",
+          "objective": "Membandingkan dua hasil ukur dengan lambang >, <, dan =, lalu mencari selisihnya.",
+          "mechanicDescription": "Lima ronde (7 dan 5, 4 dan 9, 6 dan 6, 11 dan 8, 5 dan 12). Siswa memilih lambang perbandingan lalu memilih selisihnya. Terakhir ucapkan selisihnya.",
+          "voiceGuide": "Pilih lambangnya, lalu cari selisihnya."
+        },
+        {
+          "gameId": "subB7-game-10",
+          "gameNumber": 10,
+          "stage": "Abstract",
+          "gameType": "say-and-trace",
+          "title": "Kanvas Guratan dan Suara",
+          "bookReference": "Buku Siswa hlm. 209–210 (panjang meja 4 sedotan dan 5 jengkal tangan); hlm. 211 (Ayo Mencoba)",
+          "objective": "Menyebutkan hasil pengukuran, mengucapkannya, dan menulis lambangnya.",
+          "mechanicDescription": "Dua ronde. Ronde 1 panjang meja 4 sedotan. Ronde 2 siswa memilih satu dari tiga benda (lemari 6 jengkal, pintu 8 jengkal, papan tulis 10 jengkal). Siswa mengucapkan hasilnya lalu menggurat lambangnya.",
+          "voiceGuide": "Ucapkan hasil pengukuran, lalu guratkan lambangnya."
+        }
+      ]
+    }
+  },
+  "practiceQuestions": [
+    {
+      "id": 1,
+      "level": "LOTS (30%)",
+      "prompt": "Pohon A lebih tinggi dari pohon B. Pernyataan yang benar adalah...",
+      "visualEmojis": [
+        "🌴"
+      ],
+      "options": [
+        "pohon B lebih pendek dari pohon A",
+        "pohon B lebih tinggi dari pohon A",
+        "pohon B sama tinggi dengan pohon A",
+        "pohon A lebih pendek dari pohon B"
+      ]
+    },
+    {
+      "id": 2,
+      "level": "LOTS (30%)",
+      "prompt": "Meja diukur dengan sedotan dan hasilnya 4 sedotan. Pernyataan yang benar adalah...",
+      "visualEmojis": [
+        "📏"
+      ],
+      "options": [
+        "panjang meja adalah 4 jengkal",
+        "panjang meja adalah 4 sedotan",
+        "panjang meja adalah 5 sedotan",
+        "panjang meja adalah 4"
+      ]
+    },
+    {
+      "id": 3,
+      "level": "MOTS (30%)",
+      "prompt": "Pensil hijau lebih pendek dari pensil merah. Pensil merah lebih pendek dari pensil biru. Pensil yang paling panjang adalah...",
+      "visualEmojis": [
+        "✏️"
+      ],
+      "options": [
+        "pensil merah",
+        "pensil hijau",
+        "ketiga pensil sama panjang",
+        "pensil biru"
+      ]
+    },
+    {
+      "id": 4,
+      "level": "LOTS (30%)",
+      "prompt": "Mengukur panjang benda dengan benar dimulai dari...",
+      "visualEmojis": [
+        "📍"
+      ],
+      "options": [
+        "tengah benda",
+        "sembarang tempat",
+        "ujung benda",
+        "ujung yang paling jauh dari kita"
+      ]
+    },
+    {
+      "id": 5,
+      "level": "MOTS (30%)",
+      "prompt": "Kira, Upe, dan Wei berbaris. Kira lebih pendek dari Upe. Wei lebih tinggi dari Upe. Urutan dari yang paling pendek adalah...",
+      "visualEmojis": [
+        "🧒"
+      ],
+      "options": [
+        "Wei, Upe, Kira",
+        "Kira, Upe, Wei",
+        "Upe, Kira, Wei",
+        "Kira, Wei, Upe"
+      ]
+    },
+    {
+      "id": 6,
+      "level": "MOTS (30%)",
+      "prompt": "Wei mengukur buku dengan stik es krim dan hasilnya 2 stik. Malosi mengukur buku yang sama dengan koin dan hasilnya 12 koin. Alasan hasilnya berbeda adalah...",
+      "visualEmojis": [
+        "📚"
+      ],
+      "options": [
+        "panjang stik es krim dan koin berbeda",
+        "buku Wei lebih panjang dari buku Malosi",
+        "Malosi menghitung dengan salah",
+        "koin lebih berat dari stik es krim"
+      ]
+    },
+    {
+      "id": 7,
+      "level": "HOTS (40%)",
+      "prompt": "Pohon B sama tinggi dengan pohon C. Pohon A lebih tinggi dari pohon B. Pohon D lebih pendek dari pohon C. Pernyataan yang benar adalah...",
+      "visualEmojis": [],
+      "options": [
+        "pohon A paling pendek dan pohon D paling tinggi",
+        "pohon B paling tinggi dan pohon D paling pendek",
+        "pohon A paling tinggi dan pohon D paling pendek",
+        "pohon A paling tinggi dan pohon C paling pendek"
+      ]
+    },
+    {
+      "id": 8,
+      "level": "HOTS (40%)",
+      "prompt": "Pensil A panjangnya 5 kotak, pensil B 9 kotak, dan pensil C 3 kotak. Pernyataan yang benar adalah...",
+      "visualEmojis": [],
+      "options": [
+        "pensil A lebih panjang 4 kotak dari pensil B, dan pensil C paling pendek",
+        "pensil B lebih panjang 14 kotak dari pensil A, dan pensil A paling pendek",
+        "pensil B lebih panjang 4 kotak dari pensil A, dan pensil A paling pendek",
+        "pensil B lebih panjang 4 kotak dari pensil A, dan pensil C paling pendek"
+      ]
+    },
+    {
+      "id": 9,
+      "level": "HOTS (40%)",
+      "prompt": "Burung P terbang lebih tinggi dari burung Q. Burung R terbang lebih rendah dari burung Q. Burung S terbang lebih tinggi dari burung P. Urutan burung dari yang terbang paling rendah adalah...",
+      "visualEmojis": [],
+      "options": [
+        "R, Q, P, S",
+        "S, P, Q, R",
+        "R, P, Q, S",
+        "Q, R, P, S"
+      ]
+    },
+    {
+      "id": 10,
+      "level": "HOTS (40%)",
+      "prompt": "Tika menebak panjang meja 4 jengkal. Setelah diukur, hasilnya 7 jengkal. Pernyataan yang benar adalah...",
+      "visualEmojis": [],
+      "options": [
+        "tebakan Tika lebih 3 dari hasil ukur, karena 7 – 4 = 3",
+        "tebakan Tika kurang 3 dari hasil ukur, karena 7 – 4 = 3",
+        "tebakan Tika kurang 11 dari hasil ukur, karena 7 + 4 = 11",
+        "tebakan Tika tepat, karena Tika sudah menebak"
+      ]
+    }
+  ]
+}
