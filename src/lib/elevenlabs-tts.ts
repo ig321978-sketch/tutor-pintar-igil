@@ -427,15 +427,16 @@ async function sintesisSatu(
   kunci: string,
   kelas: string,
   konteks?: { previous?: string; next?: string },
+  formatKeluaran = "pcm_24000",
 ): Promise<Buffer> {
   const respons = await fetch(
-    `${URL_DASAR}/text-to-speech/${voiceId}?output_format=pcm_24000`,
+    `${URL_DASAR}/text-to-speech/${voiceId}?output_format=${formatKeluaran}`,
     {
       method: "POST",
       headers: {
         "content-type": "application/json",
         "xi-api-key": kunci,
-        accept: "audio/wav, audio/pcm, application/octet-stream",
+        accept: formatKeluaran.startsWith("mp3") ? "audio/mpeg" : "audio/wav, audio/pcm, application/octet-stream",
       },
       body: JSON.stringify({
         text: teks,
@@ -499,4 +500,44 @@ export async function sintesisElevenLabs(
     durasiDetik: durasiWavEleven(wav),
     suara,
   };
+}
+
+/** Format MP3 ringan untuk berkas audio statis (22,05 kHz, 32 kbps, sekitar 4 KB per detik). */
+export const FORMAT_MP3_STATIS = "mp3_22050_32";
+
+/**
+ * Sintesis untuk penulisan konten: keluaran MP3 ringan yang disimpan sebagai berkas statis
+ * (public/audio-guru). Suara dan pengaturan jenjang sama dengan sintesisElevenLabs.
+ * Hanya dipanggil oleh skrip penulisan lewat /api/tts yang dijaga.
+ */
+export async function sintesisElevenLabsMp3(
+  teks: string,
+  kelamin: KelaminTts,
+  kelas = "3 SD",
+  opsi: { tetap?: boolean } = {},
+): Promise<{ audio: Buffer; mime: string; durasiDetik: number; suara: string }> {
+  const kunci = kunciApiEleven();
+  if (!kunci) {
+    throw new Error("ELEVENLABS_API_KEY belum disetel.");
+  }
+  let suara = await suaraElevenGuru(kelamin, kelas, opsi.tetap === true);
+  const potongan = potongNaskahEleven(teks);
+  if (potongan.length === 0) {
+    throw new Error("Naskah suara kosong.");
+  }
+  const bagian: Buffer[] = [];
+  for (let i = 0; i < potongan.length; i += 1) {
+    const konteks = { previous: potongan[i - 1], next: potongan[i + 1] };
+    try {
+      bagian.push(await sintesisSatu(potongan[i], suara, kunci, kelas, konteks, FORMAT_MP3_STATIS));
+    } catch (error) {
+      const pesan = error instanceof Error ? error.message : "";
+      const cadangan = idSuaraCadangan(kelas, kelamin);
+      if (!galatPustakaBerbayar(pesan) || cadangan === suara) throw error;
+      suara = cadangan;
+      bagian.push(await sintesisSatu(potongan[i], suara, kunci, kelas, konteks, FORMAT_MP3_STATIS));
+    }
+  }
+  const audio = Buffer.concat(bagian);
+  return { audio, mime: "audio/mpeg", durasiDetik: (audio.length * 8) / 32_000, suara };
 }

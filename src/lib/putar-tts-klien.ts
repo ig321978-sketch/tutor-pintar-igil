@@ -6,6 +6,32 @@ import {
   simpanCacheAudioTts,
 } from "@/lib/cache-audio-tts-klien";
 import type { KataWaktu } from "@/lib/tts";
+import { cariAudioGuruStatis } from "@/lib/audio-guru-statis";
+
+/**
+ * Sintesis langsung ke /api/tts dimatikan untuk siswa. Hanya menyala bila penulis menyetel
+ * NEXT_PUBLIC_IGIL_TTS_PENULIS=1 di server dev lokal (server produksi menolaknya juga).
+ */
+const IZIN_SINTESIS_PENULIS = process.env.NEXT_PUBLIC_IGIL_TTS_PENULIS === "1";
+
+/**
+ * Hanya di server dev: catat setiap ucapan yang diminta ke berkas naskah penulisan
+ * (src/content-master/naskah-guru.json), supaya skrip pembuat audio tahu apa yang perlu dibuat.
+ */
+const SUDAH_DIREKAM = new Set<string>();
+function rekamNaskahPenulis(
+  kunci: string,
+  isi: { teks: string; kelas: string; tanpaNotasi: boolean; suaraTetap: boolean },
+): void {
+  if (process.env.NODE_ENV === "production" || typeof window === "undefined") return;
+  if (SUDAH_DIREKAM.has(kunci)) return;
+  SUDAH_DIREKAM.add(kunci);
+  void fetch("/api/dev/naskah-guru", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify(isi),
+  }).catch(() => {});
+}
 
 export type HasilAudioTts = {
   url: string;
@@ -56,6 +82,7 @@ export async function mintaAudioTts(
     tanpaNotasi,
     suaraTetap,
   });
+  rekamNaskahPenulis(kunci, { teks: naskah, kelas, tanpaNotasi, suaraTetap });
   const cached = await ambilCacheAudioTts(kunci);
   if (cached) {
     return {
@@ -65,6 +92,12 @@ export async function mintaAudioTts(
       kata: cached.kata,
     };
   }
+  // Berkas audio statis yang dibuat sekali saat penulisan. Ini satu-satunya sumber untuk siswa.
+  const statis = await cariAudioGuruStatis(kunci);
+  if (statis) return { url: statis, durasi: 0, mime: "audio/mpeg", kata: [] };
+  // Tanpa berkas statis, siswa tidak pernah meminta sintesis ke layanan berbayar:
+  // pemanggil memakai suara perangkat. Sintesis langsung hanya untuk penulis (dev).
+  if (!IZIN_SINTESIS_PENULIS) return null;
   const menunggu = sedangDiminta.get(kunci);
   if (menunggu) return menunggu;
   if (hanyaCache) return null;

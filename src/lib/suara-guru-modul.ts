@@ -14,9 +14,9 @@ import { mintaAudioTts, hentikanAudioGuruAktif, saatHentiAudioGuru } from "@/lib
  * Belajar dan disimpan di profil lokal (`guruKelamin`). Semua modul memanggil
  * satu fungsi ini supaya suaranya selalu sama dengan pilihan siswa.
  *
- * Urutan: audio natural dari /api/tts (disimpan di IndexedDB peramban, jadi
- * kalimat yang sama tidak diminta dua kali). Jika audio belum siap dalam
- * BATAS_TUNGGU_MS, ditolak peramban, atau gagal, suara perangkat (Web Speech
+ * Urutan: berkas audio statis yang dibuat sekali saat penulisan (public/audio-guru, lihat
+ * src/lib/audio-guru-statis.ts), tanpa panggilan ke layanan suara berbayar saat siswa belajar.
+ * Jika ucapan belum punya berkas, audio ditolak peramban, atau gagal, suara perangkat (Web Speech
  * `id-ID`) dengan nada dan laju sesuai guru terpilih dipakai sebagai cadangan.
  */
 
@@ -82,6 +82,8 @@ export function hentikanSuaraGuruModul(): void {
 export type OpsiSuaraGuruModul = {
   /** Contoh: "1 SD". Menentukan jenjang guru dan profil suara. */
   kelas?: string;
+  /** Guru yang bersuara. Bila kosong dipakai guru pilihan siswa yang tersimpan. */
+  kelamin?: KelaminGuru;
   /** Dipanggil sekali saat suara selesai atau gagal, hanya jika belum diganti ucapan lain. */
   selesai?: () => void;
 };
@@ -95,7 +97,7 @@ export function ucapkanGuruModul(teks: string, opsi: OpsiSuaraGuruModul = {}): v
   const naskah = rapikanNaskahGuru(teks);
   if (!naskah) return;
   const kelas = opsi.kelas ?? "1 SD";
-  const kelamin = kelaminGuruTersimpan();
+  const kelamin = opsi.kelamin ?? kelaminGuruTersimpan();
 
   hentikanAudioGuruAktif();
   const saya = ++giliran;
@@ -109,8 +111,10 @@ export function ucapkanGuruModul(teks: string, opsi: OpsiSuaraGuruModul = {}): v
     opsi.selesai?.();
   };
 
+  let cadanganDipakai = false;
   const cadangan = () => {
-    if (saya !== giliran || tutup) return;
+    if (saya !== giliran || tutup || cadanganDipakai) return;
+    cadanganDipakai = true;
     if (!("speechSynthesis" in window)) {
       selesai();
       return;

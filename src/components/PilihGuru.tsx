@@ -1,12 +1,11 @@
 "use client";
 
-import { useEffect } from "react";
 import {
   naskahPerkenalanGuru,
   pasanganGuru,
   type KelaminGuru,
 } from "@/lib/guru";
-import { mintaAudioTts, putarTtsPendek } from "@/lib/putar-tts-klien";
+import { ucapkanGuruModul } from "@/lib/suara-guru-modul";
 import { kelasLabel } from "@/lib/tema";
 
 type PropsPilihGuru = {
@@ -22,17 +21,6 @@ export default function PilihGuru({
   onGanti,
   tanpaLabel = false,
 }: PropsPilihGuru) {
-  useEffect(() => {
-    for (const guru of pasanganGuru(kelas)) {
-      void mintaAudioTts(
-        naskahPerkenalanGuru(guru),
-        guru.kelamin,
-        kelas,
-        { persist: true },
-      );
-    }
-  }, [kelas]);
-
   return (
     <div>
       {tanpaLabel ? null : (
@@ -48,11 +36,7 @@ export default function PilihGuru({
               aria-pressed={aktif}
               onClick={() => {
                 onGanti(guru.kelamin);
-                void putarTtsPendek(
-                  naskahPerkenalanGuru(guru),
-                  guru.kelamin,
-                  kelas,
-                );
+                ucapkanGuruModul(naskahPerkenalanGuru(guru), { kelas, kelamin: guru.kelamin });
               }}
               className={`flex w-full items-center gap-4 rounded-2xl border-2 p-4 text-left transition-all ${
                 aktif

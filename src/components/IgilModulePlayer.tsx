@@ -1088,7 +1088,8 @@ export default function IgilModulePlayer({ bab = "mtk-1-bab1" }: { bab?: BabModu
   const materiSelesai = !adaBab2 || daftarSubTersedia.every((id) => completedSubBabs.includes(id));
 
   // ============================================================================
-  // SUARA GURU IGIL — Web Speech API di peramban, tanpa API eksternal
+  // SUARA GURU IGIL — audio statis yang dibuat sekali saat penulisan (public/audio-guru),
+  // dengan cadangan Web Speech API di peramban. Siswa tidak memanggil layanan suara berbayar.
   // ============================================================================
 
   const lepasJedaCerita = useRef<(() => void) | null>(null);

@@ -1,0 +1,17 @@
+---
+description: Suara Guru memakai audio statis yang dibuat sekali saat penulisan, bukan sintesis berbayar saat siswa belajar
+alwaysApply: true
+---
+
+# Suara Guru: buat sekali, simpan selamanya
+
+Siswa **tidak pernah** memanggil ElevenLabs atau layanan suara berbayar lain. Prinsipnya sama dengan "generate once, cache forever" untuk naskah.
+
+- Pemutar (`src/lib/suara-guru-modul.ts`, `src/lib/putar-tts-klien.ts`) hanya membaca berkas statis `public/audio-guru/<hash>.mp3` yang terdaftar di `public/audio-guru/manifest.json`. Tanpa berkas, ucapan dibacakan suara perangkat (Web Speech `id-ID`). Jangan menambah jalur `fetch("/api/tts")` untuk siswa.
+- `/api/tts` hanya terbuka di server dev lokal. Di produksi ia menolak semua permintaan kecuali yang membawa `x-igil-penulis` sama dengan `IGIL_KUNCI_PENULIS`.
+- Nama berkas berasal dari `src/lib/kunci-audio-guru.ts` (teks, guru, jenjang, mode). Mengubah satu huruf naskah berarti berkas baru.
+- Membuat audio: jalankan server dev, mainkan modul (pemutar mencatat ucapan ke `src/content-master/naskah-guru.json`, tidak di-commit), lalu `node scripts/buat-audio-guru.mjs --dry` untuk menghitung karakter, dan tanpa `--dry` untuk membuat. Skrip melewati berkas yang sudah ada, jadi aman diulang dan hanya menagih ucapan baru.
+- **Sebelum membuat audio, laporkan jumlah karakter yang akan ditagih dan minta persetujuan pemilik.** Setiap karakter ditagih sekali per berkas, dan tiap ucapan dibuat untuk dua guru.
+- Format MP3 ringan (`mp3_22050_32`, sekitar 4 KB per detik). Jangan menyimpan WAV mentah.
+- Ucapan yang berubah mengikuti keadaan (angka, hasil simulasi, kalimat umpan balik dinamis) tidak dibuat statis. Biarkan jatuh ke suara perangkat.
+- `/audio-guru/*` dikecualikan dari middleware pengunci situs dan di-cache `immutable`. Manifest di-cache pendek (5 menit).

@@ -27,6 +27,16 @@ const nextConfig: NextConfig = {
         source: "/ruang-belajar/:path*",
         headers: TANPA_CACHE,
       },
+      {
+        // Audio Suara Guru statis: nama berkas berupa hash isi ucapan, jadi aman di-cache selamanya.
+        source: "/audio-guru/:berkas(.*\\.mp3)",
+        headers: [{ key: "Cache-Control", value: "public, max-age=31536000, immutable" }],
+      },
+      {
+        // Manifest berubah tiap ada audio baru: boleh basi sebentar, lalu diperbarui di latar.
+        source: "/audio-guru/manifest.json",
+        headers: [{ key: "Cache-Control", value: "public, max-age=300, stale-while-revalidate=86400" }],
+      },
     ];
   },
 };

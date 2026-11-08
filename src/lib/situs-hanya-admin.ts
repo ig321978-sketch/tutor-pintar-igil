@@ -72,6 +72,8 @@ export function ruteHalamanPublikSaatTerkunci(pathname: string): boolean {
 export function ruteApiPublikSaatTerkunci(pathname: string): boolean {
   return (
     pathname === "/api/tts" ||
+    // Pencatat naskah penulisan: hanya ada di server dev (di produksi rutenya 404).
+    (process.env.NODE_ENV !== "production" && pathname === "/api/dev/naskah-guru") ||
     // Latihan dan Ujian dinilai di server. Akses dijaga akun masuk dan RLS/RPC Supabase.
     pathname === "/api/daftar/status" ||
     pathname === "/api/daftar/anak" ||

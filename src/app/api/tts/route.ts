@@ -5,6 +5,7 @@ import {
   klasifikasiSuaraGuruEleven,
   siapkanKeduaSuaraGuru,
   sintesisElevenLabs,
+  sintesisElevenLabsMp3,
 } from "@/lib/elevenlabs-tts";
 import { naskahLisan } from "@/lib/naskah-lisan";
 import { normalisasiKelaminTts, waktuKataDariDurasi } from "@/lib/tts";
@@ -13,7 +14,26 @@ export const dynamic = "force-dynamic";
 export const revalidate = 0;
 export const maxDuration = 120;
 
+/**
+ * Sintesis suara berbayar hanya untuk penulisan konten (skrip scripts/buat-audio-guru.mjs).
+ * Siswa memakai berkas audio statis, jadi di produksi rute ini menolak semua permintaan
+ * kecuali yang membawa kunci penulis (IGIL_KUNCI_PENULIS). Di server dev lokal terbuka.
+ */
+function penulisSah(req: Request): boolean {
+  if (process.env.NODE_ENV !== "production") return true;
+  const kunci = process.env.IGIL_KUNCI_PENULIS;
+  return Boolean(kunci) && req.headers.get("x-igil-penulis") === kunci;
+}
+
+function tolakBukanPenulis() {
+  return NextResponse.json(
+    { berhasil: false, pesan: "Sintesis suara hanya untuk penulisan konten. Siswa memakai audio statis." },
+    { status: 403 },
+  );
+}
+
 export async function POST(req: Request) {
+  if (!penulisSah(req)) return tolakBukanPenulis();
   try {
     let body: Record<string, unknown>;
     try {
@@ -66,9 +86,11 @@ export async function POST(req: Request) {
 
     const kelamin = normalisasiKelaminTts(body.kelamin ?? body.gender);
     const kelas = typeof body.kelas === "string" ? body.kelas : "3 SD";
-    const hasil = await sintesisElevenLabs(naskah, kelamin, kelas, {
-      tetap: body.suaraTetap === true,
-    });
+    const opsiSuara = { tetap: body.suaraTetap === true };
+    const hasil =
+      body.format === "mp3"
+        ? await sintesisElevenLabsMp3(naskah, kelamin, kelas, opsiSuara)
+        : await sintesisElevenLabs(naskah, kelamin, kelas, opsiSuara);
     return NextResponse.json({
       berhasil: true,
       sumber: "elevenlabs",
@@ -89,6 +111,7 @@ export async function POST(req: Request) {
 export async function GET(req: Request) {
   const url = new URL(req.url);
   if (url.searchParams.get("suara") === "1") {
+    if (!penulisSah(req)) return tolakBukanPenulis();
     const daftar = await daftarRingkasSuaraEleven();
     return NextResponse.json({
       berhasil: elevenLabsSiapDipakai(),
