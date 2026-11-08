@@ -14,6 +14,13 @@ import materiBab2 from "@/data/kelas1-bab2.json";
 import materiBab3 from "@/data/kelas1-bab3.json";
 import materiBab4 from "@/data/kelas1-bab4.json";
 import { CeritaBentukA, PETA_PIKIRAN_A4 } from "@/components/modul/gambar-bentuk-a4";
+import { CeritaKelompokB, PETA_PIKIRAN_B4 } from "@/components/modul/gambar-kelompok-b4";
+import {
+  AbstractKelompokB,
+  ConcreteKelompokB,
+  InfografisKelompokB,
+  PictureKelompokB,
+} from "@/components/modul/SubBabB4Kelompok";
 import {
   AbstractBentukA,
   ConcreteBentukA,
@@ -1018,6 +1025,7 @@ export default function IgilModulePlayer({ bab = "mtk-1-bab1" }: { bab?: BabModu
   const subB2 = bab === "mtk-1-bab2" && activeSubBab === "B";
   const subC2 = bab === "mtk-1-bab2" && activeSubBab === "C";
   const subB3 = bab === "mtk-1-bab3" && activeSubBab === "B";
+  const subB4 = bab === "mtk-1-bab4" && activeSubBab === "B";
   const subC3 = bab === "mtk-1-bab3" && activeSubBab === "C";
   const subD3 = bab === "mtk-1-bab3" && activeSubBab === "D";
   const judulSubBab = currentSubContent.fullTitle.split(": ").slice(1).join(": ");
@@ -1170,7 +1178,9 @@ export default function IgilModulePlayer({ bab = "mtk-1-bab1" }: { bab?: BabModu
                 judul={adaBab4 ? "🌈 Fase A • Elemen Geometri (Kelas 1 SD/MI)" : "🌈 Fase A • Elemen Bilangan (Kelas 1 SD/MI)"}
                 bicara={speakGuru}
                 teksSuara={
-                  adaBab4
+                  subB4
+                    ? "Kita belajar mengelompokkan benda. Bukunya bernama Mengenal Bentuk, bagian mengelompokkan benda. Kita mengelompokkan benda menurut satu aturan, yaitu bentuk, warna, atau ukuran. Kita melewati enam tahap seru: cerita, peta pikiran, infografis, benda nyata, gambar, dan simbol."
+                    : adaBab4
                     ? "Kita belajar mengenal bentuk. Bukunya bernama Mengenal Bentuk. Kita mendeskripsikan benda berdasarkan bentuknya: bentuk lengkung, segitiga, dan segi empat. Kita melewati enam tahap seru: cerita, peta pikiran, infografis, benda nyata, gambar, dan simbol."
                     : adaBab3
                     ? "Kita belajar mengurangkan sampai sepuluh. Bukunya bernama Pengurangan sampai dengan Sepuluh. Kita melewati enam tahap seru: cerita, peta pikiran, infografis, benda nyata, gambar, dan simbol angka."
@@ -1180,7 +1190,9 @@ export default function IgilModulePlayer({ bab = "mtk-1-bab1" }: { bab?: BabModu
                 }
               >
                 <BarisIkon emoji="🧠" warna="#FFD6D6" judul="Capaian Pembelajaran (CP)">
-                  {adaBab4 ? (
+                  {subB4 ? (
+                    <>Siswa mengelompokkan benda di sekitarnya menurut satu aturan (bentuk, warna, atau ukuran), memberi nama kelompok, dan menghitung banyak anggota setiap kelompok.</>
+                  ) : adaBab4 ? (
                     <>Siswa mendeskripsikan benda di sekitarnya berdasarkan bentuk (bentuk lengkung, segitiga, dan segi empat), menyebutkan ciri sisi dan sudutnya, serta mengelompokkan benda yang bentuknya sama.</>
                   ) : adaBab3 ? (
                     <>Siswa mengurangkan bilangan cacah sampai 10 dengan benda nyata, gambar, dan simbol, lalu menuliskannya sebagai kalimat matematika.</>
@@ -1191,7 +1203,9 @@ export default function IgilModulePlayer({ bab = "mtk-1-bab1" }: { bab?: BabModu
                   )}
                 </BarisIkon>
                 <BarisIkon emoji="📖" warna="#FFE9A8" judul="Referensi Buku Resmi">
-                  {adaBab4
+                  {subB4
+                    ? "Buku Siswa Matematika Kelas I Kemendikbudristek (Bab 4: Mengenal Bentuk, Sub-Bab B hlm. 127–133)."
+                    : adaBab4
                     ? "Buku Siswa Matematika Kelas I Kemendikbudristek (Bab 4: Mengenal Bentuk, Sub-Bab A hlm. 117–126)."
                     : adaBab3
                     ? "Buku Siswa Matematika Kelas I Kemendikbudristek (Bab 3: Pengurangan sampai dengan 10)."
@@ -1466,6 +1480,8 @@ export default function IgilModulePlayer({ bab = "mtk-1-bab1" }: { bab?: BabModu
               <CeritaHubunganC speakGuru={speakGuru} />
             ) : subB3 ? (
               <CeritaPenguranganB speakGuru={speakGuru} />
+            ) : subB4 ? (
+              <CeritaKelompokB speakGuru={speakGuru} />
             ) : adaBab4 ? (
               <CeritaBentukA speakGuru={speakGuru} />
             ) : adaBab3 ? (
@@ -1566,6 +1582,13 @@ export default function IgilModulePlayer({ bab = "mtk-1-bab1" }: { bab?: BabModu
               ) : subB3 ? (
                 <PetaPikiranB
                   langkah={PETA_PIKIRAN_B3}
+                  judul={judulSubBab}
+                  speakGuru={speakGuru}
+                  maskot={<IgilWajah kelas="h-14 w-20 igil-lompat" />}
+                />
+              ) : subB4 ? (
+                <PetaPikiranB
+                  langkah={PETA_PIKIRAN_B4}
                   judul={judulSubBab}
                   speakGuru={speakGuru}
                   maskot={<IgilWajah kelas="h-14 w-20 igil-lompat" />}
@@ -1676,6 +1699,8 @@ export default function IgilModulePlayer({ bab = "mtk-1-bab1" }: { bab?: BabModu
                 <InfografisHubunganC speakGuru={speakGuru} />
               ) : subB3 ? (
                 <InfografisPenguranganB speakGuru={speakGuru} />
+              ) : subB4 ? (
+                <InfografisKelompokB speakGuru={speakGuru} />
               ) : adaBab4 ? (
                 <InfografisBentukA speakGuru={speakGuru} />
               ) : adaBab3 ? (
@@ -1880,6 +1905,20 @@ export default function IgilModulePlayer({ bab = "mtk-1-bab1" }: { bab?: BabModu
                       5,
                       pictorialRef,
                       "Empat permainan benda nyata sudah selesai. Sekarang kita lihat gambarnya."
+                    )
+                  }
+                />
+              ) : subB4 ? (
+                <ConcreteKelompokB
+                  speakGuru={speakGuru}
+                  panel={panelConcrete}
+                  hentikan={hentikanRekamConcrete}
+                  gulir={() => concreteRef.current?.scrollIntoView({ behavior: "smooth", block: "start" })}
+                  onSelesai={() =>
+                    handleUnlockNextSmicpa(
+                      5,
+                      pictorialRef,
+                      "Empat permainan benda nyata sudah selesai. Sekarang kita lihat kelompoknya dalam diagram."
                     )
                   }
                 />
@@ -2134,6 +2173,20 @@ export default function IgilModulePlayer({ bab = "mtk-1-bab1" }: { bab?: BabModu
                     )
                   }
                 />
+              ) : subB4 ? (
+                <PictureKelompokB
+                  speakGuru={speakGuru}
+                  panel={panelGambar}
+                  hentikan={hentikanRekamConcrete}
+                  gulir={() => pictorialRef.current?.scrollIntoView({ behavior: "smooth", block: "start" })}
+                  onSelesai={() =>
+                    handleUnlockNextSmicpa(
+                      6,
+                      abstractRef,
+                      "Tiga permainan diagram sudah selesai. Ayo kita susun kalimat dan angka kelompok."
+                    )
+                  }
+                />
               ) : adaBab4 ? (
                 <PictureBentukA
                   speakGuru={speakGuru}
@@ -2369,6 +2422,14 @@ export default function IgilModulePlayer({ bab = "mtk-1-bab1" }: { bab?: BabModu
                 />
               ) : subB3 ? (
                 <AbstractPenguranganB
+                  speakGuru={speakGuru}
+                  panel={panelLambang}
+                  hentikan={hentikanRekamConcrete}
+                  gulir={() => abstractRef.current?.scrollIntoView({ behavior: "smooth", block: "start" })}
+                  onSelesai={() => selesaiBabRef.current?.scrollIntoView({ behavior: "smooth", block: "center" })}
+                />
+              ) : subB4 ? (
+                <AbstractKelompokB
                   speakGuru={speakGuru}
                   panel={panelLambang}
                   hentikan={hentikanRekamConcrete}

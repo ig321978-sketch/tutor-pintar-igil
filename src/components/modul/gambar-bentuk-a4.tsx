@@ -29,7 +29,7 @@ import { BendaDi, type JenisBenda } from "./bentuk-a4-dasar";
 const COKELAT = "#A8672D";
 
 /** Label putih berbingkai. */
-function Label({ x, y, w, teks, ukuran = 15 }: { x: number; y: number; w: number; teks: string; ukuran?: number }) {
+export function Label({ x, y, w, teks, ukuran = 15 }: { x: number; y: number; w: number; teks: string; ukuran?: number }) {
   return (
     <g>
       <rect x={x} y={y} width={w} height="28" rx="12" fill="#FFFFFF" stroke={BIRU} strokeWidth="3" />
@@ -41,7 +41,7 @@ function Label({ x, y, w, teks, ukuran = 15 }: { x: number; y: number; w: number
 }
 
 /** Ruang dalam rumah. Dinding krem dan lantai kayu. */
-function Ruang() {
+export function Ruang() {
   return (
     <>
       <rect x="0" y="0" width="300" height="208" fill="#FFF7E6" />
@@ -52,7 +52,7 @@ function Ruang() {
   );
 }
 
-function Meja({ x, y, lebar }: { x: number; y: number; lebar: number }) {
+export function Meja({ x, y, lebar }: { x: number; y: number; lebar: number }) {
   return (
     <g>
       <rect x={x} y={y} width={lebar} height="9" rx="3" fill="#C98A4B" stroke={BIRU} strokeWidth="2.2" />

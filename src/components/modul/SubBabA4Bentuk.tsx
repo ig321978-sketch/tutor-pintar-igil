@@ -98,7 +98,7 @@ function ucapBenda(j: JenisBenda): string {
 /* ------------------------------ Pembungkus game -------------------------- */
 
 /** Seperti GameRonde, tetapi jawaban suara boleh tidak ada (kunciAkhir kosong). */
-function GameBentuk({
+export function GameBentuk({
   nomor,
   judul,
   warna,
