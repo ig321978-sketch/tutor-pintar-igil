@@ -6,7 +6,14 @@ import * as T2 from "../src/components/modul/lab-tambah-bab2.ts";
 import * as M2 from "../src/components/modul/mesin-tambah-bab2.ts";
 import * as K3 from "../src/components/modul/lab-kurang-bab3.ts";
 import * as B3 from "../src/components/modul/mesin-bus-bab3.ts";
-
+import * as P4 from "../src/components/modul/lab-papan-paku-bab4.ts";
+import * as C4 from "../src/components/modul/lab-ciri-bab4.ts";
+import * as P5 from "../src/components/modul/lab-puluhan-bab5.ts";
+import * as O5 from "../src/components/modul/mesin-odometer-bab5.ts";
+import * as L6 from "../src/components/modul/lab-loncat-bab6.ts";
+import * as J6 from "../src/components/modul/mesin-jembatan-bab6.ts";
+import * as U7 from "../src/components/modul/lab-ukur-bab7.ts";
+import * as D7 from "../src/components/modul/lab-banding-panjang-bab7.ts";
 let gagal = 0;
 let lulus = 0;
 const cek = (kondisi, pesan) => {
@@ -296,6 +303,424 @@ cek(/lebih banyak/.test(B1.ucapanLab(7, 2, true, 3)), "ucapan lab dengan banding
   // bus penuh
   const penuh = { ...B3.awalBus(0), isi: 10, turunSisa: 0, naikSisa: 2 };
   cek(/Bus penuh/.test(t(penuh, { t: "NAIK" }).pesan), "naik ke bus penuh ditolak");
+}
+
+/* --------------------------- Bab 4: papan paku --------------------------- */
+{
+  const rakit = (titik, tutup = true) => {
+    let p = P4.papanKosong();
+    for (const t of titik) p = P4.pasangPaku(p, t);
+    return tutup ? P4.tutupBentuk(p) : p;
+  };
+  const nama = (titik) => {
+    const p = rakit(titik);
+    return p.tertutup ? P4.analisis(p.titik) : null;
+  };
+  const persegi = nama([[0, 0], [2, 0], [2, 2], [0, 2]]);
+  cek(persegi && persegi.nama === "Persegi" && persegi.siku === 4 && persegi.sisiSama && persegi.sisi === 4, "persegi 2x2");
+  const persegiMiring = nama([[2, 0], [4, 2], [2, 4], [0, 2]]);
+  cek(persegiMiring && persegiMiring.nama === "Persegi" && persegiMiring.siku === 4, "persegi miring tetap persegi");
+  const panjang = nama([[0, 0], [3, 0], [3, 1], [0, 1]]);
+  cek(panjang && panjang.nama === "Persegi panjang" && panjang.siku === 4 && !panjang.sisiSama, "persegi panjang 3x1");
+  const segitiga = nama([[0, 0], [4, 0], [0, 3]]);
+  cek(segitiga && segitiga.nama === "Segitiga" && segitiga.sisi === 3 && segitiga.sudut === 3, "segitiga");
+  const jajar = nama([[0, 0], [2, 0], [3, 1], [1, 1]]);
+  cek(jajar && jajar.nama === "Segiempat" && jajar.siku === 0, "jajar genjang disebut segiempat");
+  const belah = nama([[2, 0], [3, 2], [2, 4], [1, 2]]);
+  cek(belah && belah.nama === "Segiempat" && belah.sisiSama && belah.siku === 0, "belah ketupat disebut segiempat");
+  const lima = nama([[0, 0], [4, 0], [4, 2], [2, 4], [0, 2]]);
+  cek(lima && lima.nama === "Segilima" && lima.sisi === 5, "segilima");
+  const enam = nama([[0, 1], [1, 0], [3, 0], [4, 1], [3, 3], [1, 3]]);
+  cek(enam && enam.nama === "Segienam", "segienam");
+  // penolakan
+  let p = P4.papanKosong();
+  p = P4.pasangPaku(p, [0, 0]);
+  const dobel = P4.pasangPaku(p, [0, 0]);
+  cek(dobel.titik.length === 1 && /sudah dipakai/.test(dobel.pesan), "paku ganda ditolak");
+  p = P4.pasangPaku(p, [1, 0]);
+  const lurus = P4.pasangPaku(p, [2, 0]);
+  cek(lurus.titik.length === 2 && /segaris/.test(lurus.pesan), "tiga paku segaris ditolak");
+  const luar = P4.pasangPaku(p, [9, 9]);
+  cek(luar.titik.length === 2, "paku di luar papan diabaikan");
+  const dini = P4.tutupBentuk(p);
+  cek(!dini.tertutup && /paling sedikit 3/.test(dini.pesan), "tutup dengan kurang dari 3 paku ditolak");
+  // bowtie
+  const dasi = rakit([[0, 0], [2, 2], [2, 0]], false);
+  const silang4 = P4.pasangPaku(dasi, [0, 2]);
+  cek(silang4.titik.length === 3 && /menyilang/.test(silang4.pesan), "karet menyilang ditolak");
+  // menutup bentuk lewat ketuk paku pertama
+  let q = rakit([[0, 0], [2, 0], [2, 2]], false);
+  q = P4.pasangPaku(q, [0, 0]);
+  cek(q.tertutup && P4.analisis(q.titik).nama === "Segitiga", "ketuk paku ke-1 menutup bentuk");
+  const lagi = P4.pasangPaku(q, [3, 3]);
+  cek(lagi.titik.length === 3 && /sudah tertutup/.test(lagi.pesan), "paku setelah tertutup ditolak");
+  const buka = P4.hapusPakuTerakhir(q);
+  cek(!buka.tertutup && buka.titik.length === 3, "hapus paku terakhir membuka karet");
+  const kurang = P4.hapusPakuTerakhir(buka);
+  cek(kurang.titik.length === 2, "hapus paku terakhir mengurangi satu");
+  // penutup yang membuat paku terakhir segaris dengan paku pertama
+  const segarisAkhir = rakit([[0, 0], [2, 0], [2, 2], [0, 2], [0, 1]], true);
+  cek(!segarisAkhir.tertutup && /segaris/.test(segarisAkhir.pesan), "paku terakhir segaris dengan paku pertama ditolak saat menutup");
+  // batas paku
+  let banyak = P4.papanKosong();
+  const lingkar = [[1, 0], [3, 0], [4, 1], [4, 3], [3, 4], [1, 4], [0, 3], [0, 1], [2, 2]];
+  for (const t of lingkar) banyak = P4.pasangPaku(banyak, t);
+  cek(banyak.titik.length === 8 && /Paling banyak 8/.test(banyak.pesan), "paling banyak 8 paku");
+  cek(P4.tutupBentuk(banyak).tertutup && P4.analisis(banyak.titik).nama === "Segidelapan", "segidelapan");
+  // ruas
+  cek(P4.ruasBertemu([0, 0], [2, 2], [0, 2], [2, 0]), "ruas bersilang");
+  cek(P4.ruasBertemu([0, 0], [2, 0], [2, 0], [2, 3]), "ruas bersentuhan di ujung");
+  cek(P4.ruasBertemu([0, 0], [4, 0], [1, 0], [3, 0]), "ruas segaris tumpang tindih");
+  cek(!P4.ruasBertemu([0, 0], [1, 0], [2, 0], [3, 0]), "ruas segaris terpisah");
+  cek(!P4.ruasBertemu([0, 0], [4, 0], [0, 1], [4, 1]), "ruas sejajar");
+  // jalur
+  const t4 = rakit([[0, 0], [2, 0], [2, 2], [0, 2]]);
+  const jl = P4.jalurKaret(t4.titik, true, false, (x) => [x[0] * 10, x[1] * 10]);
+  cek(jl.startsWith("M 0 0") && (jl.match(/ L /g) ?? []).length === 3 && jl.endsWith(" Z"), `jalur lurus: ${jl}`);
+  const jk = P4.jalurKaret(t4.titik, true, true, (x) => [x[0] * 10, x[1] * 10]);
+  cek((jk.match(/ Q /g) ?? []).length === 4 && jk.endsWith(" Z") && !jk.includes(" L "), `jalur lengkung: ${jk}`);
+  cek(P4.jalurKaret([], false, false, (x) => x) === "", "jalur kosong");
+  cek(P4.ANALISIS_LENGKUNG.sisi === 0 && P4.ANALISIS_LENGKUNG.sudut === 0, "bentuk lengkung tanpa sisi lurus dan sudut");
+  cek(P4.TANTANGAN.every((t) => ["Persegi", "Persegi panjang", "Segitiga", "Bentuk lengkung"].includes(t)), "tantangan sah");
+  cek(/persegi/.test(P4.ucapanBentuk(rakit([[0, 0], [2, 0], [2, 2], [0, 2]]), false)) && /melengkung|lengkung/.test(P4.ucapanBentuk(t4, true)) && /Pasang karet/.test(P4.ucapanBentuk(P4.papanKosong(), false)), "ucapan bentuk");
+  // semua bentuk yang bisa dirakit dari kisi punya nama yang masuk akal: acak ringan, deterministik
+  let acak = 12345;
+  const rnd = () => (acak = (acak * 1103515245 + 12345) & 0x7fffffff) / 0x7fffffff;
+  let dicoba = 0;
+  for (let i = 0; i < 400; i += 1) {
+    let pp = P4.papanKosong();
+    const n = 3 + Math.floor(rnd() * 4);
+    for (let k = 0; k < 30 && pp.titik.length < n; k += 1) pp = P4.pasangPaku(pp, [Math.floor(rnd() * 5), Math.floor(rnd() * 5)]);
+    pp = P4.tutupBentuk(pp);
+    if (!pp.tertutup) continue;
+    dicoba += 1;
+    const a = P4.analisis(pp.titik);
+    cek(a.sisi === pp.titik.length && a.sudut === a.sisi && a.siku >= 0 && a.siku <= a.sisi, "analisis acak konsisten");
+    if (a.nama === "Persegi" || a.nama === "Persegi panjang") cek(a.siku === 4 && a.sisi === 4, "nama persegi hanya untuk 4 sudut siku");
+    if (a.nama === "Persegi") cek(a.sisiSama, "persegi sisi sama");
+  }
+  cek(dicoba > 50, `cukup bentuk acak terbentuk (${dicoba})`);
+}
+
+/* ---------------------------- Bab 4: ciri bentuk ------------------------- */
+{
+  const ids = C4.BENTUK.map((b) => b.id);
+  cek(new Set(ids).size === ids.length && ids.length === 5, "lima bentuk unik");
+  for (const b of C4.BENTUK) {
+    cek(C4.bentukDari(b.id).nama === b.nama, `bentukDari ${b.id}`);
+    cek(b.ciri.length >= 2 && b.sudut >= 0, `ciri ${b.id}`);
+    const lurus = b.sisiLurus;
+    cek(b.sudut === 0 ? lurus === 0 : true, `${b.id}: tanpa sudut berarti tanpa sisi lurus`);
+    // ciri tetap saat diputar dan dibesarkan
+    let pose = C4.poseAwal;
+    for (let i = 0; i < 6; i += 1) pose = C4.ubahSkala(C4.putar90(pose), i % 2 === 0 ? 1 : -1);
+    sama(C4.ciriBentuk(b.id), { sisiLurus: b.sisiLurus, sisiLengkung: b.sisiLengkung, sudut: b.sudut }, `ciri tetap ${b.id}`);
+    cek(/Bentuknya sudah diputar/.test(C4.ucapanCiri(b.id, { putar: 90, skala: 1 })) && !/diputar/.test(C4.ucapanCiri(b.id, C4.poseAwal)), `ucapan ciri ${b.id}`);
+  }
+  let pz = C4.poseAwal;
+  for (let i = 0; i < 4; i += 1) pz = C4.putar90(pz);
+  sama(pz.putar, 0, "putar empat kali kembali ke nol");
+  sama(C4.putar90({ putar: 270, skala: 2 }), { putar: 0, skala: 2 }, "putar 270 + 90");
+  sama(C4.ubahSkala({ putar: 0, skala: 3 }, 1).skala, 3, "skala maks 3");
+  sama(C4.ubahSkala({ putar: 0, skala: 1 }, -1).skala, 1, "skala min 1");
+  // susunan
+  for (const s of C4.SUSUNAN) {
+    cek(C4.BENTUK.some((b) => b.id === s.hasil), `${s.id}: hasil dikenal`);
+    cek(s.bagian.length >= 2 && s.bagian.every((p) => p.dx !== 0 || p.dy !== 0), `${s.id}: bagian bergeser saat dipisah`);
+    cek(/menjadi/.test(s.kalimat), `${s.id}: kalimat`);
+    if (s.poligon) {
+      cek(s.poligon.length === s.bagian.length, `${s.id}: poligon sebanyak bagian`);
+      const jumlahLuas = s.poligon.reduce((a, p) => a + C4.luasPoligon(p), 0);
+      const k = C4.kotakGabungan(s.poligon);
+      const luasKotak = (k.x2 - k.x1) * (k.y2 - k.y1);
+      cek(jumlahLuas === luasKotak, `${s.id}: bagian menutup persegi/persegi panjang tanpa celah (${jumlahLuas} vs ${luasKotak})`);
+      const lebar = k.x2 - k.x1;
+      const tinggi = k.y2 - k.y1;
+      cek((s.hasil === "persegi") === (lebar === tinggi), `${s.id}: hasil ${s.hasil} cocok dengan ukuran ${lebar}x${tinggi}`);
+    }
+  }
+  sama(new Set(C4.SUSUNAN.map((s) => s.id)).size, C4.SUSUNAN.length, "id susunan unik");
+  sama(C4.luasPoligon([[0, 0], [4, 0], [4, 3], [0, 3]]), 12, "luas poligon");
+}
+
+/* ----------------------- Bab 5: lab puluhan dan satuan ------------------- */
+{
+  for (let n = 0; n <= 20; n += 1) {
+    const u = P5.uraiNilai(n);
+    cek(u.puluhan * 10 + u.satuan === n && u.satuan >= 0 && u.satuan <= 9, `urai ${n}`);
+    const [a, b] = P5.selDuaBingkai(n);
+    cek(a.length === 10 && b.length === 10, `dua bingkai ${n}`);
+    cek(a.filter((x) => x === "a").length === Math.min(n, 10) && b.filter((x) => x === "b").length === Math.max(0, n - 10), `isi bingkai ${n}`);
+    cek(b.every((x) => x !== "a") && a.every((x) => x !== "b"), `warna bingkai ${n}`);
+    cek(P5.kalimatNilai(n) === `${n} = ${u.puluhan} puluhan + ${u.satuan} satuan`, `kalimat ${n}`);
+    cek(P5.bisaIkat(n) === n >= 10, `bisaIkat ${n}`);
+    cek(P5.ucapanPuluhan(n, true).startsWith(`Bilangan ${n}.`), `ucapan ${n}`);
+    for (let m = 0; m <= 20; m += 1) {
+      const k = P5.bandingkanNilaiTempat(n, m);
+      const harus = n > m ? ">" : n < m ? "<" : "=";
+      cek(k.simbol === harus, `banding ${n} dan ${m}: ${k.simbol}`);
+      cek(k.alasan.length > 20, `alasan banding ${n} dan ${m}`);
+      if (n !== m) cek(k.alasan.includes(`${Math.max(n, m)} lebih besar dari ${Math.min(n, m)}`), `alasan menyebut yang besar ${n},${m}`);
+      const a1 = P5.uraiNilai(n);
+      const b1 = P5.uraiNilai(m);
+      if (n !== m && a1.puluhan === b1.puluhan) cek(/Lihat satuan/.test(k.alasan), `puluhan sama lihat satuan ${n},${m}`);
+      if (a1.puluhan !== b1.puluhan) cek(/Puluhan lebih banyak/.test(k.alasan), `puluhan beda ${n},${m}`);
+    }
+  }
+  sama(P5.batas(25), 20, "batas 20");
+  sama(P5.batas(-2), 0, "batas 0");
+  sama(P5.ketukBenda(14, 16), 17, "ketuk benda ke-17");
+  sama(P5.ketukBenda(17, 16), 16, "ketuk benda terakhir mengurangi");
+}
+
+/* ----------------------------- Bab 5: odometer --------------------------- */
+{
+  const t = (o, e) => O5.langkahOdo(o, e);
+  const S = (d) => ({ t: "SATUAN", d });
+  const P = (d) => ({ t: "PULUHAN", d });
+  for (const m of O5.MISI_ODO) cek(m.awal !== m.tujuan && m.awal >= 0 && m.tujuan <= 20, "misi odometer sah");
+  let o = O5.awalOdo(0);
+  sama([o.n, O5.uraiOdo(o.n)], [7, { p: 0, s: 7 }], "odometer awal");
+  // misi 1: 7 -> 13 dengan bawa di 9 -> 10
+  for (let i = 0; i < 2; i += 1) o = t(o, S(1));
+  sama(o.n, 9, "odometer 9");
+  cek(o.info === "", "belum ada bawa");
+  o = t(o, S(1));
+  cek(o.n === 10 && /diikat menjadi 1 puluhan/.test(o.info) && o.pesan === "", "bawa 9 -> 10 memberi keterangan");
+  sama(O5.uraiOdo(o.n), { p: 1, s: 0 }, "10 = 1 puluhan 0 satuan");
+  o = t(o, S(1));
+  cek(o.info === "", "keterangan bawa hilang");
+  o = t(o, S(1));
+  o = t(o, S(1));
+  cek(o.tiba && o.n === 13, "tiba di 13");
+  cek(/sudah tiba/.test(t(o, S(1)).pesan) && t(o, S(1)).n === 13, "putar saat tiba ditolak");
+  cek(/sudah tiba/.test(t(o, P(1)).pesan), "puluhan saat tiba ditolak");
+  o = t(o, { t: "LANJUT" });
+  sama([o.misi, o.n, o.tiba], [1, 13, false], "misi 2");
+  cek(/belum tiba/.test(t(o, { t: "LANJUT" }).pesan), "LANJUT sebelum tiba ditolak");
+  // misi 2: 13 -> 8 dengan pinjam di 10 -> 9
+  for (let i = 0; i < 3; i += 1) o = t(o, S(-1));
+  sama(o.n, 10, "odometer 10 saat turun");
+  o = t(o, S(-1));
+  cek(o.n === 9 && /dibuka menjadi 10 satuan/.test(o.info), "pinjam 10 -> 9 memberi keterangan");
+  sama(O5.uraiOdo(9), { p: 0, s: 9 }, "9 = 0 puluhan 9 satuan");
+  o = t(o, S(-1));
+  cek(o.tiba && o.n === 8, "tiba di 8");
+  o = t(o, { t: "LANJUT" });
+  sama([o.misi, o.n], [2, 8], "misi 3");
+  // puluhan naik menambah 10; batas atas
+  const tolakAtas = t(o, P(1));
+  cek(tolakAtas.n === 18 && tolakAtas.pesan === "", "puluhan naik dari 8 ke 18");
+  o = tolakAtas;
+  const gagalPuluhan = t(o, P(1));
+  cek(gagalPuluhan.n === 18 && /melebihi 20/.test(gagalPuluhan.pesan) && gagalPuluhan.ditolak === o.ditolak + 1, "puluhan naik melebihi 20 ditolak");
+  o = t(o, S(1));
+  o = t(o, S(1));
+  cek(o.tiba && o.n === 20, "tiba di 20");
+  o = t(o, { t: "LANJUT" });
+  cek(o.selesai, "semua misi odometer selesai");
+  cek(t(o, S(1)).pesan !== "", "putar setelah selesai ditolak");
+  const ulang = t(o, { t: "ULANG" });
+  sama([ulang.misi, ulang.n, ulang.selesai, ulang.ditolak, ulang.langkah], [0, 7, false, 0, 0], "main lagi odometer");
+  cek(t(O5.awalOdo(0), { t: "ULANG" }).pesan !== "", "ULANG sebelum selesai ditolak");
+  // batas bawah dan atas langsung
+  const nol = { ...O5.awalOdo(0), n: 0 };
+  cek(/paling kecil adalah 0/.test(t(nol, S(-1)).pesan), "satuan turun di 0 ditolak");
+  cek(/Puluhan sudah 0/.test(t(nol, P(-1)).pesan), "puluhan turun di 0 ditolak");
+  const dua = { ...O5.awalOdo(0), n: 20 };
+  cek(/paling besar di bab ini 20/.test(t(dua, S(1)).pesan), "satuan naik di 20 ditolak");
+  const dua2 = t({ ...O5.awalOdo(0), n: 14 }, P(-1));
+  cek(dua2.n === 4 && dua2.pesan === "", "puluhan turun 14 -> 4");
+  // setiap angka 0..20 dapat dicapai dan uraiannya benar
+  for (let n = 0; n <= 20; n += 1) {
+    const u = O5.uraiOdo(n);
+    cek(u.p * 10 + u.s === n, `uraiOdo ${n}`);
+  }
+  cek(/bertambah/.test(O5.petunjukOdo(O5.awalOdo(0))) && /berkurang/.test(O5.petunjukOdo(O5.awalOdo(1))), "petunjuk odometer");
+}
+
+/* ------------------------- Bab 6: garis bilangan loncat ------------------ */
+{
+  for (const op of ["tambah", "kurang", "selisih"]) {
+    for (let a = 0; a <= 20; a += 1) {
+      cek(L6.batasOperan(a, op) === (op === "tambah" ? 20 - a : op === "kurang" ? a : 20), `batas operan ${op} ${a}`);
+      for (let b = 0; b <= L6.batasOperan(a, op); b += 1) {
+        const p = { a, b };
+        cek(JSON.stringify(L6.rapikan(p, op)) === JSON.stringify(p), `rapikan menjaga pasangan sah ${op} ${a},${b}`);
+        const hasil = L6.hasilLoncat(p, op);
+        cek(hasil >= 0 && hasil <= 20, `hasil ${op} ${a},${b} dalam 0..20`);
+        const kalimat = L6.kalimatLoncat(p, op);
+        const m = kalimat.match(/^(\d+) ([+−]) (\d+) = (\d+)$/);
+        cek(!!m && (m[2] === "+" ? Number(m[1]) + Number(m[3]) : Number(m[1]) - Number(m[3])) === Number(m[4]) && Number(m[4]) === hasil, `kalimat ${kalimat}`);
+        for (const st of ["satuan", "sepuluh"]) {
+          const hops = L6.rencana(p, op, st);
+          if (op === "selisih") {
+            cek(hops.length === (a === b ? 0 : 1), `selisih hop ${a},${b}`);
+            if (hops.length === 1) cek(hops[0].dari === Math.min(a, b) && hops[0].ke === Math.max(a, b) && hops[0].label === String(hasil), `selisih hop isi ${a},${b}`);
+            continue;
+          }
+          if (b === 0) {
+            cek(hops.length === 0, `tanpa lompatan ${op} ${a},0`);
+            continue;
+          }
+          cek(hops[0].dari === a && hops[hops.length - 1].ke === hasil, `rantai hop ${op} ${st} ${a},${b}`);
+          for (let i = 1; i < hops.length; i += 1) cek(hops[i].dari === hops[i - 1].ke, `hop bersambung ${op} ${st} ${a},${b}`);
+          const total = hops.reduce((x, h) => x + Math.abs(h.ke - h.dari), 0);
+          cek(total === b, `jumlah lompatan ${op} ${st} ${a},${b}`);
+          cek(hops.every((h) => (op === "tambah" ? h.ke > h.dari : h.ke < h.dari)), `arah lompatan ${op} ${a},${b}`);
+          if (st === "satuan") cek(hops.length === b && hops.every((h) => Math.abs(h.ke - h.dari) === 1), `satu-satu ${op} ${a},${b}`);
+          if (st === "sepuluh") {
+            const melewati = op === "tambah" ? a < 10 && hasil > 10 : a > 10 && hasil < 10;
+            cek(hops.length === (melewati ? 2 : 1), `lewat sepuluh ${op} ${a},${b}: ${hops.length} hop`);
+            if (melewati) cek(hops[0].ke === 10, `hop pertama berhenti di 10 ${op} ${a},${b}`);
+          }
+        }
+      }
+    }
+  }
+  sama(L6.rapikan({ a: 18, b: 9 }, "tambah"), { a: 18, b: 2 }, "rapikan tambah menjepit b");
+  sama(L6.rapikan({ a: 5, b: 9 }, "kurang"), { a: 5, b: 5 }, "rapikan kurang menjepit b");
+  sama(L6.rapikan({ a: 25, b: 30 }, "selisih"), { a: 20, b: 20 }, "rapikan selisih menjepit keduanya");
+  sama(L6.catatanLoncat(L6.rencana({ a: 8, b: 5 }, "tambah", "sepuluh")), "8 → 10 (+2), 10 → 13 (+3)", "catatan loncat lewat sepuluh");
+  sama(L6.catatanLoncat(L6.rencana({ a: 15, b: 6 }, "kurang", "sepuluh")), "15 → 10 (−5), 10 → 9 (−1)", "catatan loncat mundur lewat sepuluh");
+  cek(/2 lompatan/.test(L6.ucapanLoncat({ a: 8, b: 5 }, "tambah", "sepuluh")) && /5 lompatan/.test(L6.ucapanLoncat({ a: 8, b: 5 }, "tambah", "satuan")), "ucapan loncat");
+  cek(/Selisih 3 dan 9 adalah 6/.test(L6.ucapanLoncat({ a: 3, b: 9 }, "selisih", "satuan")) && /sama besar/.test(L6.ucapanLoncat({ a: 4, b: 4 }, "selisih", "satuan")), "ucapan selisih");
+}
+
+/* --------------------------- Bab 6: jembatan sepuluh --------------------- */
+{
+  for (let r = 0; r < J6.SOAL_JEMBATAN.length; r += 1) {
+    const s = J6.soalRonde(r);
+    cek(s.a < 10 && s.a + s.b > 10 && s.a + s.b <= 20, `soal jembatan ${r} melewati 10 dan tidak lebih dari 20`);
+    cek(J6.bagianPertama(s.a) + s.a === 10 && s.b - J6.bagianPertama(s.a) > 0, `soal jembatan ${r} bagian pertama sah`);
+    const o = J6.pilihanSisa(r);
+    cek(o.includes(s.a + s.b) && new Set(o).size === 3 && o.every((n) => n >= 0 && n <= 21), `pilihan sisa ${r}: ${o}`);
+  }
+  cek(new Set(J6.SOAL_JEMBATAN.map((s) => s.a + s.b)).size === 3, "jumlah soal jembatan bervariasi");
+  const t = (m, e) => J6.langkahJembatan(m, e);
+  let m = J6.awalJembatan(0);
+  const s = J6.soalRonde(0);
+  let x = t(m, { t: "LOMPAT", ke: "sisa" });
+  cek(x.keadaan === "soal" && /tidak bisa melompat/.test(x.pesan) && x.ditolak === 1, "lompat ke Sisa ditolak");
+  x = t(m, { t: "LOMPAT", ke: "pecah" });
+  cek(x.keadaan === "soal" && /Baca soalnya/.test(x.pesan), "maju sebelum baca ditolak");
+  cek(t(m, { t: "PECAH", delta: 1 }).pesan !== "" && t(m, { t: "GENAPKAN" }).pesan !== "" && t(m, { t: "JAWAB", nilai: 13 }).pesan !== "", "aksi di stasiun Soal ditolak");
+  m = t(m, { t: "BACA" });
+  cek(m.keadaan === "pecah", "soal dibaca");
+  cek(t(m, { t: "BACA" }).pesan !== "", "soal tidak dibaca dua kali");
+  cek(t(m, { t: "GENAPKAN" }).pesan !== "" && t(m, { t: "JAWAB", nilai: 13 }).pesan !== "", "genapkan dan jawab di stasiun Pecah ditolak");
+  // pecah salah
+  m = t(m, { t: "PECAH", delta: 1 });
+  m = t(m, { t: "PECAH", delta: 1 });
+  m = t(m, { t: "PECAH", delta: 1 });
+  sama(m.x, 3, "bagian pertama 3");
+  x = t(m, { t: "LOMPAT", ke: "genapkan" });
+  cek(x.keadaan === "pecah" && x.pesan.includes("harus 2") && x.pesan.includes("Sekarang 3"), `pecah salah ditolak: ${x.pesan}`);
+  cek(t({ ...m, x: 0 }, { t: "PECAH", delta: -1 }).x === 0, "bagian pertama tidak di bawah nol");
+  cek(/tidak boleh lebih dari 5/.test(t({ ...m, x: 5 }, { t: "PECAH", delta: 1 }).pesan), "bagian pertama tidak melebihi b");
+  m = t(m, { t: "PECAH", delta: -1 });
+  m = t(m, { t: "LOMPAT", ke: "genapkan" });
+  cek(m.keadaan === "genapkan", "pindah ke Genapkan");
+  x = t(m, { t: "LOMPAT", ke: "sisa" });
+  cek(x.keadaan === "genapkan" && /Genapkan dulu/.test(x.pesan), "belum digenapkan tidak boleh ke Sisa");
+  const balik = t(m, { t: "LOMPAT", ke: "pecah" });
+  cek(balik.keadaan === "pecah" && balik.x === 2, "kembali ke Pecah boleh");
+  m = t(m, { t: "GENAPKAN" });
+  cek(m.genap && m.riwayat[m.riwayat.length - 1] === "8 + 2 = 10", `digenapkan: ${m.riwayat[m.riwayat.length - 1]}`);
+  m = t(m, { t: "LOMPAT", ke: "sisa" });
+  cek(m.keadaan === "sisa", "pindah ke Sisa");
+  x = t(m, { t: "JAWAB", nilai: s.a + s.b + 1 });
+  cek(x.keadaan === "sisa" && /10 \+ 3/.test(x.pesan) && x.ditolak > m.ditolak, "hasil salah ditolak dengan petunjuk");
+  x = t(m, { t: "LOMPAT", ke: "selesai" });
+  cek(x.keadaan === "sisa" && /Pilih dulu/.test(x.pesan), "tidak bisa ke Selesai tanpa jawaban");
+  m = t(m, { t: "JAWAB", nilai: s.a + s.b });
+  cek(m.keadaan === "selesai" && m.riwayat.includes("10 + 3 = 13") && m.riwayat.filter((r) => r === "Sisa → Selesai").length === 1, "selesai dengan catatan");
+  cek(t(m, { t: "LOMPAT", ke: "pecah" }).pesan !== "", "setelah selesai lompat ditolak");
+  cek(t(J6.awalJembatan(0), { t: "ULANG" }).pesan !== "", "ULANG sebelum selesai ditolak");
+  const baru = t(m, { t: "ULANG" });
+  cek(baru.ronde === 1 && baru.keadaan === "soal" && baru.x === 0 && !baru.genap && baru.ditolak === 0, "soal baru bersih");
+  cek(J6.soalRonde(1).a !== s.a, "soal baru berbeda");
+}
+
+/* ------------------------------ Bab 7: meja ukur ------------------------- */
+{
+  for (const sat of U7.SATUAN) {
+    cek(U7.PANJANG_BENDA % sat.panjang === 0, `${sat.id}: panjang benda habis dibagi satuan`);
+    const benar = U7.hasilBenar(sat.id);
+    cek(benar <= U7.MAKS_SATUAN, `${sat.id}: hasil benar ${benar} muat di batas`);
+    const dasar = { id: sat.id, dariTengah: false, celah: false, tumpuk: false };
+    const pas = U7.susun({ ...dasar, n: benar });
+    cek(pas.status === "tepat" && pas.akhir === U7.PANJANG_BENDA && pas.masalah.length === 0 && pas.kotak.length === benar, `${sat.id}: pas`);
+    cek(pas.kotak.every((k, i) => k.x === i * sat.panjang && k.lebar === sat.panjang && k.baris === 0), `${sat.id}: kotak rapat dari ujung`);
+    cek(new RegExp(`${benar} ${sat.nama.toLowerCase()}`).test(pas.pesan), `${sat.id}: pesan tepat menyebut hasil`);
+    for (let n = 0; n <= U7.MAKS_SATUAN; n += 1) {
+      const h = U7.susun({ ...dasar, n });
+      const harus = n < benar ? "kurang" : n > benar ? "lebih" : "tepat";
+      cek(h.status === harus, `${sat.id} n=${n}: ${h.status} != ${harus}`);
+      cek(h.akhir === n * sat.panjang, `${sat.id} n=${n}: akhir ${h.akhir}`);
+    }
+    // setiap kebiasaan salah membuat hasil tidak pernah "tepat", seberapa pun satuannya
+    for (const salah of [{ dariTengah: true }, { celah: true }, { tumpuk: true }, { dariTengah: true, celah: true, tumpuk: true }]) {
+      for (let n = 0; n <= U7.MAKS_SATUAN; n += 1) {
+        const h = U7.susun({ ...dasar, ...salah, n });
+        cek(h.status === "salah-cara" && h.masalah.length === Object.keys(salah).length, `${sat.id} ${JSON.stringify(salah)} n=${n}: salah cara`);
+      }
+    }
+    const tumpuk = U7.susun({ ...dasar, tumpuk: true, n: 3 });
+    cek(tumpuk.kotak.map((k) => k.baris).join("") === "010" && tumpuk.kotak[1].x === sat.panjang - 1, `${sat.id}: tumpukan menggeser mundur dan berselang-seling`);
+    const celah = U7.susun({ ...dasar, celah: true, n: 3 });
+    cek(celah.kotak[1].x === sat.panjang + 1, `${sat.id}: celah menggeser maju`);
+    const tengah = U7.susun({ ...dasar, dariTengah: true, n: 2 });
+    cek(tengah.kotak[0].x === U7.GESER_TENGAH, `${sat.id}: mulai dari tengah bergeser`);
+  }
+  const tabel = U7.tabelHasil();
+  sama(tabel.map((t) => t.n), [3, 4, 6], "tabel hasil balok, stik, klip");
+  cek(tabel.every((t, i) => i === 0 || tabel[i - 1].n < t.n), "satuan lebih pendek, bilangan lebih banyak");
+  cek(U7.susun({ id: "stik", n: 99, dariTengah: false, celah: false, tumpuk: false }).kotak.length === U7.MAKS_SATUAN, "n dibatasi maksimum");
+  cek(U7.susun({ id: "stik", n: -3, dariTengah: false, celah: false, tumpuk: false }).kotak.length === 0, "n tidak negatif");
+  cek(/Letakkan satuan pertama/.test(U7.susun({ id: "stik", n: 0, dariTengah: false, celah: false, tumpuk: false }).pesan), "pesan awal");
+  cek(/Pita diukur dengan 4 stik/.test(U7.ucapanUkur({ id: "stik", n: 4, dariTengah: false, celah: false, tumpuk: false })) && /belum benar/.test(U7.ucapanUkur({ id: "stik", n: 4, dariTengah: false, celah: true, tumpuk: false })), "ucapan ukur");
+}
+
+/* ------------------------- Bab 7: bandingkan panjang --------------------- */
+{
+  sama(D7.PITA.length, 4, "empat pita");
+  cek(D7.PANJANG_AWAL.length === 4 && D7.PANJANG_AWAL.every((p) => p >= 1 && p <= 10) && new Set(D7.PANJANG_AWAL).size === 4, "panjang awal sah dan berbeda");
+  cek(D7.GESER_TAK_SEJAJAR.length === 4 && D7.GESER_TAK_SEJAJAR.some((g) => g > 0), "geseran tidak sejajar bervariasi");
+  // lebar total muat di gambar: X0 54 + geser maks*10 + 10*26 + angka
+  cek(54 + Math.max(...D7.GESER_TAK_SEJAJAR) * 10 + 10 * 26 + 24 <= 380, "pita terpanjang muat di gambar");
+  sama(D7.ubahPanjang([5, 8, 3, 6], 2, 1), [5, 8, 4, 6], "ubah panjang pita hijau");
+  sama(D7.ubahPanjang([5, 8, 3, 6], 0, -1), [4, 8, 3, 6], "kurangi pita merah");
+  sama(D7.ubahPanjang([1, 8, 3, 6], 0, -1), [1, 8, 3, 6], "panjang minimal 1");
+  sama(D7.ubahPanjang([5, 10, 3, 6], 1, 1), [5, 10, 3, 6], "panjang maksimal 10");
+  sama(D7.ubahPanjang([5, 8, 3, 6], 9, 1), [5, 8, 3, 6], "indeks di luar daftar diabaikan");
+  sama(D7.urutanTampil([5, 8, 3, 6], false), [0, 1, 2, 3], "urutan asli");
+  sama(D7.urutanTampil([5, 8, 3, 6], true), [2, 0, 3, 1], "urut dari terpendek");
+  sama(D7.urutanTampil([4, 4, 2, 4], true), [2, 0, 1, 3], "panjang sama tetap urutan semula");
+  sama(D7.terpendek([5, 8, 3, 6]), [2], "terpendek");
+  sama(D7.terpanjang([5, 8, 3, 6]), [1], "terpanjang");
+  sama(D7.terpendek([3, 8, 3, 6]), [0, 2], "terpendek kembar");
+  sama(D7.terpanjang([8, 8, 3, 6]), [0, 1], "terpanjang kembar");
+  // semua pasangan: kalimat sesuai
+  for (let i = 0; i < 4; i += 1) {
+    for (let j = 0; j < 4; j += 1) {
+      const k = D7.bandingDua([5, 8, 3, 6], i, j);
+      if (i === j) cek(/dirinya sendiri/.test(k), `banding diri sendiri ${i}`);
+      else {
+        const sel = Math.abs([5, 8, 3, 6][i] - [5, 8, 3, 6][j]);
+        const lebihI = [5, 8, 3, 6][i] > [5, 8, 3, 6][j];
+        const lebih = D7.PITA[lebihI ? i : j].nama;
+        const kurang = D7.PITA[lebihI ? j : i].nama;
+        cek(k.includes(`Pita ${lebih} lebih panjang ${sel} stik dari pita ${kurang}`) && k.includes(`lebih pendek ${sel} stik`), `banding ${i},${j}: ${k}`);
+      }
+    }
+  }
+  cek(/sama panjang, masing-masing 5 stik/.test(D7.bandingDua([5, 5, 3, 6], 0, 1)), "banding sama panjang");
+  sama(D7.pilihPita([], 2), [2], "pilih pita pertama");
+  sama(D7.pilihPita([2], 0), [2, 0], "pilih pita kedua");
+  sama(D7.pilihPita([2, 0], 3), [0, 3], "pilih pita ketiga menggeser yang tertua");
+  sama(D7.pilihPita([2, 0], 2), [0], "ketuk lagi melepas");
+  cek(/Biru dan Hijau|Biru/.test(D7.ucapanBanding([5, 8, 3, 6], false, true)) && /belum sejajar/.test(D7.ucapanBanding([5, 8, 3, 6], false, false)) && !/belum sejajar/.test(D7.ucapanBanding([5, 8, 3, 6], true, true)) && /diurutkan/.test(D7.ucapanBanding([5, 8, 3, 6], true, true)), "ucapan banding");
 }
 
 console.log(`Lulus ${lulus}, gagal ${gagal}`);

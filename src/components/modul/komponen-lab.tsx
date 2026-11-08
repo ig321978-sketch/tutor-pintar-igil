@@ -74,7 +74,7 @@ export function Pengatur({
 /* ------------------------------ Garis bilangan --------------------------- */
 
 export type Penanda = { n: number; warna: string; teks?: string };
-export type Lompatan = { dari: number; ke: number; warna: string };
+export type Lompatan = { dari: number; ke: number; warna: string; label?: string };
 
 export function GarisAngka({
   maks,
@@ -92,25 +92,31 @@ export function GarisAngka({
   /** Bilangan yang diberi lingkaran tebal pada garis. */
   sorot?: number[];
 }) {
-  const lebar = 34;
+  const kecil = maks > 10;
+  const lebar = kecil ? 22 : 34;
   const x = (n: number) => 17 + n * lebar;
   const W = x(maks) + 17;
-  const garisY = 52;
-  const tinggi = 92;
+  const garisY = 62;
+  const tinggi = 102;
   return (
     <div className="overflow-x-auto">
-      <svg viewBox={`0 0 ${W} ${tinggi}`} style={maks > 10 ? { minWidth: W * 0.9 } : undefined} className="mx-auto block w-full" role="group" aria-label={nama}>
+      <svg viewBox={`0 0 ${W} ${tinggi}`} style={{ maxWidth: W * 1.5 }} className="mx-auto block w-full" role="group" aria-label={nama}>
         <line x1={x(0) - 10} y1={garisY} x2={x(maks) + 10} y2={garisY} stroke={UNGU} strokeWidth="3" strokeLinecap="round" />
         {lompatan.map((l, k) => {
           const a = x(l.dari);
           const b = x(l.ke);
           const tengah = (a + b) / 2;
-          const tinggiBusur = 18 + Math.min(14, Math.abs(l.ke - l.dari) * 2);
+          const tinggiBusur = (kecil ? 24 : 18) + Math.min(14, Math.abs(l.ke - l.dari) * 2);
           const arah = b >= a ? 1 : -1;
           return (
             <g key={`${l.dari}-${l.ke}-${k}`}>
               <path d={`M ${a} ${garisY - 6} Q ${tengah} ${garisY - 6 - tinggiBusur * 2} ${b} ${garisY - 6}`} fill="none" stroke={l.warna} strokeWidth="3" strokeLinecap="round" />
               <polygon points={`${b},${garisY - 3} ${b - 5 * arah - 3},${garisY - 13} ${b - 5 * arah + 5},${garisY - 12}`} fill={l.warna} />
+              {l.label ? (
+                <text x={tengah} y={garisY - 6 - tinggiBusur - 4} textAnchor="middle" fontSize={kecil ? 15 : 12} fontWeight="900" fill={l.warna} stroke="#FFFFFF" strokeWidth="3" paintOrder="stroke">
+                  {l.label}
+                </text>
+              ) : null}
             </g>
           );
         })}
@@ -119,7 +125,7 @@ export function GarisAngka({
           const gambar = (
             <>
               <circle cx={x(n)} cy={garisY} r={dipilih ? 7.5 : 5.5} fill={dipilih ? "#FFE566" : "#FFFFFF"} stroke={UNGU} strokeWidth={dipilih ? 3 : 2} />
-              <text x={x(n)} y={garisY + 24} textAnchor="middle" fontSize="13" fontWeight="900" fill={UNGU}>
+              <text x={x(n)} y={garisY + 24} textAnchor="middle" fontSize={kecil ? 15 : 13} fontWeight="900" fill={UNGU}>
                 {n}
               </text>
             </>

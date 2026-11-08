@@ -27,6 +27,10 @@ import {
 import SimulasiBab1 from "@/components/modul/SimulasiBab1";
 import SimulasiBab2 from "@/components/modul/SimulasiBab2";
 import SimulasiBab3 from "@/components/modul/SimulasiBab3";
+import SimulasiBab4 from "@/components/modul/SimulasiBab4";
+import SimulasiBab5 from "@/components/modul/SimulasiBab5";
+import SimulasiBab6 from "@/components/modul/SimulasiBab6";
+import SimulasiBab7 from "@/components/modul/SimulasiBab7";
 import SimulasiBab8 from "@/components/modul/SimulasiBab8";
 import { CeritaDataA, PETA_PIKIRAN_A8 } from "@/components/modul/gambar-data-a8";
 import {
@@ -786,6 +790,10 @@ const SIMULASI_BAB: Partial<Record<BabModul, ComponentType<SimulasiBabProps>>> =
   "mtk-1-bab1": SimulasiBab1,
   "mtk-1-bab2": SimulasiBab2,
   "mtk-1-bab3": SimulasiBab3,
+  "mtk-1-bab4": SimulasiBab4,
+  "mtk-1-bab5": SimulasiBab5,
+  "mtk-1-bab6": SimulasiBab6,
+  "mtk-1-bab7": SimulasiBab7,
   "mtk-1-bab8": SimulasiBab8,
 };
 
