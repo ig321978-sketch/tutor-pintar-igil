@@ -21,7 +21,8 @@ import {
   zonaTujuan,
   type Kategori,
   type Lambang,
-} from "./simulasi-bersama-bab8";
+} from "./simulasi-bersama";
+import SimulasiAlur, { type LangkahSim } from "./simulasi-alur";
 import SimulasiMesinData from "./SimulasiMesinData";
 import SimulasiSkenarioPesta from "./SimulasiSkenarioPesta";
 
@@ -712,123 +713,12 @@ function SimulasiDiagram({ speakGuru }: { speakGuru: (t: string) => void }) {
 /* Pembungkus tab Simulasi Bab 8                                            */
 /* ======================================================================== */
 
-const LANGKAH_SIM = [
-  { judul: "Simulasi 1 dari 4", metode: "PhET", sub: "Laboratorium Data", petunjuk: "Mainkan dulu simulasinya, ya." },
-  { judul: "Simulasi 2 dari 4", metode: "PhET", sub: "Pabrik Diagram", petunjuk: "Mainkan dulu simulasinya, ya." },
-  { judul: "Simulasi 3 dari 4", metode: "Mesin keadaan", sub: "Mesin Data Ajaib", petunjuk: "Jalankan mesinnya sampai Selesai dulu, ya." },
-  { judul: "Simulasi 4 dari 4", metode: "Skenario", sub: "Sekretaris Kelas", petunjuk: "Selesaikan skenarionya sampai akhir dulu, ya." },
-] as const;
-
-type Langkah = 0 | 1 | 2 | 3;
-
 export default function SimulasiBab8({ speakGuru, onKeLatihan }: { speakGuru: (t: string) => void; onKeLatihan: () => void }) {
-  /**
-   * Satu simulasi per layar. LANJUTKAN berurutan, dan Latihan baru dituju setelah simulasi terakhir selesai.
-   * Simulasi 1 dan 2 (PhET) dianggap dimainkan setelah disentuh sekali. Simulasi 3 (mesin keadaan) dan 4 (skenario)
-   * dianggap selesai setelah mencapai keadaan akhir: mesin Selesai, skenario sampai adegan Akhir.
-   */
-  const [langkah, setLangkah] = useState<Langkah>(0);
-  const [dimainkan, setDimainkan] = useState<boolean[]>([false, false, false, false]);
-  const siap = dimainkan[langkah];
-  const terakhir = langkah === LANGKAH_SIM.length - 1;
-
-  const tuntas = (i: number) => setDimainkan((prev) => (prev[i] ? prev : prev.map((x, k) => (k === i ? true : x))));
-
-  /** Menyentuh benda, tombol, atau kotak centang di dalam simulasi PhET dihitung sebagai "dimainkan". Tombol suara tidak dihitung. */
-  const tandai = (e: React.SyntheticEvent) => {
-    const t = e.target as HTMLElement;
-    if (!t.closest('button, [role="button"], [role="checkbox"]')) return;
-    if (t.closest('[aria-label^="Dengarkan"]')) return;
-    tuntas(langkah);
-  };
-  const tandaiKunci = (e: React.KeyboardEvent) => {
-    if (e.key === "Enter" || e.key === " ") tandai(e);
-  };
-
-  const ke = (tujuan: Langkah) => {
-    setLangkah(tujuan);
-    window.scrollTo({ top: 0, behavior: "smooth" });
-  };
-
-  const lanjut = () => {
-    if (!siap) return;
-    if (terakhir) onKeLatihan();
-    else ke((langkah + 1) as Langkah);
-  };
-
-  return (
-    <section className="mx-auto mt-4 w-[98%] space-y-4 rounded-3xl border-2 border-indigo-100 bg-indigo-50/40 p-3 md:p-6" aria-label="Laboratorium Simulasi Bab 8">
-      <div className="flex flex-wrap items-center justify-between gap-2">
-        <div>
-          <span className="rounded-full bg-[#1C01A5] px-3 py-1 text-xs font-black text-[#FFE566]">LABORATORIUM SIMULASI • BAB 8</span>
-          <p className="mt-1 text-sm font-bold text-[#1C01A5]/80">Bermain bebas. Tidak ada nilai dan tidak ada salah. Ayo bereksperimen!</p>
-        </div>
-        <TombolSuaraGuru
-          label="Dengarkan petunjuk simulasi"
-          onClick={() =>
-            speakGuru(
-              "Selamat datang di Laboratorium Simulasi. Di sini kamu boleh bermain bebas. Geser, ketuk, dan tekan plus atau minus. Lihat apa yang berubah. Tidak ada nilai dan tidak ada yang salah."
-            )
-          }
-        />
-      </div>
-
-      <ol className="grid grid-cols-2 gap-2 sm:grid-cols-4" aria-label={LANGKAH_SIM[langkah].judul}>
-        {LANGKAH_SIM.map((s, i) => (
-          <li
-            key={s.judul}
-            aria-current={i === langkah ? "step" : undefined}
-            className={`min-w-0 rounded-2xl border-4 px-3 py-1.5 font-black ${
-              i === langkah
-                ? "border-[#F0AB00] bg-[#1C01A5] text-[#FFE566]"
-                : dimainkan[i]
-                  ? "border-[#7FCB96] bg-[#E8F7EE] text-[#14532D]"
-                  : "border-[#1C01A5]/30 bg-white text-[#1C01A5]/60"
-            }`}
-          >
-            <span className="block text-sm leading-tight">
-              {dimainkan[i] && i !== langkah ? "✔ " : ""}
-              {s.judul}
-            </span>
-            <span className="block text-[10px] uppercase leading-tight tracking-wide opacity-80">
-              {s.metode} • {s.sub}
-            </span>
-          </li>
-        ))}
-      </ol>
-
-      <div hidden={langkah !== 0} onPointerDownCapture={tandai} onClickCapture={tandai} onKeyDownCapture={tandaiKunci}>
-        <SimulasiData speakGuru={speakGuru} />
-      </div>
-      <div hidden={langkah !== 1} onPointerDownCapture={tandai} onClickCapture={tandai} onKeyDownCapture={tandaiKunci}>
-        <SimulasiDiagram speakGuru={speakGuru} />
-      </div>
-      <div hidden={langkah !== 2}>
-        <SimulasiMesinData speakGuru={speakGuru} onTuntas={() => tuntas(2)} />
-      </div>
-      <div hidden={langkah !== 3}>
-        <SimulasiSkenarioPesta speakGuru={speakGuru} onTuntas={() => tuntas(3)} />
-      </div>
-
-      <div className="flex flex-wrap items-start justify-between gap-2 pt-1">
-        {langkah > 0 ? (
-          <button type="button" onClick={() => ke((langkah - 1) as Langkah)} className={TOMBOL_BIASA}>
-            ⬅️ KEMBALI
-          </button>
-        ) : (
-          <span />
-        )}
-        <div className="flex flex-col items-end gap-1">
-          <button type="button" onClick={lanjut} aria-disabled={!siap} className={`${TOMBOL_UTAMA} px-6 py-3 ${siap ? "" : "opacity-50"}`}>
-            {terakhir ? "LANJUTKAN KE LATIHAN ➡️" : "LANJUTKAN KE SIMULASI BERIKUTNYA ➡️"}
-          </button>
-          {siap ? null : (
-            <p role="status" className="text-xs font-black text-[#1C01A5]/80">
-              {LANGKAH_SIM[langkah].petunjuk}
-            </p>
-          )}
-        </div>
-      </div>
-    </section>
-  );
+  const langkah: LangkahSim[] = [
+    { metode: "PhET", sub: "Laboratorium Data", petunjuk: "Mainkan dulu simulasinya, ya.", mode: "sentuh", render: (a) => <SimulasiData speakGuru={a.speakGuru} /> },
+    { metode: "PhET", sub: "Pabrik Diagram", petunjuk: "Mainkan dulu simulasinya, ya.", mode: "sentuh", render: (a) => <SimulasiDiagram speakGuru={a.speakGuru} /> },
+    { metode: "Mesin keadaan", sub: "Mesin Data Ajaib", petunjuk: "Jalankan mesinnya sampai Selesai dulu, ya.", mode: "tuntas", render: (a) => <SimulasiMesinData speakGuru={a.speakGuru} onTuntas={a.tuntas} /> },
+    { metode: "Skenario", sub: "Sekretaris Kelas", petunjuk: "Selesaikan skenarionya sampai akhir dulu, ya.", mode: "tuntas", render: (a) => <SimulasiSkenarioPesta speakGuru={a.speakGuru} onTuntas={a.tuntas} /> },
+  ];
+  return <SimulasiAlur judulBab="Bab 8" langkah={langkah} speakGuru={speakGuru} onKeLatihan={onKeLatihan} />;
 }

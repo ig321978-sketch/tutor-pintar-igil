@@ -80,7 +80,8 @@ export type JenisBenda =
   | "ayam"
   | "bebek"
   | "kelinci"
-  | "karet";
+  | "karet"
+  | "stik";
 
 export const NAMA_BENDA: Record<JenisBenda, string> = {
   pesawat: "pesawat",
@@ -108,6 +109,7 @@ export const NAMA_BENDA: Record<JenisBenda, string> = {
   bebek: "bebek",
   kelinci: "kelinci",
   karet: "karet gelang",
+  stik: "stik es krim",
 };
 
 export const WARNA_TITIK: Record<string, string> = {
@@ -281,6 +283,8 @@ export function BendaG({ jenis, x = 0, y = 0, s = 1 }: { jenis: JenisBenda; x?: 
     );
   } else if (jenis === "karet") {
     isi = <ellipse cx="0" cy="0" rx="11" ry="5.2" fill="none" stroke="#DC2626" strokeWidth="2.8" />;
+  } else if (jenis === "stik") {
+    isi = <rect x="-13" y="-4.2" width="26" height="8.4" rx="4.2" fill="#F59E0B" {...garis} />;
   }
   return (
     <g transform={`translate(${x} ${y}) scale(${s})`} aria-hidden="true">

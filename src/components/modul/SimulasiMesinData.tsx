@@ -4,7 +4,7 @@ import React, { useState } from "react";
 import { TombolSuaraGuru } from "./tahap-b-gaya";
 import { Anak } from "./CeritaBandingB";
 import { BendaSvg, TabelMenurun, Turus } from "./data-8-dasar";
-import { CobaIni, DiagramSim, KARTU, RAMBUT, TOMBOL_BIASA, TOMBOL_UTAMA, WARNA_KOLOM, sebut } from "./simulasi-bersama-bab8";
+import { CobaIni, DiagramSim, KARTU, RAMBUT, TOMBOL_BIASA, TOMBOL_UTAMA, WARNA_KOLOM, sebut } from "./simulasi-bersama";
 import {
   NAMA_KEADAAN,
   URUT,

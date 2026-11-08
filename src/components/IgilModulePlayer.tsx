@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState, useEffect, useRef, useCallback } from "react";
+import React, { useState, useEffect, useRef, useCallback, type ComponentType } from "react";
 import {
   kirimJawabanLatihan,
   PanelProfilBelajar,
@@ -24,6 +24,9 @@ import {
   InfografisDiagramB,
   PictureDiagramB,
 } from "@/components/modul/SubBabB8Diagram";
+import SimulasiBab1 from "@/components/modul/SimulasiBab1";
+import SimulasiBab2 from "@/components/modul/SimulasiBab2";
+import SimulasiBab3 from "@/components/modul/SimulasiBab3";
 import SimulasiBab8 from "@/components/modul/SimulasiBab8";
 import { CeritaDataA, PETA_PIKIRAN_A8 } from "@/components/modul/gambar-data-a8";
 import {
@@ -776,6 +779,16 @@ const TAHAP_SILABUS = [
   { emoji: "🔢", nama: "Abstract (Simbol Angka)", warna: "#C8EAFB" },
 ];
 
+type SimulasiBabProps = { speakGuru: (teks: string) => void; onKeLatihan: () => void };
+
+/** Simulasi tiap bab. Bab yang belum ada di sini tidak menampilkan tab Simulasi. */
+const SIMULASI_BAB: Partial<Record<BabModul, ComponentType<SimulasiBabProps>>> = {
+  "mtk-1-bab1": SimulasiBab1,
+  "mtk-1-bab2": SimulasiBab2,
+  "mtk-1-bab3": SimulasiBab3,
+  "mtk-1-bab8": SimulasiBab8,
+};
+
 export default function IgilModulePlayer({ bab = "mtk-1-bab1" }: { bab?: BabModul }) {
   const adaBab3 = bab === "mtk-1-bab3";
   const adaBab4 = bab === "mtk-1-bab4";
@@ -785,8 +798,9 @@ export default function IgilModulePlayer({ bab = "mtk-1-bab1" }: { bab?: BabModu
   const adaBab8 = bab === "mtk-1-bab8";
   /** Bab bergaya baru (Bab 2 sampai Bab 8): Latihan terbuka setelah materi tersedia selesai. */
   const adaBab2 = bab === "mtk-1-bab2" || adaBab3 || adaBab4 || adaBab5 || adaBab6 || adaBab7 || adaBab8;
-  /** Tab Simulasi tampil hanya di bab yang sudah punya simulasi: Bab 1 (lama) dan Bab 8 (bergaya PhET). */
-  const adaTabSimulasi = !adaBab2 || adaBab8;
+  /** Tab Simulasi tampil hanya di bab yang sudah punya simulasi (lihat SIMULASI_BAB). */
+  const SimulasiBab = SIMULASI_BAB[bab];
+  const adaTabSimulasi = SimulasiBab !== undefined;
   const materi = MATERI_BAB[bab];
   const SUB_BABS = materi.subBabs as Record<SubBabId, SubBabContent>;
   const daftarSub = Object.keys(materi.subBabs) as SubBabId[];
@@ -1053,15 +1067,7 @@ export default function IgilModulePlayer({ bab = "mtk-1-bab1" }: { bab?: BabModu
     bersih: () => setPesanLambang(""),
   };
 
-  // 5. State Halaman Simulasi PhET-Style (4 Simulasi: 1 per Sub-Bab)
-  const [simIndex, setSimIndex] = useState<number>(0); // 0..3
-  const [simTenFrameApples, setSimTenFrameApples] = useState<number>(4);
-  const [simTenFrameOranges, setSimTenFrameOranges] = useState<number>(3);
-  const [simCompareLeft, setSimCompareLeft] = useState<number>(6);
-  const [simCompareRight, setSimCompareRight] = useState<number>(4);
-  const [simFrogStone, setSimFrogStone] = useState<number>(1);
-  const [simBondWhole, setSimBondWhole] = useState<number>(8);
-  const [simBondLeft, setSimBondLeft] = useState<number>(5);
+  // 5. Halaman Simulasi tidak punya state di sini: tiap bab punya komponennya sendiri (SIMULASI_BAB).
 
   // 6. State Halaman Latihan (10 Soal: LOTS 30%, MOTS 30%, HOTS 40%)
   const [practiceIdx, setPracticeIdx] = useState<number>(0);
@@ -1288,7 +1294,7 @@ export default function IgilModulePlayer({ bab = "mtk-1-bab1" }: { bab?: BabModu
               [
                 { id: "silabus", label: "Silabus", keterangan: "Target & Capaian" },
                 { id: "materi", label: "Materi", keterangan: "Metode SMICPA" },
-                { id: "simulasi", label: "Simulasi", keterangan: "Metode PhET" },
+                { id: "simulasi", label: "Simulasi", keterangan: "Lab Interaktif" },
                 { id: "latihan", label: "Latihan", keterangan: "40% HOTS" },
                 { id: "ujian", label: "Ujian", keterangan: "100% HOTS" },
               ] as { id: MainTabId; label: string; keterangan: string }[]
@@ -3402,294 +3408,14 @@ export default function IgilModulePlayer({ bab = "mtk-1-bab1" }: { bab?: BabModu
       {/* =================================================================== */}
       {/* 3. HALAMAN SIMULASI (SINGLE-SCREEN PhET-STYLE • LATAR BIRU LEMBUT)  */}
       {/* =================================================================== */}
-      {activeMainTab === "simulasi" && adaBab8 && (
-        <SimulasiBab8
+      {activeMainTab === "simulasi" && SimulasiBab && (
+        <SimulasiBab
           speakGuru={speakGuru}
           onKeLatihan={() => {
             setActiveMainTab("latihan");
             window.scrollTo({ top: 0, behavior: "smooth" });
           }}
         />
-      )}
-      {activeMainTab === "simulasi" && !adaBab8 && (
-        <section className="w-[98%] mx-auto mt-4 bg-[#EFF6FF] border-2 border-[#3B82F6] rounded-3xl p-5 md:p-7 space-y-5">
-          <div className="flex flex-wrap items-center justify-between gap-3">
-            <div>
-              <span className="px-3 py-1 rounded-full bg-[#1C01A5] text-[#FFE566] font-black text-xs">
-                LABORATORIUM SIMULASI PhET-STYLE (SIMULASI {simIndex + 1} DARI 4)
-              </span>
-              <h2 className="text-xl md:text-2xl font-black text-[#1C01A5] mt-1">
-                {simIndex === 0 && "Simulasi 1 (Sub-Bab A): Eksplorasi Bingkai 10 Buah Kakek"}
-                {simIndex === 1 && "Simulasi 2 (Sub-Bab B): Timbangan Perbandingan Dua Kelompok"}
-                {simIndex === 2 && "Simulasi 3 (Sub-Bab C): Lintasan Katak Loncat Maju & Mundur"}
-                {simIndex === 3 && "Simulasi 4 (Sub-Bab D): Mesin Pemecah Pasangan Bilangan"}
-              </h2>
-            </div>
-
-            <div className="flex gap-2">
-              {[0, 1, 2, 3].map((idx) => (
-                <button
-                  key={idx}
-                  type="button"
-                  onClick={() => setSimIndex(idx)}
-                  className={`px-3.5 py-2 rounded-xl font-black text-xs border-2 ${
-                    simIndex === idx
-                      ? "bg-[#1C01A5] text-[#FFE566] border-[#FFE566]"
-                      : "bg-white text-[#1C01A5] border-[#3B82F6]"
-                  }`}
-                >
-                  Simulasi Sub-Bab {["A", "B", "C", "D"][idx]}
-                </button>
-              ))}
-            </div>
-          </div>
-
-          {/* SIMULASI 1: BINGKAI 10 INTERAKTIF */}
-          {simIndex === 0 && (
-            <div className="w-full overflow-x-auto">
-              <div className="flex flex-nowrap gap-5 min-w-[680px]">
-                <div className="w-1/2 bg-white rounded-3xl p-5 border-2 border-[#93C5FD] space-y-4">
-                  <h3 className="font-black text-base text-[#1C01A5]">
-                    Kontrol Alat Peraga Bingkai 10
-                  </h3>
-                  <div className="space-y-3 text-xs md:text-sm">
-                    <div className="flex items-center justify-between bg-[#FEE2E2] p-3 rounded-2xl">
-                      <span className="font-black text-[#991B1B]">
-                        🍎 Apel Merah: {simTenFrameApples}
-                      </span>
-                      <div className="flex gap-2">
-                        <button
-                          type="button"
-                          onClick={() => setSimTenFrameApples((v) => Math.max(0, v - 1))}
-                          className="px-3 py-1 bg-white rounded-lg font-black"
-                        >
-                          -
-                        </button>
-                        <button
-                          type="button"
-                          onClick={() =>
-                            setSimTenFrameApples((v) =>
-                              Math.min(10 - simTenFrameOranges, v + 1)
-                            )
-                          }
-                          className="px-3 py-1 bg-[#EF4444] text-white rounded-lg font-black"
-                        >
-                          +
-                        </button>
-                      </div>
-                    </div>
-
-                    <div className="flex items-center justify-between bg-[#FEF3C7] p-3 rounded-2xl">
-                      <span className="font-black text-[#92400E]">
-                        🍊 Jeruk Kuning: {simTenFrameOranges}
-                      </span>
-                      <div className="flex gap-2">
-                        <button
-                          type="button"
-                          onClick={() => setSimTenFrameOranges((v) => Math.max(0, v - 1))}
-                          className="px-3 py-1 bg-white rounded-lg font-black"
-                        >
-                          -
-                        </button>
-                        <button
-                          type="button"
-                          onClick={() =>
-                            setSimTenFrameOranges((v) =>
-                              Math.min(10 - simTenFrameApples, v + 1)
-                            )
-                          }
-                          className="px-3 py-1 bg-[#F59E0B] text-white rounded-lg font-black"
-                        >
-                          +
-                        </button>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-
-                <div className="w-1/2 bg-white rounded-3xl p-5 border-2 border-[#93C5FD] space-y-3">
-                  <div className="grid grid-cols-5 gap-2">
-                    {Array.from({ length: 10 }).map((_, idx) => {
-                      const isApple = idx < simTenFrameApples;
-                      const isOrange =
-                        !isApple && idx < simTenFrameApples + simTenFrameOranges;
-                      return (
-                        <div
-                          key={idx}
-                          className="h-14 rounded-2xl border-2 border-slate-300 flex items-center justify-center text-2xl bg-slate-50"
-                        >
-                          {isApple ? "🍎" : isOrange ? "🍊" : ""}
-                        </div>
-                      );
-                    })}
-                  </div>
-                  <div className="text-center font-black text-base text-[#1C01A5]">
-                    Total Buah di Bingkai 10: {simTenFrameApples + simTenFrameOranges} Buah
-                  </div>
-                </div>
-              </div>
-            </div>
-          )}
-
-          {/* SIMULASI 2: TIMBANGAN PERBANDINGAN */}
-          {simIndex === 1 && (
-            <div className="w-full overflow-x-auto">
-              <div className="flex flex-nowrap gap-5 min-w-[680px]">
-                <div className="w-1/2 bg-white rounded-3xl p-5 border-2 border-[#93C5FD] space-y-4">
-                  <h3 className="font-black text-base text-[#1C01A5]">
-                    Atur Beban Buah di Timbangan
-                  </h3>
-                  <div className="flex items-center justify-between bg-[#DCFCE7] p-3 rounded-2xl">
-                    <span className="font-black text-[#166534]">
-                      🥭 Kelompok Kiri: {simCompareLeft}
-                    </span>
-                    <input
-                      type="range"
-                      min={0}
-                      max={10}
-                      value={simCompareLeft}
-                      onChange={(e) => setSimCompareLeft(Number(e.target.value))}
-                    />
-                  </div>
-                  <div className="flex items-center justify-between bg-[#FEE2E2] p-3 rounded-2xl">
-                    <span className="font-black text-[#991B1B]">
-                      🍓 Kelompok Kanan: {simCompareRight}
-                    </span>
-                    <input
-                      type="range"
-                      min={0}
-                      max={10}
-                      value={simCompareRight}
-                      onChange={(e) => setSimCompareRight(Number(e.target.value))}
-                    />
-                  </div>
-                </div>
-
-                <div className="w-1/2 bg-white rounded-3xl p-5 border-2 border-[#93C5FD] flex flex-col items-center justify-center space-y-3">
-                  <div className="text-2xl font-black text-[#1C01A5]">
-                    {simCompareLeft}{" "}
-                    {simCompareLeft > simCompareRight
-                      ? "LEBIH BANYAK DARI (>)"
-                      : simCompareLeft < simCompareRight
-                      ? "LEBIH SEDIKIT DARI (<)"
-                      : "SAMA BANYAK DENGAN (=)"}{" "}
-                    {simCompareRight}
-                  </div>
-                  <p className="text-xs text-slate-600">
-                    Selisih kedua kelompok adalah {Math.abs(simCompareLeft - simCompareRight)} buah.
-                  </p>
-                </div>
-              </div>
-            </div>
-          )}
-
-          {/* SIMULASI 3: KATAK LONCAT MAJU & MUNDUR */}
-          {simIndex === 2 && (
-            <div className="bg-white rounded-3xl p-5 border-2 border-[#93C5FD] space-y-4">
-              <div className="flex items-center justify-between">
-                <span className="font-black text-sm text-[#1C01A5]">
-                  Posisi Katak Sekarang: Batu Nomor {simFrogStone}
-                </span>
-                <div className="flex gap-2">
-                  <button
-                    type="button"
-                    onClick={() => setSimFrogStone((p) => Math.max(1, p - 1))}
-                    className="px-4 py-2 rounded-xl bg-[#FEF3C7] text-[#92400E] font-black text-xs border border-[#F59E0B]"
-                  >
-                    ⬅️ Lompat Mundur (-1)
-                  </button>
-                  <button
-                    type="button"
-                    onClick={() => setSimFrogStone((p) => Math.min(10, p + 1))}
-                    className="px-4 py-2 rounded-xl bg-[#DCFCE7] text-[#166534] font-black text-xs border border-[#22C55E]"
-                  >
-                    Lompat Maju (+1) ➡️
-                  </button>
-                </div>
-              </div>
-              <div className="w-full overflow-x-auto pb-2">
-                <div className="flex flex-nowrap gap-2 min-w-[650px]">
-                  {[1, 2, 3, 4, 5, 6, 7, 8, 9, 10].map((n) => (
-                    <button
-                      key={n}
-                      type="button"
-                      onClick={() => setSimFrogStone(n)}
-                      className={`w-16 h-16 rounded-2xl font-black flex flex-col items-center justify-center border-2 shrink-0 ${
-                        simFrogStone === n
-                          ? "bg-[#1C01A5] text-[#FFE566] border-[#FFE566] scale-105"
-                          : "bg-slate-50 text-[#334155] border-slate-300"
-                      }`}
-                    >
-                      <span>{simFrogStone === n ? "🐸" : "🪨"}</span>
-                      <span>{n}</span>
-                    </button>
-                  ))}
-                </div>
-              </div>
-            </div>
-          )}
-
-          {/* SIMULASI 4: PASANGAN BILANGAN (NUMBER BONDS) */}
-          {simIndex === 3 && (
-            <div className="w-full overflow-x-auto">
-              <div className="flex flex-nowrap gap-5 min-w-[680px]">
-                <div className="w-1/2 bg-white rounded-3xl p-5 border-2 border-[#93C5FD] space-y-3">
-                  <h3 className="font-black text-base text-[#1C01A5]">
-                    Atur Bilangan Utuh &amp; Cabang Kiri
-                  </h3>
-                  <div className="flex items-center justify-between text-xs font-bold">
-                    <span>Bilangan Utuh: {simBondWhole}</span>
-                    <input
-                      type="range"
-                      min={2}
-                      max={10}
-                      value={simBondWhole}
-                      onChange={(e) => {
-                        const w = Number(e.target.value);
-                        setSimBondWhole(w);
-                        setSimBondLeft((l) => Math.min(l, w));
-                      }}
-                    />
-                  </div>
-                  <div className="flex items-center justify-between text-xs font-bold">
-                    <span>Cabang Kiri: {simBondLeft}</span>
-                    <input
-                      type="range"
-                      min={0}
-                      max={simBondWhole}
-                      value={simBondLeft}
-                      onChange={(e) => setSimBondLeft(Number(e.target.value))}
-                    />
-                  </div>
-                </div>
-
-                <div className="w-1/2 bg-white rounded-3xl p-5 border-2 border-[#93C5FD] text-center space-y-2">
-                  <div className="text-xs font-bold text-slate-500">Hasil Penguraian:</div>
-                  <div className="text-3xl font-black text-[#1C01A5]">
-                    {simBondWhole} = {simBondLeft} dan {simBondWhole - simBondLeft}
-                  </div>
-                </div>
-              </div>
-            </div>
-          )}
-
-          <div className="flex justify-end pt-2">
-            <button
-              type="button"
-              onClick={() => {
-                if (simIndex < 3) {
-                  setSimIndex((i) => i + 1);
-                } else {
-                  setActiveMainTab("latihan");
-                  window.scrollTo({ top: 0, behavior: "smooth" });
-                }
-              }}
-              className="px-8 py-3 rounded-2xl bg-[#1C01A5] text-[#FFE566] border-2 border-[#FFE566] font-black text-sm shadow-md"
-            >
-              {simIndex < 3 ? "LANJUTKAN KE SIMULASI BERIKUTNYA ➡️" : "LANJUTKAN KE LATIHAN ➡️"}
-            </button>
-          </div>
-        </section>
       )}
 
       {/* =================================================================== */}
