@@ -764,108 +764,10 @@
     {
       "id": 1,
       "level": "LOTS (30%)",
-      "prompt": "Kira mempunyai 5 kue di piring besar. Jika 2 kue adalah donat, maka sisanya adalah kue bolu. Pasangan bilangan yang tepat untuk 5 kue Kira adalah...",
+      "prompt": "Kira menghitung apel di keranjang. Ia menunjuk apel satu per satu. Berapa banyak apel Kira?",
       "visualEmojis": [
-        "🍩",
-        "🍩",
-        "🍩",
-        "🍩",
-        "🍩"
-      ],
-      "options": [
-        "1 dan 3",
-        "2 dan 3",
-        "2 dan 4",
-        "3 dan 3"
-      ]
-    },
-    {
-      "id": 2,
-      "level": "LOTS (30%)",
-      "prompt": "Upe menggabungkan 3 bola hijau dan 4 bola merah ke dalam satu keranjang hingga terkumpul 7 bola. Bilangan yang menempati lingkaran Gabungan adalah...",
-      "visualEmojis": [
-        "⚽",
-        "⚽",
-        "⚽",
-        "⚽",
-        "⚽",
-        "⚽",
-        "⚽"
-      ],
-      "options": [
-        "5",
-        "6",
-        "7",
-        "8"
-      ]
-    },
-    {
-      "id": 3,
-      "level": "LOTS (30%)",
-      "prompt": "Malosi menaruh 6 kancing baju di atas meja. Ia memisahkan 6 kancing itu menjadi dua kelompok yang sama banyak. Berapa isi masing-masing kelompok?",
-      "visualEmojis": [
-        "🔘",
-        "🔘",
-        "🔘",
-        "🔘",
-        "🔘",
-        "🔘"
-      ],
-      "options": [
-        "2 dan 2",
-        "3 dan 3",
-        "4 dan 2",
-        "5 dan 1"
-      ]
-    },
-    {
-      "id": 4,
-      "level": "MOTS (30%)",
-      "prompt": "Wei memisahkan 8 buah pir ke dalam dua piring. Jika piring pertama berisi 5 buah pir, berapa buah pir di piring kedua?",
-      "visualEmojis": [
-        "🍐",
-        "🍐",
-        "🍐",
-        "🍐",
-        "🍐",
-        "🍐",
-        "🍐",
-        "🍐"
-      ],
-      "options": [
-        "2",
-        "3",
-        "4",
-        "5"
-      ]
-    },
-    {
-      "id": 5,
-      "level": "MOTS (30%)",
-      "prompt": "Igil melihat 9 balon di taman. Balon itu terdiri dari 6 balon biru dan sisanya balon kuning. Berapa banyak balon kuning?",
-      "visualEmojis": [
-        "🎈",
-        "🎈",
-        "🎈",
-        "🎈",
-        "🎈",
-        "🎈",
-        "🎈",
-        "🎈",
-        "🎈"
-      ],
-      "options": [
-        "2",
-        "3",
-        "4",
-        "6"
-      ]
-    },
-    {
-      "id": 6,
-      "level": "MOTS (30%)",
-      "prompt": "Kira baru menaruh 4 apel merah ke dalam kotak Bingkai 10. Berapa apel lagi yang harus ditambahkan Kira supaya Bingkai 10 terisi penuh?",
-      "visualEmojis": [
+        "🍎",
+        "🍎",
         "🍎",
         "🍎",
         "🍎",
@@ -879,52 +781,92 @@
       ]
     },
     {
-      "id": 7,
-      "level": "HOTS (40%)",
-      "prompt": "Upe mempunyai 8 mobil-mobilan. Ia sudah memisahkannya menjadi pasangan (1 dan 7), (2 dan 6), serta (4 dan 4). Pasangan bilangan 8 manakah yang belum disebut Upe?",
+      "id": 2,
+      "level": "LOTS (30%)",
+      "prompt": "Keranjang Upe tidak berisi bola sama sekali. Banyak bola di keranjang Upe dilambangkan dengan angka...",
       "visualEmojis": [
-        "🚗",
-        "🚗",
-        "🚗",
-        "🚗",
-        "🚗",
-        "🚗",
-        "🚗",
-        "🚗"
+        "🧺"
       ],
       "options": [
-        "2 dan 5",
-        "3 dan 4",
-        "3 dan 5",
-        "4 dan 5"
-      ]
-    },
-    {
-      "id": 8,
-      "level": "HOTS (40%)",
-      "prompt": "Malosi mempunyai 8 kelereng. Ia memisahkannya menjadi kelompok 5 dan kelompok 3. Lalu kelompok 5 kelereng itu dipisahkan lagi menjadi 2 dan berapa?",
-      "visualEmojis": [
-        "🔮",
-        "🔮",
-        "🔮",
-        "🔮",
-        "🔮",
-        "🔮",
-        "🔮",
-        "🔮"
-      ],
-      "options": [
+        "0",
         "1",
         "2",
-        "3",
-        "4"
+        "10"
       ]
     },
     {
-      "id": 9,
-      "level": "HOTS (40%)",
-      "prompt": "Wei memetik 7 jeruk. Ia ingin membagi 7 jeruk itu ke dalam dua keranjang sehingga keranjang kiri berisi 1 jeruk lebih banyak dari keranjang kanan. Berapa isi keranjang kiri dan kanan?",
+      "id": 3,
+      "level": "LOTS (30%)",
+      "prompt": "Wei memasangkan kelereng merah dengan kelereng biru satu-satu. Ada 7 kelereng merah dan 4 kelereng biru. Kelereng yang lebih banyak adalah kelereng...",
       "visualEmojis": [
+        "🔴",
+        "🔴",
+        "🔴",
+        "🔴",
+        "🔴",
+        "🔴",
+        "🔴"
+      ],
+      "secondaryGroupEmojis": [
+        "🔵",
+        "🔵",
+        "🔵",
+        "🔵"
+      ],
+      "options": [
+        "merah",
+        "biru",
+        "sama banyak",
+        "tidak ada"
+      ]
+    },
+    {
+      "id": 4,
+      "level": "MOTS (30%)",
+      "prompt": "Upe menghitung mundur: 9, 8, 7, ..., 5. Bilangan yang hilang adalah...",
+      "visualEmojis": [],
+      "options": [
+        "4",
+        "6",
+        "8",
+        "10"
+      ]
+    },
+    {
+      "id": 5,
+      "level": "MOTS (30%)",
+      "prompt": "Kira membandingkan 5 pensil dengan 8 pensil. Tanda yang tepat untuk 5 ○ 8 adalah...",
+      "visualEmojis": [
+        "✏️",
+        "✏️",
+        "✏️",
+        "✏️",
+        "✏️"
+      ],
+      "secondaryGroupEmojis": [
+        "🖍️",
+        "🖍️",
+        "🖍️",
+        "🖍️",
+        "🖍️",
+        "🖍️",
+        "🖍️",
+        "🖍️"
+      ],
+      "options": [
+        ">",
+        "=",
+        "+",
+        "<"
+      ]
+    },
+    {
+      "id": 6,
+      "level": "MOTS (30%)",
+      "prompt": "Wei punya 9 jeruk. Sebanyak 6 jeruk ada di keranjang merah, sisanya di keranjang hijau. Berapa jeruk di keranjang hijau?",
+      "visualEmojis": [
+        "🍊",
+        "🍊",
         "🍊",
         "🍊",
         "🍊",
@@ -934,153 +876,6 @@
         "🍊"
       ],
       "options": [
-        "3 dan 4",
-        "4 dan 3",
-        "5 dan 2",
-        "4 dan 4"
-      ]
-    },
-    {
-      "id": 10,
-      "level": "HOTS (40%)",
-      "prompt": "Agar Bingkai 10 milik Kira terisi penuh 10 stroberi, ia menggabungkan dua piring yang jumlah stroberinya SAMA BANYAK. Berapa isi masing-masing piring?",
-      "visualEmojis": [
-        "🍓",
-        "🍓",
-        "🍓",
-        "🍓",
-        "🍓",
-        "🍓",
-        "🍓",
-        "🍓",
-        "🍓",
-        "🍓"
-      ],
-      "options": [
-        "4 dan 4",
-        "5 dan 5",
-        "6 dan 4",
-        "7 dan 3"
-      ]
-    }
-  ],
-  "examQuestions": [
-    {
-      "id": 1,
-      "level": "HOTS UJIAN FORMAL",
-      "prompt": "1. Kira mempunyai 6 pensil warna. Ia ingin menaruhnya ke dalam dua kotak pensil sehingga tidak ada kotak yang kosong dan jumlah di kedua kotak TIDAK BOLEH SAMA. Pasangan manakah yang benar?",
-      "visualEmojis": [
-        "🖍️",
-        "🖍️",
-        "🖍️",
-        "🖍️",
-        "🖍️",
-        "🖍️"
-      ],
-      "options": [
-        "3 dan 3",
-        "4 dan 2",
-        "6 dan 0",
-        "4 dan 3"
-      ]
-    },
-    {
-      "id": 2,
-      "level": "HOTS UJIAN FORMAL",
-      "prompt": "2. Di meja ada 9 buku cerita milik Upe. Mula-mula buku itu dipisahkan menjadi 7 di kiri dan 2 di kanan. Jika Upe memindahkan 2 buku dari kiri ke kanan, menjadi pasangan berapakah 9 buku itu sekarang?",
-      "visualEmojis": [
-        "📘",
-        "📘",
-        "📘",
-        "📘",
-        "📘",
-        "📘",
-        "📘",
-        "📘",
-        "📘"
-      ],
-      "options": [
-        "6 dan 3",
-        "5 dan 4",
-        "5 dan 3",
-        "4 dan 4"
-      ]
-    },
-    {
-      "id": 3,
-      "level": "HOTS UJIAN FORMAL",
-      "prompt": "3. Malosi menyusun pohon pasangan dua tingkat untuk 9 biskuit. Di tingkat pertama, 9 biskuit dipisahkan menjadi 6 dan 3. Di tingkat kedua, kelompok 6 biskuit dipisahkan menjadi dua bagian yang SAMA BANYAK, yaitu...",
-      "visualEmojis": [
-        "🍪",
-        "🍪",
-        "🍪",
-        "🍪",
-        "🍪",
-        "🍪",
-        "🍪",
-        "🍪",
-        "🍪"
-      ],
-      "options": [
-        "2 dan 2",
-        "3 dan 3",
-        "4 dan 2",
-        "5 dan 1"
-      ]
-    },
-    {
-      "id": 4,
-      "level": "HOTS UJIAN FORMAL",
-      "prompt": "4. Wei melihat 7 burung bertengger di dua dahan pohon. Dahan atas ditempati 5 burung. Berapa burung yang bertengger di dahan bawah?",
-      "visualEmojis": [
-        "🐦",
-        "🐦",
-        "🐦",
-        "🐦",
-        "🐦",
-        "🐦",
-        "🐦"
-      ],
-      "options": [
-        "1",
-        "2",
-        "3",
-        "4"
-      ]
-    },
-    {
-      "id": 5,
-      "level": "HOTS UJIAN FORMAL",
-      "prompt": "5. Igil mempunyai kotak yang saat ini baru berisi 3 bintang emas. Jika Igil ingin jumlah bintang di dalam kotak menjadi 8 bintang, berapa bintang lagi yang harus dimasukkan Igil?",
-      "visualEmojis": [
-        "⭐",
-        "⭐",
-        "⭐"
-      ],
-      "options": [
-        "4",
-        "5",
-        "6",
-        "7"
-      ]
-    },
-    {
-      "id": 6,
-      "level": "HOTS UJIAN FORMAL",
-      "prompt": "6. Kira merangkai 10 bunga melati dari tiga tangkai kecil. Tangkai pertama memiliki 4 bunga dan tangkai kedua memiliki 3 bunga. Berapa bunga pada tangkai ketiga supaya jumlah semuanya 10?",
-      "visualEmojis": [
-        "🌼",
-        "🌼",
-        "🌼",
-        "🌼",
-        "🌼",
-        "🌼",
-        "🌼",
-        "🌼",
-        "🌼",
-        "🌼"
-      ],
-      "options": [
         "2",
         "3",
         "4",
@@ -1089,77 +884,50 @@
     },
     {
       "id": 7,
-      "level": "HOTS UJIAN FORMAL",
-      "prompt": "7. Upe memegang 4 kartu angka yaitu 2, 4, 5, dan 6. Jika Upe memilih dua kartu yang bila digabungkan menghasilkan bilangan 9, kartu manakah yang dipilih Upe?",
-      "visualEmojis": [
-        "🃏",
-        "🃏",
-        "🃏",
-        "🃏"
-      ],
+      "level": "HOTS (40%)",
+      "prompt": "Kira menghitung pensil sambil berkata: satu, dua, tiga, lima, enam, tujuh. Hitungan Kira keliru karena ada bilangan yang terlewat. Bilangan yang terlewat adalah...",
+      "visualEmojis": [],
       "options": [
-        "2 dan 5",
-        "2 dan 6",
-        "4 dan 5",
-        "4 dan 6"
+        "empat",
+        "dua",
+        "delapan",
+        "sepuluh"
       ]
     },
     {
       "id": 8,
-      "level": "HOTS UJIAN FORMAL",
-      "prompt": "8. Malosi memiliki 5 layang-layang di tangan kiri dan sebuah tas yang kosong tanpa isi di tangan kanan. Jika keduanya digabungkan, berapa jumlah layang-layang Malosi seluruhnya?",
-      "visualEmojis": [
-        "🪁",
-        "🪁",
-        "🪁",
-        "🪁",
-        "🪁"
-      ],
+      "level": "HOTS (40%)",
+      "prompt": "Upe punya 7 stiker. Kira punya lebih banyak stiker daripada Upe, tetapi kurang dari 9. Berapa stiker Kira?",
+      "visualEmojis": [],
       "options": [
-        "0",
-        "4",
-        "5",
-        "6"
+        "6",
+        "7",
+        "8",
+        "9"
       ]
     },
     {
       "id": 9,
-      "level": "HOTS UJIAN FORMAL",
-      "prompt": "9. Wei melihat 8 ikan mas di kolam kecil. Ia ingin memindahkan ikan itu ke dua ember sehingga ember pertama berisi lebih banyak dari 5 ikan, tetapi tidak ada ember yang kosong. Pasangan yang tepat adalah...",
-      "visualEmojis": [
-        "🐟",
-        "🐟",
-        "🐟",
-        "🐟",
-        "🐟",
-        "🐟",
-        "🐟",
-        "🐟"
-      ],
+      "level": "HOTS (40%)",
+      "prompt": "Aku berada di angka 6. Aku maju 2 langkah, lalu mundur 1 langkah. Sekarang aku berada di angka...",
+      "visualEmojis": [],
       "options": [
-        "4 dan 4",
-        "5 dan 3",
-        "6 dan 2",
-        "8 dan 0"
+        "5",
+        "6",
+        "7",
+        "8"
       ]
     },
     {
       "id": 10,
-      "level": "HOTS UJIAN FORMAL",
-      "prompt": "10. Di meja belajar ada 6 penghapus milik Kira dan beberapa penghapus milik Upe. Setelah digabungkan, jumlah penghapus mereka menjadi 9 penghapus. Berapa penghapus milik Upe?",
-      "visualEmojis": [
-        "🧼",
-        "🧼",
-        "🧼",
-        "🧼",
-        "🧼",
-        "🧼"
-      ],
+      "level": "HOTS (40%)",
+      "prompt": "Wei membuat pasangan bilangan 7. Pasangan yang SALAH adalah...",
+      "visualEmojis": [],
       "options": [
-        "2",
-        "3",
-        "4",
-        "5"
+        "1 dan 6",
+        "2 dan 5",
+        "3 dan 4",
+        "4 dan 4"
       ]
     }
   ]

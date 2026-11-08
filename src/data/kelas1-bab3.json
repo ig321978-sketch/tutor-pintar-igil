@@ -1360,38 +1360,40 @@
     {
       "id": 1,
       "level": "LOTS (30%)",
-      "prompt": "Ada 6 anak bermain tutup mata. Lalu 2 anak pulang. Kalimat pengurangan yang tepat adalah...",
+      "prompt": "Ada 8 burung di pohon. Sebanyak 3 burung terbang. Kalimat pengurangan yang tepat adalah...",
       "visualEmojis": [
-        "🧒",
-        "🧒",
-        "🧒",
-        "🧒",
-        "🧒",
-        "🧒"
+        "🐦",
+        "🐦",
+        "🐦",
+        "🐦",
+        "🐦",
+        "🐦",
+        "🐦",
+        "🐦"
       ],
       "options": [
-        "6 + 2 = 8",
-        "6 − 2 = 4",
-        "6 − 4 = 2",
-        "4 − 2 = 6"
+        "8 + 3 = 11",
+        "3 − 8 = 5",
+        "8 − 5 = 3",
+        "8 − 3 = 5"
       ]
     },
     {
       "id": 2,
       "level": "LOTS (30%)",
-      "prompt": "Ada 8 burung di pohon. Sebanyak 2 burung terbang. Kata yang menunjukkan jumlahnya harus dikurangi adalah...",
+      "prompt": "Kalimat 9 − 4 = 5 dibaca...",
       "visualEmojis": [],
       "options": [
-        "burung",
-        "pohon",
-        "terbang",
-        "Ada"
+        "sembilan ditambah empat sama dengan lima",
+        "empat dikurangi sembilan sama dengan lima",
+        "sembilan dikurangi empat sama dengan lima",
+        "lima dikurangi empat sama dengan sembilan"
       ]
     },
     {
       "id": 3,
       "level": "LOTS (30%)",
-      "prompt": "Ibu mempunyai 6 kue. Upe memakan 1 kue. Berapa sisa kue Ibu?",
+      "prompt": "Ibu punya 6 kue. Upe memakan 1 kue. Berapa sisa kue Ibu?",
       "visualEmojis": [
         "🧁",
         "🧁",
@@ -1401,17 +1403,30 @@
         "🧁"
       ],
       "options": [
-        "7",
+        "3",
+        "4",
         "5",
-        "6",
-        "4"
+        "6"
       ]
     },
     {
       "id": 4,
       "level": "MOTS (30%)",
-      "prompt": "Mula-mula ada 3 orang di dalam mobil. Sebanyak 3 orang turun. Berapa orang yang masih ada di dalam mobil?",
+      "prompt": "Aku berada di angka 7. Aku melompat mundur 3 langkah. Aku mendarat di angka...",
+      "visualEmojis": [],
+      "options": [
+        "3",
+        "4",
+        "5",
+        "10"
+      ]
+    },
+    {
+      "id": 5,
+      "level": "MOTS (30%)",
+      "prompt": "Mula-mula ada 4 orang di dalam mobil. Sebanyak 4 orang turun. Berapa orang yang masih ada di dalam mobil?",
       "visualEmojis": [
+        "🧑",
         "🧑",
         "🧑",
         "🧑"
@@ -1419,210 +1434,68 @@
       "options": [
         "0",
         "1",
-        "3",
-        "6"
-      ]
-    },
-    {
-      "id": 5,
-      "level": "MOTS (30%)",
-      "prompt": "Ada 7 balon. 5 balon berwarna merah, sisanya kuning. Pada bagan pasangan: gabungan 7, sebagian 5, sebagian ... Berapa balon kuning?",
-      "visualEmojis": [
-        "🎈",
-        "🎈",
-        "🎈",
-        "🎈",
-        "🎈",
-        "🎈",
-        "🎈"
-      ],
-      "options": [
-        "2",
-        "12",
-        "5",
-        "3"
+        "4",
+        "8"
       ]
     },
     {
       "id": 6,
       "level": "MOTS (30%)",
-      "prompt": "Aku di angka 5. Aku melompat 3 langkah ke belakang. Aku mendarat di angka...",
+      "prompt": "Pada bagan pasangan, gabungannya 9 dan salah satu sebagiannya 5. Sebagian yang lain adalah...",
       "visualEmojis": [],
       "options": [
-        "8",
         "3",
-        "2",
-        "1"
-      ]
-    },
-    {
-      "id": 7,
-      "level": "HOTS (40%)",
-      "prompt": "Diketahui 4 + 3 = 7. Kalimat pengurangan yang berhubungan dengan kalimat itu adalah...",
-      "visualEmojis": [],
-      "options": [
-        "4 − 3 = 7",
-        "7 + 3 = 4",
-        "3 − 4 = 7",
-        "7 − 3 = 4"
-      ]
-    },
-    {
-      "id": 8,
-      "level": "HOTS (40%)",
-      "prompt": "Cerita manakah yang cocok dengan 7 − 3 = 4?",
-      "visualEmojis": [],
-      "options": [
-        "Ada 7 bebek. Datang lagi 3 bebek. Semuanya ada 4 bebek.",
-        "Ada 7 burung di dahan. Sebanyak 3 burung terbang. Tersisa 4 burung.",
-        "Ada 3 burung di dahan. Datang lagi 4 burung. Semuanya ada 7 burung.",
-        "Ada 4 burung di dahan. Sebanyak 3 burung terbang. Tersisa 7 burung."
-      ]
-    },
-    {
-      "id": 9,
-      "level": "MOTS (30%)",
-      "prompt": "6 + ... = 9. Angka yang hilang adalah...",
-      "visualEmojis": [],
-      "options": [
-        "15",
-        "3",
-        "4",
-        "2"
-      ]
-    },
-    {
-      "id": 10,
-      "level": "HOTS (40%)",
-      "prompt": "Upe menulis 4 − 6 = 2. Menurutmu, apa yang keliru?",
-      "visualEmojis": [],
-      "options": [
-        "Tanda kurang salah ditulis.",
-        "Hasilnya harus 10.",
-        "Mula-mula hanya 4, jadi tidak bisa berkurang 6.",
-        "Tidak ada yang keliru."
-      ]
-    }
-  ],
-  "examQuestions": [
-    {
-      "id": 1,
-      "level": "HOTS UJIAN FORMAL",
-      "prompt": "1. Ada 7 kelereng di piring. Halim mengambil 2 kelereng. Berapa kelereng yang tersisa?",
-      "visualEmojis": [],
-      "options": [
-        "9",
         "4",
         "5",
         "6"
       ]
     },
     {
-      "id": 2,
-      "level": "HOTS UJIAN FORMAL",
-      "prompt": "2. Ada 6 kupu-kupu di bunga. Lalu 2 kupu-kupu terbang. Kalimat pengurangan yang tepat adalah...",
-      "visualEmojis": [],
-      "options": [
-        "6 − 2 = 4",
-        "6 + 2 = 8",
-        "2 − 6 = 4",
-        "6 − 4 = 2"
-      ]
-    },
-    {
-      "id": 3,
-      "level": "HOTS UJIAN FORMAL",
-      "prompt": "3. Pada bagan pasangan, gabungan 8 dan sebagian 3. Angka sebagian yang lain adalah...",
-      "visualEmojis": [],
-      "options": [
-        "11",
-        "5",
-        "4",
-        "6"
-      ]
-    },
-    {
-      "id": 4,
-      "level": "HOTS UJIAN FORMAL",
-      "prompt": "4. 7 ○ 2 = 9. Tanda yang tepat untuk mengisi ○ adalah...",
-      "visualEmojis": [],
-      "options": [
-        "−",
-        "=",
-        "+",
-        ">"
-      ]
-    },
-    {
-      "id": 5,
-      "level": "HOTS UJIAN FORMAL",
-      "prompt": "5. Malosi punya 9 kelereng. Malosi memberi Kira 2 kelereng dan memberi Upe 4 kelereng. Berapa sisa kelereng Malosi?",
-      "visualEmojis": [],
-      "options": [
-        "15",
-        "3",
-        "7",
-        "5"
-      ]
-    },
-    {
-      "id": 6,
-      "level": "HOTS UJIAN FORMAL",
-      "prompt": "6. Aku di angka 9. Aku melompat 4 langkah ke belakang. Aku mendarat di angka...",
-      "visualEmojis": [],
-      "options": [
-        "13",
-        "6",
-        "4",
-        "5"
-      ]
-    },
-    {
       "id": 7,
-      "level": "HOTS UJIAN FORMAL",
-      "prompt": "7. ... + 4 = 9. Angka yang hilang adalah...",
+      "level": "HOTS (40%)",
+      "prompt": "Diketahui 3 + 5 = 8. Dua kalimat pengurangan dari keluarga bilangan itu adalah...",
       "visualEmojis": [],
       "options": [
-        "13",
-        "6",
-        "4",
-        "5"
+        "8 − 3 = 5 dan 8 − 5 = 3",
+        "8 − 3 = 3 dan 8 − 5 = 5",
+        "5 − 3 = 8 dan 3 − 5 = 8",
+        "3 − 5 = 8 dan 8 + 5 = 3"
       ]
     },
     {
       "id": 8,
-      "level": "HOTS UJIAN FORMAL",
-      "prompt": "8. Ada beberapa anak bermain. Setelah 3 anak pulang, tersisa 4 anak. Berapa anak yang bermain mula-mula?",
+      "level": "HOTS (40%)",
+      "prompt": "Cerita manakah yang cocok dengan 9 − 2 = 7?",
       "visualEmojis": [],
       "options": [
-        "1",
-        "6",
-        "7",
-        "12"
+        "Ada 7 jeruk. Datang lagi 2 jeruk. Semuanya ada 9 jeruk.",
+        "Ada 2 jeruk. Sebanyak 9 jeruk dimakan. Tersisa 7 jeruk.",
+        "Ada 9 jeruk. Sebanyak 7 jeruk dimakan. Tersisa 2 jeruk.",
+        "Ada 9 jeruk. Sebanyak 2 jeruk dimakan. Tersisa 7 jeruk."
       ]
     },
     {
       "id": 9,
-      "level": "HOTS UJIAN FORMAL",
-      "prompt": "9. Pengurangan manakah yang sisanya sama dengan bilangan mula-mulanya?",
+      "level": "HOTS (40%)",
+      "prompt": "Wei punya 10 permen. Ia memberi 3 permen kepada Kira dan 2 permen kepada Upe. Berapa permen Wei sekarang?",
       "visualEmojis": [],
       "options": [
-        "8 − 8",
-        "8 − 1",
-        "8 − 0",
-        "8 − 4"
+        "4",
+        "5",
+        "6",
+        "7"
       ]
     },
     {
       "id": 10,
-      "level": "HOTS UJIAN FORMAL",
-      "prompt": "10. Kira berkata: 5 − 2 = 7. Mengapa jawaban Kira pasti keliru?",
+      "level": "HOTS (40%)",
+      "prompt": "Kira menulis cerita: \"Ada 5 kue. Sebanyak 8 kue dimakan. Tersisa 3 kue.\" Mengapa cerita Kira tidak masuk akal?",
       "visualEmojis": [],
       "options": [
-        "Karena 7 lebih besar dari 5, padahal benda berkurang.",
-        "Karena tanda kurang tidak boleh dipakai.",
-        "Karena hasilnya harus 0.",
-        "Karena 2 lebih kecil dari 5."
+        "karena sisa 3 kue terlalu sedikit",
+        "karena kue tidak boleh dimakan",
+        "karena kue yang dimakan lebih banyak daripada kue yang ada",
+        "karena 5 lebih kecil dari 3"
       ]
     }
   ]

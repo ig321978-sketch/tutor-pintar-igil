@@ -57,9 +57,6 @@ Penutup: Poin Penting (enam kartu bersuara) dan Catatanku (tujuh butir).
 
 ## Latihan dan Ujian
 
-Satu bank soal bab (Latihan 10 soal, 30 Poin Kualifikasi; Ujian 10 soal, 70 Poin Kualifikasi, wajib 100%). Soal bagian Sub-Bab D:
-
-- Latihan 2: kata kunci yang menunjukkan pengurangan pada cerita burung terbang (`8 − 2 = 6`).
-- Ujian 5: Malosi memberi 2 dan 4 kelereng dari 9 kelereng, sisa 3 (`9 − 2 = 7`, `7 − 4 = 3`).
+Satu bank soal bab (Latihan 10 soal, 30 Poin Kualifikasi; Ujian 10 soal, 70 Poin Kualifikasi, wajib 100%) yang mencakup keempat sub-bab. Lihat `naskah/bank-soal-latihan-ujian-kelas1-bab1-3.md`. Naskah ini sengaja tidak memuat soal maupun kunci jawaban.
 
 Dengan Sub-Bab D aktif, Latihan terbuka setelah keempat sub-bab (A, B, C, D) selesai.

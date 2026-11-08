@@ -1,8 +1,13 @@
 "use client";
 
 import React, { useState, useEffect, useRef, useCallback } from "react";
-import Link from "next/link";
-import { catatUjianLulus } from "@/lib/praktikum-blok";
+import {
+  kirimJawabanLatihan,
+  PanelProfilBelajar,
+  UjianServer,
+  useProfilBelajar,
+  type HasilLatihanServer,
+} from "@/components/modul/BelajarServer";
 import { hentikanSuaraGuruModul, ucapkanGuruModul } from "@/lib/suara-guru-modul";
 import materiBab1 from "@/data/kelas1-bab1.json";
 import materiBab2 from "@/data/kelas1-bab2.json";
@@ -195,6 +200,8 @@ interface QuestionItem {
 export type BabModul = "mtk-1-bab1" | "mtk-1-bab2" | "mtk-1-bab3";
 
 interface MateriBab {
+  /** Kode bab di server (mis. k1-mat-bab3). Dipakai untuk RPC Latihan dan Ujian. */
+  chapter_id?: string;
   subjectLabel: string;
   title: string;
   tokens?: { practice: number; exam: number; practicum: number };
@@ -590,7 +597,9 @@ export default function IgilModulePlayer({ bab = "mtk-1-bab1" }: { bab?: BabModu
   const SUB_BABS = materi.subBabs as Record<SubBabId, SubBabContent>;
   const daftarSub = Object.keys(materi.subBabs) as SubBabId[];
   const PRACTICE_QUESTIONS = materi.practiceQuestions ?? [];
-  const FORMAL_EXAM_QUESTIONS = materi.examQuestions ?? [];
+  /** Kode bab di server. Soal Ujian tidak ada di berkas ini, hanya dikirim server saat ujian dimulai. */
+  const idBabServer = materi.chapter_id ?? "";
+  const profilBelajar = useProfilBelajar();
   const poin = materi.tokens ?? POIN_BAWAAN;
   const peta = adaBab3 ? SUB_ANAK_BAB3 : adaBab2 ? SUB_ANAK_BAB2 : SUB_ANAK;
   /** Sub-bab yang sudah punya naskah dan permainan. Sub-bab "segera hadir" tidak menahan Latihan dan Ujian. */
@@ -862,20 +871,18 @@ export default function IgilModulePlayer({ bab = "mtk-1-bab1" }: { bab?: BabModu
 
   // 6. State Halaman Latihan (10 Soal: LOTS 30%, MOTS 30%, HOTS 40%)
   const [practiceIdx, setPracticeIdx] = useState<number>(0);
+  /** Pilihan siswa per soal (teks). Tanpa server, hanya mencatat pilihan tanpa menilai. */
   const [practiceAnswers, setPracticeAnswers] = useState<Record<number, string>>({});
+  /** Hasil penilaian server per soal Latihan: benar atau salah dan pembahasan. */
+  const [hasilLatihan, setHasilLatihan] = useState<Record<number, HasilLatihanServer>>({});
+  const [sedangKirimLatihan, setSedangKirimLatihan] = useState<boolean>(false);
+  const [pesanLatihan, setPesanLatihan] = useState<string>("");
 
-  // 7. State Halaman Ujian Formal (10 Soal 100% HOTS, tanpa kamera)
-  const [examIdx, setExamIdx] = useState<number>(0);
-  const [examAnswers, setExamAnswers] = useState<Record<number, string>>({});
-  const [examSubmitted, setExamSubmitted] = useState<boolean>(false);
+  // 7. Ujian Formal (10 soal 100% HOTS, tanpa kamera): lembar dan nilai datang dari server.
   const [examScore, setExamScore] = useState<number | null>(null);
-  const [examFirstTryPerfect, setExamFirstTryPerfect] = useState<boolean>(false);
-  const [examAttempts, setExamAttempts] = useState<number>(1);
 
   // 9. Perhitungan Kartu Poin (Latihan 30 + Ujian 70 per bab, Praktikum 50 per blok 4 bab)
-  const practiceCorrectCount = PRACTICE_QUESTIONS.filter(
-    (q) => typeof q.correctAnswer === "string" && practiceAnswers[q.id] === q.correctAnswer
-  ).length;
+  const practiceCorrectCount = PRACTICE_QUESTIONS.filter((q) => hasilLatihan[q.id]?.benar === true).length;
   const tokenPerSoal = poin.practice / PRACTICE_QUESTIONS.length;
   const practiceTokens = Math.min(
     poin.practice,
@@ -2726,13 +2733,37 @@ export default function IgilModulePlayer({ bab = "mtk-1-bab1" }: { bab?: BabModu
       )}
 
       {activeMainTab === "latihan" && materiSelesai && (
+        <>
+        <PanelProfilBelajar profil={profilBelajar} kembaliKe={`/ruang-belajar/${bab}`} />
         <section className="w-[98%] mx-auto mt-4 bg-[#FFFBEB] border-2 border-[#F59E0B] rounded-3xl p-5 md:p-7 space-y-5">
           {(() => {
             const q = PRACTICE_QUESTIONS[practiceIdx];
             const chosen = practiceAnswers[q.id];
             const isAnswered = Boolean(chosen);
-            const adaKunci = typeof q.correctAnswer === "string";
-            const isRight = adaKunci && chosen === q.correctAnswer;
+            const hasil = hasilLatihan[q.id];
+            const adaKunci = Boolean(hasil);
+            const isRight = hasil?.benar === true;
+            const idAnakAktif = profilBelajar.status === "siap" ? (profilBelajar.aktif?.id ?? null) : null;
+            const pilihJawaban = async (opt: string) => {
+              if (isAnswered || sedangKirimLatihan) return;
+              setPesanLatihan("");
+              if (!idAnakAktif || !idBabServer) {
+                // Server belum bisa menilai: catat pilihan saja, tanpa benar-salah.
+                setPracticeAnswers((prev) => ({ ...prev, [q.id]: opt }));
+                return;
+              }
+              setSedangKirimLatihan(true);
+              const balasan = await kirimJawabanLatihan(idAnakAktif, idBabServer, q.id, q.options.indexOf(opt));
+              setSedangKirimLatihan(false);
+              if (balasan.jenis === "ok") {
+                setPracticeAnswers((prev) => ({ ...prev, [q.id]: opt }));
+                setHasilLatihan((prev) => ({ ...prev, [q.id]: balasan.hasil }));
+              } else if (balasan.jenis === "belum_siap") {
+                setPracticeAnswers((prev) => ({ ...prev, [q.id]: opt }));
+              } else {
+                setPesanLatihan(balasan.pesan);
+              }
+            };
 
             return (
               <>
@@ -2754,8 +2785,8 @@ export default function IgilModulePlayer({ bab = "mtk-1-bab1" }: { bab?: BabModu
                     <div className="w-1/2 bg-white rounded-3xl p-5 border-2 border-[#F59E0B] flex flex-col items-center justify-center gap-3">
                       <div className="flex flex-wrap justify-center gap-2 text-3xl">
                         {q.visualEmojis.length === 0 ? (
-                          <span className="text-sm font-bold text-slate-400">
-                            🧺 Keranjang Kosong (0)
+                          <span className="text-center text-sm font-bold text-slate-500">
+                            🦉 Baca soal dengan teliti, lalu pilih jawabannya.
                           </span>
                         ) : (
                           q.visualEmojis.map((em, i) => <span key={i}>{em}</span>)
@@ -2778,14 +2809,13 @@ export default function IgilModulePlayer({ bab = "mtk-1-bab1" }: { bab?: BabModu
                             <button
                               key={opt}
                               type="button"
-                              onClick={() =>
-                                setPracticeAnswers((prev) => ({ ...prev, [q.id]: opt }))
-                              }
+                              disabled={isAnswered || sedangKirimLatihan}
+                              onClick={() => void pilihJawaban(opt)}
                               className={`p-3.5 rounded-2xl font-black text-base border-2 transition-all ${
                                 selected
                                   ? !adaKunci
                                     ? "bg-[#1C01A5] text-[#FFE566] border-[#FFE566]"
-                                    : opt === q.correctAnswer
+                                    : isRight
                                       ? "bg-[#22C55E] text-white border-[#166534]"
                                       : "bg-[#EF4444] text-white border-[#991B1B]"
                                   : "bg-[#FFFBEB] hover:bg-[#FEF3C7] text-[#1C01A5] border-[#F59E0B]"
@@ -2797,7 +2827,20 @@ export default function IgilModulePlayer({ bab = "mtk-1-bab1" }: { bab?: BabModu
                         })}
                       </div>
 
-                      {isAnswered && adaKunci && q.explanation ? (
+                      {sedangKirimLatihan ? (
+                        <div className="p-3 rounded-2xl text-xs font-bold bg-[#EEF2FF] text-[#1C01A5]">
+                          ⏳ Guru sedang memeriksa jawabanmu di server...
+                        </div>
+                      ) : null}
+                      {pesanLatihan ? (
+                        <div className="p-3 rounded-2xl text-xs font-bold bg-[#FEE2E2] text-[#991B1B]">{pesanLatihan}</div>
+                      ) : null}
+                      {isAnswered && !adaKunci ? (
+                        <div className="p-3 rounded-2xl text-xs font-bold bg-[#EEF2FF] text-[#1C01A5]">
+                          📝 Jawabanmu dicatat. Benar-salah dan pembahasan muncul setelah akunmu terhubung ke penilaian server.
+                        </div>
+                      ) : null}
+                      {isAnswered && hasil ? (
                         <div
                           className={`p-3 rounded-2xl text-xs font-bold ${
                             isRight
@@ -2805,8 +2848,13 @@ export default function IgilModulePlayer({ bab = "mtk-1-bab1" }: { bab?: BabModu
                               : "bg-[#FEE2E2] text-[#991B1B]"
                           }`}
                         >
-                          {isRight ? "✅ Benar! (+3 Poin): " : "💡 Pembahasan Guru: "}
-                          {q.explanation}
+                          <div className="flex items-start justify-between gap-2">
+                            <span>
+                              {isRight ? "✅ Benar! (+3 Poin): " : "💡 Pembahasan Guru: "}
+                              {hasil.pembahasan}
+                            </span>
+                            <TombolSuaraGuru kecil label="Dengar" onClick={() => speakGuru(hasil.pembahasan)} />
+                          </div>
                         </div>
                       ) : null}
                     </div>
@@ -2860,168 +2908,23 @@ export default function IgilModulePlayer({ bab = "mtk-1-bab1" }: { bab?: BabModu
             );
           })()}
         </section>
+        </>
       )}
 
       {/* =================================================================== */}
       {/* 5. HALAMAN UJIAN FORMAL (10 SOAL 100% HOTS • LATAR MERAH LEMBUT)    */}
       {/* =================================================================== */}
       {activeMainTab === "ujian" && materiSelesai && (
-        <section className="w-[98%] mx-auto mt-4 bg-[#FFF1F2] border-2 border-[#EF4444] rounded-3xl p-5 md:p-7 space-y-5">
-          <div className="flex flex-wrap items-center justify-between gap-2 bg-[#1C01A5] text-white p-4 rounded-2xl">
-            <div>
-              <span className="text-xs font-black text-[#FFE566] uppercase">
-                LEMBAR UJIAN FORMAL STANDAR HOTS (70 TOKEN EMAS • WAJIB 100%)
-              </span>
-              <h2 className="text-base md:text-lg font-black">
-                Sesi Belajar Sah: Tervalidasi Server
-              </h2>
-            </div>
-            <span className="px-3 py-1 rounded-xl bg-white/15 text-[#FFE566] font-black text-xs">
-              Percobaan Ke-{examAttempts} {examFirstTryPerfect ? "🏅 Papan Kualifikasi Beasiswa" : ""}
-            </span>
-          </div>
-
-          {(() => {
-            const q = FORMAL_EXAM_QUESTIONS[examIdx];
-            const chosen = examAnswers[q.id];
-
-            return (
-              <>
-                <div className="w-full overflow-x-auto pb-2">
-                  <div className="flex flex-nowrap gap-5 min-w-[680px]">
-                    <div className="w-1/2 bg-white rounded-3xl p-5 border-2 border-[#FCA5A5] space-y-3">
-                      <span className="px-3 py-1 rounded-full bg-[#FEE2E2] text-[#991B1B] font-black text-xs">
-                        Soal Formal #{q.id} / 10 • {q.level}
-                      </span>
-                      <p className="text-sm md:text-base font-black text-[#1C01A5]">{q.prompt}</p>
-                      <div className="flex flex-wrap gap-2 text-2xl pt-2">
-                        {q.visualEmojis.map((em, idx) => (
-                          <span
-                            key={idx}
-                            className="px-2.5 py-1 rounded-xl bg-slate-50 border border-slate-200 text-base font-bold"
-                          >
-                            {em}
-                          </span>
-                        ))}
-                      </div>
-                    </div>
-
-                    <div className="w-1/2 bg-white rounded-3xl p-5 border-2 border-[#FCA5A5] space-y-3">
-                      <div className="grid grid-cols-1 gap-2.5">
-                        {q.options.map((opt) => {
-                          const isSelected = chosen === opt;
-                          return (
-                            <button
-                              key={opt}
-                              type="button"
-                              disabled={examSubmitted}
-                              onClick={() =>
-                                setExamAnswers((prev) => ({ ...prev, [q.id]: opt }))
-                              }
-                              className={`p-3 rounded-2xl font-black text-sm text-left border-2 transition-all ${
-                                isSelected
-                                  ? "bg-[#1C01A5] text-[#FFE566] border-[#FFE566]"
-                                  : "bg-white hover:bg-[#FFF1F2] text-[#334155] border-slate-300"
-                              }`}
-                            >
-                              {opt}
-                            </button>
-                          );
-                        })}
-                      </div>
-                    </div>
-                  </div>
-                </div>
-
-                <div className="flex items-center justify-between pt-2">
-                  <button
-                    type="button"
-                    disabled={examIdx === 0}
-                    onClick={() => setExamIdx((i) => Math.max(0, i - 1))}
-                    className="px-6 py-3 rounded-2xl bg-white text-[#334155] border-2 border-slate-300 font-black text-xs disabled:opacity-40"
-                  >
-                    ⬅️ KEMBALI
-                  </button>
-
-                  {examIdx < FORMAL_EXAM_QUESTIONS.length - 1 ? (
-                    <button
-                      type="button"
-                      onClick={() => setExamIdx((i) => i + 1)}
-                      className="px-7 py-3 rounded-2xl bg-[#1C01A5] text-[#FFE566] border-2 border-[#FFE566] font-black text-xs"
-                    >
-                      SOAL BERIKUTNYA ➡️
-                    </button>
-                  ) : (
-                    <button
-                      type="button"
-                      onClick={() => {
-                        const adaKunci = FORMAL_EXAM_QUESTIONS.every(
-                          (item) => typeof item.correctAnswer === "string",
-                        );
-                        if (!adaKunci) {
-                          setExamScore(null);
-                          setExamSubmitted(true);
-                          return;
-                        }
-                        let right = 0;
-                        FORMAL_EXAM_QUESTIONS.forEach((item) => {
-                          if (examAnswers[item.id] === item.correctAnswer) right += 1;
-                        });
-                        const score = right * 10;
-                        setExamScore(score);
-                        setExamSubmitted(true);
-                        if (score === 100) catatUjianLulus(bab);
-                        if (score === 100 && examAttempts === 1) {
-                          setExamFirstTryPerfect(true);
-                        }
-                      }}
-                      className="px-8 py-3 rounded-2xl bg-[#22C55E] text-white font-black text-xs shadow-md"
-                    >
-                      ✅ SERAHKAN LEMBAR UJIAN FORMAL
-                    </button>
-                  )}
-                </div>
-
-                {examSubmitted && (
-                  <div className="bg-white p-4 rounded-2xl border-2 border-[#1C01A5] flex flex-wrap items-center justify-between gap-3">
-                    <div className="font-black text-sm text-[#1C01A5]">
-                      {examScore === null
-                        ? "Lembar ujian tercatat. Nilai akhir dihitung di server."
-                        : `Nilai Ujian Formal: ${examScore} / 100 ${
-                            examScore === 100
-                              ? "🎉 (Lulus Mutlak 100%!)"
-                              : "⚠️ (Wajib 100/100 untuk lulus)"
-                          }`}
-                    </div>
-                    <div className="flex gap-2">
-                      {examScore === 100 ? (
-                        <Link
-                          href="/praktikum/mtk-1-blok1"
-                          className="igil-tombol px-5 py-2 rounded-xl bg-[#1C01A5] text-[#FFE566] font-black text-xs"
-                        >
-                          LIHAT PRAKTIKUM BLOK ➡️
-                        </Link>
-                      ) : examScore !== null ? (
-                        <button
-                          type="button"
-                          onClick={() => {
-                            setExamAttempts((a) => a + 1);
-                            setExamAnswers({});
-                            setExamSubmitted(false);
-                            setExamIdx(0);
-                          }}
-                          className="px-4 py-2 rounded-xl bg-[#EF4444] text-white font-black text-xs"
-                        >
-                          🔄 Ulangi Ujian
-                        </button>
-                      ) : null}
-                    </div>
-                  </div>
-                )}
-              </>
-            );
-          })()}
-        </section>
+        <>
+          <PanelProfilBelajar profil={profilBelajar} kembaliKe={`/ruang-belajar/${bab}`} />
+          <UjianServer
+            bab={bab}
+            chapterId={idBabServer}
+            profil={profilBelajar}
+            bacakan={(teks) => speakGuru(teks)}
+            onNilai={setExamScore}
+          />
+        </>
       )}
 
     </div>

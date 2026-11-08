@@ -206,7 +206,12 @@ await mkdir(seedDir, { recursive: true });
 for (const nama of berkas) {
   const batang = nama.slice(0, -".master.json".length);
   const master = JSON.parse(await readFile(path.join(masterDir, nama), "utf8"));
+  // Soal Ujian hanya hidup di server (private.exam_keys) dan dikirim saat sesi ujian dimulai.
+  // Berkas bab di perangkat siswa tidak memuat naskah Ujian sama sekali.
   const publik = tanpaKunci(master);
+  for (const namaUjian of ["examQuestions", "exam_questions", "examPackages", "exam_packages"]) {
+    delete publik[namaUjian];
+  }
   const teksPublik = `${JSON.stringify(publik, null, 2)}\n`;
   if (/"correct_index"|"correctAnswer"|"explanation"/.test(teksPublik)) {
     throw new Error(`${batang}: kunci masih lolos ke JSON publik`);

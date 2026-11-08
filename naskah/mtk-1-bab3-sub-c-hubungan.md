@@ -56,11 +56,4 @@ Penutup: Poin Penting (enam kartu bersuara: keluarga empat kalimat, tukar tempat
 
 ## Latihan dan Ujian
 
-Satu bank soal bab (Latihan 10 soal, 30 Poin Kualifikasi; Ujian 10 soal, 70 Poin Kualifikasi, wajib 100%). Soal bagian Sub-Bab C:
-
-- Latihan 7: `4 + 3 = 7`, kalimat pengurangan yang berhubungan (`7 − 3 = 4`).
-- Latihan 9: `6 + ... = 9` (jawaban 3, dicari dengan `9 − 6`).
-- Ujian 4: tanda yang tepat untuk `7 ○ 2 = 9` (`+`).
-- Ujian 7: `... + 4 = 9` (jawaban 5).
-
-Sub-Bab D (Soal Cerita Pengurangan) masih "segera hadir" dan tidak menahan Latihan dan Ujian.
+Satu bank soal bab (Latihan 10 soal, 30 Poin Kualifikasi; Ujian 10 soal, 70 Poin Kualifikasi, wajib 100%). Bank soal bab ini ditulis ulang bersama Sub-Bab D dan mencakup keempat sub-bab. Lihat `naskah/bank-soal-latihan-ujian-kelas1-bab1-3.md`. Naskah ini sengaja tidak memuat soal maupun kunci jawaban.

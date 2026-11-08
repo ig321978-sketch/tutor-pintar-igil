@@ -70,6 +70,11 @@ export function ruteHalamanPublikSaatTerkunci(pathname: string): boolean {
 
 export function ruteApiPublikSaatTerkunci(pathname: string): boolean {
   return (
-    pathname === "/api/tts"
+    pathname === "/api/tts" ||
+    // Latihan dan Ujian dinilai di server. Akses dijaga akun masuk dan RLS/RPC Supabase.
+    pathname === "/api/belajar/profil" ||
+    pathname === "/api/belajar/latihan" ||
+    pathname === "/api/belajar/ujian/mulai" ||
+    pathname === "/api/belajar/ujian/serahkan"
   );
 }

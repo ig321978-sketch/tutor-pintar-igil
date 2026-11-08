@@ -46,3 +46,6 @@ scripts/naskah-sd-progress.json
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# kunci jawaban dan soal Ujian untuk diterapkan ke Supabase. Repo ini publik, jadi tidak di-commit.
+/supabase/seed/*_keys.sql
