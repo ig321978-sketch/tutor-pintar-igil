@@ -882,12 +882,11 @@ export default function IgilModulePlayer({ bab = "mtk-1-bab1" }: { bab?: BabModu
   const [examScore, setExamScore] = useState<number | null>(null);
 
   // 9. Perhitungan Kartu Poin (Latihan 30 + Ujian 70 per bab, Praktikum 50 per blok 4 bab)
-  const practiceCorrectCount = PRACTICE_QUESTIONS.filter((q) => hasilLatihan[q.id]?.benar === true).length;
-  const tokenPerSoal = poin.practice / PRACTICE_QUESTIONS.length;
-  const practiceTokens = Math.min(
-    poin.practice,
-    practiceCorrectCount * tokenPerSoal,
-  );
+  // Latihan: poin terbit penuh (30) setelah semua soal terjawab dan dinilai server, tanpa
+  // melihat berapa yang benar. Sama dengan aturan server (poin terbit sekali saat 10 jawaban masuk).
+  const latihanSelesai =
+    PRACTICE_QUESTIONS.length > 0 && PRACTICE_QUESTIONS.every((q) => hasilLatihan[q.id] !== undefined);
+  const practiceTokens = latihanSelesai ? poin.practice : 0;
   const examTokens = examScore === 100 ? poin.exam : 0;
   const batasToken =
     poin.practice + poin.exam;

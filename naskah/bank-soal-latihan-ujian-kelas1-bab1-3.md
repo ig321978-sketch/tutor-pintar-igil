@@ -38,6 +38,7 @@ Soal ditulis mengikuti pola jenis soal yang lazim pada asesmen sumatif dan AKM k
 ## Saat siswa belajar
 
 - Latihan: browser memuat soal dari berkas bab. Setiap jawaban dikirim ke `POST /api/belajar/latihan`, diteruskan ke RPC `kirim_jawaban_latihan`. Server mengembalikan `benar` dan `pembahasan`. Kunci tidak pernah dikirim.
+- Poin Latihan (30) terbit penuh sekali setelah ke-10 jawaban masuk ke server, tanpa melihat berapa yang benar. Kartu Poin di layar mengikuti aturan yang sama (0 sampai semua soal terjawab, lalu 30).
 - Ujian: browser tidak punya naskah Ujian. `POST /api/belajar/ujian/mulai` memanggil `mulai_ujian` (paket dipilih server) atau `ujian_berjalan` (melanjutkan lembar yang sama bila halaman ditutup). Lembar diserahkan sekaligus lewat `POST /api/belajar/ujian/serahkan` ke `serahkan_ujian`. Server hanya mengembalikan nilai akhir, tidak memberi tahu nomor soal yang salah, dan menerapkan jeda ulang.
 - Nilai 100% pada Ujian mencatat poin 70 lewat RPC. Klien hanya SELECT.
 
