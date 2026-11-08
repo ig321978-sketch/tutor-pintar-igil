@@ -206,3 +206,153 @@ export const TULIS_B_RONDE1 = { p: 2, s: 6 };
 export const TULIS_B_PILIHAN = [35, 43, 48];
 
 export const nilaiKandidat = (k: KandidatK2) => k.p * 10 + k.s;
+
+/* ====================================================================== */
+/* SUB-BAB C. Membandingkan dua bilangan atau lebih.                       */
+/* ====================================================================== */
+
+export type JenisBanding = "kiri" | "kanan" | "sama";
+
+/** Sisi mana yang lebih besar: "kiri" bila a lebih besar, "kanan" bila b lebih besar, "sama" bila nilainya sama. */
+export const bandingkan = (a: number, b: number): JenisBanding => (a > b ? "kiri" : a < b ? "kanan" : "sama");
+
+/** Tanda lebih besar, lebih kecil, atau sama dengan antara a dan b. */
+export const tandaBanding = (a: number, b: number): ">" | "<" | "=" => (a > b ? ">" : a < b ? "<" : "=");
+
+/** Kata untuk tanda, dibacakan Suara Guru: bukan simbolnya. */
+export const kataBanding = (a: number, b: number): string => (a > b ? "lebih besar dari" : a < b ? "lebih kecil dari" : "sama dengan");
+
+export type AlasanBanding = "puluhan" | "satuan" | "sama";
+
+/** Apa yang menentukan: puluhan bila puluhannya beda, satuan bila puluhannya sama, sama bila kedua angka sama. */
+export function alasanBanding(a: number, b: number): AlasanBanding {
+  const x = uraiK2(a);
+  const y = uraiK2(b);
+  if (x.puluhan !== y.puluhan) return "puluhan";
+  if (x.satuan !== y.satuan) return "satuan";
+  return "sama";
+}
+
+/** C1 Hitung Stoples Kira: banyak permen, dua tokoh penebak, dan tebakannya. */
+export type RondeStoplesK2 = { n: number; tokoh: [string, string]; tebakan: [number, number] };
+export const RONDE_STOPLES_K2: RondeStoplesK2[] = [
+  { n: 26, tokoh: ["Malosi", "Halim"], tebakan: [20, 30] },
+  { n: 38, tokoh: ["Tika", "Lili"], tebakan: [38, 45] },
+  { n: 43, tokoh: ["Kira", "Upe"], tebakan: [30, 40] },
+];
+
+/** C2 Pasangkan Satu-Satu: dua bilangan per ronde (kiri, kanan). */
+export const RONDE_PASANG_K2: [number, number][] = [
+  [26, 32],
+  [24, 29],
+  [41, 38],
+];
+
+/** C3 Neraca Dua Piring: piring yang tetap, isinya, dan tujuan untuk piring yang lain. */
+export type RondeNeracaK2 = { tetap: "kiri" | "kanan"; p: number; s: number; tujuan: "besar" | "kecil" | "sama" };
+export const RONDE_NERACA_K2: RondeNeracaK2[] = [
+  { tetap: "kanan", p: 2, s: 8, tujuan: "besar" },
+  { tetap: "kiri", p: 3, s: 5, tujuan: "kecil" },
+  { tetap: "kiri", p: 3, s: 4, tujuan: "sama" },
+];
+
+/** C4 Susun di Rak Kelereng: empat bilangan dan arah urutan. */
+export type RondeRakKelerengK2 = { isi: number[]; arah: "kecil" | "besar" };
+export const RONDE_RAKKELERENG_K2: RondeRakKelerengK2[] = [
+  { isi: [23, 20, 34, 45], arah: "kecil" },
+  { isi: [34, 45, 32, 37], arah: "besar" },
+  { isi: [24, 45, 44, 32], arah: "kecil" },
+];
+
+/** Urutan indeks yang benar untuk satu ronde urut: dari paling kecil atau dari paling besar. */
+export function urutanBenar(isi: number[], arah: "kecil" | "besar"): number[] {
+  return isi
+    .map((_, i) => i)
+    .sort((a, b) => (arah === "kecil" ? isi[a] - isi[b] : isi[b] - isi[a]));
+}
+
+/** P5 Banding di Tabel Nilai Tempat: dua bilangan per ronde (kiri, kanan). */
+export const RONDE_TABELBANDING_K2: [number, number][] = [
+  [26, 32],
+  [24, 29],
+  [44, 34],
+  [38, 35],
+];
+
+/** P6 Jarak di Jalur Bilangan: tebakan pertama, tebakan kedua, hitungan, dan nama penebak. */
+export type RondeJarakK2 = { dari: number; sampai: number; n: number; tokoh: [string, string] };
+export const RONDE_JARAK_K2: RondeJarakK2[] = [
+  { dari: 20, sampai: 30, n: 26, tokoh: ["Malosi", "Halim"] },
+  { dari: 30, sampai: 40, n: 34, tokoh: ["Tika", "Lili"] },
+  { dari: 40, sampai: 50, n: 45, tokoh: ["Kira", "Upe"] },
+];
+
+/** P7 Tukar Dulu, Baru Banding: dua tabel, tabel yang satuannya harus ditukar dulu, lalu dibandingkan. */
+export type RondeTukarBandingK2 = { kiri: { p: number; s: number }; kanan: { p: number; s: number }; ubah: "kiri" | "kanan" };
+export const RONDE_TUKARBANDING_K2: RondeTukarBandingK2[] = [
+  { kiri: { p: 2, s: 3 }, kanan: { p: 1, s: 14 }, ubah: "kanan" },
+  { kiri: { p: 3, s: 5 }, kanan: { p: 2, s: 12 }, ubah: "kanan" },
+  { kiri: { p: 1, s: 15 }, kanan: { p: 2, s: 8 }, ubah: "kiri" },
+  { kiri: { p: 3, s: 3 }, kanan: { p: 2, s: 13 }, ubah: "kanan" },
+];
+
+/** Bentuk ringkas (puluhan paling banyak, satuan kurang dari sepuluh) dari p puluhan dan s satuan. */
+export const ringkasK2 = (p: number, s: number) => uraiK2(p * 10 + s);
+
+/** A8 Buaya Lapar: pasangan bilangan per ronde (kiri, kanan). Memuat jebakan 19 dan 21 serta pasangan yang sama. */
+export const RONDE_BUAYA_K2: [number, number][] = [
+  [26, 32],
+  [45, 38],
+  [19, 21],
+  [24, 29],
+  [41, 41],
+];
+
+/** A9 Duel Kartu Angka: dua kartu, bilangan Igil, dan tujuan menyusun bilangan siswa. */
+export type RondeDuelK2 = { kartu: [number, number]; igil: number; tujuan: "besar" | "kecil" | "sama" };
+export const RONDE_DUEL_K2: RondeDuelK2[] = [
+  { kartu: [3, 4], igil: 35, tujuan: "besar" },
+  { kartu: [1, 5], igil: 31, tujuan: "besar" },
+  { kartu: [2, 4], igil: 42, tujuan: "sama" },
+  { kartu: [2, 5], igil: 30, tujuan: "kecil" },
+];
+
+/** Dua cara menyusun dua kartu: [puluhan, satuan]. */
+export const susunanKartu = (k: [number, number]): [number, number][] => [
+  [k[0], k[1]],
+  [k[1], k[0]],
+];
+
+/** Apakah susunan memenuhi tujuan terhadap bilangan Igil. */
+export function memenuhiDuel(susunan: number, igil: number, tujuan: "besar" | "kecil" | "sama"): boolean {
+  return tujuan === "besar" ? susunan > igil : tujuan === "kecil" ? susunan < igil : susunan === igil;
+}
+
+/** A10 Teka-teki Kartu: tokoh yang diketahui, tokoh yang kurang dari dia, dan tokoh yang lebih dari tokoh kedua. */
+export type RondeTekaK2 = {
+  diketahui: { nama: string; nilai: number };
+  kurang: { nama: string; selisih: number };
+  lebih: { nama: string; selisih: number };
+};
+export const RONDE_TEKA_K2: RondeTekaK2[] = [
+  { diketahui: { nama: "Kira", nilai: 34 }, kurang: { nama: "Lili", selisih: 2 }, lebih: { nama: "Malosi", selisih: 3 } },
+  { diketahui: { nama: "Tika", nilai: 41 }, kurang: { nama: "Dodi", selisih: 5 }, lebih: { nama: "Nia", selisih: 7 } },
+];
+
+/** Nilai tiga tokoh teka-teki: diketahui, yang kurang (diketahui dikurangi selisih), dan yang lebih (kurang ditambah selisih). */
+export function nilaiTeka(r: RondeTekaK2) {
+  const diketahui = r.diketahui.nilai;
+  const kurang = diketahui - r.kurang.selisih;
+  const lebih = kurang + r.lebih.selisih;
+  return { diketahui, kurang, lebih };
+}
+
+/** Kartu angka untuk bagian terakhir teka-teki: pilih dua kartu untuk bilangan paling besar dan paling kecil. */
+export const KARTU_TEKA_K2 = [1, 2, 3, 4];
+
+/** Bilangan dua angka terbesar dan terkecil yang bisa dibuat dari dua kartu berbeda. */
+export function besarKecilKartu(kartu: number[]) {
+  const nilai: number[] = [];
+  for (const a of kartu) for (const b of kartu) if (a !== b) nilai.push(a * 10 + b);
+  return { besar: Math.max(...nilai), kecil: Math.min(...nilai) };
+}

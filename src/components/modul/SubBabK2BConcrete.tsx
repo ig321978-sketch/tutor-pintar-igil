@@ -127,7 +127,7 @@ function RondePapan({ ronde, panel, onBeres }: { ronde: number; panel: PanelSuar
                 if (pilihSumber !== null) taruh(pilihSumber, jenis === "p" ? "k2b-papan-p" : "k2b-papan-s");
                 else ucap(`Kolom ${nama} berisi ${sebut(banyak)}.`);
               }}
-              className={`igil-tanpa-tepi block min-h-[132px] rounded-3xl border-4 border-[#1C01A5] px-2 py-2 ${goyang > 0 ? "igil-goyang" : ""}`}
+              className={`block min-h-[132px] rounded-3xl border-4 border-[#1C01A5] px-2 py-2 ${goyang > 0 ? "igil-goyang" : ""}`}
               style={{ backgroundColor: warna }}
             >
               <span className="mb-1 flex items-center justify-between text-sm font-black text-[#1C01A5]">
@@ -442,7 +442,7 @@ function RondeToko({ ronde, panel, onBeres }: { ronde: number; panel: PanelSuara
             if (pilihSumber !== null) taruh(pilihSumber, "k2b-keranjang");
             else ucap(`Keranjang berisi ${sebut(total)} kelereng.`);
           }}
-          className="igil-tanpa-tepi block min-h-[110px] w-full rounded-3xl border-4 border-[#A8672D] bg-[#FDE9C4] px-2 py-2"
+          className="block min-h-[110px] w-full rounded-3xl border-4 border-[#A8672D] bg-[#FDE9C4] px-2 py-2"
         >
           <span className="mb-1 flex items-center justify-between text-sm font-black text-[#1C01A5]">
             <span>🧺 Keranjang</span>
@@ -623,7 +623,7 @@ function RondeRak({ ronde, panel, onBeres }: { ronde: number; panel: PanelSuara;
                 type="button"
                 aria-label={sudah ? `Rak ke-${i + 1}, sudah dihitung ${(i + 1) * 10}` : `Rak ke-${i + 1}, belum dihitung`}
                 onClick={() => ketukRak(i)}
-                className={`igil-tanpa-tepi relative rounded-2xl border-4 px-1 py-1 ${sudah ? "border-[#16A34A] bg-[#E8F7EE]" : "border-dashed border-[#93C5FD] bg-white"} ${goyang === `r${i}` ? "igil-goyang" : ""}`}
+                className={`relative rounded-2xl border-4 px-1 py-1 ${sudah ? "border-[#16A34A] bg-[#E8F7EE]" : "border-dashed border-[#93C5FD] bg-white"} ${goyang === `r${i}` ? "igil-goyang" : ""}`}
               >
                 <span className={sudah ? "opacity-70" : ""}>
                   <RakTelur kelas="h-14 w-24" />
@@ -642,7 +642,7 @@ function RondeRak({ ronde, panel, onBeres }: { ronde: number; panel: PanelSuara;
                 type="button"
                 aria-label={sudah ? `Telur lepas ke-${i + 1}, sudah dihitung ${d.rak * 10 + i + 1}` : `Telur lepas ke-${i + 1}, belum dihitung`}
                 onClick={() => ketukLepas(i)}
-                className={`igil-tanpa-tepi relative rounded-xl border-4 px-1.5 py-1 ${sudah ? "border-[#2563EB] bg-[#DBEAFE]" : "border-dashed border-[#93C5FD] bg-white"} ${goyang === `l${i}` ? "igil-goyang" : ""}`}
+                className={`relative rounded-xl border-4 px-1.5 py-1 ${sudah ? "border-[#2563EB] bg-[#DBEAFE]" : "border-dashed border-[#93C5FD] bg-white"} ${goyang === `l${i}` ? "igil-goyang" : ""}`}
                 style={letakMeja(i)}
               >
                 <Telur kelas="h-9 w-8" />

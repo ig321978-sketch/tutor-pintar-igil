@@ -23,6 +23,8 @@ import { CeritaHitungK2A, PETA_PIKIRAN_K2A } from "@/components/modul/gambar-hit
 import { CeritaNilaiK2B, PETA_PIKIRAN_K2B } from "@/components/modul/gambar-nilai-k2b";
 import { AbstractHitungK2A, ConcreteHitungK2A, InfografisHitungK2A, PictureHitungK2A } from "@/components/modul/SubBabK2AHitung";
 import { AbstractNilaiK2B, ConcreteNilaiK2B, InfografisNilaiK2B, PictureNilaiK2B } from "@/components/modul/SubBabK2BNilai";
+import { CeritaBandingK2C, PETA_PIKIRAN_K2C } from "@/components/modul/gambar-banding-k2c";
+import { AbstractBandingK2C, ConcreteBandingK2C, InfografisBandingK2C, PictureBandingK2C } from "@/components/modul/SubBabK2CBanding";
 import { CeritaDataB, PETA_PIKIRAN_B8 } from "@/components/modul/gambar-data-b8";
 import {
   AbstractDiagramB,
@@ -428,6 +430,7 @@ const MODUL_SUBBAB: Record<
 > = {
   "mtk-2-bab1-A": { Cerita: CeritaHitungK2A, peta: PETA_PIKIRAN_K2A, Infografis: InfografisHitungK2A, Concrete: ConcreteHitungK2A, Picture: PictureHitungK2A, Abstract: AbstractHitungK2A },
   "mtk-2-bab1-B": { Cerita: CeritaNilaiK2B, peta: PETA_PIKIRAN_K2B, Infografis: InfografisNilaiK2B, Concrete: ConcreteNilaiK2B, Picture: PictureNilaiK2B, Abstract: AbstractNilaiK2B },
+  "mtk-2-bab1-C": { Cerita: CeritaBandingK2C, peta: PETA_PIKIRAN_K2C, Infografis: InfografisBandingK2C, Concrete: ConcreteBandingK2C, Picture: PictureBandingK2C, Abstract: AbstractBandingK2C },
 };
 
 const DAFTAR_MAINAN = [

@@ -5,7 +5,7 @@ import React, { useCallback, useContext, useEffect, useMemo, useRef, useState } 
 import { IkonMainan } from "./ikon-mainan";
 import { GarisBilanganKatak, MulutBuaya, type ArahBuaya } from "./gambar-banding-b";
 import { DottedNumberTracingCanvas, SEBUTAN_ANGKA } from "./elemen-kelas1";
-import { NamaBilangan } from "./data-k2";
+import { NamaBilangan, opsiSekitar } from "./data-k2";
 import {
   ALAS,
   BendaSeret,
@@ -320,9 +320,11 @@ export function JawabSuara({
   const [lokal, setLokal] = useState<Kabar>(null);
   const [pilihan, setPilihan] = useState(false);
   const sudah = panel.suara[id] === true;
-  const opsi = Array.from(
-    new Set([jumlah, jumlah > 1 ? jumlah - 1 : jumlah + 2, jumlah < 10 ? jumlah + 1 : jumlah - 2])
-  ).sort((a, b) => a - b);
+  // Kelas 1 (sampai 20): tiga bilangan menaik. Kelas 2 (di atas 20): tiga bilangan berurutan dengan posisi kunci diputar.
+  const opsi =
+    jumlah > 20
+      ? opsiSekitar(jumlah, [0, 50])
+      : Array.from(new Set([jumlah, jumlah > 1 ? jumlah - 1 : jumlah + 2, jumlah < 10 ? jumlah + 1 : jumlah - 2])).sort((a, b) => a - b);
   const tampilPesan = panel.sedang ? "" : panel.pesan;
   const kabarPesan = useMemo<Kabar>(() => (tampilPesan ? { teks: tampilPesan, ok: false } : null), [tampilPesan]);
 

@@ -713,23 +713,349 @@
       "id": "C",
       "codeTitle": "Sub-Bab C (Membandingkan Bilangan)",
       "fullTitle": "Sub-Bab C: Membandingkan Dua Bilangan atau Lebih",
-      "targetDescription": "Siswa membandingkan dua bilangan atau lebih sampai 50 memakai nilai tempat, menentukan bilangan yang lebih besar dan lebih kecil, serta mengurutkan bilangan.",
+      "targetDescription": "Siswa menebak banyak benda lalu membandingkan tebakan dengan hasil hitungan, membandingkan dua bilangan atau lebih sampai 50 memakai nilai tempat (puluhan dulu, lalu satuan), menentukan bilangan yang lebih besar dan lebih kecil serta memakai tandanya, menukar sepuluh satuan sebelum membandingkan, dan mengurutkan bilangan dari yang paling kecil atau paling besar.",
       "secondaryBg": "#DCFCE7",
       "secondaryBorder": "#16A34A",
       "secondaryText": "#14532D",
-      "segeraHadir": true,
       "silabus": {
-        "teksSuara": "Sub-Bab C membandingkan dua bilangan atau lebih. Bagian ini segera hadir. Guru IGIL masih menyiapkan permainannya.",
-        "cp": "Siswa membandingkan dua bilangan atau lebih sampai 50 memakai nilai tempat, menentukan bilangan yang lebih besar dan lebih kecil, serta mengurutkan bilangan.",
-        "referensi": "Buku Siswa Matematika Kelas II Kemendikbudristek (Bab 1: Ayo Membilang sampai dengan 50, Sub-Bab C hlm. 23–29)."
+        "teksSuara": "Kita belajar membandingkan dua bilangan atau lebih. Bukunya bernama Ayo Membilang sampai dengan Lima Puluh, bagian membandingkan. Kita menebak banyak permen di stoples Kira, lalu menghitung dan membandingkan tebakan dengan hitungan. Kita membandingkan dua bilangan memakai tabel nilai tempat, menentukan bilangan yang lebih besar dan lebih kecil, memakai tandanya, dan mengurutkan bilangan. Kita melewati enam tahap seru: cerita, peta pikiran, infografis, benda nyata, gambar, dan simbol.",
+        "cp": "Siswa membandingkan dua bilangan atau lebih sampai 50 memakai nilai tempat, menentukan bilangan yang lebih besar dan lebih kecil, menjelaskan alasan perbandingan, membandingkan tebakan dengan hasil hitungan, serta mengurutkan bilangan dari yang paling kecil atau paling besar.",
+        "referensi": "Buku Siswa Matematika Kelas II Kemendikbudristek (Bab 1: Ayo Membilang sampai dengan 50, Sub-Bab C hlm. 23–30)."
       },
-      "stories": [],
-      "mindMaps": [],
-      "infografisData": [],
-      "concreteSlides": [],
-      "pictorialSlides": [],
-      "abstractSlides": [],
-      "interactiveGames": []
+      "stories": [
+        {
+          "id": "K2C-S1",
+          "titleHint": "Ulang Tahun Kira",
+          "sceneType": "ulang-tahun-kira",
+          "voiceNarration": "Hari ini Kira berulang tahun. Kira membawa satu stoples berisi permen. Ia ingin membagikan permen kepada teman-temannya. Dapatkah kalian menebak banyak permen yang dibawa Kira? Malosi menebak, menurutku ada dua puluh permen. Halim menebak, menurutku ada tiga puluh permen. Menebak boleh saja, tetapi kita harus membuktikannya dengan menghitung."
+        },
+        {
+          "id": "K2C-S2",
+          "titleHint": "Menghitung Permen Kira",
+          "sceneType": "hitung-permen",
+          "voiceNarration": "Ayo, kita hitung banyak permen di dalam stoples. Kita kelompokkan setiap sepuluh permen, seperti lingkaran putus-putus di buku. Sepuluh, dua puluh. Lalu sisanya kita hitung satu per satu: dua puluh satu, dua puluh dua, dua puluh tiga, dua puluh empat, dua puluh lima, dua puluh enam. Ternyata ada dua puluh enam permen."
+        },
+        {
+          "id": "K2C-S3",
+          "titleHint": "Tebakan Siapa Lebih Dekat?",
+          "sceneType": "tebakan-dekat",
+          "voiceNarration": "Sekarang kita bandingkan tebakan dengan hitungan. Tebakan Malosi dua puluh, tebakan Halim tiga puluh, dan banyak permen Kira dua puluh enam. Dari dua puluh maju ke dua puluh enam ada enam langkah. Dari tiga puluh mundur ke dua puluh enam ada empat langkah. Empat lebih sedikit daripada enam, jadi tebakan Halim lebih dekat. Kita dapat menebak banyak benda. Itu akan melatih kita dalam berhitung."
+        },
+        {
+          "id": "K2C-S4",
+          "titleHint": "Permen Kira dan Tika",
+          "sceneType": "permen-kira-tika",
+          "voiceNarration": "Kira membawa dua puluh enam permen. Tika membawa tiga puluh dua permen. Permen siapa yang lebih banyak? Mengapa? Kita bisa menggunakan tabel nilai tempat untuk membandingkan bilangan. Dua puluh enam adalah dua puluhan dan enam satuan. Tiga puluh dua adalah tiga puluhan dan dua satuan."
+        },
+        {
+          "id": "K2C-S5",
+          "titleHint": "Puluhan Dulu",
+          "sceneType": "puluhan-dulu",
+          "voiceNarration": "Amatilah kolom puluhan pada tabel nilai tempat. Mana yang lebih banyak? Bilangan dua puluh enam mempunyai dua puluhan. Bilangan tiga puluh dua mempunyai tiga puluhan. Bilangan tiga puluh dua mempunyai lebih banyak puluhan daripada bilangan dua puluh enam. Bilangan yang menunjukkan benda lebih banyak disebut bilangan lebih besar. Jadi, tiga puluh dua lebih besar dari dua puluh enam. Sebaliknya, dua puluh enam lebih kecil dari tiga puluh dua."
+        },
+        {
+          "id": "K2C-S6",
+          "titleHint": "Urutkan Kartu Bilangan",
+          "sceneType": "urutkan-kartu",
+          "voiceNarration": "Malosi memegang empat kartu bilangan: dua puluh lima, dua belas, tiga puluh lima, dan dua puluh satu. Mana yang paling kecil? Dua belas, karena hanya satu puluhan. Mana yang paling besar? Tiga puluh lima, karena tiga puluhan. Dua puluh satu dan dua puluh lima sama-sama dua puluhan, jadi kita lihat satuannya. Satu lebih kecil dari lima. Urutan dari yang paling kecil adalah dua belas, dua puluh satu, dua puluh lima, lalu tiga puluh lima."
+        }
+      ],
+      "mindMaps": [
+        {
+          "stepNumber": 1,
+          "stepTitle": "1. Tebak dan Hitung",
+          "stepDesc": "Sebelum menghitung, kita boleh menebak banyak benda. Setelah menghitung, bandingkan tebakan dengan hasil hitungan: tebakan bisa lebih kecil, lebih besar, atau tepat sama. Menebak melatih perasaan bilangan, dan hitungan memastikan jawaban yang tepat.",
+          "icon": "🤔",
+          "flowFrom": "Tebak dan hitung",
+          "flowTo": "Siapa lebih dekat"
+        },
+        {
+          "stepNumber": 2,
+          "stepTitle": "2. Siapa Lebih Dekat?",
+          "stepDesc": "Untuk tahu tebakan siapa yang lebih dekat, hitung loncatannya di jalur bilangan. Dari dua puluh ke dua puluh enam ada enam langkah, dari tiga puluh ke dua puluh enam ada empat langkah. Loncatan yang lebih sedikit berarti tebakan lebih dekat. Bila loncatannya sama banyak, kedua tebakan sama dekat.",
+          "icon": "🎯",
+          "flowFrom": "Siapa lebih dekat",
+          "flowTo": "Banding puluhan dulu"
+        },
+        {
+          "stepNumber": 3,
+          "stepTitle": "3. Banding Puluhan Dulu",
+          "stepDesc": "Untuk membandingkan dua bilangan, tulis keduanya di tabel nilai tempat dan lihat kolom puluhan lebih dulu. Dua puluh enam punya dua puluhan, tiga puluh dua punya tiga puluhan. Yang puluhannya lebih banyak adalah bilangan lebih besar. Memasangkan batang puluhan satu-satu juga menunjukkannya: batang yang tersisa milik bilangan yang lebih besar.",
+          "icon": "📋",
+          "flowFrom": "Banding puluhan dulu",
+          "flowTo": "Puluhan sama lihat satuan"
+        },
+        {
+          "stepNumber": 4,
+          "stepTitle": "4. Puluhan Sama? Lihat Satuan",
+          "stepDesc": "Kalau puluhannya sama, lihat kolom satuan. Dua puluh empat dan dua puluh sembilan sama-sama dua puluhan, tetapi sembilan satuan lebih banyak daripada empat satuan, jadi dua puluh sembilan lebih besar. Kalau satuan sebuah bilangan sudah sepuluh atau lebih, tukar dulu sepuluh satuan menjadi satu puluhan, baru bandingkan. Jangan membandingkan satuan lebih dulu, karena satu puluhan nilainya sepuluh.",
+          "icon": "🔍",
+          "flowFrom": "Puluhan sama lihat satuan",
+          "flowTo": "Lebih besar kecil sama"
+        },
+        {
+          "stepNumber": 5,
+          "stepTitle": "5. Lebih Besar, Lebih Kecil, Sama",
+          "stepDesc": "Bilangan yang menunjukkan benda lebih banyak disebut lebih besar, dan yang lebih sedikit disebut lebih kecil. Tiga puluh dua lebih besar dari dua puluh enam, dan dua puluh enam lebih kecil dari tiga puluh dua. Kalau nilainya persis sama, kita sebut sama dengan. Tanda lebih besar dan lebih kecil mirip mulut buaya yang selalu terbuka ke bilangan yang lebih besar.",
+          "icon": "🐊",
+          "flowFrom": "Lebih besar kecil sama",
+          "flowTo": "Urutkan bilangan"
+        },
+        {
+          "stepNumber": 6,
+          "stepTitle": "6. Urutkan Bilangan",
+          "stepDesc": "Mengurutkan berarti menyusun bilangan dari yang paling kecil ke yang paling besar, atau sebaliknya. Bandingkan dua-dua: cari yang paling kecil dulu, lalu yang berikutnya. Dua belas, dua puluh satu, dua puluh lima, dan tiga puluh lima urut dari yang paling kecil. Untuk mengurutkan dari yang paling besar, balik urutannya.",
+          "icon": "📶",
+          "flowFrom": "Urutkan bilangan",
+          "flowTo": "Membandingkan bilangan siap dipakai"
+        }
+      ],
+      "infografisData": [
+        {
+          "fruitName": "Tebak, Hitung, Bandingkan",
+          "emoji": "🤔",
+          "countNum": 26,
+          "countWord": "Dua puluh enam",
+          "voiceSentence": "Malosi menebak dua puluh, Halim menebak tiga puluh, hitungannya dua puluh enam. Tebakan Malosi lebih kecil dari hitungan, tebakan Halim lebih besar dari hitungan."
+        },
+        {
+          "fruitName": "Siapa Lebih Dekat?",
+          "emoji": "🎯",
+          "countNum": 26,
+          "countWord": "Dua puluh enam",
+          "voiceSentence": "Hitung loncatan di jalur bilangan. Dari dua puluh ke dua puluh enam enam langkah, dari tiga puluh ke dua puluh enam empat langkah. Loncatan lebih sedikit berarti lebih dekat."
+        },
+        {
+          "fruitName": "Banding Dua Bilangan",
+          "emoji": "📋",
+          "countNum": 32,
+          "countWord": "Tiga puluh dua",
+          "voiceSentence": "Dua puluh enam punya dua puluhan, tiga puluh dua punya tiga puluhan. Puluhan yang lebih banyak berarti bilangan lebih besar."
+        },
+        {
+          "fruitName": "Puluhan Dulu, Lalu Satuan",
+          "emoji": "🔢",
+          "countNum": 29,
+          "countWord": "Dua puluh sembilan",
+          "voiceSentence": "Dua puluh empat dan dua puluh sembilan sama-sama dua puluhan, jadi lihat satuannya. Sembilan lebih banyak daripada empat, jadi dua puluh sembilan lebih besar."
+        },
+        {
+          "fruitName": "Lebih Besar, Lebih Kecil, Sama",
+          "emoji": "⚖️",
+          "countNum": 26,
+          "countWord": "Dua puluh enam",
+          "voiceSentence": "Tiga puluh dua lebih besar dari dua puluh enam. Dua puluh enam lebih kecil dari tiga puluh dua. Dua puluh enam sama dengan dua puluh enam."
+        },
+        {
+          "fruitName": "Buaya Lapar",
+          "emoji": "🐊",
+          "countNum": 32,
+          "countWord": "Tiga puluh dua",
+          "voiceSentence": "Mulut buaya selalu terbuka ke bilangan yang lebih besar. Kalau kedua bilangan sama, mulut buaya tertutup."
+        },
+        {
+          "fruitName": "Tukar Dulu, Baru Banding",
+          "emoji": "🔁",
+          "countNum": 24,
+          "countWord": "Dua puluh empat",
+          "voiceSentence": "Satu puluhan empat belas satuan ditukar menjadi dua puluhan empat satuan, yaitu dua puluh empat. Dua puluh empat lebih besar dari dua puluh tiga."
+        },
+        {
+          "fruitName": "Urutkan Bilangan",
+          "emoji": "📶",
+          "countNum": 35,
+          "countWord": "Tiga puluh lima",
+          "voiceSentence": "Dari yang paling kecil: dua belas, dua puluh satu, dua puluh lima, tiga puluh lima. Bandingkan puluhan dulu, lalu satuan."
+        },
+        {
+          "fruitName": "Jangan Banding Satuan Dulu",
+          "emoji": "🚫",
+          "countNum": 21,
+          "countWord": "Dua puluh satu",
+          "voiceSentence": "Sembilan belas dan dua puluh satu: satuan sembilan lebih banyak, tetapi dua puluh satu tetap lebih besar karena puluhannya lebih banyak. Puluhan lebih berharga daripada satuan."
+        }
+      ],
+      "concreteSlides": [
+        {
+          "title": "Hitung Stoples Kira",
+          "emoji": "🍬",
+          "targetCount": 43,
+          "voiceGuide": "Hitung permen Kira: ketuk setiap kelompok sepuluh dari kiri, lalu permen lepas satu per satu. Setelah itu bandingkan tebakan dua temanmu dengan hitunganmu."
+        },
+        {
+          "title": "Pasangkan Satu-Satu",
+          "emoji": "🧱",
+          "targetCount": 32,
+          "voiceGuide": "Bandingkan dua bilangan dengan memasangkan batang satu-satu. Batang yang tersisa milik bilangan yang lebih besar. Kalau puluhannya sama, pasangkan kubus satuannya."
+        },
+        {
+          "title": "Neraca Dua Piring",
+          "emoji": "⚖️",
+          "targetCount": 34,
+          "voiceGuide": "Seret batang puluhan dan kubus satuan ke piring yang kosong sampai nilainya lebih besar, lebih kecil, atau sama. Sisi yang lebih besar turun."
+        },
+        {
+          "title": "Susun di Rak Kelereng",
+          "emoji": "🔵",
+          "targetCount": 45,
+          "voiceGuide": "Susun empat kotak kelereng di rak. Satu kantong berisi sepuluh kelereng. Bandingkan banyak kantongnya dulu, lalu kelereng lepasnya."
+        }
+      ],
+      "pictorialSlides": [
+        {
+          "title": "Banding di Tabel",
+          "diagramType": "compare-in-place-value-table",
+          "numberA": 38,
+          "numberB": 35,
+          "caption": "Bandingkan kolom Puluhan lebih dulu. Kalau puluhannya sama, bandingkan kolom Satuan."
+        },
+        {
+          "title": "Jarak di Jalur Bilangan",
+          "diagramType": "count-jumps-on-strip",
+          "numberA": 45,
+          "numberB": 5,
+          "caption": "Hitung loncatan dari tiap tebakan ke hitungan. Loncatan yang lebih sedikit berarti lebih dekat."
+        },
+        {
+          "title": "Tukar Dulu, Baru Banding",
+          "diagramType": "regroup-then-compare",
+          "numberA": 33,
+          "numberB": 13,
+          "caption": "Tukar sepuluh satuan menjadi satu puluhan di tabel, lalu bandingkan kedua bilangan."
+        }
+      ],
+      "abstractSlides": [
+        {
+          "symbolLarge": "32 > 26",
+          "wordLarge": "BUAYA LAPAR",
+          "mathNotation": "mulut terbuka ke bilangan yang lebih besar",
+          "voiceReadout": "Beri makan buaya lapar. Mulut buaya selalu terbuka ke bilangan yang lebih besar. Pilih tanda yang tepat, lalu pilih alasanmu."
+        },
+        {
+          "symbolLarge": "43 > 35",
+          "wordLarge": "DUEL KARTU",
+          "mathNotation": "4 puluhan > 3 puluhan",
+          "voiceReadout": "Susun dua kartumu menjadi satu bilangan, lalu bandingkan dengan bilangan Igil. Kartu yang lebih besar di tempat puluhan membuat bilangan lebih besar."
+        },
+        {
+          "symbolLarge": "32 < 34 < 35",
+          "wordLarge": "TEKA-TEKI KARTU",
+          "mathNotation": "Lili 32, Kira 34, Malosi 35",
+          "voiceReadout": "Cari bilangan tiap teman dari petunjuk lebihnya dan kurangnya, lalu urutkan dari yang terkecil. Dua puluhan lebih kecil dari tiga puluhan."
+        }
+      ],
+      "interactiveGames": [
+        {
+          "gameId": "subK2C-game-1",
+          "gameNumber": 1,
+          "stage": "Concrete",
+          "gameType": "count-groups-compare-guesses",
+          "title": "Hitung Stoples Kira",
+          "bookReference": "Buku Siswa hlm. 23–24 (Kira membawa stoples permen; Malosi menebak 20, Halim menebak 30; ternyata 26); hlm. 25 (Ayo Mencoba: menebak lalu menghitung)",
+          "objective": "Menghitung permen dengan kelompok sepuluh dan membandingkan tebakan dengan hitungan: lebih kecil, sama, atau lebih besar.",
+          "mechanicDescription": "Tiga ronde (26, 38, dan 43 permen). Siswa mengetuk kelompok sepuluh dari kiri lalu permen lepas satu per satu, kemudian menentukan apakah tebakan dua teman lebih kecil, sama, atau lebih besar dari hitungan. Terakhir ucapkan banyak permen.",
+          "voiceGuide": "Hitung sepuluh-sepuluh, lalu bandingkan tebakannya."
+        },
+        {
+          "gameId": "subK2C-game-2",
+          "gameNumber": 2,
+          "stage": "Concrete",
+          "gameType": "pair-one-to-one",
+          "title": "Pasangkan Satu-Satu",
+          "bookReference": "Buku Siswa hlm. 25 (Kira 26 permen, Tika 32 permen: permen siapa lebih banyak? Mengapa?)",
+          "objective": "Membandingkan dua bilangan dengan memasangkan batang puluhan dan kubus satuan satu-satu.",
+          "mechanicDescription": "Tiga ronde (26 dan 32; 24 dan 29; 41 dan 38). Siswa mengetuk satu batang kiri lalu satu batang kanan agar berpasangan. Batang sisa menunjukkan bilangan yang lebih besar. Bila puluhannya sama, kubus satuan dipasangkan. Lalu memilih kiri lebih besar, sama besar, atau kanan lebih besar.",
+          "voiceGuide": "Pasangkan batang satu-satu, lihat mana yang bersisa."
+        },
+        {
+          "gameId": "subK2C-game-3",
+          "gameNumber": 3,
+          "stage": "Concrete",
+          "gameType": "balance-scale-build",
+          "title": "Neraca Dua Piring",
+          "bookReference": "Buku Siswa hlm. 25 dan 30 (membandingkan dengan nilai tempat; Coba Pikirkan nomor 3: 2 puluhan 3 satuan dan 1 puluhan 14 satuan)",
+          "objective": "Membuat bilangan yang lebih besar, lebih kecil, atau sama dengan cara tulis berbeda, dan melihat neraca memperlihatkannya.",
+          "mechanicDescription": "Tiga ronde. Piring tetap berisi 28, 35, dan 34. Siswa menyeret batang puluhan dan kubus satuan ke piring yang kosong sampai nilainya lebih besar, lebih kecil, atau sama (dengan cara tulis berbeda), lalu menekan periksa. Neraca miring ke sisi yang lebih besar.",
+          "voiceGuide": "Seret batang dan kubus, lihat neraca miring."
+        },
+        {
+          "gameId": "subK2C-game-4",
+          "gameNumber": 4,
+          "stage": "Concrete",
+          "gameType": "drag-order-on-shelf",
+          "title": "Susun di Rak Kelereng",
+          "bookReference": "Buku Siswa hlm. 28–29 (Ayo Berlatih nomor 4 dan 5: urutkan bilangan dari yang paling kecil dan dari yang paling besar)",
+          "objective": "Mengurutkan empat bilangan dari yang paling kecil atau paling besar dengan membandingkan puluhan lebih dulu.",
+          "mechanicDescription": "Tiga ronde (23, 20, 34, 45 dari yang paling sedikit; 34, 45, 32, 37 dari yang paling banyak; 24, 45, 44, 32 dari yang paling sedikit). Siswa menyeret empat kotak kelereng ke rak, satu kantong bernilai sepuluh. Terakhir ucapkan bilangan yang paling besar.",
+          "voiceGuide": "Seret kotak ke rak, kantong dulu, lalu kelereng lepas."
+        },
+        {
+          "gameId": "subK2C-game-5",
+          "gameNumber": 5,
+          "stage": "Picture",
+          "gameType": "compare-in-place-value-table",
+          "title": "Banding di Tabel",
+          "bookReference": "Buku Siswa hlm. 25 dan 28 (Ayo Berlatih nomor 2: lingkari bilangan yang lebih besar dari tabel nilai tempat)",
+          "objective": "Membandingkan dua bilangan lewat tabel nilai tempat: puluhan dulu, lalu satuan.",
+          "mechanicDescription": "Empat ronde (26 dan 32; 24 dan 29; 44 dan 34; 38 dan 35). Siswa memilih kolom Puluhan yang lebih banyak di kiri, sama, atau di kanan. Bila puluhannya sama, siswa membandingkan kolom Satuan. Terakhir ucapkan bilangan yang lebih besar.",
+          "voiceGuide": "Banding puluhan dulu, lalu satuan."
+        },
+        {
+          "gameId": "subK2C-game-6",
+          "gameNumber": 6,
+          "stage": "Picture",
+          "gameType": "count-jumps-on-strip",
+          "title": "Jarak di Jalur Bilangan",
+          "bookReference": "Buku Siswa hlm. 24 (tebakan Malosi 20, tebakan Halim 30, permen Kira 26 pada jalur bilangan)",
+          "objective": "Menentukan tebakan yang lebih dekat dengan menghitung loncatan di jalur bilangan.",
+          "mechanicDescription": "Tiga ronde (jalur 20 sampai 30 dengan hitungan 26; 30 sampai 40 dengan 34; 40 sampai 50 dengan 45). Siswa mengetuk bilangan berikutnya satu per satu dari tebakan pertama, lalu dari tebakan kedua, kemudian memilih yang lebih dekat atau sama dekat.",
+          "voiceGuide": "Hitung loncatan, yang lebih sedikit lebih dekat."
+        },
+        {
+          "gameId": "subK2C-game-7",
+          "gameNumber": 7,
+          "stage": "Picture",
+          "gameType": "regroup-then-compare",
+          "title": "Tukar Dulu, Baru Banding",
+          "bookReference": "Buku Siswa hlm. 30 (Coba Pikirkan nomor 3: 2 puluhan 3 satuan atau 1 puluhan 14 satuan; jelaskan alasan)",
+          "objective": "Menukar sepuluh satuan menjadi satu puluhan di tabel sebelum membandingkan dua bilangan.",
+          "mechanicDescription": "Empat ronde (2 puluhan 3 satuan dan 1 puluhan 14 satuan; 3 puluhan 5 satuan dan 2 puluhan 12 satuan; 1 puluhan 15 satuan dan 2 puluhan 8 satuan; 3 puluhan 3 satuan dan 2 puluhan 13 satuan). Siswa mengisi puluhan baru dan satuan baru pada tabel yang satuannya sepuluh atau lebih, lalu memilih bilangan yang lebih besar.",
+          "voiceGuide": "Tukar dulu satuannya, lalu bandingkan."
+        },
+        {
+          "gameId": "subK2C-game-8",
+          "gameNumber": 8,
+          "stage": "Abstract",
+          "gameType": "alligator-symbol-and-reason",
+          "title": "Buaya Lapar",
+          "bookReference": "Buku Siswa hlm. 25 dan 28 (bilangan lebih besar; Ayo Berlatih nomor 2 dan 3: lingkari bilangan yang lebih besar dan yang lebih kecil)",
+          "objective": "Memilih tanda lebih besar, lebih kecil, atau sama dengan, lalu menjelaskan alasan memakai puluhan dan satuan.",
+          "mechanicDescription": "Lima ronde (26 dan 32; 45 dan 38; 19 dan 21; 24 dan 29; 41 dan 41). Siswa memilih mulut buaya yang tepat, lalu memilih alasan: puluhan yang menentukan, satuan yang menentukan, atau kedua bilangan sama.",
+          "voiceGuide": "Mulut buaya terbuka ke bilangan yang lebih besar."
+        },
+        {
+          "gameId": "subK2C-game-9",
+          "gameNumber": 9,
+          "stage": "Abstract",
+          "gameType": "card-duel",
+          "title": "Duel Kartu Angka",
+          "bookReference": "Buku Siswa hlm. 26 (Ayo Bermain: kartu bilangan 1 sampai 5, dua kartu disusun menjadi satu bilangan, bandingkan dengan teman)",
+          "objective": "Menyusun dua kartu angka menjadi bilangan yang lebih besar, lebih kecil, atau sama dengan bilangan lawan.",
+          "mechanicDescription": "Empat ronde. Kartu 3 dan 4 melawan 35; kartu 1 dan 5 melawan 31; kartu 2 dan 4 melawan 42 (buat sama); kartu 2 dan 5 melawan 30 (buat lebih kecil). Siswa menaruh kartu di tempat puluhan dan satuan lalu menekan periksa. Terakhir ucapkan bilangan yang disusun.",
+          "voiceGuide": "Susun dua kartu menjadi satu bilangan."
+        },
+        {
+          "gameId": "subK2C-game-10",
+          "gameNumber": 10,
+          "stage": "Abstract",
+          "gameType": "logic-puzzle-order",
+          "title": "Teka-teki Kartu",
+          "bookReference": "Buku Siswa hlm. 29–30 (Coba Pikirkan nomor 2 dan nomor 4: kartu Malosi, Kira, Lili, dan kartu 1, 2, 3, 4)",
+          "objective": "Menalar lebihnya dan kurangnya untuk menemukan bilangan tiap teman, lalu mengurutkan dan menyusun bilangan terbesar dan terkecil dari kartu.",
+          "mechanicDescription": "Tiga ronde. Ronde 1 Kira 34, Lili 2 kurangnya dari Kira, Malosi 3 lebihnya dari Lili. Ronde 2 Tika 41, Dodi 5 kurangnya dari Tika, Nia 7 lebihnya dari Dodi. Siswa mencari bilangan lalu mengurutkan dari terkecil. Ronde 3 memilih dua dari kartu 1, 2, 3, 4 untuk bilangan paling besar dan paling kecil.",
+          "voiceGuide": "Cari bilangan tiap teman, lalu urutkan."
+        }
+      ]
     }
   },
   "practiceQuestions": [
@@ -763,6 +1089,20 @@
     },
     {
       "id": 3,
+      "level": "LOTS (30%)",
+      "prompt": "Bilangan yang menunjukkan benda lebih banyak disebut bilangan...",
+      "visualEmojis": [
+        "⚖️"
+      ],
+      "options": [
+        "lebih kecil",
+        "paling kecil",
+        "sama dengan",
+        "lebih besar"
+      ]
+    },
+    {
+      "id": 4,
       "level": "MOTS (30%)",
       "prompt": "Ada 2 ikat pensil, setiap ikat berisi 10 pensil, ditambah 6 pensil lepas. Banyak pensil seluruhnya adalah...",
       "visualEmojis": [
@@ -776,35 +1116,7 @@
       ]
     },
     {
-      "id": 4,
-      "level": "LOTS (30%)",
-      "prompt": "Sepuluh balok disusun menjadi satu batang. Satu batang itu disebut...",
-      "visualEmojis": [
-        "🧱"
-      ],
-      "options": [
-        "satu satuan",
-        "dua puluhan",
-        "sepuluh puluhan",
-        "satu puluhan"
-      ]
-    },
-    {
       "id": 5,
-      "level": "MOTS (30%)",
-      "prompt": "Bilangan 38 dibaca...",
-      "visualEmojis": [
-        "🗣️"
-      ],
-      "options": [
-        "tiga puluh delapan",
-        "delapan puluh tiga",
-        "tiga delapan",
-        "tiga puluh sembilan"
-      ]
-    },
-    {
-      "id": 6,
       "level": "MOTS (30%)",
       "prompt": "Pada tabel nilai tempat, puluhan 2 dan satuan 8. Bilangan yang terbentuk adalah...",
       "visualEmojis": [],
@@ -813,6 +1125,20 @@
         "28",
         "29",
         "38"
+      ]
+    },
+    {
+      "id": 6,
+      "level": "MOTS (30%)",
+      "prompt": "Kira membawa 26 permen dan Tika membawa 32 permen. Permen siapa yang lebih banyak, dan mengapa?",
+      "visualEmojis": [
+        "🍬"
+      ],
+      "options": [
+        "permen Tika, karena 32 mempunyai 3 puluhan sedangkan 26 hanya 2 puluhan",
+        "permen Kira, karena satuan 6 lebih banyak daripada satuan 2",
+        "permen Kira, karena 26 disebut lebih dulu",
+        "sama banyak, karena keduanya mempunyai satuan"
       ]
     },
     {
@@ -842,25 +1168,25 @@
     {
       "id": 9,
       "level": "HOTS (40%)",
-      "prompt": "Malosi menghitung 20 + 7, sedangkan Kira menghitung 27 satu per satu. Pernyataan yang benar adalah...",
+      "prompt": "Kira memegang kartu 34. Bilangan Lili 2 kurangnya dari bilangan Kira. Bilangan Malosi 3 lebihnya dari bilangan Lili. Urutan dari yang terkecil ke yang terbesar adalah...",
       "visualEmojis": [],
       "options": [
-        "hanya Malosi yang benar, hasilnya dua puluh enam",
-        "hanya Kira yang benar, hasilnya dua puluh delapan",
-        "keduanya salah, hasilnya tiga puluh",
-        "keduanya benar, hasilnya sama-sama dua puluh tujuh"
+        "Kira, Lili, Malosi",
+        "Malosi, Kira, Lili",
+        "Lili, Malosi, Kira",
+        "Lili, Kira, Malosi"
       ]
     },
     {
       "id": 10,
       "level": "HOTS (40%)",
-      "prompt": "Malosi mempunyai 31 balok. Ia sudah menyusun 2 batang, masing-masing 10 balok. Pernyataan yang benar adalah...",
+      "prompt": "Bilangan mana yang lebih besar, 2 puluhan 3 satuan atau 1 puluhan 14 satuan?",
       "visualEmojis": [],
       "options": [
-        "masih ada 11 balok lepas, dan 10 di antaranya bisa disusun menjadi 1 batang lagi",
-        "masih ada 1 balok lepas dan tidak bisa disusun lagi",
-        "masih ada 21 balok lepas",
-        "masih ada 11 balok lepas dan tidak bisa disusun lagi"
+        "1 puluhan 14 satuan, karena sama dengan 2 puluhan 4 satuan, yaitu 24, dan 24 lebih besar dari 23",
+        "2 puluhan 3 satuan, karena puluhannya 2 lebih banyak daripada 1",
+        "keduanya sama besar, karena sama-sama mempunyai puluhan dan satuan",
+        "2 puluhan 3 satuan, karena 14 satuan tidak boleh dipakai dalam perbandingan"
       ]
     }
   ]

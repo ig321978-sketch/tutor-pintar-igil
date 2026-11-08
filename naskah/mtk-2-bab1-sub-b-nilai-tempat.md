@@ -278,8 +278,8 @@ Pertukaran juga dijadikan jembatan ke Sub-Bab C (membandingkan): 26 satuan, 1 pu
 
 ## 10. Bank soal Latihan dan Ujian (ringkasan tanpa kunci)
 
-- Latihan: 10 soal terbimbing (3 LOTS, 3 MOTS, 4 HOTS) yang dibagi untuk Sub-Bab A dan B; pembahasan dikembalikan server setelah jawaban masuk.
-- Ujian: tiga paket, masing-masing 10 soal, dengan angka dan urutan pilihan berbeda; satu lembar dikirim utuh dan hanya nilai akhir yang kembali.
+- Latihan: 10 soal terbimbing (3 LOTS, 3 MOTS, 4 HOTS) untuk seluruh bab: 3 soal Sub-Bab A, 3 soal Sub-Bab B, dan 4 soal Sub-Bab C; pembahasan dikembalikan server setelah jawaban masuk.
+- Ujian: tiga paket, masing-masing 10 soal (3 dari Sub-Bab A, 3 dari Sub-Bab B, 4 dari Sub-Bab C), dengan angka dan urutan pilihan berbeda; satu lembar dikirim utuh dan hanya nilai akhir yang kembali.
 - Berkas JSON di perangkat tidak memuat `correct_index`, `explanation`, maupun soal Ujian. Kunci tersimpan di `private.practice_keys` dan `private.exam_keys` pada Supabase (berkas seed lokal `supabase/seed/02_kelas2_bab1_keys.sql`, tidak di-commit).
 
 ## 11. Aturan teknis ringkas
@@ -287,4 +287,4 @@ Pertukaran juga dijadikan jembatan ke Sub-Bab C (membandingkan): 26 satuan, 1 pu
 - Data-driven: `IgilModulePlayer` membaca `kelas2-bab1.json` dan memilih komponen tahap dari registri `MODUL_SUBBAB` dengan kunci `mtk-2-bab1-B`.
 - Suara hanya Web Speech API perangkat (opsi `perangkatSaja`): tidak ada permintaan `/audio-guru/*.mp3` dan tidak ada `/api/tts`.
 - Poin Kualifikasi tidak muncul di tahap Materi. Poin hanya terbit lewat RPC server pada Latihan dan Ujian.
-- Sub-Bab C (Membandingkan, hlm. 23–29) ditandai `segeraHadir` dan tidak menghalangi pembukaan Latihan.
+- Sub-Bab C (Membandingkan, hlm. 23–30) sudah tersedia dengan naskah sendiri (`naskah/mtk-2-bab1-sub-c-membandingkan-bilangan.md`). Latihan terbuka setelah Sub-Bab A, B, dan C selesai.

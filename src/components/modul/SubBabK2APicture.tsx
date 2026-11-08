@@ -312,7 +312,7 @@ function RondeJalur({ ronde, onBeres }: { ronde: number; panel: PanelSuara; onBe
                     type="button"
                     aria-label={`Kotak kosong ke-${i + 1}${terpilih ? ", terpilih" : ""}`}
                     onClick={() => setAktif(n)}
-                    className={`igil-tanpa-tepi flex h-14 w-full items-center justify-center rounded-xl border-4 border-dashed text-3xl font-black text-[#1C01A5] ${terpilih ? "igil-denyut border-[#F0AB00] bg-[#FFF7CC]" : "border-[#1C01A5] bg-white"}`}
+                    className={`flex h-14 w-full items-center justify-center rounded-xl border-4 border-dashed text-3xl font-black text-[#1C01A5] ${terpilih ? "igil-denyut border-[#F0AB00] bg-[#FFF7CC]" : "border-[#1C01A5] bg-white"}`}
                   >
                     ?
                   </button>

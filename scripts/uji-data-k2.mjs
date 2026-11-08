@@ -34,6 +34,27 @@ import {
   RONDE_URUT_K2,
   TULIS_B_RONDE1,
   TULIS_B_PILIHAN,
+  alasanBanding,
+  bandingkan,
+  besarKecilKartu,
+  kataBanding,
+  KARTU_TEKA_K2,
+  memenuhiDuel,
+  nilaiTeka,
+  ringkasK2,
+  RONDE_BUAYA_K2,
+  RONDE_DUEL_K2,
+  RONDE_JARAK_K2,
+  RONDE_NERACA_K2,
+  RONDE_PASANG_K2,
+  RONDE_RAKKELERENG_K2,
+  RONDE_STOPLES_K2,
+  RONDE_TABELBANDING_K2,
+  RONDE_TEKA_K2,
+  RONDE_TUKARBANDING_K2,
+  susunanKartu,
+  tandaBanding,
+  urutanBenar,
 } from "../src/components/modul/data-k2.ts";
 
 let gagal = 0;
@@ -157,6 +178,120 @@ for (const kartu of RONDE_URUT_K2) {
 cek(TULIS_B_RONDE1.p * 10 + TULIS_B_RONDE1.s === 26, "tulis B ronde 1 = 26");
 cek(TULIS_B_PILIHAN.length === 3 && TULIS_B_PILIHAN.every((n) => dalam(n, 11, 50)), "tulis B pilihan");
 
+/* ---- Sub-Bab C: membandingkan ---- */
+cek(bandingkan(32, 26) === "kiri" && bandingkan(26, 32) === "kanan" && bandingkan(26, 26) === "sama", "bandingkan");
+cek(tandaBanding(32, 26) === ">" && tandaBanding(26, 32) === "<" && tandaBanding(41, 41) === "=", "tandaBanding");
+cek(kataBanding(32, 26) === "lebih besar dari" && kataBanding(26, 32) === "lebih kecil dari" && kataBanding(5, 5) === "sama dengan", "kataBanding");
+cek(alasanBanding(26, 32) === "puluhan" && alasanBanding(24, 29) === "satuan" && alasanBanding(41, 41) === "sama" && alasanBanding(19, 21) === "puluhan", "alasanBanding");
+// Semua pasangan 0..50: hasil bandingkan harus cocok dengan perbandingan angka biasa.
+for (let a = 0; a <= 50; a += 1) {
+  for (let b = 0; b <= 50; b += 1) {
+    const ok = bandingkan(a, b) === (a > b ? "kiri" : a < b ? "kanan" : "sama");
+    if (!ok) cek(false, `bandingkan(${a}, ${b})`);
+  }
+}
+cek(true, "bandingkan seluruh pasangan 0 sampai 50");
+
+{
+  // C1 Hitung Stoples Kira
+  const hubungan = new Set();
+  for (const r of RONDE_STOPLES_K2) {
+    cek(dalam(r.n, 21, 50), `stoples n ${r.n}`);
+    cek(r.tebakan.every((t) => dalam(t, 10, 50)), `stoples tebakan ${r.tebakan}`);
+    cek(r.tokoh.length === 2 && r.tokoh[0] !== r.tokoh[1], "stoples dua tokoh berbeda");
+    r.tebakan.forEach((t) => hubungan.add(bandingkan(t, r.n)));
+  }
+  cek(hubungan.size === 3, `stoples memuat kecil, sama, besar: ${[...hubungan]}`);
+
+  // C2 Pasangkan Satu-Satu
+  cek(RONDE_PASANG_K2.every(([a, b]) => dalam(a, 11, 50) && dalam(b, 11, 50) && new Set(RONDE_PASANG_K2.map((p) => p.join("-"))).size === RONDE_PASANG_K2.length), "pasang dalam jangkauan dan unik");
+  const alasanPasang = new Set(RONDE_PASANG_K2.map(([a, b]) => alasanBanding(a, b)));
+  cek(alasanPasang.has("puluhan") && alasanPasang.has("satuan"), "pasang memuat puluhan dan satuan");
+  cek(RONDE_PASANG_K2.some(([a, b]) => uraiK2(a).satuan > uraiK2(b).satuan && a < b), "pasang punya jebakan satuan kiri lebih banyak tetapi bilangan kiri lebih kecil");
+
+  // C3 Neraca
+  for (const r of RONDE_NERACA_K2) {
+    const nilai = r.p * 10 + r.s;
+    cek(r.p >= 0 && r.p <= 5 && r.s >= 0 && r.s <= 9 && nilai >= 11 && nilai <= 50, `neraca ${r.p}p${r.s}s`);
+    if (r.tujuan === "sama") cek(r.p >= 1 && r.s + 10 <= 24, "neraca sama: ada cara tulis lain dalam batas piring");
+    if (r.tujuan === "besar") cek(nilai < 50, "neraca besar: ada bilangan lebih besar");
+    if (r.tujuan === "kecil") cek(nilai > 1, "neraca kecil: ada bilangan lebih kecil");
+  }
+  cek(new Set(RONDE_NERACA_K2.map((r) => r.tujuan)).size === 3, "neraca memuat besar, kecil, sama");
+
+  // C4 Rak Kelereng
+  for (const r of RONDE_RAKKELERENG_K2) {
+    cek(r.isi.length === 4 && new Set(r.isi).size === 4 && r.isi.every((n) => dalam(n, 11, 50)), `rak ${r.isi}`);
+    cek(r.isi.every((n) => uraiK2(n).puluhan <= 4 && uraiK2(n).satuan <= 9), "rak: kantong paling banyak 4");
+    const u = urutanBenar(r.isi, r.arah).map((i) => r.isi[i]);
+    const terurut = [...r.isi].sort((a, b) => (r.arah === "kecil" ? a - b : b - a));
+    cek(JSON.stringify(u) === JSON.stringify(terurut), `urutanBenar ${r.isi} ${r.arah}`);
+    cek(JSON.stringify(u) !== JSON.stringify(r.isi), `rak ${r.isi} awal belum urut`);
+    const puluhan = r.isi.map((n) => uraiK2(n).puluhan);
+    cek(new Set(puluhan).size < 4, `rak ${r.isi} punya dua bilangan dengan puluhan sama (perlu lihat satuan)`);
+  }
+  cek(new Set(RONDE_RAKKELERENG_K2.map((r) => r.arah)).size === 2, "rak memuat arah kecil dan besar");
+
+  // P5 Banding di Tabel
+  const alasanTabel = new Set(RONDE_TABELBANDING_K2.map(([a, b]) => alasanBanding(a, b)));
+  cek(alasanTabel.has("puluhan") && alasanTabel.has("satuan"), "tabel banding memuat puluhan dan satuan");
+  cek(RONDE_TABELBANDING_K2.every(([a, b]) => dalam(a, 11, 50) && dalam(b, 11, 50) && a !== b), "tabel banding dalam jangkauan");
+
+  // P6 Jarak
+  const hasilJarak = new Set();
+  for (const r of RONDE_JARAK_K2) {
+    cek(r.sampai - r.dari === 10 && r.n > r.dari && r.n < r.sampai && dalam(r.dari, 0, 40) && dalam(r.sampai, 10, 50), `jarak ${r.dari}-${r.sampai} n ${r.n}`);
+    const k0 = r.n - r.dari;
+    const k1 = r.sampai - r.n;
+    hasilJarak.add(k0 < k1 ? "kiri" : k0 > k1 ? "kanan" : "sama");
+  }
+  cek(hasilJarak.size === 3, `jarak memuat kiri, kanan, sama dekat: ${[...hasilJarak]}`);
+
+  // P7 Tukar Dulu, Baru Banding
+  let jebakan = 0;
+  const hasilTukar = new Set();
+  for (const r of RONDE_TUKARBANDING_K2) {
+    const ubah = r.ubah === "kiri" ? r.kiri : r.kanan;
+    const lain = r.ubah === "kiri" ? r.kanan : r.kiri;
+    cek(ubah.s >= 10 && ubah.s <= 24 && lain.s < 10, `tukar banding: satuan ${ubah.s} dan ${lain.s}`);
+    const rk = ringkasK2(ubah.p, ubah.s);
+    cek(rk.satuan < 10 && rk.puluhan * 10 + rk.satuan === ubah.p * 10 + ubah.s, "ringkasK2 menjaga nilai");
+    const nk = r.kiri.p * 10 + r.kiri.s;
+    const nn = r.kanan.p * 10 + r.kanan.s;
+    cek(dalam(nk, 11, 50) && dalam(nn, 11, 50), `tukar banding nilai ${nk} dan ${nn}`);
+    hasilTukar.add(bandingkan(nk, nn));
+    if (bandingkan(r.kiri.p, r.kanan.p) !== bandingkan(nk, nn)) jebakan += 1;
+  }
+  cek(jebakan >= 1, "tukar banding punya jebakan: membandingkan puluhan tanpa menukar memberi jawaban salah");
+  cek(hasilTukar.size === 3, `tukar banding memuat kiri, kanan, sama: ${[...hasilTukar]}`);
+
+  // A8 Buaya Lapar
+  const tandaBuaya = new Set(RONDE_BUAYA_K2.map(([a, b]) => tandaBanding(a, b)));
+  const alasanBuaya = new Set(RONDE_BUAYA_K2.map(([a, b]) => alasanBanding(a, b)));
+  cek(tandaBuaya.size === 3 && alasanBuaya.size === 3, `buaya memuat tiga tanda dan tiga alasan: ${[...tandaBuaya]} ${[...alasanBuaya]}`);
+  cek(RONDE_BUAYA_K2.some(([a, b]) => uraiK2(a).satuan > uraiK2(b).satuan && a < b), "buaya punya jebakan 19 dan 21");
+
+  // A9 Duel Kartu Angka
+  for (const r of RONDE_DUEL_K2) {
+    cek(r.kartu.every((k) => k >= 1 && k <= 5) && r.kartu[0] !== r.kartu[1], `duel kartu ${r.kartu}`);
+    cek(dalam(r.igil, 11, 50), `duel igil ${r.igil}`);
+    const cocok = susunanKartu(r.kartu).map(([p, s]) => p * 10 + s).filter((n) => memenuhiDuel(n, r.igil, r.tujuan));
+    cek(cocok.length === 1, `duel ${r.kartu} lawan ${r.igil} (${r.tujuan}) punya tepat satu susunan: ${cocok}`);
+  }
+  cek(new Set(RONDE_DUEL_K2.map((r) => r.tujuan)).size === 3, "duel memuat besar, kecil, sama");
+
+  // A10 Teka-teki Kartu
+  for (const r of RONDE_TEKA_K2) {
+    const v = nilaiTeka(r);
+    cek(new Set([v.diketahui, v.kurang, v.lebih]).size === 3 && [v.diketahui, v.kurang, v.lebih].every((n) => dalam(n, 11, 50)), `teka ${JSON.stringify(v)}`);
+    cek(new Set([r.diketahui.nama, r.kurang.nama, r.lebih.nama]).size === 3, "teka tiga nama berbeda");
+  }
+  const v0 = nilaiTeka(RONDE_TEKA_K2[0]);
+  cek(v0.kurang === 32 && v0.diketahui === 34 && v0.lebih === 35, "teka ronde 1 sesuai buku: Lili 32, Kira 34, Malosi 35");
+  const bk = besarKecilKartu(KARTU_TEKA_K2);
+  cek(bk.besar === 43 && bk.kecil === 12, `kartu 1 2 3 4: besar ${bk.besar} kecil ${bk.kecil}`);
+}
+
 /* ---- Berkas JSON publik: tanpa kunci ---- */
 const publik = JSON.parse(fs.readFileSync(new URL("../src/data/kelas2-bab1.json", import.meta.url), "utf8"));
 const teksPublik = JSON.stringify(publik);
@@ -183,10 +318,7 @@ cek(tingkat.LOTS === 3 && tingkat.MOTS === 3 && tingkat.HOTS === 4, `sebaran lev
 for (const kode of ["A", "B", "C"]) {
   const sb = publik.subBabs[kode];
   cek(Boolean(sb), `sub-bab ${kode} ada`);
-  if (kode === "C") {
-    cek(sb.segeraHadir === true, "sub-bab C ditandai segeraHadir");
-    continue;
-  }
+  cek(sb.segeraHadir !== true, `sub-bab ${kode} tidak boleh lagi ditandai segeraHadir`);
   cek(sb.stories.length === 6 && sb.mindMaps.length === 6, `sub-bab ${kode}: 6 adegan dan 6 langkah peta`);
   cek(sb.concreteSlides.length === 4 && sb.pictorialSlides.length === 3 && sb.abstractSlides.length === 3, `sub-bab ${kode}: 4/3/3 permainan CPA`);
   cek(sb.interactiveGames.length === 10, `sub-bab ${kode}: 10 permainan interaktif`);

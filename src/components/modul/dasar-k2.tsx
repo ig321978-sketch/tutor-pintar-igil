@@ -193,6 +193,21 @@ export function BingkaiSepuluh({
   );
 }
 
+const WARNA_PERMEN_K2 = ["#F472B6", "#38BDF8", "#FBBF24", "#A78BFA", "#34D399"];
+
+/** Permen bungkus kecil. Benda nyata untuk tahap Concrete Sub-Bab C (stoples permen Kira). */
+export function PermenK2({ warna = 0, kelas = "h-5 w-8" }: { warna?: number; kelas?: string }) {
+  const w = WARNA_PERMEN_K2[warna % WARNA_PERMEN_K2.length];
+  return (
+    <svg viewBox="0 0 36 22" className={kelas} aria-hidden="true">
+      <path d="M2 4 L11 11 L2 18 Z" fill="#FFFFFF" stroke={BIRU} strokeWidth="1.8" strokeLinejoin="round" />
+      <path d="M34 4 L25 11 L34 18 Z" fill="#FFFFFF" stroke={BIRU} strokeWidth="1.8" strokeLinejoin="round" />
+      <ellipse cx="18" cy="11" rx="10.5" ry="8" fill={w} stroke={BIRU} strokeWidth="2.2" />
+      <path d="M13 5.2 Q17 11 13 16.8" stroke="#FFFFFF" strokeWidth="2" fill="none" opacity="0.85" strokeLinecap="round" />
+    </svg>
+  );
+}
+
 /** Batang puluhan polos untuk diagram (model batang): sepuluh ruas. Tanpa gambar benda. */
 export function BatangModel({ kelas = "h-16 w-4" }: { kelas?: string }) {
   return (

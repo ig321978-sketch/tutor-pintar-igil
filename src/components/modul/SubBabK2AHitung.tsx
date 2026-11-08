@@ -274,7 +274,7 @@ export function InfografisHitungK2A({ speakGuru }: { speakGuru: (teks: string) =
             type="button"
             aria-label={`Dengarkan: ${i.nama}`}
             onClick={() => speakGuru(i.suara)}
-            className="igil-tanpa-tepi space-y-1 rounded-3xl border-4 border-[#1C01A5] bg-[#FFF7CC] px-2 py-3 text-center shadow-[0_4px_0_rgba(28,1,165,0.22)]"
+            className="space-y-1 rounded-3xl border-4 border-[#1C01A5] bg-[#FFF7CC] px-2 py-3 text-center shadow-[0_4px_0_rgba(28,1,165,0.22)]"
           >
             <span className="block text-3xl" aria-hidden="true">
               {i.ikon}
@@ -353,9 +353,9 @@ function RondeJodoh({ ronde, onBeres }: { ronde: number; panel: PanelSuara; onBe
                 aria-pressed={dipilih === n}
                 disabled={cocok.includes(n)}
                 onClick={() => pilihAngka(n)}
-                className={`igil-tanpa-tepi flex h-14 w-full items-center justify-center rounded-2xl border-4 text-4xl font-black text-[#1C01A5] ${
-                  cocok.includes(n) ? "border-[#7FCB96] bg-[#E8F7EE]" : dipilih === n ? "border-[#F0AB00] bg-[#FFF7CC] ring-4 ring-[#F0AB00]" : "border-[#1C01A5] bg-[#FFE566]"
-                }`}
+                className={`flex h-14 w-full items-center justify-center rounded-2xl border-4 text-4xl font-black text-[#1C01A5] ${
+ cocok.includes(n) ? "border-[#7FCB96] bg-[#E8F7EE]" : dipilih === n ? "border-[#F0AB00] bg-[#FFF7CC] ring-4 ring-[#F0AB00]" : "border-[#1C01A5] bg-[#FFE566]"
+ }`}
               >
                 {n}
               </button>
@@ -369,9 +369,9 @@ function RondeJodoh({ ronde, onBeres }: { ronde: number; panel: PanelSuara; onBe
                 aria-label={`Nama ${namaBilangan(n)}${cocok.includes(n) ? ", sudah cocok" : ""}`}
                 disabled={cocok.includes(n)}
                 onClick={() => pilihNama(n)}
-                className={`igil-tanpa-tepi flex h-14 w-full items-center justify-center rounded-2xl border-4 px-1 text-center text-sm font-black leading-tight text-[#1C01A5] ${
-                  cocok.includes(n) ? "border-[#7FCB96] bg-[#E8F7EE]" : "border-[#1C01A5] bg-white"
-                } ${keliru === n ? "igil-goyang" : ""}`}
+                className={`flex h-14 w-full items-center justify-center rounded-2xl border-4 px-1 text-center text-sm font-black leading-tight text-[#1C01A5] ${
+ cocok.includes(n) ? "border-[#7FCB96] bg-[#E8F7EE]" : "border-[#1C01A5] bg-white"
+ } ${keliru === n ? "igil-goyang" : ""}`}
               >
                 {namaBilangan(n)}
               </button>

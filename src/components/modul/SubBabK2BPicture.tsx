@@ -271,7 +271,7 @@ function RondeCara({ ronde, onBeres }: { ronde: number; panel: PanelSuara; onBer
                 aria-pressed={terpilih}
                 aria-label={`${k.p} puluhan dan ${k.s} satuan${terpilih ? ", terpilih" : ""}`}
                 onClick={() => ketuk(i)}
-                className={`igil-tanpa-tepi rounded-2xl border-4 px-1 py-1.5 ${tepat ? "border-[#16A34A] bg-[#E8F7EE]" : terpilih ? "border-[#F0AB00] bg-[#FFF7CC] ring-4 ring-[#F0AB00]" : "border-[#1C01A5] bg-white"}`}
+                className={`rounded-2xl border-4 px-1 py-1.5 ${tepat ? "border-[#16A34A] bg-[#E8F7EE]" : terpilih ? "border-[#F0AB00] bg-[#FFF7CC] ring-4 ring-[#F0AB00]" : "border-[#1C01A5] bg-white"}`}
               >
                 <Ikatan atas={d.n} kiri={k.p * 10} kanan={k.s} kelas="h-20 w-24" />
                 <span className="block text-center text-sm font-black leading-tight text-[#1C01A5]">

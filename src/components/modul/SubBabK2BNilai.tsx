@@ -266,7 +266,7 @@ export function InfografisNilaiK2B({ speakGuru }: { speakGuru: (teks: string) =>
             type="button"
             aria-label={`Dengarkan: ${i.nama}`}
             onClick={() => speakGuru(i.suara)}
-            className="igil-tanpa-tepi space-y-1 rounded-3xl border-4 border-[#1C01A5] bg-[#FFF7CC] px-2 py-3 text-center shadow-[0_4px_0_rgba(28,1,165,0.22)]"
+            className="space-y-1 rounded-3xl border-4 border-[#1C01A5] bg-[#FFF7CC] px-2 py-3 text-center shadow-[0_4px_0_rgba(28,1,165,0.22)]"
           >
             <span className="block text-3xl" aria-hidden="true">
               {i.ikon}
@@ -448,7 +448,7 @@ function RondeUrut({ ronde, onBeres }: { ronde: number; panel: PanelSuara; onBer
                 aria-label={`Kartu ${k.p} puluhan ${k.s} satuan${sudah ? `, urutan ke-${terambil.indexOf(i) + 1}` : ""}`}
                 disabled={sudah}
                 onClick={() => ketuk(i)}
-                className={`igil-tanpa-tepi rounded-2xl border-4 px-2 py-3 text-center text-lg font-black leading-tight ${sudah ? "border-[#7FCB96] bg-[#E8F7EE] text-[#14532D]" : "border-[#1C01A5] bg-[#FFE566] text-[#1C01A5]"} ${goyang === i ? "igil-goyang" : ""}`}
+                className={`rounded-2xl border-4 px-2 py-3 text-center text-lg font-black leading-tight ${sudah ? "border-[#7FCB96] bg-[#E8F7EE] text-[#14532D]" : "border-[#1C01A5] bg-[#FFE566] text-[#1C01A5]"} ${goyang === i ? "igil-goyang" : ""}`}
               >
                 {k.p} puluhan
                 <br />

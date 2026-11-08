@@ -113,7 +113,7 @@ function RondeIkat({ ronde, panel, onBeres }: { ronde: number; panel: PanelSuara
                 aria-pressed={terpilih}
                 onClick={() => ketuk(p)}
                 disabled={selesaiIkat}
-                className={`igil-tanpa-tepi rounded-xl border-2 px-0.5 py-0.5 transition-transform ${terpilih ? "-translate-y-2 border-[#F0AB00] bg-[#FFF7CC] ring-4 ring-[#F0AB00]" : "border-transparent"}`}
+                className={`rounded-xl border-2 px-0.5 py-0.5 transition-transform ${terpilih ? "-translate-y-2 border-[#F0AB00] bg-[#FFF7CC] ring-4 ring-[#F0AB00]" : "border-transparent"}`}
               >
                 <Pensil warna={p} kelas="h-12 w-4" />
               </button>
@@ -233,7 +233,7 @@ function RondeLoker({ ronde, panel, onBeres }: { ronde: number; panel: PanelSuar
                   type="button"
                   aria-label={no ? `Tas ke-${no}, sudah dihitung` : "Tas, belum dihitung"}
                   onClick={() => ketuk(i)}
-                  className={`igil-tanpa-tepi relative flex h-12 items-center justify-center rounded-lg border-[3px] ${no ? WARNA_PULUHAN[Math.floor((no - 1) / 10) % 5] : "border-[#C9A06A] bg-[#FFF3DB]"} ${goyang === i ? "igil-goyang" : ""}`}
+                  className={`relative flex h-12 items-center justify-center rounded-lg border-[3px] ${no ? WARNA_PULUHAN[Math.floor((no - 1) / 10) % 5] : "border-[#C9A06A] bg-[#FFF3DB]"} ${goyang === i ? "igil-goyang" : ""}`}
                 >
                   <Tas warna={i % 3 === 0 ? 2 : i % 3 === 1 ? 1 : 0} kelas={`h-9 w-9 ${no ? "opacity-70" : ""}`} />
                   {no ? (
@@ -385,7 +385,7 @@ function RondeSusun({ ronde, panel, onBeres }: { ronde: number; panel: PanelSuar
                 if (terpilih !== null) taruh(terpilih, `k2a-susun-${j}`);
                 else ucap(`Susun ${sebut(j + 1)} berisi ${sebut(s.length)}.`);
               }}
-              className={`igil-tanpa-tepi block w-full rounded-3xl border-4 px-2 py-2 ${s.length >= 10 ? "border-[#16A34A] bg-[#E8F7EE]" : "border-[#A8672D] bg-[#FDE9C4]"} ${goyang > 0 && s.length >= 10 ? "igil-goyang" : ""}`}
+              className={`block w-full rounded-3xl border-4 px-2 py-2 ${s.length >= 10 ? "border-[#16A34A] bg-[#E8F7EE]" : "border-[#A8672D] bg-[#FDE9C4]"} ${goyang > 0 && s.length >= 10 ? "igil-goyang" : ""}`}
             >
               <span className="mb-1 flex items-center justify-between text-sm font-black text-[#1C01A5]">
                 <span>📦 Susun {j + 1}</span>
@@ -410,7 +410,7 @@ function RondeSusun({ ronde, panel, onBeres }: { ronde: number; panel: PanelSuar
             if (terpilih !== null) taruh(terpilih, "k2a-sisa");
             else ucap(`Balok sisa ada ${sebut(sisa.length)}.`);
           }}
-          className="igil-tanpa-tepi block min-h-[56px] w-full rounded-3xl border-4 border-dashed border-[#1C01A5] bg-white px-2 py-2"
+          className="block min-h-[56px] w-full rounded-3xl border-4 border-dashed border-[#1C01A5] bg-white px-2 py-2"
         >
           <span className="mb-1 flex items-center justify-between text-sm font-black text-[#1C01A5]">
             <span>➕ Balok sisa (lepas)</span>
@@ -521,7 +521,7 @@ function RondeTebak({ ronde, panel, onBeres }: { ronde: number; panel: PanelSuar
                   aria-label={no ? `Kelereng ke-${no}, sudah dihitung` : "Kelereng, belum dihitung"}
                   onClick={() => ketuk(i)}
                   style={letakMeja(i)}
-                  className={`igil-tanpa-tepi relative rounded-full border-[3px] ${no ? WARNA_PULUHAN[Math.floor((no - 1) / 10) % 5] : "border-transparent"} ${goyang === i ? "igil-goyang" : ""}`}
+                  className={`relative rounded-full border-[3px] ${no ? WARNA_PULUHAN[Math.floor((no - 1) / 10) % 5] : "border-transparent"} ${goyang === i ? "igil-goyang" : ""}`}
                 >
                   <Kelereng warna={i} kelas="h-9 w-9" />
                   {no ? (

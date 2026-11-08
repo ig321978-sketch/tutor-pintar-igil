@@ -15,7 +15,7 @@ import type { LangkahPeta } from "./PetaPikiranB";
 
 const WARNA_BALOK = ["#F97316", "#3B82F6", "#22C55E", "#EAB308", "#EC4899"];
 
-function Label({ x, y, w, teks, ukuran = 14 }: { x: number; y: number; w: number; teks: string; ukuran?: number }) {
+export function Label({ x, y, w, teks, ukuran = 14 }: { x: number; y: number; w: number; teks: string; ukuran?: number }) {
   return (
     <g>
       <rect x={x} y={y} width={w} height="26" rx="11" fill="#FFFFFF" stroke={BIRU} strokeWidth="3" />
@@ -27,7 +27,7 @@ function Label({ x, y, w, teks, ukuran = 14 }: { x: number; y: number; w: number
 }
 
 /** Batang puluhan: sepuluh balok yang disusun menjadi satu batang. */
-function BatangG({ x, y, h = 66 }: { x: number; y: number; h?: number }) {
+export function BatangG({ x, y, h = 66 }: { x: number; y: number; h?: number }) {
   return (
     <g>
       <rect x={x} y={y} width="13" height={h} rx="3" fill="#F97316" stroke={BIRU} strokeWidth="2.2" />
@@ -39,12 +39,12 @@ function BatangG({ x, y, h = 66 }: { x: number; y: number; h?: number }) {
 }
 
 /** Kubus satuan: satu balok. */
-function KubusG({ x, y, s = 13, warna = 1 }: { x: number; y: number; s?: number; warna?: number }) {
+export function KubusG({ x, y, s = 13, warna = 1 }: { x: number; y: number; s?: number; warna?: number }) {
   return <rect x={x} y={y} width={s} height={s} rx="2.5" fill={WARNA_BALOK[warna % 5]} stroke={BIRU} strokeWidth="1.8" />;
 }
 
 /** Satuan lepas disusun dalam baris, sembilan per baris. */
-function Satuan({ x, y, n, s = 13, jarak = 15, kolom = 9 }: { x: number; y: number; n: number; s?: number; jarak?: number; kolom?: number }) {
+export function Satuan({ x, y, n, s = 13, jarak = 15, kolom = 9 }: { x: number; y: number; n: number; s?: number; jarak?: number; kolom?: number }) {
   return (
     <>
       {Array.from({ length: n }, (_, i) => (
@@ -55,7 +55,7 @@ function Satuan({ x, y, n, s = 13, jarak = 15, kolom = 9 }: { x: number; y: numb
 }
 
 /** Tabel nilai tempat kecil di dalam adegan. */
-function TabelMini({ x, y, p, s }: { x: number; y: number; p: number | string; s: number | string }) {
+export function TabelMini({ x, y, p, s }: { x: number; y: number; p: number | string; s: number | string }) {
   return (
     <g>
       <rect x={x} y={y} width="74" height="18" rx="4" fill="#FECACA" stroke={BIRU} strokeWidth="2" />

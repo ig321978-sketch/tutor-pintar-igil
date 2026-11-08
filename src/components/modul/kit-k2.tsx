@@ -98,7 +98,7 @@ export function Refleksi({ pernyataan, speakGuru }: { pernyataan: string[]; spea
             setIya(baru);
             speakGuru(baru[i] ? `${tx} Iya.` : tx);
           }}
-          className="igil-tanpa-tepi flex w-full items-center gap-2 rounded-2xl border-4 border-[#1C01A5] bg-white px-2 py-1 text-left"
+          className="flex w-full items-center gap-2 rounded-2xl border-4 border-[#1C01A5] bg-white px-2 py-1 text-left"
         >
           <span className={`flex h-9 w-9 shrink-0 items-center justify-center rounded-lg border-4 border-[#1C01A5] text-xl ${iya[i] ? "bg-[#FFE566]" : "bg-white"}`}>{iya[i] ? "😊" : ""}</span>
           <span className="min-w-0 flex-1 text-sm font-black leading-tight text-[#1C01A5]">{tx}</span>
@@ -141,7 +141,7 @@ export function PoinPentingK2({
             type="button"
             aria-label={`Dengarkan: ${p.nama}`}
             onClick={() => speakGuru(p.suara)}
-            className="igil-tanpa-tepi block w-full space-y-1 rounded-3xl border-4 border-[#1C01A5] bg-white px-3 py-2 text-left shadow-[0_4px_0_rgba(28,1,165,0.22)]"
+            className="block w-full space-y-1 rounded-3xl border-4 border-[#1C01A5] bg-white px-3 py-2 text-left shadow-[0_4px_0_rgba(28,1,165,0.22)]"
           >
             <span className="flex items-center justify-between gap-2">
               <span className="flex items-center gap-2 text-lg font-black leading-tight text-[#1C01A5]">
