@@ -24,6 +24,7 @@ import {
   InfografisDiagramB,
   PictureDiagramB,
 } from "@/components/modul/SubBabB8Diagram";
+import SimulasiBab8 from "@/components/modul/SimulasiBab8";
 import { CeritaDataA, PETA_PIKIRAN_A8 } from "@/components/modul/gambar-data-a8";
 import {
   AbstractDataA,
@@ -782,8 +783,10 @@ export default function IgilModulePlayer({ bab = "mtk-1-bab1" }: { bab?: BabModu
   const adaBab6 = bab === "mtk-1-bab6";
   const adaBab7 = bab === "mtk-1-bab7";
   const adaBab8 = bab === "mtk-1-bab8";
-  /** Bab bergaya baru (Bab 2 sampai Bab 8): tanpa tab Simulasi, Latihan terbuka setelah materi tersedia selesai. */
+  /** Bab bergaya baru (Bab 2 sampai Bab 8): Latihan terbuka setelah materi tersedia selesai. */
   const adaBab2 = bab === "mtk-1-bab2" || adaBab3 || adaBab4 || adaBab5 || adaBab6 || adaBab7 || adaBab8;
+  /** Tab Simulasi tampil hanya di bab yang sudah punya simulasi: Bab 1 (lama) dan Bab 8 (bergaya PhET). */
+  const adaTabSimulasi = !adaBab2 || adaBab8;
   const materi = MATERI_BAB[bab];
   const SUB_BABS = materi.subBabs as Record<SubBabId, SubBabContent>;
   const daftarSub = Object.keys(materi.subBabs) as SubBabId[];
@@ -1289,7 +1292,7 @@ export default function IgilModulePlayer({ bab = "mtk-1-bab1" }: { bab?: BabModu
                 { id: "ujian", label: "Ujian", keterangan: "100% HOTS" },
               ] as { id: MainTabId; label: string; keterangan: string }[]
             )
-              .filter((tab) => !(adaBab2 && tab.id === "simulasi"))
+              .filter((tab) => adaTabSimulasi || tab.id !== "simulasi")
               .map((tab) => {
               const isActive = activeMainTab === tab.id;
               const gaya = TAB_ANAK[tab.id];
@@ -3398,7 +3401,16 @@ export default function IgilModulePlayer({ bab = "mtk-1-bab1" }: { bab?: BabModu
       {/* =================================================================== */}
       {/* 3. HALAMAN SIMULASI (SINGLE-SCREEN PhET-STYLE • LATAR BIRU LEMBUT)  */}
       {/* =================================================================== */}
-      {activeMainTab === "simulasi" && (
+      {activeMainTab === "simulasi" && adaBab8 && (
+        <SimulasiBab8
+          speakGuru={speakGuru}
+          onKeLatihan={() => {
+            setActiveMainTab("latihan");
+            window.scrollTo({ top: 0, behavior: "smooth" });
+          }}
+        />
+      )}
+      {activeMainTab === "simulasi" && !adaBab8 && (
         <section className="w-[98%] mx-auto mt-4 bg-[#EFF6FF] border-2 border-[#3B82F6] rounded-3xl p-5 md:p-7 space-y-5">
           <div className="flex flex-wrap items-center justify-between gap-3">
             <div>
