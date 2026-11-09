@@ -26,6 +26,12 @@ import { VideoK2B4A } from "@/components/modul/video-k2b4a";
 import { VideoK2B4B } from "@/components/modul/video-k2b4b";
 import { AbstractK2B4A, ConcreteK2B4A, InfografisK2B4AKomponen, PictureK2B4A } from "@/components/modul/SubBabK2B4A";
 import { AbstractK2B4B, ConcreteK2B4B, InfografisK2B4BKomponen, PictureK2B4B } from "@/components/modul/SubBabK2B4B";
+import materiK2Bab6 from "@/data/kelas2-bab6.json";
+import { PETA_PIKIRAN_K2B6A, PETA_PIKIRAN_K2B6B } from "@/components/modul/kit-k2b6";
+import { VideoK2B6A } from "@/components/modul/video-k2b6a";
+import { VideoK2B6B } from "@/components/modul/video-k2b6b";
+import { AbstractK2B6A, ConcreteK2B6A, InfografisK2B6AKomponen, PictureK2B6A } from "@/components/modul/SubBabK2B6A";
+import { AbstractK2B6B, ConcreteK2B6B, InfografisK2B6BKomponen, PictureK2B6B } from "@/components/modul/SubBabK2B6B";
 import materiK2Bab5 from "@/data/kelas2-bab5.json";
 import { namaBilangan } from "@/components/modul/data-k2";
 import { PETA_PIKIRAN_K2B5A, PETA_PIKIRAN_K2B5B, PETA_PIKIRAN_K2B5C } from "@/components/modul/kit-k2b5";
@@ -352,7 +358,7 @@ interface QuestionItem {
 // ============================================================================
 
 /** Bab yang bisa diputar. Isinya dibaca dari berkas JSON bab (tanpa kunci jawaban). */
-export type BabModul = "mtk-1-bab1" | "mtk-1-bab2" | "mtk-1-bab3" | "mtk-1-bab4" | "mtk-1-bab5" | "mtk-1-bab6" | "mtk-1-bab7" | "mtk-1-bab8" | "mtk-2-bab1" | "mtk-2-bab2" | "mtk-2-bab3" | "mtk-2-bab4" | "mtk-2-bab5";
+export type BabModul = "mtk-1-bab1" | "mtk-1-bab2" | "mtk-1-bab3" | "mtk-1-bab4" | "mtk-1-bab5" | "mtk-1-bab6" | "mtk-1-bab7" | "mtk-1-bab8" | "mtk-2-bab1" | "mtk-2-bab2" | "mtk-2-bab3" | "mtk-2-bab4" | "mtk-2-bab5" | "mtk-2-bab6";
 
 interface MateriBab {
   /** Kode bab di server (mis. k1-mat-bab3). Dipakai untuk RPC Latihan dan Ujian. */
@@ -387,6 +393,7 @@ const MATERI_BAB: Record<BabModul, MateriBab> = {
   "mtk-2-bab3": materiK2Bab3 as unknown as MateriBab,
   "mtk-2-bab4": materiK2Bab4 as unknown as MateriBab,
   "mtk-2-bab5": materiK2Bab5 as unknown as MateriBab,
+  "mtk-2-bab6": materiK2Bab6 as unknown as MateriBab,
 };
 
 const POIN_BAWAAN = { practice: 30, exam: 70, practicum: 50 };
@@ -475,6 +482,13 @@ const SUB_ANAK_K2B5: Record<SubBabId, { emoji: string }> = {
   D: { emoji: "🧮" },
 };
 
+const SUB_ANAK_K2B6: Record<SubBabId, { emoji: string }> = {
+  A: { emoji: "⚖️" },
+  B: { emoji: "⏰" },
+  C: { emoji: "📖" },
+  D: { emoji: "🧮" },
+};
+
 type PropsTahapBaru = {
   speakGuru: (teks: string) => void;
   panel: PanelSuara;
@@ -514,6 +528,8 @@ const MODUL_SUBBAB: Record<
   "mtk-2-bab5-A": { Cerita: VideoK2B5A, peta: PETA_PIKIRAN_K2B5A, Infografis: InfografisK2B5AKomponen, Concrete: ConcreteK2B5A, Picture: PictureK2B5A, Abstract: AbstractK2B5A, uraianPeta: true },
   "mtk-2-bab5-B": { Cerita: VideoK2B5B, peta: PETA_PIKIRAN_K2B5B, Infografis: InfografisK2B5BKomponen, Concrete: ConcreteK2B5B, Picture: PictureK2B5B, Abstract: AbstractK2B5B, uraianPeta: true },
   "mtk-2-bab5-C": { Cerita: VideoK2B5C, peta: PETA_PIKIRAN_K2B5C, Infografis: InfografisK2B5CKomponen, Concrete: ConcreteK2B5C, Picture: PictureK2B5C, Abstract: AbstractK2B5C, uraianPeta: true },
+  "mtk-2-bab6-A": { Cerita: VideoK2B6A, peta: PETA_PIKIRAN_K2B6A, Infografis: InfografisK2B6AKomponen, Concrete: ConcreteK2B6A, Picture: PictureK2B6A, Abstract: AbstractK2B6A, uraianPeta: true },
+  "mtk-2-bab6-B": { Cerita: VideoK2B6B, peta: PETA_PIKIRAN_K2B6B, Infografis: InfografisK2B6BKomponen, Concrete: ConcreteK2B6B, Picture: PictureK2B6B, Abstract: AbstractK2B6B, uraianPeta: true },
 };
 
 const DAFTAR_MAINAN = [
@@ -919,8 +935,9 @@ export default function IgilModulePlayer({ bab = "mtk-1-bab1" }: { bab?: BabModu
   const adaK2B3 = bab === "mtk-2-bab3";
   const adaK2B4 = bab === "mtk-2-bab4";
   const adaK2B5 = bab === "mtk-2-bab5";
+  const adaK2B6 = bab === "mtk-2-bab6";
   /** Bab bergaya baru (Bab 2 sampai Bab 8): Latihan terbuka setelah materi tersedia selesai. */
-  const adaBab2 = bab === "mtk-1-bab2" || adaBab3 || adaBab4 || adaBab5 || adaBab6 || adaBab7 || adaBab8 || adaK2B1 || adaK2B2 || adaK2B3 || adaK2B4 || adaK2B5;
+  const adaBab2 = bab === "mtk-1-bab2" || adaBab3 || adaBab4 || adaBab5 || adaBab6 || adaBab7 || adaBab8 || adaK2B1 || adaK2B2 || adaK2B3 || adaK2B4 || adaK2B5 || adaK2B6;
   /** Tab Simulasi tampil hanya di bab yang sudah punya simulasi (lihat SIMULASI_BAB). */
   const SimulasiBab = SIMULASI_BAB[bab];
   const adaTabSimulasi = SimulasiBab !== undefined;
@@ -934,7 +951,7 @@ export default function IgilModulePlayer({ bab = "mtk-1-bab1" }: { bab?: BabModu
   const idBabServer = materi.chapter_id ?? "";
   const profilBelajar = useProfilBelajar();
   const poin = materi.tokens ?? POIN_BAWAAN;
-  const peta = adaK2B5 ? SUB_ANAK_K2B5 : adaK2B4 ? SUB_ANAK_K2B4 : adaK2B3 ? SUB_ANAK_K2B3 : adaK2B2 ? SUB_ANAK_K2B2 : adaK2B1 ? SUB_ANAK_K2B1 : adaBab8 ? SUB_ANAK_BAB8 : adaBab7 ? SUB_ANAK_BAB7 : adaBab6 ? SUB_ANAK_BAB6 : adaBab5 ? SUB_ANAK_BAB5 : adaBab4 ? SUB_ANAK_BAB4 : adaBab3 ? SUB_ANAK_BAB3 : adaBab2 ? SUB_ANAK_BAB2 : SUB_ANAK;
+  const peta = adaK2B6 ? SUB_ANAK_K2B6 : adaK2B5 ? SUB_ANAK_K2B5 : adaK2B4 ? SUB_ANAK_K2B4 : adaK2B3 ? SUB_ANAK_K2B3 : adaK2B2 ? SUB_ANAK_K2B2 : adaK2B1 ? SUB_ANAK_K2B1 : adaBab8 ? SUB_ANAK_BAB8 : adaBab7 ? SUB_ANAK_BAB7 : adaBab6 ? SUB_ANAK_BAB6 : adaBab5 ? SUB_ANAK_BAB5 : adaBab4 ? SUB_ANAK_BAB4 : adaBab3 ? SUB_ANAK_BAB3 : adaBab2 ? SUB_ANAK_BAB2 : SUB_ANAK;
   /** Sub-bab yang sudah punya naskah dan permainan. Sub-bab "segera hadir" tidak menahan Latihan dan Ujian. */
   const daftarSubTersedia = daftarSub.filter((id) => !SUB_BABS[id].segeraHadir);
 

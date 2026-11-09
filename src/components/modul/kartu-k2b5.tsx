@@ -21,6 +21,7 @@ export function KartuK2B5({
   belumSiap,
   isi,
   kunciAkhir,
+  total,
 }: {
   d: PropsLangkah;
   indeks: number;
@@ -31,6 +32,7 @@ export function KartuK2B5({
   belumSiap: string;
   isi: (ronde: number, beres: () => void) => React.ReactNode;
   kunciAkhir?: number;
+  total?: number;
 }) {
   return (
     <GameBentuk
@@ -43,6 +45,7 @@ export function KartuK2B5({
       id={id}
       jumlahRonde={jumlahRonde}
       kunciAkhir={kunciAkhir}
+      total={total}
       belumSiap={belumSiap}
       teksLanjut={d.teksLanjut}
       lanjut={d.lanjut}

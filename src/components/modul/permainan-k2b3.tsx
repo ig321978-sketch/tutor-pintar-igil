@@ -29,7 +29,7 @@ export type BinSortir = { id: string; label: string; warna: string; ikon?: strin
  * Pilah benda atau kalimat ke kotak yang tepat. Seret ke kotak, atau ketuk benda lalu ketuk kotak (papan ketik: Enter).
  * Benda yang salah kembali dan petunjuknya dibacakan.
  */
-export function Sortir({ item, bin, onBeres, kolomBin = 2, kartuTeks = false, gaya = "kertas", pesanBeres }: { item: ItemSortir[]; bin: BinSortir[]; onBeres: () => void; kolomBin?: 2 | 3; kartuTeks?: boolean; gaya?: "kayu" | "kertas"; pesanBeres: string }) {
+export function Sortir({ item, bin, onBeres, kolomBin = 2, kartuTeks = false, gaya = "kertas", pesanBeres, lebarItem = 78 }: { item: ItemSortir[]; bin: BinSortir[]; onBeres: () => void; kolomBin?: 2 | 3; kartuTeks?: boolean; gaya?: "kayu" | "kertas"; pesanBeres: string; lebarItem?: number }) {
   const ucap = useContext(SuaraCtx);
   const [tempat, setTempat] = useState<Record<string, string>>({});
   const [dipilih, setDipilih] = useState<string | null>(null);
@@ -76,7 +76,7 @@ export function Sortir({ item, bin, onBeres, kolomBin = 2, kartuTeks = false, ga
               {kartuTeks ? (
                 <div className="rounded-2xl border-4 border-[#1C01A5] bg-white px-3 py-2 text-left text-sm font-black leading-snug text-[#1C01A5] shadow-[0_3px_0_rgba(28,1,165,0.2)]">{it.label}</div>
               ) : (
-                <div className="flex w-[78px] flex-col items-center gap-0.5 rounded-2xl bg-white/70 px-1 py-1">
+                <div className="flex flex-col items-center gap-0.5 rounded-2xl bg-white/70 px-1 py-1" style={{ width: lebarItem }}>
                   {it.isi}
                   <span className="text-center text-[11px] font-black leading-tight text-[#1C01A5]">{it.label}</span>
                 </div>
@@ -488,7 +488,8 @@ export function SusunKata({ kata, pengecoh, nomor, onBeres }: { kata: string[]; 
 
   const periksa = () => {
     const susun = urut.map((i) => kartu[i].asli);
-    if (susun.length === kata.length && susun.every((a, i) => a === i)) {
+    // Bandingkan teks kata, bukan nomor kartu: kalimat yang memuat kata sama dua kali (mis. "lebih ... lebih") tetap benar.
+    if (susun.length === kata.length && urut.every((k, i) => kartu[k].teks === kata[i])) {
       setBenar(true);
       setKabar(null);
       letusan.picu();

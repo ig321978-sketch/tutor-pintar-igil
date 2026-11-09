@@ -112,6 +112,7 @@ export function GameBentuk({
   teksLanjut,
   lanjut,
   isi,
+  total = TOTAL_GAME,
 }: {
   nomor: number;
   judul: string;
@@ -126,6 +127,8 @@ export function GameBentuk({
   teksLanjut: string;
   lanjut: () => void;
   isi: (ronde: number, beres: () => void) => React.ReactNode;
+  /** Banyak permainan seluruhnya dalam satu sub-bab (bawaan 10). */
+  total?: number;
 }) {
   const [ronde, setRonde] = useState(0);
   const [selesai, setSelesai] = useState(false);
@@ -133,7 +136,7 @@ export function GameBentuk({
   const suara = panel.suara[id] === true;
   return (
     <>
-      <JudulGame nomor={nomor} total={TOTAL_GAME} judul={judul} onSuara={() => speakGuru(petunjuk)} warna={warna} />
+      <JudulGame nomor={nomor} total={total} judul={judul} onSuara={() => speakGuru(petunjuk)} warna={warna} />
       {jumlahRonde > 1 ? (
         <p className="text-center text-xs font-black uppercase tracking-wide text-[#1C01A5]/70">
           Ronde {ronde + 1} dari {jumlahRonde}
