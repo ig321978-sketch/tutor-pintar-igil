@@ -44,7 +44,7 @@ cek("paket: sub-bab A dan B dengan video, peta, infografis, Concrete, Picture, A
 cek("paket: emoji sub-bab A dan B", /A: \{ emoji: "➕" \}/.test(paket) && /B: \{ emoji: "➖" \}/.test(paket));
 cek("halaman: /ruang-belajar/mtk-3-bab2 memakai PemutarBabBaru", /bab="mtk-3-bab2"/.test(baca("src/app/ruang-belajar/mtk-3-bab2/page.tsx")));
 const kur = baca("src/lib/kurikulum.ts");
-cek("kurikulum: judul Kelas 3 Bab 2 terpasang", /JUDUL_MTK_3_BAB2 = "Bab 2: Kalimat Matematika"/.test(kur) && /"3 SD": \{\s*Matematika: \[JUDUL_MTK_3_BAB1, JUDUL_MTK_3_BAB2\]/.test(kur));
+cek("kurikulum: judul Kelas 3 Bab 2 terpasang", /JUDUL_MTK_3_BAB2 = "Bab 2: Kalimat Matematika"/.test(kur) && /"3 SD": \{\s*Matematika: \[JUDUL_MTK_3_BAB1, JUDUL_MTK_3_BAB2[,\]]/.test(kur));
 cek("pemutar: SIMULASI_BAB tidak memuat bab Kelas 3", !/"mtk-3-bab2"/.test(pemutar));
 
 /* ---- Suara: murni Web Speech perangkat, laju 0,70, nada 1 ---- */

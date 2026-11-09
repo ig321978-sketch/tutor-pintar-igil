@@ -99,6 +99,33 @@ KONFIG.k3b2 = {
   },
 };
 
+// Kelas 3 Bab 3 (Pengukuran Panjang dan Berat): Sub-Bab A dan B (panjang). Sub-Bab C dan D (berat) ditambahkan kemudian.
+KONFIG.k3b3 = {
+  kelas: 3,
+  bab: 3,
+  judul: "Pengukuran Panjang dan Berat",
+  buku: "Buku Siswa Matematika Kelas III (Kemendikbudristek, Kurikulum Merdeka, Bab 3 hlm. 105–123) dan Buku Panduan Guru Bab 3",
+  berkas: { A: "sub-a-pengukuran-panjang-satuan-baku", B: "sub-b-hubungan-satuan-panjang" },
+  metodeLuar: {
+    A: [
+      "**Penggaris dengan benda nyata di atasnya**: pensil, krayon, penghapus, sendok, dan sikat gigi digambar di atas penggaris 0 sampai 15 cm. Dasar permainan Baca Panjang Benda dan Papan Panjang Benda.",
+      "**Geser ke angka nol (Aktivitas 1, langkah 4 dan 5)**: siswa menggeser benda sampai ujung kirinya tepat di angka 0, baru membaca angka di ujung yang lain. Mesin Geser Ukur menolak jawaban sebelum benda sejajar, supaya kesalahan umum (mulai dari angka selain nol) terlihat langsung.",
+      "**Batang polos di tahap Picture**: benda diganti batang berwarna tanpa gambar benda. Aturan membaca panjangnya tetap sama sehingga siswa memindahkan keterampilan dari benda ke diagram.",
+      "**Memilih alat ukur**: benda sehari-hari (pensil, pintu, jalan, televisi) dipilah ke penggaris atau meteran. Batas 30 cm dipakai pada permainan Pilah Panjang. Timbangan sengaja dipakai sebagai pengecoh agar siswa membedakan panjang dari berat.",
+      "**Selisih dua batang**: dua batang pada satu penggaris dibandingkan dan dikurangkan, seperti soal tinggi tanaman (Ayo Berlatih 3).",
+      "**Pengecoh dari kesalahan umum**: pilihan jawaban memuat angka di ujung kanan sebelum digeser, satu lebih, dan satu kurang.",
+    ],
+    B: [
+      "**Meteran sebagai garis bilangan**: batang berwarna pada garis meteran 0 sampai 4 m dengan penanda tiap 50 cm. Dasar permainan Hitung Garis Meteran dan Jodohkan Garis dan Ukuran.",
+      "**Pita dari potongan meter, sepuluh sentimeter, dan sentimeter**: tiga jenis potongan (merah 100 cm, biru 10 cm, kuning 1 cm) ditukar sepuluh-ke-satu pada mesin Rakit. Cara ini sama dengan tiga kemasan pada Bab 1, sehingga siswa memakai kembali aturan penukaran yang sudah dikenal.",
+      "**Mengalikan dan membagi dengan 100**: meter ke sentimeter dikalikan 100, sentimeter ke meter dibagi 100. Pengecoh sengaja memuat lupa mengalikan (×10) dan salah kali (×1.000).",
+      "**Tabel tinggi badan (Ayo Berlatih 2)**: tabel Azizah, Ubay, Fatim, Lilik, Eri, dan Sanam dipakai langsung pada permainan Isi Tabel Ubah Ukuran.",
+      "**Menjumlahkan dan mengurangkan ukuran gabungan (Ayo Berlatih 3 dan 4)**: meter dijumlahkan atau dikurangkan dengan meter, sentimeter dengan sentimeter. Soal pita 4 m 37 cm dan 7 m 43 cm serta kain katun 75 m 80 cm dipakai langsung.",
+      "**Ukuran yang sama ditulis dengan beberapa cara**: 2 m, 200 cm, dan 1 m 100 cm sama panjangnya. Permainan Ketuk Semua yang Sama melatih mengenalinya.",
+    ],
+  },
+};
+
 const kode = process.argv[2];
 if (!kode || !KONFIG[kode]) {
   console.error(`Pakai: node --no-warnings scripts/buat-naskah-md.mjs <${Object.keys(KONFIG).join("|")}>`);

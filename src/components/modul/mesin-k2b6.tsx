@@ -645,7 +645,7 @@ export function LetakSlot({ item, slot, onBeres, pesanBeres }: { item: ItemTaruh
 export type PasanganMemori = { id: string; a: React.ReactNode; labelA: string; b: React.ReactNode; labelB: string };
 
 /** Balik dua kartu. Yang cocok tetap terbuka, yang tidak kembali tertutup. Semua pasangan harus ketemu. */
-export function MemoriKartu({ pasangan, onBeres, pesanBeres }: { pasangan: PasanganMemori[]; onBeres: () => void; pesanBeres: string }) {
+export function MemoriKartu({ pasangan, onBeres, pesanBeres, kolom = 4 }: { pasangan: PasanganMemori[]; onBeres: () => void; pesanBeres: string; kolom?: 2 | 4 }) {
   const ucap = useContext(SuaraCtx);
   type Kartu = { kunci: string; id: string; isi: React.ReactNode; label: string };
   const semua: Kartu[] = pasangan.flatMap((p) => [
@@ -692,7 +692,7 @@ export function MemoriKartu({ pasangan, onBeres, pesanBeres }: { pasangan: Pasan
     <>
       <div className={`${KERTAS_ANGKA} space-y-2`}>
         <p className="text-center text-xs font-black text-[#1C01A5]/70">Balik dua kartu. Cari pasangan yang cocok.</p>
-        <div className="grid grid-cols-4 gap-1.5" role="group" aria-label="Kartu memori">
+        <div className={`grid ${kolom === 2 ? "grid-cols-2 gap-2" : "grid-cols-4 gap-1.5"}`} role="group" aria-label="Kartu memori">
           {urut.map((k) => {
             const terang = cocok.includes(k.id) || terbuka.includes(k.kunci);
             return (
