@@ -23,7 +23,6 @@ import { CeritaHitungK2A, PETA_PIKIRAN_K2A } from "@/components/modul/gambar-hit
 import { CeritaNilaiK2B, PETA_PIKIRAN_K2B } from "@/components/modul/gambar-nilai-k2b";
 import { AbstractHitungK2A, ConcreteHitungK2A, InfografisHitungK2A, PictureHitungK2A } from "@/components/modul/SubBabK2AHitung";
 import { AbstractNilaiK2B, ConcreteNilaiK2B, InfografisNilaiK2B, PictureNilaiK2B } from "@/components/modul/SubBabK2BNilai";
-import { VideoTamanBermain } from "@/components/modul/VideoTamanBermain";
 import { InfoSuaraGuru } from "@/components/modul/InfoSuaraGuru";
 import { CeritaBandingK2C, PETA_PIKIRAN_K2C } from "@/components/modul/gambar-banding-k2c";
 import { AbstractBandingK2C, ConcreteBandingK2C, InfografisBandingK2C, PictureBandingK2C } from "@/components/modul/SubBabK2CBanding";
@@ -433,14 +432,6 @@ const MODUL_SUBBAB: Record<
   "mtk-2-bab1-A": { Cerita: CeritaHitungK2A, peta: PETA_PIKIRAN_K2A, Infografis: InfografisHitungK2A, Concrete: ConcreteHitungK2A, Picture: PictureHitungK2A, Abstract: AbstractHitungK2A },
   "mtk-2-bab1-B": { Cerita: CeritaNilaiK2B, peta: PETA_PIKIRAN_K2B, Infografis: InfografisNilaiK2B, Concrete: ConcreteNilaiK2B, Picture: PictureNilaiK2B, Abstract: AbstractNilaiK2B },
   "mtk-2-bab1-C": { Cerita: CeritaBandingK2C, peta: PETA_PIKIRAN_K2C, Infografis: InfografisBandingK2C, Concrete: ConcreteBandingK2C, Picture: PictureBandingK2C, Abstract: AbstractBandingK2C },
-};
-
-/**
- * Sub-bab yang Tahap 1: Story-nya berupa video animasi HTML/SVG, bukan slide gambar. Kuncinya "<bab>-<sub-bab>".
- * Video berjalan di perangkat siswa (tanpa video berbayar dan tanpa panggilan API).
- */
-const VIDEO_CERITA: Record<string, { Video: ComponentType }> = {
-  "mtk-1-bab1-A": { Video: VideoTamanBermain },
 };
 
 const DAFTAR_MAINAN = [
@@ -1252,7 +1243,6 @@ export default function IgilModulePlayer({ bab = "mtk-1-bab1" }: { bab?: BabModu
 
   const currentSubContent = SUB_BABS[activeSubBab];
   const modulBaru = MODUL_SUBBAB[`${bab}-${activeSubBab}`];
-  const videoCerita = VIDEO_CERITA[`${bab}-${activeSubBab}`];
   const subB2 = bab === "mtk-1-bab2" && activeSubBab === "B";
   const subC2 = bab === "mtk-1-bab2" && activeSubBab === "C";
   const subB3 = bab === "mtk-1-bab3" && activeSubBab === "B";
@@ -1820,9 +1810,7 @@ export default function IgilModulePlayer({ bab = "mtk-1-bab1" }: { bab?: BabModu
               </span>
             </div>
 
-            {videoCerita ? (
-              <videoCerita.Video />
-            ) : modulBaru ? (
+            {modulBaru ? (
               <modulBaru.Cerita speakGuru={speakGuru} />
             ) : subA8 ? (
               <CeritaDataA speakGuru={speakGuru} />

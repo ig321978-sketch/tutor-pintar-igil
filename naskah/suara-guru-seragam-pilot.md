@@ -53,7 +53,7 @@ Catatan: permintaan hanya memberi nada 1,1. **Nada pria 0,8 dan 1,0 adalah pilih
 
 - `ucapkanGuruModul(teks, { seragam: true })` di `src/lib/suara-guru-modul.ts`.
 - `IgilModulePlayer.tsx`: `suaraSeragam = bab === "mtk-1-bab1" && activeSubBab === "A" && activeMainTab === "materi"` memasang opsi itu pada `speakGuru`, yang dipakai semua komponen Materi.
-- `VideoTamanBermain.tsx` memakai opsi yang sama.
+- Slide cerita Tahap 1 (dikembalikan ke slide semula) memakai `speakGuru`, jadi ikut jalur seragam. `VideoTamanBermain.tsx` (dinonaktifkan) memakai opsi yang sama bila diaktifkan lagi.
 - `PilihGuru.tsx`: contoh suara untuk Kelas 1 SD memakai jalur yang sama, jadi yang didengar saat memilih guru sama dengan yang diputar di Materi pilot.
 - `InfoSuaraGuru.tsx`: kotak kecil di atas Tahap 1 Story yang menampilkan guru terpilih, nama suara perangkat, laju, nada, dan tombol "Coba suara". Dipakai untuk membandingkan perangkat saat pilot. Boleh dihapus setelah pilot selesai.
 

@@ -1,6 +1,8 @@
 # Video cerita "Di Taman Bermain" — Matematika Kelas 1 SD, Bab 1, Sub-Bab A
 
-Video animasi ini menggantikan slide gambar pada **Tahap 1: Story** di tab Materi Sub-Bab A (Menghitung, Membaca, dan Menulis Bilangan 0 sampai 10). Sub-Bab B, C, dan D tetap memakai slide cerita masing-masing.
+> **Status: dinonaktifkan.** Atas permintaan pemilik, slide gambar semula dikembalikan ke **Tahap 1: Story** Sub-Bab A. Komponen video tetap tersimpan di `src/components/modul/VideoTamanBermain.tsx` tetapi tidak dipasang di modul mana pun. Untuk mengaktifkan lagi: buat daftar `VIDEO_CERITA` di `IgilModulePlayer.tsx` (kunci `"mtk-1-bab1-A"` ke `VideoTamanBermain`), lalu tambahkan cabang `videoCerita ? <videoCerita.Video /> : ...` di awal rantai Story. Lihat commit `20d462f`.
+
+Video animasi ini (saat aktif) menggantikan slide gambar pada **Tahap 1: Story** di tab Materi Sub-Bab A (Menghitung, Membaca, dan Menulis Bilangan 0 sampai 10). Sub-Bab B, C, dan D tetap memakai slide cerita masing-masing.
 
 ## 1. Sumber dan cara kerja
 
