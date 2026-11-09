@@ -6,4 +6,5 @@ import type { BabBaru, PaketBab } from "@/components/IgilModulePlayer";
  */
 export const MUAT_BAB_BARU: Partial<Record<BabBaru, () => Promise<{ default: PaketBab }>>> = {
   "mtk-3-bab1": () => import("./paket-k3b1"),
+  "mtk-3-bab2": () => import("./paket-k3b2"),
 };

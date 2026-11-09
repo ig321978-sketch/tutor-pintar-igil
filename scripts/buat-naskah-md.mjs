@@ -72,6 +72,33 @@ const KONFIG = {
   },
 };
 
+// Kelas 3 Bab 2 (Kalimat Matematika): dua sub-bab.
+KONFIG.k3b2 = {
+  kelas: 3,
+  bab: 2,
+  judul: "Kalimat Matematika",
+  buku: "Buku Siswa Matematika Kelas III (Kemendikbudristek, Kurikulum Merdeka, Bab 2 hlm. 75–98) dan Buku Panduan Guru Bab 2",
+  berkas: { A: "sub-a-kalimat-matematika-penjumlahan", B: "sub-b-kalimat-matematika-pengurangan" },
+  metodeLuar: {
+    A: [
+      "**Bagan bagian-keseluruhan (bar model)**: jumlah semua digambar sebagai batang atas dan dua bagian sebagai batang di bawahnya. Batang yang belum diketahui bertanda tanya. Dasar permainan Hitung Bagan dan Jodohkan Bagan dan Kalimat.",
+      "**Operasi kebalikan**: jumlah dikurangi bagian yang diketahui sama dengan bagian yang belum diketahui. Penjumlahan dan pengurangan saling berkaitan, jadi hasilnya diperiksa dengan menjumlahkan lagi.",
+      "**Kumpulan benda berbungkus sepuluh**: kalimat Matematika digambar sebagai kumpulan benda dengan kotak bertanda tanya. Permainan Rakit yang Belum Diketahui memakai penukaran sepuluh-ke-satu.",
+      "**Titik-titik di depan atau di tengah**: Contoh buku memuat 8 + … = 19 dan … + 16 = 54. Permainan Pilah Bagan melatih membedakan letak titik-titik.",
+      "**Banyak kemungkinan (Ayo Berpikir)**: bila hanya jumlahnya yang diketahui, banyak pasangan bilangan mungkin. Permainan Kemungkinan Pasangan Bilangan memakai buku di perpustakaan (100) dan tiket film (95).",
+      "**Pengecoh dari kesalahan umum**: pilihan jawaban memuat salah sepuluh (lupa menyimpan atau meminjam) dan salah satu, serta kalimat yang menukar hasil dengan bilangan yang diketahui.",
+    ],
+    B: [
+      "**Bagan bilangan awal dan bagian**: pada pengurangan, batang atas adalah bilangan awal, dan dua batang di bawahnya adalah bagian yang dikurangkan serta sisa. Dasar permainan Hitung Bagan dan Papan Nilai dari Bagan.",
+      "**Dua arah operasi kebalikan**: mencari bilangan yang dikurangkan dengan mengurangkan bilangan awal dengan sisa (80 − 45 = 35), dan mencari bilangan awal dengan menambahkan (45 + 27 = 72).",
+      "**Kumpulan benda berbungkus sepuluh**: kumpulan awal, bagian yang diambil, dan sisa digambar sebagai kumpulan benda dengan kotak bertanda tanya.",
+      "**Titik-titik di depan atau di tengah**: 32 − … = 15 (titik-titik di tengah) dan … − 12 = 26 (titik-titik di depan) memakai cara berbeda. Permainan Pilah Bagan dan Langkah Menyelesaikan melatihnya.",
+      "**Banyak kemungkinan (Ayo Berpikir)**: telur di pasar (100) dan televisi di toko (40). Bila hanya bilangan awal yang diketahui, ada banyak pasangan terjual dan sisa yang mungkin.",
+      "**Pengecoh dari kesalahan umum**: pilihan jawaban memuat salah sepuluh dan salah satu, serta kalimat yang menukar hasil dengan bilangan yang diketahui atau membalik tanda.",
+    ],
+  },
+};
+
 const kode = process.argv[2];
 if (!kode || !KONFIG[kode]) {
   console.error(`Pakai: node --no-warnings scripts/buat-naskah-md.mjs <${Object.keys(KONFIG).join("|")}>`);
