@@ -302,7 +302,10 @@ export function IsiTabel({ kepala, baris, kartu, petunjuk, onBeres, pesanBeres }
                 key={`${k}-${keliru === k ? "x" : "o"}`}
                 type="button"
                 aria-label={`Kartu ${k}`}
-                disabled={Object.values(terisi).includes(k)}
+                disabled={(() => {
+                  const perlu = baris.filter((b) => b.jawab === k).length;
+                  return perlu > 0 && Object.values(terisi).filter((v) => v === k).length >= perlu;
+                })()}
                 onClick={() => pilihKartu(k)}
                 className={`rounded-2xl border-4 border-[#1C01A5] bg-[#FFE566] px-1 py-2.5 text-base font-black leading-tight text-[#1C01A5] shadow-[0_4px_0_rgba(28,1,165,0.25)] disabled:opacity-35 ${keliru === k ? "igil-goyang" : ""}`}
               >
