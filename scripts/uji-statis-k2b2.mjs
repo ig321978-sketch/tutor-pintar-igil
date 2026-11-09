@@ -40,7 +40,7 @@ cek("pemutar: MATERI_BAB memuat mtk-2-bab2", /"mtk-2-bab2": materiK2Bab2 as unkn
 for (const [kode, kom] of [["A", "VideoPenjumlahanK2B2A"], ["B", "VideoPenguranganK2B2B"], ["C", "VideoSoalCeritaK2B2C"]]) {
   cek(`pemutar: sub-bab ${kode} terpasang dengan video ${kom}`, new RegExp(`"mtk-2-bab2-${kode}":\\s*\\{\\s*Cerita: ${kom}\\b`).test(pemutar));
   cek(`pemutar: sub-bab ${kode} memakai Infografis, Concrete, Picture, Abstract bab 2`, new RegExp(`"mtk-2-bab2-${kode}":[^\\n]*Infografis: InfografisK2B2${kode}Komponen[^\\n]*Concrete: ConcreteK2B2${kode}[^\\n]*Picture: PictureK2B2${kode}[^\\n]*Abstract: AbstractK2B2${kode}`).test(pemutar));
-  cek(`pemutar: sub-bab ${kode} menampilkan uraian peta pikiran`, new RegExp(`"mtk-2-bab2-${kode}":[^\\n]*uraianPeta: true`).test(pemutar));
+  cek(`pemutar: sub-bab ${kode} memasang peta pikiran (Taman Ide, kartu hanya judul)`, new RegExp(`"mtk-2-bab2-${kode}":[^\\n]*peta: PETA_PIKIRAN_K2B2${kode}\\b`).test(pemutar));
 }
 cek("pemutar: bab 2 tidak punya tab Simulasi", !/"mtk-2-bab2":\s*Simulasi/.test(pemutar));
 cek("pemutar: kartu 'sedang disiapkan' untuk Latihan dan Ujian tanpa soal", /soalSiap/.test(pemutar) && /bab ini sedang disiapkan/.test(pemutar));

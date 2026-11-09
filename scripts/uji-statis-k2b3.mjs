@@ -41,7 +41,7 @@ cek("pemutar: MATERI_BAB memuat mtk-2-bab3", /"mtk-2-bab3": materiK2Bab3 as unkn
 for (const [kode, kom] of [["A", "VideoK2B3A"], ["B", "VideoK2B3B"], ["C", "VideoK2B3C"]]) {
   cek(`pemutar: sub-bab ${kode} terpasang dengan video ${kom}`, new RegExp(`"mtk-2-bab3-${kode}":\\s*\\{\\s*Cerita: ${kom}\\b`).test(pemutar));
   cek(`pemutar: sub-bab ${kode} memakai Infografis, Concrete, Picture, Abstract bab 3`, new RegExp(`"mtk-2-bab3-${kode}":[^\\n]*Infografis: InfografisK2B3${kode}Komponen[^\\n]*Concrete: ConcreteK2B3${kode}[^\\n]*Picture: PictureK2B3${kode}[^\\n]*Abstract: AbstractK2B3${kode}`).test(pemutar));
-  cek(`pemutar: sub-bab ${kode} menampilkan uraian peta pikiran`, new RegExp(`"mtk-2-bab3-${kode}":[^\\n]*uraianPeta: true`).test(pemutar));
+  cek(`pemutar: sub-bab ${kode} memasang peta pikiran (Taman Ide, kartu hanya judul)`, new RegExp(`"mtk-2-bab3-${kode}":[^\\n]*peta: PETA_PIKIRAN_K2B3${kode}\\b`).test(pemutar));
 }
 cek("pemutar: bab 3 memakai peta emoji sendiri", /adaK2B3 \? SUB_ANAK_K2B3/.test(pemutar));
 cek("pemutar: bab 3 termasuk bab gaya baru (Latihan terbuka setelah materi)", /adaK2B2 \|\| adaK2B3/.test(pemutar));

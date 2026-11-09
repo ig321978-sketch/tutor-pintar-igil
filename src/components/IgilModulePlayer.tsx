@@ -216,6 +216,7 @@ import GambarPensilCerita from "@/components/GambarPensilCerita";
 import { IkonMainan } from "@/components/modul/ikon-mainan";
 import { CeritaBandingB } from "@/components/modul/CeritaBandingB";
 import { PetaPikiranB } from "@/components/modul/PetaPikiranB";
+import { PetaPikiranK2 } from "@/components/modul/PetaPikiranK2";
 import { CeritaMajuMundurC, KatakWajah } from "@/components/modul/gambar-maju-mundur-c";
 import { CeritaBilanganA, KelinciWajah } from "@/components/modul/gambar-bilangan-a";
 import { CeritaPasanganD, PETA_PIKIRAN_D, TupaiWajah } from "@/components/modul/gambar-pasangan-d";
@@ -496,24 +497,22 @@ const MODUL_SUBBAB: Record<
     Concrete: ComponentType<PropsTahapBaru>;
     Picture: ComponentType<PropsTahapBaru>;
     Abstract: ComponentType<PropsTahapBaru>;
-    /** Tampilkan uraian tiap langkah peta pikiran di layar (bukan hanya lewat suara). */
-    uraianPeta?: boolean;
   }
 > = {
   "mtk-2-bab1-A": { Cerita: VideoHitungK2A, peta: PETA_PIKIRAN_K2A, Infografis: InfografisHitungK2A, Concrete: ConcreteHitungK2A, Picture: PictureHitungK2A, Abstract: AbstractHitungK2A },
   "mtk-2-bab1-B": { Cerita: VideoNilaiK2B, peta: PETA_PIKIRAN_K2B, Infografis: InfografisNilaiK2B, Concrete: ConcreteNilaiK2B, Picture: PictureNilaiK2B, Abstract: AbstractNilaiK2B },
   "mtk-2-bab1-C": { Cerita: VideoBandingK2C, peta: PETA_PIKIRAN_K2C, Infografis: InfografisBandingK2C, Concrete: ConcreteBandingK2C, Picture: PictureBandingK2C, Abstract: AbstractBandingK2C },
-  "mtk-2-bab2-A": { Cerita: VideoPenjumlahanK2B2A, peta: PETA_PIKIRAN_K2B2A, Infografis: InfografisK2B2AKomponen, Concrete: ConcreteK2B2A, Picture: PictureK2B2A, Abstract: AbstractK2B2A, uraianPeta: true },
-  "mtk-2-bab2-B": { Cerita: VideoPenguranganK2B2B, peta: PETA_PIKIRAN_K2B2B, Infografis: InfografisK2B2BKomponen, Concrete: ConcreteK2B2B, Picture: PictureK2B2B, Abstract: AbstractK2B2B, uraianPeta: true },
-  "mtk-2-bab2-C": { Cerita: VideoSoalCeritaK2B2C, peta: PETA_PIKIRAN_K2B2C, Infografis: InfografisK2B2CKomponen, Concrete: ConcreteK2B2C, Picture: PictureK2B2C, Abstract: AbstractK2B2C, uraianPeta: true },
-  "mtk-2-bab3-A": { Cerita: VideoK2B3A, peta: PETA_PIKIRAN_K2B3A, Infografis: InfografisK2B3AKomponen, Concrete: ConcreteK2B3A, Picture: PictureK2B3A, Abstract: AbstractK2B3A, uraianPeta: true },
-  "mtk-2-bab3-B": { Cerita: VideoK2B3B, peta: PETA_PIKIRAN_K2B3B, Infografis: InfografisK2B3BKomponen, Concrete: ConcreteK2B3B, Picture: PictureK2B3B, Abstract: AbstractK2B3B, uraianPeta: true },
-  "mtk-2-bab3-C": { Cerita: VideoK2B3C, peta: PETA_PIKIRAN_K2B3C, Infografis: InfografisK2B3CKomponen, Concrete: ConcreteK2B3C, Picture: PictureK2B3C, Abstract: AbstractK2B3C, uraianPeta: true },
-  "mtk-2-bab4-A": { Cerita: VideoK2B4A, peta: PETA_PIKIRAN_K2B4A, Infografis: InfografisK2B4AKomponen, Concrete: ConcreteK2B4A, Picture: PictureK2B4A, Abstract: AbstractK2B4A, uraianPeta: true },
-  "mtk-2-bab4-B": { Cerita: VideoK2B4B, peta: PETA_PIKIRAN_K2B4B, Infografis: InfografisK2B4BKomponen, Concrete: ConcreteK2B4B, Picture: PictureK2B4B, Abstract: AbstractK2B4B, uraianPeta: true },
-  "mtk-2-bab5-A": { Cerita: VideoK2B5A, peta: PETA_PIKIRAN_K2B5A, Infografis: InfografisK2B5AKomponen, Concrete: ConcreteK2B5A, Picture: PictureK2B5A, Abstract: AbstractK2B5A, uraianPeta: true },
-  "mtk-2-bab5-B": { Cerita: VideoK2B5B, peta: PETA_PIKIRAN_K2B5B, Infografis: InfografisK2B5BKomponen, Concrete: ConcreteK2B5B, Picture: PictureK2B5B, Abstract: AbstractK2B5B, uraianPeta: true },
-  "mtk-2-bab5-C": { Cerita: VideoK2B5C, peta: PETA_PIKIRAN_K2B5C, Infografis: InfografisK2B5CKomponen, Concrete: ConcreteK2B5C, Picture: PictureK2B5C, Abstract: AbstractK2B5C, uraianPeta: true },
+  "mtk-2-bab2-A": { Cerita: VideoPenjumlahanK2B2A, peta: PETA_PIKIRAN_K2B2A, Infografis: InfografisK2B2AKomponen, Concrete: ConcreteK2B2A, Picture: PictureK2B2A, Abstract: AbstractK2B2A },
+  "mtk-2-bab2-B": { Cerita: VideoPenguranganK2B2B, peta: PETA_PIKIRAN_K2B2B, Infografis: InfografisK2B2BKomponen, Concrete: ConcreteK2B2B, Picture: PictureK2B2B, Abstract: AbstractK2B2B },
+  "mtk-2-bab2-C": { Cerita: VideoSoalCeritaK2B2C, peta: PETA_PIKIRAN_K2B2C, Infografis: InfografisK2B2CKomponen, Concrete: ConcreteK2B2C, Picture: PictureK2B2C, Abstract: AbstractK2B2C },
+  "mtk-2-bab3-A": { Cerita: VideoK2B3A, peta: PETA_PIKIRAN_K2B3A, Infografis: InfografisK2B3AKomponen, Concrete: ConcreteK2B3A, Picture: PictureK2B3A, Abstract: AbstractK2B3A },
+  "mtk-2-bab3-B": { Cerita: VideoK2B3B, peta: PETA_PIKIRAN_K2B3B, Infografis: InfografisK2B3BKomponen, Concrete: ConcreteK2B3B, Picture: PictureK2B3B, Abstract: AbstractK2B3B },
+  "mtk-2-bab3-C": { Cerita: VideoK2B3C, peta: PETA_PIKIRAN_K2B3C, Infografis: InfografisK2B3CKomponen, Concrete: ConcreteK2B3C, Picture: PictureK2B3C, Abstract: AbstractK2B3C },
+  "mtk-2-bab4-A": { Cerita: VideoK2B4A, peta: PETA_PIKIRAN_K2B4A, Infografis: InfografisK2B4AKomponen, Concrete: ConcreteK2B4A, Picture: PictureK2B4A, Abstract: AbstractK2B4A },
+  "mtk-2-bab4-B": { Cerita: VideoK2B4B, peta: PETA_PIKIRAN_K2B4B, Infografis: InfografisK2B4BKomponen, Concrete: ConcreteK2B4B, Picture: PictureK2B4B, Abstract: AbstractK2B4B },
+  "mtk-2-bab5-A": { Cerita: VideoK2B5A, peta: PETA_PIKIRAN_K2B5A, Infografis: InfografisK2B5AKomponen, Concrete: ConcreteK2B5A, Picture: PictureK2B5A, Abstract: AbstractK2B5A },
+  "mtk-2-bab5-B": { Cerita: VideoK2B5B, peta: PETA_PIKIRAN_K2B5B, Infografis: InfografisK2B5BKomponen, Concrete: ConcreteK2B5B, Picture: PictureK2B5B, Abstract: AbstractK2B5B },
+  "mtk-2-bab5-C": { Cerita: VideoK2B5C, peta: PETA_PIKIRAN_K2B5C, Infografis: InfografisK2B5CKomponen, Concrete: ConcreteK2B5C, Picture: PictureK2B5C, Abstract: AbstractK2B5C },
 };
 
 const DAFTAR_MAINAN = [
@@ -2008,12 +2007,11 @@ export default function IgilModulePlayer({ bab = "mtk-1-bab1" }: { bab?: BabModu
               </div>
 
               {modulBaru ? (
-                <PetaPikiranB
+                <PetaPikiranK2
                   langkah={modulBaru.peta}
                   judul={judulSubBab}
                   speakGuru={speakGuru}
-                  uraian={modulBaru.uraianPeta}
-                  maskot={<IgilWajah kelas="h-14 w-20 igil-lompat" />}
+                  maskot={<IgilWajah kelas="h-8 w-12" />}
                 />
               ) : subC2 ? (
                 <PetaPikiranB

@@ -91,7 +91,7 @@ function tulis(s) {
   L.push("| Tahap | Isi | Banyak butir |");
   L.push("|---|---|---|");
   L.push(`| S. Story | Video animasi HTML/SVG satu layar seperti Kelas 2 Bab 1: tiga cerita disusun berurutan dalam satu pemutar, mulai saat Mulai diketuk (tidak ada putar otomatis) | ${s.videos.length} cerita, ${jumlahAdegan} adegan, ${jumlahKetukan} ketukan |`);
-  L.push(`| M. Mind-Map | Peta pikiran berurutan, tiap cabang bisa diketuk dan uraiannya tampil di layar | ${s.mindMaps.length} langkah |`);
+  L.push(`| M. Mind-Map | Peta pikiran "Taman Ide": matahari berwajah Igil di tengah, kartu bernomor di kiri dan kanan dengan cabang berwarna. Kartu hanya memuat ikon dan judul, uraiannya dibacakan Suara Guru saat kartu diketuk | ${s.mindMaps.length} langkah |`);
   L.push(`| I. Infografis | Poster rangkuman, suara di tiap panel | ${s.infografis.length} panel |`);
   L.push(`| C. Concrete | Benda nyata yang diseret, ditemukan, dirangkai, disusun, dan ditirukan | ${s.games.filter((g) => g.stage === "Concrete").length} permainan |`);
   L.push(`| P. Picture | Diagram polos: peta kotak, lingkaran dan persegi, bangun polos, dan barisan bangun | ${s.games.filter((g) => g.stage === "Picture").length} permainan |`);
@@ -116,6 +116,8 @@ function tulis(s) {
     });
   });
   L.push("## 5. Tahap 2: Mind-Map (peta pikiran)");
+  L.push("");
+  L.push("Tampilan \"Taman Ide\": matahari berwajah Igil di tengah, kartu bernomor di kiri dan kanan dihubungkan cabang berwarna. Setiap kartu hanya memuat nomor, ikon, dan judul langkah. Uraian di bawah dibacakan Suara Guru saat kartu diketuk dan tidak tampil di layar.");
   L.push("");
   s.mindMaps.forEach((m) => {
     L.push(`**${m.stepTitle}** ${m.icon}  `);
