@@ -1,5 +1,5 @@
 // Uji statis Matematika Kelas 2 Bab 4, Posisi Benda dan Pola (Materi saja). Jalankan: node --no-warnings scripts/uji-statis-k2b4.mjs
-// Memeriksa: pemasangan di pemutar, video diputar satu per satu saat diketuk (tanpa putar otomatis), suara perangkat murni
+// Memeriksa: pemasangan di pemutar, video satu layar seperti Kelas 2 Bab 1 (tanpa putar otomatis, mulai saat Mulai diketuk), suara perangkat murni
 // (laju 0,70 dan nada 1), tanpa jaringan dan tanpa layanan suara berbayar, tanpa soal Latihan/Ujian dan tanpa simulasi,
 // batas Concrete dan Picture (benda hanya di Concrete, diagram polos di Picture), dan seluruh komponen permainan terpasang.
 import fs from "node:fs";
@@ -55,10 +55,11 @@ cek("suara: jalur perangkatSaja tidak memanggil layanan suara berbayar", /if \(o
 const pola = baca("src/components/modul/pola-k2b4.tsx");
 cek("bunyi tepuk: WebAudio perangkat, tanpa berkas audio dan tanpa jaringan", /AudioContext/.test(pola) && !/new Audio\(|\.mp3|\.wav|audio-guru/.test(pola));
 
-/* ---- Video: satu per satu saat diketuk ---- */
-cek("video: mesin punya mulaiLangsung bawaan false", /mulaiLangsung = false/.test(mesinVideo));
-cek("video: video tidak berjalan sebelum Putar (mulaiLangsung hanya di cabang aktif)", /aktif === v\.naskah\.id \?[\s\S]*mulaiLangsung/.test(umumB2) && (umumB2.match(/mulaiLangsung/g) ?? []).length === 1);
-cek("video: hanya satu video aktif (state tunggal)", /useState<string \| null>\(null\)/.test(umumB2));
+/* ---- Video: satu layar seperti Kelas 2 Bab 1, tidak berjalan sebelum Mulai ---- */
+cek("video: mesin tanpa mode putar otomatis (tidak ada mulaiLangsung)", !/mulaiLangsung/.test(mesinVideo));
+cek("video: mesin menunggu tombol Mulai (sudahMulai awalnya salah)", /const \[sudahMulai, setSudahMulai\] = useState\(false\)/.test(mesinVideo) && /onClick=\{\(\) => mulai\(0\)\}/.test(mesinVideo));
+cek("video: satu pemutar VideoCerita per sub-bab dengan empat properti seperti Bab 1", (umumB2.match(/<VideoCerita\b/g) ?? []).length === 1 && /<VideoCerita judul=\{judul\} subjudul=\{.*\} adegan=\{adegan\} speakGuru=\{speakGuru\} \/>/.test(umumB2));
+cek("video: tidak ada lagi daftar kartu video", !/DaftarVideoCerita|useState<string \| null>/.test(umumB2));
 for (const [kode, berkas] of [["A", "video-k2b4a.tsx"], ["B", "video-k2b4b.tsx"]]) {
   const t = baca(`src/components/modul/${berkas}`);
   const s = N.SUB_BAB_K2B4.find((x) => x.id === kode);
@@ -67,8 +68,10 @@ for (const [kode, berkas] of [["A", "video-k2b4a.tsx"], ["B", "video-k2b4b.tsx"]
   cek(`video ${kode}: tiga video`, s.videos.length === 3);
   cek(`video ${kode}: adegan memakai papan naskah`, (t.match(/papan\(\d, \d\)\[k\]/g) ?? []).length === 9, `ada ${(t.match(/papan\(\d, \d\)\[k\]/g) ?? []).length}`);
   cek(`video ${kode}: satu sumber naskah`, t.includes(`SUB_${kode}4.videos`));
-  cek(`video ${kode}: memakai DaftarVideoCerita`, /DaftarVideoCerita/.test(t));
-  /* Setiap adegan hanya menyebut ketukan yang ada, dan poster menunjuk adegan dan ketukan yang ada. */
+  cek(`video ${kode}: memakai VideoCeritaSatuLayar dengan sub-bab sendiri`, new RegExp(`<VideoCeritaSatuLayar subBab=\\{SUB_${kode}4\\} videos=\\{VIDEO_SIAP_`).test(t));
+  cek(`video ${kode}: id adegan unik dalam satu layar`, new Set(adegan.map((a) => a.id)).size === adegan.length);
+  cek(`video ${kode}: tanpa poster kartu`, !/POSTER|poster:/.test(t));
+  /* Setiap adegan hanya menyebut ketukan yang ada. */
   s.videos.forEach((v, vi) =>
     v.adegan.forEach((a, ai) => {
       const nama = `${kode}${vi + 1}_${ai + 1}`;
@@ -82,12 +85,6 @@ for (const [kode, berkas] of [["A", "video-k2b4a.tsx"], ["B", "video-k2b4b.tsx"]
       cek(`video ${kode}: ${nama} bereaksi terhadap ketukan`, /\bk\b/.test(badan.replace(/papan\(\d, \d\)\[k\]/g, "")));
     }),
   );
-  const poster = [...t.matchAll(/\{ a: (\d+), k: (\d+) \}/g)].map((m) => ({ a: Number(m[1]), k: Number(m[2]) }));
-  cek(`video ${kode}: tiga poster`, poster.length === 3);
-  poster.forEach((p, vi) => {
-    const a = s.videos[vi]?.adegan[p.a];
-    cek(`video ${kode}: poster ${vi + 1} menunjuk adegan dan ketukan yang ada`, !!a && p.k < a.ketukan.length);
-  });
 }
 for (const s of N.SUB_BAB_K2B4) for (const v of s.videos) for (const a of v.adegan) cek(`${a.id}: ketukan sama dengan papan`, a.ketukan.length === a.papan.length);
 

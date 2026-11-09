@@ -9,11 +9,11 @@ import { BendaPotongG, ItemG, jalur } from "./dasar-k2b5";
 /* ------------------------------------------------------------------------ */
 /* Bagian gambar SVG bersama video cerita Kelas 2 Bab 5 (Pecahan). Semua       */
 /* ditaruh di kotak adegan 300 x 208 yang sudah berlatar langit dan rumput.    */
-/* Mesin video (DaftarVideoCerita, buatAdegan) dipakai dari video-k2b2-umum.   */
+/* Mesin video (VideoCeritaSatuLayar, buatAdegan) dipakai dari video-k2b2-umum.   */
 /* Tanpa API, tanpa berkas video.                                              */
 /* ------------------------------------------------------------------------ */
 
-export { buatAdegan, DaftarVideoCerita, KartuTeks, Teks, type VideoSiap } from "./video-k2b2-umum";
+export { buatAdegan, VideoCeritaSatuLayar, KartuTeks, Teks, type VideoSiap } from "./video-k2b2-umum";
 export { BIRU, EMAS };
 export const MERAH = "#E53E3E";
 export const V: Garis = [[50, 0], [50, 100]];

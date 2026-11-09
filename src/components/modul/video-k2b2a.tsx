@@ -6,7 +6,7 @@ import { IgilWajahIsi, Lencana } from "./gambar-cara-b2";
 import { Label } from "./gambar-nilai-k2b";
 import { Tokoh } from "./gambar-maju-mundur-c";
 import { Gerak, Lompat, Muncul, Papan, Sorot, tumbuh, type PropsAdegan } from "./video-cerita";
-import { BondSvg, BIRU_SOAL, buatAdegan, DaftarVideoCerita, JalurSvg, JambuBaris, KartuTeks, KeranjangSvg, MERAH, PohonJambu, TabelSvg, Teks, type VideoSiap } from "./video-k2b2-umum";
+import { BondSvg, BIRU_SOAL, buatAdegan, VideoCeritaSatuLayar, JalurSvg, JambuBaris, KartuTeks, KeranjangSvg, MERAH, PohonJambu, TabelSvg, Teks, type VideoSiap } from "./video-k2b2-umum";
 import { SUB_A } from "./naskah-k2b2";
 
 /* ------------------------------------------------------------------------ */
@@ -408,14 +408,8 @@ export const ADEGAN_VIDEO_K2B2A = SUB_A.videos.map((v, vi) =>
   }),
 );
 
-const POSTER: { a: number; k: number }[] = [
-  { a: 0, k: 2 },
-  { a: 0, k: 4 },
-  { a: 1, k: 6 },
-];
-
-export const VIDEO_SIAP_K2B2A: VideoSiap[] = SUB_A.videos.map((v, i) => ({ naskah: v, adegan: ADEGAN_VIDEO_K2B2A[i], poster: POSTER[i] }));
+export const VIDEO_SIAP_K2B2A: VideoSiap[] = SUB_A.videos.map((v, i) => ({ naskah: v, adegan: ADEGAN_VIDEO_K2B2A[i] }));
 
 export function VideoPenjumlahanK2B2A({ speakGuru }: { speakGuru: (teks: string, selesai?: () => void) => void }) {
-  return <DaftarVideoCerita videos={VIDEO_SIAP_K2B2A} speakGuru={speakGuru} />;
+  return <VideoCeritaSatuLayar subBab={SUB_A} videos={VIDEO_SIAP_K2B2A} speakGuru={speakGuru} />;
 }
