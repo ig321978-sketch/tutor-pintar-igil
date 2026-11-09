@@ -6,7 +6,7 @@ Video animasi ini menggantikan slide gambar pada **Tahap 1: Story** di tab Mater
 
 - **Sumber:** animasi HTML/SVG gratis `di-taman-bermain.html` (karya gratis, tanpa layanan video berbayar), dipindahkan menjadi komponen React `src/components/modul/VideoTamanBermain.tsx`.
 - **Berjalan di perangkat siswa.** Latar, anak, benda, dan gerakan digambar dengan SVG dan CSS. Tidak ada berkas video, tidak ada panggilan API, tidak ada panggilan AI.
-- **Suara Guru murni Web Speech API perangkat** (`id-ID`), memakai guru pilihan siswa (Bu Sari atau Pak Budi). Tidak mencari berkas audio statis, tidak memakai ElevenLabs, dan tidak mencatat ucapan ke naskah penulisan (opsi `perangkatSaja`).
+- **Suara Guru murni Web Speech API perangkat** lewat jalur suara seragam (`id-ID`, laju 0,85, nada lembut), memakai guru pilihan siswa (Bu Sari atau Pak Budi). Tidak mencari berkas audio statis, tidak memakai ElevenLabs, dan tidak mencatat ucapan ke naskah penulisan. Aturan lengkap: `naskah/suara-guru-seragam-pilot.md`.
 - **Pemasangan:** `VIDEO_CERITA["mtk-1-bab1-A"]` di `IgilModulePlayer.tsx`. Sub-bab lain bisa diberi video yang sama caranya: buat komponen, lalu daftarkan dengan kunci `<bab>-<sub-bab>`.
 
 ## 2. Alur video (7 bagian)

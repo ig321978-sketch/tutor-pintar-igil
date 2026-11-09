@@ -36,7 +36,8 @@ export default function PilihGuru({
               aria-pressed={aktif}
               onClick={() => {
                 onGanti(guru.kelamin);
-                ucapkanGuruModul(naskahPerkenalanGuru(guru), { kelas, kelamin: guru.kelamin });
+                // Pilot suara seragam: contoh suara Kelas 1 sama dengan suara di Materi Kelas 1 Bab 1 Sub-Bab A.
+                ucapkanGuruModul(naskahPerkenalanGuru(guru), { kelas, kelamin: guru.kelamin, seragam: kelas === "1 SD" });
               }}
               className={`flex w-full items-center gap-4 rounded-2xl border-2 p-4 text-left transition-all ${
                 aktif

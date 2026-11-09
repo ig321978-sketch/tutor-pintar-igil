@@ -24,6 +24,7 @@ import { CeritaNilaiK2B, PETA_PIKIRAN_K2B } from "@/components/modul/gambar-nila
 import { AbstractHitungK2A, ConcreteHitungK2A, InfografisHitungK2A, PictureHitungK2A } from "@/components/modul/SubBabK2AHitung";
 import { AbstractNilaiK2B, ConcreteNilaiK2B, InfografisNilaiK2B, PictureNilaiK2B } from "@/components/modul/SubBabK2BNilai";
 import { VideoTamanBermain } from "@/components/modul/VideoTamanBermain";
+import { InfoSuaraGuru } from "@/components/modul/InfoSuaraGuru";
 import { CeritaBandingK2C, PETA_PIKIRAN_K2C } from "@/components/modul/gambar-banding-k2c";
 import { AbstractBandingK2C, ConcreteBandingK2C, InfografisBandingK2C, PictureBandingK2C } from "@/components/modul/SubBabK2CBanding";
 import { CeritaDataB, PETA_PIKIRAN_B8 } from "@/components/modul/gambar-data-b8";
@@ -1145,6 +1146,10 @@ export default function IgilModulePlayer({ bab = "mtk-1-bab1" }: { bab?: BabModu
 
   const lepasJedaCerita = useRef<(() => void) | null>(null);
 
+  // PILOT suara seragam: Materi Kelas 1 Bab 1 Sub-Bab A saja. Semua pemutar suara di sana memakai satu jalur
+  // (Web Speech API id-ID, laju 0,85, nada lembut) dengan guru pilihan siswa. Bagian lain tidak berubah.
+  const suaraSeragam = bab === "mtk-1-bab1" && activeSubBab === "A" && activeMainTab === "materi";
+
   const speakGuru = useCallback((text: string, selesai?: () => void) => {
     const naskah = text.replace(/\s+/g, " ").trim();
     if (!naskah || typeof window === "undefined") return;
@@ -1159,6 +1164,7 @@ export default function IgilModulePlayer({ bab = "mtk-1-bab1" }: { bab?: BabModu
     ucapkanGuruModul(naskah, {
       kelas: materi.suaraPerangkatSaja ? "2 SD" : "1 SD",
       perangkatSaja: materi.suaraPerangkatSaja === true,
+      seragam: suaraSeragam,
       selesai: selesai
         ? () => {
             if (giliran !== giliranSuara.current) return;
@@ -1168,7 +1174,7 @@ export default function IgilModulePlayer({ bab = "mtk-1-bab1" }: { bab?: BabModu
           }
         : undefined,
     });
-  }, [materi.suaraPerangkatSaja]);
+  }, [materi.suaraPerangkatSaja, suaraSeragam]);
 
   useEffect(() => {
     window.speechSynthesis?.getVoices();
@@ -1806,6 +1812,7 @@ export default function IgilModulePlayer({ bab = "mtk-1-bab1" }: { bab?: BabModu
           {/* --------------------------------------------------------------- */}
           {/* SLIDED COMPONENT 1: STORY (3 GAMBAR DOODLE BERWARNA • TANPA TEKS) */}
           {/* --------------------------------------------------------------- */}
+          {suaraSeragam ? <InfoSuaraGuru /> : null}
           <div className="space-y-3 border-b-2 border-slate-200 pb-6">
             <div className="flex items-center justify-between">
               <span className="px-3 py-1 rounded-full bg-[#FEE2E2] text-[#991B1B] font-black text-xs">

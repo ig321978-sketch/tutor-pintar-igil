@@ -6,6 +6,7 @@ import {
 } from "@/lib/guru";
 import { bacaProgres } from "@/lib/progres";
 import { mintaAudioTts, hentikanAudioGuruAktif, saatHentiAudioGuru } from "@/lib/putar-tts-klien";
+import { SUARA_SERAGAM, pecahKalimat, pilihSuaraSeragam, type PilihanSuara } from "@/lib/suara-guru-seragam";
 
 /**
  * Suara Guru di dalam Materi modul.
@@ -91,7 +92,46 @@ export type OpsiSuaraGuruModul = {
    * ucapan ke naskah penulisan, jadi tidak pernah memakai kuota layanan suara berbayar.
    */
   perangkatSaja?: boolean;
+  /**
+   * Suara seragam (pilot Materi Kelas 1 Bab 1 Sub-Bab A): Web Speech API perangkat dengan parameter tetap
+   * (id-ID, laju 0,85, nada 1,1 untuk wanita) dan pemilihan suara yang pasti, selalu sesuai guru pilihan siswa.
+   * Mengabaikan berkas audio statis dan profil laju/nada guru lama.
+   */
+  seragam?: boolean;
 };
+
+/** Suara dan parameter yang akan dipakai guru `kelamin` di perangkat ini. Untuk tampilan info dan uji. */
+export function pilihanSuaraSeragamSaatIni(kelamin: KelaminGuru = kelaminGuruTersimpan()): PilihanSuara<SpeechSynthesisVoice> {
+  const daftar = typeof window !== "undefined" && "speechSynthesis" in window ? window.speechSynthesis.getVoices() : [];
+  return pilihSuaraSeragam(daftar, kelamin);
+}
+
+/** Satu ucapan seragam: bahasa, laju, nada, dan suara mengikuti guru terpilih. */
+function buatUcapanSeragam(teks: string, kelamin: KelaminGuru): SpeechSynthesisUtterance {
+  const pilihan = pilihanSuaraSeragamSaatIni(kelamin);
+  const ucapan = new SpeechSynthesisUtterance(teks);
+  ucapan.lang = SUARA_SERAGAM.bahasa;
+  ucapan.rate = pilihan.laju;
+  ucapan.pitch = pilihan.nada;
+  if (pilihan.suara) ucapan.voice = pilihan.suara;
+  return ucapan;
+}
+
+/** Daftar suara perangkat sering kosong di panggilan pertama. Tunggu sebentar supaya ucapan pertama tidak memakai suara lain. */
+function tungguSuaraSiap(maksMs = 1200): Promise<void> {
+  return new Promise((lanjut) => {
+    const mesin = window.speechSynthesis;
+    let beres = false;
+    const selesai = () => {
+      if (beres) return;
+      beres = true;
+      mesin.removeEventListener("voiceschanged", selesai);
+      lanjut();
+    };
+    mesin.addEventListener("voiceschanged", selesai);
+    window.setTimeout(selesai, maksMs);
+  });
+}
 
 /**
  * Ucapkan `teks` dengan guru terpilih. Ucapan sebelumnya dihentikan.
@@ -132,6 +172,35 @@ export function ucapkanGuruModul(teks: string, opsi: OpsiSuaraGuruModul = {}): v
       window.speechSynthesis.speak(ucapan);
     }, 40);
   };
+
+  if (opsi.seragam) {
+    const bicaraSeragam = async () => {
+      if (saya !== giliran || tutup) return;
+      if (!("speechSynthesis" in window)) {
+        selesai();
+        return;
+      }
+      if (window.speechSynthesis.getVoices().length === 0) await tungguSuaraSiap();
+      if (saya !== giliran || tutup) return;
+      const potongan = pecahKalimat(naskah);
+      let i = 0;
+      const lanjut = () => {
+        if (saya !== giliran || tutup) return;
+        if (i >= potongan.length) {
+          selesai();
+          return;
+        }
+        const ucapan = buatUcapanSeragam(potongan[i], kelamin);
+        i += 1;
+        ucapan.onend = lanjut;
+        ucapan.onerror = selesai;
+        window.speechSynthesis.speak(ucapan);
+      };
+      window.setTimeout(lanjut, 40);
+    };
+    void bicaraSeragam();
+    return;
+  }
 
   if (opsi.perangkatSaja) {
     cadangan();

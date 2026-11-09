@@ -10,9 +10,10 @@ import { IkonMainan } from "./ikon-mainan";
 /*                                                                            */
 /* Sumber: animasi HTML/SVG gratis di-taman-bermain.html, dipindahkan menjadi  */
 /* komponen React. Semua berjalan di perangkat siswa: tanpa video berbayar,    */
-/* tanpa panggilan API, tanpa berkas audio. Suara memakai Web Speech API       */
-/* perangkat (id-ID) dengan guru pilihan siswa. Naskah: naskah/mtk-1-bab1-     */
-/* video-taman-bermain.md                                                      */
+/* tanpa panggilan API, tanpa berkas audio. Suara memakai jalur suara seragam  */
+/* (Web Speech API id-ID, laju 0,85, nada lembut) dengan guru pilihan siswa,   */
+/* sama dengan semua pemutar suara lain di Materi Sub-Bab A. Naskah:           */
+/* naskah/mtk-1-bab1-video-taman-bermain.md                                    */
 /* ------------------------------------------------------------------------ */
 
 const BIRU = "#1C01A5";
@@ -168,7 +169,7 @@ export function VideoTamanBermain() {
         if (!jedaRef.current) berlalu += 200;
         if (berlalu > kalimat.length * 150 + 6000) tutup();
       }, 200);
-      ucapkanGuruModul(kalimat, { kelas: "1 SD", perangkatSaja: true, selesai: tutup });
+      ucapkanGuruModul(kalimat, { kelas: "1 SD", seragam: true, selesai: tutup });
     });
   }, []);
 

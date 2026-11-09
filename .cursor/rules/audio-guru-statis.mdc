@@ -15,3 +15,4 @@ Siswa **tidak pernah** memanggil ElevenLabs atau layanan suara berbayar lain. Pr
 - Format MP3 ringan (`mp3_22050_32`, sekitar 4 KB per detik). Jangan menyimpan WAV mentah.
 - Ucapan yang berubah mengikuti keadaan (angka, hasil simulasi, kalimat umpan balik dinamis) tidak dibuat statis. Biarkan jatuh ke suara perangkat.
 - `/audio-guru/*` dikecualikan dari middleware pengunci situs dan di-cache `immutable`. Manifest di-cache pendek (5 menit).
+- **Pilot suara seragam (pengecualian):** Materi Matematika Kelas 1 Bab 1 Sub-Bab A tidak memakai berkas statis. Semua pemutar di sana memakai jalur `seragam: true` pada `ucapkanGuruModul` (Web Speech `id-ID`, laju 0,85, nada 1,1, suara dipilih pasti, guru mengikuti PILIH GURU PENGAJAR). Jangan mengembalikan bagian itu ke berkas statis tanpa izin pemilik. Aturan lengkap: `naskah/suara-guru-seragam-pilot.md`.
