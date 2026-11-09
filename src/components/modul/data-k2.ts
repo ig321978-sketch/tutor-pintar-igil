@@ -10,6 +10,7 @@ const SATUAN = ["nol", "satu", "dua", "tiga", "empat", "lima", "enam", "tujuh", 
 
 /** Nama bilangan cacah 0 sampai 999 dalam huruf kecil. Contoh: 26 menjadi "dua puluh enam". */
 export function namaBilangan(n: number): string {
+  if (!Number.isFinite(n)) return "";
   const x = Math.max(0, Math.min(999, Math.floor(n)));
   if (x < 10) return SATUAN[x];
   if (x === 10) return "sepuluh";

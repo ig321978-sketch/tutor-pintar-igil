@@ -52,11 +52,14 @@ export function PetaPikiranB({
   judul,
   speakGuru,
   maskot,
+  uraian = false,
 }: {
   langkah: LangkahPeta[];
   judul: string;
   speakGuru: (teks: string) => void;
   maskot?: React.ReactNode;
+  /** Tampilkan uraian tiap langkah di layar, selain dibacakan. Dipakai bab dengan materi mendalam. */
+  uraian?: boolean;
 }) {
   const [didengar, setDidengar] = useState<number[]>([]);
   const semua = didengar.length >= langkah.length;
@@ -119,6 +122,7 @@ export function PetaPikiranB({
                 <span className="block text-base font-black leading-tight text-[#1C01A5]">
                   {l.stepTitle.replace(/^\d+\.\s*/, "")}
                 </span>
+                {uraian ? <span className="block text-left text-[13px] font-semibold leading-snug text-slate-700">{l.stepDesc}</span> : null}
                 {sudah ? (
                   <span className="inline-block rounded-full border-2 border-[#16A34A] bg-[#DCFCE7] px-2 py-0.5 text-base font-black text-[#166534]">
                     ✔
@@ -144,7 +148,7 @@ export function PetaPikiranB({
           semua ? "igil-muncul border-[#7FCB96] bg-[#E8F7EE] text-[#14532D]" : "border-dashed border-[#1C01A5]/40 bg-white/80 text-[#1C01A5]"
         }`}
       >
-        {semua ? "🌟 Hebat!" : "⭐ ⭐ ⭐ ⭐"}
+        {semua ? "🌟 Hebat!" : uraian ? Array.from({ length: langkah.length }, () => "⭐").join(" ") : "⭐ ⭐ ⭐ ⭐"}
       </p>
     </BingkaiTahap>
   );

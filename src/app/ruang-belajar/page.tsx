@@ -18,6 +18,7 @@ import {
   JUDUL_MTK_1_BAB7,
   JUDUL_MTK_1_BAB8,
   JUDUL_MTK_2_BAB1,
+  JUDUL_MTK_2_BAB2,
   JUDUL_MTK_4_BAB2,
   JUDUL_MTK_5_BAB8,
   JUDUL_MTK_6_BAB1,
@@ -264,7 +265,7 @@ export default function RuangBelajarPage() {
             [JUDUL_MTK_1_BAB8]: "/ruang-belajar/mtk-1-bab8",
           }
         : kelas === "2 SD"
-          ? { [JUDUL_MTK_2_BAB1]: "/ruang-belajar/mtk-2-bab1" }
+          ? { [JUDUL_MTK_2_BAB1]: "/ruang-belajar/mtk-2-bab1", [JUDUL_MTK_2_BAB2]: "/ruang-belajar/mtk-2-bab2" }
           : kelas === "4 SD"
             ? { [JUDUL_MTK_4_BAB2]: "/ruang-belajar/mtk-4-bab2" }
             : kelas === "5 SD"
@@ -306,8 +307,8 @@ export default function RuangBelajarPage() {
       judul="📚 Ruang Belajar"
       subjudul={
         kunciPublik
-          ? "Matematika kelas 1 SD Bab 1–8, kelas 2 SD Bab 1, kelas 4 SD Bab 2, kelas 5 SD Bab 8, serta kelas 6 SD Bab 1 dan Bab 3 sudah siap di perangkat ini."
-          : "Bab 1–8 Matematika kelas 1, Bab 1 kelas 2, Bab 2 kelas 4, Bab 8 kelas 5, serta Bab 1 dan Bab 3 kelas 6 sudah terpasang."
+          ? "Matematika kelas 1 SD Bab 1–8, kelas 2 SD Bab 1 dan Bab 2, kelas 4 SD Bab 2, kelas 5 SD Bab 8, serta kelas 6 SD Bab 1 dan Bab 3 sudah siap di perangkat ini."
+          : "Bab 1–8 Matematika kelas 1, Bab 1 dan Bab 2 kelas 2, Bab 2 kelas 4, Bab 8 kelas 5, serta Bab 1 dan Bab 3 kelas 6 sudah terpasang."
       }
     >
       <section className="grid gap-6">

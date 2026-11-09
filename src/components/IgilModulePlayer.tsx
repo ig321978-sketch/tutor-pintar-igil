@@ -18,7 +18,15 @@ import materiBab6 from "@/data/kelas1-bab6.json";
 import materiBab7 from "@/data/kelas1-bab7.json";
 import materiBab8 from "@/data/kelas1-bab8.json";
 import materiK2Bab1 from "@/data/kelas2-bab1.json";
+import materiK2Bab2 from "@/data/kelas2-bab2.json";
 import { namaBilangan } from "@/components/modul/data-k2";
+import { PETA_PIKIRAN_K2B2A, PETA_PIKIRAN_K2B2B, PETA_PIKIRAN_K2B2C } from "@/components/modul/kit-k2b2";
+import { VideoPenjumlahanK2B2A } from "@/components/modul/video-k2b2a";
+import { VideoPenguranganK2B2B } from "@/components/modul/video-k2b2b";
+import { VideoSoalCeritaK2B2C } from "@/components/modul/video-k2b2c";
+import { AbstractK2B2A, ConcreteK2B2A, InfografisK2B2AKomponen, PictureK2B2A } from "@/components/modul/SubBabK2B2A";
+import { AbstractK2B2B, ConcreteK2B2B, InfografisK2B2BKomponen, PictureK2B2B } from "@/components/modul/SubBabK2B2B";
+import { AbstractK2B2C, ConcreteK2B2C, InfografisK2B2CKomponen, PictureK2B2C } from "@/components/modul/SubBabK2B2C";
 import { PETA_PIKIRAN_K2A } from "@/components/modul/gambar-hitung-k2a";
 import { VideoHitungK2A } from "@/components/modul/video-cerita-k2a";
 import { VideoNilaiK2B } from "@/components/modul/video-cerita-k2b";
@@ -322,7 +330,7 @@ interface QuestionItem {
 // ============================================================================
 
 /** Bab yang bisa diputar. Isinya dibaca dari berkas JSON bab (tanpa kunci jawaban). */
-export type BabModul = "mtk-1-bab1" | "mtk-1-bab2" | "mtk-1-bab3" | "mtk-1-bab4" | "mtk-1-bab5" | "mtk-1-bab6" | "mtk-1-bab7" | "mtk-1-bab8" | "mtk-2-bab1";
+export type BabModul = "mtk-1-bab1" | "mtk-1-bab2" | "mtk-1-bab3" | "mtk-1-bab4" | "mtk-1-bab5" | "mtk-1-bab6" | "mtk-1-bab7" | "mtk-1-bab8" | "mtk-2-bab1" | "mtk-2-bab2";
 
 interface MateriBab {
   /** Kode bab di server (mis. k1-mat-bab3). Dipakai untuk RPC Latihan dan Ujian. */
@@ -334,6 +342,10 @@ interface MateriBab {
   silabusElemen?: string;
   /** Suara Guru murni Web Speech API perangkat: tanpa berkas audio statis dan tanpa pencatatan naskah. */
   suaraPerangkatSaja?: boolean;
+  /** Laju bicara Web Speech (1 = normal). Bab Matematika Kelas 2 Bab 2 memakai 0,70. Hanya berlaku bersama suaraPerangkatSaja. */
+  suaraLaju?: number;
+  /** Nada Web Speech (1 = normal). Bab Matematika Kelas 2 Bab 2 memakai 1. */
+  suaraNada?: number;
   subBabs: Record<string, SubBabContent>;
   practiceQuestions?: QuestionItem[];
   examQuestions?: QuestionItem[];
@@ -349,6 +361,7 @@ const MATERI_BAB: Record<BabModul, MateriBab> = {
   "mtk-1-bab7": materiBab7 as unknown as MateriBab,
   "mtk-1-bab8": materiBab8 as unknown as MateriBab,
   "mtk-2-bab1": materiK2Bab1 as unknown as MateriBab,
+  "mtk-2-bab2": materiK2Bab2 as unknown as MateriBab,
 };
 
 const POIN_BAWAAN = { practice: 30, exam: 70, practicum: 50 };
@@ -409,6 +422,13 @@ const SUB_ANAK_K2B1: Record<SubBabId, { emoji: string }> = {
   D: { emoji: "🧮" },
 };
 
+const SUB_ANAK_K2B2: Record<SubBabId, { emoji: string }> = {
+  A: { emoji: "➕" },
+  B: { emoji: "➖" },
+  C: { emoji: "📖" },
+  D: { emoji: "🧮" },
+};
+
 type PropsTahapBaru = {
   speakGuru: (teks: string) => void;
   panel: PanelSuara;
@@ -430,11 +450,16 @@ const MODUL_SUBBAB: Record<
     Concrete: ComponentType<PropsTahapBaru>;
     Picture: ComponentType<PropsTahapBaru>;
     Abstract: ComponentType<PropsTahapBaru>;
+    /** Tampilkan uraian tiap langkah peta pikiran di layar (bukan hanya lewat suara). */
+    uraianPeta?: boolean;
   }
 > = {
   "mtk-2-bab1-A": { Cerita: VideoHitungK2A, peta: PETA_PIKIRAN_K2A, Infografis: InfografisHitungK2A, Concrete: ConcreteHitungK2A, Picture: PictureHitungK2A, Abstract: AbstractHitungK2A },
   "mtk-2-bab1-B": { Cerita: VideoNilaiK2B, peta: PETA_PIKIRAN_K2B, Infografis: InfografisNilaiK2B, Concrete: ConcreteNilaiK2B, Picture: PictureNilaiK2B, Abstract: AbstractNilaiK2B },
   "mtk-2-bab1-C": { Cerita: VideoBandingK2C, peta: PETA_PIKIRAN_K2C, Infografis: InfografisBandingK2C, Concrete: ConcreteBandingK2C, Picture: PictureBandingK2C, Abstract: AbstractBandingK2C },
+  "mtk-2-bab2-A": { Cerita: VideoPenjumlahanK2B2A, peta: PETA_PIKIRAN_K2B2A, Infografis: InfografisK2B2AKomponen, Concrete: ConcreteK2B2A, Picture: PictureK2B2A, Abstract: AbstractK2B2A, uraianPeta: true },
+  "mtk-2-bab2-B": { Cerita: VideoPenguranganK2B2B, peta: PETA_PIKIRAN_K2B2B, Infografis: InfografisK2B2BKomponen, Concrete: ConcreteK2B2B, Picture: PictureK2B2B, Abstract: AbstractK2B2B, uraianPeta: true },
+  "mtk-2-bab2-C": { Cerita: VideoSoalCeritaK2B2C, peta: PETA_PIKIRAN_K2B2C, Infografis: InfografisK2B2CKomponen, Concrete: ConcreteK2B2C, Picture: PictureK2B2C, Abstract: AbstractK2B2C, uraianPeta: true },
 };
 
 const DAFTAR_MAINAN = [
@@ -836,8 +861,9 @@ export default function IgilModulePlayer({ bab = "mtk-1-bab1" }: { bab?: BabModu
   const adaBab7 = bab === "mtk-1-bab7";
   const adaBab8 = bab === "mtk-1-bab8";
   const adaK2B1 = bab === "mtk-2-bab1";
+  const adaK2B2 = bab === "mtk-2-bab2";
   /** Bab bergaya baru (Bab 2 sampai Bab 8): Latihan terbuka setelah materi tersedia selesai. */
-  const adaBab2 = bab === "mtk-1-bab2" || adaBab3 || adaBab4 || adaBab5 || adaBab6 || adaBab7 || adaBab8 || adaK2B1;
+  const adaBab2 = bab === "mtk-1-bab2" || adaBab3 || adaBab4 || adaBab5 || adaBab6 || adaBab7 || adaBab8 || adaK2B1 || adaK2B2;
   /** Tab Simulasi tampil hanya di bab yang sudah punya simulasi (lihat SIMULASI_BAB). */
   const SimulasiBab = SIMULASI_BAB[bab];
   const adaTabSimulasi = SimulasiBab !== undefined;
@@ -845,11 +871,13 @@ export default function IgilModulePlayer({ bab = "mtk-1-bab1" }: { bab?: BabModu
   const SUB_BABS = materi.subBabs as Record<SubBabId, SubBabContent>;
   const daftarSub = Object.keys(materi.subBabs) as SubBabId[];
   const PRACTICE_QUESTIONS = materi.practiceQuestions ?? [];
+  /** Bab yang soal Latihan dan Ujiannya belum ditulis (Materi saja) menampilkan kartu "sedang disiapkan". */
+  const soalSiap = PRACTICE_QUESTIONS.length > 0;
   /** Kode bab di server. Soal Ujian tidak ada di berkas ini, hanya dikirim server saat ujian dimulai. */
   const idBabServer = materi.chapter_id ?? "";
   const profilBelajar = useProfilBelajar();
   const poin = materi.tokens ?? POIN_BAWAAN;
-  const peta = adaK2B1 ? SUB_ANAK_K2B1 : adaBab8 ? SUB_ANAK_BAB8 : adaBab7 ? SUB_ANAK_BAB7 : adaBab6 ? SUB_ANAK_BAB6 : adaBab5 ? SUB_ANAK_BAB5 : adaBab4 ? SUB_ANAK_BAB4 : adaBab3 ? SUB_ANAK_BAB3 : adaBab2 ? SUB_ANAK_BAB2 : SUB_ANAK;
+  const peta = adaK2B2 ? SUB_ANAK_K2B2 : adaK2B1 ? SUB_ANAK_K2B1 : adaBab8 ? SUB_ANAK_BAB8 : adaBab7 ? SUB_ANAK_BAB7 : adaBab6 ? SUB_ANAK_BAB6 : adaBab5 ? SUB_ANAK_BAB5 : adaBab4 ? SUB_ANAK_BAB4 : adaBab3 ? SUB_ANAK_BAB3 : adaBab2 ? SUB_ANAK_BAB2 : SUB_ANAK;
   /** Sub-bab yang sudah punya naskah dan permainan. Sub-bab "segera hadir" tidak menahan Latihan dan Ujian. */
   const daftarSubTersedia = daftarSub.filter((id) => !SUB_BABS[id].segeraHadir);
 
@@ -1158,6 +1186,8 @@ export default function IgilModulePlayer({ bab = "mtk-1-bab1" }: { bab?: BabModu
     ucapkanGuruModul(naskah, {
       kelas: materi.suaraPerangkatSaja ? "2 SD" : "1 SD",
       perangkatSaja: materi.suaraPerangkatSaja === true,
+      laju: materi.suaraLaju,
+      nada: materi.suaraNada,
       seragam: suaraSeragam,
       selesai: selesai
         ? () => {
@@ -1168,7 +1198,7 @@ export default function IgilModulePlayer({ bab = "mtk-1-bab1" }: { bab?: BabModu
           }
         : undefined,
     });
-  }, [materi.suaraPerangkatSaja, suaraSeragam]);
+  }, [materi.suaraPerangkatSaja, materi.suaraLaju, materi.suaraNada, suaraSeragam]);
 
   useEffect(() => {
     window.speechSynthesis?.getVoices();
@@ -1925,6 +1955,7 @@ export default function IgilModulePlayer({ bab = "mtk-1-bab1" }: { bab?: BabModu
                   langkah={modulBaru.peta}
                   judul={judulSubBab}
                   speakGuru={speakGuru}
+                  uraian={modulBaru.uraianPeta}
                   maskot={<IgilWajah kelas="h-14 w-20 igil-lompat" />}
                 />
               ) : subC2 ? (
@@ -3537,7 +3568,29 @@ export default function IgilModulePlayer({ bab = "mtk-1-bab1" }: { bab?: BabModu
         </section>
       )}
 
-      {activeMainTab === "latihan" && materiSelesai && (
+      {(activeMainTab === "latihan" || activeMainTab === "ujian") && materiSelesai && !soalSiap && (
+        <section className="mx-auto mt-4 w-[98%] space-y-4 rounded-3xl border-4 border-dashed border-[#FFE566] bg-[#FFFDF2] p-8 text-center">
+          <div className="igil-lompat text-6xl" aria-hidden="true">🛠️</div>
+          <h2 className="text-xl font-black text-[#1C01A5] md:text-2xl">
+            {activeMainTab === "latihan" ? "Latihan" : "Ujian"} bab ini sedang disiapkan
+          </h2>
+          <p className="mx-auto max-w-xl text-base leading-relaxed text-[#334155] md:text-lg">
+            Hebat, kamu sudah selesai mempelajari semua Materi bab ini. Guru IGIL masih menyiapkan soal Latihan dan Ujiannya. Sementara itu, kamu boleh mengulang Materi, ya.
+          </p>
+          <button
+            type="button"
+            onClick={() => {
+              setActiveMainTab("materi");
+              window.scrollTo({ top: 0, behavior: "smooth" });
+            }}
+            className="rounded-full border-2 border-[#FFE566] bg-[#1C01A5] px-6 py-3 text-sm font-black text-[#FFE566] md:text-base"
+          >
+            ⬅️ ULANGI MATERI
+          </button>
+        </section>
+      )}
+
+      {activeMainTab === "latihan" && materiSelesai && soalSiap && (
         <>
         <PanelProfilBelajar profil={profilBelajar} kembaliKe={`/ruang-belajar/${bab}`} />
         <section className="w-[98%] mx-auto mt-4 bg-[#FFFBEB] border-2 border-[#F59E0B] rounded-3xl p-5 md:p-7 space-y-5">
@@ -3719,7 +3772,7 @@ export default function IgilModulePlayer({ bab = "mtk-1-bab1" }: { bab?: BabModu
       {/* =================================================================== */}
       {/* 5. HALAMAN UJIAN FORMAL (10 SOAL 100% HOTS • LATAR MERAH LEMBUT)    */}
       {/* =================================================================== */}
-      {activeMainTab === "ujian" && materiSelesai && (
+      {activeMainTab === "ujian" && materiSelesai && soalSiap && (
         <>
           <PanelProfilBelajar profil={profilBelajar} kembaliKe={`/ruang-belajar/${bab}`} />
           <UjianServer

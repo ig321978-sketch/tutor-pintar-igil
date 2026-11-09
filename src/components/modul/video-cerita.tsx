@@ -137,15 +137,22 @@ export function VideoCerita({
   subjudul,
   adegan,
   speakGuru,
+  mulaiLangsung = false,
+  onSelesai,
 }: {
   judul: string;
   subjudul: string;
   adegan: AdeganVideo[];
   speakGuru: (teks: string, selesai?: () => void) => void;
+  /** Putar sesaat setelah dipasang. Dipakai daftar video: pemasangan terjadi karena siswa mengetuk Putar. */
+  mulaiLangsung?: boolean;
+  /** Dipanggil sekali saat video sampai di akhir. */
+  onSelesai?: () => void;
 }) {
   const S = useRef<Peta>({ jalan: false, jeda: false, suara: true, selesai: false, a: 0, k: 0, ms: 0, nomor: 0, suaraBeres: false });
   const bicaraRef = useRef(speakGuru);
   const adeganRef = useRef(adegan);
+  const onSelesaiRef = useRef(onSelesai);
 
   const [sudahMulai, setSudahMulai] = useState(false);
   const [pos, setPos] = useState({ a: 0, k: 0 });
@@ -157,7 +164,8 @@ export function VideoCerita({
   useEffect(() => {
     bicaraRef.current = speakGuru;
     adeganRef.current = adegan;
-  }, [speakGuru, adegan]);
+    onSelesaiRef.current = onSelesai;
+  }, [speakGuru, adegan, onSelesai]);
 
   /** Pindah ke ketukan k pada adegan a, lalu bacakan kalimatnya. */
   const ke = useCallback((a: number, k: number) => {
@@ -213,11 +221,20 @@ export function VideoCerita({
         else {
           s.selesai = true;
           setSelesai(true);
+          onSelesaiRef.current?.();
         }
       }
     }, 60);
     return () => window.clearInterval(id);
   }, [ke]);
+
+  useEffect(() => {
+    if (!mulaiLangsung) return;
+    // Mulai sesaat setelah dipasang (siswa baru saja mengetuk Putar). Hanya sekali.
+    const id = window.setTimeout(() => mulai(0), 0);
+    return () => window.clearTimeout(id);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   const ubahJeda = () => {
     const s = S.current;

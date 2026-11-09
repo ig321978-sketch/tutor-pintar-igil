@@ -218,6 +218,12 @@ for (const nama of berkas) {
   }
   const namaSeed = batang === "kelas1-bab1" ? "02_kelas1_bab1_keys.sql" : `02_${batang.replaceAll("-", "_")}_keys.sql`;
   await writeFile(path.join(dataDir, `${batang}.json`), teksPublik);
+  // Bab yang baru berisi Materi (soal Latihan dan Ujian menyusul) hanya menulis JSON publik.
+  // Seed server tidak dibuat, sehingga server tidak punya kunci apa pun untuk bab itu.
+  if (kumpulkanLatihan(master).length === 0 && kumpulkanUjian(master).length === 0) {
+    console.log(`sinkron ${nama} -> src/data/${batang}.json (Materi saja: soal Latihan dan Ujian belum ada, seed dilewati)`);
+    continue;
+  }
   await writeFile(path.join(seedDir, namaSeed), sqlBab(master));
   console.log(`sinkron ${nama} -> src/data/${batang}.json dan supabase/seed/${namaSeed}`);
 }

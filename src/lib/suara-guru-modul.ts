@@ -93,6 +93,13 @@ export type OpsiSuaraGuruModul = {
    */
   perangkatSaja?: boolean;
   /**
+   * Laju bicara (1 = normal) yang menggantikan laju profil guru. Hanya dipakai bersama `perangkatSaja`.
+   * Contoh: Matematika Kelas 2 Bab 2 memakai 0,70.
+   */
+  laju?: number;
+  /** Nada suara (1 = normal) yang menggantikan nada profil guru. Hanya dipakai bersama `perangkatSaja`. */
+  nada?: number;
+  /**
    * Suara seragam (pilot Materi Kelas 1 Bab 1 Sub-Bab A): Web Speech API perangkat dengan parameter tetap
    * (id-ID, laju 0,85, nada 1,1 untuk wanita) dan pemilihan suara yang pasti, selalu sesuai guru pilihan siswa.
    * Mengabaikan berkas audio statis dan profil laju/nada guru lama.
@@ -164,12 +171,36 @@ export function ucapkanGuruModul(teks: string, opsi: OpsiSuaraGuruModul = {}): v
       selesai();
       return;
     }
-    const ucapan = buatUcapanGuru(naskah, profilGuru(kelas, kelamin));
-    ucapan.onend = selesai;
-    ucapan.onerror = selesai;
+    const profil = profilGuru(kelas, kelamin);
+    // Laju dan nada kustom (Matematika Kelas 2 Bab 2: 0,70 dan 1) hanya berlaku untuk suara perangkat murni.
+    const kustom = opsi.perangkatSaja === true && (opsi.laju !== undefined || opsi.nada !== undefined);
+    const profilPakai = {
+      ...profil,
+      laju: kustom && opsi.laju !== undefined ? opsi.laju : profil.laju,
+      nada: kustom && opsi.nada !== undefined ? opsi.nada : profil.nada,
+    };
+    // Laju lambat membuat satu ucapan panjang berhenti sendiri di Chrome (suara jaringan), jadi dipecah per kalimat.
+    const potongan = kustom ? pecahKalimat(naskah) : [naskah];
+    let i = 0;
+    const lanjut = () => {
+      if (saya !== giliran || tutup) return;
+      if (i >= potongan.length) {
+        selesai();
+        return;
+      }
+      const ucapan = buatUcapanGuru(potongan[i], profilPakai);
+      i += 1;
+      ucapan.onend = lanjut;
+      ucapan.onerror = selesai;
+      window.speechSynthesis.speak(ucapan);
+    };
     window.setTimeout(() => {
       if (saya !== giliran || tutup) return;
-      window.speechSynthesis.speak(ucapan);
+      if (kustom && window.speechSynthesis.getVoices().length === 0) {
+        void tungguSuaraSiap().then(lanjut);
+        return;
+      }
+      lanjut();
     }, 40);
   };
 
