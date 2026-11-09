@@ -1793,7 +1793,295 @@ export const SUB_F31: SubBabNaskah = {
   ],
 };
 
-export const SUB_BAB_K3B1: SubBabNaskah[] = [SUB_A31, SUB_B31, SUB_C31, SUB_D31, SUB_E31, SUB_F31];
+/* ====================================================================== */
+/* SUB-BAB G. Pembagian bilangan cacah sampai 100                           */
+/* ====================================================================== */
+
+const ALUR_G = ["Mengingat membagi", "Pengurangan berulang", "Menulis pembagian", "Nama bilangan pada pembagian", "Membagi sama banyak", "Perkalian dan pembagian", "Membagi dengan satu dan bilangan sama", "Soal cerita pembagian", "Siap membagi sampai 100"];
+
+export const SUB_G31: SubBabNaskah = {
+  id: "G",
+  codeTitle: "Sub-Bab G (Pembagian sampai 100)",
+  fullTitle: "Sub-Bab G: Pembagian Bilangan Cacah sampai 100",
+  targetDescription:
+    "Siswa memahami pembagian sebagai pengurangan berulang sampai habis dan sebagai membagi sama banyak, menulis dan membaca pembagian (bilangan yang dibagi, pembagi, hasil bagi), memahami hubungan perkalian dan pembagian, menghitung pembagian sampai 100, serta menyelesaikan soal cerita pembagian.",
+  secondaryBg: "#DCFCE7",
+  secondaryBorder: "#16A34A",
+  secondaryText: "#14532D",
+  silabus: {
+    teksSuara: `Kita belajar pembagian bilangan cacah sampai seratus. Ibu punya dua belas biskuit dan membaginya sama banyak. Ketua kelompok punya lima belas manik-manik dan membagikannya kepada tiga anggota. Pembagian adalah pengurangan berulang sampai habis. Kita juga belajar bahwa pembagian dan perkalian saling berkaitan, lalu menyelesaikan soal cerita. ${SUARA_AKHIR_SILABUS}`,
+    cp: "Siswa melakukan operasi perkalian dan pembagian bilangan cacah sampai 100. Pada sub-bab ini siswa memahami pembagian sebagai pengurangan berulang, menulis pembagian, menghitung hasilnya, menghubungkannya dengan perkalian, dan menyelesaikan soal cerita pembagian.",
+    referensi: "Buku Siswa Matematika Kelas III Kemendikbudristek (Bab 1: Bilangan Cacah sampai 1.000, Sub-Bab G hlm. 64–71) dan Buku Panduan Guru Bab 1 Topik G.",
+  },
+  videos: [
+    {
+      id: "K3B1G-V1",
+      judul: "Biskuit Ibu",
+      subjudul: "Pembagian sebagai pengurangan berulang",
+      adegan: [
+        {
+          id: "K3B1G-V1-1",
+          judul: "Bagi biskuit",
+          ketukan: [
+            "Ibu mempunyai 12 biskuit di dalam toples.",
+            "Ibu akan membagikannya sama banyak kepada anak-anaknya.",
+            "Berapa biskuit yang didapat oleh setiap anak?",
+            "Kita kurangi 12 dengan 2 berulang kali sampai biskuitnya habis.",
+          ],
+          papan: ["Ibu punya 12 biskuit", "Dibagi sama banyak", "Tiap anak dapat berapa?", "12 − 2 − 2 − ..."],
+        },
+        {
+          id: "K3B1G-V1-2",
+          judul: "Kurangi berulang",
+          ketukan: [
+            "12 dikurangi 2 sama dengan 10, tersisa 10 biskuit. Lalu 10 dikurangi 2 sama dengan 8.",
+            "8 dikurangi 2 sama dengan 6, lalu 6 dikurangi 2 sama dengan 4.",
+            "4 dikurangi 2 sama dengan 2, lalu 2 dikurangi 2 sama dengan 0.",
+            "Biskuitnya habis setelah bilangan 2 dikurangkan sebanyak 6 kali.",
+          ],
+          papan: ["12 − 2 = 10, 10 − 2 = 8", "8 − 2 = 6, 6 − 2 = 4", "4 − 2 = 2, 2 − 2 = 0", "Dikurangi 6 kali"],
+        },
+        {
+          id: "K3B1G-V1-3",
+          judul: "Tulis pembagian",
+          ketukan: [
+            "Dapat ditulis 12 − 2 − 2 − 2 − 2 − 2 − 2 = 0.",
+            "Pengurangan berulang sampai tidak ada sisa disebut pembagian.",
+            "Bentuk pembagiannya ditulis 12 : 2 = 6.",
+            "Tanda titik dua dibaca dibagi. Jadi, 12 dibagi 2 sama dengan 6.",
+          ],
+          papan: ["12 − 2 − 2 − 2 − 2 − 2 − 2 = 0", "Pembagian", "12 : 2 = 6", "Dibaca: 12 dibagi 2"],
+        },
+      ],
+    },
+    {
+      id: "K3B1G-V2",
+      judul: "Manik-Manik Kelompok",
+      subjudul: "Aktivitas 5: Pembagian",
+      adegan: [
+        {
+          id: "K3B1G-V2-1",
+          judul: "Siapkan manik-manik",
+          ketukan: [
+            "Buatlah kelompok beranggotakan 4 orang, yaitu 1 ketua dan 3 anggota.",
+            "Ketua memegang satu wadah berisi 15 manik-manik.",
+            "Ketua membagikan satu manik-manik kepada setiap anggota.",
+            "Ketua terus membagikan sampai wadahnya kosong.",
+          ],
+          papan: ["Kelompok 4 orang", "Wadah berisi 15 manik-manik", "Satu untuk tiap anggota", "Terus sampai kosong"],
+        },
+        {
+          id: "K3B1G-V2-2",
+          judul: "Hitung yang diperoleh",
+          ketukan: [
+            "Tiap putaran, 3 manik-manik dibagikan. 15 dikurangi 3 sama dengan 12.",
+            "12 dikurangi 3 sama dengan 9, lalu 9 dikurangi 3 sama dengan 6.",
+            "6 dikurangi 3 sama dengan 3, lalu 3 dikurangi 3 sama dengan 0.",
+            "Wadah kosong setelah 5 putaran. Tiap anggota mendapat 5 manik-manik.",
+          ],
+          papan: ["15 − 3 = 12", "12 − 3 = 9, 9 − 3 = 6", "6 − 3 = 3, 3 − 3 = 0", "Tiap anggota dapat 5"],
+        },
+        {
+          id: "K3B1G-V2-3",
+          judul: "Tulis pembagian",
+          ketukan: [
+            "Dapat ditulis 15 − 3 − 3 − 3 − 3 − 3 = 0.",
+            "Bentuk pembagiannya ditulis 15 : 3 = 5.",
+            "Ada bilangan 3 sebanyak 5.",
+            "Aktivitas 5 yang kita lakukan adalah proses pembagian.",
+          ],
+          papan: ["15 − 3 − 3 − 3 − 3 − 3 = 0", "15 : 3 = 5", "Ada bilangan 3 sebanyak 5", "Proses pembagian"],
+        },
+      ],
+    },
+    {
+      id: "K3B1G-V3",
+      judul: "Perkalian dan Pembagian",
+      subjudul: "Dua operasi yang berkaitan",
+      adegan: [
+        {
+          id: "K3B1G-V3-1",
+          judul: "Dari pembagian ke perkalian",
+          ketukan: [
+            "15 : 3 berarti mengurangkan 15 dengan 3 secara berulang sampai habis.",
+            "Perkalian 5 × 3 berarti ada bilangan 3 sebanyak 5.",
+            "5 × 3 = 3 + 3 + 3 + 3 + 3, yaitu 15.",
+            "Jadi, 5 × 3 sama dengan 15.",
+          ],
+          papan: ["15 : 3 = ?", "5 × 3 artinya 3 sebanyak 5", "3 + 3 + 3 + 3 + 3", "5 × 3 = 15"],
+        },
+        {
+          id: "K3B1G-V3-2",
+          judul: "Saling berkaitan",
+          ketukan: [
+            "Pembagian 15 : 3 = 5 berkaitan dengan perkalian 5 × 3 = 15.",
+            "Hasil bagi dikali pembagi sama dengan bilangan yang dibagi.",
+            "Pada 15 : 3 = 5, bilangan yang dibagi 15, pembagi 3, dan hasil bagi 5.",
+            "Kita bisa memeriksa pembagian dengan perkalian.",
+          ],
+          papan: ["15 : 3 = 5 dan 5 × 3 = 15", "hasil bagi × pembagi = dibagi", "Dibagi 15, pembagi 3, hasil 5", "Periksa dengan kali"],
+        },
+        {
+          id: "K3B1G-V3-3",
+          judul: "Contoh lain",
+          ketukan: [
+            "28 : 7 = 4, karena 28 − 7 − 7 − 7 − 7 = 0.",
+            "Periksa dengan perkalian: 4 × 7 = 28.",
+            "Pembagian dengan 1: 5 : 1 = 5. Dibagi bilangan yang sama: 6 : 6 = 1.",
+            "Pembagian dan perkalian saling menguatkan hasilnya.",
+          ],
+          papan: ["28 : 7 = 4", "4 × 7 = 28", "5 : 1 = 5 dan 6 : 6 = 1", "Saling menguatkan"],
+        },
+      ],
+    },
+  ],
+  mindMaps: [
+    {
+      stepNumber: 1,
+      stepTitle: "1. Mengingat Membagi",
+      stepDesc:
+        "Membagi berarti memberikan benda sama banyak kepada beberapa orang atau tempat. Ibu mempunyai 12 biskuit dan akan membagikannya sama banyak. Pembagian dipakai bila kita ingin tahu berapa yang didapat tiap orang, atau berapa kali bilangan itu muat dalam bilangan lain. Pembagian adalah kebalikan dari perkalian.",
+      icon: "🔙",
+      flowFrom: ALUR_G[0],
+      flowTo: ALUR_G[1],
+    },
+    {
+      stepNumber: 2,
+      stepTitle: "2. Pengurangan Berulang",
+      stepDesc:
+        "Untuk membagi 12 dengan 2, kurangi 12 dengan 2 berulang kali sampai habis: 12 − 2 = 10, 10 − 2 = 8, 8 − 2 = 6, 6 − 2 = 4, 4 − 2 = 2, dan 2 − 2 = 0. Bilangan 2 dikurangkan sebanyak 6 kali. Jadi, 12 : 2 = 6. Pengurangan berulang sampai tidak ada sisa disebut pembagian.",
+      icon: "➖",
+      flowFrom: ALUR_G[1],
+      flowTo: ALUR_G[2],
+    },
+    {
+      stepNumber: 3,
+      stepTitle: "3. Menulis Pembagian",
+      stepDesc:
+        "Pembagian ditulis dengan tanda titik dua. 12 − 2 − 2 − 2 − 2 − 2 − 2 = 0 ditulis 12 : 2 = 6 dan dibaca dua belas dibagi dua sama dengan enam. Contoh lain: 28 : 7 = 4 karena 28 − 7 − 7 − 7 − 7 = 0, dan 36 : 4 = 9 karena bilangan 4 dikurangkan sembilan kali.",
+      icon: "✍️",
+      flowFrom: ALUR_G[2],
+      flowTo: ALUR_G[3],
+    },
+    {
+      stepNumber: 4,
+      stepTitle: "4. Nama Bilangan pada Pembagian",
+      stepDesc:
+        "Pada 15 : 3 = 5, bilangan 15 disebut bilangan yang dibagi, bilangan 3 disebut pembagi, dan bilangan 5 disebut hasil bagi. Pembagi menunjukkan bilangan yang dikurangkan berulang kali atau banyak kelompok. Hasil bagi menunjukkan berapa kali pengurangan, atau berapa yang didapat tiap kelompok.",
+      icon: "🏷️",
+      flowFrom: ALUR_G[3],
+      flowTo: ALUR_G[4],
+    },
+    {
+      stepNumber: 5,
+      stepTitle: "5. Membagi Sama Banyak",
+      stepDesc:
+        "Pada Aktivitas 5, ketua kelompok membagikan satu manik-manik kepada setiap anggota, lagi dan lagi, sampai wadah kosong. Dengan 15 manik-manik dan 3 anggota, tiap putaran membagikan 3 manik-manik, jadi ada 5 putaran dan tiap anggota mendapat 5. Jadi, 15 : 3 = 5. Hasil pembagian adalah banyak benda yang didapat tiap bagian.",
+      icon: "🍽️",
+      flowFrom: ALUR_G[4],
+      flowTo: ALUR_G[5],
+    },
+    {
+      stepNumber: 6,
+      stepTitle: "6. Perkalian dan Pembagian",
+      stepDesc:
+        "Pembagian dan perkalian saling berkaitan. 15 : 3 = 5 berkaitan dengan 5 × 3 = 15. Hasil bagi dikali pembagi sama dengan bilangan yang dibagi. Karena itu kita bisa memeriksa pembagian dengan perkalian: bila 24 : 4 = 6, maka 6 × 4 harus 24. Bila lupa hasil bagi, tanyakan: bilangan berapa dikali 4 menjadi 24?",
+      icon: "🔄",
+      flowFrom: ALUR_G[5],
+      flowTo: ALUR_G[6],
+    },
+    {
+      stepNumber: 7,
+      stepTitle: "7. Membagi dengan Satu dan Bilangan Sama",
+      stepDesc:
+        "Ada dua pembagian khusus. Bilangan dibagi 1 hasilnya bilangan itu sendiri: 5 : 1 = 5 karena 5 − 1 − 1 − 1 − 1 − 1 = 0. Bilangan dibagi bilangan yang sama hasilnya 1: 6 : 6 = 1 karena 6 − 6 = 0. Contoh dari buku: 4 : 1 = 4, 9 : 1 = 9, dan 10 : 10 = 1.",
+      icon: "1️⃣",
+      flowFrom: ALUR_G[6],
+      flowTo: ALUR_G[7],
+    },
+    {
+      stepNumber: 8,
+      stepTitle: "8. Soal Cerita Pembagian",
+      stepDesc:
+        "Soal cerita pembagian memakai kata seperti dibagi sama banyak, setiap, dan masing-masing. Ayah memasukkan 24 telur ke dalam 3 kotak sama banyak, jadi 24 : 3 = 8 telur tiap kotak. Kakak membagikan 36 apel kepada 6 teman, jadi 36 : 6 = 6 apel tiap teman. Tulis kalimat pembagiannya, hitung, lalu jawab dengan satuan yang tepat.",
+      icon: "📖",
+      flowFrom: ALUR_G[7],
+      flowTo: ALUR_G[8],
+    },
+  ],
+  infografis: [
+    { judul: "Membagi Sama Banyak", emoji: "🍪", countNum: 2, countWord: "Dua", suara: "Membagi berarti memberikan benda sama banyak kepada beberapa orang atau tempat. Semua bagian harus sama banyak." },
+    { judul: "12 : 2 = 6", emoji: "🥣", countNum: 3, countWord: "Tiga", suara: "Dua belas dikurangi dua berulang kali sampai nol. Bilangan dua dikurangkan enam kali. Jadi, dua belas dibagi dua sama dengan enam." },
+    { judul: "Pengurangan Berulang", emoji: "➖", countNum: 2, countWord: "Dua", suara: "Pengurangan berulang sampai tidak ada sisa disebut pembagian. Lima belas dikurangi tiga lima kali sama dengan nol." },
+    { judul: "15 : 3 = 5", emoji: "🎁", countNum: 3, countWord: "Tiga", suara: "Lima belas manik-manik dibagikan kepada tiga anggota. Tiap putaran tiga manik-manik. Setelah lima putaran, wadah kosong. Tiap anggota dapat lima." },
+    { judul: "Nama Bilangan", emoji: "🏷️", countNum: 3, countWord: "Tiga", suara: "Pada lima belas dibagi tiga sama dengan lima, lima belas adalah bilangan yang dibagi, tiga adalah pembagi, dan lima adalah hasil bagi." },
+    { judul: "Garis Bilangan Mundur", emoji: "📏", countNum: 3, countWord: "Tiga", suara: "Mulai dari lima belas, loncat mundur sebesar tiga. Setelah lima loncatan, kita sampai di nol. Jadi, lima belas dibagi tiga sama dengan lima." },
+    { judul: "Perkalian Pemeriksa", emoji: "✖️", countNum: 2, countWord: "Dua", suara: "Hasil bagi dikali pembagi sama dengan bilangan yang dibagi. Lima kali tiga sama dengan lima belas, jadi pembagiannya benar." },
+    { judul: "Dibagi 1 dan Bilangan Sama", emoji: "1️⃣", countNum: 2, countWord: "Dua", suara: "Bilangan dibagi satu hasilnya bilangan itu sendiri. Bilangan dibagi bilangan yang sama hasilnya satu. Lima dibagi satu sama dengan lima, enam dibagi enam sama dengan satu." },
+    { judul: "Soal Cerita", emoji: "📖", countNum: 3, countWord: "Tiga", suara: "Soal cerita pembagian menyebut jumlah seluruhnya dan banyak bagian. Tulis kalimat pembagiannya, hitung, lalu tulis jawabannya dengan satuan." },
+    { judul: "Cara Membagi", emoji: "📝", countNum: 4, countWord: "Empat", suara: "Empat langkah. Satu, cari bilangan yang dibagi. Dua, cari pembagi. Tiga, kurangkan berulang atau ingat perkalian. Empat, periksa dengan perkalian." },
+  ],
+  games: [
+    C("share-in-turns", "Bagikan Bergiliran", "hlm. 66–68 (Aktivitas 5: ketua membagikan satu manik-manik)", "Membagikan benda satu putaran demi satu putaran kepada piring sampai tumpukan habis, lalu melihat berapa tiap piring.", "Tiga ronde, tiap ronde dua soal. Siswa menekan Bagikan satu putaran, tiap piring mendapat satu benda. Kalimat pengurangan berulang bertambah panjang sampai tumpukan habis.", "Bagikan satu putaran sampai tumpukan habis.", "🍽️", 6),
+    C("count-share", "Hitung Bagian", "hlm. 64 (12 biskuit untuk 2 anak)", "Menghitung banyak benda yang didapat tiap piring bila tumpukan dibagi sama banyak.", "Tiga ronde, tiap ronde dua soal. Gambar tumpukan dan piring kosong ditampilkan. Siswa memilih satu dari tiga hasil bagi.", "Hitung berapa benda tiap piring.", "🧺", 6),
+    C("write-repeated-subtraction", "Tulis Pengurangan Berulang", "hlm. 64–65 (12 − 2 − 2 − 2 − 2 − 2 − 2 = 0)", "Memilih kalimat pengurangan berulang yang sesuai dengan tumpukan dan piring.", "Tiga ronde, tiap ronde dua soal. Siswa melihat tumpukan dan piring, lalu memilih satu dari tiga kalimat pengurangan berulang. Pengecoh salah banyak pengurangan.", "Pilih kalimat pengurangan berulang.", "➖", 6),
+    C("match-share-division", "Jodohkan Gambar dan Pembagian", "hlm. 64–69 (menulis pembagian)", "Menjodohkan gambar benda yang sudah dibagi dengan kalimat pembagiannya.", "Tiga ronde, tiap ronde tiga gambar piring dan tiga pembagian. Siswa mengetuk gambar, lalu mengetuk pembagian yang cocok.", "Ketuk gambar, lalu ketuk pembagiannya.", "🔗", 9),
+    C("memory-share-quotient", "Memori Gambar dan Hasil Bagi", "hlm. 64–69 (hasil bagi)", "Mencocokkan gambar benda yang sudah dibagi dengan hasil baginya lewat permainan memori.", "Tiga ronde, tiap ronde delapan kartu tertutup (empat pasang): gambar piring dan hasil bagi. Siswa membalik dua kartu dan mencari pasangannya.", "Balik dua kartu, cari gambar dan hasil bagi.", "🃏", 12),
+    C("tap-share-quotient", "Ketuk Gambar dengan Hasil Bagi", "hlm. 64–69 (hasil bagi)", "Menemukan gambar yang hasil baginya sama dengan bilangan yang diminta.", "Tiga ronde, tiap ronde tiga gambar dan dua pertanyaan. Siswa mengetuk gambar yang hasil baginya sama dengan bilangan yang disebut.", "Ketuk gambar dengan hasil bagi itu.", "👆", 6),
+    C("tap-all-share-compare", "Ketuk Semua Bagian Lebih atau Kurang", "hlm. 64–69 (membandingkan hasil bagi)", "Menemukan semua gambar yang hasil baginya lebih atau kurang dari bilangan acuan.", "Tiga ronde, tiap ronde empat gambar dan satu perintah. Siswa mengetuk semua yang cocok, lalu menekan Periksa.", "Ketuk semua yang cocok, lalu periksa.", "✔️", 3),
+    C("story-divide", "Cerita Pembagian", "hlm. 64, 66, dan 71 (biskuit, manik-manik, kotak telur)", "Menyelesaikan soal cerita pembagian dengan gambar tumpukan dan piring.", "Tiga ronde, tiap ronde dua cerita. Siswa membaca cerita, melihat gambar tumpukan dan piring, lalu memilih hasil baginya.", "Baca cerita, lalu pilih hasil baginya.", "📖", 6),
+    C("board-share-quotient", "Papan Hasil Bagi Kumpulan", "hlm. 64–69 (hasil bagi)", "Menulis hasil bagi pada papan puluhan dan satuan.", "Tiga ronde, tiap ronde dua soal. Siswa menghitung hasil bagi tumpukan, lalu mengatur angka puluhan dan satuan pada papan dan menekan Periksa.", "Isi papan dengan hasil baginya.", "🗂️", 6),
+    C("order-share", "Urutkan Gambar menurut Hasil Bagi", "hlm. 64–69 (membandingkan hasil bagi)", "Mengurutkan tiga gambar menurut hasil baginya.", "Tiga ronde, tiap ronde tiga gambar bertanda huruf. Siswa mengetuk gambar satu per satu dari hasil bagi paling kecil atau paling besar.", "Ketuk gambar menurut hasil baginya.", "📶", 9),
+    P("share-dots", "Bagi Titik", "hlm. 64–65 (membagi sama banyak)", "Membagi sejumlah titik sama banyak ke beberapa kotak dan menentukan isi tiap kotak.", "Tiga ronde, tiap ronde dua soal. Sebuah kotak berisi banyak titik dan beberapa kotak kosong ditampilkan. Siswa memilih satu dari tiga hasil bagi.", "Pilih banyak titik tiap kotak.", "share-dots", 3, 2),
+    P("complete-division-sentence", "Lengkapi Kalimat Pembagian", "hlm. 65 dan 69 (15 : 3 = 5 dan 5 × 3 = 15)", "Melengkapi kalimat pengurangan berulang, pembagian, dan perkalian pemeriksa.", "Tiga soal, tiap soal tiga kalimat, misalnya 15 : 3 = ... Siswa memilih satu dari tiga angka untuk bagian kosong.", "Pilih angka untuk bagian kosong.", "division-sentence", 15, 3),
+    P("match-dots-division", "Jodohkan Titik dan Pembagian", "hlm. 64–69 (menulis pembagian)", "Menjodohkan gambar kotak titik dengan kalimat pembagiannya.", "Tiga ronde, tiap ronde tiga gambar dan tiga pembagian. Siswa mengetuk gambar, lalu mengetuk pembagian yang cocok.", "Ketuk gambar, lalu ketuk pembagiannya.", "dots-division-match", 3, 3),
+    P("memory-dots-quotient", "Memori Titik dan Hasil Bagi", "hlm. 64–69 (hasil bagi)", "Mencocokkan gambar kotak titik dengan hasil baginya lewat permainan memori.", "Tiga ronde, tiap ronde delapan kartu tertutup (empat pasang). Siswa membalik dua kartu dan mencari pasangannya.", "Balik dua kartu, cari titik dan hasil bagi.", "dots-quotient-memory", 3, 4),
+    P("number-line-back", "Loncat Mundur pada Garis Bilangan", "hlm. 65 dan 68 (pengurangan berulang 15 − 3 − 3 − 3 − 3 − 3)", "Menentukan titik pendaratan setelah beberapa loncatan mundur sama besar.", "Tiga ronde, tiap ronde dua soal. Garis bilangan enam titik ditampilkan. Siswa mengetuk titik tempat loncatan mundur terakhir mendarat.", "Ketuk titik pendaratan.", "number-line", 15, 3),
+    P("fill-division-table", "Isi Tabel Pembagian", "hlm. 71 (Ayo Berlatih 2: hitunglah hasil dari pembagian)", "Melengkapi tabel soal pembagian dan hasil baginya.", "Tiga tabel dengan empat baris. Siswa mengetuk baris, lalu mengetuk kartu hasil yang tepat. Ada satu kartu pengecoh.", "Isi tabel dengan kartu hasil.", "division-table", 4, 4),
+    P("tap-all-dots-quotient", "Ketuk Semua Titik Lebih atau Kurang", "hlm. 64–69 (membandingkan hasil bagi)", "Menemukan semua gambar yang hasil baginya lebih atau kurang dari bilangan acuan.", "Tiga ronde, tiap ronde empat gambar dan satu perintah. Siswa mengetuk semua yang cocok, lalu menekan Periksa.", "Ketuk semua yang cocok, lalu periksa.", "dots-select", 4, 4),
+    P("sort-dot-quotient", "Pilah Gambar: Kurang dari 5 atau Lebih", "hlm. 64–69 (membandingkan hasil bagi)", "Memilah gambar kotak titik menjadi yang hasil baginya kurang dari 5 dan yang 5 atau lebih.", "Tiga ronde, tiap ronde enam gambar dan dua kotak. Siswa menyeret atau mengetuk gambar ke kotak yang tepat.", "Pilah gambar ke kotak yang tepat.", "dots-sort", 4, 6),
+    P("check-with-multiplication", "Periksa dengan Perkalian", "hlm. 69 (Catatan Penting: hasil bagi dikali pembagi)", "Memeriksa hasil pembagian dengan perkalian dan menentukan bilangan yang dibagi.", "Tiga ronde, tiap ronde dua soal, misalnya 15 : 3 = 5 maka 5 × 3 = ... Siswa memilih satu dari tiga bilangan.", "Pilih hasil perkalian pemeriksa.", "check-multiplication", 5, 3),
+    P("build-boxes-divide", "Rakit Kotak Pembagi", "hlm. 66–68 (membagikan sampai wadah kosong)", "Menambah kotak berisi titik yang sama sampai jumlahnya sama dengan bilangan yang dibagi.", "Tiga ronde, tiap ronde dua soal. Siswa membaca isi tiap kotak dan jumlah titik yang diminta, lalu menambah atau mengurangi kotak. Banyak kotak adalah hasil baginya.", "Tambah kotak sampai jumlahnya tepat.", "build-boxes", 3, 4),
+    A("repeated-subtraction-abstract", "Tulis Pengurangan Berulang: Lambang", "hlm. 70 (Ayo Berlatih 1: tulislah pembagian sebagai pengurangan berulang)", "Menyatakan pembagian sebagai pengurangan berulang sampai nol.", "Tiga ronde, tiap ronde dua soal (4 : 1, 10 : 10, 16 : 4, 35 : 5, 9 : 1, dan seterusnya). Siswa memilih satu dari tiga kalimat pengurangan berulang.", "Pilih pengurangan berulangnya.", "16:4", "KURANG BERULANG", "bagi • kurang • nol"),
+    A("compute-quotient", "Hitung Hasil Bagi", "hlm. 71 (Ayo Berlatih 2: hitunglah hasil dari pembagian)", "Menghitung hasil pembagian dua bilangan dan memilihnya dari tiga pilihan.", "Tiga ronde, tiap ronde dua soal (6 : 1, 10 : 1, 21 : 3, 24 : 4, 5 : 5, 48 : 6, dan seterusnya). Pengecoh satu lebih dan satu kurang.", "Pilih hasil baginya.", "21:3", "HASIL BAGI", "dibagi • sama dengan"),
+    A("board-quotient", "Papan Hasil Bagi", "hlm. 71 (hasil pembagian 64 : 8 dan 45 : 9)", "Menulis hasil pembagian pada papan puluhan dan satuan.", "Tiga ronde, tiap ronde dua soal. Siswa mengatur angka puluhan dan satuan lalu menekan Periksa.", "Isi papan dengan hasil baginya.", "64:8", "PAPAN", "puluhan • satuan"),
+    A("match-division-multiplication", "Jodohkan Pembagian dan Perkalian", "hlm. 69 (Catatan Penting: hubungan perkalian dan pembagian)", "Menjodohkan soal pembagian dengan perkalian pemeriksanya.", "Tiga ronde, tiap ronde tiga pembagian dan tiga perkalian. Siswa mengetuk pembagian, lalu mengetuk perkalian yang cocok.", "Ketuk pembagian, lalu ketuk perkaliannya.", "15:3", "JODOHKAN", "bagi • kali"),
+    A("memory-division", "Memori Pembagian dan Hasil", "hlm. 71 (soal dan jawaban)", "Mencocokkan soal pembagian dengan hasilnya lewat permainan memori.", "Tiga ronde, tiap ronde delapan kartu tertutup (empat pasang): soal dan hasil. Siswa membalik dua kartu dan mencari pasangannya.", "Balik dua kartu, cari soal dan hasilnya.", "48:6", "MEMORI", "soal • hasil"),
+    A("true-false-division", "Benar atau Salah: Pembagian", "hlm. 64–69 (pengurangan berulang dan hubungan dengan perkalian)", "Menilai pernyataan tentang pembagian dan hasilnya.", "Dua ronde, tiap ronde lima pernyataan. Siswa memilih Benar atau Salah. Pernyataan dihitung dari bilangan, dan tiap jawaban diberi penjelasan.", "Baca pernyataan, lalu pilih benar atau salah.", "✓ ✗", "BENAR SALAH", "periksa dengan alasan"),
+    A("detective-division", "Detektif Pembagian", "hlm. 64–71 (hasil bagi)", "Menemukan bilangan hasil pembagian dari dua petunjuk.", "Empat soal. Siswa membaca petunjuk seperti hasil 48 : 6 dan kurang dari 10, lalu memilih satu dari tiga bilangan. Hanya satu yang cocok.", "Baca petunjuk, lalu pilih bilangannya.", "?", "DETEKTIF", "dua petunjuk, satu jawaban"),
+    A("concept-map-division", "Peta Konsep Pembagian", "hlm. 2 (peta konsep: pembagian bilangan cacah)", "Melengkapi peta konsep pembagian serta hubungan perkalian dan pembagian.", "Dua peta konsep, tiap peta empat kotak. Siswa memilih kartu yang tepat untuk kotak yang menyala.", "Pilih kartu yang tepat untuk kotak yang menyala.", "⇄", "PETA KONSEP", "bagi • kali • hasil"),
+    A("story-division", "Soal Cerita Pembagian", "hlm. 71 dan 73 (Ayo Berlatih 3 dan 4; Asesmen 5)", "Menyelesaikan soal cerita pembagian banyak benda yang dibagi sama banyak.", "Tiga ronde, tiap ronde dua cerita. Siswa membaca cerita lalu memilih satu dari tiga hasil bagi. Pengecoh satu lebih dan satu kurang.", "Baca cerita, lalu pilih hasil baginya.", "24:3", "CERITA", "dibagi sama banyak"),
+    A("sentence-division", "Susun Kata Pembagian", "hlm. 64–69 (pengertian pembagian)", "Menyusun kalimat tentang pembagian dari kartu kata.", "Empat kalimat. Siswa mengetuk kartu kata satu per satu menurut urutan kalimat yang benar. Ada satu kartu pengecoh.", "Susun kartu kata menjadi kalimat.", ":", "SUSUN KATA", "kalimat pembagian"),
+  ],
+  poin: [
+    { ikon: "🍽️", nama: "Membagi sama banyak", isi: "tiap bagian sama banyak", suara: "Membagi berarti memberikan benda sama banyak kepada beberapa bagian." },
+    { ikon: "➖", nama: "Pengurangan berulang", isi: "15 − 3 − 3 − 3 − 3 − 3 = 0", suara: "Pembagian adalah pengurangan berulang sampai habis. Lima belas dikurangi tiga lima kali sama dengan nol." },
+    { ikon: "🏷️", nama: "Nama bilangan", isi: "dibagi : pembagi = hasil bagi", suara: "Pada lima belas dibagi tiga sama dengan lima, ada bilangan yang dibagi, pembagi, dan hasil bagi." },
+    { ikon: "🔄", nama: "Dengan perkalian", isi: "5 × 3 = 15", suara: "Hasil bagi dikali pembagi sama dengan bilangan yang dibagi. Gunakan perkalian untuk memeriksa pembagian." },
+    { ikon: "1️⃣", nama: "Dibagi 1 dan sama", isi: "5 : 1 = 5 dan 6 : 6 = 1", suara: "Bilangan dibagi satu hasilnya bilangan itu sendiri. Bilangan dibagi bilangan yang sama hasilnya satu." },
+  ],
+  poinSuara:
+    "Ingat selalu! Pembagian adalah pengurangan berulang sampai habis, atau membagi sama banyak. Hasil bagi dikali pembagi sama dengan bilangan yang dibagi. Bilangan dibagi satu hasilnya bilangan itu sendiri, dan bilangan dibagi bilangan yang sama hasilnya satu.",
+  cara: {
+    suara: "Cara membagi. Cari bilangan yang dibagi. Cari pembagi. Kurangkan berulang atau ingat perkalian. Lalu periksa dengan perkalian.",
+    potongan: [
+      { teks: "bilangan dibagi", warna: "#BAE6FD" },
+      { teks: "pembagi", warna: "#FECACA" },
+      { teks: "kurang berulang", warna: "#BFDBFE" },
+      { teks: "periksa kali", warna: "#FDE68A" },
+    ],
+  },
+  rumah:
+    "Ayo Mencoba di rumah: siapkan 12 kancing atau biji dan beberapa wadah kecil. Bagikan satu per satu ke wadah sampai habis. Tulis pengurangan berulangnya, tulis pembagiannya, lalu periksa dengan perkalian. Coba juga dengan 15 kancing dan 3 wadah, lalu ceritakan hasilnya.",
+  refleksi: [
+    "Aku dapat menjelaskan pembagian sebagai pengurangan berulang.",
+    "Aku dapat menulis pembagian dari gambar atau cerita.",
+    "Aku dapat menghitung pembagian sampai 100.",
+    "Aku dapat memeriksa pembagian dengan perkalian.",
+  ],
+};
+
+export const SUB_BAB_K3B1: SubBabNaskah[] = [SUB_A31, SUB_B31, SUB_C31, SUB_D31, SUB_E31, SUB_F31, SUB_G31];
 
 /** Semua adegan video, urut sub-bab, video, adegan. Dipakai uji. */
 export const semuaAdeganK3B1 = SUB_BAB_K3B1.flatMap((s) => s.videos.flatMap((v) => v.adegan));

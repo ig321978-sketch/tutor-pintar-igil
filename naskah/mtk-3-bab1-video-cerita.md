@@ -49,3 +49,11 @@ Daftar semua video cerita animasi HTML/SVG gratis (tanpa berkas video, tanpa API
 | K3B1F-V1 | Pensil dan Bunga Melati | Perkalian sebagai penjumlahan berulang | Lima kelompok pensil; Empat kelompok melati; Membaca perkalian |
 | K3B1F-V2 | Mobil Mainan | Menukar tempat bilangan | Lima kelompok mobil; Enam kelompok mobil; Tukar tempat |
 | K3B1F-V3 | Gelas dan Kerikil | Aktivitas 4: Perkalian | Siapkan gelas dan kerikil; Jumlahkan kerikil; Ulangi dengan 4 gelas |
+
+## Sub-Bab G: Pembagian Bilangan Cacah sampai 100
+
+| Video | Judul | Subjudul | Adegan |
+|---|---|---|---|
+| K3B1G-V1 | Biskuit Ibu | Pembagian sebagai pengurangan berulang | Bagi biskuit; Kurangi berulang; Tulis pembagian |
+| K3B1G-V2 | Manik-Manik Kelompok | Aktivitas 5: Pembagian | Siapkan manik-manik; Hitung yang diperoleh; Tulis pembagian |
+| K3B1G-V3 | Perkalian dan Pembagian | Dua operasi yang berkaitan | Dari pembagian ke perkalian; Saling berkaitan; Contoh lain |

@@ -1587,3 +1587,248 @@ export const RONDE_SUSUNKATA_QF: { kata: string[]; pengecoh: string }[] = [
   { kata: ["5", "×", "6", "sama", "dengan", "6", "×", "5"], pengecoh: "kurang" },
   { kata: ["Banyak", "kelompok", "dikali", "isi", "tiap", "kelompok"], pengecoh: "dibagi" },
 ];
+
+/* ====================================================================== */
+/* SUB-BAB G. Pembagian bilangan cacah sampai 100                           */
+/* ====================================================================== */
+
+/** [yang dibagi, pembagi]. 15 dibagi 3 ditulis [15, 3]. Hasil bagi selalu bilangan cacah tanpa sisa. */
+export type Bagi = [number, number];
+export const hasilBagi = (p: Bagi): number => p[0] / p[1];
+export const teksBagi = (p: Bagi): string => `${p[0]} : ${p[1]}`;
+/** Pengurangan berulang: "15 − 3 − 3 − 3 − 3 − 3". */
+export const teksKurangBerulang = (p: Bagi, banyak: number = hasilBagi(p)): string => [String(p[0]), ...Array.from({ length: banyak }, () => String(p[1]))].join(" − ");
+/** Perkalian pemeriksa: "5 × 3 = 15". */
+export const teksPeriksaBagi = (p: Bagi): string => `${hasilBagi(p)} × ${p[1]} = ${p[0]}`;
+/** Pilihan hasil bagi: kunci, satu lebih, satu kurang. */
+export function opsiBagi(p: Bagi, nomor: number): number[] {
+  const q = hasilBagi(p);
+  const semua = [q, q + 1, q > 1 ? q - 1 : q + 2];
+  return urutanTetap(3, 2, nomor).map((i) => semua[i]);
+}
+/** Tiga kalimat pengurangan berulang sampai nol: kunci, satu kali lebih banyak, satu kali lebih sedikit. */
+export function opsiKurang(p: Bagi, nomor: number): { opsi: string[]; jawab: number } {
+  const q = hasilBagi(p);
+  const tulis = (banyak: number) => `${teksKurangBerulang(p, banyak)} = 0`;
+  return susunOpsi(tulis(q), [tulis(q + 1), tulis(q > 1 ? q - 1 : q + 2)], nomor);
+}
+export const cocokBagi = (p: Bagi, acuan: number, arah: "lebih" | "kurang"): boolean => (arah === "lebih" ? hasilBagi(p) > acuan : hasilBagi(p) < acuan);
+export type SoalBagi = { benda: BendaId; p: Bagi };
+export const kunciBagi = (s: SoalBagi): string => `${s.benda}-${s.p[0]}-${s.p[1]}`;
+
+/* ------------------------------ Concrete G ------------------------------ */
+
+/** CG1 Bagikan Bergiliran: ketua membagikan satu benda ke tiap piring sampai wadah kosong (Aktivitas 5). */
+export const RONDE_BAGI_CG: SoalBagi[][] = [
+  [{ benda: "kue", p: [12, 2] }, { benda: "kelereng", p: [15, 3] }],
+  [{ benda: "jeruk", p: [20, 4] }, { benda: "pensil", p: [18, 3] }],
+  [{ benda: "anggur", p: [24, 4] }, { benda: "ikan", p: [30, 5] }],
+];
+/** CG2 Hitung Bagian: tumpukan dibagi sama banyak ke beberapa piring. */
+export const RONDE_HITUNG_CG: SoalBagi[][] = [
+  [{ benda: "kue", p: [12, 2] }, { benda: "jeruk", p: [18, 3] }],
+  [{ benda: "kelereng", p: [20, 4] }, { benda: "anggur", p: [24, 6] }],
+  [{ benda: "ikan", p: [30, 5] }, { benda: "pensil", p: [36, 6] }],
+];
+/** CG3 Tulis Pengurangan Berulang. */
+export const RONDE_TULIS_CG: SoalBagi[][] = [
+  [{ benda: "kue", p: [8, 2] }, { benda: "jeruk", p: [12, 3] }],
+  [{ benda: "kelereng", p: [15, 3] }, { benda: "anggur", p: [16, 4] }],
+  [{ benda: "ikan", p: [20, 5] }, { benda: "pensil", p: [18, 6] }],
+];
+/** CG4 Jodohkan Gambar dan Pembagian. */
+export const RONDE_PASANG_CG: { benda: BendaId; bagi: Bagi[] }[] = [
+  { benda: "kue", bagi: [[12, 2], [15, 3], [16, 4]] },
+  { benda: "kelereng", bagi: [[18, 3], [20, 5], [14, 2]] },
+  { benda: "jeruk", bagi: [[21, 3], [24, 6], [32, 4]] },
+];
+/** CG5 Memori Gambar dan Hasil Bagi. */
+export const RONDE_MEMORI_CG: { benda: BendaId; bagi: Bagi[] }[] = [
+  { benda: "kue", bagi: [[12, 2], [15, 3], [16, 4], [18, 6]] },
+  { benda: "pensil", bagi: [[14, 2], [20, 4], [24, 3], [27, 9]] },
+  { benda: "anggur", bagi: [[10, 5], [18, 2], [28, 4], [30, 5]] },
+];
+/** CG6 Ketuk Gambar dengan Hasil Bagi Tertentu. */
+export const RONDE_KETUK_CG: { benda: BendaId; item: Bagi[]; tanya: number[] }[] = [
+  { benda: "kue", item: [[12, 2], [15, 3], [16, 4]], tanya: [5, 6] },
+  { benda: "kelereng", item: [[18, 3], [20, 5], [14, 2]], tanya: [7, 4] },
+  { benda: "jeruk", item: [[21, 3], [24, 6], [32, 4]], tanya: [8, 4] },
+];
+/** CG7 Ketuk Semua Gambar dengan Hasil Bagi Lebih atau Kurang. */
+export const RONDE_SEMUA_CG: { benda: BendaId; acuan: number; arah: "lebih" | "kurang"; bagi: Bagi[] }[] = [
+  { benda: "kue", acuan: 4, arah: "lebih", bagi: [[12, 2], [8, 4], [18, 3], [9, 3]] },
+  { benda: "kelereng", acuan: 5, arah: "kurang", bagi: [[24, 4], [12, 4], [18, 6], [35, 5]] },
+  { benda: "jeruk", acuan: 6, arah: "lebih", bagi: [[21, 3], [10, 2], [32, 4], [12, 3]] },
+];
+/** CG8 Cerita Pembagian. */
+export const RONDE_CERITA_CG: SoalBagi[][] = [
+  [{ benda: "jeruk", p: [12, 2] }, { benda: "kelereng", p: [15, 3] }],
+  [{ benda: "kue", p: [24, 3] }, { benda: "anggur", p: [36, 6] }],
+  [{ benda: "pensil", p: [48, 8] }, { benda: "lidi", p: [35, 5] }],
+];
+export const TEKS_CERITA_CG: Record<string, string> = {
+  "jeruk-12-2": "Ibu punya 12 jeruk. Jeruk dibagikan sama banyak kepada 2 anak. Berapa jeruk yang diterima tiap anak?",
+  "kelereng-15-3": "Ketua kelompok punya 15 kelereng. Kelereng dibagikan sama banyak kepada 3 anggota. Berapa kelereng yang diterima tiap anggota?",
+  "kue-24-3": "Ayah membuat 24 kue cubit. Kue cubit dimasukkan ke dalam 3 kotak sama banyak. Berapa kue cubit di tiap kotak?",
+  "anggur-36-6": "Kakak membeli 36 buah anggur. Anggur dibagikan kepada 6 teman sama banyak hingga habis. Berapa anggur yang diterima tiap teman?",
+  "pensil-48-8": "Ibu guru membawa 48 pensil. Pensil diletakkan di atas 8 meja dengan sama banyak. Berapa pensil di tiap meja?",
+  "lidi-35-5": "Pak Doni punya 35 lidi. Lidi diikat menjadi 5 ikat sama banyak. Berapa lidi di tiap ikat?",
+};
+/** CG9 Papan Hasil Bagi. */
+export const RONDE_PAPAN_CG: SoalBagi[][] = [
+  [{ benda: "kue", p: [20, 2] }, { benda: "jeruk", p: [18, 3] }],
+  [{ benda: "kelereng", p: [28, 4] }, { benda: "pensil", p: [30, 3] }],
+  [{ benda: "anggur", p: [35, 5] }, { benda: "ikan", p: [40, 4] }],
+];
+/** CG10 Urutkan Gambar menurut Hasil Bagi. */
+export const RONDE_URUT_CG: { benda: BendaId; item: Bagi[]; dari: "kecil" | "besar" }[] = [
+  { benda: "kue", item: [[12, 2], [15, 3], [16, 4]], dari: "kecil" },
+  { benda: "jeruk", item: [[18, 3], [20, 5], [14, 2]], dari: "besar" },
+  { benda: "kelereng", item: [[21, 3], [24, 6], [32, 4]], dari: "kecil" },
+];
+
+/* ------------------------------ Picture G ------------------------------ */
+
+/** PG1 Bagi Titik: sebuah kotak berisi banyak titik dibagi sama banyak ke beberapa kotak. */
+export const RONDE_BAGI_PG: Bagi[][] = [[[12, 2], [15, 3]], [[20, 4], [18, 3]], [[24, 4], [30, 5]]];
+/** PG2 Lengkapi Kalimat Pembagian: pengurangan berulang, pembagian, dan perkalian pemeriksa. */
+export const RONDE_KALIMAT_PG: Bagi[] = [[15, 3], [20, 4], [24, 6]];
+export function kalimatBagi(p: Bagi, nomor: number): KalimatIsian[] {
+  const [t, g] = p;
+  const q = hasilBagi(p);
+  const pil = (v: number, i: number) => {
+    const semua = [v, v + 1, v > 1 ? v - 1 : v + 2];
+    const opsi = urutanTetap(3, 2, nomor + i).map((x) => semua[x]);
+    return { opsi: opsi.map(String), benar: opsi.indexOf(v) };
+  };
+  return [
+    { depan: `Bilangan ${g} dikurangkan dari ${t} sebanyak`, belakang: "kali sampai habis.", ...pil(q, 0) },
+    { depan: `${t} : ${g} =`, belakang: ".", ...pil(q, 1) },
+    { depan: "", belakang: `× ${g} = ${t}.`, ...pil(q, 2) },
+  ];
+}
+/** PG3 Jodohkan Titik dan Pembagian. */
+export const RONDE_PASANG_PG: Bagi[][] = [[[10, 2], [18, 3], [28, 4]], [[16, 2], [15, 5], [24, 4]], [[27, 3], [20, 5], [12, 6]]];
+/** PG4 Memori Titik dan Hasil Bagi. */
+export const RONDE_MEMORI_PG: Bagi[][] = [[[14, 2], [12, 3], [20, 4], [18, 6]], [[16, 2], [21, 3], [24, 4], [25, 5]], [[10, 2], [12, 4], [18, 3], [28, 4]]];
+/** PG5 Loncat Mundur pada Garis Bilangan: mulai dari t, mundur k kali sebesar d. Garis enam titik (t = 5d). */
+export type SoalMundur = { t: number; d: number; k: number };
+export const RONDE_GARIS_PG: SoalMundur[][] = [[{ t: 15, d: 3, k: 2 }, { t: 20, d: 4, k: 3 }], [{ t: 10, d: 2, k: 4 }, { t: 25, d: 5, k: 2 }], [{ t: 30, d: 6, k: 3 }, { t: 40, d: 8, k: 4 }]];
+/** PG6 Isi Tabel Pembagian (Ayo Berlatih 2). */
+export type TabelBagi = { kepala: [string, string]; baris: { label: string; jawab: string }[]; kartu: string[] };
+function tabelBagi(daftar: Bagi[], tambahan: number): TabelBagi {
+  const baris = daftar.map((p) => ({ label: teksBagi(p), jawab: String(hasilBagi(p)) }));
+  const pakai = new Set(baris.map((b) => Number(b.jawab)));
+  let asing = hasilBagi(daftar[0]) + 2;
+  while (pakai.has(asing)) asing += 1;
+  const kartu = urutanTetap(daftar.length + 1, 2, tambahan).map((i) => (i < daftar.length ? baris[i].jawab : String(asing)));
+  return { kepala: ["Soal", "Hasil"], baris, kartu };
+}
+export const RONDE_TABEL_PG: TabelBagi[] = [
+  tabelBagi([[21, 3], [24, 4], [48, 6], [45, 9]], 1),
+  tabelBagi([[10, 1], [6, 1], [35, 5], [64, 8]], 2),
+  tabelBagi([[16, 4], [5, 5], [18, 3], [27, 3]], 3),
+];
+/** PG7 Ketuk Semua Titik dengan Hasil Bagi Lebih atau Kurang. */
+export const RONDE_SEMUA_PG: { acuan: number; arah: "lebih" | "kurang"; bagi: Bagi[] }[] = [
+  { acuan: 4, arah: "lebih", bagi: [[10, 2], [6, 3], [24, 4], [8, 4]] },
+  { acuan: 5, arah: "kurang", bagi: [[16, 2], [12, 4], [18, 6], [28, 4]] },
+  { acuan: 6, arah: "lebih", bagi: [[28, 4], [10, 5], [40, 5], [9, 3]] },
+];
+/** PG8 Pilah Gambar: hasil bagi kurang dari 5 atau 5 atau lebih. */
+export const RONDE_SORTIR_PG: Bagi[][] = [
+  [[12, 3], [30, 5], [8, 2], [40, 5], [9, 3], [35, 5]],
+  [[16, 4], [27, 3], [10, 5], [32, 4], [6, 2], [28, 4]],
+  [[10, 2], [12, 6], [18, 3], [15, 5], [24, 4], [8, 4]],
+];
+export const limaAtauLebih = (p: Bagi): boolean => hasilBagi(p) >= 5;
+/** PG9 Periksa dengan Perkalian: t : g = q, maka q × g = ... */
+export const RONDE_PERIKSA_PG: Bagi[][] = [[[15, 3], [20, 4]], [[24, 6], [18, 2]], [[30, 5], [27, 3]]];
+export function opsiPeriksa(p: Bagi, nomor: number): number[] {
+  const [t, g] = p;
+  const semua = [t, t + g, t - g];
+  return urutanTetap(3, 2, nomor).map((i) => semua[i]);
+}
+/** PG10 Rakit Kotak: [total, isi tiap kotak]. Banyak kotak = total dibagi isi. */
+export const RONDE_RAKIT_PG: Bagi[][] = [[[12, 3], [20, 5]], [[18, 2], [24, 4]], [[30, 6], [16, 4]]];
+
+/* ------------------------------ Abstract G ------------------------------ */
+
+/** QG1 Tulis Pengurangan Berulang (Ayo Berlatih 1). */
+export const RONDE_KURANG_QG: Bagi[][] = [[[4, 1], [10, 10]], [[16, 4], [35, 5]], [[9, 1], [12, 2]]];
+/** QG2 Hitung Hasil Bagi (Ayo Berlatih 2). */
+export const RONDE_HITUNG_QG: Bagi[][] = [[[6, 1], [10, 1]], [[21, 3], [24, 4]], [[5, 5], [48, 6]]];
+/** QG3 Papan Hasil Bagi. */
+export const RONDE_PAPAN_QG: Bagi[][] = [[[64, 8], [45, 9]], [[72, 9], [56, 7]], [[90, 10], [60, 6]]];
+/** QG4 Jodohkan Pembagian dan Perkalian. */
+export const RONDE_PASANG_QG: Bagi[][] = [[[21, 3], [24, 4], [48, 6]], [[35, 5], [64, 8], [45, 9]], [[16, 4], [27, 3], [56, 7]]];
+/** QG5 Memori Pembagian dan Hasil. */
+export const RONDE_MEMORI_QG: Bagi[][] = [[[21, 3], [24, 4], [48, 6], [45, 9]], [[12, 3], [35, 7], [54, 6], [63, 9]], [[81, 9], [56, 8], [36, 6], [25, 5]]];
+/** QG6 Benar atau Salah. */
+export const RONDE_BENARSALAH_QG: Pernyataan[][] = [
+  [
+    { teks: "15 : 3 = 5.", benar: true, penjelasan: "15 − 3 − 3 − 3 − 3 − 3 = 0. Bilangan 3 dikurangkan 5 kali, jadi 15 : 3 = 5." },
+    { teks: "Pembagian adalah pengurangan berulang sampai habis.", benar: true, penjelasan: "Contoh: 12 − 2 − 2 − 2 − 2 − 2 − 2 = 0, ditulis 12 : 2 = 6." },
+    { teks: "6 : 6 = 6.", benar: false, penjelasan: "6 − 6 = 0. Bilangan 6 hanya dikurangkan 1 kali, jadi 6 : 6 = 1." },
+    { teks: "5 : 1 = 1.", benar: false, penjelasan: "5 − 1 − 1 − 1 − 1 − 1 = 0. Bilangan 1 dikurangkan 5 kali, jadi 5 : 1 = 5." },
+    { teks: "Hasil bagi dikali pembagi sama dengan bilangan yang dibagi.", benar: true, penjelasan: "Contoh: 15 : 3 = 5 dan 5 × 3 = 15." },
+  ],
+  [
+    { teks: "28 : 7 = 4.", benar: true, penjelasan: "28 − 7 − 7 − 7 − 7 = 0. Bilangan 7 dikurangkan 4 kali." },
+    { teks: "36 : 4 = 8.", benar: false, penjelasan: "36 dikurangi 4 sebanyak 9 kali baru habis, jadi 36 : 4 = 9." },
+    { teks: "10 : 1 = 10.", benar: true, penjelasan: "Bilangan 1 dikurangkan 10 kali dari 10, jadi 10 : 1 = 10." },
+    { teks: "Pada 15 : 3 = 5, bilangan 3 dikurangkan sebanyak 5 kali.", benar: true, penjelasan: "15 − 3 − 3 − 3 − 3 − 3 = 0, ada lima kali pengurangan." },
+    { teks: "Bila 5 × 3 = 15, maka 15 : 3 = 3.", benar: false, penjelasan: "15 : 3 = 5. Hasil bagi sama dengan bilangan pertama pada perkalian tadi." },
+  ],
+];
+/** QG7 Detektif Pembagian. */
+export const RONDE_DETEKTIF_QG: SoalDetektif[] = [
+  { klue: ["Aku adalah hasil 48 : 6.", "Aku kurang dari 10."], jawab: 8, opsi: [8, 6, 12], salah: "48 : 6 = 8, karena 8 × 6 = 48." },
+  { klue: ["Aku adalah hasil 45 : 9.", "Aku lebih dari 4 dan kurang dari 6."], jawab: 5, opsi: [5, 9, 4], salah: "45 : 9 = 5, karena 5 × 9 = 45." },
+  { klue: ["Bila aku dikali 3, hasilnya 21.", "Aku kurang dari 10."], jawab: 7, opsi: [7, 18, 63], salah: "7 × 3 = 21, jadi bilangan itu 7." },
+  { klue: ["Aku adalah hasil 64 : 8.", "Aku bilangan genap."], jawab: 8, opsi: [8, 7, 9], salah: "64 : 8 = 8, karena 8 × 8 = 64. Delapan adalah bilangan genap." },
+];
+/** QG8 Peta Konsep Pembagian. */
+export const PETA_KONSEP_QG: { pusat: string; kotak: KotakPeta[] }[] = [
+  {
+    pusat: "Pembagian",
+    kotak: [
+      { label: "Pembagian adalah pengurangan", opsi: ["berulang sampai habis", "satu kali saja", "tanpa batas"], benar: 0 },
+      { label: "15 : 3 berarti 15 dikurangi", opsi: ["3 berulang kali", "5 satu kali", "3 dan 5"], benar: 0 },
+      { label: "Pada 15 : 3 = 5, hasil baginya", opsi: ["5", "3", "15"], benar: 0 },
+      { label: "Menurutku, 12 : 2 hasilnya", opsi: ["6", "10", "14"], benar: 0 },
+    ],
+  },
+  {
+    pusat: "Perkalian dan pembagian",
+    kotak: [
+      { label: "15 : 3 = 5 berkaitan dengan", opsi: ["5 × 3 = 15", "5 + 3 = 8", "15 − 3 = 12"], benar: 0 },
+      { label: "Hasil bagi dikali pembagi sama dengan", opsi: ["bilangan yang dibagi", "hasil bagi", "pembagi"], benar: 0 },
+      { label: "Bilangan yang dibagi pada 15 : 3 adalah", opsi: ["15", "3", "5"], benar: 0 },
+      { label: "Menurutku, 6 × 4 = 24 berarti 24 : 4 sama dengan", opsi: ["6", "20", "28"], benar: 0 },
+    ],
+  },
+];
+/** QG9 Soal Cerita Pembagian (Ayo Berlatih 3 dan 4, Asesmen 5). */
+export type CeritaBagi = { teks: string; p: Bagi };
+export const RONDE_CERITA_QG: CeritaBagi[][] = [
+  [
+    { teks: "Paman membeli 3 mobil-mobilan yang akan diberikan kepada 3 keponakannya. Berapa mobil-mobilan yang diterima setiap keponakan?", p: [3, 3] },
+    { teks: "Ayah memasukkan 24 telur ke dalam 3 kotak. Setiap kotak berisi telur sama banyak. Berapa telur dalam setiap kotak?", p: [24, 3] },
+  ],
+  [
+    { teks: "Kakak membeli 36 apel dan membagikannya kepada 6 teman sama banyak hingga habis. Berapa apel yang diterima masing-masing teman?", p: [36, 6] },
+    { teks: "Ibu guru membawa 48 buku dan meletakkannya di atas 8 meja dengan sama banyak. Berapa buku yang terdapat di setiap meja?", p: [48, 8] },
+  ],
+  [
+    { teks: "Sebuah toko mainan membagikan 63 balon secara gratis selama 7 hari. Balon yang dibagikan setiap hari sama banyak. Berapa balon yang dibagikan setiap hari?", p: [63, 7] },
+    { teks: "Ada 20 lembar daun yang dibagi sama banyak kepada 4 siswa dalam satu kelompok. Berapa lembar daun untuk setiap siswa?", p: [20, 4] },
+  ],
+];
+/** QG10 Susun Kata Pembagian. */
+export const RONDE_SUSUNKATA_QG: { kata: string[]; pengecoh: string }[] = [
+  { kata: ["Pembagian", "adalah", "pengurangan", "berulang", "sampai", "habis"], pengecoh: "penjumlahan" },
+  { kata: ["15", "dibagi", "3", "sama", "dengan", "5"], pengecoh: "dikali" },
+  { kata: ["Hasil", "bagi", "dikali", "pembagi", "sama", "dengan", "bilangan", "yang", "dibagi"], pengecoh: "dikurangi" },
+  { kata: ["Bilangan", "3", "dikurangkan", "5", "kali", "sampai", "habis"], pengecoh: "ditambah" },
+];

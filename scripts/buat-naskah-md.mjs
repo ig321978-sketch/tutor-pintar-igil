@@ -10,7 +10,7 @@ const KONFIG = {
     bab: 1,
     judul: "Bilangan Cacah sampai 1.000",
     buku: "Buku Siswa Matematika Kelas III (Kemendikbudristek, Kurikulum Merdeka, Bab 1 hlm. 3–45) dan Buku Panduan Guru Bab 1",
-    berkas: { A: "sub-a-bilangan-dan-lambang", B: "sub-b-nilai-tempat", C: "sub-c-membandingkan-mengurutkan", D: "sub-d-penjumlahan-sampai-100", E: "sub-e-pengurangan-sampai-100", F: "sub-f-perkalian-sampai-100" },
+    berkas: { A: "sub-a-bilangan-dan-lambang", B: "sub-b-nilai-tempat", C: "sub-c-membandingkan-mengurutkan", D: "sub-d-penjumlahan-sampai-100", E: "sub-e-pengurangan-sampai-100", F: "sub-f-perkalian-sampai-100", G: "sub-g-pembagian-sampai-100" },
     metodeLuar: {
       A: [
         "**Balok Dienes (blok satuan, batang puluhan, lempeng ratusan)**: bilangan dilihat sebagai benda yang bisa dihitung dan ditukar sepuluh-ke-satu. Dasar permainan Rakit Kemasan, Hitung Blok, dan Isi Tabel Blok.",
@@ -59,6 +59,14 @@ const KONFIG = {
         "**Menukar tempat bilangan (sifat komutatif)**: 5 × 6 = 6 × 5. Dua susunan piring dibandingkan, lalu soal Tukar Faktor menguji hasilnya.",
         "**Banyak kelompok dan isi tiap kelompok**: bilangan pertama pada perkalian adalah banyak kelompok, bilangan kedua isi tiap kelompok. Pengecoh sengaja memuat satu kelompok lebih dan satu kelompok kurang.",
         "**Aktivitas 4 dengan gelas dan kerikil**: kegiatan buku diwujudkan dalam video (5 gelas × 4 kerikil dan 4 gelas × 7 kerikil) dan permainan Papan Hasil Kelompok.",
+      ],
+      G: [
+        "**Bagikan bergiliran (Aktivitas 5)**: ketua membagikan satu benda ke tiap piring, lagi dan lagi, sampai tumpukan habis. Mesin Bagikan Bergiliran menampilkan kalimat pengurangan berulang yang bertambah panjang tiap putaran.",
+        "**Pembagian sebagai pengurangan berulang**: 15 : 3 = 5 karena 15 − 3 − 3 − 3 − 3 − 3 = 0. Permainan Tulis Pengurangan Berulang dan Loncat Mundur pada Garis Bilangan melatih dua cara menulisnya.",
+        "**Hubungan perkalian dan pembagian**: Catatan Penting buku (hasil bagi × pembagi = bilangan yang dibagi). Permainan Periksa dengan Perkalian dan Jodohkan Pembagian dan Perkalian memakai ini.",
+        "**Rakit kotak sebagai pembagian terukur**: diketahui total titik dan isi tiap kotak, siswa mencari banyak kotak. Mesin yang sama dengan perkalian dipakai dengan arah berlawanan.",
+        "**Pembagian khusus**: bilangan dibagi 1 tetap bilangan itu, dan bilangan dibagi bilangan yang sama hasilnya 1. Soal Ayo Berlatih 1 (4 : 1, 9 : 1, 10 : 10) dipakai langsung.",
+        "**Pengecoh dari kesalahan umum**: pilihan jawaban memuat satu kali pengurangan lebih banyak atau lebih sedikit, serta hasil bagi satu lebih atau satu kurang.",
       ],
     },
   },

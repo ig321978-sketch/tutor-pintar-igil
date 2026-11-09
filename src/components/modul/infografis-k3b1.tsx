@@ -756,3 +756,119 @@ export function visualInfografisK3B1F(): React.ReactNode[] {
     </KotakPoster>,
   ];
 }
+
+/* ====================================================================== */
+/* Sub-Bab G                                                                */
+/* ====================================================================== */
+
+/** Garis bilangan kecil: loncatan mundur sama besar dari t sampai nol. Hanya diagram. */
+const GarisMundur = ({ d, k }: { d: number; k: number }) => {
+  const lebar = 280;
+  const awal = 20;
+  const langkah = (lebar - 2 * awal) / k;
+  return (
+    <svg viewBox={`0 0 ${lebar} 70`} className="mx-auto block w-full max-w-[300px]" role="img" aria-label={`${k} loncatan mundur sebesar ${d} dari ${k * d} sampai 0`}>
+      <line x1={awal - 8} x2={lebar - awal + 8} y1="48" y2="48" stroke="#1C01A5" strokeWidth="3" strokeLinecap="round" />
+      {Array.from({ length: k + 1 }, (_, i) => (
+        <g key={i}>
+          <line x1={awal + i * langkah} x2={awal + i * langkah} y1="42" y2="54" stroke="#1C01A5" strokeWidth="3" />
+          <text x={awal + i * langkah} y="68" textAnchor="middle" fontSize="12" fontWeight="900" fill="#1C01A5">
+            {i * d}
+          </text>
+        </g>
+      ))}
+      {Array.from({ length: k }, (_, i) => (
+        <path key={i} d={`M ${awal + (i + 1) * langkah} 44 Q ${awal + (i + 0.5) * langkah} 6 ${awal + i * langkah} 44`} fill="none" stroke="#DC2626" strokeWidth="2.6" strokeLinecap="round" />
+      ))}
+    </svg>
+  );
+};
+
+export function visualInfografisK3B1G(): React.ReactNode[] {
+  return [
+    /* 1 Membagi Sama Banyak */
+    <KotakPoster key="1" warna="#DCFCE7">
+      <div className="flex justify-center">
+        <TitikKotak k={2} n={6} />
+      </div>
+      <div className="flex justify-center pt-1">
+        <Chip warna="#BBF7D0">12 : 2 = 6</Chip>
+      </div>
+    </KotakPoster>,
+    /* 2 Dua Belas Dibagi Dua */
+    <KotakPoster key="2" warna="#FEE2E2">
+      <div className="space-y-1 text-center">
+        <p className="text-sm font-black text-[#DC2626]">12 − 2 − 2 − 2 − 2 − 2 − 2 = 0</p>
+        <Chip>dikurangi 6 kali, jadi 12 : 2 = 6</Chip>
+      </div>
+    </KotakPoster>,
+    /* 3 Pengurangan Berulang */
+    <KotakPoster key="3" warna="#DBEAFE">
+      <div className="space-y-1 text-center">
+        <Chip warna="#BAE6FD">15 − 3 − 3 − 3 − 3 − 3 = 0</Chip>
+        <Cap>pengurangan berulang sampai habis disebut pembagian</Cap>
+      </div>
+    </KotakPoster>,
+    /* 4 Lima Belas Dibagi Tiga */
+    <KotakPoster key="4" warna="#FEF9C3">
+      <div className="flex justify-center">
+        <TitikKotak k={3} n={5} />
+      </div>
+      <div className="flex justify-center pt-1">
+        <Chip>15 : 3 = 5</Chip>
+      </div>
+    </KotakPoster>,
+    /* 5 Nama Bilangan */
+    <KotakPoster key="5" warna="#FFFBEB">
+      <div className="flex items-end justify-center gap-2 text-center">
+        <div>
+          <p className="text-4xl font-black text-[#1D4ED8]">15</p>
+          <Cap warna="#1D4ED8">dibagi</Cap>
+        </div>
+        <Tanda>:</Tanda>
+        <div>
+          <p className="text-4xl font-black text-[#DC2626]">3</p>
+          <Cap warna="#DC2626">pembagi</Cap>
+        </div>
+        <Tanda>=</Tanda>
+        <div>
+          <p className="text-4xl font-black text-[#16A34A]">5</p>
+          <Cap warna="#16A34A">hasil bagi</Cap>
+        </div>
+      </div>
+    </KotakPoster>,
+    /* 6 Garis Bilangan Mundur */
+    <KotakPoster key="6" warna="#E0E7FF">
+      <GarisMundur d={3} k={5} />
+      <Cap>5 loncatan mundur sebesar 3 sampai 0</Cap>
+    </KotakPoster>,
+    /* 7 Perkalian Pemeriksa */
+    <KotakPoster key="7" warna="#F5F3FF">
+      <div className="space-y-1 text-center">
+        <Chip warna="#BFDBFE">15 : 3 = 5</Chip>
+        <p className="text-lg font-black text-[#1C01A5]">↕</p>
+        <Chip warna="#FECACA">5 × 3 = 15</Chip>
+        <Cap>hasil bagi × pembagi = bilangan yang dibagi</Cap>
+      </div>
+    </KotakPoster>,
+    /* 8 Dibagi Satu dan Bilangan Sama */
+    <KotakPoster key="8" warna="#E0F2FE">
+      <div className="space-y-1 text-center">
+        <Chip>5 : 1 = 5</Chip>
+        <Chip warna="#FECACA">6 : 6 = 1</Chip>
+        <Cap>dibagi 1 tetap, dibagi bilangan sama jadi 1</Cap>
+      </div>
+    </KotakPoster>,
+    /* 9 Soal Cerita */
+    <KotakPoster key="9" warna="#ECFCCB">
+      <div className="space-y-1 text-center">
+        <p className="text-sm font-black text-[#1C01A5]">24 telur dibagi ke 3 kotak</p>
+        <Chip>24 : 3 = 8 telur tiap kotak</Chip>
+      </div>
+    </KotakPoster>,
+    /* 10 Cara Membagi */
+    <KotakPoster key="10" warna="#FFFBEB">
+      <Langkah daftar={["1. Cari bilangan yang dibagi", "2. Cari pembagi", "3. Kurangkan berulang atau ingat perkalian", "4. Periksa dengan perkalian"]} warna={["#BAE6FD", "#FECACA", "#BFDBFE", "#FDE68A"]} />
+    </KotakPoster>,
+  ];
+}

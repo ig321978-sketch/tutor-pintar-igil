@@ -33,19 +33,50 @@ export function KurangKoleksi({ a, b, benda, ukuran = 30, lebar = "penuh" }: { a
 
 /** Satu piring berisi n benda, disusun tiga kolom. */
 function Piring({ n, benda, ukuran }: { n: number; benda: BendaId; ukuran: number }) {
-  const kolom = n <= 3 ? n : n <= 4 ? 2 : 3;
+  const kolom = Math.max(1, n <= 3 ? n : n <= 4 ? 2 : 3);
   const kecil = ukuran < 10;
   const sel = ukuran + 2;
   return (
     <span
       className={`inline-grid shrink-0 items-center justify-items-center bg-white border-[#1C01A5]/60 ${kecil ? "rounded-lg border-2 px-0.5 py-0.5" : "rounded-2xl border-[3px] px-1 py-1"}`}
-      style={{ gridTemplateColumns: `repeat(${kolom}, ${sel}px)`, width: kolom * sel + (kecil ? 8 : 14) }}
+      style={{ gridTemplateColumns: `repeat(${kolom}, ${sel}px)`, width: kolom * sel + (kecil ? 8 : 14), minHeight: n === 0 ? 38 : undefined }}
       aria-hidden="true"
     >
       {Array.from({ length: n }, (_, i) => (
         <BendaB7 key={i} id={benda} ukuran={ukuran} />
       ))}
     </span>
+  );
+}
+
+/** Tumpukan n benda lepas (bahan yang akan dibagi, tahap Concrete). */
+export function TumpukanBenda({ n, benda, ukuran = 14 }: { n: number; benda: BendaId; ukuran?: number }) {
+  return (
+    <span className="inline-flex max-w-full flex-wrap items-center justify-center gap-0.5 rounded-2xl border-[3px] border-[#1C01A5]/50 bg-white px-1.5 py-1" role="img" aria-label={`Tumpukan ${n} ${BENDA_INFO[benda].nama}`}>
+      {n === 0 ? <span className="px-2 text-xs font-black text-[#1C01A5]/50">habis</span> : Array.from({ length: n }, (_, i) => <BendaB7 key={i} id={benda} ukuran={ukuran} />)}
+    </span>
+  );
+}
+
+/** g piring kosong yang menunggu pembagian. */
+export function PiringKosong({ g }: { g: number }) {
+  return (
+    <span className="inline-flex max-w-full flex-wrap items-center justify-center gap-1.5" role="img" aria-label={`${g} piring kosong`}>
+      {Array.from({ length: g }, (_, i) => (
+        <span key={i} className="inline-block h-9 w-12 rounded-xl border-[3px] border-dashed border-[#1C01A5]/50 bg-[#FEF3C7]" aria-hidden="true" />
+      ))}
+    </span>
+  );
+}
+
+/** Awal pembagian: tumpukan t benda dan g piring kosong. */
+export function BagiAwal({ t, g, benda, ukuran = 13 }: { t: number; g: number; benda: BendaId; ukuran?: number }) {
+  return (
+    <div className="flex w-full flex-col items-center gap-1.5">
+      <TumpukanBenda n={t} benda={benda} ukuran={ukuran} />
+      <span className="text-xs font-black text-[#1C01A5]">dibagi sama banyak ke {g} piring</span>
+      <PiringKosong g={g} />
+    </div>
   );
 }
 
