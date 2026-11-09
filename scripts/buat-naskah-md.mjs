@@ -177,6 +177,33 @@ KONFIG.k3b4 = {
   },
 };
 
+// Kelas 3 Bab 5 (Penyajian Data dalam Tabel): Sub-Bab A dan B.
+KONFIG.k3b5 = {
+  kelas: 3,
+  bab: 5,
+  judul: "Penyajian Data dalam Tabel",
+  buku: "Buku Siswa Matematika Kelas III (Kemendikbudristek, Kurikulum Merdeka, Bab 5 hlm. 195–212) dan Buku Panduan Guru Bab 5",
+  berkas: { A: "sub-a-mengurutkan-membandingkan-data", B: "sub-b-menyajikan-data-bentuk-tabel" },
+  metodeLuar: {
+    A: [
+      "**Jangkauan (range)**: data terbesar dikurangi data terkecil, diperkaya dari istilah statistik dasar sebelum rata-rata diajarkan.",
+      "**Turus/tally marks**: mengingat turus Kelas 2, lalu dipakai untuk mencacah frekuensi nilai ulangan.",
+      "**Frekuensi nilai**: berapa kali sebuah nilai muncul (misalnya nilai 9 muncul lima kali) sebelum masuk tabel lengkap.",
+      "**Mengurutkan data**: dari terkecil ke terbesar memudahkan mencari data terkecil, terbesar, dan jangkauan.",
+      "**Perbandingan tumpukan benda**: anak dengan banyak benda berbeda dipakai sebagai model konkret sebelum turus dan angka.",
+      "**Pilah menurut ambang**: sedikit (<5), sedang (5–7), banyak (>7) melatih membandingkan tanpa menghitung jangkauan dulu.",
+    ],
+    B: [
+      "**Turus kelompok lima**: empat garis tegak dicoret satu garis miring (standar tally marks internasional).",
+      "**Tabel tiga kolom**: kategori/nilai, turus, dan banyak — pola standar penyajian frekuensi di SD.",
+      "**Dari benda ke tabel**: lidi dan manik dicacah dulu, lalu diganti turus dan angka.",
+      "**Tabel huruf**: kata STATISTIKA dan MATEMATIKA dari buku dipakai untuk melatih frekuensi huruf.",
+      "**Membaca tabel**: pertanyaan lebih dari, kurang dari, terbanyak, dan tersedikit dijawab dari kolom banyak.",
+      "**Titik kelompok lima**: diagram titik polos (Picture) tanpa gambar benda, mengikuti batas Concrete–Picture.",
+    ],
+  },
+};
+
 const kode = process.argv[2];
 if (!kode || !KONFIG[kode]) {
   console.error(`Pakai: node --no-warnings scripts/buat-naskah-md.mjs <${Object.keys(KONFIG).join("|")}>`);
