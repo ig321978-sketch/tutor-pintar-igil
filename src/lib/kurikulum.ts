@@ -957,6 +957,42 @@ export const JUDUL_MTK_5_BAB8 =
 export const JUDUL_MTK_6_BAB1 = "Bab 1: Pecahan dan Desimal";
 export const JUDUL_MTK_6_BAB3 = "Bab 3: Kubus dan Balok";
 
+/** Modul yang sudah punya halaman. Dipakai sidebar repositori di layar HP. */
+export const REPOSITORI_MODUL = [
+  {
+    kelas: "Kelas 1 SD",
+    modul: [
+      { judul: JUDUL_MTK_1_BAB1, href: "/ruang-belajar/mtk-1-bab1" },
+      { judul: JUDUL_MTK_1_BAB2, href: "/ruang-belajar/mtk-1-bab2" },
+      { judul: JUDUL_MTK_1_BAB3, href: "/ruang-belajar/mtk-1-bab3" },
+      { judul: JUDUL_MTK_1_BAB4, href: "/ruang-belajar/mtk-1-bab4" },
+      { judul: JUDUL_MTK_1_BAB5, href: "/ruang-belajar/mtk-1-bab5" },
+      { judul: JUDUL_MTK_1_BAB6, href: "/ruang-belajar/mtk-1-bab6" },
+      { judul: JUDUL_MTK_1_BAB7, href: "/ruang-belajar/mtk-1-bab7" },
+      { judul: JUDUL_MTK_1_BAB8, href: "/ruang-belajar/mtk-1-bab8" },
+    ],
+  },
+  {
+    kelas: "Kelas 2 SD",
+    modul: [{ judul: JUDUL_MTK_2_BAB1, href: "/ruang-belajar/mtk-2-bab1" }],
+  },
+  {
+    kelas: "Kelas 4 SD",
+    modul: [{ judul: JUDUL_MTK_4_BAB2, href: "/ruang-belajar/mtk-4-bab2" }],
+  },
+  {
+    kelas: "Kelas 5 SD",
+    modul: [{ judul: JUDUL_MTK_5_BAB8, href: "/ruang-belajar/mtk-5-bab8" }],
+  },
+  {
+    kelas: "Kelas 6 SD",
+    modul: [
+      { judul: JUDUL_MTK_6_BAB1, href: "/ruang-belajar/mtk-6-bab1" },
+      { judul: JUDUL_MTK_6_BAB3, href: "/ruang-belajar/mtk-6-bab3" },
+    ],
+  },
+] as const;
+
 const BAB_TERPASANG: Record<string, Record<string, string[]>> = {
   "1 SD": {
     Matematika: [JUDUL_MTK_1_BAB1, JUDUL_MTK_1_BAB2, JUDUL_MTK_1_BAB3, JUDUL_MTK_1_BAB4, JUDUL_MTK_1_BAB5, JUDUL_MTK_1_BAB6, JUDUL_MTK_1_BAB7, JUDUL_MTK_1_BAB8],
