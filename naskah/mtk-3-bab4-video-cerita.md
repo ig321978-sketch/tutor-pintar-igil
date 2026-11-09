@@ -17,3 +17,11 @@ Daftar semua video cerita animasi HTML/SVG gratis (tanpa berkas video, tanpa API
 | K3B4B-V1 | Membandingkan Sudut | Strip sudut dan sudut siku-siku | Sudut di sekitar kita; Strip sudut; Sudut siku-siku |
 | K3B4B-V2 | Mengukur Sudut | Satuan tidak baku dan busur derajat | Satuan sudut tidak baku; Busur derajat; Satu derajat |
 | K3B4B-V3 | Jenis-Jenis Sudut | Siku-siku, lancip, tumpul, lurus, refleks | Siku-siku dan lancip; Tumpul dan lurus; Sudut refleks |
+
+## Sub-Bab C: Garis-Garis Tegak Lurus dan Garis-Garis Sejajar
+
+| Video | Judul | Subjudul | Adegan |
+|---|---|---|---|
+| K3B4C-V1 | Garis Tegak Lurus | Bertemu pada sudut siku-siku | Garis yang bertemu; Tegak lurus; Kertas lipat |
+| K3B4C-V2 | Garis Sejajar | Jarak yang selalu sama | Jarak yang sama; Tanda dan lambang; Bukan sejajar |
+| K3B4C-V3 | Bangun Datar Sederhana | Segitiga, persegi, dan lingkaran | Segitiga; Persegi panjang dan persegi; Lingkaran dan segilima |

@@ -148,8 +148,16 @@ KONFIG.k3b4 = {
   bab: 4,
   judul: "Unsur-Unsur Bangun Datar",
   buku: "Buku Siswa Matematika Kelas III (Kemendikbudristek, Kurikulum Merdeka, Bab 4 hlm. 143–185) dan Buku Panduan Guru Bab 4",
-  berkas: { A: "sub-a-sisi-bangun-datar", B: "sub-b-sudut-bidang-datar" },
+  berkas: { A: "sub-a-sisi-bangun-datar", B: "sub-b-sudut-bidang-datar", C: "sub-c-garis-tegak-lurus-sejajar" },
   metodeLuar: {
+    C: [
+      "**Benda bergaris**: tangga, pagar, rumah, jendela, rel kereta api, dan tiang bendera digambar dari ruas garis, dengan dua garis disorot merah dan biru. Hubungan dua garis (sejajar, tegak lurus, atau bukan keduanya) DIHITUNG dari koordinat ruas, bukan ditulis tangan.",
+      "**Kertas lipat berpetak (Aktivitas 5)**: bekas lipatan merah, biru, hijau, dan kuning digambar pada kertas berpetak. Siswa menentukan hubungan dua lipatan, mengurutkan kertas menurut banyak lipatan, dan menamai bangun di tengah kertas (persegi atau persegi panjang, dihitung dari lebar dan tingginya).",
+      "**Kertas berpetak polos di tahap Picture**: sepasang garis merah dan biru pada petak 5 x 5 dengan tanda kotak siku-siku dan anak panah sejajar. Permainan Periksa Jarak Petak meniru contoh buku (jarak 2 petak dan 4 petak): sejajar bila jarak di kedua ujung sama.",
+      "**Lambang ⊥ dan //**: AB ⊥ BC dan EF // GH ditulis dari pasangan garis berhuruf. Pengecoh memuat lambang yang tertukar dan pilihan bukan keduanya.",
+      "**Bangun datar sederhana (bagian 3 buku)**: segitiga, persegi, persegi panjang, segilima, dan lingkaran digambar polos. Ciri dan banyak sisi serta sudut dihitung dari data, termasuk lingkaran yang dibatasi garis lengkung dan tanpa sudut.",
+      "**Garis sejajar dan tegak lurus di sekitar**: soal cerita memakai pagar (lima tiang membentuk empat pasang), tangga, dan persegi panjang. Soal 'berapa petak di ujung kanan' menegaskan jarak garis sejajar selalu sama.",
+    ],
     B: [
       "**Strip sudut dari karton (Aktivitas 2)**: dua strip dengan pengait diputar dengan tombol atau penggeser. Acuan berupa garis putus agar siswa membandingkan sudut lebih besar atau lebih kecil tanpa angka. Mesin PutarSudut memeriksa syarat, bukan angka bebas.",
       "**Pojok kertas lipat (Aktivitas 3)**: sudut siku-siku dibentuk dengan menempatkan strip tepat pada pojok kertas yang dilipat dua kali. Sudut lurus dibentuk dari dua sudut siku-siku sehingga kedua strip menjadi satu garis.",

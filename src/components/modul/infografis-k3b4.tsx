@@ -4,6 +4,8 @@ import React from "react";
 import { KotakPoster } from "./kit-k2b2";
 import { BangunSvg, JenisGarisSvg, RuasPenggaris } from "./diagram-k3b4";
 import { BusurSvg, SudutSvg } from "./diagram-k3b4b";
+import { BangunSederhanaSvg, PetakSvg } from "./diagram-k3b4c";
+import { SJ, TL } from "./data-k3b4";
 
 /* ------------------------------------------------------------------------ */
 /* Isi visual panel Infografis Bab 4 (Unsur-Unsur Bangun Datar). Gambar saja: teks  */
@@ -213,6 +215,99 @@ export function visualInfografisK3B4B(): React.ReactNode[] {
     /* 10 Cara Mengukur Sudut */
     <KotakPoster key="10" warna="#FFFBEB">
       <Langkah daftar={["1. Titik tengah di titik sudut", "2. Kaki pertama di garis nol", "3. Lihat kaki kedua", "4. Baca derajatnya"]} warna={["#BAE6FD", "#FECACA", "#BFDBFE", "#FDE68A"]} />
+    </KotakPoster>,
+  ];
+}
+
+/* ====================================================================== */
+/* Sub-Bab C                                                                */
+/* ====================================================================== */
+
+export function visualInfografisK3B4C(): React.ReactNode[] {
+  return [
+    /* 1 Bertemu dan Tidak Bertemu */
+    <KotakPoster key="1" warna="#E0E7FF">
+      <DuaKolom
+        kiri={
+          <>
+            <PetakSvg pasang={TL[1]} ringkas tanda={false} />
+            <Cap>bertemu</Cap>
+          </>
+        }
+        kanan={
+          <>
+            <PetakSvg pasang={SJ[0]} ringkas tanda={false} />
+            <Cap>tidak bertemu</Cap>
+          </>
+        }
+      />
+    </KotakPoster>,
+    /* 2 Garis Tegak Lurus */
+    <KotakPoster key="2" warna="#FEF9C3">
+      <Kecil>
+        <PetakSvg pasang={TL[0]} />
+      </Kecil>
+      <Cap>bertemu di sudut siku-siku</Cap>
+    </KotakPoster>,
+    /* 3 Lambang Tegak Lurus */
+    <KotakPoster key="3" warna="#DBEAFE">
+      <div className="space-y-1 text-center">
+        <Chip warna="#FDE68A">AB ⊥ BC</Chip>
+        <Cap>dibaca AB tegak lurus BC</Cap>
+      </div>
+    </KotakPoster>,
+    /* 4 Kertas Lipat */
+    <KotakPoster key="4" warna="#DCFCE7">
+      <Baris daftar={[["lipat dua kali", "#B45309"], ["pojok kertas = siku-siku", "#16A34A"]]} />
+    </KotakPoster>,
+    /* 5 Garis Sejajar */
+    <KotakPoster key="5" warna="#FEE2E2">
+      <Kecil>
+        <PetakSvg pasang={SJ[0]} />
+      </Kecil>
+      <Cap>jarak sama, tidak bertemu</Cap>
+    </KotakPoster>,
+    /* 6 Lambang Sejajar */
+    <KotakPoster key="6" warna="#FFF7ED">
+      <div className="space-y-1 text-center">
+        <Chip warna="#BBF7D0">AB // CD</Chip>
+        <Cap>dibaca AB sejajar CD</Cap>
+      </div>
+    </KotakPoster>,
+    /* 7 Segitiga */
+    <KotakPoster key="7" warna="#F5F3FF">
+      <Kecil>
+        <BangunSederhanaSvg jenis="segitiga" huruf />
+      </Kecil>
+      <Cap>3 sisi, 3 sudut</Cap>
+    </KotakPoster>,
+    /* 8 Persegi dan Persegi Panjang */
+    <KotakPoster key="8" warna="#ECFCCB">
+      <DuaKolom
+        kiri={
+          <>
+            <BangunSederhanaSvg jenis="persegi" ringkas />
+            <Cap>persegi</Cap>
+          </>
+        }
+        kanan={
+          <>
+            <BangunSederhanaSvg jenis="persegi panjang" ringkas />
+            <Cap>persegi panjang</Cap>
+          </>
+        }
+      />
+    </KotakPoster>,
+    /* 9 Lingkaran */
+    <KotakPoster key="9" warna="#FCE7F3">
+      <Kecil>
+        <BangunSederhanaSvg jenis="lingkaran" />
+      </Kecil>
+      <Cap>garis lengkung, tanpa sudut</Cap>
+    </KotakPoster>,
+    /* 10 Cara Memeriksa Garis */
+    <KotakPoster key="10" warna="#FFFBEB">
+      <Langkah daftar={["1. Lipat kertas dua kali", "2. Pojok di pertemuan garis", "3. Lihat apakah pas", "4. Pas: tegak lurus"]} warna={["#BAE6FD", "#FECACA", "#BFDBFE", "#FDE68A"]} />
     </KotakPoster>,
   ];
 }

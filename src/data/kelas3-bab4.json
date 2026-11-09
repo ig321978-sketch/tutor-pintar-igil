@@ -1896,6 +1896,947 @@
           "Aku dapat membedakan sudut lancip, siku-siku, tumpul, lurus, dan refleks."
         ]
       }
+    },
+    "C": {
+      "id": "C",
+      "codeTitle": "Sub-Bab C (Garis Tegak Lurus dan Sejajar)",
+      "fullTitle": "Sub-Bab C: Garis-Garis Tegak Lurus dan Garis-Garis Sejajar",
+      "targetDescription": "Siswa mengenal garis-garis tegak lurus (bertemu pada sudut siku-siku, lambang ⊥) dan garis-garis sejajar (jarak selalu sama, tidak pernah bertemu, lambang //), memeriksanya dengan kertas lipat dan kertas berpetak, membuat garis dengan melipat kertas, serta mengenal ciri bangun datar sederhana: segitiga, persegi panjang, persegi, segilima, dan lingkaran.",
+      "secondaryBg": "#DCFCE7",
+      "secondaryBorder": "#16A34A",
+      "secondaryText": "#14532D",
+      "silabus": {
+        "teksSuara": "Kita belajar garis tegak lurus dan garis sejajar. Kita memeriksa garis tegak lurus dengan kertas yang dilipat, dan memeriksa garis sejajar dengan menghitung petak pada kertas berpetak. Kita juga mengenal lambang tegak lurus dan lambang sejajar, lalu mengenal ciri segitiga, persegi panjang, persegi, segilima, dan lingkaran. Kita melewati enam tahap seru: cerita, peta pikiran, infografis, benda nyata, gambar, dan simbol.",
+        "cp": "Siswa menggambar dan menjelaskan unsur-unsur bangun datar. Pada sub-bab ini siswa mengenal garis tegak lurus dan garis sejajar, serta ciri bangun datar sederhana dari sisi dan sudutnya.",
+        "referensi": "Buku Siswa Matematika Kelas III Kemendikbudristek (Bab 4: Unsur-Unsur Bangun Datar, Sub-Bab C hlm. 173–194) dan Buku Panduan Guru Bab 4 Topik C."
+      },
+      "stories": [
+        {
+          "id": "K3B4C-V1-1",
+          "titleHint": "Garis yang bertemu",
+          "sceneType": "K3B4C-V1-1",
+          "voiceNarration": "Dua garis dapat bertemu atau berpotongan pada satu titik. Garis kuning dan garis biru bertemu di satu titik. Garis putih tidak bertemu walaupun diperpanjang. Kita akan mengenal garis tegak lurus dan garis sejajar."
+        },
+        {
+          "id": "K3B4C-V1-2",
+          "titleHint": "Tegak lurus",
+          "sceneType": "K3B4C-V1-2",
+          "voiceNarration": "Garis AB bertemu garis BC pada sudut siku-siku. AB dan BC adalah garis tegak lurus. Kita tulis AB ⊥ BC, dibaca AB tegak lurus BC. Sudut siku-siku diberi tanda kotak kecil."
+        },
+        {
+          "id": "K3B4C-V1-3",
+          "titleHint": "Kertas lipat",
+          "sceneType": "K3B4C-V1-3",
+          "voiceNarration": "Selembar kertas yang dilipat dua kali menghasilkan sudut siku-siku. Pojok kertas lipat dapat memeriksa garis tegak lurus. Letakkan pojok kertas pada pertemuan dua garis. Bila kedua garis pas dengan pojok kertas, garis itu tegak lurus."
+        },
+        {
+          "id": "K3B4C-V2-1",
+          "titleHint": "Jarak yang sama",
+          "sceneType": "K3B4C-V2-1",
+          "voiceNarration": "Dua garis putih ditarik pada kertas berpetak. Di ujung kiri jarak kedua garis dua petak. Di ujung kanan jarak kedua garis juga dua petak. Dua garis yang jaraknya selalu sama disebut garis sejajar."
+        },
+        {
+          "id": "K3B4C-V2-2",
+          "titleHint": "Tanda dan lambang",
+          "sceneType": "K3B4C-V2-2",
+          "voiceNarration": "Anak panah dipakai untuk menandai garis sejajar. Garis AB sejajar dengan garis CD. Kita tulis AB // CD, dibaca AB sejajar CD. Garis sejajar tidak akan pernah bertemu satu sama lain."
+        },
+        {
+          "id": "K3B4C-V2-3",
+          "titleHint": "Bukan sejajar",
+          "sceneType": "K3B4C-V2-3",
+          "voiceNarration": "Pada gambar ini jarak di ujung kiri dua petak. Jarak di ujung kanan empat petak. Jaraknya berbeda, jadi garis ini bukan garis sejajar. Garis yang bukan sejajar akan bertemu bila diperpanjang."
+        },
+        {
+          "id": "K3B4C-V3-1",
+          "titleHint": "Segitiga",
+          "sceneType": "K3B4C-V3-1",
+          "voiceNarration": "Tiga batang pensil yang dihubungkan ujungnya membentuk segitiga. Segitiga dibatasi tiga ruas garis atau tiga sisi. Segitiga ABC memiliki tiga sudut, yaitu sudut A, B, dan C. Setidaknya perlu tiga ruas garis untuk membuat bangun tertutup."
+        },
+        {
+          "id": "K3B4C-V3-2",
+          "titleHint": "Persegi panjang dan persegi",
+          "sceneType": "K3B4C-V3-2",
+          "voiceNarration": "Empat batang pensil dapat membentuk persegi panjang. Persegi panjang memiliki empat sisi dan empat sudut. Empat batang korek api sama panjang membentuk persegi. Persegi memiliki empat sisi sama panjang dan empat sudut siku-siku."
+        },
+        {
+          "id": "K3B4C-V3-3",
+          "titleHint": "Lingkaran dan segilima",
+          "sceneType": "K3B4C-V3-3",
+          "voiceNarration": "Lingkaran dibatasi oleh garis lengkung. Lingkaran tidak memiliki sudut. Segilima dibatasi lima ruas garis dan memiliki lima sudut. Bangun datar dapat dikenali dari sisi dan sudutnya."
+        }
+      ],
+      "videos": [
+        {
+          "id": "K3B4C-V1",
+          "judul": "Garis Tegak Lurus",
+          "subjudul": "Bertemu pada sudut siku-siku",
+          "adegan": [
+            {
+              "id": "K3B4C-V1-1",
+              "judul": "Garis yang bertemu",
+              "ketukan": [
+                "Dua garis dapat bertemu atau berpotongan pada satu titik.",
+                "Garis kuning dan garis biru bertemu di satu titik.",
+                "Garis putih tidak bertemu walaupun diperpanjang.",
+                "Kita akan mengenal garis tegak lurus dan garis sejajar."
+              ],
+              "papan": [
+                "Garis bertemu atau tidak",
+                "Kuning dan biru bertemu",
+                "Putih tidak bertemu",
+                "Tegak lurus dan sejajar"
+              ]
+            },
+            {
+              "id": "K3B4C-V1-2",
+              "judul": "Tegak lurus",
+              "ketukan": [
+                "Garis AB bertemu garis BC pada sudut siku-siku.",
+                "AB dan BC adalah garis tegak lurus.",
+                "Kita tulis AB ⊥ BC, dibaca AB tegak lurus BC.",
+                "Sudut siku-siku diberi tanda kotak kecil."
+              ],
+              "papan": [
+                "AB bertemu BC",
+                "Siku-siku: tegak lurus",
+                "AB ⊥ BC",
+                "Tanda kotak kecil"
+              ]
+            },
+            {
+              "id": "K3B4C-V1-3",
+              "judul": "Kertas lipat",
+              "ketukan": [
+                "Selembar kertas yang dilipat dua kali menghasilkan sudut siku-siku.",
+                "Pojok kertas lipat dapat memeriksa garis tegak lurus.",
+                "Letakkan pojok kertas pada pertemuan dua garis.",
+                "Bila kedua garis pas dengan pojok kertas, garis itu tegak lurus."
+              ],
+              "papan": [
+                "Kertas dilipat dua kali",
+                "Pojok kertas lipat",
+                "Letakkan di pertemuan garis",
+                "Pas: tegak lurus"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "K3B4C-V2",
+          "judul": "Garis Sejajar",
+          "subjudul": "Jarak yang selalu sama",
+          "adegan": [
+            {
+              "id": "K3B4C-V2-1",
+              "judul": "Jarak yang sama",
+              "ketukan": [
+                "Dua garis putih ditarik pada kertas berpetak.",
+                "Di ujung kiri jarak kedua garis dua petak.",
+                "Di ujung kanan jarak kedua garis juga dua petak.",
+                "Dua garis yang jaraknya selalu sama disebut garis sejajar."
+              ],
+              "papan": [
+                "Dua garis pada petak",
+                "Kiri: 2 petak",
+                "Kanan: 2 petak",
+                "Jarak sama: sejajar"
+              ]
+            },
+            {
+              "id": "K3B4C-V2-2",
+              "judul": "Tanda dan lambang",
+              "ketukan": [
+                "Anak panah dipakai untuk menandai garis sejajar.",
+                "Garis AB sejajar dengan garis CD.",
+                "Kita tulis AB // CD, dibaca AB sejajar CD.",
+                "Garis sejajar tidak akan pernah bertemu satu sama lain."
+              ],
+              "papan": [
+                "Anak panah: sejajar",
+                "AB sejajar CD",
+                "AB // CD",
+                "Tidak pernah bertemu"
+              ]
+            },
+            {
+              "id": "K3B4C-V2-3",
+              "judul": "Bukan sejajar",
+              "ketukan": [
+                "Pada gambar ini jarak di ujung kiri dua petak.",
+                "Jarak di ujung kanan empat petak.",
+                "Jaraknya berbeda, jadi garis ini bukan garis sejajar.",
+                "Garis yang bukan sejajar akan bertemu bila diperpanjang."
+              ],
+              "papan": [
+                "Kiri: 2 petak",
+                "Kanan: 4 petak",
+                "Jarak berbeda",
+                "Bukan garis sejajar"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "K3B4C-V3",
+          "judul": "Bangun Datar Sederhana",
+          "subjudul": "Segitiga, persegi, dan lingkaran",
+          "adegan": [
+            {
+              "id": "K3B4C-V3-1",
+              "judul": "Segitiga",
+              "ketukan": [
+                "Tiga batang pensil yang dihubungkan ujungnya membentuk segitiga.",
+                "Segitiga dibatasi tiga ruas garis atau tiga sisi.",
+                "Segitiga ABC memiliki tiga sudut, yaitu sudut A, B, dan C.",
+                "Setidaknya perlu tiga ruas garis untuk membuat bangun tertutup."
+              ],
+              "papan": [
+                "Tiga batang pensil",
+                "3 sisi",
+                "3 sudut: A, B, C",
+                "Tertutup: minimal 3 ruas"
+              ]
+            },
+            {
+              "id": "K3B4C-V3-2",
+              "judul": "Persegi panjang dan persegi",
+              "ketukan": [
+                "Empat batang pensil dapat membentuk persegi panjang.",
+                "Persegi panjang memiliki empat sisi dan empat sudut.",
+                "Empat batang korek api sama panjang membentuk persegi.",
+                "Persegi memiliki empat sisi sama panjang dan empat sudut siku-siku."
+              ],
+              "papan": [
+                "Persegi panjang",
+                "4 sisi, 4 sudut",
+                "Persegi",
+                "4 sisi sama panjang"
+              ]
+            },
+            {
+              "id": "K3B4C-V3-3",
+              "judul": "Lingkaran dan segilima",
+              "ketukan": [
+                "Lingkaran dibatasi oleh garis lengkung.",
+                "Lingkaran tidak memiliki sudut.",
+                "Segilima dibatasi lima ruas garis dan memiliki lima sudut.",
+                "Bangun datar dapat dikenali dari sisi dan sudutnya."
+              ],
+              "papan": [
+                "Garis lengkung",
+                "Tanpa sudut",
+                "Segilima: 5 sisi",
+                "Kenali dari sisi dan sudut"
+              ]
+            }
+          ]
+        }
+      ],
+      "mindMaps": [
+        {
+          "stepNumber": 1,
+          "stepTitle": "1. Garis Bertemu dan Tidak Bertemu",
+          "stepDesc": "Dua garis dapat bertemu atau berpotongan pada satu titik, dapat pula tidak bertemu walaupun diperpanjang. Pada gambar di buku, garis kuning dan garis biru bertemu di satu titik, sedangkan garis-garis putih tidak bertemu. Dari sini kita mengenal dua hubungan garis yang istimewa, yaitu garis tegak lurus dan garis sejajar.",
+          "icon": "🔗",
+          "flowFrom": "Garis bertemu dan tidak bertemu",
+          "flowTo": "Garis tegak lurus"
+        },
+        {
+          "stepNumber": 2,
+          "stepTitle": "2. Garis Tegak Lurus",
+          "stepDesc": "Dua garis yang bertemu atau berpotongan dan membentuk sudut siku-siku disebut garis tegak lurus. Misalnya AB bertemu BC pada sudut siku-siku, sehingga AB dan BC adalah garis tegak lurus. Kita menulisnya AB ⊥ BC dan membacanya AB tegak lurus BC. Sudut siku-siku di pertemuan kedua garis diberi tanda kotak kecil.",
+          "icon": "📐",
+          "flowFrom": "Garis tegak lurus",
+          "flowTo": "Memeriksa dengan kertas lipat"
+        },
+        {
+          "stepNumber": 3,
+          "stepTitle": "3. Memeriksa dengan Kertas Lipat",
+          "stepDesc": "Selembar kertas yang dilipat dua kali dengan rapi memiliki pojok yang berupa sudut siku-siku. Pojok kertas lipat dipakai untuk memeriksa garis tegak lurus: letakkan pojok kertas di tempat kedua garis bertemu. Bila kedua garis tepat berimpit dengan kedua sisi pojok kertas, garis itu tegak lurus. Bila tidak pas, garis itu tidak tegak lurus.",
+          "icon": "📄",
+          "flowFrom": "Memeriksa dengan kertas lipat",
+          "flowTo": "Melipat kertas: sejajar dan tegak lurus"
+        },
+        {
+          "stepNumber": 4,
+          "stepTitle": "4. Melipat Kertas: Sejajar dan Tegak Lurus",
+          "stepDesc": "Pada Aktivitas 5, kertas berpetak dilipat beberapa kali dan bekas lipatan digambar dengan warna berbeda. Dua lipatan pertama, merah dan biru, bertemu pada sudut siku-siku sehingga tegak lurus. Lipatan hijau dan kuning membentuk pasangan garis sejajar. Garis-garis sejajar itu bersama pasangan lainnya membentuk sebuah persegi di tengah kertas.",
+          "icon": "✂️",
+          "flowFrom": "Melipat kertas: sejajar dan tegak lurus",
+          "flowTo": "Garis sejajar"
+        },
+        {
+          "stepNumber": 5,
+          "stepTitle": "5. Garis Sejajar",
+          "stepDesc": "Dua garis yang ditarik pada jarak yang sama dan tidak berpotongan disebut garis sejajar. Garis sejajar tidak akan pernah bertemu satu sama lain. Anak panah digunakan untuk menandai bahwa garis-garisnya sejajar. Bila AB sejajar CD, kita menulis AB // CD. Garis sejajar dapat mendatar, tegak, atau miring, asalkan jaraknya selalu sama.",
+          "icon": "🛤️",
+          "flowFrom": "Garis sejajar",
+          "flowTo": "Memeriksa jarak dengan petak"
+        },
+        {
+          "stepNumber": 6,
+          "stepTitle": "6. Memeriksa Jarak dengan Petak",
+          "stepDesc": "Pada kertas berpetak kita memeriksa garis sejajar dengan menghitung petak persegi. Bila E dan G terpisah 1 petak dan F dan H juga terpisah 1 petak, maka EF sejajar GH. Bila P dan R terpisah 2 petak tetapi Q dan S terpisah 4 petak, jaraknya berbeda sehingga PQ dan RS bukan garis sejajar.",
+          "icon": "🧮",
+          "flowFrom": "Memeriksa jarak dengan petak",
+          "flowTo": "Garis pada benda dan huruf"
+        },
+        {
+          "stepNumber": 7,
+          "stepTitle": "7. Garis pada Benda dan Huruf",
+          "stepDesc": "Garis tegak lurus dan garis sejajar ada di sekitar kita. Rel kereta api, pagar, tangga, dan kusen jendela memiliki garis sejajar dan garis tegak lurus. Pada huruf-huruf MATEMATIKA, huruf E, M, A, T, I, dan K dapat dicari garis tegak lurusnya dan pasangan garis sejajarnya. Panah ditulis pada garis sejajar, dan pasangan yang berbeda diberi tanda panah yang berbeda.",
+          "icon": "🔍",
+          "flowFrom": "Garis pada benda dan huruf",
+          "flowTo": "Bangun datar sederhana"
+        },
+        {
+          "stepNumber": 8,
+          "stepTitle": "8. Bangun Datar Sederhana",
+          "stepDesc": "Segitiga dibatasi tiga ruas garis, memiliki tiga sisi dan tiga sudut. Persegi panjang memiliki empat sisi dan empat sudut siku-siku. Persegi memiliki empat sisi sama panjang dan empat sudut siku-siku. Segilima memiliki lima sisi dan lima sudut. Lingkaran dibatasi garis lengkung dan tidak memiliki sudut. Bangun datar dikenali dari banyak sisi dan sudutnya.",
+          "icon": "⬜",
+          "flowFrom": "Bangun datar sederhana",
+          "flowTo": "Siap menyelesaikan Bab 4"
+        }
+      ],
+      "infografisData": [
+        {
+          "fruitName": "Bertemu dan Tidak Bertemu",
+          "emoji": "🔗",
+          "countNum": 2,
+          "countWord": "Dua",
+          "voiceSentence": "Dua garis dapat bertemu pada satu titik. Dua garis juga dapat tidak bertemu walaupun diperpanjang."
+        },
+        {
+          "fruitName": "Garis Tegak Lurus",
+          "emoji": "📐",
+          "countNum": 3,
+          "countWord": "Tiga",
+          "voiceSentence": "Garis tegak lurus bertemu pada satu titik. Pertemuannya membentuk sudut siku-siku. Sudut itu diberi tanda kotak kecil."
+        },
+        {
+          "fruitName": "Lambang Tegak Lurus",
+          "emoji": "➕",
+          "countNum": 2,
+          "countWord": "Dua",
+          "voiceSentence": "Garis AB tegak lurus garis BC ditulis AB ⊥ BC. Lambang ⊥ dibaca tegak lurus."
+        },
+        {
+          "fruitName": "Kertas Lipat",
+          "emoji": "📄",
+          "countNum": 2,
+          "countWord": "Dua",
+          "voiceSentence": "Pojok kertas yang dilipat dua kali adalah sudut siku-siku. Pojok itu dipakai untuk memeriksa garis tegak lurus."
+        },
+        {
+          "fruitName": "Garis Sejajar",
+          "emoji": "🛤️",
+          "countNum": 3,
+          "countWord": "Tiga",
+          "voiceSentence": "Garis sejajar ditarik pada jarak yang selalu sama. Garis sejajar tidak pernah bertemu. Anak panah menandai garis sejajar."
+        },
+        {
+          "fruitName": "Lambang Sejajar",
+          "emoji": "⏩",
+          "countNum": 2,
+          "countWord": "Dua",
+          "voiceSentence": "Garis AB sejajar garis CD ditulis AB // CD. Lambang // dibaca sejajar."
+        },
+        {
+          "fruitName": "Segitiga",
+          "emoji": "🔺",
+          "countNum": 2,
+          "countWord": "Dua",
+          "voiceSentence": "Segitiga memiliki tiga sisi dan tiga sudut. Segitiga dibatasi tiga ruas garis."
+        },
+        {
+          "fruitName": "Persegi dan Persegi Panjang",
+          "emoji": "⬜",
+          "countNum": 2,
+          "countWord": "Dua",
+          "voiceSentence": "Persegi panjang memiliki empat sisi dan empat sudut siku-siku. Persegi memiliki empat sisi yang sama panjang."
+        },
+        {
+          "fruitName": "Lingkaran",
+          "emoji": "⭕",
+          "countNum": 2,
+          "countWord": "Dua",
+          "voiceSentence": "Lingkaran dibatasi oleh garis lengkung. Lingkaran tidak memiliki sudut."
+        },
+        {
+          "fruitName": "Cara Memeriksa Garis",
+          "emoji": "📝",
+          "countNum": 4,
+          "countWord": "Empat",
+          "voiceSentence": "Empat langkah. Satu, lipat kertas dua kali. Dua, letakkan pojok kertas di pertemuan garis. Tiga, lihat apakah garis pas dengan pojok. Empat, pas berarti tegak lurus."
+        }
+      ],
+      "concreteSlides": [
+        {
+          "title": "Dua Garis pada Benda",
+          "emoji": "🏠",
+          "targetCount": 6,
+          "voiceGuide": "Pilih hubungan dua garis berwarna."
+        },
+        {
+          "title": "Ketuk Semua Benda dengan Garis Tertentu",
+          "emoji": "✔️",
+          "targetCount": 3,
+          "voiceGuide": "Ketuk semua yang cocok, lalu periksa."
+        },
+        {
+          "title": "Jodohkan Benda dan Hubungan Garis",
+          "emoji": "🔗",
+          "targetCount": 9,
+          "voiceGuide": "Ketuk benda, lalu ketuk hubungannya."
+        },
+        {
+          "title": "Pilah Benda: Sejajar, Tegak Lurus, atau Bukan",
+          "emoji": "🧺",
+          "targetCount": 6,
+          "voiceGuide": "Pilah gambar ke kotak yang tepat."
+        },
+        {
+          "title": "Hitung Garis Sejajar dengan Garis Merah",
+          "emoji": "🛤️",
+          "targetCount": 6,
+          "voiceGuide": "Hitung garis yang sejajar dengan garis merah."
+        },
+        {
+          "title": "Hitung Garis Tegak Lurus dengan Garis Merah",
+          "emoji": "📐",
+          "targetCount": 6,
+          "voiceGuide": "Hitung garis yang tegak lurus dengan garis merah."
+        },
+        {
+          "title": "Dua Lipatan pada Kertas",
+          "emoji": "📄",
+          "targetCount": 6,
+          "voiceGuide": "Pilih hubungan dua lipatan."
+        },
+        {
+          "title": "Bangun di Tengah Kertas",
+          "emoji": "⬜",
+          "targetCount": 6,
+          "voiceGuide": "Pilih nama bangun di tengah kertas."
+        },
+        {
+          "title": "Urutkan Kertas menurut Banyak Lipatan",
+          "emoji": "📶",
+          "targetCount": 9,
+          "voiceGuide": "Ketuk kertas menurut banyak lipatan."
+        },
+        {
+          "title": "Jodohkan Lipatan dan Hubungannya",
+          "emoji": "✂️",
+          "targetCount": 9,
+          "voiceGuide": "Ketuk kertas, lalu ketuk hubungannya."
+        }
+      ],
+      "pictorialSlides": [
+        {
+          "title": "Jenis Pasangan Garis",
+          "diagramType": "grid-pair",
+          "numberA": 3,
+          "numberB": 2,
+          "caption": "Menentukan hubungan pasangan garis pada kertas berpetak: sejajar, tegak lurus, atau bukan keduanya."
+        },
+        {
+          "title": "Periksa Jarak Petak",
+          "diagramType": "grid-gap",
+          "numberA": 3,
+          "numberB": 2,
+          "caption": "Memeriksa jarak dua garis di ujung kiri dan kanan untuk menentukan garis sejajar."
+        },
+        {
+          "title": "Jodohkan Pasangan Garis dan Hubungannya",
+          "diagramType": "grid-match",
+          "numberA": 3,
+          "numberB": 3,
+          "caption": "Menjodohkan pasangan garis pada kertas berpetak dengan hubungannya."
+        },
+        {
+          "title": "Ketuk Semua Pasangan Garis Tertentu",
+          "diagramType": "grid-select",
+          "numberA": 3,
+          "numberB": 4,
+          "caption": "Menemukan semua pasangan garis dengan hubungan tertentu."
+        },
+        {
+          "title": "Pilah Pasangan Garis: Sejajar, Tegak Lurus, atau Bukan",
+          "diagramType": "grid-sort",
+          "numberA": 3,
+          "numberB": 6,
+          "caption": "Memilah pasangan garis menjadi sejajar, tegak lurus, dan bukan keduanya."
+        },
+        {
+          "title": "Isi Tabel Ciri Bangun Datar",
+          "diagramType": "shape-table",
+          "numberA": 3,
+          "numberB": 4,
+          "caption": "Melengkapi tabel bangun datar dan ciri-cirinya."
+        },
+        {
+          "title": "Memori Bangun Datar dan Namanya",
+          "diagramType": "shape-memory",
+          "numberA": 3,
+          "numberB": 4,
+          "caption": "Mencocokkan gambar bangun datar dengan namanya lewat permainan memori."
+        },
+        {
+          "title": "Lambang Pasangan Garis",
+          "diagramType": "grid-symbol",
+          "numberA": 3,
+          "numberB": 2,
+          "caption": "Memilih lambang yang tepat untuk pasangan garis berhuruf."
+        },
+        {
+          "title": "Sisi dan Sudut Bangun Datar",
+          "diagramType": "shape-feature",
+          "numberA": 3,
+          "numberB": 2,
+          "caption": "Memilih ciri yang tepat untuk gambar bangun datar sederhana."
+        },
+        {
+          "title": "Pilih Garis yang Sejajar atau Tegak Lurus",
+          "diagramType": "grid-candidate",
+          "numberA": 3,
+          "numberB": 3,
+          "caption": "Memilih gambar yang garis merahnya sejajar atau tegak lurus dengan garis biru."
+        }
+      ],
+      "abstractSlides": [
+        {
+          "symbolLarge": "⊥ //",
+          "wordLarge": "ISTILAH",
+          "mathNotation": "tegak lurus • sejajar",
+          "voiceReadout": "Pilih istilah yang tepat."
+        },
+        {
+          "symbolLarge": "…",
+          "wordLarge": "LENGKAPI",
+          "mathNotation": "garis • bangun • sudut",
+          "voiceReadout": "Pilih kata untuk bagian kosong."
+        },
+        {
+          "symbolLarge": "⊥",
+          "wordLarge": "LAMBANG",
+          "mathNotation": "⊥ tegak lurus • // sejajar",
+          "voiceReadout": "Pilih bacaan atau lambang yang tepat."
+        },
+        {
+          "symbolLarge": "= ?",
+          "wordLarge": "JODOHKAN",
+          "mathNotation": "lambang • bacaan",
+          "voiceReadout": "Ketuk lambang, lalu ketuk bacaannya."
+        },
+        {
+          "symbolLarge": "?",
+          "wordLarge": "MEMORI",
+          "mathNotation": "istilah dan arti",
+          "voiceReadout": "Balik dua kartu, cari istilah dan artinya."
+        },
+        {
+          "symbolLarge": "✓ ✗",
+          "wordLarge": "BENAR SALAH",
+          "mathNotation": "periksa dengan alasan",
+          "voiceReadout": "Baca pernyataan, lalu pilih benar atau salah."
+        },
+        {
+          "symbolLarge": "?",
+          "wordLarge": "DETEKTIF",
+          "mathNotation": "dua petunjuk, satu jawaban",
+          "voiceReadout": "Baca petunjuk, lalu pilih bilangannya."
+        },
+        {
+          "symbolLarge": "⇄",
+          "wordLarge": "PETA KONSEP",
+          "mathNotation": "garis • bangun",
+          "voiceReadout": "Pilih kartu yang tepat untuk kotak yang menyala."
+        },
+        {
+          "symbolLarge": "+",
+          "wordLarge": "CERITA",
+          "mathNotation": "jumlah • jarak sama",
+          "voiceReadout": "Baca cerita, lalu pilih hasilnya."
+        },
+        {
+          "symbolLarge": "…",
+          "wordLarge": "SUSUN KATA",
+          "mathNotation": "kalimat garis dan bangun",
+          "voiceReadout": "Susun kartu kata menjadi kalimat."
+        }
+      ],
+      "interactiveGames": [
+        {
+          "gameId": "subK3B4C-game-1",
+          "gameNumber": 1,
+          "stage": "Concrete",
+          "gameType": "benda-lines-kind",
+          "title": "Dua Garis pada Benda",
+          "bookReference": "Buku Siswa hlm. 174–176 (garis tegak lurus dan sejajar di sekitar kita)",
+          "objective": "Menentukan hubungan dua garis berwarna pada gambar benda: sejajar, tegak lurus, atau bukan keduanya.",
+          "mechanicDescription": "Tiga ronde, tiap ronde dua soal. Benda seperti tangga, pagar, rumah, jendela, rel, dan tiang bendera ditampilkan dengan dua garis berwarna. Siswa memilih satu dari tiga hubungan.",
+          "voiceGuide": "Pilih hubungan dua garis berwarna."
+        },
+        {
+          "gameId": "subK3B4C-game-2",
+          "gameNumber": 2,
+          "stage": "Concrete",
+          "gameType": "tap-all-benda-lines",
+          "title": "Ketuk Semua Benda dengan Garis Tertentu",
+          "bookReference": "Buku Siswa hlm. 176 (carilah contoh garis tegak lurus di sekitar kalian)",
+          "objective": "Menemukan semua gambar benda yang dua garis berwarnanya memiliki hubungan tertentu.",
+          "mechanicDescription": "Tiga ronde, tiap ronde empat benda dan satu perintah. Siswa mengetuk semua benda yang cocok, lalu menekan Periksa.",
+          "voiceGuide": "Ketuk semua yang cocok, lalu periksa."
+        },
+        {
+          "gameId": "subK3B4C-game-3",
+          "gameNumber": 3,
+          "stage": "Concrete",
+          "gameType": "match-benda-lines",
+          "title": "Jodohkan Benda dan Hubungan Garis",
+          "bookReference": "Buku Siswa hlm. 174–176 dan 182–183 (garis sejajar dan tegak lurus)",
+          "objective": "Menjodohkan gambar benda dengan hubungan dua garis berwarnanya.",
+          "mechanicDescription": "Tiga ronde, tiap ronde tiga benda dan tiga hubungan berbeda. Siswa mengetuk benda, lalu mengetuk hubungan yang cocok.",
+          "voiceGuide": "Ketuk benda, lalu ketuk hubungannya."
+        },
+        {
+          "gameId": "subK3B4C-game-4",
+          "gameNumber": 4,
+          "stage": "Concrete",
+          "gameType": "sort-benda-lines",
+          "title": "Pilah Benda: Sejajar, Tegak Lurus, atau Bukan",
+          "bookReference": "Buku Siswa hlm. 174–176 dan 182–183 (garis sejajar dan tegak lurus)",
+          "objective": "Memilah gambar benda menurut hubungan dua garis berwarnanya.",
+          "mechanicDescription": "Tiga ronde, tiap ronde enam gambar benda dan tiga kotak. Siswa menyeret atau mengetuk gambar ke kotak yang tepat.",
+          "voiceGuide": "Pilah gambar ke kotak yang tepat."
+        },
+        {
+          "gameId": "subK3B4C-game-5",
+          "gameNumber": 5,
+          "stage": "Concrete",
+          "gameType": "count-parallel-benda",
+          "title": "Hitung Garis Sejajar dengan Garis Merah",
+          "bookReference": "Buku Siswa hlm. 182–185 (garis sejajar)",
+          "objective": "Menghitung banyak garis yang sejajar dengan garis merah pada gambar benda.",
+          "mechanicDescription": "Tiga ronde, tiap ronde dua soal. Satu garis merah dan beberapa garis biru ditampilkan. Siswa menghitung garis biru yang sejajar dengan garis merah dan memilih satu dari tiga bilangan.",
+          "voiceGuide": "Hitung garis yang sejajar dengan garis merah."
+        },
+        {
+          "gameId": "subK3B4C-game-6",
+          "gameNumber": 6,
+          "stage": "Concrete",
+          "gameType": "count-perp-benda",
+          "title": "Hitung Garis Tegak Lurus dengan Garis Merah",
+          "bookReference": "Buku Siswa hlm. 174–176 (garis tegak lurus)",
+          "objective": "Menghitung banyak garis yang tegak lurus dengan garis merah pada gambar benda.",
+          "mechanicDescription": "Tiga ronde, tiap ronde dua soal. Satu garis merah dan beberapa garis biru ditampilkan. Siswa menghitung garis biru yang bertemu garis merah pada sudut siku-siku dan memilih satu dari tiga bilangan.",
+          "voiceGuide": "Hitung garis yang tegak lurus dengan garis merah."
+        },
+        {
+          "gameId": "subK3B4C-game-7",
+          "gameNumber": 7,
+          "stage": "Concrete",
+          "gameType": "fold-lines-kind",
+          "title": "Dua Lipatan pada Kertas",
+          "bookReference": "Buku Siswa hlm. 177–180 (Aktivitas 5: membuat garis sejajar dan tegak lurus dengan melipat)",
+          "objective": "Menentukan hubungan dua bekas lipatan pada kertas berpetak.",
+          "mechanicDescription": "Tiga ronde, tiap ronde dua soal. Kertas berpetak dengan dua bekas lipatan berwarna ditampilkan. Siswa memilih sejajar, tegak lurus, atau bukan keduanya.",
+          "voiceGuide": "Pilih hubungan dua lipatan."
+        },
+        {
+          "gameId": "subK3B4C-game-8",
+          "gameNumber": 8,
+          "stage": "Concrete",
+          "gameType": "fold-middle-shape",
+          "title": "Bangun di Tengah Kertas",
+          "bookReference": "Buku Siswa hlm. 179–180 (Aktivitas 5 nomor 8: bangun di tengah kertas)",
+          "objective": "Menentukan bangun yang terbentuk di tengah kertas oleh dua pasang lipatan sejajar.",
+          "mechanicDescription": "Tiga ronde, tiap ronde dua soal. Kertas berpetak dengan empat lipatan ditampilkan dan bangun di tengahnya diwarnai. Siswa memilih persegi, persegi panjang, atau segitiga.",
+          "voiceGuide": "Pilih nama bangun di tengah kertas."
+        },
+        {
+          "gameId": "subK3B4C-game-9",
+          "gameNumber": 9,
+          "stage": "Concrete",
+          "gameType": "order-folds",
+          "title": "Urutkan Kertas menurut Banyak Lipatan",
+          "bookReference": "Buku Siswa hlm. 177–180 (Aktivitas 5: melipat kertas)",
+          "objective": "Mengurutkan tiga kertas berpetak menurut banyak bekas lipatannya.",
+          "mechanicDescription": "Tiga ronde, tiap ronde tiga kertas bertanda huruf. Siswa mengetuk kertas satu per satu dari yang paling sedikit atau paling banyak lipatannya.",
+          "voiceGuide": "Ketuk kertas menurut banyak lipatan."
+        },
+        {
+          "gameId": "subK3B4C-game-10",
+          "gameNumber": 10,
+          "stage": "Concrete",
+          "gameType": "match-folds",
+          "title": "Jodohkan Lipatan dan Hubungannya",
+          "bookReference": "Buku Siswa hlm. 177–180 (Aktivitas 5: garis sejajar dan tegak lurus dari lipatan)",
+          "objective": "Menjodohkan kertas berlipatan dengan hubungan dua lipatannya.",
+          "mechanicDescription": "Tiga ronde, tiap ronde tiga kertas dan tiga hubungan berbeda. Siswa mengetuk kertas, lalu mengetuk hubungan yang cocok.",
+          "voiceGuide": "Ketuk kertas, lalu ketuk hubungannya."
+        },
+        {
+          "gameId": "subK3B4C-game-11",
+          "gameNumber": 11,
+          "stage": "Picture",
+          "gameType": "pair-kind-grid",
+          "title": "Jenis Pasangan Garis",
+          "bookReference": "Buku Siswa hlm. 174–176 dan 180 (garis tegak lurus pada kertas berpetak)",
+          "objective": "Menentukan hubungan pasangan garis pada kertas berpetak: sejajar, tegak lurus, atau bukan keduanya.",
+          "mechanicDescription": "Tiga ronde, tiap ronde dua soal. Pasangan garis merah dan biru pada kertas berpetak ditampilkan. Siswa memilih satu dari tiga hubungan.",
+          "voiceGuide": "Pilih hubungan pasangan garis."
+        },
+        {
+          "gameId": "subK3B4C-game-12",
+          "gameNumber": 12,
+          "stage": "Picture",
+          "gameType": "check-gap-grid",
+          "title": "Periksa Jarak Petak",
+          "bookReference": "Buku Siswa hlm. 182–185 (garis sejajar: hitung petak)",
+          "objective": "Memeriksa jarak dua garis di ujung kiri dan kanan untuk menentukan garis sejajar.",
+          "mechanicDescription": "Tiga ronde, tiap ronde dua soal. Dua garis dengan jarak di kedua ujung ditampilkan. Siswa memilih sejajar bila kedua jarak sama dan bukan sejajar bila berbeda.",
+          "voiceGuide": "Periksa jarak lalu pilih jawabannya."
+        },
+        {
+          "gameId": "subK3B4C-game-13",
+          "gameNumber": 13,
+          "stage": "Picture",
+          "gameType": "match-pair-kind",
+          "title": "Jodohkan Pasangan Garis dan Hubungannya",
+          "bookReference": "Buku Siswa hlm. 174–176 dan 182–185 (garis tegak lurus dan sejajar)",
+          "objective": "Menjodohkan pasangan garis pada kertas berpetak dengan hubungannya.",
+          "mechanicDescription": "Tiga ronde, tiap ronde tiga pasangan garis dan tiga hubungan berbeda. Siswa mengetuk gambar, lalu mengetuk hubungan yang cocok.",
+          "voiceGuide": "Ketuk gambar, lalu ketuk hubungannya."
+        },
+        {
+          "gameId": "subK3B4C-game-14",
+          "gameNumber": 14,
+          "stage": "Picture",
+          "gameType": "tap-all-pairs",
+          "title": "Ketuk Semua Pasangan Garis Tertentu",
+          "bookReference": "Buku Siswa hlm. 180 dan 186 (Ayo Berlatih 1: manakah yang sejajar atau tegak lurus)",
+          "objective": "Menemukan semua pasangan garis dengan hubungan tertentu.",
+          "mechanicDescription": "Tiga ronde, tiap ronde empat pasangan garis dan satu perintah. Siswa mengetuk semua yang cocok, lalu menekan Periksa.",
+          "voiceGuide": "Ketuk semua yang cocok, lalu periksa."
+        },
+        {
+          "gameId": "subK3B4C-game-15",
+          "gameNumber": 15,
+          "stage": "Picture",
+          "gameType": "sort-pairs",
+          "title": "Pilah Pasangan Garis: Sejajar, Tegak Lurus, atau Bukan",
+          "bookReference": "Buku Siswa hlm. 180 dan 186 (memeriksa pasangan garis)",
+          "objective": "Memilah pasangan garis menjadi sejajar, tegak lurus, dan bukan keduanya.",
+          "mechanicDescription": "Tiga ronde, tiap ronde enam pasangan garis dan tiga kotak. Siswa menyeret atau mengetuk gambar ke kotak yang tepat.",
+          "voiceGuide": "Pilah gambar ke kotak yang tepat."
+        },
+        {
+          "gameId": "subK3B4C-game-16",
+          "gameNumber": 16,
+          "stage": "Picture",
+          "gameType": "fill-shape-table",
+          "title": "Isi Tabel Ciri Bangun Datar",
+          "bookReference": "Buku Siswa hlm. 189–192 (bangun datar sederhana: sisi dan sudut)",
+          "objective": "Melengkapi tabel bangun datar dan ciri-cirinya.",
+          "mechanicDescription": "Tiga tabel dengan empat baris. Siswa mengetuk baris, lalu mengetuk kartu ciri yang tepat. Ada satu kartu pengecoh.",
+          "voiceGuide": "Isi tabel dengan kartu ciri bangun."
+        },
+        {
+          "gameId": "subK3B4C-game-17",
+          "gameNumber": 17,
+          "stage": "Picture",
+          "gameType": "memory-shape-name",
+          "title": "Memori Bangun Datar dan Namanya",
+          "bookReference": "Buku Siswa hlm. 189–192 (nama bangun datar)",
+          "objective": "Mencocokkan gambar bangun datar dengan namanya lewat permainan memori.",
+          "mechanicDescription": "Tiga ronde, tiap ronde delapan kartu tertutup (empat pasang). Siswa membalik dua kartu dan mencari gambar bangun dengan namanya.",
+          "voiceGuide": "Balik dua kartu, cari gambar dan namanya."
+        },
+        {
+          "gameId": "subK3B4C-game-18",
+          "gameNumber": 18,
+          "stage": "Picture",
+          "gameType": "name-symbol-pair",
+          "title": "Lambang Pasangan Garis",
+          "bookReference": "Buku Siswa hlm. 176 dan 183 (AB ⊥ BC dan AB // CD)",
+          "objective": "Memilih lambang yang tepat untuk pasangan garis berhuruf.",
+          "mechanicDescription": "Tiga ronde, tiap ronde dua soal. Pasangan garis berhuruf ditampilkan. Siswa memilih satu dari tiga lambang.",
+          "voiceGuide": "Pilih lambang pasangan garis."
+        },
+        {
+          "gameId": "subK3B4C-game-19",
+          "gameNumber": 19,
+          "stage": "Picture",
+          "gameType": "shape-features",
+          "title": "Sisi dan Sudut Bangun Datar",
+          "bookReference": "Buku Siswa hlm. 189–192 (Ayo Berlatih: tuliskan banyak sudut dan sisi)",
+          "objective": "Memilih ciri yang tepat untuk gambar bangun datar sederhana.",
+          "mechanicDescription": "Tiga ronde, tiap ronde dua soal. Gambar bangun datar ditampilkan. Siswa memilih satu dari tiga ciri.",
+          "voiceGuide": "Pilih ciri bangun datar."
+        },
+        {
+          "gameId": "subK3B4C-game-20",
+          "gameNumber": 20,
+          "stage": "Picture",
+          "gameType": "choose-candidate-line",
+          "title": "Pilih Garis yang Sejajar atau Tegak Lurus",
+          "bookReference": "Buku Siswa hlm. 177–180 dan 182–185 (membuat garis sejajar dan tegak lurus)",
+          "objective": "Memilih gambar yang garis merahnya sejajar atau tegak lurus dengan garis biru.",
+          "mechanicDescription": "Tiga ronde, tiap ronde tiga gambar dan dua pertanyaan. Garis biru tetap sama, garis merah berbeda. Siswa mengetuk gambar yang sejajar lalu yang tegak lurus.",
+          "voiceGuide": "Ketuk gambar yang sesuai pertanyaan."
+        },
+        {
+          "gameId": "subK3B4C-game-21",
+          "gameNumber": 21,
+          "stage": "Abstract",
+          "gameType": "name-line-term",
+          "title": "Istilah Garis",
+          "bookReference": "Buku Siswa hlm. 174–185 (garis tegak lurus dan sejajar)",
+          "objective": "Memilih istilah garis yang tepat dari uraiannya.",
+          "mechanicDescription": "Tiga ronde, tiap ronde dua soal. Siswa membaca uraian, lalu memilih satu dari tiga istilah.",
+          "voiceGuide": "Pilih istilah yang tepat."
+        },
+        {
+          "gameId": "subK3B4C-game-22",
+          "gameNumber": 22,
+          "stage": "Abstract",
+          "gameType": "complete-line-sentence",
+          "title": "Lengkapi Kalimat Garis dan Bangun",
+          "bookReference": "Buku Siswa hlm. 174–192 (garis dan bangun datar sederhana)",
+          "objective": "Melengkapi kalimat tentang garis dan bangun datar sederhana.",
+          "mechanicDescription": "Tiga soal, tiap soal tiga kalimat, misalnya segitiga memiliki tiga sisi dan tiga ... Siswa memilih satu dari tiga kata.",
+          "voiceGuide": "Pilih kata untuk bagian kosong."
+        },
+        {
+          "gameId": "subK3B4C-game-23",
+          "gameNumber": 23,
+          "stage": "Abstract",
+          "gameType": "symbol-meaning",
+          "title": "Arti Lambang Garis",
+          "bookReference": "Buku Siswa hlm. 176 dan 183 (lambang ⊥ dan //)",
+          "objective": "Membaca dan menulis lambang garis tegak lurus dan sejajar.",
+          "mechanicDescription": "Tiga ronde, tiap ronde dua soal, misalnya AB ⊥ CD dibaca ... Siswa memilih satu dari tiga jawaban.",
+          "voiceGuide": "Pilih bacaan atau lambang yang tepat."
+        },
+        {
+          "gameId": "subK3B4C-game-24",
+          "gameNumber": 24,
+          "stage": "Abstract",
+          "gameType": "match-symbol-phrase",
+          "title": "Jodohkan Lambang dan Bacaannya",
+          "bookReference": "Buku Siswa hlm. 176 dan 183 (AB ⊥ BC, EF // GH)",
+          "objective": "Menjodohkan lambang garis dengan bacaannya.",
+          "mechanicDescription": "Tiga ronde, tiap ronde tiga lambang dan tiga bacaan. Siswa mengetuk lambang, lalu mengetuk bacaannya.",
+          "voiceGuide": "Ketuk lambang, lalu ketuk bacaannya."
+        },
+        {
+          "gameId": "subK3B4C-game-25",
+          "gameNumber": 25,
+          "stage": "Abstract",
+          "gameType": "memory-term-meaning",
+          "title": "Memori Istilah dan Artinya",
+          "bookReference": "Buku Siswa hlm. 174–192 (istilah garis dan bangun datar)",
+          "objective": "Mencocokkan istilah dengan artinya lewat permainan memori.",
+          "mechanicDescription": "Tiga ronde, tiap ronde delapan kartu tertutup (empat pasang). Siswa membalik dua kartu dan mencari istilah dengan artinya.",
+          "voiceGuide": "Balik dua kartu, cari istilah dan artinya."
+        },
+        {
+          "gameId": "subK3B4C-game-26",
+          "gameNumber": 26,
+          "stage": "Abstract",
+          "gameType": "true-false-lines",
+          "title": "Benar atau Salah: Garis dan Bangun Datar",
+          "bookReference": "Buku Siswa hlm. 174–192 (garis dan bangun datar sederhana)",
+          "objective": "Menilai pernyataan tentang garis dan bangun datar sederhana.",
+          "mechanicDescription": "Dua ronde, tiap ronde lima pernyataan. Siswa memilih Benar atau Salah. Tiap jawaban diberi penjelasan.",
+          "voiceGuide": "Baca pernyataan, lalu pilih benar atau salah."
+        },
+        {
+          "gameId": "subK3B4C-game-27",
+          "gameNumber": 27,
+          "stage": "Abstract",
+          "gameType": "detective-shapes",
+          "title": "Detektif Bangun Datar",
+          "bookReference": "Buku Siswa hlm. 189–192 (banyak sisi dan sudut)",
+          "objective": "Menemukan bilangan dari dua petunjuk tentang sisi dan sudut bangun datar.",
+          "mechanicDescription": "Empat soal. Siswa membaca petunjuk dan satu ciri bilangan, lalu memilih satu dari tiga bilangan. Hanya satu yang cocok.",
+          "voiceGuide": "Baca petunjuk, lalu pilih bilangannya."
+        },
+        {
+          "gameId": "subK3B4C-game-28",
+          "gameNumber": 28,
+          "stage": "Abstract",
+          "gameType": "concept-map-shapes",
+          "title": "Peta Konsep Garis dan Bangun",
+          "bookReference": "Buku Siswa hlm. 144 (peta konsep Bab 4)",
+          "objective": "Melengkapi peta konsep garis dan bangun datar sederhana.",
+          "mechanicDescription": "Dua peta konsep, tiap peta empat kotak. Siswa memilih kartu yang tepat untuk kotak yang menyala.",
+          "voiceGuide": "Pilih kartu yang tepat untuk kotak yang menyala."
+        },
+        {
+          "gameId": "subK3B4C-game-29",
+          "gameNumber": 29,
+          "stage": "Abstract",
+          "gameType": "story-lines",
+          "title": "Soal Cerita Garis dan Bangun",
+          "bookReference": "Buku Siswa hlm. 188–193 (garis sejajar, tegak lurus, dan bangun datar)",
+          "objective": "Menyelesaikan soal cerita tentang sudut siku-siku, sisi bangun, dan garis sejajar.",
+          "mechanicDescription": "Tiga ronde, tiap ronde dua cerita. Siswa membaca cerita, menghitung, lalu memilih satu dari tiga bilangan.",
+          "voiceGuide": "Baca cerita, lalu pilih hasilnya."
+        },
+        {
+          "gameId": "subK3B4C-game-30",
+          "gameNumber": 30,
+          "stage": "Abstract",
+          "gameType": "sentence-shapes",
+          "title": "Susun Kata Garis dan Bangun",
+          "bookReference": "Buku Siswa hlm. 174–192 (garis dan bangun datar sederhana)",
+          "objective": "Menyusun kalimat tentang garis dan bangun datar dari kartu kata.",
+          "mechanicDescription": "Empat kalimat. Siswa mengetuk kartu kata satu per satu menurut urutan kalimat yang benar. Ada satu kartu pengecoh.",
+          "voiceGuide": "Susun kartu kata menjadi kalimat."
+        }
+      ],
+      "poinPenting": {
+        "poin": [
+          {
+            "nama": "Garis tegak lurus",
+            "isi": "bertemu pada sudut siku-siku",
+            "suara": "Garis tegak lurus bertemu pada sudut siku-siku. Ditulis AB ⊥ BC dan dibaca AB tegak lurus BC."
+          },
+          {
+            "nama": "Kertas lipat",
+            "isi": "pojoknya memeriksa siku-siku",
+            "suara": "Pojok kertas yang dilipat dua kali adalah sudut siku-siku. Pojok itu dipakai untuk memeriksa garis tegak lurus."
+          },
+          {
+            "nama": "Garis sejajar",
+            "isi": "jarak sama, tidak bertemu",
+            "suara": "Garis sejajar ditarik pada jarak yang selalu sama dan tidak pernah bertemu. Ditulis AB // CD dan dibaca AB sejajar CD."
+          },
+          {
+            "nama": "Segitiga",
+            "isi": "3 sisi dan 3 sudut",
+            "suara": "Segitiga dibatasi tiga ruas garis. Segitiga memiliki tiga sisi dan tiga sudut."
+          },
+          {
+            "nama": "Persegi dan persegi panjang",
+            "isi": "4 sisi dan 4 sudut siku-siku",
+            "suara": "Persegi panjang memiliki empat sisi dan empat sudut siku-siku. Persegi memiliki empat sisi yang sama panjang."
+          }
+        ],
+        "suara": "Ingat selalu! Garis tegak lurus bertemu pada sudut siku-siku, ditulis dengan lambang ⊥. Garis sejajar jaraknya selalu sama dan tidak pernah bertemu, ditulis dengan lambang //. Segitiga punya tiga sisi, persegi dan persegi panjang punya empat sisi, dan lingkaran dibatasi garis lengkung.",
+        "caraMenyebutkan": "lipat kertas dua kali pojok di pertemuan garis lihat apakah pas pas berarti tegak lurus",
+        "rumah": "Ayo Mencoba di rumah: cari tiga pasang garis tegak lurus dan tiga pasang garis sejajar pada pintu, jendela, atau pagar. Lipat selembar kertas dua kali, lalu pakai pojoknya untuk memeriksa garis tegak lurus. Sebutkan juga bangun datar yang kamu temukan di rumah beserta banyak sisi dan sudutnya.",
+        "refleksi": [
+          "Aku dapat menjelaskan garis tegak lurus dan menuliskannya dengan lambang ⊥.",
+          "Aku dapat menjelaskan garis sejajar dan menuliskannya dengan lambang //.",
+          "Aku dapat membuat garis sejajar dan tegak lurus dengan melipat kertas.",
+          "Aku dapat menyebutkan sisi dan sudut segitiga, persegi, persegi panjang, dan lingkaran."
+        ]
+      }
     }
   },
   "practiceQuestions": []

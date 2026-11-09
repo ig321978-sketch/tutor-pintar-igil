@@ -682,3 +682,414 @@ export const RONDE_SUSUNKATA_QB: { kata: string[]; pengecoh: string }[] = [
   { kata: ["Busur", "derajat", "dipakai", "untuk", "mengukur", "besar", "sudut"], pengecoh: "panjang" },
   { kata: ["Ukuran", "sudut", "lurus", "sama", "dengan", "180", "derajat"], pengecoh: "90" },
 ];
+
+
+/* ====================================================================== */
+/* SUB-BAB C. Garis tegak lurus, garis sejajar, dan bangun datar sederhana   */
+/* ====================================================================== */
+
+export type Titik = [number, number];
+export type Ruas = { id: string; a: Titik; b: Titik };
+/** Hubungan dua garis: sejajar, tegak lurus, atau bukan keduanya (miring). */
+export type Hubungan = "sejajar" | "tegak-lurus" | "miring";
+export const URUT_HUBUNGAN: Hubungan[] = ["sejajar", "tegak-lurus", "miring"];
+export const NAMA_HUBUNGAN: Record<Hubungan, string> = { sejajar: "Sejajar", "tegak-lurus": "Tegak lurus", miring: "Bukan keduanya" };
+export const labelHubungan = (h: Hubungan): string => NAMA_HUBUNGAN[h];
+
+const ruas = (id: string, a: Titik, b: Titik): Ruas => ({ id, a, b });
+const arahRuas = (r: Ruas): Titik => [r.b[0] - r.a[0], r.b[1] - r.a[1]];
+const silang = (p: Titik, q: Titik): number => p[0] * q[1] - p[1] * q[0];
+const kaliTitik = (p: Titik, q: Titik): number => p[0] * q[0] + p[1] * q[1];
+const tanda = (n: number): number => (n > 0 ? 1 : n < 0 ? -1 : 0);
+const orientasi = (p: Titik, q: Titik, r: Titik): number => tanda((q[0] - p[0]) * (r[1] - p[1]) - (q[1] - p[1]) * (r[0] - p[0]));
+const padaRuas = (p: Titik, r: Ruas): boolean => Math.min(r.a[0], r.b[0]) <= p[0] && p[0] <= Math.max(r.a[0], r.b[0]) && Math.min(r.a[1], r.b[1]) <= p[1] && p[1] <= Math.max(r.a[1], r.b[1]);
+
+/** Hubungan dua garis menurut arahnya: hasil silang 0 sejajar, hasil kali titik 0 tegak lurus, selain itu miring. */
+export function hubungan(r1: Ruas, r2: Ruas): Hubungan {
+  const d1 = arahRuas(r1);
+  const d2 = arahRuas(r2);
+  if (silang(d1, d2) === 0) return "sejajar";
+  return kaliTitik(d1, d2) === 0 ? "tegak-lurus" : "miring";
+}
+/** Dua ruas berada pada satu garis yang sama (bukan sejajar sejati). */
+export function segarisRuas(r1: Ruas, r2: Ruas): boolean {
+  return silang(arahRuas(r1), arahRuas(r2)) === 0 && silang(arahRuas(r1), [r2.a[0] - r1.a[0], r2.a[1] - r1.a[1]]) === 0;
+}
+/** Kedua ruas bertemu (berpotongan atau menyentuh di ujung). */
+export function bertemu(r1: Ruas, r2: Ruas): boolean {
+  const o1 = orientasi(r1.a, r1.b, r2.a);
+  const o2 = orientasi(r1.a, r1.b, r2.b);
+  const o3 = orientasi(r2.a, r2.b, r1.a);
+  const o4 = orientasi(r2.a, r2.b, r1.b);
+  if (o1 !== o2 && o3 !== o4) return true;
+  return (o1 === 0 && padaRuas(r2.a, r1)) || (o2 === 0 && padaRuas(r2.b, r1)) || (o3 === 0 && padaRuas(r1.a, r2)) || (o4 === 0 && padaRuas(r1.b, r2));
+}
+/** Titik potong kedua garis (diperpanjang), dibulatkan dua desimal. Null bila sejajar. */
+export function titikPotong(r1: Ruas, r2: Ruas): [number, number] | null {
+  const d1 = arahRuas(r1);
+  const d2 = arahRuas(r2);
+  const s = silang(d1, d2);
+  if (s === 0) return null;
+  const t = silang([r2.a[0] - r1.a[0], r2.a[1] - r1.a[1]], d2) / s;
+  return [Math.round((r1.a[0] + t * d1[0]) * 100) / 100, Math.round((r1.a[1] + t * d1[1]) * 100) / 100];
+}
+
+/* ------------------------------ Benda bergaris (Concrete) ------------------------------ */
+
+/** Benda sehari-hari digambar dari ruas garis pada kotak 220 x 140. Dua ruas disorot per soal, hubungannya dihitung dari koordinat. */
+export type BendaGaris = { id: string; nama: string; ruas: Ruas[]; pasangan: [string, string][] };
+export const BENDA_GARIS: Record<string, BendaGaris> = {
+  tangga: {
+    id: "tangga",
+    nama: "tangga",
+    ruas: [ruas("kiri", [60, 10], [60, 130]), ruas("kanan", [160, 10], [160, 130]), ruas("t1", [60, 35], [160, 35]), ruas("t2", [60, 70], [160, 70]), ruas("t3", [60, 105], [160, 105])],
+    pasangan: [["kiri", "kanan"], ["kiri", "t1"], ["t1", "t2"]],
+  },
+  pagar: {
+    id: "pagar",
+    nama: "pagar",
+    ruas: [ruas("p1", [40, 30], [40, 120]), ruas("p2", [90, 30], [90, 120]), ruas("p3", [140, 30], [140, 120]), ruas("p4", [190, 30], [190, 120]), ruas("r1", [25, 55], [205, 55]), ruas("r2", [25, 100], [205, 100])],
+    pasangan: [["p1", "p2"], ["p1", "r1"], ["r1", "r2"]],
+  },
+  rumah: {
+    id: "rumah",
+    nama: "rumah",
+    ruas: [ruas("atapKiri", [30, 70], [110, 20]), ruas("atapKanan", [110, 20], [190, 70]), ruas("dindingKiri", [40, 70], [40, 125]), ruas("dindingKanan", [180, 70], [180, 125]), ruas("lantai", [40, 125], [180, 125]), ruas("langit", [40, 70], [180, 70])],
+    pasangan: [["dindingKiri", "dindingKanan"], ["dindingKiri", "lantai"], ["atapKiri", "atapKanan"]],
+  },
+  jendela: {
+    id: "jendela",
+    nama: "jendela",
+    ruas: [ruas("atas", [40, 20], [180, 20]), ruas("bawah", [40, 120], [180, 120]), ruas("kiri", [40, 20], [40, 120]), ruas("kanan", [180, 20], [180, 120]), ruas("tengahV", [110, 20], [110, 120]), ruas("tengahH", [40, 70], [180, 70])],
+    pasangan: [["atas", "bawah"], ["kiri", "atas"], ["tengahV", "tengahH"]],
+  },
+  rel: {
+    id: "rel",
+    nama: "rel kereta api",
+    ruas: [ruas("rel1", [20, 50], [200, 50]), ruas("rel2", [20, 95], [200, 95]), ruas("s1", [50, 40], [50, 105]), ruas("s2", [110, 40], [110, 105]), ruas("s3", [170, 40], [170, 105])],
+    pasangan: [["rel1", "rel2"], ["rel1", "s1"], ["s1", "s2"]],
+  },
+  tiang: {
+    id: "tiang",
+    nama: "tiang bendera",
+    ruas: [ruas("tiang", [110, 15], [110, 120]), ruas("tanah", [30, 120], [190, 120]), ruas("tali", [110, 30], [180, 120]), ruas("tali2", [110, 30], [40, 120])],
+    pasangan: [["tiang", "tanah"], ["tali", "tanah"], ["tali", "tali2"]],
+  },
+};
+export const cariRuas = (benda: string, id: string): Ruas => BENDA_GARIS[benda].ruas.find((r) => r.id === id) as Ruas;
+/** Soal benda bergaris: benda dan nomor pasangan ruas yang disorot (merah dan biru). */
+export type SoalBG = { benda: string; p: number };
+export const idBG = (s: SoalBG): string => `${s.benda}${s.p}`;
+export const hubunganBG = (s: SoalBG): Hubungan => {
+  const [x, y] = BENDA_GARIS[s.benda].pasangan[s.p];
+  return hubungan(cariRuas(s.benda, x), cariRuas(s.benda, y));
+};
+export const namaBG = (s: SoalBG): string => BENDA_GARIS[s.benda].nama;
+const bg = (benda: string, p: number): SoalBG => ({ benda, p });
+
+/** Tiga pilihan hubungan: ketiganya, dengan kunci berpindah tempat menurut nomor. */
+export function opsiHubungan(h: Hubungan, nomor: number): { opsi: string[]; jawab: number } {
+  const semua = urutanTetap(3, 2, nomor).map((i) => URUT_HUBUNGAN[i]);
+  const opsi = semua.map(labelHubungan);
+  return { opsi, jawab: semua.indexOf(h) };
+}
+
+/** CC1 Dua Garis pada Benda: dua soal per ronde. */
+export const RONDE_BENDA_CC: SoalBG[][] = [[bg("tangga", 0), bg("pagar", 1)], [bg("rumah", 2), bg("rel", 0)], [bg("jendela", 2), bg("tiang", 1)]];
+/** CC2 Ketuk Semua Benda dengan Hubungan Tertentu. */
+export const RONDE_SEMUA_CC: { hubungan: Hubungan; item: SoalBG[] }[] = [
+  { hubungan: "sejajar", item: [bg("tangga", 0), bg("pagar", 1), bg("rel", 2), bg("tiang", 1)] },
+  { hubungan: "tegak-lurus", item: [bg("jendela", 1), bg("rumah", 2), bg("pagar", 2), bg("rel", 1)] },
+  { hubungan: "miring", item: [bg("tiang", 2), bg("tangga", 1), bg("rumah", 0), bg("jendela", 0)] },
+];
+/** CC3 Jodohkan Benda dan Hubungan Garis: tiga hubungan berbeda. */
+export const RONDE_JODOH_CC: SoalBG[][] = [
+  [bg("tangga", 0), bg("pagar", 1), bg("rumah", 2)],
+  [bg("rel", 1), bg("jendela", 0), bg("tiang", 1)],
+  [bg("pagar", 2), bg("jendela", 2), bg("tiang", 2)],
+];
+/** CC4 Pilah Benda menurut Hubungan Garis (enam soal per ronde). */
+export const RONDE_PILAH_CC: SoalBG[][] = [
+  [bg("tangga", 0), bg("pagar", 1), bg("rumah", 2), bg("rel", 2), bg("jendela", 1), bg("tiang", 1)],
+  [bg("pagar", 0), bg("rel", 1), bg("tiang", 2), bg("jendela", 0), bg("tangga", 1), bg("rumah", 2)],
+  [bg("rel", 0), bg("jendela", 2), bg("tiang", 1), bg("tangga", 2), bg("pagar", 1), bg("tiang", 2)],
+];
+/** CC5 dan CC6 Hitung Garis Sejajar atau Tegak Lurus dengan Garis Merah. */
+export type SoalHitungBG = { benda: string; merah: string; lain: string[] };
+export const RONDE_SEJAJARDENGAN_CC: SoalHitungBG[][] = [
+  [{ benda: "pagar", merah: "p1", lain: ["p2", "p3", "p4", "r1"] }, { benda: "tangga", merah: "t1", lain: ["t2", "t3", "kiri"] }],
+  [{ benda: "rel", merah: "rel1", lain: ["rel2", "s1", "s2", "s3"] }, { benda: "jendela", merah: "kiri", lain: ["kanan", "tengahV", "atas"] }],
+  [{ benda: "pagar", merah: "r1", lain: ["r2", "p1", "p2"] }, { benda: "tangga", merah: "kiri", lain: ["kanan", "t1"] }],
+];
+export const RONDE_TEGAKLURUS_CC: SoalHitungBG[][] = [
+  [{ benda: "tangga", merah: "kiri", lain: ["t1", "t2", "t3", "kanan"] }, { benda: "jendela", merah: "atas", lain: ["kiri", "kanan", "bawah", "tengahV"] }],
+  [{ benda: "rel", merah: "s1", lain: ["rel1", "rel2", "s2"] }, { benda: "pagar", merah: "r1", lain: ["p1", "p2", "r2"] }],
+  [{ benda: "jendela", merah: "tengahH", lain: ["tengahV", "kiri", "kanan", "atas"] }, { benda: "tiang", merah: "tanah", lain: ["tiang", "tali", "tali2"] }],
+];
+export const hitungSejajar = (s: SoalHitungBG): number => s.lain.filter((id) => hubungan(cariRuas(s.benda, s.merah), cariRuas(s.benda, id)) === "sejajar").length;
+export const hitungTegakLurus = (s: SoalHitungBG): number =>
+  s.lain.filter((id) => hubungan(cariRuas(s.benda, s.merah), cariRuas(s.benda, id)) === "tegak-lurus" && bertemu(cariRuas(s.benda, s.merah), cariRuas(s.benda, id))).length;
+
+/** Kertas berpetak yang dilipat: lipatan sebagai ruas pada kertas selebar w petak dan setinggi h petak. */
+export const LIPATAN: Record<string, Ruas & { warna: string }> = {
+  h: { ...ruas("h", [0, 2], [4, 2]), warna: "#DC2626" },
+  v: { ...ruas("v", [2, 0], [2, 4]), warna: "#2563EB" },
+  d1: { ...ruas("d1", [0, 0], [4, 4]), warna: "#DC2626" },
+  d2: { ...ruas("d2", [4, 0], [0, 4]), warna: "#2563EB" },
+  v1: { ...ruas("v1", [1, 0], [1, 4]), warna: "#16A34A" },
+  v2: { ...ruas("v2", [3, 0], [3, 4]), warna: "#16A34A" },
+  h1: { ...ruas("h1", [0, 1], [4, 1]), warna: "#F59E0B" },
+  h2: { ...ruas("h2", [0, 3], [4, 3]), warna: "#F59E0B" },
+};
+export const hubunganLipatan = (x: string, y: string): Hubungan => hubungan(LIPATAN[x], LIPATAN[y]);
+/** CC7 Dua Lipatan pada Kertas: pasangan id lipatan. */
+export const RONDE_LIPATAN_CC: [string, string][][] = [[["h", "v"], ["v1", "v2"]], [["d1", "d2"], ["h1", "h2"]], [["d1", "h"], ["v", "h2"]]];
+/** CC8 Bangun di Tengah Kertas: dua lipatan tegak dan dua lipatan mendatar membentuk bangun di tengah. */
+export type SoalBangunLipat = { w: number; h: number; v: [number, number]; hh: [number, number] };
+export const bangunTengah = (s: SoalBangunLipat): "persegi" | "persegi panjang" => (s.v[1] - s.v[0] === s.hh[1] - s.hh[0] ? "persegi" : "persegi panjang");
+export const RONDE_BANGUNLIPAT_CC: SoalBangunLipat[][] = [
+  [{ w: 4, h: 4, v: [1, 3], hh: [1, 3] }, { w: 6, h: 4, v: [1, 5], hh: [1, 3] }],
+  [{ w: 5, h: 4, v: [1, 4], hh: [1, 3] }, { w: 6, h: 6, v: [2, 4], hh: [2, 4] }],
+  [{ w: 5, h: 5, v: [1, 4], hh: [1, 4] }, { w: 6, h: 5, v: [1, 5], hh: [2, 4] }],
+];
+/** CC9 Urutkan Kertas menurut Banyak Lipatan. */
+export const RONDE_URUTLIPAT_CC: { kertas: string[][]; dari: "kecil" | "besar" }[] = [
+  { kertas: [["h"], ["h", "v", "d1"], ["h", "v"]], dari: "kecil" },
+  { kertas: [["d1", "d2", "h", "v"], ["d1"], ["d1", "d2"]], dari: "besar" },
+  { kertas: [["v1", "v2", "h1"], ["v1"], ["v1", "v2", "h1", "h2"]], dari: "kecil" },
+];
+/** CC10 Jodohkan Lipatan dan Hubungannya: tiga hubungan berbeda. */
+export const RONDE_JODOHLIPAT_CC: [string, string][][] = [
+  [["h", "v"], ["v1", "v2"], ["d1", "h"]],
+  [["d1", "d2"], ["h1", "h2"], ["d1", "v"]],
+  [["h", "v1"], ["h1", "h2"], ["d2", "v"]],
+];
+
+/* ------------------------------ Picture C ------------------------------ */
+
+/** Pasangan garis pada kertas berpetak 5 x 5 (koordinat petak bulat, y ke bawah). */
+export type PasanganGaris = { r1: Ruas; r2: Ruas };
+const ps = (a1: Titik, b1: Titik, a2: Titik, b2: Titik): PasanganGaris => ({ r1: ruas("a", a1, b1), r2: ruas("b", a2, b2) });
+export const hubunganPG = (p: PasanganGaris): Hubungan => hubungan(p.r1, p.r2);
+export const SJ: PasanganGaris[] = [
+  ps([1, 1], [4, 1], [1, 3], [4, 3]),
+  ps([2, 1], [2, 4], [4, 1], [4, 4]),
+  ps([1, 1], [3, 3], [2, 1], [4, 3]),
+  ps([1, 4], [4, 1], [2, 4], [5, 1]),
+  ps([0, 1], [3, 1], [2, 4], [5, 4]),
+  ps([1, 0], [1, 4], [3, 1], [3, 5]),
+];
+export const TL: PasanganGaris[] = [
+  ps([1, 1], [1, 4], [1, 4], [4, 4]),
+  ps([1, 1], [4, 4], [1, 4], [4, 1]),
+  ps([1, 3], [4, 3], [2, 1], [2, 5]),
+  ps([1, 2], [3, 4], [3, 4], [5, 2]),
+  ps([1, 1], [3, 1], [3, 1], [3, 4]),
+  ps([2, 1], [2, 4], [0, 3], [4, 3]),
+];
+export const MR: PasanganGaris[] = [
+  ps([1, 1], [3, 4], [3, 4], [5, 2]),
+  ps([1, 3], [4, 1], [4, 1], [3, 4]),
+  ps([1, 1], [4, 3], [1, 4], [4, 2]),
+  ps([2, 1], [2, 4], [2, 4], [5, 3]),
+  ps([1, 2], [4, 2], [1, 2], [3, 5]),
+  ps([1, 1], [5, 3], [2, 4], [5, 3]),
+];
+/** PC1 Jenis Pasangan Garis. */
+export const RONDE_JENIS_PC: PasanganGaris[][] = [[SJ[0], TL[0]], [MR[0], SJ[2]], [TL[2], MR[2]]];
+/** PC2 Periksa Jarak Petak: jarak kedua garis di ujung kiri dan ujung kanan (garis atas mendatar). */
+export type SoalJarak = { kiri: number; kanan: number };
+export const RONDE_JARAK_PC: SoalJarak[][] = [[{ kiri: 2, kanan: 2 }, { kiri: 2, kanan: 4 }], [{ kiri: 1, kanan: 1 }, { kiri: 1, kanan: 3 }], [{ kiri: 3, kanan: 3 }, { kiri: 3, kanan: 1 }]];
+/** Pasangan garis dari jarak: garis atas (1,1) ke (4,1), garis bawah dari (1, 1+kiri) ke (4, 1+kanan). */
+export const pasanganJarak = (s: SoalJarak): PasanganGaris => ps([1, 1], [4, 1], [1, 1 + s.kiri], [4, 1 + s.kanan]);
+/** PC3 Jodohkan Pasangan Garis dan Hubungannya: tiga hubungan berbeda. */
+export const RONDE_JODOH_PC: PasanganGaris[][] = [[SJ[1], TL[1], MR[1]], [SJ[2], TL[3], MR[3]], [SJ[4], TL[4], MR[4]]];
+/** PC4 Ketuk Semua Pasangan dengan Hubungan Tertentu. */
+export const RONDE_SEMUA_PC: { hubungan: Hubungan; item: PasanganGaris[] }[] = [
+  { hubungan: "sejajar", item: [SJ[0], TL[0], SJ[3], MR[0]] },
+  { hubungan: "tegak-lurus", item: [MR[2], TL[2], SJ[1], TL[5]] },
+  { hubungan: "miring", item: [SJ[5], MR[4], TL[4], MR[5]] },
+];
+/** PC5 Pilah Pasangan Garis (enam per ronde, dua dari tiap hubungan). */
+export const RONDE_PILAH_PC: PasanganGaris[][] = [
+  [SJ[0], TL[0], MR[0], SJ[1], TL[1], MR[1]],
+  [SJ[2], TL[2], MR[2], SJ[3], TL[3], MR[3]],
+  [SJ[4], TL[4], MR[4], SJ[5], TL[5], MR[5]],
+];
+
+/** Bangun datar sederhana: banyak sisi dan sudut, dan ciri-cirinya. */
+export type JenisBangun = "segitiga" | "persegi" | "persegi panjang" | "segilima" | "lingkaran";
+export const BANGUN_SEDERHANA: Record<JenisBangun, { nama: string; sisi: number; sudut: number; ciri: string }> = {
+  segitiga: { nama: "Segitiga", sisi: 3, sudut: 3, ciri: "3 sisi, 3 sudut" },
+  persegi: { nama: "Persegi", sisi: 4, sudut: 4, ciri: "4 sisi sama panjang, 4 sudut siku-siku" },
+  "persegi panjang": { nama: "Persegi panjang", sisi: 4, sudut: 4, ciri: "4 sisi, 4 sudut siku-siku" },
+  segilima: { nama: "Segilima", sisi: 5, sudut: 5, ciri: "5 sisi, 5 sudut" },
+  lingkaran: { nama: "Lingkaran", sisi: 0, sudut: 0, ciri: "garis lengkung, tanpa sudut" },
+};
+export const URUT_BANGUN: JenisBangun[] = ["segitiga", "persegi", "persegi panjang", "segilima", "lingkaran"];
+/** PC6 Isi Tabel Ciri Bangun Datar. */
+export type TabelBangun = { kepala: [string, string]; baris: { label: string; jawab: string }[]; kartu: string[] };
+export function tabelBangun(daftar: JenisBangun[], asing: string, tambahan: number): TabelBangun {
+  const baris = daftar.map((j) => ({ label: BANGUN_SEDERHANA[j].nama, jawab: BANGUN_SEDERHANA[j].ciri }));
+  const kartu = urutanTetap(baris.length + 1, 2, tambahan).map((i) => (i < baris.length ? baris[i].jawab : asing));
+  return { kepala: ["Bangun datar", "Ciri-cirinya"], baris, kartu };
+}
+export const RONDE_TABEL_PC: TabelBangun[] = [
+  tabelBangun(["segitiga", "persegi", "segilima", "lingkaran"], "6 sisi, 6 sudut", 1),
+  tabelBangun(["persegi panjang", "segitiga", "lingkaran", "segilima"], "7 sisi, 7 sudut", 2),
+  tabelBangun(["persegi", "persegi panjang", "segitiga", "lingkaran"], "8 sisi, 8 sudut", 3),
+];
+/** PC7 Memori Bangun Datar dan Namanya: empat bangun berbeda. */
+export const RONDE_MEMORI_PC: JenisBangun[][] = [
+  ["segitiga", "persegi", "persegi panjang", "lingkaran"],
+  ["segitiga", "persegi", "segilima", "lingkaran"],
+  ["persegi", "persegi panjang", "segilima", "lingkaran"],
+];
+/** PC8 Lambang Pasangan Garis: huruf pada ujung kedua ruas (huruf sama bila ujungnya sama). */
+export type SoalLambang = { pasang: PasanganGaris; huruf: [string, string, string, string] };
+export const RONDE_LAMBANG_PC: SoalLambang[][] = [
+  [{ pasang: TL[0], huruf: ["A", "B", "B", "C"] }, { pasang: SJ[0], huruf: ["A", "B", "C", "D"] }],
+  [{ pasang: SJ[2], huruf: ["E", "F", "G", "H"] }, { pasang: TL[2], huruf: ["K", "L", "M", "N"] }],
+  [{ pasang: TL[4], huruf: ["P", "Q", "Q", "R"] }, { pasang: SJ[1], huruf: ["W", "X", "Y", "Z"] }],
+];
+export const SIMBOL_HUBUNGAN: Record<"sejajar" | "tegak-lurus", string> = { sejajar: "//", "tegak-lurus": "⊥" };
+export function lambangPasangan(s: SoalLambang): string {
+  const h = hubunganPG(s.pasang);
+  if (h === "miring") throw new RangeError("pasangan miring tidak punya lambang");
+  return `${s.huruf[0]}${s.huruf[1]} ${SIMBOL_HUBUNGAN[h]} ${s.huruf[2]}${s.huruf[3]}`;
+}
+/** Tiga pilihan lambang: kunci, lambang yang tertukar, dan pernyataan bukan keduanya. */
+export function opsiLambang(s: SoalLambang, nomor: number): { opsi: string[]; jawab: number } {
+  const h = hubunganPG(s.pasang) as "sejajar" | "tegak-lurus";
+  const lain = h === "sejajar" ? "tegak-lurus" : "sejajar";
+  return susunOpsi(lambangPasangan(s), [`${s.huruf[0]}${s.huruf[1]} ${SIMBOL_HUBUNGAN[lain]} ${s.huruf[2]}${s.huruf[3]}`, "bukan ⊥ dan bukan //"], nomor);
+}
+/** PC9 Sisi dan Sudut Bangun Datar. */
+export const RONDE_SIFAT_PC: JenisBangun[][] = [["segitiga", "persegi"], ["segilima", "persegi panjang"], ["lingkaran", "segitiga"]];
+export function opsiCiri(j: JenisBangun, nomor: number): { opsi: string[]; jawab: number } {
+  const i = URUT_BANGUN.indexOf(j);
+  const pilihan: JenisBangun[] = [j, URUT_BANGUN[(i + 2) % 5], URUT_BANGUN[(i + 4) % 5]];
+  const unikCiri = pilihan.map((x) => BANGUN_SEDERHANA[x].ciri);
+  return susunOpsi(unikCiri[0], [unikCiri[1], unikCiri[2]], nomor);
+}
+/** PC10 Pilih Garis yang Sejajar atau Tegak Lurus: satu garis dasar dan tiga kandidat (sejajar, tegak lurus, miring). */
+export type SoalCalon = { dasar: Ruas; kandidat: Ruas[]; tanya: ("sejajar" | "tegak-lurus")[] };
+const rs = (id: string, a: Titik, b: Titik): Ruas => ruas(id, a, b);
+export const RONDE_CALON_PC: SoalCalon[] = [
+  { dasar: rs("a", [1, 1], [4, 1]), kandidat: [rs("c", [1, 3], [4, 3]), rs("c", [2, 1], [2, 4]), rs("c", [1, 1], [3, 4])], tanya: ["sejajar", "tegak-lurus"] },
+  { dasar: rs("a", [1, 4], [4, 4]), kandidat: [rs("c", [1, 2], [4, 2]), rs("c", [3, 1], [3, 4]), rs("c", [2, 4], [4, 1])], tanya: ["tegak-lurus", "sejajar"] },
+  { dasar: rs("a", [2, 1], [2, 4]), kandidat: [rs("c", [4, 1], [4, 4]), rs("c", [0, 3], [4, 3]), rs("c", [2, 1], [4, 3])], tanya: ["sejajar", "tegak-lurus"] },
+];
+
+/* ------------------------------ Abstract C ------------------------------ */
+
+/** QC1 Pilih Istilah Garis. */
+export const RONDE_ISTILAH_QC: SoalTeks[][] = [
+  [NAMA_S("Dua garis yang bertemu dan membentuk sudut siku-siku disebut garis ...", "tegak lurus", ["sejajar", "lengkung"], "Garis yang bertemu membentuk sudut siku-siku adalah garis tegak lurus."), NAMA_S("Dua garis yang ditarik pada jarak yang sama dan tidak pernah bertemu disebut garis ...", "sejajar", ["tegak lurus", "berpotongan"], "Garis yang jaraknya selalu sama dan tidak pernah bertemu adalah garis sejajar.")],
+  [NAMA_S("Lambang ⊥ dibaca ...", "tegak lurus", ["sejajar", "sama dengan"], "Lambang ⊥ dibaca tegak lurus."), NAMA_S("Lambang // dibaca ...", "sejajar", ["tegak lurus", "tidak sama dengan"], "Lambang // dibaca sejajar.")],
+  [NAMA_S("Garis yang tidak pernah bertemu walaupun diperpanjang disebut garis ...", "sejajar", ["tegak lurus", "lengkung"], "Garis sejajar tidak akan pernah bertemu."), NAMA_S("Garis yang bertemu pada sudut 90° disebut garis ...", "tegak lurus", ["sejajar", "melengkung"], "Sudut 90° adalah sudut siku-siku, jadi garisnya tegak lurus.")],
+];
+/** QC2 Lengkapi Kalimat Tentang Garis dan Bangun. */
+export const RONDE_KALIMAT_QC: KalimatIsian[][] = [
+  [
+    { depan: "Garis-garis tegak lurus bertemu membentuk sudut", belakang: ".", opsi: ["siku-siku", "lancip", "tumpul"], benar: 0 },
+    { depan: "Garis-garis sejajar tidak pernah", belakang: "satu sama lain.", opsi: ["bertemu", "sejajar", "melengkung"], benar: 0 },
+    { depan: "Anak panah pada gambar garis menunjukkan garis", belakang: ".", opsi: ["sejajar", "tegak lurus", "lengkung"], benar: 0 },
+  ],
+  [
+    { depan: "Segitiga memiliki tiga sisi dan tiga", belakang: ".", opsi: ["sudut", "titik", "lingkaran"], benar: 0 },
+    { depan: "Persegi memiliki empat sisi yang sama", belakang: ".", opsi: ["panjang", "lengkung", "sejajar"], benar: 0 },
+    { depan: "Persegi panjang memiliki empat sudut", belakang: ".", opsi: ["siku-siku", "lancip", "refleks"], benar: 0 },
+  ],
+  [
+    { depan: "Lingkaran dibatasi oleh garis", belakang: ".", opsi: ["lengkung", "lurus", "sejajar"], benar: 0 },
+    { depan: "Lingkaran tidak memiliki", belakang: ".", opsi: ["sudut", "garis", "bentuk"], benar: 0 },
+    { depan: "Segilima memiliki lima sisi dan lima", belakang: ".", opsi: ["sudut", "titik", "lingkaran"], benar: 0 },
+  ],
+];
+/** QC3 Arti Lambang Garis. */
+export const RONDE_LAMBANG_QC: SoalTeks[][] = [
+  [NAMA_S("AB ⊥ CD dibaca ...", "AB tegak lurus CD", ["AB sejajar CD", "AB sama dengan CD"], "Lambang ⊥ dibaca tegak lurus."), NAMA_S("EF // GH dibaca ...", "EF sejajar GH", ["EF tegak lurus GH", "EF sama dengan GH"], "Lambang // dibaca sejajar.")],
+  [NAMA_S("KL tegak lurus MN ditulis ...", "KL ⊥ MN", ["KL // MN", "KL = MN"], "Tegak lurus ditulis dengan lambang ⊥."), NAMA_S("PQ sejajar RS ditulis ...", "PQ // RS", ["PQ ⊥ RS", "PQ = RS"], "Sejajar ditulis dengan lambang //.")],
+  [NAMA_S("XY ⊥ YZ artinya ...", "XY dan YZ bertemu membentuk sudut siku-siku", ["XY dan YZ tidak pernah bertemu", "XY dan YZ sama panjang"], "XY ⊥ YZ berarti XY dan YZ tegak lurus, bertemu membentuk sudut siku-siku."), NAMA_S("AB // CD artinya ...", "AB dan CD tidak pernah bertemu", ["AB dan CD bertemu membentuk sudut siku-siku", "AB dan CD sama panjang"], "AB // CD berarti AB dan CD sejajar, tidak pernah bertemu.")],
+];
+/** QC4 Jodohkan Lambang dan Bacaannya: tiga pasangan berbeda. */
+export const RONDE_JODOH_QC: { kiri: string; kanan: string }[][] = [
+  [{ kiri: "AB ⊥ BC", kanan: "AB tegak lurus BC" }, { kiri: "EF // GH", kanan: "EF sejajar GH" }, { kiri: "PQ ⊥ RS", kanan: "PQ tegak lurus RS" }],
+  [{ kiri: "KL // MN", kanan: "KL sejajar MN" }, { kiri: "DE ⊥ FG", kanan: "DE tegak lurus FG" }, { kiri: "XY // ZW", kanan: "XY sejajar ZW" }],
+  [{ kiri: "AB // CD", kanan: "AB sejajar CD" }, { kiri: "XY ⊥ YZ", kanan: "XY tegak lurus YZ" }, { kiri: "MN // OP", kanan: "MN sejajar OP" }],
+];
+/** QC5 Memori Istilah dan Artinya: empat pasangan berbeda. */
+export const RONDE_MEMORI_QC: { a: string; b: string }[][] = [
+  [{ a: "Sejajar", b: "Tidak pernah bertemu" }, { a: "Tegak lurus", b: "Bertemu pada sudut siku-siku" }, { a: "Persegi", b: "4 sisi sama panjang" }, { a: "Lingkaran", b: "Tanpa sudut" }],
+  [{ a: "Segitiga", b: "3 sisi, 3 sudut" }, { a: "Segilima", b: "5 sisi, 5 sudut" }, { a: "Persegi panjang", b: "4 sudut siku-siku" }, { a: "Lambang //", b: "Dibaca sejajar" }],
+  [{ a: "Lambang ⊥", b: "Dibaca tegak lurus" }, { a: "Persegi", b: "4 sudut siku-siku" }, { a: "Segitiga", b: "Dibatasi 3 ruas garis" }, { a: "Lingkaran", b: "Dibatasi garis lengkung" }],
+];
+/** QC6 Benar atau Salah. */
+export const RONDE_BENARSALAH_QC: Pernyataan[][] = [
+  [
+    { teks: "Garis tegak lurus bertemu membentuk sudut siku-siku.", benar: true, penjelasan: "Dua garis yang tegak lurus bertemu dan membentuk sudut tepat 90°." },
+    { teks: "Garis sejajar bertemu di satu titik.", benar: false, penjelasan: "Garis sejajar tidak pernah bertemu, karena jaraknya selalu sama." },
+    { teks: "AB ⊥ CD dibaca AB tegak lurus CD.", benar: true, penjelasan: "Lambang ⊥ dibaca tegak lurus." },
+    { teks: "Dua garis yang jaraknya berbeda di kedua ujung adalah garis sejajar.", benar: false, penjelasan: "Garis sejajar jaraknya selalu sama. Bila jarak di ujung kiri dan kanan berbeda, garisnya tidak sejajar." },
+    { teks: "Selembar kertas yang dilipat dapat dipakai untuk memeriksa sudut siku-siku.", benar: true, penjelasan: "Pojok kertas lipat adalah sudut siku-siku, jadi dapat dipakai untuk memeriksa garis tegak lurus." },
+  ],
+  [
+    { teks: "Segitiga memiliki tiga sisi dan tiga sudut.", benar: true, penjelasan: "Segitiga dibatasi tiga ruas garis dan memiliki tiga titik sudut." },
+    { teks: "Persegi hanya memiliki dua sudut siku-siku.", benar: false, penjelasan: "Persegi memiliki empat sudut siku-siku." },
+    { teks: "Lingkaran tidak memiliki sudut.", benar: true, penjelasan: "Lingkaran dibatasi garis lengkung, jadi tidak punya sudut." },
+    { teks: "Persegi panjang memiliki lima sisi.", benar: false, penjelasan: "Persegi panjang memiliki empat sisi dan empat sudut siku-siku." },
+    { teks: "Segilima memiliki lima sisi dan lima sudut.", benar: true, penjelasan: "Nama segilima berasal dari lima sisinya." },
+  ],
+];
+/** QC7 Detektif Garis dan Bangun. */
+export const RONDE_DETEKTIF_QC: SoalDetektif[] = [
+  { klue: ["Aku banyak sudut pada persegi panjang.", "Aku bilangan genap kurang dari 6."], jawab: 4, opsi: [4, 3, 5], salah: "Persegi panjang punya 4 sudut, dan 4 genap kurang dari 6." },
+  { klue: ["Aku banyak sisi pada segitiga.", "Aku kurang dari 4."], jawab: 3, opsi: [3, 4, 5], salah: "Segitiga punya 3 sisi, dan 3 kurang dari 4." },
+  { klue: ["Aku banyak sudut pada segilima.", "Aku lebih dari 4."], jawab: 5, opsi: [5, 4, 3], salah: "Segilima punya 5 sudut, dan 5 lebih dari 4." },
+  { klue: ["Aku banyak sudut siku-siku pada persegi.", "Aku bilangan genap."], jawab: 4, opsi: [4, 3, 1], salah: "Persegi punya 4 sudut siku-siku, dan 4 genap." },
+];
+/** QC8 Peta Konsep Garis dan Bangun. */
+export const PETA_KONSEP_QC: { pusat: string; kotak: KotakPeta[] }[] = [
+  {
+    pusat: "Garis dan lambangnya",
+    kotak: [
+      { label: "Garis yang bertemu pada sudut siku-siku disebut", opsi: ["tegak lurus", "sejajar", "lengkung"], benar: 0 },
+      { label: "Garis yang jaraknya selalu sama disebut", opsi: ["sejajar", "tegak lurus", "berpotongan"], benar: 0 },
+      { label: "Lambang untuk tegak lurus adalah", opsi: ["⊥", "//", "="], benar: 0 },
+      { label: "Menurutku, lambang untuk sejajar adalah", opsi: ["//", "⊥", "≠"], benar: 0 },
+    ],
+  },
+  {
+    pusat: "Bangun datar sederhana",
+    kotak: [
+      { label: "Bangun dengan tiga sisi adalah", opsi: ["segitiga", "persegi", "lingkaran"], benar: 0 },
+      { label: "Bangun dengan empat sisi sama panjang adalah", opsi: ["persegi", "segitiga", "segilima"], benar: 0 },
+      { label: "Bangun dibatasi garis lengkung adalah", opsi: ["lingkaran", "persegi panjang", "segilima"], benar: 0 },
+      { label: "Menurutku, bangun dengan lima sisi adalah", opsi: ["segilima", "segitiga", "persegi"], benar: 0 },
+    ],
+  },
+];
+/** QC9 Soal Cerita Garis dan Bangun: jawaban berupa bilangan. */
+export type CeritaGaris = { teks: string; jawab: number; pesan: string };
+export const RONDE_CERITA_QC: CeritaGaris[][] = [
+  [
+    { teks: "Sebuah persegi panjang dan sebuah persegi digambar di kertas. Berapa jumlah sudut siku-siku pada keduanya?", jawab: 8, pesan: "Tiap bangun memiliki 4 sudut siku-siku. 4 + 4 = 8." },
+    { teks: "Dua garis sejajar terpisah 3 petak di ujung kiri. Berapa petak jarak keduanya di ujung kanan?", jawab: 3, pesan: "Garis sejajar jaraknya selalu sama, jadi di ujung kanan juga 3 petak." },
+  ],
+  [
+    { teks: "Sebuah segitiga dan sebuah segilima. Berapa jumlah sisi keduanya?", jawab: 8, pesan: "Segitiga 3 sisi dan segilima 5 sisi. 3 + 5 = 8." },
+    { teks: "Sebuah pagar memiliki 5 tiang tegak yang saling sejajar. Berapa pasang tiang yang bersebelahan?", jawab: 4, pesan: "Lima tiang membentuk 4 pasang yang bersebelahan." },
+  ],
+  [
+    { teks: "Persegi panjang ABCD memiliki sisi dan sudut. Berapa jumlah sisi dan sudutnya?", jawab: 8, pesan: "4 sisi dan 4 sudut. 4 + 4 = 8." },
+    { teks: "Sebuah tangga memiliki 2 tiang yang sejajar dan 4 anak tangga yang sejajar. Berapa garis seluruhnya?", jawab: 6, pesan: "2 tiang ditambah 4 anak tangga. 2 + 4 = 6." },
+  ],
+];
+/** QC10 Susun Kata Garis dan Bangun. */
+export const RONDE_SUSUNKATA_QC: { kata: string[]; pengecoh: string }[] = [
+  { kata: ["Garis", "tegak", "lurus", "bertemu", "pada", "sudut", "siku-siku"], pengecoh: "sejajar" },
+  { kata: ["Garis", "sejajar", "tidak", "pernah", "bertemu", "satu", "sama", "lain"], pengecoh: "selalu" },
+  { kata: ["Persegi", "memiliki", "empat", "sisi", "yang", "sama", "panjang"], pengecoh: "lima" },
+  { kata: ["Lingkaran", "dibatasi", "garis", "lengkung", "dan", "tidak", "memiliki", "sudut"], pengecoh: "lurus" },
+];

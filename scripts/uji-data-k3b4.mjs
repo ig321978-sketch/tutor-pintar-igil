@@ -385,11 +385,217 @@ D.RONDE_CERITA_QB.forEach((ro, r) =>
 cek("RONDE_SUSUNKATA_QB: empat kalimat, kata unik, pengecoh bukan bagian kalimat", D.RONDE_SUSUNKATA_QB.length === 4 && D.RONDE_SUSUNKATA_QB.every((s) => s.kata.length >= 6 && unik(s.kata.map((k) => k.toLowerCase())) && !s.kata.map((k) => k.toLowerCase()).includes(s.pengecoh)));
 
 /* ====================================================================== */
+/* Sub-Bab C: Garis tegak lurus, garis sejajar, dan bangun datar sederhana   */
+/* ====================================================================== */
+
+/* ---- Pembantu geometri ---- */
+const R = (id, a, b) => ({ id, a, b });
+cek("hubungan: sejajar, tegak lurus, miring", D.hubungan(R("a", [0, 0], [4, 0]), R("b", [0, 2], [4, 2])) === "sejajar" && D.hubungan(R("a", [0, 0], [0, 3]), R("b", [0, 3], [4, 3])) === "tegak-lurus" && D.hubungan(R("a", [0, 0], [3, 4]), R("b", [3, 4], [5, 2])) === "miring" && D.hubungan(R("a", [0, 0], [4, 4]), R("b", [4, 0], [0, 4])) === "tegak-lurus" && D.hubungan(R("a", [0, 0], [3, 1]), R("b", [0, 4], [3, 2])) === "miring");
+cek("segarisRuas", D.segarisRuas(R("a", [0, 0], [2, 2]), R("b", [3, 3], [5, 5])) && !D.segarisRuas(R("a", [0, 0], [4, 0]), R("b", [0, 2], [4, 2])));
+cek("bertemu", D.bertemu(R("a", [0, 0], [4, 4]), R("b", [4, 0], [0, 4])) && D.bertemu(R("a", [1, 1], [1, 4]), R("b", [1, 4], [4, 4])) && !D.bertemu(R("a", [0, 0], [4, 0]), R("b", [0, 2], [4, 2])) && !D.bertemu(R("a", [0, 0], [1, 1]), R("b", [3, 0], [3, 5])));
+cek("titikPotong", JSON.stringify(D.titikPotong(R("a", [0, 0], [4, 4]), R("b", [4, 0], [0, 4]))) === "[2,2]" && D.titikPotong(R("a", [0, 0], [4, 0]), R("b", [0, 2], [4, 2])) === null);
+cek("labelHubungan", D.labelHubungan("sejajar") === "Sejajar" && D.labelHubungan("tegak-lurus") === "Tegak lurus" && D.labelHubungan("miring") === "Bukan keduanya");
+for (const h of D.URUT_HUBUNGAN) for (let k = 0; k < 3; k += 1) {
+  const o = D.opsiHubungan(h, k);
+  cek(`opsiHubungan(${h}, ${k}) tiga berbeda menunjuk ${D.labelHubungan(h)}`, new Set(o.opsi).size === 3 && o.opsi[o.jawab] === D.labelHubungan(h));
+}
+
+/* ---- Benda bergaris ---- */
+const HUBUNGAN_BENDA = { tangga: ["sejajar", "tegak-lurus", "sejajar"], pagar: ["sejajar", "tegak-lurus", "sejajar"], rumah: ["sejajar", "tegak-lurus", "miring"], jendela: ["sejajar", "tegak-lurus", "tegak-lurus"], rel: ["sejajar", "tegak-lurus", "sejajar"], tiang: ["tegak-lurus", "miring", "miring"] };
+cek("BENDA_GARIS: enam benda", Object.keys(D.BENDA_GARIS).join() === Object.keys(HUBUNGAN_BENDA).join());
+for (const [id, b] of Object.entries(D.BENDA_GARIS)) {
+  const ids = b.ruas.map((r) => r.id);
+  cek(`BENDA_GARIS ${id}: id ruas unik, koordinat dalam kotak 220 x 140, tiga pasangan berbeda yang terdaftar`, b.id === id && !!b.nama && unik(ids) && b.ruas.every((r) => [...r.a, ...r.b].every((v, i) => v >= 0 && v <= (i % 2 === 0 ? 220 : 140))) && b.pasangan.length === 3 && b.pasangan.every(([x, y]) => x !== y && ids.includes(x) && ids.includes(y)) && unik(b.pasangan.map((p) => p.join("|"))));
+  b.pasangan.forEach(([x, y], p) => {
+    const h = D.hubunganBG({ benda: id, p });
+    const rx = D.cariRuas(id, x);
+    const ry = D.cariRuas(id, y);
+    cek(`BENDA_GARIS ${id} pasangan ${p + 1} (${x}, ${y}): hubungan ${HUBUNGAN_BENDA[id][p]}, tegak lurus berarti bertemu, sejajar berarti tidak segaris`, h === HUBUNGAN_BENDA[id][p] && (h !== "tegak-lurus" || D.bertemu(rx, ry)) && (h !== "sejajar" || !D.segarisRuas(rx, ry)) && (h !== "miring" || D.bertemu(rx, ry)), h);
+  });
+}
+const sahBG = (s) => !!D.BENDA_GARIS[s.benda] && s.p >= 0 && s.p < 3;
+tiga("RONDE_BENDA_CC", D.RONDE_BENDA_CC);
+D.RONDE_BENDA_CC.forEach((ro, r) => cek(`RONDE_BENDA_CC ronde ${r + 1}: dua soal sah, id unik`, ro.length === 2 && ro.every(sahBG) && unik(ro.map(D.idBG))));
+cek("RONDE_BENDA_CC: sejajar, tegak lurus, dan bukan keduanya semuanya muncul", D.URUT_HUBUNGAN.every((h) => D.RONDE_BENDA_CC.flat().some((s) => D.hubunganBG(s) === h)));
+tiga("RONDE_SEMUA_CC", D.RONDE_SEMUA_CC);
+D.RONDE_SEMUA_CC.forEach((ro, r) => {
+  const benar = ro.item.filter((s) => D.hubunganBG(s) === ro.hubungan).length;
+  cek(`RONDE_SEMUA_CC ronde ${r + 1}: empat benda sah, id unik, 1 sampai 3 cocok`, ro.item.length === 4 && ro.item.every(sahBG) && unik(ro.item.map(D.idBG)) && benar >= 1 && benar <= 3, `${benar}`);
+});
+for (const [nama, daftar, ukuran] of [["RONDE_JODOH_CC", D.RONDE_JODOH_CC, 3]]) {
+  tiga(nama, daftar);
+  daftar.forEach((ro, r) => cek(`${nama} ronde ${r + 1}: ${ukuran} benda sah, id unik, hubungan berbeda`, ro.length === ukuran && ro.every(sahBG) && unik(ro.map(D.idBG)) && unik(ro.map(D.hubunganBG)), JSON.stringify(ro)));
+}
+tiga("RONDE_PILAH_CC", D.RONDE_PILAH_CC);
+D.RONDE_PILAH_CC.forEach((ro, r) => {
+  const hitung = (h) => ro.filter((s) => D.hubunganBG(s) === h).length;
+  cek(`RONDE_PILAH_CC ronde ${r + 1}: enam soal sah dan berbeda, tiap kotak terisi`, ro.length === 6 && ro.every(sahBG) && unik(ro.map(D.idBG)) && D.URUT_HUBUNGAN.every((h) => hitung(h) >= 1), JSON.stringify(ro.map(D.hubunganBG)));
+});
+const KUNCI_SEJAJAR = [[3, 2], [1, 2], [1, 1]];
+const KUNCI_TEGAK = [[3, 3], [2, 2], [3, 1]];
+for (const [nama, daftar, fungsi, kunci] of [["RONDE_SEJAJARDENGAN_CC", D.RONDE_SEJAJARDENGAN_CC, D.hitungSejajar, KUNCI_SEJAJAR], ["RONDE_TEGAKLURUS_CC", D.RONDE_TEGAKLURUS_CC, D.hitungTegakLurus, KUNCI_TEGAK]]) {
+  tiga(nama, daftar);
+  daftar.forEach((ro, r) =>
+    ro.forEach((s, i) => {
+      const ids = D.BENDA_GARIS[s.benda].ruas.map((x) => x.id);
+      const n = fungsi(s);
+      const o = D.opsiAngka(n, r * 2 + i);
+      cek(`${nama} ${r + 1}-${i + 1}: ${s.benda} merah ${s.merah}, kunci ${kunci[r][i]}, tiga pilihan berbeda`, ids.includes(s.merah) && s.lain.length >= 2 && s.lain.every((x) => ids.includes(x) && x !== s.merah) && unik(s.lain) && n === kunci[r][i] && new Set(o).size === 3 && o.includes(n) && o.every((v) => v >= 0), JSON.stringify(o));
+    }),
+  );
+}
+/* ---- Kertas lipat ---- */
+cek("LIPATAN: delapan lipatan berwarna dengan koordinat dalam kertas 4 x 4", Object.keys(D.LIPATAN).length === 8 && Object.values(D.LIPATAN).every((l) => !!l.warna && [...l.a, ...l.b].every((v) => v >= 0 && v <= 4)));
+const HUBUNGAN_LIPAT = { "h|v": "tegak-lurus", "v1|v2": "sejajar", "d1|d2": "tegak-lurus", "h1|h2": "sejajar", "d1|h": "miring", "v|h2": "tegak-lurus", "d1|v": "miring", "h|v1": "tegak-lurus", "d2|v": "miring" };
+for (const [kunci, h] of Object.entries(HUBUNGAN_LIPAT)) { const [x, y] = kunci.split("|"); cek(`hubunganLipatan(${x}, ${y}) = ${h}`, D.hubunganLipatan(x, y) === h); }
+tiga("RONDE_LIPATAN_CC", D.RONDE_LIPATAN_CC);
+D.RONDE_LIPATAN_CC.forEach((ro, r) => cek(`RONDE_LIPATAN_CC ronde ${r + 1}: dua pasang lipatan terdaftar`, ro.length === 2 && ro.every(([x, y]) => !!D.LIPATAN[x] && !!D.LIPATAN[y] && x !== y)));
+cek("RONDE_LIPATAN_CC: ketiga hubungan muncul", D.URUT_HUBUNGAN.every((h) => D.RONDE_LIPATAN_CC.flat().some(([x, y]) => D.hubunganLipatan(x, y) === h)));
+tiga("RONDE_JODOHLIPAT_CC", D.RONDE_JODOHLIPAT_CC);
+D.RONDE_JODOHLIPAT_CC.forEach((ro, r) => cek(`RONDE_JODOHLIPAT_CC ronde ${r + 1}: tiga pasang lipatan dengan hubungan berbeda`, ro.length === 3 && ro.every(([x, y]) => !!D.LIPATAN[x] && !!D.LIPATAN[y]) && unik(ro.map(([x, y]) => D.hubunganLipatan(x, y)))));
+tiga("RONDE_BANGUNLIPAT_CC", D.RONDE_BANGUNLIPAT_CC);
+const BANGUN_DARI_LIPAT = [["persegi", "persegi panjang"], ["persegi panjang", "persegi"], ["persegi", "persegi panjang"]];
+D.RONDE_BANGUNLIPAT_CC.forEach((ro, r) => ro.forEach((s, i) => cek(`RONDE_BANGUNLIPAT_CC ${r + 1}-${i + 1}: lipatan di dalam kertas, bangun tengah ${BANGUN_DARI_LIPAT[r][i]}`, s.v[0] >= 1 && s.v[1] <= s.w - 1 && s.v[0] < s.v[1] && s.hh[0] >= 1 && s.hh[1] <= s.h - 1 && s.hh[0] < s.hh[1] && s.w <= 6 && s.h <= 6 && D.bangunTengah(s) === BANGUN_DARI_LIPAT[r][i])));
+tiga("RONDE_URUTLIPAT_CC", D.RONDE_URUTLIPAT_CC);
+D.RONDE_URUTLIPAT_CC.forEach((ro, r) => cek(`RONDE_URUTLIPAT_CC ronde ${r + 1}: tiga kertas dengan banyak lipatan berbeda, lipatan terdaftar`, ro.kertas.length === 3 && unik(ro.kertas.map((k) => k.length)) && ro.kertas.every((k) => unik(k) && k.every((id) => !!D.LIPATAN[id])) && (ro.dari === "kecil" || ro.dari === "besar")));
+cek("RONDE_URUTLIPAT_CC: ada dari kecil dan dari besar", D.RONDE_URUTLIPAT_CC.some((x) => x.dari === "kecil") && D.RONDE_URUTLIPAT_CC.some((x) => x.dari === "besar"));
+
+/* ---- Picture C ---- */
+const dalamPetak = (r) => [...r.a, ...r.b].every((v) => Number.isInteger(v) && v >= 0 && v <= 5);
+for (const [nama, daftar, h] of [["SJ", D.SJ, "sejajar"], ["TL", D.TL, "tegak-lurus"], ["MR", D.MR, "miring"]]) {
+  cek(`${nama}: enam pasangan berbeda dalam petak 5 x 5 dengan hubungan ${h}`, daftar.length === 6 && unik(daftar.map((p) => JSON.stringify(p))) && daftar.every((p) => dalamPetak(p.r1) && dalamPetak(p.r2) && D.hubunganPG(p) === h), JSON.stringify(daftar.map(D.hubunganPG)));
+  cek(`${nama}: tidak segaris${h === "sejajar" ? "" : ", bertemu di satu titik"}`, daftar.every((p) => !D.segarisRuas(p.r1, p.r2) && (h === "sejajar" || D.bertemu(p.r1, p.r2))));
+}
+cek("SJ: setiap pasang punya panjang ruas sama (jarak dua garis sama di kedua ujung)", D.SJ.every((p) => Math.hypot(p.r1.b[0] - p.r1.a[0], p.r1.b[1] - p.r1.a[1]) === Math.hypot(p.r2.b[0] - p.r2.a[0], p.r2.b[1] - p.r2.a[1])));
+tiga("RONDE_JENIS_PC", D.RONDE_JENIS_PC);
+D.RONDE_JENIS_PC.forEach((ro, r) => cek(`RONDE_JENIS_PC ronde ${r + 1}: dua pasangan dengan hubungan berbeda`, ro.length === 2 && unik(ro.map(D.hubunganPG))));
+cek("RONDE_JENIS_PC: ketiga hubungan muncul", D.URUT_HUBUNGAN.every((h) => D.RONDE_JENIS_PC.flat().some((p) => D.hubunganPG(p) === h)));
+tiga("RONDE_JARAK_PC", D.RONDE_JARAK_PC);
+D.RONDE_JARAK_PC.forEach((ro, r) =>
+  cek(
+    `RONDE_JARAK_PC ronde ${r + 1}: dua soal, jarak 1 sampai 4 petak, garis sejajar tepat bila kedua jarak sama`,
+    ro.length === 2 && ro.every((s) => s.kiri >= 1 && s.kanan >= 1 && 1 + s.kiri <= 5 && 1 + s.kanan <= 5 && (D.hubunganPG(D.pasanganJarak(s)) === "sejajar") === (s.kiri === s.kanan)) && ro.some((s) => s.kiri === s.kanan) && ro.some((s) => s.kiri !== s.kanan),
+  ),
+);
+for (const [nama, daftar, ukuran] of [["RONDE_JODOH_PC", D.RONDE_JODOH_PC, 3]]) {
+  tiga(nama, daftar);
+  daftar.forEach((ro, r) => cek(`${nama} ronde ${r + 1}: ${ukuran} pasangan dengan hubungan berbeda`, ro.length === ukuran && unik(ro.map(D.hubunganPG))));
+}
+tiga("RONDE_SEMUA_PC", D.RONDE_SEMUA_PC);
+D.RONDE_SEMUA_PC.forEach((ro, r) => {
+  const benar = ro.item.filter((p) => D.hubunganPG(p) === ro.hubungan).length;
+  cek(`RONDE_SEMUA_PC ronde ${r + 1}: empat pasangan berbeda, 1 sampai 3 cocok`, ro.item.length === 4 && unik(ro.item.map((p) => JSON.stringify(p))) && benar >= 1 && benar <= 3, `${benar}`);
+});
+tiga("RONDE_PILAH_PC", D.RONDE_PILAH_PC);
+D.RONDE_PILAH_PC.forEach((ro, r) => cek(`RONDE_PILAH_PC ronde ${r + 1}: enam pasangan berbeda, dua dari tiap hubungan`, ro.length === 6 && unik(ro.map((p) => JSON.stringify(p))) && D.URUT_HUBUNGAN.every((h) => ro.filter((p) => D.hubunganPG(p) === h).length === 2)));
+/* bangun datar */
+cek("BANGUN_SEDERHANA: lima bangun dengan sisi, sudut, dan ciri benar", Object.keys(D.BANGUN_SEDERHANA).join() === D.URUT_BANGUN.join() && D.BANGUN_SEDERHANA.segitiga.sisi === 3 && D.BANGUN_SEDERHANA.segitiga.sudut === 3 && D.BANGUN_SEDERHANA.persegi.sisi === 4 && D.BANGUN_SEDERHANA["persegi panjang"].sudut === 4 && D.BANGUN_SEDERHANA.segilima.sisi === 5 && D.BANGUN_SEDERHANA.segilima.sudut === 5 && D.BANGUN_SEDERHANA.lingkaran.sisi === 0 && D.BANGUN_SEDERHANA.lingkaran.sudut === 0);
+cek("BANGUN_SEDERHANA: ciri unik, ciri sesuai sisi dan sudut", unik(Object.values(D.BANGUN_SEDERHANA).map((b) => b.ciri)) && Object.entries(D.BANGUN_SEDERHANA).every(([j, b]) => (b.sisi === 0 ? /tanpa sudut/.test(b.ciri) : b.ciri.startsWith(`${b.sisi} sisi`) && b.ciri.includes(j === "segitiga" || j === "segilima" ? `${b.sudut} sudut` : "sudut siku-siku"))));
+tiga("RONDE_TABEL_PC", D.RONDE_TABEL_PC);
+D.RONDE_TABEL_PC.forEach((t, r) => {
+  const jawab = t.baris.map((b) => b.jawab);
+  cek(`RONDE_TABEL_PC ronde ${r + 1}: empat bangun berbeda dengan ciri yang benar`, t.baris.length === 4 && unik(t.baris.map((b) => b.label)) && t.baris.every((b) => Object.values(D.BANGUN_SEDERHANA).some((x) => x.nama === b.label && x.ciri === b.jawab)), JSON.stringify(t.baris));
+  cek(`RONDE_TABEL_PC ronde ${r + 1}: lima kartu unik, semua jawaban ada, satu pengecoh yang bukan ciri bangun mana pun`, t.kartu.length === 5 && unik(t.kartu) && jawab.every((j) => t.kartu.includes(j)) && t.kartu.filter((k) => !jawab.includes(k)).length === 1 && t.kartu.filter((k) => !jawab.includes(k)).every((k) => !Object.values(D.BANGUN_SEDERHANA).some((x) => x.ciri === k)));
+});
+tiga("RONDE_MEMORI_PC", D.RONDE_MEMORI_PC);
+D.RONDE_MEMORI_PC.forEach((ro, r) => cek(`RONDE_MEMORI_PC ronde ${r + 1}: empat bangun berbeda`, ro.length === 4 && unik(ro) && ro.every((j) => !!D.BANGUN_SEDERHANA[j])));
+tiga("RONDE_LAMBANG_PC", D.RONDE_LAMBANG_PC);
+D.RONDE_LAMBANG_PC.forEach((ro, r) =>
+  ro.forEach((s, i) => {
+    const o = D.opsiLambang(s, r * 2 + i);
+    const [a1, b1, a2, b2] = s.huruf;
+    const titikSama = (p, q) => p[0] === q[0] && p[1] === q[1];
+    const huruf = [a1, b1, a2, b2];
+    const titik = [s.pasang.r1.a, s.pasang.r1.b, s.pasang.r2.a, s.pasang.r2.b];
+    const hh = D.hubunganPG(s.pasang);
+    const kunci = `${a1}${b1} ${hh === "sejajar" ? "//" : "⊥"} ${a2}${b2}`;
+    cek(`RONDE_LAMBANG_PC ${r + 1}-${i + 1}: huruf mengikuti titik, ${kunci}, tiga pilihan berbeda, bukan miring`, hh !== "miring" && huruf.every((x) => /^[A-Z]$/.test(x)) && titik.every((t, x) => titik.every((u, y) => titikSama(t, u) === (huruf[x] === huruf[y]))) && D.lambangPasangan(s) === kunci && new Set(o.opsi).size === 3 && o.opsi[o.jawab] === kunci, JSON.stringify(o));
+  }),
+);
+cek("lambangPasangan menolak pasangan miring", (() => { try { D.lambangPasangan({ pasang: D.MR[0], huruf: ["A", "B", "B", "C"] }); return false; } catch { return true; } })());
+tiga("RONDE_SIFAT_PC", D.RONDE_SIFAT_PC);
+D.RONDE_SIFAT_PC.forEach((ro, r) => ro.forEach((j, i) => {
+  const o = D.opsiCiri(j, r * 2 + i);
+  cek(`RONDE_SIFAT_PC ${r + 1}-${i + 1}: ${j}, tiga ciri berbeda dengan kunci ${D.BANGUN_SEDERHANA[j].ciri}`, !!D.BANGUN_SEDERHANA[j] && new Set(o.opsi).size === 3 && o.opsi[o.jawab] === D.BANGUN_SEDERHANA[j].ciri);
+}));
+cek("RONDE_SIFAT_PC: kelima bangun muncul", D.URUT_BANGUN.every((j) => D.RONDE_SIFAT_PC.flat().includes(j)));
+tiga("RONDE_CALON_PC", D.RONDE_CALON_PC);
+D.RONDE_CALON_PC.forEach((s, r) => {
+  const h = s.kandidat.map((k) => D.hubungan(k, s.dasar));
+  const tegak = s.kandidat.filter((k) => D.hubungan(k, s.dasar) === "tegak-lurus" && D.bertemu(k, s.dasar)).length;
+  cek(`RONDE_CALON_PC ronde ${r + 1}: tiga kandidat, tepat satu sejajar, satu tegak lurus yang bertemu garis dasar, satu miring, dalam petak`, s.kandidat.length === 3 && h.filter((x) => x === "sejajar").length === 1 && tegak === 1 && h.filter((x) => x === "miring").length === 1 && [s.dasar, ...s.kandidat].every(dalamPetak) && s.tanya.length === 2 && unik(s.tanya), JSON.stringify(h));
+});
+
+/* ---- Abstract C ---- */
+for (const [nama, daftar] of [["RONDE_ISTILAH_QC", D.RONDE_ISTILAH_QC], ["RONDE_LAMBANG_QC", D.RONDE_LAMBANG_QC]]) {
+  tiga(nama, daftar);
+  daftar.forEach((ro, r) => cek(`${nama} ronde ${r + 1}: dua soal dengan tiga pilihan berbeda`, ro.length === 2 && ro.every(sahTeks)));
+  for (let r = 0; r < 3; r += 1) for (let i = 0; i < 2; i += 1) {
+    const o = D.susunOpsi(daftar[r][i].benar, daftar[r][i].salah, r * 2 + i);
+    cek(`${nama} ${r}-${i}: susunOpsi menunjuk kunci`, o.opsi[o.jawab] === daftar[r][i].benar && new Set(o.opsi).size === 3);
+  }
+}
+const ISTILAH_BENAR = {
+  "Dua garis yang bertemu dan membentuk sudut siku-siku disebut garis ...": "tegak lurus",
+  "Dua garis yang ditarik pada jarak yang sama dan tidak pernah bertemu disebut garis ...": "sejajar",
+  "Lambang ⊥ dibaca ...": "tegak lurus",
+  "Lambang // dibaca ...": "sejajar",
+  "Garis yang tidak pernah bertemu walaupun diperpanjang disebut garis ...": "sejajar",
+  "Garis yang bertemu pada sudut 90° disebut garis ...": "tegak lurus",
+};
+cek("RONDE_ISTILAH_QC: kunci benar menurut uraian", D.RONDE_ISTILAH_QC.flat().every((s) => ISTILAH_BENAR[s.tanya] === s.benar));
+const LAMBANG_BENAR = {
+  "AB ⊥ CD dibaca ...": "AB tegak lurus CD",
+  "EF // GH dibaca ...": "EF sejajar GH",
+  "KL tegak lurus MN ditulis ...": "KL ⊥ MN",
+  "PQ sejajar RS ditulis ...": "PQ // RS",
+  "XY ⊥ YZ artinya ...": "XY dan YZ bertemu membentuk sudut siku-siku",
+  "AB // CD artinya ...": "AB dan CD tidak pernah bertemu",
+};
+cek("RONDE_LAMBANG_QC: kunci benar menurut lambang", D.RONDE_LAMBANG_QC.flat().every((s) => LAMBANG_BENAR[s.tanya] === s.benar));
+tiga("RONDE_KALIMAT_QC", D.RONDE_KALIMAT_QC);
+D.RONDE_KALIMAT_QC.forEach((ro, r) => cek(`RONDE_KALIMAT_QC ronde ${r + 1}: tiga kalimat, tiga pilihan berbeda, kunci sah`, ro.length === 3 && ro.every((k) => k.opsi.length === 3 && unik(k.opsi) && k.benar >= 0 && k.benar < 3 && !!k.depan)));
+const KALIMAT_BENAR_C = [
+  "Garis-garis tegak lurus bertemu membentuk sudut siku-siku.",
+  "Garis-garis sejajar tidak pernah bertemu satu sama lain.",
+  "Anak panah pada gambar garis menunjukkan garis sejajar.",
+  "Segitiga memiliki tiga sisi dan tiga sudut.",
+  "Persegi memiliki empat sisi yang sama panjang.",
+  "Persegi panjang memiliki empat sudut siku-siku.",
+  "Lingkaran dibatasi oleh garis lengkung.",
+  "Lingkaran tidak memiliki sudut.",
+  "Segilima memiliki lima sisi dan lima sudut.",
+];
+cek("RONDE_KALIMAT_QC: kalimat lengkap yang terbentuk benar", D.RONDE_KALIMAT_QC.flat().map((k) => `${k.depan} ${k.opsi[k.benar]}${k.belakang === "." ? "." : ` ${k.belakang}`}`.replace(/ \./g, ".")).join("|") === KALIMAT_BENAR_C.join("|"), D.RONDE_KALIMAT_QC.flat().map((k) => `${k.depan} ${k.opsi[k.benar]}${k.belakang === "." ? "." : ` ${k.belakang}`}`).join("|"));
+tiga("RONDE_JODOH_QC", D.RONDE_JODOH_QC);
+D.RONDE_JODOH_QC.forEach((ro, r) => cek(`RONDE_JODOH_QC ronde ${r + 1}: tiga pasangan benar, kiri dan kanan unik`, ro.length === 3 && ro.every((p) => { const m = p.kiri.match(/^([A-Z]{2}) (⊥|\/\/) ([A-Z]{2})$/); return !!m && p.kanan === `${m[1]} ${m[2] === "⊥" ? "tegak lurus" : "sejajar"} ${m[3]}`; }) && unik(ro.map((p) => p.kiri)) && unik(ro.map((p) => p.kanan)), JSON.stringify(ro)));
+tiga("RONDE_MEMORI_QC", D.RONDE_MEMORI_QC);
+D.RONDE_MEMORI_QC.forEach((ro, r) => cek(`RONDE_MEMORI_QC ronde ${r + 1}: empat pasangan, kartu unik`, ro.length === 4 && unik([...ro.map((p) => p.a), ...ro.map((p) => p.b)])));
+cek("RONDE_BENARSALAH_QC: dua ronde, lima pernyataan, kunci sesuai isi", D.RONDE_BENARSALAH_QC.length === 2 && D.RONDE_BENARSALAH_QC.every((ro) => ro.length === 5 && ro.some((p) => p.benar) && ro.some((p) => !p.benar) && ro.every((p) => p.penjelasan.length > 20)) && JSON.stringify(D.RONDE_BENARSALAH_QC.map((ro) => ro.map((p) => p.benar))) === JSON.stringify([[true, false, true, false, true], [true, false, true, false, true]]));
+const KLUE_C = [(n) => n === 4 && n % 2 === 0 && n < 6, (n) => n === 3 && n < 4, (n) => n === 5 && n > 4, (n) => n === 4 && n % 2 === 0];
+cek("RONDE_DETEKTIF_QC: empat soal", D.RONDE_DETEKTIF_QC.length === 4);
+D.RONDE_DETEKTIF_QC.forEach((s, i) => {
+  const cocok = s.opsi.filter(KLUE_C[i]);
+  cek(`RONDE_DETEKTIF_QC ${i + 1}: dua petunjuk, tiga pilihan berbeda, tepat satu cocok yaitu kunci`, s.klue.length === 2 && unik(s.opsi) && s.opsi.length === 3 && cocok.length === 1 && cocok[0] === s.jawab, JSON.stringify(cocok));
+});
+cek("PETA_KONSEP_QC: dua peta, empat kotak, tiga pilihan berbeda", D.PETA_KONSEP_QC.length === 2 && D.PETA_KONSEP_QC.every((p) => !!p.pusat && p.kotak.length === 4 && p.kotak.every((k) => k.opsi.length === 3 && unik(k.opsi) && k.benar >= 0 && k.benar < 3 && !!k.label)));
+const KUNCI_CERITA_C = [[8, 3], [8, 4], [8, 6]];
+const HITUNG_CERITA_C = [[4 + 4, 3], [3 + 5, 5 - 1], [4 + 4, 2 + 4]];
+tiga("RONDE_CERITA_QC", D.RONDE_CERITA_QC);
+D.RONDE_CERITA_QC.forEach((ro, r) =>
+  ro.forEach((c, i) => {
+    const o = D.opsiAngka(c.jawab, r * 2 + i);
+    cek(`RONDE_CERITA_QC ${r + 1}-${i + 1}: kunci ${c.jawab} sesuai hitungan, tiga pilihan berbeda`, c.jawab === KUNCI_CERITA_C[r][i] && c.jawab === HITUNG_CERITA_C[r][i] && c.pesan.length > 15 && new Set(o).size === 3 && o.includes(c.jawab));
+  }),
+);
+cek("RONDE_SUSUNKATA_QC: empat kalimat, kata unik, pengecoh bukan bagian kalimat", D.RONDE_SUSUNKATA_QC.length === 4 && D.RONDE_SUSUNKATA_QC.every((s) => s.kata.length >= 6 && unik(s.kata.map((k) => k.toLowerCase())) && !s.kata.map((k) => k.toLowerCase()).includes(s.pengecoh)));
+
+/* ====================================================================== */
 /* Naskah                                                                   */
 /* ====================================================================== */
 
 cek("K3B4_META", N.K3B4_META.chapterId === "k3-mat-bab4" && N.K3B4_META.phaseCode === "FASE_B" && N.K3B4_META.grade === 3 && N.K3B4_META.suaraLaju === 0.7 && N.K3B4_META.suaraNada === 1);
-cek("SUB_BAB_K3B4: sub-bab A dan B", N.SUB_BAB_K3B4.map((s) => s.id).join() === "A,B");
+cek("SUB_BAB_K3B4: sub-bab A, B, dan C", N.SUB_BAB_K3B4.map((s) => s.id).join() === "A,B,C");
 for (const s of N.SUB_BAB_K3B4) {
   const k = s.id;
   cek(`${k}: tiga video, tiap video tiga adegan`, s.videos.length === 3 && s.videos.every((v) => v.adegan.length === 3));
@@ -409,7 +615,7 @@ for (const s of N.SUB_BAB_K3B4) {
   cek(`${k}: silabus lengkap`, s.silabus.teksSuara.length > 100 && s.silabus.cp.length > 50 && s.silabus.referensi.includes("Bab 4"));
 }
 cek("naskah: tidak memuat nilai tukar rupiah", !/rupiah|Rp\s?\d|\bkurs\b/i.test(JSON.stringify(N.SUB_BAB_K3B4)));
-cek("semuaAdeganK3B4: 18 adegan", N.semuaAdeganK3B4.length === 18);
+cek("semuaAdeganK3B4: 27 adegan", N.semuaAdeganK3B4.length === 27);
 
 console.log(`\nUji data Kelas 3 Bab 4: ${lulus} lulus, ${gagal} gagal.`);
 if (gagal > 0) process.exit(1);
