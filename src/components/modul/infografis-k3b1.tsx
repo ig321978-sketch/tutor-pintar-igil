@@ -3,6 +3,7 @@
 import React from "react";
 import { KotakPoster } from "./kit-k2b2";
 import { AngkaBerwarna, ModelDari, ModelTiga, PapanDari, TabelTempat, WARNA_TEMPAT } from "./diagram-k3b1";
+import { TitikKotak } from "./diagram-k3b1f";
 import { kata, nilaiTempat, tiga, uraian } from "./data-k3b1";
 
 /* ------------------------------------------------------------------------ */
@@ -527,6 +528,231 @@ export function visualInfografisK3B1D(): React.ReactNode[] {
     /* 10 Cara Memeriksa */
     <KotakPoster key="10" warna="#FFFBEB">
       <Langkah daftar={["1. Susun lurus", "2. Jumlahkan satuan, simpan bila perlu", "3. Jumlahkan puluhan", "4. Periksa dengan cara lain"]} warna={["#BAE6FD", "#FECACA", "#BFDBFE", "#FDE68A"]} />
+    </KotakPoster>,
+  ];
+}
+
+/* ====================================================================== */
+/* Sub-Bab E                                                                */
+/* ====================================================================== */
+
+/** Pengurangan bersusun kecil: kolom puluhan dan satuan, angka pinjaman merah di atas, hasil hijau di bawah. */
+const KurangMini = ({ a, b, tampilHasil = true, sorot, tampilPinjam = true }: { a: number; b: number; tampilHasil?: boolean; sorot?: "p" | "s"; tampilPinjam?: boolean }) => {
+  const sa = a % 10;
+  const sb = b % 10;
+  const ambil = sa < sb && tampilPinjam;
+  const hasil = a - b;
+  const sel = (isi: React.ReactNode, kuat = false, warna?: string, redup = false) => (
+    <span className={`flex h-9 w-14 items-center justify-center rounded-lg text-2xl font-black ${kuat ? "ring-4 ring-[#F0AB00]" : ""}`} style={{ color: warna ?? "#1C01A5", opacity: redup ? 0.45 : 1 }}>
+      {isi}
+    </span>
+  );
+  return (
+    <div className="mx-auto w-fit rounded-xl border-2 border-[#1C01A5] bg-white px-2 py-1">
+      <div className="grid grid-cols-[auto_auto_auto] items-center gap-x-1 text-center">
+        <span />
+        <span className="text-[10px] font-black" style={{ color: WARNA_TEMPAT.puluhan.teks }}>Puluhan</span>
+        <span className="text-[10px] font-black" style={{ color: WARNA_TEMPAT.satuan.teks }}>Satuan</span>
+        <span />
+        <span />
+        {sel(ambil ? Math.floor(a / 10) - 1 : "", false, "#DC2626")}
+        {sel(ambil ? sa + 10 : "", false, "#DC2626")}
+        <span />
+        {sel(Math.floor(a / 10), sorot === "p", undefined, ambil)}
+        {sel(sa, sorot === "s", undefined, ambil)}
+        <span className="text-2xl font-black text-[#1C01A5]">−</span>
+        {sel(Math.floor(b / 10), sorot === "p")}
+        {sel(sb, sorot === "s")}
+      </div>
+      <div className="my-0.5 h-0.5 bg-[#1C01A5]" />
+      <div className="grid grid-cols-[auto_auto_auto] items-center gap-x-1 text-center">
+        <span className="w-4" />
+        {sel(tampilHasil ? Math.floor(hasil / 10) : "?", false, "#16A34A")}
+        {sel(tampilHasil ? hasil % 10 : "?", false, "#16A34A")}
+      </div>
+    </div>
+  );
+};
+
+export function visualInfografisK3B1E(): React.ReactNode[] {
+  return [
+    /* 1 Susun Lurus */
+    <KotakPoster key="1" warna="#E0F2FE">
+      <KurangMini a={25} b={12} tampilHasil={false} />
+      <div className="flex justify-center pt-1">
+        <Chip>puluhan lurus puluhan, satuan lurus satuan</Chip>
+      </div>
+    </KotakPoster>,
+    /* 2 Satuan Lebih Dulu */
+    <KotakPoster key="2" warna="#FEE2E2">
+      <KurangMini a={25} b={12} tampilHasil={false} sorot="s" />
+      <div className="flex justify-center pt-1">
+        <Chip warna={WARNA_TEMPAT.satuan.isi}>5 − 2 = 3</Chip>
+      </div>
+    </KotakPoster>,
+    /* 3 Puluhan Berikutnya */
+    <KotakPoster key="3" warna="#DBEAFE">
+      <KurangMini a={25} b={12} sorot="p" />
+      <div className="flex justify-center pt-1">
+        <Chip warna={WARNA_TEMPAT.puluhan.isi}>2 − 1 = 1, hasilnya 13</Chip>
+      </div>
+    </KotakPoster>,
+    /* 4 Mengambil */
+    <KotakPoster key="4" warna="#FEF9C3">
+      <div className="space-y-1 text-center">
+        <p className="text-lg font-black text-[#1C01A5]">5 kurang dari 9</p>
+        <Chip>ambil 1 puluhan: 4 puluhan menjadi 3</Chip>
+        <Cap>1 puluhan = 10 satuan, jadi 10 + 5 = 15</Cap>
+        <p className="text-lg font-black text-[#DC2626]">15 − 9 = 6</p>
+      </div>
+    </KotakPoster>,
+    /* 5 Contoh 25 − 12 */
+    <KotakPoster key="5" warna="#DCFCE7">
+      <KurangMini a={25} b={12} />
+    </KotakPoster>,
+    /* 6 Contoh 45 − 19 */
+    <KotakPoster key="6" warna="#E0E7FF">
+      <KurangMini a={45} b={19} />
+    </KotakPoster>,
+    /* 7 Susun Panjang */
+    <KotakPoster key="7" warna="#FFF7ED">
+      <div className="space-y-1 text-center text-sm font-black text-[#1C01A5]">
+        <p>45 = 30 + 15</p>
+        <p>19 = 10 + 9</p>
+        <p>(30 − 10) + (15 − 9)</p>
+        <p>= 20 + 6 = 26</p>
+      </div>
+    </KotakPoster>,
+    /* 8 Memeriksa */
+    <KotakPoster key="8" warna="#F5F3FF">
+      <div className="space-y-1 text-center">
+        <Chip warna="#BAE6FD">45 − 19 = 26</Chip>
+        <p className="text-sm font-black text-[#1C01A5]">periksa: 26 + 19 = 45</p>
+      </div>
+    </KotakPoster>,
+    /* 9 Soal Cerita */
+    <KotakPoster key="9" warna="#ECFCCB">
+      <div className="space-y-1 text-center">
+        <p className="text-sm font-black text-[#1C01A5]">45 buku tulis, dibeli 19</p>
+        <Chip>45 − 19 = 26 buku tersisa</Chip>
+      </div>
+    </KotakPoster>,
+    /* 10 Cara Mengurangkan */
+    <KotakPoster key="10" warna="#FFFBEB">
+      <Langkah daftar={["1. Susun lurus", "2. Kurangkan satuan, ambil 1 puluhan bila perlu", "3. Kurangkan puluhan", "4. Periksa dengan penjumlahan"]} warna={["#BAE6FD", "#FECACA", "#BFDBFE", "#FDE68A"]} />
+    </KotakPoster>,
+  ];
+}
+
+/* ====================================================================== */
+/* Sub-Bab F                                                                */
+/* ====================================================================== */
+
+/** Garis bilangan kecil: loncatan sama besar dari nol. Hanya diagram. */
+const GarisLoncat = ({ n, k }: { n: number; k: number }) => {
+  const lebar = 280;
+  const awal = 20;
+  const langkah = (lebar - 2 * awal) / k;
+  return (
+    <svg viewBox={`0 0 ${lebar} 70`} className="mx-auto block w-full max-w-[300px]" role="img" aria-label={`${k} loncatan sebesar ${n} dari 0 mendarat di ${k * n}`}>
+      <line x1={awal - 8} x2={lebar - awal + 8} y1="48" y2="48" stroke="#1C01A5" strokeWidth="3" strokeLinecap="round" />
+      {Array.from({ length: k + 1 }, (_, i) => (
+        <g key={i}>
+          <line x1={awal + i * langkah} x2={awal + i * langkah} y1="42" y2="54" stroke="#1C01A5" strokeWidth="3" />
+          <text x={awal + i * langkah} y="68" textAnchor="middle" fontSize="12" fontWeight="900" fill="#1C01A5">
+            {i * n}
+          </text>
+        </g>
+      ))}
+      {Array.from({ length: k }, (_, i) => (
+        <path key={i} d={`M ${awal + i * langkah} 44 Q ${awal + (i + 0.5) * langkah} 6 ${awal + (i + 1) * langkah} 44`} fill="none" stroke="#DC2626" strokeWidth="2.6" strokeLinecap="round" />
+      ))}
+    </svg>
+  );
+};
+
+export function visualInfografisK3B1F(): React.ReactNode[] {
+  return [
+    /* 1 Kelompok Sama Banyak */
+    <KotakPoster key="1" warna="#FEF3C7">
+      <div className="flex justify-center">
+        <TitikKotak k={3} n={4} />
+      </div>
+      <Cap>3 kotak, tiap kotak berisi 4 titik</Cap>
+    </KotakPoster>,
+    /* 2 Lima Kali Dua */
+    <KotakPoster key="2" warna="#FEE2E2">
+      <div className="flex justify-center">
+        <TitikKotak k={5} n={2} />
+      </div>
+      <div className="flex justify-center pt-1">
+        <Chip>2 + 2 + 2 + 2 + 2 = 10</Chip>
+      </div>
+    </KotakPoster>,
+    /* 3 Penjumlahan Berulang */
+    <KotakPoster key="3" warna="#DBEAFE">
+      <div className="space-y-1 text-center">
+        <Chip warna="#BAE6FD">5 + 5 + 5 + 5</Chip>
+        <p className="text-lg font-black text-[#1C01A5]">= 4 × 5</p>
+        <Cap>penjumlahan berulang ditulis dengan kali</Cap>
+      </div>
+    </KotakPoster>,
+    /* 4 Empat Kali Lima */
+    <KotakPoster key="4" warna="#DCFCE7">
+      <div className="flex justify-center">
+        <TitikKotak k={4} n={5} ukuran={9} />
+      </div>
+      <div className="flex justify-center pt-1">
+        <Chip warna="#BBF7D0">4 × 5 = 20</Chip>
+      </div>
+    </KotakPoster>,
+    /* 5 Banyak Kelompok dan Isi */
+    <KotakPoster key="5" warna="#FFFBEB">
+      <div className="flex items-end justify-center gap-3 text-center">
+        <div>
+          <p className="text-5xl font-black text-[#1D4ED8]">4</p>
+          <Cap warna="#1D4ED8">banyak kelompok</Cap>
+        </div>
+        <Tanda>×</Tanda>
+        <div>
+          <p className="text-5xl font-black text-[#DC2626]">5</p>
+          <Cap warna="#DC2626">isi tiap kelompok</Cap>
+        </div>
+      </div>
+    </KotakPoster>,
+    /* 6 Garis Bilangan */
+    <KotakPoster key="6" warna="#E0E7FF">
+      <GarisLoncat n={5} k={4} />
+      <Cap>4 loncatan sebesar 5 mendarat di 20</Cap>
+    </KotakPoster>,
+    /* 7 Tukar Tempat */
+    <KotakPoster key="7" warna="#F5F3FF">
+      <div className="space-y-1 text-center">
+        <Chip warna="#BFDBFE">5 × 6 = 30</Chip>
+        <p className="text-lg font-black text-[#1C01A5]">=</p>
+        <Chip warna="#FECACA">6 × 5 = 30</Chip>
+        <Cap>bilangan boleh ditukar tempatnya</Cap>
+      </div>
+    </KotakPoster>,
+    /* 8 Lima Kali Empat */
+    <KotakPoster key="8" warna="#E0F2FE">
+      <div className="flex justify-center">
+        <TitikKotak k={5} n={4} ukuran={8} />
+      </div>
+      <div className="flex justify-center pt-1">
+        <Chip>5 × 4 = 20</Chip>
+      </div>
+    </KotakPoster>,
+    /* 9 Soal Cerita */
+    <KotakPoster key="9" warna="#ECFCCB">
+      <div className="space-y-1 text-center">
+        <p className="text-sm font-black text-[#1C01A5]">6 kelas, tiap kelas 2 papan tulis</p>
+        <Chip>6 × 2 = 12 papan tulis</Chip>
+      </div>
+    </KotakPoster>,
+    /* 10 Cara Mengalikan */
+    <KotakPoster key="10" warna="#FFFBEB">
+      <Langkah daftar={["1. Cari banyak kelompok", "2. Cari isi tiap kelompok", "3. Tulis perkalian atau penjumlahan berulang", "4. Hitung hasilnya"]} warna={["#BAE6FD", "#FECACA", "#BFDBFE", "#FDE68A"]} />
     </KotakPoster>,
   ];
 }

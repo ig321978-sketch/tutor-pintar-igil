@@ -10,7 +10,7 @@ const KONFIG = {
     bab: 1,
     judul: "Bilangan Cacah sampai 1.000",
     buku: "Buku Siswa Matematika Kelas III (Kemendikbudristek, Kurikulum Merdeka, Bab 1 hlm. 3–45) dan Buku Panduan Guru Bab 1",
-    berkas: { A: "sub-a-bilangan-dan-lambang", B: "sub-b-nilai-tempat", C: "sub-c-membandingkan-mengurutkan", D: "sub-d-penjumlahan-sampai-100" },
+    berkas: { A: "sub-a-bilangan-dan-lambang", B: "sub-b-nilai-tempat", C: "sub-c-membandingkan-mengurutkan", D: "sub-d-penjumlahan-sampai-100", E: "sub-e-pengurangan-sampai-100", F: "sub-f-perkalian-sampai-100" },
     metodeLuar: {
       A: [
         "**Balok Dienes (blok satuan, batang puluhan, lempeng ratusan)**: bilangan dilihat sebagai benda yang bisa dihitung dan ditukar sepuluh-ke-satu. Dasar permainan Rakit Kemasan, Hitung Blok, dan Isi Tabel Blok.",
@@ -43,6 +43,22 @@ const KONFIG = {
         "**Urutan langkah penjumlahan bersusun**: menyusun, menjumlahkan satuan, menyimpan, menjumlahkan puluhan, lalu memeriksa. Dasar permainan Urutkan Langkah Menjumlahkan.",
         "**Pengecoh dari kesalahan umum**: pilihan jawaban sengaja memuat hasil lupa menyimpan (kurang sepuluh) dan salah menyimpan (lebih sepuluh).",
         "**Soal cerita tiga bilangan**: Ayo Berlatih 5 dipakai langsung, termasuk menjumlahkan tiga bilangan dua-dua.",
+      ],
+      E: [
+        "**Menukar satu puluhan menjadi sepuluh satuan**: bila benda lepas tidak cukup, satu bungkus dibuka menjadi sepuluh benda. Permainan Rakit Sisa dan Hitung Sisa memakai penukaran ini agar aturan mengambil terlihat langsung.",
+        "**Susun pendek dan susun panjang pengurangan**: dua cara yang sama-sama dipakai di buku. Susun panjang menguraikan bilangan (45 = 30 + 15), susun pendek menuliskannya ke bawah dengan angka pinjaman merah.",
+        "**Pilah soal mengambil dan tanpa mengambil**: siswa memeriksa satuan dulu. Bila satuan atas lebih kecil dari satuan bawah, soal itu perlu mengambil satu puluhan.",
+        "**Memeriksa dengan penjumlahan (operasi kebalikan)**: hasil pengurangan ditambah bilangan pengurang harus sama dengan bilangan awal (26 + 19 = 45). Metode ini dipakai di video, poin penting, dan Peta Konsep.",
+        "**Pengecoh dari kesalahan umum**: pilihan jawaban sengaja memuat hasil lupa mengambil (lebih sepuluh) dan salah mengambil (kurang sepuluh).",
+        "**Soal cerita sisa dan selisih**: Ayo Berlatih 4 dipakai langsung. Selisih dua banyak benda juga dicari dengan pengurangan.",
+      ],
+      F: [
+        "**Kelompok yang sama banyak (piring dan kotak titik)**: benda disusun pada piring dengan isi sama (Concrete), lalu diganti kotak berisi titik polos (Picture). Permainan Rakit Piring dan Rakit Kotak Titik memakai mesin yang sama dengan gambar berbeda.",
+        "**Penjumlahan berulang sebagai dasar perkalian**: 5 × 2 ditulis 2 + 2 + 2 + 2 + 2. Permainan Tulis Penjumlahan Berulang dan Dari Penjumlahan ke Perkalian melatih perpindahan dua arah.",
+        "**Loncatan pada garis bilangan**: k loncatan sama besar dari nol mendarat di k × n. Siswa mengetuk titik pendaratan pada garis enam titik.",
+        "**Menukar tempat bilangan (sifat komutatif)**: 5 × 6 = 6 × 5. Dua susunan piring dibandingkan, lalu soal Tukar Faktor menguji hasilnya.",
+        "**Banyak kelompok dan isi tiap kelompok**: bilangan pertama pada perkalian adalah banyak kelompok, bilangan kedua isi tiap kelompok. Pengecoh sengaja memuat satu kelompok lebih dan satu kelompok kurang.",
+        "**Aktivitas 4 dengan gelas dan kerikil**: kegiatan buku diwujudkan dalam video (5 gelas × 4 kerikil dan 4 gelas × 7 kerikil) dan permainan Papan Hasil Kelompok.",
       ],
     },
   },

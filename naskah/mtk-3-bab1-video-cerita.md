@@ -33,3 +33,19 @@ Daftar semua video cerita animasi HTML/SVG gratis (tanpa berkas video, tanpa API
 | K3B1D-V1 | Buku di Perpustakaan | Susun pendek tanpa menyimpan | Berapa semua buku; Tabel nilai tempat; Susun pendek |
 | K3B1D-V2 | Upacara di Alun-Alun | Susun pendek dengan menyimpan | Berapa jumlah siswa; Menyimpan satu puluhan; Puluhan dan hasil |
 | K3B1D-V3 | Cara Susun Panjang | Menguraikan lalu menjumlahkan | Uraikan bilangan; Jumlahkan kelompok; Pilih cara yang mudah |
+
+## Sub-Bab E: Pengurangan Bilangan Cacah sampai 100
+
+| Video | Judul | Subjudul | Adegan |
+|---|---|---|---|
+| K3B1E-V1 | Permen Galih | Susun pendek tanpa mengambil | Berapa sisa permen; Tabel nilai tempat; Susun pendek |
+| K3B1E-V2 | Buku Tulis Pak Bandi | Susun pendek dengan mengambil | Berapa sisa buku; Mengambil satu puluhan; Puluhan dan hasil |
+| K3B1E-V3 | Cara Susun Panjang | Menguraikan lalu mengurangkan | Uraikan bilangan; Kurangkan kelompok; Periksa dengan penjumlahan |
+
+## Sub-Bab F: Perkalian Bilangan Cacah sampai 100
+
+| Video | Judul | Subjudul | Adegan |
+|---|---|---|---|
+| K3B1F-V1 | Pensil dan Bunga Melati | Perkalian sebagai penjumlahan berulang | Lima kelompok pensil; Empat kelompok melati; Membaca perkalian |
+| K3B1F-V2 | Mobil Mainan | Menukar tempat bilangan | Lima kelompok mobil; Enam kelompok mobil; Tukar tempat |
+| K3B1F-V3 | Gelas dan Kerikil | Aktivitas 4: Perkalian | Siapkan gelas dan kerikil; Jumlahkan kerikil; Ulangi dengan 4 gelas |

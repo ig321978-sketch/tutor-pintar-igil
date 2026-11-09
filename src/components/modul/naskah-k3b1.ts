@@ -1217,7 +1217,583 @@ export const SUB_D31: SubBabNaskah = {
   ],
 };
 
-export const SUB_BAB_K3B1: SubBabNaskah[] = [SUB_A31, SUB_B31, SUB_C31, SUB_D31];
+/* ====================================================================== */
+/* SUB-BAB E. Pengurangan bilangan cacah sampai 100                         */
+/* ====================================================================== */
+
+const ALUR_E = ["Mengingat pengurangan", "Susun pendek tanpa mengambil", "Susun panjang tanpa mengambil", "Mengambil satu puluhan", "Susun panjang dengan mengambil", "Memeriksa dengan penjumlahan", "Memilih cara yang mudah", "Soal cerita pengurangan", "Siap mengurangkan sampai 100"];
+
+export const SUB_E31: SubBabNaskah = {
+  id: "E",
+  codeTitle: "Sub-Bab E (Pengurangan sampai 100)",
+  fullTitle: "Sub-Bab E: Pengurangan Bilangan Cacah sampai 100",
+  targetDescription:
+    "Siswa mengurangkan dua bilangan cacah sampai 100 dengan cara susun pendek (tanpa dan dengan mengambil satu puluhan) dan cara susun panjang (menguraikan puluhan dan satuan), memahami bahwa satu puluhan dapat ditukar menjadi sepuluh satuan, memeriksa hasil dengan penjumlahan, serta menyelesaikan soal cerita pengurangan.",
+  secondaryBg: "#E0F2FE",
+  secondaryBorder: "#0284C7",
+  secondaryText: "#0C4A6E",
+  silabus: {
+    teksSuara: `Kita belajar pengurangan bilangan cacah sampai seratus. Galih punya dua puluh lima permen dan Alfa mengambil dua belas permen. Pak Bandi punya empat puluh lima buku tulis dan siswa membeli sembilan belas buku tulis. Kita belajar cara susun pendek dan cara susun panjang, tanpa mengambil dan dengan mengambil satu puluhan. Kita juga memeriksa hasil dengan penjumlahan dan menyelesaikan soal cerita. ${SUARA_AKHIR_SILABUS}`,
+    cp: "Siswa melakukan operasi penjumlahan dan pengurangan bilangan cacah sampai 100. Pada sub-bab ini siswa mengurangkan dua bilangan cacah sampai 100 dengan susun pendek dan susun panjang, tanpa dan dengan mengambil satu puluhan.",
+    referensi: "Buku Siswa Matematika Kelas III Kemendikbudristek (Bab 1: Bilangan Cacah sampai 1.000, Sub-Bab E hlm. 46–57) dan Buku Panduan Guru Bab 1 Topik E.",
+  },
+  videos: [
+    {
+      id: "K3B1E-V1",
+      judul: "Permen Galih",
+      subjudul: "Susun pendek tanpa mengambil",
+      adegan: [
+        {
+          id: "K3B1E-V1-1",
+          judul: "Berapa sisa permen",
+          ketukan: [
+            "Galih memiliki 25 permen di dalam satu kaleng plastik.",
+            "Alfa diminta mengambil 12 permen.",
+            "Berapa sisa permen Galih sekarang?",
+            "Kita memakai operasi pengurangan, yaitu 25 dikurangi 12.",
+          ],
+          papan: ["Galih punya 25 permen", "Alfa mengambil 12", "Sisa permen?", "25 − 12"],
+        },
+        {
+          id: "K3B1E-V1-2",
+          judul: "Tabel nilai tempat",
+          ketukan: [
+            "Uraikan 25 dan 12 pada tabel nilai tempat.",
+            "Bilangan 25 punya 2 puluhan dan 5 satuan. Bilangan 12 punya 1 puluhan dan 2 satuan.",
+            "Kurangkan satuan: 5 dikurangi 2 sama dengan 3 satuan.",
+            "Kurangkan puluhan: 2 dikurangi 1 sama dengan 1 puluhan. Hasilnya 13.",
+          ],
+          papan: ["Tabel puluhan dan satuan", "5 − 2 = 3 satuan", "2 − 1 = 1 puluhan", "Sisa 13"],
+        },
+        {
+          id: "K3B1E-V1-3",
+          judul: "Susun pendek",
+          ketukan: [
+            "Cara susun pendek: susun bilangan, puluhan lurus dengan puluhan dan satuan lurus dengan satuan.",
+            "Langkah satu, susun. Langkah dua, kurangkan satuan, 5 − 2 = 3.",
+            "Langkah tiga, kurangkan puluhan, 2 − 1 = 1.",
+            "Jadi, 25 − 12 = 13. Sisa permen Galih ada 13.",
+          ],
+          papan: ["Susun pendek", "Satuan: 5 − 2 = 3", "Puluhan: 2 − 1 = 1", "25 − 12 = 13"],
+        },
+      ],
+    },
+    {
+      id: "K3B1E-V2",
+      judul: "Buku Tulis Pak Bandi",
+      subjudul: "Susun pendek dengan mengambil",
+      adegan: [
+        {
+          id: "K3B1E-V2-1",
+          judul: "Berapa sisa buku",
+          ketukan: [
+            "Pak Bandi memiliki toko yang menjual alat tulis.",
+            "Di tokonya ada 45 buku tulis. Siswa SD Pelita membeli 19 buku tulis.",
+            "Berapa sisa buku tulis di toko Pak Bandi sekarang?",
+            "Kita hitung 45 dikurangi 19.",
+          ],
+          papan: ["Toko Pak Bandi", "45 buku, dibeli 19", "Sisa buku?", "45 − 19"],
+        },
+        {
+          id: "K3B1E-V2-2",
+          judul: "Mengambil satu puluhan",
+          ketukan: [
+            "Satuan 5 kurang dari 9, jadi 5 tidak dapat dikurangi 9.",
+            "Kita mengambil 1 puluhan dari 4 puluhan. Puluhan tinggal 3.",
+            "Satu puluhan menjadi 10 satuan. 10 ditambah 5 sama dengan 15 satuan.",
+            "Sekarang 15 dikurangi 9 sama dengan 6.",
+          ],
+          papan: ["5 kurang dari 9", "Ambil 1 puluhan", "4 puluhan jadi 3 puluhan", "15 − 9 = 6"],
+        },
+        {
+          id: "K3B1E-V2-3",
+          judul: "Puluhan dan hasil",
+          ketukan: [
+            "Sekarang kurangkan puluhan. Karena 1 puluhan sudah diambil, puluhan tinggal 3.",
+            "Tiga dikurangi satu sama dengan 2.",
+            "Jadi, 45 dikurangi 19 sama dengan 26.",
+            "Ada 26 buku tulis yang tersisa di toko Pak Bandi.",
+          ],
+          papan: ["Puluhan: 3 − 1 = 2", "2 puluhan, 6 satuan", "45 − 19 = 26", "26 buku tulis"],
+        },
+      ],
+    },
+    {
+      id: "K3B1E-V3",
+      judul: "Cara Susun Panjang",
+      subjudul: "Menguraikan lalu mengurangkan",
+      adegan: [
+        {
+          id: "K3B1E-V3-1",
+          judul: "Uraikan bilangan",
+          ketukan: [
+            "Cara susun panjang menguraikan bilangan menjadi puluhan dan satuan.",
+            "Bilangan 45 diurai menjadi 40 ditambah 5. Bilangan 19 diurai menjadi 10 ditambah 9.",
+            "Satuan 5 kurang dari 9, jadi 40 diuraikan menjadi 30 ditambah 10.",
+            "Sekarang 45 menjadi 30 ditambah 10 ditambah 5.",
+          ],
+          papan: ["Susun panjang", "45 = 40 + 5 dan 19 = 10 + 9", "40 = 30 + 10", "45 = 30 + (10 + 5)"],
+        },
+        {
+          id: "K3B1E-V3-2",
+          judul: "Kurangkan kelompok",
+          ketukan: [
+            "Satuan: 10 ditambah 5 sama dengan 15. Lalu 15 dikurangi 9 sama dengan 6.",
+            "Puluhan: 30 dikurangi 10 sama dengan 20.",
+            "Jumlahkan hasil puluhan dan satuan: 20 ditambah 6.",
+            "Jadi, 45 dikurangi 19 sama dengan 26.",
+          ],
+          papan: ["15 − 9 = 6", "30 − 10 = 20", "20 + 6", "45 − 19 = 26"],
+        },
+        {
+          id: "K3B1E-V3-3",
+          judul: "Periksa dengan penjumlahan",
+          ketukan: [
+            "Pengurangan dan penjumlahan saling berkaitan.",
+            "Bila 45 dikurangi 19 sama dengan 26, maka 26 ditambah 19 harus sama dengan 45.",
+            "Kita hitung, 26 ditambah 19 sama dengan 45. Jadi, hasilnya benar.",
+            "Gunakan cara ini untuk memeriksa pekerjaanmu.",
+          ],
+          papan: ["Saling berkaitan", "26 + 19 = 45", "Hasil benar", "Periksa pekerjaanmu"],
+        },
+      ],
+    },
+  ],
+  mindMaps: [
+    {
+      stepNumber: 1,
+      stepTitle: "1. Mengingat Pengurangan",
+      stepDesc:
+        "Pengurangan berarti mengambil sebagian dari satu kelompok benda, lalu menghitung sisanya. Galih punya 25 permen dan Alfa mengambil 12 permen, jadi sisanya dihitung dengan 25 dikurangi 12. Pada bilangan dua angka kita memakai nilai tempat: puluhan dengan puluhan dan satuan dengan satuan. Pengurangan juga dipakai untuk mencari selisih dua banyak benda.",
+      icon: "🔙",
+      flowFrom: ALUR_E[0],
+      flowTo: ALUR_E[1],
+    },
+    {
+      stepNumber: 2,
+      stepTitle: "2. Susun Pendek tanpa Mengambil",
+      stepDesc:
+        "Susun 25 dan 12 ke bawah. Puluhan lurus dengan puluhan dan satuan lurus dengan satuan. Kurangkan satuan lebih dulu: 5 dikurangi 2 sama dengan 3. Lalu kurangkan puluhan: 2 dikurangi 1 sama dengan 1. Hasilnya 13. Disebut tanpa mengambil karena satuan di atas cukup untuk dikurangi.",
+      icon: "➖",
+      flowFrom: ALUR_E[1],
+      flowTo: ALUR_E[2],
+    },
+    {
+      stepNumber: 3,
+      stepTitle: "3. Susun Panjang tanpa Mengambil",
+      stepDesc:
+        "Cara susun panjang menguraikan bilangan. 25 sama dengan 20 ditambah 5 dan 12 sama dengan 10 ditambah 2. Kelompokkan puluhan dengan puluhan dan satuan dengan satuan: (20 − 10) + (5 − 2). Hasilnya 10 ditambah 3, yaitu 13. Cara ini membuat nilai tiap tempat terlihat jelas.",
+      icon: "🧩",
+      flowFrom: ALUR_E[2],
+      flowTo: ALUR_E[3],
+    },
+    {
+      stepNumber: 4,
+      stepTitle: "4. Mengambil Satu Puluhan",
+      stepDesc:
+        "Kadang satuan di atas lebih kecil dari satuan di bawah. Pada 45 dikurangi 19, satuan 5 kurang dari 9, jadi 5 tidak dapat dikurangi 9. Kita mengambil 1 puluhan dari 4 puluhan, sehingga puluhan tinggal 3. Satu puluhan menjadi 10 satuan, jadi satuan menjadi 15. Lalu 15 dikurangi 9 sama dengan 6.",
+      icon: "🔁",
+      flowFrom: ALUR_E[3],
+      flowTo: ALUR_E[4],
+    },
+    {
+      stepNumber: 5,
+      stepTitle: "5. Susun Panjang dengan Mengambil",
+      stepDesc:
+        "Uraikan 45 menjadi 40 ditambah 5 dan 19 menjadi 10 ditambah 9. Karena 5 kurang dari 9, uraikan 40 menjadi 30 ditambah 10, sehingga 45 sama dengan 30 ditambah 15. Kurangkan satuan: 15 dikurangi 9 sama dengan 6. Kurangkan puluhan: 30 dikurangi 10 sama dengan 20. Hasilnya 20 ditambah 6, yaitu 26, sama dengan cara susun pendek.",
+      icon: "🧱",
+      flowFrom: ALUR_E[4],
+      flowTo: ALUR_E[5],
+    },
+    {
+      stepNumber: 6,
+      stepTitle: "6. Memeriksa dengan Penjumlahan",
+      stepDesc:
+        "Pengurangan dan penjumlahan saling berkaitan. Bila 45 dikurangi 19 sama dengan 26, maka 26 ditambah 19 harus sama dengan 45. Bila hasil penjumlahan sama dengan bilangan awal, jawabanmu benar. Bila berbeda, hitung lagi dan perhatikan bagian mengambil satu puluhan.",
+      icon: "✅",
+      flowFrom: ALUR_E[5],
+      flowTo: ALUR_E[6],
+    },
+    {
+      stepNumber: 7,
+      stepTitle: "7. Memilih Cara yang Mudah",
+      stepDesc:
+        "Kita boleh memilih cara yang menurut kita mudah. Susun pendek cepat dan rapi. Susun panjang membantu kita melihat nilai puluhan dan satuan. Dua cara memberi hasil yang sama. Misalnya 60 dikurangi 35: satuan 0 kurang dari 5, ambil 1 puluhan menjadi 10, lalu 10 dikurangi 5 sama dengan 5, dan puluhan 5 dikurangi 3 sama dengan 2. Hasilnya 25.",
+      icon: "👍",
+      flowFrom: ALUR_E[6],
+      flowTo: ALUR_E[7],
+    },
+    {
+      stepNumber: 8,
+      stepTitle: "8. Soal Cerita Pengurangan",
+      stepDesc:
+        "Soal cerita memakai kata seperti sisa, selisih, diambil, dan dibeli. Bia punya 19 stiker mobil dan Aldo punya 8 stiker robot, jadi selisihnya 19 dikurangi 8 sama dengan 11. Pak Doni punya 23 ikan gurami dan 42 ikan nila, jadi selisihnya 42 dikurangi 23 sama dengan 19. Tulis kalimat matematikanya, hitung, lalu jawab dengan satuan yang tepat.",
+      icon: "📖",
+      flowFrom: ALUR_E[7],
+      flowTo: ALUR_E[8],
+    },
+  ],
+  infografis: [
+    { judul: "Susun Lurus", emoji: "📏", countNum: 2, countWord: "Dua", suara: "Pada pengurangan bersusun, puluhan lurus dengan puluhan dan satuan lurus dengan satuan. Bilangan yang dikurangi ditulis di atas." },
+    { judul: "Satuan Lebih Dulu", emoji: "1️⃣", countNum: 2, countWord: "Dua", suara: "Kita mengurangkan satuan lebih dulu, baru puluhan. Lima dikurangi dua sama dengan tiga." },
+    { judul: "Puluhan Berikutnya", emoji: "🔟", countNum: 2, countWord: "Dua", suara: "Setelah satuan, kurangkan puluhan. Dua dikurangi satu sama dengan satu, jadi dua puluh lima dikurangi dua belas sama dengan tiga belas." },
+    { judul: "Mengambil", emoji: "🔁", countNum: 3, countWord: "Tiga", suara: "Bila satuan di atas lebih kecil dari satuan di bawah, ambil satu puluhan. Satu puluhan menjadi sepuluh satuan, dan puluhan berkurang satu." },
+    { judul: "25 − 12", emoji: "🍬", countNum: 3, countWord: "Tiga", suara: "Dua puluh lima dikurangi dua belas. Satuan lima dikurangi dua sama dengan tiga, puluhan dua dikurangi satu sama dengan satu. Hasilnya tiga belas." },
+    { judul: "45 − 19", emoji: "📒", countNum: 3, countWord: "Tiga", suara: "Empat puluh lima dikurangi sembilan belas. Lima kurang dari sembilan, jadi ambil satu puluhan. Lima belas dikurangi sembilan sama dengan enam. Tiga dikurangi satu sama dengan dua. Hasilnya dua puluh enam." },
+    { judul: "Susun Panjang 45 − 19", emoji: "🧩", countNum: 4, countWord: "Empat", suara: "Empat puluh lima sama dengan tiga puluh tambah lima belas. Sembilan belas sama dengan sepuluh tambah sembilan. Lima belas kurang sembilan sama dengan enam, tiga puluh kurang sepuluh sama dengan dua puluh. Hasilnya dua puluh enam." },
+    { judul: "Memeriksa", emoji: "✅", countNum: 2, countWord: "Dua", suara: "Periksa pengurangan dengan penjumlahan. Dua puluh enam tambah sembilan belas sama dengan empat puluh lima, jadi hasilnya benar." },
+    { judul: "Soal Cerita", emoji: "📖", countNum: 3, countWord: "Tiga", suara: "Soal cerita menanyakan sisa atau selisih. Tulis kalimat pengurangannya, hitung, lalu tulis jawabannya dengan satuan." },
+    { judul: "Cara Mengurangkan", emoji: "📝", countNum: 4, countWord: "Empat", suara: "Empat langkah. Satu, susun lurus. Dua, kurangkan satuan, ambil satu puluhan bila perlu. Tiga, kurangkan puluhan. Empat, periksa dengan penjumlahan." },
+  ],
+  games: [
+    C("build-remaining", "Rakit Sisa", "hlm. 46–48 (25 permen diambil 12)", "Merakit sisa benda setelah sebuah kumpulan diambil sebanyak tertentu, termasuk menukar satu bungkus menjadi sepuluh benda.", "Tiga ronde, tiap ronde dua soal. Siswa membaca ada berapa benda dan berapa yang diambil, lalu merakit sisanya dengan tombol tambah dan kurang. Sepuluh benda otomatis ditukar satu bungkus.", "Rakit sisa benda setelah diambil.", "🧺", 6),
+    C("count-remaining", "Hitung Sisa", "hlm. 46 dan 49 (sisa permen; sisa buku tulis)", "Menghitung sisa benda dari gambar kumpulan yang diambil sebagian dan memilih hasilnya.", "Tiga ronde, tiap ronde dua soal. Dua kumpulan ditampilkan dengan tanda kurang. Siswa memilih satu dari tiga sisa. Pengecoh lupa mengambil atau salah mengambil.", "Hitung sisa benda.", "➖", 6),
+    C("sort-subtraction", "Pilah Soal: Mengambil atau Tidak", "hlm. 49–55 (satuan cukup atau tidak cukup)", "Memilah soal pengurangan menjadi yang perlu mengambil satu puluhan dan yang tanpa mengambil.", "Tiga ronde, tiap ronde enam soal bergambar kumpulan dan dua kotak. Siswa menyeret atau mengetuk soal ke kotak yang tepat.", "Pilah soal ke kotak yang tepat.", "🧺", 18),
+    C("match-pair-diff", "Jodohkan Pasangan dan Sisa", "hlm. 46–55 (mengurangkan dua bilangan)", "Menjodohkan pasangan kumpulan dengan sisanya.", "Tiga ronde, tiap ronde tiga pasangan kumpulan dan tiga sisa. Siswa mengetuk pasangan, lalu mengetuk sisa yang cocok.", "Ketuk pasangan, lalu ketuk sisanya.", "🔗", 9),
+    C("memory-pair-diff", "Memori Pasangan dan Sisa", "hlm. 46–55 (mengurangkan dua bilangan)", "Mencocokkan pasangan kumpulan dengan sisanya lewat permainan memori.", "Tiga ronde, tiap ronde delapan kartu tertutup (empat pasang): pasangan kumpulan dan sisanya. Siswa membalik dua kartu dan mencari pasangannya.", "Balik dua kartu, cari pasangan dan sisanya.", "🃏", 12),
+    C("tap-diff-pair", "Ketuk Pasangan dengan Sisa", "hlm. 46–55 (sisa benda)", "Menemukan pasangan kumpulan yang sisanya sama dengan bilangan yang diminta.", "Tiga ronde, tiap ronde tiga pasangan dan dua pertanyaan. Siswa mengetuk pasangan yang sisanya sama dengan bilangan yang disebut.", "Ketuk pasangan dengan sisa itu.", "👆", 6),
+    C("tap-all-borrow", "Ketuk Semua yang Perlu Mengambil", "hlm. 49–50 (5 < 9, pindahkan 1 puluhan ke satuan)", "Menemukan semua pasangan yang satuannya perlu mengambil satu puluhan (atau yang tidak).", "Tiga ronde, tiap ronde empat pasangan dan satu perintah. Siswa mengetuk semua yang cocok, lalu menekan Periksa.", "Ketuk semua yang cocok, lalu periksa.", "✔️", 3),
+    C("story-subtract", "Cerita Pengurangan", "hlm. 46 dan 49 (permen Galih; buku tulis Pak Bandi)", "Menyelesaikan soal cerita pengurangan dengan gambar kumpulan.", "Tiga ronde, tiap ronde dua cerita. Siswa membaca cerita, melihat gambar kumpulan yang diambil, lalu memilih sisanya.", "Baca cerita, lalu pilih sisanya.", "📖", 6),
+    C("board-diff-collection", "Papan Sisa Kumpulan", "hlm. 47–48 (tabel puluhan dan satuan hasil pengurangan)", "Menulis sisa sebuah kumpulan pada papan puluhan dan satuan.", "Tiga ronde, tiap ronde dua soal. Siswa menghitung sisa kumpulan, lalu mengatur angka puluhan dan satuan pada papan dan menekan Periksa.", "Isi papan dengan sisanya.", "🗂️", 6),
+    C("order-diffs", "Urutkan Pasangan menurut Sisa", "hlm. 46–55 (membandingkan hasil)", "Mengurutkan tiga pasangan kumpulan menurut sisanya.", "Tiga ronde, tiap ronde tiga pasangan bertanda huruf. Siswa mengetuk pasangan satu per satu dari sisa paling kecil atau paling besar.", "Ketuk pasangan menurut sisanya.", "📶", 9),
+    P("subtract-vertical", "Susun Kurang ke Bawah", "hlm. 47–48 dan 50–51 (langkah 1, 2, dan 3 cara susun pendek)", "Mengurangkan dua bilangan dengan cara susun pendek langkah demi langkah, termasuk mengambil satu puluhan.", "Tiga ronde, tiap ronde satu soal (25 − 12, 45 − 19, 60 − 35). Siswa menaruh bilangan pada kolom satuan, mengurangkan satuan, mengambil satu puluhan bila perlu, lalu mengurangkan puluhan.", "Susun, kurangkan satuan, lalu puluhan.", "subtract-vertical", 3, 1),
+    P("board-diff-numbers", "Papan Hasil Pengurangan", "hlm. 57 (Ayo Berlatih 2: gunakan cara susun pendek)", "Menulis hasil pengurangan pada papan puluhan dan satuan.", "Tiga ronde, tiap ronde dua soal (33 − 28, 42 − 36, 22 − 12, 98 − 21, dan seterusnya). Siswa mengatur angka puluhan dan satuan, lalu menekan Periksa.", "Isi papan dengan hasilnya.", "diff-board", 3, 2),
+    P("count-models-diff", "Hitung Model Pengurangan", "hlm. 47 dan 49 (tabel puluhan dan satuan)", "Menghitung sisa dari model puluhan dan satuan yang dikurangi model lain.", "Tiga ronde, tiap ronde dua soal. Dua model blok puluhan dan satuan ditampilkan dengan tanda kurang. Siswa memilih satu dari tiga sisa.", "Hitung sisa dua model.", "models-diff", 3, 2),
+    P("match-models-diff", "Jodohkan Model dan Sisa", "hlm. 46–55 (mengurangkan dua bilangan)", "Menjodohkan pasangan model dengan sisanya.", "Tiga ronde, tiap ronde tiga pasangan model dan tiga sisa. Siswa mengetuk pasangan, lalu mengetuk sisa yang cocok.", "Ketuk pasangan, lalu ketuk sisanya.", "models-match", 3, 3),
+    P("memory-models-diff", "Memori Model dan Sisa", "hlm. 46–55 (mengurangkan dua bilangan)", "Mencocokkan pasangan model dengan sisanya lewat permainan memori.", "Tiga ronde, tiap ronde delapan kartu tertutup (empat pasang). Siswa membalik dua kartu dan mencari pasangannya.", "Balik dua kartu, cari model dan sisanya.", "models-memory", 3, 4),
+    P("fill-diff-table", "Isi Tabel Hasil Pengurangan", "hlm. 57 (Ayo Berlatih 2)", "Melengkapi tabel soal pengurangan dan hasilnya.", "Tiga tabel dengan empat baris. Siswa mengetuk baris, lalu mengetuk kartu hasil yang tepat. Ada satu kartu pengecoh.", "Isi tabel dengan kartu hasil.", "diff-table", 3, 4),
+    P("tap-all-borrow-models", "Ketuk Semua yang Perlu Mengambil: Model", "hlm. 49–55 (mengambil satu puluhan)", "Menemukan semua soal yang satuannya perlu mengambil satu puluhan.", "Tiga ronde, tiap ronde empat soal bergambar model dan satu perintah. Siswa mengetuk semua yang cocok, lalu menekan Periksa.", "Ketuk semua yang cocok, lalu periksa.", "diff-select", 3, 4),
+    P("sort-subtraction-models", "Pilah Soal Susun Pengurangan", "hlm. 49–55 (dengan mengambil dan tanpa mengambil)", "Memilah soal bergambar model menjadi yang perlu mengambil dan yang tanpa mengambil.", "Tiga ronde, tiap ronde enam soal dan dua kotak. Siswa menyeret atau mengetuk soal ke kotak yang tepat.", "Pilah soal ke kotak yang tepat.", "diff-sort", 3, 6),
+    P("long-form-subtract", "Lengkapi Cara Panjang Pengurangan", "hlm. 48, 51–52, dan 56 (45 = 30 + 15; Ayo Berlatih 1)", "Melengkapi uraian puluhan dan satuan pada cara susun panjang pengurangan.", "Tiga soal, tiap soal tiga kalimat, misalnya 45 = 30 + ... Siswa memilih satu dari tiga angka untuk bagian kosong.", "Pilih angka untuk bagian kosong.", "long-form", 3, 3),
+    P("order-subtract-steps", "Urutkan Langkah Mengurangkan", "hlm. 47–55 (langkah 1, 2, dan 3)", "Mengurutkan langkah pengurangan bersusun dan susun panjang.", "Tiga ronde, tiap ronde empat langkah. Siswa mengetuk langkah satu per satu menurut urutan yang benar. Letak jawaban berpindah.", "Ketuk langkah menurut urutannya.", "steps-order", 3, 4),
+    A("subtract-vertical-abstract", "Susun Kurang ke Bawah: Lambang", "hlm. 57 (Ayo Berlatih 2: cara susun pendek)", "Mengurangkan dua bilangan dengan susun pendek, termasuk mengambil satu puluhan.", "Tiga ronde, tiap ronde satu soal (57 − 23, 84 − 39, 72 − 46). Siswa menyusun, mengurangkan satuan, mengambil satu puluhan bila perlu, lalu mengurangkan puluhan.", "Susun, kurangkan satuan, lalu puluhan.", "57−23", "SUSUN KE BAWAH", "satuan • puluhan"),
+    A("choose-difference", "Pilih Selisihnya", "hlm. 57 (Ayo Berlatih 2 dan 3)", "Memilih hasil pengurangan dua bilangan dari tiga pilihan.", "Tiga ronde, tiap ronde dua soal (33 − 28, 42 − 36, 61 − 21, 80 − 12, dan seterusnya). Pengecoh lupa mengambil atau salah mengambil.", "Pilih hasil pengurangannya.", "42−36", "PILIH HASIL", "selisih"),
+    A("board-diff-abstract", "Papan Selisih", "hlm. 57 (mengurangkan dua bilangan)", "Menulis hasil pengurangan pada papan puluhan dan satuan.", "Tiga ronde, tiap ronde dua soal. Siswa mengatur angka puluhan dan satuan lalu menekan Periksa.", "Isi papan dengan hasilnya.", "64−17", "PAPAN", "puluhan • satuan"),
+    A("steps-difference", "Satuan, Puluhan, Selisih", "hlm. 50–51 (kurangkan satuan, ambil 1 puluhan; kurangkan puluhan)", "Melengkapi langkah mengurangkan satuan, puluhan, dan hasil akhir.", "Tiga soal, tiap soal tiga kalimat, misalnya satuan: 15 − 9 = ... Siswa memilih satu dari tiga angka.", "Pilih angka untuk bagian kosong.", "15−9", "LANGKAH", "satuan • puluhan • selisih"),
+    A("match-problem-diff", "Jodohkan Soal dan Sisa", "hlm. 57 (soal dan hasil)", "Menjodohkan soal pengurangan dengan hasilnya.", "Tiga ronde, tiap ronde tiga soal dan tiga hasil. Siswa mengetuk soal, lalu mengetuk hasil yang cocok.", "Ketuk soal, lalu ketuk hasilnya.", "45−19", "JODOHKAN", "soal • hasil"),
+    A("memory-problem-diff", "Memori Soal dan Sisa", "hlm. 57 (soal dan jawaban)", "Mencocokkan soal pengurangan dengan hasilnya lewat permainan memori.", "Tiga ronde, tiap ronde delapan kartu tertutup (empat pasang): soal dan hasil. Siswa membalik dua kartu dan mencari pasangannya.", "Balik dua kartu, cari soal dan hasilnya.", "37−12", "MEMORI", "soal • hasil"),
+    A("true-false-subtraction", "Benar atau Salah: Pengurangan", "hlm. 57 (Ayo Berlatih 3: berilah tanda centang)", "Menilai pernyataan tentang cara mengurangkan dan hasilnya.", "Dua ronde, tiap ronde lima pernyataan. Siswa memilih Benar atau Salah. Pernyataan dihitung dari bilangan, dan tiap jawaban diberi penjelasan.", "Baca pernyataan, lalu pilih benar atau salah.", "✓ ✗", "BENAR SALAH", "periksa dengan alasan"),
+    A("detective-subtraction", "Detektif Pengurangan", "hlm. 46–55 (hasil dua bilangan)", "Menemukan bilangan hasil pengurangan dari dua petunjuk.", "Empat soal. Siswa membaca petunjuk seperti hasil 45 − 19 dan kurang dari 30, lalu memilih satu dari tiga bilangan. Hanya satu yang cocok.", "Baca petunjuk, lalu pilih bilangannya.", "?", "DETEKTIF", "dua petunjuk, satu jawaban"),
+    A("concept-map-subtraction", "Peta Konsep Pengurangan", "hlm. 2 (peta konsep: pengurangan bilangan cacah)", "Melengkapi peta konsep pengurangan bersusun dan susun panjang.", "Dua peta konsep, tiap peta empat kotak. Siswa memilih kartu yang tepat untuk kotak yang menyala.", "Pilih kartu yang tepat untuk kotak yang menyala.", "⇄", "PETA KONSEP", "susun • ambil • selisih"),
+    A("story-subtract-numbers", "Soal Cerita Pengurangan", "hlm. 57 (Ayo Berlatih 4: kerjakan soal cerita)", "Menyelesaikan soal cerita pengurangan sisa dan selisih.", "Tiga ronde, tiap ronde dua cerita. Siswa membaca cerita lalu memilih satu dari tiga hasil. Pengecoh lupa mengambil atau salah mengambil.", "Baca cerita, lalu pilih hasilnya.", "19−8", "CERITA", "sisa dan selisih"),
+  ],
+  poin: [
+    { ikon: "📏", nama: "Susun lurus", isi: "puluhan dengan puluhan, satuan dengan satuan", suara: "Pada pengurangan bersusun, puluhan lurus dengan puluhan dan satuan lurus dengan satuan." },
+    { ikon: "1️⃣", nama: "Satuan lebih dulu", isi: "25 − 12: 5 − 2 = 3, 2 − 1 = 1", suara: "Kurangkan satuan lebih dulu, lalu puluhan. Dua puluh lima dikurangi dua belas sama dengan tiga belas." },
+    { ikon: "🔁", nama: "Mengambil", isi: "1 puluhan = 10 satuan", suara: "Bila satuan di atas lebih kecil, ambil satu puluhan dan ubah menjadi sepuluh satuan. Puluhan berkurang satu." },
+    { ikon: "🧩", nama: "Susun panjang", isi: "45 − 19 = 20 + 6 = 26", suara: "Pada susun panjang, bilangan diuraikan menjadi puluhan dan satuan, lalu dikelompokkan." },
+    { ikon: "✅", nama: "Periksa", isi: "26 + 19 = 45", suara: "Periksa pengurangan dengan penjumlahan. Hasil ditambah bilangan pengurang harus sama dengan bilangan awal." },
+  ],
+  poinSuara:
+    "Ingat selalu! Pada pengurangan bersusun, puluhan lurus dengan puluhan dan satuan lurus dengan satuan. Kurangkan satuan lebih dulu, lalu puluhan. Bila satuan di atas lebih kecil, ambil satu puluhan. Periksa hasilnya dengan penjumlahan.",
+  cara: {
+    suara: "Cara mengurangkan. Susun lurus. Kurangkan satuan, ambil satu puluhan bila perlu. Kurangkan puluhan. Lalu periksa dengan penjumlahan.",
+    potongan: [
+      { teks: "susun lurus", warna: "#BAE6FD" },
+      { teks: "satuan dulu", warna: "#FECACA" },
+      { teks: "lalu puluhan", warna: "#BFDBFE" },
+      { teks: "periksa", warna: "#FDE68A" },
+    ],
+  },
+  rumah:
+    "Ayo Mencoba di rumah: ambil satu kelompok benda di rumah, misalnya 45 kancing atau biji. Ambil sebagian, lalu hitung sisanya dengan cara susun pendek di buku. Periksa dengan penjumlahan. Ceritakan apakah kamu perlu mengambil satu puluhan.",
+  refleksi: [
+    "Aku dapat mengurangkan dua bilangan sampai 100 dengan susun pendek.",
+    "Aku dapat menjelaskan saat harus mengambil satu puluhan.",
+    "Aku dapat memakai cara susun panjang.",
+    "Aku memeriksa jawabanku dengan penjumlahan.",
+  ],
+};
+
+/* ====================================================================== */
+/* SUB-BAB F. Perkalian bilangan cacah sampai 100                           */
+/* ====================================================================== */
+
+const ALUR_F = ["Mengingat penjumlahan berulang", "Kelompok yang sama banyak", "Menulis perkalian", "Banyak kelompok dan isi", "Loncatan pada garis bilangan", "Menukar tempat bilangan", "Menghitung hasil kali", "Soal cerita perkalian", "Siap mengalikan sampai 100"];
+
+export const SUB_F31: SubBabNaskah = {
+  id: "F",
+  codeTitle: "Sub-Bab F (Perkalian sampai 100)",
+  fullTitle: "Sub-Bab F: Perkalian Bilangan Cacah sampai 100",
+  targetDescription:
+    "Siswa memahami perkalian sebagai penjumlahan berulang dari kelompok yang sama banyak, menulis dan membaca perkalian (banyak kelompok dikali isi tiap kelompok), menghitung hasil perkalian sampai 100, memahami bahwa bilangan pada perkalian boleh ditukar tempatnya, serta menyelesaikan soal cerita perkalian.",
+  secondaryBg: "#FEF3C7",
+  secondaryBorder: "#D97706",
+  secondaryText: "#78350F",
+  silabus: {
+    teksSuara: `Kita belajar perkalian bilangan cacah sampai seratus. Ada lima kelompok pensil, tiap kelompok berisi dua pensil. Ada empat kelompok bunga melati, tiap kelompok berisi lima bunga. Perkalian adalah penjumlahan berulang dari kelompok yang sama banyak. Kita juga belajar bahwa lima kali enam sama dengan enam kali lima, dan menyelesaikan soal cerita. ${SUARA_AKHIR_SILABUS}`,
+    cp: "Siswa melakukan operasi perkalian dan pembagian bilangan cacah sampai 100. Pada sub-bab ini siswa memahami perkalian sebagai penjumlahan berulang, menulis perkalian, menghitung hasilnya, dan menyelesaikan soal cerita perkalian.",
+    referensi: "Buku Siswa Matematika Kelas III Kemendikbudristek (Bab 1: Bilangan Cacah sampai 1.000, Sub-Bab F hlm. 58–63) dan Buku Panduan Guru Bab 1 Topik F.",
+  },
+  videos: [
+    {
+      id: "K3B1F-V1",
+      judul: "Pensil dan Bunga Melati",
+      subjudul: "Perkalian sebagai penjumlahan berulang",
+      adegan: [
+        {
+          id: "K3B1F-V1-1",
+          judul: "Lima kelompok pensil",
+          ketukan: [
+            "Ada 5 kelompok pensil. Setiap kelompok berisi 2 pensil.",
+            "Jumlah seluruhnya: 2 ditambah 2 ditambah 2 ditambah 2 ditambah 2.",
+            "Penjumlahan berulang ini ditulis 5 kali 2.",
+            "Jadi, 5 × 2 = 10. Ada 10 pensil seluruhnya.",
+          ],
+          papan: ["5 kelompok pensil", "2 + 2 + 2 + 2 + 2", "5 × 2", "= 10 pensil"],
+        },
+        {
+          id: "K3B1F-V1-2",
+          judul: "Empat kelompok melati",
+          ketukan: [
+            "Ada 4 kelompok bunga melati. Setiap kelompok berisi 5 bunga.",
+            "Jadi, jumlahnya 4 × 5 bunga melati.",
+            "Lima ditambah lima ditambah lima ditambah lima sama dengan 20.",
+            "Jadi, 4 × 5 = 20. Ada 20 bunga melati.",
+          ],
+          papan: ["4 kelompok melati", "4 × 5", "5 + 5 + 5 + 5", "= 20 bunga"],
+        },
+        {
+          id: "K3B1F-V1-3",
+          judul: "Membaca perkalian",
+          ketukan: [
+            "Pada 4 × 5, bilangan 4 adalah banyak kelompok.",
+            "Bilangan 5 adalah isi tiap kelompok.",
+            "Perkalian adalah penjumlahan berulang dari bilangan yang sama.",
+            "Banyak kelompok dikali isi tiap kelompok sama dengan jumlah seluruhnya.",
+          ],
+          papan: ["Banyak kelompok", "Isi tiap kelompok", "Penjumlahan berulang", "kelompok × isi = jumlah"],
+        },
+      ],
+    },
+    {
+      id: "K3B1F-V2",
+      judul: "Mobil Mainan",
+      subjudul: "Menukar tempat bilangan",
+      adegan: [
+        {
+          id: "K3B1F-V2-1",
+          judul: "Lima kelompok mobil",
+          ketukan: [
+            "Mobil mainan disusun dalam 5 kelompok.",
+            "Setiap kelompok berisi 6 mobil mainan.",
+            "6 + 6 + 6 + 6 + 6 = 30, atau 5 × 6 = 30.",
+            "Jadi, ada 30 mobil mainan.",
+          ],
+          papan: ["5 kelompok mobil", "Tiap kelompok 6", "5 × 6", "= 30"],
+        },
+        {
+          id: "K3B1F-V2-2",
+          judul: "Enam kelompok mobil",
+          ketukan: [
+            "Sekarang mobil yang sama dijadikan 6 kelompok.",
+            "Setiap kelompok berisi 5 mobil mainan.",
+            "5 + 5 + 5 + 5 + 5 + 5 = 30, atau 6 × 5 = 30.",
+            "Jumlahnya tetap 30 mobil mainan.",
+          ],
+          papan: ["6 kelompok mobil", "Tiap kelompok 5", "6 × 5", "= 30"],
+        },
+        {
+          id: "K3B1F-V2-3",
+          judul: "Tukar tempat",
+          ketukan: [
+            "5 × 6 sama dengan 30, dan 6 × 5 juga sama dengan 30.",
+            "Jadi, 5 × 6 sama dengan 6 × 5.",
+            "Bilangan pada perkalian boleh ditukar tempatnya.",
+            "Hasilnya tetap sama besar.",
+          ],
+          papan: ["5 × 6 = 30", "6 × 5 = 30", "5 × 6 = 6 × 5", "Boleh ditukar"],
+        },
+      ],
+    },
+    {
+      id: "K3B1F-V3",
+      judul: "Gelas dan Kerikil",
+      subjudul: "Aktivitas 4: Perkalian",
+      adegan: [
+        {
+          id: "K3B1F-V3-1",
+          judul: "Siapkan gelas dan kerikil",
+          ketukan: [
+            "Siapkan 5 gelas plastik bekas dan 40 batu kerikil.",
+            "Masukkan 4 batu kerikil ke dalam setiap gelas.",
+            "Ada 5 gelas, dan tiap gelas berisi 4 kerikil.",
+            "Berapa kerikil yang ada di kelima gelas itu?",
+          ],
+          papan: ["5 gelas", "Tiap gelas 4 kerikil", "40 kerikil disiapkan", "Berapa kerikil?"],
+        },
+        {
+          id: "K3B1F-V3-2",
+          judul: "Jumlahkan kerikil",
+          ketukan: [
+            "Jumlahkan: 4 + 4 + 4 + 4 + 4 = 20 kerikil.",
+            "Kita bisa menulisnya sebagai banyak gelas dikali banyak kerikil tiap gelas.",
+            "Jadi, 5 × 4 = 20 kerikil.",
+            "Ada 20 kerikil di kelima gelas.",
+          ],
+          papan: ["4 + 4 + 4 + 4 + 4", "gelas × kerikil", "5 × 4 = 20", "20 kerikil"],
+        },
+        {
+          id: "K3B1F-V3-3",
+          judul: "Ulangi dengan 4 gelas",
+          ketukan: [
+            "Ulangi dengan 4 gelas, dan tiap gelas berisi 7 kerikil.",
+            "Jumlahkan: 7 + 7 + 7 + 7 = 28.",
+            "Ditulis dengan perkalian 4 × 7 = 28.",
+            "Aktivitas ini menunjukkan bahwa perkalian adalah penjumlahan berulang.",
+          ],
+          papan: ["4 gelas, tiap gelas 7", "7 + 7 + 7 + 7", "4 × 7 = 28", "Penjumlahan berulang"],
+        },
+      ],
+    },
+  ],
+  mindMaps: [
+    {
+      stepNumber: 1,
+      stepTitle: "1. Mengingat Penjumlahan Berulang",
+      stepDesc:
+        "Penjumlahan berulang berarti menjumlahkan bilangan yang sama berkali-kali. Ada 5 kelompok pensil dan tiap kelompok berisi 2 pensil, jadi jumlahnya 2 + 2 + 2 + 2 + 2 = 10. Menjumlahkan bilangan yang sama berkali-kali itu lama kalau kelompoknya banyak. Karena itu kita memakai perkalian sebagai cara yang lebih singkat.",
+      icon: "🔙",
+      flowFrom: ALUR_F[0],
+      flowTo: ALUR_F[1],
+    },
+    {
+      stepNumber: 2,
+      stepTitle: "2. Kelompok yang Sama Banyak",
+      stepDesc:
+        "Perkalian dipakai bila benda dibagi ke dalam beberapa kelompok yang isinya sama banyak. Pada gambar ada 4 kelompok bunga melati dan setiap kelompok berisi 5 bunga. Setiap kelompok harus sama banyak. Kalau ada kelompok yang isinya berbeda, kita tidak dapat memakai perkalian satu kali saja.",
+      icon: "🍽️",
+      flowFrom: ALUR_F[1],
+      flowTo: ALUR_F[2],
+    },
+    {
+      stepNumber: 3,
+      stepTitle: "3. Menulis Perkalian",
+      stepDesc:
+        "Empat kelompok yang berisi lima ditulis 4 × 5. Tanda kali dibaca kali atau dikali. Penjumlahan berulang 5 + 5 + 5 + 5 sama dengan 4 × 5. Hasilnya 20. Jadi, 4 × 5 = 20 bunga melati. Perkalian adalah cara singkat menulis penjumlahan berulang.",
+      icon: "✖️",
+      flowFrom: ALUR_F[2],
+      flowTo: ALUR_F[3],
+    },
+    {
+      stepNumber: 4,
+      stepTitle: "4. Banyak Kelompok dan Isi",
+      stepDesc:
+        "Pada 5 × 2, bilangan 5 menyatakan banyak kelompok dan bilangan 2 menyatakan isi tiap kelompok. Banyak kelompok dikali isi tiap kelompok sama dengan jumlah seluruhnya. Pada Aktivitas 4, ada 5 gelas dan tiap gelas berisi 4 kerikil, jadi 5 × 4 = 20 kerikil. Bila gelasnya 4 dan tiap gelas berisi 7 kerikil, ditulis 4 × 7 = 28.",
+      icon: "👥",
+      flowFrom: ALUR_F[3],
+      flowTo: ALUR_F[4],
+    },
+    {
+      stepNumber: 5,
+      stepTitle: "5. Loncatan pada Garis Bilangan",
+      stepDesc:
+        "Perkalian juga dapat dilihat sebagai loncatan sama besar pada garis bilangan. Mulai dari 0, lakukan 4 loncatan sebesar 5, yaitu 5, 10, 15, lalu 20. Titik pendaratan terakhir adalah hasilnya. Jadi, 4 × 5 = 20. Banyak loncatan sama dengan banyak kelompok dan besar loncatan sama dengan isi tiap kelompok.",
+      icon: "📏",
+      flowFrom: ALUR_F[4],
+      flowTo: ALUR_F[5],
+    },
+    {
+      stepNumber: 6,
+      stepTitle: "6. Menukar Tempat Bilangan",
+      stepDesc:
+        "Mobil mainan disusun dalam 5 kelompok yang berisi 6 mobil, jadi 5 × 6 = 30. Bila dijadikan 6 kelompok yang berisi 5 mobil, hasilnya 6 × 5 = 30. Jumlah mobilnya sama. Jadi, 5 × 6 = 6 × 5. Pada perkalian, bilangan boleh ditukar tempatnya dan hasilnya tetap sama.",
+      icon: "🔄",
+      flowFrom: ALUR_F[5],
+      flowTo: ALUR_F[6],
+    },
+    {
+      stepNumber: 7,
+      stepTitle: "7. Menghitung Hasil Kali",
+      stepDesc:
+        "Untuk menghitung hasil kali, ubah perkalian menjadi penjumlahan berulang. 3 × 4 sama dengan 4 + 4 + 4, yaitu 12. 5 × 7 sama dengan 7 + 7 + 7 + 7 + 7, yaitu 35. 7 × 8 sama dengan 56 dan 9 × 7 sama dengan 63. Bila lupa, pakailah penjumlahan berulang atau loncatan pada garis bilangan untuk memeriksa.",
+      icon: "🔢",
+      flowFrom: ALUR_F[6],
+      flowTo: ALUR_F[7],
+    },
+    {
+      stepNumber: 8,
+      stepTitle: "8. Soal Cerita Perkalian",
+      stepDesc:
+        "Soal cerita perkalian menyebut banyak kelompok dan isi tiap kelompok. SD Pelangi punya 6 kelas dan tiap kelas punya 2 papan tulis, jadi 6 × 2 = 12 papan tulis. Guru membentuk 6 kelompok dan tiap kelompok beranggotakan 5 siswa, jadi 6 × 5 = 30 siswa. Tulis kalimat perkaliannya, hitung, lalu jawab dengan satuan yang tepat.",
+      icon: "📖",
+      flowFrom: ALUR_F[7],
+      flowTo: ALUR_F[8],
+    },
+  ],
+  infografis: [
+    { judul: "Kelompok Sama Banyak", emoji: "🍽️", countNum: 2, countWord: "Dua", suara: "Perkalian dipakai bila ada beberapa kelompok yang isinya sama banyak. Tiap kelompok harus sama banyak." },
+    { judul: "5 × 2 = 10", emoji: "✏️", countNum: 3, countWord: "Tiga", suara: "Lima kelompok pensil, tiap kelompok berisi dua pensil. Dua tambah dua tambah dua tambah dua tambah dua sama dengan sepuluh. Jadi, lima kali dua sama dengan sepuluh." },
+    { judul: "Penjumlahan Berulang", emoji: "➕", countNum: 2, countWord: "Dua", suara: "Perkalian adalah penjumlahan berulang dari bilangan yang sama. Empat kali lima sama dengan lima tambah lima tambah lima tambah lima." },
+    { judul: "4 × 5 = 20", emoji: "🌼", countNum: 3, countWord: "Tiga", suara: "Empat kelompok bunga melati, tiap kelompok berisi lima bunga. Empat kali lima sama dengan dua puluh bunga melati." },
+    { judul: "Banyak Kelompok dan Isi", emoji: "👥", countNum: 2, countWord: "Dua", suara: "Pada perkalian, bilangan pertama menyatakan banyak kelompok dan bilangan kedua menyatakan isi tiap kelompok." },
+    { judul: "Garis Bilangan", emoji: "📏", countNum: 3, countWord: "Tiga", suara: "Empat loncatan sebesar lima dari nol mendarat di dua puluh. Jadi, empat kali lima sama dengan dua puluh." },
+    { judul: "Tukar Tempat", emoji: "🔄", countNum: 2, countWord: "Dua", suara: "Lima kali enam sama dengan tiga puluh, dan enam kali lima juga sama dengan tiga puluh. Bilangan pada perkalian boleh ditukar tempatnya." },
+    { judul: "5 × 4 = 20", emoji: "🥛", countNum: 3, countWord: "Tiga", suara: "Lima gelas, tiap gelas berisi empat batu kerikil. Lima kali empat sama dengan dua puluh kerikil." },
+    { judul: "Soal Cerita", emoji: "📖", countNum: 3, countWord: "Tiga", suara: "Soal cerita menyebut banyak kelompok dan isi tiap kelompok. Tulis kalimat perkaliannya, hitung, lalu tulis jawabannya dengan satuan." },
+    { judul: "Cara Mengalikan", emoji: "📝", countNum: 4, countWord: "Empat", suara: "Empat langkah. Satu, cari banyak kelompok. Dua, cari isi tiap kelompok. Tiga, tulis perkalian atau penjumlahan berulang. Empat, hitung hasilnya." },
+  ],
+  games: [
+    C("build-groups", "Rakit Kelompok", "hlm. 58–60 (5 kelompok pensil; 4 kelompok melati)", "Menambah kelompok yang isinya sama sampai jumlah seluruhnya sama dengan yang diminta.", "Tiga ronde, tiap ronde dua soal. Siswa membaca isi tiap piring dan jumlah yang diminta, lalu menambah atau mengurangi piring. Kalimat penjumlahan berulang ikut bertambah panjang.", "Tambah piring sampai jumlahnya tepat.", "🍽️", 6),
+    C("count-groups", "Hitung Kelompok", "hlm. 58–60 (kelompok pensil, melati, dan mobil mainan)", "Menghitung jumlah seluruh benda pada beberapa kelompok yang sama banyak dan memilih hasilnya.", "Tiga ronde, tiap ronde dua soal. Gambar piring-piring berisi benda ditampilkan. Siswa memilih satu dari tiga jumlah seluruhnya.", "Hitung jumlah seluruh benda.", "🧺", 6),
+    C("write-repeated", "Tulis Penjumlahan Berulang", "hlm. 58–59 (2 + 2 + 2 + 2 + 2 = 10)", "Memilih kalimat penjumlahan berulang yang sesuai dengan gambar kelompok.", "Tiga ronde, tiap ronde dua soal. Siswa melihat gambar kelompok, lalu memilih satu dari tiga kalimat penjumlahan berulang. Pengecoh salah banyak kelompok.", "Pilih kalimat penjumlahan berulang.", "➕", 6),
+    C("match-group-product", "Jodohkan Kelompok dan Perkalian", "hlm. 58–61 (menulis perkalian)", "Menjodohkan gambar kelompok dengan kalimat perkaliannya.", "Tiga ronde, tiap ronde tiga gambar kelompok dan tiga perkalian. Siswa mengetuk gambar, lalu mengetuk perkalian yang cocok.", "Ketuk gambar, lalu ketuk perkaliannya.", "🔗", 9),
+    C("memory-group-product", "Memori Kelompok dan Hasil", "hlm. 58–61 (jumlah seluruhnya)", "Mencocokkan gambar kelompok dengan jumlah seluruhnya lewat permainan memori.", "Tiga ronde, tiap ronde delapan kartu tertutup (empat pasang): gambar kelompok dan hasilnya. Siswa membalik dua kartu dan mencari pasangannya.", "Balik dua kartu, cari kelompok dan hasilnya.", "🃏", 12),
+    C("tap-group-total", "Ketuk Kelompok dengan Jumlah", "hlm. 58–61 (jumlah seluruh benda)", "Menemukan gambar kelompok yang jumlahnya sama dengan bilangan yang diminta.", "Tiga ronde, tiap ronde tiga gambar kelompok dan dua pertanyaan. Siswa mengetuk gambar yang jumlahnya sama dengan bilangan yang disebut.", "Ketuk kelompok dengan jumlah itu.", "👆", 6),
+    C("tap-all-compare", "Ketuk Semua yang Lebih atau Kurang", "hlm. 58–61 (membandingkan jumlah seluruhnya)", "Menemukan semua kelompok yang jumlah seluruhnya lebih atau kurang dari bilangan acuan.", "Tiga ronde, tiap ronde empat gambar kelompok dan satu perintah. Siswa mengetuk semua yang cocok, lalu menekan Periksa.", "Ketuk semua yang cocok, lalu periksa.", "✔️", 3),
+    C("swap-groups", "Tukar Tempat Kelompok", "hlm. 59–60 (5 × 6 = 6 × 5)", "Membandingkan dua susunan kelompok dan menyadari bahwa menukar tempat bilangan tidak mengubah jumlah.", "Tiga ronde, tiap ronde dua soal. Dua susunan piring ditampilkan. Siswa memilih susunan yang lebih banyak atau menyatakan keduanya sama banyak.", "Mana yang lebih banyak?", "🔄", 6),
+    C("board-group-total", "Papan Hasil Kelompok", "hlm. 60–61 (Aktivitas 4: 5 × 4 = 20)", "Menulis jumlah seluruh benda pada papan puluhan dan satuan.", "Tiga ronde, tiap ronde dua soal. Siswa menghitung jumlah seluruhnya, lalu mengatur angka puluhan dan satuan pada papan dan menekan Periksa.", "Isi papan dengan jumlah seluruhnya.", "🗂️", 6),
+    C("order-groups", "Urutkan Kelompok menurut Jumlah", "hlm. 58–61 (membandingkan hasil)", "Mengurutkan tiga gambar kelompok menurut jumlahnya.", "Tiga ronde, tiap ronde tiga gambar kelompok bertanda huruf. Siswa mengetuk gambar satu per satu dari jumlah paling kecil atau paling besar.", "Ketuk kelompok menurut jumlahnya.", "📶", 9),
+    P("count-dot-groups", "Hitung Titik Berkelompok", "hlm. 58–59 (menghitung kelompok yang sama banyak)", "Menghitung jumlah titik pada beberapa kotak yang sama banyak.", "Tiga ronde, tiap ronde dua soal. Kotak-kotak berisi titik polos ditampilkan. Siswa memilih satu dari tiga jumlah titik.", "Hitung jumlah titik.", "dot-groups", 5, 2),
+    P("complete-product-sentence", "Lengkapi Kalimat Perkalian", "hlm. 61–62 (Ayo Berlatih 1: isilah titik-titik)", "Melengkapi penjumlahan berulang, perkalian, dan perkalian yang ditukar tempat.", "Tiga soal, tiap soal tiga kalimat, misalnya 5 × 2 = ... Siswa memilih satu dari tiga angka untuk bagian kosong.", "Pilih angka untuk bagian kosong.", "product-sentence", 4, 5),
+    P("match-dots-product", "Jodohkan Titik dan Perkalian", "hlm. 61–62 (Ayo Berlatih 1)", "Menjodohkan gambar kotak titik dengan kalimat perkaliannya.", "Tiga ronde, tiap ronde tiga gambar dan tiga perkalian. Siswa mengetuk gambar, lalu mengetuk perkalian yang cocok.", "Ketuk gambar, lalu ketuk perkaliannya.", "dots-match", 4, 3),
+    P("memory-dots-product", "Memori Titik dan Hasil", "hlm. 58–62 (jumlah seluruhnya)", "Mencocokkan gambar kotak titik dengan hasilnya lewat permainan memori.", "Tiga ronde, tiap ronde delapan kartu tertutup (empat pasang). Siswa membalik dua kartu dan mencari pasangannya.", "Balik dua kartu, cari titik dan hasilnya.", "dots-memory", 4, 4),
+    P("number-line-jumps", "Loncatan pada Garis Bilangan", "hlm. 58–61 (penjumlahan berulang sebagai loncatan)", "Menentukan titik pendaratan setelah beberapa loncatan sama besar dari nol.", "Tiga ronde, tiap ronde dua soal. Garis bilangan enam titik ditampilkan. Siswa mengetuk titik tempat loncatan terakhir mendarat.", "Ketuk titik pendaratan.", "number-line", 4, 5),
+    P("fill-product-table", "Isi Tabel Perkalian", "hlm. 63 (Ayo Berlatih 3: hitunglah hasil perkalian)", "Melengkapi tabel soal perkalian dan hasilnya.", "Tiga tabel dengan empat baris. Siswa mengetuk baris, lalu mengetuk kartu hasil yang tepat. Ada satu kartu pengecoh.", "Isi tabel dengan kartu hasil.", "product-table", 4, 4),
+    P("tap-all-dots-compare", "Ketuk Semua yang Lebih atau Kurang: Titik", "hlm. 58–62 (membandingkan jumlah seluruhnya)", "Menemukan semua gambar kotak titik yang jumlahnya lebih atau kurang dari bilangan acuan.", "Tiga ronde, tiap ronde empat gambar dan satu perintah. Siswa mengetuk semua yang cocok, lalu menekan Periksa.", "Ketuk semua yang cocok, lalu periksa.", "dots-select", 4, 4),
+    P("sort-dot-groups", "Pilah Gambar: Kurang dari 20 atau Lebih", "hlm. 58–62 (membandingkan jumlah seluruhnya)", "Memilah gambar kotak titik menjadi yang jumlahnya kurang dari 20 dan yang 20 atau lebih.", "Tiga ronde, tiap ronde enam gambar dan dua kotak. Siswa menyeret atau mengetuk gambar ke kotak yang tepat.", "Pilah gambar ke kotak yang tepat.", "dots-sort", 4, 6),
+    P("swap-factor", "Tukar Faktor", "hlm. 59–60 (5 × 6 = 6 × 5)", "Menentukan bilangan yang tepat bila dua bilangan pada perkalian ditukar tempatnya.", "Tiga ronde, tiap ronde dua soal, misalnya 4 × 6 = 6 × ... Siswa memilih satu dari tiga bilangan.", "Pilih bilangan setelah ditukar tempat.", "swap-factor", 4, 6),
+    P("build-dot-boxes", "Rakit Kotak Titik", "hlm. 58–61 (kelompok yang sama banyak)", "Menambah kotak berisi titik yang sama sampai jumlah seluruhnya sama dengan yang diminta.", "Tiga ronde, tiap ronde dua soal. Siswa membaca isi tiap kotak dan jumlah yang diminta, lalu menambah atau mengurangi kotak. Kalimat penjumlahan berulang ikut bertambah.", "Tambah kotak sampai jumlahnya tepat.", "build-boxes", 3, 4),
+    A("repeated-to-product", "Dari Penjumlahan ke Perkalian", "hlm. 63 (Ayo Berlatih 2: isilah titik-titik dengan pilihan jawaban)", "Menyatakan penjumlahan berulang sebagai perkalian dan menghitung hasilnya.", "Tiga ronde, tiap ronde dua soal, misalnya 5 + 5 + 5 + 5 + 5 + 5 + 5 = ... Siswa memilih satu dari tiga hasil.", "Pilih hasil penjumlahan berulang.", "7×5", "KALI", "penjumlahan berulang"),
+    A("compute-product", "Hitung Hasil Kali", "hlm. 63 (Ayo Berlatih 3: hitunglah hasil perkalian)", "Menghitung hasil perkalian dua bilangan dan memilihnya dari tiga pilihan.", "Tiga ronde, tiap ronde dua soal (3 × 4, 5 × 7, 7 × 8, 9 × 7, dan seterusnya). Pengecoh salah satu kelompok.", "Pilih hasil kalinya.", "3×4", "HASIL KALI", "kelompok × isi"),
+    A("board-product", "Papan Hasil Kali", "hlm. 63 (menghitung hasil perkalian)", "Menulis hasil perkalian pada papan puluhan dan satuan.", "Tiga ronde, tiap ronde dua soal. Siswa mengatur angka puluhan dan satuan lalu menekan Periksa.", "Isi papan dengan hasil kalinya.", "6×7", "PAPAN", "puluhan • satuan"),
+    A("match-sum-product", "Jodohkan Penjumlahan dan Perkalian", "hlm. 63 (Ayo Berlatih 2: 8 × 9 dan 9 × 8)", "Menjodohkan penjumlahan berulang dengan perkaliannya.", "Tiga ronde, tiap ronde tiga penjumlahan berulang dan tiga perkalian. Siswa mengetuk penjumlahan, lalu mengetuk perkalian yang cocok.", "Ketuk penjumlahan, lalu ketuk perkaliannya.", "5+5+5", "JODOHKAN", "tambah • kali"),
+    A("memory-product", "Memori Perkalian dan Hasil", "hlm. 63 (soal dan jawaban)", "Mencocokkan perkalian dengan hasilnya lewat permainan memori.", "Tiga ronde, tiap ronde delapan kartu tertutup (empat pasang): perkalian dan hasil. Siswa membalik dua kartu dan mencari pasangannya.", "Balik dua kartu, cari perkalian dan hasilnya.", "5×7", "MEMORI", "soal • hasil"),
+    A("true-false-product", "Benar atau Salah: Perkalian", "hlm. 58–63 (perkalian dan penjumlahan berulang)", "Menilai pernyataan tentang perkalian dan hasilnya.", "Dua ronde, tiap ronde lima pernyataan. Siswa memilih Benar atau Salah. Pernyataan dihitung dari bilangan, dan tiap jawaban diberi penjelasan.", "Baca pernyataan, lalu pilih benar atau salah.", "✓ ✗", "BENAR SALAH", "periksa dengan alasan"),
+    A("detective-product", "Detektif Perkalian", "hlm. 58–63 (hasil perkalian)", "Menemukan bilangan hasil perkalian dari dua petunjuk.", "Empat soal. Siswa membaca petunjuk seperti hasil 7 × 8 dan lebih dari 50, lalu memilih satu dari tiga bilangan. Hanya satu yang cocok.", "Baca petunjuk, lalu pilih bilangannya.", "?", "DETEKTIF", "dua petunjuk, satu jawaban"),
+    A("concept-map-product", "Peta Konsep Perkalian", "hlm. 2 (peta konsep: perkalian bilangan cacah)", "Melengkapi peta konsep perkalian dan tukar tempat.", "Dua peta konsep, tiap peta empat kotak. Siswa memilih kartu yang tepat untuk kotak yang menyala.", "Pilih kartu yang tepat untuk kotak yang menyala.", "⇄", "PETA KONSEP", "kali • tukar tempat"),
+    A("story-product", "Soal Cerita Perkalian", "hlm. 63 (Ayo Berlatih 4 dan 5: soal cerita)", "Menyelesaikan soal cerita perkalian banyak kelompok dan isi tiap kelompok.", "Tiga ronde, tiap ronde dua cerita. Siswa membaca cerita lalu memilih satu dari tiga hasil. Pengecoh salah satu kelompok.", "Baca cerita, lalu pilih hasilnya.", "6×2", "CERITA", "kelompok × isi"),
+    A("sentence-product", "Susun Kata Perkalian", "hlm. 58–61 (pengertian perkalian)", "Menyusun kalimat tentang perkalian dari kartu kata.", "Empat kalimat. Siswa mengetuk kartu kata satu per satu menurut urutan kalimat yang benar. Ada satu kartu pengecoh.", "Susun kartu kata menjadi kalimat.", "×", "SUSUN KATA", "kalimat perkalian"),
+  ],
+  poin: [
+    { ikon: "🍽️", nama: "Kelompok sama banyak", isi: "tiap kelompok berisi sama banyak", suara: "Perkalian dipakai bila ada beberapa kelompok yang isinya sama banyak." },
+    { ikon: "➕", nama: "Penjumlahan berulang", isi: "4 × 5 = 5 + 5 + 5 + 5", suara: "Perkalian adalah penjumlahan berulang dari bilangan yang sama. Empat kali lima sama dengan lima tambah lima tambah lima tambah lima." },
+    { ikon: "👥", nama: "Kelompok dan isi", isi: "banyak kelompok × isi = jumlah", suara: "Bilangan pertama menyatakan banyak kelompok. Bilangan kedua menyatakan isi tiap kelompok." },
+    { ikon: "🔄", nama: "Tukar tempat", isi: "5 × 6 = 6 × 5", suara: "Pada perkalian, bilangan boleh ditukar tempatnya dan hasilnya tetap sama." },
+    { ikon: "✅", nama: "Periksa", isi: "jumlahkan berulang atau loncat", suara: "Periksa hasil kali dengan penjumlahan berulang atau dengan loncatan pada garis bilangan." },
+  ],
+  poinSuara:
+    "Ingat selalu! Perkalian adalah penjumlahan berulang dari kelompok yang sama banyak. Bilangan pertama adalah banyak kelompok dan bilangan kedua adalah isi tiap kelompok. Bilangan pada perkalian boleh ditukar tempatnya, misalnya lima kali enam sama dengan enam kali lima.",
+  cara: {
+    suara: "Cara mengalikan. Cari banyak kelompok. Cari isi tiap kelompok. Tulis perkalian atau penjumlahan berulang. Lalu hitung hasilnya.",
+    potongan: [
+      { teks: "banyak kelompok", warna: "#BAE6FD" },
+      { teks: "isi tiap kelompok", warna: "#FECACA" },
+      { teks: "tulis perkalian", warna: "#BFDBFE" },
+      { teks: "hitung hasil", warna: "#FDE68A" },
+    ],
+  },
+  rumah:
+    "Ayo Mencoba di rumah: siapkan beberapa gelas dan batu kerikil atau biji. Masukkan jumlah yang sama ke tiap gelas, misalnya 3 gelas yang masing-masing berisi 6. Tulis penjumlahan berulangnya, lalu tulis perkaliannya dan hitung hasilnya. Tukar tempat bilangannya dan ceritakan apakah hasilnya tetap sama.",
+  refleksi: [
+    "Aku dapat menjelaskan perkalian sebagai penjumlahan berulang.",
+    "Aku dapat menulis perkalian dari gambar kelompok.",
+    "Aku dapat menghitung hasil perkalian sampai 100.",
+    "Aku tahu bilangan pada perkalian boleh ditukar tempatnya.",
+  ],
+};
+
+export const SUB_BAB_K3B1: SubBabNaskah[] = [SUB_A31, SUB_B31, SUB_C31, SUB_D31, SUB_E31, SUB_F31];
 
 /** Semua adegan video, urut sub-bab, video, adegan. Dipakai uji. */
 export const semuaAdeganK3B1 = SUB_BAB_K3B1.flatMap((s) => s.videos.flatMap((v) => v.adegan));

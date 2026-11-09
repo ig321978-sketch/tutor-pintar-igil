@@ -1119,3 +1119,471 @@ export const RONDE_CERITA_QD: CeritaJumlah[][] = [
   ],
 ];
 export const jumlahCerita = (c: CeritaJumlah): number => c.angka.reduce((a, b) => a + b, 0);
+
+/* ====================================================================== */
+/* SUB-BAB E. Pengurangan bilangan cacah sampai 100                         */
+/* ====================================================================== */
+
+/** Pengurangan satuan tidak cukup, jadi perlu mengambil satu puluhan. */
+export const perluMengambil = (a: number, b: number): boolean => satuanDari(a) < satuanDari(b);
+/** Tiga pilihan hasil pengurangan: kunci, lupa mengambil (lebih sepuluh), dan salah mengambil (kurang sepuluh). */
+export function opsiSelisih(n: number, nomor: number): number[] {
+  const semua = [n, n + 10 <= 99 ? n + 10 : n - 20, n >= 10 ? n - 10 : n + 20];
+  return urutanTetap(3, 2, nomor).map((i) => semua[i]);
+}
+export type SoalKurang = { benda: BendaId; a: number; b: number };
+export const cocokAmbil = (p: Jml, syarat: "ambil" | "tanpa"): boolean => (syarat === "ambil" ? perluMengambil(p[0], p[1]) : !perluMengambil(p[0], p[1]));
+/* ------------------------------ Concrete E ------------------------------ */
+
+/** CE1 Rakit Sisa: dari a diambil b, rakit sisanya. */
+export const RONDE_SISA_CE: SoalKurang[][] = [
+  [{ benda: "kue", a: 25, b: 12 }, { benda: "kelereng", a: 48, b: 23 }],
+  [{ benda: "jeruk", a: 45, b: 19 }, { benda: "lidi", a: 52, b: 27 }],
+  [{ benda: "anggur", a: 60, b: 35 }, { benda: "pensil", a: 74, b: 38 }],
+];
+/** CE2 Hitung Sisa. */
+export const RONDE_HITUNG_CE: SoalKurang[][] = [
+  [{ benda: "kue", a: 25, b: 12 }, { benda: "jeruk", a: 38, b: 15 }],
+  [{ benda: "kelereng", a: 45, b: 19 }, { benda: "rambutan", a: 52, b: 27 }],
+  [{ benda: "ikan", a: 60, b: 35 }, { benda: "pensil", a: 71, b: 46 }],
+];
+/** CE3 Pilah Soal Pengurangan: tanpa mengambil atau dengan mengambil. */
+export const RONDE_SORTIR_CE: { benda: BendaId; pasang: Jml[] }[] = [
+  { benda: "kue", pasang: [[25, 12], [45, 19], [38, 15], [52, 27], [67, 34], [71, 28]] },
+  { benda: "kelereng", pasang: [[60, 35], [48, 23], [83, 47], [96, 52], [74, 38], [59, 31]] },
+  { benda: "jeruk", pasang: [[72, 29], [86, 43], [91, 56], [37, 24], [64, 48], [58, 26]] },
+];
+/** CE4 Jodohkan Pasangan dan Sisa. */
+export const RONDE_PASANG_CE: { benda: BendaId; pasang: Jml[] }[] = [
+  { benda: "kue", pasang: [[25, 12], [45, 19], [60, 35]] },
+  { benda: "kelereng", pasang: [[38, 15], [52, 27], [71, 44]] },
+  { benda: "pensil", pasang: [[48, 23], [83, 47], [96, 52]] },
+];
+/** CE5 Memori Pasangan dan Sisa. */
+export const RONDE_MEMORI_CE: { benda: BendaId; pasang: Jml[] }[] = [
+  { benda: "kue", pasang: [[37, 12], [48, 19], [56, 24], [63, 18]] },
+  { benda: "jeruk", pasang: [[29, 14], [54, 26], [72, 35], [85, 41]] },
+  { benda: "anggur", pasang: [[67, 23], [91, 38], [76, 49], [58, 29]] },
+];
+/** CE6 Ketuk Pasangan dengan Sisa Tertentu. */
+export const RONDE_KETUK_CE: { benda: BendaId; item: Jml[]; tanya: number[] }[] = [
+  { benda: "kue", item: [[25, 12], [45, 19], [60, 35]], tanya: [26, 13] },
+  { benda: "kelereng", item: [[38, 15], [52, 27], [71, 44]], tanya: [27, 23] },
+  { benda: "ikan", item: [[48, 23], [83, 47], [96, 52]], tanya: [44, 25] },
+];
+/** CE7 Ketuk Semua: soal yang perlu mengambil, atau yang tanpa mengambil. */
+export const RONDE_SEMUA_CE: { benda: BendaId; syarat: "ambil" | "tanpa"; pasang: Jml[] }[] = [
+  { benda: "kue", syarat: "ambil", pasang: [[43, 16], [25, 12], [52, 15], [38, 15]] },
+  { benda: "kelereng", syarat: "tanpa", pasang: [[67, 34], [61, 24], [48, 23], [82, 35]] },
+  { benda: "jeruk", syarat: "ambil", pasang: [[60, 35], [86, 43], [91, 56], [37, 24]] },
+];
+/** CE8 Cerita Pengurangan. */
+export const RONDE_CERITA_CE: SoalKurang[][] = [
+  [{ benda: "kue", a: 25, b: 12 }, { benda: "pensil", a: 45, b: 19 }],
+  [{ benda: "kelereng", a: 60, b: 35 }, { benda: "jeruk", a: 52, b: 27 }],
+  [{ benda: "ikan", a: 71, b: 44 }, { benda: "rambutan", a: 83, b: 47 }],
+];
+export const TEKS_CERITA_CE: Record<string, string> = {
+  "kue-25-12": "Galih punya 25 kue cubit. Alfa mengambil 12 kue cubit. Berapa sisa kue cubit Galih?",
+  "pensil-45-19": "Toko Pak Bandi punya 45 pensil warna. Siswa membeli 19 pensil warna. Berapa sisa pensil warna di toko?",
+  "kelereng-60-35": "Alen punya 60 kelereng. Ia memberi 35 kelereng kepada Andi. Berapa sisa kelereng Alen?",
+  "jeruk-52-27": "Paman memetik 52 jeruk. Sebanyak 27 jeruk dijual. Berapa jeruk yang tersisa?",
+  "ikan-71-44": "Di kolam ada 71 ikan hias. Sebanyak 44 ikan hias dipindahkan. Berapa ikan hias yang tersisa?",
+  "rambutan-83-47": "Meutia punya 83 rambutan. Ia memakan 47 rambutan. Berapa rambutan yang tersisa?",
+};
+export const kunciCerita = (s: SoalKurang): string => `${s.benda}-${s.a}-${s.b}`;
+/** CE9 Papan Sisa Kumpulan. */
+export const RONDE_PAPAN_CE: SoalKurang[][] = [
+  [{ benda: "kue", a: 48, b: 15 }, { benda: "jeruk", a: 86, b: 34 }],
+  [{ benda: "kelereng", a: 93, b: 47 }, { benda: "pensil", a: 64, b: 28 }],
+  [{ benda: "anggur", a: 75, b: 39 }, { benda: "ikan", a: 82, b: 56 }],
+];
+/** CE10 Urutkan Pasangan menurut Sisa. */
+export const RONDE_URUT_CE: { benda: BendaId; pasang: Jml[]; dari: "kecil" | "besar" }[] = [
+  { benda: "kue", pasang: [[25, 12], [45, 19], [38, 15]], dari: "kecil" },
+  { benda: "jeruk", pasang: [[52, 27], [71, 44], [63, 35]], dari: "besar" },
+  { benda: "kelereng", pasang: [[83, 47], [96, 52], [48, 23]], dari: "kecil" },
+];
+export const selisih = (p: Jml): number => p[0] - p[1];
+
+/* ------------------------------ Picture E ------------------------------ */
+
+/** PE1 Susun Bawah Pengurangan: 25 − 12 (tanpa mengambil), 45 − 19 dan 60 − 35 (mengambil). */
+export const RONDE_SUSUN_PE: Jml[] = [[25, 12], [45, 19], [60, 35]];
+/** PE2 Papan Hasil Susun (Ayo Berlatih 2). */
+export const RONDE_PAPAN_PE: Jml[][] = [[[33, 28], [42, 36]], [[22, 12], [98, 21]], [[54, 29], [71, 38]]];
+/** PE3 Hitung Model Pengurangan. */
+export const RONDE_SELISIH_PE: Jml[][] = [[[48, 23], [57, 24]], [[63, 28], [84, 39]], [[72, 45], [91, 36]]];
+/** PE4 Jodohkan Model dan Sisa. */
+export const RONDE_PASANG_PE: Jml[][] = [[[39, 14], [52, 28], [68, 33]], [[47, 21], [75, 38], [83, 45]], [[56, 19], [92, 64], [71, 30]]];
+/** PE5 Memori Model dan Sisa. */
+export const RONDE_MEMORI_PE: Jml[][] = [[[34, 11], [47, 18], [59, 25], [72, 36]], [[26, 13], [55, 27], [68, 35], [81, 44]], [[43, 17], [64, 29], [77, 52], [90, 45]]];
+/** PE6 Isi Tabel Hasil Pengurangan. */
+export type TabelSelisih = { kepala: [string, string]; baris: { label: string; jawab: string }[]; kartu: string[] };
+function tabelSelisih(pasang: Jml[], tambahan: number): TabelSelisih {
+  const baris = pasang.map(([a, b]) => ({ label: `${a} − ${b}`, jawab: String(a - b) }));
+  const asing = String(pasang[0][0] - pasang[0][1] + 10);
+  const kartu = urutanTetap(pasang.length + 1, 2, tambahan).map((i) => (i < pasang.length ? baris[i].jawab : asing));
+  return { kepala: ["Soal", "Hasil"], baris, kartu };
+}
+export const RONDE_TABEL_PE: TabelSelisih[] = [
+  tabelSelisih([[33, 28], [42, 36], [22, 12], [98, 21]], 1),
+  tabelSelisih([[65, 23], [48, 19], [71, 35], [90, 52]], 2),
+  tabelSelisih([[84, 37], [56, 29], [73, 48], [67, 41]], 3),
+];
+/** PE7 Ketuk Semua Model yang Perlu Mengambil. */
+export const RONDE_SEMUA_PE: { syarat: "ambil" | "tanpa"; pasang: Jml[] }[] = [
+  { syarat: "ambil", pasang: [[45, 19], [25, 12], [52, 27], [38, 15]] },
+  { syarat: "tanpa", pasang: [[67, 34], [71, 28], [48, 23], [93, 47]] },
+  { syarat: "ambil", pasang: [[60, 35], [86, 43], [91, 56], [37, 24]] },
+];
+/** PE8 Pilah Soal Susun Pengurangan. */
+export const RONDE_SORTIR_PE: Jml[][] = [[[25, 12], [45, 19], [38, 15], [52, 27], [67, 34], [71, 28]], [[60, 35], [48, 23], [83, 47], [96, 52], [74, 38], [59, 31]], [[72, 29], [86, 43], [91, 56], [37, 24], [64, 48], [58, 26]]];
+/** PE9 Cara Panjang Pengurangan. */
+export const RONDE_URAI_PE: Jml[] = [[25, 12], [45, 19], [60, 35]];
+export function kalimatPanjangKurang(a: number, b: number, nomor: number): KalimatIsian[] {
+  const pil = (v: number, i: number) => {
+    const semua = [v, v + 10 > 99 ? v - 10 : v + 10, v >= 10 ? v - 10 : v + 5];
+    const opsi = urutanTetap(3, 2, nomor + i).map((k) => semua[k]);
+    return { opsi: opsi.map(String), benar: opsi.indexOf(v) };
+  };
+  const ta = puluhanDari(a) * 10;
+  const sa = satuanDari(a);
+  const sb = satuanDari(b);
+  if (perluMengambil(a, b)) {
+    return [
+      { depan: `${a} = ${ta - 10} +`, belakang: ".", ...pil(sa + 10, 0) },
+      { depan: `${sa + 10} − ${sb} =`, belakang: ".", ...pil(sa + 10 - sb, 1) },
+      { depan: `${a} − ${b} =`, belakang: ".", ...pil(a - b, 2) },
+    ];
+  }
+  return [
+    { depan: `${a} = ${ta} +`, belakang: ".", ...pil(sa, 0) },
+    { depan: `${b} =`, belakang: `+ ${sb}.`, ...pil(puluhanDari(b) * 10, 1) },
+    { depan: `${a} − ${b} =`, belakang: ".", ...pil(a - b, 2) },
+  ];
+}
+/** PE10 Urutkan Langkah Mengurangkan. */
+export const RONDE_LANGKAH_PE: { judul: string; langkah: string[] }[] = [
+  { judul: "Susun pendek tanpa mengambil: 25 − 12", langkah: ["Susun bilangan sesuai nilai tempat", "Kurangkan satuan: 5 − 2 = 3", "Kurangkan puluhan: 2 − 1 = 1", "Tulis hasilnya: 13"] },
+  { judul: "Susun pendek dengan mengambil: 45 − 19", langkah: ["Susun bilangan sesuai nilai tempat", "5 kurang dari 9, ambil 1 puluhan: 15 − 9 = 6", "Kurangkan puluhan: 3 − 1 = 2", "Tulis hasilnya: 26"] },
+  { judul: "Susun panjang: 45 − 19", langkah: ["Uraikan: 45 = 40 + 5 dan 19 = 10 + 9", "Uraikan 40 menjadi 30 + 10", "Kurangkan satuan: 15 − 9 = 6", "Kurangkan puluhan lalu jumlahkan: 20 + 6 = 26"] },
+];
+
+/* ------------------------------ Abstract E ------------------------------ */
+
+/** QE1 Susun Bawah Pengurangan Lambang: 57 − 23 tanpa mengambil, 84 − 39 dan 72 − 46 dengan mengambil. */
+export const RONDE_SUSUN_QE: Jml[] = [[57, 23], [84, 39], [72, 46]];
+/** QE2 Pilih Selisih (Ayo Berlatih 2 dan 3). */
+export const RONDE_SELISIH_QE: Jml[][] = [[[33, 28], [42, 36]], [[22, 12], [98, 21]], [[61, 21], [80, 12]]];
+/** QE3 Papan Selisih. */
+export const RONDE_PAPAN_QE: Jml[][] = [[[64, 17], [95, 48]], [[76, 39], [52, 33]], [[88, 59], [71, 25]]];
+/** QE4 Satuan, Puluhan, Selisih. */
+export const RONDE_LANGKAH_QE: Jml[] = [[45, 19], [62, 28], [83, 37]];
+export function kalimatLangkahKurang(a: number, b: number, nomor: number): KalimatIsian[] {
+  const pil = (v: number, i: number) => {
+    const semua = [v, v + 1 > 99 ? v - 1 : v + 1, v >= 10 ? v - 10 : v + 10];
+    const opsi = urutanTetap(3, 2, nomor + i).map((k) => semua[k]);
+    return { opsi: opsi.map(String), benar: opsi.indexOf(v) };
+  };
+  const ambil = perluMengambil(a, b);
+  const ta = puluhanDari(a);
+  const tb = puluhanDari(b);
+  const sa = satuanDari(a) + (ambil ? 10 : 0);
+  const sb = satuanDari(b);
+  return [
+    { depan: `Satuan: ${sa} − ${sb} =`, belakang: ".", ...pil(sa - sb, 0) },
+    { depan: `Puluhan: ${ta - (ambil ? 1 : 0)} − ${tb} =`, belakang: ".", ...pil(ta - (ambil ? 1 : 0) - tb, 1) },
+    { depan: `${a} − ${b} =`, belakang: ".", ...pil(a - b, 2) },
+  ];
+}
+/** QE5 Jodohkan Soal dan Sisa. */
+export const RONDE_PASANG_QE: Jml[][] = [[[25, 12], [45, 19], [60, 35]], [[38, 15], [52, 27], [71, 44]], [[48, 23], [83, 47], [96, 52]]];
+/** QE6 Memori Soal dan Sisa. */
+export const RONDE_MEMORI_QE: Jml[][] = [[[37, 12], [48, 19], [56, 24], [63, 18]], [[29, 14], [54, 26], [72, 35], [85, 41]], [[67, 23], [91, 38], [76, 49], [58, 29]]];
+/** QE7 Benar atau Salah (Ayo Berlatih 3). */
+export const RONDE_BENARSALAH_QE: Pernyataan[][] = [
+  [
+    { teks: "61 − 21 = 41.", benar: 61 - 21 === 41, penjelasan: "61 − 21 = 40. Satuan 1 − 1 = 0 dan puluhan 6 − 2 = 4." },
+    { teks: "80 − 12 = 68.", benar: 80 - 12 === 68, penjelasan: "0 kurang dari 2, ambil 1 puluhan: 10 − 2 = 8. Puluhan 7 − 1 = 6. Hasilnya 68." },
+    { teks: "92 − 20 − 12 = 60.", benar: 92 - 20 - 12 === 60, penjelasan: "92 − 20 = 72, lalu 72 − 12 = 60." },
+    { teks: "Pada pengurangan bersusun, kita mengurangkan satuan lebih dulu.", benar: true, penjelasan: "Mulai dari satuan, lalu puluhan." },
+    { teks: "Bila satuan atas kurang dari satuan bawah, kita menambahkan puluhan.", benar: false, penjelasan: "Kita mengambil satu puluhan dan mengubahnya menjadi sepuluh satuan." },
+  ],
+  [
+    { teks: "45 − 19 = 26.", benar: 45 - 19 === 26, penjelasan: "5 kurang dari 9, ambil 1 puluhan: 15 − 9 = 6. Puluhan 3 − 1 = 2. Hasilnya 26." },
+    { teks: "Pada 45 − 19, puluhan tetap 4 setelah mengambil.", benar: false, penjelasan: "Setelah 1 puluhan diambil, puluhan 4 menjadi 3." },
+    { teks: "60 − 35 = 25.", benar: 60 - 35 === 25, penjelasan: "0 kurang dari 5, ambil 1 puluhan: 10 − 5 = 5. Puluhan 5 − 3 = 2. Hasilnya 25." },
+    { teks: "Susun panjang menguraikan bilangan menjadi puluhan dan satuan.", benar: true, penjelasan: "Misalnya 45 = 40 + 5 dan 19 = 10 + 9." },
+    { teks: "42 − 36 = 16.", benar: 42 - 36 === 16, penjelasan: "2 kurang dari 6, ambil 1 puluhan: 12 − 6 = 6. Puluhan 3 − 3 = 0. Hasilnya 6." },
+  ],
+];
+/** QE8 Detektif Pengurangan. */
+export const RONDE_DETEKTIF_QE: SoalDetektif[] = [
+  { klue: ["Aku adalah hasil 45 − 19.", "Aku kurang dari 30."], jawab: 26, opsi: [26, 36, 16], salah: "5 kurang dari 9, ambil 1 puluhan: 15 − 9 = 6. Puluhan 3 − 1 = 2. Hasilnya 26." },
+  { klue: ["Aku adalah hasil 60 − 35.", "Satuanku 5."], jawab: 25, opsi: [15, 25, 35], salah: "0 kurang dari 5, ambil 1 puluhan: 10 − 5 = 5. Puluhan 5 − 3 = 2." },
+  { klue: ["Bila ditambah 12, aku menjadi 25.", "Aku punya satu puluhan."], jawab: 13, opsi: [13, 23, 37], salah: "25 dikurangi 12 sama dengan 13." },
+  { klue: ["Aku adalah hasil 80 − 12.", "Puluhanku 6."], jawab: 68, opsi: [68, 78, 58], salah: "10 − 2 = 8, puluhan 7 − 1 = 6. Hasilnya 68." },
+];
+/** QE9 Peta Konsep Pengurangan. */
+export const PETA_KONSEP_QE: { pusat: string; kotak: KotakPeta[] }[] = [
+  {
+    pusat: "Pengurangan bersusun",
+    kotak: [
+      { label: "Bilangan disusun lurus menurut", opsi: ["nilai tempat", "besar kecil", "urutan huruf"], benar: 0 },
+      { label: "Kita mengurangkan lebih dulu pada tempat", opsi: ["satuan", "puluhan", "ratusan"], benar: 0 },
+      { label: "Bila 5 kurang dari 9, kita mengambil", opsi: ["1 puluhan", "1 satuan", "10 puluhan"], benar: 0 },
+      { label: "Menurutku, 45 − 19 hasilnya", opsi: ["26", "34", "36"], benar: 0 },
+    ],
+  },
+  {
+    pusat: "Susun panjang pengurangan",
+    kotak: [
+      { label: "Pertama, bilangan", opsi: ["diuraikan menjadi puluhan dan satuan", "dijumlahkan", "dikalikan"], benar: 0 },
+      { label: "Bila satuan tidak cukup, 40 diurai menjadi", opsi: ["30 + 10", "20 + 20", "35 + 5"], benar: 0 },
+      { label: "10 + 5 sama dengan", opsi: ["15", "105", "50"], benar: 0 },
+      { label: "Menurutku, 15 − 9 sama dengan", opsi: ["6", "24", "5"], benar: 0 },
+    ],
+  },
+];
+/** QE10 Soal Cerita Pengurangan (Ayo Berlatih 4). */
+export type CeritaKurang = { teks: string; a: number; b: number };
+export const RONDE_CERITA_QE: CeritaKurang[][] = [
+  [
+    { teks: "Bia memiliki 19 stiker mobil. Aldo memiliki 8 stiker robot. Berapa selisih stiker milik Bia dan Aldo?", a: 19, b: 8 },
+    { teks: "Pak Doni punya 23 ikan gurami dan 42 ikan nila. Berapa selisih jumlah ikan gurami dan ikan nila?", a: 42, b: 23 },
+  ],
+  [
+    { teks: "Di toko ada 45 buku tulis. Siswa membeli 19 buku tulis. Berapa sisa buku tulis?", a: 45, b: 19 },
+    { teks: "Galih punya 25 permen. Alfa mengambil 12 permen. Berapa sisa permen Galih?", a: 25, b: 12 },
+  ],
+  [
+    { teks: "Ayah membawa 90 jeruk ke pasar dan terjual 54 jeruk. Berapa jeruk yang belum terjual?", a: 90, b: 54 },
+    { teks: "Kelas 3 punya 62 buku. Sebanyak 28 buku dipinjam. Berapa buku yang tersisa?", a: 62, b: 28 },
+  ],
+];
+
+/* ====================================================================== */
+/* SUB-BAB F. Perkalian bilangan cacah sampai 100                           */
+/* ====================================================================== */
+
+/** [banyak kelompok, isi tiap kelompok]. 4 kelompok berisi 5 ditulis [4, 5] atau 4 × 5. */
+export type Kali = [number, number];
+export const hasilKali = (p: Kali): number => p[0] * p[1];
+export const teksTambah = (p: Kali): string => Array.from({ length: p[0] }, () => p[1]).join(" + ");
+export const teksKali = (p: Kali): string => `${p[0]} × ${p[1]}`;
+/** Tiga pilihan hasil: kunci, satu kelompok lebih, dan satu kelompok kurang. */
+export function opsiKali(p: Kali, nomor: number): number[] {
+  const [k, n] = p;
+  const semua = [k * n, (k + 1) * n, k > 1 ? (k - 1) * n : k * n + n * 2];
+  return urutanTetap(3, 2, nomor).map((i) => semua[i]);
+}
+/** Tiga kalimat penjumlahan berulang: kunci k kali, serta k + 1 dan k − 1 kali. */
+export function opsiTambah(p: Kali, nomor: number): { opsi: string[]; jawab: number } {
+  const [k, n] = p;
+  return susunOpsi(teksTambah(p), [teksTambah([k + 1, n]), teksTambah([Math.max(1, k - 1), n])], nomor);
+}
+export type SoalKali = { benda: BendaId; p: Kali };
+
+/* ------------------------------ Concrete F ------------------------------ */
+
+/** CF1 Rakit Kelompok: tambah kelompok sampai jumlahnya sama dengan yang diminta. */
+export const RONDE_RAKIT_CF: SoalKali[][] = [
+  [{ benda: "kue", p: [3, 4] }, { benda: "kelereng", p: [4, 5] }],
+  [{ benda: "jeruk", p: [5, 2] }, { benda: "pensil", p: [2, 7] }],
+  [{ benda: "anggur", p: [4, 7] }, { benda: "ikan", p: [6, 5] }],
+];
+/** CF2 Hitung Kelompok (pensil 5 × 2, bunga melati 4 × 5, mobil mainan 6 × 5). */
+export const RONDE_HITUNG_CF: SoalKali[][] = [
+  [{ benda: "pensil", p: [5, 2] }, { benda: "kue", p: [4, 5] }],
+  [{ benda: "kelereng", p: [6, 5] }, { benda: "jeruk", p: [3, 7] }],
+  [{ benda: "anggur", p: [4, 6] }, { benda: "ikan", p: [5, 8] }],
+];
+/** CF3 Tulis Penjumlahan Berulang. */
+export const RONDE_TAMBAH_CF: SoalKali[][] = [
+  [{ benda: "pensil", p: [5, 2] }, { benda: "kue", p: [3, 6] }],
+  [{ benda: "kelereng", p: [4, 7] }, { benda: "jeruk", p: [6, 3] }],
+  [{ benda: "anggur", p: [5, 5] }, { benda: "ikan", p: [3, 9] }],
+];
+/** CF4 Jodohkan Kelompok dan Perkalian. */
+export const RONDE_PASANG_CF: { benda: BendaId; kali: Kali[] }[] = [
+  { benda: "kue", kali: [[3, 4], [5, 2], [4, 5]] },
+  { benda: "kelereng", kali: [[2, 7], [6, 3], [5, 4]] },
+  { benda: "jeruk", kali: [[3, 6], [4, 6], [5, 6]] },
+];
+/** CF5 Memori Kelompok dan Hasil. */
+export const RONDE_MEMORI_CF: { benda: BendaId; kali: Kali[] }[] = [
+  { benda: "kue", kali: [[3, 4], [5, 2], [4, 5], [6, 3]] },
+  { benda: "pensil", kali: [[2, 7], [3, 6], [4, 6], [5, 6]] },
+  { benda: "anggur", kali: [[2, 5], [3, 7], [4, 8], [5, 7]] },
+];
+/** CF6 Ketuk Kelompok dengan Jumlah Tertentu. */
+export const RONDE_KETUK_CF: { benda: BendaId; item: Kali[]; tanya: number[] }[] = [
+  { benda: "kue", item: [[3, 4], [5, 2], [4, 5]], tanya: [20, 12] },
+  { benda: "kelereng", item: [[6, 3], [2, 7], [5, 4]], tanya: [14, 20] },
+  { benda: "jeruk", item: [[3, 6], [4, 6], [5, 6]], tanya: [24, 30] },
+];
+/** CF7 Ketuk Semua Kelompok yang Jumlahnya Lebih atau Kurang. */
+export const RONDE_SEMUA_CF: { benda: BendaId; acuan: number; arah: "lebih" | "kurang"; kali: Kali[] }[] = [
+  { benda: "kue", acuan: 20, arah: "lebih", kali: [[3, 4], [5, 5], [4, 6], [2, 9]] },
+  { benda: "kelereng", acuan: 30, arah: "kurang", kali: [[6, 4], [5, 7], [3, 9], [8, 5]] },
+  { benda: "jeruk", acuan: 15, arah: "lebih", kali: [[2, 7], [3, 6], [4, 4], [5, 2]] },
+];
+export const cocokKali = (p: Kali, acuan: number, arah: "lebih" | "kurang"): boolean => (arah === "lebih" ? hasilKali(p) > acuan : hasilKali(p) < acuan);
+/** CF8 Tukar Tempat: dua susunan kelompok, mana yang lebih banyak. */
+export const RONDE_TUKAR_CF: { benda: BendaId; pasang: [Kali, Kali][] }[] = [
+  { benda: "kue", pasang: [[[5, 6], [6, 5]], [[3, 8], [4, 8]]] },
+  { benda: "kelereng", pasang: [[[4, 7], [7, 4]], [[6, 5], [5, 5]]] },
+  { benda: "jeruk", pasang: [[[3, 9], [9, 3]], [[2, 9], [4, 6]]] },
+];
+/** CF9 Papan Hasil Kelompok. */
+export const RONDE_PAPAN_CF: SoalKali[][] = [
+  [{ benda: "kue", p: [6, 5] }, { benda: "jeruk", p: [3, 8] }],
+  [{ benda: "kelereng", p: [7, 4] }, { benda: "pensil", p: [9, 3] }],
+  [{ benda: "anggur", p: [6, 8] }, { benda: "ikan", p: [5, 9] }],
+];
+/** CF10 Urutkan Kelompok menurut Jumlahnya. */
+export const RONDE_URUT_CF: { benda: BendaId; item: Kali[]; dari: "kecil" | "besar" }[] = [
+  { benda: "kue", item: [[3, 4], [5, 2], [4, 5]], dari: "kecil" },
+  { benda: "kelereng", item: [[6, 3], [2, 7], [5, 4]], dari: "besar" },
+  { benda: "jeruk", item: [[3, 6], [4, 6], [5, 5]], dari: "kecil" },
+];
+
+/* ------------------------------ Picture F ------------------------------ */
+
+/** PF1 Hitung Titik Berkelompok. */
+export const RONDE_HITUNG_PF: Kali[][] = [[[5, 2], [4, 5]], [[6, 5], [3, 7]], [[4, 6], [5, 8]]];
+/** PF2 Lengkapi Kalimat Perkalian: penjumlahan berulang, perkalian, dan tukar tempat. */
+export const RONDE_KALIMAT_PF: Kali[] = [[4, 5], [6, 5], [3, 8]];
+export function kalimatKali(p: Kali, nomor: number): KalimatIsian[] {
+  const [k, n] = p;
+  const t = k * n;
+  const pil = (v: number, i: number) => {
+    const semua = [v, v + n, v - n > 0 ? v - n : v + 2 * n];
+    const opsi = urutanTetap(3, 2, nomor + i).map((x) => semua[x]);
+    return { opsi: opsi.map(String), benar: opsi.indexOf(v) };
+  };
+  return [
+    { depan: `${teksTambah(p)} =`, belakang: ".", ...pil(t, 0) },
+    { depan: `${k} × ${n} =`, belakang: ".", ...pil(t, 1) },
+    { depan: `${n} × ${k} =`, belakang: ".", ...pil(t, 2) },
+  ];
+}
+/** PF3 Jodohkan Titik dan Perkalian. */
+export const RONDE_PASANG_PF: Kali[][] = [[[4, 3], [2, 8], [5, 4]], [[6, 2], [3, 5], [7, 3]], [[4, 7], [5, 6], [3, 9]]];
+/** PF4 Memori Titik dan Hasil. */
+export const RONDE_MEMORI_PF: Kali[][] = [[[2, 6], [3, 5], [4, 4], [5, 4]], [[2, 7], [3, 6], [4, 5], [5, 5]], [[3, 7], [4, 6], [5, 6], [6, 6]]];
+/** PF5 Loncatan pada Garis Bilangan: k loncatan sebesar n dari 0, garis enam titik. */
+export type SoalLoncat = { n: number; k: number };
+export const RONDE_GARIS_PF: SoalLoncat[][] = [[{ n: 5, k: 4 }, { n: 2, k: 3 }], [{ n: 3, k: 5 }, { n: 4, k: 3 }], [{ n: 10, k: 4 }, { n: 5, k: 5 }]];
+/** PF6 Isi Tabel Perkalian (Ayo Berlatih 3). */
+export type TabelKali = { kepala: [string, string]; baris: { label: string; jawab: string }[]; kartu: string[] };
+function tabelKali(daftar: Kali[], tambahan: number): TabelKali {
+  const baris = daftar.map((p) => ({ label: teksKali(p), jawab: String(hasilKali(p)) }));
+  const asing = String(hasilKali(daftar[0]) + daftar[0][1]);
+  const kartu = urutanTetap(daftar.length + 1, 2, tambahan).map((i) => (i < daftar.length ? baris[i].jawab : asing));
+  return { kepala: ["Soal", "Hasil"], baris, kartu };
+}
+export const RONDE_TABEL_PF: TabelKali[] = [
+  tabelKali([[3, 4], [5, 7], [7, 8], [9, 7]], 1),
+  tabelKali([[2, 6], [4, 9], [6, 7], [8, 5]], 2),
+  tabelKali([[5, 5], [3, 9], [6, 8], [4, 7]], 3),
+];
+/** PF7 Ketuk Semua Titik yang Jumlahnya Lebih atau Kurang. */
+export const RONDE_SEMUA_PF: { acuan: number; arah: "lebih" | "kurang"; kali: Kali[] }[] = [
+  { acuan: 20, arah: "lebih", kali: [[2, 9], [3, 7], [5, 5], [4, 4]] },
+  { acuan: 30, arah: "kurang", kali: [[5, 7], [4, 6], [3, 9], [8, 5]] },
+  { acuan: 40, arah: "lebih", kali: [[6, 7], [5, 7], [9, 5], [3, 9]] },
+];
+/** PF8 Pilah Kelompok: jumlah kurang dari 20 atau 20 atau lebih. */
+export const RONDE_SORTIR_PF: Kali[][] = [[[3, 4], [5, 5], [2, 7], [6, 4], [3, 3], [7, 3]], [[4, 4], [3, 8], [2, 9], [5, 6], [3, 5], [4, 6]], [[2, 8], [6, 5], [3, 6], [7, 4], [2, 6], [5, 5]]];
+export const duaPuluhAtauLebih = (p: Kali): boolean => hasilKali(p) >= 20;
+/** PF9 Tukar Faktor: k × n = n × ?. */
+export const RONDE_TUKARFAKTOR_PF: Kali[][] = [[[4, 6], [3, 8]], [[5, 7], [2, 9]], [[6, 8], [7, 3]]];
+export function opsiFaktor(p: Kali, nomor: number): number[] {
+  const semua = [p[0], p[1], p[0] + p[1]];
+  return urutanTetap(3, 2, nomor).map((i) => semua[i]);
+}
+/** PF10 Rakit Gambar Kelompok. */
+export const RONDE_RAKIT_PF: Kali[][] = [[[3, 4], [4, 5]], [[5, 3], [2, 8]], [[6, 4], [4, 6]]];
+
+/* ------------------------------ Abstract F ------------------------------ */
+
+/** QF1 Dari Penjumlahan ke Perkalian. */
+export const RONDE_TULIS_QF: Kali[][] = [[[7, 5], [8, 9]], [[9, 7], [9, 8]], [[6, 4], [5, 9]]];
+/** QF2 Hitung Hasil Kali (Ayo Berlatih 3). */
+export const RONDE_HITUNG_QF: Kali[][] = [[[3, 4], [5, 7]], [[7, 8], [9, 7]], [[6, 6], [4, 9]]];
+/** QF3 Papan Hasil Kali. */
+export const RONDE_PAPAN_QF: Kali[][] = [[[6, 7], [8, 5]], [[9, 6], [7, 7]], [[8, 8], [5, 9]]];
+/** QF4 Jodohkan Penjumlahan Berulang dan Perkalian. */
+export const RONDE_PASANG_QF: Kali[][] = [[[7, 5], [8, 9], [6, 8]], [[3, 6], [4, 7], [5, 8]], [[6, 4], [7, 6], [8, 3]]];
+/** QF5 Memori Perkalian dan Hasil. */
+export const RONDE_MEMORI_QF: Kali[][] = [[[3, 4], [5, 7], [7, 8], [9, 7]], [[2, 9], [4, 6], [6, 8], [8, 5]], [[3, 7], [5, 6], [7, 4], [9, 6]]];
+/** QF6 Benar atau Salah. */
+export const RONDE_BENARSALAH_QF: Pernyataan[][] = [
+  [
+    { teks: "Perkalian adalah penjumlahan berulang.", benar: true, penjelasan: "5 × 2 sama dengan 2 + 2 + 2 + 2 + 2." },
+    { teks: `4 × 5 sama dengan ${teksTambah([4, 5])}.`, benar: true, penjelasan: "Empat kelompok berisi lima, jumlahnya 20." },
+    { teks: `5 × 6 tidak sama dengan 6 × 5.`, benar: 5 * 6 !== 6 * 5, penjelasan: "5 × 6 = 6 × 5 = 30. Tempat bilangan boleh ditukar." },
+    { teks: `3 × 4 = ${3 * 4 + 4}.`, benar: false, penjelasan: "3 × 4 = 4 + 4 + 4 = 12, bukan 16." },
+    { teks: "Pada 4 × 7, bilangan 4 menunjukkan banyak kelompok.", benar: true, penjelasan: "Empat kelompok, tiap kelompok berisi 7." },
+  ],
+  [
+    { teks: `7 × 8 = ${7 * 8}.`, benar: true, penjelasan: "Tujuh kelompok berisi delapan: 8 + 8 + 8 + 8 + 8 + 8 + 8 = 56." },
+    { teks: `9 × 7 = ${9 * 7 - 9}.`, benar: false, penjelasan: "9 × 7 = 63. Sembilan kelompok berisi tujuh." },
+    { teks: `5 × 7 = ${5 * 7}.`, benar: true, penjelasan: "Lima kelompok berisi tujuh, jumlahnya 35." },
+    { teks: "6 × 2 dan 2 × 6 hasilnya berbeda.", benar: false, penjelasan: "Keduanya 12. Tempat bilangan boleh ditukar." },
+    { teks: "Perkalian dua bilangan selalu lebih kecil dari bilangan pertama.", benar: false, penjelasan: "Bila bilangan kedua lebih dari 1, hasil kali lebih besar. 4 × 5 = 20." },
+  ],
+];
+/** QF7 Detektif Perkalian. */
+export const RONDE_DETEKTIF_QF: SoalDetektif[] = [
+  { klue: ["Aku adalah hasil 7 × 8.", "Aku lebih dari 50."], jawab: 56, opsi: [56, 48, 63], salah: "7 × 8 = 56. Tujuh kelompok berisi delapan." },
+  { klue: ["Aku adalah hasil 9 × 7.", "Puluhanku 6."], jawab: 63, opsi: [56, 63, 72], salah: "9 × 7 = 63. Sembilan kelompok berisi tujuh." },
+  { klue: ["Aku hasil perkalian dua bilangan yang sama.", "Aku lebih dari 30 dan kurang dari 40."], jawab: 36, opsi: [25, 36, 49], salah: "6 × 6 = 36 ada di antara 30 dan 40." },
+  { klue: ["Aku adalah hasil 4 × 5.", "Aku juga sama dengan 5 × 4."], jawab: 20, opsi: [9, 20, 25], salah: "4 × 5 = 20, sama dengan 5 × 4." },
+];
+/** QF8 Peta Konsep Perkalian. */
+export const PETA_KONSEP_QF: { pusat: string; kotak: KotakPeta[] }[] = [
+  {
+    pusat: "Perkalian",
+    kotak: [
+      { label: "Perkalian adalah", opsi: ["penjumlahan berulang", "pengurangan berulang", "membagi sama banyak"], benar: 0 },
+      { label: "Pada 4 × 5, bilangan 4 adalah banyak", opsi: ["kelompok", "isi tiap kelompok", "hasil"], benar: 0 },
+      { label: "4 × 5 sama dengan", opsi: ["5 + 5 + 5 + 5", "4 + 4 + 4 + 4 + 4 + 4", "4 + 5"], benar: 0 },
+      { label: "Menurutku, 5 × 6 sama dengan", opsi: ["6 × 5", "5 + 6", "6 + 6 + 6"], benar: 0 },
+    ],
+  },
+  {
+    pusat: "Tukar tempat",
+    kotak: [
+      { label: "5 × 6 hasilnya", opsi: ["30", "11", "56"], benar: 0 },
+      { label: "6 × 5 hasilnya", opsi: ["30", "11", "65"], benar: 0 },
+      { label: "Jadi, 5 × 6 dan 6 × 5", opsi: ["sama besar", "berbeda", "tidak bisa dibandingkan"], benar: 0 },
+      { label: "Menurutku, perkalian boleh", opsi: ["ditukar tempat bilangannya", "diganti tanda tambah", "dihapus salah satu bilangan"], benar: 0 },
+    ],
+  },
+];
+/** QF9 Soal Cerita Perkalian. */
+export type CeritaKali = { teks: string; p: Kali };
+export const RONDE_CERITA_QF: CeritaKali[][] = [
+  [
+    { teks: "SD Pelangi memiliki 6 kelas dan di setiap kelas terdapat 2 papan tulis. Berapa banyak papan tulis di SD Pelangi?", p: [6, 2] },
+    { teks: "Guru membentuk kelompok beranggotakan 5 siswa. Terbentuk 6 kelompok. Berapa jumlah siswa seluruhnya?", p: [6, 5] },
+  ],
+  [
+    { teks: "Ada 4 kelompok bunga melati, tiap kelompok berisi 5 bunga. Berapa bunga melati seluruhnya?", p: [4, 5] },
+    { teks: "Ada 5 gelas dan tiap gelas berisi 4 batu kerikil. Berapa batu kerikil seluruhnya?", p: [5, 4] },
+  ],
+  [
+    { teks: "Ada 4 gelas dan tiap gelas berisi 7 batu kerikil. Berapa batu kerikil seluruhnya?", p: [4, 7] },
+    { teks: "Ada 6 kelompok mobil mainan, tiap kelompok berisi 5 mobil. Berapa mobil mainan seluruhnya?", p: [6, 5] },
+  ],
+];
+/** QF10 Susun Kata Perkalian. */
+export const RONDE_SUSUNKATA_QF: { kata: string[]; pengecoh: string }[] = [
+  { kata: ["Perkalian", "adalah", "penjumlahan", "berulang"], pengecoh: "pengurangan" },
+  { kata: ["4", "kelompok", "berisi", "5", "ditulis", "4", "×", "5"], pengecoh: "+" },
+  { kata: ["5", "×", "6", "sama", "dengan", "6", "×", "5"], pengecoh: "kurang" },
+  { kata: ["Banyak", "kelompok", "dikali", "isi", "tiap", "kelompok"], pengecoh: "dibagi" },
+];
