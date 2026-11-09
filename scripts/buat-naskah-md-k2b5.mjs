@@ -108,7 +108,7 @@ function tulis(s) {
   L.push("");
   L.push("| Tahap | Isi | Banyak butir |");
   L.push("|---|---|---|");
-  L.push(`| S. Story | Video animasi HTML/SVG, tiga video. Tiap video diputar satu per satu saat diketuk (tidak ada putar otomatis) | ${s.videos.length} video, ${jumlahAdegan} adegan, ${jumlahKetukan} ketukan |`);
+  L.push(`| S. Story | Video animasi HTML/SVG satu layar seperti Kelas 2 Bab 1: tiga cerita disusun berurutan dalam satu pemutar, mulai saat Mulai diketuk (tidak ada putar otomatis) | ${s.videos.length} cerita, ${jumlahAdegan} adegan, ${jumlahKetukan} ketukan |`);
   L.push(`| M. Mind-Map | Peta pikiran berurutan, tiap cabang bisa diketuk dan uraiannya tampil di layar | ${s.mindMaps.length} langkah |`);
   L.push(`| I. Infografis | Poster rangkuman, suara di tiap panel | ${s.infografis.length} panel |`);
   L.push(`| C. Concrete | Benda nyata yang dipotong, dilipat, dituang, dibagi, dan dipasangkan | ${s.games.filter((g) => g.stage === "Concrete").length} permainan |`);
@@ -119,13 +119,15 @@ function tulis(s) {
   L.push("");
   L.push("## 4. Tahap 1: Story (video animasi, menggantikan slide)");
   L.push("");
-  L.push("Tidak ada video yang berjalan sendiri. Siswa mengetuk **▶ Putar** pada satu video. Video itu berjalan, dan video lain berhenti. Setiap kalimat adalah satu ketukan: dibacakan Suara Guru perangkat, dan gambar berubah mengikuti kalimat yang sedang dibacakan. Ada tombol Jeda, Ulang, dan Suara hidup atau mati.");
+  L.push("Tampilannya satu layar, sama dengan Kelas 2 Bab 1. Tidak ada adegan yang berjalan sendiri. Siswa mengetuk **▶ Mulai**, lalu ketiga cerita berjalan berurutan sebagai satu video. Nomor adegan bisa diketuk untuk melompat. Setiap kalimat adalah satu ketukan: dibacakan Suara Guru perangkat, dan gambar berubah mengikuti kalimat yang sedang dibacakan. Ada tombol Jeda, Ulang, dan Suara hidup atau mati.");
   L.push("");
+  let nomorAdegan = 0;
   s.videos.forEach((v, i) => {
-    L.push(`### Video ${i + 1}: ${v.judul} (${v.subjudul})`);
+    L.push(`### Cerita ${i + 1}: ${v.judul} (${v.subjudul})`);
     L.push("");
-    v.adegan.forEach((a, j) => {
-      L.push(`**Adegan ${j + 1}. ${a.judul}** (\`${a.id}\`)`);
+    v.adegan.forEach((a) => {
+      nomorAdegan += 1;
+      L.push(`**Adegan ${nomorAdegan}. ${a.judul}** (\`${a.id}\`)`);
       L.push("");
       a.ketukan.forEach((kt, m) => L.push(`${m + 1}. ${kt}  \n   _Papan layar:_ ${a.papan[m]}`));
       L.push("");
@@ -208,7 +210,7 @@ V.push("Status: aktif untuk Sub-Bab A, B, dan C. Video animasi HTML/SVG **mengga
 V.push("");
 V.push("## Prinsip");
 V.push("");
-V.push("- **Putar satu per satu saat diketuk.** `DaftarVideoCerita` (`src/components/modul/video-k2b2-umum.tsx`, dipakai bersama) menampilkan tiga kartu video. Tidak ada video yang berjalan sendiri saat halaman dibuka. Mengetuk ▶ Putar memasang pemutar `VideoCerita` dengan `mulaiLangsung`. Hanya satu video yang terpasang pada satu waktu. Memutar video lain menggantikan yang sedang berjalan dan menghentikan suaranya.");
+V.push("- **Satu layar seperti Kelas 2 Bab 1.** `VideoCeritaSatuLayar` (`src/components/modul/video-k2b2-umum.tsx`, dipakai bersama) memasang satu pemutar `VideoCerita` per sub-bab dengan layar judul dan tombol ▶ Mulai, nomor adegan, Jeda, Ulang, dan Suara. Ketiga cerita disusun berurutan sebagai satu rangkaian adegan bernomor. Tidak ada adegan yang berjalan sendiri saat halaman dibuka. Video baru berjalan setelah siswa mengetuk Mulai.");
 V.push("- **Gratis dan tanpa API.** Gambar bergerak memakai SVG dan CSS di perangkat siswa. Tidak ada berkas video dan tidak ada layanan berbayar.");
 V.push("- **Naskah satu sumber.** Kalimat tiap adegan dan papan judul ada di `src/components/modul/naskah-k2b5.ts`. Mengubah kalimat di sana mengubah suara, teks layar, naskah markdown, dan JSON bab sekaligus.");
 V.push("- **Suara.** `speakGuru` modul dengan Web Speech API perangkat, laju 0,70 dan nada 1 (`suaraLaju` dan `suaraNada` di JSON bab). Ucapan dipecah per kalimat supaya tidak berhenti sendiri di Chrome.");
@@ -227,7 +229,8 @@ for (const s of N.SUB_BAB_K2B5) {
 }
 V.push("## Berkas");
 V.push("");
-V.push("- Mesin: `src/components/modul/video-cerita.tsx` (tidak berubah).");
+V.push("- Mesin: `src/components/modul/video-cerita.tsx` (sama dengan yang dipakai Kelas 2 Bab 1).");
+V.push("- Pemutar satu layar: `VideoCeritaSatuLayar` di `src/components/modul/video-k2b2-umum.tsx` (dipakai bersama).");
 V.push("- Gambar bersama: `src/components/modul/video-k2b5-umum.tsx` (benda yang dipotong, benda satuan, bangun berbagi bagian, pisau aman, gelang kelompok, gelas, sendok).");
 V.push("- Adegan: `video-k2b5a.tsx`, `video-k2b5b.tsx`, `video-k2b5c.tsx`.");
 V.push("- Pemasangan: `MODUL_SUBBAB` di `src/components/IgilModulePlayer.tsx`, kunci `mtk-2-bab5-A`, `-B`, `-C`, bidang `Cerita`.");

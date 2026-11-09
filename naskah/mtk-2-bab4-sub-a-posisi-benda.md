@@ -31,7 +31,7 @@ Berkas ini ditulis dari satu sumber, `src/components/modul/naskah-k2b4.ts` dan `
 
 | Tahap | Isi | Banyak butir |
 |---|---|---|
-| S. Story | Video animasi HTML/SVG, tiga video. Tiap video diputar satu per satu saat diketuk (tidak ada putar otomatis) | 3 video, 9 adegan, 32 ketukan |
+| S. Story | Video animasi HTML/SVG satu layar seperti Kelas 2 Bab 1: tiga cerita disusun berurutan dalam satu pemutar, mulai saat Mulai diketuk (tidak ada putar otomatis) | 3 cerita, 9 adegan, 32 ketukan |
 | M. Mind-Map | Peta pikiran berurutan, tiap cabang bisa diketuk dan uraiannya tampil di layar | 8 langkah |
 | I. Infografis | Poster rangkuman, suara di tiap panel | 10 panel |
 | C. Concrete | Benda nyata yang diseret, ditemukan, dirangkai, disusun, dan ditirukan | 4 permainan |
@@ -42,9 +42,9 @@ Bobot mengikuti isi buku. Aturan Concrete dan Picture berlaku: benda berwarna ha
 
 ## 4. Tahap 1: Story (video animasi, menggantikan slide)
 
-Tidak ada video yang berjalan sendiri. Siswa mengetuk **▶ Putar** pada satu video. Video itu berjalan, dan video lain berhenti. Setiap kalimat adalah satu ketukan: dibacakan Suara Guru perangkat, dan gambar berubah mengikuti kalimat yang sedang dibacakan. Ada tombol Jeda, Ulang, dan Suara hidup atau mati.
+Tampilannya satu layar, sama dengan Kelas 2 Bab 1. Tidak ada adegan yang berjalan sendiri. Siswa mengetuk **▶ Mulai**, lalu ketiga cerita berjalan berurutan sebagai satu video. Nomor adegan bisa diketuk untuk melompat. Setiap kalimat adalah satu ketukan: dibacakan Suara Guru perangkat, dan gambar berubah mengikuti kalimat yang sedang dibacakan. Ada tombol Jeda, Ulang, dan Suara hidup atau mati.
 
-### Video 1: Waktu Panen Telah Tiba (Kira dan teman membantu Paman)
+### Cerita 1: Waktu Panen Telah Tiba (Kira dan teman membantu Paman)
 
 **Adegan 1. Ke sawah bersama Paman** (`K2B4A-V1-1`)
 
@@ -77,9 +77,9 @@ Tidak ada video yang berjalan sendiri. Siswa mengetuk **▶ Putar** pada satu vi
 4. Hewan apa yang sedang terbang di atas padi? Burung terbang di atas padi.  
    _Papan layar:_ Di atas padi: burung
 
-### Video 2: Atas, Bawah, Depan, Belakang (Posisi benda di sekitar kita)
+### Cerita 2: Atas, Bawah, Depan, Belakang (Posisi benda di sekitar kita)
 
-**Adegan 1. Kupu-kupu dan bunga** (`K2B4A-V2-1`)
+**Adegan 4. Kupu-kupu dan bunga** (`K2B4A-V2-1`)
 
 1. Kita dapat menunjukkan posisi benda di sekitar kita.  
    _Papan layar:_ Posisi benda
@@ -88,7 +88,7 @@ Tidak ada video yang berjalan sendiri. Siswa mengetuk **▶ Putar** pada satu vi
 3. Bunga ada di bawah kupu-kupu.  
    _Papan layar:_ Bunga di bawah kupu-kupu
 
-**Adegan 2. Burung dan ulat** (`K2B4A-V2-2`)
+**Adegan 5. Burung dan ulat** (`K2B4A-V2-2`)
 
 1. Burung berjalan di depan ulat.  
    _Papan layar:_ Burung di depan
@@ -97,7 +97,7 @@ Tidak ada video yang berjalan sendiri. Siswa mengetuk **▶ Putar** pada satu vi
 3. Depan dan belakang adalah dua posisi yang berlawanan.  
    _Papan layar:_ Depan lawan belakang
 
-**Adegan 3. Kata yang berlawanan** (`K2B4A-V2-3`)
+**Adegan 6. Kata yang berlawanan** (`K2B4A-V2-3`)
 
 1. Atas berlawanan dengan bawah.  
    _Papan layar:_ Atas lawan bawah
@@ -108,9 +108,9 @@ Tidak ada video yang berjalan sendiri. Siswa mengetuk **▶ Putar** pada satu vi
 4. Kalau bola di atas meja, berarti meja di bawah bola.  
    _Papan layar:_ Bola atas, meja bawah
 
-### Video 3: Kanan dan Kiri (Sesuai posisi pembaca)
+### Cerita 3: Kanan dan Kiri (Sesuai posisi pembaca)
 
-**Adegan 1. Burung dan rumput** (`K2B4A-V3-1`)
+**Adegan 7. Burung dan rumput** (`K2B4A-V3-1`)
 
 1. Burung berdiri di sebelah kiri rumput.  
    _Papan layar:_ Burung di kiri rumput
@@ -119,7 +119,7 @@ Tidak ada video yang berjalan sendiri. Siswa mengetuk **▶ Putar** pada satu vi
 3. Kanan dan kiri pada gambar sesuai dengan posisi pembaca.  
    _Papan layar:_ Sesuai posisi pembaca
 
-**Adegan 2. Anak yang membelakangi kita** (`K2B4A-V3-2`)
+**Adegan 8. Anak yang membelakangi kita** (`K2B4A-V3-2`)
 
 1. Seorang anak berdiri membelakangi kita.  
    _Papan layar:_ Anak membelakangi kita
@@ -130,7 +130,7 @@ Tidak ada video yang berjalan sendiri. Siswa mengetuk **▶ Putar** pada satu vi
 4. Ia menghadap ke arah yang sama dengan kita, jadi kiri anak itu sama dengan kiri kita.  
    _Papan layar:_ Arah sama dengan kita
 
-**Adegan 3. Ayo bermain petunjuk** (`K2B4A-V3-3`)
+**Adegan 9. Ayo bermain petunjuk** (`K2B4A-V3-3`)
 
 1. Ayo bermain dalam kelompok tiga orang.  
    _Papan layar:_ Main bertiga

@@ -31,7 +31,7 @@ Berkas ini ditulis dari satu sumber, `src/components/modul/naskah-k2b5.ts` dan `
 
 | Tahap | Isi | Banyak butir |
 |---|---|---|
-| S. Story | Video animasi HTML/SVG, tiga video. Tiap video diputar satu per satu saat diketuk (tidak ada putar otomatis) | 3 video, 9 adegan, 32 ketukan |
+| S. Story | Video animasi HTML/SVG satu layar seperti Kelas 2 Bab 1: tiga cerita disusun berurutan dalam satu pemutar, mulai saat Mulai diketuk (tidak ada putar otomatis) | 3 cerita, 9 adegan, 32 ketukan |
 | M. Mind-Map | Peta pikiran berurutan, tiap cabang bisa diketuk dan uraiannya tampil di layar | 8 langkah |
 | I. Infografis | Poster rangkuman, suara di tiap panel | 10 panel |
 | C. Concrete | Benda nyata yang dipotong, dilipat, dituang, dibagi, dan dipasangkan | 4 permainan |
@@ -42,9 +42,9 @@ Bobot mengikuti isi buku. Aturan Concrete dan Picture berlaku: benda berwarna ha
 
 ## 4. Tahap 1: Story (video animasi, menggantikan slide)
 
-Tidak ada video yang berjalan sendiri. Siswa mengetuk **▶ Putar** pada satu video. Video itu berjalan, dan video lain berhenti. Setiap kalimat adalah satu ketukan: dibacakan Suara Guru perangkat, dan gambar berubah mengikuti kalimat yang sedang dibacakan. Ada tombol Jeda, Ulang, dan Suara hidup atau mati.
+Tampilannya satu layar, sama dengan Kelas 2 Bab 1. Tidak ada adegan yang berjalan sendiri. Siswa mengetuk **▶ Mulai**, lalu ketiga cerita berjalan berurutan sebagai satu video. Nomor adegan bisa diketuk untuk melompat. Setiap kalimat adalah satu ketukan: dibacakan Suara Guru perangkat, dan gambar berubah mengikuti kalimat yang sedang dibacakan. Ada tombol Jeda, Ulang, dan Suara hidup atau mati.
 
-### Video 1: Martabak untuk Empat Sahabat (Empat bagian sama besar)
+### Cerita 1: Martabak untuk Empat Sahabat (Empat bagian sama besar)
 
 **Adegan 1. Kira ingin berbagi** (`K2B5C-V1-1`)
 
@@ -75,9 +75,9 @@ Tidak ada video yang berjalan sendiri. Siswa mengetuk **▶ Putar** pada satu vi
 3. Setiap sahabat mendapat seperempat martabak.  
    _Papan layar:_ Tiap sahabat seperempat
 
-### Video 2: Utuh, Setengah, Seperempat (Potong dua kali)
+### Cerita 2: Utuh, Setengah, Seperempat (Potong dua kali)
 
-**Adegan 1. Apel yang dipotong** (`K2B5C-V2-1`)
+**Adegan 4. Apel yang dipotong** (`K2B5C-V2-1`)
 
 1. Mulai dari satu apel utuh.  
    _Papan layar:_ Satu apel utuh
@@ -86,7 +86,7 @@ Tidak ada video yang berjalan sendiri. Siswa mengetuk **▶ Putar** pada satu vi
 3. Setengah apel dipotong lagi menjadi dua sama besar, dan setiap bagian adalah seperempat apel.  
    _Papan layar:_ Seperempat apel
 
-**Adegan 2. Dua kali memotong** (`K2B5C-V2-2`)
+**Adegan 5. Dua kali memotong** (`K2B5C-V2-2`)
 
 1. Untuk mendapat seperempat, kita memotong dua kali.  
    _Papan layar:_ Potong dua kali
@@ -97,7 +97,7 @@ Tidak ada video yang berjalan sendiri. Siswa mengetuk **▶ Putar** pada satu vi
 4. Sekarang kita mendapat seperempat bagian.  
    _Papan layar:_ Seperempat bagian
 
-**Adegan 3. Seperempat di sekitar** (`K2B5C-V2-3`)
+**Adegan 6. Seperempat di sekitar** (`K2B5C-V2-3`)
 
 1. Kita dapat menemukan seperempat benda di sekitar kita.  
    _Papan layar:_ Seperempat di sekitar
@@ -108,9 +108,9 @@ Tidak ada video yang berjalan sendiri. Siswa mengetuk **▶ Putar** pada satu vi
 4. Empat seperempat disatukan menjadi satu utuh.  
    _Papan layar:_ 4 seperempat = utuh
 
-### Video 3: Melipat dan Berkarya (Seperempat dengan kertas)
+### Cerita 3: Melipat dan Berkarya (Seperempat dengan kertas)
 
-**Adegan 1. Lipat menjadi empat** (`K2B5C-V3-1`)
+**Adegan 7. Lipat menjadi empat** (`K2B5C-V3-1`)
 
 1. Ambil selembar kertas berbentuk persegi.  
    _Papan layar:_ Kertas persegi
@@ -119,7 +119,7 @@ Tidak ada video yang berjalan sendiri. Siswa mengetuk **▶ Putar** pada satu vi
 3. Lalu tunjukkan seperempat.  
    _Papan layar:_ Tunjukkan seperempat
 
-**Adegan 2. Banyak cara** (`K2B5C-V3-2`)
+**Adegan 8. Banyak cara** (`K2B5C-V3-2`)
 
 1. Kertas bisa dilipat dua kali dengan beberapa cara.  
    _Papan layar:_ Dua kali melipat
@@ -130,7 +130,7 @@ Tidak ada video yang berjalan sendiri. Siswa mengetuk **▶ Putar** pada satu vi
 4. Apa pun caranya, keempat bagian harus sama besar.  
    _Papan layar:_ Harus sama besar
 
-**Adegan 3. Ayo Berkarya** (`K2B5C-V3-3`)
+**Adegan 9. Ayo Berkarya** (`K2B5C-V3-3`)
 
 1. Ambil empat lembar kertas berbentuk lingkaran.  
    _Papan layar:_ Empat lingkaran

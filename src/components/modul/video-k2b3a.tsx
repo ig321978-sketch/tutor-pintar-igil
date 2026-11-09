@@ -7,7 +7,7 @@ import { Label } from "./gambar-nilai-k2b";
 import { Tokoh } from "./gambar-maju-mundur-c";
 import { Lompat, Muncul, Papan, Sorot, type PropsAdegan } from "./video-cerita";
 import { BENTUK, jalurBentuk, type Titik } from "./data-k2b3";
-import { buatAdegan, DaftarVideoCerita, KartuTeks, ObjDatar, PanahG, SarangG, Sh, Lup, Tanya, Teks, type VideoSiap } from "./video-k2b3-umum";
+import { buatAdegan, VideoCeritaSatuLayar, KartuTeks, ObjDatar, PanahG, SarangG, Sh, Lup, Tanya, Teks, type VideoSiap } from "./video-k2b3-umum";
 import { SUB_A3 } from "./naskah-k2b3";
 
 /* ------------------------------------------------------------------------ */
@@ -480,14 +480,8 @@ export const ADEGAN_VIDEO_K2B3A = SUB_A3.videos.map((v, vi) =>
   }),
 );
 
-const POSTER: { a: number; k: number }[] = [
-  { a: 0, k: 3 },
-  { a: 0, k: 3 },
-  { a: 1, k: 0 },
-];
-
-export const VIDEO_SIAP_K2B3A: VideoSiap[] = SUB_A3.videos.map((v, i) => ({ naskah: v, adegan: ADEGAN_VIDEO_K2B3A[i], poster: POSTER[i] }));
+export const VIDEO_SIAP_K2B3A: VideoSiap[] = SUB_A3.videos.map((v, i) => ({ naskah: v, adegan: ADEGAN_VIDEO_K2B3A[i] }));
 
 export function VideoK2B3A({ speakGuru }: { speakGuru: (teks: string, selesai?: () => void) => void }) {
-  return <DaftarVideoCerita videos={VIDEO_SIAP_K2B3A} speakGuru={speakGuru} />;
+  return <VideoCeritaSatuLayar subBab={SUB_A3} videos={VIDEO_SIAP_K2B3A} speakGuru={speakGuru} />;
 }

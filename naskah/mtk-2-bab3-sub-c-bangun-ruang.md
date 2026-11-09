@@ -30,7 +30,7 @@ Berkas ini ditulis dari satu sumber, `src/components/modul/naskah-k2b3.ts` dan `
 
 | Tahap | Isi | Banyak butir |
 |---|---|---|
-| S. Story | Video animasi HTML/SVG, tiga video. Tiap video diputar satu per satu saat diketuk (tidak ada putar otomatis) | 3 video, 9 adegan, 36 ketukan |
+| S. Story | Video animasi HTML/SVG satu layar seperti Kelas 2 Bab 1: tiga cerita disusun berurutan dalam satu pemutar, mulai saat Mulai diketuk (tidak ada putar otomatis) | 3 cerita, 9 adegan, 36 ketukan |
 | M. Mind-Map | Peta pikiran berurutan, tiap cabang bisa diketuk dan uraiannya tampil di layar | 8 langkah |
 | I. Infografis | Poster rangkuman, suara di tiap panel | 10 panel |
 | C. Concrete | Benda nyata yang diketuk, diseret, digunting, dan dihitung | 4 permainan |
@@ -41,9 +41,9 @@ Bobot mengikuti isi buku. Aturan Concrete dan Picture berlaku: benda berwarna ha
 
 ## 4. Tahap 1: Story (video animasi, menggantikan slide)
 
-Tidak ada video yang berjalan sendiri. Siswa mengetuk **▶ Putar** pada satu video. Video itu berjalan, dan video lain berhenti. Setiap kalimat adalah satu ketukan: dibacakan Suara Guru perangkat, dan gambar berubah mengikuti kalimat yang sedang dibacakan. Ada tombol Jeda, Ulang, dan Suara hidup atau mati.
+Tampilannya satu layar, sama dengan Kelas 2 Bab 1. Tidak ada adegan yang berjalan sendiri. Siswa mengetuk **▶ Mulai**, lalu ketiga cerita berjalan berurutan sebagai satu video. Nomor adegan bisa diketuk untuk melompat. Setiap kalimat adalah satu ketukan: dibacakan Suara Guru perangkat, dan gambar berubah mengikuti kalimat yang sedang dibacakan. Ada tombol Jeda, Ulang, dan Suara hidup atau mati.
 
-### Video 1: Bangun Datar dan Bangun Ruang (Apa bedanya?)
+### Cerita 1: Bangun Datar dan Bangun Ruang (Apa bedanya?)
 
 **Adegan 1. Benda di sekitar kita** (`K2B3C-V1-1`)
 
@@ -78,9 +78,9 @@ Tidak ada video yang berjalan sendiri. Siswa mengetuk **▶ Putar** pada satu vi
 4. Jadi, kalau benda itu bisa diisi, benda itu adalah bangun ruang.  
    _Papan layar:_ Bisa diisi = bangun ruang
 
-### Video 2: Menggelinding atau Tidak? (Permukaan datar dan lengkung)
+### Cerita 2: Menggelinding atau Tidak? (Permukaan datar dan lengkung)
 
-**Adegan 1. Gelindingkan benda** (`K2B3C-V2-1`)
+**Adegan 4. Gelindingkan benda** (`K2B3C-V2-1`)
 
 1. Ambil kerucut, kubus, botol, kotak, dan bola.  
    _Papan layar:_ Ambil lima benda
@@ -91,7 +91,7 @@ Tidak ada video yang berjalan sendiri. Siswa mengetuk **▶ Putar** pada satu vi
 4. Kubus dan kotak tidak mau menggelinding.  
    _Papan layar:_ Kubus dan kotak diam
 
-**Adegan 2. Permukaan lengkung dan datar** (`K2B3C-V2-2`)
+**Adegan 5. Permukaan lengkung dan datar** (`K2B3C-V2-2`)
 
 1. Bangun ruang dibedakan berdasarkan permukaannya.  
    _Papan layar:_ Lihat permukaannya
@@ -102,7 +102,7 @@ Tidak ada video yang berjalan sendiri. Siswa mengetuk **▶ Putar** pada satu vi
 4. Ada yang permukaannya datar, contohnya kubus dan balok.  
    _Papan layar:_ Datar: kubus • balok
 
-**Adegan 3. Mengapa?** (`K2B3C-V2-3`)
+**Adegan 6. Mengapa?** (`K2B3C-V2-3`)
 
 1. Permukaan lengkung bisa berguling terus.  
    _Papan layar:_ Lengkung berguling
@@ -113,9 +113,9 @@ Tidak ada video yang berjalan sendiri. Siswa mengetuk **▶ Putar** pada satu vi
 4. Temukan benda di sekitarmu yang permukaannya datar dan lengkung.  
    _Papan layar:_ Cari di sekitarmu
 
-### Video 3: Lima Bangun Ruang (Kubus, balok, tabung, kerucut, bola)
+### Cerita 3: Lima Bangun Ruang (Kubus, balok, tabung, kerucut, bola)
 
-**Adegan 1. Kubus dan balok** (`K2B3C-V3-1`)
+**Adegan 7. Kubus dan balok** (`K2B3C-V3-1`)
 
 1. Ada lima nama bangun ruang: kubus, balok, tabung, kerucut, dan bola.  
    _Papan layar:_ Lima bangun ruang
@@ -126,7 +126,7 @@ Tidak ada video yang berjalan sendiri. Siswa mengetuk **▶ Putar** pada satu vi
 4. Balok mempunyai permukaan berbentuk segi empat yang berbeda ukurannya.  
    _Papan layar:_ Balok: beda ukuran
 
-**Adegan 2. Tabung, kerucut, dan bola** (`K2B3C-V3-2`)
+**Adegan 8. Tabung, kerucut, dan bola** (`K2B3C-V3-2`)
 
 1. Tabung seperti kaleng atau botol.  
    _Papan layar:_ Tabung: kaleng
@@ -137,7 +137,7 @@ Tidak ada video yang berjalan sendiri. Siswa mengetuk **▶ Putar** pada satu vi
 4. Ketiganya mempunyai permukaan lengkung, jadi bisa menggelinding.  
    _Papan layar:_ Permukaan lengkung
 
-**Adegan 3. Cari bangun ruang** (`K2B3C-V3-3`)
+**Adegan 9. Cari bangun ruang** (`K2B3C-V3-3`)
 
 1. Sekarang amati benda-benda di sekitarmu.  
    _Papan layar:_ Amati sekitarmu

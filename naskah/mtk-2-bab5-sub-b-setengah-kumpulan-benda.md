@@ -31,7 +31,7 @@ Berkas ini ditulis dari satu sumber, `src/components/modul/naskah-k2b5.ts` dan `
 
 | Tahap | Isi | Banyak butir |
 |---|---|---|
-| S. Story | Video animasi HTML/SVG, tiga video. Tiap video diputar satu per satu saat diketuk (tidak ada putar otomatis) | 3 video, 9 adegan, 32 ketukan |
+| S. Story | Video animasi HTML/SVG satu layar seperti Kelas 2 Bab 1: tiga cerita disusun berurutan dalam satu pemutar, mulai saat Mulai diketuk (tidak ada putar otomatis) | 3 cerita, 9 adegan, 32 ketukan |
 | M. Mind-Map | Peta pikiran berurutan, tiap cabang bisa diketuk dan uraiannya tampil di layar | 8 langkah |
 | I. Infografis | Poster rangkuman, suara di tiap panel | 10 panel |
 | C. Concrete | Benda nyata yang dipotong, dilipat, dituang, dibagi, dan dipasangkan | 4 permainan |
@@ -42,9 +42,9 @@ Bobot mengikuti isi buku. Aturan Concrete dan Picture berlaku: benda berwarna ha
 
 ## 4. Tahap 1: Story (video animasi, menggantikan slide)
 
-Tidak ada video yang berjalan sendiri. Siswa mengetuk **▶ Putar** pada satu video. Video itu berjalan, dan video lain berhenti. Setiap kalimat adalah satu ketukan: dibacakan Suara Guru perangkat, dan gambar berubah mengikuti kalimat yang sedang dibacakan. Ada tombol Jeda, Ulang, dan Suara hidup atau mati.
+Tampilannya satu layar, sama dengan Kelas 2 Bab 1. Tidak ada adegan yang berjalan sendiri. Siswa mengetuk **▶ Mulai**, lalu ketiga cerita berjalan berurutan sebagai satu video. Nomor adegan bisa diketuk untuk melompat. Setiap kalimat adalah satu ketukan: dibacakan Suara Guru perangkat, dan gambar berubah mengikuti kalimat yang sedang dibacakan. Ada tombol Jeda, Ulang, dan Suara hidup atau mati.
 
-### Video 1: Kelereng Malosi (Bagi sama banyak)
+### Cerita 1: Kelereng Malosi (Bagi sama banyak)
 
 **Adegan 1. Malosi dan Upe bermain** (`K2B5B-V1-1`)
 
@@ -77,9 +77,9 @@ Tidak ada video yang berjalan sendiri. Siswa mengetuk **▶ Putar** pada satu vi
 3. Jadi, setengah dari 4 kelereng adalah 2 kelereng.  
    _Papan layar:_ Setengah dari 4 = 2
 
-### Video 2: Ikan di Akuarium (Setengah dan bukan setengah)
+### Cerita 2: Ikan di Akuarium (Setengah dan bukan setengah)
 
-**Adegan 1. Halim dan enam ikan** (`K2B5B-V2-1`)
+**Adegan 4. Halim dan enam ikan** (`K2B5B-V2-1`)
 
 1. Ada 6 ikan dalam akuarium.  
    _Papan layar:_ Ada 6 ikan
@@ -88,7 +88,7 @@ Tidak ada video yang berjalan sendiri. Siswa mengetuk **▶ Putar** pada satu vi
 3. Halim akan menemukan setengah dari enam ikan.  
    _Papan layar:_ Cari setengahnya
 
-**Adegan 2. Setengah dari 6 ikan** (`K2B5B-V2-2`)
+**Adegan 5. Setengah dari 6 ikan** (`K2B5B-V2-2`)
 
 1. Kita membagi 6 ikan menjadi dua kelompok sama banyak.  
    _Papan layar:_ Dua kelompok sama
@@ -97,7 +97,7 @@ Tidak ada video yang berjalan sendiri. Siswa mengetuk **▶ Putar** pada satu vi
 3. Jadi, setengah dari 6 ikan adalah 3 ikan.  
    _Papan layar:_ Setengah dari 6 = 3
 
-**Adegan 3. Bukan setengah** (`K2B5B-V2-3`)
+**Adegan 6. Bukan setengah** (`K2B5B-V2-3`)
 
 1. Sekarang, kita membagi 6 ikan menjadi dua kelompok, tetapi tidak sama banyak.  
    _Papan layar:_ Tidak sama banyak
@@ -108,9 +108,9 @@ Tidak ada video yang berjalan sendiri. Siswa mengetuk **▶ Putar** pada satu vi
 4. Setengah selalu berarti dua kelompok yang sama banyak.  
    _Papan layar:_ Harus sama banyak
 
-### Video 3: Ayo Berbagi Lagi (Pola setengah)
+### Cerita 3: Ayo Berbagi Lagi (Pola setengah)
 
-**Adegan 1. Delapan pensil Tika** (`K2B5B-V3-1`)
+**Adegan 7. Delapan pensil Tika** (`K2B5B-V3-1`)
 
 1. Tika mempunyai 8 pensil.  
    _Papan layar:_ Tika: 8 pensil
@@ -119,7 +119,7 @@ Tidak ada video yang berjalan sendiri. Siswa mengetuk **▶ Putar** pada satu vi
 3. Setiap bagian berisi 4 pensil, jadi setengah dari 8 pensil adalah 4 pensil.  
    _Papan layar:_ Setengah dari 8 = 4
 
-**Adegan 2. Mencari pola** (`K2B5B-V3-2`)
+**Adegan 8. Mencari pola** (`K2B5B-V3-2`)
 
 1. Setengah dari 4 adalah 2.  
    _Papan layar:_ 4 → 2
@@ -130,7 +130,7 @@ Tidak ada video yang berjalan sendiri. Siswa mengetuk **▶ Putar** pada satu vi
 4. Semakin banyak bendanya, semakin banyak setengahnya.  
    _Papan layar:_ Ada pola setengah
 
-**Adegan 3. Kalau banyaknya ganjil** (`K2B5B-V3-3`)
+**Adegan 9. Kalau banyaknya ganjil** (`K2B5B-V3-3`)
 
 1. Bagaimana kalau ada 5 kelereng?  
    _Papan layar:_ Ada 5 kelereng

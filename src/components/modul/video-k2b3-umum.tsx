@@ -9,10 +9,10 @@ import { bendaRuang, jalurBentuk, jalurTitik, pusatPoligon, tangramKeping, uraiB
 /* Bagian gambar SVG bersama video cerita Kelas 2 Bab 3: bentuk datar, benda   */
 /* datar dan benda ruang, bangun terurai, tangram, sarang lebah, kaca          */
 /* pembesar, dan panah. Semua ditaruh di kotak adegan 300 x 208.               */
-/* Mesin video (DaftarVideoCerita, buatAdegan) dipakai dari video-k2b2-umum.   */
+/* Mesin video (VideoCeritaSatuLayar, buatAdegan) dipakai dari video-k2b2-umum.   */
 /* ------------------------------------------------------------------------ */
 
-export { buatAdegan, DaftarVideoCerita, KartuTeks, Teks, type VideoSiap } from "./video-k2b2-umum";
+export { buatAdegan, VideoCeritaSatuLayar, KartuTeks, Teks, type VideoSiap } from "./video-k2b2-umum";
 export const WARNA_KEPING = ["#FCA5A5", "#93C5FD", "#86EFAC", "#FDE68A", "#C4B5FD", "#FDBA74", "#A5F3FC", "#F9A8D4"];
 
 /** Bentuk polos berukuran w, kiri atas di (x, y). */

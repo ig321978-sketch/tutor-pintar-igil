@@ -6,7 +6,7 @@ import { IgilWajahIsi, Lencana } from "./gambar-cara-b2";
 import { Label } from "./gambar-nilai-k2b";
 import { Tokoh } from "./gambar-maju-mundur-c";
 import { Lompat, Muncul, Papan, Sorot, type PropsAdegan } from "./video-cerita";
-import { BonekaSvg, BurungSvg, buatAdegan, DaftarVideoCerita, DonatSvg, JerukSvg, KartuTeks, MERAH, Teks, type VideoSiap } from "./video-k2b2-umum";
+import { BonekaSvg, BurungSvg, buatAdegan, VideoCeritaSatuLayar, DonatSvg, JerukSvg, KartuTeks, MERAH, Teks, type VideoSiap } from "./video-k2b2-umum";
 import { SUB_C } from "./naskah-k2b2";
 
 /* ------------------------------------------------------------------------ */
@@ -368,14 +368,8 @@ const URUT: ((p: PropsAdegan) => React.ReactNode)[][] = [
 
 export const ADEGAN_VIDEO_K2B2C = SUB_C.videos.map((v, vi) => v.adegan.map((a, ai) => buatAdegan({ ...naskah(vi, ai), id: a.id }, (p) => URUT[vi][ai](p))));
 
-const POSTER: { a: number; k: number }[] = [
-  { a: 0, k: 6 },
-  { a: 2, k: 3 },
-  { a: 1, k: 5 },
-];
-
-export const VIDEO_SIAP_K2B2C: VideoSiap[] = SUB_C.videos.map((v, i) => ({ naskah: v, adegan: ADEGAN_VIDEO_K2B2C[i], poster: POSTER[i] }));
+export const VIDEO_SIAP_K2B2C: VideoSiap[] = SUB_C.videos.map((v, i) => ({ naskah: v, adegan: ADEGAN_VIDEO_K2B2C[i] }));
 
 export function VideoSoalCeritaK2B2C({ speakGuru }: { speakGuru: (teks: string, selesai?: () => void) => void }) {
-  return <DaftarVideoCerita videos={VIDEO_SIAP_K2B2C} speakGuru={speakGuru} />;
+  return <VideoCeritaSatuLayar subBab={SUB_C} videos={VIDEO_SIAP_K2B2C} speakGuru={speakGuru} />;
 }

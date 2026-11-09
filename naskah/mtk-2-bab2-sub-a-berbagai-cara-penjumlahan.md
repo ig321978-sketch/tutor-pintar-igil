@@ -30,7 +30,7 @@ Berkas ini ditulis dari satu sumber, `src/components/modul/naskah-k2b2.ts` dan `
 
 | Tahap | Isi | Banyak butir |
 |---|---|---|
-| S. Story | Video animasi HTML/SVG, tiga video. Tiap video diputar satu per satu saat diketuk (tidak ada putar otomatis) | 3 video, 9 adegan, 49 ketukan |
+| S. Story | Video animasi HTML/SVG satu layar seperti Kelas 2 Bab 1: tiga cerita disusun berurutan dalam satu pemutar, mulai saat Mulai diketuk (tidak ada putar otomatis) | 3 cerita, 9 adegan, 49 ketukan |
 | M. Mind-Map | Peta pikiran berurutan, tiap cabang bisa diketuk dan uraiannya tampil di layar | 8 langkah |
 | I. Infografis | Poster rangkuman, suara di tiap panel | 10 panel |
 | C. Concrete | Benda nyata yang diketuk, diseret, dan dihitung | 4 permainan |
@@ -41,9 +41,9 @@ Bobot mengikuti isi buku. Aturan Concrete dan Picture berlaku: benda berwarna ha
 
 ## 4. Tahap 1: Story (video animasi, menggantikan slide)
 
-Tidak ada video yang berjalan sendiri. Siswa mengetuk **▶ Putar** pada satu video. Video itu berjalan, dan video lain berhenti. Setiap kalimat adalah satu ketukan: dibacakan Suara Guru perangkat, dan gambar berubah mengikuti kalimat yang sedang dibacakan. Ada tombol Jeda, Ulang, dan Suara hidup atau mati.
+Tampilannya satu layar, sama dengan Kelas 2 Bab 1. Tidak ada adegan yang berjalan sendiri. Siswa mengetuk **▶ Mulai**, lalu ketiga cerita berjalan berurutan sebagai satu video. Nomor adegan bisa diketuk untuk melompat. Setiap kalimat adalah satu ketukan: dibacakan Suara Guru perangkat, dan gambar berubah mengikuti kalimat yang sedang dibacakan. Ada tombol Jeda, Ulang, dan Suara hidup atau mati.
 
-### Video 1: Panen Jambu Air (Cerita Tika dan Kira)
+### Cerita 1: Panen Jambu Air (Cerita Tika dan Kira)
 
 **Adegan 1. Pohon jambu di halaman Tika** (`K2B2A-V1-1`)
 
@@ -84,9 +84,9 @@ Tidak ada video yang berjalan sendiri. Siswa mengetuk **▶ Putar** pada satu vi
 7. Ayo kita lihat caranya!  
    _Papan layar:_ Ayo lihat caranya!
 
-### Video 2: Tiga Cara Menjumlahkan 12 + 6 (Maju, bersusun, dan pasangan bilangan)
+### Cerita 2: Tiga Cara Menjumlahkan 12 + 6 (Maju, bersusun, dan pasangan bilangan)
 
-**Adegan 1. Cara 1: Menghitung maju** (`K2B2A-V2-1`)
+**Adegan 4. Cara 1: Menghitung maju** (`K2B2A-V2-1`)
 
 1. Cara pertama adalah menghitung maju.  
    _Papan layar:_ Cara 1: Hitung maju
@@ -101,7 +101,7 @@ Tidak ada video yang berjalan sendiri. Siswa mengetuk **▶ Putar** pada satu vi
 6. Banyak jambu air yang dipetik Kira adalah 18 buah.  
    _Papan layar:_ Kira: 18 jambu
 
-**Adegan 2. Cara 2: Penjumlahan bersusun** (`K2B2A-V2-2`)
+**Adegan 5. Cara 2: Penjumlahan bersusun** (`K2B2A-V2-2`)
 
 1. Cara kedua adalah penjumlahan bersusun.  
    _Papan layar:_ Cara 2: Bersusun
@@ -118,7 +118,7 @@ Tidak ada video yang berjalan sendiri. Siswa mengetuk **▶ Putar** pada satu vi
 7. Hasilnya 1 puluhan dan 8 satuan, yaitu 18.  
    _Papan layar:_ Hasil: 18
 
-**Adegan 3. Cara 3: Pasangan bilangan** (`K2B2A-V2-3`)
+**Adegan 6. Cara 3: Pasangan bilangan** (`K2B2A-V2-3`)
 
 1. Cara ketiga adalah pasangan bilangan.  
    _Papan layar:_ Cara 3: Pasangan
@@ -133,9 +133,9 @@ Tidak ada video yang berjalan sendiri. Siswa mengetuk **▶ Putar** pada satu vi
 6. Tiga cara berbeda, hasilnya sama, yaitu 18. Pilih cara yang paling mudah untukmu!  
    _Papan layar:_ Tiga cara, hasil sama
 
-### Video 3: Sepuluh Satuan Pindah ke Puluhan (18 ditambah 2)
+### Cerita 3: Sepuluh Satuan Pindah ke Puluhan (18 ditambah 2)
 
-**Adegan 1. Kira memetik dua lagi** (`K2B2A-V3-1`)
+**Adegan 7. Kira memetik dua lagi** (`K2B2A-V3-1`)
 
 1. Kira mempunyai 18 jambu air.  
    _Papan layar:_ Kira: 18 jambu
@@ -146,7 +146,7 @@ Tidak ada video yang berjalan sendiri. Siswa mengetuk **▶ Putar** pada satu vi
 4. Bagaimana cara kita menghitungnya?  
    _Papan layar:_ Bagaimana caranya?
 
-**Adegan 2. Pasangan bilangan dan pindah** (`K2B2A-V3-2`)
+**Adegan 8. Pasangan bilangan dan pindah** (`K2B2A-V3-2`)
 
 1. Cara pertama memakai pasangan bilangan. 18 dipisah menjadi 10 dan 8.  
    _Papan layar:_ 18 = 10 dan 8
@@ -165,7 +165,7 @@ Tidak ada video yang berjalan sendiri. Siswa mengetuk **▶ Putar** pada satu vi
 8. Jadi 18 ditambah 2 sama dengan 20.  
    _Papan layar:_ 18 + 2 = 20
 
-**Adegan 3. Ingat: pindah sepuluh** (`K2B2A-V3-3`)
+**Adegan 9. Ingat: pindah sepuluh** (`K2B2A-V3-3`)
 
 1. Kalau satuan berjumlah 10, kita tukar menjadi 1 puluhan.  
    _Papan layar:_ 10 satuan jadi 1 puluhan

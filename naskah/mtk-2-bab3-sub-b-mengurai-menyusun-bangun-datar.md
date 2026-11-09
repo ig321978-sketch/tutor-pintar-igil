@@ -30,7 +30,7 @@ Berkas ini ditulis dari satu sumber, `src/components/modul/naskah-k2b3.ts` dan `
 
 | Tahap | Isi | Banyak butir |
 |---|---|---|
-| S. Story | Video animasi HTML/SVG, tiga video. Tiap video diputar satu per satu saat diketuk (tidak ada putar otomatis) | 3 video, 9 adegan, 36 ketukan |
+| S. Story | Video animasi HTML/SVG satu layar seperti Kelas 2 Bab 1: tiga cerita disusun berurutan dalam satu pemutar, mulai saat Mulai diketuk (tidak ada putar otomatis) | 3 cerita, 9 adegan, 36 ketukan |
 | M. Mind-Map | Peta pikiran berurutan, tiap cabang bisa diketuk dan uraiannya tampil di layar | 8 langkah |
 | I. Infografis | Poster rangkuman, suara di tiap panel | 10 panel |
 | C. Concrete | Benda nyata yang diketuk, diseret, digunting, dan dihitung | 4 permainan |
@@ -41,9 +41,9 @@ Bobot mengikuti isi buku. Aturan Concrete dan Picture berlaku: benda berwarna ha
 
 ## 4. Tahap 1: Story (video animasi, menggantikan slide)
 
-Tidak ada video yang berjalan sendiri. Siswa mengetuk **▶ Putar** pada satu video. Video itu berjalan, dan video lain berhenti. Setiap kalimat adalah satu ketukan: dibacakan Suara Guru perangkat, dan gambar berubah mengikuti kalimat yang sedang dibacakan. Ada tombol Jeda, Ulang, dan Suara hidup atau mati.
+Tampilannya satu layar, sama dengan Kelas 2 Bab 1. Tidak ada adegan yang berjalan sendiri. Siswa mengetuk **▶ Mulai**, lalu ketiga cerita berjalan berurutan sebagai satu video. Nomor adegan bisa diketuk untuk melompat. Setiap kalimat adalah satu ketukan: dibacakan Suara Guru perangkat, dan gambar berubah mengikuti kalimat yang sedang dibacakan. Ada tombol Jeda, Ulang, dan Suara hidup atau mati.
 
-### Video 1: Mengurai Bangun Datar (Satu bangun menjadi banyak bagian)
+### Cerita 1: Mengurai Bangun Datar (Satu bangun menjadi banyak bagian)
 
 **Adegan 1. Satu bangun, banyak bagian** (`K2B3B-V1-1`)
 
@@ -78,9 +78,9 @@ Tidak ada video yang berjalan sendiri. Siswa mengetuk **▶ Putar** pada satu vi
 4. Persegi yang sama bisa diurai dengan garis lurus di tengah menjadi dua segi empat.  
    _Papan layar:_ Persegi → 2 segi empat
 
-### Video 2: Menyusun Bangun Datar (Banyak bangun menjadi satu)
+### Cerita 2: Menyusun Bangun Datar (Banyak bangun menjadi satu)
 
-**Adegan 1. Beberapa bangun jadi satu** (`K2B3B-V2-1`)
+**Adegan 4. Beberapa bangun jadi satu** (`K2B3B-V2-1`)
 
 1. Sekarang kita belajar menyusun bangun datar.  
    _Papan layar:_ Menyusun bangun
@@ -91,7 +91,7 @@ Tidak ada video yang berjalan sendiri. Siswa mengetuk **▶ Putar** pada satu vi
 4. Bentuk apa yang dihasilkan jika kita menyusunnya?  
    _Papan layar:_ Apa hasilnya?
 
-**Adegan 2. Dua segitiga dan satu segi empat** (`K2B3B-V2-2`)
+**Adegan 5. Dua segitiga dan satu segi empat** (`K2B3B-V2-2`)
 
 1. Kita susun dua segitiga di kiri dan kanan segi empat.  
    _Papan layar:_ Segitiga kiri dan kanan
@@ -102,7 +102,7 @@ Tidak ada video yang berjalan sendiri. Siswa mengetuk **▶ Putar** pada satu vi
 4. Kali ini, kedua segitiga disusun di atas dan di bawah segi empat.  
    _Papan layar:_ Segitiga atas dan bawah
 
-**Adegan 3. Cara memengaruhi hasil** (`K2B3B-V2-3`)
+**Adegan 6. Cara memengaruhi hasil** (`K2B3B-V2-3`)
 
 1. Ketika menyusun bangun datar, kita dapat menemukan beberapa bentuk yang berbeda.  
    _Papan layar:_ Hasil berbeda-beda
@@ -113,9 +113,9 @@ Tidak ada video yang berjalan sendiri. Siswa mengetuk **▶ Putar** pada satu vi
 4. Dua segitiga yang sama juga bisa disusun menjadi sebuah segitiga yang lebih besar.  
    _Papan layar:_ 2 segitiga → segitiga besar
 
-### Video 3: Bermain Tangram (Tujuh keping, seribu bentuk)
+### Cerita 3: Bermain Tangram (Tujuh keping, seribu bentuk)
 
-**Adegan 1. Mengenal tangram** (`K2B3B-V3-1`)
+**Adegan 7. Mengenal tangram** (`K2B3B-V3-1`)
 
 1. Tangram adalah permainan menyusun bangun datar.  
    _Papan layar:_ Permainan tangram
@@ -126,7 +126,7 @@ Tidak ada video yang berjalan sendiri. Siswa mengetuk **▶ Putar** pada satu vi
 4. Keping-keping itu bisa disusun menjadi rumah, perahu, kucing, dan banyak bentuk lain.  
    _Papan layar:_ Banyak bentuk
 
-**Adegan 2. Aturan main** (`K2B3B-V3-2`)
+**Adegan 8. Aturan main** (`K2B3B-V3-2`)
 
 1. Aturan tangram, pakai semua keping.  
    _Papan layar:_ Pakai semua keping
@@ -137,7 +137,7 @@ Tidak ada video yang berjalan sendiri. Siswa mengetuk **▶ Putar** pada satu vi
 4. Kita boleh memutar dan membalik keping.  
    _Papan layar:_ Putar dan balik
 
-**Adegan 3. Mengurai dan menyusun berkaitan** (`K2B3B-V3-3`)
+**Adegan 9. Mengurai dan menyusun berkaitan** (`K2B3B-V3-3`)
 
 1. Mengurai dan menyusun adalah dua kegiatan yang saling berlawanan.  
    _Papan layar:_ Saling berlawanan

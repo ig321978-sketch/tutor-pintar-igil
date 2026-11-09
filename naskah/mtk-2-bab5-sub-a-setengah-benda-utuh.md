@@ -31,7 +31,7 @@ Berkas ini ditulis dari satu sumber, `src/components/modul/naskah-k2b5.ts` dan `
 
 | Tahap | Isi | Banyak butir |
 |---|---|---|
-| S. Story | Video animasi HTML/SVG, tiga video. Tiap video diputar satu per satu saat diketuk (tidak ada putar otomatis) | 3 video, 9 adegan, 33 ketukan |
+| S. Story | Video animasi HTML/SVG satu layar seperti Kelas 2 Bab 1: tiga cerita disusun berurutan dalam satu pemutar, mulai saat Mulai diketuk (tidak ada putar otomatis) | 3 cerita, 9 adegan, 33 ketukan |
 | M. Mind-Map | Peta pikiran berurutan, tiap cabang bisa diketuk dan uraiannya tampil di layar | 8 langkah |
 | I. Infografis | Poster rangkuman, suara di tiap panel | 10 panel |
 | C. Concrete | Benda nyata yang dipotong, dilipat, dituang, dibagi, dan dipasangkan | 4 permainan |
@@ -42,9 +42,9 @@ Bobot mengikuti isi buku. Aturan Concrete dan Picture berlaku: benda berwarna ha
 
 ## 4. Tahap 1: Story (video animasi, menggantikan slide)
 
-Tidak ada video yang berjalan sendiri. Siswa mengetuk **▶ Putar** pada satu video. Video itu berjalan, dan video lain berhenti. Setiap kalimat adalah satu ketukan: dibacakan Suara Guru perangkat, dan gambar berubah mengikuti kalimat yang sedang dibacakan. Ada tombol Jeda, Ulang, dan Suara hidup atau mati.
+Tampilannya satu layar, sama dengan Kelas 2 Bab 1. Tidak ada adegan yang berjalan sendiri. Siswa mengetuk **▶ Mulai**, lalu ketiga cerita berjalan berurutan sebagai satu video. Nomor adegan bisa diketuk untuk melompat. Setiap kalimat adalah satu ketukan: dibacakan Suara Guru perangkat, dan gambar berubah mengikuti kalimat yang sedang dibacakan. Ada tombol Jeda, Ulang, dan Suara hidup atau mati.
 
-### Video 1: Berbagi Martabak (Adil dan sama besar)
+### Cerita 1: Berbagi Martabak (Adil dan sama besar)
 
 **Adegan 1. Oleh-oleh martabak** (`K2B5A-V1-1`)
 
@@ -75,9 +75,9 @@ Tidak ada video yang berjalan sendiri. Siswa mengetuk **▶ Putar** pada satu vi
 3. Karena itu, kita perlu memotong tepat di tengah martabak.  
    _Papan layar:_ Potong di tengah
 
-### Video 2: Apa Itu Setengah? (Dua bagian sama besar)
+### Cerita 2: Apa Itu Setengah? (Dua bagian sama besar)
 
-**Adegan 1. Memotong menjadi dua** (`K2B5A-V2-1`)
+**Adegan 4. Memotong menjadi dua** (`K2B5A-V2-1`)
 
 1. Perhatikan martabak manis ini.  
    _Papan layar:_ Martabak utuh
@@ -88,7 +88,7 @@ Tidak ada video yang berjalan sendiri. Siswa mengetuk **▶ Putar** pada satu vi
 4. Setiap hasil potongannya bernilai setengah.  
    _Papan layar:_ Bernilai setengah
 
-**Adegan 2. Setengah di sekitar kita** (`K2B5A-V2-2`)
+**Adegan 5. Setengah di sekitar kita** (`K2B5A-V2-2`)
 
 1. Kita dapat menemukan setengah benda di sekitar.  
    _Papan layar:_ Setengah di sekitar
@@ -101,7 +101,7 @@ Tidak ada video yang berjalan sendiri. Siswa mengetuk **▶ Putar** pada satu vi
 5. Amati sekitarmu, lalu temukan contoh setengah lainnya.  
    _Papan layar:_ Cari contoh lain
 
-**Adegan 3. Ayo melipat kertas** (`K2B5A-V2-3`)
+**Adegan 6. Ayo melipat kertas** (`K2B5A-V2-3`)
 
 1. Ambil selembar kertas berbentuk persegi.  
    _Papan layar:_ Kertas persegi
@@ -112,9 +112,9 @@ Tidak ada video yang berjalan sendiri. Siswa mengetuk **▶ Putar** pada satu vi
 4. Setiap cara menghasilkan setengah. Bentuknya bisa persegi panjang atau segitiga.  
    _Papan layar:_ Setengah bagian
 
-### Video 3: Sama Besar atau Tidak? (Hanya yang sama besar adalah setengah)
+### Cerita 3: Sama Besar atau Tidak? (Hanya yang sama besar adalah setengah)
 
-**Adegan 1. Memotong lingkaran** (`K2B5A-V3-1`)
+**Adegan 7. Memotong lingkaran** (`K2B5A-V3-1`)
 
 1. Kita dapat memotong lingkaran menjadi dua sama besar.  
    _Papan layar:_ Lingkaran dua bagian
@@ -123,7 +123,7 @@ Tidak ada video yang berjalan sendiri. Siswa mengetuk **▶ Putar** pada satu vi
 3. Hasilnya selalu setengah.  
    _Papan layar:_ Hasilnya setengah
 
-**Adegan 2. Memotong segi empat** (`K2B5A-V3-2`)
+**Adegan 8. Memotong segi empat** (`K2B5A-V3-2`)
 
 1. Kita juga dapat memotong segi empat menjadi dua sama besar.  
    _Papan layar:_ Segi empat dua bagian
@@ -132,7 +132,7 @@ Tidak ada video yang berjalan sendiri. Siswa mengetuk **▶ Putar** pada satu vi
 3. Setiap potongan itu bernilai setengah.  
    _Papan layar:_ Bernilai setengah
 
-**Adegan 3. Gambar A dan gambar B** (`K2B5A-V3-3`)
+**Adegan 9. Gambar A dan gambar B** (`K2B5A-V3-3`)
 
 1. Perhatikan dua gambar segi empat ini.  
    _Papan layar:_ Gambar A dan B

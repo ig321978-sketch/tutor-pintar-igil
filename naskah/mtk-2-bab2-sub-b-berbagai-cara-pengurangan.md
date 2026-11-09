@@ -30,7 +30,7 @@ Berkas ini ditulis dari satu sumber, `src/components/modul/naskah-k2b2.ts` dan `
 
 | Tahap | Isi | Banyak butir |
 |---|---|---|
-| S. Story | Video animasi HTML/SVG, tiga video. Tiap video diputar satu per satu saat diketuk (tidak ada putar otomatis) | 3 video, 8 adegan, 40 ketukan |
+| S. Story | Video animasi HTML/SVG satu layar seperti Kelas 2 Bab 1: tiga cerita disusun berurutan dalam satu pemutar, mulai saat Mulai diketuk (tidak ada putar otomatis) | 3 cerita, 8 adegan, 40 ketukan |
 | M. Mind-Map | Peta pikiran berurutan, tiap cabang bisa diketuk dan uraiannya tampil di layar | 8 langkah |
 | I. Infografis | Poster rangkuman, suara di tiap panel | 10 panel |
 | C. Concrete | Benda nyata yang diketuk, diseret, dan dihitung | 4 permainan |
@@ -41,9 +41,9 @@ Bobot mengikuti isi buku. Aturan Concrete dan Picture berlaku: benda berwarna ha
 
 ## 4. Tahap 1: Story (video animasi, menggantikan slide)
 
-Tidak ada video yang berjalan sendiri. Siswa mengetuk **▶ Putar** pada satu video. Video itu berjalan, dan video lain berhenti. Setiap kalimat adalah satu ketukan: dibacakan Suara Guru perangkat, dan gambar berubah mengikuti kalimat yang sedang dibacakan. Ada tombol Jeda, Ulang, dan Suara hidup atau mati.
+Tampilannya satu layar, sama dengan Kelas 2 Bab 1. Tidak ada adegan yang berjalan sendiri. Siswa mengetuk **▶ Mulai**, lalu ketiga cerita berjalan berurutan sebagai satu video. Nomor adegan bisa diketuk untuk melompat. Setiap kalimat adalah satu ketukan: dibacakan Suara Guru perangkat, dan gambar berubah mengikuti kalimat yang sedang dibacakan. Ada tombol Jeda, Ulang, dan Suara hidup atau mati.
 
-### Video 1: Selisih Jambu Air (Jambu Tika dan Kira dipasangkan)
+### Cerita 1: Selisih Jambu Air (Jambu Tika dan Kira dipasangkan)
 
 **Adegan 1. Jambu Tika dan Kira** (`K2B2B-V1-1`)
 
@@ -71,9 +71,9 @@ Tidak ada video yang berjalan sendiri. Siswa mengetuk **▶ Putar** pada satu vi
 4. Ayo kita lihat tiga caranya.  
    _Papan layar:_ Tiga cara
 
-### Video 2: Tiga Cara Mengurangkan 18 − 12 (Mundur, bersusun, dan pasangan bilangan)
+### Cerita 2: Tiga Cara Mengurangkan 18 − 12 (Mundur, bersusun, dan pasangan bilangan)
 
-**Adegan 1. Cara 1: Menghitung mundur** (`K2B2B-V2-1`)
+**Adegan 3. Cara 1: Menghitung mundur** (`K2B2B-V2-1`)
 
 1. Cara pertama adalah menghitung mundur.  
    _Papan layar:_ Cara 1: Hitung mundur
@@ -86,7 +86,7 @@ Tidak ada video yang berjalan sendiri. Siswa mengetuk **▶ Putar** pada satu vi
 5. Kita berhenti di 6, jadi 18 dikurangi 12 sama dengan 6.  
    _Papan layar:_ 18 − 12 = 6
 
-**Adegan 2. Cara 2: Pengurangan bersusun** (`K2B2B-V2-2`)
+**Adegan 4. Cara 2: Pengurangan bersusun** (`K2B2B-V2-2`)
 
 1. Cara kedua adalah pengurangan bersusun.  
    _Papan layar:_ Cara 2: Bersusun
@@ -101,7 +101,7 @@ Tidak ada video yang berjalan sendiri. Siswa mengetuk **▶ Putar** pada satu vi
 6. Hasilnya 0 puluhan dan 6 satuan, yaitu 6.  
    _Papan layar:_ Hasil: 6
 
-**Adegan 3. Cara 3: Pasangan bilangan** (`K2B2B-V2-3`)
+**Adegan 5. Cara 3: Pasangan bilangan** (`K2B2B-V2-3`)
 
 1. Cara ketiga adalah pasangan bilangan.  
    _Papan layar:_ Cara 3: Pasangan
@@ -116,9 +116,9 @@ Tidak ada video yang berjalan sendiri. Siswa mengetuk **▶ Putar** pada satu vi
 6. Selisih jambu air Kira dan Tika adalah 6 buah.  
    _Papan layar:_ Selisih: 6 jambu
 
-### Video 3: Urai Satu Puluhan: 12 − 8 (Saat satuan tidak cukup)
+### Cerita 3: Urai Satu Puluhan: 12 − 8 (Saat satuan tidak cukup)
 
-**Adegan 1. Tika memberi jambu** (`K2B2B-V3-1`)
+**Adegan 6. Tika memberi jambu** (`K2B2B-V3-1`)
 
 1. Tika memiliki 12 jambu air.  
    _Papan layar:_ Tika: 12 jambu
@@ -129,7 +129,7 @@ Tidak ada video yang berjalan sendiri. Siswa mengetuk **▶ Putar** pada satu vi
 4. Kita tulis 12 dikurangi 8, dengan 12 di atas.  
    _Papan layar:_ 12 − 8 = ?
 
-**Adegan 2. Urai dan kurangi** (`K2B2B-V3-2`)
+**Adegan 7. Urai dan kurangi** (`K2B2B-V3-2`)
 
 1. Satuan pada 12 hanya 2. 2 dikurangi 8 tidak cukup.  
    _Papan layar:_ 2 − 8 tidak cukup
@@ -144,7 +144,7 @@ Tidak ada video yang berjalan sendiri. Siswa mengetuk **▶ Putar** pada satu vi
 6. Jadi sisa jambu air Tika adalah 4 buah.  
    _Papan layar:_ Sisa: 4
 
-**Adegan 3. Periksa dengan penjumlahan** (`K2B2B-V3-3`)
+**Adegan 8. Periksa dengan penjumlahan** (`K2B2B-V3-3`)
 
 1. Kita bisa memeriksa hasil pengurangan dengan penjumlahan.  
    _Papan layar:_ Periksa dengan tambah

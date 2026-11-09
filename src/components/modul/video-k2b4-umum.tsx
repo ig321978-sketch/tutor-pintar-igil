@@ -9,11 +9,11 @@ import type { BendaId } from "./data-k2b4";
 /* ------------------------------------------------------------------------ */
 /* Bagian gambar SVG bersama video cerita Kelas 2 Bab 4 (Posisi Benda dan      */
 /* Pola). Semua ditaruh di kotak adegan 300 x 208 yang sudah berlatar langit    */
-/* dan rumput. Mesin video (DaftarVideoCerita, buatAdegan) dipakai bersama.     */
+/* dan rumput. Mesin video (VideoCeritaSatuLayar, buatAdegan) dipakai bersama.     */
 /* Tanpa API, tanpa berkas video.                                              */
 /* ------------------------------------------------------------------------ */
 
-export { buatAdegan, DaftarVideoCerita, type VideoSiap } from "./video-k2b2-umum";
+export { buatAdegan, VideoCeritaSatuLayar, type VideoSiap } from "./video-k2b2-umum";
 export { BIRU, EMAS };
 
 export const MERAH = "#E53E3E";

@@ -1,16 +1,18 @@
 "use client";
 
-import React, { useState } from "react";
-import { BIRU, EMAS, KUNING, Latar } from "./CeritaBandingB";
+import React, { useMemo } from "react";
+import { BIRU, EMAS, KUNING } from "./CeritaBandingB";
 import { VideoCerita, type AdeganVideo, type PropsAdegan } from "./video-cerita";
 import type { AdeganNaskah, VideoNaskah } from "./naskah-k2b2";
 
 /* ------------------------------------------------------------------------ */
-/* Video cerita Kelas 2 Bab 2: daftar video yang diputar SATU PER SATU saat    */
-/* siswa mengetuk Putar (tidak ada yang berjalan sendiri), dan bagian gambar    */
-/* SVG bersama untuk adegan (jambu air, burung, donat, jalur bilangan, tabel   */
-/* nilai tempat, bagan pasangan). Animasi gratis di perangkat siswa, tanpa      */
-/* berkas video dan tanpa panggilan API. Naskah: naskah-k2b2.ts                 */
+/* Video cerita Kelas 2 Bab 2 sampai 5: satu pemutar SATU LAYAR per sub-bab,    */
+/* sama dengan Kelas 2 Bab 1 (layar judul dengan tombol Mulai, nomor adegan,    */
+/* Jeda, Ulang, Suara). Tidak ada yang berjalan sebelum siswa mengetuk Mulai.   */
+/* Juga bagian gambar SVG bersama untuk adegan (jambu air, burung, donat,       */
+/* jalur bilangan, tabel nilai tempat, bagan pasangan). Animasi gratis di       */
+/* perangkat siswa, tanpa berkas video dan tanpa panggilan API.                 */
+/* Naskah: naskah-k2b2.ts                                                       */
 /* ------------------------------------------------------------------------ */
 
 export const MERAH = "#E53E3E";
@@ -23,84 +25,24 @@ export function buatAdegan(n: AdeganNaskah, render: (p: PropsAdegan) => React.Re
   return { id: n.id, judul: n.judul, ketukan: n.ketukan, render, waktu: opsi.waktu, minimal: opsi.minimal };
 }
 
-export type VideoSiap = { naskah: VideoNaskah; adegan: AdeganVideo[]; poster: { a: number; k: number } };
+export type VideoSiap = { naskah: VideoNaskah; adegan: AdeganVideo[] };
 
-type PropsDaftar = {
+type PropsSatuLayar = {
+  /** Sub-bab yang diceritakan. Judul layar diambil dari `fullTitle` tanpa awalan "Sub-Bab X:". */
+  subBab: { fullTitle: string };
   videos: VideoSiap[];
   speakGuru: (teks: string, selesai?: () => void) => void;
 };
 
 /**
- * Daftar video cerita. Tidak ada video yang berjalan sendiri. Siswa mengetuk Putar pada satu video, video itu
- * langsung berjalan dan video lain berhenti. Mengetuk Putar pada video lain menggantikan yang sedang berjalan.
+ * Pemutar cerita satu layar, tampilannya sama dengan Kelas 2 Bab 1. Seluruh adegan cerita sub-bab disusun berurutan
+ * dalam satu `VideoCerita`: layar judul, tombol Mulai, nomor adegan, Jeda, Ulang, dan Suara. Tidak ada adegan yang
+ * berjalan sebelum siswa mengetuk Mulai.
  */
-export function DaftarVideoCerita({ videos, speakGuru }: PropsDaftar) {
-  const [aktif, setAktif] = useState<string | null>(null);
-  const [ditonton, setDitonton] = useState<string[]>([]);
-
-  return (
-    <div className="space-y-3">
-      <p className="rounded-2xl border-4 border-[#1C01A5] bg-[#FFF7CC] px-3 py-2 text-center text-sm font-black leading-snug text-[#1C01A5]">
-        🎬 Ada {videos.length} video cerita. Ketuk ▶ Putar pada video yang ingin kamu tonton. Hanya satu video yang berjalan pada satu waktu.
-      </p>
-      {videos.map((v, i) =>
-        aktif === v.naskah.id ? (
-          <div key={v.naskah.id} className="space-y-2">
-            <VideoCerita
-              judul={v.naskah.judul}
-              subjudul={v.naskah.subjudul}
-              adegan={v.adegan}
-              speakGuru={speakGuru}
-              mulaiLangsung
-              onSelesai={() => setDitonton((d) => (d.includes(v.naskah.id) ? d : [...d, v.naskah.id]))}
-            />
-            <button
-              type="button"
-              onClick={() => setAktif(null)}
-              className="mx-auto block rounded-full border-4 border-[#1C01A5] bg-white px-5 py-1.5 text-sm font-black text-[#1C01A5] shadow-[0_4px_0_rgba(28,1,165,0.22)]"
-            >
-              ⏹ Tutup video {i + 1}
-            </button>
-          </div>
-        ) : (
-          <article key={v.naskah.id} className="overflow-hidden rounded-3xl border-4 border-[#1C01A5] bg-white shadow-[0_5px_0_rgba(28,1,165,0.22)]">
-            <div className="relative bg-[#DFF1FF]">
-              <svg viewBox="0 0 300 208" className="pointer-events-none block h-auto w-full" aria-hidden="true">
-                <Latar />
-                {v.adegan[v.poster.a].render({ k: v.poster.k, t: 0 })}
-              </svg>
-              <button
-                type="button"
-                onClick={() => setAktif(v.naskah.id)}
-                aria-label={`Putar video ${i + 1}: ${v.naskah.judul}`}
-                className="absolute inset-0 flex items-end justify-end bg-transparent p-3 transition hover:bg-[#1C01A5]/10"
-              >
-                <span className="flex h-14 w-14 items-center justify-center rounded-full border-4 border-[#FFE566] bg-[#1C01A5] text-2xl text-[#FFE566] shadow-lg">▶</span>
-              </button>
-            </div>
-            <div className="flex items-center justify-between gap-2 px-3 py-2">
-              <div className="min-w-0">
-                <p className="text-xs font-black uppercase tracking-wide text-[#1C01A5]/60">Video {i + 1} dari {videos.length}</p>
-                <h4 className="text-lg font-black leading-tight text-[#1C01A5]">{v.naskah.judul}</h4>
-                <p className="text-xs font-bold text-[#1C01A5]/70">{v.naskah.subjudul} • {v.adegan.length} adegan</p>
-              </div>
-              <button
-                type="button"
-                onClick={() => setAktif(v.naskah.id)}
-                className="shrink-0 rounded-full border-4 border-[#FFE566] bg-[#1C01A5] px-4 py-2 text-sm font-black text-[#FFE566] shadow-[0_4px_0_rgba(28,1,165,0.35)]"
-              >
-                {ditonton.includes(v.naskah.id) ? "↻ Putar lagi" : "▶ Putar"}
-              </button>
-            </div>
-          </article>
-        ),
-      )}
-      <p className="text-center text-xs font-black text-[#1C01A5]/70">
-        Sudah ditonton: {ditonton.length} dari {videos.length}
-        {ditonton.length === videos.length ? " ⭐ Hebat!" : ""}
-      </p>
-    </div>
-  );
+export function VideoCeritaSatuLayar({ subBab, videos, speakGuru }: PropsSatuLayar) {
+  const adegan = useMemo(() => videos.flatMap((v) => v.adegan), [videos]);
+  const judul = subBab.fullTitle.replace(/^Sub-Bab [A-Z]:\s*/, "");
+  return <VideoCerita judul={judul} subjudul={`${videos.length} cerita • ${adegan.length} adegan`} adegan={adegan} speakGuru={speakGuru} />;
 }
 
 /* ------------------------------ Benda dalam gambar ------------------------------ */

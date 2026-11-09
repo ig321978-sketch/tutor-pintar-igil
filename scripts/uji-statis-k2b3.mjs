@@ -1,5 +1,5 @@
 // Uji statis Matematika Kelas 2 Bab 3 (Materi saja). Jalankan: node --no-warnings scripts/uji-statis-k2b3.mjs
-// Memeriksa: pemasangan di pemutar, video diputar satu per satu saat diketuk (tanpa putar otomatis), suara perangkat murni
+// Memeriksa: pemasangan di pemutar, video satu layar seperti Kelas 2 Bab 1 (tanpa putar otomatis, mulai saat Mulai diketuk), suara perangkat murni
 // (laju 0,70 dan nada 1), tanpa jaringan dan tanpa layanan suara berbayar, tanpa soal Latihan/Ujian dan tanpa simulasi,
 // batas Concrete dan Picture (benda hanya di Concrete, diagram polos di Picture), dan seluruh komponen permainan terpasang.
 import fs from "node:fs";
@@ -55,10 +55,11 @@ cek("pemutar: bab memakai suara perangkat saja", /perangkatSaja: materi\.suaraPe
 cek("suara: laju dan nada kustom hanya untuk perangkatSaja", /kustom = opsi\.perangkatSaja === true/.test(suaraLib));
 cek("suara: jalur perangkatSaja tidak memanggil layanan suara berbayar", /if \(opsi\.perangkatSaja\) \{\s*cadangan\(\);\s*return;\s*\}/.test(suaraLib));
 
-/* ---- Video: satu per satu saat diketuk ---- */
-cek("video: mesin punya mulaiLangsung bawaan false", /mulaiLangsung = false/.test(mesinVideo));
-cek("video: video tidak berjalan sebelum Putar (mulaiLangsung hanya di cabang aktif)", /aktif === v\.naskah\.id \?[\s\S]*mulaiLangsung/.test(umumB2) && (umumB2.match(/mulaiLangsung/g) ?? []).length === 1);
-cek("video: hanya satu video aktif (state tunggal)", /useState<string \| null>\(null\)/.test(umumB2));
+/* ---- Video: satu layar seperti Kelas 2 Bab 1, tidak berjalan sebelum Mulai ---- */
+cek("video: mesin tanpa mode putar otomatis (tidak ada mulaiLangsung)", !/mulaiLangsung/.test(mesinVideo));
+cek("video: mesin menunggu tombol Mulai (sudahMulai awalnya salah)", /const \[sudahMulai, setSudahMulai\] = useState\(false\)/.test(mesinVideo) && /onClick=\{\(\) => mulai\(0\)\}/.test(mesinVideo));
+cek("video: satu pemutar VideoCerita per sub-bab dengan empat properti seperti Bab 1", (umumB2.match(/<VideoCerita\b/g) ?? []).length === 1 && /<VideoCerita judul=\{judul\} subjudul=\{.*\} adegan=\{adegan\} speakGuru=\{speakGuru\} \/>/.test(umumB2));
+cek("video: tidak ada lagi daftar kartu video", !/DaftarVideoCerita|useState<string \| null>/.test(umumB2));
 for (const [kode, berkas] of [["A", "video-k2b3a.tsx"], ["B", "video-k2b3b.tsx"], ["C", "video-k2b3c.tsx"]]) {
   const t = baca(`src/components/modul/${berkas}`);
   const s = N.SUB_BAB_K2B3.find((x) => x.id === kode);
@@ -67,7 +68,9 @@ for (const [kode, berkas] of [["A", "video-k2b3a.tsx"], ["B", "video-k2b3b.tsx"]
   cek(`video ${kode}: tiga video`, s.videos.length === 3);
   cek(`video ${kode}: adegan memakai papan naskah`, (t.match(/papan\(\d, \d\)\[k\]/g) ?? []).length === 9, `ada ${(t.match(/papan\(\d, \d\)\[k\]/g) ?? []).length}`);
   cek(`video ${kode}: satu sumber naskah`, t.includes(`SUB_${kode}3.videos`));
-  cek(`video ${kode}: memakai DaftarVideoCerita`, /DaftarVideoCerita/.test(t));
+  cek(`video ${kode}: memakai VideoCeritaSatuLayar dengan sub-bab sendiri`, new RegExp(`<VideoCeritaSatuLayar subBab=\\{SUB_${kode}3\\} videos=\\{VIDEO_SIAP_`).test(t));
+  cek(`video ${kode}: id adegan unik dalam satu layar`, new Set(adegan.map((a) => a.id)).size === adegan.length);
+  cek(`video ${kode}: tanpa poster kartu`, !/POSTER|poster:/.test(t));
 }
 for (const s of N.SUB_BAB_K2B3) for (const v of s.videos) for (const a of v.adegan) cek(`${a.id}: ketukan sama dengan papan`, a.ketukan.length === a.papan.length);
 
