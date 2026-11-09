@@ -4,7 +4,7 @@ Status: aktif untuk Sub-Bab A, B, dan C. Video animasi HTML/SVG **menggantikan s
 
 ## Prinsip
 
-- **Putar satu per satu saat diketuk.** `DaftarVideoCerita` (`src/components/modul/video-k2b2-umum.tsx`) menampilkan tiga kartu video. Tidak ada video yang berjalan sendiri saat halaman dibuka. Mengetuk ▶ Putar memasang pemutar `VideoCerita` dengan `mulaiLangsung`. Hanya satu video yang terpasang pada satu waktu. Memutar video lain menggantikan yang sedang berjalan dan menghentikan suaranya.
+- **Satu layar seperti Kelas 2 Bab 1.** `VideoCeritaSatuLayar` (`src/components/modul/video-k2b2-umum.tsx`, dipakai bersama) memasang satu pemutar `VideoCerita` per sub-bab dengan layar judul dan tombol ▶ Mulai, nomor adegan, Jeda, Ulang, dan Suara. Ketiga cerita disusun berurutan sebagai satu rangkaian adegan bernomor. Tidak ada adegan yang berjalan sendiri saat halaman dibuka. Video baru berjalan setelah siswa mengetuk Mulai.
 - **Gratis dan tanpa API.** Gambar bergerak memakai SVG dan CSS di perangkat siswa. Tidak ada berkas video dan tidak ada layanan berbayar.
 - **Naskah satu sumber.** Kalimat tiap adegan dan papan judul ada di `src/components/modul/naskah-k2b2.ts`. Mengubah kalimat di sana mengubah suara, teks layar, naskah markdown, dan JSON bab sekaligus.
 - **Suara.** `speakGuru` modul dengan Web Speech API perangkat, laju 0,70 dan nada 1 (`suaraLaju` dan `suaraNada` di JSON bab). Ucapan dipecah per kalimat supaya tidak berhenti sendiri di Chrome.
@@ -32,8 +32,8 @@ Status: aktif untuk Sub-Bab A, B, dan C. Video animasi HTML/SVG **menggantikan s
 
 ## Berkas
 
-- Mesin: `src/components/modul/video-cerita.tsx` (mendapat `mulaiLangsung` dan `onSelesai`, bawaan tidak berubah untuk modul lain).
-- Daftar dan gambar bersama: `src/components/modul/video-k2b2-umum.tsx` (jambu air, burung, donat, jeruk, boneka, jalur kotak, tabel susun, bagan pasangan).
+- Mesin: `src/components/modul/video-cerita.tsx` (sama dengan yang dipakai Kelas 2 Bab 1).
+- Pemutar satu layar dan gambar bersama: `src/components/modul/video-k2b2-umum.tsx` (jambu air, burung, donat, jeruk, boneka, jalur kotak, tabel susun, bagan pasangan).
 - Adegan: `video-k2b2a.tsx`, `video-k2b2b.tsx`, `video-k2b2c.tsx`.
 - Pemasangan: `MODUL_SUBBAB` di `src/components/IgilModulePlayer.tsx`, kunci `mtk-2-bab2-A`, `-B`, `-C`, bidang `Cerita`.
 - Uji: `scripts/uji-data-k2b2.mjs` dan `scripts/uji-statis-k2b2.mjs`.

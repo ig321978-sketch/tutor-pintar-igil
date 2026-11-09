@@ -30,7 +30,7 @@ Berkas ini ditulis dari satu sumber, `src/components/modul/naskah-k2b2.ts` dan `
 
 | Tahap | Isi | Banyak butir |
 |---|---|---|
-| S. Story | Video animasi HTML/SVG, tiga video. Tiap video diputar satu per satu saat diketuk (tidak ada putar otomatis) | 3 video, 8 adegan, 39 ketukan |
+| S. Story | Video animasi HTML/SVG satu layar seperti Kelas 2 Bab 1: tiga cerita disusun berurutan dalam satu pemutar, mulai saat Mulai diketuk (tidak ada putar otomatis) | 3 cerita, 8 adegan, 39 ketukan |
 | M. Mind-Map | Peta pikiran berurutan, tiap cabang bisa diketuk dan uraiannya tampil di layar | 8 langkah |
 | I. Infografis | Poster rangkuman, suara di tiap panel | 10 panel |
 | C. Concrete | Benda nyata yang diketuk, diseret, dan dihitung | 4 permainan |
@@ -41,9 +41,9 @@ Bobot mengikuti isi buku. Aturan Concrete dan Picture berlaku: benda berwarna ha
 
 ## 4. Tahap 1: Story (video animasi, menggantikan slide)
 
-Tidak ada video yang berjalan sendiri. Siswa mengetuk **▶ Putar** pada satu video. Video itu berjalan, dan video lain berhenti. Setiap kalimat adalah satu ketukan: dibacakan Suara Guru perangkat, dan gambar berubah mengikuti kalimat yang sedang dibacakan. Ada tombol Jeda, Ulang, dan Suara hidup atau mati.
+Tampilannya satu layar, sama dengan Kelas 2 Bab 1. Tidak ada adegan yang berjalan sendiri. Siswa mengetuk **▶ Mulai**, lalu ketiga cerita berjalan berurutan sebagai satu video. Nomor adegan bisa diketuk untuk melompat. Setiap kalimat adalah satu ketukan: dibacakan Suara Guru perangkat, dan gambar berubah mengikuti kalimat yang sedang dibacakan. Ada tombol Jeda, Ulang, dan Suara hidup atau mati.
 
-### Video 1: Kata Kunci Soal Cerita (Burung hijau dan burung merah)
+### Cerita 1: Kata Kunci Soal Cerita (Burung hijau dan burung merah)
 
 **Adegan 1. Burung hijau dan burung merah** (`K2B2C-V1-1`)
 
@@ -73,9 +73,9 @@ Tidak ada video yang berjalan sendiri. Siswa mengetuk **▶ Putar** pada satu vi
 4. Lebihnya dan kurangnya membandingkan dua orang. Baca dulu siapa yang punya lebih banyak.  
    _Papan layar:_ Siapa yang lebih banyak?
 
-### Video 2: Donat Tika dan Malosi (Diketahui, ditanya, solusi, kesimpulan)
+### Cerita 2: Donat Tika dan Malosi (Diketahui, ditanya, solusi, kesimpulan)
 
-**Adegan 1. Donat di meja** (`K2B2C-V2-1`)
+**Adegan 3. Donat di meja** (`K2B2C-V2-1`)
 
 1. Tika mempunyai 12 donat.  
    _Papan layar:_ Tika: 12 donat
@@ -86,7 +86,7 @@ Tidak ada video yang berjalan sendiri. Siswa mengetuk **▶ Putar** pada satu vi
 4. Pertanyaan b, berapa jumlah donat milik Tika dan Malosi?  
    _Papan layar:_ b. Jumlah donat?
 
-**Adegan 2. Diketahui dan ditanya** (`K2B2C-V2-2`)
+**Adegan 4. Diketahui dan ditanya** (`K2B2C-V2-2`)
 
 1. Langkah pertama, tulis apa yang diketahui.  
    _Papan layar:_ Langkah 1: Diketahui
@@ -97,7 +97,7 @@ Tidak ada video yang berjalan sendiri. Siswa mengetuk **▶ Putar** pada satu vi
 4. Ditanya, banyak donat Malosi, dan jumlah donat Tika dan Malosi.  
    _Papan layar:_ Donat Malosi? Jumlah?
 
-**Adegan 3. Solusi dan kesimpulan** (`K2B2C-V2-3`)
+**Adegan 5. Solusi dan kesimpulan** (`K2B2C-V2-3`)
 
 1. Langkah ketiga, solusi. Malosi punya 5 kurangnya, jadi kita kurangkan: 12 dikurangi 5 sama dengan 7.  
    _Papan layar:_ Solusi: 12 − 5 = 7
@@ -108,9 +108,9 @@ Tidak ada video yang berjalan sendiri. Siswa mengetuk **▶ Putar** pada satu vi
 4. Langkah keempat, kesimpulan. Jumlah donat milik Tika dan Malosi adalah 19 donat.  
    _Papan layar:_ Jadi, 19 donat
 
-### Video 3: Jeruk Halim dan Boneka Tiga Sahabat (Bilangan awal dan tiga bilangan)
+### Cerita 3: Jeruk Halim dan Boneka Tiga Sahabat (Bilangan awal dan tiga bilangan)
 
-**Adegan 1. Keranjang jeruk Halim** (`K2B2C-V3-1`)
+**Adegan 6. Keranjang jeruk Halim** (`K2B2C-V3-1`)
 
 1. Halim mempunyai satu keranjang buah jeruk.  
    _Papan layar:_ Keranjang jeruk Halim
@@ -125,7 +125,7 @@ Tidak ada video yang berjalan sendiri. Siswa mengetuk **▶ Putar** pada satu vi
 6. Jadi banyak jeruk Halim sebelumnya adalah 16 buah.  
    _Papan layar:_ Semula: 16 jeruk
 
-**Adegan 2. Boneka tiga sahabat** (`K2B2C-V3-2`)
+**Adegan 7. Boneka tiga sahabat** (`K2B2C-V3-2`)
 
 1. Tika, Kira, dan Lili sedang bermain boneka.  
    _Papan layar:_ Tiga sahabat
@@ -140,7 +140,7 @@ Tidak ada video yang berjalan sendiri. Siswa mengetuk **▶ Putar** pada satu vi
 6. Jadi jumlah semua boneka adalah 20 buah.  
    _Papan layar:_ Jumlah: 20 boneka
 
-**Adegan 3. Soal cerita buatan sendiri** (`K2B2C-V3-3`)
+**Adegan 8. Soal cerita buatan sendiri** (`K2B2C-V3-3`)
 
 1. Sekarang giliranmu membuat soal cerita!  
    _Papan layar:_ Giliranmu!

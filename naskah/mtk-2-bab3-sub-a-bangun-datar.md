@@ -30,7 +30,7 @@ Berkas ini ditulis dari satu sumber, `src/components/modul/naskah-k2b3.ts` dan `
 
 | Tahap | Isi | Banyak butir |
 |---|---|---|
-| S. Story | Video animasi HTML/SVG, tiga video. Tiap video diputar satu per satu saat diketuk (tidak ada putar otomatis) | 3 video, 9 adegan, 36 ketukan |
+| S. Story | Video animasi HTML/SVG satu layar seperti Kelas 2 Bab 1: tiga cerita disusun berurutan dalam satu pemutar, mulai saat Mulai diketuk (tidak ada putar otomatis) | 3 cerita, 9 adegan, 36 ketukan |
 | M. Mind-Map | Peta pikiran berurutan, tiap cabang bisa diketuk dan uraiannya tampil di layar | 8 langkah |
 | I. Infografis | Poster rangkuman, suara di tiap panel | 10 panel |
 | C. Concrete | Benda nyata yang diketuk, diseret, digunting, dan dihitung | 4 permainan |
@@ -41,9 +41,9 @@ Bobot mengikuti isi buku. Aturan Concrete dan Picture berlaku: benda berwarna ha
 
 ## 4. Tahap 1: Story (video animasi, menggantikan slide)
 
-Tidak ada video yang berjalan sendiri. Siswa mengetuk **▶ Putar** pada satu video. Video itu berjalan, dan video lain berhenti. Setiap kalimat adalah satu ketukan: dibacakan Suara Guru perangkat, dan gambar berubah mengikuti kalimat yang sedang dibacakan. Ada tombol Jeda, Ulang, dan Suara hidup atau mati.
+Tampilannya satu layar, sama dengan Kelas 2 Bab 1. Tidak ada adegan yang berjalan sendiri. Siswa mengetuk **▶ Mulai**, lalu ketiga cerita berjalan berurutan sebagai satu video. Nomor adegan bisa diketuk untuk melompat. Setiap kalimat adalah satu ketukan: dibacakan Suara Guru perangkat, dan gambar berubah mengikuti kalimat yang sedang dibacakan. Ada tombol Jeda, Ulang, dan Suara hidup atau mati.
 
-### Video 1: Sarang Lebah Upe (Bentuk segi enam yang unik)
+### Cerita 1: Sarang Lebah Upe (Bentuk segi enam yang unik)
 
 **Adegan 1. Paman membawa madu** (`K2B3A-V1-1`)
 
@@ -76,9 +76,9 @@ Tidak ada video yang berjalan sendiri. Siswa mengetuk **▶ Putar** pada satu vi
 3. Di sub-bab ini, kita belajar mengenal berbagai bangun datar.  
    _Papan layar:_ Belajar bangun datar
 
-### Video 2: Segi Banyak dan Bentuk Lengkung (Lihat tepinya)
+### Cerita 2: Segi Banyak dan Bentuk Lengkung (Lihat tepinya)
 
-**Adegan 1. Tiga bentuk dasar** (`K2B3A-V2-1`)
+**Adegan 4. Tiga bentuk dasar** (`K2B3A-V2-1`)
 
 1. Di kelas satu, kita sudah mempelajari tiga bentuk dasar.  
    _Papan layar:_ Tiga bentuk dasar
@@ -89,7 +89,7 @@ Tidak ada video yang berjalan sendiri. Siswa mengetuk **▶ Putar** pada satu vi
 4. Sekarang, kita kelompokkan bangun datar menurut tepinya.  
    _Papan layar:_ Lihat tepinya
 
-**Adegan 2. Garis lurus dan sisi** (`K2B3A-V2-2`)
+**Adegan 5. Garis lurus dan sisi** (`K2B3A-V2-2`)
 
 1. Beberapa bangun datar dibatasi oleh garis lurus.  
    _Papan layar:_ Dibatasi garis lurus
@@ -100,7 +100,7 @@ Tidak ada video yang berjalan sendiri. Siswa mengetuk **▶ Putar** pada satu vi
 4. Contohnya segitiga, segi empat, segi lima, dan segi enam.  
    _Papan layar:_ Contoh segi banyak
 
-**Adegan 3. Kurva dan bentuk lengkung** (`K2B3A-V2-3`)
+**Adegan 6. Kurva dan bentuk lengkung** (`K2B3A-V2-3`)
 
 1. Beberapa bangun datar dibatasi oleh kurva, atau garis lengkung.  
    _Papan layar:_ Dibatasi kurva
@@ -111,9 +111,9 @@ Tidak ada video yang berjalan sendiri. Siswa mengetuk **▶ Putar** pada satu vi
 4. Jadi, lihat tepinya. Garis lurus berarti segi banyak. Garis lengkung berarti bentuk lengkung.  
    _Papan layar:_ Lihat tepinya!
 
-### Video 3: Menamai Segi Banyak (Banyak sisi menentukan nama)
+### Cerita 3: Menamai Segi Banyak (Banyak sisi menentukan nama)
 
-**Adegan 1. Hitung sisinya** (`K2B3A-V3-1`)
+**Adegan 7. Hitung sisinya** (`K2B3A-V3-1`)
 
 1. Banyak sisi pada segi banyak memengaruhi namanya.  
    _Papan layar:_ Banyak sisi = nama
@@ -124,7 +124,7 @@ Tidak ada video yang berjalan sendiri. Siswa mengetuk **▶ Putar** pada satu vi
 4. Bagaimana dengan segi banyak yang punya lima sisi, atau enam sisi?  
    _Papan layar:_ 5 sisi? 6 sisi?
 
-**Adegan 2. Segi lima dan segi enam** (`K2B3A-V3-2`)
+**Adegan 8. Segi lima dan segi enam** (`K2B3A-V3-2`)
 
 1. Segi banyak yang mempunyai lima sisi dinamakan segi lima.  
    _Papan layar:_ Segi lima: 5 sisi
@@ -137,7 +137,7 @@ Tidak ada video yang berjalan sendiri. Siswa mengetuk **▶ Putar** pada satu vi
 5. Kita juga bisa menemukannya pada rumah burung, teh celup, lantai, dan jam dinding.  
    _Papan layar:_ Cari di sekitar
 
-**Adegan 3. Lingkaran** (`K2B3A-V3-3`)
+**Adegan 9. Lingkaran** (`K2B3A-V3-3`)
 
 1. Sekarang kita mencoba dengan uang logam.  
    _Papan layar:_ Uang logam

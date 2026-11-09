@@ -31,7 +31,7 @@ Berkas ini ditulis dari satu sumber, `src/components/modul/naskah-k2b4.ts` dan `
 
 | Tahap | Isi | Banyak butir |
 |---|---|---|
-| S. Story | Video animasi HTML/SVG, tiga video. Tiap video diputar satu per satu saat diketuk (tidak ada putar otomatis) | 3 video, 9 adegan, 30 ketukan |
+| S. Story | Video animasi HTML/SVG satu layar seperti Kelas 2 Bab 1: tiga cerita disusun berurutan dalam satu pemutar, mulai saat Mulai diketuk (tidak ada putar otomatis) | 3 cerita, 9 adegan, 30 ketukan |
 | M. Mind-Map | Peta pikiran berurutan, tiap cabang bisa diketuk dan uraiannya tampil di layar | 8 langkah |
 | I. Infografis | Poster rangkuman, suara di tiap panel | 10 panel |
 | C. Concrete | Benda nyata yang diseret, ditemukan, dirangkai, disusun, dan ditirukan | 4 permainan |
@@ -42,9 +42,9 @@ Bobot mengikuti isi buku. Aturan Concrete dan Picture berlaku: benda berwarna ha
 
 ## 4. Tahap 1: Story (video animasi, menggantikan slide)
 
-Tidak ada video yang berjalan sendiri. Siswa mengetuk **▶ Putar** pada satu video. Video itu berjalan, dan video lain berhenti. Setiap kalimat adalah satu ketukan: dibacakan Suara Guru perangkat, dan gambar berubah mengikuti kalimat yang sedang dibacakan. Ada tombol Jeda, Ulang, dan Suara hidup atau mati.
+Tampilannya satu layar, sama dengan Kelas 2 Bab 1. Tidak ada adegan yang berjalan sendiri. Siswa mengetuk **▶ Mulai**, lalu ketiga cerita berjalan berurutan sebagai satu video. Nomor adegan bisa diketuk untuk melompat. Setiap kalimat adalah satu ketukan: dibacakan Suara Guru perangkat, dan gambar berubah mengikuti kalimat yang sedang dibacakan. Ada tombol Jeda, Ulang, dan Suara hidup atau mati.
 
-### Video 1: Enam Sekawan Memanen (Hal yang berulang dan teratur)
+### Cerita 1: Enam Sekawan Memanen (Hal yang berulang dan teratur)
 
 **Adegan 1. Berbaris di sawah** (`K2B4B-V1-1`)
 
@@ -75,9 +75,9 @@ Tidak ada video yang berjalan sendiri. Siswa mengetuk **▶ Putar** pada satu vi
 3. Pola apa lagi yang dapat kalian temukan pada gambar?  
    _Papan layar:_ Pola apa lagi?
 
-### Video 2: Pola Bentuk dan Pola Warna (Pola di taplak meja dan kaus)
+### Cerita 2: Pola Bentuk dan Pola Warna (Pola di taplak meja dan kaus)
 
-**Adegan 1. Taplak meja** (`K2B4B-V2-1`)
+**Adegan 4. Taplak meja** (`K2B4B-V2-1`)
 
 1. Salah satu pola yang sering dijumpai adalah pola bentuk.  
    _Papan layar:_ Pola bentuk
@@ -86,7 +86,7 @@ Tidak ada video yang berjalan sendiri. Siswa mengetuk **▶ Putar** pada satu vi
 3. Pada taplak meja 2, polanya hati, hati, segitiga, segitiga, hati, hati.  
    _Papan layar:_ Taplak 2: hati, hati, segitiga
 
-**Adegan 2. Kaus dan gelas** (`K2B4B-V2-2`)
+**Adegan 5. Kaus dan gelas** (`K2B4B-V2-2`)
 
 1. Selain pola bentuk, kita juga mengenal pola warna.  
    _Papan layar:_ Pola warna
@@ -95,7 +95,7 @@ Tidak ada video yang berjalan sendiri. Siswa mengetuk **▶ Putar** pada satu vi
 3. Warna ikan pada gelas juga membentuk pola warna.  
    _Papan layar:_ Warna ikan di gelas
 
-**Adegan 3. Pola atau bukan?** (`K2B4B-V2-3`)
+**Adegan 6. Pola atau bukan?** (`K2B4B-V2-3`)
 
 1. Tidak semua barisan benda adalah pola.  
    _Papan layar:_ Tidak semua pola
@@ -106,9 +106,9 @@ Tidak ada video yang berjalan sendiri. Siswa mengetuk **▶ Putar** pada satu vi
 4. Lingkaran, segitiga, segitiga, lingkaran, segitiga, lingkaran bukan pola, karena kelompoknya tidak berulang dengan teratur.  
    _Papan layar:_ Acak: bukan pola
 
-### Video 3: Pola Gerakan dan Pola Suara (Bergerak dan bertepuk tangan)
+### Cerita 3: Pola Gerakan dan Pola Suara (Bergerak dan bertepuk tangan)
 
-**Adegan 1. Gerakan berpola** (`K2B4B-V3-1`)
+**Adegan 7. Gerakan berpola** (`K2B4B-V3-1`)
 
 1. Pada gambar, anak-anak bergerak membungkuk, berdiri, membungkuk, berdiri, dan seterusnya.  
    _Papan layar:_ Membungkuk, berdiri
@@ -117,7 +117,7 @@ Tidak ada video yang berjalan sendiri. Siswa mengetuk **▶ Putar** pada satu vi
 3. Gerakan lain juga dapat membentuk pola, misalnya tangan naik dan tangan turun.  
    _Papan layar:_ Tangan naik, tangan turun
 
-**Adegan 2. Tepuk tangan** (`K2B4B-V3-2`)
+**Adegan 8. Tepuk tangan** (`K2B4B-V3-2`)
 
 1. Ayo bertepuk tangan: tepuk satu kali, tepuk dua kali, tepuk tiga kali, dan tepuk empat kali.  
    _Papan layar:_ Tepuk 1, 2, 3, 4
@@ -126,7 +126,7 @@ Tidak ada video yang berjalan sendiri. Siswa mengetuk **▶ Putar** pada satu vi
 3. Suara yang dihasilkan dari menepuk tangan juga membentuk pola.  
    _Papan layar:_ Pola suara
 
-**Adegan 3. Pola di sekitar kita** (`K2B4B-V3-3`)
+**Adegan 9. Pola di sekitar kita** (`K2B4B-V3-3`)
 
 1. Amati benda-benda di sekitar kita dan temukan pola warna dan pola bentuk.  
    _Papan layar:_ Amati sekitar
