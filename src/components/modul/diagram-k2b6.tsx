@@ -326,6 +326,7 @@ export function GarisAngkaKetuk({
   benar = null,
   onPilih,
   mati = false,
+  langkah = 1,
 }: {
   dari: number;
   sampai: number;
@@ -333,8 +334,10 @@ export function GarisAngkaKetuk({
   benar?: number | null;
   onPilih: (n: number) => void;
   mati?: boolean;
+  /** Selisih antar angka pada garis (1 bawaan, 10 untuk garis puluhan). */
+  langkah?: number;
 }) {
-  const angka = Array.from({ length: sampai - dari + 1 }, (_, i) => dari + i);
+  const angka = Array.from({ length: Math.floor((sampai - dari) / langkah) + 1 }, (_, i) => dari + i * langkah);
   return (
     <div className="space-y-1" role="group" aria-label={`Garis bilangan ${dari} sampai ${sampai}`}>
       <div className="relative flex items-end justify-between gap-0.5 px-1 pt-2">
@@ -353,7 +356,7 @@ export function GarisAngkaKetuk({
               className="relative z-10 flex min-h-[64px] min-w-0 flex-1 flex-col items-center justify-end gap-0.5 pb-0.5"
             >
               <span className={`block h-6 w-6 rounded-full border-4 border-[#1C01A5] ${ok ? "bg-[#7FCB96]" : aktif ? "bg-[#F0AB00]" : "bg-white"}`} />
-              <span className="text-base font-black leading-none text-[#1C01A5]">{n}</span>
+              <span className={`font-black leading-none text-[#1C01A5] ${n >= 100 || angka.length >= 11 ? "text-[12px]" : "text-base"}`}>{n}</span>
             </button>
           );
         })}

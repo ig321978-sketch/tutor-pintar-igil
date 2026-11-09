@@ -154,10 +154,10 @@ for (const kode of ["A", "B", "C"]) {
 
 /* ---- Pendaftaran bab ---- */
 const kur = baca("src/lib/kurikulum.ts");
-cek("kurikulum: judul Bab 5 kelas 2 terdaftar", /JUDUL_MTK_2_BAB5 = "Bab 5: Pecahan"/.test(kur) && /JUDUL_MTK_2_BAB3(, JUDUL_MTK_2_BAB4)?, JUDUL_MTK_2_BAB5(, JUDUL_MTK_2_BAB6)?\]/.test(kur));
+cek("kurikulum: judul Bab 5 kelas 2 terdaftar", /JUDUL_MTK_2_BAB5 = "Bab 5: Pecahan"/.test(kur) && /JUDUL_MTK_2_BAB3(, JUDUL_MTK_2_BAB4)?, JUDUL_MTK_2_BAB5(, JUDUL_MTK_2_BAB6)?(, JUDUL_MTK_2_BAB7)?\]/.test(kur));
 cek("rute: /ruang-belajar/mtk-2-bab5", /bab="mtk-2-bab5"/.test(baca("src/app/ruang-belajar/mtk-2-bab5/page.tsx")));
 cek("ruang belajar: tautan Bab 5", /\/ruang-belajar\/mtk-2-bab5/.test(baca("src/app/ruang-belajar/page.tsx")));
-cek("preview: bab 5 valid", /"mtk-2-bab5"(, "mtk-2-bab6")?\]/.test(baca("src/app/modul-preview/page.tsx")));
+cek("preview: bab 5 valid", /"mtk-2-bab5"(, "mtk-2-bab6")?(, "mtk-2-bab7")?\]/.test(baca("src/app/modul-preview/page.tsx")));
 cek("halaman uji sementara tidak ikut", !fs.existsSync("src/app/modul-preview/uji-k2b5/page.tsx"), "hapus src/app/modul-preview/uji-k2b5 sebelum commit");
 cek("berkas sementara tidak ikut", !fs.existsSync(".tmp-k2b5"), "hapus .tmp-k2b5 sebelum commit");
 

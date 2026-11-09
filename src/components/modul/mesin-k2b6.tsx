@@ -440,7 +440,7 @@ export function PilihBertahap({ soal, onBeres, pesanBeres }: { soal: SoalBertaha
 
 /* ------------------------------ Garis angka ------------------------------ */
 
-export type SoalGaris = { tanya: string; dari: number; sampai: number; jawab: number; petunjuk: string; pesan: string; visual?: React.ReactNode };
+export type SoalGaris = { tanya: string; dari: number; sampai: number; jawab: number; petunjuk: string; pesan: string; visual?: React.ReactNode; langkah?: number };
 
 /** Ketuk bulatan angka pada garis bilangan. Hasil salah memberi petunjuk. */
 export function GarisAngkaGame({ soal, onBeres, pesanBeres }: { soal: SoalGaris[]; onBeres: () => void; pesanBeres: string }) {
@@ -479,7 +479,7 @@ export function GarisAngkaGame({ soal, onBeres, pesanBeres }: { soal: SoalGaris[
           <>
             {s.visual ? <div className="flex justify-center">{s.visual}</div> : null}
             <CatatanPensil pendek={`${nomor + 1}. ${s.tanya}`} teks={s.tanya} />
-            <GarisAngkaKetuk dari={s.dari} sampai={s.sampai} dipilih={dipilih} onPilih={pilih} />
+            <GarisAngkaKetuk dari={s.dari} sampai={s.sampai} langkah={s.langkah} dipilih={dipilih} onPilih={pilih} />
           </>
         )}
         <Letusan id={letusan.id} />

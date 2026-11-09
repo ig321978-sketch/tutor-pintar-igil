@@ -1,0 +1,1900 @@
+{
+  "chapterId": "k2-mat-bab7",
+  "chapter_id": "k2-mat-bab7",
+  "phase_code": "FASE_A",
+  "grade": 2,
+  "subjectLabel": "MATEMATIKA - KELAS 2 SD",
+  "title": "BAB 7: AYO MEMBILANG SAMPAI DENGAN 100",
+  "silabusElemen": "🌈 Fase A • Elemen Bilangan: Bilangan sampai dengan 100 (Kelas 2 SD/MI)",
+  "suaraPerangkatSaja": true,
+  "suaraLaju": 0.7,
+  "suaraNada": 1,
+  "tokens": {
+    "practice": 30,
+    "exam": 70,
+    "practicum": 50
+  },
+  "subBabs": {
+    "A": {
+      "id": "A",
+      "codeTitle": "Sub-Bab A (Menghitung, Membaca, Menulis Bilangan)",
+      "fullTitle": "Sub-Bab A: Menghitung, Membaca, dan Menulis Bilangan sampai 100",
+      "targetDescription": "Siswa menghitung puluhan sampai seratus (sepuluh satuan sama dengan satu puluhan), menghitung puluhan dan satuan dengan nilai tempat dan pasangan bilangan, membaca dan menulis bilangan sampai 100 dengan lambang dan nama bilangan, serta memperkirakan banyak benda lalu membuktikannya dengan mengelompokkan setiap sepuluh.",
+      "secondaryBg": "#FEF9C3",
+      "secondaryBorder": "#CA8A04",
+      "secondaryText": "#713F12",
+      "silabus": {
+        "teksSuara": "Kita belajar membilang sampai seratus. Di semester satu kita sudah belajar bilangan sampai lima puluh, dan kali ini kita melanjutkan sampai seratus. Kita menghitung kue cubit Pak Ahmad dalam bungkus berisi sepuluh, yaitu puluhan. Kita menghitung puluhan dan satuan pada rambutan Halim dan kelereng ayah Malosi, lalu membaca dan menulis bilangannya. Kita juga belajar memperkirakan banyak benda, menebak dulu, lalu membuktikan dengan mengelompokkan setiap sepuluh. Kita melewati enam tahap seru: cerita, peta pikiran, infografis, benda nyata, gambar, dan simbol.",
+        "cp": "Siswa menghitung banyak benda sampai 100 dengan mengelompokkan puluhan dan satuan, membaca dan menulis bilangan sampai 100 dengan lambang dan nama bilangan, memperkirakan banyak benda, serta menyampaikan hasilnya dengan percaya diri.",
+        "referensi": "Buku Siswa Matematika Kelas II Kemendikbudristek (Bab 7: Ayo Membilang sampai dengan 100, Sub-Bab A hlm. 192–209)."
+      },
+      "stories": [
+        {
+          "id": "K2B7A-V1-1",
+          "titleHint": "Penjual kue cubit",
+          "sceneType": "K2B7A-V1-1",
+          "voiceNarration": "Pak Ahmad adalah seorang penjual kue cubit. Kue cubit adalah kue tradisional dari Betawi. Kue ini ditaburi cokelat sehingga rasanya manis. Kue cubit Pak Ahmad sudah dikemas dalam pembungkus yang ramah lingkungan. Setiap bungkus berisi sepuluh kue cubit. Pak Ahmad mempunyai sepuluh bungkus kue cubit. Berapa banyak kue cubit milik Pak Ahmad?"
+        },
+        {
+          "id": "K2B7A-V1-2",
+          "titleHint": "Satu bungkus, satu puluhan",
+          "sceneType": "K2B7A-V1-2",
+          "voiceNarration": "Sepuluh kue cubit dimasukkan dalam satu pembungkus. Sepuluh satuan sama dengan satu puluhan. Satu bungkus adalah satu puluhan. Lima bungkus berarti lima puluhan, yaitu lima puluh. Enam bungkus berarti enam puluhan, yaitu enam puluh."
+        },
+        {
+          "id": "K2B7A-V1-3",
+          "titleHint": "Sampai seratus",
+          "sceneType": "K2B7A-V1-3",
+          "voiceNarration": "Tujuh bungkus berarti tujuh puluhan, yaitu tujuh puluh. Delapan bungkus berarti delapan puluhan, yaitu delapan puluh. Sembilan bungkus berarti sembilan puluhan, yaitu sembilan puluh. Sepuluh bungkus berarti sepuluh puluhan, yaitu seratus. Jadi Pak Ahmad mempunyai seratus kue cubit."
+        },
+        {
+          "id": "K2B7A-V2-1",
+          "titleHint": "Rambutan Halim",
+          "sceneType": "K2B7A-V2-1",
+          "voiceNarration": "Pohon rambutan di rumah Halim sedang berbuah. Hari ini Halim memanen buah rambutannya. Halim memasukkan rambutan ke dalam keranjang. Setiap keranjang berisi sepuluh rambutan, jadi satu keranjang adalah satu puluhan. Halim mempunyai lima keranjang penuh dan tiga rambutan lepas. Itu lima puluhan dan tiga satuan. Lima puluhan dan tiga satuan sama dengan lima puluh tambah tiga, yaitu lima puluh tiga. Jadi Halim memiliki lima puluh tiga buah rambutan."
+        },
+        {
+          "id": "K2B7A-V2-2",
+          "titleHint": "Kelereng ayah Malosi",
+          "sceneType": "K2B7A-V2-2",
+          "voiceNarration": "Malosi membantu ayahnya berjualan mainan. Ia memasukkan kelereng ke dalam kantong plastik. Setiap kantong berisi sepuluh kelereng. Satu kantong adalah satu puluhan. Ayah Malosi mempunyai enam kantong penuh dan tujuh kelereng lepas, jadi enam puluhan dan tujuh satuan. Enam puluh tambah tujuh sama dengan enam puluh tujuh. Jadi ayah Malosi memiliki enam puluh tujuh kelereng."
+        },
+        {
+          "id": "K2B7A-V2-3",
+          "titleHint": "Dua cara menulis",
+          "sceneType": "K2B7A-V2-3",
+          "voiceNarration": "Ada dua cara menentukan banyak benda. Cara pertama memakai nilai tempat: puluhan di kiri dan satuan di kanan. Lima puluhan dan tiga satuan ditulis dengan angka lima di tempat puluhan dan angka tiga di tempat satuan. Cara kedua memakai pasangan bilangan: lima puluh tiga terdiri dari lima puluh dan tiga. Kita membaca dari puluhan dulu: lima puluh tiga. Angka di tempat puluhan bernilai sepuluh kali lipat angka satuan."
+        },
+        {
+          "id": "K2B7A-V3-1",
+          "titleHint": "Menebak banyak ikan",
+          "sceneType": "K2B7A-V3-1",
+          "voiceNarration": "Kira dan Malosi melihat banyak ikan hias di kolam. Mereka diminta menebak banyaknya. Kira menebak ada lima puluh ikan. Malosi menebak ada enam puluh ikan. Menebak boleh keliru. Menebak melatih kita memperkirakan banyak benda sebelum menghitung."
+        },
+        {
+          "id": "K2B7A-V3-2",
+          "titleHint": "Kelompok sepuluh",
+          "sceneType": "K2B7A-V3-2",
+          "voiceNarration": "Ayo kita buktikan dengan menghitung. Kita mengelompokkan setiap sepuluh ikan. Satu kelompok berisi sepuluh ikan, jadi satu kelompok adalah satu puluhan. Ada enam kelompok dan dua ikan sisa. Itu enam puluhan dan dua satuan. Enam puluh tambah dua sama dengan enam puluh dua. Jadi banyak ikan adalah enam puluh dua."
+        },
+        {
+          "id": "K2B7A-V3-3",
+          "titleHint": "Tebakan siapa yang dekat?",
+          "sceneType": "K2B7A-V3-3",
+          "voiceNarration": "Tebakan Kira lima puluh. Tebakan Malosi enam puluh. Banyak ikan sebenarnya enam puluh dua. Lima puluh berbeda dua belas dari enam puluh dua. Enam puluh berbeda dua dari enam puluh dua. Tebakan Malosi lebih dekat dengan banyak ikan yang sebenarnya. Menebak dengan membayangkan kelompok sepuluh membuat tebakan kita makin dekat."
+        }
+      ],
+      "videos": [
+        {
+          "id": "K2B7A-V1",
+          "judul": "Kue Cubit Pak Ahmad",
+          "subjudul": "Menghitung puluhan sampai seratus",
+          "adegan": [
+            {
+              "id": "K2B7A-V1-1",
+              "judul": "Penjual kue cubit",
+              "ketukan": [
+                "Pak Ahmad adalah seorang penjual kue cubit.",
+                "Kue cubit adalah kue tradisional dari Betawi. Kue ini ditaburi cokelat sehingga rasanya manis.",
+                "Kue cubit Pak Ahmad sudah dikemas dalam pembungkus yang ramah lingkungan. Setiap bungkus berisi sepuluh kue cubit.",
+                "Pak Ahmad mempunyai sepuluh bungkus kue cubit. Berapa banyak kue cubit milik Pak Ahmad?"
+              ],
+              "papan": [
+                "Penjual kue cubit",
+                "Kue tradisional Betawi",
+                "1 bungkus: 10 kue",
+                "Berapa semuanya?"
+              ]
+            },
+            {
+              "id": "K2B7A-V1-2",
+              "judul": "Satu bungkus, satu puluhan",
+              "ketukan": [
+                "Sepuluh kue cubit dimasukkan dalam satu pembungkus.",
+                "Sepuluh satuan sama dengan satu puluhan. Satu bungkus adalah satu puluhan.",
+                "Lima bungkus berarti lima puluhan, yaitu lima puluh.",
+                "Enam bungkus berarti enam puluhan, yaitu enam puluh."
+              ],
+              "papan": [
+                "10 kue: 1 bungkus",
+                "10 satuan = 1 puluhan",
+                "5 puluhan = 50",
+                "6 puluhan = 60"
+              ]
+            },
+            {
+              "id": "K2B7A-V1-3",
+              "judul": "Sampai seratus",
+              "ketukan": [
+                "Tujuh bungkus berarti tujuh puluhan, yaitu tujuh puluh.",
+                "Delapan bungkus berarti delapan puluhan, yaitu delapan puluh.",
+                "Sembilan bungkus berarti sembilan puluhan, yaitu sembilan puluh.",
+                "Sepuluh bungkus berarti sepuluh puluhan, yaitu seratus. Jadi Pak Ahmad mempunyai seratus kue cubit."
+              ],
+              "papan": [
+                "7 puluhan = 70",
+                "8 puluhan = 80",
+                "9 puluhan = 90",
+                "10 puluhan = 100"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "K2B7A-V2",
+          "judul": "Rambutan dan Kelereng",
+          "subjudul": "Puluhan dan satuan",
+          "adegan": [
+            {
+              "id": "K2B7A-V2-1",
+              "judul": "Rambutan Halim",
+              "ketukan": [
+                "Pohon rambutan di rumah Halim sedang berbuah. Hari ini Halim memanen buah rambutannya.",
+                "Halim memasukkan rambutan ke dalam keranjang. Setiap keranjang berisi sepuluh rambutan, jadi satu keranjang adalah satu puluhan.",
+                "Halim mempunyai lima keranjang penuh dan tiga rambutan lepas. Itu lima puluhan dan tiga satuan.",
+                "Lima puluhan dan tiga satuan sama dengan lima puluh tambah tiga, yaitu lima puluh tiga. Jadi Halim memiliki lima puluh tiga buah rambutan."
+              ],
+              "papan": [
+                "Panen rambutan",
+                "1 keranjang: 10 buah",
+                "5 puluhan, 3 satuan",
+                "50 + 3 = 53"
+              ]
+            },
+            {
+              "id": "K2B7A-V2-2",
+              "judul": "Kelereng ayah Malosi",
+              "ketukan": [
+                "Malosi membantu ayahnya berjualan mainan. Ia memasukkan kelereng ke dalam kantong plastik.",
+                "Setiap kantong berisi sepuluh kelereng. Satu kantong adalah satu puluhan.",
+                "Ayah Malosi mempunyai enam kantong penuh dan tujuh kelereng lepas, jadi enam puluhan dan tujuh satuan.",
+                "Enam puluh tambah tujuh sama dengan enam puluh tujuh. Jadi ayah Malosi memiliki enam puluh tujuh kelereng."
+              ],
+              "papan": [
+                "Membantu ayah",
+                "1 kantong: 10 kelereng",
+                "6 puluhan, 7 satuan",
+                "60 + 7 = 67"
+              ]
+            },
+            {
+              "id": "K2B7A-V2-3",
+              "judul": "Dua cara menulis",
+              "ketukan": [
+                "Ada dua cara menentukan banyak benda. Cara pertama memakai nilai tempat: puluhan di kiri dan satuan di kanan.",
+                "Lima puluhan dan tiga satuan ditulis dengan angka lima di tempat puluhan dan angka tiga di tempat satuan.",
+                "Cara kedua memakai pasangan bilangan: lima puluh tiga terdiri dari lima puluh dan tiga.",
+                "Kita membaca dari puluhan dulu: lima puluh tiga. Angka di tempat puluhan bernilai sepuluh kali lipat angka satuan."
+              ],
+              "papan": [
+                "Dua cara",
+                "Nilai tempat: 5 | 3",
+                "Pasangan: 50 dan 3",
+                "Baca puluhan dulu"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "K2B7A-V3",
+          "judul": "Tebak Banyak Ikan",
+          "subjudul": "Memperkirakan lalu menghitung",
+          "adegan": [
+            {
+              "id": "K2B7A-V3-1",
+              "judul": "Menebak banyak ikan",
+              "ketukan": [
+                "Kira dan Malosi melihat banyak ikan hias di kolam. Mereka diminta menebak banyaknya.",
+                "Kira menebak ada lima puluh ikan. Malosi menebak ada enam puluh ikan.",
+                "Menebak boleh keliru. Menebak melatih kita memperkirakan banyak benda sebelum menghitung."
+              ],
+              "papan": [
+                "Ikan hias di kolam",
+                "Tebakan: 50 dan 60",
+                "Menebak boleh keliru"
+              ]
+            },
+            {
+              "id": "K2B7A-V3-2",
+              "judul": "Kelompok sepuluh",
+              "ketukan": [
+                "Ayo kita buktikan dengan menghitung. Kita mengelompokkan setiap sepuluh ikan.",
+                "Satu kelompok berisi sepuluh ikan, jadi satu kelompok adalah satu puluhan.",
+                "Ada enam kelompok dan dua ikan sisa. Itu enam puluhan dan dua satuan.",
+                "Enam puluh tambah dua sama dengan enam puluh dua. Jadi banyak ikan adalah enam puluh dua."
+              ],
+              "papan": [
+                "Kelompokkan sepuluh",
+                "1 kelompok: 10 ikan",
+                "6 puluhan, 2 satuan",
+                "60 + 2 = 62"
+              ]
+            },
+            {
+              "id": "K2B7A-V3-3",
+              "judul": "Tebakan siapa yang dekat?",
+              "ketukan": [
+                "Tebakan Kira lima puluh. Tebakan Malosi enam puluh. Banyak ikan sebenarnya enam puluh dua.",
+                "Lima puluh berbeda dua belas dari enam puluh dua. Enam puluh berbeda dua dari enam puluh dua.",
+                "Tebakan Malosi lebih dekat dengan banyak ikan yang sebenarnya.",
+                "Menebak dengan membayangkan kelompok sepuluh membuat tebakan kita makin dekat."
+              ],
+              "papan": [
+                "Sebenarnya 62 ikan",
+                "Selisih 12 dan 2",
+                "Malosi lebih dekat",
+                "Bayangkan kelompok 10"
+              ]
+            }
+          ]
+        }
+      ],
+      "mindMaps": [
+        {
+          "stepNumber": 1,
+          "stepTitle": "1. Dari Lima Puluh ke Seratus",
+          "stepDesc": "Di semester satu kita sudah belajar bilangan sampai lima puluh. Kali ini kita melanjutkan belajar bilangan sampai seratus. Caranya sama, yaitu mengelompokkan benda sepuluh-sepuluh, tetapi sekarang kita bisa menghitung lebih banyak benda. Pak Ahmad mempunyai sepuluh bungkus kue cubit, dan kita akan mencari tahu berapa banyak seluruhnya.",
+          "icon": "💯",
+          "flowFrom": "Dari lima puluh ke seratus",
+          "flowTo": "Sepuluh satuan, satu puluhan"
+        },
+        {
+          "stepNumber": 2,
+          "stepTitle": "2. Sepuluh Satuan, Satu Puluhan",
+          "stepDesc": "Sepuluh satuan dikelompokkan menjadi satu puluhan. Sepuluh kue cubit dimasukkan ke dalam satu bungkus, jadi satu bungkus adalah satu puluhan. Satu kantong berisi sepuluh kelereng adalah satu puluhan, dan satu keranjang berisi sepuluh rambutan adalah satu puluhan. Apa pun wadahnya, bila isinya sepuluh, banyaknya adalah satu puluhan.",
+          "icon": "📦",
+          "flowFrom": "Sepuluh satuan, satu puluhan",
+          "flowTo": "Menghitung puluhan"
+        },
+        {
+          "stepNumber": 3,
+          "stepTitle": "3. Menghitung Puluhan",
+          "stepDesc": "Kita menghitung puluhan dengan melompat sepuluh-sepuluh. Satu puluhan adalah sepuluh, dua puluhan adalah dua puluh, tiga puluhan adalah tiga puluh, dan seterusnya sampai sepuluh puluhan, yaitu seratus. Lima puluhan sama dengan lima puluh, enam puluhan sama dengan enam puluh, tujuh puluhan sama dengan tujuh puluh, delapan puluhan sama dengan delapan puluh, dan sembilan puluhan sama dengan sembilan puluh.",
+          "icon": "🔟",
+          "flowFrom": "Menghitung puluhan",
+          "flowTo": "Puluhan dan satuan"
+        },
+        {
+          "stepNumber": 4,
+          "stepTitle": "4. Puluhan dan Satuan",
+          "stepDesc": "Banyak benda sering terdiri dari puluhan dan satuan. Halim mempunyai lima keranjang penuh dan tiga rambutan lepas. Itu lima puluhan dan tiga satuan. Pada nilai tempat, angka di sebelah kiri adalah puluhan dan angka di sebelah kanan adalah satuan. Jadi lima puluhan dan tiga satuan ditulis dengan angka lima di puluhan dan angka tiga di satuan, yaitu lima puluh tiga.",
+          "icon": "🧺",
+          "flowFrom": "Puluhan dan satuan",
+          "flowTo": "Pasangan bilangan"
+        },
+        {
+          "stepNumber": 5,
+          "stepTitle": "5. Pasangan Bilangan",
+          "stepDesc": "Cara kedua menentukan banyak benda memakai pasangan bilangan. Bilangan lima puluh tiga dipecah menjadi lima puluh dan tiga. Bilangan enam puluh tujuh dipecah menjadi enam puluh dan tujuh. Bila kita menggabungkan kembali kedua bagian, kita memperoleh bilangan semula. Bagan pasangan bilangan membantu kita melihat bahwa bilangan besar tersusun dari puluhan dan satuan.",
+          "icon": "🧩",
+          "flowFrom": "Pasangan bilangan",
+          "flowTo": "Membaca dan menulis"
+        },
+        {
+          "stepNumber": 6,
+          "stepTitle": "6. Membaca dan Menulis Bilangan",
+          "stepDesc": "Untuk membaca bilangan kita mulai dari puluhannya. Angka enam di tempat puluhan dan angka dua di tempat satuan dibaca enam puluh dua. Delapan puluh tiga dan sembilan puluh dua dibaca dengan cara yang sama. Sepuluh puluhan dibaca seratus. Hati-hati dengan angka yang tertukar: enam puluh dua ditulis enam dua, bukan dua enam. Angka yang berbeda tempat bernilai berbeda.",
+          "icon": "🔤",
+          "flowFrom": "Membaca dan menulis",
+          "flowTo": "Memperkirakan banyak benda"
+        },
+        {
+          "stepNumber": 7,
+          "stepTitle": "7. Memperkirakan Banyak Benda",
+          "stepDesc": "Sebelum menghitung kita boleh menebak banyaknya. Menebak dengan perkiraan yang baik melatih kita berpikir. Caranya, bayangkan satu kelompok berisi sepuluh benda, lalu perkirakan ada berapa kelompok seperti itu. Setelah menebak, kita buktikan dengan mengelompokkan setiap sepuluh dan menghitung puluhan dan satuannya. Tebakan yang paling dekat dengan hasil hitungan adalah tebakan yang paling baik.",
+          "icon": "🔭",
+          "flowFrom": "Memperkirakan banyak benda",
+          "flowTo": "Tabel seratus"
+        },
+        {
+          "stepNumber": 8,
+          "stepTitle": "8. Tabel Seratus",
+          "stepDesc": "Bilangan sampai seratus dapat disusun dalam tabel sepuluh kolom. Bilangan di kolom yang sama selalu berselisih sepuluh. Turun satu baris berarti tambah sepuluh, dan naik satu baris berarti kurang sepuluh. Bilangan di sebelah kanan selalu satu lebihnya, dan bilangan di sebelah kiri selalu satu kurangnya. Bila ada kotak yang kosong, kita bisa menemukannya dari tetangganya.",
+          "icon": "🔢",
+          "flowFrom": "Tabel seratus",
+          "flowTo": "Siap menghitung sampai seratus"
+        }
+      ],
+      "infografisData": [
+        {
+          "fruitName": "Sepuluh Satuan, Satu Puluhan",
+          "emoji": "📦",
+          "countNum": 2,
+          "countWord": "Dua",
+          "voiceSentence": "Sepuluh satuan sama dengan satu puluhan. Sepuluh kue cubit dalam satu bungkus adalah satu puluhan."
+        },
+        {
+          "fruitName": "Menghitung Puluhan",
+          "emoji": "🔟",
+          "countNum": 10,
+          "countWord": "Sepuluh",
+          "voiceSentence": "Menghitung puluhan melompat sepuluh-sepuluh: sepuluh, dua puluh, tiga puluh, empat puluh, lima puluh, enam puluh, tujuh puluh, delapan puluh, sembilan puluh, dan seratus."
+        },
+        {
+          "fruitName": "Seratus",
+          "emoji": "💯",
+          "countNum": 2,
+          "countWord": "Dua",
+          "voiceSentence": "Sepuluh puluhan sama dengan seratus. Bilangan seratus dibaca seratus."
+        },
+        {
+          "fruitName": "Puluhan dan Satuan",
+          "emoji": "🧺",
+          "countNum": 2,
+          "countWord": "Dua",
+          "voiceSentence": "Lima keranjang penuh dan tiga rambutan lepas adalah lima puluhan dan tiga satuan, yaitu lima puluh tiga."
+        },
+        {
+          "fruitName": "Dua Cara Menentukan Banyak",
+          "emoji": "🧩",
+          "countNum": 2,
+          "countWord": "Dua",
+          "voiceSentence": "Dua cara menentukan banyak benda: nilai tempat dan pasangan bilangan. Lima puluh tiga sama dengan lima puluh tambah tiga."
+        },
+        {
+          "fruitName": "Nama Bilangan",
+          "emoji": "🔤",
+          "countNum": 8,
+          "countWord": "Delapan",
+          "voiceSentence": "Nama puluhan: dua puluh, tiga puluh, empat puluh, lima puluh, enam puluh, tujuh puluh, delapan puluh, dan sembilan puluh. Sesudah puluhan kita sebut satuannya, misalnya enam puluh dua."
+        },
+        {
+          "fruitName": "Cara Memperkirakan",
+          "emoji": "🔭",
+          "countNum": 3,
+          "countWord": "Tiga",
+          "voiceSentence": "Tiga langkah memperkirakan. Satu, bayangkan sepuluh benda dalam satu kelompok. Dua, tebak berapa kelompok. Tiga, buktikan dengan menghitung."
+        },
+        {
+          "fruitName": "Kelompokkan Setiap Sepuluh",
+          "emoji": "🐠",
+          "countNum": 3,
+          "countWord": "Tiga",
+          "voiceSentence": "Enam puluh dua ikan dikelompokkan sepuluh-sepuluh menjadi enam kelompok dan dua ikan sisa, yaitu enam puluhan dan dua satuan."
+        },
+        {
+          "fruitName": "Tabel Seratus",
+          "emoji": "🔢",
+          "countNum": 2,
+          "countWord": "Dua",
+          "voiceSentence": "Pada tabel seratus, turun satu baris berarti tambah sepuluh, dan geser satu kotak ke kanan berarti tambah satu."
+        },
+        {
+          "fruitName": "Tebakan yang Dekat",
+          "emoji": "🎯",
+          "countNum": 2,
+          "countWord": "Dua",
+          "voiceSentence": "Banyak ikan enam puluh dua. Tebakan enam puluh berbeda dua, tebakan lima puluh berbeda dua belas. Tebakan yang selisihnya lebih kecil lebih dekat."
+        }
+      ],
+      "concreteSlides": [
+        {
+          "title": "Isi Bungkus Sepuluh",
+          "emoji": "📦",
+          "targetCount": 3,
+          "voiceGuide": "Masukkan benda satu per satu sampai sepuluh."
+        },
+        {
+          "title": "Hitung Bungkus",
+          "emoji": "🛍️",
+          "targetCount": 6,
+          "voiceGuide": "Hitung bungkusnya, lalu pilih banyak kuenya."
+        },
+        {
+          "title": "Jodohkan Bungkus dan Bilangan",
+          "emoji": "🔗",
+          "targetCount": 9,
+          "voiceGuide": "Ketuk gambar, lalu ketuk bilangannya."
+        },
+        {
+          "title": "Rakit Bilangan",
+          "emoji": "🧺",
+          "targetCount": 4,
+          "voiceGuide": "Tambah wadah penuh dan benda lepas sampai pas."
+        },
+        {
+          "title": "Ikat Sepuluh",
+          "emoji": "🎀",
+          "targetCount": 3,
+          "voiceGuide": "Ikat setiap sepuluh, lalu hitung semuanya."
+        },
+        {
+          "title": "Tebak dan Hitung",
+          "emoji": "🐠",
+          "targetCount": 3,
+          "voiceGuide": "Tebak dulu, lalu hitung per sepuluh."
+        },
+        {
+          "title": "Memori Banyak Benda",
+          "emoji": "🃏",
+          "targetCount": 12,
+          "voiceGuide": "Balik dua kartu, cari benda dan bilangannya."
+        },
+        {
+          "title": "Urutkan Banyak Benda",
+          "emoji": "📶",
+          "targetCount": 3,
+          "voiceGuide": "Ketuk keranjang menurut banyaknya."
+        },
+        {
+          "title": "Pilah: Kurang atau Lebih dari 50",
+          "emoji": "🗂️",
+          "targetCount": 3,
+          "voiceGuide": "Pilah kumpulan ke kotak yang tepat."
+        },
+        {
+          "title": "Kantong Misterius",
+          "emoji": "🎒",
+          "targetCount": 6,
+          "voiceGuide": "Ketuk kumpulan yang banyaknya sama."
+        }
+      ],
+      "pictorialSlides": [
+        {
+          "title": "Hitung Batang Puluhan",
+          "diagramType": "tens-model",
+          "numberA": 3,
+          "numberB": 2,
+          "caption": "Menghitung banyak puluhan dari model batang."
+        },
+        {
+          "title": "Cari Model Bilangan",
+          "diagramType": "base-ten-model",
+          "numberA": 3,
+          "numberB": 2,
+          "caption": "Menemukan model batang dan kotak yang sama dengan sebuah bilangan."
+        },
+        {
+          "title": "Isi Papan Nilai Tempat",
+          "diagramType": "place-value-board",
+          "numberA": 4,
+          "numberB": 1,
+          "caption": "Menuliskan bilangan pada papan nilai tempat dari model batang dan kotak."
+        },
+        {
+          "title": "Jodohkan Model dan Bilangan",
+          "diagramType": "base-ten-match",
+          "numberA": 3,
+          "numberB": 3,
+          "caption": "Menjodohkan model batang dan kotak dengan lambang bilangannya."
+        },
+        {
+          "title": "Pasangan Bilangan",
+          "diagramType": "number-bond",
+          "numberA": 3,
+          "numberB": 2,
+          "caption": "Melengkapi bagan pasangan bilangan."
+        },
+        {
+          "title": "Garis Puluhan",
+          "diagramType": "tens-line",
+          "numberA": 3,
+          "numberB": 3,
+          "caption": "Melompat sepuluh-sepuluh pada garis puluhan."
+        },
+        {
+          "title": "Lengkapi Tabel Seratus",
+          "diagramType": "hundred-chart",
+          "numberA": 3,
+          "numberB": 4,
+          "caption": "Melengkapi bilangan yang hilang pada tabel 51 sampai 100."
+        },
+        {
+          "title": "Urutkan Model",
+          "diagramType": "base-ten-order",
+          "numberA": 3,
+          "numberB": 4,
+          "caption": "Mengurutkan model batang dan kotak dari yang terkecil atau terbesar."
+        },
+        {
+          "title": "Pilah Model menurut Puluhan",
+          "diagramType": "base-ten-sort",
+          "numberA": 3,
+          "numberB": 6,
+          "caption": "Memilah model menurut banyak puluhannya."
+        },
+        {
+          "title": "Tebak Banyak Titik",
+          "diagramType": "dot-estimate",
+          "numberA": 3,
+          "numberB": 1,
+          "caption": "Memperkirakan banyak titik lalu menghitungnya dengan kelompok sepuluh."
+        }
+      ],
+      "abstractSlides": [
+        {
+          "symbolLarge": "92",
+          "wordLarge": "9 PULUHAN 2 SATUAN",
+          "mathNotation": "puluhan • satuan • bilangan",
+          "voiceReadout": "Ketuk kalimat, lalu ketuk bilangannya."
+        },
+        {
+          "symbolLarge": "6 7 = 67",
+          "wordLarge": "PULUHAN SATUAN",
+          "mathNotation": "puluhan dan satuan sama dengan bilangan",
+          "voiceReadout": "Pilih bilangan yang tepat untuk bagian kosong."
+        },
+        {
+          "symbolLarge": "Aa",
+          "wordLarge": "SUSUN KATA",
+          "mathNotation": "nama bilangan • lambang bilangan",
+          "voiceReadout": "Ketuk kata menjadi kalimat yang benar."
+        },
+        {
+          "symbolLarge": "53",
+          "wordLarge": "TABEL",
+          "mathNotation": "bilangan • puluhan • satuan",
+          "voiceReadout": "Isi tabel dengan kartu yang tepat."
+        },
+        {
+          "symbolLarge": "✓ ✗",
+          "wordLarge": "BENAR SALAH",
+          "mathNotation": "periksa dengan alasan",
+          "voiceReadout": "Baca pernyataan, lalu pilih benar atau salah."
+        },
+        {
+          "symbolLarge": "62",
+          "wordLarge": "ENAM PULUH DUA",
+          "mathNotation": "nama bilangan • lambang bilangan",
+          "voiceReadout": "Baca nama bilangan, lalu pilih lambangnya."
+        },
+        {
+          "symbolLarge": "?",
+          "wordLarge": "DETEKTIF",
+          "mathNotation": "dua petunjuk, satu jawaban",
+          "voiceReadout": "Baca semua petunjuk, lalu pilih bilangannya."
+        },
+        {
+          "symbolLarge": "⇄",
+          "wordLarge": "PETA KONSEP",
+          "mathNotation": "puluhan • satuan • bilangan",
+          "voiceReadout": "Pilih kartu yang tepat untuk kotak yang menyala."
+        },
+        {
+          "symbolLarge": "17 < 26",
+          "wordLarge": "URUTKAN",
+          "mathNotation": "bandingkan puluhan dulu",
+          "voiceReadout": "Ketuk bilangan menurut urutannya."
+        },
+        {
+          "symbolLarge": "✔✔",
+          "wordLarge": "SEMUA COCOK",
+          "mathNotation": "boleh lebih dari satu",
+          "voiceReadout": "Ketuk semua yang cocok, lalu periksa."
+        }
+      ],
+      "interactiveGames": [
+        {
+          "gameId": "subK2B7A-game-1",
+          "gameNumber": 1,
+          "stage": "Concrete",
+          "gameType": "fill-pack-of-ten",
+          "title": "Isi Bungkus Sepuluh",
+          "bookReference": "Buku Siswa hlm. 194–195 (10 kue cubit dimasukkan dalam 1 pembungkus; 10 satuan = 1 puluhan)",
+          "objective": "Mengisi satu wadah dengan sepuluh benda dan memahami bahwa sepuluh satuan sama dengan satu puluhan.",
+          "mechanicDescription": "Tiga ronde: kue cubit dalam bungkus, kelereng dalam kantong, rambutan dalam keranjang. Siswa menekan tombol tambah satu per satu sampai wadah berisi sepuluh. Wadah yang penuh berubah hijau dan Suara Guru menyebut satu puluhan.",
+          "voiceGuide": "Masukkan benda satu per satu sampai sepuluh."
+        },
+        {
+          "gameId": "subK2B7A-game-2",
+          "gameNumber": 2,
+          "stage": "Concrete",
+          "gameType": "count-packs-tens",
+          "title": "Hitung Bungkus",
+          "bookReference": "Buku Siswa hlm. 195–197 (lima bungkus: 5 puluhan = 50, sampai 10 puluhan = 100)",
+          "objective": "Menghitung banyak benda dari banyak wadah penuh berisi sepuluh.",
+          "mechanicDescription": "Tiga ronde, tiap ronde dua gambar wadah penuh (5 sampai 10 wadah). Siswa memilih banyak benda seluruhnya dari tiga pilihan kelipatan sepuluh. Kunci dihitung dari banyak wadah kali sepuluh.",
+          "voiceGuide": "Hitung bungkusnya, lalu pilih banyak kuenya."
+        },
+        {
+          "gameId": "subK2B7A-game-3",
+          "gameNumber": 3,
+          "stage": "Concrete",
+          "gameType": "match-packs-numerals",
+          "title": "Jodohkan Bungkus dan Bilangan",
+          "bookReference": "Buku Siswa hlm. 195–197 dan 206 (hubungkan dengan bilangan yang tepat)",
+          "objective": "Menjodohkan banyak wadah penuh dengan lambang bilangannya.",
+          "mechanicDescription": "Tiga ronde, tiap ronde tiga gambar wadah (dua sampai sepuluh wadah) dan tiga lambang bilangan seperti 50 dan 70. Siswa mengetuk gambar lalu lambang yang cocok. Pasangan benar terkunci.",
+          "voiceGuide": "Ketuk gambar, lalu ketuk bilangannya."
+        },
+        {
+          "gameId": "subK2B7A-game-4",
+          "gameNumber": 4,
+          "stage": "Concrete",
+          "gameType": "build-number-tens-ones",
+          "title": "Rakit Bilangan",
+          "bookReference": "Buku Siswa hlm. 198–199 (rambutan Halim dan kelereng ayah Malosi: puluhan dan satuan)",
+          "objective": "Merakit sebuah bilangan dari wadah penuh dan benda lepas.",
+          "mechanicDescription": "Empat ronde: 53 rambutan, 67 kelereng, 74 kue cubit, 82 jeruk. Siswa menekan tambah wadah penuh (sepuluh) dan tambah benda lepas sampai banyaknya sama dengan bilangan. Sepuluh benda lepas otomatis masuk satu wadah.",
+          "voiceGuide": "Tambah wadah penuh dan benda lepas sampai pas."
+        },
+        {
+          "gameId": "subK2B7A-game-5",
+          "gameNumber": 5,
+          "stage": "Concrete",
+          "gameType": "tie-bundles-of-ten",
+          "title": "Ikat Sepuluh",
+          "bookReference": "Buku Siswa hlm. 200–202 dan 214 (Ayo Mencoba: ikat setiap 10 lidi)",
+          "objective": "Mengikat benda lepas sepuluh-sepuluh lalu menghitung seluruhnya.",
+          "mechanicDescription": "Tiga ronde: 23 lidi, 37 kelereng, 46 pensil warna. Siswa menekan Ikat sepuluh sampai tidak bisa lagi, lalu memilih banyak benda seluruhnya dari tiga pilihan.",
+          "voiceGuide": "Ikat setiap sepuluh, lalu hitung semuanya."
+        },
+        {
+          "gameId": "subK2B7A-game-6",
+          "gameNumber": 6,
+          "stage": "Concrete",
+          "gameType": "guess-then-count",
+          "title": "Tebak dan Hitung",
+          "bookReference": "Buku Siswa hlm. 200–201 dan 207 (tebak banyak ikan lalu hitung)",
+          "objective": "Memperkirakan banyak benda lalu membuktikannya dengan mengelompokkan sepuluh-sepuluh.",
+          "mechanicDescription": "Tiga ronde: 62 ikan, 38 jeruk, 85 anggur. Siswa menebak dulu dengan memilih satu dari tiga tebakan (tidak ada yang salah). Benda lalu dikelompokkan sepuluh-sepuluh, dan siswa memilih banyak sebenarnya. Suara Guru menyebut selisih tebakan.",
+          "voiceGuide": "Tebak dulu, lalu hitung per sepuluh."
+        },
+        {
+          "gameId": "subK2B7A-game-7",
+          "gameNumber": 7,
+          "stage": "Concrete",
+          "gameType": "memory-collection-numeral",
+          "title": "Memori Banyak Benda",
+          "bookReference": "Buku Siswa hlm. 198–199 (nilai tempat dan pasangan bilangan)",
+          "objective": "Mencocokkan kumpulan benda dengan lambang bilangannya.",
+          "mechanicDescription": "Tiga ronde, tiap ronde delapan kartu tertutup (empat pasang): gambar kumpulan benda berisi wadah penuh dan benda lepas, dan lambang bilangannya. Siswa membalik dua kartu.",
+          "voiceGuide": "Balik dua kartu, cari benda dan bilangannya."
+        },
+        {
+          "gameId": "subK2B7A-game-8",
+          "gameNumber": 8,
+          "stage": "Concrete",
+          "gameType": "order-collections",
+          "title": "Urutkan Banyak Benda",
+          "bookReference": "Buku Siswa hlm. 214 dan 222 (urutkan bilangan dari yang paling kecil)",
+          "objective": "Mengurutkan kumpulan benda dari yang paling sedikit atau paling banyak.",
+          "mechanicDescription": "Tiga ronde, tiap ronde tiga atau empat keranjang bertanda huruf. Siswa mengetuk keranjang satu per satu menurut urutan banyaknya (dua ronde dari paling sedikit, satu dari paling banyak). Letak jawaban berpindah.",
+          "voiceGuide": "Ketuk keranjang menurut banyaknya."
+        },
+        {
+          "gameId": "subK2B7A-game-9",
+          "gameNumber": 9,
+          "stage": "Concrete",
+          "gameType": "sort-collections-fifty",
+          "title": "Pilah: Kurang atau Lebih dari 50",
+          "bookReference": "Buku Siswa hlm. 192 (semester satu sampai 50, kali ini sampai 100)",
+          "objective": "Memilah kumpulan benda menurut kurang dari 50 atau lebih dari 50.",
+          "mechanicDescription": "Tiga ronde, tiap ronde enam kumpulan benda. Siswa menyeret atau mengetuk kumpulan ke kotak Kurang dari 50 atau Lebih dari 50. Kunci dihitung dari banyak puluhan.",
+          "voiceGuide": "Pilah kumpulan ke kotak yang tepat."
+        },
+        {
+          "gameId": "subK2B7A-game-10",
+          "gameNumber": 10,
+          "stage": "Concrete",
+          "gameType": "find-bag-by-number",
+          "title": "Kantong Misterius",
+          "bookReference": "Buku Siswa hlm. 198–199 (banyak kelereng milik ayah Malosi)",
+          "objective": "Menemukan kumpulan benda yang banyaknya sama dengan sebuah bilangan.",
+          "mechanicDescription": "Tiga ronde, tiap ronde dua soal. Siswa membaca bilangan, misalnya 67, lalu mengetuk satu dari empat kumpulan benda yang banyaknya 67. Pengecoh: bilangan dengan angka tertukar (76) dan selisih satu atau sepuluh.",
+          "voiceGuide": "Ketuk kumpulan yang banyaknya sama."
+        },
+        {
+          "gameId": "subK2B7A-game-11",
+          "gameNumber": 11,
+          "stage": "Picture",
+          "gameType": "count-ten-bars",
+          "title": "Hitung Batang Puluhan",
+          "bookReference": "Buku Siswa hlm. 195–197 (menghitung puluhan sampai 100)",
+          "objective": "Menghitung banyak puluhan dari model batang.",
+          "mechanicDescription": "Tiga ronde, tiap ronde dua soal. Gambar menampilkan beberapa batang sepuluh kotak. Siswa mengatur penghitung sampai sama dengan banyak batang, lalu menekan Periksa.",
+          "voiceGuide": "Hitung batangnya, lalu tulis banyak puluhan."
+        },
+        {
+          "gameId": "subK2B7A-game-12",
+          "gameNumber": 12,
+          "stage": "Picture",
+          "gameType": "find-model-by-number",
+          "title": "Cari Model Bilangan",
+          "bookReference": "Buku Siswa hlm. 198–199 (puluhan dan satuan pada nilai tempat)",
+          "objective": "Menemukan model batang dan kotak yang sama dengan sebuah bilangan.",
+          "mechanicDescription": "Tiga ronde, tiap ronde dua soal. Siswa membaca bilangan, lalu mengetuk satu dari empat model batang puluhan dan kotak satuan. Pengecoh memuat angka tertukar dan selisih satu.",
+          "voiceGuide": "Ketuk model yang sama dengan bilangan."
+        },
+        {
+          "gameId": "subK2B7A-game-13",
+          "gameNumber": 13,
+          "stage": "Picture",
+          "gameType": "fill-place-value-board",
+          "title": "Isi Papan Nilai Tempat",
+          "bookReference": "Buku Siswa hlm. 198–199 dan 204–205 (puluhan dan satuan, lalu tulis bilangannya)",
+          "objective": "Menuliskan bilangan pada papan nilai tempat dari model batang dan kotak.",
+          "mechanicDescription": "Empat soal. Gambar model menampilkan batang puluhan dan kotak satuan. Siswa mengatur angka puluhan dan angka satuan pada papan, lalu menekan Periksa.",
+          "voiceGuide": "Atur angka puluhan dan satuan pada papan."
+        },
+        {
+          "gameId": "subK2B7A-game-14",
+          "gameNumber": 14,
+          "stage": "Picture",
+          "gameType": "match-model-numeral",
+          "title": "Jodohkan Model dan Bilangan",
+          "bookReference": "Buku Siswa hlm. 206 (hubungkan dengan bilangan yang tepat)",
+          "objective": "Menjodohkan model batang dan kotak dengan lambang bilangannya.",
+          "mechanicDescription": "Tiga ronde, tiap ronde tiga model dan tiga lambang bilangan. Siswa mengetuk model lalu lambang yang cocok.",
+          "voiceGuide": "Ketuk model, lalu ketuk bilangannya."
+        },
+        {
+          "gameId": "subK2B7A-game-15",
+          "gameNumber": 15,
+          "stage": "Picture",
+          "gameType": "number-bond-fill",
+          "title": "Pasangan Bilangan",
+          "bookReference": "Buku Siswa hlm. 198–199 (cara 2: pasangan bilangan, 53 = 50 + 3)",
+          "objective": "Melengkapi bagan pasangan bilangan.",
+          "mechanicDescription": "Tiga ronde, tiap ronde dua bagan. Satu bagian tersembunyi: bila total 67 dan satu bagian 60, bagian lain 7. Siswa memilih satu dari tiga pilihan angka.",
+          "voiceGuide": "Lengkapi bagian yang hilang."
+        },
+        {
+          "gameId": "subK2B7A-game-16",
+          "gameNumber": 16,
+          "stage": "Picture",
+          "gameType": "tens-number-line",
+          "title": "Garis Puluhan",
+          "bookReference": "Buku Siswa hlm. 195–197 (menghitung puluhan dengan melompat sepuluh-sepuluh)",
+          "objective": "Melompat sepuluh-sepuluh pada garis puluhan.",
+          "mechanicDescription": "Tiga ronde, tiap ronde tiga soal pada garis 0, 10, 20, sampai 100. Siswa membaca mulai dan banyak lompatan, misalnya mulai 30 lompat 4 puluhan, lalu mengetuk bilangan pendaratan.",
+          "voiceGuide": "Lompat sepuluh-sepuluh, lalu ketuk tempat mendarat."
+        },
+        {
+          "gameId": "subK2B7A-game-17",
+          "gameNumber": 17,
+          "stage": "Picture",
+          "gameType": "complete-hundred-chart",
+          "title": "Lengkapi Tabel Seratus",
+          "bookReference": "Buku Siswa hlm. 209 (urutan bilangan 51 sampai 100 dengan kotak kosong)",
+          "objective": "Melengkapi bilangan yang hilang pada tabel 51 sampai 100.",
+          "mechanicDescription": "Tiga ronde, tiap ronde empat atau lima kotak kosong pada tabel sepuluh kolom. Kotak yang menyala menunggu jawaban, dan siswa memilih satu dari tiga angka. Petunjuk menyebut bilangan tetangga.",
+          "voiceGuide": "Isi kotak yang menyala dengan bilangan yang tepat."
+        },
+        {
+          "gameId": "subK2B7A-game-18",
+          "gameNumber": 18,
+          "stage": "Picture",
+          "gameType": "order-models",
+          "title": "Urutkan Model",
+          "bookReference": "Buku Siswa hlm. 214 dan 222 (mengurutkan bilangan)",
+          "objective": "Mengurutkan model batang dan kotak dari yang terkecil atau terbesar.",
+          "mechanicDescription": "Tiga ronde, tiap ronde tiga atau empat model. Siswa mengetuk model satu per satu menurut urutan banyaknya. Letak jawaban berpindah.",
+          "voiceGuide": "Ketuk model menurut urutannya."
+        },
+        {
+          "gameId": "subK2B7A-game-19",
+          "gameNumber": 19,
+          "stage": "Picture",
+          "gameType": "sort-models-by-tens",
+          "title": "Pilah Model menurut Puluhan",
+          "bookReference": "Buku Siswa hlm. 198–199 (banyak puluhan menentukan besar bilangan)",
+          "objective": "Memilah model menurut banyak puluhannya.",
+          "mechanicDescription": "Tiga ronde, tiap ronde enam model dan tiga kotak berlabel banyak puluhan (misalnya 3, 5, dan 7). Siswa menyeret atau mengetuk model ke kotak yang tepat. Tiap kotak menerima dua model.",
+          "voiceGuide": "Pilah model menurut banyak puluhannya."
+        },
+        {
+          "gameId": "subK2B7A-game-20",
+          "gameNumber": 20,
+          "stage": "Picture",
+          "gameType": "guess-dots-then-count",
+          "title": "Tebak Banyak Titik",
+          "bookReference": "Buku Siswa hlm. 200–201 (tebak lalu hitung)",
+          "objective": "Memperkirakan banyak titik lalu menghitungnya dengan kelompok sepuluh.",
+          "mechanicDescription": "Tiga ronde: 47, 33, dan 76 titik. Siswa menebak dulu satu dari tiga tebakan, lalu titik dikelompokkan sepuluh-sepuluh dan siswa memilih banyak sebenarnya.",
+          "voiceGuide": "Tebak dulu, lalu hitung per sepuluh."
+        },
+        {
+          "gameId": "subK2B7A-game-21",
+          "gameNumber": 21,
+          "stage": "Abstract",
+          "gameType": "match-words-numerals",
+          "title": "Jodohkan Puluhan, Satuan, dan Bilangan",
+          "bookReference": "Buku Siswa hlm. 206 nomor 3 (hubungkan dengan bilangan yang tepat)",
+          "objective": "Menjodohkan kalimat puluhan dan satuan dengan lambang bilangan.",
+          "mechanicDescription": "Tiga ronde, tiap ronde tiga pasangan, misalnya 9 puluhan dan 2 satuan dengan 92. Siswa mengetuk kalimat, lalu lambang bilangan yang cocok.",
+          "voiceGuide": "Ketuk kalimat, lalu ketuk bilangannya."
+        },
+        {
+          "gameId": "subK2B7A-game-22",
+          "gameNumber": 22,
+          "stage": "Abstract",
+          "gameType": "complete-place-value-sentences",
+          "title": "Lengkapi Kalimat Puluhan dan Satuan",
+          "bookReference": "Buku Siswa hlm. 198–199 dan 204–205 (puluhan dan satuan sama dengan bilangan)",
+          "objective": "Melengkapi kalimat puluhan dan satuan dengan bilangan yang tepat.",
+          "mechanicDescription": "Dua ronde, tiap ronde tiga kalimat, misalnya 6 puluhan dan 7 satuan sama dengan ... Siswa memilih satu dari tiga bilangan. Pengecoh memuat angka tertukar.",
+          "voiceGuide": "Pilih bilangan yang tepat untuk bagian kosong."
+        },
+        {
+          "gameId": "subK2B7A-game-23",
+          "gameNumber": 23,
+          "stage": "Abstract",
+          "gameType": "build-number-name-sentence",
+          "title": "Susun Nama dan Kalimat Bilangan",
+          "bookReference": "Buku Siswa hlm. 195–197 dan 208 (nama bilangan; tulis lambang bilangan)",
+          "objective": "Menyusun kata menjadi kalimat tentang nama dan lambang bilangan.",
+          "mechanicDescription": "Empat kalimat. Kartu kata diketuk berurutan. Satu kartu pengecoh tidak dipakai. Kalimat yang benar dibacakan.",
+          "voiceGuide": "Ketuk kata menjadi kalimat yang benar."
+        },
+        {
+          "gameId": "subK2B7A-game-24",
+          "gameNumber": 24,
+          "stage": "Abstract",
+          "gameType": "fill-place-value-table",
+          "title": "Isi Tabel Puluhan dan Satuan",
+          "bookReference": "Buku Siswa hlm. 204–205 dan 219–220 (puluhan dan satuan sama dengan)",
+          "objective": "Mengisi tabel puluhan dan satuan dari lambang bilangan.",
+          "mechanicDescription": "Dua ronde dengan tabel berisi empat baris, misalnya bilangan 53 dengan 5 puluhan dan 3 satuan. Siswa mengetuk baris, lalu mengetuk kartu yang tepat.",
+          "voiceGuide": "Isi tabel dengan kartu yang tepat."
+        },
+        {
+          "gameId": "subK2B7A-game-25",
+          "gameNumber": 25,
+          "stage": "Abstract",
+          "gameType": "true-false-numbers",
+          "title": "Benar atau Salah: Bilangan",
+          "bookReference": "Buku Siswa hlm. 194–209 (puluhan, satuan, nama bilangan)",
+          "objective": "Menilai pernyataan tentang puluhan, satuan, dan nama bilangan.",
+          "mechanicDescription": "Dua ronde, tiap ronde lima pernyataan. Siswa memilih Benar atau Salah. Pernyataan dihitung dari bilangan, dan tiap jawaban diberi penjelasan singkat.",
+          "voiceGuide": "Baca pernyataan, lalu pilih benar atau salah."
+        },
+        {
+          "gameId": "subK2B7A-game-26",
+          "gameNumber": 26,
+          "stage": "Abstract",
+          "gameType": "choose-numeral-from-name",
+          "title": "Tulis Lambang dari Nama",
+          "bookReference": "Buku Siswa hlm. 208 nomor 5 dan 221 nomor 3 (tulis lambang bilangan sesuai dengan nama bilangannya)",
+          "objective": "Memilih lambang bilangan yang sesuai dengan nama bilangan.",
+          "mechanicDescription": "Tiga ronde, tiap ronde dua soal, misalnya enam puluh dua. Siswa memilih satu dari tiga lambang. Pengecoh memuat angka tertukar (26) dan selisih satu.",
+          "voiceGuide": "Baca nama bilangan, lalu pilih lambangnya."
+        },
+        {
+          "gameId": "subK2B7A-game-27",
+          "gameNumber": 27,
+          "stage": "Abstract",
+          "gameType": "riddle-number-clues",
+          "title": "Detektif Bilangan",
+          "bookReference": "Buku Siswa hlm. 217 (aku adalah bilangan) dan 223 (buatlah pertanyaan untuk menunjukkan satu bilangan)",
+          "objective": "Menemukan sebuah bilangan dari dua atau tiga petunjuk.",
+          "mechanicDescription": "Empat soal. Siswa membaca petunjuk seperti puluhanku 7 dan satuanku 3, lalu memilih satu dari tiga bilangan. Hanya satu bilangan yang cocok dengan semua petunjuk.",
+          "voiceGuide": "Baca semua petunjuk, lalu pilih bilangannya."
+        },
+        {
+          "gameId": "subK2B7A-game-28",
+          "gameNumber": 28,
+          "stage": "Abstract",
+          "gameType": "concept-map-fill",
+          "title": "Peta Konsep Bilangan",
+          "bookReference": "Buku Siswa hlm. 192 (peta konsep: menghitung, membaca, dan menulis bilangan)",
+          "objective": "Melengkapi peta konsep puluhan dan satuan serta membaca dan menulis bilangan.",
+          "mechanicDescription": "Dua peta konsep, tiap peta empat kotak. Siswa memilih kartu yang tepat untuk kotak yang menyala.",
+          "voiceGuide": "Pilih kartu yang tepat untuk kotak yang menyala."
+        },
+        {
+          "gameId": "subK2B7A-game-29",
+          "gameNumber": 29,
+          "stage": "Abstract",
+          "gameType": "order-numerals",
+          "title": "Urutkan Bilangan",
+          "bookReference": "Buku Siswa hlm. 214 dan 222 (urutkan bilangan dari yang paling kecil)",
+          "objective": "Mengurutkan lambang bilangan dari yang paling kecil atau paling besar.",
+          "mechanicDescription": "Tiga ronde, tiap ronde empat atau lima bilangan, misalnya 62, 26, 71, 17. Siswa mengetuk bilangan satu per satu menurut urutan. Letak jawaban berpindah.",
+          "voiceGuide": "Ketuk bilangan menurut urutannya."
+        },
+        {
+          "gameId": "subK2B7A-game-30",
+          "gameNumber": 30,
+          "stage": "Abstract",
+          "gameType": "select-all-number-trait",
+          "title": "Ketuk Semua yang Cocok",
+          "bookReference": "Buku Siswa hlm. 198–199 dan 212–213 (puluhan dan satuan menentukan besar bilangan)",
+          "objective": "Memilih semua bilangan yang memiliki ciri tertentu.",
+          "mechanicDescription": "Tiga ronde, tiap ronde enam bilangan dan satu ciri: punya 6 puluhan, satuannya 5, atau lebih besar dari 70. Siswa mengetuk semua yang cocok, lalu menekan Periksa.",
+          "voiceGuide": "Ketuk semua yang cocok, lalu periksa."
+        }
+      ],
+      "poinPenting": {
+        "poin": [
+          {
+            "nama": "Sepuluh satuan, satu puluhan",
+            "isi": "10 satuan = 1 puluhan",
+            "suara": "Sepuluh satuan sama dengan satu puluhan. Satu bungkus berisi sepuluh kue cubit adalah satu puluhan."
+          },
+          {
+            "nama": "Puluhan sampai seratus",
+            "isi": "10, 20, 30, sampai 100",
+            "suara": "Menghitung puluhan melompat sepuluh-sepuluh sampai sepuluh puluhan, yaitu seratus."
+          },
+          {
+            "nama": "Puluhan dan satuan",
+            "isi": "5 puluhan dan 3 satuan = 53",
+            "suara": "Lima puluhan dan tiga satuan sama dengan lima puluh tambah tiga, yaitu lima puluh tiga."
+          },
+          {
+            "nama": "Membaca dan menulis",
+            "isi": "puluhan di kiri, satuan di kanan",
+            "suara": "Angka di sebelah kiri adalah puluhan dan angka di sebelah kanan adalah satuan. Kita membaca puluhannya dulu."
+          },
+          {
+            "nama": "Memperkirakan",
+            "isi": "tebak, lalu kelompokkan sepuluh",
+            "suara": "Menebak banyak benda boleh keliru. Kita membuktikannya dengan mengelompokkan setiap sepuluh benda."
+          }
+        ],
+        "suara": "Ingat selalu! Sepuluh satuan sama dengan satu puluhan, dan sepuluh puluhan sama dengan seratus. Banyak benda terdiri dari puluhan dan satuan, misalnya lima puluhan dan tiga satuan sama dengan lima puluh tiga. Angka di kiri adalah puluhan dan angka di kanan adalah satuan. Kita boleh menebak banyak benda, lalu membuktikannya dengan mengelompokkan setiap sepuluh.",
+        "caraMenyebutkan": "puluhan dan satuan bilangan",
+        "rumah": "Ayo Mencoba di rumah: ambil satu genggam lidi atau stik es krim, tebak banyaknya, lalu ikat setiap sepuluh dan hitung puluhan dan satuannya. Tulis hasilnya dengan lambang bilangan dan baca dengan suara keras. Ceritakan juga bilangan yang paling kamu suka.",
+        "refleksi": [
+          "Aku dapat menghitung banyak benda sampai dengan 100.",
+          "Aku dapat membaca dan menulis bilangan sampai dengan 100.",
+          "Aku belajar dengan tertib.",
+          "Aku menyampaikan pendapat dengan percaya diri."
+        ]
+      }
+    },
+    "B": {
+      "id": "B",
+      "codeTitle": "Sub-Bab B (Membandingkan Bilangan)",
+      "fullTitle": "Sub-Bab B: Membandingkan Bilangan",
+      "targetDescription": "Siswa menentukan bilangan yang lebih dari atau kurang dari bilangan lain dengan menghitung maju dan mundur pada garis bilangan, membandingkan dua bilangan dengan melihat banyak puluhan lebih dulu lalu satuannya, memakai kata lebih besar dari, lebih kecil dari, dan sama dengan, serta mengurutkan tiga bilangan atau lebih dari yang paling kecil atau paling besar.",
+      "secondaryBg": "#DBEAFE",
+      "secondaryBorder": "#2563EB",
+      "secondaryText": "#1E3A8A",
+      "silabus": {
+        "teksSuara": "Kita belajar membandingkan bilangan. Kita menghitung maju dan mundur seperti kupu-kupu dan capung untuk mencari bilangan yang lebih dari dan kurang dari. Lalu kita membandingkan kelereng Halim dan Malosi dengan melihat banyak puluhan lebih dulu, dan satuannya bila puluhannya sama. Kita memakai kata lebih besar dari, lebih kecil dari, dan sama dengan, lalu mengurutkan bilangan dari yang paling kecil. Kita melewati enam tahap seru: cerita, peta pikiran, infografis, benda nyata, gambar, dan simbol.",
+        "cp": "Siswa membandingkan dua bilangan sampai 100 dengan memperhatikan puluhan dan satuan, menentukan bilangan yang lebih dari dan kurang dari bilangan lain, mengurutkan bilangan, serta menyampaikan alasannya dengan percaya diri.",
+        "referensi": "Buku Siswa Matematika Kelas II Kemendikbudristek (Bab 7: Ayo Membilang sampai dengan 100, Sub-Bab B hlm. 209–224)."
+      },
+      "stories": [
+        {
+          "id": "K2B7B-V1-1",
+          "titleHint": "Kupu-kupu di bilangan 58",
+          "sceneType": "K2B7B-V1-1",
+          "voiceNarration": "Lihat garis angka ini. Kupu-kupu berada di antara bilangan lima puluh tujuh dan lima puluh sembilan. Jadi kupu-kupu berada di bilangan lima puluh delapan. Kupu-kupu maju dua langkah ke depan. Kita menghitung maju: lima puluh sembilan, enam puluh. Jadi kupu-kupu berada di bilangan enam puluh. Dua lebihnya dari lima puluh delapan adalah enam puluh."
+        },
+        {
+          "id": "K2B7B-V1-2",
+          "titleHint": "Capung di bilangan 75",
+          "sceneType": "K2B7B-V1-2",
+          "voiceNarration": "Sekarang amati capung. Capung berada di antara bilangan tujuh puluh empat dan tujuh puluh enam. Jadi capung berada di bilangan tujuh puluh lima. Capung mundur tiga langkah ke belakang. Kita menghitung mundur: tujuh puluh empat, tujuh puluh tiga, tujuh puluh dua. Jadi capung berada di bilangan tujuh puluh dua. Tiga kurangnya dari tujuh puluh lima adalah tujuh puluh dua."
+        },
+        {
+          "id": "K2B7B-V1-3",
+          "titleHint": "Lebih dari dan kurang dari",
+          "sceneType": "K2B7B-V1-3",
+          "voiceNarration": "Lebihnya berarti maju, dan kurangnya berarti mundur. Aku adalah bilangan. Aku dua lebihnya dari bilangan tujuh puluh enam. Aku adalah tujuh puluh delapan. Aku adalah bilangan. Aku satu kurangnya dari bilangan enam puluh tujuh. Aku adalah enam puluh enam. Garis bilangan membantu kita melompat maju dan mundur dengan teliti."
+        },
+        {
+          "id": "K2B7B-V2-1",
+          "titleHint": "Lima puluh enam dan enam puluh lima",
+          "sceneType": "K2B7B-V2-1",
+          "voiceNarration": "Halim mempunyai lima puluh enam butir kelereng. Malosi memiliki enam puluh lima butir kelereng. Kelereng siapa yang lebih banyak? Kita masukkan kelereng ke dalam kantong, setiap kantong berisi sepuluh kelereng. Bilangan lima puluh enam mempunyai lima puluhan dan enam satuan. Bilangan enam puluh lima mempunyai enam puluhan dan lima satuan. Enam puluhan lebih banyak dari lima puluhan. Jadi bilangan enam puluh lima lebih besar dari lima puluh enam, dan kelereng Malosi lebih banyak."
+        },
+        {
+          "id": "K2B7B-V2-2",
+          "titleHint": "Puluhan yang sama",
+          "sceneType": "K2B7B-V2-2",
+          "voiceNarration": "Sekarang bandingkan bilangan lima puluh empat dan lima puluh delapan. Keduanya mempunyai lima puluhan. Karena puluhannya sama, kita lihat satuannya. Lima puluh empat mempunyai empat satuan, dan lima puluh delapan mempunyai delapan satuan. Delapan satuan lebih banyak dari empat satuan. Jadi lima puluh delapan lebih besar dari lima puluh empat."
+        },
+        {
+          "id": "K2B7B-V2-3",
+          "titleHint": "Kata perbandingan",
+          "sceneType": "K2B7B-V2-3",
+          "voiceNarration": "Ada tiga kata untuk membandingkan dua bilangan: lebih besar dari, lebih kecil dari, dan sama dengan. Enam puluh lima lebih besar dari lima puluh enam. Lima puluh enam lebih kecil dari enam puluh lima. Dua bilangan yang puluhan dan satuannya sama, adalah bilangan yang sama dengan. Kita juga dapat memakai tanda. Tanda itu selalu terbuka ke arah bilangan yang lebih besar."
+        },
+        {
+          "id": "K2B7B-V3-1",
+          "titleHint": "Tiga bilangan",
+          "sceneType": "K2B7B-V3-1",
+          "voiceNarration": "Amati tiga bilangan ini: tujuh puluh enam, delapan puluh tiga, dan lima puluh tujuh. Bilangan tujuh puluh enam mempunyai tujuh puluhan dan enam satuan. Delapan puluh tiga mempunyai delapan puluhan dan tiga satuan. Lima puluh tujuh mempunyai lima puluhan dan tujuh satuan. Yang puluhannya paling banyak adalah delapan puluh tiga. Jadi delapan puluh tiga paling besar. Yang puluhannya paling sedikit adalah lima puluh tujuh. Jadi lima puluh tujuh paling kecil."
+        },
+        {
+          "id": "K2B7B-V3-2",
+          "titleHint": "Dari yang paling kecil",
+          "sceneType": "K2B7B-V3-2",
+          "voiceNarration": "Sekarang urutkan bilangan dari yang paling kecil. Pertama lima puluh tujuh, karena puluhannya paling sedikit. Kedua tujuh puluh enam, lalu ketiga delapan puluh tiga. Urutannya dari yang paling kecil adalah lima puluh tujuh, tujuh puluh enam, dan delapan puluh tiga."
+        },
+        {
+          "id": "K2B7B-V3-3",
+          "titleHint": "Teka-teki Kira",
+          "sceneType": "K2B7B-V3-3",
+          "voiceNarration": "Kira menuliskan satu bilangan. Kira berkata, jika aku tambahkan empat pada puluhan dan tiga pada satuan, hasilnya adalah lima puluh lima. Kita mundur dulu. Lima puluh lima adalah lima puluhan dan lima satuan. Empat puluhan kita kurangi dari lima puluhan, tinggal satu puluhan. Tiga satuan kita kurangi dari lima satuan, tinggal dua satuan. Jadi bilangan yang ditulis Kira adalah satu puluhan dan dua satuan, yaitu dua belas."
+        }
+      ],
+      "videos": [
+        {
+          "id": "K2B7B-V1",
+          "judul": "Kupu-kupu dan Capung",
+          "subjudul": "Lebih dari dan kurang dari",
+          "adegan": [
+            {
+              "id": "K2B7B-V1-1",
+              "judul": "Kupu-kupu di bilangan 58",
+              "ketukan": [
+                "Lihat garis angka ini. Kupu-kupu berada di antara bilangan lima puluh tujuh dan lima puluh sembilan.",
+                "Jadi kupu-kupu berada di bilangan lima puluh delapan.",
+                "Kupu-kupu maju dua langkah ke depan. Kita menghitung maju: lima puluh sembilan, enam puluh.",
+                "Jadi kupu-kupu berada di bilangan enam puluh. Dua lebihnya dari lima puluh delapan adalah enam puluh."
+              ],
+              "papan": [
+                "Antara 57 dan 59",
+                "Kupu-kupu di 58",
+                "Maju dua langkah",
+                "2 lebihnya dari 58: 60"
+              ]
+            },
+            {
+              "id": "K2B7B-V1-2",
+              "judul": "Capung di bilangan 75",
+              "ketukan": [
+                "Sekarang amati capung. Capung berada di antara bilangan tujuh puluh empat dan tujuh puluh enam.",
+                "Jadi capung berada di bilangan tujuh puluh lima.",
+                "Capung mundur tiga langkah ke belakang. Kita menghitung mundur: tujuh puluh empat, tujuh puluh tiga, tujuh puluh dua.",
+                "Jadi capung berada di bilangan tujuh puluh dua. Tiga kurangnya dari tujuh puluh lima adalah tujuh puluh dua."
+              ],
+              "papan": [
+                "Antara 74 dan 76",
+                "Capung di 75",
+                "Mundur tiga langkah",
+                "3 kurangnya dari 75: 72"
+              ]
+            },
+            {
+              "id": "K2B7B-V1-3",
+              "judul": "Lebih dari dan kurang dari",
+              "ketukan": [
+                "Lebihnya berarti maju, dan kurangnya berarti mundur.",
+                "Aku adalah bilangan. Aku dua lebihnya dari bilangan tujuh puluh enam. Aku adalah tujuh puluh delapan.",
+                "Aku adalah bilangan. Aku satu kurangnya dari bilangan enam puluh tujuh. Aku adalah enam puluh enam.",
+                "Garis bilangan membantu kita melompat maju dan mundur dengan teliti."
+              ],
+              "papan": [
+                "Lebih: maju, kurang: mundur",
+                "2 lebihnya dari 76: 78",
+                "1 kurangnya dari 67: 66",
+                "Garis bilangan membantu"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "K2B7B-V2",
+          "judul": "Kelereng Halim dan Malosi",
+          "subjudul": "Siapa yang lebih banyak?",
+          "adegan": [
+            {
+              "id": "K2B7B-V2-1",
+              "judul": "Lima puluh enam dan enam puluh lima",
+              "ketukan": [
+                "Halim mempunyai lima puluh enam butir kelereng. Malosi memiliki enam puluh lima butir kelereng.",
+                "Kelereng siapa yang lebih banyak? Kita masukkan kelereng ke dalam kantong, setiap kantong berisi sepuluh kelereng.",
+                "Bilangan lima puluh enam mempunyai lima puluhan dan enam satuan. Bilangan enam puluh lima mempunyai enam puluhan dan lima satuan.",
+                "Enam puluhan lebih banyak dari lima puluhan. Jadi bilangan enam puluh lima lebih besar dari lima puluh enam, dan kelereng Malosi lebih banyak."
+              ],
+              "papan": [
+                "Halim 56, Malosi 65",
+                "1 kantong: 10 kelereng",
+                "56: 5 puluhan, 6 satuan",
+                "65 lebih besar dari 56"
+              ]
+            },
+            {
+              "id": "K2B7B-V2-2",
+              "judul": "Puluhan yang sama",
+              "ketukan": [
+                "Sekarang bandingkan bilangan lima puluh empat dan lima puluh delapan.",
+                "Keduanya mempunyai lima puluhan. Karena puluhannya sama, kita lihat satuannya.",
+                "Lima puluh empat mempunyai empat satuan, dan lima puluh delapan mempunyai delapan satuan.",
+                "Delapan satuan lebih banyak dari empat satuan. Jadi lima puluh delapan lebih besar dari lima puluh empat."
+              ],
+              "papan": [
+                "Banding 54 dan 58",
+                "Puluhan sama: lihat satuan",
+                "4 satuan dan 8 satuan",
+                "58 lebih besar dari 54"
+              ]
+            },
+            {
+              "id": "K2B7B-V2-3",
+              "judul": "Kata perbandingan",
+              "ketukan": [
+                "Ada tiga kata untuk membandingkan dua bilangan: lebih besar dari, lebih kecil dari, dan sama dengan.",
+                "Enam puluh lima lebih besar dari lima puluh enam. Lima puluh enam lebih kecil dari enam puluh lima.",
+                "Dua bilangan yang puluhan dan satuannya sama, adalah bilangan yang sama dengan.",
+                "Kita juga dapat memakai tanda. Tanda itu selalu terbuka ke arah bilangan yang lebih besar."
+              ],
+              "papan": [
+                "Tiga kata banding",
+                "65 lebih besar dari 56",
+                "Sama: sama dengan",
+                "Tanda: > < ="
+              ]
+            }
+          ]
+        },
+        {
+          "id": "K2B7B-V3",
+          "judul": "Mengurutkan Bilangan",
+          "subjudul": "Dari yang paling kecil",
+          "adegan": [
+            {
+              "id": "K2B7B-V3-1",
+              "judul": "Tiga bilangan",
+              "ketukan": [
+                "Amati tiga bilangan ini: tujuh puluh enam, delapan puluh tiga, dan lima puluh tujuh.",
+                "Bilangan tujuh puluh enam mempunyai tujuh puluhan dan enam satuan. Delapan puluh tiga mempunyai delapan puluhan dan tiga satuan. Lima puluh tujuh mempunyai lima puluhan dan tujuh satuan.",
+                "Yang puluhannya paling banyak adalah delapan puluh tiga. Jadi delapan puluh tiga paling besar.",
+                "Yang puluhannya paling sedikit adalah lima puluh tujuh. Jadi lima puluh tujuh paling kecil."
+              ],
+              "papan": [
+                "76, 83, dan 57",
+                "Lihat puluhannya",
+                "83: puluhan terbanyak",
+                "57: puluhan tersedikit"
+              ]
+            },
+            {
+              "id": "K2B7B-V3-2",
+              "judul": "Dari yang paling kecil",
+              "ketukan": [
+                "Sekarang urutkan bilangan dari yang paling kecil.",
+                "Pertama lima puluh tujuh, karena puluhannya paling sedikit.",
+                "Kedua tujuh puluh enam, lalu ketiga delapan puluh tiga.",
+                "Urutannya dari yang paling kecil adalah lima puluh tujuh, tujuh puluh enam, dan delapan puluh tiga."
+              ],
+              "papan": [
+                "Urutkan dari terkecil",
+                "Pertama: 57",
+                "Kedua: 76, ketiga: 83",
+                "57, 76, 83"
+              ]
+            },
+            {
+              "id": "K2B7B-V3-3",
+              "judul": "Teka-teki Kira",
+              "ketukan": [
+                "Kira menuliskan satu bilangan. Kira berkata, jika aku tambahkan empat pada puluhan dan tiga pada satuan, hasilnya adalah lima puluh lima.",
+                "Kita mundur dulu. Lima puluh lima adalah lima puluhan dan lima satuan.",
+                "Empat puluhan kita kurangi dari lima puluhan, tinggal satu puluhan. Tiga satuan kita kurangi dari lima satuan, tinggal dua satuan.",
+                "Jadi bilangan yang ditulis Kira adalah satu puluhan dan dua satuan, yaitu dua belas."
+              ],
+              "papan": [
+                "Teka-teki Kira",
+                "55: 5 puluhan, 5 satuan",
+                "Kurangi 4 puluhan, 3 satuan",
+                "Bilangan Kira: 12"
+              ]
+            }
+          ]
+        }
+      ],
+      "mindMaps": [
+        {
+          "stepNumber": 1,
+          "stepTitle": "1. Garis Bilangan",
+          "stepDesc": "Garis bilangan menunjukkan bilangan berurutan dari kiri ke kanan. Bilangan di sebelah kanan lebih besar dan bilangan di sebelah kiri lebih kecil. Kupu-kupu berada di antara lima puluh tujuh dan lima puluh sembilan, jadi ia berada di lima puluh delapan. Dengan garis bilangan kita bisa menemukan bilangan yang hilang dengan melihat tetangganya.",
+          "icon": "📏",
+          "flowFrom": "Garis bilangan",
+          "flowTo": "Menghitung maju"
+        },
+        {
+          "stepNumber": 2,
+          "stepTitle": "2. Menghitung Maju",
+          "stepDesc": "Menghitung maju berarti bergerak ke kanan pada garis bilangan, dan kita memakainya untuk mencari bilangan yang lebihnya. Kupu-kupu di lima puluh delapan maju dua langkah: lima puluh sembilan, enam puluh. Jadi dua lebihnya dari lima puluh delapan adalah enam puluh. Setiap langkah menambah satu.",
+          "icon": "➡️",
+          "flowFrom": "Menghitung maju",
+          "flowTo": "Menghitung mundur"
+        },
+        {
+          "stepNumber": 3,
+          "stepTitle": "3. Menghitung Mundur",
+          "stepDesc": "Menghitung mundur berarti bergerak ke kiri pada garis bilangan, dan kita memakainya untuk mencari bilangan yang kurangnya. Capung di tujuh puluh lima mundur tiga langkah: tujuh puluh empat, tujuh puluh tiga, tujuh puluh dua. Jadi tiga kurangnya dari tujuh puluh lima adalah tujuh puluh dua. Setiap langkah mengurangi satu.",
+          "icon": "⬅️",
+          "flowFrom": "Menghitung mundur",
+          "flowTo": "Bandingkan puluhan dulu"
+        },
+        {
+          "stepNumber": 4,
+          "stepTitle": "4. Bandingkan Puluhan Dulu",
+          "stepDesc": "Untuk membandingkan dua bilangan, lihat banyak puluhannya lebih dulu. Lima puluh enam mempunyai lima puluhan dan enam puluh lima mempunyai enam puluhan. Enam puluhan lebih banyak dari lima puluhan, jadi enam puluh lima lebih besar. Puluhan menentukan besar bilangan karena satu puluhan bernilai sepuluh satuan.",
+          "icon": "🔟",
+          "flowFrom": "Bandingkan puluhan dulu",
+          "flowTo": "Puluhan sama, lihat satuan"
+        },
+        {
+          "stepNumber": 5,
+          "stepTitle": "5. Puluhan Sama, Lihat Satuan",
+          "stepDesc": "Bila banyak puluhannya sama, kita membandingkan satuannya. Lima puluh empat dan lima puluh delapan sama-sama punya lima puluhan. Satuan delapan lebih banyak dari satuan empat, jadi lima puluh delapan lebih besar dari lima puluh empat. Bila puluhan dan satuannya sama, kedua bilangan sama besar.",
+          "icon": "🔍",
+          "flowFrom": "Puluhan sama, lihat satuan",
+          "flowTo": "Kata perbandingan"
+        },
+        {
+          "stepNumber": 6,
+          "stepTitle": "6. Kata dan Tanda Perbandingan",
+          "stepDesc": "Ada tiga kata untuk membandingkan dua bilangan: lebih besar dari, lebih kecil dari, dan sama dengan. Enam puluh lima lebih besar dari lima puluh enam. Lima puluh enam lebih kecil dari enam puluh lima. Tanda lebih besar, tanda lebih kecil, dan tanda sama dengan menuliskan kata itu dengan singkat. Tanda lebih besar dan lebih kecil selalu terbuka ke arah bilangan yang lebih besar.",
+          "icon": "⚖️",
+          "flowFrom": "Kata perbandingan",
+          "flowTo": "Mengurutkan bilangan"
+        },
+        {
+          "stepNumber": 7,
+          "stepTitle": "7. Mengurutkan Bilangan",
+          "stepDesc": "Untuk mengurutkan tiga bilangan atau lebih, bandingkan puluhannya. Bilangan yang puluhannya paling banyak adalah yang paling besar, dan bilangan yang puluhannya paling sedikit adalah yang paling kecil. Dari tujuh puluh enam, delapan puluh tiga, dan lima puluh tujuh, urutan dari yang paling kecil adalah lima puluh tujuh, tujuh puluh enam, dan delapan puluh tiga.",
+          "icon": "📶",
+          "flowFrom": "Mengurutkan bilangan",
+          "flowTo": "Teka-teki bilangan"
+        },
+        {
+          "stepNumber": 8,
+          "stepTitle": "8. Teka-Teki Bilangan",
+          "stepDesc": "Kita dapat membuat dan memecahkan teka-teki bilangan. Aku adalah bilangan, aku dua lebihnya dari tujuh puluh enam, jadi aku tujuh puluh delapan. Aku satu kurangnya dari enam puluh tujuh, jadi aku enam puluh enam. Untuk teka-teki Kira, kita mundur dari hasil: lima puluh lima dikurangi empat puluhan dan tiga satuan menjadi dua belas. Membuat teka-teki sendiri melatih kita berpikir teliti.",
+          "icon": "🧠",
+          "flowFrom": "Teka-teki bilangan",
+          "flowTo": "Siap membandingkan"
+        }
+      ],
+      "infografisData": [
+        {
+          "fruitName": "Garis Bilangan",
+          "emoji": "📏",
+          "countNum": 2,
+          "countWord": "Dua",
+          "voiceSentence": "Pada garis bilangan, bilangan di kanan lebih besar dan bilangan di kiri lebih kecil."
+        },
+        {
+          "fruitName": "Lebihnya dan Kurangnya",
+          "emoji": "↔️",
+          "countNum": 2,
+          "countWord": "Dua",
+          "voiceSentence": "Dua lebihnya dari lima puluh delapan adalah enam puluh, karena maju dua langkah. Tiga kurangnya dari tujuh puluh lima adalah tujuh puluh dua, karena mundur tiga langkah."
+        },
+        {
+          "fruitName": "Bandingkan Puluhan Dulu",
+          "emoji": "🔟",
+          "countNum": 2,
+          "countWord": "Dua",
+          "voiceSentence": "Lima puluh enam punya lima puluhan dan enam puluh lima punya enam puluhan. Puluhan yang lebih banyak berarti bilangan yang lebih besar."
+        },
+        {
+          "fruitName": "Puluhan Sama, Lihat Satuan",
+          "emoji": "🔍",
+          "countNum": 2,
+          "countWord": "Dua",
+          "voiceSentence": "Lima puluh empat dan lima puluh delapan sama-sama punya lima puluhan. Kita lihat satuannya: delapan lebih banyak dari empat."
+        },
+        {
+          "fruitName": "Tiga Kata Perbandingan",
+          "emoji": "🔤",
+          "countNum": 3,
+          "countWord": "Tiga",
+          "voiceSentence": "Tiga kata perbandingan adalah lebih besar dari, lebih kecil dari, dan sama dengan."
+        },
+        {
+          "fruitName": "Tiga Tanda Perbandingan",
+          "emoji": "🐊",
+          "countNum": 3,
+          "countWord": "Tiga",
+          "voiceSentence": "Tanda lebih besar, tanda lebih kecil, dan tanda sama dengan. Tanda lebih besar dan lebih kecil terbuka ke arah bilangan yang lebih besar."
+        },
+        {
+          "fruitName": "Mengurutkan Tiga Bilangan",
+          "emoji": "📶",
+          "countNum": 3,
+          "countWord": "Tiga",
+          "voiceSentence": "Urutan dari yang paling kecil: lima puluh tujuh, tujuh puluh enam, dan delapan puluh tiga."
+        },
+        {
+          "fruitName": "Paling Besar, Paling Kecil",
+          "emoji": "🏆",
+          "countNum": 2,
+          "countWord": "Dua",
+          "voiceSentence": "Bilangan yang puluhannya paling banyak adalah yang paling besar. Bilangan yang puluhannya paling sedikit adalah yang paling kecil."
+        },
+        {
+          "fruitName": "Kartu Bilangan",
+          "emoji": "🃏",
+          "countNum": 2,
+          "countWord": "Dua",
+          "voiceSentence": "Dengan dua kartu tiga dan tujuh, bilangan terbesar adalah tujuh puluh tiga dan bilangan terkecil adalah tiga puluh tujuh. Kartu yang lebih besar ditaruh di tempat puluhan untuk bilangan terbesar."
+        },
+        {
+          "fruitName": "Teka-Teki Kira",
+          "emoji": "🧠",
+          "countNum": 3,
+          "countWord": "Tiga",
+          "voiceSentence": "Kira berkata, jika aku tambahkan empat pada puluhan dan tiga pada satuan, hasilnya lima puluh lima. Kita mundur, dan bilangan Kira adalah dua belas."
+        }
+      ],
+      "concreteSlides": [
+        {
+          "title": "Maju dan Mundur",
+          "emoji": "🦋",
+          "targetCount": 6,
+          "voiceGuide": "Maju atau mundur sesuai perintah."
+        },
+        {
+          "title": "Di Mana Aku?",
+          "emoji": "📍",
+          "targetCount": 9,
+          "voiceGuide": "Ketuk bilangan yang berada di antaranya."
+        },
+        {
+          "title": "Siapa Lebih Banyak?",
+          "emoji": "⚖️",
+          "targetCount": 6,
+          "voiceGuide": "Lihat kantongnya, lalu pilih yang lebih banyak."
+        },
+        {
+          "title": "Ketuk yang Paling Banyak dan Paling Sedikit",
+          "emoji": "🏆",
+          "targetCount": 6,
+          "voiceGuide": "Ketuk kumpulan yang paling banyak atau sedikit."
+        },
+        {
+          "title": "Susun Dua Kartu",
+          "emoji": "🔢",
+          "targetCount": 4,
+          "voiceGuide": "Ketuk kartu, lalu ketuk tempatnya."
+        },
+        {
+          "title": "Urutkan Tiga Kantong",
+          "emoji": "📶",
+          "targetCount": 3,
+          "voiceGuide": "Ketuk kantong menurut urutan banyaknya."
+        },
+        {
+          "title": "Jodohkan Kiri dan Kanan",
+          "emoji": "↔️",
+          "targetCount": 9,
+          "voiceGuide": "Ketuk pasangan, lalu ketuk pernyataannya."
+        },
+        {
+          "title": "Memori Banyak Benda",
+          "emoji": "🃏",
+          "targetCount": 12,
+          "voiceGuide": "Balik dua kartu, cari benda dan bilangannya."
+        },
+        {
+          "title": "Pilah: Lebih atau Kurang dari Acuan",
+          "emoji": "🗂️",
+          "targetCount": 3,
+          "voiceGuide": "Pilah kumpulan ke kotak yang tepat."
+        },
+        {
+          "title": "Ketuk Semua yang Memenuhi",
+          "emoji": "✅",
+          "targetCount": 3,
+          "voiceGuide": "Ketuk semua yang memenuhi, lalu periksa."
+        }
+      ],
+      "pictorialSlides": [
+        {
+          "title": "Garis Bilangan: Antara, Lebih, Kurang",
+          "diagramType": "number-line",
+          "numberA": 3,
+          "numberB": 3,
+          "caption": "Menemukan bilangan di antara, yang lebihnya, dan yang kurangnya pada garis bilangan."
+        },
+        {
+          "title": "Bandingkan Dua Papan",
+          "diagramType": "place-value-compare",
+          "numberA": 3,
+          "numberB": 2,
+          "caption": "Membandingkan dua bilangan pada dua papan nilai tempat."
+        },
+        {
+          "title": "Urutkan Papan",
+          "diagramType": "board-order",
+          "numberA": 3,
+          "numberB": 3,
+          "caption": "Mengurutkan papan nilai tempat dari bilangan terkecil atau terbesar."
+        },
+        {
+          "title": "Ketuk Model Terbesar dan Terkecil",
+          "diagramType": "model-pick",
+          "numberA": 3,
+          "numberB": 2,
+          "caption": "Menemukan model batang dan kotak yang paling besar dan paling kecil."
+        },
+        {
+          "title": "Pilah Model terhadap Acuan",
+          "diagramType": "model-sort",
+          "numberA": 3,
+          "numberB": 6,
+          "caption": "Memilah model menurut lebih besar atau lebih kecil dari bilangan acuan."
+        },
+        {
+          "title": "Jodohkan Papan dan Tanda",
+          "diagramType": "symbol-match",
+          "numberA": 3,
+          "numberB": 3,
+          "caption": "Menjodohkan dua papan dengan tanda perbandingan yang tepat."
+        },
+        {
+          "title": "Tetangga di Tabel Seratus",
+          "diagramType": "hundred-chart",
+          "numberA": 3,
+          "numberB": 4,
+          "caption": "Menemukan bilangan yang hilang pada tabel seratus dari bilangan tetangganya."
+        },
+        {
+          "title": "Langkah pada Garis Diagram",
+          "diagramType": "step-line",
+          "numberA": 3,
+          "numberB": 2,
+          "caption": "Maju dan mundur satu langkah pada garis bilangan diagram."
+        },
+        {
+          "title": "Memori Papan dan Bilangan",
+          "diagramType": "board-memory",
+          "numberA": 3,
+          "numberB": 4,
+          "caption": "Mencocokkan papan nilai tempat dengan lambang bilangannya."
+        },
+        {
+          "title": "Ketuk Semua Model terhadap Acuan",
+          "diagramType": "model-select",
+          "numberA": 3,
+          "numberB": 6,
+          "caption": "Memilih semua model yang lebih besar atau lebih kecil dari sebuah acuan."
+        }
+      ],
+      "abstractSlides": [
+        {
+          "symbolLarge": ">  <  =",
+          "wordLarge": "LEBIH BESAR DARI",
+          "mathNotation": "lebih besar • lebih kecil • sama dengan",
+          "voiceReadout": "Pilih kata yang tepat untuk bagian kosong."
+        },
+        {
+          "symbolLarge": "✓ ✗",
+          "wordLarge": "BENAR SALAH",
+          "mathNotation": "periksa dengan alasan",
+          "voiceReadout": "Baca pernyataan, lalu pilih benar atau salah."
+        },
+        {
+          "symbolLarge": "Aa",
+          "wordLarge": "SUSUN KATA",
+          "mathNotation": "kata • kalimat • makna",
+          "voiceReadout": "Ketuk kata menjadi kalimat yang benar."
+        },
+        {
+          "symbolLarge": "76 + 2",
+          "wordLarge": "AKU BILANGAN APA?",
+          "mathNotation": "lebihnya • kurangnya",
+          "voiceReadout": "Baca teka-tekinya, lalu pilih bilangannya."
+        },
+        {
+          "symbolLarge": "58 → 60",
+          "wordLarge": "TABEL",
+          "mathNotation": "lebihnya • kurangnya",
+          "voiceReadout": "Isi tabel dengan kartu angka."
+        },
+        {
+          "symbolLarge": "7 9",
+          "wordLarge": "TULIS BILANGAN",
+          "mathNotation": "puluhan • satuan",
+          "voiceReadout": "Atur angka puluhan dan satuan, lalu periksa."
+        },
+        {
+          "symbolLarge": "?",
+          "wordLarge": "DETEKTIF",
+          "mathNotation": "tiga petunjuk, satu jawaban",
+          "voiceReadout": "Baca semua petunjuk, lalu pilih bilangannya."
+        },
+        {
+          "symbolLarge": "⇄",
+          "wordLarge": "PETA KONSEP",
+          "mathNotation": "banding • lebih • kurang",
+          "voiceReadout": "Pilih kartu yang tepat untuk kotak yang menyala."
+        },
+        {
+          "symbolLarge": "56 < 60",
+          "wordLarge": "URUTKAN",
+          "mathNotation": "bandingkan puluhan dulu",
+          "voiceReadout": "Ketuk bilangan menurut urutannya."
+        },
+        {
+          "symbolLarge": "✔✔",
+          "wordLarge": "SEMUA BENAR",
+          "mathNotation": "boleh lebih dari satu",
+          "voiceReadout": "Ketuk semua yang memenuhi, lalu periksa."
+        }
+      ],
+      "interactiveGames": [
+        {
+          "gameId": "subK2B7B-game-1",
+          "gameNumber": 1,
+          "stage": "Concrete",
+          "gameType": "step-forward-backward",
+          "title": "Maju dan Mundur",
+          "bookReference": "Buku Siswa hlm. 209–210 (kupu-kupu maju dua langkah, capung mundur tiga langkah)",
+          "objective": "Menentukan bilangan yang lebih dari atau kurang dari dengan menghitung maju dan mundur.",
+          "mechanicDescription": "Tiga ronde, tiap ronde dua soal, misalnya kupu-kupu di 58 maju dua langkah, capung di 75 mundur tiga langkah. Siswa menekan Maju atau Mundur satu langkah demi satu langkah pada garis angka. Bila melewati perintah, tekan Ulang.",
+          "voiceGuide": "Maju atau mundur sesuai perintah."
+        },
+        {
+          "gameId": "subK2B7B-game-2",
+          "gameNumber": 2,
+          "stage": "Concrete",
+          "gameType": "find-between-number",
+          "title": "Di Mana Aku?",
+          "bookReference": "Buku Siswa hlm. 209–210 (kupu-kupu berada di antara 57 dan 59)",
+          "objective": "Menemukan bilangan yang berada di antara dua bilangan.",
+          "mechanicDescription": "Tiga ronde, tiap ronde tiga soal, misalnya aku berada di antara 74 dan 76. Siswa mengetuk bilangan itu pada garis angka. Letak jawaban berpindah di garis.",
+          "voiceGuide": "Ketuk bilangan yang berada di antaranya."
+        },
+        {
+          "gameId": "subK2B7B-game-3",
+          "gameNumber": 3,
+          "stage": "Concrete",
+          "gameType": "compare-collections-names",
+          "title": "Siapa Lebih Banyak?",
+          "bookReference": "Buku Siswa hlm. 211–212 (kelereng Halim dan Malosi)",
+          "objective": "Membandingkan banyak benda milik dua anak.",
+          "mechanicDescription": "Tiga ronde, tiap ronde dua soal. Dua anak punya kumpulan kelereng berisi kantong penuh dan kelereng lepas, misalnya Halim 56 dan Malosi 65. Siswa memilih siapa yang lebih banyak atau sama banyak.",
+          "voiceGuide": "Lihat kantongnya, lalu pilih yang lebih banyak."
+        },
+        {
+          "gameId": "subK2B7B-game-4",
+          "gameNumber": 4,
+          "stage": "Concrete",
+          "gameType": "tap-most-least",
+          "title": "Ketuk yang Paling Banyak dan Paling Sedikit",
+          "bookReference": "Buku Siswa hlm. 214 (bilangan yang paling besar dan paling kecil)",
+          "objective": "Menemukan kumpulan benda yang paling banyak dan paling sedikit.",
+          "mechanicDescription": "Tiga ronde, tiap ronde tiga kumpulan benda dan dua pertanyaan: paling banyak, lalu paling sedikit. Siswa mengetuk kumpulannya. Letak kunci berpindah.",
+          "voiceGuide": "Ketuk kumpulan yang paling banyak atau sedikit."
+        },
+        {
+          "gameId": "subK2B7B-game-5",
+          "gameNumber": 5,
+          "stage": "Concrete",
+          "gameType": "two-cards-biggest-smallest",
+          "title": "Susun Dua Kartu",
+          "bookReference": "Buku Siswa hlm. 215 (Ayo Mencoba: kartu bilangan 1–9 dan papan nilai tempat)",
+          "objective": "Menyusun dua kartu angka menjadi bilangan terbesar atau terkecil.",
+          "mechanicDescription": "Empat ronde: kartu 3 dan 7, 5 dan 2, 8 dan 6, 4 dan 9. Siswa mengetuk kartu lalu mengetuk tempat puluhan atau satuan. Susunan yang salah diberi petunjuk dan kartu kembali.",
+          "voiceGuide": "Ketuk kartu, lalu ketuk tempatnya."
+        },
+        {
+          "gameId": "subK2B7B-game-6",
+          "gameNumber": 6,
+          "stage": "Concrete",
+          "gameType": "order-three-collections",
+          "title": "Urutkan Tiga Kantong",
+          "bookReference": "Buku Siswa hlm. 214 (urutkan tiga bilangan dari yang paling kecil)",
+          "objective": "Mengurutkan tiga kumpulan benda dari yang paling sedikit atau paling banyak.",
+          "mechanicDescription": "Tiga ronde, tiap ronde tiga kantong bertanda huruf, misalnya 76, 83, dan 57. Siswa mengetuk kantong satu per satu menurut urutan banyaknya.",
+          "voiceGuide": "Ketuk kantong menurut urutan banyaknya."
+        },
+        {
+          "gameId": "subK2B7B-game-7",
+          "gameNumber": 7,
+          "stage": "Concrete",
+          "gameType": "match-pair-relation",
+          "title": "Jodohkan Kiri dan Kanan",
+          "bookReference": "Buku Siswa hlm. 212–213 (membandingkan dua bilangan)",
+          "objective": "Menjodohkan dua kumpulan benda dengan pernyataan perbandingannya.",
+          "mechanicDescription": "Tiga ronde, tiap ronde tiga pasang kumpulan benda dan tiga pernyataan: kiri lebih banyak, sama banyak, dan kanan lebih banyak. Siswa mengetuk pasangan, lalu pernyataan yang cocok.",
+          "voiceGuide": "Ketuk pasangan, lalu ketuk pernyataannya."
+        },
+        {
+          "gameId": "subK2B7B-game-8",
+          "gameNumber": 8,
+          "stage": "Concrete",
+          "gameType": "memory-compare-numbers",
+          "title": "Memori Banyak Benda",
+          "bookReference": "Buku Siswa hlm. 212–213 (bilangan dan puluhan satuannya)",
+          "objective": "Mencocokkan kumpulan benda dengan lambang bilangannya.",
+          "mechanicDescription": "Tiga ronde, tiap ronde delapan kartu tertutup (empat pasang): kumpulan benda dan lambang bilangannya. Siswa membalik dua kartu.",
+          "voiceGuide": "Balik dua kartu, cari benda dan bilangannya."
+        },
+        {
+          "gameId": "subK2B7B-game-9",
+          "gameNumber": 9,
+          "stage": "Concrete",
+          "gameType": "sort-more-less-reference",
+          "title": "Pilah: Lebih atau Kurang dari Acuan",
+          "bookReference": "Buku Siswa hlm. 216 (lingkari bilangan yang lebih besar)",
+          "objective": "Memilah kumpulan benda yang lebih banyak dan yang lebih sedikit dari sebuah acuan.",
+          "mechanicDescription": "Tiga ronde, tiap ronde satu bilangan acuan (60, 75, 40) dan enam kumpulan benda. Siswa menyeret atau mengetuk kumpulan ke kotak Lebih dari acuan atau Kurang dari acuan.",
+          "voiceGuide": "Pilah kumpulan ke kotak yang tepat."
+        },
+        {
+          "gameId": "subK2B7B-game-10",
+          "gameNumber": 10,
+          "stage": "Concrete",
+          "gameType": "select-all-more-than",
+          "title": "Ketuk Semua yang Memenuhi",
+          "bookReference": "Buku Siswa hlm. 216–217 (bilangan yang lebih besar atau lebih kecil)",
+          "objective": "Memilih semua kumpulan benda yang lebih banyak atau lebih sedikit dari sebuah acuan.",
+          "mechanicDescription": "Tiga ronde, tiap ronde enam kumpulan benda dan satu perintah, misalnya lebih dari 65. Siswa mengetuk semua yang memenuhi, lalu menekan Periksa.",
+          "voiceGuide": "Ketuk semua yang memenuhi, lalu periksa."
+        },
+        {
+          "gameId": "subK2B7B-game-11",
+          "gameNumber": 11,
+          "stage": "Picture",
+          "gameType": "number-line-between-more-less",
+          "title": "Garis Bilangan: Antara, Lebih, Kurang",
+          "bookReference": "Buku Siswa hlm. 209–210 (di antara, lebih dari, dan kurang dari pada garis bilangan)",
+          "objective": "Menemukan bilangan di antara, yang lebihnya, dan yang kurangnya pada garis bilangan.",
+          "mechanicDescription": "Tiga ronde, tiap ronde tiga soal: di antara dua bilangan, sekian lebihnya, dan sekian kurangnya. Siswa mengetuk bilangan yang tepat pada garis bilangan.",
+          "voiceGuide": "Ketuk bilangan yang diminta pada garis."
+        },
+        {
+          "gameId": "subK2B7B-game-12",
+          "gameNumber": 12,
+          "stage": "Picture",
+          "gameType": "compare-place-value-boards",
+          "title": "Bandingkan Dua Papan",
+          "bookReference": "Buku Siswa hlm. 212–213 (bandingkan puluhan lalu satuan)",
+          "objective": "Membandingkan dua bilangan pada dua papan nilai tempat.",
+          "mechanicDescription": "Tiga ronde, tiap ronde dua soal. Dua papan nilai tempat A dan B ditampilkan, dan siswa memilih papan yang lebih besar atau sama besar.",
+          "voiceGuide": "Bandingkan puluhan dulu, lalu satuannya."
+        },
+        {
+          "gameId": "subK2B7B-game-13",
+          "gameNumber": 13,
+          "stage": "Picture",
+          "gameType": "order-boards",
+          "title": "Urutkan Papan",
+          "bookReference": "Buku Siswa hlm. 214 dan 222 (urutkan bilangan)",
+          "objective": "Mengurutkan papan nilai tempat dari bilangan terkecil atau terbesar.",
+          "mechanicDescription": "Tiga ronde, tiap ronde tiga atau empat papan. Siswa mengetuk papan satu per satu menurut urutan.",
+          "voiceGuide": "Ketuk papan menurut urutan bilangannya."
+        },
+        {
+          "gameId": "subK2B7B-game-14",
+          "gameNumber": 14,
+          "stage": "Picture",
+          "gameType": "tap-bigger-model",
+          "title": "Ketuk Model Terbesar dan Terkecil",
+          "bookReference": "Buku Siswa hlm. 214 (bilangan paling besar dan paling kecil)",
+          "objective": "Menemukan model batang dan kotak yang paling besar dan paling kecil.",
+          "mechanicDescription": "Tiga ronde, tiap ronde tiga model dan dua pertanyaan: terbesar, lalu terkecil. Siswa mengetuk modelnya.",
+          "voiceGuide": "Ketuk model yang terbesar atau terkecil."
+        },
+        {
+          "gameId": "subK2B7B-game-15",
+          "gameNumber": 15,
+          "stage": "Picture",
+          "gameType": "sort-models-reference",
+          "title": "Pilah Model terhadap Acuan",
+          "bookReference": "Buku Siswa hlm. 216 (lebih besar dan lebih kecil dari sebuah bilangan)",
+          "objective": "Memilah model menurut lebih besar atau lebih kecil dari bilangan acuan.",
+          "mechanicDescription": "Tiga ronde, tiap ronde bilangan acuan (50, 30, 80) dan enam model. Siswa menyeret atau mengetuk model ke kotak yang tepat.",
+          "voiceGuide": "Pilah model ke kotak yang tepat."
+        },
+        {
+          "gameId": "subK2B7B-game-16",
+          "gameNumber": 16,
+          "stage": "Picture",
+          "gameType": "match-boards-symbol",
+          "title": "Jodohkan Papan dan Tanda",
+          "bookReference": "Buku Siswa hlm. 212–213 (lebih besar, lebih kecil, sama dengan)",
+          "objective": "Menjodohkan dua papan dengan tanda perbandingan yang tepat.",
+          "mechanicDescription": "Tiga ronde, tiap ronde tiga pasang papan dan tiga kartu tanda lebih besar, lebih kecil, dan sama dengan. Siswa mengetuk pasangan papan lalu kartu tandanya.",
+          "voiceGuide": "Ketuk pasangan papan, lalu ketuk tandanya."
+        },
+        {
+          "gameId": "subK2B7B-game-17",
+          "gameNumber": 17,
+          "stage": "Picture",
+          "gameType": "hundred-chart-neighbors",
+          "title": "Tetangga di Tabel Seratus",
+          "bookReference": "Buku Siswa hlm. 209 (tabel bilangan 51 sampai 100)",
+          "objective": "Menemukan bilangan yang hilang pada tabel seratus dari bilangan tetangganya.",
+          "mechanicDescription": "Tiga ronde, tiap ronde empat atau lima kotak kosong pada tabel sepuluh kolom. Siswa memilih satu dari tiga angka untuk kotak yang menyala.",
+          "voiceGuide": "Isi kotak yang menyala dengan bilangan yang tepat."
+        },
+        {
+          "gameId": "subK2B7B-game-18",
+          "gameNumber": 18,
+          "stage": "Picture",
+          "gameType": "step-on-diagram-line",
+          "title": "Langkah pada Garis Diagram",
+          "bookReference": "Buku Siswa hlm. 210 (maju dua langkah, mundur tiga langkah)",
+          "objective": "Maju dan mundur satu langkah pada garis bilangan diagram.",
+          "mechanicDescription": "Tiga ronde, tiap ronde dua soal. Bulatan penanda berada di sebuah bilangan, dan siswa menekan Maju atau Mundur sesuai perintah.",
+          "voiceGuide": "Maju atau mundur sesuai perintah."
+        },
+        {
+          "gameId": "subK2B7B-game-19",
+          "gameNumber": 19,
+          "stage": "Picture",
+          "gameType": "memory-boards-numerals",
+          "title": "Memori Papan dan Bilangan",
+          "bookReference": "Buku Siswa hlm. 212–213 (bilangan dan puluhan satuannya)",
+          "objective": "Mencocokkan papan nilai tempat dengan lambang bilangannya.",
+          "mechanicDescription": "Tiga ronde, tiap ronde delapan kartu tertutup (empat pasang): papan nilai tempat dan lambang bilangannya.",
+          "voiceGuide": "Balik dua kartu, cari papan dan bilangannya."
+        },
+        {
+          "gameId": "subK2B7B-game-20",
+          "gameNumber": 20,
+          "stage": "Picture",
+          "gameType": "select-all-models-reference",
+          "title": "Ketuk Semua Model terhadap Acuan",
+          "bookReference": "Buku Siswa hlm. 216–217 (bilangan yang lebih besar atau lebih kecil)",
+          "objective": "Memilih semua model yang lebih besar atau lebih kecil dari sebuah acuan.",
+          "mechanicDescription": "Tiga ronde, tiap ronde enam model dan satu perintah, misalnya lebih besar dari 60. Siswa mengetuk semua yang memenuhi, lalu menekan Periksa.",
+          "voiceGuide": "Ketuk semua model yang memenuhi, lalu periksa."
+        },
+        {
+          "gameId": "subK2B7B-game-21",
+          "gameNumber": 21,
+          "stage": "Abstract",
+          "gameType": "complete-compare-sentences",
+          "title": "Lengkapi Kalimat Banding",
+          "bookReference": "Buku Siswa hlm. 212–213 (bilangan 65 lebih besar dari bilangan 56)",
+          "objective": "Melengkapi kalimat perbandingan dua bilangan dengan kata yang tepat.",
+          "mechanicDescription": "Dua ronde, tiap ronde tiga kalimat, misalnya bilangan 58 ... bilangan 54. Siswa memilih lebih besar dari, lebih kecil dari, atau sama dengan. Kalimat lengkap dibacakan.",
+          "voiceGuide": "Pilih kata yang tepat untuk bagian kosong."
+        },
+        {
+          "gameId": "subK2B7B-game-22",
+          "gameNumber": 22,
+          "stage": "Abstract",
+          "gameType": "true-false-compare",
+          "title": "Benar atau Salah: Perbandingan",
+          "bookReference": "Buku Siswa hlm. 209–217 (membandingkan dan lebih dari, kurang dari)",
+          "objective": "Menilai pernyataan tentang perbandingan, lebihnya, dan kurangnya.",
+          "mechanicDescription": "Dua ronde, tiap ronde lima pernyataan. Siswa memilih Benar atau Salah. Pernyataan dihitung dari bilangan, dan tiap jawaban diberi penjelasan singkat.",
+          "voiceGuide": "Baca pernyataan, lalu pilih benar atau salah."
+        },
+        {
+          "gameId": "subK2B7B-game-23",
+          "gameNumber": 23,
+          "stage": "Abstract",
+          "gameType": "build-compare-sentence",
+          "title": "Susun Kalimat Banding",
+          "bookReference": "Buku Siswa hlm. 209–213 (kalimat perbandingan dan menghitung maju mundur)",
+          "objective": "Menyusun kata menjadi kalimat tentang perbandingan dan langkah maju atau mundur.",
+          "mechanicDescription": "Empat kalimat. Kartu kata diketuk berurutan. Satu kartu pengecoh tidak dipakai. Kalimat yang benar dibacakan.",
+          "voiceGuide": "Ketuk kata menjadi kalimat yang benar."
+        },
+        {
+          "gameId": "subK2B7B-game-24",
+          "gameNumber": 24,
+          "stage": "Abstract",
+          "gameType": "riddle-i-am-a-number",
+          "title": "Aku Adalah Bilangan",
+          "bookReference": "Buku Siswa hlm. 217 nomor 4 dan 5 (aku dua lebihnya dari 76; aku satu kurangnya dari 67)",
+          "objective": "Menemukan bilangan dari petunjuk lebihnya atau kurangnya.",
+          "mechanicDescription": "Tiga ronde, tiap ronde dua soal, misalnya aku dua lebihnya dari bilangan 76. Siswa memilih satu dari tiga bilangan.",
+          "voiceGuide": "Baca teka-tekinya, lalu pilih bilangannya."
+        },
+        {
+          "gameId": "subK2B7B-game-25",
+          "gameNumber": 25,
+          "stage": "Abstract",
+          "gameType": "fill-more-less-table",
+          "title": "Tabel Lebihnya dan Kurangnya",
+          "bookReference": "Buku Siswa hlm. 209–210 (2 lebihnya dari 58; 3 kurangnya dari 75)",
+          "objective": "Mengisi tabel bilangan yang sekian lebihnya atau kurangnya.",
+          "mechanicDescription": "Dua ronde dengan tabel berisi empat baris: 2 lebihnya dari bilangan dan 3 kurangnya dari bilangan. Siswa mengetuk baris, lalu mengetuk kartu angka.",
+          "voiceGuide": "Isi tabel dengan kartu angka."
+        },
+        {
+          "gameId": "subK2B7B-game-26",
+          "gameNumber": 26,
+          "stage": "Abstract",
+          "gameType": "write-two-digits",
+          "title": "Tulis Dua Angka",
+          "bookReference": "Buku Siswa hlm. 208 dan 217 (tulis lambang bilangan)",
+          "objective": "Menuliskan bilangan hasil lebihnya atau kurangnya pada papan dua angka.",
+          "mechanicDescription": "Tiga ronde, tiap ronde dua soal, misalnya satu kurangnya dari 80. Siswa mengatur angka puluhan dan angka satuan, lalu menekan Periksa.",
+          "voiceGuide": "Atur angka puluhan dan satuan, lalu periksa."
+        },
+        {
+          "gameId": "subK2B7B-game-27",
+          "gameNumber": 27,
+          "stage": "Abstract",
+          "gameType": "riddle-number-clues-compare",
+          "title": "Detektif Bilangan Besar Kecil",
+          "bookReference": "Buku Siswa hlm. 217 (aku adalah bilangan) dan 223 (buatlah pertanyaan untuk menunjukkan satu bilangan)",
+          "objective": "Menemukan bilangan dari petunjuk lebih besar, lebih kecil, puluhan, dan satuan.",
+          "mechanicDescription": "Empat soal. Siswa membaca tiga petunjuk, misalnya aku lebih besar dari 65, lebih kecil dari 70, dan satuanku 8, lalu memilih satu dari tiga bilangan.",
+          "voiceGuide": "Baca semua petunjuk, lalu pilih bilangannya."
+        },
+        {
+          "gameId": "subK2B7B-game-28",
+          "gameNumber": 28,
+          "stage": "Abstract",
+          "gameType": "concept-map-fill",
+          "title": "Peta Konsep Banding",
+          "bookReference": "Buku Siswa hlm. 192 (peta konsep: membandingkan bilangan; lebih dari dan kurang dari)",
+          "objective": "Melengkapi peta konsep membandingkan dua bilangan serta lebih dari dan kurang dari.",
+          "mechanicDescription": "Dua peta konsep, tiap peta empat kotak. Siswa memilih kartu yang tepat untuk kotak yang menyala.",
+          "voiceGuide": "Pilih kartu yang tepat untuk kotak yang menyala."
+        },
+        {
+          "gameId": "subK2B7B-game-29",
+          "gameNumber": 29,
+          "stage": "Abstract",
+          "gameType": "order-numerals",
+          "title": "Urutkan Lima Bilangan",
+          "bookReference": "Buku Siswa hlm. 214 dan 222 nomor 5 (urutkan bilangan mulai dari yang paling kecil)",
+          "objective": "Mengurutkan empat atau lima bilangan dari yang paling kecil atau paling besar.",
+          "mechanicDescription": "Tiga ronde, tiap ronde empat atau lima bilangan, misalnya 65, 71, 56, 79, 60. Siswa mengetuk bilangan satu per satu menurut urutan.",
+          "voiceGuide": "Ketuk bilangan menurut urutannya."
+        },
+        {
+          "gameId": "subK2B7B-game-30",
+          "gameNumber": 30,
+          "stage": "Abstract",
+          "gameType": "select-all-compare-reference",
+          "title": "Ketuk Semua terhadap Acuan",
+          "bookReference": "Buku Siswa hlm. 216–217 (lingkari bilangan yang lebih besar)",
+          "objective": "Memilih semua bilangan yang lebih besar atau lebih kecil dari sebuah acuan.",
+          "mechanicDescription": "Tiga ronde, tiap ronde enam bilangan dan satu perintah, misalnya lebih besar dari 55. Siswa mengetuk semua yang memenuhi, lalu menekan Periksa.",
+          "voiceGuide": "Ketuk semua yang memenuhi, lalu periksa."
+        }
+      ],
+      "poinPenting": {
+        "poin": [
+          {
+            "nama": "Garis bilangan",
+            "isi": "kanan lebih besar, kiri lebih kecil",
+            "suara": "Pada garis bilangan, bilangan di sebelah kanan lebih besar dan bilangan di sebelah kiri lebih kecil."
+          },
+          {
+            "nama": "Lebihnya dan kurangnya",
+            "isi": "maju untuk lebih, mundur untuk kurang",
+            "suara": "Menghitung maju untuk mencari lebihnya, dan menghitung mundur untuk mencari kurangnya."
+          },
+          {
+            "nama": "Bandingkan puluhan dulu",
+            "isi": "puluhan sama, lihat satuan",
+            "suara": "Untuk membandingkan dua bilangan, lihat puluhannya lebih dulu. Bila puluhannya sama, lihat satuannya."
+          },
+          {
+            "nama": "Kata perbandingan",
+            "isi": "lebih besar, lebih kecil, sama dengan",
+            "suara": "Kata perbandingan bilangan adalah lebih besar dari, lebih kecil dari, dan sama dengan."
+          },
+          {
+            "nama": "Mengurutkan bilangan",
+            "isi": "dari yang paling kecil",
+            "suara": "Untuk mengurutkan bilangan, bandingkan puluhannya. Puluhan paling sedikit adalah bilangan paling kecil."
+          }
+        ],
+        "suara": "Ingat selalu! Pada garis bilangan, bilangan di kanan lebih besar. Menghitung maju mencari lebihnya dan menghitung mundur mencari kurangnya. Untuk membandingkan dua bilangan, lihat puluhannya lebih dulu, lalu satuannya bila puluhannya sama. Kita memakai kata lebih besar dari, lebih kecil dari, dan sama dengan, lalu mengurutkan bilangan dari yang paling kecil.",
+        "caraMenyebutkan": "Bilangan kata perbandingan dari bilangan lain",
+        "rumah": "Ayo Mencoba di rumah: ambil dua kartu bilangan dari satu sampai sembilan, susun menjadi bilangan dua angka, lalu bandingkan dengan bilangan temanmu. Ceritakan bilangan siapa yang lebih besar dan mengapa. Buat juga satu teka-teki, aku adalah bilangan yang satu kurangnya dari bilangan tertentu, lalu minta temanmu menjawabnya.",
+        "refleksi": [
+          "Aku dapat membandingkan dua bilangan.",
+          "Aku dapat mengurutkan bilangan sampai dengan 100.",
+          "Aku belajar dengan tertib.",
+          "Aku menyampaikan pendapat dengan percaya diri."
+        ]
+      }
+    }
+  },
+  "practiceQuestions": []
+}
