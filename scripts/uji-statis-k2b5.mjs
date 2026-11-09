@@ -43,7 +43,7 @@ for (const [kode, kom] of [["A", "VideoK2B5A"], ["B", "VideoK2B5B"], ["C", "Vide
   cek(`pemutar: sub-bab ${kode} memakai peta pikiran dari naskah`, new RegExp(`"mtk-2-bab5-${kode}":[^\\n]*peta: PETA_PIKIRAN_K2B5${kode}`).test(pemutar));
 }
 cek("pemutar: bab 5 memakai peta emoji sendiri", /adaK2B5 \? SUB_ANAK_K2B5/.test(pemutar));
-cek("pemutar: bab 5 termasuk bab gaya baru (Latihan terbuka setelah materi)", /adaK2B3 \|\| adaK2B5/.test(pemutar));
+cek("pemutar: bab 5 termasuk bab gaya baru (Latihan terbuka setelah materi)", /adaK2B3 \|\| (adaK2B4 \|\| )?adaK2B5/.test(pemutar));
 cek("pemutar: bab 5 tidak punya tab Simulasi", !/"mtk-2-bab5":\s*Simulasi/.test(pemutar));
 cek("pemutar: kartu 'sedang disiapkan' untuk Latihan dan Ujian tanpa soal", /soalSiap/.test(pemutar) && /bab ini sedang disiapkan/.test(pemutar));
 
@@ -154,7 +154,7 @@ for (const kode of ["A", "B", "C"]) {
 
 /* ---- Pendaftaran bab ---- */
 const kur = baca("src/lib/kurikulum.ts");
-cek("kurikulum: judul Bab 5 kelas 2 terdaftar", /JUDUL_MTK_2_BAB5 = "Bab 5: Pecahan"/.test(kur) && /JUDUL_MTK_2_BAB3, JUDUL_MTK_2_BAB5\]/.test(kur));
+cek("kurikulum: judul Bab 5 kelas 2 terdaftar", /JUDUL_MTK_2_BAB5 = "Bab 5: Pecahan"/.test(kur) && /JUDUL_MTK_2_BAB3(, JUDUL_MTK_2_BAB4)?, JUDUL_MTK_2_BAB5\]/.test(kur));
 cek("rute: /ruang-belajar/mtk-2-bab5", /bab="mtk-2-bab5"/.test(baca("src/app/ruang-belajar/mtk-2-bab5/page.tsx")));
 cek("ruang belajar: tautan Bab 5", /\/ruang-belajar\/mtk-2-bab5/.test(baca("src/app/ruang-belajar/page.tsx")));
 cek("preview: bab 5 valid", /"mtk-2-bab5"\]/.test(baca("src/app/modul-preview/page.tsx")));
