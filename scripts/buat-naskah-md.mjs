@@ -142,6 +142,25 @@ KONFIG.k3b3 = {
   },
 };
 
+// Kelas 3 Bab 4 (Unsur-Unsur Bangun Datar): Sub-Bab A (sisi pada bangun datar).
+KONFIG.k3b4 = {
+  kelas: 3,
+  bab: 4,
+  judul: "Unsur-Unsur Bangun Datar",
+  buku: "Buku Siswa Matematika Kelas III (Kemendikbudristek, Kurikulum Merdeka, Bab 4 hlm. 143–185) dan Buku Panduan Guru Bab 4",
+  berkas: { A: "sub-a-sisi-bangun-datar" },
+  metodeLuar: {
+    A: [
+      "**Benda nyata yang menyerupai bangun datar**: buku, bingkai foto, kartu, televisi, ponsel, penggaris segitiga, rambu, dan rambu berhenti dipakai untuk menghitung sisi. Benda bundar (jam, kue, papan sasaran) sengaja dipakai sebagai pengecoh karena tidak punya sisi lurus.",
+      "**Titik, garis, sinar garis, ruas garis, dan kurva**: sinar senter, rel kereta api, pensil, penggaris, dan pelangi dihubungkan dengan jenisnya. Di tahap Picture hanya gambar garis polos berhuruf yang dipakai.",
+      "**Mengukur ruas garis dalam cm dan mm**: penggaris dengan garis milimeter dipakai untuk membaca panjang seperti 5 cm 5 mm. Panjang benda dan ruas garis dibatasi kelipatan 5 mm dan paling banyak 14,5 cm agar mudah dibaca.",
+      "**Hubungan 1 cm = 10 mm**: dipakai untuk mengubah 5 cm 5 mm menjadi 55 mm atau 5,5 cm. Pengecoh sengaja memuat salah seratus (1 cm = 100 mm) dan salah nol (3 cm 7 mm = 3,07 cm).",
+      "**Sisi bangun datar bernama huruf**: segitiga EFG memiliki sisi EF, FG, dan EG. Permainan Sisi Bangun Datar melatih menyebut semua sisi dengan titik sudut yang bersebelahan.",
+      "**Bangun datar polos di tahap Picture**: segitiga, persegi, segilima, segienam, dan segidelapan digambar sebagai diagram polos tanpa gambar benda. Tabel dan ketuk bangun melatih banyak sisi.",
+    ],
+  },
+};
+
 const kode = process.argv[2];
 if (!kode || !KONFIG[kode]) {
   console.error(`Pakai: node --no-warnings scripts/buat-naskah-md.mjs <${Object.keys(KONFIG).join("|")}>`);

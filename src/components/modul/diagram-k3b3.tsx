@@ -20,12 +20,15 @@ export const xCm = (cm: number): number => X0 + cm * U;
  * Penggaris 0 sampai `maks` sentimeter. Lapisan benda (anak) digambar di atas penggaris dengan koordinat `xCm`.
  * Tinggi lapisan benda 4 sampai 34, penggaris 36 sampai 74.
  */
-export function PenggarisSvg({ maks = 15, children, label, ringkas = false }: { maks?: number; children?: React.ReactNode; label?: string; ringkas?: boolean }) {
+export function PenggarisSvg({ maks = 15, children, label, ringkas = false, mm = false }: { maks?: number; children?: React.ReactNode; label?: string; ringkas?: boolean; mm?: boolean }) {
   const W = X0 * 2 + maks * U;
   return (
     <svg viewBox={`0 0 ${W} 78`} className="block h-auto w-full max-w-[340px]" role="img" aria-label={label ?? `Penggaris dari 0 sampai ${maks} sentimeter`}>
       {children}
       <rect x="2" y="36" width={W - 4} height="38" rx="6" fill="#FEF3C7" stroke={TINTA} strokeWidth="2.4" />
+      {mm
+        ? Array.from({ length: maks * 10 }, (_, i) => (i % 5 === 0 ? null : <line key={`m${i}`} x1={xCm(i / 10)} x2={xCm(i / 10)} y1="36" y2="41" stroke={TINTA} strokeWidth="0.9" />))
+        : null}
       {Array.from({ length: maks }, (_, i) => (
         <line key={`s${i}`} x1={xCm(i + 0.5)} x2={xCm(i + 0.5)} y1="36" y2="44" stroke={TINTA} strokeWidth="1.4" />
       ))}

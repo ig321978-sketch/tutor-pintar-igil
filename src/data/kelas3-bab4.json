@@ -1,0 +1,961 @@
+{
+  "chapterId": "k3-mat-bab4",
+  "chapter_id": "k3-mat-bab4",
+  "phase_code": "FASE_B",
+  "grade": 3,
+  "subjectLabel": "MATEMATIKA - KELAS 3 SD",
+  "title": "BAB 4: UNSUR-UNSUR BANGUN DATAR",
+  "silabusElemen": "🌈 Fase B • Elemen Geometri: Unsur-Unsur Bangun Datar (Sisi, Sudut, Garis Tegak Lurus, dan Garis Sejajar) (Kelas 3 SD/MI)",
+  "suaraPerangkatSaja": true,
+  "suaraLaju": 0.7,
+  "suaraNada": 1,
+  "tokens": {
+    "practice": 30,
+    "exam": 70,
+    "practicum": 50
+  },
+  "subBabs": {
+    "A": {
+      "id": "A",
+      "codeTitle": "Sub-Bab A (Sisi pada Bangun Datar)",
+      "fullTitle": "Sub-Bab A: Sisi pada Bangun Datar",
+      "targetDescription": "Siswa mengenal titik, sinar garis, garis, ruas garis, dan kurva (garis lengkung), mengukur panjang ruas garis dengan penggaris dalam sentimeter dan milimeter (1 cm = 10 mm), menulis panjang seperti 5 cm 5 mm = 5,5 cm, menggambar ruas garis dengan ukuran tertentu, serta mengenal sisi sebagai ruas garis pembatas bangun datar dan menghitung banyak sisinya.",
+      "secondaryBg": "#E0E7FF",
+      "secondaryBorder": "#4F46E5",
+      "secondaryText": "#312E81",
+      "silabus": {
+        "teksSuara": "Kita belajar sisi pada bangun datar. Kita mengingat titik dan garis, lalu mengenal sinar garis, garis, ruas garis, dan kurva. Kita mengukur ruas garis dengan penggaris dalam sentimeter dan milimeter, lalu mengenal sisi sebagai ruas garis pembatas bangun datar. Kita melewati enam tahap seru: cerita, peta pikiran, infografis, benda nyata, gambar, dan simbol.",
+        "cp": "Siswa menggambar dan menjelaskan unsur-unsur bangun datar. Pada sub-bab ini siswa mengenal ruas garis, mengukur panjangnya, dan mengenal sisi bangun datar.",
+        "referensi": "Buku Siswa Matematika Kelas III Kemendikbudristek (Bab 4: Unsur-Unsur Bangun Datar, Sub-Bab A hlm. 146–153) dan Buku Panduan Guru Bab 4 Topik A."
+      },
+      "stories": [
+        {
+          "id": "K3B4A-V1-1",
+          "titleHint": "Mengingat garis",
+          "sceneType": "K3B4A-V1-1",
+          "voiceNarration": "Kita sudah mengenal garis lurus dan garis lengkung di Kelas 2. Garis lengkung juga disebut kurva. Sekarang kita kenali sinar garis, garis, dan ruas garis. Semuanya dibuat dari titik-titik yang berurutan."
+        },
+        {
+          "id": "K3B4A-V1-2",
+          "titleHint": "Sinar garis dan garis",
+          "sceneType": "K3B4A-V1-2",
+          "voiceNarration": "Sinar garis AB berpangkal di titik A dan menuju titik B. Sinar garis hanya dapat diperpanjang ke satu sisi. Garis CD dapat diperpanjang ke kedua sisi. Garis tidak punya ujung, jadi panjangnya tak terhingga."
+        },
+        {
+          "id": "K3B4A-V1-3",
+          "titleHint": "Ruas garis",
+          "sceneType": "K3B4A-V1-3",
+          "voiceNarration": "Ruas garis KL memiliki dua titik ujung. Ruas garis memiliki panjang tertentu atau tetap. Ruas garis ditulis dengan dua huruf, yaitu KL. Panjang ruas garis dapat diukur dengan penggaris."
+        },
+        {
+          "id": "K3B4A-V2-1",
+          "titleHint": "Dua titik",
+          "sceneType": "K3B4A-V2-1",
+          "voiceNarration": "Ada dua titik berbeda, yaitu P dan Q. Kedua titik itu hanya dapat dihubungkan dengan satu ruas garis lurus. Ruas garis itu adalah PQ. Penggaris dipakai untuk menggambarnya."
+        },
+        {
+          "id": "K3B4A-V2-2",
+          "titleHint": "Banyak kurva",
+          "sceneType": "K3B4A-V2-2",
+          "voiceNarration": "Titik E dan F dapat dihubungkan dengan garis lengkung. Ada kurva hijau, merah, dan biru. Kurva yang menghubungkan E dan F tak terhingga banyaknya. Jadi ruas garis hanya satu, tetapi kurva ada banyak."
+        },
+        {
+          "id": "K3B4A-V2-3",
+          "titleHint": "Bukan kurva",
+          "sceneType": "K3B4A-V2-3",
+          "voiceNarration": "Perhatikan gambar yang tampak melengkung ini. Ternyata gambar itu gabungan empat ruas garis. Ruas garisnya adalah PK, KL, LM, dan MQ. Gabungan ruas garis bukan garis lengkung."
+        },
+        {
+          "id": "K3B4A-V3-1",
+          "titleHint": "Sentimeter dan milimeter",
+          "sceneType": "K3B4A-V3-1",
+          "voiceNarration": "Penggaris memiliki satuan sentimeter dan garis-garis kecil. Garis kecil membagi satu sentimeter menjadi 10 bagian. Tiap bagian kecil adalah satu milimeter. Jadi 1 cm sama dengan 10 mm."
+        },
+        {
+          "id": "K3B4A-V3-2",
+          "titleHint": "Mengukur AB",
+          "sceneType": "K3B4A-V3-2",
+          "voiceNarration": "Letakkan angka 0 penggaris tepat di titik A. Lihat angka yang sejajar dengan titik B. Angkanya 5, jadi AB sama dengan 5 cm. Untuk MN: 5 cm dan 5 mm, yaitu 5,5 cm."
+        },
+        {
+          "id": "K3B4A-V3-3",
+          "titleHint": "Ruas garis dan sisi",
+          "sceneType": "K3B4A-V3-3",
+          "voiceNarration": "Segitiga EFG dibatasi tiga ruas garis: EF, FG, dan EG. Ruas garis pembatas bangun datar dinamakan sisi. Jadi segitiga memiliki tiga sisi. Bangun segiempat memiliki empat sisi."
+        }
+      ],
+      "videos": [
+        {
+          "id": "K3B4A-V1",
+          "judul": "Titik dan Garis",
+          "subjudul": "Sinar garis, garis, dan ruas garis",
+          "adegan": [
+            {
+              "id": "K3B4A-V1-1",
+              "judul": "Mengingat garis",
+              "ketukan": [
+                "Kita sudah mengenal garis lurus dan garis lengkung di Kelas 2.",
+                "Garis lengkung juga disebut kurva.",
+                "Sekarang kita kenali sinar garis, garis, dan ruas garis.",
+                "Semuanya dibuat dari titik-titik yang berurutan."
+              ],
+              "papan": [
+                "Garis lurus dan lengkung",
+                "Garis lengkung = kurva",
+                "Sinar, garis, ruas garis",
+                "Dibuat dari titik"
+              ]
+            },
+            {
+              "id": "K3B4A-V1-2",
+              "judul": "Sinar garis dan garis",
+              "ketukan": [
+                "Sinar garis AB berpangkal di titik A dan menuju titik B.",
+                "Sinar garis hanya dapat diperpanjang ke satu sisi.",
+                "Garis CD dapat diperpanjang ke kedua sisi.",
+                "Garis tidak punya ujung, jadi panjangnya tak terhingga."
+              ],
+              "papan": [
+                "Sinar garis AB",
+                "Satu sisi saja",
+                "Garis CD: kedua sisi",
+                "Tidak punya ujung"
+              ]
+            },
+            {
+              "id": "K3B4A-V1-3",
+              "judul": "Ruas garis",
+              "ketukan": [
+                "Ruas garis KL memiliki dua titik ujung.",
+                "Ruas garis memiliki panjang tertentu atau tetap.",
+                "Ruas garis ditulis dengan dua huruf, yaitu KL.",
+                "Panjang ruas garis dapat diukur dengan penggaris."
+              ],
+              "papan": [
+                "Ruas garis KL",
+                "Panjang tetap",
+                "Ditulis KL",
+                "Diukur dengan penggaris"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "K3B4A-V2",
+          "judul": "Dua Titik dan Kurva",
+          "subjudul": "Banyak jalan antara dua titik",
+          "adegan": [
+            {
+              "id": "K3B4A-V2-1",
+              "judul": "Dua titik",
+              "ketukan": [
+                "Ada dua titik berbeda, yaitu P dan Q.",
+                "Kedua titik itu hanya dapat dihubungkan dengan satu ruas garis lurus.",
+                "Ruas garis itu adalah PQ.",
+                "Penggaris dipakai untuk menggambarnya."
+              ],
+              "papan": [
+                "Titik P dan Q",
+                "Satu ruas garis lurus",
+                "Ruas garis PQ",
+                "Digambar dengan penggaris"
+              ]
+            },
+            {
+              "id": "K3B4A-V2-2",
+              "judul": "Banyak kurva",
+              "ketukan": [
+                "Titik E dan F dapat dihubungkan dengan garis lengkung.",
+                "Ada kurva hijau, merah, dan biru.",
+                "Kurva yang menghubungkan E dan F tak terhingga banyaknya.",
+                "Jadi ruas garis hanya satu, tetapi kurva ada banyak."
+              ],
+              "papan": [
+                "Titik E dan F",
+                "Hijau, merah, biru",
+                "Kurva tak terhingga",
+                "Ruas satu, kurva banyak"
+              ]
+            },
+            {
+              "id": "K3B4A-V2-3",
+              "judul": "Bukan kurva",
+              "ketukan": [
+                "Perhatikan gambar yang tampak melengkung ini.",
+                "Ternyata gambar itu gabungan empat ruas garis.",
+                "Ruas garisnya adalah PK, KL, LM, dan MQ.",
+                "Gabungan ruas garis bukan garis lengkung."
+              ],
+              "papan": [
+                "Tampak melengkung",
+                "Gabungan empat ruas",
+                "PK, KL, LM, MQ",
+                "Bukan garis lengkung"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "K3B4A-V3",
+          "judul": "Mengukur Ruas Garis",
+          "subjudul": "Aktivitas 1: penggaris, cm, dan mm",
+          "adegan": [
+            {
+              "id": "K3B4A-V3-1",
+              "judul": "Sentimeter dan milimeter",
+              "ketukan": [
+                "Penggaris memiliki satuan sentimeter dan garis-garis kecil.",
+                "Garis kecil membagi satu sentimeter menjadi 10 bagian.",
+                "Tiap bagian kecil adalah satu milimeter.",
+                "Jadi 1 cm sama dengan 10 mm."
+              ],
+              "papan": [
+                "cm dan garis kecil",
+                "Satu cm jadi 10 bagian",
+                "Satu bagian = 1 mm",
+                "1 cm = 10 mm"
+              ]
+            },
+            {
+              "id": "K3B4A-V3-2",
+              "judul": "Mengukur AB",
+              "ketukan": [
+                "Letakkan angka 0 penggaris tepat di titik A.",
+                "Lihat angka yang sejajar dengan titik B.",
+                "Angkanya 5, jadi AB sama dengan 5 cm.",
+                "Untuk MN: 5 cm dan 5 mm, yaitu 5,5 cm."
+              ],
+              "papan": [
+                "Angka 0 di titik A",
+                "Lihat angka di titik B",
+                "AB = 5 cm",
+                "MN = 5,5 cm"
+              ]
+            },
+            {
+              "id": "K3B4A-V3-3",
+              "judul": "Ruas garis dan sisi",
+              "ketukan": [
+                "Segitiga EFG dibatasi tiga ruas garis: EF, FG, dan EG.",
+                "Ruas garis pembatas bangun datar dinamakan sisi.",
+                "Jadi segitiga memiliki tiga sisi.",
+                "Bangun segiempat memiliki empat sisi."
+              ],
+              "papan": [
+                "Segitiga EFG",
+                "Ruas garis = sisi",
+                "Segitiga: 3 sisi",
+                "Segiempat: 4 sisi"
+              ]
+            }
+          ]
+        }
+      ],
+      "mindMaps": [
+        {
+          "stepNumber": 1,
+          "stepTitle": "1. Mengingat Titik dan Garis",
+          "stepDesc": "Sebelum mempelajari unsur-unsur bangun datar, kita mengingat garis lurus dan garis lengkung atau kurva yang sudah dipelajari di Kelas 2. Kita juga akan mengenal sinar garis, ruas garis, dan sisi bangun datar. Semua garis dibuat dari titik-titik yang berurutan, dan nama titik ditulis dengan huruf kapital.",
+          "icon": "🔙",
+          "flowFrom": "Mengingat titik dan garis",
+          "flowTo": "Sinar garis, garis, dan ruas garis"
+        },
+        {
+          "stepNumber": 2,
+          "stepTitle": "2. Sinar Garis, Garis, dan Ruas Garis",
+          "stepDesc": "Sinar garis AB berpangkal di titik A dan hanya dapat diperpanjang ke satu sisi. Garis CD dapat diperpanjang ke kedua sisi tanpa ujung. Ruas garis KL memiliki dua titik ujung dan panjang tertentu. Ketiganya ditulis dengan dua huruf, tetapi bentuk gambarnya berbeda: sinar garis memakai satu anak panah, garis dua anak panah, dan ruas garis tanpa anak panah.",
+          "icon": "📏",
+          "flowFrom": "Sinar garis, garis, dan ruas garis",
+          "flowTo": "Kurva atau garis lengkung"
+        },
+        {
+          "stepNumber": 3,
+          "stepTitle": "3. Kurva atau Garis Lengkung",
+          "stepDesc": "Garis yang melengkung disebut kurva. Kurva dapat berbentuk seperti busur atau seperti huruf S. Dua titik yang sama dapat dihubungkan oleh banyak kurva. Pada gambar, titik E dan F dihubungkan oleh tiga kurva berwarna hijau, merah, dan biru, dan kurva yang mungkin sebenarnya tak terhingga banyaknya.",
+          "icon": "🌈",
+          "flowFrom": "Kurva atau garis lengkung",
+          "flowTo": "Dua titik dan ruas garis"
+        },
+        {
+          "stepNumber": 4,
+          "stepTitle": "4. Dua Titik dan Ruas Garis",
+          "stepDesc": "Dua titik berbeda, misalnya P dan Q, hanya dapat dihubungkan dengan satu ruas garis lurus, yaitu PQ. Tetapi dua titik yang sama dapat dihubungkan oleh banyak kurva. Gambar yang tampak melengkung bisa saja gabungan beberapa ruas garis, misalnya PK, KL, LM, dan MQ. Gabungan ruas garis bukan garis lengkung.",
+          "icon": "🔗",
+          "flowFrom": "Dua titik dan ruas garis",
+          "flowTo": "Mengukur ruas garis dengan penggaris"
+        },
+        {
+          "stepNumber": 5,
+          "stepTitle": "5. Mengukur Ruas Garis dengan Penggaris",
+          "stepDesc": "Pada Aktivitas 1, kita mengukur panjang ruas garis dengan penggaris. Letakkan angka 0 penggaris tepat di titik awal ruas garis. Lihat angka yang sejajar dengan titik akhir. Bila titik B sejajar angka 5, maka panjang ruas garis AB adalah 5 cm, ditulis AB = 5 cm. Mengukur harus selalu dimulai dari angka 0.",
+          "icon": "0️⃣",
+          "flowFrom": "Mengukur ruas garis dengan penggaris",
+          "flowTo": "Sentimeter dan milimeter"
+        },
+        {
+          "stepNumber": 6,
+          "stepTitle": "6. Sentimeter dan Milimeter",
+          "stepDesc": "Penggaris pendek memiliki satuan sentimeter dan garis-garis kecil yang membagi 1 cm menjadi 10 bagian. Tiap bagian kecil memiliki satuan milimeter, ditulis mm. Jadi 1 cm sama dengan 10 mm. Bila ruas garis MN panjangnya 5 cm dan 5 mm, maka 5 mm sama dengan 0,5 cm, sehingga MN = 5,5 cm. PQ = 3 cm dan 7 mm = 3,7 cm.",
+          "icon": "🔬",
+          "flowFrom": "Sentimeter dan milimeter",
+          "flowTo": "Menggambar ruas garis"
+        },
+        {
+          "stepNumber": 7,
+          "stepTitle": "7. Menggambar Ruas Garis",
+          "stepDesc": "Untuk menggambar ruas garis dengan ukuran tertentu, tandai titik awal, letakkan angka 0 penggaris di titik itu, tandai titik akhir tepat di angka yang diminta, lalu hubungkan kedua titik dengan penggaris. Ukuran dapat berupa 3 cm, 7 cm, 2 cm 9 mm, atau 11,5 cm. Hubungkan juga pasangan titik yang diberikan dan tulis panjangnya.",
+          "icon": "✏️",
+          "flowFrom": "Menggambar ruas garis",
+          "flowTo": "Sisi bangun datar"
+        },
+        {
+          "stepNumber": 8,
+          "stepTitle": "8. Sisi Bangun Datar",
+          "stepDesc": "Segitiga EFG dibatasi oleh ruas garis EF, FG, dan EG. Ruas garis yang menjadi batas bangun datar dinamakan sisi. Jadi segitiga memiliki tiga sisi. Bangun GHIJ dibatasi ruas garis GH, HI, IJ, dan GJ, jadi memiliki empat sisi. Setiap sisi punya panjang yang dapat diukur dengan penggaris.",
+          "icon": "🔺",
+          "flowFrom": "Sisi bangun datar",
+          "flowTo": "Siap mengenal sisi bangun datar"
+        }
+      ],
+      "infografisData": [
+        {
+          "fruitName": "Titik dan Garis",
+          "emoji": "📍",
+          "countNum": 2,
+          "countWord": "Dua",
+          "voiceSentence": "Garis dibuat dari titik-titik yang berurutan. Ada garis lurus dan garis lengkung yang disebut kurva."
+        },
+        {
+          "fruitName": "Sinar Garis",
+          "emoji": "🔦",
+          "countNum": 2,
+          "countWord": "Dua",
+          "voiceSentence": "Sinar garis berpangkal di satu titik dan hanya dapat diperpanjang ke satu sisi."
+        },
+        {
+          "fruitName": "Garis",
+          "emoji": "🛤️",
+          "countNum": 2,
+          "countWord": "Dua",
+          "voiceSentence": "Garis dapat diperpanjang ke kedua sisi dan tidak punya ujung."
+        },
+        {
+          "fruitName": "Ruas Garis",
+          "emoji": "📏",
+          "countNum": 3,
+          "countWord": "Tiga",
+          "voiceSentence": "Ruas garis memiliki dua titik ujung dan panjang tertentu. Panjangnya dapat diukur dengan penggaris."
+        },
+        {
+          "fruitName": "Kurva",
+          "emoji": "🌈",
+          "countNum": 2,
+          "countWord": "Dua",
+          "voiceSentence": "Kurva adalah garis lengkung. Dua titik dapat dihubungkan oleh banyak kurva."
+        },
+        {
+          "fruitName": "Dua Titik",
+          "emoji": "🔗",
+          "countNum": 2,
+          "countWord": "Dua",
+          "voiceSentence": "Dua titik berbeda hanya dapat dihubungkan dengan satu ruas garis lurus."
+        },
+        {
+          "fruitName": "cm dan mm",
+          "emoji": "🔬",
+          "countNum": 2,
+          "countWord": "Dua",
+          "voiceSentence": "Satu sentimeter sama dengan sepuluh milimeter. Lima milimeter sama dengan nol koma lima sentimeter."
+        },
+        {
+          "fruitName": "Mengukur Ruas Garis",
+          "emoji": "0️⃣",
+          "countNum": 3,
+          "countWord": "Tiga",
+          "voiceSentence": "Letakkan angka nol penggaris di titik awal. Lihat angka di titik akhir. Tulis panjangnya dengan satuan."
+        },
+        {
+          "fruitName": "Sisi",
+          "emoji": "🔺",
+          "countNum": 3,
+          "countWord": "Tiga",
+          "voiceSentence": "Ruas garis pembatas bangun datar dinamakan sisi. Segitiga punya tiga sisi dan persegi punya empat sisi."
+        },
+        {
+          "fruitName": "Cara Mengukur",
+          "emoji": "📝",
+          "countNum": 4,
+          "countWord": "Empat",
+          "voiceSentence": "Empat langkah. Satu, letakkan angka nol di titik awal. Dua, lihat angka di titik akhir. Tiga, baca sentimeter dan milimeternya. Empat, tulis hasilnya dengan satuan."
+        }
+      ],
+      "concreteSlides": [
+        {
+          "title": "Hitung Sisi Benda",
+          "emoji": "📖",
+          "targetCount": 6,
+          "voiceGuide": "Hitung banyak sisi pada benda."
+        },
+        {
+          "title": "Bendanya Mirip Apa?",
+          "emoji": "🔦",
+          "targetCount": 6,
+          "voiceGuide": "Pilih nama garis yang mirip benda."
+        },
+        {
+          "title": "Baca Panjang dalam cm dan mm",
+          "emoji": "📏",
+          "targetCount": 6,
+          "voiceGuide": "Baca panjang benda dalam cm dan mm."
+        },
+        {
+          "title": "Jodohkan Benda dan Banyak Sisi",
+          "emoji": "🔗",
+          "targetCount": 9,
+          "voiceGuide": "Ketuk benda, lalu ketuk banyak sisinya."
+        },
+        {
+          "title": "Memori Benda dan Banyak Sisi",
+          "emoji": "🃏",
+          "targetCount": 12,
+          "voiceGuide": "Balik dua kartu, cari benda dan sisinya."
+        },
+        {
+          "title": "Ketuk Benda dengan Sisi Tertentu",
+          "emoji": "👆",
+          "targetCount": 6,
+          "voiceGuide": "Ketuk benda dengan sisi itu."
+        },
+        {
+          "title": "Ketuk Semua Benda dengan Sisi Tertentu",
+          "emoji": "✔️",
+          "targetCount": 3,
+          "voiceGuide": "Ketuk semua yang cocok, lalu periksa."
+        },
+        {
+          "title": "Papan Panjang dalam Milimeter",
+          "emoji": "🗂️",
+          "targetCount": 6,
+          "voiceGuide": "Isi papan dengan milimeternya."
+        },
+        {
+          "title": "Urutkan Benda menurut Panjang",
+          "emoji": "📶",
+          "targetCount": 9,
+          "voiceGuide": "Ketuk benda menurut panjangnya."
+        },
+        {
+          "title": "Jumlah Sisi Dua Benda",
+          "emoji": "➕",
+          "targetCount": 6,
+          "voiceGuide": "Jumlahkan sisi kedua benda."
+        }
+      ],
+      "pictorialSlides": [
+        {
+          "title": "Garis, Sinar, atau Ruas Garis",
+          "diagramType": "line-kind",
+          "numberA": 3,
+          "numberB": 2,
+          "caption": "Menentukan jenis garis dari gambarnya: sinar garis, garis, ruas garis, atau kurva."
+        },
+        {
+          "title": "Baca Ruas Garis pada Penggaris",
+          "diagramType": "ruler-read",
+          "numberA": 3,
+          "numberB": 2,
+          "caption": "Membaca panjang ruas garis pada penggaris bermilimeter."
+        },
+        {
+          "title": "Jodohkan Ruas Garis dan Panjang",
+          "diagramType": "ruler-match",
+          "numberA": 3,
+          "numberB": 3,
+          "caption": "Menjodohkan ruas garis pada penggaris dengan panjangnya."
+        },
+        {
+          "title": "Memori Garis dan Namanya",
+          "diagramType": "line-memory",
+          "numberA": 3,
+          "numberB": 4,
+          "caption": "Mencocokkan gambar garis dengan namanya lewat permainan memori."
+        },
+        {
+          "title": "Isi Tabel Sisi Bangun Datar",
+          "diagramType": "sides-table",
+          "numberA": 3,
+          "numberB": 4,
+          "caption": "Melengkapi tabel bangun datar dan banyak sisinya."
+        },
+        {
+          "title": "Ketuk Semua Bangun dengan Sisi Tertentu",
+          "diagramType": "polygon-select",
+          "numberA": 3,
+          "numberB": 4,
+          "caption": "Menemukan semua bangun datar yang memiliki banyak sisi tertentu."
+        },
+        {
+          "title": "Pilah Garis: Lurus atau Lengkung",
+          "diagramType": "line-sort",
+          "numberA": 3,
+          "numberB": 6,
+          "caption": "Memilah gambar garis menjadi garis lurus dan garis lengkung."
+        },
+        {
+          "title": "Urutkan Langkah Mengukur Ruas Garis",
+          "diagramType": "steps-order",
+          "numberA": 3,
+          "numberB": 4,
+          "caption": "Mengurutkan langkah mengukur dan menggambar ruas garis."
+        },
+        {
+          "title": "Papan Milimeter dari Penggaris",
+          "diagramType": "ruler-board",
+          "numberA": 3,
+          "numberB": 2,
+          "caption": "Menulis panjang ruas garis dalam milimeter pada papan."
+        },
+        {
+          "title": "Nama Sisi Bangun Datar",
+          "diagramType": "polygon-names",
+          "numberA": 3,
+          "numberB": 2,
+          "caption": "Memilih daftar sisi yang tepat dari bangun datar berhuruf."
+        }
+      ],
+      "abstractSlides": [
+        {
+          "symbolLarge": "AB",
+          "wordLarge": "NAMA",
+          "mathNotation": "sinar • garis • ruas",
+          "voiceReadout": "Pilih nama yang tepat."
+        },
+        {
+          "symbolLarge": "…",
+          "wordLarge": "LENGKAPI",
+          "mathNotation": "garis • ukuran • sisi",
+          "voiceReadout": "Pilih kata untuk bagian kosong."
+        },
+        {
+          "symbolLarge": "cm mm",
+          "wordLarge": "UBAH",
+          "mathNotation": "10 mm = 1 cm",
+          "voiceReadout": "Pilih hasil perubahan satuannya."
+        },
+        {
+          "symbolLarge": "= ?",
+          "wordLarge": "JODOHKAN",
+          "mathNotation": "cm • mm",
+          "voiceReadout": "Ketuk ukuran, lalu ketuk pasangannya."
+        },
+        {
+          "symbolLarge": "mm",
+          "wordLarge": "MEMORI",
+          "mathNotation": "ukuran yang sama",
+          "voiceReadout": "Balik dua kartu, cari ukuran yang sama."
+        },
+        {
+          "symbolLarge": "✓ ✗",
+          "wordLarge": "BENAR SALAH",
+          "mathNotation": "periksa dengan alasan",
+          "voiceReadout": "Baca pernyataan, lalu pilih benar atau salah."
+        },
+        {
+          "symbolLarge": "?",
+          "wordLarge": "DETEKTIF",
+          "mathNotation": "dua petunjuk, satu jawaban",
+          "voiceReadout": "Baca petunjuk, lalu pilih bilangannya."
+        },
+        {
+          "symbolLarge": "⇄",
+          "wordLarge": "PETA KONSEP",
+          "mathNotation": "garis • ukuran • sisi",
+          "voiceReadout": "Pilih kartu yang tepat untuk kotak yang menyala."
+        },
+        {
+          "symbolLarge": "mm",
+          "wordLarge": "CERITA",
+          "mathNotation": "selisih • jumlah",
+          "voiceReadout": "Baca cerita, lalu pilih hasilnya."
+        },
+        {
+          "symbolLarge": "…",
+          "wordLarge": "SUSUN KATA",
+          "mathNotation": "kalimat garis dan sisi",
+          "voiceReadout": "Susun kartu kata menjadi kalimat."
+        }
+      ],
+      "interactiveGames": [
+        {
+          "gameId": "subK3B4A-game-1",
+          "gameNumber": 1,
+          "stage": "Concrete",
+          "gameType": "count-sides-object",
+          "title": "Hitung Sisi Benda",
+          "bookReference": "Buku Siswa hlm. 145 dan 153 (benda yang menyerupai bangun datar)",
+          "objective": "Menghitung banyak sisi lurus pada benda sehari-hari.",
+          "mechanicDescription": "Tiga ronde, tiap ronde dua soal. Benda ditampilkan, lalu siswa memilih satu dari tiga banyak sisi. Pengecoh lebih satu atau kurang satu.",
+          "voiceGuide": "Hitung banyak sisi pada benda."
+        },
+        {
+          "gameId": "subK3B4A-game-2",
+          "gameNumber": 2,
+          "stage": "Concrete",
+          "gameType": "object-like-line",
+          "title": "Bendanya Mirip Apa?",
+          "bookReference": "Buku Siswa hlm. 146 (sinar garis, garis, ruas garis, kurva)",
+          "objective": "Menghubungkan benda nyata dengan sinar garis, garis, ruas garis, atau kurva.",
+          "mechanicDescription": "Tiga ronde, tiap ronde dua benda. Sinar senter, rel kereta api, pensil, penggaris, dan pelangi ditampilkan. Siswa memilih satu dari tiga nama.",
+          "voiceGuide": "Pilih nama garis yang mirip benda."
+        },
+        {
+          "gameId": "subK3B4A-game-3",
+          "gameNumber": 3,
+          "stage": "Concrete",
+          "gameType": "read-mm-object",
+          "title": "Baca Panjang dalam cm dan mm",
+          "bookReference": "Buku Siswa hlm. 149 (Aktivitas 1: panjang ruas garis)",
+          "objective": "Membaca panjang benda dalam sentimeter dan milimeter pada penggaris.",
+          "mechanicDescription": "Tiga ronde, tiap ronde dua soal. Benda ditampilkan di atas penggaris dari angka 0. Siswa memilih satu dari tiga panjang, misalnya 5 cm 5 mm.",
+          "voiceGuide": "Baca panjang benda dalam cm dan mm."
+        },
+        {
+          "gameId": "subK3B4A-game-4",
+          "gameNumber": 4,
+          "stage": "Concrete",
+          "gameType": "match-object-sides",
+          "title": "Jodohkan Benda dan Banyak Sisi",
+          "bookReference": "Buku Siswa hlm. 145 dan 153 (sisi bangun datar)",
+          "objective": "Menjodohkan benda dengan banyak sisi lurusnya.",
+          "mechanicDescription": "Tiga ronde, tiap ronde tiga benda dan tiga banyak sisi. Siswa mengetuk benda, lalu mengetuk banyak sisi yang cocok.",
+          "voiceGuide": "Ketuk benda, lalu ketuk banyak sisinya."
+        },
+        {
+          "gameId": "subK3B4A-game-5",
+          "gameNumber": 5,
+          "stage": "Concrete",
+          "gameType": "memory-object-sides",
+          "title": "Memori Benda dan Banyak Sisi",
+          "bookReference": "Buku Siswa hlm. 153 (sisi bangun datar)",
+          "objective": "Mencocokkan benda dengan banyak sisinya lewat permainan memori.",
+          "mechanicDescription": "Tiga ronde, tiap ronde delapan kartu tertutup (empat pasang). Siswa membalik dua kartu dan mencari pasangannya.",
+          "voiceGuide": "Balik dua kartu, cari benda dan sisinya."
+        },
+        {
+          "gameId": "subK3B4A-game-6",
+          "gameNumber": 6,
+          "stage": "Concrete",
+          "gameType": "tap-object-sides",
+          "title": "Ketuk Benda dengan Sisi Tertentu",
+          "bookReference": "Buku Siswa hlm. 153 (sisi bangun datar)",
+          "objective": "Menemukan benda yang punya banyak sisi seperti yang diminta.",
+          "mechanicDescription": "Tiga ronde, tiap ronde tiga benda dan dua pertanyaan. Siswa mengetuk benda yang banyak sisinya sama dengan yang disebut.",
+          "voiceGuide": "Ketuk benda dengan sisi itu."
+        },
+        {
+          "gameId": "subK3B4A-game-7",
+          "gameNumber": 7,
+          "stage": "Concrete",
+          "gameType": "tap-all-sides",
+          "title": "Ketuk Semua Benda dengan Sisi Tertentu",
+          "bookReference": "Buku Siswa hlm. 145 (benda menyerupai bangun datar)",
+          "objective": "Menemukan semua benda yang punya banyak sisi tertentu.",
+          "mechanicDescription": "Tiga ronde, tiap ronde empat benda dan satu perintah. Siswa mengetuk semua benda yang cocok, lalu menekan Periksa.",
+          "voiceGuide": "Ketuk semua yang cocok, lalu periksa."
+        },
+        {
+          "gameId": "subK3B4A-game-8",
+          "gameNumber": 8,
+          "stage": "Concrete",
+          "gameType": "board-mm",
+          "title": "Papan Panjang dalam Milimeter",
+          "bookReference": "Buku Siswa hlm. 148–149 (1 cm = 10 mm)",
+          "objective": "Menulis panjang benda dalam milimeter pada papan ratusan, puluhan, dan satuan.",
+          "mechanicDescription": "Tiga ronde, tiap ronde dua soal. Siswa membaca panjang benda pada penggaris, lalu mengubahnya ke milimeter pada papan dan menekan Periksa.",
+          "voiceGuide": "Isi papan dengan milimeternya."
+        },
+        {
+          "gameId": "subK3B4A-game-9",
+          "gameNumber": 9,
+          "stage": "Concrete",
+          "gameType": "order-mm",
+          "title": "Urutkan Benda menurut Panjang",
+          "bookReference": "Buku Siswa hlm. 151 (mengukur panjang benda sekitar)",
+          "objective": "Mengurutkan tiga benda menurut panjangnya dalam cm dan mm.",
+          "mechanicDescription": "Tiga ronde, tiap ronde tiga benda di atas penggaris bertanda huruf. Siswa mengetuk benda satu per satu dari yang terpendek atau terpanjang.",
+          "voiceGuide": "Ketuk benda menurut panjangnya."
+        },
+        {
+          "gameId": "subK3B4A-game-10",
+          "gameNumber": 10,
+          "stage": "Concrete",
+          "gameType": "sum-sides",
+          "title": "Jumlah Sisi Dua Benda",
+          "bookReference": "Buku Siswa hlm. 145 dan 153 (banyak sisi benda)",
+          "objective": "Menjumlahkan banyak sisi dari dua benda.",
+          "mechanicDescription": "Tiga ronde, tiap ronde dua benda. Siswa menghitung sisi tiap benda, lalu memilih satu dari tiga jumlah sisi.",
+          "voiceGuide": "Jumlahkan sisi kedua benda."
+        },
+        {
+          "gameId": "subK3B4A-game-11",
+          "gameNumber": 11,
+          "stage": "Picture",
+          "gameType": "line-kind",
+          "title": "Garis, Sinar, atau Ruas Garis",
+          "bookReference": "Buku Siswa hlm. 146–147 (sinar garis, garis, ruas garis, kurva)",
+          "objective": "Menentukan jenis garis dari gambarnya: sinar garis, garis, ruas garis, atau kurva.",
+          "mechanicDescription": "Tiga ronde, tiap ronde dua soal. Gambar garis berhuruf ditampilkan. Siswa memilih satu dari tiga nama.",
+          "voiceGuide": "Pilih nama garis pada gambar."
+        },
+        {
+          "gameId": "subK3B4A-game-12",
+          "gameNumber": 12,
+          "stage": "Picture",
+          "gameType": "read-ruler-mm",
+          "title": "Baca Ruas Garis pada Penggaris",
+          "bookReference": "Buku Siswa hlm. 148–149 (Aktivitas 1: mengukur ruas garis)",
+          "objective": "Membaca panjang ruas garis pada penggaris bermilimeter.",
+          "mechanicDescription": "Tiga ronde, tiap ronde dua soal. Ruas garis dari angka 0 ditampilkan. Siswa memilih satu dari tiga panjang dalam cm dan mm.",
+          "voiceGuide": "Baca panjang ruas garis."
+        },
+        {
+          "gameId": "subK3B4A-game-13",
+          "gameNumber": 13,
+          "stage": "Picture",
+          "gameType": "match-segment-length",
+          "title": "Jodohkan Ruas Garis dan Panjang",
+          "bookReference": "Buku Siswa hlm. 149–150 (menulis panjang ruas garis)",
+          "objective": "Menjodohkan ruas garis pada penggaris dengan panjangnya.",
+          "mechanicDescription": "Tiga ronde, tiap ronde tiga ruas garis dan tiga panjang. Siswa mengetuk ruas garis, lalu mengetuk panjang yang cocok.",
+          "voiceGuide": "Ketuk ruas garis, lalu ketuk panjangnya."
+        },
+        {
+          "gameId": "subK3B4A-game-14",
+          "gameNumber": 14,
+          "stage": "Picture",
+          "gameType": "memory-line-name",
+          "title": "Memori Garis dan Namanya",
+          "bookReference": "Buku Siswa hlm. 146–147 (sinar garis, garis, ruas garis, kurva)",
+          "objective": "Mencocokkan gambar garis dengan namanya lewat permainan memori.",
+          "mechanicDescription": "Tiga ronde, tiap ronde delapan kartu tertutup (empat pasang). Siswa membalik dua kartu dan mencari pasangannya.",
+          "voiceGuide": "Balik dua kartu, cari gambar dan namanya."
+        },
+        {
+          "gameId": "subK3B4A-game-15",
+          "gameNumber": 15,
+          "stage": "Picture",
+          "gameType": "fill-sides-table",
+          "title": "Isi Tabel Sisi Bangun Datar",
+          "bookReference": "Buku Siswa hlm. 153 (sisi bangun datar)",
+          "objective": "Melengkapi tabel bangun datar dan banyak sisinya.",
+          "mechanicDescription": "Tiga tabel dengan empat baris. Siswa mengetuk baris, lalu mengetuk kartu banyak sisi yang tepat. Ada satu kartu pengecoh.",
+          "voiceGuide": "Isi tabel dengan kartu banyak sisi."
+        },
+        {
+          "gameId": "subK3B4A-game-16",
+          "gameNumber": 16,
+          "stage": "Picture",
+          "gameType": "tap-all-polygon",
+          "title": "Ketuk Semua Bangun dengan Sisi Tertentu",
+          "bookReference": "Buku Siswa hlm. 153 (Ayo Berlatih B: sisi bangun datar)",
+          "objective": "Menemukan semua bangun datar yang memiliki banyak sisi tertentu.",
+          "mechanicDescription": "Tiga ronde, tiap ronde empat bangun dan satu perintah. Siswa mengetuk semua bangun yang cocok, lalu menekan Periksa.",
+          "voiceGuide": "Ketuk semua yang cocok, lalu periksa."
+        },
+        {
+          "gameId": "subK3B4A-game-17",
+          "gameNumber": 17,
+          "stage": "Picture",
+          "gameType": "sort-straight-curve",
+          "title": "Pilah Garis: Lurus atau Lengkung",
+          "bookReference": "Buku Siswa hlm. 146–147 (garis lurus dan kurva)",
+          "objective": "Memilah gambar garis menjadi garis lurus dan garis lengkung.",
+          "mechanicDescription": "Tiga ronde, tiap ronde enam gambar garis dan dua kotak. Sinar garis, garis, dan ruas garis adalah lurus, kurva adalah lengkung. Siswa menyeret atau mengetuk gambar ke kotak yang tepat.",
+          "voiceGuide": "Pilah gambar ke kotak yang tepat."
+        },
+        {
+          "gameId": "subK3B4A-game-18",
+          "gameNumber": 18,
+          "stage": "Picture",
+          "gameType": "order-measure-segment",
+          "title": "Urutkan Langkah Mengukur Ruas Garis",
+          "bookReference": "Buku Siswa hlm. 148–149 (cara menggunakan penggaris)",
+          "objective": "Mengurutkan langkah mengukur dan menggambar ruas garis.",
+          "mechanicDescription": "Tiga ronde, tiap ronde empat langkah. Siswa mengetuk langkah satu per satu menurut urutan yang benar. Letak jawaban berpindah.",
+          "voiceGuide": "Ketuk langkah menurut urutannya."
+        },
+        {
+          "gameId": "subK3B4A-game-19",
+          "gameNumber": 19,
+          "stage": "Picture",
+          "gameType": "board-ruler-mm",
+          "title": "Papan Milimeter dari Penggaris",
+          "bookReference": "Buku Siswa hlm. 149 (5 cm 5 mm = 55 mm)",
+          "objective": "Menulis panjang ruas garis dalam milimeter pada papan.",
+          "mechanicDescription": "Tiga ronde, tiap ronde dua soal. Siswa membaca ruas garis pada penggaris, lalu mengatur angka ratusan, puluhan, dan satuan pada papan dan menekan Periksa.",
+          "voiceGuide": "Isi papan dengan milimeternya."
+        },
+        {
+          "gameId": "subK3B4A-game-20",
+          "gameNumber": 20,
+          "stage": "Picture",
+          "gameType": "polygon-sides-names",
+          "title": "Nama Sisi Bangun Datar",
+          "bookReference": "Buku Siswa hlm. 153 (Ayo Berlatih B nomor 3 dan 4: tulislah sisi-sisinya)",
+          "objective": "Memilih daftar sisi yang tepat dari bangun datar berhuruf.",
+          "mechanicDescription": "Tiga ronde, tiap ronde dua soal. Segitiga atau segiempat berhuruf ditampilkan. Siswa memilih satu dari tiga daftar sisi.",
+          "voiceGuide": "Pilih daftar sisi yang tepat."
+        },
+        {
+          "gameId": "subK3B4A-game-21",
+          "gameNumber": 21,
+          "stage": "Abstract",
+          "gameType": "name-line-text",
+          "title": "Nama Garis dan Bagian Bangun Datar",
+          "bookReference": "Buku Siswa hlm. 146–153 (sinar garis, ruas garis, kurva, sisi)",
+          "objective": "Memilih nama garis atau bagian bangun datar dari uraiannya.",
+          "mechanicDescription": "Tiga ronde, tiap ronde dua soal. Siswa membaca uraian, lalu memilih satu dari tiga nama.",
+          "voiceGuide": "Pilih nama yang tepat."
+        },
+        {
+          "gameId": "subK3B4A-game-22",
+          "gameNumber": 22,
+          "stage": "Abstract",
+          "gameType": "complete-line-sentence",
+          "title": "Lengkapi Kalimat Garis dan Sisi",
+          "bookReference": "Buku Siswa hlm. 146–153 (sinar garis, ruas garis, dan sisi)",
+          "objective": "Melengkapi kalimat tentang garis, penggaris, dan sisi bangun datar.",
+          "mechanicDescription": "Tiga soal, tiap soal tiga kalimat, misalnya satu sentimeter sama dengan sepuluh ... Siswa memilih satu dari tiga kata.",
+          "voiceGuide": "Pilih kata untuk bagian kosong."
+        },
+        {
+          "gameId": "subK3B4A-game-23",
+          "gameNumber": 23,
+          "stage": "Abstract",
+          "gameType": "convert-cm-mm",
+          "title": "Ubah Sentimeter dan Milimeter",
+          "bookReference": "Buku Siswa hlm. 148–149 (1 cm = 10 mm, 5 mm = 0,5 cm)",
+          "objective": "Mengubah ukuran antara sentimeter dan milimeter.",
+          "mechanicDescription": "Tiga ronde, tiap ronde dua soal, misalnya 3 cm 7 mm = ... cm. Siswa memilih satu dari tiga hasil.",
+          "voiceGuide": "Pilih hasil perubahan satuannya."
+        },
+        {
+          "gameId": "subK3B4A-game-24",
+          "gameNumber": 24,
+          "stage": "Abstract",
+          "gameType": "match-length-text",
+          "title": "Jodohkan Ukuran Panjang",
+          "bookReference": "Buku Siswa hlm. 149 dan 151 (menulis panjang ruas garis)",
+          "objective": "Menjodohkan dua cara menulis panjang yang sama.",
+          "mechanicDescription": "Tiga ronde, tiap ronde tiga ukuran dan tiga pasangannya. Siswa mengetuk ukuran, lalu mengetuk pasangannya.",
+          "voiceGuide": "Ketuk ukuran, lalu ketuk pasangannya."
+        },
+        {
+          "gameId": "subK3B4A-game-25",
+          "gameNumber": 25,
+          "stage": "Abstract",
+          "gameType": "memory-length-text",
+          "title": "Memori Ukuran Panjang",
+          "bookReference": "Buku Siswa hlm. 149 dan 151 (ukuran yang sama)",
+          "objective": "Mencocokkan dua cara menulis panjang yang sama lewat permainan memori.",
+          "mechanicDescription": "Tiga ronde, tiap ronde delapan kartu tertutup (empat pasang). Siswa membalik dua kartu dan mencari pasangannya.",
+          "voiceGuide": "Balik dua kartu, cari ukuran yang sama."
+        },
+        {
+          "gameId": "subK3B4A-game-26",
+          "gameNumber": 26,
+          "stage": "Abstract",
+          "gameType": "true-false-lines",
+          "title": "Benar atau Salah: Garis dan Sisi",
+          "bookReference": "Buku Siswa hlm. 146–153 (sinar garis, ruas garis, dan sisi)",
+          "objective": "Menilai pernyataan tentang garis, ukuran, dan sisi bangun datar.",
+          "mechanicDescription": "Dua ronde, tiap ronde lima pernyataan. Siswa memilih Benar atau Salah. Tiap jawaban diberi penjelasan.",
+          "voiceGuide": "Baca pernyataan, lalu pilih benar atau salah."
+        },
+        {
+          "gameId": "subK3B4A-game-27",
+          "gameNumber": 27,
+          "stage": "Abstract",
+          "gameType": "detective-lines",
+          "title": "Detektif Ruas Garis dan Sisi",
+          "bookReference": "Buku Siswa hlm. 149 dan 153 (ukuran dan sisi)",
+          "objective": "Menemukan bilangan dari dua petunjuk tentang milimeter dan sisi.",
+          "mechanicDescription": "Empat soal. Siswa membaca petunjuk dan satu ciri bilangan, lalu memilih satu dari tiga bilangan. Hanya satu yang cocok.",
+          "voiceGuide": "Baca petunjuk, lalu pilih bilangannya."
+        },
+        {
+          "gameId": "subK3B4A-game-28",
+          "gameNumber": 28,
+          "stage": "Abstract",
+          "gameType": "concept-map-lines",
+          "title": "Peta Konsep Garis dan Sisi",
+          "bookReference": "Buku Siswa hlm. 144 (peta konsep Bab 4)",
+          "objective": "Melengkapi peta konsep titik, garis, dan sisi bangun datar.",
+          "mechanicDescription": "Dua peta konsep, tiap peta empat kotak. Siswa memilih kartu yang tepat untuk kotak yang menyala.",
+          "voiceGuide": "Pilih kartu yang tepat untuk kotak yang menyala."
+        },
+        {
+          "gameId": "subK3B4A-game-29",
+          "gameNumber": 29,
+          "stage": "Abstract",
+          "gameType": "story-segment",
+          "title": "Soal Cerita Ruas Garis dan Sisi",
+          "bookReference": "Buku Siswa hlm. 149–153 (panjang ruas garis dan sisi)",
+          "objective": "Menyelesaikan soal cerita tentang panjang ruas garis dan sisi bangun datar.",
+          "mechanicDescription": "Tiga ronde, tiap ronde dua cerita. Siswa membaca cerita lalu memilih satu dari tiga hasil dalam mm atau cm.",
+          "voiceGuide": "Baca cerita, lalu pilih hasilnya."
+        },
+        {
+          "gameId": "subK3B4A-game-30",
+          "gameNumber": 30,
+          "stage": "Abstract",
+          "gameType": "sentence-lines",
+          "title": "Susun Kata Garis dan Sisi",
+          "bookReference": "Buku Siswa hlm. 146–153 (sinar garis, ruas garis, sisi)",
+          "objective": "Menyusun kalimat tentang garis dan sisi dari kartu kata.",
+          "mechanicDescription": "Empat kalimat. Siswa mengetuk kartu kata satu per satu menurut urutan kalimat yang benar. Ada satu kartu pengecoh.",
+          "voiceGuide": "Susun kartu kata menjadi kalimat."
+        }
+      ],
+      "poinPenting": {
+        "poin": [
+          {
+            "nama": "Sinar garis",
+            "isi": "satu pangkal, satu arah",
+            "suara": "Sinar garis berpangkal di satu titik dan hanya dapat diperpanjang ke satu sisi."
+          },
+          {
+            "nama": "Garis",
+            "isi": "kedua sisi, tanpa ujung",
+            "suara": "Garis dapat diperpanjang ke kedua sisi dan tidak punya ujung."
+          },
+          {
+            "nama": "Ruas garis",
+            "isi": "dua ujung, panjang tetap",
+            "suara": "Ruas garis memiliki dua titik ujung dan panjang tertentu. Panjangnya dapat diukur dengan penggaris."
+          },
+          {
+            "nama": "Sentimeter dan milimeter",
+            "isi": "1 cm = 10 mm",
+            "suara": "Satu sentimeter sama dengan sepuluh milimeter. Lima milimeter sama dengan nol koma lima sentimeter."
+          },
+          {
+            "nama": "Sisi",
+            "isi": "ruas garis pembatas bangun",
+            "suara": "Ruas garis yang menjadi batas bangun datar dinamakan sisi. Segitiga punya tiga sisi."
+          }
+        ],
+        "suara": "Ingat selalu! Sinar garis hanya dapat diperpanjang ke satu sisi, garis ke kedua sisi, dan ruas garis punya panjang tetap. Satu sentimeter sama dengan sepuluh milimeter. Ruas garis pembatas bangun datar dinamakan sisi.",
+        "caraMenyebutkan": "angka 0 di titik awal lihat titik akhir baca cm dan mm tulis satuan",
+        "rumah": "Ayo Mencoba di rumah: ukurlah panjang buku Matematika, pensil, meja, dan penghapusmu dengan penggaris. Letakkan angka nol di ujung benda, lalu tulis hasilnya dengan cm dan mm. Hitung juga banyak sisi pada bingkai foto, buku, dan rambu segitiga di sekitarmu.",
+        "refleksi": [
+          "Aku dapat membedakan sinar garis, garis, ruas garis, dan kurva.",
+          "Aku dapat mengukur ruas garis dengan penggaris dalam cm dan mm.",
+          "Aku tahu bahwa 1 cm sama dengan 10 mm.",
+          "Aku dapat menyebutkan sisi dan menghitung banyak sisi bangun datar."
+        ]
+      }
+    }
+  },
+  "practiceQuestions": []
+}

@@ -69,9 +69,9 @@ export function BendaUkur({ jenis, panjang, offset = 0 }: { jenis: JenisBenda; p
 }
 
 /** Penggaris dengan satu benda nyata di atasnya. */
-export function PenggarisBenda({ jenis, panjang, offset = 0, maks = 15, ringkas = false }: { jenis: JenisBenda; panjang: number; offset?: number; maks?: number; ringkas?: boolean }) {
+export function PenggarisBenda({ jenis, panjang, offset = 0, maks = 15, ringkas = false, mm = false }: { jenis: JenisBenda; panjang: number; offset?: number; maks?: number; ringkas?: boolean; mm?: boolean }) {
   return (
-    <PenggarisSvg maks={maks} ringkas={ringkas} label={`${NAMA_BENDA[jenis]} sepanjang ${panjang} sentimeter pada penggaris, ujung kirinya di angka ${offset}`}>
+    <PenggarisSvg maks={maks} ringkas={ringkas} mm={mm} label={`${NAMA_BENDA[jenis]} sepanjang ${panjang} sentimeter pada penggaris, ujung kirinya di angka ${offset}`}>
       <BendaUkur jenis={jenis} panjang={panjang} offset={offset} />
     </PenggarisSvg>
   );
