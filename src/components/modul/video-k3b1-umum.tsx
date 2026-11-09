@@ -74,7 +74,7 @@ export function ModelSvg({ x, y, r, p, s, c = 4 }: { x: number; y: number; r: nu
 }
 
 /** Papan nilai tempat tiga sel. (x, y) kiri atas; w lebar tiap sel. Sel yang ditandai `sorot` diberi bingkai emas. */
-export function PapanSvg({ x, y, r, p, s, w = 62, sorot = [], redup = [], tampil = [true, true, true] }: { x: number; y: number; r: number; p: number; s: number; w?: number; sorot?: ("r" | "p" | "s")[]; redup?: ("r" | "p" | "s")[]; tampil?: [boolean, boolean, boolean] }) {
+export function PapanSvg({ x, y, r, p, s, w = 62, sorot = [], redup = [], tampil = [true, true, true], judul = 11, angka = 30 }: { x: number; y: number; r: number; p: number; s: number; w?: number; sorot?: ("r" | "p" | "s")[]; redup?: ("r" | "p" | "s")[]; tampil?: [boolean, boolean, boolean]; judul?: number; angka?: number }) {
   const sel = [
     { k: "r" as const, judul: "Ratusan", nilai: r },
     { k: "p" as const, judul: "Puluhan", nilai: p },
@@ -88,10 +88,10 @@ export function PapanSvg({ x, y, r, p, s, w = 62, sorot = [], redup = [], tampil
           <g key={c.k} opacity={redup.includes(c.k) ? 0.45 : 1}>
             <rect x={cx} y={y} width={w} height="58" rx="9" fill="#FFFFFF" stroke={BIRU} strokeWidth="3" />
             <path d={`M${cx} ${y + 9} a9 9 0 0 1 9 -9 h${w - 18} a9 9 0 0 1 9 9 v9 h${-w} z`} fill={ISI_TEMPAT[c.k]} stroke={BIRU} strokeWidth="3" />
-            <text x={cx + w / 2} y={y + 14} textAnchor="middle" fontSize="11" fontWeight="900" fill={TEKS_TEMPAT[c.k]}>
+            <text x={cx + w / 2} y={y + 14} textAnchor="middle" fontSize={judul} fontWeight="900" fill={TEKS_TEMPAT[c.k]}>
               {c.judul}
             </text>
-            <text x={cx + w / 2} y={y + 49} textAnchor="middle" fontSize="30" fontWeight="900" fill={BIRU}>
+            <text x={cx + w / 2} y={y + 49} textAnchor="middle" fontSize={angka} fontWeight="900" fill={BIRU}>
               {tampil[i] ? c.nilai : ""}
             </text>
             {sorot.includes(c.k) ? <rect className="vc-denyut" x={cx - 3} y={y - 3} width={w + 6} height="64" rx="11" fill="none" stroke={EMAS} strokeWidth="3.4" strokeDasharray="6 4" /> : null}
@@ -170,6 +170,68 @@ export function PohonSvg({ x, y, s = 1 }: { x: number; y: number; s?: number }) 
       <circle cx="0" cy="-40" r="20" fill="#4ADE80" stroke={BIRU} strokeWidth="2.6" />
       <circle cx="-12" cy="-30" r="12" fill="#22C55E" stroke={BIRU} strokeWidth="2.2" />
       <circle cx="12" cy="-30" r="12" fill="#22C55E" stroke={BIRU} strokeWidth="2.2" />
+    </g>
+  );
+}
+
+/** Tanda perbandingan besar berpusat di (x, y). */
+export function TandaSvg({ x, y, tanda, ukuran = 56 }: { x: number; y: number; tanda: string; ukuran?: number }) {
+  return (
+    <text x={x} y={y} textAnchor="middle" fontSize={ukuran} fontWeight="900" fill={BIRU} stroke="#FFFFFF" strokeWidth={ukuran * 0.07} paintOrder="stroke">
+      {tanda}
+    </text>
+  );
+}
+
+/**
+ * Penjumlahan bersusun: kolom puluhan dan satuan, simpanan merah di atas puluhan, hasil hijau di bawah garis.
+ * (x, y) kiri atas tabel. `tampil` mengatur bagian yang sudah muncul.
+ */
+export function SusunSvg({ x, y, a, b, tampil = {}, sorot = null }: { x: number; y: number; a: number; b: number; tampil?: { simpan?: boolean; satuan?: boolean; puluhan?: boolean }; sorot?: "p" | "s" | null }) {
+  const sa = a % 10;
+  const sb = b % 10;
+  const jumlahS = sa + sb;
+  const simpan = jumlahS >= 10;
+  const hasil = a + b;
+  const cx = [x + 38, x + 94, x + 150];
+  const baris = [y + 38, y + 68, y + 100, y + 144];
+  return (
+    <g>
+      <rect x={x} y={y} width="176" height="160" rx="12" fill="#FFFFFF" stroke={BIRU} strokeWidth="3" />
+      <text x={cx[1]} y={y + 17} textAnchor="middle" fontSize="11" fontWeight="900" fill={TEKS_TEMPAT.p}>
+        Puluhan
+      </text>
+      <text x={cx[2]} y={y + 17} textAnchor="middle" fontSize="11" fontWeight="900" fill={TEKS_TEMPAT.s}>
+        Satuan
+      </text>
+      {sorot ? <rect className="vc-denyut" x={sorot === "p" ? cx[1] - 26 : cx[2] - 26} y={y + 22} width="52" height="132" rx="9" fill="none" stroke={EMAS} strokeWidth="3.4" strokeDasharray="6 4" /> : null}
+      {simpan && tampil.simpan ? (
+        <text x={cx[1]} y={baris[0] - 6} textAnchor="middle" fontSize="20" fontWeight="900" fill="#DC2626">
+          1
+        </text>
+      ) : null}
+      <text x={cx[1]} y={baris[1]} textAnchor="middle" fontSize="32" fontWeight="900" fill={BIRU}>
+        {Math.floor(a / 10)}
+      </text>
+      <text x={cx[2]} y={baris[1]} textAnchor="middle" fontSize="32" fontWeight="900" fill={BIRU}>
+        {sa}
+      </text>
+      <text x={cx[0]} y={baris[2]} textAnchor="middle" fontSize="30" fontWeight="900" fill={BIRU}>
+        +
+      </text>
+      <text x={cx[1]} y={baris[2]} textAnchor="middle" fontSize="32" fontWeight="900" fill={BIRU}>
+        {Math.floor(b / 10)}
+      </text>
+      <text x={cx[2]} y={baris[2]} textAnchor="middle" fontSize="32" fontWeight="900" fill={BIRU}>
+        {sb}
+      </text>
+      <line x1={x + 14} y1={y + 110} x2={x + 162} y2={y + 110} stroke={BIRU} strokeWidth="3.4" strokeLinecap="round" />
+      <text x={cx[1]} y={baris[3]} textAnchor="middle" fontSize="34" fontWeight="900" fill="#16A34A">
+        {tampil.puluhan ? Math.floor(hasil / 10) : "?"}
+      </text>
+      <text x={cx[2]} y={baris[3]} textAnchor="middle" fontSize="34" fontWeight="900" fill="#16A34A">
+        {tampil.satuan ? hasil % 10 : "?"}
+      </text>
     </g>
   );
 }

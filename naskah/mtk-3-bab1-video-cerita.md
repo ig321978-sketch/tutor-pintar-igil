@@ -17,3 +17,19 @@ Daftar semua video cerita animasi HTML/SVG gratis (tanpa berkas video, tanpa API
 | K3B1B-V1 | Tinggi Badan 127 | Angka punya tempat dan nilai | Mengukur tinggi badan; Nilai tempat 251; Angka sama, nilai beda |
 | K3B1B-V2 | Tiga Kaleng | Aktivitas menentukan nilai tempat | Menyiapkan tiga kaleng; Mengambil kartu; Nilai tiap kartu |
 | K3B1B-V3 | Menyusun dan Mengurai | Dua cara menulis nilai tempat | Menyusun bilangan; Mengurai bilangan; Isi tabel dengan teliti |
+
+## Sub-Bab C: Membandingkan dan Mengurutkan Bilangan Cacah sampai 1.000
+
+| Video | Judul | Subjudul | Adegan |
+|---|---|---|---|
+| K3B1C-V1 | Jarak ke Sekolah | Membandingkan dua bilangan | Rumah siapa lebih jauh; Bandingkan ratusan; Lebih dari |
+| K3B1C-V2 | Sama dan Hampir Sama | Sampai tempat satuan | Satuan yang menentukan; Bilangan yang sama; Tiga langkah membandingkan |
+| K3B1C-V3 | Mengurutkan Bilangan | Dari terkecil sampai terbesar | Kelereng tiga sahabat; Tiga bilangan; Dua arah urutan |
+
+## Sub-Bab D: Penjumlahan Bilangan Cacah sampai 100
+
+| Video | Judul | Subjudul | Adegan |
+|---|---|---|---|
+| K3B1D-V1 | Buku di Perpustakaan | Susun pendek tanpa menyimpan | Berapa semua buku; Tabel nilai tempat; Susun pendek |
+| K3B1D-V2 | Upacara di Alun-Alun | Susun pendek dengan menyimpan | Berapa jumlah siswa; Menyimpan satu puluhan; Puluhan dan hasil |
+| K3B1D-V3 | Cara Susun Panjang | Menguraikan lalu menjumlahkan | Uraikan bilangan; Jumlahkan kelompok; Pilih cara yang mudah |

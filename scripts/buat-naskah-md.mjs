@@ -9,8 +9,8 @@ const KONFIG = {
     kelas: 3,
     bab: 1,
     judul: "Bilangan Cacah sampai 1.000",
-    buku: "Buku Siswa Matematika Kelas III (Kemendikbudristek, Kurikulum Merdeka, Bab 1 hlm. 3–24) dan Buku Panduan Guru Bab 1",
-    berkas: { A: "sub-a-bilangan-dan-lambang", B: "sub-b-nilai-tempat" },
+    buku: "Buku Siswa Matematika Kelas III (Kemendikbudristek, Kurikulum Merdeka, Bab 1 hlm. 3–45) dan Buku Panduan Guru Bab 1",
+    berkas: { A: "sub-a-bilangan-dan-lambang", B: "sub-b-nilai-tempat", C: "sub-c-membandingkan-mengurutkan", D: "sub-d-penjumlahan-sampai-100" },
     metodeLuar: {
       A: [
         "**Balok Dienes (blok satuan, batang puluhan, lempeng ratusan)**: bilangan dilihat sebagai benda yang bisa dihitung dan ditukar sepuluh-ke-satu. Dasar permainan Rakit Kemasan, Hitung Blok, dan Isi Tabel Blok.",
@@ -27,6 +27,22 @@ const KONFIG = {
         "**Angka dan nilai tidak sama**: miskonsepsi dari Buku Panduan Guru (mengisi tabel dengan 900, 80, 7). Permainan Isi Tabel dan Benar atau Salah membahasnya langsung.",
         "**Garis bilangan nilai**: nilai sebuah angka diketuk pada garis 0 sampai 1.000 (langkah 100), 0 sampai 100 (langkah 10), atau 0 sampai 10.",
         "**Detektif nilai tempat**: dua petunjuk tentang nilai angka menyisakan satu bilangan, setiap soal diperiksa uji otomatis.",
+      ],
+      C: [
+        "**Nilai tempat sebagai aturan membandingkan**: bilangan dibandingkan dari tempat paling kiri (ratusan), lalu puluhan, lalu satuan. Dasar permainan Tempat yang Menentukan dan Ratusan Sama, Lihat Berikutnya.",
+        "**Tanda mulut buaya**: tanda lebih dari dan kurang dari seperti mulut yang terbuka ke arah bilangan yang lebih besar. Cara ini membantu siswa tidak menukar tanda.",
+        "**Kumpulan benda dan model blok untuk perbandingan**: dus, bungkus, dan benda lepas (Concrete) serta lempeng, batang, dan kotak (Picture) membuat selisih terlihat sebelum ditulis dengan tanda.",
+        "**Mengurutkan dengan memilih yang terkecil berulang**: cari yang paling kecil, lalu yang paling kecil dari sisanya. Dasar permainan Urutkan Kumpulan, Urutkan Blok, dan Urutkan Lambang.",
+        "**Bilangan di antara dua bilangan**: siswa menemukan bilangan yang lebih dari batas bawah dan kurang dari batas atas (639 < 709 < 720).",
+        "**Detektif perbandingan**: petunjuk lebih dari, kurang dari, dan angka tertentu menyisakan satu bilangan. Setiap soal diperiksa uji otomatis.",
+      ],
+      D: [
+        "**Penukaran sepuluh ke satu saat menyimpan**: sepuluh benda lepas ditukar satu bungkus. Permainan Gabungkan Kumpulan memakai penukaran otomatis agar aturan menyimpan terlihat langsung.",
+        "**Susun pendek dan susun panjang**: dua cara yang sama-sama dipakai di buku. Susun panjang menguraikan bilangan (54 = 50 + 4), susun pendek menuliskannya ke bawah.",
+        "**Pilah soal menyimpan dan tanpa menyimpan**: siswa memeriksa satuan dulu. Bila berjumlah sepuluh atau lebih, soal itu perlu menyimpan.",
+        "**Urutan langkah penjumlahan bersusun**: menyusun, menjumlahkan satuan, menyimpan, menjumlahkan puluhan, lalu memeriksa. Dasar permainan Urutkan Langkah Menjumlahkan.",
+        "**Pengecoh dari kesalahan umum**: pilihan jawaban sengaja memuat hasil lupa menyimpan (kurang sepuluh) dan salah menyimpan (lebih sepuluh).",
+        "**Soal cerita tiga bilangan**: Ayo Berlatih 5 dipakai langsung, termasuk menjumlahkan tiga bilangan dua-dua.",
       ],
     },
   },

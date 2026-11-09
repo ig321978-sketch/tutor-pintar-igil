@@ -330,10 +330,209 @@ cek("BENARSALAH_QB: dua ronde, lima pernyataan, ada benar dan salah", D.RONDE_BE
 cek("PETA_KONSEP_QB: dua peta, empat kotak, kunci menunjuk", D.PETA_KONSEP_QB.length === 2 && D.PETA_KONSEP_QB.every((p) => p.kotak.length === 4 && p.kotak.every((k) => k.opsi.length === 3 && new Set(k.opsi).size === 3 && k.benar === 0)));
 cek("SUSUNKATA_QB: empat kalimat, pengecoh tidak di dalam kalimat", D.RONDE_SUSUNKATA_QB.length === 4 && D.RONDE_SUSUNKATA_QB.every((s) => !s.kata.includes(s.pengecoh) && s.kata.length >= 5));
 
+/* ====================================================================== */
+/* Sub-Bab C: membandingkan dan mengurutkan                                 */
+/* ====================================================================== */
+
+for (const [a, b, r, t] of [[339, 421, "<", "ratusan"], [583, 529, ">", "puluhan"], [769, 761, ">", "satuan"], [804, 804, "=", "sama"], [189, 206, "<", "ratusan"], [938, 930, ">", "satuan"]]) {
+  cek(`relasi(${a}, ${b}) = ${r}`, D.relasi(a, b) === r);
+  cek(`tempatBeda(${a}, ${b}) = ${t}`, D.tempatBeda(a, b) === t);
+}
+for (let a = 100; a <= 999; a += 37)
+  for (let b = 100; b <= 999; b += 41) {
+    const r = D.relasi(a, b);
+    cek(`relasi konsisten dengan tempatBeda ${a} ${b}`, (r === "=") === (D.tempatBeda(a, b) === "sama"));
+    const o = D.opsiRelasi(r, a + b);
+    cek(`opsiRelasi ${a} ${b}: tiga pilihan, kunci benar`, new Set(o.opsi).size === 3 && o.opsi[o.jawab] === D.teksRelasi(r));
+    const k = D.opsiKumpulan(r, a + b);
+    cek(`opsiKumpulan ${a} ${b}: tiga pilihan, kunci benar`, new Set(k.opsi).size === 3 && k.jawab >= 0);
+    const t = D.opsiTempatBeda(a, b, a);
+    cek(`opsiTempatBeda ${a} ${b}: tiga pilihan, kunci benar`, new Set(t.opsi).size === 3 && t.jawab >= 0);
+  }
+cek("kataRelasi", D.kataRelasi(">") === "lebih dari" && D.kataRelasi("<") === "kurang dari" && D.kataRelasi("=") === "sama dengan");
+cek("urutNaik", D.urutNaik([709, 639, 720], "kecil").join() === "639,709,720" && D.urutNaik([709, 639, 720], "besar").join() === "720,709,639");
+
+const unikPasang = (daftar) => new Set(daftar.map(([a, b]) => `${a}-${b}`)).size === daftar.length;
+const semuaTiga = (daftar) => daftar.every((n) => n >= 100 && n <= 999);
+const cekPasangBenda = (nama, daftar, banyak, harusBerbeda = false) => {
+  cekTiga(nama, daftar);
+  daftar.forEach((ro, r) => {
+    cek(`${nama} ronde ${r + 1}: benda dikenal, ${banyak} pasang, bilangan tiga angka`, BENDA.includes(ro.benda) && ro.pasang.length === banyak && ro.pasang.every((p) => semuaTiga(p)) && unikPasang(ro.pasang));
+    if (harusBerbeda) cek(`${nama} ronde ${r + 1}: tiga relasi berbeda`, new Set(ro.pasang.map(([a, b]) => D.relasi(a, b))).size === 3);
+  });
+};
+cekPasangBenda("BANDING_CC", D.RONDE_BANDING_CC, 2);
+cekPasangBenda("TANDA_CC", D.RONDE_TANDA_CC, 2);
+cekPasangBenda("PASANG_CC", D.RONDE_PASANG_CC, 3, true);
+cekPasangBenda("RATUSAN_CC", D.RONDE_RATUSAN_CC, 2);
+cek("BANDING_CC dan TANDA_CC: memuat ketiga relasi", ["<", ">", "="].every((x) => D.RONDE_BANDING_CC.concat(D.RONDE_TANDA_CC).some((ro) => ro.pasang.some(([a, b]) => D.relasi(a, b) === x))));
+cek("RATUSAN_CC: ratusan sama pada kedua bilangan", D.RONDE_RATUSAN_CC.every((ro) => ro.pasang.every(([a, b]) => D.tiga(a).r === D.tiga(b).r && a !== b)));
+cekTiga("URUT_CC", D.RONDE_URUT_CC);
+D.RONDE_URUT_CC.forEach((ro, r) => cek(`URUT_CC ronde ${r + 1}: empat bilangan berbeda`, ro.angka.length === 4 && new Set(ro.angka).size === 4 && semuaTiga(ro.angka) && BENDA.includes(ro.benda)));
+cekTiga("PALING_CC", D.RONDE_PALING_CC);
+D.RONDE_PALING_CC.forEach((ro, r) => cek(`PALING_CC ronde ${r + 1}: empat bilangan, terbesar dan terkecil tunggal`, ro.item.length === 4 && new Set(ro.item).size === 4 && semuaTiga(ro.item)));
+cekTiga("SLOT_CC", D.RONDE_SLOT_CC);
+D.RONDE_SLOT_CC.forEach((ro, r) => cek(`SLOT_CC ronde ${r + 1}: tiga bilangan berbeda`, ro.angka.length === 3 && new Set(ro.angka).size === 3));
+cekTiga("SEMUA_CC", D.RONDE_SEMUA_CC);
+for (const [nama, daftar] of [["SEMUA_CC", D.RONDE_SEMUA_CC], ["SEMUA_PC", D.RONDE_SEMUA_PC], ["SEMUA_QC", D.RONDE_SEMUA_QC]])
+  daftar.forEach((ro, r) => {
+    const benar = ro.angka.filter((n) => D.cocokBanding(n, ro.acuan, ro.arah));
+    cek(`${nama} ronde ${r + 1}: empat bilangan berbeda, ada yang cocok dan tidak, tidak ada yang sama dengan acuan`, ro.angka.length === 4 && new Set(ro.angka).size === 4 && benar.length >= 1 && benar.length <= 3 && !ro.angka.includes(ro.acuan), `${benar.length}`);
+  });
+cekTiga("ANTARA_CC", D.RONDE_ANTARA_CC);
+D.RONDE_ANTARA_CC.forEach((ro, r) => cek(`ANTARA_CC ronde ${r + 1}: tepat satu kumpulan di antara batas`, ro.item.length === 3 && ro.item.filter((n) => n > ro.batas[0] && n < ro.batas[1]).length === 1));
+cekTiga("CERITA_CC", D.RONDE_CERITA_CC);
+D.RONDE_CERITA_CC.forEach((ro, r) => {
+  cek(`CERITA_CC ronde ${r + 1}: tiga anak, tiga bilangan berbeda, dua pertanyaan`, ro.nama.length === 3 && new Set(ro.angka).size === 3 && new Set(ro.nama).size === 3 && ro.soal.length === 2 && BENDA.includes(ro.benda));
+  const a = D.namaPalingCerita(ro, "banyak");
+  const b = D.namaPalingCerita(ro, "sedikit");
+  cek(`CERITA_CC ronde ${r + 1}: nama terbanyak dan tersedikit berbeda`, a !== b && ro.nama.includes(a) && ro.nama.includes(b));
+});
+cek("CERITA_CC: Alfa 138, Galih 103, Andi 183 (Ayo Berlatih 4): Andi paling banyak, Galih paling sedikit", D.namaPalingCerita(D.RONDE_CERITA_CC[0], "banyak") === "Andi" && D.namaPalingCerita(D.RONDE_CERITA_CC[0], "sedikit") === "Galih");
+for (const [nama, daftar] of [["BANDING_PC", D.RONDE_BANDING_PC], ["TANDA_PC", D.RONDE_TANDA_PC], ["TABEL_PC", D.RONDE_TABEL_PC], ["PASANG_PC", D.RONDE_PASANG_PC], ["BANDING_QC", D.RONDE_BANDING_QC], ["TABEL_QC", D.RONDE_TABEL_QC], ["TEMPAT_QC", D.RONDE_TEMPAT_QC], ["PASANG_QC", D.RONDE_PASANG_QC]]) {
+  cekTiga(nama, daftar);
+  daftar.forEach((ro, r) => cek(`${nama} ronde ${r + 1}: bilangan tiga angka dan pasangan unik`, ro.every((p) => semuaTiga(p)) && unikPasang(ro)));
+}
+cek("TABEL_PC dan TABEL_QC: empat baris per tabel dan label unik", [...D.RONDE_TABEL_PC, ...D.RONDE_TABEL_QC].every((t) => t.length === 4 && unikPasang(t)));
+cek("PASANG_PC dan PASANG_QC: tiga relasi berbeda per ronde", [...D.RONDE_PASANG_PC, ...D.RONDE_PASANG_QC].every((t) => t.length === 3 && new Set(t.map(([a, b]) => D.relasi(a, b))).size === 3));
+cek("BANDING_QC memuat soal Ayo Berlatih 1 (378 dan 345; 705 dan 705)", D.RONDE_BANDING_QC.flat().some(([a, b]) => a === 378 && b === 345) && D.RONDE_BANDING_QC.flat().some(([a, b]) => a === 705 && b === 705));
+cek("TEMPAT_QC: memuat ratusan, puluhan, satuan, dan sama", ["ratusan", "puluhan", "satuan", "sama"].every((t) => D.RONDE_TEMPAT_QC.flat().some(([a, b]) => D.tempatBeda(a, b) === t)));
+cek("TANDA_PC dan BANDING_PC: dua soal per ronde", D.RONDE_TANDA_PC.every((r) => r.length === 2) && D.RONDE_BANDING_PC.every((r) => r.length === 2));
+cekTiga("URUT_PC", D.RONDE_URUT_PC);
+D.RONDE_URUT_PC.forEach((ro, r) => cek(`URUT_PC ronde ${r + 1}: tiga atau empat bilangan berbeda`, ro.angka.length >= 3 && new Set(ro.angka).size === ro.angka.length && semuaTiga(ro.angka)));
+cekTiga("URUT_QC", D.RONDE_URUT_QC);
+D.RONDE_URUT_QC.forEach((ro, r) => cek(`URUT_QC ronde ${r + 1}: empat bilangan berbeda`, ro.angka.length === 4 && new Set(ro.angka).size === 4 && semuaTiga(ro.angka)));
+cekTiga("PALING_PC", D.RONDE_PALING_PC);
+D.RONDE_PALING_PC.forEach((ro, r) => cek(`PALING_PC ronde ${r + 1}: empat bilangan berbeda`, ro.length === 4 && new Set(ro).size === 4 && semuaTiga(ro)));
+cekTiga("SORTIR_PC", D.RONDE_SORTIR_PC);
+D.RONDE_SORTIR_PC.forEach((ro, r) => cek(`SORTIR_PC ronde ${r + 1}: enam bilangan, ada ratusan kecil dan besar`, ro.length === 6 && new Set(ro).size === 6 && ro.some(D.ratusanBesar) && ro.some((n) => !D.ratusanBesar(n))));
+cekTiga("SLOT_PC", D.RONDE_SLOT_PC);
+D.RONDE_SLOT_PC.forEach((ro, r) => cek(`SLOT_PC ronde ${r + 1}: tiga bilangan berbeda`, ro.length === 3 && new Set(ro).size === 3));
+cek("KALIMAT_PC: tiga pasang dengan ratusan berbeda", D.RONDE_KALIMAT_PC.length === 3 && D.RONDE_KALIMAT_PC.every(([a, b]) => D.tiga(a).r !== D.tiga(b).r));
+D.RONDE_KALIMAT_PC.forEach(([a, b], r) => {
+  const ks = D.kalimatBanding(a, b, r * 3);
+  cek(`KALIMAT_PC ${a} dan ${b}: tiga kalimat, kunci benar`, ks.length === 3 && ks.every((k) => new Set(k.opsi).size === 3 && k.benar >= 0));
+  cek(`KALIMAT_PC ${a} dan ${b}: kunci = ratusan dan kata relasi`, Number(ks[0].opsi[ks[0].benar]) === D.tiga(a).r && Number(ks[1].opsi[ks[1].benar]) === D.tiga(b).r && ks[2].opsi[ks[2].benar] === D.kataRelasi(D.relasi(a, b)));
+});
+cek("BENARSALAH_QC: dua ronde, lima pernyataan, ada benar dan salah", D.RONDE_BENARSALAH_QC.length === 2 && D.RONDE_BENARSALAH_QC.every((r) => r.length === 5 && r.some((p) => p.benar) && r.some((p) => !p.benar) && r.every((p) => p.penjelasan.length > 15)));
+{
+  const cocok = [
+    (n) => n > 500 && n < 510 && D.tiga(n).s === 7,
+    (n) => n < 300 && n > 290 && D.tiga(n).p === 9,
+    (n) => n > 639 && n < 709 && D.tiga(n).s === 0 && D.tiga(n).p === 7,
+    (n) => n > 800 && n < 805 && D.tiga(n).s === 3,
+  ];
+  D.RONDE_DETEKTIF_QC.forEach((s, i) => {
+    const yang = s.opsi.filter(cocok[i]);
+    cek(`DETEKTIF_QC ${i + 1}: tepat satu pilihan cocok dan itu kuncinya`, yang.length === 1 && yang[0] === s.jawab, JSON.stringify(yang));
+    cek(`DETEKTIF_QC ${i + 1}: tiga pilihan berbeda`, new Set(s.opsi).size === 3 && s.klue.length === 2);
+  });
+  cek("DETEKTIF_QC: empat soal", D.RONDE_DETEKTIF_QC.length === 4);
+}
+cek("PETA_KONSEP_QC: dua peta, empat kotak, kunci menunjuk", D.PETA_KONSEP_QC.length === 2 && D.PETA_KONSEP_QC.every((p) => p.kotak.length === 4 && p.kotak.every((k) => k.opsi.length === 3 && new Set(k.opsi).size === 3 && k.benar === 0)));
+cek("SUSUNKATA_QC: empat kalimat, pengecoh tidak di dalam kalimat", D.RONDE_SUSUNKATA_QC.length === 4 && D.RONDE_SUSUNKATA_QC.every((s) => !s.kata.includes(s.pengecoh) && s.kata.length >= 5));
+
+/* ====================================================================== */
+/* Sub-Bab D: penjumlahan sampai 100                                         */
+/* ====================================================================== */
+
+for (const [a, b, simpan] of [[23, 16, false], [48, 16, true], [54, 29, true], [33, 21, false], [19, 12, true], [70, 13, false]]) cek(`perluSimpan(${a}, ${b}) = ${simpan}`, D.perluSimpan(a, b) === simpan);
+for (let n = 10; n <= 99; n += 1) {
+  const o = D.opsiJumlah(n, n);
+  cek(`opsiJumlah(${n}): tiga pilihan berbeda dalam 0 sampai 99 dan memuat kunci`, new Set(o).size === 3 && o.includes(n) && o.every((x) => x >= 0 && x <= 99), JSON.stringify(o));
+}
+const semuaJml = (daftar) => daftar.every(([a, b]) => a >= 10 && b >= 10 && a + b <= 99);
+const unikJumlah = (daftar) => new Set(daftar.map(([a, b]) => a + b)).size === daftar.length;
+const cekSoalJumlah = (nama, daftar, banyak) => {
+  cekTiga(nama, daftar);
+  daftar.forEach((ro, r) => cek(`${nama} ronde ${r + 1}: ${banyak} soal, benda dikenal, jumlah di bawah 100`, ro.length === banyak && ro.every((s) => BENDA.includes(s.benda) && s.a >= 10 && s.b >= 10 && s.a + s.b <= 99)));
+};
+cekSoalJumlah("GABUNG_CD", D.RONDE_GABUNG_CD, 2);
+cekSoalJumlah("JUMLAH_CD", D.RONDE_JUMLAH_CD, 2);
+cekSoalJumlah("PAPAN_CD", D.RONDE_PAPAN_CD, 2);
+cek("JUMLAH_CD dan GABUNG_CD: ada soal yang menyimpan dan yang tidak", [D.RONDE_GABUNG_CD, D.RONDE_JUMLAH_CD].every((d) => d.flat().some((s) => D.perluSimpan(s.a, s.b)) && d.flat().some((s) => !D.perluSimpan(s.a, s.b))));
+cekTiga("SORTIR_CD", D.RONDE_SORTIR_CD);
+D.RONDE_SORTIR_CD.forEach((ro, r) => cek(`SORTIR_CD ronde ${r + 1}: enam soal, ada simpan dan tanpa`, BENDA.includes(ro.benda) && ro.pasang.length === 6 && semuaJml(ro.pasang) && unikPasang(ro.pasang) && ro.pasang.some(([a, b]) => D.perluSimpan(a, b)) && ro.pasang.some(([a, b]) => !D.perluSimpan(a, b))));
+for (const [nama, daftar, banyak] of [["PASANG_CD", D.RONDE_PASANG_CD, 3], ["MEMORI_CD", D.RONDE_MEMORI_CD, 4]]) {
+  cekTiga(nama, daftar);
+  daftar.forEach((ro, r) => cek(`${nama} ronde ${r + 1}: ${banyak} pasangan dengan jumlah berbeda`, BENDA.includes(ro.benda) && ro.pasang.length === banyak && semuaJml(ro.pasang) && unikJumlah(ro.pasang)));
+}
+cekTiga("KETUK_CD", D.RONDE_KETUK_CD);
+D.RONDE_KETUK_CD.forEach((ro, r) => cek(`KETUK_CD ronde ${r + 1}: tiga pasangan berjumlah berbeda, dua pertanyaan ada jawabannya`, ro.item.length === 3 && unikJumlah(ro.item) && ro.tanya.length === 2 && ro.tanya.every((t) => ro.item.filter((p) => p[0] + p[1] === t).length === 1)));
+cekTiga("SEMUA_CD", D.RONDE_SEMUA_CD);
+for (const [nama, daftar] of [["SEMUA_CD", D.RONDE_SEMUA_CD], ["SEMUA_PD", D.RONDE_SEMUA_PD]])
+  daftar.forEach((ro, r) => {
+    const benar = ro.pasang.filter((p) => D.cocokSimpan(p, ro.syarat));
+    cek(`${nama} ronde ${r + 1}: empat soal berbeda, ada yang cocok dan tidak`, ro.pasang.length === 4 && unikPasang(ro.pasang) && semuaJml(ro.pasang) && benar.length >= 1 && benar.length <= 3, `${benar.length}`);
+  });
+cekTiga("CERITA_CD", D.RONDE_CERITA_CD);
+D.RONDE_CERITA_CD.forEach((ro, r) => cek(`CERITA_CD ronde ${r + 1}: dua cerita, teks memuat kedua bilangan`, ro.length === 2 && ro.every((s) => BENDA.includes(s.benda) && s.teks.includes(String(s.a)) && s.teks.includes(String(s.b)) && s.a + s.b <= 99)));
+cekTiga("URUT_CD", D.RONDE_URUT_CD);
+D.RONDE_URUT_CD.forEach((ro, r) => cek(`URUT_CD ronde ${r + 1}: tiga pasangan berjumlah berbeda`, BENDA.includes(ro.benda) && ro.pasang.length === 3 && semuaJml(ro.pasang) && unikJumlah(ro.pasang)));
+cek("SUSUN_PD dan SUSUN_QD: tiga soal, jumlah di bawah 100", D.RONDE_SUSUN_PD.length === 3 && D.RONDE_SUSUN_QD.length === 3 && semuaJml(D.RONDE_SUSUN_PD) && semuaJml(D.RONDE_SUSUN_QD));
+cek("SUSUN_PD: 23 + 16 (tanpa menyimpan), 48 + 16 dan 54 + 29 (menyimpan)", D.RONDE_SUSUN_PD.map(([a, b]) => D.perluSimpan(a, b)).join() === "false,true,true");
+cek("SUSUN_QD: semua menyimpan dan berjumlah 59, 84, 83", D.RONDE_SUSUN_QD.map(([a, b]) => a + b).join() === "59,84,83");
+for (const [nama, daftar, banyak] of [["PAPAN_PD", D.RONDE_PAPAN_PD, 2], ["JUMLAH_PD", D.RONDE_JUMLAH_PD, 2], ["PASANG_PD", D.RONDE_PASANG_PD, 3], ["MEMORI_PD", D.RONDE_MEMORI_PD, 4], ["JUMLAH_QD", D.RONDE_JUMLAH_QD, 2], ["PAPAN_QD", D.RONDE_PAPAN_QD, 2], ["PASANG_QD", D.RONDE_PASANG_QD, 3], ["MEMORI_QD", D.RONDE_MEMORI_QD, 4]]) {
+  cekTiga(nama, daftar);
+  daftar.forEach((ro, r) => cek(`${nama} ronde ${r + 1}: ${banyak} soal, jumlah di bawah 100`, ro.length === banyak && semuaJml(ro) && unikPasang(ro)));
+}
+for (const [nama, daftar] of [["PASANG_PD", D.RONDE_PASANG_PD], ["MEMORI_PD", D.RONDE_MEMORI_PD], ["PASANG_QD", D.RONDE_PASANG_QD], ["MEMORI_QD", D.RONDE_MEMORI_QD]]) daftar.forEach((ro, r) => cek(`${nama} ronde ${r + 1}: jumlah berbeda`, unikJumlah(ro)));
+cekTiga("TABEL_PD", D.RONDE_TABEL_PD);
+D.RONDE_TABEL_PD.forEach((t, r) => {
+  cek(`TABEL_PD ${r + 1}: empat baris, kartu = jawaban + satu pengecoh`, t.baris.length === 4 && t.kartu.length === 5 && t.baris.every((b) => t.kartu.includes(b.jawab)) && new Set(t.kartu).size === 5 && new Set(t.baris.map((b) => b.label)).size === 4);
+  cek(`TABEL_PD ${r + 1}: tiap jawaban = jumlah soalnya`, t.baris.every((b) => Number(b.jawab) === b.label.split(" + ").map(Number).reduce((x, y) => x + y, 0)));
+});
+cekTiga("SORTIR_PD", D.RONDE_SORTIR_PD);
+D.RONDE_SORTIR_PD.forEach((ro, r) => cek(`SORTIR_PD ronde ${r + 1}: enam soal, ada simpan dan tanpa`, ro.length === 6 && semuaJml(ro) && unikPasang(ro) && ro.some(([a, b]) => D.perluSimpan(a, b)) && ro.some(([a, b]) => !D.perluSimpan(a, b))));
+cek("URAI_PD dan LANGKAH_QD: tiga soal", D.RONDE_URAI_PD.length === 3 && D.RONDE_LANGKAH_QD.length === 3 && semuaJml(D.RONDE_URAI_PD) && semuaJml(D.RONDE_LANGKAH_QD));
+D.RONDE_URAI_PD.forEach(([a, b], r) => {
+  const ks = D.kalimatPanjang(a, b, r * 3);
+  cek(`URAI_PD ${a} + ${b}: tiga kalimat, kunci benar`, ks.length === 3 && ks.every((k) => new Set(k.opsi).size === 3 && k.benar >= 0));
+  ks.forEach((k, i) => {
+    const kalimat = `${k.depan} ${k.opsi[k.benar]} ${k.belakang}`;
+    const jumlahKiri = kalimat.split("=")[0].split("+").map(Number);
+    const bagianKanan = kalimat.split("=").slice(1).join("=").replace(/\.$/, "");
+    if (i === 2) cek(`URAI_PD ${a} + ${b} kalimat 3: "${kalimat}" memuat jumlah ${a + b}`, Number(k.opsi[k.benar]) === a + b && jumlahKiri.length === 2);
+    else cek(`URAI_PD ${a} + ${b} kalimat ${i + 1}: "${kalimat}" benar`, (() => {
+      const [kiri, kanan] = kalimat.replace(/\.$/, "").split("=").map((x) => x.trim());
+      const nilaiKanan = kanan.split("+").map((x) => Number(x.trim())).reduce((x, y) => x + y, 0);
+      return Number(kiri) === nilaiKanan;
+    })(), bagianKanan);
+  });
+});
+D.RONDE_LANGKAH_QD.forEach(([a, b], r) => {
+  const ks = D.kalimatLangkah(a, b, r * 3);
+  cek(`LANGKAH_QD ${a} + ${b}: tiga kalimat, kunci benar`, ks.length === 3 && ks.every((k) => new Set(k.opsi).size === 3 && k.benar >= 0));
+  const s = (a % 10) + (b % 10);
+  const p = Math.floor(a / 10) + Math.floor(b / 10) + (D.perluSimpan(a, b) ? 1 : 0);
+  cek(`LANGKAH_QD ${a} + ${b}: kunci satuan ${s}, puluhan ${p}, jumlah ${a + b}`, Number(ks[0].opsi[ks[0].benar]) === s && Number(ks[1].opsi[ks[1].benar]) === p && Number(ks[2].opsi[ks[2].benar]) === a + b);
+});
+cekTiga("LANGKAH_PD", [D.RONDE_LANGKAH_PD[0], D.RONDE_LANGKAH_PD[1], D.RONDE_LANGKAH_PD[2]]);
+cek("LANGKAH_PD: tiap ronde 3 atau 4 langkah berbeda", D.RONDE_LANGKAH_PD.every((ro) => ro.langkah.length >= 3 && ro.langkah.length <= 4 && new Set(ro.langkah).size === ro.langkah.length));
+cek("BENARSALAH_QD: dua ronde, lima pernyataan, ada benar dan salah", D.RONDE_BENARSALAH_QD.length === 2 && D.RONDE_BENARSALAH_QD.every((r) => r.length === 5 && r.some((p) => p.benar) && r.some((p) => !p.benar) && r.every((p) => p.penjelasan.length > 15)));
+{
+  const cocok = [
+    (n) => n === 23 + 16 && n < 40,
+    (n) => n === 48 + 16 && D.puluhanDari(n) === 6,
+    (n) => n === 83 - 54,
+    (n) => n === 70 + 13 && D.satuanDari(n) === 3,
+  ];
+  D.RONDE_DETEKTIF_QD.forEach((s, i) => {
+    const yang = s.opsi.filter(cocok[i]);
+    cek(`DETEKTIF_QD ${i + 1}: tepat satu pilihan cocok dan itu kuncinya`, yang.length === 1 && yang[0] === s.jawab, JSON.stringify(yang));
+    cek(`DETEKTIF_QD ${i + 1}: tiga pilihan berbeda`, new Set(s.opsi).size === 3 && s.klue.length === 2);
+  });
+  cek("DETEKTIF_QD: empat soal", D.RONDE_DETEKTIF_QD.length === 4);
+}
+cek("PETA_KONSEP_QD: dua peta, empat kotak, kunci menunjuk", D.PETA_KONSEP_QD.length === 2 && D.PETA_KONSEP_QD.every((p) => p.kotak.length === 4 && p.kotak.every((k) => k.opsi.length === 3 && new Set(k.opsi).size === 3 && k.benar === 0)));
+cekTiga("CERITA_QD", D.RONDE_CERITA_QD);
+D.RONDE_CERITA_QD.forEach((ro, r) => cek(`CERITA_QD ronde ${r + 1}: dua cerita, jumlah di bawah 100, teks memuat bilangan`, ro.length === 2 && ro.every((c) => D.jumlahCerita(c) <= 99 && c.angka.length >= 2 && c.angka.every((x) => c.teks.includes(String(x))))));
+cek("CERITA_QD memuat soal Ayo Berlatih 5: 25 + 36 = 61, 11 + 9 + 19 = 39, 15 + 10 + 12 = 37, 13 + 22 + 28 = 63", [61, 39, 37, 63].every((n) => D.RONDE_CERITA_QD.flat().some((c) => D.jumlahCerita(c) === n)));
+
 /* ---- Struktur naskah ---- */
 cek("META: Fase B, kelas 3, laju 0,70 dan nada 1", N.K3B1_META.phaseCode === "FASE_B" && N.K3B1_META.grade === 3 && N.K3B1_META.suaraLaju === 0.7 && N.K3B1_META.suaraNada === 1);
 cek("META: kode bab k3-mat-bab1", N.K3B1_META.chapterId === "k3-mat-bab1");
-cek("naskah: dua sub-bab A dan B", N.SUB_BAB_K3B1.map((s) => s.id).join() === "A,B");
+cek("naskah: empat sub-bab A, B, C, dan D", N.SUB_BAB_K3B1.map((s) => s.id).join() === "A,B,C,D");
 for (const s of N.SUB_BAB_K3B1) {
   cek(`${s.id}: tiga video`, s.videos.length === 3);
   cek(`${s.id}: sembilan adegan`, s.videos.reduce((n, v) => n + v.adegan.length, 0) === 9);

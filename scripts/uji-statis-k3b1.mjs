@@ -23,14 +23,14 @@ const umumB2 = baca("src/components/modul/video-k2b2-umum.tsx");
 
 const BERKAS = [
   "naskah-k3b1.ts", "data-k3b1.ts", "dasar-k3b1.tsx", "diagram-k3b1.tsx", "mesin-k3b1.tsx", "kit-k3b1.tsx", "bantu-k3b1.tsx", "paket-k3b1.ts",
-  "infografis-k3b1.tsx", "video-k3b1-umum.tsx", "video-k3b1a.tsx", "video-k3b1b.tsx", "SubBabK3B1A.tsx", "SubBabK3B1B.tsx",
+  "infografis-k3b1.tsx", "video-k3b1-umum.tsx", "video-k3b1a.tsx", "video-k3b1b.tsx", "video-k3b1c.tsx", "video-k3b1d.tsx", "SubBabK3B1A.tsx", "SubBabK3B1B.tsx", "SubBabK3B1C.tsx", "SubBabK3B1D.tsx",
 ];
 for (const b of BERKAS) {
   const t = baca(`src/components/modul/${b}`);
   cek(`${b}: tanpa jaringan atau layanan suara berbayar`, !/fetch\(|\/api\/|elevenlabs|XMLHttpRequest|axios/i.test(t));
   cek(`${b}: tanpa Math.random (aman untuk render server)`, !/Math\.random/.test(t));
   cek(`${b}: tanpa nilai tukar rupiah`, !/rupiah|Rp\s?\d|\bkurs\b/i.test(t));
-  cek(`${b}: tanpa emoji Unicode 13 ke atas (tidak tampil di Windows 10)`, !/[\u{1FAA0}-\u{1FAFF}]/u.test(t));
+  cek(`${b}: tanpa emoji Unicode 13 ke atas (tidak tampil di Windows 10)`, !/[\u{1FAA0}-\u{1FAFF}\u{1F7F0}]/u.test(t));
 }
 for (const b of ["data-k3b1.ts", "naskah-k3b1.ts"]) {
   const t = baca(`src/components/modul/${b}`);
@@ -48,8 +48,8 @@ cek("pemutar: menerima paket bab (data JSON, komponen sub-bab, emoji)", /paket\?
 cek("pemutar: bab berpaket termasuk bab gaya baru", /paket !== undefined/.test(pemutar));
 cek("pemutar: BabBaru berupa pola mtk-3 sampai 6", /export type BabBaru = `mtk-\$\{3 \| 4 \| 5 \| 6\}-bab\$\{number\}`/.test(pemutar));
 cek("pemutar: paket Kelas 3 Bab 1 tidak diimpor langsung (tidak membengkakkan bundel bab lain)", !/kelas3-bab1|k3b1/i.test(pemutar));
-cek("paket: sub-bab A dan B dengan video, peta, infografis, Concrete, Picture, Abstract", ["A", "B"].every((k) => new RegExp(`${k}: \\{ Cerita: VideoK3B1${k}, peta: PETA_PIKIRAN_K3B1${k}, Infografis: InfografisK3B1${k}Komponen, Concrete: ConcreteK3B1${k}, Picture: PictureK3B1${k}, Abstract: AbstractK3B1${k}, uraianPeta: true`).test(paket)));
-cek("paket: emoji sub-bab A dan B", /A: \{ emoji: "🔢" \}/.test(paket) && /B: \{ emoji: "📍" \}/.test(paket));
+cek("paket: sub-bab A sampai D dengan video, peta, infografis, Concrete, Picture, Abstract", ["A", "B", "C", "D"].every((k) => new RegExp(`${k}: \\{ Cerita: VideoK3B1${k}, peta: PETA_PIKIRAN_K3B1${k}, Infografis: InfografisK3B1${k}Komponen, Concrete: ConcreteK3B1${k}, Picture: PictureK3B1${k}, Abstract: AbstractK3B1${k}, uraianPeta: true`).test(paket)));
+cek("paket: emoji sub-bab A sampai D", /A: \{ emoji: "🔢" \}/.test(paket) && /B: \{ emoji: "📍" \}/.test(paket) && /C: \{ emoji: "⚖️" \}/.test(paket) && /D: \{ emoji: "➕" \}/.test(paket));
 cek("halaman: /ruang-belajar/mtk-3-bab1 memakai PemutarBabBaru", /bab="mtk-3-bab1"/.test(baca("src/app/ruang-belajar/mtk-3-bab1/page.tsx")));
 cek("halaman: modul-preview menerima bab Kelas 3 sampai 6", /mtk-\[3-6\]-bab/.test(baca("src/app/modul-preview/page.tsx")));
 const kur = baca("src/lib/kurikulum.ts");
@@ -67,7 +67,7 @@ cek("suara: jalur perangkatSaja tidak memanggil layanan suara berbayar", /if \(o
 /* ---- Video: satu per satu saat diketuk ---- */
 cek("video: mesin punya mulaiLangsung bawaan false", /mulaiLangsung = false/.test(mesinVideo));
 cek("video: video tidak berjalan sebelum Putar", /aktif === v\.naskah\.id \?[\s\S]*mulaiLangsung/.test(umumB2) && (umumB2.match(/mulaiLangsung/g) ?? []).length === 1);
-for (const [kode, berkas, awalan] of [["A", "video-k3b1a.tsx", "A"], ["B", "video-k3b1b.tsx", "B"]]) {
+for (const [kode, berkas, awalan] of [["A", "video-k3b1a.tsx", "A"], ["B", "video-k3b1b.tsx", "B"], ["C", "video-k3b1c.tsx", "C"], ["D", "video-k3b1d.tsx", "D"]]) {
   const t = baca(`src/components/modul/${berkas}`);
   const s = N.SUB_BAB_K3B1.find((x) => x.id === kode);
   const adegan = s.videos.flatMap((v) => v.adegan);
@@ -100,12 +100,12 @@ cek("JSON: tanpa kunci jawaban", !/"correct_index"|"correctAnswer"|"explanation"
 cek("JSON: tanpa data simulasi", !/simulasi/i.test(JSON.stringify(json)));
 cek("JSON: chapter_id, phase_code, grade", json.chapter_id === "k3-mat-bab1" && json.phase_code === "FASE_B" && json.grade === 3);
 cek("JSON: laju 0,70 dan nada 1, suara perangkat saja", json.suaraLaju === 0.7 && json.suaraNada === 1 && json.suaraPerangkatSaja === true);
-cek("JSON: hanya sub-bab A dan B", Object.keys(json.subBabs).join() === "A,B");
+cek("JSON: sub-bab A, B, C, dan D", Object.keys(json.subBabs).join() === "A,B,C,D");
 cek("JSON: tiap sub-bab 30 permainan dan 9 cerita", Object.values(json.subBabs).every((s) => s.interactiveGames.length === 30 && s.stories.length === 9 && s.mindMaps.length === 8 && s.infografisData.length === 10));
 cek("seed server tidak dibuat untuk bab tanpa soal", !fs.existsSync("supabase/seed/02_kelas3_bab1_keys.sql"));
 
 /* ---- Batas Concrete dan Picture ---- */
-const bendaNyata = /\bKoleksi\b|KoleksiTiga|KoleksiDari|KelompokKemasan|\bKemasan\b|\bDus\b|\bKelompok\b|dasar-k3b1|BendaB7|\bWadah\b/;
+const bendaNyata = /\bKoleksi\b|DuaKoleksi|TambahKoleksi|KoleksiTiga|KoleksiDari|KelompokKemasan|\bKemasan\b|\bDus\b|\bKelompok\b|dasar-k3b1|BendaB7|\bWadah\b/;
 const emojiBenda = /[\u{1F347}\u{1F34A}\u{1F34E}\u{1F34C}\u{1F414}\u{1F410}\u{1F404}\u{1F986}\u{1F697}\u{1F4E6}\u{1F9FA}\u{1F96B}\u{1F361}\u{1F36A}\u{1F349}\u{1F409}\u{1F420}\u{1F7E2}\u{1F534}]/u;
 const iris = (t, dari, sampai) => {
   const a = t.indexOf(dari);
@@ -125,8 +125,8 @@ for (const kode of ["A", "B"]) {
   const catatan = t.split("\n").filter((b) => /CatatanTempel/.test(b));
   cek(`SubBabK3B1${kode}: catatan Picture ada dan tanpa emoji benda`, catatan.length >= 10 && catatan.every((b) => !emojiBenda.test(b)), `ada ${catatan.length}`);
   cek(`SubBabK3B1${kode}: penomoran 1 sampai 30 dalam tiga tahap`, /nomor: i \+ 1,/.test(t) && /nomor: i \+ 11,/.test(t) && /nomor: i \+ 21,/.test(t) && /const TOTAL = 30;/.test(t));
-  cek(`SubBabK3B1${kode}: tiap permainan memakai key={r} dan onBeres`, (t.match(/key=\{r\}/g) ?? []).length >= 28 && (t.match(/onBeres=\{beres\}/g) ?? []).length >= 30, `key ${(t.match(/key=\{r\}/g) ?? []).length}, beres ${(t.match(/onBeres=\{beres\}/g) ?? []).length}`);
-  const ids = [...t.matchAll(/Kartu\(d, (\d+), "(k3b1[ab]-[a-z]+)"/g)];
+  cek(`SubBabK3B1${kode}: tiap permainan memakai key={r} dan onBeres`, (t.match(/key=\{r\}/g) ?? []).length >= 28 && (t.match(/onBeres=\{(?:\(\) => )?beres(?:\(\))?\}/g) ?? []).length >= 28, `key ${(t.match(/key=\{r\}/g) ?? []).length}, beres ${(t.match(/onBeres=\{(?:\(\) => )?beres(?:\(\))?\}/g) ?? []).length}`);
+  const ids = [...t.matchAll(/Kartu\(d, (\d+), "(k3b1[abcd]-[a-z]+)"/g)];
   cek(`SubBabK3B1${kode}: 30 kartu, indeks 0 sampai 29 berurutan, id unik`, ids.length === 30 && ids.every((m, i) => Number(m[1]) === i) && new Set(ids.map((m) => m[2])).size === 30, `ada ${ids.length}`);
 }
 {
@@ -138,10 +138,10 @@ for (const kode of ["A", "B"]) {
 }
 for (const s of N.SUB_BAB_K3B1) for (const g of s.games.filter((x) => x.stage === "Picture")) cek(`naskah ${s.id}: Picture "${g.title}" tanpa emoji`, !/\p{Extended_Pictographic}/u.test(`${g.title} ${g.objective} ${g.mechanicDescription} ${g.voiceGuide}`));
 const info = baca("src/components/modul/infografis-k3b1.tsx");
-cek("infografis: dua puluh visual (10 per sub-bab)", (info.match(/\/\* \d+ [A-Z]/g) ?? []).length === 20, `ada ${(info.match(/\/\* \d+ [A-Z]/g) ?? []).length}`);
+cek("infografis: empat puluh visual (10 per sub-bab)", (info.match(/\/\* \d+ [A-Z]/g) ?? []).length === 40, `ada ${(info.match(/\/\* \d+ [A-Z]/g) ?? []).length}`);
 
 /* ---- Naskah md ---- */
-for (const f of ["mtk-3-bab1-sub-a-bilangan-dan-lambang.md", "mtk-3-bab1-sub-b-nilai-tempat.md", "mtk-3-bab1-video-cerita.md"]) cek(`naskah/${f} ada`, fs.existsSync(`naskah/${f}`));
+for (const f of ["mtk-3-bab1-sub-a-bilangan-dan-lambang.md", "mtk-3-bab1-sub-b-nilai-tempat.md", "mtk-3-bab1-sub-c-membandingkan-mengurutkan.md", "mtk-3-bab1-sub-d-penjumlahan-sampai-100.md", "mtk-3-bab1-video-cerita.md"]) cek(`naskah/${f} ada`, fs.existsSync(`naskah/${f}`));
 
 console.log(`\nUji statis Kelas 3 Bab 1: ${lulus} lulus, ${gagal} gagal.`);
 if (gagal > 0) process.exit(1);

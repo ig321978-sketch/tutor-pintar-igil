@@ -645,3 +645,477 @@ export const RONDE_SUSUNKATA_QB: { kata: string[]; pengecoh: string }[] = [
   { kata: ["Angka", "1", "menempati", "satuan", "bernilai", "1"], pengecoh: "10" },
   { kata: ["Mengurai", "bilangan", "memecahnya", "menurut", "nilai", "tempat"], pengecoh: "menghapus" },
 ];
+
+/* ====================================================================== */
+/* SUB-BAB C. Membandingkan dan mengurutkan bilangan cacah sampai 1.000     */
+/* ====================================================================== */
+
+export type Relasi = ">" | "<" | "=";
+export const relasi = (a: number, b: number): Relasi => (a > b ? ">" : a < b ? "<" : "=");
+export const kataRelasi = (r: Relasi): string => (r === ">" ? "lebih dari" : r === "<" ? "kurang dari" : "sama dengan");
+export type TempatBeda = "ratusan" | "puluhan" | "satuan" | "sama";
+/** Tempat pertama (dari kiri) yang angkanya berbeda. Itulah tempat yang menentukan perbandingan. */
+export function tempatBeda(a: number, b: number): TempatBeda {
+  const x = tiga(a);
+  const y = tiga(b);
+  if (x.r !== y.r) return "ratusan";
+  if (x.p !== y.p) return "puluhan";
+  if (x.s !== y.s) return "satuan";
+  return "sama";
+}
+export type Pasang = [number, number];
+export const OPSI_RELASI = ["lebih dari (>)", "kurang dari (<)", "sama dengan (=)"] as const;
+export const teksRelasi = (r: Relasi): string => OPSI_RELASI[r === ">" ? 0 : r === "<" ? 1 : 2];
+/** Tiga pilihan relasi dengan urutan tetap, kunci berpindah. */
+export function opsiRelasi(r: Relasi, nomor: number): { opsi: string[]; jawab: number } {
+  const urut: string[] = urutanTetap(3, 2, nomor).map((i) => OPSI_RELASI[i]);
+  return { opsi: urut, jawab: urut.indexOf(teksRelasi(r)) };
+}
+/** Tiga pilihan kumpulan: A lebih banyak, B lebih banyak, sama banyak. */
+export function opsiKumpulan(r: Relasi, nomor: number): { opsi: string[]; jawab: number } {
+  const semua = ["Kumpulan A lebih banyak", "Kumpulan B lebih banyak", "Sama banyak"];
+  const urut = urutanTetap(3, 2, nomor).map((i) => semua[i]);
+  return { opsi: urut, jawab: urut.indexOf(r === ">" ? semua[0] : r === "<" ? semua[1] : semua[2]) };
+}
+export const cocokBanding = (n: number, acuan: number, arah: "lebih" | "kurang"): boolean => (arah === "lebih" ? n > acuan : n < acuan);
+export const urutNaik = (angka: number[], dari: "kecil" | "besar"): number[] => [...angka].sort((a, b) => (dari === "kecil" ? a - b : b - a));
+
+/* ------------------------------ Concrete C ------------------------------ */
+
+export type RondePasangBenda = { benda: BendaId; pasang: Pasang[] };
+/** CC1 Bandingkan Kumpulan: dua kumpulan, mana yang lebih banyak. */
+export const RONDE_BANDING_CC: RondePasangBenda[] = [
+  { benda: "kue", pasang: [[339, 421], [583, 529]] },
+  { benda: "kelereng", pasang: [[769, 761], [804, 804]] },
+  { benda: "jeruk", pasang: [[450, 405], [218, 281]] },
+];
+/** CC2 Tanda Kumpulan: A lebih dari, kurang dari, atau sama dengan B. */
+export const RONDE_TANDA_CC: RondePasangBenda[] = [
+  { benda: "rambutan", pasang: [[421, 339], [529, 583]] },
+  { benda: "ikan", pasang: [[761, 769], [620, 620]] },
+  { benda: "pensil", pasang: [[305, 350], [912, 921]] },
+];
+/** CC3 Urutkan Kumpulan. */
+export type RondeUrutBenda = { benda: BendaId; angka: number[]; dari: "kecil" | "besar" };
+export const RONDE_URUT_CC: RondeUrutBenda[] = [
+  { benda: "kue", angka: [720, 639, 709, 690], dari: "kecil" },
+  { benda: "lidi", angka: [537, 590, 518, 601], dari: "kecil" },
+  { benda: "anggur", angka: [325, 235, 532, 352], dari: "besar" },
+];
+/** CC4 Paling Banyak, Paling Sedikit. */
+export const RONDE_PALING_CC: { benda: BendaId; item: number[] }[] = [
+  { benda: "kelereng", item: [138, 103, 183, 150] },
+  { benda: "jeruk", item: [498, 490, 508, 480] },
+  { benda: "kue", item: [372, 327, 273, 237] },
+];
+/** CC5 Jodohkan Pasangan dan Tanda: tiga pasang dengan relasi berbeda. */
+export const RONDE_PASANG_CC: RondePasangBenda[] = [
+  { benda: "kue", pasang: [[421, 339], [529, 583], [640, 640]] },
+  { benda: "kelereng", pasang: [[375, 357], [246, 264], [418, 418]] },
+  { benda: "pensil", pasang: [[902, 920], [683, 659], [300, 300]] },
+];
+/** CC6 Taruh di Urutan: tiga kumpulan ke slot terkecil, tengah, terbesar. */
+export const RONDE_SLOT_CC: { benda: BendaId; angka: number[] }[] = [
+  { benda: "kue", angka: [378, 345, 402] },
+  { benda: "rambutan", angka: [583, 529, 550] },
+  { benda: "ikan", angka: [706, 670, 607] },
+];
+/** CC7 Ketuk Semua yang Lebih atau Kurang dari kumpulan acuan. */
+export type RondeBanding = { benda: BendaId; acuan: number; arah: "lebih" | "kurang"; angka: number[] };
+export const RONDE_SEMUA_CC: RondeBanding[] = [
+  { benda: "kue", acuan: 350, arah: "lebih", angka: [421, 339, 372, 298] },
+  { benda: "jeruk", acuan: 500, arah: "kurang", angka: [498, 508, 490, 520] },
+  { benda: "lidi", acuan: 700, arah: "lebih", angka: [699, 701, 720, 680] },
+];
+/** CC8 Ratusan Sama, Lihat Berikutnya: pasangan yang ratusannya sama. */
+export const RONDE_RATUSAN_CC: RondePasangBenda[] = [
+  { benda: "kue", pasang: [[583, 529], [746, 758]] },
+  { benda: "anggur", pasang: [[421, 498], [312, 339]] },
+  { benda: "kelereng", pasang: [[615, 609], [870, 890]] },
+];
+/** CC9 Di Antara: kumpulan yang jumlahnya di antara dua kumpulan batas. */
+export const RONDE_ANTARA_CC: { benda: BendaId; batas: Pasang; item: number[] }[] = [
+  { benda: "kue", batas: [339, 421], item: [350, 300, 450] },
+  { benda: "jeruk", batas: [500, 600], item: [450, 550, 650] },
+  { benda: "lidi", batas: [700, 800], item: [690, 750, 810] },
+];
+/** CC10 Cerita Kelereng: tiga anak dan banyak benda, dua pertanyaan. */
+export type RondeCerita = { benda: BendaId; nama: string[]; angka: number[]; soal: ("banyak" | "sedikit")[] };
+export const RONDE_CERITA_CC: RondeCerita[] = [
+  { benda: "kelereng", nama: ["Alfa", "Galih", "Andi"], angka: [138, 103, 183], soal: ["banyak", "sedikit"] },
+  { benda: "kue", nama: ["Meutia", "Alfa", "Galih"], angka: [498, 490, 508], soal: ["sedikit", "banyak"] },
+  { benda: "jeruk", nama: ["Alen", "Andi", "Meutia"], angka: [325, 352, 235], soal: ["banyak", "sedikit"] },
+];
+/** Nama anak dengan banyak benda terbanyak atau tersedikit. */
+export const namaPalingCerita = (r: RondeCerita, jenis: "banyak" | "sedikit"): string => {
+  const target = jenis === "banyak" ? Math.max(...r.angka) : Math.min(...r.angka);
+  return r.nama[r.angka.indexOf(target)];
+};
+
+/* ------------------------------ Picture C ------------------------------ */
+
+/** PC1 Bandingkan Blok. */
+export const RONDE_BANDING_PC: Pasang[][] = [[[420, 402], [317, 371]], [[564, 546], [899, 909]], [[250, 250], [611, 616]]];
+/** PC2 Tanda Blok. */
+export const RONDE_TANDA_PC: Pasang[][] = [[[432, 423], [615, 651]], [[890, 809], [547, 547]], [[160, 106], [328, 382]]];
+/** PC3 Isi Tabel Tanda: empat baris, tanda dari pasangan. */
+export const RONDE_TABEL_PC: Pasang[][] = [[[378, 345], [189, 206], [938, 930], [705, 705]], [[739, 839], [275, 279], [610, 601], [483, 483]], [[522, 552], [417, 471], [860, 806], [333, 333]]];
+/** PC4 Urutkan Blok. */
+export const RONDE_URUT_PC: { angka: number[]; dari: "kecil" | "besar" }[] = [
+  { angka: [720, 639, 709], dari: "kecil" },
+  { angka: [412, 241, 421, 214], dari: "kecil" },
+  { angka: [570, 507, 750, 705], dari: "besar" },
+];
+/** PC5 Jodohkan Pasangan Blok dan Tanda. */
+export const RONDE_PASANG_PC: Pasang[][] = [[[245, 254], [318, 318], [570, 507]], [[609, 690], [440, 404], [727, 727]], [[135, 153], [861, 816], [292, 292]]];
+/** PC6 Paling Banyak, Paling Sedikit pada Blok. */
+export const RONDE_PALING_PC: number[][] = [[314, 341, 143, 431], [652, 625, 526, 562], [890, 809, 980, 908]];
+/** PC7 Ketuk Semua Blok yang Lebih atau Kurang. */
+export const RONDE_SEMUA_PC: { acuan: number; arah: "lebih" | "kurang"; angka: number[] }[] = [
+  { acuan: 400, arah: "lebih", angka: [431, 399, 412, 380] },
+  { acuan: 650, arah: "kurang", angka: [645, 655, 600, 700] },
+  { acuan: 520, arah: "lebih", angka: [519, 521, 560, 480] },
+];
+/** PC8 Pilah Blok: ratusan kurang dari 5, atau lima atau lebih. */
+export const RONDE_SORTIR_PC: number[][] = [[238, 541, 679, 405, 862, 150], [320, 777, 498, 603, 214, 955], [182, 559, 431, 700, 345, 888]];
+export const ratusanBesar = (n: number): boolean => tiga(n).r >= 5;
+/** PC9 Lengkapi Kalimat Perbandingan: ratusan keduanya berbeda. */
+export const RONDE_KALIMAT_PC: Pasang[] = [[346, 502], [780, 621], [259, 305]];
+export function kalimatBanding(a: number, b: number, nomor: number): KalimatIsian[] {
+  const x = tiga(a);
+  const y = tiga(b);
+  const r = relasi(a, b);
+  const angka = (v: number, i: number) => {
+    const semua = [v, (v + 1) % 10, (v + 3) % 10];
+    const opsi = urutanTetap(3, 2, nomor + i).map((k) => semua[k]);
+    return { opsi: opsi.map(String), benar: opsi.indexOf(v) };
+  };
+  const rel = (() => {
+    const semua = ["kurang dari", "lebih dari", "sama dengan"];
+    const opsi = urutanTetap(3, 2, nomor + 2).map((k) => semua[k]);
+    return { opsi, benar: opsi.indexOf(kataRelasi(r)) };
+  })();
+  return [
+    { depan: `${a} punya`, belakang: "ratusan.", ...angka(x.r, 0) },
+    { depan: `${b} punya`, belakang: "ratusan.", ...angka(y.r, 1) },
+    { depan: `Jadi ${a}`, belakang: `${b}.`, ...rel },
+  ];
+}
+/** PC10 Taruh Blok di Urutan. */
+export const RONDE_SLOT_PC: number[][] = [[483, 438, 534], [725, 752, 705], [160, 106, 610]];
+
+/* ------------------------------ Abstract C ------------------------------ */
+
+/** QC1 Bandingkan Lambang (Ayo Berlatih 1). */
+export const RONDE_BANDING_QC: Pasang[][] = [[[378, 345], [189, 206]], [[938, 930], [739, 839]], [[275, 279], [705, 705]]];
+/** QC2 Isi Tabel Tanda. */
+export const RONDE_TABEL_QC: Pasang[][] = [[[537, 590], [518, 601], [590, 518], [601, 601]], [[325, 235], [532, 352], [352, 325], [235, 532]], [[720, 639], [709, 720], [639, 709], [709, 709]]];
+/** QC3 Tempat yang Menentukan. */
+export const RONDE_TEMPAT_QC: Pasang[][] = [[[583, 529], [421, 339]], [[769, 761], [804, 804]], [[650, 630], [215, 725]]];
+export function opsiTempatBeda(a: number, b: number, nomor: number): { opsi: string[]; jawab: number } {
+  const t = tempatBeda(a, b);
+  const kunci = t === "sama" ? "tidak ada, kedua bilangan sama" : t;
+  const salah = t === "sama" ? ["ratusan", "satuan"] : (["ratusan", "puluhan", "satuan"] as const).filter((x) => x !== t);
+  return susunOpsi(kunci, [salah[0], salah[1]], nomor);
+}
+/** QC4 Urutkan Lambang. */
+export const RONDE_URUT_QC: { angka: number[]; dari: "kecil" | "besar" }[] = [
+  { angka: [537, 590, 518, 601], dari: "kecil" },
+  { angka: [325, 235, 532, 352], dari: "besar" },
+  { angka: [150, 115, 501, 510], dari: "kecil" },
+];
+/** QC5 Jodohkan Pasangan dan Kata (tiga relasi berbeda). */
+export const RONDE_PASANG_QC: Pasang[][] = [[[769, 761], [418, 481], [905, 905]], [[250, 205], [640, 664], [333, 333]], [[871, 817], [199, 200], [560, 560]]];
+/** QC6 Benar atau Salah. */
+export const RONDE_BENARSALAH_QC: Pernyataan[][] = [
+  [
+    { teks: "Bilangan 339 kurang dari 421.", benar: 339 < 421, penjelasan: "Ratusan 339 adalah 3, ratusan 421 adalah 4. 3 kurang dari 4, jadi 339 < 421." },
+    { teks: "Bilangan 583 lebih dari 529.", benar: 583 > 529, penjelasan: "Ratusan sama, yaitu 5. Puluhan 8 lebih dari 2, jadi 583 > 529." },
+    { teks: "Untuk membandingkan 769 dan 761, kita mulai dari satuan.", benar: false, penjelasan: "Kita mulai dari ratusan. Ratusan dan puluhan sama, baru satuan menentukan: 9 lebih dari 1." },
+    { teks: "Bilangan 804 sama dengan 804.", benar: true, penjelasan: "Ratusan, puluhan, dan satuannya sama semua, jadi 804 = 804." },
+    { teks: "Simbol > dibaca kurang dari.", benar: false, penjelasan: "Simbol > dibaca lebih dari. Simbol < dibaca kurang dari." },
+  ],
+  [
+    { teks: "Urutan 709, 639, 720 dari terkecil adalah 639, 709, 720.", benar: urutNaik([709, 639, 720], "kecil").join() === "639,709,720", penjelasan: "639 punya 6 ratusan paling sedikit. Lalu 709 dan 720 sama ratusannya; puluhan 0 kurang dari 2." },
+    { teks: "Bilangan 189 lebih dari 206.", benar: 189 > 206, penjelasan: "Ratusan 189 adalah 1, ratusan 206 adalah 2, jadi 189 < 206." },
+    { teks: "Bilangan 938 lebih dari 930.", benar: 938 > 930, penjelasan: "Ratusan dan puluhan sama. Satuan 8 lebih dari 0, jadi 938 > 930." },
+    { teks: "Bilangan 275 lebih dari 279.", benar: 275 > 279, penjelasan: "Ratusan dan puluhan sama. Satuan 5 kurang dari 9, jadi 275 < 279." },
+    { teks: "Dari terbesar ke terkecil, 325 datang sebelum 532.", benar: false, penjelasan: "532 lebih besar dari 325, jadi dari terbesar 532 datang lebih dulu." },
+  ],
+];
+/** QC7 Detektif Perbandingan. */
+export const RONDE_DETEKTIF_QC: SoalDetektif[] = [
+  { klue: ["Aku lebih dari 500 dan kurang dari 510.", "Angka satuanku 7."], jawab: 507, opsi: [507, 517, 497], salah: "Antara 500 dan 510, angka ratusanku 5 dan puluhanku 0. Satuan 7." },
+  { klue: ["Aku kurang dari 300.", "Aku lebih dari 290 dan puluhanku 9."], jawab: 295, opsi: [305, 295, 285], salah: "Lebih dari 290 dan kurang dari 300: ratusan 2, puluhan 9." },
+  { klue: ["Aku lebih dari 639 dan kurang dari 709.", "Satuanku 0 dan puluhanku 7."], jawab: 670, opsi: [670, 700, 760], salah: "Ratusan 6, lalu cek puluhan 7 dan satuan 0 antara 639 dan 709." },
+  { klue: ["Aku lebih dari 800.", "Aku kurang dari 805 dan satuanku 3."], jawab: 803, opsi: [813, 803, 783], salah: "Antara 800 dan 805, satuan 3: 803." },
+];
+/** QC8 Ketuk Semua Lambang yang Lebih atau Kurang. */
+export const RONDE_SEMUA_QC: { acuan: number; arah: "lebih" | "kurang"; angka: number[] }[] = [
+  { acuan: 450, arah: "lebih", angka: [449, 451, 540, 405] },
+  { acuan: 300, arah: "kurang", angka: [299, 301, 290, 310] },
+  { acuan: 900, arah: "kurang", angka: [899, 901, 890, 990] },
+];
+/** QC9 Peta Konsep Membandingkan. */
+export const PETA_KONSEP_QC: { pusat: string; kotak: KotakPeta[] }[] = [
+  {
+    pusat: "Membandingkan bilangan",
+    kotak: [
+      { label: "Kita mulai membandingkan dari tempat", opsi: ["ratusan", "satuan", "puluhan"], benar: 0 },
+      { label: "Bila ratusan sama, kita lihat tempat", opsi: ["puluhan", "ribuan", "ratusan lagi"], benar: 0 },
+      { label: "Bila ratusan dan puluhan sama, kita lihat tempat", opsi: ["satuan", "puluhan", "ratusan"], benar: 0 },
+      { label: "Menurutku, 804 dan 804 adalah bilangan yang", opsi: ["sama", "berbeda", "tidak bisa dibandingkan"], benar: 0 },
+    ],
+  },
+  {
+    pusat: "Mengurutkan bilangan",
+    kotak: [
+      { label: "Dari terkecil ke terbesar berarti dimulai dari bilangan yang", opsi: ["paling kecil", "paling besar", "paling tengah"], benar: 0 },
+      { label: "Urutan 639, 709, 720 adalah dari", opsi: ["terkecil ke terbesar", "terbesar ke terkecil", "acak"], benar: 0 },
+      { label: "Simbol < dibaca", opsi: ["kurang dari", "lebih dari", "sama dengan"], benar: 0 },
+      { label: "Menurutku, tanda > dan < membantu kita untuk", opsi: ["membandingkan dua bilangan", "menjumlahkan bilangan", "menulis nol"], benar: 0 },
+    ],
+  },
+];
+/** QC10 Susun Kata Membandingkan. */
+export const RONDE_SUSUNKATA_QC: { kata: string[]; pengecoh: string }[] = [
+  { kata: ["339", "kurang", "dari", "421", "ditulis", "339", "<", "421"], pengecoh: ">" },
+  { kata: ["583", "lebih", "dari", "529", "ditulis", "583", ">", "529"], pengecoh: "<" },
+  { kata: ["Bandingkan", "dulu", "angka", "pada", "tempat", "ratusan"], pengecoh: "satuan" },
+  { kata: ["Bilangan", "804", "sama", "dengan", "804"], pengecoh: "kurang" },
+];
+
+/* ====================================================================== */
+/* SUB-BAB D. Penjumlahan bilangan cacah sampai 100                         */
+/* ====================================================================== */
+
+export const puluhanDari = (n: number): number => Math.floor(n / 10);
+export const satuanDari = (n: number): number => n % 10;
+/** Penjumlahan satuan melewati sepuluh, jadi perlu menyimpan satu puluhan. */
+export const perluSimpan = (a: number, b: number): boolean => satuanDari(a) + satuanDari(b) >= 10;
+/** Tiga pilihan hasil jumlah: kunci, lupa menyimpan (kurang sepuluh), dan salah menyimpan (lebih sepuluh). */
+export function opsiJumlah(n: number, nomor: number): number[] {
+  const semua = [n, n >= 10 ? n - 10 : n + 20, n + 10 <= 99 ? n + 10 : n - 20];
+  return urutanTetap(3, 2, nomor).map((i) => semua[i]);
+}
+export type SoalJumlah = { benda: BendaId; a: number; b: number };
+export type Jml = [number, number];
+
+/* ------------------------------ Concrete D ------------------------------ */
+
+/** CD1 Gabungkan Kumpulan: rakit jumlah dua kumpulan dengan penukaran. */
+export const RONDE_GABUNG_CD: SoalJumlah[][] = [
+  [{ benda: "kue", a: 23, b: 16 }, { benda: "kelereng", a: 34, b: 25 }],
+  [{ benda: "jeruk", a: 48, b: 16 }, { benda: "lidi", a: 27, b: 35 }],
+  [{ benda: "anggur", a: 54, b: 29 }, { benda: "pensil", a: 36, b: 47 }],
+];
+/** CD2 Hitung Gabungan. */
+export const RONDE_JUMLAH_CD: SoalJumlah[][] = [
+  [{ benda: "kue", a: 23, b: 16 }, { benda: "jeruk", a: 31, b: 24 }],
+  [{ benda: "kelereng", a: 48, b: 16 }, { benda: "rambutan", a: 25, b: 19 }],
+  [{ benda: "ikan", a: 54, b: 29 }, { benda: "pensil", a: 38, b: 37 }],
+];
+/** CD3 Pilah Soal: tanpa menyimpan atau dengan menyimpan. */
+export const RONDE_SORTIR_CD: { benda: BendaId; pasang: Jml[] }[] = [
+  { benda: "kue", pasang: [[23, 16], [48, 16], [31, 24], [27, 35], [42, 36], [19, 12]] },
+  { benda: "kelereng", pasang: [[54, 29], [33, 21], [38, 25], [41, 52], [26, 47], [60, 13]] },
+  { benda: "jeruk", pasang: [[17, 25], [32, 26], [45, 38], [51, 27], [29, 29], [14, 43]] },
+];
+/** CD4 Jodohkan Pasangan Kumpulan dan Jumlah. */
+export const RONDE_PASANG_CD: { benda: BendaId; pasang: Jml[] }[] = [
+  { benda: "kue", pasang: [[23, 16], [48, 16], [54, 29]] },
+  { benda: "kelereng", pasang: [[31, 24], [27, 35], [42, 36]] },
+  { benda: "pensil", pasang: [[19, 12], [33, 28], [45, 38]] },
+];
+/** CD5 Memori Pasangan Kumpulan dan Jumlah. */
+export const RONDE_MEMORI_CD: { benda: BendaId; pasang: Jml[] }[] = [
+  { benda: "kue", pasang: [[12, 13], [24, 35], [41, 28], [33, 37]] },
+  { benda: "jeruk", pasang: [[15, 21], [22, 47], [36, 18], [44, 29]] },
+  { benda: "anggur", pasang: [[27, 14], [38, 25], [46, 19], [53, 28]] },
+];
+/** CD6 Ketuk Pasangan dengan Jumlah Tertentu. */
+export const RONDE_KETUK_CD: { benda: BendaId; item: Jml[]; tanya: number[] }[] = [
+  { benda: "kue", item: [[23, 16], [48, 16], [54, 29]], tanya: [64, 39] },
+  { benda: "kelereng", item: [[31, 24], [27, 35], [42, 36]], tanya: [78, 55] },
+  { benda: "ikan", item: [[19, 12], [33, 28], [45, 38]], tanya: [83, 31] },
+];
+/** CD7 Ketuk Semua: pasangan yang perlu menyimpan atau tanpa menyimpan. */
+export const RONDE_SEMUA_CD: { benda: BendaId; syarat: "simpan" | "tanpa"; pasang: Jml[] }[] = [
+  { benda: "kue", syarat: "simpan", pasang: [[48, 16], [23, 16], [54, 29], [31, 24]] },
+  { benda: "kelereng", syarat: "tanpa", pasang: [[27, 35], [42, 36], [33, 21], [58, 27]] },
+  { benda: "jeruk", syarat: "simpan", pasang: [[19, 12], [36, 21], [27, 46], [40, 50]] },
+];
+/** CD8 Cerita Penjumlahan. */
+export type Cerita2 = { benda: BendaId; teks: string; a: number; b: number };
+export const RONDE_CERITA_CD: Cerita2[][] = [
+  [
+    { benda: "pensil", teks: "Ada 23 pensil warna merah dan 16 pensil warna biru. Berapa banyak pensil semuanya?", a: 23, b: 16 },
+    { benda: "kelereng", teks: "Alfa punya 48 kelereng biru dan 16 kelereng merah. Berapa banyak kelereng Alfa?", a: 48, b: 16 },
+  ],
+  [
+    { benda: "kue", teks: "Ibu menyiapkan 54 kue cubit manis dan 29 kue cubit asin. Berapa banyak kue cubit semuanya?", a: 54, b: 29 },
+    { benda: "jeruk", teks: "Paman memetik 31 jeruk, lalu memetik 27 jeruk lagi. Berapa jeruk yang dipetik Paman?", a: 31, b: 27 },
+  ],
+  [
+    { benda: "rambutan", teks: "Meutia mengumpulkan 36 rambutan pagi hari dan 47 rambutan siang hari. Berapa rambutan yang terkumpul?", a: 36, b: 47 },
+    { benda: "ikan", teks: "Di kolam Alen ada 25 ikan hias, lalu ditambah 36 ikan hias. Berapa ikan hias di kolam?", a: 25, b: 36 },
+  ],
+];
+/** CD9 Papan Jawaban Gabungan. */
+export const RONDE_PAPAN_CD: SoalJumlah[][] = [
+  [{ benda: "kue", a: 33, b: 28 }, { benda: "jeruk", a: 27, b: 46 }],
+  [{ benda: "kelereng", a: 19, b: 12 }, { benda: "pensil", a: 36, b: 21 }],
+  [{ benda: "anggur", a: 45, b: 38 }, { benda: "ikan", a: 62, b: 29 }],
+];
+/** CD10 Urutkan Pasangan menurut Jumlahnya. */
+export const RONDE_URUT_CD: { benda: BendaId; pasang: Jml[]; dari: "kecil" | "besar" }[] = [
+  { benda: "kue", pasang: [[23, 16], [48, 16], [31, 24]], dari: "kecil" },
+  { benda: "jeruk", pasang: [[27, 35], [42, 36], [19, 12]], dari: "besar" },
+  { benda: "kelereng", pasang: [[54, 29], [33, 28], [45, 36]], dari: "kecil" },
+];
+
+/* ------------------------------ Picture D ------------------------------ */
+
+/** PD1 Susun Bawah (Bab 1 Sub-Bab D, cara susun pendek): satu soal per ronde. */
+export const RONDE_SUSUN_PD: Jml[] = [[23, 16], [48, 16], [54, 29]];
+/** PD2 Papan Jawaban Susun. */
+export const RONDE_PAPAN_PD: Jml[][] = [[[33, 28], [27, 46]], [[19, 12], [36, 21]], [[45, 38], [62, 29]]];
+/** PD3 Hitung Model Puluhan dan Satuan. */
+export const RONDE_JUMLAH_PD: Jml[][] = [[[24, 13], [35, 22]], [[17, 26], [38, 45]], [[52, 19], [29, 63]]];
+/** PD4 Jodohkan Model dan Jumlah. */
+export const RONDE_PASANG_PD: Jml[][] = [[[21, 34], [43, 18], [56, 27]], [[33, 44], [19, 25], [38, 29]], [[62, 17], [45, 36], [28, 39]]];
+/** PD5 Memori Model dan Jumlah. */
+export const RONDE_MEMORI_PD: Jml[][] = [[[12, 13], [24, 35], [41, 28], [33, 37]], [[15, 21], [22, 47], [36, 18], [44, 29]], [[27, 14], [38, 25], [46, 19], [53, 28]]];
+/** PD6 Isi Tabel Hasil Susun. */
+export type TabelJumlah = { kepala: [string, string]; baris: { label: string; jawab: string }[]; kartu: string[] };
+function tabelJumlah(pasang: Jml[], tambahan: number): TabelJumlah {
+  const baris = pasang.map(([a, b]) => ({ label: `${a} + ${b}`, jawab: String(a + b) }));
+  const asing = String(pasang[0][0] + pasang[0][1] + 10);
+  const kartu = urutanTetap(pasang.length + 1, 2, tambahan).map((i) => (i < pasang.length ? baris[i].jawab : asing));
+  return { kepala: ["Soal", "Hasil"], baris, kartu };
+}
+export const RONDE_TABEL_PD: TabelJumlah[] = [tabelJumlah([[33, 28], [27, 46], [19, 12], [36, 21]], 1), tabelJumlah([[31, 51], [49, 19], [21, 20], [70, 13]], 2), tabelJumlah([[45, 27], [38, 36], [26, 15], [52, 34]], 3)];
+/** PD7 Ketuk Semua: yang perlu menyimpan. */
+export const RONDE_SEMUA_PD: { syarat: "simpan" | "tanpa"; pasang: Jml[] }[] = [
+  { syarat: "simpan", pasang: [[48, 16], [23, 16], [54, 29], [31, 24]] },
+  { syarat: "tanpa", pasang: [[27, 35], [42, 36], [33, 21], [58, 27]] },
+  { syarat: "simpan", pasang: [[19, 12], [36, 21], [27, 46], [40, 50]] },
+];
+export const cocokSimpan = (p: Jml, syarat: "simpan" | "tanpa"): boolean => (syarat === "simpan" ? perluSimpan(p[0], p[1]) : !perluSimpan(p[0], p[1]));
+/** PD8 Pilah Soal Susun. */
+export const RONDE_SORTIR_PD: Jml[][] = [[[23, 16], [48, 16], [31, 24], [27, 35], [42, 36], [19, 12]], [[54, 29], [33, 21], [38, 25], [41, 52], [26, 47], [60, 13]], [[17, 25], [32, 26], [45, 38], [51, 27], [29, 29], [14, 43]]];
+/** PD9 Cara Panjang: uraikan lalu kelompokkan. */
+export const RONDE_URAI_PD: Jml[] = [[23, 16], [48, 16], [54, 29]];
+export function kalimatPanjang(a: number, b: number, nomor: number): KalimatIsian[] {
+  const pil = (v: number, i: number) => {
+    const semua = [v, (v + 2) % 100, v + 10 > 99 ? v - 10 : v + 10];
+    const opsi = urutanTetap(3, 2, nomor + i).map((k) => semua[k]);
+    return { opsi: opsi.map(String), benar: opsi.indexOf(v) };
+  };
+  const ta = puluhanDari(a) * 10;
+  const tb = puluhanDari(b) * 10;
+  return [
+    { depan: `${a} = ${ta} +`, belakang: ".", ...pil(satuanDari(a), 0) },
+    { depan: `${b} =`, belakang: `+ ${satuanDari(b)}.`, ...pil(tb, 1) },
+    { depan: `${a} + ${b} =`, belakang: ".", ...pil(a + b, 2) },
+  ];
+}
+/** PD10 Urutkan Langkah Penjumlahan Bersusun. */
+export const RONDE_LANGKAH_PD: { judul: string; langkah: string[] }[] = [
+  { judul: "Susun pendek tanpa menyimpan: 23 + 16", langkah: ["Susun bilangan sesuai nilai tempat", "Jumlahkan satuan: 3 + 6 = 9", "Jumlahkan puluhan: 2 + 1 = 3", "Tulis hasilnya: 39"] },
+  { judul: "Susun pendek dengan menyimpan: 48 + 16", langkah: ["Susun bilangan sesuai nilai tempat", "Jumlahkan satuan: 8 + 6 = 14, simpan 1 puluhan", "Jumlahkan puluhan: 1 + 4 + 1 = 6", "Tulis hasilnya: 64"] },
+  { judul: "Susun panjang: 54 + 29", langkah: ["Uraikan: 54 = 50 + 4 dan 29 = 20 + 9", "Kelompokkan: (50 + 20) + (4 + 9)", "Jumlahkan: 70 + 13", "Uraikan 13 dan jumlahkan: 83"] },
+];
+
+/* ------------------------------ Abstract D ------------------------------ */
+
+/** QD1 Susun Bawah Lambang. */
+export const RONDE_SUSUN_QD: Jml[] = [[34, 25], [46, 38], [57, 26]];
+/** QD2 Jumlah Pilihan (Ayo Berlatih 3). */
+export const RONDE_JUMLAH_QD: Jml[][] = [[[31, 51], [49, 19]], [[21, 20], [70, 13]], [[61, 37], [18, 45]]];
+/** QD3 Papan Jumlah. */
+export const RONDE_PAPAN_QD: Jml[][] = [[[64, 17], [35, 48]], [[26, 39], [52, 33]], [[71, 19], [28, 57]]];
+/** QD4 Puluhan, Satuan, Jumlah: kalimat langkah menjumlah. */
+export const RONDE_LANGKAH_QD: Jml[] = [[48, 16], [54, 29], [37, 45]];
+export function kalimatLangkah(a: number, b: number, nomor: number): KalimatIsian[] {
+  const pil = (v: number, i: number) => {
+    const semua = [v, v + 1 > 99 ? v - 1 : v + 1, v >= 10 ? v - 10 : v + 10];
+    const opsi = urutanTetap(3, 2, nomor + i).map((k) => semua[k]);
+    return { opsi: opsi.map(String), benar: opsi.indexOf(v) };
+  };
+  const ta = puluhanDari(a);
+  const tb = puluhanDari(b);
+  const sa = satuanDari(a);
+  const sb = satuanDari(b);
+  return [
+    { depan: `Satuan: ${sa} + ${sb} =`, belakang: ".", ...pil(sa + sb, 0) },
+    { depan: `Puluhan: ${ta} + ${tb} + ${perluSimpan(a, b) ? 1 : 0} =`, belakang: ".", ...pil(ta + tb + (perluSimpan(a, b) ? 1 : 0), 1) },
+    { depan: `${a} + ${b} =`, belakang: ".", ...pil(a + b, 2) },
+  ];
+}
+/** QD5 Jodohkan Soal dan Hasil. */
+export const RONDE_PASANG_QD: Jml[][] = [[[23, 16], [48, 16], [54, 29]], [[31, 24], [27, 35], [42, 36]], [[19, 12], [33, 28], [45, 38]]];
+/** QD6 Memori Soal dan Hasil. */
+export const RONDE_MEMORI_QD: Jml[][] = [[[12, 13], [24, 35], [41, 28], [33, 37]], [[15, 21], [22, 47], [36, 18], [44, 29]], [[27, 14], [38, 25], [46, 19], [53, 28]]];
+/** QD7 Benar atau Salah. */
+export const RONDE_BENARSALAH_QD: Pernyataan[][] = [
+  [
+    { teks: `23 + 16 = ${23 + 16}.`, benar: true, penjelasan: "Satuan 3 + 6 = 9, puluhan 2 + 1 = 3. Hasilnya 39." },
+    { teks: "Pada penjumlahan bersusun, satuan dijumlahkan lebih dulu.", benar: true, penjelasan: "Kita mulai dari satuan, baru puluhan." },
+    { teks: `48 + 16 = ${48 + 16 - 10}.`, benar: false, penjelasan: "8 + 6 = 14, jadi simpan 1 puluhan. Hasilnya 64, bukan 54." },
+    { teks: "Bila satuan berjumlah 10 atau lebih, kita menyimpan satu puluhan.", benar: true, penjelasan: "Sepuluh satuan ditukar satu puluhan, lalu ditambahkan ke puluhan." },
+    { teks: `21 + 20 = ${21 + 20}.`, benar: true, penjelasan: "Satuan 1 + 0 = 1, puluhan 2 + 2 = 4. Hasilnya 41." },
+  ],
+  [
+    { teks: `54 + 29 = ${54 + 29}.`, benar: true, penjelasan: "4 + 9 = 13, simpan 1 puluhan. 5 + 2 + 1 = 8. Hasilnya 83." },
+    { teks: "Pada cara susun panjang, bilangan diuraikan menjadi puluhan dan satuan.", benar: true, penjelasan: "Misalnya 54 = 50 + 4. Lalu puluhan dengan puluhan, satuan dengan satuan." },
+    { teks: `70 + 13 = ${70 + 31}.`, benar: false, penjelasan: "70 + 13 = 83. Angka 3 dan 1 pada 13 tidak boleh tertukar." },
+    { teks: "Bilangan 14 diurai menjadi 10 + 4.", benar: true, penjelasan: "14 sama dengan 1 puluhan dan 4 satuan." },
+    { teks: `33 + 28 = ${33 + 28 - 10}.`, benar: false, penjelasan: "3 + 8 = 11, simpan 1 puluhan. 3 + 2 + 1 = 6. Hasilnya 61." },
+  ],
+];
+/** QD8 Detektif Penjumlahan. */
+export const RONDE_DETEKTIF_QD: SoalDetektif[] = [
+  { klue: ["Aku adalah hasil 23 + 16.", "Aku kurang dari 40."], jawab: 39, opsi: [39, 29, 49], salah: "23 + 16 = 39. Cek puluhan 2 + 1 dan satuan 3 + 6." },
+  { klue: ["Aku adalah hasil 48 + 16.", "Puluhanku 6."], jawab: 64, opsi: [54, 64, 74], salah: "8 + 6 = 14, simpan 1 puluhan. 4 + 1 + 1 = 6. Hasilnya 64." },
+  { klue: ["Jumlah dua bilangan yang satuannya 4 dan 9 adalah 83.", "Salah satu bilangannya 54."], jawab: 29, opsi: [19, 29, 39], salah: "83 dikurangi 54 sama dengan 29. Satuan 9 dan 4 + 9 = 13." },
+  { klue: ["Aku hasil 70 + 13.", "Satuanku 3."], jawab: 83, opsi: [73, 83, 93], salah: "70 + 13 = 83. Puluhan 7 + 1 = 8." },
+];
+/** QD9 Peta Konsep Penjumlahan. */
+export const PETA_KONSEP_QD: { pusat: string; kotak: KotakPeta[] }[] = [
+  {
+    pusat: "Penjumlahan bersusun",
+    kotak: [
+      { label: "Bilangan disusun lurus menurut", opsi: ["nilai tempat", "besar kecil", "urutan huruf"], benar: 0 },
+      { label: "Kita menjumlahkan lebih dulu pada tempat", opsi: ["satuan", "puluhan", "ratusan"], benar: 0 },
+      { label: "Satuan berjumlah 14 berarti menyimpan", opsi: ["1 puluhan", "4 puluhan", "10 puluhan"], benar: 0 },
+      { label: "Menurutku, 48 + 16 hasilnya", opsi: ["64", "54", "74"], benar: 0 },
+    ],
+  },
+  {
+    pusat: "Cara susun panjang",
+    kotak: [
+      { label: "Pertama, bilangan", opsi: ["diuraikan menjadi puluhan dan satuan", "dikurangi", "dikalikan"], benar: 0 },
+      { label: "Lalu puluhan dikelompokkan dengan", opsi: ["puluhan", "satuan", "ratusan"], benar: 0 },
+      { label: "13 diurai menjadi", opsi: ["10 + 3", "1 + 3", "13 + 0"], benar: 0 },
+      { label: "Menurutku, 54 + 29 sama dengan 70 +", opsi: ["13", "31", "3"], benar: 0 },
+    ],
+  },
+];
+/** QD10 Soal Cerita Tiga Bilangan (Ayo Berlatih 5). */
+export type CeritaJumlah = { teks: string; angka: number[] };
+export const RONDE_CERITA_QD: CeritaJumlah[][] = [
+  [
+    { teks: "Andi membeli 25 buku dan 36 pensil. Berapa jumlah barang yang dibeli Andi?", angka: [25, 36] },
+    { teks: "Di kolam Alen ada 11 ikan cupang, 9 ikan molly, dan 19 ikan koki. Berapa ekor ikan hias di kolam?", angka: [11, 9, 19] },
+  ],
+  [
+    { teks: "Pak Adi punya 15 kambing, 10 sapi, dan 12 domba. Berapa jumlah hewan ternaknya?", angka: [15, 10, 12] },
+    { teks: "Lomba karnaval diikuti 13 siswa kelas 3, 22 siswa kelas 4, dan 28 siswa kelas 5. Berapa jumlah siswa seluruhnya?", angka: [13, 22, 28] },
+  ],
+  [
+    { teks: "Di rak ada 23 buku Matematika dan 16 buku Bahasa Indonesia. Berapa jumlah buku di rak?", angka: [23, 16] },
+    { teks: "Upacara diikuti 48 siswa laki-laki dan 16 siswa perempuan. Berapa jumlah siswa yang ikut upacara?", angka: [48, 16] },
+  ],
+];
+export const jumlahCerita = (c: CeritaJumlah): number => c.angka.reduce((a, b) => a + b, 0);

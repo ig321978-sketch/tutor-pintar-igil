@@ -296,3 +296,237 @@ export function visualInfografisK3B1B(): React.ReactNode[] {
     </KotakPoster>,
   ];
 }
+
+/* ====================================================================== */
+/* Sub-Bab C                                                                */
+/* ====================================================================== */
+
+/** Dua model berdampingan dengan tanda perbandingan di tengah. */
+const Banding = ({ a, b, tanda, skala = 0.62 }: { a: number; b: number; tanda: string; skala?: number }) => (
+  <div className="flex items-center justify-center gap-1.5">
+    <div className="flex flex-col items-center gap-0.5 rounded-xl border-2 border-[#1C01A5] bg-white px-1.5 py-1">
+      <ModelDari n={a} skala={skala} />
+      <Cap>{a}</Cap>
+    </div>
+    <span className="text-3xl font-black text-[#1C01A5]">{tanda}</span>
+    <div className="flex flex-col items-center gap-0.5 rounded-xl border-2 border-[#1C01A5] bg-white px-1.5 py-1">
+      <ModelDari n={b} skala={skala} />
+      <Cap>{b}</Cap>
+    </div>
+  </div>
+);
+
+export function visualInfografisK3B1C(): React.ReactNode[] {
+  return [
+    /* 1 Lebih, Kurang, Sama */
+    <KotakPoster key="1" warna="#FEF3C7">
+      <div className="grid grid-cols-3 gap-1.5 text-center">
+        {[
+          ["339 < 421", "kurang dari"],
+          ["583 > 529", "lebih dari"],
+          ["804 = 804", "sama dengan"],
+        ].map(([a, ket]) => (
+          <div key={a} className="rounded-xl border-2 border-[#1C01A5] bg-white px-1 py-1.5">
+            <p className="text-base font-black text-[#1C01A5]">{a}</p>
+            <Cap>{ket}</Cap>
+          </div>
+        ))}
+      </div>
+    </KotakPoster>,
+    /* 2 Ratusan Dulu */
+    <KotakPoster key="2" warna="#DCFCE7">
+      <Banding a={339} b={421} tanda="<" />
+      <div className="flex justify-center pt-1">
+        <Chip warna={WARNA_TEMPAT.ratusan.isi}>3 ratusan kurang dari 4 ratusan</Chip>
+      </div>
+    </KotakPoster>,
+    /* 3 Lalu Puluhan */
+    <KotakPoster key="3" warna="#DBEAFE">
+      <Banding a={583} b={529} tanda=">" />
+      <div className="flex justify-center pt-1">
+        <Chip warna={WARNA_TEMPAT.puluhan.isi}>ratusan sama, 8 puluhan lebih dari 2</Chip>
+      </div>
+    </KotakPoster>,
+    /* 4 Terakhir Satuan */
+    <KotakPoster key="4" warna="#FEE2E2">
+      <Banding a={769} b={761} tanda=">" />
+      <div className="flex justify-center pt-1">
+        <Chip warna={WARNA_TEMPAT.satuan.isi}>ratusan dan puluhan sama, 9 lebih dari 1</Chip>
+      </div>
+    </KotakPoster>,
+    /* 5 Tiga Tanda */
+    <KotakPoster key="5" warna="#F5F3FF">
+      <div className="grid grid-cols-3 gap-1.5 text-center">
+        {[
+          ["<", "kurang dari"],
+          [">", "lebih dari"],
+          ["=", "sama dengan"],
+        ].map(([t, ket]) => (
+          <div key={t} className="rounded-xl border-2 border-[#1C01A5] bg-white px-1 py-1">
+            <p className="text-4xl font-black leading-none text-[#1C01A5]">{t}</p>
+            <Cap>{ket}</Cap>
+          </div>
+        ))}
+      </div>
+      <div className="flex justify-center pt-1">
+        <Chip>mulut terbuka ke yang lebih besar</Chip>
+      </div>
+    </KotakPoster>,
+    /* 6 Bilangan yang Sama */
+    <KotakPoster key="6" warna="#ECFCCB">
+      <Banding a={804} b={804} tanda="=" />
+    </KotakPoster>,
+    /* 7 Tiga Bilangan */
+    <KotakPoster key="7" warna="#FFF7ED">
+      <div className="grid grid-cols-3 gap-1">
+        {[639, 709, 720].map((n) => (
+          <div key={n} className="flex flex-col items-center gap-0.5 rounded-xl border-2 border-[#1C01A5] bg-white px-1 py-1">
+            <ModelDari n={n} skala={0.45} />
+            <Cap>{n}</Cap>
+          </div>
+        ))}
+      </div>
+      <div className="flex justify-center pt-1">
+        <Chip>639 &lt; 709 &lt; 720</Chip>
+      </div>
+    </KotakPoster>,
+    /* 8 Urutan Naik */
+    <KotakPoster key="8" warna="#E0F2FE">
+      <div className="flex items-center justify-center gap-1.5">
+        {[639, 709, 720].map((n, i) => (
+          <React.Fragment key={n}>
+            {i ? <span className="text-xl font-black text-[#1C01A5]">→</span> : null}
+            <Chip warna="#BBF7D0">{n}</Chip>
+          </React.Fragment>
+        ))}
+      </div>
+      <Cap>dari terkecil ke terbesar</Cap>
+    </KotakPoster>,
+    /* 9 Urutan Turun */
+    <KotakPoster key="9" warna="#FCE7F3">
+      <div className="flex items-center justify-center gap-1.5">
+        {[720, 709, 639].map((n, i) => (
+          <React.Fragment key={n}>
+            {i ? <span className="text-xl font-black text-[#1C01A5]">→</span> : null}
+            <Chip warna="#BFDBFE">{n}</Chip>
+          </React.Fragment>
+        ))}
+      </div>
+      <Cap>dari terbesar ke terkecil</Cap>
+    </KotakPoster>,
+    /* 10 Cara Membandingkan */
+    <KotakPoster key="10" warna="#FFFBEB">
+      <Langkah daftar={["1. Tulis di papan nilai tempat", "2. Bandingkan ratusan dulu", "3. Bila sama: puluhan, lalu satuan", "4. Tulis hasilnya dengan tanda"]} warna={["#BAE6FD", "#BBF7D0", "#FDE68A", "#FECACA"]} />
+    </KotakPoster>,
+  ];
+}
+
+/* ====================================================================== */
+/* Sub-Bab D                                                                */
+/* ====================================================================== */
+
+/** Penjumlahan bersusun kecil: kolom puluhan dan satuan, simpanan di atas, hasil di bawah. */
+const SusunMini = ({ a, b, tampilHasil = true, sorot }: { a: number; b: number; tampilHasil?: boolean; sorot?: "p" | "s" }) => {
+  const sa = a % 10;
+  const sb = b % 10;
+  const simpan = sa + sb >= 10;
+  const hasil = a + b;
+  const sel = (isi: React.ReactNode, kuat = false, warna?: string) => (
+    <span className={`flex h-9 w-14 items-center justify-center rounded-lg text-2xl font-black ${kuat ? "ring-4 ring-[#F0AB00]" : ""}`} style={{ color: warna ?? "#1C01A5" }}>
+      {isi}
+    </span>
+  );
+  return (
+    <div className="mx-auto w-fit rounded-xl border-2 border-[#1C01A5] bg-white px-2 py-1">
+      <div className="grid grid-cols-[auto_auto_auto] items-center gap-x-1 text-center">
+        <span />
+        <span className="text-[10px] font-black" style={{ color: WARNA_TEMPAT.puluhan.teks }}>Puluhan</span>
+        <span className="text-[10px] font-black" style={{ color: WARNA_TEMPAT.satuan.teks }}>Satuan</span>
+        <span />
+        {sel(simpan ? "1" : "", false, "#DC2626")}
+        {sel("")}
+        <span className="text-2xl font-black text-[#1C01A5]" />
+        {sel(Math.floor(a / 10), sorot === "p")}
+        {sel(sa, sorot === "s")}
+        <span className="text-2xl font-black text-[#1C01A5]">+</span>
+        {sel(Math.floor(b / 10), sorot === "p")}
+        {sel(sb, sorot === "s")}
+      </div>
+      <div className="my-0.5 h-0.5 bg-[#1C01A5]" />
+      <div className="grid grid-cols-[auto_auto_auto] items-center gap-x-1 text-center">
+        <span className="w-4" />
+        {sel(tampilHasil ? Math.floor(hasil / 10) : "?", false, "#16A34A")}
+        {sel(tampilHasil ? hasil % 10 : "?", false, "#16A34A")}
+      </div>
+    </div>
+  );
+};
+
+export function visualInfografisK3B1D(): React.ReactNode[] {
+  return [
+    /* 1 Susun Lurus */
+    <KotakPoster key="1" warna="#FCE7F3">
+      <SusunMini a={23} b={16} tampilHasil={false} />
+      <div className="flex justify-center pt-1">
+        <Chip>puluhan lurus puluhan, satuan lurus satuan</Chip>
+      </div>
+    </KotakPoster>,
+    /* 2 Satuan Lebih Dulu */
+    <KotakPoster key="2" warna="#FEE2E2">
+      <SusunMini a={23} b={16} tampilHasil={false} sorot="s" />
+      <div className="flex justify-center pt-1">
+        <Chip warna={WARNA_TEMPAT.satuan.isi}>3 + 6 = 9</Chip>
+      </div>
+    </KotakPoster>,
+    /* 3 Puluhan Berikutnya */
+    <KotakPoster key="3" warna="#DBEAFE">
+      <SusunMini a={23} b={16} sorot="p" />
+      <div className="flex justify-center pt-1">
+        <Chip warna={WARNA_TEMPAT.puluhan.isi}>2 + 1 = 3, hasilnya 39</Chip>
+      </div>
+    </KotakPoster>,
+    /* 4 Menyimpan */
+    <KotakPoster key="4" warna="#FEF9C3">
+      <div className="space-y-1 text-center">
+        <p className="text-lg font-black text-[#1C01A5]">8 + 6 = 14</p>
+        <Chip>14 = 1 puluhan + 4 satuan</Chip>
+        <Cap>tulis 4 di satuan, simpan 1 puluhan</Cap>
+      </div>
+    </KotakPoster>,
+    /* 5 Contoh 23 + 16 */
+    <KotakPoster key="5" warna="#DCFCE7">
+      <SusunMini a={23} b={16} />
+    </KotakPoster>,
+    /* 6 Contoh 48 + 16 */
+    <KotakPoster key="6" warna="#E0E7FF">
+      <SusunMini a={48} b={16} />
+    </KotakPoster>,
+    /* 7 Susun Panjang */
+    <KotakPoster key="7" warna="#FFF7ED">
+      <div className="space-y-1 text-center text-sm font-black text-[#1C01A5]">
+        <p>54 = 50 + 4</p>
+        <p>29 = 20 + 9</p>
+        <p>(50 + 20) + (4 + 9)</p>
+        <p>= 70 + 13 = 83</p>
+      </div>
+    </KotakPoster>,
+    /* 8 Tiga Bilangan */
+    <KotakPoster key="8" warna="#F5F3FF">
+      <div className="space-y-1 text-center">
+        <Chip warna="#BAE6FD">23 + 30 = 53</Chip>
+        <p className="text-sm font-black text-[#1C01A5]">lalu 53 + 12 = 65</p>
+      </div>
+    </KotakPoster>,
+    /* 9 Soal Cerita */
+    <KotakPoster key="9" warna="#ECFCCB">
+      <div className="space-y-1 text-center">
+        <p className="text-sm font-black text-[#1C01A5]">25 buku + 36 pensil</p>
+        <Chip>25 + 36 = 61 barang</Chip>
+      </div>
+    </KotakPoster>,
+    /* 10 Cara Memeriksa */
+    <KotakPoster key="10" warna="#FFFBEB">
+      <Langkah daftar={["1. Susun lurus", "2. Jumlahkan satuan, simpan bila perlu", "3. Jumlahkan puluhan", "4. Periksa dengan cara lain"]} warna={["#BAE6FD", "#FECACA", "#BFDBFE", "#FDE68A"]} />
+    </KotakPoster>,
+  ];
+}

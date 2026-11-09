@@ -6,7 +6,7 @@ import { KartuK2B5 } from "./kartu-k2b5";
 import { BENDA_INFO, type BendaId } from "./data-k2b7";
 import { KoleksiDari } from "./dasar-k3b1";
 import { KartuModel } from "./diagram-k3b1";
-import { kata, Kapital, TEKS_SYARAT, type Syarat } from "./data-k3b1";
+import { angkaTempat, kata, Kapital, kataRelasi, relasi, tempatBeda, TEKS_SYARAT, type Syarat } from "./data-k3b1";
 
 /* ------------------------------------------------------------------------ */
 /* Pembantu bersama permainan Kelas 3 Bab 1: pembungkus kartu permainan dan     */
@@ -58,5 +58,83 @@ export const Model = ({ n, skala = 0.6 }: { n: number; skala?: number }) => <Kar
 export const Numeral = ({ n, kelas = "text-2xl" }: { n: number | string; kelas?: string }) => <span className={`font-black text-[#1C01A5] ${kelas}`}>{n}</span>;
 
 export const Kata = ({ n }: { n: number }) => <span className="text-[11px] font-black leading-tight text-[#1C01A5]">{kata(n)}</span>;
+
+/* ------------------------------ Gambar pasangan (Sub-Bab C dan D) ------------------------------ */
+
+/** Dua kumpulan benda berdampingan bertanda Kumpulan A dan Kumpulan B (tahap Concrete). */
+export function DuaKoleksi({ a, b, benda, ukuran = 30 }: { a: number; b: number; benda: BendaId; ukuran?: number }) {
+  return (
+    <div className="grid w-full grid-cols-2 gap-2">
+      {[
+        ["Kumpulan A", a],
+        ["Kumpulan B", b],
+      ].map(([nama, n]) => (
+        <div key={nama as string} className="flex flex-col items-center gap-1 rounded-2xl border-2 border-[#1C01A5]/30 bg-white px-1 py-1">
+          <KoleksiDari n={n as number} benda={benda} ukuran={ukuran} />
+          <span className="text-[11px] font-black text-[#1C01A5]">{nama as string}</span>
+        </div>
+      ))}
+    </div>
+  );
+}
+
+/** Dua kumpulan benda dengan tanda tambah di antaranya (penjumlahan, tahap Concrete). */
+export function TambahKoleksi({ a, b, benda, ukuran = 30 }: { a: number; b: number; benda: BendaId; ukuran?: number }) {
+  return (
+    <div className="flex w-full items-center justify-center gap-1.5">
+      <div className="flex flex-1 flex-col items-center gap-0.5 rounded-2xl border-2 border-[#1C01A5]/30 bg-white px-1 py-1">
+        <KoleksiDari n={a} benda={benda} ukuran={ukuran} />
+        <span className="text-xs font-black text-[#1C01A5]">{a}</span>
+      </div>
+      <span className="text-3xl font-black text-[#1C01A5]">+</span>
+      <div className="flex flex-1 flex-col items-center gap-0.5 rounded-2xl border-2 border-[#1C01A5]/30 bg-white px-1 py-1">
+        <KoleksiDari n={b} benda={benda} ukuran={ukuran} />
+        <span className="text-xs font-black text-[#1C01A5]">{b}</span>
+      </div>
+    </div>
+  );
+}
+
+/** Dua model blok berdampingan bertanda Model A dan Model B (tahap Picture). */
+export function DuaModel({ a, b, skala = 0.8 }: { a: number; b: number; skala?: number }) {
+  return (
+    <div className="grid w-full grid-cols-2 gap-2">
+      {[
+        ["Model A", a],
+        ["Model B", b],
+      ].map(([nama, n]) => (
+        <div key={nama as string} className="flex flex-col items-center gap-1 rounded-2xl border-2 border-[#1C01A5]/30 bg-white px-1 py-1">
+          <KartuModel n={n as number} skala={skala} />
+          <span className="text-[11px] font-black text-[#1C01A5]">{nama as string}</span>
+        </div>
+      ))}
+    </div>
+  );
+}
+
+/** Dua model blok dengan tanda tambah di antaranya (penjumlahan, tahap Picture). */
+export function TambahModel({ a, b, skala = 0.8 }: { a: number; b: number; skala?: number }) {
+  return (
+    <div className="flex w-full items-center justify-center gap-1.5">
+      <div className="flex flex-1 flex-col items-center gap-0.5 rounded-2xl border-2 border-[#1C01A5]/30 bg-white px-1 py-1">
+        <KartuModel n={a} skala={skala} />
+        <span className="text-xs font-black text-[#1C01A5]">{a}</span>
+      </div>
+      <span className="text-3xl font-black text-[#1C01A5]">+</span>
+      <div className="flex flex-1 flex-col items-center gap-0.5 rounded-2xl border-2 border-[#1C01A5]/30 bg-white px-1 py-1">
+        <KartuModel n={b} skala={skala} />
+        <span className="text-xs font-black text-[#1C01A5]">{b}</span>
+      </div>
+    </div>
+  );
+}
+
+/** Penjelasan singkat mengapa dua bilangan berelasi demikian: tempat pertama yang berbeda. */
+export function penjelasanBanding(a: number, b: number): string {
+  const r = relasi(a, b);
+  const t = tempatBeda(a, b);
+  if (t === "sama") return `${a} dan ${b} sama pada semua tempat, jadi ${a} sama dengan ${b}.`;
+  return `Tempat ${t} yang menentukan: ${angkaTempat(a, t)} ${t} dan ${angkaTempat(b, t)} ${t}. Jadi ${a} ${kataRelasi(r)} ${b}.`;
+}
 
 export { Kapital };
