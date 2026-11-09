@@ -198,11 +198,198 @@ cek("RONDE_CERITA_QA: hitungan dari teks (selisih 55 − 50, 3 cm 7 mm, 40 + 35,
 cek("RONDE_SUSUNKATA_QA: empat kalimat, kata unik, pengecoh bukan bagian kalimat", D.RONDE_SUSUNKATA_QA.length === 4 && D.RONDE_SUSUNKATA_QA.every((s) => s.kata.length >= 6 && unik(s.kata.map((k) => k.toLowerCase())) && !s.kata.map((k) => k.toLowerCase()).includes(s.pengecoh)));
 
 /* ====================================================================== */
+/* Sub-Bab B: Sudut pada bidang datar                                       */
+/* ====================================================================== */
+
+/* ---- Pembantu sudut ---- */
+const jenisManual = (d) => (d === 90 ? "siku-siku" : d === 180 ? "lurus" : d < 90 ? "lancip" : d < 180 ? "tumpul" : "refleks");
+for (let d = 1; d < 360; d += 1) cek(`jenisSudut(${d})`, D.jenisSudut(d) === jenisManual(d));
+for (const d of [0, 360, -5, 400]) cek(`jenisSudut(${d}) menolak ukuran di luar 0 sampai 360`, (() => { try { D.jenisSudut(d); return false; } catch { return true; } })());
+cek("namaSudut, labelSudut, teksDerajat", D.namaSudut("lancip") === "sudut lancip" && D.labelSudut("siku-siku") === "Sudut siku-siku" && D.teksDerajat(50) === "50°");
+for (const j of D.URUT_SUDUT) for (let k = 0; k < 3; k += 1) {
+  const o = D.opsiJenisSudut(j, k);
+  cek(`opsiJenisSudut(${j}, ${k}) tiga berbeda menunjuk ${D.labelSudut(j)}`, new Set(o.opsi).size === 3 && o.opsi[o.jawab] === D.labelSudut(j));
+}
+for (let d = 10; d <= 170; d += 5) if (d !== 90) for (let k = 0; k < 3; k += 1) {
+  const o = D.opsiBusur(d, k);
+  cek(`opsiBusur(${d}, ${k}) tiga berbeda memuat ${d} dan bacaan skala yang salah, semuanya 1 sampai 180`, new Set(o).size === 3 && o.includes(d) && o.includes(180 - d) && o.every((v) => v >= 1 && v <= 180), JSON.stringify(o));
+}
+for (const d of [60, 90, 130, 180, 230, 300, 360]) for (let k = 0; k < 3; k += 1) {
+  const o = D.opsiDerajat(d, k);
+  cek(`opsiDerajat(${d}, ${k}) tiga berbeda memuat ${d}, semuanya 1 sampai 360`, new Set(o).size === 3 && o.includes(d) && o.every((v) => v >= 1 && v <= 360), JSON.stringify(o));
+}
+cek("cocokPutar", D.cocokPutar("lebih", 45, 60) && !D.cocokPutar("lebih", 45, 45) && D.cocokPutar("kurang", 60, 45) && !D.cocokPutar("kurang", 60, 60) && !D.cocokPutar("kurang", 60, 0) && D.cocokPutar("sama", 90, 90) && !D.cocokPutar("sama", 90, 75));
+cek("tanyaPutar dan pesanPutar", /lebih besar/.test(D.tanyaPutar({ syarat: "lebih", target: 45, awal: 15 })) && /lebih kecil/.test(D.tanyaPutar({ syarat: "kurang", target: 60, awal: 90 })) && /pojok kertas lipat/.test(D.tanyaPutar({ syarat: "sama", target: 90, awal: 45 })) && /garis lurus/.test(D.tanyaPutar({ syarat: "sama", target: 180, awal: 90 })) && /90°/.test(D.pesanPutar({ syarat: "sama", target: 90, awal: 45 })) && /180°/.test(D.pesanPutar({ syarat: "sama", target: 180, awal: 90 })));
+
+/* ---- Concrete B ---- */
+const BENDA_SUDUT = Object.keys(D.NAMA_BENDA_SUDUT);
+const sahBenda = (s) => BENDA_SUDUT.includes(s.benda) && s.deg >= 15 && s.deg <= (s.benda === "gunting" ? 160 : 180) && Number.isInteger(s.deg);
+for (const [nama, daftar] of [["RONDE_STRIP_CB", D.RONDE_STRIP_CB], ["RONDE_SIKU_CB", D.RONDE_SIKU_CB]]) {
+  tiga(nama, daftar);
+  daftar.forEach((ro, r) =>
+    cek(
+      `${nama} ronde ${r + 1}: dua soal kelipatan 15, awal belum memenuhi syarat, jawaban masih bisa dicapai pada 0 sampai 180`,
+      ro.length === 2 &&
+        ro.every((s) => {
+          const nilai = [];
+          for (let a = 0; a <= 180; a += 15) nilai.push(a);
+          return s.awal % 15 === 0 && s.target % 15 === 0 && s.awal >= 0 && s.awal <= 180 && !D.cocokPutar(s.syarat, s.target, s.awal) && nilai.some((a) => D.cocokPutar(s.syarat, s.target, a));
+        }),
+      JSON.stringify(ro),
+    ),
+  );
+}
+cek("RONDE_STRIP_CB: ada lebih dan kurang", D.RONDE_STRIP_CB.flat().some((s) => s.syarat === "lebih") && D.RONDE_STRIP_CB.flat().some((s) => s.syarat === "kurang") && D.RONDE_STRIP_CB.flat().every((s) => s.syarat !== "sama"));
+cek("RONDE_SIKU_CB: hanya sama, target 90 dan 180 (kertas lipat dan garis lurus)", D.RONDE_SIKU_CB.flat().every((s) => s.syarat === "sama" && (s.target === 90 || s.target === 180)) && D.RONDE_SIKU_CB.flat().some((s) => s.target === 90) && D.RONDE_SIKU_CB.flat().some((s) => s.target === 180));
+tiga("RONDE_TERBUKA_CB", D.RONDE_TERBUKA_CB);
+D.RONDE_TERBUKA_CB.forEach((ro, r) => cek(`RONDE_TERBUKA_CB ronde ${r + 1}: tiga bukaan berbeda 15 sampai 165, dua pertanyaan berbeda (lebar dan sempit)`, BENDA_SUDUT.includes(ro.benda) && ro.degs.length === 3 && unik(ro.degs) && ro.degs.every((d) => d >= 15 && d <= 165) && ro.tanya.length === 2 && unik(ro.tanya) && ro.tanya.every((t) => t === "lebar" || t === "sempit")));
+for (const [nama, daftar, ukuran] of [["RONDE_JENIS_CB", D.RONDE_JENIS_CB, 2], ["RONDE_JODOH_CB", D.RONDE_JODOH_CB, 3], ["RONDE_MEMORI_CB", D.RONDE_MEMORI_CB, 4]]) {
+  tiga(nama, daftar);
+  daftar.forEach((ro, r) => {
+    const jenis = ro.map((s) => D.jenisSudut(s.deg));
+    cek(`${nama} ronde ${r + 1}: ${ukuran} benda sah, id unik${nama === "RONDE_JENIS_CB" ? "" : ", jenis sudut berbeda"}`, ro.length === ukuran && ro.every(sahBenda) && unik(ro.map(D.idSudut)) && (nama === "RONDE_JENIS_CB" || unik(jenis)), JSON.stringify(ro));
+  });
+}
+D.RONDE_JENIS_CB.flat().forEach((s) => cek(`RONDE_JENIS_CB ${D.idSudut(s)}: opsi tiga berbeda menunjuk jenis ${D.jenisSudut(s.deg)}`, (() => { const o = D.opsiJenisSudut(D.jenisSudut(s.deg), 0); return new Set(o.opsi).size === 3 && o.opsi[o.jawab] === D.labelSudut(D.jenisSudut(s.deg)); })()));
+cek("RONDE_JENIS_CB: ada lancip, siku-siku, dan tumpul", ["lancip", "siku-siku", "tumpul"].every((j) => D.RONDE_JENIS_CB.flat().some((s) => D.jenisSudut(s.deg) === j)));
+D.RONDE_MEMORI_CB.forEach((ro, r) => cek(`RONDE_MEMORI_CB ronde ${r + 1}: jenis lancip, siku-siku, tumpul, dan lurus`, ["lancip", "siku-siku", "tumpul", "lurus"].every((j) => ro.some((s) => D.jenisSudut(s.deg) === j))));
+tiga("RONDE_SEMUA_CB", D.RONDE_SEMUA_CB);
+D.RONDE_SEMUA_CB.forEach((ro, r) => {
+  const benar = ro.item.filter((s) => D.jenisSudut(s.deg) === ro.jenis).length;
+  cek(`RONDE_SEMUA_CB ronde ${r + 1}: empat benda sah, id unik, 1 sampai 3 cocok, jenis lancip/siku-siku/tumpul`, ro.item.length === 4 && ro.item.every(sahBenda) && unik(ro.item.map(D.idSudut)) && benar >= 1 && benar <= 3 && ["lancip", "siku-siku", "tumpul"].includes(ro.jenis), `${benar}`);
+});
+const SIKU_NYATA = { buku: 4, bingkai: 4, tv: 4, segitiga: 1, rambu: 0, jam: 0 };
+for (const [id, b] of Object.entries(D.BENDA_SIKU)) cek(`BENDA_SIKU ${id}: emoji, nama, banyak sudut siku-siku benar`, b.id === id && !!b.emoji && !!b.nama && b.siku === SIKU_NYATA[id]);
+cek("BENDA_SIKU: nama unik", unik(Object.values(D.BENDA_SIKU).map((b) => b.nama)));
+tiga("RONDE_SIKUBENDA_CB", D.RONDE_SIKUBENDA_CB);
+D.RONDE_SIKUBENDA_CB.forEach((ro, r) => cek(`RONDE_SIKUBENDA_CB ronde ${r + 1}: dua benda berbeda yang terdaftar`, ro.length === 2 && unik(ro) && ro.every((id) => !!D.BENDA_SIKU[id])));
+for (let r = 0; r < 3; r += 1) for (let i = 0; i < 2; i += 1) {
+  const n = D.BENDA_SIKU[D.RONDE_SIKUBENDA_CB[r][i]].siku;
+  const o = D.opsiAngka(n, r * 2 + i);
+  cek(`opsiAngka(${n}) pada CB8: tiga berbeda memuat kunci, tidak negatif`, new Set(o).size === 3 && o.includes(n) && o.every((v) => v >= 0), JSON.stringify(o));
+}
+tiga("RONDE_URUT_CB", D.RONDE_URUT_CB);
+D.RONDE_URUT_CB.forEach((ro, r) => cek(`RONDE_URUT_CB ronde ${r + 1}: tiga bukaan berbeda, benda sah`, BENDA_SUDUT.includes(ro.benda) && ro.degs.length === 3 && unik(ro.degs) && ro.degs.every((d) => sahBenda({ benda: ro.benda, deg: d })) && (ro.dari === "kecil" || ro.dari === "besar")));
+cek("RONDE_URUT_CB: ada dari kecil dan dari besar", D.RONDE_URUT_CB.some((x) => x.dari === "kecil") && D.RONDE_URUT_CB.some((x) => x.dari === "besar"));
+tiga("RONDE_IRISAN_CB", D.RONDE_IRISAN_CB);
+D.RONDE_IRISAN_CB.forEach((ro, r) => {
+  cek(`RONDE_IRISAN_CB ronde ${r + 1}: dua soal pada sudut yang sama dengan satuan berbeda, habis dibagi, 2 sampai 9 irisan`, ro.length === 2 && ro[0].deg === ro[1].deg && ro[0].satuan !== ro[1].satuan && ro.every((s) => s.deg % s.satuan === 0 && D.banyakIrisan(s) >= 2 && D.banyakIrisan(s) <= 9 && s.deg <= 135), JSON.stringify(ro));
+  cek(`RONDE_IRISAN_CB ronde ${r + 1}: satuan lebih kecil memberi irisan lebih banyak`, D.banyakIrisan(ro[0]) < D.banyakIrisan(ro[1]));
+  for (let i = 0; i < 2; i += 1) {
+    const n = D.banyakIrisan(ro[i]);
+    const o = D.opsiAngka(n, r * 2 + i);
+    cek(`opsiAngka(${n}) pada CB10: tiga berbeda memuat kunci`, new Set(o).size === 3 && o.includes(n));
+  }
+});
+cek("RONDE_IRISAN_CB: sudut 90 dengan 3 dan 6 irisan (seperti buku)", D.banyakIrisan({ deg: 90, satuan: 30 }) === 3 && D.banyakIrisan({ deg: 90, satuan: 15 }) === 6 && D.RONDE_IRISAN_CB[0][0].deg === 90);
+
+/* ---- Picture B ---- */
+tiga("RONDE_BUSUR_PB", D.RONDE_BUSUR_PB);
+D.RONDE_BUSUR_PB.forEach((ro, r) => cek(`RONDE_BUSUR_PB ronde ${r + 1}: dua soal kelipatan 5 antara 10 dan 170, bukan 90`, ro.length === 2 && ro.every((s) => s.deg % 5 === 0 && s.deg >= 10 && s.deg <= 170 && s.deg !== 90)));
+cek("RONDE_BUSUR_PB: ada kaki OA di kanan dan di kiri", D.RONDE_BUSUR_PB.flat().some((s) => s.kiri) && D.RONDE_BUSUR_PB.flat().some((s) => !s.kiri));
+tiga("RONDE_JENIS_PB", D.RONDE_JENIS_PB);
+D.RONDE_JENIS_PB.forEach((ro, r) => cek(`RONDE_JENIS_PB ronde ${r + 1}: dua sudut sah dengan jenis berbeda`, ro.length === 2 && ro.every((d) => d > 0 && d < 360) && unik(ro.map(D.jenisSudut))));
+cek("RONDE_JENIS_PB: semua lima jenis muncul", D.URUT_SUDUT.every((j) => D.RONDE_JENIS_PB.flat().some((d) => D.jenisSudut(d) === j)));
+for (const [nama, daftar, ukuran] of [["RONDE_JODOH_PB", D.RONDE_JODOH_PB, 3], ["RONDE_MEMORI_PB", D.RONDE_MEMORI_PB, 4]]) {
+  tiga(nama, daftar);
+  daftar.forEach((ro, r) => cek(`${nama} ronde ${r + 1}: ${ukuran} sudut sah dengan jenis berbeda`, ro.length === ukuran && ro.every((d) => d > 0 && d < 360) && unik(ro.map(D.jenisSudut)) && unik(ro), JSON.stringify(ro)));
+}
+tiga("RONDE_TABEL_PB", D.RONDE_TABEL_PB);
+D.RONDE_TABEL_PB.forEach((t, r) => {
+  const jawab = t.baris.map((b) => b.jawab);
+  cek(`RONDE_TABEL_PB ronde ${r + 1}: empat baris unik, jawaban sesuai ukuran`, t.baris.length === 4 && unik(t.baris.map((b) => b.label)) && t.baris.every((b) => b.jawab === D.labelSudut(D.jenisSudut(parseInt(b.label, 10)))), JSON.stringify(t.baris));
+  cek(`RONDE_TABEL_PB ronde ${r + 1}: lima kartu unik, semua jawaban ada, satu pengecoh`, t.kartu.length === 5 && unik(t.kartu) && unik(jawab) && jawab.every((j) => t.kartu.includes(j)) && t.kartu.filter((k) => !jawab.includes(k)).length === 1);
+});
+tiga("RONDE_SEMUA_PB", D.RONDE_SEMUA_PB);
+D.RONDE_SEMUA_PB.forEach((ro, r) => {
+  const benar = ro.degs.filter((d) => D.jenisSudut(d) === ro.jenis).length;
+  cek(`RONDE_SEMUA_PB ronde ${r + 1}: empat sudut sah, 1 sampai 3 cocok`, ro.degs.length === 4 && ro.degs.every((d) => d > 0 && d < 360) && benar >= 1 && benar <= 3 && ["lancip", "siku-siku", "tumpul"].includes(ro.jenis), `${benar}`);
+});
+tiga("RONDE_PILAH_PB", D.RONDE_PILAH_PB);
+D.RONDE_PILAH_PB.forEach((ro, r) => {
+  const hitung = (j) => ro.filter((d) => D.jenisSudut(d) === j).length;
+  cek(`RONDE_PILAH_PB ronde ${r + 1}: enam sudut berbeda, hanya lancip, siku-siku, tumpul, tiap kotak terisi`, ro.length === 6 && unik(ro) && ro.every((d) => ["lancip", "siku-siku", "tumpul"].includes(D.jenisSudut(d))) && hitung("lancip") >= 1 && hitung("siku-siku") >= 1 && hitung("tumpul") >= 1, JSON.stringify(ro));
+});
+tiga("RONDE_URUT_PB", D.RONDE_URUT_PB);
+D.RONDE_URUT_PB.forEach((ro, r) => cek(`RONDE_URUT_PB ronde ${r + 1}: tiga sudut berbeda`, ro.degs.length === 3 && unik(ro.degs) && ro.degs.every((d) => d > 0 && d < 180) && (ro.dari === "kecil" || ro.dari === "besar")));
+cek("RONDE_URUT_PB: ada dari kecil dan dari besar", D.RONDE_URUT_PB.some((x) => x.dari === "kecil") && D.RONDE_URUT_PB.some((x) => x.dari === "besar"));
+tiga("RONDE_NAMA_PB", D.RONDE_NAMA_PB);
+D.RONDE_NAMA_PB.forEach((ro, r) => ro.forEach((s, i) => {
+  const o = D.opsiNamaSudut(s, r * 2 + i);
+  const [a, v, b] = s.huruf;
+  const kunci = s.tanya === "titik" ? v : s.tanya === "nama" ? `∠${a}${v}${b}` : `${v}${a} dan ${v}${b}`;
+  cek(`RONDE_NAMA_PB ${r + 1}-${i + 1}: huruf unik, tiga pilihan berbeda, kunci ${kunci}`, s.huruf.every((h) => /^[A-Z]$/.test(h)) && unik(s.huruf) && s.deg > 0 && s.deg < 180 && new Set(o.opsi).size === 3 && o.opsi[o.jawab] === kunci && D.pesanNamaSudut(s).includes(s.tanya === "nama" ? kunci : v));
+}));
+cek("RONDE_NAMA_PB: ada titik, nama, dan kaki; nama ditulis dengan titik sudut di tengah", ["titik", "nama", "kaki"].every((t) => D.RONDE_NAMA_PB.flat().some((s) => s.tanya === t)) && D.namaSudutHuruf(["A", "O", "B"]) === "∠AOB" && D.kakiSudutHuruf(["A", "O", "B"]) === "OA dan OB");
+tiga("RONDE_GAMBAR_PB", D.RONDE_GAMBAR_PB);
+D.RONDE_GAMBAR_PB.forEach((ro, r) => cek(`RONDE_GAMBAR_PB ronde ${r + 1}: dua sudut kelipatan 5 antara 10 dan 170`, ro.length === 2 && ro.every((d) => d % 5 === 0 && d >= 10 && d <= 170) && unik(ro)));
+
+/* ---- Abstract B ---- */
+for (const [nama, daftar] of [["RONDE_NAMA_QB", D.RONDE_NAMA_QB], ["RONDE_JENIS_QB", D.RONDE_JENIS_QB]]) {
+  tiga(nama, daftar);
+  daftar.forEach((ro, r) => cek(`${nama} ronde ${r + 1}: dua soal dengan tiga pilihan berbeda`, ro.length === 2 && ro.every(sahTeks)));
+  for (let r = 0; r < 3; r += 1) for (let i = 0; i < 2; i += 1) {
+    const o = D.susunOpsi(daftar[r][i].benar, daftar[r][i].salah, r * 2 + i);
+    cek(`${nama} ${r}-${i}: susunOpsi menunjuk kunci`, o.opsi[o.jawab] === daftar[r][i].benar && new Set(o.opsi).size === 3);
+  }
+}
+const NAMA_BENAR_B = {
+  "Titik tempat dua kaki sudut bertemu disebut ...": "titik sudut",
+  "Sinar OA dan sinar OB pada ∠AOB disebut ...": "kaki sudut",
+  "Alat untuk mengukur sudut disebut ...": "busur derajat",
+  "Satuan ukuran sudut adalah ...": "derajat",
+  "Sudut yang ukurannya tepat 90° disebut sudut ...": "siku-siku",
+  "Sudut yang ukurannya tepat 180° disebut sudut ...": "lurus",
+};
+cek("RONDE_NAMA_QB: kunci benar menurut uraian", D.RONDE_NAMA_QB.flat().every((s) => NAMA_BENAR_B[s.tanya] === s.benar));
+D.RONDE_JENIS_QB.flat().forEach((s) => {
+  const d = parseInt(s.tanya.match(/Sudut (\d+)°/)[1], 10);
+  cek(`RONDE_JENIS_QB "${s.tanya}": kunci ${s.benar} sesuai ukuran, pengecoh tidak, pesan menyebut ukuran`, s.benar === D.namaSudut(jenisManual(d)) && s.salah.every((x) => x !== s.benar) && s.pesan.includes(`${d}°`));
+});
+cek("RONDE_JENIS_QB: semua lima jenis muncul", D.URUT_SUDUT.every((j) => D.DEG_JENIS_QB.flat().some((d) => jenisManual(d) === j)));
+tiga("RONDE_KALIMAT_QB", D.RONDE_KALIMAT_QB);
+D.RONDE_KALIMAT_QB.forEach((ro, r) => cek(`RONDE_KALIMAT_QB ronde ${r + 1}: tiga kalimat, tiga pilihan berbeda, kunci sah`, ro.length === 3 && ro.every((k) => k.opsi.length === 3 && unik(k.opsi) && k.benar >= 0 && k.benar < 3 && !!k.depan)));
+const KALIMAT_BENAR = [
+  "Sudut terbentuk ketika dua garis berpotongan pada satu titik.",
+  "Titik O pada ∠AOB disebut titik sudut.",
+  "Simbol ∠ menunjukkan sudut.",
+  "Sudut siku-siku ukurannya tepat 90°.",
+  "Sudut lancip ukurannya kurang dari 90°.",
+  "Sudut lurus ukurannya tepat 180°.",
+  "Sudut tumpul ukurannya lebih dari 90° dan kurang dari 180°.",
+  "Sudut refleks ukurannya lebih dari 180° dan kurang dari 360°.",
+  "Satu putaran penuh sama dengan 360°.",
+];
+cek("RONDE_KALIMAT_QB: kalimat lengkap yang terbentuk benar", D.RONDE_KALIMAT_QB.flat().map((k) => `${k.depan} ${k.opsi[k.benar]}${k.belakang === "." ? "." : ` ${k.belakang}`}`).join("|") === KALIMAT_BENAR.join("|"), D.RONDE_KALIMAT_QB.flat().map((k) => `${k.depan} ${k.opsi[k.benar]}${k.belakang}`).join("|"));
+tiga("RONDE_JODOH_QB", D.RONDE_JODOH_QB);
+D.RONDE_JODOH_QB.forEach((ro, r) => cek(`RONDE_JODOH_QB ronde ${r + 1}: tiga pasangan benar, kiri dan kanan unik`, ro.length === 3 && ro.every((p) => D.labelSudut(jenisManual(parseInt(p.kiri, 10))) === p.kanan) && unik(ro.map((p) => p.kiri)) && unik(ro.map((p) => p.kanan)), JSON.stringify(ro)));
+tiga("RONDE_MEMORI_QB", D.RONDE_MEMORI_QB);
+D.RONDE_MEMORI_QB.forEach((ro, r) => cek(`RONDE_MEMORI_QB ronde ${r + 1}: empat pasangan benar, kartu unik`, ro.length === 4 && ro.every((p) => D.labelSudut(jenisManual(parseInt(p.a, 10))) === p.b) && unik([...ro.map((p) => p.a), ...ro.map((p) => p.b)]), JSON.stringify(ro)));
+cek("RONDE_BENARSALAH_QB: dua ronde, lima pernyataan, kunci sesuai isi", D.RONDE_BENARSALAH_QB.length === 2 && D.RONDE_BENARSALAH_QB.every((ro) => ro.length === 5 && ro.some((p) => p.benar) && ro.some((p) => !p.benar) && ro.every((p) => p.penjelasan.length > 20)) && JSON.stringify(D.RONDE_BENARSALAH_QB.map((ro) => ro.map((p) => p.benar))) === JSON.stringify([[true, false, true, false, true], [true, false, true, false, true]]));
+const KLUE_B = [(n) => n === 90, (n) => n === 90 * 2, (n) => n > 90 && n < 180 && n % 60 === 0, (n) => n > 180 && n < 360 && n + 60 === 360];
+cek("RONDE_DETEKTIF_QB: empat soal", D.RONDE_DETEKTIF_QB.length === 4);
+D.RONDE_DETEKTIF_QB.forEach((s, i) => {
+  const cocok = s.opsi.filter(KLUE_B[i]);
+  cek(`RONDE_DETEKTIF_QB ${i + 1}: dua petunjuk, tiga pilihan berbeda, tepat satu cocok yaitu kunci`, s.klue.length === 2 && unik(s.opsi) && s.opsi.length === 3 && cocok.length === 1 && cocok[0] === s.jawab, JSON.stringify(cocok));
+});
+cek("PETA_KONSEP_QB: dua peta, empat kotak, tiga pilihan berbeda", D.PETA_KONSEP_QB.length === 2 && D.PETA_KONSEP_QB.every((p) => !!p.pusat && p.kotak.length === 4 && p.kotak.every((k) => k.opsi.length === 3 && unik(k.opsi) && k.benar >= 0 && k.benar < 3 && !!k.label)));
+const KUNCI_CERITA_B = [[180, 60], [230, 90], [130, 360]];
+const HITUNG_CERITA_B = [[90 + 90, 360 - 300], [360 - 130, 180 / 2], [180 - 50, 360]];
+tiga("RONDE_CERITA_QB", D.RONDE_CERITA_QB);
+D.RONDE_CERITA_QB.forEach((ro, r) =>
+  ro.forEach((c, i) => {
+    const o = D.opsiCeritaSudut(c, r * 2 + i);
+    cek(`RONDE_CERITA_QB ${r + 1}-${i + 1}: kunci ${c.jawab}° sesuai hitungan, tiga pilihan berbeda`, c.jawab === KUNCI_CERITA_B[r][i] && c.jawab === HITUNG_CERITA_B[r][i] && c.pesan.includes(`${c.jawab}°`) && new Set(o.opsi).size === 3 && o.opsi[o.jawab] === `${c.jawab}°`, JSON.stringify(o));
+  }),
+);
+cek("RONDE_SUSUNKATA_QB: empat kalimat, kata unik, pengecoh bukan bagian kalimat", D.RONDE_SUSUNKATA_QB.length === 4 && D.RONDE_SUSUNKATA_QB.every((s) => s.kata.length >= 6 && unik(s.kata.map((k) => k.toLowerCase())) && !s.kata.map((k) => k.toLowerCase()).includes(s.pengecoh)));
+
+/* ====================================================================== */
 /* Naskah                                                                   */
 /* ====================================================================== */
 
 cek("K3B4_META", N.K3B4_META.chapterId === "k3-mat-bab4" && N.K3B4_META.phaseCode === "FASE_B" && N.K3B4_META.grade === 3 && N.K3B4_META.suaraLaju === 0.7 && N.K3B4_META.suaraNada === 1);
-cek("SUB_BAB_K3B4: sub-bab A", N.SUB_BAB_K3B4.map((s) => s.id).join() === "A");
+cek("SUB_BAB_K3B4: sub-bab A dan B", N.SUB_BAB_K3B4.map((s) => s.id).join() === "A,B");
 for (const s of N.SUB_BAB_K3B4) {
   const k = s.id;
   cek(`${k}: tiga video, tiap video tiga adegan`, s.videos.length === 3 && s.videos.every((v) => v.adegan.length === 3));
@@ -222,7 +409,7 @@ for (const s of N.SUB_BAB_K3B4) {
   cek(`${k}: silabus lengkap`, s.silabus.teksSuara.length > 100 && s.silabus.cp.length > 50 && s.silabus.referensi.includes("Bab 4"));
 }
 cek("naskah: tidak memuat nilai tukar rupiah", !/rupiah|Rp\s?\d|\bkurs\b/i.test(JSON.stringify(N.SUB_BAB_K3B4)));
-cek("semuaAdeganK3B4: 9 adegan", N.semuaAdeganK3B4.length === 9);
+cek("semuaAdeganK3B4: 18 adegan", N.semuaAdeganK3B4.length === 18);
 
 console.log(`\nUji data Kelas 3 Bab 4: ${lulus} lulus, ${gagal} gagal.`);
 if (gagal > 0) process.exit(1);

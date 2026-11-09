@@ -21,8 +21,8 @@ const suaraLib = baca("src/lib/suara-guru-modul.ts");
 const mesinVideo = baca("src/components/modul/video-cerita.tsx");
 const umumB2 = baca("src/components/modul/video-k2b2-umum.tsx");
 
-const SUB = ["A"];
-const BERKAS = ["naskah-k3b4.ts", "data-k3b4.ts", "diagram-k3b4.tsx", "kit-k3b4.tsx", "paket-k3b4.ts", "infografis-k3b4.tsx", "video-k3b4a.tsx", "SubBabK3B4A.tsx"];
+const SUB = ["A", "B"];
+const BERKAS = ["naskah-k3b4.ts", "data-k3b4.ts", "diagram-k3b4.tsx", "kit-k3b4.tsx", "paket-k3b4.ts", "infografis-k3b4.tsx", "video-k3b4a.tsx", "SubBabK3B4A.tsx", "diagram-k3b4b.tsx", "dasar-k3b4b.tsx", "mesin-k3b4.tsx", "video-k3b4b.tsx", "SubBabK3B4B.tsx"];
 for (const b of BERKAS) {
   const t = baca(`src/components/modul/${b}`);
   cek(`${b}: tanpa jaringan atau layanan suara berbayar`, !/fetch\(|\/api\/|elevenlabs|XMLHttpRequest|axios/i.test(t));
@@ -43,8 +43,8 @@ const pemutarBaru = baca("src/components/PemutarBabBaru.tsx");
 cek("registri: mtk-3-bab4 dimuat malas lewat import dinamis", /"mtk-3-bab4": \(\) => import\("\.\/paket-k3b4"\)/.test(registri));
 cek("PemutarBabBaru: memuat paket lalu menyerahkannya ke pemutar", /MUAT_BAB_BARU\[bab\]/.test(pemutarBaru) && /<IgilModulePlayer bab=\{bab\} paket=\{hasil\.paket\}/.test(pemutarBaru));
 cek("pemutar: paket Kelas 3 Bab 4 tidak diimpor langsung (tidak membengkakkan bundel bab lain)", !/kelas3-bab4|k3b4/i.test(pemutar));
-cek("paket: sub-bab A dengan video, peta, infografis, Concrete, Picture, Abstract", SUB.every((k) => new RegExp(`${k}: \\{ Cerita: VideoK3B4${k}, peta: PETA_PIKIRAN_K3B4${k}, Infografis: InfografisK3B4${k}Komponen, Concrete: ConcreteK3B4${k}, Picture: PictureK3B4${k}, Abstract: AbstractK3B4${k}, uraianPeta: true`).test(paket)));
-cek("paket: emoji sub-bab A", /A: \{ emoji: "📐" \}/.test(paket));
+cek("paket: sub-bab A dan B dengan video, peta, infografis, Concrete, Picture, Abstract", SUB.every((k) => new RegExp(`${k}: \\{ Cerita: VideoK3B4${k}, peta: PETA_PIKIRAN_K3B4${k}, Infografis: InfografisK3B4${k}Komponen, Concrete: ConcreteK3B4${k}, Picture: PictureK3B4${k}, Abstract: AbstractK3B4${k}, uraianPeta: true`).test(paket)));
+cek("paket: emoji sub-bab A dan B", /A: \{ emoji: "📏" \}/.test(paket) && /B: \{ emoji: "📐" \}/.test(paket));
 cek("halaman: /ruang-belajar/mtk-3-bab4 memakai PemutarBabBaru", /bab="mtk-3-bab4"/.test(baca("src/app/ruang-belajar/mtk-3-bab4/page.tsx")));
 const kur = baca("src/lib/kurikulum.ts");
 cek("kurikulum: judul Kelas 3 Bab 4 terpasang", /JUDUL_MTK_3_BAB4 = "Bab 4: Unsur-Unsur Bangun Datar"/.test(kur) && /"3 SD": \{\s*Matematika: \[JUDUL_MTK_3_BAB1, JUDUL_MTK_3_BAB2, JUDUL_MTK_3_BAB3, JUDUL_MTK_3_BAB4/.test(kur));
@@ -92,13 +92,13 @@ cek("JSON: tanpa kunci jawaban", !/"correct_index"|"correctAnswer"|"explanation"
 cek("JSON: tanpa data simulasi", !/simulasi/i.test(JSON.stringify(json)));
 cek("JSON: chapter_id, phase_code, grade", json.chapter_id === "k3-mat-bab4" && json.phase_code === "FASE_B" && json.grade === 3);
 cek("JSON: laju 0,70 dan nada 1, suara perangkat saja", json.suaraLaju === 0.7 && json.suaraNada === 1 && json.suaraPerangkatSaja === true);
-cek("JSON: sub-bab A", Object.keys(json.subBabs).join() === "A");
+cek("JSON: sub-bab A dan B", Object.keys(json.subBabs).join() === "A,B");
 cek("JSON: tiap sub-bab 30 permainan dan 9 cerita", Object.values(json.subBabs).every((s) => s.interactiveGames.length === 30 && s.stories.length === 9 && s.mindMaps.length === 8 && s.infografisData.length === 10));
 cek("seed server tidak dibuat untuk bab tanpa soal", !fs.existsSync("supabase/seed/02_kelas3_bab4_keys.sql"));
 
 /* ---- Batas Concrete dan Picture ---- */
-const bendaNyata = /PenggarisBenda|BendaUkur|dasar-k3b3|BENDA_SISI|GARIS_BENDA|<Emoji\b/;
-const emojiBenda = /[\u{270F}\u{1F4D6}\u{1F5BC}\u{1F4B3}\u{1F4FA}\u{1F4F1}\u{1F4D0}\u{26A0}\u{1F6D1}\u{1F550}\u{1F36A}\u{1F3AF}\u{1F526}\u{1F6E4}\u{1F4CF}\u{1F308}\u{1F58A}\u{1F34E}\u{1F34C}\u{1F4E6}]/u;
+const bendaNyata = /PenggarisBenda|BendaUkur|dasar-k3b3|dasar-k3b4b|BENDA_SISI|GARIS_BENDA|BENDA_SIKU|BendaSudutSvg|IrisanPizza|BukuTerbuka|PintuTerbuka|GuntingTerbuka|<Emoji\b/;
+const emojiBenda = /[\u{270F}\u{1F4D6}\u{1F5BC}\u{1F4B3}\u{1F4FA}\u{1F4F1}\u{1F4D0}\u{26A0}\u{1F6D1}\u{1F550}\u{1F36A}\u{1F3AF}\u{1F526}\u{1F6E4}\u{1F4CF}\u{1F308}\u{1F58A}\u{1F34E}\u{1F34C}\u{1F4E6}\u{1F4C4}\u{1F355}\u{1F4CE}\u{1F6AA}]/u;
 const iris = (t, dari, sampai) => {
   const a = t.indexOf(dari);
   const b = t.indexOf(sampai, a + 10);
@@ -129,14 +129,23 @@ for (const kode of SUB) {
   cek("diagram-k3b3.tsx: tetap bebas gambar benda dan emoji", !/dasar-k3b3|BendaUkur|PitaSusun/.test(d3) && !/\p{Extended_Pictographic}/u.test(d3));
   const dasar = baca("src/components/modul/dasar-k3b3.tsx");
   cek("dasar-k3b3.tsx: memakai gambar benda tahap Concrete (PenggarisBenda)", /PenggarisBenda/.test(dasar));
+  const dB = baca("src/components/modul/diagram-k3b4b.tsx");
+  cek("diagram-k3b4b.tsx: tidak mengimpor gambar benda dan tanpa emoji (aman untuk Picture dan Abstract)", !/dasar-k3b3|dasar-k3b4b|BukuTerbuka|IrisanPizza/.test(dB) && !emojiBenda.test(dB) && !/\p{Extended_Pictographic}/u.test(dB));
+  const mB = baca("src/components/modul/mesin-k3b4.tsx");
+  cek("mesin-k3b4.tsx: tidak mengimpor gambar benda (aman untuk Picture)", !/dasar-k3b3|dasar-k3b4b|BukuTerbuka|IrisanPizza|BendaSudutSvg/.test(mB));
+  cek("mesin-k3b4.tsx: murni lokal, tanpa Math.random dan jaringan", !/Math\.random|fetch\(/.test(mB));
+  const dsB = baca("src/components/modul/dasar-k3b4b.tsx");
+  cek("dasar-k3b4b.tsx: memuat gambar benda tahap Concrete (buku, pintu, gunting, irisan pizza)", /BukuTerbuka/.test(dsB) && /PintuTerbuka/.test(dsB) && /GuntingTerbuka/.test(dsB) && /IrisanPizza/.test(dsB));
+  const bB = baca("src/components/modul/SubBabK3B4B.tsx");
+  cek("SubBabK3B4B: PutarSudut dipasang sebagai strip di Concrete (2 kartu) dan sebagai busur di Picture (1 kartu)", (bB.match(/keMesin\("strip"/g) ?? []).length === 2 && (bB.match(/tampilan: "busur"/g) ?? []).length === 1);
 }
 for (const s of N.SUB_BAB_K3B4) for (const g of s.games.filter((x) => x.stage === "Picture")) cek(`naskah ${s.id}: Picture "${g.title}" tanpa emoji`, !/\p{Extended_Pictographic}/u.test(`${g.title} ${g.objective} ${g.mechanicDescription} ${g.voiceGuide}`));
 const info = baca("src/components/modul/infografis-k3b4.tsx");
-cek("infografis: sepuluh visual per sub-bab", (info.match(/\/\* \d+ [A-Z0-9]/g) ?? []).length === 10, `ada ${(info.match(/\/\* \d+ [A-Z0-9]/g) ?? []).length}`);
+cek("infografis: dua puluh visual (10 per sub-bab)", (info.match(/\/\* \d+ [A-Z0-9]/g) ?? []).length === 20, `ada ${(info.match(/\/\* \d+ [A-Z0-9]/g) ?? []).length}`);
 cek("infografis: tanpa emoji benda dan gambar benda", !emojiBenda.test(info) && !/dasar-k3b3|PenggarisBenda/.test(info));
 
 /* ---- Naskah md ---- */
-for (const f of ["mtk-3-bab4-sub-a-sisi-bangun-datar.md", "mtk-3-bab4-video-cerita.md"]) cek(`naskah/${f} ada`, fs.existsSync(`naskah/${f}`));
+for (const f of ["mtk-3-bab4-sub-a-sisi-bangun-datar.md", "mtk-3-bab4-sub-b-sudut-bidang-datar.md", "mtk-3-bab4-video-cerita.md"]) cek(`naskah/${f} ada`, fs.existsSync(`naskah/${f}`));
 
 console.log(`\nUji statis Kelas 3 Bab 4: ${lulus} lulus, ${gagal} gagal.`);
 if (gagal > 0) process.exit(1);

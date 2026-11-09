@@ -148,8 +148,16 @@ KONFIG.k3b4 = {
   bab: 4,
   judul: "Unsur-Unsur Bangun Datar",
   buku: "Buku Siswa Matematika Kelas III (Kemendikbudristek, Kurikulum Merdeka, Bab 4 hlm. 143–185) dan Buku Panduan Guru Bab 4",
-  berkas: { A: "sub-a-sisi-bangun-datar" },
+  berkas: { A: "sub-a-sisi-bangun-datar", B: "sub-b-sudut-bidang-datar" },
   metodeLuar: {
+    B: [
+      "**Strip sudut dari karton (Aktivitas 2)**: dua strip dengan pengait diputar dengan tombol atau penggeser. Acuan berupa garis putus agar siswa membandingkan sudut lebih besar atau lebih kecil tanpa angka. Mesin PutarSudut memeriksa syarat, bukan angka bebas.",
+      "**Pojok kertas lipat (Aktivitas 3)**: sudut siku-siku dibentuk dengan menempatkan strip tepat pada pojok kertas yang dilipat dua kali. Sudut lurus dibentuk dari dua sudut siku-siku sehingga kedua strip menjadi satu garis.",
+      "**Benda yang dibuka**: buku, pintu, dan gunting digambar membuka pada berbagai sudut. Dipakai untuk membandingkan bukaan, mengurutkan, dan menentukan jenis sudut sebelum siswa memakai angka derajat.",
+      "**Irisan pizza sebagai satuan tidak baku**: sudut yang sama ditutupi irisan besar (3 satuan) lalu irisan kecil (6 satuan), sesuai gambar buku, supaya terasa perlunya satuan baku (derajat).",
+      "**Busur derajat polos di tahap Picture**: busur dengan skala luar dan skala dalam, kaki OA di kanan atau kiri. Pengecoh sengaja memuat bacaan dari skala yang salah (180° dikurangi kunci) dan kunci lebih 10°.",
+      "**Menggambar sudut dan pasangan 360°**: permainan Gambar Sudut dengan Busur Derajat meniru contoh sudut 50° di buku. Soal cerita memuat sudut lurus 180°, dua sudut siku-siku, dan pasangan sudut refleks yang berjumlah 360°.",
+    ],
     A: [
       "**Benda nyata yang menyerupai bangun datar**: buku, bingkai foto, kartu, televisi, ponsel, penggaris segitiga, rambu, dan rambu berhenti dipakai untuk menghitung sisi. Benda bundar (jam, kue, papan sasaran) sengaja dipakai sebagai pengecoh karena tidak punya sisi lurus.",
       "**Titik, garis, sinar garis, ruas garis, dan kurva**: sinar senter, rel kereta api, pensil, penggaris, dan pelangi dihubungkan dengan jenisnya. Di tahap Picture hanya gambar garis polos berhuruf yang dipakai.",

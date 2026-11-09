@@ -955,6 +955,947 @@
           "Aku dapat menyebutkan sisi dan menghitung banyak sisi bangun datar."
         ]
       }
+    },
+    "B": {
+      "id": "B",
+      "codeTitle": "Sub-Bab B (Sudut pada Bidang Datar)",
+      "fullTitle": "Sub-Bab B: Sudut pada Bidang Datar",
+      "targetDescription": "Siswa membandingkan sudut dengan strip sudut, membentuk dan mengenali sudut siku-siku dari kertas yang dilipat, menamai sudut (titik sudut, kaki, dan simbol ∠), mengukur sudut dengan satuan tidak baku lalu dengan busur derajat, menggambar sudut dengan ukuran tertentu, serta mengelompokkan sudut menjadi lancip, siku-siku, tumpul, lurus, dan refleks.",
+      "secondaryBg": "#FEF3C7",
+      "secondaryBorder": "#D97706",
+      "secondaryText": "#78350F",
+      "silabus": {
+        "teksSuara": "Kita belajar sudut pada bidang datar. Kita membandingkan sudut dengan strip sudut dan membentuk sudut siku-siku dari kertas lipat. Kita mengukur sudut dengan satuan tidak baku, lalu dengan busur derajat, dan menggambar sudut. Terakhir kita mengelompokkan sudut menjadi lancip, siku-siku, tumpul, lurus, dan refleks. Kita melewati enam tahap seru: cerita, peta pikiran, infografis, benda nyata, gambar, dan simbol.",
+        "cp": "Siswa menggambar dan menjelaskan unsur-unsur bangun datar. Pada sub-bab ini siswa mengenal sudut, membandingkan dan mengukurnya dengan busur derajat, menggambar sudut, dan membedakan jenis-jenis sudut.",
+        "referensi": "Buku Siswa Matematika Kelas III Kemendikbudristek (Bab 4: Unsur-Unsur Bangun Datar, Sub-Bab B hlm. 154–173) dan Buku Panduan Guru Bab 4 Topik B."
+      },
+      "stories": [
+        {
+          "id": "K3B4B-V1-1",
+          "titleHint": "Sudut di sekitar kita",
+          "sceneType": "K3B4B-V1-1",
+          "voiceNarration": "Sudut terbentuk ketika dua garis berpotongan pada satu titik. Buku yang dibuka membentuk sebuah sudut. Semakin lebar buku dibuka, semakin besar sudutnya. Pintu, gunting, dan lengan juga membentuk sudut."
+        },
+        {
+          "id": "K3B4B-V1-2",
+          "titleHint": "Strip sudut",
+          "sceneType": "K3B4B-V1-2",
+          "voiceNarration": "Dua potongan karton dapat digabung dengan sebuah pengait. Gabungan itu disebut sepasang strip sudut. Putar satu strip agar sudutnya menjadi lebih besar. Putar sedikit saja agar sudutnya menjadi lebih kecil."
+        },
+        {
+          "id": "K3B4B-V1-3",
+          "titleHint": "Sudut siku-siku",
+          "sceneType": "K3B4B-V1-3",
+          "voiceNarration": "Lipat selembar kertas, lalu lipat sekali lagi dengan rapi. Pojok kertas lipat itu adalah sudut istimewa. Sudut istimewa itu dinamakan sudut siku-siku. Bandingkan sudut lain dengan pojok kertas lipat."
+        },
+        {
+          "id": "K3B4B-V2-1",
+          "titleHint": "Satuan sudut tidak baku",
+          "sceneType": "K3B4B-V2-1",
+          "voiceNarration": "Sinar OA dan sinar OB bertemu di titik O dan membentuk sudut AOB. Titik O disebut titik sudut, sinar OA dan OB disebut kaki. Diukur dengan irisan besar, sudut AOB sama dengan 3 satuan. Diukur dengan irisan kecil, sudut yang sama menjadi 6 satuan."
+        },
+        {
+          "id": "K3B4B-V2-2",
+          "titleHint": "Busur derajat",
+          "sceneType": "K3B4B-V2-2",
+          "voiceNarration": "Busur derajat dipakai untuk mengukur sudut. Letakkan titik tengah busur derajat tepat di titik O. Sejajarkan kaki OA dengan garis nol busur derajat. Baca angka yang dilewati kaki OB."
+        },
+        {
+          "id": "K3B4B-V2-3",
+          "titleHint": "Satu derajat",
+          "sceneType": "K3B4B-V2-3",
+          "voiceNarration": "Satu putaran penuh dibagi menjadi 360 bagian sama besar. Satu bagian itu besarnya satu derajat, ditulis 1°. Kaki OA dan OB yang berimpit berukuran 0°. Memutar OB sedikit demi sedikit membuat sudut membesar."
+        },
+        {
+          "id": "K3B4B-V3-1",
+          "titleHint": "Siku-siku dan lancip",
+          "sceneType": "K3B4B-V3-1",
+          "voiceNarration": "Sudut yang ukurannya tepat 90° disebut sudut siku-siku. Sudut yang lebih dari 0° dan kurang dari 90° disebut sudut lancip. Sudut lancip lebih kecil daripada pojok kertas lipat. Sudut siku-siku diberi tanda kotak kecil di pojoknya."
+        },
+        {
+          "id": "K3B4B-V3-2",
+          "titleHint": "Tumpul dan lurus",
+          "sceneType": "K3B4B-V3-2",
+          "voiceNarration": "Sudut yang lebih dari 90° dan kurang dari 180° disebut sudut tumpul. Sudut yang tepat 180° disebut sudut lurus. Sudut lurus sama dengan dua sudut siku-siku. Kedua kaki sudut lurus membentuk satu garis lurus."
+        },
+        {
+          "id": "K3B4B-V3-3",
+          "titleHint": "Sudut refleks",
+          "sceneType": "K3B4B-V3-3",
+          "voiceNarration": "Sudut yang lebih dari 180° dan kurang dari 360° disebut sudut refleks. Sudut refleks 300° berpasangan dengan sudut lancip 60°. Ukuran keduanya bila dijumlahkan sama dengan 360°. Jadi 360° dikurangi sudut refleks memberi sudut pasangannya."
+        }
+      ],
+      "videos": [
+        {
+          "id": "K3B4B-V1",
+          "judul": "Membandingkan Sudut",
+          "subjudul": "Strip sudut dan sudut siku-siku",
+          "adegan": [
+            {
+              "id": "K3B4B-V1-1",
+              "judul": "Sudut di sekitar kita",
+              "ketukan": [
+                "Sudut terbentuk ketika dua garis berpotongan pada satu titik.",
+                "Buku yang dibuka membentuk sebuah sudut.",
+                "Semakin lebar buku dibuka, semakin besar sudutnya.",
+                "Pintu, gunting, dan lengan juga membentuk sudut."
+              ],
+              "papan": [
+                "Dua garis berpotongan",
+                "Buku yang dibuka",
+                "Makin lebar, makin besar",
+                "Pintu, gunting, lengan"
+              ]
+            },
+            {
+              "id": "K3B4B-V1-2",
+              "judul": "Strip sudut",
+              "ketukan": [
+                "Dua potongan karton dapat digabung dengan sebuah pengait.",
+                "Gabungan itu disebut sepasang strip sudut.",
+                "Putar satu strip agar sudutnya menjadi lebih besar.",
+                "Putar sedikit saja agar sudutnya menjadi lebih kecil."
+              ],
+              "papan": [
+                "Dua karton, satu pengait",
+                "Sepasang strip sudut",
+                "Putar jauh: lebih besar",
+                "Putar dekat: lebih kecil"
+              ]
+            },
+            {
+              "id": "K3B4B-V1-3",
+              "judul": "Sudut siku-siku",
+              "ketukan": [
+                "Lipat selembar kertas, lalu lipat sekali lagi dengan rapi.",
+                "Pojok kertas lipat itu adalah sudut istimewa.",
+                "Sudut istimewa itu dinamakan sudut siku-siku.",
+                "Bandingkan sudut lain dengan pojok kertas lipat."
+              ],
+              "papan": [
+                "Lipat kertas dua kali",
+                "Pojok kertas lipat",
+                "Sudut siku-siku",
+                "Lebih kecil atau lebih besar"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "K3B4B-V2",
+          "judul": "Mengukur Sudut",
+          "subjudul": "Satuan tidak baku dan busur derajat",
+          "adegan": [
+            {
+              "id": "K3B4B-V2-1",
+              "judul": "Satuan sudut tidak baku",
+              "ketukan": [
+                "Sinar OA dan sinar OB bertemu di titik O dan membentuk sudut AOB.",
+                "Titik O disebut titik sudut, sinar OA dan OB disebut kaki.",
+                "Diukur dengan irisan besar, sudut AOB sama dengan 3 satuan.",
+                "Diukur dengan irisan kecil, sudut yang sama menjadi 6 satuan."
+              ],
+              "papan": [
+                "Sudut AOB",
+                "O titik sudut, OA dan OB kaki",
+                "Irisan besar: 3 satuan",
+                "Irisan kecil: 6 satuan"
+              ]
+            },
+            {
+              "id": "K3B4B-V2-2",
+              "judul": "Busur derajat",
+              "ketukan": [
+                "Busur derajat dipakai untuk mengukur sudut.",
+                "Letakkan titik tengah busur derajat tepat di titik O.",
+                "Sejajarkan kaki OA dengan garis nol busur derajat.",
+                "Baca angka yang dilewati kaki OB."
+              ],
+              "papan": [
+                "Busur derajat",
+                "Titik tengah di titik O",
+                "OA di garis nol",
+                "Baca angka di OB"
+              ]
+            },
+            {
+              "id": "K3B4B-V2-3",
+              "judul": "Satu derajat",
+              "ketukan": [
+                "Satu putaran penuh dibagi menjadi 360 bagian sama besar.",
+                "Satu bagian itu besarnya satu derajat, ditulis 1°.",
+                "Kaki OA dan OB yang berimpit berukuran 0°.",
+                "Memutar OB sedikit demi sedikit membuat sudut membesar."
+              ],
+              "papan": [
+                "360 bagian sama besar",
+                "Satu bagian = 1°",
+                "Berimpit = 0°",
+                "Diputar: makin besar"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "K3B4B-V3",
+          "judul": "Jenis-Jenis Sudut",
+          "subjudul": "Siku-siku, lancip, tumpul, lurus, refleks",
+          "adegan": [
+            {
+              "id": "K3B4B-V3-1",
+              "judul": "Siku-siku dan lancip",
+              "ketukan": [
+                "Sudut yang ukurannya tepat 90° disebut sudut siku-siku.",
+                "Sudut yang lebih dari 0° dan kurang dari 90° disebut sudut lancip.",
+                "Sudut lancip lebih kecil daripada pojok kertas lipat.",
+                "Sudut siku-siku diberi tanda kotak kecil di pojoknya."
+              ],
+              "papan": [
+                "Siku-siku: tepat 90°",
+                "Lancip: kurang dari 90°",
+                "Lebih kecil dari siku-siku",
+                "Tanda kotak di pojok"
+              ]
+            },
+            {
+              "id": "K3B4B-V3-2",
+              "judul": "Tumpul dan lurus",
+              "ketukan": [
+                "Sudut yang lebih dari 90° dan kurang dari 180° disebut sudut tumpul.",
+                "Sudut yang tepat 180° disebut sudut lurus.",
+                "Sudut lurus sama dengan dua sudut siku-siku.",
+                "Kedua kaki sudut lurus membentuk satu garis lurus."
+              ],
+              "papan": [
+                "Tumpul: 90° sampai 180°",
+                "Lurus: tepat 180°",
+                "Dua kali siku-siku",
+                "Kaki membentuk garis lurus"
+              ]
+            },
+            {
+              "id": "K3B4B-V3-3",
+              "judul": "Sudut refleks",
+              "ketukan": [
+                "Sudut yang lebih dari 180° dan kurang dari 360° disebut sudut refleks.",
+                "Sudut refleks 300° berpasangan dengan sudut lancip 60°.",
+                "Ukuran keduanya bila dijumlahkan sama dengan 360°.",
+                "Jadi 360° dikurangi sudut refleks memberi sudut pasangannya."
+              ],
+              "papan": [
+                "Refleks: 180° sampai 360°",
+                "300° dan 60°",
+                "Jumlahnya 360°",
+                "360° dikurangi refleks"
+              ]
+            }
+          ]
+        }
+      ],
+      "mindMaps": [
+        {
+          "stepNumber": 1,
+          "stepTitle": "1. Sudut dan Kaki Sudut",
+          "stepDesc": "Sudut terbentuk ketika dua garis atau dua sinar berpotongan pada satu titik. Pada sudut AOB, titik O adalah titik sudut dan sinar OA serta sinar OB adalah kaki sudut. Simbol ∠ menunjukkan sudut, dan namanya ditulis dengan titik sudut di tengah, yaitu ∠AOB atau ∠BOA. Sudut ada di sekitar kita, misalnya pada buku yang dibuka, pintu, gunting, dan jarum jam.",
+          "icon": "📐",
+          "flowFrom": "Sudut dan kaki sudut",
+          "flowTo": "Membandingkan sudut dengan strip"
+        },
+        {
+          "stepNumber": 2,
+          "stepTitle": "2. Membandingkan Sudut dengan Strip",
+          "stepDesc": "Pada Aktivitas 2, dua potongan karton digabung dengan sebuah pengait menjadi sepasang strip sudut. Memutar satu strip menghasilkan sudut yang berbeda. Putar lebih jauh agar sudut lebih besar, putar lebih dekat agar sudut lebih kecil. Strip sudut dipakai untuk membandingkan sudut pada gambar dan benda, lalu mengurutkannya dari yang terkecil.",
+          "icon": "📎",
+          "flowFrom": "Membandingkan sudut dengan strip",
+          "flowTo": "Sudut siku-siku dari kertas lipat"
+        },
+        {
+          "stepNumber": 3,
+          "stepTitle": "3. Sudut Siku-siku dari Kertas Lipat",
+          "stepDesc": "Pada Aktivitas 3, selembar kertas dilipat dua kali dengan rapi. Pojok kertas lipat itu adalah sudut istimewa yang dinamakan sudut siku-siku. Sudut siku-siku dipakai untuk memeriksa sudut lain: lebih kecil dari pojok kertas, lebih besar, atau tepat sama. Banyak benda punya sudut siku-siku, misalnya pojok buku, bingkai foto, dan layar televisi.",
+          "icon": "📄",
+          "flowFrom": "Sudut siku-siku dari kertas lipat",
+          "flowTo": "Satuan sudut tidak baku"
+        },
+        {
+          "stepNumber": 4,
+          "stepTitle": "4. Mengukur Sudut dengan Satuan Tidak Baku",
+          "stepDesc": "Sudut dapat diukur dengan satuan sudut tidak baku, misalnya irisan karton berukuran sama. Dengan irisan yang lebih besar, sudut AOB sama dengan 3 satuan sudut. Dengan irisan yang lebih kecil, sudut AOB yang sama menjadi 6 satuan sudut. Jadi sudut yang sama ukurannya menjadi berbeda bila diukur dengan satuan yang berbeda, dan karena itu kita memerlukan satuan baku.",
+          "icon": "🍕",
+          "flowFrom": "Satuan sudut tidak baku",
+          "flowTo": "Busur derajat dan derajat"
+        },
+        {
+          "stepNumber": 5,
+          "stepTitle": "5. Busur Derajat dan Derajat",
+          "stepDesc": "Satuan baku sudut adalah derajat, ditulis dengan simbol °. Satu putaran penuh dibagi menjadi 360 bagian sama besar, dan tiap bagian besarnya 1°. Sudut diukur dengan busur derajat: letakkan titik tengahnya di titik sudut O, sejajarkan kaki OA dengan garis nol, lalu baca angka yang dilewati kaki OB. Kaki yang berimpit berukuran 0°.",
+          "icon": "🧭",
+          "flowFrom": "Busur derajat dan derajat",
+          "flowTo": "Menggambar sudut"
+        },
+        {
+          "stepNumber": 6,
+          "stepTitle": "6. Menggambar Sudut",
+          "stepDesc": "Untuk menggambar sudut 50°, gambar dulu ruas garis AB. Letakkan titik tengah busur derajat di titik A dengan garis nolnya pada AB. Tandai titik C tepat di angka 50°. Angkat busur derajat, lalu hubungkan A dan C dengan penggaris. Terbentuklah sudut BAC berukuran 50°. Cara yang sama dipakai untuk sudut 30°, 70°, 135°, dan lainnya.",
+          "icon": "✏️",
+          "flowFrom": "Menggambar sudut",
+          "flowTo": "Lancip, siku-siku, tumpul, dan lurus"
+        },
+        {
+          "stepNumber": 7,
+          "stepTitle": "7. Sudut Lancip, Siku-siku, Tumpul, dan Lurus",
+          "stepDesc": "Sudut dikelompokkan dengan membandingkan ukurannya dengan 90° dan 180°. Sudut lancip lebih dari 0° dan kurang dari 90°. Sudut siku-siku tepat 90° dan kaki-kakinya saling tegak lurus. Sudut tumpul lebih dari 90° dan kurang dari 180°. Sudut lurus tepat 180°, dua kali sudut siku-siku, dan kaki-kakinya membentuk garis lurus.",
+          "icon": "🔺",
+          "flowFrom": "Lancip, siku-siku, tumpul, dan lurus",
+          "flowTo": "Sudut refleks"
+        },
+        {
+          "stepNumber": 8,
+          "stepTitle": "8. Sudut Refleks",
+          "stepDesc": "Sudut yang ukurannya lebih dari 180° dan kurang dari 360° disebut sudut refleks. Busur derajat mengukur sudut sampai 180°, jadi sudut refleks dicari lewat sudut lancip atau tumpul yang bersesuaian. Ukuran sudut refleks sama dengan 360° dikurangi ukuran sudut bersesuaian itu. Contohnya sudut refleks 300° berpasangan dengan sudut lancip 60°, dan sudut tumpul 130° berpasangan dengan sudut refleks 230°.",
+          "icon": "🔄",
+          "flowFrom": "Sudut refleks",
+          "flowTo": "Siap mengenal garis tegak lurus"
+        }
+      ],
+      "infografisData": [
+        {
+          "fruitName": "Sudut",
+          "emoji": "📐",
+          "countNum": 2,
+          "countWord": "Dua",
+          "voiceSentence": "Sudut terbentuk ketika dua garis berpotongan pada satu titik. Dua kaki sudut bertemu di titik sudut."
+        },
+        {
+          "fruitName": "Titik Sudut dan Kaki",
+          "emoji": "📍",
+          "countNum": 3,
+          "countWord": "Tiga",
+          "voiceSentence": "Pada sudut AOB, titik O adalah titik sudut, sedangkan sinar OA dan sinar OB adalah kaki sudut."
+        },
+        {
+          "fruitName": "Membandingkan Sudut",
+          "emoji": "📎",
+          "countNum": 2,
+          "countWord": "Dua",
+          "voiceSentence": "Strip sudut dipakai untuk membandingkan sudut. Makin jauh strip diputar, makin besar sudutnya."
+        },
+        {
+          "fruitName": "Sudut Siku-siku",
+          "emoji": "📄",
+          "countNum": 2,
+          "countWord": "Dua",
+          "voiceSentence": "Pojok kertas yang dilipat dua kali adalah sudut siku-siku. Ukurannya tepat sembilan puluh derajat."
+        },
+        {
+          "fruitName": "Satuan Sudut",
+          "emoji": "🍕",
+          "countNum": 2,
+          "countWord": "Dua",
+          "voiceSentence": "Sudut yang sama diukur dengan irisan besar dan irisan kecil memberi bilangan yang berbeda."
+        },
+        {
+          "fruitName": "Busur Derajat",
+          "emoji": "🧭",
+          "countNum": 3,
+          "countWord": "Tiga",
+          "voiceSentence": "Busur derajat mengukur sudut dalam derajat. Titik tengahnya di titik sudut dan garis nolnya di kaki pertama."
+        },
+        {
+          "fruitName": "Lancip dan Tumpul",
+          "emoji": "🔺",
+          "countNum": 2,
+          "countWord": "Dua",
+          "voiceSentence": "Sudut lancip kurang dari sembilan puluh derajat. Sudut tumpul lebih dari sembilan puluh derajat dan kurang dari seratus delapan puluh derajat."
+        },
+        {
+          "fruitName": "Sudut Lurus",
+          "emoji": "↔️",
+          "countNum": 2,
+          "countWord": "Dua",
+          "voiceSentence": "Sudut lurus tepat seratus delapan puluh derajat. Kedua kakinya membentuk garis lurus."
+        },
+        {
+          "fruitName": "Sudut Refleks",
+          "emoji": "🔄",
+          "countNum": 2,
+          "countWord": "Dua",
+          "voiceSentence": "Sudut refleks lebih dari seratus delapan puluh derajat dan kurang dari tiga ratus enam puluh derajat."
+        },
+        {
+          "fruitName": "Cara Mengukur Sudut",
+          "emoji": "📝",
+          "countNum": 4,
+          "countWord": "Empat",
+          "voiceSentence": "Empat langkah. Satu, letakkan titik tengah busur derajat di titik sudut. Dua, sejajarkan kaki pertama dengan garis nol. Tiga, lihat kaki kedua. Empat, baca derajatnya."
+        }
+      ],
+      "concreteSlides": [
+        {
+          "title": "Strip Sudut: Lebih Besar atau Lebih Kecil",
+          "emoji": "📎",
+          "targetCount": 6,
+          "voiceGuide": "Putar strip sampai sudutnya lebih besar atau lebih kecil."
+        },
+        {
+          "title": "Bentuk Sudut Siku-siku",
+          "emoji": "📄",
+          "targetCount": 6,
+          "voiceGuide": "Putar strip sampai pas dengan pojok kertas lipat."
+        },
+        {
+          "title": "Mana yang Paling Terbuka?",
+          "emoji": "📖",
+          "targetCount": 6,
+          "voiceGuide": "Ketuk benda yang paling terbuka atau paling sempit."
+        },
+        {
+          "title": "Jenis Sudut pada Benda",
+          "emoji": "🚪",
+          "targetCount": 6,
+          "voiceGuide": "Pilih jenis sudut pada benda."
+        },
+        {
+          "title": "Jodohkan Benda dan Jenis Sudut",
+          "emoji": "🔗",
+          "targetCount": 9,
+          "voiceGuide": "Ketuk benda, lalu ketuk jenis sudutnya."
+        },
+        {
+          "title": "Memori Benda dan Jenis Sudut",
+          "emoji": "🃏",
+          "targetCount": 12,
+          "voiceGuide": "Balik dua kartu, cari benda dan jenis sudutnya."
+        },
+        {
+          "title": "Ketuk Semua Benda dengan Jenis Sudut",
+          "emoji": "✔️",
+          "targetCount": 3,
+          "voiceGuide": "Ketuk semua yang cocok, lalu periksa."
+        },
+        {
+          "title": "Hitung Sudut Siku-siku pada Benda",
+          "emoji": "📺",
+          "targetCount": 6,
+          "voiceGuide": "Hitung sudut siku-siku pada benda."
+        },
+        {
+          "title": "Urutkan Benda menurut Bukaan",
+          "emoji": "📶",
+          "targetCount": 9,
+          "voiceGuide": "Ketuk benda menurut bukaannya."
+        },
+        {
+          "title": "Ukur dengan Irisan Pizza",
+          "emoji": "🍕",
+          "targetCount": 6,
+          "voiceGuide": "Hitung banyak irisan pada sudut."
+        }
+      ],
+      "pictorialSlides": [
+        {
+          "title": "Baca Busur Derajat",
+          "diagramType": "protractor-read",
+          "numberA": 3,
+          "numberB": 2,
+          "caption": "Membaca ukuran sudut dari busur derajat dengan skala luar atau skala dalam."
+        },
+        {
+          "title": "Jenis Sudut dari Gambar",
+          "diagramType": "angle-kind",
+          "numberA": 3,
+          "numberB": 2,
+          "caption": "Menentukan jenis sudut dari gambar dua kaki sudut."
+        },
+        {
+          "title": "Jodohkan Sudut dan Jenisnya",
+          "diagramType": "angle-match",
+          "numberA": 3,
+          "numberB": 3,
+          "caption": "Menjodohkan gambar sudut dengan jenisnya."
+        },
+        {
+          "title": "Memori Gambar Sudut dan Jenisnya",
+          "diagramType": "angle-memory",
+          "numberA": 3,
+          "numberB": 4,
+          "caption": "Mencocokkan gambar sudut dengan jenisnya lewat permainan memori."
+        },
+        {
+          "title": "Isi Tabel Jenis Sudut",
+          "diagramType": "angle-table",
+          "numberA": 3,
+          "numberB": 4,
+          "caption": "Melengkapi tabel ukuran sudut dan jenisnya."
+        },
+        {
+          "title": "Ketuk Semua Sudut dengan Jenis Tertentu",
+          "diagramType": "angle-select",
+          "numberA": 3,
+          "numberB": 4,
+          "caption": "Menemukan semua gambar sudut dengan jenis tertentu."
+        },
+        {
+          "title": "Pilah Sudut: Lancip, Siku-siku, atau Tumpul",
+          "diagramType": "angle-sort",
+          "numberA": 3,
+          "numberB": 6,
+          "caption": "Memilah gambar sudut menjadi lancip, siku-siku, dan tumpul."
+        },
+        {
+          "title": "Urutkan Sudut dari yang Terkecil",
+          "diagramType": "angle-order",
+          "numberA": 3,
+          "numberB": 3,
+          "caption": "Mengurutkan tiga gambar sudut menurut ukurannya."
+        },
+        {
+          "title": "Titik Sudut, Kaki, dan Nama Sudut",
+          "diagramType": "angle-names",
+          "numberA": 3,
+          "numberB": 2,
+          "caption": "Menentukan titik sudut, kaki sudut, dan nama sudut dari gambar berhuruf."
+        },
+        {
+          "title": "Gambar Sudut dengan Busur Derajat",
+          "diagramType": "angle-draw",
+          "numberA": 3,
+          "numberB": 2,
+          "caption": "Menggambar sudut dengan ukuran tertentu memakai busur derajat."
+        }
+      ],
+      "abstractSlides": [
+        {
+          "symbolLarge": "∠AOB",
+          "wordLarge": "NAMA",
+          "mathNotation": "titik sudut • kaki • derajat",
+          "voiceReadout": "Pilih nama yang tepat."
+        },
+        {
+          "symbolLarge": "…",
+          "wordLarge": "LENGKAPI",
+          "mathNotation": "sudut • derajat • jenis",
+          "voiceReadout": "Pilih kata untuk bagian kosong."
+        },
+        {
+          "symbolLarge": "90°",
+          "wordLarge": "JENIS",
+          "mathNotation": "lancip • siku-siku • tumpul",
+          "voiceReadout": "Pilih jenis sudut dari ukurannya."
+        },
+        {
+          "symbolLarge": "= ?",
+          "wordLarge": "JODOHKAN",
+          "mathNotation": "derajat • jenis",
+          "voiceReadout": "Ketuk ukuran, lalu ketuk jenisnya."
+        },
+        {
+          "symbolLarge": "°",
+          "wordLarge": "MEMORI",
+          "mathNotation": "ukuran dan jenis",
+          "voiceReadout": "Balik dua kartu, cari ukuran dan jenisnya."
+        },
+        {
+          "symbolLarge": "✓ ✗",
+          "wordLarge": "BENAR SALAH",
+          "mathNotation": "periksa dengan alasan",
+          "voiceReadout": "Baca pernyataan, lalu pilih benar atau salah."
+        },
+        {
+          "symbolLarge": "?",
+          "wordLarge": "DETEKTIF",
+          "mathNotation": "dua petunjuk, satu jawaban",
+          "voiceReadout": "Baca petunjuk, lalu pilih ukurannya."
+        },
+        {
+          "symbolLarge": "⇄",
+          "wordLarge": "PETA KONSEP",
+          "mathNotation": "bagian • jenis",
+          "voiceReadout": "Pilih kartu yang tepat untuk kotak yang menyala."
+        },
+        {
+          "symbolLarge": "°",
+          "wordLarge": "CERITA",
+          "mathNotation": "jumlah • selisih • pasangan 360°",
+          "voiceReadout": "Baca cerita, lalu pilih ukuran sudutnya."
+        },
+        {
+          "symbolLarge": "…",
+          "wordLarge": "SUSUN KATA",
+          "mathNotation": "kalimat tentang sudut",
+          "voiceReadout": "Susun kartu kata menjadi kalimat."
+        }
+      ],
+      "interactiveGames": [
+        {
+          "gameId": "subK3B4B-game-1",
+          "gameNumber": 1,
+          "stage": "Concrete",
+          "gameType": "strip-bigger-smaller",
+          "title": "Strip Sudut: Lebih Besar atau Lebih Kecil",
+          "bookReference": "Buku Siswa hlm. 155–156 (Aktivitas 2: membandingkan sudut)",
+          "objective": "Memutar strip sudut agar lebih besar atau lebih kecil dari sudut acuan.",
+          "mechanicDescription": "Tiga ronde, tiap ronde dua soal. Sepasang strip karton digabung pengait. Siswa memutar satu strip dengan tombol atau penggeser sampai sudutnya lebih besar atau lebih kecil dari garis putus acuan, lalu menekan Periksa.",
+          "voiceGuide": "Putar strip sampai sudutnya lebih besar atau lebih kecil."
+        },
+        {
+          "gameId": "subK3B4B-game-2",
+          "gameNumber": 2,
+          "stage": "Concrete",
+          "gameType": "fold-right-angle",
+          "title": "Bentuk Sudut Siku-siku",
+          "bookReference": "Buku Siswa hlm. 158 (Aktivitas 3: kertas lipat)",
+          "objective": "Membentuk sudut siku-siku dan sudut lurus dengan strip sudut dan pojok kertas lipat.",
+          "mechanicDescription": "Tiga ronde, tiap ronde dua soal. Pojok kertas lipat ditampilkan sebagai acuan. Siswa memutar strip sampai tepat pas dengan pojok kertas atau sampai kedua strip membentuk garis lurus, lalu menekan Periksa.",
+          "voiceGuide": "Putar strip sampai pas dengan pojok kertas lipat."
+        },
+        {
+          "gameId": "subK3B4B-game-3",
+          "gameNumber": 3,
+          "stage": "Concrete",
+          "gameType": "widest-open",
+          "title": "Mana yang Paling Terbuka?",
+          "bookReference": "Buku Siswa hlm. 154–155 (membandingkan sudut)",
+          "objective": "Membandingkan bukaan tiga benda sejenis dan menemukan yang paling lebar atau paling sempit.",
+          "mechanicDescription": "Tiga ronde, tiap ronde tiga benda (buku, pintu, atau gunting) dengan bukaan berbeda dan dua pertanyaan. Siswa mengetuk benda yang paling lebar atau paling sempit bukaannya.",
+          "voiceGuide": "Ketuk benda yang paling terbuka atau paling sempit."
+        },
+        {
+          "gameId": "subK3B4B-game-4",
+          "gameNumber": 4,
+          "stage": "Concrete",
+          "gameType": "object-angle-kind",
+          "title": "Jenis Sudut pada Benda",
+          "bookReference": "Buku Siswa hlm. 158–160 dan 167–168 (jenis-jenis sudut pada benda)",
+          "objective": "Menentukan jenis sudut yang dibentuk oleh buku, pintu, dan gunting yang dibuka.",
+          "mechanicDescription": "Tiga ronde, tiap ronde dua soal. Benda dengan bukaan tertentu ditampilkan. Siswa memilih satu dari tiga jenis sudut: lancip, siku-siku, tumpul, lurus, atau refleks.",
+          "voiceGuide": "Pilih jenis sudut pada benda."
+        },
+        {
+          "gameId": "subK3B4B-game-5",
+          "gameNumber": 5,
+          "stage": "Concrete",
+          "gameType": "match-object-angle",
+          "title": "Jodohkan Benda dan Jenis Sudut",
+          "bookReference": "Buku Siswa hlm. 158 dan 167–168 (sudut siku-siku, lancip, tumpul)",
+          "objective": "Menjodohkan benda berbukaan tertentu dengan jenis sudutnya.",
+          "mechanicDescription": "Tiga ronde, tiap ronde tiga benda dan tiga jenis sudut berbeda. Siswa mengetuk benda, lalu mengetuk jenis sudut yang cocok.",
+          "voiceGuide": "Ketuk benda, lalu ketuk jenis sudutnya."
+        },
+        {
+          "gameId": "subK3B4B-game-6",
+          "gameNumber": 6,
+          "stage": "Concrete",
+          "gameType": "memory-object-angle",
+          "title": "Memori Benda dan Jenis Sudut",
+          "bookReference": "Buku Siswa hlm. 167–168 (jenis-jenis sudut)",
+          "objective": "Mencocokkan benda berbukaan tertentu dengan jenis sudutnya lewat permainan memori.",
+          "mechanicDescription": "Tiga ronde, tiap ronde delapan kartu tertutup (empat pasang). Siswa membalik dua kartu dan mencari benda dengan jenis sudutnya.",
+          "voiceGuide": "Balik dua kartu, cari benda dan jenis sudutnya."
+        },
+        {
+          "gameId": "subK3B4B-game-7",
+          "gameNumber": 7,
+          "stage": "Concrete",
+          "gameType": "tap-all-object-angle",
+          "title": "Ketuk Semua Benda dengan Jenis Sudut",
+          "bookReference": "Buku Siswa hlm. 158–159 (sudut siku-siku di sekitar kita)",
+          "objective": "Menemukan semua benda yang bukaannya membentuk jenis sudut tertentu.",
+          "mechanicDescription": "Tiga ronde, tiap ronde empat benda dan satu perintah. Siswa mengetuk semua benda yang cocok, lalu menekan Periksa.",
+          "voiceGuide": "Ketuk semua yang cocok, lalu periksa."
+        },
+        {
+          "gameId": "subK3B4B-game-8",
+          "gameNumber": 8,
+          "stage": "Concrete",
+          "gameType": "count-right-angles",
+          "title": "Hitung Sudut Siku-siku pada Benda",
+          "bookReference": "Buku Siswa hlm. 159–160 (Ayo Berpikir 3: sudut siku-siku pada benda)",
+          "objective": "Menghitung banyak sudut siku-siku pada benda sehari-hari.",
+          "mechanicDescription": "Tiga ronde, tiap ronde dua soal. Benda seperti buku, bingkai foto, televisi, penggaris segitiga, dan rambu ditampilkan. Siswa memilih satu dari tiga banyak sudut siku-siku.",
+          "voiceGuide": "Hitung sudut siku-siku pada benda."
+        },
+        {
+          "gameId": "subK3B4B-game-9",
+          "gameNumber": 9,
+          "stage": "Concrete",
+          "gameType": "order-open",
+          "title": "Urutkan Benda menurut Bukaan",
+          "bookReference": "Buku Siswa hlm. 156 (Aktivitas 2: urutkan sudut dari yang terkecil)",
+          "objective": "Mengurutkan tiga benda sejenis menurut besar bukaannya.",
+          "mechanicDescription": "Tiga ronde, tiap ronde tiga benda bertanda huruf. Siswa mengetuk benda satu per satu dari yang paling sempit atau paling lebar bukaannya.",
+          "voiceGuide": "Ketuk benda menurut bukaannya."
+        },
+        {
+          "gameId": "subK3B4B-game-10",
+          "gameNumber": 10,
+          "stage": "Concrete",
+          "gameType": "slice-unit",
+          "title": "Ukur dengan Irisan Pizza",
+          "bookReference": "Buku Siswa hlm. 163–165 (mengukur sudut dengan ukuran tidak baku)",
+          "objective": "Menghitung banyak satuan irisan yang menutupi sebuah sudut.",
+          "mechanicDescription": "Tiga ronde, tiap ronde dua soal. Sudut yang sama diukur dengan irisan besar lalu irisan kecil. Siswa menghitung banyak irisan dan memilih satu dari tiga bilangan.",
+          "voiceGuide": "Hitung banyak irisan pada sudut."
+        },
+        {
+          "gameId": "subK3B4B-game-11",
+          "gameNumber": 11,
+          "stage": "Picture",
+          "gameType": "read-protractor",
+          "title": "Baca Busur Derajat",
+          "bookReference": "Buku Siswa hlm. 165–166 dan 170 (Ayo Berlatih 1: besar sudut pada busur derajat)",
+          "objective": "Membaca ukuran sudut dari busur derajat dengan skala luar atau skala dalam.",
+          "mechanicDescription": "Tiga ronde, tiap ronde dua soal. Busur derajat dan dua kaki sudut ditampilkan. Siswa memilih satu dari tiga ukuran sudut. Pengecoh memuat bacaan dari skala yang salah.",
+          "voiceGuide": "Baca ukuran sudut pada busur derajat."
+        },
+        {
+          "gameId": "subK3B4B-game-12",
+          "gameNumber": 12,
+          "stage": "Picture",
+          "gameType": "angle-kind-picture",
+          "title": "Jenis Sudut dari Gambar",
+          "bookReference": "Buku Siswa hlm. 167–169 (jenis-jenis sudut)",
+          "objective": "Menentukan jenis sudut dari gambar dua kaki sudut.",
+          "mechanicDescription": "Tiga ronde, tiap ronde dua soal. Gambar sudut berhuruf ditampilkan. Siswa memilih satu dari tiga jenis: lancip, siku-siku, tumpul, lurus, atau refleks.",
+          "voiceGuide": "Pilih jenis sudut pada gambar."
+        },
+        {
+          "gameId": "subK3B4B-game-13",
+          "gameNumber": 13,
+          "stage": "Picture",
+          "gameType": "match-angle-kind",
+          "title": "Jodohkan Sudut dan Jenisnya",
+          "bookReference": "Buku Siswa hlm. 167–169 (jenis-jenis sudut)",
+          "objective": "Menjodohkan gambar sudut dengan jenisnya.",
+          "mechanicDescription": "Tiga ronde, tiap ronde tiga gambar sudut dan tiga jenis berbeda. Siswa mengetuk gambar, lalu mengetuk jenis sudut yang cocok.",
+          "voiceGuide": "Ketuk gambar, lalu ketuk jenis sudutnya."
+        },
+        {
+          "gameId": "subK3B4B-game-14",
+          "gameNumber": 14,
+          "stage": "Picture",
+          "gameType": "memory-angle-kind",
+          "title": "Memori Gambar Sudut dan Jenisnya",
+          "bookReference": "Buku Siswa hlm. 167–169 (jenis-jenis sudut)",
+          "objective": "Mencocokkan gambar sudut dengan jenisnya lewat permainan memori.",
+          "mechanicDescription": "Tiga ronde, tiap ronde delapan kartu tertutup (empat pasang). Siswa membalik dua kartu dan mencari gambar sudut dengan jenisnya.",
+          "voiceGuide": "Balik dua kartu, cari gambar dan jenisnya."
+        },
+        {
+          "gameId": "subK3B4B-game-15",
+          "gameNumber": 15,
+          "stage": "Picture",
+          "gameType": "fill-angle-table",
+          "title": "Isi Tabel Jenis Sudut",
+          "bookReference": "Buku Siswa hlm. 173 (Ayo Berlatih 5: kelompokkan sudut)",
+          "objective": "Melengkapi tabel ukuran sudut dan jenisnya.",
+          "mechanicDescription": "Tiga tabel dengan empat baris. Siswa mengetuk baris, lalu mengetuk kartu jenis sudut yang tepat. Ada satu kartu pengecoh.",
+          "voiceGuide": "Isi tabel dengan kartu jenis sudut."
+        },
+        {
+          "gameId": "subK3B4B-game-16",
+          "gameNumber": 16,
+          "stage": "Picture",
+          "gameType": "tap-all-angles",
+          "title": "Ketuk Semua Sudut dengan Jenis Tertentu",
+          "bookReference": "Buku Siswa hlm. 167–168 (sudut lancip, siku-siku, tumpul)",
+          "objective": "Menemukan semua gambar sudut dengan jenis tertentu.",
+          "mechanicDescription": "Tiga ronde, tiap ronde empat gambar sudut dan satu perintah. Siswa mengetuk semua sudut yang cocok, lalu menekan Periksa.",
+          "voiceGuide": "Ketuk semua yang cocok, lalu periksa."
+        },
+        {
+          "gameId": "subK3B4B-game-17",
+          "gameNumber": 17,
+          "stage": "Picture",
+          "gameType": "sort-angles",
+          "title": "Pilah Sudut: Lancip, Siku-siku, atau Tumpul",
+          "bookReference": "Buku Siswa hlm. 167–168 (membandingkan dengan 90°)",
+          "objective": "Memilah gambar sudut menjadi lancip, siku-siku, dan tumpul.",
+          "mechanicDescription": "Tiga ronde, tiap ronde enam gambar sudut dan tiga kotak. Siswa menyeret atau mengetuk gambar ke kotak yang tepat.",
+          "voiceGuide": "Pilah gambar ke kotak yang tepat."
+        },
+        {
+          "gameId": "subK3B4B-game-18",
+          "gameNumber": 18,
+          "stage": "Picture",
+          "gameType": "order-angles",
+          "title": "Urutkan Sudut dari yang Terkecil",
+          "bookReference": "Buku Siswa hlm. 156 (Aktivitas 2: urutkan sudut)",
+          "objective": "Mengurutkan tiga gambar sudut menurut ukurannya.",
+          "mechanicDescription": "Tiga ronde, tiap ronde tiga gambar sudut bertanda huruf. Siswa mengetuk sudut satu per satu dari yang terkecil atau terbesar.",
+          "voiceGuide": "Ketuk sudut menurut ukurannya."
+        },
+        {
+          "gameId": "subK3B4B-game-19",
+          "gameNumber": 19,
+          "stage": "Picture",
+          "gameType": "name-angle-parts",
+          "title": "Titik Sudut, Kaki, dan Nama Sudut",
+          "bookReference": "Buku Siswa hlm. 163 dan 171 (sudut AOB dan Ayo Berlatih 2)",
+          "objective": "Menentukan titik sudut, kaki sudut, dan nama sudut dari gambar berhuruf.",
+          "mechanicDescription": "Tiga ronde, tiap ronde dua soal. Sudut dengan tiga huruf ditampilkan. Siswa memilih titik sudut, nama sudut, atau kaki sudut dari tiga pilihan.",
+          "voiceGuide": "Pilih titik sudut, kaki, atau nama sudut."
+        },
+        {
+          "gameId": "subK3B4B-game-20",
+          "gameNumber": 20,
+          "stage": "Picture",
+          "gameType": "draw-angle-protractor",
+          "title": "Gambar Sudut dengan Busur Derajat",
+          "bookReference": "Buku Siswa hlm. 167 dan 172 (menggambar sudut 50° dan Ayo Berlatih 4)",
+          "objective": "Menggambar sudut dengan ukuran tertentu memakai busur derajat.",
+          "mechanicDescription": "Tiga ronde, tiap ronde dua soal. Kaki OA ada di garis nol busur derajat. Siswa memutar kaki OB dengan tombol atau penggeser sampai tepat di ukuran yang diminta, lalu menekan Periksa.",
+          "voiceGuide": "Putar kaki sampai ukuran yang diminta."
+        },
+        {
+          "gameId": "subK3B4B-game-21",
+          "gameNumber": 21,
+          "stage": "Abstract",
+          "gameType": "name-angle-part-text",
+          "title": "Nama Bagian Sudut dan Alatnya",
+          "bookReference": "Buku Siswa hlm. 163–166 (titik sudut, kaki, busur derajat)",
+          "objective": "Memilih nama bagian sudut, alat ukur, dan satuannya dari uraian.",
+          "mechanicDescription": "Tiga ronde, tiap ronde dua soal. Siswa membaca uraian, lalu memilih satu dari tiga nama.",
+          "voiceGuide": "Pilih nama yang tepat."
+        },
+        {
+          "gameId": "subK3B4B-game-22",
+          "gameNumber": 22,
+          "stage": "Abstract",
+          "gameType": "complete-angle-sentence",
+          "title": "Lengkapi Kalimat Sudut",
+          "bookReference": "Buku Siswa hlm. 154–169 (sudut dan jenis-jenisnya)",
+          "objective": "Melengkapi kalimat tentang sudut, ukurannya, dan jenis-jenisnya.",
+          "mechanicDescription": "Tiga soal, tiap soal tiga kalimat, misalnya sudut siku-siku ukurannya tepat ... Siswa memilih satu dari tiga kata atau ukuran.",
+          "voiceGuide": "Pilih kata untuk bagian kosong."
+        },
+        {
+          "gameId": "subK3B4B-game-23",
+          "gameNumber": 23,
+          "stage": "Abstract",
+          "gameType": "classify-degree",
+          "title": "Jenis Sudut dari Ukurannya",
+          "bookReference": "Buku Siswa hlm. 167–169 dan 173 (Ayo Berlatih 5)",
+          "objective": "Menentukan jenis sudut dari ukurannya dalam derajat.",
+          "mechanicDescription": "Tiga ronde, tiap ronde dua soal, misalnya sudut 120° adalah ... Siswa membandingkan ukuran dengan 90° dan 180°, lalu memilih satu dari tiga jenis.",
+          "voiceGuide": "Pilih jenis sudut dari ukurannya."
+        },
+        {
+          "gameId": "subK3B4B-game-24",
+          "gameNumber": 24,
+          "stage": "Abstract",
+          "gameType": "match-degree-kind",
+          "title": "Jodohkan Ukuran dan Jenis Sudut",
+          "bookReference": "Buku Siswa hlm. 167–169 dan 173 (kelompokkan sudut)",
+          "objective": "Menjodohkan ukuran sudut dengan jenisnya.",
+          "mechanicDescription": "Tiga ronde, tiap ronde tiga ukuran dan tiga jenis berbeda. Siswa mengetuk ukuran, lalu mengetuk jenis sudutnya.",
+          "voiceGuide": "Ketuk ukuran, lalu ketuk jenisnya."
+        },
+        {
+          "gameId": "subK3B4B-game-25",
+          "gameNumber": 25,
+          "stage": "Abstract",
+          "gameType": "memory-degree-kind",
+          "title": "Memori Ukuran dan Jenis Sudut",
+          "bookReference": "Buku Siswa hlm. 167–169 (jenis-jenis sudut)",
+          "objective": "Mencocokkan ukuran sudut dengan jenisnya lewat permainan memori.",
+          "mechanicDescription": "Tiga ronde, tiap ronde delapan kartu tertutup (empat pasang). Siswa membalik dua kartu dan mencari ukuran dengan jenisnya.",
+          "voiceGuide": "Balik dua kartu, cari ukuran dan jenisnya."
+        },
+        {
+          "gameId": "subK3B4B-game-26",
+          "gameNumber": 26,
+          "stage": "Abstract",
+          "gameType": "true-false-angles",
+          "title": "Benar atau Salah: Sudut",
+          "bookReference": "Buku Siswa hlm. 154–169 (sudut dan jenis-jenisnya)",
+          "objective": "Menilai pernyataan tentang sudut, derajat, dan jenis sudut.",
+          "mechanicDescription": "Dua ronde, tiap ronde lima pernyataan. Siswa memilih Benar atau Salah. Tiap jawaban diberi penjelasan.",
+          "voiceGuide": "Baca pernyataan, lalu pilih benar atau salah."
+        },
+        {
+          "gameId": "subK3B4B-game-27",
+          "gameNumber": 27,
+          "stage": "Abstract",
+          "gameType": "detective-angles",
+          "title": "Detektif Ukuran Sudut",
+          "bookReference": "Buku Siswa hlm. 167–169 (ukuran dan jenis sudut)",
+          "objective": "Menemukan ukuran sudut dari dua petunjuk tentang jenis dan hubungannya.",
+          "mechanicDescription": "Empat soal. Siswa membaca dua petunjuk, lalu memilih satu dari tiga ukuran. Hanya satu yang cocok.",
+          "voiceGuide": "Baca petunjuk, lalu pilih ukurannya."
+        },
+        {
+          "gameId": "subK3B4B-game-28",
+          "gameNumber": 28,
+          "stage": "Abstract",
+          "gameType": "concept-map-angles",
+          "title": "Peta Konsep Sudut",
+          "bookReference": "Buku Siswa hlm. 144 (peta konsep Bab 4)",
+          "objective": "Melengkapi peta konsep bagian dan jenis-jenis sudut.",
+          "mechanicDescription": "Dua peta konsep, tiap peta empat kotak. Siswa memilih kartu yang tepat untuk kotak yang menyala.",
+          "voiceGuide": "Pilih kartu yang tepat untuk kotak yang menyala."
+        },
+        {
+          "gameId": "subK3B4B-game-29",
+          "gameNumber": 29,
+          "stage": "Abstract",
+          "gameType": "story-angles",
+          "title": "Soal Cerita Ukuran Sudut",
+          "bookReference": "Buku Siswa hlm. 167–169 (sudut lurus, refleks, dan pasangan 360°)",
+          "objective": "Menyelesaikan soal cerita tentang ukuran sudut dengan penjumlahan, pengurangan, dan pasangan 360°.",
+          "mechanicDescription": "Tiga ronde, tiap ronde dua cerita. Siswa membaca cerita, menghitung ukuran sudut, lalu memilih satu dari tiga ukuran.",
+          "voiceGuide": "Baca cerita, lalu pilih ukuran sudutnya."
+        },
+        {
+          "gameId": "subK3B4B-game-30",
+          "gameNumber": 30,
+          "stage": "Abstract",
+          "gameType": "sentence-angles",
+          "title": "Susun Kata Sudut",
+          "bookReference": "Buku Siswa hlm. 154–169 (sudut dan jenis-jenisnya)",
+          "objective": "Menyusun kalimat tentang sudut dari kartu kata.",
+          "mechanicDescription": "Empat kalimat. Siswa mengetuk kartu kata satu per satu menurut urutan kalimat yang benar. Ada satu kartu pengecoh.",
+          "voiceGuide": "Susun kartu kata menjadi kalimat."
+        }
+      ],
+      "poinPenting": {
+        "poin": [
+          {
+            "nama": "Titik sudut dan kaki",
+            "isi": "kaki bertemu di titik sudut",
+            "suara": "Dua kaki sudut bertemu di titik sudut. Sudut AOB ditulis dengan titik sudut di tengah."
+          },
+          {
+            "nama": "Sudut siku-siku",
+            "isi": "tepat 90°, pojok kertas lipat",
+            "suara": "Sudut siku-siku tepat sembilan puluh derajat. Pojok kertas yang dilipat dua kali adalah sudut siku-siku."
+          },
+          {
+            "nama": "Lancip dan tumpul",
+            "isi": "kurang dan lebih dari 90°",
+            "suara": "Sudut lancip kurang dari sembilan puluh derajat. Sudut tumpul lebih dari sembilan puluh dan kurang dari seratus delapan puluh derajat."
+          },
+          {
+            "nama": "Lurus dan refleks",
+            "isi": "180° dan lebih dari 180°",
+            "suara": "Sudut lurus tepat seratus delapan puluh derajat. Sudut refleks lebih dari seratus delapan puluh dan kurang dari tiga ratus enam puluh derajat."
+          },
+          {
+            "nama": "Busur derajat",
+            "isi": "titik tengah di titik sudut",
+            "suara": "Busur derajat mengukur sudut dalam derajat. Titik tengahnya di titik sudut dan garis nolnya di kaki pertama."
+          }
+        ],
+        "suara": "Ingat selalu! Sudut siku-siku tepat sembilan puluh derajat. Sudut lancip kurang dari sembilan puluh derajat, dan sudut tumpul lebih dari sembilan puluh derajat. Sudut lurus seratus delapan puluh derajat, dan sudut refleks lebih dari itu. Sudut diukur dengan busur derajat.",
+        "caraMenyebutkan": "titik tengah di titik sudut kaki pertama di garis nol lihat kaki kedua baca derajatnya",
+        "rumah": "Ayo Mencoba di rumah: buatlah sepasang strip sudut dari dua potong karton dan sebuah pengait. Cari tiga sudut siku-siku pada buku, pintu, dan meja, lalu periksa dengan pojok kertas yang kamu lipat. Bukalah gunting atau buku, lalu bandingkan sudutnya dengan sudut siku-siku.",
+        "refleksi": [
+          "Aku dapat menyebutkan titik sudut dan kaki sudut.",
+          "Aku dapat membuat sudut siku-siku dari kertas yang dilipat.",
+          "Aku dapat mengukur dan menggambar sudut dengan busur derajat.",
+          "Aku dapat membedakan sudut lancip, siku-siku, tumpul, lurus, dan refleks."
+        ]
+      }
     }
   },
   "practiceQuestions": []

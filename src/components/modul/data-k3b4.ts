@@ -357,3 +357,328 @@ export const RONDE_SUSUNKATA_QA: { kata: string[]; pengecoh: string }[] = [
   { kata: ["Satu", "sentimeter", "sama", "dengan", "sepuluh", "milimeter"], pengecoh: "seratus" },
   { kata: ["Sisi", "adalah", "ruas", "garis", "pembatas", "bangun", "datar"], pengecoh: "titik" },
 ];
+
+
+/* ====================================================================== */
+/* SUB-BAB B. Sudut pada bidang datar                                       */
+/* ====================================================================== */
+
+export type JenisSudut = "lancip" | "siku-siku" | "tumpul" | "lurus" | "refleks";
+export const URUT_SUDUT: JenisSudut[] = ["lancip", "siku-siku", "tumpul", "lurus", "refleks"];
+/** Jenis sudut menurut ukurannya: lancip (0 sampai 90), siku-siku (90), tumpul (90 sampai 180), lurus (180), refleks (180 sampai 360). */
+export function jenisSudut(d: number): JenisSudut {
+  if (!(d > 0 && d < 360)) throw new RangeError(`ukuran sudut di luar 0 sampai 360: ${d}`);
+  if (d === 90) return "siku-siku";
+  if (d === 180) return "lurus";
+  if (d < 90) return "lancip";
+  if (d < 180) return "tumpul";
+  return "refleks";
+}
+export const namaSudut = (j: JenisSudut): string => `sudut ${j}`;
+export const labelSudut = (j: JenisSudut): string => kapital(namaSudut(j));
+export const teksDerajat = (d: number): string => `${d}°`;
+/** Tiga pilihan jenis sudut: kunci dan dua jenis berikutnya dalam urutan melingkar. */
+export function opsiJenisSudut(j: JenisSudut, nomor: number): { opsi: string[]; jawab: number } {
+  const i = URUT_SUDUT.indexOf(j);
+  const lain = [URUT_SUDUT[(i + 1) % 5], URUT_SUDUT[(i + 2) % 5]];
+  return susunOpsi(labelSudut(j), [labelSudut(lain[0]), labelSudut(lain[1])], nomor);
+}
+/** Tiga pilihan hasil membaca busur derajat: kunci, bacaan dari skala yang salah (180 dikurangi kunci), dan kunci lebih 10. */
+export function opsiBusur(d: number, nomor: number): number[] {
+  const cermin = 180 - d;
+  const dekat = d + 10 !== cermin ? d + 10 : d + 20;
+  const semua = [d, cermin, dekat];
+  return urutanTetap(3, 2, nomor).map((i) => semua[i]);
+}
+/** Tiga pilihan ukuran sudut pada soal cerita: kunci, lebih 10 (atau kurang 20 bila melewati 360), dan kurang 10. */
+export function opsiDerajat(d: number, nomor: number): number[] {
+  const atas = d + 10 <= 360 ? d + 10 : d - 20;
+  const semua = [d, atas, d - 10];
+  return urutanTetap(3, 2, nomor).map((i) => semua[i]);
+}
+
+/* ------------------------------ Concrete B ------------------------------ */
+
+export type BendaSudut = "buku" | "pintu" | "gunting";
+export const NAMA_BENDA_SUDUT: Record<BendaSudut, string> = { buku: "buku", pintu: "pintu", gunting: "gunting" };
+export type SoalBendaSudut = { benda: BendaSudut; deg: number };
+export const idSudut = (s: SoalBendaSudut): string => `${s.benda}${s.deg}`;
+export const kalimatBendaSudut = (s: SoalBendaSudut): string => `${NAMA_BENDA_SUDUT[s.benda]} yang dibuka ${s.deg === 180 ? "lurus" : `sampai membentuk ${labelSudut(jenisSudut(s.deg)).toLowerCase()}`}`;
+
+/** Soal memutar strip atau busur: syarat terhadap ukuran acuan. */
+export type SoalPutar = { syarat: "sama" | "lebih" | "kurang"; target: number; awal: number };
+export function cocokPutar(syarat: SoalPutar["syarat"], target: number, sudut: number): boolean {
+  if (syarat === "lebih") return sudut > target;
+  if (syarat === "kurang") return sudut > 0 && sudut < target;
+  return sudut === target;
+}
+export function tanyaPutar(s: SoalPutar): string {
+  if (s.syarat === "lebih") return "Putar strip sampai sudutnya lebih besar dari sudut acuan (garis putus).";
+  if (s.syarat === "kurang") return "Putar strip sampai sudutnya lebih kecil dari sudut acuan (garis putus).";
+  if (s.target === 90) return "Putar strip sampai sudutnya pas dengan pojok kertas lipat (sudut siku-siku).";
+  if (s.target === 180) return "Putar strip sampai kedua strip membentuk garis lurus (sudut lurus).";
+  return "Putar strip sampai sudutnya sama dengan sudut acuan.";
+}
+export function pesanPutar(s: SoalPutar): string {
+  if (s.syarat === "lebih") return `Sudut strip sekarang lebih besar dari sudut acuan ${s.target}°.`;
+  if (s.syarat === "kurang") return `Sudut strip sekarang lebih kecil dari sudut acuan ${s.target}°.`;
+  if (s.target === 90) return "Strip pas dengan pojok kertas lipat. Itu sudut siku-siku, yaitu 90°.";
+  if (s.target === 180) return "Kedua strip membentuk garis lurus. Itu sudut lurus, yaitu 180°.";
+  return `Sudut strip sama dengan sudut acuan ${s.target}°.`;
+}
+
+/** CB1 Strip Sudut: Lebih Besar atau Lebih Kecil (langkah 15 derajat). */
+export const RONDE_STRIP_CB: SoalPutar[][] = [
+  [{ syarat: "lebih", target: 45, awal: 15 }, { syarat: "kurang", target: 120, awal: 165 }],
+  [{ syarat: "lebih", target: 90, awal: 30 }, { syarat: "kurang", target: 75, awal: 135 }],
+  [{ syarat: "lebih", target: 105, awal: 45 }, { syarat: "kurang", target: 60, awal: 120 }],
+];
+/** CB2 Bentuk Sudut Siku-siku dengan Kertas Lipat: sudut siku-siku dan sudut lurus. */
+export const RONDE_SIKU_CB: SoalPutar[][] = [
+  [{ syarat: "sama", target: 90, awal: 45 }, { syarat: "sama", target: 90, awal: 135 }],
+  [{ syarat: "sama", target: 90, awal: 30 }, { syarat: "sama", target: 180, awal: 90 }],
+  [{ syarat: "sama", target: 180, awal: 60 }, { syarat: "sama", target: 90, awal: 150 }],
+];
+/** CB3 Mana yang Paling Terbuka: tiga benda sejenis dengan bukaan berbeda. */
+export const RONDE_TERBUKA_CB: { benda: BendaSudut; degs: number[]; tanya: ("lebar" | "sempit")[] }[] = [
+  { benda: "buku", degs: [30, 90, 150], tanya: ["lebar", "sempit"] },
+  { benda: "pintu", degs: [45, 120, 75], tanya: ["sempit", "lebar"] },
+  { benda: "gunting", degs: [40, 100, 160], tanya: ["lebar", "sempit"] },
+];
+/** CB4 Jenis Sudut pada Benda. */
+export const RONDE_JENIS_CB: SoalBendaSudut[][] = [
+  [{ benda: "pintu", deg: 45 }, { benda: "buku", deg: 90 }],
+  [{ benda: "gunting", deg: 120 }, { benda: "pintu", deg: 90 }],
+  [{ benda: "buku", deg: 150 }, { benda: "gunting", deg: 30 }],
+];
+/** CB5 Jodohkan Benda dan Jenis Sudut: tiga jenis berbeda. */
+export const RONDE_JODOH_CB: SoalBendaSudut[][] = [
+  [{ benda: "buku", deg: 30 }, { benda: "pintu", deg: 90 }, { benda: "gunting", deg: 130 }],
+  [{ benda: "gunting", deg: 60 }, { benda: "buku", deg: 135 }, { benda: "pintu", deg: 90 }],
+  [{ benda: "pintu", deg: 150 }, { benda: "gunting", deg: 90 }, { benda: "buku", deg: 45 }],
+];
+/** CB6 Memori Benda dan Jenis Sudut: empat jenis berbeda (lancip, siku-siku, tumpul, lurus). */
+export const RONDE_MEMORI_CB: SoalBendaSudut[][] = [
+  [{ benda: "buku", deg: 40 }, { benda: "pintu", deg: 90 }, { benda: "gunting", deg: 120 }, { benda: "buku", deg: 180 }],
+  [{ benda: "pintu", deg: 60 }, { benda: "gunting", deg: 90 }, { benda: "buku", deg: 150 }, { benda: "pintu", deg: 180 }],
+  [{ benda: "gunting", deg: 30 }, { benda: "pintu", deg: 90 }, { benda: "buku", deg: 110 }, { benda: "buku", deg: 180 }],
+];
+/** CB7 Ketuk Semua Benda dengan Jenis Sudut Tertentu. */
+export const RONDE_SEMUA_CB: { jenis: JenisSudut; item: SoalBendaSudut[] }[] = [
+  { jenis: "siku-siku", item: [{ benda: "buku", deg: 90 }, { benda: "pintu", deg: 45 }, { benda: "gunting", deg: 90 }, { benda: "buku", deg: 150 }] },
+  { jenis: "lancip", item: [{ benda: "pintu", deg: 30 }, { benda: "gunting", deg: 120 }, { benda: "buku", deg: 60 }, { benda: "pintu", deg: 90 }] },
+  { jenis: "tumpul", item: [{ benda: "buku", deg: 100 }, { benda: "gunting", deg: 40 }, { benda: "pintu", deg: 150 }, { benda: "buku", deg: 90 }] },
+];
+/** CB8 Hitung Sudut Siku-siku pada Benda. */
+export type BendaSiku = { id: string; emoji: string; nama: string; siku: number };
+export const BENDA_SIKU: Record<string, BendaSiku> = {
+  buku: { id: "buku", emoji: "📖", nama: "buku", siku: 4 },
+  bingkai: { id: "bingkai", emoji: "🖼️", nama: "bingkai foto", siku: 4 },
+  tv: { id: "tv", emoji: "📺", nama: "televisi", siku: 4 },
+  segitiga: { id: "segitiga", emoji: "📐", nama: "penggaris segitiga", siku: 1 },
+  rambu: { id: "rambu", emoji: "⚠️", nama: "rambu segitiga", siku: 0 },
+  jam: { id: "jam", emoji: "🕐", nama: "jam dinding", siku: 0 },
+};
+export const RONDE_SIKUBENDA_CB: string[][] = [["buku", "segitiga"], ["rambu", "tv"], ["bingkai", "jam"]];
+/** CB9 Urutkan Benda menurut Bukaan. */
+export const RONDE_URUT_CB: { benda: BendaSudut; degs: number[]; dari: "kecil" | "besar" }[] = [
+  { benda: "buku", degs: [60, 150, 100], dari: "kecil" },
+  { benda: "pintu", degs: [135, 30, 90], dari: "besar" },
+  { benda: "gunting", degs: [45, 110, 80], dari: "kecil" },
+];
+/** CB10 Ukur dengan Irisan: sudut yang sama diukur dengan dua satuan irisan berbeda. */
+export type SoalIrisan = { deg: number; satuan: number };
+export const RONDE_IRISAN_CB: SoalIrisan[][] = [
+  [{ deg: 90, satuan: 30 }, { deg: 90, satuan: 15 }],
+  [{ deg: 60, satuan: 30 }, { deg: 60, satuan: 15 }],
+  [{ deg: 135, satuan: 45 }, { deg: 135, satuan: 15 }],
+];
+export const banyakIrisan = (s: SoalIrisan): number => s.deg / s.satuan;
+
+/* ------------------------------ Picture B ------------------------------ */
+
+/** PB1 Baca Busur Derajat: kaki OA di kanan (skala luar) atau di kiri (skala dalam). */
+export type SoalBusur = { deg: number; kiri?: boolean };
+export const RONDE_BUSUR_PB: SoalBusur[][] = [
+  [{ deg: 50 }, { deg: 130 }],
+  [{ deg: 70, kiri: true }, { deg: 110 }],
+  [{ deg: 35 }, { deg: 155, kiri: true }],
+];
+/** PB2 Jenis Sudut dari Gambar. */
+export const RONDE_JENIS_PB: number[][] = [[40, 90], [130, 180], [300, 60]];
+/** PB3 Jodohkan Gambar Sudut dan Jenisnya: tiga jenis berbeda. */
+export const RONDE_JODOH_PB: number[][] = [[30, 90, 120], [60, 135, 180], [100, 45, 270]];
+/** PB4 Memori Gambar Sudut dan Jenisnya: empat jenis berbeda. */
+export const RONDE_MEMORI_PB: number[][] = [[40, 90, 150, 240], [20, 90, 110, 180], [75, 90, 160, 300]];
+/** PB5 Isi Tabel Jenis Sudut. */
+export type TabelSudut = { kepala: [string, string]; baris: { label: string; jawab: string }[]; kartu: string[] };
+export function tabelSudut(daftar: number[], asing: JenisSudut, tambahan: number): TabelSudut {
+  const baris = daftar.map((d) => ({ label: teksDerajat(d), jawab: labelSudut(jenisSudut(d)) }));
+  const kartu = urutanTetap(baris.length + 1, 2, tambahan).map((i) => (i < baris.length ? baris[i].jawab : labelSudut(asing)));
+  return { kepala: ["Ukuran sudut", "Jenis sudut"], baris, kartu };
+}
+export const RONDE_TABEL_PB: TabelSudut[] = [tabelSudut([30, 90, 150, 180], "refleks", 1), tabelSudut([270, 45, 90, 120], "lurus", 2), tabelSudut([180, 60, 100, 330], "siku-siku", 3)];
+/** PB6 Ketuk Semua Sudut dengan Jenis Tertentu. */
+export const RONDE_SEMUA_PB: { jenis: JenisSudut; degs: number[] }[] = [
+  { jenis: "lancip", degs: [30, 120, 60, 90] },
+  { jenis: "tumpul", degs: [100, 45, 150, 90] },
+  { jenis: "siku-siku", degs: [90, 60, 90, 130] },
+];
+/** PB7 Pilah Sudut: lancip, siku-siku, atau tumpul (enam sudut per ronde). */
+export const RONDE_PILAH_PB: number[][] = [
+  [25, 90, 140, 55, 115, 165],
+  [70, 150, 90, 35, 100, 80],
+  [120, 15, 90, 45, 175, 105],
+];
+/** PB8 Urutkan Sudut menurut Ukuran. */
+export const RONDE_URUT_PB: { degs: number[]; dari: "kecil" | "besar" }[] = [
+  { degs: [100, 35, 70], dari: "kecil" },
+  { degs: [150, 50, 110], dari: "besar" },
+  { degs: [20, 80, 140], dari: "kecil" },
+];
+/** PB9 Titik Sudut, Kaki, dan Nama Sudut: huruf pertama pada kaki pertama, kedua titik sudut, ketiga pada kaki kedua. */
+export type SoalNamaSudut = { huruf: [string, string, string]; deg: number; tanya: "titik" | "nama" | "kaki" };
+export const namaSudutHuruf = (h: [string, string, string]): string => `∠${h[0]}${h[1]}${h[2]}`;
+export const kakiSudutHuruf = (h: [string, string, string]): string => `${h[1]}${h[0]} dan ${h[1]}${h[2]}`;
+export function opsiNamaSudut(s: SoalNamaSudut, nomor: number): { opsi: string[]; jawab: number } {
+  const [a, o, b] = s.huruf;
+  if (s.tanya === "titik") return susunOpsi(o, [a, b], nomor);
+  if (s.tanya === "nama") return susunOpsi(`∠${a}${o}${b}`, [`∠${o}${a}${b}`, `∠${a}${b}${o}`], nomor);
+  return susunOpsi(`${o}${a} dan ${o}${b}`, [`${a}${b} dan ${o}${a}`, `${a}${b} dan ${o}${b}`], nomor);
+}
+export const tanyaNamaSudut = (s: SoalNamaSudut): string =>
+  s.tanya === "titik" ? "Titik sudutnya adalah ..." : s.tanya === "nama" ? "Sudut ini dapat diberi nama ..." : "Kaki-kaki sudutnya adalah ...";
+export const pesanNamaSudut = (s: SoalNamaSudut): string => {
+  const [a, o, b] = s.huruf;
+  if (s.tanya === "titik") return `Kedua kaki sudut bertemu di titik ${o}, jadi titik sudutnya ${o}.`;
+  if (s.tanya === "nama") return `Nama sudut ditulis dengan titik sudut di tengah, yaitu ∠${a}${o}${b}.`;
+  return `Kaki sudutnya adalah sinar ${o}${a} dan sinar ${o}${b}.`;
+};
+export const RONDE_NAMA_PB: SoalNamaSudut[][] = [
+  [{ huruf: ["A", "O", "B"], deg: 50, tanya: "titik" }, { huruf: ["K", "L", "M"], deg: 110, tanya: "nama" }],
+  [{ huruf: ["P", "Q", "R"], deg: 70, tanya: "kaki" }, { huruf: ["X", "Y", "Z"], deg: 130, tanya: "titik" }],
+  [{ huruf: ["C", "D", "E"], deg: 40, tanya: "nama" }, { huruf: ["F", "G", "H"], deg: 100, tanya: "kaki" }],
+];
+/** PB10 Gambar Sudut dengan Busur Derajat (langkah 5 derajat). */
+export const RONDE_GAMBAR_PB: number[][] = [[50, 130], [70, 90], [135, 45]];
+
+/* ------------------------------ Abstract B ------------------------------ */
+
+/** QB1 Pilih Nama Bagian Sudut dan Alatnya. */
+export const RONDE_NAMA_QB: SoalTeks[][] = [
+  [NAMA_S("Titik tempat dua kaki sudut bertemu disebut ...", "titik sudut", ["kaki sudut", "busur derajat"], "Titik tempat dua kaki sudut bertemu disebut titik sudut."), NAMA_S("Sinar OA dan sinar OB pada ∠AOB disebut ...", "kaki sudut", ["titik sudut", "sisi bangun"], "Sinar OA dan sinar OB adalah kaki sudut.")],
+  [NAMA_S("Alat untuk mengukur sudut disebut ...", "busur derajat", ["penggaris", "jangka"], "Sudut diukur dengan busur derajat."), NAMA_S("Satuan ukuran sudut adalah ...", "derajat", ["sentimeter", "gram"], "Ukuran sudut dinyatakan dalam derajat, ditulis dengan simbol °.")],
+  [NAMA_S("Sudut yang ukurannya tepat 90° disebut sudut ...", "siku-siku", ["lancip", "tumpul"], "Sudut yang tepat 90° adalah sudut siku-siku."), NAMA_S("Sudut yang ukurannya tepat 180° disebut sudut ...", "lurus", ["refleks", "tumpul"], "Sudut yang tepat 180° adalah sudut lurus, dua kali sudut siku-siku.")],
+];
+/** QB2 Lengkapi Kalimat Tentang Sudut. */
+export const RONDE_KALIMAT_QB: KalimatIsian[][] = [
+  [
+    { depan: "Sudut terbentuk ketika dua garis berpotongan pada satu", belakang: ".", opsi: ["titik", "sisi", "bidang"], benar: 0 },
+    { depan: "Titik O pada ∠AOB disebut titik", belakang: ".", opsi: ["sudut", "tengah", "ujung"], benar: 0 },
+    { depan: "Simbol ∠ menunjukkan", belakang: ".", opsi: ["sudut", "sisi", "garis"], benar: 0 },
+  ],
+  [
+    { depan: "Sudut siku-siku ukurannya tepat", belakang: ".", opsi: ["90°", "45°", "180°"], benar: 0 },
+    { depan: "Sudut lancip ukurannya kurang dari", belakang: ".", opsi: ["90°", "180°", "360°"], benar: 0 },
+    { depan: "Sudut lurus ukurannya tepat", belakang: ".", opsi: ["180°", "90°", "360°"], benar: 0 },
+  ],
+  [
+    { depan: "Sudut tumpul ukurannya lebih dari 90° dan kurang dari", belakang: ".", opsi: ["180°", "90°", "360°"], benar: 0 },
+    { depan: "Sudut refleks ukurannya lebih dari 180° dan kurang dari", belakang: ".", opsi: ["360°", "90°", "270°"], benar: 0 },
+    { depan: "Satu putaran penuh sama dengan", belakang: ".", opsi: ["360°", "180°", "90°"], benar: 0 },
+  ],
+];
+/** QB3 Jenis Sudut dari Ukurannya: kunci dihitung dari ukuran. */
+const PESAN_JENIS: Record<JenisSudut, (d: number) => string> = {
+  lancip: (d) => `${d}° lebih dari 0° dan kurang dari 90°, jadi sudut lancip.`,
+  "siku-siku": (d) => `Sudut yang tepat ${d}° adalah sudut siku-siku.`,
+  tumpul: (d) => `${d}° lebih dari 90° dan kurang dari 180°, jadi sudut tumpul.`,
+  lurus: (d) => `Sudut yang tepat ${d}° adalah sudut lurus.`,
+  refleks: (d) => `${d}° lebih dari 180° dan kurang dari 360°, jadi sudut refleks.`,
+};
+export function soalJenisDeg(d: number): SoalTeks {
+  const j = jenisSudut(d);
+  const i = URUT_SUDUT.indexOf(j);
+  return { tanya: `Sudut ${d}° adalah ...`, benar: namaSudut(j), salah: [namaSudut(URUT_SUDUT[(i + 1) % 5]), namaSudut(URUT_SUDUT[(i + 2) % 5])], pesan: PESAN_JENIS[j](d) };
+}
+export const DEG_JENIS_QB: number[][] = [[70, 120], [90, 200], [89, 180]];
+export const RONDE_JENIS_QB: SoalTeks[][] = DEG_JENIS_QB.map((r) => r.map(soalJenisDeg));
+/** QB4 Jodohkan Ukuran dan Jenis Sudut: tiga jenis berbeda. */
+export const DEG_JODOH_QB: number[][] = [[30, 90, 120], [180, 45, 270], [135, 90, 330]];
+export const RONDE_JODOH_QB: { kiri: string; kanan: string }[][] = DEG_JODOH_QB.map((r) => r.map((d) => ({ kiri: teksDerajat(d), kanan: labelSudut(jenisSudut(d)) })));
+/** QB5 Memori Ukuran dan Jenis Sudut: empat jenis berbeda. */
+export const DEG_MEMORI_QB: number[][] = [[40, 90, 150, 240], [20, 90, 110, 180], [75, 90, 160, 300]];
+export const RONDE_MEMORI_QB: { a: string; b: string }[][] = DEG_MEMORI_QB.map((r) => r.map((d) => ({ a: teksDerajat(d), b: labelSudut(jenisSudut(d)) })));
+/** QB6 Benar atau Salah. */
+export const RONDE_BENARSALAH_QB: Pernyataan[][] = [
+  [
+    { teks: "Sudut terbentuk ketika dua garis berpotongan pada satu titik.", benar: true, penjelasan: "Dua garis yang berpotongan pada satu titik membentuk sudut di titik itu." },
+    { teks: "Sudut siku-siku ukurannya 180°.", benar: false, penjelasan: "Sudut siku-siku tepat 90°. Yang tepat 180° adalah sudut lurus." },
+    { teks: "Sudut lancip ukurannya kurang dari 90°.", benar: true, penjelasan: "Sudut lancip lebih dari 0° dan kurang dari 90°." },
+    { teks: "Sudut tumpul ukurannya kurang dari 90°.", benar: false, penjelasan: "Sudut tumpul lebih dari 90° dan kurang dari 180°." },
+    { teks: "Busur derajat dipakai untuk mengukur sudut.", benar: true, penjelasan: "Besar sudut diukur dengan busur derajat dalam satuan derajat." },
+  ],
+  [
+    { teks: "Sudut refleks lebih dari 180° dan kurang dari 360°.", benar: true, penjelasan: "Sudut refleks lebih besar dari sudut lurus dan lebih kecil dari satu putaran penuh." },
+    { teks: "Sudut lurus ukurannya 90°.", benar: false, penjelasan: "Sudut lurus tepat 180°, dua kali sudut siku-siku." },
+    { teks: "Satu putaran penuh sama dengan 360°.", benar: true, penjelasan: "Lingkaran dibagi 360 bagian sama besar, tiap bagian 1°." },
+    { teks: "Sudut yang sama selalu berukuran sama walaupun satuan ukurnya berbeda.", benar: false, penjelasan: "Dengan satuan tidak baku berbeda, bilangan ukurannya berbeda. Satuan baku derajat membuat ukurannya sama." },
+    { teks: "Sudut siku-siku dapat dibuat dengan melipat kertas.", benar: true, penjelasan: "Pojok kertas yang dilipat dua kali adalah sudut siku-siku." },
+  ],
+];
+/** QB7 Detektif Sudut. */
+export const RONDE_DETEKTIF_QB: SoalDetektif[] = [
+  { klue: ["Aku sudut siku-siku.", "Ukuranku dalam derajat."], jawab: 90, opsi: [90, 180, 60], salah: "Sudut siku-siku ukurannya tepat 90°." },
+  { klue: ["Aku sudut lurus.", "Aku dua kali sudut siku-siku."], jawab: 180, opsi: [180, 90, 360], salah: "Dua kali 90° adalah 180°, yaitu sudut lurus." },
+  { klue: ["Aku sudut tumpul.", "Aku kelipatan 60."], jawab: 120, opsi: [120, 60, 240], salah: "120° lebih dari 90° dan kurang dari 180°, dan 120 kelipatan 60." },
+  { klue: ["Aku sudut refleks.", "Jumlahku dengan sudut 60° satu putaran penuh."], jawab: 300, opsi: [300, 120, 240], salah: "300° ditambah 60° sama dengan 360°, dan 300° lebih dari 180°." },
+];
+/** QB8 Peta Konsep Sudut. */
+export const PETA_KONSEP_QB: { pusat: string; kotak: KotakPeta[] }[] = [
+  {
+    pusat: "Bagian sudut",
+    kotak: [
+      { label: "Titik tempat dua kaki bertemu disebut", opsi: ["titik sudut", "kaki sudut", "derajat"], benar: 0 },
+      { label: "Sinar yang membentuk sudut disebut", opsi: ["kaki sudut", "titik sudut", "busur"], benar: 0 },
+      { label: "Alat untuk mengukur sudut adalah", opsi: ["busur derajat", "penggaris", "jangka"], benar: 0 },
+      { label: "Menurutku, satuan ukuran sudut adalah", opsi: ["derajat", "gram", "meter"], benar: 0 },
+    ],
+  },
+  {
+    pusat: "Jenis sudut",
+    kotak: [
+      { label: "Sudut yang tepat 90° disebut", opsi: ["siku-siku", "lancip", "tumpul"], benar: 0 },
+      { label: "Sudut yang kurang dari 90° disebut", opsi: ["lancip", "tumpul", "refleks"], benar: 0 },
+      { label: "Sudut yang tepat 180° disebut", opsi: ["lurus", "refleks", "siku-siku"], benar: 0 },
+      { label: "Menurutku, sudut 300° disebut", opsi: ["refleks", "tumpul", "lurus"], benar: 0 },
+    ],
+  },
+];
+/** QB9 Soal Cerita Sudut: jawaban berupa ukuran dalam derajat. */
+export type CeritaSudut = { teks: string; jawab: number; pesan: string };
+export const RONDE_CERITA_QB: CeritaSudut[][] = [
+  [
+    { teks: "Dua sudut siku-siku dirapatkan sehingga kaki-kakinya membentuk garis lurus. Berapa derajat sudut yang terbentuk?", jawab: 180, pesan: "90° + 90° = 180°, yaitu sudut lurus." },
+    { teks: "Sebuah sudut refleks berukuran 300°. Berapa derajat sudut lancip yang bersesuaian?", jawab: 60, pesan: "Sudut lancip yang bersesuaian adalah 360° − 300° = 60°." },
+  ],
+  [
+    { teks: "Sebuah sudut tumpul berukuran 130°. Berapa derajat sudut refleks yang bersesuaian?", jawab: 230, pesan: "Sudut refleks yang bersesuaian adalah 360° − 130° = 230°." },
+    { teks: "Sudut lurus dibagi menjadi dua sudut yang sama besar. Berapa derajat tiap sudut?", jawab: 90, pesan: "180° dibagi 2 sama dengan 90°, yaitu sudut siku-siku." },
+  ],
+  [
+    { teks: "Sudut lurus 180° dikurangi sudut lancip 50°. Berapa derajat sisanya?", jawab: 130, pesan: "180° − 50° = 130°, yaitu sudut tumpul." },
+    { teks: "Sebuah kipas dibuka satu putaran penuh. Berapa derajat sudutnya?", jawab: 360, pesan: "Satu putaran penuh sama dengan 360°." },
+  ],
+];
+/** Tiga pilihan hasil cerita sudut. */
+export function opsiCeritaSudut(c: CeritaSudut, nomor: number): { opsi: string[]; jawab: number } {
+  const o = opsiDerajat(c.jawab, nomor);
+  return { opsi: o.map(teksDerajat), jawab: o.indexOf(c.jawab) };
+}
+/** QB10 Susun Kata Sudut. */
+export const RONDE_SUSUNKATA_QB: { kata: string[]; pengecoh: string }[] = [
+  { kata: ["Sudut", "terbentuk", "ketika", "dua", "garis", "berpotongan", "pada", "satu", "titik"], pengecoh: "sejajar" },
+  { kata: ["Sudut", "siku-siku", "ukurannya", "tepat", "90", "derajat"], pengecoh: "180" },
+  { kata: ["Busur", "derajat", "dipakai", "untuk", "mengukur", "besar", "sudut"], pengecoh: "panjang" },
+  { kata: ["Ukuran", "sudut", "lurus", "sama", "dengan", "180", "derajat"], pengecoh: "90" },
+];

@@ -3,6 +3,7 @@
 import React from "react";
 import { KotakPoster } from "./kit-k2b2";
 import { BangunSvg, JenisGarisSvg, RuasPenggaris } from "./diagram-k3b4";
+import { BusurSvg, SudutSvg } from "./diagram-k3b4b";
 
 /* ------------------------------------------------------------------------ */
 /* Isi visual panel Infografis Bab 4 (Unsur-Unsur Bangun Datar). Gambar saja: teks  */
@@ -113,6 +114,105 @@ export function visualInfografisK3B4A(): React.ReactNode[] {
     /* 10 Cara Mengukur */
     <KotakPoster key="10" warna="#FFFBEB">
       <Langkah daftar={["1. Angka 0 di titik awal", "2. Lihat titik akhir", "3. Baca cm dan mm", "4. Tulis dengan satuan"]} warna={["#BAE6FD", "#FECACA", "#BFDBFE", "#FDE68A"]} />
+    </KotakPoster>,
+  ];
+}
+
+/* ====================================================================== */
+/* Sub-Bab B                                                                */
+/* ====================================================================== */
+
+const DuaKolom = ({ kiri, kanan }: { kiri: React.ReactNode; kanan: React.ReactNode }) => (
+  <div className="grid grid-cols-2 gap-1">
+    <div>{kiri}</div>
+    <div>{kanan}</div>
+  </div>
+);
+
+export function visualInfografisK3B4B(): React.ReactNode[] {
+  return [
+    /* 1 Sudut */
+    <KotakPoster key="1" warna="#E0E7FF">
+      <Kecil>
+        <SudutSvg deg={60} />
+      </Kecil>
+      <Cap>dua garis bertemu di satu titik</Cap>
+    </KotakPoster>,
+    /* 2 Titik Sudut dan Kaki */
+    <KotakPoster key="2" warna="#FEF9C3">
+      <Kecil>
+        <SudutSvg deg={55} huruf={["A", "O", "B"]} />
+      </Kecil>
+      <Cap>O titik sudut, OA dan OB kaki</Cap>
+    </KotakPoster>,
+    /* 3 Membandingkan Sudut */
+    <KotakPoster key="3" warna="#DBEAFE">
+      <DuaKolom
+        kiri={
+          <>
+            <SudutSvg deg={30} ringkas />
+            <Cap>lebih kecil</Cap>
+          </>
+        }
+        kanan={
+          <>
+            <SudutSvg deg={100} ringkas />
+            <Cap>lebih besar</Cap>
+          </>
+        }
+      />
+    </KotakPoster>,
+    /* 4 Sudut Siku-siku */
+    <KotakPoster key="4" warna="#DCFCE7">
+      <Kecil>
+        <SudutSvg deg={90} />
+      </Kecil>
+      <Cap>sudut siku-siku: tepat 90°</Cap>
+    </KotakPoster>,
+    /* 5 Satuan Sudut */
+    <KotakPoster key="5" warna="#FEE2E2">
+      <Baris daftar={[["satuan besar: 3 satuan", "#B45309"], ["satuan kecil: 6 satuan", "#16A34A"]]} />
+      <Cap>sudutnya sama</Cap>
+    </KotakPoster>,
+    /* 6 Busur Derajat */
+    <KotakPoster key="6" warna="#FFF7ED">
+      <BusurSvg deg={50} huruf={false} />
+      <Cap>baca derajatnya</Cap>
+    </KotakPoster>,
+    /* 7 Lancip dan Tumpul */
+    <KotakPoster key="7" warna="#F5F3FF">
+      <DuaKolom
+        kiri={
+          <>
+            <SudutSvg deg={45} ringkas />
+            <Cap>lancip</Cap>
+          </>
+        }
+        kanan={
+          <>
+            <SudutSvg deg={130} ringkas />
+            <Cap>tumpul</Cap>
+          </>
+        }
+      />
+    </KotakPoster>,
+    /* 8 Sudut Lurus */
+    <KotakPoster key="8" warna="#ECFCCB">
+      <Kecil>
+        <SudutSvg deg={180} />
+      </Kecil>
+      <Cap>sudut lurus: tepat 180°</Cap>
+    </KotakPoster>,
+    /* 9 Sudut Refleks */
+    <KotakPoster key="9" warna="#FCE7F3">
+      <Kecil>
+        <SudutSvg deg={300} />
+      </Kecil>
+      <Cap>refleks: 180° sampai 360°</Cap>
+    </KotakPoster>,
+    /* 10 Cara Mengukur Sudut */
+    <KotakPoster key="10" warna="#FFFBEB">
+      <Langkah daftar={["1. Titik tengah di titik sudut", "2. Kaki pertama di garis nol", "3. Lihat kaki kedua", "4. Baca derajatnya"]} warna={["#BAE6FD", "#FECACA", "#BFDBFE", "#FDE68A"]} />
     </KotakPoster>,
   ];
 }
