@@ -99,14 +99,30 @@ KONFIG.k3b2 = {
   },
 };
 
-// Kelas 3 Bab 3 (Pengukuran Panjang dan Berat): Sub-Bab A dan B (panjang). Sub-Bab C dan D (berat) ditambahkan kemudian.
+// Kelas 3 Bab 3 (Pengukuran Panjang dan Berat): Sub-Bab A dan B (panjang), C dan D (berat).
 KONFIG.k3b3 = {
   kelas: 3,
   bab: 3,
   judul: "Pengukuran Panjang dan Berat",
-  buku: "Buku Siswa Matematika Kelas III (Kemendikbudristek, Kurikulum Merdeka, Bab 3 hlm. 105–123) dan Buku Panduan Guru Bab 3",
-  berkas: { A: "sub-a-pengukuran-panjang-satuan-baku", B: "sub-b-hubungan-satuan-panjang" },
+  buku: "Buku Siswa Matematika Kelas III (Kemendikbudristek, Kurikulum Merdeka, Bab 3 hlm. 105–140) dan Buku Panduan Guru Bab 3",
+  berkas: { A: "sub-a-pengukuran-panjang-satuan-baku", B: "sub-b-hubungan-satuan-panjang", C: "sub-c-pengukuran-berat-satuan-baku", D: "sub-d-hubungan-satuan-berat" },
   metodeLuar: {
+    C: [
+      "**Timbangan digital dengan benda di atasnya**: telur, stroberi, pensil, buku, permen, dan kunci digambar di atas timbangan dengan layar bertulis gram. Dasar permainan Baca Timbangan Digital dan Papan Berat dalam Gram.",
+      "**Timbangan duduk berjarum**: jarum polos dengan satu putaran 5 kg, garis besar tiap kilogram dan garis sedang tiap 500 g. Dasar permainan Baca Timbangan Jarum dan Baca Jarum dalam Kilogram.",
+      "**Mulai dari angka nol (miskonsepsi Buku Panduan Guru)**: permainan Timbangan yang Siap dan Ketuk Semua Jarum yang Siap melatih memeriksa jarum di angka 0 sebelum menimbang.",
+      "**Gram untuk benda ringan, kilogram untuk benda berat**: benda sehari-hari dipilah ke satuan yang tepat. Pengecoh memakai satuan panjang (sentimeter dan meter) agar siswa membedakan berat dari panjang.",
+      "**Memilih timbangan**: timbangan digital, timbangan duduk, dan timbangan badan dihubungkan dengan benda yang ditimbang (sayuran dan buah, berat badan, bahan kue).",
+      "**Layar polos di tahap Picture**: benda diganti layar timbangan dan jarum polos tanpa gambar benda. Selisih dua layar memakai soal stroberi 100 g dan 500 g (Ayo Berlatih 2).",
+    ],
+    D: [
+      "**Bandul timbangan kodok**: lima jenis bandul (1/2 ons, 1 ons, 2 ons, 1/2 kg, 1 kg) digambar sebagai logam kuning bertulisan. Mesin Rakit Bandul menjumlahkan beratnya pada layar, banyak jalan benar.",
+      "**Kilogram, ons, dan gram**: 1 kg = 1.000 g = 10 ons dan 1 ons = 100 g (kotak ringkasan buku). Permainan Ubah Ons ke Gram memakai papan ratusan, puluhan, dan satuan.",
+      "**Mengalikan dan membagi dengan 1.000**: kilogram ke gram dikalikan 1.000, gram ke kilogram dengan mengambil tiap 1.000 g. Pengecoh sengaja memuat lupa mengalikan (× 100) dan salah kali (× 10.000).",
+      "**Memecah gram (Pengamatan 2)**: 1.753 g = 1.000 g + 753 g = 1 kg 753 g. Soal 1.200 g = 1 kg 200 g, 3.000 g = 3 kg, dan 4 kg 150 g = 4.150 g (Ayo Berlatih 1) dipakai langsung.",
+      "**Garis berat**: batang berwarna pada garis 0 sampai 4 kg dengan penanda tiap 500 g, mirip garis meteran pada Sub-Bab B. Dipakai untuk menghitung, menyelisihkan, dan menyambung berat.",
+      "**Soal cerita Ayo Berlatih 2 dan 3**: mangga 8.000 g dijual 4 kg dan dua kantong jeruk 500 g dipakai langsung, ditambah soal beras dan tepung yang menjumlahkan serta mengurangkan kilogram dan gram.",
+    ],
     A: [
       "**Penggaris dengan benda nyata di atasnya**: pensil, krayon, penghapus, sendok, dan sikat gigi digambar di atas penggaris 0 sampai 15 cm. Dasar permainan Baca Panjang Benda dan Papan Panjang Benda.",
       "**Geser ke angka nol (Aktivitas 1, langkah 4 dan 5)**: siswa menggeser benda sampai ujung kirinya tepat di angka 0, baru membaca angka di ujung yang lain. Mesin Geser Ukur menolak jawaban sebelum benda sejajar, supaya kesalahan umum (mulai dari angka selain nol) terlihat langsung.",

@@ -1,6 +1,6 @@
 # Naskah Matematika Kelas 3 SD, Bab 3: Pengukuran Panjang dan Berat, Sub-Bab A: Pengukuran Panjang dengan Satuan Baku
 
-Berkas ini ditulis dari satu sumber, `src/components/modul/naskah-k3b3.ts` dan `src/components/modul/data-k3b3.ts`, oleh `scripts/buat-naskah-md.mjs`. Isi mengikuti Buku Siswa Matematika Kelas III (Kemendikbudristek, Kurikulum Merdeka, Bab 3 hlm. 105–123) dan Buku Panduan Guru Bab 3, serta diperkaya dengan metode dari luar buku. **Hanya Materi.** Soal Latihan, soal Ujian, dan Simulasi sengaja belum dibuat atas instruksi pemilik; keduanya akan ditugaskan terpisah. Kunci jawaban Latihan dan Ujian tidak ada di berkas ini.
+Berkas ini ditulis dari satu sumber, `src/components/modul/naskah-k3b3.ts` dan `src/components/modul/data-k3b3.ts`, oleh `scripts/buat-naskah-md.mjs`. Isi mengikuti Buku Siswa Matematika Kelas III (Kemendikbudristek, Kurikulum Merdeka, Bab 3 hlm. 105–140) dan Buku Panduan Guru Bab 3, serta diperkaya dengan metode dari luar buku. **Hanya Materi.** Soal Latihan, soal Ujian, dan Simulasi sengaja belum dibuat atas instruksi pemilik; keduanya akan ditugaskan terpisah. Kunci jawaban Latihan dan Ujian tidak ada di berkas ini.
 
 ## 1. Identitas modul
 

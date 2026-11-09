@@ -532,3 +532,498 @@ export const RONDE_SUSUNKATA_QB: { kata: string[]; pengecoh: string }[] = [
   { kata: ["Untuk", "mengubah", "sentimeter", "ke", "meter", "bagilah", "dengan", "seratus"], pengecoh: "kalikan" },
   { kata: ["Jumlahkan", "dulu", "satuan", "yang", "sama", "lalu", "tulis", "hasilnya"], pengecoh: "kurangkan" },
 ];
+
+/* ====================================================================== */
+/* Pembantu berat (Sub-Bab C dan D)                                         */
+/* ====================================================================== */
+
+/** 1250 menjadi "1.250 g". */
+export const teksGram = (g: number): string => `${titik(g)} g`;
+/** 2500 menjadi "2 kg 500 g", 2000 menjadi "2 kg", 500 menjadi "500 g". */
+export function teksKgG(g: number): string {
+  const k = Math.floor(g / 1000);
+  const s = g % 1000;
+  if (k === 0) return `${s} g`;
+  return s === 0 ? `${titik(k)} kg` : `${titik(k)} kg ${s} g`;
+}
+/** Ubah teks berat kembali menjadi gram (untuk uji): "1.753 g", "2 kg 500 g", "3 ons", "3 kg". */
+export function gramDariTeks(teks: string): number {
+  const kg = teks.match(/([\d.]+) kg/);
+  const ons = teks.match(/([\d.]+) ons/);
+  const g = teks.match(/([\d.]+) g(?!\w)/);
+  const angka = (m: RegExpMatchArray | null) => (m ? Number(m[1].replace(/\./g, "")) : 0);
+  return angka(kg) * 1000 + angka(ons) * 100 + angka(g);
+}
+/** Tiga pilihan gram: kunci, lebih satu langkah, dan kurang satu langkah (langkah 10 bila di bawah 100, selain itu 50). */
+export function opsiGram(n: number, nomor: number): number[] {
+  const s = n >= 100 ? 50 : 10;
+  const semua = [n, n + s, n > s ? n - s : n + 2 * s];
+  return urutanTetap(3, 2, nomor).map((i) => semua[i]);
+}
+/** Tiga pilihan berat pada garis (kelipatan 500 g): kunci, lebih 500 g, dan kurang 500 g (atau lebih 1 kg bila di bawah 1 kg). */
+export function opsiBerat500(n: number, nomor: number): number[] {
+  const semua = [n, n + 500, n >= 1000 ? n - 500 : n + 1000];
+  return urutanTetap(3, 2, nomor).map((i) => semua[i]);
+}
+/** Tiga pilihan hasil gabungan (kg dan g): kunci, lebih 100 g, dan kurang 100 g (atau lebih 200 g bila di bawah 200 g). */
+export function opsiKgG(g: number, nomor: number): { opsi: string[]; jawab: number } {
+  return susunOpsi(teksKgG(g), [teksKgG(g + 100), teksKgG(g >= 200 ? g - 100 : g + 200)], nomor);
+}
+
+/* ====================================================================== */
+/* SUB-BAB C. Pengukuran berat dengan satuan baku                           */
+/* ====================================================================== */
+
+export type JenisTimbangan = "digital" | "duduk" | "badan";
+export const NAMA_TIMBANGAN: Record<JenisTimbangan, string> = { digital: "Timbangan digital", duduk: "Timbangan duduk", badan: "Timbangan badan" };
+export type BendaBerat = { id: string; emoji: string; nama: string; satuan: "gram" | "kilogram"; timbangan: JenisTimbangan };
+export const BENDA_BERAT: Record<string, BendaBerat> = {
+  telur: { id: "telur", emoji: "🥚", nama: "telur", satuan: "gram", timbangan: "digital" },
+  stroberi: { id: "stroberi", emoji: "🍓", nama: "stroberi", satuan: "gram", timbangan: "digital" },
+  pensil: { id: "pensil", emoji: "✏️", nama: "pensil", satuan: "gram", timbangan: "digital" },
+  buku: { id: "buku", emoji: "📖", nama: "buku", satuan: "gram", timbangan: "digital" },
+  permen: { id: "permen", emoji: "🍬", nama: "permen", satuan: "gram", timbangan: "digital" },
+  kunci: { id: "kunci", emoji: "🔑", nama: "kunci", satuan: "gram", timbangan: "digital" },
+  apel: { id: "apel", emoji: "🍎", nama: "apel", satuan: "kilogram", timbangan: "duduk" },
+  semangka: { id: "semangka", emoji: "🍉", nama: "semangka", satuan: "kilogram", timbangan: "duduk" },
+  nanas: { id: "nanas", emoji: "🍍", nama: "nanas", satuan: "kilogram", timbangan: "duduk" },
+  kentang: { id: "kentang", emoji: "🥔", nama: "kentang", satuan: "kilogram", timbangan: "duduk" },
+  ayam: { id: "ayam", emoji: "🐔", nama: "ayam", satuan: "kilogram", timbangan: "duduk" },
+  siswa: { id: "siswa", emoji: "🧒", nama: "berat badan siswa", satuan: "kilogram", timbangan: "badan" },
+};
+export type SoalBerat = { b: string; gram: number };
+export const idBerat = (s: SoalBerat): string => `${s.b}${s.gram}`;
+
+/* ------------------------------ Concrete C ------------------------------ */
+
+/** CC1 Baca Timbangan Digital. */
+export const RONDE_BACA_CC: SoalBerat[][] = [
+  [{ b: "telur", gram: 250 }, { b: "stroberi", gram: 500 }],
+  [{ b: "buku", gram: 200 }, { b: "permen", gram: 50 }],
+  [{ b: "kunci", gram: 30 }, { b: "pensil", gram: 10 }],
+];
+/** CC2 Timbangan yang Siap: tiga timbangan duduk, tepat satu jarumnya di angka 0. */
+export const RONDE_SIAP_CC: number[][] = [[500, 0, 1500], [0, 2000, 1000], [3000, 500, 0]];
+/** CC3 Baca Timbangan Jarum (timbangan duduk, jarum pada kelipatan 500 g, paling banyak 4,5 kg). */
+export const RONDE_BACA_JARUM_CC: SoalBerat[][] = [
+  [{ b: "semangka", gram: 3000 }, { b: "nanas", gram: 2000 }],
+  [{ b: "kentang", gram: 1500 }, { b: "ayam", gram: 2500 }],
+  [{ b: "apel", gram: 1000 }, { b: "semangka", gram: 4000 }],
+];
+/** CC4 Pilih Timbangan. */
+export const RONDE_TIMBANGAN_CC: string[][] = [["stroberi", "siswa"], ["semangka", "telur"], ["kunci", "kentang"]];
+/** CC5 Jodohkan Benda dan Timbangan: tiga benda berbeda jenis timbangannya. */
+export const RONDE_JODOH_CC: string[][] = [["permen", "semangka", "siswa"], ["buku", "nanas", "siswa"], ["pensil", "kentang", "siswa"]];
+/** CC6 Memori Timbangan dan Berat (gram, kelipatan 50). */
+export const RONDE_MEMORI_CC: number[][] = [[250, 500, 100, 50], [200, 350, 450, 150], [300, 600, 700, 800]];
+/** CC7 Ketuk Timbangan dengan Berat. */
+export const RONDE_KETUK_CC: { item: SoalBerat[]; tanya: number[] }[] = [
+  { item: [{ b: "telur", gram: 250 }, { b: "stroberi", gram: 500 }, { b: "buku", gram: 200 }], tanya: [500, 200] },
+  { item: [{ b: "permen", gram: 50 }, { b: "kunci", gram: 30 }, { b: "pensil", gram: 10 }], tanya: [30, 50] },
+  { item: [{ b: "telur", gram: 150 }, { b: "buku", gram: 350 }, { b: "stroberi", gram: 450 }], tanya: [450, 150] },
+];
+/** CC8 Ketuk Semua yang Diukur dengan Gram atau Kilogram. */
+export const RONDE_SEMUA_CC: { satuan: "gram" | "kilogram"; item: string[] }[] = [
+  { satuan: "gram", item: ["telur", "apel", "pensil", "semangka"] },
+  { satuan: "kilogram", item: ["kentang", "buku", "siswa", "kunci"] },
+  { satuan: "gram", item: ["ayam", "permen", "nanas", "stroberi"] },
+];
+/** CC9 Papan Berat (gram, paling banyak 999). */
+export const RONDE_PAPAN_CC: SoalBerat[][] = [
+  [{ b: "telur", gram: 250 }, { b: "buku", gram: 120 }],
+  [{ b: "stroberi", gram: 480 }, { b: "kunci", gram: 90 }],
+  [{ b: "stroberi", gram: 750 }, { b: "pensil", gram: 60 }],
+];
+/** CC10 Urutkan Benda menurut Berat. */
+export const RONDE_URUT_CC: { item: SoalBerat[]; dari: "kecil" | "besar" }[] = [
+  { item: [{ b: "permen", gram: 50 }, { b: "buku", gram: 200 }, { b: "stroberi", gram: 500 }], dari: "kecil" },
+  { item: [{ b: "telur", gram: 250 }, { b: "kunci", gram: 30 }, { b: "buku", gram: 120 }], dari: "besar" },
+  { item: [{ b: "stroberi", gram: 400 }, { b: "pensil", gram: 10 }, { b: "telur", gram: 250 }], dari: "kecil" },
+];
+
+/* ------------------------------ Picture C ------------------------------ */
+
+/** PC1 Baca Jarum dalam Kilogram (jarum tepat di angka kilogram 1 sampai 4). */
+export const RONDE_JARUM_PC: number[][] = [[2, 4], [1, 3], [4, 2]];
+/** PC2 Baca Layar Timbangan (gram, paling banyak 999). */
+export const RONDE_LAYAR_PC: number[][] = [[250, 480], [120, 360], [750, 90]];
+/** PC3 Jodohkan Jarum dan Berat (kilogram). */
+export const RONDE_JODOH_PC: number[][] = [[1, 2, 4], [2, 3, 1], [3, 4, 2]];
+/** PC4 Memori Layar dan Berat (gram). */
+export const RONDE_MEMORI_PC: number[][] = [[250, 500, 100, 750], [200, 350, 450, 650], [300, 600, 150, 850]];
+/** PC5 Ketuk Semua Jarum yang Siap (di angka 0): empat jarum, gram. */
+export const RONDE_SIAP_PC: number[][] = [[0, 1000, 0, 2000], [500, 0, 3000, 0], [0, 4000, 1000, 0]];
+/** PC6 Pilah Berat: gram atau kilogram (hanya nama benda sebagai kata). */
+export const RONDE_PILAH_PC: string[][] = [
+  ["telur", "pensil", "semangka", "kentang", "buku", "nanas"],
+  ["permen", "ayam", "kunci", "siswa", "stroberi", "apel"],
+  ["buku", "apel", "telur", "nanas", "pensil", "siswa"],
+];
+/** PC7 Ketuk Semua Layar Lebih atau Kurang dari Acuan. */
+export const RONDE_SEMUA_PC: { acuan: number; arah: "lebih" | "kurang"; item: number[] }[] = [
+  { acuan: 250, arah: "lebih", item: [100, 300, 500, 200] },
+  { acuan: 400, arah: "kurang", item: [150, 600, 350, 450] },
+  { acuan: 500, arah: "lebih", item: [250, 750, 450, 600] },
+];
+/** PC8 Urutkan Langkah Menimbang. */
+export const RONDE_LANGKAH_PC: { judul: string; langkah: string[] }[] = [
+  { judul: "Menimbang gula dengan timbangan digital", langkah: ["Pastikan layar menunjukkan angka 0", "Letakkan gula di atas timbangan", "Baca angka yang muncul pada layar", "Tulis hasilnya dengan satuan gram"] },
+  { judul: "Menimbang buah dengan timbangan duduk", langkah: ["Pastikan jarum tepat di angka 0", "Letakkan buah di atas piringan", "Baca angka yang ditunjuk jarum", "Tulis hasilnya dengan satuan kg"] },
+  { judul: "Menimbang berat badan dengan timbangan badan", langkah: ["Pastikan angka awal adalah 0", "Berdiri tegak di atas timbangan", "Baca angka yang muncul atau ditunjuk", "Tulis hasilnya dengan satuan kg"] },
+];
+/** PC9 Papan dari Layar (gram, paling banyak 999). */
+export const RONDE_PAPAN_PC: number[][] = [[320, 140], [870, 450], [610, 230]];
+/** PC10 Selisih Dua Layar: [lebih ringan, lebih berat]. */
+export const RONDE_SELISIH_PC: [number, number][][] = [[[100, 500], [200, 700]], [[150, 450], [300, 800]], [[250, 650], [350, 950]]];
+
+/* ------------------------------ Abstract C ------------------------------ */
+
+const SATUAN_B = (tanya: string, benar: "gram (g)" | "kilogram (kg)", pesan: string): SoalTeks => ({
+  tanya,
+  benar,
+  salah: benar === "gram (g)" ? ["kilogram (kg)", "sentimeter (cm)"] : ["gram (g)", "meter (m)"],
+  pesan,
+});
+/** QC1 Pilih Satuan Berat. */
+export const RONDE_SATUAN_QC: SoalTeks[][] = [
+  [SATUAN_B("Satuan baku yang tepat untuk berat tepung adalah ...", "gram (g)", "Tepung ringan, jadi ditimbang dengan gram."), SATUAN_B("Satuan baku yang tepat untuk berat badan adalah ...", "kilogram (kg)", "Berat badan cukup berat, jadi memakai kilogram.")],
+  [SATUAN_B("Satuan baku yang tepat untuk berat pensil adalah ...", "gram (g)", "Pensil sangat ringan, jadi ditimbang dengan gram."), SATUAN_B("Satuan baku yang tepat untuk berat sekarung beras adalah ...", "kilogram (kg)", "Sekarung beras berat, jadi memakai kilogram.")],
+  [SATUAN_B("Satuan baku yang tepat untuk berat gula pasir adalah ...", "gram (g)", "Gula pasir ringan, jadi ditimbang dengan gram."), SATUAN_B("Satuan baku yang tepat untuk berat buah di keranjang adalah ...", "kilogram (kg)", "Buah di keranjang cukup berat, jadi memakai kilogram.")],
+];
+const TIMBANG = (tanya: string, benar: string, salah: [string, string], pesan: string): SoalTeks => ({ tanya, benar, salah, pesan });
+/** QC2 Timbangan yang Tepat. */
+export const RONDE_TIMBANGAN_QC: SoalTeks[][] = [
+  [TIMBANG("Alat ukur yang tepat untuk berat telur adalah ...", "Timbangan digital", ["Timbangan badan", "Penggaris"], "Telur ringan dan ditimbang dalam gram, jadi memakai timbangan digital."), TIMBANG("Alat ukur yang tepat untuk berat badan siswa adalah ...", "Timbangan badan", ["Timbangan digital", "Meteran"], "Berat badan ditimbang dengan timbangan badan.")],
+  [TIMBANG("Alat ukur yang tepat untuk berat tepung adalah ...", "Timbangan digital", ["Timbangan badan", "Meteran"], "Tepung ditimbang dalam gram dengan timbangan digital."), TIMBANG("Alat ukur yang tepat untuk berat semangka adalah ...", "Timbangan duduk", ["Penggaris", "Timbangan badan"], "Semangka cukup berat, jadi memakai timbangan duduk dalam kilogram.")],
+  [TIMBANG("Alat ukur yang tepat untuk berat pensil adalah ...", "Timbangan digital", ["Meteran", "Timbangan badan"], "Pensil sangat ringan, jadi memakai timbangan digital dalam gram."), TIMBANG("Alat ukur yang tepat untuk berat nanas adalah ...", "Timbangan duduk", ["Timbangan badan", "Penggaris"], "Nanas ditimbang dalam kilogram dengan timbangan duduk.")],
+];
+/** QC3 Lengkapi Kalimat Pengukuran Berat. */
+export const RONDE_KALIMAT_QC: KalimatIsian[][] = [
+  [
+    { depan: "Alat ukur untuk berat benda disebut", belakang: ".", opsi: ["timbangan", "penggaris", "meteran"], benar: 0 },
+    { depan: "Satuan baku berat adalah gram dan", belakang: ".", opsi: ["kilogram", "sentimeter", "meter"], benar: 0 },
+    { depan: "Sebelum menimbang, jarum harus tepat di angka", belakang: ".", opsi: ["0", "5", "10"], benar: 0 },
+  ],
+  [
+    { depan: "Benda yang ringan ditimbang dengan satuan", belakang: ".", opsi: ["gram", "kilogram", "meter"], benar: 0 },
+    { depan: "Benda yang lebih berat ditimbang dengan satuan", belakang: ".", opsi: ["kilogram", "gram", "sentimeter"], benar: 0 },
+    { depan: "Satuan kilogram ditulis dengan huruf", belakang: ".", opsi: ["kg", "cm", "m"], benar: 0 },
+  ],
+  [
+    { depan: "Berat badan diukur dengan timbangan", belakang: ".", opsi: ["badan", "digital kecil", "penggaris"], benar: 0 },
+    { depan: "Berat dibaca dari jarum atau dari", belakang: "timbangan.", opsi: ["layar", "kertas", "pita"], benar: 0 },
+    { depan: "Berat tepung lebih tepat ditulis dengan satuan", belakang: ".", opsi: ["gram", "kilogram", "liter"], benar: 0 },
+  ],
+];
+/** QC4 Jodohkan Benda dan Timbangan. */
+export const RONDE_JODOH_QC: { kiri: string; kanan: string }[][] = [
+  [{ kiri: "Berat telur", kanan: "Timbangan digital" }, { kiri: "Berat badan", kanan: "Timbangan badan" }, { kiri: "Berat semangka", kanan: "Timbangan duduk" }],
+  [{ kiri: "Berat tepung", kanan: "Timbangan digital" }, { kiri: "Berat badan adik", kanan: "Timbangan badan" }, { kiri: "Berat nanas", kanan: "Timbangan duduk" }],
+  [{ kiri: "Berat pensil", kanan: "Timbangan digital" }, { kiri: "Berat badan Eri", kanan: "Timbangan badan" }, { kiri: "Berat kentang", kanan: "Timbangan duduk" }],
+];
+/** QC5 Memori Benda dan Berat yang Wajar. */
+export const RONDE_MEMORI_QC: { a: string; b: string }[][] = [
+  [{ a: "Telur", b: "60 g" }, { a: "Semangka", b: "3 kg" }, { a: "Pensil", b: "10 g" }, { a: "Siswa kelas 3", b: "30 kg" }],
+  [{ a: "Buku tulis", b: "200 g" }, { a: "Kentang", b: "1 kg" }, { a: "Permen", b: "5 g" }, { a: "Karung beras", b: "25 kg" }],
+  [{ a: "Kunci", b: "20 g" }, { a: "Nanas", b: "2 kg" }, { a: "Sepatu", b: "500 g" }, { a: "Ayam", b: "2 kg 500 g" }],
+];
+/** QC6 Benar atau Salah. */
+export const RONDE_BENARSALAH_QC: Pernyataan[][] = [
+  [
+    { teks: "Timbangan digital adalah salah satu alat pengukur berat.", benar: true, penjelasan: "Timbangan digital dipakai untuk mengukur berat benda." },
+    { teks: "Satuan baku berat adalah gram dan kilogram.", benar: true, penjelasan: "Gram (g) dan kilogram (kg) adalah satuan baku berat." },
+    { teks: "Berat tepung lebih tepat ditulis dengan satuan kilogram.", benar: false, penjelasan: "Tepung ringan, jadi lebih tepat ditulis dengan gram." },
+    { teks: "Berat badan lebih tepat ditulis dengan satuan kilogram.", benar: true, penjelasan: "Berat badan cukup berat, jadi memakai kilogram." },
+    { teks: "Sebelum menimbang, jarum timbangan harus tepat di angka 0.", benar: true, penjelasan: "Menimbang harus dimulai dari angka 0 supaya hasilnya tepat." },
+  ],
+  [
+    { teks: "Kilogram dapat ditulis dengan kg.", benar: true, penjelasan: "Kilogram ditulis kg dan gram ditulis g." },
+    { teks: "Berat pensil lebih tepat ditulis dengan satuan kilogram.", benar: false, penjelasan: "Pensil sangat ringan, jadi lebih tepat ditulis dengan gram." },
+    { teks: "Berat sekarung beras lebih tepat ditulis dengan satuan kilogram.", benar: true, penjelasan: "Sekarung beras berat, jadi memakai kilogram." },
+    { teks: "Penggaris dipakai untuk mengukur berat benda.", benar: false, penjelasan: "Penggaris mengukur panjang. Untuk berat dipakai timbangan." },
+    { teks: "Jarum timbangan boleh mulai dari angka 3 sebelum menimbang.", benar: false, penjelasan: "Jarum harus tepat di angka 0 sebelum menimbang." },
+  ],
+];
+/** QC7 Detektif Berat. */
+export const RONDE_DETEKTIF_QC: SoalDetektif[] = [
+  { klue: ["Aku berat stroberi pada timbangan pertama, yaitu 100 gram.", "Aku kurang dari 500."], jawab: 100, opsi: [100, 500, 10], salah: "Timbangan pertama menunjukkan 100 gram." },
+  { klue: ["Aku berat tepung dalam gram: 1 kg 250 g.", "Satuanku 0."], jawab: 1250, opsi: [1250, 1025, 2150], salah: "1 kg 250 g = 1.000 g + 250 g = 1.250 g." },
+  { klue: ["Aku banyak gram pada 3 kg.", "Aku punya tiga angka nol."], jawab: 3000, opsi: [3000, 300, 30000], salah: "3 kg = 3 × 1.000 g = 3.000 g." },
+  { klue: ["Aku berat telur pada timbangan digital: 250 gram.", "Aku bilangan genap."], jawab: 250, opsi: [250, 25, 205], salah: "Timbangan menunjukkan 250 gram dan 250 genap." },
+];
+/** QC8 Peta Konsep Pengukuran Berat. */
+export const PETA_KONSEP_QC: { pusat: string; kotak: KotakPeta[] }[] = [
+  {
+    pusat: "Pengukuran berat",
+    kotak: [
+      { label: "Alat ukur berat adalah", opsi: ["timbangan", "penggaris", "meteran"], benar: 0 },
+      { label: "Satuan baku berat adalah gram dan", opsi: ["kilogram", "sentimeter", "liter"], benar: 0 },
+      { label: "Benda ringan seperti tepung ditimbang dengan satuan", opsi: ["gram", "kilogram", "meter"], benar: 0 },
+      { label: "Menurutku, berat badan ditulis dengan satuan", opsi: ["kg", "cm", "m"], benar: 0 },
+    ],
+  },
+  {
+    pusat: "Cara menimbang",
+    kotak: [
+      { label: "Sebelum menimbang, jarum harus di angka", opsi: ["0", "5", "10"], benar: 0 },
+      { label: "Benda diletakkan di atas", opsi: ["piringan timbangan", "penggaris", "meja saja"], benar: 0 },
+      { label: "Berat dibaca dari jarum atau", opsi: ["layar", "penggaris", "gelas"], benar: 0 },
+      { label: "Menurutku, hasil ditulis dengan", opsi: ["satuan baku", "gambar", "warna"], benar: 0 },
+    ],
+  },
+];
+/** QC9 Soal Cerita Berat (hasil dalam gram). */
+export const RONDE_CERITA_QC: CeritaMC[][] = [
+  [
+    { teks: "Meutia menimbang gula 1.000 gram dan tepung 1.250 gram. Berapa gram berat kedua bahan itu bersama?", a: 1000, b: 1250, jenis: "+" },
+    { teks: "Berat stroberi pada timbangan pertama 100 gram dan pada timbangan kedua 500 gram. Berapa gram berat stroberi tambahan?", a: 500, b: 100, jenis: "−" },
+  ],
+  [
+    { teks: "Telur seberat 250 gram dan mentega seberat 200 gram ditimbang bersama. Berapa gram berat keduanya?", a: 250, b: 200, jenis: "+" },
+    { teks: "Gula 1.000 gram dipakai 350 gram untuk membuat kue. Berapa gram sisa gula?", a: 1000, b: 350, jenis: "−" },
+  ],
+  [
+    { teks: "Dua kantong jeruk masing-masing 500 gram. Berapa gram berat kedua kantong jeruk?", a: 500, b: 500, jenis: "+" },
+    { teks: "Tepung 1.250 gram dipakai 750 gram. Berapa gram sisa tepung?", a: 1250, b: 750, jenis: "−" },
+  ],
+];
+/** Tiga pilihan hasil cerita dalam gram: kunci, lebih 100, dan kurang 100 (atau lebih 200 bila di bawah 200). */
+export function opsiCeritaG(c: CeritaMC, nomor: number): { opsi: string[]; jawab: number } {
+  const j = jawabCerita(c);
+  return susunOpsi(teksGram(j), [teksGram(j + 100), teksGram(j >= 200 ? j - 100 : j + 200)], nomor);
+}
+/** QC10 Susun Kata Pengukuran Berat. */
+export const RONDE_SUSUNKATA_QC: { kata: string[]; pengecoh: string }[] = [
+  { kata: ["Timbangan", "digital", "dipakai", "untuk", "mengukur", "berat", "benda"], pengecoh: "panjang" },
+  { kata: ["Satuan", "baku", "berat", "adalah", "gram", "dan", "kilogram"], pengecoh: "meter" },
+  { kata: ["Jarum", "timbangan", "harus", "tepat", "di", "angka", "nol"], pengecoh: "sepuluh" },
+  { kata: ["Gram", "dipakai", "untuk", "menimbang", "benda", "yang", "ringan"], pengecoh: "berat" },
+];
+
+/* ====================================================================== */
+/* SUB-BAB D. Hubungan antarsatuan baku berat                               */
+/* ====================================================================== */
+
+export type JenisBandul = "ss" | "s" | "d" | "sk" | "k";
+/** Bandul timbangan kodok: 1/2 ons, 1 ons, 2 ons, 1/2 kg, 1 kg. */
+export const BANDUL: Record<JenisBandul, number> = { ss: 50, s: 100, d: 200, sk: 500, k: 1000 };
+export const NAMA_BANDUL: Record<JenisBandul, string> = { ss: "1/2 ons", s: "1 ons", d: "2 ons", sk: "1/2 kg", k: "1 kg" };
+export const URUT_BANDUL: JenisBandul[] = ["k", "sk", "d", "s", "ss"];
+export type Susunan = Partial<Record<JenisBandul, number>>;
+export const gramSusunan = (s: Susunan): number => URUT_BANDUL.reduce((jumlah, j) => jumlah + (s[j] ?? 0) * BANDUL[j], 0);
+export const banyakBandul = (s: Susunan): number => URUT_BANDUL.reduce((jumlah, j) => jumlah + (s[j] ?? 0), 0);
+/** Susunan menjadi teks, mis. "1 kg + 2 × 1 ons". */
+export const teksSusunan = (s: Susunan): string =>
+  URUT_BANDUL.filter((j) => (s[j] ?? 0) > 0)
+    .map((j) => ((s[j] ?? 0) === 1 ? NAMA_BANDUL[j] : `${s[j]} × ${NAMA_BANDUL[j]}`))
+    .join(" + ");
+export const idSusunan = (s: Susunan): string => `g${gramSusunan(s)}`;
+
+/* ------------------------------ Concrete D ------------------------------ */
+
+/** CD1 Rakit Berat dengan Bandul (gram, kelipatan 50, paling banyak 2.500). */
+export const RONDE_RAKIT_CD: number[][] = [[300, 1250], [750, 1500], [1100, 2050]];
+/** CD2 Hitung Berat Bandul. */
+export const RONDE_HITUNG_CD: Susunan[][] = [
+  [{ k: 1, s: 2 }, { sk: 1, d: 1 }],
+  [{ k: 2, ss: 1 }, { sk: 2, s: 3 }],
+  [{ k: 1, sk: 1, s: 1 }, { d: 3, s: 1 }],
+];
+/** CD3 Ubah Kilogram ke Gram (banyak bandul 1 kg). */
+export const RONDE_KGKEG_CD: number[][] = [[2, 4], [3, 5], [6, 7]];
+/** CD4 Ubah Gram ke Kilogram (gram kelipatan 1.000). */
+export const RONDE_GKEKG_CD: number[][] = [[2000, 4000], [5000, 3000], [6000, 7000]];
+/** CD5 Jodohkan Bandul dan Berat. */
+export const RONDE_JODOH_CD: Susunan[][] = [
+  [{ k: 1, s: 2 }, { sk: 1, d: 1 }, { ss: 3 }],
+  [{ k: 1, sk: 1 }, { d: 2, s: 1 }, { s: 2, ss: 1 }],
+  [{ k: 2 }, { sk: 3 }, { d: 1, s: 1 }],
+];
+/** CD6 Memori Bandul dan Berat. */
+export const RONDE_MEMORI_CD: Susunan[][] = [
+  [{ k: 1 }, { sk: 1, s: 1 }, { d: 2 }, { s: 3, ss: 1 }],
+  [{ k: 1, s: 2 }, { sk: 2 }, { d: 1, ss: 1 }, { s: 1 }],
+  [{ k: 2, ss: 1 }, { sk: 1, d: 1 }, { d: 3 }, { k: 1, s: 1 }],
+];
+/** CD7 Ketuk Bandul dengan Berat. */
+export const RONDE_KETUK_CD: { item: Susunan[]; tanya: number[] }[] = [
+  { item: [{ k: 1, s: 2 }, { sk: 1, d: 1 }, { ss: 3 }], tanya: [700, 150] },
+  { item: [{ k: 1, sk: 1 }, { d: 2, s: 1 }, { s: 2, ss: 1 }], tanya: [1500, 250] },
+  { item: [{ k: 2 }, { sk: 3 }, { d: 1, s: 1 }], tanya: [300, 2000] },
+];
+/** CD8 Ketuk Semua yang Sama Berat. */
+export const RONDE_SEMUA_CD: { acuan: number; item: Susunan[] }[] = [
+  { acuan: 1000, item: [{ k: 1 }, { s: 10 }, { sk: 2 }, { s: 5 }] },
+  { acuan: 500, item: [{ sk: 1 }, { s: 5 }, { d: 2, s: 1 }, { k: 1 }] },
+  { acuan: 2000, item: [{ k: 2 }, { k: 1, sk: 2 }, { s: 10 }, { k: 1, s: 5 }] },
+];
+/** CD9 Ubah Ons ke Gram (banyak bandul 1 ons, paling banyak 9). */
+export const RONDE_ONS_CD: number[][] = [[3, 5], [7, 4], [9, 6]];
+/** CD10 Urutkan Bandul menurut Berat. */
+export const RONDE_URUT_CD: { item: Susunan[]; dari: "kecil" | "besar" }[] = [
+  { item: [{ ss: 3 }, { k: 1 }, { d: 1, s: 1 }], dari: "kecil" },
+  { item: [{ sk: 1, s: 1 }, { d: 1 }, { k: 1, ss: 1 }], dari: "besar" },
+  { item: [{ s: 2 }, { sk: 1 }, { d: 3 }], dari: "kecil" },
+];
+
+/* ------------------------------ Picture D ------------------------------ */
+
+/** PD1 Hitung Garis Berat (kelipatan 500 g, paling banyak 4 kg). */
+export const RONDE_GARIS_PD: number[][] = [[1500, 2500], [1000, 3500], [2000, 500]];
+/** PD2 Lengkapi Kalimat Ubah Berat: g = kg + g. */
+export const RONDE_KALIMAT_PD: number[] = [1250, 2300, 3750];
+export function kalimatKonversiBerat(g: number, nomor: number): KalimatIsian[] {
+  const k = Math.floor(g / 1000);
+  const s = g % 1000;
+  const pil = (v: number, i: number, langkah: number) => {
+    const a = v + langkah;
+    const b = v > langkah ? v - langkah : v + 2 * langkah;
+    const opsi = urutanTetap(3, 2, nomor + i).map((x) => [v, a, b][x]);
+    return { opsi: opsi.map(titik), benar: opsi.indexOf(v) };
+  };
+  return [
+    { depan: `${titik(g)} g = ${titik(k * 1000)} g +`, belakang: "g.", ...pil(s, 0, 50) },
+    { depan: `${k} kg =`, belakang: "g.", ...pil(k * 1000, 1, 1000) },
+    { depan: `${titik(g)} g =`, belakang: `kg ${s} g.`, ...pil(k, 2, 1) },
+  ];
+}
+/** PD3 Jodohkan Garis dan Berat. */
+export const RONDE_JODOH_PD: number[][] = [[500, 1500, 2500], [1000, 2000, 3500], [1500, 3000, 4000]];
+/** PD4 Memori Garis dan Berat. */
+export const RONDE_MEMORI_PD: number[][] = [[500, 1500, 2500, 3500], [1000, 2000, 3000, 4000], [1000, 2500, 3000, 3500]];
+/** PD5 Isi Tabel Ubah Berat. */
+export const RONDE_TABEL_PD: TabelUkur[] = [
+  tabelUkur([1250, 2500, 3100, 4700].map((v) => ({ label: teksKgG(v), jawab: teksGram(v) })), "1.520 g", 1),
+  tabelUkur([1500, 2750, 3400, 1100].map((v) => ({ label: teksGram(v), jawab: teksKgG(v) })), "1 kg 5 g", 2),
+  tabelUkur([{ label: "3 ons", jawab: "300 g" }, { label: "1 kg", jawab: "10 ons" }, { label: "700 g", jawab: "7 ons" }, { label: "5 ons", jawab: "500 g" }], "50 g", 3),
+];
+/** PD6 Ketuk Semua Berat yang Sama: tiap berat ditulis [kg, g]. */
+export type BeratKG = [number, number];
+export const gramKG = (u: BeratKG): number => u[0] * 1000 + u[1];
+export const labelKG = (u: BeratKG): string => (u[0] === 0 ? teksGram(u[1]) : u[1] === 0 ? `${u[0]} kg` : `${u[0]} kg ${titik(u[1])} g`);
+export const RONDE_SEMUA_PD: { acuan: number; item: BeratKG[] }[] = [
+  { acuan: 2000, item: [[2, 0], [1, 1000], [0, 2000], [2, 100]] },
+  { acuan: 1500, item: [[1, 500], [0, 1500], [1, 50], [1, 5]] },
+  { acuan: 3000, item: [[3, 0], [0, 3000], [2, 1000], [3, 100]] },
+];
+/** PD7 Pilah Berat: pas kilogram atau bersisa gram. */
+export const RONDE_PILAH_PD: number[][] = [[3000, 2500, 4000, 1750, 5000, 1300], [1000, 2050, 2000, 1500, 3000, 3100], [4000, 1080, 5000, 2400, 6000, 3650]];
+export const pasKg = (g: number): boolean => g % 1000 === 0;
+/** PD8 Urutkan Langkah Mengubah Berat. */
+export const RONDE_LANGKAH_PD: { judul: string; langkah: string[] }[] = [
+  { judul: "Mengubah 1.753 g menjadi kilogram dan gram", langkah: ["Tulis ukuran 1.753 g", "Ambil 1.000 g, itu 1 kg", "Sisanya 753 g", "Tulis hasilnya 1 kg 753 g"] },
+  { judul: "Mengubah 4 kg menjadi gram", langkah: ["Tulis ukuran 4 kg", "Ingat 1 kg sama dengan 1.000 g", "Kalikan 4 dengan 1.000", "Tulis hasilnya 4.000 g"] },
+  { judul: "Mengubah 3 ons menjadi gram", langkah: ["Tulis ukuran 3 ons", "Ingat 1 ons sama dengan 100 g", "Kalikan 3 dengan 100", "Tulis hasilnya 300 g"] },
+];
+/** PD9 Selisih Dua Garis Berat: [lebih berat, lebih ringan], kelipatan 500 g. */
+export const RONDE_SELISIH_PD: [number, number][][] = [[[3000, 1500], [2500, 1000]], [[3500, 2000], [4000, 1500]], [[2000, 500], [3000, 500]]];
+/** PD10 Sambung Dua Garis Berat: [pertama, kedua], gabungan paling banyak 4 kg. */
+export const RONDE_SAMBUNG_PD: [number, number][][] = [[[1000, 1500], [500, 2000]], [[1500, 1500], [1000, 2500]], [[2000, 1000], [2500, 500]]];
+
+/* ------------------------------ Abstract D ------------------------------ */
+
+/** QD1 Ubah Kilogram ke Gram. */
+export const RONDE_KG_QD: number[][] = [[4, 9], [2, 7], [3, 10]];
+export function opsiKgKeG(m: number, nomor: number): { opsi: string[]; jawab: number } {
+  return susunOpsi(teksGram(m * 1000), [teksGram(m * 100), teksGram(m * 10000)], nomor);
+}
+/** QD2 Ubah Gram ke Kilogram dan Gram. */
+export const RONDE_G_QD: number[][] = [[1200, 2300], [3450, 1075], [4500, 2005]];
+/** QD3 Ubah antara kilogram, ons, dan gram. */
+export const RONDE_ONS_QD: SoalTeks[][] = [
+  [
+    { tanya: "1 kg = ... ons", benar: "10 ons", salah: ["100 ons", "1.000 ons"], pesan: "1 kilogram sama dengan 10 ons." },
+    { tanya: "1 ons = ... g", benar: "100 g", salah: ["10 g", "1.000 g"], pesan: "1 ons sama dengan 100 gram." },
+  ],
+  [
+    { tanya: "3 ons = ... g", benar: "300 g", salah: ["30 g", "3.000 g"], pesan: "3 ons = 3 × 100 g = 300 g." },
+    { tanya: "5 kg = ... ons", benar: "50 ons", salah: ["500 ons", "5 ons"], pesan: "5 kg = 5 × 10 ons = 50 ons." },
+  ],
+  [
+    { tanya: "700 g = ... ons", benar: "7 ons", salah: ["70 ons", "700 ons"], pesan: "700 g : 100 = 7 ons." },
+    { tanya: "20 ons = ... kg", benar: "2 kg", salah: ["20 kg", "200 kg"], pesan: "20 ons : 10 = 2 kg." },
+  ],
+];
+/** QD4 Jodohkan Berat. */
+export const RONDE_JODOH_QD: { kiri: string; kanan: string }[][] = [
+  [{ kiri: "3 kg", kanan: "3.000 g" }, { kiri: "1.200 g", kanan: "1 kg 200 g" }, { kiri: "5 ons", kanan: "500 g" }],
+  [{ kiri: "2 kg", kanan: "2.000 g" }, { kiri: "4 kg 150 g", kanan: "4.150 g" }, { kiri: "10 ons", kanan: "1 kg" }],
+  [{ kiri: "20 kg", kanan: "20.000 g" }, { kiri: "2.500 g", kanan: "2 kg 500 g" }, { kiri: "3 ons", kanan: "300 g" }],
+];
+/** QD5 Memori Berat. */
+export const RONDE_MEMORI_QD: { a: string; b: string }[][] = [
+  [{ a: "1 kg", b: "1.000 g" }, { a: "2 kg 500 g", b: "2.500 g" }, { a: "3.000 g", b: "3 kg" }, { a: "1 ons", b: "100 g" }],
+  [{ a: "5 kg", b: "5.000 g" }, { a: "1.750 g", b: "1 kg 750 g" }, { a: "4 ons", b: "400 g" }, { a: "10 ons", b: "1 kg" }],
+  [{ a: "6 kg", b: "6.000 g" }, { a: "3 kg 250 g", b: "3.250 g" }, { a: "8.000 g", b: "8 kg" }, { a: "7 ons", b: "700 g" }],
+];
+/** QD6 Benar atau Salah. */
+export const RONDE_BENARSALAH_QD: Pernyataan[][] = [
+  [
+    { teks: "1 kg = 1.000 g.", benar: true, penjelasan: "Satu kilogram sama dengan seribu gram." },
+    { teks: "1 kg = 100 g.", benar: false, penjelasan: "1 kilogram sama dengan 1.000 g, bukan 100 g." },
+    { teks: "1 ons = 100 g.", benar: true, penjelasan: "Satu ons sama dengan seratus gram." },
+    { teks: "3 kg = 300 g.", benar: false, penjelasan: "3 kg = 3 × 1.000 g = 3.000 g." },
+    { teks: "1.753 g = 1 kg 753 g.", benar: true, penjelasan: "1.753 g = 1.000 g + 753 g = 1 kg 753 g." },
+  ],
+  [
+    { teks: "2.000 g = 2 kg.", benar: true, penjelasan: "2.000 g dibagi 1.000 sama dengan 2 kg." },
+    { teks: "1 kg = 100 ons.", benar: false, penjelasan: "1 kilogram sama dengan 10 ons, bukan 100 ons." },
+    { teks: "4 kg 150 g = 4.150 g.", benar: true, penjelasan: "4 kg = 4.000 g, ditambah 150 g menjadi 4.150 g." },
+    { teks: "1.200 g = 12 kg.", benar: false, penjelasan: "1.200 g = 1 kg 200 g, bukan 12 kg." },
+    { teks: "Mangga 8.000 g sama dengan 80 kg.", benar: false, penjelasan: "8.000 g dibagi 1.000 sama dengan 8 kg." },
+  ],
+];
+/** QD7 Detektif Satuan Berat. */
+export const RONDE_DETEKTIF_QD: SoalDetektif[] = [
+  { klue: ["Aku banyak gram pada 4 kg.", "Aku punya tiga angka nol."], jawab: 4000, opsi: [4000, 400, 40000], salah: "4 kg = 4 × 1.000 g = 4.000 g." },
+  { klue: ["Aku banyak gram pada 1 kg 753 g.", "Satuanku 3."], jawab: 1753, opsi: [1753, 1357, 1537], salah: "1 kg 753 g = 1.000 g + 753 g = 1.753 g." },
+  { klue: ["Aku banyak ons pada 1 kg.", "Aku bilangan genap kurang dari 20."], jawab: 10, opsi: [10, 100, 11], salah: "1 kg = 10 ons, dan 10 genap kurang dari 20." },
+  { klue: ["Aku banyak kilogram pada 5.000 g.", "Aku kurang dari 10."], jawab: 5, opsi: [5, 50, 500], salah: "5.000 g dibagi 1.000 sama dengan 5 kg." },
+];
+/** QD8 Peta Konsep Satuan Berat. */
+export const PETA_KONSEP_QD: { pusat: string; kotak: KotakPeta[] }[] = [
+  {
+    pusat: "Kilogram dan gram",
+    kotak: [
+      { label: "1 kilogram sama dengan", opsi: ["1.000 g", "100 g", "10 g"], benar: 0 },
+      { label: "Untuk mengubah kg ke g, kita", opsi: ["mengalikan dengan 1.000", "membagi dengan 1.000", "menambah 1.000"], benar: 0 },
+      { label: "Untuk mengubah g ke kg, kita", opsi: ["membagi dengan 1.000", "mengalikan dengan 1.000", "mengurangi 1.000"], benar: 0 },
+      { label: "Menurutku, 5 kg sama dengan", opsi: ["5.000 g", "500 g", "50 g"], benar: 0 },
+    ],
+  },
+  {
+    pusat: "Ons dan gram",
+    kotak: [
+      { label: "1 ons sama dengan", opsi: ["100 g", "10 g", "1.000 g"], benar: 0 },
+      { label: "1 kilogram sama dengan", opsi: ["10 ons", "100 ons", "1 ons"], benar: 0 },
+      { label: "1.753 g sama dengan", opsi: ["1 kg 753 g", "17 kg 53 g", "175 kg 3 g"], benar: 0 },
+      { label: "Menurutku, 3 ons sama dengan", opsi: ["300 g", "30 g", "3.000 g"], benar: 0 },
+    ],
+  },
+];
+/** QD9 Soal Cerita: hasil dalam kilogram dan gram. Jenis "+" dijumlahkan, "−" dikurangkan, "u" diubah menjadi kg dan g. */
+export const RONDE_CERITA_QD: CeritaMC[][] = [
+  [
+    { teks: "Meutia memanen mangga 8.000 gram. Ia menjual 4 kg. Berapa sisa mangga yang belum terjual?", a: 8000, b: 4000, jenis: "−" },
+    { teks: "Dua kantong jeruk masing-masing 500 gram. Berapa berat kedua kantong jeruk bersama?", a: 500, b: 500, jenis: "+" },
+  ],
+  [
+    { teks: "Karung pertama berisi beras 30 kg 250 g dan karung kedua 12 kg 500 g. Berapa berat beras seluruhnya?", a: 30250, b: 12500, jenis: "+" },
+    { teks: "Pak Ahmad punya beras 20 kg. Ia menjual 7 kg 500 g. Berapa sisa beras?", a: 20000, b: 7500, jenis: "−" },
+  ],
+  [
+    { teks: "Tepung yang ditimbang Meutia 1.753 gram. Berapa berat tepung itu dalam kilogram dan gram?", a: 1753, b: 0, jenis: "u" },
+    { teks: "Berat semangka 2 kg 500 g dan berat nanas 1 kg 800 g. Berapa berat keduanya bersama?", a: 2500, b: 1800, jenis: "+" },
+  ],
+];
+/** Tiga pilihan hasil cerita dalam kilogram dan gram. */
+export function opsiCeritaKg(c: CeritaMC, nomor: number): { opsi: string[]; jawab: number } {
+  return opsiKgG(jawabCerita(c), nomor);
+}
+/** QD10 Susun Kata Satuan Berat. */
+export const RONDE_SUSUNKATA_QD: { kata: string[]; pengecoh: string }[] = [
+  { kata: ["Satu", "kilogram", "sama", "dengan", "seribu", "gram"], pengecoh: "sepuluh" },
+  { kata: ["Satu", "ons", "sama", "dengan", "seratus", "gram"], pengecoh: "seribu" },
+  { kata: ["Untuk", "mengubah", "kilogram", "ke", "gram", "kalikan", "seribu"], pengecoh: "bagi" },
+  { kata: ["Timbangan", "kodok", "memakai", "bandul", "sebagai", "ukuran", "berat"], pengecoh: "panjang" },
+];

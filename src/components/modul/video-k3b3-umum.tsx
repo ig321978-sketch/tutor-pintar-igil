@@ -88,3 +88,57 @@ export function BatangTeks({ x, y, w, teks, warna = "#FECACA" }: { x: number; y:
     </g>
   );
 }
+
+/* ---------------------------- Bagian berat (Sub-Bab C dan D) ---------------------------- */
+
+/** Timbangan digital di adegan: piring, badan, dan layar berisi `teks`. (x, y) kiri atas, lebar 120. */
+export function TimbanganAdegan({ x, y, teks }: { x: number; y: number; teks: string }) {
+  return (
+    <g>
+      <rect x={x + 10} y={y} width="100" height="10" rx="4" fill="#E5E7EB" stroke={BIRU} strokeWidth="2.4" />
+      <path d={`M${x} ${y + 16} H${x + 120} L${x + 112} ${y + 54} H${x + 8} Z`} fill="#6B7280" stroke={BIRU} strokeWidth="2.4" strokeLinejoin="round" />
+      <rect x={x + 22} y={y + 25} width="76" height="21" rx="4" fill="#D9F99D" stroke="#14532D" strokeWidth="1.8" />
+      <text x={x + 60} y={y + 41} textAnchor="middle" fontSize="15" fontWeight="900" fill="#14532D">
+        {teks}
+      </text>
+    </g>
+  );
+}
+
+/** Jarum timbangan duduk di adegan: lingkaran berpusat (x, y), jarum menunjuk `gram` (satu putaran = 5 kg). */
+export function JarumAdegan({ x, y, gram, r = 40 }: { x: number; y: number; gram: number; r?: number }) {
+  const sudut = (gram / 5000) * 2 * Math.PI;
+  return (
+    <g>
+      <circle cx={x} cy={y} r={r} fill="#EFF6FF" stroke={BIRU} strokeWidth="3" />
+      {Array.from({ length: 25 }, (_, i) => {
+        const a = (i / 25) * 2 * Math.PI;
+        const besar = i % 5 === 0;
+        return <line key={i} x1={x + (r - 3) * Math.sin(a)} y1={y - (r - 3) * Math.cos(a)} x2={x + (r - (besar ? 11 : 7)) * Math.sin(a)} y2={y - (r - (besar ? 11 : 7)) * Math.cos(a)} stroke={BIRU} strokeWidth={besar ? 2.4 : 1.2} />;
+      })}
+      {[0, 1, 2, 3, 4].map((k) => (
+        <text key={k} x={x + (r - 19) * Math.sin((k * 2 * Math.PI) / 5)} y={y - (r - 19) * Math.cos((k * 2 * Math.PI) / 5) + 4} textAnchor="middle" fontSize="11" fontWeight="900" fill={BIRU}>
+          {k}
+        </text>
+      ))}
+      <line x1={x} y1={y} x2={x + (r - 14) * Math.sin(sudut)} y2={y - (r - 14) * Math.cos(sudut)} stroke="#DC2626" strokeWidth="3.4" strokeLinecap="round" />
+      <circle cx={x} cy={y} r="4.5" fill={BIRU} />
+    </g>
+  );
+}
+
+/** Satu bandul timbangan kodok di adegan: logam kuning dengan dua baris tulisan. (x, y) kiri atas, lebar `w`. */
+export function BandulAdegan({ x, y, a, b, w = 30 }: { x: number; y: number; a: string; b: string; w?: number }) {
+  return (
+    <g transform={`translate(${x} ${y}) scale(${w / 48})`}>
+      <circle cx="24" cy="7" r="5" fill="#FDE68A" stroke={BIRU} strokeWidth="2.2" />
+      <path d="M12 12 H36 L44 56 H4 Z" fill="#FBBF24" stroke={BIRU} strokeWidth="2.6" strokeLinejoin="round" />
+      <text x="24" y="33" textAnchor="middle" fontSize="15" fontWeight="900" fill={BIRU}>
+        {a}
+      </text>
+      <text x="24" y="49" textAnchor="middle" fontSize="13" fontWeight="900" fill={BIRU}>
+        {b}
+      </text>
+    </g>
+  );
+}

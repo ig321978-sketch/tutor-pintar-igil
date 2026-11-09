@@ -3,6 +3,7 @@
 import React from "react";
 import { KotakPoster } from "./kit-k2b2";
 import { MeteranSvg, PenggarisBatang, PenggarisDuaBatang, PenggarisSvg } from "./diagram-k3b3";
+import { GarisBeratSvg, JarumTimbangan, LayarTimbangan } from "./diagram-k3b3cd";
 
 /* ------------------------------------------------------------------------ */
 /* Isi visual panel Infografis Bab 3 (Pengukuran Panjang dan Berat). Gambar saja:  */
@@ -180,6 +181,143 @@ export function visualInfografisK3B3B(): React.ReactNode[] {
     /* 10 Cara Mengubah */
     <KotakPoster key="10" warna="#FFFBEB">
       <Langkah daftar={["1. Ingat 1 m = 100 cm", "2. m ke cm: kali 100", "3. cm ke m: bagi 100", "4. Periksa kebalikannya"]} warna={["#BAE6FD", "#FECACA", "#BFDBFE", "#FDE68A"]} />
+    </KotakPoster>,
+  ];
+}
+
+/* ====================================================================== */
+/* Sub-Bab C                                                                */
+/* ====================================================================== */
+
+export function visualInfografisK3B3C(): React.ReactNode[] {
+  return [
+    /* 1 Berat Benda */
+    <KotakPoster key="1" warna="#FEF9C3">
+      <div className="space-y-1 text-center">
+        <Chip warna="#BBF7D0">ringan</Chip> <Chip warna="#FECACA">berat</Chip>
+        <Cap>berat menunjukkan seberapa berat benda</Cap>
+      </div>
+    </KotakPoster>,
+    /* 2 Timbangan */
+    <KotakPoster key="2" warna="#E0E7FF">
+      <div className="space-y-1 text-center">
+        <Chip warna="#BAE6FD">digital</Chip> <Chip warna="#BBF7D0">duduk</Chip> <Chip warna="#FDE68A">kodok</Chip>
+        <Cap>timbangan adalah alat ukur berat</Cap>
+      </div>
+    </KotakPoster>,
+    /* 3 Satuan Baku Berat */
+    <KotakPoster key="3" warna="#DCFCE7">
+      <div className="space-y-1 text-center">
+        <Chip warna="#BAE6FD">g</Chip> <Chip warna="#BBF7D0">kg</Chip>
+        <Cap>gram dan kilogram sama untuk semua orang</Cap>
+      </div>
+    </KotakPoster>,
+    /* 4 Gram */
+    <KotakPoster key="4" warna="#FFF7ED">
+      <Baris daftar={[["tepung → gram", "#1C01A5"], ["pensil → gram", "#1C01A5"], ["buku → gram", "#1C01A5"]]} />
+    </KotakPoster>,
+    /* 5 Kilogram */
+    <KotakPoster key="5" warna="#FEE2E2">
+      <Baris daftar={[["berat badan → kg", "#B45309"], ["karung beras → kg", "#B45309"], ["buah → kg", "#B45309"]]} />
+    </KotakPoster>,
+    /* 6 Timbangan Digital */
+    <KotakPoster key="6" warna="#DBEAFE">
+      <Kecil>
+        <LayarTimbangan gram={250} ringkas />
+      </Kecil>
+      <Cap>layar menunjukkan 250 gram</Cap>
+    </KotakPoster>,
+    /* 7 Timbangan Duduk */
+    <KotakPoster key="7" warna="#F5F3FF">
+      <Kecil>
+        <JarumTimbangan gram={3000} ringkas />
+      </Kecil>
+      <Cap>jarum menunjuk 3 kg</Cap>
+    </KotakPoster>,
+    /* 8 Mulai dari Nol */
+    <KotakPoster key="8" warna="#ECFCCB">
+      <Kecil>
+        <JarumTimbangan gram={0} ringkas />
+      </Kecil>
+      <Cap>sebelum menimbang, jarum di angka 0</Cap>
+    </KotakPoster>,
+    /* 9 Memilih Timbangan */
+    <KotakPoster key="9" warna="#FCE7F3">
+      <Baris daftar={[["telur → digital", "#1C01A5"], ["semangka → duduk", "#1C01A5"], ["berat badan → badan", "#1C01A5"]]} />
+    </KotakPoster>,
+    /* 10 Cara Menimbang */
+    <KotakPoster key="10" warna="#FFFBEB">
+      <Langkah daftar={["1. Angka awal nol", "2. Letakkan benda", "3. Baca angkanya", "4. Tulis dengan satuan"]} warna={["#BAE6FD", "#FECACA", "#BFDBFE", "#FDE68A"]} />
+    </KotakPoster>,
+  ];
+}
+
+/* ====================================================================== */
+/* Sub-Bab D                                                                */
+/* ====================================================================== */
+
+export function visualInfografisK3B3D(): React.ReactNode[] {
+  return [
+    /* 1 Timbangan Kodok */
+    <KotakPoster key="1" warna="#FEF3C7">
+      <div className="space-y-1 text-center">
+        <Chip>bandul</Chip>
+        <Cap>timbangan kodok memakai bandul</Cap>
+      </div>
+    </KotakPoster>,
+    /* 2 Jenis Bandul */
+    <KotakPoster key="2" warna="#FEF9C3">
+      <Baris daftar={[["1/2 ons • 1 ons • 2 ons", "#1C01A5"], ["1/2 kg • 1 kg", "#B45309"]]} />
+    </KotakPoster>,
+    /* 3 1 kg = 1.000 g */
+    <KotakPoster key="3" warna="#DBEAFE">
+      <div className="space-y-1 text-center">
+        <Chip>1 kg = 1.000 g</Chip>
+        <Chip warna="#BAE6FD">2 kg = 2.000 g</Chip>
+      </div>
+    </KotakPoster>,
+    /* 4 1 kg = 10 ons */
+    <KotakPoster key="4" warna="#DCFCE7">
+      <div className="space-y-1 text-center">
+        <Chip>1 kg = 10 ons</Chip>
+        <Cap>1/2 kg = 5 ons</Cap>
+      </div>
+    </KotakPoster>,
+    /* 5 1 ons = 100 g */
+    <KotakPoster key="5" warna="#FEE2E2">
+      <div className="space-y-1 text-center">
+        <Chip>1 ons = 100 g</Chip>
+        <Cap>3 ons = 300 g</Cap>
+      </div>
+    </KotakPoster>,
+    /* 6 Kilogram ke Gram */
+    <KotakPoster key="6" warna="#FFF7ED">
+      <div className="space-y-1 text-center">
+        <Chip warna="#FECACA">× 1.000</Chip>
+        <Cap>3 kg = 3 × 1.000 g = 3.000 g</Cap>
+      </div>
+    </KotakPoster>,
+    /* 7 Gram ke Kilogram */
+    <KotakPoster key="7" warna="#F5F3FF">
+      <div className="space-y-1 text-center">
+        <Chip warna="#BFDBFE">tiap 1.000 g = 1 kg</Chip>
+        <Cap>3.000 g = 3 kg</Cap>
+      </div>
+    </KotakPoster>,
+    /* 8 1.753 gram */
+    <KotakPoster key="8" warna="#ECFCCB">
+      <Baris daftar={[["1.753 g", "#1C01A5"], ["1.000 g + 753 g", "#DC2626"], ["= 1 kg 753 g", "#16A34A"]]} />
+    </KotakPoster>,
+    /* 9 Garis Berat */
+    <KotakPoster key="9" warna="#FCE7F3">
+      <Kecil>
+        <GarisBeratSvg gram={2000} kg={3} ringkas />
+      </Kecil>
+      <Cap>batang sampai 2 kg = 2.000 g</Cap>
+    </KotakPoster>,
+    /* 10 Cara Mengubah */
+    <KotakPoster key="10" warna="#FFFBEB">
+      <Langkah daftar={["1. Ingat 1 kg = 1.000 g", "2. kg ke g: kali 1.000", "3. g ke kg: ambil tiap 1.000", "4. Periksa kebalikannya"]} warna={["#BAE6FD", "#FECACA", "#BFDBFE", "#FDE68A"]} />
     </KotakPoster>,
   ];
 }

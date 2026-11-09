@@ -1,4 +1,4 @@
-// Uji data murni Matematika Kelas 3 Bab 3 (Pengukuran Panjang dan Berat), Sub-Bab A dan B. Jalankan: node --no-warnings scripts/uji-data-k3b3.mjs
+// Uji data murni Matematika Kelas 3 Bab 3 (Pengukuran Panjang dan Berat), Sub-Bab A sampai D. Jalankan: node --no-warnings scripts/uji-data-k3b3.mjs
 // Memeriksa: pembantu umum, tiap ronde permainan (kunci dihitung dari bilangan, pilihan berbeda, jangkauan penggaris dan meteran),
 // kebenaran semua kalimat dan pernyataan, dan struktur naskah (3 video x 3 adegan x 4 ketukan, 8 peta pikiran, 10 panel infografis,
 // 30 permainan per sub-bab).
@@ -281,12 +281,239 @@ cek("RONDE_CERITA_QB: contoh buku (11 m 80 cm, 37 m 35 cm, 50 m)", D.teksMeterCm
 cek("RONDE_CERITA_QB: ada jumlah, kurang, dan ubah", ["+", "−", "u"].every((j) => D.RONDE_CERITA_QB.flat().some((c) => c.jenis === j)));
 cek("RONDE_SUSUNKATA_QB: empat kalimat, kata unik, pengecoh bukan bagian kalimat", D.RONDE_SUSUNKATA_QB.length === 4 && D.RONDE_SUSUNKATA_QB.every((s) => s.kata.length >= 6 && unik(s.kata.map((k) => k.toLowerCase())) && !s.kata.map((k) => k.toLowerCase()).includes(s.pengecoh)));
 
+/* ====================================================================== */
+/* Sub-Bab C dan D (berat)                                                  */
+/* ====================================================================== */
+
+/* ---- Pembantu berat ---- */
+cek("teksGram dan teksKgG", D.teksGram(1250) === "1.250 g" && D.teksGram(50) === "50 g" && D.teksKgG(2500) === "2 kg 500 g" && D.teksKgG(2000) === "2 kg" && D.teksKgG(500) === "500 g" && D.teksKgG(1753) === "1 kg 753 g" && D.teksKgG(20000) === "20 kg");
+for (const g of [10, 50, 250, 500, 1000, 1250, 1753, 2500, 4150, 8000, 20000, 42750]) cek(`gramDariTeks(teksKgG(${g}))`, D.gramDariTeks(D.teksKgG(g)) === g);
+cek("gramDariTeks dengan ons dan titik", D.gramDariTeks("3 ons") === 300 && D.gramDariTeks("1.753 g") === 1753 && D.gramDariTeks("4 kg 150 g") === 4150 && D.gramDariTeks("10 ons") === 1000 && D.gramDariTeks("1 kg") === 1000);
+for (const n of [10, 30, 50, 100, 250, 500, 750, 990]) for (let k = 0; k < 3; k += 1) cek(`opsiGram(${n}, ${k}) tiga berbeda memuat ${n}, tidak negatif`, new Set(D.opsiGram(n, k)).size === 3 && D.opsiGram(n, k).includes(n) && D.opsiGram(n, k).every((v) => v > 0));
+for (const n of [500, 1000, 1500, 2500, 3500, 4000]) for (let k = 0; k < 3; k += 1) cek(`opsiBerat500(${n}, ${k}) tiga berbeda memuat ${n}`, new Set(D.opsiBerat500(n, k)).size === 3 && D.opsiBerat500(n, k).includes(n) && D.opsiBerat500(n, k).every((v) => v > 0));
+for (const g of [1200, 1500, 2750, 4150, 7500, 42750, 12500]) {
+  const o = D.opsiKgG(g, 1);
+  cek(`opsiKgG(${g}): tiga berbeda, kunci ${D.teksKgG(g)}`, new Set(o.opsi).size === 3 && o.opsi[o.jawab] === D.teksKgG(g) && o.opsi.filter((x) => D.gramDariTeks(x) === g).length === 1);
+}
+
+/* ---- Benda berat ---- */
+for (const [id, b] of Object.entries(D.BENDA_BERAT)) cek(`BENDA_BERAT ${id}: lengkap`, b.id === id && !!b.emoji && !!b.nama && (b.satuan === "gram" || b.satuan === "kilogram") && ["digital", "duduk", "badan"].includes(b.timbangan));
+cek("BENDA_BERAT: gram selalu timbangan digital, kilogram selalu duduk atau badan", Object.values(D.BENDA_BERAT).every((b) => (b.satuan === "gram" ? b.timbangan === "digital" : b.timbangan !== "digital")));
+cek("BENDA_BERAT: nama dan emoji unik", unik(Object.values(D.BENDA_BERAT).map((b) => b.nama)) && unik(Object.values(D.BENDA_BERAT).map((b) => b.emoji)));
+const adaB = (s) => !!D.BENDA_BERAT[s.b];
+
+/* ---- Concrete C ---- */
+tiga("RONDE_BACA_CC", D.RONDE_BACA_CC);
+D.RONDE_BACA_CC.forEach((ro, r) => cek(`RONDE_BACA_CC ronde ${r + 1}: dua benda ringan pada timbangan digital, berat 10 sampai 999`, ro.length === 2 && ro.every((s) => adaB(s) && D.BENDA_BERAT[s.b].satuan === "gram" && s.gram >= 10 && s.gram <= 999) && unik(ro.map((s) => s.gram))));
+tiga("RONDE_SIAP_CC", D.RONDE_SIAP_CC);
+D.RONDE_SIAP_CC.forEach((ro, r) => cek(`RONDE_SIAP_CC ronde ${r + 1}: tiga jarum, tepat satu di angka 0, kelipatan 500, bukan 5.000`, ro.length === 3 && ro.filter((g) => g === 0).length === 1 && ro.every((g) => g % 500 === 0 && g < 5000)));
+tiga("RONDE_BACA_JARUM_CC", D.RONDE_BACA_JARUM_CC);
+D.RONDE_BACA_JARUM_CC.forEach((ro, r) => cek(`RONDE_BACA_JARUM_CC ronde ${r + 1}: dua buah pada timbangan duduk, kelipatan 500, 500 sampai 4.500`, ro.length === 2 && ro.every((s) => adaB(s) && D.BENDA_BERAT[s.b].timbangan === "duduk" && s.gram % 500 === 0 && s.gram >= 500 && s.gram <= 4500)));
+tiga("RONDE_TIMBANGAN_CC", D.RONDE_TIMBANGAN_CC);
+D.RONDE_TIMBANGAN_CC.forEach((ro, r) => cek(`RONDE_TIMBANGAN_CC ronde ${r + 1}: dua benda dikenal`, ro.length === 2 && ro.every((id) => !!D.BENDA_BERAT[id])));
+cek("RONDE_TIMBANGAN_CC: ketiga jenis timbangan muncul", ["digital", "duduk", "badan"].every((j) => D.RONDE_TIMBANGAN_CC.flat().some((id) => D.BENDA_BERAT[id].timbangan === j)));
+tiga("RONDE_JODOH_CC", D.RONDE_JODOH_CC);
+D.RONDE_JODOH_CC.forEach((ro, r) => cek(`RONDE_JODOH_CC ronde ${r + 1}: tiga benda dengan jenis timbangan berbeda`, ro.length === 3 && ro.every((id) => !!D.BENDA_BERAT[id]) && unik(ro.map((id) => D.BENDA_BERAT[id].timbangan))));
+tiga("RONDE_MEMORI_CC", D.RONDE_MEMORI_CC);
+D.RONDE_MEMORI_CC.forEach((ro, r) => cek(`RONDE_MEMORI_CC ronde ${r + 1}: empat berat berbeda, kelipatan 50, 50 sampai 999`, ro.length === 4 && unik(ro) && ro.every((g) => g % 50 === 0 && g >= 50 && g <= 999)));
+tiga("RONDE_KETUK_CC", D.RONDE_KETUK_CC);
+D.RONDE_KETUK_CC.forEach((ro, r) => cek(`RONDE_KETUK_CC ronde ${r + 1}: tiga timbangan berbeda beratnya dan bendanya, dua pertanyaan ada jawabannya`, ro.item.length === 3 && ro.item.every((s) => adaB(s) && D.BENDA_BERAT[s.b].satuan === "gram") && unik(ro.item.map((s) => s.gram)) && unik(ro.item.map((s) => s.b)) && ro.tanya.length === 2 && ro.tanya.every((t) => ro.item.filter((s) => s.gram === t).length === 1)));
+tiga("RONDE_SEMUA_CC", D.RONDE_SEMUA_CC);
+D.RONDE_SEMUA_CC.forEach((ro, r) => {
+  const benar = ro.item.filter((id) => D.BENDA_BERAT[id].satuan === ro.satuan).length;
+  cek(`RONDE_SEMUA_CC ronde ${r + 1}: empat benda berbeda, ada yang cocok dan tidak`, ro.item.length === 4 && unik(ro.item) && ro.item.every((id) => !!D.BENDA_BERAT[id]) && benar >= 1 && benar <= 3, `${benar}`);
+});
+cek("RONDE_SEMUA_CC: ada gram dan kilogram", D.RONDE_SEMUA_CC.some((x) => x.satuan === "gram") && D.RONDE_SEMUA_CC.some((x) => x.satuan === "kilogram"));
+tiga("RONDE_PAPAN_CC", D.RONDE_PAPAN_CC);
+D.RONDE_PAPAN_CC.forEach((ro, r) => cek(`RONDE_PAPAN_CC ronde ${r + 1}: dua benda ringan, berat 10 sampai 999`, ro.length === 2 && ro.every((s) => adaB(s) && D.BENDA_BERAT[s.b].satuan === "gram" && s.gram >= 10 && s.gram <= 999)));
+tiga("RONDE_URUT_CC", D.RONDE_URUT_CC);
+D.RONDE_URUT_CC.forEach((ro, r) => cek(`RONDE_URUT_CC ronde ${r + 1}: tiga benda ringan berbeda beratnya dan id unik`, ro.item.length === 3 && ro.item.every((s) => adaB(s) && D.BENDA_BERAT[s.b].satuan === "gram") && unik(ro.item.map((s) => s.gram)) && unik(ro.item.map(D.idBerat)) && (ro.dari === "kecil" || ro.dari === "besar")));
+cek("RONDE_URUT_CC: ada dari kecil dan dari besar", D.RONDE_URUT_CC.some((x) => x.dari === "kecil") && D.RONDE_URUT_CC.some((x) => x.dari === "besar"));
+
+/* ---- Picture C ---- */
+tiga("RONDE_JARUM_PC", D.RONDE_JARUM_PC);
+D.RONDE_JARUM_PC.forEach((ro, r) => cek(`RONDE_JARUM_PC ronde ${r + 1}: dua jarum di angka 1 sampai 4 kg`, ro.length === 2 && ro.every((kg) => kg >= 1 && kg <= 4) && unik(ro)));
+tiga("RONDE_LAYAR_PC", D.RONDE_LAYAR_PC);
+D.RONDE_LAYAR_PC.forEach((ro, r) => cek(`RONDE_LAYAR_PC ronde ${r + 1}: dua layar 10 sampai 999 g`, ro.length === 2 && ro.every((g) => g >= 10 && g <= 999) && unik(ro)));
+tiga("RONDE_JODOH_PC", D.RONDE_JODOH_PC);
+D.RONDE_JODOH_PC.forEach((ro, r) => cek(`RONDE_JODOH_PC ronde ${r + 1}: tiga jarum berbeda di angka 1 sampai 4 kg`, ro.length === 3 && unik(ro) && ro.every((kg) => kg >= 1 && kg <= 4)));
+tiga("RONDE_MEMORI_PC", D.RONDE_MEMORI_PC);
+D.RONDE_MEMORI_PC.forEach((ro, r) => cek(`RONDE_MEMORI_PC ronde ${r + 1}: empat layar berbeda`, ro.length === 4 && unik(ro) && ro.every((g) => g % 50 === 0 && g >= 50 && g <= 999)));
+tiga("RONDE_SIAP_PC", D.RONDE_SIAP_PC);
+D.RONDE_SIAP_PC.forEach((ro, r) => cek(`RONDE_SIAP_PC ronde ${r + 1}: empat jarum, ada di angka 0 dan bukan, kelipatan 500, bukan 5.000`, ro.length === 4 && ro.some((g) => g === 0) && ro.some((g) => g !== 0) && ro.every((g) => g % 500 === 0 && g < 5000)));
+tiga("RONDE_PILAH_PC", D.RONDE_PILAH_PC);
+D.RONDE_PILAH_PC.forEach((ro, r) => {
+  const g = ro.filter((id) => D.BENDA_BERAT[id]?.satuan === "gram").length;
+  cek(`RONDE_PILAH_PC ronde ${r + 1}: enam benda berbeda, tiga gram dan tiga kilogram`, ro.length === 6 && unik(ro) && ro.every((id) => !!D.BENDA_BERAT[id]) && g === 3, `${g}`);
+});
+tiga("RONDE_SEMUA_PC", D.RONDE_SEMUA_PC);
+D.RONDE_SEMUA_PC.forEach((ro, r) => {
+  const benar = ro.item.filter((g) => D.cocokBanding(g, ro.acuan, ro.arah)).length;
+  cek(`RONDE_SEMUA_PC ronde ${r + 1}: empat layar berbeda, bukan acuan, ada yang cocok dan tidak`, ro.item.length === 4 && unik(ro.item) && ro.item.every((g) => g !== ro.acuan && g >= 10 && g <= 999) && benar >= 1 && benar <= 3, `${benar}`);
+});
+tiga("RONDE_LANGKAH_PC", D.RONDE_LANGKAH_PC);
+D.RONDE_LANGKAH_PC.forEach((ro, r) => cek(`RONDE_LANGKAH_PC ronde ${r + 1}: judul dan empat langkah berbeda`, !!ro.judul && ro.langkah.length === 4 && unik(ro.langkah) && ro.langkah.every((l) => l.length > 10)));
+tiga("RONDE_PAPAN_PC", D.RONDE_PAPAN_PC);
+D.RONDE_PAPAN_PC.forEach((ro, r) => cek(`RONDE_PAPAN_PC ronde ${r + 1}: dua layar 10 sampai 999`, ro.length === 2 && ro.every((g) => g >= 10 && g <= 999)));
+tiga("RONDE_SELISIH_PC", D.RONDE_SELISIH_PC);
+D.RONDE_SELISIH_PC.forEach((ro, r) => cek(`RONDE_SELISIH_PC ronde ${r + 1}: dua soal a < b, selisih 100 sampai 600, kelipatan 50`, ro.length === 2 && ro.every(([a, b]) => a < b && b <= 999 && (b - a) % 50 === 0 && b - a >= 100 && b - a <= 600)));
+
+/* ---- Abstract C ---- */
+cek("RONDE_SATUAN_QC: tiga ronde dua soal, kunci sesuai benda", D.RONDE_SATUAN_QC.length === 3 && D.RONDE_SATUAN_QC.every((ro) => ro.length === 2 && ro.every(sahTeks)) && D.RONDE_SATUAN_QC.every((ro) => ro[0].benar === "gram (g)" && ro[1].benar === "kilogram (kg)"));
+cek("RONDE_TIMBANGAN_QC: tiga ronde dua soal, kunci sesuai benda", D.RONDE_TIMBANGAN_QC.length === 3 && D.RONDE_TIMBANGAN_QC.every((ro) => ro.length === 2 && ro.every(sahTeks)) && D.RONDE_TIMBANGAN_QC.flat().every((s) => (/berat badan/.test(s.tanya) ? s.benar === "Timbangan badan" : /semangka|nanas/.test(s.tanya) ? s.benar === "Timbangan duduk" : s.benar === "Timbangan digital")));
+for (const [nama, daftar] of [["RONDE_SATUAN_QC", D.RONDE_SATUAN_QC], ["RONDE_TIMBANGAN_QC", D.RONDE_TIMBANGAN_QC]])
+  for (let r = 0; r < 3; r += 1) for (let i = 0; i < 2; i += 1) {
+    const o = D.susunOpsi(daftar[r][i].benar, daftar[r][i].salah, r * 2 + i);
+    cek(`${nama} ${r}-${i}: susunOpsi menunjuk kunci`, o.opsi[o.jawab] === daftar[r][i].benar && new Set(o.opsi).size === 3);
+  }
+tiga("RONDE_KALIMAT_QC", D.RONDE_KALIMAT_QC);
+D.RONDE_KALIMAT_QC.forEach((ro, r) => cek(`RONDE_KALIMAT_QC ronde ${r + 1}: tiga kalimat, tiga pilihan berbeda, kunci sah`, ro.length === 3 && ro.every((k) => k.opsi.length === 3 && unik(k.opsi) && k.benar >= 0 && k.benar < 3 && !!k.depan)));
+tiga("RONDE_JODOH_QC", D.RONDE_JODOH_QC);
+D.RONDE_JODOH_QC.forEach((ro, r) => cek(`RONDE_JODOH_QC ronde ${r + 1}: tiga pasangan, kiri dan kanan unik`, ro.length === 3 && unik(ro.map((p) => p.kiri)) && unik(ro.map((p) => p.kanan))));
+tiga("RONDE_MEMORI_QC", D.RONDE_MEMORI_QC);
+D.RONDE_MEMORI_QC.forEach((ro, r) => cek(`RONDE_MEMORI_QC ronde ${r + 1}: empat pasangan, kartu unik`, ro.length === 4 && unik([...ro.map((p) => p.a), ...ro.map((p) => p.b)])));
+cek("RONDE_BENARSALAH_QC: kunci sesuai isi", JSON.stringify(D.RONDE_BENARSALAH_QC.map((ro) => ro.map((p) => p.benar))) === JSON.stringify([[true, true, false, true, true], [true, false, true, false, false]]) && D.RONDE_BENARSALAH_QC.every((ro) => ro.length === 5 && ro.every((p) => p.penjelasan.length > 20)));
+const KLUE_C = [
+  (n) => n === 100 && n < 500,
+  (n) => n === 1250 && n % 10 === 0,
+  (n) => n === 3000 && (String(n).match(/0/g) ?? []).length === 3,
+  (n) => n === 250 && n % 2 === 0,
+];
+cek("RONDE_DETEKTIF_QC: empat soal", D.RONDE_DETEKTIF_QC.length === 4);
+D.RONDE_DETEKTIF_QC.forEach((s, i) => {
+  const cocok = s.opsi.filter(KLUE_C[i]);
+  cek(`RONDE_DETEKTIF_QC ${i + 1}: dua petunjuk, tiga pilihan berbeda, tepat satu cocok yaitu kunci`, s.klue.length === 2 && unik(s.opsi) && s.opsi.length === 3 && cocok.length === 1 && cocok[0] === s.jawab, JSON.stringify(cocok));
+});
+cek("PETA_KONSEP_QC: dua peta", D.PETA_KONSEP_QC.length === 2 && D.PETA_KONSEP_QC.every((p) => p.kotak.length === 4 && p.kotak.every((k) => k.opsi.length === 3 && unik(k.opsi) && k.benar === 0)));
+tiga("RONDE_CERITA_QC", D.RONDE_CERITA_QC);
+D.RONDE_CERITA_QC.forEach((ro, r) =>
+  ro.forEach((c, i) => {
+    const j = D.jawabCerita(c);
+    const o = D.opsiCeritaG(c, r * 2 + i);
+    cek(`RONDE_CERITA_QC ${r + 1}-${i + 1}: tiga pilihan berbeda, kunci ${D.teksGram(j)}`, new Set(o.opsi).size === 3 && o.opsi[o.jawab] === D.teksGram(j) && j > 0 && (c.jenis === "+" || c.jenis === "−"));
+    cek(`RONDE_CERITA_QC ${r + 1}-${i + 1}: teks memuat kedua berat`, c.teks.includes(D.titik(c.a)) && (c.teks.includes(D.titik(c.b)) || (c.b % 1000 === 0 && c.teks.includes(`${c.b / 1000} kg`))), c.teks);
+  }),
+);
+cek("RONDE_CERITA_QC: contoh buku (stroberi 400 g)", D.jawabCerita(D.RONDE_CERITA_QC[0][1]) === 400);
+cek("RONDE_SUSUNKATA_QC: empat kalimat, kata unik, pengecoh bukan bagian kalimat", D.RONDE_SUSUNKATA_QC.length === 4 && D.RONDE_SUSUNKATA_QC.every((s) => s.kata.length >= 6 && unik(s.kata.map((k) => k.toLowerCase())) && !s.kata.map((k) => k.toLowerCase()).includes(s.pengecoh)));
+
+/* ---- Bandul (Sub-Bab D) ---- */
+cek("BANDUL", D.BANDUL.ss === 50 && D.BANDUL.s === 100 && D.BANDUL.d === 200 && D.BANDUL.sk === 500 && D.BANDUL.k === 1000 && Object.keys(D.NAMA_BANDUL).sort().join() === Object.keys(D.BANDUL).sort().join());
+cek("gramSusunan dan teksSusunan", D.gramSusunan({ k: 1, s: 2 }) === 1200 && D.gramSusunan({ sk: 2, s: 3 }) === 1300 && D.teksSusunan({ k: 1, s: 2 }) === "1 kg + 2 × 1 ons" && D.teksSusunan({ s: 10 }) === "10 × 1 ons" && D.teksSusunan({ sk: 1 }) === "1/2 kg" && D.banyakBandul({ k: 1, s: 2 }) === 3);
+const sahS = (s) => Object.entries(s).every(([j, n]) => D.BANDUL[j] !== undefined && Number.isInteger(n) && n >= 1 && n <= 10);
+tiga("RONDE_RAKIT_CD", D.RONDE_RAKIT_CD);
+D.RONDE_RAKIT_CD.forEach((ro, r) => cek(`RONDE_RAKIT_CD ronde ${r + 1}: dua target kelipatan 50, 50 sampai 2.500`, ro.length === 2 && unik(ro) && ro.every((g) => g % 50 === 0 && g >= 50 && g <= 2500)));
+for (const [nama, daftar, ukuran] of [["RONDE_HITUNG_CD", D.RONDE_HITUNG_CD, 2], ["RONDE_JODOH_CD", D.RONDE_JODOH_CD, 3], ["RONDE_MEMORI_CD", D.RONDE_MEMORI_CD, 4], ["RONDE_KETUK_CD", D.RONDE_KETUK_CD.map((x) => x.item), 3], ["RONDE_URUT_CD", D.RONDE_URUT_CD.map((x) => x.item), 3]]) {
+  tiga(nama, daftar);
+  daftar.forEach((ro, r) => cek(`${nama} ronde ${r + 1}: ${ukuran} kumpulan bandul sah dengan berat berbeda, paling banyak 2.500 g`, ro.length === ukuran && ro.every((s) => sahS(s) && D.banyakBandul(s) <= 10 && D.gramSusunan(s) <= 2500) && unik(ro.map(D.gramSusunan)), JSON.stringify(ro)));
+}
+D.RONDE_KETUK_CD.forEach((ro, r) => cek(`RONDE_KETUK_CD ronde ${r + 1}: dua pertanyaan, jawabannya tepat satu kumpulan`, ro.tanya.length === 2 && ro.tanya.every((t) => ro.item.filter((s) => D.gramSusunan(s) === t).length === 1)));
+D.RONDE_URUT_CD.forEach((ro, r) => cek(`RONDE_URUT_CD ronde ${r + 1}: arah sah`, ro.dari === "kecil" || ro.dari === "besar"));
+cek("RONDE_URUT_CD: ada dari kecil dan dari besar", D.RONDE_URUT_CD.some((x) => x.dari === "kecil") && D.RONDE_URUT_CD.some((x) => x.dari === "besar"));
+tiga("RONDE_SEMUA_CD", D.RONDE_SEMUA_CD);
+D.RONDE_SEMUA_CD.forEach((ro, r) => {
+  const benar = ro.item.filter((s) => D.gramSusunan(s) === ro.acuan).length;
+  cek(`RONDE_SEMUA_CD ronde ${r + 1}: empat kumpulan, label unik, 2 atau 3 sama dengan acuan, paling banyak 10 bandul`, ro.item.length === 4 && ro.item.every((s) => sahS(s) && D.banyakBandul(s) <= 10) && unik(ro.item.map(D.teksSusunan)) && benar >= 2 && benar <= 3, `${benar}`);
+});
+for (const [nama, daftar, isi] of [["RONDE_KGKEG_CD", D.RONDE_KGKEG_CD, (m) => m >= 2 && m <= 7], ["RONDE_GKEKG_CD", D.RONDE_GKEKG_CD, (g) => g % 1000 === 0 && g >= 2000 && g <= 7000], ["RONDE_ONS_CD", D.RONDE_ONS_CD, (n) => n >= 2 && n <= 9]]) {
+  tiga(nama, daftar);
+  daftar.forEach((ro, r) => cek(`${nama} ronde ${r + 1}: dua soal dalam jangkauan`, ro.length === 2 && ro.every(isi) && unik(ro)));
+}
+for (let r = 0; r < 3; r += 1) for (let i = 0; i < 2; i += 1) {
+  const m = D.RONDE_KGKEG_CD[r][i];
+  const o = D.opsiKgKeG(m, r * 2 + i);
+  cek(`opsiKgKeG(${m}): tiga berbeda, kunci ${m * 1000} g`, new Set(o.opsi).size === 3 && D.gramDariTeks(o.opsi[o.jawab]) === m * 1000 && o.opsi.filter((x) => D.gramDariTeks(x) === m * 1000).length === 1);
+}
+
+/* ---- Picture D ---- */
+tiga("RONDE_GARIS_PD", D.RONDE_GARIS_PD);
+D.RONDE_GARIS_PD.forEach((ro, r) => cek(`RONDE_GARIS_PD ronde ${r + 1}: dua soal kelipatan 500 g, 500 sampai 4.000`, ro.length === 2 && ro.every((g) => g % 500 === 0 && g >= 500 && g <= 4000)));
+cek("RONDE_KALIMAT_PD: tiga berat 1.000 sampai 4.999 yang bukan kelipatan 1.000", D.RONDE_KALIMAT_PD.length === 3 && D.RONDE_KALIMAT_PD.every((g) => g >= 1000 && g <= 4999 && g % 1000 !== 0));
+D.RONDE_KALIMAT_PD.forEach((g, r) => {
+  const k = D.kalimatKonversiBerat(g, r * 3);
+  const kg = Math.floor(g / 1000);
+  const s = g % 1000;
+  cek(`kalimatKonversiBerat(${g}): tiga kalimat, tiga pilihan berbeda, kunci sah`, k.length === 3 && k.every((x) => x.opsi.length === 3 && unik(x.opsi) && x.benar >= 0 && x.benar < 3));
+  const nilai = k.map((x) => Number(x.opsi[x.benar].replace(/\./g, "")));
+  cek(`kalimatKonversiBerat(${g}): kalimat 1 sisa gram, 2 kilogram ke gram, 3 kilogram bulat`, nilai[0] === s && nilai[1] === kg * 1000 && nilai[2] === kg, JSON.stringify(nilai));
+  cek(`kalimatKonversiBerat(${g}): kalimat terisi benar`, kg * 1000 + nilai[0] === g && nilai[2] * 1000 + s === g);
+});
+for (const [nama, daftar, ukuran] of [["RONDE_JODOH_PD", D.RONDE_JODOH_PD, 3], ["RONDE_MEMORI_PD", D.RONDE_MEMORI_PD, 4]]) {
+  tiga(nama, daftar);
+  daftar.forEach((ro, r) => cek(`${nama} ronde ${r + 1}: ${ukuran} berat berbeda, kelipatan 500 g, 500 sampai 4.000`, ro.length === ukuran && unik(ro) && ro.every((g) => g % 500 === 0 && g >= 500 && g <= 4000)));
+}
+tiga("RONDE_TABEL_PD", D.RONDE_TABEL_PD);
+D.RONDE_TABEL_PD.forEach((t, r) => {
+  cek(`RONDE_TABEL_PD ronde ${r + 1}: empat baris, label dan jawaban unik, lima kartu memuat semua jawaban`, t.baris.length === 4 && unik(t.baris.map((b) => b.label)) && unik(t.baris.map((b) => b.jawab)) && t.kartu.length === 5 && unik(t.kartu) && t.baris.every((b) => t.kartu.includes(b.jawab)));
+  cek(`RONDE_TABEL_PD ronde ${r + 1}: label dan jawaban menyatakan berat yang sama`, t.baris.every((b) => D.gramDariTeks(b.label) === D.gramDariTeks(b.jawab)), JSON.stringify(t.baris));
+  const asing = t.kartu.filter((k) => !t.baris.some((b) => b.jawab === k));
+  cek(`RONDE_TABEL_PD ronde ${r + 1}: kartu pengecoh tidak sama dengan berat mana pun`, asing.length === 1 && t.baris.every((b) => D.gramDariTeks(asing[0]) !== D.gramDariTeks(b.label)));
+});
+cek("labelKG dan gramKG", D.labelKG([2, 0]) === "2 kg" && D.labelKG([0, 2000]) === "2.000 g" && D.labelKG([1, 500]) === "1 kg 500 g" && D.labelKG([1, 1000]) === "1 kg 1.000 g" && D.gramKG([1, 1000]) === 2000);
+tiga("RONDE_SEMUA_PD", D.RONDE_SEMUA_PD);
+D.RONDE_SEMUA_PD.forEach((ro, r) => {
+  const benar = ro.item.filter((u) => D.gramKG(u) === ro.acuan).length;
+  cek(`RONDE_SEMUA_PD ronde ${r + 1}: empat berat, label unik, 2 atau 3 sama dengan acuan, paling banyak 5 kg`, ro.item.length === 4 && unik(ro.item.map(D.labelKG)) && benar >= 2 && benar <= 3 && ro.item.every((u) => D.gramKG(u) <= 5000), `${benar}`);
+});
+tiga("RONDE_PILAH_PD", D.RONDE_PILAH_PD);
+D.RONDE_PILAH_PD.forEach((ro, r) => cek(`RONDE_PILAH_PD ronde ${r + 1}: enam berat unik, tiga pas kilogram dan tiga bersisa`, ro.length === 6 && unik(ro) && ro.filter(D.pasKg).length === 3));
+tiga("RONDE_LANGKAH_PD", D.RONDE_LANGKAH_PD);
+D.RONDE_LANGKAH_PD.forEach((ro, r) => cek(`RONDE_LANGKAH_PD ronde ${r + 1}: judul dan empat langkah berbeda`, !!ro.judul && ro.langkah.length === 4 && unik(ro.langkah) && ro.langkah.every((l) => l.length > 10)));
+tiga("RONDE_SELISIH_PD", D.RONDE_SELISIH_PD);
+D.RONDE_SELISIH_PD.forEach((ro, r) => cek(`RONDE_SELISIH_PD ronde ${r + 1}: dua soal a > b, kelipatan 500, a paling banyak 4 kg`, ro.length === 2 && ro.every(([a, b]) => a > b && a <= 4000 && a % 500 === 0 && b % 500 === 0 && b >= 500)));
+tiga("RONDE_SAMBUNG_PD", D.RONDE_SAMBUNG_PD);
+D.RONDE_SAMBUNG_PD.forEach((ro, r) => cek(`RONDE_SAMBUNG_PD ronde ${r + 1}: dua soal kelipatan 500, gabungan paling banyak 4 kg`, ro.length === 2 && ro.every(([a, b]) => a % 500 === 0 && b % 500 === 0 && a >= 500 && b >= 500 && a + b <= 4000)));
+
+/* ---- Abstract D ---- */
+tiga("RONDE_KG_QD", D.RONDE_KG_QD);
+D.RONDE_KG_QD.forEach((ro, r) => cek(`RONDE_KG_QD ronde ${r + 1}: dua soal 2 sampai 10 kg`, ro.length === 2 && ro.every((m) => m >= 2 && m <= 10) && unik(ro)));
+for (let r = 0; r < 3; r += 1) for (let i = 0; i < 2; i += 1) {
+  const m = D.RONDE_KG_QD[r][i];
+  const o = D.opsiKgKeG(m, r * 2 + i);
+  cek(`opsiKgKeG(${m}) pada QD: kunci ${m * 1000} g`, new Set(o.opsi).size === 3 && D.gramDariTeks(o.opsi[o.jawab]) === m * 1000);
+}
+tiga("RONDE_G_QD", D.RONDE_G_QD);
+D.RONDE_G_QD.forEach((ro, r) => cek(`RONDE_G_QD ronde ${r + 1}: dua soal 1.000 sampai 4.999 yang bukan kelipatan 1.000`, ro.length === 2 && ro.every((g) => g >= 1000 && g <= 4999 && g % 1000 !== 0) && unik(ro)));
+tiga("RONDE_ONS_QD", D.RONDE_ONS_QD);
+D.RONDE_ONS_QD.forEach((ro, r) => cek(`RONDE_ONS_QD ronde ${r + 1}: dua soal dengan tiga pilihan berbeda`, ro.length === 2 && ro.every(sahTeks)));
+const HITUNG_ONS = { "1 kg = ... ons": "10 ons", "1 ons = ... g": "100 g", "3 ons = ... g": "300 g", "5 kg = ... ons": "50 ons", "700 g = ... ons": "7 ons", "20 ons = ... kg": "2 kg" };
+cek("RONDE_ONS_QD: kunci benar secara hitung", D.RONDE_ONS_QD.flat().every((s) => HITUNG_ONS[s.tanya] === s.benar));
+tiga("RONDE_JODOH_QD", D.RONDE_JODOH_QD);
+D.RONDE_JODOH_QD.forEach((ro, r) => cek(`RONDE_JODOH_QD ronde ${r + 1}: tiga pasangan sama beratnya, kiri dan kanan unik`, ro.length === 3 && ro.every((p) => D.gramDariTeks(p.kiri) === D.gramDariTeks(p.kanan)) && unik(ro.map((p) => p.kiri)) && unik(ro.map((p) => p.kanan)), JSON.stringify(ro)));
+tiga("RONDE_MEMORI_QD", D.RONDE_MEMORI_QD);
+D.RONDE_MEMORI_QD.forEach((ro, r) => cek(`RONDE_MEMORI_QD ronde ${r + 1}: empat pasangan sama beratnya, kartu unik`, ro.length === 4 && ro.every((p) => D.gramDariTeks(p.a) === D.gramDariTeks(p.b)) && unik([...ro.map((p) => p.a), ...ro.map((p) => p.b)]), JSON.stringify(ro)));
+cek("RONDE_BENARSALAH_QD: kunci sesuai isi", JSON.stringify(D.RONDE_BENARSALAH_QD.map((ro) => ro.map((p) => p.benar))) === JSON.stringify([[true, false, true, false, true], [true, false, true, false, false]]) && D.RONDE_BENARSALAH_QD.every((ro) => ro.length === 5 && ro.every((p) => p.penjelasan.length > 20)));
+const KLUE_D = [
+  (n) => n === 4000 && (String(n).match(/0/g) ?? []).length === 3,
+  (n) => n === 1753 && n % 10 === 3,
+  (n) => n === 10 && n % 2 === 0 && n < 20,
+  (n) => n === 5 && n < 10,
+];
+cek("RONDE_DETEKTIF_QD: empat soal", D.RONDE_DETEKTIF_QD.length === 4);
+D.RONDE_DETEKTIF_QD.forEach((s, i) => {
+  const cocok = s.opsi.filter(KLUE_D[i]);
+  cek(`RONDE_DETEKTIF_QD ${i + 1}: dua petunjuk, tiga pilihan berbeda, tepat satu cocok yaitu kunci`, s.klue.length === 2 && unik(s.opsi) && s.opsi.length === 3 && cocok.length === 1 && cocok[0] === s.jawab, JSON.stringify(cocok));
+});
+cek("PETA_KONSEP_QD: dua peta", D.PETA_KONSEP_QD.length === 2 && D.PETA_KONSEP_QD.every((p) => p.kotak.length === 4 && p.kotak.every((k) => k.opsi.length === 3 && unik(k.opsi) && k.benar === 0)));
+tiga("RONDE_CERITA_QD", D.RONDE_CERITA_QD);
+const KUNCI_QD = [[4000, 1000], [42750, 12500], [1753, 4300]];
+D.RONDE_CERITA_QD.forEach((ro, r) =>
+  ro.forEach((c, i) => {
+    const j = D.jawabCerita(c);
+    const o = D.opsiCeritaKg(c, r * 2 + i);
+    cek(`RONDE_CERITA_QD ${r + 1}-${i + 1}: tiga pilihan berbeda, kunci ${D.teksKgG(j)}`, new Set(o.opsi).size === 3 && o.opsi[o.jawab] === D.teksKgG(j) && j === KUNCI_QD[r][i] && o.opsi.filter((x) => D.gramDariTeks(x) === j).length === 1);
+  }),
+);
+cek("RONDE_CERITA_QD: teks memuat berat (mangga 8.000 gram, tepung 1.753 gram, beras 30 kg 250 g)", D.RONDE_CERITA_QD[0][0].teks.includes("8.000 gram") && D.RONDE_CERITA_QD[2][0].teks.includes("1.753 gram") && D.RONDE_CERITA_QD[1][0].teks.includes(D.teksKgG(30250)) && D.RONDE_CERITA_QD[1][0].teks.includes(D.teksKgG(12500)));
+cek("RONDE_CERITA_QD: ada jumlah, kurang, dan ubah", ["+", "−", "u"].every((j) => D.RONDE_CERITA_QD.flat().some((c) => c.jenis === j)));
+cek("RONDE_SUSUNKATA_QD: empat kalimat, kata unik, pengecoh bukan bagian kalimat", D.RONDE_SUSUNKATA_QD.length === 4 && D.RONDE_SUSUNKATA_QD.every((s) => s.kata.length >= 6 && unik(s.kata.map((k) => k.toLowerCase())) && !s.kata.map((k) => k.toLowerCase()).includes(s.pengecoh)));
+
 /* ====================================================================== */
 /* Naskah                                                                   */
 /* ====================================================================== */
 
 cek("K3B3_META", N.K3B3_META.chapterId === "k3-mat-bab3" && N.K3B3_META.phaseCode === "FASE_B" && N.K3B3_META.grade === 3 && N.K3B3_META.suaraLaju === 0.7 && N.K3B3_META.suaraNada === 1);
-cek("SUB_BAB_K3B3: dua sub-bab A dan B", N.SUB_BAB_K3B3.map((s) => s.id).join() === "A,B");
+cek("SUB_BAB_K3B3: empat sub-bab A sampai D", N.SUB_BAB_K3B3.map((s) => s.id).join() === "A,B,C,D");
 for (const s of N.SUB_BAB_K3B3) {
   const k = s.id;
   cek(`${k}: tiga video, tiap video tiga adegan`, s.videos.length === 3 && s.videos.every((v) => v.adegan.length === 3));
@@ -306,7 +533,7 @@ for (const s of N.SUB_BAB_K3B3) {
   cek(`${k}: silabus lengkap`, s.silabus.teksSuara.length > 100 && s.silabus.cp.length > 50 && s.silabus.referensi.includes("Bab 3"));
 }
 cek("naskah: tidak memuat nilai tukar rupiah", !/rupiah|Rp\s?\d|\bkurs\b/i.test(JSON.stringify(N.SUB_BAB_K3B3)));
-cek("semuaAdeganK3B3: 18 adegan", N.semuaAdeganK3B3.length === 18);
+cek("semuaAdeganK3B3: 36 adegan", N.semuaAdeganK3B3.length === 36);
 
 console.log(`\nUji data Kelas 3 Bab 3: ${lulus} lulus, ${gagal} gagal.`);
 if (gagal > 0) process.exit(1);

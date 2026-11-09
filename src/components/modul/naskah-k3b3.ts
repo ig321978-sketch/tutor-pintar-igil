@@ -1,9 +1,8 @@
 /**
- * Naskah murni Matematika Kelas 3 Bab 3 (Pengukuran Panjang dan Berat). Berkas ini baru memuat Sub-Bab A (Pengukuran
- * Panjang dengan Satuan Baku) dan Sub-Bab B (Hubungan Antarsatuan Baku Panjang). Sub-Bab C dan D (berat) ditambahkan
- * pada unit berikutnya. Sumber: Buku Siswa Matematika Kelas III Kemendikbudristek, Bab 3 hlm. 105-123, serta Buku Panduan
+ * Naskah murni Matematika Kelas 3 Bab 3 (Pengukuran Panjang dan Berat): Sub-Bab A (Pengukuran Panjang dengan Satuan
+ * Baku), B (Hubungan Antarsatuan Baku Panjang), C (Pengukuran Berat dengan Satuan Baku), dan D (Hubungan Antarsatuan Baku Berat). Sumber: Buku Siswa Matematika Kelas III Kemendikbudristek, Bab 3 hlm. 105-140, serta Buku Panduan
  * Guru Bab 3, diperkaya dengan benda nyata di atas penggaris, geser ke angka nol, batang polos pada penggaris, garis
- * meteran, pita tersusun dari potongan meter, sepuluh sentimeter, dan sentimeter, serta bagan operasi ukuran gabungan.
+ * meteran, pita tersusun dari potongan meter, sepuluh sentimeter, dan sentimeter, bagan operasi ukuran gabungan, timbangan digital dan timbangan duduk, serta bandul timbangan kodok.
  * Satu sumber kebenaran: komponen Tahap SMICPA membaca berkas ini, dan pembangkit master
  * (src/content-master/buat-k3-bab3.mjs) memakainya untuk menulis src/data/kelas3-bab3.json.
  * Tanpa React, tanpa jaringan. Jenis tipe dipakai bersama naskah-k2b2.ts. Uji: scripts/uji-data-k3b3.mjs.
@@ -639,7 +638,582 @@ export const SUB_B33: SubBabNaskah = {
   ],
 };
 
-export const SUB_BAB_K3B3: SubBabNaskah[] = [SUB_A33, SUB_B33];
+/* ====================================================================== */
+/* SUB-BAB C. Pengukuran berat dengan satuan baku                           */
+/* ====================================================================== */
+
+const ALUR_C = ["Mengingat berat benda", "Timbangan alat ukur berat", "Satuan baku berat", "Gram untuk benda ringan", "Kilogram untuk benda berat", "Berbagai jenis timbangan", "Memilih timbangan yang tepat", "Menimbang dari angka nol", "Siap menimbang dengan satuan baku"];
+const ALUR_D = ["Mengingat satuan baku berat", "Timbangan kodok dan bandul", "Jenis bandul", "Kilogram dan gram", "Kilogram dan ons", "Ons dan gram", "Kilogram ke gram", "Gram ke kilogram", "Siap mengubah satuan berat"];
+
+export const SUB_C33: SubBabNaskah = {
+  id: "C",
+  codeTitle: "Sub-Bab C (Pengukuran Berat dengan Satuan Baku)",
+  fullTitle: "Sub-Bab C: Pengukuran Berat dengan Satuan Baku",
+  targetDescription:
+    "Siswa mengenal timbangan sebagai alat ukur berat (timbangan digital, timbangan duduk, timbangan kodok, dan timbangan badan), mengenal satuan baku berat gram dan kilogram, menimbang dengan memulai dari angka nol, membaca berat pada layar dan jarum, serta memilih timbangan dan satuan yang tepat untuk benda ringan dan benda berat.",
+  secondaryBg: "#DCFCE7",
+  secondaryBorder: "#16A34A",
+  secondaryText: "#14532D",
+  silabus: {
+    teksSuara: `Kita belajar mengukur berat dengan satuan baku. Kita mengenal timbangan sebagai alat ukur berat, dan satuan baku gram dan kilogram. Kita belajar menimbang dari angka nol, membaca berat pada layar dan jarum, serta memilih timbangan yang tepat. ${SUARA_AKHIR_SILABUS}`,
+    cp: "Siswa menyelesaikan masalah yang berkaitan dengan panjang dan berat benda dengan satuan baku. Pada sub-bab ini siswa menimbang benda dengan berbagai timbangan dan memilih satuan gram atau kilogram.",
+    referensi: "Buku Siswa Matematika Kelas III Kemendikbudristek (Bab 3: Pengukuran Panjang dan Berat, Sub-Bab C hlm. 124–134) dan Buku Panduan Guru Bab 3 Topik C.",
+  },
+  videos: [
+    {
+      id: "K3B3C-V1",
+      judul: "Menimbang Isi Tas",
+      subjudul: "Aktivitas 2: pengukuran berat",
+      adegan: [
+        {
+          id: "K3B3C-V1-1",
+          judul: "Keluarkan isi tas",
+          ketukan: [
+            "Satu kelompok beranggotakan tiga sampai lima orang.",
+            "Keluarkan barang-barang dari tas dan letakkan di atas meja.",
+            "Siapkan timbangan digital sebagai alat ukur.",
+            "Kita akan mengukur berat setiap barang.",
+          ],
+          papan: ["Kelompok 3 sampai 5 orang", "Barang dari tas di atas meja", "Timbangan digital", "Ukur berat tiap barang"],
+        },
+        {
+          id: "K3B3C-V1-2",
+          judul: "Timbang barangnya",
+          ketukan: [
+            "Letakkan satu barang di atas timbangan digital.",
+            "Lihat angka yang muncul pada layar timbangan.",
+            "Angka itu adalah berat barang.",
+            "Tulis nama barang dan beratnya pada tabel.",
+          ],
+          papan: ["Barang di atas timbangan", "Lihat angka pada layar", "Angka = berat barang", "Tulis di tabel"],
+        },
+        {
+          id: "K3B3C-V1-3",
+          judul: "Satuan berat",
+          ketukan: [
+            "Setelah semua barang ditimbang, presentasikan hasilnya.",
+            "Satuan apa yang dipakai pada timbangan?",
+            "Satuan baku berat adalah gram dan kilogram.",
+            "Gram ditulis g dan kilogram ditulis kg.",
+          ],
+          papan: ["Presentasikan hasilnya", "Satuan pada timbangan?", "Gram dan kilogram", "g dan kg"],
+        },
+      ],
+    },
+    {
+      id: "K3B3C-V2",
+      judul: "Alat Ukur Berat",
+      subjudul: "Timbangan di pasar dan di dapur",
+      adegan: [
+        {
+          id: "K3B3C-V2-1",
+          judul: "Ke pasar",
+          ketukan: [
+            "Meutia pergi ke pasar untuk berbelanja.",
+            "Penjual menimbang barang dagangannya dengan timbangan.",
+            "Timbangan apa yang dipakai penjual di pasar?",
+            "Ada timbangan kodok, timbangan duduk, dan timbangan digital.",
+          ],
+          papan: ["Meutia ke pasar", "Penjual menimbang dagangan", "Timbangan apa?", "Kodok, duduk, digital"],
+        },
+        {
+          id: "K3B3C-V2-2",
+          judul: "Nama dan satuan",
+          ketukan: [
+            "Timbangan kodok memakai bandul sebagai ukuran berat.",
+            "Timbangan duduk memakai jarum yang menunjuk angka.",
+            "Timbangan digital menampilkan angka pada layar.",
+            "Semua timbangan itu memakai satuan gram atau kilogram.",
+          ],
+          papan: ["Kodok: bandul", "Duduk: jarum", "Digital: layar", "Satuan: g atau kg"],
+        },
+        {
+          id: "K3B3C-V2-3",
+          judul: "Gram atau kilogram",
+          ketukan: [
+            "Gram dipakai untuk benda yang ringan.",
+            "Contohnya tepung, gula pasir, pensil, dan buku.",
+            "Kilogram dipakai untuk benda yang lebih berat.",
+            "Contohnya berat badan, karung beras, dan buah.",
+          ],
+          papan: ["Gram: benda ringan", "Tepung, gula, pensil, buku", "Kilogram: benda berat", "Berat badan, beras, buah"],
+        },
+      ],
+    },
+    {
+      id: "K3B3C-V3",
+      judul: "Bahan Kue Meutia",
+      subjudul: "Membaca dan membandingkan berat",
+      adegan: [
+        {
+          id: "K3B3C-V3-1",
+          judul: "Menimbang bahan",
+          ketukan: [
+            "Meutia membantu ibunya membuat kue.",
+            "Bahan kue yang ditimbang adalah gula, tepung, dan telur.",
+            "Gula menunjukkan 1.000 gram dan tepung 1.250 gram.",
+            "Telur menunjukkan 250 gram.",
+          ],
+          papan: ["Meutia membuat kue", "Gula, tepung, telur", "Gula 1.000 g, tepung 1.250 g", "Telur 250 g"],
+        },
+        {
+          id: "K3B3C-V3-2",
+          judul: "Mulai dari nol",
+          ketukan: [
+            "Sebelum menimbang, lihat angka awal pada timbangan.",
+            "Jarum atau layar harus menunjukkan angka 0.",
+            "Bila tidak dimulai dari nol, hasilnya keliru.",
+            "Barulah letakkan benda di atas timbangan.",
+          ],
+          papan: ["Lihat angka awal", "Harus di angka 0", "Bukan dari 0, hasil keliru", "Baru letakkan benda"],
+        },
+        {
+          id: "K3B3C-V3-3",
+          judul: "Stroberi tambahan",
+          ketukan: [
+            "Timbangan pertama menunjukkan stroberi 100 gram.",
+            "Timbangan kedua menunjukkan stroberi 500 gram.",
+            "Berat stroberi tambahan adalah 500 dikurangi 100.",
+            "Jadi stroberi tambahan beratnya 400 gram.",
+          ],
+          papan: ["Pertama: 100 g", "Kedua: 500 g", "500 − 100", "Tambahan: 400 g"],
+        },
+      ],
+    },
+  ],
+  mindMaps: [
+    {
+      stepNumber: 1,
+      stepTitle: "1. Mengingat Berat Benda",
+      stepDesc:
+        "Berat menunjukkan seberapa berat atau ringan sebuah benda. Kita sudah pernah membandingkan berat benda dengan satuan tidak baku, misalnya dengan batu atau kelereng. Hasilnya bisa berbeda karena ukuran benda pembanding tidak sama. Karena itu kita memerlukan alat ukur dan satuan baku yang sama untuk semua orang.",
+      icon: "🔙",
+      flowFrom: ALUR_C[0],
+      flowTo: ALUR_C[1],
+    },
+    {
+      stepNumber: 2,
+      stepTitle: "2. Timbangan Alat Ukur Berat",
+      stepDesc:
+        "Timbangan adalah alat untuk mengukur berat benda. Pada Aktivitas 2, setiap kelompok mengeluarkan barang dari tas, meletakkannya di atas timbangan digital, lalu membaca angka pada layar. Hasilnya ditulis pada tabel yang memuat nomor, nama barang, berat barang, dan satuan berat.",
+      icon: "⚖️",
+      flowFrom: ALUR_C[1],
+      flowTo: ALUR_C[2],
+    },
+    {
+      stepNumber: 3,
+      stepTitle: "3. Satuan Baku Berat",
+      stepDesc:
+        "Ukuran berat benda memiliki satuan baku. Satuan baku yang digunakan adalah gram atau kilogram. Gram dapat ditulis dengan g atau gr, dan kilogram ditulis dengan kg. Karena satuan baku sama untuk semua orang, hasil menimbang sama siapa pun yang menimbang.",
+      icon: "📐",
+      flowFrom: ALUR_C[2],
+      flowTo: ALUR_C[3],
+    },
+    {
+      stepNumber: 4,
+      stepTitle: "4. Gram untuk Benda Ringan",
+      stepDesc:
+        "Satuan gram digunakan untuk mengukur berat benda yang lebih ringan. Contohnya tepung, gula pasir, pensil, dan buku. Pada timbangan digital kita membaca angka gram pada layar, misalnya telur 250 gram atau stroberi 100 gram. Angka kecil lebih tepat ditulis dengan gram.",
+      icon: "🥚",
+      flowFrom: ALUR_C[3],
+      flowTo: ALUR_C[4],
+    },
+    {
+      stepNumber: 5,
+      stepTitle: "5. Kilogram untuk Benda Berat",
+      stepDesc:
+        "Satuan kilogram digunakan untuk mengukur berat benda yang lebih berat. Contohnya berat badan, karung berisi beras, dan buah. Pada timbangan duduk, jarum menunjuk angka kilogram. Bila jarum menunjuk angka 3, berat benda adalah 3 kilogram, ditulis 3 kg.",
+      icon: "🍉",
+      flowFrom: ALUR_C[4],
+      flowTo: ALUR_C[5],
+    },
+    {
+      stepNumber: 6,
+      stepTitle: "6. Berbagai Jenis Timbangan",
+      stepDesc:
+        "Penjual di pasar memakai timbangan kodok dengan bandul, timbangan duduk dengan jarum, atau timbangan digital dengan layar. Untuk berat badan dipakai timbangan badan. Ada juga timbangan besar bertuas untuk barang yang jauh lebih berat. Semua timbangan itu memakai satuan gram atau kilogram.",
+      icon: "🛒",
+      flowFrom: ALUR_C[5],
+      flowTo: ALUR_C[6],
+    },
+    {
+      stepNumber: 7,
+      stepTitle: "7. Memilih Timbangan yang Tepat",
+      stepDesc:
+        "Pilih timbangan sesuai bendanya. Meutia dan ibu memetik apel, jagung, tomat, kacang-kacangan, wortel, dan stroberi di kebun, lalu memilih timbangan yang cocok untuk sayuran dan buah. Benda ringan seperti tepung dan telur memakai timbangan digital. Berat badan memakai timbangan badan.",
+      icon: "✅",
+      flowFrom: ALUR_C[6],
+      flowTo: ALUR_C[7],
+    },
+    {
+      stepNumber: 8,
+      stepTitle: "8. Menimbang dari Angka Nol",
+      stepDesc:
+        "Kesalahan yang sering terjadi adalah menimbang tanpa mulai dari angka 0. Sebelum menimbang, pastikan jarum atau layar tepat di angka 0. Lalu letakkan benda, tunggu angka diam, baca beratnya, dan tulis dengan satuan. Pada Ayo Berlatih, gula 1.000 gram, tepung 1.250 gram, dan telur 250 gram.",
+      icon: "0️⃣",
+      flowFrom: ALUR_C[7],
+      flowTo: ALUR_C[8],
+    },
+  ],
+  infografis: [
+    { judul: "Berat Benda", emoji: "🏋️", countNum: 2, countWord: "Dua", suara: "Berat menunjukkan seberapa berat atau ringan sebuah benda. Benda ditimbang dengan timbangan." },
+    { judul: "Timbangan", emoji: "⚖️", countNum: 3, countWord: "Tiga", suara: "Timbangan adalah alat ukur berat. Ada timbangan digital, timbangan duduk, dan timbangan kodok." },
+    { judul: "Satuan Baku Berat", emoji: "📐", countNum: 2, countWord: "Dua", suara: "Satuan baku berat adalah gram dan kilogram. Gram ditulis g dan kilogram ditulis kg." },
+    { judul: "Gram", emoji: "🥚", countNum: 4, countWord: "Empat", suara: "Gram dipakai untuk benda yang ringan, seperti tepung, gula pasir, pensil, dan buku." },
+    { judul: "Kilogram", emoji: "🍉", countNum: 3, countWord: "Tiga", suara: "Kilogram dipakai untuk benda yang lebih berat, seperti berat badan, karung beras, dan buah." },
+    { judul: "Timbangan Digital", emoji: "🔢", countNum: 2, countWord: "Dua", suara: "Timbangan digital menampilkan berat benda sebagai angka pada layar. Baca angka itu dan tulis satuannya." },
+    { judul: "Timbangan Duduk", emoji: "🕐", countNum: 2, countWord: "Dua", suara: "Timbangan duduk memakai jarum. Angka yang ditunjuk jarum adalah berat benda dalam kilogram." },
+    { judul: "Mulai dari Nol", emoji: "0️⃣", countNum: 3, countWord: "Tiga", suara: "Sebelum menimbang, jarum atau layar harus tepat di angka nol. Baru letakkan benda di atas timbangan." },
+    { judul: "Memilih Timbangan", emoji: "✅", countNum: 3, countWord: "Tiga", suara: "Benda ringan memakai timbangan digital. Berat badan memakai timbangan badan. Buah yang berat memakai timbangan duduk." },
+    { judul: "Cara Menimbang", emoji: "📝", countNum: 4, countWord: "Empat", suara: "Empat langkah. Satu, pastikan angka awal nol. Dua, letakkan benda. Tiga, baca angkanya. Empat, tulis hasilnya dengan satuan." },
+  ],
+  games: [
+    C("read-digital", "Baca Timbangan Digital", "hlm. 124–125 dan 133 (Aktivitas 2 dan Ayo Berlatih 1)", "Membaca berat benda pada layar timbangan digital dalam gram.", "Tiga ronde, tiap ronde dua soal. Benda ditampilkan di atas timbangan digital. Siswa membaca angka pada layar lalu memilih satu dari tiga berat.", "Baca angka pada layar timbangan.", "⚖️", 6),
+    C("ready-scale", "Timbangan yang Siap", "hlm. 133 (Buku Panduan Guru: menimbang harus dimulai dari angka 0)", "Menemukan timbangan yang jarumnya tepat di angka 0 sebelum menimbang.", "Tiga ronde, tiap ronde tiga timbangan duduk dan satu perintah. Siswa mengetuk timbangan yang jarumnya tepat di angka 0.", "Ketuk timbangan yang jarumnya di angka nol.", "0️⃣", 3),
+    C("read-dial", "Baca Timbangan Jarum", "hlm. 125–126 (timbangan duduk untuk buah)", "Membaca berat buah pada timbangan duduk dari angka yang ditunjuk jarum.", "Tiga ronde, tiap ronde dua soal. Buah ditampilkan di atas timbangan duduk. Siswa membaca angka yang ditunjuk jarum, lalu memilih satu dari tiga berat.", "Baca angka yang ditunjuk jarum.", "🍉", 6),
+    C("choose-scale", "Pilih Timbangan", "hlm. 130–131 (timbangan yang tepat untuk sayuran dan buah)", "Memilih timbangan yang tepat untuk menimbang suatu benda.", "Tiga ronde, tiap ronde dua benda. Siswa memilih satu dari tiga timbangan: digital, duduk, atau badan.", "Pilih timbangan yang tepat.", "🛒", 6),
+    C("match-object-scale", "Jodohkan Benda dan Timbangan", "hlm. 126–127 (menghubungkan penjual dan alat ukur)", "Menjodohkan benda dengan timbangan yang tepat untuk menimbangnya.", "Tiga ronde, tiap ronde tiga benda dan tiga timbangan. Siswa mengetuk benda, lalu mengetuk timbangan yang cocok.", "Ketuk benda, lalu ketuk timbangannya.", "🔗", 9),
+    C("memory-scale-weight", "Memori Timbangan dan Berat", "hlm. 133 (berat bahan kue pada timbangan digital)", "Mencocokkan timbangan digital dengan berat yang ditunjukkan layarnya lewat permainan memori.", "Tiga ronde, tiap ronde delapan kartu tertutup (empat pasang). Siswa membalik dua kartu dan mencari pasangannya.", "Balik dua kartu, cari timbangan dan beratnya.", "🃏", 12),
+    C("tap-scale-weight", "Ketuk Timbangan dengan Berat", "hlm. 133 (gula, tepung, dan telur)", "Menemukan timbangan yang menunjukkan berat yang diminta.", "Tiga ronde, tiap ronde tiga timbangan dan dua pertanyaan. Siswa mengetuk timbangan yang beratnya sama dengan bilangan yang disebut.", "Ketuk timbangan dengan berat itu.", "👆", 6),
+    C("tap-all-unit", "Ketuk Semua yang Memakai Satuan Tertentu", "hlm. 125 (gram untuk benda ringan, kilogram untuk benda berat)", "Menemukan semua benda yang ditimbang dengan satuan gram atau kilogram.", "Tiga ronde, tiap ronde empat benda dan satu perintah. Siswa mengetuk semua benda yang cocok dengan satuan yang disebut, lalu menekan Periksa.", "Ketuk semua yang cocok, lalu periksa.", "✔️", 3),
+    C("board-grams", "Papan Berat dalam Gram", "hlm. 133 (Ayo Berlatih 1)", "Menulis berat pada timbangan digital dengan angka ratusan, puluhan, dan satuan.", "Tiga ronde, tiap ronde dua soal. Siswa membaca layar timbangan, lalu mengatur angka ratusan, puluhan, dan satuan pada papan dan menekan Periksa.", "Isi papan dengan beratnya.", "🗂️", 6),
+    C("order-weight", "Urutkan Benda menurut Berat", "hlm. 134 (Ayo Berlatih 2: berat teringan dan terberat)", "Mengurutkan tiga benda menurut berat pada timbangan digital.", "Tiga ronde, tiap ronde tiga timbangan bertanda huruf. Siswa mengetuk timbangan satu per satu dari yang teringan atau terberat.", "Ketuk benda menurut beratnya.", "📶", 9),
+    P("read-dial-kg", "Baca Jarum dalam Kilogram", "hlm. 125–126 (timbangan duduk)", "Membaca berat dalam kilogram dari jarum yang tepat di satu angka.", "Tiga ronde, tiap ronde dua soal. Jarum timbangan polos ditampilkan. Siswa memilih satu dari tiga berat dalam kilogram.", "Baca angka yang ditunjuk jarum.", "dial-read", 3, 2),
+    P("read-lcd", "Baca Layar Timbangan", "hlm. 133 (angka pada layar timbangan digital)", "Membaca berat dalam gram dari layar timbangan polos.", "Tiga ronde, tiap ronde dua soal. Layar timbangan ditampilkan. Siswa memilih satu dari tiga berat dalam gram.", "Baca angka pada layar.", "lcd-read", 3, 2),
+    P("match-dial-weight", "Jodohkan Jarum dan Berat", "hlm. 125–126 (membaca timbangan duduk)", "Menjodohkan jarum timbangan dengan berat dalam kilogram.", "Tiga ronde, tiap ronde tiga jarum dan tiga berat. Siswa mengetuk jarum, lalu mengetuk berat yang cocok.", "Ketuk jarum, lalu ketuk beratnya.", "dial-match", 3, 3),
+    P("memory-lcd-weight", "Memori Layar dan Berat", "hlm. 133 (angka pada layar timbangan digital)", "Mencocokkan layar timbangan dengan beratnya lewat permainan memori.", "Tiga ronde, tiap ronde delapan kartu tertutup (empat pasang). Siswa membalik dua kartu dan mencari pasangannya.", "Balik dua kartu, cari layar dan beratnya.", "lcd-memory", 3, 4),
+    P("tap-all-ready", "Ketuk Semua Jarum yang Siap", "hlm. 133 (Buku Panduan Guru: mulai dari angka 0)", "Menemukan semua timbangan yang jarumnya sudah tepat di angka 0.", "Tiga ronde, tiap ronde empat jarum dan satu perintah. Siswa mengetuk semua jarum di angka 0, lalu menekan Periksa.", "Ketuk semua jarum di nol, lalu periksa.", "dial-select", 3, 4),
+    P("sort-unit-weight", "Pilah Berat: Gram atau Kilogram", "hlm. 125 (gram untuk benda ringan, kilogram untuk benda berat)", "Memilah nama benda menjadi yang ditimbang dengan gram dan yang ditimbang dengan kilogram.", "Tiga ronde, tiap ronde enam nama benda dan dua kotak. Siswa menyeret atau mengetuk nama benda ke kotak yang tepat.", "Pilah benda ke kotak yang tepat.", "unit-sort", 3, 6),
+    P("tap-all-lcd-compare", "Ketuk Semua Layar Lebih atau Kurang", "hlm. 129 (membandingkan berat dua timbangan)", "Menemukan semua layar yang menunjukkan berat lebih atau kurang dari bilangan acuan.", "Tiga ronde, tiap ronde empat layar dan satu perintah. Siswa mengetuk semua yang cocok, lalu menekan Periksa.", "Ketuk semua yang cocok, lalu periksa.", "lcd-select", 3, 4),
+    P("order-weigh-steps", "Urutkan Langkah Menimbang", "hlm. 124 (Aktivitas 2: cara menimbang)", "Mengurutkan langkah menimbang dengan timbangan digital, timbangan duduk, dan timbangan badan.", "Tiga ronde, tiap ronde empat langkah. Siswa mengetuk langkah satu per satu menurut urutan yang benar. Letak jawaban berpindah.", "Ketuk langkah menurut urutannya.", "steps-order", 3, 4),
+    P("board-lcd", "Papan dari Layar", "hlm. 133 (Ayo Berlatih 1)", "Menulis berat pada layar timbangan dengan angka ratusan, puluhan, dan satuan.", "Tiga ronde, tiap ronde dua soal. Siswa membaca layar, lalu mengatur angka ratusan, puluhan, dan satuan pada papan dan menekan Periksa.", "Isi papan dengan beratnya.", "lcd-board", 3, 2),
+    P("difference-lcd", "Selisih Dua Layar", "hlm. 129 (Ayo Berlatih 2: berat stroberi tambahan)", "Menghitung selisih berat dari dua layar timbangan.", "Tiga ronde, tiap ronde dua soal. Dua layar ditampilkan. Siswa memilih satu dari tiga selisih berat dalam gram.", "Pilih selisih berat kedua layar.", "lcd-compare", 3, 2),
+    A("choose-unit-weight", "Pilih Satuan Berat", "hlm. 125 dan 128–129 (satuan baku berat)", "Memilih satuan baku yang tepat untuk berat suatu benda.", "Tiga ronde, tiap ronde dua soal. Siswa membaca benda yang ditimbang, lalu memilih satu dari tiga satuan.", "Pilih satuan baku yang tepat.", "g kg", "SATUAN", "gram • kilogram"),
+    A("scale-text", "Timbangan yang Tepat", "hlm. 126–131 (memilih timbangan)", "Memilih timbangan yang tepat untuk menimbang suatu benda.", "Tiga ronde, tiap ronde dua soal. Siswa membaca benda yang ditimbang, lalu memilih satu dari tiga alat ukur.", "Pilih timbangan yang tepat.", "⚖️", "TIMBANGAN", "digital • duduk • badan"),
+    A("complete-weight-sentence", "Lengkapi Kalimat Pengukuran Berat", "hlm. 124–129 (alat ukur, satuan baku, dan cara menimbang)", "Melengkapi kalimat tentang alat ukur berat, satuan baku, dan cara menimbang.", "Tiga soal, tiap soal tiga kalimat, misalnya satuan baku berat adalah gram dan ... Siswa memilih satu dari tiga kata.", "Pilih kata untuk bagian kosong.", "…", "LENGKAPI", "alat • satuan • cara"),
+    A("match-scale-text", "Jodohkan Berat dan Timbangan", "hlm. 126–127 dan 131–132 (benda dan timbangannya)", "Menjodohkan benda yang ditimbang dengan timbangan yang tepat.", "Tiga ronde, tiap ronde tiga benda dan tiga timbangan. Siswa mengetuk benda, lalu mengetuk timbangan yang cocok.", "Ketuk benda, lalu ketuk timbangannya.", "= ?", "JODOHKAN", "benda • timbangan"),
+    A("memory-weight-size", "Memori Benda dan Berat Wajar", "hlm. 125 dan 128 (perkiraan berat benda)", "Mencocokkan benda dengan berat yang wajar lewat permainan memori.", "Tiga ronde, tiap ronde delapan kartu tertutup (empat pasang): benda dan beratnya. Siswa membalik dua kartu dan mencari pasangannya.", "Balik dua kartu, cari benda dan beratnya.", "kg", "MEMORI", "benda • berat"),
+    A("true-false-weight", "Benar atau Salah: Pengukuran Berat", "hlm. 124–129 (timbangan dan satuan baku berat)", "Menilai pernyataan tentang timbangan, satuan baku, dan cara menimbang.", "Dua ronde, tiap ronde lima pernyataan. Siswa memilih Benar atau Salah. Tiap jawaban diberi penjelasan.", "Baca pernyataan, lalu pilih benar atau salah.", "✓ ✗", "BENAR SALAH", "periksa dengan alasan"),
+    A("detective-weight", "Detektif Pengukuran Berat", "hlm. 129 dan 133 (membaca dan menghitung berat)", "Menemukan bilangan berat dari dua petunjuk.", "Empat soal. Siswa membaca petunjuk tentang berat dan satu ciri bilangan, lalu memilih satu dari tiga bilangan. Hanya satu yang cocok.", "Baca petunjuk, lalu pilih bilangannya.", "?", "DETEKTIF", "dua petunjuk, satu jawaban"),
+    A("concept-map-weight", "Peta Konsep Pengukuran Berat", "hlm. 104 (peta konsep Bab 3)", "Melengkapi peta konsep alat ukur berat dan cara menimbang.", "Dua peta konsep, tiap peta empat kotak. Siswa memilih kartu yang tepat untuk kotak yang menyala.", "Pilih kartu yang tepat untuk kotak yang menyala.", "⇄", "PETA KONSEP", "alat • satuan • cara"),
+    A("story-weight", "Soal Cerita Berat", "hlm. 129 dan 133 (bahan kue dan stroberi)", "Menyelesaikan soal cerita yang menjumlahkan atau mengurangkan berat dalam gram.", "Tiga ronde, tiap ronde dua cerita. Siswa membaca cerita lalu memilih satu dari tiga hasil dalam gram.", "Baca cerita, lalu pilih hasilnya.", "g", "CERITA", "jumlah • selisih"),
+    A("sentence-weight", "Susun Kata Pengukuran Berat", "hlm. 124–129 (pengukuran berat)", "Menyusun kalimat tentang pengukuran berat dari kartu kata.", "Empat kalimat. Siswa mengetuk kartu kata satu per satu menurut urutan kalimat yang benar. Ada satu kartu pengecoh.", "Susun kartu kata menjadi kalimat.", "…", "SUSUN KATA", "kalimat pengukuran berat"),
+  ],
+  poin: [
+    { ikon: "⚖️", nama: "Timbangan", isi: "alat ukur berat", suara: "Timbangan adalah alat untuk mengukur berat benda." },
+    { ikon: "📐", nama: "Satuan baku berat", isi: "gram (g) dan kilogram (kg)", suara: "Satuan baku berat adalah gram dan kilogram. Satuan baku sama untuk semua orang." },
+    { ikon: "🥚", nama: "Gram", isi: "untuk benda ringan", suara: "Gram dipakai untuk benda yang ringan, seperti tepung, gula pasir, pensil, dan buku." },
+    { ikon: "🍉", nama: "Kilogram", isi: "untuk benda berat", suara: "Kilogram dipakai untuk benda yang lebih berat, seperti berat badan, karung beras, dan buah." },
+    { ikon: "0️⃣", nama: "Mulai dari nol", isi: "jarum atau layar di angka 0", suara: "Sebelum menimbang, jarum atau layar harus tepat di angka nol." },
+  ],
+  poinSuara:
+    "Ingat selalu! Timbangan adalah alat ukur berat. Satuan baku berat adalah gram dan kilogram. Gram untuk benda yang ringan, kilogram untuk benda yang lebih berat. Sebelum menimbang, pastikan jarum atau layar tepat di angka nol.",
+  cara: {
+    suara: "Cara menimbang. Pastikan angka awal nol. Letakkan benda di atas timbangan. Baca angka pada jarum atau layar. Lalu tulis hasilnya dengan satuan.",
+    potongan: [
+      { teks: "angka awal nol", warna: "#BAE6FD" },
+      { teks: "letakkan benda", warna: "#FECACA" },
+      { teks: "baca angkanya", warna: "#BFDBFE" },
+      { teks: "tulis satuan", warna: "#FDE68A" },
+    ],
+  },
+  rumah:
+    "Ayo Mencoba di rumah: bersama orang tuamu, timbanglah bahan makanan di dapur, misalnya gula, tepung, telur, dan beras. Pastikan timbangan mulai dari angka nol. Tulis hasilnya dengan satuan gram atau kilogram, lalu tentukan bahan yang paling ringan dan yang paling berat.",
+  refleksi: [
+    "Aku dapat menyebutkan alat ukur berat dan satuan bakunya.",
+    "Aku dapat memilih timbangan yang tepat untuk benda ringan dan benda berat.",
+    "Aku dapat membaca berat pada layar dan jarum timbangan.",
+    "Aku ingat memulai menimbang dari angka nol.",
+  ],
+};
+
+/* ====================================================================== */
+/* SUB-BAB D. Hubungan antarsatuan baku berat                               */
+/* ====================================================================== */
+
+export const SUB_D33: SubBabNaskah = {
+  id: "D",
+  codeTitle: "Sub-Bab D (Hubungan Antarsatuan Baku Berat)",
+  fullTitle: "Sub-Bab D: Hubungan Antarsatuan Baku Berat",
+  targetDescription:
+    "Siswa mengenal timbangan kodok dan bandul (1/2 ons, 1 ons, 2 ons, 1/2 kg, 1 kg), memahami 1 kg = 1.000 g = 10 ons dan 1 ons = 100 g, mengubah kilogram ke gram dengan mengalikan 1.000 dan gram ke kilogram dengan membagi 1.000 (misalnya 1.753 g = 1 kg 753 g), serta menjumlahkan dan mengurangkan berat pada soal cerita.",
+  secondaryBg: "#FEF3C7",
+  secondaryBorder: "#D97706",
+  secondaryText: "#78350F",
+  silabus: {
+    teksSuara: `Kita belajar hubungan antarsatuan baku berat. Pedagang di pasar memakai timbangan kodok dengan bandul. Satu kilogram sama dengan seribu gram dan sama dengan sepuluh ons. Satu ons sama dengan seratus gram. Kita belajar mengubah kilogram ke gram dan gram ke kilogram, serta menjumlahkan dan mengurangkan berat. ${SUARA_AKHIR_SILABUS}`,
+    cp: "Siswa menyelesaikan masalah yang berkaitan dengan panjang dan berat benda dengan satuan baku. Pada sub-bab ini siswa menghubungkan kilogram, ons, dan gram serta menghitung berat gabungan.",
+    referensi: "Buku Siswa Matematika Kelas III Kemendikbudristek (Bab 3: Pengukuran Panjang dan Berat, Sub-Bab D hlm. 135–140) dan Buku Panduan Guru Bab 3 Topik D.",
+  },
+  videos: [
+    {
+      id: "K3B3D-V1",
+      judul: "Timbangan Kodok",
+      subjudul: "Pedagang dan bandul",
+      adegan: [
+        {
+          id: "K3B3D-V1-1",
+          judul: "Di pasar",
+          ketukan: [
+            "Pedagang di pasar menimbang dagangannya dengan timbangan kodok.",
+            "Timbangan kodok dilengkapi bandul sebagai ukuran berat.",
+            "Bandul diletakkan di sisi yang lain dari timbangan.",
+            "Ada berapa jenis bandul yang dipakai?",
+          ],
+          papan: ["Pedagang di pasar", "Timbangan kodok", "Bandul = ukuran berat", "Berapa jenis bandul?"],
+        },
+        {
+          id: "K3B3D-V1-2",
+          judul: "Jenis bandul",
+          ketukan: [
+            "Jenis bandul pada timbangan kodok ada lima.",
+            "Yaitu setengah ons, satu ons, dan dua ons.",
+            "Lalu ada bandul setengah kilogram dan satu kilogram.",
+            "Berat benda sama dengan jumlah bandul yang seimbang.",
+          ],
+          papan: ["Ada lima jenis bandul", "1/2 ons, 1 ons, 2 ons", "1/2 kg dan 1 kg", "Jumlahkan bandulnya"],
+        },
+        {
+          id: "K3B3D-V1-3",
+          judul: "Telur dua timbangan",
+          ketukan: [
+            "Berat telur pada timbangan kodok adalah 1 kilogram.",
+            "Berat telur yang sama pada timbangan digital 1.000 gram.",
+            "Jumlah telurnya sama, jadi beratnya sama.",
+            "Berarti 1 kilogram sama dengan 1.000 gram.",
+          ],
+          papan: ["Kodok: 1 kg", "Digital: 1.000 g", "Berat telur sama", "1 kg = 1.000 g"],
+        },
+      ],
+    },
+    {
+      id: "K3B3D-V2",
+      judul: "Kilogram, Ons, dan Gram",
+      subjudul: "Hubungan antarsatuan berat",
+      adegan: [
+        {
+          id: "K3B3D-V2-1",
+          judul: "Kilogram dan ons",
+          ketukan: [
+            "Satu kilogram sama dengan sepuluh ons.",
+            "Karena itu bandul satu kilogram sama dengan sepuluh bandul satu ons.",
+            "Setengah kilogram sama dengan lima ons.",
+            "Ons dipakai pada timbangan kodok di pasar.",
+          ],
+          papan: ["1 kg = 10 ons", "1 kg = 10 bandul 1 ons", "1/2 kg = 5 ons", "Ons di timbangan kodok"],
+        },
+        {
+          id: "K3B3D-V2-2",
+          judul: "Ons dan gram",
+          ketukan: [
+            "Satu ons sama dengan seratus gram.",
+            "Dua ons sama dengan dua ratus gram.",
+            "Setengah ons sama dengan lima puluh gram.",
+            "Sepuluh ons sama dengan seribu gram, yaitu satu kilogram.",
+          ],
+          papan: ["1 ons = 100 g", "2 ons = 200 g", "1/2 ons = 50 g", "10 ons = 1.000 g"],
+        },
+        {
+          id: "K3B3D-V2-3",
+          judul: "Kilogram ke gram",
+          ketukan: [
+            "Untuk mengubah kilogram ke gram, kalikan dengan 1.000.",
+            "Misalnya 3 kg sama dengan 3 × 1.000 gram.",
+            "Hasilnya adalah 3.000 gram.",
+            "Dan 20 kg sama dengan 20.000 gram.",
+          ],
+          papan: ["kg ke g: kali 1.000", "3 kg = 3 × 1.000 g", "= 3.000 g", "20 kg = 20.000 g"],
+        },
+      ],
+    },
+    {
+      id: "K3B3D-V3",
+      judul: "Mengubah Gram ke Kilogram",
+      subjudul: "Tepung Meutia dan buah mangga",
+      adegan: [
+        {
+          id: "K3B3D-V3-1",
+          judul: "Tepung Meutia",
+          ketukan: [
+            "Meutia membantu ibu menimbang tepung untuk membuat kue.",
+            "Timbangan digital menunjukkan 1.753 gram.",
+            "Kita ubah menjadi kilogram dan gram.",
+            "Seribu gram adalah satu kilogram.",
+          ],
+          papan: ["Meutia menimbang tepung", "Layar: 1.753 g", "Ubah ke kg dan g", "1.000 g = 1 kg"],
+        },
+        {
+          id: "K3B3D-V3-2",
+          judul: "Pecah gramnya",
+          ketukan: [
+            "1.753 gram sama dengan 1.000 gram ditambah 753 gram.",
+            "1.000 gram sama dengan 1 kilogram.",
+            "Jadi 1.753 gram sama dengan 1 kg 753 gram.",
+            "Berat tepung Meutia adalah 1 kg 753 gram.",
+          ],
+          papan: ["1.753 = 1.000 + 753", "1.000 g = 1 kg", "1.753 g = 1 kg 753 g", "Tepung: 1 kg 753 g"],
+        },
+        {
+          id: "K3B3D-V3-3",
+          judul: "Mangga dan jeruk",
+          ketukan: [
+            "Meutia memanen mangga 8.000 gram dan menjual 4 kilogram.",
+            "8.000 gram sama dengan 8 kilogram.",
+            "Sisa mangga adalah 8 dikurangi 4, yaitu 4 kilogram.",
+            "Dua kantong jeruk 500 gram jadi 1.000 gram, yaitu 1 kg.",
+          ],
+          papan: ["Mangga 8.000 g", "8.000 g = 8 kg", "8 − 4 = 4 kg", "500 g + 500 g = 1 kg"],
+        },
+      ],
+    },
+  ],
+  mindMaps: [
+    {
+      stepNumber: 1,
+      stepTitle: "1. Mengingat Satuan Baku Berat",
+      stepDesc:
+        "Setelah mengukur berat benda dengan timbangan, kita mendapat ukuran berat dengan satuan baku. Satuan baku berat adalah gram dan kilogram. Satuan-satuan ini saling berhubungan. Pertanyaannya, apakah ada hubungan antara kilogram, ons, dan gram, dan bagaimana hubungannya?",
+      icon: "🔙",
+      flowFrom: ALUR_D[0],
+      flowTo: ALUR_D[1],
+    },
+    {
+      stepNumber: 2,
+      stepTitle: "2. Timbangan Kodok dan Bandul",
+      stepDesc:
+        "Pedagang di pasar menimbang barang dagangannya dengan timbangan kodok. Timbangan ini dilengkapi bandul sebagai ukuran berat benda yang ditimbang. Benda diletakkan pada satu sisi, lalu bandul diletakkan pada sisi lain sampai timbangan seimbang. Jumlah berat bandul adalah berat benda.",
+      icon: "🛒",
+      flowFrom: ALUR_D[1],
+      flowTo: ALUR_D[2],
+    },
+    {
+      stepNumber: 3,
+      stepTitle: "3. Jenis Bandul",
+      stepDesc:
+        "Jenis bandul yang digunakan timbangan kodok ada lima, yaitu setengah ons, satu ons, dua ons, setengah kilogram, dan satu kilogram. Setengah ons sama dengan 50 gram, satu ons 100 gram, dua ons 200 gram, setengah kilogram 500 gram, dan satu kilogram 1.000 gram.",
+      icon: "🏋️",
+      flowFrom: ALUR_D[2],
+      flowTo: ALUR_D[3],
+    },
+    {
+      stepNumber: 4,
+      stepTitle: "4. Kilogram dan Gram",
+      stepDesc:
+        "Berat telur pada timbangan kodok adalah 1 kilogram, dan pada timbangan digital 1.000 gram. Jumlah telur sama sehingga beratnya sama. Maka 1 kilogram sama dengan 1.000 gram. Ditulis 1 kg = 1.000 g. Bilangan 1.000 dibaca seribu.",
+      icon: "⚖️",
+      flowFrom: ALUR_D[3],
+      flowTo: ALUR_D[4],
+    },
+    {
+      stepNumber: 5,
+      stepTitle: "5. Kilogram dan Ons",
+      stepDesc:
+        "Satu kilogram sama dengan sepuluh ons. Karena itu satu bandul satu kilogram sama beratnya dengan sepuluh bandul satu ons. Setengah kilogram sama dengan lima ons. Ons banyak dipakai pada timbangan kodok di pasar, sedangkan timbangan digital memakai gram.",
+      icon: "🔟",
+      flowFrom: ALUR_D[4],
+      flowTo: ALUR_D[5],
+    },
+    {
+      stepNumber: 6,
+      stepTitle: "6. Ons dan Gram",
+      stepDesc:
+        "Satu ons sama dengan seratus gram. Maka dua ons sama dengan 200 gram dan tiga ons sama dengan 300 gram. Sepuluh ons sama dengan 1.000 gram, yaitu satu kilogram. Untuk mengubah ons ke gram, kalikan banyak ons dengan 100.",
+      icon: "💯",
+      flowFrom: ALUR_D[5],
+      flowTo: ALUR_D[6],
+    },
+    {
+      stepNumber: 7,
+      stepTitle: "7. Kilogram ke Gram",
+      stepDesc:
+        "Untuk mengubah kilogram ke gram, kalikan dengan 1.000. Misalnya 3 kg = 3 × 1.000 g = 3.000 g, dan 20 kg = 20.000 g. Bila ada sisa gram, tambahkan: 4 kg 150 g = 4.000 g + 150 g = 4.150 g. Bilangan di belakang kilogram makin besar karena gram satuan yang lebih kecil.",
+      icon: "✖️",
+      flowFrom: ALUR_D[6],
+      flowTo: ALUR_D[7],
+    },
+    {
+      stepNumber: 8,
+      stepTitle: "8. Gram ke Kilogram",
+      stepDesc:
+        "Untuk mengubah gram ke kilogram, ambil tiap 1.000 gram sebagai 1 kilogram. Tepung Meutia 1.753 gram = 1.000 gram + 753 gram = 1 kg 753 gram. Begitu pula 1.200 gram = 1 kg 200 gram dan 3.000 gram = 3 kg. Berat juga dapat dijumlahkan dan dikurangkan setelah satuannya sama.",
+      icon: "➗",
+      flowFrom: ALUR_D[7],
+      flowTo: ALUR_D[8],
+    },
+  ],
+  infografis: [
+    { judul: "Timbangan Kodok", emoji: "🛒", countNum: 2, countWord: "Dua", suara: "Timbangan kodok dipakai pedagang di pasar. Ukuran beratnya memakai bandul." },
+    { judul: "Jenis Bandul", emoji: "🏋️", countNum: 5, countWord: "Lima", suara: "Ada lima jenis bandul: setengah ons, satu ons, dua ons, setengah kilogram, dan satu kilogram." },
+    { judul: "1 kg = 1.000 g", emoji: "⚖️", countNum: 2, countWord: "Dua", suara: "Satu kilogram sama dengan seribu gram. Dua kilogram sama dengan dua ribu gram." },
+    { judul: "1 kg = 10 ons", emoji: "🔟", countNum: 2, countWord: "Dua", suara: "Satu kilogram sama dengan sepuluh ons. Setengah kilogram sama dengan lima ons." },
+    { judul: "1 ons = 100 g", emoji: "💯", countNum: 3, countWord: "Tiga", suara: "Satu ons sama dengan seratus gram. Tiga ons sama dengan tiga ratus gram." },
+    { judul: "Kilogram ke Gram", emoji: "✖️", countNum: 3, countWord: "Tiga", suara: "Untuk mengubah kilogram ke gram, kalikan dengan seribu. Tiga kilogram sama dengan tiga ribu gram." },
+    { judul: "Gram ke Kilogram", emoji: "➗", countNum: 3, countWord: "Tiga", suara: "Untuk mengubah gram ke kilogram, bagi dengan seribu. Tiga ribu gram sama dengan tiga kilogram." },
+    { judul: "1.753 gram", emoji: "🔍", countNum: 3, countWord: "Tiga", suara: "Seribu tujuh ratus lima puluh tiga gram sama dengan seribu gram ditambah tujuh ratus lima puluh tiga gram, yaitu satu kilogram tujuh ratus lima puluh tiga gram." },
+    { judul: "Garis Berat", emoji: "📈", countNum: 2, countWord: "Dua", suara: "Pada garis berat, tiap seribu gram ditandai satu kilogram. Batang yang sampai angka dua kilogram beratnya dua ribu gram." },
+    { judul: "Cara Mengubah", emoji: "📝", countNum: 4, countWord: "Empat", suara: "Empat langkah. Satu, ingat satu kilogram sama dengan seribu gram. Dua, kilogram ke gram kalikan seribu. Tiga, gram ke kilogram bagi seribu. Empat, periksa dengan cara sebaliknya." },
+  ],
+  games: [
+    C("build-bandul", "Rakit Berat dengan Bandul", "hlm. 135–136 (jenis bandul timbangan kodok)", "Merakit berat yang diminta dari bandul 1/2 ons, 1 ons, 2 ons, 1/2 kg, dan 1 kg.", "Tiga ronde, tiap ronde dua soal. Siswa membaca berat yang diminta, lalu menambah atau mengurangi bandul sampai layar menunjukkan berat itu. Banyak jalan yang benar.", "Rakit berat dengan bandul.", "🏋️", 6),
+    C("count-bandul", "Hitung Berat Bandul", "hlm. 135 (bandul timbangan kodok)", "Menghitung berat sekumpulan bandul dalam gram.", "Tiga ronde, tiap ronde dua soal. Kumpulan bandul ditampilkan. Siswa memilih satu dari tiga berat. Pengecoh lebih atau kurang lima puluh gram.", "Hitung berat semua bandul.", "🔢", 6),
+    C("kg-to-g-bandul", "Ubah Kilogram ke Gram", "hlm. 136 dan 139 (1 kg = 1.000 g, Ayo Berlatih 1)", "Mengubah kilogram ke gram dengan gambar bandul satu kilogram.", "Tiga ronde, tiap ronde dua soal. Bandul satu kilogram ditampilkan. Siswa memilih satu dari tiga hasil dalam gram. Pengecoh lupa mengalikan 1.000.", "Ubah kilogram ke gram.", "✖️", 6),
+    C("g-to-kg-bandul", "Ubah Gram ke Kilogram", "hlm. 137 dan 139 (mengubah gram ke kilogram)", "Mengubah gram ke kilogram dengan gambar bandul satu kilogram.", "Tiga ronde, tiap ronde dua soal. Bandul satu kilogram ditampilkan. Siswa memilih satu dari tiga hasil dalam kilogram.", "Ubah gram ke kilogram.", "➗", 6),
+    C("match-bandul", "Jodohkan Bandul dan Berat", "hlm. 135–136 (jumlah bandul yang digunakan)", "Menjodohkan kumpulan bandul dengan beratnya dalam gram.", "Tiga ronde, tiap ronde tiga kumpulan bandul dan tiga berat. Siswa mengetuk kumpulan bandul, lalu mengetuk berat yang cocok.", "Ketuk bandul, lalu ketuk beratnya.", "🔗", 9),
+    C("memory-bandul", "Memori Bandul dan Berat", "hlm. 135–136 (jumlah bandul yang digunakan)", "Mencocokkan kumpulan bandul dengan beratnya lewat permainan memori.", "Tiga ronde, tiap ronde delapan kartu tertutup (empat pasang). Siswa membalik dua kartu dan mencari pasangannya.", "Balik dua kartu, cari bandul dan beratnya.", "🃏", 12),
+    C("tap-bandul", "Ketuk Bandul dengan Berat", "hlm. 135–136 (jumlah bandul yang digunakan)", "Menemukan kumpulan bandul yang beratnya sama dengan bilangan yang diminta.", "Tiga ronde, tiap ronde tiga kumpulan bandul dan dua pertanyaan. Siswa mengetuk kumpulan yang beratnya sama dengan bilangan yang disebut.", "Ketuk bandul dengan berat itu.", "👆", 6),
+    C("tap-all-same-weight", "Ketuk Semua yang Sama Berat", "hlm. 136 (1 kg = 10 ons = 1.000 g)", "Menemukan semua kumpulan bandul yang beratnya sama dengan berat acuan.", "Tiga ronde, tiap ronde empat kumpulan bandul dan satu perintah. Siswa mengetuk semua yang sama beratnya dengan acuan, lalu menekan Periksa.", "Ketuk semua yang sama, lalu periksa.", "✔️", 3),
+    C("ons-to-gram", "Ubah Ons ke Gram", "hlm. 136 (1 ons = 100 g)", "Mengubah ons ke gram pada papan ratusan, puluhan, dan satuan.", "Tiga ronde, tiap ronde dua soal. Bandul satu ons ditampilkan. Siswa mengatur angka ratusan, puluhan, dan satuan pada papan dan menekan Periksa.", "Isi papan dengan gramnya.", "🗂️", 6),
+    C("order-bandul", "Urutkan Bandul menurut Berat", "hlm. 135–136 (jenis bandul)", "Mengurutkan tiga kumpulan bandul menurut beratnya.", "Tiga ronde, tiap ronde tiga kumpulan bandul bertanda huruf. Siswa mengetuk kumpulan satu per satu dari yang teringan atau terberat.", "Ketuk bandul menurut beratnya.", "📶", 9),
+    P("count-weight-line", "Hitung Garis Berat", "hlm. 136–139 (kilogram dan gram)", "Menghitung berat batang pada garis berat dalam gram.", "Tiga ronde, tiap ronde dua soal. Garis berat bertanda tiap 500 g dan batang berwarna ditampilkan. Siswa memilih satu dari tiga berat.", "Hitung berat batang pada garis.", "weight-count", 3, 2),
+    P("complete-convert-weight", "Lengkapi Kalimat Ubah Berat", "hlm. 137 (1.753 gram dan mengubah gram ke kilogram)", "Melengkapi kalimat yang mengubah gram menjadi kilogram dan gram.", "Tiga soal, tiap soal tiga kalimat, misalnya 1.250 g = 1.000 g + ... g. Siswa memilih satu dari tiga angka untuk bagian kosong.", "Pilih angka untuk bagian kosong.", "weight-sentence", 3, 3),
+    P("match-weight-line", "Jodohkan Garis dan Berat", "hlm. 136–139 (kilogram dan gram)", "Menjodohkan garis berat dengan beratnya dalam kilogram dan gram.", "Tiga ronde, tiap ronde tiga garis dan tiga berat. Siswa mengetuk garis, lalu mengetuk berat yang cocok.", "Ketuk garis, lalu ketuk beratnya.", "weight-match", 3, 3),
+    P("memory-weight-line", "Memori Garis dan Berat", "hlm. 136–139 (kilogram dan gram)", "Mencocokkan garis berat dengan beratnya lewat permainan memori.", "Tiga ronde, tiap ronde delapan kartu tertutup (empat pasang). Siswa membalik dua kartu dan mencari pasangannya.", "Balik dua kartu, cari garis dan beratnya.", "weight-memory", 3, 4),
+    P("fill-weight-table", "Isi Tabel Ubah Berat", "hlm. 139 (Ayo Berlatih 1: lengkapi ukuran berat)", "Melengkapi tabel berat dalam kilogram, gram, dan ons.", "Tiga tabel dengan empat baris. Siswa mengetuk baris, lalu mengetuk kartu berat yang tepat. Ada satu kartu pengecoh.", "Isi tabel dengan kartu berat.", "weight-table", 3, 4),
+    P("tap-all-same-weight-line", "Ketuk Semua Berat yang Sama", "hlm. 136–139 (satu berat ditulis dengan beberapa cara)", "Menemukan semua garis berat yang sama dengan berat acuan, walau ditulis berbeda.", "Tiga ronde, tiap ronde empat garis dan satu perintah. Siswa mengetuk semua yang sama dengan acuan, lalu menekan Periksa.", "Ketuk semua yang sama, lalu periksa.", "weight-select", 3, 4),
+    P("sort-whole-kg", "Pilah Berat: Pas Kilogram atau Bersisa", "hlm. 137 dan 139 (gram dan kilogram)", "Memilah berat dalam gram menjadi yang pas dalam kilogram dan yang masih bersisa gram.", "Tiga ronde, tiap ronde enam berat dan dua kotak. Berat yang habis dibagi 1.000 pas dalam kilogram. Siswa menyeret atau mengetuk berat ke kotak yang tepat.", "Pilah berat ke kotak yang tepat.", "weight-sort", 3, 6),
+    P("order-convert-weight-steps", "Urutkan Langkah Mengubah Berat", "hlm. 137 dan 139 (mengubah satuan berat)", "Mengurutkan langkah mengubah satuan berat.", "Tiga ronde, tiap ronde empat langkah. Siswa mengetuk langkah satu per satu menurut urutan yang benar. Letak jawaban berpindah.", "Ketuk langkah menurut urutannya.", "steps-order", 3, 4),
+    P("difference-weight-line", "Selisih Dua Garis Berat", "hlm. 139 (Ayo Berlatih 2: sisa mangga)", "Menghitung selisih berat dari dua batang pada garis berat.", "Tiga ronde, tiap ronde dua soal. Dua batang pada satu garis ditampilkan. Siswa memilih satu dari tiga selisih berat.", "Pilih selisih berat kedua batang.", "weight-compare", 3, 2),
+    P("join-weight-lines", "Sambung Dua Garis Berat", "hlm. 140 (Ayo Berlatih 3: dua kantong jeruk)", "Menghitung berat dua batang yang disambung pada garis berat.", "Tiga ronde, tiap ronde dua soal. Dua batang yang disambung ditampilkan. Siswa memilih satu dari tiga berat gabungan.", "Pilih berat setelah disambung.", "weight-join", 3, 2),
+    A("kg-to-g-abstract", "Ubah Kilogram ke Gram: Lambang", "hlm. 139 (20 kg = ... gram)", "Mengubah kilogram ke gram dan memilih hasilnya dari tiga pilihan.", "Tiga ronde, tiap ronde dua soal, misalnya 4 kg = ... g. Pengecoh lupa mengalikan 1.000 atau mengalikan 10.000.", "Pilih hasil perubahan kilogram ke gram.", "4 kg", "KG KE G", "kali 1.000"),
+    A("g-to-kg-g", "Ubah Gram ke Kilogram dan Gram", "hlm. 137 dan 139 (1.753 gram dan 1.200 gram)", "Menulis berat gram sebagai kilogram dan gram.", "Tiga ronde, tiap ronde dua soal, misalnya 1.200 g = ... kg ... g. Pengecoh salah tambah atau kurang seratus gram.", "Pilih berat dalam kilogram dan gram.", "1.200 g", "KG DAN G", "ribuan • sisa"),
+    A("ons-convert", "Ubah Kilogram, Ons, dan Gram", "hlm. 136 (1 kg = 10 ons, 1 ons = 100 g)", "Mengubah antara kilogram, ons, dan gram.", "Tiga ronde, tiap ronde dua soal, misalnya 3 ons = ... g. Siswa memilih satu dari tiga hasil.", "Pilih hasil perubahan satuannya.", "ons", "KG ONS G", "10 ons • 100 g"),
+    A("match-weight", "Jodohkan Berat", "hlm. 139 (Ayo Berlatih 1: lengkapi ukuran berat)", "Menjodohkan dua cara menulis berat yang sama.", "Tiga ronde, tiap ronde tiga ukuran dan tiga pasangannya. Siswa mengetuk ukuran, lalu mengetuk pasangannya.", "Ketuk ukuran, lalu ketuk pasangannya.", "= ?", "JODOHKAN", "kg • ons • g"),
+    A("memory-weight", "Memori Berat", "hlm. 136 dan 139 (ukuran berat yang sama)", "Mencocokkan dua cara menulis berat yang sama lewat permainan memori.", "Tiga ronde, tiap ronde delapan kartu tertutup (empat pasang). Siswa membalik dua kartu dan mencari pasangannya.", "Balik dua kartu, cari berat yang sama.", "kg g", "MEMORI", "berat yang sama"),
+    A("true-false-unit-weight", "Benar atau Salah: Kilogram dan Gram", "hlm. 136–140 (hubungan satuan berat)", "Menilai pernyataan tentang hubungan kilogram, ons, dan gram.", "Dua ronde, tiap ronde lima pernyataan. Siswa memilih Benar atau Salah. Tiap jawaban diberi penjelasan.", "Baca pernyataan, lalu pilih benar atau salah.", "✓ ✗", "BENAR SALAH", "periksa dengan alasan"),
+    A("detective-unit-weight", "Detektif Satuan Berat", "hlm. 136–139 (ubah satuan berat)", "Menemukan bilangan hasil perubahan satuan berat dari dua petunjuk.", "Empat soal. Siswa membaca petunjuk tentang perubahan satuan dan satu ciri bilangan, lalu memilih satu dari tiga bilangan. Hanya satu yang cocok.", "Baca petunjuk, lalu pilih bilangannya.", "?", "DETEKTIF", "dua petunjuk, satu jawaban"),
+    A("concept-map-unit-weight", "Peta Konsep Satuan Berat", "hlm. 104 (peta konsep Bab 3)", "Melengkapi peta konsep hubungan kilogram, ons, dan gram.", "Dua peta konsep, tiap peta empat kotak. Siswa memilih kartu yang tepat untuk kotak yang menyala.", "Pilih kartu yang tepat untuk kotak yang menyala.", "⇄", "PETA KONSEP", "kg • ons • g"),
+    A("story-unit-weight", "Soal Cerita Satuan Berat", "hlm. 139–140 (Ayo Berlatih 2 dan 3: mangga dan jeruk)", "Menyelesaikan soal cerita yang menjumlahkan, mengurangkan, atau mengubah berat.", "Tiga ronde, tiap ronde dua cerita. Siswa membaca cerita lalu memilih satu dari tiga hasil dalam kilogram dan gram. Pengecoh salah seratus gram.", "Baca cerita, lalu pilih hasilnya.", "kg g", "CERITA", "jumlah • selisih • ubah"),
+    A("sentence-unit-weight", "Susun Kata Satuan Berat", "hlm. 136–139 (hubungan satuan berat)", "Menyusun kalimat tentang hubungan satuan berat dari kartu kata.", "Empat kalimat. Siswa mengetuk kartu kata satu per satu menurut urutan kalimat yang benar. Ada satu kartu pengecoh.", "Susun kartu kata menjadi kalimat.", "…", "SUSUN KATA", "kalimat satuan berat"),
+  ],
+  poin: [
+    { ikon: "⚖️", nama: "Kilogram dan gram", isi: "1 kg = 1.000 g", suara: "Satu kilogram sama dengan seribu gram. Dua kilogram sama dengan dua ribu gram." },
+    { ikon: "🔟", nama: "Kilogram dan ons", isi: "1 kg = 10 ons", suara: "Satu kilogram sama dengan sepuluh ons. Setengah kilogram sama dengan lima ons." },
+    { ikon: "💯", nama: "Ons dan gram", isi: "1 ons = 100 g", suara: "Satu ons sama dengan seratus gram. Tiga ons sama dengan tiga ratus gram." },
+    { ikon: "✖️", nama: "Kilogram ke gram", isi: "3 kg = 3 × 1.000 g = 3.000 g", suara: "Untuk mengubah kilogram ke gram, kalikan dengan seribu." },
+    { ikon: "➗", nama: "Gram ke kilogram", isi: "1.753 g = 1 kg 753 g", suara: "Untuk mengubah gram ke kilogram, ambil tiap seribu gram sebagai satu kilogram. Seribu tujuh ratus lima puluh tiga gram sama dengan satu kilogram tujuh ratus lima puluh tiga gram." },
+  ],
+  poinSuara:
+    "Ingat selalu! Satu kilogram sama dengan seribu gram dan sama dengan sepuluh ons. Satu ons sama dengan seratus gram. Untuk mengubah kilogram ke gram, kalikan dengan seribu. Untuk mengubah gram ke kilogram, ambil tiap seribu gram sebagai satu kilogram.",
+  cara: {
+    suara: "Cara mengubah satuan berat. Ingat satu kilogram sama dengan seribu gram. Kilogram ke gram, kalikan seribu. Gram ke kilogram, ambil tiap seribu gram. Lalu periksa dengan cara sebaliknya.",
+    potongan: [
+      { teks: "1 kg = 1.000 g", warna: "#BAE6FD" },
+      { teks: "kg ke g: kali", warna: "#FECACA" },
+      { teks: "g ke kg: ambil 1.000", warna: "#BFDBFE" },
+      { teks: "periksa", warna: "#FDE68A" },
+    ],
+  },
+  rumah:
+    "Ayo Mencoba di rumah: bersama orang tuamu, timbanglah beberapa bahan makanan dengan timbangan digital dan tulis hasilnya dalam gram. Lalu ubah menjadi kilogram dan gram, misalnya 1.250 gram menjadi 1 kg 250 gram. Jelaskan pada orang tuamu bahwa 1 kilogram sama dengan 1.000 gram.",
+  refleksi: [
+    "Aku tahu bahwa 1 kilogram sama dengan 1.000 gram dan 10 ons.",
+    "Aku dapat mengubah kilogram ke gram dan sebaliknya.",
+    "Aku dapat menulis berat dengan kilogram dan gram bersama.",
+    "Aku dapat menjumlahkan dan mengurangkan berat.",
+  ],
+};
+
+export const SUB_BAB_K3B3: SubBabNaskah[] = [SUB_A33, SUB_B33, SUB_C33, SUB_D33];
 
 /** Semua adegan video, urut sub-bab, video, adegan. Dipakai uji. */
 export const semuaAdeganK3B3 = SUB_BAB_K3B3.flatMap((s) => s.videos.flatMap((v) => v.adegan));
