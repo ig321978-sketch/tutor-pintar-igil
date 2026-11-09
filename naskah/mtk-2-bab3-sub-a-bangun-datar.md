@@ -31,7 +31,7 @@ Berkas ini ditulis dari satu sumber, `src/components/modul/naskah-k2b3.ts` dan `
 | Tahap | Isi | Banyak butir |
 |---|---|---|
 | S. Story | Video animasi HTML/SVG satu layar seperti Kelas 2 Bab 1: tiga cerita disusun berurutan dalam satu pemutar, mulai saat Mulai diketuk (tidak ada putar otomatis) | 3 cerita, 9 adegan, 36 ketukan |
-| M. Mind-Map | Peta pikiran berurutan, tiap cabang bisa diketuk dan uraiannya tampil di layar | 8 langkah |
+| M. Mind-Map | Peta pikiran "Taman Ide": matahari berwajah Igil di tengah, kartu bernomor di kiri dan kanan dengan cabang berwarna. Kartu hanya memuat ikon dan judul, uraiannya dibacakan Suara Guru saat kartu diketuk | 8 langkah |
 | I. Infografis | Poster rangkuman, suara di tiap panel | 10 panel |
 | C. Concrete | Benda nyata yang diketuk, diseret, digunting, dan dihitung | 4 permainan |
 | P. Picture | Diagram polos: bentuk, titik dan garis, model bangun ruang, tabel | 3 permainan |
@@ -149,6 +149,8 @@ Tampilannya satu layar, sama dengan Kelas 2 Bab 1. Tidak ada adegan yang berjala
    _Papan layar:_ Lingkaran: bulat sempurna
 
 ## 5. Tahap 2: Mind-Map (peta pikiran)
+
+Tampilan "Taman Ide": matahari berwajah Igil di tengah, kartu bernomor di kiri dan kanan dihubungkan cabang berwarna. Setiap kartu hanya memuat nomor, ikon, dan judul langkah. Uraian di bawah dibacakan Suara Guru saat kartu diketuk dan tidak tampil di layar.
 
 **1. Amati Tepinya** 🔍  
 Untuk mengenal sebuah bangun datar, amati dulu tepinya. Apakah tepinya garis lurus atau garis lengkung? Dari jawaban itu, kita tahu apakah bangun datar tersebut segi banyak atau bentuk lengkung. Pakai jari untuk menelusuri tepi pelan-pelan. Kebiasaan mengamati ciri sebelum menamai adalah dasar berpikir geometri.

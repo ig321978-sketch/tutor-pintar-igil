@@ -31,7 +31,7 @@ Berkas ini ditulis dari satu sumber, `src/components/modul/naskah-k2b2.ts` dan `
 | Tahap | Isi | Banyak butir |
 |---|---|---|
 | S. Story | Video animasi HTML/SVG satu layar seperti Kelas 2 Bab 1: tiga cerita disusun berurutan dalam satu pemutar, mulai saat Mulai diketuk (tidak ada putar otomatis) | 3 cerita, 8 adegan, 40 ketukan |
-| M. Mind-Map | Peta pikiran berurutan, tiap cabang bisa diketuk dan uraiannya tampil di layar | 8 langkah |
+| M. Mind-Map | Peta pikiran "Taman Ide": matahari berwajah Igil di tengah, kartu bernomor di kiri dan kanan dengan cabang berwarna. Kartu hanya memuat ikon dan judul, uraiannya dibacakan Suara Guru saat kartu diketuk | 8 langkah |
 | I. Infografis | Poster rangkuman, suara di tiap panel | 10 panel |
 | C. Concrete | Benda nyata yang diketuk, diseret, dan dihitung | 4 permainan |
 | P. Picture | Diagram polos: jalur bilangan, tabel nilai tempat, bagan pasangan, model batang | 3 permainan |
@@ -154,6 +154,8 @@ Tampilannya satu layar, sama dengan Kelas 2 Bab 1. Tidak ada adegan yang berjala
    _Papan layar:_ Tidak cocok? Hitung ulang
 
 ## 5. Tahap 2: Mind-Map (peta pikiran)
+
+Tampilan "Taman Ide": matahari berwajah Igil di tengah, kartu bernomor di kiri dan kanan dihubungkan cabang berwarna. Setiap kartu hanya memuat nomor, ikon, dan judul langkah. Uraian di bawah dibacakan Suara Guru saat kartu diketuk dan tidak tampil di layar.
 
 **1. Kapan Kita Mengurangi?** 🍎  
 Kita mengurangi saat benda berkurang atau diberikan, dan saat kita mencari selisih dua kelompok. Tika punya 12 jambu air dan Kira punya 18. Kalau dipasangkan satu-satu, jambu Kira yang tidak berpasangan adalah selisihnya. Selisih dicari dengan mengurangkan bilangan besar dengan bilangan kecil: 18 dikurangi 12.

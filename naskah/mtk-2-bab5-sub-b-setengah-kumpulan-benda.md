@@ -32,7 +32,7 @@ Berkas ini ditulis dari satu sumber, `src/components/modul/naskah-k2b5.ts` dan `
 | Tahap | Isi | Banyak butir |
 |---|---|---|
 | S. Story | Video animasi HTML/SVG satu layar seperti Kelas 2 Bab 1: tiga cerita disusun berurutan dalam satu pemutar, mulai saat Mulai diketuk (tidak ada putar otomatis) | 3 cerita, 9 adegan, 32 ketukan |
-| M. Mind-Map | Peta pikiran berurutan, tiap cabang bisa diketuk dan uraiannya tampil di layar | 8 langkah |
+| M. Mind-Map | Peta pikiran "Taman Ide": matahari berwajah Igil di tengah, kartu bernomor di kiri dan kanan dengan cabang berwarna. Kartu hanya memuat ikon dan judul, uraiannya dibacakan Suara Guru saat kartu diketuk | 8 langkah |
 | I. Infografis | Poster rangkuman, suara di tiap panel | 10 panel |
 | C. Concrete | Benda nyata yang dipotong, dilipat, dituang, dibagi, dan dipasangkan | 4 permainan |
 | P. Picture | Diagram polos: bangun berbagi bagian, titik dan garis, tabel pilihan | 3 permainan |
@@ -142,6 +142,8 @@ Tampilannya satu layar, sama dengan Kelas 2 Bab 1. Tidak ada adegan yang berjala
    _Papan layar:_ 5 tak bisa dibagi dua
 
 ## 5. Tahap 2: Mind-Map (peta pikiran)
+
+Tampilan "Taman Ide": matahari berwajah Igil di tengah, kartu bernomor di kiri dan kanan dihubungkan cabang berwarna. Setiap kartu hanya memuat nomor, ikon, dan judul langkah. Uraian di bawah dibacakan Suara Guru saat kartu diketuk dan tidak tampil di layar.
 
 **1. Dari Benda Utuh ke Kumpulan Benda** 🔵  
 Di Sub-Bab A kita membagi satu benda utuh. Sekarang kita membagi sekumpulan benda yang terdiri dari banyak benda kecil, seperti kelereng, ikan, dan pensil. Aturannya tetap sama: kita membuat dua bagian yang sama. Bedanya, bagian itu sekarang dihitung dari banyaknya benda, bukan dari luasnya.
