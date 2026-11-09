@@ -5,6 +5,7 @@ import { useEffect, useMemo, useRef, useState } from "react";
 import { Sparkles, UploadCloud, X } from "lucide-react";
 import PageShell from "@/components/PageShell";
 import PilihGuru from "@/components/PilihGuru";
+import { MUAT_BAB_BARU } from "@/components/modul/registri-bab-baru";
 import { type KelaminGuru } from "@/lib/guru";
 import {
   DATA_KURIKULUM,
@@ -282,8 +283,13 @@ export default function RuangBelajarPage() {
                     [JUDUL_MTK_6_BAB3]: "/ruang-belajar/mtk-6-bab3",
                   }
                 : {};
+    // Bab Matematika Kelas 3 sampai 6 yang sudah dipasang di registri-bab-baru: jalurnya dibaca dari judul "Bab N: ...".
+    const nomorKelas = kelas.match(/^(\d) SD$/)?.[1];
+    const nomorBab = materi.match(/^Bab (\d+):/)?.[1];
+    const kunciBabBaru = nomorKelas && nomorBab && mapel === "Matematika" ? `mtk-${nomorKelas}-bab${nomorBab}` : "";
+    const jalurBabBaru = kunciBabBaru && kunciBabBaru in MUAT_BAB_BARU ? `/ruang-belajar/${kunciBabBaru}` : "";
     const jalurModul =
-      sumber === "kurikulum" ? (jalurKelas[materi] ?? "") : "";
+      sumber === "kurikulum" ? (jalurKelas[materi] ?? jalurBabBaru) : "";
     if (jalurModul) {
       router.push(
         `${jalurModul}?nama=${encodeURIComponent(nama.trim() || "Siswa")}`,

@@ -278,7 +278,8 @@ import {
 // ============================================================================
 
 type MainTabId = "silabus" | "materi" | "simulasi" | "latihan" | "ujian";
-type SubBabId = "A" | "B" | "C" | "D";
+/** Kode sub-bab: "A" sampai "I" (Kelas 3 sampai 6 punya sampai sembilan sub-bab). */
+type SubBabId = string;
 type SmicpaStageId = "story" | "mindmap" | "infografis" | "concrete" | "pictorial" | "abstract";
 
 interface StorySlideItem {
@@ -370,9 +371,17 @@ interface QuestionItem {
 // ============================================================================
 
 /** Bab yang bisa diputar. Isinya dibaca dari berkas JSON bab (tanpa kunci jawaban). */
-export type BabModul = "mtk-1-bab1" | "mtk-1-bab2" | "mtk-1-bab3" | "mtk-1-bab4" | "mtk-1-bab5" | "mtk-1-bab6" | "mtk-1-bab7" | "mtk-1-bab8" | "mtk-2-bab1" | "mtk-2-bab2" | "mtk-2-bab3" | "mtk-2-bab4" | "mtk-2-bab5" | "mtk-2-bab6" | "mtk-2-bab7" | "mtk-2-bab8";
+export type BabLama = "mtk-1-bab1" | "mtk-1-bab2" | "mtk-1-bab3" | "mtk-1-bab4" | "mtk-1-bab5" | "mtk-1-bab6" | "mtk-1-bab7" | "mtk-1-bab8" | "mtk-2-bab1" | "mtk-2-bab2" | "mtk-2-bab3" | "mtk-2-bab4" | "mtk-2-bab5" | "mtk-2-bab6" | "mtk-2-bab7" | "mtk-2-bab8";
 
-interface MateriBab {
+/**
+ * Bab Kelas 3 sampai 6. Isinya TIDAK diimpor di sini: tiap bab membawa paketnya sendiri (data JSON dan komponen
+ * tahapnya) yang dimuat malas lewat PemutarBabBaru dan registri-bab-baru.ts, supaya paket bab lain tidak ikut terunduh.
+ */
+export type BabBaru = `mtk-${3 | 4 | 5 | 6}-bab${number}`;
+
+export type BabModul = BabLama | BabBaru;
+
+export interface MateriBab {
   /** Kode bab di server (mis. k1-mat-bab3). Dipakai untuk RPC Latihan dan Ujian. */
   chapter_id?: string;
   subjectLabel: string;
@@ -391,7 +400,7 @@ interface MateriBab {
   examQuestions?: QuestionItem[];
 }
 
-const MATERI_BAB: Record<BabModul, MateriBab> = {
+const MATERI_BAB: Record<BabLama, MateriBab> = {
   "mtk-1-bab1": materiBab1 as unknown as MateriBab,
   "mtk-1-bab2": materiBab2 as unknown as MateriBab,
   "mtk-1-bab3": materiBab3 as unknown as MateriBab,
@@ -517,7 +526,7 @@ const SUB_ANAK_K2B6: Record<SubBabId, { emoji: string }> = {
   D: { emoji: "🧮" },
 };
 
-type PropsTahapBaru = {
+export type PropsTahapBaru = {
   speakGuru: (teks: string) => void;
   panel: PanelSuara;
   hentikan: () => void;
@@ -529,19 +538,25 @@ type PropsTahapBaru = {
  * Sub-bab yang membawa komponen tahapnya sendiri (cerita, peta pikiran, infografis, Concrete, Picture,
  * Abstract). Kuncinya "<bab>-<sub-bab>". Dipakai Matematika Kelas 2 Bab 1 dan seterusnya.
  */
-const MODUL_SUBBAB: Record<
-  string,
-  {
-    Cerita: ComponentType<{ speakGuru: (teks: string) => void }>;
-    peta: typeof PETA_PIKIRAN_K2A;
-    Infografis: ComponentType<{ speakGuru: (teks: string) => void }>;
-    Concrete: ComponentType<PropsTahapBaru>;
-    Picture: ComponentType<PropsTahapBaru>;
-    Abstract: ComponentType<PropsTahapBaru>;
-    /** Tampilkan uraian tiap langkah peta pikiran di layar (bukan hanya lewat suara). */
-    uraianPeta?: boolean;
-  }
-> = {
+export type ModulSubBab = {
+  Cerita: ComponentType<{ speakGuru: (teks: string) => void }>;
+  peta: typeof PETA_PIKIRAN_K2A;
+  Infografis: ComponentType<{ speakGuru: (teks: string) => void }>;
+  Concrete: ComponentType<PropsTahapBaru>;
+  Picture: ComponentType<PropsTahapBaru>;
+  Abstract: ComponentType<PropsTahapBaru>;
+  /** Tampilkan uraian tiap langkah peta pikiran di layar (bukan hanya lewat suara). */
+  uraianPeta?: boolean;
+};
+
+/** Paket satu bab Kelas 3 sampai 6: data JSON, komponen tiap sub-bab, dan ikon sub-bab. Dimuat malas. */
+export type PaketBab = {
+  materi: MateriBab;
+  sub: Record<string, ModulSubBab>;
+  emoji: Record<string, { emoji: string }>;
+};
+
+const MODUL_SUBBAB: Record<string, ModulSubBab> = {
   "mtk-2-bab1-A": { Cerita: VideoHitungK2A, peta: PETA_PIKIRAN_K2A, Infografis: InfografisHitungK2A, Concrete: ConcreteHitungK2A, Picture: PictureHitungK2A, Abstract: AbstractHitungK2A },
   "mtk-2-bab1-B": { Cerita: VideoNilaiK2B, peta: PETA_PIKIRAN_K2B, Infografis: InfografisNilaiK2B, Concrete: ConcreteNilaiK2B, Picture: PictureNilaiK2B, Abstract: AbstractNilaiK2B },
   "mtk-2-bab1-C": { Cerita: VideoBandingK2C, peta: PETA_PIKIRAN_K2C, Infografis: InfografisBandingK2C, Concrete: ConcreteBandingK2C, Picture: PictureBandingK2C, Abstract: AbstractBandingK2C },
@@ -944,7 +959,7 @@ const TAHAP_SILABUS = [
 type SimulasiBabProps = { speakGuru: (teks: string) => void; onKeLatihan: () => void };
 
 /** Simulasi tiap bab. Bab yang belum ada di sini tidak menampilkan tab Simulasi. */
-const SIMULASI_BAB: Partial<Record<BabModul, ComponentType<SimulasiBabProps>>> = {
+const SIMULASI_BAB: Partial<Record<string, ComponentType<SimulasiBabProps>>> = {
   "mtk-1-bab1": SimulasiBab1,
   "mtk-1-bab2": SimulasiBab2,
   "mtk-1-bab3": SimulasiBab3,
@@ -955,7 +970,7 @@ const SIMULASI_BAB: Partial<Record<BabModul, ComponentType<SimulasiBabProps>>> =
   "mtk-1-bab8": SimulasiBab8,
 };
 
-export default function IgilModulePlayer({ bab = "mtk-1-bab1" }: { bab?: BabModul }) {
+export default function IgilModulePlayer({ bab = "mtk-1-bab1", paket }: { bab?: BabModul; paket?: PaketBab }) {
   const adaBab3 = bab === "mtk-1-bab3";
   const adaBab4 = bab === "mtk-1-bab4";
   const adaBab5 = bab === "mtk-1-bab5";
@@ -971,11 +986,11 @@ export default function IgilModulePlayer({ bab = "mtk-1-bab1" }: { bab?: BabModu
   const adaK2B7 = bab === "mtk-2-bab7";
   const adaK2B8 = bab === "mtk-2-bab8";
   /** Bab bergaya baru (Bab 2 sampai Bab 8): Latihan terbuka setelah materi tersedia selesai. */
-  const adaBab2 = bab === "mtk-1-bab2" || adaBab3 || adaBab4 || adaBab5 || adaBab6 || adaBab7 || adaBab8 || adaK2B1 || adaK2B2 || adaK2B3 || adaK2B4 || adaK2B5 || adaK2B6 || adaK2B7 || adaK2B8;
+  const adaBab2 = bab === "mtk-1-bab2" || adaBab3 || adaBab4 || adaBab5 || adaBab6 || adaBab7 || adaBab8 || adaK2B1 || adaK2B2 || adaK2B3 || adaK2B4 || adaK2B5 || adaK2B6 || adaK2B7 || adaK2B8 || paket !== undefined;
   /** Tab Simulasi tampil hanya di bab yang sudah punya simulasi (lihat SIMULASI_BAB). */
   const SimulasiBab = SIMULASI_BAB[bab];
   const adaTabSimulasi = SimulasiBab !== undefined;
-  const materi = MATERI_BAB[bab];
+  const materi = paket ? paket.materi : MATERI_BAB[bab as BabLama];
   const SUB_BABS = materi.subBabs as Record<SubBabId, SubBabContent>;
   const daftarSub = Object.keys(materi.subBabs) as SubBabId[];
   const PRACTICE_QUESTIONS = materi.practiceQuestions ?? [];
@@ -985,7 +1000,7 @@ export default function IgilModulePlayer({ bab = "mtk-1-bab1" }: { bab?: BabModu
   const idBabServer = materi.chapter_id ?? "";
   const profilBelajar = useProfilBelajar();
   const poin = materi.tokens ?? POIN_BAWAAN;
-  const peta = adaK2B8 ? SUB_ANAK_K2B8 : adaK2B7 ? SUB_ANAK_K2B7 : adaK2B6 ? SUB_ANAK_K2B6 : adaK2B5 ? SUB_ANAK_K2B5 : adaK2B4 ? SUB_ANAK_K2B4 : adaK2B3 ? SUB_ANAK_K2B3 : adaK2B2 ? SUB_ANAK_K2B2 : adaK2B1 ? SUB_ANAK_K2B1 : adaBab8 ? SUB_ANAK_BAB8 : adaBab7 ? SUB_ANAK_BAB7 : adaBab6 ? SUB_ANAK_BAB6 : adaBab5 ? SUB_ANAK_BAB5 : adaBab4 ? SUB_ANAK_BAB4 : adaBab3 ? SUB_ANAK_BAB3 : adaBab2 ? SUB_ANAK_BAB2 : SUB_ANAK;
+  const peta = paket ? paket.emoji : adaK2B8 ? SUB_ANAK_K2B8 : adaK2B7 ? SUB_ANAK_K2B7 : adaK2B6 ? SUB_ANAK_K2B6 : adaK2B5 ? SUB_ANAK_K2B5 : adaK2B4 ? SUB_ANAK_K2B4 : adaK2B3 ? SUB_ANAK_K2B3 : adaK2B2 ? SUB_ANAK_K2B2 : adaK2B1 ? SUB_ANAK_K2B1 : adaBab8 ? SUB_ANAK_BAB8 : adaBab7 ? SUB_ANAK_BAB7 : adaBab6 ? SUB_ANAK_BAB6 : adaBab5 ? SUB_ANAK_BAB5 : adaBab4 ? SUB_ANAK_BAB4 : adaBab3 ? SUB_ANAK_BAB3 : adaBab2 ? SUB_ANAK_BAB2 : SUB_ANAK;
   /** Sub-bab yang sudah punya naskah dan permainan. Sub-bab "segera hadir" tidak menahan Latihan dan Ujian. */
   const daftarSubTersedia = daftarSub.filter((id) => !SUB_BABS[id].segeraHadir);
 
@@ -1383,7 +1398,7 @@ export default function IgilModulePlayer({ bab = "mtk-1-bab1" }: { bab?: BabModu
   // ============================================================================
 
   const currentSubContent = SUB_BABS[activeSubBab];
-  const modulBaru = MODUL_SUBBAB[`${bab}-${activeSubBab}`];
+  const modulBaru = paket ? paket.sub[activeSubBab] : MODUL_SUBBAB[`${bab}-${activeSubBab}`];
   const subB2 = bab === "mtk-1-bab2" && activeSubBab === "B";
   const subC2 = bab === "mtk-1-bab2" && activeSubBab === "C";
   const subB3 = bab === "mtk-1-bab3" && activeSubBab === "B";

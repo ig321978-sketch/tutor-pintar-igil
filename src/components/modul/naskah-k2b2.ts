@@ -61,7 +61,8 @@ export type GameNaskah = {
 };
 
 export type SubBabNaskah = {
-  id: "A" | "B" | "C";
+  /** Kode sub-bab: "A" sampai "I". */
+  id: string;
   codeTitle: string;
   fullTitle: string;
   targetDescription: string;
