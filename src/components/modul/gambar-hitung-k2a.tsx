@@ -29,7 +29,7 @@ function Label({ x, y, w, teks, ukuran = 14 }: { x: number; y: number; w: number
 }
 
 /** Tas kecil di dalam adegan. */
-function TasG({ x, y, w = 18, h = 20, warna }: { x: number; y: number; w?: number; h?: number; warna: string }) {
+export function TasG({ x, y, w = 18, h = 20, warna }: { x: number; y: number; w?: number; h?: number; warna: string }) {
   return (
     <g>
       <path d={`M${x + w * 0.3} ${y + h * 0.18} Q${x + w / 2} ${y - h * 0.12} ${x + w * 0.7} ${y + h * 0.18}`} fill="none" stroke={BIRU} strokeWidth="1.6" strokeLinecap="round" />
@@ -40,7 +40,7 @@ function TasG({ x, y, w = 18, h = 20, warna }: { x: number; y: number; w?: numbe
 }
 
 /** Rak loker tiga baris sepuluh kolom. Bilangan berjalan berkelok seperti di buku: baris bawah kiri ke kanan. */
-function LokerRak({ x, y, isi, nomor = false, sorot = [] }: { x: number; y: number; isi: number; nomor?: boolean; sorot?: number[] }) {
+export function LokerRak({ x, y, isi, nomor = false, nomorSampai, sorot = [] }: { x: number; y: number; isi: number; nomor?: boolean; nomorSampai?: number; sorot?: number[] }) {
   const lebar = 27;
   const tinggi = 26;
   return (
@@ -58,7 +58,7 @@ function LokerRak({ x, y, isi, nomor = false, sorot = [] }: { x: number; y: numb
           <g key={n}>
             <rect x={cx + 1} y={cy + 1} width={lebar - 2} height={tinggi - 2} rx="3" fill="#FFF3DB" stroke="#C9A06A" strokeWidth="1" />
             {ada ? <TasG x={cx + (lebar - 18) / 2} y={cy + 3} warna={WARNA_BARIS[r]} /> : null}
-            {ada && nomor ? (
+            {ada && (nomorSampai === undefined ? nomor : n <= nomorSampai) ? (
               <g>
                 <circle cx={cx + lebar / 2} cy={cy + 15} r="6.6" fill="#FFFFFF" stroke={BIRU} strokeWidth="1.2" />
                 <text x={cx + lebar / 2} y={cy + 18.4} textAnchor="middle" fontSize="8.4" fontWeight="900" fill={BIRU}>

@@ -18,7 +18,7 @@ import { BatangG, KubusG, Label, TabelMini } from "./gambar-nilai-k2b";
 const WARNA_PERMEN = ["#F472B6", "#38BDF8", "#FBBF24", "#A78BFA", "#34D399"];
 
 /** Permen bungkus. Pusat di (x, y). */
-function Permen({ x, y, i = 0, s = 1 }: { x: number; y: number; i?: number; s?: number }) {
+export function Permen({ x, y, i = 0, s = 1 }: { x: number; y: number; i?: number; s?: number }) {
   const w = WARNA_PERMEN[i % WARNA_PERMEN.length];
   return (
     <g transform={`translate(${x} ${y}) scale(${s})`}>
@@ -31,10 +31,10 @@ function Permen({ x, y, i = 0, s = 1 }: { x: number; y: number; i?: number; s?: 
 }
 
 /** Jarak antar pusat permen: lebar permen (26 satuan) dikali skala, ditambah celah. */
-const jarakPermen = (s: number) => 26 * s + 4;
+export const jarakPermen = (s: number) => 26 * s + 4;
 
 /** Sekelompok n permen dalam baris `kolom`. (x, y) adalah pusat permen pertama. */
-function KelompokPermen({ x, y, n, s = 0.72, mulai = 0, kolom = 5 }: { x: number; y: number; n: number; s?: number; mulai?: number; kolom?: number }) {
+export function KelompokPermen({ x, y, n, s = 0.72, mulai = 0, kolom = 5 }: { x: number; y: number; n: number; s?: number; mulai?: number; kolom?: number }) {
   const jarak = jarakPermen(s);
   return (
     <>
@@ -46,13 +46,13 @@ function KelompokPermen({ x, y, n, s = 0.72, mulai = 0, kolom = 5 }: { x: number
 }
 
 /** Lingkaran putus-putus yang mengelilingi satu kelompok sepuluh (dua baris lima). */
-function CincinSepuluh({ x, y, s = 0.72 }: { x: number; y: number; s?: number }) {
+export function CincinSepuluh({ x, y, s = 0.72 }: { x: number; y: number; s?: number }) {
   const jarak = jarakPermen(s);
   return <rect x={x - 17} y={y - 14} width={4 * jarak + 34} height={17 * s + 5 + 28} rx="16" fill="none" stroke="#EF4444" strokeWidth="2.2" strokeDasharray="5 4" />;
 }
 
 /** Stoples permen. Badan kaca, tutup emas, isi permen acak tetap. */
-function Stoples({ x, y, isi = 16, s = 1 }: { x: number; y: number; isi?: number; s?: number }) {
+export function Stoples({ x, y, isi = 16, s = 1 }: { x: number; y: number; isi?: number; s?: number }) {
   const letak: [number, number][] = [
     [-18, -2], [0, -6], [18, 0], [-24, 16], [-6, 12], [14, 14], [28, 20], [-16, 30], [4, 28], [22, 34], [-30, 32], [-2, 44], [16, 46], [-20, 48], [30, 44], [8, 8],
   ];
@@ -68,7 +68,7 @@ function Stoples({ x, y, isi = 16, s = 1 }: { x: number; y: number; isi?: number
 }
 
 /** Jalur kotak bilangan seperti di buku: 11 kotak dari `dari` sampai `dari + 10`. */
-function JalurKotak({ x, y, dari, sorot }: { x: number; y: number; dari: number; sorot: number }) {
+export function JalurKotak({ x, y, dari, sorot }: { x: number; y: number; dari: number; sorot: number }) {
   return (
     <g>
       {Array.from({ length: 11 }, (_, i) => {
@@ -88,7 +88,7 @@ function JalurKotak({ x, y, dari, sorot }: { x: number; y: number; dari: number;
 }
 
 /** Kartu bilangan kecil. */
-function KartuAngka({ x, y, n, warna = "#F9A8D4" }: { x: number; y: number; n: number; warna?: string }) {
+export function KartuAngka({ x, y, n, warna = "#F9A8D4" }: { x: number; y: number; n: number; warna?: string }) {
   return (
     <g>
       <rect x={x} y={y} width="56" height="46" rx="9" fill={warna} stroke={BIRU} strokeWidth="2.8" />
