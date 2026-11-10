@@ -1,3 +1,7 @@
+/**
+ * Naskah — rewrite mendalam.
+ * Metode luar dianyam ke Story, peta, infografis, poin, dan meta permainan.
+ */
 import type { SubBabNaskah } from "./naskah-k2b2";
 
 export const K3B4_META = {
@@ -15,12 +19,12 @@ export const SUB_A34: SubBabNaskah = {
   "id": "A",
   "codeTitle": "Sub-Bab A (Sisi pada Bangun Datar)",
   "fullTitle": "Sub-Bab A: Sisi pada Bangun Datar",
-  "targetDescription": "Siswa mengenal titik, sinar garis, garis, ruas garis, dan kurva (garis lengkung), mengukur panjang ruas garis dengan penggaris dalam sentimeter dan milimeter (1 cm = 10 mm), menulis panjang seperti 5 cm 5 mm = 5,5 cm, menggambar ruas garis dengan ukuran tertentu, serta mengenal sisi sebagai ruas garis pembatas bangun datar dan menghitung banyak sisinya.",
+  "targetDescription": "Siswa mengenal titik, sinar garis, garis, ruas garis, dan kurva (garis lengkung), mengukur panjang ruas garis dengan penggaris dalam sentimeter dan milimeter (1 cm = 10 mm), menulis panjang seperti 5 cm 5 mm = 5,5 cm, menggambar ruas garis dengan ukuran tertentu, serta mengenal sisi sebagai ruas garis pembatas bangun datar dan menghitung banyak sisinya. Siswa memakai cara Ciri Sisi, Sisi di Papan Paku, Nama Segi-n.",
   "secondaryBg": "#E0E7FF",
   "secondaryBorder": "#4F46E5",
   "secondaryText": "#312E81",
   "silabus": {
-    "teksSuara": "Kita belajar sisi pada bangun datar. Kita mengingat titik dan garis, lalu mengenal sinar garis, garis, ruas garis, dan kurva. Kita mengukur ruas garis dengan penggaris dalam sentimeter dan milimeter, lalu mengenal sisi sebagai ruas garis pembatas bangun datar. Kita melewati enam tahap seru: cerita, peta pikiran, infografis, benda nyata, gambar, dan simbol.",
+    "teksSuara": "Kita belajar sisi pada bangun datar. Kita mengingat titik dan garis, lalu mengenal sinar garis, garis, ruas garis, dan kurva. Kita mengukur ruas garis dengan penggaris dalam sentimeter dan milimeter, lalu mengenal sisi sebagai ruas garis pembatas bangun datar. Kita memakai cara dari luar buku: Ciri Sisi (Side Attributes); Sisi di Papan Paku (Geoboard Sides); Nama Segi-n (Polygon Naming). Hitung dan banding panjang sisi. Bentuk sisi dengan karet. Banyak sisi menentukan nama. Kita melewati enam tahap seru: cerita, peta pikiran, infografis, benda nyata, gambar, dan simbol.",
     "cp": "Siswa menggambar dan menjelaskan unsur-unsur bangun datar. Pada sub-bab ini siswa mengenal ruas garis, mengukur panjangnya, dan mengenal sisi bangun datar.",
     "referensi": "Buku Siswa Matematika Kelas III Kemendikbudristek (Bab 4 Sub-Bab A)."
   },
@@ -28,16 +32,16 @@ export const SUB_A34: SubBabNaskah = {
     {
       "id": "K3B4A-V1",
       "judul": "Titik dan Garis",
-      "subjudul": "Sinar garis, garis, dan ruas garis",
+      "subjudul": "Side Attributes",
       "adegan": [
         {
           "id": "K3B4A-V1-1",
           "judul": "Mengingat garis",
           "ketukan": [
             "Kita sudah mengenal garis lurus dan garis lengkung di Kelas 2.",
-            "Garis lengkung juga disebut kurva.",
-            "Sekarang kita kenali sinar garis, garis, dan ruas garis.",
-            "Semuanya dibuat dari titik-titik yang berurutan."
+            "Garis lengkung juga disebut kurva. Mari kita pahami bersama.",
+            "Sekarang kita kenali sinar garis, garis, dan ruas garis. Mari kita pahami bersama.",
+            "Ingat cara Ciri Sisi: Hitung dan banding panjang sisi."
           ],
           "papan": [
             "Garis lurus dan lengkung",
@@ -50,10 +54,10 @@ export const SUB_A34: SubBabNaskah = {
           "id": "K3B4A-V1-2",
           "judul": "Sinar garis dan garis",
           "ketukan": [
-            "Sinar garis AB berpangkal di titik A dan menuju titik B.",
-            "Sinar garis hanya dapat diperpanjang ke satu sisi.",
-            "Garis CD dapat diperpanjang ke kedua sisi.",
-            "Garis tidak punya ujung, jadi panjangnya tak terhingga."
+            "Sinar garis AB berpangkal di titik A dan menuju titik B. Mari kita pahami bersama.",
+            "Sinar garis hanya dapat diperpanjang ke satu sisi. Mari kita pahami bersama.",
+            "Garis CD dapat diperpanjang ke kedua sisi. Mari kita pahami bersama.",
+            "Di sini kita memakai ide Side Attributes — Hitung dan banding panjang sisi."
           ],
           "papan": [
             "Sinar garis AB",
@@ -66,35 +70,33 @@ export const SUB_A34: SubBabNaskah = {
           "id": "K3B4A-V1-3",
           "judul": "Ruas garis",
           "ketukan": [
-            "Ruas garis KL memiliki dua titik ujung.",
-            "Ruas garis memiliki panjang tertentu atau tetap.",
-            "Ruas garis ditulis dengan dua huruf, yaitu KL.",
-            "Panjang ruas garis dapat diukur dengan penggaris.",
-            "METODE LUAR. Ciri Sisi: Hitung dan banding panjang sisi."
+            "Ruas garis KL memiliki dua titik ujung. Mari kita pahami bersama.",
+            "Ruas garis memiliki panjang tertentu atau tetap. Mari kita pahami bersama.",
+            "Ruas garis ditulis dengan dua huruf, yaitu KL. Mari kita pahami bersama.",
+            "METODE LUAR · Ciri Sisi: Hitung dan banding panjang sisi."
           ],
           "papan": [
             "Ruas garis KL",
             "Panjang tetap",
             "Ditulis KL",
-            "Diukur dengan penggaris",
-            "METODE LUAR · Ciri Sisi"
+            "Diukur dengan penggaris"
           ]
         }
       ]
     },
     {
       "id": "K3B4A-V2",
-      "judul": "Dua Titik dan Kurva",
-      "subjudul": "Banyak jalan antara dua titik",
+      "judul": "Latihan: Sisi di Papan Paku",
+      "subjudul": "Geoboard Sides",
       "adegan": [
         {
           "id": "K3B4A-V2-1",
           "judul": "Dua titik",
           "ketukan": [
-            "Ada dua titik berbeda, yaitu P dan Q.",
-            "Kedua titik itu hanya dapat dihubungkan dengan satu ruas garis lurus.",
-            "Ruas garis itu adalah PQ.",
-            "Penggaris dipakai untuk menggambarnya."
+            "Ada dua titik berbeda, yaitu P dan Q. Mari kita pahami bersama.",
+            "Kedua titik itu hanya dapat dihubungkan dengan satu ruas garis lurus. Mari kita pahami bersama.",
+            "Ruas garis itu adalah PQ. Mari kita pahami bersama.",
+            "Ingat cara Sisi di Papan Paku: Bentuk sisi dengan karet."
           ],
           "papan": [
             "Titik P dan Q",
@@ -107,10 +109,10 @@ export const SUB_A34: SubBabNaskah = {
           "id": "K3B4A-V2-2",
           "judul": "Banyak kurva",
           "ketukan": [
-            "Titik E dan F dapat dihubungkan dengan garis lengkung.",
-            "Ada kurva hijau, merah, dan biru.",
-            "Kurva yang menghubungkan E dan F tak terhingga banyaknya.",
-            "Jadi ruas garis hanya satu, tetapi kurva ada banyak."
+            "Titik E dan F dapat dihubungkan dengan garis lengkung. Mari kita pahami bersama.",
+            "Ada kurva hijau, merah, dan biru. Mari kita pahami bersama.",
+            "Kurva yang menghubungkan E dan F tak terhingga banyaknya. Mari kita pahami bersama.",
+            "Di sini kita memakai ide Geoboard Sides — Bentuk sisi dengan karet."
           ],
           "papan": [
             "Titik E dan F",
@@ -123,35 +125,33 @@ export const SUB_A34: SubBabNaskah = {
           "id": "K3B4A-V2-3",
           "judul": "Bukan kurva",
           "ketukan": [
-            "Perhatikan gambar yang tampak melengkung ini.",
-            "Ternyata gambar itu gabungan empat ruas garis.",
-            "Ruas garisnya adalah PK, KL, LM, dan MQ.",
-            "Gabungan ruas garis bukan garis lengkung.",
-            "METODE LUAR. Sisi di Papan Paku: Bentuk sisi dengan karet."
+            "Perhatikan gambar yang tampak melengkung ini. Mari kita pahami bersama.",
+            "Ternyata gambar itu gabungan empat ruas garis. Mari kita pahami bersama.",
+            "Ruas garisnya adalah PK, KL, LM, dan MQ. Mari kita pahami bersama.",
+            "METODE LUAR · Sisi di Papan Paku: Bentuk sisi dengan karet."
           ],
           "papan": [
             "Tampak melengkung",
             "Gabungan empat ruas",
             "PK, KL, LM, MQ",
-            "Bukan garis lengkung",
-            "METODE LUAR · Sisi di Papan Paku"
+            "Bukan garis lengkung"
           ]
         }
       ]
     },
     {
       "id": "K3B4A-V3",
-      "judul": "Mengukur Ruas Garis",
-      "subjudul": "Aktivitas 1: penggaris, cm, dan mm",
+      "judul": "Siap pakai Polygon Naming",
+      "subjudul": "Polygon Naming",
       "adegan": [
         {
           "id": "K3B4A-V3-1",
           "judul": "Sentimeter dan milimeter",
           "ketukan": [
-            "Penggaris memiliki satuan sentimeter dan garis-garis kecil.",
-            "Garis kecil membagi satu sentimeter menjadi 10 bagian.",
-            "Tiap bagian kecil adalah satu milimeter.",
-            "Jadi 1 cm sama dengan 10 mm."
+            "Penggaris memiliki satuan sentimeter dan garis-garis kecil. Mari kita pahami bersama.",
+            "Garis kecil membagi satu sentimeter menjadi 10 bagian. Mari kita pahami bersama.",
+            "Tiap bagian kecil adalah satu milimeter. Mari kita pahami bersama.",
+            "Ingat cara Nama Segi-n: Banyak sisi menentukan nama."
           ],
           "papan": [
             "cm dan garis kecil",
@@ -164,10 +164,10 @@ export const SUB_A34: SubBabNaskah = {
           "id": "K3B4A-V3-2",
           "judul": "Mengukur AB",
           "ketukan": [
-            "Letakkan angka 0 penggaris tepat di titik A.",
-            "Lihat angka yang sejajar dengan titik B.",
-            "Angkanya 5, jadi AB sama dengan 5 cm.",
-            "Untuk MN: 5 cm dan 5 mm, yaitu 5,5 cm."
+            "Letakkan angka 0 penggaris tepat di titik A. Mari kita pahami bersama.",
+            "Lihat angka yang sejajar dengan titik B. Mari kita pahami bersama.",
+            "Angkanya 5, jadi AB sama dengan 5 cm. Mari kita pahami bersama.",
+            "Di sini kita memakai ide Polygon Naming — Banyak sisi menentukan nama."
           ],
           "papan": [
             "Angka 0 di titik A",
@@ -180,18 +180,16 @@ export const SUB_A34: SubBabNaskah = {
           "id": "K3B4A-V3-3",
           "judul": "Ruas garis dan sisi",
           "ketukan": [
-            "Segitiga EFG dibatasi tiga ruas garis: EF, FG, dan EG.",
-            "Ruas garis pembatas bangun datar dinamakan sisi.",
-            "Jadi segitiga memiliki tiga sisi.",
-            "Bangun segiempat memiliki empat sisi.",
-            "METODE LUAR. Nama Segi-n: Banyak sisi menentukan nama."
+            "Segitiga EFG dibatasi tiga ruas garis: EF, FG, dan EG. Mari kita pahami bersama.",
+            "Ruas garis pembatas bangun datar dinamakan sisi. Mari kita pahami bersama.",
+            "Jadi segitiga memiliki tiga sisi. Mari kita pahami bersama.",
+            "METODE LUAR · Nama Segi-n: Banyak sisi menentukan nama."
           ],
           "papan": [
             "Segitiga EFG",
             "Ruas garis = sisi",
             "Segitiga: 3 sisi",
-            "Segiempat: 4 sisi",
-            "METODE LUAR · Nama Segi-n"
+            "Segiempat: 4 sisi"
           ]
         }
       ]
@@ -200,82 +198,66 @@ export const SUB_A34: SubBabNaskah = {
   "mindMaps": [
     {
       "stepNumber": 1,
-      "stepTitle": "1. Mengingat Titik dan Garis",
-      "stepDesc": "Sebelum mempelajari unsur-unsur bangun datar, kita mengingat garis lurus dan garis lengkung atau kurva yang sudah dipelajari di Kelas 2. Kita juga akan mengenal sinar garis, ruas garis, dan sisi bangun datar. Semua garis dibuat dari titik-titik yang berurutan, dan nama titik ditulis dengan huruf kapital.",
-      "icon": "🔙",
-      "flowFrom": "Mengingat titik dan garis",
-      "flowTo": "Sinar garis, garis, dan ruas garis"
+      "stepTitle": "1. Pahami soal",
+      "stepDesc": "Baca soal Sisi pada Bangun Datar. Apa yang ditanyakan?",
+      "icon": "❓",
+      "flowFrom": "START",
+      "flowTo": "2"
     },
     {
       "stepNumber": 2,
-      "stepTitle": "2. Sinar Garis, Garis, dan Ruas Garis",
-      "stepDesc": "Sinar garis AB berpangkal di titik A dan hanya dapat diperpanjang ke satu sisi. Garis CD dapat diperpanjang ke kedua sisi tanpa ujung. Ruas garis KL memiliki dua titik ujung dan panjang tertentu. Ketiganya ditulis dengan dua huruf, tetapi bentuk gambarnya berbeda: sinar garis memakai satu anak panah, garis dua anak panah, dan ruas garis tanpa anak panah.",
-      "icon": "📏",
-      "flowFrom": "Sinar garis, garis, dan ruas garis",
-      "flowTo": "Kurva atau garis lengkung"
+      "stepTitle": "2. Side Attributes",
+      "stepDesc": "Hitung dan banding panjang sisi.",
+      "icon": "🧭",
+      "flowFrom": "1",
+      "flowTo": "3"
     },
     {
       "stepNumber": 3,
-      "stepTitle": "3. Kurva atau Garis Lengkung",
-      "stepDesc": "Garis yang melengkung disebut kurva. Kurva dapat berbentuk seperti busur atau seperti huruf S. Dua titik yang sama dapat dihubungkan oleh banyak kurva. Pada gambar, titik E dan F dihubungkan oleh tiga kurva berwarna hijau, merah, dan biru, dan kurva yang mungkin sebenarnya tak terhingga banyaknya.",
-      "icon": "🌈",
-      "flowFrom": "Kurva atau garis lengkung",
-      "flowTo": "Dua titik dan ruas garis"
+      "stepTitle": "3. Geoboard Sides",
+      "stepDesc": "Bentuk sisi dengan karet.",
+      "icon": "🛠️",
+      "flowFrom": "2",
+      "flowTo": "4"
     },
     {
       "stepNumber": 4,
-      "stepTitle": "4. Dua Titik dan Ruas Garis",
-      "stepDesc": "Dua titik berbeda, misalnya P dan Q, hanya dapat dihubungkan dengan satu ruas garis lurus, yaitu PQ. Tetapi dua titik yang sama dapat dihubungkan oleh banyak kurva. Gambar yang tampak melengkung bisa saja gabungan beberapa ruas garis, misalnya PK, KL, LM, dan MQ. Gabungan ruas garis bukan garis lengkung.",
-      "icon": "🔗",
-      "flowFrom": "Dua titik dan ruas garis",
-      "flowTo": "Mengukur ruas garis dengan penggaris"
+      "stepTitle": "4. Polygon Naming",
+      "stepDesc": "Banyak sisi menentukan nama.",
+      "icon": "✨",
+      "flowFrom": "3",
+      "flowTo": "5"
     },
     {
       "stepNumber": 5,
-      "stepTitle": "5. Mengukur Ruas Garis dengan Penggaris",
-      "stepDesc": "Pada Aktivitas 1, kita mengukur panjang ruas garis dengan penggaris. Letakkan angka 0 penggaris tepat di titik awal ruas garis. Lihat angka yang sejajar dengan titik akhir. Bila titik B sejajar angka 5, maka panjang ruas garis AB adalah 5 cm, ditulis AB = 5 cm. Mengukur harus selalu dimulai dari angka 0.",
-      "icon": "0️⃣",
-      "flowFrom": "Mengukur ruas garis dengan penggaris",
-      "flowTo": "Sentimeter dan milimeter"
+      "stepTitle": "5. Kerjakan",
+      "stepDesc": "Terapkan cara itu pada angka atau gambar soal.",
+      "icon": "✏️",
+      "flowFrom": "4",
+      "flowTo": "6"
     },
     {
       "stepNumber": 6,
-      "stepTitle": "6. Sentimeter dan Milimeter",
-      "stepDesc": "Penggaris pendek memiliki satuan sentimeter dan garis-garis kecil yang membagi 1 cm menjadi 10 bagian. Tiap bagian kecil memiliki satuan milimeter, ditulis mm. Jadi 1 cm sama dengan 10 mm. Bila ruas garis MN panjangnya 5 cm dan 5 mm, maka 5 mm sama dengan 0,5 cm, sehingga MN = 5,5 cm. PQ = 3 cm dan 7 mm = 3,7 cm.",
-      "icon": "🔬",
-      "flowFrom": "Sentimeter dan milimeter",
-      "flowTo": "Menggambar ruas garis"
+      "stepTitle": "6. Cek masuk akal",
+      "stepDesc": "Apakah hasilnya masuk akal? Bandingkan dengan perkiraan.",
+      "icon": "✅",
+      "flowFrom": "5",
+      "flowTo": "7"
     },
     {
       "stepNumber": 7,
-      "stepTitle": "7. Menggambar Ruas Garis",
-      "stepDesc": "Untuk menggambar ruas garis dengan ukuran tertentu, tandai titik awal, letakkan angka 0 penggaris di titik itu, tandai titik akhir tepat di angka yang diminta, lalu hubungkan kedua titik dengan penggaris. Ukuran dapat berupa 3 cm, 7 cm, 2 cm 9 mm, atau 11,5 cm. Hubungkan juga pasangan titik yang diberikan dan tulis panjangnya.",
-      "icon": "✏️",
-      "flowFrom": "Menggambar ruas garis",
-      "flowTo": "Sisi bangun datar"
+      "stepTitle": "7. Simpulkan",
+      "stepDesc": "Ulangi ide utamanya dengan kalimatmu sendiri.",
+      "icon": "💬",
+      "flowFrom": "6",
+      "flowTo": "8"
     },
     {
       "stepNumber": 8,
-      "stepTitle": "8. Sisi Bangun Datar",
-      "stepDesc": "Segitiga EFG dibatasi oleh ruas garis EF, FG, dan EG. Ruas garis yang menjadi batas bangun datar dinamakan sisi. Jadi segitiga memiliki tiga sisi. Bangun GHIJ dibatasi ruas garis GH, HI, IJ, dan GJ, jadi memiliki empat sisi. Setiap sisi punya panjang yang dapat diukur dengan penggaris.",
-      "icon": "🔺",
-      "flowFrom": "Sisi bangun datar",
-      "flowTo": "9"
-    },
-    {
-      "stepNumber": 9,
-      "stepTitle": "9. METODE LUAR · Ciri Sisi",
-      "stepDesc": "Hitung dan banding panjang sisi.",
-      "icon": "🌍",
-      "flowFrom": "8",
-      "flowTo": "10"
-    },
-    {
-      "stepNumber": 10,
-      "stepTitle": "10. METODE LUAR · Sisi di Papan Paku",
-      "stepDesc": "Bentuk sisi dengan karet.",
-      "icon": "🌍",
-      "flowFrom": "9",
+      "stepTitle": "8. Lanjut main",
+      "stepDesc": "Siap melatih di permainan Concrete sampai Abstract.",
+      "icon": "🎮",
+      "flowFrom": "7",
       "flowTo": "END"
     }
   ],
@@ -354,22 +336,15 @@ export const SUB_A34: SubBabNaskah = {
       "judul": "Ciri Sisi",
       "emoji": "🌍",
       "countNum": 1,
-      "countWord": "METODE LUAR · Side Attributes",
-      "suara": "METODE LUAR. Ciri Sisi. Hitung dan banding panjang sisi."
+      "countWord": "ingat",
+      "suara": "Hitung dan banding panjang sisi."
     },
     {
       "judul": "Sisi di Papan Paku",
       "emoji": "🌍",
       "countNum": 2,
-      "countWord": "METODE LUAR · Geoboard Sides",
-      "suara": "METODE LUAR. Sisi di Papan Paku. Bentuk sisi dengan karet."
-    },
-    {
-      "judul": "Nama Segi-n",
-      "emoji": "🌍",
-      "countNum": 3,
-      "countWord": "METODE LUAR · Polygon Naming",
-      "suara": "METODE LUAR. Nama Segi-n. Banyak sisi menentukan nama."
+      "countWord": "ingat",
+      "suara": "Bentuk sisi dengan karet."
     }
   ],
   "games": [
@@ -378,9 +353,9 @@ export const SUB_A34: SubBabNaskah = {
       "gameType": "count-sides-object",
       "title": "Hitung Sisi Benda",
       "bookReference": "hlm. 145 dan 153 (benda yang menyerupai bangun datar)",
-      "objective": "Menghitung banyak sisi lurus pada benda sehari-hari. (METODE LUAR · Ciri Sisi)",
-      "mechanicDescription": "Tiga ronde, tiap ronde dua soal. Benda ditampilkan, lalu siswa memilih satu dari tiga banyak sisi. Pengecoh lebih satu atau kurang satu.",
-      "voiceGuide": "METODE LUAR · Ciri Sisi. Hitung banyak sisi pada benda.",
+      "objective": "Pakai Ciri Sisi: Hitung dan banding panjang sisi. Latihan: Menghitung banyak sisi lurus pada benda sehari-hari..",
+      "mechanicDescription": "Tiga ronde, tiap ronde dua soal. Benda ditampilkan, lalu siswa memilih satu dari tiga banyak sisi. Pengecoh lebih satu atau kurang satu. Saat bermain, terapkan Side Attributes: Hitung dan banding panjang sisi.",
+      "voiceGuide": "Ciri Sisi. Hitung dan banding panjang sisi.",
       "emoji": "📖",
       "targetCount": 6
     },
@@ -389,9 +364,9 @@ export const SUB_A34: SubBabNaskah = {
       "gameType": "object-like-line",
       "title": "Bendanya Mirip Apa?",
       "bookReference": "hlm. 146 (sinar garis, garis, ruas garis, kurva)",
-      "objective": "Menghubungkan benda nyata dengan sinar garis, garis, ruas garis, atau kurva.",
-      "mechanicDescription": "Tiga ronde, tiap ronde dua benda. Sinar senter, rel kereta api, pensil, penggaris, dan pelangi ditampilkan. Siswa memilih satu dari tiga nama.",
-      "voiceGuide": "Pilih nama garis yang mirip benda.",
+      "objective": "Pakai Ciri Sisi: Hitung dan banding panjang sisi. Latihan: Menghubungkan benda nyata dengan sinar garis, garis, ruas garis, atau kurva..",
+      "mechanicDescription": "Tiga ronde, tiap ronde dua benda. Sinar senter, rel kereta api, pensil, penggaris, dan pelangi ditampilkan. Siswa memilih satu dari tiga nama. Saat bermain, terapkan Side Attributes: Hitung dan banding panjang sisi.",
+      "voiceGuide": "Ciri Sisi. Hitung dan banding panjang sisi.",
       "emoji": "🔦",
       "targetCount": 6
     },
@@ -400,9 +375,9 @@ export const SUB_A34: SubBabNaskah = {
       "gameType": "read-mm-object",
       "title": "Baca Panjang dalam cm dan mm",
       "bookReference": "hlm. 149 (Aktivitas 1: panjang ruas garis)",
-      "objective": "Membaca panjang benda dalam sentimeter dan milimeter pada penggaris.",
-      "mechanicDescription": "Tiga ronde, tiap ronde dua soal. Benda ditampilkan di atas penggaris dari angka 0. Siswa memilih satu dari tiga panjang, misalnya 5 cm 5 mm.",
-      "voiceGuide": "Baca panjang benda dalam cm dan mm.",
+      "objective": "Pakai Ciri Sisi: Hitung dan banding panjang sisi. Latihan: Membaca panjang benda dalam sentimeter dan milimeter pada penggaris..",
+      "mechanicDescription": "Tiga ronde, tiap ronde dua soal. Benda ditampilkan di atas penggaris dari angka 0. Siswa memilih satu dari tiga panjang, misalnya 5 cm 5 mm. Saat bermain, terapkan Side Attributes: Hitung dan banding panjang sisi.",
+      "voiceGuide": "Ciri Sisi. Hitung dan banding panjang sisi.",
       "emoji": "📏",
       "targetCount": 6
     },
@@ -411,9 +386,9 @@ export const SUB_A34: SubBabNaskah = {
       "gameType": "match-object-sides",
       "title": "Jodohkan Benda dan Banyak Sisi",
       "bookReference": "hlm. 145 dan 153 (sisi bangun datar)",
-      "objective": "Menjodohkan benda dengan banyak sisi lurusnya.",
-      "mechanicDescription": "Tiga ronde, tiap ronde tiga benda dan tiga banyak sisi. Siswa mengetuk benda, lalu mengetuk banyak sisi yang cocok.",
-      "voiceGuide": "Ketuk benda, lalu ketuk banyak sisinya.",
+      "objective": "Pakai Ciri Sisi: Hitung dan banding panjang sisi. Latihan: Menjodohkan benda dengan banyak sisi lurusnya..",
+      "mechanicDescription": "Tiga ronde, tiap ronde tiga benda dan tiga banyak sisi. Siswa mengetuk benda, lalu mengetuk banyak sisi yang cocok. Saat bermain, terapkan Side Attributes: Hitung dan banding panjang sisi.",
+      "voiceGuide": "Ciri Sisi. Hitung dan banding panjang sisi.",
       "emoji": "🔗",
       "targetCount": 9
     },
@@ -422,9 +397,9 @@ export const SUB_A34: SubBabNaskah = {
       "gameType": "memory-object-sides",
       "title": "Memori Benda dan Banyak Sisi",
       "bookReference": "hlm. 153 (sisi bangun datar)",
-      "objective": "Mencocokkan benda dengan banyak sisinya lewat permainan memori.",
-      "mechanicDescription": "Tiga ronde, tiap ronde delapan kartu tertutup (empat pasang). Siswa membalik dua kartu dan mencari pasangannya.",
-      "voiceGuide": "Balik dua kartu, cari benda dan sisinya.",
+      "objective": "Mencocokkan benda dengan banyak sisinya lewat permainan memori.. Ingat Ciri Sisi.",
+      "mechanicDescription": "Tiga ronde, tiap ronde delapan kartu tertutup (empat pasang). Siswa membalik dua kartu dan mencari pasangannya. Gunakan Ciri Sisi.",
+      "voiceGuide": "Ciri Sisi. Balik dua kartu, cari benda dan sisinya.",
       "emoji": "🃏",
       "targetCount": 12
     },
@@ -433,9 +408,9 @@ export const SUB_A34: SubBabNaskah = {
       "gameType": "tap-object-sides",
       "title": "Ketuk Benda dengan Sisi Tertentu",
       "bookReference": "hlm. 153 (sisi bangun datar)",
-      "objective": "Menemukan benda yang punya banyak sisi seperti yang diminta.",
-      "mechanicDescription": "Tiga ronde, tiap ronde tiga benda dan dua pertanyaan. Siswa mengetuk benda yang banyak sisinya sama dengan yang disebut.",
-      "voiceGuide": "Ketuk benda dengan sisi itu.",
+      "objective": "Menemukan benda yang punya banyak sisi seperti yang diminta.. Ingat Ciri Sisi.",
+      "mechanicDescription": "Tiga ronde, tiap ronde tiga benda dan dua pertanyaan. Siswa mengetuk benda yang banyak sisinya sama dengan yang disebut. Gunakan Ciri Sisi.",
+      "voiceGuide": "Ciri Sisi. Ketuk benda dengan sisi itu.",
       "emoji": "👆",
       "targetCount": 6
     },
@@ -444,9 +419,9 @@ export const SUB_A34: SubBabNaskah = {
       "gameType": "tap-all-sides",
       "title": "Ketuk Semua Benda dengan Sisi Tertentu",
       "bookReference": "hlm. 145 (benda menyerupai bangun datar)",
-      "objective": "Menemukan semua benda yang punya banyak sisi tertentu.",
-      "mechanicDescription": "Tiga ronde, tiap ronde empat benda dan satu perintah. Siswa mengetuk semua benda yang cocok, lalu menekan Periksa.",
-      "voiceGuide": "Ketuk semua yang cocok, lalu periksa.",
+      "objective": "Menemukan semua benda yang punya banyak sisi tertentu.. Ingat Ciri Sisi.",
+      "mechanicDescription": "Tiga ronde, tiap ronde empat benda dan satu perintah. Siswa mengetuk semua benda yang cocok, lalu menekan Periksa. Gunakan Ciri Sisi.",
+      "voiceGuide": "Ciri Sisi. Ketuk semua yang cocok, lalu periksa.",
       "emoji": "✔️",
       "targetCount": 3
     },
@@ -455,9 +430,9 @@ export const SUB_A34: SubBabNaskah = {
       "gameType": "board-mm",
       "title": "Papan Panjang dalam Milimeter",
       "bookReference": "hlm. 148–149 (1 cm = 10 mm)",
-      "objective": "Menulis panjang benda dalam milimeter pada papan ratusan, puluhan, dan satuan.",
-      "mechanicDescription": "Tiga ronde, tiap ronde dua soal. Siswa membaca panjang benda pada penggaris, lalu mengubahnya ke milimeter pada papan dan menekan Periksa.",
-      "voiceGuide": "Isi papan dengan milimeternya.",
+      "objective": "Menulis panjang benda dalam milimeter pada papan ratusan, puluhan, dan satuan.. Ingat Ciri Sisi.",
+      "mechanicDescription": "Tiga ronde, tiap ronde dua soal. Siswa membaca panjang benda pada penggaris, lalu mengubahnya ke milimeter pada papan dan menekan Periksa. Gunakan Ciri Sisi.",
+      "voiceGuide": "Ciri Sisi. Isi papan dengan milimeternya.",
       "emoji": "🗂️",
       "targetCount": 6
     },
@@ -466,9 +441,9 @@ export const SUB_A34: SubBabNaskah = {
       "gameType": "order-mm",
       "title": "Urutkan Benda menurut Panjang",
       "bookReference": "hlm. 151 (mengukur panjang benda sekitar)",
-      "objective": "Mengurutkan tiga benda menurut panjangnya dalam cm dan mm.",
-      "mechanicDescription": "Tiga ronde, tiap ronde tiga benda di atas penggaris bertanda huruf. Siswa mengetuk benda satu per satu dari yang terpendek atau terpanjang.",
-      "voiceGuide": "Ketuk benda menurut panjangnya.",
+      "objective": "Mengurutkan tiga benda menurut panjangnya dalam cm dan mm.. Ingat Ciri Sisi.",
+      "mechanicDescription": "Tiga ronde, tiap ronde tiga benda di atas penggaris bertanda huruf. Siswa mengetuk benda satu per satu dari yang terpendek atau terpanjang. Gunakan Ciri Sisi.",
+      "voiceGuide": "Ciri Sisi. Ketuk benda menurut panjangnya.",
       "emoji": "📶",
       "targetCount": 9
     },
@@ -477,9 +452,9 @@ export const SUB_A34: SubBabNaskah = {
       "gameType": "sum-sides",
       "title": "Jumlah Sisi Dua Benda",
       "bookReference": "hlm. 145 dan 153 (banyak sisi benda)",
-      "objective": "Menjumlahkan banyak sisi dari dua benda.",
-      "mechanicDescription": "Tiga ronde, tiap ronde dua benda. Siswa menghitung sisi tiap benda, lalu memilih satu dari tiga jumlah sisi.",
-      "voiceGuide": "Jumlahkan sisi kedua benda.",
+      "objective": "Menjumlahkan banyak sisi dari dua benda.. Ingat Ciri Sisi.",
+      "mechanicDescription": "Tiga ronde, tiap ronde dua benda. Siswa menghitung sisi tiap benda, lalu memilih satu dari tiga jumlah sisi. Gunakan Ciri Sisi.",
+      "voiceGuide": "Ciri Sisi. Jumlahkan sisi kedua benda.",
       "emoji": "➕",
       "targetCount": 6
     },
@@ -488,9 +463,9 @@ export const SUB_A34: SubBabNaskah = {
       "gameType": "line-kind",
       "title": "Garis, Sinar, atau Ruas Garis",
       "bookReference": "hlm. 146–147 (sinar garis, garis, ruas garis, kurva)",
-      "objective": "Menentukan jenis garis dari gambarnya: sinar garis, garis, ruas garis, atau kurva. (METODE LUAR · Ciri Sisi)",
-      "mechanicDescription": "Tiga ronde, tiap ronde dua soal. Gambar garis berhuruf ditampilkan. Siswa memilih satu dari tiga nama.",
-      "voiceGuide": "METODE LUAR · Ciri Sisi. Pilih nama garis pada gambar.",
+      "objective": "Pakai Sisi di Papan Paku: Bentuk sisi dengan karet. Latihan: Menentukan jenis garis dari gambarnya: sinar garis, garis, ruas garis, atau kurva..",
+      "mechanicDescription": "Tiga ronde, tiap ronde dua soal. Gambar garis berhuruf ditampilkan. Siswa memilih satu dari tiga nama. Saat bermain, terapkan Geoboard Sides: Bentuk sisi dengan karet.",
+      "voiceGuide": "Sisi di Papan Paku. Bentuk sisi dengan karet.",
       "diagramType": "line-kind",
       "numberA": 3,
       "numberB": 2
@@ -500,9 +475,9 @@ export const SUB_A34: SubBabNaskah = {
       "gameType": "read-ruler-mm",
       "title": "Baca Ruas Garis pada Penggaris",
       "bookReference": "hlm. 148–149 (Aktivitas 1: mengukur ruas garis)",
-      "objective": "Membaca panjang ruas garis pada penggaris bermilimeter.",
-      "mechanicDescription": "Tiga ronde, tiap ronde dua soal. Ruas garis dari angka 0 ditampilkan. Siswa memilih satu dari tiga panjang dalam cm dan mm.",
-      "voiceGuide": "Baca panjang ruas garis.",
+      "objective": "Pakai Sisi di Papan Paku: Bentuk sisi dengan karet. Latihan: Membaca panjang ruas garis pada penggaris bermilimeter..",
+      "mechanicDescription": "Tiga ronde, tiap ronde dua soal. Ruas garis dari angka 0 ditampilkan. Siswa memilih satu dari tiga panjang dalam cm dan mm. Saat bermain, terapkan Geoboard Sides: Bentuk sisi dengan karet.",
+      "voiceGuide": "Sisi di Papan Paku. Bentuk sisi dengan karet.",
       "diagramType": "ruler-read",
       "numberA": 3,
       "numberB": 2
@@ -512,9 +487,9 @@ export const SUB_A34: SubBabNaskah = {
       "gameType": "match-segment-length",
       "title": "Jodohkan Ruas Garis dan Panjang",
       "bookReference": "hlm. 149–150 (menulis panjang ruas garis)",
-      "objective": "Menjodohkan ruas garis pada penggaris dengan panjangnya.",
-      "mechanicDescription": "Tiga ronde, tiap ronde tiga ruas garis dan tiga panjang. Siswa mengetuk ruas garis, lalu mengetuk panjang yang cocok.",
-      "voiceGuide": "Ketuk ruas garis, lalu ketuk panjangnya.",
+      "objective": "Pakai Sisi di Papan Paku: Bentuk sisi dengan karet. Latihan: Menjodohkan ruas garis pada penggaris dengan panjangnya..",
+      "mechanicDescription": "Tiga ronde, tiap ronde tiga ruas garis dan tiga panjang. Siswa mengetuk ruas garis, lalu mengetuk panjang yang cocok. Saat bermain, terapkan Geoboard Sides: Bentuk sisi dengan karet.",
+      "voiceGuide": "Sisi di Papan Paku. Bentuk sisi dengan karet.",
       "diagramType": "ruler-match",
       "numberA": 3,
       "numberB": 3
@@ -524,9 +499,9 @@ export const SUB_A34: SubBabNaskah = {
       "gameType": "memory-line-name",
       "title": "Memori Garis dan Namanya",
       "bookReference": "hlm. 146–147 (sinar garis, garis, ruas garis, kurva)",
-      "objective": "Mencocokkan gambar garis dengan namanya lewat permainan memori.",
-      "mechanicDescription": "Tiga ronde, tiap ronde delapan kartu tertutup (empat pasang). Siswa membalik dua kartu dan mencari pasangannya.",
-      "voiceGuide": "Balik dua kartu, cari gambar dan namanya.",
+      "objective": "Pakai Sisi di Papan Paku: Bentuk sisi dengan karet. Latihan: Mencocokkan gambar garis dengan namanya lewat permainan memori..",
+      "mechanicDescription": "Tiga ronde, tiap ronde delapan kartu tertutup (empat pasang). Siswa membalik dua kartu dan mencari pasangannya. Saat bermain, terapkan Geoboard Sides: Bentuk sisi dengan karet.",
+      "voiceGuide": "Sisi di Papan Paku. Bentuk sisi dengan karet.",
       "diagramType": "line-memory",
       "numberA": 3,
       "numberB": 4
@@ -536,9 +511,9 @@ export const SUB_A34: SubBabNaskah = {
       "gameType": "fill-sides-table",
       "title": "Isi Tabel Sisi Bangun Datar",
       "bookReference": "hlm. 153 (sisi bangun datar)",
-      "objective": "Melengkapi tabel bangun datar dan banyak sisinya.",
-      "mechanicDescription": "Tiga tabel dengan empat baris. Siswa mengetuk baris, lalu mengetuk kartu banyak sisi yang tepat. Ada satu kartu pengecoh.",
-      "voiceGuide": "Isi tabel dengan kartu banyak sisi.",
+      "objective": "Melengkapi tabel bangun datar dan banyak sisinya.. Ingat Sisi di Papan Paku.",
+      "mechanicDescription": "Tiga tabel dengan empat baris. Siswa mengetuk baris, lalu mengetuk kartu banyak sisi yang tepat. Ada satu kartu pengecoh. Gunakan Sisi di Papan Paku.",
+      "voiceGuide": "Sisi di Papan Paku. Isi tabel dengan kartu banyak sisi.",
       "diagramType": "sides-table",
       "numberA": 3,
       "numberB": 4
@@ -548,9 +523,9 @@ export const SUB_A34: SubBabNaskah = {
       "gameType": "tap-all-polygon",
       "title": "Ketuk Semua Bangun dengan Sisi Tertentu",
       "bookReference": "hlm. 153 (Ayo Berlatih B: sisi bangun datar)",
-      "objective": "Menemukan semua bangun datar yang memiliki banyak sisi tertentu.",
-      "mechanicDescription": "Tiga ronde, tiap ronde empat bangun dan satu perintah. Siswa mengetuk semua bangun yang cocok, lalu menekan Periksa.",
-      "voiceGuide": "Ketuk semua yang cocok, lalu periksa.",
+      "objective": "Menemukan semua bangun datar yang memiliki banyak sisi tertentu.. Ingat Sisi di Papan Paku.",
+      "mechanicDescription": "Tiga ronde, tiap ronde empat bangun dan satu perintah. Siswa mengetuk semua bangun yang cocok, lalu menekan Periksa. Gunakan Sisi di Papan Paku.",
+      "voiceGuide": "Sisi di Papan Paku. Ketuk semua yang cocok, lalu periksa.",
       "diagramType": "polygon-select",
       "numberA": 3,
       "numberB": 4
@@ -560,9 +535,9 @@ export const SUB_A34: SubBabNaskah = {
       "gameType": "sort-straight-curve",
       "title": "Pilah Garis: Lurus atau Lengkung",
       "bookReference": "hlm. 146–147 (garis lurus dan kurva)",
-      "objective": "Memilah gambar garis menjadi garis lurus dan garis lengkung.",
-      "mechanicDescription": "Tiga ronde, tiap ronde enam gambar garis dan dua kotak. Sinar garis, garis, dan ruas garis adalah lurus, kurva adalah lengkung. Siswa menyeret atau mengetuk gambar ke kotak yang tepat.",
-      "voiceGuide": "Pilah gambar ke kotak yang tepat.",
+      "objective": "Memilah gambar garis menjadi garis lurus dan garis lengkung.. Ingat Sisi di Papan Paku.",
+      "mechanicDescription": "Tiga ronde, tiap ronde enam gambar garis dan dua kotak. Sinar garis, garis, dan ruas garis adalah lurus, kurva adalah lengkung. Siswa menyeret atau mengetuk gambar ke kotak yang tepat. Gunakan Sisi di Papan Paku.",
+      "voiceGuide": "Sisi di Papan Paku. Pilah gambar ke kotak yang tepat.",
       "diagramType": "line-sort",
       "numberA": 3,
       "numberB": 6
@@ -572,9 +547,9 @@ export const SUB_A34: SubBabNaskah = {
       "gameType": "order-measure-segment",
       "title": "Urutkan Langkah Mengukur Ruas Garis",
       "bookReference": "hlm. 148–149 (cara menggunakan penggaris)",
-      "objective": "Mengurutkan langkah mengukur dan menggambar ruas garis.",
-      "mechanicDescription": "Tiga ronde, tiap ronde empat langkah. Siswa mengetuk langkah satu per satu menurut urutan yang benar. Letak jawaban berpindah.",
-      "voiceGuide": "Ketuk langkah menurut urutannya.",
+      "objective": "Mengurutkan langkah mengukur dan menggambar ruas garis.. Ingat Sisi di Papan Paku.",
+      "mechanicDescription": "Tiga ronde, tiap ronde empat langkah. Siswa mengetuk langkah satu per satu menurut urutan yang benar. Letak jawaban berpindah. Gunakan Sisi di Papan Paku.",
+      "voiceGuide": "Sisi di Papan Paku. Ketuk langkah menurut urutannya.",
       "diagramType": "steps-order",
       "numberA": 3,
       "numberB": 4
@@ -584,9 +559,9 @@ export const SUB_A34: SubBabNaskah = {
       "gameType": "board-ruler-mm",
       "title": "Papan Milimeter dari Penggaris",
       "bookReference": "hlm. 149 (5 cm 5 mm = 55 mm)",
-      "objective": "Menulis panjang ruas garis dalam milimeter pada papan.",
-      "mechanicDescription": "Tiga ronde, tiap ronde dua soal. Siswa membaca ruas garis pada penggaris, lalu mengatur angka ratusan, puluhan, dan satuan pada papan dan menekan Periksa.",
-      "voiceGuide": "Isi papan dengan milimeternya.",
+      "objective": "Menulis panjang ruas garis dalam milimeter pada papan.. Ingat Sisi di Papan Paku.",
+      "mechanicDescription": "Tiga ronde, tiap ronde dua soal. Siswa membaca ruas garis pada penggaris, lalu mengatur angka ratusan, puluhan, dan satuan pada papan dan menekan Periksa. Gunakan Sisi di Papan Paku.",
+      "voiceGuide": "Sisi di Papan Paku. Isi papan dengan milimeternya.",
       "diagramType": "ruler-board",
       "numberA": 3,
       "numberB": 2
@@ -596,9 +571,9 @@ export const SUB_A34: SubBabNaskah = {
       "gameType": "polygon-sides-names",
       "title": "Nama Sisi Bangun Datar",
       "bookReference": "hlm. 153 (Ayo Berlatih B nomor 3 dan 4: tulislah sisi-sisinya)",
-      "objective": "Memilih daftar sisi yang tepat dari bangun datar berhuruf.",
-      "mechanicDescription": "Tiga ronde, tiap ronde dua soal. Segitiga atau segiempat berhuruf ditampilkan. Siswa memilih satu dari tiga daftar sisi.",
-      "voiceGuide": "Pilih daftar sisi yang tepat.",
+      "objective": "Memilih daftar sisi yang tepat dari bangun datar berhuruf.. Ingat Sisi di Papan Paku.",
+      "mechanicDescription": "Tiga ronde, tiap ronde dua soal. Segitiga atau segiempat berhuruf ditampilkan. Siswa memilih satu dari tiga daftar sisi. Gunakan Sisi di Papan Paku.",
+      "voiceGuide": "Sisi di Papan Paku. Pilih daftar sisi yang tepat.",
       "diagramType": "polygon-names",
       "numberA": 3,
       "numberB": 2
@@ -608,9 +583,9 @@ export const SUB_A34: SubBabNaskah = {
       "gameType": "name-line-text",
       "title": "Nama Garis dan Bagian Bangun Datar",
       "bookReference": "hlm. 146–153 (sinar garis, ruas garis, kurva, sisi)",
-      "objective": "Memilih nama garis atau bagian bangun datar dari uraiannya. (METODE LUAR · Ciri Sisi)",
-      "mechanicDescription": "Tiga ronde, tiap ronde dua soal. Siswa membaca uraian, lalu memilih satu dari tiga nama.",
-      "voiceGuide": "METODE LUAR · Ciri Sisi. Pilih nama yang tepat.",
+      "objective": "Pakai Nama Segi-n: Banyak sisi menentukan nama. Latihan: Memilih nama garis atau bagian bangun datar dari uraiannya..",
+      "mechanicDescription": "Tiga ronde, tiap ronde dua soal. Siswa membaca uraian, lalu memilih satu dari tiga nama. Saat bermain, terapkan Polygon Naming: Banyak sisi menentukan nama.",
+      "voiceGuide": "Nama Segi-n. Banyak sisi menentukan nama.",
       "symbolLarge": "AB",
       "wordLarge": "NAMA",
       "mathNotation": "sinar • garis • ruas"
@@ -620,9 +595,9 @@ export const SUB_A34: SubBabNaskah = {
       "gameType": "complete-line-sentence",
       "title": "Lengkapi Kalimat Garis dan Sisi",
       "bookReference": "hlm. 146–153 (sinar garis, ruas garis, dan sisi)",
-      "objective": "Melengkapi kalimat tentang garis, penggaris, dan sisi bangun datar.",
-      "mechanicDescription": "Tiga soal, tiap soal tiga kalimat, misalnya satu sentimeter sama dengan sepuluh ... Siswa memilih satu dari tiga kata.",
-      "voiceGuide": "Pilih kata untuk bagian kosong.",
+      "objective": "Pakai Nama Segi-n: Banyak sisi menentukan nama. Latihan: Melengkapi kalimat tentang garis, penggaris, dan sisi bangun datar..",
+      "mechanicDescription": "Tiga soal, tiap soal tiga kalimat, misalnya satu sentimeter sama dengan sepuluh ... Siswa memilih satu dari tiga kata. Saat bermain, terapkan Polygon Naming: Banyak sisi menentukan nama.",
+      "voiceGuide": "Nama Segi-n. Banyak sisi menentukan nama.",
       "symbolLarge": "…",
       "wordLarge": "LENGKAPI",
       "mathNotation": "garis • ukuran • sisi"
@@ -632,9 +607,9 @@ export const SUB_A34: SubBabNaskah = {
       "gameType": "convert-cm-mm",
       "title": "Ubah Sentimeter dan Milimeter",
       "bookReference": "hlm. 148–149 (1 cm = 10 mm, 5 mm = 0,5 cm)",
-      "objective": "Mengubah ukuran antara sentimeter dan milimeter.",
-      "mechanicDescription": "Tiga ronde, tiap ronde dua soal, misalnya 3 cm 7 mm = ... cm. Siswa memilih satu dari tiga hasil.",
-      "voiceGuide": "Pilih hasil perubahan satuannya.",
+      "objective": "Pakai Nama Segi-n: Banyak sisi menentukan nama. Latihan: Mengubah ukuran antara sentimeter dan milimeter..",
+      "mechanicDescription": "Tiga ronde, tiap ronde dua soal, misalnya 3 cm 7 mm = ... cm. Siswa memilih satu dari tiga hasil. Saat bermain, terapkan Polygon Naming: Banyak sisi menentukan nama.",
+      "voiceGuide": "Nama Segi-n. Banyak sisi menentukan nama.",
       "symbolLarge": "cm mm",
       "wordLarge": "UBAH",
       "mathNotation": "10 mm = 1 cm"
@@ -644,9 +619,9 @@ export const SUB_A34: SubBabNaskah = {
       "gameType": "match-length-text",
       "title": "Jodohkan Ukuran Panjang",
       "bookReference": "hlm. 149 dan 151 (menulis panjang ruas garis)",
-      "objective": "Menjodohkan dua cara menulis panjang yang sama.",
-      "mechanicDescription": "Tiga ronde, tiap ronde tiga ukuran dan tiga pasangannya. Siswa mengetuk ukuran, lalu mengetuk pasangannya.",
-      "voiceGuide": "Ketuk ukuran, lalu ketuk pasangannya.",
+      "objective": "Pakai Nama Segi-n: Banyak sisi menentukan nama. Latihan: Menjodohkan dua cara menulis panjang yang sama..",
+      "mechanicDescription": "Tiga ronde, tiap ronde tiga ukuran dan tiga pasangannya. Siswa mengetuk ukuran, lalu mengetuk pasangannya. Saat bermain, terapkan Polygon Naming: Banyak sisi menentukan nama.",
+      "voiceGuide": "Nama Segi-n. Banyak sisi menentukan nama.",
       "symbolLarge": "= ?",
       "wordLarge": "JODOHKAN",
       "mathNotation": "cm • mm"
@@ -656,9 +631,9 @@ export const SUB_A34: SubBabNaskah = {
       "gameType": "memory-length-text",
       "title": "Memori Ukuran Panjang",
       "bookReference": "hlm. 149 dan 151 (ukuran yang sama)",
-      "objective": "Mencocokkan dua cara menulis panjang yang sama lewat permainan memori.",
-      "mechanicDescription": "Tiga ronde, tiap ronde delapan kartu tertutup (empat pasang). Siswa membalik dua kartu dan mencari pasangannya.",
-      "voiceGuide": "Balik dua kartu, cari ukuran yang sama.",
+      "objective": "Mencocokkan dua cara menulis panjang yang sama lewat permainan memori.. Ingat Nama Segi-n.",
+      "mechanicDescription": "Tiga ronde, tiap ronde delapan kartu tertutup (empat pasang). Siswa membalik dua kartu dan mencari pasangannya. Gunakan Nama Segi-n.",
+      "voiceGuide": "Nama Segi-n. Balik dua kartu, cari ukuran yang sama.",
       "symbolLarge": "mm",
       "wordLarge": "MEMORI",
       "mathNotation": "ukuran yang sama"
@@ -668,9 +643,9 @@ export const SUB_A34: SubBabNaskah = {
       "gameType": "true-false-lines",
       "title": "Benar atau Salah: Garis dan Sisi",
       "bookReference": "hlm. 146–153 (sinar garis, ruas garis, dan sisi)",
-      "objective": "Menilai pernyataan tentang garis, ukuran, dan sisi bangun datar.",
-      "mechanicDescription": "Dua ronde, tiap ronde lima pernyataan. Siswa memilih Benar atau Salah. Tiap jawaban diberi penjelasan.",
-      "voiceGuide": "Baca pernyataan, lalu pilih benar atau salah.",
+      "objective": "Menilai pernyataan tentang garis, ukuran, dan sisi bangun datar.. Ingat Nama Segi-n.",
+      "mechanicDescription": "Dua ronde, tiap ronde lima pernyataan. Siswa memilih Benar atau Salah. Tiap jawaban diberi penjelasan. Gunakan Nama Segi-n.",
+      "voiceGuide": "Nama Segi-n. Baca pernyataan, lalu pilih benar atau salah.",
       "symbolLarge": "✓ ✗",
       "wordLarge": "BENAR SALAH",
       "mathNotation": "periksa dengan alasan"
@@ -680,9 +655,9 @@ export const SUB_A34: SubBabNaskah = {
       "gameType": "detective-lines",
       "title": "Detektif Ruas Garis dan Sisi",
       "bookReference": "hlm. 149 dan 153 (ukuran dan sisi)",
-      "objective": "Menemukan bilangan dari dua petunjuk tentang milimeter dan sisi.",
-      "mechanicDescription": "Empat soal. Siswa membaca petunjuk dan satu ciri bilangan, lalu memilih satu dari tiga bilangan. Hanya satu yang cocok.",
-      "voiceGuide": "Baca petunjuk, lalu pilih bilangannya.",
+      "objective": "Menemukan bilangan dari dua petunjuk tentang milimeter dan sisi.. Ingat Nama Segi-n.",
+      "mechanicDescription": "Empat soal. Siswa membaca petunjuk dan satu ciri bilangan, lalu memilih satu dari tiga bilangan. Hanya satu yang cocok. Gunakan Nama Segi-n.",
+      "voiceGuide": "Nama Segi-n. Baca petunjuk, lalu pilih bilangannya.",
       "symbolLarge": "?",
       "wordLarge": "DETEKTIF",
       "mathNotation": "dua petunjuk, satu jawaban"
@@ -692,9 +667,9 @@ export const SUB_A34: SubBabNaskah = {
       "gameType": "concept-map-lines",
       "title": "Peta Konsep Garis dan Sisi",
       "bookReference": "hlm. 144 (peta konsep Bab 4)",
-      "objective": "Melengkapi peta konsep titik, garis, dan sisi bangun datar.",
-      "mechanicDescription": "Dua peta konsep, tiap peta empat kotak. Siswa memilih kartu yang tepat untuk kotak yang menyala.",
-      "voiceGuide": "Pilih kartu yang tepat untuk kotak yang menyala.",
+      "objective": "Melengkapi peta konsep titik, garis, dan sisi bangun datar.. Ingat Nama Segi-n.",
+      "mechanicDescription": "Dua peta konsep, tiap peta empat kotak. Siswa memilih kartu yang tepat untuk kotak yang menyala. Gunakan Nama Segi-n.",
+      "voiceGuide": "Nama Segi-n. Pilih kartu yang tepat untuk kotak yang menyala.",
       "symbolLarge": "⇄",
       "wordLarge": "PETA KONSEP",
       "mathNotation": "garis • ukuran • sisi"
@@ -704,9 +679,9 @@ export const SUB_A34: SubBabNaskah = {
       "gameType": "story-segment",
       "title": "Soal Cerita Ruas Garis dan Sisi",
       "bookReference": "hlm. 149–153 (panjang ruas garis dan sisi)",
-      "objective": "Menyelesaikan soal cerita tentang panjang ruas garis dan sisi bangun datar.",
-      "mechanicDescription": "Tiga ronde, tiap ronde dua cerita. Siswa membaca cerita lalu memilih satu dari tiga hasil dalam mm atau cm.",
-      "voiceGuide": "Baca cerita, lalu pilih hasilnya.",
+      "objective": "Menyelesaikan soal cerita tentang panjang ruas garis dan sisi bangun datar.. Ingat Nama Segi-n.",
+      "mechanicDescription": "Tiga ronde, tiap ronde dua cerita. Siswa membaca cerita lalu memilih satu dari tiga hasil dalam mm atau cm. Gunakan Nama Segi-n.",
+      "voiceGuide": "Nama Segi-n. Baca cerita, lalu pilih hasilnya.",
       "symbolLarge": "mm",
       "wordLarge": "CERITA",
       "mathNotation": "selisih • jumlah"
@@ -716,9 +691,9 @@ export const SUB_A34: SubBabNaskah = {
       "gameType": "sentence-lines",
       "title": "Susun Kata Garis dan Sisi",
       "bookReference": "hlm. 146–153 (sinar garis, ruas garis, sisi)",
-      "objective": "Menyusun kalimat tentang garis dan sisi dari kartu kata.",
-      "mechanicDescription": "Empat kalimat. Siswa mengetuk kartu kata satu per satu menurut urutan kalimat yang benar. Ada satu kartu pengecoh.",
-      "voiceGuide": "Susun kartu kata menjadi kalimat.",
+      "objective": "Menyusun kalimat tentang garis dan sisi dari kartu kata.. Ingat Nama Segi-n.",
+      "mechanicDescription": "Empat kalimat. Siswa mengetuk kartu kata satu per satu menurut urutan kalimat yang benar. Ada satu kartu pengecoh. Gunakan Nama Segi-n.",
+      "voiceGuide": "Nama Segi-n. Susun kartu kata menjadi kalimat.",
       "symbolLarge": "…",
       "wordLarge": "SUSUN KATA",
       "mathNotation": "kalimat garis dan sisi"
@@ -738,43 +713,25 @@ export const SUB_A34: SubBabNaskah = {
       "suara": "Garis dapat diperpanjang ke kedua sisi dan tidak punya ujung."
     },
     {
-      "ikon": "📏",
-      "nama": "Ruas garis",
-      "isi": "dua ujung, panjang tetap",
-      "suara": "Ruas garis memiliki dua titik ujung dan panjang tertentu. Panjangnya dapat diukur dengan penggaris."
-    },
-    {
-      "ikon": "🔬",
-      "nama": "Sentimeter dan milimeter",
-      "isi": "1 cm = 10 mm",
-      "suara": "Satu sentimeter sama dengan sepuluh milimeter. Lima milimeter sama dengan nol koma lima sentimeter."
-    },
-    {
-      "ikon": "🔺",
-      "nama": "Sisi",
-      "isi": "ruas garis pembatas bangun",
-      "suara": "Ruas garis yang menjadi batas bangun datar dinamakan sisi. Segitiga punya tiga sisi."
-    },
-    {
       "ikon": "🌍",
       "nama": "Ciri Sisi",
-      "isi": "METODE LUAR · Side Attributes: Hitung dan banding panjang sisi. (asal: van Hiele).",
-      "suara": "METODE LUAR. Ciri Sisi. Hitung dan banding panjang sisi."
+      "isi": "Hitung dan banding panjang sisi.",
+      "suara": "Ciri Sisi. Hitung dan banding panjang sisi."
     },
     {
       "ikon": "🌍",
       "nama": "Sisi di Papan Paku",
-      "isi": "METODE LUAR · Geoboard Sides: Bentuk sisi dengan karet. (asal: Gattegno).",
-      "suara": "METODE LUAR. Sisi di Papan Paku. Bentuk sisi dengan karet."
+      "isi": "Bentuk sisi dengan karet.",
+      "suara": "Sisi di Papan Paku. Bentuk sisi dengan karet."
     },
     {
       "ikon": "🌍",
       "nama": "Nama Segi-n",
-      "isi": "METODE LUAR · Polygon Naming: Banyak sisi menentukan nama. (asal: Geometry vocabulary).",
-      "suara": "METODE LUAR. Nama Segi-n. Banyak sisi menentukan nama."
+      "isi": "Banyak sisi menentukan nama.",
+      "suara": "Nama Segi-n. Banyak sisi menentukan nama."
     }
   ],
-  "poinSuara": "Ingat selalu! Sinar garis hanya dapat diperpanjang ke satu sisi, garis ke kedua sisi, dan ruas garis punya panjang tetap. Satu sentimeter sama dengan sepuluh milimeter. Ruas garis pembatas bangun datar dinamakan sisi.",
+  "poinSuara": "Ingat: Ciri Sisi, Sisi di Papan Paku, Nama Segi-n.",
   "cara": {
     "suara": "Cara mengukur ruas garis. Letakkan angka nol penggaris di titik awal. Lihat angka di titik akhir. Baca sentimeter dan milimeternya. Lalu tulis hasilnya dengan satuan.",
     "potongan": [
@@ -796,12 +753,11 @@ export const SUB_A34: SubBabNaskah = {
       }
     ]
   },
-  "rumah": "Ayo Mencoba di rumah: ukurlah panjang buku Matematika, pensil, meja, dan penghapusmu dengan penggaris. Letakkan angka nol di ujung benda, lalu tulis hasilnya dengan cm dan mm. Hitung juga banyak sisi pada bingkai foto, buku, dan rambu segitiga di sekitarmu.",
+  "rumah": "Ayo Mencoba di rumah: terapkan Ciri Sisi pada satu benda atau soal nyata, lalu ceritakan langkahmu.",
   "refleksi": [
-    "Aku dapat membedakan sinar garis, garis, ruas garis, dan kurva.",
-    "Aku dapat mengukur ruas garis dengan penggaris dalam cm dan mm.",
-    "Aku tahu bahwa 1 cm sama dengan 10 mm.",
-    "Aku dapat menyebutkan sisi dan menghitung banyak sisi bangun datar."
+    "Bagaimana Ciri Sisi membantumu memahami soal?",
+    "Kapan kamu memakai Sisi di Papan Paku?",
+    "Apa bedanya dengan hanya menghafal rumus atau langkah tanpa arti?"
   ],
   "metodeLuar": [
     {
@@ -845,12 +801,12 @@ export const SUB_B34: SubBabNaskah = {
   "id": "B",
   "codeTitle": "Sub-Bab B (Sudut pada Bidang Datar)",
   "fullTitle": "Sub-Bab B: Sudut pada Bidang Datar",
-  "targetDescription": "Siswa membandingkan sudut dengan strip sudut, membentuk dan mengenali sudut siku-siku dari kertas yang dilipat, menamai sudut (titik sudut, kaki, dan simbol ∠), mengukur sudut dengan satuan tidak baku lalu dengan busur derajat, menggambar sudut dengan ukuran tertentu, serta mengelompokkan sudut menjadi lancip, siku-siku, tumpul, lurus, dan refleks.",
+  "targetDescription": "Siswa membandingkan sudut dengan strip sudut, membentuk dan mengenali sudut siku-siku dari kertas yang dilipat, menamai sudut (titik sudut, kaki, dan simbol ∠), mengukur sudut dengan satuan tidak baku lalu dengan busur derajat, menggambar sudut dengan ukuran tertentu, serta mengelompokkan sudut menjadi lancip, siku-siku, tumpul, lurus, dan refleks. Siswa memakai cara Sudut sebagai Putaran, Acuan Siku-siku, Pilah Sudut.",
   "secondaryBg": "#FEF3C7",
   "secondaryBorder": "#D97706",
   "secondaryText": "#78350F",
   "silabus": {
-    "teksSuara": "Kita belajar sudut pada bidang datar. Kita membandingkan sudut dengan strip sudut dan membentuk sudut siku-siku dari kertas lipat. Kita mengukur sudut dengan satuan tidak baku, lalu dengan busur derajat, dan menggambar sudut. Terakhir kita mengelompokkan sudut menjadi lancip, siku-siku, tumpul, lurus, dan refleks. Kita melewati enam tahap seru: cerita, peta pikiran, infografis, benda nyata, gambar, dan simbol.",
+    "teksSuara": "Kita belajar sudut pada bidang datar. Kita membandingkan sudut dengan strip sudut dan membentuk sudut siku-siku dari kertas lipat. Kita mengukur sudut dengan satuan tidak baku, lalu dengan busur derajat, dan menggambar sudut. Terakhir kita mengelompokkan sudut menjadi lancip, siku-siku, tumpul, lurus, dan refleks. Kita memakai cara dari luar buku: Sudut sebagai Putaran (Angle as Turn); Acuan Siku-siku (Right Angle Benchmark); Pilah Sudut (Corner Sort). Sudut mengukur besar putaran. Bandingkan dengan sudut siku-siku. Lebih besar/kecil dari siku-siku. Kita melewati enam tahap seru: cerita, peta pikiran, infografis, benda nyata, gambar, dan simbol.",
     "cp": "Siswa menggambar dan menjelaskan unsur-unsur bangun datar. Pada sub-bab ini siswa mengenal sudut, membandingkan dan mengukurnya dengan busur derajat, menggambar sudut, dan membedakan jenis-jenis sudut.",
     "referensi": "Buku Siswa Matematika Kelas III Kemendikbudristek (Bab 4 Sub-Bab B)."
   },
@@ -858,16 +814,16 @@ export const SUB_B34: SubBabNaskah = {
     {
       "id": "K3B4B-V1",
       "judul": "Membandingkan Sudut",
-      "subjudul": "Strip sudut dan sudut siku-siku",
+      "subjudul": "Angle as Turn",
       "adegan": [
         {
           "id": "K3B4B-V1-1",
           "judul": "Sudut di sekitar kita",
           "ketukan": [
             "Sudut terbentuk ketika dua garis berpotongan pada satu titik.",
-            "Buku yang dibuka membentuk sebuah sudut.",
-            "Semakin lebar buku dibuka, semakin besar sudutnya.",
-            "Pintu, gunting, dan lengan juga membentuk sudut."
+            "Buku yang dibuka membentuk sebuah sudut. Mari kita pahami bersama.",
+            "Semakin lebar buku dibuka, semakin besar sudutnya. Mari kita pahami bersama.",
+            "Ingat cara Sudut sebagai Putaran: Sudut mengukur besar putaran."
           ],
           "papan": [
             "Dua garis berpotongan",
@@ -880,10 +836,10 @@ export const SUB_B34: SubBabNaskah = {
           "id": "K3B4B-V1-2",
           "judul": "Strip sudut",
           "ketukan": [
-            "Dua potongan karton dapat digabung dengan sebuah pengait.",
-            "Gabungan itu disebut sepasang strip sudut.",
-            "Putar satu strip agar sudutnya menjadi lebih besar.",
-            "Putar sedikit saja agar sudutnya menjadi lebih kecil."
+            "Dua potongan karton dapat digabung dengan sebuah pengait. Mari kita pahami bersama.",
+            "Gabungan itu disebut sepasang strip sudut. Mari kita pahami bersama.",
+            "Putar satu strip agar sudutnya menjadi lebih besar. Mari kita pahami bersama.",
+            "Di sini kita memakai ide Angle as Turn — Sudut mengukur besar putaran."
           ],
           "papan": [
             "Dua karton, satu pengait",
@@ -896,35 +852,33 @@ export const SUB_B34: SubBabNaskah = {
           "id": "K3B4B-V1-3",
           "judul": "Sudut siku-siku",
           "ketukan": [
-            "Lipat selembar kertas, lalu lipat sekali lagi dengan rapi.",
-            "Pojok kertas lipat itu adalah sudut istimewa.",
-            "Sudut istimewa itu dinamakan sudut siku-siku.",
-            "Bandingkan sudut lain dengan pojok kertas lipat.",
-            "METODE LUAR. Sudut sebagai Putaran: Sudut mengukur besar putaran."
+            "Lipat selembar kertas, lalu lipat sekali lagi dengan rapi. Mari kita pahami bersama.",
+            "Pojok kertas lipat itu adalah sudut istimewa. Mari kita pahami bersama.",
+            "Sudut istimewa itu dinamakan sudut siku-siku. Mari kita pahami bersama.",
+            "METODE LUAR · Sudut sebagai Putaran: Sudut mengukur besar putaran."
           ],
           "papan": [
             "Lipat kertas dua kali",
             "Pojok kertas lipat",
             "Sudut siku-siku",
-            "Lebih kecil atau lebih besar",
-            "METODE LUAR · Sudut sebagai Putaran"
+            "Lebih kecil atau lebih besar"
           ]
         }
       ]
     },
     {
       "id": "K3B4B-V2",
-      "judul": "Mengukur Sudut",
-      "subjudul": "Satuan tidak baku dan busur derajat",
+      "judul": "Latihan: Acuan Siku-siku",
+      "subjudul": "Right Angle Benchmark",
       "adegan": [
         {
           "id": "K3B4B-V2-1",
           "judul": "Satuan sudut tidak baku",
           "ketukan": [
-            "Sinar OA dan sinar OB bertemu di titik O dan membentuk sudut AOB.",
-            "Titik O disebut titik sudut, sinar OA dan OB disebut kaki.",
-            "Diukur dengan irisan besar, sudut AOB sama dengan 3 satuan.",
-            "Diukur dengan irisan kecil, sudut yang sama menjadi 6 satuan."
+            "Sinar OA dan sinar OB bertemu di titik O dan membentuk sudut AOB. Mari kita pahami bersama.",
+            "Titik O disebut titik sudut, sinar OA dan OB disebut kaki. Mari kita pahami bersama.",
+            "Diukur dengan irisan besar, sudut AOB sama dengan 3 satuan. Mari kita pahami bersama.",
+            "Ingat cara Acuan Siku-siku: Bandingkan dengan sudut siku-siku."
           ],
           "papan": [
             "Sudut AOB",
@@ -937,10 +891,10 @@ export const SUB_B34: SubBabNaskah = {
           "id": "K3B4B-V2-2",
           "judul": "Busur derajat",
           "ketukan": [
-            "Busur derajat dipakai untuk mengukur sudut.",
-            "Letakkan titik tengah busur derajat tepat di titik O.",
-            "Sejajarkan kaki OA dengan garis nol busur derajat.",
-            "Baca angka yang dilewati kaki OB."
+            "Busur derajat dipakai untuk mengukur sudut. Mari kita pahami bersama.",
+            "Letakkan titik tengah busur derajat tepat di titik O. Mari kita pahami bersama.",
+            "Sejajarkan kaki OA dengan garis nol busur derajat. Mari kita pahami bersama.",
+            "Di sini kita memakai ide Right Angle Benchmark — Bandingkan dengan sudut siku-siku."
           ],
           "papan": [
             "Busur derajat",
@@ -953,35 +907,33 @@ export const SUB_B34: SubBabNaskah = {
           "id": "K3B4B-V2-3",
           "judul": "Satu derajat",
           "ketukan": [
-            "Satu putaran penuh dibagi menjadi 360 bagian sama besar.",
-            "Satu bagian itu besarnya satu derajat, ditulis 1°.",
-            "Kaki OA dan OB yang berimpit berukuran 0°.",
-            "Memutar OB sedikit demi sedikit membuat sudut membesar.",
-            "METODE LUAR. Acuan Siku-siku: Bandingkan dengan sudut siku-siku."
+            "Satu putaran penuh dibagi menjadi 360 bagian sama besar. Mari kita pahami bersama.",
+            "Satu bagian itu besarnya satu derajat, ditulis 1°. Mari kita pahami bersama.",
+            "Kaki OA dan OB yang berimpit berukuran 0°. Mari kita pahami bersama.",
+            "METODE LUAR · Acuan Siku-siku: Bandingkan dengan sudut siku-siku."
           ],
           "papan": [
             "360 bagian sama besar",
             "Satu bagian = 1°",
             "Berimpit = 0°",
-            "Diputar: makin besar",
-            "METODE LUAR · Acuan Siku-siku"
+            "Diputar: makin besar"
           ]
         }
       ]
     },
     {
       "id": "K3B4B-V3",
-      "judul": "Jenis-Jenis Sudut",
-      "subjudul": "Siku-siku, lancip, tumpul, lurus, refleks",
+      "judul": "Siap pakai Corner Sort",
+      "subjudul": "Corner Sort",
       "adegan": [
         {
           "id": "K3B4B-V3-1",
           "judul": "Siku-siku dan lancip",
           "ketukan": [
-            "Sudut yang ukurannya tepat 90° disebut sudut siku-siku.",
-            "Sudut yang lebih dari 0° dan kurang dari 90° disebut sudut lancip.",
-            "Sudut lancip lebih kecil daripada pojok kertas lipat.",
-            "Sudut siku-siku diberi tanda kotak kecil di pojoknya."
+            "Sudut yang ukurannya tepat 90° disebut sudut siku-siku. Mari kita pahami bersama.",
+            "Sudut yang lebih dari 0° dan kurang dari 90° disebut sudut lancip. Mari kita pahami bersama.",
+            "Sudut lancip lebih kecil daripada pojok kertas lipat. Mari kita pahami bersama.",
+            "Ingat cara Pilah Sudut: Lebih besar/kecil dari siku-siku."
           ],
           "papan": [
             "Siku-siku: tepat 90°",
@@ -994,10 +946,10 @@ export const SUB_B34: SubBabNaskah = {
           "id": "K3B4B-V3-2",
           "judul": "Tumpul dan lurus",
           "ketukan": [
-            "Sudut yang lebih dari 90° dan kurang dari 180° disebut sudut tumpul.",
-            "Sudut yang tepat 180° disebut sudut lurus.",
-            "Sudut lurus sama dengan dua sudut siku-siku.",
-            "Kedua kaki sudut lurus membentuk satu garis lurus."
+            "Sudut yang lebih dari 90° dan kurang dari 180° disebut sudut tumpul. Mari kita pahami bersama.",
+            "Sudut yang tepat 180° disebut sudut lurus. Mari kita pahami bersama.",
+            "Sudut lurus sama dengan dua sudut siku-siku. Mari kita pahami bersama.",
+            "Di sini kita memakai ide Corner Sort — Lebih besar/kecil dari siku-siku."
           ],
           "papan": [
             "Tumpul: 90° sampai 180°",
@@ -1011,17 +963,15 @@ export const SUB_B34: SubBabNaskah = {
           "judul": "Sudut refleks",
           "ketukan": [
             "Sudut yang lebih dari 180° dan kurang dari 360° disebut sudut refleks.",
-            "Sudut refleks 300° berpasangan dengan sudut lancip 60°.",
-            "Ukuran keduanya bila dijumlahkan sama dengan 360°.",
-            "Jadi 360° dikurangi sudut refleks memberi sudut pasangannya.",
-            "METODE LUAR. Pilah Sudut: Lebih besar/kecil dari siku-siku."
+            "Sudut refleks 300° berpasangan dengan sudut lancip 60°. Mari kita pahami bersama.",
+            "Ukuran keduanya bila dijumlahkan sama dengan 360°. Mari kita pahami bersama.",
+            "METODE LUAR · Pilah Sudut: Lebih besar/kecil dari siku-siku."
           ],
           "papan": [
             "Refleks: 180° sampai 360°",
             "300° dan 60°",
             "Jumlahnya 360°",
-            "360° dikurangi refleks",
-            "METODE LUAR · Pilah Sudut"
+            "360° dikurangi refleks"
           ]
         }
       ]
@@ -1030,82 +980,66 @@ export const SUB_B34: SubBabNaskah = {
   "mindMaps": [
     {
       "stepNumber": 1,
-      "stepTitle": "1. Sudut dan Kaki Sudut",
-      "stepDesc": "Sudut terbentuk ketika dua garis atau dua sinar berpotongan pada satu titik. Pada sudut AOB, titik O adalah titik sudut dan sinar OA serta sinar OB adalah kaki sudut. Simbol ∠ menunjukkan sudut, dan namanya ditulis dengan titik sudut di tengah, yaitu ∠AOB atau ∠BOA. Sudut ada di sekitar kita, misalnya pada buku yang dibuka, pintu, gunting, dan jarum jam.",
-      "icon": "📐",
-      "flowFrom": "Sudut dan kaki sudut",
-      "flowTo": "Membandingkan sudut dengan strip"
+      "stepTitle": "1. Pahami soal",
+      "stepDesc": "Baca soal Sudut pada Bidang Datar. Apa yang ditanyakan?",
+      "icon": "❓",
+      "flowFrom": "START",
+      "flowTo": "2"
     },
     {
       "stepNumber": 2,
-      "stepTitle": "2. Membandingkan Sudut dengan Strip",
-      "stepDesc": "Pada Aktivitas 2, dua potongan karton digabung dengan sebuah pengait menjadi sepasang strip sudut. Memutar satu strip menghasilkan sudut yang berbeda. Putar lebih jauh agar sudut lebih besar, putar lebih dekat agar sudut lebih kecil. Strip sudut dipakai untuk membandingkan sudut pada gambar dan benda, lalu mengurutkannya dari yang terkecil.",
-      "icon": "📎",
-      "flowFrom": "Membandingkan sudut dengan strip",
-      "flowTo": "Sudut siku-siku dari kertas lipat"
+      "stepTitle": "2. Angle as Turn",
+      "stepDesc": "Sudut mengukur besar putaran.",
+      "icon": "🧭",
+      "flowFrom": "1",
+      "flowTo": "3"
     },
     {
       "stepNumber": 3,
-      "stepTitle": "3. Sudut Siku-siku dari Kertas Lipat",
-      "stepDesc": "Pada Aktivitas 3, selembar kertas dilipat dua kali dengan rapi. Pojok kertas lipat itu adalah sudut istimewa yang dinamakan sudut siku-siku. Sudut siku-siku dipakai untuk memeriksa sudut lain: lebih kecil dari pojok kertas, lebih besar, atau tepat sama. Banyak benda punya sudut siku-siku, misalnya pojok buku, bingkai foto, dan layar televisi.",
-      "icon": "📄",
-      "flowFrom": "Sudut siku-siku dari kertas lipat",
-      "flowTo": "Satuan sudut tidak baku"
+      "stepTitle": "3. Right Angle Benchmark",
+      "stepDesc": "Bandingkan dengan sudut siku-siku.",
+      "icon": "🛠️",
+      "flowFrom": "2",
+      "flowTo": "4"
     },
     {
       "stepNumber": 4,
-      "stepTitle": "4. Mengukur Sudut dengan Satuan Tidak Baku",
-      "stepDesc": "Sudut dapat diukur dengan satuan sudut tidak baku, misalnya irisan karton berukuran sama. Dengan irisan yang lebih besar, sudut AOB sama dengan 3 satuan sudut. Dengan irisan yang lebih kecil, sudut AOB yang sama menjadi 6 satuan sudut. Jadi sudut yang sama ukurannya menjadi berbeda bila diukur dengan satuan yang berbeda, dan karena itu kita memerlukan satuan baku.",
-      "icon": "🍕",
-      "flowFrom": "Satuan sudut tidak baku",
-      "flowTo": "Busur derajat dan derajat"
+      "stepTitle": "4. Corner Sort",
+      "stepDesc": "Lebih besar/kecil dari siku-siku.",
+      "icon": "✨",
+      "flowFrom": "3",
+      "flowTo": "5"
     },
     {
       "stepNumber": 5,
-      "stepTitle": "5. Busur Derajat dan Derajat",
-      "stepDesc": "Satuan baku sudut adalah derajat, ditulis dengan simbol °. Satu putaran penuh dibagi menjadi 360 bagian sama besar, dan tiap bagian besarnya 1°. Sudut diukur dengan busur derajat: letakkan titik tengahnya di titik sudut O, sejajarkan kaki OA dengan garis nol, lalu baca angka yang dilewati kaki OB. Kaki yang berimpit berukuran 0°.",
-      "icon": "🧭",
-      "flowFrom": "Busur derajat dan derajat",
-      "flowTo": "Menggambar sudut"
+      "stepTitle": "5. Kerjakan",
+      "stepDesc": "Terapkan cara itu pada angka atau gambar soal.",
+      "icon": "✏️",
+      "flowFrom": "4",
+      "flowTo": "6"
     },
     {
       "stepNumber": 6,
-      "stepTitle": "6. Menggambar Sudut",
-      "stepDesc": "Untuk menggambar sudut 50°, gambar dulu ruas garis AB. Letakkan titik tengah busur derajat di titik A dengan garis nolnya pada AB. Tandai titik C tepat di angka 50°. Angkat busur derajat, lalu hubungkan A dan C dengan penggaris. Terbentuklah sudut BAC berukuran 50°. Cara yang sama dipakai untuk sudut 30°, 70°, 135°, dan lainnya.",
-      "icon": "✏️",
-      "flowFrom": "Menggambar sudut",
-      "flowTo": "Lancip, siku-siku, tumpul, dan lurus"
+      "stepTitle": "6. Cek masuk akal",
+      "stepDesc": "Apakah hasilnya masuk akal? Bandingkan dengan perkiraan.",
+      "icon": "✅",
+      "flowFrom": "5",
+      "flowTo": "7"
     },
     {
       "stepNumber": 7,
-      "stepTitle": "7. Sudut Lancip, Siku-siku, Tumpul, dan Lurus",
-      "stepDesc": "Sudut dikelompokkan dengan membandingkan ukurannya dengan 90° dan 180°. Sudut lancip lebih dari 0° dan kurang dari 90°. Sudut siku-siku tepat 90° dan kaki-kakinya saling tegak lurus. Sudut tumpul lebih dari 90° dan kurang dari 180°. Sudut lurus tepat 180°, dua kali sudut siku-siku, dan kaki-kakinya membentuk garis lurus.",
-      "icon": "🔺",
-      "flowFrom": "Lancip, siku-siku, tumpul, dan lurus",
-      "flowTo": "Sudut refleks"
+      "stepTitle": "7. Simpulkan",
+      "stepDesc": "Ulangi ide utamanya dengan kalimatmu sendiri.",
+      "icon": "💬",
+      "flowFrom": "6",
+      "flowTo": "8"
     },
     {
       "stepNumber": 8,
-      "stepTitle": "8. Sudut Refleks",
-      "stepDesc": "Sudut yang ukurannya lebih dari 180° dan kurang dari 360° disebut sudut refleks. Busur derajat mengukur sudut sampai 180°, jadi sudut refleks dicari lewat sudut lancip atau tumpul yang bersesuaian. Ukuran sudut refleks sama dengan 360° dikurangi ukuran sudut bersesuaian itu. Contohnya sudut refleks 300° berpasangan dengan sudut lancip 60°, dan sudut tumpul 130° berpasangan dengan sudut refleks 230°.",
-      "icon": "🔄",
-      "flowFrom": "Sudut refleks",
-      "flowTo": "9"
-    },
-    {
-      "stepNumber": 9,
-      "stepTitle": "9. METODE LUAR · Sudut sebagai Putaran",
-      "stepDesc": "Sudut mengukur besar putaran.",
-      "icon": "🌍",
-      "flowFrom": "8",
-      "flowTo": "10"
-    },
-    {
-      "stepNumber": 10,
-      "stepTitle": "10. METODE LUAR · Acuan Siku-siku",
-      "stepDesc": "Bandingkan dengan sudut siku-siku.",
-      "icon": "🌍",
-      "flowFrom": "9",
+      "stepTitle": "8. Lanjut main",
+      "stepDesc": "Siap melatih di permainan Concrete sampai Abstract.",
+      "icon": "🎮",
+      "flowFrom": "7",
       "flowTo": "END"
     }
   ],
@@ -1184,22 +1118,15 @@ export const SUB_B34: SubBabNaskah = {
       "judul": "Sudut sebagai Putaran",
       "emoji": "🌍",
       "countNum": 1,
-      "countWord": "METODE LUAR · Angle as Turn",
-      "suara": "METODE LUAR. Sudut sebagai Putaran. Sudut mengukur besar putaran."
+      "countWord": "ingat",
+      "suara": "Sudut mengukur besar putaran."
     },
     {
       "judul": "Acuan Siku-siku",
       "emoji": "🌍",
       "countNum": 2,
-      "countWord": "METODE LUAR · Right Angle Benchmark",
-      "suara": "METODE LUAR. Acuan Siku-siku. Bandingkan dengan sudut siku-siku."
-    },
-    {
-      "judul": "Pilah Sudut",
-      "emoji": "🌍",
-      "countNum": 3,
-      "countWord": "METODE LUAR · Corner Sort",
-      "suara": "METODE LUAR. Pilah Sudut. Lebih besar/kecil dari siku-siku."
+      "countWord": "ingat",
+      "suara": "Bandingkan dengan sudut siku-siku."
     }
   ],
   "games": [
@@ -1208,9 +1135,9 @@ export const SUB_B34: SubBabNaskah = {
       "gameType": "strip-bigger-smaller",
       "title": "Strip Sudut: Lebih Besar atau Lebih Kecil",
       "bookReference": "hlm. 155–156 (Aktivitas 2: membandingkan sudut)",
-      "objective": "Memutar strip sudut agar lebih besar atau lebih kecil dari sudut acuan. (METODE LUAR · Sudut sebagai Putaran)",
-      "mechanicDescription": "Tiga ronde, tiap ronde dua soal. Sepasang strip karton digabung pengait. Siswa memutar satu strip dengan tombol atau penggeser sampai sudutnya lebih besar atau lebih kecil dari garis putus acuan, lalu menekan Periksa.",
-      "voiceGuide": "METODE LUAR · Sudut sebagai Putaran. Putar strip sampai sudutnya lebih besar atau lebih kecil.",
+      "objective": "Pakai Sudut sebagai Putaran: Sudut mengukur besar putaran. Latihan: Memutar strip sudut agar lebih besar atau lebih kecil dari sudut acuan..",
+      "mechanicDescription": "Tiga ronde, tiap ronde dua soal. Sepasang strip karton digabung pengait. Siswa memutar satu strip dengan tombol atau penggeser sampai sudutnya lebih besar atau lebih kecil dari garis putus acuan, lalu menekan Periksa. Saat bermain, terapkan Angle as Turn: Sudut mengukur besar putaran.",
+      "voiceGuide": "Sudut sebagai Putaran. Sudut mengukur besar putaran.",
       "emoji": "📎",
       "targetCount": 6
     },
@@ -1219,9 +1146,9 @@ export const SUB_B34: SubBabNaskah = {
       "gameType": "fold-right-angle",
       "title": "Bentuk Sudut Siku-siku",
       "bookReference": "hlm. 158 (Aktivitas 3: kertas lipat)",
-      "objective": "Membentuk sudut siku-siku dan sudut lurus dengan strip sudut dan pojok kertas lipat.",
-      "mechanicDescription": "Tiga ronde, tiap ronde dua soal. Pojok kertas lipat ditampilkan sebagai acuan. Siswa memutar strip sampai tepat pas dengan pojok kertas atau sampai kedua strip membentuk garis lurus, lalu menekan Periksa.",
-      "voiceGuide": "Putar strip sampai pas dengan pojok kertas lipat.",
+      "objective": "Pakai Sudut sebagai Putaran: Sudut mengukur besar putaran. Latihan: Membentuk sudut siku-siku dan sudut lurus dengan strip sudut dan pojok kertas lipat..",
+      "mechanicDescription": "Tiga ronde, tiap ronde dua soal. Pojok kertas lipat ditampilkan sebagai acuan. Siswa memutar strip sampai tepat pas dengan pojok kertas atau sampai kedua strip membentuk garis lurus, lalu menekan Periksa. Saat bermain, terapkan Angle as Turn: Sudut mengukur besar putaran.",
+      "voiceGuide": "Sudut sebagai Putaran. Sudut mengukur besar putaran.",
       "emoji": "📄",
       "targetCount": 6
     },
@@ -1230,9 +1157,9 @@ export const SUB_B34: SubBabNaskah = {
       "gameType": "widest-open",
       "title": "Mana yang Paling Terbuka?",
       "bookReference": "hlm. 154–155 (membandingkan sudut)",
-      "objective": "Membandingkan bukaan tiga benda sejenis dan menemukan yang paling lebar atau paling sempit.",
-      "mechanicDescription": "Tiga ronde, tiap ronde tiga benda (buku, pintu, atau gunting) dengan bukaan berbeda dan dua pertanyaan. Siswa mengetuk benda yang paling lebar atau paling sempit bukaannya.",
-      "voiceGuide": "Ketuk benda yang paling terbuka atau paling sempit.",
+      "objective": "Pakai Sudut sebagai Putaran: Sudut mengukur besar putaran. Latihan: Membandingkan bukaan tiga benda sejenis dan menemukan yang paling lebar atau paling sempit..",
+      "mechanicDescription": "Tiga ronde, tiap ronde tiga benda (buku, pintu, atau gunting) dengan bukaan berbeda dan dua pertanyaan. Siswa mengetuk benda yang paling lebar atau paling sempit bukaannya. Saat bermain, terapkan Angle as Turn: Sudut mengukur besar putaran.",
+      "voiceGuide": "Sudut sebagai Putaran. Sudut mengukur besar putaran.",
       "emoji": "📖",
       "targetCount": 6
     },
@@ -1241,9 +1168,9 @@ export const SUB_B34: SubBabNaskah = {
       "gameType": "object-angle-kind",
       "title": "Jenis Sudut pada Benda",
       "bookReference": "hlm. 158–160 dan 167–168 (jenis-jenis sudut pada benda)",
-      "objective": "Menentukan jenis sudut yang dibentuk oleh buku, pintu, dan gunting yang dibuka.",
-      "mechanicDescription": "Tiga ronde, tiap ronde dua soal. Benda dengan bukaan tertentu ditampilkan. Siswa memilih satu dari tiga jenis sudut: lancip, siku-siku, tumpul, lurus, atau refleks.",
-      "voiceGuide": "Pilih jenis sudut pada benda.",
+      "objective": "Pakai Sudut sebagai Putaran: Sudut mengukur besar putaran. Latihan: Menentukan jenis sudut yang dibentuk oleh buku, pintu, dan gunting yang dibuka..",
+      "mechanicDescription": "Tiga ronde, tiap ronde dua soal. Benda dengan bukaan tertentu ditampilkan. Siswa memilih satu dari tiga jenis sudut: lancip, siku-siku, tumpul, lurus, atau refleks. Saat bermain, terapkan Angle as Turn: Sudut mengukur besar putaran.",
+      "voiceGuide": "Sudut sebagai Putaran. Sudut mengukur besar putaran.",
       "emoji": "🚪",
       "targetCount": 6
     },
@@ -1252,9 +1179,9 @@ export const SUB_B34: SubBabNaskah = {
       "gameType": "match-object-angle",
       "title": "Jodohkan Benda dan Jenis Sudut",
       "bookReference": "hlm. 158 dan 167–168 (sudut siku-siku, lancip, tumpul)",
-      "objective": "Menjodohkan benda berbukaan tertentu dengan jenis sudutnya.",
-      "mechanicDescription": "Tiga ronde, tiap ronde tiga benda dan tiga jenis sudut berbeda. Siswa mengetuk benda, lalu mengetuk jenis sudut yang cocok.",
-      "voiceGuide": "Ketuk benda, lalu ketuk jenis sudutnya.",
+      "objective": "Menjodohkan benda berbukaan tertentu dengan jenis sudutnya.. Ingat Sudut sebagai Putaran.",
+      "mechanicDescription": "Tiga ronde, tiap ronde tiga benda dan tiga jenis sudut berbeda. Siswa mengetuk benda, lalu mengetuk jenis sudut yang cocok. Gunakan Sudut sebagai Putaran.",
+      "voiceGuide": "Sudut sebagai Putaran. Ketuk benda, lalu ketuk jenis sudutnya.",
       "emoji": "🔗",
       "targetCount": 9
     },
@@ -1263,9 +1190,9 @@ export const SUB_B34: SubBabNaskah = {
       "gameType": "memory-object-angle",
       "title": "Memori Benda dan Jenis Sudut",
       "bookReference": "hlm. 167–168 (jenis-jenis sudut)",
-      "objective": "Mencocokkan benda berbukaan tertentu dengan jenis sudutnya lewat permainan memori.",
-      "mechanicDescription": "Tiga ronde, tiap ronde delapan kartu tertutup (empat pasang). Siswa membalik dua kartu dan mencari benda dengan jenis sudutnya.",
-      "voiceGuide": "Balik dua kartu, cari benda dan jenis sudutnya.",
+      "objective": "Mencocokkan benda berbukaan tertentu dengan jenis sudutnya lewat permainan memori.. Ingat Sudut sebagai Putaran.",
+      "mechanicDescription": "Tiga ronde, tiap ronde delapan kartu tertutup (empat pasang). Siswa membalik dua kartu dan mencari benda dengan jenis sudutnya. Gunakan Sudut sebagai Putaran.",
+      "voiceGuide": "Sudut sebagai Putaran. Balik dua kartu, cari benda dan jenis sudutnya.",
       "emoji": "🃏",
       "targetCount": 12
     },
@@ -1274,9 +1201,9 @@ export const SUB_B34: SubBabNaskah = {
       "gameType": "tap-all-object-angle",
       "title": "Ketuk Semua Benda dengan Jenis Sudut",
       "bookReference": "hlm. 158–159 (sudut siku-siku di sekitar kita)",
-      "objective": "Menemukan semua benda yang bukaannya membentuk jenis sudut tertentu.",
-      "mechanicDescription": "Tiga ronde, tiap ronde empat benda dan satu perintah. Siswa mengetuk semua benda yang cocok, lalu menekan Periksa.",
-      "voiceGuide": "Ketuk semua yang cocok, lalu periksa.",
+      "objective": "Menemukan semua benda yang bukaannya membentuk jenis sudut tertentu.. Ingat Sudut sebagai Putaran.",
+      "mechanicDescription": "Tiga ronde, tiap ronde empat benda dan satu perintah. Siswa mengetuk semua benda yang cocok, lalu menekan Periksa. Gunakan Sudut sebagai Putaran.",
+      "voiceGuide": "Sudut sebagai Putaran. Ketuk semua yang cocok, lalu periksa.",
       "emoji": "✔️",
       "targetCount": 3
     },
@@ -1285,9 +1212,9 @@ export const SUB_B34: SubBabNaskah = {
       "gameType": "count-right-angles",
       "title": "Hitung Sudut Siku-siku pada Benda",
       "bookReference": "hlm. 159–160 (Ayo Berpikir 3: sudut siku-siku pada benda)",
-      "objective": "Menghitung banyak sudut siku-siku pada benda sehari-hari.",
-      "mechanicDescription": "Tiga ronde, tiap ronde dua soal. Benda seperti buku, bingkai foto, televisi, penggaris segitiga, dan rambu ditampilkan. Siswa memilih satu dari tiga banyak sudut siku-siku.",
-      "voiceGuide": "Hitung sudut siku-siku pada benda.",
+      "objective": "Menghitung banyak sudut siku-siku pada benda sehari-hari.. Ingat Sudut sebagai Putaran.",
+      "mechanicDescription": "Tiga ronde, tiap ronde dua soal. Benda seperti buku, bingkai foto, televisi, penggaris segitiga, dan rambu ditampilkan. Siswa memilih satu dari tiga banyak sudut siku-siku. Gunakan Sudut sebagai Putaran.",
+      "voiceGuide": "Sudut sebagai Putaran. Hitung sudut siku-siku pada benda.",
       "emoji": "📺",
       "targetCount": 6
     },
@@ -1296,9 +1223,9 @@ export const SUB_B34: SubBabNaskah = {
       "gameType": "order-open",
       "title": "Urutkan Benda menurut Bukaan",
       "bookReference": "hlm. 156 (Aktivitas 2: urutkan sudut dari yang terkecil)",
-      "objective": "Mengurutkan tiga benda sejenis menurut besar bukaannya.",
-      "mechanicDescription": "Tiga ronde, tiap ronde tiga benda bertanda huruf. Siswa mengetuk benda satu per satu dari yang paling sempit atau paling lebar bukaannya.",
-      "voiceGuide": "Ketuk benda menurut bukaannya.",
+      "objective": "Mengurutkan tiga benda sejenis menurut besar bukaannya.. Ingat Sudut sebagai Putaran.",
+      "mechanicDescription": "Tiga ronde, tiap ronde tiga benda bertanda huruf. Siswa mengetuk benda satu per satu dari yang paling sempit atau paling lebar bukaannya. Gunakan Sudut sebagai Putaran.",
+      "voiceGuide": "Sudut sebagai Putaran. Ketuk benda menurut bukaannya.",
       "emoji": "📶",
       "targetCount": 9
     },
@@ -1307,9 +1234,9 @@ export const SUB_B34: SubBabNaskah = {
       "gameType": "slice-unit",
       "title": "Ukur dengan Irisan Pizza",
       "bookReference": "hlm. 163–165 (mengukur sudut dengan ukuran tidak baku)",
-      "objective": "Menghitung banyak satuan irisan yang menutupi sebuah sudut.",
-      "mechanicDescription": "Tiga ronde, tiap ronde dua soal. Sudut yang sama diukur dengan irisan besar lalu irisan kecil. Siswa menghitung banyak irisan dan memilih satu dari tiga bilangan.",
-      "voiceGuide": "Hitung banyak irisan pada sudut.",
+      "objective": "Menghitung banyak satuan irisan yang menutupi sebuah sudut.. Ingat Sudut sebagai Putaran.",
+      "mechanicDescription": "Tiga ronde, tiap ronde dua soal. Sudut yang sama diukur dengan irisan besar lalu irisan kecil. Siswa menghitung banyak irisan dan memilih satu dari tiga bilangan. Gunakan Sudut sebagai Putaran.",
+      "voiceGuide": "Sudut sebagai Putaran. Hitung banyak irisan pada sudut.",
       "emoji": "🍕",
       "targetCount": 6
     },
@@ -1318,9 +1245,9 @@ export const SUB_B34: SubBabNaskah = {
       "gameType": "read-protractor",
       "title": "Baca Busur Derajat",
       "bookReference": "hlm. 165–166 dan 170 (Ayo Berlatih 1: besar sudut pada busur derajat)",
-      "objective": "Membaca ukuran sudut dari busur derajat dengan skala luar atau skala dalam. (METODE LUAR · Sudut sebagai Putaran)",
-      "mechanicDescription": "Tiga ronde, tiap ronde dua soal. Busur derajat dan dua kaki sudut ditampilkan. Siswa memilih satu dari tiga ukuran sudut. Pengecoh memuat bacaan dari skala yang salah.",
-      "voiceGuide": "METODE LUAR · Sudut sebagai Putaran. Baca ukuran sudut pada busur derajat.",
+      "objective": "Pakai Acuan Siku-siku: Bandingkan dengan sudut siku-siku. Latihan: Membaca ukuran sudut dari busur derajat dengan skala luar atau skala dalam..",
+      "mechanicDescription": "Tiga ronde, tiap ronde dua soal. Busur derajat dan dua kaki sudut ditampilkan. Siswa memilih satu dari tiga ukuran sudut. Pengecoh memuat bacaan dari skala yang salah. Saat bermain, terapkan Right Angle Benchmark: Bandingkan dengan sudut siku-siku.",
+      "voiceGuide": "Acuan Siku-siku. Bandingkan dengan sudut siku-siku.",
       "diagramType": "protractor-read",
       "numberA": 3,
       "numberB": 2
@@ -1330,9 +1257,9 @@ export const SUB_B34: SubBabNaskah = {
       "gameType": "angle-kind-picture",
       "title": "Jenis Sudut dari Gambar",
       "bookReference": "hlm. 167–169 (jenis-jenis sudut)",
-      "objective": "Menentukan jenis sudut dari gambar dua kaki sudut.",
-      "mechanicDescription": "Tiga ronde, tiap ronde dua soal. Gambar sudut berhuruf ditampilkan. Siswa memilih satu dari tiga jenis: lancip, siku-siku, tumpul, lurus, atau refleks.",
-      "voiceGuide": "Pilih jenis sudut pada gambar.",
+      "objective": "Pakai Acuan Siku-siku: Bandingkan dengan sudut siku-siku. Latihan: Menentukan jenis sudut dari gambar dua kaki sudut..",
+      "mechanicDescription": "Tiga ronde, tiap ronde dua soal. Gambar sudut berhuruf ditampilkan. Siswa memilih satu dari tiga jenis: lancip, siku-siku, tumpul, lurus, atau refleks. Saat bermain, terapkan Right Angle Benchmark: Bandingkan dengan sudut siku-siku.",
+      "voiceGuide": "Acuan Siku-siku. Bandingkan dengan sudut siku-siku.",
       "diagramType": "angle-kind",
       "numberA": 3,
       "numberB": 2
@@ -1342,9 +1269,9 @@ export const SUB_B34: SubBabNaskah = {
       "gameType": "match-angle-kind",
       "title": "Jodohkan Sudut dan Jenisnya",
       "bookReference": "hlm. 167–169 (jenis-jenis sudut)",
-      "objective": "Menjodohkan gambar sudut dengan jenisnya.",
-      "mechanicDescription": "Tiga ronde, tiap ronde tiga gambar sudut dan tiga jenis berbeda. Siswa mengetuk gambar, lalu mengetuk jenis sudut yang cocok.",
-      "voiceGuide": "Ketuk gambar, lalu ketuk jenis sudutnya.",
+      "objective": "Pakai Acuan Siku-siku: Bandingkan dengan sudut siku-siku. Latihan: Menjodohkan gambar sudut dengan jenisnya..",
+      "mechanicDescription": "Tiga ronde, tiap ronde tiga gambar sudut dan tiga jenis berbeda. Siswa mengetuk gambar, lalu mengetuk jenis sudut yang cocok. Saat bermain, terapkan Right Angle Benchmark: Bandingkan dengan sudut siku-siku.",
+      "voiceGuide": "Acuan Siku-siku. Bandingkan dengan sudut siku-siku.",
       "diagramType": "angle-match",
       "numberA": 3,
       "numberB": 3
@@ -1354,9 +1281,9 @@ export const SUB_B34: SubBabNaskah = {
       "gameType": "memory-angle-kind",
       "title": "Memori Gambar Sudut dan Jenisnya",
       "bookReference": "hlm. 167–169 (jenis-jenis sudut)",
-      "objective": "Mencocokkan gambar sudut dengan jenisnya lewat permainan memori.",
-      "mechanicDescription": "Tiga ronde, tiap ronde delapan kartu tertutup (empat pasang). Siswa membalik dua kartu dan mencari gambar sudut dengan jenisnya.",
-      "voiceGuide": "Balik dua kartu, cari gambar dan jenisnya.",
+      "objective": "Pakai Acuan Siku-siku: Bandingkan dengan sudut siku-siku. Latihan: Mencocokkan gambar sudut dengan jenisnya lewat permainan memori..",
+      "mechanicDescription": "Tiga ronde, tiap ronde delapan kartu tertutup (empat pasang). Siswa membalik dua kartu dan mencari gambar sudut dengan jenisnya. Saat bermain, terapkan Right Angle Benchmark: Bandingkan dengan sudut siku-siku.",
+      "voiceGuide": "Acuan Siku-siku. Bandingkan dengan sudut siku-siku.",
       "diagramType": "angle-memory",
       "numberA": 3,
       "numberB": 4
@@ -1366,9 +1293,9 @@ export const SUB_B34: SubBabNaskah = {
       "gameType": "fill-angle-table",
       "title": "Isi Tabel Jenis Sudut",
       "bookReference": "hlm. 173 (Ayo Berlatih 5: kelompokkan sudut)",
-      "objective": "Melengkapi tabel ukuran sudut dan jenisnya.",
-      "mechanicDescription": "Tiga tabel dengan empat baris. Siswa mengetuk baris, lalu mengetuk kartu jenis sudut yang tepat. Ada satu kartu pengecoh.",
-      "voiceGuide": "Isi tabel dengan kartu jenis sudut.",
+      "objective": "Melengkapi tabel ukuran sudut dan jenisnya.. Ingat Acuan Siku-siku.",
+      "mechanicDescription": "Tiga tabel dengan empat baris. Siswa mengetuk baris, lalu mengetuk kartu jenis sudut yang tepat. Ada satu kartu pengecoh. Gunakan Acuan Siku-siku.",
+      "voiceGuide": "Acuan Siku-siku. Isi tabel dengan kartu jenis sudut.",
       "diagramType": "angle-table",
       "numberA": 3,
       "numberB": 4
@@ -1378,9 +1305,9 @@ export const SUB_B34: SubBabNaskah = {
       "gameType": "tap-all-angles",
       "title": "Ketuk Semua Sudut dengan Jenis Tertentu",
       "bookReference": "hlm. 167–168 (sudut lancip, siku-siku, tumpul)",
-      "objective": "Menemukan semua gambar sudut dengan jenis tertentu.",
-      "mechanicDescription": "Tiga ronde, tiap ronde empat gambar sudut dan satu perintah. Siswa mengetuk semua sudut yang cocok, lalu menekan Periksa.",
-      "voiceGuide": "Ketuk semua yang cocok, lalu periksa.",
+      "objective": "Menemukan semua gambar sudut dengan jenis tertentu.. Ingat Acuan Siku-siku.",
+      "mechanicDescription": "Tiga ronde, tiap ronde empat gambar sudut dan satu perintah. Siswa mengetuk semua sudut yang cocok, lalu menekan Periksa. Gunakan Acuan Siku-siku.",
+      "voiceGuide": "Acuan Siku-siku. Ketuk semua yang cocok, lalu periksa.",
       "diagramType": "angle-select",
       "numberA": 3,
       "numberB": 4
@@ -1390,9 +1317,9 @@ export const SUB_B34: SubBabNaskah = {
       "gameType": "sort-angles",
       "title": "Pilah Sudut: Lancip, Siku-siku, atau Tumpul",
       "bookReference": "hlm. 167–168 (membandingkan dengan 90°)",
-      "objective": "Memilah gambar sudut menjadi lancip, siku-siku, dan tumpul.",
-      "mechanicDescription": "Tiga ronde, tiap ronde enam gambar sudut dan tiga kotak. Siswa menyeret atau mengetuk gambar ke kotak yang tepat.",
-      "voiceGuide": "Pilah gambar ke kotak yang tepat.",
+      "objective": "Memilah gambar sudut menjadi lancip, siku-siku, dan tumpul.. Ingat Acuan Siku-siku.",
+      "mechanicDescription": "Tiga ronde, tiap ronde enam gambar sudut dan tiga kotak. Siswa menyeret atau mengetuk gambar ke kotak yang tepat. Gunakan Acuan Siku-siku.",
+      "voiceGuide": "Acuan Siku-siku. Pilah gambar ke kotak yang tepat.",
       "diagramType": "angle-sort",
       "numberA": 3,
       "numberB": 6
@@ -1402,9 +1329,9 @@ export const SUB_B34: SubBabNaskah = {
       "gameType": "order-angles",
       "title": "Urutkan Sudut dari yang Terkecil",
       "bookReference": "hlm. 156 (Aktivitas 2: urutkan sudut)",
-      "objective": "Mengurutkan tiga gambar sudut menurut ukurannya.",
-      "mechanicDescription": "Tiga ronde, tiap ronde tiga gambar sudut bertanda huruf. Siswa mengetuk sudut satu per satu dari yang terkecil atau terbesar.",
-      "voiceGuide": "Ketuk sudut menurut ukurannya.",
+      "objective": "Mengurutkan tiga gambar sudut menurut ukurannya.. Ingat Acuan Siku-siku.",
+      "mechanicDescription": "Tiga ronde, tiap ronde tiga gambar sudut bertanda huruf. Siswa mengetuk sudut satu per satu dari yang terkecil atau terbesar. Gunakan Acuan Siku-siku.",
+      "voiceGuide": "Acuan Siku-siku. Ketuk sudut menurut ukurannya.",
       "diagramType": "angle-order",
       "numberA": 3,
       "numberB": 3
@@ -1414,9 +1341,9 @@ export const SUB_B34: SubBabNaskah = {
       "gameType": "name-angle-parts",
       "title": "Titik Sudut, Kaki, dan Nama Sudut",
       "bookReference": "hlm. 163 dan 171 (sudut AOB dan Ayo Berlatih 2)",
-      "objective": "Menentukan titik sudut, kaki sudut, dan nama sudut dari gambar berhuruf.",
-      "mechanicDescription": "Tiga ronde, tiap ronde dua soal. Sudut dengan tiga huruf ditampilkan. Siswa memilih titik sudut, nama sudut, atau kaki sudut dari tiga pilihan.",
-      "voiceGuide": "Pilih titik sudut, kaki, atau nama sudut.",
+      "objective": "Menentukan titik sudut, kaki sudut, dan nama sudut dari gambar berhuruf.. Ingat Acuan Siku-siku.",
+      "mechanicDescription": "Tiga ronde, tiap ronde dua soal. Sudut dengan tiga huruf ditampilkan. Siswa memilih titik sudut, nama sudut, atau kaki sudut dari tiga pilihan. Gunakan Acuan Siku-siku.",
+      "voiceGuide": "Acuan Siku-siku. Pilih titik sudut, kaki, atau nama sudut.",
       "diagramType": "angle-names",
       "numberA": 3,
       "numberB": 2
@@ -1426,9 +1353,9 @@ export const SUB_B34: SubBabNaskah = {
       "gameType": "draw-angle-protractor",
       "title": "Gambar Sudut dengan Busur Derajat",
       "bookReference": "hlm. 167 dan 172 (menggambar sudut 50° dan Ayo Berlatih 4)",
-      "objective": "Menggambar sudut dengan ukuran tertentu memakai busur derajat.",
-      "mechanicDescription": "Tiga ronde, tiap ronde dua soal. Kaki OA ada di garis nol busur derajat. Siswa memutar kaki OB dengan tombol atau penggeser sampai tepat di ukuran yang diminta, lalu menekan Periksa.",
-      "voiceGuide": "Putar kaki sampai ukuran yang diminta.",
+      "objective": "Menggambar sudut dengan ukuran tertentu memakai busur derajat.. Ingat Acuan Siku-siku.",
+      "mechanicDescription": "Tiga ronde, tiap ronde dua soal. Kaki OA ada di garis nol busur derajat. Siswa memutar kaki OB dengan tombol atau penggeser sampai tepat di ukuran yang diminta, lalu menekan Periksa. Gunakan Acuan Siku-siku.",
+      "voiceGuide": "Acuan Siku-siku. Putar kaki sampai ukuran yang diminta.",
       "diagramType": "angle-draw",
       "numberA": 3,
       "numberB": 2
@@ -1438,9 +1365,9 @@ export const SUB_B34: SubBabNaskah = {
       "gameType": "name-angle-part-text",
       "title": "Nama Bagian Sudut dan Alatnya",
       "bookReference": "hlm. 163–166 (titik sudut, kaki, busur derajat)",
-      "objective": "Memilih nama bagian sudut, alat ukur, dan satuannya dari uraian. (METODE LUAR · Sudut sebagai Putaran)",
-      "mechanicDescription": "Tiga ronde, tiap ronde dua soal. Siswa membaca uraian, lalu memilih satu dari tiga nama.",
-      "voiceGuide": "METODE LUAR · Sudut sebagai Putaran. Pilih nama yang tepat.",
+      "objective": "Pakai Pilah Sudut: Lebih besar/kecil dari siku-siku. Latihan: Memilih nama bagian sudut, alat ukur, dan satuannya dari uraian..",
+      "mechanicDescription": "Tiga ronde, tiap ronde dua soal. Siswa membaca uraian, lalu memilih satu dari tiga nama. Saat bermain, terapkan Corner Sort: Lebih besar/kecil dari siku-siku.",
+      "voiceGuide": "Pilah Sudut. Lebih besar/kecil dari siku-siku.",
       "symbolLarge": "∠AOB",
       "wordLarge": "NAMA",
       "mathNotation": "titik sudut • kaki • derajat"
@@ -1450,9 +1377,9 @@ export const SUB_B34: SubBabNaskah = {
       "gameType": "complete-angle-sentence",
       "title": "Lengkapi Kalimat Sudut",
       "bookReference": "hlm. 154–169 (sudut dan jenis-jenisnya)",
-      "objective": "Melengkapi kalimat tentang sudut, ukurannya, dan jenis-jenisnya.",
-      "mechanicDescription": "Tiga soal, tiap soal tiga kalimat, misalnya sudut siku-siku ukurannya tepat ... Siswa memilih satu dari tiga kata atau ukuran.",
-      "voiceGuide": "Pilih kata untuk bagian kosong.",
+      "objective": "Pakai Pilah Sudut: Lebih besar/kecil dari siku-siku. Latihan: Melengkapi kalimat tentang sudut, ukurannya, dan jenis-jenisnya..",
+      "mechanicDescription": "Tiga soal, tiap soal tiga kalimat, misalnya sudut siku-siku ukurannya tepat ... Siswa memilih satu dari tiga kata atau ukuran. Saat bermain, terapkan Corner Sort: Lebih besar/kecil dari siku-siku.",
+      "voiceGuide": "Pilah Sudut. Lebih besar/kecil dari siku-siku.",
       "symbolLarge": "…",
       "wordLarge": "LENGKAPI",
       "mathNotation": "sudut • derajat • jenis"
@@ -1462,9 +1389,9 @@ export const SUB_B34: SubBabNaskah = {
       "gameType": "classify-degree",
       "title": "Jenis Sudut dari Ukurannya",
       "bookReference": "hlm. 167–169 dan 173 (Ayo Berlatih 5)",
-      "objective": "Menentukan jenis sudut dari ukurannya dalam derajat.",
-      "mechanicDescription": "Tiga ronde, tiap ronde dua soal, misalnya sudut 120° adalah ... Siswa membandingkan ukuran dengan 90° dan 180°, lalu memilih satu dari tiga jenis.",
-      "voiceGuide": "Pilih jenis sudut dari ukurannya.",
+      "objective": "Pakai Pilah Sudut: Lebih besar/kecil dari siku-siku. Latihan: Menentukan jenis sudut dari ukurannya dalam derajat..",
+      "mechanicDescription": "Tiga ronde, tiap ronde dua soal, misalnya sudut 120° adalah ... Siswa membandingkan ukuran dengan 90° dan 180°, lalu memilih satu dari tiga jenis. Saat bermain, terapkan Corner Sort: Lebih besar/kecil dari siku-siku.",
+      "voiceGuide": "Pilah Sudut. Lebih besar/kecil dari siku-siku.",
       "symbolLarge": "90°",
       "wordLarge": "JENIS",
       "mathNotation": "lancip • siku-siku • tumpul"
@@ -1474,9 +1401,9 @@ export const SUB_B34: SubBabNaskah = {
       "gameType": "match-degree-kind",
       "title": "Jodohkan Ukuran dan Jenis Sudut",
       "bookReference": "hlm. 167–169 dan 173 (kelompokkan sudut)",
-      "objective": "Menjodohkan ukuran sudut dengan jenisnya.",
-      "mechanicDescription": "Tiga ronde, tiap ronde tiga ukuran dan tiga jenis berbeda. Siswa mengetuk ukuran, lalu mengetuk jenis sudutnya.",
-      "voiceGuide": "Ketuk ukuran, lalu ketuk jenisnya.",
+      "objective": "Pakai Pilah Sudut: Lebih besar/kecil dari siku-siku. Latihan: Menjodohkan ukuran sudut dengan jenisnya..",
+      "mechanicDescription": "Tiga ronde, tiap ronde tiga ukuran dan tiga jenis berbeda. Siswa mengetuk ukuran, lalu mengetuk jenis sudutnya. Saat bermain, terapkan Corner Sort: Lebih besar/kecil dari siku-siku.",
+      "voiceGuide": "Pilah Sudut. Lebih besar/kecil dari siku-siku.",
       "symbolLarge": "= ?",
       "wordLarge": "JODOHKAN",
       "mathNotation": "derajat • jenis"
@@ -1486,9 +1413,9 @@ export const SUB_B34: SubBabNaskah = {
       "gameType": "memory-degree-kind",
       "title": "Memori Ukuran dan Jenis Sudut",
       "bookReference": "hlm. 167–169 (jenis-jenis sudut)",
-      "objective": "Mencocokkan ukuran sudut dengan jenisnya lewat permainan memori.",
-      "mechanicDescription": "Tiga ronde, tiap ronde delapan kartu tertutup (empat pasang). Siswa membalik dua kartu dan mencari ukuran dengan jenisnya.",
-      "voiceGuide": "Balik dua kartu, cari ukuran dan jenisnya.",
+      "objective": "Mencocokkan ukuran sudut dengan jenisnya lewat permainan memori.. Ingat Pilah Sudut.",
+      "mechanicDescription": "Tiga ronde, tiap ronde delapan kartu tertutup (empat pasang). Siswa membalik dua kartu dan mencari ukuran dengan jenisnya. Gunakan Pilah Sudut.",
+      "voiceGuide": "Pilah Sudut. Balik dua kartu, cari ukuran dan jenisnya.",
       "symbolLarge": "°",
       "wordLarge": "MEMORI",
       "mathNotation": "ukuran dan jenis"
@@ -1498,9 +1425,9 @@ export const SUB_B34: SubBabNaskah = {
       "gameType": "true-false-angles",
       "title": "Benar atau Salah: Sudut",
       "bookReference": "hlm. 154–169 (sudut dan jenis-jenisnya)",
-      "objective": "Menilai pernyataan tentang sudut, derajat, dan jenis sudut.",
-      "mechanicDescription": "Dua ronde, tiap ronde lima pernyataan. Siswa memilih Benar atau Salah. Tiap jawaban diberi penjelasan.",
-      "voiceGuide": "Baca pernyataan, lalu pilih benar atau salah.",
+      "objective": "Menilai pernyataan tentang sudut, derajat, dan jenis sudut.. Ingat Pilah Sudut.",
+      "mechanicDescription": "Dua ronde, tiap ronde lima pernyataan. Siswa memilih Benar atau Salah. Tiap jawaban diberi penjelasan. Gunakan Pilah Sudut.",
+      "voiceGuide": "Pilah Sudut. Baca pernyataan, lalu pilih benar atau salah.",
       "symbolLarge": "✓ ✗",
       "wordLarge": "BENAR SALAH",
       "mathNotation": "periksa dengan alasan"
@@ -1510,9 +1437,9 @@ export const SUB_B34: SubBabNaskah = {
       "gameType": "detective-angles",
       "title": "Detektif Ukuran Sudut",
       "bookReference": "hlm. 167–169 (ukuran dan jenis sudut)",
-      "objective": "Menemukan ukuran sudut dari dua petunjuk tentang jenis dan hubungannya.",
-      "mechanicDescription": "Empat soal. Siswa membaca dua petunjuk, lalu memilih satu dari tiga ukuran. Hanya satu yang cocok.",
-      "voiceGuide": "Baca petunjuk, lalu pilih ukurannya.",
+      "objective": "Menemukan ukuran sudut dari dua petunjuk tentang jenis dan hubungannya.. Ingat Pilah Sudut.",
+      "mechanicDescription": "Empat soal. Siswa membaca dua petunjuk, lalu memilih satu dari tiga ukuran. Hanya satu yang cocok. Gunakan Pilah Sudut.",
+      "voiceGuide": "Pilah Sudut. Baca petunjuk, lalu pilih ukurannya.",
       "symbolLarge": "?",
       "wordLarge": "DETEKTIF",
       "mathNotation": "dua petunjuk, satu jawaban"
@@ -1522,9 +1449,9 @@ export const SUB_B34: SubBabNaskah = {
       "gameType": "concept-map-angles",
       "title": "Peta Konsep Sudut",
       "bookReference": "hlm. 144 (peta konsep Bab 4)",
-      "objective": "Melengkapi peta konsep bagian dan jenis-jenis sudut.",
-      "mechanicDescription": "Dua peta konsep, tiap peta empat kotak. Siswa memilih kartu yang tepat untuk kotak yang menyala.",
-      "voiceGuide": "Pilih kartu yang tepat untuk kotak yang menyala.",
+      "objective": "Melengkapi peta konsep bagian dan jenis-jenis sudut.. Ingat Pilah Sudut.",
+      "mechanicDescription": "Dua peta konsep, tiap peta empat kotak. Siswa memilih kartu yang tepat untuk kotak yang menyala. Gunakan Pilah Sudut.",
+      "voiceGuide": "Pilah Sudut. Pilih kartu yang tepat untuk kotak yang menyala.",
       "symbolLarge": "⇄",
       "wordLarge": "PETA KONSEP",
       "mathNotation": "bagian • jenis"
@@ -1534,9 +1461,9 @@ export const SUB_B34: SubBabNaskah = {
       "gameType": "story-angles",
       "title": "Soal Cerita Ukuran Sudut",
       "bookReference": "hlm. 167–169 (sudut lurus, refleks, dan pasangan 360°)",
-      "objective": "Menyelesaikan soal cerita tentang ukuran sudut dengan penjumlahan, pengurangan, dan pasangan 360°.",
-      "mechanicDescription": "Tiga ronde, tiap ronde dua cerita. Siswa membaca cerita, menghitung ukuran sudut, lalu memilih satu dari tiga ukuran.",
-      "voiceGuide": "Baca cerita, lalu pilih ukuran sudutnya.",
+      "objective": "Menyelesaikan soal cerita tentang ukuran sudut dengan penjumlahan, pengurangan, dan pasangan 360°.. Ingat Pilah Sudut.",
+      "mechanicDescription": "Tiga ronde, tiap ronde dua cerita. Siswa membaca cerita, menghitung ukuran sudut, lalu memilih satu dari tiga ukuran. Gunakan Pilah Sudut.",
+      "voiceGuide": "Pilah Sudut. Baca cerita, lalu pilih ukuran sudutnya.",
       "symbolLarge": "°",
       "wordLarge": "CERITA",
       "mathNotation": "jumlah • selisih • pasangan 360°"
@@ -1546,9 +1473,9 @@ export const SUB_B34: SubBabNaskah = {
       "gameType": "sentence-angles",
       "title": "Susun Kata Sudut",
       "bookReference": "hlm. 154–169 (sudut dan jenis-jenisnya)",
-      "objective": "Menyusun kalimat tentang sudut dari kartu kata.",
-      "mechanicDescription": "Empat kalimat. Siswa mengetuk kartu kata satu per satu menurut urutan kalimat yang benar. Ada satu kartu pengecoh.",
-      "voiceGuide": "Susun kartu kata menjadi kalimat.",
+      "objective": "Menyusun kalimat tentang sudut dari kartu kata.. Ingat Pilah Sudut.",
+      "mechanicDescription": "Empat kalimat. Siswa mengetuk kartu kata satu per satu menurut urutan kalimat yang benar. Ada satu kartu pengecoh. Gunakan Pilah Sudut.",
+      "voiceGuide": "Pilah Sudut. Susun kartu kata menjadi kalimat.",
       "symbolLarge": "…",
       "wordLarge": "SUSUN KATA",
       "mathNotation": "kalimat tentang sudut"
@@ -1568,43 +1495,25 @@ export const SUB_B34: SubBabNaskah = {
       "suara": "Sudut siku-siku tepat sembilan puluh derajat. Pojok kertas yang dilipat dua kali adalah sudut siku-siku."
     },
     {
-      "ikon": "🔺",
-      "nama": "Lancip dan tumpul",
-      "isi": "kurang dan lebih dari 90°",
-      "suara": "Sudut lancip kurang dari sembilan puluh derajat. Sudut tumpul lebih dari sembilan puluh dan kurang dari seratus delapan puluh derajat."
-    },
-    {
-      "ikon": "🔄",
-      "nama": "Lurus dan refleks",
-      "isi": "180° dan lebih dari 180°",
-      "suara": "Sudut lurus tepat seratus delapan puluh derajat. Sudut refleks lebih dari seratus delapan puluh dan kurang dari tiga ratus enam puluh derajat."
-    },
-    {
-      "ikon": "🧭",
-      "nama": "Busur derajat",
-      "isi": "titik tengah di titik sudut",
-      "suara": "Busur derajat mengukur sudut dalam derajat. Titik tengahnya di titik sudut dan garis nolnya di kaki pertama."
-    },
-    {
       "ikon": "🌍",
       "nama": "Sudut sebagai Putaran",
-      "isi": "METODE LUAR · Angle as Turn: Sudut mengukur besar putaran. (asal: Angle pedagogy).",
-      "suara": "METODE LUAR. Sudut sebagai Putaran. Sudut mengukur besar putaran."
+      "isi": "Sudut mengukur besar putaran.",
+      "suara": "Sudut sebagai Putaran. Sudut mengukur besar putaran."
     },
     {
       "ikon": "🌍",
       "nama": "Acuan Siku-siku",
-      "isi": "METODE LUAR · Right Angle Benchmark: Bandingkan dengan sudut siku-siku. (asal: Van de Walle).",
-      "suara": "METODE LUAR. Acuan Siku-siku. Bandingkan dengan sudut siku-siku."
+      "isi": "Bandingkan dengan sudut siku-siku.",
+      "suara": "Acuan Siku-siku. Bandingkan dengan sudut siku-siku."
     },
     {
       "ikon": "🌍",
       "nama": "Pilah Sudut",
-      "isi": "METODE LUAR · Corner Sort: Lebih besar/kecil dari siku-siku. (asal: Attribute sort).",
-      "suara": "METODE LUAR. Pilah Sudut. Lebih besar/kecil dari siku-siku."
+      "isi": "Lebih besar/kecil dari siku-siku.",
+      "suara": "Pilah Sudut. Lebih besar/kecil dari siku-siku."
     }
   ],
-  "poinSuara": "Ingat selalu! Sudut siku-siku tepat sembilan puluh derajat. Sudut lancip kurang dari sembilan puluh derajat, dan sudut tumpul lebih dari sembilan puluh derajat. Sudut lurus seratus delapan puluh derajat, dan sudut refleks lebih dari itu. Sudut diukur dengan busur derajat.",
+  "poinSuara": "Ingat: Sudut sebagai Putaran, Acuan Siku-siku, Pilah Sudut.",
   "cara": {
     "suara": "Cara mengukur sudut dengan busur derajat. Letakkan titik tengah busur derajat di titik sudut. Sejajarkan kaki pertama dengan garis nol. Lihat kaki kedua. Lalu baca derajatnya.",
     "potongan": [
@@ -1626,12 +1535,11 @@ export const SUB_B34: SubBabNaskah = {
       }
     ]
   },
-  "rumah": "Ayo Mencoba di rumah: buatlah sepasang strip sudut dari dua potong karton dan sebuah pengait. Cari tiga sudut siku-siku pada buku, pintu, dan meja, lalu periksa dengan pojok kertas yang kamu lipat. Bukalah gunting atau buku, lalu bandingkan sudutnya dengan sudut siku-siku.",
+  "rumah": "Ayo Mencoba di rumah: terapkan Sudut sebagai Putaran pada satu benda atau soal nyata, lalu ceritakan langkahmu.",
   "refleksi": [
-    "Aku dapat menyebutkan titik sudut dan kaki sudut.",
-    "Aku dapat membuat sudut siku-siku dari kertas yang dilipat.",
-    "Aku dapat mengukur dan menggambar sudut dengan busur derajat.",
-    "Aku dapat membedakan sudut lancip, siku-siku, tumpul, lurus, dan refleks."
+    "Bagaimana Sudut sebagai Putaran membantumu memahami soal?",
+    "Kapan kamu memakai Acuan Siku-siku?",
+    "Apa bedanya dengan hanya menghafal rumus atau langkah tanpa arti?"
   ],
   "metodeLuar": [
     {
@@ -1675,12 +1583,12 @@ export const SUB_C34: SubBabNaskah = {
   "id": "C",
   "codeTitle": "Sub-Bab C (Garis Tegak Lurus dan Sejajar)",
   "fullTitle": "Sub-Bab C: Garis-Garis Tegak Lurus dan Garis-Garis Sejajar",
-  "targetDescription": "Siswa mengenal garis-garis tegak lurus (bertemu pada sudut siku-siku, lambang ⊥) dan garis-garis sejajar (jarak selalu sama, tidak pernah bertemu, lambang //), memeriksanya dengan kertas lipat dan kertas berpetak, membuat garis dengan melipat kertas, serta mengenal ciri bangun datar sederhana: segitiga, persegi panjang, persegi, segilima, dan lingkaran.",
+  "targetDescription": "Siswa mengenal garis-garis tegak lurus (bertemu pada sudut siku-siku, lambang ⊥) dan garis-garis sejajar (jarak selalu sama, tidak pernah bertemu, lambang //), memeriksanya dengan kertas lipat dan kertas berpetak, membuat garis dengan melipat kertas, serta mengenal ciri bangun datar sederhana: segitiga, persegi panjang, persegi, segilima, dan lingkaran. Siswa memakai cara Tegak Lurus, Sejajar, Garis di Lingkungan.",
   "secondaryBg": "#DCFCE7",
   "secondaryBorder": "#16A34A",
   "secondaryText": "#14532D",
   "silabus": {
-    "teksSuara": "Kita belajar garis tegak lurus dan garis sejajar. Kita memeriksa garis tegak lurus dengan kertas yang dilipat, dan memeriksa garis sejajar dengan menghitung petak pada kertas berpetak. Kita juga mengenal lambang tegak lurus dan lambang sejajar, lalu mengenal ciri segitiga, persegi panjang, persegi, segilima, dan lingkaran. Kita melewati enam tahap seru: cerita, peta pikiran, infografis, benda nyata, gambar, dan simbol.",
+    "teksSuara": "Kita belajar garis tegak lurus dan garis sejajar. Kita memeriksa garis tegak lurus dengan kertas yang dilipat, dan memeriksa garis sejajar dengan menghitung petak pada kertas berpetak. Kita juga mengenal lambang tegak lurus dan lambang sejajar, lalu mengenal ciri segitiga, persegi panjang, persegi, segilima, dan lingkaran. Kita memakai cara dari luar buku: Tegak Lurus (Perpendicular); Sejajar (Parallel); Garis di Lingkungan (Real-World Lines). Dua garis bertemu membentuk siku-siku. Jarak tetap, tidak bertemu. Cari contoh di kelas dan jalan. Kita melewati enam tahap seru: cerita, peta pikiran, infografis, benda nyata, gambar, dan simbol.",
     "cp": "Siswa menggambar dan menjelaskan unsur-unsur bangun datar. Pada sub-bab ini siswa mengenal garis tegak lurus dan garis sejajar, serta ciri bangun datar sederhana dari sisi dan sudutnya.",
     "referensi": "Buku Siswa Matematika Kelas III Kemendikbudristek (Bab 4 Sub-Bab C)."
   },
@@ -1688,16 +1596,16 @@ export const SUB_C34: SubBabNaskah = {
     {
       "id": "K3B4C-V1",
       "judul": "Garis Tegak Lurus",
-      "subjudul": "Bertemu pada sudut siku-siku",
+      "subjudul": "Perpendicular",
       "adegan": [
         {
           "id": "K3B4C-V1-1",
           "judul": "Garis yang bertemu",
           "ketukan": [
-            "Dua garis dapat bertemu atau berpotongan pada satu titik.",
-            "Garis kuning dan garis biru bertemu di satu titik.",
-            "Garis putih tidak bertemu walaupun diperpanjang.",
-            "Kita akan mengenal garis tegak lurus dan garis sejajar."
+            "Bayangkan situasi nyata di kelas atau di rumah. Dua garis dapat bertemu atau berpotongan pada satu titik. Mari kita pahami bersama.",
+            "Garis kuning dan garis biru bertemu di satu titik. Mari kita pahami bersama.",
+            "Garis putih tidak bertemu walaupun diperpanjang. Mari kita pahami bersama.",
+            "Ingat cara Tegak Lurus: Dua garis bertemu membentuk siku-siku."
           ],
           "papan": [
             "Garis bertemu atau tidak",
@@ -1710,10 +1618,10 @@ export const SUB_C34: SubBabNaskah = {
           "id": "K3B4C-V1-2",
           "judul": "Tegak lurus",
           "ketukan": [
-            "Garis AB bertemu garis BC pada sudut siku-siku.",
-            "AB dan BC adalah garis tegak lurus.",
-            "Kita tulis AB ⊥ BC, dibaca AB tegak lurus BC.",
-            "Sudut siku-siku diberi tanda kotak kecil."
+            "Garis AB bertemu garis BC pada sudut siku-siku. Mari kita pahami bersama.",
+            "AB dan BC adalah garis tegak lurus. Mari kita pahami bersama.",
+            "Kita tulis AB ⊥ BC, dibaca AB tegak lurus BC. Mari kita pahami bersama.",
+            "Di sini kita memakai ide Perpendicular — Dua garis bertemu membentuk siku-siku."
           ],
           "papan": [
             "AB bertemu BC",
@@ -1726,35 +1634,33 @@ export const SUB_C34: SubBabNaskah = {
           "id": "K3B4C-V1-3",
           "judul": "Kertas lipat",
           "ketukan": [
-            "Selembar kertas yang dilipat dua kali menghasilkan sudut siku-siku.",
-            "Pojok kertas lipat dapat memeriksa garis tegak lurus.",
-            "Letakkan pojok kertas pada pertemuan dua garis.",
-            "Bila kedua garis pas dengan pojok kertas, garis itu tegak lurus.",
-            "METODE LUAR. Tegak Lurus: Dua garis bertemu membentuk siku-siku."
+            "Selembar kertas yang dilipat dua kali menghasilkan sudut siku-siku. Mari kita pahami bersama.",
+            "Pojok kertas lipat dapat memeriksa garis tegak lurus. Mari kita pahami bersama.",
+            "Letakkan pojok kertas pada pertemuan dua garis. Mari kita pahami bersama.",
+            "METODE LUAR · Tegak Lurus: Dua garis bertemu membentuk siku-siku."
           ],
           "papan": [
             "Kertas dilipat dua kali",
             "Pojok kertas lipat",
             "Letakkan di pertemuan garis",
-            "Pas: tegak lurus",
-            "METODE LUAR · Tegak Lurus"
+            "Pas: tegak lurus"
           ]
         }
       ]
     },
     {
       "id": "K3B4C-V2",
-      "judul": "Garis Sejajar",
-      "subjudul": "Jarak yang selalu sama",
+      "judul": "Latihan: Sejajar",
+      "subjudul": "Parallel",
       "adegan": [
         {
           "id": "K3B4C-V2-1",
           "judul": "Jarak yang sama",
           "ketukan": [
-            "Dua garis putih ditarik pada kertas berpetak.",
-            "Di ujung kiri jarak kedua garis dua petak.",
-            "Di ujung kanan jarak kedua garis juga dua petak.",
-            "Dua garis yang jaraknya selalu sama disebut garis sejajar."
+            "Dua garis putih ditarik pada kertas berpetak. Mari kita pahami bersama.",
+            "Di ujung kiri jarak kedua garis dua petak. Mari kita pahami bersama.",
+            "Di ujung kanan jarak kedua garis juga dua petak. Mari kita pahami bersama.",
+            "Ingat cara Sejajar: Jarak tetap, tidak bertemu."
           ],
           "papan": [
             "Dua garis pada petak",
@@ -1767,10 +1673,10 @@ export const SUB_C34: SubBabNaskah = {
           "id": "K3B4C-V2-2",
           "judul": "Tanda dan lambang",
           "ketukan": [
-            "Anak panah dipakai untuk menandai garis sejajar.",
-            "Garis AB sejajar dengan garis CD.",
-            "Kita tulis AB // CD, dibaca AB sejajar CD.",
-            "Garis sejajar tidak akan pernah bertemu satu sama lain."
+            "Anak panah dipakai untuk menandai garis sejajar. Mari kita pahami bersama.",
+            "Garis AB sejajar dengan garis CD. Mari kita pahami bersama.",
+            "Kita tulis AB // CD, dibaca AB sejajar CD. Mari kita pahami bersama.",
+            "Di sini kita memakai ide Parallel — Jarak tetap, tidak bertemu."
           ],
           "papan": [
             "Anak panah: sejajar",
@@ -1783,35 +1689,33 @@ export const SUB_C34: SubBabNaskah = {
           "id": "K3B4C-V2-3",
           "judul": "Bukan sejajar",
           "ketukan": [
-            "Pada gambar ini jarak di ujung kiri dua petak.",
-            "Jarak di ujung kanan empat petak.",
-            "Jaraknya berbeda, jadi garis ini bukan garis sejajar.",
-            "Garis yang bukan sejajar akan bertemu bila diperpanjang.",
-            "METODE LUAR. Sejajar: Jarak tetap, tidak bertemu."
+            "Pada gambar ini jarak di ujung kiri dua petak. Mari kita pahami bersama.",
+            "Jarak di ujung kanan empat petak. Mari kita pahami bersama.",
+            "Jaraknya berbeda, jadi garis ini bukan garis sejajar. Mari kita pahami bersama.",
+            "METODE LUAR · Sejajar: Jarak tetap, tidak bertemu."
           ],
           "papan": [
             "Kiri: 2 petak",
             "Kanan: 4 petak",
             "Jarak berbeda",
-            "Bukan garis sejajar",
-            "METODE LUAR · Sejajar"
+            "Bukan garis sejajar"
           ]
         }
       ]
     },
     {
       "id": "K3B4C-V3",
-      "judul": "Bangun Datar Sederhana",
-      "subjudul": "Segitiga, persegi, dan lingkaran",
+      "judul": "Siap pakai Real-World Lines",
+      "subjudul": "Real-World Lines",
       "adegan": [
         {
           "id": "K3B4C-V3-1",
           "judul": "Segitiga",
           "ketukan": [
-            "Tiga batang pensil yang dihubungkan ujungnya membentuk segitiga.",
-            "Segitiga dibatasi tiga ruas garis atau tiga sisi.",
-            "Segitiga ABC memiliki tiga sudut, yaitu sudut A, B, dan C.",
-            "Setidaknya perlu tiga ruas garis untuk membuat bangun tertutup."
+            "Tiga batang pensil yang dihubungkan ujungnya membentuk segitiga. Mari kita pahami bersama.",
+            "Segitiga dibatasi tiga ruas garis atau tiga sisi. Mari kita pahami bersama.",
+            "Segitiga ABC memiliki tiga sudut, yaitu sudut A, B, dan C. Mari kita pahami bersama.",
+            "Ingat cara Garis di Lingkungan: Cari contoh di kelas dan jalan."
           ],
           "papan": [
             "Tiga batang pensil",
@@ -1824,10 +1728,10 @@ export const SUB_C34: SubBabNaskah = {
           "id": "K3B4C-V3-2",
           "judul": "Persegi panjang dan persegi",
           "ketukan": [
-            "Empat batang pensil dapat membentuk persegi panjang.",
-            "Persegi panjang memiliki empat sisi dan empat sudut.",
-            "Empat batang korek api sama panjang membentuk persegi.",
-            "Persegi memiliki empat sisi sama panjang dan empat sudut siku-siku."
+            "Empat batang pensil dapat membentuk persegi panjang. Mari kita pahami bersama.",
+            "Persegi panjang memiliki empat sisi dan empat sudut. Mari kita pahami bersama.",
+            "Empat batang korek api sama panjang membentuk persegi. Mari kita pahami bersama.",
+            "Di sini kita memakai ide Real-World Lines — Cari contoh di kelas dan jalan."
           ],
           "papan": [
             "Persegi panjang",
@@ -1840,18 +1744,16 @@ export const SUB_C34: SubBabNaskah = {
           "id": "K3B4C-V3-3",
           "judul": "Lingkaran dan segilima",
           "ketukan": [
-            "Lingkaran dibatasi oleh garis lengkung.",
-            "Lingkaran tidak memiliki sudut.",
-            "Segilima dibatasi lima ruas garis dan memiliki lima sudut.",
-            "Bangun datar dapat dikenali dari sisi dan sudutnya.",
-            "METODE LUAR. Garis di Lingkungan: Cari contoh di kelas dan jalan."
+            "Lingkaran dibatasi oleh garis lengkung. Mari kita pahami bersama.",
+            "Lingkaran tidak memiliki sudut. Mari kita pahami bersama.",
+            "Segilima dibatasi lima ruas garis dan memiliki lima sudut. Mari kita pahami bersama.",
+            "METODE LUAR · Garis di Lingkungan: Cari contoh di kelas dan jalan."
           ],
           "papan": [
             "Garis lengkung",
             "Tanpa sudut",
             "Segilima: 5 sisi",
-            "Kenali dari sisi dan sudut",
-            "METODE LUAR · Garis di Lingkungan"
+            "Kenali dari sisi dan sudut"
           ]
         }
       ]
@@ -1860,67 +1762,67 @@ export const SUB_C34: SubBabNaskah = {
   "mindMaps": [
     {
       "stepNumber": 1,
-      "stepTitle": "1. Garis Bertemu dan Tidak Bertemu",
-      "stepDesc": "Dua garis dapat bertemu atau berpotongan pada satu titik, dapat pula tidak bertemu walaupun diperpanjang. Pada gambar di buku, garis kuning dan garis biru bertemu di satu titik, sedangkan garis-garis putih tidak bertemu. Dari sini kita mengenal dua hubungan garis yang istimewa, yaitu garis tegak lurus dan garis sejajar.",
-      "icon": "🔗",
-      "flowFrom": "Garis bertemu dan tidak bertemu",
-      "flowTo": "Garis tegak lurus"
+      "stepTitle": "1. Pahami soal",
+      "stepDesc": "Baca soal Garis-Garis Tegak Lurus dan Garis-Garis Sejajar. Apa yang ditanyakan?",
+      "icon": "❓",
+      "flowFrom": "START",
+      "flowTo": "2"
     },
     {
       "stepNumber": 2,
-      "stepTitle": "2. Garis Tegak Lurus",
-      "stepDesc": "Dua garis yang bertemu atau berpotongan dan membentuk sudut siku-siku disebut garis tegak lurus. Misalnya AB bertemu BC pada sudut siku-siku, sehingga AB dan BC adalah garis tegak lurus. Kita menulisnya AB ⊥ BC dan membacanya AB tegak lurus BC. Sudut siku-siku di pertemuan kedua garis diberi tanda kotak kecil.",
-      "icon": "📐",
-      "flowFrom": "Garis tegak lurus",
-      "flowTo": "Memeriksa dengan kertas lipat"
+      "stepTitle": "2. Perpendicular",
+      "stepDesc": "Dua garis bertemu membentuk siku-siku.",
+      "icon": "🧭",
+      "flowFrom": "1",
+      "flowTo": "3"
     },
     {
       "stepNumber": 3,
-      "stepTitle": "3. Memeriksa dengan Kertas Lipat",
-      "stepDesc": "Selembar kertas yang dilipat dua kali dengan rapi memiliki pojok yang berupa sudut siku-siku. Pojok kertas lipat dipakai untuk memeriksa garis tegak lurus: letakkan pojok kertas di tempat kedua garis bertemu. Bila kedua garis tepat berimpit dengan kedua sisi pojok kertas, garis itu tegak lurus. Bila tidak pas, garis itu tidak tegak lurus.",
-      "icon": "📄",
-      "flowFrom": "Memeriksa dengan kertas lipat",
-      "flowTo": "Melipat kertas: sejajar dan tegak lurus"
+      "stepTitle": "3. Parallel",
+      "stepDesc": "Jarak tetap, tidak bertemu.",
+      "icon": "🛠️",
+      "flowFrom": "2",
+      "flowTo": "4"
     },
     {
       "stepNumber": 4,
-      "stepTitle": "4. Melipat Kertas: Sejajar dan Tegak Lurus",
-      "stepDesc": "Pada Aktivitas 5, kertas berpetak dilipat beberapa kali dan bekas lipatan digambar dengan warna berbeda. Dua lipatan pertama, merah dan biru, bertemu pada sudut siku-siku sehingga tegak lurus. Lipatan hijau dan kuning membentuk pasangan garis sejajar. Garis-garis sejajar itu bersama pasangan lainnya membentuk sebuah persegi di tengah kertas.",
-      "icon": "✂️",
-      "flowFrom": "Melipat kertas: sejajar dan tegak lurus",
-      "flowTo": "Garis sejajar"
+      "stepTitle": "4. Real-World Lines",
+      "stepDesc": "Cari contoh di kelas dan jalan.",
+      "icon": "✨",
+      "flowFrom": "3",
+      "flowTo": "5"
     },
     {
       "stepNumber": 5,
-      "stepTitle": "5. Garis Sejajar",
-      "stepDesc": "Dua garis yang ditarik pada jarak yang sama dan tidak berpotongan disebut garis sejajar. Garis sejajar tidak akan pernah bertemu satu sama lain. Anak panah digunakan untuk menandai bahwa garis-garisnya sejajar. Bila AB sejajar CD, kita menulis AB // CD. Garis sejajar dapat mendatar, tegak, atau miring, asalkan jaraknya selalu sama.",
-      "icon": "🛤️",
-      "flowFrom": "Garis sejajar",
-      "flowTo": "Memeriksa jarak dengan petak"
+      "stepTitle": "5. Kerjakan",
+      "stepDesc": "Terapkan cara itu pada angka atau gambar soal.",
+      "icon": "✏️",
+      "flowFrom": "4",
+      "flowTo": "6"
     },
     {
       "stepNumber": 6,
-      "stepTitle": "6. Memeriksa Jarak dengan Petak",
-      "stepDesc": "Pada kertas berpetak kita memeriksa garis sejajar dengan menghitung petak persegi. Bila E dan G terpisah 1 petak dan F dan H juga terpisah 1 petak, maka EF sejajar GH. Bila P dan R terpisah 2 petak tetapi Q dan S terpisah 4 petak, jaraknya berbeda sehingga PQ dan RS bukan garis sejajar.",
-      "icon": "🧮",
-      "flowFrom": "Memeriksa jarak dengan petak",
-      "flowTo": "Garis pada benda dan huruf"
+      "stepTitle": "6. Cek masuk akal",
+      "stepDesc": "Apakah hasilnya masuk akal? Bandingkan dengan perkiraan.",
+      "icon": "✅",
+      "flowFrom": "5",
+      "flowTo": "7"
     },
     {
       "stepNumber": 7,
-      "stepTitle": "7. Garis pada Benda dan Huruf",
-      "stepDesc": "Garis tegak lurus dan garis sejajar ada di sekitar kita. Rel kereta api, pagar, tangga, dan kusen jendela memiliki garis sejajar dan garis tegak lurus. Pada huruf-huruf MATEMATIKA, huruf E, M, A, T, I, dan K dapat dicari garis tegak lurusnya dan pasangan garis sejajarnya. Panah ditulis pada garis sejajar, dan pasangan yang berbeda diberi tanda panah yang berbeda.",
-      "icon": "🔍",
-      "flowFrom": "Garis pada benda dan huruf",
-      "flowTo": "Bangun datar sederhana"
+      "stepTitle": "7. Simpulkan",
+      "stepDesc": "Ulangi ide utamanya dengan kalimatmu sendiri.",
+      "icon": "💬",
+      "flowFrom": "6",
+      "flowTo": "8"
     },
     {
       "stepNumber": 8,
-      "stepTitle": "8. Bangun Datar Sederhana",
-      "stepDesc": "Segitiga dibatasi tiga ruas garis, memiliki tiga sisi dan tiga sudut. Persegi panjang memiliki empat sisi dan empat sudut siku-siku. Persegi memiliki empat sisi sama panjang dan empat sudut siku-siku. Segilima memiliki lima sisi dan lima sudut. Lingkaran dibatasi garis lengkung dan tidak memiliki sudut. Bangun datar dikenali dari banyak sisi dan sudutnya.",
-      "icon": "⬜",
-      "flowFrom": "Bangun datar sederhana",
-      "flowTo": "Siap menyelesaikan Bab 4"
+      "stepTitle": "8. Lanjut main",
+      "stepDesc": "Siap melatih di permainan Concrete sampai Abstract.",
+      "icon": "🎮",
+      "flowFrom": "7",
+      "flowTo": "END"
     }
   ],
   "infografis": [
@@ -1998,22 +1900,15 @@ export const SUB_C34: SubBabNaskah = {
       "judul": "Tegak Lurus",
       "emoji": "🌍",
       "countNum": 1,
-      "countWord": "METODE LUAR · Perpendicular",
-      "suara": "METODE LUAR. Tegak Lurus. Dua garis bertemu membentuk siku-siku."
+      "countWord": "ingat",
+      "suara": "Dua garis bertemu membentuk siku-siku."
     },
     {
       "judul": "Sejajar",
       "emoji": "🌍",
       "countNum": 2,
-      "countWord": "METODE LUAR · Parallel",
-      "suara": "METODE LUAR. Sejajar. Jarak tetap, tidak bertemu."
-    },
-    {
-      "judul": "Garis di Lingkungan",
-      "emoji": "🌍",
-      "countNum": 3,
-      "countWord": "METODE LUAR · Real-World Lines",
-      "suara": "METODE LUAR. Garis di Lingkungan. Cari contoh di kelas dan jalan."
+      "countWord": "ingat",
+      "suara": "Jarak tetap, tidak bertemu."
     }
   ],
   "games": [
@@ -2022,9 +1917,9 @@ export const SUB_C34: SubBabNaskah = {
       "gameType": "benda-lines-kind",
       "title": "Dua Garis pada Benda",
       "bookReference": "hlm. 174–176 (garis tegak lurus dan sejajar di sekitar kita)",
-      "objective": "Menentukan hubungan dua garis berwarna pada gambar benda: sejajar, tegak lurus, atau bukan keduanya. (METODE LUAR · Tegak Lurus)",
-      "mechanicDescription": "Tiga ronde, tiap ronde dua soal. Benda seperti tangga, pagar, rumah, jendela, rel, dan tiang bendera ditampilkan dengan dua garis berwarna. Siswa memilih satu dari tiga hubungan.",
-      "voiceGuide": "METODE LUAR · Tegak Lurus. Pilih hubungan dua garis berwarna.",
+      "objective": "Pakai Tegak Lurus: Dua garis bertemu membentuk siku-siku. Latihan: Menentukan hubungan dua garis berwarna pada gambar benda: sejajar, tegak lurus, atau bukan keduanya..",
+      "mechanicDescription": "Tiga ronde, tiap ronde dua soal. Benda seperti tangga, pagar, rumah, jendela, rel, dan tiang bendera ditampilkan dengan dua garis berwarna. Siswa memilih satu dari tiga hubungan. Saat bermain, terapkan Perpendicular: Dua garis bertemu membentuk siku-siku.",
+      "voiceGuide": "Tegak Lurus. Dua garis bertemu membentuk siku-siku.",
       "emoji": "🏠",
       "targetCount": 6
     },
@@ -2033,9 +1928,9 @@ export const SUB_C34: SubBabNaskah = {
       "gameType": "tap-all-benda-lines",
       "title": "Ketuk Semua Benda dengan Garis Tertentu",
       "bookReference": "hlm. 176 (carilah contoh garis tegak lurus di sekitar kalian)",
-      "objective": "Menemukan semua gambar benda yang dua garis berwarnanya memiliki hubungan tertentu.",
-      "mechanicDescription": "Tiga ronde, tiap ronde empat benda dan satu perintah. Siswa mengetuk semua benda yang cocok, lalu menekan Periksa.",
-      "voiceGuide": "Ketuk semua yang cocok, lalu periksa.",
+      "objective": "Pakai Tegak Lurus: Dua garis bertemu membentuk siku-siku. Latihan: Menemukan semua gambar benda yang dua garis berwarnanya memiliki hubungan tertentu..",
+      "mechanicDescription": "Tiga ronde, tiap ronde empat benda dan satu perintah. Siswa mengetuk semua benda yang cocok, lalu menekan Periksa. Saat bermain, terapkan Perpendicular: Dua garis bertemu membentuk siku-siku.",
+      "voiceGuide": "Tegak Lurus. Dua garis bertemu membentuk siku-siku.",
       "emoji": "✔️",
       "targetCount": 3
     },
@@ -2044,9 +1939,9 @@ export const SUB_C34: SubBabNaskah = {
       "gameType": "match-benda-lines",
       "title": "Jodohkan Benda dan Hubungan Garis",
       "bookReference": "hlm. 174–176 dan 182–183 (garis sejajar dan tegak lurus)",
-      "objective": "Menjodohkan gambar benda dengan hubungan dua garis berwarnanya.",
-      "mechanicDescription": "Tiga ronde, tiap ronde tiga benda dan tiga hubungan berbeda. Siswa mengetuk benda, lalu mengetuk hubungan yang cocok.",
-      "voiceGuide": "Ketuk benda, lalu ketuk hubungannya.",
+      "objective": "Pakai Tegak Lurus: Dua garis bertemu membentuk siku-siku. Latihan: Menjodohkan gambar benda dengan hubungan dua garis berwarnanya..",
+      "mechanicDescription": "Tiga ronde, tiap ronde tiga benda dan tiga hubungan berbeda. Siswa mengetuk benda, lalu mengetuk hubungan yang cocok. Saat bermain, terapkan Perpendicular: Dua garis bertemu membentuk siku-siku.",
+      "voiceGuide": "Tegak Lurus. Dua garis bertemu membentuk siku-siku.",
       "emoji": "🔗",
       "targetCount": 9
     },
@@ -2055,9 +1950,9 @@ export const SUB_C34: SubBabNaskah = {
       "gameType": "sort-benda-lines",
       "title": "Pilah Benda: Sejajar, Tegak Lurus, atau Bukan",
       "bookReference": "hlm. 174–176 dan 182–183 (garis sejajar dan tegak lurus)",
-      "objective": "Memilah gambar benda menurut hubungan dua garis berwarnanya.",
-      "mechanicDescription": "Tiga ronde, tiap ronde enam gambar benda dan tiga kotak. Siswa menyeret atau mengetuk gambar ke kotak yang tepat.",
-      "voiceGuide": "Pilah gambar ke kotak yang tepat.",
+      "objective": "Pakai Tegak Lurus: Dua garis bertemu membentuk siku-siku. Latihan: Memilah gambar benda menurut hubungan dua garis berwarnanya..",
+      "mechanicDescription": "Tiga ronde, tiap ronde enam gambar benda dan tiga kotak. Siswa menyeret atau mengetuk gambar ke kotak yang tepat. Saat bermain, terapkan Perpendicular: Dua garis bertemu membentuk siku-siku.",
+      "voiceGuide": "Tegak Lurus. Dua garis bertemu membentuk siku-siku.",
       "emoji": "🧺",
       "targetCount": 6
     },
@@ -2066,9 +1961,9 @@ export const SUB_C34: SubBabNaskah = {
       "gameType": "count-parallel-benda",
       "title": "Hitung Garis Sejajar dengan Garis Merah",
       "bookReference": "hlm. 182–185 (garis sejajar)",
-      "objective": "Menghitung banyak garis yang sejajar dengan garis merah pada gambar benda.",
-      "mechanicDescription": "Tiga ronde, tiap ronde dua soal. Satu garis merah dan beberapa garis biru ditampilkan. Siswa menghitung garis biru yang sejajar dengan garis merah dan memilih satu dari tiga bilangan.",
-      "voiceGuide": "Hitung garis yang sejajar dengan garis merah.",
+      "objective": "Menghitung banyak garis yang sejajar dengan garis merah pada gambar benda.. Ingat Tegak Lurus.",
+      "mechanicDescription": "Tiga ronde, tiap ronde dua soal. Satu garis merah dan beberapa garis biru ditampilkan. Siswa menghitung garis biru yang sejajar dengan garis merah dan memilih satu dari tiga bilangan. Gunakan Tegak Lurus.",
+      "voiceGuide": "Tegak Lurus. Hitung garis yang sejajar dengan garis merah.",
       "emoji": "🛤️",
       "targetCount": 6
     },
@@ -2077,9 +1972,9 @@ export const SUB_C34: SubBabNaskah = {
       "gameType": "count-perp-benda",
       "title": "Hitung Garis Tegak Lurus dengan Garis Merah",
       "bookReference": "hlm. 174–176 (garis tegak lurus)",
-      "objective": "Menghitung banyak garis yang tegak lurus dengan garis merah pada gambar benda.",
-      "mechanicDescription": "Tiga ronde, tiap ronde dua soal. Satu garis merah dan beberapa garis biru ditampilkan. Siswa menghitung garis biru yang bertemu garis merah pada sudut siku-siku dan memilih satu dari tiga bilangan.",
-      "voiceGuide": "Hitung garis yang tegak lurus dengan garis merah.",
+      "objective": "Menghitung banyak garis yang tegak lurus dengan garis merah pada gambar benda.. Ingat Tegak Lurus.",
+      "mechanicDescription": "Tiga ronde, tiap ronde dua soal. Satu garis merah dan beberapa garis biru ditampilkan. Siswa menghitung garis biru yang bertemu garis merah pada sudut siku-siku dan memilih satu dari tiga bilangan. Gunakan Tegak Lurus.",
+      "voiceGuide": "Tegak Lurus. Hitung garis yang tegak lurus dengan garis merah.",
       "emoji": "📐",
       "targetCount": 6
     },
@@ -2088,9 +1983,9 @@ export const SUB_C34: SubBabNaskah = {
       "gameType": "fold-lines-kind",
       "title": "Dua Lipatan pada Kertas",
       "bookReference": "hlm. 177–180 (Aktivitas 5: membuat garis sejajar dan tegak lurus dengan melipat)",
-      "objective": "Menentukan hubungan dua bekas lipatan pada kertas berpetak.",
-      "mechanicDescription": "Tiga ronde, tiap ronde dua soal. Kertas berpetak dengan dua bekas lipatan berwarna ditampilkan. Siswa memilih sejajar, tegak lurus, atau bukan keduanya.",
-      "voiceGuide": "Pilih hubungan dua lipatan.",
+      "objective": "Menentukan hubungan dua bekas lipatan pada kertas berpetak.. Ingat Tegak Lurus.",
+      "mechanicDescription": "Tiga ronde, tiap ronde dua soal. Kertas berpetak dengan dua bekas lipatan berwarna ditampilkan. Siswa memilih sejajar, tegak lurus, atau bukan keduanya. Gunakan Tegak Lurus.",
+      "voiceGuide": "Tegak Lurus. Pilih hubungan dua lipatan.",
       "emoji": "📄",
       "targetCount": 6
     },
@@ -2099,9 +1994,9 @@ export const SUB_C34: SubBabNaskah = {
       "gameType": "fold-middle-shape",
       "title": "Bangun di Tengah Kertas",
       "bookReference": "hlm. 179–180 (Aktivitas 5 nomor 8: bangun di tengah kertas)",
-      "objective": "Menentukan bangun yang terbentuk di tengah kertas oleh dua pasang lipatan sejajar.",
-      "mechanicDescription": "Tiga ronde, tiap ronde dua soal. Kertas berpetak dengan empat lipatan ditampilkan dan bangun di tengahnya diwarnai. Siswa memilih persegi, persegi panjang, atau segitiga.",
-      "voiceGuide": "Pilih nama bangun di tengah kertas.",
+      "objective": "Menentukan bangun yang terbentuk di tengah kertas oleh dua pasang lipatan sejajar.. Ingat Tegak Lurus.",
+      "mechanicDescription": "Tiga ronde, tiap ronde dua soal. Kertas berpetak dengan empat lipatan ditampilkan dan bangun di tengahnya diwarnai. Siswa memilih persegi, persegi panjang, atau segitiga. Gunakan Tegak Lurus.",
+      "voiceGuide": "Tegak Lurus. Pilih nama bangun di tengah kertas.",
       "emoji": "⬜",
       "targetCount": 6
     },
@@ -2110,9 +2005,9 @@ export const SUB_C34: SubBabNaskah = {
       "gameType": "order-folds",
       "title": "Urutkan Kertas menurut Banyak Lipatan",
       "bookReference": "hlm. 177–180 (Aktivitas 5: melipat kertas)",
-      "objective": "Mengurutkan tiga kertas berpetak menurut banyak bekas lipatannya.",
-      "mechanicDescription": "Tiga ronde, tiap ronde tiga kertas bertanda huruf. Siswa mengetuk kertas satu per satu dari yang paling sedikit atau paling banyak lipatannya.",
-      "voiceGuide": "Ketuk kertas menurut banyak lipatan.",
+      "objective": "Mengurutkan tiga kertas berpetak menurut banyak bekas lipatannya.. Ingat Tegak Lurus.",
+      "mechanicDescription": "Tiga ronde, tiap ronde tiga kertas bertanda huruf. Siswa mengetuk kertas satu per satu dari yang paling sedikit atau paling banyak lipatannya. Gunakan Tegak Lurus.",
+      "voiceGuide": "Tegak Lurus. Ketuk kertas menurut banyak lipatan.",
       "emoji": "📶",
       "targetCount": 9
     },
@@ -2121,9 +2016,9 @@ export const SUB_C34: SubBabNaskah = {
       "gameType": "match-folds",
       "title": "Jodohkan Lipatan dan Hubungannya",
       "bookReference": "hlm. 177–180 (Aktivitas 5: garis sejajar dan tegak lurus dari lipatan)",
-      "objective": "Menjodohkan kertas berlipatan dengan hubungan dua lipatannya.",
-      "mechanicDescription": "Tiga ronde, tiap ronde tiga kertas dan tiga hubungan berbeda. Siswa mengetuk kertas, lalu mengetuk hubungan yang cocok.",
-      "voiceGuide": "Ketuk kertas, lalu ketuk hubungannya.",
+      "objective": "Menjodohkan kertas berlipatan dengan hubungan dua lipatannya.. Ingat Tegak Lurus.",
+      "mechanicDescription": "Tiga ronde, tiap ronde tiga kertas dan tiga hubungan berbeda. Siswa mengetuk kertas, lalu mengetuk hubungan yang cocok. Gunakan Tegak Lurus.",
+      "voiceGuide": "Tegak Lurus. Ketuk kertas, lalu ketuk hubungannya.",
       "emoji": "✂️",
       "targetCount": 9
     },
@@ -2132,9 +2027,9 @@ export const SUB_C34: SubBabNaskah = {
       "gameType": "pair-kind-grid",
       "title": "Jenis Pasangan Garis",
       "bookReference": "hlm. 174–176 dan 180 (garis tegak lurus pada kertas berpetak)",
-      "objective": "Menentukan hubungan pasangan garis pada kertas berpetak: sejajar, tegak lurus, atau bukan keduanya. (METODE LUAR · Tegak Lurus)",
-      "mechanicDescription": "Tiga ronde, tiap ronde dua soal. Pasangan garis merah dan biru pada kertas berpetak ditampilkan. Siswa memilih satu dari tiga hubungan.",
-      "voiceGuide": "METODE LUAR · Tegak Lurus. Pilih hubungan pasangan garis.",
+      "objective": "Pakai Sejajar: Jarak tetap, tidak bertemu. Latihan: Menentukan hubungan pasangan garis pada kertas berpetak: sejajar, tegak lurus, atau bukan keduanya..",
+      "mechanicDescription": "Tiga ronde, tiap ronde dua soal. Pasangan garis merah dan biru pada kertas berpetak ditampilkan. Siswa memilih satu dari tiga hubungan. Saat bermain, terapkan Parallel: Jarak tetap, tidak bertemu.",
+      "voiceGuide": "Sejajar. Jarak tetap, tidak bertemu.",
       "diagramType": "grid-pair",
       "numberA": 3,
       "numberB": 2
@@ -2144,9 +2039,9 @@ export const SUB_C34: SubBabNaskah = {
       "gameType": "check-gap-grid",
       "title": "Periksa Jarak Petak",
       "bookReference": "hlm. 182–185 (garis sejajar: hitung petak)",
-      "objective": "Memeriksa jarak dua garis di ujung kiri dan kanan untuk menentukan garis sejajar.",
-      "mechanicDescription": "Tiga ronde, tiap ronde dua soal. Dua garis dengan jarak di kedua ujung ditampilkan. Siswa memilih sejajar bila kedua jarak sama dan bukan sejajar bila berbeda.",
-      "voiceGuide": "Periksa jarak lalu pilih jawabannya.",
+      "objective": "Pakai Sejajar: Jarak tetap, tidak bertemu. Latihan: Memeriksa jarak dua garis di ujung kiri dan kanan untuk menentukan garis sejajar..",
+      "mechanicDescription": "Tiga ronde, tiap ronde dua soal. Dua garis dengan jarak di kedua ujung ditampilkan. Siswa memilih sejajar bila kedua jarak sama dan bukan sejajar bila berbeda. Saat bermain, terapkan Parallel: Jarak tetap, tidak bertemu.",
+      "voiceGuide": "Sejajar. Jarak tetap, tidak bertemu.",
       "diagramType": "grid-gap",
       "numberA": 3,
       "numberB": 2
@@ -2156,9 +2051,9 @@ export const SUB_C34: SubBabNaskah = {
       "gameType": "match-pair-kind",
       "title": "Jodohkan Pasangan Garis dan Hubungannya",
       "bookReference": "hlm. 174–176 dan 182–185 (garis tegak lurus dan sejajar)",
-      "objective": "Menjodohkan pasangan garis pada kertas berpetak dengan hubungannya.",
-      "mechanicDescription": "Tiga ronde, tiap ronde tiga pasangan garis dan tiga hubungan berbeda. Siswa mengetuk gambar, lalu mengetuk hubungan yang cocok.",
-      "voiceGuide": "Ketuk gambar, lalu ketuk hubungannya.",
+      "objective": "Pakai Sejajar: Jarak tetap, tidak bertemu. Latihan: Menjodohkan pasangan garis pada kertas berpetak dengan hubungannya..",
+      "mechanicDescription": "Tiga ronde, tiap ronde tiga pasangan garis dan tiga hubungan berbeda. Siswa mengetuk gambar, lalu mengetuk hubungan yang cocok. Saat bermain, terapkan Parallel: Jarak tetap, tidak bertemu.",
+      "voiceGuide": "Sejajar. Jarak tetap, tidak bertemu.",
       "diagramType": "grid-match",
       "numberA": 3,
       "numberB": 3
@@ -2168,9 +2063,9 @@ export const SUB_C34: SubBabNaskah = {
       "gameType": "tap-all-pairs",
       "title": "Ketuk Semua Pasangan Garis Tertentu",
       "bookReference": "hlm. 180 dan 186 (Ayo Berlatih 1: manakah yang sejajar atau tegak lurus)",
-      "objective": "Menemukan semua pasangan garis dengan hubungan tertentu.",
-      "mechanicDescription": "Tiga ronde, tiap ronde empat pasangan garis dan satu perintah. Siswa mengetuk semua yang cocok, lalu menekan Periksa.",
-      "voiceGuide": "Ketuk semua yang cocok, lalu periksa.",
+      "objective": "Pakai Sejajar: Jarak tetap, tidak bertemu. Latihan: Menemukan semua pasangan garis dengan hubungan tertentu..",
+      "mechanicDescription": "Tiga ronde, tiap ronde empat pasangan garis dan satu perintah. Siswa mengetuk semua yang cocok, lalu menekan Periksa. Saat bermain, terapkan Parallel: Jarak tetap, tidak bertemu.",
+      "voiceGuide": "Sejajar. Jarak tetap, tidak bertemu.",
       "diagramType": "grid-select",
       "numberA": 3,
       "numberB": 4
@@ -2180,9 +2075,9 @@ export const SUB_C34: SubBabNaskah = {
       "gameType": "sort-pairs",
       "title": "Pilah Pasangan Garis: Sejajar, Tegak Lurus, atau Bukan",
       "bookReference": "hlm. 180 dan 186 (memeriksa pasangan garis)",
-      "objective": "Memilah pasangan garis menjadi sejajar, tegak lurus, dan bukan keduanya.",
-      "mechanicDescription": "Tiga ronde, tiap ronde enam pasangan garis dan tiga kotak. Siswa menyeret atau mengetuk gambar ke kotak yang tepat.",
-      "voiceGuide": "Pilah gambar ke kotak yang tepat.",
+      "objective": "Memilah pasangan garis menjadi sejajar, tegak lurus, dan bukan keduanya.. Ingat Sejajar.",
+      "mechanicDescription": "Tiga ronde, tiap ronde enam pasangan garis dan tiga kotak. Siswa menyeret atau mengetuk gambar ke kotak yang tepat. Gunakan Sejajar.",
+      "voiceGuide": "Sejajar. Pilah gambar ke kotak yang tepat.",
       "diagramType": "grid-sort",
       "numberA": 3,
       "numberB": 6
@@ -2192,9 +2087,9 @@ export const SUB_C34: SubBabNaskah = {
       "gameType": "fill-shape-table",
       "title": "Isi Tabel Ciri Bangun Datar",
       "bookReference": "hlm. 189–192 (bangun datar sederhana: sisi dan sudut)",
-      "objective": "Melengkapi tabel bangun datar dan ciri-cirinya.",
-      "mechanicDescription": "Tiga tabel dengan empat baris. Siswa mengetuk baris, lalu mengetuk kartu ciri yang tepat. Ada satu kartu pengecoh.",
-      "voiceGuide": "Isi tabel dengan kartu ciri bangun.",
+      "objective": "Melengkapi tabel bangun datar dan ciri-cirinya.. Ingat Sejajar.",
+      "mechanicDescription": "Tiga tabel dengan empat baris. Siswa mengetuk baris, lalu mengetuk kartu ciri yang tepat. Ada satu kartu pengecoh. Gunakan Sejajar.",
+      "voiceGuide": "Sejajar. Isi tabel dengan kartu ciri bangun.",
       "diagramType": "shape-table",
       "numberA": 3,
       "numberB": 4
@@ -2204,9 +2099,9 @@ export const SUB_C34: SubBabNaskah = {
       "gameType": "memory-shape-name",
       "title": "Memori Bangun Datar dan Namanya",
       "bookReference": "hlm. 189–192 (nama bangun datar)",
-      "objective": "Mencocokkan gambar bangun datar dengan namanya lewat permainan memori.",
-      "mechanicDescription": "Tiga ronde, tiap ronde delapan kartu tertutup (empat pasang). Siswa membalik dua kartu dan mencari gambar bangun dengan namanya.",
-      "voiceGuide": "Balik dua kartu, cari gambar dan namanya.",
+      "objective": "Mencocokkan gambar bangun datar dengan namanya lewat permainan memori.. Ingat Sejajar.",
+      "mechanicDescription": "Tiga ronde, tiap ronde delapan kartu tertutup (empat pasang). Siswa membalik dua kartu dan mencari gambar bangun dengan namanya. Gunakan Sejajar.",
+      "voiceGuide": "Sejajar. Balik dua kartu, cari gambar dan namanya.",
       "diagramType": "shape-memory",
       "numberA": 3,
       "numberB": 4
@@ -2216,9 +2111,9 @@ export const SUB_C34: SubBabNaskah = {
       "gameType": "name-symbol-pair",
       "title": "Lambang Pasangan Garis",
       "bookReference": "hlm. 176 dan 183 (AB ⊥ BC dan AB // CD)",
-      "objective": "Memilih lambang yang tepat untuk pasangan garis berhuruf.",
-      "mechanicDescription": "Tiga ronde, tiap ronde dua soal. Pasangan garis berhuruf ditampilkan. Siswa memilih satu dari tiga lambang.",
-      "voiceGuide": "Pilih lambang pasangan garis.",
+      "objective": "Memilih lambang yang tepat untuk pasangan garis berhuruf.. Ingat Sejajar.",
+      "mechanicDescription": "Tiga ronde, tiap ronde dua soal. Pasangan garis berhuruf ditampilkan. Siswa memilih satu dari tiga lambang. Gunakan Sejajar.",
+      "voiceGuide": "Sejajar. Pilih lambang pasangan garis.",
       "diagramType": "grid-symbol",
       "numberA": 3,
       "numberB": 2
@@ -2228,9 +2123,9 @@ export const SUB_C34: SubBabNaskah = {
       "gameType": "shape-features",
       "title": "Sisi dan Sudut Bangun Datar",
       "bookReference": "hlm. 189–192 (Ayo Berlatih: tuliskan banyak sudut dan sisi)",
-      "objective": "Memilih ciri yang tepat untuk gambar bangun datar sederhana.",
-      "mechanicDescription": "Tiga ronde, tiap ronde dua soal. Gambar bangun datar ditampilkan. Siswa memilih satu dari tiga ciri.",
-      "voiceGuide": "Pilih ciri bangun datar.",
+      "objective": "Memilih ciri yang tepat untuk gambar bangun datar sederhana.. Ingat Sejajar.",
+      "mechanicDescription": "Tiga ronde, tiap ronde dua soal. Gambar bangun datar ditampilkan. Siswa memilih satu dari tiga ciri. Gunakan Sejajar.",
+      "voiceGuide": "Sejajar. Pilih ciri bangun datar.",
       "diagramType": "shape-feature",
       "numberA": 3,
       "numberB": 2
@@ -2240,9 +2135,9 @@ export const SUB_C34: SubBabNaskah = {
       "gameType": "choose-candidate-line",
       "title": "Pilih Garis yang Sejajar atau Tegak Lurus",
       "bookReference": "hlm. 177–180 dan 182–185 (membuat garis sejajar dan tegak lurus)",
-      "objective": "Memilih gambar yang garis merahnya sejajar atau tegak lurus dengan garis biru.",
-      "mechanicDescription": "Tiga ronde, tiap ronde tiga gambar dan dua pertanyaan. Garis biru tetap sama, garis merah berbeda. Siswa mengetuk gambar yang sejajar lalu yang tegak lurus.",
-      "voiceGuide": "Ketuk gambar yang sesuai pertanyaan.",
+      "objective": "Memilih gambar yang garis merahnya sejajar atau tegak lurus dengan garis biru.. Ingat Sejajar.",
+      "mechanicDescription": "Tiga ronde, tiap ronde tiga gambar dan dua pertanyaan. Garis biru tetap sama, garis merah berbeda. Siswa mengetuk gambar yang sejajar lalu yang tegak lurus. Gunakan Sejajar.",
+      "voiceGuide": "Sejajar. Ketuk gambar yang sesuai pertanyaan.",
       "diagramType": "grid-candidate",
       "numberA": 3,
       "numberB": 3
@@ -2252,9 +2147,9 @@ export const SUB_C34: SubBabNaskah = {
       "gameType": "name-line-term",
       "title": "Istilah Garis",
       "bookReference": "hlm. 174–185 (garis tegak lurus dan sejajar)",
-      "objective": "Memilih istilah garis yang tepat dari uraiannya. (METODE LUAR · Tegak Lurus)",
-      "mechanicDescription": "Tiga ronde, tiap ronde dua soal. Siswa membaca uraian, lalu memilih satu dari tiga istilah.",
-      "voiceGuide": "METODE LUAR · Tegak Lurus. Pilih istilah yang tepat.",
+      "objective": "Pakai Garis di Lingkungan: Cari contoh di kelas dan jalan. Latihan: Memilih istilah garis yang tepat dari uraiannya..",
+      "mechanicDescription": "Tiga ronde, tiap ronde dua soal. Siswa membaca uraian, lalu memilih satu dari tiga istilah. Saat bermain, terapkan Real-World Lines: Cari contoh di kelas dan jalan.",
+      "voiceGuide": "Garis di Lingkungan. Cari contoh di kelas dan jalan.",
       "symbolLarge": "⊥ //",
       "wordLarge": "ISTILAH",
       "mathNotation": "tegak lurus • sejajar"
@@ -2264,9 +2159,9 @@ export const SUB_C34: SubBabNaskah = {
       "gameType": "complete-line-sentence",
       "title": "Lengkapi Kalimat Garis dan Bangun",
       "bookReference": "hlm. 174–192 (garis dan bangun datar sederhana)",
-      "objective": "Melengkapi kalimat tentang garis dan bangun datar sederhana.",
-      "mechanicDescription": "Tiga soal, tiap soal tiga kalimat, misalnya segitiga memiliki tiga sisi dan tiga ... Siswa memilih satu dari tiga kata.",
-      "voiceGuide": "Pilih kata untuk bagian kosong.",
+      "objective": "Pakai Garis di Lingkungan: Cari contoh di kelas dan jalan. Latihan: Melengkapi kalimat tentang garis dan bangun datar sederhana..",
+      "mechanicDescription": "Tiga soal, tiap soal tiga kalimat, misalnya segitiga memiliki tiga sisi dan tiga ... Siswa memilih satu dari tiga kata. Saat bermain, terapkan Real-World Lines: Cari contoh di kelas dan jalan.",
+      "voiceGuide": "Garis di Lingkungan. Cari contoh di kelas dan jalan.",
       "symbolLarge": "…",
       "wordLarge": "LENGKAPI",
       "mathNotation": "garis • bangun • sudut"
@@ -2276,9 +2171,9 @@ export const SUB_C34: SubBabNaskah = {
       "gameType": "symbol-meaning",
       "title": "Arti Lambang Garis",
       "bookReference": "hlm. 176 dan 183 (lambang ⊥ dan //)",
-      "objective": "Membaca dan menulis lambang garis tegak lurus dan sejajar.",
-      "mechanicDescription": "Tiga ronde, tiap ronde dua soal, misalnya AB ⊥ CD dibaca ... Siswa memilih satu dari tiga jawaban.",
-      "voiceGuide": "Pilih bacaan atau lambang yang tepat.",
+      "objective": "Pakai Garis di Lingkungan: Cari contoh di kelas dan jalan. Latihan: Membaca dan menulis lambang garis tegak lurus dan sejajar..",
+      "mechanicDescription": "Tiga ronde, tiap ronde dua soal, misalnya AB ⊥ CD dibaca ... Siswa memilih satu dari tiga jawaban. Saat bermain, terapkan Real-World Lines: Cari contoh di kelas dan jalan.",
+      "voiceGuide": "Garis di Lingkungan. Cari contoh di kelas dan jalan.",
       "symbolLarge": "⊥",
       "wordLarge": "LAMBANG",
       "mathNotation": "⊥ tegak lurus • // sejajar"
@@ -2288,9 +2183,9 @@ export const SUB_C34: SubBabNaskah = {
       "gameType": "match-symbol-phrase",
       "title": "Jodohkan Lambang dan Bacaannya",
       "bookReference": "hlm. 176 dan 183 (AB ⊥ BC, EF // GH)",
-      "objective": "Menjodohkan lambang garis dengan bacaannya.",
-      "mechanicDescription": "Tiga ronde, tiap ronde tiga lambang dan tiga bacaan. Siswa mengetuk lambang, lalu mengetuk bacaannya.",
-      "voiceGuide": "Ketuk lambang, lalu ketuk bacaannya.",
+      "objective": "Pakai Garis di Lingkungan: Cari contoh di kelas dan jalan. Latihan: Menjodohkan lambang garis dengan bacaannya..",
+      "mechanicDescription": "Tiga ronde, tiap ronde tiga lambang dan tiga bacaan. Siswa mengetuk lambang, lalu mengetuk bacaannya. Saat bermain, terapkan Real-World Lines: Cari contoh di kelas dan jalan.",
+      "voiceGuide": "Garis di Lingkungan. Cari contoh di kelas dan jalan.",
       "symbolLarge": "= ?",
       "wordLarge": "JODOHKAN",
       "mathNotation": "lambang • bacaan"
@@ -2300,9 +2195,9 @@ export const SUB_C34: SubBabNaskah = {
       "gameType": "memory-term-meaning",
       "title": "Memori Istilah dan Artinya",
       "bookReference": "hlm. 174–192 (istilah garis dan bangun datar)",
-      "objective": "Mencocokkan istilah dengan artinya lewat permainan memori.",
-      "mechanicDescription": "Tiga ronde, tiap ronde delapan kartu tertutup (empat pasang). Siswa membalik dua kartu dan mencari istilah dengan artinya.",
-      "voiceGuide": "Balik dua kartu, cari istilah dan artinya.",
+      "objective": "Mencocokkan istilah dengan artinya lewat permainan memori.. Ingat Garis di Lingkungan.",
+      "mechanicDescription": "Tiga ronde, tiap ronde delapan kartu tertutup (empat pasang). Siswa membalik dua kartu dan mencari istilah dengan artinya. Gunakan Garis di Lingkungan.",
+      "voiceGuide": "Garis di Lingkungan. Balik dua kartu, cari istilah dan artinya.",
       "symbolLarge": "?",
       "wordLarge": "MEMORI",
       "mathNotation": "istilah dan arti"
@@ -2312,9 +2207,9 @@ export const SUB_C34: SubBabNaskah = {
       "gameType": "true-false-lines",
       "title": "Benar atau Salah: Garis dan Bangun Datar",
       "bookReference": "hlm. 174–192 (garis dan bangun datar sederhana)",
-      "objective": "Menilai pernyataan tentang garis dan bangun datar sederhana.",
-      "mechanicDescription": "Dua ronde, tiap ronde lima pernyataan. Siswa memilih Benar atau Salah. Tiap jawaban diberi penjelasan.",
-      "voiceGuide": "Baca pernyataan, lalu pilih benar atau salah.",
+      "objective": "Menilai pernyataan tentang garis dan bangun datar sederhana.. Ingat Garis di Lingkungan.",
+      "mechanicDescription": "Dua ronde, tiap ronde lima pernyataan. Siswa memilih Benar atau Salah. Tiap jawaban diberi penjelasan. Gunakan Garis di Lingkungan.",
+      "voiceGuide": "Garis di Lingkungan. Baca pernyataan, lalu pilih benar atau salah.",
       "symbolLarge": "✓ ✗",
       "wordLarge": "BENAR SALAH",
       "mathNotation": "periksa dengan alasan"
@@ -2324,9 +2219,9 @@ export const SUB_C34: SubBabNaskah = {
       "gameType": "detective-shapes",
       "title": "Detektif Bangun Datar",
       "bookReference": "hlm. 189–192 (banyak sisi dan sudut)",
-      "objective": "Menemukan bilangan dari dua petunjuk tentang sisi dan sudut bangun datar.",
-      "mechanicDescription": "Empat soal. Siswa membaca petunjuk dan satu ciri bilangan, lalu memilih satu dari tiga bilangan. Hanya satu yang cocok.",
-      "voiceGuide": "Baca petunjuk, lalu pilih bilangannya.",
+      "objective": "Menemukan bilangan dari dua petunjuk tentang sisi dan sudut bangun datar.. Ingat Garis di Lingkungan.",
+      "mechanicDescription": "Empat soal. Siswa membaca petunjuk dan satu ciri bilangan, lalu memilih satu dari tiga bilangan. Hanya satu yang cocok. Gunakan Garis di Lingkungan.",
+      "voiceGuide": "Garis di Lingkungan. Baca petunjuk, lalu pilih bilangannya.",
       "symbolLarge": "?",
       "wordLarge": "DETEKTIF",
       "mathNotation": "dua petunjuk, satu jawaban"
@@ -2336,9 +2231,9 @@ export const SUB_C34: SubBabNaskah = {
       "gameType": "concept-map-shapes",
       "title": "Peta Konsep Garis dan Bangun",
       "bookReference": "hlm. 144 (peta konsep Bab 4)",
-      "objective": "Melengkapi peta konsep garis dan bangun datar sederhana.",
-      "mechanicDescription": "Dua peta konsep, tiap peta empat kotak. Siswa memilih kartu yang tepat untuk kotak yang menyala.",
-      "voiceGuide": "Pilih kartu yang tepat untuk kotak yang menyala.",
+      "objective": "Melengkapi peta konsep garis dan bangun datar sederhana.. Ingat Garis di Lingkungan.",
+      "mechanicDescription": "Dua peta konsep, tiap peta empat kotak. Siswa memilih kartu yang tepat untuk kotak yang menyala. Gunakan Garis di Lingkungan.",
+      "voiceGuide": "Garis di Lingkungan. Pilih kartu yang tepat untuk kotak yang menyala.",
       "symbolLarge": "⇄",
       "wordLarge": "PETA KONSEP",
       "mathNotation": "garis • bangun"
@@ -2348,9 +2243,9 @@ export const SUB_C34: SubBabNaskah = {
       "gameType": "story-lines",
       "title": "Soal Cerita Garis dan Bangun",
       "bookReference": "hlm. 188–193 (garis sejajar, tegak lurus, dan bangun datar)",
-      "objective": "Menyelesaikan soal cerita tentang sudut siku-siku, sisi bangun, dan garis sejajar.",
-      "mechanicDescription": "Tiga ronde, tiap ronde dua cerita. Siswa membaca cerita, menghitung, lalu memilih satu dari tiga bilangan.",
-      "voiceGuide": "Baca cerita, lalu pilih hasilnya.",
+      "objective": "Menyelesaikan soal cerita tentang sudut siku-siku, sisi bangun, dan garis sejajar.. Ingat Garis di Lingkungan.",
+      "mechanicDescription": "Tiga ronde, tiap ronde dua cerita. Siswa membaca cerita, menghitung, lalu memilih satu dari tiga bilangan. Gunakan Garis di Lingkungan.",
+      "voiceGuide": "Garis di Lingkungan. Baca cerita, lalu pilih hasilnya.",
       "symbolLarge": "+",
       "wordLarge": "CERITA",
       "mathNotation": "jumlah • jarak sama"
@@ -2360,9 +2255,9 @@ export const SUB_C34: SubBabNaskah = {
       "gameType": "sentence-shapes",
       "title": "Susun Kata Garis dan Bangun",
       "bookReference": "hlm. 174–192 (garis dan bangun datar sederhana)",
-      "objective": "Menyusun kalimat tentang garis dan bangun datar dari kartu kata.",
-      "mechanicDescription": "Empat kalimat. Siswa mengetuk kartu kata satu per satu menurut urutan kalimat yang benar. Ada satu kartu pengecoh.",
-      "voiceGuide": "Susun kartu kata menjadi kalimat.",
+      "objective": "Menyusun kalimat tentang garis dan bangun datar dari kartu kata.. Ingat Garis di Lingkungan.",
+      "mechanicDescription": "Empat kalimat. Siswa mengetuk kartu kata satu per satu menurut urutan kalimat yang benar. Ada satu kartu pengecoh. Gunakan Garis di Lingkungan.",
+      "voiceGuide": "Garis di Lingkungan. Susun kartu kata menjadi kalimat.",
       "symbolLarge": "…",
       "wordLarge": "SUSUN KATA",
       "mathNotation": "kalimat garis dan bangun"
@@ -2382,43 +2277,25 @@ export const SUB_C34: SubBabNaskah = {
       "suara": "Pojok kertas yang dilipat dua kali adalah sudut siku-siku. Pojok itu dipakai untuk memeriksa garis tegak lurus."
     },
     {
-      "ikon": "🛤️",
-      "nama": "Garis sejajar",
-      "isi": "jarak sama, tidak bertemu",
-      "suara": "Garis sejajar ditarik pada jarak yang selalu sama dan tidak pernah bertemu. Ditulis AB // CD dan dibaca AB sejajar CD."
-    },
-    {
-      "ikon": "🔺",
-      "nama": "Segitiga",
-      "isi": "3 sisi dan 3 sudut",
-      "suara": "Segitiga dibatasi tiga ruas garis. Segitiga memiliki tiga sisi dan tiga sudut."
-    },
-    {
-      "ikon": "⬜",
-      "nama": "Persegi dan persegi panjang",
-      "isi": "4 sisi dan 4 sudut siku-siku",
-      "suara": "Persegi panjang memiliki empat sisi dan empat sudut siku-siku. Persegi memiliki empat sisi yang sama panjang."
-    },
-    {
       "ikon": "🌍",
       "nama": "Tegak Lurus",
-      "isi": "METODE LUAR · Perpendicular: Dua garis bertemu membentuk siku-siku. (asal: Geometry).",
-      "suara": "METODE LUAR. Tegak Lurus. Dua garis bertemu membentuk siku-siku."
+      "isi": "Dua garis bertemu membentuk siku-siku.",
+      "suara": "Tegak Lurus. Dua garis bertemu membentuk siku-siku."
     },
     {
       "ikon": "🌍",
       "nama": "Sejajar",
-      "isi": "METODE LUAR · Parallel: Jarak tetap, tidak bertemu. (asal: Geometry).",
-      "suara": "METODE LUAR. Sejajar. Jarak tetap, tidak bertemu."
+      "isi": "Jarak tetap, tidak bertemu.",
+      "suara": "Sejajar. Jarak tetap, tidak bertemu."
     },
     {
       "ikon": "🌍",
       "nama": "Garis di Lingkungan",
-      "isi": "METODE LUAR · Real-World Lines: Cari contoh di kelas dan jalan. (asal: Contextual geometry).",
-      "suara": "METODE LUAR. Garis di Lingkungan. Cari contoh di kelas dan jalan."
+      "isi": "Cari contoh di kelas dan jalan.",
+      "suara": "Garis di Lingkungan. Cari contoh di kelas dan jalan."
     }
   ],
-  "poinSuara": "Ingat selalu! Garis tegak lurus bertemu pada sudut siku-siku, ditulis dengan lambang ⊥. Garis sejajar jaraknya selalu sama dan tidak pernah bertemu, ditulis dengan lambang //. Segitiga punya tiga sisi, persegi dan persegi panjang punya empat sisi, dan lingkaran dibatasi garis lengkung.",
+  "poinSuara": "Ingat: Tegak Lurus, Sejajar, Garis di Lingkungan.",
   "cara": {
     "suara": "Cara memeriksa garis tegak lurus. Lipat kertas dua kali. Letakkan pojok kertas di tempat kedua garis bertemu. Lihat apakah kedua garis pas dengan pojok. Bila pas, garisnya tegak lurus.",
     "potongan": [
@@ -2440,12 +2317,11 @@ export const SUB_C34: SubBabNaskah = {
       }
     ]
   },
-  "rumah": "Ayo Mencoba di rumah: cari tiga pasang garis tegak lurus dan tiga pasang garis sejajar pada pintu, jendela, atau pagar. Lipat selembar kertas dua kali, lalu pakai pojoknya untuk memeriksa garis tegak lurus. Sebutkan juga bangun datar yang kamu temukan di rumah beserta banyak sisi dan sudutnya.",
+  "rumah": "Ayo Mencoba di rumah: terapkan Tegak Lurus pada satu benda atau soal nyata, lalu ceritakan langkahmu.",
   "refleksi": [
-    "Aku dapat menjelaskan garis tegak lurus dan menuliskannya dengan lambang ⊥.",
-    "Aku dapat menjelaskan garis sejajar dan menuliskannya dengan lambang //.",
-    "Aku dapat membuat garis sejajar dan tegak lurus dengan melipat kertas.",
-    "Aku dapat menyebutkan sisi dan sudut segitiga, persegi, persegi panjang, dan lingkaran."
+    "Bagaimana Tegak Lurus membantumu memahami soal?",
+    "Kapan kamu memakai Sejajar?",
+    "Apa bedanya dengan hanya menghafal rumus atau langkah tanpa arti?"
   ],
   "metodeLuar": [
     {

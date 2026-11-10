@@ -15,7 +15,7 @@
       "id": "A",
       "codeTitle": "Sub-Bab A (Lebih dari, Kurang dari, Selisih)",
       "fullTitle": "Sub-Bab A: Mengenal Konsep Lebih dari, Kurang dari, dan Selisih",
-      "targetDescription": "Siswa membandingkan dua kelompok benda dengan memasangkan satu-satu, menyatakan perbandingan dengan kata lebih dari, kurang dari, lebihnya, kurangnya, beda, dan selisih, mencari selisih dengan mengurangkan bilangan yang besar dengan bilangan yang kecil, menunjukkan selisih pada model batang dan garis bilangan, serta mencari bilangan yang belum diketahui dari cerita lebihnya atau kurangnya.",
+      "targetDescription": "Siswa membandingkan dua kelompok benda dengan memasangkan satu-satu, menyatakan perbandingan dengan kata lebih dari, kurang dari, lebihnya, kurangnya, beda, dan selisih, mencari selisih dengan mengurangkan bilangan yang besar dengan bilangan yang kecil, menunjukkan selisih pada model batang dan garis bilangan, serta mencari bilangan yang belum diketahui dari cerita lebihnya atau kurangnya. Memakai Maju dan Mundur, Pasangan sampai 20, Menjadikan Sepuluh.",
       "secondaryBg": "#FCE7F3",
       "secondaryBorder": "#DB2777",
       "secondaryText": "#831843",
@@ -24,37 +24,37 @@
           "id": "A6-S1",
           "titleHint": "Membantu Ibu",
           "sceneType": "membantu-ibu-donat",
-          "voiceNarration": "Hari Minggu telah tiba. Tika membantu Ibu memasak di dapur. Mereka membuat donat. Ibu menghias tujuh donat. Tika menghias enam donat. Tika sangat senang. Siapa yang memiliki donat lebih banyak? Bagaimana kita tahu? Kita hitung dulu donat Ibu, lalu donat Tika, kemudian kita bandingkan. METODE LUAR. Maju dan Mundur: Jumlah dengan maju, kurang dengan mundur."
+          "voiceNarration": "Hari Minggu telah tiba. Tika membantu Ibu memasak di dapur. Mereka membuat donat. Ibu menghias tujuh donat. Tika menghias enam donat. Tika sangat senang. Siapa yang memiliki donat lebih banyak? Bagaimana kita tahu? Kita hitung dulu donat Ibu, lalu donat Tika, kemudian kita bandingkan. Kita memakai cara Maju dan Mundur: Jumlah dengan maju, kurang dengan mundur."
         },
         {
           "id": "A6-S2",
           "titleHint": "Pasangkan Donat",
           "sceneType": "pasangkan-donat",
-          "voiceNarration": "Ayo kita pasangkan donat Ibu dengan donat Tika, satu demi satu. Donat Ibu ada tujuh. Donat Tika ada enam. Setelah dipasangkan, satu donat Ibu tidak punya pasangan. Jadi donat Ibu lebih banyak dari donat Tika. Donat Ibu satu lebihnya dari donat Tika. Donat Tika lebih sedikit dari donat Ibu. Donat Tika satu kurangnya dari donat Ibu. METODE LUAR. Pasangan sampai 20: Pasangan yang membentuk dua puluh."
+          "voiceNarration": "Ayo kita pasangkan donat Ibu dengan donat Tika, satu demi satu. Donat Ibu ada tujuh. Donat Tika ada enam. Setelah dipasangkan, satu donat Ibu tidak punya pasangan. Jadi donat Ibu lebih banyak dari donat Tika. Donat Ibu satu lebihnya dari donat Tika. Donat Tika lebih sedikit dari donat Ibu. Donat Tika satu kurangnya dari donat Ibu. Kita memakai cara Pasangan sampai 20: Pasangan yang membentuk dua puluh."
         },
         {
           "id": "A6-S3",
           "titleHint": "Bunga dan Kupu-Kupu",
           "sceneType": "bunga-dan-kupu-kupu",
-          "voiceNarration": "Ada lima bunga yang sedang mekar. Ada tujuh kupu-kupu terbang di atas bunga. Berapa lebihnya banyak kupu-kupu dari bunga? Berapa kurangnya banyak bunga dari kupu-kupu? Tujuh lebih banyak dari lima. Tujuh dikurangi lima sama dengan dua. Banyak kupu-kupu dua lebihnya dari banyak bunga. Banyak bunga dua kurangnya dari banyak kupu-kupu. Beda banyak bunga dan kupu-kupu adalah dua. METODE LUAR. Menjadikan Sepuluh: Isi sampai sepuluh dulu, lalu sisa."
+          "voiceNarration": "Ada lima bunga yang sedang mekar. Ada tujuh kupu-kupu terbang di atas bunga. Berapa lebihnya banyak kupu-kupu dari bunga? Berapa kurangnya banyak bunga dari kupu-kupu? Tujuh lebih banyak dari lima. Tujuh dikurangi lima sama dengan dua. Banyak kupu-kupu dua lebihnya dari banyak bunga. Banyak bunga dua kurangnya dari banyak kupu-kupu. Beda banyak bunga dan kupu-kupu adalah dua. Kita memakai cara Menjadikan Sepuluh: Isi sampai sepuluh dulu, lalu sisa."
         },
         {
           "id": "A6-S4",
           "titleHint": "Beda atau Selisih",
           "sceneType": "beda-atau-selisih",
-          "voiceNarration": "Beda dua bilangan bisa ditunjukkan dengan kata lebih dari, kurang dari, beda, atau selisih. Banyaknya donat Ibu berbeda dengan banyaknya donat Tika. Beda banyaknya donat Ibu dan Tika adalah satu. Selisih banyaknya donat Ibu dan Tika adalah satu. Kita menemukan beda dua bilangan dengan mengurangkannya. Bilangan yang lebih besar dikurangi bilangan yang lebih kecil. Tujuh dikurangi enam sama dengan satu. METODE LUAR. Maju dan Mundur: Jumlah dengan maju, kurang dengan mundur."
+          "voiceNarration": "Beda dua bilangan bisa ditunjukkan dengan kata lebih dari, kurang dari, beda, atau selisih. Banyaknya donat Ibu berbeda dengan banyaknya donat Tika. Beda banyaknya donat Ibu dan Tika adalah satu. Selisih banyaknya donat Ibu dan Tika adalah satu. Kita menemukan beda dua bilangan dengan mengurangkannya. Bilangan yang lebih besar dikurangi bilangan yang lebih kecil. Tujuh dikurangi enam sama dengan satu. Kita memakai cara Maju dan Mundur: Jumlah dengan maju, kurang dengan mundur."
         },
         {
           "id": "A6-S5",
           "titleHint": "Dua Barisan Anak",
           "sceneType": "dua-barisan-anak",
-          "voiceNarration": "Ayo bermain! Buatlah dua barisan, satu barisan anak laki-laki dan satu barisan anak perempuan. Di gambar ini ada lima anak laki-laki dan empat anak perempuan. Kita pasangkan satu demi satu. Satu anak laki-laki tidak punya pasangan. Jadi anak laki-laki satu lebihnya dari anak perempuan, dan selisih banyaknya adalah satu. Cobalah bersama temanmu, lalu ceritakan hasilnya dengan kata lebih dari, kurang dari, dan selisih. METODE LUAR. Pasangan sampai 20: Pasangan yang membentuk dua puluh."
+          "voiceNarration": "Ayo bermain! Buatlah dua barisan, satu barisan anak laki-laki dan satu barisan anak perempuan. Di gambar ini ada lima anak laki-laki dan empat anak perempuan. Kita pasangkan satu demi satu. Satu anak laki-laki tidak punya pasangan. Jadi anak laki-laki satu lebihnya dari anak perempuan, dan selisih banyaknya adalah satu. Cobalah bersama temanmu, lalu ceritakan hasilnya dengan kata lebih dari, kurang dari, dan selisih. Kita memakai cara Pasangan sampai 20: Pasangan yang membentuk dua puluh."
         },
         {
           "id": "A6-S6",
           "titleHint": "Selisih di Garis Bilangan",
           "sceneType": "selisih-di-garis-bilangan",
-          "voiceNarration": "Garis bilangan juga bisa menunjukkan selisih. Wei mempunyai tujuh boneka. Kira mempunyai sembilan boneka. Dari tujuh ke sembilan, kita melompat dua langkah ke kanan. Jadi selisih banyak boneka Wei dan Kira adalah dua. Sembilan dikurangi tujuh sama dengan dua. METODE LUAR. Menjadikan Sepuluh: Isi sampai sepuluh dulu, lalu sisa."
+          "voiceNarration": "Garis bilangan juga bisa menunjukkan selisih. Wei mempunyai tujuh boneka. Kira mempunyai sembilan boneka. Dari tujuh ke sembilan, kita melompat dua langkah ke kanan. Jadi selisih banyak boneka Wei dan Kira adalah dua. Sembilan dikurangi tujuh sama dengan dua. Kita memakai cara Menjadikan Sepuluh: Isi sampai sepuluh dulu, lalu sisa."
         }
       ],
       "mindMaps": [
@@ -76,24 +76,24 @@
         },
         {
           "stepNumber": 3,
-          "stepTitle": "3. Lebihnya dan Kurangnya",
-          "stepDesc": "Sisa itulah lebihnya. Donat Ibu satu lebihnya dari donat Tika. Donat Tika satu kurangnya dari donat Ibu. Lebihnya dan kurangnya sama besar.",
+          "stepTitle": "3. Counting On/Back",
+          "stepDesc": "Jumlah dengan maju, kurang dengan mundur.",
           "icon": "⚖️",
           "flowFrom": "Pasangkan satu-satu",
           "flowTo": "Lebihnya dan kurangnya"
         },
         {
           "stepNumber": 4,
-          "stepTitle": "4. Beda atau Selisih",
-          "stepDesc": "Banyaknya benda yang berbeda disebut beda atau selisih. Beda banyak donat Ibu dan Tika adalah satu. Kata beda dan selisih artinya sama.",
+          "stepTitle": "4. Number Bond to 20",
+          "stepDesc": "Pasangan yang membentuk dua puluh.",
           "icon": "🔍",
           "flowFrom": "Lebihnya dan kurangnya",
           "flowTo": "Beda atau selisih"
         },
         {
           "stepNumber": 5,
-          "stepTitle": "5. Cari dengan Pengurangan",
-          "stepDesc": "Selisih dua bilangan dicari dengan mengurangkannya. Bilangan yang lebih besar dikurangi bilangan yang lebih kecil. Tujuh dikurangi enam sama dengan satu.",
+          "stepTitle": "5. Make Ten",
+          "stepDesc": "Isi sampai sepuluh dulu, lalu sisa.",
           "icon": "➖",
           "flowFrom": "Beda atau selisih",
           "flowTo": "Besar dikurangi kecil"
@@ -108,7 +108,7 @@
         },
         {
           "stepNumber": 7,
-          "stepTitle": "7. METODE LUAR · Maju dan Mundur",
+          "stepTitle": "7.",
           "stepDesc": "Jumlah dengan maju, kurang dengan mundur.",
           "icon": "🌍",
           "flowFrom": "6",
@@ -116,7 +116,7 @@
         },
         {
           "stepNumber": 8,
-          "stepTitle": "8. METODE LUAR · Pasangan sampai 20",
+          "stepTitle": "8.",
           "stepDesc": "Pasangan yang membentuk dua puluh.",
           "icon": "🌍",
           "flowFrom": "7",
@@ -214,25 +214,25 @@
           "title": "Donat di Piring",
           "emoji": "🍩",
           "targetCount": 3,
-          "voiceGuide": "Seret benda ke piring di bawah benda yang lain. Lihat piring yang kosong atau benda yang tersisa. Itulah lebihnya. Ucapkan selisihnya."
+          "voiceGuide": "Maju dan Mundur. Seret benda ke piring di bawah benda yang lain. Lihat piring yang kosong atau benda yang tersisa. Itulah lebihnya. Ucapkan selisihnya."
         },
         {
           "title": "Samakan Kelompok",
           "emoji": "🌸",
           "targetCount": 4,
-          "voiceGuide": "Tambah atau ambil benda sampai dua kelompok sama banyak. Banyak yang ditambah atau diambil adalah selisihnya."
+          "voiceGuide": "Pasangan sampai 20. Tambah atau ambil benda sampai dua kelompok sama banyak. Banyak yang ditambah atau diambil adalah selisihnya."
         },
         {
           "title": "Dua Barisan Anak",
           "emoji": "🧒",
           "targetCount": 5,
-          "voiceGuide": "Seret anak laki-laki dan anak perempuan ke barisannya. Bandingkan panjang kedua barisan lalu cari selisihnya."
+          "voiceGuide": "Menjadikan Sepuluh. Seret anak laki-laki dan anak perempuan ke barisannya. Bandingkan panjang kedua barisan lalu cari selisihnya."
         },
         {
           "title": "Kalimat Selisih",
           "emoji": "🃏",
           "targetCount": 4,
-          "voiceGuide": "Hitung beda dua kelompok, lalu seret kartu lebihnya, kurangnya, dan beda ke kalimat yang tepat."
+          "voiceGuide": "Maju dan Mundur. Hitung beda dua kelompok, lalu seret kartu lebihnya, kurangnya, dan beda ke kalimat yang tepat."
         }
       ],
       "pictorialSlides": [
@@ -241,21 +241,21 @@
           "diagramType": "dot-pairs",
           "numberA": 6,
           "numberB": 9,
-          "caption": "Titik yang berpasangan disambung garis. Lingkari titik yang tidak punya pasangan, lalu pilih selisihnya."
+          "caption": "Pakai Maju dan Mundur. Titik yang berpasangan disambung garis. Lingkari titik yang tidak punya pasangan, lalu pilih selisihnya."
         },
         {
           "title": "Samakan Batang",
           "diagramType": "bar-model",
           "numberA": 7,
           "numberB": 12,
-          "caption": "Warnai kotak kosong pada batang yang pendek sampai kedua batang sama panjang. Kotak yang diwarnai adalah selisihnya."
+          "caption": "Pakai Pasangan sampai 20. Warnai kotak kosong pada batang yang pendek sampai kedua batang sama panjang. Kotak yang diwarnai adalah selisihnya."
         },
         {
           "title": "Selisih di Garis Bilangan",
           "diagramType": "number-line-gap",
           "numberA": 6,
           "numberB": 13,
-          "caption": "Tandai setiap langkah dari bendera kecil ke bendera besar, lalu pilih kalimat pengurangan yang tepat."
+          "caption": "Pakai Menjadikan Sepuluh. Tandai setiap langkah dari bendera kecil ke bendera besar, lalu pilih kalimat pengurangan yang tepat."
         }
       ],
       "abstractSlides": [
@@ -263,19 +263,19 @@
           "symbolLarge": "9 – 6 = 3",
           "wordLarge": "BESAR DIKURANGI KECIL",
           "mathNotation": "7 – 5 = 2 • 9 – 6 = 3 • 18 – 13 = 5",
-          "voiceReadout": "Cari bilangan yang lebih besar, lalu kurangkan dengan bilangan yang lebih kecil. Sembilan dikurangi enam sama dengan tiga. Selisihnya tiga."
+          "voiceReadout": "Maju dan Mundur. Cari bilangan yang lebih besar, lalu kurangkan dengan bilangan yang lebih kecil. Sembilan dikurangi enam sama dengan tiga. Selisihnya tiga."
         },
         {
           "symbolLarge": "5 + 2 = ?",
           "wordLarge": "LEBIHNYA, TAMBAH",
           "mathNotation": "lebihnya → tambah • kurangnya → kurang",
-          "voiceReadout": "Kalau diketahui lebihnya, kita menambah. Kalau diketahui kurangnya, kita mengurangi. Lima ditambah dua sama dengan tujuh."
+          "voiceReadout": "Pasangan sampai 20. Kalau diketahui lebihnya, kita menambah. Kalau diketahui kurangnya, kita mengurangi. Lima ditambah dua sama dengan tujuh."
         },
         {
           "symbolLarge": "2",
           "wordLarge": "DUA",
           "mathNotation": "9 – 7 = 2 • selisih = 2",
-          "voiceReadout": "Cari selisih dua bilangan, ucapkan selisihnya, lalu guratkan lambangnya di kanvas. Dua ditulis dengan angka dua."
+          "voiceReadout": "Menjadikan Sepuluh. Cari selisih dua bilangan, ucapkan selisihnya, lalu guratkan lambangnya di kanvas. Dua ditulis dengan angka dua."
         }
       ],
       "interactiveGames": [
@@ -286,9 +286,9 @@
           "gameType": "drag-to-plates",
           "title": "Donat di Piring",
           "bookReference": "Buku Siswa hlm. 177–178 (donat Ibu 7, donat Tika 6); hlm. 179 (bunga dan kupu-kupu)",
-          "objective": "Memasangkan benda satu-satu dengan menaruhnya di piring, lalu membaca lebihnya dari piring kosong atau benda yang tersisa.",
-          "mechanicDescription": "Tiga ronde (donat 7 dan 6, bunga 5 dan kupu-kupu 7, pesawat 9 dan mobil-mobilan 6). Siswa menyeret benda ke piring, memilih yang lebih banyak, lalu memilih lebihnya. Terakhir ucapkan selisihnya.",
-          "voiceGuide": "Seret benda ke piring, lalu pilih yang lebih banyak dan lebihnya."
+          "objective": "Pakai Maju dan Mundur. Memasangkan benda satu-satu dengan menaruhnya di piring, lalu membaca lebihnya dari piring kosong atau benda yang tersisa.",
+          "mechanicDescription": "Tiga ronde (donat 7 dan 6, bunga 5 dan kupu-kupu 7, pesawat 9 dan mobil-mobilan 6). Siswa menyeret benda ke piring, memilih yang lebih banyak, lalu memilih lebihnya. Terakhir ucapkan selisihnya. Terapkan Counting On/Back.",
+          "voiceGuide": "Maju dan Mundur. Seret benda ke piring, lalu pilih yang lebih banyak dan lebihnya."
         },
         {
           "gameId": "subA6-game-2",
@@ -297,9 +297,9 @@
           "gameType": "add-remove-equalize",
           "title": "Samakan Kelompok",
           "bookReference": "Buku Siswa hlm. 179 (kupu-kupu dan bunga); hlm. 181 (nomor 3 dan 5)",
-          "objective": "Menyamakan dua kelompok dengan menambah atau mengambil benda; banyak yang ditambah atau diambil adalah selisih.",
-          "mechanicDescription": "Tiga ronde (bunga ditambah 5 ke 7, pesawat diambil 9 ke 6, boneka Wei ditambah 5 ke 9). Siswa menekan tambah atau ambil lalu periksa, kemudian memilih selisihnya. Terakhir ucapkan selisihnya.",
-          "voiceGuide": "Tambah atau ambil sampai sama banyak, lalu pilih selisihnya."
+          "objective": "Pakai Pasangan sampai 20. Menyamakan dua kelompok dengan menambah atau mengambil benda; banyak yang ditambah atau diambil adalah selisih.",
+          "mechanicDescription": "Tiga ronde (bunga ditambah 5 ke 7, pesawat diambil 9 ke 6, boneka Wei ditambah 5 ke 9). Siswa menekan tambah atau ambil lalu periksa, kemudian memilih selisihnya. Terakhir ucapkan selisihnya. Terapkan Number Bond to 20.",
+          "voiceGuide": "Pasangan sampai 20. Tambah atau ambil sampai sama banyak, lalu pilih selisihnya."
         },
         {
           "gameId": "subA6-game-3",
@@ -308,9 +308,9 @@
           "gameType": "sort-into-rows",
           "title": "Dua Barisan Anak",
           "bookReference": "Buku Siswa hlm. 180 (Ayo Bermain: dua barisan laki-laki dan perempuan)",
-          "objective": "Membariskan anak laki-laki dan perempuan, membandingkan panjang barisan, dan mencari selisih banyaknya.",
-          "mechanicDescription": "Tiga ronde (6 dan 4, 3 dan 7, 8 dan 3). Siswa menyeret anak ke barisannya, memilih barisan yang lebih panjang, lalu memilih selisihnya. Terakhir ucapkan selisihnya.",
-          "voiceGuide": "Seret anak ke barisannya, lalu pilih barisan yang lebih panjang dan selisihnya."
+          "objective": "Pakai Menjadikan Sepuluh. Membariskan anak laki-laki dan perempuan, membandingkan panjang barisan, dan mencari selisih banyaknya.",
+          "mechanicDescription": "Tiga ronde (6 dan 4, 3 dan 7, 8 dan 3). Siswa menyeret anak ke barisannya, memilih barisan yang lebih panjang, lalu memilih selisihnya. Terakhir ucapkan selisihnya. Terapkan Make Ten.",
+          "voiceGuide": "Menjadikan Sepuluh. Seret anak ke barisannya, lalu pilih barisan yang lebih panjang dan selisihnya."
         },
         {
           "gameId": "subA6-game-4",
@@ -319,9 +319,9 @@
           "gameType": "drag-word-cards",
           "title": "Kalimat Selisih",
           "bookReference": "Buku Siswa hlm. 178–179 (kata lebihnya, kurangnya, beda atau selisih)",
-          "objective": "Melengkapi kalimat perbandingan dengan kata lebihnya, kurangnya, dan beda setelah mencari selisih.",
-          "mechanicDescription": "Tiga ronde (kupu-kupu 7 dan bunga 5, pesawat 9 dan mobil-mobilan 6, apel 8 dan mangga 4). Siswa memilih selisih, lalu menyeret tiga kartu kata ke kalimat yang tepat. Terakhir ucapkan selisihnya.",
-          "voiceGuide": "Pilih selisihnya, lalu seret kartu kata ke kalimatnya."
+          "objective": "Pakai Maju dan Mundur. Melengkapi kalimat perbandingan dengan kata lebihnya, kurangnya, dan beda setelah mencari selisih.",
+          "mechanicDescription": "Tiga ronde (kupu-kupu 7 dan bunga 5, pesawat 9 dan mobil-mobilan 6, apel 8 dan mangga 4). Siswa memilih selisih, lalu menyeret tiga kartu kata ke kalimat yang tepat. Terakhir ucapkan selisihnya. Terapkan Counting On/Back.",
+          "voiceGuide": "Maju dan Mundur. Pilih selisihnya, lalu seret kartu kata ke kalimatnya."
         },
         {
           "gameId": "subA6-game-5",
@@ -330,9 +330,9 @@
           "gameType": "circle-unpaired",
           "title": "Lingkari Lebihnya",
           "bookReference": "Buku Siswa hlm. 178 (garis pasangan donat); hlm. 180 (Ayo Berlatih nomor 1: kelereng merah 8, biru 7)",
-          "objective": "Menandai titik yang tidak punya pasangan sebagai lebihnya pada diagram titik polos.",
-          "mechanicDescription": "Tiga ronde (8 dan 7, 6 dan 8, 6 dan 9). Siswa mengetuk titik yang tidak tersambung garis untuk melingkarinya, lalu memilih selisihnya. Terakhir ucapkan selisihnya.",
-          "voiceGuide": "Lingkari titik yang tidak punya pasangan, lalu pilih selisihnya."
+          "objective": "Pakai Pasangan sampai 20. Menandai titik yang tidak punya pasangan sebagai lebihnya pada diagram titik polos.",
+          "mechanicDescription": "Tiga ronde (8 dan 7, 6 dan 8, 6 dan 9). Siswa mengetuk titik yang tidak tersambung garis untuk melingkarinya, lalu memilih selisihnya. Terakhir ucapkan selisihnya. Terapkan Number Bond to 20.",
+          "voiceGuide": "Pasangan sampai 20. Lingkari titik yang tidak punya pasangan, lalu pilih selisihnya."
         },
         {
           "gameId": "subA6-game-6",
@@ -341,9 +341,9 @@
           "gameType": "color-bar-gap",
           "title": "Samakan Batang",
           "bookReference": "Buku Siswa hlm. 181 (Ayo Berlatih nomor 2 dan 3); pengayaan model batang (bar model)",
-          "objective": "Mewarnai kotak pada batang yang pendek sampai sama panjang; banyak kotak yang diwarnai adalah selisih.",
-          "mechanicDescription": "Tiga ronde (9 dan 6, 5 dan 9, 7 dan 12). Siswa mewarnai kotak kosong pada batang pendek lalu menekan periksa, kemudian memilih selisihnya. Terakhir ucapkan selisihnya.",
-          "voiceGuide": "Warnai kotak sampai dua batang sama panjang, lalu pilih selisihnya."
+          "objective": "Pakai Menjadikan Sepuluh. Mewarnai kotak pada batang yang pendek sampai sama panjang; banyak kotak yang diwarnai adalah selisih.",
+          "mechanicDescription": "Tiga ronde (9 dan 6, 5 dan 9, 7 dan 12). Siswa mewarnai kotak kosong pada batang pendek lalu menekan periksa, kemudian memilih selisihnya. Terakhir ucapkan selisihnya. Terapkan Make Ten.",
+          "voiceGuide": "Menjadikan Sepuluh. Warnai kotak sampai dua batang sama panjang, lalu pilih selisihnya."
         },
         {
           "gameId": "subA6-game-7",
@@ -352,9 +352,9 @@
           "gameType": "mark-steps-number-line",
           "title": "Selisih di Garis Bilangan",
           "bookReference": "Buku Siswa hlm. 181 (nomor 5: boneka Wei 7, Kira 9); pengayaan garis bilangan",
-          "objective": "Menandai langkah dari bilangan kecil ke bilangan besar pada garis bilangan dan memilih kalimat pengurangan yang cocok.",
-          "mechanicDescription": "Tiga ronde (7 dan 9, 4 dan 10, 6 dan 13). Siswa mengetuk setiap langkah berurutan dari bendera kecil, lalu memilih kalimat pengurangan. Terakhir ucapkan selisihnya.",
-          "voiceGuide": "Tandai langkah dari bendera kecil ke besar, lalu pilih kalimat pengurangan."
+          "objective": "Pakai Maju dan Mundur. Menandai langkah dari bilangan kecil ke bilangan besar pada garis bilangan dan memilih kalimat pengurangan yang cocok.",
+          "mechanicDescription": "Tiga ronde (7 dan 9, 4 dan 10, 6 dan 13). Siswa mengetuk setiap langkah berurutan dari bendera kecil, lalu memilih kalimat pengurangan. Terakhir ucapkan selisihnya. Terapkan Counting On/Back.",
+          "voiceGuide": "Maju dan Mundur. Tandai langkah dari bendera kecil ke besar, lalu pilih kalimat pengurangan."
         },
         {
           "gameId": "subA6-game-8",
@@ -363,9 +363,9 @@
           "gameType": "bigger-minus-smaller",
           "title": "Besar Dikurangi Kecil",
           "bookReference": "Buku Siswa hlm. 178 (7 – 6 = 1); hlm. 179 (7 – 5 = 2)",
-          "objective": "Mencari selisih dengan memilih bilangan yang lebih besar lalu mengurangkannya dengan bilangan yang lebih kecil.",
-          "mechanicDescription": "Lima ronde (7 dan 5, 6 dan 9, 8 dan 7, 12 dan 15, 18 dan 13). Siswa mengetuk bilangan yang lebih besar, lalu memilih hasil pengurangannya. Terakhir ucapkan selisihnya.",
-          "voiceGuide": "Ketuk bilangan yang lebih besar, lalu pilih hasil pengurangannya."
+          "objective": "Pakai Pasangan sampai 20. Mencari selisih dengan memilih bilangan yang lebih besar lalu mengurangkannya dengan bilangan yang lebih kecil.",
+          "mechanicDescription": "Lima ronde (7 dan 5, 6 dan 9, 8 dan 7, 12 dan 15, 18 dan 13). Siswa mengetuk bilangan yang lebih besar, lalu memilih hasil pengurangannya. Terakhir ucapkan selisihnya. Terapkan Number Bond to 20.",
+          "voiceGuide": "Pasangan sampai 20. Ketuk bilangan yang lebih besar, lalu pilih hasil pengurangannya."
         },
         {
           "gameId": "subA6-game-9",
@@ -374,9 +374,9 @@
           "gameType": "choose-operation",
           "title": "Teka-Teki Lebihnya dan Kurangnya",
           "bookReference": "Buku Siswa hlm. 182 (nomor 7: Halim 2 lebihnya dari Malosi); Evaluasi hlm. 193 (kepik merah dan kuning)",
-          "objective": "Mencari bilangan yang belum diketahui: lebihnya berarti menambah, kurangnya berarti mengurangi.",
-          "mechanicDescription": "Lima ronde (5 dan 2 lebihnya, 11 dan 3 kurangnya, 5 dan 2 lebihnya, 4 dan 2 kurangnya, 15 dan 4 kurangnya). Siswa memilih tambah atau kurang lalu memilih hasilnya. Terakhir ucapkan hasilnya.",
-          "voiceGuide": "Pilih tambah atau kurang, lalu pilih hasilnya."
+          "objective": "Pakai Menjadikan Sepuluh. Mencari bilangan yang belum diketahui: lebihnya berarti menambah, kurangnya berarti mengurangi.",
+          "mechanicDescription": "Lima ronde (5 dan 2 lebihnya, 11 dan 3 kurangnya, 5 dan 2 lebihnya, 4 dan 2 kurangnya, 15 dan 4 kurangnya). Siswa memilih tambah atau kurang lalu memilih hasilnya. Terakhir ucapkan hasilnya. Terapkan Make Ten.",
+          "voiceGuide": "Menjadikan Sepuluh. Pilih tambah atau kurang, lalu pilih hasilnya."
         },
         {
           "gameId": "subA6-game-10",
@@ -385,9 +385,9 @@
           "gameType": "say-and-trace",
           "title": "Kanvas Guratan dan Suara",
           "bookReference": "Buku Siswa hlm. 181 (nomor 5: selisih banyak boneka Wei dan Kira)",
-          "objective": "Mencari selisih dua bilangan, mengucapkannya, dan menulis lambangnya.",
-          "mechanicDescription": "Dua ronde. Ronde 1 selisih 7 dan 9. Ronde 2 siswa memilih sendiri satu dari tiga pasangan bilangan. Siswa mengucapkan selisihnya lalu menggurat lambangnya.",
-          "voiceGuide": "Cari selisihnya, ucapkan, lalu guratkan lambangnya."
+          "objective": "Pakai Maju dan Mundur. Mencari selisih dua bilangan, mengucapkannya, dan menulis lambangnya.",
+          "mechanicDescription": "Dua ronde. Ronde 1 selisih 7 dan 9. Ronde 2 siswa memilih sendiri satu dari tiga pasangan bilangan. Siswa mengucapkan selisihnya lalu menggurat lambangnya. Terapkan Counting On/Back.",
+          "voiceGuide": "Maju dan Mundur. Cari selisihnya, ucapkan, lalu guratkan lambangnya."
         }
       ],
       "metodeLuar": [
@@ -431,7 +431,7 @@
       "id": "B",
       "codeTitle": "Sub-Bab B (Penjumlahan Kurang dari 20)",
       "fullTitle": "Sub-Bab B: Penjumlahan yang Hasilnya Kurang dari 20",
-      "targetDescription": "Siswa menjumlahkan bilangan satuan dengan satuan dan bilangan puluhan dengan satuan yang hasilnya kurang dari 20 dengan berbagai cara, yaitu menghitung maju, menghitung dengan 10, penjumlahan berulang, pasangan bilangan, dan nilai tempat, memilih cara yang paling mudah, serta menyelesaikan soal cerita penjumlahan.",
+      "targetDescription": "Siswa menjumlahkan bilangan satuan dengan satuan dan bilangan puluhan dengan satuan yang hasilnya kurang dari 20 dengan berbagai cara, yaitu menghitung maju, menghitung dengan 10, penjumlahan berulang, pasangan bilangan, dan nilai tempat, memilih cara yang paling mudah, serta menyelesaikan soal cerita penjumlahan. Memakai Maju dan Mundur, Pasangan sampai 20, Menjadikan Sepuluh.",
       "secondaryBg": "#DCFCE7",
       "secondaryBorder": "#16A34A",
       "secondaryText": "#14532D",
@@ -440,37 +440,37 @@
           "id": "B6-S1",
           "titleHint": "Berapa Jumlahnya?",
           "sceneType": "jumlah-donat",
-          "voiceNarration": "Ibu mempunyai tujuh donat. Tika mempunyai enam donat. Berapakah jumlah donat Ibu dan Tika? Jumlah berarti kedua kelompok digabungkan. Kita bisa menjumlahkan tujuh dan enam dengan berbagai cara. Ayo kita coba satu per satu. METODE LUAR. Maju dan Mundur: Jumlah dengan maju, kurang dengan mundur."
+          "voiceNarration": "Ibu mempunyai tujuh donat. Tika mempunyai enam donat. Berapakah jumlah donat Ibu dan Tika? Jumlah berarti kedua kelompok digabungkan. Kita bisa menjumlahkan tujuh dan enam dengan berbagai cara. Ayo kita coba satu per satu. Kita memakai cara Maju dan Mundur: Jumlah dengan maju, kurang dengan mundur."
         },
         {
           "id": "B6-S2",
           "titleHint": "Menghitung Maju",
           "sceneType": "menghitung-maju",
-          "voiceNarration": "Cara pertama adalah menghitung maju. Mulai dari bilangan tujuh, lalu kita hitung maju sebanyak enam kali. Delapan, sembilan, sepuluh, sebelas, dua belas, tiga belas. Jadi tujuh ditambah enam sama dengan tiga belas. Jumlah donat mereka adalah tiga belas. METODE LUAR. Pasangan sampai 20: Pasangan yang membentuk dua puluh."
+          "voiceNarration": "Cara pertama adalah menghitung maju. Mulai dari bilangan tujuh, lalu kita hitung maju sebanyak enam kali. Delapan, sembilan, sepuluh, sebelas, dua belas, tiga belas. Jadi tujuh ditambah enam sama dengan tiga belas. Jumlah donat mereka adalah tiga belas. Kita memakai cara Pasangan sampai 20: Pasangan yang membentuk dua puluh."
         },
         {
           "id": "B6-S3",
           "titleHint": "Menghitung dengan 10",
           "sceneType": "menghitung-dengan-sepuluh",
-          "voiceNarration": "Cara kedua adalah menghitung dengan sepuluh. Tujuh dan tiga menjadi sepuluh. Jadi enam kita pisah menjadi tiga dan tiga. Tujuh ditambah tiga sama dengan sepuluh. Sepuluh ditambah tiga sama dengan tiga belas. Jadi tujuh ditambah enam sama dengan tiga belas. METODE LUAR. Menjadikan Sepuluh: Isi sampai sepuluh dulu, lalu sisa."
+          "voiceNarration": "Cara kedua adalah menghitung dengan sepuluh. Tujuh dan tiga menjadi sepuluh. Jadi enam kita pisah menjadi tiga dan tiga. Tujuh ditambah tiga sama dengan sepuluh. Sepuluh ditambah tiga sama dengan tiga belas. Jadi tujuh ditambah enam sama dengan tiga belas. Kita memakai cara Menjadikan Sepuluh: Isi sampai sepuluh dulu, lalu sisa."
         },
         {
           "id": "B6-S4",
           "titleHint": "Penjumlahan Berulang",
           "sceneType": "penjumlahan-berulang",
-          "voiceNarration": "Cara ketiga adalah penjumlahan berulang. Enam dan enam menjadi dua belas. Tujuh kita pisah menjadi satu dan enam. Enam ditambah enam sama dengan dua belas, lalu dua belas ditambah satu sama dengan tiga belas. Jadi tujuh ditambah enam sama dengan tiga belas. METODE LUAR. Maju dan Mundur: Jumlah dengan maju, kurang dengan mundur."
+          "voiceNarration": "Cara ketiga adalah penjumlahan berulang. Enam dan enam menjadi dua belas. Tujuh kita pisah menjadi satu dan enam. Enam ditambah enam sama dengan dua belas, lalu dua belas ditambah satu sama dengan tiga belas. Jadi tujuh ditambah enam sama dengan tiga belas. Kita memakai cara Maju dan Mundur: Jumlah dengan maju, kurang dengan mundur."
         },
         {
           "id": "B6-S5",
           "titleHint": "Pensil Upe dan Malosi",
           "sceneType": "pensil-upe-malosi",
-          "voiceNarration": "Upe mempunyai dua belas pensil. Malosi mempunyai tiga pensil. Berapakah jumlah pensil Upe dan Malosi? Dua belas pensil Upe terdiri dari satu ikat berisi sepuluh pensil dan dua pensil lepas. Pensil Malosi ada tiga. Kita bisa menjumlahkan dua belas dan tiga dengan berbagai cara. METODE LUAR. Pasangan sampai 20: Pasangan yang membentuk dua puluh."
+          "voiceNarration": "Upe mempunyai dua belas pensil. Malosi mempunyai tiga pensil. Berapakah jumlah pensil Upe dan Malosi? Dua belas pensil Upe terdiri dari satu ikat berisi sepuluh pensil dan dua pensil lepas. Pensil Malosi ada tiga. Kita bisa menjumlahkan dua belas dan tiga dengan berbagai cara. Kita memakai cara Pasangan sampai 20: Pasangan yang membentuk dua puluh."
         },
         {
           "id": "B6-S6",
           "titleHint": "Pasangan dan Nilai Tempat",
           "sceneType": "pasangan-dan-nilai-tempat",
-          "voiceNarration": "Dua belas dipisah menjadi sepuluh dan dua. Dua ditambah tiga sama dengan lima. Sepuluh ditambah lima sama dengan lima belas. Dengan nilai tempat, dua belas adalah satu puluhan dan dua satuan. Kita tambahkan satuannya, dua ditambah tiga sama dengan lima. Puluhannya tetap satu. Jadi dua belas ditambah tiga sama dengan lima belas. METODE LUAR. Menjadikan Sepuluh: Isi sampai sepuluh dulu, lalu sisa."
+          "voiceNarration": "Dua belas dipisah menjadi sepuluh dan dua. Dua ditambah tiga sama dengan lima. Sepuluh ditambah lima sama dengan lima belas. Dengan nilai tempat, dua belas adalah satu puluhan dan dua satuan. Kita tambahkan satuannya, dua ditambah tiga sama dengan lima. Puluhannya tetap satu. Jadi dua belas ditambah tiga sama dengan lima belas. Kita memakai cara Menjadikan Sepuluh: Isi sampai sepuluh dulu, lalu sisa."
         }
       ],
       "mindMaps": [
@@ -492,24 +492,24 @@
         },
         {
           "stepNumber": 3,
-          "stepTitle": "3. Menghitung dengan 10",
-          "stepDesc": "Genapkan sepuluh dulu. Tujuh membutuhkan tiga untuk menjadi sepuluh, jadi enam dipisah menjadi tiga dan tiga. Sepuluh ditambah tiga sama dengan tiga belas.",
+          "stepTitle": "3. Counting On/Back",
+          "stepDesc": "Jumlah dengan maju, kurang dengan mundur.",
           "icon": "🔟",
           "flowFrom": "Menghitung dengan 10",
           "flowTo": "Penjumlahan berulang"
         },
         {
           "stepNumber": 4,
-          "stepTitle": "4. Penjumlahan Berulang",
-          "stepDesc": "Cari dua bilangan yang hampir kembar. Tujuh dipisah menjadi satu dan enam. Enam ditambah enam sama dengan dua belas, lalu ditambah satu menjadi tiga belas.",
+          "stepTitle": "4. Number Bond to 20",
+          "stepDesc": "Pasangan yang membentuk dua puluh.",
           "icon": "👯",
           "flowFrom": "Penjumlahan berulang",
           "flowTo": "Puluhan dengan satuan"
         },
         {
           "stepNumber": 5,
-          "stepTitle": "5. Puluhan dengan Satuan",
-          "stepDesc": "Untuk bilangan belasan, pisahkan puluhannya. Dua belas dipisah menjadi sepuluh dan dua. Dua ditambah tiga sama dengan lima, lalu sepuluh ditambah lima sama dengan lima belas.",
+          "stepTitle": "5. Make Ten",
+          "stepDesc": "Isi sampai sepuluh dulu, lalu sisa.",
           "icon": "🧩",
           "flowFrom": "Puluhan dengan satuan",
           "flowTo": "Nilai tempat"
@@ -524,7 +524,7 @@
         },
         {
           "stepNumber": 7,
-          "stepTitle": "7. METODE LUAR · Maju dan Mundur",
+          "stepTitle": "7.",
           "stepDesc": "Jumlah dengan maju, kurang dengan mundur.",
           "icon": "🌍",
           "flowFrom": "6",
@@ -532,7 +532,7 @@
         },
         {
           "stepNumber": 8,
-          "stepTitle": "8. METODE LUAR · Pasangan sampai 20",
+          "stepTitle": "8.",
           "stepDesc": "Pasangan yang membentuk dua puluh.",
           "icon": "🌍",
           "flowFrom": "7",
@@ -630,25 +630,25 @@
           "title": "Gabung Donat",
           "emoji": "🍩",
           "targetCount": 15,
-          "voiceGuide": "Mulai dari bilangan donat Ibu, lalu ketuk donat Tika satu per satu sambil menyebut bilangan berikutnya."
+          "voiceGuide": "Maju dan Mundur. Mulai dari bilangan donat Ibu, lalu ketuk donat Tika satu per satu sambil menyebut bilangan berikutnya."
         },
         {
           "title": "Isi Bingkai Sepuluh",
           "emoji": "🔲",
           "targetCount": 17,
-          "voiceGuide": "Seret donat Tika ke kotak kosong sampai bingkai penuh sepuluh, lalu hitung donat yang tersisa."
+          "voiceGuide": "Pasangan sampai 20. Seret donat Tika ke kotak kosong sampai bingkai penuh sepuluh, lalu hitung donat yang tersisa."
         },
         {
           "title": "Ikat dan Gabung Pensil",
           "emoji": "✏️",
           "targetCount": 19,
-          "voiceGuide": "Seret pensil Malosi ke pensil lepas Upe. Tambahkan satuan dengan satuan dulu, lalu tambahkan sepuluh."
+          "voiceGuide": "Menjadikan Sepuluh. Seret pensil Malosi ke pensil lepas Upe. Tambahkan satuan dengan satuan dulu, lalu tambahkan sepuluh."
         },
         {
           "title": "Kembar Kelereng",
           "emoji": "🔵",
           "targetCount": 13,
-          "voiceGuide": "Seret satu kelereng merah ke tempat pisah supaya dua baris kembar, lalu jumlahkan dan tambahkan yang dipisah."
+          "voiceGuide": "Maju dan Mundur. Seret satu kelereng merah ke tempat pisah supaya dua baris kembar, lalu jumlahkan dan tambahkan yang dipisah."
         }
       ],
       "pictorialSlides": [
@@ -657,21 +657,21 @@
           "diagramType": "number-line-hops",
           "numberA": 9,
           "numberB": 7,
-          "caption": "Mulai dari bilangan pertama, ketuk bilangan di sebelah kanan satu per satu sebanyak bilangan kedua, lalu pilih jumlahnya."
+          "caption": "Pakai Maju dan Mundur. Mulai dari bilangan pertama, ketuk bilangan di sebelah kanan satu per satu sebanyak bilangan kedua, lalu pilih jumlahnya."
         },
         {
           "title": "Bagan Pasangan",
           "diagramType": "number-bond",
           "numberA": 8,
           "numberB": 7,
-          "caption": "Pilih pasangan bilangan yang menggenapkan sepuluh atau memisahkan puluhan, lalu hitung langkah berikutnya."
+          "caption": "Pakai Pasangan sampai 20. Pilih pasangan bilangan yang menggenapkan sepuluh atau memisahkan puluhan, lalu hitung langkah berikutnya."
         },
         {
           "title": "Isi Tabel Nilai Tempat",
           "diagramType": "place-value-table",
           "numberA": 14,
           "numberB": 5,
-          "caption": "Isi kotak satuan dengan satuan ditambah satuan, lalu isi kotak puluhan."
+          "caption": "Pakai Menjadikan Sepuluh. Isi kotak satuan dengan satuan ditambah satuan, lalu isi kotak puluhan."
         }
       ],
       "abstractSlides": [
@@ -679,19 +679,19 @@
           "symbolLarge": "8 + 9 = 17",
           "wordLarge": "RANTAI SEPULUH",
           "mathNotation": "7 + 6 = 7 + 3 + 3 = 10 + 3 = 13",
-          "voiceReadout": "Genapkan sepuluh dulu. Tujuh membutuhkan tiga untuk menjadi sepuluh. Enam dipisah menjadi tiga dan tiga. Sepuluh ditambah tiga sama dengan tiga belas."
+          "voiceReadout": "Maju dan Mundur. Genapkan sepuluh dulu. Tujuh membutuhkan tiga untuk menjadi sepuluh. Enam dipisah menjadi tiga dan tiga. Sepuluh ditambah tiga sama dengan tiga belas."
         },
         {
           "symbolLarge": "12 + 3 = 16?",
           "wordLarge": "DETEKTIF SALAH HITUNG",
           "mathNotation": "2 + 3 = 5 • 10 + 5 = 15",
-          "voiceReadout": "Periksa setiap langkah. Dua belas dipisah menjadi sepuluh dan dua. Dua ditambah tiga sama dengan lima. Sepuluh ditambah lima sama dengan lima belas, bukan enam belas."
+          "voiceReadout": "Pasangan sampai 20. Periksa setiap langkah. Dua belas dipisah menjadi sepuluh dan dua. Dua ditambah tiga sama dengan lima. Sepuluh ditambah lima sama dengan lima belas, bukan enam belas."
         },
         {
           "symbolLarge": "17",
           "wordLarge": "TUJUH BELAS",
           "mathNotation": "12 + 5 = 17 • 2 + 13 = 15",
-          "voiceReadout": "Jumlahkan dua bilangan, ucapkan jumlahnya, lalu guratkan lambangnya di kanvas. Tujuh belas ditulis dengan angka satu dan angka tujuh."
+          "voiceReadout": "Menjadikan Sepuluh. Jumlahkan dua bilangan, ucapkan jumlahnya, lalu guratkan lambangnya di kanvas. Tujuh belas ditulis dengan angka satu dan angka tujuh."
         }
       ],
       "interactiveGames": [
@@ -702,9 +702,9 @@
           "gameType": "count-on-tap",
           "title": "Gabung Donat",
           "bookReference": "Buku Siswa hlm. 182 (Menghitung Maju: 7 + 6); hlm. 184 (12 + 3)",
-          "objective": "Menghitung maju: mulai dari bilangan pertama tanpa menghitung ulang, lalu menyebut bilangan berikutnya untuk tiap benda kedua.",
-          "mechanicDescription": "Tiga ronde (6 + 5, 7 + 6, 8 + 7). Siswa mengetuk donat Tika satu per satu sambil menyebut bilangan berikutnya, lalu memilih jumlahnya. Terakhir ucapkan jumlah semua donat.",
-          "voiceGuide": "Mulai dari bilangan pertama, ketuk donat satu per satu, lalu pilih jumlahnya."
+          "objective": "Pakai Maju dan Mundur. Menghitung maju: mulai dari bilangan pertama tanpa menghitung ulang, lalu menyebut bilangan berikutnya untuk tiap benda kedua.",
+          "mechanicDescription": "Tiga ronde (6 + 5, 7 + 6, 8 + 7). Siswa mengetuk donat Tika satu per satu sambil menyebut bilangan berikutnya, lalu memilih jumlahnya. Terakhir ucapkan jumlah semua donat. Terapkan Counting On/Back.",
+          "voiceGuide": "Maju dan Mundur. Mulai dari bilangan pertama, ketuk donat satu per satu, lalu pilih jumlahnya."
         },
         {
           "gameId": "subB6-game-2",
@@ -713,9 +713,9 @@
           "gameType": "drag-fill-ten-frame",
           "title": "Isi Bingkai Sepuluh",
           "bookReference": "Buku Siswa hlm. 183 (Menghitung dengan 10: 7 dan 3 menjadi 10)",
-          "objective": "Menggenapkan sepuluh: mengisi bingkai sepuluh dengan benda kedua, lalu menambahkan sisanya.",
-          "mechanicDescription": "Tiga ronde (7 + 6, 8 + 7, 9 + 8). Siswa menyeret donat ke kotak kosong sampai bingkai penuh, memilih banyak donat yang tersisa, lalu memilih sepuluh ditambah sisa. Terakhir ucapkan jumlah semua donat.",
-          "voiceGuide": "Seret donat ke kotak kosong sampai penuh, lalu hitung sisanya."
+          "objective": "Pakai Pasangan sampai 20. Menggenapkan sepuluh: mengisi bingkai sepuluh dengan benda kedua, lalu menambahkan sisanya.",
+          "mechanicDescription": "Tiga ronde (7 + 6, 8 + 7, 9 + 8). Siswa menyeret donat ke kotak kosong sampai bingkai penuh, memilih banyak donat yang tersisa, lalu memilih sepuluh ditambah sisa. Terakhir ucapkan jumlah semua donat. Terapkan Number Bond to 20.",
+          "voiceGuide": "Pasangan sampai 20. Seret donat ke kotak kosong sampai penuh, lalu hitung sisanya."
         },
         {
           "gameId": "subB6-game-3",
@@ -724,9 +724,9 @@
           "gameType": "drag-join-loose-pencils",
           "title": "Ikat dan Gabung Pensil",
           "bookReference": "Buku Siswa hlm. 184–185 (pensil Upe 12 dan pensil Malosi 3); hlm. 188 (nomor 4)",
-          "objective": "Menjumlahkan puluhan dengan satuan: menambahkan satuan dengan satuan dulu, lalu menambahkan satu ikat sepuluh.",
-          "mechanicDescription": "Tiga ronde (12 + 3, 13 + 4, 15 + 4). Siswa menyeret pensil Malosi ke pensil lepas Upe, memilih banyak pensil lepas, lalu memilih jumlah semuanya. Terakhir ucapkan jumlah semua pensil.",
-          "voiceGuide": "Seret pensil Malosi ke pensil lepas Upe, lalu hitung satuan dan jumlahnya."
+          "objective": "Pakai Menjadikan Sepuluh. Menjumlahkan puluhan dengan satuan: menambahkan satuan dengan satuan dulu, lalu menambahkan satu ikat sepuluh.",
+          "mechanicDescription": "Tiga ronde (12 + 3, 13 + 4, 15 + 4). Siswa menyeret pensil Malosi ke pensil lepas Upe, memilih banyak pensil lepas, lalu memilih jumlah semuanya. Terakhir ucapkan jumlah semua pensil. Terapkan Make Ten.",
+          "voiceGuide": "Menjadikan Sepuluh. Seret pensil Malosi ke pensil lepas Upe, lalu hitung satuan dan jumlahnya."
         },
         {
           "gameId": "subB6-game-4",
@@ -735,9 +735,9 @@
           "gameType": "split-extra-double",
           "title": "Kembar Kelereng",
           "bookReference": "Buku Siswa hlm. 183 (Penjumlahan Berulang: 7 + 6 = 1 + 12)",
-          "objective": "Penjumlahan berulang: memisahkan satu benda supaya dua baris kembar, menjumlahkan kembaran, lalu menambahkan yang dipisah.",
-          "mechanicDescription": "Tiga ronde (8 + 7, 6 + 5, 7 + 6). Siswa menyeret satu kelereng merah ke tempat pisah, memilih jumlah dua baris kembar, lalu menambahkan satu. Terakhir ucapkan jumlah semua kelereng.",
-          "voiceGuide": "Pisahkan satu kelereng, jumlahkan kembaran, lalu tambahkan satu."
+          "objective": "Pakai Maju dan Mundur. Penjumlahan berulang: memisahkan satu benda supaya dua baris kembar, menjumlahkan kembaran, lalu menambahkan yang dipisah.",
+          "mechanicDescription": "Tiga ronde (8 + 7, 6 + 5, 7 + 6). Siswa menyeret satu kelereng merah ke tempat pisah, memilih jumlah dua baris kembar, lalu menambahkan satu. Terakhir ucapkan jumlah semua kelereng. Terapkan Counting On/Back.",
+          "voiceGuide": "Maju dan Mundur. Pisahkan satu kelereng, jumlahkan kembaran, lalu tambahkan satu."
         },
         {
           "gameId": "subB6-game-5",
@@ -746,9 +746,9 @@
           "gameType": "number-line-hops",
           "title": "Loncat Maju",
           "bookReference": "Buku Siswa hlm. 182 dan 184 (menghitung maju); hlm. 187 (Ayo Berlatih nomor 1a)",
-          "objective": "Menghitung maju pada garis bilangan: melompat ke kanan sebanyak bilangan kedua dan mendarat di jumlah.",
-          "mechanicDescription": "Tiga ronde (7 + 6, 12 + 3, 9 + 7). Siswa mengetuk bilangan di sebelah kanan satu per satu lalu memilih bilangan tempat mendarat. Terakhir ucapkan jumlahnya.",
-          "voiceGuide": "Ketuk bilangan di kanan satu per satu, lalu pilih tempat mendarat."
+          "objective": "Pakai Pasangan sampai 20. Menghitung maju pada garis bilangan: melompat ke kanan sebanyak bilangan kedua dan mendarat di jumlah.",
+          "mechanicDescription": "Tiga ronde (7 + 6, 12 + 3, 9 + 7). Siswa mengetuk bilangan di sebelah kanan satu per satu lalu memilih bilangan tempat mendarat. Terakhir ucapkan jumlahnya. Terapkan Number Bond to 20.",
+          "voiceGuide": "Pasangan sampai 20. Ketuk bilangan di kanan satu per satu, lalu pilih tempat mendarat."
         },
         {
           "gameId": "subB6-game-6",
@@ -757,9 +757,9 @@
           "gameType": "number-bond-split",
           "title": "Bagan Pasangan",
           "bookReference": "Buku Siswa hlm. 183 (7 + 6 = 10 + 3); hlm. 185 (12 dipisah 10 dan 2); hlm. 187–188 (nomor 1b dan 3)",
-          "objective": "Memisahkan bilangan dengan bagan pasangan untuk menggenapkan sepuluh atau memisahkan puluhan dari satuan.",
-          "mechanicDescription": "Tiga ronde (7 + 6, 14 + 3, 8 + 7). Siswa memilih pasangan bilangan yang tepat lalu menghitung langkah berikutnya. Terakhir ucapkan jumlahnya.",
-          "voiceGuide": "Pilih pasangan bilangan yang tepat, lalu hitung langkahnya."
+          "objective": "Pakai Menjadikan Sepuluh. Memisahkan bilangan dengan bagan pasangan untuk menggenapkan sepuluh atau memisahkan puluhan dari satuan.",
+          "mechanicDescription": "Tiga ronde (7 + 6, 14 + 3, 8 + 7). Siswa memilih pasangan bilangan yang tepat lalu menghitung langkah berikutnya. Terakhir ucapkan jumlahnya. Terapkan Make Ten.",
+          "voiceGuide": "Menjadikan Sepuluh. Pilih pasangan bilangan yang tepat, lalu hitung langkahnya."
         },
         {
           "gameId": "subB6-game-7",
@@ -768,9 +768,9 @@
           "gameType": "fill-place-value-table",
           "title": "Isi Tabel Nilai Tempat",
           "bookReference": "Buku Siswa hlm. 185 (Nilai Tempat: 12 + 3); hlm. 188 (nomor 2: 13 + 4 dan 15 + 3)",
-          "objective": "Mengisi tabel puluhan dan satuan untuk penjumlahan: satuan dengan satuan, puluhan tetap.",
-          "mechanicDescription": "Tiga ronde (13 + 4, 15 + 3, 14 + 5). Siswa memilih angka untuk kotak satuan lalu kotak puluhan. Terakhir ucapkan jumlahnya.",
-          "voiceGuide": "Isi kotak satuan dulu, lalu kotak puluhan."
+          "objective": "Pakai Maju dan Mundur. Mengisi tabel puluhan dan satuan untuk penjumlahan: satuan dengan satuan, puluhan tetap.",
+          "mechanicDescription": "Tiga ronde (13 + 4, 15 + 3, 14 + 5). Siswa memilih angka untuk kotak satuan lalu kotak puluhan. Terakhir ucapkan jumlahnya. Terapkan Counting On/Back.",
+          "voiceGuide": "Maju dan Mundur. Isi kotak satuan dulu, lalu kotak puluhan."
         },
         {
           "gameId": "subB6-game-8",
@@ -779,9 +779,9 @@
           "gameType": "make-ten-chain",
           "title": "Rantai Sepuluh",
           "bookReference": "Buku Siswa hlm. 183 dan 187 (Ayo Berlatih nomor 1b: 6 + 5 dengan 10)",
-          "objective": "Menggenapkan sepuluh dengan angka: bagian yang melengkapi sepuluh, bagian sisanya, lalu sepuluh ditambah sisa.",
-          "mechanicDescription": "Lima ronde (7 + 6, 8 + 5, 9 + 7, 6 + 9, 8 + 9). Tiga langkah tiap ronde, siswa memilih angka yang tepat. Terakhir ucapkan jumlahnya.",
-          "voiceGuide": "Isi tiga langkah: pelengkap sepuluh, sisa, lalu jumlah."
+          "objective": "Pakai Pasangan sampai 20. Menggenapkan sepuluh dengan angka: bagian yang melengkapi sepuluh, bagian sisanya, lalu sepuluh ditambah sisa.",
+          "mechanicDescription": "Lima ronde (7 + 6, 8 + 5, 9 + 7, 6 + 9, 8 + 9). Tiga langkah tiap ronde, siswa memilih angka yang tepat. Terakhir ucapkan jumlahnya. Terapkan Number Bond to 20.",
+          "voiceGuide": "Pasangan sampai 20. Isi tiga langkah: pelengkap sepuluh, sisa, lalu jumlah."
         },
         {
           "gameId": "subB6-game-9",
@@ -790,9 +790,9 @@
           "gameType": "find-the-first-error",
           "title": "Detektif Salah Hitung",
           "bookReference": "Buku Siswa hlm. 185–188 (pasangan bilangan dan nilai tempat); Evaluasi hlm. 194 (nomor 4)",
-          "objective": "Memeriksa langkah penjumlahan dan menemukan kesalahan yang pertama, lalu menentukan hasil yang benar.",
-          "mechanicDescription": "Empat ronde (12 + 3, 7 + 6, 14 + 5, 8 + 7). Siswa mengetuk langkah yang salah, lalu memilih hasil yang benar. Terakhir ucapkan hasil yang benar.",
-          "voiceGuide": "Ketuk langkah pertama yang salah, lalu pilih hasil yang benar."
+          "objective": "Pakai Menjadikan Sepuluh. Memeriksa langkah penjumlahan dan menemukan kesalahan yang pertama, lalu menentukan hasil yang benar.",
+          "mechanicDescription": "Empat ronde (12 + 3, 7 + 6, 14 + 5, 8 + 7). Siswa mengetuk langkah yang salah, lalu memilih hasil yang benar. Terakhir ucapkan hasil yang benar. Terapkan Make Ten.",
+          "voiceGuide": "Menjadikan Sepuluh. Ketuk langkah pertama yang salah, lalu pilih hasil yang benar."
         },
         {
           "gameId": "subB6-game-10",
@@ -801,9 +801,9 @@
           "gameType": "say-and-trace",
           "title": "Kanvas Guratan dan Suara",
           "bookReference": "Buku Siswa hlm. 186 (Ayo Mencoba dan Ayo Bermain: kartu 2 dan 13); Evaluasi hlm. 194 (12 + 5)",
-          "objective": "Menjumlahkan dua bilangan dengan cara yang dipilih sendiri, mengucapkan jumlahnya, dan menulis lambangnya.",
-          "mechanicDescription": "Dua ronde. Ronde 1 12 + 5. Ronde 2 siswa memilih satu dari tiga pasangan (2 dan 13, 6 dan 12, 4 dan 15). Siswa mengucapkan jumlahnya lalu menggurat lambangnya.",
-          "voiceGuide": "Jumlahkan, ucapkan, lalu guratkan lambangnya."
+          "objective": "Pakai Maju dan Mundur. Menjumlahkan dua bilangan dengan cara yang dipilih sendiri, mengucapkan jumlahnya, dan menulis lambangnya.",
+          "mechanicDescription": "Dua ronde. Ronde 1 12 + 5. Ronde 2 siswa memilih satu dari tiga pasangan (2 dan 13, 6 dan 12, 4 dan 15). Siswa mengucapkan jumlahnya lalu menggurat lambangnya. Terapkan Counting On/Back.",
+          "voiceGuide": "Maju dan Mundur. Jumlahkan, ucapkan, lalu guratkan lambangnya."
         }
       ],
       "metodeLuar": [
@@ -847,7 +847,7 @@
       "id": "C",
       "codeTitle": "Sub-Bab C (Pengurangan Kurang dari 20)",
       "fullTitle": "Sub-Bab C: Pengurangan yang Hasilnya Kurang dari 20",
-      "targetDescription": "Siswa mengurangkan bilangan satuan dari bilangan belasan dengan hasil kurang dari 20 dengan berbagai cara, yaitu menghitung mundur, pasangan bilangan, dan nilai tempat, memeriksa hasil pengurangan dengan penjumlahan, memilih cara yang paling mudah, serta menyelesaikan soal cerita pengurangan.",
+      "targetDescription": "Siswa mengurangkan bilangan satuan dari bilangan belasan dengan hasil kurang dari 20 dengan berbagai cara, yaitu menghitung mundur, pasangan bilangan, dan nilai tempat, memeriksa hasil pengurangan dengan penjumlahan, memilih cara yang paling mudah, serta menyelesaikan soal cerita pengurangan. Memakai Maju dan Mundur, Pasangan sampai 20, Menjadikan Sepuluh.",
       "secondaryBg": "#FEF3C7",
       "secondaryBorder": "#D97706",
       "secondaryText": "#78350F",
@@ -856,37 +856,37 @@
           "id": "C6-S1",
           "titleHint": "Apel Tika Dimakan Ulat",
           "sceneType": "apel-dimakan-ulat",
-          "voiceNarration": "Masih ingatkah kamu cerita Ibu dan Tika? Ibu punya tujuh donat, Tika punya enam donat, dan selisihnya tujuh dikurangi enam sama dengan satu. Kita sudah belajar pengurangan satuan dengan satuan. Sekarang kita belajar pengurangan puluhan dengan satuan. Tika membeli lima belas apel. Ternyata tiga apel dimakan ulat. Berapakah sisa apel Tika yang masih bagus? Sisanya adalah lima belas dikurangi tiga. Kita bisa menghitungnya dengan beberapa cara. METODE LUAR. Maju dan Mundur: Jumlah dengan maju, kurang dengan mundur."
+          "voiceNarration": "Masih ingatkah kamu cerita Ibu dan Tika? Ibu punya tujuh donat, Tika punya enam donat, dan selisihnya tujuh dikurangi enam sama dengan satu. Kita sudah belajar pengurangan satuan dengan satuan. Sekarang kita belajar pengurangan puluhan dengan satuan. Tika membeli lima belas apel. Ternyata tiga apel dimakan ulat. Berapakah sisa apel Tika yang masih bagus? Sisanya adalah lima belas dikurangi tiga. Kita bisa menghitungnya dengan beberapa cara. Kita memakai cara Maju dan Mundur: Jumlah dengan maju, kurang dengan mundur."
         },
         {
           "id": "C6-S2",
           "titleHint": "Menghitung Mundur",
           "sceneType": "menghitung-mundur",
-          "voiceNarration": "Cara pertama adalah menghitung mundur. Mulai dari lima belas, lalu hitung mundur tiga kali. Empat belas, tiga belas, dua belas. Jadi lima belas dikurangi tiga sama dengan dua belas. Sisa apel Tika adalah dua belas. METODE LUAR. Pasangan sampai 20: Pasangan yang membentuk dua puluh."
+          "voiceNarration": "Cara pertama adalah menghitung mundur. Mulai dari lima belas, lalu hitung mundur tiga kali. Empat belas, tiga belas, dua belas. Jadi lima belas dikurangi tiga sama dengan dua belas. Sisa apel Tika adalah dua belas. Kita memakai cara Pasangan sampai 20: Pasangan yang membentuk dua puluh."
         },
         {
           "id": "C6-S3",
           "titleHint": "Pasangan Bilangan",
           "sceneType": "pasangan-bilangan-kurang",
-          "voiceNarration": "Cara kedua adalah pasangan bilangan. Lima belas bisa dipisah menjadi sepuluh dan lima. Lima dikurangi tiga sama dengan dua. Lalu sepuluh ditambah dua sama dengan dua belas. Jadi lima belas dikurangi tiga sama dengan dua belas. METODE LUAR. Menjadikan Sepuluh: Isi sampai sepuluh dulu, lalu sisa."
+          "voiceNarration": "Cara kedua adalah pasangan bilangan. Lima belas bisa dipisah menjadi sepuluh dan lima. Lima dikurangi tiga sama dengan dua. Lalu sepuluh ditambah dua sama dengan dua belas. Jadi lima belas dikurangi tiga sama dengan dua belas. Kita memakai cara Menjadikan Sepuluh: Isi sampai sepuluh dulu, lalu sisa."
         },
         {
           "id": "C6-S4",
           "titleHint": "Nilai Tempat",
           "sceneType": "nilai-tempat-kurang",
-          "voiceNarration": "Cara ketiga adalah nilai tempat. Lima belas adalah satu puluhan dan lima satuan. Kita kurangkan satuannya, lima dikurangi tiga sama dengan dua. Puluhannya tetap satu. Jadi lima belas dikurangi tiga sama dengan dua belas. Sisa apel Tika adalah dua belas. METODE LUAR. Maju dan Mundur: Jumlah dengan maju, kurang dengan mundur."
+          "voiceNarration": "Cara ketiga adalah nilai tempat. Lima belas adalah satu puluhan dan lima satuan. Kita kurangkan satuannya, lima dikurangi tiga sama dengan dua. Puluhannya tetap satu. Jadi lima belas dikurangi tiga sama dengan dua belas. Sisa apel Tika adalah dua belas. Kita memakai cara Maju dan Mundur: Jumlah dengan maju, kurang dengan mundur."
         },
         {
           "id": "C6-S5",
           "titleHint": "Bolu Kukus Ibu",
           "sceneType": "bolu-kukus-ibu",
-          "voiceNarration": "Ibu membeli tiga belas bolu kukus. Malosi memakan dua bolu kukus. Berapakah sisa bolu kukus Ibu sekarang? Tiga belas adalah satu kotak berisi sepuluh dan tiga bolu lepas. Malosi memakan dua bolu lepas, jadi tinggal satu bolu lepas. Sepuluh ditambah satu sama dengan sebelas. Jadi tiga belas dikurangi dua sama dengan sebelas. METODE LUAR. Pasangan sampai 20: Pasangan yang membentuk dua puluh."
+          "voiceNarration": "Ibu membeli tiga belas bolu kukus. Malosi memakan dua bolu kukus. Berapakah sisa bolu kukus Ibu sekarang? Tiga belas adalah satu kotak berisi sepuluh dan tiga bolu lepas. Malosi memakan dua bolu lepas, jadi tinggal satu bolu lepas. Sepuluh ditambah satu sama dengan sebelas. Jadi tiga belas dikurangi dua sama dengan sebelas. Kita memakai cara Pasangan sampai 20: Pasangan yang membentuk dua puluh."
         },
         {
           "id": "C6-S6",
           "titleHint": "Pensil Wei dan Kira",
           "sceneType": "pensil-wei-kira",
-          "voiceNarration": "Wei mempunyai sebelas pensil warna. Pensil warna Kira tiga kurangnya dari pensil warna Wei. Berapa banyak pensil warna Kira? Sebelas dikurangi tiga sama dengan delapan. Jadi pensil warna Kira ada delapan. Kalau pensil warna Kira dan Wei digabungkan, delapan ditambah sebelas sama dengan sembilan belas. METODE LUAR. Menjadikan Sepuluh: Isi sampai sepuluh dulu, lalu sisa."
+          "voiceNarration": "Wei mempunyai sebelas pensil warna. Pensil warna Kira tiga kurangnya dari pensil warna Wei. Berapa banyak pensil warna Kira? Sebelas dikurangi tiga sama dengan delapan. Jadi pensil warna Kira ada delapan. Kalau pensil warna Kira dan Wei digabungkan, delapan ditambah sebelas sama dengan sembilan belas. Kita memakai cara Menjadikan Sepuluh: Isi sampai sepuluh dulu, lalu sisa."
         }
       ],
       "mindMaps": [
@@ -908,24 +908,24 @@
         },
         {
           "stepNumber": 3,
-          "stepTitle": "3. Pasangan Bilangan",
-          "stepDesc": "Pisahkan belasan menjadi sepuluh dan satuan. Lima belas dipisah menjadi sepuluh dan lima. Lima dikurangi tiga sama dengan dua, lalu sepuluh ditambah dua sama dengan dua belas.",
+          "stepTitle": "3. Counting On/Back",
+          "stepDesc": "Jumlah dengan maju, kurang dengan mundur.",
           "icon": "🧩",
           "flowFrom": "Pasangan bilangan",
           "flowTo": "Nilai tempat"
         },
         {
           "stepNumber": 4,
-          "stepTitle": "4. Nilai Tempat",
-          "stepDesc": "Kurangkan satuan dengan satuan, sedangkan puluhannya tetap. Lima dikurangi tiga sama dengan dua, puluhan tetap satu, jadi hasilnya dua belas.",
+          "stepTitle": "4. Number Bond to 20",
+          "stepDesc": "Pasangan yang membentuk dua puluh.",
           "icon": "🏷️",
           "flowFrom": "Nilai tempat",
           "flowTo": "Cek dengan menambah"
         },
         {
           "stepNumber": 5,
-          "stepTitle": "5. Cek dengan Menambah",
-          "stepDesc": "Periksa hasil pengurangan dengan penjumlahan. Dua belas ditambah tiga sama dengan lima belas, jadi lima belas dikurangi tiga memang dua belas.",
+          "stepTitle": "5. Make Ten",
+          "stepDesc": "Isi sampai sepuluh dulu, lalu sisa.",
           "icon": "🔄",
           "flowFrom": "Cek dengan menambah",
           "flowTo": "Pilih cara termudah"
@@ -940,7 +940,7 @@
         },
         {
           "stepNumber": 7,
-          "stepTitle": "7. METODE LUAR · Maju dan Mundur",
+          "stepTitle": "7.",
           "stepDesc": "Jumlah dengan maju, kurang dengan mundur.",
           "icon": "🌍",
           "flowFrom": "6",
@@ -948,7 +948,7 @@
         },
         {
           "stepNumber": 8,
-          "stepTitle": "8. METODE LUAR · Pasangan sampai 20",
+          "stepTitle": "8.",
           "stepDesc": "Pasangan yang membentuk dua puluh.",
           "icon": "🌍",
           "flowFrom": "7",
@@ -1046,25 +1046,25 @@
           "title": "Apel Dimakan Ulat",
           "emoji": "🍎",
           "targetCount": 11,
-          "voiceGuide": "Ketuk apel yang dimakan ulat sambil mendengar bilangan yang menghitung mundur, lalu pilih sisa apel yang masih bagus."
+          "voiceGuide": "Maju dan Mundur. Ketuk apel yang dimakan ulat sambil mendengar bilangan yang menghitung mundur, lalu pilih sisa apel yang masih bagus."
         },
         {
           "title": "Kotak Bolu Kukus",
           "emoji": "🧁",
           "targetCount": 13,
-          "voiceGuide": "Seret bolu lepas ke perut Malosi sebanyak yang dimakan. Kotak sepuluh tidak disentuh. Hitung sisa lepas lalu tambahkan sepuluh."
+          "voiceGuide": "Pasangan sampai 20. Seret bolu lepas ke perut Malosi sebanyak yang dimakan. Kotak sepuluh tidak disentuh. Hitung sisa lepas lalu tambahkan sepuluh."
         },
         {
           "title": "Kembalikan Apel",
           "emoji": "🔄",
           "targetCount": 16,
-          "voiceGuide": "Seret apel yang dimakan ulat kembali ke keranjang, lalu hitung berapa apel mula-mula. Penjumlahan memeriksa pengurangan."
+          "voiceGuide": "Menjadikan Sepuluh. Seret apel yang dimakan ulat kembali ke keranjang, lalu hitung berapa apel mula-mula. Penjumlahan memeriksa pengurangan."
         },
         {
           "title": "Kartu Peran Bilangan",
           "emoji": "🃏",
           "targetCount": 13,
-          "voiceGuide": "Hitung benda di kelompok mula-mula, diambil, dan sisa. Lalu seret kartu angka ke kelompok yang cocok."
+          "voiceGuide": "Maju dan Mundur. Hitung benda di kelompok mula-mula, diambil, dan sisa. Lalu seret kartu angka ke kelompok yang cocok."
         }
       ],
       "pictorialSlides": [
@@ -1073,21 +1073,21 @@
           "diagramType": "number-line-back",
           "numberA": 19,
           "numberB": 5,
-          "caption": "Mulai dari bilangan pertama, ketuk bilangan di sebelah kiri satu per satu sebanyak bilangan yang dikurangkan, lalu pilih sisanya."
+          "caption": "Pakai Maju dan Mundur. Mulai dari bilangan pertama, ketuk bilangan di sebelah kiri satu per satu sebanyak bilangan yang dikurangkan, lalu pilih sisanya."
         },
         {
           "title": "Bagan Pasangan",
           "diagramType": "number-bond",
           "numberA": 19,
           "numberB": 4,
-          "caption": "Pisahkan belasan menjadi sepuluh dan satuan, kurangkan satuannya, lalu tambahkan sepuluh."
+          "caption": "Pakai Pasangan sampai 20. Pisahkan belasan menjadi sepuluh dan satuan, kurangkan satuannya, lalu tambahkan sepuluh."
         },
         {
           "title": "Isi Tabel Pengurangan",
           "diagramType": "place-value-table",
           "numberA": 18,
           "numberB": 8,
-          "caption": "Isi kotak satuan dengan satuan dikurangi satuan, lalu isi kotak puluhan. Kalau satuannya habis, tulis nol."
+          "caption": "Pakai Menjadikan Sepuluh. Isi kotak satuan dengan satuan dikurangi satuan, lalu isi kotak puluhan. Kalau satuannya habis, tulis nol."
         }
       ],
       "abstractSlides": [
@@ -1095,19 +1095,19 @@
           "symbolLarge": "18 – 3 = 15",
           "wordLarge": "RANTAI PENGURANGAN",
           "mathNotation": "17 = 10 + 7 • 7 – 4 = 3 • 10 + 3 = 13",
-          "voiceReadout": "Pisahkan belasan menjadi sepuluh dan satuan. Tujuh belas dipisah menjadi sepuluh dan tujuh. Tujuh dikurangi empat sama dengan tiga. Sepuluh ditambah tiga sama dengan tiga belas."
+          "voiceReadout": "Maju dan Mundur. Pisahkan belasan menjadi sepuluh dan satuan. Tujuh belas dipisah menjadi sepuluh dan tujuh. Tujuh dikurangi empat sama dengan tiga. Sepuluh ditambah tiga sama dengan tiga belas."
         },
         {
           "symbolLarge": "15 – 3 = 12",
           "wordLarge": "KELUARGA KALIMAT",
           "mathNotation": "12 + 3 = 15 • 3 + 12 = 15 • 15 – 12 = 3",
-          "voiceReadout": "Satu kalimat pengurangan punya keluarga kalimat yang benar. Dua belas ditambah tiga sama dengan lima belas. Tiga ditambah dua belas sama dengan lima belas. Lima belas dikurangi dua belas sama dengan tiga."
+          "voiceReadout": "Pasangan sampai 20. Satu kalimat pengurangan punya keluarga kalimat yang benar. Dua belas ditambah tiga sama dengan lima belas. Tiga ditambah dua belas sama dengan lima belas. Lima belas dikurangi dua belas sama dengan tiga."
         },
         {
           "symbolLarge": "12",
           "wordLarge": "DUA BELAS",
           "mathNotation": "15 – 3 = 12 • 17 – 3 = 14",
-          "voiceReadout": "Kurangkan dua bilangan, ucapkan hasilnya, lalu guratkan lambangnya di kanvas. Dua belas ditulis dengan angka satu dan angka dua."
+          "voiceReadout": "Menjadikan Sepuluh. Kurangkan dua bilangan, ucapkan hasilnya, lalu guratkan lambangnya di kanvas. Dua belas ditulis dengan angka satu dan angka dua."
         }
       ],
       "interactiveGames": [
@@ -1118,9 +1118,9 @@
           "gameType": "tap-count-back",
           "title": "Apel Dimakan Ulat",
           "bookReference": "Buku Siswa hlm. 189 (Tika membeli 15 apel, 3 dimakan ulat); hlm. 190 (Menghitung Mundur)",
-          "objective": "Menghitung mundur: mulai dari bilangan apel semula, lalu mundur satu untuk setiap apel yang dimakan ulat.",
-          "mechanicDescription": "Tiga ronde (15 – 3, 17 – 4, 16 – 5). Siswa mengetuk apel yang dimakan ulat sambil mendengar bilangan yang menghitung mundur, lalu memilih sisanya. Terakhir ucapkan sisa apel.",
-          "voiceGuide": "Ketuk apel yang dimakan ulat, lalu pilih sisanya."
+          "objective": "Pakai Maju dan Mundur. Menghitung mundur: mulai dari bilangan apel semula, lalu mundur satu untuk setiap apel yang dimakan ulat.",
+          "mechanicDescription": "Tiga ronde (15 – 3, 17 – 4, 16 – 5). Siswa mengetuk apel yang dimakan ulat sambil mendengar bilangan yang menghitung mundur, lalu memilih sisanya. Terakhir ucapkan sisa apel. Terapkan Counting On/Back.",
+          "voiceGuide": "Maju dan Mundur. Ketuk apel yang dimakan ulat, lalu pilih sisanya."
         },
         {
           "gameId": "subC6-game-2",
@@ -1129,9 +1129,9 @@
           "gameType": "drag-loose-from-ten-box",
           "title": "Kotak Bolu Kukus",
           "bookReference": "Buku Siswa hlm. 192 (Ayo Berlatih nomor 4: 13 bolu kukus, Malosi memakan 2); hlm. 190 (pasangan bilangan)",
-          "objective": "Pengurangan belasan: kotak sepuluh tidak disentuh, satuan lepas dikurangi, lalu ditambah sepuluh.",
-          "mechanicDescription": "Tiga ronde (13 – 2, 18 – 4, 19 – 6). Siswa menyeret bolu lepas ke perut Malosi, memilih bolu lepas yang tersisa, lalu memilih sepuluh ditambah sisa. Terakhir ucapkan sisa bolu kukus.",
-          "voiceGuide": "Seret bolu lepas ke perut Malosi, lalu hitung sisanya."
+          "objective": "Pakai Pasangan sampai 20. Pengurangan belasan: kotak sepuluh tidak disentuh, satuan lepas dikurangi, lalu ditambah sepuluh.",
+          "mechanicDescription": "Tiga ronde (13 – 2, 18 – 4, 19 – 6). Siswa menyeret bolu lepas ke perut Malosi, memilih bolu lepas yang tersisa, lalu memilih sepuluh ditambah sisa. Terakhir ucapkan sisa bolu kukus. Terapkan Number Bond to 20.",
+          "voiceGuide": "Pasangan sampai 20. Seret bolu lepas ke perut Malosi, lalu hitung sisanya."
         },
         {
           "gameId": "subC6-game-3",
@@ -1140,9 +1140,9 @@
           "gameType": "drag-back-check",
           "title": "Kembalikan Apel",
           "bookReference": "Buku Siswa hlm. 189–190; pengayaan hubungan penjumlahan dan pengurangan",
-          "objective": "Memeriksa pengurangan dengan penjumlahan: mengembalikan benda yang diambil dan menghitung bilangan mula-mula.",
-          "mechanicDescription": "Tiga ronde (sisa 12 dan 3 dimakan, sisa 13 dan 4 dimakan, sisa 11 dan 5 dimakan). Siswa menyeret apel yang dimakan ulat kembali ke keranjang lalu memilih banyak apel mula-mula. Terakhir ucapkan banyak apel mula-mula.",
-          "voiceGuide": "Seret apel kembali ke keranjang, lalu pilih mula-mula."
+          "objective": "Pakai Menjadikan Sepuluh. Memeriksa pengurangan dengan penjumlahan: mengembalikan benda yang diambil dan menghitung bilangan mula-mula.",
+          "mechanicDescription": "Tiga ronde (sisa 12 dan 3 dimakan, sisa 13 dan 4 dimakan, sisa 11 dan 5 dimakan). Siswa menyeret apel yang dimakan ulat kembali ke keranjang lalu memilih banyak apel mula-mula. Terakhir ucapkan banyak apel mula-mula. Terapkan Make Ten.",
+          "voiceGuide": "Menjadikan Sepuluh. Seret apel kembali ke keranjang, lalu pilih mula-mula."
         },
         {
           "gameId": "subC6-game-4",
@@ -1151,9 +1151,9 @@
           "gameType": "drag-number-roles",
           "title": "Kartu Peran Bilangan",
           "bookReference": "Buku Siswa hlm. 189 (15 apel, 3 dimakan, sisa 12); hlm. 192 (nomor 4)",
-          "objective": "Mengenali peran bilangan dalam pengurangan: mula-mula, diambil, dan sisa.",
-          "mechanicDescription": "Tiga ronde (15 – 3 apel, 13 – 2 bolu kukus, 18 – 5 pensil). Siswa menghitung benda di tiga kelompok lalu menyeret kartu angka ke kelompok yang cocok. Terakhir ucapkan banyak sisa.",
-          "voiceGuide": "Hitung benda, lalu seret kartu angka ke kelompok yang cocok."
+          "objective": "Pakai Maju dan Mundur. Mengenali peran bilangan dalam pengurangan: mula-mula, diambil, dan sisa.",
+          "mechanicDescription": "Tiga ronde (15 – 3 apel, 13 – 2 bolu kukus, 18 – 5 pensil). Siswa menghitung benda di tiga kelompok lalu menyeret kartu angka ke kelompok yang cocok. Terakhir ucapkan banyak sisa. Terapkan Counting On/Back.",
+          "voiceGuide": "Maju dan Mundur. Hitung benda, lalu seret kartu angka ke kelompok yang cocok."
         },
         {
           "gameId": "subC6-game-5",
@@ -1162,9 +1162,9 @@
           "gameType": "number-line-hops-back",
           "title": "Mundur di Garis Bilangan",
           "bookReference": "Buku Siswa hlm. 190–191 (Ayo Berlatih nomor 1: 15 – 4 dan 15 – 2 dengan menghitung mundur)",
-          "objective": "Menghitung mundur pada garis bilangan: melompat ke kiri sebanyak bilangan yang dikurangkan dan mendarat di sisa.",
-          "mechanicDescription": "Tiga ronde (15 – 3, 18 – 5, 19 – 5). Siswa mengetuk bilangan di sebelah kiri satu per satu lalu memilih tempat mendarat. Terakhir ucapkan sisanya.",
-          "voiceGuide": "Ketuk bilangan di kiri satu per satu, lalu pilih tempat mendarat."
+          "objective": "Pakai Pasangan sampai 20. Menghitung mundur pada garis bilangan: melompat ke kiri sebanyak bilangan yang dikurangkan dan mendarat di sisa.",
+          "mechanicDescription": "Tiga ronde (15 – 3, 18 – 5, 19 – 5). Siswa mengetuk bilangan di sebelah kiri satu per satu lalu memilih tempat mendarat. Terakhir ucapkan sisanya. Terapkan Number Bond to 20.",
+          "voiceGuide": "Pasangan sampai 20. Ketuk bilangan di kiri satu per satu, lalu pilih tempat mendarat."
         },
         {
           "gameId": "subC6-game-6",
@@ -1173,9 +1173,9 @@
           "gameType": "number-bond-split",
           "title": "Bagan Pasangan",
           "bookReference": "Buku Siswa hlm. 190–192 (Ayo Berlatih nomor 2: 17 – 4, 16 – 3, 19 – 6)",
-          "objective": "Memisahkan belasan menjadi sepuluh dan satuan dengan bagan pasangan, lalu mengurangkan satuannya.",
-          "mechanicDescription": "Tiga ronde (16 – 3, 18 – 6, 19 – 4). Siswa memilih pasangan bilangan yang tepat, mengurangkan satuannya, lalu menambahkan sepuluh. Terakhir ucapkan sisanya.",
-          "voiceGuide": "Pilih pasangan bilangan, kurangkan satuannya, lalu tambahkan sepuluh."
+          "objective": "Pakai Menjadikan Sepuluh. Memisahkan belasan menjadi sepuluh dan satuan dengan bagan pasangan, lalu mengurangkan satuannya.",
+          "mechanicDescription": "Tiga ronde (16 – 3, 18 – 6, 19 – 4). Siswa memilih pasangan bilangan yang tepat, mengurangkan satuannya, lalu menambahkan sepuluh. Terakhir ucapkan sisanya. Terapkan Make Ten.",
+          "voiceGuide": "Menjadikan Sepuluh. Pilih pasangan bilangan, kurangkan satuannya, lalu tambahkan sepuluh."
         },
         {
           "gameId": "subC6-game-7",
@@ -1184,9 +1184,9 @@
           "gameType": "fill-place-value-table",
           "title": "Isi Tabel Pengurangan",
           "bookReference": "Buku Siswa hlm. 190 (Nilai Tempat: 15 – 3); hlm. 192 (nomor 3: 16 – 4 dan 17 – 5)",
-          "objective": "Mengisi tabel puluhan dan satuan untuk pengurangan: satuan dikurangi satuan, puluhan tetap, dan satuan habis ditulis nol.",
-          "mechanicDescription": "Tiga ronde (16 – 4, 17 – 5, 18 – 8). Siswa memilih angka untuk kotak satuan lalu kotak puluhan. Terakhir ucapkan sisanya.",
-          "voiceGuide": "Isi kotak satuan dulu, lalu kotak puluhan."
+          "objective": "Pakai Maju dan Mundur. Mengisi tabel puluhan dan satuan untuk pengurangan: satuan dikurangi satuan, puluhan tetap, dan satuan habis ditulis nol.",
+          "mechanicDescription": "Tiga ronde (16 – 4, 17 – 5, 18 – 8). Siswa memilih angka untuk kotak satuan lalu kotak puluhan. Terakhir ucapkan sisanya. Terapkan Counting On/Back.",
+          "voiceGuide": "Maju dan Mundur. Isi kotak satuan dulu, lalu kotak puluhan."
         },
         {
           "gameId": "subC6-game-8",
@@ -1195,9 +1195,9 @@
           "gameType": "subtract-chain",
           "title": "Rantai Pengurangan",
           "bookReference": "Buku Siswa hlm. 190 dan 191–192 (pasangan bilangan)",
-          "objective": "Pengurangan dengan angka: belasan sebagai sepuluh dan satuan, satuan dikurangi, lalu sepuluh ditambah hasilnya.",
-          "mechanicDescription": "Lima ronde (17 – 4, 15 – 4, 19 – 7, 14 – 3, 18 – 3). Tiga langkah tiap ronde, siswa memilih angka yang tepat. Terakhir ucapkan sisanya.",
-          "voiceGuide": "Isi tiga langkah: satuan belasan, satuan dikurangi, lalu sepuluh ditambah hasilnya."
+          "objective": "Pakai Pasangan sampai 20. Pengurangan dengan angka: belasan sebagai sepuluh dan satuan, satuan dikurangi, lalu sepuluh ditambah hasilnya.",
+          "mechanicDescription": "Lima ronde (17 – 4, 15 – 4, 19 – 7, 14 – 3, 18 – 3). Tiga langkah tiap ronde, siswa memilih angka yang tepat. Terakhir ucapkan sisanya. Terapkan Number Bond to 20.",
+          "voiceGuide": "Pasangan sampai 20. Isi tiga langkah: satuan belasan, satuan dikurangi, lalu sepuluh ditambah hasilnya."
         },
         {
           "gameId": "subC6-game-9",
@@ -1206,9 +1206,9 @@
           "gameType": "fact-family-select",
           "title": "Keluarga Kalimat",
           "bookReference": "Buku Siswa hlm. 189–190; pengayaan hubungan penjumlahan dan pengurangan; Evaluasi hlm. 193–194",
-          "objective": "Menemukan kalimat penjumlahan dan pengurangan yang benar dan berhubungan dengan satu kalimat pengurangan.",
-          "mechanicDescription": "Empat ronde (15 – 3 = 12, 17 – 5 = 12, 13 – 2 = 11, 18 – 6 = 12). Siswa mengetuk semua kalimat yang benar dari enam kalimat lalu menekan periksa. Terakhir ucapkan sisanya.",
-          "voiceGuide": "Ketuk semua kalimat yang benar, lalu tekan periksa."
+          "objective": "Pakai Menjadikan Sepuluh. Menemukan kalimat penjumlahan dan pengurangan yang benar dan berhubungan dengan satu kalimat pengurangan.",
+          "mechanicDescription": "Empat ronde (15 – 3 = 12, 17 – 5 = 12, 13 – 2 = 11, 18 – 6 = 12). Siswa mengetuk semua kalimat yang benar dari enam kalimat lalu menekan periksa. Terakhir ucapkan sisanya. Terapkan Make Ten.",
+          "voiceGuide": "Menjadikan Sepuluh. Ketuk semua kalimat yang benar, lalu tekan periksa."
         },
         {
           "gameId": "subC6-game-10",
@@ -1217,9 +1217,9 @@
           "gameType": "say-and-trace",
           "title": "Kanvas Guratan dan Suara",
           "bookReference": "Buku Siswa hlm. 191 (Ayo Mencoba: kartu A 16, 17, 18 dan kartu B 2, 3, 4)",
-          "objective": "Mengurangkan dua bilangan dengan cara yang dipilih sendiri, mengucapkan hasilnya, dan menulis lambangnya.",
-          "mechanicDescription": "Dua ronde. Ronde 1 15 – 3. Ronde 2 siswa memilih satu kartu dari kelompok A (16, 17, 18) dan satu kartu dari kelompok B (2, 3, 4). Siswa mengucapkan hasilnya lalu menggurat lambangnya.",
-          "voiceGuide": "Kurangkan, ucapkan, lalu guratkan lambangnya."
+          "objective": "Pakai Maju dan Mundur. Mengurangkan dua bilangan dengan cara yang dipilih sendiri, mengucapkan hasilnya, dan menulis lambangnya.",
+          "mechanicDescription": "Dua ronde. Ronde 1 15 – 3. Ronde 2 siswa memilih satu kartu dari kelompok A (16, 17, 18) dan satu kartu dari kelompok B (2, 3, 4). Siswa mengucapkan hasilnya lalu menggurat lambangnya. Terapkan Counting On/Back.",
+          "voiceGuide": "Maju dan Mundur. Kurangkan, ucapkan, lalu guratkan lambangnya."
         }
       ],
       "metodeLuar": [

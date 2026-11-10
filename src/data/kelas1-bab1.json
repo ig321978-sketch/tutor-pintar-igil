@@ -15,7 +15,7 @@
       "id": "A",
       "codeTitle": "Sub-Bab A (0–10)",
       "fullTitle": "Sub-Bab A: Menghitung, Membaca, dan Menulis Bilangan (0 sampai 10)",
-      "targetDescription": "Siswa mampu menghitung banyak benda 1 sampai 10, mengenal bilangan 0 (nol) pada wadah kosong, membaca nama bilangannya, dan menuliskan lambang angkanya dengan benar.",
+      "targetDescription": "Siswa mampu menghitung banyak benda 1 sampai 10, mengenal bilangan 0 (nol) pada wadah kosong, membaca nama bilangannya, dan menuliskan lambang angkanya dengan benar. Memakai Korespondensi Satu-satu, Kardinalitas, Melihat Sekilas.",
       "secondaryBg": "#FEE2E2",
       "secondaryBorder": "#EF4444",
       "secondaryText": "#991B1B",
@@ -23,31 +23,31 @@
         {
           "id": "A-S1",
           "titleHint": "Gambar 1: Di Taman Bermain",
-          "voiceNarration": "Malosi, Kira, Upe, dan Wei bermain di taman bersama Igil si burung hantu. Mereka gembira sekali. Mereka bermain dengan aman dan tertib. METODE LUAR. Korespondensi Satu-satu: Sentuh tiap benda sekali sambil menghitung.",
+          "voiceNarration": "Malosi, Kira, Upe, dan Wei bermain di taman bersama Igil si burung hantu. Mereka gembira sekali. Mereka bermain dengan aman dan tertib. Kita memakai cara Korespondensi Satu-satu: Sentuh tiap benda sekali sambil menghitung.",
           "sceneType": "playground-play"
         },
         {
           "id": "A-S2",
           "titleHint": "Gambar 2: Jungkat-jungkit, Ayunan, Perosotan",
-          "voiceNarration": "Di taman ada satu jungkat-jungkit, dua ayunan, dan tiga perosotan. Kira mengelompokkan benda yang sama. Lalu Kira menghitungnya satu per satu. METODE LUAR. Kardinalitas: Bilangan terakhir menyatakan banyak seluruhnya.",
+          "voiceNarration": "Di taman ada satu jungkat-jungkit, dua ayunan, dan tiga perosotan. Kira mengelompokkan benda yang sama. Lalu Kira menghitungnya satu per satu. Kita memakai cara Kardinalitas: Bilangan terakhir menyatakan banyak seluruhnya.",
           "sceneType": "playground-rides"
         },
         {
           "id": "A-S3",
           "titleHint": "Gambar 3: Sepeda dan Kursi",
-          "voiceNarration": "Upe melihat empat sepeda dan lima kursi di taman. Upe menghitung sepedanya lebih dulu. Sesudah itu, Upe menghitung kursinya. METODE LUAR. Melihat Sekilas: Kenali banyak kecil tanpa menghitung satu-satu.",
+          "voiceNarration": "Upe melihat empat sepeda dan lima kursi di taman. Upe menghitung sepedanya lebih dulu. Sesudah itu, Upe menghitung kursinya. Kita memakai cara Melihat Sekilas: Kenali banyak kecil tanpa menghitung satu-satu.",
           "sceneType": "playground-bikes"
         },
         {
           "id": "A-S4",
           "titleHint": "Gambar 4: Balon, Buku, Layang-layang, Kelereng, Bola",
-          "voiceNarration": "Wei menghitung enam balon, tujuh buku, delapan layang-layang, sembilan kelereng, dan sepuluh bola. Kelompokkan benda yang sama lalu hitung sampai sepuluh. METODE LUAR. Korespondensi Satu-satu: Sentuh tiap benda sekali sambil menghitung.",
+          "voiceNarration": "Wei menghitung enam balon, tujuh buku, delapan layang-layang, sembilan kelereng, dan sepuluh bola. Kelompokkan benda yang sama lalu hitung sampai sepuluh. Kita memakai cara Korespondensi Satu-satu: Sentuh tiap benda sekali sambil menghitung.",
           "sceneType": "playground-toys"
         },
         {
           "id": "A-S5",
           "titleHint": "Gambar 5: Keranjang Kosong — Mengenal Bilangan 0 (Nol)",
-          "voiceNarration": "Igil menunjuk dua keranjang di taman. Satu keranjang berisi sepuluh bola dan satu keranjang di sebelahnya tidak ada isinya. Banyak isi keranjang yang kosong adalah nol. METODE LUAR. Kardinalitas: Bilangan terakhir menyatakan banyak seluruhnya.",
+          "voiceNarration": "Igil menunjuk dua keranjang di taman. Satu keranjang berisi sepuluh bola dan satu keranjang di sebelahnya tidak ada isinya. Banyak isi keranjang yang kosong adalah nol. Kita memakai cara Kardinalitas: Bilangan terakhir menyatakan banyak seluruhnya.",
           "sceneType": "empty-basket"
         }
       ],
@@ -70,31 +70,31 @@
         },
         {
           "stepNumber": 3,
-          "stepTitle": "3. Kenali Wadah Kosong (0)",
-          "stepDesc": "Lihat keranjang yang tidak ada isinya di taman. Jika tidak ada benda sama sekali, banyaknya adalah 0 dan dibaca nol.",
+          "stepTitle": "3. One-to-One",
+          "stepDesc": "Sentuh tiap benda sekali sambil menghitung.",
           "icon": "🧺",
           "flowFrom": "Keranjang tanpa isi",
           "flowTo": "Bilangan 0 (Nol)"
         },
         {
           "stepNumber": 4,
-          "stepTitle": "4. Sebutkan dan Tuliskan (0–10)",
-          "stepDesc": "Ucapkan nama bilangannya dari nol sampai sepuluh. Tuliskan lambang angkanya 0 sampai 10.",
+          "stepTitle": "4. Cardinality",
+          "stepDesc": "Bilangan terakhir menyatakan banyak seluruhnya.",
           "icon": "✏️",
           "flowFrom": "Hasil hitungan",
           "flowTo": "5"
         },
         {
           "stepNumber": 5,
-          "stepTitle": "5. METODE LUAR · Korespondensi Satu-satu",
-          "stepDesc": "Sentuh tiap benda sekali sambil menghitung.",
+          "stepTitle": "5. Subitizing",
+          "stepDesc": "Kenali banyak kecil tanpa menghitung satu-satu.",
           "icon": "🌍",
           "flowFrom": "4",
           "flowTo": "6"
         },
         {
           "stepNumber": 6,
-          "stepTitle": "6. METODE LUAR · Kardinalitas",
+          "stepTitle": "6.",
           "stepDesc": "Bilangan terakhir menyatakan banyak seluruhnya.",
           "icon": "🌍",
           "flowFrom": "5",
@@ -157,25 +157,25 @@
           "title": "Eksplorasi Benda Nyata 1: Kotak Apel Merah Kira",
           "emoji": "🍎",
           "targetCount": 3,
-          "voiceGuide": "Sentuh setiap buah apel merah untuk menghitungnya: satu, dua, tiga. Lalu tebalkan lambang bilangan tiga di kanvas samping."
+          "voiceGuide": "Korespondensi Satu-satu. Sentuh setiap buah apel merah untuk menghitungnya: satu, dua, tiga. Lalu tebalkan lambang bilangan tiga di kanvas samping."
         },
         {
           "title": "Eksplorasi Benda Nyata 2: Kotak Jeruk Kuning Upe",
           "emoji": "🍊",
           "targetCount": 5,
-          "voiceGuide": "Sentuh setiap buah jeruk kuning satu per satu: satu, dua, tiga, empat, lima. Ada lima buah jeruk."
+          "voiceGuide": "Kardinalitas. Sentuh setiap buah jeruk kuning satu per satu: satu, dua, tiga, empat, lima. Ada lima buah jeruk."
         },
         {
           "title": "Eksplorasi Benda Nyata 3: Kotak Pisang Emas Wei",
           "emoji": "🍌",
           "targetCount": 7,
-          "voiceGuide": "Sentuh setiap buah pisang emas sampai tujuh: lima di baris atas dan dua di baris bawah menjadi tujuh pisang."
+          "voiceGuide": "Melihat Sekilas. Sentuh setiap buah pisang emas sampai tujuh: lima di baris atas dan dua di baris bawah menjadi tujuh pisang."
         },
         {
           "title": "Eksplorasi Benda Nyata 4: Keranjang Kosong di Taman (Bilangan 0)",
           "emoji": "⚽",
           "targetCount": 0,
-          "voiceGuide": "Lihat keranjang di taman yang tidak ada isinya. Karena kosong tanpa bola, banyaknya adalah nol. Tuliskan angka nol di kanvas."
+          "voiceGuide": "Korespondensi Satu-satu. Lihat keranjang di taman yang tidak ada isinya. Karena kosong tanpa bola, banyaknya adalah nol. Tuliskan angka nol di kanvas."
         }
       ],
       "pictorialSlides": [
@@ -184,28 +184,28 @@
           "diagramType": "ten-frame",
           "numberA": 4,
           "numberB": 0,
-          "caption": "4 titik hijau menempati 4 kotak pada baris pertama dan 0 titik pada baris kedua Bingkai 10."
+          "caption": "Pakai Korespondensi Satu-satu. 4 titik hijau menempati 4 kotak pada baris pertama dan 0 titik pada baris kedua Bingkai 10."
         },
         {
           "title": "Diagram 2: Bingkai 10 (Ten-Frame) Bilangan 6",
           "diagramType": "ten-frame",
           "numberA": 6,
           "numberB": 0,
-          "caption": "6 titik mengisi Bingkai 10 dan 0 titik berada di luar bingkai."
+          "caption": "Pakai Kardinalitas. 6 titik mengisi Bingkai 10 dan 0 titik berada di luar bingkai."
         },
         {
           "title": "Diagram 3: Perbandingan Petak Bilangan 8 dan 5",
           "diagramType": "comparison",
           "numberA": 8,
           "numberB": 5,
-          "caption": "Diagram petak memudahkan kita melihat baris 8 petak dibanding baris 5 petak."
+          "caption": "Pakai Melihat Sekilas. Diagram petak memudahkan kita melihat baris 8 petak dibanding baris 5 petak."
         },
         {
           "title": "Diagram 4: Bingkai 10 Kosong (Bilangan 0)",
           "diagramType": "ten-frame",
           "numberA": 0,
           "numberB": 0,
-          "caption": "0 titik pada baris atas dan 0 titik pada baris bawah Bingkai 10 mewakili bilangan 0 (nol)."
+          "caption": "Pakai Korespondensi Satu-satu. 0 titik pada baris atas dan 0 titik pada baris bawah Bingkai 10 mewakili bilangan 0 (nol)."
         }
       ],
       "abstractSlides": [
@@ -213,25 +213,25 @@
           "symbolLarge": "0",
           "wordLarge": "NOL (KOSONG)",
           "mathNotation": "0 = Nol (Tidak ada benda di keranjang)",
-          "voiceReadout": "Lambang bilangan nol dibaca nol. Artinya tidak ada benda di dalam keranjang."
+          "voiceReadout": "Korespondensi Satu-satu. Lambang bilangan nol dibaca nol. Artinya tidak ada benda di dalam keranjang."
         },
         {
           "symbolLarge": "4  &  6",
           "wordLarge": "EMPAT  &  ENAM",
           "mathNotation": "4 = Empat   |   6 = Enam",
-          "voiceReadout": "Lambang bilangan empat dibaca empat. Lambang bilangan enam dibaca enam."
+          "voiceReadout": "Kardinalitas. Lambang bilangan empat dibaca empat. Lambang bilangan enam dibaca enam."
         },
         {
           "symbolLarge": "8  &  9",
           "wordLarge": "DELAPAN  &  SEMBILAN",
           "mathNotation": "8 = Delapan   |   9 = Sembilan",
-          "voiceReadout": "Lambang bilangan delapan dibaca delapan. Lambang bilangan sembilan dibaca sembilan."
+          "voiceReadout": "Melihat Sekilas. Lambang bilangan delapan dibaca delapan. Lambang bilangan sembilan dibaca sembilan."
         },
         {
           "symbolLarge": "10",
           "wordLarge": "SEPULUH",
           "mathNotation": "10 = Sepuluh (5 dan 5)",
-          "voiceReadout": "Lambang bilangan sepuluh terdiri dari angka satu dan nol, dibaca sepuluh."
+          "voiceReadout": "Korespondensi Satu-satu. Lambang bilangan sepuluh terdiri dari angka satu dan nol, dibaca sepuluh."
         }
       ],
       "metodeLuar": [
@@ -269,13 +269,14 @@
             "Concrete"
           ]
         }
-      ]
+      ],
+      "interactiveGames": []
     },
     "B": {
       "id": "B",
       "codeTitle": "Sub-Bab B (Banding Benda)",
       "fullTitle": "Sub-Bab B: Membandingkan Banyak Benda",
-      "targetDescription": "Siswa mampu membandingkan dua kelompok benda dengan memasangkan satu per satu, lalu menyebut sama banyak, lebih banyak, atau lebih sedikit, dan memilih tanda > < =.",
+      "targetDescription": "Siswa mampu membandingkan dua kelompok benda dengan memasangkan satu per satu, lalu menyebut sama banyak, lebih banyak, atau lebih sedikit, dan memilih tanda > < =. Memakai Nama Bilangan, Bingkai Sepuluh, Garis Bilangan Kecil.",
       "secondaryBg": "#FEF3C7",
       "secondaryBorder": "#F59E0B",
       "secondaryText": "#92400E",
@@ -283,31 +284,31 @@
         {
           "id": "B-S1",
           "titleHint": "Gambar 1: Sepeda dan Burung",
-          "voiceNarration": "Upe berbaris di taman bersama tiga sepeda. Tiga burung hinggap satu di setiap sepeda. Tidak ada burung yang menganggur dan tidak ada sepeda yang kosong. Sepeda dan burung sama banyak. METODE LUAR. Nama Bilangan: Ucapkan dan tulis lambang 1–10.",
+          "voiceNarration": "Upe berbaris di taman bersama tiga sepeda. Tiga burung hinggap satu di setiap sepeda. Tidak ada burung yang menganggur dan tidak ada sepeda yang kosong. Sepeda dan burung sama banyak. Kita memakai cara Nama Bilangan: Ucapkan dan tulis lambang 1–10.",
           "sceneType": "banding-sepeda-burung"
         },
         {
           "id": "B-S2",
           "titleHint": "Gambar 2: Balon untuk Kursi",
-          "voiceNarration": "Wei menata enam kursi di bawah pohon dan mengikat satu balon di setiap kursi. Sesudah empat kursi punya balon, balonnya habis dan dua kursi masih kosong. Jadi kursi lebih banyak dari balon, dan balon lebih sedikit dari kursi. METODE LUAR. Bingkai Sepuluh: Isi bingkai untuk melihat banyak.",
+          "voiceNarration": "Wei menata enam kursi di bawah pohon dan mengikat satu balon di setiap kursi. Sesudah empat kursi punya balon, balonnya habis dan dua kursi masih kosong. Jadi kursi lebih banyak dari balon, dan balon lebih sedikit dari kursi. Kita memakai cara Bingkai Sepuluh: Isi bingkai untuk melihat banyak.",
           "sceneType": "banding-kursi-balon"
         },
         {
           "id": "B-S3",
           "titleHint": "Gambar 3: Kelereng Kira dan Malosi",
-          "voiceNarration": "Kira dan Malosi bermain kelereng. Kira menjajarkan lima kelerengnya dan Malosi menjajarkan delapan kelerengnya. Saat dipasangkan satu per satu, kelereng Malosi punya sisa tiga. Malosi punya lebih banyak dan Kira punya lebih sedikit. METODE LUAR. Garis Bilangan Kecil: Urutan bilangan di garis.",
+          "voiceNarration": "Kira dan Malosi bermain kelereng. Kira menjajarkan lima kelerengnya dan Malosi menjajarkan delapan kelerengnya. Saat dipasangkan satu per satu, kelereng Malosi punya sisa tiga. Malosi punya lebih banyak dan Kira punya lebih sedikit. Kita memakai cara Garis Bilangan Kecil: Urutan bilangan di garis.",
           "sceneType": "banding-kelereng"
         },
         {
           "id": "B-S4",
           "titleHint": "Gambar 4: Jangan Tertipu Panjang Barisan",
-          "voiceNarration": "Upe punya lima bola yang dirapatkan jadi barisan pendek. Wei juga punya lima bola yang direnggangkan jadi barisan panjang. Igil mengajak memasangkan bola satu per satu. Semua bola punya pasangan, jadi keduanya sama banyak. METODE LUAR. Nama Bilangan: Ucapkan dan tulis lambang 1–10.",
+          "voiceNarration": "Upe punya lima bola yang dirapatkan jadi barisan pendek. Wei juga punya lima bola yang direnggangkan jadi barisan panjang. Igil mengajak memasangkan bola satu per satu. Semua bola punya pasangan, jadi keduanya sama banyak. Kita memakai cara Nama Bilangan: Ucapkan dan tulis lambang 1–10.",
           "sceneType": "banding-bola-renggang"
         },
         {
           "id": "B-S5",
           "titleHint": "Gambar 5: Pensil Kira dan Malosi",
-          "voiceNarration": "Kira mempunyai empat pensil warna dan Malosi mempunyai lima pensil warna. Mereka memasangkan pensil itu satu per satu di meja. Pensil Malosi masih bersisa satu, sehingga lima pensil lebih banyak dari empat pensil. METODE LUAR. Bingkai Sepuluh: Isi bingkai untuk melihat banyak.",
+          "voiceNarration": "Kira mempunyai empat pensil warna dan Malosi mempunyai lima pensil warna. Mereka memasangkan pensil itu satu per satu di meja. Pensil Malosi masih bersisa satu, sehingga lima pensil lebih banyak dari empat pensil. Kita memakai cara Bingkai Sepuluh: Isi bingkai untuk melihat banyak.",
           "sceneType": "banding-kelereng"
         }
       ],
@@ -330,31 +331,31 @@
         },
         {
           "stepNumber": 3,
-          "stepTitle": "3. Lihat Sisanya",
-          "stepDesc": "Tidak ada sisa berarti sama banyak. Kelompok yang punya sisa lebih banyak. Kelompok yang habis lebih sedikit.",
+          "stepTitle": "3. Number Names",
+          "stepDesc": "Ucapkan dan tulis lambang 1–10.",
           "icon": "🔎",
           "flowFrom": "Pasangan dan Sisa",
           "flowTo": "Sama, Lebih Banyak, Lebih Sedikit"
         },
         {
           "stepNumber": 4,
-          "stepTitle": "4. Pilih Tanda Buaya",
-          "stepDesc": "Mulut buaya selalu menghadap bilangan yang lebih banyak. Kalau sama banyak, buaya tidak memilih.",
+          "stepTitle": "4. Ten Frame",
+          "stepDesc": "Isi bingkai untuk melihat banyak.",
           "icon": "🐊",
           "flowFrom": "Sama, Lebih Banyak, Lebih Sedikit",
           "flowTo": "5"
         },
         {
           "stepNumber": 5,
-          "stepTitle": "5. METODE LUAR · Nama Bilangan",
-          "stepDesc": "Ucapkan dan tulis lambang 1–10.",
+          "stepTitle": "5. Number Line Mini",
+          "stepDesc": "Urutan bilangan di garis.",
           "icon": "🌍",
           "flowFrom": "4",
           "flowTo": "6"
         },
         {
           "stepNumber": 6,
-          "stepTitle": "6. METODE LUAR · Bingkai Sepuluh",
+          "stepTitle": "6.",
           "stepDesc": "Isi bingkai untuk melihat banyak.",
           "icon": "🌍",
           "flowFrom": "5",
@@ -417,25 +418,25 @@
           "title": "Eksplorasi 1: Kelompok Sama Banyak (3 Sepeda dan 3 Burung)",
           "emoji": "🚲",
           "targetCount": 3,
-          "voiceGuide": "Tiga sepeda berpasangan pas dengan tiga burung tanpa sisa. Artinya kedua kelompok sama banyak."
+          "voiceGuide": "Nama Bilangan. Tiga sepeda berpasangan pas dengan tiga burung tanpa sisa. Artinya kedua kelompok sama banyak."
         },
         {
           "title": "Eksplorasi 2: Memasangkan 6 Kursi dengan 4 Balon (Lebih Banyak)",
           "emoji": "🪑",
           "targetCount": 6,
-          "voiceGuide": "Enam kursi lebih banyak dari empat balon karena ada dua kursi yang tidak mendapat pasangan balon."
+          "voiceGuide": "Bingkai Sepuluh. Enam kursi lebih banyak dari empat balon karena ada dua kursi yang tidak mendapat pasangan balon."
         },
         {
           "title": "Eksplorasi 3: Memasangkan 5 Kelereng Kira dan 8 Kelereng Malosi (Lebih Sedikit)",
           "emoji": "🔮",
           "targetCount": 5,
-          "voiceGuide": "Lima kelereng Kira habis lebih dulu saat dipasangkan dengan delapan kelereng Malosi. Jadi lima lebih sedikit dari delapan."
+          "voiceGuide": "Garis Bilangan Kecil. Lima kelereng Kira habis lebih dulu saat dipasangkan dengan delapan kelereng Malosi. Jadi lima lebih sedikit dari delapan."
         },
         {
           "title": "Eksplorasi 4: Memasangkan 4 Pensil Kira dan 5 Pensil Malosi",
           "emoji": "🖍️",
           "targetCount": 4,
-          "voiceGuide": "Empat pensil Kira berpasangan dengan empat pensil Malosi dan menyisakan satu pensil milik Malosi."
+          "voiceGuide": "Nama Bilangan. Empat pensil Kira berpasangan dengan empat pensil Malosi dan menyisakan satu pensil milik Malosi."
         }
       ],
       "pictorialSlides": [
@@ -444,28 +445,28 @@
           "diagramType": "comparison",
           "numberA": 3,
           "numberB": 3,
-          "caption": "Baris pertama berisi 3 petak dan baris kedua berisi 3 petak sehingga sama banyak."
+          "caption": "Pakai Nama Bilangan. Baris pertama berisi 3 petak dan baris kedua berisi 3 petak sehingga sama banyak."
         },
         {
           "title": "Diagram 2: Perbandingan Lebih Banyak (7 dan 3)",
           "diagramType": "comparison",
           "numberA": 7,
           "numberB": 3,
-          "caption": "Baris pertama berisi 7 petak dan baris kedua berisi 3 petak, sehingga 7 lebih banyak dari 3."
+          "caption": "Pakai Bingkai Sepuluh. Baris pertama berisi 7 petak dan baris kedua berisi 3 petak, sehingga 7 lebih banyak dari 3."
         },
         {
           "title": "Diagram 3: Perbandingan Lebih Sedikit (4 dan 8)",
           "diagramType": "comparison",
           "numberA": 4,
           "numberB": 8,
-          "caption": "Baris pertama berisi 4 petak dan baris kedua berisi 8 petak, sehingga 4 lebih sedikit dari 8."
+          "caption": "Pakai Garis Bilangan Kecil. Baris pertama berisi 4 petak dan baris kedua berisi 8 petak, sehingga 4 lebih sedikit dari 8."
         },
         {
           "title": "Diagram 4: Perbandingan Pensil Kira dan Malosi (4 dan 5)",
           "diagramType": "comparison",
           "numberA": 4,
           "numberB": 5,
-          "caption": "Baris 4 petak milik Kira lebih sedikit satu petak dibandingkan baris 5 petak milik Malosi."
+          "caption": "Pakai Nama Bilangan. Baris 4 petak milik Kira lebih sedikit satu petak dibandingkan baris 5 petak milik Malosi."
         }
       ],
       "abstractSlides": [
@@ -473,25 +474,25 @@
           "symbolLarge": "7  >  4",
           "wordLarge": "7 LEBIH BANYAK DARI 4",
           "mathNotation": "7 > 4   |   Mulut buaya menghadap 7",
-          "voiceReadout": "Tujuh lebih banyak dari empat."
+          "voiceReadout": "Nama Bilangan. Tujuh lebih banyak dari empat."
         },
         {
           "symbolLarge": "4  <  8",
           "wordLarge": "4 LEBIH SEDIKIT DARI 8",
           "mathNotation": "4 < 8   |   Mulut buaya menghadap 8",
-          "voiceReadout": "Empat lebih sedikit dari delapan."
+          "voiceReadout": "Bingkai Sepuluh. Empat lebih sedikit dari delapan."
         },
         {
           "symbolLarge": "6  =  6",
           "wordLarge": "6 SAMA BANYAK DENGAN 6",
           "mathNotation": "6 = 6   |   Kedua kelompok sama banyak",
-          "voiceReadout": "Enam sama dengan enam."
+          "voiceReadout": "Garis Bilangan Kecil. Enam sama dengan enam."
         },
         {
           "symbolLarge": "5  >  4",
           "wordLarge": "5 LEBIH BANYAK DARI 4",
           "mathNotation": "5 > 4   |   4 < 5",
-          "voiceReadout": "Lima lebih banyak dari empat, dan empat lebih sedikit dari lima."
+          "voiceReadout": "Nama Bilangan. Lima lebih banyak dari empat, dan empat lebih sedikit dari lima."
         }
       ],
       "metodeLuar": [
@@ -528,13 +529,14 @@
             "Infografis"
           ]
         }
-      ]
+      ],
+      "interactiveGames": []
     },
     "C": {
       "id": "C",
       "codeTitle": "Sub-Bab C (Maju-Mundur)",
       "fullTitle": "Sub-Bab C: Menghitung Maju dan Mundur",
-      "targetDescription": "Siswa mampu menghitung maju dari bilangan kecil ke besar (1 sampai 10), menghitung mundur dari bilangan besar ke kecil (10 sampai 1), serta melengkapi urutan bilangan yang hilang.",
+      "targetDescription": "Siswa mampu menghitung maju dari bilangan kecil ke besar (1 sampai 10), menghitung mundur dari bilangan besar ke kecil (10 sampai 1), serta melengkapi urutan bilangan yang hilang. Memakai Benda Nyata Dulu, Gambar Representasi, Simbol Matematika.",
       "secondaryBg": "#DCFCE7",
       "secondaryBorder": "#22C55E",
       "secondaryText": "#166534",
@@ -542,31 +544,31 @@
         {
           "id": "C-S1",
           "titleHint": "Gambar 1: Upe Naik Tangga (Menghitung Maju)",
-          "voiceNarration": "Upe naik tangga satu per satu. Upe menghitung maju mulai dari satu: satu, dua, tiga, empat, sampai sepuluh. Saat menghitung maju, kita mulai dari bilangan kecil ke besar dan setiap naik satu tangga bilangannya bertambah satu. METODE LUAR. Benda Nyata Dulu: Pelajari membilang mulai dari benda yang bisa dipegang.",
+          "voiceNarration": "Upe naik tangga satu per satu. Upe menghitung maju mulai dari satu: satu, dua, tiga, empat, sampai sepuluh. Saat menghitung maju, kita mulai dari bilangan kecil ke besar dan setiap naik satu tangga bilangannya bertambah satu. Kita memakai cara Benda Nyata Dulu: Pelajari membilang mulai dari benda yang bisa dipegang.",
           "sceneType": "playground-rides"
         },
         {
           "id": "C-S2",
           "titleHint": "Gambar 2: Upe Turun Tangga (Menghitung Mundur)",
-          "voiceNarration": "Sesudah sampai di puncak tangga sepuluh, Upe turun tangga dengan hati-hati. Upe menghitung mundur mulai dari sepuluh: sepuluh, sembilan, delapan, terus turun sampai satu. Saat menghitung mundur, kita mulai dari bilangan besar ke kecil. METODE LUAR. Gambar Representasi: Pindah ke gambar atau diagram sebelum simbol.",
+          "voiceNarration": "Sesudah sampai di puncak tangga sepuluh, Upe turun tangga dengan hati-hati. Upe menghitung mundur mulai dari sepuluh: sepuluh, sembilan, delapan, terus turun sampai satu. Saat menghitung mundur, kita mulai dari bilangan besar ke kecil. Kita memakai cara Gambar Representasi: Pindah ke gambar atau diagram sebelum simbol.",
           "sceneType": "playground-rides"
         },
         {
           "id": "C-S3",
           "titleHint": "Gambar 3: Barisan Berhitung Berantai di Taman",
-          "voiceNarration": "Upe, Kira, Malosi, dan Wei bermain hitung berantai di taman bersama Igil. Upe di ujung barisan menyebut bilangan tiga. Kira di sampingnya langsung melanjutkan empat, Malosi menyebut lima, dan Wei menyebut enam. METODE LUAR. Simbol Matematika: Akhiri dengan angka dan tanda operasi.",
+          "voiceNarration": "Upe, Kira, Malosi, dan Wei bermain hitung berantai di taman bersama Igil. Upe di ujung barisan menyebut bilangan tiga. Kira di sampingnya langsung melanjutkan empat, Malosi menyebut lima, dan Wei menyebut enam. Kita memakai cara Simbol Matematika: Akhiri dengan angka dan tanda operasi.",
           "sceneType": "playground-play"
         },
         {
           "id": "C-S4",
           "titleHint": "Gambar 4: Katak di Batu Nomor (Sebelum dan Sesudah)",
-          "voiceNarration": "Lihat katak di atas batu nomor enam. Jika katak melompat maju satu batu ke kanan, ia mendarat di batu tujuh. Jika katak melompat mundur satu batu ke kiri, ia mendarat di batu lima. Batu enam berada di antara batu lima dan batu tujuh. METODE LUAR. Benda Nyata Dulu: Pelajari membilang mulai dari benda yang bisa dipegang.",
+          "voiceNarration": "Lihat katak di atas batu nomor enam. Jika katak melompat maju satu batu ke kanan, ia mendarat di batu tujuh. Jika katak melompat mundur satu batu ke kiri, ia mendarat di batu lima. Batu enam berada di antara batu lima dan batu tujuh. Kita memakai cara Benda Nyata Dulu: Pelajari membilang mulai dari benda yang bisa dipegang.",
           "sceneType": "frog-river"
         },
         {
           "id": "C-S5",
           "titleHint": "Gambar 5: Menghubungkan Titik Satu sampai Sepuluh",
-          "voiceNarration": "Kira menghubungkan titik bernomor satu sampai sepuluh secara berurutan di buku gambar. Dari titik satu, Kira menarik garis ke dua, tiga, empat, sampai sepuluh. Saat selesai, tampak gambar perahu layar yang bagus sekali. METODE LUAR. Gambar Representasi: Pindah ke gambar atau diagram sebelum simbol.",
+          "voiceNarration": "Kira menghubungkan titik bernomor satu sampai sepuluh secara berurutan di buku gambar. Dari titik satu, Kira menarik garis ke dua, tiga, empat, sampai sepuluh. Saat selesai, tampak gambar perahu layar yang bagus sekali. Kita memakai cara Gambar Representasi: Pindah ke gambar atau diagram sebelum simbol.",
           "sceneType": "playground-toys"
         }
       ],
@@ -589,31 +591,31 @@
         },
         {
           "stepNumber": 3,
-          "stepTitle": "3. Hitung Mundur (Besar ke Kecil)",
-          "stepDesc": "Melangkah turun atau ke kiri. Mulai dari bilangan besar ke kecil. Langkahnya selalu sama, yaitu berkurang satu: 10, 9, 8, 7, 6, 5, 4, 3, 2, 1.",
+          "stepTitle": "3. CPA / SMICPA Concrete",
+          "stepDesc": "Pelajari membilang mulai dari benda yang bisa dipegang.",
           "icon": "⬇️",
           "flowFrom": "Langkah Mundur (Ke Kiri / Turun)",
           "flowTo": "Bilangan Makin Kecil"
         },
         {
           "stepNumber": 4,
-          "stepTitle": "4. Temukan Sebelum, Di Antara, dan Sesudah",
-          "stepDesc": "Maju satu langkah untuk mencari bilangan sesudah. Mundur satu langkah untuk mencari bilangan sebelum.",
+          "stepTitle": "4. CPA Pictorial",
+          "stepDesc": "Pindah ke gambar atau diagram sebelum simbol.",
           "icon": "🧭",
           "flowFrom": "Cek Tetangga Kiri & Kanan",
           "flowTo": "5"
         },
         {
           "stepNumber": 5,
-          "stepTitle": "5. METODE LUAR · Benda Nyata Dulu",
-          "stepDesc": "Pelajari membilang mulai dari benda yang bisa dipegang.",
+          "stepTitle": "5. CPA Abstract",
+          "stepDesc": "Akhiri dengan angka dan tanda operasi.",
           "icon": "🌍",
           "flowFrom": "4",
           "flowTo": "6"
         },
         {
           "stepNumber": 6,
-          "stepTitle": "6. METODE LUAR · Gambar Representasi",
+          "stepTitle": "6.",
           "stepDesc": "Pindah ke gambar atau diagram sebelum simbol.",
           "icon": "🌍",
           "flowFrom": "5",
@@ -676,25 +678,25 @@
           "title": "Eksplorasi 1: Membangun 5 Anak Tangga Maju Bersama Upe",
           "emoji": "🪜",
           "targetCount": 5,
-          "voiceGuide": "Hitung maju anak tangga bersama Upe dari kecil ke besar: satu, dua, tiga, empat, lima. Lalu tebalkan angka lima."
+          "voiceGuide": "Benda Nyata Dulu. Hitung maju anak tangga bersama Upe dari kecil ke besar: satu, dua, tiga, empat, lima. Lalu tebalkan angka lima."
         },
         {
           "title": "Eksplorasi 2: Melanjutkan Barisan Berantai ke-7",
           "emoji": "🪨",
           "targetCount": 7,
-          "voiceGuide": "Sesudah anak tangga keenam adalah anak tangga ketujuh. Ayo tebalkan angka tujuh."
+          "voiceGuide": "Gambar Representasi. Sesudah anak tangga keenam adalah anak tangga ketujuh. Ayo tebalkan angka tujuh."
         },
         {
           "title": "Eksplorasi 3: Menghitung Mundur Turun Tangga (10 ke 8)",
           "emoji": "🐸",
           "targetCount": 8,
-          "voiceGuide": "Hitung mundur turun tangga dari sepuluh: sepuluh, sembilan, delapan. Tebalkan angka delapan yang berada di antara sembilan dan tujuh."
+          "voiceGuide": "Simbol Matematika. Hitung mundur turun tangga dari sepuluh: sepuluh, sembilan, delapan. Tebalkan angka delapan yang berada di antara sembilan dan tujuh."
         },
         {
           "title": "Eksplorasi 4: Menghubungkan Titik Sampai 10",
           "emoji": "⛵",
           "targetCount": 10,
-          "voiceGuide": "Hubungkan titik bilangan secara berurutan dari satu sampai sepuluh, lalu tebalkan lambang bilangan sepuluh."
+          "voiceGuide": "Benda Nyata Dulu. Hubungkan titik bilangan secara berurutan dari satu sampai sepuluh, lalu tebalkan lambang bilangan sepuluh."
         }
       ],
       "pictorialSlides": [
@@ -703,28 +705,28 @@
           "diagramType": "comparison",
           "numberA": 4,
           "numberB": 5,
-          "caption": "Saat menghitung maju ke kanan, tinggi balok anak tangga bertambah dari 4 petak menjadi 5 petak."
+          "caption": "Pakai Benda Nyata Dulu. Saat menghitung maju ke kanan, tinggi balok anak tangga bertambah dari 4 petak menjadi 5 petak."
         },
         {
           "title": "Diagram 2: Tangga Balok Turun Menghitung Mundur (8 ke 7)",
           "diagramType": "comparison",
           "numberA": 8,
           "numberB": 7,
-          "caption": "Saat menghitung mundur dari 8 petak, tinggi balok berkurang satu menjadi 7 petak."
+          "caption": "Pakai Gambar Representasi. Saat menghitung mundur dari 8 petak, tinggi balok berkurang satu menjadi 7 petak."
         },
         {
           "title": "Diagram 3: Tetangga Bilangan 5 dan 7",
           "diagramType": "comparison",
           "numberA": 5,
           "numberB": 7,
-          "caption": "Bilangan 6 terletak tepat di antara tumpukan 5 petak dan tumpukan 7 petak."
+          "caption": "Pakai Simbol Matematika. Bilangan 6 terletak tepat di antara tumpukan 5 petak dan tumpukan 7 petak."
         },
         {
           "title": "Diagram 4: Puncak Urutan Menghitung Maju (10 Petak Penuh)",
           "diagramType": "ten-frame",
           "numberA": 10,
           "numberB": 0,
-          "caption": "Urutan menghitung maju dari 1 sampai 10 berakhir pada 10 petak terisi penuh dan 0 petak kosong."
+          "caption": "Pakai Benda Nyata Dulu. Urutan menghitung maju dari 1 sampai 10 berakhir pada 10 petak terisi penuh dan 0 petak kosong."
         }
       ],
       "abstractSlides": [
@@ -732,25 +734,25 @@
           "symbolLarge": "1 → 2 → 3 → 4 → 5",
           "wordLarge": "MENGHITUNG MAJU AWAL",
           "mathNotation": "Mulai dari kecil ke besar, bertambah satu tiap langkah",
-          "voiceReadout": "Menghitung maju mulai dari satu: satu, dua, tiga, empat, lima."
+          "voiceReadout": "Benda Nyata Dulu. Menghitung maju mulai dari satu: satu, dua, tiga, empat, lima."
         },
         {
           "symbolLarge": "4 → 5 → 6 → 7 → 8",
           "wordLarge": "MENGHITUNG MAJU DARI TENGAH",
           "mathNotation": "Langkahnya sama: setiap langkah bertambah satu",
-          "voiceReadout": "Menghitung maju dari empat: empat, lima, enam, tujuh, delapan. Sesudah lima adalah enam."
+          "voiceReadout": "Gambar Representasi. Menghitung maju dari empat: empat, lima, enam, tujuh, delapan. Sesudah lima adalah enam."
         },
         {
           "symbolLarge": "10 → 9 → 8 → 7 → 6",
           "wordLarge": "MENGHITUNG MUNDUR (BESAR KE KECIL)",
           "mathNotation": "Langkahnya sama: setiap langkah berkurang satu",
-          "voiceReadout": "Menghitung mundur dari sepuluh: sepuluh, sembilan, delapan, tujuh, enam. Sebelum delapan adalah tujuh."
+          "voiceReadout": "Simbol Matematika. Menghitung mundur dari sepuluh: sepuluh, sembilan, delapan, tujuh, enam. Sebelum delapan adalah tujuh."
         },
         {
           "symbolLarge": "8 → 7 → 6 → 5 → 4",
           "wordLarge": "MELENGKAPI URUTAN MUNDUR",
           "mathNotation": "Di antara 6 dan 4 pada hitungan mundur adalah 5",
-          "voiceReadout": "Delapan, tujuh, enam, lima, empat. Sebelum enam dan sesudah empat adalah lima."
+          "voiceReadout": "Benda Nyata Dulu. Delapan, tujuh, enam, lima, empat. Sebelum enam dan sesudah empat adalah lima."
         }
       ],
       "metodeLuar": [
@@ -787,13 +789,14 @@
             "Infografis"
           ]
         }
-      ]
+      ],
+      "interactiveGames": []
     },
     "D": {
       "id": "D",
       "codeTitle": "Sub-Bab D (Pasangan)",
       "fullTitle": "Sub-Bab D: Pasangan Bilangan",
-      "targetDescription": "Siswa mampu memisahkan satu bilangan menjadi dua bagian (Sebagian dan Sebagian), menggabungkan dua bilangan menjadi satu jumlah utuh (Gabungan), serta menemukan berbagai pasangan bilangan sampai 10.",
+      "targetDescription": "Siswa mampu memisahkan satu bilangan menjadi dua bagian (Sebagian dan Sebagian), menggabungkan dua bilangan menjadi satu jumlah utuh (Gabungan), serta menemukan berbagai pasangan bilangan sampai 10. Memakai Benda Nyata Dulu, Gambar Representasi, Simbol Matematika.",
       "secondaryBg": "#DBEAFE",
       "secondaryBorder": "#3B82F6",
       "secondaryText": "#1E3A8A",
@@ -801,31 +804,31 @@
         {
           "id": "D-S1",
           "titleHint": "Gambar 1: Lima Kue di Piring Kira (Dipisahkan)",
-          "voiceNarration": "Kira mempunyai lima kue di piring besar. Ada dua donat cokelat dan tiga kue bolu kuning. Kira memisahkan lima kue itu ke dua piring kecil. Satu bilangan utuh bisa dipisahkan menjadi dua bagian, yaitu lima menjadi dua dan tiga. METODE LUAR. Benda Nyata Dulu: Pelajari membilang mulai dari benda yang bisa dipegang.",
+          "voiceNarration": "Kira mempunyai lima kue di piring besar. Ada dua donat cokelat dan tiga kue bolu kuning. Kira memisahkan lima kue itu ke dua piring kecil. Satu bilangan utuh bisa dipisahkan menjadi dua bagian, yaitu lima menjadi dua dan tiga. Kita memakai cara Benda Nyata Dulu: Pelajari membilang mulai dari benda yang bisa dipegang.",
           "sceneType": "number-tree"
         },
         {
           "id": "D-S2",
           "titleHint": "Gambar 2: Tujuh Bola Upe dan Wei (Digabungkan)",
-          "voiceNarration": "Upe membawa tiga bola hijau dan Wei membawa empat bola merah. Saat bola mereka dimasukkan bersama ke satu keranjang besar, jumlah semuanya menjadi tujuh bola. Dua bilangan bisa digabungkan menjadi satu bilangan utuh. METODE LUAR. Gambar Representasi: Pindah ke gambar atau diagram sebelum simbol.",
+          "voiceNarration": "Upe membawa tiga bola hijau dan Wei membawa empat bola merah. Saat bola mereka dimasukkan bersama ke satu keranjang besar, jumlah semuanya menjadi tujuh bola. Dua bilangan bisa digabungkan menjadi satu bilangan utuh. Kita memakai cara Gambar Representasi: Pindah ke gambar atau diagram sebelum simbol.",
           "sceneType": "number-tree"
         },
         {
           "id": "D-S3",
           "titleHint": "Gambar 3: Delapan Mobil-mobilan Upe (Banyak Pasangan)",
-          "voiceNarration": "Upe mempunyai delapan mobil-mobilan dan ingin memisahkannya menjadi dua kelompok. Mula-mula Upe menaruh tiga di kiri dan lima di kanan. Lalu Upe menemukan pasangan lain, yaitu dua dan enam, satu dan tujuh, serta empat dan empat. METODE LUAR. Simbol Matematika: Akhiri dengan angka dan tanda operasi.",
+          "voiceNarration": "Upe mempunyai delapan mobil-mobilan dan ingin memisahkannya menjadi dua kelompok. Mula-mula Upe menaruh tiga di kiri dan lima di kanan. Lalu Upe menemukan pasangan lain, yaitu dua dan enam, satu dan tujuh, serta empat dan empat. Kita memakai cara Simbol Matematika: Akhiri dengan angka dan tanda operasi.",
           "sceneType": "number-tree"
         },
         {
           "id": "D-S4",
           "titleHint": "Gambar 4: Delapan Kelereng Malosi (Pohon Pasangan Dua Tingkat)",
-          "voiceNarration": "Malosi mempunyai delapan kelereng dan memisahkannya menjadi kelompok lima dan tiga. Sesudah itu, Malosi memisahkan lagi kelompok lima menjadi dua dan tiga, serta kelompok tiga menjadi dua dan satu. Igil memuji ketelitian Malosi. METODE LUAR. Benda Nyata Dulu: Pelajari membilang mulai dari benda yang bisa dipegang.",
+          "voiceNarration": "Malosi mempunyai delapan kelereng dan memisahkannya menjadi kelompok lima dan tiga. Sesudah itu, Malosi memisahkan lagi kelompok lima menjadi dua dan tiga, serta kelompok tiga menjadi dua dan satu. Igil memuji ketelitian Malosi. Kita memakai cara Benda Nyata Dulu: Pelajari membilang mulai dari benda yang bisa dipegang.",
           "sceneType": "number-tree"
         },
         {
           "id": "D-S5",
           "titleHint": "Gambar 5: Karya Pasangan Bilangan pada Bingkai Sepuluh",
-          "voiceNarration": "Kira, Upe, Malosi, dan Wei bermain Ayo Berkarya bersama Igil. Mereka menyusun enam keping kuning dan empat keping biru di dalam bingkai sepuluh. Enam dan empat adalah pasangan bilangan yang membentuk sepuluh. METODE LUAR. Gambar Representasi: Pindah ke gambar atau diagram sebelum simbol.",
+          "voiceNarration": "Kira, Upe, Malosi, dan Wei bermain Ayo Berkarya bersama Igil. Mereka menyusun enam keping kuning dan empat keping biru di dalam bingkai sepuluh. Enam dan empat adalah pasangan bilangan yang membentuk sepuluh. Kita memakai cara Gambar Representasi: Pindah ke gambar atau diagram sebelum simbol.",
           "sceneType": "number-tree"
         }
       ],
@@ -848,31 +851,31 @@
         },
         {
           "stepNumber": 3,
-          "stepTitle": "3. Gabungkan Dua Bilangan",
-          "stepDesc": "Dua bilangan bisa digabungkan. Kumpulkan benda dari dua wadah Sebagian ke wadah Gabungan, lalu hitung semuanya.",
+          "stepTitle": "3. CPA / SMICPA Concrete",
+          "stepDesc": "Pelajari membilang mulai dari benda yang bisa dipegang.",
           "icon": "↘️",
           "flowFrom": "2 Wadah Sebagian (3 dan 4)",
           "flowTo": "1 Wadah Gabungan (7)"
         },
         {
           "stepNumber": 4,
-          "stepTitle": "4. Temukan Banyak Pasangan",
-          "stepDesc": "Pindahkan satu per satu benda dari cabang kiri ke cabang kanan untuk menemukan semua pasangan bilangan yang mungkin.",
+          "stepTitle": "4. CPA Pictorial",
+          "stepDesc": "Pindah ke gambar atau diagram sebelum simbol.",
           "icon": "🔄",
           "flowFrom": "Geser Benda Antar-Cabang",
           "flowTo": "5"
         },
         {
           "stepNumber": 5,
-          "stepTitle": "5. METODE LUAR · Benda Nyata Dulu",
-          "stepDesc": "Pelajari membilang mulai dari benda yang bisa dipegang.",
+          "stepTitle": "5. CPA Abstract",
+          "stepDesc": "Akhiri dengan angka dan tanda operasi.",
           "icon": "🌍",
           "flowFrom": "4",
           "flowTo": "6"
         },
         {
           "stepNumber": 6,
-          "stepTitle": "6. METODE LUAR · Gambar Representasi",
+          "stepTitle": "6.",
           "stepDesc": "Pindah ke gambar atau diagram sebelum simbol.",
           "icon": "🌍",
           "flowFrom": "5",
@@ -935,25 +938,25 @@
           "title": "Eksplorasi 1: Memisahkan 5 Kue Kira (2 Donat dan 3 Bolu)",
           "emoji": "🍩",
           "targetCount": 5,
-          "voiceGuide": "Lima kue dipisahkan menjadi dua donat di piring kiri dan tiga kue bolu di piring kanan. Tebalkan angka lima."
+          "voiceGuide": "Benda Nyata Dulu. Lima kue dipisahkan menjadi dua donat di piring kiri dan tiga kue bolu di piring kanan. Tebalkan angka lima."
         },
         {
           "title": "Eksplorasi 2: Menggabungkan Bola Upe dan Wei (3 dan 4 Jadi 7)",
           "emoji": "⚽",
           "targetCount": 7,
-          "voiceGuide": "Tiga bola hijau dan empat bola merah digabungkan menjadi tujuh bola. Ayo tulis angka tujuh."
+          "voiceGuide": "Gambar Representasi. Tiga bola hijau dan empat bola merah digabungkan menjadi tujuh bola. Ayo tulis angka tujuh."
         },
         {
           "title": "Eksplorasi 3: Memisahkan 8 Mobil Upe dan Kelereng Malosi (5 dan 3)",
           "emoji": "🚗",
           "targetCount": 8,
-          "voiceGuide": "Delapan benda dipisahkan menjadi lima dan tiga, atau empat dan empat. Tebalkan angka delapan."
+          "voiceGuide": "Simbol Matematika. Delapan benda dipisahkan menjadi lima dan tiga, atau empat dan empat. Tebalkan angka delapan."
         },
         {
           "title": "Eksplorasi 4: Menguraikan 9 Kue Mangkuk Malosi (6 dan 3)",
           "emoji": "🧁",
           "targetCount": 9,
-          "voiceGuide": "Sembilan kue mangkuk dipisahkan ke dua piring menjadi enam dan tiga. Ayo tebalkan angka sembilan."
+          "voiceGuide": "Benda Nyata Dulu. Sembilan kue mangkuk dipisahkan ke dua piring menjadi enam dan tiga. Ayo tebalkan angka sembilan."
         }
       ],
       "pictorialSlides": [
@@ -962,28 +965,28 @@
           "diagramType": "number-bond",
           "numberA": 5,
           "numberB": 2,
-          "caption": "Lingkaran Gabungan 5 bercabang menjadi Sebagian 2 dan Sebagian 3."
+          "caption": "Pakai Benda Nyata Dulu. Lingkaran Gabungan 5 bercabang menjadi Sebagian 2 dan Sebagian 3."
         },
         {
           "title": "Diagram 2: Pasangan Bilangan 7 → 3 dan 4",
           "diagramType": "number-bond",
           "numberA": 7,
           "numberB": 3,
-          "caption": "Lingkaran Gabungan 7 bercabang menjadi Sebagian 3 dan Sebagian 4."
+          "caption": "Pakai Gambar Representasi. Lingkaran Gabungan 7 bercabang menjadi Sebagian 3 dan Sebagian 4."
         },
         {
           "title": "Diagram 3: Pasangan Bilangan 8 → 5 dan 3",
           "diagramType": "number-bond",
           "numberA": 8,
           "numberB": 5,
-          "caption": "Lingkaran Gabungan 8 bercabang menjadi Sebagian 5 dan Sebagian 3."
+          "caption": "Pakai Simbol Matematika. Lingkaran Gabungan 8 bercabang menjadi Sebagian 5 dan Sebagian 3."
         },
         {
           "title": "Diagram 4: Pasangan Bilangan 10 → 6 dan 4",
           "diagramType": "number-bond",
           "numberA": 10,
           "numberB": 6,
-          "caption": "Lingkaran Gabungan 10 bercabang menjadi Sebagian 6 dan Sebagian 4."
+          "caption": "Pakai Benda Nyata Dulu. Lingkaran Gabungan 10 bercabang menjadi Sebagian 6 dan Sebagian 4."
         }
       ],
       "abstractSlides": [
@@ -991,25 +994,25 @@
           "symbolLarge": "5  →  2  dan  3",
           "wordLarge": "PASANGAN BILANGAN 5 & 6",
           "mathNotation": "5 jadi 1&4, 2&3   |   6 jadi 1&5, 2&4, 3&3",
-          "voiceReadout": "Lima dapat dipisahkan menjadi satu dan empat, atau dua dan tiga. Enam dapat dipisahkan menjadi satu dan lima, dua dan empat, atau tiga dan tiga."
+          "voiceReadout": "Benda Nyata Dulu. Lima dapat dipisahkan menjadi satu dan empat, atau dua dan tiga. Enam dapat dipisahkan menjadi satu dan lima, dua dan empat, atau tiga dan tiga."
         },
         {
           "symbolLarge": "7  →  2  dan  5",
           "wordLarge": "PISAHKAN BILANGAN 7",
           "mathNotation": "7 terdiri dari 2 dan 5   |   7 terdiri dari 3 dan 4",
-          "voiceReadout": "Tujuh dipisahkan menjadi dua dan lima, atau tiga dan empat. Dua dan lima adalah pasangan bilangan tujuh."
+          "voiceReadout": "Gambar Representasi. Tujuh dipisahkan menjadi dua dan lima, atau tiga dan empat. Dua dan lima adalah pasangan bilangan tujuh."
         },
         {
           "symbolLarge": "8  →  5 (2 & 3)  dan  3 (2 & 1)",
           "wordLarge": "POHON PASANGAN DUA TINGKAT",
           "mathNotation": "8 dipisahkan jadi 5 dan 3, lalu 5 dipisahkan lagi jadi 2 dan 3",
-          "voiceReadout": "Delapan dipisahkan menjadi lima dan tiga. Lalu lima dipisahkan lagi menjadi dua dan tiga, sedangkan tiga menjadi dua dan satu."
+          "voiceReadout": "Simbol Matematika. Delapan dipisahkan menjadi lima dan tiga. Lalu lima dipisahkan lagi menjadi dua dan tiga, sedangkan tiga menjadi dua dan satu."
         },
         {
           "symbolLarge": "6  dan  4  →  10",
           "wordLarge": "GABUNGKAN JADI 10",
           "mathNotation": "1&9 • 2&8 • 3&7 • 4&6 • 5&5",
-          "voiceReadout": "Enam dan empat digabungkan menjadi sepuluh. Pasangan bilangan sepuluh adalah satu dan sembilan, dua dan delapan, tiga dan tujuh, empat dan enam, serta lima dan lima."
+          "voiceReadout": "Benda Nyata Dulu. Enam dan empat digabungkan menjadi sepuluh. Pasangan bilangan sepuluh adalah satu dan sembilan, dua dan delapan, tiga dan tujuh, empat dan enam, serta lima dan lima."
         }
       ],
       "metodeLuar": [
@@ -1046,7 +1049,8 @@
             "Infografis"
           ]
         }
-      ]
+      ],
+      "interactiveGames": []
     }
   },
   "practiceQuestions": [

@@ -1,7 +1,6 @@
 /**
- * Naskah murni Matematika Kelas 4 Bab 3 (Pola Gambar dan Pola Bilangan): Sub-Bab A–B.
- * Sumber: Buku Siswa Matematika Kelas IV Kemendikbudristek Bab 3 hlm. 85–102.
- * Satu sumber: buat-k4-bab3.mjs → kelas4-bab3.json. Tanpa React/jaringan.
+ * Naskah — rewrite mendalam.
+ * Metode luar dianyam ke Story, peta, infografis, poin, dan meta permainan.
  */
 import type { SubBabNaskah } from "./naskah-k2b2";
 
@@ -20,12 +19,12 @@ export const SUB_A43: SubBabNaskah = {
   "id": "A",
   "codeTitle": "Sub-Bab A (Pola Gambar)",
   "fullTitle": "Sub-Bab A: Pola Gambar",
-  "targetDescription": "Siswa menemukan dan membuat pola gambar membesar (mis. jeruk 2,4,6,… beda +2 hingga kumpulan ke-7 = 14) dan mengecil (mis. permen 9,7,5,… beda −2 hingga kumpulan ke-5 = 1) memakai tabel selisih.",
+  "targetDescription": "Siswa menemukan dan membuat pola gambar membesar (mis. jeruk 2,4,6,… beda +2 hingga kumpulan ke-7 = 14) dan mengecil (mis. permen 9,7,5,… beda −2 hingga kumpulan ke-5 = 1) memakai tabel selisih. Siswa memakai cara Pola Berulang, Pola Bertambah, Struktur Visual.",
   "secondaryBg": "#FFEDD5",
   "secondaryBorder": "#EA580C",
   "secondaryText": "#7C2D12",
   "silabus": {
-    "teksSuara": "Kita belajar pola gambar. Jeruk disusun 2, 4, 6, lalu ditambah 2 terus sampai kumpulan ketujuh berisi 14. Permen disusun 9, 7, 5, dikurangi 2 sampai tersisa 1. Pola bisa membesar atau mengecil. Kita melewati enam tahap seru: cerita, peta pikiran, infografis, benda nyata, gambar, dan simbol.",
+    "teksSuara": "Kita belajar pola gambar. Jeruk disusun 2, 4, 6, lalu ditambah 2 terus sampai kumpulan ketujuh berisi 14. Permen disusun 9, 7, 5, dikurangi 2 sampai tersisa 1. Pola bisa membesar atau mengecil. Kita memakai cara dari luar buku: Pola Berulang (Repeating Pattern); Pola Bertambah (Growing Pattern); Struktur Visual (Visual Structure). Unit pola berulang menentukan suku berikutnya. Tiap langkah menambah dengan aturan tetap. Lihat kelompok bentuk, bukan hanya warna. Kita melewati enam tahap seru: cerita, peta pikiran, infografis, benda nyata, gambar, dan simbol.",
     "cp": "Siswa menemukan dan membuat pola gambar membesar dan mengecil.",
     "referensi": "Buku Siswa Matematika Kelas IV Kemendikbudristek (Bab 3 Sub-Bab A)."
   },
@@ -33,16 +32,16 @@ export const SUB_A43: SubBabNaskah = {
     {
       "id": "K4B3A-V1",
       "judul": "Jeruk Membesar",
-      "subjudul": "2, 4, 6, … → 14",
+      "subjudul": "Repeating Pattern",
       "adegan": [
         {
           "id": "K4B3A-V1-1",
           "judul": "Tiga kumpulan",
           "ketukan": [
-            "Ada tiga kumpulan jeruk.",
-            "Dua, empat, lalu enam.",
-            "Apakah kamu melihat polanya?",
-            "Setiap kumpulan bertambah dua."
+            "Bayangkan situasi nyata di kelas atau di rumah. Ada tiga kumpulan jeruk. Mari kita pahami bersama.",
+            "Dua, empat, lalu enam. Mari kita pahami bersama.",
+            "Apakah kamu melihat polanya. Mari kita pahami bersama.",
+            "Ingat cara Pola Berulang: Unit pola berulang menentukan suku berikutnya."
           ],
           "papan": [
             "3 kumpulan",
@@ -55,51 +54,49 @@ export const SUB_A43: SubBabNaskah = {
           "id": "K4B3A-V1-2",
           "judul": "Tabel +2",
           "ketukan": [
-            "Buat tabel seperti di buku.",
-            "Kumpulan empat jadi delapan.",
-            "Terus tambah dua.",
-            "Sampai kumpulan tujuh."
+            "Buat tabel seperti di buku. Mari kita pahami bersama.",
+            "Kumpulan empat jadi delapan. Mari kita pahami bersama.",
+            "Terus tambah dua. Mari kita pahami bersama.",
+            "Di sini kita memakai ide Repeating Pattern — Unit pola berulang menentukan suku berikutnya."
           ],
           "papan": [
             "tabel",
-            "8",
             "+2",
-            "ke-7"
+            "ke-7",
+            "pola"
           ]
         },
         {
           "id": "K4B3A-V1-3",
           "judul": "Hasil 14",
           "ketukan": [
-            "Kumpulan ketujuh berisi empat belas jeruk.",
-            "Pola membesar berarti semakin banyak.",
-            "Beda tetap positif.",
-            "Siap berlatih.",
-            "METODE LUAR. Pola Berulang: Unit pola berulang menentukan suku berikutnya."
+            "Kumpulan ketujuh berisi empat belas jeruk. Mari kita pahami bersama.",
+            "Pola membesar berarti semakin banyak. Mari kita pahami bersama.",
+            "Beda tetap positif. Mari kita pahami bersama.",
+            "METODE LUAR · Pola Berulang: Unit pola berulang menentukan suku berikutnya."
           ],
           "papan": [
             "14 jeruk",
             "membesar",
             "beda +",
-            "siap",
-            "METODE LUAR · Pola Berulang"
+            "siap"
           ]
         }
       ]
     },
     {
       "id": "K4B3A-V2",
-      "judul": "Permen Mengecil",
-      "subjudul": "9, 7, 5, … → 1",
+      "judul": "Latihan: Pola Bertambah",
+      "subjudul": "Growing Pattern",
       "adegan": [
         {
           "id": "K4B3A-V2-1",
           "judul": "Semakin sedikit",
           "ketukan": [
-            "Ada juga pola yang mengecil.",
-            "Sembilan, tujuh, lima permen.",
-            "Setiap langkah berkurang dua.",
-            "Jumlah semakin sedikit."
+            "Ada juga pola yang mengecil. Mari kita pahami bersama.",
+            "Sembilan, tujuh, lima permen. Mari kita pahami bersama.",
+            "Setiap langkah berkurang dua. Mari kita pahami bersama.",
+            "Ingat cara Pola Bertambah: Tiap langkah menambah dengan aturan tetap."
           ],
           "papan": [
             "mengecil",
@@ -112,51 +109,49 @@ export const SUB_A43: SubBabNaskah = {
           "id": "K4B3A-V2-2",
           "judul": "Tabel −2",
           "ketukan": [
-            "Isi tabel selisih.",
-            "Kumpulan empat berisi tiga.",
-            "Kumpulan lima berisi satu.",
-            "Ikuti beda tetap."
+            "Isi tabel selisih. Mari kita pahami bersama.",
+            "Kumpulan empat berisi tiga. Mari kita pahami bersama.",
+            "Kumpulan lima berisi satu. Mari kita pahami bersama.",
+            "Di sini kita memakai ide Growing Pattern — Tiap langkah menambah dengan aturan tetap."
           ],
           "papan": [
             "tabel",
-            "3",
-            "1",
-            "beda −2"
+            "beda −2",
+            "pola",
+            "pola"
           ]
         },
         {
           "id": "K4B3A-V2-3",
           "judul": "Kesimpulan",
           "ketukan": [
-            "Pola mengecil memakai beda negatif.",
-            "Pola membesar memakai beda positif.",
-            "Selisih antar langkah sama.",
-            "Itulah kunci pola gambar.",
-            "METODE LUAR. Pola Bertambah: Tiap langkah menambah dengan aturan tetap."
+            "Pola mengecil memakai beda negatif. Mari kita pahami bersama.",
+            "Pola membesar memakai beda positif. Mari kita pahami bersama.",
+            "Selisih antar langkah sama. Mari kita pahami bersama.",
+            "METODE LUAR · Pola Bertambah: Tiap langkah menambah dengan aturan tetap."
           ],
           "papan": [
             "beda −",
             "beda +",
             "selisih sama",
-            "kunci",
-            "METODE LUAR · Pola Bertambah"
+            "kunci"
           ]
         }
       ]
     },
     {
       "id": "K4B3A-V3",
-      "judul": "Temukan Pola",
-      "subjudul": "Amati → beda → lanjutkan",
+      "judul": "Siap pakai Visual Structure",
+      "subjudul": "Visual Structure",
       "adegan": [
         {
           "id": "K4B3A-V3-1",
           "judul": "Amati",
           "ketukan": [
-            "Hitung benda tiap kumpulan.",
-            "Bandingkan dengan sebelumnya.",
-            "Catat selisihnya.",
-            "Apakah selisihnya sama?"
+            "Hitung benda tiap kumpulan. Mari kita pahami bersama.",
+            "Bandingkan dengan sebelumnya. Mari kita pahami bersama.",
+            "Catat selisihnya. Mari kita pahami bersama.",
+            "Ingat cara Struktur Visual: Lihat kelompok bentuk, bukan hanya warna."
           ],
           "papan": [
             "hitung",
@@ -169,34 +164,32 @@ export const SUB_A43: SubBabNaskah = {
           "id": "K4B3A-V3-2",
           "judul": "Tentukan beda",
           "ketukan": [
-            "Jika selisih sama, itu beda pola.",
-            "Beda positif berarti membesar.",
-            "Beda negatif berarti mengecil.",
-            "Lanjutkan dengan beda itu."
+            "Jika selisih sama, itu beda pola. Mari kita pahami bersama.",
+            "Beda positif berarti membesar. Mari kita pahami bersama.",
+            "Beda negatif berarti mengecil. Mari kita pahami bersama.",
+            "Di sini kita memakai ide Visual Structure — Lihat kelompok bentuk, bukan hanya warna."
           ],
           "papan": [
             "beda",
-            "+",
-            "−",
-            "lanjut"
+            "lanjut",
+            "struktur",
+            "struktur"
           ]
         },
         {
           "id": "K4B3A-V3-3",
           "judul": "Prediksi",
           "ketukan": [
-            "Prediksi kumpulan berikutnya.",
-            "Cek lagi dengan tabel.",
-            "Presentasikan pola.",
-            "Siap ke pola bilangan.",
-            "METODE LUAR. Struktur Visual: Lihat kelompok bentuk, bukan hanya warna."
+            "Prediksi kumpulan berikutnya. Mari kita pahami bersama.",
+            "Cek lagi dengan tabel. Mari kita pahami bersama.",
+            "Presentasikan pola. Mari kita pahami bersama.",
+            "METODE LUAR · Struktur Visual: Lihat kelompok bentuk, bukan hanya warna."
           ],
           "papan": [
             "prediksi",
             "tabel",
             "presentasi",
-            "siap B",
-            "METODE LUAR · Struktur Visual"
+            "siap B"
           ]
         }
       ]
@@ -205,82 +198,66 @@ export const SUB_A43: SubBabNaskah = {
   "mindMaps": [
     {
       "stepNumber": 1,
-      "stepTitle": "1. Amati",
-      "stepDesc": "Hitung tiap kumpulan.",
-      "icon": "👀",
+      "stepTitle": "1. Pahami soal",
+      "stepDesc": "Baca soal Pola Gambar. Apa yang ditanyakan?",
+      "icon": "❓",
       "flowFrom": "START",
       "flowTo": "2"
     },
     {
       "stepNumber": 2,
-      "stepTitle": "2. Selisih",
-      "stepDesc": "Catat beda tetap.",
-      "icon": "➖",
+      "stepTitle": "2. Repeating Pattern",
+      "stepDesc": "Unit pola berulang menentukan suku berikutnya.",
+      "icon": "🧭",
       "flowFrom": "1",
       "flowTo": "3"
     },
     {
       "stepNumber": 3,
-      "stepTitle": "3. Membesar",
-      "stepDesc": "Beda positif.",
-      "icon": "📈",
+      "stepTitle": "3. Growing Pattern",
+      "stepDesc": "Tiap langkah menambah dengan aturan tetap.",
+      "icon": "🛠️",
       "flowFrom": "2",
       "flowTo": "4"
     },
     {
       "stepNumber": 4,
-      "stepTitle": "4. Mengecil",
-      "stepDesc": "Beda negatif.",
-      "icon": "📉",
+      "stepTitle": "4. Visual Structure",
+      "stepDesc": "Lihat kelompok bentuk, bukan hanya warna.",
+      "icon": "✨",
       "flowFrom": "3",
       "flowTo": "5"
     },
     {
       "stepNumber": 5,
-      "stepTitle": "5. Jeruk +2",
-      "stepDesc": "2→14 di ke-7.",
-      "icon": "🟠",
+      "stepTitle": "5. Kerjakan",
+      "stepDesc": "Terapkan cara itu pada angka atau gambar soal.",
+      "icon": "✏️",
       "flowFrom": "4",
       "flowTo": "6"
     },
     {
       "stepNumber": 6,
-      "stepTitle": "6. Permen −2",
-      "stepDesc": "9→1 di ke-5.",
-      "icon": "🍬",
+      "stepTitle": "6. Cek masuk akal",
+      "stepDesc": "Apakah hasilnya masuk akal? Bandingkan dengan perkiraan.",
+      "icon": "✅",
       "flowFrom": "5",
       "flowTo": "7"
     },
     {
       "stepNumber": 7,
-      "stepTitle": "7. Tabel",
-      "stepDesc": "Alat bantu.",
-      "icon": "📋",
+      "stepTitle": "7. Simpulkan",
+      "stepDesc": "Ulangi ide utamanya dengan kalimatmu sendiri.",
+      "icon": "💬",
       "flowFrom": "6",
       "flowTo": "8"
     },
     {
       "stepNumber": 8,
-      "stepTitle": "8. Siap B",
-      "stepDesc": "Pola bilangan.",
-      "icon": "➡️",
+      "stepTitle": "8. Lanjut main",
+      "stepDesc": "Siap melatih di permainan Concrete sampai Abstract.",
+      "icon": "🎮",
       "flowFrom": "7",
-      "flowTo": "9"
-    },
-    {
-      "stepNumber": 9,
-      "stepTitle": "9. METODE LUAR · Pola Berulang",
-      "stepDesc": "Unit pola berulang menentukan suku berikutnya.",
-      "icon": "🌍",
-      "flowFrom": "8",
-      "flowTo": "10"
-    },
-    {
-      "stepNumber": 10,
-      "stepTitle": "10. METODE LUAR · Pola Bertambah",
-      "stepDesc": "Tiap langkah menambah dengan aturan tetap.",
-      "icon": "🌍",
-      "flowFrom": "9",
       "flowTo": "END"
     }
   ],
@@ -359,22 +336,15 @@ export const SUB_A43: SubBabNaskah = {
       "judul": "Pola Berulang",
       "emoji": "🌍",
       "countNum": 1,
-      "countWord": "METODE LUAR · Repeating Pattern",
-      "suara": "METODE LUAR. Pola Berulang. Unit pola berulang menentukan suku berikutnya."
+      "countWord": "ingat",
+      "suara": "Unit pola berulang menentukan suku berikutnya."
     },
     {
       "judul": "Pola Bertambah",
       "emoji": "🌍",
       "countNum": 2,
-      "countWord": "METODE LUAR · Growing Pattern",
-      "suara": "METODE LUAR. Pola Bertambah. Tiap langkah menambah dengan aturan tetap."
-    },
-    {
-      "judul": "Struktur Visual",
-      "emoji": "🌍",
-      "countNum": 3,
-      "countWord": "METODE LUAR · Visual Structure",
-      "suara": "METODE LUAR. Struktur Visual. Lihat kelompok bentuk, bukan hanya warna."
+      "countWord": "ingat",
+      "suara": "Tiap langkah menambah dengan aturan tetap."
     }
   ],
   "games": [
@@ -383,9 +353,9 @@ export const SUB_A43: SubBabNaskah = {
       "gameType": "baca-pola",
       "title": "Baca Pola Gambar",
       "bookReference": "hlm. 89–90 (jeruk)",
-      "objective": "Membaca kumpulan membesar. (METODE LUAR · Pola Berulang)",
-      "mechanicDescription": "Tiga ronde.",
-      "voiceGuide": "METODE LUAR · Pola Berulang. Pilih beda/jenis.",
+      "objective": "Pakai Pola Berulang: Unit pola berulang menentukan suku berikutnya. Latihan: Membaca kumpulan membesar..",
+      "mechanicDescription": "Tiga ronde. Saat bermain, terapkan Repeating Pattern: Unit pola berulang menentukan suku berikutnya.",
+      "voiceGuide": "Pola Berulang. Unit pola berulang menentukan suku berikutnya.",
       "emoji": "🟠",
       "targetCount": 6
     },
@@ -394,9 +364,9 @@ export const SUB_A43: SubBabNaskah = {
       "gameType": "lanjut-besar",
       "title": "Lanjutkan Pola Membesar",
       "bookReference": "hlm. 90 (kumpulan ke-7)",
-      "objective": "Menemukan suku berikutnya.",
-      "mechanicDescription": "Tiga ronde.",
-      "voiceGuide": "Pilih banyak benda.",
+      "objective": "Pakai Pola Berulang: Unit pola berulang menentukan suku berikutnya. Latihan: Menemukan suku berikutnya..",
+      "mechanicDescription": "Tiga ronde. Saat bermain, terapkan Repeating Pattern: Unit pola berulang menentukan suku berikutnya.",
+      "voiceGuide": "Pola Berulang. Unit pola berulang menentukan suku berikutnya.",
       "emoji": "📈",
       "targetCount": 6
     },
@@ -405,9 +375,9 @@ export const SUB_A43: SubBabNaskah = {
       "gameType": "lanjut-kecil",
       "title": "Lanjutkan Pola Mengecil",
       "bookReference": "hlm. 91–93 (permen)",
-      "objective": "Menemukan suku mengecil.",
-      "mechanicDescription": "Tiga ronde.",
-      "voiceGuide": "Pilih banyak benda.",
+      "objective": "Pakai Pola Berulang: Unit pola berulang menentukan suku berikutnya. Latihan: Menemukan suku mengecil..",
+      "mechanicDescription": "Tiga ronde. Saat bermain, terapkan Repeating Pattern: Unit pola berulang menentukan suku berikutnya.",
+      "voiceGuide": "Pola Berulang. Unit pola berulang menentukan suku berikutnya.",
       "emoji": "📉",
       "targetCount": 6
     },
@@ -416,9 +386,9 @@ export const SUB_A43: SubBabNaskah = {
       "gameType": "sort-pola",
       "title": "Pilah Membesar/Mengecil",
       "bookReference": "hlm. 87–93",
-      "objective": "Memilah jenis pola.",
-      "mechanicDescription": "Tiga ronde.",
-      "voiceGuide": "Pilah.",
+      "objective": "Pakai Pola Berulang: Unit pola berulang menentukan suku berikutnya. Latihan: Memilah jenis pola..",
+      "mechanicDescription": "Tiga ronde. Saat bermain, terapkan Repeating Pattern: Unit pola berulang menentukan suku berikutnya.",
+      "voiceGuide": "Pola Berulang. Unit pola berulang menentukan suku berikutnya.",
       "emoji": "🧺",
       "targetCount": 18
     },
@@ -427,9 +397,9 @@ export const SUB_A43: SubBabNaskah = {
       "gameType": "match-beda",
       "title": "Jodohkan Pola dan Beda",
       "bookReference": "hlm. 90–93",
-      "objective": "Menjodohkan.",
-      "mechanicDescription": "Tiga ronde.",
-      "voiceGuide": "Jodohkan.",
+      "objective": "Menjodohkan.. Ingat Pola Berulang.",
+      "mechanicDescription": "Tiga ronde. Gunakan Pola Berulang.",
+      "voiceGuide": "Pola Berulang. Jodohkan.",
       "emoji": "🔗",
       "targetCount": 12
     },
@@ -438,9 +408,9 @@ export const SUB_A43: SubBabNaskah = {
       "gameType": "memory-pola",
       "title": "Memori Pola Gambar",
       "bookReference": "hlm. 90–93",
-      "objective": "Memori.",
-      "mechanicDescription": "Tiga ronde.",
-      "voiceGuide": "Balik kartu.",
+      "objective": "Memori.. Ingat Pola Berulang.",
+      "mechanicDescription": "Tiga ronde. Gunakan Pola Berulang.",
+      "voiceGuide": "Pola Berulang. Balik kartu.",
       "emoji": "🃏",
       "targetCount": 12
     },
@@ -449,9 +419,9 @@ export const SUB_A43: SubBabNaskah = {
       "gameType": "tap-pola",
       "title": "Ketuk Pola Diminta",
       "bookReference": "hlm. 89–93",
-      "objective": "Mengetuk.",
-      "mechanicDescription": "Tiga ronde.",
-      "voiceGuide": "Ketuk.",
+      "objective": "Mengetuk.. Ingat Pola Berulang.",
+      "mechanicDescription": "Tiga ronde. Gunakan Pola Berulang.",
+      "voiceGuide": "Pola Berulang. Ketuk.",
       "emoji": "👆",
       "targetCount": 9
     },
@@ -460,9 +430,9 @@ export const SUB_A43: SubBabNaskah = {
       "gameType": "tap-all-pola",
       "title": "Ketuk Semua Jenis Pola",
       "bookReference": "hlm. 87–93",
-      "objective": "Ketuk semua.",
-      "mechanicDescription": "Tiga ronde.",
-      "voiceGuide": "Ketuk semua.",
+      "objective": "Ketuk semua.. Ingat Pola Berulang.",
+      "mechanicDescription": "Tiga ronde. Gunakan Pola Berulang.",
+      "voiceGuide": "Pola Berulang. Ketuk semua.",
       "emoji": "✔️",
       "targetCount": 3
     },
@@ -471,9 +441,9 @@ export const SUB_A43: SubBabNaskah = {
       "gameType": "story-pola",
       "title": "Cerita Jeruk dan Permen",
       "bookReference": "hlm. 89–93",
-      "objective": "Soal cerita.",
-      "mechanicDescription": "Tiga ronde.",
-      "voiceGuide": "Pilih.",
+      "objective": "Soal cerita.. Ingat Pola Berulang.",
+      "mechanicDescription": "Tiga ronde. Gunakan Pola Berulang.",
+      "voiceGuide": "Pola Berulang. Pilih.",
       "emoji": "📖",
       "targetCount": 6
     },
@@ -482,9 +452,9 @@ export const SUB_A43: SubBabNaskah = {
       "gameType": "order-pola",
       "title": "Urutkan Banyak Benda",
       "bookReference": "hlm. 90–93",
-      "objective": "Mengurutkan.",
-      "mechanicDescription": "Tiga ronde.",
-      "voiceGuide": "Urutkan.",
+      "objective": "Mengurutkan.. Ingat Pola Berulang.",
+      "mechanicDescription": "Tiga ronde. Gunakan Pola Berulang.",
+      "voiceGuide": "Pola Berulang. Urutkan.",
       "emoji": "📶",
       "targetCount": 3
     },
@@ -493,9 +463,9 @@ export const SUB_A43: SubBabNaskah = {
       "gameType": "gambar-besar",
       "title": "Diagram Pola Membesar",
       "bookReference": "hlm. 89–90",
-      "objective": "Baca diagram. (METODE LUAR · Pola Berulang)",
-      "mechanicDescription": "Tiga ronde.",
-      "voiceGuide": "METODE LUAR · Pola Berulang. Pilih.",
+      "objective": "Pakai Pola Bertambah: Tiap langkah menambah dengan aturan tetap. Latihan: Baca diagram..",
+      "mechanicDescription": "Tiga ronde. Saat bermain, terapkan Growing Pattern: Tiap langkah menambah dengan aturan tetap.",
+      "voiceGuide": "Pola Bertambah. Tiap langkah menambah dengan aturan tetap.",
       "diagramType": "grow",
       "numberA": 2,
       "numberB": 4
@@ -505,9 +475,9 @@ export const SUB_A43: SubBabNaskah = {
       "gameType": "gambar-kecil",
       "title": "Diagram Pola Mengecil",
       "bookReference": "hlm. 91–93",
-      "objective": "Baca diagram.",
-      "mechanicDescription": "Tiga ronde.",
-      "voiceGuide": "Pilih.",
+      "objective": "Pakai Pola Bertambah: Tiap langkah menambah dengan aturan tetap. Latihan: Baca diagram..",
+      "mechanicDescription": "Tiga ronde. Saat bermain, terapkan Growing Pattern: Tiap langkah menambah dengan aturan tetap.",
+      "voiceGuide": "Pola Bertambah. Tiap langkah menambah dengan aturan tetap.",
       "diagramType": "shrink",
       "numberA": 9,
       "numberB": 5
@@ -517,9 +487,9 @@ export const SUB_A43: SubBabNaskah = {
       "gameType": "match-diagram-a",
       "title": "Jodohkan Diagram Pola",
       "bookReference": "hlm. 90–93",
-      "objective": "Jodohkan.",
-      "mechanicDescription": "Tiga ronde.",
-      "voiceGuide": "Jodohkan.",
+      "objective": "Pakai Pola Bertambah: Tiap langkah menambah dengan aturan tetap. Latihan: Jodohkan..",
+      "mechanicDescription": "Tiga ronde. Saat bermain, terapkan Growing Pattern: Tiap langkah menambah dengan aturan tetap.",
+      "voiceGuide": "Pola Bertambah. Tiap langkah menambah dengan aturan tetap.",
       "diagramType": "match",
       "numberA": 1,
       "numberB": 2
@@ -529,9 +499,9 @@ export const SUB_A43: SubBabNaskah = {
       "gameType": "memory-diagram-a",
       "title": "Memori Diagram Pola",
       "bookReference": "hlm. 90",
-      "objective": "Memori.",
-      "mechanicDescription": "Tiga ronde.",
-      "voiceGuide": "Balik kartu.",
+      "objective": "Pakai Pola Bertambah: Tiap langkah menambah dengan aturan tetap. Latihan: Memori..",
+      "mechanicDescription": "Tiga ronde. Saat bermain, terapkan Growing Pattern: Tiap langkah menambah dengan aturan tetap.",
+      "voiceGuide": "Pola Bertambah. Tiap langkah menambah dengan aturan tetap.",
       "diagramType": "mem",
       "numberA": 1,
       "numberB": 4
@@ -541,9 +511,9 @@ export const SUB_A43: SubBabNaskah = {
       "gameType": "table-a",
       "title": "Tabel Selisih Pola",
       "bookReference": "hlm. 90 & 93",
-      "objective": "Isi lanjut.",
-      "mechanicDescription": "Tiga tabel.",
-      "voiceGuide": "Pilih.",
+      "objective": "Isi lanjut.. Ingat Pola Bertambah.",
+      "mechanicDescription": "Tiga tabel. Gunakan Pola Bertambah.",
+      "voiceGuide": "Pola Bertambah. Pilih.",
       "diagramType": "table",
       "numberA": 1,
       "numberB": 3
@@ -553,9 +523,9 @@ export const SUB_A43: SubBabNaskah = {
       "gameType": "tap-all-a",
       "title": "Ketuk Semua Diagram",
       "bookReference": "hlm. 87–93",
-      "objective": "Ketuk semua.",
-      "mechanicDescription": "Tiga ronde.",
-      "voiceGuide": "Ketuk semua.",
+      "objective": "Ketuk semua.. Ingat Pola Bertambah.",
+      "mechanicDescription": "Tiga ronde. Gunakan Pola Bertambah.",
+      "voiceGuide": "Pola Bertambah. Ketuk semua.",
       "diagramType": "select",
       "numberA": 1,
       "numberB": 4
@@ -565,9 +535,9 @@ export const SUB_A43: SubBabNaskah = {
       "gameType": "sort-diagram-a",
       "title": "Pilah Diagram Pola",
       "bookReference": "hlm. 87–93",
-      "objective": "Pilah.",
-      "mechanicDescription": "Tiga ronde.",
-      "voiceGuide": "Pilah.",
+      "objective": "Pilah.. Ingat Pola Bertambah.",
+      "mechanicDescription": "Tiga ronde. Gunakan Pola Bertambah.",
+      "voiceGuide": "Pola Bertambah. Pilah.",
       "diagramType": "sort",
       "numberA": 1,
       "numberB": 6
@@ -577,9 +547,9 @@ export const SUB_A43: SubBabNaskah = {
       "gameType": "beda-visual",
       "title": "Temukan Beda Visual",
       "bookReference": "hlm. 90–93",
-      "objective": "Pilih beda.",
-      "mechanicDescription": "Tiga ronde.",
-      "voiceGuide": "Pilih.",
+      "objective": "Pilih beda.. Ingat Pola Bertambah.",
+      "mechanicDescription": "Tiga ronde. Gunakan Pola Bertambah.",
+      "voiceGuide": "Pola Bertambah. Pilih.",
       "diagramType": "diff",
       "numberA": 1,
       "numberB": 2
@@ -589,9 +559,9 @@ export const SUB_A43: SubBabNaskah = {
       "gameType": "choose-next",
       "title": "Pilih Gambar Berikutnya",
       "bookReference": "hlm. 93–94",
-      "objective": "Pilih lanjut.",
-      "mechanicDescription": "Tiga ronde.",
-      "voiceGuide": "Pilih.",
+      "objective": "Pilih lanjut.. Ingat Pola Bertambah.",
+      "mechanicDescription": "Tiga ronde. Gunakan Pola Bertambah.",
+      "voiceGuide": "Pola Bertambah. Pilih.",
       "diagramType": "choose",
       "numberA": 1,
       "numberB": 2
@@ -601,9 +571,9 @@ export const SUB_A43: SubBabNaskah = {
       "gameType": "story-picture-a",
       "title": "Cerita Diagram Pola",
       "bookReference": "hlm. 89–93",
-      "objective": "Cerita + gambar.",
-      "mechanicDescription": "Tiga ronde.",
-      "voiceGuide": "Pilih.",
+      "objective": "Cerita + gambar.. Ingat Pola Bertambah.",
+      "mechanicDescription": "Tiga ronde. Gunakan Pola Bertambah.",
+      "voiceGuide": "Pola Bertambah. Pilih.",
       "diagramType": "story",
       "numberA": 1,
       "numberB": 2
@@ -613,9 +583,9 @@ export const SUB_A43: SubBabNaskah = {
       "gameType": "write-next",
       "title": "Tulis Suku Berikutnya",
       "bookReference": "hlm. 90–93",
-      "objective": "Menulis angka lanjut. (METODE LUAR · Pola Berulang)",
-      "mechanicDescription": "Tiga ronde.",
-      "voiceGuide": "METODE LUAR · Pola Berulang. Pilih.",
+      "objective": "Pakai Struktur Visual: Lihat kelompok bentuk, bukan hanya warna. Latihan: Menulis angka lanjut..",
+      "mechanicDescription": "Tiga ronde. Saat bermain, terapkan Visual Structure: Lihat kelompok bentuk, bukan hanya warna.",
+      "voiceGuide": "Struktur Visual. Lihat kelompok bentuk, bukan hanya warna.",
       "symbolLarge": "8",
       "wordLarge": "LANJUT",
       "mathNotation": "suku+beda"
@@ -625,9 +595,9 @@ export const SUB_A43: SubBabNaskah = {
       "gameType": "write-beda",
       "title": "Tulis Beda Pola",
       "bookReference": "hlm. 90–93",
-      "objective": "Menulis beda.",
-      "mechanicDescription": "Tiga ronde.",
-      "voiceGuide": "Pilih.",
+      "objective": "Pakai Struktur Visual: Lihat kelompok bentuk, bukan hanya warna. Latihan: Menulis beda..",
+      "mechanicDescription": "Tiga ronde. Saat bermain, terapkan Visual Structure: Lihat kelompok bentuk, bukan hanya warna.",
+      "voiceGuide": "Struktur Visual. Lihat kelompok bentuk, bukan hanya warna.",
       "symbolLarge": "+2",
       "wordLarge": "BEDA",
       "mathNotation": "selisih"
@@ -637,9 +607,9 @@ export const SUB_A43: SubBabNaskah = {
       "gameType": "choose-jenis",
       "title": "Pilih Jenis Pola",
       "bookReference": "hlm. 87–93",
-      "objective": "Membesar/mengecil.",
-      "mechanicDescription": "Tiga ronde.",
-      "voiceGuide": "Pilih.",
+      "objective": "Pakai Struktur Visual: Lihat kelompok bentuk, bukan hanya warna. Latihan: Membesar/mengecil..",
+      "mechanicDescription": "Tiga ronde. Saat bermain, terapkan Visual Structure: Lihat kelompok bentuk, bukan hanya warna.",
+      "voiceGuide": "Struktur Visual. Lihat kelompok bentuk, bukan hanya warna.",
       "symbolLarge": "📈",
       "wordLarge": "JENIS",
       "mathNotation": "jenis"
@@ -649,9 +619,9 @@ export const SUB_A43: SubBabNaskah = {
       "gameType": "order-abstract-a",
       "title": "Urutkan Suku",
       "bookReference": "hlm. 90–93",
-      "objective": "Mengurutkan.",
-      "mechanicDescription": "Tiga ronde.",
-      "voiceGuide": "Urutkan.",
+      "objective": "Pakai Struktur Visual: Lihat kelompok bentuk, bukan hanya warna. Latihan: Mengurutkan..",
+      "mechanicDescription": "Tiga ronde. Saat bermain, terapkan Visual Structure: Lihat kelompok bentuk, bukan hanya warna.",
+      "voiceGuide": "Struktur Visual. Lihat kelompok bentuk, bukan hanya warna.",
       "symbolLarge": "2<4<6",
       "wordLarge": "URUT",
       "mathNotation": "nilai"
@@ -661,9 +631,9 @@ export const SUB_A43: SubBabNaskah = {
       "gameType": "match-abstract-a",
       "title": "Jodohkan Notasi Pola",
       "bookReference": "hlm. 90–93",
-      "objective": "Jodohkan.",
-      "mechanicDescription": "Tiga ronde.",
-      "voiceGuide": "Jodohkan.",
+      "objective": "Jodohkan.. Ingat Struktur Visual.",
+      "mechanicDescription": "Tiga ronde. Gunakan Struktur Visual.",
+      "voiceGuide": "Struktur Visual. Jodohkan.",
       "symbolLarge": "2,4,6",
       "wordLarge": "JODOH",
       "mathNotation": "teks"
@@ -673,9 +643,9 @@ export const SUB_A43: SubBabNaskah = {
       "gameType": "memory-abstract-a",
       "title": "Memori Notasi Pola",
       "bookReference": "hlm. 90",
-      "objective": "Memori.",
-      "mechanicDescription": "Tiga ronde.",
-      "voiceGuide": "Balik kartu.",
+      "objective": "Memori.. Ingat Struktur Visual.",
+      "mechanicDescription": "Tiga ronde. Gunakan Struktur Visual.",
+      "voiceGuide": "Struktur Visual. Balik kartu.",
       "symbolLarge": "+2",
       "wordLarge": "MEMORI",
       "mathNotation": "notasi"
@@ -685,9 +655,9 @@ export const SUB_A43: SubBabNaskah = {
       "gameType": "true-false-a",
       "title": "Benar atau Salah: Pola Gambar",
       "bookReference": "hlm. 87–93",
-      "objective": "Menilai.",
-      "mechanicDescription": "Dua ronde.",
-      "voiceGuide": "Benar/salah.",
+      "objective": "Menilai.. Ingat Struktur Visual.",
+      "mechanicDescription": "Dua ronde. Gunakan Struktur Visual.",
+      "voiceGuide": "Struktur Visual. Benar/salah.",
       "symbolLarge": "✓ ✗",
       "wordLarge": "BENAR SALAH",
       "mathNotation": "alasan"
@@ -697,9 +667,9 @@ export const SUB_A43: SubBabNaskah = {
       "gameType": "detective-a",
       "title": "Detektif Pola Gambar",
       "bookReference": "hlm. 89–93",
-      "objective": "Petunjuk → suku.",
-      "mechanicDescription": "Empat soal.",
-      "voiceGuide": "Pilih.",
+      "objective": "Petunjuk → suku.. Ingat Struktur Visual.",
+      "mechanicDescription": "Empat soal. Gunakan Struktur Visual.",
+      "voiceGuide": "Struktur Visual. Pilih.",
       "symbolLarge": "?",
       "wordLarge": "DETEKTIF",
       "mathNotation": "petunjuk"
@@ -709,9 +679,9 @@ export const SUB_A43: SubBabNaskah = {
       "gameType": "concept-a",
       "title": "Peta Konsep Pola Gambar",
       "bookReference": "hlm. 87–93",
-      "objective": "Mengisi kotak.",
-      "mechanicDescription": "Satu peta.",
-      "voiceGuide": "Pilih opsi.",
+      "objective": "Mengisi kotak.. Ingat Struktur Visual.",
+      "mechanicDescription": "Satu peta. Gunakan Struktur Visual.",
+      "voiceGuide": "Struktur Visual. Pilih opsi.",
       "symbolLarge": "🗺️",
       "wordLarge": "PETA",
       "mathNotation": "konsep"
@@ -721,9 +691,9 @@ export const SUB_A43: SubBabNaskah = {
       "gameType": "story-abstract-a",
       "title": "Cerita Angka Pola Gambar",
       "bookReference": "hlm. 89–93",
-      "objective": "Soal cerita.",
-      "mechanicDescription": "Tiga ronde.",
-      "voiceGuide": "Pilih.",
+      "objective": "Soal cerita.. Ingat Struktur Visual.",
+      "mechanicDescription": "Tiga ronde. Gunakan Struktur Visual.",
+      "voiceGuide": "Struktur Visual. Pilih.",
       "symbolLarge": "📖",
       "wordLarge": "CERITA",
       "mathNotation": "teks"
@@ -743,37 +713,25 @@ export const SUB_A43: SubBabNaskah = {
       "suara": "Selisih yang sama adalah beda pola."
     },
     {
-      "ikon": "📋",
-      "nama": "Membesar/mengecil",
-      "isi": "Beda positif membesarkan; beda negatif mengecilkan.",
-      "suara": "Tanda beda menentukan jenis."
-    },
-    {
-      "ikon": "🔍",
-      "nama": "Tabel",
-      "isi": "Tabel uraian membantu menemukan suku berikutnya.",
-      "suara": "Pakai tabel seperti di buku."
-    },
-    {
       "ikon": "🌍",
       "nama": "Pola Berulang",
-      "isi": "METODE LUAR · Repeating Pattern: Unit pola berulang menentukan suku berikutnya. (asal: Pattern pedagogy).",
-      "suara": "METODE LUAR. Pola Berulang. Unit pola berulang menentukan suku berikutnya."
+      "isi": "Unit pola berulang menentukan suku berikutnya.",
+      "suara": "Pola Berulang. Unit pola berulang menentukan suku berikutnya."
     },
     {
       "ikon": "🌍",
       "nama": "Pola Bertambah",
-      "isi": "METODE LUAR · Growing Pattern: Tiap langkah menambah dengan aturan tetap. (asal: Van de Walle).",
-      "suara": "METODE LUAR. Pola Bertambah. Tiap langkah menambah dengan aturan tetap."
+      "isi": "Tiap langkah menambah dengan aturan tetap.",
+      "suara": "Pola Bertambah. Tiap langkah menambah dengan aturan tetap."
     },
     {
       "ikon": "🌍",
       "nama": "Struktur Visual",
-      "isi": "METODE LUAR · Visual Structure: Lihat kelompok bentuk, bukan hanya warna. (asal: Gestalt patterning).",
-      "suara": "METODE LUAR. Struktur Visual. Lihat kelompok bentuk, bukan hanya warna."
+      "isi": "Lihat kelompok bentuk, bukan hanya warna.",
+      "suara": "Struktur Visual. Lihat kelompok bentuk, bukan hanya warna."
     }
   ],
-  "poinSuara": "Empat poin pola gambar.",
+  "poinSuara": "Ingat: Pola Berulang, Pola Bertambah, Struktur Visual.",
   "cara": {
     "suara": "Ikuti langkah-langkahnya.",
     "potongan": [
@@ -795,12 +753,11 @@ export const SUB_A43: SubBabNaskah = {
       }
     ]
   },
-  "rumah": "Ayo Berlatih: lengkapi pola gambar membesar dan mengecil pada hlm. 93–94.",
+  "rumah": "Ayo Mencoba di rumah: terapkan Pola Berulang pada satu benda atau soal nyata, lalu ceritakan langkahmu.",
   "refleksi": [
-    "Aku menghitung benda.",
-    "Aku menemukan beda.",
-    "Aku membedakan jenis.",
-    "Aku memprediksi kumpulan berikutnya."
+    "Bagaimana Pola Berulang membantumu memahami soal?",
+    "Kapan kamu memakai Pola Bertambah?",
+    "Apa bedanya dengan hanya menghafal rumus atau langkah tanpa arti?"
   ],
   "metodeLuar": [
     {
@@ -844,12 +801,12 @@ export const SUB_B43: SubBabNaskah = {
   "id": "B",
   "codeTitle": "Sub-Bab B (Pola Bilangan)",
   "fullTitle": "Sub-Bab B: Pola Bilangan",
-  "targetDescription": "Siswa menemukan dan membuat pola bilangan membesar (3,5,7…; 1,4,7…; telur +8) dan mengecil (23,18,13…; 32,28…; produksi TV −6) dengan mengamati selisih tetap, serta menyelesaikan cerita rak buku, kursi, dan panen.",
+  "targetDescription": "Siswa menemukan dan membuat pola bilangan membesar (3,5,7…; 1,4,7…; telur +8) dan mengecil (23,18,13…; 32,28…; produksi TV −6) dengan mengamati selisih tetap, serta menyelesaikan cerita rak buku, kursi, dan panen. Siswa memakai cara Barisan Aritmetika Sederhana, Mesin Fungsi, Tabel Nilai.",
   "secondaryBg": "#DBEAFE",
   "secondaryBorder": "#2563EB",
   "secondaryText": "#1E3A8A",
   "silabus": {
-    "teksSuara": "Kita belajar pola bilangan. Tiga, lima, tujuh, sembilan, sebelas, bedanya plus dua. Satu, empat, tujuh, sepuluh, bedanya plus tiga. Dua puluh tiga, delapan belas, tiga belas, delapan, bedanya minus lima. Pola bilangan bisa membesar atau mengecil. Kita melewati enam tahap seru: cerita, peta pikiran, infografis, benda nyata, gambar, dan simbol.",
+    "teksSuara": "Kita belajar pola bilangan. Tiga, lima, tujuh, sembilan, sebelas, bedanya plus dua. Satu, empat, tujuh, sepuluh, bedanya plus tiga. Dua puluh tiga, delapan belas, tiga belas, delapan, bedanya minus lima. Pola bilangan bisa membesar atau mengecil. Kita memakai cara dari luar buku: Barisan Aritmetika Sederhana (Arithmetic Sequence); Mesin Fungsi (Function Machine); Tabel Nilai (Table of Values). Beda tetap antar suku. Aturan mengubah masukan jadi keluaran. Catat suku ke-n dan nilainya. Kita melewati enam tahap seru: cerita, peta pikiran, infografis, benda nyata, gambar, dan simbol.",
     "cp": "Siswa menemukan dan membuat pola bilangan membesar dan mengecil.",
     "referensi": "Buku Siswa Matematika Kelas IV Kemendikbudristek (Bab 3 Sub-Bab B)."
   },
@@ -857,16 +814,16 @@ export const SUB_B43: SubBabNaskah = {
     {
       "id": "K4B3B-V1",
       "judul": "Beda Tetap",
-      "subjudul": "3, 5, 7, 9, 11, …",
+      "subjudul": "Arithmetic Sequence",
       "adegan": [
         {
           "id": "K4B3B-V1-1",
           "judul": "Deret buku",
           "ketukan": [
-            "Lihat deret tiga, lima, tujuh, sembilan, sebelas.",
-            "Apa hubungan antar bilangan?",
-            "Tiap langkah ditambah dua.",
-            "Itulah beda tetap."
+            "Bayangkan situasi nyata di kelas atau di rumah. Lihat deret tiga, lima, tujuh, sembilan, sebelas. Mari kita pahami bersama.",
+            "Apa hubungan antar bilangan. Mari kita pahami bersama.",
+            "Tiap langkah ditambah dua. Mari kita pahami bersama.",
+            "Ingat cara Barisan Aritmetika Sederhana: Beda tetap antar suku."
           ],
           "papan": [
             "3 5 7 9 11",
@@ -879,10 +836,10 @@ export const SUB_B43: SubBabNaskah = {
           "id": "K4B3B-V1-2",
           "judul": "Suku ke-6",
           "ketukan": [
-            "Suku berikutnya sebelas plus dua.",
-            "Hasilnya tiga belas.",
-            "Pola membesar.",
-            "Nilai semakin besar."
+            "Suku berikutnya sebelas plus dua. Mari kita pahami bersama.",
+            "Hasilnya tiga belas. Mari kita pahami bersama.",
+            "Pola membesar. Mari kita pahami bersama.",
+            "Di sini kita memakai ide Arithmetic Sequence — Beda tetap antar suku."
           ],
           "papan": [
             "11+2",
@@ -895,92 +852,88 @@ export const SUB_B43: SubBabNaskah = {
           "id": "K4B3B-V1-3",
           "judul": "Kasus +3",
           "ketukan": [
-            "Kasus satu: satu, empat, tujuh, sepuluh.",
-            "Bedanya plus tiga.",
-            "Lanjutannya tiga belas.",
-            "Selalu amati selisih.",
-            "METODE LUAR. Barisan Aritmetika Sederhana: Beda tetap antar suku."
+            "Kasus satu: satu, empat, tujuh, sepuluh. Mari kita pahami bersama.",
+            "Bedanya plus tiga. Mari kita pahami bersama.",
+            "Lanjutannya tiga belas. Mari kita pahami bersama.",
+            "METODE LUAR · Barisan Aritmetika Sederhana: Beda tetap antar suku."
           ],
           "papan": [
             "1 4 7 10",
             "+3",
             "13",
-            "amati",
-            "METODE LUAR · Barisan Aritmetika Sederhana"
+            "amati"
           ]
         }
       ]
     },
     {
       "id": "K4B3B-V2",
-      "judul": "Pola Mengecil",
-      "subjudul": "23, 18, 13, 8, …",
+      "judul": "Latihan: Mesin Fungsi",
+      "subjudul": "Function Machine",
       "adegan": [
         {
           "id": "K4B3B-V2-1",
           "judul": "Kasus dua",
           "ketukan": [
-            "Dua puluh tiga, delapan belas, tiga belas, delapan.",
-            "Selisihnya minus lima.",
-            "Lanjutannya tiga.",
-            "Nilai semakin kecil."
+            "Dua puluh tiga, delapan belas, tiga belas, delapan. Mari kita pahami bersama.",
+            "Selisihnya minus lima. Mari kita pahami bersama.",
+            "Lanjutannya tiga. Mari kita pahami bersama.",
+            "Ingat cara Mesin Fungsi: Aturan mengubah masukan jadi keluaran."
           ],
           "papan": [
             "23 18 13 8",
             "−5",
-            "3",
-            "mengecil"
+            "mengecil",
+            "mesin"
           ]
         },
         {
           "id": "K4B3B-V2-2",
           "judul": "Ingat definisi",
           "ketukan": [
-            "Pola bilangan punya aturan penyusunan.",
-            "Bisa membesar atau mengecil.",
-            "Kuncinya beda antar suku.",
-            "Tulis di tabel agar jelas."
+            "Pola bilangan punya aturan penyusunan. Mari kita pahami bersama.",
+            "Bisa membesar atau mengecil. Mari kita pahami bersama.",
+            "Kuncinya beda antar suku. Mari kita pahami bersama.",
+            "Di sini kita memakai ide Function Machine — Aturan mengubah masukan jadi keluaran."
           ],
           "papan": [
             "aturan",
-            "±",
             "beda",
-            "tabel"
+            "tabel",
+            "mesin"
           ]
         },
         {
           "id": "K4B3B-V2-3",
           "judul": "Contoh 32…",
           "ketukan": [
-            "Tiga puluh dua, dua puluh delapan, dua puluh empat.",
-            "Bedanya minus empat.",
-            "Ini pola mengecil.",
-            "Latihan cerita menyusul.",
-            "METODE LUAR. Mesin Fungsi: Aturan mengubah masukan jadi keluaran."
+            "Tiga puluh dua, dua puluh delapan, dua puluh empat. Mari kita pahami bersama.",
+            "Bedanya minus empat. Mari kita pahami bersama.",
+            "Ini pola mengecil. Mari kita pahami bersama.",
+            "METODE LUAR · Mesin Fungsi: Aturan mengubah masukan jadi keluaran."
           ],
           "papan": [
             "32 28 24",
             "−4",
             "mengecil",
-            "cerita",
-            "METODE LUAR · Mesin Fungsi"
+            "cerita"
           ]
         }
       ]
     },
     {
       "id": "K4B3B-V3",
-      "judul": "Cerita Telur",
-      "subjudul": "20, 28, 36, 44, 52",
+      "judul": "Siap pakai Table of Values",
+      "subjudul": "Table of Values",
       "adegan": [
         {
           "id": "K4B3B-V3-1",
           "judul": "Panen telur",
           "ketukan": [
-            "Hari satu dua puluh telur.",
-            "Hari dua dua puluh delapan.",
-            "Hari tiga tiga puluh enam.",
-            "Bedanya plus delapan."
+            "Hari satu dua puluh telur. Mari kita pahami bersama.",
+            "Hari dua dua puluh delapan. Mari kita pahami bersama.",
+            "Hari tiga tiga puluh enam. Mari kita pahami bersama.",
+            "Ingat cara Tabel Nilai: Catat suku ke-n dan nilainya."
           ],
           "papan": [
             "20",
@@ -993,10 +946,10 @@ export const SUB_B43: SubBabNaskah = {
           "id": "K4B3B-V3-2",
           "judul": "Hari ke-5",
           "ketukan": [
-            "Lanjutkan pola sampai hari lima.",
-            "Hasilnya lima puluh dua.",
-            "Cerita memakai pola bilangan.",
-            "Sama seperti deret angka."
+            "Lanjutkan pola sampai hari lima. Mari kita pahami bersama.",
+            "Hasilnya lima puluh dua. Mari kita pahami bersama.",
+            "Cerita memakai pola bilangan. Mari kita pahami bersama.",
+            "Di sini kita memakai ide Table of Values — Catat suku ke-n dan nilainya."
           ],
           "papan": [
             "hari 5",
@@ -1009,18 +962,16 @@ export const SUB_B43: SubBabNaskah = {
           "id": "K4B3B-V3-3",
           "judul": "Siap berlatih",
           "ketukan": [
-            "Rak buku, kursi, dan televisi juga berpola.",
-            "Cari bedanya dulu.",
-            "Lalu hitung suku yang diminta.",
-            "Siap latihan pola bilangan.",
-            "METODE LUAR. Tabel Nilai: Catat suku ke-n dan nilainya."
+            "Rak buku, kursi, dan televisi juga berpola. Mari kita pahami bersama.",
+            "Cari bedanya dulu. Mari kita pahami bersama.",
+            "Lalu hitung suku yang diminta. Mari kita pahami bersama.",
+            "METODE LUAR · Tabel Nilai: Catat suku ke-n dan nilainya."
           ],
           "papan": [
             "rak/kursi",
             "cari beda",
             "hitung",
-            "siap",
-            "METODE LUAR · Tabel Nilai"
+            "siap"
           ]
         }
       ]
@@ -1029,82 +980,66 @@ export const SUB_B43: SubBabNaskah = {
   "mindMaps": [
     {
       "stepNumber": 1,
-      "stepTitle": "1. Amati deret",
-      "stepDesc": "Lihat antar suku.",
-      "icon": "👀",
+      "stepTitle": "1. Pahami soal",
+      "stepDesc": "Baca soal Pola Bilangan. Apa yang ditanyakan?",
+      "icon": "❓",
       "flowFrom": "START",
       "flowTo": "2"
     },
     {
       "stepNumber": 2,
-      "stepTitle": "2. Hitung beda",
-      "stepDesc": "Selisih tetap.",
-      "icon": "➖",
+      "stepTitle": "2. Arithmetic Sequence",
+      "stepDesc": "Beda tetap antar suku.",
+      "icon": "🧭",
       "flowFrom": "1",
       "flowTo": "3"
     },
     {
       "stepNumber": 3,
-      "stepTitle": "3. Membesar",
-      "stepDesc": "Beda +.",
-      "icon": "📈",
+      "stepTitle": "3. Function Machine",
+      "stepDesc": "Aturan mengubah masukan jadi keluaran.",
+      "icon": "🛠️",
       "flowFrom": "2",
       "flowTo": "4"
     },
     {
       "stepNumber": 4,
-      "stepTitle": "4. Mengecil",
-      "stepDesc": "Beda −.",
-      "icon": "📉",
+      "stepTitle": "4. Table of Values",
+      "stepDesc": "Catat suku ke-n dan nilainya.",
+      "icon": "✨",
       "flowFrom": "3",
       "flowTo": "5"
     },
     {
       "stepNumber": 5,
-      "stepTitle": "5. Kasus +3",
-      "stepDesc": "1,4,7,10…",
-      "icon": "3️⃣",
+      "stepTitle": "5. Kerjakan",
+      "stepDesc": "Terapkan cara itu pada angka atau gambar soal.",
+      "icon": "✏️",
       "flowFrom": "4",
       "flowTo": "6"
     },
     {
       "stepNumber": 6,
-      "stepTitle": "6. Kasus −5",
-      "stepDesc": "23,18,13…",
-      "icon": "5️⃣",
+      "stepTitle": "6. Cek masuk akal",
+      "stepDesc": "Apakah hasilnya masuk akal? Bandingkan dengan perkiraan.",
+      "icon": "✅",
       "flowFrom": "5",
       "flowTo": "7"
     },
     {
       "stepNumber": 7,
-      "stepTitle": "7. Cerita",
-      "stepDesc": "Telur +8.",
-      "icon": "🥚",
+      "stepTitle": "7. Simpulkan",
+      "stepDesc": "Ulangi ide utamanya dengan kalimatmu sendiri.",
+      "icon": "💬",
       "flowFrom": "6",
       "flowTo": "8"
     },
     {
       "stepNumber": 8,
-      "stepTitle": "8. Prediksi",
-      "stepDesc": "Suku ke-n.",
-      "icon": "✅",
+      "stepTitle": "8. Lanjut main",
+      "stepDesc": "Siap melatih di permainan Concrete sampai Abstract.",
+      "icon": "🎮",
       "flowFrom": "7",
-      "flowTo": "9"
-    },
-    {
-      "stepNumber": 9,
-      "stepTitle": "9. METODE LUAR · Barisan Aritmetika Sederhana",
-      "stepDesc": "Beda tetap antar suku.",
-      "icon": "🌍",
-      "flowFrom": "8",
-      "flowTo": "10"
-    },
-    {
-      "stepNumber": 10,
-      "stepTitle": "10. METODE LUAR · Mesin Fungsi",
-      "stepDesc": "Aturan mengubah masukan jadi keluaran.",
-      "icon": "🌍",
-      "flowFrom": "9",
       "flowTo": "END"
     }
   ],
@@ -1183,22 +1118,15 @@ export const SUB_B43: SubBabNaskah = {
       "judul": "Barisan Aritmetika Sederhana",
       "emoji": "🌍",
       "countNum": 1,
-      "countWord": "METODE LUAR · Arithmetic Sequence",
-      "suara": "METODE LUAR. Barisan Aritmetika Sederhana. Beda tetap antar suku."
+      "countWord": "ingat",
+      "suara": "Beda tetap antar suku."
     },
     {
       "judul": "Mesin Fungsi",
       "emoji": "🌍",
       "countNum": 2,
-      "countWord": "METODE LUAR · Function Machine",
-      "suara": "METODE LUAR. Mesin Fungsi. Aturan mengubah masukan jadi keluaran."
-    },
-    {
-      "judul": "Tabel Nilai",
-      "emoji": "🌍",
-      "countNum": 3,
-      "countWord": "METODE LUAR · Table of Values",
-      "suara": "METODE LUAR. Tabel Nilai. Catat suku ke-n dan nilainya."
+      "countWord": "ingat",
+      "suara": "Aturan mengubah masukan jadi keluaran."
     }
   ],
   "games": [
@@ -1207,9 +1135,9 @@ export const SUB_B43: SubBabNaskah = {
       "gameType": "baca-bil",
       "title": "Baca Pola Bilangan",
       "bookReference": "hlm. 96–97 (3,5,7…)",
-      "objective": "Membaca beda bilangan. (METODE LUAR · Barisan Aritmetika Sederhana)",
-      "mechanicDescription": "Tiga ronde.",
-      "voiceGuide": "METODE LUAR · Barisan Aritmetika Sederhana. Pilih beda/jenis.",
+      "objective": "Pakai Barisan Aritmetika Sederhana: Beda tetap antar suku. Latihan: Membaca beda bilangan..",
+      "mechanicDescription": "Tiga ronde. Saat bermain, terapkan Arithmetic Sequence: Beda tetap antar suku.",
+      "voiceGuide": "Barisan Aritmetika Sederhana. Beda tetap antar suku.",
       "emoji": "🔢",
       "targetCount": 6
     },
@@ -1218,9 +1146,9 @@ export const SUB_B43: SubBabNaskah = {
       "gameType": "lanjut-besar-b",
       "title": "Lanjutkan Pola Membesar",
       "bookReference": "hlm. 97 (kasus +3)",
-      "objective": "Suku berikutnya.",
-      "mechanicDescription": "Tiga ronde.",
-      "voiceGuide": "Pilih bilangan.",
+      "objective": "Pakai Barisan Aritmetika Sederhana: Beda tetap antar suku. Latihan: Suku berikutnya..",
+      "mechanicDescription": "Tiga ronde. Saat bermain, terapkan Arithmetic Sequence: Beda tetap antar suku.",
+      "voiceGuide": "Barisan Aritmetika Sederhana. Beda tetap antar suku.",
       "emoji": "📈",
       "targetCount": 6
     },
@@ -1229,9 +1157,9 @@ export const SUB_B43: SubBabNaskah = {
       "gameType": "lanjut-kecil-b",
       "title": "Lanjutkan Pola Mengecil",
       "bookReference": "hlm. 98 (kasus −5)",
-      "objective": "Suku mengecil.",
-      "mechanicDescription": "Tiga ronde.",
-      "voiceGuide": "Pilih bilangan.",
+      "objective": "Pakai Barisan Aritmetika Sederhana: Beda tetap antar suku. Latihan: Suku mengecil..",
+      "mechanicDescription": "Tiga ronde. Saat bermain, terapkan Arithmetic Sequence: Beda tetap antar suku.",
+      "voiceGuide": "Barisan Aritmetika Sederhana. Beda tetap antar suku.",
       "emoji": "📉",
       "targetCount": 6
     },
@@ -1240,9 +1168,9 @@ export const SUB_B43: SubBabNaskah = {
       "gameType": "sort-bil",
       "title": "Pilah Membesar/Mengecil",
       "bookReference": "hlm. 97–98",
-      "objective": "Memilah.",
-      "mechanicDescription": "Tiga ronde.",
-      "voiceGuide": "Pilah.",
+      "objective": "Pakai Barisan Aritmetika Sederhana: Beda tetap antar suku. Latihan: Memilah..",
+      "mechanicDescription": "Tiga ronde. Saat bermain, terapkan Arithmetic Sequence: Beda tetap antar suku.",
+      "voiceGuide": "Barisan Aritmetika Sederhana. Beda tetap antar suku.",
       "emoji": "🧺",
       "targetCount": 18
     },
@@ -1251,9 +1179,9 @@ export const SUB_B43: SubBabNaskah = {
       "gameType": "match-bil",
       "title": "Jodohkan Deret dan Beda",
       "bookReference": "hlm. 97–100",
-      "objective": "Menjodohkan.",
-      "mechanicDescription": "Tiga ronde.",
-      "voiceGuide": "Jodohkan.",
+      "objective": "Menjodohkan.. Ingat Barisan Aritmetika Sederhana.",
+      "mechanicDescription": "Tiga ronde. Gunakan Barisan Aritmetika Sederhana.",
+      "voiceGuide": "Barisan Aritmetika Sederhana. Jodohkan.",
       "emoji": "🔗",
       "targetCount": 12
     },
@@ -1262,9 +1190,9 @@ export const SUB_B43: SubBabNaskah = {
       "gameType": "memory-bil",
       "title": "Memori Pola Bilangan",
       "bookReference": "hlm. 97–99",
-      "objective": "Memori.",
-      "mechanicDescription": "Tiga ronde.",
-      "voiceGuide": "Balik kartu.",
+      "objective": "Memori.. Ingat Barisan Aritmetika Sederhana.",
+      "mechanicDescription": "Tiga ronde. Gunakan Barisan Aritmetika Sederhana.",
+      "voiceGuide": "Barisan Aritmetika Sederhana. Balik kartu.",
       "emoji": "🃏",
       "targetCount": 12
     },
@@ -1273,9 +1201,9 @@ export const SUB_B43: SubBabNaskah = {
       "gameType": "tap-bil",
       "title": "Ketuk Deret Diminta",
       "bookReference": "hlm. 97–100",
-      "objective": "Mengetuk.",
-      "mechanicDescription": "Tiga ronde.",
-      "voiceGuide": "Ketuk.",
+      "objective": "Mengetuk.. Ingat Barisan Aritmetika Sederhana.",
+      "mechanicDescription": "Tiga ronde. Gunakan Barisan Aritmetika Sederhana.",
+      "voiceGuide": "Barisan Aritmetika Sederhana. Ketuk.",
       "emoji": "👆",
       "targetCount": 9
     },
@@ -1284,9 +1212,9 @@ export const SUB_B43: SubBabNaskah = {
       "gameType": "tap-all-bil",
       "title": "Ketuk Semua Jenis Bilangan",
       "bookReference": "hlm. 97–98",
-      "objective": "Ketuk semua.",
-      "mechanicDescription": "Tiga ronde.",
-      "voiceGuide": "Ketuk semua.",
+      "objective": "Ketuk semua.. Ingat Barisan Aritmetika Sederhana.",
+      "mechanicDescription": "Tiga ronde. Gunakan Barisan Aritmetika Sederhana.",
+      "voiceGuide": "Barisan Aritmetika Sederhana. Ketuk semua.",
       "emoji": "✔️",
       "targetCount": 3
     },
@@ -1295,9 +1223,9 @@ export const SUB_B43: SubBabNaskah = {
       "gameType": "story-bil",
       "title": "Cerita Telur, Rak, Kursi, TV",
       "bookReference": "hlm. 98–100",
-      "objective": "Soal cerita.",
-      "mechanicDescription": "Tiga ronde.",
-      "voiceGuide": "Pilih.",
+      "objective": "Soal cerita.. Ingat Barisan Aritmetika Sederhana.",
+      "mechanicDescription": "Tiga ronde. Gunakan Barisan Aritmetika Sederhana.",
+      "voiceGuide": "Barisan Aritmetika Sederhana. Pilih.",
       "emoji": "🥚",
       "targetCount": 6
     },
@@ -1306,9 +1234,9 @@ export const SUB_B43: SubBabNaskah = {
       "gameType": "order-bil",
       "title": "Urutkan Bilangan Pola",
       "bookReference": "hlm. 96–99",
-      "objective": "Mengurutkan.",
-      "mechanicDescription": "Tiga ronde.",
-      "voiceGuide": "Urutkan.",
+      "objective": "Mengurutkan.. Ingat Barisan Aritmetika Sederhana.",
+      "mechanicDescription": "Tiga ronde. Gunakan Barisan Aritmetika Sederhana.",
+      "voiceGuide": "Barisan Aritmetika Sederhana. Urutkan.",
       "emoji": "📶",
       "targetCount": 3
     },
@@ -1317,9 +1245,9 @@ export const SUB_B43: SubBabNaskah = {
       "gameType": "rantai-besar",
       "title": "Rantai Membesar",
       "bookReference": "hlm. 97",
-      "objective": "Baca rantai. (METODE LUAR · Barisan Aritmetika Sederhana)",
-      "mechanicDescription": "Tiga ronde.",
-      "voiceGuide": "METODE LUAR · Barisan Aritmetika Sederhana. Pilih.",
+      "objective": "Pakai Mesin Fungsi: Aturan mengubah masukan jadi keluaran. Latihan: Baca rantai..",
+      "mechanicDescription": "Tiga ronde. Saat bermain, terapkan Function Machine: Aturan mengubah masukan jadi keluaran.",
+      "voiceGuide": "Mesin Fungsi. Aturan mengubah masukan jadi keluaran.",
       "diagramType": "chain",
       "numberA": 1,
       "numberB": 4
@@ -1329,9 +1257,9 @@ export const SUB_B43: SubBabNaskah = {
       "gameType": "rantai-kecil",
       "title": "Rantai Mengecil",
       "bookReference": "hlm. 98",
-      "objective": "Baca rantai.",
-      "mechanicDescription": "Tiga ronde.",
-      "voiceGuide": "Pilih.",
+      "objective": "Pakai Mesin Fungsi: Aturan mengubah masukan jadi keluaran. Latihan: Baca rantai..",
+      "mechanicDescription": "Tiga ronde. Saat bermain, terapkan Function Machine: Aturan mengubah masukan jadi keluaran.",
+      "voiceGuide": "Mesin Fungsi. Aturan mengubah masukan jadi keluaran.",
       "diagramType": "chain",
       "numberA": 23,
       "numberB": 8
@@ -1341,9 +1269,9 @@ export const SUB_B43: SubBabNaskah = {
       "gameType": "match-diagram-b",
       "title": "Jodohkan Rantai Bilangan",
       "bookReference": "hlm. 97–100",
-      "objective": "Jodohkan.",
-      "mechanicDescription": "Tiga ronde.",
-      "voiceGuide": "Jodohkan.",
+      "objective": "Pakai Mesin Fungsi: Aturan mengubah masukan jadi keluaran. Latihan: Jodohkan..",
+      "mechanicDescription": "Tiga ronde. Saat bermain, terapkan Function Machine: Aturan mengubah masukan jadi keluaran.",
+      "voiceGuide": "Mesin Fungsi. Aturan mengubah masukan jadi keluaran.",
       "diagramType": "match",
       "numberA": 1,
       "numberB": 2
@@ -1353,9 +1281,9 @@ export const SUB_B43: SubBabNaskah = {
       "gameType": "memory-diagram-b",
       "title": "Memori Rantai",
       "bookReference": "hlm. 97",
-      "objective": "Memori.",
-      "mechanicDescription": "Tiga ronde.",
-      "voiceGuide": "Balik kartu.",
+      "objective": "Pakai Mesin Fungsi: Aturan mengubah masukan jadi keluaran. Latihan: Memori..",
+      "mechanicDescription": "Tiga ronde. Saat bermain, terapkan Function Machine: Aturan mengubah masukan jadi keluaran.",
+      "voiceGuide": "Mesin Fungsi. Aturan mengubah masukan jadi keluaran.",
       "diagramType": "mem",
       "numberA": 1,
       "numberB": 4
@@ -1365,9 +1293,9 @@ export const SUB_B43: SubBabNaskah = {
       "gameType": "table-b",
       "title": "Tabel Uraian Bilangan",
       "bookReference": "hlm. 96 & 99",
-      "objective": "Isi lanjut.",
-      "mechanicDescription": "Tiga tabel.",
-      "voiceGuide": "Pilih.",
+      "objective": "Isi lanjut.. Ingat Mesin Fungsi.",
+      "mechanicDescription": "Tiga tabel. Gunakan Mesin Fungsi.",
+      "voiceGuide": "Mesin Fungsi. Pilih.",
       "diagramType": "table",
       "numberA": 1,
       "numberB": 3
@@ -1377,9 +1305,9 @@ export const SUB_B43: SubBabNaskah = {
       "gameType": "tap-all-b",
       "title": "Ketuk Semua Rantai",
       "bookReference": "hlm. 97–98",
-      "objective": "Ketuk semua.",
-      "mechanicDescription": "Tiga ronde.",
-      "voiceGuide": "Ketuk semua.",
+      "objective": "Ketuk semua.. Ingat Mesin Fungsi.",
+      "mechanicDescription": "Tiga ronde. Gunakan Mesin Fungsi.",
+      "voiceGuide": "Mesin Fungsi. Ketuk semua.",
       "diagramType": "select",
       "numberA": 1,
       "numberB": 4
@@ -1389,9 +1317,9 @@ export const SUB_B43: SubBabNaskah = {
       "gameType": "sort-diagram-b",
       "title": "Pilah Rantai Pola",
       "bookReference": "hlm. 97–98",
-      "objective": "Pilah.",
-      "mechanicDescription": "Tiga ronde.",
-      "voiceGuide": "Pilah.",
+      "objective": "Pilah.. Ingat Mesin Fungsi.",
+      "mechanicDescription": "Tiga ronde. Gunakan Mesin Fungsi.",
+      "voiceGuide": "Mesin Fungsi. Pilah.",
       "diagramType": "sort",
       "numberA": 1,
       "numberB": 6
@@ -1401,9 +1329,9 @@ export const SUB_B43: SubBabNaskah = {
       "gameType": "beda-bil",
       "title": "Temukan Beda Bilangan",
       "bookReference": "hlm. 97–98",
-      "objective": "Pilih beda.",
-      "mechanicDescription": "Tiga ronde.",
-      "voiceGuide": "Pilih.",
+      "objective": "Pilih beda.. Ingat Mesin Fungsi.",
+      "mechanicDescription": "Tiga ronde. Gunakan Mesin Fungsi.",
+      "voiceGuide": "Mesin Fungsi. Pilih.",
       "diagramType": "diff",
       "numberA": 1,
       "numberB": 2
@@ -1413,9 +1341,9 @@ export const SUB_B43: SubBabNaskah = {
       "gameType": "choose-next-b",
       "title": "Pilih Bilangan Berikutnya",
       "bookReference": "hlm. 99–100",
-      "objective": "Pilih lanjut.",
-      "mechanicDescription": "Tiga ronde.",
-      "voiceGuide": "Pilih.",
+      "objective": "Pilih lanjut.. Ingat Mesin Fungsi.",
+      "mechanicDescription": "Tiga ronde. Gunakan Mesin Fungsi.",
+      "voiceGuide": "Mesin Fungsi. Pilih.",
       "diagramType": "choose",
       "numberA": 1,
       "numberB": 2
@@ -1425,9 +1353,9 @@ export const SUB_B43: SubBabNaskah = {
       "gameType": "story-picture-b",
       "title": "Cerita Diagram Bilangan",
       "bookReference": "hlm. 98–100",
-      "objective": "Cerita + rantai.",
-      "mechanicDescription": "Tiga ronde.",
-      "voiceGuide": "Pilih.",
+      "objective": "Cerita + rantai.. Ingat Mesin Fungsi.",
+      "mechanicDescription": "Tiga ronde. Gunakan Mesin Fungsi.",
+      "voiceGuide": "Mesin Fungsi. Pilih.",
       "diagramType": "story",
       "numberA": 1,
       "numberB": 2
@@ -1437,9 +1365,9 @@ export const SUB_B43: SubBabNaskah = {
       "gameType": "write-next-b",
       "title": "Tulis Suku Berikutnya",
       "bookReference": "hlm. 97–100",
-      "objective": "Menulis lanjut. (METODE LUAR · Barisan Aritmetika Sederhana)",
-      "mechanicDescription": "Tiga ronde.",
-      "voiceGuide": "METODE LUAR · Barisan Aritmetika Sederhana. Pilih.",
+      "objective": "Pakai Tabel Nilai: Catat suku ke-n dan nilainya. Latihan: Menulis lanjut..",
+      "mechanicDescription": "Tiga ronde. Saat bermain, terapkan Table of Values: Catat suku ke-n dan nilainya.",
+      "voiceGuide": "Tabel Nilai. Catat suku ke-n dan nilainya.",
       "symbolLarge": "13",
       "wordLarge": "LANJUT",
       "mathNotation": "a_n"
@@ -1449,9 +1377,9 @@ export const SUB_B43: SubBabNaskah = {
       "gameType": "write-beda-b",
       "title": "Tulis Beda Bilangan",
       "bookReference": "hlm. 97–98",
-      "objective": "Menulis beda.",
-      "mechanicDescription": "Tiga ronde.",
-      "voiceGuide": "Pilih.",
+      "objective": "Pakai Tabel Nilai: Catat suku ke-n dan nilainya. Latihan: Menulis beda..",
+      "mechanicDescription": "Tiga ronde. Saat bermain, terapkan Table of Values: Catat suku ke-n dan nilainya.",
+      "voiceGuide": "Tabel Nilai. Catat suku ke-n dan nilainya.",
       "symbolLarge": "+3",
       "wordLarge": "BEDA",
       "mathNotation": "d"
@@ -1461,9 +1389,9 @@ export const SUB_B43: SubBabNaskah = {
       "gameType": "choose-jenis-b",
       "title": "Pilih Jenis Bilangan",
       "bookReference": "hlm. 98",
-      "objective": "Membesar/mengecil.",
-      "mechanicDescription": "Tiga ronde.",
-      "voiceGuide": "Pilih.",
+      "objective": "Pakai Tabel Nilai: Catat suku ke-n dan nilainya. Latihan: Membesar/mengecil..",
+      "mechanicDescription": "Tiga ronde. Saat bermain, terapkan Table of Values: Catat suku ke-n dan nilainya.",
+      "voiceGuide": "Tabel Nilai. Catat suku ke-n dan nilainya.",
       "symbolLarge": "📈",
       "wordLarge": "JENIS",
       "mathNotation": "jenis"
@@ -1473,9 +1401,9 @@ export const SUB_B43: SubBabNaskah = {
       "gameType": "order-abstract-b",
       "title": "Urutkan Suku Bilangan",
       "bookReference": "hlm. 96–99",
-      "objective": "Mengurutkan.",
-      "mechanicDescription": "Tiga ronde.",
-      "voiceGuide": "Urutkan.",
+      "objective": "Pakai Tabel Nilai: Catat suku ke-n dan nilainya. Latihan: Mengurutkan..",
+      "mechanicDescription": "Tiga ronde. Saat bermain, terapkan Table of Values: Catat suku ke-n dan nilainya.",
+      "voiceGuide": "Tabel Nilai. Catat suku ke-n dan nilainya.",
       "symbolLarge": "3<5<7",
       "wordLarge": "URUT",
       "mathNotation": "nilai"
@@ -1485,9 +1413,9 @@ export const SUB_B43: SubBabNaskah = {
       "gameType": "match-abstract-b",
       "title": "Jodohkan Notasi Bilangan",
       "bookReference": "hlm. 97–100",
-      "objective": "Jodohkan.",
-      "mechanicDescription": "Tiga ronde.",
-      "voiceGuide": "Jodohkan.",
+      "objective": "Jodohkan.. Ingat Tabel Nilai.",
+      "mechanicDescription": "Tiga ronde. Gunakan Tabel Nilai.",
+      "voiceGuide": "Tabel Nilai. Jodohkan.",
       "symbolLarge": "1,4,7",
       "wordLarge": "JODOH",
       "mathNotation": "teks"
@@ -1497,9 +1425,9 @@ export const SUB_B43: SubBabNaskah = {
       "gameType": "memory-abstract-b",
       "title": "Memori Notasi Bilangan",
       "bookReference": "hlm. 97",
-      "objective": "Memori.",
-      "mechanicDescription": "Tiga ronde.",
-      "voiceGuide": "Balik kartu.",
+      "objective": "Memori.. Ingat Tabel Nilai.",
+      "mechanicDescription": "Tiga ronde. Gunakan Tabel Nilai.",
+      "voiceGuide": "Tabel Nilai. Balik kartu.",
       "symbolLarge": "-5",
       "wordLarge": "MEMORI",
       "mathNotation": "notasi"
@@ -1509,9 +1437,9 @@ export const SUB_B43: SubBabNaskah = {
       "gameType": "true-false-b",
       "title": "Benar atau Salah: Pola Bilangan",
       "bookReference": "hlm. 96–99",
-      "objective": "Menilai.",
-      "mechanicDescription": "Dua ronde.",
-      "voiceGuide": "Benar/salah.",
+      "objective": "Menilai.. Ingat Tabel Nilai.",
+      "mechanicDescription": "Dua ronde. Gunakan Tabel Nilai.",
+      "voiceGuide": "Tabel Nilai. Benar/salah.",
       "symbolLarge": "✓ ✗",
       "wordLarge": "BENAR SALAH",
       "mathNotation": "alasan"
@@ -1521,9 +1449,9 @@ export const SUB_B43: SubBabNaskah = {
       "gameType": "detective-b",
       "title": "Detektif Pola Bilangan",
       "bookReference": "hlm. 96–100",
-      "objective": "Petunjuk → suku.",
-      "mechanicDescription": "Empat soal.",
-      "voiceGuide": "Pilih.",
+      "objective": "Petunjuk → suku.. Ingat Tabel Nilai.",
+      "mechanicDescription": "Empat soal. Gunakan Tabel Nilai.",
+      "voiceGuide": "Tabel Nilai. Pilih.",
       "symbolLarge": "?",
       "wordLarge": "DETEKTIF",
       "mathNotation": "petunjuk"
@@ -1533,9 +1461,9 @@ export const SUB_B43: SubBabNaskah = {
       "gameType": "concept-b",
       "title": "Peta Konsep Pola Bilangan",
       "bookReference": "hlm. 96–98",
-      "objective": "Mengisi kotak.",
-      "mechanicDescription": "Satu peta.",
-      "voiceGuide": "Pilih opsi.",
+      "objective": "Mengisi kotak.. Ingat Tabel Nilai.",
+      "mechanicDescription": "Satu peta. Gunakan Tabel Nilai.",
+      "voiceGuide": "Tabel Nilai. Pilih opsi.",
       "symbolLarge": "🗺️",
       "wordLarge": "PETA",
       "mathNotation": "konsep"
@@ -1545,9 +1473,9 @@ export const SUB_B43: SubBabNaskah = {
       "gameType": "story-abstract-b",
       "title": "Cerita Angka Pola Bilangan",
       "bookReference": "hlm. 98–100",
-      "objective": "Soal cerita.",
-      "mechanicDescription": "Tiga ronde.",
-      "voiceGuide": "Pilih.",
+      "objective": "Soal cerita.. Ingat Tabel Nilai.",
+      "mechanicDescription": "Tiga ronde. Gunakan Tabel Nilai.",
+      "voiceGuide": "Tabel Nilai. Pilih.",
       "symbolLarge": "📖",
       "wordLarge": "CERITA",
       "mathNotation": "teks"
@@ -1567,37 +1495,25 @@ export const SUB_B43: SubBabNaskah = {
       "suara": "Selisih tetap = beda."
     },
     {
-      "ikon": "📈",
-      "nama": "Jenis",
-      "isi": "Beda positif membesarkan; beda negatif mengecilkan.",
-      "suara": "Tanda beda menentukan arah."
-    },
-    {
-      "ikon": "🥚",
-      "nama": "Cerita",
-      "isi": "Masalah telur, rak, kursi, TV diselesaikan dengan pola yang sama.",
-      "suara": "Cerita = deret dengan beda."
-    },
-    {
       "ikon": "🌍",
       "nama": "Barisan Aritmetika Sederhana",
-      "isi": "METODE LUAR · Arithmetic Sequence: Beda tetap antar suku. (asal: Number patterns).",
-      "suara": "METODE LUAR. Barisan Aritmetika Sederhana. Beda tetap antar suku."
+      "isi": "Beda tetap antar suku.",
+      "suara": "Barisan Aritmetika Sederhana. Beda tetap antar suku."
     },
     {
       "ikon": "🌍",
       "nama": "Mesin Fungsi",
-      "isi": "METODE LUAR · Function Machine: Aturan mengubah masukan jadi keluaran. (asal: Input-output pedagogy).",
-      "suara": "METODE LUAR. Mesin Fungsi. Aturan mengubah masukan jadi keluaran."
+      "isi": "Aturan mengubah masukan jadi keluaran.",
+      "suara": "Mesin Fungsi. Aturan mengubah masukan jadi keluaran."
     },
     {
       "ikon": "🌍",
       "nama": "Tabel Nilai",
-      "isi": "METODE LUAR · Table of Values: Catat suku ke-n dan nilainya. (asal: Pattern tables).",
-      "suara": "METODE LUAR. Tabel Nilai. Catat suku ke-n dan nilainya."
+      "isi": "Catat suku ke-n dan nilainya.",
+      "suara": "Tabel Nilai. Catat suku ke-n dan nilainya."
     }
   ],
-  "poinSuara": "Empat poin pola bilangan.",
+  "poinSuara": "Ingat: Barisan Aritmetika Sederhana, Mesin Fungsi, Tabel Nilai.",
   "cara": {
     "suara": "Ikuti langkah-langkahnya.",
     "potongan": [
@@ -1619,12 +1535,11 @@ export const SUB_B43: SubBabNaskah = {
       }
     ]
   },
-  "rumah": "Ayo Berlatih: kerjakan latihan 2 hlm. 99–100 (lanjutkan deret dan cerita).",
+  "rumah": "Ayo Mencoba di rumah: terapkan Barisan Aritmetika Sederhana pada satu benda atau soal nyata, lalu ceritakan langkahmu.",
   "refleksi": [
-    "Aku mencari beda.",
-    "Aku menentukan jenis.",
-    "Aku menulis suku berikutnya.",
-    "Aku menyelesaikan cerita pola."
+    "Bagaimana Barisan Aritmetika Sederhana membantumu memahami soal?",
+    "Kapan kamu memakai Mesin Fungsi?",
+    "Apa bedanya dengan hanya menghafal rumus atau langkah tanpa arti?"
   ],
   "metodeLuar": [
     {

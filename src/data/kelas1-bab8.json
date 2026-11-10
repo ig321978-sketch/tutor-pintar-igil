@@ -15,7 +15,7 @@
       "id": "A",
       "codeTitle": "Sub-Bab A (Mengelompokkan Data)",
       "fullTitle": "Sub-Bab A: Mengelompokkan Data",
-      "targetDescription": "Siswa mengelompokkan benda menurut jenisnya, menghitung banyak benda pada setiap kelompok dengan turus, menyajikan data dalam daftar dan tabel (tabel menurun dan mendatar), menyebutkan bagian tabel yaitu baris, kolom, dan judul, serta membaca data untuk menentukan yang paling banyak, paling sedikit, sama banyak, selisih, dan jumlah semuanya.",
+      "targetDescription": "Siswa mengelompokkan benda menurut jenisnya, menghitung banyak benda pada setiap kelompok dengan turus, menyajikan data dalam daftar dan tabel (tabel menurun dan mendatar), menyebutkan bagian tabel yaitu baris, kolom, dan judul, serta membaca data untuk menentukan yang paling banyak, paling sedikit, sama banyak, selisih, dan jumlah semuanya. Memakai Turus, Diagram Gambar, Banding Kategori.",
       "secondaryBg": "#EDE9FE",
       "secondaryBorder": "#7C3AED",
       "secondaryText": "#4C1D95",
@@ -24,37 +24,37 @@
           "id": "A8-S1",
           "titleHint": "Toko Mainan Berantakan",
           "sceneType": "toko-mainan-berantakan",
-          "voiceNarration": "Kira pergi ke toko mainan Paman. Kira ingin membantu Paman berjualan. Sampai di toko mainan, Kira kaget. Toko mainan Paman sangat berantakan. Pesawat, mobil-mobilan, boneka, dan bola berserakan di lantai. Kira membantu Paman merapikan mainannya. Ayo kita bantu Kira menghitung mainan. METODE LUAR. Turus: Coretan untuk menghitung frekuensi."
+          "voiceNarration": "Kira pergi ke toko mainan Paman. Kira ingin membantu Paman berjualan. Sampai di toko mainan, Kira kaget. Toko mainan Paman sangat berantakan. Pesawat, mobil-mobilan, boneka, dan bola berserakan di lantai. Kira membantu Paman merapikan mainannya. Ayo kita bantu Kira menghitung mainan. Kita memakai cara Turus: Coretan untuk menghitung frekuensi."
         },
         {
           "id": "A8-S2",
           "titleHint": "Toko yang Sudah Rapi",
           "sceneType": "toko-mainan-rapi",
-          "voiceNarration": "Kira merapikan toko mainan. Mainan yang sama dikelompokkan di rak yang sama. Pesawat di satu rak, mobil-mobilan di rak lain, boneka di rak berikutnya, dan bola di rak terakhir. Mengelompokkan membuat toko menjadi rapi dan mainan mudah dihitung. METODE LUAR. Diagram Gambar: Gambar mewakili banyak data."
+          "voiceNarration": "Kira merapikan toko mainan. Mainan yang sama dikelompokkan di rak yang sama. Pesawat di satu rak, mobil-mobilan di rak lain, boneka di rak berikutnya, dan bola di rak terakhir. Mengelompokkan membuat toko menjadi rapi dan mainan mudah dihitung. Kita memakai cara Diagram Gambar: Gambar mewakili banyak data."
         },
         {
           "id": "A8-S3",
           "titleHint": "Daftar Mainan di Toko",
           "sceneType": "daftar-mainan",
-          "voiceNarration": "Ayo kita hitung mainan yang sudah disusun. Ada dua belas pesawat. Ada delapan mobil-mobilan. Ada sepuluh boneka. Ada enam bola. Mainan apa yang paling banyak? Pesawat paling banyak, yaitu dua belas. Pesawat, boneka, bola, dan mobil-mobilan adalah contoh data. Data bisa dikelompokkan. Data bisa ditulis dalam daftar. Data menjadi mudah dibaca. METODE LUAR. Banding Kategori: Mana lebih banyak dari diagram."
+          "voiceNarration": "Ayo kita hitung mainan yang sudah disusun. Ada dua belas pesawat. Ada delapan mobil-mobilan. Ada sepuluh boneka. Ada enam bola. Mainan apa yang paling banyak? Pesawat paling banyak, yaitu dua belas. Pesawat, boneka, bola, dan mobil-mobilan adalah contoh data. Data bisa dikelompokkan. Data bisa ditulis dalam daftar. Data menjadi mudah dibaca. Kita memakai cara Banding Kategori: Mana lebih banyak dari diagram."
         },
         {
           "id": "A8-S4",
           "titleHint": "Kelompokkan Bola",
           "sceneType": "kelompok-bola",
-          "voiceNarration": "Ayo kita kelompokkan bola dan hitung banyaknya. Ada tujuh bola merah. Ada empat bola kuning. Ada enam bola hijau. Bola yang paling banyak berwarna merah, banyaknya ada tujuh. Bola yang paling sedikit berwarna kuning, banyaknya ada empat. Kita juga bisa menghitung dengan turus. Satu goresan untuk satu bola, dan setiap lima goresan dicoret miring. METODE LUAR. Turus: Coretan untuk menghitung frekuensi."
+          "voiceNarration": "Ayo kita kelompokkan bola dan hitung banyaknya. Ada tujuh bola merah. Ada empat bola kuning. Ada enam bola hijau. Bola yang paling banyak berwarna merah, banyaknya ada tujuh. Bola yang paling sedikit berwarna kuning, banyaknya ada empat. Kita juga bisa menghitung dengan turus. Satu goresan untuk satu bola, dan setiap lima goresan dicoret miring. Kita memakai cara Turus: Coretan untuk menghitung frekuensi."
         },
         {
           "id": "A8-S5",
           "titleHint": "Tabel Bola Upe",
           "sceneType": "tabel-bola-upe",
-          "voiceNarration": "Upe mempunyai banyak bola. Ada tujuh bola merah, empat bola kuning, dan enam bola hijau. Upe ingin menyajikan data bolanya dalam tabel. Tabel terdiri dari baris dan kolom. Baris berjalan ke samping. Kolom berjalan ke bawah. Pada tabel bola Upe, merah ada tujuh, kuning ada empat, dan hijau ada enam. METODE LUAR. Diagram Gambar: Gambar mewakili banyak data."
+          "voiceNarration": "Upe mempunyai banyak bola. Ada tujuh bola merah, empat bola kuning, dan enam bola hijau. Upe ingin menyajikan data bolanya dalam tabel. Tabel terdiri dari baris dan kolom. Baris berjalan ke samping. Kolom berjalan ke bawah. Pada tabel bola Upe, merah ada tujuh, kuning ada empat, dan hijau ada enam. Kita memakai cara Diagram Gambar: Gambar mewakili banyak data."
         },
         {
           "id": "A8-S6",
           "titleHint": "Tabel Menurun dan Mendatar",
           "sceneType": "tabel-menurun-mendatar",
-          "voiceNarration": "Ayo belajar membaca tabel. Tabel A bentuknya menurun, jadi nama warna ada di bawah satu sama lain. Tabel B bentuknya mendatar, jadi nama warna berjajar ke samping. Kedua tabel memuat data yang sama. Setiap tabel punya judul data, benda yang didata, dan banyak setiap data. Tabel memudahkan kita membaca data. METODE LUAR. Banding Kategori: Mana lebih banyak dari diagram."
+          "voiceNarration": "Ayo belajar membaca tabel. Tabel A bentuknya menurun, jadi nama warna ada di bawah satu sama lain. Tabel B bentuknya mendatar, jadi nama warna berjajar ke samping. Kedua tabel memuat data yang sama. Setiap tabel punya judul data, benda yang didata, dan banyak setiap data. Tabel memudahkan kita membaca data. Kita memakai cara Banding Kategori: Mana lebih banyak dari diagram."
         }
       ],
       "mindMaps": [
@@ -76,24 +76,24 @@
         },
         {
           "stepNumber": 3,
-          "stepTitle": "3. Tulis dalam Daftar",
-          "stepDesc": "Tulis hasil hitunganmu dalam daftar. Contohnya ada 12 pesawat, ada 8 mobil-mobilan. Data yang ditulis dalam daftar mudah dibaca.",
+          "stepTitle": "3. Tally Marks",
+          "stepDesc": "Coretan untuk menghitung frekuensi.",
           "icon": "📝",
           "flowFrom": "Tulis dalam daftar",
           "flowTo": "Sajikan dalam tabel"
         },
         {
           "stepNumber": 4,
-          "stepTitle": "4. Sajikan dalam Tabel",
-          "stepDesc": "Pindahkan data ke tabel. Tabel punya judul, baris, dan kolom. Tabel bisa menurun atau mendatar, dan datanya tetap sama.",
+          "stepTitle": "4. Pictograph",
+          "stepDesc": "Gambar mewakili banyak data.",
           "icon": "📋",
           "flowFrom": "Sajikan dalam tabel",
           "flowTo": "Baca dan bandingkan"
         },
         {
           "stepNumber": 5,
-          "stepTitle": "5. Baca dan Bandingkan",
-          "stepDesc": "Baca tabel untuk mencari yang paling banyak, yang paling sedikit, dan yang sama banyak. Cari selisihnya dan jumlah semuanya.",
+          "stepTitle": "5. Compare Categories",
+          "stepDesc": "Mana lebih banyak dari diagram.",
           "icon": "🔍",
           "flowFrom": "Baca dan bandingkan",
           "flowTo": "Ceritakan datamu"
@@ -108,7 +108,7 @@
         },
         {
           "stepNumber": 7,
-          "stepTitle": "7. METODE LUAR · Turus",
+          "stepTitle": "7.",
           "stepDesc": "Coretan untuk menghitung frekuensi.",
           "icon": "🌍",
           "flowFrom": "6",
@@ -116,7 +116,7 @@
         },
         {
           "stepNumber": 8,
-          "stepTitle": "8. METODE LUAR · Diagram Gambar",
+          "stepTitle": "8.",
           "stepDesc": "Gambar mewakili banyak data.",
           "icon": "🌍",
           "flowFrom": "7",
@@ -214,25 +214,25 @@
           "title": "Rapikan Toko Mainan",
           "emoji": "🧸",
           "targetCount": 4,
-          "voiceGuide": "Seret setiap mainan ke rak yang bentuknya sama, lalu baca daftarnya dan pilih mainan yang paling banyak."
+          "voiceGuide": "Turus. Seret setiap mainan ke rak yang bentuknya sama, lalu baca daftarnya dan pilih mainan yang paling banyak."
         },
         {
           "title": "Hitung dan Turus",
           "emoji": "🔵",
           "targetCount": 17,
-          "voiceGuide": "Ketuk kelereng satu per satu dari satu warna. Setiap ketukan menambah satu goresan turus pada daftar."
+          "voiceGuide": "Diagram Gambar. Ketuk kelereng satu per satu dari satu warna. Setiap ketukan menambah satu goresan turus pada daftar."
         },
         {
           "title": "Isi Daftar Bola",
           "emoji": "📝",
           "targetCount": 14,
-          "voiceGuide": "Hitung bola menurut warnanya, lalu seret kartu angka ke baris daftar yang tepat."
+          "voiceGuide": "Banding Kategori. Hitung bola menurut warnanya, lalu seret kartu angka ke baris daftar yang tepat."
         },
         {
           "title": "Pesanan Paman",
           "emoji": "🧺",
           "targetCount": 9,
-          "voiceGuide": "Baca daftar pesanan, lalu seret mainan dari rak ke keranjang sebanyak yang dipesan."
+          "voiceGuide": "Turus. Baca daftar pesanan, lalu seret mainan dari rak ke keranjang sebanyak yang dipesan."
         }
       ],
       "pictorialSlides": [
@@ -241,21 +241,21 @@
           "diagramType": "dot-groups",
           "numberA": 15,
           "numberB": 4,
-          "caption": "Ketuk satu warna, hitung titik yang bernomor, lalu pilih angkanya untuk mengisi daftar."
+          "caption": "Pakai Turus. Ketuk satu warna, hitung titik yang bernomor, lalu pilih angkanya untuk mengisi daftar."
         },
         {
           "title": "Baris dan Kolom",
           "diagramType": "table-rows-columns",
           "numberA": 4,
           "numberB": 6,
-          "caption": "Ketuk baris, kolom, atau kotak pada tabel sesuai tugas. Baris ke samping, kolom ke bawah."
+          "caption": "Pakai Diagram Gambar. Ketuk baris, kolom, atau kotak pada tabel sesuai tugas. Baris ke samping, kolom ke bawah."
         },
         {
           "title": "Menurun jadi Mendatar",
           "diagramType": "table-transpose",
           "numberA": 3,
           "numberB": 15,
-          "caption": "Pindahkan data dari tabel menurun ke tabel mendatar, kotak banyaknya satu per satu."
+          "caption": "Pakai Banding Kategori. Pindahkan data dari tabel menurun ke tabel mendatar, kotak banyaknya satu per satu."
         }
       ],
       "abstractSlides": [
@@ -263,19 +263,19 @@
           "symbolLarge": "6",
           "wordLarge": "BACA TABEL",
           "mathNotation": "Boneka 3 • Gasing 5 • Kelereng 4 • Bola 6",
-          "voiceReadout": "Baca tabel mainan kesukaan. Mainan yang paling disukai adalah bola, enam anak. Jumlah semua anak delapan belas."
+          "voiceReadout": "Turus. Baca tabel mainan kesukaan. Mainan yang paling disukai adalah bola, enam anak. Jumlah semua anak delapan belas."
         },
         {
           "symbolLarge": "6 + 4 + 7",
           "wordLarge": "TEKA-TEKI DATA",
           "mathNotation": "6 – 2 = 4 • 4 + 3 = 7",
-          "voiceReadout": "Kata kurangnya berarti dikurangi dan kata lebihnya berarti ditambah. Pesawat enam, mobil-mobilan empat, boneka tujuh."
+          "voiceReadout": "Diagram Gambar. Kata kurangnya berarti dikurangi dan kata lebihnya berarti ditambah. Pesawat enam, mobil-mobilan empat, boneka tujuh."
         },
         {
           "symbolLarge": "17",
           "wordLarge": "TUJUH BELAS",
           "mathNotation": "7 + 4 + 6 = 17",
-          "voiceReadout": "Jumlahkan semua data pada tabel, ucapkan hasilnya, lalu guratkan angkanya di kanvas. Tujuh belas ditulis dengan angka satu dan angka tujuh."
+          "voiceReadout": "Banding Kategori. Jumlahkan semua data pada tabel, ucapkan hasilnya, lalu guratkan angkanya di kanvas. Tujuh belas ditulis dengan angka satu dan angka tujuh."
         }
       ],
       "interactiveGames": [
@@ -286,9 +286,9 @@
           "gameType": "drag-sort-to-shelves",
           "title": "Rapikan Toko Mainan",
           "bookReference": "Buku Siswa hlm. 221–222 (Kira merapikan toko mainan Paman; daftar mainan di toko)",
-          "objective": "Mengelompokkan data: menaruh mainan yang sama di rak yang sama, membaca daftar, dan menentukan yang paling banyak.",
-          "mechanicDescription": "Tiga ronde (7, 8, dan 9 mainan di 3 atau 4 rak). Siswa menyeret mainan ke rak yang bentuknya sama, membaca daftar otomatis, lalu memilih mainan yang paling banyak. Terakhir ucapkan banyak mainan yang paling banyak.",
-          "voiceGuide": "Seret mainan ke rak yang sama bentuknya."
+          "objective": "Pakai Turus. Mengelompokkan data: menaruh mainan yang sama di rak yang sama, membaca daftar, dan menentukan yang paling banyak.",
+          "mechanicDescription": "Tiga ronde (7, 8, dan 9 mainan di 3 atau 4 rak). Siswa menyeret mainan ke rak yang bentuknya sama, membaca daftar otomatis, lalu memilih mainan yang paling banyak. Terakhir ucapkan banyak mainan yang paling banyak. Terapkan Tally Marks.",
+          "voiceGuide": "Turus. Seret mainan ke rak yang sama bentuknya."
         },
         {
           "gameId": "subA8-game-2",
@@ -297,9 +297,9 @@
           "gameType": "tap-count-tally",
           "title": "Hitung dan Turus",
           "bookReference": "Buku Siswa hlm. 223 (kelompokkan bola dan hitung banyaknya); pengayaan turus",
-          "objective": "Menghitung dengan turus: satu benda satu goresan dan lima goresan dicoret miring.",
-          "mechanicDescription": "Tiga ronde (12, 15, dan 17 kelereng dalam 3 sampai 4 warna). Siswa mengetuk kelereng satu warna sampai habis sementara turus bertambah, lalu menjawab yang paling banyak, yang sama banyak, atau yang paling sedikit. Terakhir ucapkan jumlah semua kelereng.",
-          "voiceGuide": "Ketuk kelereng satu warna, turus bertambah satu goresan."
+          "objective": "Pakai Diagram Gambar. Menghitung dengan turus: satu benda satu goresan dan lima goresan dicoret miring.",
+          "mechanicDescription": "Tiga ronde (12, 15, dan 17 kelereng dalam 3 sampai 4 warna). Siswa mengetuk kelereng satu warna sampai habis sementara turus bertambah, lalu menjawab yang paling banyak, yang sama banyak, atau yang paling sedikit. Terakhir ucapkan jumlah semua kelereng. Terapkan Pictograph.",
+          "voiceGuide": "Diagram Gambar. Ketuk kelereng satu warna, turus bertambah satu goresan."
         },
         {
           "gameId": "subA8-game-3",
@@ -308,9 +308,9 @@
           "gameType": "drag-number-cards-to-list",
           "title": "Isi Daftar Bola",
           "bookReference": "Buku Siswa hlm. 223 (Daftar Warna Bola: 7 merah, 4 kuning, 6 hijau)",
-          "objective": "Menulis data dalam daftar: menghitung bola menurut warna dan memasang kartu angka pada baris daftar.",
-          "mechanicDescription": "Tiga ronde (7, 4, 6; 5, 8, 3; 3, 5, 4, 2). Siswa menyeret kartu angka ke baris daftar yang tepat lalu memilih warna yang paling banyak atau paling sedikit. Terakhir ucapkan jumlah semua bola.",
-          "voiceGuide": "Seret kartu angka ke baris daftar yang tepat."
+          "objective": "Pakai Banding Kategori. Menulis data dalam daftar: menghitung bola menurut warna dan memasang kartu angka pada baris daftar.",
+          "mechanicDescription": "Tiga ronde (7, 4, 6; 5, 8, 3; 3, 5, 4, 2). Siswa menyeret kartu angka ke baris daftar yang tepat lalu memilih warna yang paling banyak atau paling sedikit. Terakhir ucapkan jumlah semua bola. Terapkan Compare Categories.",
+          "voiceGuide": "Banding Kategori. Seret kartu angka ke baris daftar yang tepat."
         },
         {
           "gameId": "subA8-game-4",
@@ -319,9 +319,9 @@
           "gameType": "drag-from-shelf-to-basket",
           "title": "Pesanan Paman",
           "bookReference": "Buku Siswa hlm. 222 (daftar mainan); hlm. 226–228 (Ayo Berlatih)",
-          "objective": "Membaca daftar untuk mengambil benda sebanyak yang tertulis, kebalikan dari menghitung benda.",
-          "mechanicDescription": "Tiga ronde (5, 7, dan 9 mainan pesanan). Siswa menyeret mainan dari rak ke keranjang sesuai daftar pesanan lalu menekan periksa. Terakhir ucapkan jumlah semua mainan yang dipesan.",
-          "voiceGuide": "Seret mainan ke keranjang sebanyak yang dipesan."
+          "objective": "Pakai Turus. Membaca daftar untuk mengambil benda sebanyak yang tertulis, kebalikan dari menghitung benda.",
+          "mechanicDescription": "Tiga ronde (5, 7, dan 9 mainan pesanan). Siswa menyeret mainan dari rak ke keranjang sesuai daftar pesanan lalu menekan periksa. Terakhir ucapkan jumlah semua mainan yang dipesan. Terapkan Tally Marks.",
+          "voiceGuide": "Turus. Seret mainan ke keranjang sebanyak yang dipesan."
         },
         {
           "gameId": "subA8-game-5",
@@ -330,9 +330,9 @@
           "gameType": "tap-color-count-dots",
           "title": "Kelompokkan Titik",
           "bookReference": "Buku Siswa hlm. 223 (Daftar Warna Bola); hlm. 226 (Ayo Mencoba: pita Wei)",
-          "objective": "Menghitung titik polos menurut warna dan menuliskannya dalam daftar.",
-          "mechanicDescription": "Tiga ronde (14, 16, dan 15 titik). Siswa mengetuk satu warna sehingga titiknya bernomor, memilih banyaknya, lalu memilih yang paling banyak atau paling sedikit. Terakhir ucapkan jumlah semua titik.",
-          "voiceGuide": "Ketuk warna, hitung titik yang bernomor, lalu pilih angkanya."
+          "objective": "Pakai Diagram Gambar. Menghitung titik polos menurut warna dan menuliskannya dalam daftar.",
+          "mechanicDescription": "Tiga ronde (14, 16, dan 15 titik). Siswa mengetuk satu warna sehingga titiknya bernomor, memilih banyaknya, lalu memilih yang paling banyak atau paling sedikit. Terakhir ucapkan jumlah semua titik. Terapkan Pictograph.",
+          "voiceGuide": "Diagram Gambar. Ketuk warna, hitung titik yang bernomor, lalu pilih angkanya."
         },
         {
           "gameId": "subA8-game-6",
@@ -341,9 +341,9 @@
           "gameType": "tap-row-column-cell",
           "title": "Baris dan Kolom",
           "bookReference": "Buku Siswa hlm. 224 (tabel terdiri dari baris dan kolom); hlm. 225 (Tabel A menurun, Tabel B mendatar)",
-          "objective": "Mengenali baris, kolom, dan kotak pada tabel menurun dan mendatar.",
-          "mechanicDescription": "Tiga ronde (tabel bola menurun, tabel mainan mendatar, tabel kue menurun), tiap ronde tiga tugas: ketuk kolom, ketuk baris, ketuk kotak. Terakhir ucapkan isi kotak terakhir.",
-          "voiceGuide": "Ketuk baris, kolom, atau kotak sesuai tugas."
+          "objective": "Pakai Banding Kategori. Mengenali baris, kolom, dan kotak pada tabel menurun dan mendatar.",
+          "mechanicDescription": "Tiga ronde (tabel bola menurun, tabel mainan mendatar, tabel kue menurun), tiap ronde tiga tugas: ketuk kolom, ketuk baris, ketuk kotak. Terakhir ucapkan isi kotak terakhir. Terapkan Compare Categories.",
+          "voiceGuide": "Banding Kategori. Ketuk baris, kolom, atau kotak sesuai tugas."
         },
         {
           "gameId": "subA8-game-7",
@@ -352,9 +352,9 @@
           "gameType": "fill-transposed-table",
           "title": "Menurun jadi Mendatar",
           "bookReference": "Buku Siswa hlm. 225 (Tabel A bentuknya menurun, Tabel B mendatar)",
-          "objective": "Memindahkan data dari tabel menurun ke tabel mendatar tanpa mengubah datanya.",
-          "mechanicDescription": "Tiga ronde (bola 7, 4, 6; pita 3, 5, 2; buah 5, 4, 6). Siswa mengisi kotak banyaknya satu per satu dari kiri ke kanan, lalu mencari jumlah semuanya. Terakhir ucapkan jumlah semuanya.",
-          "voiceGuide": "Isi tabel mendatar dari tabel menurun."
+          "objective": "Pakai Turus. Memindahkan data dari tabel menurun ke tabel mendatar tanpa mengubah datanya.",
+          "mechanicDescription": "Tiga ronde (bola 7, 4, 6; pita 3, 5, 2; buah 5, 4, 6). Siswa mengisi kotak banyaknya satu per satu dari kiri ke kanan, lalu mencari jumlah semuanya. Terakhir ucapkan jumlah semuanya. Terapkan Tally Marks.",
+          "voiceGuide": "Turus. Isi tabel mendatar dari tabel menurun."
         },
         {
           "gameId": "subA8-game-8",
@@ -363,9 +363,9 @@
           "gameType": "read-table-questions",
           "title": "Baca Tabel",
           "bookReference": "Buku Siswa hlm. 227–228 (Ayo Berlatih nomor 2 dan 3); Evaluasi hlm. 237 (nomor 2: kue kesukaan)",
-          "objective": "Membaca tabel menurun dan mendatar untuk menjawab banyaknya, yang paling banyak, dan yang paling sedikit.",
-          "mechanicDescription": "Lima ronde (mainan, kue, dan alat tulis). Siswa membaca tabel lalu memilih jawaban. Terakhir ucapkan jumlah semua alat tulis.",
-          "voiceGuide": "Baca tabel, lalu pilih jawabannya."
+          "objective": "Pakai Diagram Gambar. Membaca tabel menurun dan mendatar untuk menjawab banyaknya, yang paling banyak, dan yang paling sedikit.",
+          "mechanicDescription": "Lima ronde (mainan, kue, dan alat tulis). Siswa membaca tabel lalu memilih jawaban. Terakhir ucapkan jumlah semua alat tulis. Terapkan Pictograph.",
+          "voiceGuide": "Diagram Gambar. Baca tabel, lalu pilih jawabannya."
         },
         {
           "gameId": "subA8-game-9",
@@ -374,9 +374,9 @@
           "gameType": "table-from-clues",
           "title": "Teka-Teki Data",
           "bookReference": "Buku Siswa hlm. 222 (daftar mainan); hlm. 236 (Ayo Berlatih nomor 3: hewan Pak Budi); pengayaan hubungan lebihnya dan kurangnya",
-          "objective": "Mengisi tabel dari petunjuk kata lebihnya dan kurangnya, lalu mencari jumlah semuanya.",
-          "mechanicDescription": "Tiga ronde (pesawat 6, mobil-mobilan 4, boneka 7; ayam 5, bebek 2, kelinci 6; apel 4, jeruk 7, mangga 5). Siswa mengisi banyaknya satu per satu lalu jumlah semuanya. Terakhir ucapkan jumlah semuanya.",
-          "voiceGuide": "Isi tabel dari petunjuk, lalu cari jumlahnya."
+          "objective": "Pakai Banding Kategori. Mengisi tabel dari petunjuk kata lebihnya dan kurangnya, lalu mencari jumlah semuanya.",
+          "mechanicDescription": "Tiga ronde (pesawat 6, mobil-mobilan 4, boneka 7; ayam 5, bebek 2, kelinci 6; apel 4, jeruk 7, mangga 5). Siswa mengisi banyaknya satu per satu lalu jumlah semuanya. Terakhir ucapkan jumlah semuanya. Terapkan Compare Categories.",
+          "voiceGuide": "Banding Kategori. Isi tabel dari petunjuk, lalu cari jumlahnya."
         },
         {
           "gameId": "subA8-game-10",
@@ -385,9 +385,9 @@
           "gameType": "say-and-trace",
           "title": "Kanvas Guratan dan Suara",
           "bookReference": "Buku Siswa hlm. 223 (Ayo Mencoba: daftar alat tulis); hlm. 228 (Ayo Bermain: tabel data mainan)",
-          "objective": "Menjumlahkan semua data pada tabel, mengucapkannya, dan menulis lambangnya.",
-          "mechanicDescription": "Dua ronde. Ronde 1 jumlah semua bola pada tabel (7, 4, 6). Ronde 2 siswa memilih satu dari tiga tabel data (pita, buku, kancing). Siswa mengucapkan jumlahnya lalu menggurat lambangnya.",
-          "voiceGuide": "Jumlahkan data, ucapkan, lalu guratkan lambangnya."
+          "objective": "Pakai Turus. Menjumlahkan semua data pada tabel, mengucapkannya, dan menulis lambangnya.",
+          "mechanicDescription": "Dua ronde. Ronde 1 jumlah semua bola pada tabel (7, 4, 6). Ronde 2 siswa memilih satu dari tiga tabel data (pita, buku, kancing). Siswa mengucapkan jumlahnya lalu menggurat lambangnya. Terapkan Tally Marks.",
+          "voiceGuide": "Turus. Jumlahkan data, ucapkan, lalu guratkan lambangnya."
         }
       ],
       "metodeLuar": [
@@ -431,7 +431,7 @@
       "id": "B",
       "codeTitle": "Sub-Bab B (Diagram Gambar)",
       "fullTitle": "Sub-Bab B: Diagram Gambar",
-      "targetDescription": "Siswa membaca dan membuat diagram gambar tegak maupun mendatar dengan satu gambar mewakili satu data, menyebutkan bagian diagram (judul, nama kolom atau baris, gambar, angka, dan keterangan), membandingkan data pada diagram dengan kata paling banyak, paling sedikit, lebih banyak, dan sama banyak, menghitung jumlah semua data, serta mengumpulkan data sendiri lewat pertanyaan kepada teman lalu menyajikannya dalam tabel dan diagram gambar.",
+      "targetDescription": "Siswa membaca dan membuat diagram gambar tegak maupun mendatar dengan satu gambar mewakili satu data, menyebutkan bagian diagram (judul, nama kolom atau baris, gambar, angka, dan keterangan), membandingkan data pada diagram dengan kata paling banyak, paling sedikit, lebih banyak, dan sama banyak, menghitung jumlah semua data, serta mengumpulkan data sendiri lewat pertanyaan kepada teman lalu menyajikannya dalam tabel dan diagram gambar. Memakai Turus, Diagram Gambar, Banding Kategori.",
       "secondaryBg": "#CCFBF1",
       "secondaryBorder": "#0F766E",
       "secondaryText": "#134E4A",
@@ -440,37 +440,37 @@
           "id": "B8-S1",
           "titleHint": "Sayur Kesukaan",
           "sceneType": "papan-sayur-kesukaan",
-          "voiceNarration": "Upe menanyakan sayur kesukaan teman-temannya. Hasilnya seperti pada papan di sebelah Upe. Ada jagung, wortel, brokoli, dan kol, semuanya tercampur. Sulit menemukan sayur yang paling disukai kalau masih tercampur. Kita bisa membuat diagram gambar dari data itu. Sayur sangat dibutuhkan tubuh. Sayur mengandung vitamin dan mineral, dan menjaga tubuh tetap sehat. Ayo makan sayur setiap hari. METODE LUAR. Turus: Coretan untuk menghitung frekuensi."
+          "voiceNarration": "Upe menanyakan sayur kesukaan teman-temannya. Hasilnya seperti pada papan di sebelah Upe. Ada jagung, wortel, brokoli, dan kol, semuanya tercampur. Sulit menemukan sayur yang paling disukai kalau masih tercampur. Kita bisa membuat diagram gambar dari data itu. Sayur sangat dibutuhkan tubuh. Sayur mengandung vitamin dan mineral, dan menjaga tubuh tetap sehat. Ayo makan sayur setiap hari. Kita memakai cara Turus: Coretan untuk menghitung frekuensi."
         },
         {
           "id": "B8-S2",
           "titleHint": "Diagram Gambar Tegak",
           "sceneType": "diagram-gambar-tegak",
-          "voiceNarration": "Ini diagram gambar sayur kesukaan. Setiap gambar mewakili satu anak. Jagung ada tiga gambar, jadi tiga anak suka jagung. Wortel ada empat gambar, jadi empat anak suka wortel. Brokoli ada tiga gambar, dan kol ada dua gambar. Angka di sebelah kiri menunjukkan banyak gambar. Sayur apa yang paling disukai? Wortel, karena kolomnya paling tinggi. METODE LUAR. Diagram Gambar: Gambar mewakili banyak data."
+          "voiceNarration": "Ini diagram gambar sayur kesukaan. Setiap gambar mewakili satu anak. Jagung ada tiga gambar, jadi tiga anak suka jagung. Wortel ada empat gambar, jadi empat anak suka wortel. Brokoli ada tiga gambar, dan kol ada dua gambar. Angka di sebelah kiri menunjukkan banyak gambar. Sayur apa yang paling disukai? Wortel, karena kolomnya paling tinggi. Kita memakai cara Diagram Gambar: Gambar mewakili banyak data."
         },
         {
           "id": "B8-S3",
           "titleHint": "Diagram Gambar Mendatar",
           "sceneType": "diagram-gambar-mendatar",
-          "voiceNarration": "Ini bentuk lain dari diagram gambar. Gambarnya berjajar ke samping, jadi disebut diagram mendatar. Jagung ada tiga, wortel empat, brokoli tiga, dan kol dua. Angka di bawah menunjukkan banyak gambar. Wortel paling disukai karena barisnya paling panjang. Diagram gambar memudahkan kita membaca data. METODE LUAR. Banding Kategori: Mana lebih banyak dari diagram."
+          "voiceNarration": "Ini bentuk lain dari diagram gambar. Gambarnya berjajar ke samping, jadi disebut diagram mendatar. Jagung ada tiga, wortel empat, brokoli tiga, dan kol dua. Angka di bawah menunjukkan banyak gambar. Wortel paling disukai karena barisnya paling panjang. Diagram gambar memudahkan kita membaca data. Kita memakai cara Banding Kategori: Mana lebih banyak dari diagram."
         },
         {
           "id": "B8-S4",
           "titleHint": "Mainan Kesukaan Tika",
           "sceneType": "mainan-kesukaan-tika",
-          "voiceNarration": "Tika menanyakan mainan kesukaan teman-temannya. Tika menunjukkan hasilnya pada diagram gambar. Gambar wajah tersenyum mewakili satu anak. Ada lima anak yang suka kelereng. Ada empat anak yang suka mobil-mobilan. Ada dua anak yang suka boneka. Ada tiga anak yang suka gasing. Semua ada empat belas anak. METODE LUAR. Turus: Coretan untuk menghitung frekuensi."
+          "voiceNarration": "Tika menanyakan mainan kesukaan teman-temannya. Tika menunjukkan hasilnya pada diagram gambar. Gambar wajah tersenyum mewakili satu anak. Ada lima anak yang suka kelereng. Ada empat anak yang suka mobil-mobilan. Ada dua anak yang suka boneka. Ada tiga anak yang suka gasing. Semua ada empat belas anak. Kita memakai cara Turus: Coretan untuk menghitung frekuensi."
         },
         {
           "id": "B8-S5",
           "titleHint": "Bermain Karet Gelang",
           "sceneType": "karet-gelang",
-          "voiceNarration": "Malosi, Halim, dan Upe bermain karet gelang. Setiap gambar karet gelang mewakili satu karet gelang. Malosi mempunyai lima karet gelang. Halim mempunyai tiga karet gelang. Upe mempunyai empat karet gelang. Malosi mempunyai dua karet gelang lebih banyak dari Halim. Upe mempunyai satu karet gelang lebih sedikit dari Malosi. Malosi paling banyak, Halim paling sedikit. Semuanya ada dua belas karet gelang. METODE LUAR. Diagram Gambar: Gambar mewakili banyak data."
+          "voiceNarration": "Malosi, Halim, dan Upe bermain karet gelang. Setiap gambar karet gelang mewakili satu karet gelang. Malosi mempunyai lima karet gelang. Halim mempunyai tiga karet gelang. Upe mempunyai empat karet gelang. Malosi mempunyai dua karet gelang lebih banyak dari Halim. Upe mempunyai satu karet gelang lebih sedikit dari Malosi. Malosi paling banyak, Halim paling sedikit. Semuanya ada dua belas karet gelang. Kita memakai cara Diagram Gambar: Gambar mewakili banyak data."
         },
         {
           "id": "B8-S6",
           "titleHint": "Ayo Menabung",
           "sceneType": "ayo-menabung",
-          "voiceNarration": "Ayo menabung. Halim menabung setiap hari Senin dan Kamis, jadi seminggu dua kali. Wei menabung setiap hari Jumat, jadi seminggu sekali. Upe menabung setiap hari Senin, Rabu, dan Jumat, jadi seminggu tiga kali. Kita bisa menyajikan data menabung dalam diagram gambar dengan mewarnai lingkaran. Siapa yang paling rajin menabung? Upe, tiga kali seminggu. METODE LUAR. Banding Kategori: Mana lebih banyak dari diagram."
+          "voiceNarration": "Ayo menabung. Halim menabung setiap hari Senin dan Kamis, jadi seminggu dua kali. Wei menabung setiap hari Jumat, jadi seminggu sekali. Upe menabung setiap hari Senin, Rabu, dan Jumat, jadi seminggu tiga kali. Kita bisa menyajikan data menabung dalam diagram gambar dengan mewarnai lingkaran. Siapa yang paling rajin menabung? Upe, tiga kali seminggu. Kita memakai cara Banding Kategori: Mana lebih banyak dari diagram."
         }
       ],
       "mindMaps": [
@@ -492,24 +492,24 @@
         },
         {
           "stepNumber": 3,
-          "stepTitle": "3. Buat Tabel",
-          "stepDesc": "Hitung turus, lalu tulis hasilnya dalam tabel dengan judul, nama setiap pilihan, dan banyaknya. Jumlah semua harus sama dengan banyak teman yang ditanya.",
+          "stepTitle": "3. Tally Marks",
+          "stepDesc": "Coretan untuk menghitung frekuensi.",
           "icon": "📋",
           "flowFrom": "Buat tabel",
           "flowTo": "Gambar diagram"
         },
         {
           "stepNumber": 4,
-          "stepTitle": "4. Gambar Diagram",
-          "stepDesc": "Gambar atau warnai satu gambar untuk satu data. Mulai dari kotak pertama, rapat, tanpa celah. Tulis keterangan, misalnya satu gambar mewakili satu anak.",
+          "stepTitle": "4. Pictograph",
+          "stepDesc": "Gambar mewakili banyak data.",
           "icon": "🎨",
           "flowFrom": "Gambar diagram",
           "flowTo": "Baca diagram"
         },
         {
           "stepNumber": 5,
-          "stepTitle": "5. Baca Diagram",
-          "stepDesc": "Hitung gambar pada setiap kolom atau baris. Yang paling tinggi atau paling panjang berarti paling banyak. Bandingkan dengan lebih banyak, lebih sedikit, dan sama banyak.",
+          "stepTitle": "5. Compare Categories",
+          "stepDesc": "Mana lebih banyak dari diagram.",
           "icon": "🔍",
           "flowFrom": "Baca diagram",
           "flowTo": "Ceritakan hasilnya"
@@ -524,7 +524,7 @@
         },
         {
           "stepNumber": 7,
-          "stepTitle": "7. METODE LUAR · Diagram Gambar",
+          "stepTitle": "7.",
           "stepDesc": "Gambar mewakili banyak data.",
           "icon": "🌍",
           "flowFrom": "6",
@@ -622,25 +622,25 @@
           "title": "Survei Sayur Kesukaan",
           "emoji": "🥕",
           "targetCount": 4,
-          "voiceGuide": "Ketuk teman satu per satu untuk mencatat sayur kesukaannya. Sayurnya masuk ke diagram, lalu cari yang paling disukai."
+          "voiceGuide": "Turus. Ketuk teman satu per satu untuk mencatat sayur kesukaannya. Sayurnya masuk ke diagram, lalu cari yang paling disukai."
         },
         {
           "title": "Beri Nama Diagram",
           "emoji": "🏷️",
           "targetCount": 13,
-          "voiceGuide": "Seret kartu nama ke bawah kolom yang bendanya cocok, lalu pilih judul diagramnya."
+          "voiceGuide": "Diagram Gambar. Seret kartu nama ke bawah kolom yang bendanya cocok, lalu pilih judul diagramnya."
         },
         {
           "title": "Kartu Kalimat Data",
           "emoji": "🃏",
           "targetCount": 19,
-          "voiceGuide": "Hitung gambar pada setiap kolom, lalu seret kartu kalimat paling banyak, paling sedikit, atau sama banyak ke nama yang cocok."
+          "voiceGuide": "Banding Kategori. Hitung gambar pada setiap kolom, lalu seret kartu kalimat paling banyak, paling sedikit, atau sama banyak ke nama yang cocok."
         },
         {
           "title": "Kandang Pak Budi",
           "emoji": "🐔",
           "targetCount": 13,
-          "voiceGuide": "Baca petunjuk lebihnya dan kurangnya, lalu atur banyak hewan di setiap kandang dengan tombol plus dan minus."
+          "voiceGuide": "Turus. Baca petunjuk lebihnya dan kurangnya, lalu atur banyak hewan di setiap kandang dengan tombol plus dan minus."
         }
       ],
       "pictorialSlides": [
@@ -649,21 +649,21 @@
           "diagramType": "color-pictograph",
           "numberA": 18,
           "numberB": 4,
-          "caption": "Warnai lingkaran sesuai tabel, mulai dari kotak pertama dan tanpa ada yang terlewat."
+          "caption": "Pakai Turus. Warnai lingkaran sesuai tabel, mulai dari kotak pertama dan tanpa ada yang terlewat."
         },
         {
           "title": "Baca Diagram",
           "diagramType": "read-pictograph",
           "numberA": 19,
           "numberB": 6,
-          "caption": "Hitung lingkaran pada kolom atau baris, lalu pilih jawaban tentang banyaknya dan yang paling banyak."
+          "caption": "Pakai Diagram Gambar. Hitung lingkaran pada kolom atau baris, lalu pilih jawaban tentang banyaknya dan yang paling banyak."
         },
         {
           "title": "Temukan yang Tidak Cocok",
           "diagramType": "find-mismatch",
           "numberA": 12,
           "numberB": 4,
-          "caption": "Bandingkan diagram dengan tabel, ketuk kolom yang salah, lalu pilih banyak yang benar."
+          "caption": "Pakai Banding Kategori. Bandingkan diagram dengan tabel, ketuk kolom yang salah, lalu pilih banyak yang benar."
         }
       ],
       "abstractSlides": [
@@ -671,19 +671,19 @@
           "symbolLarge": "5 – 3 = 2",
           "wordLarge": "KALIMAT DATA",
           "mathNotation": "Malosi 5 • Halim 3 • Upe 4",
-          "voiceReadout": "Malosi mempunyai dua karet gelang lebih banyak dari Halim, karena lima dikurangi tiga sama dengan dua."
+          "voiceReadout": "Turus. Malosi mempunyai dua karet gelang lebih banyak dari Halim, karena lima dikurangi tiga sama dengan dua."
         },
         {
           "symbolLarge": "5 + 3 + 4 = 12",
           "wordLarge": "HITUNG DARI DIAGRAM",
           "mathNotation": "5 + 3 = 8 • 8 + 4 = 12 • 5 – 3 = 2",
-          "voiceReadout": "Jumlahkan dua data, lalu ketiganya, dan cari selisih yang paling banyak dengan yang paling sedikit."
+          "voiceReadout": "Diagram Gambar. Jumlahkan dua data, lalu ketiganya, dan cari selisih yang paling banyak dengan yang paling sedikit."
         },
         {
           "symbolLarge": "12",
           "wordLarge": "DUA BELAS",
           "mathNotation": "5 + 3 + 4 = 12",
-          "voiceReadout": "Jumlahkan semua data pada diagram, ucapkan hasilnya, lalu guratkan angkanya di kanvas. Dua belas ditulis dengan angka satu dan angka dua."
+          "voiceReadout": "Banding Kategori. Jumlahkan semua data pada diagram, ucapkan hasilnya, lalu guratkan angkanya di kanvas. Dua belas ditulis dengan angka satu dan angka dua."
         }
       ],
       "interactiveGames": [
@@ -694,9 +694,9 @@
           "gameType": "tap-record-survey",
           "title": "Survei Sayur Kesukaan",
           "bookReference": "Buku Siswa hlm. 229 (Upe menanyakan sayur kesukaan teman-temannya); hlm. 240–241 (Ayo Berkarya: bertanya kepada teman)",
-          "objective": "Mencatat jawaban teman satu per satu menjadi diagram dari benda nyata, lalu membaca yang paling banyak.",
-          "mechanicDescription": "Tiga ronde (6, 8, dan 12 teman). Siswa mengetuk teman satu per satu sehingga sayur kesukaannya masuk ke kolom diagram, lalu memilih sayur yang paling disukai. Terakhir ucapkan berapa anak yang suka wortel.",
-          "voiceGuide": "Ketuk teman untuk mencatat sayur kesukaannya."
+          "objective": "Pakai Turus. Mencatat jawaban teman satu per satu menjadi diagram dari benda nyata, lalu membaca yang paling banyak.",
+          "mechanicDescription": "Tiga ronde (6, 8, dan 12 teman). Siswa mengetuk teman satu per satu sehingga sayur kesukaannya masuk ke kolom diagram, lalu memilih sayur yang paling disukai. Terakhir ucapkan berapa anak yang suka wortel. Terapkan Tally Marks.",
+          "voiceGuide": "Turus. Ketuk teman untuk mencatat sayur kesukaannya."
         },
         {
           "gameId": "subB8-game-2",
@@ -705,9 +705,9 @@
           "gameType": "drag-label-to-columns",
           "title": "Beri Nama Diagram",
           "bookReference": "Buku Siswa hlm. 229–230 (Diagram Sayur Kesukaan: nama sayur, angka, dan judul)",
-          "objective": "Mengenal bagian diagram gambar: nama kolom yang cocok dengan bendanya dan judul diagram.",
-          "mechanicDescription": "Tiga ronde (sayur, mainan, dan buah). Siswa menyeret kartu nama ke bawah kolom yang cocok lalu memilih judul diagram. Terakhir ucapkan jumlah semua anak pada diagram buah.",
-          "voiceGuide": "Seret kartu nama ke kolom yang cocok, lalu pilih judul."
+          "objective": "Pakai Diagram Gambar. Mengenal bagian diagram gambar: nama kolom yang cocok dengan bendanya dan judul diagram.",
+          "mechanicDescription": "Tiga ronde (sayur, mainan, dan buah). Siswa menyeret kartu nama ke bawah kolom yang cocok lalu memilih judul diagram. Terakhir ucapkan jumlah semua anak pada diagram buah. Terapkan Pictograph.",
+          "voiceGuide": "Diagram Gambar. Seret kartu nama ke kolom yang cocok, lalu pilih judul."
         },
         {
           "gameId": "subB8-game-3",
@@ -716,9 +716,9 @@
           "gameType": "drag-sentence-cards",
           "title": "Kartu Kalimat Data",
           "bookReference": "Buku Siswa hlm. 233 (Bermain Karet Gelang: Malosi, Halim, Upe); Evaluasi hlm. 237 (kelereng sama banyak)",
-          "objective": "Membaca diagram dengan kalimat paling banyak, paling sedikit, lebih banyak, kurang, dan sama banyak.",
-          "mechanicDescription": "Tiga ronde (karet gelang, buah, dan kelereng). Siswa menyeret kartu kalimat ke nama yang cocok. Terakhir ucapkan jumlah semua kelereng.",
-          "voiceGuide": "Seret kartu kalimat ke nama yang cocok."
+          "objective": "Pakai Banding Kategori. Membaca diagram dengan kalimat paling banyak, paling sedikit, lebih banyak, kurang, dan sama banyak.",
+          "mechanicDescription": "Tiga ronde (karet gelang, buah, dan kelereng). Siswa menyeret kartu kalimat ke nama yang cocok. Terakhir ucapkan jumlah semua kelereng. Terapkan Compare Categories.",
+          "voiceGuide": "Banding Kategori. Seret kartu kalimat ke nama yang cocok."
         },
         {
           "gameId": "subB8-game-4",
@@ -727,9 +727,9 @@
           "gameType": "stepper-clue-cages",
           "title": "Kandang Pak Budi",
           "bookReference": "Buku Siswa hlm. 236 (Ayo Berlatih nomor 3: ayam 4, bebek 2 kurangnya, kelinci 1 lebihnya)",
-          "objective": "Mengolah data dari petunjuk kata lebihnya dan kurangnya, lalu mencari jumlah semua hewan.",
-          "mechanicDescription": "Tiga ronde (ayam 4, bebek 2, kelinci 5; kelinci 3, ayam 5, bebek 4; bebek 4, ayam 3, kelinci 6). Siswa mengatur isi kandang dengan plus dan minus, menekan periksa, lalu mencari jumlah semua hewan. Terakhir ucapkan jumlah semua hewan.",
-          "voiceGuide": "Atur isi kandang menurut petunjuk, lalu periksa."
+          "objective": "Pakai Turus. Mengolah data dari petunjuk kata lebihnya dan kurangnya, lalu mencari jumlah semua hewan.",
+          "mechanicDescription": "Tiga ronde (ayam 4, bebek 2, kelinci 5; kelinci 3, ayam 5, bebek 4; bebek 4, ayam 3, kelinci 6). Siswa mengatur isi kandang dengan plus dan minus, menekan periksa, lalu mencari jumlah semua hewan. Terakhir ucapkan jumlah semua hewan. Terapkan Tally Marks.",
+          "voiceGuide": "Turus. Atur isi kandang menurut petunjuk, lalu periksa."
         },
         {
           "gameId": "subB8-game-5",
@@ -738,9 +738,9 @@
           "gameType": "color-pictograph",
           "title": "Warnai Diagram Gambar",
           "bookReference": "Buku Siswa hlm. 235–236 (Ayo Berlatih nomor 2 dan 3: warnai sesuai banyaknya); Evaluasi hlm. 239 (nomor 4: banyak buah)",
-          "objective": "Membuat diagram gambar dari tabel dengan mewarnai lingkaran dari kotak pertama.",
-          "mechanicDescription": "Tiga ronde (sayur tegak 3, 4, 3, 2; hewan mendatar 4, 2, 5; buah tegak 6, 3, 4, 5). Siswa mewarnai lingkaran sesuai tabel tanpa ada yang terlewat. Terakhir ucapkan jumlah semua data.",
-          "voiceGuide": "Warnai lingkaran sesuai tabel, mulai dari kotak pertama."
+          "objective": "Pakai Diagram Gambar. Membuat diagram gambar dari tabel dengan mewarnai lingkaran dari kotak pertama.",
+          "mechanicDescription": "Tiga ronde (sayur tegak 3, 4, 3, 2; hewan mendatar 4, 2, 5; buah tegak 6, 3, 4, 5). Siswa mewarnai lingkaran sesuai tabel tanpa ada yang terlewat. Terakhir ucapkan jumlah semua data. Terapkan Pictograph.",
+          "voiceGuide": "Diagram Gambar. Warnai lingkaran sesuai tabel, mulai dari kotak pertama."
         },
         {
           "gameId": "subB8-game-6",
@@ -749,9 +749,9 @@
           "gameType": "read-pictograph",
           "title": "Baca Diagram",
           "bookReference": "Buku Siswa hlm. 229–230 (diagram sayur tegak dan mendatar); hlm. 232 (Diagram Mainan Kesukaan); Evaluasi hlm. 237 (kue kesukaan)",
-          "objective": "Membaca diagram gambar tegak dan mendatar: banyaknya, yang paling banyak, dan yang paling sedikit.",
-          "mechanicDescription": "Tiga ronde (sayur tegak, mainan mendatar, kue tegak), tiap ronde dua pertanyaan. Terakhir ucapkan jumlah semua anak pada diagram kue.",
-          "voiceGuide": "Hitung lingkaran, lalu pilih jawabannya."
+          "objective": "Pakai Banding Kategori. Membaca diagram gambar tegak dan mendatar: banyaknya, yang paling banyak, dan yang paling sedikit.",
+          "mechanicDescription": "Tiga ronde (sayur tegak, mainan mendatar, kue tegak), tiap ronde dua pertanyaan. Terakhir ucapkan jumlah semua anak pada diagram kue. Terapkan Compare Categories.",
+          "voiceGuide": "Banding Kategori. Hitung lingkaran, lalu pilih jawabannya."
         },
         {
           "gameId": "subB8-game-7",
@@ -760,9 +760,9 @@
           "gameType": "find-mismatch-pictograph",
           "title": "Temukan yang Tidak Cocok",
           "bookReference": "Buku Siswa hlm. 229–232 (diagram dan data pada tabel)",
-          "objective": "Memeriksa kesesuaian diagram dengan tabel, menemukan kolom yang salah, dan memperbaikinya.",
-          "mechanicDescription": "Tiga ronde (kol, mobil-mobilan, dan Upe yang tidak cocok). Siswa menandai kolom atau baris yang salah lalu memilih banyak yang benar. Terakhir ucapkan jumlah semua data.",
-          "voiceGuide": "Ketuk yang tidak cocok dengan tabel, lalu pilih yang benar."
+          "objective": "Pakai Turus. Memeriksa kesesuaian diagram dengan tabel, menemukan kolom yang salah, dan memperbaikinya.",
+          "mechanicDescription": "Tiga ronde (kol, mobil-mobilan, dan Upe yang tidak cocok). Siswa menandai kolom atau baris yang salah lalu memilih banyak yang benar. Terakhir ucapkan jumlah semua data. Terapkan Tally Marks.",
+          "voiceGuide": "Turus. Ketuk yang tidak cocok dengan tabel, lalu pilih yang benar."
         },
         {
           "gameId": "subB8-game-8",
@@ -771,9 +771,9 @@
           "gameType": "choose-true-sentence",
           "title": "Kalimat Data",
           "bookReference": "Buku Siswa hlm. 233 (kalimat tentang karet gelang); hlm. 232 (Ada 5 anak yang suka kelereng ... semua ada 14 anak)",
-          "objective": "Memilih kalimat yang benar tentang data: lebih banyak, lebih sedikit, paling sedikit, dan sama banyak.",
-          "mechanicDescription": "Lima ronde (karet gelang dua kali, hewan, buah, dan kue). Siswa membaca data lalu memilih kalimat yang benar. Terakhir ucapkan jumlah semua anak pada data kue.",
-          "voiceGuide": "Baca data, lalu pilih kalimat yang benar."
+          "objective": "Pakai Diagram Gambar. Memilih kalimat yang benar tentang data: lebih banyak, lebih sedikit, paling sedikit, dan sama banyak.",
+          "mechanicDescription": "Lima ronde (karet gelang dua kali, hewan, buah, dan kue). Siswa membaca data lalu memilih kalimat yang benar. Terakhir ucapkan jumlah semua anak pada data kue. Terapkan Pictograph.",
+          "voiceGuide": "Diagram Gambar. Baca data, lalu pilih kalimat yang benar."
         },
         {
           "gameId": "subB8-game-9",
@@ -782,9 +782,9 @@
           "gameType": "compute-from-data",
           "title": "Hitung dari Diagram",
           "bookReference": "Buku Siswa hlm. 233 (Semuanya ada 12 karet gelang); hlm. 236 (jumlah semua hewan); Evaluasi hlm. 239 (jumlah semua buah)",
-          "objective": "Menghitung jumlah dua data, jumlah tiga data, dan selisih yang paling banyak dengan yang paling sedikit.",
-          "mechanicDescription": "Empat ronde (karet gelang, hewan, buah, dan alat tulis), tiap ronde tiga langkah. Terakhir ucapkan jumlah ketiganya.",
-          "voiceGuide": "Jumlahkan, lalu cari selisihnya."
+          "objective": "Pakai Banding Kategori. Menghitung jumlah dua data, jumlah tiga data, dan selisih yang paling banyak dengan yang paling sedikit.",
+          "mechanicDescription": "Empat ronde (karet gelang, hewan, buah, dan alat tulis), tiap ronde tiga langkah. Terakhir ucapkan jumlah ketiganya. Terapkan Compare Categories.",
+          "voiceGuide": "Banding Kategori. Jumlahkan, lalu cari selisihnya."
         },
         {
           "gameId": "subB8-game-10",
@@ -793,9 +793,9 @@
           "gameType": "say-and-trace",
           "title": "Kanvas Guratan dan Suara",
           "bookReference": "Buku Siswa hlm. 233 (Semuanya ada 12 karet gelang); hlm. 240–241 (Ayo Menabung)",
-          "objective": "Menjumlahkan semua data pada diagram, mengucapkannya, dan menulis lambangnya.",
-          "mechanicDescription": "Dua ronde. Ronde 1 jumlah semua karet gelang (5, 3, 4). Ronde 2 siswa memilih sendiri berapa kali ia menabung (1, 2, atau 3) lalu menjumlahkannya dengan Halim 2, Wei 1, Upe 3. Siswa mengucapkan jumlahnya lalu menggurat lambangnya.",
-          "voiceGuide": "Jumlahkan data, ucapkan, lalu guratkan lambangnya."
+          "objective": "Pakai Turus. Menjumlahkan semua data pada diagram, mengucapkannya, dan menulis lambangnya.",
+          "mechanicDescription": "Dua ronde. Ronde 1 jumlah semua karet gelang (5, 3, 4). Ronde 2 siswa memilih sendiri berapa kali ia menabung (1, 2, atau 3) lalu menjumlahkannya dengan Halim 2, Wei 1, Upe 3. Siswa mengucapkan jumlahnya lalu menggurat lambangnya. Terapkan Tally Marks.",
+          "voiceGuide": "Turus. Jumlahkan data, ucapkan, lalu guratkan lambangnya."
         }
       ],
       "metodeLuar": [

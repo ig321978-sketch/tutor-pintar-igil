@@ -1,7 +1,6 @@
 /**
- * Naskah murni Matematika Kelas 5 Bab 1 (Bilangan Cacah sampai 100.000): Sub-Bab A–D.
- * Sumber: Buku Siswa Matematika Kelas V Kemendikbudristek Bab 1 hlm. 1–25.
- * Satu sumber: buat-k5-bab1.mjs → kelas5-bab1.json. Tanpa React/jaringan.
+ * Naskah — rewrite mendalam.
+ * Metode luar dianyam ke Story, peta, infografis, poin, dan meta permainan.
  */
 import type { SubBabNaskah } from "./naskah-k2b2";
 
@@ -20,12 +19,12 @@ export const SUB_A51: SubBabNaskah = {
   "id": "A",
   "codeTitle": "Sub-Bab A (Membaca, Menulis, Nilai Tempat)",
   "fullTitle": "Sub-Bab A: Membaca dan Menulis Bilangan Cacah Sampai 100.000 dan Menentukan Nilai Tempatnya",
-  "targetDescription": "Siswa membaca dan menulis bilangan cacah sampai 100.000 serta menentukan digit dan nilai pada tempat puluh ribuan, ribuan, ratusan, puluhan, dan satuan sesuai Buku Siswa Kelas V Bab 1.",
+  "targetDescription": "Siswa membaca dan menulis bilangan cacah sampai 100.000 serta menentukan digit dan nilai pada tempat puluh ribuan, ribuan, ratusan, puluhan, dan satuan sesuai Buku Siswa Kelas V Bab 1. Siswa memakai cara Tabel Nilai Tempat, Balok Dienes Perluas, Membaca Bilangan Besar.",
   "secondaryBg": "#FFEDD5",
   "secondaryBorder": "#EA580C",
   "secondaryText": "#7C2D12",
   "silabus": {
-    "teksSuara": "Kita belajar bilangan cacah sampai seratus ribu. Kita membaca lambang, menulis dari kata, dan mengisi papan puluh ribuan sampai satuan. Nol tetap ditulis agar tempat tidak bergeser. Kita melewati enam tahap seru: cerita, peta pikiran, infografis, benda nyata, gambar, dan simbol.",
+    "teksSuara": "Kita belajar bilangan cacah sampai seratus ribu. Kita membaca lambang, menulis dari kata, dan mengisi papan puluh ribuan sampai satuan. Nol tetap ditulis agar tempat tidak bergeser. Kita memakai cara dari luar buku: Tabel Nilai Tempat (Place-Value Chart); Balok Dienes Perluas (Dienes Blocks); Membaca Bilangan Besar (Reading Large Numbers). Setiap digit punya nilai menurut tempatnya: satuan sampai ratusan ribu. Benda–batang–keping–peti membantu membaca nilai tempat besar. Baca dari kiri, kelompokkan per tiga digit. Kita melewati enam tahap seru: cerita, peta pikiran, infografis, benda nyata, gambar, dan simbol.",
     "cp": "Siswa membaca, menuliskan, dan menentukan nilai tempat bilangan cacah sampai 100.000.",
     "referensi": "Buku Siswa Matematika Kelas V Kemendikbudristek (Bab 1: Bilangan Cacah sampai 100.000, Sub-Bab A)."
   },
@@ -33,16 +32,16 @@ export const SUB_A51: SubBabNaskah = {
     {
       "id": "K5B1A-V1",
       "judul": "Lima Tempat Baru",
-      "subjudul": "Puluh ribuan",
+      "subjudul": "Place-Value Chart",
       "adegan": [
         {
           "id": "K5B1A-V1-1",
           "judul": "Lebih dari empat angka",
           "ketukan": [
-            "Di kelas empat kita sampai sepuluh ribu.",
-            "Sekarang ada puluh ribuan.",
-            "Lima tempat: PR, RB, R, P, S.",
-            "Paling kiri adalah puluh ribuan."
+            "Bayangkan situasi nyata di kelas atau di rumah. Di kelas empat kita sampai sepuluh ribu. Mari kita pahami bersama.",
+            "Sekarang ada puluh ribuan. Mari kita pahami bersama.",
+            "Lima tempat: PR, RB, R, P, S. Mari kita pahami bersama.",
+            "Ingat cara Tabel Nilai Tempat: Setiap digit punya nilai menurut tempatnya: satuan sampai ratusan ribu."
           ],
           "papan": [
             "4 angka",
@@ -55,10 +54,10 @@ export const SUB_A51: SubBabNaskah = {
           "id": "K5B1A-V1-2",
           "judul": "Contoh empat belas ribu",
           "ketukan": [
-            "Empat belas ribu lima ratus.",
-            "Ditulis satu empat titik lima nol nol.",
-            "Satu di puluh ribuan.",
-            "Empat di ribuan."
+            "Empat belas ribu lima ratus. Mari kita pahami bersama.",
+            "Ditulis satu empat titik lima nol nol. Mari kita pahami bersama.",
+            "Satu di puluh ribuan. Mari kita pahami bersama.",
+            "Di sini kita memakai ide Place-Value Chart — Setiap digit punya nilai menurut tempatnya: satuan sampai ratusan ribu."
           ],
           "papan": [
             "14.500",
@@ -71,35 +70,33 @@ export const SUB_A51: SubBabNaskah = {
           "id": "K5B1A-V1-3",
           "judul": "Nol menjaga tempat",
           "ketukan": [
-            "Puluhan dan satuan bernilai nol.",
-            "Nol tetap ditulis.",
-            "Tanpa nol, tempat bergeser.",
-            "Ingat selalu isi kolom.",
-            "METODE LUAR. Tabel Nilai Tempat: Setiap digit punya nilai menurut tempatnya: satuan sampai ratusan ribu."
+            "Puluhan dan satuan bernilai nol. Mari kita pahami bersama.",
+            "Nol tetap ditulis. Mari kita pahami bersama.",
+            "Tanpa nol, tempat bergeser. Mari kita pahami bersama.",
+            "METODE LUAR · Tabel Nilai Tempat: Setiap digit punya nilai menurut tempatnya: satuan sampai ratusan ribu."
           ],
           "papan": [
             "nol",
             "tetap tulis",
             "jangan geser",
-            "isi kolom",
-            "METODE LUAR · Tabel Nilai Tempat"
+            "isi kolom"
           ]
         }
       ]
     },
     {
       "id": "K5B1A-V2",
-      "judul": "Membaca Lima Angka",
-      "subjudul": "Dari kiri",
+      "judul": "Latihan: Balok Dienes Perluas",
+      "subjudul": "Dienes Blocks",
       "adegan": [
         {
           "id": "K5B1A-V2-1",
           "judul": "Enam puluh enam ribu",
           "ketukan": [
-            "Lihat enam enam lima nol nol.",
-            "Baca puluh ribuan dan ribuan dulu.",
-            "Enam puluh enam ribu.",
-            "Lalu lima ratus."
+            "Lihat enam enam lima nol nol. Mari kita pahami bersama.",
+            "Baca puluh ribuan dan ribuan dulu. Mari kita pahami bersama.",
+            "Enam puluh enam ribu. Mari kita pahami bersama.",
+            "Ingat cara Balok Dienes Perluas: Benda–batang–keping–peti membantu membaca nilai tempat besar."
           ],
           "papan": [
             "66.500",
@@ -112,10 +109,10 @@ export const SUB_A51: SubBabNaskah = {
           "id": "K5B1A-V2-2",
           "judul": "Penduduk dan data",
           "ketukan": [
-            "Angka besar sering muncul di data.",
-            "Dua puluh enam ribu sembilan ratus tiga puluh dua.",
-            "Latih membaca perlahan.",
-            "Pisahkan ribuan dengan titik."
+            "Angka besar sering muncul di data. Mari kita pahami bersama.",
+            "Dua puluh enam ribu sembilan ratus tiga puluh dua. Mari kita pahami bersama.",
+            "Latih membaca perlahan. Mari kita pahami bersama.",
+            "Di sini kita memakai ide Dienes Blocks — Benda–batang–keping–peti membantu membaca nilai tempat besar."
           ],
           "papan": [
             "26.932",
@@ -128,35 +125,33 @@ export const SUB_A51: SubBabNaskah = {
           "id": "K5B1A-V2-3",
           "judul": "Nilai digit tujuh",
           "ketukan": [
-            "Pada delapan tujuh sembilan delapan enam.",
-            "Digit tujuh ada di ribuan.",
-            "Nilainya tujuh ribu.",
-            "Bukan tujuh puluh ribu.",
-            "METODE LUAR. Balok Dienes Perluas: Benda–batang–keping–peti membantu membaca nilai tempat besar."
+            "Pada delapan tujuh sembilan delapan enam. Mari kita pahami bersama.",
+            "Digit tujuh ada di ribuan. Mari kita pahami bersama.",
+            "Nilainya tujuh ribu. Mari kita pahami bersama.",
+            "METODE LUAR · Balok Dienes Perluas: Benda–batang–keping–peti membantu membaca nilai tempat besar."
           ],
           "papan": [
             "87.986",
             "digit 7",
             "ribuan",
-            "7.000",
-            "METODE LUAR · Balok Dienes Perluas"
+            "7.000"
           ]
         }
       ]
     },
     {
       "id": "K5B1A-V3",
-      "judul": "Menulis dari Kata",
-      "subjudul": "Isi papan",
+      "judul": "Siap pakai Reading Large Numbers",
+      "subjudul": "Reading Large Numbers",
       "adegan": [
         {
           "id": "K5B1A-V3-1",
           "judul": "Dengar kata, isi kolom",
           "ketukan": [
-            "Dengar empat belas ribu lima ratus.",
-            "Isi puluh ribuan satu.",
-            "Isi ribuan empat.",
-            "Isi ratusan lima, lalu nol nol."
+            "Dengar empat belas ribu lima ratus. Mari kita pahami bersama.",
+            "Isi puluh ribuan satu. Mari kita pahami bersama.",
+            "Isi ribuan empat. Mari kita pahami bersama.",
+            "Ingat cara Membaca Bilangan Besar: Baca dari kiri, kelompokkan per tiga digit."
           ],
           "papan": [
             "dengar",
@@ -169,10 +164,10 @@ export const SUB_A51: SubBabNaskah = {
           "id": "K5B1A-V3-2",
           "judul": "Jangan lupa nol",
           "ketukan": [
-            "Jika tidak ada puluhan, tulis nol.",
-            "Jika tidak ada satuan, tulis nol.",
-            "Kolom harus lengkap.",
-            "Hasilnya empat belas ribu lima ratus."
+            "Jika tidak ada puluhan, tulis nol. Mari kita pahami bersama.",
+            "Jika tidak ada satuan, tulis nol. Mari kita pahami bersama.",
+            "Kolom harus lengkap. Mari kita pahami bersama.",
+            "Di sini kita memakai ide Reading Large Numbers — Baca dari kiri, kelompokkan per tiga digit."
           ],
           "papan": [
             "nol P",
@@ -185,18 +180,16 @@ export const SUB_A51: SubBabNaskah = {
           "id": "K5B1A-V3-3",
           "judul": "Siap bermain",
           "ketukan": [
-            "Kita sudah bisa baca dan tulis.",
-            "Nilai tempat sudah jelas.",
-            "Ayo ke permainan.",
-            "Semangat!",
-            "METODE LUAR. Membaca Bilangan Besar: Baca dari kiri, kelompokkan per tiga digit."
+            "Kita sudah bisa baca dan tulis. Mari kita pahami bersama.",
+            "Nilai tempat sudah jelas. Mari kita pahami bersama.",
+            "Ayo ke permainan. Mari kita pahami bersama.",
+            "METODE LUAR · Membaca Bilangan Besar: Baca dari kiri, kelompokkan per tiga digit."
           ],
           "papan": [
             "baca",
             "tulis",
             "main",
-            "semangat",
-            "METODE LUAR · Membaca Bilangan Besar"
+            "semangat"
           ]
         }
       ]
@@ -205,65 +198,65 @@ export const SUB_A51: SubBabNaskah = {
   "mindMaps": [
     {
       "stepNumber": 1,
-      "stepTitle": "1. Bilangan cacah",
-      "stepDesc": "0, 1, 2, … sampai 100.000",
-      "icon": "🔢",
+      "stepTitle": "1. Pahami soal",
+      "stepDesc": "Baca soal Membaca dan Menulis Bilangan Cacah Sampai 100.000 dan Menentukan Nilai Tempatnya. Apa yang ditanyakan?",
+      "icon": "❓",
       "flowFrom": "START",
       "flowTo": "2"
     },
     {
       "stepNumber": 2,
-      "stepTitle": "2. Lima tempat",
-      "stepDesc": "PR, RB, R, P, S",
-      "icon": "🏛️",
+      "stepTitle": "2. Place-Value Chart",
+      "stepDesc": "Setiap digit punya nilai menurut tempatnya: satuan sampai ratusan ribu.",
+      "icon": "🧭",
       "flowFrom": "1",
       "flowTo": "3"
     },
     {
       "stepNumber": 3,
-      "stepTitle": "3. Membaca",
-      "stepDesc": "Dari kiri, gabungkan kata",
-      "icon": "📢",
+      "stepTitle": "3. Dienes Blocks",
+      "stepDesc": "Benda–batang–keping–peti membantu membaca nilai tempat besar.",
+      "icon": "🛠️",
       "flowFrom": "2",
       "flowTo": "4"
     },
     {
       "stepNumber": 4,
-      "stepTitle": "4. Menulis",
-      "stepDesc": "Isi tiap kolom dari kata",
-      "icon": "✍️",
+      "stepTitle": "4. Reading Large Numbers",
+      "stepDesc": "Baca dari kiri, kelompokkan per tiga digit.",
+      "icon": "✨",
       "flowFrom": "3",
       "flowTo": "5"
     },
     {
       "stepNumber": 5,
-      "stepTitle": "5. Nilai digit",
-      "stepDesc": "Digit × nilai tempat",
-      "icon": "✖️",
+      "stepTitle": "5. Kerjakan",
+      "stepDesc": "Terapkan cara itu pada angka atau gambar soal.",
+      "icon": "✏️",
       "flowFrom": "4",
       "flowTo": "6"
     },
     {
       "stepNumber": 6,
-      "stepTitle": "6. Peran nol",
-      "stepDesc": "Menjaga agar tempat tidak bergeser",
-      "icon": "0️⃣",
+      "stepTitle": "6. Cek masuk akal",
+      "stepDesc": "Apakah hasilnya masuk akal? Bandingkan dengan perkiraan.",
+      "icon": "✅",
       "flowFrom": "5",
       "flowTo": "7"
     },
     {
       "stepNumber": 7,
-      "stepTitle": "7. METODE LUAR · Tabel Nilai Tempat",
-      "stepDesc": "Setiap digit punya nilai menurut tempatnya: satuan sampai ratusan ribu.",
-      "icon": "🌍",
+      "stepTitle": "7. Simpulkan",
+      "stepDesc": "Ulangi ide utamanya dengan kalimatmu sendiri.",
+      "icon": "💬",
       "flowFrom": "6",
       "flowTo": "8"
     },
     {
       "stepNumber": 8,
-      "stepTitle": "8. METODE LUAR · Balok Dienes Perluas",
-      "stepDesc": "Benda–batang–keping–peti membantu membaca nilai tempat besar.",
-      "icon": "🌍",
+      "stepTitle": "8. Lanjut main",
+      "stepDesc": "Siap melatih di permainan Concrete sampai Abstract.",
+      "icon": "🎮",
       "flowFrom": "7",
       "flowTo": "END"
     }
@@ -343,22 +336,15 @@ export const SUB_A51: SubBabNaskah = {
       "judul": "Tabel Nilai Tempat",
       "emoji": "🌍",
       "countNum": 1,
-      "countWord": "METODE LUAR · Place-Value Chart",
-      "suara": "METODE LUAR. Tabel Nilai Tempat. Setiap digit punya nilai menurut tempatnya: satuan sampai ratusan ribu."
+      "countWord": "ingat",
+      "suara": "Setiap digit punya nilai menurut tempatnya: satuan sampai ratusan ribu."
     },
     {
       "judul": "Balok Dienes Perluas",
       "emoji": "🌍",
       "countNum": 2,
-      "countWord": "METODE LUAR · Dienes Blocks",
-      "suara": "METODE LUAR. Balok Dienes Perluas. Benda–batang–keping–peti membantu membaca nilai tempat besar."
-    },
-    {
-      "judul": "Membaca Bilangan Besar",
-      "emoji": "🌍",
-      "countNum": 3,
-      "countWord": "METODE LUAR · Reading Large Numbers",
-      "suara": "METODE LUAR. Membaca Bilangan Besar. Baca dari kiri, kelompokkan per tiga digit."
+      "countWord": "ingat",
+      "suara": "Benda–batang–keping–peti membantu membaca nilai tempat besar."
     }
   ],
   "games": [
@@ -367,9 +353,9 @@ export const SUB_A51: SubBabNaskah = {
       "gameType": "baca-lima",
       "title": "Baca Bilangan Lima Angka",
       "bookReference": "hlm. 7–9",
-      "objective": "Membaca lambang → kata. (METODE LUAR · Tabel Nilai Tempat)",
-      "mechanicDescription": "Tiga ronde.",
-      "voiceGuide": "METODE LUAR · Tabel Nilai Tempat. Pilih kata.",
+      "objective": "Pakai Tabel Nilai Tempat: Setiap digit punya nilai menurut tempatnya: satuan sampai ratusan ribu. Latihan: Membaca lambang → kata..",
+      "mechanicDescription": "Tiga ronde. Saat bermain, terapkan Place-Value Chart: Setiap digit punya nilai menurut tempatnya: satuan sampai ratusan ribu.",
+      "voiceGuide": "Tabel Nilai Tempat. Setiap digit punya nilai menurut tempatnya: satuan sampai ratusan ribu.",
       "emoji": "📢",
       "targetCount": 6
     },
@@ -378,9 +364,9 @@ export const SUB_A51: SubBabNaskah = {
       "gameType": "tulis-lima",
       "title": "Tulis dari Kata Bilangan",
       "bookReference": "hlm. 5–6",
-      "objective": "Menulis lambang dari kata.",
-      "mechanicDescription": "Tiga ronde.",
-      "voiceGuide": "Pilih lambang.",
+      "objective": "Pakai Tabel Nilai Tempat: Setiap digit punya nilai menurut tempatnya: satuan sampai ratusan ribu. Latihan: Menulis lambang dari kata..",
+      "mechanicDescription": "Tiga ronde. Saat bermain, terapkan Place-Value Chart: Setiap digit punya nilai menurut tempatnya: satuan sampai ratusan ribu.",
+      "voiceGuide": "Tabel Nilai Tempat. Setiap digit punya nilai menurut tempatnya: satuan sampai ratusan ribu.",
       "emoji": "✍️",
       "targetCount": 6
     },
@@ -389,9 +375,9 @@ export const SUB_A51: SubBabNaskah = {
       "gameType": "nilai-tempat",
       "title": "Tentukan Nilai Tempat",
       "bookReference": "hlm. 6–9",
-      "objective": "Digit & nilai tempat.",
-      "mechanicDescription": "Tiga ronde.",
-      "voiceGuide": "Pilih.",
+      "objective": "Pakai Tabel Nilai Tempat: Setiap digit punya nilai menurut tempatnya: satuan sampai ratusan ribu. Latihan: Digit & nilai tempat..",
+      "mechanicDescription": "Tiga ronde. Saat bermain, terapkan Place-Value Chart: Setiap digit punya nilai menurut tempatnya: satuan sampai ratusan ribu.",
+      "voiceGuide": "Tabel Nilai Tempat. Setiap digit punya nilai menurut tempatnya: satuan sampai ratusan ribu.",
       "emoji": "🏛️",
       "targetCount": 6
     },
@@ -400,9 +386,9 @@ export const SUB_A51: SubBabNaskah = {
       "gameType": "sort-digit",
       "title": "Pilah Lima/Empat Angka",
       "bookReference": "hlm. 4–7",
-      "objective": "Memilah panjang bilangan.",
-      "mechanicDescription": "Tiga ronde.",
-      "voiceGuide": "Pilah.",
+      "objective": "Pakai Tabel Nilai Tempat: Setiap digit punya nilai menurut tempatnya: satuan sampai ratusan ribu. Latihan: Memilah panjang bilangan..",
+      "mechanicDescription": "Tiga ronde. Saat bermain, terapkan Place-Value Chart: Setiap digit punya nilai menurut tempatnya: satuan sampai ratusan ribu.",
+      "voiceGuide": "Tabel Nilai Tempat. Setiap digit punya nilai menurut tempatnya: satuan sampai ratusan ribu.",
       "emoji": "🧺",
       "targetCount": 18
     },
@@ -411,9 +397,9 @@ export const SUB_A51: SubBabNaskah = {
       "gameType": "match-baca",
       "title": "Jodohkan Lambang–Kata",
       "bookReference": "hlm. 8–9",
-      "objective": "Menjodohkan.",
-      "mechanicDescription": "Tiga ronde.",
-      "voiceGuide": "Jodohkan.",
+      "objective": "Menjodohkan.. Ingat Tabel Nilai Tempat.",
+      "mechanicDescription": "Tiga ronde. Gunakan Tabel Nilai Tempat.",
+      "voiceGuide": "Tabel Nilai Tempat. Jodohkan.",
       "emoji": "🔗",
       "targetCount": 12
     },
@@ -422,9 +408,9 @@ export const SUB_A51: SubBabNaskah = {
       "gameType": "memory-baca",
       "title": "Memori Lambang–Kata",
       "bookReference": "hlm. 7–9",
-      "objective": "Memori.",
-      "mechanicDescription": "Tiga ronde.",
-      "voiceGuide": "Balik kartu.",
+      "objective": "Memori.. Ingat Tabel Nilai Tempat.",
+      "mechanicDescription": "Tiga ronde. Gunakan Tabel Nilai Tempat.",
+      "voiceGuide": "Tabel Nilai Tempat. Balik kartu.",
       "emoji": "🃏",
       "targetCount": 12
     },
@@ -433,9 +419,9 @@ export const SUB_A51: SubBabNaskah = {
       "gameType": "tap-bilangan",
       "title": "Ketuk Bilangan Diminta",
       "bookReference": "hlm. 7–9",
-      "objective": "Mengetuk.",
-      "mechanicDescription": "Tiga ronde.",
-      "voiceGuide": "Ketuk.",
+      "objective": "Mengetuk.. Ingat Tabel Nilai Tempat.",
+      "mechanicDescription": "Tiga ronde. Gunakan Tabel Nilai Tempat.",
+      "voiceGuide": "Tabel Nilai Tempat. Ketuk.",
       "emoji": "👆",
       "targetCount": 9
     },
@@ -444,9 +430,9 @@ export const SUB_A51: SubBabNaskah = {
       "gameType": "tap-all-ciri",
       "title": "Ketuk Semua Sesuai Ciri",
       "bookReference": "hlm. 6–9",
-      "objective": "Ketuk semua.",
-      "mechanicDescription": "Tiga ronde.",
-      "voiceGuide": "Ketuk semua.",
+      "objective": "Ketuk semua.. Ingat Tabel Nilai Tempat.",
+      "mechanicDescription": "Tiga ronde. Gunakan Tabel Nilai Tempat.",
+      "voiceGuide": "Tabel Nilai Tempat. Ketuk semua.",
       "emoji": "✔️",
       "targetCount": 3
     },
@@ -455,9 +441,9 @@ export const SUB_A51: SubBabNaskah = {
       "gameType": "story-baca",
       "title": "Cerita Buku dan Penduduk",
       "bookReference": "hlm. 5–8",
-      "objective": "Soal cerita.",
-      "mechanicDescription": "Tiga ronde.",
-      "voiceGuide": "Pilih.",
+      "objective": "Soal cerita.. Ingat Tabel Nilai Tempat.",
+      "mechanicDescription": "Tiga ronde. Gunakan Tabel Nilai Tempat.",
+      "voiceGuide": "Tabel Nilai Tempat. Pilih.",
       "emoji": "📖",
       "targetCount": 6
     },
@@ -466,9 +452,9 @@ export const SUB_A51: SubBabNaskah = {
       "gameType": "order-nilai",
       "title": "Urutkan Bilangan Baca",
       "bookReference": "hlm. 7–9",
-      "objective": "Mengurutkan.",
-      "mechanicDescription": "Tiga ronde.",
-      "voiceGuide": "Urutkan.",
+      "objective": "Mengurutkan.. Ingat Tabel Nilai Tempat.",
+      "mechanicDescription": "Tiga ronde. Gunakan Tabel Nilai Tempat.",
+      "voiceGuide": "Tabel Nilai Tempat. Urutkan.",
       "emoji": "📶",
       "targetCount": 3
     },
@@ -477,9 +463,9 @@ export const SUB_A51: SubBabNaskah = {
       "gameType": "papan-baca",
       "title": "Papan Baca Bilangan",
       "bookReference": "hlm. 6–7",
-      "objective": "Baca papan tempat. (METODE LUAR · Tabel Nilai Tempat)",
-      "mechanicDescription": "Tiga ronde.",
-      "voiceGuide": "METODE LUAR · Tabel Nilai Tempat. Pilih.",
+      "objective": "Pakai Balok Dienes Perluas: Benda–batang–keping–peti membantu membaca nilai tempat besar. Latihan: Baca papan tempat..",
+      "mechanicDescription": "Tiga ronde. Saat bermain, terapkan Dienes Blocks: Benda–batang–keping–peti membantu membaca nilai tempat besar.",
+      "voiceGuide": "Balok Dienes Perluas. Benda–batang–keping–peti membantu membaca nilai tempat besar.",
       "diagramType": "board",
       "numberA": 1,
       "numberB": 5
@@ -489,9 +475,9 @@ export const SUB_A51: SubBabNaskah = {
       "gameType": "papan-tempat",
       "title": "Papan Nilai Tempat",
       "bookReference": "hlm. 6–9",
-      "objective": "Digit per kolom.",
-      "mechanicDescription": "Tiga ronde.",
-      "voiceGuide": "Pilih.",
+      "objective": "Pakai Balok Dienes Perluas: Benda–batang–keping–peti membantu membaca nilai tempat besar. Latihan: Digit per kolom..",
+      "mechanicDescription": "Tiga ronde. Saat bermain, terapkan Dienes Blocks: Benda–batang–keping–peti membantu membaca nilai tempat besar.",
+      "voiceGuide": "Balok Dienes Perluas. Benda–batang–keping–peti membantu membaca nilai tempat besar.",
       "diagramType": "place",
       "numberA": 1,
       "numberB": 5
@@ -501,9 +487,9 @@ export const SUB_A51: SubBabNaskah = {
       "gameType": "match-diagram-a",
       "title": "Jodohkan Diagram Tempat",
       "bookReference": "hlm. 6–9",
-      "objective": "Jodohkan.",
-      "mechanicDescription": "Tiga ronde.",
-      "voiceGuide": "Jodohkan.",
+      "objective": "Pakai Balok Dienes Perluas: Benda–batang–keping–peti membantu membaca nilai tempat besar. Latihan: Jodohkan..",
+      "mechanicDescription": "Tiga ronde. Saat bermain, terapkan Dienes Blocks: Benda–batang–keping–peti membantu membaca nilai tempat besar.",
+      "voiceGuide": "Balok Dienes Perluas. Benda–batang–keping–peti membantu membaca nilai tempat besar.",
       "diagramType": "match",
       "numberA": 1,
       "numberB": 2
@@ -513,9 +499,9 @@ export const SUB_A51: SubBabNaskah = {
       "gameType": "memory-diagram-a",
       "title": "Memori Diagram Tempat",
       "bookReference": "hlm. 6–9",
-      "objective": "Memori.",
-      "mechanicDescription": "Tiga ronde.",
-      "voiceGuide": "Balik kartu.",
+      "objective": "Pakai Balok Dienes Perluas: Benda–batang–keping–peti membantu membaca nilai tempat besar. Latihan: Memori..",
+      "mechanicDescription": "Tiga ronde. Saat bermain, terapkan Dienes Blocks: Benda–batang–keping–peti membantu membaca nilai tempat besar.",
+      "voiceGuide": "Balok Dienes Perluas. Benda–batang–keping–peti membantu membaca nilai tempat besar.",
       "diagramType": "mem",
       "numberA": 1,
       "numberB": 4
@@ -525,9 +511,9 @@ export const SUB_A51: SubBabNaskah = {
       "gameType": "table-a",
       "title": "Tabel Tempat–Nilai",
       "bookReference": "hlm. 6–9",
-      "objective": "Isi tabel.",
-      "mechanicDescription": "Tiga tabel.",
-      "voiceGuide": "Pilih.",
+      "objective": "Isi tabel.. Ingat Balok Dienes Perluas.",
+      "mechanicDescription": "Tiga tabel. Gunakan Balok Dienes Perluas.",
+      "voiceGuide": "Balok Dienes Perluas. Pilih.",
       "diagramType": "table",
       "numberA": 1,
       "numberB": 3
@@ -537,9 +523,9 @@ export const SUB_A51: SubBabNaskah = {
       "gameType": "tap-all-a",
       "title": "Ketuk Semua Diagram",
       "bookReference": "hlm. 6–9",
-      "objective": "Ketuk semua.",
-      "mechanicDescription": "Tiga ronde.",
-      "voiceGuide": "Ketuk semua.",
+      "objective": "Ketuk semua.. Ingat Balok Dienes Perluas.",
+      "mechanicDescription": "Tiga ronde. Gunakan Balok Dienes Perluas.",
+      "voiceGuide": "Balok Dienes Perluas. Ketuk semua.",
       "diagramType": "select",
       "numberA": 1,
       "numberB": 4
@@ -549,9 +535,9 @@ export const SUB_A51: SubBabNaskah = {
       "gameType": "sort-diagram-a",
       "title": "Pilah Diagram Panjang",
       "bookReference": "hlm. 4–7",
-      "objective": "Pilah.",
-      "mechanicDescription": "Tiga ronde.",
-      "voiceGuide": "Pilah.",
+      "objective": "Pilah.. Ingat Balok Dienes Perluas.",
+      "mechanicDescription": "Tiga ronde. Gunakan Balok Dienes Perluas.",
+      "voiceGuide": "Balok Dienes Perluas. Pilah.",
       "diagramType": "sort",
       "numberA": 1,
       "numberB": 6
@@ -561,9 +547,9 @@ export const SUB_A51: SubBabNaskah = {
       "gameType": "model-blok",
       "title": "Model Blok Tempat",
       "bookReference": "hlm. 6",
-      "objective": "Baca model.",
-      "mechanicDescription": "Tiga ronde.",
-      "voiceGuide": "Pilih.",
+      "objective": "Baca model.. Ingat Balok Dienes Perluas.",
+      "mechanicDescription": "Tiga ronde. Gunakan Balok Dienes Perluas.",
+      "voiceGuide": "Balok Dienes Perluas. Pilih.",
       "diagramType": "blocks",
       "numberA": 1,
       "numberB": 2
@@ -573,9 +559,9 @@ export const SUB_A51: SubBabNaskah = {
       "gameType": "choose-a",
       "title": "Pilih Bacaan Cocok",
       "bookReference": "hlm. 7–9",
-      "objective": "Pilih pernyataan.",
-      "mechanicDescription": "Tiga ronde.",
-      "voiceGuide": "Pilih.",
+      "objective": "Pilih pernyataan.. Ingat Balok Dienes Perluas.",
+      "mechanicDescription": "Tiga ronde. Gunakan Balok Dienes Perluas.",
+      "voiceGuide": "Balok Dienes Perluas. Pilih.",
       "diagramType": "choose",
       "numberA": 1,
       "numberB": 2
@@ -585,9 +571,9 @@ export const SUB_A51: SubBabNaskah = {
       "gameType": "story-picture-a",
       "title": "Cerita Diagram Tempat",
       "bookReference": "hlm. 5–9",
-      "objective": "Cerita + papan.",
-      "mechanicDescription": "Tiga ronde.",
-      "voiceGuide": "Pilih.",
+      "objective": "Cerita + papan.. Ingat Balok Dienes Perluas.",
+      "mechanicDescription": "Tiga ronde. Gunakan Balok Dienes Perluas.",
+      "voiceGuide": "Balok Dienes Perluas. Pilih.",
       "diagramType": "story",
       "numberA": 1,
       "numberB": 2
@@ -597,9 +583,9 @@ export const SUB_A51: SubBabNaskah = {
       "gameType": "write-kata",
       "title": "Tulis Kata Bilangan",
       "bookReference": "hlm. 7–9",
-      "objective": "Menulis kata. (METODE LUAR · Tabel Nilai Tempat)",
-      "mechanicDescription": "Tiga ronde.",
-      "voiceGuide": "METODE LUAR · Tabel Nilai Tempat. Pilih.",
+      "objective": "Pakai Membaca Bilangan Besar: Baca dari kiri, kelompokkan per tiga digit. Latihan: Menulis kata..",
+      "mechanicDescription": "Tiga ronde. Saat bermain, terapkan Reading Large Numbers: Baca dari kiri, kelompokkan per tiga digit.",
+      "voiceGuide": "Membaca Bilangan Besar. Baca dari kiri, kelompokkan per tiga digit.",
       "symbolLarge": "Aa",
       "wordLarge": "KATA",
       "mathNotation": "baca"
@@ -609,9 +595,9 @@ export const SUB_A51: SubBabNaskah = {
       "gameType": "write-lambang",
       "title": "Tulis Lambang Bilangan",
       "bookReference": "hlm. 5–6",
-      "objective": "Menulis angka.",
-      "mechanicDescription": "Tiga ronde.",
-      "voiceGuide": "Pilih.",
+      "objective": "Pakai Membaca Bilangan Besar: Baca dari kiri, kelompokkan per tiga digit. Latihan: Menulis angka..",
+      "mechanicDescription": "Tiga ronde. Saat bermain, terapkan Reading Large Numbers: Baca dari kiri, kelompokkan per tiga digit.",
+      "voiceGuide": "Membaca Bilangan Besar. Baca dari kiri, kelompokkan per tiga digit.",
       "symbolLarge": "14.500",
       "wordLarge": "LAMBANG",
       "mathNotation": "tulis"
@@ -621,9 +607,9 @@ export const SUB_A51: SubBabNaskah = {
       "gameType": "choose-tempat",
       "title": "Pilih Nama Tempat",
       "bookReference": "hlm. 6–9",
-      "objective": "PR/RB/R/P/S.",
-      "mechanicDescription": "Tiga ronde.",
-      "voiceGuide": "Pilih.",
+      "objective": "Pakai Membaca Bilangan Besar: Baca dari kiri, kelompokkan per tiga digit. Latihan: PR/RB/R/P/S..",
+      "mechanicDescription": "Tiga ronde. Saat bermain, terapkan Reading Large Numbers: Baca dari kiri, kelompokkan per tiga digit.",
+      "voiceGuide": "Membaca Bilangan Besar. Baca dari kiri, kelompokkan per tiga digit.",
       "symbolLarge": "PR",
       "wordLarge": "TEMPAT",
       "mathNotation": "nilai"
@@ -633,9 +619,9 @@ export const SUB_A51: SubBabNaskah = {
       "gameType": "order-abstract-a",
       "title": "Urutkan Lambang",
       "bookReference": "hlm. 7–9",
-      "objective": "Mengurutkan.",
-      "mechanicDescription": "Tiga ronde.",
-      "voiceGuide": "Urutkan.",
+      "objective": "Pakai Membaca Bilangan Besar: Baca dari kiri, kelompokkan per tiga digit. Latihan: Mengurutkan..",
+      "mechanicDescription": "Tiga ronde. Saat bermain, terapkan Reading Large Numbers: Baca dari kiri, kelompokkan per tiga digit.",
+      "voiceGuide": "Membaca Bilangan Besar. Baca dari kiri, kelompokkan per tiga digit.",
       "symbolLarge": "14k<26k",
       "wordLarge": "URUT",
       "mathNotation": "nilai"
@@ -645,9 +631,9 @@ export const SUB_A51: SubBabNaskah = {
       "gameType": "match-abstract-a",
       "title": "Jodohkan Notasi Tempat",
       "bookReference": "hlm. 6–9",
-      "objective": "Jodohkan.",
-      "mechanicDescription": "Tiga ronde.",
-      "voiceGuide": "Jodohkan.",
+      "objective": "Jodohkan.. Ingat Membaca Bilangan Besar.",
+      "mechanicDescription": "Tiga ronde. Gunakan Membaca Bilangan Besar.",
+      "voiceGuide": "Membaca Bilangan Besar. Jodohkan.",
       "symbolLarge": "7→rb",
       "wordLarge": "JODOH",
       "mathNotation": "teks"
@@ -657,9 +643,9 @@ export const SUB_A51: SubBabNaskah = {
       "gameType": "memory-abstract-a",
       "title": "Memori Notasi Tempat",
       "bookReference": "hlm. 6–9",
-      "objective": "Memori.",
-      "mechanicDescription": "Tiga ronde.",
-      "voiceGuide": "Balik kartu.",
+      "objective": "Memori.. Ingat Membaca Bilangan Besar.",
+      "mechanicDescription": "Tiga ronde. Gunakan Membaca Bilangan Besar.",
+      "voiceGuide": "Membaca Bilangan Besar. Balik kartu.",
       "symbolLarge": "nol",
       "wordLarge": "MEMORI",
       "mathNotation": "notasi"
@@ -669,9 +655,9 @@ export const SUB_A51: SubBabNaskah = {
       "gameType": "true-false-a",
       "title": "Benar atau Salah: Tempat",
       "bookReference": "hlm. 4–9",
-      "objective": "Menilai.",
-      "mechanicDescription": "Dua ronde.",
-      "voiceGuide": "Benar/salah.",
+      "objective": "Menilai.. Ingat Membaca Bilangan Besar.",
+      "mechanicDescription": "Dua ronde. Gunakan Membaca Bilangan Besar.",
+      "voiceGuide": "Membaca Bilangan Besar. Benar/salah.",
       "symbolLarge": "✓ ✗",
       "wordLarge": "BENAR SALAH",
       "mathNotation": "alasan"
@@ -681,9 +667,9 @@ export const SUB_A51: SubBabNaskah = {
       "gameType": "detective-a",
       "title": "Detektif Bilangan Lima",
       "bookReference": "hlm. 5–9",
-      "objective": "Petunjuk → bilangan.",
-      "mechanicDescription": "Tiga soal.",
-      "voiceGuide": "Pilih.",
+      "objective": "Petunjuk → bilangan.. Ingat Membaca Bilangan Besar.",
+      "mechanicDescription": "Tiga soal. Gunakan Membaca Bilangan Besar.",
+      "voiceGuide": "Membaca Bilangan Besar. Pilih.",
       "symbolLarge": "?",
       "wordLarge": "DETEKTIF",
       "mathNotation": "petunjuk"
@@ -693,9 +679,9 @@ export const SUB_A51: SubBabNaskah = {
       "gameType": "concept-a",
       "title": "Peta Konsep Nilai Tempat",
       "bookReference": "hlm. 2–9",
-      "objective": "Mengisi kotak.",
-      "mechanicDescription": "Satu peta.",
-      "voiceGuide": "Pilih opsi.",
+      "objective": "Mengisi kotak.. Ingat Membaca Bilangan Besar.",
+      "mechanicDescription": "Satu peta. Gunakan Membaca Bilangan Besar.",
+      "voiceGuide": "Membaca Bilangan Besar. Pilih opsi.",
       "symbolLarge": "🗺️",
       "wordLarge": "PETA",
       "mathNotation": "konsep"
@@ -705,9 +691,9 @@ export const SUB_A51: SubBabNaskah = {
       "gameType": "story-abstract-a",
       "title": "Cerita Angka Tempat",
       "bookReference": "hlm. 5–9",
-      "objective": "Soal cerita.",
-      "mechanicDescription": "Tiga ronde.",
-      "voiceGuide": "Pilih.",
+      "objective": "Soal cerita.. Ingat Membaca Bilangan Besar.",
+      "mechanicDescription": "Tiga ronde. Gunakan Membaca Bilangan Besar.",
+      "voiceGuide": "Membaca Bilangan Besar. Pilih.",
       "symbolLarge": "📖",
       "wordLarge": "CERITA",
       "mathNotation": "teks"
@@ -727,37 +713,25 @@ export const SUB_A51: SubBabNaskah = {
       "suara": "Baca dari kiri."
     },
     {
-      "ikon": "✍️",
-      "nama": "Menulis",
-      "isi": "Isi setiap kolom tempat sesuai kata bilangan.",
-      "suara": "Isi kolom satu per satu."
-    },
-    {
-      "ikon": "0️⃣",
-      "nama": "Nol",
-      "isi": "Nol tetap ditulis agar tempat tidak bergeser.",
-      "suara": "Nol menjaga tempat."
-    },
-    {
       "ikon": "🌍",
       "nama": "Tabel Nilai Tempat",
-      "isi": "METODE LUAR · Place-Value Chart: Setiap digit punya nilai menurut tempatnya: satuan sampai ratusan ribu. (asal: Van de Walle).",
-      "suara": "METODE LUAR. Tabel Nilai Tempat. Setiap digit punya nilai menurut tempatnya: satuan sampai ratusan ribu."
+      "isi": "Setiap digit punya nilai menurut tempatnya: satuan sampai ratusan ribu.",
+      "suara": "Tabel Nilai Tempat. Setiap digit punya nilai menurut tempatnya: satuan sampai ratusan ribu."
     },
     {
       "ikon": "🌍",
       "nama": "Balok Dienes Perluas",
-      "isi": "METODE LUAR · Dienes Blocks: Benda–batang–keping–peti membantu membaca nilai tempat besar. (asal: Zoltan Dienes).",
-      "suara": "METODE LUAR. Balok Dienes Perluas. Benda–batang–keping–peti membantu membaca nilai tempat besar."
+      "isi": "Benda–batang–keping–peti membantu membaca nilai tempat besar.",
+      "suara": "Balok Dienes Perluas. Benda–batang–keping–peti membantu membaca nilai tempat besar."
     },
     {
       "ikon": "🌍",
       "nama": "Membaca Bilangan Besar",
-      "isi": "METODE LUAR · Reading Large Numbers: Baca dari kiri, kelompokkan per tiga digit. (asal: Number naming pedagogy).",
-      "suara": "METODE LUAR. Membaca Bilangan Besar. Baca dari kiri, kelompokkan per tiga digit."
+      "isi": "Baca dari kiri, kelompokkan per tiga digit.",
+      "suara": "Membaca Bilangan Besar. Baca dari kiri, kelompokkan per tiga digit."
     }
   ],
-  "poinSuara": "Ingat empat kunci: lima tempat, baca dari kiri, tulis per kolom, dan nol penjaga.",
+  "poinSuara": "Ingat: Tabel Nilai Tempat, Balok Dienes Perluas, Membaca Bilangan Besar.",
   "cara": {
     "suara": "Ikuti langkah-langkahnya.",
     "potongan": [
@@ -779,11 +753,11 @@ export const SUB_A51: SubBabNaskah = {
       }
     ]
   },
-  "rumah": "Ayo Mencoba di rumah: catat 3 bilangan lima angka dari koran atau papan skor, tulis di papan PR–S, dan baca keras-keras.",
+  "rumah": "Ayo Mencoba di rumah: terapkan Tabel Nilai Tempat pada satu benda atau soal nyata, lalu ceritakan langkahmu.",
   "refleksi": [
-    "Mengapa nol tetap ditulis?",
-    "Apa beda nilai digit 7 di ribuan dan di puluh ribuan?",
-    "Bagaimana menulis 'empat puluh ribu tiga ratus lima puluh'?"
+    "Bagaimana Tabel Nilai Tempat membantumu memahami soal?",
+    "Kapan kamu memakai Balok Dienes Perluas?",
+    "Apa bedanya dengan hanya menghafal rumus atau langkah tanpa arti?"
   ],
   "metodeLuar": [
     {
@@ -829,12 +803,12 @@ export const SUB_B51: SubBabNaskah = {
   "id": "B",
   "codeTitle": "Sub-Bab B (Membandingkan dan Mengurutkan)",
   "fullTitle": "Sub-Bab B: Membandingkan dan Mengurutkan Bilangan Cacah Sampai 100.000",
-  "targetDescription": "Siswa membandingkan bilangan sampai 100.000 dengan strategi nilai tempat dari kiri, memakai tanda > < =, serta mengurutkan menaik dan menurun sesuai Buku Siswa Kelas V Bab 1.",
+  "targetDescription": "Siswa membandingkan bilangan sampai 100.000 dengan strategi nilai tempat dari kiri, memakai tanda > < =, serta mengurutkan menaik dan menurun sesuai Buku Siswa Kelas V Bab 1. Siswa memakai cara Banding Digit per Tempat, Urutan di Garis Bilangan, Bilangan Acuan.",
   "secondaryBg": "#DBEAFE",
   "secondaryBorder": "#2563EB",
   "secondaryText": "#1E3A8A",
   "silabus": {
-    "teksSuara": "Kita belajar membandingkan dan mengurutkan bilangan sampai seratus ribu. Mulai dari puluh ribuan. Jika sama, lanjut ke ribuan, dan seterusnya. Kita memakai tanda lebih besar, lebih kecil, atau sama dengan. Kita melewati enam tahap seru: cerita, peta pikiran, infografis, benda nyata, gambar, dan simbol.",
+    "teksSuara": "Kita belajar membandingkan dan mengurutkan bilangan sampai seratus ribu. Mulai dari puluh ribuan. Jika sama, lanjut ke ribuan, dan seterusnya. Kita memakai tanda lebih besar, lebih kecil, atau sama dengan. Kita memakai cara dari luar buku: Banding Digit per Tempat (Compare Place by Place); Urutan di Garis Bilangan (Number Line Order); Bilangan Acuan (Benchmark Numbers). Bandingkan dari nilai tempat terbesar ke terkecil. Bilangan lebih kanan lebih besar. Pakai 10.000 atau 50.000 sebagai acuan perkiraan. Kita melewati enam tahap seru: cerita, peta pikiran, infografis, benda nyata, gambar, dan simbol.",
     "cp": "Siswa membandingkan dan mengurutkan bilangan cacah sampai 100.000.",
     "referensi": "Buku Siswa Matematika Kelas V Kemendikbudristek (Bab 1: Bilangan Cacah sampai 100.000, Sub-Bab B)."
   },
@@ -842,16 +816,16 @@ export const SUB_B51: SubBabNaskah = {
     {
       "id": "K5B1B-V1",
       "judul": "Banding dari Kiri",
-      "subjudul": "Puluh ribuan dulu",
+      "subjudul": "Compare Place by Place",
       "adegan": [
         {
           "id": "K5B1B-V1-1",
           "judul": "Dua bilangan",
           "ketukan": [
-            "Lihat dua bilangan lima angka.",
-            "Mulai dari puluh ribuan.",
-            "Yang digitnya lebih besar, bilangannya lebih besar.",
-            "Jika sama, lanjut ke kanan."
+            "Bayangkan situasi nyata di kelas atau di rumah. Lihat dua bilangan lima angka. Mari kita pahami bersama.",
+            "Mulai dari puluh ribuan. Mari kita pahami bersama.",
+            "Yang digitnya lebih besar, bilangannya lebih besar. Mari kita pahami bersama.",
+            "Ingat cara Banding Digit per Tempat: Bandingkan dari nilai tempat terbesar ke terkecil."
           ],
           "papan": [
             "dua bilangan",
@@ -864,10 +838,10 @@ export const SUB_B51: SubBabNaskah = {
           "id": "K5B1B-V1-2",
           "judul": "Contoh dakon",
           "ketukan": [
-            "Lima enam ribu dan tujuh lima ribu.",
-            "Puluh ribuan lima versus tujuh.",
-            "Tujuh lebih besar.",
-            "Jadi tujuh lima ribu lebih besar."
+            "Lima enam ribu dan tujuh lima ribu. Mari kita pahami bersama.",
+            "Puluh ribuan lima versus tujuh. Mari kita pahami bersama.",
+            "Tujuh lebih besar. Mari kita pahami bersama.",
+            "Di sini kita memakai ide Compare Place by Place — Bandingkan dari nilai tempat terbesar ke terkecil."
           ],
           "papan": [
             "56rb",
@@ -880,51 +854,49 @@ export const SUB_B51: SubBabNaskah = {
           "id": "K5B1B-V1-3",
           "judul": "Jika PR sama",
           "ketukan": [
-            "Lima enam dan lima tujuh.",
-            "Puluh ribuan sama.",
-            "Bandingkan ribuan.",
-            "Tujuh lebih besar dari enam.",
-            "METODE LUAR. Banding Digit per Tempat: Bandingkan dari nilai tempat terbesar ke terkecil."
+            "Lima enam dan lima tujuh. Mari kita pahami bersama.",
+            "Puluh ribuan sama. Mari kita pahami bersama.",
+            "Bandingkan ribuan. Mari kita pahami bersama.",
+            "METODE LUAR · Banding Digit per Tempat: Bandingkan dari nilai tempat terbesar ke terkecil."
           ],
           "papan": [
             "PR sama",
             "cek RB",
             "7>6",
-            "keputusan",
-            "METODE LUAR · Banding Digit per Tempat"
+            "keputusan"
           ]
         }
       ]
     },
     {
       "id": "K5B1B-V2",
-      "judul": "Tanda dan Urutan",
-      "subjudul": "> < =",
+      "judul": "Latihan: Urutan di Garis Bilangan",
+      "subjudul": "Number Line Order",
       "adegan": [
         {
           "id": "K5B1B-V2-1",
           "judul": "Tiga tanda",
           "ketukan": [
-            "Lebih besar memakai tanda ini.",
-            "Lebih kecil memakai tanda itu.",
-            "Sama memakai sama dengan.",
-            "Latih sampai otomatis."
+            "Lebih besar memakai tanda ini. Mari kita pahami bersama.",
+            "Lebih kecil memakai tanda itu. Mari kita pahami bersama.",
+            "Sama memakai sama dengan. Mari kita pahami bersama.",
+            "Ingat cara Urutan di Garis Bilangan: Bilangan lebih kanan lebih besar."
           ],
           "papan": [
-            ">",
-            "<",
-            "=",
-            "latihan"
+            "latihan",
+            "urutan",
+            "urutan",
+            "urutan"
           ]
         },
         {
           "id": "K5B1B-V2-2",
           "judul": "Urut naik",
           "ketukan": [
-            "Dari yang paling kecil.",
-            "Ke yang paling besar.",
-            "Itu urutan menaik.",
-            "Berguna memilih yang termurah."
+            "Dari yang paling kecil. Mari kita pahami bersama.",
+            "Ke yang paling besar. Mari kita pahami bersama.",
+            "Itu urutan menaik. Mari kita pahami bersama.",
+            "Di sini kita memakai ide Number Line Order — Bilangan lebih kanan lebih besar."
           ],
           "papan": [
             "kecil",
@@ -937,35 +909,33 @@ export const SUB_B51: SubBabNaskah = {
           "id": "K5B1B-V2-3",
           "judul": "Urut turun",
           "ketukan": [
-            "Dari yang paling besar.",
-            "Ke yang paling kecil.",
-            "Itu urutan menurun.",
-            "Berguna mencari yang terbesar.",
-            "METODE LUAR. Urutan di Garis Bilangan: Bilangan lebih kanan lebih besar."
+            "Dari yang paling besar. Mari kita pahami bersama.",
+            "Ke yang paling kecil. Mari kita pahami bersama.",
+            "Itu urutan menurun. Mari kita pahami bersama.",
+            "METODE LUAR · Urutan di Garis Bilangan: Bilangan lebih kanan lebih besar."
           ],
           "papan": [
             "besar",
             "kecil",
             "menurun",
-            "terbesar",
-            "METODE LUAR · Urutan di Garis Bilangan"
+            "terbesar"
           ]
         }
       ]
     },
     {
       "id": "K5B1B-V3",
-      "judul": "Latihan Dakon",
-      "subjudul": "Empat bilangan",
+      "judul": "Siap pakai Benchmark Numbers",
+      "subjudul": "Benchmark Numbers",
       "adegan": [
         {
           "id": "K5B1B-V3-1",
           "judul": "Empat harga",
           "ketukan": [
-            "Ada empat bilangan dakon.",
-            "Cari yang terkecil.",
-            "Cari yang terbesar.",
-            "Lalu urutkan semua."
+            "Ada empat bilangan dakon. Mari kita pahami bersama.",
+            "Cari yang terkecil. Mari kita pahami bersama.",
+            "Cari yang terbesar. Mari kita pahami bersama.",
+            "Ingat cara Bilangan Acuan: Pakai 10.000 atau 50.000 sebagai acuan perkiraan."
           ],
           "papan": [
             "empat",
@@ -978,10 +948,10 @@ export const SUB_B51: SubBabNaskah = {
           "id": "K5B1B-V3-2",
           "judul": "Pola seribu",
           "ketukan": [
-            "Lima belas ribu lima ratus.",
-            "Enam belas ribu lima ratus.",
-            "Naik seribu tiap langkah.",
-            "Pola membantu mengisi."
+            "Lima belas ribu lima ratus. Mari kita pahami bersama.",
+            "Enam belas ribu lima ratus. Mari kita pahami bersama.",
+            "Naik seribu tiap langkah. Mari kita pahami bersama.",
+            "Di sini kita memakai ide Benchmark Numbers — Pakai 10.000 atau 50.000 sebagai acuan perkiraan."
           ],
           "papan": [
             "15.500",
@@ -994,18 +964,18 @@ export const SUB_B51: SubBabNaskah = {
           "id": "K5B1B-V3-3",
           "judul": "Siap bermain",
           "ketukan": [
-            "Strategi banding sudah siap.",
-            "Tanda dan urutan sudah jelas.",
-            "Ayo ke permainan.",
-            "Semangat!",
-            "METODE LUAR. Bilangan Acuan: Pakai 10.000 atau 50.000 sebagai acuan perkiraan."
+            "Strategi banding sudah siap. Mari kita pahami bersama.",
+            "Tanda dan urutan sudah jelas. Mari kita pahami bersama.",
+            "Ayo ke permainan. Mari kita pahami bersama.",
+            "Semangat. Mari kita pahami bersama.",
+            "METODE LUAR · Bilangan Acuan: Pakai 10.000 atau 50.000 sebagai acuan perkiraan."
           ],
           "papan": [
             "strategi",
             "tanda",
             "main",
             "semangat",
-            "METODE LUAR · Bilangan Acuan"
+            "bilangan"
           ]
         }
       ]
@@ -1014,65 +984,65 @@ export const SUB_B51: SubBabNaskah = {
   "mindMaps": [
     {
       "stepNumber": 1,
-      "stepTitle": "1. Dua bilangan",
-      "stepDesc": "Siapkan lambang sejajar",
-      "icon": "🔢",
+      "stepTitle": "1. Pahami soal",
+      "stepDesc": "Baca soal Membandingkan dan Mengurutkan Bilangan Cacah Sampai 100.000. Apa yang ditanyakan?",
+      "icon": "❓",
       "flowFrom": "START",
       "flowTo": "2"
     },
     {
       "stepNumber": 2,
-      "stepTitle": "2. Mulai PR",
-      "stepDesc": "Bandingkan puluh ribuan",
-      "icon": "⬅️",
+      "stepTitle": "2. Compare Place by Place",
+      "stepDesc": "Bandingkan dari nilai tempat terbesar ke terkecil.",
+      "icon": "🧭",
       "flowFrom": "1",
       "flowTo": "3"
     },
     {
       "stepNumber": 3,
-      "stepTitle": "3. Jika sama",
-      "stepDesc": "Lanjut RB → R → P → S",
-      "icon": "➡️",
+      "stepTitle": "3. Number Line Order",
+      "stepDesc": "Bilangan lebih kanan lebih besar.",
+      "icon": "🛠️",
       "flowFrom": "2",
       "flowTo": "4"
     },
     {
       "stepNumber": 4,
-      "stepTitle": "4. Tanda",
-      "stepDesc": "Tuliskan > < atau =",
-      "icon": "⚖️",
+      "stepTitle": "4. Benchmark Numbers",
+      "stepDesc": "Pakai 10.000 atau 50.000 sebagai acuan perkiraan.",
+      "icon": "✨",
       "flowFrom": "3",
       "flowTo": "5"
     },
     {
       "stepNumber": 5,
-      "stepTitle": "5. Urut naik",
-      "stepDesc": "Kecil ke besar",
-      "icon": "📶",
+      "stepTitle": "5. Kerjakan",
+      "stepDesc": "Terapkan cara itu pada angka atau gambar soal.",
+      "icon": "✏️",
       "flowFrom": "4",
       "flowTo": "6"
     },
     {
       "stepNumber": 6,
-      "stepTitle": "6. Urut turun",
-      "stepDesc": "Besar ke kecil",
-      "icon": "📉",
+      "stepTitle": "6. Cek masuk akal",
+      "stepDesc": "Apakah hasilnya masuk akal? Bandingkan dengan perkiraan.",
+      "icon": "✅",
       "flowFrom": "5",
       "flowTo": "7"
     },
     {
       "stepNumber": 7,
-      "stepTitle": "7. METODE LUAR · Banding Digit per Tempat",
-      "stepDesc": "Bandingkan dari nilai tempat terbesar ke terkecil.",
-      "icon": "🌍",
+      "stepTitle": "7. Simpulkan",
+      "stepDesc": "Ulangi ide utamanya dengan kalimatmu sendiri.",
+      "icon": "💬",
       "flowFrom": "6",
       "flowTo": "8"
     },
     {
       "stepNumber": 8,
-      "stepTitle": "8. METODE LUAR · Urutan di Garis Bilangan",
-      "stepDesc": "Bilangan lebih kanan lebih besar.",
-      "icon": "🌍",
+      "stepTitle": "8. Lanjut main",
+      "stepDesc": "Siap melatih di permainan Concrete sampai Abstract.",
+      "icon": "🎮",
       "flowFrom": "7",
       "flowTo": "END"
     }
@@ -1152,22 +1122,15 @@ export const SUB_B51: SubBabNaskah = {
       "judul": "Banding Digit per Tempat",
       "emoji": "🌍",
       "countNum": 1,
-      "countWord": "METODE LUAR · Compare Place by Place",
-      "suara": "METODE LUAR. Banding Digit per Tempat. Bandingkan dari nilai tempat terbesar ke terkecil."
+      "countWord": "ingat",
+      "suara": "Bandingkan dari nilai tempat terbesar ke terkecil."
     },
     {
       "judul": "Urutan di Garis Bilangan",
       "emoji": "🌍",
       "countNum": 2,
-      "countWord": "METODE LUAR · Number Line Order",
-      "suara": "METODE LUAR. Urutan di Garis Bilangan. Bilangan lebih kanan lebih besar."
-    },
-    {
-      "judul": "Bilangan Acuan",
-      "emoji": "🌍",
-      "countNum": 3,
-      "countWord": "METODE LUAR · Benchmark Numbers",
-      "suara": "METODE LUAR. Bilangan Acuan. Pakai 10.000 atau 50.000 sebagai acuan perkiraan."
+      "countWord": "ingat",
+      "suara": "Bilangan lebih kanan lebih besar."
     }
   ],
   "games": [
@@ -1176,9 +1139,9 @@ export const SUB_B51: SubBabNaskah = {
       "gameType": "banding-tanda",
       "title": "Isi Tanda Banding",
       "bookReference": "hlm. 14–15",
-      "objective": ">, <, =. (METODE LUAR · Banding Digit per Tempat)",
-      "mechanicDescription": "Tiga ronde.",
-      "voiceGuide": "METODE LUAR · Banding Digit per Tempat. Pilih tanda.",
+      "objective": "Pakai Banding Digit per Tempat: Bandingkan dari nilai tempat terbesar ke terkecil. Latihan: >, <, =..",
+      "mechanicDescription": "Tiga ronde. Saat bermain, terapkan Compare Place by Place: Bandingkan dari nilai tempat terbesar ke terkecil.",
+      "voiceGuide": "Banding Digit per Tempat. Bandingkan dari nilai tempat terbesar ke terkecil.",
       "emoji": "⚖️",
       "targetCount": 6
     },
@@ -1187,9 +1150,9 @@ export const SUB_B51: SubBabNaskah = {
       "gameType": "strategi-banding",
       "title": "Strategi dari Kiri",
       "bookReference": "hlm. 11–13",
-      "objective": "Mulai puluh ribuan.",
-      "mechanicDescription": "Tiga ronde.",
-      "voiceGuide": "Pilih.",
+      "objective": "Pakai Banding Digit per Tempat: Bandingkan dari nilai tempat terbesar ke terkecil. Latihan: Mulai puluh ribuan..",
+      "mechanicDescription": "Tiga ronde. Saat bermain, terapkan Compare Place by Place: Bandingkan dari nilai tempat terbesar ke terkecil.",
+      "voiceGuide": "Banding Digit per Tempat. Bandingkan dari nilai tempat terbesar ke terkecil.",
       "emoji": "⬅️",
       "targetCount": 6
     },
@@ -1198,9 +1161,9 @@ export const SUB_B51: SubBabNaskah = {
       "gameType": "pilih-ekstrem",
       "title": "Paling Besar/Kecil",
       "bookReference": "hlm. 10–13",
-      "objective": "Cari ekstrem.",
-      "mechanicDescription": "Tiga ronde.",
-      "voiceGuide": "Pilih.",
+      "objective": "Pakai Banding Digit per Tempat: Bandingkan dari nilai tempat terbesar ke terkecil. Latihan: Cari ekstrem..",
+      "mechanicDescription": "Tiga ronde. Saat bermain, terapkan Compare Place by Place: Bandingkan dari nilai tempat terbesar ke terkecil.",
+      "voiceGuide": "Banding Digit per Tempat. Bandingkan dari nilai tempat terbesar ke terkecil.",
       "emoji": "🏆",
       "targetCount": 6
     },
@@ -1209,9 +1172,9 @@ export const SUB_B51: SubBabNaskah = {
       "gameType": "sort-ukuran",
       "title": "Pilah Besar/Kecil",
       "bookReference": "hlm. 10–13",
-      "objective": "Memilah.",
-      "mechanicDescription": "Tiga ronde.",
-      "voiceGuide": "Pilah.",
+      "objective": "Pakai Banding Digit per Tempat: Bandingkan dari nilai tempat terbesar ke terkecil. Latihan: Memilah..",
+      "mechanicDescription": "Tiga ronde. Saat bermain, terapkan Compare Place by Place: Bandingkan dari nilai tempat terbesar ke terkecil.",
+      "voiceGuide": "Banding Digit per Tempat. Bandingkan dari nilai tempat terbesar ke terkecil.",
       "emoji": "🧺",
       "targetCount": 18
     },
@@ -1220,9 +1183,9 @@ export const SUB_B51: SubBabNaskah = {
       "gameType": "match-banding",
       "title": "Jodohkan Hasil Banding",
       "bookReference": "hlm. 14–15",
-      "objective": "Menjodohkan.",
-      "mechanicDescription": "Tiga ronde.",
-      "voiceGuide": "Jodohkan.",
+      "objective": "Menjodohkan.. Ingat Banding Digit per Tempat.",
+      "mechanicDescription": "Tiga ronde. Gunakan Banding Digit per Tempat.",
+      "voiceGuide": "Banding Digit per Tempat. Jodohkan.",
       "emoji": "🔗",
       "targetCount": 12
     },
@@ -1231,9 +1194,9 @@ export const SUB_B51: SubBabNaskah = {
       "gameType": "memory-banding",
       "title": "Memori Banding",
       "bookReference": "hlm. 14–15",
-      "objective": "Memori.",
-      "mechanicDescription": "Tiga ronde.",
-      "voiceGuide": "Balik kartu.",
+      "objective": "Memori.. Ingat Banding Digit per Tempat.",
+      "mechanicDescription": "Tiga ronde. Gunakan Banding Digit per Tempat.",
+      "voiceGuide": "Banding Digit per Tempat. Balik kartu.",
       "emoji": "🃏",
       "targetCount": 12
     },
@@ -1242,9 +1205,9 @@ export const SUB_B51: SubBabNaskah = {
       "gameType": "tap-bilangan-b",
       "title": "Ketuk Bilangan Banding",
       "bookReference": "hlm. 10–14",
-      "objective": "Mengetuk.",
-      "mechanicDescription": "Tiga ronde.",
-      "voiceGuide": "Ketuk.",
+      "objective": "Mengetuk.. Ingat Banding Digit per Tempat.",
+      "mechanicDescription": "Tiga ronde. Gunakan Banding Digit per Tempat.",
+      "voiceGuide": "Banding Digit per Tempat. Ketuk.",
       "emoji": "👆",
       "targetCount": 9
     },
@@ -1253,9 +1216,9 @@ export const SUB_B51: SubBabNaskah = {
       "gameType": "tap-all-b",
       "title": "Ketuk Semua Sesuai Batas",
       "bookReference": "hlm. 10–14",
-      "objective": "Ketuk semua.",
-      "mechanicDescription": "Tiga ronde.",
-      "voiceGuide": "Ketuk semua.",
+      "objective": "Ketuk semua.. Ingat Banding Digit per Tempat.",
+      "mechanicDescription": "Tiga ronde. Gunakan Banding Digit per Tempat.",
+      "voiceGuide": "Banding Digit per Tempat. Ketuk semua.",
       "emoji": "✔️",
       "targetCount": 3
     },
@@ -1264,9 +1227,9 @@ export const SUB_B51: SubBabNaskah = {
       "gameType": "story-dakon",
       "title": "Cerita Dakon dan Urutan",
       "bookReference": "hlm. 10–13",
-      "objective": "Soal cerita.",
-      "mechanicDescription": "Tiga ronde.",
-      "voiceGuide": "Pilih.",
+      "objective": "Soal cerita.. Ingat Banding Digit per Tempat.",
+      "mechanicDescription": "Tiga ronde. Gunakan Banding Digit per Tempat.",
+      "voiceGuide": "Banding Digit per Tempat. Pilih.",
       "emoji": "🎲",
       "targetCount": 6
     },
@@ -1275,9 +1238,9 @@ export const SUB_B51: SubBabNaskah = {
       "gameType": "order-banding",
       "title": "Urutkan Naik/Turun",
       "bookReference": "hlm. 13–15",
-      "objective": "Mengurutkan.",
-      "mechanicDescription": "Tiga ronde.",
-      "voiceGuide": "Urutkan.",
+      "objective": "Mengurutkan.. Ingat Banding Digit per Tempat.",
+      "mechanicDescription": "Tiga ronde. Gunakan Banding Digit per Tempat.",
+      "voiceGuide": "Banding Digit per Tempat. Urutkan.",
       "emoji": "📶",
       "targetCount": 3
     },
@@ -1286,9 +1249,9 @@ export const SUB_B51: SubBabNaskah = {
       "gameType": "diagram-banding",
       "title": "Diagram Banding",
       "bookReference": "hlm. 14–15",
-      "objective": "Baca tanda. (METODE LUAR · Banding Digit per Tempat)",
-      "mechanicDescription": "Tiga ronde.",
-      "voiceGuide": "METODE LUAR · Banding Digit per Tempat. Pilih.",
+      "objective": "Pakai Urutan di Garis Bilangan: Bilangan lebih kanan lebih besar. Latihan: Baca tanda..",
+      "mechanicDescription": "Tiga ronde. Saat bermain, terapkan Number Line Order: Bilangan lebih kanan lebih besar.",
+      "voiceGuide": "Urutan di Garis Bilangan. Bilangan lebih kanan lebih besar.",
       "diagramType": "cmp",
       "numberA": 1,
       "numberB": 2
@@ -1298,9 +1261,9 @@ export const SUB_B51: SubBabNaskah = {
       "gameType": "diagram-urut",
       "title": "Diagram Urutan",
       "bookReference": "hlm. 13",
-      "objective": "Baca urutan.",
-      "mechanicDescription": "Tiga ronde.",
-      "voiceGuide": "Pilih.",
+      "objective": "Pakai Urutan di Garis Bilangan: Bilangan lebih kanan lebih besar. Latihan: Baca urutan..",
+      "mechanicDescription": "Tiga ronde. Saat bermain, terapkan Number Line Order: Bilangan lebih kanan lebih besar.",
+      "voiceGuide": "Urutan di Garis Bilangan. Bilangan lebih kanan lebih besar.",
       "diagramType": "ord",
       "numberA": 1,
       "numberB": 2
@@ -1310,9 +1273,9 @@ export const SUB_B51: SubBabNaskah = {
       "gameType": "match-diagram-b",
       "title": "Jodohkan Diagram Banding",
       "bookReference": "hlm. 14–15",
-      "objective": "Jodohkan.",
-      "mechanicDescription": "Tiga ronde.",
-      "voiceGuide": "Jodohkan.",
+      "objective": "Pakai Urutan di Garis Bilangan: Bilangan lebih kanan lebih besar. Latihan: Jodohkan..",
+      "mechanicDescription": "Tiga ronde. Saat bermain, terapkan Number Line Order: Bilangan lebih kanan lebih besar.",
+      "voiceGuide": "Urutan di Garis Bilangan. Bilangan lebih kanan lebih besar.",
       "diagramType": "match",
       "numberA": 1,
       "numberB": 2
@@ -1322,9 +1285,9 @@ export const SUB_B51: SubBabNaskah = {
       "gameType": "memory-diagram-b",
       "title": "Memori Diagram Banding",
       "bookReference": "hlm. 14–15",
-      "objective": "Memori.",
-      "mechanicDescription": "Tiga ronde.",
-      "voiceGuide": "Balik kartu.",
+      "objective": "Pakai Urutan di Garis Bilangan: Bilangan lebih kanan lebih besar. Latihan: Memori..",
+      "mechanicDescription": "Tiga ronde. Saat bermain, terapkan Number Line Order: Bilangan lebih kanan lebih besar.",
+      "voiceGuide": "Urutan di Garis Bilangan. Bilangan lebih kanan lebih besar.",
       "diagramType": "mem",
       "numberA": 1,
       "numberB": 4
@@ -1334,9 +1297,9 @@ export const SUB_B51: SubBabNaskah = {
       "gameType": "table-b",
       "title": "Tabel Banding",
       "bookReference": "hlm. 14–15",
-      "objective": "Isi tabel.",
-      "mechanicDescription": "Tiga tabel.",
-      "voiceGuide": "Pilih.",
+      "objective": "Isi tabel.. Ingat Urutan di Garis Bilangan.",
+      "mechanicDescription": "Tiga tabel. Gunakan Urutan di Garis Bilangan.",
+      "voiceGuide": "Urutan di Garis Bilangan. Pilih.",
       "diagramType": "table",
       "numberA": 1,
       "numberB": 3
@@ -1346,9 +1309,9 @@ export const SUB_B51: SubBabNaskah = {
       "gameType": "tap-all-pb",
       "title": "Ketuk Semua Diagram",
       "bookReference": "hlm. 10–14",
-      "objective": "Ketuk semua.",
-      "mechanicDescription": "Tiga ronde.",
-      "voiceGuide": "Ketuk semua.",
+      "objective": "Ketuk semua.. Ingat Urutan di Garis Bilangan.",
+      "mechanicDescription": "Tiga ronde. Gunakan Urutan di Garis Bilangan.",
+      "voiceGuide": "Urutan di Garis Bilangan. Ketuk semua.",
       "diagramType": "select",
       "numberA": 1,
       "numberB": 4
@@ -1358,9 +1321,9 @@ export const SUB_B51: SubBabNaskah = {
       "gameType": "sort-diagram-b",
       "title": "Pilah Diagram Ukuran",
       "bookReference": "hlm. 10–13",
-      "objective": "Pilah.",
-      "mechanicDescription": "Tiga ronde.",
-      "voiceGuide": "Pilah.",
+      "objective": "Pilah.. Ingat Urutan di Garis Bilangan.",
+      "mechanicDescription": "Tiga ronde. Gunakan Urutan di Garis Bilangan.",
+      "voiceGuide": "Urutan di Garis Bilangan. Pilah.",
       "diagramType": "sort",
       "numberA": 1,
       "numberB": 6
@@ -1370,9 +1333,9 @@ export const SUB_B51: SubBabNaskah = {
       "gameType": "papan-banding",
       "title": "Papan Banding Tempat",
       "bookReference": "hlm. 11–12",
-      "objective": "Banding kolom.",
-      "mechanicDescription": "Tiga ronde.",
-      "voiceGuide": "Pilih.",
+      "objective": "Banding kolom.. Ingat Urutan di Garis Bilangan.",
+      "mechanicDescription": "Tiga ronde. Gunakan Urutan di Garis Bilangan.",
+      "voiceGuide": "Urutan di Garis Bilangan. Pilih.",
       "diagramType": "board",
       "numberA": 1,
       "numberB": 2
@@ -1382,9 +1345,9 @@ export const SUB_B51: SubBabNaskah = {
       "gameType": "choose-b",
       "title": "Pilih Strategi Cocok",
       "bookReference": "hlm. 11–14",
-      "objective": "Pilih pernyataan.",
-      "mechanicDescription": "Tiga ronde.",
-      "voiceGuide": "Pilih.",
+      "objective": "Pilih pernyataan.. Ingat Urutan di Garis Bilangan.",
+      "mechanicDescription": "Tiga ronde. Gunakan Urutan di Garis Bilangan.",
+      "voiceGuide": "Urutan di Garis Bilangan. Pilih.",
       "diagramType": "choose",
       "numberA": 1,
       "numberB": 2
@@ -1394,9 +1357,9 @@ export const SUB_B51: SubBabNaskah = {
       "gameType": "story-picture-b",
       "title": "Cerita Diagram Banding",
       "bookReference": "hlm. 10–15",
-      "objective": "Cerita + diagram.",
-      "mechanicDescription": "Tiga ronde.",
-      "voiceGuide": "Pilih.",
+      "objective": "Cerita + diagram.. Ingat Urutan di Garis Bilangan.",
+      "mechanicDescription": "Tiga ronde. Gunakan Urutan di Garis Bilangan.",
+      "voiceGuide": "Urutan di Garis Bilangan. Pilih.",
       "diagramType": "story",
       "numberA": 1,
       "numberB": 2
@@ -1406,9 +1369,9 @@ export const SUB_B51: SubBabNaskah = {
       "gameType": "write-tanda",
       "title": "Tulis Tanda Banding",
       "bookReference": "hlm. 15",
-      "objective": "Menulis > < =. (METODE LUAR · Banding Digit per Tempat)",
-      "mechanicDescription": "Tiga ronde.",
-      "voiceGuide": "METODE LUAR · Banding Digit per Tempat. Pilih.",
+      "objective": "Pakai Bilangan Acuan: Pakai 10.000 atau 50.000 sebagai acuan perkiraan. Latihan: Menulis > < =..",
+      "mechanicDescription": "Tiga ronde. Saat bermain, terapkan Benchmark Numbers: Pakai 10.000 atau 50.000 sebagai acuan perkiraan.",
+      "voiceGuide": "Bilangan Acuan. Pakai 10.000 atau 50.000 sebagai acuan perkiraan.",
       "symbolLarge": "><=",
       "wordLarge": "TANDA",
       "mathNotation": "banding"
@@ -1418,9 +1381,9 @@ export const SUB_B51: SubBabNaskah = {
       "gameType": "write-ekstrem",
       "title": "Tulis Bilangan Ekstrem",
       "bookReference": "hlm. 13",
-      "objective": "Menulis ekstrem.",
-      "mechanicDescription": "Tiga ronde.",
-      "voiceGuide": "Pilih.",
+      "objective": "Pakai Bilangan Acuan: Pakai 10.000 atau 50.000 sebagai acuan perkiraan. Latihan: Menulis ekstrem..",
+      "mechanicDescription": "Tiga ronde. Saat bermain, terapkan Benchmark Numbers: Pakai 10.000 atau 50.000 sebagai acuan perkiraan.",
+      "voiceGuide": "Bilangan Acuan. Pakai 10.000 atau 50.000 sebagai acuan perkiraan.",
       "symbolLarge": "min/max",
       "wordLarge": "EKSTREEM",
       "mathNotation": "urut"
@@ -1430,9 +1393,9 @@ export const SUB_B51: SubBabNaskah = {
       "gameType": "choose-strategi",
       "title": "Pilih Langkah Banding",
       "bookReference": "hlm. 11–13",
-      "objective": "Strategi tempat.",
-      "mechanicDescription": "Tiga ronde.",
-      "voiceGuide": "Pilih.",
+      "objective": "Pakai Bilangan Acuan: Pakai 10.000 atau 50.000 sebagai acuan perkiraan. Latihan: Strategi tempat..",
+      "mechanicDescription": "Tiga ronde. Saat bermain, terapkan Benchmark Numbers: Pakai 10.000 atau 50.000 sebagai acuan perkiraan.",
+      "voiceGuide": "Bilangan Acuan. Pakai 10.000 atau 50.000 sebagai acuan perkiraan.",
       "symbolLarge": "PR→RB",
       "wordLarge": "STRATEGI",
       "mathNotation": "kiri"
@@ -1442,9 +1405,9 @@ export const SUB_B51: SubBabNaskah = {
       "gameType": "order-abstract-b",
       "title": "Urutkan Abstrak",
       "bookReference": "hlm. 13–15",
-      "objective": "Mengurutkan.",
-      "mechanicDescription": "Tiga ronde.",
-      "voiceGuide": "Urutkan.",
+      "objective": "Pakai Bilangan Acuan: Pakai 10.000 atau 50.000 sebagai acuan perkiraan. Latihan: Mengurutkan..",
+      "mechanicDescription": "Tiga ronde. Saat bermain, terapkan Benchmark Numbers: Pakai 10.000 atau 50.000 sebagai acuan perkiraan.",
+      "voiceGuide": "Bilangan Acuan. Pakai 10.000 atau 50.000 sebagai acuan perkiraan.",
       "symbolLarge": "naik",
       "wordLarge": "URUT",
       "mathNotation": "nilai"
@@ -1454,9 +1417,9 @@ export const SUB_B51: SubBabNaskah = {
       "gameType": "match-abstract-b",
       "title": "Jodohkan Notasi Banding",
       "bookReference": "hlm. 14–15",
-      "objective": "Jodohkan.",
-      "mechanicDescription": "Tiga ronde.",
-      "voiceGuide": "Jodohkan.",
+      "objective": "Jodohkan.. Ingat Bilangan Acuan.",
+      "mechanicDescription": "Tiga ronde. Gunakan Bilangan Acuan.",
+      "voiceGuide": "Bilangan Acuan. Jodohkan.",
       "symbolLarge": "a?b",
       "wordLarge": "JODOH",
       "mathNotation": "teks"
@@ -1466,9 +1429,9 @@ export const SUB_B51: SubBabNaskah = {
       "gameType": "memory-abstract-b",
       "title": "Memori Notasi Banding",
       "bookReference": "hlm. 14–15",
-      "objective": "Memori.",
-      "mechanicDescription": "Tiga ronde.",
-      "voiceGuide": "Balik kartu.",
+      "objective": "Memori.. Ingat Bilangan Acuan.",
+      "mechanicDescription": "Tiga ronde. Gunakan Bilangan Acuan.",
+      "voiceGuide": "Bilangan Acuan. Balik kartu.",
       "symbolLarge": "urut",
       "wordLarge": "MEMORI",
       "mathNotation": "notasi"
@@ -1478,9 +1441,9 @@ export const SUB_B51: SubBabNaskah = {
       "gameType": "true-false-b",
       "title": "Benar atau Salah: Banding",
       "bookReference": "hlm. 10–15",
-      "objective": "Menilai.",
-      "mechanicDescription": "Dua ronde.",
-      "voiceGuide": "Benar/salah.",
+      "objective": "Menilai.. Ingat Bilangan Acuan.",
+      "mechanicDescription": "Dua ronde. Gunakan Bilangan Acuan.",
+      "voiceGuide": "Bilangan Acuan. Benar/salah.",
       "symbolLarge": "✓ ✗",
       "wordLarge": "BENAR SALAH",
       "mathNotation": "alasan"
@@ -1490,9 +1453,9 @@ export const SUB_B51: SubBabNaskah = {
       "gameType": "detective-b",
       "title": "Detektif Banding Urut",
       "bookReference": "hlm. 10–15",
-      "objective": "Petunjuk → jawaban.",
-      "mechanicDescription": "Tiga soal.",
-      "voiceGuide": "Pilih.",
+      "objective": "Petunjuk → jawaban.. Ingat Bilangan Acuan.",
+      "mechanicDescription": "Tiga soal. Gunakan Bilangan Acuan.",
+      "voiceGuide": "Bilangan Acuan. Pilih.",
       "symbolLarge": "?",
       "wordLarge": "DETEKTIF",
       "mathNotation": "petunjuk"
@@ -1502,9 +1465,9 @@ export const SUB_B51: SubBabNaskah = {
       "gameType": "concept-b",
       "title": "Peta Konsep Banding",
       "bookReference": "hlm. 2–14",
-      "objective": "Mengisi kotak.",
-      "mechanicDescription": "Satu peta.",
-      "voiceGuide": "Pilih opsi.",
+      "objective": "Mengisi kotak.. Ingat Bilangan Acuan.",
+      "mechanicDescription": "Satu peta. Gunakan Bilangan Acuan.",
+      "voiceGuide": "Bilangan Acuan. Pilih opsi.",
       "symbolLarge": "🗺️",
       "wordLarge": "PETA",
       "mathNotation": "konsep"
@@ -1514,9 +1477,9 @@ export const SUB_B51: SubBabNaskah = {
       "gameType": "story-abstract-b",
       "title": "Cerita Angka Banding",
       "bookReference": "hlm. 10–15",
-      "objective": "Soal cerita.",
-      "mechanicDescription": "Tiga ronde.",
-      "voiceGuide": "Pilih.",
+      "objective": "Soal cerita.. Ingat Bilangan Acuan.",
+      "mechanicDescription": "Tiga ronde. Gunakan Bilangan Acuan.",
+      "voiceGuide": "Bilangan Acuan. Pilih.",
       "symbolLarge": "📖",
       "wordLarge": "CERITA",
       "mathNotation": "teks"
@@ -1536,37 +1499,25 @@ export const SUB_B51: SubBabNaskah = {
       "suara": "Pilih tanda yang tepat."
     },
     {
-      "ikon": "📶",
-      "nama": "Urut naik",
-      "isi": "Susun dari bilangan terkecil ke terbesar.",
-      "suara": "Kecil ke besar."
-    },
-    {
-      "ikon": "📉",
-      "nama": "Urut turun",
-      "isi": "Susun dari bilangan terbesar ke terkecil.",
-      "suara": "Besar ke kecil."
-    },
-    {
       "ikon": "🌍",
       "nama": "Banding Digit per Tempat",
-      "isi": "METODE LUAR · Compare Place by Place: Bandingkan dari nilai tempat terbesar ke terkecil. (asal: Van de Walle).",
-      "suara": "METODE LUAR. Banding Digit per Tempat. Bandingkan dari nilai tempat terbesar ke terkecil."
+      "isi": "Bandingkan dari nilai tempat terbesar ke terkecil.",
+      "suara": "Banding Digit per Tempat. Bandingkan dari nilai tempat terbesar ke terkecil."
     },
     {
       "ikon": "🌍",
       "nama": "Urutan di Garis Bilangan",
-      "isi": "METODE LUAR · Number Line Order: Bilangan lebih kanan lebih besar. (asal: Number line pedagogy).",
-      "suara": "METODE LUAR. Urutan di Garis Bilangan. Bilangan lebih kanan lebih besar."
+      "isi": "Bilangan lebih kanan lebih besar.",
+      "suara": "Urutan di Garis Bilangan. Bilangan lebih kanan lebih besar."
     },
     {
       "ikon": "🌍",
       "nama": "Bilangan Acuan",
-      "isi": "METODE LUAR · Benchmark Numbers: Pakai 10.000 atau 50.000 sebagai acuan perkiraan. (asal: Number sense).",
-      "suara": "METODE LUAR. Bilangan Acuan. Pakai 10.000 atau 50.000 sebagai acuan perkiraan."
+      "isi": "Pakai 10.000 atau 50.000 sebagai acuan perkiraan.",
+      "suara": "Bilangan Acuan. Pakai 10.000 atau 50.000 sebagai acuan perkiraan."
     }
   ],
-  "poinSuara": "Ingat empat kunci banding: dari kiri, tanda, urut naik, dan urut turun.",
+  "poinSuara": "Ingat: Banding Digit per Tempat, Urutan di Garis Bilangan, Bilangan Acuan.",
   "cara": {
     "suara": "Ikuti langkah-langkahnya.",
     "potongan": [
@@ -1588,11 +1539,11 @@ export const SUB_B51: SubBabNaskah = {
       }
     ]
   },
-  "rumah": "Ayo Mencoba di rumah: tulis 4 bilangan lima angka, bandingkan berpasangan dengan tanda, lalu urutkan naik dan turun.",
+  "rumah": "Ayo Mencoba di rumah: terapkan Banding Digit per Tempat pada satu benda atau soal nyata, lalu ceritakan langkahmu.",
   "refleksi": [
-    "Mengapa banding dimulai dari puluh ribuan?",
-    "Kapan hasil banding menjadi sama dengan?",
-    "Apa beda urut naik dan urut turun?"
+    "Bagaimana Banding Digit per Tempat membantumu memahami soal?",
+    "Kapan kamu memakai Urutan di Garis Bilangan?",
+    "Apa bedanya dengan hanya menghafal rumus atau langkah tanpa arti?"
   ],
   "metodeLuar": [
     {
@@ -1636,12 +1587,12 @@ export const SUB_C51: SubBabNaskah = {
   "id": "C",
   "codeTitle": "Sub-Bab C (Komposisi dan Dekomposisi)",
   "fullTitle": "Sub-Bab C: Komposisi dan Dekomposisi Bilangan Cacah Sampai 100.000",
-  "targetDescription": "Siswa menyusun bilangan dari pecahan nilai tempat (komposisi) dan menguraikannya ke bentuk panjang (dekomposisi), termasuk banyak cara setara seperti contoh Asep, Lukas, dan Komang pada Buku Siswa Kelas V Bab 1.",
+  "targetDescription": "Siswa menyusun bilangan dari pecahan nilai tempat (komposisi) dan menguraikannya ke bentuk panjang (dekomposisi), termasuk banyak cara setara seperti contoh Asep, Lukas, dan Komang pada Buku Siswa Kelas V Bab 1. Siswa memakai cara Bentuk Uraian, Susun Ulang Nilai Tempat, Kembali ke Bentuk Lazim.",
   "secondaryBg": "#DCFCE7",
   "secondaryBorder": "#16A34A",
   "secondaryText": "#14532D",
   "silabus": {
-    "teksSuara": "Kita belajar menyusun dan menguraikan bilangan sampai seratus ribu. Pecahan sepuluh ribuan, seribuan, dan seratusan digabung menjadi satu bilangan. Satu bilangan juga bisa diuraikan menjadi jumlah nilai tempat. Banyak cara boleh, asalkan jumlahnya sama. Kita melewati enam tahap seru: cerita, peta pikiran, infografis, benda nyata, gambar, dan simbol.",
+    "teksSuara": "Kita belajar menyusun dan menguraikan bilangan sampai seratus ribu. Pecahan sepuluh ribuan, seribuan, dan seratusan digabung menjadi satu bilangan. Satu bilangan juga bisa diuraikan menjadi jumlah nilai tempat. Banyak cara boleh, asalkan jumlahnya sama. Kita memakai cara dari luar buku: Bentuk Uraian (Expanded Form); Susun Ulang Nilai Tempat (Flexible Composition); Kembali ke Bentuk Lazim (Standard Form). Tulis bilangan sebagai jumlah nilai tempat: 3000+200+40+5. Satu puluhan bisa jadi sepuluh satuan; fleksibel saat operasi. Setelah mengurai, rapikan lagi ke bentuk bilangan biasa. Kita melewati enam tahap seru: cerita, peta pikiran, infografis, benda nyata, gambar, dan simbol.",
     "cp": "Siswa melakukan komposisi dan dekomposisi bilangan cacah sampai 100.000.",
     "referensi": "Buku Siswa Matematika Kelas V Kemendikbudristek (Bab 1: Bilangan Cacah sampai 100.000, Sub-Bab C)."
   },
@@ -1649,16 +1600,16 @@ export const SUB_C51: SubBabNaskah = {
     {
       "id": "K5B1C-V1",
       "judul": "Susun dari Pecahan",
-      "subjudul": "Komposisi",
+      "subjudul": "Expanded Form",
       "adegan": [
         {
           "id": "K5B1C-V1-1",
           "judul": "Uang Asep",
           "ketukan": [
-            "Tiga lembar sepuluh ribuan.",
-            "Delapan lembar seribuan.",
-            "Enam keping seratusan.",
-            "Jumlahkan nilainya."
+            "Bayangkan situasi nyata di kelas atau di rumah. Tiga lembar sepuluh ribuan. Mari kita pahami bersama.",
+            "Delapan lembar seribuan. Mari kita pahami bersama.",
+            "Enam keping seratusan. Mari kita pahami bersama.",
+            "Ingat cara Bentuk Uraian: Tulis bilangan sebagai jumlah nilai tempat: 3000+200+40+5."
           ],
           "papan": [
             "3×10rb",
@@ -1671,10 +1622,10 @@ export const SUB_C51: SubBabNaskah = {
           "id": "K5B1C-V1-2",
           "judul": "Hasil 38.600",
           "ketukan": [
-            "Tiga puluh ribu.",
-            "Tambah delapan ribu.",
-            "Tambah enam ratus.",
-            "Jadi tiga delapan titik enam nol nol."
+            "Tiga puluh ribu. Mari kita pahami bersama.",
+            "Tambah delapan ribu. Mari kita pahami bersama.",
+            "Tambah enam ratus. Mari kita pahami bersama.",
+            "Di sini kita memakai ide Expanded Form — Tulis bilangan sebagai jumlah nilai tempat: 3000+200+40+5."
           ],
           "papan": [
             "30.000",
@@ -1687,35 +1638,33 @@ export const SUB_C51: SubBabNaskah = {
           "id": "K5B1C-V1-3",
           "judul": "Uang Lukas",
           "ketukan": [
-            "Enam lembar sepuluh ribuan.",
-            "Tiga lembar seribuan.",
-            "Lima keping seratusan.",
-            "Hasil enam tiga titik lima nol nol.",
-            "METODE LUAR. Bentuk Uraian: Tulis bilangan sebagai jumlah nilai tempat: 3000+200+40+5."
+            "Enam lembar sepuluh ribuan. Mari kita pahami bersama.",
+            "Tiga lembar seribuan. Mari kita pahami bersama.",
+            "Lima keping seratusan. Mari kita pahami bersama.",
+            "METODE LUAR · Bentuk Uraian: Tulis bilangan sebagai jumlah nilai tempat: 3000+200+40+5."
           ],
           "papan": [
             "6×10rb",
             "3×1rb",
             "5×100",
-            "63.500",
-            "METODE LUAR · Bentuk Uraian"
+            "63.500"
           ]
         }
       ]
     },
     {
       "id": "K5B1C-V2",
-      "judul": "Uraikan Bentuk Panjang",
-      "subjudul": "Dekomposisi",
+      "judul": "Latihan: Susun Ulang Nilai Tempat",
+      "subjudul": "Flexible Composition",
       "adegan": [
         {
           "id": "K5B1C-V2-1",
           "judul": "Buka nilai tempat",
           "ketukan": [
-            "Ambil bilangan utuh.",
-            "Pisahkan tiap tempat.",
-            "Tulis jumlah nilai.",
-            "Itu bentuk panjang."
+            "Ambil bilangan utuh. Mari kita pahami bersama.",
+            "Pisahkan tiap tempat. Mari kita pahami bersama.",
+            "Tulis jumlah nilai. Mari kita pahami bersama.",
+            "Ingat cara Susun Ulang Nilai Tempat: Satu puluhan bisa jadi sepuluh satuan; fleksibel saat operasi."
           ],
           "papan": [
             "bilangan",
@@ -1728,10 +1677,10 @@ export const SUB_C51: SubBabNaskah = {
           "id": "K5B1C-V2-2",
           "judul": "Contoh 45.600",
           "ketukan": [
-            "Empat puluh lima ribu enam ratus.",
-            "Empat puluh ribu.",
-            "Lima ribu.",
-            "Enam ratus."
+            "Empat puluh lima ribu enam ratus. Mari kita pahami bersama.",
+            "Empat puluh ribu. Mari kita pahami bersama.",
+            "Lima ribu. Mari kita pahami bersama.",
+            "Di sini kita memakai ide Flexible Composition — Satu puluhan bisa jadi sepuluh satuan; fleksibel saat operasi."
           ],
           "papan": [
             "45.600",
@@ -1744,35 +1693,33 @@ export const SUB_C51: SubBabNaskah = {
           "id": "K5B1C-V2-3",
           "judul": "Saling berkebalikan",
           "ketukan": [
-            "Komposisi menyusun.",
-            "Dekomposisi menguraikan.",
-            "Keduanya saling cek.",
-            "Jumlah harus sama.",
-            "METODE LUAR. Susun Ulang Nilai Tempat: Satu puluhan bisa jadi sepuluh satuan; fleksibel saat operasi."
+            "Komposisi menyusun. Mari kita pahami bersama.",
+            "Dekomposisi menguraikan. Mari kita pahami bersama.",
+            "Keduanya saling cek. Mari kita pahami bersama.",
+            "METODE LUAR · Susun Ulang Nilai Tempat: Satu puluhan bisa jadi sepuluh satuan; fleksibel saat operasi."
           ],
           "papan": [
             "susun",
             "urai",
             "cek",
-            "sama",
-            "METODE LUAR · Susun Ulang Nilai Tempat"
+            "sama"
           ]
         }
       ]
     },
     {
       "id": "K5B1C-V3",
-      "judul": "Banyak Cara Setara",
-      "subjudul": "Fleksibel",
+      "judul": "Siap pakai Standard Form",
+      "subjudul": "Standard Form",
       "adegan": [
         {
           "id": "K5B1C-V3-1",
           "judul": "Komang 45.600",
           "ketukan": [
-            "Komang butuh empat lima titik enam nol nol.",
-            "Boleh empat kali sepuluh ribu.",
-            "Atau empat puluh lima kali seribu.",
-            "Asalkan total sama."
+            "Komang butuh empat lima titik enam nol nol. Mari kita pahami bersama.",
+            "Boleh empat kali sepuluh ribu. Mari kita pahami bersama.",
+            "Atau empat puluh lima kali seribu. Mari kita pahami bersama.",
+            "Ingat cara Kembali ke Bentuk Lazim: Setelah mengurai, rapikan lagi ke bentuk bilangan biasa."
           ],
           "papan": [
             "45.600",
@@ -1785,10 +1732,10 @@ export const SUB_C51: SubBabNaskah = {
           "id": "K5B1C-V3-2",
           "judul": "Digit boleh lebih 9",
           "ketukan": [
-            "Lima belas lembar seribu.",
-            "Enam belas keping seratus.",
-            "Digit sementara boleh besar.",
-            "Lalu dijumlahkan."
+            "Lima belas lembar seribu. Mari kita pahami bersama.",
+            "Enam belas keping seratus. Mari kita pahami bersama.",
+            "Digit sementara boleh besar. Mari kita pahami bersama.",
+            "Di sini kita memakai ide Standard Form — Setelah mengurai, rapikan lagi ke bentuk bilangan biasa."
           ],
           "papan": [
             "15×1rb",
@@ -1801,18 +1748,16 @@ export const SUB_C51: SubBabNaskah = {
           "id": "K5B1C-V3-3",
           "judul": "Siap bermain",
           "ketukan": [
-            "Komposisi sudah jelas.",
-            "Dekomposisi sudah jelas.",
-            "Ayo ke permainan.",
-            "Semangat!",
-            "METODE LUAR. Kembali ke Bentuk Lazim: Setelah mengurai, rapikan lagi ke bentuk bilangan biasa."
+            "Komposisi sudah jelas. Mari kita pahami bersama.",
+            "Dekomposisi sudah jelas. Mari kita pahami bersama.",
+            "Ayo ke permainan. Mari kita pahami bersama.",
+            "METODE LUAR · Kembali ke Bentuk Lazim: Setelah mengurai, rapikan lagi ke bentuk bilangan biasa."
           ],
           "papan": [
             "susun",
             "urai",
             "main",
-            "semangat",
-            "METODE LUAR · Kembali ke Bentuk Lazim"
+            "semangat"
           ]
         }
       ]
@@ -1821,65 +1766,65 @@ export const SUB_C51: SubBabNaskah = {
   "mindMaps": [
     {
       "stepNumber": 1,
-      "stepTitle": "1. Pecahan",
-      "stepDesc": "Siapkan nilai tempat",
-      "icon": "💵",
+      "stepTitle": "1. Pahami soal",
+      "stepDesc": "Baca soal Komposisi dan Dekomposisi Bilangan Cacah Sampai 100.000. Apa yang ditanyakan?",
+      "icon": "❓",
       "flowFrom": "START",
       "flowTo": "2"
     },
     {
       "stepNumber": 2,
-      "stepTitle": "2. Komposisi",
-      "stepDesc": "Jumlahkan pecahan",
-      "icon": "🧩",
+      "stepTitle": "2. Expanded Form",
+      "stepDesc": "Tulis bilangan sebagai jumlah nilai tempat: 3000+200+40+5.",
+      "icon": "🧭",
       "flowFrom": "1",
       "flowTo": "3"
     },
     {
       "stepNumber": 3,
-      "stepTitle": "3. Total",
-      "stepDesc": "Dapat bilangan utuh",
-      "icon": "🔢",
+      "stepTitle": "3. Flexible Composition",
+      "stepDesc": "Satu puluhan bisa jadi sepuluh satuan; fleksibel saat operasi.",
+      "icon": "🛠️",
       "flowFrom": "2",
       "flowTo": "4"
     },
     {
       "stepNumber": 4,
-      "stepTitle": "4. Dekomposisi",
-      "stepDesc": "Uraikan ke bentuk panjang",
-      "icon": "📜",
+      "stepTitle": "4. Standard Form",
+      "stepDesc": "Setelah mengurai, rapikan lagi ke bentuk bilangan biasa.",
+      "icon": "✨",
       "flowFrom": "3",
       "flowTo": "5"
     },
     {
       "stepNumber": 5,
-      "stepTitle": "5. Cara lain",
-      "stepDesc": "Cari komposisi setara",
-      "icon": "🔄",
+      "stepTitle": "5. Kerjakan",
+      "stepDesc": "Terapkan cara itu pada angka atau gambar soal.",
+      "icon": "✏️",
       "flowFrom": "4",
       "flowTo": "6"
     },
     {
       "stepNumber": 6,
-      "stepTitle": "6. Cek",
-      "stepDesc": "Jumlah harus sama",
+      "stepTitle": "6. Cek masuk akal",
+      "stepDesc": "Apakah hasilnya masuk akal? Bandingkan dengan perkiraan.",
       "icon": "✅",
       "flowFrom": "5",
       "flowTo": "7"
     },
     {
       "stepNumber": 7,
-      "stepTitle": "7. METODE LUAR · Bentuk Uraian",
-      "stepDesc": "Tulis bilangan sebagai jumlah nilai tempat: 3000+200+40+5.",
-      "icon": "🌍",
+      "stepTitle": "7. Simpulkan",
+      "stepDesc": "Ulangi ide utamanya dengan kalimatmu sendiri.",
+      "icon": "💬",
       "flowFrom": "6",
       "flowTo": "8"
     },
     {
       "stepNumber": 8,
-      "stepTitle": "8. METODE LUAR · Susun Ulang Nilai Tempat",
-      "stepDesc": "Satu puluhan bisa jadi sepuluh satuan; fleksibel saat operasi.",
-      "icon": "🌍",
+      "stepTitle": "8. Lanjut main",
+      "stepDesc": "Siap melatih di permainan Concrete sampai Abstract.",
+      "icon": "🎮",
       "flowFrom": "7",
       "flowTo": "END"
     }
@@ -1959,22 +1904,15 @@ export const SUB_C51: SubBabNaskah = {
       "judul": "Bentuk Uraian",
       "emoji": "🌍",
       "countNum": 1,
-      "countWord": "METODE LUAR · Expanded Form",
-      "suara": "METODE LUAR. Bentuk Uraian. Tulis bilangan sebagai jumlah nilai tempat: 3000+200+40+5."
+      "countWord": "ingat",
+      "suara": "Tulis bilangan sebagai jumlah nilai tempat: 3000+200+40+5."
     },
     {
       "judul": "Susun Ulang Nilai Tempat",
       "emoji": "🌍",
       "countNum": 2,
-      "countWord": "METODE LUAR · Flexible Composition",
-      "suara": "METODE LUAR. Susun Ulang Nilai Tempat. Satu puluhan bisa jadi sepuluh satuan; fleksibel saat operasi."
-    },
-    {
-      "judul": "Kembali ke Bentuk Lazim",
-      "emoji": "🌍",
-      "countNum": 3,
-      "countWord": "METODE LUAR · Standard Form",
-      "suara": "METODE LUAR. Kembali ke Bentuk Lazim. Setelah mengurai, rapikan lagi ke bentuk bilangan biasa."
+      "countWord": "ingat",
+      "suara": "Satu puluhan bisa jadi sepuluh satuan; fleksibel saat operasi."
     }
   ],
   "games": [
@@ -1983,9 +1921,9 @@ export const SUB_C51: SubBabNaskah = {
       "gameType": "komposisi-pecahan",
       "title": "Susun dari Pecahan",
       "bookReference": "hlm. 15–16",
-      "objective": "Menyusun total dari pecahan. (METODE LUAR · Bentuk Uraian)",
-      "mechanicDescription": "Tiga ronde.",
-      "voiceGuide": "METODE LUAR · Bentuk Uraian. Pilih total.",
+      "objective": "Pakai Bentuk Uraian: Tulis bilangan sebagai jumlah nilai tempat: 3000+200+40+5. Latihan: Menyusun total dari pecahan..",
+      "mechanicDescription": "Tiga ronde. Saat bermain, terapkan Expanded Form: Tulis bilangan sebagai jumlah nilai tempat: 3000+200+40+5.",
+      "voiceGuide": "Bentuk Uraian. Tulis bilangan sebagai jumlah nilai tempat: 3000+200+40+5.",
       "emoji": "🧩",
       "targetCount": 6
     },
@@ -1994,9 +1932,9 @@ export const SUB_C51: SubBabNaskah = {
       "gameType": "dekomposisi-panjang",
       "title": "Uraikan Bentuk Panjang",
       "bookReference": "hlm. 16–17",
-      "objective": "Menulis jumlah nilai tempat.",
-      "mechanicDescription": "Tiga ronde.",
-      "voiceGuide": "Pilih uraian.",
+      "objective": "Pakai Bentuk Uraian: Tulis bilangan sebagai jumlah nilai tempat: 3000+200+40+5. Latihan: Menulis jumlah nilai tempat..",
+      "mechanicDescription": "Tiga ronde. Saat bermain, terapkan Expanded Form: Tulis bilangan sebagai jumlah nilai tempat: 3000+200+40+5.",
+      "voiceGuide": "Bentuk Uraian. Tulis bilangan sebagai jumlah nilai tempat: 3000+200+40+5.",
       "emoji": "📜",
       "targetCount": 6
     },
@@ -2005,9 +1943,9 @@ export const SUB_C51: SubBabNaskah = {
       "gameType": "banyak-cara",
       "title": "Banyak Cara Komposisi",
       "bookReference": "hlm. 16–17",
-      "objective": "Mengenali cara setara.",
-      "mechanicDescription": "Tiga ronde.",
-      "voiceGuide": "Pilih.",
+      "objective": "Pakai Bentuk Uraian: Tulis bilangan sebagai jumlah nilai tempat: 3000+200+40+5. Latihan: Mengenali cara setara..",
+      "mechanicDescription": "Tiga ronde. Saat bermain, terapkan Expanded Form: Tulis bilangan sebagai jumlah nilai tempat: 3000+200+40+5.",
+      "voiceGuide": "Bentuk Uraian. Tulis bilangan sebagai jumlah nilai tempat: 3000+200+40+5.",
       "emoji": "🔄",
       "targetCount": 6
     },
@@ -2016,9 +1954,9 @@ export const SUB_C51: SubBabNaskah = {
       "gameType": "sort-komposisi",
       "title": "Pilah Sama/Beda Total",
       "bookReference": "hlm. 15–17",
-      "objective": "Memilah komposisi.",
-      "mechanicDescription": "Tiga ronde.",
-      "voiceGuide": "Pilah.",
+      "objective": "Pakai Bentuk Uraian: Tulis bilangan sebagai jumlah nilai tempat: 3000+200+40+5. Latihan: Memilah komposisi..",
+      "mechanicDescription": "Tiga ronde. Saat bermain, terapkan Expanded Form: Tulis bilangan sebagai jumlah nilai tempat: 3000+200+40+5.",
+      "voiceGuide": "Bentuk Uraian. Tulis bilangan sebagai jumlah nilai tempat: 3000+200+40+5.",
       "emoji": "🧺",
       "targetCount": 18
     },
@@ -2027,9 +1965,9 @@ export const SUB_C51: SubBabNaskah = {
       "gameType": "match-komposisi",
       "title": "Jodohkan Pecahan–Total",
       "bookReference": "hlm. 15–17",
-      "objective": "Menjodohkan.",
-      "mechanicDescription": "Tiga ronde.",
-      "voiceGuide": "Jodohkan.",
+      "objective": "Menjodohkan.. Ingat Bentuk Uraian.",
+      "mechanicDescription": "Tiga ronde. Gunakan Bentuk Uraian.",
+      "voiceGuide": "Bentuk Uraian. Jodohkan.",
       "emoji": "🔗",
       "targetCount": 12
     },
@@ -2038,9 +1976,9 @@ export const SUB_C51: SubBabNaskah = {
       "gameType": "memory-komposisi",
       "title": "Memori Komposisi",
       "bookReference": "hlm. 15–17",
-      "objective": "Memori.",
-      "mechanicDescription": "Tiga ronde.",
-      "voiceGuide": "Balik kartu.",
+      "objective": "Memori.. Ingat Bentuk Uraian.",
+      "mechanicDescription": "Tiga ronde. Gunakan Bentuk Uraian.",
+      "voiceGuide": "Bentuk Uraian. Balik kartu.",
       "emoji": "🃏",
       "targetCount": 12
     },
@@ -2049,9 +1987,9 @@ export const SUB_C51: SubBabNaskah = {
       "gameType": "tap-komposisi",
       "title": "Ketuk Hasil Komposisi",
       "bookReference": "hlm. 15–17",
-      "objective": "Mengetuk.",
-      "mechanicDescription": "Tiga ronde.",
-      "voiceGuide": "Ketuk.",
+      "objective": "Mengetuk.. Ingat Bentuk Uraian.",
+      "mechanicDescription": "Tiga ronde. Gunakan Bentuk Uraian.",
+      "voiceGuide": "Bentuk Uraian. Ketuk.",
       "emoji": "👆",
       "targetCount": 9
     },
@@ -2060,9 +1998,9 @@ export const SUB_C51: SubBabNaskah = {
       "gameType": "tap-all-komposisi",
       "title": "Ketuk Semua Setara",
       "bookReference": "hlm. 16–17",
-      "objective": "Ketuk semua.",
-      "mechanicDescription": "Tiga ronde.",
-      "voiceGuide": "Ketuk semua.",
+      "objective": "Ketuk semua.. Ingat Bentuk Uraian.",
+      "mechanicDescription": "Tiga ronde. Gunakan Bentuk Uraian.",
+      "voiceGuide": "Bentuk Uraian. Ketuk semua.",
       "emoji": "✔️",
       "targetCount": 3
     },
@@ -2071,9 +2009,9 @@ export const SUB_C51: SubBabNaskah = {
       "gameType": "story-komposisi",
       "title": "Cerita Asep Lukas Komang",
       "bookReference": "hlm. 15–17",
-      "objective": "Soal cerita.",
-      "mechanicDescription": "Tiga ronde.",
-      "voiceGuide": "Pilih.",
+      "objective": "Soal cerita.. Ingat Bentuk Uraian.",
+      "mechanicDescription": "Tiga ronde. Gunakan Bentuk Uraian.",
+      "voiceGuide": "Bentuk Uraian. Pilih.",
       "emoji": "📖",
       "targetCount": 6
     },
@@ -2082,9 +2020,9 @@ export const SUB_C51: SubBabNaskah = {
       "gameType": "order-komposisi",
       "title": "Urutkan Hasil Susunan",
       "bookReference": "hlm. 15–17",
-      "objective": "Mengurutkan.",
-      "mechanicDescription": "Tiga ronde.",
-      "voiceGuide": "Urutkan.",
+      "objective": "Mengurutkan.. Ingat Bentuk Uraian.",
+      "mechanicDescription": "Tiga ronde. Gunakan Bentuk Uraian.",
+      "voiceGuide": "Bentuk Uraian. Urutkan.",
       "emoji": "📶",
       "targetCount": 3
     },
@@ -2093,9 +2031,9 @@ export const SUB_C51: SubBabNaskah = {
       "gameType": "papan-komposisi",
       "title": "Papan Susun Pecahan",
       "bookReference": "hlm. 16",
-      "objective": "Baca papan tempat. (METODE LUAR · Bentuk Uraian)",
-      "mechanicDescription": "Tiga ronde.",
-      "voiceGuide": "METODE LUAR · Bentuk Uraian. Pilih.",
+      "objective": "Pakai Susun Ulang Nilai Tempat: Satu puluhan bisa jadi sepuluh satuan; fleksibel saat operasi. Latihan: Baca papan tempat..",
+      "mechanicDescription": "Tiga ronde. Saat bermain, terapkan Flexible Composition: Satu puluhan bisa jadi sepuluh satuan; fleksibel saat operasi.",
+      "voiceGuide": "Susun Ulang Nilai Tempat. Satu puluhan bisa jadi sepuluh satuan; fleksibel saat operasi.",
       "diagramType": "board",
       "numberA": 1,
       "numberB": 5
@@ -2105,9 +2043,9 @@ export const SUB_C51: SubBabNaskah = {
       "gameType": "diagram-dekom",
       "title": "Diagram Bentuk Panjang",
       "bookReference": "hlm. 16–17",
-      "objective": "Baca uraian.",
-      "mechanicDescription": "Tiga ronde.",
-      "voiceGuide": "Pilih.",
+      "objective": "Pakai Susun Ulang Nilai Tempat: Satu puluhan bisa jadi sepuluh satuan; fleksibel saat operasi. Latihan: Baca uraian..",
+      "mechanicDescription": "Tiga ronde. Saat bermain, terapkan Flexible Composition: Satu puluhan bisa jadi sepuluh satuan; fleksibel saat operasi.",
+      "voiceGuide": "Susun Ulang Nilai Tempat. Satu puluhan bisa jadi sepuluh satuan; fleksibel saat operasi.",
       "diagramType": "expand",
       "numberA": 1,
       "numberB": 2
@@ -2117,9 +2055,9 @@ export const SUB_C51: SubBabNaskah = {
       "gameType": "match-diagram-c",
       "title": "Jodohkan Diagram Komposisi",
       "bookReference": "hlm. 15–17",
-      "objective": "Jodohkan.",
-      "mechanicDescription": "Tiga ronde.",
-      "voiceGuide": "Jodohkan.",
+      "objective": "Pakai Susun Ulang Nilai Tempat: Satu puluhan bisa jadi sepuluh satuan; fleksibel saat operasi. Latihan: Jodohkan..",
+      "mechanicDescription": "Tiga ronde. Saat bermain, terapkan Flexible Composition: Satu puluhan bisa jadi sepuluh satuan; fleksibel saat operasi.",
+      "voiceGuide": "Susun Ulang Nilai Tempat. Satu puluhan bisa jadi sepuluh satuan; fleksibel saat operasi.",
       "diagramType": "match",
       "numberA": 1,
       "numberB": 2
@@ -2129,9 +2067,9 @@ export const SUB_C51: SubBabNaskah = {
       "gameType": "memory-diagram-c",
       "title": "Memori Diagram Komposisi",
       "bookReference": "hlm. 15–17",
-      "objective": "Memori.",
-      "mechanicDescription": "Tiga ronde.",
-      "voiceGuide": "Balik kartu.",
+      "objective": "Pakai Susun Ulang Nilai Tempat: Satu puluhan bisa jadi sepuluh satuan; fleksibel saat operasi. Latihan: Memori..",
+      "mechanicDescription": "Tiga ronde. Saat bermain, terapkan Flexible Composition: Satu puluhan bisa jadi sepuluh satuan; fleksibel saat operasi.",
+      "voiceGuide": "Susun Ulang Nilai Tempat. Satu puluhan bisa jadi sepuluh satuan; fleksibel saat operasi.",
       "diagramType": "mem",
       "numberA": 1,
       "numberB": 4
@@ -2141,9 +2079,9 @@ export const SUB_C51: SubBabNaskah = {
       "gameType": "table-c",
       "title": "Tabel Komposisi",
       "bookReference": "hlm. 16–17",
-      "objective": "Isi tabel.",
-      "mechanicDescription": "Tiga tabel.",
-      "voiceGuide": "Pilih.",
+      "objective": "Isi tabel.. Ingat Susun Ulang Nilai Tempat.",
+      "mechanicDescription": "Tiga tabel. Gunakan Susun Ulang Nilai Tempat.",
+      "voiceGuide": "Susun Ulang Nilai Tempat. Pilih.",
       "diagramType": "table",
       "numberA": 1,
       "numberB": 3
@@ -2153,9 +2091,9 @@ export const SUB_C51: SubBabNaskah = {
       "gameType": "tap-all-pc",
       "title": "Ketuk Semua Diagram C",
       "bookReference": "hlm. 15–17",
-      "objective": "Ketuk semua.",
-      "mechanicDescription": "Tiga ronde.",
-      "voiceGuide": "Ketuk semua.",
+      "objective": "Ketuk semua.. Ingat Susun Ulang Nilai Tempat.",
+      "mechanicDescription": "Tiga ronde. Gunakan Susun Ulang Nilai Tempat.",
+      "voiceGuide": "Susun Ulang Nilai Tempat. Ketuk semua.",
       "diagramType": "select",
       "numberA": 1,
       "numberB": 4
@@ -2165,9 +2103,9 @@ export const SUB_C51: SubBabNaskah = {
       "gameType": "sort-diagram-c",
       "title": "Pilah Diagram Setara",
       "bookReference": "hlm. 15–17",
-      "objective": "Pilah.",
-      "mechanicDescription": "Tiga ronde.",
-      "voiceGuide": "Pilah.",
+      "objective": "Pilah.. Ingat Susun Ulang Nilai Tempat.",
+      "mechanicDescription": "Tiga ronde. Gunakan Susun Ulang Nilai Tempat.",
+      "voiceGuide": "Susun Ulang Nilai Tempat. Pilah.",
       "diagramType": "sort",
       "numberA": 1,
       "numberB": 6
@@ -2177,9 +2115,9 @@ export const SUB_C51: SubBabNaskah = {
       "gameType": "cara-fleksibel",
       "title": "Model Cara Fleksibel",
       "bookReference": "hlm. 16–17",
-      "objective": "Cara setara.",
-      "mechanicDescription": "Tiga ronde.",
-      "voiceGuide": "Pilih.",
+      "objective": "Cara setara.. Ingat Susun Ulang Nilai Tempat.",
+      "mechanicDescription": "Tiga ronde. Gunakan Susun Ulang Nilai Tempat.",
+      "voiceGuide": "Susun Ulang Nilai Tempat. Pilih.",
       "diagramType": "flex",
       "numberA": 1,
       "numberB": 2
@@ -2189,9 +2127,9 @@ export const SUB_C51: SubBabNaskah = {
       "gameType": "choose-c",
       "title": "Pilih Pernyataan Komposisi",
       "bookReference": "hlm. 15–17",
-      "objective": "Pilih pernyataan.",
-      "mechanicDescription": "Tiga ronde.",
-      "voiceGuide": "Pilih.",
+      "objective": "Pilih pernyataan.. Ingat Susun Ulang Nilai Tempat.",
+      "mechanicDescription": "Tiga ronde. Gunakan Susun Ulang Nilai Tempat.",
+      "voiceGuide": "Susun Ulang Nilai Tempat. Pilih.",
       "diagramType": "choose",
       "numberA": 1,
       "numberB": 2
@@ -2201,9 +2139,9 @@ export const SUB_C51: SubBabNaskah = {
       "gameType": "story-picture-c",
       "title": "Cerita Diagram Komposisi",
       "bookReference": "hlm. 15–17",
-      "objective": "Cerita + diagram.",
-      "mechanicDescription": "Tiga ronde.",
-      "voiceGuide": "Pilih.",
+      "objective": "Cerita + diagram.. Ingat Susun Ulang Nilai Tempat.",
+      "mechanicDescription": "Tiga ronde. Gunakan Susun Ulang Nilai Tempat.",
+      "voiceGuide": "Susun Ulang Nilai Tempat. Pilih.",
       "diagramType": "story",
       "numberA": 1,
       "numberB": 2
@@ -2213,9 +2151,9 @@ export const SUB_C51: SubBabNaskah = {
       "gameType": "write-total",
       "title": "Tulis Total Komposisi",
       "bookReference": "hlm. 15–16",
-      "objective": "Menulis total. (METODE LUAR · Bentuk Uraian)",
-      "mechanicDescription": "Tiga ronde.",
-      "voiceGuide": "METODE LUAR · Bentuk Uraian. Pilih.",
+      "objective": "Pakai Kembali ke Bentuk Lazim: Setelah mengurai, rapikan lagi ke bentuk bilangan biasa. Latihan: Menulis total..",
+      "mechanicDescription": "Tiga ronde. Saat bermain, terapkan Standard Form: Setelah mengurai, rapikan lagi ke bentuk bilangan biasa.",
+      "voiceGuide": "Kembali ke Bentuk Lazim. Setelah mengurai, rapikan lagi ke bentuk bilangan biasa.",
       "symbolLarge": "38.600",
       "wordLarge": "TOTAL",
       "mathNotation": "jumlah"
@@ -2225,9 +2163,9 @@ export const SUB_C51: SubBabNaskah = {
       "gameType": "write-uraian",
       "title": "Tulis Bentuk Panjang",
       "bookReference": "hlm. 16–17",
-      "objective": "Menulis uraian.",
-      "mechanicDescription": "Tiga ronde.",
-      "voiceGuide": "Pilih.",
+      "objective": "Pakai Kembali ke Bentuk Lazim: Setelah mengurai, rapikan lagi ke bentuk bilangan biasa. Latihan: Menulis uraian..",
+      "mechanicDescription": "Tiga ronde. Saat bermain, terapkan Standard Form: Setelah mengurai, rapikan lagi ke bentuk bilangan biasa.",
+      "voiceGuide": "Kembali ke Bentuk Lazim. Setelah mengurai, rapikan lagi ke bentuk bilangan biasa.",
       "symbolLarge": "30k+8k+600",
       "wordLarge": "URAIAN",
       "mathNotation": "panjang"
@@ -2237,9 +2175,9 @@ export const SUB_C51: SubBabNaskah = {
       "gameType": "choose-cara",
       "title": "Pilih Cara Setara",
       "bookReference": "hlm. 16–17",
-      "objective": "Cara fleksibel.",
-      "mechanicDescription": "Tiga ronde.",
-      "voiceGuide": "Pilih.",
+      "objective": "Pakai Kembali ke Bentuk Lazim: Setelah mengurai, rapikan lagi ke bentuk bilangan biasa. Latihan: Cara fleksibel..",
+      "mechanicDescription": "Tiga ronde. Saat bermain, terapkan Standard Form: Setelah mengurai, rapikan lagi ke bentuk bilangan biasa.",
+      "voiceGuide": "Kembali ke Bentuk Lazim. Setelah mengurai, rapikan lagi ke bentuk bilangan biasa.",
       "symbolLarge": "cara2",
       "wordLarge": "CARA",
       "mathNotation": "setara"
@@ -2249,9 +2187,9 @@ export const SUB_C51: SubBabNaskah = {
       "gameType": "order-abstract-c",
       "title": "Urutkan Hasil Abstrak",
       "bookReference": "hlm. 15–17",
-      "objective": "Mengurutkan.",
-      "mechanicDescription": "Tiga ronde.",
-      "voiceGuide": "Urutkan.",
+      "objective": "Pakai Kembali ke Bentuk Lazim: Setelah mengurai, rapikan lagi ke bentuk bilangan biasa. Latihan: Mengurutkan..",
+      "mechanicDescription": "Tiga ronde. Saat bermain, terapkan Standard Form: Setelah mengurai, rapikan lagi ke bentuk bilangan biasa.",
+      "voiceGuide": "Kembali ke Bentuk Lazim. Setelah mengurai, rapikan lagi ke bentuk bilangan biasa.",
       "symbolLarge": "naik",
       "wordLarge": "URUT",
       "mathNotation": "nilai"
@@ -2261,9 +2199,9 @@ export const SUB_C51: SubBabNaskah = {
       "gameType": "match-abstract-c",
       "title": "Jodohkan Notasi Komposisi",
       "bookReference": "hlm. 15–17",
-      "objective": "Jodohkan.",
-      "mechanicDescription": "Tiga ronde.",
-      "voiceGuide": "Jodohkan.",
+      "objective": "Jodohkan.. Ingat Kembali ke Bentuk Lazim.",
+      "mechanicDescription": "Tiga ronde. Gunakan Kembali ke Bentuk Lazim.",
+      "voiceGuide": "Kembali ke Bentuk Lazim. Jodohkan.",
       "symbolLarge": "pecahan",
       "wordLarge": "JODOH",
       "mathNotation": "teks"
@@ -2273,9 +2211,9 @@ export const SUB_C51: SubBabNaskah = {
       "gameType": "memory-abstract-c",
       "title": "Memori Notasi Komposisi",
       "bookReference": "hlm. 15–17",
-      "objective": "Memori.",
-      "mechanicDescription": "Tiga ronde.",
-      "voiceGuide": "Balik kartu.",
+      "objective": "Memori.. Ingat Kembali ke Bentuk Lazim.",
+      "mechanicDescription": "Tiga ronde. Gunakan Kembali ke Bentuk Lazim.",
+      "voiceGuide": "Kembali ke Bentuk Lazim. Balik kartu.",
       "symbolLarge": "setara",
       "wordLarge": "MEMORI",
       "mathNotation": "notasi"
@@ -2285,9 +2223,9 @@ export const SUB_C51: SubBabNaskah = {
       "gameType": "true-false-c",
       "title": "Benar atau Salah: Komposisi",
       "bookReference": "hlm. 15–17",
-      "objective": "Menilai.",
-      "mechanicDescription": "Dua ronde.",
-      "voiceGuide": "Benar/salah.",
+      "objective": "Menilai.. Ingat Kembali ke Bentuk Lazim.",
+      "mechanicDescription": "Dua ronde. Gunakan Kembali ke Bentuk Lazim.",
+      "voiceGuide": "Kembali ke Bentuk Lazim. Benar/salah.",
       "symbolLarge": "✓ ✗",
       "wordLarge": "BENAR SALAH",
       "mathNotation": "alasan"
@@ -2297,9 +2235,9 @@ export const SUB_C51: SubBabNaskah = {
       "gameType": "detective-c",
       "title": "Detektif Komposisi",
       "bookReference": "hlm. 15–17",
-      "objective": "Petunjuk → bilangan.",
-      "mechanicDescription": "Tiga soal.",
-      "voiceGuide": "Pilih.",
+      "objective": "Petunjuk → bilangan.. Ingat Kembali ke Bentuk Lazim.",
+      "mechanicDescription": "Tiga soal. Gunakan Kembali ke Bentuk Lazim.",
+      "voiceGuide": "Kembali ke Bentuk Lazim. Pilih.",
       "symbolLarge": "?",
       "wordLarge": "DETEKTIF",
       "mathNotation": "petunjuk"
@@ -2309,9 +2247,9 @@ export const SUB_C51: SubBabNaskah = {
       "gameType": "concept-c",
       "title": "Peta Konsep Komposisi",
       "bookReference": "hlm. 15–17",
-      "objective": "Mengisi kotak.",
-      "mechanicDescription": "Satu peta.",
-      "voiceGuide": "Pilih opsi.",
+      "objective": "Mengisi kotak.. Ingat Kembali ke Bentuk Lazim.",
+      "mechanicDescription": "Satu peta. Gunakan Kembali ke Bentuk Lazim.",
+      "voiceGuide": "Kembali ke Bentuk Lazim. Pilih opsi.",
       "symbolLarge": "🗺️",
       "wordLarge": "PETA",
       "mathNotation": "konsep"
@@ -2321,9 +2259,9 @@ export const SUB_C51: SubBabNaskah = {
       "gameType": "story-abstract-c",
       "title": "Cerita Angka Komposisi",
       "bookReference": "hlm. 15–17",
-      "objective": "Soal cerita.",
-      "mechanicDescription": "Tiga ronde.",
-      "voiceGuide": "Pilih.",
+      "objective": "Soal cerita.. Ingat Kembali ke Bentuk Lazim.",
+      "mechanicDescription": "Tiga ronde. Gunakan Kembali ke Bentuk Lazim.",
+      "voiceGuide": "Kembali ke Bentuk Lazim. Pilih.",
       "symbolLarge": "📖",
       "wordLarge": "CERITA",
       "mathNotation": "teks"
@@ -2343,37 +2281,25 @@ export const SUB_C51: SubBabNaskah = {
       "suara": "Dekomposisi artinya menguraikan."
     },
     {
-      "ikon": "🔄",
-      "nama": "Fleksibel",
-      "isi": "Satu bilangan punya banyak cara komposisi setara.",
-      "suara": "Banyak cara asalkan total sama."
-    },
-    {
-      "ikon": "➕",
-      "nama": "Bentuk panjang",
-      "isi": "Tulis sebagai jumlah 10.000, 1.000, 100, 10, dan 1.",
-      "suara": "Itu bentuk panjang."
-    },
-    {
       "ikon": "🌍",
       "nama": "Bentuk Uraian",
-      "isi": "METODE LUAR · Expanded Form: Tulis bilangan sebagai jumlah nilai tempat: 3000+200+40+5. (asal: Van de Walle).",
-      "suara": "METODE LUAR. Bentuk Uraian. Tulis bilangan sebagai jumlah nilai tempat: 3000+200+40+5."
+      "isi": "Tulis bilangan sebagai jumlah nilai tempat: 3000+200+40+5.",
+      "suara": "Bentuk Uraian. Tulis bilangan sebagai jumlah nilai tempat: 3000+200+40+5."
     },
     {
       "ikon": "🌍",
       "nama": "Susun Ulang Nilai Tempat",
-      "isi": "METODE LUAR · Flexible Composition: Satu puluhan bisa jadi sepuluh satuan; fleksibel saat operasi. (asal: Van de Walle).",
-      "suara": "METODE LUAR. Susun Ulang Nilai Tempat. Satu puluhan bisa jadi sepuluh satuan; fleksibel saat operasi."
+      "isi": "Satu puluhan bisa jadi sepuluh satuan; fleksibel saat operasi.",
+      "suara": "Susun Ulang Nilai Tempat. Satu puluhan bisa jadi sepuluh satuan; fleksibel saat operasi."
     },
     {
       "ikon": "🌍",
       "nama": "Kembali ke Bentuk Lazim",
-      "isi": "METODE LUAR · Standard Form: Setelah mengurai, rapikan lagi ke bentuk bilangan biasa. (asal: Place-value fluency).",
-      "suara": "METODE LUAR. Kembali ke Bentuk Lazim. Setelah mengurai, rapikan lagi ke bentuk bilangan biasa."
+      "isi": "Setelah mengurai, rapikan lagi ke bentuk bilangan biasa.",
+      "suara": "Kembali ke Bentuk Lazim. Setelah mengurai, rapikan lagi ke bentuk bilangan biasa."
     }
   ],
-  "poinSuara": "Ingat: susun, uraikan, dan cek totalnya sama.",
+  "poinSuara": "Ingat: Bentuk Uraian, Susun Ulang Nilai Tempat, Kembali ke Bentuk Lazim.",
   "cara": {
     "suara": "Ikuti langkah-langkahnya.",
     "potongan": [
@@ -2395,11 +2321,11 @@ export const SUB_C51: SubBabNaskah = {
       }
     ]
   },
-  "rumah": "Ayo Mencoba di rumah: susun ulang satu bilangan dengan dua cara berbeda, lalu uraikan bentuk panjangnya.",
+  "rumah": "Ayo Mencoba di rumah: terapkan Bentuk Uraian pada satu benda atau soal nyata, lalu ceritakan langkahmu.",
   "refleksi": [
-    "Apa beda komposisi dan dekomposisi?",
-    "Mengapa satu bilangan bisa punya banyak cara susun?",
-    "Bagaimana menuliskan 45.600 dalam bentuk panjang?"
+    "Bagaimana Bentuk Uraian membantumu memahami soal?",
+    "Kapan kamu memakai Susun Ulang Nilai Tempat?",
+    "Apa bedanya dengan hanya menghafal rumus atau langkah tanpa arti?"
   ],
   "metodeLuar": [
     {
@@ -2444,12 +2370,12 @@ export const SUB_D51: SubBabNaskah = {
   "id": "D",
   "codeTitle": "Sub-Bab D (Operasi Hitung)",
   "fullTitle": "Sub-Bab D: Operasi Hitung pada Bilangan Cacah Sampai 100.000",
-  "targetDescription": "Siswa menjumlahkan, mengurangi, mengalikan, dan membagi bilangan cacah sampai 100.000 dengan strategi nilai tempat, susun pendek/panjang, serta soal cerita konteks bakti sosial, angpau, dan toko buah sesuai Buku Siswa Kelas V Bab 1.",
+  "targetDescription": "Siswa menjumlahkan, mengurangi, mengalikan, dan membagi bilangan cacah sampai 100.000 dengan strategi nilai tempat, susun pendek/panjang, serta soal cerita konteks bakti sosial, angpau, dan toko buah sesuai Buku Siswa Kelas V Bab 1. Siswa memakai cara Algoritma Bersusun, Menyimpan dan Meminjam, Perkiraan Dulu.",
   "secondaryBg": "#FEF3C7",
   "secondaryBorder": "#D97706",
   "secondaryText": "#78350F",
   "silabus": {
-    "teksSuara": "Kita belajar empat operasi pada bilangan sampai seratus ribu. Penjumlahan dan pengurangan disusun menurut nilai tempat. Perkalian bisa dipecah faktor. Pembagian membagi rata. Kita pakai cerita bakti sosial, angpau, dan toko buah. Kita melewati enam tahap seru: cerita, peta pikiran, infografis, benda nyata, gambar, dan simbol.",
+    "teksSuara": "Kita belajar empat operasi pada bilangan sampai seratus ribu. Penjumlahan dan pengurangan disusun menurut nilai tempat. Perkalian bisa dipecah faktor. Pembagian membagi rata. Kita pakai cerita bakti sosial, angpau, dan toko buah. Kita memakai cara dari luar buku: Algoritma Bersusun (Standard Algorithm); Menyimpan dan Meminjam (Regrouping); Perkiraan Dulu (Estimate First). Jumlah/kurang dari kanan, simpan atau pinjam antar nilai tempat. Sepuluh satuan jadi satu puluhan; sebaliknya saat kurang. Perkirakan hasil sebelum hitung tepat untuk mengecek. Kita melewati enam tahap seru: cerita, peta pikiran, infografis, benda nyata, gambar, dan simbol.",
     "cp": "Siswa melakukan operasi hitung bilangan cacah sampai 100.000.",
     "referensi": "Buku Siswa Matematika Kelas V Kemendikbudristek (Bab 1: Bilangan Cacah sampai 100.000, Sub-Bab D)."
   },
@@ -2457,16 +2383,16 @@ export const SUB_D51: SubBabNaskah = {
     {
       "id": "K5B1D-V1",
       "judul": "Jumlah dan Kurang",
-      "subjudul": "+ dan −",
+      "subjudul": "Standard Algorithm",
       "adegan": [
         {
           "id": "K5B1D-V1-1",
           "judul": "Bakti sosial Nisa",
           "ketukan": [
-            "Ibu memberi lima tujuh titik lima nol nol.",
-            "Ayah memberi dua dua titik nol nol nol.",
-            "Jumlahkan menurut tempat.",
-            "Hasil tujuh sembilan titik lima nol nol."
+            "Bayangkan situasi nyata di kelas atau di rumah. Ibu memberi lima tujuh titik lima nol nol. Mari kita pahami bersama.",
+            "Ayah memberi dua dua titik nol nol nol. Mari kita pahami bersama.",
+            "Jumlahkan menurut tempat. Mari kita pahami bersama.",
+            "Ingat cara Algoritma Bersusun: Jumlah/kurang dari kanan, simpan atau pinjam antar nilai tempat."
           ],
           "papan": [
             "57.500",
@@ -2479,10 +2405,10 @@ export const SUB_D51: SubBabNaskah = {
           "id": "K5B1D-V1-2",
           "judul": "Susun pendek",
           "ketukan": [
-            "Tulis sejajar kolom.",
-            "Puluh ribuan dengan puluh ribuan.",
-            "Jumlahkan tiap kolom.",
-            "Bawa simpanan jika perlu."
+            "Tulis sejajar kolom. Mari kita pahami bersama.",
+            "Puluh ribuan dengan puluh ribuan. Mari kita pahami bersama.",
+            "Jumlahkan tiap kolom. Mari kita pahami bersama.",
+            "Di sini kita memakai ide Standard Algorithm — Jumlah/kurang dari kanan, simpan atau pinjam antar nilai tempat."
           ],
           "papan": [
             "sejajar",
@@ -2495,35 +2421,33 @@ export const SUB_D51: SubBabNaskah = {
           "id": "K5B1D-V1-3",
           "judul": "Sisa di warung",
           "ketukan": [
-            "Uang empat tujuh titik sembilan nol nol.",
-            "Bayar empat lima titik tujuh lima nol.",
-            "Kurangkan.",
-            "Sisa dua titik satu lima nol.",
-            "METODE LUAR. Algoritma Bersusun: Jumlah/kurang dari kanan, simpan atau pinjam antar nilai tempat."
+            "Uang empat tujuh titik sembilan nol nol. Mari kita pahami bersama.",
+            "Bayar empat lima titik tujuh lima nol. Mari kita pahami bersama.",
+            "Kurangkan. Mari kita pahami bersama.",
+            "METODE LUAR · Algoritma Bersusun: Jumlah/kurang dari kanan, simpan atau pinjam antar nilai tempat."
           ],
           "papan": [
             "47.900",
             "−45.750",
             "kurang",
-            "2.150",
-            "METODE LUAR · Algoritma Bersusun"
+            "2.150"
           ]
         }
       ]
     },
     {
       "id": "K5B1D-V2",
-      "judul": "Kali dan Bagi",
-      "subjudul": "× dan ÷",
+      "judul": "Latihan: Menyimpan dan Meminjam",
+      "subjudul": "Regrouping",
       "adegan": [
         {
           "id": "K5B1D-V2-1",
           "judul": "Dua belas angpau",
           "ketukan": [
-            "Dua belas amplop.",
-            "Tiap amplop lima ribu.",
-            "Sepuluh kali lima ribu lima puluh ribu.",
-            "Dua kali lima ribu sepuluh ribu. Total enam puluh ribu."
+            "Dua belas amplop. Mari kita pahami bersama.",
+            "Tiap amplop lima ribu. Mari kita pahami bersama.",
+            "Sepuluh kali lima ribu lima puluh ribu. Mari kita pahami bersama.",
+            "Ingat cara Menyimpan dan Meminjam: Sepuluh satuan jadi satu puluhan; sebaliknya saat kurang."
           ],
           "papan": [
             "12",
@@ -2536,10 +2460,10 @@ export const SUB_D51: SubBabNaskah = {
           "id": "K5B1D-V2-2",
           "judul": "Bagi empat anak",
           "ketukan": [
-            "Enam empat ribu.",
-            "Bagi empat anak.",
-            "Sama rata.",
-            "Tiap anak enam belas ribu."
+            "Enam empat ribu. Mari kita pahami bersama.",
+            "Bagi empat anak. Mari kita pahami bersama.",
+            "Sama rata. Mari kita pahami bersama.",
+            "Di sini kita memakai ide Regrouping — Sepuluh satuan jadi satu puluhan; sebaliknya saat kurang."
           ],
           "papan": [
             "64.000",
@@ -2552,35 +2476,33 @@ export const SUB_D51: SubBabNaskah = {
           "id": "K5B1D-V2-3",
           "judul": "Kebalikan",
           "ketukan": [
-            "Kali dan bagi berkebalikan.",
-            "Empat kali enam belas ribu.",
-            "Kembali enam empat ribu.",
-            "Cek hasil dengan kebalikan.",
-            "METODE LUAR. Menyimpan dan Meminjam: Sepuluh satuan jadi satu puluhan; sebaliknya saat kurang."
+            "Kali dan bagi berkebalikan. Mari kita pahami bersama.",
+            "Empat kali enam belas ribu. Mari kita pahami bersama.",
+            "Kembali enam empat ribu. Mari kita pahami bersama.",
+            "METODE LUAR · Menyimpan dan Meminjam: Sepuluh satuan jadi satu puluhan; sebaliknya saat kurang."
           ],
           "papan": [
             "× ↔ ÷",
             "4×16rb",
             "64rb",
-            "cek",
-            "METODE LUAR · Menyimpan dan Meminjam"
+            "cek"
           ]
         }
       ]
     },
     {
       "id": "K5B1D-V3",
-      "judul": "Cerita Toko Buah",
-      "subjudul": "Campur operasi",
+      "judul": "Siap pakai Estimate First",
+      "subjudul": "Estimate First",
       "adegan": [
         {
           "id": "K5B1D-V3-1",
           "judul": "Harga buah",
           "ketukan": [
-            "Mangga dua tiga titik lima nol nol.",
-            "Jeruk tujuh belas ribu.",
-            "Naga lima belas ribu.",
-            "Kelengkeng tiga empat ribu."
+            "Mangga dua tiga titik lima nol nol. Mari kita pahami bersama.",
+            "Jeruk tujuh belas ribu. Mari kita pahami bersama.",
+            "Naga lima belas ribu. Mari kita pahami bersama.",
+            "Ingat cara Perkiraan Dulu: Perkirakan hasil sebelum hitung tepat untuk mengecek."
           ],
           "papan": [
             "mangga",
@@ -2593,10 +2515,10 @@ export const SUB_D51: SubBabNaskah = {
           "id": "K5B1D-V3-2",
           "judul": "Belanja Yohana",
           "ketukan": [
-            "Dua mangga dan satu jeruk.",
-            "Dua kali dua tiga titik lima.",
-            "Tambah tujuh belas ribu.",
-            "Total enam empat ribu."
+            "Dua mangga dan satu jeruk. Mari kita pahami bersama.",
+            "Dua kali dua tiga titik lima. Mari kita pahami bersama.",
+            "Tambah tujuh belas ribu. Mari kita pahami bersama.",
+            "Di sini kita memakai ide Estimate First — Perkirakan hasil sebelum hitung tepat untuk mengecek."
           ],
           "papan": [
             "2 mangga",
@@ -2609,18 +2531,16 @@ export const SUB_D51: SubBabNaskah = {
           "id": "K5B1D-V3-3",
           "judul": "Siap bermain",
           "ketukan": [
-            "Empat operasi sudah siap.",
-            "Strategi tempat sudah jelas.",
-            "Ayo ke permainan.",
-            "Semangat!",
-            "METODE LUAR. Perkiraan Dulu: Perkirakan hasil sebelum hitung tepat untuk mengecek."
+            "Empat operasi sudah siap. Mari kita pahami bersama.",
+            "Strategi tempat sudah jelas. Mari kita pahami bersama.",
+            "Ayo ke permainan. Mari kita pahami bersama.",
+            "METODE LUAR · Perkiraan Dulu: Perkirakan hasil sebelum hitung tepat untuk mengecek."
           ],
           "papan": [
             "+ − × ÷",
             "tempat",
             "main",
-            "semangat",
-            "METODE LUAR · Perkiraan Dulu"
+            "semangat"
           ]
         }
       ]
@@ -2629,65 +2549,65 @@ export const SUB_D51: SubBabNaskah = {
   "mindMaps": [
     {
       "stepNumber": 1,
-      "stepTitle": "1. Baca soal",
-      "stepDesc": "Tentukan operasi",
-      "icon": "📖",
+      "stepTitle": "1. Pahami soal",
+      "stepDesc": "Baca soal Operasi Hitung pada Bilangan Cacah Sampai 100.000. Apa yang ditanyakan?",
+      "icon": "❓",
       "flowFrom": "START",
       "flowTo": "2"
     },
     {
       "stepNumber": 2,
-      "stepTitle": "2. Susun tempat",
-      "stepDesc": "Sejajarkan kolom",
-      "icon": "🏛️",
+      "stepTitle": "2. Standard Algorithm",
+      "stepDesc": "Jumlah/kurang dari kanan, simpan atau pinjam antar nilai tempat.",
+      "icon": "🧭",
       "flowFrom": "1",
       "flowTo": "3"
     },
     {
       "stepNumber": 3,
-      "stepTitle": "3. + / −",
-      "stepDesc": "Jumlah atau selisih",
-      "icon": "➕",
+      "stepTitle": "3. Regrouping",
+      "stepDesc": "Sepuluh satuan jadi satu puluhan; sebaliknya saat kurang.",
+      "icon": "🛠️",
       "flowFrom": "2",
       "flowTo": "4"
     },
     {
       "stepNumber": 4,
-      "stepTitle": "4. × / ÷",
-      "stepDesc": "Gandakan atau bagi rata",
-      "icon": "✖️",
+      "stepTitle": "4. Estimate First",
+      "stepDesc": "Perkirakan hasil sebelum hitung tepat untuk mengecek.",
+      "icon": "✨",
       "flowFrom": "3",
       "flowTo": "5"
     },
     {
       "stepNumber": 5,
-      "stepTitle": "5. Cek",
-      "stepDesc": "Perkirakan / kebalikan",
-      "icon": "✅",
+      "stepTitle": "5. Kerjakan",
+      "stepDesc": "Terapkan cara itu pada angka atau gambar soal.",
+      "icon": "✏️",
       "flowFrom": "4",
       "flowTo": "6"
     },
     {
       "stepNumber": 6,
-      "stepTitle": "6. Cerita",
-      "stepDesc": "Terapkan ke konteks",
-      "icon": "🛒",
+      "stepTitle": "6. Cek masuk akal",
+      "stepDesc": "Apakah hasilnya masuk akal? Bandingkan dengan perkiraan.",
+      "icon": "✅",
       "flowFrom": "5",
       "flowTo": "7"
     },
     {
       "stepNumber": 7,
-      "stepTitle": "7. METODE LUAR · Algoritma Bersusun",
-      "stepDesc": "Jumlah/kurang dari kanan, simpan atau pinjam antar nilai tempat.",
-      "icon": "🌍",
+      "stepTitle": "7. Simpulkan",
+      "stepDesc": "Ulangi ide utamanya dengan kalimatmu sendiri.",
+      "icon": "💬",
       "flowFrom": "6",
       "flowTo": "8"
     },
     {
       "stepNumber": 8,
-      "stepTitle": "8. METODE LUAR · Menyimpan dan Meminjam",
-      "stepDesc": "Sepuluh satuan jadi satu puluhan; sebaliknya saat kurang.",
-      "icon": "🌍",
+      "stepTitle": "8. Lanjut main",
+      "stepDesc": "Siap melatih di permainan Concrete sampai Abstract.",
+      "icon": "🎮",
       "flowFrom": "7",
       "flowTo": "END"
     }
@@ -2767,22 +2687,15 @@ export const SUB_D51: SubBabNaskah = {
       "judul": "Algoritma Bersusun",
       "emoji": "🌍",
       "countNum": 1,
-      "countWord": "METODE LUAR · Standard Algorithm",
-      "suara": "METODE LUAR. Algoritma Bersusun. Jumlah/kurang dari kanan, simpan atau pinjam antar nilai tempat."
+      "countWord": "ingat",
+      "suara": "Jumlah/kurang dari kanan, simpan atau pinjam antar nilai tempat."
     },
     {
       "judul": "Menyimpan dan Meminjam",
       "emoji": "🌍",
       "countNum": 2,
-      "countWord": "METODE LUAR · Regrouping",
-      "suara": "METODE LUAR. Menyimpan dan Meminjam. Sepuluh satuan jadi satu puluhan; sebaliknya saat kurang."
-    },
-    {
-      "judul": "Perkiraan Dulu",
-      "emoji": "🌍",
-      "countNum": 3,
-      "countWord": "METODE LUAR · Estimate First",
-      "suara": "METODE LUAR. Perkiraan Dulu. Perkirakan hasil sebelum hitung tepat untuk mengecek."
+      "countWord": "ingat",
+      "suara": "Sepuluh satuan jadi satu puluhan; sebaliknya saat kurang."
     }
   ],
   "games": [
@@ -2791,9 +2704,9 @@ export const SUB_D51: SubBabNaskah = {
       "gameType": "penjumlahan-5digit",
       "title": "Penjumlahan Lima Angka",
       "bookReference": "hlm. 17–19",
-      "objective": "Menjumlahkan. (METODE LUAR · Algoritma Bersusun)",
-      "mechanicDescription": "Tiga ronde.",
-      "voiceGuide": "METODE LUAR · Algoritma Bersusun. Pilih hasil.",
+      "objective": "Pakai Algoritma Bersusun: Jumlah/kurang dari kanan, simpan atau pinjam antar nilai tempat. Latihan: Menjumlahkan..",
+      "mechanicDescription": "Tiga ronde. Saat bermain, terapkan Standard Algorithm: Jumlah/kurang dari kanan, simpan atau pinjam antar nilai tempat.",
+      "voiceGuide": "Algoritma Bersusun. Jumlah/kurang dari kanan, simpan atau pinjam antar nilai tempat.",
       "emoji": "➕",
       "targetCount": 6
     },
@@ -2802,9 +2715,9 @@ export const SUB_D51: SubBabNaskah = {
       "gameType": "pengurangan-5digit",
       "title": "Pengurangan Lima Angka",
       "bookReference": "hlm. 19–20",
-      "objective": "Mengurangi.",
-      "mechanicDescription": "Tiga ronde.",
-      "voiceGuide": "Pilih sisa.",
+      "objective": "Pakai Algoritma Bersusun: Jumlah/kurang dari kanan, simpan atau pinjam antar nilai tempat. Latihan: Mengurangi..",
+      "mechanicDescription": "Tiga ronde. Saat bermain, terapkan Standard Algorithm: Jumlah/kurang dari kanan, simpan atau pinjam antar nilai tempat.",
+      "voiceGuide": "Algoritma Bersusun. Jumlah/kurang dari kanan, simpan atau pinjam antar nilai tempat.",
       "emoji": "➖",
       "targetCount": 6
     },
@@ -2813,9 +2726,9 @@ export const SUB_D51: SubBabNaskah = {
       "gameType": "perkalian-besar",
       "title": "Perkalian sampai 100.000",
       "bookReference": "hlm. 21–23",
-      "objective": "Mengalikan.",
-      "mechanicDescription": "Tiga ronde.",
-      "voiceGuide": "Pilih hasil.",
+      "objective": "Pakai Algoritma Bersusun: Jumlah/kurang dari kanan, simpan atau pinjam antar nilai tempat. Latihan: Mengalikan..",
+      "mechanicDescription": "Tiga ronde. Saat bermain, terapkan Standard Algorithm: Jumlah/kurang dari kanan, simpan atau pinjam antar nilai tempat.",
+      "voiceGuide": "Algoritma Bersusun. Jumlah/kurang dari kanan, simpan atau pinjam antar nilai tempat.",
       "emoji": "✖️",
       "targetCount": 6
     },
@@ -2824,9 +2737,9 @@ export const SUB_D51: SubBabNaskah = {
       "gameType": "pembagian-besar",
       "title": "Pembagian sampai 100.000",
       "bookReference": "hlm. 22–23",
-      "objective": "Membagi.",
-      "mechanicDescription": "Tiga ronde.",
-      "voiceGuide": "Pilih hasil.",
+      "objective": "Pakai Algoritma Bersusun: Jumlah/kurang dari kanan, simpan atau pinjam antar nilai tempat. Latihan: Membagi..",
+      "mechanicDescription": "Tiga ronde. Saat bermain, terapkan Standard Algorithm: Jumlah/kurang dari kanan, simpan atau pinjam antar nilai tempat.",
+      "voiceGuide": "Algoritma Bersusun. Jumlah/kurang dari kanan, simpan atau pinjam antar nilai tempat.",
       "emoji": "➗",
       "targetCount": 6
     },
@@ -2835,9 +2748,9 @@ export const SUB_D51: SubBabNaskah = {
       "gameType": "match-operasi",
       "title": "Jodohkan Operasi–Hasil",
       "bookReference": "hlm. 17–24",
-      "objective": "Menjodohkan.",
-      "mechanicDescription": "Tiga ronde.",
-      "voiceGuide": "Jodohkan.",
+      "objective": "Menjodohkan.. Ingat Algoritma Bersusun.",
+      "mechanicDescription": "Tiga ronde. Gunakan Algoritma Bersusun.",
+      "voiceGuide": "Algoritma Bersusun. Jodohkan.",
       "emoji": "🔗",
       "targetCount": 12
     },
@@ -2846,9 +2759,9 @@ export const SUB_D51: SubBabNaskah = {
       "gameType": "memory-operasi",
       "title": "Memori Operasi",
       "bookReference": "hlm. 17–24",
-      "objective": "Memori.",
-      "mechanicDescription": "Tiga ronde.",
-      "voiceGuide": "Balik kartu.",
+      "objective": "Memori.. Ingat Algoritma Bersusun.",
+      "mechanicDescription": "Tiga ronde. Gunakan Algoritma Bersusun.",
+      "voiceGuide": "Algoritma Bersusun. Balik kartu.",
       "emoji": "🃏",
       "targetCount": 12
     },
@@ -2857,9 +2770,9 @@ export const SUB_D51: SubBabNaskah = {
       "gameType": "tap-hasil",
       "title": "Ketuk Hasil Operasi",
       "bookReference": "hlm. 17–24",
-      "objective": "Mengetuk.",
-      "mechanicDescription": "Tiga ronde.",
-      "voiceGuide": "Ketuk.",
+      "objective": "Mengetuk.. Ingat Algoritma Bersusun.",
+      "mechanicDescription": "Tiga ronde. Gunakan Algoritma Bersusun.",
+      "voiceGuide": "Algoritma Bersusun. Ketuk.",
       "emoji": "👆",
       "targetCount": 9
     },
@@ -2868,9 +2781,9 @@ export const SUB_D51: SubBabNaskah = {
       "gameType": "tap-all-operasi",
       "title": "Ketuk Semua Benar",
       "bookReference": "hlm. 17–24",
-      "objective": "Ketuk semua.",
-      "mechanicDescription": "Tiga ronde.",
-      "voiceGuide": "Ketuk semua.",
+      "objective": "Ketuk semua.. Ingat Algoritma Bersusun.",
+      "mechanicDescription": "Tiga ronde. Gunakan Algoritma Bersusun.",
+      "voiceGuide": "Algoritma Bersusun. Ketuk semua.",
       "emoji": "✔️",
       "targetCount": 3
     },
@@ -2879,9 +2792,9 @@ export const SUB_D51: SubBabNaskah = {
       "gameType": "story-operasi",
       "title": "Cerita Bakti dan Toko Buah",
       "bookReference": "hlm. 17–25",
-      "objective": "Soal cerita.",
-      "mechanicDescription": "Tiga ronde.",
-      "voiceGuide": "Pilih.",
+      "objective": "Soal cerita.. Ingat Algoritma Bersusun.",
+      "mechanicDescription": "Tiga ronde. Gunakan Algoritma Bersusun.",
+      "voiceGuide": "Algoritma Bersusun. Pilih.",
       "emoji": "🛒",
       "targetCount": 6
     },
@@ -2890,9 +2803,9 @@ export const SUB_D51: SubBabNaskah = {
       "gameType": "order-hasil",
       "title": "Urutkan Hasil Hitung",
       "bookReference": "hlm. 17–25",
-      "objective": "Mengurutkan.",
-      "mechanicDescription": "Tiga ronde.",
-      "voiceGuide": "Urutkan.",
+      "objective": "Mengurutkan.. Ingat Algoritma Bersusun.",
+      "mechanicDescription": "Tiga ronde. Gunakan Algoritma Bersusun.",
+      "voiceGuide": "Algoritma Bersusun. Urutkan.",
       "emoji": "📶",
       "targetCount": 3
     },
@@ -2901,9 +2814,9 @@ export const SUB_D51: SubBabNaskah = {
       "gameType": "diagram-tambah",
       "title": "Diagram Penjumlahan",
       "bookReference": "hlm. 18–19",
-      "objective": "Baca jumlah. (METODE LUAR · Algoritma Bersusun)",
-      "mechanicDescription": "Tiga ronde.",
-      "voiceGuide": "METODE LUAR · Algoritma Bersusun. Pilih.",
+      "objective": "Pakai Menyimpan dan Meminjam: Sepuluh satuan jadi satu puluhan; sebaliknya saat kurang. Latihan: Baca jumlah..",
+      "mechanicDescription": "Tiga ronde. Saat bermain, terapkan Regrouping: Sepuluh satuan jadi satu puluhan; sebaliknya saat kurang.",
+      "voiceGuide": "Menyimpan dan Meminjam. Sepuluh satuan jadi satu puluhan; sebaliknya saat kurang.",
       "diagramType": "add",
       "numberA": 1,
       "numberB": 2
@@ -2913,9 +2826,9 @@ export const SUB_D51: SubBabNaskah = {
       "gameType": "diagram-kurang",
       "title": "Diagram Pengurangan",
       "bookReference": "hlm. 19–20",
-      "objective": "Baca selisih.",
-      "mechanicDescription": "Tiga ronde.",
-      "voiceGuide": "Pilih.",
+      "objective": "Pakai Menyimpan dan Meminjam: Sepuluh satuan jadi satu puluhan; sebaliknya saat kurang. Latihan: Baca selisih..",
+      "mechanicDescription": "Tiga ronde. Saat bermain, terapkan Regrouping: Sepuluh satuan jadi satu puluhan; sebaliknya saat kurang.",
+      "voiceGuide": "Menyimpan dan Meminjam. Sepuluh satuan jadi satu puluhan; sebaliknya saat kurang.",
       "diagramType": "sub",
       "numberA": 1,
       "numberB": 2
@@ -2925,9 +2838,9 @@ export const SUB_D51: SubBabNaskah = {
       "gameType": "diagram-kali",
       "title": "Diagram Perkalian",
       "bookReference": "hlm. 21–23",
-      "objective": "Baca hasil kali.",
-      "mechanicDescription": "Tiga ronde.",
-      "voiceGuide": "Pilih.",
+      "objective": "Pakai Menyimpan dan Meminjam: Sepuluh satuan jadi satu puluhan; sebaliknya saat kurang. Latihan: Baca hasil kali..",
+      "mechanicDescription": "Tiga ronde. Saat bermain, terapkan Regrouping: Sepuluh satuan jadi satu puluhan; sebaliknya saat kurang.",
+      "voiceGuide": "Menyimpan dan Meminjam. Sepuluh satuan jadi satu puluhan; sebaliknya saat kurang.",
       "diagramType": "mul",
       "numberA": 1,
       "numberB": 2
@@ -2937,9 +2850,9 @@ export const SUB_D51: SubBabNaskah = {
       "gameType": "diagram-bagi",
       "title": "Diagram Pembagian",
       "bookReference": "hlm. 22–23",
-      "objective": "Baca hasil bagi.",
-      "mechanicDescription": "Tiga ronde.",
-      "voiceGuide": "Pilih.",
+      "objective": "Pakai Menyimpan dan Meminjam: Sepuluh satuan jadi satu puluhan; sebaliknya saat kurang. Latihan: Baca hasil bagi..",
+      "mechanicDescription": "Tiga ronde. Saat bermain, terapkan Regrouping: Sepuluh satuan jadi satu puluhan; sebaliknya saat kurang.",
+      "voiceGuide": "Menyimpan dan Meminjam. Sepuluh satuan jadi satu puluhan; sebaliknya saat kurang.",
       "diagramType": "div",
       "numberA": 1,
       "numberB": 2
@@ -2949,9 +2862,9 @@ export const SUB_D51: SubBabNaskah = {
       "gameType": "match-diagram-d",
       "title": "Jodohkan Diagram Operasi",
       "bookReference": "hlm. 17–24",
-      "objective": "Jodohkan.",
-      "mechanicDescription": "Tiga ronde.",
-      "voiceGuide": "Jodohkan.",
+      "objective": "Jodohkan.. Ingat Menyimpan dan Meminjam.",
+      "mechanicDescription": "Tiga ronde. Gunakan Menyimpan dan Meminjam.",
+      "voiceGuide": "Menyimpan dan Meminjam. Jodohkan.",
       "diagramType": "match",
       "numberA": 1,
       "numberB": 2
@@ -2961,9 +2874,9 @@ export const SUB_D51: SubBabNaskah = {
       "gameType": "memory-diagram-d",
       "title": "Memori Diagram Operasi",
       "bookReference": "hlm. 17–24",
-      "objective": "Memori.",
-      "mechanicDescription": "Tiga ronde.",
-      "voiceGuide": "Balik kartu.",
+      "objective": "Memori.. Ingat Menyimpan dan Meminjam.",
+      "mechanicDescription": "Tiga ronde. Gunakan Menyimpan dan Meminjam.",
+      "voiceGuide": "Menyimpan dan Meminjam. Balik kartu.",
       "diagramType": "mem",
       "numberA": 1,
       "numberB": 4
@@ -2973,9 +2886,9 @@ export const SUB_D51: SubBabNaskah = {
       "gameType": "table-d",
       "title": "Tabel Operasi",
       "bookReference": "hlm. 17–25",
-      "objective": "Isi tabel.",
-      "mechanicDescription": "Tiga tabel.",
-      "voiceGuide": "Pilih.",
+      "objective": "Isi tabel.. Ingat Menyimpan dan Meminjam.",
+      "mechanicDescription": "Tiga tabel. Gunakan Menyimpan dan Meminjam.",
+      "voiceGuide": "Menyimpan dan Meminjam. Pilih.",
       "diagramType": "table",
       "numberA": 1,
       "numberB": 3
@@ -2985,9 +2898,9 @@ export const SUB_D51: SubBabNaskah = {
       "gameType": "tap-all-pd",
       "title": "Ketuk Semua Diagram D",
       "bookReference": "hlm. 17–24",
-      "objective": "Ketuk semua.",
-      "mechanicDescription": "Tiga ronde.",
-      "voiceGuide": "Ketuk semua.",
+      "objective": "Ketuk semua.. Ingat Menyimpan dan Meminjam.",
+      "mechanicDescription": "Tiga ronde. Gunakan Menyimpan dan Meminjam.",
+      "voiceGuide": "Menyimpan dan Meminjam. Ketuk semua.",
       "diagramType": "select",
       "numberA": 1,
       "numberB": 4
@@ -2997,9 +2910,9 @@ export const SUB_D51: SubBabNaskah = {
       "gameType": "choose-d",
       "title": "Pilih Kalimat Operasi",
       "bookReference": "hlm. 17–25",
-      "objective": "Pilih pernyataan.",
-      "mechanicDescription": "Tiga ronde.",
-      "voiceGuide": "Pilih.",
+      "objective": "Pilih pernyataan.. Ingat Menyimpan dan Meminjam.",
+      "mechanicDescription": "Tiga ronde. Gunakan Menyimpan dan Meminjam.",
+      "voiceGuide": "Menyimpan dan Meminjam. Pilih.",
       "diagramType": "choose",
       "numberA": 1,
       "numberB": 2
@@ -3009,9 +2922,9 @@ export const SUB_D51: SubBabNaskah = {
       "gameType": "story-picture-d",
       "title": "Cerita Diagram Operasi",
       "bookReference": "hlm. 17–25",
-      "objective": "Cerita + diagram.",
-      "mechanicDescription": "Tiga ronde.",
-      "voiceGuide": "Pilih.",
+      "objective": "Cerita + diagram.. Ingat Menyimpan dan Meminjam.",
+      "mechanicDescription": "Tiga ronde. Gunakan Menyimpan dan Meminjam.",
+      "voiceGuide": "Menyimpan dan Meminjam. Pilih.",
       "diagramType": "story",
       "numberA": 1,
       "numberB": 2
@@ -3021,9 +2934,9 @@ export const SUB_D51: SubBabNaskah = {
       "gameType": "write-jumlah",
       "title": "Tulis Hasil Penjumlahan",
       "bookReference": "hlm. 17–19",
-      "objective": "Menulis jumlah. (METODE LUAR · Algoritma Bersusun)",
-      "mechanicDescription": "Tiga ronde.",
-      "voiceGuide": "METODE LUAR · Algoritma Bersusun. Pilih.",
+      "objective": "Pakai Perkiraan Dulu: Perkirakan hasil sebelum hitung tepat untuk mengecek. Latihan: Menulis jumlah..",
+      "mechanicDescription": "Tiga ronde. Saat bermain, terapkan Estimate First: Perkirakan hasil sebelum hitung tepat untuk mengecek.",
+      "voiceGuide": "Perkiraan Dulu. Perkirakan hasil sebelum hitung tepat untuk mengecek.",
       "symbolLarge": "79.500",
       "wordLarge": "JUMLAH",
       "mathNotation": "+"
@@ -3033,9 +2946,9 @@ export const SUB_D51: SubBabNaskah = {
       "gameType": "write-sisa",
       "title": "Tulis Hasil Pengurangan",
       "bookReference": "hlm. 19–20",
-      "objective": "Menulis sisa.",
-      "mechanicDescription": "Tiga ronde.",
-      "voiceGuide": "Pilih.",
+      "objective": "Pakai Perkiraan Dulu: Perkirakan hasil sebelum hitung tepat untuk mengecek. Latihan: Menulis sisa..",
+      "mechanicDescription": "Tiga ronde. Saat bermain, terapkan Estimate First: Perkirakan hasil sebelum hitung tepat untuk mengecek.",
+      "voiceGuide": "Perkiraan Dulu. Perkirakan hasil sebelum hitung tepat untuk mengecek.",
       "symbolLarge": "2.150",
       "wordLarge": "SISA",
       "mathNotation": "-"
@@ -3045,9 +2958,9 @@ export const SUB_D51: SubBabNaskah = {
       "gameType": "write-kali",
       "title": "Tulis Hasil Perkalian",
       "bookReference": "hlm. 21–23",
-      "objective": "Menulis hasil kali.",
-      "mechanicDescription": "Tiga ronde.",
-      "voiceGuide": "Pilih.",
+      "objective": "Pakai Perkiraan Dulu: Perkirakan hasil sebelum hitung tepat untuk mengecek. Latihan: Menulis hasil kali..",
+      "mechanicDescription": "Tiga ronde. Saat bermain, terapkan Estimate First: Perkirakan hasil sebelum hitung tepat untuk mengecek.",
+      "voiceGuide": "Perkiraan Dulu. Perkirakan hasil sebelum hitung tepat untuk mengecek.",
       "symbolLarge": "60.000",
       "wordLarge": "KALI",
       "mathNotation": "x"
@@ -3057,9 +2970,9 @@ export const SUB_D51: SubBabNaskah = {
       "gameType": "write-bagi",
       "title": "Tulis Hasil Pembagian",
       "bookReference": "hlm. 22–23",
-      "objective": "Menulis hasil bagi.",
-      "mechanicDescription": "Tiga ronde.",
-      "voiceGuide": "Pilih.",
+      "objective": "Pakai Perkiraan Dulu: Perkirakan hasil sebelum hitung tepat untuk mengecek. Latihan: Menulis hasil bagi..",
+      "mechanicDescription": "Tiga ronde. Saat bermain, terapkan Estimate First: Perkirakan hasil sebelum hitung tepat untuk mengecek.",
+      "voiceGuide": "Perkiraan Dulu. Perkirakan hasil sebelum hitung tepat untuk mengecek.",
       "symbolLarge": "16.000",
       "wordLarge": "BAGI",
       "mathNotation": ":"
@@ -3069,9 +2982,9 @@ export const SUB_D51: SubBabNaskah = {
       "gameType": "match-abstract-d",
       "title": "Jodohkan Notasi Operasi",
       "bookReference": "hlm. 17–24",
-      "objective": "Jodohkan.",
-      "mechanicDescription": "Tiga ronde.",
-      "voiceGuide": "Jodohkan.",
+      "objective": "Jodohkan.. Ingat Perkiraan Dulu.",
+      "mechanicDescription": "Tiga ronde. Gunakan Perkiraan Dulu.",
+      "voiceGuide": "Perkiraan Dulu. Jodohkan.",
       "symbolLarge": "a+b",
       "wordLarge": "JODOH",
       "mathNotation": "teks"
@@ -3081,9 +2994,9 @@ export const SUB_D51: SubBabNaskah = {
       "gameType": "memory-abstract-d",
       "title": "Memori Notasi Operasi",
       "bookReference": "hlm. 17–24",
-      "objective": "Memori.",
-      "mechanicDescription": "Tiga ronde.",
-      "voiceGuide": "Balik kartu.",
+      "objective": "Memori.. Ingat Perkiraan Dulu.",
+      "mechanicDescription": "Tiga ronde. Gunakan Perkiraan Dulu.",
+      "voiceGuide": "Perkiraan Dulu. Balik kartu.",
       "symbolLarge": "hasil",
       "wordLarge": "MEMORI",
       "mathNotation": "notasi"
@@ -3093,9 +3006,9 @@ export const SUB_D51: SubBabNaskah = {
       "gameType": "true-false-d",
       "title": "Benar atau Salah: Operasi",
       "bookReference": "hlm. 17–25",
-      "objective": "Menilai.",
-      "mechanicDescription": "Dua ronde.",
-      "voiceGuide": "Benar/salah.",
+      "objective": "Menilai.. Ingat Perkiraan Dulu.",
+      "mechanicDescription": "Dua ronde. Gunakan Perkiraan Dulu.",
+      "voiceGuide": "Perkiraan Dulu. Benar/salah.",
       "symbolLarge": "✓ ✗",
       "wordLarge": "BENAR SALAH",
       "mathNotation": "alasan"
@@ -3105,9 +3018,9 @@ export const SUB_D51: SubBabNaskah = {
       "gameType": "detective-d",
       "title": "Detektif Operasi",
       "bookReference": "hlm. 17–25",
-      "objective": "Petunjuk → hasil.",
-      "mechanicDescription": "Tiga soal.",
-      "voiceGuide": "Pilih.",
+      "objective": "Petunjuk → hasil.. Ingat Perkiraan Dulu.",
+      "mechanicDescription": "Tiga soal. Gunakan Perkiraan Dulu.",
+      "voiceGuide": "Perkiraan Dulu. Pilih.",
       "symbolLarge": "?",
       "wordLarge": "DETEKTIF",
       "mathNotation": "petunjuk"
@@ -3117,9 +3030,9 @@ export const SUB_D51: SubBabNaskah = {
       "gameType": "concept-d",
       "title": "Peta Konsep Operasi",
       "bookReference": "hlm. 17–25",
-      "objective": "Mengisi kotak.",
-      "mechanicDescription": "Satu peta.",
-      "voiceGuide": "Pilih opsi.",
+      "objective": "Mengisi kotak.. Ingat Perkiraan Dulu.",
+      "mechanicDescription": "Satu peta. Gunakan Perkiraan Dulu.",
+      "voiceGuide": "Perkiraan Dulu. Pilih opsi.",
       "symbolLarge": "🗺️",
       "wordLarge": "PETA",
       "mathNotation": "konsep"
@@ -3129,9 +3042,9 @@ export const SUB_D51: SubBabNaskah = {
       "gameType": "story-abstract-d",
       "title": "Cerita Angka Operasi",
       "bookReference": "hlm. 17–25",
-      "objective": "Soal cerita.",
-      "mechanicDescription": "Tiga ronde.",
-      "voiceGuide": "Pilih.",
+      "objective": "Soal cerita.. Ingat Perkiraan Dulu.",
+      "mechanicDescription": "Tiga ronde. Gunakan Perkiraan Dulu.",
+      "voiceGuide": "Perkiraan Dulu. Pilih.",
       "symbolLarge": "📖",
       "wordLarge": "CERITA",
       "mathNotation": "teks"
@@ -3151,37 +3064,25 @@ export const SUB_D51: SubBabNaskah = {
       "suara": "Kurangkan dengan teliti."
     },
     {
-      "ikon": "✖️",
-      "nama": "Perkalian",
-      "isi": "Boleh dipecah faktor, lalu jumlahkan hasil bagian.",
-      "suara": "Pecah faktor bila membantu."
-    },
-    {
-      "ikon": "➗",
-      "nama": "Pembagian",
-      "isi": "Bagi rata; cek dengan perkalian kebalikan.",
-      "suara": "Bagi rata lalu cek."
-    },
-    {
       "ikon": "🌍",
       "nama": "Algoritma Bersusun",
-      "isi": "METODE LUAR · Standard Algorithm: Jumlah/kurang dari kanan, simpan atau pinjam antar nilai tempat. (asal: Elementary algorithms).",
-      "suara": "METODE LUAR. Algoritma Bersusun. Jumlah/kurang dari kanan, simpan atau pinjam antar nilai tempat."
+      "isi": "Jumlah/kurang dari kanan, simpan atau pinjam antar nilai tempat.",
+      "suara": "Algoritma Bersusun. Jumlah/kurang dari kanan, simpan atau pinjam antar nilai tempat."
     },
     {
       "ikon": "🌍",
       "nama": "Menyimpan dan Meminjam",
-      "isi": "METODE LUAR · Regrouping: Sepuluh satuan jadi satu puluhan; sebaliknya saat kurang. (asal: Base-ten regrouping).",
-      "suara": "METODE LUAR. Menyimpan dan Meminjam. Sepuluh satuan jadi satu puluhan; sebaliknya saat kurang."
+      "isi": "Sepuluh satuan jadi satu puluhan; sebaliknya saat kurang.",
+      "suara": "Menyimpan dan Meminjam. Sepuluh satuan jadi satu puluhan; sebaliknya saat kurang."
     },
     {
       "ikon": "🌍",
       "nama": "Perkiraan Dulu",
-      "isi": "METODE LUAR · Estimate First: Perkirakan hasil sebelum hitung tepat untuk mengecek. (asal: Number sense).",
-      "suara": "METODE LUAR. Perkiraan Dulu. Perkirakan hasil sebelum hitung tepat untuk mengecek."
+      "isi": "Perkirakan hasil sebelum hitung tepat untuk mengecek.",
+      "suara": "Perkiraan Dulu. Perkirakan hasil sebelum hitung tepat untuk mengecek."
     }
   ],
-  "poinSuara": "Ingat empat operasi: tambah, kurang, kali, bagi.",
+  "poinSuara": "Ingat: Algoritma Bersusun, Menyimpan dan Meminjam, Perkiraan Dulu.",
   "cara": {
     "suara": "Ikuti langkah-langkahnya.",
     "potongan": [
@@ -3203,11 +3104,11 @@ export const SUB_D51: SubBabNaskah = {
       }
     ]
   },
-  "rumah": "Ayo Mencoba di rumah: buat satu soal cerita penjumlahan dan satu soal pembagian memakai bilangan sampai seratus ribu.",
+  "rumah": "Ayo Mencoba di rumah: terapkan Algoritma Bersusun pada satu benda atau soal nyata, lalu ceritakan langkahmu.",
   "refleksi": [
-    "Kapan memakai penjumlahan dan kapan pengurangan?",
-    "Bagaimana memecah 12 × 5.000 agar lebih mudah?",
-    "Mengapa pembagian dicek dengan perkalian?"
+    "Bagaimana Algoritma Bersusun membantumu memahami soal?",
+    "Kapan kamu memakai Menyimpan dan Meminjam?",
+    "Apa bedanya dengan hanya menghafal rumus atau langkah tanpa arti?"
   ],
   "metodeLuar": [
     {

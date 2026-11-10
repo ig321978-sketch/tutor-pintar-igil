@@ -1,3 +1,7 @@
+/**
+ * Naskah — rewrite mendalam.
+ * Metode luar dianyam ke Story, peta, infografis, poin, dan meta permainan.
+ */
 import type { SubBabNaskah } from "./naskah-k2b2";
 
 export const K3B2_META = {
@@ -15,12 +19,12 @@ export const SUB_A32: SubBabNaskah = {
   "id": "A",
   "codeTitle": "Sub-Bab A (Kalimat Matematika Penjumlahan)",
   "fullTitle": "Sub-Bab A: Kalimat Matematika Berkaitan dengan Penjumlahan Bilangan Cacah",
-  "targetDescription": "Siswa menulis kalimat Matematika dari cerita penjumlahan yang salah satu bilangannya belum diketahui, mencari bilangan itu dengan mengurangkan jumlah dengan bilangan yang diketahui, memeriksa hasilnya dengan penjumlahan, dan menyebutkan beberapa kemungkinan pasangan bilangan untuk jumlah yang sama.",
+  "targetDescription": "Siswa menulis kalimat Matematika dari cerita penjumlahan yang salah satu bilangannya belum diketahui, mencari bilangan itu dengan mengurangkan jumlah dengan bilangan yang diketahui, memeriksa hasilnya dengan penjumlahan, dan menyebutkan beberapa kemungkinan pasangan bilangan untuk jumlah yang sama. Siswa memakai cara Bagian–Bagian–Utuh, Model Batang, Cerita ke Kalimat.",
   "secondaryBg": "#E0E7FF",
   "secondaryBorder": "#4F46E5",
   "secondaryText": "#312E81",
   "silabus": {
-    "teksSuara": "Kita belajar kalimat Matematika yang berkaitan dengan penjumlahan. Galih punya sejumlah kelereng di rumah. Ia membeli lima kelereng lagi, dan jumlahnya menjadi tujuh belas. Berapa kelereng yang disimpan di rumah? Kita menulis kalimat Matematikanya dan mencari bilangan yang belum diketahui dengan mengurangkan. Kita melewati enam tahap seru: cerita, peta pikiran, infografis, benda nyata, gambar, dan simbol.",
+    "teksSuara": "Kita belajar kalimat Matematika yang berkaitan dengan penjumlahan. Galih punya sejumlah kelereng di rumah. Ia membeli lima kelereng lagi, dan jumlahnya menjadi tujuh belas. Berapa kelereng yang disimpan di rumah? Kita menulis kalimat Matematikanya dan mencari bilangan yang belum diketahui dengan mengurangkan. Kita memakai cara dari luar buku: Bagian–Bagian–Utuh (Part–Part–Whole); Model Batang (Bar Model); Cerita ke Kalimat (Story to Equation). Dua bagian membentuk keseluruhan pada penjumlahan. Gambar batang untuk kalimat matematika. Ubah cerita jadi + dan =. Kita melewati enam tahap seru: cerita, peta pikiran, infografis, benda nyata, gambar, dan simbol.",
     "cp": "Siswa menyelesaikan masalah yang berkaitan dengan kalimat Matematika berbentuk penjumlahan dan pengurangan bilangan cacah sampai 100. Pada sub-bab ini siswa mengisi nilai yang belum diketahui pada kalimat penjumlahan.",
     "referensi": "Buku Siswa Matematika Kelas III Kemendikbudristek (Bab 2 Sub-Bab A)."
   },
@@ -28,16 +32,16 @@ export const SUB_A32: SubBabNaskah = {
     {
       "id": "K3B2A-V1",
       "judul": "Bermain Kelereng",
-      "subjudul": "Kalimat Matematika dari cerita",
+      "subjudul": "Part–Part–Whole",
       "adegan": [
         {
           "id": "K3B2A-V1-1",
           "judul": "Kelereng Galih",
           "ketukan": [
             "Galih senang sekali mengumpulkan kelereng dengan berbagai warna.",
-            "Ia memiliki sejumlah kelereng yang disimpan di rumah.",
-            "Pada hari Minggu, Galih membeli 5 kelereng lagi.",
-            "Jumlah kelerengnya kini menjadi 17 butir."
+            "Ia memiliki sejumlah kelereng yang disimpan di rumah. Mari kita pahami bersama.",
+            "Pada hari Minggu, Galih membeli 5 kelereng lagi. Mari kita pahami bersama.",
+            "Ingat cara Bagian–Bagian–Utuh: Dua bagian membentuk keseluruhan pada penjumlahan."
           ],
           "papan": [
             "Galih punya kelereng",
@@ -50,10 +54,10 @@ export const SUB_A32: SubBabNaskah = {
           "id": "K3B2A-V1-2",
           "judul": "Berapa di rumah",
           "ketukan": [
-            "Banyak kelereng di rumah belum kita ketahui.",
-            "Kita tulis tanda titik-titik untuk bilangan yang belum diketahui.",
-            "Kalimat Matematikanya adalah … + 5 = 17.",
-            "Berapa kira-kira kelereng Galih yang disimpan di rumah?"
+            "Banyak kelereng di rumah belum kita ketahui. Mari kita pahami bersama.",
+            "Kita tulis tanda titik-titik untuk bilangan yang belum diketahui. Mari kita pahami bersama.",
+            "Kalimat Matematikanya adalah … + 5 = 17. Mari kita pahami bersama.",
+            "Di sini kita memakai ide Part–Part–Whole — Dua bagian membentuk keseluruhan pada penjumlahan."
           ],
           "papan": [
             "Belum diketahui",
@@ -66,35 +70,33 @@ export const SUB_A32: SubBabNaskah = {
           "id": "K3B2A-V1-3",
           "judul": "Kalimat Matematika",
           "ketukan": [
-            "Bentuk penjumlahan seperti … + 5 = 17 disebut kalimat Matematika.",
-            "Bilangan yang belum diketahui itulah yang akan kita cari.",
-            "Kita akan belajar caranya selangkah demi selangkah.",
-            "Mulailah dari tabel kelereng dan bentuk penjumlahannya.",
-            "METODE LUAR. Bagian–Bagian–Utuh: Dua bagian membentuk keseluruhan pada penjumlahan."
+            "Bentuk penjumlahan seperti … + 5 = 17 disebut kalimat Matematika. Mari kita pahami bersama.",
+            "Bilangan yang belum diketahui itulah yang akan kita cari. Mari kita pahami bersama.",
+            "Kita akan belajar caranya selangkah demi selangkah. Mari kita pahami bersama.",
+            "METODE LUAR · Bagian–Bagian–Utuh: Dua bagian membentuk keseluruhan pada penjumlahan."
           ],
           "papan": [
             "… + 5 = 17",
             "Cari bilangan yang belum diketahui",
             "Belajar selangkah demi selangkah",
-            "Mulai dari tabel kelereng",
-            "METODE LUAR · Bagian–Bagian–Utuh"
+            "Mulai dari tabel kelereng"
           ]
         }
       ]
     },
     {
       "id": "K3B2A-V2",
-      "judul": "Kelereng Galih dan Andi",
-      "subjudul": "Mencari nilai yang belum diketahui",
+      "judul": "Latihan: Model Batang",
+      "subjudul": "Bar Model",
       "adegan": [
         {
           "id": "K3B2A-V2-1",
           "judul": "Jumlah 50 butir",
           "ketukan": [
-            "Galih dan Andi membawa sejumlah kelereng masing-masing.",
-            "Jika kelereng mereka digabungkan terkumpul 50 butir.",
-            "Banyak kelereng Galih adalah 30 butir.",
-            "Dapatkah kalian menentukan banyak kelereng Andi?"
+            "Galih dan Andi membawa sejumlah kelereng masing-masing. Mari kita pahami bersama.",
+            "Jika kelereng mereka digabungkan terkumpul 50 butir. Mari kita pahami bersama.",
+            "Banyak kelereng Galih adalah 30 butir. Mari kita pahami bersama.",
+            "Ingat cara Model Batang: Gambar batang untuk kalimat matematika."
           ],
           "papan": [
             "Galih dan Andi",
@@ -108,9 +110,9 @@ export const SUB_A32: SubBabNaskah = {
           "judul": "Tulis kalimatnya",
           "ketukan": [
             "Kita tulis dalam tabel: Galih 30 butir, Andi belum diketahui, jumlah semua 50 butir.",
-            "Kalimat Matematikanya adalah 30 + … = 50.",
-            "Kita ingat bahwa 30 + 20 = 50.",
-            "Bagaimana cara menentukan angka 20 itu?"
+            "Kalimat Matematikanya adalah 30 + … = 50. Mari kita pahami bersama.",
+            "Kita ingat bahwa 30 + 20 = 50. Mari kita pahami bersama.",
+            "Di sini kita memakai ide Bar Model — Gambar batang untuk kalimat matematika."
           ],
           "papan": [
             "30 butir, …, 50 butir",
@@ -124,34 +126,32 @@ export const SUB_A32: SubBabNaskah = {
           "judul": "Bagan jumlah",
           "ketukan": [
             "Gambar bagan: seluruh kelereng 50, bagian Galih 30, bagian Andi belum diketahui.",
-            "Untuk mencari bagian Andi, kurangi jumlah semua dengan bagian Galih.",
-            "Kita hitung 50 − 30 = 20.",
-            "Jadi, kelereng Andi ada 20 butir.",
-            "METODE LUAR. Model Batang: Gambar batang untuk kalimat matematika."
+            "Untuk mencari bagian Andi, kurangi jumlah semua dengan bagian Galih. Mari kita pahami bersama.",
+            "Kita hitung 50 − 30 = 20. Mari kita pahami bersama.",
+            "METODE LUAR · Model Batang: Gambar batang untuk kalimat matematika."
           ],
           "papan": [
             "Bagan: 50 = 30 + ?",
             "Jumlah dikurangi bagian",
             "50 − 30 = 20",
-            "Andi 20 butir",
-            "METODE LUAR · Model Batang"
+            "Andi 20 butir"
           ]
         }
       ]
     },
     {
       "id": "K3B2A-V3",
-      "judul": "Contoh Kalimat Matematika",
-      "subjudul": "Mengisi nilai yang belum diketahui",
+      "judul": "Siap pakai Story to Equation",
+      "subjudul": "Story to Equation",
       "adegan": [
         {
           "id": "K3B2A-V3-1",
           "judul": "Contoh pertama",
           "ketukan": [
-            "Contoh pertama: 8 + … = 19.",
-            "Bilangan yang diketahui adalah 8 dan 19.",
-            "Kurangkan jumlahnya: 19 − 8 = 11.",
-            "Jadi, 8 + 11 sama dengan 19."
+            "Contoh pertama: 8 + … = 19. Mari kita pahami bersama.",
+            "Bilangan yang diketahui adalah 8 dan 19. Mari kita pahami bersama.",
+            "Kurangkan jumlahnya: 19 − 8 = 11. Mari kita pahami bersama.",
+            "Ingat cara Cerita ke Kalimat: Ubah cerita jadi + dan =."
           ],
           "papan": [
             "8 + … = 19",
@@ -164,10 +164,10 @@ export const SUB_A32: SubBabNaskah = {
           "id": "K3B2A-V3-2",
           "judul": "Contoh kedua",
           "ketukan": [
-            "Contoh kedua: 23 + … = 45.",
-            "Kurangkan jumlahnya dengan bilangan yang diketahui.",
-            "Hitung 45 − 23 sama dengan 22.",
-            "Jadi, 23 + 22 sama dengan 45."
+            "Contoh kedua: 23 + … = 45. Mari kita pahami bersama.",
+            "Kurangkan jumlahnya dengan bilangan yang diketahui. Mari kita pahami bersama.",
+            "Hitung 45 − 23 sama dengan 22. Mari kita pahami bersama.",
+            "Di sini kita memakai ide Story to Equation — Ubah cerita jadi + dan =."
           ],
           "papan": [
             "23 + … = 45",
@@ -180,18 +180,16 @@ export const SUB_A32: SubBabNaskah = {
           "id": "K3B2A-V3-3",
           "judul": "Contoh ketiga",
           "ketukan": [
-            "Contoh ketiga: … + 16 = 54.",
-            "Bilangan yang belum diketahui ada di depan.",
-            "Kurangkan: 54 − 16 = 38.",
-            "Jadi, 38 + 16 sama dengan 54.",
-            "METODE LUAR. Cerita ke Kalimat: Ubah cerita jadi + dan =."
+            "Contoh ketiga: … + 16 = 54. Mari kita pahami bersama.",
+            "Bilangan yang belum diketahui ada di depan. Mari kita pahami bersama.",
+            "Kurangkan: 54 − 16 = 38. Mari kita pahami bersama.",
+            "METODE LUAR · Cerita ke Kalimat: Ubah cerita jadi + dan =."
           ],
           "papan": [
             "… + 16 = 54",
             "Belum diketahui di depan",
             "54 − 16 = 38",
-            "38 + 16 = 54",
-            "METODE LUAR · Cerita ke Kalimat"
+            "38 + 16 = 54"
           ]
         }
       ]
@@ -200,82 +198,66 @@ export const SUB_A32: SubBabNaskah = {
   "mindMaps": [
     {
       "stepNumber": 1,
-      "stepTitle": "1. Mengingat Penjumlahan",
-      "stepDesc": "Penjumlahan berarti menggabungkan dua banyak benda. Dua bilangan yang dijumlahkan menghasilkan satu jumlah. Misalnya 30 kelereng ditambah 20 kelereng sama dengan 50 kelereng. Sebelum belajar kalimat Matematika, ingatlah cara menjumlahkan dua bilangan cacah sampai 100 dengan benar.",
-      "icon": "🔙",
-      "flowFrom": "Mengingat penjumlahan",
-      "flowTo": "Bermain kelereng"
+      "stepTitle": "1. Pahami soal",
+      "stepDesc": "Baca soal Kalimat Matematika Berkaitan dengan Penjumlahan Bilangan Cacah. Apa yang ditanyakan?",
+      "icon": "❓",
+      "flowFrom": "START",
+      "flowTo": "2"
     },
     {
       "stepNumber": 2,
-      "stepTitle": "2. Bermain Kelereng",
-      "stepDesc": "Galih memiliki sejumlah kelereng yang disimpan di rumah. Pada hari Minggu ia membeli 5 kelereng lagi, sehingga jumlahnya menjadi 17 butir. Banyak kelereng yang disimpan di rumah belum diketahui. Cerita seperti ini dapat dituliskan sebagai kalimat Matematika dengan titik-titik pada bilangan yang belum diketahui.",
-      "icon": "🎱",
-      "flowFrom": "Bermain kelereng",
-      "flowTo": "Tabel kelereng"
+      "stepTitle": "2. Part–Part–Whole",
+      "stepDesc": "Dua bagian membentuk keseluruhan pada penjumlahan.",
+      "icon": "🧭",
+      "flowFrom": "1",
+      "flowTo": "3"
     },
     {
       "stepNumber": 3,
-      "stepTitle": "3. Tabel Kelereng",
-      "stepDesc": "Pada Aktivitas 1, kelompok membuat tabel empat kolom: nomor, banyak kelereng anak pertama, banyak kelereng anak kedua, dan jumlah kelereng. Kolom yang belum terisi diisi kelereng agar jumlah anak pertama dan kedua sama dengan kolom terakhir. Lalu setiap baris ditulis sebagai bentuk penjumlahan, misalnya 1 + … = 3.",
-      "icon": "📋",
-      "flowFrom": "Tabel kelereng",
-      "flowTo": "Kalimat Matematika"
+      "stepTitle": "3. Bar Model",
+      "stepDesc": "Gambar batang untuk kalimat matematika.",
+      "icon": "🛠️",
+      "flowFrom": "2",
+      "flowTo": "4"
     },
     {
       "stepNumber": 4,
-      "stepTitle": "4. Kalimat Matematika",
-      "stepDesc": "Bentuk penjumlahan bilangan yang memuat titik-titik, seperti 30 + … = 50 atau … + 16 = 54, disebut kalimat Matematika. Titik-titik menunjukkan bilangan yang belum diketahui. Tugas kita adalah mengisi titik-titik itu dengan bilangan yang membuat kalimat Matematika menjadi benar.",
-      "icon": "✍️",
-      "flowFrom": "Kalimat Matematika",
-      "flowTo": "Mencari nilai yang belum diketahui"
+      "stepTitle": "4. Story to Equation",
+      "stepDesc": "Ubah cerita jadi + dan =.",
+      "icon": "✨",
+      "flowFrom": "3",
+      "flowTo": "5"
     },
     {
       "stepNumber": 5,
-      "stepTitle": "5. Mencari Nilai yang Belum Diketahui",
-      "stepDesc": "Galih membawa 30 kelereng dan Andi membawa sejumlah kelereng. Jika digabung ada 50 butir. Kalimat Matematikanya 30 + … = 50. Kita ingat 30 + 20 = 50. Cara mencarinya: kurangi jumlah semua dengan bilangan yang diketahui, yaitu 50 − 30 = 20. Jadi, kelereng Andi ada 20 butir.",
-      "icon": "🔎",
-      "flowFrom": "Mencari nilai yang belum diketahui",
-      "flowTo": "Bagan jumlah dan bagian"
+      "stepTitle": "5. Kerjakan",
+      "stepDesc": "Terapkan cara itu pada angka atau gambar soal.",
+      "icon": "✏️",
+      "flowFrom": "4",
+      "flowTo": "6"
     },
     {
       "stepNumber": 6,
-      "stepTitle": "6. Bagan Jumlah dan Bagian",
-      "stepDesc": "Bagan membantu kita melihat jumlah dan bagian-bagiannya. Batang atas menunjukkan jumlah semua, yaitu 50. Dua batang di bawahnya menunjukkan bagian Galih 30 dan bagian Andi yang belum diketahui. Karena jumlah dikurangi bagian yang diketahui sama dengan bagian yang belum diketahui, kita hitung 50 − 30 = 20.",
-      "icon": "📊",
-      "flowFrom": "Bagan jumlah dan bagian",
-      "flowTo": "Contoh dan latihan"
+      "stepTitle": "6. Cek masuk akal",
+      "stepDesc": "Apakah hasilnya masuk akal? Bandingkan dengan perkiraan.",
+      "icon": "✅",
+      "flowFrom": "5",
+      "flowTo": "7"
     },
     {
       "stepNumber": 7,
-      "stepTitle": "7. Contoh dan Latihan",
-      "stepDesc": "Contoh dari buku: 8 + … = 19 dicari dengan 19 − 8 = 11, 23 + … = 45 dengan 45 − 23 = 22, … + 16 = 54 dengan 54 − 16 = 38, dan … + 36 = 68 dengan 68 − 36 = 32. Setelah mengisi, periksa dengan menjumlahkan: 8 + 11 = 19. Bilangan yang belum diketahui boleh berada di depan atau di tengah kalimat.",
-      "icon": "📝",
-      "flowFrom": "Contoh dan latihan",
-      "flowTo": "Banyak kemungkinan"
+      "stepTitle": "7. Simpulkan",
+      "stepDesc": "Ulangi ide utamanya dengan kalimatmu sendiri.",
+      "icon": "💬",
+      "flowFrom": "6",
+      "flowTo": "8"
     },
     {
       "stepNumber": 8,
-      "stepTitle": "8. Banyak Kemungkinan",
-      "stepDesc": "Pada Ayo Berpikir, perpustakaan punya 100 buku. Banyak buku yang dipinjam dan banyak buku yang tersisa bisa bermacam-macam asal jumlahnya 100, misalnya 60 + 40, 75 + 25, atau 55 + 45. Pada Latihan 1 nomor 5 ada 95 tiket yang terjual, dan siswa menuliskan lima kemungkinan penonton laki-laki dan perempuan.",
-      "icon": "🔀",
-      "flowFrom": "Banyak kemungkinan",
-      "flowTo": "9"
-    },
-    {
-      "stepNumber": 9,
-      "stepTitle": "9. METODE LUAR · Bagian–Bagian–Utuh",
-      "stepDesc": "Dua bagian membentuk keseluruhan pada penjumlahan.",
-      "icon": "🌍",
-      "flowFrom": "8",
-      "flowTo": "10"
-    },
-    {
-      "stepNumber": 10,
-      "stepTitle": "10. METODE LUAR · Model Batang",
-      "stepDesc": "Gambar batang untuk kalimat matematika.",
-      "icon": "🌍",
-      "flowFrom": "9",
+      "stepTitle": "8. Lanjut main",
+      "stepDesc": "Siap melatih di permainan Concrete sampai Abstract.",
+      "icon": "🎮",
+      "flowFrom": "7",
       "flowTo": "END"
     }
   ],
@@ -354,22 +336,15 @@ export const SUB_A32: SubBabNaskah = {
       "judul": "Bagian–Bagian–Utuh",
       "emoji": "🌍",
       "countNum": 1,
-      "countWord": "METODE LUAR · Part–Part–Whole",
-      "suara": "METODE LUAR. Bagian–Bagian–Utuh. Dua bagian membentuk keseluruhan pada penjumlahan."
+      "countWord": "ingat",
+      "suara": "Dua bagian membentuk keseluruhan pada penjumlahan."
     },
     {
       "judul": "Model Batang",
       "emoji": "🌍",
       "countNum": 2,
-      "countWord": "METODE LUAR · Bar Model",
-      "suara": "METODE LUAR. Model Batang. Gambar batang untuk kalimat matematika."
-    },
-    {
-      "judul": "Cerita ke Kalimat",
-      "emoji": "🌍",
-      "countNum": 3,
-      "countWord": "METODE LUAR · Story to Equation",
-      "suara": "METODE LUAR. Cerita ke Kalimat. Ubah cerita jadi + dan =."
+      "countWord": "ingat",
+      "suara": "Gambar batang untuk kalimat matematika."
     }
   ],
   "games": [
@@ -378,9 +353,9 @@ export const SUB_A32: SubBabNaskah = {
       "gameType": "build-unknown",
       "title": "Rakit yang Belum Diketahui",
       "bookReference": "hlm. 79–82 (Aktivitas 1: kelereng Galih dan Andi)",
-      "objective": "Merakit kumpulan benda yang belum diketahui pada kalimat Matematika penjumlahan, termasuk menukar sepuluh benda menjadi satu bungkus. (METODE LUAR · Bagian–Bagian–Utuh)",
-      "mechanicDescription": "Tiga ronde, tiap ronde dua soal. Siswa membaca cerita dan melihat gambar kumpulan yang diketahui, lalu merakit kumpulan yang belum diketahui dengan tombol tambah dan kurang. Sepuluh benda otomatis ditukar satu bungkus.",
-      "voiceGuide": "METODE LUAR · Bagian–Bagian–Utuh. Rakit kumpulan yang belum diketahui.",
+      "objective": "Pakai Bagian–Bagian–Utuh: Dua bagian membentuk keseluruhan pada penjumlahan. Latihan: Merakit kumpulan benda yang belum diketahui pada kalimat Matematika penjumlahan, termasuk menukar sepuluh benda menjadi satu bungkus..",
+      "mechanicDescription": "Tiga ronde, tiap ronde dua soal. Siswa membaca cerita dan melihat gambar kumpulan yang diketahui, lalu merakit kumpulan yang belum diketahui dengan tombol tambah dan kurang. Sepuluh benda otomatis ditukar satu bungkus. Saat bermain, terapkan Part–Part–Whole: Dua bagian membentuk keseluruhan pada penjumlahan.",
+      "voiceGuide": "Bagian–Bagian–Utuh. Dua bagian membentuk keseluruhan pada penjumlahan.",
       "emoji": "🧺",
       "targetCount": 6
     },
@@ -389,9 +364,9 @@ export const SUB_A32: SubBabNaskah = {
       "gameType": "count-unknown",
       "title": "Hitung yang Belum Diketahui",
       "bookReference": "hlm. 79–82 (Aktivitas 1: kelereng Galih dan Andi)",
-      "objective": "Menghitung banyak benda yang belum diketahui dari gambar kumpulan dan memilih hasilnya.",
-      "mechanicDescription": "Tiga ronde, tiap ronde dua soal. Gambar kumpulan ditampilkan dengan kotak tanda tanya pada bagian yang belum diketahui. Siswa memilih satu dari tiga nilai. Pengecoh salah sepuluh atau salah satu.",
-      "voiceGuide": "Hitung nilai yang belum diketahui.",
+      "objective": "Pakai Bagian–Bagian–Utuh: Dua bagian membentuk keseluruhan pada penjumlahan. Latihan: Menghitung banyak benda yang belum diketahui dari gambar kumpulan dan memilih hasilnya..",
+      "mechanicDescription": "Tiga ronde, tiap ronde dua soal. Gambar kumpulan ditampilkan dengan kotak tanda tanya pada bagian yang belum diketahui. Siswa memilih satu dari tiga nilai. Pengecoh salah sepuluh atau salah satu. Saat bermain, terapkan Part–Part–Whole: Dua bagian membentuk keseluruhan pada penjumlahan.",
+      "voiceGuide": "Bagian–Bagian–Utuh. Dua bagian membentuk keseluruhan pada penjumlahan.",
       "emoji": "❓",
       "targetCount": 6
     },
@@ -400,9 +375,9 @@ export const SUB_A32: SubBabNaskah = {
       "gameType": "write-sentence",
       "title": "Tulis Kalimat Matematika",
       "bookReference": "hlm. 79–82 (Aktivitas 1: kelereng Galih dan Andi)",
-      "objective": "Memilih kalimat Matematika penjumlahan yang sesuai dengan gambar kumpulan benda.",
-      "mechanicDescription": "Tiga ronde, tiap ronde dua soal. Siswa melihat gambar kumpulan, lalu memilih satu dari tiga kalimat Matematika. Pengecoh menukar hasil dengan bilangan yang diketahui atau membalik tanda.",
-      "voiceGuide": "Pilih kalimat Matematika yang sesuai.",
+      "objective": "Pakai Bagian–Bagian–Utuh: Dua bagian membentuk keseluruhan pada penjumlahan. Latihan: Memilih kalimat Matematika penjumlahan yang sesuai dengan gambar kumpulan benda..",
+      "mechanicDescription": "Tiga ronde, tiap ronde dua soal. Siswa melihat gambar kumpulan, lalu memilih satu dari tiga kalimat Matematika. Pengecoh menukar hasil dengan bilangan yang diketahui atau membalik tanda. Saat bermain, terapkan Part–Part–Whole: Dua bagian membentuk keseluruhan pada penjumlahan.",
+      "voiceGuide": "Bagian–Bagian–Utuh. Dua bagian membentuk keseluruhan pada penjumlahan.",
       "emoji": "✍️",
       "targetCount": 6
     },
@@ -411,9 +386,9 @@ export const SUB_A32: SubBabNaskah = {
       "gameType": "match-picture-sentence",
       "title": "Jodohkan Gambar dan Kalimat",
       "bookReference": "hlm. 79–82 (Aktivitas 1: kelereng Galih dan Andi)",
-      "objective": "Menjodohkan gambar kumpulan benda dengan kalimat Matematikanya.",
-      "mechanicDescription": "Tiga ronde, tiap ronde tiga gambar dan tiga kalimat Matematika. Siswa mengetuk gambar, lalu mengetuk kalimat yang cocok.",
-      "voiceGuide": "Ketuk gambar, lalu ketuk kalimatnya.",
+      "objective": "Pakai Bagian–Bagian–Utuh: Dua bagian membentuk keseluruhan pada penjumlahan. Latihan: Menjodohkan gambar kumpulan benda dengan kalimat Matematikanya..",
+      "mechanicDescription": "Tiga ronde, tiap ronde tiga gambar dan tiga kalimat Matematika. Siswa mengetuk gambar, lalu mengetuk kalimat yang cocok. Saat bermain, terapkan Part–Part–Whole: Dua bagian membentuk keseluruhan pada penjumlahan.",
+      "voiceGuide": "Bagian–Bagian–Utuh. Dua bagian membentuk keseluruhan pada penjumlahan.",
       "emoji": "🔗",
       "targetCount": 9
     },
@@ -422,9 +397,9 @@ export const SUB_A32: SubBabNaskah = {
       "gameType": "memory-picture-value",
       "title": "Memori Gambar dan Nilai",
       "bookReference": "hlm. 79–82 (Aktivitas 1: kelereng Galih dan Andi)",
-      "objective": "Mencocokkan gambar kumpulan benda dengan nilai yang belum diketahui lewat permainan memori.",
-      "mechanicDescription": "Tiga ronde, tiap ronde delapan kartu tertutup (empat pasang): gambar kumpulan dan nilainya. Siswa membalik dua kartu dan mencari pasangannya.",
-      "voiceGuide": "Balik dua kartu, cari gambar dan nilainya.",
+      "objective": "Mencocokkan gambar kumpulan benda dengan nilai yang belum diketahui lewat permainan memori.. Ingat Bagian–Bagian–Utuh.",
+      "mechanicDescription": "Tiga ronde, tiap ronde delapan kartu tertutup (empat pasang): gambar kumpulan dan nilainya. Siswa membalik dua kartu dan mencari pasangannya. Gunakan Bagian–Bagian–Utuh.",
+      "voiceGuide": "Bagian–Bagian–Utuh. Balik dua kartu, cari gambar dan nilainya.",
       "emoji": "🃏",
       "targetCount": 12
     },
@@ -433,9 +408,9 @@ export const SUB_A32: SubBabNaskah = {
       "gameType": "tap-picture-value",
       "title": "Ketuk Gambar dengan Nilai",
       "bookReference": "hlm. 79–82 (Aktivitas 1: kelereng Galih dan Andi)",
-      "objective": "Menemukan gambar yang nilai belum diketahuinya sama dengan bilangan yang diminta.",
-      "mechanicDescription": "Tiga ronde, tiap ronde tiga gambar dan dua pertanyaan. Siswa mengetuk gambar yang nilai belum diketahuinya sama dengan bilangan yang disebut.",
-      "voiceGuide": "Ketuk gambar dengan nilai itu.",
+      "objective": "Menemukan gambar yang nilai belum diketahuinya sama dengan bilangan yang diminta.. Ingat Bagian–Bagian–Utuh.",
+      "mechanicDescription": "Tiga ronde, tiap ronde tiga gambar dan dua pertanyaan. Siswa mengetuk gambar yang nilai belum diketahuinya sama dengan bilangan yang disebut. Gunakan Bagian–Bagian–Utuh.",
+      "voiceGuide": "Bagian–Bagian–Utuh. Ketuk gambar dengan nilai itu.",
       "emoji": "👆",
       "targetCount": 6
     },
@@ -444,9 +419,9 @@ export const SUB_A32: SubBabNaskah = {
       "gameType": "tap-all-value-compare",
       "title": "Ketuk Semua Nilai Lebih atau Kurang",
       "bookReference": "hlm. 79–82 (Aktivitas 1: kelereng Galih dan Andi)",
-      "objective": "Menemukan semua gambar yang nilai belum diketahuinya lebih atau kurang dari bilangan acuan.",
-      "mechanicDescription": "Tiga ronde, tiap ronde empat gambar dan satu perintah. Siswa mengetuk semua yang cocok, lalu menekan Periksa.",
-      "voiceGuide": "Ketuk semua yang cocok, lalu periksa.",
+      "objective": "Menemukan semua gambar yang nilai belum diketahuinya lebih atau kurang dari bilangan acuan.. Ingat Bagian–Bagian–Utuh.",
+      "mechanicDescription": "Tiga ronde, tiap ronde empat gambar dan satu perintah. Siswa mengetuk semua yang cocok, lalu menekan Periksa. Gunakan Bagian–Bagian–Utuh.",
+      "voiceGuide": "Bagian–Bagian–Utuh. Ketuk semua yang cocok, lalu periksa.",
       "emoji": "✔️",
       "targetCount": 3
     },
@@ -455,9 +430,9 @@ export const SUB_A32: SubBabNaskah = {
       "gameType": "story-sentence",
       "title": "Cerita Kalimat Matematika",
       "bookReference": "hlm. 77 dan 81 (Bermain Kelereng; Galih dan Andi)",
-      "objective": "Menyelesaikan cerita penjumlahan dengan bilangan yang belum diketahui dan gambar kumpulan benda.",
-      "mechanicDescription": "Tiga ronde, tiap ronde dua cerita. Siswa membaca cerita, melihat gambar kumpulan, lalu memilih nilai yang belum diketahui.",
-      "voiceGuide": "Baca cerita, lalu pilih nilainya.",
+      "objective": "Menyelesaikan cerita penjumlahan dengan bilangan yang belum diketahui dan gambar kumpulan benda.. Ingat Bagian–Bagian–Utuh.",
+      "mechanicDescription": "Tiga ronde, tiap ronde dua cerita. Siswa membaca cerita, melihat gambar kumpulan, lalu memilih nilai yang belum diketahui. Gunakan Bagian–Bagian–Utuh.",
+      "voiceGuide": "Bagian–Bagian–Utuh. Baca cerita, lalu pilih nilainya.",
       "emoji": "📖",
       "targetCount": 6
     },
@@ -466,9 +441,9 @@ export const SUB_A32: SubBabNaskah = {
       "gameType": "board-value-collection",
       "title": "Papan Nilai Kumpulan",
       "bookReference": "hlm. 79–82 (Aktivitas 1: kelereng Galih dan Andi)",
-      "objective": "Menulis nilai yang belum diketahui pada papan puluhan dan satuan.",
-      "mechanicDescription": "Tiga ronde, tiap ronde dua soal. Siswa menghitung nilai yang belum diketahui dari gambar kumpulan, lalu mengatur angka puluhan dan satuan pada papan dan menekan Periksa.",
-      "voiceGuide": "Isi papan dengan nilainya.",
+      "objective": "Menulis nilai yang belum diketahui pada papan puluhan dan satuan.. Ingat Bagian–Bagian–Utuh.",
+      "mechanicDescription": "Tiga ronde, tiap ronde dua soal. Siswa menghitung nilai yang belum diketahui dari gambar kumpulan, lalu mengatur angka puluhan dan satuan pada papan dan menekan Periksa. Gunakan Bagian–Bagian–Utuh.",
+      "voiceGuide": "Bagian–Bagian–Utuh. Isi papan dengan nilainya.",
       "emoji": "🗂️",
       "targetCount": 6
     },
@@ -477,9 +452,9 @@ export const SUB_A32: SubBabNaskah = {
       "gameType": "order-picture-value",
       "title": "Urutkan Gambar menurut Nilai",
       "bookReference": "hlm. 79–82 (Aktivitas 1: kelereng Galih dan Andi)",
-      "objective": "Mengurutkan tiga gambar menurut nilai yang belum diketahuinya.",
-      "mechanicDescription": "Tiga ronde, tiap ronde tiga gambar bertanda huruf. Siswa mengetuk gambar satu per satu dari nilai paling kecil atau paling besar.",
-      "voiceGuide": "Ketuk gambar menurut nilainya.",
+      "objective": "Mengurutkan tiga gambar menurut nilai yang belum diketahuinya.. Ingat Bagian–Bagian–Utuh.",
+      "mechanicDescription": "Tiga ronde, tiap ronde tiga gambar bertanda huruf. Siswa mengetuk gambar satu per satu dari nilai paling kecil atau paling besar. Gunakan Bagian–Bagian–Utuh.",
+      "voiceGuide": "Bagian–Bagian–Utuh. Ketuk gambar menurut nilainya.",
       "emoji": "📶",
       "targetCount": 9
     },
@@ -488,9 +463,9 @@ export const SUB_A32: SubBabNaskah = {
       "gameType": "count-bar",
       "title": "Hitung Bagan",
       "bookReference": "hlm. 79–82 (Aktivitas 1: kelereng Galih dan Andi)",
-      "objective": "Menghitung nilai yang belum diketahui dari bagan bagian dan keseluruhan. (METODE LUAR · Bagian–Bagian–Utuh)",
-      "mechanicDescription": "Tiga ronde, tiap ronde dua soal. Bagan batang menampilkan keseluruhan dan dua bagian, salah satunya bertanda tanya. Siswa memilih satu dari tiga nilai.",
-      "voiceGuide": "METODE LUAR · Bagian–Bagian–Utuh. Pilih nilai pada bagan.",
+      "objective": "Pakai Model Batang: Gambar batang untuk kalimat matematika. Latihan: Menghitung nilai yang belum diketahui dari bagan bagian dan keseluruhan..",
+      "mechanicDescription": "Tiga ronde, tiap ronde dua soal. Bagan batang menampilkan keseluruhan dan dua bagian, salah satunya bertanda tanya. Siswa memilih satu dari tiga nilai. Saat bermain, terapkan Bar Model: Gambar batang untuk kalimat matematika.",
+      "voiceGuide": "Model Batang. Gambar batang untuk kalimat matematika.",
       "diagramType": "bar-count",
       "numberA": 2,
       "numberB": 3
@@ -500,9 +475,9 @@ export const SUB_A32: SubBabNaskah = {
       "gameType": "complete-sentence-bar",
       "title": "Lengkapi Kalimat dari Bagan",
       "bookReference": "hlm. 83 (Contoh: 8 + … = 19, 23 + … = 45, … + 16 = 54)",
-      "objective": "Melengkapi langkah mencari nilai yang belum diketahui: kurangi jumlah dengan bilangan yang diketahui, mengisi kalimat, lalu memeriksa.",
-      "mechanicDescription": "Tiga soal, tiap soal tiga kalimat, misalnya cari dengan operasi kebalikan, isi kalimat Matematika, lalu periksa. Siswa memilih satu dari tiga angka untuk bagian kosong.",
-      "voiceGuide": "Pilih angka untuk bagian kosong.",
+      "objective": "Pakai Model Batang: Gambar batang untuk kalimat matematika. Latihan: Melengkapi langkah mencari nilai yang belum diketahui: kurangi jumlah dengan bilangan yang diketahui, mengisi kalimat, lalu memeriksa..",
+      "mechanicDescription": "Tiga soal, tiap soal tiga kalimat, misalnya cari dengan operasi kebalikan, isi kalimat Matematika, lalu periksa. Siswa memilih satu dari tiga angka untuk bagian kosong. Saat bermain, terapkan Bar Model: Gambar batang untuk kalimat matematika.",
+      "voiceGuide": "Model Batang. Gambar batang untuk kalimat matematika.",
       "diagramType": "bar-sentence",
       "numberA": 3,
       "numberB": 3
@@ -512,9 +487,9 @@ export const SUB_A32: SubBabNaskah = {
       "gameType": "match-bar-sentence",
       "title": "Jodohkan Bagan dan Kalimat",
       "bookReference": "hlm. 79–82 (Aktivitas 1: kelereng Galih dan Andi)",
-      "objective": "Menjodohkan bagan dengan kalimat Matematikanya.",
-      "mechanicDescription": "Tiga ronde, tiap ronde tiga bagan dan tiga kalimat Matematika. Siswa mengetuk bagan, lalu mengetuk kalimat yang cocok.",
-      "voiceGuide": "Ketuk bagan, lalu ketuk kalimatnya.",
+      "objective": "Pakai Model Batang: Gambar batang untuk kalimat matematika. Latihan: Menjodohkan bagan dengan kalimat Matematikanya..",
+      "mechanicDescription": "Tiga ronde, tiap ronde tiga bagan dan tiga kalimat Matematika. Siswa mengetuk bagan, lalu mengetuk kalimat yang cocok. Saat bermain, terapkan Bar Model: Gambar batang untuk kalimat matematika.",
+      "voiceGuide": "Model Batang. Gambar batang untuk kalimat matematika.",
       "diagramType": "bar-match",
       "numberA": 3,
       "numberB": 3
@@ -524,9 +499,9 @@ export const SUB_A32: SubBabNaskah = {
       "gameType": "memory-bar-value",
       "title": "Memori Bagan dan Nilai",
       "bookReference": "hlm. 79–82 (Aktivitas 1: kelereng Galih dan Andi)",
-      "objective": "Mencocokkan bagan dengan nilai yang belum diketahui lewat permainan memori.",
-      "mechanicDescription": "Tiga ronde, tiap ronde delapan kartu tertutup (empat pasang). Siswa membalik dua kartu dan mencari pasangannya.",
-      "voiceGuide": "Balik dua kartu, cari bagan dan nilainya.",
+      "objective": "Pakai Model Batang: Gambar batang untuk kalimat matematika. Latihan: Mencocokkan bagan dengan nilai yang belum diketahui lewat permainan memori..",
+      "mechanicDescription": "Tiga ronde, tiap ronde delapan kartu tertutup (empat pasang). Siswa membalik dua kartu dan mencari pasangannya. Saat bermain, terapkan Bar Model: Gambar batang untuk kalimat matematika.",
+      "voiceGuide": "Model Batang. Gambar batang untuk kalimat matematika.",
       "diagramType": "bar-memory",
       "numberA": 3,
       "numberB": 4
@@ -536,9 +511,9 @@ export const SUB_A32: SubBabNaskah = {
       "gameType": "fill-sentence-table",
       "title": "Isi Tabel Kalimat Matematika",
       "bookReference": "hlm. 83 (Contoh: 8 + … = 19, 23 + … = 45, … + 16 = 54)",
-      "objective": "Melengkapi tabel kalimat Matematika dan nilai yang belum diketahui.",
-      "mechanicDescription": "Tiga tabel dengan empat baris. Siswa mengetuk baris, lalu mengetuk kartu nilai yang tepat. Ada satu kartu pengecoh.",
-      "voiceGuide": "Isi tabel dengan kartu nilai.",
+      "objective": "Melengkapi tabel kalimat Matematika dan nilai yang belum diketahui.. Ingat Model Batang.",
+      "mechanicDescription": "Tiga tabel dengan empat baris. Siswa mengetuk baris, lalu mengetuk kartu nilai yang tepat. Ada satu kartu pengecoh. Gunakan Model Batang.",
+      "voiceGuide": "Model Batang. Isi tabel dengan kartu nilai.",
       "diagramType": "sentence-table",
       "numberA": 3,
       "numberB": 4
@@ -548,9 +523,9 @@ export const SUB_A32: SubBabNaskah = {
       "gameType": "tap-all-bar-compare",
       "title": "Ketuk Semua Bagan Lebih atau Kurang",
       "bookReference": "hlm. 85–86 (Latihan 1)",
-      "objective": "Menemukan semua bagan yang nilai belum diketahuinya lebih atau kurang dari bilangan acuan.",
-      "mechanicDescription": "Tiga ronde, tiap ronde empat bagan dan satu perintah. Siswa mengetuk semua yang cocok, lalu menekan Periksa.",
-      "voiceGuide": "Ketuk semua yang cocok, lalu periksa.",
+      "objective": "Menemukan semua bagan yang nilai belum diketahuinya lebih atau kurang dari bilangan acuan.. Ingat Model Batang.",
+      "mechanicDescription": "Tiga ronde, tiap ronde empat bagan dan satu perintah. Siswa mengetuk semua yang cocok, lalu menekan Periksa. Gunakan Model Batang.",
+      "voiceGuide": "Model Batang. Ketuk semua yang cocok, lalu periksa.",
       "diagramType": "bar-select",
       "numberA": 3,
       "numberB": 4
@@ -560,9 +535,9 @@ export const SUB_A32: SubBabNaskah = {
       "gameType": "sort-bar-position",
       "title": "Pilah Bagan: Depan atau Tengah",
       "bookReference": "hlm. 83 (Contoh: 8 + … = 19, 23 + … = 45, … + 16 = 54)",
-      "objective": "Memilah bagan menjadi yang bilangan belum diketahuinya di depan dan yang di tengah kalimat.",
-      "mechanicDescription": "Tiga ronde, tiap ronde enam bagan dan dua kotak. Siswa menyeret atau mengetuk bagan ke kotak yang tepat.",
-      "voiceGuide": "Pilah bagan ke kotak yang tepat.",
+      "objective": "Memilah bagan menjadi yang bilangan belum diketahuinya di depan dan yang di tengah kalimat.. Ingat Model Batang.",
+      "mechanicDescription": "Tiga ronde, tiap ronde enam bagan dan dua kotak. Siswa menyeret atau mengetuk bagan ke kotak yang tepat. Gunakan Model Batang.",
+      "voiceGuide": "Model Batang. Pilah bagan ke kotak yang tepat.",
       "diagramType": "bar-sort",
       "numberA": 3,
       "numberB": 6
@@ -572,9 +547,9 @@ export const SUB_A32: SubBabNaskah = {
       "gameType": "order-find-steps",
       "title": "Urutkan Langkah Mencari Nilai",
       "bookReference": "hlm. 83 (Contoh: 8 + … = 19, 23 + … = 45, … + 16 = 54)",
-      "objective": "Mengurutkan langkah mencari nilai yang belum diketahui pada kalimat Matematika.",
-      "mechanicDescription": "Tiga ronde, tiap ronde empat langkah. Siswa mengetuk langkah satu per satu menurut urutan yang benar. Letak jawaban berpindah.",
-      "voiceGuide": "Ketuk langkah menurut urutannya.",
+      "objective": "Mengurutkan langkah mencari nilai yang belum diketahui pada kalimat Matematika.. Ingat Model Batang.",
+      "mechanicDescription": "Tiga ronde, tiap ronde empat langkah. Siswa mengetuk langkah satu per satu menurut urutan yang benar. Letak jawaban berpindah. Gunakan Model Batang.",
+      "voiceGuide": "Model Batang. Ketuk langkah menurut urutannya.",
       "diagramType": "steps-order",
       "numberA": 3,
       "numberB": 4
@@ -584,9 +559,9 @@ export const SUB_A32: SubBabNaskah = {
       "gameType": "board-value-bar",
       "title": "Papan Nilai dari Bagan",
       "bookReference": "hlm. 85–86 (Latihan 1)",
-      "objective": "Menulis nilai yang belum diketahui dari bagan pada papan puluhan dan satuan.",
-      "mechanicDescription": "Tiga ronde, tiap ronde dua soal. Siswa membaca bagan, lalu mengatur angka puluhan dan satuan pada papan dan menekan Periksa.",
-      "voiceGuide": "Isi papan dengan nilainya.",
+      "objective": "Menulis nilai yang belum diketahui dari bagan pada papan puluhan dan satuan.. Ingat Model Batang.",
+      "mechanicDescription": "Tiga ronde, tiap ronde dua soal. Siswa membaca bagan, lalu mengatur angka puluhan dan satuan pada papan dan menekan Periksa. Gunakan Model Batang.",
+      "voiceGuide": "Model Batang. Isi papan dengan nilainya.",
       "diagramType": "bar-board",
       "numberA": 3,
       "numberB": 2
@@ -596,9 +571,9 @@ export const SUB_A32: SubBabNaskah = {
       "gameType": "possible-pairs",
       "title": "Kemungkinan Pasangan Bilangan",
       "bookReference": "hlm. 84 (Ayo Berpikir: buku di perpustakaan)",
-      "objective": "Menemukan semua pasangan bilangan yang mungkin untuk keseluruhan yang sama.",
-      "mechanicDescription": "Tiga ronde, tiap ronde empat pasangan dan satu perintah. Siswa mengetuk semua pasangan yang jumlahnya sama dengan keseluruhan, lalu menekan Periksa.",
-      "voiceGuide": "Ketuk semua pasangan yang mungkin.",
+      "objective": "Menemukan semua pasangan bilangan yang mungkin untuk keseluruhan yang sama.. Ingat Model Batang.",
+      "mechanicDescription": "Tiga ronde, tiap ronde empat pasangan dan satu perintah. Siswa mengetuk semua pasangan yang jumlahnya sama dengan keseluruhan, lalu menekan Periksa. Gunakan Model Batang.",
+      "voiceGuide": "Model Batang. Ketuk semua pasangan yang mungkin.",
       "diagramType": "pairs-select",
       "numberA": 3,
       "numberB": 4
@@ -608,9 +583,9 @@ export const SUB_A32: SubBabNaskah = {
       "gameType": "fill-unknown",
       "title": "Isi Nilai yang Belum Diketahui",
       "bookReference": "hlm. 83 (Contoh: 8 + … = 19, 23 + … = 45, … + 16 = 54)",
-      "objective": "Mencari nilai yang belum diketahui pada kalimat Matematika penjumlahan dan memilihnya dari tiga pilihan. (METODE LUAR · Bagian–Bagian–Utuh)",
-      "mechanicDescription": "Tiga ronde, tiap ronde dua soal, misalnya 8 + … = 19 dan … + 16 = 54. Pengecoh salah sepuluh atau salah satu.",
-      "voiceGuide": "METODE LUAR · Bagian–Bagian–Utuh. Pilih nilai yang belum diketahui.",
+      "objective": "Pakai Cerita ke Kalimat: Ubah cerita jadi + dan =. Latihan: Mencari nilai yang belum diketahui pada kalimat Matematika penjumlahan dan memilihnya dari tiga pilihan..",
+      "mechanicDescription": "Tiga ronde, tiap ronde dua soal, misalnya 8 + … = 19 dan … + 16 = 54. Pengecoh salah sepuluh atau salah satu. Saat bermain, terapkan Story to Equation: Ubah cerita jadi + dan =.",
+      "voiceGuide": "Cerita ke Kalimat. Ubah cerita jadi + dan =.",
       "symbolLarge": "?",
       "wordLarge": "ISI NILAI",
       "mathNotation": "nilai yang belum diketahui"
@@ -620,9 +595,9 @@ export const SUB_A32: SubBabNaskah = {
       "gameType": "board-value",
       "title": "Papan Nilai",
       "bookReference": "hlm. 85–86 (Latihan 1)",
-      "objective": "Menulis nilai yang belum diketahui pada papan puluhan dan satuan.",
-      "mechanicDescription": "Tiga ronde, tiap ronde dua soal. Siswa mengatur angka puluhan dan satuan lalu menekan Periksa.",
-      "voiceGuide": "Isi papan dengan nilainya.",
+      "objective": "Pakai Cerita ke Kalimat: Ubah cerita jadi + dan =. Latihan: Menulis nilai yang belum diketahui pada papan puluhan dan satuan..",
+      "mechanicDescription": "Tiga ronde, tiap ronde dua soal. Siswa mengatur angka puluhan dan satuan lalu menekan Periksa. Saat bermain, terapkan Story to Equation: Ubah cerita jadi + dan =.",
+      "voiceGuide": "Cerita ke Kalimat. Ubah cerita jadi + dan =.",
       "symbolLarge": "…",
       "wordLarge": "PAPAN",
       "mathNotation": "puluhan • satuan"
@@ -632,9 +607,9 @@ export const SUB_A32: SubBabNaskah = {
       "gameType": "solve-steps",
       "title": "Langkah Menyelesaikan",
       "bookReference": "hlm. 83 (Contoh: 8 + … = 19, 23 + … = 45, … + 16 = 54)",
-      "objective": "Melengkapi langkah mencari nilai, mengisi kalimat, dan memeriksa hasilnya.",
-      "mechanicDescription": "Tiga soal, tiap soal tiga kalimat, misalnya cari dengan operasi kebalikan. Siswa memilih satu dari tiga angka.",
-      "voiceGuide": "Pilih angka untuk bagian kosong.",
+      "objective": "Pakai Cerita ke Kalimat: Ubah cerita jadi + dan =. Latihan: Melengkapi langkah mencari nilai, mengisi kalimat, dan memeriksa hasilnya..",
+      "mechanicDescription": "Tiga soal, tiap soal tiga kalimat, misalnya cari dengan operasi kebalikan. Siswa memilih satu dari tiga angka. Saat bermain, terapkan Story to Equation: Ubah cerita jadi + dan =.",
+      "voiceGuide": "Cerita ke Kalimat. Ubah cerita jadi + dan =.",
       "symbolLarge": "→",
       "wordLarge": "LANGKAH",
       "mathNotation": "cari • isi • periksa"
@@ -644,9 +619,9 @@ export const SUB_A32: SubBabNaskah = {
       "gameType": "match-sentence-value",
       "title": "Jodohkan Kalimat dan Nilai",
       "bookReference": "hlm. 85–86 (Latihan 1)",
-      "objective": "Menjodohkan kalimat Matematika dengan nilai yang belum diketahuinya.",
-      "mechanicDescription": "Tiga ronde, tiap ronde tiga kalimat dan tiga nilai. Siswa mengetuk kalimat, lalu mengetuk nilai yang cocok.",
-      "voiceGuide": "Ketuk kalimat, lalu ketuk nilainya.",
+      "objective": "Pakai Cerita ke Kalimat: Ubah cerita jadi + dan =. Latihan: Menjodohkan kalimat Matematika dengan nilai yang belum diketahuinya..",
+      "mechanicDescription": "Tiga ronde, tiap ronde tiga kalimat dan tiga nilai. Siswa mengetuk kalimat, lalu mengetuk nilai yang cocok. Saat bermain, terapkan Story to Equation: Ubah cerita jadi + dan =.",
+      "voiceGuide": "Cerita ke Kalimat. Ubah cerita jadi + dan =.",
       "symbolLarge": "= …",
       "wordLarge": "JODOHKAN",
       "mathNotation": "kalimat • nilai"
@@ -656,9 +631,9 @@ export const SUB_A32: SubBabNaskah = {
       "gameType": "memory-sentence-value",
       "title": "Memori Kalimat dan Nilai",
       "bookReference": "hlm. 85–86 (Latihan 1)",
-      "objective": "Mencocokkan kalimat Matematika dengan nilainya lewat permainan memori.",
-      "mechanicDescription": "Tiga ronde, tiap ronde delapan kartu tertutup (empat pasang): kalimat dan nilai. Siswa membalik dua kartu dan mencari pasangannya.",
-      "voiceGuide": "Balik dua kartu, cari kalimat dan nilainya.",
+      "objective": "Mencocokkan kalimat Matematika dengan nilainya lewat permainan memori.. Ingat Cerita ke Kalimat.",
+      "mechanicDescription": "Tiga ronde, tiap ronde delapan kartu tertutup (empat pasang): kalimat dan nilai. Siswa membalik dua kartu dan mencari pasangannya. Gunakan Cerita ke Kalimat.",
+      "voiceGuide": "Cerita ke Kalimat. Balik dua kartu, cari kalimat dan nilainya.",
       "symbolLarge": "= ?",
       "wordLarge": "MEMORI",
       "mathNotation": "kalimat • nilai"
@@ -668,9 +643,9 @@ export const SUB_A32: SubBabNaskah = {
       "gameType": "true-false-sentence",
       "title": "Benar atau Salah: Kalimat Matematika",
       "bookReference": "hlm. 83 (Contoh: 8 + … = 19, 23 + … = 45, … + 16 = 54)",
-      "objective": "Menilai pernyataan tentang kalimat Matematika dan cara mencari nilainya.",
-      "mechanicDescription": "Dua ronde, tiap ronde lima pernyataan. Siswa memilih Benar atau Salah. Tiap jawaban diberi penjelasan.",
-      "voiceGuide": "Baca pernyataan, lalu pilih benar atau salah.",
+      "objective": "Menilai pernyataan tentang kalimat Matematika dan cara mencari nilainya.. Ingat Cerita ke Kalimat.",
+      "mechanicDescription": "Dua ronde, tiap ronde lima pernyataan. Siswa memilih Benar atau Salah. Tiap jawaban diberi penjelasan. Gunakan Cerita ke Kalimat.",
+      "voiceGuide": "Cerita ke Kalimat. Baca pernyataan, lalu pilih benar atau salah.",
       "symbolLarge": "✓ ✗",
       "wordLarge": "BENAR SALAH",
       "mathNotation": "periksa dengan alasan"
@@ -680,9 +655,9 @@ export const SUB_A32: SubBabNaskah = {
       "gameType": "detective-sentence",
       "title": "Detektif Kalimat Matematika",
       "bookReference": "hlm. 83 (Contoh: 8 + … = 19, 23 + … = 45, … + 16 = 54)",
-      "objective": "Menemukan bilangan yang belum diketahui dari dua petunjuk.",
-      "mechanicDescription": "Empat soal. Siswa membaca petunjuk seperti nilai pada sebuah kalimat Matematika dan satu ciri bilangan, lalu memilih satu dari tiga bilangan. Hanya satu yang cocok.",
-      "voiceGuide": "Baca petunjuk, lalu pilih bilangannya.",
+      "objective": "Menemukan bilangan yang belum diketahui dari dua petunjuk.. Ingat Cerita ke Kalimat.",
+      "mechanicDescription": "Empat soal. Siswa membaca petunjuk seperti nilai pada sebuah kalimat Matematika dan satu ciri bilangan, lalu memilih satu dari tiga bilangan. Hanya satu yang cocok. Gunakan Cerita ke Kalimat.",
+      "voiceGuide": "Cerita ke Kalimat. Baca petunjuk, lalu pilih bilangannya.",
       "symbolLarge": "?",
       "wordLarge": "DETEKTIF",
       "mathNotation": "dua petunjuk, satu jawaban"
@@ -692,9 +667,9 @@ export const SUB_A32: SubBabNaskah = {
       "gameType": "concept-map-sentence",
       "title": "Peta Konsep Kalimat Matematika",
       "bookReference": "hlm. 76 (peta konsep: kalimat Matematika)",
-      "objective": "Melengkapi peta konsep kalimat Matematika penjumlahan dan cara mencari nilainya.",
-      "mechanicDescription": "Dua peta konsep, tiap peta empat kotak. Siswa memilih kartu yang tepat untuk kotak yang menyala.",
-      "voiceGuide": "Pilih kartu yang tepat untuk kotak yang menyala.",
+      "objective": "Melengkapi peta konsep kalimat Matematika penjumlahan dan cara mencari nilainya.. Ingat Cerita ke Kalimat.",
+      "mechanicDescription": "Dua peta konsep, tiap peta empat kotak. Siswa memilih kartu yang tepat untuk kotak yang menyala. Gunakan Cerita ke Kalimat.",
+      "voiceGuide": "Cerita ke Kalimat. Pilih kartu yang tepat untuk kotak yang menyala.",
       "symbolLarge": "⇄",
       "wordLarge": "PETA KONSEP",
       "mathNotation": "kalimat • nilai • cari"
@@ -704,9 +679,9 @@ export const SUB_A32: SubBabNaskah = {
       "gameType": "story-sentence-abstract",
       "title": "Soal Cerita Kalimat Matematika",
       "bookReference": "hlm. 85–86 (Latihan 1)",
-      "objective": "Menyelesaikan soal cerita penjumlahan dengan bilangan yang belum diketahui.",
-      "mechanicDescription": "Tiga ronde, tiap ronde dua cerita. Siswa membaca cerita lalu memilih satu dari tiga nilai. Pengecoh salah sepuluh atau salah satu.",
-      "voiceGuide": "Baca cerita, lalu pilih nilainya.",
+      "objective": "Menyelesaikan soal cerita penjumlahan dengan bilangan yang belum diketahui.. Ingat Cerita ke Kalimat.",
+      "mechanicDescription": "Tiga ronde, tiap ronde dua cerita. Siswa membaca cerita lalu memilih satu dari tiga nilai. Pengecoh salah sepuluh atau salah satu. Gunakan Cerita ke Kalimat.",
+      "voiceGuide": "Cerita ke Kalimat. Baca cerita, lalu pilih nilainya.",
       "symbolLarge": "…",
       "wordLarge": "CERITA",
       "mathNotation": "nilai yang belum diketahui"
@@ -716,9 +691,9 @@ export const SUB_A32: SubBabNaskah = {
       "gameType": "sentence-words",
       "title": "Susun Kata Kalimat Matematika",
       "bookReference": "hlm. 77 dan 81 (Bermain Kelereng; Galih dan Andi)",
-      "objective": "Menyusun kalimat tentang kalimat Matematika dari kartu kata.",
-      "mechanicDescription": "Empat kalimat. Siswa mengetuk kartu kata satu per satu menurut urutan kalimat yang benar. Ada satu kartu pengecoh.",
-      "voiceGuide": "Susun kartu kata menjadi kalimat.",
+      "objective": "Menyusun kalimat tentang kalimat Matematika dari kartu kata.. Ingat Cerita ke Kalimat.",
+      "mechanicDescription": "Empat kalimat. Siswa mengetuk kartu kata satu per satu menurut urutan kalimat yang benar. Ada satu kartu pengecoh. Gunakan Cerita ke Kalimat.",
+      "voiceGuide": "Cerita ke Kalimat. Susun kartu kata menjadi kalimat.",
       "symbolLarge": "…",
       "wordLarge": "SUSUN KATA",
       "mathNotation": "kalimat Matematika"
@@ -738,43 +713,25 @@ export const SUB_A32: SubBabNaskah = {
       "suara": "Bilangan yang belum diketahui ditulis dengan titik-titik. Ia boleh ada di depan atau di tengah kalimat."
     },
     {
-      "ikon": "➖",
-      "nama": "Jumlah dikurangi bagian",
-      "isi": "50 − 30 = 20",
-      "suara": "Untuk mencari bilangan yang belum diketahui, kurangi jumlah dengan bilangan yang diketahui."
-    },
-    {
-      "ikon": "✅",
-      "nama": "Periksa",
-      "isi": "30 + 20 = 50",
-      "suara": "Periksa jawabanmu dengan menjumlahkan. Hasilnya harus sama dengan jumlah semula."
-    },
-    {
-      "ikon": "🔀",
-      "nama": "Banyak kemungkinan",
-      "isi": "60 + 40, 75 + 25",
-      "suara": "Bila hanya jumlah yang diketahui, ada banyak pasangan bilangan yang mungkin."
-    },
-    {
       "ikon": "🌍",
       "nama": "Bagian–Bagian–Utuh",
-      "isi": "METODE LUAR · Part–Part–Whole: Dua bagian membentuk keseluruhan pada penjumlahan. (asal: Singapore Math).",
-      "suara": "METODE LUAR. Bagian–Bagian–Utuh. Dua bagian membentuk keseluruhan pada penjumlahan."
+      "isi": "Dua bagian membentuk keseluruhan pada penjumlahan.",
+      "suara": "Bagian–Bagian–Utuh. Dua bagian membentuk keseluruhan pada penjumlahan."
     },
     {
       "ikon": "🌍",
       "nama": "Model Batang",
-      "isi": "METODE LUAR · Bar Model: Gambar batang untuk kalimat matematika. (asal: Singapore bar model).",
-      "suara": "METODE LUAR. Model Batang. Gambar batang untuk kalimat matematika."
+      "isi": "Gambar batang untuk kalimat matematika.",
+      "suara": "Model Batang. Gambar batang untuk kalimat matematika."
     },
     {
       "ikon": "🌍",
       "nama": "Cerita ke Kalimat",
-      "isi": "METODE LUAR · Story to Equation: Ubah cerita jadi + dan =. (asal: Word-problem pedagogy).",
-      "suara": "METODE LUAR. Cerita ke Kalimat. Ubah cerita jadi + dan =."
+      "isi": "Ubah cerita jadi + dan =.",
+      "suara": "Cerita ke Kalimat. Ubah cerita jadi + dan =."
     }
   ],
-  "poinSuara": "Ingat selalu! Kalimat Matematika penjumlahan memuat titik-titik untuk bilangan yang belum diketahui. Untuk mencarinya, kurangi jumlah dengan bilangan yang diketahui. Lalu periksa dengan menjumlahkan. Bila hanya jumlah yang diketahui, ada banyak kemungkinan pasangan bilangan.",
+  "poinSuara": "Ingat: Bagian–Bagian–Utuh, Model Batang, Cerita ke Kalimat.",
   "cara": {
     "suara": "Cara mengisi. Baca kalimat Matematikanya. Lihat bilangan yang diketahui. Kurangkan jumlah dengan bilangan itu. Lalu periksa dengan menjumlahkan.",
     "potongan": [
@@ -796,12 +753,11 @@ export const SUB_A32: SubBabNaskah = {
       }
     ]
   },
-  "rumah": "Ayo Mencoba di rumah: siapkan 20 kancing atau biji. Sembunyikan sebagian di tangan, lalu tunjukkan sisanya dan jumlah seluruhnya kepada temanmu. Tulis kalimat Matematikanya dengan titik-titik, cari bilangan yang disembunyikan dengan mengurangkan, lalu buka tanganmu untuk memeriksa.",
+  "rumah": "Ayo Mencoba di rumah: terapkan Bagian–Bagian–Utuh pada satu benda atau soal nyata, lalu ceritakan langkahmu.",
   "refleksi": [
-    "Aku dapat menulis kalimat Matematika dari cerita penjumlahan.",
-    "Aku dapat mencari bilangan yang belum diketahui dengan mengurangkan.",
-    "Aku memeriksa jawabanku dengan menjumlahkan.",
-    "Aku dapat menyebutkan beberapa kemungkinan pasangan bilangan."
+    "Bagaimana Bagian–Bagian–Utuh membantumu memahami soal?",
+    "Kapan kamu memakai Model Batang?",
+    "Apa bedanya dengan hanya menghafal rumus atau langkah tanpa arti?"
   ],
   "metodeLuar": [
     {
@@ -845,12 +801,12 @@ export const SUB_B32: SubBabNaskah = {
   "id": "B",
   "codeTitle": "Sub-Bab B (Kalimat Matematika Pengurangan)",
   "fullTitle": "Sub-Bab B: Kalimat Matematika Berkaitan dengan Pengurangan Bilangan Cacah",
-  "targetDescription": "Siswa menulis kalimat Matematika dari cerita pengurangan yang bilangan awal atau bilangan yang dikurangkan belum diketahui, mencari bilangan yang dikurangkan dengan mengurangkan bilangan awal dengan sisa, mencari bilangan awal dengan menambahkan, memeriksa hasilnya, dan menyebutkan beberapa kemungkinan.",
+  "targetDescription": "Siswa menulis kalimat Matematika dari cerita pengurangan yang bilangan awal atau bilangan yang dikurangkan belum diketahui, mencari bilangan yang dikurangkan dengan mengurangkan bilangan awal dengan sisa, mencari bilangan awal dengan menambahkan, memeriksa hasilnya, dan menyebutkan beberapa kemungkinan. Siswa memakai cara Mengambil, Selisih Banding, Model Batang Kurang.",
   "secondaryBg": "#FCE7F3",
   "secondaryBorder": "#DB2777",
   "secondaryText": "#831843",
   "silabus": {
-    "teksSuara": "Kita belajar kalimat Matematika yang berkaitan dengan pengurangan. Pak Slamet punya delapan puluh ekor ayam. Sebagian ayam dijual dan tersisa empat puluh lima ekor. Berapa ayam yang dijual? Kita juga mencari banyak ayam mula-mula bila ayam yang dijual dan sisanya diketahui. Kita memakai mengurangkan dan menjumlahkan. Kita melewati enam tahap seru: cerita, peta pikiran, infografis, benda nyata, gambar, dan simbol.",
+    "teksSuara": "Kita belajar kalimat Matematika yang berkaitan dengan pengurangan. Pak Slamet punya delapan puluh ekor ayam. Sebagian ayam dijual dan tersisa empat puluh lima ekor. Berapa ayam yang dijual? Kita juga mencari banyak ayam mula-mula bila ayam yang dijual dan sisanya diketahui. Kita memakai mengurangkan dan menjumlahkan. Kita memakai cara dari luar buku: Mengambil (Take Away); Selisih Banding (Comparison Difference); Model Batang Kurang (Bar Model Subtract). Kurangi berarti mengambil sebagian. Berapa lebih banyak/sedikit. Batang utuh dikurangi bagian. Kita melewati enam tahap seru: cerita, peta pikiran, infografis, benda nyata, gambar, dan simbol.",
     "cp": "Siswa menyelesaikan masalah yang berkaitan dengan kalimat Matematika berbentuk penjumlahan dan pengurangan bilangan cacah sampai 100. Pada sub-bab ini siswa mengisi nilai yang belum diketahui pada kalimat pengurangan.",
     "referensi": "Buku Siswa Matematika Kelas III Kemendikbudristek (Bab 2 Sub-Bab B)."
   },
@@ -858,16 +814,16 @@ export const SUB_B32: SubBabNaskah = {
     {
       "id": "K3B2B-V1",
       "judul": "Permen Dua Anak",
-      "subjudul": "Kalimat Matematika dari tabel",
+      "subjudul": "Take Away",
       "adegan": [
         {
           "id": "K3B2B-V1-1",
           "judul": "Dua anak membawa permen",
           "ketukan": [
-            "Dua anak membawa sejumlah permen masing-masing.",
-            "Banyak permen anak pertama diketahui, anak kedua belum.",
-            "Selisih banyak permen kedua anak juga diketahui.",
-            "Dapatkah kalian mencari banyak permen yang belum diketahui?"
+            "Bayangkan situasi nyata di kelas atau di rumah. Dua anak membawa sejumlah permen masing-masing. Mari kita pahami bersama.",
+            "Banyak permen anak pertama diketahui, anak kedua belum. Mari kita pahami bersama.",
+            "Selisih banyak permen kedua anak juga diketahui. Mari kita pahami bersama.",
+            "Ingat cara Mengambil: Kurangi berarti mengambil sebagian."
           ],
           "papan": [
             "Dua anak, permen",
@@ -880,10 +836,10 @@ export const SUB_B32: SubBabNaskah = {
           "id": "K3B2B-V1-2",
           "judul": "Tabel permen",
           "ketukan": [
-            "Kita buat tabel: permen anak pertama, anak kedua, dan selisihnya.",
-            "Nomor satu: 3 permen dan selisih 1, jadi 3 − … = 1.",
-            "Nomor empat: anak kedua 6, selisih 3, jadi … − 6 = 3.",
-            "Bentuk pengurangan seperti ini disebut kalimat Matematika."
+            "Kita buat tabel: permen anak pertama, anak kedua, dan selisihnya. Mari kita pahami bersama.",
+            "Nomor satu: 3 permen dan selisih 1, jadi 3 − … = 1. Mari kita pahami bersama.",
+            "Nomor empat: anak kedua 6, selisih 3, jadi … − 6 = 3. Mari kita pahami bersama.",
+            "Di sini kita memakai ide Take Away — Kurangi berarti mengambil sebagian."
           ],
           "papan": [
             "Tabel permen",
@@ -896,35 +852,33 @@ export const SUB_B32: SubBabNaskah = {
           "id": "K3B2B-V1-3",
           "judul": "Cara mencari",
           "ketukan": [
-            "Pada 3 − … = 1, kita kurangi 3 dengan 1 sama dengan 2.",
-            "Jadi, 3 − 2 sama dengan 1.",
-            "Pada … − 6 = 3, kita tambahkan 3 dan 6 sama dengan 9.",
-            "Jadi, 9 − 6 sama dengan 3.",
-            "METODE LUAR. Mengambil: Kurangi berarti mengambil sebagian."
+            "Pada 3 − … = 1, kita kurangi 3 dengan 1 sama dengan 2. Mari kita pahami bersama.",
+            "Jadi, 3 − 2 sama dengan 1. Mari kita pahami bersama.",
+            "Pada … − 6 = 3, kita tambahkan 3 dan 6 sama dengan 9. Mari kita pahami bersama.",
+            "METODE LUAR · Mengambil: Kurangi berarti mengambil sebagian."
           ],
           "papan": [
             "3 − 1 = 2",
             "3 − 2 = 1",
             "3 + 6 = 9",
-            "9 − 6 = 3",
-            "METODE LUAR · Mengambil"
+            "9 − 6 = 3"
           ]
         }
       ]
     },
     {
       "id": "K3B2B-V2",
-      "judul": "Ayam Pak Slamet",
-      "subjudul": "Mencari bilangan yang dikurangkan",
+      "judul": "Latihan: Selisih Banding",
+      "subjudul": "Comparison Difference",
       "adegan": [
         {
           "id": "K3B2B-V2-1",
           "judul": "Ayam dijual",
           "ketukan": [
-            "Pak Slamet adalah seorang peternak ayam.",
-            "Ia mempunyai 80 ekor ayam potong di kandang.",
-            "Sebagian ayam dijual ke pasar dan tersisa 45 ekor.",
-            "Dapatkah kalian menentukan banyak ayam yang dijual?"
+            "Pak Slamet adalah seorang peternak ayam. Mari kita pahami bersama.",
+            "Ia mempunyai 80 ekor ayam potong di kandang. Mari kita pahami bersama.",
+            "Sebagian ayam dijual ke pasar dan tersisa 45 ekor. Mari kita pahami bersama.",
+            "Ingat cara Selisih Banding: Berapa lebih banyak/sedikit."
           ],
           "papan": [
             "Pak Slamet punya 80 ayam",
@@ -937,10 +891,10 @@ export const SUB_B32: SubBabNaskah = {
           "id": "K3B2B-V2-2",
           "judul": "Kalimatnya",
           "ketukan": [
-            "Tabel: ayam mula-mula 80 ekor, dijual belum diketahui, sisa 45 ekor.",
-            "Kalimat Matematikanya adalah 80 − … = 45.",
-            "Kita ingat bahwa 80 − 35 = 45.",
-            "Bagaimana cara mendapatkan angka 35 itu?"
+            "Tabel: ayam mula-mula 80 ekor, dijual belum diketahui, sisa 45 ekor. Mari kita pahami bersama.",
+            "Kalimat Matematikanya adalah 80 − … = 45. Mari kita pahami bersama.",
+            "Kita ingat bahwa 80 − 35 = 45. Mari kita pahami bersama.",
+            "Di sini kita memakai ide Comparison Difference — Berapa lebih banyak/sedikit."
           ],
           "papan": [
             "80 ekor, …, 45 ekor",
@@ -953,35 +907,33 @@ export const SUB_B32: SubBabNaskah = {
           "id": "K3B2B-V2-3",
           "judul": "Bagan",
           "ketukan": [
-            "Bagan: seluruh ayam 80, sisa 45, dan yang dijual belum diketahui.",
+            "Bagan: seluruh ayam 80, sisa 45, dan yang dijual belum diketahui. Mari kita pahami bersama.",
             "Untuk mencari ayam yang dijual, kurangi ayam mula-mula dengan sisa ayam.",
-            "Kita hitung 80 − 45 = 35.",
-            "Jadi, ayam yang dijual ada 35 ekor.",
-            "METODE LUAR. Selisih Banding: Berapa lebih banyak/sedikit."
+            "Kita hitung 80 − 45 = 35. Mari kita pahami bersama.",
+            "METODE LUAR · Selisih Banding: Berapa lebih banyak/sedikit."
           ],
           "papan": [
             "Bagan: 80 = ? + 45",
             "Mula-mula dikurangi sisa",
             "80 − 45 = 35",
-            "Dijual 35 ekor",
-            "METODE LUAR · Selisih Banding"
+            "Dijual 35 ekor"
           ]
         }
       ]
     },
     {
       "id": "K3B2B-V3",
-      "judul": "Ayam Mula-Mula",
-      "subjudul": "Mencari bilangan awal",
+      "judul": "Siap pakai Bar Model Subtract",
+      "subjudul": "Bar Model Subtract",
       "adegan": [
         {
           "id": "K3B2B-V3-1",
           "judul": "Dijual 45 ekor",
           "ketukan": [
-            "Hari ini Pak Slamet menjual 45 ekor ayam di pasar.",
-            "Ayam yang tersisa di kandang ada 27 ekor.",
-            "Banyak ayam mula-mula belum diketahui.",
-            "Dapatkah kalian menentukannya?"
+            "Hari ini Pak Slamet menjual 45 ekor ayam di pasar. Mari kita pahami bersama.",
+            "Ayam yang tersisa di kandang ada 27 ekor. Mari kita pahami bersama.",
+            "Banyak ayam mula-mula belum diketahui. Mari kita pahami bersama.",
+            "Ingat cara Model Batang Kurang: Batang utuh dikurangi bagian."
           ],
           "papan": [
             "Dijual 45 ekor",
@@ -994,10 +946,10 @@ export const SUB_B32: SubBabNaskah = {
           "id": "K3B2B-V3-2",
           "judul": "Kalimatnya",
           "ketukan": [
-            "Tabel: ayam mula-mula belum diketahui, dijual 45, sisa 27.",
-            "Kalimat Matematikanya adalah … − 45 = 27.",
-            "Kita ingat bahwa 72 − 45 = 27.",
-            "Bagaimana cara memperoleh angka 72 itu?"
+            "Tabel: ayam mula-mula belum diketahui, dijual 45, sisa 27. Mari kita pahami bersama.",
+            "Kalimat Matematikanya adalah … − 45 = 27. Mari kita pahami bersama.",
+            "Kita ingat bahwa 72 − 45 = 27. Mari kita pahami bersama.",
+            "Di sini kita memakai ide Bar Model Subtract — Batang utuh dikurangi bagian."
           ],
           "papan": [
             "…, 45 ekor, 27 ekor",
@@ -1010,18 +962,16 @@ export const SUB_B32: SubBabNaskah = {
           "id": "K3B2B-V3-3",
           "judul": "Bagan",
           "ketukan": [
-            "Bagan: ayam yang dijual 45 dan sisa 27 membentuk ayam mula-mula.",
+            "Bagan: ayam yang dijual 45 dan sisa 27 membentuk ayam mula-mula. Mari kita pahami bersama.",
             "Untuk mencari ayam mula-mula, tambahkan ayam yang dijual dan sisa ayam.",
-            "Kita hitung 45 + 27 = 72.",
-            "Jadi, ayam mula-mula ada 72 ekor.",
-            "METODE LUAR. Model Batang Kurang: Batang utuh dikurangi bagian."
+            "Kita hitung 45 + 27 = 72. Mari kita pahami bersama.",
+            "METODE LUAR · Model Batang Kurang: Batang utuh dikurangi bagian."
           ],
           "papan": [
             "Bagan: ? = 45 + 27",
             "Dijual ditambah sisa",
             "45 + 27 = 72",
-            "Mula-mula 72 ekor",
-            "METODE LUAR · Model Batang Kurang"
+            "Mula-mula 72 ekor"
           ]
         }
       ]
@@ -1030,82 +980,66 @@ export const SUB_B32: SubBabNaskah = {
   "mindMaps": [
     {
       "stepNumber": 1,
-      "stepTitle": "1. Mengingat Pengurangan",
-      "stepDesc": "Pengurangan berarti mengambil sebagian dari satu kelompok benda dan menghitung sisanya. Bilangan awal dikurangi bilangan yang dikurangkan sama dengan sisa. Misalnya 80 ayam dikurangi 35 ayam yang dijual sama dengan 45 ayam. Sebelum belajar kalimat Matematika, ingatlah cara mengurangkan dua bilangan cacah sampai 100.",
-      "icon": "🔙",
-      "flowFrom": "Mengingat pengurangan",
-      "flowTo": "Dua anak dan permen"
+      "stepTitle": "1. Pahami soal",
+      "stepDesc": "Baca soal Kalimat Matematika Berkaitan dengan Pengurangan Bilangan Cacah. Apa yang ditanyakan?",
+      "icon": "❓",
+      "flowFrom": "START",
+      "flowTo": "2"
     },
     {
       "stepNumber": 2,
-      "stepTitle": "2. Dua Anak dan Permen",
-      "stepDesc": "Dua anak membawa permen. Banyak permen anak pertama diketahui, banyak permen anak kedua tidak diketahui, tetapi selisih keduanya diketahui. Kita diminta mencari banyak permen yang tidak diketahui. Sebaliknya, anak pertama bisa yang tidak diketahui dan anak kedua yang diketahui. Situasi seperti ini dapat ditulis sebagai kalimat Matematika.",
-      "icon": "🍬",
-      "flowFrom": "Dua anak dan permen",
-      "flowTo": "Tabel permen"
+      "stepTitle": "2. Take Away",
+      "stepDesc": "Kurangi berarti mengambil sebagian.",
+      "icon": "🧭",
+      "flowFrom": "1",
+      "flowTo": "3"
     },
     {
       "stepNumber": 3,
-      "stepTitle": "3. Tabel Permen",
-      "stepDesc": "Pada Aktivitas 2, kelompok membuat tabel empat kolom: nomor, permen anak pertama, permen anak kedua, dan selisih permen. Kolom yang belum terisi diisi permen agar selisihnya sama dengan kolom terakhir. Lalu tiap baris ditulis sebagai bentuk pengurangan, misalnya 3 − … = 1 dan … − 6 = 3. Bentuk itu disebut kalimat Matematika.",
-      "icon": "📋",
-      "flowFrom": "Tabel permen",
-      "flowTo": "Mencari bilangan yang dikurangkan"
+      "stepTitle": "3. Comparison Difference",
+      "stepDesc": "Berapa lebih banyak/sedikit.",
+      "icon": "🛠️",
+      "flowFrom": "2",
+      "flowTo": "4"
     },
     {
       "stepNumber": 4,
-      "stepTitle": "4. Mencari Bilangan yang Dikurangkan",
-      "stepDesc": "Pak Slamet punya 80 ekor ayam dan sebagian dijual hingga tersisa 45 ekor. Kalimat Matematikanya 80 − … = 45. Kita ingat 80 − 35 = 45. Cara mencarinya: kurangi bilangan awal dengan sisanya, yaitu 80 − 45 = 35. Jadi ayam yang dijual ada 35 ekor, dan 80 − 35 memang sama dengan 45.",
-      "icon": "🔎",
-      "flowFrom": "Mencari bilangan yang dikurangkan",
-      "flowTo": "Bagan bilangan awal dan bagian"
+      "stepTitle": "4. Bar Model Subtract",
+      "stepDesc": "Batang utuh dikurangi bagian.",
+      "icon": "✨",
+      "flowFrom": "3",
+      "flowTo": "5"
     },
     {
       "stepNumber": 5,
-      "stepTitle": "5. Bagan Bilangan Awal dan Bagian",
-      "stepDesc": "Bagan membantu kita melihat bilangan awal dan bagian-bagiannya. Batang atas menunjukkan bilangan awal, yaitu 80. Dua batang di bawahnya menunjukkan bagian yang dijual (belum diketahui) dan bagian yang tersisa, yaitu 45. Karena bilangan awal dikurangi sisa sama dengan bagian yang dijual, kita hitung 80 − 45 = 35.",
-      "icon": "📊",
-      "flowFrom": "Bagan bilangan awal dan bagian",
-      "flowTo": "Mencari bilangan awal"
+      "stepTitle": "5. Kerjakan",
+      "stepDesc": "Terapkan cara itu pada angka atau gambar soal.",
+      "icon": "✏️",
+      "flowFrom": "4",
+      "flowTo": "6"
     },
     {
       "stepNumber": 6,
-      "stepTitle": "6. Mencari Bilangan Awal",
-      "stepDesc": "Hari ini Pak Slamet menjual 45 ekor ayam dan di kandang tersisa 27 ekor. Kalimat Matematikanya … − 45 = 27. Kita ingat 72 − 45 = 27. Cara mencarinya: tambahkan bilangan yang dikurangkan dengan sisanya, yaitu 45 + 27 = 72. Jadi ayam mula-mula ada 72 ekor, dan 72 − 45 memang sama dengan 27.",
-      "icon": "➕",
-      "flowFrom": "Mencari bilangan awal",
-      "flowTo": "Contoh dan latihan"
+      "stepTitle": "6. Cek masuk akal",
+      "stepDesc": "Apakah hasilnya masuk akal? Bandingkan dengan perkiraan.",
+      "icon": "✅",
+      "flowFrom": "5",
+      "flowTo": "7"
     },
     {
       "stepNumber": 7,
-      "stepTitle": "7. Contoh dan Latihan",
-      "stepDesc": "Contoh dari buku: 32 − … = 15 dicari dengan 32 − 15 = 17, 56 − … = 24 dengan 56 − 24 = 32, dan 53 − … = 32 dengan 53 − 32 = 21. Untuk bilangan awal: … − 12 = 26 dicari dengan 26 + 12 = 38, … − 23 = 42 dengan 42 + 23 = 65, dan … − 41 = 38 dengan 38 + 41 = 79. Periksa jawaban dengan mengurangkan lagi.",
-      "icon": "📝",
-      "flowFrom": "Contoh dan latihan",
-      "flowTo": "Banyak kemungkinan"
+      "stepTitle": "7. Simpulkan",
+      "stepDesc": "Ulangi ide utamanya dengan kalimatmu sendiri.",
+      "icon": "💬",
+      "flowFrom": "6",
+      "flowTo": "8"
     },
     {
       "stepNumber": 8,
-      "stepTitle": "8. Banyak Kemungkinan",
-      "stepDesc": "Pada Ayo Berpikir, pedagang menjual telur di pasar. Banyak telur mula-mula adalah 100. Banyak telur yang terjual dan banyak sisa telur bisa bermacam-macam asal jumlahnya 100, misalnya 45 dan 55. Pada Latihan 2 nomor 6, toko elektronik punya 40 televisi dan siswa menuliskan lima kemungkinan banyak televisi yang terjual dan sisanya.",
-      "icon": "🔀",
-      "flowFrom": "Banyak kemungkinan",
-      "flowTo": "9"
-    },
-    {
-      "stepNumber": 9,
-      "stepTitle": "9. METODE LUAR · Mengambil",
-      "stepDesc": "Kurangi berarti mengambil sebagian.",
-      "icon": "🌍",
-      "flowFrom": "8",
-      "flowTo": "10"
-    },
-    {
-      "stepNumber": 10,
-      "stepTitle": "10. METODE LUAR · Selisih Banding",
-      "stepDesc": "Berapa lebih banyak/sedikit.",
-      "icon": "🌍",
-      "flowFrom": "9",
+      "stepTitle": "8. Lanjut main",
+      "stepDesc": "Siap melatih di permainan Concrete sampai Abstract.",
+      "icon": "🎮",
+      "flowFrom": "7",
       "flowTo": "END"
     }
   ],
@@ -1184,22 +1118,15 @@ export const SUB_B32: SubBabNaskah = {
       "judul": "Mengambil",
       "emoji": "🌍",
       "countNum": 1,
-      "countWord": "METODE LUAR · Take Away",
-      "suara": "METODE LUAR. Mengambil. Kurangi berarti mengambil sebagian."
+      "countWord": "ingat",
+      "suara": "Kurangi berarti mengambil sebagian."
     },
     {
       "judul": "Selisih Banding",
       "emoji": "🌍",
       "countNum": 2,
-      "countWord": "METODE LUAR · Comparison Difference",
-      "suara": "METODE LUAR. Selisih Banding. Berapa lebih banyak/sedikit."
-    },
-    {
-      "judul": "Model Batang Kurang",
-      "emoji": "🌍",
-      "countNum": 3,
-      "countWord": "METODE LUAR · Bar Model Subtract",
-      "suara": "METODE LUAR. Model Batang Kurang. Batang utuh dikurangi bagian."
+      "countWord": "ingat",
+      "suara": "Berapa lebih banyak/sedikit."
     }
   ],
   "games": [
@@ -1208,9 +1135,9 @@ export const SUB_B32: SubBabNaskah = {
       "gameType": "build-unknown",
       "title": "Rakit yang Belum Diketahui",
       "bookReference": "hlm. 88–90 (Aktivitas 2: permen dua anak dan ayam Pak Slamet)",
-      "objective": "Merakit kumpulan benda yang belum diketahui pada kalimat Matematika pengurangan, termasuk menukar sepuluh benda menjadi satu bungkus. (METODE LUAR · Mengambil)",
-      "mechanicDescription": "Tiga ronde, tiap ronde dua soal. Siswa membaca cerita dan melihat gambar kumpulan yang diketahui, lalu merakit kumpulan yang belum diketahui dengan tombol tambah dan kurang. Sepuluh benda otomatis ditukar satu bungkus.",
-      "voiceGuide": "METODE LUAR · Mengambil. Rakit kumpulan yang belum diketahui.",
+      "objective": "Pakai Mengambil: Kurangi berarti mengambil sebagian. Latihan: Merakit kumpulan benda yang belum diketahui pada kalimat Matematika pengurangan, termasuk menukar sepuluh benda menjadi satu bungkus..",
+      "mechanicDescription": "Tiga ronde, tiap ronde dua soal. Siswa membaca cerita dan melihat gambar kumpulan yang diketahui, lalu merakit kumpulan yang belum diketahui dengan tombol tambah dan kurang. Sepuluh benda otomatis ditukar satu bungkus. Saat bermain, terapkan Take Away: Kurangi berarti mengambil sebagian.",
+      "voiceGuide": "Mengambil. Kurangi berarti mengambil sebagian.",
       "emoji": "🧺",
       "targetCount": 6
     },
@@ -1219,9 +1146,9 @@ export const SUB_B32: SubBabNaskah = {
       "gameType": "count-unknown",
       "title": "Hitung yang Belum Diketahui",
       "bookReference": "hlm. 88–90 (Aktivitas 2: permen dua anak dan ayam Pak Slamet)",
-      "objective": "Menghitung banyak benda yang belum diketahui dari gambar kumpulan dan memilih hasilnya.",
-      "mechanicDescription": "Tiga ronde, tiap ronde dua soal. Gambar kumpulan ditampilkan dengan kotak tanda tanya pada bagian yang belum diketahui. Siswa memilih satu dari tiga nilai. Pengecoh salah sepuluh atau salah satu.",
-      "voiceGuide": "Hitung nilai yang belum diketahui.",
+      "objective": "Pakai Mengambil: Kurangi berarti mengambil sebagian. Latihan: Menghitung banyak benda yang belum diketahui dari gambar kumpulan dan memilih hasilnya..",
+      "mechanicDescription": "Tiga ronde, tiap ronde dua soal. Gambar kumpulan ditampilkan dengan kotak tanda tanya pada bagian yang belum diketahui. Siswa memilih satu dari tiga nilai. Pengecoh salah sepuluh atau salah satu. Saat bermain, terapkan Take Away: Kurangi berarti mengambil sebagian.",
+      "voiceGuide": "Mengambil. Kurangi berarti mengambil sebagian.",
       "emoji": "❓",
       "targetCount": 6
     },
@@ -1230,9 +1157,9 @@ export const SUB_B32: SubBabNaskah = {
       "gameType": "write-sentence",
       "title": "Tulis Kalimat Matematika",
       "bookReference": "hlm. 88–90 (Aktivitas 2: permen dua anak dan ayam Pak Slamet)",
-      "objective": "Memilih kalimat Matematika pengurangan yang sesuai dengan gambar kumpulan benda.",
-      "mechanicDescription": "Tiga ronde, tiap ronde dua soal. Siswa melihat gambar kumpulan, lalu memilih satu dari tiga kalimat Matematika. Pengecoh menukar hasil dengan bilangan yang diketahui atau membalik tanda.",
-      "voiceGuide": "Pilih kalimat Matematika yang sesuai.",
+      "objective": "Pakai Mengambil: Kurangi berarti mengambil sebagian. Latihan: Memilih kalimat Matematika pengurangan yang sesuai dengan gambar kumpulan benda..",
+      "mechanicDescription": "Tiga ronde, tiap ronde dua soal. Siswa melihat gambar kumpulan, lalu memilih satu dari tiga kalimat Matematika. Pengecoh menukar hasil dengan bilangan yang diketahui atau membalik tanda. Saat bermain, terapkan Take Away: Kurangi berarti mengambil sebagian.",
+      "voiceGuide": "Mengambil. Kurangi berarti mengambil sebagian.",
       "emoji": "✍️",
       "targetCount": 6
     },
@@ -1241,9 +1168,9 @@ export const SUB_B32: SubBabNaskah = {
       "gameType": "match-picture-sentence",
       "title": "Jodohkan Gambar dan Kalimat",
       "bookReference": "hlm. 88–90 (Aktivitas 2: permen dua anak dan ayam Pak Slamet)",
-      "objective": "Menjodohkan gambar kumpulan benda dengan kalimat Matematikanya.",
-      "mechanicDescription": "Tiga ronde, tiap ronde tiga gambar dan tiga kalimat Matematika. Siswa mengetuk gambar, lalu mengetuk kalimat yang cocok.",
-      "voiceGuide": "Ketuk gambar, lalu ketuk kalimatnya.",
+      "objective": "Pakai Mengambil: Kurangi berarti mengambil sebagian. Latihan: Menjodohkan gambar kumpulan benda dengan kalimat Matematikanya..",
+      "mechanicDescription": "Tiga ronde, tiap ronde tiga gambar dan tiga kalimat Matematika. Siswa mengetuk gambar, lalu mengetuk kalimat yang cocok. Saat bermain, terapkan Take Away: Kurangi berarti mengambil sebagian.",
+      "voiceGuide": "Mengambil. Kurangi berarti mengambil sebagian.",
       "emoji": "🔗",
       "targetCount": 9
     },
@@ -1252,9 +1179,9 @@ export const SUB_B32: SubBabNaskah = {
       "gameType": "memory-picture-value",
       "title": "Memori Gambar dan Nilai",
       "bookReference": "hlm. 88–90 (Aktivitas 2: permen dua anak dan ayam Pak Slamet)",
-      "objective": "Mencocokkan gambar kumpulan benda dengan nilai yang belum diketahui lewat permainan memori.",
-      "mechanicDescription": "Tiga ronde, tiap ronde delapan kartu tertutup (empat pasang): gambar kumpulan dan nilainya. Siswa membalik dua kartu dan mencari pasangannya.",
-      "voiceGuide": "Balik dua kartu, cari gambar dan nilainya.",
+      "objective": "Mencocokkan gambar kumpulan benda dengan nilai yang belum diketahui lewat permainan memori.. Ingat Mengambil.",
+      "mechanicDescription": "Tiga ronde, tiap ronde delapan kartu tertutup (empat pasang): gambar kumpulan dan nilainya. Siswa membalik dua kartu dan mencari pasangannya. Gunakan Mengambil.",
+      "voiceGuide": "Mengambil. Balik dua kartu, cari gambar dan nilainya.",
       "emoji": "🃏",
       "targetCount": 12
     },
@@ -1263,9 +1190,9 @@ export const SUB_B32: SubBabNaskah = {
       "gameType": "tap-picture-value",
       "title": "Ketuk Gambar dengan Nilai",
       "bookReference": "hlm. 88–90 (Aktivitas 2: permen dua anak dan ayam Pak Slamet)",
-      "objective": "Menemukan gambar yang nilai belum diketahuinya sama dengan bilangan yang diminta.",
-      "mechanicDescription": "Tiga ronde, tiap ronde tiga gambar dan dua pertanyaan. Siswa mengetuk gambar yang nilai belum diketahuinya sama dengan bilangan yang disebut.",
-      "voiceGuide": "Ketuk gambar dengan nilai itu.",
+      "objective": "Menemukan gambar yang nilai belum diketahuinya sama dengan bilangan yang diminta.. Ingat Mengambil.",
+      "mechanicDescription": "Tiga ronde, tiap ronde tiga gambar dan dua pertanyaan. Siswa mengetuk gambar yang nilai belum diketahuinya sama dengan bilangan yang disebut. Gunakan Mengambil.",
+      "voiceGuide": "Mengambil. Ketuk gambar dengan nilai itu.",
       "emoji": "👆",
       "targetCount": 6
     },
@@ -1274,9 +1201,9 @@ export const SUB_B32: SubBabNaskah = {
       "gameType": "tap-all-value-compare",
       "title": "Ketuk Semua Nilai Lebih atau Kurang",
       "bookReference": "hlm. 88–90 (Aktivitas 2: permen dua anak dan ayam Pak Slamet)",
-      "objective": "Menemukan semua gambar yang nilai belum diketahuinya lebih atau kurang dari bilangan acuan.",
-      "mechanicDescription": "Tiga ronde, tiap ronde empat gambar dan satu perintah. Siswa mengetuk semua yang cocok, lalu menekan Periksa.",
-      "voiceGuide": "Ketuk semua yang cocok, lalu periksa.",
+      "objective": "Menemukan semua gambar yang nilai belum diketahuinya lebih atau kurang dari bilangan acuan.. Ingat Mengambil.",
+      "mechanicDescription": "Tiga ronde, tiap ronde empat gambar dan satu perintah. Siswa mengetuk semua yang cocok, lalu menekan Periksa. Gunakan Mengambil.",
+      "voiceGuide": "Mengambil. Ketuk semua yang cocok, lalu periksa.",
       "emoji": "✔️",
       "targetCount": 3
     },
@@ -1285,9 +1212,9 @@ export const SUB_B32: SubBabNaskah = {
       "gameType": "story-sentence",
       "title": "Cerita Kalimat Matematika",
       "bookReference": "hlm. 90–95 (Pengamatan 1 dan 2: ayam Pak Slamet)",
-      "objective": "Menyelesaikan cerita pengurangan dengan bilangan yang belum diketahui dan gambar kumpulan benda.",
-      "mechanicDescription": "Tiga ronde, tiap ronde dua cerita. Siswa membaca cerita, melihat gambar kumpulan, lalu memilih nilai yang belum diketahui.",
-      "voiceGuide": "Baca cerita, lalu pilih nilainya.",
+      "objective": "Menyelesaikan cerita pengurangan dengan bilangan yang belum diketahui dan gambar kumpulan benda.. Ingat Mengambil.",
+      "mechanicDescription": "Tiga ronde, tiap ronde dua cerita. Siswa membaca cerita, melihat gambar kumpulan, lalu memilih nilai yang belum diketahui. Gunakan Mengambil.",
+      "voiceGuide": "Mengambil. Baca cerita, lalu pilih nilainya.",
       "emoji": "📖",
       "targetCount": 6
     },
@@ -1296,9 +1223,9 @@ export const SUB_B32: SubBabNaskah = {
       "gameType": "board-value-collection",
       "title": "Papan Nilai Kumpulan",
       "bookReference": "hlm. 88–90 (Aktivitas 2: permen dua anak dan ayam Pak Slamet)",
-      "objective": "Menulis nilai yang belum diketahui pada papan puluhan dan satuan.",
-      "mechanicDescription": "Tiga ronde, tiap ronde dua soal. Siswa menghitung nilai yang belum diketahui dari gambar kumpulan, lalu mengatur angka puluhan dan satuan pada papan dan menekan Periksa.",
-      "voiceGuide": "Isi papan dengan nilainya.",
+      "objective": "Menulis nilai yang belum diketahui pada papan puluhan dan satuan.. Ingat Mengambil.",
+      "mechanicDescription": "Tiga ronde, tiap ronde dua soal. Siswa menghitung nilai yang belum diketahui dari gambar kumpulan, lalu mengatur angka puluhan dan satuan pada papan dan menekan Periksa. Gunakan Mengambil.",
+      "voiceGuide": "Mengambil. Isi papan dengan nilainya.",
       "emoji": "🗂️",
       "targetCount": 6
     },
@@ -1307,9 +1234,9 @@ export const SUB_B32: SubBabNaskah = {
       "gameType": "order-picture-value",
       "title": "Urutkan Gambar menurut Nilai",
       "bookReference": "hlm. 88–90 (Aktivitas 2: permen dua anak dan ayam Pak Slamet)",
-      "objective": "Mengurutkan tiga gambar menurut nilai yang belum diketahuinya.",
-      "mechanicDescription": "Tiga ronde, tiap ronde tiga gambar bertanda huruf. Siswa mengetuk gambar satu per satu dari nilai paling kecil atau paling besar.",
-      "voiceGuide": "Ketuk gambar menurut nilainya.",
+      "objective": "Mengurutkan tiga gambar menurut nilai yang belum diketahuinya.. Ingat Mengambil.",
+      "mechanicDescription": "Tiga ronde, tiap ronde tiga gambar bertanda huruf. Siswa mengetuk gambar satu per satu dari nilai paling kecil atau paling besar. Gunakan Mengambil.",
+      "voiceGuide": "Mengambil. Ketuk gambar menurut nilainya.",
       "emoji": "📶",
       "targetCount": 9
     },
@@ -1318,9 +1245,9 @@ export const SUB_B32: SubBabNaskah = {
       "gameType": "count-bar",
       "title": "Hitung Bagan",
       "bookReference": "hlm. 88–90 (Aktivitas 2: permen dua anak dan ayam Pak Slamet)",
-      "objective": "Menghitung nilai yang belum diketahui dari bagan bagian dan keseluruhan. (METODE LUAR · Mengambil)",
-      "mechanicDescription": "Tiga ronde, tiap ronde dua soal. Bagan batang menampilkan keseluruhan dan dua bagian, salah satunya bertanda tanya. Siswa memilih satu dari tiga nilai.",
-      "voiceGuide": "METODE LUAR · Mengambil. Pilih nilai pada bagan.",
+      "objective": "Pakai Selisih Banding: Berapa lebih banyak/sedikit. Latihan: Menghitung nilai yang belum diketahui dari bagan bagian dan keseluruhan..",
+      "mechanicDescription": "Tiga ronde, tiap ronde dua soal. Bagan batang menampilkan keseluruhan dan dua bagian, salah satunya bertanda tanya. Siswa memilih satu dari tiga nilai. Saat bermain, terapkan Comparison Difference: Berapa lebih banyak/sedikit.",
+      "voiceGuide": "Selisih Banding. Berapa lebih banyak/sedikit.",
       "diagramType": "bar-count",
       "numberA": 2,
       "numberB": 3
@@ -1330,9 +1257,9 @@ export const SUB_B32: SubBabNaskah = {
       "gameType": "complete-sentence-bar",
       "title": "Lengkapi Kalimat dari Bagan",
       "bookReference": "hlm. 92 dan 95 (Contoh: 32 − … = 15 dan … − 12 = 26)",
-      "objective": "Melengkapi langkah mencari nilai yang belum diketahui: kurangi atau tambahkan sesuai letak bilangan yang belum diketahui, mengisi kalimat, lalu memeriksa.",
-      "mechanicDescription": "Tiga soal, tiap soal tiga kalimat, misalnya cari dengan operasi kebalikan, isi kalimat Matematika, lalu periksa. Siswa memilih satu dari tiga angka untuk bagian kosong.",
-      "voiceGuide": "Pilih angka untuk bagian kosong.",
+      "objective": "Pakai Selisih Banding: Berapa lebih banyak/sedikit. Latihan: Melengkapi langkah mencari nilai yang belum diketahui: kurangi atau tambahkan sesuai letak bilangan yang belum diketahui, mengisi kalimat, lalu memeriksa..",
+      "mechanicDescription": "Tiga soal, tiap soal tiga kalimat, misalnya cari dengan operasi kebalikan, isi kalimat Matematika, lalu periksa. Siswa memilih satu dari tiga angka untuk bagian kosong. Saat bermain, terapkan Comparison Difference: Berapa lebih banyak/sedikit.",
+      "voiceGuide": "Selisih Banding. Berapa lebih banyak/sedikit.",
       "diagramType": "bar-sentence",
       "numberA": 3,
       "numberB": 3
@@ -1342,9 +1269,9 @@ export const SUB_B32: SubBabNaskah = {
       "gameType": "match-bar-sentence",
       "title": "Jodohkan Bagan dan Kalimat",
       "bookReference": "hlm. 88–90 (Aktivitas 2: permen dua anak dan ayam Pak Slamet)",
-      "objective": "Menjodohkan bagan dengan kalimat Matematikanya.",
-      "mechanicDescription": "Tiga ronde, tiap ronde tiga bagan dan tiga kalimat Matematika. Siswa mengetuk bagan, lalu mengetuk kalimat yang cocok.",
-      "voiceGuide": "Ketuk bagan, lalu ketuk kalimatnya.",
+      "objective": "Pakai Selisih Banding: Berapa lebih banyak/sedikit. Latihan: Menjodohkan bagan dengan kalimat Matematikanya..",
+      "mechanicDescription": "Tiga ronde, tiap ronde tiga bagan dan tiga kalimat Matematika. Siswa mengetuk bagan, lalu mengetuk kalimat yang cocok. Saat bermain, terapkan Comparison Difference: Berapa lebih banyak/sedikit.",
+      "voiceGuide": "Selisih Banding. Berapa lebih banyak/sedikit.",
       "diagramType": "bar-match",
       "numberA": 3,
       "numberB": 3
@@ -1354,9 +1281,9 @@ export const SUB_B32: SubBabNaskah = {
       "gameType": "memory-bar-value",
       "title": "Memori Bagan dan Nilai",
       "bookReference": "hlm. 88–90 (Aktivitas 2: permen dua anak dan ayam Pak Slamet)",
-      "objective": "Mencocokkan bagan dengan nilai yang belum diketahui lewat permainan memori.",
-      "mechanicDescription": "Tiga ronde, tiap ronde delapan kartu tertutup (empat pasang). Siswa membalik dua kartu dan mencari pasangannya.",
-      "voiceGuide": "Balik dua kartu, cari bagan dan nilainya.",
+      "objective": "Pakai Selisih Banding: Berapa lebih banyak/sedikit. Latihan: Mencocokkan bagan dengan nilai yang belum diketahui lewat permainan memori..",
+      "mechanicDescription": "Tiga ronde, tiap ronde delapan kartu tertutup (empat pasang). Siswa membalik dua kartu dan mencari pasangannya. Saat bermain, terapkan Comparison Difference: Berapa lebih banyak/sedikit.",
+      "voiceGuide": "Selisih Banding. Berapa lebih banyak/sedikit.",
       "diagramType": "bar-memory",
       "numberA": 3,
       "numberB": 4
@@ -1366,9 +1293,9 @@ export const SUB_B32: SubBabNaskah = {
       "gameType": "fill-sentence-table",
       "title": "Isi Tabel Kalimat Matematika",
       "bookReference": "hlm. 92 dan 95 (Contoh: 32 − … = 15 dan … − 12 = 26)",
-      "objective": "Melengkapi tabel kalimat Matematika dan nilai yang belum diketahui.",
-      "mechanicDescription": "Tiga tabel dengan empat baris. Siswa mengetuk baris, lalu mengetuk kartu nilai yang tepat. Ada satu kartu pengecoh.",
-      "voiceGuide": "Isi tabel dengan kartu nilai.",
+      "objective": "Melengkapi tabel kalimat Matematika dan nilai yang belum diketahui.. Ingat Selisih Banding.",
+      "mechanicDescription": "Tiga tabel dengan empat baris. Siswa mengetuk baris, lalu mengetuk kartu nilai yang tepat. Ada satu kartu pengecoh. Gunakan Selisih Banding.",
+      "voiceGuide": "Selisih Banding. Isi tabel dengan kartu nilai.",
       "diagramType": "sentence-table",
       "numberA": 3,
       "numberB": 4
@@ -1378,9 +1305,9 @@ export const SUB_B32: SubBabNaskah = {
       "gameType": "tap-all-bar-compare",
       "title": "Ketuk Semua Bagan Lebih atau Kurang",
       "bookReference": "hlm. 97–98 (Latihan 2)",
-      "objective": "Menemukan semua bagan yang nilai belum diketahuinya lebih atau kurang dari bilangan acuan.",
-      "mechanicDescription": "Tiga ronde, tiap ronde empat bagan dan satu perintah. Siswa mengetuk semua yang cocok, lalu menekan Periksa.",
-      "voiceGuide": "Ketuk semua yang cocok, lalu periksa.",
+      "objective": "Menemukan semua bagan yang nilai belum diketahuinya lebih atau kurang dari bilangan acuan.. Ingat Selisih Banding.",
+      "mechanicDescription": "Tiga ronde, tiap ronde empat bagan dan satu perintah. Siswa mengetuk semua yang cocok, lalu menekan Periksa. Gunakan Selisih Banding.",
+      "voiceGuide": "Selisih Banding. Ketuk semua yang cocok, lalu periksa.",
       "diagramType": "bar-select",
       "numberA": 3,
       "numberB": 4
@@ -1390,9 +1317,9 @@ export const SUB_B32: SubBabNaskah = {
       "gameType": "sort-bar-position",
       "title": "Pilah Bagan: Depan atau Tengah",
       "bookReference": "hlm. 92 dan 95 (Contoh: 32 − … = 15 dan … − 12 = 26)",
-      "objective": "Memilah bagan menjadi yang bilangan belum diketahuinya di depan dan yang di tengah kalimat.",
-      "mechanicDescription": "Tiga ronde, tiap ronde enam bagan dan dua kotak. Siswa menyeret atau mengetuk bagan ke kotak yang tepat.",
-      "voiceGuide": "Pilah bagan ke kotak yang tepat.",
+      "objective": "Memilah bagan menjadi yang bilangan belum diketahuinya di depan dan yang di tengah kalimat.. Ingat Selisih Banding.",
+      "mechanicDescription": "Tiga ronde, tiap ronde enam bagan dan dua kotak. Siswa menyeret atau mengetuk bagan ke kotak yang tepat. Gunakan Selisih Banding.",
+      "voiceGuide": "Selisih Banding. Pilah bagan ke kotak yang tepat.",
       "diagramType": "bar-sort",
       "numberA": 3,
       "numberB": 6
@@ -1402,9 +1329,9 @@ export const SUB_B32: SubBabNaskah = {
       "gameType": "order-find-steps",
       "title": "Urutkan Langkah Mencari Nilai",
       "bookReference": "hlm. 92 dan 95 (Contoh: 32 − … = 15 dan … − 12 = 26)",
-      "objective": "Mengurutkan langkah mencari nilai yang belum diketahui pada kalimat Matematika.",
-      "mechanicDescription": "Tiga ronde, tiap ronde empat langkah. Siswa mengetuk langkah satu per satu menurut urutan yang benar. Letak jawaban berpindah.",
-      "voiceGuide": "Ketuk langkah menurut urutannya.",
+      "objective": "Mengurutkan langkah mencari nilai yang belum diketahui pada kalimat Matematika.. Ingat Selisih Banding.",
+      "mechanicDescription": "Tiga ronde, tiap ronde empat langkah. Siswa mengetuk langkah satu per satu menurut urutan yang benar. Letak jawaban berpindah. Gunakan Selisih Banding.",
+      "voiceGuide": "Selisih Banding. Ketuk langkah menurut urutannya.",
       "diagramType": "steps-order",
       "numberA": 3,
       "numberB": 4
@@ -1414,9 +1341,9 @@ export const SUB_B32: SubBabNaskah = {
       "gameType": "board-value-bar",
       "title": "Papan Nilai dari Bagan",
       "bookReference": "hlm. 97–98 (Latihan 2)",
-      "objective": "Menulis nilai yang belum diketahui dari bagan pada papan puluhan dan satuan.",
-      "mechanicDescription": "Tiga ronde, tiap ronde dua soal. Siswa membaca bagan, lalu mengatur angka puluhan dan satuan pada papan dan menekan Periksa.",
-      "voiceGuide": "Isi papan dengan nilainya.",
+      "objective": "Menulis nilai yang belum diketahui dari bagan pada papan puluhan dan satuan.. Ingat Selisih Banding.",
+      "mechanicDescription": "Tiga ronde, tiap ronde dua soal. Siswa membaca bagan, lalu mengatur angka puluhan dan satuan pada papan dan menekan Periksa. Gunakan Selisih Banding.",
+      "voiceGuide": "Selisih Banding. Isi papan dengan nilainya.",
       "diagramType": "bar-board",
       "numberA": 3,
       "numberB": 2
@@ -1426,9 +1353,9 @@ export const SUB_B32: SubBabNaskah = {
       "gameType": "possible-pairs",
       "title": "Kemungkinan Pasangan Bilangan",
       "bookReference": "hlm. 96 (Ayo Berpikir: telur di pasar)",
-      "objective": "Menemukan semua pasangan bilangan yang mungkin untuk keseluruhan yang sama.",
-      "mechanicDescription": "Tiga ronde, tiap ronde empat pasangan dan satu perintah. Siswa mengetuk semua pasangan yang jumlahnya sama dengan keseluruhan, lalu menekan Periksa.",
-      "voiceGuide": "Ketuk semua pasangan yang mungkin.",
+      "objective": "Menemukan semua pasangan bilangan yang mungkin untuk keseluruhan yang sama.. Ingat Selisih Banding.",
+      "mechanicDescription": "Tiga ronde, tiap ronde empat pasangan dan satu perintah. Siswa mengetuk semua pasangan yang jumlahnya sama dengan keseluruhan, lalu menekan Periksa. Gunakan Selisih Banding.",
+      "voiceGuide": "Selisih Banding. Ketuk semua pasangan yang mungkin.",
       "diagramType": "pairs-select",
       "numberA": 3,
       "numberB": 4
@@ -1438,9 +1365,9 @@ export const SUB_B32: SubBabNaskah = {
       "gameType": "fill-unknown",
       "title": "Isi Nilai yang Belum Diketahui",
       "bookReference": "hlm. 92 dan 95 (Contoh: 32 − … = 15 dan … − 12 = 26)",
-      "objective": "Mencari nilai yang belum diketahui pada kalimat Matematika pengurangan dan memilihnya dari tiga pilihan. (METODE LUAR · Mengambil)",
-      "mechanicDescription": "Tiga ronde, tiap ronde dua soal, misalnya 80 − … = 45 dan … − 45 = 27. Pengecoh salah sepuluh atau salah satu.",
-      "voiceGuide": "METODE LUAR · Mengambil. Pilih nilai yang belum diketahui.",
+      "objective": "Pakai Model Batang Kurang: Batang utuh dikurangi bagian. Latihan: Mencari nilai yang belum diketahui pada kalimat Matematika pengurangan dan memilihnya dari tiga pilihan..",
+      "mechanicDescription": "Tiga ronde, tiap ronde dua soal, misalnya 80 − … = 45 dan … − 45 = 27. Pengecoh salah sepuluh atau salah satu. Saat bermain, terapkan Bar Model Subtract: Batang utuh dikurangi bagian.",
+      "voiceGuide": "Model Batang Kurang. Batang utuh dikurangi bagian.",
       "symbolLarge": "?",
       "wordLarge": "ISI NILAI",
       "mathNotation": "nilai yang belum diketahui"
@@ -1450,9 +1377,9 @@ export const SUB_B32: SubBabNaskah = {
       "gameType": "board-value",
       "title": "Papan Nilai",
       "bookReference": "hlm. 97–98 (Latihan 2)",
-      "objective": "Menulis nilai yang belum diketahui pada papan puluhan dan satuan.",
-      "mechanicDescription": "Tiga ronde, tiap ronde dua soal. Siswa mengatur angka puluhan dan satuan lalu menekan Periksa.",
-      "voiceGuide": "Isi papan dengan nilainya.",
+      "objective": "Pakai Model Batang Kurang: Batang utuh dikurangi bagian. Latihan: Menulis nilai yang belum diketahui pada papan puluhan dan satuan..",
+      "mechanicDescription": "Tiga ronde, tiap ronde dua soal. Siswa mengatur angka puluhan dan satuan lalu menekan Periksa. Saat bermain, terapkan Bar Model Subtract: Batang utuh dikurangi bagian.",
+      "voiceGuide": "Model Batang Kurang. Batang utuh dikurangi bagian.",
       "symbolLarge": "…",
       "wordLarge": "PAPAN",
       "mathNotation": "puluhan • satuan"
@@ -1462,9 +1389,9 @@ export const SUB_B32: SubBabNaskah = {
       "gameType": "solve-steps",
       "title": "Langkah Menyelesaikan",
       "bookReference": "hlm. 92 dan 95 (Contoh: 32 − … = 15 dan … − 12 = 26)",
-      "objective": "Melengkapi langkah mencari nilai, mengisi kalimat, dan memeriksa hasilnya.",
-      "mechanicDescription": "Tiga soal, tiap soal tiga kalimat, misalnya cari dengan operasi kebalikan. Siswa memilih satu dari tiga angka.",
-      "voiceGuide": "Pilih angka untuk bagian kosong.",
+      "objective": "Pakai Model Batang Kurang: Batang utuh dikurangi bagian. Latihan: Melengkapi langkah mencari nilai, mengisi kalimat, dan memeriksa hasilnya..",
+      "mechanicDescription": "Tiga soal, tiap soal tiga kalimat, misalnya cari dengan operasi kebalikan. Siswa memilih satu dari tiga angka. Saat bermain, terapkan Bar Model Subtract: Batang utuh dikurangi bagian.",
+      "voiceGuide": "Model Batang Kurang. Batang utuh dikurangi bagian.",
       "symbolLarge": "→",
       "wordLarge": "LANGKAH",
       "mathNotation": "cari • isi • periksa"
@@ -1474,9 +1401,9 @@ export const SUB_B32: SubBabNaskah = {
       "gameType": "match-sentence-value",
       "title": "Jodohkan Kalimat dan Nilai",
       "bookReference": "hlm. 97–98 (Latihan 2)",
-      "objective": "Menjodohkan kalimat Matematika dengan nilai yang belum diketahuinya.",
-      "mechanicDescription": "Tiga ronde, tiap ronde tiga kalimat dan tiga nilai. Siswa mengetuk kalimat, lalu mengetuk nilai yang cocok.",
-      "voiceGuide": "Ketuk kalimat, lalu ketuk nilainya.",
+      "objective": "Pakai Model Batang Kurang: Batang utuh dikurangi bagian. Latihan: Menjodohkan kalimat Matematika dengan nilai yang belum diketahuinya..",
+      "mechanicDescription": "Tiga ronde, tiap ronde tiga kalimat dan tiga nilai. Siswa mengetuk kalimat, lalu mengetuk nilai yang cocok. Saat bermain, terapkan Bar Model Subtract: Batang utuh dikurangi bagian.",
+      "voiceGuide": "Model Batang Kurang. Batang utuh dikurangi bagian.",
       "symbolLarge": "= …",
       "wordLarge": "JODOHKAN",
       "mathNotation": "kalimat • nilai"
@@ -1486,9 +1413,9 @@ export const SUB_B32: SubBabNaskah = {
       "gameType": "memory-sentence-value",
       "title": "Memori Kalimat dan Nilai",
       "bookReference": "hlm. 97–98 (Latihan 2)",
-      "objective": "Mencocokkan kalimat Matematika dengan nilainya lewat permainan memori.",
-      "mechanicDescription": "Tiga ronde, tiap ronde delapan kartu tertutup (empat pasang): kalimat dan nilai. Siswa membalik dua kartu dan mencari pasangannya.",
-      "voiceGuide": "Balik dua kartu, cari kalimat dan nilainya.",
+      "objective": "Mencocokkan kalimat Matematika dengan nilainya lewat permainan memori.. Ingat Model Batang Kurang.",
+      "mechanicDescription": "Tiga ronde, tiap ronde delapan kartu tertutup (empat pasang): kalimat dan nilai. Siswa membalik dua kartu dan mencari pasangannya. Gunakan Model Batang Kurang.",
+      "voiceGuide": "Model Batang Kurang. Balik dua kartu, cari kalimat dan nilainya.",
       "symbolLarge": "= ?",
       "wordLarge": "MEMORI",
       "mathNotation": "kalimat • nilai"
@@ -1498,9 +1425,9 @@ export const SUB_B32: SubBabNaskah = {
       "gameType": "true-false-sentence",
       "title": "Benar atau Salah: Kalimat Matematika",
       "bookReference": "hlm. 92 dan 95 (Contoh: 32 − … = 15 dan … − 12 = 26)",
-      "objective": "Menilai pernyataan tentang kalimat Matematika dan cara mencari nilainya.",
-      "mechanicDescription": "Dua ronde, tiap ronde lima pernyataan. Siswa memilih Benar atau Salah. Tiap jawaban diberi penjelasan.",
-      "voiceGuide": "Baca pernyataan, lalu pilih benar atau salah.",
+      "objective": "Menilai pernyataan tentang kalimat Matematika dan cara mencari nilainya.. Ingat Model Batang Kurang.",
+      "mechanicDescription": "Dua ronde, tiap ronde lima pernyataan. Siswa memilih Benar atau Salah. Tiap jawaban diberi penjelasan. Gunakan Model Batang Kurang.",
+      "voiceGuide": "Model Batang Kurang. Baca pernyataan, lalu pilih benar atau salah.",
       "symbolLarge": "✓ ✗",
       "wordLarge": "BENAR SALAH",
       "mathNotation": "periksa dengan alasan"
@@ -1510,9 +1437,9 @@ export const SUB_B32: SubBabNaskah = {
       "gameType": "detective-sentence",
       "title": "Detektif Kalimat Matematika",
       "bookReference": "hlm. 92 dan 95 (Contoh: 32 − … = 15 dan … − 12 = 26)",
-      "objective": "Menemukan bilangan yang belum diketahui dari dua petunjuk.",
-      "mechanicDescription": "Empat soal. Siswa membaca petunjuk seperti nilai pada sebuah kalimat Matematika dan satu ciri bilangan, lalu memilih satu dari tiga bilangan. Hanya satu yang cocok.",
-      "voiceGuide": "Baca petunjuk, lalu pilih bilangannya.",
+      "objective": "Menemukan bilangan yang belum diketahui dari dua petunjuk.. Ingat Model Batang Kurang.",
+      "mechanicDescription": "Empat soal. Siswa membaca petunjuk seperti nilai pada sebuah kalimat Matematika dan satu ciri bilangan, lalu memilih satu dari tiga bilangan. Hanya satu yang cocok. Gunakan Model Batang Kurang.",
+      "voiceGuide": "Model Batang Kurang. Baca petunjuk, lalu pilih bilangannya.",
       "symbolLarge": "?",
       "wordLarge": "DETEKTIF",
       "mathNotation": "dua petunjuk, satu jawaban"
@@ -1522,9 +1449,9 @@ export const SUB_B32: SubBabNaskah = {
       "gameType": "concept-map-sentence",
       "title": "Peta Konsep Kalimat Matematika",
       "bookReference": "hlm. 76 (peta konsep: kalimat Matematika)",
-      "objective": "Melengkapi peta konsep kalimat Matematika pengurangan dan cara mencari nilainya.",
-      "mechanicDescription": "Dua peta konsep, tiap peta empat kotak. Siswa memilih kartu yang tepat untuk kotak yang menyala.",
-      "voiceGuide": "Pilih kartu yang tepat untuk kotak yang menyala.",
+      "objective": "Melengkapi peta konsep kalimat Matematika pengurangan dan cara mencari nilainya.. Ingat Model Batang Kurang.",
+      "mechanicDescription": "Dua peta konsep, tiap peta empat kotak. Siswa memilih kartu yang tepat untuk kotak yang menyala. Gunakan Model Batang Kurang.",
+      "voiceGuide": "Model Batang Kurang. Pilih kartu yang tepat untuk kotak yang menyala.",
       "symbolLarge": "⇄",
       "wordLarge": "PETA KONSEP",
       "mathNotation": "kalimat • nilai • cari"
@@ -1534,9 +1461,9 @@ export const SUB_B32: SubBabNaskah = {
       "gameType": "story-sentence-abstract",
       "title": "Soal Cerita Kalimat Matematika",
       "bookReference": "hlm. 97–98 (Latihan 2)",
-      "objective": "Menyelesaikan soal cerita pengurangan dengan bilangan yang belum diketahui.",
-      "mechanicDescription": "Tiga ronde, tiap ronde dua cerita. Siswa membaca cerita lalu memilih satu dari tiga nilai. Pengecoh salah sepuluh atau salah satu.",
-      "voiceGuide": "Baca cerita, lalu pilih nilainya.",
+      "objective": "Menyelesaikan soal cerita pengurangan dengan bilangan yang belum diketahui.. Ingat Model Batang Kurang.",
+      "mechanicDescription": "Tiga ronde, tiap ronde dua cerita. Siswa membaca cerita lalu memilih satu dari tiga nilai. Pengecoh salah sepuluh atau salah satu. Gunakan Model Batang Kurang.",
+      "voiceGuide": "Model Batang Kurang. Baca cerita, lalu pilih nilainya.",
       "symbolLarge": "…",
       "wordLarge": "CERITA",
       "mathNotation": "nilai yang belum diketahui"
@@ -1546,9 +1473,9 @@ export const SUB_B32: SubBabNaskah = {
       "gameType": "sentence-words",
       "title": "Susun Kata Kalimat Matematika",
       "bookReference": "hlm. 90–95 (Pengamatan 1 dan 2: ayam Pak Slamet)",
-      "objective": "Menyusun kalimat tentang kalimat Matematika dari kartu kata.",
-      "mechanicDescription": "Empat kalimat. Siswa mengetuk kartu kata satu per satu menurut urutan kalimat yang benar. Ada satu kartu pengecoh.",
-      "voiceGuide": "Susun kartu kata menjadi kalimat.",
+      "objective": "Menyusun kalimat tentang kalimat Matematika dari kartu kata.. Ingat Model Batang Kurang.",
+      "mechanicDescription": "Empat kalimat. Siswa mengetuk kartu kata satu per satu menurut urutan kalimat yang benar. Ada satu kartu pengecoh. Gunakan Model Batang Kurang.",
+      "voiceGuide": "Model Batang Kurang. Susun kartu kata menjadi kalimat.",
       "symbolLarge": "…",
       "wordLarge": "SUSUN KATA",
       "mathNotation": "kalimat Matematika"
@@ -1568,43 +1495,25 @@ export const SUB_B32: SubBabNaskah = {
       "suara": "Bila bilangan yang dikurangkan belum diketahui, kurangi bilangan awal dengan sisanya."
     },
     {
-      "ikon": "➕",
-      "nama": "Mencari bilangan awal",
-      "isi": "45 + 27 = 72",
-      "suara": "Bila bilangan awal belum diketahui, tambahkan bilangan yang dikurangkan dengan sisanya."
-    },
-    {
-      "ikon": "✅",
-      "nama": "Periksa",
-      "isi": "72 − 45 = 27",
-      "suara": "Periksa jawabanmu dengan mengurangkan lagi. Hasilnya harus sama dengan sisa semula."
-    },
-    {
-      "ikon": "🔀",
-      "nama": "Banyak kemungkinan",
-      "isi": "45 + 55, 60 + 40",
-      "suara": "Bila hanya bilangan awal yang diketahui, ada banyak pasangan terjual dan sisa yang mungkin."
-    },
-    {
       "ikon": "🌍",
       "nama": "Mengambil",
-      "isi": "METODE LUAR · Take Away: Kurangi berarti mengambil sebagian. (asal: Subtraction meanings).",
-      "suara": "METODE LUAR. Mengambil. Kurangi berarti mengambil sebagian."
+      "isi": "Kurangi berarti mengambil sebagian.",
+      "suara": "Mengambil. Kurangi berarti mengambil sebagian."
     },
     {
       "ikon": "🌍",
       "nama": "Selisih Banding",
-      "isi": "METODE LUAR · Comparison Difference: Berapa lebih banyak/sedikit. (asal: Van de Walle).",
-      "suara": "METODE LUAR. Selisih Banding. Berapa lebih banyak/sedikit."
+      "isi": "Berapa lebih banyak/sedikit.",
+      "suara": "Selisih Banding. Berapa lebih banyak/sedikit."
     },
     {
       "ikon": "🌍",
       "nama": "Model Batang Kurang",
-      "isi": "METODE LUAR · Bar Model Subtract: Batang utuh dikurangi bagian. (asal: Singapore bar model).",
-      "suara": "METODE LUAR. Model Batang Kurang. Batang utuh dikurangi bagian."
+      "isi": "Batang utuh dikurangi bagian.",
+      "suara": "Model Batang Kurang. Batang utuh dikurangi bagian."
     }
   ],
-  "poinSuara": "Ingat selalu! Pada kalimat Matematika pengurangan, bilangan awal dikurangi bilangan yang dikurangkan sama dengan sisa. Bila bilangan yang dikurangkan belum diketahui, kurangi bilangan awal dengan sisa. Bila bilangan awal belum diketahui, tambahkan bilangan yang dikurangkan dengan sisa. Lalu periksa.",
+  "poinSuara": "Ingat: Mengambil, Selisih Banding, Model Batang Kurang.",
   "cara": {
     "suara": "Cara mengisi. Baca kalimat Matematikanya. Lihat letak titik-titik. Kurangkan atau tambahkan. Lalu periksa dengan mengurangkan lagi.",
     "potongan": [
@@ -1626,12 +1535,11 @@ export const SUB_B32: SubBabNaskah = {
       }
     ]
   },
-  "rumah": "Ayo Mencoba di rumah: siapkan 20 kancing atau biji. Ambil sebagian dan sembunyikan di tangan, lalu tunjukkan sisanya kepada temanmu. Tulis kalimat Matematika pengurangannya dengan titik-titik, cari banyak kancing yang diambil dengan mengurangkan, lalu buka tanganmu untuk memeriksa.",
+  "rumah": "Ayo Mencoba di rumah: terapkan Mengambil pada satu benda atau soal nyata, lalu ceritakan langkahmu.",
   "refleksi": [
-    "Aku dapat menulis kalimat Matematika dari cerita pengurangan.",
-    "Aku dapat mencari bilangan yang dikurangkan dan bilangan awal.",
-    "Aku memeriksa jawabanku dengan mengurangkan lagi.",
-    "Aku dapat menyebutkan beberapa kemungkinan pasangan bilangan."
+    "Bagaimana Mengambil membantumu memahami soal?",
+    "Kapan kamu memakai Selisih Banding?",
+    "Apa bedanya dengan hanya menghafal rumus atau langkah tanpa arti?"
   ],
   "metodeLuar": [
     {

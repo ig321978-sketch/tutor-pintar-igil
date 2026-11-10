@@ -15,7 +15,7 @@
       "id": "A",
       "codeTitle": "Sub-Bab A (Cerita Penjumlahan)",
       "fullTitle": "Sub-Bab A: Cerita Penjumlahan (Menggabungkan & Bertambah)",
-      "targetDescription": "Siswa memahami penjumlahan sebagai menggabungkan dan bertambah, menulis dan membaca kalimat matematika dengan tanda + dan =, serta menjumlahkan sampai 10 dengan benda, gambar, dan simbol.",
+      "targetDescription": "Siswa memahami penjumlahan sebagai menggabungkan dan bertambah, menulis dan membaca kalimat matematika dengan tanda + dan =, serta menjumlahkan sampai 10 dengan benda, gambar, dan simbol. Memakai Menghitung Maju, Bagian–Utuh, Jumlah di Bingkai Sepuluh.",
       "secondaryBg": "#FEE2E2",
       "secondaryBorder": "#EF4444",
       "secondaryText": "#991B1B",
@@ -23,37 +23,37 @@
         {
           "id": "A2-S1",
           "titleHint": "Lompat Tali",
-          "voiceNarration": "Di halaman sekolah, empat anak bermain lompat tali. Tidak lama kemudian, datang lagi dua anak. Mereka ikut bermain. Sekarang ada enam anak. Anak yang bermain bertambah. METODE LUAR. Menghitung Maju: Mulai dari bilangan pertama lalu maju.",
+          "voiceNarration": "Di halaman sekolah, empat anak bermain lompat tali. Tidak lama kemudian, datang lagi dua anak. Mereka ikut bermain. Sekarang ada enam anak. Anak yang bermain bertambah. Kita memakai cara Menghitung Maju: Mulai dari bilangan pertama lalu maju.",
           "sceneType": "tali-datang-lagi"
         },
         {
           "id": "A2-S2",
           "titleHint": "Igil di Papan",
-          "voiceNarration": "Igil menulis cerita lompat tali di papan. Mula-mula empat anak. Datang lagi dua anak. Semuanya enam anak. Kita tulis: empat, tanda tambah, dua, tanda sama dengan, enam. Kita baca: empat ditambah dua sama dengan enam. METODE LUAR. Bagian–Utuh: Dua bagian membentuk jumlah.",
+          "voiceNarration": "Igil menulis cerita lompat tali di papan. Mula-mula empat anak. Datang lagi dua anak. Semuanya enam anak. Kita tulis: empat, tanda tambah, dua, tanda sama dengan, enam. Kita baca: empat ditambah dua sama dengan enam. Kita memakai cara Bagian–Utuh: Dua bagian membentuk jumlah.",
           "sceneType": "papan-kalimat"
         },
         {
           "id": "A2-S3",
           "titleHint": "Pensil Digabung",
-          "voiceNarration": "Kira punya tiga pensil merah. Upe punya empat pensil biru. Mereka menggabungkan semua pensil ke satu kotak. Sekarang ada tujuh pensil. Menjumlahkan artinya menggabungkan. METODE LUAR. Jumlah di Bingkai Sepuluh: Gabungkan benda di bingkai.",
+          "voiceNarration": "Kira punya tiga pensil merah. Upe punya empat pensil biru. Mereka menggabungkan semua pensil ke satu kotak. Sekarang ada tujuh pensil. Menjumlahkan artinya menggabungkan. Kita memakai cara Jumlah di Bingkai Sepuluh: Gabungkan benda di bingkai.",
           "sceneType": "pensil-digabung"
         },
         {
           "id": "A2-S4",
           "titleHint": "Mobil Mainan",
-          "voiceNarration": "Malosi bermain mobil mainan di atas karpet. Ada empat mobil kuning dan empat mobil merah. Empat ditambah empat sama dengan delapan. Semuanya ada delapan mobil. METODE LUAR. Menghitung Maju: Mulai dari bilangan pertama lalu maju.",
+          "voiceNarration": "Malosi bermain mobil mainan di atas karpet. Ada empat mobil kuning dan empat mobil merah. Empat ditambah empat sama dengan delapan. Semuanya ada delapan mobil. Kita memakai cara Menghitung Maju: Mulai dari bilangan pertama lalu maju.",
           "sceneType": "mobil-mainan"
         },
         {
           "id": "A2-S5",
           "titleHint": "Bebek di Kolam",
-          "voiceNarration": "Di kolam ada lima bebek yang sedang berenang. Lalu datang lagi dua bebek. Lima ditambah dua sama dengan tujuh. Sekarang ada tujuh bebek di kolam. METODE LUAR. Bagian–Utuh: Dua bagian membentuk jumlah.",
+          "voiceNarration": "Di kolam ada lima bebek yang sedang berenang. Lalu datang lagi dua bebek. Lima ditambah dua sama dengan tujuh. Sekarang ada tujuh bebek di kolam. Kita memakai cara Bagian–Utuh: Dua bagian membentuk jumlah.",
           "sceneType": "bebek-kolam"
         },
         {
           "id": "A2-S6",
           "titleHint": "Ayo Bermain",
-          "voiceNarration": "Ayo bermain! Upe menaruh lima kelereng di satu piring. Wei menaruh tiga kelereng di piring yang lain. Berapa jumlah semua kelereng? Lima ditambah tiga sama dengan delapan. METODE LUAR. Jumlah di Bingkai Sepuluh: Gabungkan benda di bingkai.",
+          "voiceNarration": "Ayo bermain! Upe menaruh lima kelereng di satu piring. Wei menaruh tiga kelereng di piring yang lain. Berapa jumlah semua kelereng? Lima ditambah tiga sama dengan delapan. Kita memakai cara Jumlah di Bingkai Sepuluh: Gabungkan benda di bingkai.",
           "sceneType": "dua-piring-kelereng"
         }
       ],
@@ -76,31 +76,31 @@
         },
         {
           "stepNumber": 3,
-          "stepTitle": "3. Hitung Semuanya",
-          "stepDesc": "Hitung semua benda yang sudah bersama. Hasilnya ditulis setelah tanda sama dengan. Empat anak ditambah dua anak, semuanya enam anak.",
+          "stepTitle": "3. Counting On",
+          "stepDesc": "Mulai dari bilangan pertama lalu maju.",
           "icon": "🔢",
           "flowFrom": "Semua benda bersama",
           "flowTo": "Hasil setelah tanda sama dengan (=)"
         },
         {
           "stepNumber": 4,
-          "stepTitle": "4. Tulis dan Baca",
-          "stepDesc": "Tulis kalimat matematika: empat tambah dua sama dengan enam. Lalu baca: empat ditambah dua sama dengan enam.",
+          "stepTitle": "4. Part–Part–Whole",
+          "stepDesc": "Dua bagian membentuk jumlah.",
           "icon": "📝",
           "flowFrom": "4 + 2 = 6",
           "flowTo": "5"
         },
         {
           "stepNumber": 5,
-          "stepTitle": "5. METODE LUAR · Menghitung Maju",
-          "stepDesc": "Mulai dari bilangan pertama lalu maju.",
+          "stepTitle": "5. Ten Frame Add",
+          "stepDesc": "Gabungkan benda di bingkai.",
           "icon": "🌍",
           "flowFrom": "4",
           "flowTo": "6"
         },
         {
           "stepNumber": 6,
-          "stepTitle": "6. METODE LUAR · Bagian–Utuh",
+          "stepTitle": "6.",
           "stepDesc": "Dua bagian membentuk jumlah.",
           "icon": "🌍",
           "flowFrom": "5",
@@ -170,25 +170,25 @@
           "title": "Teman Datang Lagi (4 + 2 = 6)",
           "emoji": "🧒",
           "targetCount": 6,
-          "voiceGuide": "Ketuk dua teman yang menunggu supaya ikut bermain, lalu ucapkan berapa semua anak."
+          "voiceGuide": "Menghitung Maju. Ketuk dua teman yang menunggu supaya ikut bermain, lalu ucapkan berapa semua anak."
         },
         {
           "title": "Kotak Pensil Kira (3 + 4 = 7)",
           "emoji": "✏️",
           "targetCount": 7,
-          "voiceGuide": "Seret semua pensil ke kotak pensil, lalu ucapkan berapa semua pensil."
+          "voiceGuide": "Bagian–Utuh. Seret semua pensil ke kotak pensil, lalu ucapkan berapa semua pensil."
         },
         {
           "title": "Lengkapi Cerita (4 + 4 = 8 dan 3 + 5 = 8)",
           "emoji": "🚗",
           "targetCount": 8,
-          "voiceGuide": "Hitung bendanya, isi kotak kosong pada cerita, lalu ucapkan berapa semuanya."
+          "voiceGuide": "Jumlah di Bingkai Sepuluh. Hitung bendanya, isi kotak kosong pada cerita, lalu ucapkan berapa semuanya."
         },
         {
           "title": "Tebak Dua Piring (5 + 3 = 8 dan 4 + 5 = 9)",
           "emoji": "🔵",
           "targetCount": 9,
-          "voiceGuide": "Tebak jumlah kelereng, buka kain, hitung, lalu ucapkan jumlahnya."
+          "voiceGuide": "Menghitung Maju. Tebak jumlah kelereng, buka kain, hitung, lalu ucapkan jumlahnya."
         }
       ],
       "pictorialSlides": [
@@ -197,21 +197,21 @@
           "diagramType": "ten-frame",
           "numberA": 4,
           "numberB": 2,
-          "caption": "Titik merah untuk yang sudah ada, kotak biru untuk yang datang lagi."
+          "caption": "Pakai Menghitung Maju. Titik merah untuk yang sudah ada, kotak biru untuk yang datang lagi."
         },
         {
           "title": "Goresan Tally (2 + 3, 4 + 3, 5 + 4)",
           "diagramType": "tally",
           "numberA": 4,
           "numberB": 3,
-          "caption": "Gambar goresan tiap kelompok, empat tegak dan kelima mencoret miring."
+          "caption": "Pakai Bagian–Utuh. Gambar goresan tiap kelompok, empat tegak dan kelima mencoret miring."
         },
         {
           "title": "Jodohkan Diagram dan Kalimat (6 + 3, 4 + 3, 5 + 3)",
           "diagramType": "bar-blocks",
           "numberA": 5,
           "numberB": 3,
-          "caption": "Jodohkan tiap diagram dengan kalimat penjumlahan yang cocok."
+          "caption": "Pakai Jumlah di Bingkai Sepuluh. Jodohkan tiap diagram dengan kalimat penjumlahan yang cocok."
         }
       ],
       "abstractSlides": [
@@ -219,19 +219,19 @@
           "symbolLarge": "4 + 2 = 6",
           "wordLarge": "TANDA TAMBAH (+) DAN SAMA DENGAN (=)",
           "mathNotation": "4 + 2 = 6   |   5 + 3 = 8",
-          "voiceReadout": "Empat ditambah dua sama dengan enam. Lima ditambah tiga sama dengan delapan."
+          "voiceReadout": "Menghitung Maju. Empat ditambah dua sama dengan enam. Lima ditambah tiga sama dengan delapan."
         },
         {
           "symbolLarge": "5 + 2 = ?",
           "wordLarge": "DETEKTIF ANGKA HILANG",
           "mathNotation": "5 + 2 = 7   |   3 + 4 = 7   |   6 + 3 = 9",
-          "voiceReadout": "Lima ditambah dua sama dengan tujuh. Tiga ditambah empat sama dengan tujuh. Enam ditambah tiga sama dengan sembilan."
+          "voiceReadout": "Bagian–Utuh. Lima ditambah dua sama dengan tujuh. Tiga ditambah empat sama dengan tujuh. Enam ditambah tiga sama dengan sembilan."
         },
         {
           "symbolLarge": "5 + 3 = 8",
           "wordLarge": "TULIS DAN UCAPKAN",
           "mathNotation": "5 + 3 = 8   |   kalimatku sendiri",
-          "voiceReadout": "Lima ditambah tiga sama dengan delapan. Sekarang buat kalimat penjumlahanmu sendiri."
+          "voiceReadout": "Jumlah di Bingkai Sepuluh. Lima ditambah tiga sama dengan delapan. Sekarang buat kalimat penjumlahanmu sendiri."
         }
       ],
       "interactiveGames": [
@@ -242,9 +242,9 @@
           "gameType": "tap-to-join",
           "title": "Teman Datang Lagi",
           "bookReference": "Buku Siswa Hlm. 43–44",
-          "objective": "Memahami penjumlahan sebagai bertambahnya anak yang ikut bermain.",
-          "mechanicDescription": "Siswa mengetuk 2 anak yang menunggu supaya ikut 4 anak yang bermain lompat tali, lalu mengucapkan jumlah semuanya.",
-          "voiceGuide": "Ketuk anak yang menunggu supaya ikut bermain. Setelah semua ikut, ucapkan berapa semua anak."
+          "objective": "Pakai Menghitung Maju. Memahami penjumlahan sebagai bertambahnya anak yang ikut bermain.",
+          "mechanicDescription": "Siswa mengetuk 2 anak yang menunggu supaya ikut 4 anak yang bermain lompat tali, lalu mengucapkan jumlah semuanya. Terapkan Counting On.",
+          "voiceGuide": "Menghitung Maju. Ketuk anak yang menunggu supaya ikut bermain. Setelah semua ikut, ucapkan berapa semua anak."
         },
         {
           "gameId": "subA-game-2",
@@ -253,9 +253,9 @@
           "gameType": "drag-to-container",
           "title": "Kotak Pensil Kira",
           "bookReference": "Buku Siswa Hlm. 45",
-          "objective": "Menggabungkan dua kelompok benda nyata menjadi satu kelompok.",
-          "mechanicDescription": "Siswa menyeret 3 pensil merah dan 4 pensil biru ke satu kotak pensil, lalu mengucapkan jumlah semua pensil.",
-          "voiceGuide": "Seret semua pensil ke kotak pensil, lalu ucapkan berapa semua pensil."
+          "objective": "Pakai Bagian–Utuh. Menggabungkan dua kelompok benda nyata menjadi satu kelompok.",
+          "mechanicDescription": "Siswa menyeret 3 pensil merah dan 4 pensil biru ke satu kotak pensil, lalu mengucapkan jumlah semua pensil. Terapkan Part–Part–Whole.",
+          "voiceGuide": "Bagian–Utuh. Seret semua pensil ke kotak pensil, lalu ucapkan berapa semua pensil."
         },
         {
           "gameId": "subA-game-3",
@@ -264,9 +264,9 @@
           "gameType": "story-fill-in",
           "title": "Lengkapi Cerita",
           "bookReference": "Buku Siswa Hlm. 46",
-          "objective": "Mengubah gambar dua kelompok menjadi cerita penjumlahan.",
-          "mechanicDescription": "Dua ronde: 4 mobil kuning + 4 mobil merah, lalu 3 kue lapis + 5 kue bolu. Siswa menghitung dan mengisi tiga kotak kosong pada cerita.",
-          "voiceGuide": "Hitung bendanya satu per satu, isi kotak kosong, lalu ucapkan berapa semuanya."
+          "objective": "Pakai Jumlah di Bingkai Sepuluh. Mengubah gambar dua kelompok menjadi cerita penjumlahan.",
+          "mechanicDescription": "Dua ronde: 4 mobil kuning + 4 mobil merah, lalu 3 kue lapis + 5 kue bolu. Siswa menghitung dan mengisi tiga kotak kosong pada cerita. Terapkan Ten Frame Add.",
+          "voiceGuide": "Jumlah di Bingkai Sepuluh. Hitung bendanya satu per satu, isi kotak kosong, lalu ucapkan berapa semuanya."
         },
         {
           "gameId": "subA-game-4",
@@ -275,9 +275,9 @@
           "gameType": "guess-then-count",
           "title": "Tebak Dua Piring",
           "bookReference": "Buku Siswa Hlm. 50 (Ayo Bermain)",
-          "objective": "Menaksir jumlah gabungan, lalu membuktikannya dengan menghitung.",
-          "mechanicDescription": "Dua ronde: piring ditutup kain. Siswa menebak jumlah semua kelereng, membuka kain, mengetuk tiap kelereng untuk menghitung, lalu mengucapkan jumlahnya.",
-          "voiceGuide": "Tebak dulu, buka kain, hitung kelereng, lalu ucapkan berapa semuanya."
+          "objective": "Pakai Menghitung Maju. Menaksir jumlah gabungan, lalu membuktikannya dengan menghitung.",
+          "mechanicDescription": "Dua ronde: piring ditutup kain. Siswa menebak jumlah semua kelereng, membuka kain, mengetuk tiap kelereng untuk menghitung, lalu mengucapkan jumlahnya. Terapkan Counting On.",
+          "voiceGuide": "Menghitung Maju. Tebak dulu, buka kain, hitung kelereng, lalu ucapkan berapa semuanya."
         },
         {
           "gameId": "subA-game-5",
@@ -286,9 +286,9 @@
           "gameType": "ten-frame-two-color",
           "title": "Bingkai Sepuluh Dua Warna",
           "bookReference": "Buku Siswa Hlm. 47 No. 2",
-          "objective": "Menunjukkan penjumlahan pada diagram Bingkai 10 dengan dua warna.",
-          "mechanicDescription": "Dua ronde: 4 + 2 bola dan 6 + 2 apel. Cerita ditulis sebagai teks. Titik merah di bingkai sepuluh sudah terisi, siswa mewarnai biru kotak untuk yang datang lagi. Tanpa gambar benda.",
-          "voiceGuide": "Warnai biru kotak untuk yang datang lagi, lalu ucapkan berapa semuanya."
+          "objective": "Pakai Bagian–Utuh. Menunjukkan penjumlahan pada diagram Bingkai 10 dengan dua warna.",
+          "mechanicDescription": "Dua ronde: 4 + 2 bola dan 6 + 2 apel. Cerita ditulis sebagai teks. Titik merah di bingkai sepuluh sudah terisi, siswa mewarnai biru kotak untuk yang datang lagi. Tanpa gambar benda. Terapkan Part–Part–Whole.",
+          "voiceGuide": "Bagian–Utuh. Warnai biru kotak untuk yang datang lagi, lalu ucapkan berapa semuanya."
         },
         {
           "gameId": "subA-game-6",
@@ -297,9 +297,9 @@
           "gameType": "draw-tally-strokes",
           "title": "Goresan Tally",
           "bookReference": "Buku Siswa Hlm. 47–48 No. 3–4",
-          "objective": "Menggambarkan dua kelompok dengan goresan tally, lalu menggabungkannya menjadi kalimat penjumlahan.",
-          "mechanicDescription": "Tiga ronde cerita teks (2 + 3, 4 + 3, 5 + 4). Siswa menekan tanda tambah untuk menggambar goresan tally tiap kelompok (goresan kelima mencoret miring), lalu melihat goresan digabung dan kalimat a + b = c.",
-          "voiceGuide": "Gambar goresan untuk tiap kelompok, lihat gabungannya, lalu ucapkan berapa semua goresan."
+          "objective": "Pakai Jumlah di Bingkai Sepuluh. Menggambarkan dua kelompok dengan goresan tally, lalu menggabungkannya menjadi kalimat penjumlahan.",
+          "mechanicDescription": "Tiga ronde cerita teks (2 + 3, 4 + 3, 5 + 4). Siswa menekan tanda tambah untuk menggambar goresan tally tiap kelompok (goresan kelima mencoret miring), lalu melihat goresan digabung dan kalimat a + b = c. Terapkan Ten Frame Add.",
+          "voiceGuide": "Jumlah di Bingkai Sepuluh. Gambar goresan untuk tiap kelompok, lihat gabungannya, lalu ucapkan berapa semua goresan."
         },
         {
           "gameId": "subA-game-7",
@@ -308,9 +308,9 @@
           "gameType": "diagram-sentence-matcher",
           "title": "Jodohkan Diagram dan Kalimat",
           "bookReference": "Buku Siswa Hlm. 49 No. 5",
-          "objective": "Memasangkan diagram dua kelompok (bingkai sepuluh, goresan tally, model batang) dengan kalimat penjumlahan yang tepat.",
-          "mechanicDescription": "Siswa mengetuk satu diagram lalu kalimatnya: bingkai 6 + 3 = 9, goresan 4 + 3 = 7, batang 5 + 3 = 8. Jodoh yang benar diberi nomor warna.",
-          "voiceGuide": "Jodohkan ketiga diagram, lalu ucapkan berapa jumlah semua goresan pada diagram tally."
+          "objective": "Pakai Menghitung Maju. Memasangkan diagram dua kelompok (bingkai sepuluh, goresan tally, model batang) dengan kalimat penjumlahan yang tepat.",
+          "mechanicDescription": "Siswa mengetuk satu diagram lalu kalimatnya: bingkai 6 + 3 = 9, goresan 4 + 3 = 7, batang 5 + 3 = 8. Jodoh yang benar diberi nomor warna. Terapkan Counting On.",
+          "voiceGuide": "Menghitung Maju. Jodohkan ketiga diagram, lalu ucapkan berapa jumlah semua goresan pada diagram tally."
         },
         {
           "gameId": "subA-game-8",
@@ -319,9 +319,9 @@
           "gameType": "symbol-card-builder",
           "title": "Susun Kalimat",
           "bookReference": "Buku Siswa Hlm. 44",
-          "objective": "Memilih simbol + dan = yang tepat pada kalimat penjumlahan.",
-          "mechanicDescription": "Tiga ronde: 4 ? 2 ? 6, 5 ? 3 ? 8, 3 ? 4 ? 7. Siswa memilih kartu simbol untuk kotak yang menyala; kartu > dan < menjadi pengecoh.",
-          "voiceGuide": "Pilih kartu simbol yang tepat, lalu ucapkan hasilnya."
+          "objective": "Pakai Bagian–Utuh. Memilih simbol + dan = yang tepat pada kalimat penjumlahan.",
+          "mechanicDescription": "Tiga ronde: 4 ? 2 ? 6, 5 ? 3 ? 8, 3 ? 4 ? 7. Siswa memilih kartu simbol untuk kotak yang menyala; kartu > dan < menjadi pengecoh. Terapkan Part–Part–Whole.",
+          "voiceGuide": "Bagian–Utuh. Pilih kartu simbol yang tepat, lalu ucapkan hasilnya."
         },
         {
           "gameId": "subA-game-9",
@@ -330,9 +330,9 @@
           "gameType": "missing-number-detective",
           "title": "Detektif Angka Hilang",
           "bookReference": "Pengayaan dari Buku Siswa Hlm. 46–49",
-          "objective": "Menemukan jumlah atau penambah yang hilang pada kalimat penjumlahan.",
-          "mechanicDescription": "Empat kasus: 5 + 2 = ?, 3 + ? = 7, 2 + 5 = ?, 6 + 3 = ?. Siswa membaca petunjuk lalu memilih angka.",
-          "voiceGuide": "Baca petunjuk, pilih angka yang tepat, lalu ucapkan hasil kasus terakhir."
+          "objective": "Pakai Jumlah di Bingkai Sepuluh. Menemukan jumlah atau penambah yang hilang pada kalimat penjumlahan.",
+          "mechanicDescription": "Empat kasus: 5 + 2 = ?, 3 + ? = 7, 2 + 5 = ?, 6 + 3 = ?. Siswa membaca petunjuk lalu memilih angka. Terapkan Ten Frame Add.",
+          "voiceGuide": "Jumlah di Bingkai Sepuluh. Baca petunjuk, pilih angka yang tepat, lalu ucapkan hasil kasus terakhir."
         },
         {
           "gameId": "subA-game-10",
@@ -341,9 +341,9 @@
           "gameType": "canvas-trace-and-voice",
           "title": "Kanvas Guratan dan Suara",
           "bookReference": "Buku Siswa Hlm. 44–50",
-          "objective": "Menyatakan hasil penjumlahan dengan suara dan tulisan, lalu membuat kalimat sendiri.",
-          "mechanicDescription": "Ronde 1: 5 + 3 = ? dengan suara dan guratan angka 8. Ronde 2 (Ayo Mencoba): siswa memilih dua bilangan sendiri, jumlahnya paling banyak 10.",
-          "voiceGuide": "Ucapkan hasilnya, lalu guratkan angkanya di kanvas."
+          "objective": "Pakai Menghitung Maju. Menyatakan hasil penjumlahan dengan suara dan tulisan, lalu membuat kalimat sendiri.",
+          "mechanicDescription": "Ronde 1: 5 + 3 = ? dengan suara dan guratan angka 8. Ronde 2 (Ayo Mencoba): siswa memilih dua bilangan sendiri, jumlahnya paling banyak 10. Terapkan Counting On.",
+          "voiceGuide": "Menghitung Maju. Ucapkan hasilnya, lalu guratkan angkanya di kanvas."
         }
       ],
       "metodeLuar": [
@@ -387,7 +387,7 @@
       "id": "B",
       "codeTitle": "Sub-Bab B (Berbagai Cara)",
       "fullTitle": "Sub-Bab B: Berbagai Cara Melakukan Penjumlahan",
-      "targetDescription": "Siswa menjumlahkan sampai 10 dengan pasangan bilangan, menghitung maju, penjumlahan berulang, dan penjumlahan yang hasilnya 10.",
+      "targetDescription": "Siswa menjumlahkan sampai 10 dengan pasangan bilangan, menghitung maju, penjumlahan berulang, dan penjumlahan yang hasilnya 10. Memakai Menghitung Maju, Bagian–Utuh, Jumlah di Bingkai Sepuluh.",
       "secondaryBg": "#FEF3C7",
       "secondaryBorder": "#F59E0B",
       "secondaryText": "#92400E",
@@ -396,37 +396,37 @@
           "id": "B2-S1",
           "titleHint": "Keranjang Apel",
           "sceneType": "keranjang-apel",
-          "voiceNarration": "Kira membawa keranjang berisi lima buah apel. Tiga apel merah dan dua apel hijau. Igil bertanya: bagaimana caramu menjumlahkan? Hari ini kita belajar berbagai cara melakukan penjumlahan. METODE LUAR. Menghitung Maju: Mulai dari bilangan pertama lalu maju."
+          "voiceNarration": "Kira membawa keranjang berisi lima buah apel. Tiga apel merah dan dua apel hijau. Igil bertanya: bagaimana caramu menjumlahkan? Hari ini kita belajar berbagai cara melakukan penjumlahan. Kita memakai cara Menghitung Maju: Mulai dari bilangan pertama lalu maju."
         },
         {
           "id": "B2-S2",
           "titleHint": "Bagan Igil",
           "sceneType": "bagan-pasangan",
-          "voiceNarration": "Igil menggambar bagan di papan. Lingkaran besar disebut gabungan, isinya lima. Dua lingkaran kecil disebut sebagian, isinya tiga dan dua. Tiga dan dua jika digabungkan menjadi lima. Dua dan tiga juga menjadi lima. METODE LUAR. Bagian–Utuh: Dua bagian membentuk jumlah."
+          "voiceNarration": "Igil menggambar bagan di papan. Lingkaran besar disebut gabungan, isinya lima. Dua lingkaran kecil disebut sebagian, isinya tiga dan dua. Tiga dan dua jika digabungkan menjadi lima. Dua dan tiga juga menjadi lima. Kita memakai cara Bagian–Utuh: Dua bagian membentuk jumlah."
         },
         {
           "id": "B2-S3",
           "titleHint": "Lompat di Petak Angka",
           "sceneType": "lompat-petak",
-          "voiceNarration": "Upe berdiri di angka lima. Dia melompat tiga langkah ke depan. Enam, tujuh, delapan. Sekarang Upe ada di angka delapan. Lima ditambah tiga sama dengan delapan. Ini cara menghitung maju. METODE LUAR. Jumlah di Bingkai Sepuluh: Gabungkan benda di bingkai."
+          "voiceNarration": "Upe berdiri di angka lima. Dia melompat tiga langkah ke depan. Enam, tujuh, delapan. Sekarang Upe ada di angka delapan. Lima ditambah tiga sama dengan delapan. Ini cara menghitung maju. Kita memakai cara Jumlah di Bingkai Sepuluh: Gabungkan benda di bingkai."
         },
         {
           "id": "B2-S4",
           "titleHint": "Kepik Kembar",
           "sceneType": "kepik-kembar",
-          "voiceNarration": "Lihat kepik ini. Sayap kirinya punya tiga totol. Sayap kanannya juga punya tiga totol. Tiga ditambah tiga sama dengan enam. Menambahkan bilangan yang sama disebut penjumlahan berulang. METODE LUAR. Menghitung Maju: Mulai dari bilangan pertama lalu maju."
+          "voiceNarration": "Lihat kepik ini. Sayap kirinya punya tiga totol. Sayap kanannya juga punya tiga totol. Tiga ditambah tiga sama dengan enam. Menambahkan bilangan yang sama disebut penjumlahan berulang. Kita memakai cara Menghitung Maju: Mulai dari bilangan pertama lalu maju."
         },
         {
           "id": "B2-S5",
           "titleHint": "Delapan Jari dan Dua Jari",
           "sceneType": "jari-sepuluh",
-          "voiceNarration": "Kira, Halim, dan Wei menunjukkan jari mereka. Ada delapan jari terbuka dan dua jari tertutup. Semuanya ada sepuluh jari. Delapan ditambah dua sama dengan sepuluh. METODE LUAR. Bagian–Utuh: Dua bagian membentuk jumlah."
+          "voiceNarration": "Kira, Halim, dan Wei menunjukkan jari mereka. Ada delapan jari terbuka dan dua jari tertutup. Semuanya ada sepuluh jari. Delapan ditambah dua sama dengan sepuluh. Kita memakai cara Bagian–Utuh: Dua bagian membentuk jumlah."
         },
         {
           "id": "B2-S6",
           "titleHint": "Bingkai Sepuluh",
           "sceneType": "bingkai-sepuluh",
-          "voiceNarration": "Wei menunjukkan bingkai sepuluh. Ada sembilan bola merah dan satu bola biru. Jika digabungkan menjadi sepuluh bola. Sembilan ditambah satu sama dengan sepuluh. Apakah kamu menemukan pasangan lainnya? METODE LUAR. Jumlah di Bingkai Sepuluh: Gabungkan benda di bingkai."
+          "voiceNarration": "Wei menunjukkan bingkai sepuluh. Ada sembilan bola merah dan satu bola biru. Jika digabungkan menjadi sepuluh bola. Sembilan ditambah satu sama dengan sepuluh. Apakah kamu menemukan pasangan lainnya? Kita memakai cara Jumlah di Bingkai Sepuluh: Gabungkan benda di bingkai."
         }
       ],
       "mindMaps": [
@@ -448,31 +448,31 @@
         },
         {
           "stepNumber": 3,
-          "stepTitle": "3. Penjumlahan Berulang",
-          "stepDesc": "Menambahkan bilangan yang sama. Tiga ditambah tiga sama dengan enam. Empat ditambah empat sama dengan delapan.",
+          "stepTitle": "3. Counting On",
+          "stepDesc": "Mulai dari bilangan pertama lalu maju.",
           "icon": "🐞",
           "flowFrom": "Bilangan sama",
           "flowTo": "Hasil kembar"
         },
         {
           "stepNumber": 4,
-          "stepTitle": "4. Hasilnya 10",
-          "stepDesc": "Ada pasangan bilangan yang jumlahnya sepuluh: sembilan dan satu, delapan dan dua, tujuh dan tiga, enam dan empat, lima dan lima.",
+          "stepTitle": "4. Part–Part–Whole",
+          "stepDesc": "Dua bagian membentuk jumlah.",
           "icon": "🔟",
           "flowFrom": "Pasangan",
           "flowTo": "Sepuluh"
         },
         {
           "stepNumber": 5,
-          "stepTitle": "5. Pilih Caramu",
-          "stepDesc": "Semua cara menghasilkan jawaban yang sama. Pilih cara yang paling kamu suka, lalu periksa dengan cara lain.",
+          "stepTitle": "5. Ten Frame Add",
+          "stepDesc": "Gabungkan benda di bingkai.",
           "icon": "🌟",
           "flowFrom": "Banyak cara",
           "flowTo": "6"
         },
         {
           "stepNumber": 6,
-          "stepTitle": "6. METODE LUAR · Bagian–Utuh",
+          "stepTitle": "6.",
           "stepDesc": "Dua bagian membentuk jumlah.",
           "icon": "🌍",
           "flowFrom": "5",
@@ -542,25 +542,25 @@
           "title": "Dua Keranjang Apel (3 + 2 = 5 dan 4 + 1 = 5)",
           "emoji": "🍎",
           "targetCount": 5,
-          "voiceGuide": "Seret semua buah ke keranjang, tukar tempat dua kelompok, lalu ucapkan berapa semua buah."
+          "voiceGuide": "Menghitung Maju. Seret semua buah ke keranjang, tukar tempat dua kelompok, lalu ucapkan berapa semua buah."
         },
         {
           "title": "Hitung Maju dengan Kue (1 + 2, 4 + 3, 5 + 3)",
           "emoji": "🍪",
           "targetCount": 8,
-          "voiceGuide": "Seret kue dari meja ke kotak satu per satu, hitung maju, lalu ucapkan berapa kue di kotak."
+          "voiceGuide": "Bagian–Utuh. Seret kue dari meja ke kotak satu per satu, hitung maju, lalu ucapkan berapa kue di kotak."
         },
         {
           "title": "Kepik Kembar (2 + 2, 3 + 3, 4 + 4)",
           "emoji": "🐞",
           "targetCount": 8,
-          "voiceGuide": "Tambahkan totol di sayap kanan sampai sama dengan sayap kiri, lalu ucapkan berapa semua totol."
+          "voiceGuide": "Jumlah di Bingkai Sepuluh. Tambahkan totol di sayap kanan sampai sama dengan sayap kiri, lalu ucapkan berapa semua totol."
         },
         {
           "title": "Sepuluh Jari (8 + 2, 7 + 3, 6 + 4)",
           "emoji": "🖐️",
           "targetCount": 10,
-          "voiceGuide": "Buka jari sebanyak yang diminta, jari sisanya tertutup, lalu ucapkan berapa semua jari."
+          "voiceGuide": "Menghitung Maju. Buka jari sebanyak yang diminta, jari sisanya tertutup, lalu ucapkan berapa semua jari."
         }
       ],
       "pictorialSlides": [
@@ -569,21 +569,21 @@
           "diagramType": "number-bond",
           "numberA": 3,
           "numberB": 2,
-          "caption": "Hitung titik merah dan biru, lalu isi lingkaran Sebagian dan Gabungan pada bagan pasangan bilangan."
+          "caption": "Pakai Menghitung Maju. Hitung titik merah dan biru, lalu isi lingkaran Sebagian dan Gabungan pada bagan pasangan bilangan."
         },
         {
           "title": "Tabel Tambah di Garis Bilangan (tambah 1, 2, 3)",
           "diagramType": "bar-blocks",
           "numberA": 5,
           "numberB": 3,
-          "caption": "Mulai dari bilangan pertama, maju ke kanan, lalu ketuk petak hasilnya di garis bilangan."
+          "caption": "Pakai Bagian–Utuh. Mulai dari bilangan pertama, maju ke kanan, lalu ketuk petak hasilnya di garis bilangan."
         },
         {
           "title": "Kartu Dua Bingkai (pasangan sepuluh)",
           "diagramType": "ten-frame",
           "numberA": 7,
           "numberB": 3,
-          "caption": "Cari dua kartu bingkai yang jika digabung membuat bingkai sepuluh penuh."
+          "caption": "Pakai Jumlah di Bingkai Sepuluh. Cari dua kartu bingkai yang jika digabung membuat bingkai sepuluh penuh."
         }
       ],
       "abstractSlides": [
@@ -591,19 +591,19 @@
           "symbolLarge": "3 + 2 = 5",
           "wordLarge": "SUSUN TUKAR TEMPAT",
           "mathNotation": "3 + 2 = 5   |   2 + 3 = 5",
-          "voiceReadout": "Tiga ditambah dua sama dengan lima. Ditukar tempat, dua ditambah tiga sama dengan lima."
+          "voiceReadout": "Menghitung Maju. Tiga ditambah dua sama dengan lima. Ditukar tempat, dua ditambah tiga sama dengan lima."
         },
         {
           "symbolLarge": "3 + 3 = 6",
           "wordLarge": "KEMBAR ATAU BUKAN?",
           "mathNotation": "3 + 3 = 6   |   5 + 5 = 10   |   4 + 4 = 8",
-          "voiceReadout": "Tiga ditambah tiga sama dengan enam. Lima ditambah lima sama dengan sepuluh. Empat ditambah empat sama dengan delapan."
+          "voiceReadout": "Bagian–Utuh. Tiga ditambah tiga sama dengan enam. Lima ditambah lima sama dengan sepuluh. Empat ditambah empat sama dengan delapan."
         },
         {
           "symbolLarge": "7 + 3 = 10",
           "wordLarge": "TULIS DAN UCAPKAN",
           "mathNotation": "7 + 3 = 10   |   kalimatku sendiri",
-          "voiceReadout": "Tujuh ditambah tiga sama dengan sepuluh. Sekarang buat kalimat penjumlahanmu sendiri."
+          "voiceReadout": "Jumlah di Bingkai Sepuluh. Tujuh ditambah tiga sama dengan sepuluh. Sekarang buat kalimat penjumlahanmu sendiri."
         }
       ],
       "interactiveGames": [
@@ -614,9 +614,9 @@
           "gameType": "drag-and-swap",
           "title": "Dua Keranjang Apel",
           "bookReference": "Buku Siswa Hlm. 51–54",
-          "objective": "Memahami pasangan bilangan: dua kelompok digabung, dan boleh ditukar tempat.",
-          "mechanicDescription": "Siswa menyeret atau mengetuk buah ke keranjang, menekan tukar tempat, lalu mengucapkan jumlah semuanya (3 + 2 dan 4 + 1).",
-          "voiceGuide": "Seret semua buah ke keranjang, tukar tempat dua kelompok, lalu ucapkan berapa semua buah."
+          "objective": "Pakai Menghitung Maju. Memahami pasangan bilangan: dua kelompok digabung, dan boleh ditukar tempat.",
+          "mechanicDescription": "Siswa menyeret atau mengetuk buah ke keranjang, menekan tukar tempat, lalu mengucapkan jumlah semuanya (3 + 2 dan 4 + 1). Terapkan Counting On.",
+          "voiceGuide": "Menghitung Maju. Seret semua buah ke keranjang, tukar tempat dua kelompok, lalu ucapkan berapa semua buah."
         },
         {
           "gameId": "subB-game-2",
@@ -625,9 +625,9 @@
           "gameType": "drag-to-container",
           "title": "Hitung Maju dengan Kue",
           "bookReference": "Buku Siswa Hlm. 55–58",
-          "objective": "Menghitung maju dengan benda nyata: mulai dari bilangan pertama, lalu pindahkan kue satu per satu.",
-          "mechanicDescription": "Di kotak sudah ada a kue, di meja ada b kue (1 + 2, 4 + 3, 5 + 3). Siswa menyeret kue ke kotak satu per satu sambil menghitung maju dari a, lalu mengucapkan jumlah kue di kotak.",
-          "voiceGuide": "Seret kue dari meja ke kotak satu per satu, hitung maju, lalu ucapkan berapa kue di kotak."
+          "objective": "Pakai Bagian–Utuh. Menghitung maju dengan benda nyata: mulai dari bilangan pertama, lalu pindahkan kue satu per satu.",
+          "mechanicDescription": "Di kotak sudah ada a kue, di meja ada b kue (1 + 2, 4 + 3, 5 + 3). Siswa menyeret kue ke kotak satu per satu sambil menghitung maju dari a, lalu mengucapkan jumlah kue di kotak. Terapkan Part–Part–Whole.",
+          "voiceGuide": "Bagian–Utuh. Seret kue dari meja ke kotak satu per satu, hitung maju, lalu ucapkan berapa kue di kotak."
         },
         {
           "gameId": "subB-game-3",
@@ -636,9 +636,9 @@
           "gameType": "match-spots",
           "title": "Kepik Kembar",
           "bookReference": "Buku Siswa Hlm. 59–60",
-          "objective": "Memahami penjumlahan berulang: bilangan yang sama ditambahkan.",
-          "mechanicDescription": "Siswa menambahkan totol di sayap kanan sampai sama dengan sayap kiri (2 + 2, 3 + 3, 4 + 4), lalu mengucapkan jumlah semua totol.",
-          "voiceGuide": "Tambahkan totol di sayap kanan sampai sama dengan sayap kiri, lalu ucapkan berapa semua totol."
+          "objective": "Pakai Jumlah di Bingkai Sepuluh. Memahami penjumlahan berulang: bilangan yang sama ditambahkan.",
+          "mechanicDescription": "Siswa menambahkan totol di sayap kanan sampai sama dengan sayap kiri (2 + 2, 3 + 3, 4 + 4), lalu mengucapkan jumlah semua totol. Terapkan Ten Frame Add.",
+          "voiceGuide": "Jumlah di Bingkai Sepuluh. Tambahkan totol di sayap kanan sampai sama dengan sayap kiri, lalu ucapkan berapa semua totol."
         },
         {
           "gameId": "subB-game-4",
@@ -647,9 +647,9 @@
           "gameType": "fold-fingers",
           "title": "Sepuluh Jari",
           "bookReference": "Buku Siswa Hlm. 61",
-          "objective": "Memahami pasangan bilangan yang jumlahnya 10 dengan jari tangan.",
-          "mechanicDescription": "Siswa membuka 8, 7, lalu 6 jari; jari sisanya tertutup; lalu mengucapkan jumlah semua jari.",
-          "voiceGuide": "Buka jari sebanyak yang diminta, jari sisanya tertutup, lalu ucapkan berapa semua jari."
+          "objective": "Pakai Menghitung Maju. Memahami pasangan bilangan yang jumlahnya 10 dengan jari tangan.",
+          "mechanicDescription": "Siswa membuka 8, 7, lalu 6 jari; jari sisanya tertutup; lalu mengucapkan jumlah semua jari. Terapkan Counting On.",
+          "voiceGuide": "Menghitung Maju. Buka jari sebanyak yang diminta, jari sisanya tertutup, lalu ucapkan berapa semua jari."
         },
         {
           "gameId": "subB-game-5",
@@ -658,9 +658,9 @@
           "gameType": "fill-number-bond",
           "title": "Isi Bagan Pasangan",
           "bookReference": "Buku Siswa Hlm. 51–54",
-          "objective": "Mengisi bagan pasangan bilangan dari gambar, lalu membaca dua kalimat tukar tempat.",
-          "mechanicDescription": "Siswa menghitung titik merah dan titik biru dari cerita teks, lalu memilih angka untuk Sebagian atas, Sebagian bawah, dan Gabungan (3 + 2, 2 + 4, 6 + 3).",
-          "voiceGuide": "Hitung titik tiap kelompok, isi bagan pasangan bilangan, lalu ucapkan jumlah semuanya."
+          "objective": "Pakai Bagian–Utuh. Mengisi bagan pasangan bilangan dari gambar, lalu membaca dua kalimat tukar tempat.",
+          "mechanicDescription": "Siswa menghitung titik merah dan titik biru dari cerita teks, lalu memilih angka untuk Sebagian atas, Sebagian bawah, dan Gabungan (3 + 2, 2 + 4, 6 + 3). Terapkan Part–Part–Whole.",
+          "voiceGuide": "Bagian–Utuh. Hitung titik tiap kelompok, isi bagan pasangan bilangan, lalu ucapkan jumlah semuanya."
         },
         {
           "gameId": "subB-game-6",
@@ -669,9 +669,9 @@
           "gameType": "tap-answer-number-line",
           "title": "Tabel Tambah di Garis Bilangan",
           "bookReference": "Buku Siswa Hlm. 55–58",
-          "objective": "Menjumlahkan dengan menghitung maju memakai garis bilangan dan tabel tambah 1, 2, dan 3.",
-          "mechanicDescription": "Siswa mengetuk petak hasil pada garis bilangan untuk tiap baris tabel yang menyala.",
-          "voiceGuide": "Mulai dari bilangan pertama, maju ke kanan, ketuk petak hasil, lalu ucapkan hasil baris terakhir."
+          "objective": "Pakai Jumlah di Bingkai Sepuluh. Menjumlahkan dengan menghitung maju memakai garis bilangan dan tabel tambah 1, 2, dan 3.",
+          "mechanicDescription": "Siswa mengetuk petak hasil pada garis bilangan untuk tiap baris tabel yang menyala. Terapkan Ten Frame Add.",
+          "voiceGuide": "Jumlah di Bingkai Sepuluh. Mulai dari bilangan pertama, maju ke kanan, ketuk petak hasil, lalu ucapkan hasil baris terakhir."
         },
         {
           "gameId": "subB-game-7",
@@ -680,9 +680,9 @@
           "gameType": "match-pair-cards",
           "title": "Kartu Dua Bingkai",
           "bookReference": "Buku Siswa Hlm. 62–64",
-          "objective": "Menemukan pasangan bilangan yang jumlahnya 10 dengan bingkai sepuluh.",
-          "mechanicDescription": "Siswa mengetuk dua kartu bingkai yang jika digabung penuh sepuluh, sampai semua pasangan ditemukan (dua set).",
-          "voiceGuide": "Ketuk dua kartu bingkai yang jika digabung membuat bingkai sepuluh penuh, lalu ucapkan jumlahnya."
+          "objective": "Pakai Menghitung Maju. Menemukan pasangan bilangan yang jumlahnya 10 dengan bingkai sepuluh.",
+          "mechanicDescription": "Siswa mengetuk dua kartu bingkai yang jika digabung penuh sepuluh, sampai semua pasangan ditemukan (dua set). Terapkan Counting On.",
+          "voiceGuide": "Menghitung Maju. Ketuk dua kartu bingkai yang jika digabung membuat bingkai sepuluh penuh, lalu ucapkan jumlahnya."
         },
         {
           "gameId": "subB-game-8",
@@ -691,9 +691,9 @@
           "gameType": "build-sentence-cards",
           "title": "Susun Tukar Tempat",
           "bookReference": "Buku Siswa Hlm. 51–54",
-          "objective": "Menulis kalimat penjumlahan kebalikan dengan menukar dua bilangan.",
-          "mechanicDescription": "Siswa menyusun kalimat tukar tempat dengan mengetuk kartu angka dan simbol secara berurutan (3 + 2, 1 + 4, 5 + 3).",
-          "voiceGuide": "Tukar tempat dua angka yang ditambahkan, susun kalimat barunya, lalu ucapkan hasilnya."
+          "objective": "Pakai Bagian–Utuh. Menulis kalimat penjumlahan kebalikan dengan menukar dua bilangan.",
+          "mechanicDescription": "Siswa menyusun kalimat tukar tempat dengan mengetuk kartu angka dan simbol secara berurutan (3 + 2, 1 + 4, 5 + 3). Terapkan Part–Part–Whole.",
+          "voiceGuide": "Bagian–Utuh. Tukar tempat dua angka yang ditambahkan, susun kalimat barunya, lalu ucapkan hasilnya."
         },
         {
           "gameId": "subB-game-9",
@@ -702,9 +702,9 @@
           "gameType": "classify-and-solve",
           "title": "Kembar atau Bukan?",
           "bookReference": "Buku Siswa Hlm. 59–60",
-          "objective": "Mengenali penjumlahan berulang (dua bilangan sama) dan menentukan hasilnya.",
-          "mechanicDescription": "Siswa menentukan kembar atau bukan untuk 3 + 3, 2 + 5, 5 + 5, dan 4 + 4, lalu mencari hasilnya.",
-          "voiceGuide": "Kalau kedua bilangan sama, itu kembar. Tentukan, lalu cari hasilnya."
+          "objective": "Pakai Jumlah di Bingkai Sepuluh. Mengenali penjumlahan berulang (dua bilangan sama) dan menentukan hasilnya.",
+          "mechanicDescription": "Siswa menentukan kembar atau bukan untuk 3 + 3, 2 + 5, 5 + 5, dan 4 + 4, lalu mencari hasilnya. Terapkan Ten Frame Add.",
+          "voiceGuide": "Jumlah di Bingkai Sepuluh. Kalau kedua bilangan sama, itu kembar. Tentukan, lalu cari hasilnya."
         },
         {
           "gameId": "subB-game-10",
@@ -713,9 +713,9 @@
           "gameType": "canvas-trace-and-voice",
           "title": "Kanvas Guratan dan Suara",
           "bookReference": "Buku Siswa Hlm. 51–64",
-          "objective": "Menyatakan hasil penjumlahan dengan suara dan tulisan, lalu membuat kalimat sendiri.",
-          "mechanicDescription": "Ronde 1: 7 + 3 = ? dengan suara dan guratan angka 10. Ronde 2 (Ayo Mencoba): siswa memilih dua bilangan sendiri, jumlahnya paling banyak 10.",
-          "voiceGuide": "Ucapkan hasilnya, lalu guratkan angkanya di kanvas."
+          "objective": "Pakai Menghitung Maju. Menyatakan hasil penjumlahan dengan suara dan tulisan, lalu membuat kalimat sendiri.",
+          "mechanicDescription": "Ronde 1: 7 + 3 = ? dengan suara dan guratan angka 10. Ronde 2 (Ayo Mencoba): siswa memilih dua bilangan sendiri, jumlahnya paling banyak 10. Terapkan Counting On.",
+          "voiceGuide": "Menghitung Maju. Ucapkan hasilnya, lalu guratkan angkanya di kanvas."
         }
       ],
       "metodeLuar": [
@@ -759,7 +759,7 @@
       "id": "C",
       "codeTitle": "Sub-Bab C (Soal Cerita)",
       "fullTitle": "Sub-Bab C: Soal Cerita Penjumlahan",
-      "targetDescription": "Siswa menyelesaikan soal cerita penjumlahan sampai 10: membaca cerita, mencari dua bilangan, memilih tanda tambah, menulis penyelesaian, menjawab dengan kalimat lengkap, lalu memeriksa dan menceritakan hasilnya.",
+      "targetDescription": "Siswa menyelesaikan soal cerita penjumlahan sampai 10: membaca cerita, mencari dua bilangan, memilih tanda tambah, menulis penyelesaian, menjawab dengan kalimat lengkap, lalu memeriksa dan menceritakan hasilnya. Memakai Menghitung Maju, Bagian–Utuh, Jumlah di Bingkai Sepuluh.",
       "secondaryBg": "#DCFCE7",
       "secondaryBorder": "#22C55E",
       "secondaryText": "#166534",
@@ -768,37 +768,37 @@
           "id": "C2-S1",
           "titleHint": "Burung di Dahan",
           "sceneType": "burung-dahan",
-          "voiceNarration": "Ada empat burung di pohon. Datang lagi dua burung. Igil bertanya: berapa jumlah semua burung? Ini namanya soal cerita. Empat ditambah dua sama dengan enam. Semuanya ada enam burung. METODE LUAR. Menghitung Maju: Mulai dari bilangan pertama lalu maju."
+          "voiceNarration": "Ada empat burung di pohon. Datang lagi dua burung. Igil bertanya: berapa jumlah semua burung? Ini namanya soal cerita. Empat ditambah dua sama dengan enam. Semuanya ada enam burung. Kita memakai cara Menghitung Maju: Mulai dari bilangan pertama lalu maju."
         },
         {
           "id": "C2-S2",
           "titleHint": "Pensil Halim",
           "sceneType": "pensil-halim",
-          "voiceNarration": "Halim mempunyai tiga pensil merah di tangan kiri. Halim juga mempunyai empat pensil hijau di tangan kanan. Berapa jumlah semua pensil Halim? Tiga ditambah empat sama dengan tujuh. Halim memiliki tujuh pensil. METODE LUAR. Bagian–Utuh: Dua bagian membentuk jumlah."
+          "voiceNarration": "Halim mempunyai tiga pensil merah di tangan kiri. Halim juga mempunyai empat pensil hijau di tangan kanan. Berapa jumlah semua pensil Halim? Tiga ditambah empat sama dengan tujuh. Halim memiliki tujuh pensil. Kita memakai cara Bagian–Utuh: Dua bagian membentuk jumlah."
         },
         {
           "id": "C2-S3",
           "titleHint": "Siswa di Kelas",
           "sceneType": "siswa-kelas",
-          "voiceNarration": "Ada lima siswa di dalam kelas. Datang lagi tiga siswa dari pintu. Berapakah jumlah semua siswa sekarang? Lima ditambah tiga sama dengan delapan. Di dalam kelas ada delapan siswa. METODE LUAR. Jumlah di Bingkai Sepuluh: Gabungkan benda di bingkai."
+          "voiceNarration": "Ada lima siswa di dalam kelas. Datang lagi tiga siswa dari pintu. Berapakah jumlah semua siswa sekarang? Lima ditambah tiga sama dengan delapan. Di dalam kelas ada delapan siswa. Kita memakai cara Jumlah di Bingkai Sepuluh: Gabungkan benda di bingkai."
         },
         {
           "id": "C2-S4",
           "titleHint": "Sepeda dan Becak",
           "sceneType": "sepeda-becak",
-          "voiceNarration": "Di jalan ada tiga sepeda. Ada satu becak. Berapa jumlah semua kendaraan? Tiga ditambah satu sama dengan empat. Semuanya ada empat kendaraan. Satu cerita bisa punya dua pertanyaan. Berapa jumlah semua rodanya? Tiap sepeda punya dua roda, jadi tiga sepeda ada enam roda. Becak punya tiga roda. Enam ditambah tiga sama dengan sembilan roda. METODE LUAR. Menghitung Maju: Mulai dari bilangan pertama lalu maju."
+          "voiceNarration": "Di jalan ada tiga sepeda. Ada satu becak. Berapa jumlah semua kendaraan? Tiga ditambah satu sama dengan empat. Semuanya ada empat kendaraan. Satu cerita bisa punya dua pertanyaan. Berapa jumlah semua rodanya? Tiap sepeda punya dua roda, jadi tiga sepeda ada enam roda. Becak punya tiga roda. Enam ditambah tiga sama dengan sembilan roda. Kita memakai cara Menghitung Maju: Mulai dari bilangan pertama lalu maju."
         },
         {
           "id": "C2-S5",
           "titleHint": "Motor dan Mobil",
           "sceneType": "motor-mobil",
-          "voiceNarration": "Di tempat parkir ada tiga motor. Ada dua mobil. Berapa jumlah semua kendaraan? Tiga ditambah dua sama dengan lima. Semuanya ada lima kendaraan. METODE LUAR. Bagian–Utuh: Dua bagian membentuk jumlah."
+          "voiceNarration": "Di tempat parkir ada tiga motor. Ada dua mobil. Berapa jumlah semua kendaraan? Tiga ditambah dua sama dengan lima. Semuanya ada lima kendaraan. Kita memakai cara Bagian–Utuh: Dua bagian membentuk jumlah."
         },
         {
           "id": "C2-S6",
           "titleHint": "Stoples Kelereng",
           "sceneType": "stoples-kelereng",
-          "voiceNarration": "Tika membuat ceritanya sendiri. Dia punya dua stoples. Di stoples pertama ada kelereng merah. Di stoples kedua ada kelereng biru. Kalimat penjumlahannya masih kosong. Ayo buat ceritamu sendiri, gambar, tulis kalimatnya, hitung hasilnya, lalu ceritakan di depan kelas. METODE LUAR. Jumlah di Bingkai Sepuluh: Gabungkan benda di bingkai."
+          "voiceNarration": "Tika membuat ceritanya sendiri. Dia punya dua stoples. Di stoples pertama ada kelereng merah. Di stoples kedua ada kelereng biru. Kalimat penjumlahannya masih kosong. Ayo buat ceritamu sendiri, gambar, tulis kalimatnya, hitung hasilnya, lalu ceritakan di depan kelas. Kita memakai cara Jumlah di Bingkai Sepuluh: Gabungkan benda di bingkai."
         }
       ],
       "mindMaps": [
@@ -820,24 +820,24 @@
         },
         {
           "stepNumber": 3,
-          "stepTitle": "3. Pilih Tanda Tambah",
-          "stepDesc": "Kata datang lagi, ditambah, bergabung, dan jumlah semua memberi petunjuk bahwa bendanya bertambah. Kita pakai tanda tambah.",
+          "stepTitle": "3. Counting On",
+          "stepDesc": "Mulai dari bilangan pertama lalu maju.",
           "icon": "➕",
           "flowFrom": "Kata petunjuk",
           "flowTo": "Tanda tambah"
         },
         {
           "stepNumber": 4,
-          "stepTitle": "4. Tulis dan Hitung",
-          "stepDesc": "Tulis penyelesaian: bilangan pertama, tanda tambah, bilangan kedua, tanda sama dengan, lalu hasilnya. Hitung dengan cara yang kamu suka: gambar, garis bilangan, jari, atau pasangan bilangan.",
+          "stepTitle": "4. Part–Part–Whole",
+          "stepDesc": "Dua bagian membentuk jumlah.",
           "icon": "✏️",
           "flowFrom": "Kalimat penjumlahan",
           "flowTo": "Hasil"
         },
         {
           "stepNumber": 5,
-          "stepTitle": "5. Jawab dengan Kalimat",
-          "stepDesc": "Tulis jawaban dalam kalimat lengkap. Semuanya ada enam burung. Jangan lupa nama bendanya.",
+          "stepTitle": "5. Ten Frame Add",
+          "stepDesc": "Gabungkan benda di bingkai.",
           "icon": "💬",
           "flowFrom": "Hasil",
           "flowTo": "Kalimat jawaban"
@@ -852,7 +852,7 @@
         },
         {
           "stepNumber": 7,
-          "stepTitle": "7. METODE LUAR · Menghitung Maju",
+          "stepTitle": "7.",
           "stepDesc": "Mulai dari bilangan pertama lalu maju.",
           "icon": "🌍",
           "flowFrom": "6",
@@ -860,7 +860,7 @@
         },
         {
           "stepNumber": 8,
-          "stepTitle": "8. METODE LUAR · Bagian–Utuh",
+          "stepTitle": "8.",
           "stepDesc": "Dua bagian membentuk jumlah.",
           "icon": "🌍",
           "flowFrom": "7",
@@ -944,25 +944,25 @@
           "title": "Isi Dua Stoples lalu Tuang (3 + 2, 3 + 4, 4 + 5)",
           "emoji": "🔴",
           "targetCount": 9,
-          "voiceGuide": "Dengar ceritanya, isi dua stoples, tuang jadi satu, lalu ucapkan berapa semuanya."
+          "voiceGuide": "Menghitung Maju. Dengar ceritanya, isi dua stoples, tuang jadi satu, lalu ucapkan berapa semuanya."
         },
         {
           "title": "Hitung Roda (1 motor + 1 mobil, 2 sepeda + 1 becak, 3 sepeda + 1 becak)",
           "emoji": "🚲",
           "targetCount": 9,
-          "voiceGuide": "Ketuk tiap kendaraan untuk menghitung rodanya, lalu ucapkan berapa semua roda."
+          "voiceGuide": "Bagian–Utuh. Ketuk tiap kendaraan untuk menghitung rodanya, lalu ucapkan berapa semua roda."
         },
         {
           "title": "Parkiran Pilih-Pilih (3 motor + 2 mobil, 4 sepeda + 2 becak, 4 motor + 3 sepeda)",
           "emoji": "🅿️",
           "targetCount": 7,
-          "voiceGuide": "Seret hanya kendaraan yang disebut di cerita ke tempat parkir, lalu ucapkan jumlah semuanya."
+          "voiceGuide": "Jumlah di Bingkai Sepuluh. Seret hanya kendaraan yang disebut di cerita ke tempat parkir, lalu ucapkan jumlah semuanya."
         },
         {
           "title": "Susun Cerita dengan Kartu (3 + 4, 5 + 3, 4 + 2)",
           "emoji": "🃏",
           "targetCount": 6,
-          "voiceGuide": "Ketuk tiga kartu cerita berurutan, lalu ucapkan jumlah semuanya."
+          "voiceGuide": "Menghitung Maju. Ketuk tiga kartu cerita berurutan, lalu ucapkan jumlah semuanya."
         }
       ],
       "pictorialSlides": [
@@ -971,21 +971,21 @@
           "diagramType": "bar-model",
           "numberA": 5,
           "numberB": 3,
-          "caption": "Warnai dua batang sesuai cerita, lalu baca jumlahnya pada penggaris."
+          "caption": "Pakai Menghitung Maju. Warnai dua batang sesuai cerita, lalu baca jumlahnya pada penggaris."
         },
         {
           "title": "Cerita ke Diagram (3 + 4, 5 + 2, 6 + 2)",
           "diagramType": "diagram-choice",
           "numberA": 6,
           "numberB": 2,
-          "caption": "Dengar cerita, lalu pilih bingkai sepuluh, garis bilangan, atau model batang yang cocok."
+          "caption": "Pakai Bagian–Utuh. Dengar cerita, lalu pilih bingkai sepuluh, garis bilangan, atau model batang yang cocok."
         },
         {
           "title": "Tabel Hitung Cerita (3 + 1, 3 + 2, 4 + 3)",
           "diagramType": "dot-table",
           "numberA": 4,
           "numberB": 3,
-          "caption": "Hitung titik tiap baris, isi tabel, lalu isi jumlah semua."
+          "caption": "Pakai Jumlah di Bingkai Sepuluh. Hitung titik tiap baris, isi tabel, lalu isi jumlah semua."
         }
       ],
       "abstractSlides": [
@@ -993,19 +993,19 @@
           "symbolLarge": "5 + 3 = 8",
           "wordLarge": "TULIS PENYELESAIAN DAN JAWABAN",
           "mathNotation": "Di dalam kelas ada 8 siswa.   |   Halim memiliki 7 pensil.",
-          "voiceReadout": "Lima ditambah tiga sama dengan delapan. Di dalam kelas ada delapan siswa."
+          "voiceReadout": "Menghitung Maju. Lima ditambah tiga sama dengan delapan. Di dalam kelas ada delapan siswa."
         },
         {
           "symbolLarge": "1 + 8 = 9",
           "wordLarge": "PASANGAN SEMBILAN",
           "mathNotation": "1 + 8   |   2 + 7   |   3 + 6   |   4 + 5",
-          "voiceReadout": "Satu ditambah delapan sama dengan sembilan. Dua ditambah tujuh sama dengan sembilan."
+          "voiceReadout": "Bagian–Utuh. Satu ditambah delapan sama dengan sembilan. Dua ditambah tujuh sama dengan sembilan."
         },
         {
           "symbolLarge": "6 + 4 = 10",
           "wordLarge": "KANVAS GURATAN DAN SUARA",
           "mathNotation": "6 + 4 = 10   |   cerita stoples sendiri",
-          "voiceReadout": "Enam ditambah empat sama dengan sepuluh. Sekarang buat cerita stoples kelerengmu sendiri."
+          "voiceReadout": "Jumlah di Bingkai Sepuluh. Enam ditambah empat sama dengan sepuluh. Sekarang buat cerita stoples kelerengmu sendiri."
         }
       ],
       "interactiveGames": [
@@ -1016,9 +1016,9 @@
           "gameType": "tap-fill-and-pour",
           "title": "Isi Dua Stoples lalu Tuang",
           "bookReference": "Buku Siswa Hlm. 70, 73",
-          "objective": "Mengubah cerita menjadi dua kelompok benda lalu menggabungkannya.",
-          "mechanicDescription": "Siswa mendengar cerita, mengetuk stoples untuk memasukkan benda sebanyak cerita (3 + 2, 3 + 4, 4 + 5), menuang jadi satu, lalu mengucapkan jumlah semuanya.",
-          "voiceGuide": "Dengar ceritanya, isi dua stoples, tuang jadi satu, lalu ucapkan berapa semuanya."
+          "objective": "Pakai Menghitung Maju. Mengubah cerita menjadi dua kelompok benda lalu menggabungkannya.",
+          "mechanicDescription": "Siswa mendengar cerita, mengetuk stoples untuk memasukkan benda sebanyak cerita (3 + 2, 3 + 4, 4 + 5), menuang jadi satu, lalu mengucapkan jumlah semuanya. Terapkan Counting On.",
+          "voiceGuide": "Menghitung Maju. Dengar ceritanya, isi dua stoples, tuang jadi satu, lalu ucapkan berapa semuanya."
         },
         {
           "gameId": "subC-game-2",
@@ -1027,9 +1027,9 @@
           "gameType": "tap-count-wheels",
           "title": "Hitung Roda",
           "bookReference": "Buku Siswa Hlm. 69, 72",
-          "objective": "Menjawab pertanyaan kedua dari satu cerita: berapa jumlah semua roda.",
-          "mechanicDescription": "Siswa mengetuk tiap kendaraan, rodanya bertambah (sepeda 2, becak 3, motor 2, mobil 4), lalu membaca kalimat penjumlahan roda (2 + 4, 4 + 3, 6 + 3).",
-          "voiceGuide": "Ketuk tiap kendaraan untuk menghitung rodanya, lalu ucapkan berapa semua roda."
+          "objective": "Pakai Bagian–Utuh. Menjawab pertanyaan kedua dari satu cerita: berapa jumlah semua roda.",
+          "mechanicDescription": "Siswa mengetuk tiap kendaraan, rodanya bertambah (sepeda 2, becak 3, motor 2, mobil 4), lalu membaca kalimat penjumlahan roda (2 + 4, 4 + 3, 6 + 3). Terapkan Part–Part–Whole.",
+          "voiceGuide": "Bagian–Utuh. Ketuk tiap kendaraan untuk menghitung rodanya, lalu ucapkan berapa semua roda."
         },
         {
           "gameId": "subC-game-3",
@@ -1038,9 +1038,9 @@
           "gameType": "drag-select-relevant",
           "title": "Parkiran Pilih-Pilih",
           "bookReference": "Buku Siswa Hlm. 69, 72",
-          "objective": "Memilih keterangan yang dipakai dalam cerita dan mengabaikan yang lain.",
-          "mechanicDescription": "Siswa menyeret atau mengetuk hanya kendaraan yang disebut di cerita ke tempat parkir; kendaraan lain digoyang dan tidak ikut dihitung (3 + 2, 4 + 2, 4 + 3).",
-          "voiceGuide": "Seret hanya kendaraan yang disebut di cerita, lalu ucapkan jumlah semuanya."
+          "objective": "Pakai Jumlah di Bingkai Sepuluh. Memilih keterangan yang dipakai dalam cerita dan mengabaikan yang lain.",
+          "mechanicDescription": "Siswa menyeret atau mengetuk hanya kendaraan yang disebut di cerita ke tempat parkir; kendaraan lain digoyang dan tidak ikut dihitung (3 + 2, 4 + 2, 4 + 3). Terapkan Ten Frame Add.",
+          "voiceGuide": "Jumlah di Bingkai Sepuluh. Seret hanya kendaraan yang disebut di cerita, lalu ucapkan jumlah semuanya."
         },
         {
           "gameId": "subC-game-4",
@@ -1049,9 +1049,9 @@
           "gameType": "sequence-story-cards",
           "title": "Susun Cerita dengan Kartu",
           "bookReference": "Buku Siswa Hlm. 65, 67, 68",
-          "objective": "Mengenali tiga bagian soal cerita: yang ada, yang ditambahkan, dan pertanyaan.",
-          "mechanicDescription": "Siswa mengetuk tiga kartu cerita yang tercampur secara berurutan, mendengar cerita utuh, lalu mengucapkan jumlahnya (3 + 4, 5 + 3, 4 + 2).",
-          "voiceGuide": "Ketuk tiga kartu cerita berurutan, lalu ucapkan jumlah semuanya."
+          "objective": "Pakai Menghitung Maju. Mengenali tiga bagian soal cerita: yang ada, yang ditambahkan, dan pertanyaan.",
+          "mechanicDescription": "Siswa mengetuk tiga kartu cerita yang tercampur secara berurutan, mendengar cerita utuh, lalu mengucapkan jumlahnya (3 + 4, 5 + 3, 4 + 2). Terapkan Counting On.",
+          "voiceGuide": "Menghitung Maju. Ketuk tiga kartu cerita berurutan, lalu ucapkan jumlah semuanya."
         },
         {
           "gameId": "subC-game-5",
@@ -1060,9 +1060,9 @@
           "gameType": "color-bar-model",
           "title": "Cerita ke Model Batang",
           "bookReference": "Buku Siswa Hlm. 65, 67, 71",
-          "objective": "Mengubah cerita menjadi model batang, lalu membaca jumlah semua pada penggaris.",
-          "mechanicDescription": "Tiga ronde (4 + 2, 3 + 4, 5 + 3). Siswa mewarnai satu batang untuk yang ada dan satu batang untuk yang datang lagi, lalu mengetuk angka di ujung batang gabungan pada penggaris.",
-          "voiceGuide": "Warnai kedua batang, ketuk angka di ujung batang gabungan, lalu ucapkan jumlah semua."
+          "objective": "Pakai Bagian–Utuh. Mengubah cerita menjadi model batang, lalu membaca jumlah semua pada penggaris.",
+          "mechanicDescription": "Tiga ronde (4 + 2, 3 + 4, 5 + 3). Siswa mewarnai satu batang untuk yang ada dan satu batang untuk yang datang lagi, lalu mengetuk angka di ujung batang gabungan pada penggaris. Terapkan Part–Part–Whole.",
+          "voiceGuide": "Bagian–Utuh. Warnai kedua batang, ketuk angka di ujung batang gabungan, lalu ucapkan jumlah semua."
         },
         {
           "gameId": "subC-game-6",
@@ -1071,9 +1071,9 @@
           "gameType": "choose-matching-diagram",
           "title": "Cerita ke Diagram",
           "bookReference": "Buku Siswa Hlm. 70",
-          "objective": "Memilih diagram (bingkai sepuluh, garis bilangan, model batang) yang cocok dengan cerita.",
-          "mechanicDescription": "Tiga ronde, tiap ronde bentuk diagram berbeda. Siswa mendengar cerita dan memilih satu dari tiga diagram; pengecoh memuat bilangan salah atau kelompok tertukar (3 + 4, 5 + 2, 6 + 2).",
-          "voiceGuide": "Dengar ceritanya, pilih diagram yang cocok, lalu ucapkan jumlah semua."
+          "objective": "Pakai Jumlah di Bingkai Sepuluh. Memilih diagram (bingkai sepuluh, garis bilangan, model batang) yang cocok dengan cerita.",
+          "mechanicDescription": "Tiga ronde, tiap ronde bentuk diagram berbeda. Siswa mendengar cerita dan memilih satu dari tiga diagram; pengecoh memuat bilangan salah atau kelompok tertukar (3 + 4, 5 + 2, 6 + 2). Terapkan Ten Frame Add.",
+          "voiceGuide": "Jumlah di Bingkai Sepuluh. Dengar ceritanya, pilih diagram yang cocok, lalu ucapkan jumlah semua."
         },
         {
           "gameId": "subC-game-7",
@@ -1082,9 +1082,9 @@
           "gameType": "fill-dot-table",
           "title": "Tabel Hitung Cerita",
           "bookReference": "Buku Siswa Hlm. 69, 72",
-          "objective": "Menghitung titik pada tiap baris tabel, mencatat angkanya, lalu menjumlahkan.",
-          "mechanicDescription": "Siswa mendengar cerita dua jenis kendaraan, menghitung titik pada dua baris tabel, mengisi angkanya, lalu mengisi jumlah semua kendaraan (3 + 1, 3 + 2, 4 + 3). Nama kendaraan hanya berupa kata.",
-          "voiceGuide": "Hitung titik tiap baris, isi tabel, lalu isi jumlah semua."
+          "objective": "Pakai Menghitung Maju. Menghitung titik pada tiap baris tabel, mencatat angkanya, lalu menjumlahkan.",
+          "mechanicDescription": "Siswa mendengar cerita dua jenis kendaraan, menghitung titik pada dua baris tabel, mengisi angkanya, lalu mengisi jumlah semua kendaraan (3 + 1, 3 + 2, 4 + 3). Nama kendaraan hanya berupa kata. Terapkan Counting On.",
+          "voiceGuide": "Menghitung Maju. Hitung titik tiap baris, isi tabel, lalu isi jumlah semua."
         },
         {
           "gameId": "subC-game-8",
@@ -1093,9 +1093,9 @@
           "gameType": "build-solution-and-answer",
           "title": "Tulis Penyelesaian dan Jawaban",
           "bookReference": "Buku Siswa Hlm. 65, 67, 68",
-          "objective": "Menulis penyelesaian dan jawaban kalimat yang memuat hasil dan nama benda.",
-          "mechanicDescription": "Siswa menyusun kalimat penjumlahan dari kartu, memilih hasil, lalu memilih nama benda untuk melengkapi kalimat jawaban (5 + 3 siswa, 3 + 4 pensil).",
-          "voiceGuide": "Susun penyelesaian dengan kartu, lalu lengkapi kalimat jawaban."
+          "objective": "Pakai Bagian–Utuh. Menulis penyelesaian dan jawaban kalimat yang memuat hasil dan nama benda.",
+          "mechanicDescription": "Siswa menyusun kalimat penjumlahan dari kartu, memilih hasil, lalu memilih nama benda untuk melengkapi kalimat jawaban (5 + 3 siswa, 3 + 4 pensil). Terapkan Part–Part–Whole.",
+          "voiceGuide": "Bagian–Utuh. Susun penyelesaian dengan kartu, lalu lengkapi kalimat jawaban."
         },
         {
           "gameId": "subC-game-9",
@@ -1104,9 +1104,9 @@
           "gameType": "find-sentences-nine",
           "title": "Pasangan Sembilan",
           "bookReference": "Buku Siswa Hlm. 71 (Evaluasi 4)",
-          "objective": "Menyusun operasi penjumlahan yang hasilnya 9.",
-          "mechanicDescription": "Siswa memilih satu bilangan di baris atas dan satu di baris bawah, lalu menemukan empat kalimat berbeda yang hasilnya 9 (tukar tempat juga boleh).",
-          "voiceGuide": "Cari empat kalimat penjumlahan yang hasilnya sembilan, lalu ucapkan sembilan."
+          "objective": "Pakai Jumlah di Bingkai Sepuluh. Menyusun operasi penjumlahan yang hasilnya 9.",
+          "mechanicDescription": "Siswa memilih satu bilangan di baris atas dan satu di baris bawah, lalu menemukan empat kalimat berbeda yang hasilnya 9 (tukar tempat juga boleh). Terapkan Ten Frame Add.",
+          "voiceGuide": "Jumlah di Bingkai Sepuluh. Cari empat kalimat penjumlahan yang hasilnya sembilan, lalu ucapkan sembilan."
         },
         {
           "gameId": "subC-game-10",
@@ -1115,9 +1115,9 @@
           "gameType": "canvas-trace-and-voice",
           "title": "Kanvas Guratan dan Suara",
           "bookReference": "Buku Siswa Hlm. 66, 71, 73",
-          "objective": "Menyatakan hasil dengan suara dan tulisan, lalu membuat cerita sendiri.",
-          "mechanicDescription": "Ronde 1: cerita 6 siswa + 4 siswa dengan suara dan guratan angka 10. Ronde 2 (Ayo Berkarya): siswa mengatur dua stoples kelereng sendiri, jumlahnya paling banyak 10, lalu menjelaskan cara.",
-          "voiceGuide": "Ucapkan hasilnya, lalu guratkan angkanya di kanvas."
+          "objective": "Pakai Menghitung Maju. Menyatakan hasil dengan suara dan tulisan, lalu membuat cerita sendiri.",
+          "mechanicDescription": "Ronde 1: cerita 6 siswa + 4 siswa dengan suara dan guratan angka 10. Ronde 2 (Ayo Berkarya): siswa mengatur dua stoples kelereng sendiri, jumlahnya paling banyak 10, lalu menjelaskan cara. Terapkan Counting On.",
+          "voiceGuide": "Menghitung Maju. Ucapkan hasilnya, lalu guratkan angkanya di kanvas."
         }
       ],
       "metodeLuar": [

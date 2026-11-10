@@ -1,7 +1,6 @@
 /**
- * Naskah murni Matematika Kelas 5 Bab 3 (Bilangan Pecahan): Sub-Bab A–C.
- * Sumber: Buku Siswa Matematika Kelas V Kemendikbudristek Bab 3 hlm. 63–104.
- * Satu sumber: buat-k5-bab3.mjs → kelas5-bab3.json. Tanpa React/jaringan.
+ * Naskah Matematika Kelas 5 Bab 3 — rewrite mendalam.
+ * Metode luar dianyam ke Story, peta, infografis, poin, dan meta permainan.
  */
 import type { SubBabNaskah } from "./naskah-k2b2";
 
@@ -20,32 +19,32 @@ export const SUB_A53: SubBabNaskah = {
   "id": "A",
   "codeTitle": "Sub-Bab A (Banding Pecahan)",
   "fullTitle": "Sub-Bab A: Membandingkan dan Mengurutkan Pecahan",
-  "targetDescription": "Siswa membandingkan dan mengurutkan pecahan biasa serta campuran dengan menyamakan bentuk, memakai garis bilangan, dan strategi pembilang/penyebut sesuai Buku Siswa Kelas V Bab 3.",
+  "targetDescription": "Siswa membandingkan dan mengurutkan pecahan biasa serta campuran dengan garis bilangan, pecahan senilai, dan mengubah campuran ke biasa sesuai Buku Siswa Kelas V Bab 3 Sub-Bab A.",
   "secondaryBg": "#FFEDD5",
   "secondaryBorder": "#EA580C",
   "secondaryText": "#7C2D12",
   "silabus": {
-    "teksSuara": "Kita belajar membandingkan dan mengurutkan pecahan. Ingat pembilang dan penyebut. Ubah campuran menjadi biasa. Pakai garis bilangan. Bandingkan pembilang jika penyebut sama, atau penyebut jika pembilang sama. Kita melewati enam tahap seru: cerita, peta pikiran, infografis, benda nyata, gambar, dan simbol.",
-    "cp": "Siswa membandingkan dan mengurutkan bilangan pecahan.",
+    "teksSuara": "Kita belajar membandingkan pecahan. Letakkan pecahan di garis bilangan: yang lebih kanan lebih besar. Samakan bentuk dengan pecahan senilai, dan ubah campuran menjadi biasa dulu. Kita melewati enam tahap seru: cerita, peta pikiran, infografis, benda nyata, gambar, dan simbol.",
+    "cp": "Siswa membandingkan dan mengurutkan bilangan pecahan dengan garis bilangan dan penyebut/pembilang yang tepat.",
     "referensi": "Buku Siswa Matematika Kelas V Kemendikbudristek (Bab 3: Bilangan Pecahan, Sub-Bab A hlm. 68–75)."
   },
   "videos": [
     {
       "id": "K5B3A-V1",
-      "judul": "Pembilang dan Penyebut",
-      "subjudul": "Dasar",
+      "judul": "Apa Arti Pecahan",
+      "subjudul": "Pecahan di Garis Bilangan",
       "adegan": [
         {
           "id": "K5B3A-V1-1",
           "judul": "Bagian keseluruhan",
           "ketukan": [
-            "Pecahan adalah bagian dari keseluruhan.",
-            "Angka atas disebut pembilang.",
-            "Angka bawah disebut penyebut.",
-            "Contoh satu per dua."
+            "Bayangkan satu kue utuh. Kalau kue itu dipotong sama besar, tiap potong adalah bagian dari keseluruhan.",
+            "Angka atas disebut pembilang: berapa bagian yang diambil.",
+            "Angka bawah disebut penyebut: menjadi berapa bagian sama besar kue itu dipotong.",
+            "Contoh satu per dua berarti satu dari dua bagian sama besar."
           ],
           "papan": [
-            "bagian",
+            "kue utuh",
             "pembilang",
             "penyebut",
             "1/2"
@@ -53,36 +52,34 @@ export const SUB_A53: SubBabNaskah = {
         },
         {
           "id": "K5B3A-V1-2",
-          "judul": "Bentuk pecahan",
+          "judul": "Biasa dan campuran",
           "ketukan": [
-            "Ada pecahan biasa.",
-            "Ada pecahan campuran.",
-            "Campuran punya bilangan bulat.",
-            "Contoh dua tiga per empat."
+            "Pecahan biasa hanya punya pembilang dan penyebut, misalnya tiga per empat.",
+            "Pecahan campuran punya bilangan bulat ditambah pecahan, misalnya dua tiga per empat.",
+            "Campuran artinya ada beberapa utuh ditambah sisa bagian.",
+            "Sebelum membandingkan, sering lebih mudah mengubah campuran menjadi pecahan biasa."
           ],
           "papan": [
             "biasa",
             "campuran",
-            "bulat",
-            "2 3/4"
+            "utuh + sisa",
+            "siap ubah"
           ]
         },
         {
           "id": "K5B3A-V1-3",
-          "judul": "Jajanan pasar",
+          "judul": "Jajanan dan garis",
           "ketukan": [
-            "Empat potong makanan.",
-            "Kamu makan dua.",
-            "Itu dua per empat.",
-            "Boleh disederhanakan.",
-            "METODE LUAR. Pecahan di Garis Bilangan: Bandingkan pecahan dengan melihat posisi di garis bilangan; yang lebih kanan lebih besar."
+            "Empat potong makanan sama besar. Kamu makan dua. Itu dua per empat.",
+            "Dua per empat senilai dengan satu per dua. Bagiannya sama, tulisannya beda.",
+            "Bayangkan garis bilangan dari nol ke satu. Letakkan satu per dua di tengah.",
+            "METODE LUAR · Pecahan di Garis Bilangan: yang lebih kanan lebih besar."
           ],
           "papan": [
-            "4 potong",
-            "makan 2",
             "2/4",
-            "1/2",
-            "METODE LUAR · Pecahan di Garis Bilangan"
+            "2/4 = 1/2",
+            "garis",
+            "kanan >"
           ]
         }
       ]
@@ -90,56 +87,54 @@ export const SUB_A53: SubBabNaskah = {
     {
       "id": "K5B3A-V2",
       "judul": "Lompat Jauh Yohana",
-      "subjudul": "Urut",
+      "subjudul": "Campuran ke Biasa",
       "adegan": [
         {
           "id": "K5B3A-V2-1",
           "judul": "Tiga lompatan",
           "ketukan": [
-            "Dua tiga per empat meter.",
-            "Tiga satu per dua meter.",
-            "Tujuh per delapan meter.",
-            "Mana yang terjauh?"
+            "Yohana mencatat tiga lompatan: dua tiga per empat meter, tiga satu per dua meter, dan tujuh per delapan meter.",
+            "Mana yang terjauh? Jangan menebak dari bentuk campuran saja.",
+            "Kita samakan bentuk dulu agar adil dibandingkannya.",
+            "Ubah campuran menjadi pecahan biasa."
           ],
           "papan": [
-            "2 3/4",
-            "3 1/2",
-            "7/8",
-            "?"
+            "3 data",
+            "jangan tebak",
+            "samakan",
+            "ke biasa"
           ]
         },
         {
           "id": "K5B3A-V2-2",
           "judul": "Ubah ke biasa",
           "ketukan": [
-            "Dua tiga per empat jadi sebelas per empat.",
-            "Tiga satu per dua jadi tujuh per dua.",
-            "Tujuh per delapan tetap.",
-            "Siap dibandingkan."
+            "Dua tiga per empat: dua kali empat sama dengan delapan, tambah tiga, jadi sebelas per empat.",
+            "Tiga satu per dua: tiga kali dua sama dengan enam, tambah satu, jadi tujuh per dua.",
+            "Tujuh per delapan sudah biasa, biarkan.",
+            "METODE LUAR · Campuran ke Biasa: (bulat × penyebut) + pembilang."
           ],
           "papan": [
             "11/4",
             "7/2",
             "7/8",
-            "siap"
+            "rumus ubah"
           ]
         },
         {
           "id": "K5B3A-V2-3",
-          "judul": "Garis bilangan",
+          "judul": "Urut di garis",
           "ketukan": [
-            "Letakkan di garis bilangan.",
-            "Makin kanan makin besar.",
-            "Terjauh tujuh per dua.",
-            "Itu tiga satu per dua.",
-            "METODE LUAR. Pecahan Senilai: Pecahan senilai menunjuk bagian sama meski tulisannya beda; pakai untuk menyamakan penyebut."
+            "Letakkan sebelas per empat, tujuh per dua, dan tujuh per delapan di garis bilangan.",
+            "Tujuh per dua sama dengan tiga setengah, paling kanan.",
+            "Jadi lompatan terjauh adalah tiga satu per dua meter.",
+            "METODE LUAR · Pecahan Senilai: boleh ubah bentuk tanpa mengubah nilai saat menyamakan."
           ],
           "papan": [
-            "garis",
-            "kanan besar",
-            "7/2",
+            "letak",
+            "7/2 kanan",
             "terjauh",
-            "METODE LUAR · Pecahan Senilai"
+            "senilai"
           ]
         }
       ]
@@ -147,56 +142,54 @@ export const SUB_A53: SubBabNaskah = {
     {
       "id": "K5B3A-V3",
       "judul": "Strategi Banding",
-      "subjudul": "Cara",
+      "subjudul": "Pecahan Senilai",
       "adegan": [
         {
           "id": "K5B3A-V3-1",
           "judul": "Pembilang sama",
           "ketukan": [
-            "Satu per dua dan satu per lima.",
-            "Pembilang sama.",
-            "Penyebut kecil lebih besar.",
-            "Jadi satu per dua lebih besar."
+            "Satu per dua dan satu per lima. Pembilangnya sama: satu.",
+            "Penyebut lebih kecil berarti tiap bagian lebih besar.",
+            "Jadi satu per dua lebih besar dari satu per lima.",
+            "Ingat: potongan kue jadi dua lebih besar daripada jadi lima."
           ],
           "papan": [
-            "1/2",
-            "1/5",
-            "penyebut",
-            "1/2 >"
+            "1/? ",
+            "penyebut kecil",
+            "1/2 > 1/5",
+            "analogi kue"
           ]
         },
         {
           "id": "K5B3A-V3-2",
           "judul": "Penyebut sama",
           "ketukan": [
-            "Tiga per delapan dan lima per delapan.",
-            "Penyebut sama.",
-            "Lihat pembilang.",
-            "Lima lebih besar."
+            "Tiga per delapan dan lima per delapan. Penyebut sama.",
+            "Lihat pembilang: lima lebih besar dari tiga.",
+            "Maka lima per delapan lebih besar.",
+            "Kalau penyebut sama, cukup bandingkan pembilang."
           ],
           "papan": [
-            "3/8",
-            "5/8",
+            " /8",
             "pembilang",
-            "5/8 >"
+            "5/8 >",
+            "aturan"
           ]
         },
         {
           "id": "K5B3A-V3-3",
           "judul": "Siap bermain",
           "ketukan": [
-            "Samakan bentuk dulu.",
-            "Bandingkan dengan hati-hati.",
-            "Urutkan dari kecil atau besar.",
-            "Ayo bermain!",
-            "METODE LUAR. Campuran ke Biasa: Ubah pecahan campuran ke biasa: (bulat × penyebut) + pembilang."
+            "Kalau beda pembilang dan penyebut, samakan dulu dengan pecahan senilai atau garis bilangan.",
+            "Campuran? Ubah ke biasa dulu.",
+            "Lalu urutkan dari kecil ke besar atau sebaliknya.",
+            "Ayo latih membandingkan pecahan di permainan!"
           ],
           "papan": [
-            "samakan",
-            "banding",
+            "strategi",
+            "campuran dulu",
             "urut",
-            "main",
-            "METODE LUAR · Campuran ke Biasa"
+            "main"
           ]
         }
       ]
@@ -205,8 +198,8 @@ export const SUB_A53: SubBabNaskah = {
   "mindMaps": [
     {
       "stepNumber": 1,
-      "stepTitle": "1. Kenali p/q",
-      "stepDesc": "Pembilang & penyebut",
+      "stepTitle": "1. Baca pecahan",
+      "stepDesc": "Kenali pembilang dan penyebut.",
       "icon": "📖",
       "flowFrom": "START",
       "flowTo": "2"
@@ -214,56 +207,56 @@ export const SUB_A53: SubBabNaskah = {
     {
       "stepNumber": 2,
       "stepTitle": "2. Campuran?",
-      "stepDesc": "Ubah ke biasa",
+      "stepDesc": "Ubah ke biasa bila perlu.",
       "icon": "🔄",
       "flowFrom": "1",
       "flowTo": "3"
     },
     {
       "stepNumber": 3,
-      "stepTitle": "3. Strategi",
-      "stepDesc": "Sama p atau sama q",
+      "stepTitle": "3. Senilai",
+      "stepDesc": "Samakan penyebut dengan pecahan senilai.",
       "icon": "⚖️",
       "flowFrom": "2",
       "flowTo": "4"
     },
     {
       "stepNumber": 4,
-      "stepTitle": "4. Garis",
-      "stepDesc": "Letak nilai",
+      "stepTitle": "4. Garis bilangan",
+      "stepDesc": "Letakkan; kanan lebih besar.",
       "icon": "📏",
       "flowFrom": "3",
       "flowTo": "5"
     },
     {
       "stepNumber": 5,
-      "stepTitle": "5. Tanda",
-      "stepDesc": "< > =",
-      "icon": "≷",
+      "stepTitle": "5. Bandingkan",
+      "stepDesc": "Tulis tanda > < atau =.",
+      "icon": "⇔",
       "flowFrom": "4",
       "flowTo": "6"
     },
     {
       "stepNumber": 6,
-      "stepTitle": "6. Urut",
-      "stepDesc": "Naik/turun",
+      "stepTitle": "6. Urutkan",
+      "stepDesc": "Dari kecil ke besar atau sebaliknya.",
       "icon": "📶",
       "flowFrom": "5",
       "flowTo": "7"
     },
     {
       "stepNumber": 7,
-      "stepTitle": "7. METODE LUAR · Pecahan di Garis Bilangan",
-      "stepDesc": "Bandingkan pecahan dengan melihat posisi di garis bilangan; yang lebih kanan lebih besar.",
-      "icon": "🌍",
+      "stepTitle": "7. Cek",
+      "stepDesc": "Apakah posisi di garis masuk akal?",
+      "icon": "✅",
       "flowFrom": "6",
       "flowTo": "8"
     },
     {
       "stepNumber": 8,
-      "stepTitle": "8. METODE LUAR · Pecahan Senilai",
-      "stepDesc": "Pecahan senilai menunjuk bagian sama meski tulisannya beda; pakai untuk menyamakan penyebut.",
-      "icon": "🌍",
+      "stepTitle": "8. Main",
+      "stepDesc": "Latihan Concrete sampai Abstract.",
+      "icon": "🎮",
       "flowFrom": "7",
       "flowTo": "END"
     }
@@ -281,84 +274,63 @@ export const SUB_A53: SubBabNaskah = {
       "emoji": "⬇️",
       "countNum": 1,
       "countWord": "bawah",
-      "suara": "Banyak bagian."
-    },
-    {
-      "judul": "1/2 > 1/5",
-      "emoji": "⚖️",
-      "countNum": 1,
-      "countWord": "lebih besar",
-      "suara": "Pembilang sama."
-    },
-    {
-      "judul": "2 3/4",
-      "emoji": "🔄",
-      "countNum": 11,
-      "countWord": "11/4",
-      "suara": "Ke biasa."
-    },
-    {
-      "judul": "3 1/2",
-      "emoji": "🔄",
-      "countNum": 7,
-      "countWord": "7/2",
-      "suara": "Ke biasa."
-    },
-    {
-      "judul": "Terjauh",
-      "emoji": "🏃",
-      "countNum": 1,
-      "countWord": "3 1/2",
-      "suara": "Lompat Yohana."
+      "suara": "Angka bawah."
     },
     {
       "judul": "Garis",
       "emoji": "📏",
       "countNum": 1,
-      "countWord": "kanan besar",
-      "suara": "Urut nilai."
+      "countWord": "kanan>",
+      "suara": "Lebih kanan lebih besar."
     },
     {
-      "judul": "Sama q",
-      "emoji": "👀",
+      "judul": "Senilai",
+      "emoji": "⚖️",
       "countNum": 1,
-      "countWord": "lihat p",
-      "suara": "Strategi."
+      "countWord": "sama nilai",
+      "suara": "Bentuk beda nilai sama."
     },
     {
-      "judul": "Sama p",
-      "emoji": "👀",
+      "judul": "Campuran",
+      "emoji": "🔄",
       "countNum": 1,
-      "countWord": "lihat q",
-      "suara": "Strategi."
+      "countWord": "ke biasa",
+      "suara": "(bulat×q)+p."
+    },
+    {
+      "judul": "1/2 vs 1/5",
+      "emoji": "🍰",
+      "countNum": 1,
+      "countWord": "1/2>",
+      "suara": "Pembilang sama."
+    },
+    {
+      "judul": "3/8 vs 5/8",
+      "emoji": "📊",
+      "countNum": 1,
+      "countWord": "5/8>",
+      "suara": "Penyebut sama."
+    },
+    {
+      "judul": "Yohana",
+      "emoji": "🏃",
+      "countNum": 1,
+      "countWord": "3 1/2",
+      "suara": "Terjauh."
+    },
+    {
+      "judul": "2/4",
+      "emoji": "✂️",
+      "countNum": 1,
+      "countWord": "=1/2",
+      "suara": "Senilai."
     },
     {
       "judul": "Siap B",
       "emoji": "➡️",
       "countNum": 1,
       "countWord": "jumlah",
-      "suara": "Lanjut."
-    },
-    {
-      "judul": "Pecahan di Garis Bilangan",
-      "emoji": "🌍",
-      "countNum": 1,
-      "countWord": "METODE LUAR · Number Line Fractions",
-      "suara": "METODE LUAR. Pecahan di Garis Bilangan. Bandingkan pecahan dengan melihat posisi di garis bilangan; yang lebih kanan lebih besar."
-    },
-    {
-      "judul": "Pecahan Senilai",
-      "emoji": "🌍",
-      "countNum": 2,
-      "countWord": "METODE LUAR · Equivalent Fractions",
-      "suara": "METODE LUAR. Pecahan Senilai. Pecahan senilai menunjuk bagian sama meski tulisannya beda; pakai untuk menyamakan penyebut."
-    },
-    {
-      "judul": "Campuran ke Biasa",
-      "emoji": "🌍",
-      "countNum": 3,
-      "countWord": "METODE LUAR · Mixed to Improper",
-      "suara": "METODE LUAR. Campuran ke Biasa. Ubah pecahan campuran ke biasa: (bulat × penyebut) + pembilang."
+      "suara": "Lanjut penjumlahan."
     }
   ],
   "games": [
@@ -367,9 +339,9 @@ export const SUB_A53: SubBabNaskah = {
       "gameType": "banding-pecahan",
       "title": "Bandingkan Pecahan",
       "bookReference": "hlm. 68–75",
-      "objective": "Membandingkan dua pecahan. (METODE LUAR · Pecahan di Garis Bilangan)",
-      "mechanicDescription": "Tiga ronde.",
-      "voiceGuide": "METODE LUAR · Pecahan di Garis Bilangan. Pilih tanda.",
+      "objective": "Bandingkan posisi di garis. Membandingkan dua pecahan.",
+      "mechanicDescription": "Tiga ronde. Saat bermain, ingat Pecahan di Garis Bilangan: Yang kanan lebih besar.",
+      "voiceGuide": "Pecahan di Garis Bilangan. Yang kanan lebih besar.",
       "emoji": "⚖️",
       "targetCount": 6
     },
@@ -378,9 +350,9 @@ export const SUB_A53: SubBabNaskah = {
       "gameType": "campuran-biasa",
       "title": "Campuran ke Biasa",
       "bookReference": "hlm. 71–72",
-      "objective": "Mengubah bentuk.",
-      "mechanicDescription": "Tiga ronde.",
-      "voiceGuide": "Pilih.",
+      "objective": "Bandingkan posisi di garis. Mengubah bentuk.",
+      "mechanicDescription": "Tiga ronde. Saat bermain, ingat Pecahan di Garis Bilangan: Yang kanan lebih besar.",
+      "voiceGuide": "Pecahan di Garis Bilangan. Yang kanan lebih besar.",
       "emoji": "🔄",
       "targetCount": 6
     },
@@ -389,9 +361,9 @@ export const SUB_A53: SubBabNaskah = {
       "gameType": "arti-pecahan",
       "title": "Arti Pecahan",
       "bookReference": "hlm. 66–68",
-      "objective": "Definisi.",
-      "mechanicDescription": "Tiga ronde.",
-      "voiceGuide": "Pilih.",
+      "objective": "Bandingkan posisi di garis. Definisi.",
+      "mechanicDescription": "Tiga ronde. Saat bermain, ingat Pecahan di Garis Bilangan: Yang kanan lebih besar.",
+      "voiceGuide": "Pecahan di Garis Bilangan. Yang kanan lebih besar.",
       "emoji": "📖",
       "targetCount": 6
     },
@@ -400,9 +372,9 @@ export const SUB_A53: SubBabNaskah = {
       "gameType": "sort-banding",
       "title": "Pilah Besar/Kecil",
       "bookReference": "hlm. 68–70",
-      "objective": "Memilah.",
-      "mechanicDescription": "Tiga ronde.",
-      "voiceGuide": "Pilah.",
+      "objective": "Bandingkan posisi di garis. Memilah.",
+      "mechanicDescription": "Tiga ronde. Saat bermain, ingat Pecahan di Garis Bilangan: Yang kanan lebih besar.",
+      "voiceGuide": "Pecahan di Garis Bilangan. Yang kanan lebih besar.",
       "emoji": "🧺",
       "targetCount": 18
     },
@@ -411,9 +383,9 @@ export const SUB_A53: SubBabNaskah = {
       "gameType": "match-banding",
       "title": "Jodohkan Pecahan",
       "bookReference": "hlm. 68–75",
-      "objective": "Menjodohkan.",
+      "objective": "Menjodohkan. (Pecahan di Garis Bilangan)",
       "mechanicDescription": "Tiga ronde.",
-      "voiceGuide": "Jodohkan.",
+      "voiceGuide": "Pecahan di Garis Bilangan. Mainkan dengan teliti.",
       "emoji": "🔗",
       "targetCount": 12
     },
@@ -422,9 +394,9 @@ export const SUB_A53: SubBabNaskah = {
       "gameType": "memory-banding",
       "title": "Memori Pecahan",
       "bookReference": "hlm. 68–75",
-      "objective": "Memori.",
+      "objective": "Memori. (Pecahan di Garis Bilangan)",
       "mechanicDescription": "Tiga ronde.",
-      "voiceGuide": "Balik kartu.",
+      "voiceGuide": "Pecahan di Garis Bilangan. Mainkan dengan teliti.",
       "emoji": "🃏",
       "targetCount": 12
     },
@@ -433,9 +405,9 @@ export const SUB_A53: SubBabNaskah = {
       "gameType": "tap-pecahan",
       "title": "Ketuk Pecahan",
       "bookReference": "hlm. 68–75",
-      "objective": "Mengetuk.",
+      "objective": "Mengetuk. (Pecahan di Garis Bilangan)",
       "mechanicDescription": "Tiga ronde.",
-      "voiceGuide": "Ketuk.",
+      "voiceGuide": "Pecahan di Garis Bilangan. Mainkan dengan teliti.",
       "emoji": "👆",
       "targetCount": 9
     },
@@ -444,9 +416,9 @@ export const SUB_A53: SubBabNaskah = {
       "gameType": "tap-all-banding",
       "title": "Ketuk Semua Benar",
       "bookReference": "hlm. 68–75",
-      "objective": "Ketuk semua.",
+      "objective": "Ketuk semua. (Pecahan di Garis Bilangan)",
       "mechanicDescription": "Tiga ronde.",
-      "voiceGuide": "Ketuk semua.",
+      "voiceGuide": "Pecahan di Garis Bilangan. Mainkan dengan teliti.",
       "emoji": "✔️",
       "targetCount": 3
     },
@@ -455,9 +427,9 @@ export const SUB_A53: SubBabNaskah = {
       "gameType": "story-banding",
       "title": "Cerita Lompat & Wingko",
       "bookReference": "hlm. 68–75",
-      "objective": "Soal cerita.",
+      "objective": "Soal cerita. (Pecahan di Garis Bilangan)",
       "mechanicDescription": "Tiga ronde.",
-      "voiceGuide": "Pilih.",
+      "voiceGuide": "Pecahan di Garis Bilangan. Mainkan dengan teliti.",
       "emoji": "🏃",
       "targetCount": 6
     },
@@ -466,9 +438,9 @@ export const SUB_A53: SubBabNaskah = {
       "gameType": "order-pecahan",
       "title": "Urutkan Pecahan",
       "bookReference": "hlm. 71–75",
-      "objective": "Mengurutkan.",
+      "objective": "Mengurutkan. (Pecahan di Garis Bilangan)",
       "mechanicDescription": "Tiga ronde.",
-      "voiceGuide": "Urutkan.",
+      "voiceGuide": "Pecahan di Garis Bilangan. Mainkan dengan teliti.",
       "emoji": "📶",
       "targetCount": 3
     },
@@ -477,9 +449,9 @@ export const SUB_A53: SubBabNaskah = {
       "gameType": "diagram-banding",
       "title": "Diagram Banding",
       "bookReference": "hlm. 68–70",
-      "objective": "Baca tanda. (METODE LUAR · Pecahan di Garis Bilangan)",
-      "mechanicDescription": "Tiga ronde.",
-      "voiceGuide": "METODE LUAR · Pecahan di Garis Bilangan. Pilih.",
+      "objective": "Ubah campuran dulu. Baca tanda.",
+      "mechanicDescription": "Tiga ronde. Saat bermain, ingat Campuran ke Biasa: (bulat kali penyebut) plus pembilang.",
+      "voiceGuide": "Campuran ke Biasa. (bulat kali penyebut) plus pembilang.",
       "diagramType": "compare",
       "numberA": 1,
       "numberB": 2
@@ -489,9 +461,9 @@ export const SUB_A53: SubBabNaskah = {
       "gameType": "diagram-campuran",
       "title": "Diagram Campuran",
       "bookReference": "hlm. 71–72",
-      "objective": "Ubah bentuk.",
-      "mechanicDescription": "Tiga ronde.",
-      "voiceGuide": "Pilih.",
+      "objective": "Ubah campuran dulu. Ubah bentuk.",
+      "mechanicDescription": "Tiga ronde. Saat bermain, ingat Campuran ke Biasa: (bulat kali penyebut) plus pembilang.",
+      "voiceGuide": "Campuran ke Biasa. (bulat kali penyebut) plus pembilang.",
       "diagramType": "mixed",
       "numberA": 1,
       "numberB": 2
@@ -501,9 +473,9 @@ export const SUB_A53: SubBabNaskah = {
       "gameType": "match-diagram-a",
       "title": "Jodohkan Diagram A",
       "bookReference": "hlm. 68–75",
-      "objective": "Jodohkan.",
-      "mechanicDescription": "Tiga ronde.",
-      "voiceGuide": "Jodohkan.",
+      "objective": "Ubah campuran dulu. Jodohkan.",
+      "mechanicDescription": "Tiga ronde. Saat bermain, ingat Campuran ke Biasa: (bulat kali penyebut) plus pembilang.",
+      "voiceGuide": "Campuran ke Biasa. (bulat kali penyebut) plus pembilang.",
       "diagramType": "match",
       "numberA": 1,
       "numberB": 2
@@ -513,9 +485,9 @@ export const SUB_A53: SubBabNaskah = {
       "gameType": "memory-diagram-a",
       "title": "Memori Diagram A",
       "bookReference": "hlm. 68–75",
-      "objective": "Memori.",
-      "mechanicDescription": "Tiga ronde.",
-      "voiceGuide": "Balik kartu.",
+      "objective": "Ubah campuran dulu. Memori.",
+      "mechanicDescription": "Tiga ronde. Saat bermain, ingat Campuran ke Biasa: (bulat kali penyebut) plus pembilang.",
+      "voiceGuide": "Campuran ke Biasa. (bulat kali penyebut) plus pembilang.",
       "diagramType": "mem",
       "numberA": 1,
       "numberB": 4
@@ -525,9 +497,9 @@ export const SUB_A53: SubBabNaskah = {
       "gameType": "table-a",
       "title": "Tabel Banding",
       "bookReference": "hlm. 68–75",
-      "objective": "Isi tabel.",
+      "objective": "Isi tabel. (Campuran ke Biasa)",
       "mechanicDescription": "Tiga tabel.",
-      "voiceGuide": "Pilih.",
+      "voiceGuide": "Campuran ke Biasa. Mainkan dengan teliti.",
       "diagramType": "table",
       "numberA": 1,
       "numberB": 3
@@ -537,9 +509,9 @@ export const SUB_A53: SubBabNaskah = {
       "gameType": "tap-all-pa",
       "title": "Ketuk Semua Diagram A",
       "bookReference": "hlm. 68–75",
-      "objective": "Ketuk semua.",
+      "objective": "Ketuk semua. (Campuran ke Biasa)",
       "mechanicDescription": "Tiga ronde.",
-      "voiceGuide": "Ketuk semua.",
+      "voiceGuide": "Campuran ke Biasa. Mainkan dengan teliti.",
       "diagramType": "select",
       "numberA": 1,
       "numberB": 4
@@ -549,9 +521,9 @@ export const SUB_A53: SubBabNaskah = {
       "gameType": "sort-diagram-a",
       "title": "Pilah Diagram A",
       "bookReference": "hlm. 68–70",
-      "objective": "Pilah.",
+      "objective": "Pilah. (Campuran ke Biasa)",
       "mechanicDescription": "Tiga ronde.",
-      "voiceGuide": "Pilah.",
+      "voiceGuide": "Campuran ke Biasa. Mainkan dengan teliti.",
       "diagramType": "sort",
       "numberA": 1,
       "numberB": 6
@@ -561,9 +533,9 @@ export const SUB_A53: SubBabNaskah = {
       "gameType": "choose-a",
       "title": "Pilih Pernyataan A",
       "bookReference": "hlm. 66–75",
-      "objective": "Pilih.",
+      "objective": "Pilih. (Campuran ke Biasa)",
       "mechanicDescription": "Tiga ronde.",
-      "voiceGuide": "Pilih.",
+      "voiceGuide": "Campuran ke Biasa. Mainkan dengan teliti.",
       "diagramType": "choose",
       "numberA": 1,
       "numberB": 2
@@ -573,9 +545,9 @@ export const SUB_A53: SubBabNaskah = {
       "gameType": "jenis-pa",
       "title": "Pilih Arti Diagram A",
       "bookReference": "hlm. 66–68",
-      "objective": "Definisi.",
+      "objective": "Definisi. (Campuran ke Biasa)",
       "mechanicDescription": "Tiga ronde.",
-      "voiceGuide": "Pilih.",
+      "voiceGuide": "Campuran ke Biasa. Mainkan dengan teliti.",
       "diagramType": "def",
       "numberA": 1,
       "numberB": 2
@@ -585,9 +557,9 @@ export const SUB_A53: SubBabNaskah = {
       "gameType": "story-picture-a",
       "title": "Cerita Diagram A",
       "bookReference": "hlm. 68–75",
-      "objective": "Cerita.",
+      "objective": "Cerita. (Campuran ke Biasa)",
       "mechanicDescription": "Tiga ronde.",
-      "voiceGuide": "Pilih.",
+      "voiceGuide": "Campuran ke Biasa. Mainkan dengan teliti.",
       "diagramType": "story",
       "numberA": 1,
       "numberB": 2
@@ -597,9 +569,9 @@ export const SUB_A53: SubBabNaskah = {
       "gameType": "write-banding",
       "title": "Tulis Tanda Banding",
       "bookReference": "hlm. 68–75",
-      "objective": "Menulis tanda. (METODE LUAR · Pecahan di Garis Bilangan)",
-      "mechanicDescription": "Tiga ronde.",
-      "voiceGuide": "METODE LUAR · Pecahan di Garis Bilangan. Pilih.",
+      "objective": "Samakan penyebut. Menulis tanda.",
+      "mechanicDescription": "Tiga ronde. Saat bermain, ingat Pecahan Senilai: Nilai tetap sama.",
+      "voiceGuide": "Pecahan Senilai. Nilai tetap sama.",
       "symbolLarge": "≷",
       "wordLarge": "TANDA",
       "mathNotation": "banding"
@@ -609,9 +581,9 @@ export const SUB_A53: SubBabNaskah = {
       "gameType": "write-campuran",
       "title": "Tulis Bentuk Biasa",
       "bookReference": "hlm. 71–72",
-      "objective": "Menulis.",
-      "mechanicDescription": "Tiga ronde.",
-      "voiceGuide": "Pilih.",
+      "objective": "Samakan penyebut. Menulis.",
+      "mechanicDescription": "Tiga ronde. Saat bermain, ingat Pecahan Senilai: Nilai tetap sama.",
+      "voiceGuide": "Pecahan Senilai. Nilai tetap sama.",
       "symbolLarge": "a b/c",
       "wordLarge": "BIASA",
       "mathNotation": "campuran"
@@ -621,9 +593,9 @@ export const SUB_A53: SubBabNaskah = {
       "gameType": "choose-def-a",
       "title": "Pilih Definisi A",
       "bookReference": "hlm. 66–68",
-      "objective": "Definisi.",
-      "mechanicDescription": "Tiga ronde.",
-      "voiceGuide": "Pilih.",
+      "objective": "Samakan penyebut. Definisi.",
+      "mechanicDescription": "Tiga ronde. Saat bermain, ingat Pecahan Senilai: Nilai tetap sama.",
+      "voiceGuide": "Pecahan Senilai. Nilai tetap sama.",
       "symbolLarge": "p/q",
       "wordLarge": "DEFINISI",
       "mathNotation": "teks"
@@ -633,9 +605,9 @@ export const SUB_A53: SubBabNaskah = {
       "gameType": "order-abstract-a",
       "title": "Urutkan Abstrak A",
       "bookReference": "hlm. 71–75",
-      "objective": "Urut.",
-      "mechanicDescription": "Tiga ronde.",
-      "voiceGuide": "Urutkan.",
+      "objective": "Samakan penyebut. Urut.",
+      "mechanicDescription": "Tiga ronde. Saat bermain, ingat Pecahan Senilai: Nilai tetap sama.",
+      "voiceGuide": "Pecahan Senilai. Nilai tetap sama.",
       "symbolLarge": "naik",
       "wordLarge": "URUT",
       "mathNotation": "nilai"
@@ -645,9 +617,9 @@ export const SUB_A53: SubBabNaskah = {
       "gameType": "match-abstract-a",
       "title": "Jodohkan Notasi A",
       "bookReference": "hlm. 68–75",
-      "objective": "Jodohkan.",
+      "objective": "Jodohkan. (Pecahan Senilai)",
       "mechanicDescription": "Tiga ronde.",
-      "voiceGuide": "Jodohkan.",
+      "voiceGuide": "Pecahan Senilai. Mainkan dengan teliti.",
       "symbolLarge": "p/q",
       "wordLarge": "JODOH",
       "mathNotation": "teks"
@@ -657,9 +629,9 @@ export const SUB_A53: SubBabNaskah = {
       "gameType": "memory-abstract-a",
       "title": "Memori Notasi A",
       "bookReference": "hlm. 68–75",
-      "objective": "Memori.",
+      "objective": "Memori. (Pecahan Senilai)",
       "mechanicDescription": "Tiga ronde.",
-      "voiceGuide": "Balik kartu.",
+      "voiceGuide": "Pecahan Senilai. Mainkan dengan teliti.",
       "symbolLarge": "p/q",
       "wordLarge": "MEMORI",
       "mathNotation": "notasi"
@@ -669,9 +641,9 @@ export const SUB_A53: SubBabNaskah = {
       "gameType": "true-false-a",
       "title": "Benar atau Salah: Banding",
       "bookReference": "hlm. 68–75",
-      "objective": "Menilai.",
+      "objective": "Menilai. (Pecahan Senilai)",
       "mechanicDescription": "Dua ronde.",
-      "voiceGuide": "Benar/salah.",
+      "voiceGuide": "Pecahan Senilai. Mainkan dengan teliti.",
       "symbolLarge": "✓ ✗",
       "wordLarge": "BENAR SALAH",
       "mathNotation": "alasan"
@@ -681,9 +653,9 @@ export const SUB_A53: SubBabNaskah = {
       "gameType": "detective-a",
       "title": "Detektif Pecahan",
       "bookReference": "hlm. 68–75",
-      "objective": "Petunjuk.",
+      "objective": "Petunjuk. (Pecahan Senilai)",
       "mechanicDescription": "Tiga soal.",
-      "voiceGuide": "Pilih.",
+      "voiceGuide": "Pecahan Senilai. Mainkan dengan teliti.",
       "symbolLarge": "?",
       "wordLarge": "DETEKTIF",
       "mathNotation": "petunjuk"
@@ -693,9 +665,9 @@ export const SUB_A53: SubBabNaskah = {
       "gameType": "concept-a",
       "title": "Peta Konsep Banding",
       "bookReference": "hlm. 68–75",
-      "objective": "Peta.",
+      "objective": "Peta. (Pecahan Senilai)",
       "mechanicDescription": "Satu peta.",
-      "voiceGuide": "Pilih opsi.",
+      "voiceGuide": "Pecahan Senilai. Mainkan dengan teliti.",
       "symbolLarge": "🗺️",
       "wordLarge": "PETA",
       "mathNotation": "konsep"
@@ -705,9 +677,9 @@ export const SUB_A53: SubBabNaskah = {
       "gameType": "story-abstract-a",
       "title": "Cerita Angka Banding",
       "bookReference": "hlm. 68–75",
-      "objective": "Cerita.",
+      "objective": "Cerita. (Pecahan Senilai)",
       "mechanicDescription": "Tiga ronde.",
-      "voiceGuide": "Pilih.",
+      "voiceGuide": "Pecahan Senilai. Mainkan dengan teliti.",
       "symbolLarge": "📖",
       "wordLarge": "CERITA",
       "mathNotation": "teks"
@@ -715,49 +687,31 @@ export const SUB_A53: SubBabNaskah = {
   ],
   "poin": [
     {
-      "ikon": "⬆️",
-      "nama": "Pembilang",
-      "isi": "Angka atas: berapa bagian diambil.",
-      "suara": "Itu pembilang."
-    },
-    {
-      "ikon": "⬇️",
-      "nama": "Penyebut",
-      "isi": "Angka bawah: banyak bagian sama besar.",
-      "suara": "Itu penyebut."
+      "ikon": "📏",
+      "nama": "Garis bilangan",
+      "isi": "Posisi di garis menentukan mana yang lebih besar.",
+      "suara": "Kanan lebih besar."
     },
     {
       "ikon": "🔄",
-      "nama": "Campuran",
-      "isi": "Ubah ke biasa: (bulat×penyebut)+pembilang.",
-      "suara": "Siap banding."
+      "nama": "Campuran ke biasa",
+      "isi": "Ubah campuran sebelum membandingkan.",
+      "suara": "(bulat×q)+p."
     },
     {
-      "ikon": "📏",
-      "nama": "Garis bilangan",
-      "isi": "Kanan lebih besar, kiri lebih kecil.",
-      "suara": "Urut dengan posisi."
+      "ikon": "⚖️",
+      "nama": "Senilai",
+      "isi": "Samakan penyebut tanpa mengubah nilai.",
+      "suara": "Pecahan senilai."
     },
     {
-      "ikon": "🌍",
-      "nama": "Pecahan di Garis Bilangan",
-      "isi": "METODE LUAR · Number Line Fractions: Bandingkan pecahan dengan melihat posisi di garis bilangan; yang lebih kanan lebih besar. (asal: Van de Walle).",
-      "suara": "METODE LUAR. Pecahan di Garis Bilangan. Bandingkan pecahan dengan melihat posisi di garis bilangan; yang lebih kanan lebih besar."
-    },
-    {
-      "ikon": "🌍",
-      "nama": "Pecahan Senilai",
-      "isi": "METODE LUAR · Equivalent Fractions: Pecahan senilai menunjuk bagian sama meski tulisannya beda; pakai untuk menyamakan penyebut. (asal: Van de Walle).",
-      "suara": "METODE LUAR. Pecahan Senilai. Pecahan senilai menunjuk bagian sama meski tulisannya beda; pakai untuk menyamakan penyebut."
-    },
-    {
-      "ikon": "🌍",
-      "nama": "Campuran ke Biasa",
-      "isi": "METODE LUAR · Mixed to Improper: Ubah pecahan campuran ke biasa: (bulat × penyebut) + pembilang. (asal: Fraction conversion).",
-      "suara": "METODE LUAR. Campuran ke Biasa. Ubah pecahan campuran ke biasa: (bulat × penyebut) + pembilang."
+      "ikon": "👀",
+      "nama": "Aturan cepat",
+      "isi": "Pembilang sama: lihat penyebut. Penyebut sama: lihat pembilang.",
+      "suara": "Aturan cepat."
     }
   ],
-  "poinSuara": "Ingat: pembilang, penyebut, campuran ke biasa, dan garis bilangan.",
+  "poinSuara": "Ingat garis bilangan, campuran ke biasa, dan pecahan senilai.",
   "cara": {
     "suara": "Ikuti langkah-langkahnya.",
     "potongan": [
@@ -779,21 +733,22 @@ export const SUB_A53: SubBabNaskah = {
       }
     ]
   },
-  "rumah": "Ayo Mencoba di rumah: bandingkan 2/5 dan 3/7, lalu urutkan 1/2, 3/4, dan 5/8 dari terkecil.",
+  "rumah": "Ayo Mencoba: terapkan Pecahan di Garis Bilangan pada satu soal di rumah.",
   "refleksi": [
-    "Apa beda pembilang dan penyebut?",
-    "Bagaimana mengubah 2 3/4 menjadi pecahan biasa?",
-    "Mengapa 1/2 lebih besar dari 1/5?"
+    "Bagaimana Pecahan di Garis Bilangan membantumu?",
+    "Kapan memakai Pecahan Senilai?",
+    "Apa bedanya dengan hanya menghafal rumus?"
   ],
   "metodeLuar": [
     {
       "label": "METODE LUAR",
       "nama": "Number Line Fractions",
       "namaId": "Pecahan di Garis Bilangan",
-      "asal": "Van de Walle",
-      "ringkas": "Bandingkan pecahan dengan melihat posisi di garis bilangan; yang lebih kanan lebih besar.",
+      "asal": "NCTM / pengukuran relatif",
+      "ringkas": "Bandingkan pecahan dengan melihat posisi di garis; yang lebih kanan lebih besar.",
       "tahap": [
         "Story",
+        "Mind",
         "Picture",
         "Abstract"
       ]
@@ -802,24 +757,24 @@ export const SUB_A53: SubBabNaskah = {
       "label": "METODE LUAR",
       "nama": "Equivalent Fractions",
       "namaId": "Pecahan Senilai",
-      "asal": "Van de Walle",
-      "ringkas": "Pecahan senilai menunjuk bagian sama meski tulisannya beda; pakai untuk menyamakan penyebut.",
+      "asal": "Singapore Math",
+      "ringkas": "Pecahan senilai menunjuk bagian sama meski tulisannya beda; dipakai untuk menyamakan penyebut.",
       "tahap": [
-        "Mind",
-        "Concrete",
-        "Abstract"
+        "Story",
+        "Infografis",
+        "Concrete"
       ]
     },
     {
       "label": "METODE LUAR",
       "nama": "Mixed to Improper",
       "namaId": "Campuran ke Biasa",
-      "asal": "Fraction conversion",
-      "ringkas": "Ubah pecahan campuran ke biasa: (bulat × penyebut) + pembilang.",
+      "asal": "Common core fraction progression",
+      "ringkas": "Ubah campuran ke biasa: (bulat × penyebut) + pembilang, lalu bandingkan.",
       "tahap": [
         "Story",
-        "Concrete",
-        "Picture"
+        "Mind",
+        "Abstract"
       ]
     }
   ]
@@ -829,183 +784,177 @@ export const SUB_B53: SubBabNaskah = {
   "id": "B",
   "codeTitle": "Sub-Bab B (Jumlah Pecahan)",
   "fullTitle": "Sub-Bab B: Penjumlahan Bilangan Pecahan",
-  "targetDescription": "Siswa menjumlahkan pecahan berpenyebut sama dan berbeda dengan menyamakan penyebut melalui KPK, termasuk konteks martabak, wingko, dan penghapus sesuai Buku Siswa Kelas V Bab 3.",
+  "targetDescription": "Siswa menjumlahkan pecahan dengan penyebut sama maupun berbeda dengan menyamakan penyebut memakai KPK, serta memakai model arsir daerah sesuai Buku Siswa Kelas V Bab 3 Sub-Bab B.",
   "secondaryBg": "#DBEAFE",
   "secondaryBorder": "#2563EB",
   "secondaryText": "#1E3A8A",
   "silabus": {
-    "teksSuara": "Kita belajar penjumlahan pecahan. Penyebut harus sama. Jika belum sama, cari KPK lalu buat pecahan senilai. Jumlahkan pembilangnya. Hasil boleh disederhanakan. Kita melewati enam tahap seru: cerita, peta pikiran, infografis, benda nyata, gambar, dan simbol.",
-    "cp": "Siswa menjumlahkan bilangan pecahan berpenyebut sama dan berbeda.",
-    "referensi": "Buku Siswa Matematika Kelas V Kemendikbudristek (Bab 3: Bilangan Pecahan, Sub-Bab B hlm. 76–90)."
+    "teksSuara": "Kita belajar menjumlahkan pecahan. Jika penyebut sama, jumlahkan pembilang. Jika beda, samakan penyebut dengan KPK dulu. Boleh juga mengarsir daerah untuk melihat hasilnya. Kita melewati enam tahap seru: cerita, peta pikiran, infografis, benda nyata, gambar, dan simbol.",
+    "cp": "Siswa menjumlahkan bilangan pecahan dengan penyebut sama atau berbeda.",
+    "referensi": "Buku Siswa Matematika Kelas V Kemendikbudristek (Bab 3 Sub-Bab B)."
   },
   "videos": [
     {
       "id": "K5B3B-V1",
-      "judul": "Syarat Menjumlah",
-      "subjudul": "Aturan",
+      "judul": "Penyebut Sama",
+      "subjudul": "Jumlah Penyebut Sama",
       "adegan": [
         {
           "id": "K5B3B-V1-1",
-          "judul": "Penyebut sama",
+          "judul": "Aturan dasar",
           "ketukan": [
-            "Syarat utama: penyebut sama.",
-            "Jika sudah sama, jumlahkan pembilang.",
-            "Penyebut tetap.",
-            "Contoh satu per delapan plus dua per delapan."
+            "Kalau penyebut sama, kita menjumlahkan bagian yang seukuran.",
+            "Jumlahkan hanya pembilangnya. Penyebut tetap.",
+            "Contoh: dua per tujuh tambah tiga per tujuh sama dengan lima per tujuh.",
+            "METODE LUAR · Jumlah Penyebut Sama: pembilang dijumlah, penyebut tetap."
           ],
           "papan": [
-            "syarat",
-            "jumlah p",
-            "q tetap",
-            "3/8"
+            "seukuran",
+            "p+p / q",
+            "2/7+3/7",
+            "aturan"
           ]
         },
         {
           "id": "K5B3B-V1-2",
-          "judul": "Martabak Nisa",
+          "judul": "Gambar batang",
           "ketukan": [
-            "Delapan rasa sama besar.",
-            "Lukas satu bagian.",
-            "Komang dua bagian.",
-            "Jumlah tiga per delapan."
+            "Gambar batang dibagi tujuh. Arsir dua, lalu arsir tiga lagi.",
+            "Total arsir menjadi lima dari tujuh.",
+            "Itulah model arsir daerah untuk penjumlahan.",
+            "Visual membantu sebelum menulis rumus."
           ],
           "papan": [
-            "8 rasa",
-            "1/8",
-            "2/8",
-            "3/8"
+            "arsir",
+            "5/7",
+            "model",
+            "lihat dulu"
           ]
         },
         {
           "id": "K5B3B-V1-3",
-          "judul": "Arsir gabung",
+          "judul": "Cek hasil",
           "ketukan": [
-            "Arsir bagian Lukas.",
-            "Arsir bagian Komang.",
-            "Gabungkan arsiran.",
-            "Terlihat tiga dari delapan.",
-            "METODE LUAR. Jumlah Penyebut Sama: Jika penyebut sama, jumlahkan pembilang; penyebut tetap."
+            "Hasil tidak boleh melebihi masuk akal: dua per tujuh tambah tiga per tujuh kurang dari satu.",
+            "Sederhanakan jika bisa.",
+            "Lalu siap untuk penyebut berbeda.",
+            "Ayo lanjut."
           ],
           "papan": [
-            "arsir",
-            "gabung",
-            "3 dari 8",
-            "jelas",
-            "METODE LUAR · Jumlah Penyebut Sama"
+            "<1",
+            "sederhana",
+            "lanjut",
+            "ayo"
           ]
         }
       ]
     },
     {
       "id": "K5B3B-V2",
-      "judul": "Penyebut Berbeda",
-      "subjudul": "KPK",
+      "judul": "Penyebut Beda",
+      "subjudul": "Samakan dengan KPK",
       "adegan": [
         {
           "id": "K5B3B-V2-1",
-          "judul": "Wingko",
+          "judul": "Masalah",
           "ketukan": [
-            "Lukas satu per dua.",
-            "Komang satu per tiga.",
-            "Penyebut beda.",
-            "Perlu disamakan."
+            "Satu per dua tambah satu per tiga. Penyebut beda: tidak bisa langsung jumlahkan pembilang.",
+            "Kita butuh penyebut sama dulu.",
+            "Cari KPK dari dua dan tiga.",
+            "KPK dua dan tiga adalah enam."
           ],
           "papan": [
-            "1/2",
-            "1/3",
-            "beda",
-            "samakan"
+            "1/2+1/3",
+            "samakan",
+            "KPK",
+            "KPK=6"
           ]
         },
         {
           "id": "K5B3B-V2-2",
-          "judul": "Cari KPK",
+          "judul": "Senilai lalu jumlah",
           "ketukan": [
-            "KPK dua dan tiga adalah enam.",
-            "Satu per dua jadi tiga per enam.",
-            "Satu per tiga jadi dua per enam.",
-            "Jumlah lima per enam."
+            "Satu per dua senilai tiga per enam.",
+            "Satu per tiga senilai dua per enam.",
+            "Jumlah: lima per enam.",
+            "METODE LUAR · Samakan Penyebut dengan KPK: senilai dulu, baru jumlah."
           ],
           "papan": [
-            "KPK 6",
             "3/6",
             "2/6",
-            "5/6"
+            "5/6",
+            "KPK way"
           ]
         },
         {
           "id": "K5B3B-V2-3",
-          "judul": "Sederhanakan",
+          "judul": "Campuran",
           "ketukan": [
-            "Kadang hasil bisa diperkecil.",
-            "Pakai FPB pembilang dan penyebut.",
-            "Contoh lima per sepuluh jadi satu per dua.",
-            "Ayo lanjut.",
-            "METODE LUAR. Samakan Penyebut dengan KPK: Jika penyebut beda, samakan dulu dengan KPK (LCD) lalu jumlahkan."
+            "Jika ada campuran, ubah ke biasa dulu, lalu samakan penyebut.",
+            "Jangan jumlahkan bilangan bulat saja lalu mengabaikan pecahannya.",
+            "Kerjakan urut: ubah, samakan, jumlahkan, sederhanakan.",
+            "Siap bermain menjumlah pecahan."
           ],
           "papan": [
-            "FPB",
-            "5/10",
-            "1/2",
-            "lanjut",
-            "METODE LUAR · Samakan Penyebut dengan KPK"
+            "campuran",
+            "jangan",
+            "urut",
+            "main"
           ]
         }
       ]
     },
     {
       "id": "K5B3B-V3",
-      "judul": "Penghapus Lukas",
-      "subjudul": "Latihan",
+      "judul": "Arsir dan Cek",
+      "subjudul": "Model Arsir Daerah",
       "adegan": [
         {
           "id": "K5B3B-V3-1",
-          "judul": "Sepuluh penghapus",
+          "judul": "Arsir",
           "ketukan": [
-            "Lukas punya sepuluh.",
-            "Beri Asep dua.",
-            "Beri Yohana tiga.",
-            "Tulis sebagai pecahan."
+            "Gambar dua bangun sama. Arsir bagian pertama dan kedua.",
+            "Gabungkan arsir secara mental atau pada satu bangun berpenyebut sama.",
+            "Hitung berapa bagian terarsir dari keseluruhan.",
+            "METODE LUAR · Model Arsir Daerah: lihat dulu, tulis kemudian."
           ],
           "papan": [
-            "10",
-            "2/10",
-            "3/10",
-            "pecahan"
+            "dua bangun",
+            "gabung",
+            "hitung",
+            "visual"
           ]
         },
         {
           "id": "K5B3B-V3-2",
-          "judul": "Jumlahkan",
+          "judul": "Kesalahan umum",
           "ketukan": [
-            "Dua per sepuluh plus tiga per sepuluh.",
-            "Pembilang dua plus tiga.",
-            "Hasil lima per sepuluh.",
-            "Boleh satu per dua."
+            "Kesalahan: menjumlahkan penyebut juga. Itu salah.",
+            "Kesalahan: menjumlah tanpa menyamakan penyebut.",
+            "Cek dengan perkiraan: setengah tambah sepertiga agak kurang dari satu.",
+            "Lima per enam masuk akal."
           ],
           "papan": [
-            "2/10",
-            "+3/10",
-            "5/10",
-            "1/2"
+            "jangan q+q",
+            "jangan buru",
+            "perkiraan",
+            "5/6 ok"
           ]
         },
         {
           "id": "K5B3B-V3-3",
-          "judul": "Siap bermain",
+          "judul": "Siap C",
           "ketukan": [
-            "Ingat syarat penyebut.",
-            "Pakai KPK jika perlu.",
-            "Jumlahkan pembilang.",
-            "Ayo bermain!",
-            "METODE LUAR. Model Arsir Daerah: Arsir bagian untuk melihat jumlah pecahan secara visual."
+            "Penjumlahan pecahan siap. Berikutnya pengurangan.",
+            "Ide dasarnya sama: samakan penyebut.",
+            "Bedanya: kurangkan pembilang, bukan jumlahkan.",
+            "Ayo main dulu!"
           ],
           "papan": [
-            "syarat",
-            "KPK",
-            "jumlah p",
-            "main",
-            "METODE LUAR · Model Arsir Daerah"
+            "lanjut C",
+            "sama ide",
+            "beda",
+            "main"
           ]
         }
       ]
@@ -1014,7 +963,7 @@ export const SUB_B53: SubBabNaskah = {
   "mindMaps": [
     {
       "stepNumber": 1,
-      "stepTitle": "1. Cek penyebut",
+      "stepTitle": "1. Lihat penyebut",
       "stepDesc": "Sama atau beda?",
       "icon": "👀",
       "flowFrom": "START",
@@ -1022,152 +971,131 @@ export const SUB_B53: SubBabNaskah = {
     },
     {
       "stepNumber": 2,
-      "stepTitle": "2. Jika beda",
-      "stepDesc": "Cari KPK",
-      "icon": "🎯",
+      "stepTitle": "2. Sama?",
+      "stepDesc": "Jumlahkan pembilang.",
+      "icon": "➕",
       "flowFrom": "1",
       "flowTo": "3"
     },
     {
       "stepNumber": 3,
-      "stepTitle": "3. Senilai",
-      "stepDesc": "Ubah kedua pecahan",
-      "icon": "🔄",
+      "stepTitle": "3. Beda?",
+      "stepDesc": "Cari KPK penyebut.",
+      "icon": "🔢",
       "flowFrom": "2",
       "flowTo": "4"
     },
     {
       "stepNumber": 4,
-      "stepTitle": "4. Jumlahkan p",
-      "stepDesc": "q tetap",
-      "icon": "➕",
+      "stepTitle": "4. Senilai",
+      "stepDesc": "Ubah ke penyebut KPK.",
+      "icon": "⚖️",
       "flowFrom": "3",
       "flowTo": "5"
     },
     {
       "stepNumber": 5,
-      "stepTitle": "5. Sederhanakan",
-      "stepDesc": "Pakai FPB",
-      "icon": "✨",
+      "stepTitle": "5. Jumlahkan",
+      "stepDesc": "Pembilang + pembilang.",
+      "icon": "➕",
       "flowFrom": "4",
       "flowTo": "6"
     },
     {
       "stepNumber": 6,
-      "stepTitle": "6. Cek cerita",
-      "stepDesc": "Masuk akal?",
-      "icon": "✅",
+      "stepTitle": "6. Sederhanakan",
+      "stepDesc": "Jika bisa.",
+      "icon": "✨",
       "flowFrom": "5",
       "flowTo": "7"
     },
     {
       "stepNumber": 7,
-      "stepTitle": "7. METODE LUAR · Jumlah Penyebut Sama",
-      "stepDesc": "Jika penyebut sama, jumlahkan pembilang; penyebut tetap.",
-      "icon": "🌍",
+      "stepTitle": "7. Arsir cek",
+      "stepDesc": "Cek dengan model daerah.",
+      "icon": "🎨",
       "flowFrom": "6",
       "flowTo": "8"
     },
     {
       "stepNumber": 8,
-      "stepTitle": "8. METODE LUAR · Samakan Penyebut dengan KPK",
-      "stepDesc": "Jika penyebut beda, samakan dulu dengan KPK (LCD) lalu jumlahkan.",
-      "icon": "🌍",
+      "stepTitle": "8. Main",
+      "stepDesc": "Latihan jumlah pecahan.",
+      "icon": "🎮",
       "flowFrom": "7",
       "flowTo": "END"
     }
   ],
   "infografis": [
     {
-      "judul": "Syarat",
+      "judul": "Penyebut sama",
       "emoji": "✅",
       "countNum": 1,
-      "countWord": "q sama",
-      "suara": "Wajib."
+      "countWord": "p+p",
+      "suara": "Pembilang dijumlah."
     },
     {
-      "judul": "1/8+2/8",
-      "emoji": "🥞",
-      "countNum": 3,
-      "countWord": "3/8",
-      "suara": "Martabak."
-    },
-    {
-      "judul": "1/2+1/3",
-      "emoji": "🍡",
+      "judul": "2/7+3/7",
+      "emoji": "🔢",
       "countNum": 5,
-      "countWord": "5/6",
-      "suara": "Wingko."
+      "countWord": "5/7",
+      "suara": "Contoh."
     },
     {
       "judul": "KPK",
       "emoji": "🎯",
       "countNum": 1,
-      "countWord": "samakan q",
-      "suara": "Beda penyebut."
+      "countWord": "samakan",
+      "suara": "Penyebut beda."
     },
     {
-      "judul": "2/10+3/10",
-      "emoji": "🧽",
+      "judul": "1/2+1/3",
+      "emoji": "➕",
       "countNum": 5,
-      "countWord": "5/10",
-      "suara": "Penghapus."
+      "countWord": "5/6",
+      "suara": "Lewat 6."
+    },
+    {
+      "judul": "Arsir",
+      "emoji": "🎨",
+      "countNum": 1,
+      "countWord": "lihat",
+      "suara": "Model daerah."
+    },
+    {
+      "judul": "Jangan",
+      "emoji": "🚫",
+      "countNum": 1,
+      "countWord": "q+q",
+      "suara": "Jangan jumlah penyebut."
+    },
+    {
+      "judul": "Campuran",
+      "emoji": "🔄",
+      "countNum": 1,
+      "countWord": "ke biasa",
+      "suara": "Ubah dulu."
     },
     {
       "judul": "Sederhana",
       "emoji": "✨",
       "countNum": 1,
-      "countWord": "FPB",
-      "suara": "Perkecil."
+      "countWord": "ringkas",
+      "suara": "Jika bisa."
     },
     {
-      "judul": "Senilai",
-      "emoji": "🔄",
+      "judul": "Perkiraan",
+      "emoji": "📏",
       "countNum": 1,
-      "countWord": "kali sama",
-      "suara": "Ubah bentuk."
-    },
-    {
-      "judul": "Model arsir",
-      "emoji": "🎨",
-      "countNum": 1,
-      "countWord": "gabung",
-      "suara": "Visual."
-    },
-    {
-      "judul": "Pembilang",
-      "emoji": "⬆️",
-      "countNum": 1,
-      "countWord": "dijumlah",
-      "suara": "Inti."
+      "countWord": "cek",
+      "suara": "Masuk akal?"
     },
     {
       "judul": "Siap C",
       "emoji": "➡️",
       "countNum": 1,
       "countWord": "kurang",
-      "suara": "Lanjut."
-    },
-    {
-      "judul": "Jumlah Penyebut Sama",
-      "emoji": "🌍",
-      "countNum": 1,
-      "countWord": "METODE LUAR · Same Denominator Add",
-      "suara": "METODE LUAR. Jumlah Penyebut Sama. Jika penyebut sama, jumlahkan pembilang; penyebut tetap."
-    },
-    {
-      "judul": "Samakan Penyebut dengan KPK",
-      "emoji": "🌍",
-      "countNum": 2,
-      "countWord": "METODE LUAR · LCD / KPK",
-      "suara": "METODE LUAR. Samakan Penyebut dengan KPK. Jika penyebut beda, samakan dulu dengan KPK (LCD) lalu jumlahkan."
-    },
-    {
-      "judul": "Model Arsir Daerah",
-      "emoji": "🌍",
-      "countNum": 3,
-      "countWord": "METODE LUAR · Area Model",
-      "suara": "METODE LUAR. Model Arsir Daerah. Arsir bagian untuk melihat jumlah pecahan secara visual."
+      "suara": "Pengurangan."
     }
   ],
   "games": [
@@ -1176,9 +1104,9 @@ export const SUB_B53: SubBabNaskah = {
       "gameType": "jumlah-sama",
       "title": "Jumlah Penyebut Sama",
       "bookReference": "hlm. 76–80",
-      "objective": "Menjumlahkan. (METODE LUAR · Jumlah Penyebut Sama)",
-      "mechanicDescription": "Tiga ronde.",
-      "voiceGuide": "METODE LUAR · Jumlah Penyebut Sama. Pilih hasil.",
+      "objective": "Jumlahkan pembilang. Menjumlahkan.",
+      "mechanicDescription": "Tiga ronde. Saat bermain, ingat Jumlah Penyebut Sama: Penyebut tetap.",
+      "voiceGuide": "Jumlah Penyebut Sama. Penyebut tetap.",
       "emoji": "➕",
       "targetCount": 6
     },
@@ -1187,9 +1115,9 @@ export const SUB_B53: SubBabNaskah = {
       "gameType": "jumlah-beda",
       "title": "Jumlah Penyebut Beda",
       "bookReference": "hlm. 85–90",
-      "objective": "Pakai KPK.",
-      "mechanicDescription": "Tiga ronde.",
-      "voiceGuide": "Pilih hasil.",
+      "objective": "Jumlahkan pembilang. Pakai KPK.",
+      "mechanicDescription": "Tiga ronde. Saat bermain, ingat Jumlah Penyebut Sama: Penyebut tetap.",
+      "voiceGuide": "Jumlah Penyebut Sama. Penyebut tetap.",
       "emoji": "🧮",
       "targetCount": 6
     },
@@ -1198,9 +1126,9 @@ export const SUB_B53: SubBabNaskah = {
       "gameType": "arti-jumlah",
       "title": "Arti Penjumlahan",
       "bookReference": "hlm. 76–90",
-      "objective": "Definisi & cara.",
-      "mechanicDescription": "Tiga ronde.",
-      "voiceGuide": "Pilih.",
+      "objective": "Jumlahkan pembilang. Definisi & cara.",
+      "mechanicDescription": "Tiga ronde. Saat bermain, ingat Jumlah Penyebut Sama: Penyebut tetap.",
+      "voiceGuide": "Jumlah Penyebut Sama. Penyebut tetap.",
       "emoji": "📖",
       "targetCount": 6
     },
@@ -1209,9 +1137,9 @@ export const SUB_B53: SubBabNaskah = {
       "gameType": "sort-jumlah",
       "title": "Pilah Sama/Beda",
       "bookReference": "hlm. 76–90",
-      "objective": "Memilah.",
-      "mechanicDescription": "Tiga ronde.",
-      "voiceGuide": "Pilah.",
+      "objective": "Jumlahkan pembilang. Memilah.",
+      "mechanicDescription": "Tiga ronde. Saat bermain, ingat Jumlah Penyebut Sama: Penyebut tetap.",
+      "voiceGuide": "Jumlah Penyebut Sama. Penyebut tetap.",
       "emoji": "🧺",
       "targetCount": 18
     },
@@ -1220,9 +1148,9 @@ export const SUB_B53: SubBabNaskah = {
       "gameType": "match-jumlah",
       "title": "Jodohkan Jumlah",
       "bookReference": "hlm. 76–90",
-      "objective": "Menjodohkan.",
+      "objective": "Menjodohkan. (Jumlah Penyebut Sama)",
       "mechanicDescription": "Tiga ronde.",
-      "voiceGuide": "Jodohkan.",
+      "voiceGuide": "Jumlah Penyebut Sama. Mainkan dengan teliti.",
       "emoji": "🔗",
       "targetCount": 12
     },
@@ -1231,9 +1159,9 @@ export const SUB_B53: SubBabNaskah = {
       "gameType": "memory-jumlah",
       "title": "Memori Jumlah",
       "bookReference": "hlm. 76–90",
-      "objective": "Memori.",
+      "objective": "Memori. (Jumlah Penyebut Sama)",
       "mechanicDescription": "Tiga ronde.",
-      "voiceGuide": "Balik kartu.",
+      "voiceGuide": "Jumlah Penyebut Sama. Mainkan dengan teliti.",
       "emoji": "🃏",
       "targetCount": 12
     },
@@ -1242,9 +1170,9 @@ export const SUB_B53: SubBabNaskah = {
       "gameType": "tap-jumlah",
       "title": "Ketuk Hasil Jumlah",
       "bookReference": "hlm. 76–90",
-      "objective": "Mengetuk.",
+      "objective": "Mengetuk. (Jumlah Penyebut Sama)",
       "mechanicDescription": "Tiga ronde.",
-      "voiceGuide": "Ketuk.",
+      "voiceGuide": "Jumlah Penyebut Sama. Mainkan dengan teliti.",
       "emoji": "👆",
       "targetCount": 9
     },
@@ -1253,9 +1181,9 @@ export const SUB_B53: SubBabNaskah = {
       "gameType": "tap-all-jumlah",
       "title": "Ketuk Semua Benar Jumlah",
       "bookReference": "hlm. 76–90",
-      "objective": "Ketuk semua.",
+      "objective": "Ketuk semua. (Jumlah Penyebut Sama)",
       "mechanicDescription": "Tiga ronde.",
-      "voiceGuide": "Ketuk semua.",
+      "voiceGuide": "Jumlah Penyebut Sama. Mainkan dengan teliti.",
       "emoji": "✔️",
       "targetCount": 3
     },
@@ -1264,9 +1192,9 @@ export const SUB_B53: SubBabNaskah = {
       "gameType": "story-jumlah",
       "title": "Cerita Martabak & Wingko",
       "bookReference": "hlm. 76–90",
-      "objective": "Soal cerita.",
+      "objective": "Soal cerita. (Jumlah Penyebut Sama)",
       "mechanicDescription": "Tiga ronde.",
-      "voiceGuide": "Pilih.",
+      "voiceGuide": "Jumlah Penyebut Sama. Mainkan dengan teliti.",
       "emoji": "🥞",
       "targetCount": 6
     },
@@ -1275,9 +1203,9 @@ export const SUB_B53: SubBabNaskah = {
       "gameType": "order-jumlah",
       "title": "Urutkan Hasil Jumlah",
       "bookReference": "hlm. 76–90",
-      "objective": "Mengurutkan.",
+      "objective": "Mengurutkan. (Jumlah Penyebut Sama)",
       "mechanicDescription": "Tiga ronde.",
-      "voiceGuide": "Urutkan.",
+      "voiceGuide": "Jumlah Penyebut Sama. Mainkan dengan teliti.",
       "emoji": "📶",
       "targetCount": 3
     },
@@ -1286,9 +1214,9 @@ export const SUB_B53: SubBabNaskah = {
       "gameType": "diagram-sama-b",
       "title": "Diagram Penyebut Sama",
       "bookReference": "hlm. 76–80",
-      "objective": "Baca jumlah. (METODE LUAR · Jumlah Penyebut Sama)",
-      "mechanicDescription": "Tiga ronde.",
-      "voiceGuide": "METODE LUAR · Jumlah Penyebut Sama. Pilih.",
+      "objective": "Cari KPK dulu. Baca jumlah.",
+      "mechanicDescription": "Tiga ronde. Saat bermain, ingat Samakan Penyebut dengan KPK: Lalu pecahan senilai.",
+      "voiceGuide": "Samakan Penyebut dengan KPK. Lalu pecahan senilai.",
       "diagramType": "same",
       "numberA": 1,
       "numberB": 2
@@ -1298,9 +1226,9 @@ export const SUB_B53: SubBabNaskah = {
       "gameType": "diagram-beda-b",
       "title": "Diagram Penyebut Beda",
       "bookReference": "hlm. 85–90",
-      "objective": "Baca KPK.",
-      "mechanicDescription": "Tiga ronde.",
-      "voiceGuide": "Pilih.",
+      "objective": "Cari KPK dulu. Baca KPK.",
+      "mechanicDescription": "Tiga ronde. Saat bermain, ingat Samakan Penyebut dengan KPK: Lalu pecahan senilai.",
+      "voiceGuide": "Samakan Penyebut dengan KPK. Lalu pecahan senilai.",
       "diagramType": "diff",
       "numberA": 1,
       "numberB": 2
@@ -1310,9 +1238,9 @@ export const SUB_B53: SubBabNaskah = {
       "gameType": "match-diagram-b",
       "title": "Jodohkan Diagram B",
       "bookReference": "hlm. 76–90",
-      "objective": "Jodohkan.",
-      "mechanicDescription": "Tiga ronde.",
-      "voiceGuide": "Jodohkan.",
+      "objective": "Cari KPK dulu. Jodohkan.",
+      "mechanicDescription": "Tiga ronde. Saat bermain, ingat Samakan Penyebut dengan KPK: Lalu pecahan senilai.",
+      "voiceGuide": "Samakan Penyebut dengan KPK. Lalu pecahan senilai.",
       "diagramType": "match",
       "numberA": 1,
       "numberB": 2
@@ -1322,9 +1250,9 @@ export const SUB_B53: SubBabNaskah = {
       "gameType": "memory-diagram-b",
       "title": "Memori Diagram B",
       "bookReference": "hlm. 76–90",
-      "objective": "Memori.",
-      "mechanicDescription": "Tiga ronde.",
-      "voiceGuide": "Balik kartu.",
+      "objective": "Cari KPK dulu. Memori.",
+      "mechanicDescription": "Tiga ronde. Saat bermain, ingat Samakan Penyebut dengan KPK: Lalu pecahan senilai.",
+      "voiceGuide": "Samakan Penyebut dengan KPK. Lalu pecahan senilai.",
       "diagramType": "mem",
       "numberA": 1,
       "numberB": 4
@@ -1334,9 +1262,9 @@ export const SUB_B53: SubBabNaskah = {
       "gameType": "table-b",
       "title": "Tabel Jumlah",
       "bookReference": "hlm. 76–90",
-      "objective": "Isi tabel.",
+      "objective": "Isi tabel. (Samakan Penyebut dengan KPK)",
       "mechanicDescription": "Tiga tabel.",
-      "voiceGuide": "Pilih.",
+      "voiceGuide": "Samakan Penyebut dengan KPK. Mainkan dengan teliti.",
       "diagramType": "table",
       "numberA": 1,
       "numberB": 3
@@ -1346,9 +1274,9 @@ export const SUB_B53: SubBabNaskah = {
       "gameType": "tap-all-pb",
       "title": "Ketuk Semua Diagram B",
       "bookReference": "hlm. 76–90",
-      "objective": "Ketuk semua.",
+      "objective": "Ketuk semua. (Samakan Penyebut dengan KPK)",
       "mechanicDescription": "Tiga ronde.",
-      "voiceGuide": "Ketuk semua.",
+      "voiceGuide": "Samakan Penyebut dengan KPK. Mainkan dengan teliti.",
       "diagramType": "select",
       "numberA": 1,
       "numberB": 4
@@ -1358,9 +1286,9 @@ export const SUB_B53: SubBabNaskah = {
       "gameType": "sort-diagram-b",
       "title": "Pilah Diagram B",
       "bookReference": "hlm. 76–90",
-      "objective": "Pilah.",
+      "objective": "Pilah. (Samakan Penyebut dengan KPK)",
       "mechanicDescription": "Tiga ronde.",
-      "voiceGuide": "Pilah.",
+      "voiceGuide": "Samakan Penyebut dengan KPK. Mainkan dengan teliti.",
       "diagramType": "sort",
       "numberA": 1,
       "numberB": 6
@@ -1370,9 +1298,9 @@ export const SUB_B53: SubBabNaskah = {
       "gameType": "choose-b",
       "title": "Pilih Pernyataan B",
       "bookReference": "hlm. 76–90",
-      "objective": "Pilih.",
+      "objective": "Pilih. (Samakan Penyebut dengan KPK)",
       "mechanicDescription": "Tiga ronde.",
-      "voiceGuide": "Pilih.",
+      "voiceGuide": "Samakan Penyebut dengan KPK. Mainkan dengan teliti.",
       "diagramType": "choose",
       "numberA": 1,
       "numberB": 2
@@ -1382,9 +1310,9 @@ export const SUB_B53: SubBabNaskah = {
       "gameType": "jenis-pb",
       "title": "Pilih Arti Diagram B",
       "bookReference": "hlm. 76–90",
-      "objective": "Definisi.",
+      "objective": "Definisi. (Samakan Penyebut dengan KPK)",
       "mechanicDescription": "Tiga ronde.",
-      "voiceGuide": "Pilih.",
+      "voiceGuide": "Samakan Penyebut dengan KPK. Mainkan dengan teliti.",
       "diagramType": "def",
       "numberA": 1,
       "numberB": 2
@@ -1394,9 +1322,9 @@ export const SUB_B53: SubBabNaskah = {
       "gameType": "story-picture-b",
       "title": "Cerita Diagram B",
       "bookReference": "hlm. 76–90",
-      "objective": "Cerita.",
+      "objective": "Cerita. (Samakan Penyebut dengan KPK)",
       "mechanicDescription": "Tiga ronde.",
-      "voiceGuide": "Pilih.",
+      "voiceGuide": "Samakan Penyebut dengan KPK. Mainkan dengan teliti.",
       "diagramType": "story",
       "numberA": 1,
       "numberB": 2
@@ -1406,9 +1334,9 @@ export const SUB_B53: SubBabNaskah = {
       "gameType": "write-sama-b",
       "title": "Tulis Jumlah Sama",
       "bookReference": "hlm. 76–80",
-      "objective": "Menulis. (METODE LUAR · Jumlah Penyebut Sama)",
-      "mechanicDescription": "Tiga ronde.",
-      "voiceGuide": "METODE LUAR · Jumlah Penyebut Sama. Pilih.",
+      "objective": "Lihat arsir. Menulis.",
+      "mechanicDescription": "Tiga ronde. Saat bermain, ingat Model Arsir Daerah: Baru tulis hasil.",
+      "voiceGuide": "Model Arsir Daerah. Baru tulis hasil.",
       "symbolLarge": "+",
       "wordLarge": "SAMA",
       "mathNotation": "p/q"
@@ -1418,9 +1346,9 @@ export const SUB_B53: SubBabNaskah = {
       "gameType": "write-beda-b",
       "title": "Tulis Jumlah Beda",
       "bookReference": "hlm. 85–90",
-      "objective": "Menulis.",
-      "mechanicDescription": "Tiga ronde.",
-      "voiceGuide": "Pilih.",
+      "objective": "Lihat arsir. Menulis.",
+      "mechanicDescription": "Tiga ronde. Saat bermain, ingat Model Arsir Daerah: Baru tulis hasil.",
+      "voiceGuide": "Model Arsir Daerah. Baru tulis hasil.",
       "symbolLarge": "KPK+",
       "wordLarge": "BEDA",
       "mathNotation": "p/q"
@@ -1430,9 +1358,9 @@ export const SUB_B53: SubBabNaskah = {
       "gameType": "choose-def-b",
       "title": "Pilih Definisi B",
       "bookReference": "hlm. 76–90",
-      "objective": "Definisi.",
-      "mechanicDescription": "Tiga ronde.",
-      "voiceGuide": "Pilih.",
+      "objective": "Lihat arsir. Definisi.",
+      "mechanicDescription": "Tiga ronde. Saat bermain, ingat Model Arsir Daerah: Baru tulis hasil.",
+      "voiceGuide": "Model Arsir Daerah. Baru tulis hasil.",
       "symbolLarge": "Σ",
       "wordLarge": "DEFINISI",
       "mathNotation": "teks"
@@ -1442,9 +1370,9 @@ export const SUB_B53: SubBabNaskah = {
       "gameType": "order-abstract-b",
       "title": "Urutkan Abstrak B",
       "bookReference": "hlm. 76–90",
-      "objective": "Urut.",
-      "mechanicDescription": "Tiga ronde.",
-      "voiceGuide": "Urutkan.",
+      "objective": "Lihat arsir. Urut.",
+      "mechanicDescription": "Tiga ronde. Saat bermain, ingat Model Arsir Daerah: Baru tulis hasil.",
+      "voiceGuide": "Model Arsir Daerah. Baru tulis hasil.",
       "symbolLarge": "naik",
       "wordLarge": "URUT",
       "mathNotation": "nilai"
@@ -1454,9 +1382,9 @@ export const SUB_B53: SubBabNaskah = {
       "gameType": "match-abstract-b",
       "title": "Jodohkan Notasi B",
       "bookReference": "hlm. 76–90",
-      "objective": "Jodohkan.",
+      "objective": "Jodohkan. (Model Arsir Daerah)",
       "mechanicDescription": "Tiga ronde.",
-      "voiceGuide": "Jodohkan.",
+      "voiceGuide": "Model Arsir Daerah. Mainkan dengan teliti.",
       "symbolLarge": "+",
       "wordLarge": "JODOH",
       "mathNotation": "teks"
@@ -1466,9 +1394,9 @@ export const SUB_B53: SubBabNaskah = {
       "gameType": "memory-abstract-b",
       "title": "Memori Notasi B",
       "bookReference": "hlm. 76–90",
-      "objective": "Memori.",
+      "objective": "Memori. (Model Arsir Daerah)",
       "mechanicDescription": "Tiga ronde.",
-      "voiceGuide": "Balik kartu.",
+      "voiceGuide": "Model Arsir Daerah. Mainkan dengan teliti.",
       "symbolLarge": "+",
       "wordLarge": "MEMORI",
       "mathNotation": "notasi"
@@ -1478,9 +1406,9 @@ export const SUB_B53: SubBabNaskah = {
       "gameType": "true-false-b",
       "title": "Benar atau Salah: Jumlah",
       "bookReference": "hlm. 76–90",
-      "objective": "Menilai.",
+      "objective": "Menilai. (Model Arsir Daerah)",
       "mechanicDescription": "Dua ronde.",
-      "voiceGuide": "Benar/salah.",
+      "voiceGuide": "Model Arsir Daerah. Mainkan dengan teliti.",
       "symbolLarge": "✓ ✗",
       "wordLarge": "BENAR SALAH",
       "mathNotation": "alasan"
@@ -1490,9 +1418,9 @@ export const SUB_B53: SubBabNaskah = {
       "gameType": "detective-b",
       "title": "Detektif Jumlah",
       "bookReference": "hlm. 76–90",
-      "objective": "Petunjuk.",
+      "objective": "Petunjuk. (Model Arsir Daerah)",
       "mechanicDescription": "Tiga soal.",
-      "voiceGuide": "Pilih.",
+      "voiceGuide": "Model Arsir Daerah. Mainkan dengan teliti.",
       "symbolLarge": "?",
       "wordLarge": "DETEKTIF",
       "mathNotation": "petunjuk"
@@ -1502,9 +1430,9 @@ export const SUB_B53: SubBabNaskah = {
       "gameType": "concept-b",
       "title": "Peta Konsep Jumlah",
       "bookReference": "hlm. 76–90",
-      "objective": "Peta.",
+      "objective": "Peta. (Model Arsir Daerah)",
       "mechanicDescription": "Satu peta.",
-      "voiceGuide": "Pilih opsi.",
+      "voiceGuide": "Model Arsir Daerah. Mainkan dengan teliti.",
       "symbolLarge": "🗺️",
       "wordLarge": "PETA",
       "mathNotation": "konsep"
@@ -1514,9 +1442,9 @@ export const SUB_B53: SubBabNaskah = {
       "gameType": "story-abstract-b",
       "title": "Cerita Angka Jumlah",
       "bookReference": "hlm. 76–90",
-      "objective": "Cerita.",
+      "objective": "Cerita. (Model Arsir Daerah)",
       "mechanicDescription": "Tiga ronde.",
-      "voiceGuide": "Pilih.",
+      "voiceGuide": "Model Arsir Daerah. Mainkan dengan teliti.",
       "symbolLarge": "📖",
       "wordLarge": "CERITA",
       "mathNotation": "teks"
@@ -1524,49 +1452,31 @@ export const SUB_B53: SubBabNaskah = {
   ],
   "poin": [
     {
-      "ikon": "✅",
-      "nama": "Syarat",
-      "isi": "Penyebut harus sama sebelum menjumlahkan.",
-      "suara": "Samakan dulu."
-    },
-    {
-      "ikon": "🎯",
-      "nama": "KPK",
-      "isi": "Dipakai menyamakan penyebut berbeda.",
-      "suara": "Lalu pecahan senilai."
-    },
-    {
       "ikon": "➕",
-      "nama": "Jumlahkan p",
-      "isi": "Pembilang dijumlah, penyebut tetap.",
-      "suara": "Itu aturannya."
+      "nama": "Penyebut sama",
+      "isi": "Jumlahkan pembilang; penyebut tetap.",
+      "suara": "p+p atas q."
     },
     {
-      "ikon": "✨",
-      "nama": "Sederhanakan",
-      "isi": "Bagi pembilang dan penyebut dengan FPB.",
-      "suara": "Hasil rapi."
+      "ikon": "🔢",
+      "nama": "KPK",
+      "isi": "Penyebut beda: samakan dengan KPK dulu.",
+      "suara": "KPK dulu."
     },
     {
-      "ikon": "🌍",
-      "nama": "Jumlah Penyebut Sama",
-      "isi": "METODE LUAR · Same Denominator Add: Jika penyebut sama, jumlahkan pembilang; penyebut tetap. (asal: Singapore Math).",
-      "suara": "METODE LUAR. Jumlah Penyebut Sama. Jika penyebut sama, jumlahkan pembilang; penyebut tetap."
+      "ikon": "🎨",
+      "nama": "Arsir",
+      "isi": "Model daerah membantu melihat hasil.",
+      "suara": "Lihat dulu."
     },
     {
-      "ikon": "🌍",
-      "nama": "Samakan Penyebut dengan KPK",
-      "isi": "METODE LUAR · LCD / KPK: Jika penyebut beda, samakan dulu dengan KPK (LCD) lalu jumlahkan. (asal: Van de Walle).",
-      "suara": "METODE LUAR. Samakan Penyebut dengan KPK. Jika penyebut beda, samakan dulu dengan KPK (LCD) lalu jumlahkan."
-    },
-    {
-      "ikon": "🌍",
-      "nama": "Model Arsir Daerah",
-      "isi": "METODE LUAR · Area Model: Arsir bagian untuk melihat jumlah pecahan secara visual. (asal: Area model fractions).",
-      "suara": "METODE LUAR. Model Arsir Daerah. Arsir bagian untuk melihat jumlah pecahan secara visual."
+      "ikon": "🚫",
+      "nama": "Jangan",
+      "isi": "Jangan menjumlahkan penyebut.",
+      "suara": "Bukan q+q."
     }
   ],
-  "poinSuara": "Ingat: syarat penyebut sama, KPK, jumlahkan pembilang, sederhanakan.",
+  "poinSuara": "Penyebut sama langsung jumlah; beda pakai KPK; cek dengan arsir.",
   "cara": {
     "suara": "Ikuti langkah-langkahnya.",
     "potongan": [
@@ -1588,19 +1498,19 @@ export const SUB_B53: SubBabNaskah = {
       }
     ]
   },
-  "rumah": "Ayo Mencoba di rumah: hitung 2/5 + 1/4 dan 3/8 + 1/8, lalu ceritakan langkahnya.",
+  "rumah": "Ayo Mencoba: terapkan Jumlah Penyebut Sama pada satu soal di rumah.",
   "refleksi": [
-    "Mengapa penyebut harus sama?",
-    "Bagaimana menjumlahkan 1/2 dan 1/3?",
-    "Kapan hasil perlu disederhanakan?"
+    "Bagaimana Jumlah Penyebut Sama membantumu?",
+    "Kapan memakai Samakan Penyebut dengan KPK?",
+    "Apa bedanya dengan hanya menghafal rumus?"
   ],
   "metodeLuar": [
     {
       "label": "METODE LUAR",
-      "nama": "Same Denominator Add",
+      "nama": "Like Denominators",
       "namaId": "Jumlah Penyebut Sama",
-      "asal": "Singapore Math",
-      "ringkas": "Jika penyebut sama, jumlahkan pembilang; penyebut tetap.",
+      "asal": "Fraction operations",
+      "ringkas": "Penyebut sama: jumlahkan pembilang, penyebut tetap.",
       "tahap": [
         "Story",
         "Concrete",
@@ -1609,27 +1519,26 @@ export const SUB_B53: SubBabNaskah = {
     },
     {
       "label": "METODE LUAR",
-      "nama": "LCD / KPK",
+      "nama": "Common Denominator via LCM",
       "namaId": "Samakan Penyebut dengan KPK",
-      "asal": "Van de Walle",
-      "ringkas": "Jika penyebut beda, samakan dulu dengan KPK (LCD) lalu jumlahkan.",
+      "asal": "Singapore / US textbooks",
+      "ringkas": "Penyebut beda: cari KPK, buat pecahan senilai, baru jumlahkan.",
       "tahap": [
         "Story",
         "Mind",
-        "Picture",
-        "Abstract"
+        "Picture"
       ]
     },
     {
       "label": "METODE LUAR",
       "nama": "Area Model",
       "namaId": "Model Arsir Daerah",
-      "asal": "Area model fractions",
-      "ringkas": "Arsir bagian untuk melihat jumlah pecahan secara visual.",
+      "asal": "Visual fraction models",
+      "ringkas": "Arsir bagian pada bangun untuk melihat penjumlahan pecahan.",
       "tahap": [
+        "Story",
         "Infografis",
-        "Concrete",
-        "Picture"
+        "Concrete"
       ]
     }
   ]
@@ -1639,183 +1548,177 @@ export const SUB_C53: SubBabNaskah = {
   "id": "C",
   "codeTitle": "Sub-Bab C (Kurang Pecahan)",
   "fullTitle": "Sub-Bab C: Pengurangan Bilangan Pecahan",
-  "targetDescription": "Siswa mengurangkan pecahan berpenyebut sama dan berbeda dengan menyamakan penyebut melalui KPK, termasuk konteks melukis kertas dan pembagian apel sesuai Buku Siswa Kelas V Bab 3.",
+  "targetDescription": "Siswa mengurangkan pecahan dengan penyebut sama maupun berbeda memakai KPK dan model sisa daerah sesuai Buku Siswa Kelas V Bab 3 Sub-Bab C.",
   "secondaryBg": "#FCE7F3",
   "secondaryBorder": "#DB2777",
   "secondaryText": "#9D174D",
   "silabus": {
-    "teksSuara": "Kita belajar pengurangan pecahan. Penyebut harus sama. Jika belum, samakan dengan KPK. Kurangi pembilangnya. Hasil boleh disederhanakan. Kita bantu Lukas dan Yohana menghitung sisa kertas lukis. Kita melewati enam tahap seru: cerita, peta pikiran, infografis, benda nyata, gambar, dan simbol.",
-    "cp": "Siswa mengurangkan bilangan pecahan berpenyebut sama dan berbeda.",
-    "referensi": "Buku Siswa Matematika Kelas V Kemendikbudristek (Bab 3: Bilangan Pecahan, Sub-Bab C hlm. 91–102)."
+    "teksSuara": "Kita belajar mengurangkan pecahan. Ide sama dengan penjumlahan: samakan penyebut dulu. Lalu kurangkan pembilang. Model sisa daerah membantu melihat berapa yang tersisa. Kita melewati enam tahap seru: cerita, peta pikiran, infografis, benda nyata, gambar, dan simbol.",
+    "cp": "Siswa mengurangkan bilangan pecahan dengan penyebut sama atau berbeda.",
+    "referensi": "Buku Siswa Matematika Kelas V Kemendikbudristek (Bab 3 Sub-Bab C)."
   },
   "videos": [
     {
       "id": "K5B3C-V1",
-      "judul": "Syarat Mengurangi",
-      "subjudul": "Aturan",
+      "judul": "Kurang Penyebut Sama",
+      "subjudul": "Kurang Penyebut Sama",
       "adegan": [
         {
           "id": "K5B3C-V1-1",
-          "judul": "Penyebut sama",
+          "judul": "Aturan",
           "ketukan": [
-            "Syarat pengurangan: penyebut sama.",
-            "Kurangi pembilang.",
-            "Penyebut tetap.",
-            "Contoh dua per tiga kurang satu per tiga."
+            "Lima per delapan kurang dua per delapan. Penyebut sama.",
+            "Kurangkan pembilang: lima kurang dua sama dengan tiga. Penyebut tetap delapan.",
+            "METODE LUAR · Kurang Penyebut Sama: hanya pembilang yang dikurangi.",
+            "Hasil tiga per delapan."
           ],
           "papan": [
-            "syarat",
-            "kurang p",
-            "q tetap",
-            "1/3"
+            "5/8-2/8",
+            "3/8",
+            "aturan",
+            "hasil"
           ]
         },
         {
           "id": "K5B3C-V1-2",
-          "judul": "Lukas lukis",
+          "judul": "Sisa daerah",
           "ketukan": [
-            "Harus dua per tiga kertas.",
-            "Sudah satu per tiga.",
-            "Sisa satu per tiga.",
-            "Belum selesai."
+            "Arsir lima kotak dari delapan. Hapus dua kotak.",
+            "Sisa tiga kotak. Itulah model sisa daerah.",
+            "Visual menegaskan hasil pengurangan.",
+            "Pakai cara ini bila ragu."
           ],
           "papan": [
-            "2/3",
-            "1/3",
+            "arsir-hapus",
             "sisa",
-            "1/3"
+            "lihat",
+            "bila ragu"
           ]
         },
         {
           "id": "K5B3C-V1-3",
-          "judul": "Arsir sisa",
+          "judul": "Cek",
           "ketukan": [
-            "Arsir yang harus dilukis.",
-            "Tandai yang sudah.",
-            "Sisa terlihat jelas.",
-            "Itu jawaban.",
-            "METODE LUAR. Kurang Penyebut Sama: Jika penyebut sama, kurangi pembilang; penyebut tetap."
+            "Hasil harus lebih kecil dari pecahan awal.",
+            "Sederhanakan jika bisa.",
+            "Siap untuk penyebut berbeda.",
+            "Ayo."
           ],
           "papan": [
-            "arsir",
-            "sudah",
-            "sisa",
-            "jelas",
-            "METODE LUAR · Kurang Penyebut Sama"
+            "lebih kecil",
+            "sederhana",
+            "lanjut",
+            "ayo"
           ]
         }
       ]
     },
     {
       "id": "K5B3C-V2",
-      "judul": "Penyebut Berbeda",
-      "subjudul": "KPK",
+      "judul": "Kurang Penyebut Beda",
+      "subjudul": "Kurang dengan KPK",
       "adegan": [
         {
           "id": "K5B3C-V2-1",
-          "judul": "Yohana lukis",
+          "judul": "Masalah",
           "ketukan": [
-            "Harus dua per tiga.",
-            "Sudah satu per dua.",
-            "Penyebut beda.",
-            "Samakan dulu."
+            "Tiga per empat kurang satu per enam. Penyebut beda.",
+            "Cari KPK empat dan enam: dua belas.",
+            "Tiga per empat senilai sembilan per dua belas.",
+            "Satu per enam senilai dua per dua belas."
           ],
           "papan": [
-            "2/3",
-            "1/2",
-            "beda",
-            "samakan"
+            "3/4-1/6",
+            "KPK=12",
+            "9/12",
+            "2/12"
           ]
         },
         {
           "id": "K5B3C-V2-2",
-          "judul": "Ke penyebut 6",
+          "judul": "Kurangkan",
           "ketukan": [
-            "Dua per tiga jadi empat per enam.",
-            "Satu per dua jadi tiga per enam.",
-            "Kurangi: satu per enam.",
-            "Itu sisa Yohana."
+            "Sembilan per dua belas kurang dua per dua belas sama dengan tujuh per dua belas.",
+            "METODE LUAR · Kurang dengan KPK: samakan dulu, baru kurangi pembilang.",
+            "Jangan kurangkan penyebut.",
+            "Sederhanakan bila mungkin."
           ],
           "papan": [
-            "4/6",
-            "3/6",
-            "1/6",
-            "sisa"
+            "7/12",
+            "KPK",
+            "jangan",
+            "cek"
           ]
         },
         {
           "id": "K5B3C-V2-3",
-          "judul": "Apel Asep",
+          "judul": "Campuran",
           "ketukan": [
-            "Delapan apel.",
-            "Beri enam.",
-            "Sisa dua dari delapan.",
-            "Boleh satu per empat.",
-            "METODE LUAR. Kurang dengan KPK: Samakan penyebut dengan KPK, lalu kurangi pembilang."
+            "Campuran? Ubah ke biasa atau kurangkan bilangan bulat dan pecahan dengan hati-hati.",
+            "Urutan aman: ubah, samakan, kurangkan, sederhanakan.",
+            "Perkiraan: tiga per empat kurang sedikit masih lebih dari setengah.",
+            "Tujuh per dua belas perlu dicek — tunggu, tiga per empat adalah sembilan per dua belas, hasil tujuh per dua belas masuk akal."
           ],
           "papan": [
-            "8",
-            "beri 6",
-            "2/8",
-            "1/4",
-            "METODE LUAR · Kurang dengan KPK"
+            "campuran",
+            "urut",
+            "perkiraan",
+            "ok"
           ]
         }
       ]
     },
     {
       "id": "K5B3C-V3",
-      "judul": "Campuran & Cek",
-      "subjudul": "Lanjut",
+      "judul": "Sisa dan Rangkum",
+      "subjudul": "Model Sisa Daerah",
       "adegan": [
         {
           "id": "K5B3C-V3-1",
-          "judul": "Campuran",
+          "judul": "Model sisa",
           "ketukan": [
-            "Pengurangan campuran.",
-            "Ubah ke biasa dulu.",
-            "Atau samakan bentuk.",
-            "Lalu kurangi."
+            "Arsir pecahan pertama pada bangun berpenyebut sama.",
+            "Hapus atau coret bagian yang dikurangi.",
+            "Sisa arsir adalah hasil.",
+            "METODE LUAR · Model Sisa Daerah: lihat sisa, jangan hanya hafal rumus."
           ],
           "papan": [
-            "campuran",
-            "ke biasa",
-            "samakan",
-            "kurang"
+            "arsir awal",
+            "hapus",
+            "sisa=hasil",
+            "visual"
           ]
         },
         {
           "id": "K5B3C-V3-2",
-          "judul": "Cek masuk akal",
+          "judul": "Rangkum Bab 3",
           "ketukan": [
-            "Hasil harus lebih kecil dari pecahan awal.",
-            "Jika tidak, cek lagi.",
-            "Sederhanakan bila bisa.",
-            "Siap bermain!"
+            "Bab 3: bandingkan, jumlahkan, kurangkan pecahan.",
+            "Senjata utama: garis bilangan, senilai, KPK, model daerah.",
+            "Selalu cek masuk akal.",
+            "Siap permainan terakhir Sub-Bab C."
           ],
           "papan": [
+            "rangkum",
+            "senjata",
             "cek",
-            "lebih kecil",
-            "sederhana",
             "main"
           ]
         },
         {
           "id": "K5B3C-V3-3",
-          "judul": "Bab 3 siap",
+          "judul": "Tutup",
           "ketukan": [
-            "Kita sudah banding.",
-            "Sudah jumlah.",
-            "Sudah kurang.",
-            "Materi pecahan lengkap!",
-            "METODE LUAR. Model Sisa Daerah: Bayangkan bagian yang tersisa setelah dikurangi."
+            "Kamu sudah memakai metode luar di cerita, bukan hanya di label silabus.",
+            "Ulangi peta pikiran bila perlu.",
+            "Selesaikan permainan Concrete sampai Abstract.",
+            "Hebat: pecahan Bab 3 siap dikuasai lewat bermain."
           ],
           "papan": [
-            "banding",
-            "jumlah",
-            "kurang",
-            "selesai",
-            "METODE LUAR · Model Sisa Daerah"
+            "metode hidup",
+            "ulang",
+            "CPA",
+            "hebat"
           ]
         }
       ]
@@ -1824,7 +1727,7 @@ export const SUB_C53: SubBabNaskah = {
   "mindMaps": [
     {
       "stepNumber": 1,
-      "stepTitle": "1. Cek penyebut",
+      "stepTitle": "1. Lihat penyebut",
       "stepDesc": "Sama atau beda?",
       "icon": "👀",
       "flowFrom": "START",
@@ -1832,152 +1735,131 @@ export const SUB_C53: SubBabNaskah = {
     },
     {
       "stepNumber": 2,
-      "stepTitle": "2. Jika beda",
-      "stepDesc": "Cari KPK",
-      "icon": "🎯",
+      "stepTitle": "2. Sama?",
+      "stepDesc": "Kurangi pembilang.",
+      "icon": "➖",
       "flowFrom": "1",
       "flowTo": "3"
     },
     {
       "stepNumber": 3,
-      "stepTitle": "3. Senilai",
-      "stepDesc": "Ubah kedua pecahan",
-      "icon": "🔄",
+      "stepTitle": "3. Beda?",
+      "stepDesc": "KPK lalu senilai.",
+      "icon": "🔢",
       "flowFrom": "2",
       "flowTo": "4"
     },
     {
       "stepNumber": 4,
-      "stepTitle": "4. Kurangi p",
-      "stepDesc": "q tetap",
+      "stepTitle": "4. Kurangkan",
+      "stepDesc": "Pembilang − pembilang.",
       "icon": "➖",
       "flowFrom": "3",
       "flowTo": "5"
     },
     {
       "stepNumber": 5,
-      "stepTitle": "5. Sederhanakan",
-      "stepDesc": "Pakai FPB",
-      "icon": "✨",
+      "stepTitle": "5. Sisa daerah",
+      "stepDesc": "Arsir lalu hapus.",
+      "icon": "🎨",
       "flowFrom": "4",
       "flowTo": "6"
     },
     {
       "stepNumber": 6,
-      "stepTitle": "6. Cek sisa",
-      "stepDesc": "Masuk akal?",
-      "icon": "✅",
+      "stepTitle": "6. Sederhanakan",
+      "stepDesc": "Jika bisa.",
+      "icon": "✨",
       "flowFrom": "5",
       "flowTo": "7"
     },
     {
       "stepNumber": 7,
-      "stepTitle": "7. METODE LUAR · Kurang Penyebut Sama",
-      "stepDesc": "Jika penyebut sama, kurangi pembilang; penyebut tetap.",
-      "icon": "🌍",
+      "stepTitle": "7. Cek",
+      "stepDesc": "Hasil < pecahan awal?",
+      "icon": "✅",
       "flowFrom": "6",
       "flowTo": "8"
     },
     {
       "stepNumber": 8,
-      "stepTitle": "8. METODE LUAR · Kurang dengan KPK",
-      "stepDesc": "Samakan penyebut dengan KPK, lalu kurangi pembilang.",
-      "icon": "🌍",
+      "stepTitle": "8. Bab 3 utuh",
+      "stepDesc": "Banding, jumlah, kurang.",
+      "icon": "🎉",
       "flowFrom": "7",
       "flowTo": "END"
     }
   ],
   "infografis": [
     {
-      "judul": "Syarat",
+      "judul": "Penyebut sama",
       "emoji": "✅",
       "countNum": 1,
-      "countWord": "q sama",
-      "suara": "Wajib."
+      "countWord": "p-p",
+      "suara": "Kurangi pembilang."
     },
     {
-      "judul": "2/3−1/3",
-      "emoji": "🎨",
-      "countNum": 1,
-      "countWord": "1/3",
-      "suara": "Lukas."
-    },
-    {
-      "judul": "2/3−1/2",
-      "emoji": "🖌️",
-      "countNum": 1,
-      "countWord": "1/6",
-      "suara": "Yohana."
+      "judul": "5/8-2/8",
+      "emoji": "🔢",
+      "countNum": 3,
+      "countWord": "3/8",
+      "suara": "Contoh."
     },
     {
       "judul": "KPK",
       "emoji": "🎯",
       "countNum": 1,
-      "countWord": "samakan q",
-      "suara": "Beda penyebut."
+      "countWord": "samakan",
+      "suara": "Bila beda."
     },
     {
-      "judul": "6/8−2/8",
-      "emoji": "🍎",
-      "countNum": 4,
-      "countWord": "4/8",
-      "suara": "Boleh 1/2."
-    },
-    {
-      "judul": "Sederhana",
-      "emoji": "✨",
-      "countNum": 1,
-      "countWord": "FPB",
-      "suara": "Perkecil."
+      "judul": "3/4-1/6",
+      "emoji": "➖",
+      "countNum": 7,
+      "countWord": "7/12",
+      "suara": "Lewat 12."
     },
     {
       "judul": "Sisa",
-      "emoji": "📉",
+      "emoji": "🎨",
       "countNum": 1,
-      "countWord": "awal−sudah",
-      "suara": "Cerita lukis."
+      "countWord": "hapus",
+      "suara": "Model sisa."
+    },
+    {
+      "judul": "Jangan",
+      "emoji": "🚫",
+      "countNum": 1,
+      "countWord": "q-q",
+      "suara": "Jangan kurang penyebut."
     },
     {
       "judul": "Campuran",
       "emoji": "🔄",
       "countNum": 1,
-      "countWord": "ke biasa",
-      "suara": "Aman."
+      "countWord": "ubah",
+      "suara": "Ke biasa dulu."
     },
     {
-      "judul": "Cek",
-      "emoji": "✅",
+      "judul": "Perkiraan",
+      "emoji": "📏",
       "countNum": 1,
-      "countWord": "hasil < awal",
-      "suara": "Masuk akal."
+      "countWord": "cek",
+      "suara": "Masuk akal?"
+    },
+    {
+      "judul": "Senilai",
+      "emoji": "⚖️",
+      "countNum": 1,
+      "countWord": "sama nilai",
+      "suara": "Sebelum kurang."
     },
     {
       "judul": "Bab 3",
       "emoji": "🎉",
       "countNum": 1,
-      "countWord": "A–C siap",
-      "suara": "Materi."
-    },
-    {
-      "judul": "Kurang Penyebut Sama",
-      "emoji": "🌍",
-      "countNum": 1,
-      "countWord": "METODE LUAR · Same Denominator Subtract",
-      "suara": "METODE LUAR. Kurang Penyebut Sama. Jika penyebut sama, kurangi pembilang; penyebut tetap."
-    },
-    {
-      "judul": "Kurang dengan KPK",
-      "emoji": "🌍",
-      "countNum": 2,
-      "countWord": "METODE LUAR · LCD Subtract",
-      "suara": "METODE LUAR. Kurang dengan KPK. Samakan penyebut dengan KPK, lalu kurangi pembilang."
-    },
-    {
-      "judul": "Model Sisa Daerah",
-      "emoji": "🌍",
-      "countNum": 3,
-      "countWord": "METODE LUAR · Residual Area",
-      "suara": "METODE LUAR. Model Sisa Daerah. Bayangkan bagian yang tersisa setelah dikurangi."
+      "countWord": "siap",
+      "suara": "Utuh."
     }
   ],
   "games": [
@@ -1986,9 +1868,9 @@ export const SUB_C53: SubBabNaskah = {
       "gameType": "kurang-sama",
       "title": "Kurang Penyebut Sama",
       "bookReference": "hlm. 91–95",
-      "objective": "Mengurangkan. (METODE LUAR · Kurang Penyebut Sama)",
-      "mechanicDescription": "Tiga ronde.",
-      "voiceGuide": "METODE LUAR · Kurang Penyebut Sama. Pilih hasil.",
+      "objective": "Kurangi pembilang. Mengurangkan.",
+      "mechanicDescription": "Tiga ronde. Saat bermain, ingat Kurang Penyebut Sama: Penyebut tetap.",
+      "voiceGuide": "Kurang Penyebut Sama. Penyebut tetap.",
       "emoji": "➖",
       "targetCount": 6
     },
@@ -1997,9 +1879,9 @@ export const SUB_C53: SubBabNaskah = {
       "gameType": "kurang-beda",
       "title": "Kurang Penyebut Beda",
       "bookReference": "hlm. 98–102",
-      "objective": "Pakai KPK.",
-      "mechanicDescription": "Tiga ronde.",
-      "voiceGuide": "Pilih hasil.",
+      "objective": "Kurangi pembilang. Pakai KPK.",
+      "mechanicDescription": "Tiga ronde. Saat bermain, ingat Kurang Penyebut Sama: Penyebut tetap.",
+      "voiceGuide": "Kurang Penyebut Sama. Penyebut tetap.",
       "emoji": "🧮",
       "targetCount": 6
     },
@@ -2008,9 +1890,9 @@ export const SUB_C53: SubBabNaskah = {
       "gameType": "arti-kurang",
       "title": "Arti Pengurangan",
       "bookReference": "hlm. 91–102",
-      "objective": "Definisi & cara.",
-      "mechanicDescription": "Tiga ronde.",
-      "voiceGuide": "Pilih.",
+      "objective": "Kurangi pembilang. Definisi & cara.",
+      "mechanicDescription": "Tiga ronde. Saat bermain, ingat Kurang Penyebut Sama: Penyebut tetap.",
+      "voiceGuide": "Kurang Penyebut Sama. Penyebut tetap.",
       "emoji": "📖",
       "targetCount": 6
     },
@@ -2019,9 +1901,9 @@ export const SUB_C53: SubBabNaskah = {
       "gameType": "sort-kurang",
       "title": "Pilah Sama/Beda Kurang",
       "bookReference": "hlm. 91–102",
-      "objective": "Memilah.",
-      "mechanicDescription": "Tiga ronde.",
-      "voiceGuide": "Pilah.",
+      "objective": "Kurangi pembilang. Memilah.",
+      "mechanicDescription": "Tiga ronde. Saat bermain, ingat Kurang Penyebut Sama: Penyebut tetap.",
+      "voiceGuide": "Kurang Penyebut Sama. Penyebut tetap.",
       "emoji": "🧺",
       "targetCount": 18
     },
@@ -2030,9 +1912,9 @@ export const SUB_C53: SubBabNaskah = {
       "gameType": "match-kurang",
       "title": "Jodohkan Kurang",
       "bookReference": "hlm. 91–102",
-      "objective": "Menjodohkan.",
+      "objective": "Menjodohkan. (Kurang Penyebut Sama)",
       "mechanicDescription": "Tiga ronde.",
-      "voiceGuide": "Jodohkan.",
+      "voiceGuide": "Kurang Penyebut Sama. Mainkan dengan teliti.",
       "emoji": "🔗",
       "targetCount": 12
     },
@@ -2041,9 +1923,9 @@ export const SUB_C53: SubBabNaskah = {
       "gameType": "memory-kurang",
       "title": "Memori Kurang",
       "bookReference": "hlm. 91–102",
-      "objective": "Memori.",
+      "objective": "Memori. (Kurang Penyebut Sama)",
       "mechanicDescription": "Tiga ronde.",
-      "voiceGuide": "Balik kartu.",
+      "voiceGuide": "Kurang Penyebut Sama. Mainkan dengan teliti.",
       "emoji": "🃏",
       "targetCount": 12
     },
@@ -2052,9 +1934,9 @@ export const SUB_C53: SubBabNaskah = {
       "gameType": "tap-kurang",
       "title": "Ketuk Hasil Kurang",
       "bookReference": "hlm. 91–102",
-      "objective": "Mengetuk.",
+      "objective": "Mengetuk. (Kurang Penyebut Sama)",
       "mechanicDescription": "Tiga ronde.",
-      "voiceGuide": "Ketuk.",
+      "voiceGuide": "Kurang Penyebut Sama. Mainkan dengan teliti.",
       "emoji": "👆",
       "targetCount": 9
     },
@@ -2063,9 +1945,9 @@ export const SUB_C53: SubBabNaskah = {
       "gameType": "tap-all-kurang",
       "title": "Ketuk Semua Benar Kurang",
       "bookReference": "hlm. 91–102",
-      "objective": "Ketuk semua.",
+      "objective": "Ketuk semua. (Kurang Penyebut Sama)",
       "mechanicDescription": "Tiga ronde.",
-      "voiceGuide": "Ketuk semua.",
+      "voiceGuide": "Kurang Penyebut Sama. Mainkan dengan teliti.",
       "emoji": "✔️",
       "targetCount": 3
     },
@@ -2074,9 +1956,9 @@ export const SUB_C53: SubBabNaskah = {
       "gameType": "story-kurang",
       "title": "Cerita Lukis & Apel",
       "bookReference": "hlm. 91–102",
-      "objective": "Soal cerita.",
+      "objective": "Soal cerita. (Kurang Penyebut Sama)",
       "mechanicDescription": "Tiga ronde.",
-      "voiceGuide": "Pilih.",
+      "voiceGuide": "Kurang Penyebut Sama. Mainkan dengan teliti.",
       "emoji": "🎨",
       "targetCount": 6
     },
@@ -2085,9 +1967,9 @@ export const SUB_C53: SubBabNaskah = {
       "gameType": "order-kurang",
       "title": "Urutkan Hasil Kurang",
       "bookReference": "hlm. 91–102",
-      "objective": "Mengurutkan.",
+      "objective": "Mengurutkan. (Kurang Penyebut Sama)",
       "mechanicDescription": "Tiga ronde.",
-      "voiceGuide": "Urutkan.",
+      "voiceGuide": "Kurang Penyebut Sama. Mainkan dengan teliti.",
       "emoji": "📶",
       "targetCount": 3
     },
@@ -2096,9 +1978,9 @@ export const SUB_C53: SubBabNaskah = {
       "gameType": "diagram-sama-c",
       "title": "Diagram Kurang Sama",
       "bookReference": "hlm. 91–95",
-      "objective": "Baca sisa. (METODE LUAR · Kurang Penyebut Sama)",
-      "mechanicDescription": "Tiga ronde.",
-      "voiceGuide": "METODE LUAR · Kurang Penyebut Sama. Pilih.",
+      "objective": "Samakan penyebut. Baca sisa.",
+      "mechanicDescription": "Tiga ronde. Saat bermain, ingat Kurang dengan KPK: Lalu kurangi.",
+      "voiceGuide": "Kurang dengan KPK. Lalu kurangi.",
       "diagramType": "same",
       "numberA": 1,
       "numberB": 2
@@ -2108,9 +1990,9 @@ export const SUB_C53: SubBabNaskah = {
       "gameType": "diagram-beda-c",
       "title": "Diagram Kurang Beda",
       "bookReference": "hlm. 98–102",
-      "objective": "Baca KPK.",
-      "mechanicDescription": "Tiga ronde.",
-      "voiceGuide": "Pilih.",
+      "objective": "Samakan penyebut. Baca KPK.",
+      "mechanicDescription": "Tiga ronde. Saat bermain, ingat Kurang dengan KPK: Lalu kurangi.",
+      "voiceGuide": "Kurang dengan KPK. Lalu kurangi.",
       "diagramType": "diff",
       "numberA": 1,
       "numberB": 2
@@ -2120,9 +2002,9 @@ export const SUB_C53: SubBabNaskah = {
       "gameType": "match-diagram-c",
       "title": "Jodohkan Diagram C",
       "bookReference": "hlm. 91–102",
-      "objective": "Jodohkan.",
-      "mechanicDescription": "Tiga ronde.",
-      "voiceGuide": "Jodohkan.",
+      "objective": "Samakan penyebut. Jodohkan.",
+      "mechanicDescription": "Tiga ronde. Saat bermain, ingat Kurang dengan KPK: Lalu kurangi.",
+      "voiceGuide": "Kurang dengan KPK. Lalu kurangi.",
       "diagramType": "match",
       "numberA": 1,
       "numberB": 2
@@ -2132,9 +2014,9 @@ export const SUB_C53: SubBabNaskah = {
       "gameType": "memory-diagram-c",
       "title": "Memori Diagram C",
       "bookReference": "hlm. 91–102",
-      "objective": "Memori.",
-      "mechanicDescription": "Tiga ronde.",
-      "voiceGuide": "Balik kartu.",
+      "objective": "Samakan penyebut. Memori.",
+      "mechanicDescription": "Tiga ronde. Saat bermain, ingat Kurang dengan KPK: Lalu kurangi.",
+      "voiceGuide": "Kurang dengan KPK. Lalu kurangi.",
       "diagramType": "mem",
       "numberA": 1,
       "numberB": 4
@@ -2144,9 +2026,9 @@ export const SUB_C53: SubBabNaskah = {
       "gameType": "table-c",
       "title": "Tabel Kurang",
       "bookReference": "hlm. 91–102",
-      "objective": "Isi tabel.",
+      "objective": "Isi tabel. (Kurang dengan KPK)",
       "mechanicDescription": "Tiga tabel.",
-      "voiceGuide": "Pilih.",
+      "voiceGuide": "Kurang dengan KPK. Mainkan dengan teliti.",
       "diagramType": "table",
       "numberA": 1,
       "numberB": 3
@@ -2156,9 +2038,9 @@ export const SUB_C53: SubBabNaskah = {
       "gameType": "tap-all-pc",
       "title": "Ketuk Semua Diagram C",
       "bookReference": "hlm. 91–102",
-      "objective": "Ketuk semua.",
+      "objective": "Ketuk semua. (Kurang dengan KPK)",
       "mechanicDescription": "Tiga ronde.",
-      "voiceGuide": "Ketuk semua.",
+      "voiceGuide": "Kurang dengan KPK. Mainkan dengan teliti.",
       "diagramType": "select",
       "numberA": 1,
       "numberB": 4
@@ -2168,9 +2050,9 @@ export const SUB_C53: SubBabNaskah = {
       "gameType": "sort-diagram-c",
       "title": "Pilah Diagram C",
       "bookReference": "hlm. 91–102",
-      "objective": "Pilah.",
+      "objective": "Pilah. (Kurang dengan KPK)",
       "mechanicDescription": "Tiga ronde.",
-      "voiceGuide": "Pilah.",
+      "voiceGuide": "Kurang dengan KPK. Mainkan dengan teliti.",
       "diagramType": "sort",
       "numberA": 1,
       "numberB": 6
@@ -2180,9 +2062,9 @@ export const SUB_C53: SubBabNaskah = {
       "gameType": "choose-c",
       "title": "Pilih Pernyataan C",
       "bookReference": "hlm. 91–102",
-      "objective": "Pilih.",
+      "objective": "Pilih. (Kurang dengan KPK)",
       "mechanicDescription": "Tiga ronde.",
-      "voiceGuide": "Pilih.",
+      "voiceGuide": "Kurang dengan KPK. Mainkan dengan teliti.",
       "diagramType": "choose",
       "numberA": 1,
       "numberB": 2
@@ -2192,9 +2074,9 @@ export const SUB_C53: SubBabNaskah = {
       "gameType": "jenis-pc",
       "title": "Pilih Arti Diagram C",
       "bookReference": "hlm. 91–102",
-      "objective": "Definisi.",
+      "objective": "Definisi. (Kurang dengan KPK)",
       "mechanicDescription": "Tiga ronde.",
-      "voiceGuide": "Pilih.",
+      "voiceGuide": "Kurang dengan KPK. Mainkan dengan teliti.",
       "diagramType": "def",
       "numberA": 1,
       "numberB": 2
@@ -2204,9 +2086,9 @@ export const SUB_C53: SubBabNaskah = {
       "gameType": "story-picture-c",
       "title": "Cerita Diagram C",
       "bookReference": "hlm. 91–102",
-      "objective": "Cerita.",
+      "objective": "Cerita. (Kurang dengan KPK)",
       "mechanicDescription": "Tiga ronde.",
-      "voiceGuide": "Pilih.",
+      "voiceGuide": "Kurang dengan KPK. Mainkan dengan teliti.",
       "diagramType": "story",
       "numberA": 1,
       "numberB": 2
@@ -2216,9 +2098,9 @@ export const SUB_C53: SubBabNaskah = {
       "gameType": "write-sama-c",
       "title": "Tulis Kurang Sama",
       "bookReference": "hlm. 91–95",
-      "objective": "Menulis. (METODE LUAR · Kurang Penyebut Sama)",
-      "mechanicDescription": "Tiga ronde.",
-      "voiceGuide": "METODE LUAR · Kurang Penyebut Sama. Pilih.",
+      "objective": "Arsir lalu hapus. Menulis.",
+      "mechanicDescription": "Tiga ronde. Saat bermain, ingat Model Sisa Daerah: Sisa adalah hasil.",
+      "voiceGuide": "Model Sisa Daerah. Sisa adalah hasil.",
       "symbolLarge": "−",
       "wordLarge": "SAMA",
       "mathNotation": "p/q"
@@ -2228,9 +2110,9 @@ export const SUB_C53: SubBabNaskah = {
       "gameType": "write-beda-c",
       "title": "Tulis Kurang Beda",
       "bookReference": "hlm. 98–102",
-      "objective": "Menulis.",
-      "mechanicDescription": "Tiga ronde.",
-      "voiceGuide": "Pilih.",
+      "objective": "Arsir lalu hapus. Menulis.",
+      "mechanicDescription": "Tiga ronde. Saat bermain, ingat Model Sisa Daerah: Sisa adalah hasil.",
+      "voiceGuide": "Model Sisa Daerah. Sisa adalah hasil.",
       "symbolLarge": "KPK−",
       "wordLarge": "BEDA",
       "mathNotation": "p/q"
@@ -2240,9 +2122,9 @@ export const SUB_C53: SubBabNaskah = {
       "gameType": "choose-def-c",
       "title": "Pilih Definisi C",
       "bookReference": "hlm. 91–102",
-      "objective": "Definisi.",
-      "mechanicDescription": "Tiga ronde.",
-      "voiceGuide": "Pilih.",
+      "objective": "Arsir lalu hapus. Definisi.",
+      "mechanicDescription": "Tiga ronde. Saat bermain, ingat Model Sisa Daerah: Sisa adalah hasil.",
+      "voiceGuide": "Model Sisa Daerah. Sisa adalah hasil.",
       "symbolLarge": "Δ",
       "wordLarge": "DEFINISI",
       "mathNotation": "teks"
@@ -2252,9 +2134,9 @@ export const SUB_C53: SubBabNaskah = {
       "gameType": "order-abstract-c",
       "title": "Urutkan Abstrak C",
       "bookReference": "hlm. 91–102",
-      "objective": "Urut.",
-      "mechanicDescription": "Tiga ronde.",
-      "voiceGuide": "Urutkan.",
+      "objective": "Arsir lalu hapus. Urut.",
+      "mechanicDescription": "Tiga ronde. Saat bermain, ingat Model Sisa Daerah: Sisa adalah hasil.",
+      "voiceGuide": "Model Sisa Daerah. Sisa adalah hasil.",
       "symbolLarge": "naik",
       "wordLarge": "URUT",
       "mathNotation": "nilai"
@@ -2264,9 +2146,9 @@ export const SUB_C53: SubBabNaskah = {
       "gameType": "match-abstract-c",
       "title": "Jodohkan Notasi C",
       "bookReference": "hlm. 91–102",
-      "objective": "Jodohkan.",
+      "objective": "Jodohkan. (Model Sisa Daerah)",
       "mechanicDescription": "Tiga ronde.",
-      "voiceGuide": "Jodohkan.",
+      "voiceGuide": "Model Sisa Daerah. Mainkan dengan teliti.",
       "symbolLarge": "−",
       "wordLarge": "JODOH",
       "mathNotation": "teks"
@@ -2276,9 +2158,9 @@ export const SUB_C53: SubBabNaskah = {
       "gameType": "memory-abstract-c",
       "title": "Memori Notasi C",
       "bookReference": "hlm. 91–102",
-      "objective": "Memori.",
+      "objective": "Memori. (Model Sisa Daerah)",
       "mechanicDescription": "Tiga ronde.",
-      "voiceGuide": "Balik kartu.",
+      "voiceGuide": "Model Sisa Daerah. Mainkan dengan teliti.",
       "symbolLarge": "−",
       "wordLarge": "MEMORI",
       "mathNotation": "notasi"
@@ -2288,9 +2170,9 @@ export const SUB_C53: SubBabNaskah = {
       "gameType": "true-false-c",
       "title": "Benar atau Salah: Kurang",
       "bookReference": "hlm. 91–102",
-      "objective": "Menilai.",
+      "objective": "Menilai. (Model Sisa Daerah)",
       "mechanicDescription": "Dua ronde.",
-      "voiceGuide": "Benar/salah.",
+      "voiceGuide": "Model Sisa Daerah. Mainkan dengan teliti.",
       "symbolLarge": "✓ ✗",
       "wordLarge": "BENAR SALAH",
       "mathNotation": "alasan"
@@ -2300,9 +2182,9 @@ export const SUB_C53: SubBabNaskah = {
       "gameType": "detective-c",
       "title": "Detektif Kurang",
       "bookReference": "hlm. 91–102",
-      "objective": "Petunjuk.",
+      "objective": "Petunjuk. (Model Sisa Daerah)",
       "mechanicDescription": "Tiga soal.",
-      "voiceGuide": "Pilih.",
+      "voiceGuide": "Model Sisa Daerah. Mainkan dengan teliti.",
       "symbolLarge": "?",
       "wordLarge": "DETEKTIF",
       "mathNotation": "petunjuk"
@@ -2312,9 +2194,9 @@ export const SUB_C53: SubBabNaskah = {
       "gameType": "concept-c",
       "title": "Peta Konsep Kurang",
       "bookReference": "hlm. 91–102",
-      "objective": "Peta.",
+      "objective": "Peta. (Model Sisa Daerah)",
       "mechanicDescription": "Satu peta.",
-      "voiceGuide": "Pilih opsi.",
+      "voiceGuide": "Model Sisa Daerah. Mainkan dengan teliti.",
       "symbolLarge": "🗺️",
       "wordLarge": "PETA",
       "mathNotation": "konsep"
@@ -2324,9 +2206,9 @@ export const SUB_C53: SubBabNaskah = {
       "gameType": "story-abstract-c",
       "title": "Cerita Angka Kurang",
       "bookReference": "hlm. 91–102",
-      "objective": "Cerita.",
+      "objective": "Cerita. (Model Sisa Daerah)",
       "mechanicDescription": "Tiga ronde.",
-      "voiceGuide": "Pilih.",
+      "voiceGuide": "Model Sisa Daerah. Mainkan dengan teliti.",
       "symbolLarge": "📖",
       "wordLarge": "CERITA",
       "mathNotation": "teks"
@@ -2334,49 +2216,31 @@ export const SUB_C53: SubBabNaskah = {
   ],
   "poin": [
     {
-      "ikon": "✅",
-      "nama": "Syarat",
-      "isi": "Penyebut harus sama sebelum mengurangkan.",
-      "suara": "Samakan dulu."
-    },
-    {
-      "ikon": "🎯",
-      "nama": "KPK",
-      "isi": "Menyamakan penyebut berbeda.",
-      "suara": "Lalu kurangi."
-    },
-    {
       "ikon": "➖",
-      "nama": "Kurangi p",
-      "isi": "Pembilang dikurangi, penyebut tetap.",
-      "suara": "Itu aturannya."
+      "nama": "Penyebut sama",
+      "isi": "Kurangkan pembilang; penyebut tetap.",
+      "suara": "p−p atas q."
     },
     {
-      "ikon": "📉",
-      "nama": "Sisa",
-      "isi": "Yang belum dikerjakan = harus − sudah.",
-      "suara": "Cek masuk akal."
+      "ikon": "🔢",
+      "nama": "KPK",
+      "isi": "Beda penyebut: samakan dulu.",
+      "suara": "KPK dulu."
     },
     {
-      "ikon": "🌍",
-      "nama": "Kurang Penyebut Sama",
-      "isi": "METODE LUAR · Same Denominator Subtract: Jika penyebut sama, kurangi pembilang; penyebut tetap. (asal: Singapore Math).",
-      "suara": "METODE LUAR. Kurang Penyebut Sama. Jika penyebut sama, kurangi pembilang; penyebut tetap."
+      "ikon": "🎨",
+      "nama": "Sisa daerah",
+      "isi": "Arsir lalu hapus bagian yang dikurangi.",
+      "suara": "Lihat sisa."
     },
     {
-      "ikon": "🌍",
-      "nama": "Kurang dengan KPK",
-      "isi": "METODE LUAR · LCD Subtract: Samakan penyebut dengan KPK, lalu kurangi pembilang. (asal: Van de Walle).",
-      "suara": "METODE LUAR. Kurang dengan KPK. Samakan penyebut dengan KPK, lalu kurangi pembilang."
-    },
-    {
-      "ikon": "🌍",
-      "nama": "Model Sisa Daerah",
-      "isi": "METODE LUAR · Residual Area: Bayangkan bagian yang tersisa setelah dikurangi. (asal: Area model).",
-      "suara": "METODE LUAR. Model Sisa Daerah. Bayangkan bagian yang tersisa setelah dikurangi."
+      "ikon": "🚫",
+      "nama": "Jangan",
+      "isi": "Jangan mengurangkan penyebut.",
+      "suara": "Bukan q−q."
     }
   ],
-  "poinSuara": "Ingat: syarat penyebut sama, KPK, kurangi pembilang, cek sisa.",
+  "poinSuara": "Kurangi pembilang setelah penyebut sama; cek dengan model sisa.",
   "cara": {
     "suara": "Ikuti langkah-langkahnya.",
     "potongan": [
@@ -2398,19 +2262,19 @@ export const SUB_C53: SubBabNaskah = {
       }
     ]
   },
-  "rumah": "Ayo Mencoba di rumah: hitung 5/6 − 1/4 dan 3/4 − 1/4, lalu jelaskan sisa dengan gambar.",
+  "rumah": "Ayo Mencoba: terapkan Kurang Penyebut Sama pada satu soal di rumah.",
   "refleksi": [
-    "Apa beda langkah jumlah dan kurang?",
-    "Bagaimana menghitung 2/3 − 1/2?",
-    "Mengapa hasil pengurangan harus lebih kecil dari pecahan awal?"
+    "Bagaimana Kurang Penyebut Sama membantumu?",
+    "Kapan memakai Kurang dengan KPK?",
+    "Apa bedanya dengan hanya menghafal rumus?"
   ],
   "metodeLuar": [
     {
       "label": "METODE LUAR",
-      "nama": "Same Denominator Subtract",
+      "nama": "Like Denominator Subtract",
       "namaId": "Kurang Penyebut Sama",
-      "asal": "Singapore Math",
-      "ringkas": "Jika penyebut sama, kurangi pembilang; penyebut tetap.",
+      "asal": "Fraction operations",
+      "ringkas": "Penyebut sama: kurangkan pembilang, penyebut tetap.",
       "tahap": [
         "Story",
         "Concrete",
@@ -2419,10 +2283,10 @@ export const SUB_C53: SubBabNaskah = {
     },
     {
       "label": "METODE LUAR",
-      "nama": "LCD Subtract",
+      "nama": "Common Denominator Subtract",
       "namaId": "Kurang dengan KPK",
-      "asal": "Van de Walle",
-      "ringkas": "Samakan penyebut dengan KPK, lalu kurangi pembilang.",
+      "asal": "Singapore / US textbooks",
+      "ringkas": "Penyebut beda: samakan dengan KPK, lalu kurangkan pembilang.",
       "tahap": [
         "Story",
         "Mind",
@@ -2431,14 +2295,14 @@ export const SUB_C53: SubBabNaskah = {
     },
     {
       "label": "METODE LUAR",
-      "nama": "Residual Area",
+      "nama": "Residual Area Model",
       "namaId": "Model Sisa Daerah",
-      "asal": "Area model",
-      "ringkas": "Bayangkan bagian yang tersisa setelah dikurangi.",
+      "asal": "Visual fraction models",
+      "ringkas": "Arsir semua lalu hapus bagian yang dikurangi; sisanya hasil.",
       "tahap": [
+        "Story",
         "Infografis",
-        "Concrete",
-        "Picture"
+        "Concrete"
       ]
     }
   ]

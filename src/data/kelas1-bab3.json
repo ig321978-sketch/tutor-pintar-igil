@@ -15,7 +15,7 @@
       "id": "A",
       "codeTitle": "Sub-Bab A (Cerita Pengurangan)",
       "fullTitle": "Sub-Bab A: Cerita Pengurangan (Berkurang & Tersisa)",
-      "targetDescription": "Siswa memahami pengurangan sebagai berkurangnya jumlah benda, mengenali mula-mula, berkurang, dan sisa, menulis dan membaca kalimat matematika dengan tanda − dan =, mengenal sisa nol, serta mengurangkan sampai 10 dengan benda, gambar, dan simbol.",
+      "targetDescription": "Siswa memahami pengurangan sebagai berkurangnya jumlah benda, mengenali mula-mula, berkurang, dan sisa, menulis dan membaca kalimat matematika dengan tanda − dan =, mengenal sisa nol, serta mengurangkan sampai 10 dengan benda, gambar, dan simbol. Memakai Mengambil, Hitung Mundur, Kurang di Bingkai.",
       "secondaryBg": "#FEE2E2",
       "secondaryBorder": "#EF4444",
       "secondaryText": "#991B1B",
@@ -24,37 +24,37 @@
           "id": "A3-S1",
           "titleHint": "Bermain Tutup Mata",
           "sceneType": "tutup-mata-pulang",
-          "voiceNarration": "Enam sekawan sedang bermain tutup mata. Tetapi, Malosi dan Tika harus pulang. Sekarang tersisa Kira, Upe, Wei, dan Halim. Apakah jumlah anak menjadi lebih sedikit? Ya. Mula-mula enam anak, berkurang dua anak, sisanya empat anak. METODE LUAR. Mengambil: Ambil sebagian dari kumpulan."
+          "voiceNarration": "Enam sekawan sedang bermain tutup mata. Tetapi, Malosi dan Tika harus pulang. Sekarang tersisa Kira, Upe, Wei, dan Halim. Apakah jumlah anak menjadi lebih sedikit? Ya. Mula-mula enam anak, berkurang dua anak, sisanya empat anak. Kita memakai cara Mengambil: Ambil sebagian dari kumpulan."
         },
         {
           "id": "A3-S2",
           "titleHint": "Igil Menulis di Papan",
           "sceneType": "papan-kurang",
-          "voiceNarration": "Igil menulis cerita tutup mata di papan. Mula-mula enam anak. Berkurang dua anak. Sisanya empat anak. Tanda kurang dipakai untuk pengurangan. Kita tulis: enam, tanda kurang, dua, tanda sama dengan, empat. Kita baca: enam dikurangi dua sama dengan empat. Boleh juga dibaca: enam dikurangi dua hasilnya empat. Pengurangan artinya jumlah yang berkurang. METODE LUAR. Hitung Mundur: Mundur dari bilangan awal."
+          "voiceNarration": "Igil menulis cerita tutup mata di papan. Mula-mula enam anak. Berkurang dua anak. Sisanya empat anak. Tanda kurang dipakai untuk pengurangan. Kita tulis: enam, tanda kurang, dua, tanda sama dengan, empat. Kita baca: enam dikurangi dua sama dengan empat. Boleh juga dibaca: enam dikurangi dua hasilnya empat. Pengurangan artinya jumlah yang berkurang. Kita memakai cara Hitung Mundur: Mundur dari bilangan awal."
         },
         {
           "id": "A3-S3",
           "titleHint": "Kue Ibu",
           "sceneType": "kue-ibu",
-          "voiceNarration": "Ibu mempunyai enam kue. Upe memakan satu kue. Sisa kue Ibu adalah lima. Kita tulis: enam kurang satu sama dengan lima. Enam dikurangi satu hasilnya lima. METODE LUAR. Kurang di Bingkai: Hapus/kosongkan kotak pada bingkai."
+          "voiceNarration": "Ibu mempunyai enam kue. Upe memakan satu kue. Sisa kue Ibu adalah lima. Kita tulis: enam kurang satu sama dengan lima. Enam dikurangi satu hasilnya lima. Kita memakai cara Kurang di Bingkai: Hapus/kosongkan kotak pada bingkai."
         },
         {
           "id": "A3-S4",
           "titleHint": "Mobil Kosong",
           "sceneType": "mobil-turun",
-          "voiceNarration": "Mula-mula ada tiga orang di dalam mobil. Sebanyak tiga orang turun dari mobil. Sekarang tidak ada orang dalam mobil. Tiga dikurangi tiga hasilnya nol. Nol artinya tidak ada yang tersisa. METODE LUAR. Mengambil: Ambil sebagian dari kumpulan."
+          "voiceNarration": "Mula-mula ada tiga orang di dalam mobil. Sebanyak tiga orang turun dari mobil. Sekarang tidak ada orang dalam mobil. Tiga dikurangi tiga hasilnya nol. Nol artinya tidak ada yang tersisa. Kita memakai cara Mengambil: Ambil sebagian dari kumpulan."
         },
         {
           "id": "A3-S5",
           "titleHint": "Kupu-kupu Terbang",
           "sceneType": "kupu-terbang",
-          "voiceNarration": "Ada enam kupu-kupu di bunga. Lalu dua kupu-kupu terbang. Sekarang tersisa empat kupu-kupu di bunga. Enam dikurangi dua sama dengan empat. METODE LUAR. Hitung Mundur: Mundur dari bilangan awal."
+          "voiceNarration": "Ada enam kupu-kupu di bunga. Lalu dua kupu-kupu terbang. Sekarang tersisa empat kupu-kupu di bunga. Enam dikurangi dua sama dengan empat. Kita memakai cara Hitung Mundur: Mundur dari bilangan awal."
         },
         {
           "id": "A3-S6",
           "titleHint": "Ayo Bermain Kelereng",
           "sceneType": "kelereng-ambil",
-          "voiceNarration": "Ayo bermain! Kira menaruh lima kelereng di atas piring. Kira mengambil satu kelereng. Sekarang tersisa empat kelereng. Lima dikurangi satu sama dengan empat. Sekarang giliranmu: buat cerita pengurangan, lalu minta temanmu menjawabnya. METODE LUAR. Kurang di Bingkai: Hapus/kosongkan kotak pada bingkai."
+          "voiceNarration": "Ayo bermain! Kira menaruh lima kelereng di atas piring. Kira mengambil satu kelereng. Sekarang tersisa empat kelereng. Lima dikurangi satu sama dengan empat. Sekarang giliranmu: buat cerita pengurangan, lalu minta temanmu menjawabnya. Kita memakai cara Kurang di Bingkai: Hapus/kosongkan kotak pada bingkai."
         }
       ],
       "mindMaps": [
@@ -76,24 +76,24 @@
         },
         {
           "stepNumber": 3,
-          "stepTitle": "3. Pakai Tanda Kurang",
-          "stepDesc": "Bendanya jadi lebih sedikit. Itu namanya mengurangi, dan kita pakai tanda kurang. Pengurangan artinya jumlah yang berkurang.",
+          "stepTitle": "3. Take Away",
+          "stepDesc": "Ambil sebagian dari kumpulan.",
           "icon": "➖",
           "flowFrom": "Yang berkurang",
           "flowTo": "Tanda kurang"
         },
         {
           "stepNumber": 4,
-          "stepTitle": "4. Hitung Sisanya",
-          "stepDesc": "Hitung benda yang masih tinggal. Itu sisanya. Boleh mencoret atau menyingkirkan benda satu per satu, lalu menghitung yang tinggal. Enam kurangi dua, sisanya empat.",
+          "stepTitle": "4. Counting Back",
+          "stepDesc": "Mundur dari bilangan awal.",
           "icon": "🔢",
           "flowFrom": "Tanda kurang",
           "flowTo": "Sisa benda"
         },
         {
           "stepNumber": 5,
-          "stepTitle": "5. Tulis dan Baca",
-          "stepDesc": "Tulis kalimat matematika: enam kurang dua sama dengan empat. Lalu baca: enam dikurangi dua sama dengan empat, atau enam dikurangi dua hasilnya empat.",
+          "stepTitle": "5. Ten Frame Subtract",
+          "stepDesc": "Hapus/kosongkan kotak pada bingkai.",
           "icon": "📝",
           "flowFrom": "Sisa benda",
           "flowTo": "Kalimat pengurangan"
@@ -108,7 +108,7 @@
         },
         {
           "stepNumber": 7,
-          "stepTitle": "7. METODE LUAR · Mengambil",
+          "stepTitle": "7.",
           "stepDesc": "Ambil sebagian dari kumpulan.",
           "icon": "🌍",
           "flowFrom": "6",
@@ -116,7 +116,7 @@
         },
         {
           "stepNumber": 8,
-          "stepTitle": "8. METODE LUAR · Hitung Mundur",
+          "stepTitle": "8.",
           "stepDesc": "Mundur dari bilangan awal.",
           "icon": "🌍",
           "flowFrom": "7",
@@ -207,25 +207,25 @@
           "title": "Teman Pulang, Sisa Berapa? (6 − 2 = 4)",
           "emoji": "🧒",
           "targetCount": 4,
-          "voiceGuide": "Ketuk anak yang pulang. Lalu hitung anak yang masih tinggal."
+          "voiceGuide": "Mengambil. Ketuk anak yang pulang. Lalu hitung anak yang masih tinggal."
         },
         {
           "title": "Kue Ibu untuk Upe (6 − 1 = 5)",
           "emoji": "🧁",
           "targetCount": 5,
-          "voiceGuide": "Seret kue ke Upe, atau ketuk kuenya. Lalu hitung kue yang masih ada di piring."
+          "voiceGuide": "Hitung Mundur. Seret kue ke Upe, atau ketuk kuenya. Lalu hitung kue yang masih ada di piring."
         },
         {
           "title": "Lengkapi Cerita Pengurangan (7 − 2, 3 − 3, 6 − 2)",
           "emoji": "🦋",
           "targetCount": 4,
-          "voiceGuide": "Hitung benda yang tersisa. Isi kotak mula-mula, berkurang, dan sisa."
+          "voiceGuide": "Kurang di Bingkai. Hitung benda yang tersisa. Isi kotak mula-mula, berkurang, dan sisa."
         },
         {
           "title": "Tebak Sisa Kelereng (7 − 2, 9 − 4)",
           "emoji": "🔴",
           "targetCount": 5,
-          "voiceGuide": "Tebak dulu sisanya. Ambil kelereng ke kantong, lalu hitung yang tinggal."
+          "voiceGuide": "Mengambil. Tebak dulu sisanya. Ambil kelereng ke kantong, lalu hitung yang tinggal."
         }
       ],
       "pictorialSlides": [
@@ -234,21 +234,21 @@
           "diagramType": "ten-frame",
           "numberA": 6,
           "numberB": 2,
-          "caption": "Titik merah adalah yang mula-mula ada. Titik yang dicoret adalah yang berkurang."
+          "caption": "Pakai Mengambil. Titik merah adalah yang mula-mula ada. Titik yang dicoret adalah yang berkurang."
         },
         {
           "title": "Goresan Tally Dicoret (5 − 2, 7 − 4, 9 − 3)",
           "diagramType": "bar-blocks",
           "numberA": 5,
           "numberB": 2,
-          "caption": "Coret goresan sebanyak yang berkurang, lalu hitung goresan yang tinggal."
+          "caption": "Pakai Hitung Mundur. Coret goresan sebanyak yang berkurang, lalu hitung goresan yang tinggal."
         },
         {
           "title": "Jodohkan Diagram dan Kalimat (8 − 3, 6 − 2, 7 − 5)",
           "diagramType": "bar-blocks",
           "numberA": 8,
           "numberB": 3,
-          "caption": "Bingkai sepuluh, goresan tally, dan model batang dijodohkan dengan kalimat pengurangannya."
+          "caption": "Pakai Kurang di Bingkai. Bingkai sepuluh, goresan tally, dan model batang dijodohkan dengan kalimat pengurangannya."
         }
       ],
       "abstractSlides": [
@@ -256,19 +256,19 @@
           "symbolLarge": "6 − 2 = 4",
           "wordLarge": "TANDA KURANG (−) DAN SAMA DENGAN (=)",
           "mathNotation": "6 − 2 = 4   |   5 − 1 = 4",
-          "voiceReadout": "Enam dikurangi dua sama dengan empat. Lima dikurangi satu sama dengan empat."
+          "voiceReadout": "Mengambil. Enam dikurangi dua sama dengan empat. Lima dikurangi satu sama dengan empat."
         },
         {
           "symbolLarge": "5 − 5 = 0",
           "wordLarge": "SISA NOL",
           "mathNotation": "3 − 3 = 0   |   5 − 5 = 0",
-          "voiceReadout": "Tiga dikurangi tiga hasilnya nol. Lima dikurangi lima hasilnya nol."
+          "voiceReadout": "Hitung Mundur. Tiga dikurangi tiga hasilnya nol. Lima dikurangi lima hasilnya nol."
         },
         {
           "symbolLarge": "7 − 0 = 7",
           "wordLarge": "TIDAK ADA YANG BERKURANG",
           "mathNotation": "5 − 0 = 5   |   7 − 0 = 7",
-          "voiceReadout": "Lima dikurangi nol hasilnya lima. Tujuh dikurangi nol hasilnya tujuh."
+          "voiceReadout": "Kurang di Bingkai. Lima dikurangi nol hasilnya lima. Tujuh dikurangi nol hasilnya tujuh."
         }
       ],
       "interactiveGames": [
@@ -279,9 +279,9 @@
           "gameType": "tap-to-remove",
           "title": "Teman Pulang, Sisa Berapa?",
           "bookReference": "Buku Siswa Hlm. 77–78",
-          "objective": "Memahami pengurangan sebagai berkurangnya jumlah anak yang bermain.",
-          "mechanicDescription": "Dua ronde. Siswa mengetuk anak yang pulang (6 anak, 2 pulang; lalu 7 anak, 3 pulang) sampai jumlah yang pulang sesuai cerita, lalu mengucapkan sisa anak.",
-          "voiceGuide": "Ketuk anak yang harus pulang. Setelah semua pulang, ucapkan berapa anak yang masih tinggal."
+          "objective": "Pakai Mengambil. Memahami pengurangan sebagai berkurangnya jumlah anak yang bermain.",
+          "mechanicDescription": "Dua ronde. Siswa mengetuk anak yang pulang (6 anak, 2 pulang; lalu 7 anak, 3 pulang) sampai jumlah yang pulang sesuai cerita, lalu mengucapkan sisa anak. Terapkan Take Away.",
+          "voiceGuide": "Mengambil. Ketuk anak yang harus pulang. Setelah semua pulang, ucapkan berapa anak yang masih tinggal."
         },
         {
           "gameId": "subA3-game-2",
@@ -290,9 +290,9 @@
           "gameType": "drag-to-eat",
           "title": "Kue Ibu untuk Upe",
           "bookReference": "Buku Siswa Hlm. 79",
-          "objective": "Menghubungkan pengurangan dengan benda yang diambil dan dimakan.",
-          "mechanicDescription": "Dua ronde (6 − 1, 8 − 3). Siswa menyeret atau mengetuk kue dari piring ke Upe sebanyak yang dimakan, lalu mengucapkan sisa kue.",
-          "voiceGuide": "Seret kue dari piring ke Upe, atau ketuk kuenya. Setelah Upe selesai makan, ucapkan sisa kue."
+          "objective": "Pakai Hitung Mundur. Menghubungkan pengurangan dengan benda yang diambil dan dimakan.",
+          "mechanicDescription": "Dua ronde (6 − 1, 8 − 3). Siswa menyeret atau mengetuk kue dari piring ke Upe sebanyak yang dimakan, lalu mengucapkan sisa kue. Terapkan Counting Back.",
+          "voiceGuide": "Hitung Mundur. Seret kue dari piring ke Upe, atau ketuk kuenya. Setelah Upe selesai makan, ucapkan sisa kue."
         },
         {
           "gameId": "subA3-game-3",
@@ -301,9 +301,9 @@
           "gameType": "fill-the-story",
           "title": "Lengkapi Cerita Pengurangan",
           "bookReference": "Buku Siswa Hlm. 79, 81",
-          "objective": "Mengisi mula-mula, berkurang, dan sisa pada cerita, termasuk sisa nol.",
-          "mechanicDescription": "Tiga ronde: kelereng 7 − 2, mobil 3 − 3 (sisa nol), kupu-kupu 6 − 2. Siswa mengisi tiga kotak tiap cerita dengan memilih angka.",
-          "voiceGuide": "Hitung bendanya. Isi kotak mula-mula, berkurang, dan sisa. Lalu ucapkan sisa pada cerita terakhir."
+          "objective": "Pakai Kurang di Bingkai. Mengisi mula-mula, berkurang, dan sisa pada cerita, termasuk sisa nol.",
+          "mechanicDescription": "Tiga ronde: kelereng 7 − 2, mobil 3 − 3 (sisa nol), kupu-kupu 6 − 2. Siswa mengisi tiga kotak tiap cerita dengan memilih angka. Terapkan Ten Frame Subtract.",
+          "voiceGuide": "Kurang di Bingkai. Hitung bendanya. Isi kotak mula-mula, berkurang, dan sisa. Lalu ucapkan sisa pada cerita terakhir."
         },
         {
           "gameId": "subA3-game-4",
@@ -312,9 +312,9 @@
           "gameType": "predict-then-check",
           "title": "Tebak Sisa Kelereng",
           "bookReference": "Buku Siswa Hlm. 80",
-          "objective": "Memperkirakan sisa, lalu membuktikannya dengan benda nyata (Ayo Bermain).",
-          "mechanicDescription": "Dua ronde (7 − 2, 9 − 4). Siswa menebak sisa, mengambil kelereng ke kantong, lalu mengetuk tiap kelereng yang tinggal sambil menghitung.",
-          "voiceGuide": "Tebak dulu sisanya. Ambil kelereng ke kantong, lalu hitung kelereng yang tinggal."
+          "objective": "Pakai Mengambil. Memperkirakan sisa, lalu membuktikannya dengan benda nyata (Ayo Bermain).",
+          "mechanicDescription": "Dua ronde (7 − 2, 9 − 4). Siswa menebak sisa, mengambil kelereng ke kantong, lalu mengetuk tiap kelereng yang tinggal sambil menghitung. Terapkan Take Away.",
+          "voiceGuide": "Mengambil. Tebak dulu sisanya. Ambil kelereng ke kantong, lalu hitung kelereng yang tinggal."
         },
         {
           "gameId": "subA3-game-5",
@@ -323,9 +323,9 @@
           "gameType": "cross-out-ten-frame",
           "title": "Bingkai Sepuluh Dicoret",
           "bookReference": "Buku Siswa Hlm. 82–83",
-          "objective": "Menunjukkan yang berkurang pada bingkai sepuluh dengan mencoret titik.",
-          "mechanicDescription": "Dua ronde (6 − 2, 8 − 3). Siswa mencoret titik sebanyak yang berkurang pada bingkai sepuluh, lalu menghitung titik yang tidak dicoret. Hanya diagram, tanpa gambar benda.",
-          "voiceGuide": "Coret titik sebanyak yang berkurang, lalu ucapkan berapa titik yang tidak dicoret."
+          "objective": "Pakai Hitung Mundur. Menunjukkan yang berkurang pada bingkai sepuluh dengan mencoret titik.",
+          "mechanicDescription": "Dua ronde (6 − 2, 8 − 3). Siswa mencoret titik sebanyak yang berkurang pada bingkai sepuluh, lalu menghitung titik yang tidak dicoret. Hanya diagram, tanpa gambar benda. Terapkan Counting Back.",
+          "voiceGuide": "Hitung Mundur. Coret titik sebanyak yang berkurang, lalu ucapkan berapa titik yang tidak dicoret."
         },
         {
           "gameId": "subA3-game-6",
@@ -334,9 +334,9 @@
           "gameType": "cross-out-tally",
           "title": "Goresan Tally Dicoret",
           "bookReference": "Buku Siswa Hlm. 83–84",
-          "objective": "Mewakili pengurangan dengan goresan tally yang dicoret.",
-          "mechanicDescription": "Tiga ronde (5 − 2, 7 − 4, 9 − 3). Siswa mencoret goresan sebanyak yang berkurang, lalu menghitung goresan yang tinggal. Hanya diagram.",
-          "voiceGuide": "Coret goresan sebanyak yang berkurang, lalu ucapkan berapa goresan yang tinggal."
+          "objective": "Pakai Kurang di Bingkai. Mewakili pengurangan dengan goresan tally yang dicoret.",
+          "mechanicDescription": "Tiga ronde (5 − 2, 7 − 4, 9 − 3). Siswa mencoret goresan sebanyak yang berkurang, lalu menghitung goresan yang tinggal. Hanya diagram. Terapkan Ten Frame Subtract.",
+          "voiceGuide": "Kurang di Bingkai. Coret goresan sebanyak yang berkurang, lalu ucapkan berapa goresan yang tinggal."
         },
         {
           "gameId": "subA3-game-7",
@@ -345,9 +345,9 @@
           "gameType": "match-diagram-sentence",
           "title": "Jodohkan Diagram dan Kalimat",
           "bookReference": "Buku Siswa Hlm. 83–84",
-          "objective": "Menghubungkan tiga bentuk diagram dengan kalimat pengurangan yang tepat.",
-          "mechanicDescription": "Siswa menjodohkan bingkai sepuluh 8 − 3, goresan tally 6 − 2, dan model batang 7 − 5 dengan kalimat pengurangannya, lalu mengucapkan sisa goresan tally.",
-          "voiceGuide": "Ketuk satu diagram, lalu ketuk kalimat pengurangan yang cocok. Setelah semua berjodoh, ucapkan sisa goresan tally."
+          "objective": "Pakai Mengambil. Menghubungkan tiga bentuk diagram dengan kalimat pengurangan yang tepat.",
+          "mechanicDescription": "Siswa menjodohkan bingkai sepuluh 8 − 3, goresan tally 6 − 2, dan model batang 7 − 5 dengan kalimat pengurangannya, lalu mengucapkan sisa goresan tally. Terapkan Take Away.",
+          "voiceGuide": "Mengambil. Ketuk satu diagram, lalu ketuk kalimat pengurangan yang cocok. Setelah semua berjodoh, ucapkan sisa goresan tally."
         },
         {
           "gameId": "subA3-game-8",
@@ -356,9 +356,9 @@
           "gameType": "build-sentence",
           "title": "Susun Kalimat",
           "bookReference": "Buku Siswa Hlm. 78",
-          "objective": "Memilih tanda kurang dan sama dengan untuk melengkapi kalimat pengurangan.",
-          "mechanicDescription": "Tiga ronde (3 − 3 = 0, 5 − 1 = 4, 6 − 2 = 4). Siswa memilih kartu simbol − lalu = untuk kotak yang menyala.",
-          "voiceGuide": "Lengkapi kalimat matematika. Pilih kartu simbol yang tepat untuk kotak yang menyala. Terakhir, ucapkan hasilnya."
+          "objective": "Pakai Hitung Mundur. Memilih tanda kurang dan sama dengan untuk melengkapi kalimat pengurangan.",
+          "mechanicDescription": "Tiga ronde (3 − 3 = 0, 5 − 1 = 4, 6 − 2 = 4). Siswa memilih kartu simbol − lalu = untuk kotak yang menyala. Terapkan Counting Back.",
+          "voiceGuide": "Hitung Mundur. Lengkapi kalimat matematika. Pilih kartu simbol yang tepat untuk kotak yang menyala. Terakhir, ucapkan hasilnya."
         },
         {
           "gameId": "subA3-game-9",
@@ -367,9 +367,9 @@
           "gameType": "missing-number",
           "title": "Detektif Angka Hilang",
           "bookReference": "Buku Siswa Hlm. 83–85",
-          "objective": "Menemukan sisa atau bilangan yang berkurang pada kalimat pengurangan.",
-          "mechanicDescription": "Empat kasus (5 − 2 = ?, 7 − ? = 4, 9 − 4 = ?, 8 − 5 = ?) dengan petunjuk tertulis.",
-          "voiceGuide": "Temukan angka yang hilang pada kalimat pengurangan. Baca petunjuknya, lalu pilih angka yang tepat."
+          "objective": "Pakai Kurang di Bingkai. Menemukan sisa atau bilangan yang berkurang pada kalimat pengurangan.",
+          "mechanicDescription": "Empat kasus (5 − 2 = ?, 7 − ? = 4, 9 − 4 = ?, 8 − 5 = ?) dengan petunjuk tertulis. Terapkan Ten Frame Subtract.",
+          "voiceGuide": "Kurang di Bingkai. Temukan angka yang hilang pada kalimat pengurangan. Baca petunjuknya, lalu pilih angka yang tepat."
         },
         {
           "gameId": "subA3-game-10",
@@ -378,9 +378,9 @@
           "gameType": "voice-and-trace",
           "title": "Kanvas Guratan dan Suara",
           "bookReference": "Buku Siswa Hlm. 80, 87",
-          "objective": "Mengucapkan dan menuliskan sisa, lalu membuat kalimat pengurangan sendiri (Ayo Bermain dan Ayo Mencoba).",
-          "mechanicDescription": "Ronde 1: 5 − 1 = 4, ucapkan dan guratkan. Ronde 2: siswa memilih mula-mula dan berkurang sendiri (sisa paling sedikit 1), lalu mengucapkan dan menggurat hasilnya.",
-          "voiceGuide": "Ucapkan hasil pengurangan, lalu guratkan angkanya di kanvas. Setelah itu, buat kalimat pengurangan milikmu sendiri."
+          "objective": "Pakai Mengambil. Mengucapkan dan menuliskan sisa, lalu membuat kalimat pengurangan sendiri (Ayo Bermain dan Ayo Mencoba).",
+          "mechanicDescription": "Ronde 1: 5 − 1 = 4, ucapkan dan guratkan. Ronde 2: siswa memilih mula-mula dan berkurang sendiri (sisa paling sedikit 1), lalu mengucapkan dan menggurat hasilnya. Terapkan Take Away.",
+          "voiceGuide": "Mengambil. Ucapkan hasil pengurangan, lalu guratkan angkanya di kanvas. Setelah itu, buat kalimat pengurangan milikmu sendiri."
         }
       ],
       "metodeLuar": [
@@ -423,7 +423,7 @@
       "id": "B",
       "codeTitle": "Sub-Bab B (Berbagai Cara)",
       "fullTitle": "Sub-Bab B: Berbagai Cara Melakukan Pengurangan",
-      "targetDescription": "Siswa mengurangkan sampai 10 dengan tiga cara: pasangan bilangan (gabungan dan sebagian, satu bagan menghasilkan dua pengurangan), menghitung mundur pada garis bilangan 0 sampai 10 termasuk pengurangan dengan nol, dan pengurangan dari 10 memakai bingkai sepuluh.",
+      "targetDescription": "Siswa mengurangkan sampai 10 dengan tiga cara: pasangan bilangan (gabungan dan sebagian, satu bagan menghasilkan dua pengurangan), menghitung mundur pada garis bilangan 0 sampai 10 termasuk pengurangan dengan nol, dan pengurangan dari 10 memakai bingkai sepuluh. Memakai Mengambil, Hitung Mundur, Kurang di Bingkai.",
       "secondaryBg": "#FEF3C7",
       "secondaryBorder": "#F59E0B",
       "secondaryText": "#92400E",
@@ -432,37 +432,37 @@
           "id": "B3-S1",
           "titleHint": "Telur di Piring",
           "sceneType": "telur-pasangan",
-          "voiceNarration": "Igil bertanya: bagaimana caramu melakukan pengurangan? Jelaskan caranya. Cara pertama memakai pasangan bilangan. Ada enam telur di piring. Empat telur masih utuh. Dua telur pecah. Enam adalah gabungan. Empat dan dua adalah sebagian. Empat dan dua jika digabung menjadi enam. Enam dikurangi dua sama dengan empat. Enam dikurangi empat sama dengan dua. METODE LUAR. Mengambil: Ambil sebagian dari kumpulan."
+          "voiceNarration": "Igil bertanya: bagaimana caramu melakukan pengurangan? Jelaskan caranya. Cara pertama memakai pasangan bilangan. Ada enam telur di piring. Empat telur masih utuh. Dua telur pecah. Enam adalah gabungan. Empat dan dua adalah sebagian. Empat dan dua jika digabung menjadi enam. Enam dikurangi dua sama dengan empat. Enam dikurangi empat sama dengan dua. Kita memakai cara Mengambil: Ambil sebagian dari kumpulan."
         },
         {
           "id": "B3-S2",
           "titleHint": "Balon Merah dan Kuning",
           "sceneType": "balon-pasangan",
-          "voiceNarration": "Kira membawa tujuh balon. Lima balon berwarna merah. Dua balon berwarna kuning. Tujuh adalah gabungan. Lima dan dua adalah sebagian. Lima dan dua jika digabung menjadi tujuh. Tujuh dikurangi lima sama dengan dua. Tujuh dikurangi dua sama dengan lima. METODE LUAR. Hitung Mundur: Mundur dari bilangan awal."
+          "voiceNarration": "Kira membawa tujuh balon. Lima balon berwarna merah. Dua balon berwarna kuning. Tujuh adalah gabungan. Lima dan dua adalah sebagian. Lima dan dua jika digabung menjadi tujuh. Tujuh dikurangi lima sama dengan dua. Tujuh dikurangi dua sama dengan lima. Kita memakai cara Hitung Mundur: Mundur dari bilangan awal."
         },
         {
           "id": "B3-S3",
           "titleHint": "Mobil Kosong",
           "sceneType": "mobil-nol",
-          "voiceNarration": "Mula-mula ada tiga orang di dalam mobil. Sebanyak tiga orang turun dari mobil. Sekarang tidak ada orang di dalam mobil. Tiga dan nol jika digabung menjadi tiga. Tiga dikurangi tiga sama dengan nol. Tiga dikurangi nol sama dengan tiga. METODE LUAR. Kurang di Bingkai: Hapus/kosongkan kotak pada bingkai."
+          "voiceNarration": "Mula-mula ada tiga orang di dalam mobil. Sebanyak tiga orang turun dari mobil. Sekarang tidak ada orang di dalam mobil. Tiga dan nol jika digabung menjadi tiga. Tiga dikurangi tiga sama dengan nol. Tiga dikurangi nol sama dengan tiga. Kita memakai cara Kurang di Bingkai: Hapus/kosongkan kotak pada bingkai."
         },
         {
           "id": "B3-S4",
           "titleHint": "Lompat Mundur di Batu",
           "sceneType": "lompat-mundur-tiga",
-          "voiceNarration": "Cara kedua adalah menghitung mundur. Upe berdiri di batu angka tiga. Upe melompat dua langkah ke belakang. Dua, satu. Upe mendarat di angka satu. Tiga dikurangi dua sama dengan satu. METODE LUAR. Mengambil: Ambil sebagian dari kumpulan."
+          "voiceNarration": "Cara kedua adalah menghitung mundur. Upe berdiri di batu angka tiga. Upe melompat dua langkah ke belakang. Dua, satu. Upe mendarat di angka satu. Tiga dikurangi dua sama dengan satu. Kita memakai cara Mengambil: Ambil sebagian dari kumpulan."
         },
         {
           "id": "B3-S5",
           "titleHint": "Kira Melompat Mundur",
           "sceneType": "lompat-mundur-lima",
-          "voiceNarration": "Kira berdiri di angka lima. Kira melompat tiga langkah ke belakang. Empat, tiga, dua. Kira mendarat di angka dua. Lima dikurangi tiga sama dengan dua. Menghitung mundur artinya menyebut angka dari besar ke kecil. METODE LUAR. Hitung Mundur: Mundur dari bilangan awal."
+          "voiceNarration": "Kira berdiri di angka lima. Kira melompat tiga langkah ke belakang. Empat, tiga, dua. Kira mendarat di angka dua. Lima dikurangi tiga sama dengan dua. Menghitung mundur artinya menyebut angka dari besar ke kecil. Kita memakai cara Hitung Mundur: Mundur dari bilangan awal."
         },
         {
           "id": "B3-S6",
           "titleHint": "Sepuluh Bola",
           "sceneType": "sepuluh-bola",
-          "voiceNarration": "Cara ketiga adalah pengurangan dari sepuluh. Ada sepuluh bola. Tujuh bola merah dan tiga bola biru. Kita tulis sepuluh dikurangi tujuh sama dengan tiga. Kita juga bisa menulis sepuluh dikurangi tiga sama dengan tujuh. Sekarang giliranmu: pilih satu cara, lalu jelaskan kepada temanmu. METODE LUAR. Kurang di Bingkai: Hapus/kosongkan kotak pada bingkai."
+          "voiceNarration": "Cara ketiga adalah pengurangan dari sepuluh. Ada sepuluh bola. Tujuh bola merah dan tiga bola biru. Kita tulis sepuluh dikurangi tujuh sama dengan tiga. Kita juga bisa menulis sepuluh dikurangi tiga sama dengan tujuh. Sekarang giliranmu: pilih satu cara, lalu jelaskan kepada temanmu. Kita memakai cara Kurang di Bingkai: Hapus/kosongkan kotak pada bingkai."
         }
       ],
       "mindMaps": [
@@ -484,24 +484,24 @@
         },
         {
           "stepNumber": 3,
-          "stepTitle": "3. Satu Bagan, Dua Pengurangan",
-          "stepDesc": "Dari satu bagan kita bisa menulis dua pengurangan. Gabungan dikurangi sebagian pertama menghasilkan sebagian kedua, dan sebaliknya. Enam kurang dua sama dengan empat. Enam kurang empat sama dengan dua.",
+          "stepTitle": "3. Take Away",
+          "stepDesc": "Ambil sebagian dari kumpulan.",
           "icon": "✌️",
           "flowFrom": "Bagan pasangan",
           "flowTo": "Dua kalimat pengurangan"
         },
         {
           "stepNumber": 4,
-          "stepTitle": "4. Hitung Mundur",
-          "stepDesc": "Mulai dari bilangan yang dikurangi. Lompat ke belakang sebanyak bilangan pengurang. Angka tempat mendarat adalah hasilnya. Lima, lompat tiga ke belakang, mendarat di dua.",
+          "stepTitle": "4. Counting Back",
+          "stepDesc": "Mundur dari bilangan awal.",
           "icon": "🐸",
           "flowFrom": "Bilangan awal",
           "flowTo": "Angka tempat mendarat"
         },
         {
           "stepNumber": 5,
-          "stepTitle": "5. Nol dan Bilangan Sama",
-          "stepDesc": "Kalau yang dikurangi nol, jawabannya tetap sama dengan bilangan awal. Kalau yang dikurangi sama besar dengan bilangan awal, jawabannya nol. Lima kurang nol sama dengan lima. Lima kurang lima sama dengan nol.",
+          "stepTitle": "5. Ten Frame Subtract",
+          "stepDesc": "Hapus/kosongkan kotak pada bingkai.",
           "icon": "0️⃣",
           "flowFrom": "Pengurang nol atau sama",
           "flowTo": "Hasil tetap atau nol"
@@ -516,7 +516,7 @@
         },
         {
           "stepNumber": 7,
-          "stepTitle": "7. METODE LUAR · Mengambil",
+          "stepTitle": "7.",
           "stepDesc": "Ambil sebagian dari kumpulan.",
           "icon": "🌍",
           "flowFrom": "6",
@@ -607,25 +607,25 @@
           "title": "Telur Utuh, Telur Pecah (6 − 2, 8 − 3)",
           "emoji": "🥚",
           "targetCount": 5,
-          "voiceGuide": "Ketuk telur yang pecah. Lalu hitung telur yang masih utuh."
+          "voiceGuide": "Mengambil. Ketuk telur yang pecah. Lalu hitung telur yang masih utuh."
         },
         {
           "title": "Balon Dua Warna (7 = 5 + 2, 9 = 6 + 3)",
           "emoji": "🎈",
           "targetCount": 6,
-          "voiceGuide": "Seret balon ke keranjang yang warnanya sama. Lalu tulis dua pengurangan."
+          "voiceGuide": "Hitung Mundur. Seret balon ke keranjang yang warnanya sama. Lalu tulis dua pengurangan."
         },
         {
           "title": "Lompat Mundur di Batu (3 − 2, 5 − 3, 7 − 4)",
           "emoji": "🪨",
           "targetCount": 3,
-          "voiceGuide": "Ketuk batu satu langkah ke belakang, lagi dan lagi, sampai langkahnya cukup."
+          "voiceGuide": "Kurang di Bingkai. Ketuk batu satu langkah ke belakang, lagi dan lagi, sampai langkahnya cukup."
         },
         {
           "title": "Kantong Sepuluh Bola (10 − 7, 10 − 10, 10 − 4)",
           "emoji": "⚽",
           "targetCount": 6,
-          "voiceGuide": "Ambil bola yang diminta dari kantong. Lalu hitung bola yang masih tinggal."
+          "voiceGuide": "Mengambil. Ambil bola yang diminta dari kantong. Lalu hitung bola yang masih tinggal."
         }
       ],
       "pictorialSlides": [
@@ -634,21 +634,21 @@
           "diagramType": "number-bond",
           "numberA": 6,
           "numberB": 4,
-          "caption": "Lingkaran kuning besar adalah gabungan. Dua lingkaran kecil adalah sebagian. Cari lingkaran yang kosong."
+          "caption": "Pakai Mengambil. Lingkaran kuning besar adalah gabungan. Dua lingkaran kecil adalah sebagian. Cari lingkaran yang kosong."
         },
         {
           "title": "Garis Bilangan: Lompat ke Belakang (5 − 1, 6 − 3, 9 − 4)",
           "diagramType": "number-line",
           "numberA": 5,
           "numberB": 1,
-          "caption": "Ketuk angka satu langkah ke kiri. Setiap lompatan membuat satu busur."
+          "caption": "Pakai Hitung Mundur. Ketuk angka satu langkah ke kiri. Setiap lompatan membuat satu busur."
         },
         {
           "title": "Bingkai Sepuluh: Warnai yang Kosong (10 − 6, 10 − 4, 10 − 9)",
           "diagramType": "ten-frame",
           "numberA": 10,
           "numberB": 6,
-          "caption": "Titik merah adalah petak yang terisi. Petak kosong diwarnai biru. Banyaknya biru adalah hasilnya."
+          "caption": "Pakai Kurang di Bingkai. Titik merah adalah petak yang terisi. Petak kosong diwarnai biru. Banyaknya biru adalah hasilnya."
         }
       ],
       "abstractSlides": [
@@ -656,19 +656,19 @@
           "symbolLarge": "6 − 2 = 4  |  6 − 4 = 2",
           "wordLarge": "SATU BAGAN, DUA PENGURANGAN",
           "mathNotation": "7 − 5 = 2   |   7 − 2 = 5",
-          "voiceReadout": "Enam dikurangi dua sama dengan empat. Enam dikurangi empat sama dengan dua. Tujuh dikurangi lima sama dengan dua. Tujuh dikurangi dua sama dengan lima."
+          "voiceReadout": "Mengambil. Enam dikurangi dua sama dengan empat. Enam dikurangi empat sama dengan dua. Tujuh dikurangi lima sama dengan dua. Tujuh dikurangi dua sama dengan lima."
         },
         {
           "symbolLarge": "5 − 3 = 2",
           "wordLarge": "HITUNG MUNDUR",
           "mathNotation": "5 → 4 → 3 → 2",
-          "voiceReadout": "Lima dikurangi tiga. Mundur: empat, tiga, dua. Hasilnya dua."
+          "voiceReadout": "Hitung Mundur. Lima dikurangi tiga. Mundur: empat, tiga, dua. Hasilnya dua."
         },
         {
           "symbolLarge": "10 − 7 = 3",
           "wordLarge": "PENGURANGAN DARI 10",
           "mathNotation": "10 − 7 = 3   |   10 − 3 = 7   |   10 − 10 = 0   |   10 − 0 = 10",
-          "voiceReadout": "Sepuluh dikurangi tujuh sama dengan tiga. Sepuluh dikurangi tiga sama dengan tujuh. Sepuluh dikurangi sepuluh sama dengan nol. Sepuluh dikurangi nol sama dengan sepuluh."
+          "voiceReadout": "Kurang di Bingkai. Sepuluh dikurangi tujuh sama dengan tiga. Sepuluh dikurangi tiga sama dengan tujuh. Sepuluh dikurangi sepuluh sama dengan nol. Sepuluh dikurangi nol sama dengan sepuluh."
         }
       ],
       "interactiveGames": [
@@ -679,9 +679,9 @@
           "gameType": "tap-to-crack",
           "title": "Telur Utuh, Telur Pecah",
           "bookReference": "Buku Siswa Hlm. 88",
-          "objective": "Memisahkan satu kelompok benda menjadi dua bagian dan melihat pengurangannya.",
-          "mechanicDescription": "Dua ronde (6 telur dengan 2 pecah; 8 telur dengan 3 pecah). Siswa mengetuk telur yang pecah, lalu melihat dua kalimat pengurangan dari pisahan itu, lalu mengucapkan telur yang masih utuh.",
-          "voiceGuide": "Ketuk telur yang pecah. Lalu ucapkan berapa telur yang masih utuh."
+          "objective": "Pakai Mengambil. Memisahkan satu kelompok benda menjadi dua bagian dan melihat pengurangannya.",
+          "mechanicDescription": "Dua ronde (6 telur dengan 2 pecah; 8 telur dengan 3 pecah). Siswa mengetuk telur yang pecah, lalu melihat dua kalimat pengurangan dari pisahan itu, lalu mengucapkan telur yang masih utuh. Terapkan Take Away.",
+          "voiceGuide": "Mengambil. Ketuk telur yang pecah. Lalu ucapkan berapa telur yang masih utuh."
         },
         {
           "gameId": "subB3-game-2",
@@ -690,9 +690,9 @@
           "gameType": "drag-to-sort-two-baskets",
           "title": "Balon Dua Warna",
           "bookReference": "Buku Siswa Hlm. 89",
-          "objective": "Memahami gabungan dan dua sebagian dengan memilah benda, lalu menulis dua pengurangan.",
-          "mechanicDescription": "Dua ronde (7 balon: 5 merah 2 kuning; 9 balon: 6 merah 3 kuning). Siswa menyeret atau mengetuk balon ke keranjang yang warnanya sama, lalu memilih hasil dua pengurangan dari pisahan itu.",
-          "voiceGuide": "Seret balon ke keranjang yang warnanya sama. Setelah itu pilih hasil dua pengurangannya, dan ucapkan hasil yang terakhir."
+          "objective": "Pakai Hitung Mundur. Memahami gabungan dan dua sebagian dengan memilah benda, lalu menulis dua pengurangan.",
+          "mechanicDescription": "Dua ronde (7 balon: 5 merah 2 kuning; 9 balon: 6 merah 3 kuning). Siswa menyeret atau mengetuk balon ke keranjang yang warnanya sama, lalu memilih hasil dua pengurangan dari pisahan itu. Terapkan Counting Back.",
+          "voiceGuide": "Hitung Mundur. Seret balon ke keranjang yang warnanya sama. Setelah itu pilih hasil dua pengurangannya, dan ucapkan hasil yang terakhir."
         },
         {
           "gameId": "subB3-game-3",
@@ -701,9 +701,9 @@
           "gameType": "hop-back-stones",
           "title": "Lompat Mundur di Batu",
           "bookReference": "Buku Siswa Hlm. 94-95",
-          "objective": "Menghitung mundur dengan melompat satu langkah ke belakang pada batu bernomor.",
-          "mechanicDescription": "Tiga ronde (3 − 2, 5 − 3, 7 − 4). Siswa mengetuk batu yang tepat satu langkah di belakang posisi anak, berulang sebanyak pengurang, lalu mengucapkan angka tempat mendarat.",
-          "voiceGuide": "Ketuk batu satu langkah ke belakang, sebanyak yang diminta. Lalu ucapkan angka tempatmu mendarat."
+          "objective": "Pakai Kurang di Bingkai. Menghitung mundur dengan melompat satu langkah ke belakang pada batu bernomor.",
+          "mechanicDescription": "Tiga ronde (3 − 2, 5 − 3, 7 − 4). Siswa mengetuk batu yang tepat satu langkah di belakang posisi anak, berulang sebanyak pengurang, lalu mengucapkan angka tempat mendarat. Terapkan Ten Frame Subtract.",
+          "voiceGuide": "Kurang di Bingkai. Ketuk batu satu langkah ke belakang, sebanyak yang diminta. Lalu ucapkan angka tempatmu mendarat."
         },
         {
           "gameId": "subB3-game-4",
@@ -712,9 +712,9 @@
           "gameType": "take-from-bag",
           "title": "Kantong Sepuluh Bola",
           "bookReference": "Buku Siswa Hlm. 98",
-          "objective": "Mengurangkan dari 10 dengan mengambil bola dari kantong, termasuk sisa nol.",
-          "mechanicDescription": "Tiga ronde (10 bola: 7 merah 3 biru, ambil merah; 10 bola merah semua, ambil semua; 10 bola: 4 merah 6 biru, ambil merah). Siswa mengetuk bola yang diminta, lalu mengucapkan bola yang tinggal di kantong.",
-          "voiceGuide": "Ketuk bola yang diminta untuk diambil dari kantong. Lalu hitung bola yang masih tinggal dan ucapkan banyaknya."
+          "objective": "Pakai Mengambil. Mengurangkan dari 10 dengan mengambil bola dari kantong, termasuk sisa nol.",
+          "mechanicDescription": "Tiga ronde (10 bola: 7 merah 3 biru, ambil merah; 10 bola merah semua, ambil semua; 10 bola: 4 merah 6 biru, ambil merah). Siswa mengetuk bola yang diminta, lalu mengucapkan bola yang tinggal di kantong. Terapkan Take Away.",
+          "voiceGuide": "Mengambil. Ketuk bola yang diminta untuk diambil dari kantong. Lalu hitung bola yang masih tinggal dan ucapkan banyaknya."
         },
         {
           "gameId": "subB3-game-5",
@@ -723,9 +723,9 @@
           "gameType": "complete-number-bond",
           "title": "Bagan Pasangan: Cari Sebagian",
           "bookReference": "Buku Siswa Hlm. 88-92",
-          "objective": "Menemukan lingkaran yang kosong pada bagan pasangan bilangan. Hanya diagram.",
-          "mechanicDescription": "Empat ronde (6 = 4 + ?, 7 = 2 + ?, 3 = 3 + ?, 8 = ? + 3). Siswa memilih angka untuk lingkaran kosong, lalu membaca dua kalimat pengurangan dari bagan itu.",
-          "voiceGuide": "Cari angka untuk lingkaran yang kosong. Gabungan dikurangi sebagian yang ada, hasilnya sebagian yang kosong. Ucapkan jawaban ronde terakhir."
+          "objective": "Pakai Hitung Mundur. Menemukan lingkaran yang kosong pada bagan pasangan bilangan. Hanya diagram.",
+          "mechanicDescription": "Empat ronde (6 = 4 + ?, 7 = 2 + ?, 3 = 3 + ?, 8 = ? + 3). Siswa memilih angka untuk lingkaran kosong, lalu membaca dua kalimat pengurangan dari bagan itu. Terapkan Counting Back.",
+          "voiceGuide": "Hitung Mundur. Cari angka untuk lingkaran yang kosong. Gabungan dikurangi sebagian yang ada, hasilnya sebagian yang kosong. Ucapkan jawaban ronde terakhir."
         },
         {
           "gameId": "subB3-game-6",
@@ -734,9 +734,9 @@
           "gameType": "hop-back-number-line",
           "title": "Garis Bilangan: Lompat ke Belakang",
           "bookReference": "Buku Siswa Hlm. 94-97",
-          "objective": "Menghitung mundur pada garis bilangan 0 sampai 10. Hanya diagram.",
-          "mechanicDescription": "Tiga ronde (5 − 1, 6 − 3, 9 − 4). Siswa mengetuk angka satu langkah ke kiri dari titik awal, berulang sebanyak pengurang; setiap lompatan menggambar satu busur. Terakhir ucapkan angka tempat mendarat.",
-          "voiceGuide": "Ketuk angka satu langkah ke kiri, lagi dan lagi, sebanyak yang diminta. Lalu ucapkan angka tempat berhenti."
+          "objective": "Pakai Kurang di Bingkai. Menghitung mundur pada garis bilangan 0 sampai 10. Hanya diagram.",
+          "mechanicDescription": "Tiga ronde (5 − 1, 6 − 3, 9 − 4). Siswa mengetuk angka satu langkah ke kiri dari titik awal, berulang sebanyak pengurang; setiap lompatan menggambar satu busur. Terakhir ucapkan angka tempat mendarat. Terapkan Ten Frame Subtract.",
+          "voiceGuide": "Kurang di Bingkai. Ketuk angka satu langkah ke kiri, lagi dan lagi, sebanyak yang diminta. Lalu ucapkan angka tempat berhenti."
         },
         {
           "gameId": "subB3-game-7",
@@ -745,9 +745,9 @@
           "gameType": "color-ten-frame-empty",
           "title": "Bingkai Sepuluh: Warnai yang Kosong",
           "bookReference": "Buku Siswa Hlm. 99-100",
-          "objective": "Mengurangkan dari 10 dengan mewarnai petak yang kosong pada bingkai sepuluh. Hanya diagram.",
-          "mechanicDescription": "Tiga ronde (terisi 6, terisi 4, terisi 9). Siswa mengetuk petak kosong untuk mewarnainya biru sampai bingkai penuh, lalu membaca dua kalimat pengurangan dari 10 dan mengucapkan banyaknya petak biru.",
-          "voiceGuide": "Warnai petak yang kosong sampai bingkai penuh. Hitung petak biru, itu hasil sepuluh kurang yang terisi. Ucapkan jawaban ronde terakhir."
+          "objective": "Pakai Mengambil. Mengurangkan dari 10 dengan mewarnai petak yang kosong pada bingkai sepuluh. Hanya diagram.",
+          "mechanicDescription": "Tiga ronde (terisi 6, terisi 4, terisi 9). Siswa mengetuk petak kosong untuk mewarnainya biru sampai bingkai penuh, lalu membaca dua kalimat pengurangan dari 10 dan mengucapkan banyaknya petak biru. Terapkan Take Away.",
+          "voiceGuide": "Mengambil. Warnai petak yang kosong sampai bingkai penuh. Hitung petak biru, itu hasil sepuluh kurang yang terisi. Ucapkan jawaban ronde terakhir."
         },
         {
           "gameId": "subB3-game-8",
@@ -756,9 +756,9 @@
           "gameType": "pick-two-true-sentences",
           "title": "Dua Kalimat dari Satu Bagan",
           "bookReference": "Buku Siswa Hlm. 88-90",
-          "objective": "Memilih dua kalimat pengurangan yang benar dari satu bagan pasangan bilangan.",
-          "mechanicDescription": "Empat ronde (6-4-2, 7-5-2, 3-3-0, 10-7-3). Setiap ronde ada empat kartu kalimat, dua benar dan dua keliru. Siswa mengetuk dua kartu yang benar.",
-          "voiceGuide": "Lihat bilangan di bagan. Pilih dua kartu kalimat pengurangan yang benar. Ucapkan hasil kalimat pertama pada ronde terakhir."
+          "objective": "Pakai Hitung Mundur. Memilih dua kalimat pengurangan yang benar dari satu bagan pasangan bilangan.",
+          "mechanicDescription": "Empat ronde (6-4-2, 7-5-2, 3-3-0, 10-7-3). Setiap ronde ada empat kartu kalimat, dua benar dan dua keliru. Siswa mengetuk dua kartu yang benar. Terapkan Counting Back.",
+          "voiceGuide": "Hitung Mundur. Lihat bilangan di bagan. Pilih dua kartu kalimat pengurangan yang benar. Ucapkan hasil kalimat pertama pada ronde terakhir."
         },
         {
           "gameId": "subB3-game-9",
@@ -767,9 +767,9 @@
           "gameType": "count-back-chain",
           "title": "Hitung Mundur Berantai",
           "bookReference": "Buku Siswa Hlm. 94-96",
-          "objective": "Menyebut angka berurutan dari besar ke kecil sampai mendapat hasil pengurangan.",
-          "mechanicDescription": "Tiga ronde (5 − 2, 8 − 3, 10 − 4). Siswa memilih angka yang satu lebih kecil dari angka sebelumnya sebanyak pengurang; rantai angka tampil makin panjang sampai hasil.",
-          "voiceGuide": "Dari angka awal, pilih angka yang satu lebih kecil, berulang sebanyak pengurang. Angka terakhir adalah hasilnya. Ucapkan hasil ronde terakhir."
+          "objective": "Pakai Kurang di Bingkai. Menyebut angka berurutan dari besar ke kecil sampai mendapat hasil pengurangan.",
+          "mechanicDescription": "Tiga ronde (5 − 2, 8 − 3, 10 − 4). Siswa memilih angka yang satu lebih kecil dari angka sebelumnya sebanyak pengurang; rantai angka tampil makin panjang sampai hasil. Terapkan Ten Frame Subtract.",
+          "voiceGuide": "Kurang di Bingkai. Dari angka awal, pilih angka yang satu lebih kecil, berulang sebanyak pengurang. Angka terakhir adalah hasilnya. Ucapkan hasil ronde terakhir."
         },
         {
           "gameId": "subB3-game-10",
@@ -778,9 +778,9 @@
           "gameType": "voice-and-trace",
           "title": "Kanvas Guratan dan Suara",
           "bookReference": "Buku Siswa Hlm. 91-93, 99",
-          "objective": "Mengucapkan dan menuliskan hasil pengurangan, lalu membuat kalimat sendiri (Ayo Mencoba).",
-          "mechanicDescription": "Ronde 1: 10 − 6 = 4, ucapkan dan guratkan. Ronde 2: siswa memilih bilangan awal dan pengurang sendiri (pengurang boleh nol atau sama dengan bilangan awal), lalu mengucapkan dan menggurat hasilnya.",
-          "voiceGuide": "Ucapkan hasil pengurangan, lalu guratkan angkanya di kanvas. Setelah itu buat kalimat pengurangan milikmu sendiri."
+          "objective": "Pakai Mengambil. Mengucapkan dan menuliskan hasil pengurangan, lalu membuat kalimat sendiri (Ayo Mencoba).",
+          "mechanicDescription": "Ronde 1: 10 − 6 = 4, ucapkan dan guratkan. Ronde 2: siswa memilih bilangan awal dan pengurang sendiri (pengurang boleh nol atau sama dengan bilangan awal), lalu mengucapkan dan menggurat hasilnya. Terapkan Take Away.",
+          "voiceGuide": "Mengambil. Ucapkan hasil pengurangan, lalu guratkan angkanya di kanvas. Setelah itu buat kalimat pengurangan milikmu sendiri."
         }
       ],
       "metodeLuar": [
@@ -823,7 +823,7 @@
       "id": "C",
       "codeTitle": "Sub-Bab C (Hubungan Penjumlahan dan Pengurangan)",
       "fullTitle": "Sub-Bab C: Hubungan Penjumlahan dan Pengurangan",
-      "targetDescription": "Siswa memahami bahwa penjumlahan dan pengurangan saling berkebalikan. Dari satu keluarga bilangan (misal 4, 3, 7) siswa menulis dua penjumlahan dan dua pengurangan, memeriksa jawaban dengan operasi kebalikan, mencari bilangan yang hilang, dan memilih tanda + atau − yang tepat.",
+      "targetDescription": "Siswa memahami bahwa penjumlahan dan pengurangan saling berkebalikan. Dari satu keluarga bilangan (misal 4, 3, 7) siswa menulis dua penjumlahan dan dua pengurangan, memeriksa jawaban dengan operasi kebalikan, mencari bilangan yang hilang, dan memilih tanda + atau − yang tepat. Memakai Mengambil, Hitung Mundur, Kurang di Bingkai.",
       "secondaryBg": "#DCFCE7",
       "secondaryBorder": "#22C55E",
       "secondaryText": "#166534",
@@ -832,37 +832,37 @@
           "id": "C3-S1",
           "titleHint": "Kelinci di Kandang",
           "sceneType": "kelinci-gabung",
-          "voiceNarration": "Ada kandang kelinci di halaman. Empat kelinci berwarna cokelat. Tiga kelinci berwarna hitam. Berapa jumlah semua kelinci? Kelinci cokelat ditambah kelinci hitam. Empat ditambah tiga sama dengan tujuh. Kalau kelinci hitam ditambah kelinci cokelat, tiga ditambah empat juga sama dengan tujuh. Jumlahnya tetap sama. METODE LUAR. Mengambil: Ambil sebagian dari kumpulan."
+          "voiceNarration": "Ada kandang kelinci di halaman. Empat kelinci berwarna cokelat. Tiga kelinci berwarna hitam. Berapa jumlah semua kelinci? Kelinci cokelat ditambah kelinci hitam. Empat ditambah tiga sama dengan tujuh. Kalau kelinci hitam ditambah kelinci cokelat, tiga ditambah empat juga sama dengan tujuh. Jumlahnya tetap sama. Kita memakai cara Mengambil: Ambil sebagian dari kumpulan."
         },
         {
           "id": "C3-S2",
           "titleHint": "Kelinci yang Pergi",
           "sceneType": "kelinci-pergi",
-          "voiceNarration": "Sekarang kita lihat kelinci yang pergi. Ada tujuh kelinci. Ada berapa kelinci cokelat? Kelinci hitam pergi dari kandang. Tujuh dikurangi tiga sama dengan empat. Ada empat kelinci cokelat. Ada berapa kelinci hitam? Sekarang kelinci cokelat yang pergi. Tujuh dikurangi empat sama dengan tiga. Ada tiga kelinci hitam. METODE LUAR. Hitung Mundur: Mundur dari bilangan awal."
+          "voiceNarration": "Sekarang kita lihat kelinci yang pergi. Ada tujuh kelinci. Ada berapa kelinci cokelat? Kelinci hitam pergi dari kandang. Tujuh dikurangi tiga sama dengan empat. Ada empat kelinci cokelat. Ada berapa kelinci hitam? Sekarang kelinci cokelat yang pergi. Tujuh dikurangi empat sama dengan tiga. Ada tiga kelinci hitam. Kita memakai cara Hitung Mundur: Mundur dari bilangan awal."
         },
         {
           "id": "C3-S3",
           "titleHint": "Kaos di Jemuran",
           "sceneType": "jemuran-kaos",
-          "voiceNarration": "Ibu menjemur kaos. Tiga kaos berwarna kuning. Dua kaos berwarna merah muda. Tiga ditambah dua sama dengan lima. Dua ditambah tiga juga sama dengan lima. Kalau dua kaos merah muda diambil, tinggal tiga kaos kuning. Lima dikurangi dua sama dengan tiga. Kalau tiga kaos kuning diambil, tinggal dua. Lima dikurangi tiga sama dengan dua. METODE LUAR. Kurang di Bingkai: Hapus/kosongkan kotak pada bingkai."
+          "voiceNarration": "Ibu menjemur kaos. Tiga kaos berwarna kuning. Dua kaos berwarna merah muda. Tiga ditambah dua sama dengan lima. Dua ditambah tiga juga sama dengan lima. Kalau dua kaos merah muda diambil, tinggal tiga kaos kuning. Lima dikurangi dua sama dengan tiga. Kalau tiga kaos kuning diambil, tinggal dua. Lima dikurangi tiga sama dengan dua. Kita memakai cara Kurang di Bingkai: Hapus/kosongkan kotak pada bingkai."
         },
         {
           "id": "C3-S4",
           "titleHint": "Kepik di Atas Daun",
           "sceneType": "kepik-daun",
-          "voiceNarration": "Ada kepik di atas daun. Tiga kepik duduk di daun. Satu kepik sedang terbang. Semua kepik ada empat. Tiga ditambah satu sama dengan empat. Kalau satu kepik terbang pergi, tinggal tiga. Empat dikurangi satu sama dengan tiga. Penjumlahan dan pengurangan saling berhubungan. METODE LUAR. Mengambil: Ambil sebagian dari kumpulan."
+          "voiceNarration": "Ada kepik di atas daun. Tiga kepik duduk di daun. Satu kepik sedang terbang. Semua kepik ada empat. Tiga ditambah satu sama dengan empat. Kalau satu kepik terbang pergi, tinggal tiga. Empat dikurangi satu sama dengan tiga. Penjumlahan dan pengurangan saling berhubungan. Kita memakai cara Mengambil: Ambil sebagian dari kumpulan."
         },
         {
           "id": "C3-S5",
           "titleHint": "Papan Tulis Wei",
           "sceneType": "papan-tulis-hilang",
-          "voiceNarration": "Wei melihat papan tulis. Di papan ada soal: enam ditambah berapa sama dengan sembilan. Wei berpikir: pengurangan adalah kebalikan dari penjumlahan. Jadi Wei menghitung sembilan dikurangi enam sama dengan tiga. Angka yang hilang adalah tiga. Lalu Wei memeriksa: enam ditambah tiga sama dengan sembilan. Cocok! METODE LUAR. Hitung Mundur: Mundur dari bilangan awal."
+          "voiceNarration": "Wei melihat papan tulis. Di papan ada soal: enam ditambah berapa sama dengan sembilan. Wei berpikir: pengurangan adalah kebalikan dari penjumlahan. Jadi Wei menghitung sembilan dikurangi enam sama dengan tiga. Angka yang hilang adalah tiga. Lalu Wei memeriksa: enam ditambah tiga sama dengan sembilan. Cocok! Kita memakai cara Hitung Mundur: Mundur dari bilangan awal."
         },
         {
           "id": "C3-S6",
           "titleHint": "Teman-Teman dan Sepeda",
           "sceneType": "sepeda-teman",
-          "voiceNarration": "Tika dan teman-teman berkumpul di teras. Ada enam anak yang duduk dan dua anak bersepeda. Semua anak ada delapan. Enam ditambah dua sama dengan delapan. Dua ditambah enam juga sama dengan delapan. Kalau dua anak bersepeda pergi, tinggal enam anak. Delapan dikurangi dua sama dengan enam. Sekarang giliranmu: ambil benda bersama temanmu, buat cerita penjumlahan, lalu buat cerita pengurangannya. Jelaskan hubungannya. METODE LUAR. Kurang di Bingkai: Hapus/kosongkan kotak pada bingkai."
+          "voiceNarration": "Tika dan teman-teman berkumpul di teras. Ada enam anak yang duduk dan dua anak bersepeda. Semua anak ada delapan. Enam ditambah dua sama dengan delapan. Dua ditambah enam juga sama dengan delapan. Kalau dua anak bersepeda pergi, tinggal enam anak. Delapan dikurangi dua sama dengan enam. Sekarang giliranmu: ambil benda bersama temanmu, buat cerita penjumlahan, lalu buat cerita pengurangannya. Jelaskan hubungannya. Kita memakai cara Kurang di Bingkai: Hapus/kosongkan kotak pada bingkai."
         }
       ],
       "mindMaps": [
@@ -884,24 +884,24 @@
         },
         {
           "stepNumber": 3,
-          "stepTitle": "3. Pisahkan Salah Satu",
-          "stepDesc": "Dari kelompok yang sudah digabung, kita boleh mengambil salah satu kelompok. Ada tujuh kelinci. Tiga kelinci hitam pergi. Tinggal empat kelinci cokelat.",
+          "stepTitle": "3. Take Away",
+          "stepDesc": "Ambil sebagian dari kumpulan.",
           "icon": "🚪",
           "flowFrom": "Kelompok gabungan",
           "flowTo": "Pengurangan"
         },
         {
           "stepNumber": 4,
-          "stepTitle": "4. Dua Kalimat Pengurangan",
-          "stepDesc": "Satu keluarga bilangan punya dua pengurangan. Tujuh kurang tiga sama dengan empat. Tujuh kurang empat sama dengan tiga. Bilangan terbesar ditulis paling depan.",
+          "stepTitle": "4. Counting Back",
+          "stepDesc": "Mundur dari bilangan awal.",
           "icon": "✌️",
           "flowFrom": "Keluarga bilangan",
           "flowTo": "Dua pengurangan"
         },
         {
           "stepNumber": 5,
-          "stepTitle": "5. Kebalikan",
-          "stepDesc": "Pengurangan adalah kebalikan dari penjumlahan. Tiga tambah empat sama dengan tujuh, maka tujuh kurang tiga sama dengan empat. Maju tiga langkah, lalu mundur tiga langkah, kita kembali ke tempat semula.",
+          "stepTitle": "5. Ten Frame Subtract",
+          "stepDesc": "Hapus/kosongkan kotak pada bingkai.",
           "icon": "↩️",
           "flowFrom": "Penjumlahan",
           "flowTo": "Pengurangan"
@@ -916,7 +916,7 @@
         },
         {
           "stepNumber": 7,
-          "stepTitle": "7. METODE LUAR · Mengambil",
+          "stepTitle": "7.",
           "stepDesc": "Ambil sebagian dari kumpulan.",
           "icon": "🌍",
           "flowFrom": "6",
@@ -924,7 +924,7 @@
         },
         {
           "stepNumber": 8,
-          "stepTitle": "8. METODE LUAR · Hitung Mundur",
+          "stepTitle": "8.",
           "stepDesc": "Mundur dari bilangan awal.",
           "icon": "🌍",
           "flowFrom": "7",
@@ -1015,25 +1015,25 @@
           "title": "Kelinci Masuk Kandang (4 + 3, 3 + 4)",
           "emoji": "🐰",
           "targetCount": 8,
-          "voiceGuide": "Ketuk kelinci masuk ke kandang. Hitung semuanya."
+          "voiceGuide": "Mengambil. Ketuk kelinci masuk ke kandang. Hitung semuanya."
         },
         {
           "title": "Kaos Diambil dan Dikembalikan",
           "emoji": "👕",
           "targetCount": 8,
-          "voiceGuide": "Ambil kaos dari jemuran lalu kembalikan. Lihat bagaimana kembali ke jumlah semula."
+          "voiceGuide": "Hitung Mundur. Ambil kaos dari jemuran lalu kembalikan. Lihat bagaimana kembali ke jumlah semula."
         },
         {
           "title": "Seret Kartu ke Kandang (keluarga bilangan)",
           "emoji": "🃏",
           "targetCount": 5,
-          "voiceGuide": "Seret kartu benda ke tempat yang tepat. Susun satu keluarga bilangan."
+          "voiceGuide": "Kurang di Bingkai. Seret kartu benda ke tempat yang tepat. Susun satu keluarga bilangan."
         },
         {
           "title": "Gelas Penutup (cari yang hilang)",
           "emoji": "🥤",
           "targetCount": 5,
-          "voiceGuide": "Ada kelereng di bawah gelas. Hitung yang terlihat, lalu pakai kebalikan untuk menebak yang tersembunyi."
+          "voiceGuide": "Mengambil. Ada kelereng di bawah gelas. Hitung yang terlihat, lalu pakai kebalikan untuk menebak yang tersembunyi."
         }
       ],
       "pictorialSlides": [
@@ -1042,21 +1042,21 @@
           "diagramType": "fact-triangle",
           "numberA": 4,
           "numberB": 3,
-          "caption": "Bilangan terbesar ada di puncak segitiga. Dua bilangan lain di kaki. Dari tiga bilangan ini lahir empat kalimat."
+          "caption": "Pakai Mengambil. Bilangan terbesar ada di puncak segitiga. Dua bilangan lain di kaki. Dari tiga bilangan ini lahir empat kalimat."
         },
         {
           "title": "Garis Bilangan: Pergi dan Pulang",
           "diagramType": "number-line",
           "numberA": 5,
           "numberB": 3,
-          "caption": "Maju untuk menjumlah, mundur untuk mengurang. Mundur sebanyak yang kita maju, kita kembali ke awal."
+          "caption": "Pakai Hitung Mundur. Maju untuk menjumlah, mundur untuk mengurang. Mundur sebanyak yang kita maju, kita kembali ke awal."
         },
         {
           "title": "Tabel Empat Kalimat",
           "diagramType": "table",
           "numberA": 8,
           "numberB": 2,
-          "caption": "Isi empat kalimat dari satu keluarga bilangan: dua penjumlahan dan dua pengurangan."
+          "caption": "Pakai Kurang di Bingkai. Isi empat kalimat dari satu keluarga bilangan: dua penjumlahan dan dua pengurangan."
         }
       ],
       "abstractSlides": [
@@ -1064,19 +1064,19 @@
           "symbolLarge": "4 + 3 = 7  |  7 − 3 = 4",
           "wordLarge": "KEBALIKAN",
           "mathNotation": "3 + 4 = 7   |   7 − 4 = 3",
-          "voiceReadout": "Empat tambah tiga sama dengan tujuh. Tujuh kurang tiga sama dengan empat. Tiga tambah empat sama dengan tujuh. Tujuh kurang empat sama dengan tiga."
+          "voiceReadout": "Mengambil. Empat tambah tiga sama dengan tujuh. Tujuh kurang tiga sama dengan empat. Tiga tambah empat sama dengan tujuh. Tujuh kurang empat sama dengan tiga."
         },
         {
           "symbolLarge": "6 + ? = 9  →  9 − 6 = 3",
           "wordLarge": "CARI YANG HILANG",
           "mathNotation": "? − 5 = 2  →  2 + 5 = 7",
-          "voiceReadout": "Enam tambah berapa sama dengan sembilan. Hitung sembilan kurang enam sama dengan tiga. Berapa kurang lima sama dengan dua. Hitung dua tambah lima sama dengan tujuh."
+          "voiceReadout": "Hitung Mundur. Enam tambah berapa sama dengan sembilan. Hitung sembilan kurang enam sama dengan tiga. Berapa kurang lima sama dengan dua. Hitung dua tambah lima sama dengan tujuh."
         },
         {
           "symbolLarge": "7 ○ 2 = 9  →  +",
           "wordLarge": "PILIH TANDA",
           "mathNotation": "9 ○ 4 = 5  →  −",
-          "voiceReadout": "Tujuh bulat dua sama dengan sembilan. Sembilan lebih besar, tandanya tambah. Sembilan bulat empat sama dengan lima. Lima lebih kecil, tandanya kurang."
+          "voiceReadout": "Kurang di Bingkai. Tujuh bulat dua sama dengan sembilan. Sembilan lebih besar, tandanya tambah. Sembilan bulat empat sama dengan lima. Lima lebih kecil, tandanya kurang."
         }
       ],
       "interactiveGames": [
@@ -1087,9 +1087,9 @@
           "gameType": "tap-to-gather",
           "title": "Kelinci Masuk Kandang",
           "bookReference": "Buku Siswa Hlm. 101",
-          "objective": "Menggabungkan dua kelompok benda dan melihat penjumlahan boleh bertukar tempat.",
-          "mechanicDescription": "Dua ronde. Siswa mengetuk kelinci cokelat dan hitam masuk kandang, lalu menukar urutan dan membuktikan jumlahnya tetap. Ronde akhir: ucapkan jumlah semua kelinci.",
-          "voiceGuide": "Ketuk kelinci masuk ke kandang. Lalu ucapkan berapa semua kelinci."
+          "objective": "Pakai Mengambil. Menggabungkan dua kelompok benda dan melihat penjumlahan boleh bertukar tempat.",
+          "mechanicDescription": "Dua ronde. Siswa mengetuk kelinci cokelat dan hitam masuk kandang, lalu menukar urutan dan membuktikan jumlahnya tetap. Ronde akhir: ucapkan jumlah semua kelinci. Terapkan Take Away.",
+          "voiceGuide": "Mengambil. Ketuk kelinci masuk ke kandang. Lalu ucapkan berapa semua kelinci."
         },
         {
           "gameId": "subC3-game-2",
@@ -1098,9 +1098,9 @@
           "gameType": "tap-take-return",
           "title": "Kaos Diambil dan Dikembalikan",
           "bookReference": "Buku Siswa Hlm. 101",
-          "objective": "Merasakan pengurangan sebagai kebalikan penjumlahan dengan mengambil dan mengembalikan benda.",
-          "mechanicDescription": "Siswa mengambil kaos dari jemuran (pengurangan) lalu mengembalikannya (penjumlahan) dan melihat dua kalimat berhubungan. Ronde akhir: ucapkan jumlah kaos setelah dikembalikan.",
-          "voiceGuide": "Ambil kaos dari tali, lalu kembalikan. Ucapkan jumlah kaos sekarang."
+          "objective": "Pakai Hitung Mundur. Merasakan pengurangan sebagai kebalikan penjumlahan dengan mengambil dan mengembalikan benda.",
+          "mechanicDescription": "Siswa mengambil kaos dari jemuran (pengurangan) lalu mengembalikannya (penjumlahan) dan melihat dua kalimat berhubungan. Ronde akhir: ucapkan jumlah kaos setelah dikembalikan. Terapkan Counting Back.",
+          "voiceGuide": "Hitung Mundur. Ambil kaos dari tali, lalu kembalikan. Ucapkan jumlah kaos sekarang."
         },
         {
           "gameId": "subC3-game-3",
@@ -1109,9 +1109,9 @@
           "gameType": "drag-and-drop",
           "title": "Seret Kartu ke Kandang",
           "bookReference": "Buku Siswa Hlm. 102",
-          "objective": "Menyusun satu keluarga bilangan dengan menyeret kartu benda ke tempat yang tepat.",
-          "mechanicDescription": "Siswa menyeret kartu bilangan ke kandang gabungan dan dua kandang sebagian, sehingga terbentuk dua penjumlahan dan dua pengurangan. Ronde akhir: ucapkan bagian yang hilang.",
-          "voiceGuide": "Seret kartu ke kandang yang tepat. Lalu ucapkan bagian yang hilang."
+          "objective": "Pakai Kurang di Bingkai. Menyusun satu keluarga bilangan dengan menyeret kartu benda ke tempat yang tepat.",
+          "mechanicDescription": "Siswa menyeret kartu bilangan ke kandang gabungan dan dua kandang sebagian, sehingga terbentuk dua penjumlahan dan dua pengurangan. Ronde akhir: ucapkan bagian yang hilang. Terapkan Ten Frame Subtract.",
+          "voiceGuide": "Kurang di Bingkai. Seret kartu ke kandang yang tepat. Lalu ucapkan bagian yang hilang."
         },
         {
           "gameId": "subC3-game-4",
@@ -1120,9 +1120,9 @@
           "gameType": "cover-and-guess",
           "title": "Gelas Penutup",
           "bookReference": "Buku Siswa Hlm. 103",
-          "objective": "Mencari bilangan yang hilang dengan kebalikan, lalu membuktikan dengan membuka gelas.",
-          "mechanicDescription": "Sebagian kelereng tertutup gelas. Siswa memakai gabungan dan bagian yang terlihat untuk menebak, lalu mengangkat gelas untuk memeriksa. Ronde akhir: ucapkan jumlah kelereng di bawah gelas.",
-          "voiceGuide": "Hitung yang terlihat. Pakai kebalikan, lalu ucapkan kelereng di bawah gelas."
+          "objective": "Pakai Mengambil. Mencari bilangan yang hilang dengan kebalikan, lalu membuktikan dengan membuka gelas.",
+          "mechanicDescription": "Sebagian kelereng tertutup gelas. Siswa memakai gabungan dan bagian yang terlihat untuk menebak, lalu mengangkat gelas untuk memeriksa. Ronde akhir: ucapkan jumlah kelereng di bawah gelas. Terapkan Take Away.",
+          "voiceGuide": "Mengambil. Hitung yang terlihat. Pakai kebalikan, lalu ucapkan kelereng di bawah gelas."
         },
         {
           "gameId": "subC3-game-5",
@@ -1131,9 +1131,9 @@
           "gameType": "fact-triangle",
           "title": "Segitiga Keluarga",
           "bookReference": "Buku Siswa Hlm. 103",
-          "objective": "Membaca satu segitiga bilangan menjadi empat kalimat dan mencari bilangan yang disembunyikan.",
-          "mechanicDescription": "Segitiga memuat gabungan di puncak dan dua sebagian di kaki. Salah satu bilangan disembunyikan. Siswa memilih bilangan itu lalu membaca empat kalimat. Ronde akhir: ucapkan bilangan tersembunyi.",
-          "voiceGuide": "Lihat segitiga keluarga. Cari bilangan yang tertutup."
+          "objective": "Pakai Hitung Mundur. Membaca satu segitiga bilangan menjadi empat kalimat dan mencari bilangan yang disembunyikan.",
+          "mechanicDescription": "Segitiga memuat gabungan di puncak dan dua sebagian di kaki. Salah satu bilangan disembunyikan. Siswa memilih bilangan itu lalu membaca empat kalimat. Ronde akhir: ucapkan bilangan tersembunyi. Terapkan Counting Back.",
+          "voiceGuide": "Hitung Mundur. Lihat segitiga keluarga. Cari bilangan yang tertutup."
         },
         {
           "gameId": "subC3-game-6",
@@ -1142,9 +1142,9 @@
           "gameType": "number-line-return",
           "title": "Garis Bilangan: Pergi dan Pulang",
           "bookReference": "Buku Siswa Hlm. 104",
-          "objective": "Melihat bahwa maju lalu mundur sama banyak membawa kita kembali ke awal.",
-          "mechanicDescription": "Siswa melompat maju sejumlah langkah, lalu melompat mundur kembali ke bilangan awal. Ronde akhir: ucapkan bilangan tempat tiba.",
-          "voiceGuide": "Lompat maju, lalu lompat mundur. Ucapkan tempat kamu tiba."
+          "objective": "Pakai Kurang di Bingkai. Melihat bahwa maju lalu mundur sama banyak membawa kita kembali ke awal.",
+          "mechanicDescription": "Siswa melompat maju sejumlah langkah, lalu melompat mundur kembali ke bilangan awal. Ronde akhir: ucapkan bilangan tempat tiba. Terapkan Ten Frame Subtract.",
+          "voiceGuide": "Kurang di Bingkai. Lompat maju, lalu lompat mundur. Ucapkan tempat kamu tiba."
         },
         {
           "gameId": "subC3-game-7",
@@ -1153,9 +1153,9 @@
           "gameType": "fill-table",
           "title": "Tabel Empat Kalimat",
           "bookReference": "Buku Siswa Hlm. 104",
-          "objective": "Melengkapi tabel empat kalimat satu keluarga bilangan.",
-          "mechanicDescription": "Siswa memilih angka untuk sel kosong pada tabel dua penjumlahan dan dua pengurangan. Ronde akhir: ucapkan angka pada sel yang tersisa.",
-          "voiceGuide": "Isi sel yang kosong. Lalu ucapkan angka terakhir yang tertutup."
+          "objective": "Pakai Mengambil. Melengkapi tabel empat kalimat satu keluarga bilangan.",
+          "mechanicDescription": "Siswa memilih angka untuk sel kosong pada tabel dua penjumlahan dan dua pengurangan. Ronde akhir: ucapkan angka pada sel yang tersisa. Terapkan Take Away.",
+          "voiceGuide": "Mengambil. Isi sel yang kosong. Lalu ucapkan angka terakhir yang tertutup."
         },
         {
           "gameId": "subC3-game-8",
@@ -1164,9 +1164,9 @@
           "gameType": "circle-the-same",
           "title": "Lingkari Hasil yang Sama",
           "bookReference": "Buku Siswa Hlm. 105",
-          "objective": "Mengenali dua kalimat satu keluarga yang hasilnya sama dan memeriksa dengan kebalikan.",
-          "mechanicDescription": "Siswa melingkari kalimat yang hasilnya sama dengan soal, lalu memeriksa dengan operasi kebalikan.",
-          "voiceGuide": "Lingkari kalimat yang hasilnya sama. Lalu periksa dengan kebalikan."
+          "objective": "Pakai Hitung Mundur. Mengenali dua kalimat satu keluarga yang hasilnya sama dan memeriksa dengan kebalikan.",
+          "mechanicDescription": "Siswa melingkari kalimat yang hasilnya sama dengan soal, lalu memeriksa dengan operasi kebalikan. Terapkan Counting Back.",
+          "voiceGuide": "Hitung Mundur. Lingkari kalimat yang hasilnya sama. Lalu periksa dengan kebalikan."
         },
         {
           "gameId": "subC3-game-9",
@@ -1175,9 +1175,9 @@
           "gameType": "find-missing",
           "title": "Cari yang Hilang",
           "bookReference": "Buku Siswa Hlm. 105",
-          "objective": "Mencari bilangan yang hilang pada kalimat penjumlahan atau pengurangan memakai kebalikan.",
-          "mechanicDescription": "Papan tulis Wei menampilkan kalimat dengan satu bilangan hilang. Siswa memilih operasi kebalikan lalu mengucapkan bilangan yang hilang.",
-          "voiceGuide": "Pakai kebalikan untuk mencari bilangan yang hilang."
+          "objective": "Pakai Kurang di Bingkai. Mencari bilangan yang hilang pada kalimat penjumlahan atau pengurangan memakai kebalikan.",
+          "mechanicDescription": "Papan tulis Wei menampilkan kalimat dengan satu bilangan hilang. Siswa memilih operasi kebalikan lalu mengucapkan bilangan yang hilang. Terapkan Ten Frame Subtract.",
+          "voiceGuide": "Kurang di Bingkai. Pakai kebalikan untuk mencari bilangan yang hilang."
         },
         {
           "gameId": "subC3-game-10",
@@ -1186,9 +1186,9 @@
           "gameType": "choose-sign-and-build",
           "title": "Tanda dan Susun Kalimat",
           "bookReference": "Buku Siswa Hlm. 105",
-          "objective": "Memilih tanda + atau − dan menyusun kalimat dari ubin angka.",
-          "mechanicDescription": "Empat ronde: pilih tanda yang tepat, lalu susun tiga ubin angka dan satu ubin tanda menjadi kalimat yang benar. Ronde akhir: ucapkan hasil kalimat yang tertutup.",
-          "voiceGuide": "Pilih tanda, susun kalimat, lalu ucapkan hasilnya."
+          "objective": "Pakai Mengambil. Memilih tanda + atau − dan menyusun kalimat dari ubin angka.",
+          "mechanicDescription": "Empat ronde: pilih tanda yang tepat, lalu susun tiga ubin angka dan satu ubin tanda menjadi kalimat yang benar. Ronde akhir: ucapkan hasil kalimat yang tertutup. Terapkan Take Away.",
+          "voiceGuide": "Mengambil. Pilih tanda, susun kalimat, lalu ucapkan hasilnya."
         }
       ],
       "metodeLuar": [
@@ -1231,7 +1231,7 @@
       "id": "D",
       "codeTitle": "Sub-Bab D (Soal Cerita Pengurangan)",
       "fullTitle": "Sub-Bab D: Soal Cerita Pengurangan",
-      "targetDescription": "Siswa menyelesaikan soal cerita pengurangan: membaca cerita, menemukan mula-mula, yang pergi, dan sisa, mengenali kata kunci, menulis kalimat pengurangan, mencari sisa, yang pergi, dan mula-mula, mengurangi dua kali, memeriksa dengan penjumlahan, lalu menjawab dengan kalimat lengkap. Siswa juga membuat soal cerita sendiri.",
+      "targetDescription": "Siswa menyelesaikan soal cerita pengurangan: membaca cerita, menemukan mula-mula, yang pergi, dan sisa, mengenali kata kunci, menulis kalimat pengurangan, mencari sisa, yang pergi, dan mula-mula, mengurangi dua kali, memeriksa dengan penjumlahan, lalu menjawab dengan kalimat lengkap. Siswa juga membuat soal cerita sendiri. Memakai Mengambil, Hitung Mundur, Kurang di Bingkai.",
       "secondaryBg": "#EDE9FE",
       "secondaryBorder": "#8B5CF6",
       "secondaryText": "#5B21B6",
@@ -1240,37 +1240,37 @@
           "id": "D3-S1",
           "titleHint": "Burung di Dahan Pohon",
           "sceneType": "burung-pohon",
-          "voiceNarration": "Lihat burung di dahan pohon. Mula-mula ada delapan burung di pohon. Sebanyak dua burung terbang. Berapakah sisa burung sekarang? Delapan dikurangi dua sama dengan enam. Sekarang ada enam burung tersisa. METODE LUAR. Mengambil: Ambil sebagian dari kumpulan."
+          "voiceNarration": "Lihat burung di dahan pohon. Mula-mula ada delapan burung di pohon. Sebanyak dua burung terbang. Berapakah sisa burung sekarang? Delapan dikurangi dua sama dengan enam. Sekarang ada enam burung tersisa. Kita memakai cara Mengambil: Ambil sebagian dari kumpulan."
         },
         {
           "id": "D3-S2",
           "titleHint": "Kepik di Atas Daun",
           "sceneType": "kepik-daun",
-          "voiceNarration": "Ada kepik di atas daun. Mula-mula ada sepuluh kepik di atas daun. Sebanyak dua kepik terbang. Berapakah sisa kepik sekarang? Sepuluh dikurangi dua sama dengan delapan. Sekarang tersisa delapan kepik. METODE LUAR. Hitung Mundur: Mundur dari bilangan awal."
+          "voiceNarration": "Ada kepik di atas daun. Mula-mula ada sepuluh kepik di atas daun. Sebanyak dua kepik terbang. Berapakah sisa kepik sekarang? Sepuluh dikurangi dua sama dengan delapan. Sekarang tersisa delapan kepik. Kita memakai cara Hitung Mundur: Mundur dari bilangan awal."
         },
         {
           "id": "D3-S3",
           "titleHint": "Siswa di Dalam Kelas",
           "sceneType": "siswa-kelas",
-          "voiceNarration": "Di dalam kelas ada tujuh siswa. Lima siswa masih di dalam kelas. Siswa lainnya pergi. Berapa banyak siswa yang pergi? Yang kita cari sekarang adalah bagian yang pergi. Tujuh dikurangi lima sama dengan dua. Ada dua siswa yang pergi. METODE LUAR. Kurang di Bingkai: Hapus/kosongkan kotak pada bingkai."
+          "voiceNarration": "Di dalam kelas ada tujuh siswa. Lima siswa masih di dalam kelas. Siswa lainnya pergi. Berapa banyak siswa yang pergi? Yang kita cari sekarang adalah bagian yang pergi. Tujuh dikurangi lima sama dengan dua. Ada dua siswa yang pergi. Kita memakai cara Kurang di Bingkai: Hapus/kosongkan kotak pada bingkai."
         },
         {
           "id": "D3-S4",
           "titleHint": "Bola di Dalam Kardus",
           "sceneType": "bola-kardus",
-          "voiceNarration": "Kira mempunyai sepuluh bola. Tiga bola ada di luar kardus. Berapa banyak bola di dalam kardus? Sepuluh dikurangi tiga sama dengan tujuh. Ada tujuh bola di dalam kardus. METODE LUAR. Mengambil: Ambil sebagian dari kumpulan."
+          "voiceNarration": "Kira mempunyai sepuluh bola. Tiga bola ada di luar kardus. Berapa banyak bola di dalam kardus? Sepuluh dikurangi tiga sama dengan tujuh. Ada tujuh bola di dalam kardus. Kita memakai cara Mengambil: Ambil sebagian dari kumpulan."
         },
         {
           "id": "D3-S5",
           "titleHint": "Kira Memberi Bola kepada Tika",
           "sceneType": "beri-bola",
-          "voiceNarration": "Kira mempunyai sepuluh bola. Beberapa bola diberikan kepada Tika. Sisa bola Kira adalah enam. Berapa bola yang diberikan kepada Tika? Yang hilang adalah bola yang diberikan. Sepuluh dikurangi enam sama dengan empat. Ada empat bola yang diberikan kepada Tika. Periksa: enam ditambah empat sama dengan sepuluh. METODE LUAR. Hitung Mundur: Mundur dari bilangan awal."
+          "voiceNarration": "Kira mempunyai sepuluh bola. Beberapa bola diberikan kepada Tika. Sisa bola Kira adalah enam. Berapa bola yang diberikan kepada Tika? Yang hilang adalah bola yang diberikan. Sepuluh dikurangi enam sama dengan empat. Ada empat bola yang diberikan kepada Tika. Periksa: enam ditambah empat sama dengan sepuluh. Kita memakai cara Hitung Mundur: Mundur dari bilangan awal."
         },
         {
           "id": "D3-S6",
           "titleHint": "Kelereng Malosi",
           "sceneType": "kelereng-dua-kali",
-          "voiceNarration": "Malosi mempunyai sembilan kelereng. Malosi memberi Kira dua kelereng. Malosi juga memberi Upe empat kelereng. Berapakah sisa kelereng Malosi? Kita kurangi dua kali. Sembilan dikurangi dua sama dengan tujuh. Tujuh dikurangi empat sama dengan tiga. Sisa kelereng Malosi ada tiga. METODE LUAR. Kurang di Bingkai: Hapus/kosongkan kotak pada bingkai."
+          "voiceNarration": "Malosi mempunyai sembilan kelereng. Malosi memberi Kira dua kelereng. Malosi juga memberi Upe empat kelereng. Berapakah sisa kelereng Malosi? Kita kurangi dua kali. Sembilan dikurangi dua sama dengan tujuh. Tujuh dikurangi empat sama dengan tiga. Sisa kelereng Malosi ada tiga. Kita memakai cara Kurang di Bingkai: Hapus/kosongkan kotak pada bingkai."
         }
       ],
       "mindMaps": [
@@ -1292,24 +1292,24 @@
         },
         {
           "stepNumber": 3,
-          "stepTitle": "3. Cari Kata Kunci",
-          "stepDesc": "Kata terbang, pergi, diberikan, dimakan, dan diambil memberi tahu kita bahwa jumlahnya berkurang. Kalau ada kata itu, kita pakai tanda kurang.",
+          "stepTitle": "3. Take Away",
+          "stepDesc": "Ambil sebagian dari kumpulan.",
           "icon": "🔑",
           "flowFrom": "Kata kunci",
           "flowTo": "Tanda + atau −"
         },
         {
           "stepNumber": 4,
-          "stepTitle": "4. Tulis Kalimat Matematika",
-          "stepDesc": "Tulis kalimatnya dengan tiga kotak. Kotak pertama mula-mula, kotak kedua yang berkurang, kotak ketiga hasilnya. Delapan kurang dua sama dengan enam.",
+          "stepTitle": "4. Counting Back",
+          "stepDesc": "Mundur dari bilangan awal.",
           "icon": "✍️",
           "flowFrom": "Tiga bagian",
           "flowTo": "Kalimat matematika"
         },
         {
           "stepNumber": 5,
-          "stepTitle": "5. Apa yang Dicari?",
-          "stepDesc": "Kadang yang dicari adalah sisa. Kadang yang dicari adalah yang pergi. Kadang yang dicari adalah mula-mula. Pada soal dua kali mengurangi, kita kurangi satu per satu dari kiri ke kanan.",
+          "stepTitle": "5. Ten Frame Subtract",
+          "stepDesc": "Hapus/kosongkan kotak pada bingkai.",
           "icon": "❓",
           "flowFrom": "Yang dicari",
           "flowTo": "Cara menghitung"
@@ -1324,7 +1324,7 @@
         },
         {
           "stepNumber": 7,
-          "stepTitle": "7. METODE LUAR · Mengambil",
+          "stepTitle": "7.",
           "stepDesc": "Ambil sebagian dari kumpulan.",
           "icon": "🌍",
           "flowFrom": "6",
@@ -1332,7 +1332,7 @@
         },
         {
           "stepNumber": 8,
-          "stepTitle": "8. METODE LUAR · Hitung Mundur",
+          "stepTitle": "8.",
           "stepDesc": "Mundur dari bilangan awal.",
           "icon": "🌍",
           "flowFrom": "7",
@@ -1423,25 +1423,25 @@
           "title": "Burung Terbang (8 − 2, 7 − 3, 9 − 4)",
           "emoji": "🐦",
           "targetCount": 9,
-          "voiceGuide": "Ketuk burung supaya terbang, lalu hitung burung yang masih hinggap."
+          "voiceGuide": "Mengambil. Ketuk burung supaya terbang, lalu hitung burung yang masih hinggap."
         },
         {
           "title": "Siswa Pergi dari Kelas (7 − 5, 9 − 6, 8 − 3)",
           "emoji": "🧒",
           "targetCount": 9,
-          "voiceGuide": "Ketuk siswa yang masih di kelas. Yang lain pergi lewat pintu. Hitung yang pergi."
+          "voiceGuide": "Hitung Mundur. Ketuk siswa yang masih di kelas. Yang lain pergi lewat pintu. Hitung yang pergi."
         },
         {
           "title": "Bola ke Dalam Kardus (10 − 3, 9 − 4, 8 − 5)",
           "emoji": "⚽",
           "targetCount": 10,
-          "voiceGuide": "Seret bola ke kardus sampai di luar tersisa sebanyak soal. Hitung bola di dalam kardus."
+          "voiceGuide": "Kurang di Bingkai. Seret bola ke kardus sampai di luar tersisa sebanyak soal. Hitung bola di dalam kardus."
         },
         {
           "title": "Kelereng untuk Dua Teman (9 − 2 − 4)",
           "emoji": "🔵",
           "targetCount": 10,
-          "voiceGuide": "Beri Kira dulu, lalu Upe. Kurangi dua kali dan hitung sisa kelereng Malosi."
+          "voiceGuide": "Mengambil. Beri Kira dulu, lalu Upe. Kurangi dua kali dan hitung sisa kelereng Malosi."
         }
       ],
       "pictorialSlides": [
@@ -1450,21 +1450,21 @@
           "diagramType": "bar-model",
           "numberA": 9,
           "numberB": 4,
-          "caption": "Satu kotak mewakili satu benda. Kotak merah adalah sisa. Kotak yang dicoret adalah yang pergi. Seluruh batang adalah mula-mula."
+          "caption": "Pakai Mengambil. Satu kotak mewakili satu benda. Kotak merah adalah sisa. Kotak yang dicoret adalah yang pergi. Seluruh batang adalah mula-mula."
         },
         {
           "title": "Jodohkan Cerita dan Batang",
           "diagramType": "story-bar-match",
           "numberA": 9,
           "numberB": 3,
-          "caption": "Ada cerita yang mencari sisa, ada yang mencari yang pergi, dan ada yang mencari mula-mula. Lihat angka yang diketahui dan bagian yang bertanda tanya."
+          "caption": "Pakai Hitung Mundur. Ada cerita yang mencari sisa, ada yang mencari yang pergi, dan ada yang mencari mula-mula. Lihat angka yang diketahui dan bagian yang bertanda tanya."
         },
         {
           "title": "Dua Lompatan Mundur (9 − 2 − 4)",
           "diagramType": "number-line-two-jumps",
           "numberA": 9,
           "numberB": 2,
-          "caption": "Mundur dua kali di garis bilangan. Cara lain: gabungkan dulu dua dan empat menjadi enam, lalu mundur enam sekali jalan."
+          "caption": "Pakai Kurang di Bingkai. Mundur dua kali di garis bilangan. Cara lain: gabungkan dulu dua dan empat menjadi enam, lalu mundur enam sekali jalan."
         }
       ],
       "abstractSlides": [
@@ -1472,19 +1472,19 @@
           "symbolLarge": "8 − 2 = 6  |  4 + 3 = 7",
           "wordLarge": "KATA KUNCI",
           "mathNotation": "terbang → −   datang → +",
-          "voiceReadout": "Delapan dikurangi dua sama dengan enam. Empat ditambah tiga sama dengan tujuh. Kata terbang berarti kurang. Kata datang berarti tambah."
+          "voiceReadout": "Mengambil. Delapan dikurangi dua sama dengan enam. Empat ditambah tiga sama dengan tujuh. Kata terbang berarti kurang. Kata datang berarti tambah."
         },
         {
           "symbolLarge": "10 − 2 = 8",
           "wordLarge": "KOTAK PENYELESAIAN",
           "mathNotation": "9 − 2 − 4 = 3",
-          "voiceReadout": "Isi kotak penyelesaian dari kiri ke kanan. Sepuluh dikurangi dua sama dengan delapan. Sembilan dikurangi dua dikurangi empat sama dengan tiga."
+          "voiceReadout": "Hitung Mundur. Isi kotak penyelesaian dari kiri ke kanan. Sepuluh dikurangi dua sama dengan delapan. Sembilan dikurangi dua dikurangi empat sama dengan tiga."
         },
         {
           "symbolLarge": "? − 3 = 4",
           "wordLarge": "SOALKU",
           "mathNotation": "4 + 3 = 7",
-          "voiceReadout": "Berapa dikurangi tiga sama dengan empat? Pakai kebalikan. Empat ditambah tiga sama dengan tujuh."
+          "voiceReadout": "Kurang di Bingkai. Berapa dikurangi tiga sama dengan empat? Pakai kebalikan. Empat ditambah tiga sama dengan tujuh."
         }
       ],
       "interactiveGames": [
@@ -1495,9 +1495,9 @@
           "gameType": "tap-to-fly",
           "title": "Burung Terbang",
           "bookReference": "Buku Siswa Hlm. 106",
-          "objective": "Memahami mula-mula, pergi, dan sisa dengan menerbangkan burung.",
-          "mechanicDescription": "Tiga ronde. Siswa mengetuk burung supaya terbang sebanyak yang pergi, lalu memilih sisa burung. Ronde akhir: ucapkan sisa burung.",
-          "voiceGuide": "Ketuk burung supaya terbang. Lalu ucapkan berapa sisa burung."
+          "objective": "Pakai Mengambil. Memahami mula-mula, pergi, dan sisa dengan menerbangkan burung.",
+          "mechanicDescription": "Tiga ronde. Siswa mengetuk burung supaya terbang sebanyak yang pergi, lalu memilih sisa burung. Ronde akhir: ucapkan sisa burung. Terapkan Take Away.",
+          "voiceGuide": "Mengambil. Ketuk burung supaya terbang. Lalu ucapkan berapa sisa burung."
         },
         {
           "gameId": "subD3-game-2",
@@ -1506,9 +1506,9 @@
           "gameType": "tap-to-keep",
           "title": "Siswa Pergi dari Kelas",
           "bookReference": "Buku Siswa Hlm. 107",
-          "objective": "Mencari bagian yang pergi dari jumlah mula-mula dan yang masih tinggal.",
-          "mechanicDescription": "Tiga ronde. Siswa mengetuk siswa yang masih di kelas, yang lain pergi lewat pintu, lalu memilih banyak yang pergi. Ronde akhir: ucapkan yang pergi.",
-          "voiceGuide": "Ketuk siswa yang tinggal. Lalu ucapkan berapa siswa yang pergi."
+          "objective": "Pakai Hitung Mundur. Mencari bagian yang pergi dari jumlah mula-mula dan yang masih tinggal.",
+          "mechanicDescription": "Tiga ronde. Siswa mengetuk siswa yang masih di kelas, yang lain pergi lewat pintu, lalu memilih banyak yang pergi. Ronde akhir: ucapkan yang pergi. Terapkan Counting Back.",
+          "voiceGuide": "Hitung Mundur. Ketuk siswa yang tinggal. Lalu ucapkan berapa siswa yang pergi."
         },
         {
           "gameId": "subD3-game-3",
@@ -1517,9 +1517,9 @@
           "gameType": "drag-to-box",
           "title": "Bola ke Dalam Kardus",
           "bookReference": "Buku Siswa Hlm. 107",
-          "objective": "Menentukan banyak benda di dalam wadah dari jumlah seluruhnya dan yang di luar.",
-          "mechanicDescription": "Tiga ronde. Siswa menyeret bola ke kardus sampai di luar tersisa sebanyak soal, lalu menghitung bola di dalam kardus. Ronde akhir: ucapkan bola di dalam kardus.",
-          "voiceGuide": "Seret bola ke kardus. Lalu ucapkan berapa bola di dalam kardus."
+          "objective": "Pakai Kurang di Bingkai. Menentukan banyak benda di dalam wadah dari jumlah seluruhnya dan yang di luar.",
+          "mechanicDescription": "Tiga ronde. Siswa menyeret bola ke kardus sampai di luar tersisa sebanyak soal, lalu menghitung bola di dalam kardus. Ronde akhir: ucapkan bola di dalam kardus. Terapkan Ten Frame Subtract.",
+          "voiceGuide": "Kurang di Bingkai. Seret bola ke kardus. Lalu ucapkan berapa bola di dalam kardus."
         },
         {
           "gameId": "subD3-game-4",
@@ -1528,9 +1528,9 @@
           "gameType": "tap-give-twice",
           "title": "Kelereng untuk Dua Teman",
           "bookReference": "Buku Siswa Hlm. 108",
-          "objective": "Mengurangi dua kali secara berurutan.",
-          "mechanicDescription": "Tiga ronde. Siswa memberi kelereng kepada Kira lalu Upe dengan mengetuk, melihat dua kalimat pengurangan, lalu memilih sisa. Ronde akhir: ucapkan sisa kelereng.",
-          "voiceGuide": "Beri Kira dulu, lalu Upe. Lalu ucapkan sisa kelereng Malosi."
+          "objective": "Pakai Mengambil. Mengurangi dua kali secara berurutan.",
+          "mechanicDescription": "Tiga ronde. Siswa memberi kelereng kepada Kira lalu Upe dengan mengetuk, melihat dua kalimat pengurangan, lalu memilih sisa. Ronde akhir: ucapkan sisa kelereng. Terapkan Take Away.",
+          "voiceGuide": "Mengambil. Beri Kira dulu, lalu Upe. Lalu ucapkan sisa kelereng Malosi."
         },
         {
           "gameId": "subD3-game-5",
@@ -1539,9 +1539,9 @@
           "gameType": "tap-cross-bar",
           "title": "Batang Cerita",
           "bookReference": "Buku Siswa Hlm. 106",
-          "objective": "Menghubungkan cerita dengan model batang dan melihat sisa sebagai kotak yang tidak dicoret.",
-          "mechanicDescription": "Tiga ronde. Siswa membaca cerita teks, mengetuk kotak merah untuk mencoret yang pergi, lalu memilih sisa. Ronde akhir: ucapkan sisanya.",
-          "voiceGuide": "Coret kotak yang pergi. Lalu ucapkan berapa sisanya."
+          "objective": "Pakai Hitung Mundur. Menghubungkan cerita dengan model batang dan melihat sisa sebagai kotak yang tidak dicoret.",
+          "mechanicDescription": "Tiga ronde. Siswa membaca cerita teks, mengetuk kotak merah untuk mencoret yang pergi, lalu memilih sisa. Ronde akhir: ucapkan sisanya. Terapkan Counting Back.",
+          "voiceGuide": "Hitung Mundur. Coret kotak yang pergi. Lalu ucapkan berapa sisanya."
         },
         {
           "gameId": "subD3-game-6",
@@ -1550,9 +1550,9 @@
           "gameType": "match-story-bar",
           "title": "Jodohkan Cerita dan Batang",
           "bookReference": "Buku Siswa Hlm. 106-108",
-          "objective": "Mengenali tiga jenis pertanyaan soal cerita: mencari sisa, yang pergi, dan mula-mula.",
-          "mechanicDescription": "Dua ronde. Siswa menjodohkan tiga cerita teks dengan tiga model batang. Ronde akhir: ucapkan jumlah mula-mula pada cerita C.",
-          "voiceGuide": "Jodohkan cerita dengan batang. Lalu ucapkan jumlah mula-mula pada cerita C."
+          "objective": "Pakai Kurang di Bingkai. Mengenali tiga jenis pertanyaan soal cerita: mencari sisa, yang pergi, dan mula-mula.",
+          "mechanicDescription": "Dua ronde. Siswa menjodohkan tiga cerita teks dengan tiga model batang. Ronde akhir: ucapkan jumlah mula-mula pada cerita C. Terapkan Ten Frame Subtract.",
+          "voiceGuide": "Kurang di Bingkai. Jodohkan cerita dengan batang. Lalu ucapkan jumlah mula-mula pada cerita C."
         },
         {
           "gameId": "subD3-game-7",
@@ -1561,9 +1561,9 @@
           "gameType": "number-line-jump",
           "title": "Dua Lompatan Mundur",
           "bookReference": "Buku Siswa Hlm. 108",
-          "objective": "Mengurangi dua kali di garis bilangan dan membandingkannya dengan cara menggabung dulu.",
-          "mechanicDescription": "Tiga ronde. Siswa mengetuk angka tempat mendarat untuk dua lompatan mundur, lalu melihat cara lain. Ronde akhir: setelah lompatan pertama, ucapkan hasil akhir.",
-          "voiceGuide": "Mundur dua kali di garis bilangan. Lalu ucapkan hasil akhirnya."
+          "objective": "Pakai Mengambil. Mengurangi dua kali di garis bilangan dan membandingkannya dengan cara menggabung dulu.",
+          "mechanicDescription": "Tiga ronde. Siswa mengetuk angka tempat mendarat untuk dua lompatan mundur, lalu melihat cara lain. Ronde akhir: setelah lompatan pertama, ucapkan hasil akhir. Terapkan Take Away.",
+          "voiceGuide": "Mengambil. Mundur dua kali di garis bilangan. Lalu ucapkan hasil akhirnya."
         },
         {
           "gameId": "subD3-game-8",
@@ -1572,9 +1572,9 @@
           "gameType": "keyword-detective",
           "title": "Detektif Kata Kunci",
           "bookReference": "Buku Siswa Hlm. 106 (metode CUBES)",
-          "objective": "Menemukan angka dan kata kunci, lalu memilih tanda + atau − dari cerita.",
-          "mechanicDescription": "Tiga ronde, empat langkah: lingkari angka, kotaki kata kunci, pilih tanda, hitung. Ronde akhir: ucapkan hasilnya.",
-          "voiceGuide": "Jadilah detektif soal cerita. Lalu ucapkan hasilnya."
+          "objective": "Pakai Hitung Mundur. Menemukan angka dan kata kunci, lalu memilih tanda + atau − dari cerita.",
+          "mechanicDescription": "Tiga ronde, empat langkah: lingkari angka, kotaki kata kunci, pilih tanda, hitung. Ronde akhir: ucapkan hasilnya. Terapkan Counting Back.",
+          "voiceGuide": "Hitung Mundur. Jadilah detektif soal cerita. Lalu ucapkan hasilnya."
         },
         {
           "gameId": "subD3-game-9",
@@ -1583,9 +1583,9 @@
           "gameType": "fill-boxes",
           "title": "Isi Kotak Penyelesaian",
           "bookReference": "Buku Siswa Hlm. 106-108",
-          "objective": "Menulis kalimat pengurangan satu langkah dan dua langkah pada kotak penyelesaian.",
-          "mechanicDescription": "Lima ronde. Siswa mengisi kotak dengan papan angka, kotak demi kotak, sesuai cerita buku. Ronde akhir: sembilan kurang dua kurang empat, ucapkan hasilnya.",
-          "voiceGuide": "Isi kotak penyelesaian. Lalu ucapkan hasil akhirnya."
+          "objective": "Pakai Kurang di Bingkai. Menulis kalimat pengurangan satu langkah dan dua langkah pada kotak penyelesaian.",
+          "mechanicDescription": "Lima ronde. Siswa mengisi kotak dengan papan angka, kotak demi kotak, sesuai cerita buku. Ronde akhir: sembilan kurang dua kurang empat, ucapkan hasilnya. Terapkan Ten Frame Subtract.",
+          "voiceGuide": "Kurang di Bingkai. Isi kotak penyelesaian. Lalu ucapkan hasil akhirnya."
         },
         {
           "gameId": "subD3-game-10",
@@ -1594,9 +1594,9 @@
           "gameType": "create-story",
           "title": "Soal Ceritaku",
           "bookReference": "Buku Siswa Hlm. 113 (Ayo Berkarya)",
-          "objective": "Membuat soal cerita pengurangan sendiri dan mencari mula-mula dengan kebalikan.",
-          "mechanicDescription": "Dua ronde. Ronde pertama: siswa memilih topik, mengatur mula-mula dan yang pergi, lalu menjawab soalnya sendiri dan memeriksanya. Ronde akhir: mencari mula-mula pada soal ? − 3 = 4, ucapkan jawabannya.",
-          "voiceGuide": "Buat dan jawab soalmu. Lalu ucapkan jumlah mula-mula pada soal terakhir."
+          "objective": "Pakai Mengambil. Membuat soal cerita pengurangan sendiri dan mencari mula-mula dengan kebalikan.",
+          "mechanicDescription": "Dua ronde. Ronde pertama: siswa memilih topik, mengatur mula-mula dan yang pergi, lalu menjawab soalnya sendiri dan memeriksanya. Ronde akhir: mencari mula-mula pada soal ? − 3 = 4, ucapkan jawabannya. Terapkan Take Away.",
+          "voiceGuide": "Mengambil. Buat dan jawab soalmu. Lalu ucapkan jumlah mula-mula pada soal terakhir."
         }
       ],
       "metodeLuar": [
