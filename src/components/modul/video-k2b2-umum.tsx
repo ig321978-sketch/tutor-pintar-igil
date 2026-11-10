@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useState } from "react";
-import { BIRU, EMAS, KUNING } from "./CeritaBandingB";
+import { BIRU, EMAS, KUNING, Latar } from "./CeritaBandingB";
 import { VideoCerita, type AdeganVideo, type PropsAdegan } from "./video-cerita";
 import type { AdeganNaskah, VideoNaskah } from "./naskah-k2b2";
 
@@ -32,14 +32,13 @@ type PropsDaftar = {
 
 /**
  * Daftar video cerita. Tidak ada video yang berjalan sendiri. Siswa mengetuk Putar pada satu video, video itu
- * langsung berjalan dan video lain berhenti. Mengetuk Putar pada video lain menggantikan yang sedang berjalan.
- * Poster ringan (tanpa adegan SVG penuh) disusun horizontal di desktop agar hemat memori dan tidak melebar vertikal.
+ * langsung berjalan dan video lain berhenti. Di desktop kartu disusun 3 kolom kiri–tengah–kanan (satu layar),
+ * pemutar ringkas di dalam kartu agar kanvas tidak melebar vertikal.
  */
 export function DaftarVideoCerita({ videos, speakGuru }: PropsDaftar) {
   const [aktif, setAktif] = useState<string | null>(null);
   const [ditonton, setDitonton] = useState<string[]>([]);
-  const videoAktif = videos.find((v) => v.naskah.id === aktif) ?? null;
-  const indeksAktif = videoAktif ? videos.indexOf(videoAktif) : -1;
+  const kolom = videos.length <= 1 ? "md:grid-cols-1" : videos.length === 2 ? "md:grid-cols-2" : "md:grid-cols-3";
 
   return (
     <div className="space-y-3">
@@ -47,78 +46,66 @@ export function DaftarVideoCerita({ videos, speakGuru }: PropsDaftar) {
         🎬 Ada {videos.length} video cerita. Ketuk ▶ Putar pada video yang ingin kamu tonton. Hanya satu video yang berjalan pada satu waktu.
       </p>
 
-      {videoAktif ? (
-        <div className="space-y-2">
-          <VideoCerita
-            judul={videoAktif.naskah.judul}
-            subjudul={videoAktif.naskah.subjudul}
-            adegan={videoAktif.adegan}
-            speakGuru={speakGuru}
-            mulaiLangsung
-            onSelesai={() => {
-              const id = videoAktif.naskah.id;
-              setDitonton((d) => (d.includes(id) ? d : [...d, id]));
-            }}
-          />
-          <button
-            type="button"
-            onClick={() => setAktif(null)}
-            className="mx-auto block rounded-full border-4 border-[#1C01A5] bg-white px-5 py-1.5 text-sm font-black text-[#1C01A5] shadow-[0_4px_0_rgba(28,1,165,0.22)]"
-          >
-            ⏹ Tutup video {indeksAktif + 1}
-          </button>
-        </div>
-      ) : null}
-
-      <div className="flex flex-col gap-3 md:flex-row md:items-stretch md:gap-3 md:overflow-x-auto md:pb-1">
+      <div className={`grid grid-cols-1 items-start gap-3 ${kolom}`}>
         {videos.map((v, i) => {
           const sedang = aktif === v.naskah.id;
+          const adeganPoster = v.adegan[v.poster.a] ?? v.adegan[0];
           return (
             <article
               key={v.naskah.id}
-              className={`w-full shrink-0 overflow-hidden rounded-3xl border-4 bg-white shadow-[0_5px_0_rgba(28,1,165,0.22)] md:w-[min(100%,19.5rem)] ${sedang ? "border-amber-400 ring-4 ring-amber-200" : "border-[#1C01A5]"}`}
+              className={`min-w-0 overflow-hidden rounded-3xl border-4 bg-white shadow-[0_5px_0_rgba(28,1,165,0.22)] ${sedang ? "border-amber-400 ring-2 ring-amber-200" : "border-[#1C01A5]"}`}
             >
-              <div className="relative bg-[#DFF1FF]">
-                <svg viewBox="0 0 300 120" className="pointer-events-none block h-auto w-full" aria-hidden="true">
-                  <rect x="0" y="0" width="300" height="120" fill="#DFF1FF" />
-                  <circle cx="250" cy="28" r="18" fill={KUNING} stroke={BIRU} strokeWidth="3" />
-                  <rect x="40" y="28" width="220" height="64" rx="18" fill="#FFFFFF" stroke={BIRU} strokeWidth="4" />
-                  <text x="150" y="58" textAnchor="middle" fontSize="28" fontWeight="900" fill={BIRU}>
-                    🎬 {i + 1}
-                  </text>
-                  <text x="150" y="78" textAnchor="middle" fontSize="12" fontWeight="800" fill={BIRU}>
-                    {v.naskah.subjudul}
-                  </text>
-                </svg>
-                {sedang ? (
-                  <div className="absolute inset-0 flex items-center justify-center bg-[#1C01A5]/45">
-                    <span className="rounded-full border-4 border-[#FFE566] bg-[#1C01A5] px-3 py-1 text-xs font-black text-[#FFE566]">▶ Sedang diputar</span>
-                  </div>
-                ) : (
+              {sedang ? (
+                <div className="space-y-2 p-1.5">
+                  <VideoCerita
+                    judul={v.naskah.judul}
+                    subjudul={v.naskah.subjudul}
+                    adegan={v.adegan}
+                    speakGuru={speakGuru}
+                    mulaiLangsung
+                    ringkas
+                    onSelesai={() => setDitonton((d) => (d.includes(v.naskah.id) ? d : [...d, v.naskah.id]))}
+                  />
                   <button
                     type="button"
-                    onClick={() => setAktif(v.naskah.id)}
-                    aria-label={`Putar video ${i + 1}: ${v.naskah.judul}`}
-                    className="absolute inset-0 flex items-end justify-end bg-transparent p-3 transition hover:bg-[#1C01A5]/10"
+                    onClick={() => setAktif(null)}
+                    className="mx-auto block w-full rounded-full border-2 border-[#1C01A5] bg-white px-3 py-1 text-xs font-black text-[#1C01A5]"
                   >
-                    <span className="flex h-12 w-12 items-center justify-center rounded-full border-4 border-[#FFE566] bg-[#1C01A5] text-xl text-[#FFE566] shadow-lg">▶</span>
+                    ⏹ Tutup video {i + 1}
                   </button>
-                )}
-              </div>
-              <div className="flex flex-col gap-2 px-3 py-2">
-                <div className="min-w-0">
-                  <p className="text-[10px] font-black uppercase tracking-wide text-[#1C01A5]/60">Video {i + 1} dari {videos.length}</p>
-                  <h4 className="text-base font-black leading-tight text-[#1C01A5]">{v.naskah.judul}</h4>
-                  <p className="text-[10px] font-bold text-[#1C01A5]/70">{v.naskah.subjudul} • {v.adegan.length} adegan</p>
                 </div>
-                <button
-                  type="button"
-                  onClick={() => setAktif(sedang ? null : v.naskah.id)}
-                  className="w-full rounded-full border-4 border-[#FFE566] bg-[#1C01A5] px-3 py-1.5 text-sm font-black text-[#FFE566] shadow-[0_4px_0_rgba(28,1,165,0.35)]"
-                >
-                  {sedang ? "⏹ Tutup" : ditonton.includes(v.naskah.id) ? "↻ Putar lagi" : "▶ Putar"}
-                </button>
-              </div>
+              ) : (
+                <>
+                  <div className="relative bg-[#DFF1FF]">
+                    <svg viewBox="0 0 300 208" className="pointer-events-none block h-auto w-full" aria-hidden="true">
+                      <Latar />
+                      {adeganPoster ? adeganPoster.render({ k: v.poster.k, t: 0 }) : null}
+                    </svg>
+                    <button
+                      type="button"
+                      onClick={() => setAktif(v.naskah.id)}
+                      aria-label={`Putar video ${i + 1}: ${v.naskah.judul}`}
+                      className="absolute inset-0 flex items-end justify-end bg-transparent p-2 transition hover:bg-[#1C01A5]/10 md:p-3"
+                    >
+                      <span className="flex h-11 w-11 items-center justify-center rounded-full border-4 border-[#FFE566] bg-[#1C01A5] text-xl text-[#FFE566] shadow-lg">▶</span>
+                    </button>
+                  </div>
+                  <div className="flex flex-col gap-2 px-2.5 py-2 md:px-3">
+                    <div className="min-w-0">
+                      <p className="text-[10px] font-black uppercase tracking-wide text-[#1C01A5]/60">Video {i + 1} dari {videos.length}</p>
+                      <h4 className="text-sm font-black leading-tight text-[#1C01A5] md:text-base">{v.naskah.judul}</h4>
+                      <p className="text-[10px] font-bold text-[#1C01A5]/70">{v.naskah.subjudul} • {v.adegan.length} adegan</p>
+                    </div>
+                    <button
+                      type="button"
+                      onClick={() => setAktif(v.naskah.id)}
+                      className="w-full rounded-full border-4 border-[#FFE566] bg-[#1C01A5] px-3 py-1.5 text-sm font-black text-[#FFE566] shadow-[0_4px_0_rgba(28,1,165,0.35)]"
+                    >
+                      {ditonton.includes(v.naskah.id) ? "↻ Putar lagi" : "▶ Putar"}
+                    </button>
+                  </div>
+                </>
+              )}
             </article>
           );
         })}

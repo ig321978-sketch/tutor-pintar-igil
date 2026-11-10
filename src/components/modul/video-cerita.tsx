@@ -141,6 +141,7 @@ export function VideoCerita({
   speakGuru,
   mulaiLangsung = false,
   onSelesai,
+  ringkas = false,
 }: {
   judul: string;
   subjudul: string;
@@ -150,6 +151,8 @@ export function VideoCerita({
   mulaiLangsung?: boolean;
   /** Dipanggil sekali saat video sampai di akhir. */
   onSelesai?: () => void;
+  /** Mode kartu kecil di grid desktop (3 video sejajar). */
+  ringkas?: boolean;
 }) {
   const S = useRef<Peta>({ jalan: false, jeda: false, suara: true, selesai: false, a: 0, k: 0, ms: 0, nomor: 0, suaraBeres: false });
   const bicaraRef = useRef(speakGuru);
@@ -289,18 +292,21 @@ export function VideoCerita({
 
   const ad = adegan[pos.a];
   const kalimat = selesai ? "Selesai. Tekan Ulang untuk memutar lagi." : sudahMulai ? ad.ketukan[pos.k] : "Tekan Mulai untuk memutar video cerita.";
+  const tombol = ringkas
+    ? "rounded-full border-2 border-[#1C01A5] bg-white px-2.5 py-1 text-[11px] font-black text-[#1C01A5] shadow-[0_2px_0_rgba(28,1,165,0.22)]"
+    : TOMBOL;
 
   return (
-    <div className="space-y-2 rounded-3xl border-4 border-[#1C01A5] bg-white p-2 shadow-[0_5px_0_rgba(28,1,165,0.22)]">
+    <div className={`space-y-2 bg-white ${ringkas ? "rounded-2xl border-2 border-[#1C01A5] p-1.5" : "rounded-3xl border-4 border-[#1C01A5] p-2 shadow-[0_5px_0_rgba(28,1,165,0.22)]"}`}>
       <style>{CSS}</style>
       <div className="flex items-center justify-between gap-2 px-1">
-        <p className="min-w-0 text-base font-black leading-tight text-[#1C01A5] md:text-lg">🎬 Video: {judul}</p>
-        <p className="shrink-0 rounded-full border-2 border-[#1C01A5] bg-[#FFE566] px-2 py-0.5 text-[11px] font-black text-[#1C01A5]">
-          Adegan {pos.a + 1} dari {adegan.length}
+        <p className={`min-w-0 font-black leading-tight text-[#1C01A5] ${ringkas ? "text-xs" : "text-base md:text-lg"}`}>🎬 {ringkas ? judul : `Video: ${judul}`}</p>
+        <p className={`shrink-0 rounded-full border-2 border-[#1C01A5] bg-[#FFE566] font-black text-[#1C01A5] ${ringkas ? "px-1.5 py-0.5 text-[10px]" : "px-2 py-0.5 text-[11px]"}`}>
+          {pos.a + 1}/{adegan.length}
         </p>
       </div>
 
-      <div className="relative mx-auto w-full max-w-xl overflow-hidden rounded-[1.4rem] border-4 border-[#1C01A5] bg-[#DFF1FF]">
+      <div className={`relative mx-auto w-full overflow-hidden bg-[#DFF1FF] ${ringkas ? "rounded-xl border-2 border-[#1C01A5]" : "max-w-xl rounded-[1.4rem] border-4 border-[#1C01A5]"}`}>
         <svg viewBox="0 0 300 208" className={`block h-auto w-full ${jeda ? "vc-jeda" : ""}`} role="img" aria-label={`Animasi cerita: ${ad.judul}`}>
           <Latar />
           <g key={ad.id} className="vc-masuk">
@@ -308,14 +314,14 @@ export function VideoCerita({
           </g>
         </svg>
         {!sudahMulai ? (
-          <div className="absolute inset-0 flex flex-col items-center justify-center gap-2 bg-[#FFE9A8]/90 px-4 text-center text-[#1C01A5]">
-            <p className="text-3xl font-black leading-tight md:text-4xl">{judul}</p>
-            <p className="text-sm font-bold md:text-base">{subjudul}</p>
+          <div className={`absolute inset-0 flex flex-col items-center justify-center bg-[#FFE9A8]/90 text-center text-[#1C01A5] ${ringkas ? "gap-1 px-2" : "gap-2 px-4"}`}>
+            <p className={`font-black leading-tight ${ringkas ? "text-base" : "text-3xl md:text-4xl"}`}>{judul}</p>
+            <p className={`font-bold ${ringkas ? "text-[10px]" : "text-sm md:text-base"}`}>{subjudul}</p>
             <button
               type="button"
               onClick={() => mulai(0)}
               aria-label={`Mulai putar video ${judul}`}
-              className="rounded-full border-4 border-[#1C01A5] bg-[#FFE566] px-6 py-2 text-lg font-black text-[#1C01A5] shadow-[0_4px_0_rgba(28,1,165,0.35)]"
+              className={`rounded-full border-4 border-[#1C01A5] bg-[#FFE566] font-black text-[#1C01A5] shadow-[0_4px_0_rgba(28,1,165,0.35)] ${ringkas ? "px-3 py-1 text-sm" : "px-6 py-2 text-lg"}`}
             >
               ▶ Mulai
             </button>
@@ -323,11 +329,11 @@ export function VideoCerita({
         ) : null}
       </div>
 
-      <p role="status" aria-live="polite" className="min-h-[3.4rem] rounded-2xl border-4 border-[#1C01A5] bg-[#FFF7CC] px-3 py-2 text-center text-base font-black leading-snug text-[#1C01A5] md:text-lg">
+      <p role="status" aria-live="polite" className={`rounded-2xl border-[#1C01A5] bg-[#FFF7CC] text-center font-black leading-snug text-[#1C01A5] ${ringkas ? "min-h-[2.6rem] border-2 px-2 py-1 text-[11px]" : "min-h-[3.4rem] border-4 px-3 py-2 text-base md:text-lg"}`}>
         {kalimat}
       </p>
 
-      <div className="flex flex-wrap items-center justify-center gap-1.5" role="group" aria-label="Pilih adegan">
+      <div className={`flex flex-wrap items-center justify-center ${ringkas ? "gap-1" : "gap-1.5"}`} role="group" aria-label="Pilih adegan">
         {adegan.map((x, i) => (
           <button
             key={x.id}
@@ -335,22 +341,23 @@ export function VideoCerita({
             onClick={() => lompatKe(i)}
             aria-label={`Adegan ${i + 1}: ${x.judul}`}
             aria-current={sudahMulai && i === pos.a ? "step" : undefined}
-            className={`flex h-9 w-9 items-center justify-center rounded-full border-4 border-[#1C01A5] text-sm font-black text-[#1C01A5] ${sudahMulai && i === pos.a ? "bg-[#FFE566]" : sudahMulai && i < pos.a ? "bg-[#BBF7D0]" : "bg-white"}`}
+            className={`flex items-center justify-center rounded-full border-[#1C01A5] font-black text-[#1C01A5] ${ringkas ? "h-7 w-7 border-2 text-xs" : "h-9 w-9 border-4 text-sm"} ${sudahMulai && i === pos.a ? "bg-[#FFE566]" : sudahMulai && i < pos.a ? "bg-[#BBF7D0]" : "bg-white"}`}
           >
             {i + 1}
           </button>
         ))}
       </div>
 
-      <div className="flex flex-wrap items-center justify-center gap-2">
-        <button type="button" onClick={ubahJeda} disabled={!sudahMulai || selesai} aria-pressed={jeda} className={`${TOMBOL} disabled:opacity-40`}>
+      <div className={`flex flex-wrap items-center justify-center ${ringkas ? "gap-1" : "gap-2"}`}>
+        <button type="button" onClick={ubahJeda} disabled={!sudahMulai || selesai} aria-pressed={jeda} className={`${tombol} disabled:opacity-40`}>
           {jeda ? "▶ Lanjut" : "⏸ Jeda"}
         </button>
-        <button type="button" onClick={ulang} disabled={!sudahMulai} className={`${TOMBOL} disabled:opacity-40`}>
+        <button type="button" onClick={ulang} disabled={!sudahMulai} className={`${tombol} disabled:opacity-40`}>
           ↻ Ulang
         </button>
-        <button type="button" onClick={ubahSuara} aria-pressed={suara} className={TOMBOL}>
-          {suara ? "🔊 Suara: hidup" : "🔇 Suara: mati"}
+        <button type="button" onClick={ubahSuara} aria-pressed={suara} className={tombol}>
+          {suara ? "🔊" : "🔇"}
+          {ringkas ? "" : suara ? " Suara: hidup" : " Suara: mati"}
         </button>
       </div>
     </div>
