@@ -24,37 +24,37 @@
           "id": "A6-S1",
           "titleHint": "Membantu Ibu",
           "sceneType": "membantu-ibu-donat",
-          "voiceNarration": "Hari Minggu telah tiba. Tika membantu Ibu memasak di dapur. Mereka membuat donat. Ibu menghias tujuh donat. Tika menghias enam donat. Tika sangat senang. Siapa yang memiliki donat lebih banyak? Bagaimana kita tahu? Kita hitung dulu donat Ibu, lalu donat Tika, kemudian kita bandingkan."
+          "voiceNarration": "Hari Minggu telah tiba. Tika membantu Ibu memasak di dapur. Mereka membuat donat. Ibu menghias tujuh donat. Tika menghias enam donat. Tika sangat senang. Siapa yang memiliki donat lebih banyak? Bagaimana kita tahu? Kita hitung dulu donat Ibu, lalu donat Tika, kemudian kita bandingkan. METODE LUAR. Maju dan Mundur: Jumlah dengan maju, kurang dengan mundur."
         },
         {
           "id": "A6-S2",
           "titleHint": "Pasangkan Donat",
           "sceneType": "pasangkan-donat",
-          "voiceNarration": "Ayo kita pasangkan donat Ibu dengan donat Tika, satu demi satu. Donat Ibu ada tujuh. Donat Tika ada enam. Setelah dipasangkan, satu donat Ibu tidak punya pasangan. Jadi donat Ibu lebih banyak dari donat Tika. Donat Ibu satu lebihnya dari donat Tika. Donat Tika lebih sedikit dari donat Ibu. Donat Tika satu kurangnya dari donat Ibu."
+          "voiceNarration": "Ayo kita pasangkan donat Ibu dengan donat Tika, satu demi satu. Donat Ibu ada tujuh. Donat Tika ada enam. Setelah dipasangkan, satu donat Ibu tidak punya pasangan. Jadi donat Ibu lebih banyak dari donat Tika. Donat Ibu satu lebihnya dari donat Tika. Donat Tika lebih sedikit dari donat Ibu. Donat Tika satu kurangnya dari donat Ibu. METODE LUAR. Pasangan sampai 20: Pasangan yang membentuk dua puluh."
         },
         {
           "id": "A6-S3",
           "titleHint": "Bunga dan Kupu-Kupu",
           "sceneType": "bunga-dan-kupu-kupu",
-          "voiceNarration": "Ada lima bunga yang sedang mekar. Ada tujuh kupu-kupu terbang di atas bunga. Berapa lebihnya banyak kupu-kupu dari bunga? Berapa kurangnya banyak bunga dari kupu-kupu? Tujuh lebih banyak dari lima. Tujuh dikurangi lima sama dengan dua. Banyak kupu-kupu dua lebihnya dari banyak bunga. Banyak bunga dua kurangnya dari banyak kupu-kupu. Beda banyak bunga dan kupu-kupu adalah dua."
+          "voiceNarration": "Ada lima bunga yang sedang mekar. Ada tujuh kupu-kupu terbang di atas bunga. Berapa lebihnya banyak kupu-kupu dari bunga? Berapa kurangnya banyak bunga dari kupu-kupu? Tujuh lebih banyak dari lima. Tujuh dikurangi lima sama dengan dua. Banyak kupu-kupu dua lebihnya dari banyak bunga. Banyak bunga dua kurangnya dari banyak kupu-kupu. Beda banyak bunga dan kupu-kupu adalah dua. METODE LUAR. Menjadikan Sepuluh: Isi sampai sepuluh dulu, lalu sisa."
         },
         {
           "id": "A6-S4",
           "titleHint": "Beda atau Selisih",
           "sceneType": "beda-atau-selisih",
-          "voiceNarration": "Beda dua bilangan bisa ditunjukkan dengan kata lebih dari, kurang dari, beda, atau selisih. Banyaknya donat Ibu berbeda dengan banyaknya donat Tika. Beda banyaknya donat Ibu dan Tika adalah satu. Selisih banyaknya donat Ibu dan Tika adalah satu. Kita menemukan beda dua bilangan dengan mengurangkannya. Bilangan yang lebih besar dikurangi bilangan yang lebih kecil. Tujuh dikurangi enam sama dengan satu."
+          "voiceNarration": "Beda dua bilangan bisa ditunjukkan dengan kata lebih dari, kurang dari, beda, atau selisih. Banyaknya donat Ibu berbeda dengan banyaknya donat Tika. Beda banyaknya donat Ibu dan Tika adalah satu. Selisih banyaknya donat Ibu dan Tika adalah satu. Kita menemukan beda dua bilangan dengan mengurangkannya. Bilangan yang lebih besar dikurangi bilangan yang lebih kecil. Tujuh dikurangi enam sama dengan satu. METODE LUAR. Maju dan Mundur: Jumlah dengan maju, kurang dengan mundur."
         },
         {
           "id": "A6-S5",
           "titleHint": "Dua Barisan Anak",
           "sceneType": "dua-barisan-anak",
-          "voiceNarration": "Ayo bermain! Buatlah dua barisan, satu barisan anak laki-laki dan satu barisan anak perempuan. Di gambar ini ada lima anak laki-laki dan empat anak perempuan. Kita pasangkan satu demi satu. Satu anak laki-laki tidak punya pasangan. Jadi anak laki-laki satu lebihnya dari anak perempuan, dan selisih banyaknya adalah satu. Cobalah bersama temanmu, lalu ceritakan hasilnya dengan kata lebih dari, kurang dari, dan selisih."
+          "voiceNarration": "Ayo bermain! Buatlah dua barisan, satu barisan anak laki-laki dan satu barisan anak perempuan. Di gambar ini ada lima anak laki-laki dan empat anak perempuan. Kita pasangkan satu demi satu. Satu anak laki-laki tidak punya pasangan. Jadi anak laki-laki satu lebihnya dari anak perempuan, dan selisih banyaknya adalah satu. Cobalah bersama temanmu, lalu ceritakan hasilnya dengan kata lebih dari, kurang dari, dan selisih. METODE LUAR. Pasangan sampai 20: Pasangan yang membentuk dua puluh."
         },
         {
           "id": "A6-S6",
           "titleHint": "Selisih di Garis Bilangan",
           "sceneType": "selisih-di-garis-bilangan",
-          "voiceNarration": "Garis bilangan juga bisa menunjukkan selisih. Wei mempunyai tujuh boneka. Kira mempunyai sembilan boneka. Dari tujuh ke sembilan, kita melompat dua langkah ke kanan. Jadi selisih banyak boneka Wei dan Kira adalah dua. Sembilan dikurangi tujuh sama dengan dua."
+          "voiceNarration": "Garis bilangan juga bisa menunjukkan selisih. Wei mempunyai tujuh boneka. Kira mempunyai sembilan boneka. Dari tujuh ke sembilan, kita melompat dua langkah ke kanan. Jadi selisih banyak boneka Wei dan Kira adalah dua. Sembilan dikurangi tujuh sama dengan dua. METODE LUAR. Menjadikan Sepuluh: Isi sampai sepuluh dulu, lalu sisa."
         }
       ],
       "mindMaps": [
@@ -104,7 +104,23 @@
           "stepDesc": "Kita bisa membuat cerita perbandingan dan mencari bilangan yang belum diketahui. Kalau diketahui lebihnya, kita menambah. Kalau diketahui kurangnya, kita mengurangi.",
           "icon": "📖",
           "flowFrom": "Besar dikurangi kecil",
-          "flowTo": "Cerita perbandingan"
+          "flowTo": "7"
+        },
+        {
+          "stepNumber": 7,
+          "stepTitle": "7. METODE LUAR · Maju dan Mundur",
+          "stepDesc": "Jumlah dengan maju, kurang dengan mundur.",
+          "icon": "🌍",
+          "flowFrom": "6",
+          "flowTo": "8"
+        },
+        {
+          "stepNumber": 8,
+          "stepTitle": "8. METODE LUAR · Pasangan sampai 20",
+          "stepDesc": "Pasangan yang membentuk dua puluh.",
+          "icon": "🌍",
+          "flowFrom": "7",
+          "flowTo": "END"
         }
       ],
       "infografisData": [
@@ -170,6 +186,27 @@
           "countNum": 7,
           "countWord": "Tujuh",
           "voiceSentence": "Kalau diketahui lebihnya, kita menambah: lima ditambah dua sama dengan tujuh. Kalau diketahui kurangnya, kita mengurangi: sebelas dikurangi tiga sama dengan delapan."
+        },
+        {
+          "fruitName": "Maju dan Mundur",
+          "emoji": "🌍",
+          "countNum": 1,
+          "countWord": "METODE LUAR · Counting On/Back",
+          "voiceSentence": "METODE LUAR. Maju dan Mundur. Jumlah dengan maju, kurang dengan mundur."
+        },
+        {
+          "fruitName": "Pasangan sampai 20",
+          "emoji": "🌍",
+          "countNum": 2,
+          "countWord": "METODE LUAR · Number Bond to 20",
+          "voiceSentence": "METODE LUAR. Pasangan sampai 20. Pasangan yang membentuk dua puluh."
+        },
+        {
+          "fruitName": "Menjadikan Sepuluh",
+          "emoji": "🌍",
+          "countNum": 3,
+          "countWord": "METODE LUAR · Make Ten",
+          "voiceSentence": "METODE LUAR. Menjadikan Sepuluh. Isi sampai sepuluh dulu, lalu sisa."
         }
       ],
       "concreteSlides": [
@@ -352,6 +389,42 @@
           "mechanicDescription": "Dua ronde. Ronde 1 selisih 7 dan 9. Ronde 2 siswa memilih sendiri satu dari tiga pasangan bilangan. Siswa mengucapkan selisihnya lalu menggurat lambangnya.",
           "voiceGuide": "Cari selisihnya, ucapkan, lalu guratkan lambangnya."
         }
+      ],
+      "metodeLuar": [
+        {
+          "label": "METODE LUAR",
+          "nama": "Counting On/Back",
+          "namaId": "Maju dan Mundur",
+          "asal": "Counting strategies",
+          "ringkas": "Jumlah dengan maju, kurang dengan mundur.",
+          "tahap": [
+            "Story",
+            "Concrete",
+            "Abstract"
+          ]
+        },
+        {
+          "label": "METODE LUAR",
+          "nama": "Number Bond to 20",
+          "namaId": "Pasangan sampai 20",
+          "asal": "Singapore Math",
+          "ringkas": "Pasangan yang membentuk dua puluh.",
+          "tahap": [
+            "Picture",
+            "Mind"
+          ]
+        },
+        {
+          "label": "METODE LUAR",
+          "nama": "Make Ten",
+          "namaId": "Menjadikan Sepuluh",
+          "asal": "Singapore Math",
+          "ringkas": "Isi sampai sepuluh dulu, lalu sisa.",
+          "tahap": [
+            "Infografis",
+            "Concrete"
+          ]
+        }
       ]
     },
     "B": {
@@ -367,37 +440,37 @@
           "id": "B6-S1",
           "titleHint": "Berapa Jumlahnya?",
           "sceneType": "jumlah-donat",
-          "voiceNarration": "Ibu mempunyai tujuh donat. Tika mempunyai enam donat. Berapakah jumlah donat Ibu dan Tika? Jumlah berarti kedua kelompok digabungkan. Kita bisa menjumlahkan tujuh dan enam dengan berbagai cara. Ayo kita coba satu per satu."
+          "voiceNarration": "Ibu mempunyai tujuh donat. Tika mempunyai enam donat. Berapakah jumlah donat Ibu dan Tika? Jumlah berarti kedua kelompok digabungkan. Kita bisa menjumlahkan tujuh dan enam dengan berbagai cara. Ayo kita coba satu per satu. METODE LUAR. Maju dan Mundur: Jumlah dengan maju, kurang dengan mundur."
         },
         {
           "id": "B6-S2",
           "titleHint": "Menghitung Maju",
           "sceneType": "menghitung-maju",
-          "voiceNarration": "Cara pertama adalah menghitung maju. Mulai dari bilangan tujuh, lalu kita hitung maju sebanyak enam kali. Delapan, sembilan, sepuluh, sebelas, dua belas, tiga belas. Jadi tujuh ditambah enam sama dengan tiga belas. Jumlah donat mereka adalah tiga belas."
+          "voiceNarration": "Cara pertama adalah menghitung maju. Mulai dari bilangan tujuh, lalu kita hitung maju sebanyak enam kali. Delapan, sembilan, sepuluh, sebelas, dua belas, tiga belas. Jadi tujuh ditambah enam sama dengan tiga belas. Jumlah donat mereka adalah tiga belas. METODE LUAR. Pasangan sampai 20: Pasangan yang membentuk dua puluh."
         },
         {
           "id": "B6-S3",
           "titleHint": "Menghitung dengan 10",
           "sceneType": "menghitung-dengan-sepuluh",
-          "voiceNarration": "Cara kedua adalah menghitung dengan sepuluh. Tujuh dan tiga menjadi sepuluh. Jadi enam kita pisah menjadi tiga dan tiga. Tujuh ditambah tiga sama dengan sepuluh. Sepuluh ditambah tiga sama dengan tiga belas. Jadi tujuh ditambah enam sama dengan tiga belas."
+          "voiceNarration": "Cara kedua adalah menghitung dengan sepuluh. Tujuh dan tiga menjadi sepuluh. Jadi enam kita pisah menjadi tiga dan tiga. Tujuh ditambah tiga sama dengan sepuluh. Sepuluh ditambah tiga sama dengan tiga belas. Jadi tujuh ditambah enam sama dengan tiga belas. METODE LUAR. Menjadikan Sepuluh: Isi sampai sepuluh dulu, lalu sisa."
         },
         {
           "id": "B6-S4",
           "titleHint": "Penjumlahan Berulang",
           "sceneType": "penjumlahan-berulang",
-          "voiceNarration": "Cara ketiga adalah penjumlahan berulang. Enam dan enam menjadi dua belas. Tujuh kita pisah menjadi satu dan enam. Enam ditambah enam sama dengan dua belas, lalu dua belas ditambah satu sama dengan tiga belas. Jadi tujuh ditambah enam sama dengan tiga belas."
+          "voiceNarration": "Cara ketiga adalah penjumlahan berulang. Enam dan enam menjadi dua belas. Tujuh kita pisah menjadi satu dan enam. Enam ditambah enam sama dengan dua belas, lalu dua belas ditambah satu sama dengan tiga belas. Jadi tujuh ditambah enam sama dengan tiga belas. METODE LUAR. Maju dan Mundur: Jumlah dengan maju, kurang dengan mundur."
         },
         {
           "id": "B6-S5",
           "titleHint": "Pensil Upe dan Malosi",
           "sceneType": "pensil-upe-malosi",
-          "voiceNarration": "Upe mempunyai dua belas pensil. Malosi mempunyai tiga pensil. Berapakah jumlah pensil Upe dan Malosi? Dua belas pensil Upe terdiri dari satu ikat berisi sepuluh pensil dan dua pensil lepas. Pensil Malosi ada tiga. Kita bisa menjumlahkan dua belas dan tiga dengan berbagai cara."
+          "voiceNarration": "Upe mempunyai dua belas pensil. Malosi mempunyai tiga pensil. Berapakah jumlah pensil Upe dan Malosi? Dua belas pensil Upe terdiri dari satu ikat berisi sepuluh pensil dan dua pensil lepas. Pensil Malosi ada tiga. Kita bisa menjumlahkan dua belas dan tiga dengan berbagai cara. METODE LUAR. Pasangan sampai 20: Pasangan yang membentuk dua puluh."
         },
         {
           "id": "B6-S6",
           "titleHint": "Pasangan dan Nilai Tempat",
           "sceneType": "pasangan-dan-nilai-tempat",
-          "voiceNarration": "Dua belas dipisah menjadi sepuluh dan dua. Dua ditambah tiga sama dengan lima. Sepuluh ditambah lima sama dengan lima belas. Dengan nilai tempat, dua belas adalah satu puluhan dan dua satuan. Kita tambahkan satuannya, dua ditambah tiga sama dengan lima. Puluhannya tetap satu. Jadi dua belas ditambah tiga sama dengan lima belas."
+          "voiceNarration": "Dua belas dipisah menjadi sepuluh dan dua. Dua ditambah tiga sama dengan lima. Sepuluh ditambah lima sama dengan lima belas. Dengan nilai tempat, dua belas adalah satu puluhan dan dua satuan. Kita tambahkan satuannya, dua ditambah tiga sama dengan lima. Puluhannya tetap satu. Jadi dua belas ditambah tiga sama dengan lima belas. METODE LUAR. Menjadikan Sepuluh: Isi sampai sepuluh dulu, lalu sisa."
         }
       ],
       "mindMaps": [
@@ -447,7 +520,23 @@
           "stepDesc": "Tambahkan satuan dengan satuan, sedangkan puluhannya tetap. Pilih cara yang paling mudah menurutmu, lalu jelaskan alasannya.",
           "icon": "🏷️",
           "flowFrom": "Nilai tempat",
-          "flowTo": "Pilih cara termudah"
+          "flowTo": "7"
+        },
+        {
+          "stepNumber": 7,
+          "stepTitle": "7. METODE LUAR · Maju dan Mundur",
+          "stepDesc": "Jumlah dengan maju, kurang dengan mundur.",
+          "icon": "🌍",
+          "flowFrom": "6",
+          "flowTo": "8"
+        },
+        {
+          "stepNumber": 8,
+          "stepTitle": "8. METODE LUAR · Pasangan sampai 20",
+          "stepDesc": "Pasangan yang membentuk dua puluh.",
+          "icon": "🌍",
+          "flowFrom": "7",
+          "flowTo": "END"
         }
       ],
       "infografisData": [
@@ -513,6 +602,27 @@
           "countNum": 15,
           "countWord": "Lima belas",
           "voiceSentence": "Kata jumlah, ditambah, digabungkan, semuanya, dan datang lagi menandakan penjumlahan. Dua belas anak ayam, datang lagi tiga, jumlahnya lima belas."
+        },
+        {
+          "fruitName": "Maju dan Mundur",
+          "emoji": "🌍",
+          "countNum": 1,
+          "countWord": "METODE LUAR · Counting On/Back",
+          "voiceSentence": "METODE LUAR. Maju dan Mundur. Jumlah dengan maju, kurang dengan mundur."
+        },
+        {
+          "fruitName": "Pasangan sampai 20",
+          "emoji": "🌍",
+          "countNum": 2,
+          "countWord": "METODE LUAR · Number Bond to 20",
+          "voiceSentence": "METODE LUAR. Pasangan sampai 20. Pasangan yang membentuk dua puluh."
+        },
+        {
+          "fruitName": "Menjadikan Sepuluh",
+          "emoji": "🌍",
+          "countNum": 3,
+          "countWord": "METODE LUAR · Make Ten",
+          "voiceSentence": "METODE LUAR. Menjadikan Sepuluh. Isi sampai sepuluh dulu, lalu sisa."
         }
       ],
       "concreteSlides": [
@@ -695,6 +805,42 @@
           "mechanicDescription": "Dua ronde. Ronde 1 12 + 5. Ronde 2 siswa memilih satu dari tiga pasangan (2 dan 13, 6 dan 12, 4 dan 15). Siswa mengucapkan jumlahnya lalu menggurat lambangnya.",
           "voiceGuide": "Jumlahkan, ucapkan, lalu guratkan lambangnya."
         }
+      ],
+      "metodeLuar": [
+        {
+          "label": "METODE LUAR",
+          "nama": "Counting On/Back",
+          "namaId": "Maju dan Mundur",
+          "asal": "Counting strategies",
+          "ringkas": "Jumlah dengan maju, kurang dengan mundur.",
+          "tahap": [
+            "Story",
+            "Concrete",
+            "Abstract"
+          ]
+        },
+        {
+          "label": "METODE LUAR",
+          "nama": "Number Bond to 20",
+          "namaId": "Pasangan sampai 20",
+          "asal": "Singapore Math",
+          "ringkas": "Pasangan yang membentuk dua puluh.",
+          "tahap": [
+            "Picture",
+            "Mind"
+          ]
+        },
+        {
+          "label": "METODE LUAR",
+          "nama": "Make Ten",
+          "namaId": "Menjadikan Sepuluh",
+          "asal": "Singapore Math",
+          "ringkas": "Isi sampai sepuluh dulu, lalu sisa.",
+          "tahap": [
+            "Infografis",
+            "Concrete"
+          ]
+        }
       ]
     },
     "C": {
@@ -710,37 +856,37 @@
           "id": "C6-S1",
           "titleHint": "Apel Tika Dimakan Ulat",
           "sceneType": "apel-dimakan-ulat",
-          "voiceNarration": "Masih ingatkah kamu cerita Ibu dan Tika? Ibu punya tujuh donat, Tika punya enam donat, dan selisihnya tujuh dikurangi enam sama dengan satu. Kita sudah belajar pengurangan satuan dengan satuan. Sekarang kita belajar pengurangan puluhan dengan satuan. Tika membeli lima belas apel. Ternyata tiga apel dimakan ulat. Berapakah sisa apel Tika yang masih bagus? Sisanya adalah lima belas dikurangi tiga. Kita bisa menghitungnya dengan beberapa cara."
+          "voiceNarration": "Masih ingatkah kamu cerita Ibu dan Tika? Ibu punya tujuh donat, Tika punya enam donat, dan selisihnya tujuh dikurangi enam sama dengan satu. Kita sudah belajar pengurangan satuan dengan satuan. Sekarang kita belajar pengurangan puluhan dengan satuan. Tika membeli lima belas apel. Ternyata tiga apel dimakan ulat. Berapakah sisa apel Tika yang masih bagus? Sisanya adalah lima belas dikurangi tiga. Kita bisa menghitungnya dengan beberapa cara. METODE LUAR. Maju dan Mundur: Jumlah dengan maju, kurang dengan mundur."
         },
         {
           "id": "C6-S2",
           "titleHint": "Menghitung Mundur",
           "sceneType": "menghitung-mundur",
-          "voiceNarration": "Cara pertama adalah menghitung mundur. Mulai dari lima belas, lalu hitung mundur tiga kali. Empat belas, tiga belas, dua belas. Jadi lima belas dikurangi tiga sama dengan dua belas. Sisa apel Tika adalah dua belas."
+          "voiceNarration": "Cara pertama adalah menghitung mundur. Mulai dari lima belas, lalu hitung mundur tiga kali. Empat belas, tiga belas, dua belas. Jadi lima belas dikurangi tiga sama dengan dua belas. Sisa apel Tika adalah dua belas. METODE LUAR. Pasangan sampai 20: Pasangan yang membentuk dua puluh."
         },
         {
           "id": "C6-S3",
           "titleHint": "Pasangan Bilangan",
           "sceneType": "pasangan-bilangan-kurang",
-          "voiceNarration": "Cara kedua adalah pasangan bilangan. Lima belas bisa dipisah menjadi sepuluh dan lima. Lima dikurangi tiga sama dengan dua. Lalu sepuluh ditambah dua sama dengan dua belas. Jadi lima belas dikurangi tiga sama dengan dua belas."
+          "voiceNarration": "Cara kedua adalah pasangan bilangan. Lima belas bisa dipisah menjadi sepuluh dan lima. Lima dikurangi tiga sama dengan dua. Lalu sepuluh ditambah dua sama dengan dua belas. Jadi lima belas dikurangi tiga sama dengan dua belas. METODE LUAR. Menjadikan Sepuluh: Isi sampai sepuluh dulu, lalu sisa."
         },
         {
           "id": "C6-S4",
           "titleHint": "Nilai Tempat",
           "sceneType": "nilai-tempat-kurang",
-          "voiceNarration": "Cara ketiga adalah nilai tempat. Lima belas adalah satu puluhan dan lima satuan. Kita kurangkan satuannya, lima dikurangi tiga sama dengan dua. Puluhannya tetap satu. Jadi lima belas dikurangi tiga sama dengan dua belas. Sisa apel Tika adalah dua belas."
+          "voiceNarration": "Cara ketiga adalah nilai tempat. Lima belas adalah satu puluhan dan lima satuan. Kita kurangkan satuannya, lima dikurangi tiga sama dengan dua. Puluhannya tetap satu. Jadi lima belas dikurangi tiga sama dengan dua belas. Sisa apel Tika adalah dua belas. METODE LUAR. Maju dan Mundur: Jumlah dengan maju, kurang dengan mundur."
         },
         {
           "id": "C6-S5",
           "titleHint": "Bolu Kukus Ibu",
           "sceneType": "bolu-kukus-ibu",
-          "voiceNarration": "Ibu membeli tiga belas bolu kukus. Malosi memakan dua bolu kukus. Berapakah sisa bolu kukus Ibu sekarang? Tiga belas adalah satu kotak berisi sepuluh dan tiga bolu lepas. Malosi memakan dua bolu lepas, jadi tinggal satu bolu lepas. Sepuluh ditambah satu sama dengan sebelas. Jadi tiga belas dikurangi dua sama dengan sebelas."
+          "voiceNarration": "Ibu membeli tiga belas bolu kukus. Malosi memakan dua bolu kukus. Berapakah sisa bolu kukus Ibu sekarang? Tiga belas adalah satu kotak berisi sepuluh dan tiga bolu lepas. Malosi memakan dua bolu lepas, jadi tinggal satu bolu lepas. Sepuluh ditambah satu sama dengan sebelas. Jadi tiga belas dikurangi dua sama dengan sebelas. METODE LUAR. Pasangan sampai 20: Pasangan yang membentuk dua puluh."
         },
         {
           "id": "C6-S6",
           "titleHint": "Pensil Wei dan Kira",
           "sceneType": "pensil-wei-kira",
-          "voiceNarration": "Wei mempunyai sebelas pensil warna. Pensil warna Kira tiga kurangnya dari pensil warna Wei. Berapa banyak pensil warna Kira? Sebelas dikurangi tiga sama dengan delapan. Jadi pensil warna Kira ada delapan. Kalau pensil warna Kira dan Wei digabungkan, delapan ditambah sebelas sama dengan sembilan belas."
+          "voiceNarration": "Wei mempunyai sebelas pensil warna. Pensil warna Kira tiga kurangnya dari pensil warna Wei. Berapa banyak pensil warna Kira? Sebelas dikurangi tiga sama dengan delapan. Jadi pensil warna Kira ada delapan. Kalau pensil warna Kira dan Wei digabungkan, delapan ditambah sebelas sama dengan sembilan belas. METODE LUAR. Menjadikan Sepuluh: Isi sampai sepuluh dulu, lalu sisa."
         }
       ],
       "mindMaps": [
@@ -790,7 +936,23 @@
           "stepDesc": "Pilih cara yang paling mudah, lalu jelaskan alasannya. Buat cerita pengurangan sendiri, misalnya apel di pohon, tulis operasinya, dan selesaikan.",
           "icon": "✍️",
           "flowFrom": "Pilih cara termudah",
-          "flowTo": "Buat ceritamu"
+          "flowTo": "7"
+        },
+        {
+          "stepNumber": 7,
+          "stepTitle": "7. METODE LUAR · Maju dan Mundur",
+          "stepDesc": "Jumlah dengan maju, kurang dengan mundur.",
+          "icon": "🌍",
+          "flowFrom": "6",
+          "flowTo": "8"
+        },
+        {
+          "stepNumber": 8,
+          "stepTitle": "8. METODE LUAR · Pasangan sampai 20",
+          "stepDesc": "Pasangan yang membentuk dua puluh.",
+          "icon": "🌍",
+          "flowFrom": "7",
+          "flowTo": "END"
         }
       ],
       "infografisData": [
@@ -856,6 +1018,27 @@
           "countNum": 11,
           "countWord": "Sebelas",
           "voiceSentence": "Kata sisa, dikurangi, diambil, dimakan, dan pergi menandakan pengurangan. Tiga belas bolu kukus dimakan dua, sisanya sebelas."
+        },
+        {
+          "fruitName": "Maju dan Mundur",
+          "emoji": "🌍",
+          "countNum": 1,
+          "countWord": "METODE LUAR · Counting On/Back",
+          "voiceSentence": "METODE LUAR. Maju dan Mundur. Jumlah dengan maju, kurang dengan mundur."
+        },
+        {
+          "fruitName": "Pasangan sampai 20",
+          "emoji": "🌍",
+          "countNum": 2,
+          "countWord": "METODE LUAR · Number Bond to 20",
+          "voiceSentence": "METODE LUAR. Pasangan sampai 20. Pasangan yang membentuk dua puluh."
+        },
+        {
+          "fruitName": "Menjadikan Sepuluh",
+          "emoji": "🌍",
+          "countNum": 3,
+          "countWord": "METODE LUAR · Make Ten",
+          "voiceSentence": "METODE LUAR. Menjadikan Sepuluh. Isi sampai sepuluh dulu, lalu sisa."
         }
       ],
       "concreteSlides": [
@@ -1037,6 +1220,42 @@
           "objective": "Mengurangkan dua bilangan dengan cara yang dipilih sendiri, mengucapkan hasilnya, dan menulis lambangnya.",
           "mechanicDescription": "Dua ronde. Ronde 1 15 – 3. Ronde 2 siswa memilih satu kartu dari kelompok A (16, 17, 18) dan satu kartu dari kelompok B (2, 3, 4). Siswa mengucapkan hasilnya lalu menggurat lambangnya.",
           "voiceGuide": "Kurangkan, ucapkan, lalu guratkan lambangnya."
+        }
+      ],
+      "metodeLuar": [
+        {
+          "label": "METODE LUAR",
+          "nama": "Counting On/Back",
+          "namaId": "Maju dan Mundur",
+          "asal": "Counting strategies",
+          "ringkas": "Jumlah dengan maju, kurang dengan mundur.",
+          "tahap": [
+            "Story",
+            "Concrete",
+            "Abstract"
+          ]
+        },
+        {
+          "label": "METODE LUAR",
+          "nama": "Number Bond to 20",
+          "namaId": "Pasangan sampai 20",
+          "asal": "Singapore Math",
+          "ringkas": "Pasangan yang membentuk dua puluh.",
+          "tahap": [
+            "Picture",
+            "Mind"
+          ]
+        },
+        {
+          "label": "METODE LUAR",
+          "nama": "Make Ten",
+          "namaId": "Menjadikan Sepuluh",
+          "asal": "Singapore Math",
+          "ringkas": "Isi sampai sepuluh dulu, lalu sisa.",
+          "tahap": [
+            "Infografis",
+            "Concrete"
+          ]
         }
       ]
     }

@@ -24,37 +24,37 @@
           "id": "A8-S1",
           "titleHint": "Toko Mainan Berantakan",
           "sceneType": "toko-mainan-berantakan",
-          "voiceNarration": "Kira pergi ke toko mainan Paman. Kira ingin membantu Paman berjualan. Sampai di toko mainan, Kira kaget. Toko mainan Paman sangat berantakan. Pesawat, mobil-mobilan, boneka, dan bola berserakan di lantai. Kira membantu Paman merapikan mainannya. Ayo kita bantu Kira menghitung mainan."
+          "voiceNarration": "Kira pergi ke toko mainan Paman. Kira ingin membantu Paman berjualan. Sampai di toko mainan, Kira kaget. Toko mainan Paman sangat berantakan. Pesawat, mobil-mobilan, boneka, dan bola berserakan di lantai. Kira membantu Paman merapikan mainannya. Ayo kita bantu Kira menghitung mainan. METODE LUAR. Turus: Coretan untuk menghitung frekuensi."
         },
         {
           "id": "A8-S2",
           "titleHint": "Toko yang Sudah Rapi",
           "sceneType": "toko-mainan-rapi",
-          "voiceNarration": "Kira merapikan toko mainan. Mainan yang sama dikelompokkan di rak yang sama. Pesawat di satu rak, mobil-mobilan di rak lain, boneka di rak berikutnya, dan bola di rak terakhir. Mengelompokkan membuat toko menjadi rapi dan mainan mudah dihitung."
+          "voiceNarration": "Kira merapikan toko mainan. Mainan yang sama dikelompokkan di rak yang sama. Pesawat di satu rak, mobil-mobilan di rak lain, boneka di rak berikutnya, dan bola di rak terakhir. Mengelompokkan membuat toko menjadi rapi dan mainan mudah dihitung. METODE LUAR. Diagram Gambar: Gambar mewakili banyak data."
         },
         {
           "id": "A8-S3",
           "titleHint": "Daftar Mainan di Toko",
           "sceneType": "daftar-mainan",
-          "voiceNarration": "Ayo kita hitung mainan yang sudah disusun. Ada dua belas pesawat. Ada delapan mobil-mobilan. Ada sepuluh boneka. Ada enam bola. Mainan apa yang paling banyak? Pesawat paling banyak, yaitu dua belas. Pesawat, boneka, bola, dan mobil-mobilan adalah contoh data. Data bisa dikelompokkan. Data bisa ditulis dalam daftar. Data menjadi mudah dibaca."
+          "voiceNarration": "Ayo kita hitung mainan yang sudah disusun. Ada dua belas pesawat. Ada delapan mobil-mobilan. Ada sepuluh boneka. Ada enam bola. Mainan apa yang paling banyak? Pesawat paling banyak, yaitu dua belas. Pesawat, boneka, bola, dan mobil-mobilan adalah contoh data. Data bisa dikelompokkan. Data bisa ditulis dalam daftar. Data menjadi mudah dibaca. METODE LUAR. Banding Kategori: Mana lebih banyak dari diagram."
         },
         {
           "id": "A8-S4",
           "titleHint": "Kelompokkan Bola",
           "sceneType": "kelompok-bola",
-          "voiceNarration": "Ayo kita kelompokkan bola dan hitung banyaknya. Ada tujuh bola merah. Ada empat bola kuning. Ada enam bola hijau. Bola yang paling banyak berwarna merah, banyaknya ada tujuh. Bola yang paling sedikit berwarna kuning, banyaknya ada empat. Kita juga bisa menghitung dengan turus. Satu goresan untuk satu bola, dan setiap lima goresan dicoret miring."
+          "voiceNarration": "Ayo kita kelompokkan bola dan hitung banyaknya. Ada tujuh bola merah. Ada empat bola kuning. Ada enam bola hijau. Bola yang paling banyak berwarna merah, banyaknya ada tujuh. Bola yang paling sedikit berwarna kuning, banyaknya ada empat. Kita juga bisa menghitung dengan turus. Satu goresan untuk satu bola, dan setiap lima goresan dicoret miring. METODE LUAR. Turus: Coretan untuk menghitung frekuensi."
         },
         {
           "id": "A8-S5",
           "titleHint": "Tabel Bola Upe",
           "sceneType": "tabel-bola-upe",
-          "voiceNarration": "Upe mempunyai banyak bola. Ada tujuh bola merah, empat bola kuning, dan enam bola hijau. Upe ingin menyajikan data bolanya dalam tabel. Tabel terdiri dari baris dan kolom. Baris berjalan ke samping. Kolom berjalan ke bawah. Pada tabel bola Upe, merah ada tujuh, kuning ada empat, dan hijau ada enam."
+          "voiceNarration": "Upe mempunyai banyak bola. Ada tujuh bola merah, empat bola kuning, dan enam bola hijau. Upe ingin menyajikan data bolanya dalam tabel. Tabel terdiri dari baris dan kolom. Baris berjalan ke samping. Kolom berjalan ke bawah. Pada tabel bola Upe, merah ada tujuh, kuning ada empat, dan hijau ada enam. METODE LUAR. Diagram Gambar: Gambar mewakili banyak data."
         },
         {
           "id": "A8-S6",
           "titleHint": "Tabel Menurun dan Mendatar",
           "sceneType": "tabel-menurun-mendatar",
-          "voiceNarration": "Ayo belajar membaca tabel. Tabel A bentuknya menurun, jadi nama warna ada di bawah satu sama lain. Tabel B bentuknya mendatar, jadi nama warna berjajar ke samping. Kedua tabel memuat data yang sama. Setiap tabel punya judul data, benda yang didata, dan banyak setiap data. Tabel memudahkan kita membaca data."
+          "voiceNarration": "Ayo belajar membaca tabel. Tabel A bentuknya menurun, jadi nama warna ada di bawah satu sama lain. Tabel B bentuknya mendatar, jadi nama warna berjajar ke samping. Kedua tabel memuat data yang sama. Setiap tabel punya judul data, benda yang didata, dan banyak setiap data. Tabel memudahkan kita membaca data. METODE LUAR. Banding Kategori: Mana lebih banyak dari diagram."
         }
       ],
       "mindMaps": [
@@ -104,7 +104,23 @@
           "stepDesc": "Ceritakan hasil datamu dengan kalimat. Misalnya bola merah paling banyak, ada tujuh. Periksa jumlahnya sama dengan banyak benda yang kamu hitung.",
           "icon": "🗣️",
           "flowFrom": "Ceritakan datamu",
-          "flowTo": "Datamu siap dipakai"
+          "flowTo": "7"
+        },
+        {
+          "stepNumber": 7,
+          "stepTitle": "7. METODE LUAR · Turus",
+          "stepDesc": "Coretan untuk menghitung frekuensi.",
+          "icon": "🌍",
+          "flowFrom": "6",
+          "flowTo": "8"
+        },
+        {
+          "stepNumber": 8,
+          "stepTitle": "8. METODE LUAR · Diagram Gambar",
+          "stepDesc": "Gambar mewakili banyak data.",
+          "icon": "🌍",
+          "flowFrom": "7",
+          "flowTo": "END"
         }
       ],
       "infografisData": [
@@ -170,6 +186,27 @@
           "countNum": 4,
           "countWord": "Empat",
           "voiceSentence": "Dari satu tabel kita bisa menanyakan banyaknya, yang paling banyak, selisih, dan jumlah semuanya."
+        },
+        {
+          "fruitName": "Turus",
+          "emoji": "🌍",
+          "countNum": 1,
+          "countWord": "METODE LUAR · Tally Marks",
+          "voiceSentence": "METODE LUAR. Turus. Coretan untuk menghitung frekuensi."
+        },
+        {
+          "fruitName": "Diagram Gambar",
+          "emoji": "🌍",
+          "countNum": 2,
+          "countWord": "METODE LUAR · Pictograph",
+          "voiceSentence": "METODE LUAR. Diagram Gambar. Gambar mewakili banyak data."
+        },
+        {
+          "fruitName": "Banding Kategori",
+          "emoji": "🌍",
+          "countNum": 3,
+          "countWord": "METODE LUAR · Compare Categories",
+          "voiceSentence": "METODE LUAR. Banding Kategori. Mana lebih banyak dari diagram."
         }
       ],
       "concreteSlides": [
@@ -352,6 +389,42 @@
           "mechanicDescription": "Dua ronde. Ronde 1 jumlah semua bola pada tabel (7, 4, 6). Ronde 2 siswa memilih satu dari tiga tabel data (pita, buku, kancing). Siswa mengucapkan jumlahnya lalu menggurat lambangnya.",
           "voiceGuide": "Jumlahkan data, ucapkan, lalu guratkan lambangnya."
         }
+      ],
+      "metodeLuar": [
+        {
+          "label": "METODE LUAR",
+          "nama": "Tally Marks",
+          "namaId": "Turus",
+          "asal": "Data collection",
+          "ringkas": "Coretan untuk menghitung frekuensi.",
+          "tahap": [
+            "Story",
+            "Concrete",
+            "Picture"
+          ]
+        },
+        {
+          "label": "METODE LUAR",
+          "nama": "Pictograph",
+          "namaId": "Diagram Gambar",
+          "asal": "Data display",
+          "ringkas": "Gambar mewakili banyak data.",
+          "tahap": [
+            "Mind",
+            "Abstract"
+          ]
+        },
+        {
+          "label": "METODE LUAR",
+          "nama": "Compare Categories",
+          "namaId": "Banding Kategori",
+          "asal": "Data literacy",
+          "ringkas": "Mana lebih banyak dari diagram.",
+          "tahap": [
+            "Infografis",
+            "Concrete"
+          ]
+        }
       ]
     },
     "B": {
@@ -367,37 +440,37 @@
           "id": "B8-S1",
           "titleHint": "Sayur Kesukaan",
           "sceneType": "papan-sayur-kesukaan",
-          "voiceNarration": "Upe menanyakan sayur kesukaan teman-temannya. Hasilnya seperti pada papan di sebelah Upe. Ada jagung, wortel, brokoli, dan kol, semuanya tercampur. Sulit menemukan sayur yang paling disukai kalau masih tercampur. Kita bisa membuat diagram gambar dari data itu. Sayur sangat dibutuhkan tubuh. Sayur mengandung vitamin dan mineral, dan menjaga tubuh tetap sehat. Ayo makan sayur setiap hari."
+          "voiceNarration": "Upe menanyakan sayur kesukaan teman-temannya. Hasilnya seperti pada papan di sebelah Upe. Ada jagung, wortel, brokoli, dan kol, semuanya tercampur. Sulit menemukan sayur yang paling disukai kalau masih tercampur. Kita bisa membuat diagram gambar dari data itu. Sayur sangat dibutuhkan tubuh. Sayur mengandung vitamin dan mineral, dan menjaga tubuh tetap sehat. Ayo makan sayur setiap hari. METODE LUAR. Turus: Coretan untuk menghitung frekuensi."
         },
         {
           "id": "B8-S2",
           "titleHint": "Diagram Gambar Tegak",
           "sceneType": "diagram-gambar-tegak",
-          "voiceNarration": "Ini diagram gambar sayur kesukaan. Setiap gambar mewakili satu anak. Jagung ada tiga gambar, jadi tiga anak suka jagung. Wortel ada empat gambar, jadi empat anak suka wortel. Brokoli ada tiga gambar, dan kol ada dua gambar. Angka di sebelah kiri menunjukkan banyak gambar. Sayur apa yang paling disukai? Wortel, karena kolomnya paling tinggi."
+          "voiceNarration": "Ini diagram gambar sayur kesukaan. Setiap gambar mewakili satu anak. Jagung ada tiga gambar, jadi tiga anak suka jagung. Wortel ada empat gambar, jadi empat anak suka wortel. Brokoli ada tiga gambar, dan kol ada dua gambar. Angka di sebelah kiri menunjukkan banyak gambar. Sayur apa yang paling disukai? Wortel, karena kolomnya paling tinggi. METODE LUAR. Diagram Gambar: Gambar mewakili banyak data."
         },
         {
           "id": "B8-S3",
           "titleHint": "Diagram Gambar Mendatar",
           "sceneType": "diagram-gambar-mendatar",
-          "voiceNarration": "Ini bentuk lain dari diagram gambar. Gambarnya berjajar ke samping, jadi disebut diagram mendatar. Jagung ada tiga, wortel empat, brokoli tiga, dan kol dua. Angka di bawah menunjukkan banyak gambar. Wortel paling disukai karena barisnya paling panjang. Diagram gambar memudahkan kita membaca data."
+          "voiceNarration": "Ini bentuk lain dari diagram gambar. Gambarnya berjajar ke samping, jadi disebut diagram mendatar. Jagung ada tiga, wortel empat, brokoli tiga, dan kol dua. Angka di bawah menunjukkan banyak gambar. Wortel paling disukai karena barisnya paling panjang. Diagram gambar memudahkan kita membaca data. METODE LUAR. Banding Kategori: Mana lebih banyak dari diagram."
         },
         {
           "id": "B8-S4",
           "titleHint": "Mainan Kesukaan Tika",
           "sceneType": "mainan-kesukaan-tika",
-          "voiceNarration": "Tika menanyakan mainan kesukaan teman-temannya. Tika menunjukkan hasilnya pada diagram gambar. Gambar wajah tersenyum mewakili satu anak. Ada lima anak yang suka kelereng. Ada empat anak yang suka mobil-mobilan. Ada dua anak yang suka boneka. Ada tiga anak yang suka gasing. Semua ada empat belas anak."
+          "voiceNarration": "Tika menanyakan mainan kesukaan teman-temannya. Tika menunjukkan hasilnya pada diagram gambar. Gambar wajah tersenyum mewakili satu anak. Ada lima anak yang suka kelereng. Ada empat anak yang suka mobil-mobilan. Ada dua anak yang suka boneka. Ada tiga anak yang suka gasing. Semua ada empat belas anak. METODE LUAR. Turus: Coretan untuk menghitung frekuensi."
         },
         {
           "id": "B8-S5",
           "titleHint": "Bermain Karet Gelang",
           "sceneType": "karet-gelang",
-          "voiceNarration": "Malosi, Halim, dan Upe bermain karet gelang. Setiap gambar karet gelang mewakili satu karet gelang. Malosi mempunyai lima karet gelang. Halim mempunyai tiga karet gelang. Upe mempunyai empat karet gelang. Malosi mempunyai dua karet gelang lebih banyak dari Halim. Upe mempunyai satu karet gelang lebih sedikit dari Malosi. Malosi paling banyak, Halim paling sedikit. Semuanya ada dua belas karet gelang."
+          "voiceNarration": "Malosi, Halim, dan Upe bermain karet gelang. Setiap gambar karet gelang mewakili satu karet gelang. Malosi mempunyai lima karet gelang. Halim mempunyai tiga karet gelang. Upe mempunyai empat karet gelang. Malosi mempunyai dua karet gelang lebih banyak dari Halim. Upe mempunyai satu karet gelang lebih sedikit dari Malosi. Malosi paling banyak, Halim paling sedikit. Semuanya ada dua belas karet gelang. METODE LUAR. Diagram Gambar: Gambar mewakili banyak data."
         },
         {
           "id": "B8-S6",
           "titleHint": "Ayo Menabung",
           "sceneType": "ayo-menabung",
-          "voiceNarration": "Ayo menabung. Halim menabung setiap hari Senin dan Kamis, jadi seminggu dua kali. Wei menabung setiap hari Jumat, jadi seminggu sekali. Upe menabung setiap hari Senin, Rabu, dan Jumat, jadi seminggu tiga kali. Kita bisa menyajikan data menabung dalam diagram gambar dengan mewarnai lingkaran. Siapa yang paling rajin menabung? Upe, tiga kali seminggu."
+          "voiceNarration": "Ayo menabung. Halim menabung setiap hari Senin dan Kamis, jadi seminggu dua kali. Wei menabung setiap hari Jumat, jadi seminggu sekali. Upe menabung setiap hari Senin, Rabu, dan Jumat, jadi seminggu tiga kali. Kita bisa menyajikan data menabung dalam diagram gambar dengan mewarnai lingkaran. Siapa yang paling rajin menabung? Upe, tiga kali seminggu. METODE LUAR. Banding Kategori: Mana lebih banyak dari diagram."
         }
       ],
       "mindMaps": [
@@ -447,7 +520,15 @@
           "stepDesc": "Ceritakan hasil diagrammu dengan kalimat. Sebutkan yang paling banyak, yang paling sedikit, dan jumlah semuanya. Diagram gambar memudahkan kita membaca data.",
           "icon": "🗣️",
           "flowFrom": "Ceritakan hasilnya",
-          "flowTo": "Diagrammu siap dipakai"
+          "flowTo": "7"
+        },
+        {
+          "stepNumber": 7,
+          "stepTitle": "7. METODE LUAR · Diagram Gambar",
+          "stepDesc": "Gambar mewakili banyak data.",
+          "icon": "🌍",
+          "flowFrom": "6",
+          "flowTo": "END"
         }
       ],
       "infografisData": [
@@ -513,6 +594,27 @@
           "countNum": 6,
           "countWord": "Enam",
           "voiceSentence": "Halim dua kali, Wei satu kali, Upe tiga kali seminggu. Yang paling rajin menabung adalah Upe."
+        },
+        {
+          "fruitName": "Turus",
+          "emoji": "🌍",
+          "countNum": 1,
+          "countWord": "METODE LUAR · Tally Marks",
+          "voiceSentence": "METODE LUAR. Turus. Coretan untuk menghitung frekuensi."
+        },
+        {
+          "fruitName": "Diagram Gambar",
+          "emoji": "🌍",
+          "countNum": 2,
+          "countWord": "METODE LUAR · Pictograph",
+          "voiceSentence": "METODE LUAR. Diagram Gambar. Gambar mewakili banyak data."
+        },
+        {
+          "fruitName": "Banding Kategori",
+          "emoji": "🌍",
+          "countNum": 3,
+          "countWord": "METODE LUAR · Compare Categories",
+          "voiceSentence": "METODE LUAR. Banding Kategori. Mana lebih banyak dari diagram."
         }
       ],
       "concreteSlides": [
@@ -694,6 +796,42 @@
           "objective": "Menjumlahkan semua data pada diagram, mengucapkannya, dan menulis lambangnya.",
           "mechanicDescription": "Dua ronde. Ronde 1 jumlah semua karet gelang (5, 3, 4). Ronde 2 siswa memilih sendiri berapa kali ia menabung (1, 2, atau 3) lalu menjumlahkannya dengan Halim 2, Wei 1, Upe 3. Siswa mengucapkan jumlahnya lalu menggurat lambangnya.",
           "voiceGuide": "Jumlahkan data, ucapkan, lalu guratkan lambangnya."
+        }
+      ],
+      "metodeLuar": [
+        {
+          "label": "METODE LUAR",
+          "nama": "Tally Marks",
+          "namaId": "Turus",
+          "asal": "Data collection",
+          "ringkas": "Coretan untuk menghitung frekuensi.",
+          "tahap": [
+            "Story",
+            "Concrete",
+            "Picture"
+          ]
+        },
+        {
+          "label": "METODE LUAR",
+          "nama": "Pictograph",
+          "namaId": "Diagram Gambar",
+          "asal": "Data display",
+          "ringkas": "Gambar mewakili banyak data.",
+          "tahap": [
+            "Mind",
+            "Abstract"
+          ]
+        },
+        {
+          "label": "METODE LUAR",
+          "nama": "Compare Categories",
+          "namaId": "Banding Kategori",
+          "asal": "Data literacy",
+          "ringkas": "Mana lebih banyak dari diagram.",
+          "tahap": [
+            "Infografis",
+            "Concrete"
+          ]
         }
       ]
     }

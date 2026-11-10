@@ -23,31 +23,31 @@
         {
           "id": "A-S1",
           "titleHint": "Gambar 1: Di Taman Bermain",
-          "voiceNarration": "Malosi, Kira, Upe, dan Wei bermain di taman bersama Igil si burung hantu. Mereka gembira sekali. Mereka bermain dengan aman dan tertib.",
+          "voiceNarration": "Malosi, Kira, Upe, dan Wei bermain di taman bersama Igil si burung hantu. Mereka gembira sekali. Mereka bermain dengan aman dan tertib. METODE LUAR. Korespondensi Satu-satu: Sentuh tiap benda sekali sambil menghitung.",
           "sceneType": "playground-play"
         },
         {
           "id": "A-S2",
           "titleHint": "Gambar 2: Jungkat-jungkit, Ayunan, Perosotan",
-          "voiceNarration": "Di taman ada satu jungkat-jungkit, dua ayunan, dan tiga perosotan. Kira mengelompokkan benda yang sama. Lalu Kira menghitungnya satu per satu.",
+          "voiceNarration": "Di taman ada satu jungkat-jungkit, dua ayunan, dan tiga perosotan. Kira mengelompokkan benda yang sama. Lalu Kira menghitungnya satu per satu. METODE LUAR. Kardinalitas: Bilangan terakhir menyatakan banyak seluruhnya.",
           "sceneType": "playground-rides"
         },
         {
           "id": "A-S3",
           "titleHint": "Gambar 3: Sepeda dan Kursi",
-          "voiceNarration": "Upe melihat empat sepeda dan lima kursi di taman. Upe menghitung sepedanya lebih dulu. Sesudah itu, Upe menghitung kursinya.",
+          "voiceNarration": "Upe melihat empat sepeda dan lima kursi di taman. Upe menghitung sepedanya lebih dulu. Sesudah itu, Upe menghitung kursinya. METODE LUAR. Melihat Sekilas: Kenali banyak kecil tanpa menghitung satu-satu.",
           "sceneType": "playground-bikes"
         },
         {
           "id": "A-S4",
           "titleHint": "Gambar 4: Balon, Buku, Layang-layang, Kelereng, Bola",
-          "voiceNarration": "Wei menghitung enam balon, tujuh buku, delapan layang-layang, sembilan kelereng, dan sepuluh bola. Kelompokkan benda yang sama lalu hitung sampai sepuluh.",
+          "voiceNarration": "Wei menghitung enam balon, tujuh buku, delapan layang-layang, sembilan kelereng, dan sepuluh bola. Kelompokkan benda yang sama lalu hitung sampai sepuluh. METODE LUAR. Korespondensi Satu-satu: Sentuh tiap benda sekali sambil menghitung.",
           "sceneType": "playground-toys"
         },
         {
           "id": "A-S5",
           "titleHint": "Gambar 5: Keranjang Kosong — Mengenal Bilangan 0 (Nol)",
-          "voiceNarration": "Igil menunjuk dua keranjang di taman. Satu keranjang berisi sepuluh bola dan satu keranjang di sebelahnya tidak ada isinya. Banyak isi keranjang yang kosong adalah nol.",
+          "voiceNarration": "Igil menunjuk dua keranjang di taman. Satu keranjang berisi sepuluh bola dan satu keranjang di sebelahnya tidak ada isinya. Banyak isi keranjang yang kosong adalah nol. METODE LUAR. Kardinalitas: Bilangan terakhir menyatakan banyak seluruhnya.",
           "sceneType": "empty-basket"
         }
       ],
@@ -82,7 +82,23 @@
           "stepDesc": "Ucapkan nama bilangannya dari nol sampai sepuluh. Tuliskan lambang angkanya 0 sampai 10.",
           "icon": "✏️",
           "flowFrom": "Hasil hitungan",
-          "flowTo": "Angka 0 sampai 10"
+          "flowTo": "5"
+        },
+        {
+          "stepNumber": 5,
+          "stepTitle": "5. METODE LUAR · Korespondensi Satu-satu",
+          "stepDesc": "Sentuh tiap benda sekali sambil menghitung.",
+          "icon": "🌍",
+          "flowFrom": "4",
+          "flowTo": "6"
+        },
+        {
+          "stepNumber": 6,
+          "stepTitle": "6. METODE LUAR · Kardinalitas",
+          "stepDesc": "Bilangan terakhir menyatakan banyak seluruhnya.",
+          "icon": "🌍",
+          "flowFrom": "5",
+          "flowTo": "END"
         }
       ],
       "infografisData": [
@@ -113,6 +129,27 @@
           "countNum": 7,
           "countWord": "Tujuh",
           "voiceSentence": "Buah pisang kuning milik Malosi ada tujuh."
+        },
+        {
+          "fruitName": "Korespondensi Satu-satu",
+          "emoji": "🌍",
+          "countNum": 1,
+          "countWord": "METODE LUAR · One-to-One",
+          "voiceSentence": "METODE LUAR. Korespondensi Satu-satu. Sentuh tiap benda sekali sambil menghitung."
+        },
+        {
+          "fruitName": "Kardinalitas",
+          "emoji": "🌍",
+          "countNum": 2,
+          "countWord": "METODE LUAR · Cardinality",
+          "voiceSentence": "METODE LUAR. Kardinalitas. Bilangan terakhir menyatakan banyak seluruhnya."
+        },
+        {
+          "fruitName": "Melihat Sekilas",
+          "emoji": "🌍",
+          "countNum": 3,
+          "countWord": "METODE LUAR · Subitizing",
+          "voiceSentence": "METODE LUAR. Melihat Sekilas. Kenali banyak kecil tanpa menghitung satu-satu."
         }
       ],
       "concreteSlides": [
@@ -196,6 +233,42 @@
           "mathNotation": "10 = Sepuluh (5 dan 5)",
           "voiceReadout": "Lambang bilangan sepuluh terdiri dari angka satu dan nol, dibaca sepuluh."
         }
+      ],
+      "metodeLuar": [
+        {
+          "label": "METODE LUAR",
+          "nama": "One-to-One",
+          "namaId": "Korespondensi Satu-satu",
+          "asal": "Gelman & Gallistel",
+          "ringkas": "Sentuh tiap benda sekali sambil menghitung.",
+          "tahap": [
+            "Story",
+            "Concrete",
+            "Picture"
+          ]
+        },
+        {
+          "label": "METODE LUAR",
+          "nama": "Cardinality",
+          "namaId": "Kardinalitas",
+          "asal": "Counting principles",
+          "ringkas": "Bilangan terakhir menyatakan banyak seluruhnya.",
+          "tahap": [
+            "Mind",
+            "Abstract"
+          ]
+        },
+        {
+          "label": "METODE LUAR",
+          "nama": "Subitizing",
+          "namaId": "Melihat Sekilas",
+          "asal": "Subitizing research",
+          "ringkas": "Kenali banyak kecil tanpa menghitung satu-satu.",
+          "tahap": [
+            "Infografis",
+            "Concrete"
+          ]
+        }
       ]
     },
     "B": {
@@ -210,31 +283,31 @@
         {
           "id": "B-S1",
           "titleHint": "Gambar 1: Sepeda dan Burung",
-          "voiceNarration": "Upe berbaris di taman bersama tiga sepeda. Tiga burung hinggap satu di setiap sepeda. Tidak ada burung yang menganggur dan tidak ada sepeda yang kosong. Sepeda dan burung sama banyak.",
+          "voiceNarration": "Upe berbaris di taman bersama tiga sepeda. Tiga burung hinggap satu di setiap sepeda. Tidak ada burung yang menganggur dan tidak ada sepeda yang kosong. Sepeda dan burung sama banyak. METODE LUAR. Nama Bilangan: Ucapkan dan tulis lambang 1–10.",
           "sceneType": "banding-sepeda-burung"
         },
         {
           "id": "B-S2",
           "titleHint": "Gambar 2: Balon untuk Kursi",
-          "voiceNarration": "Wei menata enam kursi di bawah pohon dan mengikat satu balon di setiap kursi. Sesudah empat kursi punya balon, balonnya habis dan dua kursi masih kosong. Jadi kursi lebih banyak dari balon, dan balon lebih sedikit dari kursi.",
+          "voiceNarration": "Wei menata enam kursi di bawah pohon dan mengikat satu balon di setiap kursi. Sesudah empat kursi punya balon, balonnya habis dan dua kursi masih kosong. Jadi kursi lebih banyak dari balon, dan balon lebih sedikit dari kursi. METODE LUAR. Bingkai Sepuluh: Isi bingkai untuk melihat banyak.",
           "sceneType": "banding-kursi-balon"
         },
         {
           "id": "B-S3",
           "titleHint": "Gambar 3: Kelereng Kira dan Malosi",
-          "voiceNarration": "Kira dan Malosi bermain kelereng. Kira menjajarkan lima kelerengnya dan Malosi menjajarkan delapan kelerengnya. Saat dipasangkan satu per satu, kelereng Malosi punya sisa tiga. Malosi punya lebih banyak dan Kira punya lebih sedikit.",
+          "voiceNarration": "Kira dan Malosi bermain kelereng. Kira menjajarkan lima kelerengnya dan Malosi menjajarkan delapan kelerengnya. Saat dipasangkan satu per satu, kelereng Malosi punya sisa tiga. Malosi punya lebih banyak dan Kira punya lebih sedikit. METODE LUAR. Garis Bilangan Kecil: Urutan bilangan di garis.",
           "sceneType": "banding-kelereng"
         },
         {
           "id": "B-S4",
           "titleHint": "Gambar 4: Jangan Tertipu Panjang Barisan",
-          "voiceNarration": "Upe punya lima bola yang dirapatkan jadi barisan pendek. Wei juga punya lima bola yang direnggangkan jadi barisan panjang. Igil mengajak memasangkan bola satu per satu. Semua bola punya pasangan, jadi keduanya sama banyak.",
+          "voiceNarration": "Upe punya lima bola yang dirapatkan jadi barisan pendek. Wei juga punya lima bola yang direnggangkan jadi barisan panjang. Igil mengajak memasangkan bola satu per satu. Semua bola punya pasangan, jadi keduanya sama banyak. METODE LUAR. Nama Bilangan: Ucapkan dan tulis lambang 1–10.",
           "sceneType": "banding-bola-renggang"
         },
         {
           "id": "B-S5",
           "titleHint": "Gambar 5: Pensil Kira dan Malosi",
-          "voiceNarration": "Kira mempunyai empat pensil warna dan Malosi mempunyai lima pensil warna. Mereka memasangkan pensil itu satu per satu di meja. Pensil Malosi masih bersisa satu, sehingga lima pensil lebih banyak dari empat pensil.",
+          "voiceNarration": "Kira mempunyai empat pensil warna dan Malosi mempunyai lima pensil warna. Mereka memasangkan pensil itu satu per satu di meja. Pensil Malosi masih bersisa satu, sehingga lima pensil lebih banyak dari empat pensil. METODE LUAR. Bingkai Sepuluh: Isi bingkai untuk melihat banyak.",
           "sceneType": "banding-kelereng"
         }
       ],
@@ -269,7 +342,23 @@
           "stepDesc": "Mulut buaya selalu menghadap bilangan yang lebih banyak. Kalau sama banyak, buaya tidak memilih.",
           "icon": "🐊",
           "flowFrom": "Sama, Lebih Banyak, Lebih Sedikit",
-          "flowTo": "Tanda Lebih Banyak, Lebih Sedikit, Sama Dengan"
+          "flowTo": "5"
+        },
+        {
+          "stepNumber": 5,
+          "stepTitle": "5. METODE LUAR · Nama Bilangan",
+          "stepDesc": "Ucapkan dan tulis lambang 1–10.",
+          "icon": "🌍",
+          "flowFrom": "4",
+          "flowTo": "6"
+        },
+        {
+          "stepNumber": 6,
+          "stepTitle": "6. METODE LUAR · Bingkai Sepuluh",
+          "stepDesc": "Isi bingkai untuk melihat banyak.",
+          "icon": "🌍",
+          "flowFrom": "5",
+          "flowTo": "END"
         }
       ],
       "infografisData": [
@@ -300,6 +389,27 @@
           "countNum": 8,
           "countWord": "Delapan",
           "voiceSentence": "Delapan kelereng Malosi lebih banyak dari lima kelereng Kira."
+        },
+        {
+          "fruitName": "Nama Bilangan",
+          "emoji": "🌍",
+          "countNum": 1,
+          "countWord": "METODE LUAR · Number Names",
+          "voiceSentence": "METODE LUAR. Nama Bilangan. Ucapkan dan tulis lambang 1–10."
+        },
+        {
+          "fruitName": "Bingkai Sepuluh",
+          "emoji": "🌍",
+          "countNum": 2,
+          "countWord": "METODE LUAR · Ten Frame",
+          "voiceSentence": "METODE LUAR. Bingkai Sepuluh. Isi bingkai untuk melihat banyak."
+        },
+        {
+          "fruitName": "Garis Bilangan Kecil",
+          "emoji": "🌍",
+          "countNum": 3,
+          "countWord": "METODE LUAR · Number Line Mini",
+          "voiceSentence": "METODE LUAR. Garis Bilangan Kecil. Urutan bilangan di garis."
         }
       ],
       "concreteSlides": [
@@ -383,6 +493,41 @@
           "mathNotation": "5 > 4   |   4 < 5",
           "voiceReadout": "Lima lebih banyak dari empat, dan empat lebih sedikit dari lima."
         }
+      ],
+      "metodeLuar": [
+        {
+          "label": "METODE LUAR",
+          "nama": "Number Names",
+          "namaId": "Nama Bilangan",
+          "asal": "Naming",
+          "ringkas": "Ucapkan dan tulis lambang 1–10.",
+          "tahap": [
+            "Story",
+            "Abstract"
+          ]
+        },
+        {
+          "label": "METODE LUAR",
+          "nama": "Ten Frame",
+          "namaId": "Bingkai Sepuluh",
+          "asal": "Singapore / ten-frame",
+          "ringkas": "Isi bingkai untuk melihat banyak.",
+          "tahap": [
+            "Concrete",
+            "Picture"
+          ]
+        },
+        {
+          "label": "METODE LUAR",
+          "nama": "Number Line Mini",
+          "namaId": "Garis Bilangan Kecil",
+          "asal": "Number line",
+          "ringkas": "Urutan bilangan di garis.",
+          "tahap": [
+            "Mind",
+            "Infografis"
+          ]
+        }
       ]
     },
     "C": {
@@ -397,31 +542,31 @@
         {
           "id": "C-S1",
           "titleHint": "Gambar 1: Upe Naik Tangga (Menghitung Maju)",
-          "voiceNarration": "Upe naik tangga satu per satu. Upe menghitung maju mulai dari satu: satu, dua, tiga, empat, sampai sepuluh. Saat menghitung maju, kita mulai dari bilangan kecil ke besar dan setiap naik satu tangga bilangannya bertambah satu.",
+          "voiceNarration": "Upe naik tangga satu per satu. Upe menghitung maju mulai dari satu: satu, dua, tiga, empat, sampai sepuluh. Saat menghitung maju, kita mulai dari bilangan kecil ke besar dan setiap naik satu tangga bilangannya bertambah satu. METODE LUAR. Benda Nyata Dulu: Pelajari membilang mulai dari benda yang bisa dipegang.",
           "sceneType": "playground-rides"
         },
         {
           "id": "C-S2",
           "titleHint": "Gambar 2: Upe Turun Tangga (Menghitung Mundur)",
-          "voiceNarration": "Sesudah sampai di puncak tangga sepuluh, Upe turun tangga dengan hati-hati. Upe menghitung mundur mulai dari sepuluh: sepuluh, sembilan, delapan, terus turun sampai satu. Saat menghitung mundur, kita mulai dari bilangan besar ke kecil.",
+          "voiceNarration": "Sesudah sampai di puncak tangga sepuluh, Upe turun tangga dengan hati-hati. Upe menghitung mundur mulai dari sepuluh: sepuluh, sembilan, delapan, terus turun sampai satu. Saat menghitung mundur, kita mulai dari bilangan besar ke kecil. METODE LUAR. Gambar Representasi: Pindah ke gambar atau diagram sebelum simbol.",
           "sceneType": "playground-rides"
         },
         {
           "id": "C-S3",
           "titleHint": "Gambar 3: Barisan Berhitung Berantai di Taman",
-          "voiceNarration": "Upe, Kira, Malosi, dan Wei bermain hitung berantai di taman bersama Igil. Upe di ujung barisan menyebut bilangan tiga. Kira di sampingnya langsung melanjutkan empat, Malosi menyebut lima, dan Wei menyebut enam.",
+          "voiceNarration": "Upe, Kira, Malosi, dan Wei bermain hitung berantai di taman bersama Igil. Upe di ujung barisan menyebut bilangan tiga. Kira di sampingnya langsung melanjutkan empat, Malosi menyebut lima, dan Wei menyebut enam. METODE LUAR. Simbol Matematika: Akhiri dengan angka dan tanda operasi.",
           "sceneType": "playground-play"
         },
         {
           "id": "C-S4",
           "titleHint": "Gambar 4: Katak di Batu Nomor (Sebelum dan Sesudah)",
-          "voiceNarration": "Lihat katak di atas batu nomor enam. Jika katak melompat maju satu batu ke kanan, ia mendarat di batu tujuh. Jika katak melompat mundur satu batu ke kiri, ia mendarat di batu lima. Batu enam berada di antara batu lima dan batu tujuh.",
+          "voiceNarration": "Lihat katak di atas batu nomor enam. Jika katak melompat maju satu batu ke kanan, ia mendarat di batu tujuh. Jika katak melompat mundur satu batu ke kiri, ia mendarat di batu lima. Batu enam berada di antara batu lima dan batu tujuh. METODE LUAR. Benda Nyata Dulu: Pelajari membilang mulai dari benda yang bisa dipegang.",
           "sceneType": "frog-river"
         },
         {
           "id": "C-S5",
           "titleHint": "Gambar 5: Menghubungkan Titik Satu sampai Sepuluh",
-          "voiceNarration": "Kira menghubungkan titik bernomor satu sampai sepuluh secara berurutan di buku gambar. Dari titik satu, Kira menarik garis ke dua, tiga, empat, sampai sepuluh. Saat selesai, tampak gambar perahu layar yang bagus sekali.",
+          "voiceNarration": "Kira menghubungkan titik bernomor satu sampai sepuluh secara berurutan di buku gambar. Dari titik satu, Kira menarik garis ke dua, tiga, empat, sampai sepuluh. Saat selesai, tampak gambar perahu layar yang bagus sekali. METODE LUAR. Gambar Representasi: Pindah ke gambar atau diagram sebelum simbol.",
           "sceneType": "playground-toys"
         }
       ],
@@ -456,7 +601,23 @@
           "stepDesc": "Maju satu langkah untuk mencari bilangan sesudah. Mundur satu langkah untuk mencari bilangan sebelum.",
           "icon": "🧭",
           "flowFrom": "Cek Tetangga Kiri & Kanan",
-          "flowTo": "Lengkapi Urutan yang Kosong"
+          "flowTo": "5"
+        },
+        {
+          "stepNumber": 5,
+          "stepTitle": "5. METODE LUAR · Benda Nyata Dulu",
+          "stepDesc": "Pelajari membilang mulai dari benda yang bisa dipegang.",
+          "icon": "🌍",
+          "flowFrom": "4",
+          "flowTo": "6"
+        },
+        {
+          "stepNumber": 6,
+          "stepTitle": "6. METODE LUAR · Gambar Representasi",
+          "stepDesc": "Pindah ke gambar atau diagram sebelum simbol.",
+          "icon": "🌍",
+          "flowFrom": "5",
+          "flowTo": "END"
         }
       ],
       "infografisData": [
@@ -487,6 +648,27 @@
           "countNum": 10,
           "countWord": "Sepuluh",
           "voiceSentence": "Urutan menghitung maju dari satu berakhir di puncak tangga sepuluh."
+        },
+        {
+          "fruitName": "Benda Nyata Dulu",
+          "emoji": "🌍",
+          "countNum": 1,
+          "countWord": "METODE LUAR · CPA / SMICPA Concrete",
+          "voiceSentence": "METODE LUAR. Benda Nyata Dulu. Pelajari membilang mulai dari benda yang bisa dipegang."
+        },
+        {
+          "fruitName": "Gambar Representasi",
+          "emoji": "🌍",
+          "countNum": 2,
+          "countWord": "METODE LUAR · CPA Pictorial",
+          "voiceSentence": "METODE LUAR. Gambar Representasi. Pindah ke gambar atau diagram sebelum simbol."
+        },
+        {
+          "fruitName": "Simbol Matematika",
+          "emoji": "🌍",
+          "countNum": 3,
+          "countWord": "METODE LUAR · CPA Abstract",
+          "voiceSentence": "METODE LUAR. Simbol Matematika. Akhiri dengan angka dan tanda operasi."
         }
       ],
       "concreteSlides": [
@@ -570,6 +752,41 @@
           "mathNotation": "Di antara 6 dan 4 pada hitungan mundur adalah 5",
           "voiceReadout": "Delapan, tujuh, enam, lima, empat. Sebelum enam dan sesudah empat adalah lima."
         }
+      ],
+      "metodeLuar": [
+        {
+          "label": "METODE LUAR",
+          "nama": "CPA / SMICPA Concrete",
+          "namaId": "Benda Nyata Dulu",
+          "asal": "Bruner CPA",
+          "ringkas": "Pelajari membilang mulai dari benda yang bisa dipegang.",
+          "tahap": [
+            "Story",
+            "Concrete"
+          ]
+        },
+        {
+          "label": "METODE LUAR",
+          "nama": "CPA Pictorial",
+          "namaId": "Gambar Representasi",
+          "asal": "Bruner CPA",
+          "ringkas": "Pindah ke gambar atau diagram sebelum simbol.",
+          "tahap": [
+            "Picture",
+            "Mind"
+          ]
+        },
+        {
+          "label": "METODE LUAR",
+          "nama": "CPA Abstract",
+          "namaId": "Simbol Matematika",
+          "asal": "Bruner CPA",
+          "ringkas": "Akhiri dengan angka dan tanda operasi.",
+          "tahap": [
+            "Abstract",
+            "Infografis"
+          ]
+        }
       ]
     },
     "D": {
@@ -584,31 +801,31 @@
         {
           "id": "D-S1",
           "titleHint": "Gambar 1: Lima Kue di Piring Kira (Dipisahkan)",
-          "voiceNarration": "Kira mempunyai lima kue di piring besar. Ada dua donat cokelat dan tiga kue bolu kuning. Kira memisahkan lima kue itu ke dua piring kecil. Satu bilangan utuh bisa dipisahkan menjadi dua bagian, yaitu lima menjadi dua dan tiga.",
+          "voiceNarration": "Kira mempunyai lima kue di piring besar. Ada dua donat cokelat dan tiga kue bolu kuning. Kira memisahkan lima kue itu ke dua piring kecil. Satu bilangan utuh bisa dipisahkan menjadi dua bagian, yaitu lima menjadi dua dan tiga. METODE LUAR. Benda Nyata Dulu: Pelajari membilang mulai dari benda yang bisa dipegang.",
           "sceneType": "number-tree"
         },
         {
           "id": "D-S2",
           "titleHint": "Gambar 2: Tujuh Bola Upe dan Wei (Digabungkan)",
-          "voiceNarration": "Upe membawa tiga bola hijau dan Wei membawa empat bola merah. Saat bola mereka dimasukkan bersama ke satu keranjang besar, jumlah semuanya menjadi tujuh bola. Dua bilangan bisa digabungkan menjadi satu bilangan utuh.",
+          "voiceNarration": "Upe membawa tiga bola hijau dan Wei membawa empat bola merah. Saat bola mereka dimasukkan bersama ke satu keranjang besar, jumlah semuanya menjadi tujuh bola. Dua bilangan bisa digabungkan menjadi satu bilangan utuh. METODE LUAR. Gambar Representasi: Pindah ke gambar atau diagram sebelum simbol.",
           "sceneType": "number-tree"
         },
         {
           "id": "D-S3",
           "titleHint": "Gambar 3: Delapan Mobil-mobilan Upe (Banyak Pasangan)",
-          "voiceNarration": "Upe mempunyai delapan mobil-mobilan dan ingin memisahkannya menjadi dua kelompok. Mula-mula Upe menaruh tiga di kiri dan lima di kanan. Lalu Upe menemukan pasangan lain, yaitu dua dan enam, satu dan tujuh, serta empat dan empat.",
+          "voiceNarration": "Upe mempunyai delapan mobil-mobilan dan ingin memisahkannya menjadi dua kelompok. Mula-mula Upe menaruh tiga di kiri dan lima di kanan. Lalu Upe menemukan pasangan lain, yaitu dua dan enam, satu dan tujuh, serta empat dan empat. METODE LUAR. Simbol Matematika: Akhiri dengan angka dan tanda operasi.",
           "sceneType": "number-tree"
         },
         {
           "id": "D-S4",
           "titleHint": "Gambar 4: Delapan Kelereng Malosi (Pohon Pasangan Dua Tingkat)",
-          "voiceNarration": "Malosi mempunyai delapan kelereng dan memisahkannya menjadi kelompok lima dan tiga. Sesudah itu, Malosi memisahkan lagi kelompok lima menjadi dua dan tiga, serta kelompok tiga menjadi dua dan satu. Igil memuji ketelitian Malosi.",
+          "voiceNarration": "Malosi mempunyai delapan kelereng dan memisahkannya menjadi kelompok lima dan tiga. Sesudah itu, Malosi memisahkan lagi kelompok lima menjadi dua dan tiga, serta kelompok tiga menjadi dua dan satu. Igil memuji ketelitian Malosi. METODE LUAR. Benda Nyata Dulu: Pelajari membilang mulai dari benda yang bisa dipegang.",
           "sceneType": "number-tree"
         },
         {
           "id": "D-S5",
           "titleHint": "Gambar 5: Karya Pasangan Bilangan pada Bingkai Sepuluh",
-          "voiceNarration": "Kira, Upe, Malosi, dan Wei bermain Ayo Berkarya bersama Igil. Mereka menyusun enam keping kuning dan empat keping biru di dalam bingkai sepuluh. Enam dan empat adalah pasangan bilangan yang membentuk sepuluh.",
+          "voiceNarration": "Kira, Upe, Malosi, dan Wei bermain Ayo Berkarya bersama Igil. Mereka menyusun enam keping kuning dan empat keping biru di dalam bingkai sepuluh. Enam dan empat adalah pasangan bilangan yang membentuk sepuluh. METODE LUAR. Gambar Representasi: Pindah ke gambar atau diagram sebelum simbol.",
           "sceneType": "number-tree"
         }
       ],
@@ -643,7 +860,23 @@
           "stepDesc": "Pindahkan satu per satu benda dari cabang kiri ke cabang kanan untuk menemukan semua pasangan bilangan yang mungkin.",
           "icon": "🔄",
           "flowFrom": "Geser Benda Antar-Cabang",
-          "flowTo": "Semua Pasangan Terbuka"
+          "flowTo": "5"
+        },
+        {
+          "stepNumber": 5,
+          "stepTitle": "5. METODE LUAR · Benda Nyata Dulu",
+          "stepDesc": "Pelajari membilang mulai dari benda yang bisa dipegang.",
+          "icon": "🌍",
+          "flowFrom": "4",
+          "flowTo": "6"
+        },
+        {
+          "stepNumber": 6,
+          "stepTitle": "6. METODE LUAR · Gambar Representasi",
+          "stepDesc": "Pindah ke gambar atau diagram sebelum simbol.",
+          "icon": "🌍",
+          "flowFrom": "5",
+          "flowTo": "END"
         }
       ],
       "infografisData": [
@@ -674,6 +907,27 @@
           "countNum": 8,
           "countWord": "Delapan",
           "voiceSentence": "Delapan mobil Upe bisa dipisahkan menjadi tiga dan lima, dua dan enam, atau empat dan empat."
+        },
+        {
+          "fruitName": "Benda Nyata Dulu",
+          "emoji": "🌍",
+          "countNum": 1,
+          "countWord": "METODE LUAR · CPA / SMICPA Concrete",
+          "voiceSentence": "METODE LUAR. Benda Nyata Dulu. Pelajari membilang mulai dari benda yang bisa dipegang."
+        },
+        {
+          "fruitName": "Gambar Representasi",
+          "emoji": "🌍",
+          "countNum": 2,
+          "countWord": "METODE LUAR · CPA Pictorial",
+          "voiceSentence": "METODE LUAR. Gambar Representasi. Pindah ke gambar atau diagram sebelum simbol."
+        },
+        {
+          "fruitName": "Simbol Matematika",
+          "emoji": "🌍",
+          "countNum": 3,
+          "countWord": "METODE LUAR · CPA Abstract",
+          "voiceSentence": "METODE LUAR. Simbol Matematika. Akhiri dengan angka dan tanda operasi."
         }
       ],
       "concreteSlides": [
@@ -756,6 +1010,41 @@
           "wordLarge": "GABUNGKAN JADI 10",
           "mathNotation": "1&9 • 2&8 • 3&7 • 4&6 • 5&5",
           "voiceReadout": "Enam dan empat digabungkan menjadi sepuluh. Pasangan bilangan sepuluh adalah satu dan sembilan, dua dan delapan, tiga dan tujuh, empat dan enam, serta lima dan lima."
+        }
+      ],
+      "metodeLuar": [
+        {
+          "label": "METODE LUAR",
+          "nama": "CPA / SMICPA Concrete",
+          "namaId": "Benda Nyata Dulu",
+          "asal": "Bruner CPA",
+          "ringkas": "Pelajari membilang mulai dari benda yang bisa dipegang.",
+          "tahap": [
+            "Story",
+            "Concrete"
+          ]
+        },
+        {
+          "label": "METODE LUAR",
+          "nama": "CPA Pictorial",
+          "namaId": "Gambar Representasi",
+          "asal": "Bruner CPA",
+          "ringkas": "Pindah ke gambar atau diagram sebelum simbol.",
+          "tahap": [
+            "Picture",
+            "Mind"
+          ]
+        },
+        {
+          "label": "METODE LUAR",
+          "nama": "CPA Abstract",
+          "namaId": "Simbol Matematika",
+          "asal": "Bruner CPA",
+          "ringkas": "Akhiri dengan angka dan tanda operasi.",
+          "tahap": [
+            "Abstract",
+            "Infografis"
+          ]
         }
       ]
     }

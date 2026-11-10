@@ -24,37 +24,37 @@
           "id": "A3-S1",
           "titleHint": "Bermain Tutup Mata",
           "sceneType": "tutup-mata-pulang",
-          "voiceNarration": "Enam sekawan sedang bermain tutup mata. Tetapi, Malosi dan Tika harus pulang. Sekarang tersisa Kira, Upe, Wei, dan Halim. Apakah jumlah anak menjadi lebih sedikit? Ya. Mula-mula enam anak, berkurang dua anak, sisanya empat anak."
+          "voiceNarration": "Enam sekawan sedang bermain tutup mata. Tetapi, Malosi dan Tika harus pulang. Sekarang tersisa Kira, Upe, Wei, dan Halim. Apakah jumlah anak menjadi lebih sedikit? Ya. Mula-mula enam anak, berkurang dua anak, sisanya empat anak. METODE LUAR. Mengambil: Ambil sebagian dari kumpulan."
         },
         {
           "id": "A3-S2",
           "titleHint": "Igil Menulis di Papan",
           "sceneType": "papan-kurang",
-          "voiceNarration": "Igil menulis cerita tutup mata di papan. Mula-mula enam anak. Berkurang dua anak. Sisanya empat anak. Tanda kurang dipakai untuk pengurangan. Kita tulis: enam, tanda kurang, dua, tanda sama dengan, empat. Kita baca: enam dikurangi dua sama dengan empat. Boleh juga dibaca: enam dikurangi dua hasilnya empat. Pengurangan artinya jumlah yang berkurang."
+          "voiceNarration": "Igil menulis cerita tutup mata di papan. Mula-mula enam anak. Berkurang dua anak. Sisanya empat anak. Tanda kurang dipakai untuk pengurangan. Kita tulis: enam, tanda kurang, dua, tanda sama dengan, empat. Kita baca: enam dikurangi dua sama dengan empat. Boleh juga dibaca: enam dikurangi dua hasilnya empat. Pengurangan artinya jumlah yang berkurang. METODE LUAR. Hitung Mundur: Mundur dari bilangan awal."
         },
         {
           "id": "A3-S3",
           "titleHint": "Kue Ibu",
           "sceneType": "kue-ibu",
-          "voiceNarration": "Ibu mempunyai enam kue. Upe memakan satu kue. Sisa kue Ibu adalah lima. Kita tulis: enam kurang satu sama dengan lima. Enam dikurangi satu hasilnya lima."
+          "voiceNarration": "Ibu mempunyai enam kue. Upe memakan satu kue. Sisa kue Ibu adalah lima. Kita tulis: enam kurang satu sama dengan lima. Enam dikurangi satu hasilnya lima. METODE LUAR. Kurang di Bingkai: Hapus/kosongkan kotak pada bingkai."
         },
         {
           "id": "A3-S4",
           "titleHint": "Mobil Kosong",
           "sceneType": "mobil-turun",
-          "voiceNarration": "Mula-mula ada tiga orang di dalam mobil. Sebanyak tiga orang turun dari mobil. Sekarang tidak ada orang dalam mobil. Tiga dikurangi tiga hasilnya nol. Nol artinya tidak ada yang tersisa."
+          "voiceNarration": "Mula-mula ada tiga orang di dalam mobil. Sebanyak tiga orang turun dari mobil. Sekarang tidak ada orang dalam mobil. Tiga dikurangi tiga hasilnya nol. Nol artinya tidak ada yang tersisa. METODE LUAR. Mengambil: Ambil sebagian dari kumpulan."
         },
         {
           "id": "A3-S5",
           "titleHint": "Kupu-kupu Terbang",
           "sceneType": "kupu-terbang",
-          "voiceNarration": "Ada enam kupu-kupu di bunga. Lalu dua kupu-kupu terbang. Sekarang tersisa empat kupu-kupu di bunga. Enam dikurangi dua sama dengan empat."
+          "voiceNarration": "Ada enam kupu-kupu di bunga. Lalu dua kupu-kupu terbang. Sekarang tersisa empat kupu-kupu di bunga. Enam dikurangi dua sama dengan empat. METODE LUAR. Hitung Mundur: Mundur dari bilangan awal."
         },
         {
           "id": "A3-S6",
           "titleHint": "Ayo Bermain Kelereng",
           "sceneType": "kelereng-ambil",
-          "voiceNarration": "Ayo bermain! Kira menaruh lima kelereng di atas piring. Kira mengambil satu kelereng. Sekarang tersisa empat kelereng. Lima dikurangi satu sama dengan empat. Sekarang giliranmu: buat cerita pengurangan, lalu minta temanmu menjawabnya."
+          "voiceNarration": "Ayo bermain! Kira menaruh lima kelereng di atas piring. Kira mengambil satu kelereng. Sekarang tersisa empat kelereng. Lima dikurangi satu sama dengan empat. Sekarang giliranmu: buat cerita pengurangan, lalu minta temanmu menjawabnya. METODE LUAR. Kurang di Bingkai: Hapus/kosongkan kotak pada bingkai."
         }
       ],
       "mindMaps": [
@@ -104,7 +104,23 @@
           "stepDesc": "Periksa jawabanmu dengan penjumlahan. Sisa empat digabung dengan yang pergi dua, hasilnya enam lagi. Kalau sama dengan mula-mula, jawabanmu benar.",
           "icon": "✅",
           "flowFrom": "Kalimat pengurangan",
-          "flowTo": "Jawaban terperiksa"
+          "flowTo": "7"
+        },
+        {
+          "stepNumber": 7,
+          "stepTitle": "7. METODE LUAR · Mengambil",
+          "stepDesc": "Ambil sebagian dari kumpulan.",
+          "icon": "🌍",
+          "flowFrom": "6",
+          "flowTo": "8"
+        },
+        {
+          "stepNumber": 8,
+          "stepTitle": "8. METODE LUAR · Hitung Mundur",
+          "stepDesc": "Mundur dari bilangan awal.",
+          "icon": "🌍",
+          "flowFrom": "7",
+          "flowTo": "END"
         }
       ],
       "infografisData": [
@@ -163,6 +179,27 @@
           "countNum": 3,
           "countWord": "Tiga",
           "voiceSentence": "Kita bisa melihat sisa dengan benda nyata, dengan diagram yang dicoret, atau dengan angka."
+        },
+        {
+          "fruitName": "Mengambil",
+          "emoji": "🌍",
+          "countNum": 1,
+          "countWord": "METODE LUAR · Take Away",
+          "voiceSentence": "METODE LUAR. Mengambil. Ambil sebagian dari kumpulan."
+        },
+        {
+          "fruitName": "Hitung Mundur",
+          "emoji": "🌍",
+          "countNum": 2,
+          "countWord": "METODE LUAR · Counting Back",
+          "voiceSentence": "METODE LUAR. Hitung Mundur. Mundur dari bilangan awal."
+        },
+        {
+          "fruitName": "Kurang di Bingkai",
+          "emoji": "🌍",
+          "countNum": 3,
+          "countWord": "METODE LUAR · Ten Frame Subtract",
+          "voiceSentence": "METODE LUAR. Kurang di Bingkai. Hapus/kosongkan kotak pada bingkai."
         }
       ],
       "concreteSlides": [
@@ -345,6 +382,41 @@
           "mechanicDescription": "Ronde 1: 5 − 1 = 4, ucapkan dan guratkan. Ronde 2: siswa memilih mula-mula dan berkurang sendiri (sisa paling sedikit 1), lalu mengucapkan dan menggurat hasilnya.",
           "voiceGuide": "Ucapkan hasil pengurangan, lalu guratkan angkanya di kanvas. Setelah itu, buat kalimat pengurangan milikmu sendiri."
         }
+      ],
+      "metodeLuar": [
+        {
+          "label": "METODE LUAR",
+          "nama": "Take Away",
+          "namaId": "Mengambil",
+          "asal": "Subtraction",
+          "ringkas": "Ambil sebagian dari kumpulan.",
+          "tahap": [
+            "Story",
+            "Concrete"
+          ]
+        },
+        {
+          "label": "METODE LUAR",
+          "nama": "Counting Back",
+          "namaId": "Hitung Mundur",
+          "asal": "Counting back",
+          "ringkas": "Mundur dari bilangan awal.",
+          "tahap": [
+            "Picture",
+            "Abstract"
+          ]
+        },
+        {
+          "label": "METODE LUAR",
+          "nama": "Ten Frame Subtract",
+          "namaId": "Kurang di Bingkai",
+          "asal": "Ten-frame",
+          "ringkas": "Hapus/kosongkan kotak pada bingkai.",
+          "tahap": [
+            "Mind",
+            "Infografis"
+          ]
+        }
       ]
     },
     "B": {
@@ -360,37 +432,37 @@
           "id": "B3-S1",
           "titleHint": "Telur di Piring",
           "sceneType": "telur-pasangan",
-          "voiceNarration": "Igil bertanya: bagaimana caramu melakukan pengurangan? Jelaskan caranya. Cara pertama memakai pasangan bilangan. Ada enam telur di piring. Empat telur masih utuh. Dua telur pecah. Enam adalah gabungan. Empat dan dua adalah sebagian. Empat dan dua jika digabung menjadi enam. Enam dikurangi dua sama dengan empat. Enam dikurangi empat sama dengan dua."
+          "voiceNarration": "Igil bertanya: bagaimana caramu melakukan pengurangan? Jelaskan caranya. Cara pertama memakai pasangan bilangan. Ada enam telur di piring. Empat telur masih utuh. Dua telur pecah. Enam adalah gabungan. Empat dan dua adalah sebagian. Empat dan dua jika digabung menjadi enam. Enam dikurangi dua sama dengan empat. Enam dikurangi empat sama dengan dua. METODE LUAR. Mengambil: Ambil sebagian dari kumpulan."
         },
         {
           "id": "B3-S2",
           "titleHint": "Balon Merah dan Kuning",
           "sceneType": "balon-pasangan",
-          "voiceNarration": "Kira membawa tujuh balon. Lima balon berwarna merah. Dua balon berwarna kuning. Tujuh adalah gabungan. Lima dan dua adalah sebagian. Lima dan dua jika digabung menjadi tujuh. Tujuh dikurangi lima sama dengan dua. Tujuh dikurangi dua sama dengan lima."
+          "voiceNarration": "Kira membawa tujuh balon. Lima balon berwarna merah. Dua balon berwarna kuning. Tujuh adalah gabungan. Lima dan dua adalah sebagian. Lima dan dua jika digabung menjadi tujuh. Tujuh dikurangi lima sama dengan dua. Tujuh dikurangi dua sama dengan lima. METODE LUAR. Hitung Mundur: Mundur dari bilangan awal."
         },
         {
           "id": "B3-S3",
           "titleHint": "Mobil Kosong",
           "sceneType": "mobil-nol",
-          "voiceNarration": "Mula-mula ada tiga orang di dalam mobil. Sebanyak tiga orang turun dari mobil. Sekarang tidak ada orang di dalam mobil. Tiga dan nol jika digabung menjadi tiga. Tiga dikurangi tiga sama dengan nol. Tiga dikurangi nol sama dengan tiga."
+          "voiceNarration": "Mula-mula ada tiga orang di dalam mobil. Sebanyak tiga orang turun dari mobil. Sekarang tidak ada orang di dalam mobil. Tiga dan nol jika digabung menjadi tiga. Tiga dikurangi tiga sama dengan nol. Tiga dikurangi nol sama dengan tiga. METODE LUAR. Kurang di Bingkai: Hapus/kosongkan kotak pada bingkai."
         },
         {
           "id": "B3-S4",
           "titleHint": "Lompat Mundur di Batu",
           "sceneType": "lompat-mundur-tiga",
-          "voiceNarration": "Cara kedua adalah menghitung mundur. Upe berdiri di batu angka tiga. Upe melompat dua langkah ke belakang. Dua, satu. Upe mendarat di angka satu. Tiga dikurangi dua sama dengan satu."
+          "voiceNarration": "Cara kedua adalah menghitung mundur. Upe berdiri di batu angka tiga. Upe melompat dua langkah ke belakang. Dua, satu. Upe mendarat di angka satu. Tiga dikurangi dua sama dengan satu. METODE LUAR. Mengambil: Ambil sebagian dari kumpulan."
         },
         {
           "id": "B3-S5",
           "titleHint": "Kira Melompat Mundur",
           "sceneType": "lompat-mundur-lima",
-          "voiceNarration": "Kira berdiri di angka lima. Kira melompat tiga langkah ke belakang. Empat, tiga, dua. Kira mendarat di angka dua. Lima dikurangi tiga sama dengan dua. Menghitung mundur artinya menyebut angka dari besar ke kecil."
+          "voiceNarration": "Kira berdiri di angka lima. Kira melompat tiga langkah ke belakang. Empat, tiga, dua. Kira mendarat di angka dua. Lima dikurangi tiga sama dengan dua. Menghitung mundur artinya menyebut angka dari besar ke kecil. METODE LUAR. Hitung Mundur: Mundur dari bilangan awal."
         },
         {
           "id": "B3-S6",
           "titleHint": "Sepuluh Bola",
           "sceneType": "sepuluh-bola",
-          "voiceNarration": "Cara ketiga adalah pengurangan dari sepuluh. Ada sepuluh bola. Tujuh bola merah dan tiga bola biru. Kita tulis sepuluh dikurangi tujuh sama dengan tiga. Kita juga bisa menulis sepuluh dikurangi tiga sama dengan tujuh. Sekarang giliranmu: pilih satu cara, lalu jelaskan kepada temanmu."
+          "voiceNarration": "Cara ketiga adalah pengurangan dari sepuluh. Ada sepuluh bola. Tujuh bola merah dan tiga bola biru. Kita tulis sepuluh dikurangi tujuh sama dengan tiga. Kita juga bisa menulis sepuluh dikurangi tiga sama dengan tujuh. Sekarang giliranmu: pilih satu cara, lalu jelaskan kepada temanmu. METODE LUAR. Kurang di Bingkai: Hapus/kosongkan kotak pada bingkai."
         }
       ],
       "mindMaps": [
@@ -440,7 +512,15 @@
           "stepDesc": "Bingkai sepuluh punya sepuluh petak. Petak yang terisi dan petak yang kosong jika digabung menjadi sepuluh. Sepuluh kurang tujuh sama dengan tiga, karena tiga petak masih kosong.",
           "icon": "🔟",
           "flowFrom": "Bingkai sepuluh",
-          "flowTo": "Petak yang kosong"
+          "flowTo": "7"
+        },
+        {
+          "stepNumber": 7,
+          "stepTitle": "7. METODE LUAR · Mengambil",
+          "stepDesc": "Ambil sebagian dari kumpulan.",
+          "icon": "🌍",
+          "flowFrom": "6",
+          "flowTo": "END"
         }
       ],
       "infografisData": [
@@ -499,6 +579,27 @@
           "countNum": 3,
           "countWord": "Tiga",
           "voiceSentence": "Tiga cara mengurangkan: pasangan bilangan, menghitung mundur, dan pengurangan dari sepuluh. Boleh memilih cara yang paling kamu suka, lalu periksa dengan menggabungkan."
+        },
+        {
+          "fruitName": "Mengambil",
+          "emoji": "🌍",
+          "countNum": 1,
+          "countWord": "METODE LUAR · Take Away",
+          "voiceSentence": "METODE LUAR. Mengambil. Ambil sebagian dari kumpulan."
+        },
+        {
+          "fruitName": "Hitung Mundur",
+          "emoji": "🌍",
+          "countNum": 2,
+          "countWord": "METODE LUAR · Counting Back",
+          "voiceSentence": "METODE LUAR. Hitung Mundur. Mundur dari bilangan awal."
+        },
+        {
+          "fruitName": "Kurang di Bingkai",
+          "emoji": "🌍",
+          "countNum": 3,
+          "countWord": "METODE LUAR · Ten Frame Subtract",
+          "voiceSentence": "METODE LUAR. Kurang di Bingkai. Hapus/kosongkan kotak pada bingkai."
         }
       ],
       "concreteSlides": [
@@ -681,6 +782,41 @@
           "mechanicDescription": "Ronde 1: 10 − 6 = 4, ucapkan dan guratkan. Ronde 2: siswa memilih bilangan awal dan pengurang sendiri (pengurang boleh nol atau sama dengan bilangan awal), lalu mengucapkan dan menggurat hasilnya.",
           "voiceGuide": "Ucapkan hasil pengurangan, lalu guratkan angkanya di kanvas. Setelah itu buat kalimat pengurangan milikmu sendiri."
         }
+      ],
+      "metodeLuar": [
+        {
+          "label": "METODE LUAR",
+          "nama": "Take Away",
+          "namaId": "Mengambil",
+          "asal": "Subtraction",
+          "ringkas": "Ambil sebagian dari kumpulan.",
+          "tahap": [
+            "Story",
+            "Concrete"
+          ]
+        },
+        {
+          "label": "METODE LUAR",
+          "nama": "Counting Back",
+          "namaId": "Hitung Mundur",
+          "asal": "Counting back",
+          "ringkas": "Mundur dari bilangan awal.",
+          "tahap": [
+            "Picture",
+            "Abstract"
+          ]
+        },
+        {
+          "label": "METODE LUAR",
+          "nama": "Ten Frame Subtract",
+          "namaId": "Kurang di Bingkai",
+          "asal": "Ten-frame",
+          "ringkas": "Hapus/kosongkan kotak pada bingkai.",
+          "tahap": [
+            "Mind",
+            "Infografis"
+          ]
+        }
       ]
     },
     "C": {
@@ -696,37 +832,37 @@
           "id": "C3-S1",
           "titleHint": "Kelinci di Kandang",
           "sceneType": "kelinci-gabung",
-          "voiceNarration": "Ada kandang kelinci di halaman. Empat kelinci berwarna cokelat. Tiga kelinci berwarna hitam. Berapa jumlah semua kelinci? Kelinci cokelat ditambah kelinci hitam. Empat ditambah tiga sama dengan tujuh. Kalau kelinci hitam ditambah kelinci cokelat, tiga ditambah empat juga sama dengan tujuh. Jumlahnya tetap sama."
+          "voiceNarration": "Ada kandang kelinci di halaman. Empat kelinci berwarna cokelat. Tiga kelinci berwarna hitam. Berapa jumlah semua kelinci? Kelinci cokelat ditambah kelinci hitam. Empat ditambah tiga sama dengan tujuh. Kalau kelinci hitam ditambah kelinci cokelat, tiga ditambah empat juga sama dengan tujuh. Jumlahnya tetap sama. METODE LUAR. Mengambil: Ambil sebagian dari kumpulan."
         },
         {
           "id": "C3-S2",
           "titleHint": "Kelinci yang Pergi",
           "sceneType": "kelinci-pergi",
-          "voiceNarration": "Sekarang kita lihat kelinci yang pergi. Ada tujuh kelinci. Ada berapa kelinci cokelat? Kelinci hitam pergi dari kandang. Tujuh dikurangi tiga sama dengan empat. Ada empat kelinci cokelat. Ada berapa kelinci hitam? Sekarang kelinci cokelat yang pergi. Tujuh dikurangi empat sama dengan tiga. Ada tiga kelinci hitam."
+          "voiceNarration": "Sekarang kita lihat kelinci yang pergi. Ada tujuh kelinci. Ada berapa kelinci cokelat? Kelinci hitam pergi dari kandang. Tujuh dikurangi tiga sama dengan empat. Ada empat kelinci cokelat. Ada berapa kelinci hitam? Sekarang kelinci cokelat yang pergi. Tujuh dikurangi empat sama dengan tiga. Ada tiga kelinci hitam. METODE LUAR. Hitung Mundur: Mundur dari bilangan awal."
         },
         {
           "id": "C3-S3",
           "titleHint": "Kaos di Jemuran",
           "sceneType": "jemuran-kaos",
-          "voiceNarration": "Ibu menjemur kaos. Tiga kaos berwarna kuning. Dua kaos berwarna merah muda. Tiga ditambah dua sama dengan lima. Dua ditambah tiga juga sama dengan lima. Kalau dua kaos merah muda diambil, tinggal tiga kaos kuning. Lima dikurangi dua sama dengan tiga. Kalau tiga kaos kuning diambil, tinggal dua. Lima dikurangi tiga sama dengan dua."
+          "voiceNarration": "Ibu menjemur kaos. Tiga kaos berwarna kuning. Dua kaos berwarna merah muda. Tiga ditambah dua sama dengan lima. Dua ditambah tiga juga sama dengan lima. Kalau dua kaos merah muda diambil, tinggal tiga kaos kuning. Lima dikurangi dua sama dengan tiga. Kalau tiga kaos kuning diambil, tinggal dua. Lima dikurangi tiga sama dengan dua. METODE LUAR. Kurang di Bingkai: Hapus/kosongkan kotak pada bingkai."
         },
         {
           "id": "C3-S4",
           "titleHint": "Kepik di Atas Daun",
           "sceneType": "kepik-daun",
-          "voiceNarration": "Ada kepik di atas daun. Tiga kepik duduk di daun. Satu kepik sedang terbang. Semua kepik ada empat. Tiga ditambah satu sama dengan empat. Kalau satu kepik terbang pergi, tinggal tiga. Empat dikurangi satu sama dengan tiga. Penjumlahan dan pengurangan saling berhubungan."
+          "voiceNarration": "Ada kepik di atas daun. Tiga kepik duduk di daun. Satu kepik sedang terbang. Semua kepik ada empat. Tiga ditambah satu sama dengan empat. Kalau satu kepik terbang pergi, tinggal tiga. Empat dikurangi satu sama dengan tiga. Penjumlahan dan pengurangan saling berhubungan. METODE LUAR. Mengambil: Ambil sebagian dari kumpulan."
         },
         {
           "id": "C3-S5",
           "titleHint": "Papan Tulis Wei",
           "sceneType": "papan-tulis-hilang",
-          "voiceNarration": "Wei melihat papan tulis. Di papan ada soal: enam ditambah berapa sama dengan sembilan. Wei berpikir: pengurangan adalah kebalikan dari penjumlahan. Jadi Wei menghitung sembilan dikurangi enam sama dengan tiga. Angka yang hilang adalah tiga. Lalu Wei memeriksa: enam ditambah tiga sama dengan sembilan. Cocok!"
+          "voiceNarration": "Wei melihat papan tulis. Di papan ada soal: enam ditambah berapa sama dengan sembilan. Wei berpikir: pengurangan adalah kebalikan dari penjumlahan. Jadi Wei menghitung sembilan dikurangi enam sama dengan tiga. Angka yang hilang adalah tiga. Lalu Wei memeriksa: enam ditambah tiga sama dengan sembilan. Cocok! METODE LUAR. Hitung Mundur: Mundur dari bilangan awal."
         },
         {
           "id": "C3-S6",
           "titleHint": "Teman-Teman dan Sepeda",
           "sceneType": "sepeda-teman",
-          "voiceNarration": "Tika dan teman-teman berkumpul di teras. Ada enam anak yang duduk dan dua anak bersepeda. Semua anak ada delapan. Enam ditambah dua sama dengan delapan. Dua ditambah enam juga sama dengan delapan. Kalau dua anak bersepeda pergi, tinggal enam anak. Delapan dikurangi dua sama dengan enam. Sekarang giliranmu: ambil benda bersama temanmu, buat cerita penjumlahan, lalu buat cerita pengurangannya. Jelaskan hubungannya."
+          "voiceNarration": "Tika dan teman-teman berkumpul di teras. Ada enam anak yang duduk dan dua anak bersepeda. Semua anak ada delapan. Enam ditambah dua sama dengan delapan. Dua ditambah enam juga sama dengan delapan. Kalau dua anak bersepeda pergi, tinggal enam anak. Delapan dikurangi dua sama dengan enam. Sekarang giliranmu: ambil benda bersama temanmu, buat cerita penjumlahan, lalu buat cerita pengurangannya. Jelaskan hubungannya. METODE LUAR. Kurang di Bingkai: Hapus/kosongkan kotak pada bingkai."
         }
       ],
       "mindMaps": [
@@ -776,7 +912,23 @@
           "stepDesc": "Periksa pengurangan dengan penjumlahan, dan periksa penjumlahan dengan pengurangan. Untuk mencari angka yang hilang, pakai kebalikan. Enam tambah berapa sama dengan sembilan? Hitung sembilan kurang enam.",
           "icon": "🔍",
           "flowFrom": "Kebalikan",
-          "flowTo": "Jawaban terbukti"
+          "flowTo": "7"
+        },
+        {
+          "stepNumber": 7,
+          "stepTitle": "7. METODE LUAR · Mengambil",
+          "stepDesc": "Ambil sebagian dari kumpulan.",
+          "icon": "🌍",
+          "flowFrom": "6",
+          "flowTo": "8"
+        },
+        {
+          "stepNumber": 8,
+          "stepTitle": "8. METODE LUAR · Hitung Mundur",
+          "stepDesc": "Mundur dari bilangan awal.",
+          "icon": "🌍",
+          "flowFrom": "7",
+          "flowTo": "END"
         }
       ],
       "infografisData": [
@@ -835,6 +987,27 @@
           "countNum": 8,
           "countWord": "Delapan",
           "voiceSentence": "Ambil benda bersama temanmu. Buat cerita penjumlahan, lalu buat cerita pengurangannya dari bilangan yang sama. Jelaskan hubungannya kepada temanmu."
+        },
+        {
+          "fruitName": "Mengambil",
+          "emoji": "🌍",
+          "countNum": 1,
+          "countWord": "METODE LUAR · Take Away",
+          "voiceSentence": "METODE LUAR. Mengambil. Ambil sebagian dari kumpulan."
+        },
+        {
+          "fruitName": "Hitung Mundur",
+          "emoji": "🌍",
+          "countNum": 2,
+          "countWord": "METODE LUAR · Counting Back",
+          "voiceSentence": "METODE LUAR. Hitung Mundur. Mundur dari bilangan awal."
+        },
+        {
+          "fruitName": "Kurang di Bingkai",
+          "emoji": "🌍",
+          "countNum": 3,
+          "countWord": "METODE LUAR · Ten Frame Subtract",
+          "voiceSentence": "METODE LUAR. Kurang di Bingkai. Hapus/kosongkan kotak pada bingkai."
         }
       ],
       "concreteSlides": [
@@ -1017,6 +1190,41 @@
           "mechanicDescription": "Empat ronde: pilih tanda yang tepat, lalu susun tiga ubin angka dan satu ubin tanda menjadi kalimat yang benar. Ronde akhir: ucapkan hasil kalimat yang tertutup.",
           "voiceGuide": "Pilih tanda, susun kalimat, lalu ucapkan hasilnya."
         }
+      ],
+      "metodeLuar": [
+        {
+          "label": "METODE LUAR",
+          "nama": "Take Away",
+          "namaId": "Mengambil",
+          "asal": "Subtraction",
+          "ringkas": "Ambil sebagian dari kumpulan.",
+          "tahap": [
+            "Story",
+            "Concrete"
+          ]
+        },
+        {
+          "label": "METODE LUAR",
+          "nama": "Counting Back",
+          "namaId": "Hitung Mundur",
+          "asal": "Counting back",
+          "ringkas": "Mundur dari bilangan awal.",
+          "tahap": [
+            "Picture",
+            "Abstract"
+          ]
+        },
+        {
+          "label": "METODE LUAR",
+          "nama": "Ten Frame Subtract",
+          "namaId": "Kurang di Bingkai",
+          "asal": "Ten-frame",
+          "ringkas": "Hapus/kosongkan kotak pada bingkai.",
+          "tahap": [
+            "Mind",
+            "Infografis"
+          ]
+        }
       ]
     },
     "D": {
@@ -1032,37 +1240,37 @@
           "id": "D3-S1",
           "titleHint": "Burung di Dahan Pohon",
           "sceneType": "burung-pohon",
-          "voiceNarration": "Lihat burung di dahan pohon. Mula-mula ada delapan burung di pohon. Sebanyak dua burung terbang. Berapakah sisa burung sekarang? Delapan dikurangi dua sama dengan enam. Sekarang ada enam burung tersisa."
+          "voiceNarration": "Lihat burung di dahan pohon. Mula-mula ada delapan burung di pohon. Sebanyak dua burung terbang. Berapakah sisa burung sekarang? Delapan dikurangi dua sama dengan enam. Sekarang ada enam burung tersisa. METODE LUAR. Mengambil: Ambil sebagian dari kumpulan."
         },
         {
           "id": "D3-S2",
           "titleHint": "Kepik di Atas Daun",
           "sceneType": "kepik-daun",
-          "voiceNarration": "Ada kepik di atas daun. Mula-mula ada sepuluh kepik di atas daun. Sebanyak dua kepik terbang. Berapakah sisa kepik sekarang? Sepuluh dikurangi dua sama dengan delapan. Sekarang tersisa delapan kepik."
+          "voiceNarration": "Ada kepik di atas daun. Mula-mula ada sepuluh kepik di atas daun. Sebanyak dua kepik terbang. Berapakah sisa kepik sekarang? Sepuluh dikurangi dua sama dengan delapan. Sekarang tersisa delapan kepik. METODE LUAR. Hitung Mundur: Mundur dari bilangan awal."
         },
         {
           "id": "D3-S3",
           "titleHint": "Siswa di Dalam Kelas",
           "sceneType": "siswa-kelas",
-          "voiceNarration": "Di dalam kelas ada tujuh siswa. Lima siswa masih di dalam kelas. Siswa lainnya pergi. Berapa banyak siswa yang pergi? Yang kita cari sekarang adalah bagian yang pergi. Tujuh dikurangi lima sama dengan dua. Ada dua siswa yang pergi."
+          "voiceNarration": "Di dalam kelas ada tujuh siswa. Lima siswa masih di dalam kelas. Siswa lainnya pergi. Berapa banyak siswa yang pergi? Yang kita cari sekarang adalah bagian yang pergi. Tujuh dikurangi lima sama dengan dua. Ada dua siswa yang pergi. METODE LUAR. Kurang di Bingkai: Hapus/kosongkan kotak pada bingkai."
         },
         {
           "id": "D3-S4",
           "titleHint": "Bola di Dalam Kardus",
           "sceneType": "bola-kardus",
-          "voiceNarration": "Kira mempunyai sepuluh bola. Tiga bola ada di luar kardus. Berapa banyak bola di dalam kardus? Sepuluh dikurangi tiga sama dengan tujuh. Ada tujuh bola di dalam kardus."
+          "voiceNarration": "Kira mempunyai sepuluh bola. Tiga bola ada di luar kardus. Berapa banyak bola di dalam kardus? Sepuluh dikurangi tiga sama dengan tujuh. Ada tujuh bola di dalam kardus. METODE LUAR. Mengambil: Ambil sebagian dari kumpulan."
         },
         {
           "id": "D3-S5",
           "titleHint": "Kira Memberi Bola kepada Tika",
           "sceneType": "beri-bola",
-          "voiceNarration": "Kira mempunyai sepuluh bola. Beberapa bola diberikan kepada Tika. Sisa bola Kira adalah enam. Berapa bola yang diberikan kepada Tika? Yang hilang adalah bola yang diberikan. Sepuluh dikurangi enam sama dengan empat. Ada empat bola yang diberikan kepada Tika. Periksa: enam ditambah empat sama dengan sepuluh."
+          "voiceNarration": "Kira mempunyai sepuluh bola. Beberapa bola diberikan kepada Tika. Sisa bola Kira adalah enam. Berapa bola yang diberikan kepada Tika? Yang hilang adalah bola yang diberikan. Sepuluh dikurangi enam sama dengan empat. Ada empat bola yang diberikan kepada Tika. Periksa: enam ditambah empat sama dengan sepuluh. METODE LUAR. Hitung Mundur: Mundur dari bilangan awal."
         },
         {
           "id": "D3-S6",
           "titleHint": "Kelereng Malosi",
           "sceneType": "kelereng-dua-kali",
-          "voiceNarration": "Malosi mempunyai sembilan kelereng. Malosi memberi Kira dua kelereng. Malosi juga memberi Upe empat kelereng. Berapakah sisa kelereng Malosi? Kita kurangi dua kali. Sembilan dikurangi dua sama dengan tujuh. Tujuh dikurangi empat sama dengan tiga. Sisa kelereng Malosi ada tiga."
+          "voiceNarration": "Malosi mempunyai sembilan kelereng. Malosi memberi Kira dua kelereng. Malosi juga memberi Upe empat kelereng. Berapakah sisa kelereng Malosi? Kita kurangi dua kali. Sembilan dikurangi dua sama dengan tujuh. Tujuh dikurangi empat sama dengan tiga. Sisa kelereng Malosi ada tiga. METODE LUAR. Kurang di Bingkai: Hapus/kosongkan kotak pada bingkai."
         }
       ],
       "mindMaps": [
@@ -1112,7 +1320,23 @@
           "stepDesc": "Tulis jawaban dalam satu kalimat lengkap dengan bendanya. Lalu periksa dengan penjumlahan. Sisa ditambah yang pergi harus sama dengan mula-mula.",
           "icon": "✅",
           "flowFrom": "Hasil hitung",
-          "flowTo": "Kalimat jawaban"
+          "flowTo": "7"
+        },
+        {
+          "stepNumber": 7,
+          "stepTitle": "7. METODE LUAR · Mengambil",
+          "stepDesc": "Ambil sebagian dari kumpulan.",
+          "icon": "🌍",
+          "flowFrom": "6",
+          "flowTo": "8"
+        },
+        {
+          "stepNumber": 8,
+          "stepTitle": "8. METODE LUAR · Hitung Mundur",
+          "stepDesc": "Mundur dari bilangan awal.",
+          "icon": "🌍",
+          "flowFrom": "7",
+          "flowTo": "END"
         }
       ],
       "infografisData": [
@@ -1171,6 +1395,27 @@
           "countNum": 6,
           "countWord": "Enam",
           "voiceSentence": "Buat soal cerita pengurangan buatanmu sendiri. Pilih topik, tentukan mula-mula, tentukan yang pergi, tulis ceritanya, tulis kalimat matematika, lalu tukar soalmu dengan temanmu."
+        },
+        {
+          "fruitName": "Mengambil",
+          "emoji": "🌍",
+          "countNum": 1,
+          "countWord": "METODE LUAR · Take Away",
+          "voiceSentence": "METODE LUAR. Mengambil. Ambil sebagian dari kumpulan."
+        },
+        {
+          "fruitName": "Hitung Mundur",
+          "emoji": "🌍",
+          "countNum": 2,
+          "countWord": "METODE LUAR · Counting Back",
+          "voiceSentence": "METODE LUAR. Hitung Mundur. Mundur dari bilangan awal."
+        },
+        {
+          "fruitName": "Kurang di Bingkai",
+          "emoji": "🌍",
+          "countNum": 3,
+          "countWord": "METODE LUAR · Ten Frame Subtract",
+          "voiceSentence": "METODE LUAR. Kurang di Bingkai. Hapus/kosongkan kotak pada bingkai."
         }
       ],
       "concreteSlides": [
@@ -1352,6 +1597,41 @@
           "objective": "Membuat soal cerita pengurangan sendiri dan mencari mula-mula dengan kebalikan.",
           "mechanicDescription": "Dua ronde. Ronde pertama: siswa memilih topik, mengatur mula-mula dan yang pergi, lalu menjawab soalnya sendiri dan memeriksanya. Ronde akhir: mencari mula-mula pada soal ? − 3 = 4, ucapkan jawabannya.",
           "voiceGuide": "Buat dan jawab soalmu. Lalu ucapkan jumlah mula-mula pada soal terakhir."
+        }
+      ],
+      "metodeLuar": [
+        {
+          "label": "METODE LUAR",
+          "nama": "Take Away",
+          "namaId": "Mengambil",
+          "asal": "Subtraction",
+          "ringkas": "Ambil sebagian dari kumpulan.",
+          "tahap": [
+            "Story",
+            "Concrete"
+          ]
+        },
+        {
+          "label": "METODE LUAR",
+          "nama": "Counting Back",
+          "namaId": "Hitung Mundur",
+          "asal": "Counting back",
+          "ringkas": "Mundur dari bilangan awal.",
+          "tahap": [
+            "Picture",
+            "Abstract"
+          ]
+        },
+        {
+          "label": "METODE LUAR",
+          "nama": "Ten Frame Subtract",
+          "namaId": "Kurang di Bingkai",
+          "asal": "Ten-frame",
+          "ringkas": "Hapus/kosongkan kotak pada bingkai.",
+          "tahap": [
+            "Mind",
+            "Infografis"
+          ]
         }
       ]
     }

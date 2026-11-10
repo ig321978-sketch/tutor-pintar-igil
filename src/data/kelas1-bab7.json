@@ -24,37 +24,37 @@
           "id": "A7-S1",
           "titleHint": "Mencuci Tangan",
           "sceneType": "anak-berbaris-tinggi",
-          "voiceNarration": "Waktu istirahat telah tiba. Para siswa akan memakan bekal mereka. Kira, Upe, Malosi, dan Wei segera berbaris. Mereka berdiri berjajar dengan tertib dan menunggu giliran untuk mencuci tangan. Mereka mematuhi pesan Ibu Guru, kita harus mencuci tangan sebelum makan. Coba urutkan siswa berdasarkan tinggi badannya. Bagaimana kamu mengetahuinya? Tinggi badan kita berbeda-beda. Itu adalah ciptaan Tuhan yang harus disyukuri. Kita harus saling menghargai."
+          "voiceNarration": "Waktu istirahat telah tiba. Para siswa akan memakan bekal mereka. Kira, Upe, Malosi, dan Wei segera berbaris. Mereka berdiri berjajar dengan tertib dan menunggu giliran untuk mencuci tangan. Mereka mematuhi pesan Ibu Guru, kita harus mencuci tangan sebelum makan. Coba urutkan siswa berdasarkan tinggi badannya. Bagaimana kamu mengetahuinya? Tinggi badan kita berbeda-beda. Itu adalah ciptaan Tuhan yang harus disyukuri. Kita harus saling menghargai. METODE LUAR. Ulangi Satuan Panjang: Ukur dengan mengulang satuan."
         },
         {
           "id": "A7-S2",
           "titleHint": "Lebih Tinggi, Lebih Pendek",
           "sceneType": "pohon-lebih-tinggi",
-          "voiceNarration": "Ayo kita amati pohon pisang. Pohon mana yang paling tinggi? Pohon mana yang paling pendek? Kita bandingkan tinggi pohon A dan pohon B. Pohon A lebih tinggi dari pohon B. Pohon B lebih pendek dari pohon A. Kita dapat membandingkan tinggi dua benda. Kita menggunakan kata lebih tinggi dan lebih pendek."
+          "voiceNarration": "Ayo kita amati pohon pisang. Pohon mana yang paling tinggi? Pohon mana yang paling pendek? Kita bandingkan tinggi pohon A dan pohon B. Pohon A lebih tinggi dari pohon B. Pohon B lebih pendek dari pohon A. Kita dapat membandingkan tinggi dua benda. Kita menggunakan kata lebih tinggi dan lebih pendek. METODE LUAR. Banding Panjang: Sisihkan ujung benda untuk membandingkan."
         },
         {
           "id": "A7-S3",
           "titleHint": "Sama Tinggi",
           "sceneType": "pohon-sama-tinggi",
-          "voiceNarration": "Sekarang kita bandingkan tinggi pohon B dan pohon C. Ujung atas kedua pohon sama tinggi. Pohon B sama tinggi dengan pohon C. Dua benda ada yang sama tingginya. Kita menggunakan kata sama tinggi untuk membandingkannya."
+          "voiceNarration": "Sekarang kita bandingkan tinggi pohon B dan pohon C. Ujung atas kedua pohon sama tinggi. Pohon B sama tinggi dengan pohon C. Dua benda ada yang sama tingginya. Kita menggunakan kata sama tinggi untuk membandingkannya. METODE LUAR. Satuan Tak Baku: Jengkal, pensil, sebelum penggaris."
         },
         {
           "id": "A7-S4",
           "titleHint": "Paling Tinggi, Paling Pendek",
           "sceneType": "pohon-paling-tinggi",
-          "voiceNarration": "Kita bandingkan pohon A, B, C, dan D. Pohon A lebih tinggi dari pohon B, C, dan D. Jadi pohon A paling tinggi. Pohon D lebih pendek dari pohon A, B, dan C. Jadi pohon D paling pendek. Urutan pohon dari yang paling tinggi adalah A, B, C, dan D, atau A, C, B, dan D, karena pohon B dan pohon C sama tinggi. Kita dapat membandingkan tinggi tiga benda atau lebih. Kita menggunakan kata paling tinggi dan paling pendek."
+          "voiceNarration": "Kita bandingkan pohon A, B, C, dan D. Pohon A lebih tinggi dari pohon B, C, dan D. Jadi pohon A paling tinggi. Pohon D lebih pendek dari pohon A, B, dan C. Jadi pohon D paling pendek. Urutan pohon dari yang paling tinggi adalah A, B, C, dan D, atau A, C, B, dan D, karena pohon B dan pohon C sama tinggi. Kita dapat membandingkan tinggi tiga benda atau lebih. Kita menggunakan kata paling tinggi dan paling pendek. METODE LUAR. Ulangi Satuan Panjang: Ukur dengan mengulang satuan."
         },
         {
           "id": "A7-S5",
           "titleHint": "Pensil Warna",
           "sceneType": "pensil-garis-awal",
-          "voiceNarration": "Amati pensil warna. Semua pensil dimulai dari garis awal yang sama. Pensil hijau lebih pendek dari pensil merah. Pensil merah lebih pendek dari pensil biru. Pensil hijau lebih pendek dari pensil merah dan biru, jadi pensil hijau paling pendek. Pensil biru lebih panjang dari pensil hijau dan merah, jadi pensil biru paling panjang. Kita dapat membandingkan panjang benda. Kita menggunakan kata lebih panjang, lebih pendek, paling panjang, dan paling pendek."
+          "voiceNarration": "Amati pensil warna. Semua pensil dimulai dari garis awal yang sama. Pensil hijau lebih pendek dari pensil merah. Pensil merah lebih pendek dari pensil biru. Pensil hijau lebih pendek dari pensil merah dan biru, jadi pensil hijau paling pendek. Pensil biru lebih panjang dari pensil hijau dan merah, jadi pensil biru paling panjang. Kita dapat membandingkan panjang benda. Kita menggunakan kata lebih panjang, lebih pendek, paling panjang, dan paling pendek. METODE LUAR. Banding Panjang: Sisihkan ujung benda untuk membandingkan."
         },
         {
           "id": "A7-S6",
           "titleHint": "Kupu-Kupu Terbang",
           "sceneType": "kupu-kupu-terbang",
-          "voiceNarration": "Di taman ada tiga kupu-kupu, yaitu kuning, merah, dan hijau. Kupu-kupu kuning terbang tinggi. Kupu-kupu merah terbang lebih tinggi dari kupu-kupu kuning. Kupu-kupu hijau terbang lebih tinggi dari kupu-kupu merah dan kupu-kupu kuning. Jadi kupu-kupu hijau terbang paling tinggi dan kupu-kupu kuning terbang paling rendah. Kita dapat membandingkan posisi benda. Kita menggunakan kata lebih tinggi, lebih rendah, paling tinggi, dan paling rendah."
+          "voiceNarration": "Di taman ada tiga kupu-kupu, yaitu kuning, merah, dan hijau. Kupu-kupu kuning terbang tinggi. Kupu-kupu merah terbang lebih tinggi dari kupu-kupu kuning. Kupu-kupu hijau terbang lebih tinggi dari kupu-kupu merah dan kupu-kupu kuning. Jadi kupu-kupu hijau terbang paling tinggi dan kupu-kupu kuning terbang paling rendah. Kita dapat membandingkan posisi benda. Kita menggunakan kata lebih tinggi, lebih rendah, paling tinggi, dan paling rendah. METODE LUAR. Satuan Tak Baku: Jengkal, pensil, sebelum penggaris."
         }
       ],
       "mindMaps": [
@@ -104,7 +104,23 @@
           "stepDesc": "Buat kalimat perbandingan dari benda di sekitarmu. Tinggi badan kita berbeda-beda, itu ciptaan Tuhan yang harus disyukuri dan kita saling menghargai.",
           "icon": "🙏",
           "flowFrom": "Panjang dan posisi",
-          "flowTo": "Ceritakan dan syukuri"
+          "flowTo": "7"
+        },
+        {
+          "stepNumber": 7,
+          "stepTitle": "7. METODE LUAR · Ulangi Satuan Panjang",
+          "stepDesc": "Ukur dengan mengulang satuan.",
+          "icon": "🌍",
+          "flowFrom": "6",
+          "flowTo": "8"
+        },
+        {
+          "stepNumber": 8,
+          "stepTitle": "8. METODE LUAR · Banding Panjang",
+          "stepDesc": "Sisihkan ujung benda untuk membandingkan.",
+          "icon": "🌍",
+          "flowFrom": "7",
+          "flowTo": "END"
         }
       ],
       "infografisData": [
@@ -170,6 +186,27 @@
           "countNum": 10,
           "countWord": "Sepuluh",
           "voiceSentence": "Dua benda memakai kata lebih. Tiga benda atau lebih memakai kata paling. Kalau sama, pakai sama tinggi atau sama panjang."
+        },
+        {
+          "fruitName": "Ulangi Satuan Panjang",
+          "emoji": "🌍",
+          "countNum": 1,
+          "countWord": "METODE LUAR · Iterate Unit",
+          "voiceSentence": "METODE LUAR. Ulangi Satuan Panjang. Ukur dengan mengulang satuan."
+        },
+        {
+          "fruitName": "Banding Panjang",
+          "emoji": "🌍",
+          "countNum": 2,
+          "countWord": "METODE LUAR · Compare Length",
+          "voiceSentence": "METODE LUAR. Banding Panjang. Sisihkan ujung benda untuk membandingkan."
+        },
+        {
+          "fruitName": "Satuan Tak Baku",
+          "emoji": "🌍",
+          "countNum": 3,
+          "countWord": "METODE LUAR · Nonstandard Units",
+          "voiceSentence": "METODE LUAR. Satuan Tak Baku. Jengkal, pensil, sebelum penggaris."
         }
       ],
       "concreteSlides": [
@@ -352,6 +389,42 @@
           "mechanicDescription": "Dua ronde. Ronde 1 ada berapa anak yang lebih tinggi dari Kira. Ronde 2 siswa memilih sendiri 3, 4, atau 5 benda lalu menghitung benda yang lebih panjang dari yang paling pendek. Siswa mengucapkan hasilnya lalu menggurat lambangnya.",
           "voiceGuide": "Hitung, ucapkan, lalu guratkan lambangnya."
         }
+      ],
+      "metodeLuar": [
+        {
+          "label": "METODE LUAR",
+          "nama": "Iterate Unit",
+          "namaId": "Ulangi Satuan Panjang",
+          "asal": "Measurement",
+          "ringkas": "Ukur dengan mengulang satuan.",
+          "tahap": [
+            "Story",
+            "Concrete",
+            "Picture"
+          ]
+        },
+        {
+          "label": "METODE LUAR",
+          "nama": "Compare Length",
+          "namaId": "Banding Panjang",
+          "asal": "Direct comparison",
+          "ringkas": "Sisihkan ujung benda untuk membandingkan.",
+          "tahap": [
+            "Mind",
+            "Abstract"
+          ]
+        },
+        {
+          "label": "METODE LUAR",
+          "nama": "Nonstandard Units",
+          "namaId": "Satuan Tak Baku",
+          "asal": "Measurement progression",
+          "ringkas": "Jengkal, pensil, sebelum penggaris.",
+          "tahap": [
+            "Infografis",
+            "Concrete"
+          ]
+        }
       ]
     },
     "B": {
@@ -367,37 +440,37 @@
           "id": "B7-S1",
           "titleHint": "Tinggi Badan Malosi",
           "sceneType": "tinggi-malosi",
-          "voiceNarration": "Malosi adalah siswa paling tinggi di kelas. Menurut kamu, berapa kira-kira tinggi badan Malosi? Kita bisa mengukur tinggi badan Malosi. Kita juga bisa mengukur panjang benda. Kita bisa mengukurnya menggunakan jengkal, telapak kaki, atau benda lain di sekitar kita. Sebelum mengukur, coba tebak dulu berapa panjangnya."
+          "voiceNarration": "Malosi adalah siswa paling tinggi di kelas. Menurut kamu, berapa kira-kira tinggi badan Malosi? Kita bisa mengukur tinggi badan Malosi. Kita juga bisa mengukur panjang benda. Kita bisa mengukurnya menggunakan jengkal, telapak kaki, atau benda lain di sekitar kita. Sebelum mengukur, coba tebak dulu berapa panjangnya. METODE LUAR. Ulangi Satuan Panjang: Ukur dengan mengulang satuan."
         },
         {
           "id": "B7-S2",
           "titleHint": "Alat Ukur di Sekitar",
           "sceneType": "alat-ukur-sekitar",
-          "voiceNarration": "Inilah benda yang bisa kita pakai untuk mengukur. Ada jengkal, telapak kaki, dan depa. Ada stik es krim, pensil, koin, sedotan, dan penjepit kertas. Kamu juga boleh memakai benda lain di sekitarmu. Benda yang dipakai untuk mengukur disebut alat ukur."
+          "voiceNarration": "Inilah benda yang bisa kita pakai untuk mengukur. Ada jengkal, telapak kaki, dan depa. Ada stik es krim, pensil, koin, sedotan, dan penjepit kertas. Kamu juga boleh memakai benda lain di sekitarmu. Benda yang dipakai untuk mengukur disebut alat ukur. METODE LUAR. Banding Panjang: Sisihkan ujung benda untuk membandingkan."
         },
         {
           "id": "B7-S3",
           "titleHint": "Mengukur Meja dengan Sedotan",
           "sceneType": "meja-sedotan",
-          "voiceNarration": "Bagaimana cara mengukur meja menggunakan sedotan? Mulai dari ujung meja. Taruh sedotan satu per satu, rapat, tidak bertumpuk, dan tidak miring. Lalu hitung banyak sedotannya. Satu, dua, tiga, empat. Panjang meja adalah empat sedotan."
+          "voiceNarration": "Bagaimana cara mengukur meja menggunakan sedotan? Mulai dari ujung meja. Taruh sedotan satu per satu, rapat, tidak bertumpuk, dan tidak miring. Lalu hitung banyak sedotannya. Satu, dua, tiga, empat. Panjang meja adalah empat sedotan. METODE LUAR. Satuan Tak Baku: Jengkal, pensil, sebelum penggaris."
         },
         {
           "id": "B7-S4",
           "titleHint": "Cara Mengukur yang Benar",
           "sceneType": "cara-mengukur-benar",
-          "voiceNarration": "Inilah cara mengukur yang benar. Pertama, mulai dari ujung benda. Kedua, alat ukur rapat. Ketiga, alat ukur tidak bertumpuk. Keempat, alat ukur tidak miring. Gambar yang bertanda centang hijau itu benar. Gambar yang bertanda silang merah itu salah. Ingat juga, gunakan satu jenis alat ukur yang sama dari awal sampai akhir."
+          "voiceNarration": "Inilah cara mengukur yang benar. Pertama, mulai dari ujung benda. Kedua, alat ukur rapat. Ketiga, alat ukur tidak bertumpuk. Keempat, alat ukur tidak miring. Gambar yang bertanda centang hijau itu benar. Gambar yang bertanda silang merah itu salah. Ingat juga, gunakan satu jenis alat ukur yang sama dari awal sampai akhir. METODE LUAR. Ulangi Satuan Panjang: Ukur dengan mengulang satuan."
         },
         {
           "id": "B7-S5",
           "titleHint": "Mengukur dengan Jengkal",
           "sceneType": "meja-jengkal",
-          "voiceNarration": "Bagaimana cara mengukur meja dengan jengkal tangan? Rentangkan jari-jarimu, lalu pindahkan tanganmu satu per satu. Ujung kelingking menyentuh tempat ujung jempol untuk jengkal berikutnya. Satu, dua, tiga, empat, lima. Panjang meja adalah lima jengkal tangan. Jengkal tangan setiap orang berbeda."
+          "voiceNarration": "Bagaimana cara mengukur meja dengan jengkal tangan? Rentangkan jari-jarimu, lalu pindahkan tanganmu satu per satu. Ujung kelingking menyentuh tempat ujung jempol untuk jengkal berikutnya. Satu, dua, tiga, empat, lima. Panjang meja adalah lima jengkal tangan. Jengkal tangan setiap orang berbeda. METODE LUAR. Banding Panjang: Sisihkan ujung benda untuk membandingkan."
         },
         {
           "id": "B7-S6",
           "titleHint": "Buku Diukur Dua Cara",
           "sceneType": "buku-dua-alat-ukur",
-          "voiceNarration": "Berapa panjang buku? Kalau diukur dengan stik es krim, panjang buku adalah dua stik es krim. Kalau diukur dengan koin, panjang buku adalah dua belas koin. Mengapa hasilnya berbeda? Karena panjang stik es krim dan koin berbeda. Hasil pengukuran buku dengan stik es krim dan koin berbeda. Jadi kalau kita membandingkan, pakai alat ukur yang sama."
+          "voiceNarration": "Berapa panjang buku? Kalau diukur dengan stik es krim, panjang buku adalah dua stik es krim. Kalau diukur dengan koin, panjang buku adalah dua belas koin. Mengapa hasilnya berbeda? Karena panjang stik es krim dan koin berbeda. Hasil pengukuran buku dengan stik es krim dan koin berbeda. Jadi kalau kita membandingkan, pakai alat ukur yang sama. METODE LUAR. Satuan Tak Baku: Jengkal, pensil, sebelum penggaris."
         }
       ],
       "mindMaps": [
@@ -447,7 +520,23 @@
           "stepDesc": "Gunakan ukuran untuk menjaga diri, misalnya jarak aman membaca buku kira-kira 3 jengkal supaya mata sehat. Ayo ukur kakimu sendiri.",
           "icon": "👣",
           "flowFrom": "Pakai dalam hidup",
-          "flowTo": "Ukur kakimu"
+          "flowTo": "7"
+        },
+        {
+          "stepNumber": 7,
+          "stepTitle": "7. METODE LUAR · Ulangi Satuan Panjang",
+          "stepDesc": "Ukur dengan mengulang satuan.",
+          "icon": "🌍",
+          "flowFrom": "6",
+          "flowTo": "8"
+        },
+        {
+          "stepNumber": 8,
+          "stepTitle": "8. METODE LUAR · Banding Panjang",
+          "stepDesc": "Sisihkan ujung benda untuk membandingkan.",
+          "icon": "🌍",
+          "flowFrom": "7",
+          "flowTo": "END"
         }
       ],
       "infografisData": [
@@ -513,6 +602,27 @@
           "countNum": 4,
           "countWord": "Empat",
           "voiceSentence": "Jarak aman membaca buku sekitar 3 jengkal, dan menonton di depan laptop atau ponsel sekitar 4 jengkal, supaya mata sehat."
+        },
+        {
+          "fruitName": "Ulangi Satuan Panjang",
+          "emoji": "🌍",
+          "countNum": 1,
+          "countWord": "METODE LUAR · Iterate Unit",
+          "voiceSentence": "METODE LUAR. Ulangi Satuan Panjang. Ukur dengan mengulang satuan."
+        },
+        {
+          "fruitName": "Banding Panjang",
+          "emoji": "🌍",
+          "countNum": 2,
+          "countWord": "METODE LUAR · Compare Length",
+          "voiceSentence": "METODE LUAR. Banding Panjang. Sisihkan ujung benda untuk membandingkan."
+        },
+        {
+          "fruitName": "Satuan Tak Baku",
+          "emoji": "🌍",
+          "countNum": 3,
+          "countWord": "METODE LUAR · Nonstandard Units",
+          "voiceSentence": "METODE LUAR. Satuan Tak Baku. Jengkal, pensil, sebelum penggaris."
         }
       ],
       "concreteSlides": [
@@ -694,6 +804,42 @@
           "objective": "Menyebutkan hasil pengukuran, mengucapkannya, dan menulis lambangnya.",
           "mechanicDescription": "Dua ronde. Ronde 1 panjang meja 4 sedotan. Ronde 2 siswa memilih satu dari tiga benda (lemari 6 jengkal, pintu 8 jengkal, papan tulis 10 jengkal). Siswa mengucapkan hasilnya lalu menggurat lambangnya.",
           "voiceGuide": "Ucapkan hasil pengukuran, lalu guratkan lambangnya."
+        }
+      ],
+      "metodeLuar": [
+        {
+          "label": "METODE LUAR",
+          "nama": "Iterate Unit",
+          "namaId": "Ulangi Satuan Panjang",
+          "asal": "Measurement",
+          "ringkas": "Ukur dengan mengulang satuan.",
+          "tahap": [
+            "Story",
+            "Concrete",
+            "Picture"
+          ]
+        },
+        {
+          "label": "METODE LUAR",
+          "nama": "Compare Length",
+          "namaId": "Banding Panjang",
+          "asal": "Direct comparison",
+          "ringkas": "Sisihkan ujung benda untuk membandingkan.",
+          "tahap": [
+            "Mind",
+            "Abstract"
+          ]
+        },
+        {
+          "label": "METODE LUAR",
+          "nama": "Nonstandard Units",
+          "namaId": "Satuan Tak Baku",
+          "asal": "Measurement progression",
+          "ringkas": "Jengkal, pensil, sebelum penggaris.",
+          "tahap": [
+            "Infografis",
+            "Concrete"
+          ]
         }
       ]
     }

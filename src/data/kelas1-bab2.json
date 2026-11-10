@@ -23,37 +23,37 @@
         {
           "id": "A2-S1",
           "titleHint": "Lompat Tali",
-          "voiceNarration": "Di halaman sekolah, empat anak bermain lompat tali. Tidak lama kemudian, datang lagi dua anak. Mereka ikut bermain. Sekarang ada enam anak. Anak yang bermain bertambah.",
+          "voiceNarration": "Di halaman sekolah, empat anak bermain lompat tali. Tidak lama kemudian, datang lagi dua anak. Mereka ikut bermain. Sekarang ada enam anak. Anak yang bermain bertambah. METODE LUAR. Menghitung Maju: Mulai dari bilangan pertama lalu maju.",
           "sceneType": "tali-datang-lagi"
         },
         {
           "id": "A2-S2",
           "titleHint": "Igil di Papan",
-          "voiceNarration": "Igil menulis cerita lompat tali di papan. Mula-mula empat anak. Datang lagi dua anak. Semuanya enam anak. Kita tulis: empat, tanda tambah, dua, tanda sama dengan, enam. Kita baca: empat ditambah dua sama dengan enam.",
+          "voiceNarration": "Igil menulis cerita lompat tali di papan. Mula-mula empat anak. Datang lagi dua anak. Semuanya enam anak. Kita tulis: empat, tanda tambah, dua, tanda sama dengan, enam. Kita baca: empat ditambah dua sama dengan enam. METODE LUAR. Bagian–Utuh: Dua bagian membentuk jumlah.",
           "sceneType": "papan-kalimat"
         },
         {
           "id": "A2-S3",
           "titleHint": "Pensil Digabung",
-          "voiceNarration": "Kira punya tiga pensil merah. Upe punya empat pensil biru. Mereka menggabungkan semua pensil ke satu kotak. Sekarang ada tujuh pensil. Menjumlahkan artinya menggabungkan.",
+          "voiceNarration": "Kira punya tiga pensil merah. Upe punya empat pensil biru. Mereka menggabungkan semua pensil ke satu kotak. Sekarang ada tujuh pensil. Menjumlahkan artinya menggabungkan. METODE LUAR. Jumlah di Bingkai Sepuluh: Gabungkan benda di bingkai.",
           "sceneType": "pensil-digabung"
         },
         {
           "id": "A2-S4",
           "titleHint": "Mobil Mainan",
-          "voiceNarration": "Malosi bermain mobil mainan di atas karpet. Ada empat mobil kuning dan empat mobil merah. Empat ditambah empat sama dengan delapan. Semuanya ada delapan mobil.",
+          "voiceNarration": "Malosi bermain mobil mainan di atas karpet. Ada empat mobil kuning dan empat mobil merah. Empat ditambah empat sama dengan delapan. Semuanya ada delapan mobil. METODE LUAR. Menghitung Maju: Mulai dari bilangan pertama lalu maju.",
           "sceneType": "mobil-mainan"
         },
         {
           "id": "A2-S5",
           "titleHint": "Bebek di Kolam",
-          "voiceNarration": "Di kolam ada lima bebek yang sedang berenang. Lalu datang lagi dua bebek. Lima ditambah dua sama dengan tujuh. Sekarang ada tujuh bebek di kolam.",
+          "voiceNarration": "Di kolam ada lima bebek yang sedang berenang. Lalu datang lagi dua bebek. Lima ditambah dua sama dengan tujuh. Sekarang ada tujuh bebek di kolam. METODE LUAR. Bagian–Utuh: Dua bagian membentuk jumlah.",
           "sceneType": "bebek-kolam"
         },
         {
           "id": "A2-S6",
           "titleHint": "Ayo Bermain",
-          "voiceNarration": "Ayo bermain! Upe menaruh lima kelereng di satu piring. Wei menaruh tiga kelereng di piring yang lain. Berapa jumlah semua kelereng? Lima ditambah tiga sama dengan delapan.",
+          "voiceNarration": "Ayo bermain! Upe menaruh lima kelereng di satu piring. Wei menaruh tiga kelereng di piring yang lain. Berapa jumlah semua kelereng? Lima ditambah tiga sama dengan delapan. METODE LUAR. Jumlah di Bingkai Sepuluh: Gabungkan benda di bingkai.",
           "sceneType": "dua-piring-kelereng"
         }
       ],
@@ -88,7 +88,23 @@
           "stepDesc": "Tulis kalimat matematika: empat tambah dua sama dengan enam. Lalu baca: empat ditambah dua sama dengan enam.",
           "icon": "📝",
           "flowFrom": "4 + 2 = 6",
-          "flowTo": "Empat ditambah dua sama dengan enam"
+          "flowTo": "5"
+        },
+        {
+          "stepNumber": 5,
+          "stepTitle": "5. METODE LUAR · Menghitung Maju",
+          "stepDesc": "Mulai dari bilangan pertama lalu maju.",
+          "icon": "🌍",
+          "flowFrom": "4",
+          "flowTo": "6"
+        },
+        {
+          "stepNumber": 6,
+          "stepTitle": "6. METODE LUAR · Bagian–Utuh",
+          "stepDesc": "Dua bagian membentuk jumlah.",
+          "icon": "🌍",
+          "flowFrom": "5",
+          "flowTo": "END"
         }
       ],
       "infografisData": [
@@ -126,6 +142,27 @@
           "countNum": 8,
           "countWord": "Delapan",
           "voiceSentence": "Lima kelereng di satu piring ditambah tiga kelereng di piring lain, semuanya delapan kelereng."
+        },
+        {
+          "fruitName": "Menghitung Maju",
+          "emoji": "🌍",
+          "countNum": 1,
+          "countWord": "METODE LUAR · Counting On",
+          "voiceSentence": "METODE LUAR. Menghitung Maju. Mulai dari bilangan pertama lalu maju."
+        },
+        {
+          "fruitName": "Bagian–Utuh",
+          "emoji": "🌍",
+          "countNum": 2,
+          "countWord": "METODE LUAR · Part–Part–Whole",
+          "voiceSentence": "METODE LUAR. Bagian–Utuh. Dua bagian membentuk jumlah."
+        },
+        {
+          "fruitName": "Jumlah di Bingkai Sepuluh",
+          "emoji": "🌍",
+          "countNum": 3,
+          "countWord": "METODE LUAR · Ten Frame Add",
+          "voiceSentence": "METODE LUAR. Jumlah di Bingkai Sepuluh. Gabungkan benda di bingkai."
         }
       ],
       "concreteSlides": [
@@ -308,6 +345,42 @@
           "mechanicDescription": "Ronde 1: 5 + 3 = ? dengan suara dan guratan angka 8. Ronde 2 (Ayo Mencoba): siswa memilih dua bilangan sendiri, jumlahnya paling banyak 10.",
           "voiceGuide": "Ucapkan hasilnya, lalu guratkan angkanya di kanvas."
         }
+      ],
+      "metodeLuar": [
+        {
+          "label": "METODE LUAR",
+          "nama": "Counting On",
+          "namaId": "Menghitung Maju",
+          "asal": "Counting on",
+          "ringkas": "Mulai dari bilangan pertama lalu maju.",
+          "tahap": [
+            "Story",
+            "Concrete",
+            "Abstract"
+          ]
+        },
+        {
+          "label": "METODE LUAR",
+          "nama": "Part–Part–Whole",
+          "namaId": "Bagian–Utuh",
+          "asal": "Singapore Math",
+          "ringkas": "Dua bagian membentuk jumlah.",
+          "tahap": [
+            "Picture",
+            "Mind"
+          ]
+        },
+        {
+          "label": "METODE LUAR",
+          "nama": "Ten Frame Add",
+          "namaId": "Jumlah di Bingkai Sepuluh",
+          "asal": "Ten-frame",
+          "ringkas": "Gabungkan benda di bingkai.",
+          "tahap": [
+            "Infografis",
+            "Concrete"
+          ]
+        }
       ]
     },
     "B": {
@@ -323,37 +396,37 @@
           "id": "B2-S1",
           "titleHint": "Keranjang Apel",
           "sceneType": "keranjang-apel",
-          "voiceNarration": "Kira membawa keranjang berisi lima buah apel. Tiga apel merah dan dua apel hijau. Igil bertanya: bagaimana caramu menjumlahkan? Hari ini kita belajar berbagai cara melakukan penjumlahan."
+          "voiceNarration": "Kira membawa keranjang berisi lima buah apel. Tiga apel merah dan dua apel hijau. Igil bertanya: bagaimana caramu menjumlahkan? Hari ini kita belajar berbagai cara melakukan penjumlahan. METODE LUAR. Menghitung Maju: Mulai dari bilangan pertama lalu maju."
         },
         {
           "id": "B2-S2",
           "titleHint": "Bagan Igil",
           "sceneType": "bagan-pasangan",
-          "voiceNarration": "Igil menggambar bagan di papan. Lingkaran besar disebut gabungan, isinya lima. Dua lingkaran kecil disebut sebagian, isinya tiga dan dua. Tiga dan dua jika digabungkan menjadi lima. Dua dan tiga juga menjadi lima."
+          "voiceNarration": "Igil menggambar bagan di papan. Lingkaran besar disebut gabungan, isinya lima. Dua lingkaran kecil disebut sebagian, isinya tiga dan dua. Tiga dan dua jika digabungkan menjadi lima. Dua dan tiga juga menjadi lima. METODE LUAR. Bagian–Utuh: Dua bagian membentuk jumlah."
         },
         {
           "id": "B2-S3",
           "titleHint": "Lompat di Petak Angka",
           "sceneType": "lompat-petak",
-          "voiceNarration": "Upe berdiri di angka lima. Dia melompat tiga langkah ke depan. Enam, tujuh, delapan. Sekarang Upe ada di angka delapan. Lima ditambah tiga sama dengan delapan. Ini cara menghitung maju."
+          "voiceNarration": "Upe berdiri di angka lima. Dia melompat tiga langkah ke depan. Enam, tujuh, delapan. Sekarang Upe ada di angka delapan. Lima ditambah tiga sama dengan delapan. Ini cara menghitung maju. METODE LUAR. Jumlah di Bingkai Sepuluh: Gabungkan benda di bingkai."
         },
         {
           "id": "B2-S4",
           "titleHint": "Kepik Kembar",
           "sceneType": "kepik-kembar",
-          "voiceNarration": "Lihat kepik ini. Sayap kirinya punya tiga totol. Sayap kanannya juga punya tiga totol. Tiga ditambah tiga sama dengan enam. Menambahkan bilangan yang sama disebut penjumlahan berulang."
+          "voiceNarration": "Lihat kepik ini. Sayap kirinya punya tiga totol. Sayap kanannya juga punya tiga totol. Tiga ditambah tiga sama dengan enam. Menambahkan bilangan yang sama disebut penjumlahan berulang. METODE LUAR. Menghitung Maju: Mulai dari bilangan pertama lalu maju."
         },
         {
           "id": "B2-S5",
           "titleHint": "Delapan Jari dan Dua Jari",
           "sceneType": "jari-sepuluh",
-          "voiceNarration": "Kira, Halim, dan Wei menunjukkan jari mereka. Ada delapan jari terbuka dan dua jari tertutup. Semuanya ada sepuluh jari. Delapan ditambah dua sama dengan sepuluh."
+          "voiceNarration": "Kira, Halim, dan Wei menunjukkan jari mereka. Ada delapan jari terbuka dan dua jari tertutup. Semuanya ada sepuluh jari. Delapan ditambah dua sama dengan sepuluh. METODE LUAR. Bagian–Utuh: Dua bagian membentuk jumlah."
         },
         {
           "id": "B2-S6",
           "titleHint": "Bingkai Sepuluh",
           "sceneType": "bingkai-sepuluh",
-          "voiceNarration": "Wei menunjukkan bingkai sepuluh. Ada sembilan bola merah dan satu bola biru. Jika digabungkan menjadi sepuluh bola. Sembilan ditambah satu sama dengan sepuluh. Apakah kamu menemukan pasangan lainnya?"
+          "voiceNarration": "Wei menunjukkan bingkai sepuluh. Ada sembilan bola merah dan satu bola biru. Jika digabungkan menjadi sepuluh bola. Sembilan ditambah satu sama dengan sepuluh. Apakah kamu menemukan pasangan lainnya? METODE LUAR. Jumlah di Bingkai Sepuluh: Gabungkan benda di bingkai."
         }
       ],
       "mindMaps": [
@@ -395,7 +468,15 @@
           "stepDesc": "Semua cara menghasilkan jawaban yang sama. Pilih cara yang paling kamu suka, lalu periksa dengan cara lain.",
           "icon": "🌟",
           "flowFrom": "Banyak cara",
-          "flowTo": "Jawaban sama"
+          "flowTo": "6"
+        },
+        {
+          "stepNumber": 6,
+          "stepTitle": "6. METODE LUAR · Bagian–Utuh",
+          "stepDesc": "Dua bagian membentuk jumlah.",
+          "icon": "🌍",
+          "flowFrom": "5",
+          "flowTo": "END"
         }
       ],
       "infografisData": [
@@ -433,6 +514,27 @@
           "countNum": 10,
           "countWord": "Sepuluh",
           "voiceSentence": "Sembilan bola merah ditambah satu bola biru, semuanya sepuluh bola."
+        },
+        {
+          "fruitName": "Menghitung Maju",
+          "emoji": "🌍",
+          "countNum": 1,
+          "countWord": "METODE LUAR · Counting On",
+          "voiceSentence": "METODE LUAR. Menghitung Maju. Mulai dari bilangan pertama lalu maju."
+        },
+        {
+          "fruitName": "Bagian–Utuh",
+          "emoji": "🌍",
+          "countNum": 2,
+          "countWord": "METODE LUAR · Part–Part–Whole",
+          "voiceSentence": "METODE LUAR. Bagian–Utuh. Dua bagian membentuk jumlah."
+        },
+        {
+          "fruitName": "Jumlah di Bingkai Sepuluh",
+          "emoji": "🌍",
+          "countNum": 3,
+          "countWord": "METODE LUAR · Ten Frame Add",
+          "voiceSentence": "METODE LUAR. Jumlah di Bingkai Sepuluh. Gabungkan benda di bingkai."
         }
       ],
       "concreteSlides": [
@@ -615,6 +717,42 @@
           "mechanicDescription": "Ronde 1: 7 + 3 = ? dengan suara dan guratan angka 10. Ronde 2 (Ayo Mencoba): siswa memilih dua bilangan sendiri, jumlahnya paling banyak 10.",
           "voiceGuide": "Ucapkan hasilnya, lalu guratkan angkanya di kanvas."
         }
+      ],
+      "metodeLuar": [
+        {
+          "label": "METODE LUAR",
+          "nama": "Counting On",
+          "namaId": "Menghitung Maju",
+          "asal": "Counting on",
+          "ringkas": "Mulai dari bilangan pertama lalu maju.",
+          "tahap": [
+            "Story",
+            "Concrete",
+            "Abstract"
+          ]
+        },
+        {
+          "label": "METODE LUAR",
+          "nama": "Part–Part–Whole",
+          "namaId": "Bagian–Utuh",
+          "asal": "Singapore Math",
+          "ringkas": "Dua bagian membentuk jumlah.",
+          "tahap": [
+            "Picture",
+            "Mind"
+          ]
+        },
+        {
+          "label": "METODE LUAR",
+          "nama": "Ten Frame Add",
+          "namaId": "Jumlah di Bingkai Sepuluh",
+          "asal": "Ten-frame",
+          "ringkas": "Gabungkan benda di bingkai.",
+          "tahap": [
+            "Infografis",
+            "Concrete"
+          ]
+        }
       ]
     },
     "C": {
@@ -630,37 +768,37 @@
           "id": "C2-S1",
           "titleHint": "Burung di Dahan",
           "sceneType": "burung-dahan",
-          "voiceNarration": "Ada empat burung di pohon. Datang lagi dua burung. Igil bertanya: berapa jumlah semua burung? Ini namanya soal cerita. Empat ditambah dua sama dengan enam. Semuanya ada enam burung."
+          "voiceNarration": "Ada empat burung di pohon. Datang lagi dua burung. Igil bertanya: berapa jumlah semua burung? Ini namanya soal cerita. Empat ditambah dua sama dengan enam. Semuanya ada enam burung. METODE LUAR. Menghitung Maju: Mulai dari bilangan pertama lalu maju."
         },
         {
           "id": "C2-S2",
           "titleHint": "Pensil Halim",
           "sceneType": "pensil-halim",
-          "voiceNarration": "Halim mempunyai tiga pensil merah di tangan kiri. Halim juga mempunyai empat pensil hijau di tangan kanan. Berapa jumlah semua pensil Halim? Tiga ditambah empat sama dengan tujuh. Halim memiliki tujuh pensil."
+          "voiceNarration": "Halim mempunyai tiga pensil merah di tangan kiri. Halim juga mempunyai empat pensil hijau di tangan kanan. Berapa jumlah semua pensil Halim? Tiga ditambah empat sama dengan tujuh. Halim memiliki tujuh pensil. METODE LUAR. Bagian–Utuh: Dua bagian membentuk jumlah."
         },
         {
           "id": "C2-S3",
           "titleHint": "Siswa di Kelas",
           "sceneType": "siswa-kelas",
-          "voiceNarration": "Ada lima siswa di dalam kelas. Datang lagi tiga siswa dari pintu. Berapakah jumlah semua siswa sekarang? Lima ditambah tiga sama dengan delapan. Di dalam kelas ada delapan siswa."
+          "voiceNarration": "Ada lima siswa di dalam kelas. Datang lagi tiga siswa dari pintu. Berapakah jumlah semua siswa sekarang? Lima ditambah tiga sama dengan delapan. Di dalam kelas ada delapan siswa. METODE LUAR. Jumlah di Bingkai Sepuluh: Gabungkan benda di bingkai."
         },
         {
           "id": "C2-S4",
           "titleHint": "Sepeda dan Becak",
           "sceneType": "sepeda-becak",
-          "voiceNarration": "Di jalan ada tiga sepeda. Ada satu becak. Berapa jumlah semua kendaraan? Tiga ditambah satu sama dengan empat. Semuanya ada empat kendaraan. Satu cerita bisa punya dua pertanyaan. Berapa jumlah semua rodanya? Tiap sepeda punya dua roda, jadi tiga sepeda ada enam roda. Becak punya tiga roda. Enam ditambah tiga sama dengan sembilan roda."
+          "voiceNarration": "Di jalan ada tiga sepeda. Ada satu becak. Berapa jumlah semua kendaraan? Tiga ditambah satu sama dengan empat. Semuanya ada empat kendaraan. Satu cerita bisa punya dua pertanyaan. Berapa jumlah semua rodanya? Tiap sepeda punya dua roda, jadi tiga sepeda ada enam roda. Becak punya tiga roda. Enam ditambah tiga sama dengan sembilan roda. METODE LUAR. Menghitung Maju: Mulai dari bilangan pertama lalu maju."
         },
         {
           "id": "C2-S5",
           "titleHint": "Motor dan Mobil",
           "sceneType": "motor-mobil",
-          "voiceNarration": "Di tempat parkir ada tiga motor. Ada dua mobil. Berapa jumlah semua kendaraan? Tiga ditambah dua sama dengan lima. Semuanya ada lima kendaraan."
+          "voiceNarration": "Di tempat parkir ada tiga motor. Ada dua mobil. Berapa jumlah semua kendaraan? Tiga ditambah dua sama dengan lima. Semuanya ada lima kendaraan. METODE LUAR. Bagian–Utuh: Dua bagian membentuk jumlah."
         },
         {
           "id": "C2-S6",
           "titleHint": "Stoples Kelereng",
           "sceneType": "stoples-kelereng",
-          "voiceNarration": "Tika membuat ceritanya sendiri. Dia punya dua stoples. Di stoples pertama ada kelereng merah. Di stoples kedua ada kelereng biru. Kalimat penjumlahannya masih kosong. Ayo buat ceritamu sendiri, gambar, tulis kalimatnya, hitung hasilnya, lalu ceritakan di depan kelas."
+          "voiceNarration": "Tika membuat ceritanya sendiri. Dia punya dua stoples. Di stoples pertama ada kelereng merah. Di stoples kedua ada kelereng biru. Kalimat penjumlahannya masih kosong. Ayo buat ceritamu sendiri, gambar, tulis kalimatnya, hitung hasilnya, lalu ceritakan di depan kelas. METODE LUAR. Jumlah di Bingkai Sepuluh: Gabungkan benda di bingkai."
         }
       ],
       "mindMaps": [
@@ -710,7 +848,23 @@
           "stepDesc": "Periksa dengan cara lain, misalnya tukar tempat atau menghitung maju. Setelah yakin, ceritakan hasilnya di depan kelas.",
           "icon": "🌟",
           "flowFrom": "Jawaban",
-          "flowTo": "Cerita di kelas"
+          "flowTo": "7"
+        },
+        {
+          "stepNumber": 7,
+          "stepTitle": "7. METODE LUAR · Menghitung Maju",
+          "stepDesc": "Mulai dari bilangan pertama lalu maju.",
+          "icon": "🌍",
+          "flowFrom": "6",
+          "flowTo": "8"
+        },
+        {
+          "stepNumber": 8,
+          "stepTitle": "8. METODE LUAR · Bagian–Utuh",
+          "stepDesc": "Dua bagian membentuk jumlah.",
+          "icon": "🌍",
+          "flowFrom": "7",
+          "flowTo": "END"
         }
       ],
       "infografisData": [
@@ -762,6 +916,27 @@
           "countNum": 5,
           "countWord": "Lima",
           "voiceSentence": "Buat cerita, gambar, tulis kalimat penjumlahan, hitung hasilnya, lalu sampaikan di kelas."
+        },
+        {
+          "fruitName": "Menghitung Maju",
+          "emoji": "🌍",
+          "countNum": 1,
+          "countWord": "METODE LUAR · Counting On",
+          "voiceSentence": "METODE LUAR. Menghitung Maju. Mulai dari bilangan pertama lalu maju."
+        },
+        {
+          "fruitName": "Bagian–Utuh",
+          "emoji": "🌍",
+          "countNum": 2,
+          "countWord": "METODE LUAR · Part–Part–Whole",
+          "voiceSentence": "METODE LUAR. Bagian–Utuh. Dua bagian membentuk jumlah."
+        },
+        {
+          "fruitName": "Jumlah di Bingkai Sepuluh",
+          "emoji": "🌍",
+          "countNum": 3,
+          "countWord": "METODE LUAR · Ten Frame Add",
+          "voiceSentence": "METODE LUAR. Jumlah di Bingkai Sepuluh. Gabungkan benda di bingkai."
         }
       ],
       "concreteSlides": [
@@ -943,6 +1118,42 @@
           "objective": "Menyatakan hasil dengan suara dan tulisan, lalu membuat cerita sendiri.",
           "mechanicDescription": "Ronde 1: cerita 6 siswa + 4 siswa dengan suara dan guratan angka 10. Ronde 2 (Ayo Berkarya): siswa mengatur dua stoples kelereng sendiri, jumlahnya paling banyak 10, lalu menjelaskan cara.",
           "voiceGuide": "Ucapkan hasilnya, lalu guratkan angkanya di kanvas."
+        }
+      ],
+      "metodeLuar": [
+        {
+          "label": "METODE LUAR",
+          "nama": "Counting On",
+          "namaId": "Menghitung Maju",
+          "asal": "Counting on",
+          "ringkas": "Mulai dari bilangan pertama lalu maju.",
+          "tahap": [
+            "Story",
+            "Concrete",
+            "Abstract"
+          ]
+        },
+        {
+          "label": "METODE LUAR",
+          "nama": "Part–Part–Whole",
+          "namaId": "Bagian–Utuh",
+          "asal": "Singapore Math",
+          "ringkas": "Dua bagian membentuk jumlah.",
+          "tahap": [
+            "Picture",
+            "Mind"
+          ]
+        },
+        {
+          "label": "METODE LUAR",
+          "nama": "Ten Frame Add",
+          "namaId": "Jumlah di Bingkai Sepuluh",
+          "asal": "Ten-frame",
+          "ringkas": "Gabungkan benda di bingkai.",
+          "tahap": [
+            "Infografis",
+            "Concrete"
+          ]
         }
       ]
     }

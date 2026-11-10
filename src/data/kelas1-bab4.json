@@ -24,37 +24,37 @@
           "id": "A4-S1",
           "titleHint": "Piknik Bersama",
           "sceneType": "piknik-bersama",
-          "voiceNarration": "Piknik bersama! Kira, Upe, Wei, Halim, Malosi, dan Tika berpiknik di taman. Setiap teman membawa makanan. Ada donat yang bulat. Ada irisan semangka yang runcing. Ada kue lapis yang berpojok empat. Bentuk apa saja yang kamu temukan? Dapatkah kamu mengelompokkannya?"
+          "voiceNarration": "Piknik bersama! Kira, Upe, Wei, Halim, Malosi, dan Tika berpiknik di taman. Setiap teman membawa makanan. Ada donat yang bulat. Ada irisan semangka yang runcing. Ada kue lapis yang berpojok empat. Bentuk apa saja yang kamu temukan? Dapatkah kamu mengelompokkannya? METODE LUAR. Kenali Bentuk: Kenali lingkaran, segitiga, segi empat dari wujudnya."
         },
         {
           "id": "A4-S2",
           "titleHint": "Tiga Bentuk di Papan",
           "sceneType": "papan-tiga-bentuk",
-          "voiceNarration": "Igil menggambar tiga bentuk di papan. Bentuk pertama bernama bentuk lengkung. Tepinya melengkung dan tidak punya sudut. Bentuk kedua bernama segitiga. Punya tiga sisi lurus dan tiga sudut. Bentuk ketiga bernama segi empat. Punya empat sisi lurus dan empat sudut. Semua benda di sekitar kita bisa kita kelompokkan dengan tiga bentuk ini."
+          "voiceNarration": "Igil menggambar tiga bentuk di papan. Bentuk pertama bernama bentuk lengkung. Tepinya melengkung dan tidak punya sudut. Bentuk kedua bernama segitiga. Punya tiga sisi lurus dan tiga sudut. Bentuk ketiga bernama segi empat. Punya empat sisi lurus dan empat sudut. Semua benda di sekitar kita bisa kita kelompokkan dengan tiga bentuk ini. METODE LUAR. Pilah Ciri: Pilah menurut sisi lengkung/lurus."
         },
         {
           "id": "A4-S3",
           "titleHint": "Benda Bentuk Lengkung",
           "sceneType": "benda-lengkung",
-          "voiceNarration": "Lihat meja makan Tika! Jam dinding, piring, donat, melon, dan telur. Semuanya punya tepi yang melengkung. Kita tidak menemukan ujung yang runcing, dan tidak ada sudut. Benda seperti ini berbentuk lengkung. Ada yang bulat, ada juga yang lonjong seperti telur. Keduanya tetap bentuk lengkung."
+          "voiceNarration": "Lihat meja makan Tika! Jam dinding, piring, donat, melon, dan telur. Semuanya punya tepi yang melengkung. Kita tidak menemukan ujung yang runcing, dan tidak ada sudut. Benda seperti ini berbentuk lengkung. Ada yang bulat, ada juga yang lonjong seperti telur. Keduanya tetap bentuk lengkung. METODE LUAR. Bentuk di Sekitar: Cari bentuk pada benda sehari-hari."
         },
         {
           "id": "A4-S4",
           "titleHint": "Benda Bentuk Segitiga",
           "sceneType": "benda-segitiga",
-          "voiceNarration": "Halim menemukan benda berbentuk segitiga. Ada tenda, irisan semangka, kue risol, penggaris segitiga, dan kue lupis. Ujung-ujungnya runcing. Hitung sisinya: satu, dua, tiga. Hitung sudutnya: satu, dua, tiga. Segitiga punya tiga sisi lurus dan tiga sudut."
+          "voiceNarration": "Halim menemukan benda berbentuk segitiga. Ada tenda, irisan semangka, kue risol, penggaris segitiga, dan kue lupis. Ujung-ujungnya runcing. Hitung sisinya: satu, dua, tiga. Hitung sudutnya: satu, dua, tiga. Segitiga punya tiga sisi lurus dan tiga sudut. METODE LUAR. Kenali Bentuk: Kenali lingkaran, segitiga, segi empat dari wujudnya."
         },
         {
           "id": "A4-S5",
           "titleHint": "Benda Bentuk Segi Empat",
           "sceneType": "benda-segi-empat",
-          "voiceNarration": "Wei mencari benda di dalam rumah. Jendela, pintu, bingkai foto, bendera, kue lapis, dan buku. Semuanya berbentuk segi empat. Hitung sisinya: satu, dua, tiga, empat. Hitung sudutnya: satu, dua, tiga, empat. Segi empat punya empat sisi lurus dan empat sudut."
+          "voiceNarration": "Wei mencari benda di dalam rumah. Jendela, pintu, bingkai foto, bendera, kue lapis, dan buku. Semuanya berbentuk segi empat. Hitung sisinya: satu, dua, tiga, empat. Hitung sudutnya: satu, dua, tiga, empat. Segi empat punya empat sisi lurus dan empat sudut. METODE LUAR. Pilah Ciri: Pilah menurut sisi lengkung/lurus."
         },
         {
           "id": "A4-S6",
           "titleHint": "Ayo Bermain Bentuk",
           "sceneType": "bermain-bentuk-tubuh",
-          "voiceNarration": "Ayo bermain! Bentuk apa yang bisa dibuat dengan tubuh kita? Tiga teman berdiri melingkar membuat bentuk lengkung. Dua teman membuat atap dengan lengan membentuk segitiga. Satu teman membuat bingkai dengan jari membentuk segi empat. Sekarang giliranmu: buat bentuk dengan teman-temanmu, lalu tebak bentuk apa itu."
+          "voiceNarration": "Ayo bermain! Bentuk apa yang bisa dibuat dengan tubuh kita? Tiga teman berdiri melingkar membuat bentuk lengkung. Dua teman membuat atap dengan lengan membentuk segitiga. Satu teman membuat bingkai dengan jari membentuk segi empat. Sekarang giliranmu: buat bentuk dengan teman-temanmu, lalu tebak bentuk apa itu. METODE LUAR. Bentuk di Sekitar: Cari bentuk pada benda sehari-hari."
         }
       ],
       "mindMaps": [
@@ -104,7 +104,23 @@
           "stepDesc": "Putar bendanya, miringkan, atau balik. Segitiga yang terbalik tetap segitiga. Segi empat yang miring tetap segi empat. Bentuk tidak berubah karena posisinya berubah, dan tidak berubah karena ukurannya berbeda.",
           "icon": "🔄",
           "flowFrom": "Kelompok bentuk",
-          "flowTo": "Bentuk tetap walau diputar"
+          "flowTo": "7"
+        },
+        {
+          "stepNumber": 7,
+          "stepTitle": "7. METODE LUAR · Kenali Bentuk",
+          "stepDesc": "Kenali lingkaran, segitiga, segi empat dari wujudnya.",
+          "icon": "🌍",
+          "flowFrom": "6",
+          "flowTo": "8"
+        },
+        {
+          "stepNumber": 8,
+          "stepTitle": "8. METODE LUAR · Pilah Ciri",
+          "stepDesc": "Pilah menurut sisi lengkung/lurus.",
+          "icon": "🌍",
+          "flowFrom": "7",
+          "flowTo": "END"
         }
       ],
       "infografisData": [
@@ -163,6 +179,27 @@
           "countNum": 3,
           "countWord": "Tiga",
           "voiceSentence": "Kue lupis segitiga. Kue lapis segi empat. Kue cucur bulat, jadi lengkung."
+        },
+        {
+          "fruitName": "Kenali Bentuk",
+          "emoji": "🌍",
+          "countNum": 1,
+          "countWord": "METODE LUAR · van Hiele Visual",
+          "voiceSentence": "METODE LUAR. Kenali Bentuk. Kenali lingkaran, segitiga, segi empat dari wujudnya."
+        },
+        {
+          "fruitName": "Pilah Ciri",
+          "emoji": "🌍",
+          "countNum": 2,
+          "countWord": "METODE LUAR · Attribute Sort",
+          "voiceSentence": "METODE LUAR. Pilah Ciri. Pilah menurut sisi lengkung/lurus."
+        },
+        {
+          "fruitName": "Bentuk di Sekitar",
+          "emoji": "🌍",
+          "countNum": 3,
+          "countWord": "METODE LUAR · Shape in Environment",
+          "voiceSentence": "METODE LUAR. Bentuk di Sekitar. Cari bentuk pada benda sehari-hari."
         }
       ],
       "concreteSlides": [
@@ -345,6 +382,41 @@
           "mechanicDescription": "Dua ronde. Ronde 1 segitiga. Ronde 2 siswa memilih sendiri satu bentuk. Siswa mengucapkan banyak sudut lalu menggurat angkanya.",
           "voiceGuide": "Ucapkan banyak sudut, lalu guratkan angkanya."
         }
+      ],
+      "metodeLuar": [
+        {
+          "label": "METODE LUAR",
+          "nama": "van Hiele Visual",
+          "namaId": "Kenali Bentuk",
+          "asal": "van Hiele",
+          "ringkas": "Kenali lingkaran, segitiga, segi empat dari wujudnya.",
+          "tahap": [
+            "Story",
+            "Concrete"
+          ]
+        },
+        {
+          "label": "METODE LUAR",
+          "nama": "Attribute Sort",
+          "namaId": "Pilah Ciri",
+          "asal": "Attribute blocks",
+          "ringkas": "Pilah menurut sisi lengkung/lurus.",
+          "tahap": [
+            "Picture",
+            "Mind"
+          ]
+        },
+        {
+          "label": "METODE LUAR",
+          "nama": "Shape in Environment",
+          "namaId": "Bentuk di Sekitar",
+          "asal": "Contextual geometry",
+          "ringkas": "Cari bentuk pada benda sehari-hari.",
+          "tahap": [
+            "Infografis",
+            "Abstract"
+          ]
+        }
       ]
     },
     "B": {
@@ -360,37 +432,37 @@
           "id": "B4-S1",
           "titleHint": "Kue di Meja",
           "sceneType": "meja-kue-tradisional",
-          "voiceNarration": "Ibu menyiapkan kue tradisional di meja. Ada kue cucur yang cokelat dan bulat. Ada kue risol yang cokelat dan runcing. Ada kue talam yang hijau. Ada kue lapis hijau yang bertingkat. Ada bolu cokelat yang berpojok empat. Dan ada kue lupis yang hijau berbentuk segitiga. Igil bertanya, apakah ada yang sama? Ayo kita kelompokkan. Mengelompokkan artinya mengumpulkan benda yang punya ciri sama. Bagaimana kamu mengelompokkannya? Jelaskan alasanmu."
+          "voiceNarration": "Ibu menyiapkan kue tradisional di meja. Ada kue cucur yang cokelat dan bulat. Ada kue risol yang cokelat dan runcing. Ada kue talam yang hijau. Ada kue lapis hijau yang bertingkat. Ada bolu cokelat yang berpojok empat. Dan ada kue lupis yang hijau berbentuk segitiga. Igil bertanya, apakah ada yang sama? Ayo kita kelompokkan. Mengelompokkan artinya mengumpulkan benda yang punya ciri sama. Bagaimana kamu mengelompokkannya? Jelaskan alasanmu. METODE LUAR. Kenali Bentuk: Kenali lingkaran, segitiga, segi empat dari wujudnya."
         },
         {
           "id": "B4-S2",
           "titleHint": "Kelompok Menurut Bentuk",
           "sceneType": "kelompok-menurut-bentuk",
-          "voiceNarration": "Kira dan Upe mengelompokkan kue menurut bentuknya. Di nampan pertama ada kue cucur dan kue talam. Tepi keduanya melengkung, jadi mereka bentuk lengkung. Di nampan kedua ada kue risol dan kue lupis. Keduanya berbentuk segitiga. Di nampan ketiga ada kue lapis hijau dan bolu cokelat. Keduanya berbentuk segi empat. Lihat, ada dua kue di setiap nampan. Satu aturan, yaitu bentuk, membuat tiga kelompok."
+          "voiceNarration": "Kira dan Upe mengelompokkan kue menurut bentuknya. Di nampan pertama ada kue cucur dan kue talam. Tepi keduanya melengkung, jadi mereka bentuk lengkung. Di nampan kedua ada kue risol dan kue lupis. Keduanya berbentuk segitiga. Di nampan ketiga ada kue lapis hijau dan bolu cokelat. Keduanya berbentuk segi empat. Lihat, ada dua kue di setiap nampan. Satu aturan, yaitu bentuk, membuat tiga kelompok. METODE LUAR. Pilah Ciri: Pilah menurut sisi lengkung/lurus."
         },
         {
           "id": "B4-S3",
           "titleHint": "Kelompok Menurut Warna",
           "sceneType": "kelompok-menurut-warna",
-          "voiceNarration": "Sekarang Wei dan Tika mengelompokkan kue yang sama, tetapi dengan aturan lain, yaitu warna. Nampan pertama untuk warna cokelat: kue cucur, kue risol, dan bolu cokelat. Nampan kedua untuk warna hijau: kue talam, kue lapis hijau, dan kue lupis. Kue yang sama bisa masuk kelompok yang berbeda kalau aturannya berbeda. Menurut bentuk, kue talam masuk kelompok lengkung. Menurut warna, kue talam masuk kelompok hijau. Ada tiga kue cokelat dan tiga kue hijau."
+          "voiceNarration": "Sekarang Wei dan Tika mengelompokkan kue yang sama, tetapi dengan aturan lain, yaitu warna. Nampan pertama untuk warna cokelat: kue cucur, kue risol, dan bolu cokelat. Nampan kedua untuk warna hijau: kue talam, kue lapis hijau, dan kue lupis. Kue yang sama bisa masuk kelompok yang berbeda kalau aturannya berbeda. Menurut bentuk, kue talam masuk kelompok lengkung. Menurut warna, kue talam masuk kelompok hijau. Ada tiga kue cokelat dan tiga kue hijau. METODE LUAR. Bentuk di Sekitar: Cari bentuk pada benda sehari-hari."
         },
         {
           "id": "B4-S4",
           "titleHint": "Buah Besar dan Kecil",
           "sceneType": "buah-besar-kecil",
-          "voiceNarration": "Malosi dan Halim membawa buah ke meja. Ada semangka, melon, anggur, dan sawo. Semangka dan melon ukurannya besar. Anggur dan sawo ukurannya kecil. Selain menurut bentuk dan warna, benda juga bisa dikelompokkan menurut ukuran. Ada kelompok besar dan kelompok kecil. Semua buah ini bentuknya lengkung, tetapi ukurannya tidak sama. Besar dan kecil dibandingkan dengan benda lain yang ada di dekatnya."
+          "voiceNarration": "Malosi dan Halim membawa buah ke meja. Ada semangka, melon, anggur, dan sawo. Semangka dan melon ukurannya besar. Anggur dan sawo ukurannya kecil. Selain menurut bentuk dan warna, benda juga bisa dikelompokkan menurut ukuran. Ada kelompok besar dan kelompok kecil. Semua buah ini bentuknya lengkung, tetapi ukurannya tidak sama. Besar dan kecil dibandingkan dengan benda lain yang ada di dekatnya. METODE LUAR. Kenali Bentuk: Kenali lingkaran, segitiga, segi empat dari wujudnya."
         },
         {
           "id": "B4-S5",
           "titleHint": "Kotak Mainan Tika",
           "sceneType": "kotak-mainan-tiga-ciri",
-          "voiceNarration": "Tika punya kotak mainan. Isinya bola merah yang besar, kotak hadiah biru, topi pesta hijau, dan bola kuning yang kecil. Igil berkata, setiap benda punya tiga ciri. Ciri pertama adalah bentuk. Ciri kedua adalah warna. Ciri ketiga adalah ukuran. Kita boleh memilih satu ciri untuk dijadikan aturan. Sebelum mulai, putuskan dulu aturannya. Lalu periksa setiap benda: cocok dengan aturan, atau tidak?"
+          "voiceNarration": "Tika punya kotak mainan. Isinya bola merah yang besar, kotak hadiah biru, topi pesta hijau, dan bola kuning yang kecil. Igil berkata, setiap benda punya tiga ciri. Ciri pertama adalah bentuk. Ciri kedua adalah warna. Ciri ketiga adalah ukuran. Kita boleh memilih satu ciri untuk dijadikan aturan. Sebelum mulai, putuskan dulu aturannya. Lalu periksa setiap benda: cocok dengan aturan, atau tidak? METODE LUAR. Pilah Ciri: Pilah menurut sisi lengkung/lurus."
         },
         {
           "id": "B4-S6",
           "titleHint": "Merapikan Kamar Kira",
           "sceneType": "merapikan-mainan",
-          "voiceNarration": "Kamar Kira berantakan. Kira merapikan mainannya dengan satu aturan, yaitu warna. Rak pertama untuk mainan merah. Rak kedua untuk mainan kuning. Rak ketiga untuk mainan biru. Sekarang kamar Kira rapi, dan mainan mudah dicari. Lain kali, Kira bisa merapikan menurut bentuk atau menurut ukuran. Mengelompokkan membantu kita merapikan, mencari, dan menghitung benda dengan cepat. Ayo kelompokkan benda di sekitarmu."
+          "voiceNarration": "Kamar Kira berantakan. Kira merapikan mainannya dengan satu aturan, yaitu warna. Rak pertama untuk mainan merah. Rak kedua untuk mainan kuning. Rak ketiga untuk mainan biru. Sekarang kamar Kira rapi, dan mainan mudah dicari. Lain kali, Kira bisa merapikan menurut bentuk atau menurut ukuran. Mengelompokkan membantu kita merapikan, mencari, dan menghitung benda dengan cepat. Ayo kelompokkan benda di sekitarmu. METODE LUAR. Bentuk di Sekitar: Cari bentuk pada benda sehari-hari."
         }
       ],
       "mindMaps": [
@@ -440,7 +512,23 @@
           "stepDesc": "Benda yang sama bisa dikelompokkan dengan aturan lain. Kue talam masuk kelompok lengkung menurut bentuk, dan masuk kelompok hijau menurut warna. Tidak ada kelompok yang salah, asalkan semua anggotanya cocok dengan aturannya.",
           "icon": "🔄",
           "flowFrom": "Nama dan banyak anggota",
-          "flowTo": "Aturan baru"
+          "flowTo": "7"
+        },
+        {
+          "stepNumber": 7,
+          "stepTitle": "7. METODE LUAR · Kenali Bentuk",
+          "stepDesc": "Kenali lingkaran, segitiga, segi empat dari wujudnya.",
+          "icon": "🌍",
+          "flowFrom": "6",
+          "flowTo": "8"
+        },
+        {
+          "stepNumber": 8,
+          "stepTitle": "8. METODE LUAR · Pilah Ciri",
+          "stepDesc": "Pilah menurut sisi lengkung/lurus.",
+          "icon": "🌍",
+          "flowFrom": "7",
+          "flowTo": "END"
         }
       ],
       "infografisData": [
@@ -506,6 +594,27 @@
           "countNum": 10,
           "countWord": "Sepuluh",
           "voiceSentence": "Kumpulkan sepuluh benda kecil. Kelompokkan menurut satu aturan, lalu ganti aturannya."
+        },
+        {
+          "fruitName": "Kenali Bentuk",
+          "emoji": "🌍",
+          "countNum": 1,
+          "countWord": "METODE LUAR · van Hiele Visual",
+          "voiceSentence": "METODE LUAR. Kenali Bentuk. Kenali lingkaran, segitiga, segi empat dari wujudnya."
+        },
+        {
+          "fruitName": "Pilah Ciri",
+          "emoji": "🌍",
+          "countNum": 2,
+          "countWord": "METODE LUAR · Attribute Sort",
+          "voiceSentence": "METODE LUAR. Pilah Ciri. Pilah menurut sisi lengkung/lurus."
+        },
+        {
+          "fruitName": "Bentuk di Sekitar",
+          "emoji": "🌍",
+          "countNum": 3,
+          "countWord": "METODE LUAR · Shape in Environment",
+          "voiceSentence": "METODE LUAR. Bentuk di Sekitar. Cari bentuk pada benda sehari-hari."
         }
       ],
       "concreteSlides": [
@@ -688,6 +797,41 @@
           "mechanicDescription": "Dua ronde. Ronde 1 kue hijau. Ronde 2 siswa memilih sendiri satu kelompok. Siswa mengucapkan banyak anggota lalu menggurat angkanya.",
           "voiceGuide": "Ucapkan banyak anggota kelompok, lalu guratkan angkanya."
         }
+      ],
+      "metodeLuar": [
+        {
+          "label": "METODE LUAR",
+          "nama": "van Hiele Visual",
+          "namaId": "Kenali Bentuk",
+          "asal": "van Hiele",
+          "ringkas": "Kenali lingkaran, segitiga, segi empat dari wujudnya.",
+          "tahap": [
+            "Story",
+            "Concrete"
+          ]
+        },
+        {
+          "label": "METODE LUAR",
+          "nama": "Attribute Sort",
+          "namaId": "Pilah Ciri",
+          "asal": "Attribute blocks",
+          "ringkas": "Pilah menurut sisi lengkung/lurus.",
+          "tahap": [
+            "Picture",
+            "Mind"
+          ]
+        },
+        {
+          "label": "METODE LUAR",
+          "nama": "Shape in Environment",
+          "namaId": "Bentuk di Sekitar",
+          "asal": "Contextual geometry",
+          "ringkas": "Cari bentuk pada benda sehari-hari.",
+          "tahap": [
+            "Infografis",
+            "Abstract"
+          ]
+        }
       ]
     },
     "C": {
@@ -703,37 +847,37 @@
           "id": "C4-S1",
           "titleHint": "Dua Segitiga Kertas",
           "sceneType": "dua-segitiga-di-meja",
-          "voiceNarration": "Upe dan Wei punya dua kertas berbentuk segitiga yang sama besar. Satu berwarna merah dan satu berwarna biru. Upe berkata, kalau digabung, kertas ini akan menjadi segitiga. Wei berkata, kalau digabung, kertas ini akan menjadi segi empat. Siapa yang benar? Igil mengajak kita mencoba. Gabungkan dua segitiga yang sama. Bentuk apa yang kamu temukan?"
+          "voiceNarration": "Upe dan Wei punya dua kertas berbentuk segitiga yang sama besar. Satu berwarna merah dan satu berwarna biru. Upe berkata, kalau digabung, kertas ini akan menjadi segitiga. Wei berkata, kalau digabung, kertas ini akan menjadi segi empat. Siapa yang benar? Igil mengajak kita mencoba. Gabungkan dua segitiga yang sama. Bentuk apa yang kamu temukan? METODE LUAR. Kenali Bentuk: Kenali lingkaran, segitiga, segi empat dari wujudnya."
         },
         {
           "id": "C4-S2",
           "titleHint": "Dua Cara Menggabung",
           "sceneType": "dua-cara-menggabungkan",
-          "voiceNarration": "Ternyata Upe dan Wei sama-sama benar! Kalau dua segitiga yang sama besar dirapatkan pada sisi yang tegak, hasilnya segitiga yang lebih besar. Kalau dirapatkan pada sisi yang miring, hasilnya segi empat. Dua segitiga yang sama bisa menjadi bangun yang berbeda, tergantung cara kita menggabungkannya. Menggabungkan beberapa bentuk menjadi bangun baru disebut menyusun."
+          "voiceNarration": "Ternyata Upe dan Wei sama-sama benar! Kalau dua segitiga yang sama besar dirapatkan pada sisi yang tegak, hasilnya segitiga yang lebih besar. Kalau dirapatkan pada sisi yang miring, hasilnya segi empat. Dua segitiga yang sama bisa menjadi bangun yang berbeda, tergantung cara kita menggabungkannya. Menggabungkan beberapa bentuk menjadi bangun baru disebut menyusun. METODE LUAR. Pilah Ciri: Pilah menurut sisi lengkung/lurus."
         },
         {
           "id": "C4-S3",
           "titleHint": "Bangun yang Baru",
           "sceneType": "bangun-datar-digabung",
-          "voiceNarration": "Bukan hanya segitiga yang bisa digabung. Potongan biru yang sudut bawahnya terpotong dapat digabung dengan segitiga merah kecil, dan menjadi segi empat yang utuh. Bentuk bulat yang tinggal tiga perempat dapat digabung dengan potongan seperempat, dan menjadi bulat penuh. Dua bangun datar dapat digabungkan. Hasilnya adalah bangun baru."
+          "voiceNarration": "Bukan hanya segitiga yang bisa digabung. Potongan biru yang sudut bawahnya terpotong dapat digabung dengan segitiga merah kecil, dan menjadi segi empat yang utuh. Bentuk bulat yang tinggal tiga perempat dapat digabung dengan potongan seperempat, dan menjadi bulat penuh. Dua bangun datar dapat digabungkan. Hasilnya adalah bangun baru. METODE LUAR. Bentuk di Sekitar: Cari bentuk pada benda sehari-hari."
         },
         {
           "id": "C4-S4",
           "titleHint": "Kereta dari Balok",
           "sceneType": "kereta-dari-bentuk",
-          "voiceNarration": "Halim punya kereta mainan dari balok kayu. Ayo amati bentuk bangun pada kereta itu. Cerobongnya segi empat. Mesinnya segi empat. Kabin merah dan jendelanya juga segi empat, dan gerbong biru yang panjang segi empat juga. Jadi segi empat ada lima. Moncong keretanya segitiga, ada satu. Rodanya bentuk lengkung, ada tiga. Kereta ini disusun dari lima segi empat, satu segitiga, dan tiga bentuk lengkung."
+          "voiceNarration": "Halim punya kereta mainan dari balok kayu. Ayo amati bentuk bangun pada kereta itu. Cerobongnya segi empat. Mesinnya segi empat. Kabin merah dan jendelanya juga segi empat, dan gerbong biru yang panjang segi empat juga. Jadi segi empat ada lima. Moncong keretanya segitiga, ada satu. Rodanya bentuk lengkung, ada tiga. Kereta ini disusun dari lima segi empat, satu segitiga, dan tiga bentuk lengkung. METODE LUAR. Kenali Bentuk: Kenali lingkaran, segitiga, segi empat dari wujudnya."
         },
         {
           "id": "C4-S5",
           "titleHint": "Mengurai Rumah Mainan",
           "sceneType": "mengurai-rumah",
-          "voiceNarration": "Setelah menyusun, kita juga bisa mengurai. Mengurai artinya memisahkan sebuah bangun menjadi bagian-bagiannya. Malosi menguraikan rumah mainan. Atapnya segitiga. Dindingnya segi empat. Pintunya segi empat, dan jendelanya juga segi empat. Kalau bagian-bagian itu disusun lagi, rumahnya kembali utuh. Menyusun dan mengurai seperti dua arah yang saling berlawanan."
+          "voiceNarration": "Setelah menyusun, kita juga bisa mengurai. Mengurai artinya memisahkan sebuah bangun menjadi bagian-bagiannya. Malosi menguraikan rumah mainan. Atapnya segitiga. Dindingnya segi empat. Pintunya segi empat, dan jendelanya juga segi empat. Kalau bagian-bagian itu disusun lagi, rumahnya kembali utuh. Menyusun dan mengurai seperti dua arah yang saling berlawanan. METODE LUAR. Pilah Ciri: Pilah menurut sisi lengkung/lurus."
         },
         {
           "id": "C4-S6",
           "titleHint": "Rumah dari Lidi",
           "sceneType": "bermain-lidi",
-          "voiceNarration": "Ayo bermain! Tika, Kira, dan Halim menyiapkan lidi yang sama panjang. Mereka menyusunnya menjadi bentuk yang mereka suka. Tiga lidi bisa menjadi segitiga. Empat lidi bisa menjadi segi empat. Lalu Halim membuat rumah. Segi empat untuk dindingnya, dan dua lidi lagi untuk atapnya. Jadi rumah itu memakai enam lidi. Kamu juga boleh membuat bentuk yang kamu suka."
+          "voiceNarration": "Ayo bermain! Tika, Kira, dan Halim menyiapkan lidi yang sama panjang. Mereka menyusunnya menjadi bentuk yang mereka suka. Tiga lidi bisa menjadi segitiga. Empat lidi bisa menjadi segi empat. Lalu Halim membuat rumah. Segi empat untuk dindingnya, dan dua lidi lagi untuk atapnya. Jadi rumah itu memakai enam lidi. Kamu juga boleh membuat bentuk yang kamu suka. METODE LUAR. Bentuk di Sekitar: Cari bentuk pada benda sehari-hari."
         }
       ],
       "mindMaps": [
@@ -783,7 +927,23 @@
           "stepDesc": "Hitung banyak bagian setiap jenis, lalu jumlahkan semuanya. Kereta mainan punya lima segi empat, satu segitiga, dan tiga bentuk lengkung, jadi semuanya sembilan bagian. Kalau ada yang dilepas, banyak bagian yang tersisa berkurang.",
           "icon": "🔢",
           "flowFrom": "Bagian kembali",
-          "flowTo": "Banyak bagian"
+          "flowTo": "7"
+        },
+        {
+          "stepNumber": 7,
+          "stepTitle": "7. METODE LUAR · Kenali Bentuk",
+          "stepDesc": "Kenali lingkaran, segitiga, segi empat dari wujudnya.",
+          "icon": "🌍",
+          "flowFrom": "6",
+          "flowTo": "8"
+        },
+        {
+          "stepNumber": 8,
+          "stepTitle": "8. METODE LUAR · Pilah Ciri",
+          "stepDesc": "Pilah menurut sisi lengkung/lurus.",
+          "icon": "🌍",
+          "flowFrom": "7",
+          "flowTo": "END"
         }
       ],
       "infografisData": [
@@ -849,6 +1009,27 @@
           "countNum": 4,
           "countWord": "Empat",
           "voiceSentence": "Warnai bentuk pada kertas, gunting, susun menjadi gambar menarik, lalu ceritakan bentuk yang dipakai."
+        },
+        {
+          "fruitName": "Kenali Bentuk",
+          "emoji": "🌍",
+          "countNum": 1,
+          "countWord": "METODE LUAR · van Hiele Visual",
+          "voiceSentence": "METODE LUAR. Kenali Bentuk. Kenali lingkaran, segitiga, segi empat dari wujudnya."
+        },
+        {
+          "fruitName": "Pilah Ciri",
+          "emoji": "🌍",
+          "countNum": 2,
+          "countWord": "METODE LUAR · Attribute Sort",
+          "voiceSentence": "METODE LUAR. Pilah Ciri. Pilah menurut sisi lengkung/lurus."
+        },
+        {
+          "fruitName": "Bentuk di Sekitar",
+          "emoji": "🌍",
+          "countNum": 3,
+          "countWord": "METODE LUAR · Shape in Environment",
+          "voiceSentence": "METODE LUAR. Bentuk di Sekitar. Cari bentuk pada benda sehari-hari."
         }
       ],
       "concreteSlides": [
@@ -1030,6 +1211,41 @@
           "objective": "Menyebut dan menulis banyak lidi atau bagian pada bangun yang disusun.",
           "mechanicDescription": "Dua ronde. Ronde 1 lidi untuk segi empat. Ronde 2 siswa memilih sendiri satu hitungan. Siswa mengucapkan banyaknya lalu menggurat angkanya.",
           "voiceGuide": "Ucapkan banyaknya, lalu guratkan angkanya."
+        }
+      ],
+      "metodeLuar": [
+        {
+          "label": "METODE LUAR",
+          "nama": "van Hiele Visual",
+          "namaId": "Kenali Bentuk",
+          "asal": "van Hiele",
+          "ringkas": "Kenali lingkaran, segitiga, segi empat dari wujudnya.",
+          "tahap": [
+            "Story",
+            "Concrete"
+          ]
+        },
+        {
+          "label": "METODE LUAR",
+          "nama": "Attribute Sort",
+          "namaId": "Pilah Ciri",
+          "asal": "Attribute blocks",
+          "ringkas": "Pilah menurut sisi lengkung/lurus.",
+          "tahap": [
+            "Picture",
+            "Mind"
+          ]
+        },
+        {
+          "label": "METODE LUAR",
+          "nama": "Shape in Environment",
+          "namaId": "Bentuk di Sekitar",
+          "asal": "Contextual geometry",
+          "ringkas": "Cari bentuk pada benda sehari-hari.",
+          "tahap": [
+            "Infografis",
+            "Abstract"
+          ]
         }
       ]
     }
